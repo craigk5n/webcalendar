@@ -935,7 +935,7 @@ function overlap($dates,$duration,$hour,$minute,$participants,$login,$id) {
     "AND ( ";
   if ( strlen ( $single_user_login ) ) {
      $participants[0] = $single_user_login;
-  } else if ( strlen ( $participants[0] ) ) {
+  } else if ( strlen ( $participants[0] ) == 0 ) {
      // likely called from a form with 1 user
      $participants[0] = $login;
   }

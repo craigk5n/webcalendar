@@ -1,4 +1,7 @@
 Version 0.9.31dev (???)
+  - Fixed bug 436404: Error in conflict checking - was always replacing
+    first event participant with event creator when checking for
+    conflicts.
   - Feature request 423034: On the event view page, any URLs found
     in the description field will be turned into an HTML link for
     you.  Don't enter HTML in the description, just enter the URL
