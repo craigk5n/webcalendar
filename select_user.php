@@ -15,8 +15,10 @@ if ( ! empty ( $error ) ) {
   echo "<BLOCKQUOTE>$error</BLOCKQUOTE>\n";
 } else {
   $userlist = get_my_users ();
-  $nonusers = get_nonuser_cals ();
-  $userlist = array_merge($userlist, $nonusers);
+  if ($nonuser_enabled == "Y" ) {
+    $nonusers = get_nonuser_cals ();
+    $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+  }
   ?>
   <FORM ACTION="<?php echo $STARTVIEW;?>.php" METHOD="GET" NAME="SelectUser">
   <SELECT NAME="user" ONCHANGE="document.SelectUser.submit()">
