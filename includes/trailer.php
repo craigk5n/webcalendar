@@ -7,6 +7,7 @@
 <br style="clear:both;" />
 <hr style="clear:both;" />
 <table style="border-width:0px; width:100%;" cellpadding="0" cellspacing="0">
+<tr><td style="text-align:left; width:33%; vertical-align:top;">
 <form action="month.php" method="get" name="SelectMonth">
 <?php
   if ( ! empty ( $user ) && $user != $login )
@@ -15,7 +16,7 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<tr><td style="text-align:left; width:33%; vertical-align:top;"><span style="font-weight:bold; font-size: 13px;"><?php etranslate("Month")?>:</span>
+<span style="font-weight:bold; font-size: 13px;"><?php etranslate("Month")?>:</span>
 <select name="date" onchange="document.SelectMonth.submit()">
 <?php
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
@@ -45,10 +46,9 @@
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
-</td>
-</form>
+</form></td>
 
-
+<td style="text-align:center; width:33%; vertical-align:top;">
 <form action="week.php" method="get" name="SelectWeek">
 <?php
   if ( ! empty ( $user ) && $user != $login )
@@ -57,7 +57,7 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<td style="text-align:center; width:33%; vertical-align:top;"><span style="font-weight:bold;font-size:13px;"><?php etranslate("Week")?>:</span>
+<span style="font-weight:bold;font-size:13px;"><?php etranslate("Week")?>:</span>
 <select name="date" onchange="document.SelectWeek.submit()">
 <?php
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
@@ -95,10 +95,10 @@
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
-</td>
 </form>
+</td>
 
-
+<td style="text-align:right; width:33%; vertical-align:top;">
 <form action="year.php" method="get" name="SelectYear">
 <?php
   if ( ! empty ( $user ) && $user != $login )
@@ -107,7 +107,7 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<td style="text-align:right; width:33%; vertical-align:top;"><span style="font-weight:bold;font-size:13px;"><?php etranslate("Year")?>:</span>
+<span style="font-weight:bold;font-size:13px;"><?php etranslate("Year")?>:</span>
 <select name="year" onchange="document.SelectYear.submit()">
 <?php
   if ( ! empty ( $thisyear ) ) {
@@ -124,8 +124,8 @@
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
-</td>
 </form>
+</td>
 </tr>
 </table>
 
@@ -241,7 +241,7 @@
       echo "view_m.php";
     echo "?id=" . $views[$i]['cal_view_id'];
     if ( ! empty ( $thisdate ) )
-      echo "&date=$thisdate";
+      echo "&amp;date=$thisdate";
     echo "\">" . $views[$i]['cal_name'] . "</a>";
   }
   if ( $readonly != "Y" ) {
@@ -266,7 +266,7 @@ $res = dbi_query ( "SELECT cal_report_name, cal_report_id " .
   "ORDER by cal_report_id" );
 $found_report = false;
 if ( ! empty ( $user ) && $user != $login ) {
-  $u_url = "&user=$user";
+  $u_url = "&amp;user=$user";
 } else {
   $u_url = "";
 }
