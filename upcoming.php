@@ -41,6 +41,7 @@ include "includes/$user_inc";
 include "includes/connect.php";
 
 load_user_preferences ();
+load_global_settings ();
 
 include "includes/translate.php";
 
@@ -143,7 +144,7 @@ $endDate = date ( "Ymd", $endTime );
 
 
 /* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( $username, $cat_id );
+$repeated_events = read_repeated_events ( $username, $cat_id, $date );
 
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( $username, $date, $endDate, $cat_id );
