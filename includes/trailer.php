@@ -13,8 +13,8 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<p><?php etranslate("Month")?>:
-<select name="date" onchange="document.SelectMonth.submit()">
+<p><label for="monthselect"><?php etranslate("Month")?>:&nbsp;</label>
+<select name="date" id="monthselect" onchange="document.SelectMonth.submit()">
 <?php
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
     $m = $thismonth;
@@ -54,8 +54,8 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<p><?php etranslate("Week")?>:
-<select name="date" onchange="document.SelectWeek.submit()">
+<p><label for="weekselect"><?php etranslate("Week")?>:&nbsp;</label>
+<select name="date" id="weekselect" onchange="document.SelectWeek.submit()">
 <?php
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
     $m = $thismonth;
@@ -103,8 +103,8 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<p><?php etranslate("Year")?>:
-<select name="year" onchange="document.SelectYear.submit()">
+<p><label for="yearselect"><?php etranslate("Year")?>:&nbsp;</label>
+<select name="year" id="yearselect" onchange="document.SelectYear.submit()">
 <?php
   if ( ! empty ( $thisyear ) ) {
     $y = $thisyear;
@@ -328,7 +328,6 @@ if ( $login != "__public__" ) {
     }
     print $groups;
   }
-  print "<br /><a href=\"$GLOBALS[PROGRAM_URL]\" class=\"navlinks\" " .
-    "style=\"font-size: 10px;\" target=\"_new\">" .
+  print "<br /><a href=\"$GLOBALS[PROGRAM_URL]\" id=\"programname\" target=\"_new\">" .
     $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 ?>
