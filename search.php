@@ -11,14 +11,16 @@
 
 <form action="search_handler.php" method="post" name="searchformentry" style="margin-left:13px;">
 
-<label for="keywordsadv" style="font-weight:bold;"><?php etranslate("Keywords")?>:&nbsp;</label>
+<label for="keywordsadv"><?php etranslate("Keywords")?>:&nbsp;</label>
 <input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
 <input type="submit" value="<?php etranslate("Search")?>" /><br />
 <?php 
 	if ( ($login == "__public__" && $public_access_others != "Y") || (! $is_admin) ) {
 		echo "</form>";
 	} else {
-		echo "<div id=\"advlink\"><a href=\"javascript:show('adv'); hide('advlink');\">" . translate("Advanced Search") . "</a></div>";
+		echo "<div id=\"advlink\"><a title=\"" . 
+			translate("Advanced Search") . "\" href=\"javascript:show('adv'); hide('advlink');\">" . 
+			translate("Advanced Search") . "</a></div>";
 ?>
 <table id="adv" style="display:none;">
 <tr><td style="vertical-align:top; text-align:right; font-weight:bold; width:60px;">
