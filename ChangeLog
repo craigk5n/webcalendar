@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixed Bug 1057889: Public events duplicated in month view (view_t.php)
   - Fixed Bug 1057887: Month view (view_t.php) doubles last sunday in October (DST)
   - Fixed Bug 983139: fix date in notice for single deleted item from repeating
   - Fixed Bug 1019285: Unable to edit a single date of a repeating event
