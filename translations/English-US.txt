@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 08-10-2004
+# Translation last updated on 10-27-2004
 
 
 ###############################################
@@ -48,7 +48,9 @@ Printer Friendly: Printer Friendly
 # Page: admin.php
 #
 System Settings: System Settings
+Help: Help
 You are not authorized: You are not authorized
+Admin: Admin
 Note: Note
 Your user preferences: Your user preferences
 may be affecting the appearance of this page.: may be affecting the appearance of this page.
@@ -57,7 +59,6 @@ to not use your user preferences when viewing this page: to not use your user pr
 are being ignored while viewing this page.: are being ignored while viewing this page.
 to load your user preferences when viewing this page: to load your user preferences when viewing this page
 Save: Save
-Help: Help
 Settings: Settings
 app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: Application Name
@@ -85,7 +86,7 @@ Year: Year
 display-weekends-help: Include weekends when viewing a week.
 Display weekends in week view: Display weekends in week view
 yearly-shows-events-help: On the yearly view, display days that contain events in a bold font.
-Display days with events in bold in year view: Display days with events in bold in year view
+Display days with events in bold in month and year views: Display days with events in bold in month and year views
 display-desc-print-day-help: Include event descriptions in printer-friendly version of day view.
 Display description in printer day view: Display description in printer day view
 date-format-help: Specifies the preferred date format.
@@ -131,28 +132,8 @@ allow-html-description-help: If enabled, users can enter HTML in the event descr
 Allow HTML in Description: Allow HTML in Description
 allow-view-other-help: Specifies whether one user may view another user's calendar.
 Allow viewing other user's calendars: Allow viewing other user's calendars
-allow-public-access-help: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
-Allow public access: Allow public access
-public-access-default-visible: Events from the public calendar will automatically appear on all users' calendars
-Public access visible by default: Public access visible by default
-public-access-default-selected: When adding a new event, the public user will be selected by default as a participant.
-Public access is default participant: Public access is default participant
-public-access-view-others-help: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
-Public access can view other users: Public access can view other users
-public-access-can-add-help: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
-Public access can add events: Public access can add events
-public-access-add-requires-approval-help: Specifies whether events added via the public access account require approval before being displayed.
-Public access new events require approval: Public access new events require approval
-public-access-sees-participants-help: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
-Public access can view participants: Public access can view participants
 allow-view-add-help: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
 Include add event link in views: Include add event link in views
-allow-external-users-help: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
-Allow external users: Allow external users
-external-can-receive-notification-help: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
-External users can receive email notifications: External users can receive email notifications
-external-can-receive-reminder-help: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
-External users can receive email reminders: External users can receive email reminders
 remember-last-login-help: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
 Remember last login: Remember last login
 conflict-check-help: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
@@ -174,6 +155,28 @@ plugins-enabled-help: Enable plugin applications.
 Enable Plugins: Enable Plugins
 plugins-sort-key-help: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
 Plugin: Plugin
+Public Access: Public Access
+allow-public-access-help: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
+Allow public access: Allow public access
+public-access-default-visible: Events from the public calendar will automatically appear on all users' calendars
+Public access visible by default: Public access visible by default
+public-access-default-selected: When adding a new event, the public user will be selected by default as a participant.
+Public access is default participant: Public access is default participant
+public-access-view-others-help: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
+Public access can view other users: Public access can view other users
+public-access-can-add-help: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
+Public access can add events: Public access can add events
+public-access-add-requires-approval-help: Specifies whether events added via the public access account require approval before being displayed.
+Public access new events require approval: Public access new events require approval
+public-access-sees-participants-help: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+Public access can view participants: Public access can view participants
+External Participants: External Participants
+allow-external-users-help: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+Allow external users: Allow external users
+external-can-receive-notification-help: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+External users can receive email notifications: External users can receive email notifications
+external-can-receive-reminder-help: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+External users can receive email reminders: External users can receive email reminders
 Groups: Groups
 groups-enabled-help: Enables group support, allowing users to select users by groups.
 Groups enabled: Groups enabled
@@ -326,7 +329,6 @@ before event: before event
 participants-help: Lists the participants of this entry.
 Participants: Participants
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
-External Participants: External Participants
 repeat-type-help: Select how often the event should repeat.<i>Monthly (by day)</i> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <i>Monthly (by date)</i> allows an event to repeat on the same day of the month.
 Repeat Type: Repeat Type
 Daily: Daily
@@ -384,7 +386,6 @@ Last Name: Last Name
 E-mail address: E-mail address
 Password: Password
 again: again
-Admin: Admin
 Disabled for demo: Disabled for demo
 Change Password: Change Password
 New Password: New Password
@@ -505,6 +506,12 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
+# Page: help_admin.php
+#
+Display days with events in bold in year view: Display days with events in bold in year view
+
+
+###############################################
 # Page: layers.php
 #
 to modify the layers settings for the: to modify the layers settings for the
@@ -528,7 +535,6 @@ Reject this entry?: Reject this entry?
 Reject: Reject
 No unapproved events for: No unapproved events for
 Unapproved Events: Unapproved Events
-Public Access: Public Access
 
 
 ###############################################
@@ -631,6 +637,17 @@ Overwrite Prior Import: Overwrite Prior Import
 
 
 ###############################################
+# Page: login.php
+#
+Invalid login: Invalid login
+You must enter a login and password: You must enter a login and password
+Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
+Login: Login
+Access public calendar: Access public calendar
+cookies-note: <b>Note:</b> This application requires cookies to be enabled.
+
+
+###############################################
 # Page: views.php
 #
 Views: Views
@@ -678,17 +695,6 @@ to manage reports for the Public Access calendar: to manage reports for the Publ
 Add new report: Add new report
 Invalid report id: Invalid report id
 Manage Reports: Manage Reports
-
-
-###############################################
-# Page: login.php
-#
-Invalid login: Invalid login
-You must enter a login and password: You must enter a login and password
-Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
-Login: Login
-Access public calendar: Access public calendar
-cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 
 
 ###############################################
@@ -845,8 +851,8 @@ Edit Custom Trailer: Edit Custom Trailer
 # Page: includes/trailer.php
 #
 Go to: Go to
-Back to My Calendar: Back to My Calendar
 My Calendar: My Calendar
+Back to My Calendar: Back to My Calendar
 Logout: Logout
 Another User's Calendar: Another User's Calendar
 Add New Entry: Add New Entry
