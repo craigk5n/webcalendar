@@ -676,12 +676,16 @@ if ( $can_edit && $event_status != "D" ) {
       "\\n\\n" . translate("This will delete this entry for all users.") .
       "');\">" . translate("Delete entry") . "</a><br />\n";
   }
+  echo "<a class=\"navlinks\" href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
+  translate("Copy entry") . "</a><br />\n";  
 } elseif ( $readonly != "Y" && $is_my_event && $login != "__public__" &&
   $event_status != "D" )  {
   echo "<a class=\"navlinks\" href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" .
     translate("Are you sure you want to delete this entry?") .
     "\\n\\n" . translate("This will delete the entry from your calendar.") .
     "');\">" . translate("Delete entry") . "</a><br />\n";
+  echo "<a class=\"navlinks\" href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
+  translate("Copy entry") . "</a><br />\n";  
 }
 if ( $readonly != "Y" && ! $is_my_event && ! $is_private && 
   $event_status != "D" && $login != "__public__" )  {
