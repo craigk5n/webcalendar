@@ -11,8 +11,6 @@ load_user_categories ();
 $next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
-$today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
-
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.
 if ( $WEEK_START == 1 )
