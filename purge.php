@@ -11,8 +11,8 @@ $INC = array('js/purge.php');
 print_header($INC);
 ?>
 
-<table border="0">
-<tr><td valign="top" width="50%">
+<table style="border-width:0px;">
+<tr><td style="vertical-align:top; width:50%;">
 
 <?php
 $ALL = 0;

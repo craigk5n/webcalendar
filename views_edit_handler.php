@@ -55,14 +55,14 @@ if ( $error == "" ) {
 print_header();
 ?>
 
-<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></font></h2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Error")?></h2>
 
 <blockquote>
 <?php
 
 echo $error;
 //if ( $sql != "" )
-//  echo "<br /><br /><b>SQL:</b> $sql";
+//  echo "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
 //?>
 </blockquote>
 

@@ -53,7 +53,7 @@ if ( $single_user == "N" ) {
         if ( $layers[$id]['cal_layeruser'] == $userlist[$i]['cal_login'] )
           $users .= " selected=\"selected\"";
       } 
-      $users .= ">" . $userlist[$i]['cal_fullname'];
+      $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>";
     }
   }
   if ( $size > 50 )

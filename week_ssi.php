@@ -16,7 +16,7 @@ if ( strlen ( $login ) == 0 ) {
   } else if ( strlen ( $webcalendar_login ) > 0 ) {
     $login = $user = $webcalendar_login;
   } else {
-    echo "<font color=\"#FF0000\"><b>Error:</b> No calendar user specified.</font>";
+    echo "<span style=\"color:#FF0000;\"><b>Error:</b> No calendar user specified.</span>";
     exit;
   }
 }
@@ -87,9 +87,9 @@ for ( $i = 0; $i < 7; $i++ ) {
 ?>
 
 
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-<tr><td bgcolor="<?php echo $TABLEBG?>">
-<table border="0" width="100%" cellspacing="1" cellpadding="2">
+<table style="border-width:0px; width:100%;" cellspacing="0" cellpadding="0">
+<tr><td style="background-color:<?php echo $TABLEBG?>;">
+<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
 
 <tr>
 <?php
@@ -98,7 +98,7 @@ for ( $d = 0; $d < 7; $d++ ) {
     $color = $TODAYCELLBG;
   else
     $color = $THBG;
-  echo "<th width=\"13%\" bgcolor=\"$color\">$header[$d]</th>";
+  echo "<th style=\"width:13%; background-color:$color;\">$header[$d]</th>";
 }
 ?>
 </tr>
@@ -111,11 +111,11 @@ $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
   $date = date ( "Ymd", $days[$d] );
 
-  print "<td valign=\"top\" width=\"75\" height=\"75\" ";
+  print "<td style=\"vertical-align:top; width:75px; height:75px;";
   if ( $date == date ( "Ymd" ) )
-    echo "bgcolor=\"$TODAYCELLBG\">";
+    echo " background-color:$TODAYCELLBG;\">";
   else
-    echo "bgcolor=\"$CELLBG\">";
+    echo " background-color:$CELLBG;\">";
 
   print_date_entries ( $date, $login, true, true );
   echo "&nbsp;";

@@ -60,33 +60,33 @@ for ( $i = 0; $i < 7; $i++ ) {
 ?>
 
 <center>
-<table border="0" width="100%">
+<table style="border-width:0px; width:100%;">
 <tr>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td align="left"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" width="36" height="32" border=\"0\" /></a></td>
+<td style="text-align:left;"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" style="width:36px; height:32px; border-width:0px;" /></a></td>
 <?php } ?>
-<td align="middle"><font size="+2" color="<?php echo $H2COLOR;?>"><B CLASS="pagetitle">
+<td style="text-align:center; color:<?php echo $H2COLOR;?>;"><font size="+2"><span style="font-weight:bold;" class="pagetitle">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), "", false );
 ?>
-</b></font>
+</span></font>
 <?php
 if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
-  echo "<br />\n<font size=\"-2\" color=\"$H2COLOR\">(" .
+  echo "<br />\n<font size=\"-2\">(" .
     translate("Week") . " " . week_number ( $wkstart ) . ")</font>";
 }
 ?>
-<font size="+1" color="<?php echo $H2COLOR;?>">
+<font size="+1">
 <?php
   if ( $single_user == "N" ) {
     echo "<br />$user_fullname\n";
   }
   if ( $is_nonuser_admin )
-    echo "<b><br />-- " . translate("Admin mode") . " --</b>";
+    echo "<br /><b>-- " . translate("Admin mode") . " --</b>";
   if ( $is_assistant )
-    echo "<b><br />-- " . translate("Assistant mode") . " --</b>";
+    echo "<br /><b>-- " . translate("Assistant mode") . " --</b>";
   if ( $categories_enabled == "Y" ) {
     echo "<br />\n<br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
@@ -95,14 +95,14 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 </font>
 </td>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td align="right"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" width="36" height="32" border="0" /></a></td>
+<td style="text-align:right;"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" style="width:36px; height:32px; border-width:0px;" /></a></td>
 <?php } ?>
 </tr>
 </table>
 
-<table border="0" width="90%" cellspacing="0" cellpadding="0">
-<tr><td bgcolor="<?php echo $TABLEBG?>">
-<table border="0" width="100%" cellspacing="1" cellpadding="2" border="0">
+<table style="border-width:0px; width:90%;" cellspacing="0" cellpadding="0">
+<tr><td style="background-color:<?php echo $TABLEBG?>;">
+<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
 
 <?php
 $untimed_found = false;
@@ -124,22 +124,22 @@ for ( $d = 0; $d < 7; $d++ ) {
     $color = $CELLBG;
   }
 
-  echo "<tr><th width=\"100%\" bgcolor=\"$hcolor\" class=\"$hclass\">";
+  echo "<tr><th style=\"width:100%; background-color:$hcolor;\" class=\"$hclass\">";
   if ( empty ( $friendly ) && $can_add ) {
     echo "<a href=\"edit_entry.php?" . $u_url .
       "date=" . date ( "Ymd", $days[$d] ) . "\">" .
-      "<img src=\"new.gif\" width=\"10\" height=\"10\" alt=\"" .
-      translate("New Entry") . "\" border=\"0\" align=\"right\" />" .  "</a>";
+      "<img src=\"new.gif\" style=\"width:10px; height:10px; border-width:0px;\" alt=\"" .
+      translate("New Entry") . "\" align=\"right\" />" .  "</a>";
   }
   echo "<a href=\"day.php?" . $u_url .
     "date=" . date("Ymd", $days[$d] ) . "$caturl\" class=\"$hclass\">" .
     $header[$d] . "</a></th></tr>";
 
-  print "<tr><td valign=\"top\" height=\"75\" ";
+  print "<tr><td style=\"vertical-align:top; height:75px;";
   if ( $date == date ( "Ymd" ) )
-    echo "bgcolor=\"$color\">";
+    echo " background-color:$color;\">";
   else
-    echo "bgcolor=\"$color\">";
+    echo " background-color:$color;\">";
 
   print_det_date_entries ( $date, $user, $hide_icons, true );
   echo "&nbsp;";
@@ -210,7 +210,7 @@ function print_detailed_entry ( $id, $date, $time, $duration,
       echo "&user=" . $user;
     echo "\" onmouseover=\"window.status='" . translate("View this entry") .
       "'; return true;\" onmouseout=\"window.status=''; return true;\">";
-    echo "<img src=\"circle.gif\" width=\"5\" height=\"7\" alt=\"view icon\" border=\"0\" />";
+    echo "<img src=\"circle.gif\" style=\"width:5px; height:7px; border-width:0px;\" alt=\"view icon\" />";
   }
 
 

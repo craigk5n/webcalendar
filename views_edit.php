@@ -38,28 +38,28 @@ if ( $newview ) {
   echo "<h2 style=\"color:$H2COLOR;\">" . translate("Add View") . "</h2>\n";
   echo "<input type=\"hidden\" name=\"add\" value=\"1\" />\n";
 } else {
-  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Edit View") . "</H2>\n";
+  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Edit View") . "</h2>\n";
   echo "<input name=\"id\" type=\"hidden\" value=\"$id\" />";
 }
 ?>
 
-<table border="0">
-<tr><td><b><?php etranslate("View Name")?>:</b></td>
-  <td><input name="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>"></td></tr>
-<tr><td><b><?php etranslate("View Type")?>:</b></td>
-  <TD><SELECT NAME="viewtype">
-      <OPTION VALUE="D" <?php if ( $viewtype == "D" ) echo " selected=\"selected\"";?>><?php etranslate("Day"); ?></option>
-      <OPTION VALUE="W" <?php if ( $viewtype == "W" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Users horizontal)"); ?></option>
-      <OPTION VALUE="V" <?php if ( $viewtype == "V" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Users vertical)"); ?></option>
-      <OPTION VALUE="T" <?php if ( $viewtype == "T" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Timebar)"); ?></option>
-      <OPTION VALUE="M" <?php if ( $viewtype == "M" ) echo " selected=\"selected\"";?>><?php etranslate("Month (side by side)"); ?></option>
-      <OPTION VALUE="L" <?php if ( $viewtype == "L" ) echo " selected=\"selected\"";?>><?php etranslate("Month (on same calendar)"); ?></option>
-      </SELECT>
-      </TD></TR>
-<TR><TD VALIGN="top">
-<B><?php etranslate("Users"); ?>:</B></TD>
-<TD>
-<SELECT NAME="users[]" SIZE="10" multiple="multiple">
+<table style="border-width:0px;">
+<tr><td style="font-weight:bold;"><?php etranslate("View Name")?>:</td>
+  <td><input name="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>" /></td></tr>
+<tr><td style="font-weight:bold;"><?php etranslate("View Type")?>:</td>
+  <td><select name="viewtype">
+      <option value="D" <?php if ( $viewtype == "D" ) echo " selected=\"selected\"";?>><?php etranslate("Day"); ?></option>
+      <option value="W" <?php if ( $viewtype == "W" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Users horizontal)"); ?></option>
+      <option value="V" <?php if ( $viewtype == "V" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Users vertical)"); ?></option>
+      <option value="T" <?php if ( $viewtype == "T" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Timebar)"); ?></option>
+      <option value="M" <?php if ( $viewtype == "M" ) echo " selected=\"selected\"";?>><?php etranslate("Month (side by side)"); ?></option>
+      <option value="L" <?php if ( $viewtype == "L" ) echo " selected=\"selected\"";?>><?php etranslate("Month (on same calendar)"); ?></option>
+      </select>
+      </td></tr>
+<tr><td style="verical-align:top; font-weight:bold;">
+<?php etranslate("Users"); ?>:</td>
+<td>
+<select name="users[]" size="10" multiple="multiple">
 <?php
   // get list of all users
   $users = get_my_users ();
@@ -80,31 +80,31 @@ if ( $newview ) {
   }
   for ( $i = 0; $i < count ( $users ); $i++ ) {
     $u = $users[$i]['cal_login'];
-    echo "<OPTION VALUE=\"$u\"";
+    echo "<option value=\"$u\"";
     if ( ! empty ( $viewuser[$u] ) ) {
       echo " selected=\"selected\"";
     }
-    echo "> " . $users[$i]['cal_fullname'];
+    echo ">" . $users[$i]['cal_fullname'] . "</option>";
   }
 ?>
-</SELECT>
+</select>
 <?php if ( $groups_enabled == "Y" ) { ?>
-  <INPUT TYPE="button" ONCLICK="selectUsers()" VALUE="<?php etranslate("Select");?>..." />
+  <input type="button" onclick="selectUsers()" value="<?php etranslate("Select");?>..." />
 <?php } ?>
-</TD></TR>
-<TR><TD COLSPAN="2">
-<BR><BR>
-<CENTER>
-<INPUT TYPE="submit" NAME="action" VALUE="<?php if ( $newview ) etranslate("Add"); else etranslate("Save"); ?>" >
+</td></tr>
+<tr><td colspan="2">
+<br /><br />
+<div style="text-align:center;">
+<input type="submit" name="action" value="<?php if ( $newview ) etranslate("Add"); else etranslate("Save"); ?>" />
 <?php if ( ! $newview ) { ?>
-<INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')">
+<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
 <?php } ?>
-</CENTER>
-</TD></TR>
-</TABLE>
+</div>
+</td></tr>
+</table>
 
-</FORM>
+</form>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>
