@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 02-23-2005
+# Translation last updated on 03-06-2005
 
 
 ###############################################
@@ -679,6 +679,12 @@ Manage Reports: Manage Reports
 # Page: views_edit_handler.php
 #
 You must specify a view name: You must specify a view name
+
+
+###############################################
+# Page: view_l.php, veiw_m.php, view_d.php, view_t.php, view_v.php, view_w.php
+#
+No users for this view: No users for this view
 
 
 ###############################################
