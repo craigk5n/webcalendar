@@ -75,7 +75,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $startdate, $enddate,
     echo "<br />-- " . translate("Assistant mode") . " --";
 ?></span>
 <?php
-  if ( $categories_enabled == "Y" ) {
+  if ( $categories_enabled == "Y" && (!$user || ($user == $login || $is_assistant ))) {
     echo "<br />\n<br />\n";
     print_category_menu( 'day', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
   }
