@@ -1,4 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Updated install/index.php. Added link to phpinfo if valid user. 
+   Added security to dbtest, now requires log in to test db settings.
  - Fixed bug 1148602: External Recipients with same name fails
  - Updated install/index.php to use "\r\n" instead of "\n".  Added area
    that displays relavant PHP settings.
