@@ -266,7 +266,9 @@ if ( $login != "__public__" ) {
     echo "<B>" . translate("Admin") . ":</B>\n";
     if ( $is_admin )
       echo "<A CLASS=\"navlinks\" HREF=\"admin.php\">" . translate("System Settings") . "</A> |\n";
-    echo "<A CLASS=\"navlinks\" HREF=\"pref.php\">" . translate("Preferences") . "</A>\n";
+    
+    $url = "pref.php"; if ($is_nonuser_admin) $url .= "?user=$user";
+    echo "<A CLASS=\"navlinks\" HREF=\"$url\">" . translate("Preferences") . "</A>\n";
 
     if ( $categories_enabled == "Y" && $login != "__public__"
       && $readonly != "Y" )
