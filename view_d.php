@@ -99,7 +99,7 @@ TimeMatrix($date,$participants);
 </center>
 
 <?php if ( empty ( $friendly ) ) {
-  echo "<br /><a title=\"<?php etranslate("Generate printer-friendly version")?>\" class=\"printer\" href=\"view_d.php?id=$id&amp;";
+  echo "<br /><a title=\"" . etranslate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_d.php?id=$id&amp;";
   echo $u_url . "date=$nowYmd";
   echo $caturl;
   echo '&amp;friendly=1" target="cal_printer_friendly" onmouseover="window.status=\'' .
