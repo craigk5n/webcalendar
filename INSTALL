@@ -118,16 +118,18 @@ To configure your MySQL access.  Set the values for:
 
 You can configure the calendar to run in single-user mode or multi-user mode.
 If this is your first time using the calendar, it's easier to try single-user.
-You can always switch to multi-user later.  Leave the $single_user_login
-variable commented out (the default) for multi-user, or remove the
-"//" comment tags to set the system to single-user mode.  (And be sure
-to set the value of $single_user_login to the login that you would choose
-if you decide to switch to multi-user mode some day.)
+You can always switch to multi-user later.  Leave $single_user set to
+false (the default) for multi-user or set it to true and set the
+value of $single_user_login to set the system to single-user mode.
+(And be sure to set the value of $single_user_login to the login that you
+would choose if you decide to switch to multi-user mode some day.)
 
 Note: If you do decide to switch from single-user mode to multi-user mode,
 make sure you add in a user to the system for the login you set the
 $single_user_login variable to.  You will need to do this via the
-database (mysql, sqlplus, etc...)
+database (mysql, sqlplus, etc...)  Look in the tables-mysql.sql
+(or tables-oracle.sql, etc.) to see the example of adding in the
+"admin" user.
 
 Next, you will want to customize the event-specific fields found in
 the includes/site_extras.inc field.  You can use this to add extra
@@ -147,7 +149,7 @@ SETTING UP EMAIL REMINDERS
 PHP does not come with a utility for executing time-based jobs.
 So, in order to check periodically for email reminders, a shell
 script was written in PHP.  You will need two things to get this working:
-- You must have a version of PHP built as a CGI (so that you can run
+- You should have a version of PHP built as a CGI (so that you can run
   php from the command line).  This does not mean you must build all
   of PHP as a CGI.  You can still build PHP as a module for your web
   server and then build the CGI-based PHP later.
@@ -156,7 +158,10 @@ script was written in PHP.  You will need two things to get this working:
 
 Building PHP as a CGI is outside the scope of these instructions.  But,
 if you read the PHP instructions, you'll see that the default build
-settings will build the CGI-based PHP.
+settings will build the CGI-based PHP.  If you really can't do this
+(perhaps you don't have permission to install anything new on the
+system), skip down a couple of paragraphs to an alternate solution
+that does not require PHP/CGI.
 
 For Linux/UNIX users, add the following line to the crontab entry of
 a user.  (Ideally, this would be the same user that the web server
@@ -166,7 +171,21 @@ process runs as, but any user should work.)
 Of course, replace the directory location to wherever the
 send_reminders.php file can be found.  It you moved this out of the
 tools directory, be sure to update send_reminders.php since it needs
-to know where to find the WebCalendar files.
+to know where to find the WebCalendar files.  (It is better for
+security reasons to move the send_reminders.php file so that it is
+not accessible from any URL).
+
+If you cannot setup PHP as a CGI or have no idea how, you can leave
+send_reminders.php in its current location and access it via a URL.
+IMHO, this is not the best choice, but it still works.  Setup a cron
+job to access the URL.  For Linux/UNIX users, add the following line to
+the crontab entry of a user.
+  1 * * * * wget http://yourserverhere/webcalendardirectoryhere/tools/send_reminders.php > /dev/null
+
+Of course, you should probably test this from the command line first to make
+sure you setup is correct.  If you do not have wget installed on your
+system, you can use any tool (lynx, perl script, etc.) that is capable
+of making an HTTP request for this.
 
 ---------------------------------------------------------------------------
 If you are planning on using Apache, PHP and MySQL, try the following
