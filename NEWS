@@ -1,5 +1,6 @@
 Version 1.0RC3 (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1148603: Assistants can't view Bosses Unapproved Events.
       1145342: Category selection not tranferred to edit_entry page.
       1118121: get_admins in user-ldap has bad search
       1123508: RC3 browser language detection always returns none.

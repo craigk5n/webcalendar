@@ -1,4 +1,5 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Fixed bug 1148603: Assistants can't view Bosses Unapproved Events
  - Fixed bug 1145342: Category selected when adding event is not transferred
    to edit_entry page.
  - Revisited Bug 986774: Editing Category for and event as Assistant. This fix
