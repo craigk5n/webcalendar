@@ -1,11 +1,38 @@
 <?php
+/*
+ * $Id$
+ *
+ * Page Description:
+ *	This page will display the month "view" with all users's events
+ *	on the same calendar.  (The other month "view" displays each user
+ *	calendar in a separate column, side-by-side.)  This view gives you
+ *	the same effect as enabling layers, but with layers you can only
+ *	have one configuration of users.
+ *
+ * Input Parameters:
+ *	id (*) - specify view id in webcal_view table
+ *	date - specify the starting date of the view.
+ *	  If not specified, current date will be used.
+ *	friendly - if set to 1, then page does not include links or
+ *	  trailer navigation.
+ *	(*) required field
+ *
+ * Security:
+ *	Must have "allow view others" enabled ($allow_view_other) in
+ *	  System Settings unless the user is an admin user ($is_admin).
+ *	Must be owner of the view.
+ */
 include_once 'includes/init.php';
 
+$error = "";
 $DAYS_PER_TABLE = 7;
 
 if ( $allow_view_other == "N" && ! $is_admin ) {
   // not allowed...
   do_redirect ( "$STARTVIEW.php" );
+}
+if ( empty ( $id ) ) {
+  do_redirect ( "views.php" );
 }
 
 // Find view name in $views[]
@@ -14,6 +41,12 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   if ( $views[$i]['cal_view_id'] == $id ) {
     $view_name = $views[$i]['cal_name'];
   }
+}
+
+// If view_name not found, then the specified view id does not
+// belong to current user. 
+if ( empty( $view_name ) ) {
+  $error = translate ( "You are not authorized" );
 }
 
 $INC = array('js/popups.php');
@@ -84,7 +117,17 @@ if ( $res ) {
     $viewusers[] = $row[0];
   }
   dbi_free_result ( $res );
+} else {
+  $error = translate ( "Database error" ) . ": " . dbi_error ();
 }
+
+if ( ! empty ( $error ) ) {
+  echo "<h2>" . translate ( "Error" ) .
+    "</h2>\n" . $error;
+  print_trailer ();
+  exit;
+}
+
 $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < count ( $viewusers ); $i++ ) {

@@ -1,11 +1,37 @@
 <?php
+/*
+ * $Id$
+ *
+ * Page Description:
+ *	This page will display a timebar for a week or month as
+	* specified by timeb
+ *
+ * Input Parameters:
+ *	id (*) - specify view id in webcal_view table
+ *	date - specify the starting date of the view.
+ *	  If not specified, current date will be used.
+ *	friendly - if set to 1, then page does not include links or
+ *	  trailer navigation.
+	* timeb - 1 = week, else month
+ *	(*) required field
+ *
+ * Security:
+ *	Must have "allow view others" enabled ($allow_view_other) in
+ *	  System Settings unless the user is an admin user ($is_admin).
+ *	Must be owner of the view.
+ */
 include_once 'includes/init.php';
 
+$error = "";
 $USERS_PER_TABLE = 6;
 
 if ( $allow_view_other == "N" && ! $is_admin ) {
   // not allowed...
   do_redirect ( "$STARTVIEW.php" );
+}
+
+if ( empty ( $id ) ) {
+  do_redirect ( "views.php" );
 }
 
 // Find view name in $views[]
@@ -16,10 +42,16 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   }
 }
 
+// If view_name not found, then the specified view id does not
+// belong to current user. 
+if ( empty ( $view_name ) ) {
+  $error = translate ( "You are not authorized" );
+}
+
 $INC = array('js/popups.php');
 print_header($INC);
 
-// Initialise la date au premier du mois en cours
+// Initialize date to first of current month
 if ( $timeb == 0 )
    $date = substr($date,0,6)."01";
 
@@ -77,6 +109,27 @@ for ( $i = 0; $i < $val_boucle; $i++ ) {
      month_short_name ( date ( "m", $days[$i] ) - 1 ) .
      " " . date ( "d", $days[$i] );
 }
+
+// get users in this view
+$res = dbi_query (
+  "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
+$viewusers = array ();
+if ( $res ) {
+  while ( $row = dbi_fetch_row ( $res ) ) {
+    $viewusers[] = $row[0];
+  }
+  dbi_free_result ( $res );
+} else {
+  $error = translate ( "Database error" ) . ": " . dbi_error ();
+}
+
+if ( ! empty ( $error ) ) {
+  echo "<h2>" . translate ( "Error" ) .
+    "</h2>\n" . $error;
+  print_trailer ();
+  exit;
+}
+
 ?>
 
 <div style="border-width:0px; width:99%;">
@@ -103,16 +156,7 @@ for ( $i = 0; $i < $val_boucle; $i++ ) {
 // Additionally, we only want to put at most 6 users in one table since
 // any more than that doesn't really fit in the page.
 
-// get users in this view
-$res = dbi_query (
-  "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
-$viewusers = array ();
-if ( $res ) {
-  while ( $row = dbi_fetch_row ( $res ) ) {
-    $viewusers[] = $row[0];
-  }
-  dbi_free_result ( $res );
-}
+
 $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
@@ -153,7 +197,7 @@ for ( $date = $wkstart, $h = 0;
 		echo "<td class=\"reg\">";
   }
 
-  // Parametres par defaut
+  // Default settings
   if ($prefarray["WORK_DAY_START_HOUR"]==NULL || $prefarray["WORK_DAY_END_HOUR"]==NULL) {
      $val = dbi_fetch_row ( dbi_query ( "SELECT cal_value FROM webcal_config where cal_setting=\"WORK_DAY_START_HOUR\"" ));
      $prefarray["WORK_DAY_START_HOUR"]=$val[0];

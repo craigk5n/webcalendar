@@ -1,4 +1,7 @@
 Version 1.0RC1/CVS+dev (?? ??? 2004)
+  - Fixed Bug 931096: Restrict views and view edits to owner of that view. Added some
+    error notices to database calls 
+    affected files view_v.php, view_d.php, view_w.php, view_t.php, view_m.php, views_edit.php
   - Fixed Bug 1101823: Problem importing palm desktop datebook.dat file
   - Security fix: Fixed protential problem if a user attempts to login
     with a username that has charaters that will affect the database.

@@ -1,5 +1,21 @@
 <?php
+/*
+ * $Id$
+ *
+ * Page Description:
+ *	This page displays the views that the user currently owns and
+	* allows new ones to be created
+ *
+ * Input Parameters:
+ *	id  - specify view id in webcal_view table
+ * if blank, a new view is created
+ *
+ * Security:
+ *	Must be owner of the viewto edit
+ */
 include_once 'includes/init.php';
+
+$error = "";
 
 if ( ! $is_admin )
   $user = $login;
@@ -29,6 +45,33 @@ if ( empty ( $id ) ) {
   }
 }
 
+// If view_name not found, then the specified view id does not
+// belong to current user. 
+if ( empty( $viewname ) ) {
+  $error = translate ( "You are not authorized" );
+}
+
+// get list of users for this view
+if ( ! $newview ) {
+  $sql = "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id";
+    $res = dbi_query ( $sql );
+    if ( $res ) {
+      while ( $row = dbi_fetch_row ( $res ) ) {
+        $viewuser[$row[0]] = 1;
+      }
+      dbi_free_result ( $res );
+				} else {
+      $error = translate ( "Database error" ) . ": " . dbi_error ();
+    }
+}
+
+if ( ! empty ( $error ) ) {
+  echo "<h2>" . translate ( "Error" ) .
+    "</h2>\n" . $error;
+  print_trailer ();
+  exit;
+}
+	
 if ( $newview ) {
   $v = array ();
   echo "<h2>" . translate("Add View") . "</h2>\n";
@@ -71,17 +114,6 @@ if ( $newview ) {
   if ($nonuser_enabled == "Y" ) {
     $nonusers = get_nonuser_cals ();
     $users = ($nonuser_at_top == "Y") ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
-  }
-  // get list of users for this view
-  if ( ! $newview ) {
-    $sql = "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id";
-    $res = dbi_query ( $sql );
-    if ( $res ) {
-      while ( $row = dbi_fetch_row ( $res ) ) {
-        $viewuser[$row[0]] = 1;
-      }
-      dbi_free_result ( $res );
-    }
   }
   for ( $i = 0; $i < count ( $users ); $i++ ) {
     $u = $users[$i]['cal_login'];
