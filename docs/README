@@ -3,7 +3,7 @@ WebCalendar Documentation
 
 WebCalendar-Database.html
   Describes the database tables in WebCalendar
-  Can be regenerated (if you have perl and make installed) by typing "make"
+  Can be regenerated (if you have perl and make installed) by typing "make".
 
 WebCalendar-UserManual.html
   Instructions for end users
@@ -11,4 +11,38 @@ WebCalendar-UserManual.html
 WebCalendar-SysAdmin.html
   Instructions for system administrators on installing and configuring
   WebCalendar.
+
+WebCalendar-Functions.html
+  Documentation on the internal WebCalendar functions used throughout
+  the application.
+
+faqs.html
+  This is generated from the FAQs of in WebCalendar-SysAdmin.html and
+  WebCalendar-UserManual.html.  If you have perl and make install,
+  typing "make" should generate this file.  This file is not a complete
+  HTML file.  It is intended to be inserted into the body of another
+  HTML page.
+
+
+Tools
+-------------------------------------------------------------
+
+sql2html.pl
+  Perl tool to generate documentation on the database structure
+  (WebCalendar-Database.html) using comments found in tables-mysql.sql.
+
+php2html.pl
+  Perl tool to generate documentation (somewhat like javadoc) on
+  internal WebCalendar functions (WebCalendar-Functions.html) using
+  the comments found in the PHP code.
+
+extractfaqs.pl
+  Perl tool to pull the FAQs out of the documentation to create one
+  set of FAQs that can be included in another HTML page.  (This is used
+  to create a single FAQ page on the WebCalendar home page.)
+
+Makefile
+  Used by the 'make' command to create files that are generated from
+  other files.
+
 
