@@ -54,7 +54,11 @@ for ( $i = 0; $i < count ( $userlist ); $i++ ) {
 </UL>
 <SUP>*</SUP> <?php etranslate("denotes administrative user")?>
 <P>
-<A HREF="edit_user.php"><?php etranslate("Add New User")?></A><BR>
+<?php
+  if ( $admin_can_add_user )
+    echo "<A HREF=\"edit_user.php\">" . translate("Add New User") .
+      "</A><BR>\n";
+?>
 
 <?php include "includes/trailer.inc"; ?>
 </BODY>
