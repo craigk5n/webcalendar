@@ -188,7 +188,7 @@ CREATE TABLE webcal_user_pref (
   /* setting name */
   cal_setting VARCHAR(25) NOT NULL,
   /* setting value */
-  cal_value VARCHAR(50) NULL,
+  cal_value VARCHAR(100) NULL,
   PRIMARY KEY ( cal_login, cal_setting )
 );
 
@@ -310,7 +310,7 @@ CREATE TABLE webcal_config (
   /* setting name */
   cal_setting VARCHAR(50) NOT NULL,
   /* setting value */
-  cal_value VARCHAR(50) NULL,
+  cal_value VARCHAR(100) NULL,
   PRIMARY KEY ( cal_setting )
 );
 
