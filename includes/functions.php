@@ -3637,4 +3637,9 @@ function clean_word($data) {
 function clean_int($data) { 
   return preg_replace("/\D/", '', $data);
 }
+
+// Remove whitespace to prevent HTTP Response Splitting
+function clean_http($data) { 
+  return preg_replace("/\s/", '', $data);
+}
 ?>
