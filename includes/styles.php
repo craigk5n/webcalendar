@@ -6,14 +6,28 @@
 .tablecell {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
-  width: 80px;
-  height: 80px;
+  width: 75px;
+  height: 75px;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  background-color: <?php echo $GLOBALS['CELLBG'];?>;
+}
+.tablecelltoday {
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
+  font-size: 12px;
+  width: 75px;
+  height: 75px;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 }
 .tablecelldemo {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 10px;
   width: 30px;
   height: 30px;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .tablecellweekend {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
@@ -21,6 +35,8 @@
   width: 80px;
   height: 80px;
   background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .tablecellweekenddemo {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
@@ -28,18 +44,24 @@
   width: 30px;
   height: 30px;
   background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .tableheader {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 14px;
   color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
   background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .tableheadertoday {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 14px;
   color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
   background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .dayofmonth {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
@@ -93,6 +115,10 @@
   font-size: 14px;
   color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
   text-decoration: none;
+}
+.tableborder {
+  border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 a {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
