@@ -374,9 +374,6 @@ if ( ! $use_http_auth ) {
 }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
   if ( $has_boss || ! empty ( $admincals[0] ) || ( $is_admin && $public_access ) ) {
-    echo "<span class=\"prefix\">";
-    etranslate("Manage calendar of");
-    echo ":</span>&nbsp;";
     $grouplist = user_get_boss_list ($login);
     $grouplist = array_merge($admincals,$grouplist);
     if ( $is_admin && $public_access == 'Y' ) {
@@ -398,9 +395,13 @@ if ( ! $use_http_auth ) {
       }
       $groups .= "<a title=\"$f\" href=\"$xurl\">$f</a>";
     }
-    print $groups;
+    if ( ! empty ( $groups ) ) {
+      echo "<span class=\"prefix\">";
+      etranslate("Manage calendar of");
+      echo ":</span>&nbsp;" . $groups . "<br/>\n";
+    }
   }
-  print "<br />\n<a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" " .
+  print "<a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" " .
     "id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_new\">" .
     $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 ?>
