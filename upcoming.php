@@ -56,7 +56,7 @@ include "includes/translate.php";
 
 // Change this to false if you still want to access this page even
 // though you do not have public access enabled.
-$public_must_be_enabled = true;
+$public_must_be_enabled = false;
 
 // Do we include a link to view the event?  If so, what target
 // should we use.
@@ -77,7 +77,7 @@ $username = '__public__';
 
 // Allow the URL to override the user setting such as
 // "upcoming.php?user=craig"
-$allow_user_override = false;
+$allow_user_override = true;
 
 // Load layers
 $load_layers = true;
@@ -162,8 +162,8 @@ $events = read_events ( $username, $date, $endDate, $cat_id );
 print "<dl>\n";
 
 print "<!-- \nstartTime: $startTime\nendTime: $endTime\nstartDate: $date\nnumDays: $numDays\nuser: $username\nevents: " . 
-	count ( $events ) . "\nrevents: " . 
-	count ( $revents ) . " -->\n";
+	count ( $events ) . "\nrepeated_events: " . 
+	count ( $repeated_events ) . " -->\n";
 
 $numEvents = 0;
 for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
