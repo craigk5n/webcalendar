@@ -4,6 +4,7 @@ Version 1.0RC3 (?? ??? 2005)
     + Purge events was not deleting from webcal_entry_ext_user table
   - New Features / Enhancements / Changes:
   - The following translations were updated:
+    + Spanish
 
 ---------------------------------------------------------------------------
 
