@@ -102,15 +102,18 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 
 </td>
 <td style="vertical-align:top;">
-<?php if ( empty ( $friendly ) ) { ?>
 <!-- START MINICAL -->
 <div style="text-align:right;">
 <table class="dayviewminical" cellspacing="1" cellpadding="2">
 <tr><th colspan="7" class="date"><?php echo $thisday?></th></tr>
 <tr class="monthnav">
+<?php if ( ! $friendly ) { ?>
 <td style="text-align:left;"><a title="<?php etranslate("Previous")?>" href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>"><img src="leftarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Previous")?>" /></a></td>
 <th colspan="5"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></th>
 <td style="text-align:right;"><a title="<?php etranslate("Next") ?>" href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead . $caturl?>"><img src="rightarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Next") ?>" /></a></td>
+<?php } else { ?>
+<th colspan="7"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></th>
+<?php } ?>
 </tr>
 <?php
 echo "<tr class=\"day\">";
@@ -132,6 +135,7 @@ else
   $wkstart = get_sunday_before ( $thisyear, $thismonth, 1 );
 $wkend = $wkstart + ( 3600 * 24 * 7 );
 
+if ( ! $friendly ) {
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( 24 * 3600 * 7 ) ) {
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
@@ -144,7 +148,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         if ( date ( "Ymd", $date ) == date ( "Ymd", $now ) )
           echo "<td style=\"background-color:$TODAYCELLBG;\">";
         else
-          echo "<td style=\"background-color:$CELLBG; font-size:10px;\">";
+          echo "<td style=\"background-color:$CELLBG;\">";
         echo "<a href=\"day.php?";
         echo $u_url;
         echo "date=" . date ( "Ymd", $date ) . "$caturl\" class=\"monthlink\">" .
@@ -157,10 +161,32 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     echo "</tr>\n";
   }
 }
+} else { 
+for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
+  $i += ( 24 * 3600 * 7 ) ) {
+  for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
+    $i += ( 24 * 3600 * 7 ) ) {
+    echo "<tr style=\"text-align:center;\">\n";
+    for ( $j = 0; $j < 7; $j++ ) {
+      $date = $i + ( $j * 24 * 3600 );
+      if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
+        date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
+        if ( date ( "Ymd", $date ) == date ( "Ymd", $now ) )
+          echo "<td style=\"background-color:$TODAYCELLBG;\">";
+        else
+          echo "<td style=\"background-color:$CELLBG;\">";
+        echo "" . date ( "d", $date ) . "</a></td>\n";
+      } else {
+        print "<td style=\"background-color:$CELLBG;\">&nbsp;</td>\n";
+      }
+    }
+    echo "</tr>\n";
+  }
+}
+}
 ?>
 </table>
 </div>
-<?php } ?>
 </td></tr></table>
 
 <br /><br />
