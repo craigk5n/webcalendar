@@ -147,6 +147,7 @@ if ( empty ( $is_admin ) || ! $is_admin ) {
     strstr ( $PHP_SELF, "groups.php" ) ||
     strstr ( $PHP_SELF, "group_edit.php" ) ||
     strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
+    strstr ( $PHP_SELF, "edit_template.php" ) ||
     strstr ( $PHP_SELF, "activity_log.php" ) ) {
     $not_auth = true;
   }

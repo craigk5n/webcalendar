@@ -5,7 +5,7 @@ print_header();
 if ( ! $is_admin ) {
   echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Error") .
     "</FONT></H2>" . translate("You are not authorized") . ".\n";
-  include_once "includes/trailer.php";
+  print_trailer ();
   echo "</BODY></HTML>\n";
   exit;
 }
@@ -35,6 +35,6 @@ for ( $i = 0; $i < count ( $userlist ); $i++ ) {
       "</A><BR>\n";
 ?>
 
-<?php include_once "includes/trailer.php"; ?>
+<?php print_trailer(); ?>
 </BODY>
 </HTML>

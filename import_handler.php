@@ -54,7 +54,7 @@ if ($HTTP_POST_FILES['FileName']['size'] > 0) {
     translate("The import file contained no data") . ".<br>\n";
 }
 
-include "includes/trailer.php";
+print_trailer ();
 echo "</BODY>\n</HTML>";
 
 

@@ -115,6 +115,6 @@ else
   ONCLICK="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );">
 </FORM>
 
-<?php include_once "includes/trailer.php"; ?>
+<?php print_trailer(); ?>
 </BODY>
 </HTML>

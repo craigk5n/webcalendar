@@ -71,6 +71,6 @@ if ( $login == "__public__" && $public_access_others != "Y" )
 
 </FORM>
 
-<?php include_once "includes/trailer.php"; ?>
+<?php print_trailer(); ?>
 </BODY>
 </HTML>

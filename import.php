@@ -104,7 +104,7 @@ if ( $tab == 0 ) {
 end_tabs();
 echo "</form>";
 
-include "includes/trailer.php";
+print_trailer ();
 ?>
 </BODY>
 </HTML>

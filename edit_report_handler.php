@@ -256,7 +256,7 @@ print_header();
 <?php echo htmlentities ( $error ); ?>
 </blockquote>
 
-<?php include_once "includes/trailer.php"; ?>
+<?php print_trailer(); ?>
 
 </body>
 </html>

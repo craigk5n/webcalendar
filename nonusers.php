@@ -5,14 +5,14 @@ print_header();
 if ( ! $is_admin ) {
   echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Error") .
     "</FONT></H2>" . translate("You are not authorized") . ".\n";
-  include_once "includes/trailer.php";
+  print_trailer ();
   echo "</BODY></HTML>\n";
   exit;
 }
 if ( ! $NONUSER_PREFIX ) {
   echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Error") .
     "</FONT></H2>" . translate("NONUSER_PREFIX not set") . ".\n";
-  include_once "includes/trailer.php";
+  print_trailer ();
   echo "</BODY></HTML>\n";
   exit;
 }
@@ -75,6 +75,6 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
 }
 ?>
 
-<?php include_once "includes/trailer.php"; ?>
+<?php print_trailer(); ?>
 </BODY>
 </HTML>

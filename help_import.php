@@ -1,6 +1,6 @@
 <?php
 include_once 'includes/init.php';
-print_header();
+print_header('','','',true);
 ?>
 
 <h2><font COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Help")?>: <?php etranslate("Import")?></font></h2>

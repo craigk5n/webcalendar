@@ -184,7 +184,7 @@ if ( empty ( $event_status ) ) {
 if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
   echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Error") .
     "</FONT></H2>" . translate("You are not authorized") . ".\n";
-  include_once "includes/trailer.php";
+  print_trailer ();
   echo "</BODY></HTML>\n";
   exit;
 }
@@ -518,7 +518,7 @@ $show_participants = ( $disable_participants_field != "Y" );
 if ( $is_admin )
   $show_participants = true;
 if ( $public_access == "Y" && $login == "__public__" &&
-  $public_access_others != "Y" )
+  ( $public_access_others != "Y" || $public_access_view_part == "N" ) )
   $show_participants = false;
 if ( $single_user == "N" && $show_participants ) {
 ?>
@@ -777,6 +777,6 @@ if (! $is_private) {
 
 ?>
 
-<?php include_once "includes/trailer.php"; ?>
+<?php print_trailer(); ?>
 </BODY>
 </HTML>

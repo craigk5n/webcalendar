@@ -102,6 +102,6 @@ if ( ! empty ( $nextpage ) ) {
 }
 ?>
 
-<?php include_once "includes/trailer.php"; ?>
+<?php print_trailer(); ?>
 </BODY>
 </HTML>
