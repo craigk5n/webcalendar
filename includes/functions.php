@@ -868,9 +868,9 @@ function get_browser_language () {
   if ( empty ( $HTTP_ACCEPT_LANGUAGE ) &&
     isset ( $_SERVER["HTTP_ACCEPT_LANGUAGE"] ) )
     $HTTP_ACCEPT_LANGUAGE = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
-  if ( empty ( $HTTP_ACCEPT_LANGUAGE ) == 0 )
+  if (  empty ( $HTTP_ACCEPT_LANGUAGE ) ) {
     return "none";
-  if ( ! empty ( $HTTP_ACCEPT_LANGUAGE ) ) {
+  } else {
     $langs = explode ( ",", $HTTP_ACCEPT_LANGUAGE );
     for ( $i = 0; $i < count ( $langs ); $i++ ) {
       $l = strtolower ( trim ( $langs[$i] ) );
