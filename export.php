@@ -15,15 +15,15 @@
 <?php  // Only include layers if they are enabled.
 	if ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ) {
 ?>
-<tr><td>
-	&nbsp;</td><td>
+<tr><td>&nbsp;
+	</td><td>
 	<input type="checkbox" name="include_layers" id="include_layers" value="y" />
 	<label for="include_layers"><?php etranslate("Include all layers")?></label>
 </td></tr>
 <?php } ?>
 
-<tr><td>
-	&nbsp;</td><td>
+<tr><td>&nbsp;
+	</td><td>
 	<input type="checkbox" name="use_all_dates" id="exportall" value="y" />
 	<label for="exportall"><?php etranslate("Export all dates")?></label>
 </td></tr>
@@ -54,7 +54,7 @@
 			}
 		?>
 	</select>
-	<input type="button" onclick="selectDate('fromday','frommonth','fromyear')" value="<?php etranslate("Select")?>..." />
+	<input type="button" onclick="selectDate('fromday','frommonth','fromyear', '', event)" value="<?php etranslate("Select")?>..." />
 </td></tr>
 
 <tr><td>
@@ -84,7 +84,7 @@
 			}
 		?>
 	</select>
-	<input type="button" onclick="selectDate('endday','endmonth','endyear')" value="<?php etranslate("Select")?>..." />
+	<input type="button" onclick="selectDate('endday','endmonth','endyear', '', event)" value="<?php etranslate("Select")?>..." />
 </td></tr>
 
 <tr><td>
@@ -115,7 +115,7 @@
 			}
 		?>
 	</select>
-	<input type="button" onclick="selectDate('modday','modmonth','modyear')" value="<?php etranslate("Select")?>..." />
+	<input type="button" onclick="selectDate('modday','modmonth','modyear', '', event)" value="<?php etranslate("Select")?>..." />
 </td></tr>
 
 <tr><td colspan="2">

@@ -1,9 +1,13 @@
 <?php
+include_once 'includes/init.php';
+
 // month and year are being overwritten so we will copy vars to fix.
 // this will make datesel.php still work where ever it is called from.
-$fday = $_REQUEST["day"];$fmonth = $_REQUEST["month"];$fyear = $_REQUEST["year"];
+$fday = getGetValue ( "fday" );
+$fmonth = getGetValue ( "fmonth" );
+$fyear = getGetValue ( "fyear" );
 
-include_once 'includes/init.php';
+
 $INC = array('js/datesel.php');
 print_header($INC,'','',true);
 
@@ -25,19 +29,14 @@ $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevdate = date ( "Ym", $prev ) . "01";
 
-// Sanitize get variables
-$fday = clean_word($fday);
-$fmonth = clean_word($fmonth);
-$fyear = clean_word($fyear);
-
 ?>
 
 <div style="text-align:center;">
-<table class="minical">
+<table align="center" class="minical">
 <tr>
-<td><a title="<?php etranslate("Previous")?>" href="datesel.php?form=<?php echo $form?>&amp;fday=<?php echo $fday?>&amp;fmonth=<?php echo $fmonth?>&amp;fyear=<?php echo $fyear?>&amp;date=<?php echo $prevdate?>"><img src="leftarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Previous")?>" /></a></td>
+<td><a title="<?php etranslate("Previous")?>"  class="prev" href="datesel.php?form=<?php echo $form?>&amp;fday=<?php echo $fday?>&amp;fmonth=<?php echo $fmonth?>&amp;fyear=<?php echo $fyear?>&amp;date=<?php echo $prevdate?>"><img src="leftarrowsmall.gif"  alt="<?php etranslate("Previous")?>" /></a></td>
 <th colspan="5"><?php echo month_name ( $thismonth - 1 ) . " " . $thisyear;?></th>
-<td><a title="<?php etranslate("Next")?>" href="datesel.php?form=<?php echo $form?>&amp;fday=<?php echo $fday?>&amp;fmonth=<?php echo $fmonth?>&amp;fyear=<?php echo $fyear?>&amp;date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Next")?>" /></a></td>
+<td><a title="<?php etranslate("Next")?>"class="next"  href="datesel.php?form=<?php echo $form?>&amp;fday=<?php echo $fday?>&amp;fmonth=<?php echo $fmonth?>&amp;fyear=<?php echo $fyear?>&amp;date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif"  alt="<?php etranslate("Next")?>" /></a></td>
 </tr>
 <?php
 echo "<tr class=\"day\">\n";
@@ -65,7 +64,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
       echo "<td><a href=\"javascript:sendDate('" .
         date ( "Ymd", $date ) . "')\">" .
-        date ( "d", $date ) . "</a></td>\n";
+        date ( "j", $date ) . "</a></td>\n";
     } else {
       echo "<td></td>\n";
     }
