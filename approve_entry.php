@@ -37,7 +37,7 @@ if ( empty ( $error ) && $id > 0 ) {
 }
 
 if ( empty ( $error ) ) {
-  if ( $ret == "list" )
+  if ( ! empty ( $ret ) && $ret == "list" )
     do_redirect ( "list_unapproved.php?user=$app_user" );
   else
     do_redirect ( "view_entry.php?id=$id&amp;user=$app_user" );
