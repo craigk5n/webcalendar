@@ -22,7 +22,7 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-$INC = array('js/'.$SCRIPT);
+$INC = array('js/admin.php');
 print_header($INC);
 ?>
 

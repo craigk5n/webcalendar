@@ -1,6 +1,6 @@
 <?php
 include_once 'includes/init.php';
-$INC = array('js/'.$SCRIPT);
+$INC = array('js/colors.php');
 print_header($INC);
 ?>
 

@@ -194,7 +194,7 @@ if ( empty ( $cal_date ) || ! $cal_date )
   $cal_date = $thisdate;
 
 $BodyX = 'xonload="timetype_handler()"';
-$INC = array('js/popups.php','js/'.$SCRIPT);
+$INC = array('js/popups.php','js/edit_entry.php');
 print_header($INC,'',$BodyX);
 ?>
 
