@@ -100,21 +100,7 @@
   color: #B04040;
   text-decoration: none;
 }
-/* formerly .monthlink */
-td.month a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
-	font-size: 13px;
-	color: #B04040;
-	text-decoration: none;
-	text-align: center;
-}
-td.month a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
-	font-size: 13px;
-	color: #0000FF;
-	text-decoration: none;
-	text-align: center;
-}
+
 .navlinks {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 14px;
@@ -236,6 +222,42 @@ table.standard {
 
 /* ALL STYLES BELOW THIS LINE ARE NEW as of 8 July 2004 */
 
+/* ================== */
+/* MISC. */
+
+/* formats the action (i.e. plus) icon that appears in cells */
+.new {
+	border-width: 0px;
+	width: 10px;
+	height: 10px;
+}
+body {
+	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 12px;
+	background-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
+}
+.bullet {
+	width: 5px;
+	height: 7px;
+	border-width: 0px;
+}
+/* formerly .monthlink */
+td.month a {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 13px;
+	color: #B04040;
+	text-decoration: none;
+	text-align: center;
+}
+td.month a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 13px;
+	color: #0000FF;
+	text-decoration: none;
+	text-align: center;
+}
+
 /* ======================== */
 /* ACTIVITY_LOG.PHP */
 table.activitylog {
@@ -337,7 +359,7 @@ table.monthviewminical {
 /* contains the name of the month (i.e. January, June, December, etc) in year.php */
 .monthviewminical td.month a {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
-	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+	color: #B04040;
 	font-size: 13px;
 	text-decoration: none;
 }
@@ -420,7 +442,7 @@ table.yearviewminical {
 /* contains the name of the month (i.e. January, June, December, etc) in year.php */
 .yearviewminical td.month a {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
-	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+	color: #B04040;
 	font-size: 13px;
 	text-decoration: none;
 }
@@ -526,7 +548,54 @@ table.viewl {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 14%;
 }
-  
+table.viewlminical {
+	border-width: 0px;
+}
+.viewlminical td.month {
+	text-align: center;
+}
+/* contains the name of the month (i.e. January, June, December, etc) in year.php */
+.viewlminical td.month a {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	color: #B04040;
+	font-size: 13px;
+	text-decoration: none;
+}
+.viewlminical td.month a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	color: #0000FF;
+	font-size: 13px;
+	text-decoration: none;
+}
+
+/* formats the day name (i.e. Sun, Mon, etc) */
+/* used as "tr class="day"" to format the cells WITHIN that row */
+/* NOTE: removing the "th" below will modify the appearance of mini calendars */
+.viewlminical tr.day {
+	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+	text-align: center;
+}
+/* cells in year.php that contain the numeric date */
+/* NOTE: removing the "td" below will modify the appearance of mini calendars */
+.viewlminical td.numdate {
+	text-align: right;
+}
+.viewlminical tr.numdate td {
+	text-align: right;
+}
+.viewlminical td.numdate a {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 13px;
+	text-decoration: none;
+}
+.viewlminical td.numdate a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 13px;
+	color: #0000FF;
+	text-decoration: none;
+}
+
+
 /* ======================= */
 /* VIEW_M.PHP */
 .viewmtitle {
@@ -873,27 +942,6 @@ table.weekdetails {
 	background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
 	vertical-align: top;
 	height: 75px;
-}
-
-/* ================== */
-/* MISC. */
-
-/* formats the action (i.e. plus) icon that appears in cells */
-.new {
-	border-width: 0px;
-	width: 10px;
-	height: 10px;
-}
-body {
-	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
-	font-size: 12px;
-	background-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
-}
-.bullet {
-	width: 5px;
-	height: 7px;
-	border-width: 0px;
 }
 
 -->
