@@ -11,13 +11,44 @@ global $month, $day, $year;
 
 <script type="text/javascript">
 <!-- <![CDATA[
+// detect browser
+NS4 = (document.layers) ? 1 : 0;
+IE4 = (document.all) ? 1 : 0;
+// W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
+W3C = (document.getElementById) ? 1 : 0;	
+//Function is similar to visible.php, but effects the parent
+function makeVisible ( name ) {
+  var ele;
+
+  if ( W3C ) {
+    ele = window.opener.document.getElementById(name);
+  } else if ( NS4 ) {
+    ele = window.opener.document.layers[name];
+  } else { // IE4
+    ele = window.opener.document.all[name];
+  }
+
+  if ( NS4 ) {
+    ele.visibility = "show";
+  } else {  // IE4 & W3C & Mozilla
+    ele.style.visibility = "visible";
+  }
+}
+
 function schedule_event(hours, minutes) {
   var year =<?php echo $year ?> ;
   var month =<?php echo $month ?> ;
   var day =<?php echo $day ?> ;
-  if (confirm('Change the date and time of this entry?')) {
+  if (confirm("<?php etranslate("Change the date and time of this entry?")?>")) {
     var parentForm = window.opener.document.editentryform;
     parentForm.timetype.selectedIndex = 1;
+    //Make time controls visible on parent
+    makeVisible ( "timeentrystart" );
+    if ( parentForm.duration_h ) {
+      makeVisible ( "timeentryduration" );
+    } else {
+      makeVisible ( "timeentryend" );
+    }
     if ( hours >  12 ) {
       parentForm.hour.value = hours - 12;
       parentForm.ampm[1].checked = true;
