@@ -144,15 +144,15 @@ for ( $i = 0; $i < count ( $re_save ); $i++ ) {
 <tr>
 <?php
 if ( ! $friendly ) {
-  echo '<td style=\"text-align:left;\"><table style=\"border-width:0px;\">';
+  echo "<td style=\"text-align:left;\"><table class=\"viewlminical\" cellpadding=\"1\" cellspacing=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $prevyear, $prevmonth, 1 );
   else
     $wkstart = get_sunday_before ( $prevyear, $prevmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $prevmonth, 1, $prevyear );
   $monthend = mktime ( 3, 0, 0, $prevmonth + 1, 0, $prevyear );
-  echo "<tr><td colspan=\"7\" style=\"text-align:center;\">" .
-    "<a href=\"view_l.php?id=$id&amp;date=$prevdate\" class=\"monthlink\">" .
+  echo "<tr><td colspan=\"7\" class=\"month\">" .
+    "<a href=\"view_l.php?id=$id&amp;date=$prevdate\">" .
     date_to_str ( sprintf ( "%04d%02d01", $prevyear, $prevmonth ),
     $DATE_FORMAT_MY, false, false ) .
     "</a></td></tr>\n";
@@ -168,12 +168,12 @@ if ( ! $friendly ) {
   echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     $i += ( 24 * 3600 * 7 ) ) {
-    print "<tr>\n";
+    print "<tr class=\"numdate\">\n";
     for ( $j = 0; $j < 7; $j++ ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<td style=\"font-size:10px;\">" . date ( "d", $date ) . "</td>\n";
+        print "<td>" . date ( "d", $date ) . "</td>\n";
       } else {
         print "<td>&nbsp;</td>\n";
       }
@@ -199,15 +199,15 @@ if ( ! $friendly ) {
 </span></td>
 <?php
 if ( ! $friendly ) {
-  echo '<td style="text-align:right;"><table style="border-width:0px;">';
+  echo "<td style=\"text-align:right;\"><table class=\"viewlminical\" cellpadding=\"1\" cellspacing=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $nextyear, $nextmonth, 1 );
   else
     $wkstart = get_sunday_before ( $nextyear, $nextmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $nextmonth, 1, $nextyear );
   $monthend = mktime ( 3, 0, 0, $nextmonth + 1, 0, $nextyear );
-  echo "<tr><td colspan=\"7\" style=\"text-align:center;\">" .
-    "<a href=\"view_l.php?id=$id&amp;date=$nextdate\" class=\"monthlink\">" .
+  echo "<tr><td colspan=\"7\" class=\"month\">" .
+    "<a href=\"view_l.php?id=$id&amp;date=$nextdate\">" .
     date_to_str ( sprintf ( "%04d%02d01", $nextyear, $nextmonth ),
     $DATE_FORMAT_MY, false, false ) .
     "</a></td></tr>\n";
@@ -223,12 +223,12 @@ if ( ! $friendly ) {
   echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     $i += ( 24 * 3600 * 7 ) ) {
-    print "<tr>\n";
+    print "<tr class=\"numdate\">\n";
     for ( $j = 0; $j < 7; $j++ ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<td style=\"font-size:10px;\">" . date ( "d", $date ) . "</td>\n";
+        print "<td>" . date ( "d", $date ) . "</td>\n";
       } else {
         print "<td>&nbsp;</td>\n";
       }
@@ -298,7 +298,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $color = $is_weekend ? $WEEKENDBG : $CELLBG;
       if ( empty ( $color ) )
         $color = "#C0C0C0";
-      print "<td id=\"$class\" style=\"vertical-align:top; height:75px;"; 
+      print "<td class=\"$class\" style=\"vertical-align:top; height:75px;"; 
       if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) )
         echo " background-color:$TODAYCELLBG;\">";
       else
@@ -309,7 +309,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         $friendly, false );
       print "</td>\n";
     } else {
-      print "<td style=\"vertical-align:top; height:75px; background-color:$CELLBG;\" id=\"tablecell\">&nbsp;</td>\n";
+      print "<td style=\"vertical-align:top; height:75px; background-color:$CELLBG;\" class=\"tablecell\">&nbsp;</td>\n";
     }
   }
   print "</tr>\n";
