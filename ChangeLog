@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Fixed bug 980215: GLobal var $STARTVIEW was not declared global.
   - Fixed bug: do_redirect() calls should not have the '&' escaped into '&amp;'
   - Added patch 984544: fix ics url for public access calendar in preferences
   - Added "Today" link in trailer
