@@ -81,6 +81,10 @@
   color: #000000;
   text-decoration: none;
 }
+.tablecellweekview {
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+}
 .weeknumber {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 10px;
