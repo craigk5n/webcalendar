@@ -99,6 +99,7 @@ if ( empty ( $login ) && $use_http_auth ) {
 
 // If they are accessing using the public login, restrict them from using
 // certain pages.
+$not_auth = false;
 if ( $login == "__public__" ) {
   if ( strstr ( $PHP_SELF, "views.php" ) ||
     strstr ( $PHP_SELF, "views_edit_handler.php" ) ||
@@ -123,7 +124,7 @@ if ( $login == "__public__" ) {
   }
 }
 
-if ( ! $is_admin ) {
+if ( empty ( $is_admin ) || ! $is_admin ) {
   if ( strstr ( $PHP_SELF, "admin.php" ) ||
     strstr ( $PHP_SELF, "admin_handler.php" ) ||
     strstr ( $PHP_SELF, "groups.php" ) ||
