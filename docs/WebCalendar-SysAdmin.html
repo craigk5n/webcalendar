@@ -68,6 +68,7 @@ tr {
 <li><a href="#fileunpacking">File Unpacking</a>
 <li><a href="#dbsetup">Database Setup</a>
 <li><a href="#appsetup">Application Setup</a>
+<li><a href="#creatingusers">Creating Users</a>
 <li><a href="#reminders">Setting Up Email Reminders</a>
 <li><a href="#systemsettings">System Settings</a>
 <li><a href="#siteextras">Custom Event Fields</a>
@@ -448,6 +449,60 @@ You currently have four choices:
 Keep in mind that if you want to use reminders, you will need to
 setup the <tt>send_reminders.php</tt> script (see below) and keep your admin
 setting for "Email enabled" set to "Yes" on the admin settings page.
+
+
+</p><p>
+At this point, your WebCalendar installation should be up and running.
+To access WebCalendar open up your favorite web browser and
+type in the URL.  The URL will depend on where you installed
+WebCalendar.
+</p><p>
+When you unpacked/unzipped the WebCalendar distribution, it typically
+creates a directory that includes the version number.
+For example, if the zip file was named <tt>WebCalendar-0.9.99.zip</tt>
+(or <tt>WebCalendar-0.9.99.tar.gz</tt>), then there
+should be a <tt>WebCalendar-0.9.99</tt> directory.  For convenience, you
+can rename this directory so that the URL does not include the version
+number.  On Windows, you can do this from the Windows Explorer.
+On Linux/UNIX, you can use the <tt>mv</tt> command to rename the directory.
+Supposing you renamed the <tt>WebCalendar-0.9.99</tt> directory to just
+be <tt>calendar</tt>, and you unpacked/unzipped the files into your toplevel
+web server directory, the URL would be:
+</p>
+<blockquote>
+http://yourserverhere/calendar/index.php
+</blockquote>
+<p>
+If you have configured your web server to use <tt>index.php</tt> as the
+default index page for a directory, you can omit that from the URL.
+On a single-user system, your browser should be redirected to week.php
+initially.
+On a multi-user system, your browser should be redirected to login.php
+so that you can login.
+</p><p>
+<b>TIP:</b> On a multi-user system, the only user account created
+during installation has the username of "admin" and a password
+of "admin".   You should create a new admin account and delete this
+one for security reasons.
+
+
+</p><hr /><h2><a name="creatingusers">Creating Users</a></h2><p>
+After logging in as an admin user (the initial username is "admin" with
+password "admin"), you will see a common set of links at the bottom
+of each page.  Follow these steps to create a new user:
+</p>
+<ol>
+<li> Login to WebCalendar as an admin user
+<li> Click on the "Admin" link at the bottom of any WebCalendar page
+<li> Click on the "Users" button
+<li> Click on the "Add New User" link
+<li> Fill out the form with details for the new user (email address
+     is optional)
+<li> Click on the "Save" button
+</ol>
+
+<p>
+<b>TIP:</b> On a single-user system, you do not need to create any users.
 
 
 </p><hr /><h2><a name="reminders">Setting Up Email Reminders</a></h2><p>
@@ -1283,6 +1338,10 @@ read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.
 
 <pre>
 $Log$
+Revision 1.13  2004/07/08 01:01:22  cknudsen
+updated to include initial URL of WebCalendar and instructions for
+creating users.
+
 Revision 1.12  2004/06/27 02:50:27  cknudsen
 Fixed bug 980373: missing end tag for h2.
 
