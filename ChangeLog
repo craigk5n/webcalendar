@@ -1,4 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Added sql to set webcal_config STARTVIEW default to week.php for 
+   upgrade from v1.0RC2 to v1.0RC3.
  - Fixed problem with missing $cat_id in week and day URLs in month.php
  - Fixed bug 1065461: timezone offset & all-day events
  - Fixed bug 1107253: time zone offset
