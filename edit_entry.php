@@ -396,7 +396,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   //  " - " . $extras[$extra_name]['cal_name'] .
   //  "arg1: $extra_arg1, arg2: $extra_arg2 </td></tr>\n";
   if ( $extra_type == $EXTRA_MULTILINETEXT )
-    echo "<tr><td style=\"vertical-align:top;\"><br />\n";
+    echo "<tr><td style=\"vertical-align:top; font-weight:bold;\"><br />\n";
   else
     echo "<tr><td style=\"font-weight:bold;\">";
   echo translate ( $extra_descr ) .  ":</td>\n<td>";
