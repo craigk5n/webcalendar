@@ -36,29 +36,29 @@ $view = "week";
 include "includes/translate.php";
 
 
-if ( strlen ( $date ) > 0 ) {
-  $thisyear = $year = substr ( $date, 0, 4 );
-  $thismonth = $month = substr ( $date, 4, 2 );
-  $thisday = $day = substr ( $date, 6, 2 );
+$today = time() + ($TZ_OFFSET * 60 * 60);
+
+if ( ! empty ( $date ) && ! empty ( $date ) ) {
+  $thisyear = substr ( $date, 0, 4 );
+  $thismonth = substr ( $date, 4, 2 );
+  $thisday = substr ( $date, 6, 2 );
 } else {
-  if ( $month == 0 )
-    $thismonth = date("m");
+  if ( empty ( $month ) || $month == 0 )
+    $thismonth = date("m", $today);
   else
     $thismonth = $month;
-  if ( $year == 0 )
-    $thisyear = date("Y");
+  if ( empty ( $year ) || $year == 0 )
+    $thisyear = date("Y", $today);
   else
     $thisyear = $year;
-  if ( $day == 0 )
-    $thisday = date("d");
+  if ( empty ( $day ) || $day == 0 )
+    $thisday = date("d", $today);
   else
     $thisday = $day;
 }
 
 $next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
-
-$today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
 
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.

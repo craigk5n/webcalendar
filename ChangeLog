@@ -1,4 +1,5 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Fixed Bug: TZ_OFFSET was not being used when setting $today, $thisdate, etc
   - Fixed bug: was not saving reports as global as requested
   - Fixed bug 765229: Export a repeating event in VCS
   - Added repeating info and alarm info to vcal export (works in Palm Desk.)

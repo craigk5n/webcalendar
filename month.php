@@ -201,7 +201,6 @@ $monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 
 // NOTE: if you make HTML changes to this table, make the same changes
 // to the example table in pref.php.
-$today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( 24 * 3600 * 7 ) ) {
   print "<TR>\n";

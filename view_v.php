@@ -22,26 +22,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 $INC = array('js/popups.php');
 print_header($INC);
 
-if ( ! empty ( $date ) && ! empty ( $date ) ) {
-  $thisyear = substr ( $date, 0, 4 );
-  $thismonth = substr ( $date, 4, 2 );
-  $thisday = substr ( $date, 6, 2 );
-} else {
-  if ( empty ( $month ) || $month == 0 )
-    $thismonth = date("m");
-  else
-    $thismonth = $month;
-  if ( empty ( $year ) || $year == 0 )
-    $thisyear = date("Y");
-  else
-    $thisyear = $year;
-  if ( empty ( $day ) || $day == 0 )
-    $thisday = date ( "d" );
-  else
-    $thisday = $day;
-}
-
-$thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
+set_today($date);
 
 $next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $nextyear = date ( "Y", $next );
@@ -54,8 +35,6 @@ $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
-
-$today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
 
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.
@@ -163,7 +142,6 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 
 <?php
 
-  $today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
   for ( $date = $wkstart, $h = 0;
     date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
     $date += ( 24 * 3600 ), $h++ ) {

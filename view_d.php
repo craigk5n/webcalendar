@@ -28,25 +28,9 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 $INC = array ( 'js/view_d.php' );
 print_header ( $INC );
 
-if ( ! empty ( $date ) ) {
-  $thisyear = substr ( $date, 0, 4 );
-  $thismonth = substr ( $date, 4, 2 );
-  $thisday = substr ( $date, 6, 2 );
-} else {
-  if ( empty ( $month ) || $month == 0 )
-    $thismonth = date("m");
-  else
-    $thismonth = $month;
-  if ( empty ( $year ) || $year == 0 )
-    $thisyear = date("Y");
-  else
-    $thisyear = $year;
-  if ( empty ( $day ) || $day == 0 )
-    $thisday = date("d");
-  else
-    $thisday = $day;
-  $date = sprintf ( "%04d%02d%02d", $year,$month,$day);
-}
+set_today($date);
+if (!$date) $date = $thisdate;
+
 $wday = strftime ( "%w", mktime ( 2, 0, 0, $thismonth, $thisday, $thisyear ) );
 $now = mktime ( 2, 0, 0, $thismonth, $thisday, $thisyear );
 $nowYmd = date ( "Ymd", $now );

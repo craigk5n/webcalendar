@@ -22,22 +22,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 $INC = array('js/popups.php');
 print_header($INC);
 
-if ( ! empty ( $date ) && ! empty ( $date ) ) {
-  $thisyear = substr ( $date, 0, 4 );
-  $thismonth = substr ( $date, 4, 2 );
-  $thisday = substr ( $date, 6, 2 );
-} else {
-  if ( empty ( $month ) || $month == 0 )
-    $thismonth = date("m");
-  else
-    $thismonth = $month;
-  if ( empty ( $year ) || $year == 0 )
-    $thisyear = date("Y");
-  else
-    $thisyear = $year;
-}
-
-$thisdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
+set_today($date);
 
 $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( "Y", $next );
@@ -140,7 +125,6 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 <TR><TD BGCOLOR="<?php echo $THBG?>">&nbsp;</TD>
 
 <?php
-  $today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
   // $j points to start of this table/row
   // $k is counter starting at 0
   // $i starts at table start and goes until end of this table/row.

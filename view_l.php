@@ -58,22 +58,7 @@ if ( empty ( $view_name ) ) {
 $INC = array('js/popups.php');
 print_header($INC);
 
-if ( ! empty ( $date ) && ! empty ( $date ) ) {
-  $thisyear = substr ( $date, 0, 4 );
-  $thismonth = substr ( $date, 4, 2 );
-  $thisday = substr ( $date, 6, 2 );
-} else {
-  if ( empty ( $month ) || $month == 0 )
-    $thismonth = date("m");
-  else
-    $thismonth = $month;
-  if ( empty ( $year ) || $year == 0 )
-    $thisyear = date("Y");
-  else
-    $thisyear = $year;
-}
-
-$thisdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
+set_today($date);
 
 $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( "Y", $next );
@@ -300,7 +285,6 @@ $monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 
 // NOTE: if you make HTML changes to this table, make the same changes
 // to the example table in pref.php.
-$today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( 24 * 3600 * 7 ) ) {
   print "<TR>\n";
