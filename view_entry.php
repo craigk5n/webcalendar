@@ -23,7 +23,13 @@ if ( $is_admin || $is_nonuser_admin || $is_assistant ) {
   $can_view = true;
 } 
 
-if ( ! empty ( $id ) && $id > 0 && is_numeric ( $id ) ) {
+$error = '';
+
+if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) ) {
+  $error = translate ( "Invalid entry id" ) . "."; 
+}
+
+if ( empty ( $error ) ) {
   // is this user a participant or the creator of the event?
   $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
     "webcal_entry_user WHERE webcal_entry.cal_id = " .
@@ -56,7 +62,7 @@ if ( ! empty ( $id ) && $id > 0 && is_numeric ( $id ) ) {
       if ( $allow_view_other == "Y" ) {
         $check_group = true;
       }
-   }
+    }
     // If $check_group is true now, it means this user can look at the
     // event only if they are in the same group as some of the people in
     // the event.
@@ -68,37 +74,38 @@ if ( ! empty ( $id ) && $id > 0 && is_numeric ( $id ) ) {
     // In summary, make sure at least one event participant is in one of
     // this user's groups.
     $my_users = get_my_users ();
-  if ( is_array ( $my_users ) ) {
-    $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
-      "webcal_entry_user WHERE webcal_entry.cal_id = " .
-      "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
-      "AND webcal_entry_user.cal_login IN ( ";
-    for ( $i = 0; $i < count ( $my_users ); $i++ ) {
-      if ( $i > 0 ) {
-        $sql .= ", ";
+    if ( is_array ( $my_users ) ) {
+      $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
+        "webcal_entry_user WHERE webcal_entry.cal_id = " .
+        "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
+        "AND webcal_entry_user.cal_login IN ( ";
+      for ( $i = 0; $i < count ( $my_users ); $i++ ) {
+        if ( $i > 0 ) {
+          $sql .= ", ";
+        }
+        $sql .= "'" . $my_users[$i]['cal_login'] . "'";
+        }
+      $sql .= " )";
+      $res = dbi_query ( $sql );
+      if ( $res ) {
+        $row = dbi_fetch_row ( $res );
+        if ( $row && $row[0] > 0 ) {
+          $can_view = true;
+        }
+        dbi_free_result ( $res );
       }
-      $sql .= "'" . $my_users[$i]['cal_login'] . "'";
     }
-    $sql .= " )";
-    $res = dbi_query ( $sql );
-    if ( $res ) {
-      $row = dbi_fetch_row ( $res );
-      if ( $row && $row[0] > 0 ) {
-        $can_view = true;
-      }
-      dbi_free_result ( $res );
+    // If we didn't indicate we need to check groups, then this user
+    // can't view this event.
+    if ( ! $check_group ) {
+      $can_view = false;
     }
-  }
-  // If we didn't indicate we need to check groups, then this user
-  // can't view this event.
-  if ( ! $check_group ) {
-    $can_view = false;
   }
 }
 
 // If they still cannot view, make sure they are not looking at a nonuser
 // calendar event where the nonuser is the _only_ participant.
-if ( ! $can_view && ! empty ( $nonuser_enabled ) &&
+if ( empty ( $error ) && ! $can_view && ! empty ( $nonuser_enabled ) &&
   $nonuser_enabled == 'Y' ) {
   $nonusers = get_nonuser_cals ();
   $nonuser_lookup = array ();
@@ -126,8 +133,8 @@ if ( ! $can_view && ! empty ( $nonuser_enabled ) &&
     $can_view = true;
   }
 }
-
-if ( ! $can_view ) {
+  
+if ( empty ( $error ) && ! $can_view ) {
   $error = translate ( "You are not authorized" );
 }
 
@@ -158,7 +165,7 @@ $unapproved = FALSE;
 // Make sure this is not a continuation event.
 // If it is, redirect the user to the original event.
 $ext_id = -1;
-if ( $id > 0 ) {
+if ( empty ( $error ) ) {
   $res = dbi_query ( "SELECT cal_ext_for_id FROM webcal_entry " .
     "WHERE cal_id = $id" );
   if ( $res ) {
@@ -184,9 +191,6 @@ if ( $ext_id > 0 ) {
   do_redirect ( $url );
 }
 
-} else { // $id is empty
-  $error =  translate("Invalid entry id") . "."; 
-}
 print_header();
 
 if ( ! empty ( $error ) ) {
@@ -194,8 +198,6 @@ if ( ! empty ( $error ) ) {
     "</h2>\n" . $error;
   print_trailer ();
   echo "</body>\n</html>";
-  exit;
-
   exit;
 }
 // Try to determine the event status.
