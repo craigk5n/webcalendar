@@ -63,8 +63,9 @@ if ( ! empty ( $fd ) ) {
   }
   fclose ( $fd );
   // File exists, but no password.  Force them to create a password.
-  if ( empty ( $password ) )
+  if ( empty ( $password ) ) {
     $forcePassword = true;
+  }
 }
 
 session_start ();
@@ -72,7 +73,8 @@ $doLogin = false;
 
 // If password already exists, check for session.
 if ( file_exists ( $file ) && ! empty ( $password ) &&
-  empty ( $_SESSION['validuser'] ) ) {
+  ( empty ( $_SESSION['validuser'] ) ||
+  $_SESSION['validuser'] != $password ) ) {
   // Make user login
   $doLogin = true;
 }
@@ -104,6 +106,7 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
   }
 }
 
+$onload = "auth_handler (); ";
 
 $pwd1 = getPostValue ( "password1" );
 $pwd2 = getPostValue ( "password2" );
@@ -174,7 +177,6 @@ $canWrite = is_writable ( $file );
 // If we are handling a form POST, then take that data and put it in settings
 // array.
 $x = getPostValue ( "form_db_type" );
-$onload = "";
 if ( empty ( $x ) ) {
   // No form was posted.  Set defaults if none set yet.
   if ( ! file_exists ( $file ) ) {
@@ -211,10 +213,13 @@ if ( empty ( $x ) ) {
     $settings['user_inc'] = getPostValue ( 'form_user_inc' );
   }
   // Save settings to file now.
-  $onload = "alert('Your settings have been saved.\\n\\n";
-  if ( empty ( $password ) )
-    $onload .= "Please be sure to set a password.\\n";
-  $onload .= "');";
+  if ( empty ( $password ) ) {
+    $onload = "alert('Your settings have been saved.\\n\\n" .
+      "Please be sure to set a password.\\n');";
+    $forcePassword = true;
+  } else {
+    $onload .= "alert('Your settings have been saved.\\n\\n');";
+  }
   $fd = @fopen ( $file, "w+t", true );
   if ( empty ( $fd ) ) {
     if ( file_exists ( $fd ) ) {
@@ -344,7 +349,7 @@ li {
 }
 </style>
 </head>
-<body onload="auth_handler(); <?php echo $onload;?>">
+<body onload="<?php echo $onload;?>">
 <?php
 /* other features coming soon.... 
 <div class="nav">
@@ -384,7 +389,7 @@ to use this script.
 
 <?php } else { ?>
 
-  <?php if ( ! $exists ) { ?>
+  <?php if ( ! file_exists ( $file ) ) { ?>
   <li>You have not created a <tt>settings.php</tt> file yet.</li>
   <?php } ?>
 
@@ -409,6 +414,7 @@ You should select "Web Server" from the list of
     <br /><br />
   </p>
   <table border="0">
+  <tr><th colspan="2" class="header">Enter Password</th></tr>
   <tr><th>Password:</th><td><input name="password" type="password" /></td></tr>
   <tr><td colspan="2" align="center"><input type="submit" value="Login" /></td></tr>
   </table><br />
@@ -420,6 +426,7 @@ You should select "Web Server" from the list of
     <br /><br />
   </p>
   <table border="0">
+  <tr><th colspan="2" class="header">Create Password</th></tr>
   <tr><th>Password:</th><td><input name="password1" type="password" /></td></tr>
   <tr><th>Password (again):</th><td><input name="password2" type="password" /></td></tr>
   <tr><td colspan="2" align="center"><input type="submit" value="Set Password" /></td></tr>
