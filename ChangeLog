@@ -1,4 +1,4 @@
-Version 0.9.30dev (???)
+Version 0.9.30 (08 Jun 01)
   - Generate a fatal error when MySQL returns an error instead of
     ignoring it.
   - Fixed bug 420352: when viewing a repeating event for a date other

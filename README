@@ -1,4 +1,4 @@
-WebCalender 0.9.29 - 05 Jun 01
+WebCalender README
 http://webcalendar.sourceforge.net
 Craig Knudsen, cknudsen@radix.net, http://www.radix.net/~cknudsen/
 
@@ -47,7 +47,8 @@ Features:
 
 Requirements:
 - PHP (3 or 4)
-- Database: MySQL, Oracle, PostgreSQL or ODBC
+- Database: MySQL, Oracle, PostgreSQL or ODBC (PHP ODBC includes support
+  for Adabas D, IBM DB2, Solid and Sybase SQL Anywhere as well as ODBC)
 
 Recommended:
 - JavaScript-enabled browser
@@ -59,8 +60,7 @@ Recommended:
 Outstanding issues:
 - No way to delete just a specific day of a repeating event
 - No way to override the time of just a specific day of a repeating event
-- Complete translatations (most are missing the translations for stuff
-  related to repeating events)
+- Updated translatations (some are slightly out of date)
 
 Possible features for future releases:
 - LDAP support
@@ -68,7 +68,6 @@ Possible features for future releases:
 - Custom access restrictions that can be defined by each user
 - Some kind of shared public calendars.  Perhaps multiple shared public
   calendars that can be overlayed onto your own calendar.
-- Allow users to not have JavaScript and/or CSS used
 - Advances search (date ranges, and/or)
 - Add comments to entries that will show up on the view page
 - Data import (from Netscape Calendar's tab-delimted export or maybe
