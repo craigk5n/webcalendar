@@ -210,13 +210,12 @@ function TimeMatrix ($date,$participants) {
          $border = ($k == '0') ? 'border-left: 1px solid #000000;' : "";
 	       $RC = $CELLBG;
          $TIME = mktime ( sprintf ( "%02d",$j), ($increment * $k), 0, $thismonth, $thisday, $thisyear );
-
+         $space = "&nbsp;";
+         
          foreach ($all_events as $ET) {
            if (($TIME >= $ET['START']) && ($TIME < $ET['END'])) {
              $space = "<a href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" style=\"height:8px; width:100%; border-width:0px;\" alt=\"spacer\" /></a>";
-           } else {
-             $space = "&nbsp;";
-           }  
+           } 
 	        }
          echo "   <td style=\"text-align:left; background-color:$RC; vertical-align:middle; width:{$cell_pix}px; $border\">$space</td>\n";
          $col++;
