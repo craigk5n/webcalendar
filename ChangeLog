@@ -1,4 +1,5 @@
 Version 0.9.46/CVS+dev (?? ??? 2004)
+  - Fix bug: "Import" and "Export" in import.php were not being translated.
   - Fix bug: view_entry.php would not display links to edit/delete under
     some circumstances.
   - Updated upgrading docs so they're xhtml valid

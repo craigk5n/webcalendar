@@ -67,12 +67,12 @@ function print_user_list () {
 }
 ?>
 
-<h2>Import&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" /> / <?php etranslate("Export")?></h2>
+<h2><?php etranslate("Import")?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" /> / <?php etranslate("Export")?></h2>
 
 <!-- TABS -->
 <div id="tabs">
-	<span class="tabfor" id="tab_import"><a href="#tabimport" onclick="return showTab('import')">Import</a></span>
-	<span class="tabbak" id="tab_export"><a href="#tabexport" onclick="return showTab('export')">Export</a></span>
+	<span class="tabfor" id="tab_import"><a href="#tabimport" onclick="return showTab('import')"><?php etranslate("Import")?></a></span>
+	<span class="tabbak" id="tab_export"><a href="#tabexport" onclick="return showTab('export')"><?php etranslate("Export")?></a></span>
 </div>
 
 <!-- TABS BODY -->
