@@ -1,165 +1,213 @@
 # Brazilian Portuguese Translation
 # Translated by:
-#       Sérgio Oliveira - sloliv@terra.com.br 
-# Based in Portuguese version, by Nuno Lopes - nml@maxitel.pt
+#       José Roberto Kerne - joseroberto@dicaslinux.com.br
+# Based in Portugues version, by Sérgio Oliveira - sloliv@terra.com.br
+#   Based in Portuguese version, by Nuno Lopes - nml@maxitel.pt
 # Last update: 27 December 2000
-# Translation last updated on 09-10-2002
+# Translation last updated on 09-18-2002
+
+
+###############################################
+# Page: activity_log.php
+#
+#
+Activity Log: Log de Atividade
+User: Usuário
+#
+Calendar: Calendário
+Date: Data
+Time: Hora
+#
+Event: Evento
+#
+Action: Ação
+#
+Event created: Evento criado
+#
+Event approved: Evento aprovado
+#
+Event rejected: Evento rejeitado
+#
+Event updated: Evento atualizado
+#
+Event deleted: Evento deletado
+#
+Notification sent: Notificação enviada
+#
+Reminder sent: Lembrete enviado
+#
+Database error: Erro no banco de dados
+#
+Next: Próximo
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Entrada com ID inválido
+#
+This is a private event and may not be added to your calendar.: Este é um event
+o pessoal e você não pode adicioná-lo ao seu calendário
+#
+Error adding event: Erro adicionando evento
 
 
 ###############################################
 # Page: admin.php
 #
 #
-# << MISSING >>
-# Server URL is required:
+Server URL is required: URL do servidor é requerida
 #
-# << MISSING >>
-# Server URL must end with '/':
+Server URL must end with '/': URL do servidor não termina em '/'
 Invalid color for document background: Cor inválida para o fundo do documento
 Invalid color for document title: Cor inválida para o título do documento
-Invalid color for table cell background: Cor inválida para o fundo da célula da tabela
+Invalid color for table cell background: Cor inválida para o fundo da célula da
+ tabela
 #
-# << MISSING >>
-# Invalid color for table grid:
+Invalid color for table grid: Cor inválida para a grade da tabela
 #
-# << MISSING >>
-# Invalid color for table header background:
+Invalid color for table header background: Cor inválida para o cabeçalho da tab
+ela
 #
-# << MISSING >>
-# Invalid color for table text background:
+Invalid color for table text background: Cor inválida para fundo do texto da ta
+bela
 #
-# << MISSING >>
-# Invalid color for event popup background:
+Invalid color for event popup background: Cor inválida para fundo do evento pop
+-up
 #
-# << MISSING >>
-# Invalid color for event popup text:
-Invalid color for table cell background for today: Cor inválida para o fundo da célula da tabela (para o dia atual)
+Invalid color for event popup text: Cor inválida para texto do evento pop-up
+Invalid color for table cell background for today: Cor inválida para o fundo da
+ célula da tabela (para o dia atual)
 Color format should be '#RRGGBB': O formato do código de cor deve ser '#RRGGBB'
 #
-# << MISSING >>
-# System Settings:
+System Settings: Configurações
 You are not authorized: Não está autorizado
 #
-# << MISSING >>
-# Note:
+Note: Nota
 #
-# << MISSING >>
-# Your user preferences:
+Your user preferences: Suas preferências
 #
-# << MISSING >>
-# may be affecting the appearance of this page.:
+may be affecting the appearance of this page.: aplicar efeito de aparência nest
+a página.
 #
-# << MISSING >>
-# Click here:
+Click here: Clique aqui
 #
-# << MISSING >>
-# to not use your user preferences when viewing this page:
+to not use your user preferences when viewing this page: não usar suas preferên
+cias quando visualizar esta página
 #
-# << MISSING >>
-# are being ignored while viewing this page.:
+are being ignored while viewing this page.: são ignoradas enquanto visualiar es
+ta página
 #
-# << MISSING >>
-# to load your user preferences when viewing this page:
+to load your user preferences when viewing this page: para carregar suas prefer
+ências quanto ver esta página
 Save: Gravar
 Help: Ajuda
 Settings: Parâmetros
 #
-# << MISSING >>
-# app-name-help:
-# English text: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
+app-name-help: Especificar o nome do aplicativo a ser mostrado na barra de títu
+lo do browser.
+# English text: Specifies the name of the application that will appear in the b
+rowser title bar for all pages and on the login page.  The value you specify he
+re will be looked up in the translations file allowing you to provide different
+ titles for different languages.
 #
 #
-# << MISSING >>
-# Application Name:
+Application Name: Nome da Aplicação
 #
-# << MISSING >>
-# server-url-help:
-# English text: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
+server-url-help: Especifique a URL base para a aplicação. Isto será incluído qu
+ando forem enviadas notificações e lembretes por e-mail.
+# English text: Specifies the base URL for the application.  This will be inclu
+ded when sending out email reminders and notifications.
 #
 #
-# << MISSING >>
-# Server URL:
+Server URL: URL do Servidor
 language-help: Especifica a língua a ser utilizada.
 Language: Linguagem
 Your browser default language is: A linguagem do browser é;
 #
-# << MISSING >>
-# fonts-help:
-# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+fonts-help: Especifique uma lista de fontes do sistema para uso (Exemplo: Aria,
+ Helvetica)
+# English text: Specifies a list of system fonts to use (such as "Arial, Helvet
+ica")
 #
 #
-# << MISSING >>
-# Fonts:
-preferred-view-help: Especifica a visualização padrão (Dia, Semana, Mês, ou Ano).
+Fonts: Fontes
+preferred-view-help: Especifica a visualização padrão (Dia, Semana, Mês, ou Ano
+).
 Preferred view: Visualização preferida
 Day: Dia
 Week: Semana
 Month: Mês
 Year: Ano
 #
-# << MISSING >>
-# display-weekends-help:
+display-weekends-help: Incluir feriados quando visualizar a semana.
 # English text: Include weekends when viewing a week.
 #
 #
-# << MISSING >>
-# Display weekends in week view:
+Display weekends in week view: Mostrar feriados na visão semanal
 Yes: Sim
 No: Não
 #
-# << MISSING >>
-# date-format-help:
+date-format-help: Especifique um formato de data preferido.
 # English text: Specifies the preferred date format.
 #
 #
-# << MISSING >>
-# Date format:
+Date format: Formato da Data
 December: Dezembro
-time-format-help: Especifica o formato da hora a ser utilizada: <BR><I>12 horas:</I> Mostra no formato 3am, 8:30pm, etc.  <BR><I>24 horas:</I> Mostra no formato 300, 2030, etc.
+Dec: Dez
+time-format-help: Especifica o formato da hora a ser utilizada: <BR><I>12 horas
+:</I> Mostra no formato 3am, 8:30pm, etc.  <BR><I>24 horas:</I> Mostra no forma
+to 300, 2030, etc.
 Time format: Formato da Hora
 12 hour: 12 horas
 24 hour: 24 horas
 #
-# << MISSING >>
-# time-interval-help:
-# English text: Specifies how long the time blocks in the week view and day view will be.
+time-interval-help: Especifique quantos blocos devem ser mostrados na visualiza
+ção diária.
+# English text: Specifies how long the time blocks in the week view and day vie
+w will be.
 #
 #
-# << MISSING >>
-# Time interval:
+Time interval: Intervalo de Tempo
 #
-# << MISSING >>
-# hour:
+hour: hora
 minutes: minutos
 #
-# << MISSING >>
-# auto-refresh-help:
-# English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
+auto-refresh-help: Quando ligado, a visualização do dia, semana, ou mês, e a li
+sta de eventos não aprovados serão automaticamente atualizados depois deste per
+íodo.
+# English text: When enabled, the day view, week view, month view, and list aun
+approved pages will all automatically refresh themselves periodically.
 #
 #
-# << MISSING >>
-# Auto-refresh calendars:
+Auto-refresh calendars: Auto-atualizar o calendário
 #
-# << MISSING >>
-# auto-refresh-time-help:
-# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
-#
-#
-# << MISSING >>
-# Auto-refresh time:
-#
-# << MISSING >>
-# require-approvals-help:
-# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
+auto-refresh-time-help: Se a opção Auto-atualizar estiver ligada, especificará
+o intevalo de atualização do calendário no navegador.
+# English text: If Auto-refresh is enabled, this specifies the time between eac
+h refresh.
 #
 #
-# << MISSING >>
-# Require event approvals:
-display-unapproved-help: Especifica se eventos não aprovados são mostrados no calendário.
+Auto-refresh time: Tempo de auto-atualização
+#
+require-approvals-help: Quando ligado, um usuário precisará aprovar um evento p
+ara visualizá-lo em seu calendário (Com excessão da opção Mostrar eventos não a
+provados 'ligada').
+# English text: When enabled, a user must approve an event before it is display
+ed on their calendar (unless Display unapproved is enabled).  Note setting this
+ to "No" will not turn off approvals for the Public Access calendar (if the Pub
+lic Access calendar is enabled).
+#
+#
+Require event approvals: Requer aprovação do evento
+display-unapproved-help: Especifica se eventos não aprovados são mostrados no c
+alendário.
 Display unapproved: Visualizar Não Aprovados
-display-week-number-help: Especifica se o número da semana (1-52) deve ser mostrado na vista semanal e mensal.
+display-week-number-help: Especifica se o número da semana (1-52) deve ser most
+rado na vista semanal e mensal.
 Display week number: Visualizar número da semana
-display-week-starts-on: Especifica se a semana começa ao Domingo ou à Segunda-Feira. 
+display-week-starts-on: Especifica se a semana começa ao Domingo ou à Segunda-F
+eira.
 Week starts on: Semana começa em
 Sunday: Domingo
 Monday: Segunda
@@ -168,275 +216,215 @@ Work hours: Horário de trabalho
 From: De
 to: para
 #
-# << MISSING >>
-# disable-priority-field-help:
-# English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
+disable-priority-field-help: Selecionando "Sim" será removido o campo "Priorida
+de" do evento.
+# English text: Selecting "Yes" will remove the "Priority" field from event inf
+ormation pages, providing a simpler interface for novices.
 #
 #
-# << MISSING >>
-# Disable Priority field:
+Disable Priority field: Desabilitar campo de Prioridade
 #
-# << MISSING >>
-# disable-access-field-help:
-# English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Access field:
-#
-# << MISSING >>
-# disable-participants-field-help:
-# English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
+disable-access-field-help: Selecionando "Sim" será removido o campo "Acesso" do
+ evento.
+# English text: Selecting "Yes" will remove the "Access" field from event infor
+mation pages, providing a simpler interface for novices.
 #
 #
-# << MISSING >>
-# Disable Participants field:
+Disable Access field: Desabilitar campo Acesso
 #
-# << MISSING >>
-# disable-repeating-field-help:
-# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
+disable-participants-field-help: Selecionando "Sim" será removido o campo "Part
+icipantes" da visualização do evento, prevendo a adição de eventos para outros
+usuários.
+# English text: Selecting "Yes" will remove the "Particpants" field from event
+information pages, preventing users from adding other users to their events.  I
+f you enable this option, you may want to also disable the "Allow viewing other
+ user's calendars" field also.
 #
 #
-# << MISSING >>
-# Disable Repeating field:
+Disable Participants field: Desabilitar campo Participantes
 #
-# << MISSING >>
+disable-repeating-field-help: Selecionando "Sim" será removido o campo "Repetiç
+ão" na adição de eventos.
+# English text: Selecting "Yes" will remove the "Repeating" field when adding e
+vents.  This will provide a simpler interface for novices.
+#
+#
+Disable Repeating field: Desabilitar campo Repetição
+#
 # allow-public-access-help:
-# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
+# English text: When enabled, the calendar can be used as a read-only public ca
+lendar that does not require users to login.
 #
 #
-# << MISSING >>
-# Allow public access:
+Allow public access: Permitir acesso público
 #
-# << MISSING >>
-# public-access-view-others-help:
-# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
-#
-#
-# << MISSING >>
-# Public access can view other users:
-#
-# << MISSING >>
-# public-access-can-add-help:
-# English text: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
+public-access-view-others-help: Quanto o acesso publico estiver ativado, outros
+ usuários poderão visualizar suas informações em seu calendário.
+# English text: When access the system with public access, specifies whether th
+e user can view the calendar of another calendar user.
 #
 #
-# << MISSING >>
-# Public access can add events:
+Public access can view other users: Acesso público para outros usuários
 #
-# << MISSING >>
-# allow-view-other-help:
+public-access-can-add-help: Quando ligado, os usuários poderão utilizar a criaç
+ão de eventos para outros usuários, mas não poderão obter acesso aos eventos cr
+iados por outros usuarios.
+# English text: When enabled, users that access the system through Public Acces
+s will be able to add new events, but they will not show up in the calendar unt
+il an administrator approves the new event.
+#
+#
+Public access can add events: Acesso público pode criar eventos
+#
+allow-view-other-help: Especifica um usuário que poderá visualizar o calendário
+ de outros usuários.
 # English text: Specifies whether one user may view another user's calendar.
 #
 #
-# << MISSING >>
-# Allow viewing other user's calendars:
+Allow viewing other user's calendars: Permitir visualização do calendário de ou
+tros usuários
 #
-# << MISSING >>
-# remember-last-login-help:
-# English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
-#
-#
-# << MISSING >>
-# Remember last login:
-#
-# << MISSING >>
-# conflict-check-help:
-# English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
+remember-last-login-help: Quando ligado, o logon do usuário poderá ser automati
+camente identificado (porém a senha não será guardada), e as preferências do us
+uário poderão ser carregadas, incluindo a linguágem de preferência).
+# English text: When enabled, the user's login will be filled in for them on th
+e login page (but not the password), and the user's preferences will be loaded
+(including their preferred colors and language selection).
 #
 #
-# << MISSING >>
-# Check for event conflicts:
+Remember last login: Lembrar ultimo acesso
 #
-# << MISSING >>
+conflict-check-help: Checar se o evento está em conflito (dois eventos agendado
+s para horários ou faixas de horários iguais). Se selecionado "Sim", você poder
+á agendar eventos conflitantes, porém receberá um aviso para confirmação. Se se
+lecionado "Não", esta notificação não será mostrada.
+# English text: Check for event conflicts (two events scheduled for the same ti
+me for the same person).  If you set this to "Yes", you will still be able to s
+chedule two events at the same time after confirming a warning. If you set this
+ to "No", no checking for conflicts will be done.  You probably want to set thi
+s to "Yes", so conflict checking occurs.
+#
+#
+Check for event conflicts: Checar eventos em conflito
+#
 # conflict-months-help:
-# English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
+# English text: If conflict checking is in place ("Check for event conflicts" i
+s set to "No"), this specifies how many months into the future we should check
+for conflicts.  If you find adding events is taking a long time to process, red
+uce this number.
 #
 #
-# << MISSING >>
-# Conflict checking months:
+Conflict checking months: Checar conflitos no mês
 #
-# << MISSING >>
-# Groups:
+Groups: Grupos
 #
-# << MISSING >>
-# groups-enabled-help:
-# English text: Enables group support, allowing users to select users by groups.
-#
-#
-# << MISSING >>
-# Groups enabled:
-#
-# << MISSING >>
-# user-sees-his-group-help:
-# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
+groups-enabled-help: Habilitar suporte a grupos, permintindo a seleção de usuár
+ios e grupos.
+# English text: Enables group support, allowing users to select users by groups
+.
 #
 #
-# << MISSING >>
-# User sees only his groups:
+Groups enabled: Grupos habilitado
 #
-# << MISSING >>
-# Categories:
+user-sees-his-group-help: Se habilitado, usuários não poderá visualizar usuário
+s de outros grupos.
+# English text: If enabled, users will not see calendar users that are not in a
+t least one of their groups.
 #
-# << MISSING >>
-# categories-enabled-help:
+#
+User sees only his groups: Visualizar apenas usuários do mesmo grupo
+#
+Categories: Categorias
+#
+categories-enabled-help: Habilitar suporte a categoria do evento.
 # English text: Enables support for event categories.
 #
 #
-# << MISSING >>
-# Categories enabled:
+Categories enabled: Categorias habilitadas.
 #
-# << MISSING >>
-# Email:
+Email: E-mail
 #
-# << MISSING >>
-# email-enabled-help:
-# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
-#
-#
-# << MISSING >>
-# Email enabled:
-#
-# << MISSING >>
-# email-default-sender:
-# English text: Specifies the email address to specify as the sender when sending out reminders.
+email-enabled-help: Ativar ou desativar notificação por e-mail para agendamento
+s. Selecione "Não", se seu servidor não possui suporte a envio de e-mails.
+# English text: Turn on or off all sending of email for notification and remind
+ers.  Set to "no", if your server is not properly setup to send mail.
 #
 #
-# << MISSING >>
-# Default sender address:
+Email enabled: E-mail ligado
 #
-# << MISSING >>
-# Default user settings:
+email-default-sender: Especificar endereço de e-mail para envio de notificações
+ e lembretes.
+# English text: Specifies the email address to specify as the sender when sendi
+ng out reminders.
 #
-# << MISSING >>
-# email-event-reminders-help:
+#
+Default sender address: Usuário padrão para envio
+#
+Default user settings: Configurações padrão do usuário
+#
+email-event-reminders-help: Especificar envio ou não de lembretes.
 # English text: Specifies whether or not to send event reminders.
 #
 #
-# << MISSING >>
-# Event reminders:
+Event reminders: Lembrete do evento
 #
-# << MISSING >>
-# email-event-added:
-# English text: Specifies whether or not to send email notifications when an event is added to your calendar.
-#
-#
-# << MISSING >>
-# Events added to my calendar:
-#
-# << MISSING >>
-# email-event-updated:
-# English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
+email-event-added: Especificar ou não o envio de e-mail com notificação para ev
+entos em seu calendário.
+# English text: Specifies whether or not to send email notifications when an ev
+ent is added to your calendar.
 #
 #
-# << MISSING >>
-# Events updated on my calendar:
+Events added to my calendar: Eventos adicionados em meu calendário
 #
-# << MISSING >>
-# email-event-deleted:
-# English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
-#
-#
-# << MISSING >>
-# Events removed from my calendar:
-#
-# << MISSING >>
-# email-event-rejected:
-# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
+email-event-updated: Especificar ou não o envio de notificações quando eventos
+forem alterados.
+# English text: Specifies whether or not to send email notifications when an ev
+ent is updated on your calendar.
 #
 #
-# << MISSING >>
-# Event rejected by participant:
-colors-help: Todas as cores devem ser especificadas da forma "#RRGGBB" hexadecimal onde "RR" é o valor hexadecimal para o vermelho, "GG" é o valor hexadecimal para o verde, e "BB" o valor hexadecimal para o azul.
+Events updated on my calendar: Eventos atualizados em meu calendário
+#
+email-event-deleted: Especificar ou não o envio de notificação quando eventos f
+orem removidos do meu calendário.
+# English text: Specifies whether or not to send email notifications when an ev
+ent is removed from your calendar.
+#
+#
+Events removed from my calendar: Eventos removidos em meu calendário
+#
+email-event-rejected: Especificar ou não o envio de notificações quando um part
+icipante rejeitar um evento em seu calendário.
+# English text: Specifies whether or not to send email notifications when a par
+ticipant rejects an event that is on your calendar.
+#
+#
+Event rejected by participant: Evento rejeitado pelo participante
+colors-help: Todas as cores devem ser especificadas da forma "#RRGGBB" hexadeci
+mal onde "RR" é o valor hexadecimal para o vermelho, "GG" é o valor hexadecimal
+ para o verde, e "BB" o valor hexadecimal para o azul.
 Colors: Cores
 #
-# << MISSING >>
-# Allow user to customize colors:
+Allow user to customize colors: Permitir ao usuário customizar suas cores.
 Document background: Fundo do documento
 Select: Selecionar
 Document title: Título do documento
 #
-# << MISSING >>
-# Document text:
+Document text: Texto do documento
 #
-# << MISSING >>
-# Table grid color:
+Table grid color: Cor da grade da tabela
 #
-# << MISSING >>
-# Table header background:
+Table header background: Cor de fundo do cabeçalho
 #
-# << MISSING >>
-# Table header text:
+Table header text: Texto do cabeçalho da tabela
 Table cell background: Fundo da célula da tabela
-Table cell background for current day: Fundo da célula da tabela (para o dia atual)
+Table cell background for current day: Fundo da célula da tabela (para o dia at
+ual)
 #
-# << MISSING >>
-# Table cell background for weekends:
+Table cell background for weekends: Fundo da célula para feriados
 #
-# << MISSING >>
-# Event popup background:
+Event popup background: Fundo para eventos pop-up
 #
-# << MISSING >>
-# Event popup text:
-
-
-###############################################
-# Page: activity_log.php
-#
-#
-# << MISSING >>
-# Activity Log:
-User: Usuário
-#
-# << MISSING >>
-# Calendar:
-Date: Data
-Time: Hora
-#
-# << MISSING >>
-# Event:
-#
-# << MISSING >>
-# Action:
-#
-# << MISSING >>
-# Event created:
-#
-# << MISSING >>
-# Event approved:
-#
-# << MISSING >>
-# Event rejected:
-#
-# << MISSING >>
-# Event updated:
-#
-# << MISSING >>
-# Event deleted:
-#
-# << MISSING >>
-# Notification sent:
-#
-# << MISSING >>
-# Reminder sent:
-#
-# << MISSING >>
-# Database error:
-#
-# << MISSING >>
-# Next:
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Entrada com ID inválido
-#
-# << MISSING >>
-# This is a private event and may not be added to your calendar.:
-#
-# << MISSING >>
-# Error adding event:
+Event popup text: Texto para eventos pop-up
 
 
 ###############################################
@@ -456,19 +444,16 @@ Error approving event: Erro aprovando evento
 # Page: category.php
 #
 #
-# << MISSING >>
-# Add:
+Add: Adicionar
 #
-# << MISSING >>
-# Category Name:
+Category Name: Nome da categoria
 #
-# << MISSING >>
-# Global:
+Global: Geral
 Delete: Apagar
-Are you sure you want to delete this entry?: Tem certeza que pretende apagar esta entrada?
+Are you sure you want to delete this entry?: Tem certeza que pretende apagar es
+ta entrada?
 #
-# << MISSING >>
-# Add New Category:
+Add New Category: Nova categoria
 
 
 ###############################################
@@ -485,8 +470,7 @@ Are you sure you want to delete this entry?: Tem certeza que pretende apagar est
 # Page: datesel.php
 #
 #
-# << MISSING >>
-# Previous:
+Previous: Anterior
 
 
 ###############################################
@@ -500,7 +484,7 @@ Printer Friendly: Formato de impressora
 # Page: del_entry.php
 #
 Hello: Olá
-An appointment has been canceled for you by: Uma evento seu foi cancelando por 
+An appointment has been canceled for you by: Uma evento seu foi cancelando por
 The subject was: O assunto era
 Notification: Notificação
 
@@ -516,47 +500,53 @@ Notification: Notificação
 You have not entered a Brief Description: Não introduziu uma breve descrição
 You have not entered a valid time of day: Não introduziu uma hora do dia válida
 #
-# << MISSING >>
-# The time you have entered begins before your preferred work hours.  Is this correct?:
+# The time you have entered begins before your preferred work hours.  Is this c
+orrect?:
 Edit Entry: Editar Entrada
 Add Entry: Adicionar Entrada
-brief-description-help: Breve descrição (cerca de 20 caracteres) do evento. Esta descrição representa o evento na visualização global do calendário
+brief-description-help: Breve descrição (cerca de 20 caracteres) do evento. Est
+a descrição representa o evento na visualização global do calendário
 Brief Description: Descrição breve
-full-description-help: Descrição completa do evento. Esta informação é apresentada quando o usuário verifica o evento isoladamente.
+full-description-help: Descrição completa do evento. Esta informação é apresent
+ada quando o usuário verifica o evento isoladamente.
 Full Description: Descrição completa
 date-help: Especifica a data do evento.
 time-help: Especifica a hora do evento<BR><I>Este campo é opcional.</I>
 am: am
 pm: pm
-duration-help: Especifica a duração (em minutos) do evento.  <BR><I>Este campo é opcional.</I>
+duration-help: Especifica a duração (em minutos) do evento.  <BR><I>Este campo
+é opcional.</I>
 Duration: Duração
 hours: horas
-priority-help: Especifica a prioridade do evento.  Prioridade Alta é apresentada num tipo de letra mais escura.
+priority-help: Especifica a prioridade do evento.  Prioridade Alta é apresentad
+a num tipo de letra mais escura.
 Priority: Prioridade
 Low: Baixa
 Medium: Média
 High: Alta
-access-help: Especifica o nível de acesso do evento.<BR> <I>Publico</I> Todos os intervenientes podem ver todos os detalhes do evento. <BR><I>Confidencial</I> Outros usuário poderão ver que tem um evento marcado, mas não podem visualizar os detalhes. 
+access-help: Especifica o nível de acesso do evento.<BR> <I>Publico</I> Todos o
+s intervenientes podem ver todos os detalhes do evento. <BR><I>Confidencial</I>
+ Outros usuário poderão ver que tem um evento marcado, mas não podem visualizar
+ os detalhes.
 Access: Accesso
 Public: Publico
 Confidential: Confidencial
 #
-# << MISSING >>
-# category-help:
+category-help: Espeficificar a categoria do evento
 # English text: Specifies the category of the event.
 #
 #
-# << MISSING >>
-# Category:
+Category: Categoria
 #
 # << MISSING >>
-# days:
+days: dias
 #
-# << MISSING >>
-# before event:
+before event: Evento anterior
 participants-help: Lista os participantes desse evento
 Participants: Participantes
-repeat-type-help: Seleciona a periodicidade do evento<I>Mensal (por dia)</I> faz com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <I>Mensal (por data)</I> faz com que um evento se repita todos os meses no mesmo dia.
+repeat-type-help: Seleciona a periodicidade do evento<I>Mensal (por dia)</I> fa
+z com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <I>Mensal (p
+or data)</I> faz com que um evento se repita todos os meses no mesmo dia.
 Repeat Type: Tipo de repetição
 None: Nenhuma
 Daily: Diário
@@ -568,7 +558,9 @@ Yearly: Anual
 repeat-end-date-help: Especifica a data até à qual o evento se deve repetir.
 Repeat End Date: Data para fim de repetição
 Use end date: Utilizar data de fim de repetição
-repeat-day-help: Especifica em que dias da semana o evento se deve repetir.  Isto é apenas utilizado quando o <I>Tipo de repetição</I> tem o valor de <I>Semanal</I>.
+repeat-day-help: Especifica em que dias da semana o evento se deve repetir.  Is
+to é apenas utilizado quando o <I>Tipo de repetição</I> tem o valor de <I>Seman
+al</I>.
 Repeat Day: Dia a repetir
 for weekly: semanal
 Tuesday: Terça
@@ -576,35 +568,40 @@ Wednesday: Quarta
 Thursday: Quinta
 Friday: Sexta
 Saturday: Sábado
-repeat-frequency-help: Especifica quantas vezes o evento se deve repetir.  O valor padrão (1) indica que o evento acontece todos os dias.  Especificar 2 faz com que o evento se repita em outra semana (se <I>Tipo de repetição</I> tem o valor de <I>Semanal</I>), todos os meses (se <I>Tipo de repetição</I> tem o valor de <I>Mensal</I>), etc.
+repeat-frequency-help: Especifica quantas vezes o evento se deve repetir.  O va
+lor padrão (1) indica que o evento acontece todos os dias.  Especificar 2 faz c
+om que o evento se repita em outra semana (se <I>Tipo de repetição</I> tem o va
+lor de <I>Semanal</I>), todos os meses (se <I>Tipo de repetição</I> tem o valor
+ de <I>Mensal</I>), etc.
 Frequency: Freqüência
 Delete entry: Apagar entrada
-You are not authorized to edit this entry: Não está autorizado a editar esta entrada
+You are not authorized to edit this entry: Não está autorizado a editar esta en
+trada
 
 
 ###############################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: O seguinte está em conflito com a hora sugerida
+The following conflicts with the suggested time: O seguinte está em conflito co
+m a hora sugerida
 Unnamed Event: Evento sem Nome
 #
-# << MISSING >>
-# The description is:
+The description is: A descrição é
 Title: Calendário Pessoal
-A new appointment has been made for you by: Um novo evento foi feito para você por
+A new appointment has been made for you by: Um novo evento foi feito para você
+por
 #
-# << MISSING >>
-# An appointment has been updated by:
+An appointment has been updated by: Um evento foi atualizado por
 The subject is: O assunto é
 Please look on: Por favor veja em
 to accept or reject this appointment: para aceitar ou rejeitar este evento
 to view this appointment: para ver este evento
 Scheduling Conflict: Conflito no agendamento
 Your suggested time of: A sua hora sugerida de
-conflicts with the following existing calendar entries: está em conflito com os seguintes eventos
+conflicts with the following existing calendar entries: está em conflito com os
+ seguintes eventos
 #
-# << MISSING >>
-# Cancel:
+Cancel: Cancelar
 
 
 ###############################################
@@ -616,7 +613,8 @@ Add Layer: Adicionar Nível
 Source: Origem
 Color: Cor
 Duplicates: Duplicados
-Show layer events that are the same as your own: Mostrar eventos semelhantes de outros níveis
+Show layer events that are the same as your own: Mostrar eventos semelhantes de
+ outros níveis
 Are you sure you want to delete this layer?: Quer mesmo apagar este nível?
 Delete layer: Remover nível
 
@@ -625,11 +623,11 @@ Delete layer: Remover nível
 # Page: edit_layer_handler.php
 #
 #
-# << MISSING >>
-# You cannot create a layer for yourself:
+You cannot create a layer for yourself: Você não pode criar uma visualização pa
+ra você mesmo
 #
-# << MISSING >>
-# You can only create one layer for each user:
+You can only create one layer for each user: Você deve criar apenas uma visuali
+zação por usuário
 
 
 ###############################################
@@ -654,8 +652,7 @@ Set Password: Gravar Senha
 # Page: edit_user_handler.php
 #
 #
-# << MISSING >>
-# Deleting users not supported:
+Deleting users not supported: Deleção de usuários não suportada
 The passwords were not identical: As senhas não são iguais
 You have not entered a password: Não entrou com a senha
 
@@ -678,20 +675,23 @@ Modified since: Modificado desde
 
 
 ###############################################
+# Page: groups.php
+#
+#
+Add New Group: Novo grupo
+
+
+###############################################
 # Page: group_edit.php
 #
 #
-# << MISSING >>
-# Unnamed Group:
+Unnamed Group: Grupo não identificado
 #
-# << MISSING >>
-# Add Group:
+Add Group: Adicionar grupo
 #
-# << MISSING >>
-# Edit Group:
+Edit Group: Editar grupo
 #
-# << MISSING >>
-# Group name:
+Group name: Nome do grupo
 Updated: Atualizado
 Created by: Criado por
 Users: Usuários
@@ -700,17 +700,6 @@ Users: Usuários
 ###############################################
 # Page: group_edit_handler.php
 #
-#
-# << MISSING >>
-# You must specify a group name:
-
-
-###############################################
-# Page: groups.php
-#
-#
-# << MISSING >>
-# Add New Group:
 
 
 ###############################################
@@ -719,31 +708,10 @@ Users: Usuários
 
 
 ###############################################
-# Page: pref.php
-#
-Preferences: Configurações
-#
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-#
-# << MISSING >>
-# Default Category:
-Sun: Dom
-Mon: Seg
-Tue: Ter
-Wed: Qua
-Thu: Qui
-Fri: Sex
-Sat: Sáb
-Save Preferences: Gravar
-
-
-###############################################
 # Page: help_bug.php
 #
 #
-# << MISSING >>
-# Report Bug:
+Report Bug: Reportar erro
 
 
 ###############################################
@@ -757,6 +725,7 @@ Adding/Editing Calendar Entries: Adicionar/Editar Entradas
 #
 Help Index: Ajuda
 Layers: Níveis
+Preferences: Preferências
 
 
 ###############################################
@@ -764,13 +733,14 @@ Layers: Níveis
 #
 #
 # << MISSING >>
-# Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
+# Layers are useful for displaying other users' events in your own calendar.  Y
+ou can specifiy the user and the color the events will be displayed in.:
+#
+Add/Edit/Delete: Adicionar/Editar/Deletar
 #
 # << MISSING >>
-# Add/Edit/Delete:
-#
-# << MISSING >>
-# Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
+# Clicking the Edit Layers link in the admin section at the bottom of the page
+will allow you to add/edit/delete layers.:
 #
 # << MISSING >>
 # Specifies the user that you would like to see displayed in your calendar.:
@@ -781,31 +751,27 @@ Layers: Níveis
 # << MISSING >>
 # If checked, events that are duplicates of your events will be shown.:
 #
-# << MISSING >>
-# Disabling:
+Disabling: Desabilitando
 #
 # << MISSING >>
-# Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
+# Press the Disable Layers link in the admin section at the bottom of the page
+to turn off layers.:
+#
+Enabling: Habilitando
 #
 # << MISSING >>
-# Enabling:
-#
-# << MISSING >>
-# Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
+# Press the Enable Layers link in the admin section at the bottom of the page t
+o turn on layers.:
 
 
 ###############################################
 # Page: help_pref.php
 #
 #
-# << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
+Default Category: Categoria padrão
 #
-
-
-###############################################
-# Page: week.php
+default-category-help: Especificar a categoria padrão para novos eventos.
+# English text: Specifies the category a new event should default to.
 #
 
 
@@ -817,14 +783,9 @@ Layers: Níveis
 ###############################################
 # Page: layers.php
 #
-#
-# << MISSING >>
-# to modify the layers settings for the:
 Layers are currently: Os níveis estão
-Enabled: Ativados
 Disabled: Desativados
-Disable Layers: Desativar Níveis
-Enable Layers: Ativar Níveis
+Enabled: Ativados
 Layer: Nível
 Edit layer: Editar nível
 Add layer: Adicionar nível
@@ -844,29 +805,46 @@ Approve/Confirm: Aprovar/Confirmar
 Reject this entry?: Rejeitar esta entrada?
 Reject: Rejeitar
 #
-# << MISSING >>
-# No unapproved events for:
+No unapproved events for: Eventos não aprovados para
 Unapproved Events: Eventos não aprovados
+
 #
-# << MISSING >>
-# Public Access:
+Public Access: Acesso Público
 
 
 ###############################################
 # Page: login.php
 #
 You must enter a login and password: Tem de digitar um usuário e senha
-Save login via cookies so I don't have to login next time: Gravar usuário e senha para futuras sessões (não recomendado se este computador é utilizado por mais pessoas)
+Save login via cookies so I don't have to login next time: Gravar usuário e sen
+ha para futuras sessões (não recomendado se este computador é utilizado por mai
+s pessoas)
 Login: Entrar
 #
-# << MISSING >>
-# Access public calendar:
-cookies-note: <B>Nota:</B> Esta opção requer a opção de 'cookies' no seu browser ativada.
+Access public calendar: Acesso publico ao calendario
+cookies-note: <B>Nota:</B> Esta opção requer a opção de 'cookies' no seu browse
+r ativada.
 
 
 ###############################################
 # Page: month.php
 #
+Sun: Dom
+Mon: Seg
+Tue: Ter
+Wed: Qua
+Thu: Qui
+Fri: Sex
+Sat: Sáb
+
+
+###############################################
+# Page: pref.php
+#
+#
+to modify the preferences for the Public Access calendar: para motificar as pre
+ferências de acesso público
+Save Preferences: Gravar
 
 
 ###############################################
@@ -885,15 +863,15 @@ An appointment has been rejected by: Um evento foi rejeitado por
 #
 Search: Pesquisar
 #
-# << MISSING >>
-# Advanced Search:
+Advanced Search: Busca avançada
 Keywords: Palavras
 
 
 ###############################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Tem de introduzir uma ou mais palavras
+You must enter one or more search keywords: Tem de introduzir uma ou mais palav
+ras
 Search Results: Resultados da pesquisa
 match found: Ocorrência encontrada
 matches found: Ocorrências encontradas
@@ -911,11 +889,14 @@ Go: Ver
 # Page: set_entry_cat.php
 #
 #
-# << MISSING >>
-# You have not added any categories:
+You have not added any categories: Você não adicionou nenhuma categoria
 #
-# << MISSING >>
-# Set Category:
+Set Category: Selecionar Categoria
+
+
+###############################################
+# Page: test.php
+#
 
 
 ###############################################
@@ -929,91 +910,99 @@ Add New User: Adicionar Novo Usuário
 # Page: usersel.php
 #
 #
-# << MISSING >>
-# All:
+All: Todos
 #
-# << MISSING >>
-# Reset:
+Reset: Limpar
 #
-# << MISSING >>
-# Remove:
+Remove: Remover
 #
-# << MISSING >>
-# Ok:
+Ok: OK
+
+
+###############################################
+# Page: views.php
+#
+#
+Views: Visualizações
+#
+Add New View: Adicionar visualização
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+Unnamed View: Visualização sem nome
+#
+Add View: Adicionar Visualização
+#
+Edit View: Editar Visualização
+#
+View Name: Nome da Visualização
+#
+View Type: Tipo da Visualização
+
+
+###############################################
+# Page: views_edit_handler.php
+#
 
 
 ###############################################
 # Page: view_entry.php
 #
 #
-# << MISSING >>
-# every:
+every: cada
 #
-# << MISSING >>
-# 1st:
+1st: Primeiro
 #
-# << MISSING >>
-# 2nd:
+2nd: Segundo
 #
-# << MISSING >>
-# 3rd:
+3rd: Terceiro
 #
-# << MISSING >>
-# 4th:
+4th: Quarto
 #
-# << MISSING >>
-# 5th:
+5th: Quinto
 Description: Descrição
 #
-# << MISSING >>
-# Status:
+Status: Status
 #
-# << MISSING >>
-# Waiting for approval:
+Waiting for approval: Aguardando por aprovação
 #
-# << MISSING >>
-# Deleted:
+Deleted: Deletado
 Rejected: Rejeitada
 Approve/Confirm entry: Aprovar/Confirmar entrada
 Reject entry: Rejeitar entrada
 #
-# << MISSING >>
-# Set category:
+Set category: Selecionar categoria
 #
-# << MISSING >>
-# Edit repeating entry for all dates:
+Edit repeating entry for all dates: Editar repetição para todas as datas
 #
-# << MISSING >>
-# Edit entry for this date:
-This will delete this entry for all users.: Isto vai apagar esta entrada para todos os usuários.
+Edit entry for this date: Editar entrada para esta data
+This will delete this entry for all users.: Isto vai apagar esta entrada para t
+odos os usuários.
 #
-# << MISSING >>
-# Delete repeating event for all dates:
+Delete repeating event for all dates: Deletar repetição em todos os eventos
 #
-# << MISSING >>
-# Delete entry only for this date:
+Delete entry only for this date: Deletar entradas apenas nesta data
 Edit entry: Editar entrada
 #
-# << MISSING >>
-# This will delete the entry from your calendar.:
+This will delete the entry from your calendar.: Isto deletará a entrada de seu
+calendário
 #
-# << MISSING >>
-# Do you want to add this entry to your calendar?:
+Do you want to add this entry to your calendar?: Você quer adicionar uma entrad
+a em seu calendário
 #
-# << MISSING >>
-# This will add the entry to your calendar.:
+This will add the entry to your calendar.: Isto adicionará uma entrada em seu c
+alendário
 #
-# << MISSING >>
-# Add to My Calendar:
+Add to My Calendar: Adicionar ao meu calendário
 #
-# << MISSING >>
-# Email all participants:
+Email all participants: Enviar e-mail para participantes
 #
-# << MISSING >>
-# Show activity log:
+Show activity log: Mostrar log de atividade
 #
-# << MISSING >>
-# Hide activity log:
+Hide activity log: Esconder log de atividade
 
 
 ###############################################
@@ -1027,48 +1016,14 @@ Edit entry: Editar entrada
 
 
 ###############################################
-# Page: views.php
+# Page: week.php
 #
-#
-# << MISSING >>
-# Views:
-#
-# << MISSING >>
-# Add New View:
-
-
-###############################################
-# Page: views_edit.php
-#
-#
-# << MISSING >>
-# Unnamed View:
-#
-# << MISSING >>
-# Add View:
-#
-# << MISSING >>
-# Edit View:
-#
-# << MISSING >>
-# View Name:
-#
-# << MISSING >>
-# View Type:
-
-
-###############################################
-# Page: views_edit_handler.php
-#
-#
-# << MISSING >>
-# You must specify a view name:
+New Entry: Nova entrada
 
 
 ###############################################
 # Page: week_details.php
 #
-New Entry: Nova entrada
 Private: Pessoal
 
 
@@ -1083,6 +1038,11 @@ Private: Pessoal
 
 
 ###############################################
+# Page: includes/config.php
+#
+
+
+###############################################
 # Page: includes/connect.php
 #
 
@@ -1092,8 +1052,7 @@ Private: Pessoal
 #
 This event is confidential: Este evento é confidencial
 #
-# << MISSING >>
-# You have XXX unapproved events:
+You have XXX unapproved events: Você possui XXX eventos não aprovados
 January: Janeiro
 February: Fevereiro
 March: Março
@@ -1116,60 +1075,12 @@ Aug: Ago
 Sep: Set
 Oct: Out
 Nov: Nov
-Dec: Dez
-
-
-###############################################
-# Page: includes/user.php
-#
-#
-# << MISSING >>
-# Invalid login:
-#
-# << MISSING >>
-# Invalid user login:
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-#
-# << MISSING >>
-# Send Reminder:
-#
-# << MISSING >>
-# Reminder:
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-
-
-###############################################
-# Page: includes/user-nis.php
-#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Ir para
-
-
-###############################################
-# Page: includes/config.php
-#
 
 
 ###############################################
@@ -1188,6 +1099,15 @@ Go to: Ir para
 
 
 ###############################################
+# Page: includes/site_extras.php
+#
+#
+Send Reminder: Enviar lembrete
+#
+Reminder: Lembrete
+
+
+###############################################
 # Page: includes/styles.php
 #
 
@@ -1201,16 +1121,47 @@ Logout: Sair
 Another User's Calendar: Calendário de outro usuário
 Add New Entry: Adicionar nova entrada
 #
-# << MISSING >>
-# Manage Views:
+Manage Views: Gerenciar visualizações
 Edit Layers: Editar Níveis
+Enable Layers: Ativar Níveis
+Disable Layers: Desativar Níveis
 Account: Conta
 Current User: Usuário atual
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+#
+Invalid login: Usuário inválido
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+#
+Invalid user login: Usuário inválido
+
+
+###############################################
+# Page: includes/user.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
 #
-# << MISSING >>
-# This is a reminder for the event detailed below.:
+This is a reminder for the event detailed below.: Este é um lembrete para o eve
+nto abaixo.
+
