@@ -133,7 +133,7 @@ a:hover {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 12px;
   color: <?php echo ( $GLOBALS['POPUP_FG'] == "" ? "#000000" : $GLOBALS['POPUP_FG'] ); ?>;
-  background-color: <?php echo $GLOBALS[POPUP_BG] ?>;
+  background-color: <?php echo $GLOBALS['POPUP_BG'] ?>;
   text-decoration: none;
 }
 .tooltip {
@@ -162,12 +162,7 @@ h3 {
 	color: <?php echo $GLOBALS['H2COLOR'] ?>;
 	font-weight: bold;
 }
-body {
-	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
-	font-size: 12px;
-	background-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
-}
+
 td {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 12px;
@@ -278,6 +273,32 @@ td.dayviewtitle .user {
 	font-size: 18px;
 	color: <?php echo $GLOBALS['H2COLOR'] ?>;
 	font-weight: bold;
+	text-align: center;
+}
+table.dayviewminical {
+	border-width: 1px;
+	border-style: solid;
+	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+.dayviewminical th.date {
+	text-align: center;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	font-size: 47px;
+}
+.dayviewminical tr.monthnav th {
+	text-align: center;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-width: 0px;
+}
+.dayviewminical tr.monthnav td {
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-width: 0px;
+}
+.dayviewminical tr.day th {
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
 	text-align: center;
 }
 
@@ -501,6 +522,11 @@ td.weekviewtitle .date {
 	text-align: center;
 	color: <?php echo $GLOBALS['H2COLOR'] ?>;
 }
+td.weekviewtitle .weeknumber {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 20px;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+}
 td.weekviewtitle .user {
 	font-size: 18px;
 	font-weight: bold;
@@ -514,6 +540,11 @@ td.weekviewtitle .user {
 	width: 10px;
 	height: 10px;
 }
-
+body {
+	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 12px;
+	background-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
+}
 -->
 </style>

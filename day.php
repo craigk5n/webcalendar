@@ -54,7 +54,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 <table style="border-width:0px; width:100%;">
 <tr>
 <?php if ( empty ( $friendly ) ) { ?>
-<td style="text-align:left;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous"); ?>" /></a></td>
+<td style="text-align:left;"><a title="<?php etranslate("Previous"); ?>" href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous"); ?>" /></a></td>
 <?php } ?>
 <td class="dayviewtitle">
 <span class="date">
@@ -83,7 +83,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 ?>
 </td>
 <?php if ( empty ( $friendly ) ) { ?>
-<td style="text-align:right;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img class="prevnext" src="rightarrow.gif" alt="<?php etranslate("Next"); ?>" /></a></td>
+<td style="text-align:right;"><a title="<?php etranslate("Next"); ?>" href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img class="prevnext" src="rightarrow.gif" alt="<?php etranslate("Next"); ?>" /></a></td>
 <?php } ?>
 </tr>
 </table>
@@ -115,26 +115,25 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 </td>
 <td style="vertical-align:top;">
 <?php if ( empty ( $friendly ) ) { ?>
+<!-- START MINICAL -->
 <div style="text-align:right;">
-<table style="border-width:0px;" cellspacing="0" cellpadding="0">
-<tr><td style="background-color:<?php echo $TABLEBG?>;">
-<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
-<tr><th colspan="7" style="text-align:center; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>; font-size:47px;"><?php echo $thisday?></th></tr>
-<tr>
-<td style="text-align:left; background-color:<?php echo $THBG?>;"><a href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>" class="monthlink"><img src="leftarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Previous")?>" /></a></td>
-<th colspan="5" style="text-align:center; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></th>
-<td style="text-align:right; background-color:<?php echo $THBG?>;"><a href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead . $caturl?>" class="monthlink"><img src="rightarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Next") ?>" /></a></td>
+<table class="dayviewminical" cellspacing="1" cellpadding="2">
+<tr><th colspan="7" class="date"><?php echo $thisday?></th></tr>
+<tr class="monthnav">
+<td style="text-align:left;"><a title="<?php etranslate("Previous")?>" href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>"><img src="leftarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Previous")?>" /></a></td>
+<th colspan="5"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></th>
+<td style="text-align:right;"><a title="<?php etranslate("Next") ?>" href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead . $caturl?>"><img src="rightarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Next") ?>" /></a></td>
 </tr>
 <?php
-echo "<tr>";
-if ( $WEEK_START == 0 ) echo "<td style=\"background-color:$CELLBG;\"><font size=\"-3\">" .
-  weekday_short_name ( 0 ) . "</td>";
+echo "<tr class=\"day\">";
+if ( $WEEK_START == 0 ) echo "<th>" .
+  weekday_short_name ( 0 ) . "</th>";
 for ( $i = 1; $i < 7; $i++ ) {
-  echo "<td style=\"background-color:$CELLBG;\"><font size=\"-3\">" .
-    weekday_short_name ( $i ) . "</td>";
+  echo "<th>" .
+    weekday_short_name ( $i ) . "</th>";
 }
-if ( $WEEK_START == 1 ) echo "<td style=\"background-color:$CELLBG;\"><font size=\"-3\">" .
-  weekday_short_name ( 0 ) . "</td>";
+if ( $WEEK_START == 1 ) echo "<th>" .
+  weekday_short_name ( 0 ) . "</th>";
 echo "</tr>\n";
 // generate values for first day and last day of month
 $monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
@@ -172,7 +171,6 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 }
 ?>
 </table>
-</td></tr></table>
 </div>
 <?php } ?>
 </td></tr></table>
