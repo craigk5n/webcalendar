@@ -22,6 +22,36 @@ a {
 a:hover {
   color: #0000FF;
 }
+.trailerform {
+  float: left;
+  width: 33%;
+  border-top: 1px solid #000000;
+  padding-top: 5px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+.trailerform p {
+  margin: 0px;
+  padding: 0px;
+  font-weight: bold;
+}
+.trailerform p select {
+  font-weight: normal;
+}
+#monthform {
+  clear: left;
+}
+#weekform {
+  text-align: center;
+}
+#yearform {
+  text-align: right;
+  clear: right;
+}
+a#programname {
+  margin-top: 10px;
+  font-size: 10px;
+}
 <?php //printer-friendly links ?>
 .printer {
 	font-size: 14px;
