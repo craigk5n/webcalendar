@@ -1,38 +1,43 @@
 <?php
-/*--------------------------------------------------------------------
- init.php written by Jeff Hoover
- - simplifies script initialization
- - puts HTML headers in an easy to call function
-
- ** NOTE that the following scripts do not use this file:
-  - login.php
-  - week_ssi.php
-  - tools/send_reminders.php
-
- How to use:
- 1. call include_once 'includes/init.php'; at the top of your script.
- 2. call any other functions or includes not in this file that you need
- 3. call the print_header function with proper arguments
-
- What gets called:
-
-  include_once 'includes/config.php';
-  include_once 'includes/php-dbi.php';
-  include_once 'includes/functions.php';
-  include_once "includes/$user_inc";
-  include_once 'includes/validate.php';
-  include_once 'includes/connect.php';
-  load_global_settings ();
-  load_user_preferences ();
-  include_once 'includes/translate.php';
-  include_once 'includes/styles.php';
-
- Also, for month.php, day.php, week.php, week_details.php:
-
-  send_no_cache_header ();
-
-//--------------------------------------------------------------------
-*/
+/*
+ * $Id$
+ *
+ * Page Description:
+ *	This page is included by most WebCalendar pages as the only
+ *	include file.  It does various initialization tasks and
+ *	includes all needed files.  This greatly simplifies the other
+ *	PHP pages since they don't need to worry about what files it
+ *	include.
+ *
+ * Comments:
+ *	The following scripts do not use this file:
+ *	- login.php
+ *	- week_ssi.php
+ *	- upcoming.php
+ *	- tools/send_reminders.php
+ *
+ * How to use:
+ *	1. call include_once 'includes/init.php'; at the top of your script.
+ *	2. call any other functions or includes not in this file that you need
+ *	3. call the print_header function with proper arguments
+ *
+ * What gets called:
+ *
+ *	include_once 'includes/config.php';
+ *	include_once 'includes/php-dbi.php';
+ *	include_once 'includes/functions.php';
+ *	include_once "includes/$user_inc";
+ *	include_once 'includes/validate.php';
+ *	include_once 'includes/connect.php';
+ *	load_global_settings ();
+ *	load_user_preferences ();
+ *	include_once 'includes/translate.php';
+ *	include_once 'includes/styles.php';
+ *
+ *	Also, for month.php, day.php, week.php, week_details.php:
+ *	send_no_cache_header ();
+ *
+ **********************************************************************/
 
 // Security Check
 if ( empty ( $PHP_SELF ) )
@@ -201,16 +206,20 @@ $bodyid = array(
 	"year.php" => "year"
 );
 
-// Prints the HTML header and opening Body tag.
-//      $includes - an array of additional files to include referenced from
-//                  the includes directory
-//      $HeadX - a variable containing any other data to be printed inside
-//               the head tag (META, SCRIPT, etc)
-//      $BodyX - a variable containing any other data to be printed inside
-//               the Body tag (onload for example)
-//	$disableCustom - do not include custom header (useful for small
-//		popup windows, such as color selection)
-//	$disableStyle - do not include the standard css
+/** print_header
+  * Description:
+  *	Prints the HTML header and opening HTML body tag.
+  * Parameters:
+  *	$includes - an array of additional files to include referenced from
+  *	            the includes directory
+  *	$HeadX - a variable containing any other data to be printed inside
+  *	         the head tag (meta, script, etc)
+  *	$BodyX - a variable containing any other data to be printed inside
+  *	         the Body tag (onload for example)
+  *	$disbleCustom - do not include custom header (useful for small
+  *	  popup windows, such as color selection)
+  *	$disableStyle - do not include the standard css
+  */
 function print_header($includes = '', $HeadX = '', $BodyX = '',
   $disableCustom=false, $disableStyle=false) {
   global $application_name;
@@ -278,12 +287,12 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
     }
   }
 
-	// Include includes/print_styles.css as a media="print" stylesheet. When the
-	// user clicks on the "Printer Friendly" link, $friendly will be non-empty,
-	// including this as a normal stylesheet so they can see how it will look 
-	// when printed. This maintains backwards-compatibility for browsers that 
-	// don't support media="print" stylesheets
-	echo "<link rel=\"stylesheet\" type=\"text/css\"" . ( empty ( $friendly ) ? " media=\"print\"" : "" ) . " href=\"includes/print_styles.css\" />\n";
+  // Include includes/print_styles.css as a media="print" stylesheet. When the
+  // user clicks on the "Printer Friendly" link, $friendly will be non-empty,
+  // including this as a normal stylesheet so they can see how it will look 
+  // when printed. This maintains backwards-compatibility for browsers that 
+  // don't support media="print" stylesheets
+  echo "<link rel=\"stylesheet\" type=\"text/css\"" . ( empty ( $friendly ) ? " media=\"print\"" : "" ) . " href=\"includes/print_styles.css\" />\n";
 
   // Link to favicon
   echo "<link rel=\"shortcut icon\" href=\"favicon.ico\" type=\"image/x-icon\" />\n";
@@ -291,15 +300,15 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   // Finish the header
   echo "</head>\n<body";
 
-	// Find the filename of this page and give the <body> tag the corresponding id
-	$thisPage = substr($self, strrpos($self, '/') + 1);
-	if ( isset( $bodyid[$thisPage] ) )
-		echo " id=\"" . $bodyid[$thisPage] . "\"";
+  // Find the filename of this page and give the <body> tag the corresponding id
+  $thisPage = substr($self, strrpos($self, '/') + 1);
+  if ( isset( $bodyid[$thisPage] ) )
+    echo " id=\"" . $bodyid[$thisPage] . "\"";
 
-	// Add any extra parts to the <body> tag
-	if ( ! empty( $BodyX ) )
-		echo " $BodyX";
-	echo ">\n";
+  // Add any extra parts to the <body> tag
+  if ( ! empty( $BodyX ) )
+    echo " $BodyX";
+  echo ">\n";
 
   // Add custom header if enabled
   if ( $CUSTOM_HEADER == 'Y' && ! $disableCustom ) {
@@ -316,8 +325,17 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
 }
 
 
-// Print the common trailer.
-// Include custom trailer if enabled
+/** print_trailer
+  * Description:
+  *	Print the common trailer.
+  * Parameters:
+  *	$include_nav_links - should the standard navigation links be
+  *	  included in the trailer (true/false). 
+  *	$closeDb - close the database connection (true/false)
+  *	$disableCustom - disable the custom trailer the administrator
+  *	  has setup.  (This is useful for small popup windows and
+  *	  pages being used in an iframe.)
+  */
 function print_trailer ( $include_nav_links=true, $closeDb=true,
   $disableCustom=false )
 {
