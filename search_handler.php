@@ -1,17 +1,5 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
-
-include "includes/translate.php";
+include_once 'includes/init.php';
 
 $error = "";
 
@@ -26,13 +14,8 @@ if ( $login == "__public__" && $public_access_others != "Y" )
 if ( $readonly == "Y" || $single_user == "Y" )
   $search_others = false;
 
+print_header():
 ?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Search Results")?></FONT></H2>
 
@@ -112,7 +95,7 @@ if ( empty ( $error ) ) {
 
 <P>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 
 </BODY>
 </HTML>

@@ -1,46 +1,12 @@
 <?php
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
-
-include "includes/translate.php";
+include_once 'includes/init.php';
 
 if ( ! $is_admin )
   $user = $login;
 
+$INC = array('js/'.$SCRIPT);
+print_header($INC);
 ?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-<SCRIPT LANGUAGE="JavaScript">
-function selectUsers () {
-  url = "usersel.php?form=editviewform&listid=3&users=";
-  // add currently selected users
-  for ( i = 0, j = 0; i < document.forms[0].elements[3].length; i++ ) {
-    if ( document.forms[0].elements[3].options[i].selected ) {
-      if ( j != 0 )
-	url += ",";
-      j++;
-      url += document.forms[0].elements[3].options[i].value;
-    }
-  }
-  //alert ( "URL: " + url );
-  // open window
-  window.open ( url, "UserSelection",
-    "width=500,height=500,resizable=yes,scrollbars=yes" );
-}
-</SCRIPT>
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
 
 <FORM ACTION="views_edit_handler.php" METHOD="POST" NAME="editviewform">
 
@@ -135,6 +101,6 @@ if ( $newview ) {
 
 </FORM>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 </BODY>
 </HTML>

@@ -1,31 +1,9 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
-
-include "includes/translate.php";
-
+include_once 'includes/init.php';
+$INC = array('js/'.$SCRIPT);
+print_header($INC);
 ?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-<SCRIPT LANGUAGE="JavaScript">
-function sendColor ( color ) {
-  window.opener.document.prefform.<?php echo $color?>.value= color;
-  window.close ();
-}
-</SCRIPT>
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
+
 <CENTER>
 
 <TABLE BORDER=2>
@@ -63,7 +41,6 @@ $c = "FFFFFF";
 echo "</TR>\n";
 ?>
 </TABLE>
-
 </CENTER>
 
 </BODY>

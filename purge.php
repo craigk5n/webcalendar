@@ -1,13 +1,5 @@
 <?php
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
-include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
-include "includes/translate.inc";
-
-load_user_preferences ();
+include_once 'includes/init.php';
 
 if ( ! $is_admin ) {
   // must be admin...
@@ -15,13 +7,8 @@ if ( ! $is_admin ) {
   exit;
 }
 
+print_header();
 ?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
-<?php include "includes/styles.inc"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>">
 
 <TABLE BORDER=0>
 <TR><TD VALIGN="top" WIDTH=50%>
@@ -75,7 +62,7 @@ if ( ! empty ( $user ) ) {
 <?php } ?>
 </TD></TR></TABLE>
 
-<?php include "includes/trailer.inc"; ?>
+<?php include_once "includes/trailer.inc"; ?>
 </BODY>
 </HTML>
 

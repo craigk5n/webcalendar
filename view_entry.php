@@ -1,18 +1,6 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/site_extras.php";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
-
-include "includes/translate.php";
+include_once 'includes/init.php';
+include_once 'includes/site_extras.php';
 
 // make sure this user is allowed to look at this calendar.
 $can_view = false;
@@ -139,15 +127,7 @@ if ( $ext_id > 0 ) {
   do_redirect ( $url );
 }
 
-?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
-
-<?php
+print_header();
 
 if ( $id < 1 ) {
   echo translate("Invalid entry id") . ".";
@@ -201,7 +181,7 @@ if ( empty ( $event_status ) ) {
 if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
   echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Error") .
     "</FONT></H2>" . translate("You are not authorized") . ".\n";
-  include "includes/trailer.php";
+  include_once "includes/trailer.php";
   echo "</BODY></HTML>\n";
   exit;
 }
@@ -705,6 +685,6 @@ if ( $show_log ) {
 
 ?>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 </BODY>
 </HTML>

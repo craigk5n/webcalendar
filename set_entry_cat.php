@@ -1,18 +1,6 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
+include_once 'includes/init.php';
 load_user_categories();
-
-include "includes/translate.php";
 
 $error = "";
 
@@ -69,13 +57,8 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
   }
 }
 
+print_header();
 ?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate( $application_name );?></TITLE>
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
 
 <?php if ( ! empty ( $error ) ) { ?>
 
@@ -122,6 +105,6 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
 
 <?php } ?>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 </BODY>
 </HTML>

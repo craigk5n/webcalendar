@@ -1,17 +1,6 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
+include_once 'includes/init.php';
 send_no_cache_header ();
-load_global_settings ();
-load_user_preferences ();
-
-include "includes/translate.php";
 
 $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
@@ -37,16 +26,8 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-
+print_header();
 ?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-
-
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>">
 <?php
@@ -134,6 +115,6 @@ else
   ONCLICK="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );">
 </FORM>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 </BODY>
 </HTML>

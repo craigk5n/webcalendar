@@ -1,31 +1,11 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
-
-include "includes/translate.php";
-
-?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
-<?php
+include_once 'includes/init.php';
+print_header();
 
 if ( ! $is_admin ) {
   echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Error") .
     "</FONT></H2>" . translate("You are not authorized") . ".\n";
-  include "includes/trailer.php";
+  include_once "includes/trailer.php";
   echo "</BODY></HTML>\n";
   exit;
 }
@@ -55,6 +35,6 @@ for ( $i = 0; $i < count ( $userlist ); $i++ ) {
       "</A><BR>\n";
 ?>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 </BODY>
 </HTML>

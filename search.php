@@ -1,51 +1,9 @@
 <?php
+include_once 'includes/init.php';
 
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
-
-include "includes/translate.php";
-
+if ( $groups_enabled == "Y" ) $INC = array('js/'.$SCRIPT);
+print_header($INC);
 ?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-<?php include "includes/styles.php"; ?>
-<SCRIPT LANGUAGE="JavaScript">
-<?php if ( $groups_enabled == "Y" ) { ?>
-function selectUsers () {
-  // find id of user selection object
-  var listid = 0;
-  for ( i = 0; i < document.forms[0].elements.length; i++ ) {
-    if ( document.forms[0].elements[i].name == "users[]" )
-      listid = i;
-  }
-  url = "usersel.php?form=searchformentry&listid=" + listid + "&users=";
-  // add currently selected users
-  for ( i = 0, j = 0; i < document.forms[0].elements[listid].length; i++ ) {
-    if ( document.forms[0].elements[listid].options[i].selected ) {
-      if ( j != 0 )
-	url += ",";
-      j++;
-      url += document.forms[0].elements[listid].options[i].value;
-    }
-  }
-  //alert ( "URL: " + url );
-  // open window
-  window.open ( url, "UserSelection",
-    "width=500,height=500,resizable=yes,scrollbars=yes" );
-}
-<?php } ?>
-</SCRIPT>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php if ( empty ( $advanced ) ) { etranslate("Search"); } else { etranslate ( "Advanced Search" ); } ?></FONT></H2>
 
@@ -113,6 +71,6 @@ if ( $login == "__public__" && $public_access_others != "Y" )
 
 </FORM>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 </BODY>
 </HTML>

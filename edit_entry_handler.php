@@ -1,18 +1,7 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/site_extras.php";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
+include_once 'includes/init.php';
+include_once 'includes/site_extras.php';
 load_user_categories ();
-
-include "includes/translate.php";
 
 $error = "";
 
@@ -626,14 +615,9 @@ if ( empty ( $error ) ) {
   do_redirect ( $url );
 }
 
+print_header();
+if ( strlen ( $conflicts ) ) { 
 ?>
-<HTML>
-<HEAD><TITLE><?php etranslate($application_name)?></TITLE>
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
-
-<?php if ( strlen ( $conflicts ) ) { ?>
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Scheduling Conflict")?></H2></FONT>
 
 <?php etranslate("Your suggested time of")?> <B>
@@ -690,7 +674,7 @@ if ( empty ( $error ) ) {
 <?php } ?>
 
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 
 </BODY>
 </HTML>

@@ -1,18 +1,6 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
+include_once 'includes/init.php';
 load_user_categories ();
-
-include "includes/translate.php";
 
 // Reload preferences into $prefarray[].
 // Get system settings first.
@@ -40,56 +28,9 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
+$INC = array('js/'.$SCRIPT);
+print_header($INC);
 ?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-<SCRIPT LANGUAGE="JavaScript">
-// error check the colors
-function valid_color ( str ) {
-  var ch, j;
-  var valid = "0123456789abcdefABCDEF";
-
-  if ( str.length == 0 )
-    return true;
-
-  if ( str.charAt ( 0 ) != '#' || str.length != 7 )
-    return false;
-
-  for ( j = 1; j < str.length; j++ ) {
-   ch = str.charAt ( j );
-   if ( valid.indexOf ( ch ) < 0 )
-     return false;
-  }
-  return true;
-}
-
-function valid_form ( form ) {
-  var err = "";
-  <?php if ( $allow_color_customization ) { ?>
-  if ( ! valid_color ( form.pref_BGCOLOR.value ) )
-    err += "<?php etranslate("Invalid color for document background")?>.\n";
-  if ( ! valid_color ( form.pref_H2COLOR.value ) )
-    err += "<?php etranslate("Invalid color for document title")?>.\n";
-  if ( ! valid_color ( form.pref_CELLBG.value ) )
-    err += "<?php etranslate("Invalid color for table cell background")?>.\n";
-  if ( ! valid_color ( form.pref_TODAYCELLBG.value ) )
-    err += "<?php etranslate("Invalid color for table cell background for today")?>.\n";
-  <?php } ?>
-  if ( err.length > 0 ) {
-    alert ( "Error:\n\n" + err + "\n\n<?php etranslate("Color format should be '#RRGGBB'")?>" );
-    return false;
-  }
-  return true;
-}
-function selectColor ( color ) {
-  url = "colors.php?color=" + color;
-  var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
-}
-</SCRIPT>
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>">
 <?php
@@ -468,6 +409,6 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 
 </FORM>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 </BODY>
 </HTML>

@@ -1,57 +1,7 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-send_no_cache_header ();
-load_global_settings ();
-load_user_preferences ();
+include_once 'includes/init.php';
 load_user_layers ();
 load_user_categories ();
-if ( empty ( $friendly ) && empty ( $user ) )
-  remember_this_view ();
-
-include "includes/translate.php";
-
-if ( $allow_view_other != "Y" && ! $is_admin )
-  $user = "";
-
-$view = "month";
-
-if ( $public_access == "Y" && $login == "__public__" ) {
-  if ( $public_access_others != "Y" )
-    $user = ""; // security precaution
-}
-
-if ( ! empty ( $user ) ) {
-  $u_url = "user=$user&";
-  user_load_variables ( $user, "user_" );
-} else {
-  $u_url = "";
-  $user_fullname = $fullname;
-}
-
-if ( empty ( $friendly ) )
-  $friendly = 0;
-
-if ( ! empty ( $date ) && ! empty ( $date ) ) {
-  $thisyear = substr ( $date, 0, 4 );
-  $thismonth = substr ( $date, 4, 2 );
-  $thisday = substr ( $date, 6, 2 );
-} else {
-  if ( empty ( $month ) || $month == 0 )
-    $thismonth = date("m");
-  else
-    $thismonth = $month;
-  if ( empty ( $year ) || $year == 0 )
-    $thisyear = date("Y");
-  else
-    $thisyear = $year;
-}
 
 $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( "Y", $next );
@@ -66,38 +16,13 @@ $prevmonth = date ( "m", $prev );
 $startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
 $enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
 
-if ( $categories_enabled == "Y" && ( !$user || $user == $login ) ) {
-  if ( isset ( $cat_id ) ) {
-    $cat_id = $cat_id;
-  } elseif ( isset ( $CATEGORY_VIEW ) ) {
-    $cat_id = $CATEGORY_VIEW;
-  } else {
-    $cat_id = '';
-  }
-} else {
-  $cat_id = '';
-}
-if ( empty ( $cat_id ) )
-  $caturl = "";
-else
-  $caturl = "&cat_id=$cat_id";
-
-?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate ( $application_name) ?></TITLE>
-<?php include "includes/styles.php"; ?>
-<?php include "includes/js.php"; ?>
-<?php
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
-  echo "<META HTTP-EQUIV=\"refresh\" content=\"$refresh; URL=month.php?$u_url" .
+  $HeadX = "<META HTTP-EQUIV=\"refresh\" content=\"$refresh; URL=month.php?$u_url" .
     "date=$startdate$caturl\" TARGET=\"_self\">\n";
 }
-?>
-</HEAD>
-<BODY BGCOLOR=<?php echo "\"$BGCOLOR\"";?> CLASS="defaulttext">
-<?php
+$INC = array('js/popups.php');
+print_header($INC,$HeadX);
 
 /* Pre-Load the repeated events for quckier access */
 $repeated_events = read_repeated_events (
@@ -329,7 +254,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 ?>friendly=1" TARGET="cal_printer_friendly"
 onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 
 <?php } else {
         dbi_close ( $c );
