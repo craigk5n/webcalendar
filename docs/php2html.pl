@@ -230,7 +230,7 @@ $info
 <tr><td>WebCalendar Version:</td><td>$version ($date)</td></tr>
 <tr><td>Last updated:</td><td>$now</td></tr>
 </table>
-<h2>Function Documentation</h2>
+<h2>List of Functions</h2>
 <ul>
 EOF
 
