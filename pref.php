@@ -45,7 +45,7 @@ if ( $updating_public )
 etranslate("Preferences");
 if ( $is_nonuser_admin ) {
   nonuser_load_variables ( $user, "nonuser" );
-  echo "<br />\n<b>-- " . translate("Admin mode") . ": ".$nonuserfullname." --</b></h2>\n";
+  echo "<br />\n<span style=\"font-weight:bold;\">-- " . translate("Admin mode") . ": ".$nonuserfullname." --</span>\n";
 }
 ?></h2>
 
