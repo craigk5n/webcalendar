@@ -1,4 +1,6 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Disallow includes from being called directly
+  - Fixed several security issues reported by Joxean Koret 
   - Added "Admin" links to return user to adminhome.php from admin pages
   - Improved iCal import handling of folded lines (data that spreads
     over more than one line of text)
