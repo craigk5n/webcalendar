@@ -107,7 +107,8 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
 <?php //week number in monthview & such 
-?>.weeknumber {
+?>.weeknumber,
+.weeknumber a {
 	font-size: 10px;
 	color: #B04040;
 	text-decoration: none;
@@ -458,6 +459,42 @@ td.month a:hover {
 	text-decoration: none;
 	text-align: center;
 }
+<?php // Styles for minicalendars
+?>table.minical {
+	font-size: 12px;
+<?php // ^^^ Need this for IE for some reason ?>
+	border-collapse: collapse;
+}
+table.minical caption a {
+	font-weight: bold;
+	color: #B04040;
+}
+table.minical caption a:hover {
+	color: #0000FF;
+}
+table.minical th, #year table.minical td.empty {
+	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+}
+table.minical td {
+	padding: 0px 2px;
+	border: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
+}
+table.minical td a {
+	display: block;
+	text-align: center;
+	margin: 0px;
+	padding: 3px;
+}
+table.minical td.weekend {
+	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
+}
+table.minical td#today {
+	background-color: <?php echo $GLOBALS['TODAYCELLBG']; ?>;
+}
+table.minical td.hasevents {
+	background-color: #ddddff;
+	font-weight: bold;
+}
 #activitylog table {
 	border-width: 0px;
 	width: 100%;
@@ -479,21 +516,6 @@ td.month a:hover {
 	vertical-align: top;
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 	font-size: 13px;
-}
-#day .title {
-	margin-top: 3px;
-	text-align: center;
-}
-#year .title {
-	text-align: center;
-}
-<?php // contains the date (i.e. Monday, May 3, 2004) 
-?>#day .title .date,
-#year .title .date {
-	font-size: 24px;
-	font-weight: bold;
-	text-align: center;
-	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 #day .minical {
 	border-width: 1px;
@@ -560,6 +582,15 @@ td.month a:hover {
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 	vertical-align: top;
 }
+#month #prevmonth {
+	float: left;
+}
+#month #nextmonth {
+	float: right;
+}
+#month .minical caption {
+	margin-left: 4ex;
+}
 <?php // contains ALL months
 ?>#year .main tr {
 	vertical-align: top;
@@ -570,44 +601,10 @@ td.month a:hover {
 }
 <?php //keep font-size:12px; for IE6 rendering
 ?>#year .minical {
-	font-size: 12px;
-	border-collapse: collapse;
 	margin: 5px auto;
 }
 #year .minical caption {
 	margin: 0px auto;
-}
-#year .minical caption a {
-	font-weight: bold;
-	color: #B04040;
-}
-#year .minical caption a:hover {
-	color: #0000FF;
-}
-#year .minical th, 
-#year .minical td.empty {
-	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
-}
-#year .minical td {
-	background-color: <?php echo $GLOBALS['CELLBG'];?>;
-	padding: 0px 2px;
-	border: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
-}
-#year .minical td a {
-	display: block;
-	text-align: center;
-	margin: 0px;
-	padding: 3px;
-}
-#year .minical td.weekend {
-	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
-}
-#year .minical td#today {
-	background-color: <?php echo $GLOBALS['TODAYCELLBG']; ?>;
-}
-#year .minical td.hasevents {
-	background-color: #DDDDFF;
-	font-weight: bold;
 }
 #viewd table {
 	border-width: 0px;
@@ -677,7 +674,6 @@ td.month a:hover {
 	color: #0000FF;
 	text-decoration: none;
 }
-
 #viewv table,
 #viewm table,
 #viewl .main,
@@ -704,6 +700,7 @@ td.month a:hover {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
 }
+#year .title,
 #vieww .title,
 #viewd .title,
 #viewl .title,
@@ -713,6 +710,12 @@ td.month a:hover {
 #month .title {
 	text-align: center;
 }
+#day .title {
+	margin-top: 3px;
+	text-align: center;
+}
+#day .title .date,
+#year .title .date,
 #vieww .title .date,
 #viewd .title .date,
 #viewl .title .date,
