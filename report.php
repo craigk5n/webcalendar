@@ -3,31 +3,31 @@
  * $Id$
  *
  * Page Description:
- *	This page will either list all reports available to the current
- *	user (if report id not specified) or display a report (if the
- *	report id is specified).
+ * This page will either list all reports available to the current
+ * user (if report id not specified) or display a report (if the
+ * report id is specified).
  *
  * Input Parameters:
- *	report_id (optional) - specified report id in webcal_report table
- *	offset (optional) - specifies how many days/weeks/months +/- to display.
- *	  For example, if the report type is 1 (today) with offset=5, then
- *	  the report will display 5 days from now.  Should only be specified
- *	  if report_id is specified.  Will be ignored if specified report
- *	  does not have the webcal_report.cal_allow_nav field set to 'Y'.
- *	user (optional) - specifies which user's calendar to use for the
- *	  report.  This will be ignored if the chosen report is tied to
- *	  a specific user.
+ * report_id (optional) - specified report id in webcal_report table
+ * offset (optional) - specifies how many days/weeks/months +/- to display.
+ *   For example, if the report type is 1 (today) with offset=5, then
+ *   the report will display 5 days from now.  Should only be specified
+ *   if report_id is specified.  Will be ignored if specified report
+ *   does not have the webcal_report.cal_allow_nav field set to 'Y'.
+ * user (optional) - specifies which user's calendar to use for the
+ *   report.  This will be ignored if the chosen report is tied to
+ *   a specific user.
  *
  * Security:
- *	If system setting $reports_enabled is set to anything other than
- *	  'Y', then don't allow access to this page.
- *	If webcal_report.cal_is_global is set to 'Y', any user can view
- *	  the report.  If set to 'N', only the creator (set in
- *	  webcal_report.cal_login) can view the report.
- *	If webcal_report.cal_allow_nav is 'Y', then Next and Previous
- *	  links will be presented.  If 'N', then they will not and the
- *	  offset parameter will be ignored.
- *	Public user cannot edit/list reports.
+ * If system setting $reports_enabled is set to anything other than
+ *   'Y', then don't allow access to this page.
+ * If webcal_report.cal_is_global is set to 'Y', any user can view
+ *   the report.  If set to 'N', only the creator (set in
+ *   webcal_report.cal_login) can view the report.
+ * If webcal_report.cal_allow_nav is 'Y', then Next and Previous
+ *   links will be presented.  If 'N', then they will not and the
+ *   offset parameter will be ignored.
+ * Public user cannot edit/list reports.
  *
  */
 
@@ -79,41 +79,50 @@ function event_to_text ( $id, $date, $time, $duration,
       }
     }
   }
-  if ( $login != $user && $access == 'R' && strlen ( $user ) )
+  if ( ! empty ( $LANGUAGE ) ) {
+    $charset = translate("charset");
+  } else {
+    $charset = "iso-8859-1";
+  }
+  if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
     $name_str = "(" . translate("Private") . ")";
-  else if ( $login != $event_owner && $access == 'R' &&
-    strlen ( $event_owner ) )
+  } else if ( $login != $event_owner && $access == 'R' &&
+    strlen ( $event_owner ) ) {
     $name_str = "(" . translate("Private") . ")";
-  else if ( $login != $event_owner && strlen ( $event_owner ) ) {
-    $name_str = htmlentities ( $name );
-  } else
-    $name_str = htmlentities ( $name );
+  } else if ( $login != $event_owner && strlen ( $event_owner ) ) {
+    $name_str = htmlentities ( $name, ENT_COMPAT, $charset );
+  } else {
+    $name_str = htmlentities ( $name, ENT_COMPAT, $charset );
+  }
 
   $date_str = date_to_str ( $date, "", false );
   $date_full_str = date_to_str ( $date, "", true, false );
 
-  if ( $duration > 0 )
+  if ( $duration > 0 ) {
     $duration_str = $duration . ' ' . translate ( "minutes" );
-  else
+  } else {
     $duration_str = '';
+  }
 
-  if ( $pri == 1 )
+  if ( $pri == 1 ) {
     $pri_str = translate ( "Low" );
-  else if ( $pri == 2 )
+  } else if ( $pri == 2 ) {
     $pri_str = translate ( "Medium" );
-  else if ( $pri == 3 )
+  } else if ( $pri == 3 ) {
     $pri_str = translate ( "High" );
+  }
 
-  if ( $status == 'W' )
+  if ( $status == 'W' ) {
     $status_str = translate ( "Waiting for approval" );
-  else if ( $status == 'D' )
+  } else if ( $status == 'D' ) {
     $status_str = translate ( "Deleted" );
-  else if ( $status == 'R' )
+  } else if ( $status == 'R' ) {
     $status_str = translate ( "Rejected" );
-  else if ( $status == 'A' )
+  } else if ( $status == 'A' ) {
     $status_str = translate ( "Approved" );
-  else
+  } else 
     $status_str = translate ( "Unknown" );
+  }
 
   if ( ! empty ( $allow_html_description ) &&
     $allow_html_description == 'Y' ) {
@@ -121,7 +130,7 @@ function event_to_text ( $id, $date, $time, $duration,
     $description_str = str_replace ( '&amp;amp;', '&amp', $str );
   } else {
     $description_str = nl2br (
-      activate_urls ( htmlentities ( $description ) ) );
+      activate_urls ( htmlentities ( $description, ENT_COMPAT, ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" ) ) ) );
   }
 
   $href_str = "view_entry.php?id=$id";
@@ -170,8 +179,9 @@ if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
 
 $report_id = getIntValue ( "report_id", true );
 $offset = getIntValue ( "offset", true );
-if ( empty ( $offset ) )
+if ( empty ( $offset ) ) {
   $offset = 0;
+}
 
 // If no report id is specified, then generate a list of reports for
 // the user to select from.
@@ -243,8 +253,9 @@ if ( empty ( $error ) && empty ( $list ) ) {
         $test_report_user = $row[$i++];
         // If this report type specifies a specific user, then we will
         // use that user rather even if a user was passed in via URL.
-        if ( ! empty ( $test_report_user ) )
+        if ( ! empty ( $test_report_user ) ) {
           $report_user = $test_report_user;
+        }
         $report_allow_nav = $row[$i++];
         $report_cat_id = $row[$i++];
         $report_include_empty = $row[$i++];
@@ -261,6 +272,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
 
 if ( empty ( $report_user ) )
   $report_user = $login;
+}
 //echo "User: $report_user <p>";
 
 // Set default templates (in case there are none in the database for
@@ -299,12 +311,14 @@ if ( empty ( $error ) && empty ( $list ) ) {
 }
 
 if ( ! empty ( $report_include_header ) && $report_include_header == 'Y' ||
-  ! empty ( $list ) || ! empty ( $error ) )
+  ! empty ( $list ) || ! empty ( $error ) ) {
   print_header();
+}
 
 if ( empty ( $offset ) || empty ( $report_allow_nav ) ||
-  $report_allow_nav != 'Y' )
+  $report_allow_nav != 'Y' ) {
   $offset = 0;
+}
 
 // Set time range based on cal_time_range field.
 if ( empty ( $report_time_range ) ) {
@@ -315,12 +329,13 @@ if ( empty ( $report_time_range ) ) {
   $start_date = date ( "Ymd", $today + ( $days_offset * $ONE_DAY ) );
   $end_date = $start_date;
 } else if ( $report_time_range >= 10 && $report_time_range < 20 ) {
-  if ( $WEEK_START == 1 )
+  if ( $WEEK_START == 1 ) {
     $wkstart = get_monday_before ( date ( "Y" ), date ( "m" ),
       date ( "d" ) );
-  else
+  } else {
     $wkstart = get_sunday_before ( date ( "Y" ), date ( "m" ),
       date ( "d" ) );
+  }
   //echo "wkstart = " . date("Ymd",$wkstart) . "<br />";
   $week_offset = 11 - $report_time_range + $offset;
   //echo "week_offset=$week_offset <br />";
@@ -328,12 +343,13 @@ if ( empty ( $report_time_range ) ) {
   $end_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * $ONE_DAY ) + 
     ( $ONE_DAY * 6 ) );
 } else if ( $report_time_range >= 20 && $report_time_range < 30 ) {
-  if ( $WEEK_START == 1 )
+  if ( $WEEK_START == 1 ) {
     $wkstart = get_monday_before ( date ( "Y" ), date ( "m" ),
       date ( "d" ) );
-  else
+  } else {
     $wkstart = get_sunday_before ( date ( "Y" ), date ( "m" ),
       date ( "d" ) );
+  }
   //echo "wkstart = " . date("Ymd",$wkstart) . "<br />";
   $week_offset = 21 - $report_time_range + $offset;
   //echo "week_offset=$week_offset <br />";
@@ -370,8 +386,9 @@ if ( empty ( $error ) && empty ( $list ) ) {
   $events = read_events ( $report_user, $start_date, $end_date, $cat_id );
 
   $get_unapproved = $DISPLAY_UNAPPROVED == 'Y';
-  if ( $report_user == "__public__" )
+  if ( $report_user == "__public__" ) {
     $get_unapproved = false;
+  }
 
   //echo "User: $report_user <br />\n";
   //echo "Date Range: $start_date - $end_date <br /><br />\n";
@@ -473,11 +490,13 @@ if ( ! empty ( $error ) ) {
     "</h2>\n" . $error;
 } else if ( ! empty ( $list ) ) {
   echo "<h2>";
-  if ( $updating_public )
+  if ( $updating_public ) {
     echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
+  }
   echo translate("Manage Reports");
   echo "</h2>\n" . 
-  "<a title=\"" . translate("Admin") . "\" class=\"nav\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n" . $list;
+  "<a title=\"" . translate("Admin") . "\" class=\"nav\" href=\"adminhome.php\"> " .
+     &laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n" . $list;
 } else {
   if ( $report_include_header == 'Y' ) {
     echo "<h2>" . $report_name . "</h2>\n";
@@ -489,8 +508,9 @@ if ( ! empty ( $error ) ) {
 
 if ( empty ( $error ) && empty ( $list ) ) {
   if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
-    if ( empty ( $offset ) )
+    if ( empty ( $offset ) ) {
       $offset = 0;
+    }
     $next = $offset + 1;
     $prev = $offset - 1;
     echo "<br /><br /><a title=\"" .
@@ -503,7 +523,8 @@ if ( empty ( $error ) && empty ( $list ) ) {
       translate ( "Next" ) . "</a><br />\n";
   }
   if ( $report_include_header == 'Y' ) {
-    echo '<br /><br /><a title="' . translate("Printer Friendly") . '" class="nav" href="report.php?report_id=' . $report_id .
+    echo '<br /><br /><a title="' . translate("Printer Friendly") . 
+      '" class="nav" href="report.php?report_id=' . $report_id .
       '&amp;friendly=1' . $u_url . '&amp;offset=' . $offset .
       '" target="cal_printer_friendly" onmouseover="window.status=\'' .
       translate("Generate printer-friendly version") .
