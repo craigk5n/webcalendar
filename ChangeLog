@@ -1,4 +1,7 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Fixed bug 885181: If a user adds an event to a nonuser calendar,
+    the admin of that nonuser admin calendar must be able to approve
+    the event (if approvals are required).
   - Allow admin users to import events into other user's calendars.
   - Patch 931248: Mishandled single quotes in event name/description when
     overriding a conflict.

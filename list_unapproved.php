@@ -125,6 +125,17 @@ if ( $is_admin && $public_access == "Y" &&
   echo "<br /><br /><h3>" . translate ( "Public Access" ) . "</h3>\n";
   list_unapproved ( "__public__" );
 }
+
+// NonUser calendar admins cal approve events on that specific NonUser
+// calendar.
+if ( $nonuser_enabled == 'Y' ) {
+  $admincals = get_nonuser_cals ( $login );
+  for ( $i = 0; $i < count ( $admincals ); $i++ ) {
+    echo "<br /><br /><h3>" . $admincals[$i]['cal_fullname'] . "</h3>\n";
+    list_unapproved ( $admincals[$i]['cal_login'] );
+  }
+}
+
 ?>
 
 <?php print_trailer(); ?>
