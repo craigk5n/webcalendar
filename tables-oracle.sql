@@ -218,27 +218,27 @@ INSERT INTO webcal_config ( cal_setting, cal_value )
 INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'allow_color_customization', 'Y' );
 INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'BGCOLOR', '#C0C0C0' );
+  VALUES ('BGCOLOR','#336600');
 INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'TEXTCOLOR', '#000000' );
+  VALUES ('TEXTCOLOR','#000000');
 INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'H2COLOR', '#000000' );
+  VALUES ('H2COLOR','#000000');
 INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'CELLBG', '#C0C0C0' );
+  VALUES ('CELLBG','#C0C0C0');
 INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'WEEKENDBG', '#D0D0D0' );
+  VALUES ('WEEKENDBG','#D0D0D0');
 INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'TABLEBG', '#000000' );
+  VALUES ('TABLEBG','#000000');
 INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'THBG', '#FFFFFF' );
+  VALUES ('THBG','#FFFFFF');
 INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'THFG', '#000000' );
+  VALUES ('THFG','#000000');
 INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'POPUP_FG', '#000000' );
+  VALUES ('POPUP_FG','#000000');
 INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'POPUP_BG', '#FFFFFF' );
+  VALUES ('POPUP_BG','#FFFFFF');
 INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'TODAYCELLBG', '#E0E0E0' );
+  VALUES ('TODAYCELLBG','#FFFF33');
 INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'STARTVIEW', 'week' );
 INSERT INTO webcal_config ( cal_setting, cal_value )
