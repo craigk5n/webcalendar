@@ -80,13 +80,30 @@ function validate_and_submit () {
   return true;
 }
 
-function selectDate ( day, month, year, current ) {
-  url = "datesel.php?form=editentryform&day=" + day +
-    "&month=" + month + "&year=" + year;
-  if ( current > 0 )
-    url += '&date=' + current;
-  window.open( url, "DateSelection",
-    "width=200,height=200,resizable=yes,scrollbars=yes" );
+function selectDate (  day, month, year, current, evt ) {
+  // get currently selected day/month/year
+  monthobj = eval ( 'document.editentryform.' + month );
+  curmonth = monthobj.options[monthobj.selectedIndex].value;
+  yearobj = eval ( 'document.editentryform.' + year );
+  curyear = yearobj.options[yearobj.selectedIndex].value;
+  date = curyear;
+
+		if (document.getElementById) {
+    mX = evt.clientX   + 40;
+    mY = evt.clientY  + 120;
+  }
+  else {
+    mX = evt.pageX + 40;
+    mY = evt.pageY +130;
+  }
+	var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY ;
+  if ( curmonth < 10 )
+    date += "0";
+  date += curmonth;
+  date += "01";
+  url = "datesel.php?form=editentryform&fday=" + day +
+    "&fmonth=" + month + "&fyear=" + year + "&date=" + date;
+  var colorWindow = window.open(url,"DateSelection","width=300,height=200,"  + MyPosition);
 }
 
 <?php if ( $groups_enabled == "Y" ) { 
