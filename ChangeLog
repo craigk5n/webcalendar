@@ -1,4 +1,7 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Security fix: improved session cookie to associate the cookie with
+    remote address and local server name to make hijacking a session
+    cookie much harder.
   - Security fix: added new getValue() function that will error check formats
     of variables from users (HTTP GET/POST).
   - Fixed bug 769755: Saturday events not showing in week view (negative offset)
