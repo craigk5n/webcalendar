@@ -1,4 +1,7 @@
 Verion 0.9.42-devcvs (?? ??? ????)
+  - Added patch 759643: Added new view type "Month (on same calendar)"
+    that displays all users' events on the same month view rather than
+    separate table columns for each user.
   - Fixed bug: In tables-postgres.sql, table webcal_entry column cal_ext_for_id
     was NOT NULL when it should have been NULL.
   - Fixed bug 759231: URLs where not being converted to HTML links in
