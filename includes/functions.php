@@ -869,12 +869,14 @@ function get_browser_language () {
     $HTTP_ACCEPT_LANGUAGE = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
   if ( strlen ( $HTTP_ACCEPT_LANGUAGE ) == 0 )
     return "none";
-  $langs = explode ( ",", $HTTP_ACCEPT_LANGUAGE );
-  for ( $i = 0; $i < count ( $langs ); $i++ ) {
-    $l = strtolower ( trim ( $langs[$i] ) );
-    $ret .= "\"$l\" ";
-    if ( ! empty ( $browser_languages[$l] ) ) {
-      return $browser_languages[$l];
+  if ( ! empty ( $HTTP_ACCEPT_LANGUAGE ) ) {
+    $langs = explode ( ",", $HTTP_ACCEPT_LANGUAGE );
+    for ( $i = 0; $i < count ( $langs ); $i++ ) {
+      $l = strtolower ( trim ( $langs[$i] ) );
+      $ret .= "\"$l\" ";
+      if ( ! empty ( $browser_languages[$l] ) ) {
+        return $browser_languages[$l];
+      }
     }
   }
   //if ( strlen ( $HTTP_ACCEPT_LANGUAGE ) )
