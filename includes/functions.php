@@ -2300,6 +2300,8 @@ function display_unapproved_events ( $user ) {
 function activate_urls ( $text ) {
   $str = eregi_replace ( "(http://[^[:space:]$]+)",
     "<A HREF=\"\\1\">\\1</A>", $text );
+  $str = eregi_replace ( "(https://[^[:space:]$]+)",
+    "<A HREF=\"\\1\">\\1</A>", $text );
   return $str;
 }
 
