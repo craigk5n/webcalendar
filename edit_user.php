@@ -13,6 +13,9 @@ load_user_layers ();
 
 include "includes/translate.inc";
 
+if ( ! $is_admin )
+  $user = $login;
+
 // don't allow them to create new users if it's not allowed
 if ( ! strlen ( $user ) ) {
   // asking to create a new user
@@ -42,9 +45,6 @@ if ( ! strlen ( $user ) ) {
 <FORM ACTION="edit_user_handler.php" METHOD="POST">
 
 <?php
-
-if ( ! $is_admin )
-  $user = $login;
 
 if ( strlen ( $user ) ) {
   user_load_variables ( $user, "u" );
