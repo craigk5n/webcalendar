@@ -163,7 +163,6 @@ function dbi_connect ( $host, $login, $password, $database ) {
     }
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
-    $database = (  $host != "ignore4odbc" ) ? "$host:$database" : $database;
     if ($GLOBALS["db_persistent"]) {
       $c = odbc_pconnect ( $database, $login, $password );
     } else {
