@@ -22,7 +22,7 @@
   background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 }
 .tablecelldemo {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 10px;
   width: 30px;
   height: 30px;
@@ -30,7 +30,7 @@
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .tablecellweekend {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
   width: 80px;
   height: 80px;
@@ -39,7 +39,7 @@
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .tablecellweekenddemo {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 10px;
   width: 30px;
   height: 30px;
@@ -48,7 +48,7 @@
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .tableheader {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 14px;
   color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
   background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -56,7 +56,7 @@
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .tableheadertoday {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 14px;
   color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
   background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
@@ -64,7 +64,7 @@
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .dayofmonth {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 13px;
   color: #000000;
   text-decoration: none;
@@ -72,61 +72,61 @@
   padding-left: 1px;
 }
 .weeknumber {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 10px;
 	color: #B04040;
 	text-decoration: none;
 }
 .entry {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 13px;
   color: #006000;
   text-decoration: none;
 }
 .unapprovedentry {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
   color: #800000;
   text-decoration: none;
 }
 .layerentry {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   color: #006060;
   text-decoration: none;
 }
 .monthlink {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 13px;
   color: #B04040;
   text-decoration: none;
 }
 
 .navlinks {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 14px;
   color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
   text-decoration: none;
 }
 a {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
   text-decoration: none;
 }
 a:hover {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   color: #0000FF;
 }
 .aboutinfo {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   color: #000000;
   text-decoration: none;
   font-size: 13px;
 }
 .popup {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
   color: <?php echo ( $GLOBALS['POPUP_FG'] == "" ? "#000000" : $GLOBALS['POPUP_FG'] ); ?>;
-  background-color: <?php echo $GLOBALS['POPUP_BG'] ?>;
+  background-color: <?php echo $GLOBALS['POPUP_BG']; ?>;
   text-decoration: none;
 }
 .tooltip {
@@ -141,44 +141,44 @@ a:hover {
 	vertical-align: top;
 }
 h2 {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 20px;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 h3 {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 18px;
 }
 .pagetitle {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 24px;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	font-weight: bold;
 }
 td {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
 }
 p {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
 }
 input {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
 }
 select {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
 }
 textarea {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
   overflow: auto;
 }
 .dailymatrix {
   cursor: pointer;
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
   text-decoration: none;
 }
@@ -198,12 +198,12 @@ td.numericdate {
 }
 .user {
 	font-size: 18px;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
 .categories {
 	font-size: 18px;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
 /* formats the left column in help sections */
@@ -216,7 +216,7 @@ table.standard {
 	border-width: 1px;
 	border-color: #000000;
 	border-style: solid;
-	background-color: <?php echo $GLOBALS['CELLBG'] ?>;
+	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 }
 
 
@@ -234,9 +234,9 @@ table.standard {
 }
 body {
 	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 12px;
-	background-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
+	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
 .bullet {
 	width: 5px;
@@ -245,14 +245,14 @@ body {
 }
 /* formerly .monthlink */
 td.month a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 13px;
 	color: #B04040;
 	text-decoration: none;
 	text-align: center;
 }
 td.month a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 13px;
 	color: #0000FF;
 	text-decoration: none;
@@ -272,7 +272,7 @@ table.activitylog {
 }
 .activitylog td {
 	vertical-align: top;
-	background-color: <?php echo $GLOBALS['CELLBG'] ?>;
+	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 	font-size: 13px;
 }
 
@@ -288,11 +288,11 @@ td.dayviewtitle .date {
 	font-size: 24px;
 	font-weight: bold;
 	text-align: center;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 td.dayviewtitle .user {
 	font-size: 18px;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	font-weight: bold;
 	text-align: center;
 }
@@ -334,12 +334,12 @@ table.monthview {
 	text-align: center;
 }
 td.monthviewtitle .date {
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	font-weight: bold;
 	font-size: 24px;
 }
 .monthview th {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -359,13 +359,13 @@ table.monthviewminical {
 }
 /* contains the name of the month (i.e. January, June, December, etc) in year.php */
 .monthviewminical td.month a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	color: #B04040;
 	font-size: 13px;
 	text-decoration: none;
 }
 .monthviewminical td.month a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	color: #0000FF;
 	font-size: 13px;
 	text-decoration: none;
@@ -386,12 +386,12 @@ table.monthviewminical {
 	text-align: right;
 }
 .monthviewminical td.numdate a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 13px;
 	text-decoration: none;
 }
 .monthviewminical td.numdate a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 13px;
 	color: #0000FF;
 	text-decoration: none;
@@ -415,16 +415,16 @@ td.yearviewtitle .date {
 	font-size: 24px;
 	font-weight: bold;
 	text-align: center;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 td.yearviewtitle .user {
 	font-size: 18px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
 .yearview th {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 /*	border-right-width: 1px;
 	border-right-style: solid;
@@ -442,13 +442,13 @@ table.yearviewminical {
 }
 /* contains the name of the month (i.e. January, June, December, etc) in year.php */
 .yearviewminical td.month a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	color: #B04040;
 	font-size: 13px;
 	text-decoration: none;
 }
 .yearviewminical td.month a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	color: #0000FF;
 	font-size: 13px;
 	text-decoration: none;
@@ -470,12 +470,12 @@ table.yearviewminical {
 	text-align: right;
 }
 .yearviewminical td.numdate a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 13px;
 	text-decoration: none;
 }
 .yearviewminical td.numdate a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 13px;
 	color: #0000FF;
 	text-decoration: none;
@@ -495,12 +495,12 @@ table.yearviewminical {
 .viewdtitle .date {
 	font-size: 24px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 .viewdtitle .viewname {
 	font-size: 18px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
 table.viewd {
@@ -527,12 +527,12 @@ table.viewd {
 .viewltitle .date {
 	font-size: 24px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 .viewltitle .viewname {
 	font-size: 18px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
 table.viewl {
@@ -541,7 +541,7 @@ table.viewl {
 	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .viewl th {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -557,13 +557,13 @@ table.viewlminical {
 }
 /* contains the name of the month (i.e. January, June, December, etc) in year.php */
 .viewlminical td.month a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	color: #B04040;
 	font-size: 13px;
 	text-decoration: none;
 }
 .viewlminical td.month a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	color: #0000FF;
 	font-size: 13px;
 	text-decoration: none;
@@ -585,12 +585,12 @@ table.viewlminical {
 	text-align: right;
 }
 .viewlminical td.numdate a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 13px;
 	text-decoration: none;
 }
 .viewlminical td.numdate a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 13px;
 	color: #0000FF;
 	text-decoration: none;
@@ -605,12 +605,12 @@ table.viewlminical {
 .viewmtitle .date {
 	font-size: 24px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 .viewmtitle .viewname {
 	font-size: 18px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
 table.viewm {
@@ -623,7 +623,7 @@ table.viewm {
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
 }
 .viewm th.today {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
@@ -639,12 +639,12 @@ table.viewm {
 .viewttitle .date {
 	font-size: 24px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 .viewttitle .viewname {
 	font-size: 18px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
 table.viewt {
@@ -661,12 +661,12 @@ table.viewt {
 .viewvtitle .date {
 	font-size: 24px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 .viewvtitle .viewname {
 	font-size: 18px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
 table.viewv {
@@ -675,7 +675,7 @@ table.viewv {
 	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .empty {
-	background-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
+	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-top-width: 0px;
 	border-left-width: 0px;
 	border-right-width: 1px;
@@ -707,12 +707,12 @@ table.viewv {
 .viewwtitle .date {
 	font-size: 24px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 .viewwtitle .viewname {
 	font-size: 18px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
 table.vieww {
@@ -734,7 +734,7 @@ table.weekview {
 	width: 100%;
 }
 .weekview th {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -750,24 +750,24 @@ table.weekview {
 	width: 12%;
 }
 .weekview th a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 }
 .weekview th a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: #0000FF;
 }
 .weekview th.empty {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
-	background-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
+	border-top-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-left-width: 1px;
 	border-left-style: solid;
-	border-left-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
+	border-left-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-right-width: 1px;
 	border-right-style: solid;
 	border-right-color: <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -776,7 +776,7 @@ table.weekview {
 	border-bottom-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .weekview th.today {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
@@ -792,17 +792,17 @@ table.weekview {
 	width: 12%;
 }
 .weekview th.today a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 }
 .weekview th.today a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: #0000FF;
 }
 .weekview th.row {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -851,17 +851,17 @@ td.weekviewtitle .date {
 	font-size: 24px;
 	font-weight: bold;
 	text-align: center;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 td.weekviewtitle .weeknumber {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 20px;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 td.weekviewtitle .user {
 	font-size: 18px;
 	font-weight: bold;
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
 
@@ -873,7 +873,7 @@ table.weekdetails {
 	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .weekdetails th {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -882,17 +882,17 @@ table.weekdetails {
 	width: 100%;
 }
 .weekdetails th a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 }
 .weekdetails th a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: #0000FF;
 }
 .weekdetails th.today {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
@@ -901,17 +901,17 @@ table.weekdetails {
 	width: 100%;
 }
 .weekdetails th.today a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 }
 .weekdetails th.today a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: #0000FF;
 }
 .weekdetails th.weekend {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -920,17 +920,17 @@ table.weekdetails {
 	width: 100%;
 }
 .weekdetails th.weekend a {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 }
 .weekdetails th.weekend a:hover {
-	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
 	color: #0000FF;
 }
 .weekdetails td {
-	background-color: <?php echo $GLOBALS['CELLBG'] ?>;
+	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 	vertical-align: top;
 	height: 75px;
 }
