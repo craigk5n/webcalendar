@@ -68,7 +68,7 @@ if ( empty ( $user ) ) {
   <TD><INPUT NAME="ulastname" SIZE=20 VALUE="<?php echo htmlspecialchars ( $ulastname );?>"></TD></TR>
 <TR><TD><B><?php etranslate("E-mail address")?>:</B></TD>
   <TD><INPUT NAME="uemail" SIZE=20 VALUE="<?php echo htmlspecialchars ( $uemail );?>"></TD></TR>
-<?php if ( empty ( $user ) ) { ?>
+<?php if ( empty ( $user ) && ! $use_http_auth && $user_can_update_password ) { ?>
 <TR><TD><B><?php etranslate("Password")?>:</B></TD>
   <TD><INPUT NAME="upassword1" SIZE=15 VALUE="" TYPE="password"></TD></TR>
 <TR><TD><B><?php etranslate("Password")?> (<?php etranslate("again")?>):</B></TD>
