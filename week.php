@@ -272,33 +272,31 @@ if ( $untimed_found ) {
     $thiswday = date ( "w", $days[$d] );
 
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-		if ( $is_weekend ) {
-			$class = "weekend";
-		} else {
-			$class = "";
+	if ( $is_weekend ) {
+		$class = "weekend";
+	} else {
+		$class = "";
+	}
+
+	if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
+		if ($class != "") {
+			$class .= " ";
 		}
+		$class .= "today";
+	}
+	echo "<td";
 
-		if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
-			if ($class != "") {
-				$class .= " ";
-			}
-			$class .= "today";
-		}
-		echo "<td";
+	if ( $class != "" ) {
+		echo " class=\"$class\"";
+	}
+	echo ">";
 
-		if ( $class != "" ) {
-			echo " class=\"$class\"";
-    }
-
-		echo ">";
-
-		if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
-			echo $untimed[$d];
-		} else {
-			echo "&nbsp;";
-		}
-
-		echo "</td>\n";
+	if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
+		echo $untimed[$d];
+	} else {
+		echo "&nbsp;";
+	}
+	echo "</td>\n";
   }
   echo "</tr>\n";
 }
@@ -315,17 +313,17 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     $thiswday = date ( "w", $days[$d] );
 
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-		if ( $is_weekend ) {
-			$class = "weekend";
-		} else {
-			$class = "";
+	if ( $is_weekend ) {
+		$class = "weekend";
+	} else {
+		$class = "";
+	}
+	if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
+		if ( $class != "" ) {
+			$class .= " ";
 		}
-		if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
-			if ( $class != "" ) {
-				$class .= " ";
-			}
-			$class .= "today";
-		}
+		$class .= "today";
+	}
 
     if ( $rowspan_day[$d] > 1 ) {
       // this might mean there's an overlap, or it could mean one event
