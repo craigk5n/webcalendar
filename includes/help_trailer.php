@@ -1,5 +1,5 @@
 <?
-if (preg_match("/help_trailer\.php/", $PHP_SELF)) {
+if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
 ?>

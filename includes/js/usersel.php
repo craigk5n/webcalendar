@@ -1,6 +1,6 @@
 <?php
 global $form,$listid,$groups;
-if (preg_match("/usersel\.php/", $PHP_SELF)) {
+if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
 $form = clean_word($form);
