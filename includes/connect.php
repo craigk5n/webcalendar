@@ -97,7 +97,7 @@ if ( empty ( $login ) && $use_http_auth ) {
         // This shouldn't happen since login should be validated in validate.php
         // If it does happen, it means we received an invalid login cookie.
         //echo "Error getting user info for login \"$login\".";
-        do_redirect ( $login_url . "&error=Invalid+session+found." );
+        do_redirect ( $login_url . "&amp;error=Invalid+session+found." );
       }
     }
   }
