@@ -1,4 +1,6 @@
 Verion 0.9.42-devcvs (?? ??? ????)
+  - Fixed bug 759231: URLs where not being converted to HTML links in
+    event description.
   - Fixed bug 750044: add charset specification to translations which
     will be sent as a meta tag for each page (if defined)
   - Added patch 654625: Added daily as an option for custom views

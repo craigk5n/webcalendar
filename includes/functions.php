@@ -2299,7 +2299,7 @@ function activate_urls ( $text ) {
   $str = eregi_replace ( "(http://[^[:space:]$]+)",
     "<A HREF=\"\\1\">\\1</A>", $text );
   $str = eregi_replace ( "(https://[^[:space:]$]+)",
-    "<A HREF=\"\\1\">\\1</A>", $text );
+    "<A HREF=\"\\1\">\\1</A>", $str );
   return $str;
 }
 
