@@ -21,7 +21,7 @@ $admin_can_delete_user = false;
 
 
 // $user_external_group = 100;
-$user_external_email = "infotechfl.com";
+$user_external_email = "domain.com";
 
 
 // Check to see if a given login/password is valid.  If invalid,
