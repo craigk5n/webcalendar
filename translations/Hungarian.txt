@@ -4,13 +4,13 @@
 # Translated by:
 #	Gyorgy Baffia <gyorgy@baffia.hu>
 # Last update: 05 Sep 2001
-# Translation last updated on 03-10-2004
 #
 # Cleared, finished and polished by:
 #	Laszlo Csecsy <_boobaa_at_ajrg_point_hu_>
 # Last updated on 2005-05-31
 #
 # $Id$
+# Translation last updated on 08-02-2004
 
 
 ###############################################
@@ -21,39 +21,21 @@ charset: iso-8859-2
 
 
 ###############################################
+# Page: week.php
+#
+Previous: Elõzõ
+Week: Hét
+Admin mode: Adminisztrációs mód
+Assistant mode: Titkár mód
+Next: Következõ
+cont.: folyt.
+Generate printer-friendly version: Nyomtatóbarát verzió
+Printer Friendly: Nyomtatási nézet
+
+
+###############################################
 # Page: admin.php
 #
-English: angol
-English-US: amerikai angol
-Basque: baszk
-Bulgarian: bolgár
-Chinese-Big5: kínai (tradicionális/Big5)
-Chinese-GB2312: kínai (GB2312)
-Chinese (Traditonal/Big5): kínai (tradicionális/Big5)
-Chinese (Simplified/GB2312): kínai (GB2312)
-Czech: cseh
-Danish: dán
-Dutch: holland
-Estonian: észt
-French: francia
-Galician: galíciai
-German: német
-Holo-Big5: holo (Big5)
-Holo (Taiwanese): holo (taiwani)
-Hungarian: magyar
-Icelandic: izlandi
-Italian: olasz
-Japanese: japán
-Korean: koreai
-Norwegian: norvég
-Polish: lengyel
-Portuguese: portugál
-Portuguese_BR: brazil portugál
-Portuguese/Brazil: brazil portugál
-Russian: orosz
-Spanish: spanyol
-Swedish: svéd
-Turkish: török
 System Settings: Rendszerbeállítások
 You are not authorized: Nincs jogosultságod
 Note: Megjegyzés
@@ -87,7 +69,6 @@ Custom trailer: Egyedi lábléc
 preferred-view-help: Az alapértelmezett nézetet adja meg (Napi, Heti, Havi vagy Éves).
 Preferred view: Kedvenc nézet
 Day: Nap
-Week: Hét
 Month: Hónap
 Year: Év
 display-weekends-help: Hétvégék megjelennek-e heti nézetben.
@@ -141,6 +122,8 @@ allow-view-other-help: Megadja, hogy egyik felhasználó láthatja-e a másik naptár
 Allow viewing other user's calendars: Más felhasználók naptárának megtekintése
 allow-public-access-help: Bekapcsolva megjelenik egy csak olvasható nyilvános naptár jelenik meg, melyhez be sem kell jelentkezni.
 Allow public access: Nyilvános elérés
+public-access-default-visible: A nyilvános naptár eseményei automatikusan megjelennek az összes felhasználó naptárában
+Public access visible by default: Nyilvános naptár alapértelmezésben látható
 public-access-view-others-help: Nyilvános naptár megtekintésekor megadja, hogy más felhasználók naptárába be lehet-e tekinteni.
 Public access can view other users: Más felhasználók naptára nyilvános
 public-access-can-add-help: Bekapcsolva a nyilvános eléréssel rendelkezõ felhasználók is hozzáadhatnak új eseményeket, bár ezek a naptárban egy adminisztrátor jóváhagyásáig nem jelennek meg.
@@ -153,7 +136,7 @@ allow-view-add-help: Minden nézetben megjelenik egy '+' ikon, mellyel másik felh
 Include add event link in views: Esemény hozzáadása link minden nézetben
 allow-external-users-help: Megadja, hogy naptárrendszeren kívüli felhasználók felvehetõk-e egy esemény résztvevõjeként.
 Allow external users: Külsõ felhasználók engedélyezése
-external-can-receive-notification-help: Ha a külsõfelhasználók engedélyezése és az email engedélyezése be van kapcsolva, megadja, hogy a külsõ felhasználók kaphatnak-e email értesítést az esemény hozzáadásakor, módosításakor vagy törlésekor (ha a külsõ felhasználó email címe ismert).
+external-can-receive-notification-help: Ha a külsõ felhasználók engedélyezése és az email engedélyezése be van kapcsolva, megadja, hogy a külsõ felhasználók kaphatnak-e email értesítést az esemény hozzáadásakor, módosításakor vagy törlésekor (ha a külsõ felhasználó email címe ismert).
 External users can receive email notifications: Külsõ felhasználók kaphatnak email értesítést
 external-can-receive-reminder-help: Ha a külsõ felfelhasználók engedélyezése és az email engedélyezése be van kapcsolva, megadja, hogy a külsõ felhasználók kaphatnak-e email emlékeztetõt(ha a címük ismert).
 External users can receive email reminders: Külsõ felhasználók kaphatnak email emlékeztetõt
@@ -169,6 +152,10 @@ limit-appts-help: Lehetõvé teszi a rendszergazda számára, hogy mindenki számára 
 Limit number of timed events per day: Idõzített események számának korlátozása
 limit-appts-number-help: Megadja a felhasználónként felvehetõ napi események maximális számát.
 Maximum timed events per day: Idõzített események maximális száma
+timed-evt-len-help: Megadja az idõzített esemény hosszának beviteli módját
+Specify timed event length by: Megadja az idõzített események hosszának lépésközét
+Duration: Idõtartam
+End Time: Befejezési idõ
 Plugins: Beépülõ modulok
 plugins-enabled-help: Beépülõ programok engedélyezése.
 Enable Plugins: Beépülõ modulok engedélyezése
@@ -246,8 +233,6 @@ Event deleted: Esemény törölve
 Notification sent: Értesítés elküldve
 Reminder sent: Emlékeztetõ elküldve
 Database error: Adatbázis hiba
-Previous: Elõzõ
-Next: Következõ
 
 
 ###############################################
@@ -274,7 +259,6 @@ Error approving event: Hiba az esemény jóváhagyásakor
 ###############################################
 # Page: category.php
 #
-#
 Add: Hozzáadás
 Category Name: Kategórianév
 Global: Globális
@@ -296,10 +280,6 @@ Add New Category: Új kategória hozzáadása
 ###############################################
 # Page: day.php
 #
-Admin mode: Adminisztrációs mód
-Assistant mode: Titkár mód
-Generate printer-friendly version: Nyomtatóbarát verzió
-Printer Friendly: Nyomtatási nézet
 
 
 ###############################################
@@ -321,15 +301,16 @@ Brief Description: Rövid leírás
 full-description-help: Az esemény részletes leírása, mely a naptár-bejegyzésben jelenik meg.
 Full Description: Teljes leírás
 date-help: Az esemény dátuma.
-time-help: Az esemény idõpontja.<br /><i>Kötelezõ megadni.</i>
-am: de
-pm: du
 Untimed event: Idõpont nélküli esemény
 Timed event: Idõzített esemény
 All day event: Egész napos esemény.
+time-help: Az esemény idõpontja.<br /><i>Kötelezõ megadni.</i>
+Start Time: Kezdési idõ
+am: de
+pm: du
 duration-help: Az esemény idõtartama (óra:perc formátumban).<br /><i>Nem kötelezõ megadni.</i>
-Duration: Idõtartam
 hours: óra
+end-time-help: Megadja az esemény befejezésének várható idejét.
 priority-help: Az esemény fontossága.  A sürgõs dolgok vastagon szedve jelennek meg.
 Priority: Fontosság
 Low: Ráér
@@ -536,12 +517,6 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
-# Page: week.php
-#
-cont.: folyt.
-
-
-###############################################
 # Page: layers.php
 #
 to modify the layers settings for the: módosíthatod a rétegek beállítását a következõhöz:
@@ -598,6 +573,7 @@ This will delete this entry for all users.: Ez a bejegyzés minden felhasználó sz
 Delete repeating event for all dates: Az összes dátum ismétlõdõ bejegyzésének törlése
 Delete entry only for this date: Ezen dátum bejegyzésének törlése
 Edit entry: Bejegyzés módosítása
+Copy entry: Bejegyzés másolása
 This will delete the entry from your calendar.: A bejegyzés törölve lesz a naptáradból.
 Do you want to add this entry to your calendar?: Hozzá akarod adni ezt a bejegyzést a saját naptáradhoz?
 This will add the entry to your calendar.: A bejegyzés hozzá lesz adva a saját naptáradhoz.
@@ -750,7 +726,6 @@ Add New NonUser Calendar: Új felhasználó nélküli naptár hozzáadása
 ###############################################
 # Page: view_l.php
 #
-No users for this view: Nincs felhasználó rendelve a réteghez
 
 
 ###############################################
@@ -774,6 +749,7 @@ Manage Reports: Jelentések kezelése
 ###############################################
 # Page: login.php
 #
+Invalid login: Érvénytelen azonosító
 You must enter a login and password: Add meg az azonosítódat és jelszavadat
 Save login via cookies so I don't have to login next time: A bejelentkezési jelszó mentése, így errõl a géprõl legközelebb nem kell megadni
 Login: Bejelentkezés
@@ -801,7 +777,6 @@ Events successfully imported: események rendben importálva.
 Events from prior import marked as deleted: elõzõ importból származó eredmények töröltnek jelzése
 Conflicting events: Ütközõ események
 Errors: Hibák
-Back to My Calendar: Vissza a Saját Naptáramhoz
 There was an error parsing the import file or no events were returned: Hiba történt az importálandó fájl feldolgozásakor, vagy nem volt benne esemény
 The import file contained no data: Az importálandó fájl nem tartalmaz adatot.
 The following conflicts with the suggested time: A javasolt idõponttal a következõ ütközik
@@ -855,7 +830,7 @@ Are you sure you want to delete this report?: Valóban törölni akarod ezt a jelen
 # Page: assistant_edit.php
 #
 Assistants: Titkárok
-Yours assistants: Titkáraid
+Your assistants: Titkáraid
 
 
 ###############################################
@@ -888,6 +863,18 @@ Delete all events before: Az összes ezelõtti esemény törlése
 Check box to delete <b>ALL</b> events for a user: Jelöld be a felhasználó <b>ÖSSZES</b> eseményének törléséhez
 Are you sure you want to delete events for: Biztosan törölni akarod a következõ felhasználó eseményeit:
 Records deleted from: Rekordok törölve a következõbõl
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: Még nem adtál hozzá kategóriát
+Set Category: Kategória beállítása
+
+
+###############################################
+# Page: upcoming.php
+#
 
 
 ###############################################
@@ -928,13 +915,6 @@ Your suggested time of: Az általad javasolt
 
 
 ###############################################
-# Page: set_entry_cat.php
-#
-You have not added any categories: Még nem adtál hozzá kategóriát
-Set Category: Kategória beállítása
-
-
-###############################################
 # Page: edit_template.php
 #
 Edit Custom Script/Stylesheet: Egyedi szkript/stíluslap szerkesztése
@@ -946,6 +926,7 @@ Edit Custom Trailer: Egyedi lábléc szerkesztése
 # Page: includes/trailer.php
 #
 Go to: Ugrás
+Back to My Calendar: Vissza a Saját Naptáramhoz
 My Calendar: Saját naptáram
 Logout: Kijelentkezés
 Another User's Calendar: Másik felhasználó naptára
@@ -962,7 +943,6 @@ Manage calendar of: A következõ naptárának kezelése
 ###############################################
 # Page: includes/user.php
 #
-Invalid login: Érvénytelen azonosító
 Invalid user login: Érvénytelen felhasználói azonosító
 
 
@@ -990,6 +970,39 @@ Send Reminder: Emlékeztetõ küldése
 ###############################################
 # Page: includes/help_trailer.php
 #
+
+
+###############################################
+# Page: includes/config.php
+#
+English: angol
+Basque: baszk
+Bulgarian: bolgár
+Catalan: katalán
+Chinese (Traditonal/Big5): kínai (tradicionális/Big5)
+Chinese (Simplified/GB2312): kínai (GB2312)
+Czech: cseh
+Danish: dán
+Dutch: holland
+Estonian: észt
+Finnish: finn
+French: francia
+Galician: galíciai
+German: német
+Holo (Taiwanese): holo (taiwani)
+Hungarian: magyar
+Icelandic: izlandi
+Italian: olasz
+Japanese: japán
+Korean: koreai
+Norwegian: norvég
+Polish: lengyel
+Portuguese: portugál
+Portuguese/Brazil: brazil portugál
+Russian: orosz
+Spanish: spanyol
+Swedish: svéd
+Turkish: török
 
 
 ###############################################
@@ -1038,7 +1051,8 @@ Dec: Dec
 #
 Server URL is required: Szerver URL-t meg kell adni
 Server URL must end with '/': Szerver URL-nek '/'-rel kell végzõdnie
-Invalid color for document background: Érvéntelen háttérszín
+Invalid work hours: Érvénytelen munkaidõ
+Invalid color for document background: Érvénytelen háttérszín
 Invalid color for document title: Érvénytelen címsorszín
 Invalid color for table cell background: Érvénytelen táblacella-háttérszín
 Invalid color for table grid: Érvénytelen táblarács-szín
