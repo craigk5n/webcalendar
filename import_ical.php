@@ -204,10 +204,19 @@ function format_ical($event) {
   if ( preg_match ( "/\d\d\d\d\d\d\d\d$/", $event['dtstart'],
     $pmatch ) && preg_match ( "/\d\d\d\d\d\d\d\d$/", $event['dtend'],
     $pmatch2 ) && $event['dtstart'] != $event['dtend'] ) {
-    // Event spans multiple days
-    $fevent[Repeat][Interval] = '1'; // 1 = daily
-    $fevent[Repeat][Frequency] = '1'; // 1 = every day
-    $fevent[Repeat][EndTime] = icaldate_to_timestamp($event[dtend]);
+    $startTime = icaldate_to_timestamp($event[dtstart]);
+    $endTime = icaldate_to_timestamp($event[dtend]);
+    if ( $endTime - $startTime == ( 3600 * 24 ) ) {
+      // They used a DTEND set to the next day to say this is an all day
+      // event.  We will call this an untimed event.
+      $fevent[Duration] = '0';
+      $fevent[Untimed] = 1;
+    } else {
+      // Event spans multiple days
+      $fevent[Repeat][Interval] = '1'; // 1 = daily
+      $fevent[Repeat][Frequency] = '1'; // 1 = every day
+      $fevent[Repeat][EndTime] = $endTime;
+    }
   }
 
   $fevent[Summary] = $event['summary'];
@@ -217,9 +226,95 @@ function format_ical($event) {
 
   // Repeats
   //
-  // For now, we just handle the case were the event spans multiple
-  // dates, not the kind spelled out in RRULE.
+  // Handle RRULE
   //
+  if ($event[rrule]) {
+    // first remove and EndTime that may have been calculated above
+    unset ( $fevent[Repeat][EndTime] );
+    //split into pieces
+    //echo "RRULE line: $event[rrule] <br />\n";
+    $RR = explode ( ";", $event[rrule] );
+
+    // create an associative array of key-value paris in $RR2[]
+    for ( $i = 0; $i < count ( $RR ); $i++ ) {
+      $ar = explode ( "=", $RR[$i] );
+      $RR2[$ar[0]] = $ar[1];
+    }
+
+    for ( $i = 0; $i < count ( $RR ); $i++ ) {
+      //echo "RR $i = $RR[$i] <br />";
+      if ( preg_match ( "/^FREQ=(.+)$/i", $RR[$i], $match ) ) {
+        if ( preg_match ( "/YEARLY/i", $match[1], $submatch ) ) {
+          $fevent[Repeat][Interval] = 5;
+        } else if ( preg_match ( "/MONTHLY/i", $match[1], $submatch ) ) {
+          $fevent[Repeat][Interval] = 2;
+        } else if ( preg_match ( "/WEEKLY/i", $match[1], $submatch ) ) {
+          $fevent[Repeat][Interval] = 2;
+        } else if ( preg_match ( "/DAILY/i", $match[1], $submatch ) ) {
+          $fevent[Repeat][Interval] = 1;
+        } else {
+          // not supported :-(
+          echo "Unsupported iCal FREQ value \"$match[1]\" <br />\n";
+        }
+      } else if ( preg_match ( "/^INTERVAL=(.+)$/i", $RR[$i], $match ) ) {
+        $fevent[Repeat][Frequency] = $match[1];
+      } else if ( preg_match ( "/^UNTIL=(.+)$/i", $RR[$i], $match ) ) {
+        // specifies an end date
+        $fevent[Repeat][EndTime] = icaldate_to_timestamp ( $match[1] );
+      } else if ( preg_match ( "/^COUNT=(.+)$/i", $RR[$i], $match ) ) {
+        // NOT YET SUPPORTED -- TODO
+        echo "Unsupported iCal COUNT value \"$RR[$i]\" <br />\n";
+      } else if ( preg_match ( "/^BYSECOND=(.+)$/i", $RR[$i], $match ) ) {
+        // NOT YET SUPPORTED -- TODO
+        echo "Unsupported iCal BYSECOND value \"$RR[$i]\" <br />\n";
+      } else if ( preg_match ( "/^BYMINUTE=(.+)$/i", $RR[$i], $match ) ) {
+        // NOT YET SUPPORTED -- TODO
+        echo "Unsupported iCal BYMINUTE value \"$RR[$i]\" <br />\n";
+      } else if ( preg_match ( "/^BYHOUR=(.+)$/i", $RR[$i], $match ) ) {
+        // NOT YET SUPPORTED -- TODO
+        echo "Unsupported iCal BYHOUR value \"$RR[$i]\" <br />\n";
+      } else if ( preg_match ( "/^BYMONTH=(.+)$/i", $RR[$i], $match ) ) {
+        // this event repeats during the specified months
+        $months = explode ( ",", $match[1] );
+        if ( count ( $months ) == 1 ) {
+          // Change this to a monthly event so we can support repeat by
+          // day of month (if needed)
+          // Frequency = 3 (by day), 4 (by date), 6 (by day reverse)
+          if ( ! empty ( $RR2[BYDAY] ) ) {
+            if ( preg_match ( "/^-/", $RR2[BYDAY], $junk ) )
+              $fevent[Repeat][Interval] = 6; // monthly by day reverse
+            else
+              $fevent[Repeat][Interval] = 3; // monthly by day
+            $fevent[Repeat][Frequency] = 12; // once every 12 months
+          } else {
+            // could convert this to monthly by date, but we will just
+            // leave it as yearly.
+            //$fevent[Repeat][Interval] = 4; // monthly by date
+          }
+        } else {
+          // WebCalendar does not support this
+          echo "Unsupported iCal BYMONTH value \"$match[1]\" <br />\n";
+        }
+      } else if ( preg_match ( "/^BYDAY=(.+)$/i", $RR[$i], $match ) ) {
+        $fevent[Repeat][RepeatDays] = rrule_repeat_days( $match[1] );
+      } else if ( preg_match ( "/^BYMONTHDAY=(.+)$/i", $RR[$i], $match ) ) {
+        // NOT YET SUPPORTED -- TODO
+        echo "Unsupported iCal BYMONTHDAY value \"$RR[$i]\" <br />\n";
+      } else if ( preg_match ( "/^BYSETPOS=(.+)$/i", $RR[$i], $match ) ) {
+        // NOT YET SUPPORTED -- TODO
+        echo "Unsupported iCal BYSETPOS value \"$RR[$i]\" <br />\n";
+      }
+    }
+
+    // Repeating exceptions?
+    if ($event[exdate]) {
+      $fevent[Repeat][Exceptions] = array();
+      $EX = explode(",", $event[exdate]);
+      foreach ( $EX as $exdate ){
+        $fevent[Repeat][Exceptions][] = vcaldate_to_timestamp($exdate);
+      }
+    }
+  } // end if rrule
 
   return $fevent;
 }

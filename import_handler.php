@@ -60,18 +60,12 @@ if ($file['size'] > 0) {
       echo translate("Conflicting events") . ": " . $count_con . "<br>\n";
     }
     echo translate ( "Errors" ) . ": $error_num<br>\n<br>\n";
-    if ( strlen ( get_last_view() ) )
-      $url = get_last_view ();
-    else
-      $url = "$STARTVIEW.php";
-    echo "  <A CLASS=\"navlinks\" HREF=\"$url\">" .
-      translate("Back to My Calendar") . "</A></p>\n";
   } elseif ($errormsg) {
     echo "<p><b>" . translate("Error") . ":</b> $errormsg<br>\n";
   } else {
     echo "<p><b>" . translate("Error") . ":</b> " .
       translate("There was an error parsing the import file or no events were returned") .
-      ".<br>\n";
+      ".<br />\n";
   }
 } else {
   echo "<p><b>" . translate("Error") . ":</b> " .
@@ -182,7 +176,7 @@ function import_data ( $data, $overwrite, $type ) {
     }
 
     if ( empty ( $error ) && ! empty ( $overlap ) ) {
-      $error = translate("The following conflicts with the suggested time").":<UL>$overlap</UL>";
+      $error = translate("The following conflicts with the suggested time").":<ul>$overlap</ul>";
     }
 
     if ( empty ( $error ) ) {
@@ -225,7 +219,7 @@ function import_data ( $data, $overwrite, $type ) {
         dbi_free_result ( $res );
       } else {
         $id = 1;
-        //$error = "Unable to select MAX cal_id: " . dbi_error () . "<P><B>SQL:</B> $sql";
+        //$error = "Unable to select MAX cal_id: " . dbi_error () . "<br /><br /><b>SQL:</b> $sql";
         //break;
       }
       if ( $firstEventId == 0 )
@@ -371,6 +365,9 @@ function import_data ( $data, $overwrite, $type ) {
         dbi_query ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = $id" );
       }
       if (! empty ($Entry[Repeat][Interval])) {
+        //while ( list($k,$v) = each ( $Entry[Repeat] ) ) {
+        //  echo "$k: $v <br />\n";
+        //}
         $rpt_type = RepeatType($Entry[Repeat][Interval]);
         $freq = ( $Entry[Repeat][Frequency] ? $Entry[Repeat][Frequency] : 1 );
         if ( strlen ( $Entry[Repeat][EndTime] ) ) {
@@ -385,7 +382,7 @@ function import_data ( $data, $overwrite, $type ) {
           "( $id, '$rpt_type', $end, $days, $freq )";
         $sqlLog .= $sql . "<br />\n";
         if ( ! dbi_query ( $sql ) ) {
-            $error = "Unable to add to webcal_entry_repeats: ".dbi_error ()."<P><B>SQL:</B> $sql";
+            $error = "Unable to add to webcal_entry_repeats: ".dbi_error ()."<br /><br /><b>SQL:</b> $sql";
             break;
         }
 
@@ -396,7 +393,7 @@ function import_data ( $data, $overwrite, $type ) {
             $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date ) VALUES ( $id, $ex_date )";
             $sqlLog .= $sql . "<br />\n";
             if ( ! dbi_query ( $sql ) ) {
-              $error = "Unable to add to webcal_entry_repeats_not: ".dbi_error ()."<P><B>SQL:</B> $sql";
+              $error = "Unable to add to webcal_entry_repeats_not: ".dbi_error ()."<br /><br /><b>SQL:</b> $sql";
               break;
             }
           }
@@ -423,35 +420,40 @@ function import_data ( $data, $overwrite, $type ) {
 
     if ( ! empty ($error) && empty ($overlap))  {
       $error_num++;
-      echo "<H2><FONT COLOR=\"$H2COLOR\">". translate("Error") .
-        "</H2></FONT>\n<BLOCKQUOTE>\n";
-      echo $error . "</BLOCKQUOTE><BR>\n";
+      echo "<h2><font color=\"$H2COLOR\">". translate("Error") .
+        "</h2></font>\n<blockquote>\n";
+      echo $error . "</blockquote><br />\n";
     }
 
     // Conflicting
     if ( ! empty ( $overlap ) ) {
-      echo "<B><FONT COLOR=\"$H2COLOR\">" .
+      echo "<b><font color=\"$H2COLOR\">" .
         translate("Scheduling Conflict") . ": ";
       $count_con++;
-      echo "</B></FONT>";
+      echo "</b></font>";
 
       if ( $Entry[Duration] > 0 ) {
-        $time = display_time ( $Entry[StartHour].$Entry[StartMinute]."00" ) . " - " . display_time ( $Entry[EndHour].$Entry[EndMinute]."00" );
+        $time = display_time ( $Entry[StartHour].$Entry[StartMinute]."00" ) .
+          " - " . display_time ( $Entry[EndHour].$Entry[EndMinute]."00" );
       }
       $dd = $Entry[StartMonth] . "-" .  $Entry[StartDay] . "-" . $Entry[StartYear];
-      echo "<A CLASS=\"entry\" HREF=\"view_entry.php?id=$id";
-      echo "\" onMouseOver=\"window.status='" . translate("View this entry") ."'; return true;\" onMouseOut=\"window.status=''; return true;\">";
+      echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
+      echo "\" onmouseover=\"window.status='" . translate("View this entry") ."'; return true;\" onmouseout=\"window.status=''; return true;\">";
       $Entry[Summary] = str_replace ( "''", "'", $Entry[Summary] );
       $Entry[Summary] = str_replace ( "'", "\\'", $Entry[Summary] );
       echo htmlspecialchars ( $Entry[Summary] );
-      echo "</A> (" . $dd . "&nbsp;  " . $time . ")<BR>\n";
+      echo "</a> (" . $dd;
+      $time = trim ( $time );
+      if ( ! empty ( $time ) )
+        echo "&nbsp;  " . $time;
+      echo ")<br />\n";
       etranslate("conflicts with the following existing calendar entries");
-      echo ":<UL>\n" . $overlap . "</UL>\n";
+      echo ":<ul>\n" . $overlap . "</ul>\n";
     } else {
 
     // No Conflict
-      echo "<B><FONT COLOR=\"$H2COLOR\">" .
-        translate("Event Imported") . ":</B></FONT>\n";
+      echo "<b><font color=\"$H2COLOR\">" .
+        translate("Event Imported") . ":</b></font>\n";
       $count_suc++;
       if ( $Entry[Duration] > 0 ) {
         $time = display_time ( $Entry[StartHour].$Entry[StartMinute]."00" ) .
@@ -460,12 +462,15 @@ function import_data ( $data, $overwrite, $type ) {
       $dateYmd = sprintf ( "%04d%02d%02d", $Entry[StartYear],
         $Entry[StartMonth], $Entry[StartDay] );
       $dd = date_to_str ( $dateYmd );
-      echo "<A CLASS=\"entry\" HREF=\"view_entry.php?id=$id";
-      echo "\" onMouseOver=\"window.status='" . translate("View this entry") ."'; return true;\" onMouseOut=\"window.status=''; return true;\">";
+      echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
+      echo "\" onmouseover=\"window.status='" . translate("View this entry") ."'; return true;\" onmouseout=\"window.status=''; return true;\">";
       $Entry[Summary] = str_replace( "''", "'", $Entry[Summary]);
       $Entry[Summary] = str_replace( "\\", "", $Entry[Summary]);
       echo htmlspecialchars ( $Entry[Summary] );
-      echo "</A> (" . $dd . "&nbsp;  " . $time . ")<BR>\n";
+      echo "</a> (" . $dd;
+      if ( ! empty ( $time ) )
+        echo "&nbsp;  " . $time;
+      echo ")<br />\n";
     }
 
     // Reset Variables
