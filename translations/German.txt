@@ -29,7 +29,7 @@
 # Last update: 14 Jul 2003 by Markus Egartner <edv@kh-hallein.at>
 # Last update: 21 Jul 2003 by Markus Egartner <edv@kh-hallein.at>
 # Last update: 20 Oct 2003 by Markus Egartner <edv@kh-hallein.at>
-# Translation last updated on 12-15-2003
+# Translation last updated on 12-23-2003
 
 
 ###############################################
@@ -37,6 +37,36 @@
 #
 charset: iso-8859-1
 
+
+
+###############################################
+# Page: activity_log.php
+#
+Activity Log: Aktivitäten Protokoll
+User: Benutzer
+Calendar: Kalender
+Date: Datum
+Time: Zeit
+Event: Termin
+Action: Aktion
+Event created: Termin hinzugefügt
+Event approved: Termin bestätigt
+Event rejected: Termin abgelehnt
+Event updated: Termin aktualisiert
+Event deleted: Termin gelöscht
+Notification sent: Bestätigung gesendet
+Reminder sent: Erinnerung versendet
+Database error: Datenbank Fehler
+Previous: Vorherige
+Next: Nächsten
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: ungültiger Eintrag
+This is a private event and may not be added to your calendar.: Das ist ein PRIVATER Termin und kann Ihrem Kalender nicht hinzugefügt werden.
+Error adding event: Fehler beim Hinzufügen eines Termines
 
 
 ###############################################
@@ -200,36 +230,6 @@ Event popup text: Terminerinnerung-Text
 
 
 ###############################################
-# Page: activity_log.php
-#
-Activity Log: Aktivitäten Protokoll
-User: Benutzer
-Calendar: Kalender
-Date: Datum
-Time: Zeit
-Event: Termin
-Action: Aktion
-Event created: Termin hinzugefügt
-Event approved: Termin bestätigt
-Event rejected: Termin abgelehnt
-Event updated: Termin aktualisiert
-Event deleted: Termin gelöscht
-Notification sent: Bestätigung gesendet
-Reminder sent: Erinnerung versendet
-Database error: Datenbank Fehler
-Previous: Vorherige
-Next: Nächsten
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: ungültiger Eintrag
-This is a private event and may not be added to your calendar.: Das ist ein PRIVATER Termin und kann Ihrem Kalender nicht hinzugefügt werden.
-Error adding event: Fehler beim Hinzufügen eines Termines
-
-
-###############################################
 # Page: admin_handler.php
 #
 Error: Fehler
@@ -240,6 +240,19 @@ The following error occurred: Folgender Fehler trat auf
 # Page: approve_entry.php
 #
 Error approving event: Fehler bei Bestätigung des Ereignisses
+
+
+###############################################
+# Page: assistant_edit.php
+#
+Assistants: Assistenten
+Admin mode: Administratormodus
+Yours assistants: Ihre Assistenten
+
+
+###############################################
+# Page: assistant_edit_handler.php
+#
 
 
 ###############################################
@@ -266,7 +279,6 @@ Add New Category: Neue Kategorie hinzufügen
 ###############################################
 # Page: day.php
 #
-Admin mode: Administratormodus
 Assistant mode: Assistentenmodus
 Generate printer-friendly version: Erzeuge Version zum Drucken
 Printer Friendly: Druckansicht
@@ -345,6 +357,25 @@ You are not authorized to edit this entry: Sie haben keine Berechtigung diesen E
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+The following conflicts with the suggested time: Folgende Konflikte mit vorgeschlagenem Termin
+Unnamed Event: unbenanntes Ereignis
+The description is: Die Beschreibung lautet
+Title: WebCalendar
+A new appointment has been made for you by: Es wurde Ihnen ein neuer Termin eingetragen von -->  
+An appointment has been updated by: Ein Termin wurde geändert von
+The subject is: Die Beschreibung lautet 
+Please look on: Bitte konsultieren Sie Ihren  
+to accept or reject this appointment: um den Termin zu bestätigen/abzulehnen.
+to view this appointment: Termin anschauen
+Scheduling Conflict: Terminüberschneidung
+Your suggested time of: Ihre Eintragung von 
+conflicts with the following existing calendar entries: überschneidet sich mit folgenden Kalender-Einträgen.
+Cancel: Abbrechen
+
+
+###############################################
 # Page: edit_layer.php
 #
 Edit Layer: Layer editieren
@@ -362,6 +393,53 @@ Delete layer: Layer löschen
 #
 You cannot create a layer for yourself: Sie können sich selber als Layer NICHT hinzufügen
 You can only create one layer for each user: Sie können nur jeweils EINEN Benutzer pro Layer hinzufügen
+
+
+###############################################
+# Page: edit_report.php
+#
+Tomorrow: Morgen
+Today: Heute
+Yesterday: Gestern
+Day before yesterday: Vorgestern
+Next week: Nächste Woche
+This week: Diese Woche
+Last week: Letzte Woche
+Week before last: Vorletzte Woche
+Next week and week after: Nächste Woche und übernächste Woche
+This week and next week: Diese Woche und nächste Woche
+Last week and this week: Letzte Woche und diese Woche
+Last two weeks: Letzten zwei Wochen
+Next month: Nächstes Monat
+This month: Dieser Monat
+Last month: Letztes Monat
+Month before last: Vorletztes Monat
+Next year: Nächstes Jahr
+This year: Dieses Jahr
+Last year: Letztes Jahr
+Year before last: Vorletztes Jahr
+Invalid report id: Ungültige Bericht ID
+Unnamed Report: <neuer Bericht>
+Add Report: Bericht hinzufügen
+Edit Report: Bericht editieren
+Report name: Berichtsname
+Current User: aktueller Benutzer
+Include link in trailer: inklusive Link im "Trailer"
+Include standard header/trailer: inklusive Standard-Kopf/Trailer
+Date range: Datumsbereich
+Include previous/next links: inlusive vorige(r)/nächste(r) Link(s)
+Include empty dates: inklusive leere Datums
+Template variables: Vorlagen Variablen
+Page template: Seiten Vorlagen
+Day template: Tagesvorlage
+Event template: Terminvorlage
+Are you sure you want to delete this report?: Wollen Sie diese Bericht wirklich löschen?
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+Variable N not found: Variable N nicht gefunden
 
 
 ###############################################
@@ -438,34 +516,6 @@ Add New Group: Neue Gruppe hinzufügen
 
 
 ###############################################
-# Page: pref.php
-#
-Preferences: Voreinstellungen
-to modify the preferences for the Public Access calendar: um die Voreinstellungen des öffentlichen Kalenders zu ändern
-tz-help: Hilfe für Zeitzonen
-Timezone Offset: Zeitzonenausgleich
-Add N hours to: Hinzufügen von N Stunden zu
-Subtract N hours from: Abziehen von N Stunden von
-same as: gleich wie
-server time: Serverzeit
-Default Category: Standard Kategorie
-When I am the boss: Wenn ich der Chef bin
-Email me event notification: Benachrichtigen bei Terminbestätigung
-I want to approve events: Ich möchte Termine überprüfen
-allow-remote-subscriptions-help: Bestimmt ob 'REMOTE'-Teilnehmer IHREN WebKalender abonnieren dürfen, und somit dessen Termine und ihre 'iCal'-aktiven Anwendungen (wie Apple's iCal oder Mozilla-Kalender) sehen können.
-remote-subscriptions-url-help: Zeigt die URL, die ein 'REMOTE'-Teilnehmer zum Abonnieren Ihres Kalenders verwenden soll
-URL: URL
-Sun: Son
-Mon: Mon
-Tue: Die
-Wed: Mit
-Thu: Don
-Fri: Fre
-Sat: Sam
-Save Preferences: Voreinstellungen speichern
-
-
-###############################################
 # Page: help_bug.php
 #
 Report Bug: Fehlermeldung
@@ -478,11 +528,31 @@ Adding/Editing Calendar Entries: Hinzufügen/Ändern von Kalender-Einträgen
 
 
 ###############################################
+# Page: help_import.php
+#
+Import: Import
+Palm Desktop: Palm Desktop
+This form will allow you to import entries from the Palm Desktop Datebook.: Dieses Formular erlaubt das Importieren der Kalendereinträge ihres Palm Desktop Datebook.
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner
+The following entries will not be imported: Folgende Einträge werden nicht importiert
+Entries older than the current date: Einträge die älter als das aktuelle Datum sind
+Entries created in the Palm Desktop that have not been HotSync'd: Hinzugefügte Einträge im Palm Desktop die nicht synchronisiert wurden (HotSync'd)
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim nächsten 
+Therefore, updates should be made in the Palm Desktop.: Deshalb sollten ihren Palm/Desktop immer updaten.
+vCal: vCal
+This form will import vCalendar (.vcs) 1.0 events: Dieses Formular importiert vCalendar (.vcs) 1.0 Einträge
+The following formats have been tested: Folgende Formate wurden getestet
+Palm Desktop 4: Palm Desktop 4
+Lotus Organizer 6: Lotus Organizer 6
+Microsoft Outlook 2002: Microsoft Outlook 2002
+
+
+###############################################
 # Page: help_index.php
 #
 Help Index: Hilfe-Index
 Layers: Layers
-Import: Import
+Preferences: Voreinstellungen
 
 
 ###############################################
@@ -503,13 +573,31 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_pref.php
 #
+Default Category: Standard Kategorie
 default-category-help: Legt eine Standardkategorie für einen neuen Termin fest.
+allow-remote-subscriptions-help: Bestimmt ob 'REMOTE'-Teilnehmer IHREN WebKalender abonnieren dürfen, und somit dessen Termine und ihre 'iCal'-aktiven Anwendungen (wie Apple's iCal oder Mozilla-Kalender) sehen können.
+URL: URL
+remote-subscriptions-url-help: Zeigt die URL, die ein 'REMOTE'-Teilnehmer zum Abonnieren Ihres Kalenders verwenden soll
 
 
 ###############################################
-# Page: week.php
+# Page: import.php
 #
-cont.: beinhalt.
+Exclude private records: Private Einträge ausschliessen
+Datebook File: Datebook Datei
+vCal File: vCal Datei
+
+
+###############################################
+# Page: import_handler.php
+#
+Conflicting events: Überschneidende Termine
+Errors: Fehler
+Back to My Calendar: Zurück zu meinem Kalender
+There was an error parsing the import file or no events were returned: Es trat ein Fehler beim 'Parsen' der Import-Datei auf oder keine Einträge wurden zurückgegeben
+The import file contained no data: Die importierte Datei enthielt keine Daten
+View this entry: Eintrag ansehen
+Event Imported: Termin importiert
 
 
 ###############################################
@@ -534,7 +622,6 @@ Add layer: Layer hinzufügen
 ###############################################
 # Page: list_unapproved.php
 #
-View this entry: Eintrag ansehen
 Approve this entry?: Eintrag bestätigen?
 Approve/Confirm: Eintrag bestätigen
 Reject this entry?: Eintrag ablehnen?
@@ -545,13 +632,55 @@ Public Access: Öffentlicher Zugang
 
 
 ###############################################
-# Page: view_v.php
+# Page: login.php
 #
+You must enter a login and password: Sie müssen einen Benutzernamen und ein Kennwort eingeben.
+Save login via cookies so I don't have to login next time: Login in Cookie abspeichern, um Anmeldung beim nächsten Mal automatisch zu überspringen.
+Login: Anmelden
+Access public calendar: Zugang öffentlicher Kalender
+cookies-note: <B>Hinweis:</B> Für diese Anwendung müssen Cookies im Browser akzeptiert werden.
 
 
 ###############################################
 # Page: month.php
 #
+Sun: Son
+Mon: Mon
+Tue: Die
+Wed: Mit
+Thu: Don
+Fri: Fre
+Sat: Sam
+
+
+###############################################
+# Page: nonusers.php
+#
+NONUSER_PREFIX not set: 'NONUSER_PREFIX' nicht definiert
+NonUser: 'Zentraler' Kalender
+Calendar ID: Kalender ID
+Add New NonUser Calendar: Neuen 'Zentraler' Kalender hinzufügen
+
+
+###############################################
+# Page: nonusers_handler.php
+#
+
+
+###############################################
+# Page: pref.php
+#
+to modify the preferences for the Public Access calendar: um die Voreinstellungen des öffentlichen Kalenders zu ändern
+tz-help: Hilfe für Zeitzonen
+Timezone Offset: Zeitzonenausgleich
+Add N hours to: Hinzufügen von N Stunden zu
+Subtract N hours from: Abziehen von N Stunden von
+same as: gleich wie
+server time: Serverzeit
+When I am the boss: Wenn ich der Chef bin
+Email me event notification: Benachrichtigen bei Terminbestätigung
+I want to approve events: Ich möchte Termine überprüfen
+Save Preferences: Voreinstellungen speichern
 
 
 ###############################################
@@ -560,11 +689,34 @@ Public Access: Öffentlicher Zugang
 
 
 ###############################################
+# Page: publish.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: Ein Termin wurde zurückgewiesen von
-The description is: Die Beschreibung lautet
-Title: WebCalendar
+
+
+###############################################
+# Page: report.php
+#
+Private: Privat
+Waiting for approval: Warten auf Bestätigung
+Deleted: gelöscht
+Rejected: Eintrag abgelehnt, wird nicht teilnehmen  
+Approved: überprüft
+Unknown: unbekannt
+to manage reports for the Public Access calendar: verwalten der Berichte für den öffentlichen Kalender
+Add new report: Neuen Bericht hinzufügen
+cont.: beinhalt.
+Manage Reports: Berichte verwalten
 
 
 ###############################################
@@ -593,8 +745,10 @@ Go: Zeigen
 
 
 ###############################################
-# Page: publish.php
+# Page: set_entry_cat.php
 #
+You have not added any categories: Sie haben noch keine Kategorien angelegt
+Set Category: Kategorie zuweisen
 
 
 ###############################################
@@ -611,17 +765,11 @@ All: alle
 Reset: Zurücksetzen
 Remove: Entfernen
 Ok: Ok
-Cancel: Abbrechen
 
 
 ###############################################
-# Page: import.php
+# Page: view_d.php
 #
-This form will allow you to import entries from the Palm Desktop Datebook.: Dieses Formular erlaubt das Importieren der Kalendereinträge ihres Palm Desktop Datebook.
-Exclude private records: Private Einträge ausschliessen
-Datebook File: Datebook Datei
-This form will import vCalendar (.vcs) 1.0 events: Dieses Formular importiert vCalendar (.vcs) 1.0 Einträge
-vCal File: vCal Datei
 
 
 ###############################################
@@ -636,9 +784,6 @@ every: jede(n)
 last: letzte(r),(s)
 Description: Beschreibung
 Status: Status
-Waiting for approval: Warten auf Bestätigung
-Deleted: gelöscht
-Rejected: Eintrag abgelehnt, wird nicht teilnehmen  
 External User: Externer Benutzer
 Approve/Confirm entry: Eintrag bestätigen?
 Reject entry: Eintrag ablehnen?
@@ -660,12 +805,22 @@ Export this entry to: Diesen Eintrag exportieren nach
 
 
 ###############################################
-# Page: view_d.php
+# Page: view_l.php
 #
 
 
 ###############################################
 # Page: view_m.php
+#
+
+
+###############################################
+# Page: view_t.php
+#
+
+
+###############################################
+# Page: view_v.php
 #
 
 
@@ -697,60 +852,20 @@ Month (on same calendar): Monat (am gleichen Kalender)
 
 
 ###############################################
-# Page: nonusers.php
-#
-NONUSER_PREFIX not set: 'NONUSER_PREFIX' nicht definiert
-NonUser: 'Zentraler' Kalender
-Calendar ID: Kalender ID
-Add New NonUser Calendar: Neuen 'Zentraler' Kalender hinzufügen
-
-
-###############################################
-# Page: nonusers_handler.php
-#
-
-
-###############################################
-# Page: view_l.php
-#
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Sie müssen einen Benutzernamen und ein Kennwort eingeben.
-Save login via cookies so I don't have to login next time: Login in Cookie abspeichern, um Anmeldung beim nächsten Mal automatisch zu überspringen.
-Login: Anmelden
-Access public calendar: Zugang öffentlicher Kalender
-cookies-note: <B>Hinweis:</B> Für diese Anwendung müssen Cookies im Browser akzeptiert werden.
-
-
-###############################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Sie müssen einen Ansichtsnamen anlegen
 
 
 ###############################################
-# Page: week_details.php
+# Page: week.php
 #
-New Entry: Neuer Eintrag
-Private: Privat
 
 
 ###############################################
-# Page: import_handler.php
+# Page: week_details.php
 #
-Conflicting events: Überschneidende Termine
-Errors: Fehler
-Back to My Calendar: Zurück zu meinem Kalender
-There was an error parsing the import file or no events were returned: Es trat ein Fehler beim 'Parsen' der Import-Datei auf oder keine Einträge wurden zurückgegeben
-The import file contained no data: Die importierte Datei enthielt keine Daten
-The following conflicts with the suggested time: Folgende Konflikte mit vorgeschlagenem Termin
-Unnamed Event: unbenanntes Ereignis
-Scheduling Conflict: Terminüberschneidung
-conflicts with the following existing calendar entries: überschneidet sich mit folgenden Kalender-Einträgen.
-Event Imported: Termin importiert
+New Entry: Neuer Eintrag
 
 
 ###############################################
@@ -759,174 +874,7 @@ Event Imported: Termin importiert
 
 
 ###############################################
-# Page: edit_report.php
-#
-Tomorrow: Morgen
-Today: Heute
-Yesterday: Gestern
-Day before yesterday: Vorgestern
-Next week: Nächste Woche
-This week: Diese Woche
-Last week: Letzte Woche
-Week before last: Vorletzte Woche
-Next week and week after: Nächste Woche und übernächste Woche
-This week and next week: Diese Woche und nächste Woche
-Last week and this week: Letzte Woche und diese Woche
-Last two weeks: Letzten zwei Wochen
-Next month: Nächstes Monat
-This month: Dieser Monat
-Last month: Letztes Monat
-Month before last: Vorletztes Monat
-Next year: Nächstes Jahr
-This year: Dieses Jahr
-Last year: Letztes Jahr
-Year before last: Vorletztes Jahr
-Invalid report id: Ungültige Bericht ID
-Unnamed Report: <neuer Bericht>
-Add Report: Bericht hinzufügen
-Edit Report: Bericht editieren
-Report name: Berichtsname
-Current User: aktueller Benutzer
-Include link in trailer: inklusive Link im "Trailer"
-Include standard header/trailer: inklusive Standard-Kopf/Trailer
-Date range: Datumsbereich
-Include previous/next links: inlusive vorige(r)/nächste(r) Link(s)
-Include empty dates: inklusive leere Datums
-Template variables: Vorlagen Variablen
-Page template: Seiten Vorlagen
-Day template: Tagesvorlage
-Event template: Terminvorlage
-Are you sure you want to delete this report?: Wollen Sie diese Bericht wirklich löschen?
-
-
-###############################################
-# Page: report.php
-#
-Approved: überprüft
-Unknown: unbekannt
-to manage reports for the Public Access calendar: verwalten der Berichte für den öffentlichen Kalender
-Add new report: Neuen Bericht hinzufügen
-Manage Reports: Berichte verwalten
-
-
-###############################################
-# Page: assistant_edit.php
-#
-Assistants: Assistenten
-Yours assistants: Ihre Assistenten
-
-
-###############################################
-# Page: view_t.php
-#
-
-
-###############################################
-# Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: purge.php
-#
-
-
-###############################################
-# Page: help_import.php
-#
-Palm Desktop: Palm Desktop
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner
-The following entries will not be imported: Folgende Einträge werden nicht importiert
-Entries older than the current date: Einträge die älter als das aktuelle Datum sind
-Entries created in the Palm Desktop that have not been HotSync'd: Hinzugefügte Einträge im Palm Desktop die nicht synchronisiert wurden (HotSync'd)
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim nächsten 
-Therefore, updates should be made in the Palm Desktop.: Deshalb sollten ihren Palm/Desktop immer updaten.
-vCal: vCal
-The following formats have been tested: Folgende Formate wurden getestet
-Palm Desktop 4: Palm Desktop 4
-Lotus Organizer 6: Lotus Organizer 6
-Microsoft Outlook 2002: Microsoft Outlook 2002
-
-
-###############################################
-# Page: edit_report_handler.php
-#
-Variable N not found: Variable N nicht gefunden
-
-
-###############################################
-# Page: edit_entry_handler.php
-#
-A new appointment has been made for you by: Es wurde Ihnen ein neuer Termin eingetragen von -->  
-An appointment has been updated by: Ein Termin wurde geändert von
-The subject is: Die Beschreibung lautet 
-Please look on: Bitte konsultieren Sie Ihren  
-to accept or reject this appointment: um den Termin zu bestätigen/abzulehnen.
-to view this appointment: Termin anschauen
-Your suggested time of: Ihre Eintragung von 
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-You have not added any categories: Sie haben noch keine Kategorien angelegt
-Set Category: Kategorie zuweisen
-
-
-###############################################
-# Page: includes/trailer.php
-#
-Go to: Gehe zu
-My Calendar: Mein Kalender
-Logout: Abmelden
-Another User's Calendar: Kalender anderer Benutzer 
-Add New Entry: Eintrag hinzufügen
-Manage Views: Ansichten einrichten
-Edit Layers: Layer editieren
-Account: Konto
-Manage calendar of: Kalender verwalten von
-
-
-###############################################
 # Page: includes/connect.php
-#
-
-
-###############################################
-# Page: includes/user.php
-#
-Invalid login: Benutzername oder Passwort falsch
-Invalid user login: Ungültige Anmeldung
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Erinnerung senden
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-
-
-###############################################
-# Page: includes/help_trailer.php
-#
-
-
-###############################################
-# Page: includes/init.php
 #
 
 
@@ -964,6 +912,58 @@ Sep: Sep
 Oct: Okt
 Nov: Nov
 Dec: Dez
+
+
+###############################################
+# Page: includes/help_trailer.php
+#
+Go to: Gehe zu
+
+
+###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Erinnerung senden
+
+
+###############################################
+# Page: includes/trailer.php
+#
+My Calendar: Mein Kalender
+Logout: Abmelden
+Another User's Calendar: Kalender anderer Benutzer 
+Add New Entry: Eintrag hinzufügen
+Manage Views: Ansichten einrichten
+Edit Layers: Layer editieren
+Account: Konto
+Manage calendar of: Kalender verwalten von
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+Invalid login: Benutzername oder Passwort falsch
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+Invalid user login: Ungültige Anmeldung
+
+
+###############################################
+# Page: includes/user.php
+#
 
 
 ###############################################
