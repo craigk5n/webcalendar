@@ -168,20 +168,20 @@ function dbi_close ( $conn ) {
 //}
 
 // Execute an SQL query
-function dbi_query ( $sql ) {
+function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     $res = mysql_query ( $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query." .
 //         dbi_error() . "\n\n<br />\n" . $sql .
-      "" );
+      "", $fatalOnError, $showError );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
     $res = mysqli_query ( $GLOBALS["db_connection"], $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query." .
 //         dbi_error() . "\n\n<br />\n" . $sql .
-      "" );
+      "", $fatalOnError, $showError );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     $GLOBALS["oracle_statement"] =
@@ -194,7 +194,7 @@ function dbi_query ( $sql ) {
     if ( ! $res )
       dbi_fatal_error ( "Error executing query." .
 //         dbi_error() . "\n\n<br />\n" . $sql .
-      "" );
+      "", $fatalOnError, $showError );
     $GLOBALS["postgresql_numrows[\"$res\"]"] = pg_numrows ( $res );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
@@ -204,7 +204,7 @@ function dbi_query ( $sql ) {
     if ( ! $res )
       dbi_fatal_error ( "Error executing query." .
 //         dbi_error() . "\n\n<br />\n" . $sql .
-      "" );
+      "", $fatalOnError, $showError );
     return $res;
   } else {
     dbi_fatal_error ( "dbi_query(): db_type not defined." );
@@ -334,11 +334,14 @@ function dbi_error () {
 }
 
 // display an error message and exit
-function dbi_fatal_error ( $msg ) {
-  echo "<h2>Error</h2>\n";
-  echo "<!--begin_error(dbierror)-->\n";
-  echo "$msg\n";
-  echo "<!--end_error-->\n";
-  exit;
+function dbi_fatal_error ( $msg, $doExit=true, $showError=true ) {
+  if ( $showError ) {
+    echo "<h2>Error</h2>\n";
+    echo "<!--begin_error(dbierror)-->\n";
+    echo "$msg\n";
+    echo "<!--end_error-->\n";
+  }
+  if ( $doExit )
+    exit;
 }
 ?>

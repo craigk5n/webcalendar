@@ -1,4 +1,6 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Added check for webcalendar db tables right after initial db connection.
+    Give user an error if tables not found.
   - Modified user-*.php to tell user either "no such user" or
     "incorrect password".  This should help sysadmins trying to setup
     WebCalendar figure out why a login is not working.
