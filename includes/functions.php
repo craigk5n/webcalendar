@@ -674,7 +674,6 @@ function site_extras_for_popup ( $id )
   include_once 'includes/site_extras.php';
 
   $extras = get_site_extra_fields ( $id );
-  $ret = '';
   for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     $extra_name = $site_extras[$i][0];
     $extra_type = $site_extras[$i][2];
@@ -690,9 +689,9 @@ function site_extras_for_popup ( $id )
         $ret .= nl2br ( $extras[$extra_name]['cal_data'] );
       } else if ( $extra_type == $EXTRA_REMINDER ) {
         if ( $extras[$extra_name]['cal_remind'] <= 0 )
-          etranslate ( "No" );
+          $ret .= translate ( "No" );
         else {
-          etranslate ( "Yes" );
+          $ret .= translate ( "Yes" );
           if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
             $ret .= "&nbsp;&nbsp;-&nbsp;&nbsp;";
             $ret .= date_to_str ( $extras[$extra_name]['cal_date'] );
