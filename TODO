@@ -39,6 +39,8 @@ te?
     We would pre-populate some good color schemes.
 
 Here are some other ideas for the next or perhaps later releases:
+[ ] Switch all the html over to a template system.  Smarty seems to be
+    the often mentioned.  This will be a _lot_ of work.
 [ ] Admin diagnostics page that could:
   + tell user where php.ini is :-)
   + send a test mail message
@@ -48,7 +50,8 @@ Here are some other ideas for the next or perhaps later releases:
     Each page would just call a function and pass in the current user
     and the request, and the API would either grant or deny access.
 [ ] Ability to support a reservation system (for either a single resource
-    or multiple resources) as the primary use
+    or multiple resources) as the primary use.  Most likely, this would
+    involve reserving an entire day rather than a time period.
 [ ] Add a mini-cal iframe using the new mini-cal code
     (but it should include event popups)
 [ ] Java-based tool (web start) for monitoring and approving new
