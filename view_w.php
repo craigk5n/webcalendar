@@ -61,25 +61,29 @@ for ( $i = 0; $i < 7; $i++ ) {
 <table style="border-width:0px; width:100%;">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
+<br />
 <a href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
 </td>
-<td style="text-align:center; color:<?php echo $H2COLOR?>;">
-<span style="font-size:24px; font-weight:bold;">
+<td class="viewwtitle">
+<span class="date">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), false );
 ?>
 </span><br />
+<span class="viewname">
 <?php echo $view_name ?>
+</span>
 </td>
 <td style="text-align:right;">
 <?php if ( ! $friendly ) { ?>
+<br />
 <a href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 </td></tr>
-</table>
+</table><br />
 
 <?php
 // The table has names across the top and dates for rows.  Since we need
@@ -131,8 +135,8 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 
 ?>
 
-<table style="border-width:1px; width:100%; border-color: <?php echo $TABLEBG;?>;" rules="all" cellspacing="0" cellpadding="0">
-<tr><td style="width:10%; background-color:<?php echo $THBG?>;">&nbsp;</td>
+<table class="vieww" rules="all" cellspacing="0" cellpadding="2">
+<tr><th style="width:10%;">&nbsp;</th>
 
 <?php
 
@@ -143,7 +147,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
-    echo "<td class=\"tableheader\" style=\"width:$tdw%;\">$tempfullname</td>";
+    echo "<th style=\"width:$tdw%;\">$tempfullname</th>";
   }
   echo "</tr>\n";
   
@@ -163,7 +167,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
         $color = $CELLBG;
       $class = "tableheader";
     }
-    echo "<tr><th class=\"$class\" style=\"width:10%; background-color:$color; vertical-align:top; font-size:13px;\">" .
+    echo "<tr><th class=\"$class\" style=\"width:10%; vertical-align:top; font-size:13px;\">" .
       $weekday . " " .
       round ( date ( "d", $xdate ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
