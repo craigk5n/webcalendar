@@ -82,7 +82,8 @@ if ( $res ) {
       "CLASS=\"navlinks\" onClick=\"return confirm('" .
       translate("Reject this entry?") .
       "');\">" . translate("Reject") . "</A>";
-    $eventinfo .= build_event_popup ( $divname, $login, $description, $timestr );
+    $eventinfo .= build_event_popup ( $divname, $login, $description,
+      $timestr, $time );
     $count++;
   }
   dbi_free_result ( $res );
