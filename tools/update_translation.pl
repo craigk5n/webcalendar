@@ -215,7 +215,10 @@ if ( $plugin eq '' ) {
     $text{'charset'} = 1;
     $foundin{'charset'} = " top of this file";
   } else {
-    print OUT "\n# No charset specified\n# charset:\n\n";
+    print OUT "\n# No charset specified (not needed for iso-8859-1)\n" .
+      "# \"charset\" is used in a meta tag, " .
+      "do not translate \"charset\" here.\n" .
+      "# charset:\n\n";
   }
 }
 
