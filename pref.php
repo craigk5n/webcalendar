@@ -257,6 +257,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   <TD>
   <?php etranslate("From")?> <SELECT NAME="pref_WORK_DAY_START_HOUR">
   <?php
+  if ( empty ( $prefarray["WORK_DAY_START_HOUR"] ) ) {
+    $prefarray["WORK_DAY_START_HOUR"] = $WORK_DAY_START_HOUR;
+    $prefarray["WORK_DAY_END_HOUR"] = $WORK_DAY_END_HOUR;
+  }
   for ( $i = 0; $i < 24; $i++ ) {
     echo "<OPTION VALUE=\"$i\" " .
       ( $i == $prefarray["WORK_DAY_START_HOUR"] ? "SELECTED " : "" ) .
