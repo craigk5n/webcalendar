@@ -8,8 +8,8 @@
 	<select name="format" id="exformat">
 		<option value="ical">iCalendar</option>
 		<option value="vcal">vCalendar</option>
-		<option value="pilot-csv">pilot-datebook CSV (<?php etranslate("Palm Pilot")?>)</option>
-		<option value="pilot-text">install-datebook (<?php etranslate("Palm Pilot")?>)</option>
+		<option value="pilot-csv">Pilot-datebook CSV (<?php etranslate("Palm Pilot")?>)</option>
+		<option value="pilot-text">Install-datebook (<?php etranslate("Palm Pilot")?>)</option>
 	</select>
 </td></tr>
 <?php  // Only include layers if they are enabled.
@@ -18,7 +18,7 @@
 <tr><td>
 	&nbsp;</td><td>
 	<input type="checkbox" name="include_layers" id="include_layers" value="y" />
-	<label for="include_layers" style="font-weight:bold;"><?php etranslate("Include all layers")?></label>
+	<label for="include_layers"><?php etranslate("Include all layers")?></label>
 </td></tr>
 <?php } ?>
 
