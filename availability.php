@@ -26,9 +26,6 @@ if ( $allow_view_other == "N" && ! $is_admin ) {
 
 // input args in URL
 // users: list of comma-separated users
-// form: name of form on parent page
-// listid: element id of user selection object in form
-//   ... to be used like form.elements[$listid]
 if ( empty ( $users ) ) {
   echo "Program Error: No users specified!"; exit;
 } else if ( empty ( $year ) ) {
@@ -48,7 +45,7 @@ if (strlen($day) == 1) $day = '0'.$day;         // add leading zeros
 $date = $year.$month.$day;
 $time = mktime(0,0,0,$month,$day,$year);
 $wday = strftime ( "%w", $time );
-$base_url = "?form=$form&amp;listid=$listid&amp;users=$users";
+$base_url = "?users=$users";
 $prev_url = $base_url."&amp;year=".  strftime('%Y', $time - 86400)
                      ."&amp;month=". strftime('%m', $time - 86400)
                      ."&amp;day=".   strftime('%d', $time - 86400);
