@@ -242,6 +242,7 @@ table.standard {
 	border-width: 0px;
 	width: 10px;
 	height: 10px;
+	float: right;
 }
 body {
 	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
