@@ -302,9 +302,9 @@ if ( ! $use_http_auth ) {
 	else
 		$login_url = "login.php?return_path=$login_return_path";
 if ( strlen ( $login ) && $login != "__public__" ) {
-	echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . translate("Logout") . "\" href=\"$login_url\">" . translate("logout") . "</a>)<br />\n";
+	echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . translate("Logout") . "\" href=\"$login_url\">" . translate("Logout") . "</a>)<br />\n";
   } else {
-	  echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>&nbsp;" . translate("Public Access") . "&nbsp;(<a title=\"" . translate("Login") . "\" href=\"$login_url\">" . translate("login") . "</a>)<br />\n";
+	  echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>&nbsp;" . translate("Public Access") . "&nbsp;(<a title=\"" . translate("Login") . "\" href=\"$login_url\">" . translate("Login") . "</a>)<br />\n";
   }
 }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
