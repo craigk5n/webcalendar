@@ -7,13 +7,13 @@ include "includes/functions.inc";
 include "includes/$user_inc";
 include "includes/connect.inc";
 
-if ( $remember_last_login && $login == "" ) {
+if ( ! empty ( $remember_last_login ) && empty ( $login ) ) {
   $last_login = $login = $webcalendar_login;
 }
 
 load_user_preferences ();
 
-if ( $last_login != "" )
+if ( ! empty ( $last_login ) )
   $login = "";
 
 include "includes/translate.inc";
@@ -85,10 +85,10 @@ if ( ! empty ( $error ) ) {
 
 <TABLE BORDER=0>
 <TR><TD><B><?php etranslate("Username")?>:</B></TD>
-  <TD><INPUT NAME="login" SIZE=10 VALUE="<?php echo $last_login;?>" TABINDEX="1"></TD></TR>
+  <TD><INPUT NAME="login" SIZE=10 VALUE="<?php if ( isset ( $last_login ) ) echo $last_login;?>" TABINDEX="1"></TD></TR>
 <TR><TD><B><?php etranslate("Password")?>:</B></TD>
   <TD><INPUT NAME="password" TYPE="password" SIZE=10 TABINDEX="2"></TD></TR>
-<TR><TD COLSPAN=2><INPUT TYPE="checkbox" NAME="remember" VALUE="yes" <?php if ( $remember != "yes" ) echo "CHECKED"; ?>> <?php etranslate("Save login via cookies so I don't have to login next time")?></TD></TR>
+<TR><TD COLSPAN=2><INPUT TYPE="checkbox" NAME="remember" VALUE="yes" <?php if ( ! isset ( $remember ) || $remember == "yes" ) echo "CHECKED"; ?>> <?php etranslate("Save login via cookies so I don't have to login next time")?></TD></TR>
 <TR><TD COLSPAN=2><INPUT TYPE="submit" VALUE="<?php etranslate("Login")?>" TABINDEX="3"></TD></TR>
 </TABLE>
 

@@ -125,9 +125,10 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 /* calculate end time */
-if ( $row[2] > 0 && $row[5] > 0 ) { 
+if ( $row[2] > 0 && $row[5] > 0 )
   $end_str = "-" . display_time ( add_duration ( $row[2], $row[5] ) );
-}
+else
+  $end_str = "";
 
 // get the email adress of the creator of the entry
 user_load_variables ( $create_by, "createby_" );

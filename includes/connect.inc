@@ -10,24 +10,18 @@ if ( ! $c ) {
   exit;
 }
 
-//if ( ! dbi_select_db ( $db_database ) ) {
-//  echo "Error selecting \"$db_database\" database!<P>" . dbi_error ();
-//  exit;
-//}
-
-//if ( strlen ( $login ) && strstr ( $PHP_SELF, "index.php" ) < 0 ) {
-if ( strlen ( $login ) == 0 && $use_http_auth ) {
+if ( empty ( $login ) && $use_http_auth ) {
   if ( strstr ( $PHP_SELF, "login.php" ) >= 0 ) {
     // ignore since login.php will redirect to index.php
   } else {
     send_http_login ();
   }
-} else if ( strlen ( $login ) ) {
+} else if ( ! empty ( $login ) ) {
   if ( strstr ( $PHP_SELF, "login.php" ) ) {
     // ignore since login.php will redirect to index.php
   } else {
     user_load_variables ( $login, "login_" );
-    if ( $login_login != "" ) {
+    if ( ! empty ( $login_login ) ) {
       $is_admin =  ( $login_is_admin == "Y" ? true : false );
       $lastname = $login_lastname;
       $firstname = $login_firstname;

@@ -10,13 +10,12 @@ if ( $single_user ) {
   } else {
     // Check for cookie...
     // We really need to improve the security here.
-    //$encoded_login = $HTTP_COOKIE_VARS["webcalendar_session"];
     if ( empty ( $webcalendar_session ) ) {
       do_debug ( "User not logged in; redirecting to login page" );
       do_redirect ( "login.php" );
     }
     $encoded_login = $webcalendar_session;
-    if ( strlen ( $encoded_login ) == 0 ) {
+    if ( empty ( $encoded_login ) ) {
       do_debug ( "User not logged in; redirecting to login page" );
       do_redirect ( "login.php" );
     }

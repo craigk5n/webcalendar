@@ -140,7 +140,7 @@
       translate("Search") . "</A>";
     echo ", <A CLASS=\"navlinks\" HREF=\"export.php\">" .
       translate("Export") . "</A>";
-    if ( ! $readonly ) {
+    if ( ! $readonly || $is_admin ) {
       echo ", <A CLASS=\"navlinks\" HREF=\"edit_entry.php";
       if ( ! empty ( $thisyear ) ) {
         print "?year=$thisyear";

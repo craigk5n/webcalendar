@@ -15,8 +15,7 @@ load_user_layers ();
 include "includes/translate.inc";
 
 // make sure this is not a read-only calendar
-if ( $readonly )
-  $can_edit = false;
+$can_edit = false;
 
 if ( ! empty ( $id ) && $id > 0 ) {
   // first see who has access to edit this entry
@@ -24,7 +23,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
     $can_edit = true;
   } else {
     $can_edit = false;
-    if ( ! $readonly ) {
+    if ( ! $readonly || $is_admin ) {
       $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
         "webcal_entry_user WHERE webcal_entry.cal_id = " .
         "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
@@ -98,7 +97,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
 } else {
   $id = 0; // to avoid warnings below about use of undefined var
   $time = -1;
-  if ( ! $readonly )
+  if ( ! $readonly || $is_admin )
     $can_edit = true;
 }
 if ( ! empty ( $year ) && $year )
@@ -137,7 +136,7 @@ if ( ( empty ( $year ) || ! $year ) &&
   $thisday = $day = substr ( $date, 6, 2 );
   $cal_date = $date;
 } else {
-  if ( $cal_date == 0 )
+  if ( empty ( $cal_date ) )
     $cal_date = date ( "Ymd" );
 }
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
@@ -434,7 +433,7 @@ if ( ! $single_user && $show_participants ) {
     $size++;
     $users .= "<OPTION VALUE=\"" . $l . "\"";
     if ( $id > 0 ) {
-      if ( $participants[$l] )
+      if ( ! empty ( $participants[$l] ) )
         $users .= " SELECTED";
     } else {
       if ( $l == $login || ( ! empty ( $user ) && $l == $user ) )
