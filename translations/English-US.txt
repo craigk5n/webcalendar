@@ -833,7 +833,7 @@ Are you sure you want to delete this report?: Are you sure you want to delete th
 # Page: assistant_edit.php
 #
 Assistants: Assistants
-Yours assistants: Yours assistants
+Your assistants: Your assistants
 
 
 ###############################################

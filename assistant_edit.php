@@ -18,7 +18,7 @@ print_header($INC);
     echo "<H2><FONT COLOR=\"$H2COLOR\">" . $nonuserfullname . " " . translate("Assistants")
         ."<BR>\n<B>-- " . translate("Admin mode") . " --</B></FONT></H2>\n";
   } else {
-    echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Yours assistants") . "</FONT></H2>\n";
+    echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Your assistants") . "</FONT></H2>\n";
   }
 ?>
 
