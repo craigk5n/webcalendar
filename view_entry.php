@@ -14,6 +14,18 @@ load_user_layers ();
 
 include "includes/translate.inc";
 
+// copied from edit_entry_handler (functions.inc?)
+function add_duration ( $time, $duration ) {
+  $hour = (int) ( $time / 10000 );
+  $min = ( $time / 100 ) % 100;
+  $minutes = $hour * 60 + $min + $duration;
+  $h = $minutes / 60;
+  $m = $minutes % 60;
+  $ret = sprintf ( "%d%02d00", $h, $m );
+  //echo "add_duration ( $time, $duration ) = $ret <BR>";
+  return $ret;
+}
+
 if ( $year ) $thisyear = $year;
 if ( $month ) $thismonth = $month;
 $pri[1] = translate("Low");
@@ -62,6 +74,59 @@ $create_by = $row[0];
 $name = $row[9];
 $description = $row[10];
 
+// build info string for repeating events and end date
+$sql = "SELECT cal_type, cal_end, cal_frequency, cal_days FROM webcal_entry_repeats " .
+   "WHERE cal_id = $id";
+$res = dbi_query ($sql);
+if ( $res ) {
+  $tmprow = dbi_fetch_row ( $res );
+  if ( count ( $tmprow ) > 0 ) {
+    $cal_type = $tmprow[0];
+    $cal_end = $tmprow[1];
+    $cal_frequency = $tmprow[2];
+    $cal_days = $tmprow[3];
+    dbi_free_result ( $res );
+
+    if ( $cal_end ) {
+      $rep_str .= "&nbsp; - &nbsp;";
+      $rep_str .= date_to_str ( $cal_end );
+    }
+    $rep_str .= "&nbsp; (" . translate("every") . " ";
+
+    if ( $cal_frequency > 1 ) {
+      switch ( $cal_frequency ) {
+        case 1: $rep_str .= translate("1st"); break;
+        case 2: $rep_str .= translate("2nd"); break;
+        case 3: $rep_str .= translate("3rd"); break;
+        case 4: $rep_str .= translate("4th"); break;
+        case 5: $rep_str .= translate("5th"); break;
+        default: $rep_str .= $cal_frequency; break;
+      }
+    }
+    switch ($cal_type) {
+      case "daily": $rep_str .= translate("Day"); break;
+      case "weekly": $rep_str .= translate("Week");
+        for ($i=0; $i<=7; $i++) {
+          if (substr($cal_days, $i, 1) == "y") {
+            $rep_str .= ", " . weekday_short_name($i);
+          }
+        }
+        break;
+      case "monthlyByDay":
+        $rep_str .= translate("Month") . "/" . translate("by day"); break;
+      case "monthlyByDate":
+        $rep_str .= translate("Month") . "/" . translate("by date"); break;
+      case "yearly":
+        $rep_str .= translate("Year"); break;
+    }
+    $rep_str .= ")";
+  }
+}
+/* calculate end time */
+if ( $row[2] > 0 && $row[5] > 0 ) { 
+  $end_str = "-" . display_time ( add_duration ( $row[2], $row[5] ) );
+}
+
 // get the email adress of the creator of the entry
 user_load_variables ( $create_by, "createby_" );
 $email_addr = $createby_email;
@@ -87,7 +152,7 @@ if ( $row[8] == "R" && ! $is_my_event ) {
 <TR><TD VALIGN="top"><B><?php etranslate("Description")?>:</B></TD>
   <TD><?php echo nl2br ( htmlspecialchars ( $description ) ); ?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Date")?>:</B></TD>
-  <TD><?php echo date_to_str ( $row[1] ); ?></TD></TR>
+  <TD><?php echo date_to_str ( $row[1] ) . $rep_str; ?></TD></TR>
 <?php
 // save date so the trailer links are for the same time period
 $list = split ( "-", $row[1] );
@@ -97,7 +162,7 @@ $thisday = $row[1] % 100;
 ?>
 <?php if ( $row[2] >= 0 ) { ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Time")?>:</B></TD>
-  <TD><?php echo display_time ( $row[2] ); ?></TD></TR>
+  <TD><?php echo display_time ( $row[2] ) . $end_str; ?></TD></TR>
 <?php } ?>
 <?php if ( $row[5] > 0 ) { ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Duration")?>:</B></TD>
