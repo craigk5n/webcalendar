@@ -240,7 +240,7 @@ function do_debug ( $msg ) {
 // See the following for more info on the IIS bug:
 //   http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4
 function do_redirect ( $url ) {
-  global $SERVER_SOFTWARE, $_SERVER;
+  global $SERVER_SOFTWARE, $_SERVER, $c;
   if ( empty ( $SERVER_SOFTWARE ) )
     $SERVER_SOFTWARE = $_SERVER["SERVER_SOFTWARE"];
   //echo "SERVER_SOFTWARE = $SERVER_SOFTWARE <BR>"; exit;
