@@ -1,4 +1,7 @@
 Version 0.9.31dev (???)
+  - Patch 435367 from Franz Sedlmaier:
+    Allow user to override warning about conflicting events and save
+    event anyway.
   - Fixed bug 214280: sometimes events would display shifted one day to
     right on week view.
   - Fixed bug 212550: unable to display short month name for May in
