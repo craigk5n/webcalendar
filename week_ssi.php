@@ -16,7 +16,7 @@ if ( strlen ( $login ) == 0 ) {
   } else if ( strlen ( $webcalendar_login ) > 0 ) {
     $login = $user = $webcalendar_login;
   } else {
-    echo "<FONT COLOR=\"#FF0000\"><B>Error:</B> No calendar user specified.</FONT>";
+    echo "<font color=\"#FF0000\"><b>Error:</b> No calendar user specified.</font>";
     exit;
   }
 }
@@ -87,44 +87,41 @@ for ( $i = 0; $i < 7; $i++ ) {
 ?>
 
 
-<TABLE BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
-<TR><TD BGCOLOR="<?php echo $TABLEBG?>">
-<TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2" BORDER="0">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr><td bgcolor="<?php echo $TABLEBG?>">
+<table border="0" width="100%" cellspacing="1" cellpadding="2">
 
-<TR>
+<tr>
 <?php
 for ( $d = 0; $d < 7; $d++ ) {
   if ( date ( "Ymd", $days[$d] ) == date ( "Ymd", $today ) )
     $color = $TODAYCELLBG;
   else
     $color = $THBG;
-  echo "<TH WIDTH=\"13%\" BGCOLOR=\"$color\">$header[$d]</TH>";
+  echo "<th width=\"13%\" bgcolor=\"$color\">$header[$d]</th>";
 }
 ?>
-</TR>
+</tr>
 
-<TR>
-
+<tr>
 <?php
-
 $first_hour = $WORK_DAY_START_HOUR - $TZ_OFFSET;
 $last_hour = $WORK_DAY_END_HOUR + $TZ_OFFSET;
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
   $date = date ( "Ymd", $days[$d] );
 
-  print "<TD VALIGN=\"top\" WIDTH=75 HEIGHT=75 ";
+  print "<td valign=\"top\" width=\"75\" height=\"75\" ";
   if ( $date == date ( "Ymd" ) )
-    echo "BGCOLOR=\"$TODAYCELLBG\">";
+    echo "bgcolor=\"$TODAYCELLBG\">";
   else
-    echo "BGCOLOR=\"$CELLBG\">";
+    echo "bgcolor=\"$CELLBG\">";
 
   print_date_entries ( $date, $login, true, true );
   echo "&nbsp;";
-  echo "</TD>\n";
+  echo "</td>\n";
 }
 ?>
-</TR>
-</TABLE>
-</TD></TR></TABLE>
-
+</tr>
+</table>
+</td></tr></table>

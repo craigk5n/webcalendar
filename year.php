@@ -15,7 +15,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
   else
     $u_url = "";
 
-  echo "<TABLE BORDER=\"0\" CELLPADDING=\"1\" CELLSPACING=\"2\">";
+  echo "<table border=\"0\" cellpadding=\"1\" cellspacing=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
   else
@@ -23,23 +23,23 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
 
   $monthstart = mktime(2,0,0,$thismonth,1,$thisyear);
   $monthend = mktime(2,0,0,$thismonth + 1,0,$thisyear);
-  echo "<TR><TD COLSPAN=\"7\" ALIGN=\"center\">"
-     . "<A HREF=\"month.php?year=$thisyear&month=$thismonth"
-     . $u_url . "\" CLASS=\"monthlink\">";
+  echo "<tr><td colspan=\"7\" align=\"center\">"
+     . "<a href=\"month.php?year=$thisyear&month=$thismonth"
+     . $u_url . "\" class=\"monthlink\">";
   echo month_name ( $thismonth - 1 ) .
-    "</A></TD></TR>";
-  echo "<TR>";
-  if ( $WEEK_START == 0 ) echo "<TD><FONT SIZE=\"-3\">" .
-    weekday_short_name ( 0 ) . "</TD>";
+    "</a></td></tr>";
+  echo "<tr>";
+  if ( $WEEK_START == 0 ) echo "<td><font size=\"-3\">" .
+    weekday_short_name ( 0 ) . "</td>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<TD><FONT SIZE=\"-3\">" .
-      weekday_short_name ( $i ) . "</TD>";
+    echo "<td><font size=\"-3\">" .
+      weekday_short_name ( $i ) . "</td>";
   }
-  if ( $WEEK_START == 1 ) echo "<TD><FONT SIZE=\"-3\">" .
-    weekday_short_name ( 0 ) . "</TD>";
+  if ( $WEEK_START == 1 ) echo "<td><font size=\"-3\">" .
+    weekday_short_name ( 0 ) . "</td>";
   for ($i = $wkstart; date("Ymd",$i) <= date ("Ymd",$monthend);
     $i += (24 * 3600 * 7) ) {
-    echo "<TR>";
+    echo "<tr>";
     for ($j = 0; $j < 7; $j++) {
       $date = $i + ($j * 24 * 3600);
       $dateYmd = date ( "Ymd", $date );
@@ -56,20 +56,20 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
       }
       if ( $dateYmd >= date ("Ymd",$monthstart) &&
         $dateYmd <= date ("Ymd",$monthend) ) {
-        echo "<TD ALIGN=\"right\"><A HREF=\"day.php?date=" .
+        echo "<td align=\"right\"><a href=\"day.php?date=" .
           $dateYmd . $u_url .
-          "\" CLASS=\"dayofmonthyearview\">";
-        echo "<FONT SIZE=\"-1\">" .
+          "\" class=\"dayofmonthyearview\">";
+        echo "<font size=\"-1\">" .
           ( $hasEvents ? "<b>" : "" ) .
           date ( "j", $date ) .
           ( $hasEvents ? "</b>" : "" ) .
-          "</A></FONT></TD>";
+          "</a></font></TD>";
       } else
-        echo "<TD></TD>";
+        echo "<td></td>";
     }                 // end for $j
-    echo "</TR>";
+    echo "</tr>";
   }                         // end for $i
-  echo "</TABLE>";
+  echo "</table>";
 }
 
 if ( empty ( $year ) )
@@ -109,81 +109,81 @@ if ( $user == "__public__" )
 print_header();
 ?>
 
-<TABLE WIDTH="100%">
-<TR>
+<table width="100%">
+<tr>
 <?php if ( empty ( $friendly ) ) { ?>
-<TD ALIGN="left"><FONT SIZE="-1">
-<A HREF="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" CLASS="monthlink"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Previous")?>"></A>
-</FONT></TD>
+<td align="left"><font size="-1">
+<a href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" class="monthlink"><img src="leftarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Previous")?>" /></A>
+</font></td>
 <?php } ?>
-<TD ALIGN="center">
-<FONT SIZE="+2" COLOR="<?php echo $H2COLOR?>"><B>
+<td align="center">
+<font size="+2" color="<?php echo $H2COLOR?>"><b>
 <?php echo $thisyear ?>
-</B></FONT>
-<FONT COLOR="<?php echo $H2COLOR?>" SIZE="+1">
+</b></font>
+<font color="<?php echo $H2COLOR?>" size="+1">
 <?php
   if ( $single_user == "N" ) {
-    echo "<BR>\n";
+    echo "<br />\n";
     if ( ! empty ( $user ) ) {
       user_load_variables ( $user, "user_" );
       echo $user_fullname;
     } else
       echo $fullname;
     if ( $is_assistant )
-      echo "<B><BR>-- " . translate("Assistant mode") . " --</B>";
+      echo "<b><br />-- " . translate("Assistant mode") . " --</b>";
   }
 ?>
-</FONT></TD>
+</font></td>
 <?php if ( empty ( $friendly ) ) { ?>
-<TD ALIGN="right">
-<A HREF="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" CLASS="monthlink"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Next")?>"></A>
-</FONT></TD>
+<td align="right">
+<a href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" class="monthlink"><img src="rightarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Next")?>" /></A>
+</font></td>
 <?php } ?>
-</TR>
-</TABLE>
+</tr>
+</table>
 
-<CENTER>
-<TABLE BORDER="0" CELLSPACING="4" CELLPADDING="4">
-<TR>
-<TD VALIGN="top"><?php display_small_month(1,$year,False); ?></TD>
-<TD VALIGN="top"><?php display_small_month(2,$year,False); ?></TD>
-<TD VALIGN="top"><?php display_small_month(3,$year,False); ?></TD>
-<TD VALIGN="top"><?php display_small_month(4,$year,False); ?></TD>
-</TR>
-<TR>
-<TD VALIGN="top"><?php display_small_month(5,$year,False); ?></TD>
-<TD VALIGN="top"><?php display_small_month(6,$year,False); ?></TD>
-<TD VALIGN="top"><?php display_small_month(7,$year,False); ?></TD>
-<TD VALIGN="top"><?php display_small_month(8,$year,False); ?></TD>
-</TR>
-<TR>
-<TD VALIGN="top"><?php display_small_month(9,$year,False); ?></TD>
-<TD VALIGN="top"><?php display_small_month(10,$year,False); ?></TD>
-<TD VALIGN="top"><?php display_small_month(11,$year,False); ?></TD>
-<TD VALIGN="top"><?php display_small_month(12,$year,False); ?></TD>
-</TR>
-</TABLE>
-</CENTER>
+<center>
+<table border="0" cellspacing="4" cellpadding="4">
+<tr>
+<td valign="top"><?php display_small_month(1,$year,False); ?></td>
+<td valign="top"><?php display_small_month(2,$year,False); ?></td>
+<td valign="top"><?php display_small_month(3,$year,False); ?></td>
+<td valign="top"><?php display_small_month(4,$year,False); ?></td>
+</tr>
+<tr>
+<td valign="top"><?php display_small_month(5,$year,False); ?></td>
+<td valign="top"><?php display_small_month(6,$year,False); ?></td>
+<td valign="top"><?php display_small_month(7,$year,False); ?></td>
+<td valign="top"><?php display_small_month(8,$year,False); ?></td>
+</tr>
+<tr>
+<td valign="top"><?php display_small_month(9,$year,False); ?></td>
+<td valign="top"><?php display_small_month(10,$year,False); ?></td>
+<td valign="top"><?php display_small_month(11,$year,False); ?></td>
+<td valign="top"><?php display_small_month(12,$year,False); ?></td>
+</tr>
+</table>
+</center>
 
-<P>
+<br /><br />
 
 <?php if ( empty ( $friendly ) ) {
 
 display_unapproved_events ( $login );
 
 ?>
-<P>
-<A CLASS="navlinks" HREF="year.php?<?php
+<br /><br />
+<a class="navlinks" href="year.php?<?php
   if ( $thisyear )
     echo "year=$thisyear&";
   if ( $user != $login && ! empty ( $user ) )
     echo "user=$user&";
-?>friendly=1" TARGET="cal_printer_friendly"
-onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
+?>friendly=1" target="cal_printer_friendly"
+onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 <?php }
 print_trailer();
 ?>
 
-</BODY>
-</HTML>
+</body>
+</html>

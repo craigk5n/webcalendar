@@ -55,17 +55,17 @@ if ( $error == "" ) {
 print_header();
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></FONT></H2>
+<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></font></h2>
 
-<BLOCKQUOTE>
+<blockquote>
 <?php
 
 echo $error;
 //if ( $sql != "" )
-//  echo "<P><B>SQL:</B> $sql";
+//  echo "<br /><br /><b>SQL:</b> $sql";
 //?>
-</BLOCKQUOTE>
+</blockquote>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

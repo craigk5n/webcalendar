@@ -37,8 +37,8 @@ if ( $DISPLAY_WEEKENDS == "N" ) {
 
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
-  $HeadX = "<META HTTP-EQUIV=\"refresh\" content=\"$refresh; URL=week.php?$u_url" .
-    "date=$startdate$caturl\" TARGET=\"_self\">\n";
+  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week.php?$u_url" .
+    "date=$startdate$caturl\" target=\"_self\">\n";
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
@@ -54,60 +54,60 @@ $events = read_events ( strlen ( $user ) ? $user : $login,
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
-  $header[$i] = $weekdays[$i] . "<BR>" .
+  $header[$i] = $weekdays[$i] . "<br />" .
      date_to_str ( date ( "Ymd", $days[$i] ), $DATE_FORMAT_MD, false );
 }
 ?>
 
-<TABLE BORDER="0" WIDTH="100%">
-<TR>
+<table border="0" width="100%">
+<tr>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<TD ALIGN="left"><A HREF="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0"></A></TD>
+<td align="left"><a href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" width="36" height="32" border="0"></a></td>
 <?php } ?>
-<TD ALIGN="middle"><FONT SIZE="+2" COLOR="<?php echo $H2COLOR;?>"><B CLASS="pagetitle">
+<td align="middle"><font size="+2" color="<?php echo $H2COLOR;?>"><b class="pagetitle">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), "", false );
 ?>
-</B></FONT>
+</b></font>
 <?php
 if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
-  echo "<BR>\n<FONT SIZE=\"-2\" COLOR=\"$H2COLOR\">(" .
-    translate("Week") . " " . week_number ( $wkstart ) . ")</FONT>";
+  echo "<br />\n<font size=\"-2\" color=\"$H2COLOR\">(" .
+    translate("Week") . " " . week_number ( $wkstart ) . ")</font>";
 }
 ?>
-<FONT SIZE="+1" COLOR="<?php echo $H2COLOR;?>">
+<font size="+1" color="<?php echo $H2COLOR;?>">
 <?php
   if ( $single_user == "N" ) {
-    echo "<BR>$user_fullname\n";
+    echo "<br />$user_fullname\n";
   }
   if ( $is_nonuser_admin )
-    echo "<B><BR>-- " . translate("Admin mode") . " --</B>";
+    echo "<b><br />-- " . translate("Admin mode") . " --</b>";
   if ( $is_assistant )
-    echo "<B><BR>-- " . translate("Assistant mode") . " --</B>";
+    echo "<b><br />-- " . translate("Assistant mode") . " --</b>";
   if ( $categories_enabled == "Y" ) {
-    echo "<BR>\n<BR>\n";
+    echo "<br />\n<br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
   }
 ?>
-</FONT>
-</TD>
+</font>
+</td>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<TD ALIGN="right"><A HREF="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0"></A></TD>
+<td align="right"><a href="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" width="36" height="32" border="0"></a></td>
 <?php } ?>
-</TR>
-</TABLE>
+</tr>
+</table>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<TABLE BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
-<TR><TD BGCOLOR="<?php echo $TABLEBG?>">
-<TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr><td bgcolor="<?php echo $TABLEBG?>">
+<table border="0" width="100%" cellspacing="1" cellpadding="2">
 <?php } else { ?>
-<TABLE BORDER="1" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
+<table border="1" width="100%" cellspacing="0" cellpadding="0">
 <?php } ?>
 
-<TR>
-<TH WIDTH="12%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>">&nbsp;</TH>
+<tr>
+<th width="12%" class="tableheader" bgcolor="<?php echo $THBG?>">&nbsp;</th>
 <?php
 for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   if ( date ( "Ymd", $days[$d] ) == date ( "Ymd", $today ) ) {
@@ -117,16 +117,16 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $color = $THBG;
     $class = "tableheader";
   }
-  echo "<TH WIDTH=\"13%\" CLASS=\"$class\" BGCOLOR=\"$color\">";
+  echo "<th width=\"13%\" class=\"$class\" bgcolor=\"$color\">";
   if ( empty ( $friendly ) && $can_add ) {
     echo html_for_add_icon (  date ( "Ymd", $days[$d] ), "", "", $user );
   }
-  echo "<A HREF=\"day.php?" . $u_url .
-    "date=" . date ("Ymd", $days[$d] ) . "$caturl\" CLASS=\"$class\">" .
-    $header[$d] . "</A></TH>\n";
+  echo "<a href=\"day.php?" . $u_url .
+    "date=" . date ("Ymd", $days[$d] ) . "$caturl\" class=\"$class\">" .
+    $header[$d] . "</a></th>\n";
 }
 ?>
-</TR>
+</tr>
 
 <?php
 
@@ -237,7 +237,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
         $start_time = $i;
         $diff_start_time = $start_time - $last_row;
         for ( $u = $diff_start_time ; $u > 0 ; $u-- ) 
-          $hour_arr[$last_row] .= "<BR>"; 
+          $hour_arr[$last_row] .= "<br />"; 
         $hour_arr[$last_row] .= $hour_arr[$i];
         $hour_arr[$i] = "";
         $rowspan_arr[$i] = 0;
@@ -251,7 +251,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 
   // now save the output...
   if ( ! empty ( $hour_arr[9999] ) && strlen ( $hour_arr[9999] ) ) {
-    $untimed[$d] = "<TD WIDTH=\"12%\" BGCOLOR=\"$TODAYCELLBG\"><FONT SIZE=\"-1\">$hour_arr[9999]</FONT></TD>\n";
+    $untimed[$d] = "<td width=\"12%\" bgcolor=\"$TODAYCELLBG\"><font size=\"-1\">$hour_arr[9999]</font></td>\n";
     $untimed_found = true;
   }
   $save_hour_arr[$d] = $hour_arr;
@@ -260,7 +260,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 
 // untimed events first
 if ( $untimed_found ) {
-  echo "<TR><TD CLASS=\"tableheader\" WIDTH=\"12%\" BGCOLOR=\"$THBG\">&nbsp;</TD>";
+  echo "<tr><td class=\"tableheader\" width=\"12%\" bgcolor=\"$THBG\">&nbsp;</td>";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
@@ -270,9 +270,9 @@ if ( $untimed_found ) {
     if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) )
       echo $untimed[$d];
     else
-      echo "<TD WIDTH=\"12%\" BGCOLOR=\"$color\">&nbsp;</TD>";
+      echo "<td width=\"12%\" bgcolor=\"$color\">&nbsp;</td>";
   }
-  echo "</TR>\n";
+  echo "</tr>\n";
 }
 
 for ( $d = $start_ind; $d < $end_ind; $d++ )
@@ -282,8 +282,8 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = (int) ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-  echo "<TR><TH CLASS=\"tableheader\" VALIGN=\"top\" WIDTH=\"13%\" BGCOLOR=\"$THBG\" HEIGHT=\"40\">" .
-    "<FONT COLOR=\"$THFG\">" .  $time . "</FONT></TH>\n";
+  echo "<tr><th class=\"tableheader\" valign=\"top\" width=\"13%\" bgcolor=\"$THBG\" height=\"40\">" .
+    "<font color=\"$THFG\">" .  $time . "</font></th>\n";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
@@ -296,44 +296,44 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
       if ( ! empty ( $save_hour_arr[$d][$i] ) )
-        echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$TODAYCELLBG\"><FONT SIZE=\"-1\">" .
-          $save_hour_arr[$d][$i] . "</FONT></TD>";
+        echo "<td valign=\"top\" width=\"12%\" bgcolor=\"$TODAYCELLBG\"><font size=\"-1\">" .
+          $save_hour_arr[$d][$i] . "</font></td>";
       $rowspan_day[$d]--;
     } else {
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
-        echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$color\">";
+        echo "<td valign=\"top\" width=\"12%\" bgcolor=\"$color\">";
         if ( empty ( $friendly ) && $can_add )
           echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
-        echo "&nbsp;</TD>\n";
+        echo "&nbsp;</td>\n";
       } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         if ( $rowspan_day[$d] > 1 ) {
-          echo "<TD VALIGN=\"top\" WIDTH=\"12%\" VALIGN=\"top\" BGCOLOR=\"$TODAYCELLBG\" ROWSPAN=\"$rowspan_day[$d]\">";
+          echo "<td valign=\"top\" width=\"12%\" valign=\"top\" bgcolor=\"$TODAYCELLBG\" rowspan=\"$rowspan_day[$d]\">";
           if ( empty ( $friendly ) && $can_add )
             echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
-          echo "<FONT SIZE=\"-1\">" . $save_hour_arr[$d][$i] . "</FONT></TD>\n";
+          echo "<font size=\"-1\">" . $save_hour_arr[$d][$i] . "</font></td>\n";
         } else {
-          echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$TODAYCELLBG\"><FONT SIZE=\"-1\">";
+          echo "<td valign=\"top\" width=\"12%\" bgcolor=\"$TODAYCELLBG\"><font size=\"-1\">";
           if ( empty ( $friendly ) && $can_add )
             echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
-          echo $save_hour_arr[$d][$i] . "</FONT></TD>\n";
+          echo $save_hour_arr[$d][$i] . "</font></td>\n";
         }
       }
     }
   }
-  echo "</TR>\n";
+  echo "</tr>\n";
 }
 
 ?>
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-</TABLE>
-</TD></TR></TABLE>
+</table>
+</td></tr></table>
 <?php } else { ?>
-</TABLE>
+</table>
 <?php } ?>
 
-<P>
+<br /><br />
 
 <?php if ( ! empty ( $eventinfo ) && empty ( $friendly ) ) echo $eventinfo; ?>
 
@@ -341,19 +341,19 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
-<P>
-<A CLASS="navlinks" HREF="week.php?<?php
+<br /><br />
+<a class="navlinks" href="week.php?<?php
   echo $u_url;
   if ( $thisyear ) {
     echo "year=$thisyear&month=$thismonth&day=$thisday";
   }
   echo $caturl . "&";
-?>friendly=1" TARGET="cal_printer_friendly"
-onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
+?>friendly=1" target="cal_printer_friendly"
+onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 <?php }
 print_trailer ();
 ?>
 
-</BODY>
-</HTML>
+</body>
+</html>
