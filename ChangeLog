@@ -1,4 +1,6 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Removed ODBC host:database option from php-dbi.php. If needed, host can be 
+   added to DSN in settings.php.
  - Changed charset in Czech.txt from utf8 to UTF-8
  - Fixed problem with upcoming.php header. xml:lang and lang were set to full 
    LANGUAGE value, not abbreviation.
