@@ -88,8 +88,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 </tr>
 </table>
 
-<table style="border-top: 1px solid <?php echo $TABLEBG;?>; border-left: 1px solid <?php echo $TABLEBG;?>; width:100%;" cellspacing="0" cellpadding="0">
-
+<table class="glance" cellspacing="0" cellpadding="0">
 <?php
 if ( empty ( $TIME_SLOTS ) )
   $TIME_SLOTS = 24;
@@ -97,7 +96,6 @@ if ( empty ( $TIME_SLOTS ) )
 print_day_at_a_glance ( date ( "Ymd", $now ),
   empty ( $user ) ? $login : $user, ! empty ( $friendly ), $can_add );
 ?>
-
 </table>
 
 </td>
@@ -116,15 +114,15 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 <?php } ?>
 </tr>
 <?php
-echo "<tr class=\"day\">";
+echo "<tr class=\"day\">\n";
 if ( $WEEK_START == 0 ) echo "<th>" .
-  weekday_short_name ( 0 ) . "</th>";
+  weekday_short_name ( 0 ) . "</th>\n";
 for ( $i = 1; $i < 7; $i++ ) {
   echo "<th>" .
-    weekday_short_name ( $i ) . "</th>";
+    weekday_short_name ( $i ) . "</th>\n";
 }
 if ( $WEEK_START == 1 ) echo "<th>" .
-  weekday_short_name ( 0 ) . "</th>";
+  weekday_short_name ( 0 ) . "</th>\n";
 echo "</tr>\n";
 // generate values for first day and last day of month
 $monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
@@ -200,7 +198,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 ?>
 
 <br /><br />
-<a href="day.php?<?php
+<a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="day.php?<?php
   echo $u_url;
   if ( $thisyear ) {
     echo "year=$thisyear&amp;month=$thismonth&amp;day=$thisday&amp;";
