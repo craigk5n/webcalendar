@@ -10,7 +10,7 @@ $inc_dir = "../includes";
 $transdir = "../translations";
 
 opendir ( DIR, $transdir ) || die "Error opening $transdir: $!";
-@files = readdir ( DIR );
+@files = sort readdir ( DIR );
 closedir ( DIR );
 
 # ignore everything except .txt files
