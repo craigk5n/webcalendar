@@ -1,4 +1,5 @@
 Version 0.9.47/CVS+dev (?? ??? 2004)
+  - Fixed Bug 824268: emails sent by edit_entry_handler.php in wrong time zone
   - Fixed Bug 1066440: End Time increased by timezone offset
   - Fixed Bug 1085337: Categories combo-box in month.php in assistant mode
   - Modified validate.php and trailer.php to look for new $user_inc 
