@@ -1,4 +1,6 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Fixed issues with display_small_month URLs. Extra & if no $user specified.
+ - Fixed bug 1154007: Highlight today in Year view
  - Fixed bug 1088772: Nonuser calendar w/ Public as default participant,
    _public_ not selected
  - Fixed bug 1145390: Merge arrays with array_merge vs + in view_t.php

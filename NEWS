@@ -1,5 +1,6 @@
 Version 1.0RC3 (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1154007: Highlight today in Year view
       1088772: Nonuser calendar w/ Public as default participant
       1145390: Merge arrays with array_merge vs + in view_t.php
       1151442: Overlapping events display error in day.php
@@ -10,6 +11,7 @@ Version 1.0RC3 (?? ??? 2005)
       1123508: RC3 browser language detection always returns none.
       1112787: missing charset in upcoming.php
   - Other bugs fixed:
+    + Fixed issues with display_small_month URLs. Extra & if no $user specified.
     - Add meta tag for charset since MSIE requires it.
     + Fixed broken advanced search that would not allowing searching other
       users' calendars.  Also added searching non-user calendars.
