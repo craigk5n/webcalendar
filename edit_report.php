@@ -34,6 +34,8 @@ if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
   $report_user = '';
 }
 
+$report_id = getIntValue ( "report_id", true );
+
 $adding_report = false;
 if ( empty ( $report_id ) ) {
   $adding_report = true;
@@ -90,12 +92,14 @@ $event_template = '<dt>${name}</dt><dd>' .
   '${description}</dd>';
 
 if ( empty ( $error ) && $report_id > 0 ) {
-  $res = dbi_query ( "SELECT cal_login, cal_report_id, cal_is_global, " .
+  $sql = "SELECT cal_login, cal_report_id, cal_is_global, " .
     "cal_report_type, cal_include_header, cal_report_name, " .
     "cal_time_range, cal_user, cal_allow_nav, cal_cat_id, " .
     "cal_include_empty, cal_show_in_trailer, cal_update_date " .
     "FROM webcal_report " .
-    "WHERE cal_report_id = $report_id" );
+    "WHERE cal_report_id = $report_id";
+  //echo "SQL: $sql <p>";
+  $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $i = 0;
