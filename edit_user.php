@@ -138,7 +138,6 @@ if ( $is_admin ) { ?>
 <?php } ?>
 </td></tr></table>
 
-<?php print_trailer ( ! empty ( $showHeader ), true, empty ( $showHeader ) ); ?>
-
+<?php print_trailer ( false, true, true ); ?>
 </body>
 </html>
