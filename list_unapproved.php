@@ -25,7 +25,6 @@ function list_unapproved ( $user ) {
   global $temp_fullname, $key, $login;
   //echo "Listing events for $user <br>";
 
-  echo "<ul>\n";
   $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name, " .
     "webcal_entry.cal_description, " .
     "webcal_entry.cal_priority, webcal_entry.cal_date, " .
@@ -43,6 +42,7 @@ function list_unapproved ( $user ) {
   $eventinfo = "";
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
+      if ($count == 0 ) { echo "<ul>\n"; }
       $key++;
       $id = $row[0];
       $name = $row[1];
@@ -79,7 +79,7 @@ function list_unapproved ( $user ) {
       echo " (" . date_to_str ($date) . ")\n";
 //approve
       echo ": <a title=\"" . 
-	translate("Approve/Confirm") . "\" class=\"nav\" href=\"approve_entry.php?id=$id&amp;ret=list&amp;user=$user";
+	translate("Approve/Confirm") . "\"  href=\"approve_entry.php?id=$id&amp;ret=list&amp;user=$user";
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
@@ -107,8 +107,8 @@ function list_unapproved ( $user ) {
       $count++;
     }
     dbi_free_result ( $res );
+    if ($count > 0 ) { echo "</ul>\n"; }
   }
-  echo "</ul>\n";
   if ( $count == 0 ) {
     user_load_variables ( $user, "temp_" );
     echo "<span class=\"nounapproved\">" . 
