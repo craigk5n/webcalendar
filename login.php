@@ -4,7 +4,7 @@
 include "includes/config.inc";
 include "includes/php-dbi.inc";
 include "includes/functions.inc";
-include "includes/user.inc";
+include "includes/$user_inc";
 include "includes/connect.inc";
 
 if ( $remember_last_login && $login == "" ) {

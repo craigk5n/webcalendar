@@ -44,6 +44,7 @@ Features:
   Note: install-datebook must be patched and rebuilt since it has
   a big old bug in it.  See INSTALL for instructions.
 - Export to iCal
+- Authentication using LDAP, http authentication, or web-based.
 
 Requirements:
 - PHP (3 or 4)
@@ -63,7 +64,6 @@ Outstanding issues:
 - Updated translatations (some are slightly out of date)
 
 Possible features for future releases:
-- LDAP support
 - User groups
 - Custom access restrictions that can be defined by each user
 - Some kind of shared public calendars.  Perhaps multiple shared public
