@@ -90,7 +90,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <br />
 <?php echo translate("Your browser default language is") . " " . translate ( get_browser_language () ) . "."; ?>
 </td></tr>
-<tr><td style="vertical-align:top; font-weight:bold;" class="tooltip" title="<?php etooltip("tz-help")?>"><?php etranslate("Timezone Offset")?>:</td>
+<tr><td style="vertical-align:top;" class="tooltip" title="<?php etooltip("tz-help")?>"><?php etranslate("Timezone Offset")?>:</td>
   <td><select name="pref_TZ_OFFSET">
   <?php
   $text_add = translate("Add N hours to");
@@ -109,10 +109,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
       echo str_replace ( "N", $i, $text_add );
   }
   ?>
-  </select><?php etranslate("server time");?></td></tr>
+  </select>&nbsp;<?php etranslate("server time");?></td></tr>
 
-<tr><td style="vertical-align:top; font-weight:bold;" class="tooltip" title="<?php etooltip("fonts-help")?>"><?php etranslate("Fonts")?>:</td>
-  <td><input size="40" name="pref_FONTS" value="<?php echo htmlspecialchars ( $prefarray["FONTS"] );?>" /></td></tr>
+<tr><td style="vertical-align:top;" class="tooltip" title="<?php etooltip("fonts-help")?>"><?php etranslate("Fonts")?>:</td>
+  <td><input type="text" size="40" name="pref_FONTS" value="<?php echo htmlspecialchars ( $prefarray["FONTS"] );?>" /></td></tr>
 
 <tr><td style="font-weight:bold;"><?php etranslate("Preferred view")?>:</td>
 <td>
@@ -123,10 +123,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <option value="year" <?php if ( $prefarray["STARTVIEW"] == "year" ) echo " selected=\"selected\"";?>><?php etranslate("Year")?></option>
 </select></td></tr>
 
-<tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("display-weekends-help");?>"><?php etranslate("Display weekends in week view")?>:</td>
+<tr><td class="tooltip" title="<?php etooltip("display-weekends-help");?>"><?php etranslate("Display weekends in week view")?>:</td>
   <td><label><input type="radio" name="pref_DISPLAY_WEEKENDS" value="Y" <?php if ( $prefarray["DISPLAY_WEEKENDS"] != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_DISPLAY_WEEKENDS" value="N" <?php if ( $prefarray["DISPLAY_WEEKENDS"] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
-<tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("display-desc-print-day-help");?>"><?php etranslate("Display description in printer day view")?>:</td>
+<tr><td class="tooltip" title="<?php etooltip("display-desc-print-day-help");?>"><?php etranslate("Display description in printer day view")?>:</td>
   <td><label><input type="radio" name="pref_DISPLAY_DESC_PRINT_DAY" value="Y" <?php if ( $prefarray["DISPLAY_DESC_PRINT_DAY"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_DISPLAY_DESC_PRINT_DAY" value="N" <?php if ( $prefarray["DISPLAY_DESC_PRINT_DAY"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
   <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Date format")?>:</td>
@@ -224,10 +224,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   <option value="144" <?php if ( $prefarray["TIME_SLOTS"] == "144" ) echo " selected=\"selected\""?>>10 <?php etranslate("minutes")?></option>
   </select></td></tr>
 
-<tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("auto-refresh-help");?>"><?php etranslate("Auto-refresh calendars")?>:</td>
+<tr><td class="tooltip" title="<?php etooltip("auto-refresh-help");?>"><?php etranslate("Auto-refresh calendars")?>:</td>
   <td><label><input type="radio" name="pref_auto_refresh" value="Y" <?php if ( $prefarray["auto_refresh"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_auto_refresh" value="N" <?php if ( $prefarray["auto_refresh"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
-<tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("auto-refresh-time-help");?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Auto-refresh time")?>:</td>
+<tr><td class="tooltip" title="<?php etooltip("auto-refresh-time-help");?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Auto-refresh time")?>:</td>
   <td><input name="pref_auto_refresh_time" size="4" value="<?php if ( empty ( $prefarray["auto_refresh_time"] ) ) echo "0"; else echo $prefarray["auto_refresh_time"]; ?>" /> <?php etranslate("minutes")?></td></tr>
 
 
@@ -263,7 +263,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   </select>
   </td></tr>
 
-<tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("timed-evt-len-help");?>"><?php etranslate("Specify timed event length by")?>:</td>
+<tr><td class="tooltip" title="<?php etooltip("timed-evt-len-help");?>"><?php etranslate("Specify timed event length by")?>:</td>
   <td><label><input type="radio" name="pref_TIMED_EVT_LEN" value="D" <?php if ( $prefarray["TIMED_EVT_LEN"] != "E" ) echo " checked=\"checked\"";?> /> <?php etranslate("Duration")?></label> <label><input type="radio" name="pref_TIMED_EVT_LEN" value="E" <?php if ( $prefarray["TIMED_EVT_LEN"] == "E" ) echo " checked=\"checked\"";?> /> <?php etranslate("End Time")?></label></td></tr>
 
 <?php if ( ! empty ( $categories ) ) { ?>
@@ -329,10 +329,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 <table style="border-width:0px;" cellspacing="0" cellpadding="0"><tr><td style="background-color:#000000;"><table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2"><tr><td style="width:100%; background-color:<?php echo $CELLBG ?>;"><table style="border-width:0px; width:100%;">
 
-<tr><td style="vertical-align:top; font-weight:bold;" class="tooltip" title="<?php etooltip("allow-remote-subscriptions-help")?>"><?php etranslate("Allow remote subscriptions")?>:</td>
+<tr><td style="vertical-align:top;" class="tooltip" title="<?php etooltip("allow-remote-subscriptions-help")?>"><?php etranslate("Allow remote subscriptions")?>:</td>
   <td><label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="Y" <?php if ( $prefarray["USER_PUBLISH_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="N" <?php if ( $prefarray["USER_PUBLISH_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 <?php if ( ! empty ( $server_url ) ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;" class="tooltip" title="<?php etooltip("remote-subscriptions-url-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("URL")?>:</td>
+<tr><td style="vertical-align:top;" class="tooltip" title="<?php etooltip("remote-subscriptions-url-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("URL")?>:</td>
   <td><?php echo htmlentities ( $server_url ) . "publish.php/$login.ics";?></td></tr>
 <?php } /* $server_url */ ?>
 </table></td></tr></table></td></tr></table>
@@ -346,15 +346,15 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 <table style="border-width:0px;" cellspacing="0" cellpadding="0"><tr><td style="background-color:#000000;"><table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2"><tr><td style="width:100%; background-color:<?php echo $CELLBG ?>;"><table style="border-width:0px; width:100%;">
 <tr><td style="font-weight:bold;"><?php etranslate("Document background")?>:</td>
-  <td><input name="pref_BGCOLOR" size="8" maxlength="7" value="<?php echo $prefarray["BGCOLOR"]; ?>" /> <input type="button" onclick="selectColor('pref_BGCOLOR')" value="<?php etranslate("Select")?>..." /></td></tr>
+  <td><input type="text" name="pref_BGCOLOR" size="8" maxlength="7" value="<?php echo $prefarray["BGCOLOR"]; ?>" /> <input type="button" onclick="selectColor('pref_BGCOLOR')" value="<?php etranslate("Select")?>..." /></td></tr>
 <tr><td style="font-weight:bold;"><?php etranslate("Document title")?>:</td>
-  <td><input name="pref_H2COLOR" size="8" maxlength="7" value="<?php echo $prefarray["H2COLOR"]; ?>" /> <input type="button" onclick="selectColor('pref_H2COLOR')" value="<?php etranslate("Select")?>..." /></td></tr>
+  <td><input type="text" name="pref_H2COLOR" size="8" maxlength="7" value="<?php echo $prefarray["H2COLOR"]; ?>" /> <input type="button" onclick="selectColor('pref_H2COLOR')" value="<?php etranslate("Select")?>..." /></td></tr>
 <tr><td style="font-weight:bold;"><?php etranslate("Table cell background")?>:</td>
-  <td><input name="pref_CELLBG" size="8" maxlength="7" value="<?php echo $prefarray["CELLBG"]; ?>" /> <input type="button" onclick="selectColor('pref_CELLBG')" value="<?php etranslate("Select")?>..." /></td></tr>
+  <td><input type="text" name="pref_CELLBG" size="8" maxlength="7" value="<?php echo $prefarray["CELLBG"]; ?>" /> <input type="button" onclick="selectColor('pref_CELLBG')" value="<?php etranslate("Select")?>..." /></td></tr>
 <tr><td style="font-weight:bold;"><?php etranslate("Table cell background for current day")?>:</td>
-  <td><input name="pref_TODAYCELLBG" size="8" maxlength="7" value="<?php echo $prefarray["TODAYCELLBG"]; ?>" /> <input type="button" onclick="selectColor('pref_TODAYCELLBG')" value="<?php etranslate("Select")?>..." /></td></tr>
+  <td><input type="text" name="pref_TODAYCELLBG" size="8" maxlength="7" value="<?php echo $prefarray["TODAYCELLBG"]; ?>" /> <input type="button" onclick="selectColor('pref_TODAYCELLBG')" value="<?php etranslate("Select")?>..." /></td></tr>
 <tr><td style="font-weight:bold;"><?php etranslate("Table cell background for weekends")?>:</td>
-  <td><input name="pref_WEEKENDBG" size="8" maxlength="7" value="<?php echo $prefarray["WEEKENDBG"]; ?>" /> <input type="button" onclick="selectColor('pref_WEEKENDBG')" value="<?php etranslate("Select")?>..." /></td></tr>
+  <td><input type="text" name="pref_WEEKENDBG" size="8" maxlength="7" value="<?php echo $prefarray["WEEKENDBG"]; ?>" /> <input type="button" onclick="selectColor('pref_WEEKENDBG')" value="<?php etranslate("Select")?>..." /></td></tr>
 </table></td></tr></table></td></tr></table>
 
 </td><td style="text-align:center; vertical-align:top; background-color:<?php echo $prefarray["BGCOLOR"]?>;">
