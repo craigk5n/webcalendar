@@ -8,6 +8,7 @@ Version 1.0RC3 (?? ??? 2005)
     + Fixed issue where month.php and mini-calendar today highlight based on server time
   - New Features / Enhancements / Changes:
     + Added patch to allow TLS with LDAP
+    + Added patch 900968: Add outlook-style availability popup
   - The following translations were updated:
     + Spanish
 
