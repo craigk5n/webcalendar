@@ -346,16 +346,20 @@ table.dayviewminical {
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 }
+#day #today {
+	background-color: <?php echo $GLOBALS['TODAYCELLBG']; ?>;
+}
+#day .selectedday {
+	border: 1px solid black;
+}
 
 <?php // ========================= MONTH.PHP ?>
-#month table.main,
-table.monthview {
+#month table.main {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 }
-#month table.main td,
-table.monthview td {
+#month table.main td {
   font-size: 12px;
   width: 14%;
   height: 75px;
@@ -364,8 +368,7 @@ table.monthview td {
   background-color: <?php echo $GLOBALS['CELLBG'];?>;
   vertical-align: top;
 }
-#month table.main td.weekend,
-table.monthview td.weekend {
+#month table.main td.weekend {
   font-size: 12px;
   width: 14%;
   height: 75px;
@@ -374,8 +377,7 @@ table.monthview td.weekend {
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-#month table.main td.today,
-table.monthview td.today {
+#month table.main td.today {
   font-size: 12px;
   width: 14%;
   height: 75px;
@@ -428,8 +430,7 @@ table.viewd {
 .viewv th,
 #viewl th,
 .viewl th,
-#month table.main th,
-.monthview th {
+#month table.main th {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -441,16 +442,14 @@ table.viewd {
 table.viewlminical,
 #year table.minical,
 table.yearviewminical,
-#month table.minical,
-table.monthviewminical {
+#month table.minical {
 	border-width: 0px;
 }
 #viewl .minical td.month,
 .viewlminical td.month,
 #year .minical td.month,
 .yearviewminical td.month,
-#month .minical td.month,
-.monthviewminical td.month {
+#month .minical td.month {
 	text-align: center;
 }
 <?php // contains the name of the month (i.e. January, June, December, etc) ?>
@@ -458,8 +457,7 @@ table.monthviewminical {
 .viewlminical td.month a,
 #year .minical td.month a,
 .yearviewminical td.month a,
-#month .minical td.month a,
-.monthviewminical td.month a {
+#month .minical td.month a {
 	color: #B04040;
 	font-size: 13px;
 	text-decoration: none;
@@ -468,8 +466,7 @@ table.monthviewminical {
 .viewlminical td.month a:hover,
 #year .minical td.month a:hover,
 .yearviewminical td.month a:hover,
-#month .minical td.month a:hover,
-.monthviewminical td.month a:hover {
+#month .minical td.month a:hover {
 	color: #0000FF;
 	font-size: 13px;
 	text-decoration: none;
@@ -481,7 +478,6 @@ table.monthviewminical {
 #year .minical tr.day,
 .yearviewminical tr.day,
 #month .minical tr.day th,
-.monthviewminical tr.day,
 #day .minical tr.day,
 .dayviewminical tr.day {
 	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
@@ -497,17 +493,14 @@ table.monthviewminical {
 #year .minical tr.numdate td,
 .yearviewminical tr.numdate td,
 #month .minical td.numdate,
-.monthviewminical td.numdate,
-#month .minical tr.numdate td,
-.monthviewminical tr.numdate td {
+#month .minical tr.numdate td {
 	text-align: right;
 }
 #viewl .minical td.numdate a,
 .viewlminical td.numdate a,
 #year .minical td.numdate a,
 .yearviewminical td.numdate a,
-#month .minical td.numdate a,
-.monthviewminical td.numdate a {
+#month .minical td.numdate a {
 	font-size: 13px;
 	text-decoration: none;
 }
@@ -515,8 +508,7 @@ table.monthviewminical {
 .viewlminical td.numdate a:hover,
 #year .minical td.numdate a:hover,
 .yearviewminical td.numdate a:hover,
-#month .minical td.numdate a:hover,
-.monthviewminical td.numdate a:hover {
+#month .minical td.numdate a:hover {
 	font-size: 13px;
 	color: #0000FF;
 	text-decoration: none;
@@ -603,8 +595,7 @@ table.viewt {
 .viewttitle,
 #viewv .title,
 .viewvtitle,
-#month .title,
-.monthviewtitle {
+#month .title {
 	text-align: center;
 }
 #vieww .title .date,
@@ -619,8 +610,7 @@ table.viewt {
 .viewttitle .date,
 #viewv .title .date,
 .viewvtitle .date,
-#month .title .date,
-.monthviewtitle .date {
+#month .title .date {
 	font-size: 24px;
 	font-weight: bold;
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
