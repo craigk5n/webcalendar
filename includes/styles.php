@@ -422,13 +422,13 @@ table.yearview {
 	text-align: center;
 }
 /* contains the year (i.e. 2004) in year.php */
-td.yearviewtitle .date {
+.yearviewtitle .date {
 	font-size: 24px;
 	font-weight: bold;
 	text-align: center;
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
-td.yearviewtitle .user {
+.yearviewtitle .user {
 	font-size: 18px;
 	font-weight: bold;
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
