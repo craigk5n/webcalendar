@@ -82,7 +82,7 @@ if ( ! $error ) {
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("server-url-help")?>"><?php etranslate("Server URL")?>:</td>
   <td><input size="40" name="admin_server_url" value="<?php echo htmlspecialchars ( $server_url );?>" /></td></tr>
 <tr><td style="font-weight:bold; vertical-align:top;" class="tooltip" title="<?php etooltip("language-help");?>"><?php etranslate("Language")?>:</td>
-<td><select name="admin_language">
+<td><select name="admin_LANGUAGE">
 <?php
 reset ( $languages );
 while ( list ( $key, $val ) = each ( $languages ) ) {
@@ -100,15 +100,15 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   <td><input size="40" name="admin_FONTS" value="<?php echo htmlspecialchars ( $FONTS );?>" /></td></tr>
 
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("custom-script-help");?>"><?php etranslate("Custom script/stylesheet")?>:</td>
-  <td><input type="radio" name="admin_custom_script" value="Y" <?php if ( $s["CUSTOM_SCRIPT"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_custom_script" value="N" <?php if ( $s["CUSTOM_SCRIPT"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?>
+  <td><input type="radio" name="admin_CUSTOM_SCRIPT" value="Y" <?php if ( $s["CUSTOM_SCRIPT"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_CUSTOM_SCRIPT" value="N" <?php if ( $s["CUSTOM_SCRIPT"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?>
   &nbsp;&nbsp;
-  <input type="button" value="<?php etranslate("Edit");?>..." onClick="window.open('edit_template.php?type=S','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
+  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=S','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
   </td></tr>
 
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("custom-header-help");?>"><?php etranslate("Custom header")?>:</td>
   <td><input type="radio" name="admin_CUSTOM_HEADER" value="Y" <?php if ( $s["CUSTOM_HEADER"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_CUSTOM_HEADER" value="N" <?php if ( $s["CUSTOM_HEADER"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?>
   &nbsp;&nbsp;
-  <input type="button" value="<?php etranslate("Edit");?>..." ondlick="window.open('edit_template.php?type=H','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
+  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=H','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
   </td></tr>
 
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("custom-trailer-help");?>"><?php etranslate("Custom trailer")?>:</td>
@@ -125,16 +125,16 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <option value="year" <?php if ( $s["STARTVIEW"] == "year" ) echo " selected=\"selected\"";?>><?php etranslate("Year")?></option>
 </select></td></tr>
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("display-weekends-help");?>"><?php etranslate("Display weekends in week view")?>:</td>
-  <td><input type="radio" name="admin_display_weekends" value="Y" <?php if ( $s["DISPLAY_WEEKENDS"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_display_weekends" value="N" <?php if ( $s["DISPLAY_WEEKENDS"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_DISPLAY_WEEKENDS" value="Y" <?php if ( $s["DISPLAY_WEEKENDS"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_DISPLAY_WEEKENDS" value="N" <?php if ( $s["DISPLAY_WEEKENDS"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("yearly-shows-events-help");?>"><?php etranslate("Display days with events in bold in year view")?>:</td>
   <td><input type="radio" name="admin_bold_days_in_year" value="Y" <?php if ( $s["bold_days_in_year"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_bold_days_in_year" value="N" <?php if ( $s["bold_days_in_year"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("display-desc-print-day-help");?>"><?php etranslate("Display description in printer day view")?>:</td>
-  <td><input type="radio" name="admin_display_desc_print_day" value="Y" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_display_desc_print_day" value="N" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_DISPLAY_DESC_PRINT_DAY" value="Y" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_DISPLAY_DESC_PRINT_DAY" value="N" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td style="font-weight:bold; vertical-align:top;" class="tooltip" title="<?php etooltip("date-format-help");?>"><?php etranslate("Date format")?>:</td>
-  <td><select name="admin_date_format">
+  <td><select name="admin_DATE_FORMAT">
   <?php
   // You can add new date formats below if you want.
   // but also add in pref.php.
@@ -165,7 +165,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   ?>
 </select>
 <br />
-  <select name="admin_date_format_my">
+  <select name="admin_DATE_FORMAT_MY">
   <?php
   // Date format for a month and year (with no day of the month)
   // You can add new date formats below if you want.
@@ -191,9 +191,9 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
     echo ">" . $datestyles[$i + 1] . "</option>\n";
   }
   ?>
-  </select>
+admin_DATE_FORMAT_MD  </select>
   <br />
-  <select name="admin_date_format_md">
+  <select name="admin_DATE_FORMAT_MD">
   <?php
   // Date format for a month and day (with no year displayed)
   // You can add new date formats below if you want.
@@ -217,10 +217,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 </td></tr>
 
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("time-format-help")?>"><?php etranslate("Time format")?>:</td>
-  <td><input type="radio" name="admin_time_format" value="12" <?php if ( $s["TIME_FORMAT"] == "12" ) echo " checked=\"checked\"";?>> <?php etranslate("12 hour")?> <input type="radio" name="admin_time_format" value="24" <?php if ( $s["TIME_FORMAT"] != "12" ) echo " checked=\"checked\"";?>> <?php etranslate("24 hour")?></td></tr>
+  <td><input type="radio" name="admin_TIME_FORMAT" value="12" <?php if ( $s["TIME_FORMAT"] == "12" ) echo " checked=\"checked\"";?>> <?php etranslate("12 hour")?> <input type="radio" name="admin_TIME_FORMAT" value="24" <?php if ( $s["TIME_FORMAT"] != "12" ) echo " checked=\"checked\"";?>> <?php etranslate("24 hour")?></td></tr>
 
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("time-interval-help")?>"><?php etranslate("Time interval")?>:</td>
-  <td><select name="admin_time_slots">
+  <td><select name="admin_TIME_SLOTS">
   <option value="24" <?php if ( $s["TIME_SLOTS"] == "24" ) echo " selected=\"selected\""?>>1 <?php etranslate("hour")?></option>
   <option value="48" <?php if ( $s["TIME_SLOTS"] == "48" ) echo " selected=\"selected\""?>>30 <?php etranslate("minutes")?></option>
   <option value="72" <?php if ( $s["TIME_SLOTS"] == "72" ) echo " selected=\"selected\""?>>20 <?php etranslate("minutes")?></option>
@@ -236,18 +236,18 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("require-approvals-help");?>"><?php etranslate("Require event approvals")?>:</td>
   <td><input type="radio" name="admin_require_approvals" value="Y" <?php if ( $s["require_approvals"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_require_approvals" value="N" <?php if ( $s["require_approvals"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b class="tooltip" title="<?php etooltip("display-unapproved-help");?>"><?php etranslate("Display unapproved")?>:</b></td>
-  <td><input type="radio" name="admin_display_unapproved" value="Y" <?php if ( $s["DISPLAY_UNAPPROVED"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_display_unapproved" value="N" <?php if ( $s["DISPLAY_UNAPPROVED"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+admin_DISPLAY_UNAPPROVED<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b class="tooltip" title="<?php etooltip("display-unapproved-help");?>"><?php etranslate("Display unapproved")?>:</b></td>
+  <td><input type="radio" name="admin_DISPLAY_UNAPPROVED" value="Y" <?php if ( $s["DISPLAY_UNAPPROVED"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_DISPLAY_UNAPPROVED" value="N" <?php if ( $s["DISPLAY_UNAPPROVED"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("display-week-number-help")?>"><?php etranslate("Display week number")?>:</td>
-  <td><input type="radio" name="admin_display_weeknumber" value="Y" <?php if ( $s["DISPLAY_WEEKNUMBER"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_display_weeknumber" value="N" <?php if ( $s["DISPLAY_WEEKNUMBER"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_DISPLAY_WEEKNUMBER" value="Y" <?php if ( $s["DISPLAY_WEEKNUMBER"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_DISPLAY_WEEKNUMBER" value="N" <?php if ( $s["DISPLAY_WEEKNUMBER"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("display-week-starts-on")?>"><?php etranslate("Week starts on")?>:</td>
-  <td><input type="radio" name="admin_week_start" value="0" <?php if ( $s["WEEK_START"] != "1" ) echo " checked=\"checked\"";?>> <?php etranslate("Sunday")?> <input type="radio" name="admin_week_start" value="1" <?php if ( $s["WEEK_START"] == "1" ) echo " checked=\"checked\"";?>> <?php etranslate("Monday")?></td></tr>
+  <td><input type="radio" name="admin_WEEK_START" value="0" <?php if ( $s["WEEK_START"] != "1" ) echo " checked=\"checked\"";?>> <?php etranslate("Sunday")?> <input type="radio" name="admin_WEEK_START" value="1" <?php if ( $s["WEEK_START"] == "1" ) echo " checked=\"checked\"";?>> <?php etranslate("Monday")?></td></tr>
 
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("work-hours-help")?>"><?php etranslate("Work hours")?>:</td>
   <td>
-  <?php etranslate("From")?> <select name="admin_work_day_start_hour">
+  <?php etranslate("From")?> <select name="admin_WORK_DAY_START_HOUR">
   <?php
   for ( $i = 0; $i < 24; $i++ ) {
     echo "<option value=\"$i\" " .
@@ -256,7 +256,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   }
   ?>
   </select> <?php etranslate("to")?>
-  <select name="admin_work_day_end_hour">
+  <select name="admin_WORK_DAY_END_HOUR">
   <?php
   for ( $i = 0; $i < 24; $i++ ) {
     echo "<option value=\"$i\" " .
