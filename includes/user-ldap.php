@@ -73,6 +73,7 @@ $ldap_admin_group_name = "cn=webcal_admin,ou=groupes,o=compagny.com";
 $ldap_admin_group_attr = "member";
 
 
+
 // Function to search the dn of a given user
 // the error message will be placed in $login_error.
 // params:
@@ -342,7 +343,7 @@ function user_get_users () {
 function user_is_admin($values,$Admins) {
   if ( ! $Admins ) {
     return "N";
-  else if (in_array ($values, $Admins)) {
+  } else if (in_array ($values, $Admins)) {
     return "Y";
   } else {
     return "N";
@@ -355,9 +356,9 @@ function get_admins() {
   global $error, $ldap_server, $ldap_port;
   global $ldap_admin_dn,$ldap_admin_pwd;
   global $ldap_admin_group_name,$ldap_admin_group_attr;
-  global $cached_admins, $cached_admins_found = false;
+  global $cached_admins;
 
-  if ( $cached_admins_found )
+  if ( ! empty ( $cached_admins ) )
     return $cached_admins;
 
   $cached_admins = array ();

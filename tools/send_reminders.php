@@ -173,7 +173,7 @@ function send_reminder ( $id, $event_date ) {
   // languages between users if needed.
   $mailusers = array ();
   $recipients = array ();
-  if ( $single_user ) {
+  if ( $single_user == "Y" ) {
     $mailusers[] = $emails[$single_user_login];
     $recipients[] = $single_user_login;
   } else {
@@ -196,6 +196,8 @@ function send_reminder ( $id, $event_date ) {
       $userlang = $languages[$user];
     else
       $userlang = $LANGUAGE; // system default
+    if ( $userlang == "none" )
+      $userlang = "English-US"; // gotta pick something
     if ( $debug )
       echo "Setting language to \"$userlang\" <br>\n";
     reset_language ( $userlang );
@@ -251,7 +253,7 @@ function send_reminder ( $id, $event_date ) {
         }
       }
     }
-    if ( ! $single_user && ! $disable_participants_field ) {
+    if ( $single_user != "Y" && ! $disable_participants_field ) {
       $body .= translate("Participants") . ":\n";
       for ( $i = 0; $i < count ( $participants ); $i++ ) {
         $body .= "  " . $names[$participants[$i]] . "\n";

@@ -17,11 +17,12 @@
 #
 ###########################################################################
 
+$trans_dir = "../translations";
 
 $infile = $ARGV[0];
 
 if ( $infile eq "" ) {
-  opendir ( DIR, "../translations" ) || die "error opening ../translations";
+  opendir ( DIR, $trans_dir ) || die "error opening $trans_dir";
   @files = grep ( /\.txt$/, readdir ( DIR ) );
   closedir ( DIR );
   $last_mtime = 0;
@@ -32,6 +33,14 @@ if ( $infile eq "" ) {
       $infile = "../translations/$f";
     }
   }
+}
+
+if ( $infile ne "" && ! -f $infile && -f "$trans_dir/$infile" ) {
+  $infile = "$trans_dir/$infile";
+}
+
+if ( $infile ne "" && ! -f $infile && -f "$trans_dir/$infile.txt" ) {
+  $infile = "$trans_dir/$infile.txt";
 }
 
 

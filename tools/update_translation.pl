@@ -20,6 +20,8 @@
 #
 # Example:
 #	update_translation.pl French.txt
+#	   or
+#	update_translation.pl French
 #
 # Note: this utility should be run from this directory (tools).
 #
@@ -29,7 +31,20 @@ $trans_dir = "../translations";
 
 $base_trans = "$trans_dir/English-US.txt";
 
+$show_missing = 1; # set to 0 to minimize translation file.
+$show_dups = 0; # set to 0 to minimize translation file.
+
+$save_backup = 0;
+
 $infile = $ARGV[0];
+
+if ( ( $infile !~ /txt$/ ) && ( ! -f "$trans_dir/$infile" ) ) {
+  if ( -f $infile . ".txt" ) {
+    $infile = $infile . ".txt";
+  } elsif ( -f "$trans_dir/$infile.txt" ) {
+    $infile = "$trans_dir/$infile.txt";
+  }
+}
 if ( -f "$trans_dir/$infile" ) {
   $infile = "$trans_dir/$infile";
 }
@@ -80,10 +95,12 @@ if ( -f $infile ) {
 #
 # Save a backup copy of old translation file.
 #
-open ( F, ">$infile.bak" ) || die "Error writing $infile.bak";
-print F $old;
-close ( F );
-print "Backup of translation saved in $infile.bak\n";
+if ( $save_backup ) {
+  open ( F, ">$infile.bak" ) || die "Error writing $infile.bak";
+  print F $old;
+  close ( F );
+  print "Backup of translation saved in $infile.bak\n";
+}
 
 
 if ( $header !~ /Translation last updated/ ) {
@@ -126,13 +143,20 @@ foreach $f ( @files ) {
 	if ( defined ( $thispage{$text} ) ) {
           # text already found within this page...
 	} elsif ( defined ( $text{$text} ) ) {
-          print OUT "# \"$text\" previously defined (in $foundin{$text})\n";
+          print OUT "# \"$text\" previously defined (in $foundin{$text})\n"
+            if ( ! show_dups );
 	  $thispage{$text} = 1;
 	} else {
           if ( ! length ( $trans{$text} ) ) {
-            print OUT "#\n# << MISSING >>\n# $text:\n";
-            print OUT "# English text: $base_trans{$text}\n#\n"
-              if ( length ( $base_trans{$text} ) );
+            if ( $show_missing ) {
+              print OUT "#\n# << MISSING >>\n# $text:\n";
+              print OUT "# English text: $base_trans{$text}\n#\n"
+                if ( length ( $base_trans{$text} ) &&
+                  $base_trans{$text} ne $text );
+            }
+            $text{$text} = 1;
+	    $thispage{$text} = 1;
+	    $foundin{$text} = $f;
             $notfound++;
 	  } else {
             $text{$text} = 1;

@@ -1,6 +1,8 @@
 <?php
 
 
+
+
 // Global variables for activity log
 $LOG_CREATE = "C";
 $LOG_APPROVE = "A";
@@ -11,12 +13,51 @@ $LOG_NOTIFICATION = "N";
 $LOG_REMINDER = "R";
 
 
+// This code is a temporary hack to make the application work when
+// register_globals is set to Off in php.ini (the default setting in
+// PHP 4.2.0 and after).
+if ( ! empty ( $HTTP_GET_VARS ) ) {
+  while (list($key, $val) = @each($HTTP_GET_VARS)) {
+    $GLOBALS[$key] = $val;
+    //echo "GET var '$key' = '$val' <BR>";
+  }
+  reset ( $HTTP_GET_VARS );
+}
+if ( ! empty ( $HTTP_POST_VARS ) ) {
+  while (list($key, $val) = @each($HTTP_POST_VARS)) {
+    $GLOBALS[$key] = $val;
+  }
+  reset ( $HTTP_POST_VARS );
+}
+//while (list($key, $val) = @each($HTTP_POST_FILES)) {
+//       $GLOBALS[$key] = $val;
+//}
+//while (list($key, $val) = @each($HTTP_SESSION_VARS)) {
+//       $GLOBALS[$key] = $val;
+//}
+if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
+  while (list($key, $val) = @each($HTTP_COOKIE_VARS)) {
+    $GLOBALS[$key] = $val;
+    //echo "COOKIE var '$key' = '$val' <BR>";
+  }
+  reset ( $HTTP_COOKIE_VARS );
+}
+
+
+
 
 // Load default system settings (which can be updated via admin.php)
 // Some can also be overridden with user settings.
 function load_global_settings () {
   global $login, $readonly;
   global $SERVER_NAME, $SERVER_PORT, $REQUEST_URI;
+
+  if ( empty ( $SERVER_NAME ) )
+    $REQUEST_URI = $_SERVER["SERVER_NAME"];
+  if ( empty ( $SERVER_PORT ) )
+    $REQUEST_URI = $_SERVER["SERVER_PORT"];
+  if ( empty ( $REQUEST_URI ) )
+    $REQUEST_URI = $_SERVER["REQUEST_URI"];
 
   $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_config" );
   if ( $res ) {
@@ -95,6 +136,10 @@ function do_debug ( $msg ) {
 // See the following for more info on the IIS bug:
 //   http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4
 function do_redirect ( $url ) {
+  global $SERVER_SOFTWARE, $_SERVER;
+  if ( empty ( $SERVER_SOFTWARE ) )
+    $SERVER_SOFTWARE = $_SERVER["SERVER_SOFTWARE"];
+  //echo "SERVER_SOFTWARE = $SERVER_SOFTWARE <BR>"; exit;
   if ( substr ( $SERVER_SOFTWARE, 0, 5 ) == "Micro" ) {
     echo "<HTML><HEAD><TITLE>Redirect</TITLE>" .
       "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0; URL=$url\"></HEAD><BODY>" .
@@ -135,15 +180,23 @@ function send_http_login () {
 // so we can return to this same page after a user edits/deletes/etc an
 // event
 function remember_this_view () {
-  global $SCRIPT_FILENAME, $REQUEST_URI;
-  SetCookie ( "webcalendar_last_view", $REQUEST_URI );
+  global $server_url, $REQUEST_URI;
+  if ( empty ( $REQUEST_URI ) )
+    $REQUEST_URI = $_SERVER["REQUEST_URI"];
+
+  if ( empty ( $server_url ) )
+    SetCookie ( "webcalendar_last_view", $REQUEST_URI );
+  else
+    SetCookie ( "webcalendar_last_view", $REQUEST_URI, 0, $server_url );
 }
 
 // Get the last page stored using above function.
 // Return empty string if we don't know.
 function get_last_view () {
-  global $webcalendar_last_view;
-  return $webcalendar_last_view;
+  $val = $HTTP_COOKIE_VARS["webcalendar_last_view"];
+  if ( empty ( $val )) 
+    $val = $_COOKIE["webcalendar_last_view"];
+  return $val;
 }
 
 
@@ -163,11 +216,12 @@ function send_no_cache_header () {
 // Also load the list of views for this user (not really a preference,
 // but this is a convenient place to put this...)
 function load_user_preferences () {
-  global $login, $browser, $views;
+  global $login, $browser, $views, $prefarray;
   $lang_found = false;
 
   $browser = get_web_browser ();
   $browser_lang = get_browser_language ();
+  $prefarray = array ();
 
   // Note: default values are set in config.php
   $res = dbi_query (
@@ -182,6 +236,7 @@ function load_user_preferences () {
       if ( ! empty ( $GLOBALS[$setting] ) )
         $GLOBALS["sys_" . $setting] = $GLOBALS[$setting];
       $GLOBALS[$setting] = $value;
+      $prefarray[$setting] = $value;
       if ( $setting == "LANGUAGE" )
         $lang_found = true;
     }
@@ -213,6 +268,11 @@ function load_user_preferences () {
       "( cal_login, cal_setting, cal_value ) VALUES " .
       "( '$login', 'LANGUAGE', '$LANGUAGE' )" );
   }
+
+  if ( empty ( $GLOBALS["DATE_FORMAT_MY"] ) )
+    $GLOBALS["DATE_FORMAT_MY"] = "month yyyy";
+  if ( empty ( $GLOBALS["DATE_FORMAT_MD"] ) )
+    $GLOBALS["DATE_FORMAT_MD"] = "month dd";
 }
 
 
@@ -500,8 +560,8 @@ function print_entry ( $id, $date, $time, $duration,
     if ( $status == "W" ) $class = "unapprovedentry";
   }
   // if we are looking at a view, then always use "entry"
-  if ( strstr ( $PHP_SELF, "view_m.php" ) >= 0 ||
-    strstr ( $PHP_SELF, "view_w.php" ) >= 0 )
+  if ( strstr ( $PHP_SELF, "view_m.php" ) ||
+    strstr ( $PHP_SELF, "view_w.php" ) )
     $class = "entry";
 
   if ( $pri == 3 ) echo "<B>";
@@ -513,7 +573,7 @@ function print_entry ( $id, $date, $time, $duration,
       echo "&user=" . $user;
     echo "\" onMouseOver=\"window.status='" . translate("View this entry") .
       "'; show(event, '$divname'); return true;\" onMouseOut=\"hide('$divname'); return true;\">";
-    echo "<IMG SRC=\"circle.gif\" WIDTH=\"5\" HEIGHT=\"7\" ALT=\"view icon\" BORDER=\"0\">";
+    echo "<IMG SRC=\"circle.gif\" WIDTH=\"5\" HEIGHT=\"7\" BORDER=\"0\">";
   }
 
 
@@ -1105,12 +1165,14 @@ function week_number ( $date ) {
 function icon_text ( $id, $can_edit, $can_delete ) {
   global $readonly, $is_admin;
   $ret = "<A HREF=\"view_entry.php?id=$id\">" .
-    "<IMG SRC=\"view.gif\" ALT=\"View Entry\" BORDER=\"0\" " .
+    "<IMG SRC=\"view.gif\" ALT=\"" . translate("View this entry") .
+    "\" BORDER=\"0\" " .
     "WIDTH=\"10\" HEIGHT=\"10\">" .
     "</A>";
   if ( $can_edit && $readonly == "N" )
     $ret .= "<A HREF=\"edit_entry.php?id=$id\">" .
-      "<IMG SRC=\"edit.gif\" ALT=\"Edit Entry\" BORDER=\"0\" " .
+      "<IMG SRC=\"edit.gif\" ALT=\"" . translate("Edit entry") .
+      "\" BORDER=\"0\" " .
       "WIDTH=\"10\" HEIGHT=\"10\">" .
       "</A>";
   if ( $can_delete && ( $readonly == "N" || $is_admin ) )
@@ -1119,7 +1181,8 @@ function icon_text ( $id, $can_edit, $can_delete ) {
       translate("Are you sure you want to delete this entry?") .
       "\\n\\n" . translate("This will delete this entry for all users.") .
       "');\">" .
-      "<IMG SRC=\"delete.gif\" ALT=\"Delete Entry\" BORDER=\"0\" " .
+      "<IMG SRC=\"delete.gif\" ALT=\"" . translate("Delete entry") .
+      "\" BORDER=\"0\" " .
       "WIDTH=\"10\" HEIGHT=\"10\">" .
       "</A>";
   return $ret;
@@ -1128,7 +1191,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
 
 //
 // Print all the calendar entries for the specified user for the
-// specified date.  If we are display data from someone other than
+// specified date.  If we are displaying data from someone other than
 // the logged in user, then check the access permission of the entry.
 // params:
 //   $date - date in YYYYMMDD format
@@ -1294,7 +1357,7 @@ function overlap ( $dates, $duration, $hour, $minute,
           if ( $single_user == "Y" )
             $overlap .= "$row[0]: ";
           if ( $row[5] == 'R' && $row[0] != $login )
-            $overlap .=  "(PRIVATE)";
+            $overlap .=  "(" . translate("Private") . ")";
           else {
             $overlap .=  "<A HREF=\"view_entry.php?id=$row[4]";
             if ( $user != $login )
@@ -1306,7 +1369,7 @@ function overlap ( $dates, $duration, $hour, $minute,
             $overlap .= "-" .
               display_time ( add_duration ( $time2, $duration2 ) );
           $overlap .= ")";
-          $overlap .= " on " . date("l, F j, Y", date_to_epoch($row[7]));
+          $overlap .= " on " . date_to_str( $row[7] );
         }
       }
     }
@@ -1350,7 +1413,7 @@ function overlap ( $dates, $duration, $hour, $minute,
             if ( $single_user != "Y" )
               $overlap .= $row['cal_login'] . ": ";
             if ( $row['cal_access'] == 'R' && $row['cal_login'] != $login )
-              $overlap .=  "(PRIVATE)";
+              $overlap .=  "(" . translate("Private") . ")";
             else {
               $overlap .=  "<A HREF=\"view_entry.php?id=" . $row['cal_id'];
               if ( $user != $login )
@@ -1374,28 +1437,65 @@ function overlap ( $dates, $duration, $hour, $minute,
 
 
 
+// Convert a time format HHMMSS (like 131000 for 1PM) into number of
+// minutes past midnight.
+function time_to_minutes ( $time ) {
+  $h = (int) ( $time / 10000 );
+  $m = (int) ( $time / 100 ) % 100;
+  $num = $h * 60 + $m;
+  return $num;
+}
+
+
+// Calculate which row/slot this time represents.
+// $time is input time in YYMMDD format
+// $round_down indicates if we should change 1100 to 1059 so a
+// 10AM-11AM appt just shows up in the 10AM slot, not the 11AM slot also.
+function calc_time_slot ( $time, $round_down = false ) {
+  global $TIME_SLOTS;
+
+  $interval = ( 24 * 60 ) / $TIME_SLOTS;
+  $mins_since_midnight = time_to_minutes ( $time );
+  $ret = (int) ( $mins_since_midnight / $interval );
+  if ( $round_down ) {
+    if ( $ret * $interval == $mins_since_midnight )
+      $ret--;
+  }
+  //echo "$mins_since_midnight / $interval = $ret <BR>";
+
+  if ( $ret > $TIME_SLOTS )
+    $ret = $TIME_SLOTS;
+
+  //echo "calc_time_slot($time) = $ret <BR>";
+
+  return $ret;
+}
+
+
 // Generate the HTML for an event to be viewed in the week-at-glance.
 // The HTML will be stored in an array ($hour_arr) indexed on the event's
 // starting hour.
 function html_for_event_week_at_a_glance ( $id, $date, $time,
   $name, $description, $status, $pri, $access, $duration, $event_owner,
   $hide_icons ) {
-  global $first_hour, $last_hour, $hour_arr, $rowspan_arr, $rowspan,
+  global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user;
   static $key = 0;
-  global $DISPLAY_ICONS, $PHP_SELF;
+  global $DISPLAY_ICONS, $PHP_SELF, $TIME_SLOTS;
   global $layers;
 
   $divname = "eventinfo-day-$id-$key";
   $key++;
+  
+  // Figure out which time slot it goes in.
   if ( $time >= 0 ) {
-    $ind = (int) ( $time / 10000 );
-    if ( $ind < $first_hour )
-      $first_hour = $ind;
-    if ( $ind > $last_hour )
-      $last_hour = $ind;
+    $ind = calc_time_slot ( $time );
+    if ( $ind < $first_slot )
+      $first_slot = $ind;
+    if ( $ind > $last_slot )
+      $last_slot = $ind;
   } else
-    $ind = 99;
+    $ind = 9999;
 
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
@@ -1405,8 +1505,8 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     if ( $status == "W" ) $class = "unapprovedentry";
   }
   // if we are looking at a view, then always use "entry"
-  if ( strstr ( $PHP_SELF, "view_m.php" ) >= 0 ||
-    strstr ( $PHP_SELF, "view_w.php" ) >= 0 )
+  if ( strstr ( $PHP_SELF, "view_m.php" ) ||
+    strstr ( $PHP_SELF, "view_w.php" ) )
     $class = "entry";
 
 
@@ -1453,10 +1553,13 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
       $timestr .= "-" . display_time ( $end_time );
       if ( empty ( $rowspan_arr[$ind] ) )
         $rowspan_arr[$ind] = 0; // avoid warning below
-      if ( $m == 0 )
-        $rowspan = $h - $ind;
+      // which slot is end time in? take one off so we don't
+      // show 11:00-12:00 as taking up both 11 and 12 slots.
+      $endind = calc_time_slot ( $end_time, true );
+      if ( $endind == $ind )
+        $rowspan = 0;
       else
-        $rowspan = $h - $ind + 1;
+        $rowspan = $endind - $ind + 1;
       if ( $rowspan > $rowspan_arr[$ind] && $rowspan > 1 )
         $rowspan_arr[$ind] = $rowspan;
     }
@@ -1469,10 +1572,10 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] = "";
 
   if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
-    $hour_arr[$ind] .= "(Private)";
+    $hour_arr[$ind] .= "(" . translate("Private") . ")";
   } else if ( $login != $event_owner && $access == 'R' &&
     strlen ( $event_owner ) ) {
-    $hour_arr[$ind] .= "(Private)";
+    $hour_arr[$ind] .= "(" . translate("Private") . ")";
   } else if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
     $hour_arr[$ind] .= "</FONT>";
@@ -1506,11 +1609,11 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
 // starting hour.
 function html_for_event_day_at_a_glance ( $id, $date, $time,
   $name, $description, $status, $pri, $access, $duration, $event_owner, $hide_icons ) {
-  global $first_hour, $last_hour, $hour_arr, $rowspan_arr, $rowspan,
+  global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user;
   static $key = 0;
 
-  global $layers, $PHP_SELF;
+  global $layers, $PHP_SELF, $TIME_SLOTS;
 
   $divname = "eventinfo-day-$id-$key";
   $key++;
@@ -1525,14 +1628,17 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   else
     $eventinfo .= build_event_popup ( $divname, $event_owner, $description, "" );
 
+  // calculate slot length in minutes
+  $interval = ( 60 * 24 ) / $TIME_SLOTS;
+
   if ( $time >= 0 ) {
-    $ind = (int) ( $time / 10000 );
-    if ( $ind < $first_hour )
-      $first_hour = $ind;
-    if ( $ind > $last_hour )
-      $last_hour = $ind;
+    $ind = calc_time_slot ( $time );
+    if ( $ind < $first_slot )
+      $first_slot = $ind;
+    if ( $ind > $last_slot )
+      $last_slot = $ind;
   } else
-    $ind = 99;
+    $ind = 9999;
 
 
   if ( empty ( $hour_arr[$ind] ) )
@@ -1546,8 +1652,8 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
       $class = "unapprovedentry";
   }
   // if we are looking at a view, then always use "entry"
-  if ( strstr ( $PHP_SELF, "view_m.php" ) >= 0 ||
-    strstr ( $PHP_SELF, "view_w.php" ) >= 0 )
+  if ( strstr ( $PHP_SELF, "view_m.php" ) ||
+    strstr ( $PHP_SELF, "view_w.php" ) )
     $class = "entry";
 
 
@@ -1587,21 +1693,24 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
       }
       $end_time = sprintf ( "%02d%02d00", $h, $m );
       $hour_arr[$ind] .= "-" . display_time ( $end_time );
-      if ( $m == 0 )
-        $rowspan = $h - $ind;
+      // which slot is end time in? take one off so we don't
+      // show 11:00-12:00 as taking up both 11 and 12 slots.
+      $endind = calc_time_slot ( $end_time, true );
+      if ( $endind == $ind )
+        $rowspan = 0;
       else
-        $rowspan = $h - $ind + 1;
+        $rowspan = $endind - $ind + 1;
       if ( $rowspan > $rowspan_arr[$ind] && $rowspan > 1 )
         $rowspan_arr[$ind] = $rowspan;
     }
     $hour_arr[$ind] .= "] ";
   }
   if ( $login != $user && $access == 'R' && strlen ( $user ) )
-    $hour_arr[$ind] .= "(Private)";
+    $hour_arr[$ind] .= "(" . translate("Private") . ")";
 
   else
   if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
-    $hour_arr[$ind] .= "(Private)";
+    $hour_arr[$ind] .= "(" . translate("Private") . ")";
   else
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
@@ -1627,15 +1736,22 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
 //   $user - username
 //   $hide_icons - should we hide the icons to make it printer-friendly
 function print_day_at_a_glance ( $date, $user, $hide_icons ) {
-  global $first_hour, $last_hour, $hour_arr, $rowspan_arr, $rowspan;
-  global $CELLBG, $TODAYCELLBG, $THFG, $THBG;
+  global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan;
+  global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TIME_SLOTS;
   global $repeated_events;
   $get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
   if ( $user == "__public__" )
     $get_unapproved = false;
+  if ( empty ( $TIME_SLOTS ) ) {
+    echo "Error: TIME_SLOTS undefined!<P>";
+    return;
+  }
 
+  // $interval is number of minutes per slot
+  $interval = ( 24 * 60 ) / $TIME_SLOTS;
+    
   $rowspan_arr = array ();
-  for ( $i = 0; $i < 24; $i++ ) {
+  for ( $i = 0; $i < $TIME_SLOTS; $i++ ) {
     $rowspan_arr[$i] = 0;
   }
 
@@ -1645,10 +1761,12 @@ function print_day_at_a_glance ( $date, $user, $hide_icons ) {
 
   // Get static non-repeating events
   $ev = get_entries ( $user, $date );
-  $hour_arr = Array ();
-  $first_hour = $GLOBALS["WORK_DAY_START_HOUR"];
-  $last_hour = $GLOBALS["WORK_DAY_END_HOUR"];
-  $rowspan_arr = Array ();
+  $hour_arr = array ();
+  $interval = ( 24 * 60 ) / $TIME_SLOTS;
+  $first_slot = (int) ( ( $GLOBALS["WORK_DAY_START_HOUR"] * 60 ) / $interval );
+  $last_slot = (int) ( ( $GLOBALS["WORK_DAY_END_HOUR"] * 60 ) / $interval);
+  //echo "first_slot = $first_slot <BR> last_slot = $last_slot <BR> interval = $interval <BR> TIME_SLOTS = $TIME_SLOTS <BR>";
+  $rowspan_arr = array ();
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     // print out any repeating events that are before this one...
     while ( $cur_rep < count ( $rep ) &&
@@ -1687,7 +1805,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons ) {
   // want to show up in the 8:00-9:59 cell.
   $rowspan = 0;
   $last_row = -1;
-  for ( $i = 0; $i < 24; $i++ ) {
+  for ( $i = 0; $i < $TIME_SLOTS; $i++ ) {
     if ( $rowspan > 1 ) {
       if ( ! empty ( $hour_arr[$i] ) ) {
         if ( $rowspan_arr[$i] > 1 ) {
@@ -1711,12 +1829,15 @@ function print_day_at_a_glance ( $date, $user, $hide_icons ) {
       $last_row = $i;
     }
   }
-  if ( ! empty ( $hour_arr[99] ) ) {
-    echo "<TR><TD HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">&nbsp;</TD><TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">$hour_arr[99]</TD></TR>\n";
+  if ( ! empty ( $hour_arr[9999] ) ) {
+    echo "<TR><TD HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">&nbsp;</TD><TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">$hour_arr[9999]</TD></TR>\n";
   }
   $rowspan = 0;
-  for ( $i = $first_hour; $i <= $last_hour; $i++ ) {
-    $time = display_time ( $i * 10000 );
+  //echo "first_slot = $first_slot <BR> last_slot = $last_slot <BR> interval = $interval <BR>";
+  for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
+    $time_h = (int) ( ( $i * $interval ) / 60 );
+    $time_m = ( $i * $interval ) % 60;
+    $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
     echo "<TR><TH VALIGN=\"top\" HEIGHT=\"40\" WIDTH=\"14%\" BGCOLOR=\"$THBG\" CLASS=\"tableheader\">" .
       "<FONT COLOR=\"$THFG\">" .
       $time . "</FONT></TH>\n";
@@ -1744,7 +1865,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons ) {
 // display a link to any unapproved events
 // If the user is an admin user, also count up any public events.
 function display_unapproved_events ( $user ) {
-  global $public_access;
+  global $public_access, $is_admin;
 
   // Don't do this for public access login, admin user must approve public
   // events
@@ -1753,7 +1874,7 @@ function display_unapproved_events ( $user ) {
 
   $sql = "SELECT COUNT(cal_id) FROM webcal_entry_user " .
     "WHERE cal_status = 'W' AND ( cal_login = '$user'";
-  if ( $public_access == "Y" )
+  if ( $public_access == "Y" && $is_admin )
     $sql .= " OR cal_login = '__public__' )";
   else
     $sql .= " )";
@@ -1762,11 +1883,10 @@ function display_unapproved_events ( $user ) {
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] > 0 )
-        echo translate("You have") . " <A CLASS=\"navlinks\" " .
-          "HREF=\"list_unapproved.php\">" .
-          $row[0] . " " . translate("unapproved") . " " .
-          ( $row[0] > 1 ? translate("events") : translate("event") ) .
-          "</A><BR>\n";
+	$str = translate ("You have XXX unapproved events");
+	$str = str_replace ( "XXX", $row[0], $str );
+        echo "<A CLASS=\"navlinks\" " .
+          "HREF=\"list_unapproved.php\">" . $str .  "</A><BR>\n";
     }
     dbi_free_result ( $res );
   }
@@ -1879,8 +1999,19 @@ function weekday_short_name ( $w ) {
   return "unknown-weekday($w)";
 }
 
-// convert a date from an int format "19991231" into "Friday, December 31, 1999"
-function date_to_str ( $indate ) {
+// convert a date from an int format "19991231" into
+// "Friday, December 31, 1999", "Friday, 12-31-1999" or whatever format
+// the user prefers.
+function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=false ) {
+  global $DATE_FORMAT;
+
+  // if they have not set a preference yet...
+  if ( $DATE_FORMAT == "" )
+    $DATE_FORMAT = "month dd, yyyy";
+
+  if ( empty ( $format ) )
+    $format = $DATE_FORMAT;
+
   if ( strlen ( $indate ) == 0 ) {
     $indate = date ( "Ymd" );
   }
@@ -1889,8 +2020,27 @@ function date_to_str ( $indate ) {
   $d = $indate % 100;
   $date = mktime ( 3, 0, 0, $m, $d, $y );
   $wday = strftime ( "%w", $date );
-  return sprintf ( "%s, %s %d, %04d",
-    weekday_name ( $wday ), month_name ( $m - 1 ), $d, $y );
+  $weekday = weekday_name ( $wday );
+
+  if ( $short_months )
+    $month = month_short_name ( $m - 1 );
+  else
+    $month = month_name ( $m - 1 );
+  $yyyy = $y;
+  $yy = sprintf ( "%02d", $y %= 100 );
+
+  $ret = $format;
+  $ret = str_replace ( "yyyy", $yyyy, $ret );
+  $ret = str_replace ( "yy", $yy, $ret );
+  $ret = str_replace ( "month", $month, $ret );
+  $ret = str_replace ( "mon", $month, $ret );
+  $ret = str_replace ( "dd", $d, $ret );
+  $ret = str_replace ( "mm", $m, $ret );
+
+  if ( $show_weekday )
+    return "$weekday, $ret";
+  else
+    return $ret;
 }
 
 
