@@ -1,4 +1,5 @@
-Version 0.9.41dev (?? ??? ???)
+Verion 0.9.41dev (?? ??? ???)
+  - Fixed bug 664641: not using $login_url in connect.php
   - Fixed bug 677677: year.php used "<?" rather than "<?php"
   - Fixed bug 705756: conflicts page not showing user name
   - Fixed bug 732729: public access link on login.php ignores preference
