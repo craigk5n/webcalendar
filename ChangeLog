@@ -1,4 +1,5 @@
-Version 0.9.39dev0724 (24 Jul 2002)
+Version 0.9.39dev0813 (13 Aug 2002)
+  - Include a category of "None" when editing an event.
   - Fixed bug 587909: Don't display 12pm for events with no time in
     notifications.
   - Fixed bug 585939: Don't allow empty view names or group names.
