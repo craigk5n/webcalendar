@@ -59,27 +59,23 @@ for ( $i = 0; $i < 7; $i++ ) {
 ?>
 
 <div style="border-width:0px; width:99%;">
-<div style="float:left;">
 <?php if ( ! $friendly ) { ?>
+<div style="float:left;">
 <br />
 <a title="<?php etranslate("Previous")?>" href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
-<?php } ?>
 </div>
 
 <div style="float:right;">
-<?php if ( ! $friendly ) { ?>
 <br />
 <a title="<?php etranslate("Next")?>" href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-<?php } ?>
 </div>
+<?php } ?>
 <div class="title">
-<span class="date">
-<?php
+<span class="date"><?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), false );
-?>
-</span><br />
+?></span><br />
 <span class="viewname"><?php echo $view_name ?></span>
 </div></div><br />
 
@@ -121,35 +117,33 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 
 ?>
 
-<table class="viewv" cellspacing="0" cellpadding="0">
+<table cellspacing="0" cellpadding="0">
 <tr><th class="empty">&nbsp;</th>
 <?php
-
   for ( $date = $wkstart, $h = 0;
     date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
     $date += ( 24 * 3600 ), $h++ ) {
-    $wday = strftime ( "%w", $date );
-    $weekday = weekday_short_name ( $wday );
-    if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
-      $color = $TODAYCELLBG;
+	$wday = strftime ( "%w", $date );
+	$weekday = weekday_short_name ( $wday );
+	if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
+//	$color = $TODAYCELLBG;
 //      $class = "tableheadertoday";
-      echo "<th class=\"today\" style=\"width:$tdw%;\">";
-    } else {
-      if ( $wday == 0 || $wday == 6 ) {
-        $color = $WEEKENDBG;
-	echo "<th class=\"weekend\" style=\"width:$tdw%;\">";
-      } else {
-        $color = $CELLBG;
+		echo "<th class=\"today\" style=\"width:$tdw%;\">";
+	} else {
+//      if ( $wday == 0 || $wday == 6 ) {
+//        $color = $WEEKENDBG;
+//	echo "<th class=\"weekend\" style=\"width:$tdw%;\">";
+//      } else {
+//        $color = $CELLBG;
 //       $class = "tableheader";
-	echo "<th style=\"width:$tdw%;\">";
+		echo "<th style=\"width:$tdw%;\">";
+//	}
       }
-    }
 //    echo "<th class=\"$class\" style=\"width:$tdw%; background-color:$color; vertical-align:top; font-size:13px;\">" .
       echo $weekday . " " .
       round ( date ( "d", $date ) ) . "</th>\n";
   }
   echo "</tr>\n";
-  
   
       // ------
     for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
@@ -165,20 +159,20 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
     $date += ( 24 * 3600 ), $h++ ) {
       // ------
-    if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
-      $color = $TODAYCELLBG;
+//    if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
+//      $color = $TODAYCELLBG;
 //      $class = "tableheadertoday";
-      echo "<td class=\"today\" style=\"width:$tdw%;\">";
-    } else {
+//      echo "<td class=\"today\" style=\"width:$tdw%;\">";
+//    } else {
       if ( $wday == 0 || $wday == 6 ) {
-        $color = $WEEKENDBG;
+//        $color = $WEEKENDBG;
 	echo "<td class=\"weekend\" style=\"width:$tdw%;\">";
       } else {
-        $color = $CELLBG;
+//        $color = $CELLBG;
 //      $class = "tablecell";
 	echo "<td style=\"width:$tdw%;\">";
       }
-    }
+//    }
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
 //      echo "<td style=\"width:$tdw%; background-color:$color; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\" valign=\"top\">";
@@ -192,7 +186,6 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     }
     echo "</tr>\n";
   }
-
   echo "</table>\n<br /><br />\n";
 }
 
