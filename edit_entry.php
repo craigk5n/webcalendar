@@ -285,7 +285,7 @@ if ( $is_assistant || $is_nonuser_admin || ! empty ( $user ) )
 	<span class="tabbak" id="tab_participants"><a href="#tabparticipants" onclick="return showTab('participants')"><?php etranslate("Participants") ?></a></span>
 	<span class="tabbak" id="tab_pete"><a href="#tabpete" onclick="return showTab('pete')"><?php etranslate("Repeat") ?></a></span>
 </div>
-<? } ?>
+<?php } ?>
 
 <!-- TABS BODY -->
 <?php if ( $useTabs ) { ?>
@@ -293,7 +293,7 @@ if ( $is_assistant || $is_nonuser_admin || ! empty ( $user ) )
 	<!-- DETAILS -->
 	<a name="tabdetails"></a>
 	<div id="tabscontent_details">
-<? } ?>
+<?php } ?>
 		<table style="border-width:0px;">
 			<tr><td style="width:14%;" class="tooltip" title="<?php etooltip("brief-description-help")?>">
 				<label for="entry_brief"><?php etranslate("Brief Description")?>:</label></td><td>
