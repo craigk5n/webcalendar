@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Converting year.php to new style system & adding comments for new minicals
   - Converting viewt.php over to new style system & fixing a couple odd
   rendering issues
   - Converting day.php over to new style system (particularly the header)
