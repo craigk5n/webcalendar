@@ -1957,6 +1957,8 @@ function activate_urls ( $text ) {
 //   $time - an interger like 235900
 function display_time ( $time ) {
   $hour = (int) ( $time / 10000 );
+  while ( $hour > 23 )
+    $hour -= 24;
   $min = ( $time / 100 ) % 100;
   if ( $GLOBALS["TIME_FORMAT"] == "12" ) {
     $ampm = $hour >= 12 && $hour != 24 ? translate("pm") : translate("am");
