@@ -90,7 +90,7 @@ if ( empty ( $error ) ) {
   // Day template must include ${events}
   if ( ! strstr ( $day_template, '${events}' ) ) {
     if ( ! empty ( $error ) )
-      $error .= "</p><p>";
+      $error .= "</p>";
     $error .= "<p>" . translate ( "Error" ) . " [" .
       translate ( "Day template" ) . "]: " .
       str_replace ( " N ", ' <tt>${events}</tt> ',
@@ -100,7 +100,7 @@ if ( empty ( $error ) ) {
   // Event template must include ${name}
   if ( ! strstr ( $event_template, '${name}' ) ) {
     if ( ! empty ( $error ) )
-      $error .= "</p><p>";
+      $error .= "</p>";
     $error .= "<p>" . translate ( "Error" ) . " [" .
       translate ( "Event template" ) . "]: " .
       str_replace ( " N ", ' <tt>${name}</tt> ',
@@ -257,6 +257,5 @@ print_header();
 </blockquote>
 
 <?php print_trailer(); ?>
-
 </body>
 </html>
