@@ -1,6 +1,6 @@
 <?php
 include_once 'includes/init.php';
-print_header();
+print_header( '', '', '', true );
 ?>
 
 <form action="group_edit_handler.php" method="post">
@@ -96,6 +96,8 @@ if ( $newgroup ) {
 </td></tr>
 </table>
 </form>
+
+<?php print_trailer ( false, true, true ); ?>
 
 </body>
 </html>
