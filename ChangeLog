@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixed bug 1044374: random issues with Bulgarian translation file
   - Implemented minicalendar function
   - Consolidated styles
   - Added 'Back' links on pages like groups_edit.php
