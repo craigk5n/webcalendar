@@ -1,4 +1,9 @@
 Version 1.0RC1/CVS+dev (?? ??? 2004)
+  - Updated Admin docs for content & xhtml/css validity
+  - Adding Styling docs (still under construction.. feel free to contribute)
+  - Adding title attribute to links
+  - Cleaning up html for editing layers & streamlining GUI
+  - Making code easier to read & fixing '&' to read '&amp;' in url
   - Updated reading of settings.php in config.php to strip off white
     space.  Added new function, dieMiserableDeath(), that can be called
     before functions.php is loaded.  We will typlically use this function
