@@ -1,4 +1,6 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixed bug: iCal import would fail if the file included section with
+    timezone info in it.
   - Patch 1002156: improved html for event popups
   - Added javascript to admin page to remove options that are not relavant
     (such as all the options for public access when public access is disabled)
