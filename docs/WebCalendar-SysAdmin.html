@@ -101,6 +101,7 @@ h2 {
 	<li><a href="#appendixA">Appendix A: Database Setup with phpMyAdmin</a></li>
 	<li><a href="#appendixB">Appendix B: Setting Up Reminders on Windows</a></li>
 	<li><a href="#appendixC">Appendix C: Displaying Upcoming Events on Your Site</a></li>
+	<li><a href="#appendixD">Appendix D: How to setup to work with LDAP</a></li>
 </ul>
 <hr />
 
@@ -1487,6 +1488,64 @@ p&gt;No news....&lt;/p&gt;
   about the different options that you can use
   with the <tt>iframe</tt> tag.
 </p>
+
+
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
+
+<a name="appendixD"></a>
+<h2>Appendix D: How to setup to work with LDAP</h2>
+
+<p>Configuring WebCalendar to use an existing LDAP directory is fairly 
+simple.  It is know to work with OpenLDAP and Novell Edirectory and 
+should work with other systems as well. <span class="note">Note:</span> 
+If you use LDAP, the group functionailty of WebCalendar does not yet work.   
+</p>
+
+<p>To configure WebCalendar to use LDAP, do the following:</p>
+<ol>
+	<li>Configure <tt>settings.php</tt></li>
+	<li>Configure <tt>includes/user-ldap.php</tt></li>
+</ol>
+
+<p>The first step is to set WebCalendar to use LDAP authentication in 
+<tt>settings.php</tt>.  Instructions on to do this can be found in the
+<a href="#appsetup">Application Setup</a> section above.
+In summary, the following should be set:<br />
+<tt>use_http_auth = false</tt><br />
+<tt>user_inc = user-ldap.php</tt><br />
+</p>
+
+<p>The next step is a little more work and involves editing the 
+<tt>includes/user-ldap.php</tt> file with a text editor.  You will have
+to set several configuration variables.  If you don't know what to set 
+the variables to, consult your LDAP system administrator.  Documentation 
+exists for all variables in the file.  Finally, users have gotten LDAP 
+working with OpenLDAP and Novell Edirectory by just changing the 
+following:</p>
+
+<table border="0" style="margin-left: 20px; margin-right: 20px;">
+
+<tr><td valign="top">$ldap_server</td>
+  <td>
+      FQDN or IP address of the LDAP server (or localhost).
+      <br />ex. 'ldap://ldapserver.company.com'
+  </td></tr>
+
+<tr><td valign="top">$ldap_base_dn</td>
+  <td>
+      Specifies the base DN used to search for users
+      <br />ex. 'ou=people,dc=company,dc=com' or 'o=context,ou=subcontext'
+  </td></tr>
+
+<tr><td valign="top">$ldap_admin_group_name</td>
+  <td>
+      Specifies a group (complete DN) with admin rights for WebCalendar
+      <br />You might have to create one in LDAP 
+      <br />ex. 'cn=it,ou=group,dc=company,dc=com'
+  </td></tr>
+
+</table>
 
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
