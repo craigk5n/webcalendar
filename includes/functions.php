@@ -2802,7 +2802,7 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
     $hour += $TZ_OFFSET;
   return "<a title=\"" . 
 	translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
-    "date=$date" . ( $hour > 0 ? "&amp;hour=$hour" : "" ) .
+    "date=$date" . ( $hour >= 0 ? "&amp;hour=$hour" : "" ) .
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&amp;defusers=$user" ) .
     ( empty ( $cat_id ) ? "" :  "&amp;cat_id=$cat_id" ) .
