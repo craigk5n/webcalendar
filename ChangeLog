@@ -1,4 +1,5 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Updated Dutch translation
   - Fixed security bug: Don't allow users to put "login=XXX" in the URL
     to read someone else's calendar.
   - Use is_array test on categories to avoid error messsage.
