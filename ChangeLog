@@ -1,4 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed problem with second edit of a single event in a repeating series 
+   losing linkage with the original event.
  - Updated install/index.php. Added link to phpinfo if valid user. 
    Added security to dbtest, now requires log in to test db settings.
  - Fixed bug 1148602: External Recipients with same name fails

@@ -13,6 +13,8 @@ Version 1.0RC4-CVS (?? ??? 2005)
       1162486: Path exposure issue with view_entry.php
 
   - Other bugs fixed:
+    + Fixed problem with second edit of a single event in a repeating series 
+      losing linkage with the original event.
     + Fixed problem with views_edit.php, select groups not returning menbers
     + Fixed problem with 12AM event not adding hour=0 to URL in week.php
     + Fixed day.php rendering problem in Safar
