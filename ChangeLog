@@ -1,4 +1,6 @@
 Version 0.9.39dev0813 (13 Aug 2002)
+  - Fixed bug 586525: Don't allow users to access views when view other
+    users is set to no in admin.
   - Fixed bug 596616: date_to_string was corrupting certain month names
     in other languages.
   - Fixed bug 587795: Could not edit a layer with less than two users
