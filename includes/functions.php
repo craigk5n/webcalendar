@@ -1500,10 +1500,18 @@ function repeated_event_matches_date($event,$dateYmd) {
   }
   return false;
 }
+
+
 function date_to_epoch ( $d ) {
-  return mktime ( 3, 0, 0, substr ( $d, 4, 2 ), substr ( $d, 6, 2 ),
-    substr ( $d, 0, 4 ) );
+  $T = mktime ( 3, 0, 0, substr ( $d, 4, 2 ), substr ( $d, 6, 2 ), substr ( $d, 0, 4 ) );
+  $lt = localtime($T);
+  if ($lt[8]) {
+    return mktime ( 4, 0, 0, substr ( $d, 4, 2 ), substr ( $d, 6, 2 ), substr ( $d, 0, 4 ) );
+  } else {
+    return $T;
+  }
 }
+
 
 // check if a date is an exception for an event
 // $date - date in timestamp format
@@ -2747,22 +2755,6 @@ function encode_string ( $instr ) {
   return $ret;
 }
 
-function user_external_auth ( $login, $password ) {
-  $ret = exec ( escapeshellcmd ( "/usr/bin/ypmatch $login passwd" ) );
-  if ( strlen ( $ret ) ) {
-    $ret = explode ( ":", $ret );
-    if ( $user_external_group && $user_external_group != $ret[3] ) {
-      return "";
-    }
-    if ( strcmp ( $ret[1], crypt ( $password, substr ( $ret[1], 0, 2 ) ) ) ) {
-      return "";
-    }
-    return $ret;
-  }
-  return "";
-}
-
-
 
 // an implementatin of array_splice() for PHP3
 //   test cases:
@@ -3434,6 +3426,25 @@ function isLeapYear($year='') {
   if (strlen($year) != 4) return false;
   if (preg_match('/\D/',$year)) return false;
   return (($year % 4 == 0 && $year % 100 != 0) || $year % 400 == 0);
+}
+
+
+// Replace unsafe characters with HTML encoded equivalents
+function clean($value){
+  $value = htmlspecialchars($value);
+  $value = strtr($value, array(
+    '('   => '&#40;',
+    ')'   => '&#41;',
+    '%28' => '&#40;',
+    '%29' => '&#41;',
+    '%2e' => '&#43;',
+    '%2E' => '&#43;',
+    '%3c' => '&#60;',
+    '%3C' => '&#60;',
+    '%3e' => '&#62;',
+    '%3E' => '&#62;'
+  ));
+  return $value;
 }
 
 ?>
