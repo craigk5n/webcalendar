@@ -78,9 +78,9 @@ function dbi_connect ( $host, $login, $password, $database ) {
     }
   } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
     if ($GLOBALS["db_persistent"]) {
-      $c = mysqli_connect ( $host, $login, $password, $database);
+      $c = @mysqli_connect ( $host, $login, $password, $database);
     } else {
-      $c = mysqli_connect ( $host, $login, $password, $database);
+      $c = @mysqli_connect ( $host, $login, $password, $database);
     }
     if ( $c ) {
       /*
@@ -154,7 +154,11 @@ function dbi_connect ( $host, $login, $password, $database ) {
     }
     return $c;
   } else {
-    dbi_fatal_error ( "dbi_connect(): db_type not defined." );
+    if ( empty ( $GLOBALS["db_type"] ) )
+      dbi_fatal_error ( "dbi_connect(): db_type not defined." );
+    else
+      dbi_fatal_error ( "dbi_connect(): invalid db_type '" .
+        $GLOBALS["db_type"] . "'" );
   }
 }
 
