@@ -226,10 +226,11 @@ function dbi_fetch_row ( $res ) {
 
 // Returns the number of rows affected by the last INSERT, UPDATE or
 // DELETE.
-//   $res - db resource
-function dbi_affected_rows ( $res ) {
+//   $conn - db connection
+//   $res - returned from dbi_query
+function dbi_affected_rows ( $conn, $res ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
-    return mysql_affected_rows ( $res );
+    return mysql_affected_rows ( $conn );
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     if ( $GLOBALS["oracle_statement"] >= 0 ) {
       return OCIRowCount ( $GLOBALS["oracle_statement"] );
@@ -241,7 +242,7 @@ function dbi_affected_rows ( $res ) {
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     return odbc_num_rows ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
-    return ibase_affected_rows ( $res );
+    return ibase_affected_rows ( $conn );
   } else {
     dbi_fatal_error ( "dbi_free_result(): db_type not defined." );
   }
