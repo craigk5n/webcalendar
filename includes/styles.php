@@ -364,6 +364,21 @@ a.matrix img {
   margin-left: auto; 
   margin-right: auto;
 }
+.matrixlegend {
+  margin-top: 25px;
+  padding: 5px;
+  text-align: center;
+  background: #ffffff;
+  margin-left: auto; 
+  margin-right: auto;
+  border: 1px solid #000000;
+  width: 155px;
+}
+.matrixlegend img {
+  border-width: 0px;
+  width: 10px;
+  height: 10px;
+}
 .nav {
   font-size: 14px;
   color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;

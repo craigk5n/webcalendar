@@ -4565,6 +4565,12 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   } // End foreach participant
   
   echo "</table>\n";
+  $busy = translate ('Busy');
+  $tentative = translate ('Tentative');
+  echo "<div class=\"matrixlegend\">\n";
+  echo "<img src=\"pix.gif\" title=\"$busy\" alt=\"$busy\" /> $busy &nbsp; &nbsp; &nbsp;\n";
+  echo "<img src=\"pixb.gif\" title=\"$tentative\" alt=\"$tentative\" /> $tentative\n";
+  echo "</div>\n";
 } 
 
 ?>
