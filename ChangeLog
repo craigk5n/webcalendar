@@ -1,4 +1,5 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed bug 1148602: External Recipients with same name fails
  - Updated install/index.php to use "\r\n" instead of "\n".  Added area
    that displays relavant PHP settings.
  - Fixed problem with views_edit.php, select groups not returning menbers

@@ -814,7 +814,9 @@ function event_get_external_users ( $event_id, $use_mailto=0 ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( strlen ( $ret ) )
         $ret .= "\n";
-      $ret .= $row[0];
+      // Remove [\d] if duplicate name
+      $trow = trim( preg_replace( '/\[[\d]]/' , "", $row[0] ) );
+      $ret .= $trow;
       if ( strlen ( $row[1] ) ) {
         if ( $use_mailto ) {
           $ret .= " <a href=\"mailto:$row[1]\">&lt;" .
