@@ -88,7 +88,9 @@ h2 {
   <li><a href="#requirements">System Requirements</a></li>
   <li><a href="#getcode">Getting The Code</a></li>
   <li><a href="#conventions">Conventions</a></li>
+		<li><a href="#standards">Coding Standards</a></li>
   <li><a href="#patch">Creating a Patch</a></li>
+  <li><a href="#translations">Translations and Languages</a></li>
   <li><a href="#faq">FAQ</a></li>
   <li><a href="#resources">Resources</a></li>
 </ul>
@@ -208,13 +210,6 @@ they have not been 100% enforced, so you will see exceptions):
     are lowercase using underscores.
     <br/>Example: webcal_user_pref
     </li>
-<li>Indentation: As a general rule, indentation should be <b>two</b>
-   spaces when needed.  Please do not use tabs for indentation.
-   </li>
-<li>PHP file comments: Each file should have a file header.
-    <br/>
-    See <a href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/report.php?view=markup"><tt>report.php</tt></a> as an example.
-    </li>
 <li>PHP function comments: Each function for include files
     should be documented in a specific way.
     The <a href="WebCalendar-Functions.html">WebCalendar-Functions.html</a>
@@ -229,6 +224,48 @@ they have not been 100% enforced, so you will see exceptions):
    </li>
 </ul>
 
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<a name="standards"></a>
+<h2>Coding Standards</h2>
+<p>
+The following coding standards have been adopted by WebCalendar (although
+they have not been 100% implemented).
+</p>
+<ul>
+<li>Indenting: Two spaces (ASCII 0x20) for each level. Wrapped lines should also be
+    indented 2 spaces if these spaces will not affect output.  
+    </li>
+<li>Tabs (ASCII 0x09): This character will not be used. Replace all
+     occurrences with ASCII 0x20. This may affect indenting, so please
+					double check before committing to CVS or posting.  
+    </li>
+<li>File Format: Unix format only (LF ASCII 0x0A), no Windows or Mac format files.
+    </li>
+<li>PHP file comments: Each file should have a file header.
+    <br/>
+    See <a href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/report.php?view=markup"><tt>report.php</tt></a> as an example.
+    </li>
+<li>Use double quotes around html attributes
+    </li>
+<li>If/Else: Always us {} when not using inline format. Either of the following
+    is acceptable based on logic complexity.
+  <pre>				
+if ( foo == 1 ) {
+  bar = true;
+} else {
+  bar = false;
+}
+or  
+bar = ( foo == 1 )? true : false ;
+			</pre>
+    </li>
+<li>Function Calls/Declarations: Use spaces inside and around  parenthesis ()
+  <pre>
+Declaration: function getGetValue ( $name ) {
+Call: bar = getGetValue ( $name );
+</pre>
+    </li>
+</ul>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <a name="patch"></a>
@@ -236,6 +273,32 @@ they have not been 100% enforced, so you will see exceptions):
 
 <p>TODO</p>
 
+
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<a name="translations"></a>
+<h2>Translations and Languages</h2>
+
+<p>
+When adding or modifying WebCalendar code, all displayed text should be translatable.
+The following tips will ensure new text can be translated quickly and efficiently.</p>
+<ul>
+<li>Translate: All displayable text should be sent to the <em>translate
+    ()</em> function, which returns the text translated in the user's language of choice. 
+    A variation of this function is <em>etranslate ()</em>, which includes and echo command.
+    </li>
+<li>Htmlentities: 	When used, this function tag should include the current charset when displaying database
+    results. This will be most important when dealing with languages such as Japanese that
+				tend to contain charactes that would otherwise be non-displayable. Although this is not the perfect
+				solution, it seems to suffice for our purposes. Possibly, a  better technique would be to 
+				use the charset of the original creator of the data, but this is beyond current capabilities.	<br />
+				For reference see:
+	<pre><a href="http://us3.php.net/manual/en/function.htmlentities.php">
+http://us3.php.net/manual/en/function.htmlentities.php</a>
+	</pre>
+				</li>	
+<li>TODO: Add procedures for updating Language.txt files
+    </li>	
+</ul>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <a name="faq"></a>
@@ -296,7 +359,7 @@ they have not been 100% enforced, so you will see exceptions):
       </dd>
  
 <!-- END FAQ -->
-<dl>
+</dl>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <a name="resources"></a>
