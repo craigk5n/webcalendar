@@ -2068,9 +2068,8 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
     "date=$date" . ( $hour > 0 ? "&amp;hour=$hour" : "" ) .
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&amp;defusers=$user&amp;user=$user" ) .
-    "\"><img src=\"new.gif\" alt=\"" .
-    translate("New Entry") . "\" width=\"10\" height=\"10\" " .
-    "alt=\"" . translate("New Entry") . "\" border=\"0\" align=\"right\" />" .
+    "\"><img src=\"new.gif\" class=\"new\" " .
+    "alt=\"" . translate("New Entry") . "\" align=\"right\" />" .
     "</a>";
 }
 

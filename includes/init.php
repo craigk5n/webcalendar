@@ -91,7 +91,7 @@ if ($DMW) {
   }
 
   if ( ! empty ( $user ) ) {
-    $u_url = "user=$user&";
+    $u_url = "user=$user&amp;";
     user_load_variables ( $user, "user_" );
     if ( $user == "__public__" )
       $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
