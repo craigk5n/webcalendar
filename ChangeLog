@@ -1,4 +1,5 @@
 Version 0.9.41dev (?? ??? ???)
+  - Added db close call on all redirects (was missing)
   - Fixed bug 651709: Javascript error in login.php
   - Removed apostrophes from C-style comments from tables-mysql.sql
     since MySQL seems to barf on these.

@@ -218,6 +218,7 @@ function do_redirect ( $url ) {
     echo "<HTML><HEAD><TITLE>Redirect</TITLE></HEAD><BODY>" .
       "Redirecting to ... <A HREF=\"" . $url . "\">here</A>.</BODY></HTML>.\n";
   }
+  dbi_close ( $c );
   exit;
 }
 
