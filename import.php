@@ -136,7 +136,7 @@ if ( $tab == 0 ) {
 <table border="0">
 <?php print_user_list(); ?>
 <tr><td><b><?php etranslate("vCal File")?>:</b></td>
-  <td><input type="file" name="FileName" size="45" maxlength=50" /></td></tr>
+  <td><input type="file" name="FileName" size="45" maxlength="50" /></td></tr>
 <tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>" />
 <input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
 </td></tr>
@@ -152,7 +152,7 @@ if ( $tab == 0 ) {
 <input type="hidden" name="ImportType" value="ICAL" />
 <table border="0">
 <tr><td><b><?php etranslate("iCal File")?>:</b></td>
-  <td><input type="file" name="FileName" size="45" maxlength=50" /></td></tr>
+  <td><input type="file" name="FileName" size="45" maxlength="50" /></td></tr>
 <tr><td><b><?php etranslate("Overwrite Prior Import")?>:</b></td>
   <td><input type="radio" name="overwrite" value="Y" checked="checked" /> <?php etranslate("Yes");?>
   &nbsp;&nbsp;

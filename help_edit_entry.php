@@ -6,34 +6,34 @@
 <h2><?php etranslate("Help")?>: <?php etranslate("Adding/Editing Calendar Entries")?></h2>
 
 <table style="border-width:0px;">
-	<tr><td style="vertical-align:top; font-weight:bold;">
+	<tr><td class="help">
 		<?php etranslate("Brief Description")?>:</td><td>
 		<?php etranslate("brief-description-help")?>
 	</td></tr>
-	<tr><td style="vertical-align:top; font-weight:bold;">
+	<tr><td class="help">
 		<?php etranslate("Full Description")?>:</td><td>
 		<?php etranslate("full-description-help")?>
 	</td></tr>
-	<tr><td style="vertical-align:top; font-weight:bold;">
+	<tr><td class="help">
 		<?php etranslate("Date")?>:</td><td>
 		<?php etranslate("date-help")?>
 	</td></tr>
-	<tr><td style="vertical-align:top; font-weight:bold;">
+	<tr><td class="help">
 		<?php etranslate("Time")?>:</td><td>
 		<?php etranslate("time-help")?>
 	</td></tr>
-	<tr><td style="vertical-align:top; font-weight:bold;">
+	<tr><td class="help">
 		<?php etranslate("Duration")?>:</td><td>
 		<?php etranslate("duration-help")?>
 	</td></tr>
 	<?php if ( $disable_priority_field != "Y" ) { ?>
-		<tr><td style="vertical-align:top; font-weight:bold;">
+		<tr><td class="help">
 			<?php etranslate("Priority")?>:</td><td>
 			<?php etranslate("priority-help")?>
 		</td></tr>
 	<?php } ?>
 	<?php if ( $disable_access_field != "Y" ) { ?>
-		<tr><td style="vertical-align:top; font-weight:bold;">
+		<tr><td class="help">
 			<?php etranslate("Access")?>:</td><td>
 			<?php etranslate("access-help")?>
 		</td></tr>
@@ -43,25 +43,25 @@
 		if ( $is_admin )
 			$show_participants = true;
 		if ( $single_user == "N" && $show_participants ) { ?>
-			<tr><td style="vertical-align:top; font-weight:bold;">
+			<tr><td class="help">
 				<?php etranslate("Participants")?>:</td><td>
 				<?php etranslate("participants-help")?>
 			</td></tr>
 		<?php } ?>
 	<?php if ( $disable_repeating_field != "Y" ) { ?>
-		<tr><td style="vertical-align:top; font-weight:bold;">
+		<tr><td class="help">
 			<?php etranslate("Repeat Type")?>:</td><td>
 			<?php etranslate("repeat-type-help")?>
 		</td></tr>
-		<tr><td style="vertical-align:top; font-weight:bold;">
+		<tr><td class="help">
 			<?php etranslate("Repeat End Date")?>:</td><td>
 			<?php etranslate("repeat-end-date-help")?>
 		</td></tr>
-		<tr><td style="vertical-align:top; font-weight:bold;">
+		<tr><td class="help">
 			<?php etranslate("Repeat Day")?>:</td><td>
 			<?php etranslate("repeat-day-help")?>
 		</td></tr>
-		<tr><td style="vertical-align:top; font-weight:bold;">
+		<tr><td class="help">
 			<?php etranslate("Frequency")?>:</td><td>
 			<?php etranslate("repeat-frequency-help")?>
 		</td></tr>

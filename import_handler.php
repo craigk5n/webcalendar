@@ -63,31 +63,31 @@ if ($file['size'] > 0) {
   $count_con = $count_suc = $error_num = 0;
   if (! empty ($data) && empty ($errormsg) ) {
     import_data ( $data, $doOverwrite, $type );
-    echo "<p>" . translate("Import Results") . "</p>\n<p>" .
+    echo "<p>" . translate("Import Results") . "</p>\n<br /><br />" .
       translate("Events successfully imported") . " : $count_suc<br />\n";
     echo translate("Events from prior import marked as deleted") .
       ": $numDeleted <br />\n";
     if ( empty ( $allow_conflicts ) ) {
-      echo translate("Conflicting events") . ": " . $count_con . "<br>\n";
+      echo translate("Conflicting events") . ": " . $count_con . "<br />\n";
     }
     echo translate ( "Errors" ) . ": $error_num<br>\n<br>\n";
   } elseif ($errormsg) {
-    echo "<p><b>" . translate("Error") . ":</b> $errormsg<br>\n";
+    echo "<br /><br /><b>" . translate("Error") . ":</b> $errormsg<br />\n";
   } else {
-    echo "<p><b>" . translate("Error") . ":</b> " .
+    echo "<br /><br /><b>" . translate("Error") . ":</b> " .
       translate("There was an error parsing the import file or no events were returned") .
       ".<br />\n";
   }
 } else {
-  echo "<p><b>" . translate("Error") . ":</b> " .
-    translate("The import file contained no data") . ".<br>\n";
+	echo "<br /><br /><b>" . translate("Error") . ":</b> " .
+    translate("The import file contained no data") . ".<br />\n";
 }
 
 
 //echo "<hr />$sqlLog\n";
 
 print_trailer ();
-echo "</BODY>\n</HTML>";
+echo "</body>\n</html>";
 
 /* Import the data structure
 $Entry[RecordID]           =  Record ID (in the Palm) ** only required for palm desktop

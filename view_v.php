@@ -61,7 +61,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <table style="border-width:0px; width:100%;">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_v.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" style="width:36px; height:32px; border-width:0px;" alt="<?php etranslate("Previous")?>" /></a>
+<a href="view_v.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
 </td>
 <td style="text-align:center; color:<?php echo $H2COLOR?>;">
@@ -77,7 +77,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 </td>
 <td style="text-align:right;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_v.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" style="width:36; height:32px; border-width:0px;" alt="<?php etranslate("Next")?>" /></a>
+<a href="view_v.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 </td></tr>
 </table>
@@ -160,7 +160,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
       // ------
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
-    echo "<th class=\"tableheader\" style=\"$tdw%; background-color:$THBG;\">$tempfullname</th>";
+    echo "<th class=\"tableheader\" style=\"$tdw%;\">$tempfullname</th>";
 
       // ------
   for ( $date = $wkstart, $h = 0;
