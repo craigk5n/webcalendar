@@ -211,14 +211,14 @@ if ( get_magic_quotes_gpc () == 0 ) {
   phpinfo ();
   $val = ob_get_contents ();
   ob_end_clean ();
-  echo "<html><title>Error</title></head><body>\n" .
+  echo "<html>\n<title>Error</title>\n</head>\n<body>\n" .
     "Error: you must reconfigure your <tt>php.ini</tt> file to " .
-    "have <b>magic_quotes_gpc</b> set to <b>On</b><p>";
+    "have <span style=\"font-weight:bold;\">magic_quotes_gpc</span> set to <span style=\"font-weight:bold;\">ON</span>.<br /><br />\n";
   if ( preg_match ( "/>([^<>]*php.ini)</", $val, $matches ) ) {
-    echo "Please edit the following file and restart your server:<p>\n" .
-      "<blockquote><tt>" . $matches[1] . "</tt></blockquote>\n";
+    echo "Please edit the following file and restart your server:<br /><br />\n" .
+      "<blockquote>\n<tt>" . $matches[1] . "</tt>\n</blockquote>\n";
   }
-  echo "</body></html>\n";
+  echo "</body>\n</html>\n";
   exit;
 }
 

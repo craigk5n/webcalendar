@@ -7,6 +7,7 @@
 #
 # History:
 #	12-Oct-2002	Created
+#	13-April-2004	xHTML & CSS work
 #
 #######################################################################
 
@@ -15,27 +16,27 @@ $verbose = 0;
 
 sub th {
   ( $s ) = @_;
-  return "<TH VALIGN=\"top\" BGCOLOR=\"#C0C0C0\">$s</TH>";
+  return "<th style=\"vertical-align:top; background-color:#C0C0C0;\">$s</th>";
 }
 sub td {
   ( $s ) = @_;
-  return "<TD VALIGN=\"top\" BGCOLOR=\"#E0E0E0\">$s</TD>";
+  return "<td style=\"vertical-align:top; background-color:#E0E0E0;\">$s</td>";
 }
 
 
 sub print_table {
-  $out{$name} = "<H3><A NAME=\"$name\">$name</A></H3>\n";
-  $out{$name} .= "<BLOCKQUOTE>\n";
-  $out{$name} .= "$description<P>\n"
+  $out{$name} = "<h3><a name=\"$name\">$name</a></h3>\n";
+  $out{$name} .= "<blockquote>\n";
+  $out{$name} .= "$description<br /><br />\n"
     if ( defined ( $description ) );
-  $out{$name} .= "<TABLE BORDER=\"0\">";
-  $out{$name} .= "<TR>" . th("Column Name") . th("Type") . th("Length") .
-     th("Null") . th("Default") . th("Description") . "</TR>\n";
+  $out{$name} .= "<table style=\"border-width:0px;\">";
+  $out{$name} .= "<tr>" . th("Column Name") . th("Type") . th("Length") .
+     th("Null") . th("Default") . th("Description") . "</tr>\n";
   for ( $i = 0; $i < @column_name; $i++ ) {
-    $out{$name} .= "<TR>";
+    $out{$name} .= "<tr>";
     if ( defined ( $table_keys{$column_name[$i]} ) ) {
-      $out{$name} .= td("<FONT COLOR=\"#A00000\"><B>" . $column_name[$i] .
-        "</B></FONT>");
+      $out{$name} .= td("<span style=\"font-weight:bold; color:#A00000;\">" . $column_name[$i] .
+        "</span>");
     } else {
       $out{$name} .= td($column_name[$i]);
     }
@@ -45,8 +46,8 @@ sub print_table {
     $out{$name} .= td($column_default[$i]);
     $out{$name} .= td($column_descr[$i]);
   }
-  $out{$name} .= "</TABLE>\n";
-  $out{$name} .= "</BLOCKQUOTE>\n";
+  $out{$name} .= "</table>\n";
+  $out{$name} .= "</blockquote>\n";
 }
 
 # first, get WebCalendar version
@@ -163,45 +164,53 @@ $now = sprintf "%02d-%s-%04d",
   $mday, $months[$mon], $year + 1900;
 
 print<<EOF;
-<HTML>
-<HEAD>
-<TITLE>WebCalendar Database Documentation</TITLE>
-</HEAD>
-<BODY BGCOLOR="#FFFFFF">
-<H2>WebCalendar Database Documentation</H2>
-<TABLE BORDER=0>
-<TR><TD>Home Page:</TD>
-  <TD><A HREF="http://webcalendar.sourceforge.net/">http://webcalendar.sourceforge.net/</A></TD></TR>
-<TR><TD>Author:</TD>
-  <TD><A HREF="http://www.cknudsen.com">Craig Knudsen</A>, <A HREF="mailto:cknudsen\@cknudsen.com">cknudsen\@cknudsen.com</A></TD></TR>
-<TR><TD VALIGN="top">Version:</TD><TD>$v<BR>
-\$Id\$ </TD></TR>
-<TR><TD>Last updated:</TD><TD>$now</TD></TR>
-</TABLE>
-<BLOCKQUOTE>
-This file is generated from <TT>tables-mysql.sql</TT>.
-Below are the definitions of all WebCalendar tables along with
-some descriptions of how each table is used.  Column
-names shown in red are the primary keys for that table.
-<P>
-If you update the SQL for WebCalendar, use the sql2html.pl script
-to regenerate this file.
-</BLOCKQUOTE>
-<P>
-<H2>List of Tables</H2>
-<UL>
+<html>\n
+<head>\n
+	<title>WebCalendar Database Documentation</title>\n
+</head>\n
+<body style="background-color:#FFFFFF;">\n
+<h2>WebCalendar Database Documentation</h2>\n
+<table style="border-width:0px;">\n
+	<tr><td>
+		Home Page:</td><td>
+		<a href="http://webcalendar.sourceforge.net/">http://webcalendar.sourceforge.net/</a>
+	</td></tr>
+	<tr><td>
+		Author:</td><td>
+		<a href="http://www.cknudsen.com">Craig Knudsen</a>, <a href="mailto:cknudsen\@cknudsen.com">cknudsen\@cknudsen.com</a>
+	</td></tr>
+	<tr><td style="vertical-align:top;">
+		Version:</td><td>
+		$v<br />
+		\$Id\$
+	</td></tr>
+	<tr><td>
+		Last updated:</td><td>
+		$now
+	</td></tr>
+</table>
+
+<blockquote>
+	This file is generated from <tt>tables-mysql.sql</tt>. Below are the definitions of all WebCalendar tables along with some descriptions of how each table is used. Column names shown in red are the primary keys for that table.
+	<br /><br />
+	If you update the SQL for WebCalendar, use the sql2html.pl script to regenerate this file.
+</blockquote>
+<br /><br />
+
+<h2>List of Tables</h2>
+<ul>
 EOF
 
 foreach $name ( sort keys ( %out ) ) {
-  print "<LI><A HREF=\"#$name\">$name</A>\n";
+  print "<li><a href=\"#$name\">$name</a></li>\n";
 }
 
-print "</UL>\n<HR>\n";
+print "</ul>\n<hr />\n";
 
 foreach $name ( sort keys ( %out ) ) {
-  print "<P>\n" . $out{$name};
+  print "<br /><br />\n" . $out{$name};
 }
 
-print "</BODY>\n</HTML>\n";
+print "</body>\n</html>\n";
 
 exit 0;

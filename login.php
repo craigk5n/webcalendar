@@ -179,12 +179,12 @@ if ( $demo_mode == "Y" ) {
 }
 ?>
 <br /><br /><br />
-<font size="-1">
+<span style="font-size:13px;">
 <?php etranslate("cookies-note")?>
 <br />
 <hr /><br /><br />
 <a href="<?php echo $PROGRAM_URL ?>" class="aboutinfo"><?php echo $PROGRAM_NAME?></a>
-</font>
+</span>
 <?php
 // Print custom trailer (since we do not call print_trailer function)
 if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {

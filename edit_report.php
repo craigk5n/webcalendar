@@ -234,10 +234,10 @@ if ( $show_participants ) {
 <?php if ( $is_admin ) { ?>
 <tr><td><b><?php etranslate("Global")?>:</b></td>
   <td><input type="radio" name="is_global" value="Y"
-  <?php if ( $report_is_global != 'N' ) echo " CHECKED=\"CHECKED\""; ?>> <?php etranslate("Yes") ?>
+  <?php if ( $report_is_global != 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("Yes") ?>
   &nbsp;&nbsp;&nbsp;
   <input type="radio" name="is_global" value="N"
-  <?php if ( $report_is_global == 'N' ) echo " CHECKED=\"CHECKED\""; ?>> <?php etranslate("No") ?>
+  <?php if ( $report_is_global == 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("No") ?>
   </td></tr>
 <?php } ?>
 
@@ -249,11 +249,11 @@ if ( $is_admin ) {
 ?>
 <tr><td><b><?php etranslate("Include link in trailer")?>:</b></td>
   <td><input type="radio" name="show_in_trailer" value="Y"
-  <?php if ( $report_show_in_trailer != 'N' ) echo " CHECKED=\"CHECKED\""; ?>
+  <?php if ( $report_show_in_trailer != 'N' ) echo " checked=\"checked\""; ?>
   > <?php etranslate("Yes") ?>
   &nbsp;&nbsp;&nbsp;
   <input type="radio" name="show_in_trailer" value="N"
-  <?php if ( $report_show_in_trailer == 'N' ) echo " CHECKED=\"CHECKED\""; ?>> <?php etranslate("No") ?>
+  <?php if ( $report_show_in_trailer == 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("No") ?>
   </td></tr>
 <?php } ?>
 
@@ -261,10 +261,10 @@ if ( $is_admin ) {
   &nbsp;&nbsp;&nbsp;&nbsp;
   </td>
   <td><input type="radio" name="include_header" value="Y"
-  <?php if ( $include_header != 'N' ) echo " CHECKED=\"CHECKED\""; ?>> <?php etranslate("Yes") ?>
+  <?php if ( $include_header != 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("Yes") ?>
   &nbsp;&nbsp;&nbsp;
   <input type="radio" name="include_header" value="N"
-  <?php if ( $report_include_header == 'N' ) echo " CHECKED=\"CHECKED\""; ?>> <?php etranslate("No") ?>
+  <?php if ( $report_include_header == 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("No") ?>
   </td></tr>
 
 <tr><td><b><?php etranslate("Date range")?>:</b></td>
@@ -292,18 +292,18 @@ if ( $is_admin ) {
 
 <tr><td><b><?php etranslate("Include previous/next links")?>:</b></td>
   <td><input type="radio" name="allow_nav" value="Y"
-  <?php if ( $report_allow_nav != 'N' ) echo " CHECKED=\"CHECKED\""; ?>> <?php etranslate("Yes") ?>
+  <?php if ( $report_allow_nav != 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("Yes") ?>
   &nbsp;&nbsp;&nbsp;
   <input type="radio" name="allow_nav" value="N"
-  <?php if ( $report_allow_nav == 'N' ) echo " CHECKED=\"CHECKED\""; ?>> <?php etranslate("No") ?>
+  <?php if ( $report_allow_nav == 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("No") ?>
   </td></tr>
 
 <tr><td><b><?php etranslate("Include empty dates")?>:</b></td>
   <td><input type="radio" name="include_empty" value="Y"
-  <?php if ( $report_include_empty != 'N' ) echo " CHECKED=\"CHECKED\""; ?>> <?php etranslate("Yes") ?>
+  <?php if ( $report_include_empty != 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("Yes") ?>
   &nbsp;&nbsp;&nbsp;
   <input type="radio" name="include_empty" value="N"
-  <?php if ( $report_include_empty == 'N' ) echo " CHECKED=\"CHECKED\""; ?>> <?php etranslate("No") ?>
+  <?php if ( $report_include_empty == 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("No") ?>
   </td></tr>
 </table>
 
