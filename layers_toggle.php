@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -28,7 +28,7 @@ if ( ! dbi_query ( $sql ) ) {
   break;
 }
 
-if ( strlen ( $error ) == 0 ) {
+if ( empty ( $error ) ) {
   // Go back to where we where if we can figure it out.
   if ( strlen ( $HTTP_REFERER ) )
     do_redirect ( $HTTP_REFERER );

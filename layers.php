@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -65,7 +65,7 @@ echo "</B>.";
            <TD> <?php echo $layerfullname; ?> </TD></TR>
 
        <TR><TD><B><?php etranslate("Color")?>:</B></TD>
-          <TD><?php echo ( $layers[$index]['cal_color'] ); ?></TD></TR>
+          <TD BGCOLOR="<?php echo $CELLBG;?>"><FONT COLOR="<?php echo ( $layers[$index]['cal_color'] ); ?>"><?php echo ( $layers[$index]['cal_color'] ); ?></FONT></TD></TR>
 
        <TR><TD><B><?php etranslate("Duplicates")?>:</B></TD>
           <TD>

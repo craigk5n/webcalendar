@@ -3,7 +3,7 @@
 function display_small_month ( $thismonth, $thisyear, $showyear ) {
   global $WEEK_START, $user, $login;
 
-  if ( $user != $login && strlen ( $user ) > 0 )
+  if ( $user != $login && ! empty ( $user ) )
     $u_url = "&user=$user";
   else
     $u_url = "";
@@ -92,9 +92,9 @@ if ( ! $allow_view_other && ! $is_admin )
 <BODY BGCOLOR=<?php echo "\"$BGCOLOR\"";?>>
 <TABLE WIDTH="100%">
 <TR>
-<?php if ( ! $friendly ) { ?>
+<?php if ( ! empty ( $friendly ) ) { ?>
 <TD ALIGN="left"><FONT SIZE="-1">
-<A HREF="year.php?year=<?php echo $prevYear; if ( strlen ( $user ) > 0 ) echo "&user=$user";?>" CLASS="monthlink">&lt;&lt;<?php echo $prevYear?></A>
+<A HREF="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" CLASS="monthlink">&lt;&lt;<?php echo $prevYear?></A>
 </FONT></TD>
 <?php } ?>
 <TD ALIGN="center">
@@ -105,7 +105,7 @@ if ( ! $allow_view_other && ! $is_admin )
 <?php
   if ( ! $single_user ) {
     echo "<BR>\n";
-    if ( strlen ( $user ) ) {
+    if ( ! empty ( $user ) ) {
       user_load_variables ( $user, "user_" );
       echo $user_fullname;
     } else
@@ -113,9 +113,9 @@ if ( ! $allow_view_other && ! $is_admin )
   }
 ?>
 </FONT></TD>
-<?php if ( ! $friendly ) { ?>
+<?php if ( ! empty ( $friendly ) ) { ?>
 <TD ALIGN="right"><FONT SIZE="-1">
-<A HREF="year.php?year=<?php echo $nextYear;; if ( strlen ( $user ) > 0 ) echo "&user=$user";?>" CLASS="monthlink"><?php echo $nextYear?>&gt;&gt;</A>
+<A HREF="year.php?year=<?php echo $nextYear;; if ( ! empty ( $user ) ) echo "&user=$user";?>" CLASS="monthlink"><?php echo $nextYear?>&gt;&gt;</A>
 </FONT></TD>
 <?php } ?>
 </TR>
@@ -146,7 +146,7 @@ if ( ! $allow_view_other && ! $is_admin )
 
 <P>
 
-<?php if ( ! $friendly ) {
+<?php if ( empty ( $friendly ) ) {
 
 display_unapproved_events ( $login );
 

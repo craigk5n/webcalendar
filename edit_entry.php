@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -18,7 +18,7 @@ include "includes/translate.inc";
 if ( $readonly )
   $can_edit = false;
 
-if ( $id > 0 ) {
+if ( ! empty ( $id ) && $id > 0 ) {
   // first see who has access to edit this entry
   if ( $is_admin ) {
     $can_edit = true;
@@ -96,18 +96,42 @@ if ( $id > 0 ) {
     }
   }
 } else {
+  $id = 0; // to avoid warnings below about use of undefined var
   $time = -1;
   if ( ! $readonly )
     $can_edit = true;
 }
-if ( $year )
+if ( ! empty ( $year ) && $year )
   $thisyear = $year;
-if ( $month )
+if ( ! empty ( $month ) && $month )
   $thismonth = $month;
-if ( ! $rpt_type )
+if ( ! empty ( $day ) && $day )
+  $thisday = $day;
+if ( empty ( $rpt_type ) || ! $rpt_type )
   $rpt_type = "none";
 
-if ( ! $year && ! $month && strlen ( $date ) ) {
+// avoid error for using undefined vars
+if ( empty ( $hour ) )
+  $hour = 0;
+if ( empty ( $duration ) )
+  $duration = 0;
+if ( empty ( $name ) )
+  $name = "";
+if ( empty ( $description ) )
+  $description = "";
+if ( empty ( $priority ) )
+  $priority = 0;
+if ( empty ( $access ) )
+  $access = 0;
+if ( empty ( $rpt_freq ) )
+  $rpt_freq = 0;
+if ( empty ( $rpt_end_date ) )
+  $rpt_end_date = 0;
+
+
+if ( ( empty ( $year ) || ! $year ) &&
+  ( empty ( $month ) || ! $month ) &&
+  ( ! empty ( $date ) && strlen ( $date ) ) ) {
   $thisyear = $year = substr ( $date, 0, 4 );
   $thismonth = $month = substr ( $date, 4, 2 );
   $thisday = $day = substr ( $date, 6, 2 );
@@ -117,7 +141,7 @@ if ( ! $year && ! $month && strlen ( $date ) ) {
     $cal_date = date ( "Ymd" );
 }
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
-if ( ! $cal_date )
+if ( empty ( $cal_date ) || ! $cal_date )
   $cal_date = $thisdate;
 
 ?>
@@ -215,7 +239,7 @@ if ( $can_edit ) {
 <FORM ACTION="edit_entry_handler.php" METHOD="POST" NAME="editentryform">
 
 <?php
-if ( $id ) echo "<INPUT TYPE=\"hidden\" NAME=\"id\" VALUE=\"$id\">\n";
+if ( ! empty ( $id ) ) echo "<INPUT TYPE=\"hidden\" NAME=\"id\" VALUE=\"$id\">\n";
 // we need an additional hidden input field
 echo "<INPUT TYPE=\"hidden\" NAME=\"entry_changed\" VALUE=\"\">\n";
 ?>
@@ -237,6 +261,7 @@ echo "<INPUT TYPE=\"hidden\" NAME=\"entry_changed\" VALUE=\"\">\n";
 
 <TR><TD><B><?php etranslate("Time")?>:</B></TD>
 <?php
+
 $h12 = $hour;
 $amsel = "CHECKED"; $pmsel = "";
 if ( $TIME_FORMAT == "12" ) {
@@ -307,28 +332,35 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   echo "<B>" .  translate ( $extra_descr ) .  ":</B></TD><TD>";
   if ( $extra_type == $EXTRA_URL ) {
     echo '<INPUT SIZE="50" NAME="' . $extra_name .
-      '" VALUE="' . htmlspecialchars ( $extras[$extra_name]['cal_data'] ) .
+      '" VALUE="' .
+      ( empty ( $extras[$extra_name]['cal_data'] ) ?
+      "" : htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) .
       '">';
   } else if ( $extra_type == $EXTRA_EMAIL ) {
     echo '<INPUT SIZE="30" NAME="' . $extra_name .
-      '" VALUE="' . htmlspecialchars ( $extras[$extra_name]['cal_data'] ) .
+      '" VALUE="' .
+      ( empty ( $extras[$extra_name]['cal_data'] ) ?
+      "" : htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) .
       '">';
   } else if ( $extra_type == $EXTRA_DATE ) {
-    if ( $extras[$extra_name]['cal_date'] > 0 )
+    if ( ! empty ( $extras[$extra_name]['cal_date'] ) )
       print_date_selection ( $extra_name, $extras[$extra_name]['cal_date'] );
     else
       print_date_selection ( $extra_name, $cal_date );
   } else if ( $extra_type == $EXTRA_TEXT ) {
     $size = ( $extra_arg1 > 0 ? $extra_arg1 : 50 );
     echo '<INPUT SIZE="' . $size . '" NAME="' . $extra_name .
-      '" VALUE="' . htmlspecialchars ( $extras[$extra_name]['cal_data'] ) .
+      '" VALUE="' .
+      ( empty ( $extras[$extra_name]['cal_data'] ) ?
+      "" : htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) .
       '">';
   } else if ( $extra_type == $EXTRA_MULTILINETEXT ) {
     $cols = ( $extra_arg1 > 0 ? $extra_arg1 : 50 );
     $rows = ( $extra_arg2 > 0 ? $extra_arg2 : 5 );
     echo '<TEXTAREA ROWS="' . $rows . '" COLS="' . $cols .
-      '" NAME="' . $extra_name .
-      '">' . htmlspecialchars ( $extras[$extra_name]['cal_data'] ) .
+      '" NAME="' . $extra_name .  '">' .
+      ( empty ( $extras[$extra_name]['cal_data'] ) ?
+      "" : htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) .
       '</TEXTAREA>';
   } else if ( $extra_type == $EXTRA_USER ) {
     // show list of calendar users...
@@ -337,30 +369,33 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     $userlist = user_get_users ();
     for ( $i = 0; $i < count ( $userlist ); $i++ ) {
       echo "<OPTION VALUE=\"" . $userlist[$i]['cal_login'] . "\"";
-        if ( $userlist[$i]['cal_login'] == $extras[$extra_name]['cal_data'] )
+        if ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
+          $userlist[$i]['cal_login'] == $extras[$extra_name]['cal_data'] )
           echo " SELECTED";
         echo "> " . $userlist[$i]['cal_fullname'];
     }
     echo "</SELECT>";
   } else if ( $extra_type == $EXTRA_REMINDER ) {
     echo "<INPUT TYPE=\"radio\" NAME=\"" . $extra_name . "\" VALUE=\"1\"";
-    if ( $extras[$extra_name]['cal_remind'] > 0 )
+    if ( ! empty ( $extras[$extra_name]['cal_remind'] ) )
       echo " CHECKED";
     echo "> ";
     etranslate ( "Yes" );
     echo "&nbsp;<INPUT TYPE=\"radio\" NAME=\"" . $extra_name . "\" VALUE=\"0\"";
-    if ( $extras[$extra_name]['cal_remind'] <= 0 )
+    if ( empty ( $extras[$extra_name]['cal_remind'] ) ||
+      $extras[$extra_name]['cal_remind'] <= 0 )
       echo " CHECKED";
     echo "> ";
     etranslate ( "No" );
     echo "&nbsp;&nbsp;";
     if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
-      if ( $extras[$extra_name]['cal_date'] > 0 )
+      if ( ! empty ( $extras[$extra_name]['cal_date'] ) &&
+        $extras[$extra_name]['cal_date'] > 0 )
         print_date_selection ( $extra_name, $extras[$extra_name]['cal_date'] );
       else
         print_date_selection ( $extra_name, $cal_date );
     } else if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
-      if ( $extras[$extra_name]['cal_data'] != "" )
+      if ( isset ( $extras[$extra_name]['cal_data'] ) )
         $minutes = $extras[$extra_name]['cal_data'];
       else
         $minutes = $extra_arg1;
@@ -402,7 +437,7 @@ if ( ! $single_user && $show_participants ) {
       if ( $participants[$l] )
         $users .= " SELECTED";
     } else {
-      if ( $l == $login || $l == $user )
+      if ( $l == $login || ( ! empty ( $user ) && $l == $user ) )
         $users .= " SELECTED";
     }
     $users .= "> " . $userlist[$i]['cal_fullname'];
@@ -444,7 +479,7 @@ echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"yearly\" " .
 </TD></TR>
 <TR><TD><B><?php etranslate("Repeat End Date")?>:</B></TD>
 <TD><INPUT TYPE="checkbox" NAME="rpt_end_use" VALUE="y" <?php
-  echo ( $rpt_end ? "CHECKED" : "" ); ?>> <?php etranslate("Use end date")?>
+  echo ( ! empty ( $rpt_end ) ? "CHECKED" : "" ); ?>> <?php etranslate("Use end date")?>
 &nbsp;&nbsp;&nbsp;
 <SPAN CLASS="end_day_selection">
   <?php
@@ -454,19 +489,19 @@ echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"yearly\" " .
 <TR><TD><B><?php etranslate("Repeat Day")?>: </b>(<?php etranslate("for weekly")?>)</td>
   <td><?php
   echo "<INPUT TYPE=\"checkbox\" NAME=\"rpt_sun\" VALUE=\"y\" "
-     . ($rpt_sun?"CHECKED":"") . "> " . translate("Sunday");
+     . (!empty($rpt_sun)?"CHECKED":"") . "> " . translate("Sunday");
   echo "<INPUT TYPE=\"checkbox\" NAME=\"rpt_mon\" VALUE=\"y\" "
-     . ($rpt_mon?"CHECKED":"") . "> " . translate("Monday");
+     . (!empty($rpt_mon)?"CHECKED":"") . "> " . translate("Monday");
   echo "<INPUT TYPE=\"checkbox\" NAME=\"rpt_tue\" VALUE=y "
-     . ($rpt_tue?"CHECKED":"") . "> " . translate("Tuesday");
+     . (!empty($rpt_tue)?"CHECKED":"") . "> " . translate("Tuesday");
   echo "<INPUT TYPE=\"checkbox\" NAME=\"rpt_wed\" VALUE=\"y\" "
-     . ($rpt_wed?"CHECKED":"") . "> " . translate("Wednesday");
+     . (!empty($rpt_wed)?"CHECKED":"") . "> " . translate("Wednesday");
   echo "<INPUT TYPE=\"checkbox\" NAME=\"rpt_thu\" VALUE=\"y\" "
-     . ($rpt_thu?"CHECKED":"") . "> " . translate("Thursday");
+     . (!empty($rpt_thu)?"CHECKED":"") . "> " . translate("Thursday");
   echo "<INPUT TYPE=\"checkbox\" NAME=\"rpt_fri\" VALUE=\"y\" "
-     . ($rpt_fri?"CHECKED":"") . "> " . translate("Friday");
+     . (!empty($rpt_fri)?"CHECKED":"") . "> " . translate("Friday");
   echo "<INPUT TYPE=\"checkbox\" NAME=\"rpt_sat\" VALUE=\"y\" "
-     . ($rpt_sat?"CHECKED":"") . "> " . translate("Saturday");
+     . (!empty($rpt_sat)?"CHECKED":"") . "> " . translate("Saturday");
   ?></TD></TR>
 
 <TR><TD><B><?php etranslate("Frequency")?>:</B></TD>

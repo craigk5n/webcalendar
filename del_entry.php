@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -12,6 +12,9 @@ load_user_preferences ();
 load_user_layers ();
 
 include "includes/translate.inc";
+
+$my_event = false;
+$can_edit = false;
 
 // First, check to see if this user should be able to delete this event.
 if ( $id > 0 ) {
@@ -45,7 +48,7 @@ if ( $res ) {
   $owner = $row[0];
   dbi_free_result ( $res );
   if ( $owner == $login ) {
-    $my_event = Y;
+    $my_event = true;
     $can_edit = true;
   }
 }
@@ -55,8 +58,8 @@ if ( ! $can_edit ) {
   $error = translate ( "You are not authorized" );
 }
 
-if ( $id > 0 && strlen ( $error ) == 0 ) {
-  if ( $date != "" ) {
+if ( $id > 0 && empty ( $error ) ) {
+  if ( ! empty ( $date ) ) {
     $thisdate = $date;
   } else {
     $res = dbi_query ( "SELECT cal_date FROM webcal_entry WHERE cal_id = $id" );
@@ -69,15 +72,16 @@ if ( $id > 0 && strlen ( $error ) == 0 ) {
 
   // Only allow delete of webcal_entry & webcal_entry_repeats
   // if owner or admin, not participant.
-  if ( $is_admin || $my_event == "Y") {
+  if ( $is_admin || $my_event ) {
 
     // Email participants that the event was deleted
   
     $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id";
     $res = dbi_query ( $sql );
+    $partlogin = array ();
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
-        if ( $row[0] != $del_login )
+        if ( $row[0] != $login )
 	  $partlogin[] = $row[0];
       }
       dbi_free_result($res);
@@ -159,7 +163,7 @@ if ( strlen ( get_last_view() ) ) {
   }
   $url = "$STARTVIEW.php" . $redir;
 }
-if ( strlen ( $error ) == 0 ) {
+if ( empty ( $error ) ) {
   do_redirect ( $url );
   exit;
 }

@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -29,7 +29,7 @@ if ( ! $allow_view_other && ! $is_admin ) {
   $error = translate ( "You are not authorized" );
 }
 
-if ( strlen ( $error ) ) {
+if ( ! empty ( $error ) ) {
   echo "<BLOCKQUOTE>$error</BLOCKQUOTE>\n";
 } else {
   $userlist = user_get_users ();

@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -9,7 +9,10 @@ include "includes/validate.inc";
 include "includes/connect.inc";
 
 load_user_preferences ();
+$save_status = $LAYERS_STATUS;
+$LAYERS_STATUS = "Y";
 load_user_layers ();
+$LAYERS_STATUS = $save_status;
 
 include "includes/translate.inc";
 
@@ -62,19 +65,26 @@ function selectColor ( color ) {
 </HEAD>
 <BODY BGCOLOR="<?php echo $BGCOLOR; ?>">
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php if ( strlen( $layers[$id]['cal_layeruser'] ) ) echo translate("Edit Layer"); else echo translate("Add Layer"); ?></FONT></H2>
+<?php
+echo "Found " . count ( $layers ) . " layers <p>";
+for ( $i = 0; $i < count ( $layers ); $i++ ) {
+ echo "Layer " . $i . ": " . $layers[$id]['cal_layeruser'] . "<br>";
+}
+?>
+
+<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) echo translate("Edit Layer"); else echo translate("Add Layer"); ?></FONT></H2>
 
 
 
 <FORM ACTION="edit_layer_handler.php" METHOD="POST" ONSUBMIT="return valid_form(this);" NAME="prefform">
 
-<?php if ( strlen ( $layers[$id]['cal_layeruser']) ) echo "<INPUT TYPE=\"hidden\" NAME=\"id\" VALUE=\"$id\">\n"; ?>
+<?php if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) echo "<INPUT TYPE=\"hidden\" NAME=\"id\" VALUE=\"$id\">\n"; ?>
 
 <TABLE BORDER=0>
 
 
 <?php
-if ( $single_user ) {
+if ( ! $single_user ) {
   $userlist = user_get_users ();
   $num_users = 0;
   $size = 0;
@@ -82,7 +92,7 @@ if ( $single_user ) {
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
     $size++;
     $users .= "<OPTION VALUE=\"" . $userlist[$i]['cal_login'] . "\"";
-    if ( strlen ($layers[$id]['cal_layeruser']) > 0 ) {
+    if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) {
       if ( $layers[$id]['cal_layeruser'] == $userlist[$i]['cal_login'] )
         $users .= " SELECTED";
     } 
@@ -102,14 +112,14 @@ if ( $single_user ) {
 ?>
 
 <TR><TD><B><?php etranslate("Color")?>:</B></TD>
-  <TD><INPUT NAME="layercolor" SIZE=7 MAXLENGTH=7 VALUE="<?php echo ($layers[$id]['cal_color']); ?>"> 
+  <TD><INPUT NAME="layercolor" SIZE=7 MAXLENGTH=7 VALUE="<?php echo empty ( $layers[$id]['cal_color'] ) ? "" :  $layers[$id]['cal_color']; ?>"> 
 
 <INPUT TYPE="button" ONCLICK="selectColor('layercolor')" VALUE="<?php etranslate("Select")?>...">
 </TD></TR>
 
 
 <TR><TD><B><?php etranslate("Duplicates")?>:</B></TD>
-    <TD><INPUT TYPE="checkbox" NAME="dups" VALUE="Y" <?php if($layers[$id]['cal_dups'] == 'Y') echo "checked"; ?> >&nbsp;&nbsp;<?php etranslate("Show layer events that are the same as your own")?></TD></TR> 
+    <TD><INPUT TYPE="checkbox" NAME="dups" VALUE="Y" <?php if ( ! empty ( $layers[$id]['cal_dups'] ) && $layers[$id]['cal_dups'] == 'Y') echo "checked"; ?> >&nbsp;&nbsp;<?php etranslate("Show layer events that are the same as your own")?></TD></TR> 
 
 
 <TR><TD><INPUT TYPE="submit" VALUE="<?php etranslate("Save")?>"></TD></TR>
@@ -118,7 +128,7 @@ if ( $single_user ) {
 <?php
 
 // If this is 'Edit Layer' (a layer already exists) put a 'Delete Layer' link
-if ( strlen( $layers[$id]['cal_layeruser'] ) )
+if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
 {
 
 ?>

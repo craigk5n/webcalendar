@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 include "includes/config.inc";
 include "includes/php-dbi.inc";
@@ -17,7 +17,7 @@ if ( ! $is_admin )
   $user = $login;
 
 // don't allow them to create new users if it's not allowed
-if ( ! strlen ( $user ) ) {
+if ( empty ( $user ) ) {
   // asking to create a new user
   if ( ! $is_admin ) {
     // must be admin...
@@ -46,7 +46,7 @@ if ( ! strlen ( $user ) ) {
 
 <?php
 
-if ( strlen ( $user ) ) {
+if ( ! empty ( $user ) ) {
   user_load_variables ( $user, "u" );
   echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Edit User") . "</FONT></H2>\n";
 } else {
@@ -58,7 +58,7 @@ if ( strlen ( $user ) ) {
 <TABLE BORDER=0>
 <TR><TD><B><?php etranslate("Username")?>:</B></TD>
   <TD><?php
-    if ( strlen ( $user ) ) {
+    if ( ! empty ( $user ) ) {
       if ( $is_admin )
         echo $user . "<INPUT NAME=\"user\" TYPE=\"hidden\" VALUE=\"" .
           htmlspecialchars ( $user ) . "\">";
@@ -74,7 +74,7 @@ if ( strlen ( $user ) ) {
   <TD><INPUT NAME="ulastname" SIZE=20 VALUE="<?php echo htmlspecialchars ( $ulastname );?>"></TD></TR>
 <TR><TD><B><?php etranslate("E-mail address")?>:</B></TD>
   <TD><INPUT NAME="uemail" SIZE=20 VALUE="<?php echo htmlspecialchars ( $uemail );?>"></TD></TR>
-<?php if ( strlen ( $user ) == 0 ) { ?>
+<?php if ( empty ( $user ) ) { ?>
 <TR><TD><B><?php etranslate("Password")?>:</B></TD>
   <TD><INPUT NAME="upassword1" SIZE=15 VALUE="" TYPE="password"></TD></TR>
 <TR><TD><B><?php etranslate("Password")?> (<?php etranslate("again")?>):</B></TD>
@@ -87,12 +87,12 @@ if ( strlen ( $user ) ) {
 <TR><TD COLSPAN=2>
 <?php if ( $demo_mode ) { ?>
   <INPUT TYPE="button" VALUE="<?php etranslate("Save")?>" ONCLICK="alert('<?php etranslate("Disabled for demo")?>')">
-  <?php if ( $is_admin && strlen ( $user ) ) { ?>
+  <?php if ( $is_admin && ! empty ( $user ) ) { ?>
     <INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="alert('<?php etranslate("Disabled for demo")?>')">
    <?php }?>
 <?php } else { ?>
   <INPUT TYPE="submit" VALUE="<?php etranslate("Save")?>">
-  <?php if ( $is_admin && strlen ( $user ) ) {
+  <?php if ( $is_admin && ! empty ( $user ) ) {
           if ( $admin_can_delete_user )
     ?>
     <INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')">
@@ -103,7 +103,7 @@ if ( strlen ( $user ) ) {
 
 </FORM>
 
-<?php if ( strlen ( $user ) && ! $use_http_auth ) { ?>
+<?php if ( ! empty ( $user ) && ! $use_http_auth ) { ?>
 
 </TD>
 <TD>&nbsp;&nbsp;</TD>

@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -9,26 +9,26 @@ include "includes/validate.inc";
 include "includes/connect.inc";
 
 load_user_preferences ();
+$save_status = $LAYERS_STATUS;
+$LAYERS_STATUS = "Y";
 load_user_layers ();
+$LAYERS_STATUS = $save_status;
 
 include "includes/translate.inc";
 
-if(strlen ($dups) == 0 )
+if ( empty ( $dups ) )
   $dups = 'N';
 
-if(strlen ($layeruser) > 0)
-{
+if ( ! empty ( $layeruser ) ) {
   // existing layer entry
-  if ( strlen ( $layers[$id]['cal_layeruser']) )
-  {
+  if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) {
     // update existing layer entry for this user
     $layerid = $layers[$id]['cal_layerid'];
 
     dbi_query ( "UPDATE webcal_user_layers SET cal_layeruser = '$layeruser', cal_color = '$layercolor', cal_dups = '$dups' WHERE cal_layerid = '$layerid'");
 
-  }
-  else	// new layer entry
-  {
+  } else {
+    // new layer entry
     $res = dbi_query ( "SELECT MAX(cal_layerid) FROM webcal_user_layers" );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
@@ -39,7 +39,6 @@ if(strlen ($layeruser) > 0)
 
     dbi_query ( "INSERT INTO webcal_user_layers VALUES ('$layerid', '$login', '$layeruser', '$layercolor', '$dups')");
   }
-
 }
 
 do_redirect ( "layers.php" );

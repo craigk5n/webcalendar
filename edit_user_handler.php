@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -32,14 +32,14 @@ if ( ( $action == "Delete" || $action == translate ("Delete") ) && $is_admin ) {
         $sql = "";
       }
       dbi_free_result ( $res );
-      if ( strlen ( $error ) == 0 ) {
+      if ( empty ( $error ) ) {
         user_delete_user ( $user );
       }
     }
   } else {
     $error = "Deleting users not supported.";
   }
-} elseif ( strlen ( $user ) && strlen ( $error ) == 0 ) {
+} elseif ( ! empty ( $user ) && empty ( $error ) ) {
   if ( $upassword1 != $upassword2 ) {
     $error = translate("The passwords were not identical") . ".";
   } else {
@@ -54,7 +54,7 @@ if ( ( $action == "Delete" || $action == translate ("Delete") ) && $is_admin ) {
       $error = translate("You have not entered a password");
   }
 }
-if ( strlen ( $error ) == 0 ) {
+if ( empty ( $error ) ) {
   if ( $is_admin )
     do_redirect ( "users.php" );
   else

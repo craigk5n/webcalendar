@@ -92,7 +92,9 @@ function load_user_preferences () {
       $setting = $row[0];
       $value = $row[1];
       $sys_setting = "sys_" . $setting;
-      $GLOBALS["sys_" . $setting] = $GLOBALS[$setting]; // save system defaults
+      // save system defaults
+      if ( ! empty ( $GLOBALS[$setting] ) )
+        $GLOBALS["sys_" . $setting] = $GLOBALS[$setting];
       $GLOBALS[$setting] = $value;
     }
     dbi_free_result ( $res );
@@ -156,7 +158,9 @@ function load_user_layers () {
   global $layers;
   global $LAYERS_STATUS;
 
-  if ( $LAYERS_STATUS != "N" ) {
+  $layers = array ();
+
+  if ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS != "N" ) {
     $res = dbi_query (
       "SELECT cal_layerid, cal_layeruser, cal_color, cal_dups " .
       "FROM webcal_user_layers " .
@@ -174,6 +178,8 @@ function load_user_layers () {
       }
       dbi_free_result ( $res );
     }
+  } else {
+    //echo "Not loading!";
   }
 }
 
@@ -419,9 +425,10 @@ function read_events ( $user, $startdate, $enddate ) {
 function get_entries ( $user, $date ) {
   global $events;
   $n = 0;
+  $ret = array ();
 
   for ( $i = 0; $i < count ( $events ); $i++ ) {
-    if ( $events[$i][cal_date] == $date )
+    if ( $events[$i]['cal_date'] == $date )
       $ret[$n++] = $events[$i];
   }
 
@@ -442,6 +449,7 @@ function query_events ( $user, $want_repeated, $date_filter ) {
   global $login;
   global $layers;
   $result = array ();
+  $layers_byuser = array ();
 
   $sql = "SELECT webcal_entry.cal_name, webcal_entry.cal_description, "
     . "webcal_entry.cal_date, webcal_entry.cal_time, "
@@ -506,19 +514,19 @@ function query_events ( $user, $want_repeated, $date_filter ) {
         "cal_status" => $row[8],
         "cal_login" => $row[9]
         );
-      if ( $want_repeated ) {
-        $item[cal_type] = $row[10];
-        $item[cal_end] = $row[11];
-        $item[cal_frequency] = $row[12];
-        $item[cal_days] = $row[13];
+      if ( $want_repeated && ! empty ( $row[10] ) ) {
+        $item['cal_type'] = empty ( $row[10] ) ? "" : $row[10];
+        $item['cal_end'] = empty ( $row[11] ) ? "" : $row[11];
+        $item['cal_frequency'] = empty ( $row[12] ) ? "" : $row[12];
+        $item['cal_days'] = empty ( $row[13] ) ? "" : $row[13];
       }
 
-      if ( $item[cal_id] != $checkdup_id ) {
-        $checkdup_id = $item[cal_id];
+      if ( $item['cal_id'] != $checkdup_id ) {
+        $checkdup_id = $item['cal_id'];
         $first_i_this_id = $i;
       }
 
-      if ( $item[cal_login] == $user ) {
+      if ( $item['cal_login'] == $user ) {
         // Insert this one before all other ones with this ID.
         my_array_splice ( $result, $first_i_this_id, 0, array($item) );
         $i++;
@@ -527,7 +535,7 @@ function query_events ( $user, $want_repeated, $date_filter ) {
           // There's another one with the same ID as the one we inserted.
           // Check for dup and if so, delete it.
           $other_item = $result[$first_i_this_id + 1];
-          if ($layers_byuser[$other_item[cal_login]] == 'N') {
+          if ($layers_byuser[$other_item['cal_login']] == 'N') {
             // NOTE: array_splice requires PHP4
             my_array_splice ( $result, $first_i_this_id + 1, 1, "" );
             $i--;
@@ -536,7 +544,8 @@ function query_events ( $user, $want_repeated, $date_filter ) {
       }
       else {
         if ($i == $first_i_this_id
-            || $layers_byuser[$item[cal_login]] != 'N') {
+          || ( ! empty ( $layers_byuser[$item['cal_login']] ) &&
+          $layers_byuser[$item['cal_login']] != 'N' ) ) {
           // This item either is the first one with its ID, or allows dups.
           // Add it to the end of the array.
           $result [$i++] = $item;
@@ -684,6 +693,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $freq=1 ) {
 function get_repeating_entries ( $user, $dateYmd ) {
   global $repeated_events;
   $n = 0;
+  $ret = array ();
   //echo count($repeated_events)."<BR>";
   for ($i=0; $i < count($repeated_events); $i++ ) {
     if (repeated_event_matches_date($repeated_events[$i],$dateYmd)){
@@ -699,31 +709,31 @@ function repeated_event_matches_date($event,$dateYmd) {
   // before the end
   $date = date_to_epoch ( $dateYmd );
   $thisyear = substr($dateYmd, 0, 4);
-  $start = date_to_epoch ( $event[cal_date] );
-  $end   = date_to_epoch ( $event[cal_end] );
-  $freq = $event[cal_frequency];
+  $start = date_to_epoch ( $event['cal_date'] );
+  $end   = date_to_epoch ( $event['cal_end'] );
+  $freq = $event['cal_frequency'];
   $thismonth = substr($dateYmd, 4, 2);
-  if ($event[cal_end] && $dateYmd > date("Ymd",$end) )
-    return False;
+  if ($event['cal_end'] && $dateYmd > date("Ymd",$end) )
+    return false;
   if ( $dateYmd <= date("Ymd",$start) )
-    return False;
-  $id = $event[cal_id];
+    return false;
+  $id = $event['cal_id'];
 
-  if ($event[cal_type] == 'daily') {
+  if ($event['cal_type'] == 'daily') {
     if ( (floor(($date - $start)/86400)%$freq) )
-      return False;
-    return True;
-  } else if ($event[cal_type] == 'weekly') {
+      return false;
+    return true;
+  } else if ($event['cal_type'] == 'weekly') {
     $dow  = date("w", $date);
     $dow1 = date("w", $start);
-    $isDay = substr($event[cal_days], $dow, 1);
+    $isDay = substr($event['cal_days'], $dow, 1);
     $wstart = $start - ($dow1 * 86400);
     if (floor(($date - $wstart)/604800)%$freq)
-      return False;
+      return false;
     if (strcmp($isDay,"y") == 0) {
-      return True;
+      return true;
     }
-  } else if ($event[cal_type] == 'monthlyByDay') {
+  } else if ($event['cal_type'] == 'monthlyByDay') {
     $dowS = date("w", $start);
     $dayS = ceil(date("d", $start)/7);
     $mthS = date("m", $start);
@@ -735,13 +745,13 @@ function repeated_event_matches_date($event,$dateYmd) {
     $yr   = date("Y", $date);
 
     if ((($yr - $yrS)*12 + $mth - $mthS) % $freq)
-      return False;
+      return false;
 
     if (($dowS == $dow) && ($day == $dayS)) {
-      return True;
+      return true;
     }
 
-  } else if ($event[cal_type] == 'monthlyByDate') {
+  } else if ($event['cal_type'] == 'monthlyByDate') {
     $mthS = date("m", $start);
     $yrS  = date("Y", $start);
 
@@ -749,25 +759,25 @@ function repeated_event_matches_date($event,$dateYmd) {
     $yr   = date("Y", $date);
 
     if ((($yr - $yrS)*12 + $mth - $mthS) % $freq)
-      return False;
+      return false;
 
     if (date("d", $date) == date("d", $start)) {
-      return True;
+      return true;
     }
   }
-  else if ($event[cal_type] == 'yearly') {
+  else if ($event['cal_type'] == 'yearly') {
     $yrS = date("Y", $start);
     $yr  = date("Y", $date);
 
     if (($yr - $yrS)%$freq)
-      return False;
+      return false;
 
     if (date("dm", $date) == date("dm", $start)) {
-      return True;
+      return true;
     }
   } else {
     // unknown repeat type
-    return False;
+    return false;
   }
 }
 function date_to_epoch ( $d ) {
@@ -935,7 +945,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
 function overlap($dates,$duration,$hour,$minute,$participants,$login,$id) {
   global $single_user_login, $single_user;
   global $repeated_events;
-  if (!count($dates)) return False;
+  if (!count($dates)) return false;
   $sql = "SELECT distinct webcal_entry_user.cal_login, webcal_entry.cal_time," .
     "webcal_entry.cal_duration, webcal_entry.cal_name, " .
     "webcal_entry.cal_id, webcal_entry.cal_access, " .
@@ -1019,7 +1029,7 @@ function overlap($dates,$duration,$hour,$minute,$participants,$login,$id) {
     //for performance reasons.
     $repeated_events=query_events($participants[$q],true,$date_filter);
     //for ($dd=0; $dd<count($repeated_events); $dd++) {
-    //  echo $repeated_events[$dd][cal_id] . "<BR>";
+    //  echo $repeated_events[$dd]['cal_id'] . "<BR>";
     //}
     for ($i=0; $i < count($dates); $i++) {
       $dateYmd = date ( "Ymd", $dates[$i] );
@@ -1030,20 +1040,20 @@ function overlap($dates,$duration,$hour,$minute,$participants,$login,$id) {
         //okay we've narrowed it down to a day, now I just gotta check the time...
         //I hope this is right...
         $row = $list[$j];
-        if ( $row[cal_id] != $id ) {
-          $time2 = $row[cal_time];
-          $duration2 = $row[cal_duration];
+        if ( $row['cal_id'] != $id ) {
+          $time2 = $row['cal_time'];
+          $duration2 = $row['cal_duration'];
           if ( times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
             $overlap .= "<LI>";
             if ( ! $single_user )
-              $overlap .= "$row[cal_login]: ";
-            if ( $row[cal_access] == 'R' && $row[cal_login] != $login )
+              $overlap .= $row['cal_login'] . ": ";
+            if ( $row['cal_access'] == 'R' && $row['cal_login'] != $login )
               $overlap .=  "(PRIVATE)";
             else {
-              $overlap .=  "<A HREF=\"view_entry.php?id=$row[cal_id]";
+              $overlap .=  "<A HREF=\"view_entry.php?id=" . $row['cal_id'];
               if ( $user != $login )
                 $overlap .= "&user=$user";
-              $overlap .= "\">$row[cal_name]</A>";
+              $overlap .= "\">" . $row['cal_name'] . "</A>";
             }
             $overlap .= " (" . display_time ( $time2 );
             if ( $duration2 > 0 )
@@ -1066,13 +1076,19 @@ function overlap($dates,$duration,$hour,$minute,$participants,$login,$id) {
 // The HTML will be stored in an array ($hour_arr) indexed on the event's
 // starting hour.
 function html_for_event_week_at_a_glance ( $id, $date, $time,
-  $name, $description, $status, $pri, $access, $duration, $event_owner, $hide_icons ) {
+  $name, $description, $status, $pri, $access, $duration, $event_owner,
+  $hide_icons ) {
   global $first_hour, $last_hour, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user;
   static $key = 0;
   global $DISPLAY_ICONS;
-
   global $layers;
+
+  $hour_arr = array ();
+
+  $rowspan_arr = array ();
+  for ( $i = 0; $i < 24; $i++ )
+    $rowspan_arr[$i] = 0;
 
   $divname = "eventinfo-day-$id-$key";
   $key++;
@@ -1094,6 +1110,10 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   }
 
 
+  // avoid php warning for undefined array index
+  if ( empty ( $hour_arr[$ind] ) )
+    $hour_arr[$ind] = "";
+
   if ( ! $hide_icons ) {
     $hour_arr[$ind] .=
       "<A CLASS=\"$class\" HREF=\"view_entry.php?id=$id&date=$date";
@@ -1103,8 +1123,8 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
       translate("View this entry") .
       "'; show(event, '$divname'); return true;\" onMouseOut=\"hide('$divname'); return true;\">";
   }
-  if ( $pri == 3 ) $hour_arr[$ind] .= "<B>";
-
+  if ( $pri == 3 )
+    $hour_arr[$ind] .= "<B>";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     for ( $index = 0; $index < sizeof($layers); $index++ ) {
@@ -1138,40 +1158,43 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
       if ( $rowspan > $rowspan_arr[$ind] && $rowspan > 1 )
         $rowspan_arr[$ind] = $rowspan;
     }
+  } else {
+    $timestr = "";
   }
-  if ( $login != $user && $access == 'R' && strlen ( $user ) )
-    $hour_arr[$ind] .= "(Private)";
 
-  else
-  if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
+  // avoid php warning of undefined index when using .= below
+  if ( empty ( $hour_arr[$ind] ) )
+    $hour_arr[$ind] = "";
+
+  if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
     $hour_arr[$ind] .= "(Private)";
-  else
-  if ( $login != $event_owner && strlen ( $event_owner ) )
-  {
+  } else if ( $login != $event_owner && $access == 'R' &&
+    strlen ( $event_owner ) ) {
+    $hour_arr[$ind] .= "(Private)";
+  } else if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
     $hour_arr[$ind] .= "</FONT>";
+  } else {
+    $hour_arr[$ind] .= htmlspecialchars ( $name );
   }
 
-  else
-    $hour_arr[$ind] .= htmlspecialchars ( $name );
   if ( $pri == 3 ) $hour_arr[$ind] .= "</B>";
-  $hour_arr[$ind] .= "</A>";
+    $hour_arr[$ind] .= "</A>";
   //if ( $DISPLAY_ICONS == "Y" ) {
   //  $hour_arr[$ind] .= icon_text ( $id, true, true );
   //}
   $hour_arr[$ind] .= "<BR>";
-  if ( $login != $user && $access == 'R' && strlen ( $user ) )
+  if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
     $eventinfo .= build_event_popup ( $divname, $event_owner,
       translate("This event is confidential"), "" );
-
-  else
-  if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
+  } else if ( $login != $event_owner && $access == 'R' &&
+    strlen ( $event_owner ) ) {
     $eventinfo .= build_event_popup ( $divname, $event_owner,
       translate("This event is confidential"), "" );
-
-  else
+  } else {
     $eventinfo .= build_event_popup ( $divname, $event_owner,
       $description, $timestr );
+  }
 }
 
 
@@ -1581,6 +1604,7 @@ function hextoint ( $val ) {
 // text.
 // $instr is a hex-encoded string. "Hello" would be "48656c6c6f".
 function decode_string ( $instr ) {
+  global $offsets;
   $orig = "";
   for ( $i = 0; $i < strlen ( $instr ); $i += 2 ) {
     $ch1 = substr ( $instr, $i, 1 );
@@ -1595,6 +1619,7 @@ function decode_string ( $instr ) {
 }
 
 function encode_string ( $instr ) {
+  global $offsets;
   $ret = "";
   for ( $i = 0; $i < strlen ( $instr ); $i++ ) {
     $ch1 = substr ( $instr, $i, 1 );

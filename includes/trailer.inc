@@ -4,14 +4,14 @@
 <FONT SIZE="-1">
 <TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0">
 <FORM ACTION="month.php" METHOD="GET" NAME="SelectMonth">
-<?php if ( strlen ( $user ) && $user != $login )
+<?php if ( ! empty ( $user ) && $user != $login )
         echo "<INPUT TYPE=\"hidden\" NAME=\"user\" VALUE=\"$user\">\n";
 ?>
 <TR><TD ALIGN="left" VALIGN="top" WIDTH="33%"><FONT SIZE="-1">
 <B><?php etranslate("Month")?>:</B>
 <SELECT NAME="date" ONCHANGE="document.SelectMonth.submit()">
 <?php
-  if ( $thisyear && $thismonth ) {
+  if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
     $m = $thismonth;
     $y = $thisyear;
   } else {
@@ -40,21 +40,21 @@
 </FONT></TD>
 </FORM>
 <FORM ACTION="week.php" METHOD="GET" NAME="SelectWeek">
-<?php if ( strlen ( $user ) && $user != $login )
+<?php if ( ! empty ( $user ) && $user != $login )
         echo "<INPUT TYPE=\"hidden\" NAME=\"user\" VALUE=\"$user\">\n";
 ?>
 <TD ALIGN="center" VALIGN="top" WIDTH="33%"><FONT SIZE="-1">
 <B><?php etranslate("Week")?>:</B>
 <SELECT NAME="date" ONCHANGE="document.SelectWeek.submit()">
 <?php
-  if ( $thisyear && $thismonth ) {
+  if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
     $m = $thismonth;
     $y = $thisyear;
   } else {
     $m = date ( "m" );
     $y = date ( "Y" );
   }
-  if ( $thisday ) {
+  if ( ! empty ( $thisday ) ) {
     $d = $thisday;
   } else {
     $d = date ( "d" );
@@ -85,14 +85,14 @@
 </FONT></TD>
 </FORM>
 <FORM ACTION="year.php" METHOD="GET" NAME="SelectYear">
-<?php if ( strlen ( $user ) && $user != $login )
+<?php if ( ! empty ( $user ) && $user != $login )
         echo "<INPUT TYPE=\"hidden\" NAME=\"user\" VALUE=\"$user\">\n";
 ?>
 <TD ALIGN="right" VALIGN="top" WIDTH="33%"><FONT SIZE="-1">
 <B><?php etranslate("Year")?>:</B>
 <SELECT NAME="year" ONCHANGE="document.SelectYear.submit()">
 <?php
-  if ( $thisyear ) {
+  if ( ! empty ( $thisyear ) ) {
     $y = $thisyear;
   } else {
     $y = date ( "Y" );
@@ -121,7 +121,7 @@
     if ( ! $use_http_auth )
       echo "<A CLASS=\"navlinks\" HREF=\"login.php\">" .
       translate("Login") . "/" . translate("Logout") . "</A>,\n";
-    if ( strlen ( $user ) && $user != $login )
+    if ( ! empty ( $user ) && $user != $login )
       echo "<A CLASS=\"navlinks\" HREF=\"$mycal\"><B>" .
         translate("Back to My Calendar") . "</B></A>\n";
     else
@@ -134,19 +134,19 @@
     echo "<A CLASS=\"navlinks\" HREF=\"$mycal\"><B>" .
       translate("My Calendar") . "</B></A>\n";
   }
-  // only display some links if we're viewing are own calendar.
-  if ( strlen ( $user ) == 0 || $user == $login ) {
+  // only display some links if we're viewing our own calendar.
+  if ( empty ( $user ) || $user == $login ) {
     echo ", <A CLASS=\"navlinks\" HREF=\"search.php\">" .
       translate("Search") . "</A>";
     echo ", <A CLASS=\"navlinks\" HREF=\"export.php\">" .
       translate("Export") . "</A>";
     if ( ! $readonly ) {
       echo ", <A CLASS=\"navlinks\" HREF=\"edit_entry.php";
-      if ( $thisyear ) {
+      if ( ! empty ( $thisyear ) ) {
         print "?year=$thisyear";
         if ( $thismonth )
           print "&month=$thismonth";
-        if ( $thisday )
+        if ( ! empty ( $thisday ) )
           print "&day=$thisday";
       }
       echo "\">" . translate("Add New Entry") . "</A>";

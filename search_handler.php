@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -31,7 +31,7 @@ $matches = 0;
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Search Results")?></FONT></H2>
 
 <?php
-if ( strlen ( $error ) ) {
+if ( ! empty ( $error ) ) {
   echo "<B>" . translate("Error") . ":</B> $error";
 } else {
   $ids = array ();
@@ -52,8 +52,12 @@ if ( strlen ( $error ) ) {
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $matches++;
-        $ids[strval ( $row[0] )]++;
-        $info[strval ( $row[0] )] = "$row[1] (" . date_to_str ($row[2]) .
+        $idstr = strval ( $row[0] );
+        if ( empty ( $ids[$idstr] ) )
+          $ids[$idstr] = 1;
+        else
+          $ids[$idstr]++;
+        $info[$idstr] = "$row[1] (" . date_to_str ($row[2]) .
           ")";
       }
     }
@@ -69,10 +73,10 @@ if ( $matches == 1 )
 else if ( $matches > 0 )
   echo "<B>$matches " . translate("matches found") . ".</B><P>";
 else
-  $error = translate("No matches found") . ".";
+  echo translate("No matches found") . ".";
 
 // now sort by number of hits
-if ( ! strlen ( $error ) ) {
+if ( empty ( $error ) ) {
   arsort ( $ids );
   for ( reset ( $ids ); $key = key ( $ids ); next ( $ids ) ) {
     echo "<LI><A HREF=\"view_entry.php?id=$key\">" . $info[$key] . "</A>\n";
