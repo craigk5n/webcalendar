@@ -1,4 +1,5 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Changed charset in Czech.txt from utf8 to UTF-8
  - Fixed problem with upcoming.php header. xml:lang and lang were set to full 
    LANGUAGE value, not abbreviation.
  - login.php: Added xml encoding back in, it's now dynamic like other pages.
