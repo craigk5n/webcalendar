@@ -2490,7 +2490,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     $time_h = (int) ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
     $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-    echo "<tr>\n<th style=\"vertical-align:top; height:40px; width:14%;\" class=\"tableheader\">" .
+    echo "<tr>\n<th style=\"height:40px; width:14%;\" class=\"tableheader\">" .
       $time . "</th>\n";
     if ( $rowspan > 1 ) {
       // this might mean there's an overlap, or it could mean one event
