@@ -321,14 +321,14 @@ if ( $is_admin ) {
   <td style="font-weight:bold;"><?php etranslate("Template variables")?></td></tr>
 
 <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Page template")?>:</td>
-  <td><textarea rows="12" cols="60" wrap="virtual" name="page_template"><?php echo htmlentities ( $page_template )?></textarea></td>
+  <td><textarea rows="12" cols="60" name="page_template"><?php echo htmlentities ( $page_template )?></textarea></td>
  <td style="vertical-align:top;">
    <tt>${days}</tt><br />
    <tt>${report_id}</tt><br />
  </td></tr>
 
 <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Day template")?>:</td>
-  <td><textarea rows="12" cols="60" wrap="virtual" name="day_template"><?php echo htmlentities ( $day_template )?></textarea></td>
+  <td><textarea rows="12" cols="60" name="day_template"><?php echo htmlentities ( $day_template )?></textarea></td>
  <td style="vertical-align:top;">
    <tt>${events}</tt><br />
    <tt>${date}</tt><br />
@@ -337,7 +337,7 @@ if ( $is_admin ) {
  </td></tr>
 
 <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Event template")?>:</td>
-  <td><textarea rows="12" cols="60" wrap="virtual" name="event_template"><?php echo htmlentities ( $event_template )?></textarea></td>
+  <td><textarea rows="12" cols="60" name="event_template"><?php echo htmlentities ( $event_template )?></textarea></td>
  <td style="vertical-align:top;">
    <tt>${name}</tt><br />
    <tt>${description}</tt><br />
