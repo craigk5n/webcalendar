@@ -858,18 +858,18 @@ table.weekview {
 	text-align: center;
 }
 /* contains the year (i.e. 2004) */
-td.weekviewtitle .date {
+.weekviewtitle .date {
 	font-size: 24px;
 	font-weight: bold;
 	text-align: center;
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
-td.weekviewtitle .weeknumber {
+.weekviewtitle .weeknumber {
 	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 20px;
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
-td.weekviewtitle .user {
+.weekviewtitle .user {
 	font-size: 18px;
 	font-weight: bold;
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
