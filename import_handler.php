@@ -35,7 +35,8 @@ if ($HTTP_POST_FILES['FileName']['size'] > 0) {
     if ( empty ( $allow_conflicts )) echo "Conflicting Events: $count_con<BR>\n";
     echo "Errors: $error_num<BR>\n<BR>";
     $url = sprintf ( "%s.php?date=%04d%02d%02d",$STARTVIEW, $year, $month, $day );
-    echo "  <A CLASS=\"navlinks\" HREF=\"$url\">" . translate("Back To My Calendar") . "</A></p>\n";
+    echo "  <A CLASS=\"navlinks\" HREF=\"$url\">" .
+      translate("Back to My Calendar") . "</A></p>\n";
   } elseif ($errormsg) {
     echo "<P><B>ERROR:</B> $errormsg<BR>\n";
   } else {
@@ -302,13 +303,15 @@ function import_data($data) {
 
     if ( ! empty ($error) && empty ($overlap))  {
       $error_num++;
-      echo "<H2><FONT COLOR=\"$H2COLOR\">".etranslate("Error")."</H2></FONT>\n<BLOCKQUOTE>\n";
+      echo "<H2><FONT COLOR=\"$H2COLOR\">". translate("Error") .
+        "</H2></FONT>\n<BLOCKQUOTE>\n";
       echo $error . "</BLOCKQUOTE><BR>\n";
     }
 
     // Conflicting
     if ( ! empty ( $overlap ) ) {
-      echo "<B><FONT COLOR=\"$H2COLOR\">". etranslate("Scheduling Conflict: ");
+      echo "<B><FONT COLOR=\"$H2COLOR\">" .
+        translate("Scheduling Conflict") . ": ";
       $count_con++;
       echo "</B></FONT>";
 
@@ -327,7 +330,8 @@ function import_data($data) {
     } else {
 
     // No Conflict
-      echo "<B><FONT COLOR=\"$H2COLOR\">".etranslate("Event Imported:")."</B></FONT>\n";
+      echo "<B><FONT COLOR=\"$H2COLOR\">" .
+        translate("Event Imported") . ":</B></FONT>\n";
       $count_suc++;
       if ( $Entry[Duration] > 0 ) {
         $time = display_time ( $Entry[StartHour].$Entry[StartMinute]."00" ) .
