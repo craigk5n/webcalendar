@@ -179,7 +179,7 @@ if ( ! empty ( $user ) && $login != $user ) {
 // calendar.
 if ( empty ( $event_status ) ) {
   $sql = "SELECT cal_status FROM webcal_entry_user " .
-    "WHERE cal_status != 'D' ORDER BY cal_status";
+    "WHERE cal_status <> 'D' ORDER BY cal_status";
   $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) )
