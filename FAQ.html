@@ -10,6 +10,7 @@
 <LI><A HREF="#version">How do I get the latest development version of WebCalendar?</A>
 <LI><A HREF="#cvs">How do I get more info on CVS?</A>
 <LI><A HREF="#login">When I try to login, I get sent back to the login page with no error.</A>
+<LI><A HREF="#warnings">I get all sorts of "Undefined variable" messages.  How do I fix them?</A>
 <LI><A HREF="#windows">Does WebCalendar work under Windows?</A>
 <LI><A HREF="#php4">Does it work with PHP 4?</A>
 <LI><A HREF="#php3">Does it work with PHP 3?</A>
@@ -76,6 +77,13 @@
    Make sure that you built PHP with <TT>--enable-track-vars</TT> during the
    <TT>configure</TT> step.  Make sure your browser has cookies enabled.  Either
    of these can cause this problem.
+</BLOCKQUOTE>
+
+
+<A NAME="warnings">I get all sorts of "Undefined variable" messages.  How do I fix them?</A>
+<BLOCKQUOTE>
+Reconfigure PHP to not display warnings as errors.  (This is done in the
+php.ini configuration file.)
 </BLOCKQUOTE>
 
 <A NAME="windows">Does WebCalendar work under Windows?</A>
