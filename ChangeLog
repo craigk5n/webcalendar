@@ -1,4 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Updated install/index.php to use "\r\n" instead of "\n".  Added area
+   that displays relavant PHP settings.
  - Fixed problem with views_edit.php, select groups not returning menbers
  - Fixed bug 1160167: 12AM Events cause display problems in edit_entry.php
  - Fixed bug 1158769: Category lost when modifing event by Admin
