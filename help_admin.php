@@ -42,6 +42,10 @@ print_header('', '', '', true);
   <TD><?php etranslate("disable-participants-field-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Disable Repeating field")?>:</B></TD>
   <TD><?php etranslate("disable-repeating-field-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Display Site Extras in popup")?>:</B></TD>
+  <TD><?php etranslate("popup-includes-siteextras-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Allow HTML in Description")?>:</B></TD>
+  <TD><?php etranslate("allow-html-description-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Allow public access")?>:</B></TD>
   <TD><?php etranslate("allow-public-access-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Public access can view other users")?>:</B></TD>

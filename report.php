@@ -49,7 +49,7 @@ include_once 'includes/init.php';
 function event_to_text ( $id, $date, $time, $duration,
   $name, $description, $status,
   $pri, $access, $event_owner ) {
-  global $login, $user, $event_template, $report_id;
+  global $login, $user, $event_template, $report_id, $allow_html_description;
 
   $time_str = "";
   if ( $duration == ( 24 * 60 ) ) {
@@ -115,8 +115,14 @@ function event_to_text ( $id, $date, $time, $duration,
   else
     $status_str = translate ( "Unknown" );
 
-  $description_str = nl2br (
-    activate_urls ( htmlentities ( $description ) ) );
+  if ( ! empty ( $allow_html_description ) &&
+    $allow_html_description == 'Y' ) {
+    $str = str_replace ( '&', '&amp;', $description );
+    $description_str = str_replace ( '&amp;amp;', '&amp', $str );
+  } else {
+    $description_str = nl2br (
+      activate_urls ( htmlentities ( $description ) ) );
+  }
 
   $href_str = "view_entry.php?id=$id";
 

@@ -284,6 +284,9 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("popup-includes-siteextras-help")?>"><?php etranslate("Display Site Extras in popup")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_site_extras_in_popup" VALUE="Y" <?php if ( $s["site_extras_in_popup"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_site_extras_in_popup" VALUE="N" <?php if ( $s["site_extras_in_popup"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("allow-html-description-help")?>"><?php etranslate("Allow HTML in Description")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_allow_html_description" VALUE="Y" <?php if ( $s["allow_html_description"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_allow_html_description" VALUE="N" <?php if ( $s["allow_html_description"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("allow-view-other-help")?>"><?php etranslate("Allow viewing other user's calendars")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_allow_view_other" VALUE="Y" <?php if ( $s["allow_view_other"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_allow_view_other" VALUE="N" <?php if ( $s["allow_view_other"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
