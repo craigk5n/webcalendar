@@ -20,7 +20,7 @@
  *
  */
 include_once 'includes/init.php';
-print_header('','<link href="includes/tabs.css" rel="stylesheet" type="text/css">');
+print_header('','<link href="includes/tabs.css" rel="stylesheet" type="text/css" />');
 
 $tabs = array( "Palm Desktop", "vCalendar", "iCalendar" );
 if ( empty ( $tab ) ) $tab = 0;
@@ -43,14 +43,14 @@ function print_tabs ( $items, $sel=0 ) {
 
   // Start content area
   echo "  <div class=\"tabmain\">\n";
-  echo "    <div class=\"tabcontent\"><br>\n";
+  echo "    <div class=\"tabcontent\"><br />\n";
 }
 
 // Close our tab area
 function end_tabs() {
-  echo "    <br /></div>\n";
-  echo "  </div>\n";
-  echo "</div>\n";
+  echo "    <br /></div>\n"; /* end tabcontent */
+  echo "  </div>\n"; /* end tabmain */
+  echo "</div>\n"; /* end tabbox */
 }
 
 // Generate the selection list for calendar user selection.
@@ -113,8 +113,8 @@ if ( $tab == 0 ) {
 <input type="hidden" name="ImportType" value="PALMDESKTOP" />
 <table border="0">
 <tr><td><b><?php etranslate("Exclude private records")?>:</b></td>
-<td><input type="radio" name="exc_private" value="1" CHECKED="CHECKED"><?php etranslate("Yes")?>
-<input type="radio" name="exc_private" value="0"><?php etranslate("No")?>
+<td><input type="radio" name="exc_private" value="1" checked="checked" /><?php etranslate("Yes")?>
+<input type="radio" name="exc_private" value="0" /><?php etranslate("No")?>
 </td></tr>
 <?php print_user_list(); ?>
 <tr><td><b><?php etranslate("Datebook File")?>:</b></td>
@@ -154,9 +154,9 @@ if ( $tab == 0 ) {
 <tr><td><b><?php etranslate("iCal File")?>:</b></td>
   <td><input type="file" name="FileName" size="45" maxlength=50" /></td></tr>
 <tr><td><b><?php etranslate("Overwrite Prior Import")?>:</b></td>
-  <td><input type="radio" name="overwrite" value="Y" CHECKED="CHECKED" /> <?php etranslate("Yes");?>
+  <td><input type="radio" name="overwrite" value="Y" checked="checked" /> <?php etranslate("Yes");?>
   &nbsp;&nbsp;
-  <input type="radio" name="overwrite" value="N"/> <?php etranslate("No");?>
+  <input type="radio" name="overwrite" value="N" /> <?php etranslate("No");?>
    </td></tr>
 <?php print_user_list(); ?>
 <tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>" />
