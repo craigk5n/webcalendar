@@ -1,4 +1,5 @@
 Version 1.0RC1/CVS+dev (?? ??? 2004)
+  - Second pass at Bug Fix 1109141: Added empty and "none" testing of language pref
   - Changed encode/decode functions used in generating session cookies
     to use md5 of install_password rather than various server variables.
     (Hoping this may help with IE login problems...)
