@@ -287,7 +287,7 @@ if ( $is_admin ) {
   ?></select>
 </td></tr>
 <tr><td>
-	<label for="rpt_cat_id"><?php etranslate("Category")?>:<label></td><td>
+	<label for="rpt_cat_id"><?php etranslate("Category")?>:</label></td><td>
 	<select name="cat_id" id="rpt_cat_id">
   <option value=""><?php etranslate("None") ?></option>
   <?php
