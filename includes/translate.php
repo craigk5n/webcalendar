@@ -22,7 +22,11 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 }
 
 
-// If set to use browser settings.
+if ( empty ( $LANGUAGE ) )
+  $LANGUAGE = '';
+
+// If set to use browser settings, use the user's language preferences
+// from their browser.
 $lang = $LANGUAGE;
 if ( $LANGUAGE == "Browser-defined" || $LANGUAGE == "none" ) {
   $lang = get_browser_language ();
@@ -30,7 +34,7 @@ if ( $LANGUAGE == "Browser-defined" || $LANGUAGE == "none" ) {
     $lang = "";
 }
 
-if ( strlen ( $lang ) == 0 )
+if ( strlen ( $lang ) == 0 || $lang == 'none' )
   $lang = "English-US"; // Default
 
 $lang_file = "translations/" . $lang . ".txt";
