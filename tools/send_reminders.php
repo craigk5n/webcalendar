@@ -264,7 +264,7 @@ function send_reminder ( $id, $event_date ) {
     $body .= strtoupper ( $name ) . "\n\n";
     $body .= translate("Description") . ":\n";
     $body .= indent ( $description ) . "\n";
-    $body .= translate("Date") . ": " . date_to_str ( $row[1] ) . "\n";
+    $body .= translate("Date") . ": " . date_to_str ( $event_date ) . "\n";
     if ( $row[2] >= 0 )
       $body .= translate ("Time") . ": " . display_time ( $row[2] ) . "\n";
     if ( $row[5] > 0 )
