@@ -184,9 +184,8 @@ print<<EOF;
 		$v<br />
 		\$Id\$
 	</td></tr>
-	<tr><td>
-		Last updated:</td><td>
-		$now
+	<tr><td style="vertical-align:top;">
+		Last updated:</td><td>\$Date\$<br/>(by \$Author\$)</td><td>
 	</td></tr>
 </table>
 
