@@ -151,6 +151,8 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   $lang = '';
   if ( ! empty ( $LANGUAGE ) )
     $lang = languageToAbbrev ( $LANGUAGE );
+  if ( empty ( $lang ) )
+    $lang = 'en';
 
  // Start the header & Specify the charset
  // The charset is defined in the translation file.
