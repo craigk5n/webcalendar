@@ -3,23 +3,23 @@
  * $Id$
  *
  * Page Description:
- *	Display a month view with users side by side.
+ * Display a month view with users side by side.
  *
  * Input Parameters:
- *	id (*) - specify view id in webcal_view table
- *	date - specify the starting date of the view.
- *	  If not specified, current date will be used.
- *	friendly - if set to 1, then page does not include links or
- *	  trailer navigation.
- *	(*) required field
+ * id (*) - specify view id in webcal_view table
+ * date - specify the starting date of the view.
+ *   If not specified, current date will be used.
+ * friendly - if set to 1, then page does not include links or
+ *   trailer navigation.
+ * (*) required field
  *
  * Security:
- *	Must have "allow view others" enabled ($allow_view_other) in
- *	  System Settings unless the user is an admin user ($is_admin).
- *	If the view is not global, the user must be owner of the view.
- *	If the view is global, then and user_sees_only_his_groups is
- *	enabled, then we remove users not in this user's groups
- *	(except for nonuser calendars... which we allow regardless of group).
+ * Must have "allow view others" enabled ($allow_view_other) in
+ *   System Settings unless the user is an admin user ($is_admin).
+ * If the view is not global, the user must be owner of the view.
+ * If the view is global, then and user_sees_only_his_groups is
+ * enabled, then we remove users not in this user's groups
+ * (except for nonuser calendars... which we allow regardless of group).
  */
 include_once 'includes/init.php';
 
@@ -99,8 +99,9 @@ $all_users = false;
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $viewusers[] = $row[0];
-    if ( $row[0] == "__all__" )
+    if ( $row[0] == "__all__" ) {
       $all_users = true;
+    }
   }
   dbi_free_result ( $res );
 } else {
@@ -129,11 +130,17 @@ if ( $all_users ) {
     }
     $newlist = array ();
     for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
-      if ( ! empty ( $userlookup[$viewusers[$i]] ) )
+      if ( ! empty ( $userlookup[$viewusers[$i]] ) ) {
         $newlist[] = $viewusers[$i];
+      }
     }
     $viewusers = $newlist;
   }
+}
+if ( count ( $viewusers ) == 0 ) {
+  // This could happen if user_sees_only_his_groups  = Y and
+  // this user is not a member of any  group assigned to this view
+  $error = translate ( "No users for this view" );
 }
 
 if ( ! empty ( $error ) ) {
@@ -160,16 +167,17 @@ for ( $j = 0; $j < count ($viewusers); $j += $USERS_PER_TABLE ) {
 
   // Calculate width of columns in this table.
   $num_left = count ($viewusers) - $j;
-  if ($num_left > $USERS_PER_TABLE)
-	$num_left = $USERS_PER_TABLE;
+  if ($num_left > $USERS_PER_TABLE) {
+    $num_left = $USERS_PER_TABLE;
+  }
   if ($num_left > 0) {
-	if ($num_left < $USERS_PER_TABLE) {
-		$tdw = (int) (90 / $num_left);
-	} else {
-		$tdw = (int) (90 / $USERS_PER_TABLE);
-	}
+    if ($num_left < $USERS_PER_TABLE) {
+      $tdw = (int) (90 / $num_left);
+    } else {
+      $tdw = (int) (90 / $USERS_PER_TABLE);
+    }
   } else {
-	$tdw = 5;
+    $tdw = 5;
   }
 ?>
 <br /><br />
@@ -182,45 +190,48 @@ for ( $j = 0; $j < count ($viewusers); $j += $USERS_PER_TABLE ) {
   // $i starts at table start and goes until end of this table/row.
   for ( $i = $j, $k = 0;
     $i < count ($viewusers) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
-	$user = $viewusers[$i];
-	user_load_variables ($user, "temp");
-	echo "<th style=\"width:$tdw%;\">$tempfullname</th>\n";
+ $user = $viewusers[$i];
+ user_load_variables ($user, "temp");
+ echo "<th style=\"width:$tdw%;\">$tempfullname</th>\n";
   } //end for
   echo "</tr>\n";
 
   for ( $date = $monthstart; date ("Ymd", $date) <= date ("Ymd", $monthend);
     $date += (24 * 3600), $wday++ ) {
-	$wday = strftime ("%w", $date);
-	$weekday = weekday_short_name ($wday);
-	echo "<tr><th";
-	if ( date ("Ymd", $date) == date ("Ymd", $today) ) {
-		echo " class=\"today\">";
-	} else {
-		if ($wday == 0 || $wday == 6)
-			echo " class=\"weekend\">";
-		else
-			echo " class=\"row\">";
-	}
-	//non-breaking space below keeps event from wrapping prematurely
-	echo $weekday . "&nbsp;" .
-		round ( date ("d", $date) ) . "</th>\n";
+ $wday = strftime ("%w", $date);
+ $weekday = weekday_short_name ($wday);
+ echo "<tr><th";
+ if ( date ("Ymd", $date) == date ("Ymd", $today) ) {
+   echo " class=\"today\">";
+ } else {
+  if ($wday == 0 || $wday == 6)
+    echo " class=\"weekend\">";
+  } else {
+    echo " class=\"row\">";
+  }
+ }
+ //non-breaking space below keeps event from wrapping prematurely
+ echo $weekday . "&nbsp;" .
+  round ( date ("d", $date) ) . "</th>\n";
     for ( $i = $j, $k = 0;
       $i < count ($viewusers) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
-	$user = $viewusers[$i];
-	$events = $e_save[$i];
-	$repeated_events = $re_save[$i];
-	if ( date ("Ymd", $date) == date ("Ymd", $today) ) {
-		echo "<td class=\"today\"";
-	} else {
-		if ($wday == 0 || $wday == 6)
-			echo "<td class=\"weekend\"";
-		else
-			echo "<td";
-	}
-	echo " style=\"width:$tdw%;\">";
-	//echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
-      if ( empty ($add_link_in_views) || $add_link_in_views != "N" )
-	echo html_for_add_icon ( date ("Ymd", $date), "", "", $user );
+ $user = $viewusers[$i];
+ $events = $e_save[$i];
+ $repeated_events = $re_save[$i];
+ if ( date ("Ymd", $date) == date ("Ymd", $today) ) {
+  echo "<td class=\"today\"";
+ } else {
+  if ($wday == 0 || $wday == 6) {
+   echo "<td class=\"weekend\"";
+  } else {
+   echo "<td";
+  }
+ }
+ echo " style=\"width:$tdw%;\">";
+ //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
+      if ( empty ($add_link_in_views) || $add_link_in_views != "N" ) {
+        echo html_for_add_icon ( date ("Ymd", $date), "", "", $user );
+      }
       print_date_entries ( date ("Ymd", $date), $user, true );
       echo "</td>";
     } //end for
@@ -232,15 +243,17 @@ for ( $j = 0; $j < count ($viewusers); $j += $USERS_PER_TABLE ) {
 
 $user = ""; // reset
 
-if ( ! empty ( $eventinfo ) ) echo $eventinfo;
+if ( ! empty ( $eventinfo ) ) {
+  echo $eventinfo;
+}
 
 echo "<a title=\"" . 
-	translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_m.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
-	"target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
-	translate("Generate printer-friendly version") . "'\">[" . 
-	translate("Printer Friendly") . "]</a>\n";
+  translate("Generate printer-friendly version") . "\" class=\"printer\" " .
+  "href=\"view_m.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
+  "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
+  translate("Generate printer-friendly version") . "'\">[" . 
+  translate("Printer Friendly") . "]</a>\n";
 
-print_trailer ();
-?>
+print_trailer (); ?>
 </body>
 </html>
