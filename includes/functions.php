@@ -1021,7 +1021,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
 
     while ( $row = dbi_fetch_row ( $res ) ) {
 
-      if ($row[8] == 'R' || $row[8] == 'D') {
+      if ($row[9] == 'R' || $row[9] == 'D') {
         continue;  // don't show rejected/deleted ones
       }
       $item = array (
