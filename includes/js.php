@@ -82,6 +82,7 @@ function show ( evt, name ) {
   if ( IE4 ) {
     x += document.body.scrollLeft;
     y += document.body.scrollTop;
+  } else if ( NS4)  {
   } else {
     x += window.pageXOffset;
     y += window.pageYOffset;
