@@ -1,0 +1,23 @@
+Language file        No. missing translations
+Chinese-Big5.txt:    167
+Chinese-GB2312.txt:  167
+Czech.txt:           218
+Danish.txt:          167
+Dutch.txt:           198
+English-US.txt:      Complete
+French.txt:          4
+Galician.txt:        142
+German.txt:          6
+Hungarian.txt:       142
+Icelandic.txt:       201
+Italian.txt:         211
+Japanese.txt:        143
+Korean.txt:          241
+Norwegian.txt:       142
+Polish.txt:          201
+Portuguese.txt:      178
+Portuguese_BR.txt:   174
+Russian.txt:         201
+Spanish.txt:         211
+Swedish.txt:         142
+Turkish.txt:         209
