@@ -3300,18 +3300,18 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   $ev_padding = 100 - $ev_start - $ev_duration;
   // choose where to position the text (pos=0->before,pos=1->on,pos=2->after)
   if ($ev_duration > 20) {    $pos = 1; }
-  elseif ($ev_padding > 20) { $pos = 2; }
-  else                     { $pos = 0; }
-
-  echo "\n<!-- begin entry bar -->\n<table class=\"entrycont\" style=\"width:100%; border-width:0px;\" cellpadding=\"0\" cellspacing=\"0\">\n";
-  echo "<tr>\n";
-  echo "<td style=\"text-align:right; width:$ev_start%;\">";
-  if ( $pos > 0 ) {
-    echo "&nbsp;</td>\n";
-    echo "<td style=\"width:$ev_duration%;\">\n<table class=\"entrybar\" style=\"width:100%; border-width:0px; background-color:#000000;\" cellspacing=\"1\">\n<tr>\n<td style=\"text-align:center; background-color:#F5DEB3;\">";
-    if ( $pos > 1 ) {
-      echo "&nbsp;</td>\n</tr>\n</table></td>\n";
-      echo "<td style=\"text-align:left; width:$ev_padding%;\">";
+   elseif ($ev_padding > 20) { $pos = 2; }
+   else                     { $pos = 0; }
+ 
+  echo "\n<!-- begin entry bar -->\n<table class=\"entrycont\">\n";
+   echo "<tr>\n";
+   echo "<td style=\"text-align:right; width:$ev_start%;\">";
+   if ( $pos > 0 ) {
+     echo "&nbsp;</td>\n";
+    echo "<td style=\"width:$ev_duration%;\">\n<table class=\"entrybar\">\n<tr>\n<td class=\"entry\">";
+     if ( $pos > 1 ) {
+       echo "&nbsp;</td>\n</tr>\n</table></td>\n";
+       echo "<td style=\"text-align:left; width:$ev_padding%;\">";
     }
   };
 
@@ -3416,28 +3416,26 @@ function print_header_timebar($start_hour, $end_hour) {
   if ( ($end_hour - $start_hour) == 0 )
     $offset = 0;
   else
-    $offset = round(100/($end_hour - $start_hour)/2);
-    echo "\n<!-- begin timebar -->\n<table class=\"timebar\" style=\"width:100%; background-color:#FFFFFF; border:0px;\" cellspacing=\"0\" cellpadding=\"0\">\n<tr>\n<td style=\"width:$offset%;\">&nbsp;</td>\n";
-  for ($i = $start_hour+1; $i < $end_hour; $i++) {
-    $prev_offset = $offset;
-    $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
-    $width = $offset - $prev_offset;
-    echo "<td style=\"background-color:#FFFFFF; width:$width%; text-align:center; color:#C0C0C0; font-size:10px;\">$i</td>\n";
-  }
-  $width = 100 - $offset;
-  echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
-  echo "</tr>\n</table>\n<!-- end timebar -->\n";
-
-  // print yardstick
-  echo "\n<!-- begin yardstick -->\n<table class=\"yardstick\" style=\"width:100%; background-color:#C0C0C0; border-width:0px;\" cellspacing=\"1\" cellpadding=\"0\">\n<tr>\n";
-  for ($i = $start_hour, $offset = 0; $i < $end_hour; $i++) {
-    $prev_offset = $offset;
-    $offset = round(100/($end_hour - $start_hour)*($i - $start_hour));
-    $width = $offset - $prev_offset;
-    echo "<td style=\"width:$width%; background-color:#FFFFFF;\">&nbsp;</td>\n";
-  }
-  echo "</tr>\n</table>\n<!-- end yardstick -->\n";
-}
+    $offset = round(50/($end_hour - $start_hour));
+    echo "\n<!-- begin timebar -->\n<table class=\"timebar\">\n<tr>\n<td style=\"width:$offset%;\">&nbsp;</td>\n";
+   for ($i = $start_hour+1; $i < $end_hour; $i++) {
+     $prev_offset = $offset;
+     $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
+     $width = $offset - $prev_offset;
+    echo "<td style=\"width:$width%;\">$i</td>\n";
+   }
+   $width = 100 - $offset;
+   echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
+   echo "</tr>\n</table>\n<!-- end timebar -->\n";
+ 
+   // print yardstick
+  echo "\n<!-- begin yardstick -->\n<table class=\"yardstick\">\n<tr>\n";
+	$width = round(100/($end_hour - $start_hour));
+  for ($i = $start_hour; $i < $end_hour; $i++) {
+    echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
+   }
+   echo "</tr>\n</table>\n<!-- end yardstick -->\n";
+ }
 
 // Get a list of nonuser calendars and return info in an array.
 function get_nonuser_cals ($user = '') {
