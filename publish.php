@@ -223,6 +223,9 @@ function export_time($date, $duration, $time, $texport)
 
 function export_recurrence_ical($id, $date)
 {
+  global $days_per_month, $ldays_per_month;
+  $str_day = array( 'SU','MO','TU','WE','TH','FR','SA' );
+
   $sql = "SELECT cal_date FROM webcal_entry_repeats_not WHERE cal_id = '$id'";
 
   $res = dbi_query($sql);
@@ -253,7 +256,6 @@ function export_recurrence_ical($id, $date)
       $freq = $row[2];
       $day = $row[3];
       $time = $row[4];
-      $str_day = array( 'SU','MO','TU','WE','TH','FR','SA' );
       $byday = "";
 
       echo "RRULE:";
@@ -266,6 +268,7 @@ function export_recurrence_ical($id, $date)
         case 'weekly' :
           echo "FREQ=WEEKLY";
           break;
+        case 'monthlyByDayR':
         case 'monthlyByDay':
         case 'monthlyByDate' :
           echo "FREQ=MONTHLY";
@@ -292,24 +295,30 @@ function export_recurrence_ical($id, $date)
         $day = (int) substr($date,-2,2);
         echo ";BYMONTHDAY=$day";
       } elseif ($type == "monthlyByDay") {
-        echo ";BYDAY=";
         $year = (int) substr($date,0,-4);
         $month = (int) substr($date,-4,2);
         $day = (int) substr($date,-2,2);
         $stamp = mktime(0, 0, 0, $month, $day, $year);
-        $date_array = getdate($stamp);
-        echo $str_day[$date_array['wday']];
-        $next_stamp = $stamp + 7 * 24 * 60 * 60;
-        $next_date_array = getdate($next_stamp);
-        if ($date_array['mon'] != $next_date_array['mon'])
-          $pos = -1;
-        else {
-          $pos = (int) ($day / 7);
-          if (($day % 7) > 0) {
-            $pos++;
-          }
-        }
-        echo ";BYSETPOS=$pos";
+        $dow = date ( "w", $stamp );
+        $dow1 = date ( "w", mktime ( 3, 0, 0, $month, 1, $year ) );
+        $partWeek = ( 7 - $dow1 ) % 7;
+        $whichWeek = ceil ( ( $day - $partWeek ) / 7 );
+        if ( $partWeek && $dow >= $dow1 )
+          $whichWeek++;
+        printf ( ";BYDAY=%d%s", $whichWeek, $str_day[$dow] );
+      } elseif ($type == "monthlyByDayR") {
+        $year = (int) substr($date,0,-4);
+        $month = (int) substr($date,-4,2);
+        $day = (int) substr($date,-2,2);
+        $stamp = mktime(0, 0, 0, $month, $day, $year);
+        $dow = date ( "w", $stamp );
+        // get number of days in this month
+        $daysthismonth = ( $year % 4 == 0 ) ? $ldays_per_month[$month] :
+          $days_per_month[$month];
+        // how many weekdays like this one remain in the month?
+        // 0=last one, 1=one more after this one, etc.
+        $whichWeek = floor ( ( $daysthismonth - $day ) / 7 );
+        printf ( ";BYDAY=%d%s", -1 - $whichWeek, $str_day[$dow] );
       }
 
       if (!empty($end)) {
