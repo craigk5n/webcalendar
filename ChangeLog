@@ -1,4 +1,10 @@
 Version 0.9.47/CVS+dev (?? ??? 2004)
+  - Fixing export.php JS so '&amp;' only reads '&'
+  - Added 'unapproved' class & removed gradient code from styles.php for empty cells so they blend in with the background of the page
+  - Added 'unapproved' class for customizing listing of unapproved events in
+  list_unapproved.php
+  - Fixing strange nested form tags & adding labels for form fields in
+  import.php
   - Fixed Bug 824268: emails sent by edit_entry_handler.php in wrong time zone
   - Fixed Bug 1066440: End Time increased by timezone offset
   - Fixed Bug 1085337: Categories combo-box in month.php in assistant mode
