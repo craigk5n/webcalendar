@@ -195,6 +195,8 @@
     echo "<A CLASS=\"navlinks\" HREF=\"";
     if ( $views[$i]['cal_view_type'] == 'W' )
       echo "view_w.php";
+    elseif ( $views[$i]['cal_view_type'] == 'D' )
+      echo "view_d.php";
     elseif ( $views[$i]['cal_view_type'] == 'V' )
       echo "view_v.php";
     elseif ( $views[$i]['cal_view_type'] == 'T' )

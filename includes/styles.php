@@ -72,6 +72,12 @@
   color: #000000;
   text-decoration: none;
 }
+.dailymatrix {
+  cursor:pointer;cursor:hand;
+  font-family: <?php echo $FONTS ?>;
+  font-size: 12px;
+  text-decoration: none;
+}
 .entry {
   font-family: <?php echo $FONTS ?>;
   font-size: 12px;

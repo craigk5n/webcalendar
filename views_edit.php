@@ -46,6 +46,8 @@ if ( $newview ) {
   <TD><INPUT NAME="viewname" SIZE=20 VALUE="<?php echo htmlspecialchars ( $viewname );?>"></TD></TR>
 <TR><TD><B><?php etranslate("View Type")?>:</B></TD>
   <TD><SELECT NAME="viewtype">
+      <OPTION VALUE="D" <?php if ( $viewtype == "D" ) echo "SELECTED";?> >
+        <?php etranslate("Day"); ?>
       <OPTION VALUE="W" <?php if ( $viewtype == "W" ) echo "SELECTED";?> >
         <?php etranslate("Week (Users horizontal)"); ?>
       <OPTION VALUE="V" <?php if ( $viewtype == "V" ) echo "SELECTED";?> >
