@@ -164,6 +164,7 @@ if ( ! empty ( $error ) ) {
     ": $error</span><br />\n";
 }
 ?>
+<div align="middle" style="margin-top: 70px; margin-bottom: 50px;">
 <form name="login_form" action="login.php" method="post" onsubmit="return valid_form(this)">
 
 <?php
@@ -172,23 +173,28 @@ if ( ! empty ( $return_path ) )
     htmlentities ( $return_path ) . "\" />\n";
 ?>
 
-<table style="border-width:0px;">
-	<tr><td style="font-weight:bold;">
+
+<table class="standard" style="border: 1px solid <?php echo $TABLEBG;?>;" cellpadding="10">
+<tr><td rowspan="2">
+<img src="login.gif" alt="Login" />
+</td>
+<td style="font-weight:bold;" align="right">
 		<label for="login"><?php etranslate("Username")?>:</label></td><td>
 		<input name="login" id="login" size="10" value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" tabindex="1" />
 	</td></tr>
-	<tr><td style="font-weight:bold;">
+	<tr><td style="font-weight:bold;" align="right">
 		<label for="password"><?php etranslate("Password")?>:</label></td><td>
 		<input name="password" id="password" type="password" size="10" tabindex="2" />
 	</td></tr>
-	<tr><td colspan="2">
+	<tr><td colspan="3" style="font-size: 10px;">
 		<input type="checkbox" name="remember" id="remember" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked=\"checked\""; ?> /><label for="remember">&nbsp;<?php etranslate("Save login via cookies so I don't have to login next time")?></label>
 	</td></tr>
-	<tr><td colspan="2">
+	<tr><td colspan="4" align="middle">
 		<input type="submit" value="<?php etranslate("Login")?>" tabindex="3" />
 	</td></tr>
 </table>
 </form>
+</div>
 
 <br /><br />
 <?php if ( $public_access == "Y" ) { ?>

@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Added login icon to login page
   - Added system setting for making public access selected as a participant
     by default for new events.
   - Added patch 1006000: added time monthbar view
