@@ -10,15 +10,15 @@ if ( $groups_enabled == "Y" ) {
 print_header($INC);
 ?>
 
-<FORM ACTION="assistant_edit_handler.php" METHOD="POST" NAME="editentryform">
+<form action="assistant_edit_handler.php" method="POST" name="editentryform">
 <?php
   if ($user) echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />";
   if ( $is_nonuser_admin ) {
     nonuser_load_variables ( $user, "nonuser" );
-    echo "<h2><font color=\"$H2COLOR\">" . $nonuserfullname . " " . translate("Assistants")
-        ."<br />\n<b>-- " . translate("Admin mode") . " --</b></font></h2>\n";
+    echo "<h2 style=\"color:$H2COLOR;\">" . $nonuserfullname . " " . translate("Assistants")
+        ."<br />\n<b>-- " . translate("Admin mode") . " --</b></h2>\n";
   } else {
-    echo "<h2><font color=\"$H2COLOR\">" . translate("Your assistants") . "</font></h2>\n";
+    echo "<h2 style=\"color:$H2COLOR;\">" . translate("Your assistants") . "</h2>\n";
   }
 ?>
 
@@ -26,7 +26,7 @@ print_header($INC);
 <tr><td valign="top">
 <b><?php etranslate("Assistants"); ?>:</b></td>
 <td>
-<select name="users[]" size="10" MULTIPLE="MULTIPLE">
+<select name="users[]" size="10" multiple="MULTIPLE">
 <?php
   // get list of all users
   $users = get_my_users ();
@@ -45,9 +45,9 @@ print_header($INC);
     if ($u == '__public__' ) continue;
     echo "<option value=\"$u\" ";
     if ( ! empty ( $assistantuser[$u] ) ) {
-      echo "SELECTED=\"SELECTED\"";
+      echo "selected=\"selected\"";
     }
-    echo "> " . $users[$i]['cal_fullname'];
+    echo ">" . $users[$i]['cal_fullname'];
   }
 ?>
 </select>
@@ -62,9 +62,9 @@ echo "</td></tr>\n";
 <tr><td colspan="2">
 <br /><br />
 
-<center>
+<div style="text-align:center;">
 <input type="submit" name="action" value="<?php etranslate("Save"); ?>" />
-</center>
+</div>
 </td></tr>
 </table>
 

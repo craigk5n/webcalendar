@@ -39,7 +39,7 @@
     $d = mktime ( 3, 0, 0, $m, 1, $y );
     echo "<option value=\"" . date ( "Ymd", $d ) . "\"";
     if ( date ( "Ymd", $d ) == $thisdate )
-      echo " SELECTED=\"SELECTED\"";
+      echo " selected=\"selected\"";
     echo ">";
     echo date_to_str ( date ( "Ymd", $d ), $DATE_FORMAT_MY, false, true );
   }
@@ -48,7 +48,7 @@
 <input type="submit" value="<?php etranslate("Go")?>" />
 </font></td>
 </form>
-<form action="week.php" method="GET" name="SelectWeek">
+<form action="week.php" method="get" name="SelectWeek">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -85,7 +85,7 @@
     echo "<option value=\"" . date ( "Ymd", $twkstart ) . "\"";
     if ( date ( "Ymd", $twkstart ) <= $thisdate &&
       date ( "Ymd", $twkend ) >= $thisdate )
-      echo " SELECTED=\"SELECTED\"";
+      echo " selected=\"selected\"";
     echo ">";
     printf ( "%s - %s",
       date_to_str ( date ( "Ymd", $twkstart ), $DATE_FORMAT_MD, false, true ),
@@ -97,7 +97,7 @@
 <input type="submit" value="<?php etranslate("Go")?>" />
 </font></td>
 </form>
-<form action="year.php" method="GET" name="selectyear">
+<form action="year.php" method="get" name="selectyear">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -117,7 +117,7 @@
   for ( $i = $y - 4; $i < $y + 4; $i++ ) {
     echo "<option value=\"$i\"";
     if ( $i == $y )
-      echo " SELECTED=\"SELECTED\"";
+      echo " selected=\"selected\"";
     echo ">$i</option>\n";
   }
 ?>
@@ -206,8 +206,8 @@
       translate ("Assistants") . "</a>\n";
   }
   if ( $login != '__public__' ) {
-    echo " | <a class=\"navlinks\" href=\"#\" onclick=\"window.open ( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );\" " .
-      "onmouseover=\"window.status='" . translate("Help") . "'\">" .
+    echo " | <a class=\"navlinks\" href=\"#\" onclick=\"window.open ( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );\"" .
+      " onmouseover=\"window.status='" . translate("Help") . "'\">" .
       translate("Help") . "</a>";
   }
 ?>
@@ -250,7 +250,7 @@
 <?php } // if ( $login != "__public__" ) ?>
 
 <?php if ( ! empty ( $reports_enabled ) && $reports_enabled == 'Y' ) { ?>
-<b><?php etranslate("Reports")?>:</b>
+<b><?php etranslate("Reports")?>:&nbsp;</b>
 <?php
 $res = dbi_query ( "SELECT cal_report_name, cal_report_id " .
   "FROM webcal_report " .
@@ -285,13 +285,13 @@ if ( $login != "__public__" ) {
 
 <?php
   if ( strlen ( $login ) && $login != "__public__" ) {
-    echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>$fullname<br />\n";
+    echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":&nbsp;</span>$fullname<br />\n";
   }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
   if ( $has_boss || $admincals[0] ) {
     echo "<span style=\"font-weight:bold;\">";
     etranslate("Manage calendar of");
-    echo "</span>: ";
+    echo "</span>:&nbsp;";
     $grouplist = user_get_boss_list ($login);
     $grouplist = array_merge($admincals,$grouplist);
     $groups = "";

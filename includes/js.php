@@ -1,4 +1,4 @@
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 // The following code is used to support the small popups that
 // give the full description of an event when the user move the
@@ -124,6 +124,4 @@ function unhide ( name ) {
 }
 
 //-->
-
 </script>
-

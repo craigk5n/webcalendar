@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 print_header();
 ?>
 
-<form action="group_edit_handler.php" method="POST">
+<form action="group_edit_handler.php" method="post">
 
 <?php
 
@@ -34,17 +34,17 @@ if ( empty ( $id ) ) {
 
 if ( $newgroup ) {
   $v = array ();
-  echo "<h2><span style=\"color:$H2COLOR;\">" . translate("Add Group") . "</span></h2>\n";
+  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Add Group") . "</h2>\n";
   echo "<input type=\"hidden\" name=\"add\" value=\"1\" />\n";
 } else {
-  echo "<h2><span style=\"color: $H2COLOR;\">" . translate("Edit Group") . "</span></h2>\n";
+  echo "<h2 style=\"color: $H2COLOR;\">" . translate("Edit Group") . "</h2>\n";
   echo "<input name=\"id\" type=\"hidden\" value=\"$id\" />";
 }
 ?>
 
 <table border="0">
 <tr><td><b><?php etranslate("Group name")?>:</b></td>
-  <td><input name="groupname" size="20" value="<?php echo htmlspecialchars ( $groupname );?>"></td></tr>
+  <td><input name="groupname" size="20" value="<?php echo htmlspecialchars ( $groupname );?>" /></td></tr>
 <?php if ( ! $newgroup ) { ?>
 <tr><td valign="top">
 <b><?php etranslate("Updated"); ?>:</b></td>
@@ -56,7 +56,7 @@ if ( $newgroup ) {
 <tr><td valign="top">
 <b><?php etranslate("Users"); ?>:</b></td>
 <td>
-<select name="users[]" size="10" multiple>
+<select name="users[]" size="10" multiple="multiple">
 <?php
   // get list of all users
   $users = user_get_users ();
@@ -80,7 +80,7 @@ if ( $newgroup ) {
     $u = $users[$i]['cal_login'];
     echo "<option value=\"$u\" ";
     if ( ! empty ( $groupuser[$u] ) ) {
-      echo "SELECTED";
+      echo " selected=\"selected\"";
     }
     echo "> " . $users[$i]['cal_fullname'];
   }
@@ -88,13 +88,13 @@ if ( $newgroup ) {
 </select>
 </td></tr>
 <tr><td colspan="2">
-<br><br>
-<center>
+<br /><br />
+<div align="center">
 <input type="submit" name="action" value="<?php if ( $newgroup ) etranslate("Add"); else etranslate("Save"); ?>" />
 <?php if ( ! $newgroup ) { ?>
 <input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
 <?php } ?>
-</center>
+</div>
 </td></tr>
 </table>
 

@@ -306,7 +306,7 @@ function do_redirect ( $url ) {
   //echo "SERVER_SOFTWARE = $SERVER_SOFTWARE <br />"; exit;
   if ( substr ( $SERVER_SOFTWARE, 0, 5 ) == "Micro" ) {
     echo "<html><head><title>Redirect</title>" .
-      "<meta http-equiv=\"refresh\" content=\"0; url=$url\"></head><body>" .
+      "<meta http-equiv=\"refresh\" content=\"0; url=$url\" /></head><body>" .
       "Redirecting to ... <a href=\"" . $url . "\">here</a>.</body></html>.\n";
   } else {
     Header ( "Location: $url" );
@@ -680,7 +680,7 @@ function site_extras_for_popup ( $id )
     $extra_arg1 = $site_extras[$i][3];
     $extra_arg2 = $site_extras[$i][4];
     if ( $extras[$extra_name]['cal_name'] != "" ) {
-      $ret .= "<b>" .  translate ( $site_extras[$i][1] ) . ":</b> ";
+      $ret .= "<span style=\"font-weight:bold;\">" .  translate ( $site_extras[$i][1] ) . ":</span> ";
       if ( $extra_type == $EXTRA_DATE ) {
         if ( $extras[$extra_name]['cal_date'] > 0 )
           $ret .= date_to_str ( $extras[$extra_name]['cal_date'] );
@@ -728,7 +728,7 @@ function build_event_popup ( $divname, $user, $description, $time,
   global $login, $popup_fullnames, $popuptemp_fullname;
   $ret = "<div id=\"" . $divname .
     "\" style=\"position:absolute; z-index:20; visibility:hidden; top:0px; left:0px; width:300px;\">\n" .
-    "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"border:1px solid $GLOBALS[POPUP_FG];\">\n" .
+    "<table cellpadding=\"0\" cellspacing=\"0\" style=\"border:1px solid $GLOBALS[POPUP_FG];\">\n" .
     "<tr><td style=\"background-color:$GLOBALS[POPUP_BG]; color:$GLOBAL[POPUP_FG];\" class=\"popup\">";
 
   if ( empty ( $popup_fullnames ) )
@@ -739,12 +739,12 @@ function build_event_popup ( $divname, $user, $description, $time,
       user_load_variables ( $user, "popuptemp_" );
       $popup_fullnames[$user] = $popuptemp_fullname;
     }
-    $ret .= "<b>" . translate ("User") .
-      ":</b> $popup_fullnames[$user]<br />";
+    $ret .= "<span style=\"font-weight:bold;\">" . translate ("User") .
+      ":</span> $popup_fullnames[$user]<br />";
   }
   if ( strlen ( $time ) )
-    $ret .= "<b>" . translate ("Time") . ":</b> $time<br />";
-  $ret .= "<b>" . translate ("Description") . ":</b>\n";
+    $ret .= "<span style=\"font-weight:bold;\">" . translate ("Time") . ":</span> $time<br />";
+  $ret .= "<span style=\"font-weight:bold;\">" . translate ("Description") . ":</span>\n";
   if ( ! empty ( $GLOBALS['allow_html_description'] ) &&
     $GLOBALS['allow_html_description'] == 'Y' ) {
     $str = str_replace ( "&", "&amp;", $description );
@@ -785,18 +785,18 @@ function date_selection_html ( $prefix, $date ) {
     $num_years = $thisyear - date ( "Y" ) + 2;
   $ret .= "<select name=\"" . $prefix . "day\">";
   for ( $i = 1; $i <= 31; $i++ )
-    $ret .= "<option " . ( $i == $thisday ? "SELECTED=\"SELECTED\"" : "" ) . ">$i</option>";
+    $ret .= "<option" . ( $i == $thisday ? " selected=\"selected\"" : "" ) . ">$i</option>";
   $ret .= "</select>\n<select name=\"" . $prefix . "month\">";
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
     $ret .= "<option value=\"$i\"" .
-      ( $i == $thismonth ? "SELECTED=\"SELECTED\"" : "" ) . ">$m</option>";
+      ( $i == $thismonth ? " selected=\"selected\"" : "" ) . ">$m</option>";
   }
   $ret .= "</select>\n<select name=\"" . $prefix . "year\">";
   for ( $i = -1; $i < $num_years; $i++ ) {
     $y = date ( "Y" ) + $i;
     $ret .= "<option value=\"$y\"" .
-      ( $y == $thisyear ? "SELECTED=\"SELECTED\"" : "" ) . ">$y</option>";
+      ( $y == $thisyear ? " selected=\"selected\"" : "" ) . ">$y</option>";
   }
   $ret .= "</select>\n";
   $ret .= "<input type=\"button\" onclick=\"selectDate('" .
@@ -845,7 +845,7 @@ function print_entry ( $id, $date, $time, $duration,
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
-  if ( $pri == 3 ) echo "<b>";
+  if ( $pri == 3 ) echo "<span style=\"font-weight:bold;\">";
   if ( ! $hide_icons ) {
     $divname = "eventinfo-$id-$key";
     $key++;
@@ -854,7 +854,7 @@ function print_entry ( $id, $date, $time, $duration,
       echo "&user=" . $user;
     echo "\" onmouseover=\"window.status='" . translate("View this entry") .
       "'; show(event, '$divname'); return true;\" onmouseout=\"window.status=''; hide('$divname'); return true;\">";
-    echo "<img src=\"circle.gif\" width=\"5\" height=\"7\" border=\"0\" alt=\"view\" />";
+    echo "<img src=\"circle.gif\" width=\"5\" height=\"7\" style=\"border-width:0px;\" alt=\"view\" />";
   }
 
 
@@ -912,7 +912,7 @@ function print_entry ( $id, $date, $time, $duration,
     echo htmlspecialchars ( $name );
 
   echo "</a>";
-  if ( $pri == 3 ) echo "</b>";
+  if ( $pri == 3 ) echo "</span>";
   echo "</font><br />";
   if ( ! $hide_icons ) {
     if ( $login != $user && $access == 'R' && strlen ( $user ) )
@@ -1647,14 +1647,14 @@ function icon_text ( $id, $can_edit, $can_delete ) {
   global $readonly, $is_admin;
   $ret = "<a href=\"view_entry.php?id=$id\">" .
     "<img src=\"view.gif\" alt=\"" . translate("View this entry") .
-    "\" border=\"0\" " .
-    "width=\"10\" height=\"10\" />" .
+    "\" style=\"border-width:0px;\"" .
+    " width=\"10\" height=\"10\" />" .
     "</a>";
   if ( $can_edit && $readonly == "N" )
     $ret .= "<a href=\"edit_entry.php?id=$id\">" .
       "<img src=\"edit.gif\" alt=\"" . translate("Edit entry") .
-      "\" border=\"0\" " .
-      "width=\"10\" height=\"10\" />" .
+      "\" style=\"border-width:0px;\"" .
+      " width=\"10\" height=\"10\" />" .
       "</a>";
   if ( $can_delete && ( $readonly == "N" || $is_admin ) )
     $ret .= "<a href=\"del_entry.php?id=$id\" " .
@@ -1663,8 +1663,8 @@ function icon_text ( $id, $can_edit, $can_delete ) {
       "\\n\\n" . translate("This will delete this entry for all users.") .
       "');\">" .
       "<img src=\"delete.gif\" alt=\"" . translate("Delete entry") .
-      "\" border=\"0\" " .
-      "width=\"10\" height=\"10\" />" .
+      "\" style=\"border-width:0px;\"" .
+      " width=\"10\" height=\"10\" />" .
       "</a>";
   return $ret;
 }
@@ -1705,7 +1705,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
       print "user=$user&";
     print "date=$date\">" .
       "<img src=\"new.gif\" width=\"10\" height=\"10\" alt=\"" .
-      translate("New Entry") . "\" border=\"0\" align=\"right\" />" .
+      translate("New Entry") . "\" style=\"border-width:0px; text-align:right;\" />" .
       "</a>";
     $cnt++;
   }
@@ -2051,7 +2051,7 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
     ( $minute > 0 ? "&minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&defusers=$user&user=$user" ) .
     "\"><img src=\"new.gif\" width=\"10\" height=\"10\" alt=\"" .
-    translate("New Entry") . "\" border=\"0\" align=\"right\" />" .  "</a>";
+    translate("New Entry") . "\" style=\"border-width:0px; text-align:right;\" />" .  "</a>";
 }
 
 
@@ -2109,13 +2109,13 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
       "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
   }
   if ( $pri == 3 )
-    $hour_arr[$ind] .= "<b>";
+    $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     for ( $index = 0; $index < sizeof($layers); $index++ ) {
       if ( $layers[$index]['cal_layeruser'] == $event_owner ) {
-        $hour_arr[$ind] .= "<font color=\"" .
-          $layers[$index]['cal_color'] . "\">";
+        $hour_arr[$ind] .= "<span style=\"color:" .
+          $layers[$index]['cal_color'] . ";\">";
       }
     }
   }
@@ -2165,12 +2165,12 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= "(" . translate("Private") . ")";
   } else if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-    $hour_arr[$ind] .= "</font>";
+    $hour_arr[$ind] .= "</span>";
   } else {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
   }
 
-  if ( $pri == 3 ) $hour_arr[$ind] .= "</b>";
+  if ( $pri == 3 ) $hour_arr[$ind] .= "</span>";
     $hour_arr[$ind] .= "</a>";
   //if ( $DISPLAY_ICONS == "Y" ) {
   //  $hour_arr[$ind] .= icon_text ( $id, true, true );
@@ -2261,14 +2261,14 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
       translate("View this entry") .
       "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
   }
-  if ( $pri == 3 ) $hour_arr[$ind] .= "<b>";
+  if ( $pri == 3 ) $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">";
 
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     for ( $index = 0; $index < sizeof($layers); $index++) {
       if ( $layers[$index]['cal_layeruser'] == $event_owner) {
-        $hour_arr[$ind] .= "<font color=\"" .
-          $layers[$index]['cal_color'] . "\">";
+        $hour_arr[$ind] .= "<span style=\"color:" .
+          $layers[$index]['cal_color'] . ";\">";
       }
     }
   }
@@ -2312,19 +2312,19 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-    $hour_arr[$ind] .= "</font>";
+    $hour_arr[$ind] .= "</span>";
   }
 
 
   else
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-  if ( $pri == 3 ) $hour_arr[$ind] .= "</b>";
+  if ( $pri == 3 ) $hour_arr[$ind] .= "</span>";
 
   if (!($hide_icons)) {
     $hour_arr[$ind] .= "</a>";
   } else if ( $GLOBALS["DISPLAY_DESC_PRINT_DAY"] == "Y" ) {
     $hour_arr[$ind] .= "<br />";
-    $hour_arr[$ind] .= "<b>Description:</b> ";
+    $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">Description:</span> ";
     $hour_arr[$ind] .= htmlspecialchars ( $description );
   }
 
@@ -2475,7 +2475,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     }
   }
   if ( ! empty ( $hour_arr[9999] ) ) {
-    echo "<tr><td height=\"40\" bgcolor=\"$TODAYCELLBG\">&nbsp;</td><td valign=\"top\" height=\"40\" bgcolor=\"$TODAYCELLBG\">$hour_arr[9999]</td></tr>\n";
+    echo "<tr><td style=\"height:40px; background-color:$TODAYCELLBG;\">&nbsp;</td><td valign=\"top\" style=\"height:40px; background-color:$TODAYCELLBG;\">$hour_arr[9999]</td></tr>\n";
   }
   $rowspan = 0;
   //echo "first_slot = $first_slot <br /> last_slot = $last_slot <br /> interval = $interval <br />";
@@ -2483,14 +2483,13 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     $time_h = (int) ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
     $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-    echo "<tr><th valign=\"top\" height=\"40\" width=\"14%\" bgcolor=\"$THBG\" class=\"tableheader\">" .
-      "<font color=\"$THFG\">" .
-      $time . "</font></th>\n";
+    echo "<tr><th valign=\"top\" style=\"height:40px; width:14%; background-color:$THBG; color:$THFG;\" class=\"tableheader\">" .
+      $time . "</th>\n";
     if ( $rowspan > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
       if ( strlen ( $hour_arr[$i] ) ) {
-        echo "<td valign=\"top\" height=\"40\" bgcolor=\"$TODAYCELLBG\">";
+        echo "<td valign=\"top\" style=\"height:40px; background-color:$TODAYCELLBG;\">";
         if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
         echo "$hour_arr[$i]</td>";
@@ -2499,19 +2498,19 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     } else {
       $color = $all_day ? $TODAYCELLBG : $CELLBG;
       if ( empty ( $hour_arr[$i] ) ) {
-        echo "<td height=\"40\" bgcolor=\"$color\">";
+        echo "<td style=\"height:40px; background-color:$color;\">";
         if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
         echo "&nbsp;</td></tr>\n";
       } else {
         $rowspan = $rowspan_arr[$i];
         if ( $rowspan > 1 ) {
-          echo "<td valign=\"top\" bgcolor=\"$TODAYCELLBG\" rowspan=\"$rowspan\">";
+          echo "<td valign=\"top\" style=\"background-color:$TODAYCELLBG;\" rowspan=\"$rowspan\">";
           if ( $can_add && ! $hide_icons )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</td></tr>\n";
         } else {
-          echo "<td valign=\"top\" height=\"40\" bgcolor=\"$TODAYCELLBG\">";
+          echo "<td valign=\"top\" style=\"height:40px; background-color:$TODAYCELLBG;\">";
           if ( $can_add && ! $hide_icons )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</td></tr>\n";
@@ -2768,9 +2767,9 @@ for ( $i = 0; $i < $len1 || $i < $len2 || $i < $len3; $i++ ) {
 }
 /* debugging code...
 for ( $i = 0; $i < count ( $offsets ); $i++ ) {
-  echo "offset $i: $offsets[$i] <br>";
+  echo "offset $i: $offsets[$i] <br />";
 }
-echo "REMOTE_ADDR = $REMOTE_ADDR <br>\nSERVER_PORT = $SERVER_PORT <br>\nSERVER_NAME = $SERVER_NAME <br>";
+echo "REMOTE_ADDR = $REMOTE_ADDR <br />\nSERVER_PORT = $SERVER_PORT <br />\nSERVER_NAME = $SERVER_NAME <br />";
 
 */
 
@@ -2817,14 +2816,14 @@ function decode_string ( $instr ) {
     $ch1 = substr ( $instr, $i, 1 );
     $ch2 = substr ( $instr, $i + 1, 1 );
     $val = hextoint ( $ch1 ) * 16 + hextoint ( $ch2 );
-    //echo "decoding \"" . $ch1 . $ch2 . "\" = $val <br>\n";
+    //echo "decoding \"" . $ch1 . $ch2 . "\" = $val <br />\n";
     $j = ( $i / 2 ) % count ( $offsets );
-    //echo "Using offsets $j = " . $offsets[$j] . "<br>";
+    //echo "Using offsets $j = " . $offsets[$j] . "<br />";
     $newval = $val - $offsets[$j] + 256;
     $newval %= 256;
-    //echo " neval \"$newval\" <br>\n";
+    //echo " neval \"$newval\" <br />\n";
     $dec_ch = chr ( $newval );
-    //echo " which is \"$dec_ch\" <br>\n";
+    //echo " which is \"$dec_ch\" <br />\n";
     $orig .= $dec_ch;
   }
   return $orig;
@@ -2840,12 +2839,12 @@ function encode_string ( $instr ) {
     //echo "<br />";
     $ch1 = substr ( $instr, $i, 1 );
     $val = ord ( $ch1 );
-    //echo "val = $val for \"$ch1\" <br>\n";
+    //echo "val = $val for \"$ch1\" <br />\n";
     $j = $i % count ( $offsets );
-    //echo "Using offsets $j = $offsets[$j]<br>";
+    //echo "Using offsets $j = $offsets[$j]<br />";
     $newval = $val + $offsets[$j];
     $newval %= 256;
-    //echo "newval = $newval for \"$ch1\" <br>\n";
+    //echo "newval = $newval for \"$ch1\" <br />\n";
     $ret .= bin2hex ( chr ( $newval ) );
   }
   return $ret;
@@ -2920,20 +2919,20 @@ function print_category_menu ( $form, $date = '', $cat_id = '', $friendly = '' )
   global $categories, $category_owners, $user, $login;
 
   if ( $friendly == '' ) {
-    echo "<form action=\"{$form}.php\" method=\"GET\" name=\"SelectCategory\">\n";
+    echo "<form action=\"{$form}.php\" method=\"get\" name=\"selectcategory\">\n";
     if ( ! empty($date) ) echo "<input type=\"hidden\" name=\"date\" value=\"$date\" />\n";
     if ( ! empty ( $user ) && $user != $login )
       echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
     echo translate ('Category').": <select name=\"cat_id\" onchange=\"document.SelectCategory.submit()\">\n";
     echo "<option value=\"\"";
-    if ( $cat_id == '' ) echo "SELECTED=\"SELECTED\"";
+    if ( $cat_id == '' ) echo " selected=\"selected\"";
     echo ">" . translate("All") . "</option>\n";
     if ( is_array ( $categories ) ) {
       foreach ( $categories as $K => $V ){
         if ( empty ( $user ) || $user == $login ||
           empty ( $category_owners[$K] ) ) {
           echo "<option value=\"$K\"";
-          if ( $cat_id == $K ) echo "SELECTED=\"SELECTED\"";
+          if ( $cat_id == $K ) echo " selected=\"selected\"";
           echo ">$V</option>\n";
         }
       }
@@ -3170,17 +3169,17 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   else                     { $pos = 0; }
 
 
-  echo "<table width=\"100%\" bgcolor=\"black\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n";
+  echo "<table style=\"width:100%; background-color:#000000; border-width:0px;\" cellpadding=\"0\" cellspacing=\"0\">\n";
   echo "<tr>";
-  echo "<td align=\"right\" width=\"$ev_start%\" bgcolor=\"white\">";
+  echo "<td style=\"text-align:right; width:$ev_start%; background-color:#FFFFFF;\">";
   if ( $pos > 0 ) {
     echo "&nbsp;</td>";
-    echo "<td width=\"$ev_duration%\">
-    <table width=\"100%\" border=\"0\" bgcolor=\"black\" cellspacing=\"1\">
-    <tr><td align=\"middle\" bgcolor=\"#F5DEB3\">";
+    echo "<td style=\"width:$ev_duration%;\">
+    <table style=\"width:100%; border-width:0px; background-color:#000000;\" cellspacing=\"1\">
+    <tr><td style=\"text-align:center; background-color:#F5DEB3;\">";
     if ( $pos > 1 ) {
       echo "&nbsp;</td></tr></table></td>";
-      echo "<td align=\"left\" width=\"$ev_padding%\" bgcolor=\"white\">";
+      echo "<td style=\"text-align:left; width:$ev_padding%; background-color:#FFFFFF;\">";
     }
   };
 
@@ -3264,13 +3263,11 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   echo "</td>";
   if ( $pos < 2 ) {
     if ( $pos < 1 ) {
-      echo "<td width=\"$ev_duration%\"><table width=\"100%\"
-      border=\"0\" cellpadding=\"0\" cellspacing=\"1\"
-      bgcolor=\"black\"><tr><td align=\"middle\"
-      bgcolor=\"#F5DEB3\">&nbsp;</td>";
+      echo "<td width=\"$ev_duration%\"><table style=\"width:100%; border-width:0px; background-color:#000000;\" cellpadding=\"0\" cellspacing=\"1\">
+      <tr><td style=\"text-align:center; background-color:#F5DEB3;\">&nbsp;</td>";
     }
     echo "</tr></table></td>";
-    echo "<td align=\"left\" width=\"$ev_padding%\" bgcolor=\"white\">&nbsp;</td>";
+    echo "<td style=\"text-align:left; width:$ev_padding%; background-color:#FFFFFF;\">&nbsp;</td>";
   }
   echo "</tr></table>";
   if ( ! $hide_icons ) {
@@ -3299,27 +3296,26 @@ function print_header_timebar($start_hour, $end_hour) {
     $offset = 0;
   else
     $offset = round(100/($end_hour - $start_hour)/2);
-  echo "<table width=\"100%\" bgcolor=\"white\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
-        <tr><td bgcolor=\"white\" width=\"$offset%\">&nbsp;</td>\n";
+  echo "<table style=\"width:100%; background-color:#FFFFFF; border-width:0px;\" cellspacing=\"0\" cellpadding=\"0\">
+        <tr><td style=\"background-color:#FFFFFF; width:$offset%;\">&nbsp;</td>\n";
   for ($i = $start_hour+1; $i < $end_hour; $i++) {
     $prev_offset = $offset;
     $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
     $width = $offset - $prev_offset;
-    echo "<td bgcolor=\"white\" width=\"$width%\"
-    align=\"middle\"><font color=\"#C0C0C0\" size=\"-2\">$i</font></td>\n";
+    echo "<td style=\"background-color:#FFFFFF; width:$width%; text-align:center; color:#C0C0C0;\"><font size=\"-2\">$i</font></td>\n";
   }
   $width = 100 - $offset;
-  echo "<td width=\"$width%\">&nbsp;</td>\n";
+  echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
   echo "</tr></table>\n";
 
   // print yardstick
-  echo "<table width=\"100%\" bgcolor=\"#C0C0C0\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\">
+  echo "<table style=\"width:100%; background-color:#C0C0C0; border-width:0px;\" cellspacing=\"1\" cellpadding=\"0\">
         <tr>\n";
   for ($i = $start_hour, $offset = 0; $i < $end_hour; $i++) {
     $prev_offset = $offset;
     $offset = round(100/($end_hour - $start_hour)*(i - $start_hour));
     $width = $offset - $prev_offset;
-    echo "<td width=\"$width%\" bgcolor=\"white\">&nbsp;</td>\n";
+    echo "<td style=\"width:$width%; background-color:#FFFFFF;\">&nbsp;</td>\n";
   }
   echo "</tr></table>\n";
 }

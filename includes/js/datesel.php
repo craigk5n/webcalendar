@@ -2,7 +2,7 @@
 global $form, $fmonth, $fday, $fyear;
 ?>
 
-<script language="JavaScript">
+<script type="text/javascript">
 function sendDate ( date ) {
   year = date.substring ( 0, 4 );
   month = date.substring ( 4, 6 );

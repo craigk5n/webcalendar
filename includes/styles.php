@@ -21,26 +21,26 @@
   font-size: 12px;
   width: 80px;
   height: 80px;
-  background-color: <?php echo ( $WEEKENDBG == "" ? "#E0E0E0" : $WEEKENDBG ); ?> ;
+  background-color: <?php echo ( $WEEKENDBG == "" ? "#E0E0E0" : $WEEKENDBG );?>;
 }
 .tablecellweekenddemo {
   font-family: <?php echo $FONTS ?>;
   font-size: 10px;
   width: 30px;
   height: 30px;
-  background-color: <?php echo ( $WEEKENDBG == "" ? "#E0E0E0" : $WEEKENDBG ); ?> ;
+  background-color: <?php echo ( $WEEKENDBG == "" ? "#E0E0E0" : $WEEKENDBG );?>;
 }
 .tableheader {
   font-family: <?php echo $FONTS ?>;
   font-size: 14px;
-  color: <?php echo ( $THFG == "" ? "#FFFFFF" : $THFG ); ?> ;
-  background-color: <?php echo ( $THBG == "" ? "#000000" : $THBG ); ?> ;
+  color: <?php echo ( $THFG == "" ? "#FFFFFF" : $THFG );?>;
+  background-color: <?php echo ( $THBG == "" ? "#000000" : $THBG );?>;
 }
 .tableheadertoday {
   font-family: <?php echo $FONTS ?>;
   font-size: 14px;
-  color: <?php echo ( $TABLECELLFG == "" ? "#000000" : $TABLECELLFG ); ?> ;
-  background-color: <?php echo ( $TODAYCELLBG == "" ? "#C0C0C0" : $TODAYCELLBG ); ?> ;
+  color: <?php echo ( $TABLECELLFG == "" ? "#000000" : $TABLECELLFG ); ?>;
+  background-color: <?php echo ( $TODAYCELLBG == "" ? "#C0C0C0" : $TODAYCELLBG ); ?>;
 }
 .dayofmonth {
   font-family: <?php echo $FONTS ?>;
@@ -48,18 +48,6 @@
   color: #000000;
   text-decoration: none;
   background-color: #E7E7E7;
-}
-.weeknumber {
-  font-family: <?php echo $FONTS ?>;
-  font-size: 10px;
-  color: #B04040;
-  text-decoration: none;
-}
-.monthlink {
-  font-family: <?php echo $FONTS ?>;
-  font-size: 14px;
-  color: #B04040;
-  text-decoration: none;
 }
 .dayofmonthyearview {
   font-family: <?php echo $FONTS ?>;
@@ -72,10 +60,10 @@
   color: #000000;
   text-decoration: none;
 }
-.dailymatrix {
-  cursor:pointer;cursor:hand;
+.weeknumber {
   font-family: <?php echo $FONTS ?>;
-  font-size: 12px;
+  font-size: 10px;
+  color: #B04040;
   text-decoration: none;
 }
 .entry {
@@ -90,16 +78,31 @@
   color: #800000;
   text-decoration: none;
 }
+.layerentry {
+  font-family: <?php echo $FONTS ?>;
+  color: #006060;
+  text-decoration: none;
+}
+.monthlink {
+  font-family: <?php echo $FONTS ?>;
+  font-size: 14px;
+  color: #B04040;
+  text-decoration: none;
+}
 .navlinks {
   font-family: <?php echo $FONTS ?>;
   font-size: 14px;
-  color: <?php echo ( $TEXTCOLOR == "" ? "#000000" : $TEXTCOLOR ); ?> ;
+  color: <?php echo ( $TEXTCOLOR == "" ? "#000000" : $TEXTCOLOR ); ?>;
   text-decoration: none;
 }
 a {
   font-family: <?php echo $FONTS ?>;
-  color: <?php echo ( $TEXTCOLOR == "" ? "#000000" : $TEXTCOLOR ); ?> ;
+  color: <?php echo ( $TEXTCOLOR == "" ? "#000000" : $TEXTCOLOR ); ?>;
   text-decoration: none;
+}
+a:hover {
+  font-family: <?php echo $FONTS ?>;
+  color: #0000FF;
 }
 .aboutinfo {
   font-family: <?php echo $FONTS ?>;
@@ -109,12 +112,7 @@ a {
 .popup {
   font-family: <?php echo $FONTS ?>;
   font-size: 12px;
-  color: <?php echo ( $POPUP_FG == "" ? "#000000" : $POPUP_FG ); ?> ;
-  text-decoration: none;
-}
-.layerentry {
-  font-family: <?php echo $FONTS ?>;
-  color: #006060;
+  color: <?php echo ( $POPUP_FG == "" ? "#000000" : $POPUP_FG ); ?>;
   text-decoration: none;
 }
 .tooltip {
@@ -124,7 +122,7 @@ a {
 .defaulttext {
   font-family: <?php echo $FONTS ?>;
   font-size: 12px;
-  color: <?php echo ( $TEXTCOLOR == "" ? "#000000" : $TEXTCOLOR ); ?> ;
+  color: <?php echo ( $TEXTCOLOR == "" ? "#000000" : $TEXTCOLOR ); ?>;
 }
 h2 {
   font-family: <?php echo $FONTS ?>;
@@ -162,12 +160,8 @@ textarea {
   font-family: <?php echo $FONTS ?>;
   font-size: 12px;
 }
-a:hover {
-  font-family: <?php echo $FONTS ?>;
-  color: #0000FF;
-}
 .dailymatrix {
-  cursor:pointer;cursor:hand;
+  cursor:pointer;
   font-family: <?php echo $FONTS ?>;
   font-size: 12px;
   text-decoration: none;

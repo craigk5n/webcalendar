@@ -1,4 +1,4 @@
-<script language="JavaScript">
+<script type="text/javascript">
 function selectUsers () {
   url = "usersel.php?form=editviewform&listid=3&users=";
   // add currently selected users

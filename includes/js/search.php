@@ -1,4 +1,4 @@
-<script language="JavaScript">
+<script type="text/javascript">
 function selectUsers () {
   // find id of user selection object
   var listid = 0;

@@ -36,13 +36,13 @@ $prevdate = date ( "Ym", $prev ) . "01";
 <?php
 echo "<tr>";
 if ( $WEEK_START == 0 ) echo "<td><font size=\"-1\">" .
-  weekday_short_name ( 0 ) . "</td>";
+  weekday_short_name ( 0 ) . "</font></td>";
 for ( $i = 1; $i < 7; $i++ ) {
   echo "<td><font size=\"-1\">" .
     weekday_short_name ( $i ) . "</font></td>";
 }
 if ( $WEEK_START == 1 ) echo "<td><font size=\"-1\">" .
-  weekday_short_name ( 0 ) . "</td>";
+  weekday_short_name ( 0 ) . "</font></td>";
 echo "</tr>\n";
 if ( $WEEK_START == "1" )
   $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
