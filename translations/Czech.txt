@@ -3,7 +3,7 @@
 # There cannot be a ":" in the English text.
 # Translated by: Hanu¹ Adler <had@penguin.cz>
 # Last update: 31 July 2000
-# Translation last updated on 02-17-2004
+# Translation last updated on 03-10-2004
 
 
 ###############################################
@@ -79,17 +79,25 @@ Language: Jazyk
 # Fonts:
 #
 # << MISSING >>
+# custom-script-help:
+# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
+#
+#
+# << MISSING >>
+# Custom script/stylesheet:
+Yes: Ano
+No: Ne
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
 #
 # << MISSING >>
 # Custom header:
-Yes: Ano
-No: Ne
-#
-# << MISSING >>
-# Edit:
 #
 # << MISSING >>
 # custom-trailer-help:
@@ -1327,6 +1335,15 @@ Add New User: Pøidat nového u¾ivatele
 #
 # << MISSING >>
 # vCal File:
+#
+# << MISSING >>
+# This form will import iCalendar (.ics) events:
+#
+# << MISSING >>
+# iCal File:
+#
+# << MISSING >>
+# Overwrite Prior Import:
 
 
 ###############################################
@@ -1491,6 +1508,15 @@ New Entry: Nový záznam
 #
 #
 # << MISSING >>
+# Import Results:
+#
+# << MISSING >>
+# Events successfully imported:
+#
+# << MISSING >>
+# Events from prior import marked as deleted:
+#
+# << MISSING >>
 # Conflicting events:
 #
 # << MISSING >>
@@ -1641,8 +1667,44 @@ Current User: Souèasný u¾ivatel
 
 
 ###############################################
+# Page: adminhome.php
+#
+Account: Úèet
+#
+# << MISSING >>
+# NonUser Calendars:
+#
+# << MISSING >>
+# Delete Events:
+#
+# << MISSING >>
+# Public Preferences:
+#
+# << MISSING >>
+# Unapproved Public Events:
+#
+# << MISSING >>
+# Administrative Tools:
+
+
+###############################################
 # Page: purge.php
 #
+#
+# << MISSING >>
+# Purging events for:
+#
+# << MISSING >>
+# Finished:
+#
+# << MISSING >>
+# Delete all events before:
+#
+# << MISSING >>
+# Check box to delete <b>ALL</b> events for a user:
+#
+# << MISSING >>
+# Are you sure you want to delete events for:
 
 
 ###############################################
@@ -1684,6 +1746,12 @@ Current User: Souèasný u¾ivatel
 #
 # << MISSING >>
 # Microsoft Outlook 2002:
+#
+# << MISSING >>
+# iCalendar:
+#
+# << MISSING >>
+# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
@@ -1724,6 +1792,9 @@ Your suggested time of: Your suggested time of
 #
 #
 # << MISSING >>
+# Edit Custom Script/Stylesheet:
+#
+# << MISSING >>
 # Edit Custom Header:
 #
 # << MISSING >>
@@ -1741,10 +1812,6 @@ Add New Entry: Pøidat nový záznam
 #
 # << MISSING >>
 # Manage Views:
-#
-# << MISSING >>
-# Edit Layers:
-Account: Úèet
 #
 # << MISSING >>
 # Manage calendar of:
@@ -1795,12 +1862,12 @@ Account: Úèet
 
 
 ###############################################
-# Page: includes/init.php
+# Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: includes/dbtable.php
+# Page: includes/init.php
 #
 
 

@@ -3,7 +3,7 @@
 # There cannot be a ":" in the English text.
 # Author: Joonyup Jeon <goodwill@wowbook.com>
 # Last updated: 07 June 2000
-# Translation last updated on 02-17-2004
+# Translation last updated on 03-10-2004
 
 
 ###############################################
@@ -79,17 +79,25 @@ Language: 언어
 # Fonts:
 #
 # << MISSING >>
+# custom-script-help:
+# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
+#
+#
+# << MISSING >>
+# Custom script/stylesheet:
+Yes: 예
+No: 아니오
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
 #
 # << MISSING >>
 # Custom header:
-Yes: 예
-No: 아니오
-#
-# << MISSING >>
-# Edit:
 #
 # << MISSING >>
 # custom-trailer-help:
@@ -1377,6 +1385,15 @@ Add New User: 새 사용자 추가
 #
 # << MISSING >>
 # vCal File:
+#
+# << MISSING >>
+# This form will import iCalendar (.ics) events:
+#
+# << MISSING >>
+# iCal File:
+#
+# << MISSING >>
+# Overwrite Prior Import:
 
 
 ###############################################
@@ -1541,6 +1558,15 @@ New Entry: 새 항목
 #
 #
 # << MISSING >>
+# Import Results:
+#
+# << MISSING >>
+# Events successfully imported:
+#
+# << MISSING >>
+# Events from prior import marked as deleted:
+#
+# << MISSING >>
 # Conflicting events:
 #
 # << MISSING >>
@@ -1693,8 +1719,44 @@ Current User: 현 사용자
 
 
 ###############################################
+# Page: adminhome.php
+#
+Account: 계정
+#
+# << MISSING >>
+# NonUser Calendars:
+#
+# << MISSING >>
+# Delete Events:
+#
+# << MISSING >>
+# Public Preferences:
+#
+# << MISSING >>
+# Unapproved Public Events:
+#
+# << MISSING >>
+# Administrative Tools:
+
+
+###############################################
 # Page: purge.php
 #
+#
+# << MISSING >>
+# Purging events for:
+#
+# << MISSING >>
+# Finished:
+#
+# << MISSING >>
+# Delete all events before:
+#
+# << MISSING >>
+# Check box to delete <b>ALL</b> events for a user:
+#
+# << MISSING >>
+# Are you sure you want to delete events for:
 
 
 ###############################################
@@ -1736,6 +1798,12 @@ Current User: 현 사용자
 #
 # << MISSING >>
 # Microsoft Outlook 2002:
+#
+# << MISSING >>
+# iCalendar:
+#
+# << MISSING >>
+# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
@@ -1776,6 +1844,9 @@ Your suggested time of: 제안한 시간
 #
 #
 # << MISSING >>
+# Edit Custom Script/Stylesheet:
+#
+# << MISSING >>
 # Edit Custom Header:
 #
 # << MISSING >>
@@ -1797,10 +1868,6 @@ Add New Entry: 새 항목 추가
 #
 # << MISSING >>
 # Manage Views:
-#
-# << MISSING >>
-# Edit Layers:
-Account: 계정
 #
 # << MISSING >>
 # Manage calendar of:
@@ -1851,12 +1918,12 @@ Account: 계정
 
 
 ###############################################
-# Page: includes/init.php
+# Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: includes/dbtable.php
+# Page: includes/init.php
 #
 
 

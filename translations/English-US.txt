@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 02-17-2004
+# Translation last updated on 03-10-2004
 
 
 ###############################################
@@ -55,11 +55,13 @@ Language: Language
 Your browser default language is: Your browser default language is
 fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
 Fonts: Fonts
-custom-header-help: Allows a custom HTML snippet to be included in the top of every page.
-Custom header: Custom header
+custom-script-help: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
+Custom script/stylesheet: Custom script/stylesheet
 Yes: Yes
 No: No
 Edit: Edit
+custom-header-help: Allows a custom HTML snippet to be included in the top of every page.
+Custom header: Custom header
 custom-trailer-help: Allows a custom HTML snippet to be included at the end of every page.
 Custom trailer: Custom trailer
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
@@ -663,6 +665,9 @@ Exclude private records: Exclude private records
 Datebook File: Datebook File
 This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
 vCal File: vCal File
+This form will import iCalendar (.ics) events: This form will import iCalendar (.ics) events
+iCal File: iCal File
+Overwrite Prior Import: Overwrite Prior Import
 
 
 ###############################################
@@ -769,6 +774,9 @@ New Entry: New Entry
 ###############################################
 # Page: import_handler.php
 #
+Import Results: Import Results
+Events successfully imported: Events successfully imported
+Events from prior import marked as deleted: Events from prior import marked as deleted
 Conflicting events: Conflicting events
 Errors: Errors
 Back to My Calendar: Back to My Calendar
@@ -839,8 +847,24 @@ Yours assistants: Yours assistants
 
 
 ###############################################
+# Page: adminhome.php
+#
+Account: Account
+NonUser Calendars: NonUser Calendars
+Delete Events: Delete Events
+Public Preferences: Public Preferences
+Unapproved Public Events: Unapproved Public Events
+Administrative Tools: Administrative Tools
+
+
+###############################################
 # Page: purge.php
 #
+Purging events for: Purging events for
+Finished: Finished
+Delete all events before: Delete all events before
+Check box to delete <b>ALL</b> events for a user: Check box to delete <b>ALL</b> events for a user
+Are you sure you want to delete events for: Are you sure you want to delete events for
 
 
 ###############################################
@@ -858,6 +882,8 @@ The following formats have been tested: The following formats have been tested
 Palm Desktop 4: Palm Desktop 4
 Lotus Organizer 6: Lotus Organizer 6
 Microsoft Outlook 2002: Microsoft Outlook 2002
+iCalendar: iCalendar
+Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.
 
 
 ###############################################
@@ -888,6 +914,7 @@ Set Category: Set Category
 ###############################################
 # Page: edit_template.php
 #
+Edit Custom Script/Stylesheet: Edit Custom Script/Stylesheet
 Edit Custom Header: Edit Custom Header
 Edit Custom Trailer: Edit Custom Trailer
 
@@ -901,8 +928,6 @@ Logout: Logout
 Another User's Calendar: Another User's Calendar
 Add New Entry: Add New Entry
 Manage Views: Manage Views
-Edit Layers: Edit Layers
-Account: Account
 Manage calendar of: Manage calendar of
 
 
@@ -945,12 +970,12 @@ Send Reminder: Send Reminder
 
 
 ###############################################
-# Page: includes/init.php
+# Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: includes/dbtable.php
+# Page: includes/init.php
 #
 
 

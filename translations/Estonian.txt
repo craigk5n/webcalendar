@@ -17,7 +17,7 @@
 #
 #
 #
-# Translation last updated on 02-17-2004
+# Translation last updated on 03-10-2004
 
 
 ###############################################
@@ -53,17 +53,25 @@ fonts-help: Määrab ära missuguseid kirjatüüpe kasutada (näiteks "Arial, Helvetic
 Fonts: Kirjatüübid
 #
 # << MISSING >>
+# custom-script-help:
+# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
+#
+#
+# << MISSING >>
+# Custom script/stylesheet:
+Yes: jah
+No: ei
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
 #
 # << MISSING >>
 # Custom header:
-Yes: jah
-No: ei
-#
-# << MISSING >>
-# Edit:
 #
 # << MISSING >>
 # custom-trailer-help:
@@ -781,6 +789,15 @@ Cancel: Loobu
 #
 # << MISSING >>
 # vCal File:
+#
+# << MISSING >>
+# This form will import iCalendar (.ics) events:
+#
+# << MISSING >>
+# iCal File:
+#
+# << MISSING >>
+# Overwrite Prior Import:
 
 
 ###############################################
@@ -921,6 +938,15 @@ New Entry: uus kanne
 ###############################################
 # Page: import_handler.php
 #
+#
+# << MISSING >>
+# Import Results:
+#
+# << MISSING >>
+# Events successfully imported:
+#
+# << MISSING >>
+# Events from prior import marked as deleted:
 #
 # << MISSING >>
 # Conflicting events:
@@ -1069,8 +1095,44 @@ Yours assistants: Sinu abiline
 
 
 ###############################################
+# Page: adminhome.php
+#
+Account: Konto
+#
+# << MISSING >>
+# NonUser Calendars:
+#
+# << MISSING >>
+# Delete Events:
+#
+# << MISSING >>
+# Public Preferences:
+#
+# << MISSING >>
+# Unapproved Public Events:
+#
+# << MISSING >>
+# Administrative Tools:
+
+
+###############################################
 # Page: purge.php
 #
+#
+# << MISSING >>
+# Purging events for:
+#
+# << MISSING >>
+# Finished:
+#
+# << MISSING >>
+# Delete all events before:
+#
+# << MISSING >>
+# Check box to delete <b>ALL</b> events for a user:
+#
+# << MISSING >>
+# Are you sure you want to delete events for:
 
 
 ###############################################
@@ -1112,6 +1174,12 @@ Yours assistants: Sinu abiline
 #
 # << MISSING >>
 # Microsoft Outlook 2002:
+#
+# << MISSING >>
+# iCalendar:
+#
+# << MISSING >>
+# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
@@ -1146,6 +1214,9 @@ Set Category: Määra kategooria
 #
 #
 # << MISSING >>
+# Edit Custom Script/Stylesheet:
+#
+# << MISSING >>
 # Edit Custom Header:
 #
 # << MISSING >>
@@ -1161,8 +1232,6 @@ Logout: Väljume
 Another User's Calendar: Teise kasutaja kalender
 Add New Entry: Lisa uus kanne
 Manage Views: Tegele vaadetega
-Edit Layers: Muuda kihti
-Account: Konto
 Manage calendar of: Tegele kalendriga
 
 
@@ -1205,12 +1274,12 @@ Send Reminder: Saada meeldetuletus
 
 
 ###############################################
-# Page: includes/init.php
+# Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: includes/dbtable.php
+# Page: includes/init.php
 #
 
 

@@ -4,7 +4,7 @@
 # Translated by: liaobin@jite.net shenyi@jite.net
 # Last update: 2003-8-5
 # $Id$
-# Translation last updated on 02-17-2004
+# Translation last updated on 03-10-2004
 
 
 ###############################################
@@ -48,17 +48,25 @@ fonts-help: 字体帮助
 Fonts: 字体
 #
 # << MISSING >>
+# custom-script-help:
+# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
+#
+#
+# << MISSING >>
+# Custom script/stylesheet:
+Yes: 是
+No: 否
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
 #
 # << MISSING >>
 # Custom header:
-Yes: 是
-No: 否
-#
-# << MISSING >>
-# Edit:
 #
 # << MISSING >>
 # custom-trailer-help:
@@ -932,6 +940,15 @@ Datebook File: Datebook 文件
 # << MISSING >>
 # This form will import vCalendar (.vcs) 1.0 events:
 vCal File: vCal 文件
+#
+# << MISSING >>
+# This form will import iCalendar (.ics) events:
+#
+# << MISSING >>
+# iCal File:
+#
+# << MISSING >>
+# Overwrite Prior Import:
 
 
 ###############################################
@@ -1050,6 +1067,15 @@ New Entry: 新事件
 ###############################################
 # Page: import_handler.php
 #
+#
+# << MISSING >>
+# Import Results:
+#
+# << MISSING >>
+# Events successfully imported:
+#
+# << MISSING >>
+# Events from prior import marked as deleted:
 Conflicting events: 冲突事件
 Errors: 错误
 Back to My Calendar: 返回我的日历
@@ -1124,8 +1150,44 @@ Yours assistants: 您的助理
 
 
 ###############################################
+# Page: adminhome.php
+#
+Account: 个人资料
+#
+# << MISSING >>
+# NonUser Calendars:
+#
+# << MISSING >>
+# Delete Events:
+#
+# << MISSING >>
+# Public Preferences:
+#
+# << MISSING >>
+# Unapproved Public Events:
+#
+# << MISSING >>
+# Administrative Tools:
+
+
+###############################################
 # Page: purge.php
 #
+#
+# << MISSING >>
+# Purging events for:
+#
+# << MISSING >>
+# Finished:
+#
+# << MISSING >>
+# Delete all events before:
+#
+# << MISSING >>
+# Check box to delete <b>ALL</b> events for a user:
+#
+# << MISSING >>
+# Are you sure you want to delete events for:
 
 
 ###############################################
@@ -1165,6 +1227,12 @@ Palm Desktop: Palm 桌面
 #
 # << MISSING >>
 # Microsoft Outlook 2002:
+#
+# << MISSING >>
+# iCalendar:
+#
+# << MISSING >>
+# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
@@ -1197,6 +1265,9 @@ Set Category: 设置分类
 #
 #
 # << MISSING >>
+# Edit Custom Script/Stylesheet:
+#
+# << MISSING >>
 # Edit Custom Header:
 #
 # << MISSING >>
@@ -1212,8 +1283,6 @@ Logout: 注销
 Another User's Calendar: 其他用户的日历
 Add New Entry: 新增事件
 Manage Views: 管理视图
-Edit Layers: 编辑层
-Account: 个人资料
 #
 # << MISSING >>
 # Manage calendar of:
@@ -1258,12 +1327,12 @@ Send Reminder: 发送邮件通知
 
 
 ###############################################
-# Page: includes/init.php
+# Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: includes/dbtable.php
+# Page: includes/init.php
 #
 
 

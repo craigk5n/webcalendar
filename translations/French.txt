@@ -9,7 +9,7 @@
 # Update by : erational <http://www.erational.org> 
 # Title is what will appear in the title bar for pages
 #
-# Translation last updated on 02-17-2004
+# Translation last updated on 03-10-2004
 
 
 ###############################################
@@ -45,17 +45,25 @@ fonts-help: Permet de définir une liste de polices pour l'affichage (par exemple
 Fonts: Polices
 #
 # << MISSING >>
+# custom-script-help:
+# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
+#
+#
+# << MISSING >>
+# Custom script/stylesheet:
+Yes: Oui
+No: Non
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
 #
 # << MISSING >>
 # Custom header:
-Yes: Oui
-No: Non
-#
-# << MISSING >>
-# Edit:
 #
 # << MISSING >>
 # custom-trailer-help:
@@ -709,6 +717,15 @@ Exclude private records: exclure les enregistrements privés
 Datebook File: Fichier agenda
 This form will import vCalendar (.vcs) 1.0 events: Ce formulaire importe vCalendar (.vcs)
 vCal File: Fichier vCal
+#
+# << MISSING >>
+# This form will import iCalendar (.ics) events:
+#
+# << MISSING >>
+# iCal File:
+#
+# << MISSING >>
+# Overwrite Prior Import:
 
 
 ###############################################
@@ -815,6 +832,15 @@ New Entry: Nouvel événement
 ###############################################
 # Page: import_handler.php
 #
+#
+# << MISSING >>
+# Import Results:
+#
+# << MISSING >>
+# Events successfully imported:
+#
+# << MISSING >>
+# Events from prior import marked as deleted:
 Conflicting events: Evénements en conflits
 Errors: Erreurs
 Back to My Calendar: Retour à mon Agenda
@@ -885,8 +911,44 @@ Yours assistants: Vos assistants(es)
 
 
 ###############################################
+# Page: adminhome.php
+#
+Account: Compte
+#
+# << MISSING >>
+# NonUser Calendars:
+#
+# << MISSING >>
+# Delete Events:
+#
+# << MISSING >>
+# Public Preferences:
+#
+# << MISSING >>
+# Unapproved Public Events:
+#
+# << MISSING >>
+# Administrative Tools:
+
+
+###############################################
 # Page: purge.php
 #
+#
+# << MISSING >>
+# Purging events for:
+#
+# << MISSING >>
+# Finished:
+#
+# << MISSING >>
+# Delete all events before:
+#
+# << MISSING >>
+# Check box to delete <b>ALL</b> events for a user:
+#
+# << MISSING >>
+# Are you sure you want to delete events for:
 
 
 ###############################################
@@ -904,6 +966,12 @@ The following formats have been tested: Les formats suivants ont été testés
 Palm Desktop 4: Palm Desktop 4
 Lotus Organizer 6: Lotus Organizer 6
 Microsoft Outlook 2002: Microsoft Outlook 2002
+#
+# << MISSING >>
+# iCalendar:
+#
+# << MISSING >>
+# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
@@ -936,6 +1004,9 @@ Set Category: Chosir la catégorie
 #
 #
 # << MISSING >>
+# Edit Custom Script/Stylesheet:
+#
+# << MISSING >>
 # Edit Custom Header:
 #
 # << MISSING >>
@@ -951,8 +1022,6 @@ Logout: Déconnexion
 Another User's Calendar: Agenda d'un autre utilisateur
 Add New Entry: Ajouter un événement
 Manage Views: Gérer les vues
-Edit Layers: Modifier les calques
-Account: Compte
 Manage calendar of: Gérer le calendrier de
 
 
@@ -995,12 +1064,12 @@ Send Reminder: Envoyer un rappel
 
 
 ###############################################
-# Page: includes/init.php
+# Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: includes/dbtable.php
+# Page: includes/init.php
 #
 
 

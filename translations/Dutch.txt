@@ -5,7 +5,7 @@
 # Last update: 27 July 2003
 # check out the tools directory which contains two perl scripts:
 # check_translation.pl will tell you if you have successfully translated all re
-# Translation last updated on 02-17-2004
+# Translation last updated on 03-10-2004
 
 # No charset specified (not needed for iso-8859-1)
 # "charset" is used in a meta tag, do not translate "charset" here.
@@ -39,17 +39,25 @@ fonts-help: Specificeert een lijst van systeem-fonts die gebruikt kunnen worden,
 Fonts: fonts
 #
 # << MISSING >>
+# custom-script-help:
+# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
+#
+#
+# << MISSING >>
+# Custom script/stylesheet:
+Yes: ja
+No: nee
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
 #
 # << MISSING >>
 # Custom header:
-Yes: ja
-No: nee
-#
-# << MISSING >>
-# Edit:
 #
 # << MISSING >>
 # custom-trailer-help:
@@ -689,6 +697,15 @@ Exclude private records: Negeer privégegevens
 Datebook File: selecteer Palm Datebook-bestand
 This form will import vCalendar (.vcs) 1.0 events: Hier kunt u afspraken uit vCalendar (.vcs) 1.0 in uw agenda importeren
 vCal File: selecteer vCal-bestand
+#
+# << MISSING >>
+# This form will import iCalendar (.ics) events:
+#
+# << MISSING >>
+# iCal File:
+#
+# << MISSING >>
+# Overwrite Prior Import:
 
 
 ###############################################
@@ -795,6 +812,15 @@ New Entry: nieuwe afspraak
 ###############################################
 # Page: import_handler.php
 #
+#
+# << MISSING >>
+# Import Results:
+#
+# << MISSING >>
+# Events successfully imported:
+#
+# << MISSING >>
+# Events from prior import marked as deleted:
 Conflicting events: conflicterende afspraken
 Errors: fouten
 Back to My Calendar: EIGEN AGENDA
@@ -865,8 +891,44 @@ Yours assistants: uw agenda-assistenten
 
 
 ###############################################
+# Page: adminhome.php
+#
+Account: account
+#
+# << MISSING >>
+# NonUser Calendars:
+#
+# << MISSING >>
+# Delete Events:
+#
+# << MISSING >>
+# Public Preferences:
+#
+# << MISSING >>
+# Unapproved Public Events:
+#
+# << MISSING >>
+# Administrative Tools:
+
+
+###############################################
 # Page: purge.php
 #
+#
+# << MISSING >>
+# Purging events for:
+#
+# << MISSING >>
+# Finished:
+#
+# << MISSING >>
+# Delete all events before:
+#
+# << MISSING >>
+# Check box to delete <b>ALL</b> events for a user:
+#
+# << MISSING >>
+# Are you sure you want to delete events for:
 
 
 ###############################################
@@ -884,6 +946,12 @@ The following formats have been tested: De volgende bestandsformaten zijn getest
 Palm Desktop 4: Palm Desktop 4
 Lotus Organizer 6: Lotus Organiser 6
 Microsoft Outlook 2002: Microsoft Outlook 2002
+#
+# << MISSING >>
+# iCalendar:
+#
+# << MISSING >>
+# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
@@ -916,6 +984,9 @@ Set Category: bepaal categorie
 #
 #
 # << MISSING >>
+# Edit Custom Script/Stylesheet:
+#
+# << MISSING >>
 # Edit Custom Header:
 #
 # << MISSING >>
@@ -931,8 +1002,6 @@ Logout: afmelden
 Another User's Calendar: agenda andere gebruiker
 Add New Entry: afspraak toevoegen
 Manage Views: overzichten instellen
-Edit Layers: lagen wijzigen
-Account: account
 Manage calendar of: beheer de agenda van
 
 
@@ -975,16 +1044,16 @@ Send Reminder: herinnering sturen
 
 
 ###############################################
+# Page: includes/dbtable.php
+#
+
+
+###############################################
 # Page: includes/init.php
 #
 #
 # << MISSING >>
 # charset:
-
-
-###############################################
-# Page: includes/dbtable.php
-#
 
 
 ###############################################

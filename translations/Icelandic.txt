@@ -4,7 +4,7 @@
 # Translated by:
 #	Kristofer Arnar Einarsson kristofer@kristofer.com
 # Last update: 18 August 2000
-# Translation last updated on 02-17-2004
+# Translation last updated on 03-10-2004
 
 # No charset specified (not needed for iso-8859-1)
 # "charset" is used in a meta tag, do not translate "charset" here.
@@ -74,17 +74,25 @@ Language: Tungumál
 # Fonts:
 #
 # << MISSING >>
+# custom-script-help:
+# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
+#
+#
+# << MISSING >>
+# Custom script/stylesheet:
+Yes: Já
+No: Nei
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
 #
 # << MISSING >>
 # Custom header:
-Yes: Já
-No: Nei
-#
-# << MISSING >>
-# Edit:
 #
 # << MISSING >>
 # custom-trailer-help:
@@ -1288,6 +1296,15 @@ Add New User: Bæta nýjum notanda við
 #
 # << MISSING >>
 # vCal File:
+#
+# << MISSING >>
+# This form will import iCalendar (.ics) events:
+#
+# << MISSING >>
+# iCal File:
+#
+# << MISSING >>
+# Overwrite Prior Import:
 
 
 ###############################################
@@ -1452,6 +1469,15 @@ New Entry: Nýtt atriði
 #
 #
 # << MISSING >>
+# Import Results:
+#
+# << MISSING >>
+# Events successfully imported:
+#
+# << MISSING >>
+# Events from prior import marked as deleted:
+#
+# << MISSING >>
 # Conflicting events:
 #
 # << MISSING >>
@@ -1602,8 +1628,44 @@ Current User: Núverandi notandi
 
 
 ###############################################
+# Page: adminhome.php
+#
+Account: Reikningur
+#
+# << MISSING >>
+# NonUser Calendars:
+#
+# << MISSING >>
+# Delete Events:
+#
+# << MISSING >>
+# Public Preferences:
+#
+# << MISSING >>
+# Unapproved Public Events:
+#
+# << MISSING >>
+# Administrative Tools:
+
+
+###############################################
 # Page: purge.php
 #
+#
+# << MISSING >>
+# Purging events for:
+#
+# << MISSING >>
+# Finished:
+#
+# << MISSING >>
+# Delete all events before:
+#
+# << MISSING >>
+# Check box to delete <b>ALL</b> events for a user:
+#
+# << MISSING >>
+# Are you sure you want to delete events for:
 
 
 ###############################################
@@ -1645,6 +1707,12 @@ Current User: Núverandi notandi
 #
 # << MISSING >>
 # Microsoft Outlook 2002:
+#
+# << MISSING >>
+# iCalendar:
+#
+# << MISSING >>
+# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
@@ -1685,6 +1753,9 @@ Your suggested time of: Uppgefinn tími
 #
 #
 # << MISSING >>
+# Edit Custom Script/Stylesheet:
+#
+# << MISSING >>
 # Edit Custom Header:
 #
 # << MISSING >>
@@ -1702,10 +1773,6 @@ Add New Entry: Bæta við
 #
 # << MISSING >>
 # Manage Views:
-#
-# << MISSING >>
-# Edit Layers:
-Account: Reikningur
 #
 # << MISSING >>
 # Manage calendar of:
@@ -1756,16 +1823,16 @@ Account: Reikningur
 
 
 ###############################################
+# Page: includes/dbtable.php
+#
+
+
+###############################################
 # Page: includes/init.php
 #
 #
 # << MISSING >>
 # charset:
-
-
-###############################################
-# Page: includes/dbtable.php
-#
 
 
 ###############################################
