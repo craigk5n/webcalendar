@@ -69,9 +69,18 @@ $ldap_user_attr = array(
 //
 // A groupe name (complete DN) to find user with admin's rights
 $ldap_admin_group_name = "cn=webcal_admin,ou=groupes,o=compagny.com";
+// What type of group do we want (posixgroup, groupofnames, groupofuniquenames)
+$ldap_admin_group_type = "groupofnames";
 // The LDAP attribute used to store member of a group
 $ldap_admin_group_attr = "member";
 
+
+//
+// Misc Cleanup
+//
+// Convert group name to lower case to prevent problems
+$ldap_admin_group_attr = strtolower($ldap_admin_group_attr);
+$ldap_admin_group_type = strtolower($ldap_admin_group_type);
 
 
 // Function to search the dn of a given user
@@ -355,7 +364,7 @@ function user_is_admin($values,$Admins) {
 function get_admins() {
   global $error, $ldap_server, $ldap_port;
   global $ldap_admin_dn,$ldap_admin_pwd;
-  global $ldap_admin_group_name,$ldap_admin_group_attr;
+  global $ldap_admin_group_name,$ldap_admin_group_attr,$ldap_admin_group_type;
   global $cached_admins;
 
   if ( ! empty ( $cached_admins ) )
@@ -381,7 +390,11 @@ function get_admins() {
         $sr = @ldap_search ( $ds, $ldap_admin_group_name, $search_filter );
 	$admins = ldap_get_entries( $ds, $sr );
         for( $x = 0; $x <= $admins[0][$ldap_admin_group_attr]["count"]; $x ++ ) {
-          $cached_admins[] = stripdn($admins[0][$ldap_admin_group_attr][$x]);
+	  if (strtolower($ldap_admin_group_type) != 'posixgroup') {
+            $cached_admins[] = stripdn($admins[0][$ldap_admin_group_attr][$x]);
+          } else {
+            $cached_admins[] = $admins[0][$ldap_admin_group_attr][$x];
+          }
 	}
         @ldap_free_result($sr);
       }
@@ -404,6 +417,5 @@ function stripdn($dn){
   list ($trash,$user) = split ("=", $uid);
   return($user);
 }
-
 
 ?>
