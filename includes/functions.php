@@ -798,23 +798,23 @@ function date_selection_html ( $prefix, $date ) {
     $num_years = $thisyear - date ( "Y" ) + 2;
   $ret .= "<select name=\"" . $prefix . "day\">";
   for ( $i = 1; $i <= 31; $i++ )
-    $ret .= "<option" . ( $i == $thisday ? " selected=\"selected\"" : "" ) . ">$i</option>";
+    $ret .= "<option" . ( $i == $thisday ? " selected=\"selected\"" : "" ) . ">$i</option>\n";
   $ret .= "</select>\n<select name=\"" . $prefix . "month\">";
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
     $ret .= "<option value=\"$i\"" .
-      ( $i == $thismonth ? " selected=\"selected\"" : "" ) . ">$m</option>";
+      ( $i == $thismonth ? " selected=\"selected\"" : "" ) . ">$m</option>\n";
   }
   $ret .= "</select>\n<select name=\"" . $prefix . "year\">";
   for ( $i = -10; $i < $num_years; $i++ ) {
     $y = $thisyear + $i;
     $ret .= "<option value=\"$y\"" .
-      ( $y == $thisyear ? " selected=\"selected\"" : "" ) . ">$y</option>";
+      ( $y == $thisyear ? " selected=\"selected\"" : "" ) . ">$y</option>\n";
   }
   $ret .= "</select>\n";
   $ret .= "<input type=\"button\" onclick=\"selectDate('" .
     $prefix . "day','" . $prefix . "month','" . $prefix . "year',$date)\" value=\"" .
-    translate("Select") . "...\" />";
+    translate("Select") . "...\" />\n";
 
   return $ret;
 }
