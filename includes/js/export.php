@@ -11,12 +11,12 @@ function selectDate ( day, month, year ) {
     date += "0";
   date += curmonth;
   date += "01";
-  url = "datesel.php?form=exportform&amp;day=" + day +
-    "&amp;month=" + month + "&amp;year=" + year + "&amp;date=" + date;
+  url = "datesel.php?form=exportform&day=" + day +
+    "&month=" + month + "&year=" + year + "&date=" + date;
   var colorWindow = window.open(url,"DateSelection","width=300,height=200,resizable=yes,scrollbars=yes");
 }
 
-<?php //see the showTab function in includes/js.php for common code shared by all pages
+<?php //see the showTab function in includes/js/visible.php for common code shared by all pages
 	//using the tabbed GUI.
 ?>var tabs = new Array();
 tabs[0] = "import";
