@@ -1,4 +1,6 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Fixed bug 81255: when site extras are displayed in popups, reminders
+    were not handled properly.  (Yes and No were printed in the wrong place).
   - Fixed bug 872036: Allow '-' in username
   - Fixed bug 892081: Don't allow users to use work hours with end hour
     before start hour (in admin and pref).
