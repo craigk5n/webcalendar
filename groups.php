@@ -11,7 +11,7 @@ if ( $groups_enabled == "N" ) {
 print_header();
 ?>
 
-<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Groups")?></font></h2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Groups")?></h2>
 
 <ul>
 <?php

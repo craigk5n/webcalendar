@@ -42,19 +42,19 @@ if ( $newgroup ) {
 }
 ?>
 
-<table border="0">
-<tr><td><b><?php etranslate("Group name")?>:</b></td>
+<table style="border-width:0px;">
+<tr><td style="font-weight:bold;"><?php etranslate("Group name")?>:</td>
   <td><input name="groupname" size="20" value="<?php echo htmlspecialchars ( $groupname );?>" /></td></tr>
 <?php if ( ! $newgroup ) { ?>
-<tr><td valign="top">
-<b><?php etranslate("Updated"); ?>:</b></td>
-<td> <?php echo date_to_str ( $groupupdated ); ?></td></tr>
-<tr><td valign="top">
-<b><?php etranslate("Created by"); ?>:</b></td>
-<td> <?php echo $groupowner; ?></td></tr>
+<tr><td style="vertical-align:top; font-weight:bold;">
+<?php etranslate("Updated"); ?>:</td>
+<td><?php echo date_to_str ( $groupupdated ); ?></td></tr>
+<tr><td style="vertical-align:top; font-weight:bold;">
+<?php etranslate("Created by"); ?>:</td>
+<td><?php echo $groupowner; ?></td></tr>
 <?php } ?>
-<tr><td valign="top">
-<b><?php etranslate("Users"); ?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;">
+<?php etranslate("Users"); ?>:</td>
 <td>
 <select name="users[]" size="10" multiple="multiple">
 <?php
@@ -82,7 +82,7 @@ if ( $newgroup ) {
     if ( ! empty ( $groupuser[$u] ) ) {
       echo " selected=\"selected\"";
     }
-    echo "> " . $users[$i]['cal_fullname'];
+    echo ">" . $users[$i]['cal_fullname'] . "</option>";
   }
 ?>
 </select>
