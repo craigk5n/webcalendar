@@ -71,7 +71,7 @@ if ( empty ( $error ) && $id > 0 ) {
     $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
     if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
       $send_email != "N" ) {
-        if ($GLOBALS['LANGUAGE'] != $user_language){
+        if (($GLOBALS['LANGUAGE'] != $user_language) && ! empty ( $user_language ) && ( $user_language != 'none' )){
           reset_language ( $user_language );
         }
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
