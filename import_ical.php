@@ -23,6 +23,22 @@ function parse_ical ( $cal_file ) {
     $errormsg .= "Can't read temporary file: $cal_file\n";
     exit();
   } else {
+
+    // Read in contents of entire file first
+    $data = '';
+    while (!feof($fd) && !$error) {
+      $line++;
+      $data .= fgets($fd, 4096);
+    }
+    fclose($fd);
+    // No fix folding.  According to RFC, lines can fold by having
+    // a CRLF and then a single white space character.
+    // We will allow it to be CRLF, CR or LF or any repeated sequence
+    // so long as there is a single white space character next.
+    $data = preg_replace ( "/[\r\n]+\s/", "", $data );
+    $data = preg_replace ( "/[\r\n]+/", "\n", $data );
+    //echo "Data:<br><pre>$data</pre><P>";
+
     // reflect the section where we are in the file:
     // VEVENT, VTODO, VJORNAL, VFREEBUSY, VTIMEZONE
     $state = "NONE";
@@ -32,10 +48,10 @@ function parse_ical ( $cal_file ) {
     $line = 0;
     $event = '';
 
-    while (!feof($fd) && !$error) {
+    $lines = explode ( "\n", $data );
+    for ( $n = 0; $n < count ( $lines ) && ! $error; $n++ ) {
       $line++;
-      $buff = fgets($fd, 4096);
-      $buff = chop($buff);
+      $buff = $lines[$n];
 
       // parser debugging code...
       //echo "line = $line <br />";
@@ -70,22 +86,22 @@ function parse_ical ( $cal_file ) {
           } elseif (preg_match("/^DESCRIPTION.*:(.+)$/i", $buff, $match)) {
               $substate = "description";
               $event[$substate] = $match[1];
-          } elseif (preg_match("/^CLASS.*:(.+)$/i", $buff, $match)) {
+          } elseif (preg_match("/^CLASS.*:(.*)$/i", $buff, $match)) {
               $substate = "class";
               $event[$substate] = $match[1];
-          } elseif (preg_match("/^PRIORITY.*:(.+)$/i", $buff, $match)) {
+          } elseif (preg_match("/^PRIORITY.*:(.*)$/i", $buff, $match)) {
               $substate = "priority";
               $event[$substate] = $match[1];
-	  } elseif (preg_match("/^DTSTART.*:(\d+T\d+)Z?$/i", $buff, $match)) {
+	  } elseif (preg_match("/^DTSTART.*:\s*(\d+T\d+)Z?\s*$/i", $buff, $match)) {
               $substate = "dtstart";
               $event[$substate] = $match[1];
-	  } elseif (preg_match("/^DTSTART.*:(\d+)$/i", $buff, $match)) {
+	  } elseif (preg_match("/^DTSTART.*:\s*(\d+)\s*$/i", $buff, $match)) {
               $substate = "dtstart";
               $event[$substate] = $match[1];
-          } elseif (preg_match("/^DTEND.*:(.+)$/i", $buff, $match)) {
+          } elseif (preg_match("/^DTEND.*:\s*(.*)\s*$/i", $buff, $match)) {
               $substate = "dtend";
               $event[$substate] = $match[1];
-          } elseif (preg_match("/^DURATION.*:(.+)$/i", $buff, $match)) {
+          } elseif (preg_match("/^DURATION.*:(.+)\s*$/i", $buff, $match)) {
               $substate = "duration";
               $durH = $durM = 0;
               if ( preg_match ( "/PT.*([0-9]+)H/", $match[1], $submatch ) )
@@ -116,11 +132,13 @@ function parse_ical ( $cal_file ) {
 	  // TODO: QUOTED-PRINTABLE descriptions
 
 	  // folded lines
-          } elseif (preg_match("/^[ ]{1}(.+)$/", $buff, $match)) {
+          // TODO: This is not the best way to handle folded lines.
+          // We should fix the folding before we parse...
+          } elseif (preg_match("/^\s(\S.*)$/", $buff, $match)) {
               if ($substate != "none") {
                   $event[$substate] .= $match[1];
               } else {
-                  $errormsg .= "Error in file $cal_file on line $line:<br />$buff\n";
+                  $errormsg .= "iCal parse error on line $line:<br />$buff\n";
                   $error = true;
               }
           // For unsupported properties
@@ -128,13 +146,13 @@ function parse_ical ( $cal_file ) {
             $substate = "none";
           }
       } elseif ($state == "VCALENDAR") {
-          if (preg_match("/^BEGIN:VEVENT$/i", $buff)) {
+          if (preg_match("/^BEGIN:VEVENT/i", $buff)) {
             $state = "VEVENT";
-          } elseif (preg_match("/^END:VCALENDAR$/i", $buff)) {
+          } elseif (preg_match("/^END:VCALENDAR/i", $buff)) {
             $state = "NONE";
-          } else if (preg_match("/^BEGIN:VTIMEZONE$/i", $buff)) {
+          } else if (preg_match("/^BEGIN:VTIMEZONE/i", $buff)) {
             $state = "VTIMEZONE";
-          } else if (preg_match("/^BEGIN:VALARM$/i", $buff)) {
+          } else if (preg_match("/^BEGIN:VALARM/i", $buff)) {
             $state = "VALARM";
           }
       } elseif ($state == "VTIMEZONE") {
@@ -147,7 +165,6 @@ function parse_ical ( $cal_file ) {
            $state = "VCALENDAR";
       }
     } // End while
-    fclose($fd);
   }
 
   return $ical_data;
