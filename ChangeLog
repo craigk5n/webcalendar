@@ -1,4 +1,5 @@
 Version 0.9.41dev (?? ??? ???)
+  - Added patch 690347: CSV export for pilot-datebook
   - Added patch 656318: when adding new user, passwords are not compared
     to determine if they match.
   - Added a config option for persistent connections.
