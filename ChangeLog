@@ -1,4 +1,5 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Fixed bug 848302: \r still missing from publish.php
   - Fixed bug 848307: export_alarm_ical is called without description argument
   - Fixed bug 842402: group select offset wrong when nonusers listed at top
   - Fixed bug 826908: Dateselect didn't work ... no matter which browser is used
