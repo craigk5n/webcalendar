@@ -1,4 +1,3 @@
-#!/usr/local/bin/php -q
 <?php
 /* $Id
  *
@@ -290,13 +289,13 @@ function send_reminder ( $id, $event_date ) {
     if ( $row[5] > 0 )
       $body .= translate ("Duration") . ": " . $row[5] .
         " " . translate("minutes") . "\n";
-    if ( ! $disable_priority_field )
+    if ( ! empty ( $disable_priority_field ) && ! $disable_priority_field )
       $body .= translate("Priority") . ": " . $pri[$row[6]] . "\n";
-    if ( ! $disable_access_field )
+    if ( ! empty ( $disable_access_field ) && ! $disable_access_field )
       $body .= translate("Access") . ": " .
         ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) .
         "\n";
-    if ( ! strlen ( $single_user_login ) )
+    if ( ! empty ( $single_user_login ) && $single_user_login == false )
       $body .= translate("Created by") . ": " . $row[0] . "\n";
     $body .= translate("Updated") . ": " . date_to_str ( $row[3] ) . " " .
       display_time ( $row[4] ) . "\n";
@@ -322,7 +321,8 @@ function send_reminder ( $id, $event_date ) {
         }
       }
     }
-    if ( $single_user != "Y" && ! $disable_participants_field ) {
+    if ( ! empty ( $single_user )  && $single_user != "Y" &&
+      ! empty ( $disable_participants_field ) &&  ! $disable_participants_field ) {
       $body .= translate("Participants") . ":\n";
       for ( $i = 0; $i < count ( $participants ); $i++ ) {
         $body .= "  " . $names[$participants[$i]] . "\n";
