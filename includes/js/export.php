@@ -1,4 +1,4 @@
-<SCRIPT LANGUAGE="JavaScript">
+<script language="JavaScript">
 function selectDate ( day, month, year ) {
   // get currently selected month/year
   monthobj = eval ( 'document.exportform.' + month );
@@ -15,25 +15,4 @@ function selectDate ( day, month, year ) {
   var colorWindow = window.open(url,"DateSelection","width=300,height=200,resizable=yes,scrollbars=yes");
 }
 
-function form_submit(object)
-{
-	if (object.format.options[object.format.selectedIndex].value == "ical")
-	{
-	  object.action = "export_handler.php/webcalendar.ics";
-	}
-	else if (object.format.options[object.format.selectedIndex].value == "vcal")
-	{
-		object.action = "export_handler.php/webcalendar.vcs";
-	}
-	else if (object.format.options[object.format.selectedIndex].value == "pilot-csv")
-	{
-		object.action = "export_handler.php/webcalendar.txt";
-	}
-	else if (object.format.options[object.format.selectedIndex].value == "pilot-text")
-	{
-		object.action = "export_handler.php/webcalendar.txt";
-	}
-
-	object.submit();
-}
-</SCRIPT>
+</script>

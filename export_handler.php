@@ -1033,17 +1033,12 @@ function export_pilot_csv ($id) {
   }
 }
 
-function transmit_header($mime) {
+function transmit_header ( $mime, $file ) {
   header ( "Content-Type: application/octet-stream" );
   //header ( "Content-Type: $mime" );
-  //if ( eregi('MSIE', $HTTP_USER_AGENT) ) {
-  //	header('Content-Disposition: inline; filename="webcalendar-export.txt"');
-  //	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-  //	header('Pragma: public');
-  //} else {
-  //	header('Content-Disposition: attachment; filename="webcalendar-export.txt"');
-  //	header('Pragma: no-cache');
-  //}
+  header ( 'Content-Disposition: attachment; filename="' . $file .  '"');
+  header ( 'Pragma: no-cache');
+  header ( 'Cache-Control: no-cache' );
 }
 
 /*******************************************/
@@ -1072,19 +1067,21 @@ if (empty($id))
 
 if ($format == "ical")
 {
+  transmit_header ( 'text/ical', "webcalendar-$id.ics" );
   export_ical($id);
 }
 elseif ($format == "vcal")
 {
+  transmit_header ( 'text/vcal', "webcalendar-$id.vcs" );
   export_vcal($id);
 }
 elseif ($format == "pilot-csv") {
-  transmit_header('text/csv');
+  transmit_header ( 'text/csv', "webcalendar-$id.csv" );
   export_pilot_csv ( $id );
 }
 elseif ($format == "pilot-text")
 {
-  transmit_header('text/plain');
+  transmit_header('text/plain', "webcalendar-$id.txt" );
   export_install_datebook($id);
 }
 else

@@ -106,7 +106,7 @@ print_header($INC);
   <INPUT TYPE="button" ONCLICK="selectDate('modday','modmonth','modyear')" VALUE="<?php etranslate("Select")?>...">
 </TD></TR>
 
-<TR><TD COLSPAN="2"><INPUT TYPE="button" VALUE="<?php etranslate("Export")?>" onClick=form_submit(this.form)></TD></TR>
+<TR><TD COLSPAN="2"><INPUT TYPE="submit" VALUE="<?php etranslate("Export");?>"></TD></TR>
 
 </TABLE>
 </FORM>
