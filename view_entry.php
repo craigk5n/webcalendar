@@ -605,7 +605,7 @@ if ( $single_user == "N" && $show_participants ) {
 
 </table>
 
-<P>
+<p>
 <?php
 
 if ( empty ( $event_status ) ) {
@@ -714,14 +714,14 @@ if ( $show_log ) {
   echo "<h3>" . translate("Activity Log") . "</h3>\n";
   echo "<table border=\"0\" width=\"100%\">\n";
   echo "<tr>";
-  echo "<th align=\"left\" bgcolor=\"$THBG\"><font color=\"$THFG\">" .
+  echo "<th style=\"background-color:$THBG; color:$THFG;\">" .
     translate("User") . "</font></th>";
-  echo "<th align=\"left\" bgcolor=\"$THBG\"><font color=\"$THFG\">" .
-    translate("Calendar") . "</font></th>";
-  echo "<th align=\"left\" bgcolor=\"$THBG\"><font color=\"$THFG\">" .
-    translate("Date") . "/" . translate("Time") . "</font></th>";
-  echo "<th align=\"left\" bgcolor=\"$THBG\"><font color=\"$THFG\">" .
-    translate("Action") . "</font></th></tr>\n";
+  echo "<th style=\"background-color:$THBG; color:$THFG;\">" .
+    translate("Calendar") . "</th>";
+  echo "<th style=\"background-color:$THBG; color:$THFG;\">" .
+    translate("Date") . "/" . translate("Time") . "</th>";
+  echo "<th style=\"background-color:$THBG; color:$THFG;\">" .
+    translate("Action") . "</th></tr>\n";
   $res = dbi_query ( "SELECT cal_login, cal_user_cal, cal_type, " .
     "cal_date, cal_time " .
     "FROM webcal_entry_log WHERE cal_entry_id = $id " .
