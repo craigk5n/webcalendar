@@ -53,7 +53,7 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 <table style="border-width:0px; width:100%;">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_d.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" style="width:36px; height:32px; border-width:0px;" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate("Previous")?>" href="view_d.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" style="width:36px; height:32px; border-width:0px;" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
 </td>
 <td style="text-align:center; color:<?php echo $H2COLOR?>;">
@@ -65,7 +65,7 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 </td>
 <td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_d.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" style="width:36px; height:32px; border-width:0px;" alt="<?php etranslate("Next")?>" /></a>
+<a title="<?php etranslate("Next")?>" href="view_d.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" style="width:36px; height:32px; border-width:0px;" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 </td></tr>
 </table>
@@ -150,7 +150,7 @@ function TimeMatrix ($date,$participants) {
   $CC = 1;
   for($i=$first_hour;$i<$last_hour;$i++) {
      for($j=0;$j<$interval;$j++) {
-        $str .= '   <td style=\"text-align:right; background-color:'.$THBG.'; width:'.$cell_pix.';\" id="C'.$CC.'" class="dailymatrix" ';
+        $str .= '   <td style="text-align:right; background-color:'.$THBG.'; width:'.$cell_pix.';" id="C'.$CC.'" class="dailymatrix" ';
         switch($j) {
           case 0:
                   if($interval == 4) { $k = ($i<=9?'0':substr($i,0,1)); }
