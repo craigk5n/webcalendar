@@ -6,7 +6,8 @@ print_header();
 <H2><FONT COLOR="<?php echo $H2COLOR; ?>"><?php etranslate("View Another User's Calendar"); ?></H2></FONT>
 
 <?php
-if ( $allow_view_other != "Y" && ! $is_admin ) {
+if (( $allow_view_other != "Y" && ! $is_admin ) ||
+   ( $public_access == "Y" && $login == "__public__" && $public_access_others != "Y")) {
   $error = translate ( "You are not authorized" );
 }
 
