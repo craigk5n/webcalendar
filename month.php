@@ -40,7 +40,7 @@ $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
 ?>
 
 <div style="clear:both;">
-<div style="float: right; clear:right;">
+<div style="float: right;">
 <?php
 if ( ! $friendly ) {
   echo "<table class=\"monthviewminical\" cellspacing=\"1\" cellpadding=\"2\">";
@@ -137,6 +137,7 @@ if ( ! $friendly ) {
 
 ?>
 </div>
+
 <div class="monthviewtitle">
 <span class="date"><br />
 <?php
@@ -166,7 +167,7 @@ if ( ! $friendly ) {
 </div>
 <br /><br /><br />
 
-<table class="monthview" cellspacing="0" cellpadding="0">
+<table class="monthview" style="clear:both;" cellspacing="0" cellpadding="0">
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
 <th><?php etranslate("Sun")?></th>
