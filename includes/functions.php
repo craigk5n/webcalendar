@@ -1656,7 +1656,7 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
         if ( $over_limit ||
           times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
           $conflicts .= "<LI>";
-          if ( $single_user == "Y" )
+          if ( $single_user != "Y" )
             $conflicts .= "$row[0]: ";
           if ( $row[6] == 'R' && $row[0] != $login )
             $conflicts .=  "(" . translate("Private") . ")";
