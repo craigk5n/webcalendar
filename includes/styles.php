@@ -1,6 +1,3 @@
-<!-- Note: Although we may set the font size in here, we also make heavy
-     use of the HTML font tag since many browsers do not properly support style sheet font settings.
--->
 <style type="text/css">
 <!--
 .tablecell {
@@ -52,6 +49,7 @@
 .tableheader {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 14px;
+  vertical-align: top;
   color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
   background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -60,6 +58,7 @@
 .tableheadertoday {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 14px;
+  vertical-align: top;
   color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
   background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
