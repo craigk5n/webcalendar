@@ -121,11 +121,11 @@ if ( $id > 0 ) {
 if ( $ext_id > 0 ) {
   $url = "view_entry.php?id=$ext_id";
   if ( $date != "" )
-    $url .= "&date=$date";
+    $url .= "&amp;date=$date";
   if ( $user != "" )
-    $url .= "&user=$user";
+    $url .= "&amp;user=$user";
   if ( $cat_id != "" )
-    $url .= "&cat_id=$cat_id";
+    $url .= "&amp;cat_id=$cat_id";
   do_redirect ( $url );
 }
 
@@ -372,7 +372,6 @@ if ( $categories_enabled == "Y" ) {
 
 ?>
 <h2><?php echo htmlspecialchars ( $name ); ?></h2>
-
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Description")?>:</td>
   <td><?php
@@ -625,7 +624,7 @@ if ( $unapproved ) {
 }
 
 if ( ! empty ( $user ) && $login != $user )
-  $u_url = "&user=$user";
+  $u_url = "&amp;user=$user";
 else
   $u_url = "";
 
@@ -636,7 +635,7 @@ if ( $public_access == "Y" && $login == "__public__" )
 
 $rdate = "";
 if ( $event_repeats )
-  $rdate = "&date=$event_date";
+  $rdate = "&amp;date=$event_date";
 
 // If approved, but event category not set (and user does not have permission
 // to edit where they could also set the category), then allow them to
@@ -655,15 +654,15 @@ if ( $can_edit && $event_status != "D" ) {
       translate("Edit repeating entry for all dates") . "</a><br />\n";
     // Don't allow override of first event
     if ( ! empty ( $date ) && $date != $orig_date )
-      echo "<a class=\"navlinks\" href=\"edit_entry.php?id=$id$u_url$rdate&override=1\">" .
+      echo "<a class=\"navlinks\" href=\"edit_entry.php?id=$id$u_url$rdate&amp;override=1\">" .
         translate("Edit entry for this date") . "</a><br />\n";
-    echo "<a class=\"navlinks\" href=\"del_entry.php?id=$id$u_url&override=1\" onclick=\"return confirm('" .
+    echo "<a class=\"navlinks\" href=\"del_entry.php?id=$id$u_url&amp;override=1\" onclick=\"return confirm('" .
       translate("Are you sure you want to delete this entry?") .
       "\\n\\n" . translate("This will delete this entry for all users.") .
       "');\">" . translate("Delete repeating event for all dates") . "</a><br />\n";
     // Don't allow deletion of first event
     if ( ! empty ( $date ) && $date != $orig_date )
-      echo "<a class=\"navlinks\" href=\"del_entry.php?id=$id$u_url$rdate&override=1\" onclick=\"return confirm('" .
+      echo "<a class=\"navlinks\" href=\"del_entry.php?id=$id$u_url$rdate&amp;override=1\" onclick=\"return confirm('" .
         translate("Are you sure you want to delete this entry?") .
         "\\n\\n" . translate("This will delete this entry for all users.") .
         "');\">" . translate("Delete entry only for this date") . "</a><br />\n";
@@ -704,7 +703,7 @@ $show_log = false;
 
 if ( $is_admin ) {
   if ( empty ( $log ) ) {
-    echo "<a class=\"navlinks\" href=\"view_entry.php?id=$id&log=1\">" .
+    echo "<a class=\"navlinks\" href=\"view_entry.php?id=$id&amp;log=1\">" .
       translate("Show activity log") . "</a><br />\n";
   } else {
     echo "<a class=\"navlinks\" href=\"view_entry.php?id=$id\">" .
