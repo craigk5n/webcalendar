@@ -65,10 +65,10 @@ if ( ! empty ( $HTTP_GET_VARS ) ) {
     } else {
       if ( empty ( $noSet[$key] ) ) {
         $GLOBALS[$key] = $val;
-        //echo "XXX $key<br />";
+        //echo "XXX $key<br />\n";
       }
     }
-    //echo "GET var '$key' = '$val' <br />";
+    //echo "GET var '$key' = '$val' <br />\n";
   }
   reset ( $HTTP_GET_VARS );
 }
@@ -97,7 +97,7 @@ if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
     if ( empty ( $noSet[$key] ) ) {
       $GLOBALS[$key] = $val;
     }
-    //echo "COOKIE var '$key' = '$val' <br />";
+    //echo "COOKIE var '$key' = '$val' <br />\n";
   }
   reset ( $HTTP_COOKIE_VARS );
 }
@@ -111,8 +111,7 @@ if ( ! strstr ( $PHP_SELF, "login.php" ) && ! empty ( $GLOBALS["login"] ) ) {
 }
 
 
-function getPostValue ( $name )
-{
+function getPostValue ( $name ) {
   if ( ! empty ( $_POST[$name] ) )
     return $_POST[$name];
   if ( ! isset ( $HTTP_POST_VARS ) )
@@ -122,8 +121,7 @@ function getPostValue ( $name )
   return ( $HTTP_POST_VARS[$name] );
 }
 
-function getGetValue ( $name )
-{
+function getGetValue ( $name ) {
   if ( ! empty ( $_GET[$name] ) )
     return $_GET[$name];
   if ( ! isset ( $HTTP_GET_VARS ) )
@@ -134,8 +132,7 @@ function getGetValue ( $name )
 }
 
 // Get value from HTTP GET or POST
-function getValue ( $name, $format="", $fatal=false )
-{
+function getValue ( $name, $format="", $fatal=false ) {
   $val = getPostValue ( $name );
   if ( ! isset ( $val ) )
     $val = getGetValue ( $name );
@@ -158,8 +155,7 @@ function getValue ( $name, $format="", $fatal=false )
 
 
 // Get an integer value
-function getIntValue ( $name, $fatal=false )
-{
+function getIntValue ( $name, $fatal=false ) {
   $val = getValue ( $name, "-?[0-9]+", $fatal );
   return $val;
 }
@@ -694,8 +690,7 @@ function load_user_layers ($user="",$force=0) {
   }
 }
 
-function site_extras_for_popup ( $id )
-{
+function site_extras_for_popup ( $id ) {
   global $site_extras_in_popup, $site_extras;
   $ret = '';
 
@@ -753,8 +748,7 @@ function site_extras_for_popup ( $id )
 
 // Build the HTML for the event popup (but don't print it yet since we
 // don't want this HTML to go inside the table for the month).
-function build_event_popup ( $popupid, $user, $description, $time,
-  $site_extras='' ) {
+function build_event_popup ( $popupid, $user, $description, $time, $site_extras='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname;
   $ret = "<dl id=\"$popupid\" class=\"popup\">\n";
 
@@ -3174,22 +3168,20 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   elseif ($ev_padding > 20) { $pos = 2; }
   else                     { $pos = 0; }
 
-  echo "<table style=\"width:100%; background-color:#000000; border-width:0px;\" cellpadding=\"0\" cellspacing=\"0\">\n";
+  echo "\n<!-- begin entry bar -->\n<table class=\"entrycont\" style=\"width:100%; border-width:0px;\" cellpadding=\"0\" cellspacing=\"0\">\n";
   echo "<tr>\n";
-  echo "<td style=\"text-align:right; width:$ev_start%; background-color:#FFFFFF;\">";
+  echo "<td style=\"text-align:right; width:$ev_start%;\">";
   if ( $pos > 0 ) {
     echo "&nbsp;</td>\n";
-    echo "<td style=\"width:$ev_duration%;\">
-    <table style=\"width:100%; border-width:0px; background-color:#000000;\" cellspacing=\"1\">\n
-    <tr>\n<td style=\"text-align:center; background-color:#F5DEB3;\">";
+    echo "<td style=\"width:$ev_duration%;\">\n<table class=\"entrybar\" style=\"width:100%; border-width:0px; background-color:#000000;\" cellspacing=\"1\">\n<tr>\n<td style=\"text-align:center; background-color:#F5DEB3;\">";
     if ( $pos > 1 ) {
       echo "&nbsp;</td>\n</tr>\n</table></td>\n";
-      echo "<td style=\"text-align:left; width:$ev_padding%; background-color:#FFFFFF;\">";
+      echo "<td style=\"text-align:left; width:$ev_padding%;\">";
     }
   };
 
 //TODO: The following section has several nested spans.  They need to be extracted & then combined separately from the PHP code.
-  echo "<span style=\"font-size:13px;\">";
+//  echo "<span style=\"font-size:13px;\">";
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $class = "layerentry";
   } else {
@@ -3225,7 +3217,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     }
   }
 
-  echo "[$event_owner]";
+  echo "[$event_owner]&nbsp;";
   $timestr = "";
   if ( $duration == ( 24 * 60 ) ) {
     $timestr = translate("All day event");
@@ -3260,15 +3252,14 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     echo htmlspecialchars ( $name );
   echo "</a>";
   if ( $pri == 3 ) echo "</span>"; //end font-weight span
-  echo "</span>"; //end font-size span
+//  echo "</span>"; //end font-size span
   echo "</td>\n";
   if ( $pos < 2 ) {
     if ( $pos < 1 ) {
-      echo "<td style=\"width:$ev_duration%;\"><table style=\"width:100%; border-width:0px; background-color:#000000;\" cellpadding=\"0\" cellspacing=\"1\">\n
-      <tr>\n<td style=\"text-align:center; background-color:#F5DEB3;\">&nbsp;</td>\n";
+      echo "<td style=\"width:$ev_duration%;\"><table style=\"width:100%; border-width:0px; background-color:#000000;\" cellpadding=\"0\" cellspacing=\"1\">\n<tr>\n<td style=\"text-align:center; background-color:#F5DEB3;\">&nbsp;</td>\n";
     }
     echo "</tr>\n</table></td>\n";
-    echo "<td style=\"text-align:left; width:$ev_padding%; background-color:#FFFFFF;\">&nbsp;</td>\n";
+    echo "<td style=\"text-align:left; width:$ev_padding%;\">&nbsp;</td>\n";
   }
   echo "</tr>\n</table>\n";
   if ( ! $hide_icons ) {
@@ -3295,8 +3286,7 @@ function print_header_timebar($start_hour, $end_hour) {
     $offset = 0;
   else
     $offset = round(100/($end_hour - $start_hour)/2);
-  echo "<table style=\"width:100%; background-color:#FFFFFF; border-width:0px;\" cellspacing=\"0\" cellpadding=\"0\">\n
-        <tr>\n<td style=\"background-color:#FFFFFF; width:$offset%;\">&nbsp;</td>\n";
+    echo "\n<!-- begin timebar -->\n<table class=\"timebar\" style=\"width:100%; background-color:#FFFFFF; border:0px;\" cellspacing=\"0\" cellpadding=\"0\">\n<tr>\n<td style=\"width:$offset%;\">&nbsp;</td>\n";
   for ($i = $start_hour+1; $i < $end_hour; $i++) {
     $prev_offset = $offset;
     $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
@@ -3305,18 +3295,17 @@ function print_header_timebar($start_hour, $end_hour) {
   }
   $width = 100 - $offset;
   echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
-  echo "</tr>\n</table>\n";
+  echo "</tr>\n</table>\n<!-- end timebar -->\n";
 
   // print yardstick
-  echo "<table style=\"width:100%; background-color:#C0C0C0; border-width:0px;\" cellspacing=\"1\" cellpadding=\"0\">\n
-        <tr>\n";
+  echo "\n<!-- begin yardstick -->\n<table class=\"yardstick\" style=\"width:100%; background-color:#C0C0C0; border-width:0px;\" cellspacing=\"1\" cellpadding=\"0\">\n<tr>\n";
   for ($i = $start_hour, $offset = 0; $i < $end_hour; $i++) {
     $prev_offset = $offset;
     $offset = round(100/($end_hour - $start_hour)*($i - $start_hour));
     $width = $offset - $prev_offset;
     echo "<td style=\"width:$width%; background-color:#FFFFFF;\">&nbsp;</td>\n";
   }
-  echo "</tr></table>\n";
+  echo "</tr>\n</table>\n<!-- end yardstick -->\n";
 }
 
 // Get a list of nonuser calendars and return info in an array.
