@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Added patch 975787: allow automatic inclusion of public access events
   - Added patch 980287: added mysqli support to php-dbi.php
   - Fixed bug 966948: single quotes not working in passwords if magic
     quotes is on.
