@@ -3,13 +3,13 @@
  * $Id$
  *
  * File Description:
- *	Functions here are used to support translating this application into
- *	multiple languages.  The idea is very much stolen from the GNU
- *	translate C library.
+ * Functions here are used to support translating this application into
+ * multiple languages.  The idea is very much stolen from the GNU
+ * translate C library.
  *
  * Comments:
- *	Although there is a PHP gettext() function, I prefer to use this
- *	home-grown translate function since it is simpler to work with.
+ * Although there is a PHP gettext() function, I prefer to use this
+ * home-grown translate function since it is simpler to work with.
  */
 
 
@@ -18,12 +18,13 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
   $PHP_SELF = $_SERVER['PHP_SELF'];
 }
 if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
-    die ( "You can't access this file directly!" );
+  die ( "You can't access this file directly!" );
 }
 
 
-if ( empty ( $LANGUAGE ) )
+if ( empty ( $LANGUAGE ) ) {
   $LANGUAGE = '';
+}
 
 // If set to use browser settings, use the user's language preferences
 // from their browser.
@@ -34,8 +35,9 @@ if ( $LANGUAGE == "Browser-defined" || $LANGUAGE == "none" ) {
     $lang = "";
 }
 
-if ( strlen ( $lang ) == 0 || $lang == 'none' )
+if ( strlen ( $lang ) == 0 || $lang == 'none' ) {
   $lang = "English-US"; // Default
+}
 
 $lang_file = "translations/" . $lang . ".txt";
 
@@ -46,11 +48,11 @@ $PUBLIC_ACCESS_FULLNAME = "Public Access"; // default
 
 /** reset_language
   * Description:
-  *	Unload translations so we can switch languages and translate into
-  *	a different language).
+  * Unload translations so we can switch languages and translate into
+  * a different language).
   * Parameters:
-  *	$new_language - new language file to load (just the base filename,
-  *	  no directory or file suffix.  Example: "French")
+  * $new_language - new language file to load (just the base filename,
+  *   no directory or file suffix.  Example: "French")
   */
 function reset_language ( $new_language ) {
   global $lang_file, $translations, $basedir, $lang, $translation_loaded;
@@ -62,16 +64,15 @@ function reset_language ( $new_language ) {
     load_translation_text ();
     $translation_loaded = true;
   }
-
 }
 
 
 
 /** load_translation_text
   * Description:
-  *	Load all the language translation into an array for quick lookup.
-  *	<br/>Note: There is no need to call this manually.  It will be
-  *	invoked by the translate function the first time it is called.
+  * Load all the language translation into an array for quick lookup.
+  * <br/>Note: There is no need to call this manually.  It will be
+  * invoked by the translate function the first time it is called.
   */
 function load_translation_text () {
   global $lang_file, $translations, $basedir, $PUBLIC_ACCESS_FULLNAME, $fullname;
@@ -91,6 +92,10 @@ function load_translation_text () {
   while ( ! feof ( $fp ) ) {
     $buffer = fgets ( $fp, 4096 );
     $buffer = trim ( $buffer );
+    // we can't simply stripslashes because of Japanese translations
+    if ( get_magic_quotes_runtime() ) {
+      $buffer = str_replace ( "\'", "'", $buffer );
+    }
     if ( substr ( $buffer, 0, 1 ) == "#" || strlen ( $buffer ) == 0 )
       continue;
     $pos = strpos ( $buffer, ":" );
@@ -102,8 +107,7 @@ function load_translation_text () {
     //echo "Abbrev: $abbrev<br />Trans: $trans<br />\n";
   }
   fclose ( $fp );
-
-  $PUBLIC_ACCESS_FULLNAME = translate("Public Access");
+  $PUBLIC_ACCESS_FULLNAME = translate ("Public Access" );
   if ( $fullname == "Public Access" ) {
     $fullname = $PUBLIC_ACCESS_FULLNAME;
   }
@@ -113,14 +117,14 @@ function load_translation_text () {
 
 /** translate
   * Description:
-  *	Translate a string from the default English usage to some
-  *	other language.  The first time that this is called, the translation
-  *	file will be loaded (with the load_translation_text function).
+  * Translate a string from the default English usage to some
+  * other language.  The first time that this is called, the translation
+  * file will be loaded (with the load_translation_text function).
   * Parameters:
-  *	$str - text to translate
+  * $str - text to translate
   * Returns:
-  *	The translated text, if available.  If no translation is avalailable,
-  *	then the original untranslated text is returned.
+  * The translated text, if available.  If no translation is avalailable,
+  * then the original untranslated text is returned.
   */
 function translate ( $str ) {
   global $translations, $translation_loaded;
@@ -145,10 +149,10 @@ function translate ( $str ) {
 
 /** etranslate
   * Description:
-  *	Translate text and print it.
-  *	This is just an abbreviation for: echo translate ( $str )
+  * Translate text and print it.
+  * This is just an abbreviation for: echo translate ( $str )
   * Parameters:
-  *	$str - input text to translate and print
+  * $str - input text to translate and print
   */
 function etranslate ( $str ) {
   echo translate ( $str );
@@ -156,14 +160,14 @@ function etranslate ( $str ) {
 
 /** tooltip
   * Description:
-  *	Translate text and remove and HTML from it.
-  *	This is useful for tooltips, which barf on HTML.
-  *	<br/>Note: The etooltip function will print the result
-  *	rather than return the value.
+  * Translate text and remove and HTML from it.
+  * This is useful for tooltips, which barf on HTML.
+  * <br/>Note: The etooltip function will print the result
+  * rather than return the value.
   * Parameters:
-  *	$str - the input text to translate
+  * $str - the input text to translate
   * Returns:
-  *	The translated text with all HTML removed
+  * The translated text with all HTML removed
   */
 function tooltip ( $str ) {
   $ret = translate ( $str );
@@ -174,17 +178,15 @@ function tooltip ( $str ) {
 
 /** etooltip
   * Description:
-  *	Translate text and remove and HTML from it.
-  *	This is useful for tooltips, which barf on HTML.
-  *	<br/>Note: The tooltip function will return the result
-  *	rather than print the value.
+  * Translate text and remove and HTML from it.
+  * This is useful for tooltips, which barf on HTML.
+  * <br/>Note: The tooltip function will return the result
+  * rather than print the value.
   * Parameters:
-  *	$str - the input text to translate and print
+  * $str - the input text to translate and print
   */
 function etooltip ( $str ) {
   echo tooltip ( $str );
 }
-
-
 
 ?>
