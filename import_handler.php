@@ -1,5 +1,30 @@
 <?php
-
+/*
+ * $Id: 
+ *
+ * Description:
+ * Loads appropriate import file parser and processes the data returned
+ *    Currently supported:
+ *      Palmdesktop (dba file)
+ *      iCal (ics file)
+ *      vCal (vcs file)
+ *
+ *
+ * Notes:
+ * User defined inport routines may be used, see example
+ *    in the SWITCH statement below
+ *
+ * Input parameters:
+ * FileName: File name specified by user on import.php
+ *    calUser: user's calendar to import data into, unless
+ *      single user = Y or Admin, caluser will equal logged
+ *      in user.
+ *    exc_private: exclude private records from Palmdesktop import
+ *    overwrite: Overwrite previous import 
+ *
+ * Security:
+ * TBD
+ */
 include_once 'includes/init.php';
 include_once 'includes/site_extras.php';
 $error = '';
@@ -11,13 +36,15 @@ $numDeleted = 0;
 
 $sqlLog = '';
 
-if ( ! empty ( $_FILES['FileName'] ) )
+if ( ! empty ( $_FILES['FileName'] ) ) {
   $file = $_FILES['FileName'];
-else if ( ! empty ( $HTTP_POST_FILES['FileName'] ) )
+} else if ( ! empty ( $HTTP_POST_FILES['FileName'] ) ) {
   $file = $HTTP_POST_FILES['FileName'];
+}
 
-if ( empty ( $file ) )
+if ( empty ( $file ) ) {
   echo "No file!<br />";
+}
 
 // Handle user
 $calUser = getValue ( "calUser" );
@@ -75,7 +102,7 @@ if ($file['size'] > 0) {
       ".<br />\n";
   }
 } else {
-	echo "<br /><br />\n<b>" . translate("Error") . ":</b> " .
+ echo "<br /><br />\n<b>" . translate("Error") . ":</b> " .
     translate("The import file contained no data") . ".<br />\n";
 }
 
@@ -155,10 +182,11 @@ function import_data ( $data, $overwrite, $type ) {
     $Entry['EndMonth']           = sprintf ("%02d",$END[4] + 1);
     $Entry['EndYear']            = sprintf ("%04d",$END[5] + 1900);
     if ( $overwrite && ! empty ( $Entry['UID'] ) ) {
-      if ( empty ( $oldUIDs[$Entry['UID']] ) )
+      if ( empty ( $oldUIDs[$Entry['UID']] ) ) {
         $oldUIDs[$Entry['UID']] = 1;
-      else
+      } else {
         $oldUIDs[$Entry['UID']]++;
+      }
     }
 
     // Check for untimed
@@ -173,8 +201,10 @@ function import_data ( $data, $overwrite, $type ) {
     if ( empty ( $allow_conflicts )  &&  ( $Entry['Duration'] != 0 )) {
       $date = mktime (0,0,0,$Entry['StartMonth'],
         $Entry['StartDay'],$Entry['StartYear']);
-      $endt =  (! empty ( $Entry['Repeat']['EndTime'] ) ) ? $Entry['Repeat']['EndTime'] : 'NULL';
-      $dayst =  (! empty ( $Entry['Repeat']['RepeatDays'] ) ) ? $Entry['Repeat']['RepeatDays'] : "nnnnnnn";
+      $endt =  (! empty ( $Entry['Repeat']['EndTime'] ) ) ? 
+        $Entry['Repeat']['EndTime'] : 'NULL';
+      $dayst =  (! empty ( $Entry['Repeat']['RepeatDays'] ) ) ? 
+        $Entry['Repeat']['RepeatDays'] : "nnnnnnn";
 
       $ex_days = array ();
       if ( ! empty ( $Entry['Repeat']['Exceptions'] ) ) {
@@ -183,12 +213,15 @@ function import_data ( $data, $overwrite, $type ) {
         }
       }
 
-      $dates = get_all_dates($date, RepeatType($Entry['Repeat']['Interval']), $endt, $dayst, $ex_days, $Entry['Repeat']['Frequency']);
-      $overlap = overlap ( $dates, $Entry['Duration'], $Entry['StartHour'], $Entry['StartMinute'], $participants, $login, 0 );
+      $dates = get_all_dates($date, RepeatType($Entry['Repeat']['Interval']), 
+        $endt, $dayst, $ex_days, $Entry['Repeat']['Frequency']);
+      $overlap = check_for_conflicts ( $dates, $Entry['Duration'], 
+        $Entry['StartHour'], $Entry['StartMinute'], $participants, $login, 0 );
     }
 
     if ( empty ( $error ) && ! empty ( $overlap ) ) {
-      $error = translate("The following conflicts with the suggested time").":<ul>$overlap</ul>\n";
+      $error = translate("The following conflicts with the suggested time").
+        ":<ul>$overlap</ul>\n";
     }
 
     if ( empty ( $error ) ) {
@@ -231,7 +264,8 @@ function import_data ( $data, $overwrite, $type ) {
         dbi_free_result ( $res );
       } else {
         $id = 1;
-        //$error = "Unable to select MAX cal_id: " . dbi_error () . "<br /><br />\n<b>SQL:</b> $sql";
+        //$error = "Unable to select MAX cal_id: " . dbi_error () . 
+        //  "<br /><br />\n<b>SQL:</b> $sql";
         //break;
       }
       if ( $firstEventId == 0 )
@@ -249,7 +283,8 @@ function import_data ( $data, $overwrite, $type ) {
       $values[] = sprintf ( "%04d%02d%02d",
         $Entry['StartYear'],$Entry['StartMonth'],$Entry['StartDay']);
       $names[] = 'cal_time';
-      $values[] = ( ! empty ( $Entry['Untimed'] ) && $Entry['Untimed'] == 1) ? "-1" :
+      $values[] = ( ! empty ( $Entry['Untimed'] ) && 
+        $Entry['Untimed'] == 1) ? "-1" :
         sprintf ( "%02d%02d00", $Entry['StartHour'],$Entry['StartMinute']);
       $names[] = 'cal_mod_date';
       $values[] = date("Ymd");
@@ -260,7 +295,8 @@ function import_data ( $data, $overwrite, $type ) {
       $names[] = 'cal_priority';
       $values[] = $priority;
       $names[] = 'cal_access';
-      $values[] = ($Entry['Private'] == 1) ? "'R'" : "'P'";
+      $values[] = ( ! empty ( $Entry['Private'] ) && 
+        $Entry['Private'] == 1) ? "'R'" : "'P'";
       $names[] = 'cal_type';
       $values[] = ( ! empty ( $Entry['Repeat'] ) ) ? "'M'" : "'E'";
 
@@ -278,13 +314,14 @@ function import_data ( $data, $overwrite, $type ) {
       $Entry['Description'] = str_replace ( "\\'", "'", $Entry['Description'] );
       $Entry['Description'] = str_replace ( "\\\"", "\"", $Entry['Description'] );
       $Entry['Description'] = str_replace ( "'", "\\'", $Entry['Description'] );
+      // Mozilla will send this goofy string, so replace it with real html
+      $Entry['Description'] = str_replace ( "=0D=0A=", "<br />", 
+        $Entry['Description'] );
       // limit length to 1024 chars since we setup tables that way
       if ( strlen ( $Entry['Description'] ) >= 1024 )
         $Entry['Description'] = substr ( $Entry['Description'], 0, 1019 ) . "...";
       $names[] = 'cal_description';
       $values[] = "'" . $Entry['Description'] .  "'";
-      //echo "Summary:<p>" . nl2br ( htmlspecialchars ( $Entry['Summary'] ) ) . "</p>";
-      //echo "Description:<p>" . nl2br ( htmlspecialchars ( $Entry['Description'] ) ) . "</p>"; exit;
       if ( $updateMode ) {
         $sql = "UPDATE webcal_entry SET ";
         for ( $f = 0; $f < count ( $names ); $f++ ) {
@@ -343,6 +380,7 @@ function import_data ( $data, $overwrite, $type ) {
         }
         else if ($ImportType == "ICAL") {
           $uid = empty ( $Entry['UID'] ) ? "null" : "'$Entry[UID]'";
+          // This may cause problems
           if ( strlen ( $uid ) > 200 )
             $uid = "NULL";
           $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
@@ -381,21 +419,24 @@ function import_data ( $data, $overwrite, $type ) {
         //  echo "$k: $v <br />\n";
         //}
         $rpt_type = RepeatType($Entry['Repeat']['Interval']);
-        $freq = ( $Entry['Repeat']['Frequency'] ? $Entry['Repeat']['Frequency'] : 1 );
-        if ( strlen ( $Entry['Repeat']['EndTime'] ) ) {
+        $freq = ( ! empty ( $Entry['Repeat']['Frequency'] ) ? 
+          $Entry['Repeat']['Frequency'] : 1 );
+        if ( ! empty ( $Entry['Repeat']['EndTime'] ) ) {
           $REND   = localtime($Entry['Repeat']['EndTime']);
-	  $end = sprintf ( "%04d%02d%02d",$REND[5] + 1900,$REND[4] + 1,$REND[3]);
+          $end = sprintf ( "%04d%02d%02d",$REND[5] + 1900,$REND[4] + 1,$REND[3]);
         } else {
           $end = 'NULL';
         }
-        $days = (! empty ($Entry['Repeat']['RepeatDays'])) ? "'".$Entry['Repeat']['RepeatDays']."'" : 'NULL';
+        $days = (! empty ($Entry['Repeat']['RepeatDays'])) ? 
+          "'".$Entry['Repeat']['RepeatDays']."'" : 'NULL';
         $sql = "INSERT INTO webcal_entry_repeats ( cal_id, " .
           "cal_type, cal_end, cal_days, cal_frequency ) VALUES " .
           "( $id, '$rpt_type', $end, $days, $freq )";
         $sqlLog .= $sql . "<br />\n";
         if ( ! dbi_query ( $sql ) ) {
-            $error = "Unable to add to webcal_entry_repeats: ".dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
-            break;
+          $error = "Unable to add to webcal_entry_repeats: ".
+            dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
+          break;
         }
 
         // Repeating Exceptions...
@@ -405,7 +446,8 @@ function import_data ( $data, $overwrite, $type ) {
             $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date ) VALUES ( $id, $ex_date )";
             $sqlLog .= $sql . "<br />\n";
             if ( ! dbi_query ( $sql ) ) {
-              $error = "Unable to add to webcal_entry_repeats_not: ".dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
+              $error = "Unable to add to webcal_entry_repeats_not: ".
+                dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
               break;
             }
           }
@@ -450,7 +492,8 @@ function import_data ( $data, $overwrite, $type ) {
       }
       $dd = $Entry['StartMonth'] . "-" .  $Entry['StartDay'] . "-" . $Entry['StartYear'];
       echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
-      echo "\" onmouseover=\"window.status='" . translate("View this entry") ."'; return true;\" onmouseout=\"window.status=''; return true;\">";
+      echo "\" onmouseover=\"window.status='" . translate("View this entry") .
+        "'; return true;\" onmouseout=\"window.status=''; return true;\">";
       $Entry['Summary'] = str_replace ( "''", "'", $Entry['Summary'] );
       $Entry['Summary'] = str_replace ( "'", "\\'", $Entry['Summary'] );
       echo htmlspecialchars ( $Entry['Summary'] );
@@ -475,7 +518,8 @@ function import_data ( $data, $overwrite, $type ) {
         $Entry['StartMonth'], $Entry['StartDay'] );
       $dd = date_to_str ( $dateYmd );
       echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
-      echo "\" onmouseover=\"window.status='" . translate("View this entry") ."'; return true;\" onmouseout=\"window.status=''; return true;\">";
+      echo "\" onmouseover=\"window.status='" . translate("View this entry") .
+        "'; return true;\" onmouseout=\"window.status=''; return true;\">";
       $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary']);
       $Entry['Summary'] = str_replace( "\\", "", $Entry['Summary']);
       echo htmlspecialchars ( $Entry['Summary'] );
@@ -527,5 +571,4 @@ function RepeatType ($type) {
   $Repeat = array (0,'daily','weekly','monthlyByDay','monthlyByDate','yearly','monthlyByDayR');
   return $Repeat[$type];
 }
-
 ?>
