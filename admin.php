@@ -470,24 +470,6 @@ if ( ! $error ) {
 		</td></tr>
 </table><br /><br />
 
-<!-- BEGIN EXT PARTICIPANTS -->
-<table cellspacing="0" cellpadding="3">
-	<tr><td class="tooltip" title="<?php etooltip("allow-external-users-help")?>">
-		<?php etranslate("Allow external users")?>:</td><td>
-		<label><input type="radio" name="admin_allow_external_users" value="Y" <?php if ( $s["allow_external_users"] == "Y" ) echo " checked=\"checked\"";?> onclick="eu_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-		<label><input type="radio" name="admin_allow_external_users" value="N" <?php if ( $s["allow_external_users"] != "Y" ) echo " checked=\"checked\"";?> onclick="eu_handler()" />&nbsp;<?php etranslate("No")?></label>
-	</td></tr>
-	<tr id="eu1"><td class="tooltip" title="<?php etooltip("external-can-receive-notification-help")?>">
-		&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("External users can receive email notifications")?>:</td><td>
-		<label><input type="radio" name="admin_external_notifications" value="Y" <?php if ( $s["external_notifications"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-		<label><input type="radio" name="admin_external_notifications" value="N" <?php if ( $s["external_notifications"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
-	</td></tr>
-	<tr id="eu2"><td class="tooltip" title="<?php etooltip("external-can-receive-reminder-help")?>">
-		&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("External users can receive email reminders")?>:</td><td>
-		<label><input type="radio" name="admin_external_reminders" value="Y" <?php if ( $s["external_reminders"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-		<label><input type="radio" name="admin_external_reminders" value="N" <?php if ( $s["external_reminders"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
-	</td></tr>
-</table>
 </div>
 
 <!-- BEGIN GROUPS -->
@@ -547,6 +529,25 @@ if ( ! $error ) {
 		<?php etranslate("Categories enabled")?>:</td><td>
 		<label><input type="radio" name="admin_categories_enabled" value="Y" <?php if ( $s["categories_enabled"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 		<label><input type="radio" name="admin_categories_enabled" value="N" <?php if ( $s["categories_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+	</td></tr>
+</table>
+
+<!-- BEGIN EXT PARTICIPANTS -->
+<table cellspacing="0" cellpadding="3">
+	<tr><td class="tooltip" title="<?php etooltip("allow-external-users-help")?>">
+		<?php etranslate("Allow external users")?>:</td><td>
+		<label><input type="radio" name="admin_allow_external_users" value="Y" <?php if ( $s["allow_external_users"] == "Y" ) echo " checked=\"checked\"";?> onclick="eu_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+		<label><input type="radio" name="admin_allow_external_users" value="N" <?php if ( $s["allow_external_users"] != "Y" ) echo " checked=\"checked\"";?> onclick="eu_handler()" />&nbsp;<?php etranslate("No")?></label>
+	</td></tr>
+	<tr id="eu1"><td class="tooltip" title="<?php etooltip("external-can-receive-notification-help")?>">
+		&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("External users can receive email notifications")?>:</td><td>
+		<label><input type="radio" name="admin_external_notifications" value="Y" <?php if ( $s["external_notifications"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+		<label><input type="radio" name="admin_external_notifications" value="N" <?php if ( $s["external_notifications"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+	</td></tr>
+	<tr id="eu2"><td class="tooltip" title="<?php etooltip("external-can-receive-reminder-help")?>">
+		&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("External users can receive email reminders")?>:</td><td>
+		<label><input type="radio" name="admin_external_reminders" value="Y" <?php if ( $s["external_reminders"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+		<label><input type="radio" name="admin_external_reminders" value="N" <?php if ( $s["external_reminders"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 	</td></tr>
 </table>
 </div>
