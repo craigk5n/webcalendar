@@ -90,7 +90,7 @@ if ( ! $error ) {
 reset ( $languages );
 while ( list ( $key, $val ) = each ( $languages ) ) {
   echo "<option value=\"" . $val . "\"";
-  if ( $val == $LANGUAGE ) echo " selected=\"selected\"";
+  if ( $val == $s['LANGUAGE'] ) echo " selected=\"selected\"";
   echo ">" . $key . "</option>\n";
 }
 ?>
