@@ -22,6 +22,11 @@ if ( $allow_view_other != "Y" && ! $is_admin )
 
 $view = "month";
 
+if ( $public_access == "Y" && $login == "__public__" ) {
+  if ( $public_access_others != "Y" )
+    $user = ""; // security precaution
+}
+
 if ( ! empty ( $user ) ) {
   $u_url = "user=$user&";
   user_load_variables ( $user, "user_" );

@@ -185,11 +185,11 @@ if ( ! $error ) {
 
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
 
-<TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("app-name-help")?>"><?php etranslate("Application Name")?>:</B></TD>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("app-name-help")?>"><?php etranslate("Application Name")?>:</B></TD>
   <TD><INPUT SIZE="40" NAME="admin_application_name" VALUE="<?php echo htmlspecialchars ( $application_name );?>" </TD></TR>
 
 
-<TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("server-url-help")?>"><?php etranslate("Server URL")?>:</B></TD>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("server-url-help")?>"><?php etranslate("Server URL")?>:</B></TD>
   <TD><INPUT SIZE="40" NAME="admin_server_url" VALUE="<?php echo htmlspecialchars ( $server_url );?>" </TD></TR>
 
 
@@ -209,7 +209,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 </TD></TR>
 
 
-<TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("fonts-help")?>"><?php etranslate("Fonts")?>:</B></TD>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("fonts-help")?>"><?php etranslate("Fonts")?>:</B></TD>
   <TD><INPUT SIZE="40" NAME="admin_FONTS" VALUE="<?php echo htmlspecialchars ( $FONTS );?>" </TD></TR>
 
 <TR><TD><B CLASS="tooltip" HREF="#" TITLE="<?php etooltip("preferred-view-help");?>"><?php etranslate("Preferred view")?>:</B></TD>
@@ -371,6 +371,9 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("disable-repeating-field-help")?>"><?php etranslate("Disable Repeating field")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_disable_repeating_field" VALUE="Y" <?php if ( $s["disable_repeating_field"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_disable_repeating_field" VALUE="N" <?php if ( $s["disable_repeating_field"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("allow-view-other-help")?>"><?php etranslate("Allow viewing other user's calendars")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_allow_view_other" VALUE="Y" <?php if ( $s["allow_view_other"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_allow_view_other" VALUE="N" <?php if ( $s["allow_view_other"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("allow-public-access-help")?>"><?php etranslate("Allow public access")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_public_access" VALUE="Y" <?php if ( $s["public_access"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_public_access" VALUE="N" <?php if ( $s["public_access"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
@@ -380,8 +383,11 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("public-access-can-add-help")?>"><?php etranslate("Public access can add events")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_public_access_can_add" VALUE="Y" <?php if ( $s["public_access_can_add"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_public_access_can_add" VALUE="N" <?php if ( $s["public_access_can_add"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
-<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("allow-view-other-help")?>"><?php etranslate("Allow viewing other user's calendars")?>:</B></TD>
-  <TD><INPUT TYPE="radio" NAME="admin_allow_view_other" VALUE="Y" <?php if ( $s["allow_view_other"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_allow_view_other" VALUE="N" <?php if ( $s["allow_view_other"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("public-access-add-requires-approval-help")?>"><?php etranslate("Public access new events require approval")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_public_access_add_needs_approval" VALUE="Y" <?php if ( $s["public_access_add_needs_approval"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_public_access_add_needs_approval" VALUE="N" <?php if ( $s["public_access_add_needs_approval"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("allow-view-add-help")?>"><?php etranslate("Include add event link in views")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_add_link_in_views" VALUE="Y" <?php if ( $s["add_link_in_views"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_add_link_in_views" VALUE="N" <?php if ( $s["add_link_in_views"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("allow-external-users-help")?>"><?php etranslate("Allow external users")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_allow_external_users" VALUE="Y" <?php if ( $s["allow_external_users"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_allow_external_users" VALUE="N" <?php if ( $s["allow_external_users"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
@@ -399,9 +405,17 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("conflict-check-help")?>"><?php etranslate("Check for event conflicts")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_allow_conflicts" VALUE="N" <?php if ( $s["allow_conflicts"] == "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_allow_conflicts" VALUE="Y" <?php if ( $s["allow_conflicts"] != "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
-<TR><TD VALIGN="top">&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("conflict-months-help")?>"><?php etranslate("Conflict checking months")?>:</B></TD>
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("conflict-months-help")?>"><?php etranslate("Conflict checking months")?>:</B></TD>
   <TD><INPUT SIZE="3" NAME="admin_conflict_repeat_months" VALUE="<?php echo htmlspecialchars ( $conflict_repeat_months );?>" </TD></TR>
 
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("conflict-check-override-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Allow users to override conflicts")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_allow_conflict_override" VALUE="Y" <?php if ( $s["allow_conflict_override"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_allow_conflict_override" VALUE="N" <?php if ( $s["allow_conflict_override"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("limit-appts-help")?>"><?php etranslate("Limit number of timed events per day")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_limit_appts" VALUE="Y" <?php if ( $s["limit_appts"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_limit_appts" VALUE="N" <?php if ( $s["limit_appts"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("limit-appts-number-help")?>"><?php etranslate("Maximum timed events per day")?>:</B></TD>
+  <TD><INPUT SIZE="3" NAME="admin_limit_appts_number" VALUE="<?php echo htmlspecialchars ( $limit_appts_number );?>" </TD></TR>
 
 
 </TABLE></TD></TR></TABLE></TD></TR></TABLE>
@@ -442,10 +456,10 @@ if ( $plugins_enabled == "Y" ) {
 <H3><?php etranslate("Groups")?></H3>
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
 
-<TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("groups-enabled-help")?>"><?php etranslate("Groups enabled")?>:</B></TD>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("groups-enabled-help")?>"><?php etranslate("Groups enabled")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_groups_enabled" VALUE="Y" <?php if ( $s["groups_enabled"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_groups_enabled" VALUE="N" <?php if ( $s["groups_enabled"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
-<TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("user-sees-his-group-help")?>"><?php etranslate("User sees only his groups")?>:</B></TD>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("user-sees-his-group-help")?>"><?php etranslate("User sees only his groups")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_user_sees_only_his_groups" VALUE="Y" <?php if ( $s["user_sees_only_his_groups"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_user_sees_only_his_groups" VALUE="N" <?php if ( $s["user_sees_only_his_groups"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
 
@@ -456,7 +470,7 @@ if ( $plugins_enabled == "Y" ) {
 <H3><?php etranslate("Categories")?></H3>
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
 
-<TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("categories-enabled-help")?>"><?php etranslate("Categories enabled")?>:</B></TD>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("categories-enabled-help")?>"><?php etranslate("Categories enabled")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_categories_enabled" VALUE="Y" <?php if ( $s["categories_enabled"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_categories_enabled" VALUE="N" <?php if ( $s["categories_enabled"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
 </TABLE></TD></TR></TABLE></TD></TR></TABLE>
@@ -468,28 +482,28 @@ if ( $plugins_enabled == "Y" ) {
 
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
 
-<TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("email-enabled-help")?>"><?php etranslate("Email enabled")?>:</B></TD>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("email-enabled-help")?>"><?php etranslate("Email enabled")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_send_email" VALUE="Y" <?php if ( $s["send_email"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_send_email" VALUE="N" <?php if ( $s["send_email"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
-<TR><TD VALIGN="top">&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("email-default-sender")?>"><?php etranslate("Default sender address")?>:</B></TD>
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("email-default-sender")?>"><?php etranslate("Default sender address")?>:</B></TD>
   <TD><INPUT SIZE="30" NAME="admin_email_fallback_from" VALUE="<?php echo htmlspecialchars ( $email_fallback_from );?>" </TD></TR>
 
 
-<TR><TD VALIGN="top" COLSPAN="2"><B><?php etranslate("Default user settings")?>:</B></TD></TR>
+<TR><TD COLSPAN="2"><B><?php etranslate("Default user settings")?>:</B></TD></TR>
 
-<TR><TD VALIGN="top">&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("email-event-reminders-help")?>"><?php etranslate("Event reminders")?>:</B></TD>
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("email-event-reminders-help")?>"><?php etranslate("Event reminders")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_EMAIL_REMINDER" VALUE="Y" <?php if ( $s["EMAIL_REMINDER"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_EMAIL_REMINDER" VALUE="N" <?php if ( $s["EMAIL_REMINDER"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
-<TR><TD VALIGN="top">&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("email-event-added")?>"><?php etranslate("Events added to my calendar")?>:</B></TD>
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("email-event-added")?>"><?php etranslate("Events added to my calendar")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_EMAIL_EVENT_ADDED" VALUE="Y" <?php if ( $s["EMAIL_EVENT_ADDED"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_EMAIL_EVENT_ADDED" VALUE="N" <?php if ( $s["EMAIL_EVENT_ADDED"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
-<TR><TD VALIGN="top">&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("email-event-updated")?>"><?php etranslate("Events updated on my calendar")?>:</B></TD>
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("email-event-updated")?>"><?php etranslate("Events updated on my calendar")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_EMAIL_EVENT_UPDATED" VALUE="Y" <?php if ( $s["EMAIL_EVENT_UPDATED"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_EMAIL_EVENT_UPDATED" VALUE="N" <?php if ( $s["EMAIL_EVENT_UPDATED"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
-<TR><TD VALIGN="top">&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("email-event-deleted");?>"><?php etranslate("Events removed from my calendar")?>:</B></TD>
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("email-event-deleted");?>"><?php etranslate("Events removed from my calendar")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_EMAIL_EVENT_DELETED" VALUE="Y" <?php if ( $s["EMAIL_EVENT_DELETED"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_EMAIL_EVENT_DELETED" VALUE="N" <?php if ( $s["EMAIL_EVENT_DELETED"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
-<TR><TD VALIGN="top">&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("email-event-rejected")?>"><?php etranslate("Event rejected by participant")?>:</B></TD>
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("email-event-rejected")?>"><?php etranslate("Event rejected by participant")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_EMAIL_EVENT_REJECTED" VALUE="Y" <?php if ( $s["EMAIL_EVENT_REJECTED"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_EMAIL_EVENT_REJECTED" VALUE="N" <?php if ( $s["EMAIL_EVENT_REJECTED"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
 
@@ -500,7 +514,7 @@ if ( $plugins_enabled == "Y" ) {
 
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
 
-<TR><TD VALIGN="top"><B><?php etranslate("Allow user to customize colors")?>:</B></TD>
+<TR><TD><B><?php etranslate("Allow user to customize colors")?>:</B></TD>
   <TD COLSPAN="3"><INPUT TYPE="radio" NAME="admin_allow_color_customization" VALUE="Y" <?php if ( $s["allow_color_customization"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_allow_color_customization" VALUE="N" <?php if ( $s["allow_color_customization"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
 

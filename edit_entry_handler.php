@@ -10,6 +10,7 @@ include "includes/connect.php";
 
 load_global_settings ();
 load_user_preferences ();
+load_user_categories ();
 
 include "includes/translate.php";
 
@@ -47,7 +48,7 @@ if ( ! empty ( $hour ) ) {
   }
 }
 
-// Return the time ih HHMMSS format of input time + duration
+// Return the time in HHMMSS format of input time + duration
 // $time - format "235900"
 // $duration - number of minutes
 function add_duration ( $time, $duration ) {
@@ -114,6 +115,22 @@ if ( ! $can_edit && empty ( $error ) )
 if ( ! strlen ( $participants[0] ) )
   $participants[0] = $login;
 
+// If "all day event" was selected, then we set the event time
+// to be 12AM with a duration of 24 hours.
+// We don't actually store the "all day event" flag per se.  This method
+// makes conflict checking much simpler.  We just need to make sure
+// that we don't screw up the day view (which normally starts the
+// view with the first timed event).
+// Note that if someone actually wants to create an event that starts
+// at midnight and lasts exactly 24 hours, it will be treated in the
+// same manner.
+if ( $allday == "Y" ) {
+  $duration_h = 24;
+  $duration_m = 0;
+  $hour = 0;
+  $minute = 0;
+}
+
 $duration = ( $duration_h * 60 ) + $duration_m;
 if ( strlen ( $hour ) > 0 ) {
   if ( $TIME_FORMAT == '12' ) {
@@ -167,6 +184,9 @@ if ( $single_user == "N" &&
 }
 
 // first check for any schedule conflicts
+if ( empty ( $allow_conflict_override ) || $allow_conflict_override != "Y" ) {
+  $confirm_conflicts = ""; // security precaution
+}
 if ( $allow_conflicts != "Y" && empty ( $confirm_conflicts ) &&
   strlen ( $hour ) > 0 ) {
   $date = mktime ( 3, 0, 0, $month, $day, $year );
@@ -209,13 +229,13 @@ if ( $allow_conflicts != "Y" && empty ( $confirm_conflicts ) &&
     $ex_days, $rpt_freq );
 
   //echo $id . "<BR>";
-  $overlap = overlap ( $dates, $duration, $hour, $minute, $participants,
-    $login, empty ( $id ) ? 0 : $id );
+  $conflicts = check_for_conflicts ( $dates, $duration, $hour, $minute,
+    $participants, $login, empty ( $id ) ? 0 : $id );
 
 }
-if ( empty ( $error ) && ! empty ( $overlap ) ) {
+if ( empty ( $error ) && ! empty ( $conflicts ) ) {
   $error = translate("The following conflicts with the suggested time") .
-    ":<UL>$overlap</UL>";
+    ":<UL>$conflicts</UL>";
 }
 
 
@@ -357,9 +377,15 @@ if ( empty ( $error ) ) {
   // now add participants and send out notifications
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
     $my_cat_id = "";
-    // if public access, always require approval
+    // if public access, require approval unless
+    // $public_access_add_needs_approval is set to "N"
     if ( $login == "__public__" ) {
-      $status = "W";
+      if ( ! empty ( $public_access_add_needs_approval ) &&
+        $public_access_add_needs_approval == "N" ) {
+        $status = "A"; // no approval needed
+      } else {
+        $status = "W"; // approval required
+      }
       $my_cat_id = $cat_id;
     } else if ( ! $newevent ) {
       // keep the old status if no email will be sent
@@ -376,7 +402,19 @@ if ( empty ( $error ) ) {
       $send_user_mail = true;
       $status = ( $participants[$i] != $login && $require_approvals == "Y" ) ?
         "W" : "A";
-      $my_cat_id = ( $participants[$i] != $login ) ? 'NULL' : $cat_id;
+      if ( $participants[$i] == $login ) {
+        $my_cat_id = $cat_id;
+      } else {
+        // if it's a global cat, then set it for other users as well.
+        if ( ! empty ( $categories[$cat_id] ) &&
+          empty ( $category_owners[$cat_id] ) ) {
+          // found categ. and owner set to NULL; it is global
+          $my_cat_id = $cat_id;
+        } else {
+          // not global category
+          $my_cat_id = 'NULL';
+        }
+      }
     }
     if ( empty ( $my_cat_id ) ) $my_cat_id = 'NULL';
     $sql = "INSERT INTO webcal_entry_user " .
@@ -595,19 +633,23 @@ if ( empty ( $error ) ) {
 </HEAD>
 <BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
-<?php if ( strlen ( $overlap ) ) { ?>
+<?php if ( strlen ( $conflicts ) ) { ?>
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Scheduling Conflict")?></H2></FONT>
 
 <?php etranslate("Your suggested time of")?> <B>
 <?php
-  $time = sprintf ( "%d%02d00", $hour, $minute );
-  echo display_time ( $time );
-  if ( $duration > 0 )
-    echo "-" . display_time ( add_duration ( $time, $duration ) );
+  if ( $allday == "Y" )
+    etranslate("All day event");
+  else {
+    $time = sprintf ( "%d%02d00", $hour, $minute );
+    echo display_time ( $time );
+    if ( $duration > 0 )
+      echo "-" . display_time ( add_duration ( $time, $duration ) );
+  }
 ?>
 </B> <?php etranslate("conflicts with the following existing calendar entries")?>:
 <UL>
-<?php echo $overlap; ?>
+<?php echo $conflicts; ?>
 </UL>
 
 <?php
@@ -626,7 +668,14 @@ if ( empty ( $error ) ) {
 ?>
 <table>
  <tr>
-   <td><input type="submit" name="confirm_conflicts" value="&nbsp;<?php etranslate("Save")?>&nbsp;"></td>
+<?php
+  // Allow them to override a conflict if server settings allow it
+  if ( ! empty ( $allow_conflict_override ) &&
+    $allow_conflict_override == "Y" ) {
+    echo "<td><input type=\"submit\" name=\"confirm_conflicts\" " .
+      "value=\"&nbsp;" . translate("Save") . "&nbsp;\"></td>\n";
+  }
+?>
    <td><input type="button" value="<?php etranslate("Cancel")?>" onClick="history.back()"><td>
  </tr>
 </table>

@@ -12,7 +12,7 @@ load_user_preferences ();
 
 include "includes/translate.php";
 
-$USERS_PER_TABLE = 6;
+$DAYS_PER_TABLE = 7;
 
 if ( $allow_view_other == "N" && ! $is_admin ) {
   // not allowed...
@@ -53,46 +53,68 @@ if ( ! empty ( $date ) && ! empty ( $date ) ) {
     $thisyear = date("Y");
   else
     $thisyear = $year;
+  if ( empty ( $day ) || $day == 0 )
+    $thisday = date ( "d" );
+  else
+    $thisday = $day;
 }
 
-$thisdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
+$thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 
-$next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
+$next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
-$nextdate = sprintf ( "%04d%02d01", $nextyear, $nextmonth );
+$nextday = date ( "d", $next );
+$nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
 
-$prev = mktime ( 3, 0, 0, $thismonth - 1, 1, $thisyear );
+$prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
-$prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
+$prevday = date ( "d", $prev );
+$prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
-$startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
-$enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
-$monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
-$monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
+$today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
+
+// We add 2 hours on to the time so that the switch to DST doesn't
+// throw us off.  So, all our dates are 2AM for that day.
+if ( $WEEK_START == 1 )
+  $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
+else
+  $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
+$wkend = $wkstart + ( 3600 * 24 * 6 );
+$startdate = date ( "Ymd", $wkstart );
+$enddate = date ( "Ymd", $wkend );
+
+for ( $i = 0; $i < 7; $i++ ) {
+  $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
+  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
+  $header[$i] = $weekdays[$i] . "<BR>" .
+     month_short_name ( date ( "m", $days[$i] ) - 1 ) .
+     " " . date ( "d", $days[$i] );
+}
 
 ?>
 
 <TABLE BORDER="0" WIDTH="100%">
 <TR><TD ALIGN="left">
 <?php if ( ! $friendly ) { ?>
-<A HREF="view_m.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Previous")?>"></A>
+<A HREF="view_v.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Previous")?>"></A>
 <?php } ?>
 </TD>
 <TD ALIGN="middle">
 <FONT SIZE="+2" COLOR="<?php echo $H2COLOR?>">
 <B>
 <?php
-  printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
+  echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
+    "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
+    date_to_str ( date ( "Ymd", $wkend ), false );
 ?>
 </B></FONT><BR>
 <FONT COLOR="<?php echo $H2COLOR?>"><?php echo $view_name ?></FONT>
-
 </TD>
 <TD ALIGN="right">
 <?php if ( ! $friendly ) { ?>
-<A HREF="view_m.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Next")?>"></A>
+<A HREF="view_v.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Next")?>"></A>
 <?php } ?>
 </TD></TR>
 </TABLE>
@@ -127,19 +149,19 @@ for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
 }
 
 
-for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
+for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   // since print_date_entries is rather stupid, we can swap the event data
   // around for users by changing what $events points to.
 
   // Calculate width of columns in this table.
   $num_left = count ( $viewusers ) - $j;
-  if ( $num_left > $USERS_PER_TABLE )
-    $num_left = $USERS_PER_TABLE;
+  if ( $num_left > $DAYS_PER_TABLE )
+    $num_left = $DAYS_PER_TABLE;
   if ( $num_left > 0 ) {
-    if ( $num_left < $USERS_PER_TABLE ) {
+    if ( $num_left < $DAYS_PER_TABLE ) {
       $tdw = (int) ( 90 / $num_left );
     } else {
-      $tdw = (int) ( 90 / $USERS_PER_TABLE );
+      $tdw = (int) ( 90 / $DAYS_PER_TABLE );
     }
   } else {
     $tdw = 5;
@@ -155,23 +177,14 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 <TABLE BORDER="1" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
 <?php } ?>
 
-<TR><TD BGCOLOR="<?php echo $THBG?>">&nbsp;</TD>
+<TR><TD WIDTH="10%" BGCOLOR="<?php echo $THBG?>">&nbsp;</TD>
 
 <?php
+
   $today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
-  // $j points to start of this table/row
-  // $k is counter starting at 0
-  // $i starts at table start and goes until end of this table/row.
-  for ( $i = $j, $k = 0;
-    $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
-    $user = $viewusers[$i];
-    user_load_variables ( $user, "temp" );
-    echo "<TH CLASS=\"tableheader\" WIDTH=\"tdw%\" BGCOLOR=\"$THBG\">$tempfullname</TD>";
-  }
-  echo "</TR>\n";
-  
-  for ( $date = $monthstart; date ( "Ymd", $date ) <= date ( "Ymd", $monthend );
-    $date += ( 24 * 3600 ), $wday++ ) {
+  for ( $date = $wkstart, $h = 0;
+    date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
+    $date += ( 24 * 3600 ), $h++ ) {
     $wday = strftime ( "%w", $date );
     $weekday = weekday_short_name ( $wday );
     if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
@@ -184,12 +197,35 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
         $color = $CELLBG;
       $class = "tableheader";
     }
-    echo "<TR><TH CLASS=\"$class\" WIDTH=\"10%\" BGCOLOR=\"$color\" VALIGN=\"top\">" .
+    echo "<TH CLASS=\"$class\" WIDTH=\"10%\" BGCOLOR=\"$color\" VALIGN=\"top\">" .
       "<FONT SIZE=\"-1\" CLASS=\"$class\">" . $weekday . " " .
       round ( date ( "d", $date ) ) . "</FONT></TH>\n";
-    for ( $i = $j, $k = 0;
-      $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
-      $user = $viewusers[$i];
+  }
+  echo "</TR>\n";
+  
+  
+      // ------
+    for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
+      // ------
+    $user = $viewusers[$i];
+    user_load_variables ( $user, "temp" );
+    echo "<TH CLASS=\"tableheader\" WIDTH=\"$tdw%\" BGCOLOR=\"$THBG\">$tempfullname</TH>";
+
+      // ------
+  for ( $date = $wkstart, $h = 0;
+    date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
+    $date += ( 24 * 3600 ), $h++ ) {
+      // ------
+    if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
+      $color = $TODAYCELLBG;
+      $class = "tableheadertoday";
+    } else {
+      if ( $wday == 0 || $wday == 6 )
+        $color = $WEEKENDBG;
+      else
+        $color = $CELLBG;
+      $class = "tablecell";
+    }
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
       echo "<TD WIDTH=\"$tdw%\" BGCOLOR=\"$color\">";
@@ -207,17 +243,15 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     echo "</TD></TR></TABLE>\n</TABLE>\n<P>\n";
   else
     echo "</TABLE>\n<P>\n";
-  
 }
 
 
 $user = ""; // reset
 
-if ( empty ( $friendly ) )
-  echo $eventinfo;
+echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<A CLASS=\"navlinks\" HREF=\"view_m.php?id=$id&date=$thisdate&friendly=1\" " .
+  echo "<A CLASS=\"navlinks\" HREF=\"view_v.php?id=$id&date=$thisdate&friendly=1\" " .
     "TARGET=\"cal_printer_friendly\" onMouseOver=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</A>\n";
@@ -225,9 +259,8 @@ if ( ! $friendly )
 
 if ( ! $friendly ) {
   include "includes/trailer.php";
-} else {
-  dbi_close ( $c );
 }
 ?>
+
 </BODY>
 </HTML>

@@ -1,11 +1,22 @@
-Version 0.9.40dev (?? ??? 2002)
-  - Added new includes/dbtable.php.  It's not used by WebCalendar, but
-    is used by other apps that are add-ons/plug-ins for WebCalendar.
+Version 0.9.40 (30 Nov 2002)
+  - Added support for all-day events that will prevent any events from
+    being added to that day (good for out-of-the-office/vacation).
+  - Added ability to limit the number of timed events (appointments)
+    a single user can have on one day.  This feature can be turned
+    on and the limit set in the admin system settings.
+  - The ability to override an event conflict (from either a scheduling
+    conflict or exceeding max number of events per day) is now
+    configurable in the admin system settings.
   - Added support for external participants.  If an email address is
     provided with the external user name, they can receive notifications
     and reminders.  There are three new admin settings for this, one
     that enables external users, one that allows notifications for them,
     and one that allows email reminders for them.
+  - Added system settings option that will allow new public events to
+    not require any approval.  (Previously, this always required an
+    admin user's approval.)
+  - Fixed security bug where public access users could add "&user=craig"
+    onto the URL to view calendars they weren't supposed to get to.
   - Added support for selection lists in site extras.  This can be used
     to provide a list of possible locations, etc.
   - Fixed bug: Despite setting "public user can view other users' calendars'
@@ -19,6 +30,9 @@ Version 0.9.40dev (?? ??? 2002)
     another user.
   - Changed "ORDER BY UPPER(cal_name)" to "ORDER BY cal_name" in groups.php
     since older versions of MySQL do not like this.
+  - Fixed bug 637318: Email all on participants on view_entry.php
+    was not placing not including a space after the comma (which
+    certain mail apps require.)
   - Fixed bug 616143: removed irrelevant line of code causing
     errors in week.php
   - Fixed bug 614273: unable to delete global categories

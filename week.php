@@ -28,6 +28,15 @@ if ( ! empty ( $friendly ) )
 else
   $hide_icons = false;
 
+
+$can_add = ( $readonly == "N" || $is_admin == "Y" );
+if ( $public_access == "Y" && $login == "__public__" ) {
+  if ( $public_access_can_add != "Y" )
+    $can_add = false;
+  if ( $public_access_others != "Y" )
+    $user = ""; // security precaution
+}
+
 if ( strlen ( $user ) ) {
   $u_url = "user=$user&";
   user_load_variables ( $user, "user_" );
@@ -35,11 +44,6 @@ if ( strlen ( $user ) ) {
   $u_url = "";
   $user_fullname = $fullname;
 }
-
-$can_add = ( $readonly == "N" || $is_admin == "Y" );
-if ( $public_access == "Y" && $public_access_can_add != "Y" &&
-  $login == "__public__" )
-  $can_add = false;
 
 if ( ! empty ( $date ) && strlen ( $date ) > 0 ) {
   $thisyear = $year = substr ( $date, 0, 4 );
@@ -221,6 +225,7 @@ $get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
 if ( $login == "__public__" )
   $get_unapproved = false;
 
+$all_day = array ();
 for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   // get all the repeating events for this date and store in array $rep
   $date = date ( "Ymd", $days[$d] );
@@ -244,6 +249,8 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
           $viewid = $rep[$cur_rep]['cal_id'];
           $viewname = $rep[$cur_rep]['cal_name'];
         }
+        if ( $rep['cal_duration'] == ( 24 * 60 ) )
+          $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $viewid,
           $date, $rep[$cur_rep]['cal_time'],
           $viewname, $rep[$cur_rep]['cal_description'],
@@ -262,6 +269,8 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
         $viewid = $ev[$i]['cal_id'];
         $viewname = $ev[$i]['cal_name'];
       }
+      if ( $ev[$i]['cal_duration'] == ( 24 * 60 ) )
+        $all_day[$d] = 1;
       html_for_event_week_at_a_glance ( $viewid,
         $date, $ev[$i]['cal_time'],
         $viewname, $ev[$i]['cal_description'],
@@ -281,6 +290,8 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
         $viewid = $rep[$cur_rep]['cal_id'];
         $viewname = $rep[$cur_rep]['cal_name'];
       }
+      if ( $rep['cal_duration'] == ( 24 * 60 ) )
+        $all_day[$d] = 1;
       html_for_event_week_at_a_glance ( $viewid,
         $date, $rep[$cur_rep]['cal_time'],
         $viewname, $rep[$cur_rep]['cal_description'],
@@ -362,6 +373,8 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     if ( empty ( $WEEKENDBG ) )
       $is_weekend = false;
     $color = $is_weekend ? $WEEKENDBG : $CELLBG;
+    if ( $all_day[$d] > 0 )
+      $color = $TODAYCELLBG;
     if ( $rowspan_day[$d] > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.

@@ -431,7 +431,7 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
 // someone else's events (so they may need access to users who are not
 // in the same groups that they are in).
 function get_my_users () {
-  global $login, $is_admn, $groups_enabled, $user_sees_only_his_groups;
+  global $login, $is_admin, $groups_enabled, $user_sees_only_his_groups;
 
   if ( $groups_enabled == "Y" && $user_sees_only_his_groups == "Y" &&
     ! $is_admin ) {
@@ -463,13 +463,7 @@ function get_my_users () {
     if ( count ( $groups ) == 1 )
       $sql .= "= " . $groups[0];
     else {
-      $sql .= "IN ( ";
-      for ( $i = 0; $i < count ( $groups ); $i++ ) {
-        if ( $i > 0 )
-	  $sql .= ", ";
-        $sql .= $groups[$i];
-      }
-      $sql .= " )";
+      $sql .= "IN ( " . implode ( ", ", $groups ) . " )";
     }
     //echo "SQL: $sql <P>\n";
     $res = dbi_query ( $sql );
@@ -659,6 +653,7 @@ function date_selection_html ( $prefix, $date ) {
 //   $id - event id
 //   $date - date (not used)
 //   $time - time (in HHMMSS format)
+//   $duration - event duration (in minutes)
 //   $name - event name
 //   $description - long description of event
 //   $status - event status
@@ -685,7 +680,9 @@ function print_entry ( $id, $date, $time, $duration,
   }
   // if we are looking at a view, then always use "entry"
   if ( strstr ( $PHP_SELF, "view_m.php" ) ||
-    strstr ( $PHP_SELF, "view_w.php" ) )
+    strstr ( $PHP_SELF, "view_w.php" ) ||
+    strstr ( $PHP_SELF, "view_v.php" ) ||
+    strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
   if ( $pri == 3 ) echo "<B>";
@@ -714,8 +711,10 @@ function print_entry ( $id, $date, $time, $duration,
 
 
   $timestr = "";
-  $my_time = $time + ( $TZ_OFFSET * 10000 );
-  if ( $time != -1 ) {
+  if ( $duration == ( 24 * 60 ) ) {
+    $timestr = translate("All day event");
+  } else if ( $time != -1 ) {
+    $my_time = $time + ( $TZ_OFFSET * 10000 );
     if ( $GLOBALS["TIME_FORMAT"] == "24" ) {
       printf ( "%02d:%02d", ( $my_time / 10000 ) % 24,
         ( $my_time / 100 ) % 100 );
@@ -727,21 +726,25 @@ function print_entry ( $id, $date, $time, $duration,
       if ( $m > 0 )
         printf ( ":%02d", $m );
       echo ( (int) ( $my_time / 10000 ) ) < 12 ? translate("am") : translate("pm");
+      echo "&gt;";
     }
-    echo "&gt;";
     $timestr = display_time ( $time );
     if ( $duration > 0 ) {
-      // calc end time
-      $h = (int) ( $time / 10000 );
-      $m = ( $time / 100 ) % 100;
-      $m += $duration;
-      $d = $duration;
-      while ( $m >= 60 ) {
-        $h++;
-        $m -= 60;
+      if ( $duration == ( 24 * 60 ) ) {
+        $timestr = translate("All day event");
+      } else {
+        // calc end time
+        $h = (int) ( $time / 10000 );
+        $m = ( $time / 100 ) % 100;
+        $m += $duration;
+        $d = $duration;
+        while ( $m >= 60 ) {
+          $h++;
+          $m -= 60;
+        }
+        $end_time = sprintf ( "%02d%02d00", $h, $m );
+        $timestr .= " - " . display_time ( $end_time );
       }
-      $end_time = sprintf ( "%02d%02d00", $h, $m );
-      $timestr .= " - " . display_time ( $end_time );
     }
   }
   if ( $login != $user && $access == 'R' && strlen ( $user ) )
@@ -1583,6 +1586,7 @@ function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
 
 
 
+// Check for conflicts.
 // Find overlaps between an array of dates and the other dates in the database.
 // $date is an array of dates in Ymd format that is check for overlaps.
 // the $duration, $hour, and $minute are integers that show the time of
@@ -1592,11 +1596,21 @@ function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
 // $id is the current calendar entry being checked if it has been stored before
 // (this keeps overlaps from wrongly checking an event against itself.
 // TODO: Update this to handle exceptions to repeating events
-function overlap ( $dates, $duration, $hour, $minute,
+// 
+// Appt limits: if enabled we will store each event in an array using
+// the key $user-$date, so for testuser on 12/31/95
+// we would use $evtcnt["testuser-19951231"]
+//
+// Return empty string for no conflicts or return the HTML of the
+// conflicts when one or more are found.
+function check_for_conflicts ( $dates, $duration, $hour, $minute,
   $participants, $login, $id ) {
   global $single_user_login, $single_user;
-  global $repeated_events;
+  global $repeated_events, $limit_appts, $limit_appts_number;
   if (!count($dates)) return false;
+
+  $evtcnt = array ();
+
   $sql = "SELECT distinct webcal_entry_user.cal_login, webcal_entry.cal_time," .
     "webcal_entry.cal_duration, webcal_entry.cal_name, " .
     "webcal_entry.cal_id, webcal_entry.cal_ext_for_id, " .
@@ -1626,7 +1640,7 @@ function overlap ( $dates, $duration, $hour, $minute,
   // make sure we don't get something past the end date of the
   // event we are saving.
   //echo "SQL: $sql<P>";
-  $overlap = "";
+  $conflicts = "";
   $res = dbi_query ( $sql );
   $found = array();
   $count = 0;
@@ -1640,24 +1654,41 @@ function overlap ( $dates, $duration, $hour, $minute,
       if ( $row[4] != $id && ( empty ( $row[5] ) || $row[5] != $id ) ) {
         $time2 = $row[1];
         $duration2 = $row[2];
-        if ( times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
-          $overlap .= "<LI>";
+        $cntkey = $user . "-" . $row[8];
+        $evtcnt[$cntkey]++;
+        $over_limit = 0;
+        if ( $limit_appts == "Y" && $limit_appts_number > 0
+          && $evtcnt[$cntkey] >= $limit_appts_number ) {
+          $over_limit = 1;
+        }
+        if ( $over_limit ||
+          times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
+          $conflicts .= "<LI>";
           if ( $single_user == "Y" )
-            $overlap .= "$row[0]: ";
+            $conflicts .= "$row[0]: ";
           if ( $row[6] == 'R' && $row[0] != $login )
-            $overlap .=  "(" . translate("Private") . ")";
+            $conflicts .=  "(" . translate("Private") . ")";
           else {
-            $overlap .=  "<A HREF=\"view_entry.php?id=$row[4]";
+            $conflicts .=  "<A HREF=\"view_entry.php?id=$row[4]";
             if ( $user != $login )
-              $overlap .= "&user=$user";
-            $overlap .= "\">$row[3]</A>";
+              $conflicts .= "&user=$user";
+            $conflicts .= "\">$row[3]</A>";
           }
-          $overlap .= " (" . display_time ( $time2 );
-          if ( $duration2 > 0 )
-            $overlap .= "-" .
-              display_time ( add_duration ( $time2, $duration2 ) );
-          $overlap .= ")";
-          $overlap .= " on " . date_to_str( $row[8] );
+          if ( $duration2 == ( 24 * 60 ) ) {
+            $conflicts .= " (" . translate("All day event") . ")";
+          } else {
+            $conflicts .= " (" . display_time ( $time2 );
+            if ( $duration2 > 0 )
+              $conflicts .= "-" .
+                display_time ( add_duration ( $time2, $duration2 ) );
+            $conflicts .= ")";
+          }
+          $conflicts .= " on " . date_to_str( $row[8] );
+          if ( $over_limit ) {
+            $tmp = translate ( "exceeds limit of XXX events per day" );
+            $tmp = str_replace ( "XXX", $limit_appts_number, $tmp );
+            $conflicts .= " (" . $tmp . ")";
+          }
         }
       }
     }
@@ -1697,30 +1728,30 @@ function overlap ( $dates, $duration, $hour, $minute,
           $time2 = $row['cal_time'];
           $duration2 = $row['cal_duration'];
           if ( times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
-            $overlap .= "<LI>";
+            $conflicts .= "<LI>";
             if ( $single_user != "Y" )
-              $overlap .= $row['cal_login'] . ": ";
+              $conflicts .= $row['cal_login'] . ": ";
             if ( $row['cal_access'] == 'R' && $row['cal_login'] != $login )
-              $overlap .=  "(" . translate("Private") . ")";
+              $conflicts .=  "(" . translate("Private") . ")";
             else {
-              $overlap .=  "<A HREF=\"view_entry.php?id=" . $row['cal_id'];
+              $conflicts .=  "<A HREF=\"view_entry.php?id=" . $row['cal_id'];
               if ( $user != $login )
-                $overlap .= "&user=$user";
-              $overlap .= "\">" . $row['cal_name'] . "</A>";
+                $conflicts .= "&user=$user";
+              $conflicts .= "\">" . $row['cal_name'] . "</A>";
             }
-            $overlap .= " (" . display_time ( $time2 );
+            $conflicts .= " (" . display_time ( $time2 );
             if ( $duration2 > 0 )
-              $overlap .= "-" .
+              $conflicts .= "-" .
                 display_time ( add_duration ( $time2, $duration2 ) );
-            $overlap .= ")";
-            $overlap .= " on " . date("l, F j, Y", $dates[$i]);
+            $conflicts .= ")";
+            $conflicts .= " on " . date("l, F j, Y", $dates[$i]);
           }
         }
       }
     }
   }
    
-  return $overlap;
+  return $conflicts;
 }
 
 
@@ -1764,14 +1795,15 @@ function calc_time_slot ( $time, $round_down = false ) {
 // Generate the HTML for the add icon.
 // date = date in YYYYMMDD format
 // hour = hour of day (eg. 1,13,23)
-function html_for_add_icon ( $date=0,$hour="", $minute="" ) {
+function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   global $TZ_OFFSET;
   if ( ! empty ( $hour ) )
     $hour += $TZ_OFFSET;
   return "<A HREF=\"edit_entry.php?" . $u_url .
     "date=$date" . ( $hour > 0 ? "&hour=$hour" : "" ) .
-    ( $minute > 0 ? "&minute=$minute" : "" ) . "\">" .
-    "<IMG SRC=\"new.gif\" WIDTH=\"10\" HEIGHT=\"10\" ALT=\"" .
+    ( $minute > 0 ? "&minute=$minute" : "" ) .
+    ( empty ( $user ) ? "" :  "&defusers=$user" ) .
+    "\"><IMG SRC=\"new.gif\" WIDTH=\"10\" HEIGHT=\"10\" ALT=\"" .
     translate("New Entry") . "\" BORDER=\"0\" ALIGN=\"right\">" .  "</A>";
 }
 
@@ -1792,7 +1824,7 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   $key++;
   
   // Figure out which time slot it goes in.
-  if ( $time >= 0 ) {
+  if ( $time >= 0 && $duration != ( 24 * 60 ) ) {
     $ind = calc_time_slot ( $time );
     if ( $ind < $first_slot )
       $first_slot = $ind;
@@ -1810,7 +1842,9 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   }
   // if we are looking at a view, then always use "entry"
   if ( strstr ( $PHP_SELF, "view_m.php" ) ||
-    strstr ( $PHP_SELF, "view_w.php" ) )
+    strstr ( $PHP_SELF, "view_w.php" ) ||
+    strstr ( $PHP_SELF, "view_v.php" ) ||
+    strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
 
@@ -1840,7 +1874,9 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   }
 
 
-  if ( $time >= 0 ) {
+  if ( $duration == ( 24 * 60 ) ) {
+    $timestr = translate("All day event");
+  } else if ( $time >= 0 ) {
     $hour_arr[$ind] .= display_time ( $time ) . "&gt; ";
     $timestr = display_time ( $time );
     if ( $duration > 0 ) {
@@ -1855,18 +1891,18 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
       }
       $end_time = sprintf ( "%02d%02d00", $h, $m );
       $timestr .= "-" . display_time ( $end_time );
-      if ( empty ( $rowspan_arr[$ind] ) )
-        $rowspan_arr[$ind] = 0; // avoid warning below
-      // which slot is end time in? take one off so we don't
-      // show 11:00-12:00 as taking up both 11 and 12 slots.
-      $endind = calc_time_slot ( $end_time, true );
-      if ( $endind == $ind )
-        $rowspan = 0;
-      else
-        $rowspan = $endind - $ind + 1;
-      if ( $rowspan > $rowspan_arr[$ind] && $rowspan > 1 )
-        $rowspan_arr[$ind] = $rowspan;
     }
+    if ( empty ( $rowspan_arr[$ind] ) )
+      $rowspan_arr[$ind] = 0; // avoid warning below
+    // which slot is end time in? take one off so we don't
+    // show 11:00-12:00 as taking up both 11 and 12 slots.
+    $endind = calc_time_slot ( $end_time, true );
+    if ( $endind == $ind )
+      $rowspan = 0;
+    else
+      $rowspan = $endind - $ind + 1;
+    if ( $rowspan > $rowspan_arr[$ind] && $rowspan > 1 )
+      $rowspan_arr[$ind] = $rowspan;
   } else {
     $timestr = "";
   }
@@ -1936,7 +1972,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
 
   // If TZ_OFFSET make this event before the start of the day or
   // after the end of the day, adjust the time slot accordingly.
-  if ( $time >= 0 ) {
+  if ( $time >= 0 && $duration != ( 24 * 60 ) ) {
     if ( $time + ( $TZ_OFFSET * 10000 ) > 240000 )
       $time -= 240000;
     else if ( $time + ( $TZ_OFFSET * 10000 ) < 0 )
@@ -1962,7 +1998,9 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   }
   // if we are looking at a view, then always use "entry"
   if ( strstr ( $PHP_SELF, "view_m.php" ) ||
-    strstr ( $PHP_SELF, "view_w.php" ) )
+    strstr ( $PHP_SELF, "view_w.php" )  || 
+    strstr ( $PHP_SELF, "view_v.php" ) ||
+    strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
 
@@ -1988,7 +2026,9 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   }
 
 
-  if ( $time >= 0 ) {
+  if ( $duration == ( 24 * 60 ) ) {
+    $hour_arr[$ind] .= "[" . translate("All day event") . "] ";
+  } else if ( $time >= 0 ) {
     $hour_arr[$ind] .= "[" . display_time ( $time );
     if ( $duration > 0 ) {
       // calc end time
@@ -2077,6 +2117,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
   $last_slot = (int) ( ( ( $WORK_DAY_END_HOUR - $TZ_OFFSET ) * 60 ) / $interval);
   //echo "first_slot = $first_slot <BR> last_slot = $last_slot <BR> interval = $interval <BR> TIME_SLOTS = $TIME_SLOTS <BR>";
   $rowspan_arr = array ();
+  $all_day = 0;
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     // print out any repeating events that are before this one...
     while ( $cur_rep < count ( $rep ) &&
@@ -2090,6 +2131,8 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
           $viewid = $rep[$cur_rep]['cal_id'];
           $viewname = $rep[$cur_rep]['cal_name'];
         }
+        if ( $rep['cal_duration'] == ( 24 * 60 ) )
+          $all_day = 1;
         html_for_event_day_at_a_glance ( $viewid,
           $date, $rep[$cur_rep]['cal_time'],
           $viewname, $rep[$cur_rep]['cal_description'],
@@ -2108,6 +2151,8 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
         $viewid = $ev[$i]['cal_id'];
         $viewname = $ev[$i]['cal_name'];
       }
+      if ( $ev[$i]['cal_duration'] == ( 24 * 60 ) )
+        $all_day = 1;
       html_for_event_day_at_a_glance ( $viewid,
         $date, $ev[$i]['cal_time'],
         $viewname, $ev[$i]['cal_description'],
@@ -2127,6 +2172,8 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
         $viewid = $rep[$cur_rep]['cal_id'];
         $viewname = $rep[$cur_rep]['cal_name'];
       }
+      if ( $rep['cal_duration'] == ( 24 * 60 ) )
+        $all_day = 1;
       html_for_event_day_at_a_glance ( $viewid,
         $date, $rep[$cur_rep]['cal_time'],
         $viewname, $rep[$cur_rep]['cal_description'],
@@ -2193,8 +2240,9 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
       }
       $rowspan--;
     } else {
+      $color = $all_day ? $TODAYCELLBG : $CELLBG;
       if ( empty ( $hour_arr[$i] ) ) {
-        echo "<TD HEIGHT=\"40\" BGCOLOR=\"$CELLBG\">";
+        echo "<TD HEIGHT=\"40\" BGCOLOR=\"$color\">";
         if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m );
         echo "&nbsp;</TD></TR>\n";
@@ -2720,6 +2768,291 @@ function fake_mail ( $mailto, $subj, $text, $hdrs ) {
     "Subject: $subj <BR>" .
     nl2br ( $hdrs ) . "<P>" .
     nl2br ( $text );
+}
+
+//
+// Print all the entries in a time bar format for the specified user
+// for the
+// specified date.  If we are displaying data from someone other than
+// the logged in user, then check the access permission of the entry.
+// params:
+//   $date - date in YYYYMMDD format
+//   $user - username
+//   $hide_icons - hide icons to make printer-friendly
+//   $is_ssi - is this being called from week_ssi.php?
+function print_date_entries_timebar ( $date, $user, $hide_icons, $ssi ) {
+  global $events, $readonly, $is_admin,
+    $public_access, $public_access_can_add;
+  $cnt = 0;
+  $get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
+  // public access events always must be approved before being displayed
+  if ( $GLOBALS["login"] == "__public__" )
+    $get_unapproved = false;
+
+  $year = substr ( $date, 0, 4 );
+  $month = substr ( $date, 4, 2 );
+  $day = substr ( $date, 6, 2 );
+ 
+  $dateu = mktime ( 3, 0, 0, $month, $day, $year );
+
+  $can_add = ( $readonly == "N" || $is_admin );
+  if ( $public_access == "Y" && $public_access_can_add != "Y" &&
+    $GLOBALS["login"] == "__public__" )
+    $can_add = false;
+
+  // get all the repeating events for this date and store in array $rep
+  $rep = get_repeating_entries ( $users[$i], $date ) ;
+  $cur_rep = 0;
+
+  // get all the non-repeating events for this date and store in $ev
+  $ev = get_entries ( $users[$i], $date );
+
+  for ( $i = 0; $i < count ( $ev ); $i++ ) {
+    // print out any repeating events that are before this one...
+    while ( $cur_rep < count ( $rep ) &&
+      $rep[$cur_rep]['cal_time'] < $ev[$i]['cal_time'] ) {
+      if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' ) {
+        print_entry_timebar ( $rep[$cur_rep]['cal_id'],
+          $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
+          $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
+          $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
+          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
+          $hide_icons );
+        $cnt++;
+      }
+      $cur_rep++;
+    }
+    if ( $get_unapproved || $ev[$i]['cal_status'] == 'A' ) {
+      print_entry_timebar ( $ev[$i]['cal_id'],
+        $date, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
+        $ev[$i]['cal_name'], $ev[$i]['cal_description'],
+        $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
+        $ev[$i]['cal_access'], $ev[$i]['cal_login'], $hide_icons );
+      $cnt++;
+    }
+  }
+  // print out any remaining repeating events
+  while ( $cur_rep < count ( $rep ) ) {
+    if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' ) {
+      print_entry_timebar ( $rep[$cur_rep]['cal_id'],
+        $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
+        $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
+        $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
+        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
+        $hide_icons );
+      $cnt++;
+    }
+    $cur_rep++;
+  }
+  if ( $cnt == 0 )
+    echo "&nbsp;"; // so the table cell has at least something
+}
+
+// Print the HTML for an events with a timebar.
+// params:
+//   $id - event id
+//   $date - date (not used)
+//   $time - time (in HHMMSS format)
+//   $duration - duration (in minutes)
+//   $name - event name
+//   $description - long description of event
+//   $status - event status
+//   $pri - event priority
+//   $access - event access
+//   $event_owner - user associated with this event
+//   $hide_icons - hide icons to make printer-friendly
+function print_entry_timebar ( $id, $date, $time, $duration,
+  $name, $description, $status,
+  $pri, $access, $event_owner, $hide_icons ) {
+  global $eventinfo, $login, $user, $PHP_SELF;
+  static $key = 0;
+  
+  global $layers;
+
+  // compute time offsets in % of total table width
+  $day_start=$prefarray["WORK_DAY_START_HOUR"] * 60;
+  if ( $day_start == 0 ) $day_start = 9*60;
+  $day_end=$prefarray["WORK_DAY_END_HOUR"] * 60;
+  if ( $day_end == 0 ) $day_end = 19*60;
+  if ( $day_end <= $day_start ) $day_end = $day_start + 60; //avoid exceptions
+
+  if ($time >= 0) {
+    $ev_start=$time/10000 * 60 + (($time/100)%100);
+    $ev_start = round(100 * ($ev_start - $day_start) / ($day_end - $day_start));
+  }else{
+    $ev_start= 0;
+  }
+  if ($duration > 0) {
+    $ev_duration = round(100 * $duration / ($day_end - $day_start)) ;
+    if ($ev_start + $ev_duration > 100 ) {
+      $ev_duration = 100 - $ev_start;
+    }
+  }else{
+    if ($time >= 0) {
+      $ev_duration = 1;
+    } else{
+      $ev_duration=100-$ev_start;
+    }
+  }
+  $ev_padding = 100 - $ev_start - $ev_duration;
+  // choose where to position the text (pos=0->before,pos=1->on,pos=2->after)
+  if ($ev_duration > 20) {    $pos = 1; }
+  elseif ($ev_padding > 20) { $pos = 2; }
+  else                     { $pos = 0; }
+
+
+  echo "<TABLE WIDTH=\"100%\" BGCOLOR=\"black\" BORDER=\"0\" CELLPADDING=\"0\" CELLSPACING=\"0\">\n";
+  echo "<TR>";
+  echo "<TD ALIGN=\"right\" WIDTH=\"$ev_start%\" BGCOLOR=\"white\">";
+  if ( $pos > 0 ) {
+    echo "&nbsp;</TD>";
+    echo "<TD WIDTH=\"$ev_duration%\">
+    <TABLE WIDTH=\"100%\" BORDER=\"0\" BGCOLOR=\"black\" CELLSPACING=\"1\">
+    <TR><TD ALIGN=\"middle\" BGCOLOR=\"#F5DEB3\">";
+    if ( $pos > 1 ) {
+      echo "&nbsp;</TD></TR></TABLE></TD>";
+      echo "<TD ALIGN=\"left\" WIDTH=\"$ev_padding%\" BGCOLOR=\"white\">";
+    }
+  };
+
+  echo "<FONT SIZE=\"-1\">";
+
+  if ( $login != $event_owner && strlen ( $event_owner ) ) {
+    $class = "layerentry";
+  } else {
+    $class = "entry";
+    if ( $status == "W" ) $class = "unapprovedentry";
+  }
+  // if we are looking at a view, then always use "entry"
+  if ( strstr ( $PHP_SELF, "view_m.php" ) ||
+    strstr ( $PHP_SELF, "view_w.php" ) ||
+    strstr ( $PHP_SELF, "view_v.php" ) ||
+    strstr ( $PHP_SELF, "view_t.php" ) )
+    $class = "entry";
+
+  if ( $pri == 3 ) echo "<B>";
+  if ( ! $hide_icons ) {
+    $divname = "eventinfo-$id-$key";
+    $key++;
+    echo "<A CLASS=\"$class\" HREF=\"view_entry.php?id=$id&date=$date";
+    if ( strlen ( $user ) > 0 )
+      echo "&user=" . $user;
+    echo "\" onMouseOver=\"window.status='" . translate("View this entry") .
+      "'; show(event, '$divname'); return true;\" onMouseOut=\"hide('$divname'); return true;\">";
+  }
+
+
+  if ( $login != $event_owner && strlen ( $event_owner ) )
+  {
+    for($index = 0; $index < sizeof($layers); $index++)
+    {
+        if($layers[$index]['cal_layeruser'] == $event_owner)
+        {
+            echo("<FONT COLOR=\"" . $layers[$index]['cal_color'] . "\">");
+        }
+    }
+  }
+
+  echo "[$event_owner]";
+  $timestr = "";
+  if ( $duration == ( 24 * 60 ) ) {
+    $timestr = translate("All day event");
+  } else if ( $time >= 0 ) {
+    $timestr = display_time ( $time );
+    if ( $duration > 0 ) {
+      // calc end time
+      $h = (int) ( $time / 10000 );
+      $m = ( $time / 100 ) % 100;
+      $m += $duration;
+      $d = $duration;
+      while ( $m >= 60 ) {
+        $h++;
+        $m -= 60;
+      }
+      $end_time = sprintf ( "%02d%02d00", $h, $m );
+      $timestr .= " - " . display_time ( $end_time );
+    }
+  }
+  if ( $login != $user && $access == 'R' && strlen ( $user ) )
+    echo "(" . translate("Private") . ")";
+
+  else
+  if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
+    echo "(" . translate("Private") . ")";
+  else
+  if ( $login != $event_owner && strlen ( $event_owner ) )
+  {
+    echo htmlspecialchars ( $name );
+    echo ("</FONT>");
+  }
+
+  else
+    echo htmlspecialchars ( $name );
+
+  echo "</A>";
+  if ( $pri == 3 ) echo "</B>";
+  echo "</FONT>";
+  echo "</TD>";
+  if ( $pos < 2 ) {
+    if ( $pos < 1 ) {
+      echo "<TD WIDTH=\"$ev_duration%\"> <TABLE WIDTH=\"100%\"
+      BORDER=\"0\" CELLPADDING=\"0\" CELLSPACING=\"1\"
+      BGCOLOR=\"black\"><TR><TD ALIGN=\"middle\"
+      BGCOLOR=\"#F5DEB3\">&nbsp;</TD>";
+    }
+    echo "</TR></TABLE></TD>";
+    echo "<TD ALIGN=\"left\" WIDTH=\"$ev_padding%\" BGCOLOR=\"white\"> &nbsp;</TD>";
+  }
+  echo "</TR></TABLE>";
+  if ( ! $hide_icons ) {
+    if ( $login != $user && $access == 'R' && strlen ( $user ) )
+      $eventinfo .= build_event_popup ( $divname, $event_owner,
+        translate("This event is confidential"), "" );
+
+    else
+    if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
+      $eventinfo .= build_event_popup ( $divname, $event_owner,
+        translate("This event is confidential"), "" );
+
+    else
+      $eventinfo .= build_event_popup ( $divname, $event_owner,
+        $description, $timestr );
+  }
+}
+
+function print_header_timebar($start_hour, $end_hour) {
+  //      sh+1   ...   eh-1       
+  // +------+----....----+------+
+  // |      |            |      |
+
+  // print hours
+  if ( ($end_hour - $start_hour) == 0 )
+    $offset = 0;
+  else
+    $offset = round(100/($end_hour - $start_hour)/2);
+  echo "<TABLE WIDTH=\"100%\" BGCOLOR=\"white\" BORDER=\"0\" CELLSPACING=\"0\" CELLPADDING=\"0\">
+        <TR><TD BGCOLOR=\"white\" WIDTH=\"$offset%\">&nbsp;</TD>\n";
+  for ($i = $start_hour+1; $i < $end_hour; $i++) {
+    $prev_offset = $offset;
+    $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
+    $width = $offset - $prev_offset;
+    echo "<TD BGCOLOR=\"white\" WIDTH=\"$width%\"
+    ALIGN=\"middle\"><FONT COLOR=\"#C0C0C0\" SIZE=\"-2\">$i</FONT></TD>\n";
+  }
+  $width = 100 - $offset;
+  echo "<TD WIDTH=\"$width%\">&nbsp;</TD>\n";
+  echo "</TR></TABLE>\n";
+
+  // print yardstick
+  echo "<TABLE WIDTH=\"100%\" BGCOLOR=\"#C0C0C0\" BORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"0\">
+        <TR>\n";
+  for ($i = $start_hour, $offset = 0; $i < $end_hour; $i++) {
+    $prev_offset = $offset;
+    $offset = round(100/($end_hour - $start_hour)*(i - $start_hour));
+    $width = $offset - $prev_offset;
+    echo "<TD WIDTH\"$width%\" BGCOLOR=\"white\">&nbsp;</TD>\n";
+  }
+  echo "</TR></TABLE>\n";
 }
 
 ?>
