@@ -5,6 +5,40 @@ global $groups_enabled,$WORK_DAY_START_HOUR;
 <script type="text/javascript">
 var oldhour = 0, oldminute = 0, olddh = 0, olddm = 0;
 
+// detect browser
+NS4 = (document.layers) ? 1 : 0;
+IE4 = (document.all) ? 1 : 0;
+// W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
+W3C = (document.getElementById) ? 1 : 0;	
+
+function makeVisible ( name ) {
+  var ele;
+
+  if ( W3C ) {
+    ele = document.getElementById(name);
+  } else if ( NS4 ) {
+    ele = document.layers[name];
+  } else { // IE4
+    ele = document.all[name];
+  }
+
+  if ( NS4 ) {
+    ele.visibility = "show";
+  } else {  // IE4 & W3C & Mozilla
+    ele.style.visibility = "visible";
+  }
+}
+
+function makeInvisible ( name ) {
+  if (W3C) {
+    document.getElementById(name).style.visibility = "hidden";
+  } else if (NS4) {
+    document.layers[name].visibility = "hide";
+  } else {
+    document.all[name].style.visibility = "hidden";
+  }
+}
+
 // do a little form verifying
 function validate_and_submit () {
   if ( document.forms[0].name.value == "" ) {
@@ -16,35 +50,37 @@ function validate_and_submit () {
   // Leading zeros seem to confuse parseInt()
   if ( document.forms[0].hour.value.charAt ( 0 ) == '0' )
     document.forms[0].hour.value = document.forms[0].hour.value.substring ( 1, 2 );
-  h = parseInt ( document.forms[0].hour.value );
-  m = parseInt ( document.forms[0].minute.value );
+  if ( document.forms[0].timetype.selectedIndex == 1 ) {
+    h = parseInt ( document.forms[0].hour.value );
+    m = parseInt ( document.forms[0].minute.value );
 <?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
-  if ( document.forms[0].ampm[1].checked ) {
-    // pm
-    if ( h < 12 )
-      h += 12;
-  } else {
-    // am
-    if ( h == 12 )
-      h = 0;
-  }
+    if ( document.forms[0].ampm[1].checked ) {
+      // pm
+      if ( h < 12 )
+        h += 12;
+    } else {
+      // am
+      if ( h == 12 )
+        h = 0;
+    }
 <?php } ?>
-  if ( h >= 24 || m > 59 ) {
-    alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
-    document.forms[0].hour.select ();
-    document.forms[0].hour.focus ();
-    return false;
-  }
-  // Ask for confirmation for time of day if it is before the user's
-  // preference for work hours.
-  <?php if ($GLOBALS["TIME_FORMAT"] == "24") {
-          echo "if ( h < $WORK_DAY_START_HOUR  ) {";
-        }  else {
-          echo "if ( h < $WORK_DAY_START_HOUR && document.forms[0].ampm[0].checked ) {";
-        }
-  ?>
+    if ( h >= 24 || m > 59 ) {
+      alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
+      document.forms[0].hour.select ();
+      document.forms[0].hour.focus ();
+      return false;
+    }
+    // Ask for confirmation for time of day if it is before the user's
+    // preference for work hours.
+    <?php if ($GLOBALS["TIME_FORMAT"] == "24") {
+      echo "if ( h < $WORK_DAY_START_HOUR  ) {";
+    }  else {
+      echo "if ( h < $WORK_DAY_START_HOUR && document.forms[0].ampm[0].checked ) {";
+    }
+    ?>
     if ( ! confirm ( "<?php etranslate ("The time you have entered begins before your preferred work hours.  Is this correct?")?> "))
       return false;
+  }
   }
   // is there really a change?
   changed = false;
@@ -117,8 +153,9 @@ function selectUsers () {
 <?php } ?>
 
 
-// This function is called wheneve someone clicks on the "All day event"
-// checkbox.  When the enabled all day, it clears all the time of day
+// This function is called wheneve someone clicks on the
+// "All day event" / "Untimed Event" / "Timed Event" selection
+// box.  When the enabled all day, it clears all the time of day
 // and duration fields.  If they change their mind and turn it off, we
 // put the original values back for them.
 // This isn't necessary, but it helps show what the meaning of "all-day" is.
@@ -128,27 +165,31 @@ function timetype_handler () {
   //alert ( "val " + i + "  = " + val );
   // i == 1 when set to timed event
   if ( i != 1 ) {
-    //alert("clear");
-    // switching to allday event... save values
-    if ( document.forms[0].hour.value != "" ) {
-      oldhour = document.forms[0].hour.value;
-      oldminute = document.forms[0].minute.value;
-      olddh = document.forms[0].duration_h.value;
-      olddm = document.forms[0].duration_m.value;
+    // Untimed/All Day
+    makeInvisible ( "timeentrystartprompt" );
+    makeInvisible ( "timeentrystart" );
+    if ( document.forms[0].duration_h ) {
+      makeInvisible ( "timeentrydurationprompt" );
+      makeInvisible ( "timeentryduration" );
+    } else {
+      makeInvisible ( "timeentryendprompt" );
+      makeInvisible ( "timeentryend" );
     }
-    document.forms[0].hour.value = "";
-    document.forms[0].minute.value = "";
-    document.forms[0].duration_h.value = "";
-    document.forms[0].duration_m.value = "";
-    //hide ( "timeentry" );
   } else {
-    //alert("set");
-    document.forms[0].hour.value = oldhour;
-    document.forms[0].minute.value = oldminute;
-    document.forms[0].duration_h.value = olddh;
-    document.forms[0].duration_m.value = olddm;
-    //unhide ( "timeentry" );
+    // Timed Event
+    makeVisible ( "timeentrystartprompt" );
+    makeVisible ( "timeentrystart" );
+    if ( document.forms[0].duration_h ) {
+      makeVisible ( "timeentrydurationprompt" );
+      makeVisible ( "timeentryduration" );
+    } else {
+      makeVisible ( "timeentryendprompt" );
+      makeVisible ( "timeentryend" );
+    }
   }
 }
+
+
+
 
 </script>

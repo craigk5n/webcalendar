@@ -194,7 +194,7 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 if ( empty ( $cal_date ) || ! $cal_date )
   $cal_date = $thisdate;
 
-$BodyX = 'xonload="timetype_handler()"';
+$BodyX = 'onload="timetype_handler()"';
 $INC = array('js/popups.php','js/edit_entry.php');
 print_header($INC,'',$BodyX);
 ?>
@@ -236,10 +236,19 @@ if ( $is_assistant || $is_nonuser_admin )
   ?>
 </td></tr>
 
+<tr>
+<td></td><td>
+<select name="timetype" onchange="timetype_handler()">
+<option value="U" <?php if ( $allday != "Y" && $hour == -1 ) echo " selected=\"selected\""?>><?php etranslate("Untimed event"); ?></option>
+<option value="T" <?php if ( $allday != "Y" && $hour >= 0 ) echo " selected=\"selected\""?>><?php etranslate("Timed event"); ?></option>
+<option value="A" <?php if ( $allday == "Y" ) echo " selected=\"selected\""?>><?php etranslate("All day event"); ?></option>
+</select>
+</td></tr>
+
 <?php if ($GLOBALS['TIMED_EVT_LEN'] != 'E') { ?>
-<tr><td class="tooltip" title="<?php etooltip("time-help")?>"><?php etranslate("Time")?>:</td>
+<tr><td class="tooltip" title="<?php etooltip("time-help")?>"><div id="timeentrystartprompt"><?php etranslate("Time")?>:</div></td>
 <?php } else { ?>
-<tr><td class="tooltip" title="<?php etooltip("time-help")?>"><?php etranslate("Start Time")?>:</td>
+<tr><td class="tooltip" title="<?php etooltip("time-help")?>"><div id="timeentrystartprompt"><?php etranslate("Start Time")?>:</div></td>
 <?php } ?>
 <?php
 
@@ -258,8 +267,8 @@ if ( $time < 0 )
   $h12 = "";
 ?>
   <td>
-<span id="timeentry">
-<input name="hour" size="2" value="<?php if ( $allday != "Y" ) echo $h12;?>" maxlength="2" />:<input name="minute" size="2" value="<?php if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $minute );?>" maxlength="2" />
+<div id="timeentrystart">
+<input name="hour" size="2" value="<?php if ( $time >= 0 && $allday != 'Y' ) echo $h12;?>" maxlength="2" />:<input name="minute" size="2" value="<?php if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $minute );?>" maxlength="2" />
 <?php
 if ( $TIME_FORMAT == "12" ) {
   echo "<label><input type=\"radio\" name=\"ampm\" value=\"am\" $amsel />" .
@@ -268,13 +277,7 @@ if ( $TIME_FORMAT == "12" ) {
     translate("pm") . "</label>\n";
 }
 ?>
-</span>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<select name="timetype" onchange="timetype_handler()">
-<option value="U" <?php if ( $allday != "Y" && $hour == -1 ) echo " selected=\"selected\""?>><?php etranslate("Untimed event"); ?></option>
-<option value="T" <?php if ( $allday != "Y" && $hour >= 0 ) echo " selected=\"selected\""?>><?php etranslate("Timed event"); ?></option>
-<option value="A" <?php if ( $allday == "Y" ) echo " selected=\"selected\""?>><?php etranslate("All day event"); ?></option>
-</select>
+</div>
 </td></tr>
 
 <?php
@@ -283,8 +286,12 @@ if ( $TIME_FORMAT == "12" ) {
 ?>
 <?php if ($GLOBALS['TIMED_EVT_LEN'] != 'E') { ?>
 
-<tr><td class="tooltip" title="<?php etooltip("duration-help")?>"><?php etranslate("Duration")?>:</td>
-  <td><input type="text" name="duration_h" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%d", $dur_h );?>" />:<input type="text" name="duration_m" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%02d", $dur_m );?>" /> (<?php echo translate("hours") . ":" . translate("minutes")?>)</td></tr>
+<tr>
+<td class="tooltip" title="<?php etooltip("duration-help")?>">
+<div id="timeentrydurationprompt">
+<?php etranslate("Duration")?>:</div></td>
+  <td><div id="timeentryduration"><input type="text" name="duration_h" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%d", $dur_h );?>" />:<input type="text" name="duration_m" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%02d", $dur_m );?>" /> (<?php echo translate("hours") . ":" . translate("minutes")?>)
+</div></td></tr>
 
 <?php } else {
 if ( $id ) {
@@ -324,9 +331,9 @@ if ( $allday != "Y" && $hour == -1 ) {
 }
 ?>
 
-<tr><td class="tooltip" title="<?php etooltip("end-time-help")?>"><?php etranslate("End Time")?>:</td>
+<tr><td class="tooltip" title="<?php etooltip("end-time-help")?>"><div id="timeentryendprompt"><?php etranslate("End Time")?>:</div></td>
 <td>
-<span id="endtimeentry">
+<div id="timeentryend">
 <input type="text" name="endhour" size="2" value="<?php if ( $allday != "Y" ) echo $endhour;?>" maxlength="2" />:<input type="text" name="endminute" size="2" value="<?php if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $endminute );?>" maxlength="2" />
 <?php
 if ( $TIME_FORMAT == "12" ) {
