@@ -7,7 +7,7 @@ $can_edit = false;
 // First, check to see if this user should be able to delete this event.
 if ( $id > 0 ) {
   // first see who has access to edit this entry
-  if ( $is_admin || $is_assistant || $is_nonuser_admin) {
+  if ( $is_admin ) {
     $can_edit = true;
   } else if ( $readonly == "Y" ) {
     $can_edit = false;
@@ -35,10 +35,14 @@ if ( $res ) {
   $row = dbi_fetch_row ( $res );
   $owner = $row[0];
   dbi_free_result ( $res );
-  if ( $owner == $login || $is_assistant || $is_nonuser_admin ) {
+  if ( $owner == $login || $is_assistant && ( $user == $owner ) || $is_nonuser_admin && ( $user == $owner ) ) {
     $my_event = true;
     $can_edit = true;
   }
+}
+
+if ( ! $can_edit ) {
+  $error = translate ( "You are not authorized" );
 }
 
 // Is this a repeating event?
@@ -54,10 +58,6 @@ if ( $res ) {
 $override_repeat = false;
 if ( ! empty ( $date ) && $event_repeats && ! empty ( $override ) ) {
   $override_repeat = true;
-}
-
-if ( ! $can_edit ) {
-  $error = translate ( "You are not authorized" );
 }
 
 if ( $id > 0 && empty ( $error ) ) {

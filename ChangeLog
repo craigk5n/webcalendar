@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixed security issue with assistants and nonuser admins
   - Fixed bug 1071725: do not use printer-friendly URLs for the
     "My Calendar" link
   - Disable all layer functionality if system settings do not allow
