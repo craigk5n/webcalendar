@@ -29,11 +29,11 @@ if ( $res ) {
 print_header();
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>">
+<h2>
 <?php
 if ( $updating_public )
   echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
-etranslate("Layers")?></FONT></H2>
+etranslate("Layers")?></h2>
 
 <?php
 
@@ -69,7 +69,7 @@ else
 <br /><br />
 
 
-<table border="0">
+<table style="border-width:0px;">
 
 <?php
 
@@ -77,14 +77,14 @@ else
       $layeruser = $layers[$index]['cal_layeruser'];
       user_load_variables ( $layeruser, "layer" );
 ?>
-       <tr><td valign="top"><b><?php etranslate("Layer")?> <?php echo ($index+1) ?></b></td></tr>
-       <tr><td valign="top"><b><?php etranslate("Source")?>:</b></td>
+       <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Layer")?> <?php echo ($index+1) ?></td></tr>
+       <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Source")?>:</td>
            <td><?php echo $layerfullname; ?></td></tr>
 
-       <tr><td><b><?php etranslate("Color")?>:</b></td>
-          <td bgcolor="<?php echo $CELLBG;?>"><font color="<?php echo ( $layers[$index]['cal_color'] ); ?>"><?php echo ( $layers[$index]['cal_color'] ); ?></font></td></tr>
+       <tr><td style="font-weight:bold;"><?php etranslate("Color")?>:</td>
+          <td style="background-color:<?php echo $CELLBG;?>; color:<?php echo ( $layers[$index]['cal_color'] ); ?>;"><?php echo ( $layers[$index]['cal_color'] ); ?></td></tr>
 
-       <tr><td><b><?php etranslate("Duplicates")?>:</b></td>
+       <tr><td style="font-weight:bold;"><?php etranslate("Duplicates")?>:</td>
           <td>
               <?php
               if( $layers[$index]['cal_dups'] == 'N')
