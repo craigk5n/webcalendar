@@ -17,6 +17,11 @@ if ( $single_user == "Y" ) {
       $session_not_found = true;
     else
       $login = $PHP_AUTH_USER;
+
+  } elseif ( substr($user_inc,0,9) == 'user-app-' ) {
+    // Use another application's authentication
+    if (! $login = user_logged_in()) app_login_screen(clean_whitespace($login_return_path));
+  
   } else {
     // We can't actually check the database yet since we haven't connected
     // to the database.  That happens in connect.php.
