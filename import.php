@@ -45,7 +45,7 @@ function print_tab ( $items, $sel=0 ) {
     }
     print '<td width="' . $width . '%" bgcolor="' . $color . '">' .
       "<h2><center>$title</center></h2></td>";
-    
+
   }
   print '</td></tr><tr>';
 
@@ -59,7 +59,7 @@ function print_tab ( $items, $sel=0 ) {
     }
     print '<td width="1" bgcolor="' . $color . '">' .
       "<img src=\"spacer.gif\" width=\"" . $width . "%\" height=\"1\"></td>";
-    
+
   }
   print "</tr>";
 }
@@ -93,10 +93,10 @@ $colspan = 2 * count ( $tabs ) - 1;
 
 <table border=0>
 <tr><td><b><?php etranslate("Datebook File")?>:</b></td>
-  <td><input type="file" name="FileName" size=45 maxlength=50"> 
+  <td><input type="file" name="FileName" size=45 maxlength=50">
 <tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>">
 <input type="button" value="<?php etranslate("Help")?>..."
-  onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,screollbars,height=400,width=400,innerHeight=420,outerWidth=420');">
+  onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');">
 </td>
 </tr>
 </table></p>
@@ -104,7 +104,7 @@ $colspan = 2 * count ( $tabs ) - 1;
 </td></tr></table></td></tr></table>
 </form>
 
-<?php 
+<?php
 } else if ( $tab == 1 ) {
 ?>
 
@@ -121,12 +121,11 @@ $colspan = 2 * count ( $tabs ) - 1;
 <tr><td><b><?php etranslate("vCal File")?>:</b></td>
   <td><input type="file" name="FileName" size="45" maxlength=50"> &nbsp; </td></tr>
 <tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>">
-<input type="button" value="<?php etranslate("Help")?>..."
-  onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,screollbars,height=400,width=400,innerHeight=420,outerWidth=420');">
+<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');">
 </td></tr>
 </table></p>
 
-<?php 
+<?php
 } else {
   echo "No such tab!";
 }
