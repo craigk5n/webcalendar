@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 01-24-2005
+# Translation last updated on 02-03-2005
 
 
 ###############################################
@@ -302,8 +302,8 @@ Source: Source
 Color: Color
 Duplicates: Duplicates
 Show layer events that are the same as your own: Show layer events that are the same as your own
-Are you sure you want to delete this layer?: Are you sure you want to delete this layer?
 Delete layer: Delete layer
+Are you sure you want to delete this layer?: Are you sure you want to delete this layer?
 
 
 ###############################################
@@ -324,7 +324,6 @@ Changes successfully saved: Changes successfully saved
 
 ###############################################
 # Page: subscription.php
-#
 #
 Publishing Disabled (Admin): Publishing Disabled (Admin)
 Publishing Disabled (User): Publishing Disabled (User)
@@ -471,15 +470,16 @@ Reports: Reports
 ###############################################
 # Page: layers.php
 #
-to modify the layers settings for the: to modify the layers settings for the
 Layers are currently: Layers are currently
 Enabled: Enabled
-Disabled: Disabled
 Disable Layers: Disable Layers
+Disabled: Disabled
 Enable Layers: Enable Layers
+to modify the layers settings for the: to modify the layers settings for the
+calendar: calendar
+Add layer: Add layer
 Layer: Layer
 Edit layer: Edit layer
-Add layer: Add layer
 
 
 ###############################################
