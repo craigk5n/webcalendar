@@ -108,6 +108,8 @@ if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
 // coming from the login.php page.
 if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER['PHP_SELF'] ) )
   $PHP_SELF = $_SERVER['PHP_SELF']; // backward compatibility
+if ( empty ( $PHP_SELF ) )
+  $PHP_SELF = ''; // this happens when running send_reminders.php from CL
 if ( ! strstr ( $PHP_SELF, "login.php" ) && ! empty ( $GLOBALS["login"] ) ) {
   $GLOBALS["login"] = "";
 }
@@ -281,12 +283,18 @@ function load_global_settings () {
   global $login, $readonly;
   global $HTTP_HOST, $SERVER_PORT, $REQUEST_URI, $_SERVER;
 
-  if ( empty ( $HTTP_HOST ) )
-    $HTTP_HOST = $_SERVER["HTTP_HOST"];
-  if ( empty ( $SERVER_PORT ) )
-    $SERVER_PORT = $_SERVER["SERVER_PORT"];
-  if ( empty ( $REQUEST_URI ) )
-    $REQUEST_URI = $_SERVER["REQUEST_URI"];
+  // Note: when running from the command line (send_reminders.php),
+  // these variables are (obviously) not set.
+  // TODO: This type of checking should be moved to a central locationm
+  // like init.php.
+  if ( isset ( $_SERVER ) && is_array ( $_SERVER ) ) {
+    if ( empty ( $HTTP_HOST ) && isset ( $_SERVER["HTTP_POST"] ) )
+      $HTTP_HOST = $_SERVER["HTTP_HOST"];
+    if ( empty ( $SERVER_PORT ) && isset ( $_SERVER["SERVER_PORT"] ) )
+      $SERVER_PORT = $_SERVER["SERVER_PORT"];
+    if ( empty ( $REQUEST_URI ) && isset ( $_SERVER["REQUEST_URI"] ) )
+      $REQUEST_URI = $_SERVER["REQUEST_URI"];
+  }
 
   $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_config" );
   if ( $res ) {
