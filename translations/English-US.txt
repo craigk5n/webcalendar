@@ -661,12 +661,13 @@ Add to My Calendar: Add to My Calendar
 Email all participants: Email all participants
 Show activity log: Show activity log
 Hide activity log: Hide activity log
-
+Export this entry to: Export this entry to
 
 ###############################################
 # Page: view_m.php
 #
 
+Export this entry to: Export this entry to
 
 ###############################################
 # Page: view_w.php

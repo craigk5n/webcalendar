@@ -645,10 +645,11 @@ This will delete the entry from your calendar.: Ceci supprimera un événement de 
 Do you want to add this entry to your calendar?: Voulez-vous ajouter cet événement à votre agenda ?
 This will add the entry to your calendar.: Ceci ajoutera un événement à votre agenda.
 Add to My Calendar: Ajouter à mon agenda
-Email all participants: Envoyer un couriel à tous les participants
+Email all participants: Envoyer un courriel à tous les participants
 Show activity log: Montrer le journal de suivi
 Hide activity log: Cacher le journal de suivi
 
+Export this entry to: Exporter cet événement au format
 
 ###############################################
 # Page: view_m.php

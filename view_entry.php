@@ -127,7 +127,8 @@ if ( $ext_id > 0 ) {
   do_redirect ( $url );
 }
 
-print_header();
+$INC = array('js/view_entry.php');
+print_header($INC);
 
 if ( $id < 1 ) {
   echo translate("Invalid entry id") . ".";
@@ -699,6 +700,29 @@ if ( $show_log ) {
     dbi_free_result ( $res );
   }
   echo "</TABLE>\n";
+}
+
+if (! $is_private) {
+  echo "<br>\n";
+  echo "<form method=\"post\" name=\"exportform\">\n";
+  echo "<b>";
+  etranslate("Export this entry to");
+  echo ":</b>\n";
+  echo "<select name=\"format\">\n";
+  echo "<option value=\"ical\">iCalendar\n";
+  echo "<option value=\"vcal\">vCalendar\n";
+  echo "<option value=\"pilot-csv\">pilot-datebook CSV (";
+  etranslate("Palm Pilot");
+  echo ")\n";
+  echo "<option value=\"pilot-text\">install-datebook (";
+  etranslate("Palm Pilot");
+  echo ")\n";
+  echo "</select>\n";
+  echo "<input type=\"hidden\" name=\"id\" value=\"$id\">\n";
+  echo "<input type=\"button\" value=\"";
+  etranslate("Export");
+  echo "\" onClick=form_submit(this.form)>\n";
+  echo "</form>\n";
 }
 
 ?>
