@@ -1,14 +1,19 @@
 <script type="text/javascript">
 <!-- <![CDATA[
 function selectUsers () {
-  url = "usersel.php?form=editviewform&listid=3&users=";
+  var listid = 0;
+  for ( i = 0; i < document.editviewform.elements.length; i++ ) {
+    if ( document.editviewform.elements[i].name == "users[]" )
+      listid = i;
+  }
+  url = "usersel.php?form=editviewform&listid=" + listid + "&users=";
   // add currently selected users
-  for ( i = 0, j = 0; i < document.editviewform.elements[3].length; i++ ) {
-    if ( document.editviewform.elements[3].options[i].selected ) {
+  for ( i = 0, j = 0; i < document.editviewform.elements[listid].length; i++ ) {
+    if ( document.editviewform.elements[listid].options[i].selected ) {
       if ( j != 0 )
 	url += ",";
       j++;
-      url += document.editviewform.elements[3].options[i].value;
+      url += document.editviewform.elements[listid].options[i].value;
     }
   }
   //alert ( "URL: " + url );
