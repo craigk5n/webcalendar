@@ -11,7 +11,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
   global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
 
   if ( $user != $login && ! empty ( $user ) )
-    $u_url = "&user=$user";
+    $u_url = "&amp;user=$user";
   else
     $u_url = "";
 
@@ -24,7 +24,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
   $monthstart = mktime(2,0,0,$thismonth,1,$thisyear);
   $monthend = mktime(2,0,0,$thismonth + 1,0,$thisyear);
   echo "<tr><td colspan=\"7\" class=\"month\">"
-     . "<a href=\"month.php?year=$thisyear&month=$thismonth"
+     . "<a href=\"month.php?year=$thisyear&amp;month=$thismonth"
      . $u_url . "\">";
   echo month_name ( $thismonth - 1 ) .
     "</a></td></tr>";
@@ -133,7 +133,7 @@ print_header();
 </span></td>
 <?php if ( empty ( $friendly ) ) {?>
 <td style="text-align:right;">
-<a title="<?php etranslate("Next")?>" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&user=$user";?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<a title="<?php etranslate("Next")?>" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 </td>
 <?php } ?>
 </tr>

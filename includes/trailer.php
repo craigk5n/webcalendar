@@ -195,9 +195,9 @@
       if ( ! empty ( $thisyear ) ) {
         print "?year=$thisyear";
         if ( ! empty ( $thismonth ) )
-          print "&month=$thismonth";
+          print "&amp;month=$thismonth";
         if ( ! empty ( $thisday ) )
-          print "&day=$thisday";
+          print "&amp;day=$thisday";
       }
       echo "\">" . translate("Add New Entry") . "</a>";
     }
