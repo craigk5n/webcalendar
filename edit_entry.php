@@ -379,6 +379,7 @@ if ( $TIME_FORMAT == "12" ) {
 <?php if ( ! empty ( $categories ) ) { ?>
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("category-help")?>"><?php etranslate("Category")?>:</B></TD>
   <TD><SELECT NAME="cat_id">
+  <OPTION VALUE=""> None
 <?php
   foreach( $categories as $K => $V ){
     echo "<OPTION VALUE=\"$K\"";
