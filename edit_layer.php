@@ -97,7 +97,7 @@ if ( $single_user == "N" ) {
     $size = 15;
   else if ( $size > 5 )
     $size = 5;
-  if ( $size > 1 ) {
+  if ( $size >= 1 ) {
     print "<TR><TD VALIGN=\"top\"><B>" .
       translate("Source") . ":</B></TD>";
     print "<TD><SELECT NAME=\"layeruser\" SIZE=1>$users\n";
