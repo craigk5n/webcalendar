@@ -321,7 +321,7 @@ if ( empty ( $error ) ) {
   }
 
   // log add/update
-  activity_log ( $id, $login, $login,
+  activity_log ( $id, $login, ($is_assistant || $is_nonuser_admin ? $user : $login),
     $newevent ? $LOG_CREATE : $LOG_UPDATE, "" );
   
   if ( $single_user == "Y" ) {
