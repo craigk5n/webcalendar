@@ -1,4 +1,7 @@
 Verion 0.9.41dev (?? ??? ???)
+  - Fixed bug 715823: email notification on repeating events was using
+    original event date rather than date for notification
+  - Fixed bug 727616: conflict not working on repeating events
   - Fixed bug 650045: add missing '/' is server URL
   - Fixed bug 664641: not using $login_url in connect.php
   - Fixed bug 677677: year.php used "<?" rather than "<?php"
