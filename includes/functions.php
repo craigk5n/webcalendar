@@ -1425,7 +1425,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
 //   $hide_icons - hide icons to make printer-friendly
 //   $is_ssi - is this being called from week_ssi.php?
 function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
-  global $events, $readonly, $is_admin,
+  global $events, $readonly, $is_admin, $login,
     $public_access, $public_access_can_add;
   $cnt = 0;
   $get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
@@ -1441,7 +1441,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
 
   $can_add = ( $readonly == "N" || $is_admin );
   if ( $public_access == "Y" && $public_access_can_add != "Y" &&
-    $user == "__public__" )
+    $login == "__public__" )
     $can_add = false;
 
   if ( ! $hide_icons && ! $ssi && $can_add ) {
