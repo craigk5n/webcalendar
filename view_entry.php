@@ -181,7 +181,7 @@ if ( empty ( $event_status ) ) {
 
 // If we have no event status yet, it must have been deleted.
 if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
-  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Error") .
+  echo "<h2>" . translate("Error") .
     "</h2>" . translate("You are not authorized") . ".\n";
   print_trailer ();
   echo "</body></html>\n";
@@ -371,10 +371,10 @@ if ( $categories_enabled == "Y" ) {
 }
 
 ?>
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php echo htmlspecialchars ( $name ); ?></h2>
+<h2><?php echo htmlspecialchars ( $name ); ?></h2>
 
-<table BORDER=0>
-<tr><td VALIGN="top"><B><?php etranslate("Description")?>:</B></td>
+<table border="0">
+<tr><td valign="top"><b><?php etranslate("Description")?>:</b></td>
   <td><?php
   if ( ! empty ( $allow_html_description ) &&
     $allow_html_description == 'Y' ) {
@@ -386,7 +386,7 @@ if ( $categories_enabled == "Y" ) {
 ?></td></tr>
 
 <?php if ( $event_status != 'A' && ! empty ( $event_status ) ) { ?>
-  <tr><td VALIGN="top"><B><?php etranslate("Status")?>:</B></td>
+  <tr><td valign="top"><b><?php etranslate("Status")?>:</b></td>
   <td><?php
      if ( $event_status == 'W' )
        etranslate("Waiting for approval");
@@ -397,7 +397,7 @@ if ( $categories_enabled == "Y" ) {
       ?></td></tr>
 <?php } ?>
 
-<tr><td VALIGN="top"><B><?php etranslate("Date")?>:</B></td>
+<tr><td valign="top"><b><?php etranslate("Date")?>:</b></td>
   <td><?php
   if ( $event_repeats ) {
     echo date_to_str ( $event_date );
@@ -406,11 +406,11 @@ if ( $categories_enabled == "Y" ) {
   }
   ?></td></tr>
 <?php if ( $event_repeats ) { ?>
-<tr><td VALIGN="top"><B><?php etranslate("Repeat Type")?>:</B></td>
+<tr><td valign="top"><b><?php etranslate("Repeat Type")?>:</b></td>
   <td><?php echo date_to_str ( $row[1], "", true, false, $event_time ) . $rep_str; ?></td></tr>
 <?php } ?>
 <?php if ( $event_time >= 0 ) { ?>
-<tr><td VALIGN="top"><B><?php etranslate("Time")?>:</B></td>
+<tr><td valign="top"><b><?php etranslate("Time")?>:</b></td>
   <td><?php
     if ( $row[5] == ( 24 * 60 ) )
       etranslate("All day event");
@@ -419,24 +419,24 @@ if ( $categories_enabled == "Y" ) {
   ?></td></tr>
 <?php } ?>
 <?php if ( $row[5] > 0 && $row[5] != ( 24 * 60 ) ) { ?>
-<tr><td VALIGN="top"><B><?php etranslate("Duration")?>:</B></td>
+<tr><td valign="top"><b><?php etranslate("Duration")?>:</b></td>
   <td><?php echo $row[5]; ?> <?php etranslate("minutes")?></td></tr>
 <?php } ?>
 <?php if ( $disable_priority_field != "Y" ) { ?>
-<tr><td VALIGN="top"><B><?php etranslate("Priority")?>:</B></td>
+<tr><td valign="top"><b><?php etranslate("Priority")?>:</b></td>
   <td><?php echo $pri[$row[6]]; ?></td></tr>
 <?php } ?>
 <?php if ( $disable_access_field != "Y" ) { ?>
-<tr><td VALIGN="top"><B><?php etranslate("Access")?>:</B></td>
+<tr><td valign="top"><b><?php etranslate("Access")?>:</b></td>
   <td><?php echo ( $row[8] == "P" ) ? translate("Public") : translate("Confidential"); ?></td></tr>
 <?php } ?>
 <?php if ( $categories_enabled == "Y" && ! empty ( $category ) ) { ?>
-<tr><td VALIGN="top"><B><?php etranslate("Category")?>:</B></td>
+<tr><td valign="top"><b><?php etranslate("Category")?>:</b></td>
   <td><?php echo $category; ?></td></tr>
 <?php } ?>
 <?php
 if ( $single_user == "N" ) {
-  echo "<tr><td VALIGN=\"top\"><B>" . translate("Created by") . ":</B></td>\n";
+  echo "<tr><td valign=\"top\"><b>" . translate("Created by") . ":</b></td>\n";
   if ( $is_private )
     echo "<td>[" . translate("Confidential") . "]</td></tr>\n";
   else {
@@ -451,7 +451,7 @@ if ( $single_user == "N" ) {
   }
 }
 ?>
-<tr><td VALIGN="top"><B><?php etranslate("Updated")?>:</B></td>
+<tr><td valign="top"><b><?php etranslate("Updated")?>:</b></td>
   <td><?php
     echo date_to_str ( $row[3] );
     echo " ";
@@ -466,9 +466,9 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   $extra_arg1 = $site_extras[$i][3];
   $extra_arg2 = $site_extras[$i][4];
   if ( $extras[$extra_name]['cal_name'] != "" ) {
-    echo "<tr><td VALIGN=\"top\"><B>" .
+    echo "<tr><td valign=\"top\"><b>" .
       translate ( $site_extras[$i][1] ) .
-      ":</B></td><td>";
+      ":</b></td><td>";
     if ( $extra_type == $EXTRA_URL ) {
       if ( strlen ( $extras[$extra_name]['cal_data'] ) )
         echo "<a href=\"" . $extras[$extra_name]['cal_data'] . "\">" .
@@ -529,7 +529,7 @@ if ( $public_access == "Y" && $login == "__public__" &&
   $show_participants = false;
 if ( $single_user == "N" && $show_participants ) {
 ?>
-<tr><td VALIGN="top"><B><?php etranslate("Participants")?>:</B></td>
+<tr><td valign="top"><b><?php etranslate("Participants")?>:</b></td>
   <td><?php
   if ( $is_private ) {
     echo "[" . translate("Confidential") . "]";
@@ -711,33 +711,33 @@ if ( $is_admin ) {
 
 
 if ( $show_log ) {
-  echo "<H3>" . translate("Activity Log") . "</H3>\n";
-  echo "<table BORDER=\"0\" WIDTH=\"100%\">\n";
+  echo "<h3>" . translate("Activity Log") . "</h3>\n";
+  echo "<table border=\"0\" width=\"100%\">\n";
   echo "<tr>";
-  echo "<TH ALIGN=\"left\" BGCOLOR=\"$THBG\"><FONT COLOR=\"$THFG\">" .
-    translate("User") . "</FONT></TH>";
-  echo "<TH ALIGN=\"left\" BGCOLOR=\"$THBG\"><FONT COLOR=\"$THFG\">" .
-    translate("Calendar") . "</FONT></TH>";
-  echo "<TH ALIGN=\"left\" BGCOLOR=\"$THBG\"><FONT COLOR=\"$THFG\">" .
-    translate("Date") . "/" . translate("Time") . "</FONT></TH>";
-  echo "<TH ALIGN=\"left\" BGCOLOR=\"$THBG\"><FONT COLOR=\"$THFG\">" .
-    translate("Action") . "</FONT></TH></tr>\n";
+  echo "<th align=\"left\" bgcolor=\"$THBG\"><font color=\"$THFG\">" .
+    translate("User") . "</font></th>";
+  echo "<th align=\"left\" bgcolor=\"$THBG\"><font color=\"$THFG\">" .
+    translate("Calendar") . "</font></th>";
+  echo "<th align=\"left\" bgcolor=\"$THBG\"><font color=\"$THFG\">" .
+    translate("Date") . "/" . translate("Time") . "</font></th>";
+  echo "<th align=\"left\" bgcolor=\"$THBG\"><font color=\"$THFG\">" .
+    translate("Action") . "</font></th></tr>\n";
   $res = dbi_query ( "SELECT cal_login, cal_user_cal, cal_type, " .
     "cal_date, cal_time " .
     "FROM webcal_entry_log WHERE cal_entry_id = $id " .
     "ORDER BY cal_log_id DESC" );
   if ( $res ) {
-    $font = "<FONT SIZE=\"-1\">";
+    $font = "<font SIZE=\"-1\">";
     while ( $row = dbi_fetch_row ( $res ) ) {
       echo "<tr>";
-      echo "<td VALIGN=\"top\" BGCOLOR=\"$CELLBG\">" . $font . $row[0] .
-        "</FONT></td>";
-      echo "<td VALIGN=\"top\" BGCOLOR=\"$CELLBG\">" . $font . $row[1] .
-        "</FONT></td>";
-      echo "<td VALIGN=\"top\" BGCOLOR=\"$CELLBG\">" . $font .
+      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" . $font . $row[0] .
+        "</font></td>";
+      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" . $font . $row[1] .
+        "</font></td>";
+      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" . $font .
 	date_to_str ( $row[3] ) . " " .
-        display_time ( $row[4] ) . "</FONT></td>";
-      echo "<td BGCOLOR=\"$CELLBG\">" . $font;
+        display_time ( $row[4] ) . "</font></td>";
+      echo "<td bgcolor=\"$CELLBG\">" . $font;
       if ( $row[2] == $LOG_CREATE )
         etranslate("Event created");
       else if ( $row[2] == $LOG_APPROVE )
@@ -752,7 +752,7 @@ if ( $show_log ) {
         etranslate("Notification sent");
       else if ( $row[2] == $LOG_REMINDER )
         etranslate("Reminder sent");
-      echo "</FONT></td></tr>\n";
+      echo "</font></td></tr>\n";
     }
     dbi_free_result ( $res );
   }
@@ -760,30 +760,30 @@ if ( $show_log ) {
 }
 
 if (! $is_private) {
-  echo "<br>\n";
+  echo "<br />\n";
   echo "<form method=\"post\" name=\"exportform\" action=\"export_handler.php\">\n";
   echo "<b>";
   etranslate("Export this entry to");
   echo ":</b>\n";
   echo "<select name=\"format\">\n";
-  echo "<option value=\"ical\">iCalendar\n";
-  echo "<option value=\"vcal\">vCalendar\n";
+  echo "<option value=\"ical\">iCalendar</option>\n";
+  echo "<option value=\"vcal\">vCalendar</option>\n";
   echo "<option value=\"pilot-csv\">pilot-datebook CSV (";
   etranslate("Palm Pilot");
-  echo ")\n";
+  echo ")</option>\n";
   echo "<option value=\"pilot-text\">install-datebook (";
   etranslate("Palm Pilot");
-  echo ")\n";
+  echo ")</option>\n";
   echo "</select>\n";
-  echo "<input type=\"hidden\" name=\"id\" value=\"$id\">\n";
+  echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
   echo "<input type=\"submit\" value=\"";
   etranslate("Export");
-  echo "\" >\n";
+  echo "\" />\n";
   echo "</form>\n";
 }
 
 ?>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

@@ -62,7 +62,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <table border="0" width="100%">
 <tr>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td align="left"><a href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Previous")?>"></a></td>
+<td align="left"><a href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Previous")?>" /></a></td>
 <?php } ?>
 <td style="text-align:center;"><span style="font-size:24px; color:<?php echo $H2COLOR;?>; font-weight:bold;" class="pagetitle">
 <?php
@@ -94,7 +94,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 </span>
 </td>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td align="right"><a href="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Next")?>"></a></td>
+<td align="right"><a href="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Next")?>" /></a></td>
 <?php } ?>
 </tr>
 </table>
@@ -310,7 +310,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
           echo "<td class=\"tablecellweekview\" width=\"12%\" valign=\"top\" style=\"background-color:$TODAYCELLBG;\"><font size=\"-1\">";
           if ( empty ( $friendly ) && $can_add )
             echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
-          echo $save_hour_arr[$d][$i] . "</td>\n";
+          echo $save_hour_arr[$d][$i] . "</font></td>\n";
         }
       }
     }

@@ -7,7 +7,7 @@ if ( ! $is_admin )
 print_header();
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Views")?></h2>
+<h2><?php etranslate("Views")?></h2>
 
 <ul>
 <?php

@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 print_header();
 ?>
 
-<h2><font color="<?php echo $H2COLOR; ?>"><?php etranslate("View Another User's Calendar"); ?></h2></font>
+<h2><?php etranslate("View Another User's Calendar"); ?></h2>
 
 <?php
 if (( $allow_view_other != "Y" && ! $is_admin ) ||
@@ -24,7 +24,7 @@ if ( ! empty ( $error ) ) {
   <select name="user" onchange="document.SelectUser.submit()">
   <?php
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-    echo "<option value=\"".$userlist[$i]['cal_login']."\">".$userlist[$i]['cal_fullname']."\n";
+    echo "<option value=\"".$userlist[$i]['cal_login']."\">".$userlist[$i]['cal_fullname']."</option>\n";
   }
   ?>
   </select>

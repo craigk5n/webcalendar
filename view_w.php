@@ -133,7 +133,6 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 ?>
 
 <table border="1" rules="all" width="100%" cellspacing="0" cellpadding="0" style="border-color: <?php echo $TABLEBG;?>;">
-
 <tr><td width="10%" style="width:10%; background-color:<?php echo $THBG?>;">&nbsp;</td>
 
 <?php
@@ -145,7 +144,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
-    echo "<th class=\"tableheader\" style=\"width:$tdw%; background-color:$THBG;\">$tempfullname</td>";
+    echo "<td class=\"tableheader\" style=\"width:$tdw%; background-color:$THBG;\">$tempfullname</td>";
   }
   echo "</tr>\n";
   
