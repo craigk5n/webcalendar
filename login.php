@@ -27,7 +27,7 @@ if ( strlen ( $single_user_login ) ) {
 } else {
   if ( ! empty ( $login ) && ! empty ( $password ) ) {
     if ( user_valid_login ( $login, $password ) ) {
-      user_load_variables ( $login );
+      user_load_variables ( $login, "" );
       // set login to expire in 1000 days
       $encoded_login = encode_string ( $login );
       if ( $remember == "yes" )
