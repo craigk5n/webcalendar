@@ -68,7 +68,6 @@ print_header('', '', '', true);
   <td><?php etranslate("conflict-months-help")?></td></tr>
 <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Specify timed event length by")?>:</td>
   <td><?php etranslate("timed-evt-len-help")?></td></tr>
-      </td></tr>
 </table>
 <br /><br />
 
