@@ -1712,12 +1712,12 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
       print "user=$user&";
     print "date=$date\">" .
       "<img src=\"new.gif\" alt=\"" .
-      translate("New Entry") . "\" style=\"border-width:0px; width:10px; height:10px; text-align:right;\" />" .
+      translate("New Entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" align=\"right\" />" .
       "</a>";
     $cnt++;
   }
   if ( ! $ssi ) {
-    echo "<a style=\"font-size:13px;\" class=\"dayofmonth\" href=\"day.php?";
+    echo "<a class=\"dayofmonth\" href=\"day.php?";
     if ( strcmp ( $user, $GLOBALS["login"] ) )
       echo "user=$user&";
     echo "date=$date\">$day</a>";
@@ -1726,7 +1726,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
       echo "<a href=\"week.php?date=$date";
       if ( strcmp ( $user, $GLOBALS["login"] ) )
         echo "&user=$user";
-       echo "\" style=\"font-size:10px;\" class=\"weeknumber\">";
+       echo "\" class=\"weeknumber\">";
       echo "(" .
         translate("Week") . " " . week_number ( $dateu ) . ")</a>";
     }
@@ -2496,7 +2496,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     $time_h = (int) ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
     $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-    echo "<tr><th style=\"vertical-align:top; height:40px; width:14%; background-color:$THBG; color:$THFG;\" class=\"tableheader\">" .
+    echo "<tr><th style=\"vertical-align:top; height:40px; width:14%;\" class=\"tableheader\">" .
       $time . "</th>\n";
     if ( $rowspan > 1 ) {
       // this might mean there's an overlap, or it could mean one event
