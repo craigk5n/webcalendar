@@ -556,11 +556,11 @@ if ( empty ( $error ) ) {
           $minutes = ( $$dname * 24 * 60 ) + ( $$hname * 60 ) + $$mname;
           $sql = "INSERT INTO webcal_site_extras " .
             "( cal_id, cal_name, cal_type, cal_remind, cal_data ) VALUES ( " .
-            "$id, '$extra_name', $extra_type, $remind, '" . $minutes . "' )";
+            "$id, '$extra_name', $extra_type, 1, '" . $minutes . "' )";
         } else {
           $sql = "INSERT INTO webcal_site_extras " .
           "( cal_id, cal_name, cal_type, cal_remind ) VALUES ( " .
-          "$id, '$extra_name', $extra_type, $remind )";
+          "$id, '$extra_name', $extra_type, 1 )";
         }
       } else if ( $extra_type == $EXTRA_DATE )  {
         $yname = $extra_name . "year";
