@@ -1,3 +1,4 @@
+Version 1.0RC4-CVS (?? ??? 2005)
 Version 1.0RC3 (11 Mar 2005)
  - Added 'Public Access' to Manage Calendar of: list, if Admin. 
  - Removed ODBC host:database option from php-dbi.php. If needed, host can be 

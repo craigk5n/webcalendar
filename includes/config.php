@@ -25,8 +25,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 }
 
 
-$PROGRAM_VERSION = "v1.0RC3";
-$PROGRAM_DATE = "11 Mar 2005";
+$PROGRAM_VERSION = "v1.0RC4-CVS";
+$PROGRAM_DATE = "?? ??? 2005";
 $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
 $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
 
