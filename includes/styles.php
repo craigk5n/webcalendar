@@ -14,50 +14,50 @@ body {
 	text-decoration: none;
 }
 <?php //links that don't have a specific class
-//NOTE: these must appear ABOVE the 'printer' & all other link-related classes for those classes to work ?>
+//NOTE: these must appear ABOVE the 'printer' & all other 
+//link-related classes for those classes to work ?>
 a {
-  color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
-  text-decoration: none;
+	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+	text-decoration: none;
 }
 a:hover {
-  color: #0000FF;
+	color: #0000FF;
 }
 .trailerform {
-  float: left;
-  width: 33%;
-  border-top: 1px solid #000000;
-  padding-top: 5px;
-  margin-top: 5px;
-  margin-bottom: 25px;
+	float: left;
+	width: 33%;
+	border-top: 1px solid #000000;
+	padding-top: 5px;
+	margin-top: 5px;
+	margin-bottom: 25px;
 }
 .trailerform p {
-  margin: 0px;
-  padding: 0px;
-  font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+	font-weight: bold;
 }
 .trailerform p select {
-  font-weight: normal;
+	font-weight: normal;
 }
 #monthform {
-  clear: left;
+	clear: left;
 }
 #weekform {
-  text-align: center;
+	text-align: center;
 }
 #yearform {
-  text-align: right;
-  clear: right;
+	text-align: right;
+	clear: right;
 }
 a#programname {
-  margin-top: 10px;
-  font-size: 10px;
+	margin-top: 10px;
+	font-size: 10px;
 }
 <?php //printer-friendly links ?>
 .printer {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
 	text-decoration: none;
-	display: block;
 	clear: both;
 }
 <?php //new event icon ?>
@@ -75,18 +75,15 @@ a#programname {
 	margin-left: 2px;
 	margin-right: 2px;
 }
-
-
-
-	
-.weekview td {
-  font-size: 12px;
-  width: 14%;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  background-color: <?php echo $GLOBALS['CELLBG'];?>;
-  vertical-align: top;
+.entry {
+	font-size: 13px;
+	color: #006000;
+	text-decoration: none;
 }
+<?php //end stuff that stays ?>
+
+
+
 .tablecell {
   font-size: 12px;
   width: 14%;
@@ -112,14 +109,7 @@ a#programname {
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-.weekview td.weekend {
-  font-size: 12px;
-  width: 14%;
-  vertical-align: top;
-  background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-}
+
 .tablecellweekend {
   font-size: 12px;
   width: 14%;
@@ -159,11 +149,6 @@ a#programname {
   text-decoration: none;
   background-color: #E7E7E7;
   padding-left: 1px;
-}
-.entry {
-  font-size: 13px;
-  color: #006000;
-  text-decoration: none;
 }
 .unapprovedentry {
   font-size: 12px;
@@ -394,31 +379,31 @@ table.dayviewminical {
 	width: 100%;
 }
 #month table.main td {
-  font-size: 12px;
-  width: 14%;
-  height: 75px;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  background-color: <?php echo $GLOBALS['CELLBG'];?>;
-  vertical-align: top;
+	font-size: 12px;
+	width: 14%;
+	height: 75px;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	background-color: <?php echo $GLOBALS['CELLBG'];?>;
+	vertical-align: top;
 }
 #month table.main td.weekend {
-  font-size: 12px;
-  width: 14%;
-  height: 75px;
-  vertical-align: top;
-  background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	font-size: 12px;
+	width: 14%;
+	height: 75px;
+	vertical-align: top;
+	background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 #month table.main td.today {
-  font-size: 12px;
-  width: 14%;
-  height: 75px;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
-  vertical-align: top;
+	font-size: 12px;
+	width: 14%;
+	height: 75px;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+	vertical-align: top;
 }
 
 <?php // ========================= YEAR.PHP
@@ -719,13 +704,14 @@ table.vieww {
 }
 
 <?php // ========================= WEEK.PHP ?>
-#week table,
-table.weekview {
-	border-width: 0px;
+#week table {
 	width: 100%;
+	border-width-top: 0px;
+	border-width-left: 0px;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-collapse: collapse;
 }
-#week th,
-.weekview th {
+#week th {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -735,25 +721,24 @@ table.weekview {
 	width: 12%;
 }
 #week th a,
-.weekview th a {
+#weekdetails th a {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 }
 #week th a:hover,
-.weekview th a:hover {
+#weekdetails th a:hover {
 	font-size: 14px;
 	color: #0000FF;
 }
-#week th.empty,
-.weekview th.empty {
+#week th.empty {
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom-width: 0px;
+	border-collapse: collapse;
 }
-#week th.today,
-.weekview th.today {
+#week th.today {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
@@ -763,38 +748,45 @@ table.weekview {
 	width: 12%;
 }
 #week th.today a,
-.weekview th.today a {
+#weekdetails th.today a {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 }
 #week th.today a:hover,
-.weekview th.today a:hover {
+#weekdetails th.today a:hover {
 	font-size: 14px;
 	color: #0000FF;
 }
-#week th.row,
-.weekview th.row {
+#week th.row {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
-	border-top-width: 0px;
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom-width: 0px;
 	width: 12%;
 	vertical-align: top;
 	height: 40px;
+	border-collapse: collapse;
 }
-#week td,
-.weekview td {
+#week td {
+	font-size: 12px;
+	width: 12%;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	width: 12%;
-	font-size: 13px;
+	background-color: <?php echo $GLOBALS['CELLBG'];?>;
 	vertical-align: top;
 }
-#week td.today,
-.weekview td.today {
+#week td.weekend {
+	font-size: 12px;
+	width: 14%;
+	vertical-align: top;
+	background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+#week td.today {
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 12%;
@@ -803,23 +795,25 @@ table.weekview {
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
 }
 #week .title,
-.weekviewtitle {
+#weekdetails .title {
 	text-align: center;
+	border-width: 0px;
+	width: 99%;
 }
 #week .title .date,
-.weekviewtitle .date {
+#weekdetails .title .date {
 	font-size: 24px;
 	font-weight: bold;
 	text-align: center;
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 #week .title .weeknumber,
-.weekviewtitle .weeknumber {
+#weekdetails .title .weeknumber {
 	font-size: 20px;
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
 #week .title .user,
-.weekviewtitle .user {
+#weekdetails .title .user {
 	font-size: 18px;
 	font-weight: bold;
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
@@ -827,14 +821,12 @@ table.weekview {
 }
 
 <?php // ===================== WEEK_DETAILS.PHP ?>
-#weekdetails table,
-table.weekdetails {
+#weekdetails table {
 	border-width: 0px;
 	width: 90%;
 	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-#weekdetails th,
-.weekdetails th {
+#weekdetails th {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -842,18 +834,7 @@ table.weekdetails {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 }
-#weekdetails th a,
-.weekdetails th a {
-	font-size: 14px;
-	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
-}
-#weekdetails th a:hover,
-.weekdetails th a:hover {
-	font-size: 14px;
-	color: #0000FF;
-}
-#weekdetails th.today,
-.weekdetails th.today {
+#weekdetails th.today {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
@@ -861,18 +842,7 @@ table.weekdetails {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 }
-#weekdetails th.today a,
-.weekdetails th.today a {
-	font-size: 14px;
-	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
-}
-#weekdetails th.today a:hover,
-.weekdetails th.today a:hover {
-	font-size: 14px;
-	color: #0000FF;
-}
-#weekdetails th.weekend,
-.weekdetails th.weekend {
+#weekdetails th.weekend {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -880,30 +850,25 @@ table.weekdetails {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 }
-#weekdetails th.weekend a,
-.weekdetails th.weekend a {
+#weekdetails th.weekend a {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 }
-#weekdetails th.weekend a:hover,
-.weekdetails th.weekend a:hover {
+#weekdetails th.weekend a:hover {
 	font-size: 14px;
 	color: #0000FF;
 }
-#weekdetails td,
-.weekdetails td {
+#weekdetails td {
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 	vertical-align: top;
 	height: 75px;
 }
-#weekdetails td.today,
-.weekdetails td.today {
+#weekdetails td.today {
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
 	vertical-align: top;
 	height: 75px;
 }
-#weekdetails td.weekend,
-.weekdetails td.weekend {
+#weekdetails td.weekend {
 	background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
 	vertical-align: top;
 	height: 75px;

@@ -162,7 +162,7 @@
         translate("My Calendar") . "</a>";
     if ( ! empty ( $user ) && $user != $login )
       $todayURL .= '&user=' . $user;
-    echo "| <a title=\"" . translate("Today") . "\" class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") .
+    echo " | <a title=\"" . translate("Today") . "\" class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") .
       "</a>";
     if ( $login != '__public__' )
       echo " | <a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" .
