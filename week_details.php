@@ -91,7 +91,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 </div>
 
 <center>
-<table cellspacing="0" cellpadding="0">
+<table class="main" cellspacing="0" cellpadding="0">
 <?php
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
