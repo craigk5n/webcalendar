@@ -1,4 +1,6 @@
 Version 0.9.46/CVS+dev (?? ??? 2004)
+  - Added patch 1098507: Fixed problem using htmlarea where event description
+    would not be saved.
   - Added variable in includes/php-dbi.php ($phpdbiVerbose).  Default is false.
     When set to true, the SQL statement will be displayed in the browser
     when there is a database query error.
