@@ -41,6 +41,7 @@ print_header($INC);
   }
   for ( $i = 0; $i < count ( $users ); $i++ ) {
     $u = $users[$i]['cal_login'];
+    if ($u == $login ) continue;
     echo "<OPTION VALUE=\"$u\" ";
     if ( ! empty ( $assistantuser[$u] ) ) {
       echo "SELECTED";
