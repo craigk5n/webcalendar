@@ -3,10 +3,10 @@ include_once 'includes/init.php';
 load_user_layers ();
 
 if ( ! $is_admin ) {
-  echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Error") .
-    "</FONT></H2>" . translate("You are not authorized") . ".\n";
+  echo "<h2>" . translate("Error") .
+    "</h2>" . translate("You are not authorized") . ".\n";
   print_trailer ();
-  echo "</BODY></HTML>\n";
+  echo "</body></html>\n";
   exit;
 }
 $error = "";
@@ -82,17 +82,17 @@ if ( empty ( $error ) ) do_redirect ( "nonusers.php" );
 print_header();
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></FONT></H2>
+<h2><?php etranslate("Error")?></h2>
 
-<BLOCKQUOTE>
+<blockquote>
 <?php
 
 echo $error;
 //if ( $sql != "" )
-//  echo "<P><B>SQL:</B> $sql";
+//  echo "<br /><br /><b>SQL:</b> $sql";
 //?>
-</BLOCKQUOTE>
+</blockquote>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

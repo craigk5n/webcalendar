@@ -36,13 +36,13 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
     $button = translate("Save");
     $nonusertemp_login = substr($nonusertemp_login, strlen($NONUSER_PREFIX));
   } else {
-    $id_display = "<input name=\"nid\" size=\"20\" max=\"20\">";
+    $id_display = "<input name=\"nid\" size=\"20\" max=\"20\" />";
   }
   ?>
   <table>
   <tr><td><?php etranslate("Calendar ID")?>:</td><td><?php echo $id_display ?></td></tr>
-  <tr><td><?php etranslate("First Name")?>:</td><td><input name="nfirstname" size="20" max="25" value="<?php echo htmlspecialchars ( $nonusertemp_firstname ); ?>"></td></tr>
-  <tr><td><?php etranslate("Last Name")?>:</td><td><input name="nlastname" size="20" max="25" value="<?php echo htmlspecialchars ( $nonusertemp_lastname ); ?>"></td></tr>
+  <tr><td><?php etranslate("First Name")?>:</td><td><input type="text" name="nfirstname" size="20" max="25" value="<?php echo htmlspecialchars ( $nonusertemp_firstname ); ?>" /></td></tr>
+  <tr><td><?php etranslate("Last Name")?>:</td><td><input type="text" name="nlastname" size="20" max="25" value="<?php echo htmlspecialchars ( $nonusertemp_lastname ); ?>" /></td></tr>
   <tr><td><?php etranslate("Admin")?>:</td><td><select name="nadmin">
   <?php
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
