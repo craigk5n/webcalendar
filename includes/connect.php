@@ -56,8 +56,6 @@ if ( $pub_acc_enabled && $session_not_found ) {
 }
 
 if ( empty ( $login ) && $use_http_auth ) {
-  if ( $public_access == "Y" ) {
-  }
   if ( strstr ( $PHP_SELF, "login.php" ) ) {
     // ignore since login.php will redirect to index.php
   } else {
