@@ -1,4 +1,8 @@
 Version 1.0RC? (?? ??? ??)
+  - Added back usage of different color/class for time slots with events
+    in them in day.php and week.php using new 'hasevents' class in
+    styles.php.  For now, we use the TODAYBGCELL color for the
+    cell color, but this may be configurable in the future.
   - Fixed PHP warnings about undefined variable PHP_SELF in all the
     include files.
   - Rewrote reading of config.php to manually split lines rather than

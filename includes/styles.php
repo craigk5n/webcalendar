@@ -679,6 +679,10 @@ th {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   width: 12%;
 }
+#week .main td.hasevents,
+#day .glance td.hasevents {
+  <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 ); ?>
+}
 #week .main th a,
 #weekdetails .main th a {
   color: <?php echo $GLOBALS['THFG']; ?>;
