@@ -19,6 +19,7 @@
 include_once '../includes/php-dbi.php';
 
 $file = "../includes/settings.php";
+$fileDir = "../includes";
 
 // Get value from POST form
 function getPostValue ( $name ) {
@@ -172,7 +173,18 @@ if ( ! empty ( $action ) && $action == "dbtest" ) {
 
 
 $exists = file_exists ( $file );
-$canWrite = is_writable ( $file );
+$canWrite = false;
+if ( $exists ) {
+  $canWrite = is_writable ( $file );
+} else {
+  // check to see if we can create a new file.
+  $testFile = $fileDir . "/installTest.dat";
+  $testFd = @fopen ( $testFile, "w+t", true );
+  if ( file_exists ( $testFile ) ) {
+    $canWrite = true;
+  }
+  @unlink ( $testFile );
+}
 
 
 
@@ -414,8 +426,24 @@ li {
 <li><b>Error:</b>
 The file permissions of <tt>settings.php</tt> are set so
 that this script does not have permission to write changes to it.
-You must change the file permissions of <tt>settings.php</tt>
-to use this script.
+You must change the file permissions of the following
+file to use this script:
+<blockquote><tt>
+<?php echo realpath ( $file ); ?>
+</tt></blockquote>
+</li>
+
+<?php } else if ( ! $exists && ! $canWrite ) { ?>
+
+<li><b>Error:</b>
+The file permissions of the <tt>includes</tt> directory are set so
+that this script does not have permission to create a new file
+in that directory.
+You must change the permissions of the follwing directory
+to use this script:
+<blockquote><tt>
+<?php echo realpath ( $fileDir ); ?>
+</tt></blockquote>
 </li>
 
 <?php } else { ?>
