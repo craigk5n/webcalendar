@@ -30,6 +30,14 @@ if ( $is_admin == "Y" ) {
 	<?php etranslate("Users"); ?>:&nbsp;</td><td>
 <?php
   $users = get_my_users ();
+  // Get non-user calendars (if enabled)
+  if ( ! empty ( $nonuser_enabled ) && $nonuser_enabled == "Y" ) {
+    $nonusers = get_nonuser_cals ();
+    if ( ! empty ( $nonuser_at_top ) && $nonuser_at_top == "Y" )
+      $users = array_merge ( $nonusers, $users );
+    else
+      $users = array_merge ( $users, $nonusers );
+  }
   $size = 0;
   $out = "";
   for ( $i = 0; $i < count ( $users ); $i++ ) {

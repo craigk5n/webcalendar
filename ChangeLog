@@ -1,4 +1,6 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Fixed broken advanced search that would not allowing searching other
+   users' calendars.  Also added searching non-user calendars.
  - Removed remember_this_view and get_last_view functions.  Instead, send
    users to their preferred view from their preferences ($STARTVIEW).
    Modified preferences to allow user-created views to be saved as their
