@@ -42,6 +42,7 @@
       echo " selected=\"selected\"";
     echo ">";
     echo date_to_str ( date ( "Ymd", $d ), $DATE_FORMAT_MY, false, true );
+    echo "</option>\n";
   }
 ?>
 </select>
