@@ -91,7 +91,7 @@ while ( <F> ) {
   next if ( /^#/ );
   if ( /\s*:\s*/ ) {
     $abbrev = $`;
-    $base_trans{$abbrev} = $';
+    $base_trans{$abbrev} = $' if ( $abbrev ne 'charset' );
   }
 }
 close ( F );
@@ -206,8 +206,21 @@ if ( $plugin eq "" ) {
 $notfound = 0;
 open ( OUT, ">$infile" ) || die "Error writing $infile: ";
 print OUT $header;
+if ( $plugin eq '' ) {
+  if ( defined ( $trans{'charset'} ) ) {
+    print OUT 
+      "\n\n###############################################\n" .
+      "# Specify a charset (will be sent within meta tag for each page)\n#\n" .
+      "charset: $trans{'charset'}\n\n";
+    $text{'charset'} = 1;
+    $foundin{'charset'} = " top of this file";
+  } else {
+    print OUT "\n# No charset specified\n# charset:\n\n";
+  }
+}
+
 foreach $f ( @files ) {
-  print OUT "\n\n###############################################\n# Page: $f\n#\n";
+  $pageHeader = "\n\n###############################################\n# Page: $f\n#\n";
   $file = "$p_base_dir/$f";
   open ( F, $file ) || die "Error reading $file";
   print "Searching $f\n" if ( $verbose );
@@ -221,12 +234,18 @@ foreach $f ( @files ) {
 	if ( defined ( $thispage{$text} ) ) {
           # text already found within this page...
 	} elsif ( defined ( $text{$text} ) ) {
+          if ( $pageHeader ne '' ) {
+            print OUT $pageHeader; $pageHeader = '';
+          }
           print OUT "# \"$text\" previously defined (in $foundin{$text})\n"
             if ( ! show_dups );
 	  $thispage{$text} = 1;
 	} else {
           if ( ! length ( $trans{$text} ) ) {
             if ( $show_missing ) {
+              if ( $pageHeader ne '' ) {
+                print OUT $pageHeader; $pageHeader = '';
+              }
               if ( length ( $webcaltrans{$text} ) ) {
                 print OUT "# \"$text\" defined in WebCalendar translation\n";
               } else {
@@ -244,6 +263,9 @@ foreach $f ( @files ) {
             $text{$text} = 1;
 	    $foundin{$text} = $f;
 	    $thispage{$text} = 1;
+            if ( $pageHeader ne '' ) {
+              print OUT $pageHeader; $pageHeader = '';
+            }
             printf OUT ( "%s: %s\n", $text, $trans{$text} );
 	  }
         }
