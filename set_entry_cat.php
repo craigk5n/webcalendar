@@ -52,7 +52,7 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
   } else {
     $url = "view_entry.php?id=$id";
     if ( ! empty ( $date ) )
-      $url .= "?&date=$date";
+      $url .= "&date=$date";
     do_redirect ( $url );
   }
 }
