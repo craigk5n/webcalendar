@@ -288,7 +288,9 @@ if ( $is_assistant || $is_nonuser_admin || ! empty ( $user ) )
 	<span class="tabfor" id="tab_details"><a href="#tabdetails" onclick="return showTab('details')"><?php etranslate("Details") ?></a></span>
 	<span class="tabbak" id="tab_sched"><a href="#tabsched" onclick="return showTab('sched')"><?php etranslate("Scheduling") ?></a></span>
 	<span class="tabbak" id="tab_participants"><a href="#tabparticipants" onclick="return showTab('participants')"><?php etranslate("Participants") ?></a></span>
-	<span class="tabbak" id="tab_pete"><a href="#tabpete" onclick="return showTab('pete')"><?php etranslate("Repeat") ?></a></span>
+ <?php if ( $disable_repeating_field != "Y" ) { ?>
+	  <span class="tabbak" id="tab_pete"><a href="#tabpete" onclick="return showTab('pete')"><?php etranslate("Repeat") ?></a></span>
+ <?php } ?>
 </div>
 <?php } ?>
 
@@ -684,12 +686,12 @@ if ( $single_user == "N" && $show_participants ) {
 <?php } /* $useTabs */ ?>
 
 <!-- REPEATING INFO -->
+<?php if ( $disable_repeating_field != "Y" ) { ?>
 <?php if ( $useTabs ) { ?>
 <a name="tabpete"></a>
 <div id="tabscontent_pete">
 <?php } /* $useTabs */ ?>
 <table>
-<?php if ( $disable_repeating_field != "Y" ) { ?>
 <tr style="vertical-align:top;"><td class="tooltip" title="<?php etooltip("repeat-type-help")?>">
 	<label for="rpttype"><?php etranslate("Repeat Type")?>:</label></td><td>
 	<select name="rpt_type" id="rpttype" onchange="rpttype_handler()">
@@ -770,13 +772,13 @@ if ( $single_user == "N" && $show_participants ) {
 			"</label>\n";
 	?></td></tr>
 </table>
-</div>
+
 <?php if ( $useTabs ) { ?>
-</div>
+</div> <!-- End tabscontent_pete -->
 <?php } /* $useTabs */ ?>
 <?php } ?>
-
-<table style="border-width:0px;">
+</div> <!-- End tabscontent -->
+<table  style="border-width:0px;">
 <tr><td>
 	<script type="text/javascript">
 <!-- <![CDATA[
