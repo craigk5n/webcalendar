@@ -549,7 +549,12 @@ textarea {
 .glance th.empty {
 	border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['BGCOLOR'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+<?php } ?>
 }
 .glance th.row {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -563,7 +568,12 @@ textarea {
 }
 .glance td {
 	vertical-align: top;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=50&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['CELLBG'];?>;
+<?php } ?>
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	padding-left: 3px;
@@ -628,7 +638,12 @@ th {
 #viewm .main th.empty,
 #vieww .main th.empty,
 #week .main th.empty {
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['BGCOLOR'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+<?php } ?>
 	border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
@@ -655,13 +670,23 @@ th {
 #viewv .main th.today,
 #viewt .main th.today {
 	width: 10%;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+<?php } ?>
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
 }
 #week .main th.today {
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+<?php } ?>
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 12%;
@@ -684,7 +709,12 @@ th {
 	height: 75px;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['CELLBG'];?>;
+<?php } ?>
 	vertical-align: top;
 }
 #vieww .main td,
@@ -692,7 +722,12 @@ th {
 #viewm .main td,
 #viewv .main td {
 	font-size: 12px;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['CELLBG'];?>;
+<?php } ?>
 	vertical-align: top;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -704,7 +739,12 @@ th {
 #viewv .main td.weekend,
 #vieww .main td.weekend,
 #week .main td.weekend {
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['WEEKENDBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
+<?php } ?>
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
@@ -713,7 +753,12 @@ th {
 #viewm .main td.today,
 #vieww .main td.today,
 #viewv .main td.today {
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+<?php } ?>
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
@@ -744,7 +789,12 @@ th {
 	border-width: 0px;
 }
 #viewt td.reg {
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+<?php } ?>
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 90%;
@@ -784,7 +834,12 @@ th {
 #weekdetails .main th {
 	font-size: 13px;
 	color: <?php echo $GLOBALS['THFG']; ?>;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['THBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['THBG']; ?>;
+<?php } ?>
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
@@ -793,7 +848,12 @@ th {
 #weekdetails .main td {
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+<?php } ?>
 	vertical-align: top;
 	height: 75px;
 }
@@ -801,13 +861,23 @@ th {
       //optionally, you can change this to read "#weekdetails td.today" to color today's cell instead of the header
       //to color both the cell & the header with this style, simply remove the "th" below
 ?>#weekdetails .main th.today {
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+<?php } ?>
 }
 <?php //must appear after th & td declarations
       //optionally, you can change this to read "#weekdetails th.weekend" to color the weekend headers instead of the cells
       //to color both the cell & the header with this style, simply remove the "td" below
 ?>#weekdetails .main td.weekend {
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['WEEKENDBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
+<?php } ?>
 }
 #viewt table {
 	border-collapse: collapse;
@@ -852,21 +922,36 @@ th {
 }
 #viewt .weekend {
 	width: 90%;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['WEEKENDBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
+<?php } ?>
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
 }
 #viewt td.today {
 	width: 90%;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+<?php } ?>
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
 }
 #viewt th.today {
 	color: <?php echo $GLOBALS['THFG']; ?>;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+<?php } ?>
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
@@ -878,7 +963,12 @@ th {
 }
 #login table {
 	border: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=200&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+<?php } ?>
 	font-size: 12px;
 }
 .cookies {
@@ -886,7 +976,12 @@ th {
 }
 .standard th {
 	color: <?php echo $GLOBALS['THFG']; ?>;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['THBG'], 1 ); ?>");
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['THBG']; ?>;
+<?php } ?>
 	font-size: 18px;
 	padding: 0px;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
