@@ -224,6 +224,30 @@ function dbi_fetch_row ( $res ) {
 }
 
 
+// Returns the number of rows affected by the last INSERT, UPDATE or
+// DELETE.
+//   $res - db resource
+function dbi_affected_rows ( $res ) {
+  if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
+    return mysql_affected_rows ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
+    if ( $GLOBALS["oracle_statement"] >= 0 ) {
+      return OCIRowCount ( $GLOBALS["oracle_statement"] );
+    } else {
+      return -1;
+    }
+  } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
+    return pg_affected_rows ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
+    return odbc_num_rows ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
+    return ibase_affected_rows ( $res );
+  } else {
+    dbi_fatal_error ( "dbi_free_result(): db_type not defined." );
+  }
+}
+
+
 // Free a result set.
 // This isn't really necessary for PHP4 since this is done automatically,
 // but it's a good habit for PHP3.
