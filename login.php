@@ -6,6 +6,10 @@ include "includes/functions.php";
 include "includes/$user_inc";
 include "includes/connect.php";
 
+// Change this to true to show "no such user" or "invalid password" on
+// login failures.
+$showLoginFailureReason = false;
+
 load_global_settings ();
 
 if ( ! empty ( $last_login ) )
@@ -85,7 +89,7 @@ if ( $single_user == "Y" ) {
       do_redirect ( $url );
     } else {
       // Invalid login
-      if ( empty ( $error ) )
+      if ( empty ( $error ) || ! $showLoginFailureReason )
         $error = translate("Invalid login" );
     }
   } else {
