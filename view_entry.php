@@ -1,4 +1,11 @@
 <?php
+/*
+ * $Id$
+ *
+ * Description:
+ *	Presents page to view an event
+ *
+ */
 include_once 'includes/init.php';
 include_once 'includes/site_extras.php';
 
@@ -139,7 +146,7 @@ if ( $id < 1 ) {
 // Try to determine the event status.
 $event_status = "";
 
-if ( $login != $user ) {
+if ( ! empty ( $user ) && $login != $user ) {
   // If viewing another user's calendar, check the status of the
   // event on their calendar (to see if it's deleted).
   $sql = "SELECT cal_status FROM webcal_entry_user " .
@@ -151,6 +158,8 @@ if ( $login != $user ) {
     dbi_free_result ( $res );
   }
 } else {
+  // We are viewing event on user's own calendar, so check the
+  // status on their own calendar.
   $sql = "SELECT cal_id, cal_status FROM webcal_entry_user " .
     "WHERE cal_login = '$login' AND cal_id = $id";
   $res = dbi_query ( $sql );
