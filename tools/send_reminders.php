@@ -169,7 +169,7 @@ function send_reminder ( $id, $event_date ) {
   if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" &&
     ! empty ( $external_reminders ) && $external_reminders == "Y" ) {
     $sql = "SELECT cal_fullname, cal_email FROM webcal_entry_ext_user " .
-      "WHERE cal_id = $id AND cal_email NOT NULL " .
+      "WHERE cal_id = $id AND cal_email IS NOT NULL " .
       "ORDER BY cal_fullname";
     $res = dbi_query ( $sql );
     if ( $res ) {
