@@ -717,7 +717,7 @@ if ( $can_edit && $event_status != "D" ) {
 	translate("Delete entry") . "</a><br />\n";
   }
   echo "<a title=\"" . 
-	translate("Copy entry") . "\" class=\"nav\" href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
+	translate("Copy entry") . "\" class=\"nav\" href=\"edit_entry.php?id=$id$u_url&amp;copy=1\">" . 
 	translate("Copy entry") . "</a><br />\n";  
 } elseif ( $readonly != "Y" && $is_my_event && $login != "__public__" &&
   $event_status != "D" )  {
