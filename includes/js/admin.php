@@ -136,13 +136,13 @@ function eu_handler () {
     // External Users enabled
     makeVisible ( "eu1" );
     makeVisible ( "eu2" );
-    makeVisible ( "eu3" );
-    makeVisible ( "eu4" );
+//    makeVisible ( "eu3" );
+//    makeVisible ( "eu4" );
   } else {
     makeInvisible ( "eu1" );
     makeInvisible ( "eu2" );
-    makeInvisible ( "eu3" );
-    makeInvisible ( "eu4" );
+//    makeInvisible ( "eu3" );
+//    makeInvisible ( "eu4" );
   }
 }
 
