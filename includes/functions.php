@@ -1,4 +1,13 @@
 <?php
+/**
+ * All of WebCalendar's functions
+ *
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @package WebCalendar
+ */
+
 if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
   ! empty ( $_SERVER['PHP_SELF'] ) ) {
   $PHP_SELF = $_SERVER['PHP_SELF'];
@@ -7,7 +16,10 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     die ( "You can't access this file directly!" );
 }
 
-// Global variables for activity log
+/**#@+
+ * Used for activity log
+ * @global string
+ */
 $LOG_CREATE = "C";
 $LOG_APPROVE = "A";
 $LOG_REJECT = "X";
@@ -15,16 +27,37 @@ $LOG_UPDATE = "U";
 $LOG_DELETE = "D";
 $LOG_NOTIFICATION = "N";
 $LOG_REMINDER = "R";
+/**#@-*/
 
+/**
+ * Number of seconds in a day
+ *
+ * @global int $ONE_DAY
+ */
 $ONE_DAY = 86400;
 
-// how many days in a month (regular and leap year)
+/**
+ * Array containing the number of days in each month in a non-leap year
+ *
+ * @global array $days_per_month
+ */
 $days_per_month = array ( 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
+
+/**
+ * Array containing the number of days in each month in a leap year
+ *
+ * @global array $ldays_per_month
+ */
 $ldays_per_month = array ( 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
 
-// List global variables that will not be allowed to be set via HTTP GET/POST
-// This is a security precaution to prevent users from overriding any
-// global variables.
+/**
+ * Array of global variables which are not allowed to by set via HTTP GET/POST
+ *
+ * This is a security precaution to prevent users from overriding any global
+ * variables
+ *
+ * @global array $noSet
+ */
 $noSet = array (
   "is_admin" => 1,
   "db_type" => 1,
@@ -151,29 +184,29 @@ for ( $i = 0; $i < count ( $offsets ); $i++ ) {
  * Functions start here.  All non-function code should be above this
  *
  * Note to developers:
- *	Documentation is generated from the function comments below.
- *	When adding/updating functions, please follow the following conventions
- *	seen below.  Your cooperation in this matter is appreciated :-)
+ *  Documentation is generated from the function comments below.
+ *  When adding/updating functions, please follow the following conventions
+ *  seen below.  Your cooperation in this matter is appreciated :-)
  *
- *	If you want your documentation to link to the db documentation,
- *	just make sure you mention the db table name followed by "table"
- *	on the same line.  Here's an example:
- *		Retrieve preferences from the webcal_user_pref table.
- *	The same can be done to link to other functions:
- *		Use the getIntValue function to obtain integer values.
+ *  If you want your documentation to link to the db documentation,
+ *  just make sure you mention the db table name followed by "table"
+ *  on the same line.  Here's an example:
+ *    Retrieve preferences from the webcal_user_pref table.
  *
  */
 
-/** getPostValue
-  * Description:
-  *	Get the value resulting from an HTTP POST method.   <br/>
-  *	Note: The return value will be affected by the value of
-  *	<tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.
-  * Parameters:
-  *	$name - Name used in the HTML form
-  * Returns:
-  *	the value used in the HTML form
-  */
+/**
+ * Gets the value resulting from an HTTP POST method.
+ * 
+ * <b>Note:</b> The return value will be affected by the value of
+ * <var>magic_quotes_gpc</var> in the php.ini file.
+ * 
+ * @param string $name Name used in the HTML form
+ *
+ * @return string The value used in the HTML form
+ *
+ * @see getGetValue
+ */
 function getPostValue ( $name ) {
   global $HTTP_POST_VARS;
 
@@ -186,19 +219,21 @@ function getPostValue ( $name ) {
   return ( $HTTP_POST_VARS[$name] );
 }
 
-/** getGetValue
-  * Description:
-  *	Get the value resulting from an HTTP GET method.   <br/>
-  *	Note: The return value will be affected by the value of
-  *	<tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.
-  *	If you need to enforce a specific input format (such
-  *	as numeric input), then use the
-  *	getValue function.
-  * Parameters:
-  *	$name - Name used in the HTML form or found in the URL
-  * Returns:
-  *	The value used in the HTML form (or URL)
-  */
+/**
+ * Gets the value resulting from an HTTP GET method.
+ *
+ * <b>Note:</b> The return value will be affected by the value of
+ * <var>magic_quotes_gpc</var> in the php.ini file.
+ *
+ * If you need to enforce a specific input format (such as numeric input), then
+ * use the {@link getValue()} function.
+ *
+ * @param string $name Name used in the HTML form or found in the URL
+ *
+ * @return string The value used in the HTML form (or URL)
+ *
+ * @see getPostValue
+ */
 function getGetValue ( $name ) {
   global $HTTP_GET_VARS;
 
@@ -211,27 +246,31 @@ function getGetValue ( $name ) {
   return ( $HTTP_GET_VARS[$name] );
 }
 
-/** getValue
-  * Description:
-  *	Get the value resulting from either HTTP GET method or
-  *	HTTP POST method.  <br />
-  *	Note: The return value will be affected by the value of
-  *	<tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.  <br />
-  *	Note: If you need to get an integer value, yuou can use the
-  *	getIntValue function.
-  * Parameters:
-  *	$name - Name used in the HTML form or found in the URL
-  *	$format - A regular expression format that the input must
-  *	  match.  If the input does not match, an empty string is
-  *	  returned and a warning is sent to the browser.  If
-  *	  The $fatal parameter is true, then execution will also stop
-  *	  when the input does not match the format.
-  *	$fatal - Is it considered a fatal error requiring execution to
-  *	  stop if the value retrieved does not match the format
-  *	  regular expression?
-  * Returns:
-  *	The value used in the HTML form (or URL)
-  */
+/**
+ * Gets the value resulting from either HTTP GET method or HTTP POST method.
+ *
+ * <b>Note:</b> The return value will be affected by the value of
+ * <var>magic_quotes_gpc</var> in the php.ini file.
+ *
+ * <b>Note:</b> If you need to get an integer value, yuou can use the
+ * getIntValue function.
+ *
+ * @param string $name   Name used in the HTML form or found in the URL
+ * @param string $format A regular expression format that the input must match.
+ *                       If the input does not match, an empty string is
+ *                       returned and a warning is sent to the browser.  If The
+ *                       <var>$fatal</var> parameter is true, then execution
+ *                       will also stop when the input does not match the
+ *                       format.
+ * @param bool   $fatal  Is it considered a fatal error requiring execution to
+ *                       stop if the value retrieved does not match the format
+ *                       regular expression?
+ *
+ * @return string The value used in the HTML form (or URL)
+ *
+ * @uses getGetValue
+ * @uses getPostValue
+ */
 function getValue ( $name, $format="", $fatal=false ) {
   $val = getPostValue ( $name );
   if ( ! isset ( $val ) )
@@ -253,35 +292,43 @@ function getValue ( $name, $format="", $fatal=false ) {
   return $val;
 }
 
-/** getIntValue
-  * Description:
-  *	Get an integer value resulting from an HTTP GET or
-  *	HTTP POST method.   <br/>
-  *	Note: The return value will be affected by the value of
-  *	<tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.
-  * Parameters:
-  *	$name - Name used in the HTML form or found in the URL
-  *	$fatal - Is it considered a fatal error requiring execution to
-  *	  stop if the value retrieved does not match the format
-  *	  regular expression?
-  * Returns:
-  *	The value used in the HTML form (or URL)
-  */
+/**
+ * Gets an integer value resulting from an HTTP GET or HTTP POST method.
+ *
+ * <b>Note:</b> The return value will be affected by the value of
+ * <var>magic_quotes_gpc</var> in the php.ini file.
+ *
+ * @param string $name  Name used in the HTML form or found in the URL
+ * @param bool   $fatal Is it considered a fatal error requiring execution to
+ *                      stop if the value retrieved does not match the format
+ *                      regular expression?
+ *
+ * @return string The value used in the HTML form (or URL)
+ *
+ * @uses getValue
+ */
 function getIntValue ( $name, $fatal=false ) {
   $val = getValue ( $name, "-?[0-9]+", $fatal );
   return $val;
 }
 
-/** load_global_settings
-  * Description:
-  *	Load default system settings (which can be updated via admin.php)
-  *	System settings are stored in the webcal_config table. <br/>
-  *	Note: If the setting for "server_url" is not set, the value will
-  *	be calculated and stored in the database.
-  */
+/**
+ * Loads default system settings (which can be updated via admin.php).
+ *
+ * System settings are stored in the webcal_config table.
+ *
+ * <b>Note:</b> If the setting for <var>server_url</var> is not set, the value
+ * will be calculated and stored in the database.
+ *
+ * @global string User's login name
+ * @global bool   Readonly
+ * @global string HTTP hostname
+ * @global int    Server's port number
+ * @global string Request string
+ * @global array  Server variables
+ */
 function load_global_settings () {
-  global $login, $readonly;
-  global $HTTP_HOST, $SERVER_PORT, $REQUEST_URI, $_SERVER;
+  global $login, $readonly, $HTTP_HOST, $SERVER_PORT, $REQUEST_URI, $_SERVER;
 
   // Note: when running from the command line (send_reminders.php),
   // these variables are (obviously) not set.
@@ -343,11 +390,17 @@ function load_global_settings () {
   }
 }
 
-// Return a list of active plugins.
-// Should be called after load_global_settings() and
-// load_user_preferences().
-// cek: not documented yet since I am not sure this will ever
-// be used...
+/**
+ * Gets the list of active plugins.
+ *
+ * Should be called after {@link load_global_settings()} and {@link load_user_preferences()}.
+ *
+ * @internal cek: ignored since I am not sure this will ever be used...
+ *
+ * @return array Active plugins
+ *
+ * @ignore
+ */
 function get_plugin_list ( $include_disabled=false ) {
   // first get list of available plugins
   $sql = "SELECT cal_setting FROM webcal_config " .
@@ -374,12 +427,19 @@ function get_plugin_list ( $include_disabled=false ) {
   return $plugins;
 }
 
-// Get plugins available to the current user.
-// Do this by getting a list of all plugins that are not disabled by
-// the administrator and make sure this user has not disabled any of
-// them.
-// It's done this was so that when an admin adds a new plugin, it
-// shows up on each users system automatically (until they disable it).
+/**
+ * Get plugins available to the current user.
+ *
+ * Do this by getting a list of all plugins that are not disabled by the
+ * administrator and make sure this user has not disabled any of them.
+ * 
+ * It's done this was so that when an admin adds a new plugin, it shows up on
+ * each users system automatically (until they disable it).
+ *
+ * @return array Plugins available to current user
+ *
+ * @ignore
+ */
 function get_user_plugin_list () {
   $ret = array ();
   $all_plugins = get_plugin_list ();
@@ -390,11 +450,18 @@ function get_user_plugin_list () {
   return $ret;
 }
 
-// determine which browser
-// currently supported return values:
-//      Mozilla (open source Mozilla 5.0) = "Mozilla/5"
-//      Netscape (3.X, 4.X) = "Mozilla/[3,4]"
-//      MSIE (4.X) = "MSIE 4"
+/**
+ * Identify user's browser.
+ *
+ * Returned value will be one of:
+ * - "Mozilla/5" = Mozilla (open source Mozilla 5.0)
+ * - "Mozilla/[3,4]" = Netscape (3.X, 4.X)
+ * - "MSIE 4" = MSIE (4.X)
+ *
+ * @return string String identifying browser
+ *
+ * @ignore
+ */
 function get_web_browser () {
   if ( ereg ( "MSIE [0-9]", getenv ( "HTTP_USER_AGENT" ) ) )
     return "MSIE";
@@ -406,13 +473,14 @@ function get_web_browser () {
 }
 
 
-/** do_debug
-  * Description:
-  *	Log a debug message.  Generally, we do not leave calls to this
-  *	function in the code.  It is used for debugging only.
-  * Parameters:
-  *	$msg - Text to be logged
-  */
+/**
+ * Logs a debug message.
+ *
+ * Generally, we do not leave calls to this function in the code.  It is used
+ * for debugging only.
+ *
+ * @param string $msg Text to be logged
+ */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
   //error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
@@ -421,17 +489,18 @@ function do_debug ( $msg ) {
   //  2, "sockieman:2000" );
 }
 
-/** get_preferred_view
-  * Description:
-  *	Get user's preferred view.
-  *	The user's preferred view is stored in the $STARTVIEW
-  *	global variable.  This is loaded from the user preferences
-  *	(or system settings if there are no user prefererences.)
-  * Parameters:
-  *	$date - (optional) date to pass to preferred view in YYYYMMDD format
-  *	$args - (optional) arguments to include in the URL (such as
-  *	        "user=joe")
-  */
+/**
+ * Gets user's preferred view.
+ *
+ * The user's preferred view is stored in the $STARTVIEW global variable.  This
+ * is loaded from the user preferences (or system settings if there are no user
+ * prefererences.)
+ *
+ * @param string $indate Date to pass to preferred view in YYYYMMDD format
+ * @param string $args   Arguments to include in the URL (such as "user=joe")
+ *
+ * @return string URL of the user's preferred view
+ */
 function get_preferred_view ( $indate="", $args="" ) {
   global $STARTVIEW, $thisdate;
 
@@ -463,41 +532,40 @@ function get_preferred_view ( $indate="", $args="" ) {
   return $url;
 }
 
-/** send_to_preferred_view
-  * Description:
-  *	Send a redirect to the user's preferred view.
-  *	The user's preferred view is stored in the $STARTVIEW
-  *	global variable.  This is loaded from the user preferences
-  *	(or system settings if there are no user prefererences.)
-  * Parameters:
-  *	$date - (optional) date to pass to preferred view in YYYYMMDD format
-  *	$args - (optional) arguments to include in the URL (such as
-  *	        "user=joe")
-  */
+/**
+ * Sends a redirect to the user's preferred view.
+ *
+ * The user's preferred view is stored in the $STARTVIEW global variable.  This
+ * is loaded from the user preferences (or system settings if there are no user
+ * prefererences.)
+ *
+ * @param string $indate Date to pass to preferred view in YYYYMMDD format
+ * @param string $args   Arguments to include in the URL (such as "user=joe")
+ */
 function send_to_preferred_view ( $indate="", $args="" ) {
   $url = get_preferred_view ( $indate, $args );
   do_redirect ( $url );
 }
 
-/** do_redirect
-  * Description:
-  *	Send a redirect to the specified page.
-  *	The database connection is closed and execution terminates
-  *	in this function. <br/>
-  *	Note:
-  *	MS IIS/PWS has a bug in which it does not allow us to send a cookie
-  *	and a redirect in the same HTTP header.  When we detect that the
-  *	web server is IIS, we accomplish the redirect using meta-refresh.
-  *	See the following for more info on the IIS bug:
-  *	  <blockquote>
-  *	  <a href="http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4">
-  *	  http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4</a>
-  *	  </blockquote>
-  * Parameters:
-  *	$url - The page to redirect to.  In theory, this should be an
-  *	absolute URL, but all browsers accept relative URLs
-  *	(like "month.php").
-  */
+/** Sends a redirect to the specified page.
+ *
+ * The database connection is closed and execution terminates in this function.
+ *
+ * <b>Note:</b> MS IIS/PWS has a bug in which it does not allow us to send a
+ * cookie and a redirect in the same HTTP header.  When we detect that the web
+ * server is IIS, we accomplish the redirect using meta-refresh.  See the
+ * following for more info on the IIS bug:
+ *
+ * {@link http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4}
+ *
+ * @param string $url The page to redirect to.  In theory, this should be an
+ *                    absolute URL, but all browsers accept relative URLs (like
+ *                    "month.php").
+ *
+ * @global string   Type of webserver
+ * @global array    Server variables
+ * @global resource Database connection
+ */
 function do_redirect ( $url ) {
   global $SERVER_SOFTWARE, $_SERVER, $c;
 
@@ -530,10 +598,9 @@ function do_redirect ( $url ) {
   exit;
 }
 
-/** send_http_login
-  * Description:
-  *	Send an HTTP login request to the browser and stop execution.
-  */
+/**
+ * Sends an HTTP login request to the browser and stops execution.
+ */
 function send_http_login () {
   global $lang_file, $application_name;
 
@@ -563,15 +630,18 @@ function send_http_login () {
   exit;
 }
 
-/** remember_this_view
-  * Description:
-  *	Generate a cookie that saves the last calendar view (month, week, day)
-  *	based on the current $REQUEST_URI
-  *	so we can return to this same page after a user edits/deletes/etc an
-  *	event.
-  */
+/**
+ * Generates a cookie that saves the last calendar view.
+ *
+ * Cookie is based on the current <var>$REQUEST_URI</var>.
+ *
+ * We save this cookie so we can return to this same page after a user
+ * edits/deletes/etc an event.
+ *
+ * @global string Request string
+ */
 function remember_this_view () {
-  global $server_url, $REQUEST_URI;
+  global $REQUEST_URI;
   if ( empty ( $REQUEST_URI ) )
     $REQUEST_URI = $_SERVER["REQUEST_URI"];
 
@@ -582,14 +652,14 @@ function remember_this_view () {
   SetCookie ( "webcalendar_last_view", $REQUEST_URI );
 }
 
-/** get_last_view
-  * Description:
-  *	Get the last page stored using the remember_this_view function.
-  *	Return empty string if we don't know.
-  * Returns:
-  *	The URL of the last view or an empty string if it cannot be
-  *	determined.
-  */
+/**
+ * Gets the last page stored using {@link remember_this_view()}.
+ *
+ * @return string The URL of the last view or an empty string if it cannot be
+ *                determined.
+ *
+ * @global array Cookies
+ */
 function get_last_view () {
   global $HTTP_COOKIE_VARS;
   $val = '';
@@ -602,14 +672,15 @@ function get_last_view () {
   return $val;
 }
 
-/** send_no_cache_header
-  * Description:
-  *	Send header stuff that tells the browser not to cache this page.
-  *	Different browser use different mechanisms for this, so a series
-  *	of HTTP header directives are sent.
-  *	<br/>Note: This function needs to be called before any HTML output
-  *	is sent to the browser.
-  */
+/**
+ * Sends HTTP headers that tell the browser not to cache this page.
+ *
+ * Different browser use different mechanisms for this, so a series of HTTP
+ * header directives are sent.
+ *
+ * <b>Note:</b> This function needs to be called before any HTML output is sent
+ * to the browser.
+ */
 function send_no_cache_header () {
   header ( "Expires: Mon, 26 Jul 1997 05:00:00 GMT" );
   header ( "Last-Modified: " . gmdate ( "D, d M Y H:i:s" ) . " GMT" );
@@ -618,22 +689,19 @@ function send_no_cache_header () {
   header ( "Pragma: no-cache" );
 }
 
-/** load_user_preferences
-  * Description:
-  *	Load the current user's preferences as global variables
-  *	from the webcal_user_pref table.
-  *	Also load the list of views for this user (not really a preference,
-  *	but this is a convenient place to put this...)
-  *	<br/>Notes:   <ul>
-  *	<li>If the $allow_color_customization is set to 'N',
-  *	then we ignore any color preferences.</li>
-  *	<li>Other default values will also be set if the user
-  *	has not saved a preference and no global value has been set
-  *	by the administrator in the system settings.</li>
-  *	</ul>
-  * Returns:
-  *	The value used in the HTML form (or URL)
-  */
+/**
+ * Loads the current user's preferences as global variables from the webcal_user_pref table.
+ *
+ * Also loads the list of views for this user (not really a preference, but
+ * this is a convenient place to put this...)
+ *
+ * <b>Notes:</b>
+ * - If <var>$allow_color_customization</var> is set to 'N', then we ignore any
+ *   color preferences.
+ * - Other default values will also be set if the user has not saved a
+ *   preference and no global value has been set by the administrator in the
+ *   system settings.
+ */
 function load_user_preferences () {
   global $login, $browser, $views, $prefarray, $is_assistant,
     $has_boss, $user, $is_nonuser_admin, $allow_color_customization;
@@ -725,17 +793,15 @@ function load_user_preferences () {
   if ( $is_nonuser_admin ) load_nonuser_preferences ($user);
 }
 
-/** event_get_external_users
-  * Description:
-  *	Get the list of external users for an event from the
-  *	webcal_entry_ext_user table in an HTML format.
-  * Parameters:
-  *	$event_id - event id
-  *	$use_mailto - when set to 1, email address will contain an href
-  *	  link with a mailto URL.
-  * Returns:
-  *	The list of external users for an event formatte in HTML.
-  */
+/**
+ * Gets the list of external users for an event from the webcal_entry_ext_user table in an HTML format.
+ *
+ * @param int $event_id   Event ID
+ * @param int $use_mailto When set to 1, email address will contain an href
+ *                        link with a mailto URL.
+ *
+ * @return string The list of external users for an event formatte in HTML.
+ */
 function event_get_external_users ( $event_id, $use_mailto=0 ) {
   global $error;
   $ret = "";
@@ -767,28 +833,24 @@ function event_get_external_users ( $event_id, $use_mailto=0 ) {
   return $ret;
 }
 
-/** activity_log
-  * Description:
-  *	Add something to the activity log for an event.
-  *	The information will be saved to the
-  *	webcal_entry_log table.
-  * Parameters:
-  *	$event_id - event id
-  *	$user - user doing this
-  *	$user_cal - user whose calendar is affected
-  *	$type - type of activity we are logging:  <ul>
-  *	  <li>$LOG_CREATE</li>
-  *	  <li>$LOG_APPROVE</li>
-  *	  <li>$LOG_REJECT</li>
-  *	  <li>$LOG_UPDATE</li>
-  *	  <li>$LOG_DELETE</li>
-  *	  <li>$LOG_NOTIFICATION</li>
-  *	  <li>$LOG_REMINDER</li>
-  *	</ul>
-  *	$text - text comment to add with activity log entry
-  * Returns:
-  *	The value used in the HTML form (or URL)
-  */
+/**
+ * Adds something to the activity log for an event.
+ *
+ * The information will be saved to the webcal_entry_log table.
+ *
+ * @param int    $event_id Event ID
+ * @param string $user     Username of user doing this
+ * @param string $user_cal Username of user whose calendar is affected
+ * @param string $type     Type of activity we are logging:
+ *   - $LOG_CREATE
+ *   - $LOG_APPROVE
+ *   - $LOG_REJECT
+ *   - $LOG_UPDATE
+ *   - $LOG_DELETE
+ *   - $LOG_NOTIFICATION
+ *   - $LOG_REMINDER
+ * @param string $text     Text comment to add with activity log entry
+ */
 function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
   $next_id = 1;
 
@@ -822,28 +884,26 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
   }
 }
 
-/** get_my_users
-  * Description:
-  *	Get a list of users.
-  *	If groups are enabled, this will restrict
-  *	the list of users to only those users who are in the same group(s)
-  *	as the user (unless the user is an admin user).
-  *	We allow admin users to see all users because they can also edit
-  *	someone else's events (so they may need access to users who are not
-  *	in the same groups that they are in).
-  * Returns:
-  *	An array of users, where each element in the array is an array
-  *	with the following keys:<ul>
-  *		<li>cal_login</li>
-  *		<li>cal_lastname</li>
-  *		<li>cal_firstname</li>
-  *		<li>cal_is_admin</li>
-  *		<li>cal_is_admin</li>
-  *		<li>cal_email</li>
-  *		<li>cal_password</li>
-  *		<li>cal_fullname</li>
-  *	</ul>
-  */
+/**
+ * Gets a list of users.
+ *
+ * If groups are enabled, this will restrict the list of users to only those
+ * users who are in the same group(s) as the user (unless the user is an admin
+ * user).  We allow admin users to see all users because they can also edit
+ * someone else's events (so they may need access to users who are not in the
+ * same groups that they are in).
+ *
+ * @return array Array of users, where each element in the array is an array
+ *               with the following keys:
+ *    - cal_login
+ *    - cal_lastname
+ *    - cal_firstname
+ *    - cal_is_admin
+ *    - cal_is_admin
+ *    - cal_email
+ *    - cal_password
+ *    - cal_fullname
+ */
 function get_my_users () {
   global $login, $is_admin, $groups_enabled, $user_sees_only_his_groups;
 
@@ -897,19 +957,19 @@ function get_my_users () {
   }
 }
 
-/** get_pref_setting
-  * Description:
-  *	Get a preference setting for the specified user.  If no value is
-  *	found in the database, then the system default setting will be
-  *	returned.
-  * Parameters:
-  *	$user - user login we are getting preference for
-  *	$setting - the name of the setting
-  * Returns:
-  *	The value found in the webcal_user_pref table for the
-  *	specified setting or the sytem default if no user settings
-  *	was found.
-  */
+/**
+ * Gets a preference setting for the specified user.
+ *
+ * If no value is found in the database, then the system default setting will
+ * be returned.
+ *
+ * @param string $user    User login we are getting preference for
+ * @param string $setting Name of the setting
+ *
+ * @return string The value found in the webcal_user_pref table for the
+ *                specified setting or the sytem default if no user settings
+ *                was found.
+ */
 function get_pref_setting ( $user, $setting ) {
   $ret = '';
   // set default
@@ -934,7 +994,13 @@ function get_pref_setting ( $user, $setting ) {
   return $ret;
 }
 
-// Get browser-specified language preference
+/**
+ * Gets browser-specified language preference.
+ *
+ * @return string Preferred language
+ *
+ * @ignore
+ */
 function get_browser_language () {
   global $HTTP_ACCEPT_LANGUAGE, $browser_languages;
   $ret = "";
@@ -959,18 +1025,17 @@ function get_browser_language () {
     return "none";
 }
 
-/** load_user_layers
-  * Description:
-  *	Load current user's layer info and stuff it into layer global variable.
-  *	If the system setting $allow_view_other is not set to 'Y', then
-  *	we ignore all layer functionality.
-  *	If $force is 0, we only load layers if the current user preferences
-  *	have layers turned on.
-  * Parameters:
-  *	$user - User to load layers for
-  *	$force - If set to 1, then load layers for this user even if
-  *		user preferences have layers turned off.
-  */
+/**
+ * Loads current user's layer info into layer global variable.
+ *
+ * If the system setting <var>$allow_view_other</var> is not set to 'Y', then
+ * we ignore all layer functionality.  If <var>$force</var> is 0, we only load
+ * layers if the current user preferences have layers turned on.
+ *
+ * @param string $user  Username of user to load layers for
+ * @param int    $force If set to 1, then load layers for this user even if
+ *                      user preferences have layers turned off.
+ */
 function load_user_layers ($user="",$force=0) {
   global $login;
   global $layers;
@@ -1007,16 +1072,14 @@ function load_user_layers ($user="",$force=0) {
   }
 }
 
-/** site_extras_for_popup
-  * Description:
-  *	Generate the HTML used in an event popup for the site_extras
-  *	fields of an event.
-  * Parameters:
-  *	$id - event id
-  * Returns:
-  *	The HTML to be used within the event popup for any site_extra
-  *	fields found for the specified event
-  */
+/**
+ * Generates the HTML used in an event popup for the site_extras fields of an event.
+ *
+ * @param int $id Event ID
+ *
+ * @return string The HTML to be used within the event popup for any site_extra
+ *                fields found for the specified event
+ */
 function site_extras_for_popup ( $id ) {
   global $site_extras_in_popup, $site_extras;
   // These are needed in case the site_extras.php file was already
@@ -1080,19 +1143,17 @@ function site_extras_for_popup ( $id ) {
   return $ret;
 }
 
-/** build_event_popup
-  * Description:
-  *	Build the HTML for the event popup (but don't print it yet since we
-  *	don't want this HTML to go inside the table for the month).
-  * Parameters:
-  *	$popupid - CSS id to use for event popup
-  *	$user - user the event pertains to
-  *	$description - event description
-  *	$time - time of the event (already formatted in a display format)
-  *	$site_extras - the HTML for any site_extras for this event
-  * Returns:
-  *	The HTML for the event popup
-  */
+/**
+ * Builds the HTML for the event popup.
+ *
+ * @param string $popupid     CSS id to use for event popup
+ * @param string $user        Username of user the event pertains to
+ * @param string $description Event description
+ * @param string $time        Time of the event (already formatted in a display format)
+ * @param string $site_extras HTML for any site_extras for this event
+ *
+ * @return string The HTML for the event popup
+ */
 function build_event_popup ( $popupid, $user, $description, $time, $site_extras='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname;
   $ret = "<dl id=\"$popupid\" class=\"popup\">\n";
@@ -1135,28 +1196,26 @@ function build_event_popup ( $popupid, $user, $description, $time, $site_extras=
   return $ret;
 }
 
-/** print_date_selection
-  * Description:
-  *	Print out a date selection for use in a form.
-  * Parameters:
-  *	$prefix - prefix to use in front of form element names
-  *	$date - currently selected date (in YYYYMMDD) format
-  * Returns:
-  *	The value used in the HTML form (or URL)
-  */
+/**
+ * Prints out a date selection box for use in a form.
+ *
+ * @param string $prefix Prefix to use in front of form element names
+ * @param int    $date   Currently selected date (in YYYYMMDD format)
+ *
+ * @uses date_selection_html
+ */
 function print_date_selection ( $prefix, $date ) {
   print date_selection_html ( $prefix, $date );
 }
 
-/** date_selection_html
-  * Description:
-  *	Print out a date selection for use in a form.
-  * Parameters:
-  *	$prefix - prefix to use in front of form element names
-  *	$date - currently selected date (in YYYYMMDD) format
-  * Returns:
-  *	The value used in the HTML form (or URL)
-  */
+/**
+ * Generate HTML for a date selection for use in a form.
+ *
+ * @param string $prefix Prefix to use in front of form element names
+ * @param int    $date   Currently selected date (in YYYYMMDD format)
+ *
+ * @return string HTML for the selection box
+ */
 function date_selection_html ( $prefix, $date ) {
   $ret = "";
   $num_years = 20;
@@ -1191,20 +1250,20 @@ function date_selection_html ( $prefix, $date ) {
   return $ret;
 }
 
-/** display_small_month
-  * Description:
-  *	Prints out a minicalendar for a month
-  * Parameters:
-  *	$thismonth - number of the month to print
-  *	$thisyear - number of the year
-  *	$showyear - boolean whether to show the year in the calendar's title
-  *	$show_weeknums - boolean whether to show week numbers to the left of each row
-  *	$minical_id - id attribute for the minical table
-  *	$month_link - URL and query string for month link that should
-  *	come before the date specification
-  *	(i.e. month.php?  or  view_l.php?id=7&amp;)
-  *	[defaults to 'month.php?']
-  */
+/**
+ * Prints out a minicalendar for a month.
+ *
+ * @todo Make day.php NOT be a special case
+ *
+ * @param int    $thismonth     Number of the month to print
+ * @param int    $thisyear      Number of the year
+ * @param bool   $showyear      Show the year in the calendar's title?
+ * @param bool   $show_weeknums Show week numbers to the left of each row?
+ * @param string $minical_id    id attribute for the minical table
+ * @param string $month_link    URL and query string for month link that should
+ *                              come before the date specification (e.g.
+ *                              month.php?  or  view_l.php?id=7&amp;)
+ */
 function display_small_month ( $thismonth, $thisyear, $showyear,
   $show_weeknums=false, $minical_id='', $month_link='month.php?' ) {
   global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
@@ -1212,7 +1271,6 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   global $SCRIPT, $thisday; // Needed for day.php
   global $caturl, $today;
 
-  // TODO: Make day.php NOT be a special case
   if ( $user != $login && ! empty ( $user ) ) {
     $u_url = "user=$user" . "&amp;";
   } else {
@@ -1310,14 +1368,14 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
         echo "<td";
         $wday = date ( 'w', $date );
         $class = '';
-	//add class="weekend" if it's saturday or sunday
+  //add class="weekend" if it's saturday or sunday
         if ( $wday == 0 || $wday == 6 ) {
           $class = "weekend";
         }
-	//if the day being viewed is today's date
+  //if the day being viewed is today's date
         if ( $dateYmd == $thisyear . $thismonth . $thisday ) {
-	  //if it's also a weekend, add a space between class names to combine styles
-	  if ( $class != '' ) {
+    //if it's also a weekend, add a space between class names to combine styles
+    if ( $class != '' ) {
             $class .= ' ';
           }
           $class .= "selectedday";
@@ -1346,22 +1404,26 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   echo "</tbody>\n</table>\n";
 }
 
-/** print_entry
-  * Description:
-  *	Print the HTML for one day's events in the month view.
-  * Parameters:
-  *	$id - event id
-  *	$date - date of event (relavant in repeating events) in YYYYMMDD format
-  *	$time - time (in HHMMSS format)
-  *	$duration - event duration (in minutes)
-  *	$name - event name
-  *	$description - long description of event
-  *	$status - event status
-  *	$pri - event priority
-  *	$access - event access
-  *	$event_owner - user associated with this event
-  *	$event_cat - category of event for event_owner
-  */
+/**
+ * Prints the HTML for one day's events in the month view.
+ *
+ * @param int    $id          Event ID
+ * @param int    $date        Date of event (relevant in repeating events) in
+ *                            YYYYMMDD format
+ * @param int    $time        Time (in HHMMSS format)
+ * @param int    $duration    Event duration in minutes
+ * @param string $name        Event name
+ * @param string $description Long description of event
+ * @param string $status      Event status
+ * @param int    $pri         Event priority
+ * @param string $access      Event access
+ * @param string $event_owner Username of user associated with this event
+ * @param int    $event_cat   Category of event for <var>$event_owner</var>
+ *
+ * @staticvar int Used to ensure all event popups have a unique id
+ *
+ * @uses build_event_popup
+ */
 function print_entry ( $id, $date, $time, $duration,
   $name, $description, $status,
   $pri, $access, $event_owner, $event_cat=-1 ) {
@@ -1459,33 +1521,30 @@ function print_entry ( $id, $date, $time, $duration,
   echo "</a>\n";
   if ( $pri == 3 ) echo "</strong>\n"; //end font-weight span
   echo "<br />";
-	if ( $login != $user && $access == 'R' && strlen ( $user ) )
-		$eventinfo .= build_event_popup ( $popupid, $event_owner,
-			translate("This event is confidential"), "" );
-	else
-	if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
-		$eventinfo .= build_event_popup ( $popupid, $event_owner,
-			translate("This event is confidential"), "" );
-	else
-		$eventinfo .= build_event_popup ( $popupid, $event_owner,
-			$description, $timestr, site_extras_for_popup ( $id ) );
+  if ( $login != $user && $access == 'R' && strlen ( $user ) )
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
+      translate("This event is confidential"), "" );
+  else
+  if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
+      translate("This event is confidential"), "" );
+  else
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
+      $description, $timestr, site_extras_for_popup ( $id ) );
 }
 
-/** get_site_extra_fields
-  * Description:
-  *	Get any site-specific fields for an entry that are stored
-  *	in the database in the webcal_site_extras table.
-  * Parameters:
-  *	$eventid - event id
-  * Returns:
-  *	Return an array of array with the keys as follows:  <ul>
-  *	  <li> cal_name </li>
-  *	  <li> cal_type </li>
-  *	  <li> cal_date </li>
-  *	  <li> cal_remind </li>
-  *	  <li> cal_data </li>
-  *	</ul>
-  */
+/** 
+ * Gets any site-specific fields for an entry that are stored in the database in the webcal_site_extras table.
+ *
+ * @param int $eventid Event ID
+ *
+ * @return array Array with the keys as follows:
+ *    - <var>cal_name</var>
+ *    - <var>cal_type</var>
+ *    - <var>cal_date</var>
+ *    - <var>cal_remind</var>
+ *    - <var>cal_data</var>
+ */
 function get_site_extra_fields ( $eventid ) {
   $sql = "SELECT cal_name, cal_type, cal_date, cal_remind, cal_data " .
     "FROM webcal_site_extras " .
@@ -1508,20 +1567,22 @@ function get_site_extra_fields ( $eventid ) {
   return $extras;
 }
 
-/** read_events
-  * Description:
-  *	Read all the events for a user for the specified range of dates.
-  *	This is only called once per page request to improve performance.
-  *	All the events get loaded into the array $events sorted by
-  *	time of day (not date).
-  * Parameters:
-  *	$user - username
-  *	$startdate - start date range, inclusive (in YYYYMMDD format)
-  *	$enddate - end date range, inclusive (in YYYYMMDD format)
-  *	$cat_id - category ID to filter on
-  * Returns:
-  *	An array of events
-  */
+/**
+ * Reads all the events for a user for the specified range of dates.
+ *
+ * This is only called once per page request to improve performance.  All the
+ * events get loaded into the array <var>$events</var> sorted by time of day
+ * (not date).
+ *
+ * @param string $user      Username
+ * @param string $startdate Start date range, inclusive (in YYYYMMDD format)
+ * @param string $enddate   End date range, inclusive (in YYYYMMDD format)
+ * @param int    $cat_id    Category ID to filter on
+ *
+ * @return array Array of events
+ *
+ * @uses query_events
+ */
 function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
   global $login;
   global $layers;
@@ -1590,18 +1651,20 @@ function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
   return query_events ( $user, false, $date_filter, $cat_id  );
 }
 
-/** get_entries
-  * Description:
-  *	Get all the events for a specific date from the array of pre-loaded
-  *	events (which was loaded all at once to improve performance).
-  *	The returned events will be sorted by time of day.
-  * Parameters:
-  *	$user - username
-  *	$date - date to get events for in YYYYMMDD format
-  *	$get_unapproved - load unapproved events (true/false)
-  * Returns:
-  *	An array of events
-  */
+/**
+ * Gets all the events for a specific date.
+ *
+ * Events are retreived from the array of pre-loaded events (which was loaded
+ * all at once to improve performance).
+ *
+ * The returned events will be sorted by time of day.
+ *
+ * @param string $user           Username
+ * @param string $date           Date to get events for in YYYYMMDD format
+ * @param bool   $get_unapproved Load unapproved events?
+ *
+ * @return array Array of events
+ */
 function get_entries ( $user, $date, $get_unapproved=true ) {
   global $events, $TZ_OFFSET;
   $n = 0;
@@ -1652,12 +1715,12 @@ function get_entries ( $user, $date, $get_unapproved=true ) {
       $next_day = date ( ( "Ymd" ), mktime ( 3, 0, 0, $sm, $sd + 1, $sy ) );
       //echo "next_date = $next_day <br />\n";
       if ( $events[$i]['cal_time'] == -1 ) {
-	if ( $events[$i]['cal_date'] == $date ) {
+  if ( $events[$i]['cal_date'] == $date ) {
           $ret[$n++] = $events[$i];
           //echo "added event $events[$i][cal_id] <br />\n";
         }
       } else {
-	if ( $events[$i]['cal_date'] == $date &&
+  if ( $events[$i]['cal_date'] == $date &&
           $events[$i]['cal_time'] > $cutoff ) {
           $ret[$n++] = $events[$i];
           //echo "added event $events[$i][cal_id] <br />\n";
@@ -1672,21 +1735,19 @@ function get_entries ( $user, $date, $get_unapproved=true ) {
   return $ret;
 }
 
-/** query_events
-  * Description:
-  *	Read events visible to a user (including layers and possibly
-  *	public access if enabled); Return results
-  *	in an array sorted by time of day.
-  * Parameters:
-  *	$user - username
-  *	$want_repeated - true to get repeating events; false to get
-  *	  non-repeating.
-  *	$date_filter - SQL phrase starting with AND, to be appended to
-  *	  the WHERE clause.  May be empty string.
-  *	$cat_id - category ID to filter on.  May be empty.
-  * Returns:
-  *	An array of events
-  */
+/**
+ * Reads events visible to a user.
+ *
+ * Includes layers and possibly public access if enabled
+ *
+ * @param string $user          Username
+ * @param bool   $want_repeated Get repeating events?
+ * @param string $date_filter   SQL phrase starting with AND, to be appended to
+ *                              the WHERE clause.  May be empty string.
+ * @param int    $cat_id        Category ID to filter on.  May be empty.
+ *
+ * @return array Array of events sorted by time of day
+ */
 function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   global $login;
   global $layers, $public_access_default_visible;
@@ -1766,7 +1827,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
         "cal_status" => $row[9],
         "cal_category" => $row[10],
         "cal_login" => $row[11],
-	"cal_exceptions" => array()
+  "cal_exceptions" => array()
         );
       if ( $want_repeated && ! empty ( $row[12] ) ) {
         $item['cal_type'] = empty ( $row[12] ) ? "" : $row[12];
@@ -1824,26 +1885,30 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   return $result;
 }
 
-/** read_repeated_events
-  * Description:
-  *	Read all the repeated events for a user. This is only called once
-  *	per page request to improve performance. All the events get loaded
-  *	into the array $repeated_events sorted by time of day (not date).
-  *	This will load all the repeated events into memory.
-  *	<br/>Notes:  <ul>
-  *	<li> To get which events repeat on a specific date, use the
-  *	     get_repeating_entries function.</li>
-  *	<li> To get all the dates that one specific event repeats on, the
-  *	     get_all_dates function should be called.  </li>
-  *	</ul>
-  * Parameters:
-  *	$user   - username
-  *	$cat_id - category ID to filter on  (May be empty)
-  *	$date   - cutoff date for repeating event endtimes in YYYYMMDD
-  *		  format (may be empty)
-  * Returns:
-  *	An array of repeating events
-  */
+/**
+ * Reads all the repeated events for a user.
+ *
+ * This is only called once per page request to improve performance. All the
+ * events get loaded into the array <var>$repeated_events</var> sorted by time of day (not
+ * date).
+ *
+ * This will load all the repeated events into memory.
+ *
+ * <b>Notes:</b>
+ * - To get which events repeat on a specific date, use
+ *   {@link get_repeating_entries()}.
+ * - To get all the dates that one specific event repeats on, call
+ *   {@link get_all_dates()}.
+ *
+ * @param string $user   Username
+ * @param int    $cat_id Category ID to filter on  (May be empty)
+ * @param string $date   Cutoff date for repeating event endtimes in YYYYMMDD
+ *                       format (may be empty)
+ *
+ * @return Array of repeating events sorted by time of day
+ *
+ * @uses query_events
+ */
 function read_repeated_events ( $user, $cat_id = '', $date = ''  ) {
   global $login;
   global $layers;
@@ -1852,20 +1917,20 @@ function read_repeated_events ( $user, $cat_id = '', $date = ''  ) {
   return query_events ( $user, true, $filter, $cat_id );
 }
 
-/** get_all_dates
-  * Description:
-  *	Returns all the dates a specific event will fall on accounting for
-  *	the repeating. Any event with no end will be assigned one.
-  * Parameters:
-  *	$date - initial date in raw format
-  *	$rpt_type - repeating type as stored in the database
-  *	$end  - end date
-  *	$days - days events occurs on (for weekly)
-  *	$ex_dates - array of exception dates for this event in YYYYMMDD format
-  *	$freq - frequency of repetition
-  * Returns:
-  *	An array of dates (in UNIX time format)
-  */
+/**
+ * Returns all the dates a specific event will fall on accounting for the repeating.
+ *
+ * Any event with no end will be assigned one.
+ *
+ * @param string $date     Initial date in raw format
+ * @param string $rpt_type Repeating type as stored in the database
+ * @param string $end      End date
+ * @param string $days     Days events occurs on (for weekly)
+ * @param array  $ex_dates Array of exception dates for this event in YYYYMMDD format
+ * @param int    $freq     Frequency of repetition
+ *
+ * @return array Array of dates (in UNIX time format)
+ */
 function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
   global $conflict_repeat_months, $days_per_month, $ldays_per_month;
   global $ONE_DAY;
@@ -2035,22 +2100,23 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
   return $ret;
 }
 
-/** get_repeating_entries
-  * Description:
-  *	Get all the repeating events for the specified data and return them
-  *	in an array (which is sorted by time of day).
-  *	<br/>Note:
-  *	The global variable <tt>$repeated_events</tt> needs to be
-  *	set by calling the read_repeated_events function first.
-  * Parameters:
-  *	$user - username
-  *	$date - date to get events for in YYYYMMDD format
-  *	$get_unapproved - include unapproved events in results
-  * Returns:
-  *	The query result resource on queries (which can then be
-  *	passed to the dbi_fetch_row function to obtain the results),
-  *	or true/false on insert or delete queries.
-  */
+/**
+ * Gets all the repeating events for the specified date.
+ *
+ * <b>Note:</b>
+ * The global variable <var>$repeated_events</var> needs to be
+ * set by calling {@link read_repeated_events()} first.
+ *
+ * @param string $user           Username
+ * @param string $date           Date to get events for in YYYYMMDD format
+ * @param bool   $get_unapproved Include unapproved events in results?
+ *
+ * @return mixed The query result resource on queries (which can then be
+ *               passed to {@link dbi_fetch_row()} to obtain the results), or
+ *               true/false on insert or delete queries.
+ *
+ * @global array Array of repeating events retreived using {@link read_repeated_events()}
+ */
 function get_repeating_entries ( $user, $dateYmd, $get_unapproved=true ) {
   global $repeated_events;
   $n = 0;
@@ -2069,16 +2135,14 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved=true ) {
   return $ret;
 }
 
-/** repeated_event_matches_date
-  * Description:
-  *	Returns a boolean stating whether or not the event passed
-  *	in will fall on the date passed.
-  * Parameters:
-  *	$event - the event as an array
-  *	$dateYmd - the date to check in YYYYMMDD format
-  * Returns:
-  *	true or false
-  */
+/**
+ * Determines whether the event passed in will fall on the date passed.
+ *
+ * @param array  $event   The event as an array
+ * @param string $dateYmd Date to check in YYYYMMDD format
+ *
+ * @return bool Does <var>$event</var> occur on <var>$dateYmd</var>?
+ */
 function repeated_event_matches_date($event,$dateYmd) {
   global $days_per_month, $ldays_per_month, $ONE_DAY;
   // only repeat after the beginning, and if there is an end
@@ -2188,6 +2252,14 @@ function repeated_event_matches_date($event,$dateYmd) {
   return false;
 }
 
+/**
+ * Converts a date to a timestamp.
+ * 
+ * @param string $d Date in YYYYMMDD format
+ *
+ * @return int Timestamp representing 3:00 (or 4:00 if during Daylight Saving
+ *             Time) in the morning on that day
+ */
 function date_to_epoch ( $d ) {
   if ( $d == 0 )
     return 0;
@@ -2200,10 +2272,14 @@ function date_to_epoch ( $d ) {
   }
 }
 
-// check if a date is an exception for an event
-// $date - date in timestamp format
-// $exdays - array of dates in YYYYMMDD format
-// [internal function to functions.php.  do not document.]
+/**
+ * Checks if a date is an exception for an event.
+ *
+ * @param string $date   Date in YYYYMMDD format
+ * @param array  $exdays Array of dates in YYYYMMDD format
+ *
+ * @ignore
+ */
 function is_exception ( $date, $ex_days ) {
   $size = count ( $ex_days );
   $count = 0;
@@ -2217,34 +2293,38 @@ function is_exception ( $date, $ex_days ) {
   return false;
 }
 
-/** get_sunday_before
-  * Description:
-  *	Get the Sunday of the week that the specified date is in.
-  *	(If the date specified is a Sunday, then that date is returned.)
-  * Parameters:
-  *	$year - year in YYYY format
-  *	$month - month (1-12)
-  *	$day - day of the month
-  * Returns:
-  *	The date (in unix time format)
-  */
+/**
+ * Gets the Sunday of the week that the specified date is in.
+ *
+ * If the date specified is a Sunday, then that date is returned.
+ *
+ * @param int $year  Year
+ * @param int $month Month (1-12)
+ * @param int $day   Day of the month
+ *
+ * @return int The date (in UNIX timestamp format)
+ *
+ * @see get_monday_before
+ */
 function get_sunday_before ( $year, $month, $day ) {
   $weekday = date ( "w", mktime ( 3, 0, 0, $month, $day, $year ) );
   $newdate = mktime ( 3, 0, 0, $month, $day - $weekday, $year );
   return $newdate;
 }
 
-/** get_monday_before
-  * Description:
-  *	Get the Monday of the week that the specified date is in.
-  *	(If the date specified is a Monday, then that date is returned.)
-  * Parameters:
-  *	$year - year in YYYY format
-  *	$month - month (1-12)
-  *	$day - day of the month
-  * Returns:
-  *	The date (in unix time format)
-  */
+/** 
+ * Gets the Monday of the week that the specified date is in.
+ *
+ * If the date specified is a Monday, then that date is returned.
+ *
+ * @param int $year  Year
+ * @param int $month Month (1-12)
+ * @param int $day   Day of the month
+ *
+ * @return int The date (in UNIX timestamp format)
+ *
+ * @see get_sunday_before
+ */
 function get_monday_before ( $year, $month, $day ) {
   $weekday = date ( "w", mktime ( 3, 0, 0, $month, $day, $year ) );
   if ( $weekday == 0 )
@@ -2254,15 +2334,15 @@ function get_monday_before ( $year, $month, $day ) {
   return mktime ( 3, 0, 0, $month, $day - ( $weekday - 1 ), $year );
 }
 
-/** week_number
-  * Description:
-  *	Returns week number for specified date.
-  *	depending from week numbering settings.
-  * Parameters:
-  *	$date - date in UNIX time format
-  * Returns:
-  *	The week number of the specified date
-  */
+/**
+ * Returns the week number for specified date.
+ * 
+ * Depends on week numbering settings.
+ *
+ * @param int $date Date in UNIX timestamp format
+ *
+ * @return string The week number of the specified date
+ */
 function week_number ( $date ) {
   $tmp = getdate($date);
   $iso = gregorianToISO($tmp['mday'], $tmp['mon'], $tmp['year']);
@@ -2271,37 +2351,49 @@ function week_number ( $date ) {
   return sprintf("%02d",$week_number);
 }
 
-// This function is not yet used.  Some of the places that will call it
-// have to be updated to also get the event owner so we know if the current
-// user has access to edit and delete.
+/**
+ * Generates the HTML for an add/edit/delete icon.
+ *
+ * This function is not yet used.  Some of the places that will call it have to
+ * be updated to also get the event owner so we know if the current user has
+ * access to edit and delete.
+ *
+ * @param int  $id         Event ID
+ * @param bool $can_edit   Can this user edit this event?
+ * @param bool $can_delete Can this user delete this event?
+ *
+ * @return HTML for add/edit/delete icon.
+ *
+ * @ignore
+ */
 function icon_text ( $id, $can_edit, $can_delete ) {
   global $readonly, $is_admin;
   $ret = "<a title=\"" . 
-	translate("View this entry") . "\" href=\"view_entry.php?id=$id\"><img src=\"view.gif\" alt=\"" . 
-	translate("View this entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" /></a>";
+  translate("View this entry") . "\" href=\"view_entry.php?id=$id\"><img src=\"view.gif\" alt=\"" . 
+  translate("View this entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" /></a>";
   if ( $can_edit && $readonly == "N" )
     $ret .= "<a title=\"" . 
-	translate("Edit entry") . "\" href=\"edit_entry.php?id=$id\"><img src=\"edit.gif\" alt=\"" . 
-	translate("Edit entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" /></a>";
+  translate("Edit entry") . "\" href=\"edit_entry.php?id=$id\"><img src=\"edit.gif\" alt=\"" . 
+  translate("Edit entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" /></a>";
   if ( $can_delete && ( $readonly == "N" || $is_admin ) )
     $ret .= "<a title=\"" . 
-    	translate("Delete entry") . "\" href=\"del_entry.php?id=$id\" onclick=\"return confirm('" .
-	translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
-	translate("This will delete this entry for all users.") . "');\"><img src=\"delete.gif\" alt=\"" . 
-	translate("Delete entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" /></a>";
+      translate("Delete entry") . "\" href=\"del_entry.php?id=$id\" onclick=\"return confirm('" .
+  translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+  translate("This will delete this entry for all users.") . "');\"><img src=\"delete.gif\" alt=\"" . 
+  translate("Delete entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" /></a>";
   return $ret;
 }
 
-/** print_date_entries
-  * Description:
-  *	Print all the calendar entries for the specified user for the
-  *	specified date.  If we are displaying data from someone other than
-  *	the logged in user, then check the access permission of the entry.
-  * Parameters:
-  *	$date - date in YYYYMMDD format
-  *	$user - username
-  *	$is_ssi - is this being called from week_ssi.php?  If so, then
-  */
+/**
+ * Prints all the calendar entries for the specified user for the specified date.
+ *
+ * If we are displaying data from someone other than
+ * the logged in user, then check the access permission of the entry.
+ *
+ * @param string $date Date in YYYYMMDD format
+ * @param string $user Username
+ * @param bool   $ssi  Is this being called from week_ssi.php?
+ */
 function print_date_entries ( $date, $user, $ssi ) {
   global $events, $readonly, $is_admin, $login,
     $public_access, $public_access_can_add, $cat_id;
@@ -2424,17 +2516,16 @@ function print_date_entries ( $date, $user, $ssi ) {
     echo "&nbsp;"; // so the table cell has at least something
 }
 
-/** times_overlap
-  * Description:
-  *	Check to see if two events overlap.
-  * Parameters:
-  *	$time1 - time 1 in HHMMSS format
-  *	$duration1 - duration 1 in minutes
-  *	$time2 - time 2 in HHMMSS format
-  *	$duration1 - duration 1 in minutes
-  * Returns:
-  *	true if the two times overlap, false if they do not
-  */
+/**
+ * Checks to see if two events overlap.
+ *
+ * @param string $time1 Time 1 in HHMMSS format
+ * @param int    $duration1 Duration 1 in minutes
+ * @param string $time2 Time 2 in HHMMSS format
+ * @param int    $duration2 Duration 2 in minutes
+ *
+ * @return bool True if the two times overlap, false if they do not
+ */
 function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
   //echo "times_overlap ( $time1, $duration1, $time2, $duration2 )<br />\n";
   $hour1 = (int) ( $time1 / 10000 );
@@ -2457,29 +2548,30 @@ function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
   return true;
 }
 
-/** check_for_conflicts
-  * Description:
-  *	Check for conflicts.
-  *	Find overlaps between an array of dates and the other dates in
-  *	the database.
-  *	<br/>Limits on number of appointments: if enabled in
-  *	System Settings ($limit_appts global variable),
-  *	too many appointments can also generate a scheduling conflict.
-  *	<br/>TODO: Update this to handle exceptions to repeating events
-  * Parameters:
-  *	$date - is an array of dates in YYYYMMDD format that is checked
-  *	  for overlaps.
-  *	$duration - event duration in minutes
-  *	$hour - hour of event (0-23)
-  *	$minute - minute of the event (0-59)
-  *	$participants - an array of users whose calendars are to be checked
-  *	$login - the current user name
-  *	$id - current event id
-  *	  (this keeps overlaps from wrongly checking an event against itself)
-  * Returns:
-  *	Return empty string for no conflicts or return the HTML of the
-  *	conflicts when one or more are found.
-  */
+/**
+ * Checks for conflicts.
+ *
+ * Find overlaps between an array of dates and the other dates in the database.
+ *
+ * Limits on number of appointments: if enabled in System Settings
+ * (<var>$limit_appts</var> global variable), too many appointments can also
+ * generate a scheduling conflict.
+ * 
+ * @todo Update this to handle exceptions to repeating events
+ *
+ * @param array  $dates        Array of dates in YYYYMMDD format that is
+ *                             checked for overlaps.
+ * @param int    $duration     Event duration in minutes
+ * @param int    $hour         Hour of event (0-23)
+ * @param int    $minute       Minute of the event (0-59)
+ * @param array  $participants Array of users whose calendars are to be checked
+ * @param string $login        The current user name
+ * @param int    $id           Current event id (this keeps overlaps from
+ *                             wrongly checking an event against itself)
+ *
+ * @return Empty string for no conflicts or return the HTML of the
+ *         conflicts when one or more are found.
+ */
 function check_for_conflicts ( $dates, $duration, $hour, $minute,
   $participants, $login, $id ) {
   global $single_user_login, $single_user;
@@ -2635,15 +2727,13 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
   return $conflicts;
 }
 
-/** time_to_minutes
-  * Description:
-  *	Convert a time format HHMMSS (like 131000 for 1PM) into number of
-  *	minutes past midnight.
-  * Parameters:
-  *	$time - input time in HHMMSS format
-  * Returns:
-  *	The number of minutes since midnight
-  */
+/**
+ * Converts a time format HHMMSS (like 130000 for 1PM) into number of minutes past midnight.
+ *
+ * @param string $time Input time in HHMMSS format
+ *
+ * @return int The number of minutes since midnight
+ */
 function time_to_minutes ( $time ) {
   $h = (int) ( $time / 10000 );
   $m = (int) ( $time / 100 ) % 100;
@@ -2651,23 +2741,24 @@ function time_to_minutes ( $time ) {
   return $num;
 }
 
-/** calc_time_slot
-  * Description:
-  *	Calculate which row/slot this time represents.
-  *	This is used in day and week views where hours of the time
-  *	are separeted into different cells in a table.
-  * Parameters:
-  *	$time - input time in YYYYMMDD format
-  *	$round_down - should we change 1100 to 1059?
-  *	  (This will make sure a 10AM-100AM appointment just
-  *	  shows up in the 10AM slow and not in the 11AM slot also.)
-  *	<br/>Note: the global variable $TIME_SLOTS is used to determine
-  *	how many time slots there are and how many minutes each is.
-  *	This variable is defined user preferences (or defaulted to
-  *	admin system settings).
-  * Returns:
-  *	The time slot index
-  */
+/**
+ * Calculates which row/slot this time represents.
+ *
+ * This is used in day and week views where hours of the time are separeted
+ * into different cells in a table.
+ *
+ * <b>Note:</b> the global variable <var>$TIME_SLOTS</var> is used to determine
+ * how many time slots there are and how many minutes each is.  This variable
+ * is defined user preferences (or defaulted to admin system settings).
+ *
+ * @param string $time       Input time in HHMMSS format
+ * @param bool   $round_down Should we change 1100 to 1059?
+ *                           (This will make sure a 10AM-100AM appointment just
+ *                           shows up in the 10AM slow and not in the 11AM slot
+ *                           also.)
+ *
+ * @return int The time slot index
+ */
 function calc_time_slot ( $time, $round_down = false ) {
   global $TIME_SLOTS, $TZ_OFFSET;
 
@@ -2686,16 +2777,16 @@ function calc_time_slot ( $time, $round_down = false ) {
   return $ret;
 }
 
-/** html_for_add_icon
-  * Description:
-  *	Generate the HTML for an icon to add a new event.
-  * Parameters:
-  *	$date = date for new event in YYYYMMDD format
-  *	$hour = hour of day (eg. 1,13,23) (optional)
-  *	$user = participant to initially select for new event (optional)
-  * Returns:
-  *	The HTML for the add event icon
-  */
+/**
+ * Generates the HTML for an icon to add a new event.
+ *
+ * @param string $date   Date for new event in YYYYMMDD format
+ * @param int    $hour   Hour of day (0-23)
+ * @param int    $minute Minute of the hour (0-59)
+ * @param string $user   Participant to initially select for new event
+ *
+ * @return string The HTML for the add event icon
+ */
 function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   global $TZ_OFFSET;
   global $login, $readonly, $cat_id;
@@ -2718,25 +2809,24 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
 	translate("New Entry") . "\" /></a>\n";
 }
 
-/** html_for_event_week_at_a_glance
-  * Description:
-  *	Generate the HTML for an event to be viewed in the week-at-glance
-  *	(week.php).
-  *	The HTML will be stored in an array (global variable $hour_arr)
-  *	indexed on the event's starting hour.
-  * Parameters:
-  *	$id - event id
-  *	$date - date of event in YYYYMMDD format
-  *	$time - time of event in HHMM format
-  *	$name - brief description of event
-  *	$description - full description of event
-  *	$status - status of event ('A', 'W')
-  *	$pri - priority of event
-  *	$access - access to event by others ('P', 'R')
-  *	$duration - duration of event in minutes
-  *	$event_owner - user who created event
-  *	$event_category - category id for event
-  */
+/**
+ * Generates the HTML for an event to be viewed in the week-at-glance (week.php).
+ *
+ * The HTML will be stored in an array (global variable $hour_arr)
+ * indexed on the event's starting hour.
+ *
+ * @param int    $id             Event id
+ * @param string $date           Date of event in YYYYMMDD format
+ * @param string $time           Time of event in HHMM format
+ * @param string $name           Brief description of event
+ * @param string $description    Full description of event
+ * @param string $status         Status of event ('A', 'W')
+ * @param int    $pri            Priority of event
+ * @param string $access         Access to event by others ('P', 'R')
+ * @param int    $duration       Duration of event in minutes
+ * @param string $event_owner    User who created event
+ * @param int    $event_category Category id for event
+ */
 function html_for_event_week_at_a_glance ( $id, $date, $time,
   $name, $description, $status, $pri, $access, $duration, $event_owner,
   $event_category=-1 ) {
@@ -2782,7 +2872,7 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   }
 
   $hour_arr[$ind] .= "<a title=\"" . 
-	translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+  translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
   if ( strlen ( $GLOBALS["user"] ) > 0 )
     $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
   $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
@@ -2867,25 +2957,24 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   }
 }
 
-/** html_for_event_day_at_a_glance
-  * Description:
-  *	Generate the HTML for an event to be viewed in the day-at-glance
-  *	(day.php).
-  *	The HTML will be stored in an array ($hour_arr) indexed on the event's
-  *	starting hour.
-  * Parameters:
-  *	$id - event id
-  *	$date - date of event in YYYYMMDD format
-  *	$time - time of event in HHMM format
-  *	$name - brief description of event
-  *	$description - full description of event
-  *	$status - status of event ('A', 'W')
-  *	$pri - priority of event
-  *	$access - access to event by others ('P', 'R')
-  *	$duration - duration of event in minutes
-  *	$event_owner - user who created event
-  *	$event_category - category id for event
-  */
+/**
+ * Generates the HTML for an event to be viewed in the day-at-glance (day.php).
+ *
+ * The HTML will be stored in an array (global variable $hour_arr)
+ * indexed on the event's starting hour.
+ *
+ * @param int    $id             Event id
+ * @param string $date           Date of event in YYYYMMDD format
+ * @param string $time           Time of event in HHMM format
+ * @param string $name           Brief description of event
+ * @param string $description    Full description of event
+ * @param string $status         Status of event ('A', 'W')
+ * @param int    $pri            Priority of event
+ * @param string $access         Access to event by others ('P', 'R')
+ * @param int    $duration       Duration of event in minutes
+ * @param string $event_owner    User who created event
+ * @param int    $event_category Category id for event
+ */
 function html_for_event_day_at_a_glance ( $id, $date, $time,
   $name, $description, $status, $pri, $access, $duration, $event_owner,
   $event_category=-1 ) {
@@ -3022,16 +3111,15 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   $hour_arr[$ind] .= "<br />\n";
 }
 
-/** print_day_at_a_glance
-  * Description:
-  *	Print all the calendar entries for the specified user for the
-  *	specified date in day-at-a-glance format.
-  *	If we are displaying data from someone other than
-  *	the logged in user, then check the access permission of the entry.
-  * Parameters:
-  *	$date - date in YYYYMMDD format
-  *	$user - username of calendar
-  */
+/**
+ * Prints all the calendar entries for the specified user for the specified date in day-at-a-glance format.
+ *
+ * If we are displaying data from someone other than
+ * the logged in user, then check the access permission of the entry.
+ *
+ * @param string $date Date in YYYYMMDD format
+ * @param string $user Username of calendar
+ */
 function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan;
   global $TABLEBG, $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TIME_SLOTS, $TZ_OFFSET;
@@ -3193,9 +3281,9 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
         echo "<td>";
         if ( $can_add ) {
           echo html_for_add_icon ( $date, $time_h, $time_m, $user ) . "</td>";
-	} else {
-	  echo "&nbsp;</td>";
-	}
+  } else {
+    echo "&nbsp;</td>";
+  }
         echo "</tr>\n";
       } else {
         if ( empty ( $rowspan_arr[$i] ) )
@@ -3218,16 +3306,17 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   }
 }
 
-/** display_unapproved_events
-  * Description:
-  *	Check for any unnaproved events.  If any are found,
-  *	display a link to the unapproved events (where they
-  *	can be approved).
-  *	If the user is an admin user, also count up any public events.
-  *	If the user is a nonuser admin, count up events on the nonuser calendar.
-  * Parameters:
-  *	$user - current user login
-  */
+/**
+ * Checks for any unnaproved events.
+ *
+ * If any are found, display a link to the unapproved events (where they can be
+ * approved).
+ *
+ * If the user is an admin user, also count up any public events.
+ * If the user is a nonuser admin, count up events on the nonuser calendar.
+ *
+ * @param string $user Current user login
+ */
 function display_unapproved_events ( $user ) {
   global $public_access, $is_admin, $nonuser_enabled, $login;
 
@@ -3271,15 +3360,14 @@ function display_unapproved_events ( $user ) {
   }
 }
 
-/** activate_urls
-  * Description:
-  *	Look for URLs in the given text, and make them into links.
-  * Parameters:
-  *	$text - input text
-  * Returns:
-  *	The text altered to have HTML links for any web links
-  *	(http or https)
-  */
+/**
+ * Looks for URLs in the given text, and makes them into links.
+ *
+ * @param string $text Input text
+ *
+ * @return string The text altered to have HTML links for any web links
+ *                (http or https)
+ */
 function activate_urls ( $text ) {
   $str = eregi_replace ( "(http://[^[:space:]$]+)",
     "<a href=\"\\1\">\\1</a>", $text );
@@ -3288,22 +3376,21 @@ function activate_urls ( $text ) {
   return $str;
 }
 
-/** display_time
-  * Description:
-  *	Display a time in either 12 or 24 hour format.
-  *	The global variable $TZ_OFFSET to adjust the time.
-  *	Note that this is somewhat of a kludge for timezone support.  If an
-  *	event is set for 11PM server time and the user is 2 hours ahead, it
-  *	will show up as 1AM, but the date will not be adjusted to the next day.
-  * Parameters:
-  *	$time - input time in HHMMSS format
-  *	$ignore_offset - if true, then do not use the timezone offset
-  *	  (optional)
-  * Returns:
-  *	The query result resource on queries (which can then be
-  *	passed to the dbi_fetch_row function to obtain the results),
-  *	or true/false on insert or delete queries.
-  */
+/**
+ * Displays a time in either 12 or 24 hour format.
+ *
+ * The global variable $TZ_OFFSET is used to adjust the time.  Note that this
+ * is somewhat of a kludge for timezone support.  If an event is set for 11PM
+ * server time and the user is 2 hours ahead, it will show up as 1AM, but the
+ * date will not be adjusted to the next day.
+ *
+ * @param string $time          Input time in HHMMSS format
+ * @param bool   $ignore_offset If true, then do not use the timezone offset
+ *
+ * @return string The time in the user's timezone and preferred format
+ *
+ * @global int The user's timezone offset from the server
+ */
 function display_time ( $time, $ignore_offset=0 ) {
   global $TZ_OFFSET;
   $hour = (int) ( $time / 10000 );
@@ -3326,16 +3413,17 @@ function display_time ( $time, $ignore_offset=0 ) {
   return $ret;
 }
 
-/** month_name
-  * Description:
-  *	Return the full name of the specified month.
-  *	Use the month_short_name function to get the abbreviated
-  *	name of the month.
-  * Parameters:
-  *	$m - month (0-11)
-  * Returns:
-  *	The full name of the specified month
-  */
+/**
+ * Returns the full name of the specified month.
+ *
+ * Use {@link month_short_name()} to get the abbreviated name of the month.
+ *
+ * @param int $m Number of the month (0-11)
+ *
+ * @return string The full name of the specified month
+ *
+ * @see month_short_name
+ */
 function month_name ( $m ) {
   switch ( $m ) {
     case 0: return translate("January");
@@ -3354,16 +3442,17 @@ function month_name ( $m ) {
   return "unknown-month($m)";
 }
 
-/** month_short_name
-  * Description:
-  *	Return the abbreviated name of the specified month (such as "Jan").
-  *	Use the month_name function to get the full
-  *	name of the month.
-  * Parameters:
-  *	$m - month (0-11)
-  * Returns:
-  *	The abbreviated name of the specified month (example: "Jan")
-  */
+/**
+ * Returns the abbreviated name of the specified month (such as "Jan").
+ *
+ * Use {@link month_name()} to get the full name of the month.
+ *
+ * @param int $m Number of the month (0-11)
+ *
+ * @return string The abbreviated name of the specified month (example: "Jan")
+ *
+ * @see month_name
+ */
 function month_short_name ( $m ) {
   switch ( $m ) {
     case 0: return translate("Jan");
@@ -3382,15 +3471,17 @@ function month_short_name ( $m ) {
   return "unknown-month($m)";
 }
 
-/** weekday_name
-  * Description:
-  *	Return the full weekday name.  Use the
-  *	weekday_short_name function to get the abbreviated weekday name.
-  * Parameters:
-  *	$w - weekday (0=Sunday,...,6=Saturday)
-  * Returns:
-  *	the full weekday name ("Sunday")
-  */
+/**
+ * Returns the full weekday name.
+ *
+ * Use {@link weekday_short_name()} to get the abbreviated weekday name.
+ *
+ * @param int $w Number of the day in the week (0=Sunday,...,6=Saturday)
+ *
+ * @return string The full weekday name ("Sunday")
+ *
+ * @see weekday_short_name
+ */
 function weekday_name ( $w ) {
   switch ( $w ) {
     case 0: return translate("Sunday");
@@ -3404,15 +3495,15 @@ function weekday_name ( $w ) {
   return "unknown-weekday($w)";
 }
 
-/** weekday_short_name
-  * Description:
-  *	Return the abbreviated weekday name.  Use the
-  *	weekday_name function to get the full weekday name.
-  * Parameters:
-  *	$w - weekday (0=Sunday,...,6=Saturday)
-  * Returns:
-  *	the abbreviated weekday name ("Sun")
-  */
+/**
+ * Returns the abbreviated weekday name.
+ *
+ * Use {@link weekday_name()} to get the full weekday name.
+ *
+ * @param int $w Number of the day in the week (0=Sunday,...,6=Saturday)
+ *
+ * @return string The abbreviated weekday name ("Sun")
+ */
 function weekday_short_name ( $w ) {
   switch ( $w ) {
     case 0: return translate("Sun");
@@ -3426,24 +3517,23 @@ function weekday_short_name ( $w ) {
   return "unknown-weekday($w)";
 }
 
-/** date_to_str
-  * Description:
-  *	Convert a date in YYYYMMDD format into
-  *	"Friday, December 31, 1999", "Friday, 12-31-1999" or whatever format
-  *	the user prefers.
-  * Parameters:
-  *	$indate - date in YYYYMMDD format
-  *	$format - format to use for date (default is
-  *	  "__month__ __dd__, __yyyy__")
-  *	$show_weekday - should the day of week also be included (true/false)
-  *	$short_months - should the abbreviated month names be used
-  *	  instead of the full month names
-  *	$server_time -  ???
-  * Returns:
-  *	The query result resource on queries (which can then be
-  *	passed to the dbi_fetch_row function to obtain the results),
-  *	or true/false on insert or delete queries.
-  */
+/**
+ * Converts a date in YYYYMMDD format into "Friday, December 31, 1999",
+ * "Friday, 12-31-1999" or whatever format the user prefers.
+ *
+ * @param string $indate       Date in YYYYMMDD format
+ * @param string $format       Format to use for date (default is "__month__
+ *                             __dd__, __yyyy__")
+ * @param bool   $show_weekday Should the day of week also be included?
+ * @param bool   $short_months Should the abbreviated month names be used
+ *                             instead of the full month names?
+ * @param int    $server_time ???
+ *
+ * @return string Date in the specified format
+ *
+ * @global string Preferred date format
+ * @global int    User's timezone offset from the server
+ */
 function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=false, $server_time="" ) {
   global $DATE_FORMAT, $TZ_OFFSET;
 
@@ -3501,7 +3591,15 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
 }
 
 
-
+/**
+ * Converts a hexadecimal digit to an integer.
+ *
+ * @param string $val Hexadecimal digit
+ *
+ * @return int Equivalent integer in base-10
+ *
+ * @ignore
+ */
 function hextoint ( $val ) {
   if ( empty ( $val ) )
     return 0;
@@ -3526,17 +3624,20 @@ function hextoint ( $val ) {
   return 0;
 }
 
-/** decode_string
-  * Description:
-  *	Extract a user's name from a session id.
-  *	This prevents users from begin
-  *	able to edit their cookies.txt file and set the username in plain
-  *	text.
-  * Parameters:
-  *	$instr - a hex-encoded string. "Hello" would be "678ea786a5".
-  * Returns:
-  *	The decoded string
-  */
+/**
+ * Extracts a user's name from a session id.
+ *
+ * This prevents users from begin able to edit their cookies.txt file and set
+ * the username in plain text.
+ *
+ * @param string $instr A hex-encoded string. "Hello" would be "678ea786a5".
+ * 
+ * @return string The decoded string
+ *
+ * @global array Array of offsets
+ *
+ * @see encode_string
+ */
 function decode_string ( $instr ) {
   global $offsets;
   //echo "<br />\nDECODE<br />\n";
@@ -3560,15 +3661,18 @@ function decode_string ( $instr ) {
   return $orig;
 }
 
-/** encode_string
-  * Description:
-  *	Take an input string and encode it into a slightly encoded hexval
-  *	that we can use as a session cookie.
-  * Parameters:
-  *	$instr - text to encode
-  * Returns:
-  *	the encoded text
-  */
+/**
+ * Takes an input string and encode it into a slightly encoded hexval that we
+ * can use as a session cookie.
+ *
+ * @param string $instr Text to encode
+ *
+ * @return string The encoded text
+ *
+ * @global array Array of offsets
+ *
+ * @see decode_string
+ */
 function encode_string ( $instr ) {
   global $offsets;
   //echo "<br />\nENCODE<br />\n";
@@ -3588,12 +3692,16 @@ function encode_string ( $instr ) {
   return $ret;
 }
 
-// an implementatin of array_splice() for PHP3
-//   test cases:
-//     insert an element
-//       array_splice($array,$offset,0,array($item));
-//     delete an element
-//       array_splice($array,$offset,1);
+/**
+ * An implementatin of array_splice() for PHP3.
+ *
+ * @param array $input       Array to be spliced into
+ * @param int   $offset      Where to begin the splice
+ * @param int   $length      How long the splice should be
+ * @param array $replacement What to splice in
+ *
+ * @ignore
+ */
 function my_array_splice(&$input,$offset,$length,$replacement) {
   if ( floor(phpversion()) < 4 ) {
     // if offset is negative, then it starts at the end of array
@@ -3620,13 +3728,12 @@ function my_array_splice(&$input,$offset,$length,$replacement) {
   }
 }
 
-/** load_user_categories
-  * Description:
-  *	Load current user's category info and stuff it into
-  *	category global variable.
-  * Parameters:
-  *	$ex_global - Don't include global categories ('' or '1')
-  */
+/**
+ * Loads current user's category info and stuff it into category global
+ * variable.
+ *
+ * @param string $ex_global Don't include global categories ('' or '1')
+ */
 function load_user_categories ($ex_global = '') {
   global $login, $user, $is_assistant;
   global $categories, $category_owners;
@@ -3653,14 +3760,13 @@ function load_user_categories ($ex_global = '') {
   }
 }
 
-/** print_category_menu
-  * Description:
-  *	Print dropdown HTML for categories.
-  * Parameters:
-  *	$form - the page to submit data to (without .php)
-  *	$date - date in YYYYMMDD format
-  *	$cat_id - category id that should be pre-selected
-  */
+/**
+ * Prints dropdown HTML for categories.
+ *
+ * @param string $form   The page to submit data to (without .php)
+ * @param string $date   Date in YYYYMMDD format
+ * @param int    $cat_id Category id that should be pre-selected
+ */
 function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   global $categories, $category_owners, $user, $login;
   echo "<form action=\"{$form}.php\" method=\"get\" name=\"SelectCategory\" class=\"categories\">\n";
@@ -3688,15 +3794,15 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   echo ( strlen ( $cat_id ) ? $categories[$cat_id] : translate ('All') ) . "</span>\n";
 }
 
-/** html_to_8bits
-  * Description:
-  *	Convert HTML entities in 8bit.
-  *	<br/>Note: Only supported for PHP4 (not PHP3).
-  * Parameters:
-  *	$html - HTML text
-  * Returns:
-  *	The converted text
-  */
+/**
+ * Converts HTML entities in 8bit.
+ *
+ * <b>Note:</b> Only supported for PHP4 (not PHP3).
+ *
+ * @param string $html HTML text
+ *
+ * @return string The converted text
+ */
 function html_to_8bits ( $html ) {
   if ( floor(phpversion()) < 4 ) {
     return $html;
@@ -3710,18 +3816,16 @@ function html_to_8bits ( $html ) {
 // Functions for getting information about boss and their assistant.
 // ***********************************************************************
 
-/** user_get_boss_list
-  * Description:
-  *	Get a list of an assistant's boss from the webcal_asst table.
-  * Parameters:
-  *	$assistant - login of assistant
-  * Returns:
-  *	An array of bosses, where each boss is an array with the following
-  *	fields: <ul>
-  *	  <li> cal_login </li>
-  *	  <li> cal_fullname </li>
-  *	</ul>
-  */
+/**
+ * Gets a list of an assistant's boss from the webcal_asst table.
+ *
+ * @param string $assistant Login of assistant
+ *
+ * @return array Array of bosses, where each boss is an array with the following
+ *               fields:
+ * - <var>cal_login</var>
+ * - <var>cal_fullname</var>
+ */
 function user_get_boss_list ( $assistant ) {
   global $bosstemp_fullname;
 
@@ -3744,16 +3848,14 @@ function user_get_boss_list ( $assistant ) {
   return $ret;
 }
 
-/** user_is_assistant
-  * Description:
-  *	Return true if $user is $boss assistant by
-  *	checking in the webcal_asst table.
-  * Parameters:
-  *	$assistant - login of potential assistant
-  *	$boss - login of potential boss
-  * Returns:
-  *	true or false
-  */
+/**
+ * Is this user an assistant of this boss?
+ *
+ * @param string $assistant Login of potential assistant
+ * @param string $boss      Login of potential boss
+ * 
+ * @return bool True or false
+ */
 function user_is_assistant ( $assistant, $boss ) {
   $ret = false;
 
@@ -3769,15 +3871,13 @@ function user_is_assistant ( $assistant, $boss ) {
   return $ret;
 }
 
-/** user_has_boss
-  * Description:
-  *	Check the webcal_asst table to see if the specified user login
-  *	has any bosses associated with it.
-  * Parameters:
-  *	$assistant - login for user
-  * Returns:
-  *	true if the user is an assistant to one or more bosses
-  */
+/**
+ * Is this user an assistant?
+ *
+ * @param string $assistant Login for user
+ *
+ * @return bool true if the user is an assistant to one or more bosses
+ */
 function user_has_boss ( $assistant ) {
   $ret = false;
   $res = dbi_query ( "SELECT * FROM webcal_asst " .
@@ -3790,39 +3890,46 @@ function user_has_boss ( $assistant ) {
   return $ret;
 }
 
-/** boss_must_be_notified
-  * Description:
-  *	Check the boss user preferences to see if the boss wants to be
-  *	notified via email on changes to their calendar.
-  * Parameters:
-  *	$assistant - assistant login
-  *	$boss - boss login
-  * Returns:
-  *	true if the boss wants email notifications
-  */
+/**
+ * Checks the boss user preferences to see if the boss wants to be notified via
+ * email on changes to their calendar.
+ *
+ * @param string $assistant Assistant login
+ * @param string $boss      Boss login
+ *
+ * @return bool True if the boss wants email notifications
+ */
 function boss_must_be_notified ( $assistant, $boss ) {
   if (user_is_assistant ( $assistant, $boss ) )
     return ( get_pref_setting ( $boss, "EMAIL_ASSISTANT_EVENTS" )=="Y" ? true : false );
   return true;
 }
 
-/** boss_must_approve_event
-  * Description:
-  *	Check the boss user preferences to see if the boss must approve
-  *	events added to their calendar.
-  * Parameters:
-  *	$assistant - assistant login
-  *	$boss - boss login
-  * Returns:
-  *	true if the boss must approve new events
-  */
+/**
+ * Checks the boss user preferences to see if the boss must approve events
+ * added to their calendar.
+ *
+ * @param string $assistant Assistant login
+ * @param string $boss      Boss login
+ *
+ * @return bool True if the boss must approve new events
+ */
 function boss_must_approve_event ( $assistant, $boss ) {
   if (user_is_assistant ( $assistant, $boss ) )
     return ( get_pref_setting ( $boss, "APPROVE_ASSISTANT_EVENT" )=="Y" ? true : false );
   return true;
 }
 
-// Use this for testing....
+/**
+ * Fakes an email for testing purposes.
+ *
+ * @param string $mailto Email address to send mail to
+ * @param string $subj   Subject of email
+ * @param string $text   Email body
+ * @param string $hdrs   Other email headers
+ *
+ * @ignore
+ */
 function fake_mail ( $mailto, $subj, $text, $hdrs ) { 
   echo "To: $mailto <br />\n" .
     "Subject: $subj <br />\n" .
@@ -3830,17 +3937,17 @@ function fake_mail ( $mailto, $subj, $text, $hdrs ) {
     nl2br ( $text );
 }
 
-/** print_date_entries_timebar
-  * Description:
-  *	Print all the entries in a time bar format for the specified user
-  *	for the
-  *	specified date.  If we are displaying data from someone other than
-  *	the logged in user, then check the access permission of the entry.
-  * Parameters:
-  *	$date - date in YYYYMMDD format
-  *	$user - username
-  *	$ssi - should we not include links to add new events?
-  */
+/**
+ * Prints all the entries in a time bar format for the specified user for the
+ * specified date.
+ *
+ * If we are displaying data from someone other than the logged in user, then
+ * check the access permission of the entry.
+ *
+ * @param string $date Date in YYYYMMDD format
+ * @param string $user Username
+ * @param bool   $ssi  Should we not include links to add new events?
+ */
 function print_date_entries_timebar ( $date, $user, $ssi ) {
   global $events, $readonly, $is_admin,
     $public_access, $public_access_can_add;
@@ -3910,22 +4017,23 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
     echo "&nbsp;"; // so the table cell has at least something
 }
 
-/** print_entry_timebar
-  * Description:
-  *	Print the HTML for an events with a timebar.
-  * Parameters:
-  *	$id - event id
-  *	$date - date of event in YYYYMMDD format
-  *	$time - time of event in HHMM format
-  *	$duration - duration of event in minutes
-  *	$name - brief description of event
-  *	$description - full description of event
-  *	$status - status of event ('A', 'W')
-  *	$pri - priority of event
-  *	$access - access to event by others ('P', 'R')
-  *	$event_owner - user who created event
-  *	$event_category - category id for event
-  */
+/**
+ * Prints the HTML for an events with a timebar.
+ *
+ * @param int    $id             Event id
+ * @param string $date           Date of event in YYYYMMDD format
+ * @param string $time           Time of event in HHMM format
+ * @param int    $duration       Duration of event in minutes
+ * @param string $name           Brief description of event
+ * @param string $description    Full description of event
+ * @param string $status         Status of event ('A', 'W')
+ * @param int    $pri            Priority of event
+ * @param string $access         Access to event by others ('P', 'R')
+ * @param string $event_owner    User who created event
+ * @param int    $event_category Category id for event
+ *
+ * @staticvar int Used to ensure all event popups have a unique id
+ */
 function print_entry_timebar ( $id, $date, $time, $duration,
   $name, $description, $status,
   $pri, $access, $event_owner, $event_category=-1 ) {
@@ -3942,8 +4050,8 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   if ( $day_end <= $day_start ) $day_end = $day_start + 60; //avoid exceptions
 
   if ($time >= 0) {
-	$bar_units= 100/(($day_end - $day_start)/60) ; // Percentage each hour occupies
-	$ev_start = round((floor(($time/10000) - ($day_start/60)) + (($time/100)%100)/60) * $bar_units);
+  $bar_units= 100/(($day_end - $day_start)/60) ; // Percentage each hour occupies
+  $ev_start = round((floor(($time/10000) - ($day_start/60)) + (($time/100)%100)/60) * $bar_units);
   }else{
     $ev_start= 0;
   }
@@ -3962,9 +4070,9 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   }
   $ev_padding = 100 - $ev_start - $ev_duration;
   // choose where to position the text (pos=0->before,pos=1->on,pos=2->after)
-  if ($ev_duration > 20) 	{ $pos = 1; }
-   elseif ($ev_padding > 20) 	{ $pos = 2; }
-   else				{ $pos = 0; }
+  if ($ev_duration > 20)   { $pos = 1; }
+   elseif ($ev_padding > 20)   { $pos = 2; }
+   else        { $pos = 0; }
  
   echo "\n<!-- ENTRY BAR -->\n<table class=\"entrycont\" cellpadding=\"0\" cellspacing=\"0\">\n";
    echo "<tr>\n";
@@ -3998,7 +4106,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   if ( strlen ( $user ) > 0 )
     echo "&amp;user=" . $user;
   echo "\" onmouseover=\"window.status='" . 
-  	translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
+    translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     if ($layers) foreach ($layers as $layer) {
@@ -4053,25 +4161,24 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     echo ($ev_padding > 0 ? "<td style=\"text-align:left; width:$ev_padding%;\">&nbsp;</td>\n" : "" );
   }
   echo "</tr>\n</table>\n";
-	if ( $login != $user && $access == 'R' && strlen ( $user ) )
-		$eventinfo .= build_event_popup ( $popupid, $event_owner,
-			translate("This event is confidential"), "" );
-	else
-	if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
-		$eventinfo .= build_event_popup ( $popupid, $event_owner,
-			translate("This event is confidential"), "" );
-	else
-		$eventinfo .= build_event_popup ( $popupid, $event_owner,
-			$description, $timestr, site_extras_for_popup ( $id ) );
+  if ( $login != $user && $access == 'R' && strlen ( $user ) )
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
+      translate("This event is confidential"), "" );
+  else
+  if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
+      translate("This event is confidential"), "" );
+  else
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
+      $description, $timestr, site_extras_for_popup ( $id ) );
 }
 
-/** print_header_timebar
-  * Description:
-  *	Print the header for the timebar.
-  * Parameters:
-  *	$start_hour - start hour
-  *	$end_hour - end hour
-  */
+/**
+ * Prints the header for the timebar.
+ *
+ * @param int $start_hour Start hour
+ * @param int $end_hour   End hour
+ */
 function print_header_timebar($start_hour, $end_hour) {
   //      sh+1   ...   eh-1
   // +------+----....----+------+
@@ -4096,28 +4203,26 @@ function print_header_timebar($start_hour, $end_hour) {
  
    // print yardstick
   echo "\n<!-- YARDSTICK -->\n<table class=\"yardstick\">\n<tr>\n";
-	$width = round(100/($end_hour - $start_hour));
+  $width = round(100/($end_hour - $start_hour));
   for ($i = $start_hour; $i < $end_hour; $i++) {
     echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
    }
    echo "</tr>\n</table>\n<!-- /YARDSTICK -->\n";
  }
 
-/** get_nonuser_cals
-  * Description:
-  *	Get a list of nonuser calendars and return info in an array.
-  * Parameters:
-  *	$user - (optional) login of admin of the nonuser calendars
-  * Returns:
-  *	An array of nonuser cals, where each is an array with
-  *	the following fields: <ul>
-  *	  <li> cal_login </li>
-  *	  <li> cal_lastname </li>
-  *	  <li> cal_firstname </li>
-  *	  <li> cal_admin </li>
-  *	  <li> cal_fullname </li>
-  *	</ul>
-  */
+/**
+ * Gets a list of nonuser calendars and return info in an array.
+ *
+ * @param string $user Login of admin of the nonuser calendars
+ *
+ * @return array Array of nonuser cals, where each is an array with the
+ *               following fields:
+ * - <var>cal_login</var>
+ * - <var>cal_lastname</var>
+ * - <var>cal_firstname</var>
+ * - <var>cal_admin</var>
+ * - <var>cal_fullname</var>
+ */
 function get_nonuser_cals ($user = '') {
   $count = 0;
   $ret = array ();
@@ -4145,24 +4250,22 @@ function get_nonuser_cals ($user = '') {
   return $ret;
 }
 
-/** nonuser_load_variables
-  * Description:
-  *	Loads nonuser variables (login, firstname, etc.)
-  *	The following variables will be set:  <ul>
-  *	  <li> login </li>
-  *	  <li> firstname </li>
-  *	  <li> lastname </li>
-  *	  <li> fullname </li>
-  *	  <li> admin </li>
-  *	  <li> email </li>
-  *	</ul>
-  * Parameters:
-  *	$login - login name of nonuser calendar
-  *	$prefix - prefix to use for variables that will be set.
-  *	  For example, if prefix is "temp", then the login will
-  *	  be stored in the $templogin global variable.
-  *	
-  */
+/**
+ * Loads nonuser variables (login, firstname, etc.).
+ *
+ * The following variables will be set:
+ * - <var>login</var>
+ * - <var>firstname</var>
+ * - <var>lastname</var>
+ * - <var>fullname</var>
+ * - <var>admin</var>
+ * - <var>email</var>
+ *
+ * @param string $login  Login name of nonuser calendar
+ * @param string $prefix Prefix to use for variables that will be set.
+ *                       For example, if prefix is "temp", then the login will
+ *                       be stored in the <var>$templogin</var> global variable.
+ */
 function nonuser_load_variables ( $login, $prefix ) {
   global $error,$nuloadtmp_email;
   $ret =  false;
@@ -4191,15 +4294,14 @@ function nonuser_load_variables ( $login, $prefix ) {
   return $ret;
 }
 
-/** user_is_nonuser_admin
-  * Description:
-  *	Check the webcal_nonuser_cals table to determine
-  *	if the user is the administrator for the nonuser calendar.
-  * Parameters:
-  *	$login - login of user that is the potential administrator
-  *	$nonuser - login name for nonuser calendar
-  * Returns:
-  *	true if the user is the administrator for the nonuser calendar
+/**
+  * Checks the webcal_nonuser_cals table to determine if the user is the
+  * administrator for the nonuser calendar.
+  *
+  * @param string $login   Login of user that is the potential administrator
+  * @param string $nonuser Login name for nonuser calendar
+  *
+  * @return bool True if the user is the administrator for the nonuser calendar
   */
 function user_is_nonuser_admin ( $login, $nonuser ) {
   $ret = false;
@@ -4214,13 +4316,12 @@ function user_is_nonuser_admin ( $login, $nonuser ) {
   return $ret;
 }
 
-/** load_nonuser_preferences
-  * Description:
-  *	Loads nonuser preferences from the
-  *	webcal_user_pref table if on a nonuser admin page.
-  * Parameters:
-  *	$nonuser - login name for nonuser calendar
-  */
+/**
+ * Loads nonuser preferences from the webcal_user_pref table if on a nonuser
+ * admin page.
+ *
+ * @param string $nonuser Login name for nonuser calendar
+ */
 function load_nonuser_preferences ($nonuser) {
   global $prefarray;
   $res = dbi_query (
@@ -4242,19 +4343,18 @@ function load_nonuser_preferences ($nonuser) {
   }
 }
 
-/** set_today
-  * Description:
-  *	Determines what the day is after the $TZ_OFFSET and sets it globally.
-  *	The following global variables will be set:  <ul>
-  *	  <li> $thisyear </li>
-  *	  <li> $thismonth </li>
-  *	  <li> $thisday </li>
-  *	  <li> $thisdate </li>
-  *	  <li> $today </li>
-  *	</ul>
-  * Parameters:
-  *	$date - the date in YYYYMMDD format
-  */
+/**
+ * Determines what the day is after the <var>$TZ_OFFSET</var> and sets it globally.
+ *
+ * The following global variables will be set:
+ * - <var>$thisyear</var>
+ * - <var>$thismonth</var>
+ * - <var>$thisday</var>
+ * - <var>$thisdate</var>
+ * - <var>$today</var>
+ *
+ * @param string $date The date in YYYYMMDD format
+ */
 function set_today($date) {
   global $thisyear, $thisday, $thismonth, $thisdate, $today;
   global $TZ_OFFSET, $month, $day, $year, $thisday;
@@ -4283,10 +4383,20 @@ function set_today($date) {
   $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 }
 
-// JGH borrowed gregorianToISO from PEAR Date_Calc Class
-//   and added $GLOBALS["WEEK_START"] (change noted)
-//
-// Converts from Gregorian Year-Month-Day to ISO YearNumber-WeekNumber-WeekDay
+/**
+ * Converts from Gregorian Year-Month-Day to ISO YearNumber-WeekNumber-WeekDay.
+ *
+ * @internal JGH borrowed gregorianToISO from PEAR Date_Calc Class and added
+ * $GLOBALS["WEEK_START"] (change noted)
+ *
+ * @param int $day   Day of month
+ * @param int $month Number of month
+ * @param int $year  Year
+ *
+ * @return string Date in ISO YearNumber-WeekNumber-WeekDay format
+ *
+ * @ignore
+ */
 function gregorianToISO($day,$month,$year) {
     $mnth = array (0,31,59,90,120,151,181,212,243,273,304,334);
     $y_isleap = isLeapYear($year);
@@ -4349,9 +4459,17 @@ function gregorianToISO($day,$month,$year) {
     return "{$yearnumber}-{$weeknumber}-{$weekday}";
 }
 
-// JGH Borrowed isLeapYear from PEAR Date_Calc Class
-//
-// Returns true for a leap year, else false
+/**
+ * Is this a leap year?
+ *
+ * @internal JGH Borrowed isLeapYear from PEAR Date_Calc Class
+ *
+ * @param int $year Year
+ *
+ * @return bool True for a leap year, else false
+ *
+ * @ignore
+ */
 function isLeapYear($year='') {
   if (empty($year)) $year = strftime("%Y",time());
   if (strlen($year) != 4) return false;
@@ -4359,14 +4477,13 @@ function isLeapYear($year='') {
   return (($year % 4 == 0 && $year % 100 != 0) || $year % 400 == 0);
 }
 
-/** clean_html
-  * Description:
-  *	Replace unsafe characters with HTML encoded equivalents
-  * Parameters:
-  *	$value - input text
-  * Returns:
-  *	the cleaned text
-  */
+/**
+ * Replaces unsafe characters with HTML encoded equivalents.
+ *
+ * @param string $value Input text
+ *
+ * @return string The cleaned text
+ */
 function clean_html($value){
   $value = htmlspecialchars($value, ENT_QUOTES);
   $value = strtr($value, array(
@@ -4376,50 +4493,46 @@ function clean_html($value){
   return $value;
 }
 
-/** clean_word
-  * Description:
-  *	Remove non-word characters from the specified text
-  * Parameters:
-  *	$data - input text
-  * Returns:
-  *	the converted text
-  */
+/**
+ * Removes non-word characters from the specified text.
+ *
+ * @param string $data Input text
+ *
+ * @return string The converted text
+ */
 function clean_word($data) { 
   return preg_replace("/\W/", '', $data);
 }
 
-/** clean_int
-  * Description:
-  *	Remove non-digits from the specified text
-  * Parameters:
-  *	$data - input text
-  * Returns:
-  *	the converted text
-  */
+/**
+ * Removes non-digits from the specified text.
+ *
+ * @param string $data Input text
+ *
+ * @return string The converted text
+ */
 function clean_int($data) { 
   return preg_replace("/\D/", '', $data);
 }
 
-/** clean_whitespace
-  * Description:
-  *	Remove whitespace from the specified text
-  * Parameters:
-  *	$data - input text
-  * Returns:
-  *	the converted text
-  */
+/**
+ * Removes whitespace from the specified text.
+ *
+ * @param string $data Input text
+ * 
+ * @return string The converted text
+ */
 function clean_whitespace($data) { 
   return preg_replace("/\s/", '', $data);
 }
 
-/** languageToAbbrev
-  * Description:
-  *	Converts language names to their abbreviation
-  * Parameters:
-  *	$name - Name of the language (such as "French")
-  * Returns:
-  *	The abbreviation ("fr" for "French")
-  */
+/**
+ * Converts language names to their abbreviation.
+ *
+ * @param string $name Name of the language (such as "French")
+ *
+ * @return string The abbreviation ("fr" for "French")
+ */
 function languageToAbbrev ( $name ) {
   global $browser_languages;
   foreach ( $browser_languages as $abbrev => $langname ) {
@@ -4429,23 +4542,23 @@ function languageToAbbrev ( $name ) {
   return false;
 }
 
-/** background_css
-  * Description:
-  *	Creates the CSS for using gradient.php, if the appropriate GD
-  *	functions are available.  A one-pixel wide image will be used
-  *	for the background image.
-  *	<br/>Note:
-  *	The gd library module needs to be available to use gradient
-  *	images.  If it is not available, a single background color
-  *	will be used instead.
-  * Parameters:
-  *	$color - base color
-  *	$height - height of gradient image
-  *	$percent - how many percent lighter the top color should be
-  *		than the base color at the bottom of the image
-  * Returns:
-  *	The style sheet text to use
-  */
+/**
+ * Creates the CSS for using gradient.php, if the appropriate GD functions are
+ * available.
+ *
+ * A one-pixel wide image will be used for the background image.
+ *
+ * <b>Note:</b> The gd library module needs to be available to use gradient
+ * images.  If it is not available, a single background color will be used
+ * instead.
+ *
+ * @param string $color   Base color
+ * @param int    $height  Height of gradient image
+ * @param int    $percent How many percent lighter the top color should be
+ *                        than the base color at the bottom of the image
+ *
+ * @return string The style sheet text to use
+ */
 function background_css ( $color, $height = '', $percent = '' ) {
   $ret = '';
 
@@ -4470,14 +4583,14 @@ function background_css ( $color, $height = '', $percent = '' ) {
   return $ret;
 }
 
-/** daily_matrix
-  * Description:
-  *	Draws a daily outlook style availability grid showing events that 
-  * are approved and awaiting approval.
-  * Parameters:
-  *	$date - the date to show the grid for
-  *	$participants - which users should be included in the grid
-  */
+/**
+ * Draws a daily outlook style availability grid showing events that are
+ * approved and awaiting approval.
+ *
+ * @param string $date         Date to show the grid for
+ * @param array  $participants Which users should be included in the grid
+ * @param string $popup        Not used
+ */
 function daily_matrix ( $date, $participants, $popup = '' ) {
   global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TABLEBG;
   global $user_fullname, $repeated_events, $events;
