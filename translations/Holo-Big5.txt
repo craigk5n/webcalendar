@@ -2,7 +2,7 @@
 # another language.  The format is "English text: translated text"
 # There cannot be a ":" in the English text.
 # Translated by:  Henry H. Tan-Tenn <share2002nov@lomaji.com>
-# Translation last updated on 06-06-2003
+# Translation last updated on 07-21-2003
 
 
 ###############################################
@@ -10,37 +10,12 @@
 #
 charset: Big5
 
+
+
 ###############################################
 # Page: admin.php
 #
-#
-# << MISSING >>
-# Server URL is required:
-#
-# << MISSING >>
-# Server URL must end with '/':
-Invalid color for document background: Invalid color for document background
-Invalid color for document title: Invalid color for document title
-Invalid color for table cell background: Invalid color for table cell background
-#
-# << MISSING >>
-# Invalid color for table grid:
-#
-# << MISSING >>
-# Invalid color for table header background:
-#
-# << MISSING >>
-# Invalid color for table text background:
-#
-# << MISSING >>
-# Invalid color for event popup background:
-#
-# << MISSING >>
-# Invalid color for event popup text:
-Invalid color for table cell background for today: Invalid color for table cell background for today
-Color format should be '#RRGGBB': Color format should be '#RRGGBB'
-#
-System Settings:系統設定
+System Settings: 系統設定
 You are not authorized: 您未經授權
 #
 # << MISSING >>
@@ -90,8 +65,7 @@ Your browser default language is: 你 e 瀏覽器預設 e 語系是
 # fonts-help:
 # English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
 #
-#
-Fonts:字型
+Fonts: 字型
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: 檢視選擇
 Day: 日
@@ -214,8 +188,7 @@ to: 至
 # allow-public-access-help:
 # English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
 #
-#
-Allow public access:允準公眾 access
+Allow public access: 允準公眾 access
 #
 # << MISSING >>
 # public-access-view-others-help:
@@ -240,8 +213,6 @@ Allow public access:允準公眾 access
 #
 # << MISSING >>
 # Public access new events require approval:
-# English text: Public access new events require approval:
-#
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -360,15 +331,66 @@ Allow public access:允準公眾 access
 #
 # << MISSING >>
 # User sees only his groups:
-#
-Categories:類別
+Categories: 類別
 #
 # << MISSING >>
 # categories-enabled-help:
 # English text: Enables support for event categories.
 #
+Categories enabled: 啟用類別
 #
-Categories enabled:啟用類別
+# << MISSING >>
+# Nonuser:
+# English text: Nonuser Calendars
+#
+#
+# << MISSING >>
+# nonuser-enabled-help:
+# English text: If enabled, admins will have the option to add nonuser calendars
+#
+#
+# << MISSING >>
+# Nonuser enabled:
+# English text: Nonuser Calendars Enabled
+#
+#
+# << MISSING >>
+# nonuser-list-help:
+# English text: Where to display the nonuser calendars in the participant list
+#
+#
+# << MISSING >>
+# Nonuser list:
+# English text: Display in participants list at
+#
+#
+# << MISSING >>
+# Top:
+#
+# << MISSING >>
+# Bottom:
+#
+# << MISSING >>
+# Reports:
+#
+# << MISSING >>
+# reports-enabled-help:
+# English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
+#
+#
+# << MISSING >>
+# Reports enabled:
+#
+# << MISSING >>
+# Subscribe/Publish:
+#
+# << MISSING >>
+# subscriptions-enabled-help:
+# English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+#
+#
+# << MISSING >>
+# Allow remote subscriptions:
 #
 # << MISSING >>
 # Email:
@@ -467,23 +489,23 @@ Table cell background for current day: 當日顏色
 ###############################################
 # Page: activity_log.php
 #
-#
-Activity Log:使用紀錄
+Activity Log: 使用紀錄
 User: 使用者
-Calendar:行事曆
+Calendar: 行事曆
 Date: 日期
 Time: 時間
-Event:活動
-Action:行動
-Event created:活動註冊
-Event approved:活動確認過
-Event rejected:活動被拒絕
-Event updated:活動更新
-Event deleted:活動被刪除
-Notification sent:通知函送出去
-Reminder sent:提醒函送出去
-Database error:資料庫錯誤
-Next:後一個
+Event: 活動
+Action: 行動
+Event created: 活動註冊
+Event approved: 活動確認過
+Event rejected: 活動被拒絕
+Event updated: 活動更新
+Event deleted: 活動被刪除
+Notification sent: 通知函送出去
+Reminder sent: 提醒函送出去
+Database error: 資料庫錯誤
+Previous: 前一個
+Next: 後一個
 
 
 ###############################################
@@ -510,13 +532,12 @@ Error approving event: Error approving event
 ###############################################
 # Page: category.php
 #
-#
-Add:增加
-Category Name:類別名稱
-Global:歸個系統
+Add: 增加
+Category Name: 類別名稱
+Global: 歸個系統
 Delete: 刪除
 Are you sure you want to delete this entry?: 你敢確定 beh 刪除這個記事？
-Add New Category:增加新類別
+Add New Category: 增加新類別
 
 
 ###############################################
@@ -525,22 +546,17 @@ Add New Category:增加新類別
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
-#
-Previous:前一個
 
 
 ###############################################
 # Page: day.php
 #
 #
-Assistant mode:助理模式
+# << MISSING >>
+# Admin mode:
+Assistant mode: 助理模式
 Generate printer-friendly version: Generate printer-friendly version
 Printer Friendly: 友善列印
 
@@ -555,16 +571,8 @@ Notification: 通告
 
 
 ###############################################
-# Page: del_layer.php
-#
-
-
-###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: 你無輸入概要描述
-You have not entered a valid time of day: 你無輸入正確 e 時間
-The time you have entered begins before your preferred work hours.  Is this correct?: 這個時段無佇你自定 e 工作時間內。 這敢是正確 e ?
 Edit Entry: 編輯記事
 Add Entry: 註冊記事
 brief-description-help: 佇遮簡單描述這個活動（約略二十字以內）。佇行事曆面頂是用這代表這個活動。
@@ -575,9 +583,9 @@ date-help: 活動舉辦 e 日期。
 time-help: 活動舉辦 e 時間。<BR><I>這項會使免添。</I>
 am: 上午
 pm: 下晡
-Untimed event:無定時間 e 活動
-Timed event:有定時間 e 活動
-All day event:歸工 e 活動
+Untimed event: 無定時間 e 活動
+Timed event: 有定時間 e 活動
+All day event: 歸工 e 活動
 duration-help: 活動前後 e 長度（按分鐘算）。<BR><I>這項會使免添。</I>
 Duration: 持續時間
 hours: 點鐘
@@ -590,21 +598,24 @@ access-help: 活動 e 顯示設定。<BR> <I>公眾 e </I>: 所有人都看會著活動 e 詳細資料
 Access: 顯示設定
 Public: 公眾 e 
 Confidential: 機密 e 
-category-help:活動 e 類別。
-Category:類別
-days:工
-before event:（佇活動開始以前）
+category-help: 活動 e 類別。
+Category: 類別
+None: 無
+days: 工
+before event: （佇活動開始以前）
 participants-help: 列出這項記事 e 參與者。
 Participants: 參與者
-external-participants-help:非行事曆用者 e 本活動參與者名單。一 choa 應該列一位，會使包括電子郵便住址。有列住址 e 參與者通收著通知函及提醒函。
-External Participants:外面參與者
+external-participants-help: 非行事曆用者 e 本活動參與者名單。一 choa 應該列一位，會使包括電子郵便住址。有列住址 e 參與者通收著通知函及提醒函。
+External Participants: 外面參與者
 repeat-type-help: 選擇活動重複 e 週期性。<I>「按月」 (按拜幾算)</I>表示設定活動佇月 e （舉例）第一個拜一重複、第三個拜四重複...等等。<I>「按月」 (按日期算)</I> 表示設定活動佇月 e 共一日重複。
 Repeat Type: 週期性
-None: 無
 Daily: 逐工
 Weekly: 按週
 Monthly: 按月
 by day: 按拜幾算
+#
+# << MISSING >>
+# by day (from end):
 by date: 按日期算
 Yearly: 按年
 repeat-end-date-help: 活動週期結束 e 日期。
@@ -644,13 +655,12 @@ to view this appointment: to view this appointment
 Scheduling Conflict: Scheduling Conflict
 Your suggested time of: Your suggested time of
 conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
-Cancel:取消
+Cancel: 取消
 
 
 ###############################################
 # Page: edit_layer.php
 #
-Invalid color: 無效 e 色緻
 Edit Layer: 編輯階層
 Add Layer: 新增階層
 Source: 來源
@@ -693,7 +703,7 @@ Set Password: 設定密碼
 ###############################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported:無支援刪除使用者
+Deleting users not supported: 無支援刪除使用者
 The passwords were not identical: 密碼無對
 You have not entered a password: 你無輸入密碼
 
@@ -713,15 +723,18 @@ Modified since: 更改自
 ###############################################
 # Page: export_handler.php
 #
+#
+# << MISSING >>
+# export format not defined or incorrect:
 
 
 ###############################################
 # Page: group_edit.php
 #
-Unnamed Group:無號名 e 使用陣
-Add Group:增加使用陣
-Edit Group:編輯使用陣
-Group name:使用陣名稱
+Unnamed Group: 無號名 e 使用陣
+Add Group: 增加使用陣
+Edit Group: 編輯使用陣
+Group name: 使用陣名稱
 Updated: 更新
 Created by: 公布者
 Users: 使用者
@@ -778,6 +791,28 @@ Preferences: 參數設定
 #
 # << MISSING >>
 # Default Category:
+#
+# << MISSING >>
+# When I am the boss:
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# I want to approve events:
+#
+# << MISSING >>
+# allow-remote-subscriptions-help:
+# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+#
+#
+# << MISSING >>
+# remote-subscriptions-url-help:
+# English text: Displays the URL remote users should use to subscribe to your calendar.
+#
+#
+# << MISSING >>
+# URL:
 Sun: 禮拜
 Mon: 拜一
 Tue: 拜二
@@ -791,7 +826,7 @@ Save Preferences: 儲存參數
 ###############################################
 # Page: help_bug.php
 #
-Report Bug:提報 bug
+Report Bug: 提報 bug
 
 
 ###############################################
@@ -801,17 +836,13 @@ Adding/Editing Calendar Entries: 註冊/編輯 行事曆項目
 
 
 ###############################################
-# Page: help_about.html
-#
-About This Calendar: 關係本日月拆
-
-
-
-###############################################
 # Page: help_index.php
 #
 Help Index: 輔助索引
 Layers: 階層架構
+#
+# << MISSING >>
+# Import:
 
 
 ###############################################
@@ -868,11 +899,6 @@ Layers: 階層架構
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 #
@@ -903,19 +929,9 @@ Reject this entry?: 拒絕這個記事?
 Reject: 拒絕
 #
 # << MISSING >>
-# No unapproved events for:無未核准 e 活動
+# No unapproved events for:
 Unapproved Events: 未核准 e 活動
-Public Access:公眾入口
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: 你著輸入用者名稱及密碼
-Save login via cookies so I don't have to login next time: 將登入資料儲存佇 cookies 中，後擺就免重登入。
-Login: 登入
-Access public calendar:入去公眾行事曆
-cookies-note: <B>注意:</B> 本程式須要 cookies 才會得使用。
+Public Access: 公眾入口
 
 
 ###############################################
@@ -943,7 +959,7 @@ An appointment has been rejected by: 約會已經被拒絕，拒絕者是
 # Page: search.php
 #
 Search: 檢索
-Advanced Search:高等檢索
+Advanced Search: 高等檢索
 Keywords: 關鍵字
 
 
@@ -967,8 +983,10 @@ Go: 來去
 ###############################################
 # Page: set_entry_cat.php
 #
- You have not added any categories:你並無加任何類別
-Set Category:設定類別
+#
+# << MISSING >>
+# You have not added any categories:
+Set Category: 設定類別
 
 
 ###############################################
@@ -981,8 +999,7 @@ Add New User: 新增使用者
 ###############################################
 # Page: usersel.php
 #
-#
-All:全部
+All: 全部
 #
 # << MISSING >>
 # Reset:
@@ -995,37 +1012,67 @@ All:全部
 
 
 ###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
 # Page: view_entry.php
 #
+every: 每
+2nd: 第二
+3rd: 第三
+4th: 第四
+5th: 第五
+1st: 第一
 #
-every:每
-1st:第一
-2nd:第二
-3rd:第三
-4th:第四
-5th:第五
+# << MISSING >>
+# last:
 Description: 描述
-Status:狀態
-Waiting for approval:等待核准
-Deleted:已經刪除
+Status: 狀態
+Waiting for approval: 等待核准
+Deleted: 已經刪除
 Rejected: 已經被拒絕
-External User:外面用者
+External User: 外面用者
 Approve/Confirm entry: 核准/確定 記事
 Reject entry: 拒絕記事
-Set category:設定類別
-Edit repeating entry for all dates:編輯所有日期 e 重複記事
-Edit entry for this date:編輯這個日期 e 記事
+Set category: 設定類別
+Edit repeating entry for all dates: 編輯所有日期 e 重複記事
+Edit entry for this date: 編輯這個日期 e 記事
 This will delete this entry for all users.: 這會對所有用者刪除這項記事。
-Delete repeating event for all dates:刪除重複 e 活動（所有日期）
-Delete entry only for this date:干單刪除這個日期 e 記事
+Delete repeating event for all dates: 刪除重複 e 活動（所有日期）
+Delete entry only for this date: 干單刪除這個日期 e 記事
 Edit entry: 編輯記事
 This will delete the entry from your calendar.: 這將會從你 e 行事曆刪除這個記事。
 Do you want to add this entry to your calendar?: 你要新增這個記事到你 e 行事曆嗎？
 This will add the entry to your calendar.: 這將會新增這個記事到你 e 行事曆。
 Add to My Calendar: 新增到我 e 行事曆
-Email all participants:Email 所有參與者
-Show activity log:顯示使用紀錄
-Hide activity log:暗蓋使用紀錄
+Email all participants: Email 所有參與者
+Show activity log: 顯示使用紀錄
+Hide activity log: 暗蓋使用紀錄
+#
+# << MISSING >>
+# Export this entry to:
+
+
+###############################################
+# Page: view_d.php
+#
 
 
 ###############################################
@@ -1041,27 +1088,75 @@ Hide activity log:暗蓋使用紀錄
 ###############################################
 # Page: views.php
 #
-#
-Views:檢視
-Add New View:增加新檢視
+Views: 檢視
+Add New View: 增加新檢視
 
 
 ###############################################
 # Page: views_edit.php
 #
+Unnamed View: 無名稱 e 檢視
+Add View: 增加檢視
+Edit View: 編輯檢視
+View Name: 檢視名稱
+View Type: 檢視類
 #
-Unnamed View:無名稱 e 檢視
-Add View:增加檢視
-Edit View:編輯檢視
-View Name:檢視名稱
-View Type:檢視類
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+#
+# << MISSING >>
+# Month (side by side):
+#
+# << MISSING >>
+# Month (on same calendar):
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# NONUSER_PREFIX not set:
+# English text: NONUSER_PREFIX has not been set in config.php.
+#
+#
+# << MISSING >>
+# NonUser:
+# English text: NonUser Calendars
+#
+#
+# << MISSING >>
+# Calendar ID:
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: nonusers_handler.php
+#
+
+
+###############################################
+# Page: login.php
+#
+You must enter a login and password: 你著輸入用者名稱及密碼
+Save login via cookies so I don't have to login next time: 將登入資料儲存佇 cookies 中，後擺就免重登入。
+Login: 登入
+Access public calendar: 入去公眾行事曆
+cookies-note: <B>注意:</B> 本程式須要 cookies 才會得使用。
 
 
 ###############################################
 # Page: views_edit_handler.php
 #
-#
-You must specify a view name:你必須要註明檢視 e 名稱
+You must specify a view name: 你必須要註明檢視 e 名稱
 
 
 ###############################################
@@ -1072,8 +1167,29 @@ Private: 私人 e
 
 
 ###############################################
-# Page: week_ssi.php
+# Page: view_l.php
 #
+
+
+###############################################
+# Page: import_handler.php
+#
+#
+# << MISSING >>
+# Conflicting events:
+#
+# << MISSING >>
+# Errors:
+Back to My Calendar: 轉去我 e 行事曆
+#
+# << MISSING >>
+# There was an error parsing the import file or no events were returned:
+#
+# << MISSING >>
+# The import file contained no data:
+#
+# << MISSING >>
+# Event Imported:
 
 
 ###############################################
@@ -1082,15 +1198,155 @@ Private: 私人 e
 
 
 ###############################################
+# Page: edit_report.php
+#
+#
+# << MISSING >>
+# Tomorrow:
+#
+# << MISSING >>
+# Today:
+#
+# << MISSING >>
+# Yesterday:
+#
+# << MISSING >>
+# Day before yesterday:
+#
+# << MISSING >>
+# Next week:
+#
+# << MISSING >>
+# This week:
+#
+# << MISSING >>
+# Last week:
+#
+# << MISSING >>
+# Week before last:
+#
+# << MISSING >>
+# Next week and week after:
+#
+# << MISSING >>
+# This week and next week:
+#
+# << MISSING >>
+# Last week and this week:
+#
+# << MISSING >>
+# Last two weeks:
+#
+# << MISSING >>
+# Next month:
+#
+# << MISSING >>
+# This month:
+#
+# << MISSING >>
+# Last month:
+#
+# << MISSING >>
+# Month before last:
+#
+# << MISSING >>
+# Next year:
+#
+# << MISSING >>
+# This year:
+#
+# << MISSING >>
+# Last year:
+#
+# << MISSING >>
+# Year before last:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Unnamed Report:
+#
+# << MISSING >>
+# Add Report:
+#
+# << MISSING >>
+# Edit Report:
+#
+# << MISSING >>
+# Report name:
+Current User: 目前使用者
+#
+# << MISSING >>
+# Include link in trailer:
+#
+# << MISSING >>
+# Include standard header/trailer:
+#
+# << MISSING >>
+# Date range:
+#
+# << MISSING >>
+# Include previous/next links:
+#
+# << MISSING >>
+# Include empty dates:
+#
+# << MISSING >>
+# Template variables:
+#
+# << MISSING >>
+# Page template:
+#
+# << MISSING >>
+# Day template:
+#
+# << MISSING >>
+# Event template:
+#
+# << MISSING >>
+# Are you sure you want to delete this report?:
+
+
+###############################################
+# Page: report.php
+#
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
 # Page: assistant_edit.php
 #
+Assistants: 助理
+Yours assistants: 你 e 助理
+
+
+###############################################
+# Page: view_t.php
 #
-Yours assistants:你 e 助理
-Assistants:助理
 
 
 ###############################################
 # Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: publish.php
 #
 
 
@@ -1100,20 +1356,65 @@ Assistants:助理
 
 
 ###############################################
+# Page: help_import.php
+#
+#
+# << MISSING >>
+# Palm Desktop:
+#
+# << MISSING >>
+# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
+#
+# << MISSING >>
+# The following entries will not be imported:
+#
+# << MISSING >>
+# Entries older than the current date:
+#
+# << MISSING >>
+# Entries creted in the Palm Desktop that have not been HotSync'd:
+#
+# << MISSING >>
+# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
+#
+# << MISSING >>
+# Therefore, updates should be made in the Palm Desktop.:
+#
+# << MISSING >>
+# vCal:
+#
+# << MISSING >>
+# The following formats have been tested:
+#
+# << MISSING >>
+# Palm Desktop 4:
+#
+# << MISSING >>
+# Lotus Organizer 6:
+#
+# << MISSING >>
+# Microsoft Outlook 2002:
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+#
+# << MISSING >>
+# Variable N not found:
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: 功能選擇
-Back to My Calendar: 轉去我 e 行事曆
 My Calendar: 我 e 行事曆
 Logout: 登出
 Another User's Calendar: 別人 e 行事曆
 Add New Entry: 註冊記事
-Manage Views:管理檢視
+Manage Views: 管理檢視
 Edit Layers: 編輯階層架構
 Account: 編輯個人資料
-Current User: 目前使用者
-#AKC hack
-Home:頭前門
 #
 # << MISSING >>
 # Manage calendar of:
@@ -1128,7 +1429,7 @@ Home:頭前門
 # Page: includes/functions.php
 #
 This event is confidential: 這個記事是機密 e 
-exceeds limit of XXX events per day:超出一工 XXX 項活動 e 限制
+exceeds limit of XXX events per day: 超出一工 XXX 項活動 e 限制
 You have XXX unapproved events: 你有 XXX 未核准 e 記事
 January: 1月
 February: 2月
@@ -1162,22 +1463,20 @@ Dec: 12月
 # << MISSING >>
 # Invalid login:
 #
-# Invalid user login:無效 e 用者登入
+# << MISSING >>
+# Invalid user login:
 
 
 ###############################################
 # Page: includes/site_extras.php
 #
 #
+# << MISSING >>
+# Send Reminder:
 
 
 ###############################################
 # Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/validate.php
 #
 
 
@@ -1197,32 +1496,62 @@ Dec: 12月
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
+# Page: includes/init.php
 #
 
 
 ###############################################
 # Page: includes/dbtable.php
+#
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+#
+# << MISSING >>
+# Server URL is required:
+#
+# << MISSING >>
+# Server URL must end with '/':
+Invalid color for document background: Invalid color for document background
+Invalid color for document title: Invalid color for document title
+Invalid color for table cell background: Invalid color for table cell background
+#
+# << MISSING >>
+# Invalid color for table grid:
+#
+# << MISSING >>
+# Invalid color for table header background:
+#
+# << MISSING >>
+# Invalid color for table text background:
+#
+# << MISSING >>
+# Invalid color for event popup background:
+#
+# << MISSING >>
+# Invalid color for event popup text:
+Invalid color for table cell background for today: Invalid color for table cell background for today
+Color format should be '#RRGGBB': Color format should be '#RRGGBB'
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: 你無輸入概要描述
+You have not entered a valid time of day: 你無輸入正確 e 時間
+The time you have entered begins before your preferred work hours.  Is this correct?: 這個時段無佇你自定 e 工作時間內。 這敢是正確 e ?
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: 無效 e 色緻
+
+
+###############################################
+# Page: includes/js/pref.php
 #
 
 
