@@ -254,10 +254,12 @@
       echo " | <A CLASS=\"navlinks\" HREF=\"edit_user.php\">" .
         translate ("Account") . "</A>\n";
     }
-    $url = "assistant_edit.php";
-    if ($is_nonuser_admin) $url .= "?user=$user";
-    echo " | <A CLASS=\"navlinks\" HREF=\"$url\">" .
-      translate ("Assistants") . "</A>\n";
+    if ( $single_user != "Y" ) {
+      $url = "assistant_edit.php";
+      if ($is_nonuser_admin) $url .= "?user=$user";
+      echo " | <A CLASS=\"navlinks\" HREF=\"$url\">" .
+        translate ("Assistants") . "</A>\n";
+    }
     if ( strlen ( $login ) && $login != "__public__" ) {
       echo "<BR><B>" . translate("Current User") . ":</B>$fullname<BR>\n";
     }

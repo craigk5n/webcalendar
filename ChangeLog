@@ -1,4 +1,5 @@
 Verion 0.9.41dev (?? ??? ???)
+  - Fixed bug 652871: Don't display assistant link in trailer if read-only
   - Fixed bug 680626: Fix attempt too insert duplicate entries in the
     database.
   - Fixed bug 715823: email notification on repeating events was using
