@@ -32,7 +32,7 @@ January: Январь
 February: Февраль
 March: Март
 April: Апрель
-May: Май
+May_: Май
 June: Июнь
 July: Июль
 August: Август

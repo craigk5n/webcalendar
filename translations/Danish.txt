@@ -32,7 +32,7 @@ January: Januar
 February: Februar
 March: Marts
 April: April
-May: Maj
+May_: Maj
 June: Juni
 July: Juli
 August: August

@@ -1,4 +1,6 @@
 Version 0.9.31dev (???)
+  - Fixed bug 212550: unable to display short month name for May in
+    languages where short name and long name are different.
   - Fixed bug 215549: if calendar is read-only, don't show new image,
     and don't allow users to add events.
   - Fixed bug 214381: don't try and use translate() in http header

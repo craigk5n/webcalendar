@@ -32,7 +32,7 @@ January: leden
 February: únor
 March: bøezen
 April: duben
-May: kvìten
+May_: kvìten
 June: èerven
 July: èervenec
 August: srpen

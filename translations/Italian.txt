@@ -33,7 +33,7 @@ January: Gennaio
 February: Febbraio
 March: Marzo
 April: Aprile
-May: Maggio
+May_: Maggio
 June: Giugno
 July: Luglio
 August: Agosto
