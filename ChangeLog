@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Updated purge.php to not use '<?' and always use '<?php' instead.
   - Added support for repeating events in iCal import
   - Fixed bug 923129: Used "unnamed view" for views without a name
     so user can edit/delete the view.
