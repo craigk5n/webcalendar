@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Making search page dynamic on the client-side for admins
   - Combining & converting import/export pages to new tabbed GUI
   - Edited import/export link in trailer
   - Fixed bug 1009183: exporting event from another user's calendar or
