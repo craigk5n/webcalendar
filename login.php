@@ -102,7 +102,6 @@ function myOnLoad() {
   <?php
     if ( ! empty ( $login ) ) echo "document.forms[0].login.select();"
   ?>
-  }
 }
 </SCRIPT>
 <?php include "includes/styles.php"; ?>
