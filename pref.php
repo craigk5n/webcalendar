@@ -419,13 +419,13 @@ print_header($INC);
 		<input type="button" onclick="selectColor('pref_CELLBG')" value="<?php etranslate("Select")?>..." />
 	</td></tr>
 	<tr><td style="font-weight:bold;">
-		<label for="pref_today"><?php etranslate("Table cell background for current day")?>:<label></td><td>
+		<label for="pref_today"><?php etranslate("Table cell background for current day")?>:</label></td><td>
 		<input type="text" name="pref_TODAYCELLBG" id="pref_today" size="8" maxlength="7" value="<?php echo $prefarray["TODAYCELLBG"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray["TODAYCELLBG"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 		<input type="button" onclick="selectColor('pref_TODAYCELLBG')" value="<?php etranslate("Select")?>..." />
 	</td></tr>
 	<tr><td style="font-weight:bold;">
-		<label for="pref_wkend"><?php etranslate("Table cell background for weekends")?>:<label></td><td>
+		<label for="pref_wkend"><?php etranslate("Table cell background for weekends")?>:</label></td><td>
 		<input type="text" name="pref_WEEKENDBG" id="pref_wkend" size="8" maxlength="7" value="<?php echo $prefarray["WEEKENDBG"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray["WEEKENDBG"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 		<input type="button" onclick="selectColor('pref_WEEKENDBG')" value="<?php etranslate("Select")?>..." />
