@@ -361,6 +361,8 @@ a.matrix img {
 .matrixd {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  margin-left: auto; 
+  margin-right: auto;
 }
 .nav {
   font-size: 14px;
