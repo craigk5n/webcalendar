@@ -1,4 +1,7 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Fixed issue with Application Name containing ? characters in logon.php.
+   If Application Name = "Title" then translate, else use Admin defined 
+   name and run through htmlspecialchars. Also removed forms[0] references
  - Fixed bug 1152863: Japanese strings munged by reports.php and upcoming.php
  - Fixed bug 1124461: Apostrophe in Text Aborts Translation
  - Fixed bug 1154854: Nonuser cals not showing up in views
