@@ -209,10 +209,11 @@ for ( $d = 0; $d < 7; $d++ ) {
   for ( $i = 0; $i < 24; $i++ ) {
     if ( $rowspan > 1 ) {
       if ( strlen ( $hour_arr[$i] ) ) {
-        if ( $rowspan_arr[$i] == 0 )
+        if ( $rowspan_arr[$i] > 1 ) {
+          $rowspan_arr[$last_row] += ( $rowspan_arr[$i] - 1 );
+          $rowspan += ( $rowspan_arr[$i] - 1 );
+        } else
           $rowspan_arr[$last_row] += $rowspan_arr[$i];
-        else
-          $rowspan_arr[$last_row] += ( $rowspan_arr[$i] - 1);
         // this will move entries apart that appear in one field, yet start on different hours
         $start_time = $i;
         $diff_start_time = $start_time - $last_row;
