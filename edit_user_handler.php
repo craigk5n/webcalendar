@@ -60,6 +60,7 @@ else if ( $formtype == "edituser" ) {
   }
 }
 
+$nextURL = empty ( $is_admin ) ? "adminhome.php" : "users.php";
 
 if ( ! empty ( $error ) ) {
   print_header( '', '', '', true );
@@ -76,5 +77,5 @@ echo $error;
 </body>
 </html>
 <?php } else if ( empty ($error) ) {
-?><html><head></head><body onload="alert('<?php etranslate("Changes successfully saved");?>'); window.parent.location.href='users.php';">
+?><html><head></head><body onload="alert('<?php etranslate("Changes successfully saved");?>'); window.parent.location.href='<?php echo $nextURL;?>';">
 </body></html><?php } ?>
