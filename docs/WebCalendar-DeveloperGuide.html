@@ -89,6 +89,7 @@ h2 {
 	<li><a href="#getcode">Getting The Code</a></li>
 	<li><a href="#conventions">Conventions</a></li>
 	<li><a href="#patch">Creating a Patch</a></li>
+	<li><a href="#faq">FAQ</a></li>
 	<li><a href="#resources">Resources</a></li>
 </ul>
 <hr />
@@ -234,6 +235,34 @@ they have not been 100% enforced, so you will see exceptions):
 
 <p>TODO</p>
 
+
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<a name="faq"></a>
+<h2>Frequently Asked Questions</h2>
+<dl>
+<!-- START FAQ: Developing -->
+  <dt>Why aren't you using PHP sessions?</dt>
+  <dd>We are still considering using PHP4 sessions.
+      In fact, the <tt>install/index.php</tt> page <i>does</i>
+      use PHP sessions.
+      The cookie-based solution that WebCalendar uses is simple,
+      and it will work with all versions of PHP.
+      </dd>
+  <dt>Why aren't you using ADODB for database access?</dt>
+  <dd>Again, this would be overkill for what we need.  ADODB is a fairly
+      large project,
+      so I'm partial to my leaner php-dbi.php solution.</dd>
+  <dt>Why aren't you using the PEAR database functions?</dt>
+  <dd>WebCalendar pre-dates the PEAR database functions.
+      There does not seem to be sufficient reason to switch
+      from our existing code at this point.</dd>
+  <dt>Why aren't you using a template engine like smarty?</dt>
+  <dd>WebCalendar pre-dates most of the template engines out there.
+      We are currently evaluating some of the templating options
+      and may consider moving to one of the template systems in
+      the future.</dd>
+<!-- END FAQ -->
+<dl>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <a name="resources"></a>

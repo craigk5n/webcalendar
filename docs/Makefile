@@ -19,8 +19,9 @@ WebCalendar-Functions.html: php2html.pl $(INCLUDES)
 	perl php2html.pl $(INCLUDES) > $@
 
 faqs.html: WebCalendar-SysAdmin.html WebCalendar-UserManual.html \
+	WebCalendar-DeveloperGuide.html \
 	extractfaqs.pl
-	perl extractfaqs.pl WebCalendar-SysAdmin.html WebCalendar-UserManual.html > faqs.html
+	perl extractfaqs.pl WebCalendar-SysAdmin.html WebCalendar-UserManual.html WebCalendar-DeveloperGuide.html > faqs.html
 	
 
 

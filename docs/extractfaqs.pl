@@ -12,6 +12,8 @@
 # History:
 #	20-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
 #			Created
+#	02-Feb-2005	Craig Knudsen <cknudsen@cknudsen.com>
+#			Updated to group into categories.
 #
 #######################################################################
 
@@ -20,6 +22,7 @@ my @files = ( );
 my @questions = ( );
 my @answers = ( );
 my @file = ( );
+my @cat = ( );
 
 for ( $i = 0; $i < @ARGV; $i++ ) {
   if ( -f $ARGV[$i] ) {
@@ -57,11 +60,18 @@ for ( $i = 0; $i < @questions; $i++ ) {
 }
 
 print "<ul>\n";
+$thisCat = '';
 for ( $i = 0; $i < @questions; $i++ ) {
+  if ( $cat[$i] ne $thisCat ) {
+    print "  </ul></li>\n" if ( $thisCat ne '' );
+    print "<li>$cat[$i]\n  <ul>\n";
+    $thisCat = $cat[$i];
+  }
   $anchor = "faq_" . ( $i + 1 );
   $q = $questions[$i];
-  print "  <li><a href=\"#$anchor\">$q</a></li>\n";
+  print "    <li><a href=\"#$anchor\">$q</a></li>\n";
 }
+print "  </ul></li>\n" if ( $thisCat ne '' );
 print "</ul>\n<hr/>\n<dl>\n";
 
 for ( $i = 0; $i < @questions; $i++ ) {
@@ -92,43 +102,55 @@ sub process_file {
 
   open ( F, $f ) || die "Error reading $f: ";
   my $inFAQ = 0;
+  my $cat = '';
   my $text = '';
+  @sections = ( );
+  my @localCats = ( );
   while ( <F> ) {
-    if ( /START FAQ/ ) {
+    if ( /START FAQ:\s*(\S+.*)--/ ) {
       $inFAQ = 1;
+      $cat = $1;
     } elsif ( /END FAQ/ ) {
       $inFAQ = 0;
+      push ( @sections, $text );
+      push ( @localCats, $cat );
+      $text = '';
     } else {
       if ( $inFAQ ) {
         $text .= $_;
       }
     }
   }
+  push ( @sections, $text ) if ( $text ne '' );
   close ( F );
 
   # Now parse the text
-  @q = split ( /<dt>/, $text );
-  shift ( @q ); # ignore junk at beginning
-  foreach $q ( @q ) {
-    if ( $q =~ /<\/dt>/ ) {
-      $thisQ = $`;
-      $rest = $';
-      if ( $rest =~ /<dd>/ ) {
+  for ( $i = 0; $i < @sections; $i++ ) {
+    @q = split ( /<dt>/, $sections[$i] );
+    $cat = $localCats[$i];
+    shift ( @q ); # ignore junk at beginning
+    foreach $q ( @q ) {
+      if ( $q =~ /<\/dt>/ ) {
+        $thisQ = $`;
         $rest = $';
-        if ( $rest =~ /<\/dd>/ ) {
-          $thisA = $`;
-          push ( @questions, $thisQ );
-          push ( @answers, $thisA );
-          push ( @file, $f );
-          #print STDERR "Question successfully parsed.\n";
+        if ( $rest =~ /<dd>/ ) {
+          $rest = $';
+          if ( $rest =~ /<\/dd>/ ) {
+            $thisA = $`;
+            push ( @questions, $thisQ );
+            push ( @answers, $thisA );
+            push ( @file, $f );
+            push ( @cat, $cat );
+            #print STDERR "Question successfully parsed.\n";
+          } else {
+            print STDERR "Found no </dd> for question: $thisQ\n";
+          }
         } else {
-          print STDERR "Found no </dd> for question: $thisQ\n";
+          print STDERR "Found no <dd> for question: $thisQ\n";
         }
       } else {
-        print STDERR "Found no <dd> for question: $thisQ\n";
+        print STDERR "Found no </dt>";
       }
-    } else {
-      print STDERR "Found no </dt>";
     }
   }
 }
