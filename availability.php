@@ -37,7 +37,7 @@ if ( empty ( $users ) ) {
 }
 
 $INC = array ( 'js/availability.php' );
-print_header($INC, '', "onload=\"focus();\"");
+print_header($INC, '', "onload=\"focus();\"", true );
 
 $span = ($WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR) * 3 + 1;
 if (strlen($month) == 1) $month = '0'.$month;   // add leading zeros
@@ -69,5 +69,7 @@ $users = explode(",",$users);
 <form action="availability.php" method="post">
 <?php daily_matrix($date,$users); ?>
 </form>
+
+<?php print_trailer ( false, true, true ); ?>
 
 </body></html>
