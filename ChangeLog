@@ -1,4 +1,6 @@
 Version 1.0RC1/CVS+dev (?? ??? 2004)
+  - Patch 1113315: Change maxsize of username from 20 to 25 in
+    admin add user form (db was already 25)
   - Patch 1113319: fixed finding of username for http authentication
     (Different versions of PHP store it in different variables.)
   - Fixed bug 1061746: layout issues with view_d.php

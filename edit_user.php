@@ -56,7 +56,7 @@ print_header ( '', '', '', $disableCustom );
       else
         echo $user;
     } else {
-      echo "<input type=\"text\" name=\"user\" id=\"username\" size=\"20\" maxlength=\"20\" />\n";
+      echo "<input type=\"text\" name=\"user\" id=\"username\" size=\"25\" maxlength=\"25\" />\n";
     }
 ?>
 	</td></tr>
