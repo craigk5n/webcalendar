@@ -646,13 +646,11 @@ if ( $single_user == "N" && $show_participants ) {
 
 </table>
 
-<p>
-<?php
-
+<p><?php
 // Show a printer-friendly link
 if ( empty ( $friendly ) ) {
   echo "<a title=\"" . 
-    translate("Generate printer-friendly version") . "\" class=\"nav\" " .
+    translate("Generate printer-friendly version") . "\" class=\"printer\" " .
     "href=\"view_entry.php?id=$id&amp;friendly=1$rdate\" " .
     "target=\"cal_printer_friendly\">" .
     translate("Printer Friendly") . "</a><br />\n";
@@ -783,10 +781,13 @@ if ( $is_admin ) {
 if ( $show_log ) {
   echo "<h3>" . translate("Activity Log") . "</h3>\n";
   echo "<table class=\"embactlog\">\n";
-  echo "<tr><th class=\"usr\">\n" . translate("User") . "</th><th class=\"cal\">\n";
+  echo "<tr><th class=\"usr\">\n";
+  echo translate("User") . "</th><th class=\"cal\">\n";
   echo translate("Calendar") . "</th><th class=\"date\">\n";
-  echo translate("Date") . "/" . translate("Time") . "</th><th class=\"action\">\n";
+  echo translate("Date") . "/" . 
+  	translate("Time") . "</th><th class=\"action\">\n";
   echo translate("Action") . "\n</th></tr>\n";
+
   $res = dbi_query ( "SELECT cal_login, cal_user_cal, cal_type, " .
     "cal_date, cal_time " .
     "FROM webcal_entry_log WHERE cal_entry_id = $id " .
@@ -821,29 +822,25 @@ if ( $show_log ) {
 
 if (! $is_private) {
   echo "<br /><form method=\"post\" name=\"exportform\" action=\"export_handler.php\">\n";
-  echo "<strong>";
-  etranslate("Export this entry to");
-  echo ":</strong>\n";
-  echo "<select name=\"format\">\n";
-  echo "<option value=\"ical\">iCalendar</option>\n";
-  echo "<option value=\"vcal\">vCalendar</option>\n";
-  echo "<option value=\"pilot-csv\">pilot-datebook CSV (";
-  etranslate("Palm Pilot");
-  echo ")</option>\n";
-  echo "<option value=\"pilot-text\">install-datebook (";
-  etranslate("Palm Pilot");
-  echo ")</option>\n";
+  echo "<label for=\"exformat\">" . 
+	translate("Export this entry to") . ":&nbsp;</label>\n";
+  echo "<select name=\"format\" id=\"exformat\">\n";
+  echo "	<option value=\"ical\">iCalendar</option>\n";
+  echo "	<option value=\"vcal\">vCalendar</option>\n";
+  echo "	<option value=\"pilot-csv\">Pilot-datebook CSV (" . 
+  			translate("Palm Pilot") . ")</option>\n";
+  echo "	<option value=\"pilot-text\">Install-datebook (" . 
+			translate("Palm Pilot") . ")</option>\n";
   echo "</select>\n";
   echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
-  echo "<input type=\"submit\" value=\"";
-  etranslate("Export");
-  echo "\" />\n";
+  echo "<input type=\"submit\" value=\"" . 
+	translate("Export") . "\" />\n";
   echo "</form>\n";
 }
 ?>
 
 <?php
-  print_trailer ( empty ( $friendly ) );
+	print_trailer ( empty ($friendly) );
 ?>
 </body>
 </html>
