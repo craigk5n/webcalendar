@@ -31,7 +31,7 @@ function valid_form ( form ) {
     err += form.pref_WORK_DAY_START_HOUR.value + " > " + form.pref_WORK_DAY_END_HOUR.value + "\n";
   }
   if ( colorErr ) {
-    alert ( "Error:\n\n" + err + "\n\n<?php etranslate("Color format should be '#RRGGBB' or '#RGB'")?>" );
+    alert ( "Error:\n\n" + err + "\n\n<?php etranslate("Color format should be '#RRGGBB'")?>" );
     return false;
   } else if ( err.length > 0 ) {
     alert ( "Error:\n\n" + err );

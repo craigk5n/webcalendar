@@ -73,7 +73,7 @@ function valid_form ( form ) {
   }
 
   if ( err.length > 0 ) {
-    alert ( "Error:\n\n" + err + "\n\n<?php etranslate("Color format should be '#RRGGBB' or '#RGB'")?>" );
+    alert ( "Error:\n\n" + err + "\n\n<?php etranslate("Color format should be '#RRGGBB'")?>" );
     return false;
   }
   return true;
