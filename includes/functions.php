@@ -144,7 +144,7 @@ function getValue ( $name, $format="", $fatal=false )
   if ( ! empty ( $format ) && ! preg_match ( "/^" . $format . "$/", $val ) ) {
     // does not match
     if ( $fatal ) {
-      echo "Fatal Error: Invalid data format for $name: $val\n"; exit;
+      echo "Fatal Error: Invalid data format for $name\n"; exit;
     }
     // ignore value
     return "";
