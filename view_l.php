@@ -320,7 +320,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 ?>
 
 <br />
-<a class="navlinks" href="view_l.php?id=<?php echo $id?>&amp;<?php
+<a title="<?php etranslate("Generate printer-friendly version")?>" class="navlinks" href="view_l.php?id=<?php echo $id?>&amp;<?php
   if ( $thisyear ) {
     echo "year=$thisyear&amp;month=$thismonth&amp;";
   }

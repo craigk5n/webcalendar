@@ -90,8 +90,8 @@ function print_user_list () {
       $size = 15;
     else if ( $size > 5 )
       $size = 5;
-    print "<tr><td style=\"vertical-align:top; font-weight:bold;\">" . translate("Calendar") . "</td>\n";
-    print "<td><select name=\"calUser\" size=\"$size\">$users\n";
+    print "<tr><td style=\"vertical-align:top; font-weight:bold;\"><label for=\"caluser\">" . translate("Calendar") . "</label></td>\n";
+    print "<td><select name=\"calUser\" id=\"caluser\" size=\"$size\">$users\n";
     print "</select>";
     print "</td></tr>\n";
   }
@@ -112,33 +112,38 @@ if ( $tab == 0 ) {
 <br /><br />
 <input type="hidden" name="ImportType" value="PALMDESKTOP" />
 <table style="border-width:0px;">
-<tr><td style="font-weight:bold;"><?php etranslate("Exclude private records")?>:</td>
-<td><label><input type="radio" name="exc_private" value="1" checked="checked" /><?php etranslate("Yes")?></label>
-<label><input type="radio" name="exc_private" value="0" /><?php etranslate("No")?></label>
+<tr><td style="font-weight:bold;">
+	<?php etranslate("Exclude private records")?>:</td><td>
+	<label><input type="radio" name="exc_private" value="1" checked="checked" />&nbsp;<?php etranslate("Yes")?></label>
+	&nbsp;&nbsp;<label><input type="radio" name="exc_private" value="0" />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 <?php print_user_list(); ?>
-<tr><td style="font-weight:bold;"><?php etranslate("Datebook File")?>:</td>
-  <td><input type="file" name="FileName" size="45" maxlength="50" /></td></tr>
-<tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>" />
-<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
+<tr><td style="font-weight:bold;">
+	<label for="dbfile"><?php etranslate("Datebook File")?>:</label></td><td>
+	<input type="file" name="FileName" id="dbfile" size="45" maxlength="50" />
+</td></tr>
+<tr><td colspan="2">
+	<input type="submit" value="<?php etranslate("Import")?>" />
+	<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
 </td></tr>
 </table>
 
 <?php
 } else if ( $tab == 1 ) {
 ?>
-
-
 <br />
 <?php etranslate("This form will import vCalendar (.vcs) 1.0 events");?>.
 <br /><br />
 <input type="hidden" name="ImportType" value="VCAL" />
 <table style="border-width:0px;">
 <?php print_user_list(); ?>
-<tr><td style="font-weight:bold;"><?php etranslate("vCal File")?>:</td>
-  <td><input type="file" name="FileName" size="45" maxlength="50" /></td></tr>
-<tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>" />
-<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
+<tr><td style="font-weight:bold;">
+	<?php etranslate("vCal File")?>:</td><td>
+	<input type="file" name="FileName" size="45" maxlength="50" />
+</td></tr>
+<tr><td colspan="2">
+	<input type="submit" value="<?php etranslate("Import")?>" />
+	<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
 </td></tr>
 </table>
 
@@ -151,16 +156,19 @@ if ( $tab == 0 ) {
 <br /><br />
 <input type="hidden" name="ImportType" value="ICAL" />
 <table style="border-width:0px;">
-<tr><td style="font-weight:bold;"><?php etranslate("iCal File")?>:</td>
-  <td><input type="file" name="FileName" size="45" maxlength="50" /></td></tr>
-<tr><td style="font-weight:bold;"><?php etranslate("Overwrite Prior Import")?>:</td>
-  <td><label><input type="radio" name="overwrite" value="Y" checked="checked" /> <?php etranslate("Yes");?></label>
-  &nbsp;&nbsp;
-  <label><input type="radio" name="overwrite" value="N" /> <?php etranslate("No");?></label>
-   </td></tr>
+<tr><td style="font-weight:bold;">
+	<?php etranslate("iCal File")?>:</td><td>
+	<input type="file" name="FileName" size="45" maxlength="50" />
+</td></tr>
+<tr><td style="font-weight:bold;">
+	<?php etranslate("Overwrite Prior Import")?>:</td><td>
+	<label><input type="radio" name="overwrite" value="Y" checked="checked" />&nbsp;<?php etranslate("Yes");?></label>
+	&nbsp;&nbsp;<label><input type="radio" name="overwrite" value="N" />&nbsp;<?php etranslate("No");?></label>
+</td></tr>
 <?php print_user_list(); ?>
-<tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>" />
-<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
+<tr><td colspan="2">
+	<input type="submit" value="<?php etranslate("Import")?>" />
+	<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
 </td></tr>
 </table>
 

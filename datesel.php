@@ -34,15 +34,15 @@ $prevdate = date ( "Ym", $prev ) . "01";
 <td><a title="<?php etranslate("Next")?>" href="datesel.php?form=<?php echo $form?>&amp;fday=<?php echo $fday?>&amp;fmonth=<?php echo $fmonth?>&amp;fyear=<?php echo $fyear?>&amp;date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Next")?>" /></a></td>
 </tr>
 <?php
-echo "<tr class=\"day\">";
+echo "<tr class=\"day\">\n";
 if ( $WEEK_START == 0 ) echo "<td>" .
-  weekday_short_name ( 0 ) . "</td>";
+  weekday_short_name ( 0 ) . "</td>\n";
 for ( $i = 1; $i < 7; $i++ ) {
   echo "<td>" .
-    weekday_short_name ( $i ) . "</td>";
+    weekday_short_name ( $i ) . "</td>\n";
 }
 if ( $WEEK_START == 1 ) echo "<td>" .
-  weekday_short_name ( 0 ) . "</td>";
+  weekday_short_name ( 0 ) . "</td>\n";
 echo "</tr>\n";
 if ( $WEEK_START == "1" )
   $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
@@ -59,7 +59,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
       echo "<td><a href=\"javascript:sendDate('" .
         date ( "Ymd", $date ) . "')\">" .
-        date ( "d", $date ) . "</a></td>";
+        date ( "d", $date ) . "</a></td>\n";
     } else {
       echo "<td></td>\n";
     }

@@ -45,7 +45,7 @@ $thisdate = $startdate;
 <table style="border-width:0px; width:100%;">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate("Previous")?>" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
 </td>
 <td class="viewmtitle">
@@ -60,7 +60,7 @@ $thisdate = $startdate;
 </td>
 <td style="text-align:right;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<a title="<?php etranslate("Next")?>" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 </td></tr>
 </table>
@@ -115,11 +115,8 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 
 ?>
 
-<table class="viewm" cellspacing="0" cellpadding="0"
-  style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>;">
-
+<table class="viewm" cellspacing="0" cellpadding="0" style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>;">
 <tr><th class="empty">&nbsp;</th>
-
 <?php
   // $j points to start of this table/row
   // $k is counter starting at 0
@@ -129,7 +126,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
     echo "<th style=\"width:$tdw%; border-bottom: 1px solid $TABLEBG; " .
-      "border-right: 1px solid $TABLEBG;\">$tempfullname</th>";
+      "border-right: 1px solid $TABLEBG;\">$tempfullname</th>\n";
   }
   echo "</tr>\n";
   
@@ -179,7 +176,9 @@ if ( empty ( $friendly ) )
   echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<a class=\"navlinks\" href=\"view_m.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
+  echo "<a title=\"" .
+    translate("Generate printer-friendly version") .
+    "\" class=\"navlinks\" href=\"view_m.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
     "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</a>\n";

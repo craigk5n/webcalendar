@@ -890,12 +890,12 @@ function print_entry ( $id, $date, $time, $duration,
   if ( ! $hide_icons ) {
     $popupid = "eventinfo-$id-$key";
     $key++;
-    echo "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+    echo "<a title=\"" . translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
     if ( strlen ( $user ) > 0 )
       echo "&amp;user=" . $user;
     echo "\" onmouseover=\"window.status='" . translate("View this entry") .
       "'; show(event, '$popupid'); return true;\" onmouseout=\"window.status=''; hide('$popupid'); return true;\">";
-    echo "<img src=\"circle.gif\" style=\"width:5px; height:7px; border-width:0px;\" alt=\"view\" />";
+    echo "<img src=\"circle.gif\" style=\"width:5px; height:7px; border-width:0px;\" alt=\"" . translate("View this entry") . "\" />";
   }
 
 
@@ -1706,17 +1706,17 @@ function week_number ( $date ) {
 // user has access to edit and delete.
 function icon_text ( $id, $can_edit, $can_delete ) {
   global $readonly, $is_admin;
-  $ret = "<a href=\"view_entry.php?id=$id\">" .
+  $ret = "<a title=\"" . translate("View this entry") . "\" href=\"view_entry.php?id=$id\">" .
     "<img src=\"view.gif\" alt=\"" . translate("View this entry") .
     "\" style=\"border-width:0px; width:10px; height:10px;\" />" .
     "</a>";
   if ( $can_edit && $readonly == "N" )
-    $ret .= "<a href=\"edit_entry.php?id=$id\">" .
+    $ret .= "<a title=\"" . translate("Edit entry") . "\" href=\"edit_entry.php?id=$id\">" .
       "<img src=\"edit.gif\" alt=\"" . translate("Edit entry") .
       "\" style=\"border-width:0px; width:10px; height:10px;\" />" .
       "</a>";
   if ( $can_delete && ( $readonly == "N" || $is_admin ) )
-    $ret .= "<a href=\"del_entry.php?id=$id\" " .
+    $ret .= "<a title=\"" . translate("Delete entry") . "\" href=\"del_entry.php?id=$id\" " .
       "onclick=\"return confirm('" .
       translate("Are you sure you want to delete this entry?") .
       "\\n\\n" . translate("This will delete this entry for all users.") .
@@ -1758,7 +1758,8 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
     $can_add = false;
 
   if ( ! $hide_icons && ! $ssi && $can_add ) {
-    print "<a href=\"edit_entry.php?";
+    print "<a title=\"" .
+      translate("New Entry") . "\" href=\"edit_entry.php?";
     if ( strcmp ( $user, $GLOBALS["login"] ) )
       print "user=$user&amp;";
     print "date=$date\">" .
@@ -2112,7 +2113,7 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
     $u_url = "user=$user&amp;";
   if ( ! empty ( $hour ) )
     $hour += $TZ_OFFSET;
-  return "<a href=\"edit_entry.php?" . $u_url .
+  return "<a title=\"" . translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
     "date=$date" . ( $hour > 0 ? "&amp;hour=$hour" : "" ) .
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&amp;defusers=$user&amp;user=$user" ) .
@@ -2168,7 +2169,9 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
 
   if ( ! $hide_icons ) {
     $hour_arr[$ind] .=
-      "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+      "<a title=\"" .
+      translate("View this entry") .
+      "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
     if ( strlen ( $GLOBALS["user"] ) > 0 )
       $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
     $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
@@ -2325,7 +2328,9 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
 
   if ( ! $hide_icons ) {
     $hour_arr[$ind] .=
-      "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+      "<a title=\"" .
+      translate("View this entry") .
+      "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
     if ( strlen ( $GLOBALS["user"] ) > 0 )
       $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
     $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .

@@ -58,7 +58,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 
 ?>
 
-<table border="0" width="100%">
+<table style="border-width:0px; width:100%;">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
 <br />
@@ -73,9 +73,7 @@ for ( $i = 0; $i < 7; $i++ ) {
     date_to_str ( date ( "Ymd", $wkend ), false );
 ?>
 </span><br />
-<span class="viewname">
-<?php echo $view_name ?>
-</span>
+<span class="viewname"><?php echo $view_name ?></span>
 </td>
 <td style="text-align:right;">
 <?php if ( ! $friendly ) { ?>
@@ -83,7 +81,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <a title="<?php etranslate("Next")?>" href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 </td></tr>
-</table><br /><br />
+</table><br />
 
 <?php
 // The table has names across the top and dates for rows.  Since we need
@@ -123,10 +121,10 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 
 ?>
 
-<table class="viewv" cellspacing="0" cellpadding="0" style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>;">
+<!-- <table class="viewv" cellspacing="0" cellpadding="0" style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>;"> -->
+<table class="viewv" cellspacing="0" cellpadding="0">
 
 <tr><th class="empty">&nbsp;</th>
-
 <?php
 
   for ( $date = $wkstart, $h = 0;
@@ -136,16 +134,20 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     $weekday = weekday_short_name ( $wday );
     if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
       $color = $TODAYCELLBG;
-      $class = "tableheadertoday";
+//      $class = "tableheadertoday";
+      echo "<th class=\"today\" style=\"width:$tdw%; vertical-align:top; font-size:13px;\">";
     } else {
-      if ( $wday == 0 || $wday == 6 )
+      if ( $wday == 0 || $wday == 6 ) {
         $color = $WEEKENDBG;
-      else
+	echo "<th class=\"weekend\" style=\"width:$tdw%; vertical-align:top; font-size:13px;\">";
+      } else {
         $color = $CELLBG;
-      $class = "tableheader";
+//       $class = "tableheader";
+	echo "<th style=\"width:$tdw%; vertical-align:top; font-size:13px;\">";
+      }
     }
-    echo "<th class=\"$class\" style=\"width:$tdw%; background-color:$color; vertical-align:top; font-size:13px;\">" .
-      $weekday . " " .
+//    echo "<th class=\"$class\" style=\"width:$tdw%; background-color:$color; vertical-align:top; font-size:13px;\">" .
+      echo $weekday . " " .
       round ( date ( "d", $date ) ) . "</th>\n";
   }
   echo "</tr>\n";
@@ -157,7 +159,8 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
       // ------
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
-    echo "<th class=\"tableheader\" style=\"width:$tdw%;\">$tempfullname</th>";
+//    echo "<th class=\"tableheader\" style=\"width:$tdw%;\">$tempfullname</th>";
+    echo "<th class=\"row\" style=\"width:$tdw%;\">$tempfullname</th>";
 
       // ------
   for ( $date = $wkstart, $h = 0;
@@ -166,17 +169,21 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
       // ------
     if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
       $color = $TODAYCELLBG;
-      $class = "tableheadertoday";
+//      $class = "tableheadertoday";
+      echo "<td class=\"today\" style=\"width:$tdw%; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG; vertical-align:top;\">";
     } else {
-      if ( $wday == 0 || $wday == 6 )
+      if ( $wday == 0 || $wday == 6 ) {
         $color = $WEEKENDBG;
-      else
+	echo "<td class=\"weekend\" style=\"width:$tdw%; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG; vertical-align:top;\">";
+      } else {
         $color = $CELLBG;
-      $class = "tablecell";
+//      $class = "tablecell";
+	echo "<td style=\"width:$tdw%; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG; vertical-align:top;\">";
+      }
     }
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
-      echo "<td style=\"width:$tdw%; background-color:$color; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\" valign=\"top\">";
+//      echo "<td style=\"width:$tdw%; background-color:$color; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\" valign=\"top\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
         empty ( $friendly ) )
