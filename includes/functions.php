@@ -378,6 +378,7 @@ function load_user_preferences () {
   $is_assistant = user_is_assistant ( $login, $user );
   $has_boss = user_has_boss ( $login );
   if ($user) $is_nonuser_admin = user_is_nonuser_admin ( $login, $user );
+  if ( $is_nonuser_admin ) load_nonuser_preferences ($user);
 }
 
 
@@ -3218,6 +3219,28 @@ function user_is_nonuser_admin ( $login, $nonuser ) {
     dbi_free_result ( $res );
   }
   return $ret;
+}
+
+// Loads nonuser preferences if on a nonuser admin page
+function load_nonuser_preferences ($nonuser) {
+  global $prefarray;
+  $res = dbi_query (
+    "SELECT cal_setting, cal_value FROM webcal_user_pref " .
+    "WHERE cal_login = '$nonuser'" );
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      $setting = $row[0];
+      $value = $row[1];
+      $sys_setting = "sys_" . $setting;
+      // save system defaults
+      // ** don't override ones set by load_user_prefs
+      if ( ! empty ( $GLOBALS[$setting] ) && empty ( $GLOBALS["sys_" . $setting] ))
+        $GLOBALS["sys_" . $setting] = $GLOBALS[$setting];
+      $GLOBALS[$setting] = $value;
+      $prefarray[$setting] = $value;
+    }
+    dbi_free_result ( $res );
+  }
 }
 
 ?>
