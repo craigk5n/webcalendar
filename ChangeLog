@@ -1,4 +1,6 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Added upcoming.php page that can be used as an iframe in non-WebCalendar
+    pages to present a list of upcoming events.
   - Fixed bug 960897: Could not modify user's email address if no last
     name was set
   - Fixed bug 980215: GLobal var $STARTVIEW was not declared global.
