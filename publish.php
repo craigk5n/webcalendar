@@ -193,11 +193,13 @@ function export_fold_lines($string, $encoding="none", $limit=76) {
 
 function export_time($date, $duration, $time, $texport)
 {
+  $allday = ( $time == -1 || $duration == 24*60 );
   $year = (int) substr($date,0,-4);
   $month = (int) substr($date,-4,2);
   $day = (int) substr($date,-2,2);
 
-  if ( $time == -1 ) {
+  //No time, or an "All day" event"
+  if ( $allday ) {
     // untimed event
     $hour = 0;
     $min = 0;
@@ -206,8 +208,7 @@ function export_time($date, $duration, $time, $texport)
     $start_date = date("Ymd", $start_tmstamp);
     echo "DTSTART;VALUE=DATE:$start_date\r\n";
   } else {
-    // normal/timed event or "all day" event
-    // all day event will just have duration set to 24 hours
+    // normal/timed event
     $hour = (int) substr($time,0,-4);
     $min = (int) substr($time,-4,2);
     $sec = (int) substr($time,-2,2);
@@ -225,7 +226,7 @@ function export_time($date, $duration, $time, $texport)
 
   // Only include and end time on all-day events and timed events
   // (and not for untimed events)
-  if ($time >= 0 ) {
+  if ( !$allday ) {
     $end_tmstamp = $start_tmstamp + $duration;
     $utc_end = export_get_utc_date(date("Ymd", $end_tmstamp),
       date("His", $end_tmstamp));

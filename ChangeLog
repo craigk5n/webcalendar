@@ -1,4 +1,5 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Patch 795371: fix for all day events in publish.php
   - Fixed bug 512114: Daylight saving time + repeating events
   - Fixed bug 669314: Daylight Savings Time Bug in 0.9.40
   - Security fix: improved session cookie to associate the cookie with
