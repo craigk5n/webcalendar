@@ -337,7 +337,7 @@ function get_admins() {
 
   if ($r = connect_and_bind()) {
     $search_filter = "($ldap_admin_group_attr=*)";
-    $sr = @ldap_search ( $ds, $ldap_admin_group_name, $search_filter, $ldap_admin_group_attr );
+    $sr = @ldap_search ( $ds, $ldap_admin_group_name, $search_filter, array($ldap_admin_group_attr) );
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error();
     } else {

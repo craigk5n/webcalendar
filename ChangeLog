@@ -1,4 +1,5 @@
 Version 1.0RC3 (?? ??? 2005)
+  - Fixed Bug 1118121: get_admins in user-ldap has bad search
   - Fixed Selectdate popups to work with new getGetvalue function and
     make popup follow cursor.
   - Purge events was not deleting from webcal_entry_ext_user table
