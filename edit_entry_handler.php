@@ -417,6 +417,11 @@ if ( empty ( $error ) ) {
         }
       }
     }
+    // Some users report that they get an error on duplicate keys
+    // on the following add... As a safety measure, delete any
+    // existing entry with the id.  Ignore the result.
+    dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_id = $id " .
+      "AND cal_login = '$participants[$i]'" );
     if ( empty ( $my_cat_id ) ) $my_cat_id = 'NULL';
     $sql = "INSERT INTO webcal_entry_user " .
       "( cal_id, cal_login, cal_status, cal_category ) VALUES ( $id, '" .
