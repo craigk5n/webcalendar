@@ -82,8 +82,10 @@ a:hover {
 }
 #edituser,
 #groupedit,
+#editnonusers,
 #groupedithandler,
-#edituserhandler {
+#edituserhandler,
+#editnonusershandler {
 	background-color: #F8F8FF;
 	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
 	font-family: <?php echo $GLOBALS['FONTS']; ?>;
@@ -132,8 +134,10 @@ a:hover {
 #tabscontent_sched,
 #tabscontent_pete,
 #tabscontent_export,
+#tabscontent_nonusers,
 #useriframe,
-#grpiframe {
+#grpiframe,
+#nonusersiframe {
 	display: none;
 }
 label {

@@ -78,11 +78,6 @@ if ( $single_user != 'Y' ) {
   $links[] = "assistant_edit.php";
 }
 
-if ( $is_admin && $nonuser_enabled == 'Y' ) {
-  $names[] = translate("NonUser Calendars");
-  $links[] = "nonusers.php";
-}
-
 if ( $categories_enabled == 'Y' ) {
   $names[] = translate("Categories");
   $links[] = "category.php";
@@ -102,9 +97,7 @@ if ( $reports_enabled == 'Y' ) {
 if ( $is_admin ) {
   $names[] = translate("Delete Events");
   $links[] = "purge.php";
-}
 
-if ( $is_admin ) {
   $names[] = translate("Activity Log");
   $links[] = "activity_log.php";
 }
