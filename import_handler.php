@@ -155,11 +155,14 @@ function import_data ( $data, $overwrite, $type ) {
     $Entry['EndMonth']           = sprintf ("%02d",$END[4] + 1);
     $Entry['EndYear']            = sprintf ("%04d",$END[5] + 1900);
     if ( $overwrite && ! empty ( $Entry['UID'] ) ) {
-      $oldUIDs[$Entry['UID']]++;
+      if ( empty ( $oldUIDs[$Entry['UID']] ) )
+        $oldUIDs[$Entry['UID']] = 1;
+      else
+        $oldUIDs[$Entry['UID']]++;
     }
 
     // Check for untimed
-    if ($Entry['Untimed'] == 1) {
+    if ( ! empty ( $Entry['Untimed'] ) && $Entry['Untimed'] == 1) {
       $Entry['StartMinute'] = '';
       $Entry['StartHour'] = '';
       $Entry['EndMinute'] = '';
@@ -246,7 +249,7 @@ function import_data ( $data, $overwrite, $type ) {
       $values[] = sprintf ( "%04d%02d%02d",
         $Entry['StartYear'],$Entry['StartMonth'],$Entry['StartDay']);
       $names[] = 'cal_time';
-      $values[] = ($Entry['Untimed'] == 1) ? "-1" :
+      $values[] = ( ! empty ( $Entry['Untimed'] ) && $Entry['Untimed'] == 1) ? "-1" :
         sprintf ( "%02d%02d00", $Entry['StartHour'],$Entry['StartMinute']);
       $names[] = 'cal_mod_date';
       $values[] = date("Ymd");
@@ -259,7 +262,7 @@ function import_data ( $data, $overwrite, $type ) {
       $names[] = 'cal_access';
       $values[] = ($Entry['Private'] == 1) ? "'R'" : "'P'";
       $names[] = 'cal_type';
-      $values[] = ($Entry['Repeat']) ? "'M'" : "'E'";
+      $values[] = ( ! empty ( $Entry['Repeat'] ) ) ? "'M'" : "'E'";
 
       if ( strlen ( $Entry['Summary'] ) == 0 )
         $Entry['Summary'] = translate("Unnamed Event");
@@ -413,7 +416,7 @@ function import_data ( $data, $overwrite, $type ) {
       if ( $updateMode ) {
         dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_id = $id" );
       }
-      if ($Entry['AlarmSet'] == 1) {
+      if ( ! empty ( $Entry['AlarmSet'] ) && $Entry['AlarmSet'] == 1 ) {
         $RM = $Entry['AlarmAdvanceAmount'];
         if ($Entry['AlarmAdvanceType'] == 1){ $RM = $RM * 60; }
         if ($Entry['AlarmAdvanceType'] == 2){ $RM = $RM * 60 * 24; }

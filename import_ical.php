@@ -257,7 +257,7 @@ function format_ical($event) {
   // Repeats
   //
   // Handle RRULE
-  if ($event['rrule']) {
+  if ( ! empty ( $event['rrule'] ) ) {
     // first remove and EndTime that may have been calculated above
     unset ( $fevent['Repeat']['EndTime'] );
     //split into pieces
