@@ -67,7 +67,7 @@ function export_get_event_entry($id) {
         // TODO: add support for user in URL so we can export from other
         // calendars, particularly non-user calendars.
 	//"webcal_entry_user.cal_id = '$id'";
-      if ( $user && $user != $login ) {
+      if ( ! empty ( $user )  && $user != $login ) {
         $sql .= " OR webcal_entry_user.cal_login = '$user'";
       } else if ( $layers ) {
         foreach ( $layers as $layer ) {
@@ -631,6 +631,7 @@ function generate_uid() {
 
 
 function export_vcal ($id) {
+  global $prodid;
   header ( "Content-Type: text/x-vcalendar" );
   //header ( "Content-Type: text/plain" );
 
