@@ -458,14 +458,23 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     }
     echo "</SELECT>";
   } else if ( $extra_type == $EXTRA_REMINDER ) {
+    $rem_status = 0; // don't send
     echo "<INPUT TYPE=\"radio\" NAME=\"" . $extra_name . "\" VALUE=\"1\"";
-    if ( ! empty ( $extras[$extra_name]['cal_remind'] ) )
+    if ( empty ( $id ) ) {
+      // adding event... check default
+      if ( ( $extra_arg2 & $EXTRA_REMINDER_DEFAULT_YES ) > 0 )
+        $rem_status = 1;
+    } else {
+      // editing event... check status
+      if ( ! empty ( $extras[$extra_name]['cal_remind'] ) )
+        $rem_status = 1;
+    }
+    if ( $rem_status )
       echo " CHECKED";
     echo "> ";
     etranslate ( "Yes" );
     echo "&nbsp;<INPUT TYPE=\"radio\" NAME=\"" . $extra_name . "\" VALUE=\"0\"";
-    if ( empty ( $extras[$extra_name]['cal_remind'] ) ||
-      $extras[$extra_name]['cal_remind'] <= 0 )
+    if ( ! $rem_status )
       echo " CHECKED";
     echo "> ";
     etranslate ( "No" );

@@ -54,6 +54,10 @@ $EXTRA_REMINDER_WITH_DATE =	0x0001;
 // event edit page.
 $EXTRA_REMINDER_WITH_OFFSET =	0x0002;
 
+// Default for reminder is "no".  Add this flag to make the default "Yes"
+// when creating a new event.
+$EXTRA_REMINDER_DEFAULT_YES =	0x0004;
+
 // Format of an entry is an array with the following elements:
 // name: unique name of this extra field (used in db)
 // description: how this field will be described to users
@@ -108,7 +112,7 @@ $EXTRA_REMINDER_WITH_OFFSET =	0x0002;
 //     $EXTRA_REMINDER,     // type of field
 //     21 * (24 * 60),      // how many minutes before event should reminder
 //                          // be sent (21 days in this case)
-//     $EXTRA_REMINDER_WITH_OFFSET
+//     $EXTRA_REMINDER_WITH_OFFSET | $EXTRA_REMINDER_DEFAULT_YES
 //                          // specifies reminder options bit-or
 //   )
 // );
