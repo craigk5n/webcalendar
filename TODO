@@ -7,6 +7,9 @@ ple     Description
 te?
 --- -------------------------------------
 
+[ ] Either (A) don't use any global variables or (B) rename all the
+    global variables with a "webcalendar_" prefix.
+    (This includes $login, $user and other variables.)
 [ ] Allow forms in custom header (right now we reference our forms by
     number as in document.forms[0], which will not work if the user
     has a form in the custom header)
