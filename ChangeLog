@@ -1,4 +1,6 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Fixed problem with popups.php with long text strings going off screen.
+   Maximum width is now configurable.
  - Fixed issue with Application Name containing ? characters in logon.php.
    If Application Name = "Title" then translate, else use Admin defined 
    name and run through htmlspecialchars. Also removed forms[0] references
