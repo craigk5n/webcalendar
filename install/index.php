@@ -164,8 +164,10 @@ if ( empty ( $x ) ) {
     fwrite ( $fd, "# end settings.php\n?>\n" );
     fclose ( $fd );
     // Change to read/write by us only (only applies if we created file)
-    // This hides the db password from snoopy users.
-    @chmod ( $file, 0600 );
+    // and read-only by all others.  Would be nice to make it 600, but
+    // the send_reminders.php script is usually run under a different
+    // user than the web server.
+    @chmod ( $file, 0644 );
   }
 }
 
