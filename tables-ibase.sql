@@ -205,7 +205,7 @@ INSERT INTO webcal_config ( cal_setting, cal_value )
 INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'allow_color_customization', 'Y' );
 INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('BGCOLOR','#336600');
+  VALUES ('BGCOLOR','#FFFFFF');
 INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ('TEXTCOLOR','#000000');
 INSERT INTO webcal_config ( cal_setting, cal_value )
