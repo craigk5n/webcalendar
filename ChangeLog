@@ -1,4 +1,6 @@
 Version 0.9.39dev0813 (13 Aug 2002)
+  - Changed login page so that "Remember login" is not selected by default.
+  - Fixed bug: Was not defaulting login name to last person to login.
   - Fixed bug: Events with no time on weekends where not being displayed
     with the weekend background color in the week view.
   - Include a category of "None" when editing an event.
