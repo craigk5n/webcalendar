@@ -84,6 +84,36 @@ if ( ! $can_view ) {
     $can_view = false;
 }
 
+// If they still cannot view, make sure they are not looking at a nonuser
+// calendar event where the nonuser is the _only_ participant.
+if ( ! $can_view && ! empty ( $nonuser_enabled ) &&
+  $nonuser_enabled == 'Y' ) {
+  $nonusers = get_nonuser_cals ();
+  $nonuser_lookup = array ();
+  for ( $i = 0; $i < count ( $nonusers ); $i++ ) {
+    $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
+  }
+  $sql = "SELECT cal_login FROM webcal_entry_user " .
+    "WHERE cal_id = $id AND cal_status in ('A','W')";
+  $res = dbi_query ( $sql );
+  $found_nonuser_cal = false;
+  $found_reg_user = false;
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      if ( ! empty ( $nonuser_lookup[$row[0]] ) )
+        $found_nonuser_cal = true;
+      else
+        $found_reg_user = true;
+    }
+    dbi_free_result ( $res );
+  }
+  // Does this event contain only nonuser calendars as participants?
+  // If so, then grant access.
+  if ( $found_nonuser_cal && ! $found_reg_user ) {
+    $can_view = true;
+  }
+}
+
 if ( ! $can_view ) {
   $error = translate ( "You are not authorized" );
 }
