@@ -64,4 +64,5 @@ Here are some other ideas for the next or perhaps later releases:
 [ ] Add iCal client publish so Mozilla Calendar (or Apple iCal) can
     create events and publish back to WebCalendar.
     (This has a very high cool factor.)
+[ ] Allow custom header/trailer to be evaluated as PHP or to be an include
 
