@@ -1,4 +1,9 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+  - Changed edit_entry_handler to remove requirement for Admins to approve
+    Public events that they create.
+  - Applied bug fix 1151442: Overlapping events display error in week.php
+  - Removed most instances of htnlentities as unneeded
+  - Fixed bug 1162486: Path exposure issue with view_entry.php
   - Fixed problem, if non-user calendars are diabled, the most recent change
     to add Public Access to the 'Manage Calendar of:' list throws a Warning.
   - Updated Finnish translation

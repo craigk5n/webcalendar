@@ -1,9 +1,13 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1162486: Path exposure issue with view_entry.php
 
   - Other bugs fixed:
+    + Applied bug fix 1151442: Overlapping events display error in week.php
 
   - New Features / Enhancements / Changes:
+    + Removed most instances of htmlentities as unneeded
+    + Admin no longer needs to approve Public events that they create
     + Added option to set LDAP_OPT_PROTOCOL_VERSION in user-ldap.php
 
   - The following translations were updated:
