@@ -35,7 +35,7 @@ April: Avril
 May_: Mai
 June: Juin
 July: Juillet
-August: Ao&ugrave;t
+August: Ao&ucirc;t
 September: Septembre
 October: Octobre
 November: Novembre
@@ -48,7 +48,7 @@ Apr: Avr
 May: Mai
 Jun: Jun
 Jul: Jul
-Aug: Ao&ugrave;
+Aug: Ao&ucirc;
 Sep: Sep
 Oct: Oct
 Nov: Nov
