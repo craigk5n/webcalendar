@@ -90,7 +90,6 @@ if ( empty ( $login ) && $use_http_auth ) {
 //  exit;
 //}
 
-
 // If they are accessing using the public login, restrict them from using
 // certain pages.
 if ( $login == "__public__" ) {
