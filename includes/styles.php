@@ -80,11 +80,19 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 a:hover {
 	color: #0000FF;
 }
+<?php
+// HACK! we need to find a better way to differentiate between the
+// admin version of edituser and the non-admin (account) version
+// so we can use the proper background color (one is a page, the
+// other is an iframe inside a tab area).
+?>
+<?php if ( $GLOBALS['is_admin'] ) { ?>
 #edituser,
+#edituserhandler,
+<?php } ?>
 #groupedit,
 #editnonusers,
 #groupedithandler,
-#edituserhandler,
 #editnonusershandler {
 	background-color: #F8F8FF;
 	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
