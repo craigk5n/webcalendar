@@ -5,11 +5,7 @@
 // or use $GLOBALS[].
 ?>
 
-<br style="clear:both;" />
-<hr style="clear:both;" />
-<table style="border-width:0px; width:100%;" cellpadding="0" cellspacing="0">
-<tr><td style="text-align:left; width:33%; vertical-align:top;">
-<form action="month.php" method="get" name="SelectMonth">
+<form action="month.php" method="get" name="SelectMonth" class="trailerform" id="monthform">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -17,7 +13,7 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<span style="font-weight:bold; font-size: 13px;"><?php etranslate("Month")?>:</span>
+<p><?php etranslate("Month")?>:
 <select name="date" onchange="document.SelectMonth.submit()">
 <?php
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
@@ -47,10 +43,10 @@
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
-</form></td>
+</p>
+</form>
 
-<td style="text-align:center; width:33%; vertical-align:top;">
-<form action="week.php" method="get" name="SelectWeek">
+<form action="week.php" method="get" name="SelectWeek" class="trailerform" id="weekform">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -58,7 +54,7 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<span style="font-weight:bold;font-size:13px;"><?php etranslate("Week")?>:</span>
+<p><?php etranslate("Week")?>:
 <select name="date" onchange="document.SelectWeek.submit()">
 <?php
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
@@ -96,11 +92,10 @@
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
+</p>
 </form>
-</td>
 
-<td style="text-align:right; width:33%; vertical-align:top;">
-<form action="year.php" method="get" name="SelectYear">
+<form action="year.php" method="get" name="SelectYear" class="trailerform" id="yearform">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -108,7 +103,7 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<span style="font-weight:bold;font-size:13px;"><?php etranslate("Year")?>:</span>
+<p><?php etranslate("Year")?>:
 <select name="year" onchange="document.SelectYear.submit()">
 <?php
   if ( ! empty ( $thisyear ) ) {
@@ -125,10 +120,8 @@
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
+</p>
 </form>
-</td>
-</tr>
-</table>
 
 <!-- GO TO -->
 <br />
