@@ -57,6 +57,8 @@ a#programname {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
 	text-decoration: none;
+	display: block;
+	clear: both;
 }
 <?php //new event icon ?>
 .new {
@@ -70,6 +72,8 @@ a#programname {
 	width: 5px;
 	height: 7px;
 	border-width: 0px;
+	margin-left: 2px;
+	margin-right: 2px;
 }
 
 
