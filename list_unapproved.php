@@ -53,7 +53,8 @@ function list_unapproved ( $user ) {
       $duration = $row[6];
       $status = $row[7];
       $divname = "eventinfo-$id-$key";
-      echo "<li><a class=\"entry\" href=\"view_entry.php?id=$id&amp;user=$user";
+      echo "<li><a title=\"" . 
+      		translate("View this entry") . "\" class=\"entry\" href=\"view_entry.php?id=$id&amp;user=$user";
       echo "\" onmouseover=\"window.status='" . translate("View this entry") .
         "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
       $timestr = "";
@@ -76,7 +77,9 @@ function list_unapproved ( $user ) {
       echo htmlspecialchars ( $name );
       echo "</a>";
       echo " (" . date_to_str ($date) . ")\n";
-      echo ": <a href=\"approve_entry.php?id=$id&amp;ret=list&amp;user=$user";
+//approve
+      echo ": <a title=\"" . 
+	translate("Approve/Confirm") . "\" class=\"nav\" href=\"approve_entry.php?id=$id&amp;ret=list&amp;user=$user";
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
@@ -101,29 +104,29 @@ function list_unapproved ( $user ) {
     }
     dbi_free_result ( $res );
   }
-  echo "</ul><br /><br />\n";
+  echo "</ul>\n<br /><br />\n";
   if ( $count == 0 ) {
     user_load_variables ( $user, "temp_" );
-    echo translate("No unapproved events for") . " " . $temp_fullname . ".";
+    echo translate("No unapproved events for") . "&nbsp;" . $temp_fullname . ".";
   } else {
     echo $eventinfo;
   }
-
 }
-
 ?>
 
-<h2><?php etranslate("Unapproved Events"); if ( $user == '__public__' ) echo " - " . $PUBLIC_ACCESS_FULLNAME; ?></h2>
+<h2><?php 
+	etranslate("Unapproved Events"); 
+	if ( $user == '__public__' ) echo " - " . $PUBLIC_ACCESS_FULLNAME; 
+?></h2>
 
 <?php
-
 // List unapproved events for this user.
 list_unapproved ( ( $is_assistant || $is_nonuser_admin || $is_admin ) ? $user : $login );
 
 // Admin users can also approve Public Access events
 if ( $is_admin && $public_access == "Y" &&
   ( empty ( $user ) || $user != '__public__' ) ) {
-  echo "<br /><br /><h3>" . translate ( "Public Access" ) . "</h3>\n";
+  echo "<br /><br />\n<h3>" . translate ( "Public Access" ) . "</h3>\n";
   list_unapproved ( "__public__" );
 }
 
@@ -132,11 +135,10 @@ if ( $is_admin && $public_access == "Y" &&
 if ( $nonuser_enabled == 'Y' ) {
   $admincals = get_nonuser_cals ( $login );
   for ( $i = 0; $i < count ( $admincals ); $i++ ) {
-    echo "<br /><br /><h3>" . $admincals[$i]['cal_fullname'] . "</h3>\n";
+    echo "<br /><br />\n<h3>" . $admincals[$i]['cal_fullname'] . "</h3>\n";
     list_unapproved ( $admincals[$i]['cal_login'] );
   }
 }
-
 ?>
 
 <?php print_trailer(); ?>

@@ -1,7 +1,5 @@
 <?php
-
 // Parse the vcal file and return the data hash.
-//
 function parse_vcal($cal_file) {
   global $tz, $errormsg;
 
@@ -26,11 +24,11 @@ function parse_vcal($cal_file) {
       $buff = chop($buff);
 
       // parser debugging code...
-      //echo "line = $line <br>";
-      //echo "state = $state <br>";
-      //echo "substate = $substate <br>";
-      //echo "subsubstate = $subsubstate <br>";
-      //echo "buff = " . htmlspecialchars ( $buff ) . "<br><br>\n";
+      //echo "line = $line <br />";
+      //echo "state = $state <br />";
+      //echo "substate = $substate <br />";
+      //echo "subsubstate = $subsubstate <br />";
+      //echo "buff = " . htmlspecialchars ( $buff ) . "<br /><br />\n";
 
       if ($state == "VEVENT") {
           if ( ! empty ( $subsubstate ) ) {
@@ -40,9 +38,8 @@ function parse_vcal($cal_file) {
               }
             } else if ( $subsubstate == "VALARM" && 
               preg_match ( "/TRIGGER:(.+)$/i", $buff, $match ) ) {
-              //echo "Set reminder to $match[1]<br>";
-              // reminder time is $match[1]
-              // TODO: 
+		//echo "Set reminder to $match[1]<br />";
+		//reminder time is $match[1]
             }
           }
           else if (preg_match("/^BEGIN:(.+)$/i", $buff, $match)) {
@@ -100,7 +97,7 @@ function parse_vcal($cal_file) {
               if ($substate != "none") {
                   $event[$substate] .= $match[1];
               } else {
-                  $errormsg .= "Error in file $cal_file line $line:<br>$buff\n";
+                  $errormsg .= "Error in file $cal_file line $line:<br />$buff\n";
                   $error = true;
               }
           // For unsupported properties
@@ -123,7 +120,7 @@ function parse_vcal($cal_file) {
          else if (preg_match("/^BEGIN:ALARM$/i", $buff))
            $state = "ALARM";
       }
-    } // End while
+    } //End while
     fclose($fd);
   }
 
@@ -131,7 +128,6 @@ function parse_vcal($cal_file) {
 }
 
 // Convert vcal format (yyyymmddThhmmssZ) to epoch time
-//
 function vcaldate_to_timestamp($vdate,$plus_d = '0',$plus_m = '0', $plus_y = '0') {
   global $TZoffset;
 
@@ -152,11 +148,8 @@ function vcaldate_to_timestamp($vdate,$plus_d = '0',$plus_m = '0', $plus_y = '0'
   return $TS;
 }
 
-
 // Put all vcal data into import hash structure
-//
 function format_vcal($event) {
-
   // Start and end time
   $fevent[StartTime] = vcaldate_to_timestamp($event[dtstart]);
   $fevent[EndTime] = vcaldate_to_timestamp($event[dtend]);
@@ -175,8 +168,7 @@ function format_vcal($event) {
   // vcal 1.0 repeats can be very complicated and the webcalendar doesn't
   // actually support all of the ways repeats can be specified.  We will
   // focus on vcals dumped from Palm Desktop and Lotus Notes, which are simple
-  // and the webcalendar should fully support.
-  //
+  // and the ones webcalendar should fully support.
   if ($event[rrule]) {
     //split into pieces
     $RR = explode(" ", $event[rrule]);
@@ -232,7 +224,6 @@ function format_vcal($event) {
 }
 
 // Figure out days of week for weekly repeats
-//
 function rrule_repeat_days($RA) {
   $T = count($RA);
   $j = $T - 1;
@@ -259,9 +250,7 @@ function rrule_repeat_days($RA) {
 
 
 // Calculate repeating ending time
-//
 function rrule_endtime($int,$freq,$start,$end) {
-
   // if # then we have to add the difference to the start time
   if (preg_match("/^#(.+)$/i", $end, $M)) {
     $T = $M[1] * $freq;
@@ -287,5 +276,4 @@ function rrule_endtime($int,$freq,$start,$end) {
   }
   return $endtime;
 }
-
 ?>
