@@ -55,8 +55,8 @@ tr {
 <h1>WebCalendar System Administrator's Guide</h1>
 
 <p>
-<b>Document Version:</b> $Id$ <br>
-<b>WebCalendar Version:</b> 0.9.41 <br>
+<b>Document Version:</b> $Id$ <br />
+<b>WebCalendar Version:</b> 0.9.43 <br />
 </p>
 
 
@@ -80,12 +80,13 @@ tr {
 </ul>
 
 
-</p><hr><h2><a name="intro">Introduction</a></h2><p>
+<hr /><h2><a name="intro">Introduction</a></h2><p>
 
 WebCalender is an open source PHP-based multi-user calendar.
 
 </p><p>
 <b>Features:</b>
+</p>
 <ul>
 <li> Multi-user support
 <li> Group support
@@ -97,7 +98,7 @@ WebCalender is an open source PHP-based multi-user calendar.
 <li> View multiple users' calendars at the same time
 <li> View one or more users' calendar via layers on top of your own calendar
 <li> Public calendar (that requires no login) where anonymous users
-  submit events that are approved by an administrator.
+  submit events that are approved by an administrator
 <li> Add/Edit/Delete users
 <li> Add/Edit/Delete events
 <li> Repeating events
@@ -118,14 +119,14 @@ WebCalender is an open source PHP-based multi-user calendar.
   Hungarian, Icelandic, Italian,
   Japanese, Korean, Norwegian, Polish, Portuguese, Portuguese/Brazil,
   Russian, Spanish, Swedish, Turkish, Welsh
-<li> Exporting to Palm Pilot, iCal and vCal
+<li> Exporting to amd importing from Palm Pilot, iCal and vCal
 <li> Authentication using LDAP, HTTP authentication, NIS, or web-based.
 <li> Activity log that tracks event creation, update, accept, reject,
   email notifications, and email reminders
 </ul>
 
 
-</p><hr><h2><a name="requirements">System Requirements</a></h2><p>
+<hr /><h2><a name="requirements">System Requirements</a></h2>
 
 <ul>
 <li> PHP3 or PHP4 
@@ -135,13 +136,14 @@ WebCalender is an open source PHP-based multi-user calendar.
   are required
 </ul>
 
-<P>
+<p>
 
-<B>Recommended:</B>
+<b>Recommended:</b>
+</p>
 <ul>
 <li> CSS-enabled browser
 <li> pilot-link (if exporting to Palm):
-<A HREF="http://sourceforge.net/project/?group_id=2158">http://sourceforge.net/project/?group_id=2158</A>
+<a href="http://sourceforge.net/project/?group_id=2158">http://sourceforge.net/project/?group_id=2158</a>
 </ul>
 
 <p>
@@ -160,7 +162,7 @@ WebCalender is an open source PHP-based multi-user calendar.
 For the database you choose, you must have its drivers built into
 PHP.  For example, to use MySQL, PHP must be compiled with MySQL
 support (which is the default setting when installing PHP).
-See the PHP pages (<A HREF="http://www.php.net">www.php.net</A>)
+See the PHP pages (<a href="http://www.php.net">www.php.net</a>)
 for more information on setting up PHP.
 
 </p><p>
@@ -207,7 +209,7 @@ the following command to see what version of PHP you have:
 
 
 
-</p><hr><h2><a name="fileunpacking">File Unpacking</a></h2><p>
+<hr /><h2><a name="fileunpacking">File Unpacking</a></h2><p>
 
 Unpack the calendar software in its own directory somewhere where
 your web server will find it.  (See your web server docs for info.)
@@ -221,9 +223,10 @@ Keep in mind that unless you remap the directory (via your web server's
 configuration settings), it will be part of
 the URL for the calendar.
 
-</p><hr><h2><a name="dbsetup">Database Setup</a></h2><p>
+</p><hr /><h2><a name="dbsetup">Database Setup</a></h2><p>
 
 There are three steps in setting up the database:
+</p>
 <ol>
 <li>Creating the database
 <li>Creating the user
@@ -252,11 +255,11 @@ The following will create a database named "intranet".
 to access the database.
 </p>
 <blockquote>
-<b>mysql --user=root mysql</b><br>
+<b>mysql --user=root mysql</b><br />
 mysql> <b>GRANT ALL PRIVILEGES ON *.* TO webcalendar@localhost
-IDENTIFIED BY 'webcal01' WITH GRANT OPTION;</b><br>
-mysql> <b>FLUSH PRIVILEGES;</b><br>
-mysql> <b>QUIT</b><br>
+IDENTIFIED BY 'webcal01' WITH GRANT OPTION;</b><br />
+mysql> <b>FLUSH PRIVILEGES;</b><br />
+mysql> <b>QUIT</b><br />
 </blockquote>
 
 <p>
@@ -280,7 +283,7 @@ From the command line, startup sqlplus and
 issue the following command:
 </p>
 <blockquote>
-<b>sqlplus</b><br>
+<b>sqlplus</b><br />
 SQL&gt; <b>CREATE TABLESPACE webcalendar
 DATAFILE 'webcalendar.dat' SIZE 10M
 AUTOEXTEND ON NEXT 10M MAXSIZE 40M;</b>
@@ -291,10 +294,10 @@ to access the database.
 </p>
 
 <blockquote>
-<b>sqlplus</b><br>
+<b>sqlplus</b><br />
 SQL&gt; <b>CREATE USER webcalendar IDENTIFIED BY webcal01
-DEFAULT tableSPACE webcalendar;</b><br>
-SQL&gt; <b>GRANT dba TO webcalendar;</b><br>
+DEFAULT tableSPACE webcalendar;</b><br />
+SQL&gt; <b>GRANT dba TO webcalendar;</b><br />
 SQL&gt; <b>quit</b>
 </blockquote>
 
@@ -303,8 +306,8 @@ Create the calendar tables using the supplied <tt>tables-oracle.sql</tt> file:
 </p>
 
 <blockquote>
-<b>sqlplus webcalendar/webcal01</b><br>
-SQL&gt; <b>@tables-oracle;</b><br>
+<b>sqlplus webcalendar/webcal01</b><br />
+SQL&gt; <b>@tables-oracle;</b><br />
 SQL&gt; <b>quit</b>
 </blockquote>
 
@@ -314,9 +317,9 @@ From the command line, startup psql and
 issue the following command:
 </p>
 <blockquote>
-<b>create database webcalendar;<br>
-	\c webcalendar<br>
-	\i tables-postgres.sql<br>
+<b>create database webcalendar;<br />
+	\c webcalendar<br />
+	\i tables-postgres.sql<br />
 	\q</b>
 </blockquote>
 
@@ -327,15 +330,15 @@ From the command line, startup usql and
 issue the following command:
 </p>
 <blockquote>
-<b>CREATE DATABASE 'WEBCAL.gdb';</b><br>
+<b>CREATE DATABASE 'WEBCAL.gdb';</b><br />
 </blockquote>
 
 <p>
 Create the calendar tables using the supplied <tt>tables-ibase.sql</tt> file:
 </p>
 <blockquote>
-<b>isql<br>
-connect /path/WEBCAL.gdb;<br>
+<b>isql<br />
+connect /path/WEBCAL.gdb;<br />
 input path/table-ibase.sql;</b>
 </blockquote>
 
@@ -348,9 +351,9 @@ databases.
 </p>
 
 
-</p><hr><h2><a name="appsetup">Application Setup</a></h2><p>
+</p><hr /><h2><a name="appsetup">Application Setup</a></h2><p>
 
-Next, you will need to customize the file <TT>includes/config.php</TT>
+Next, you will need to customize the file <tt>includes/config.php</tt>
 to tell WebCalendar which database you are using and what
 the database login/password is.
 Use your favorite text editor (vim, emacs, notepad, etc.)
@@ -387,52 +390,56 @@ For ODBC, this should be the DSN.</td></tr>
 
 You can configure the calendar to run in single-user<sup><a href="#g_singleuser">*</a></sup> mode or multi-user<sup><a href="#g_multiuser">*</a></sup> mode.
 If this is your first time using the calendar, it's easier to try single-user.
-You can always switch to multi-user later.  Leave <TT>$single_user</TT> set to
+You can always switch to multi-user later.  Leave <tt>$single_user</tt> set to
 "N" (the default) for multi-user or set it to "Y" and set the
-value of <TT>$single_user_login</TT> to a login name of your liking
+value of <tt>$single_user_login</tt> to a login name of your liking
 to set the system to single-user mode.
-(And be sure to set the value of <TT>$single_user_login</TT> to the login that you
+(And be sure to set the value of <tt>$single_user_login</tt> to the login that you
 would choose if you decide to switch to multi-user mode some day.)
 </p><p>
 
 <b>Note:</b> If you do decide to switch from single-user mode to multi-user mode,
 make sure you add in a user to the system for the login you set the
-<TT>$single_user_login</TT> variable to.  You will need to do this via the
-database (mysql, sqlplus, etc...)  Look in the <TT>tables-mysql.sql</TT>
-(or <TT>tables-oracle.sql</TT>, etc.) to see the example of adding in the
+<tt>$single_user_login</tt> variable to.  You will need to do this via the
+database (mysql, sqlplus, etc...)  Look in the <tt>tables-mysql.sql</tt>
+(or <tt>tables-oracle.sql</tt>, etc.) to see the example of adding in the
 "admin" user.
 </p><p>
 
 If you are setting up a multi-user calendar, you will need to choose
 how your users are authenticated.
 
-You must change the settings of <TT>$use_http_auth</TT> and <TT>$user_inc</TT> within the <TT>config.php</TT> configuration file to setup which authentication method to use.
+You must change the settings of <tt>$use_http_auth</tt> and <tt>$user_inc</tt> within the <tt>config.php</tt> configuration file to setup which authentication method to use.
 
 </p><p>
 
 You currently have four choices:
 
 <ol>
-<li> Web-based authentication (login/passwords verified in the WebCalendar database):<br>
-	<tt>$use_http_auth = false;</tt><br>
+<li> Web-based authentication (login/passwords verified in the WebCalendar database):<br />
+	<tt>$use_http_auth = false;</tt><br />
 	<tt>$user_inc = "user.php";</tt>
-<li> HTTP-based authentication (login/passwords verified by the web server):<br>
-	<tt>$use_http_auth = true;</tt><br>
-	<tt>$user_inc = "user.php";</tt><br>
+</li>
+<li> HTTP-based authentication (login/passwords verified by the web server):<br />
+	<tt>$use_http_auth = true;</tt><br />
+	<tt>$user_inc = "user.php";</tt><br />
 	... and don't forget to setup your web server to handle user
-	authentication.<br>
+	authentication.<br />
         <b>Note:</b> In order to use HTTP-based authentication,
 	PHP must be setup as a module for your server rather than a CGI.
-<li> NIS-based authentication (login/passwords verified by NIS):<br>
-	<tt>$use_http_auth = false;</tt><br>
-	<tt>$user_inc = "user-nis.php";</tt><br>
+</li>
+<li> NIS-based authentication (login/passwords verified by NIS):<br />
+	<tt>$use_http_auth = false;</tt><br />
+	<tt>$user_inc = "user-nis.php";</tt><br />
 	Additional configuration settings will need to be set
 	in <tt>includes/user-nis.php</tt>.
-<li> LDAP-based authentication (login/passwords verified by LDAP server):<br>
-	<tt>$use_http_auth = false;</tt><br>
-	<tt>$user_inc = "user-ldap.php";</tt><br>
+</li>
+<li> LDAP-based authentication (login/passwords verified by LDAP server):<br />
+	<tt>$use_http_auth = false;</tt><br />
+	<tt>$user_inc = "user-ldap.php";</tt><br />
 	Additional configuration settings will need to be set
 	in <tt>includes/user-ldap.php</tt>.
+</li>
 </ol>
 
 <p>
@@ -443,7 +450,7 @@ setup the <tt>send_reminders.php</tt> script (see below) and keep your admin
 setting for "Email enabled" set to "Yes" on the admin settings page.
 
 
-</p><hr><h2><a name="reminders">Setting Up Email Reminders</a></h3><p>
+</p><hr /><h2><a name="reminders">Setting Up Email Reminders</a></h3><p>
 
 PHP does not come with a utility for executing time-based jobs.
 So, in order to check periodically for email reminders, a shell
@@ -456,8 +463,10 @@ script was written in PHP.  You will need two things to get this working:
   server and then build the CGI-based PHP later.
   <b>Note:</b> Many Linux distributions and some Windows LAMP packages
   come with the PHP built for CGI.
+</li>
 <li> You must setup cron (on Linux/UNIX) or something like cron for Windows
 to run the <tt>send_reminders.php</tt> script periodically.
+</li>
 </ol>
 
 <p>
@@ -500,7 +509,7 @@ system, you can use any tool (lynx, perl script, etc.) that is capable
 of making an HTTP request for this.
 
 
-</p><hr><h2><a name="systemsettings">System Settings</a></h2><p>
+</p><hr /><h2><a name="systemsettings">System Settings</a></h2><p>
 
 System Settings allows the administrator to control what
 features are available to users as well as default values
@@ -751,7 +760,7 @@ in their Preferences (such as color).
 
 </dl>
 
-</p><hr><h2><a name="siteextras">Custom Event Fields</a></h2><p>
+</p><hr /><h2><a name="siteextras">Custom Event Fields</a></h2><p>
 
 You may want to customize the event-specific fields found in
 the <tt>includes/site_extras.php</tt> field.
@@ -787,7 +796,7 @@ of field.  In some cases, "Arg 1" and "Arg 2" are not used.
   <td valign="top">Allows the user to enter a single line of text</td>
   <td valign="top">Specifies the size of the text form element
       as it would appear in the following ("NN" would be replaced
-      with Arg 1):<br>
+      with Arg 1):<br />
       &nbsp;&nbsp; <nobr><tt>&lt;input size="NN" ...</tt></nobr></td>
   <td valign="top">N/A</td>
    
@@ -798,12 +807,12 @@ of field.  In some cases, "Arg 1" and "Arg 2" are not used.
   <td valign="top">Specifies how many characters wide the textform
       element should be
       as it would appear in the following ("NN" would be replaced
-      with Arg 1):<br>
+      with Arg 1):<br />
       &nbsp;&nbsp; <nobr><tt>&lt;textarea cols="NN" ...</tt></nobr></td>
   <td valign="top">Specifies how many lines long the textform
       element should be
       as it would appear in the following ("NN" would be replaced
-      with Arg 1):<br>
+      with Arg 1):<br />
       &nbsp;&nbsp; <nobr><tt>&lt;textarea rows="NN" ...</tt></nobr></td>
   </tr>
 
@@ -874,7 +883,7 @@ of field.  In some cases, "Arg 1" and "Arg 2" are not used.
 </center>
 
 
-</p><hr><h2><a name="faq">Frequently Asked Questions</a></h2><p>
+</p><hr /><h2><a name="faq">Frequently Asked Questions</a></h2><p>
 
 <dl>
 
@@ -902,7 +911,7 @@ of field.  In some cases, "Arg 1" and "Arg 2" are not used.
 <dd>After the initial creation of the database tables, there will
   be a single user account created with the username "admin" and
   the password set to "admin" as well.
-  <br><b>Note:</b> This account is intended to get your started.
+  <br /><b>Note:</b> This account is intended to get your started.
   You should create a new admin account and delete this one.
 </dd>
 
@@ -963,7 +972,7 @@ of field.  In some cases, "Arg 1" and "Arg 2" are not used.
 
 </dl>
 
-</p><hr><h2><a name="trouble">Troubleshooting</a></h2><p>
+</p><hr /><h2><a name="trouble">Troubleshooting</a></h2><p>
 
 <dl>
 
@@ -991,7 +1000,7 @@ you may get errors when adding events.
 In WebCalendar version 0.9.43 or later, you will always get an error
 message telling you to update <tt>php.ini</tt> if <tt>magic_quotes_gpc</tt>
 is set to <tt>Off</tt>.
-<br>
+<br />
 Note for Oracle and PostgreSQL: You must also change the value of
 <tt>magic_quotes_sybase</tt> to <tt>On</tt> within the <tt>php.ini</tt>
 settings.
@@ -1035,7 +1044,7 @@ settings.
         "Email Enabled" setting to "Yes".
     <li>In WebCalendar's System Settings, make sure you have
         the "Default sender address" to something.
-        <br><b>Note:</b>
+        <br /><b>Note:</b>
         Some mail system will reject mail that has a "From" address
         that is a different domain from the originating SMTP server.
         So, if your SMTP server is smtp.mydomain.com and your
@@ -1072,7 +1081,7 @@ settings.
 <dd>You can download the latest public release from SourceForge's
   <a href="http://sourceforge.net/project/showfiles.php?group_id=3870">file
   list for WebCalendar</a>.
-  <br>
+  <br />
   You can download the latest development code from the CVS server using
   the <a href="http://sourceforge.net/cvs/?group_id=3870">the instructions
   provided by SourceForge</a>.  (You will need a CVS client to do this.)
@@ -1094,7 +1103,7 @@ settings.
 
 </dl>
 
-</p><hr><h2><a name="help">Getting Help</a></h2><p>
+</p><hr /><h2><a name="help">Getting Help</a></h2><p>
 Try the Help/Troubleshooting forum for WebCalendar, hosted
 at SourceForge.net:
 </p>
@@ -1106,13 +1115,13 @@ If you encounter a bug, please check the
 <a href="http://sourceforge.net/tracker/?group_id=3870&atid=103870">list of open and pending bugs</a>.
 If you do not see anything similar, submit a new bug.
 
-</p><hr><h2><a name="licensing">Licensing</a></h2><p>
+</p><hr /><h2><a name="licensing">Licensing</a></h2><p>
 WebCalendar is distributed under the open source
 <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>.
 If you have questions about this license, please
 read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.
 
-</p><hr><h2><a name="glossary">Glossary</a></h2><p>
+</p><hr /><h2><a name="glossary">Glossary</a></h2><p>
 
 <dl>
 
@@ -1199,10 +1208,14 @@ read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.
 
 </dl>
 
-</p><hr><h2><a name="history">History</a></h2><p>
+</p><hr /><h2><a name="history">History</a></h2><p>
 
 <pre>
 $Log$
+Revision 1.9  2004/03/10 17:15:22  cknudsen
+Updated for 0.9.43
+xhtml changes
+
 Revision 1.8  2004/02/17 18:36:10  cknudsen
 Added new FAQ
 
