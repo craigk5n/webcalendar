@@ -6,7 +6,8 @@
 #	Peter Huetmannsberger <huetmann@site38.ping.at>
 # Last update: 1 Dec 2004 by Markus Egartner <edv@kh-hallein.at>
 # Last update: 20 Jan 2004 by Markus Egartner <edv@kh-hallein.at>
-# Translation last updated on 01-20-2005
+# Last update: 25 Jan 2004 by Markus Egartner <edv@kh-hallein.at>
+# Translation last updated on 01-25-2005
 
 
 ###############################################
@@ -265,20 +266,22 @@ cookies-note: <B>Hinweis:</B> F&uuml;r diese Anwendung m&uuml;ssen Cookies im Br
 # Page: layers.php
 #
 Help: Hilfe
-to modify the layers settings for the: ändern der Layer Einstellungen für den
 Layers are currently: Layer
 Enabled: aktiv
-Disabled: inaktiv
 Disable Layers: Layer abschalten
+Disabled: inaktiv
 Enable Layers: Layer aktivieren
+to modify the layers settings for the: ändern der Layer Einstellungen für den
+calendar: Kalender
+Add layer: Layer hinzufügen
 Layer: Layer
+Edit layer: Layer editieren
+Edit: Ändern
+Delete layer: Layer löschen
+Are you sure you want to delete this layer?: Wollen Sie den Layer wirklich löschen?
 Source: Quelle
 Color: Farbe
 Duplicates: Duplikate
-Edit layer: Layer editieren
-Are you sure you want to delete this layer?: Wollen Sie den Layer wirklich löschen?
-Delete layer: Layer löschen
-Add layer: Layer hinzufügen
 
 
 ###############################################
@@ -375,7 +378,6 @@ fonts-help: definiert die Standartschriftarten (z.B. "Arial, Helvetica")
 Fonts: Schriftart
 custom-script-help: Erlaubt Einträge von benutzerdefinierten Javascript- oder Stylesheet Text welcher im HTML "Kopf"-Abschnitt auf jeder Seite eingefügt wird.
 Custom script/stylesheet: Benutzerdefinierte Scripte/Stylesheets
-Edit: Ändern
 custom-header-help: Ermöglicht benutzerdefinierte HTML-Ausschnitte am ANFANG jeder Seite
 Custom header: Benutzerdefinierte Kopfzeile
 custom-trailer-help: Ermöglicht benutzerdefinierte HTML-Ausschnitte am ENDE jeder Seite.
@@ -558,10 +560,10 @@ Add New View: Neue Ansicht hinzufügen
 ###############################################
 # Page: import.php
 #
+Import: Import
 Import format: Importformat
 Exclude private records: Private Einträge ausschliessen
 Overwrite Prior Import: Vorigen Import überschreiben
-Import: Import
 
 
 ###############################################
