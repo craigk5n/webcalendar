@@ -906,7 +906,7 @@ else
   echo "<b>";
   etranslate("Error");
   echo " : </b>";
-  etranslate("export format not defined or incorrect.");
+  echo translate("export format not defined or incorrect") . ".";
   echo "<br>\n";
 
   include_once "includes/trailer.php";
