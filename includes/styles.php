@@ -2,7 +2,7 @@
      use of the HTML font tag since many browsers do not properly support 
      style sheet font settings.
 -->
-<STYLE type="text/css">
+<style type="text/css">
 <!--
 .tablecell {
   font-family: <?php echo $FONTS ?>;
@@ -173,4 +173,4 @@ a:hover {
   text-decoration: none;
 }
 -->
-</STYLE>
+</style>

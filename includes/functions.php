@@ -67,10 +67,10 @@ if ( ! empty ( $HTTP_GET_VARS ) ) {
     } else {
       if ( empty ( $noSet[$key] ) ) {
         $GLOBALS[$key] = $val;
-        //echo "XXX $key<BR>";
+        //echo "XXX $key<br />";
       }
     }
-    //echo "GET var '$key' = '$val' <BR>";
+    //echo "GET var '$key' = '$val' <br />";
   }
   reset ( $HTTP_GET_VARS );
 }
@@ -99,7 +99,7 @@ if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
     if ( empty ( $noSet[$key] ) ) {
       $GLOBALS[$key] = $val;
     }
-    //echo "COOKIE var '$key' = '$val' <BR>";
+    //echo "COOKIE var '$key' = '$val' <br />";
   }
   reset ( $HTTP_COOKIE_VARS );
 }
@@ -213,11 +213,11 @@ function load_global_settings () {
   }
 
   // If no font settings, then set some
-  if ( empty ( $GLOBALS["FONTS"] ) ) {
+  if ( empty ( $GLOBALS["fontS"] ) ) {
     if ( $GLOBALS["LANGUAGE"] == "Japanese" )
-      $GLOBALS["FONTS"] = "Osaka, Arial, Helvetica, sans-serif";
+      $GLOBALS["fontS"] = "Osaka, Arial, Helvetica, sans-serif";
     else
-      $GLOBALS["FONTS"] = "Arial, Helvetica, sans-serif";
+      $GLOBALS["fontS"] = "Arial, Helvetica, sans-serif";
   }
 }
 
@@ -303,15 +303,15 @@ function do_redirect ( $url ) {
   global $SERVER_SOFTWARE, $_SERVER, $c;
   if ( empty ( $SERVER_SOFTWARE ) )
     $SERVER_SOFTWARE = $_SERVER["SERVER_SOFTWARE"];
-  //echo "SERVER_SOFTWARE = $SERVER_SOFTWARE <BR>"; exit;
+  //echo "SERVER_SOFTWARE = $SERVER_SOFTWARE <br />"; exit;
   if ( substr ( $SERVER_SOFTWARE, 0, 5 ) == "Micro" ) {
-    echo "<HTML><HEAD><TITLE>Redirect</TITLE>" .
-      "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0; URL=$url\"></HEAD><BODY>" .
-      "Redirecting to ... <A HREF=\"" . $url . "\">here</A>.</BODY></HTML>.\n";
+    echo "<html><head><title>Redirect</title>" .
+      "<meta http-equiv=\"Refresh\" content=\"0; URL=$url\"></head><body>" .
+      "Redirecting to ... <a href=\"" . $url . "\">here</a>.</body></html>.\n";
   } else {
     Header ( "Location: $url" );
-    echo "<HTML><HEAD><TITLE>Redirect</TITLE></HEAD><BODY>" .
-      "Redirecting to ... <A HREF=\"" . $url . "\">here</A>.</BODY></HTML>.\n";
+    echo "<html><head><title>Redirect</title></head><body>" .
+      "Redirecting to ... <a href=\"" . $url . "\">here</a>.</body></html>.\n";
   }
   dbi_close ( $c );
   exit;
@@ -325,17 +325,17 @@ function send_http_login () {
   if ( strlen ( $lang_file ) ) {
     Header ( "WWW-Authenticate: Basic realm=\"" . translate("Title") . "\"");
     Header ( "HTTP/1.0 401 Unauthorized" );
-    echo "<HTML><HEAD><TITLE>Unauthorized</TITLE></HEAD><BODY>\n" .
-      "<H2>" . translate("Title") . "</H2>" .
+    echo "<html><head><title>Unauthorized</title></head><body>\n" .
+      "<h2>" . translate("Title") . "</h2>" .
       translate("You are not authorized") .
-      "\n</BODY></HTML>\n";
+      "\n</body></html>\n";
   } else {
     Header ( "WWW-Authenticate: Basic realm=\"WebCalendar\"");
     Header ( "HTTP/1.0 401 Unauthorized" );
-    echo "<HTML><HEAD><TITLE>Unauthorized</TITLE></HEAD><BODY>\n" .
-      "<H2>WebCalendar</H2>" .
+    echo "<html><head><title>Unauthorized</title></head><body>\n" .
+      "<h2>WebCalendar</h2>" .
       "You are not authorized" .
-      "\n</BODY></HTML>\n";
+      "\n</body></html>\n";
   }
   exit;
 }
@@ -444,7 +444,7 @@ function load_user_preferences () {
 
 
 // Get the list of external users for an event
-// $use_mailto - when set to 1, email address will contain an HREF
+// $use_mailto - when set to 1, email address will contain an href
 //   link with a mailto URL.
 function event_get_external_users ( $event_id, $use_mailto=0 ) {
   global $error;
@@ -461,8 +461,8 @@ function event_get_external_users ( $event_id, $use_mailto=0 ) {
       $ret .= $row[0];
       if ( strlen ( $row[1] ) ) {
         if ( $use_mailto ) {
-          $ret .= " <A HREF=\"mailto:$row[1]\">&lt;" .
-            htmlentities ( $row[1] ) . "&gt;</A>";
+          $ret .= " <a href=\"mailto:$row[1]\">&lt;" .
+            htmlentities ( $row[1] ) . "&gt;</a>";
         } else {
           $ret .= " &lt;". htmlentities ( $row[1] ) . "&gt;";
         }
@@ -471,7 +471,7 @@ function event_get_external_users ( $event_id, $use_mailto=0 ) {
     dbi_free_result ( $res );
   } else {
     echo translate("Database error") .": " . dbi_error ();
-    echo "<P>SQL:<BR>$sql";
+    echo "<br />SQL:<br />$sql";
     exit;
   }
 
@@ -512,7 +512,7 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
     "'$user', $sql_user_cal, '$type', $date, $time, $sql_text )";
   if ( ! dbi_query ( $sql ) ) {
     echo "Database error: " . dbi_error ();
-    echo "<P>SQL:<BR>$sql";
+    echo "<br />SQL:<br />$sql";
     exit;
   }
 }
@@ -560,7 +560,7 @@ function get_my_users () {
     else {
       $sql .= "IN ( " . implode ( ", ", $groups ) . " )";
     }
-    //echo "SQL: $sql <P>\n";
+    //echo "SQL: $sql <br />\n";
     $res = dbi_query ( $sql );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -595,7 +595,7 @@ function get_pref_setting ( $user, $setting ) {
   $sql = "SELECT cal_value FROM webcal_user_pref " .
     "WHERE cal_login = '" . $user . "' AND " .
     "cal_setting = '" . $setting . "'";
-  //echo "SQL: $sql <P>\n";
+  //echo "SQL: $sql <br />\n";
   $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) )
@@ -740,7 +740,7 @@ function build_event_popup ( $divname, $user, $description, $time,
       $popup_fullnames[$user] = $popuptemp_fullname;
     }
     $ret .= "<b>" . translate ("User") .
-      ":</b> $popup_fullnames[$user]<BR>";
+      ":</b> $popup_fullnames[$user]<br />";
   }
   if ( strlen ( $time ) )
     $ret .= "<b>" . translate ("Time") . ":</b> $time<br />";
@@ -783,25 +783,25 @@ function date_selection_html ( $prefix, $date ) {
   $thisday = $day = substr ( $date, 6, 2 );
   if ( $thisyear - date ( "Y" ) >= ( $num_years - 1 ) )
     $num_years = $thisyear - date ( "Y" ) + 2;
-  $ret .= "<SELECT NAME=\"" . $prefix . "day\">";
+  $ret .= "<select name=\"" . $prefix . "day\">";
   for ( $i = 1; $i <= 31; $i++ )
-    $ret .= "<OPTION " . ( $i == $thisday ? " SELECTED" : "" ) . ">$i";
-  $ret .= "</SELECT>\n<SELECT NAME=\"" . $prefix . "month\">";
+    $ret .= "<option " . ( $i == $thisday ? " selected" : "" ) . ">$i";
+  $ret .= "</select>\n<select name=\"" . $prefix . "month\">";
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    $ret .= "<OPTION VALUE=\"$i\"" .
-      ( $i == $thismonth ? " SELECTED" : "" ) . ">$m";
+    $ret .= "<option value=\"$i\"" .
+      ( $i == $thismonth ? " selected" : "" ) . ">$m";
   }
-  $ret .= "</SELECT>\n<SELECT NAME=\"" . $prefix . "year\">";
+  $ret .= "</select>\n<select name=\"" . $prefix . "year\">";
   for ( $i = -1; $i < $num_years; $i++ ) {
     $y = date ( "Y" ) + $i;
-    $ret .= "<OPTION VALUE=\"$y\"" .
-      ( $y == $thisyear ? " SELECTED" : "" ) . ">$y";
+    $ret .= "<option value=\"$y\"" .
+      ( $y == $thisyear ? " selected" : "" ) . ">$y";
   }
-  $ret .= "</SELECT>\n";
-  $ret .= "<INPUT TYPE=\"button\" ONCLICK=\"selectDate('" .
-    $prefix . "day','" . $prefix . "month','" . $prefix . "year',$date)\" VALUE=\"" .
-    translate("Select") . "...\">";
+  $ret .= "</select>\n";
+  $ret .= "<input type=\"button\" onclick=\"selectDate('" .
+    $prefix . "day','" . $prefix . "month','" . $prefix . "year',$date)\" value=\"" .
+    translate("Select") . "...\" />";
 
   return $ret;
 }
@@ -830,7 +830,7 @@ function print_entry ( $id, $date, $time, $duration,
   global $layers;
 
 
-  echo "<FONT SIZE=\"-1\">";
+  echo "<font size=\"-1\">";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $class = "layerentry";
@@ -845,16 +845,16 @@ function print_entry ( $id, $date, $time, $duration,
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
-  if ( $pri == 3 ) echo "<B>";
+  if ( $pri == 3 ) echo "<b>";
   if ( ! $hide_icons ) {
     $divname = "eventinfo-$id-$key";
     $key++;
-    echo "<A CLASS=\"$class\" HREF=\"view_entry.php?id=$id&date=$date";
+    echo "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
     if ( strlen ( $user ) > 0 )
       echo "&user=" . $user;
     echo "\" onMouseOver=\"window.status='" . translate("View this entry") .
       "'; show(event, '$divname'); return true;\" onMouseOut=\"window.status=''; hide('$divname'); return true;\">";
-    echo "<IMG SRC=\"circle.gif\" WIDTH=\"5\" HEIGHT=\"7\" BORDER=\"0\">";
+    echo "<img src=\"circle.gif\" width=\"5\" height=\"7\" border=\"0\" alt=\"view\" />";
   }
 
 
@@ -864,7 +864,7 @@ function print_entry ( $id, $date, $time, $duration,
     {
         if($layers[$index]['cal_layeruser'] == $event_owner)
         {
-            echo("<FONT COLOR=\"" . $layers[$index]['cal_color'] . "\">");
+            echo("<font color=\"" . $layers[$index]['cal_color'] . "\">");
         }
     }
   }
@@ -905,15 +905,15 @@ function print_entry ( $id, $date, $time, $duration,
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
     echo htmlspecialchars ( $name );
-    echo ("</FONT>");
+    echo ("</font>");
   }
 
   else
     echo htmlspecialchars ( $name );
 
-  echo "</A>";
-  if ( $pri == 3 ) echo "</B>";
-  echo "</FONT><BR>";
+  echo "</a>";
+  if ( $pri == 3 ) echo "</b>";
+  echo "</font><br />";
   if ( ! $hide_icons ) {
     if ( $login != $user && $access == 'R' && strlen ( $user ) )
       $eventinfo .= build_event_popup ( $divname, $event_owner,
@@ -1052,7 +1052,7 @@ function get_entries ( $user, $date, $get_unapproved=true ) {
   $n = 0;
   $ret = array ();
 
-  //echo "<P>Checking " . count ( $events ) . " events.  TZ_OFFSET = $TZ_OFFSET, get_unapproved=" . $get_unapproved . "<P>";
+  //echo "<br />Checking " . count ( $events ) . " events.  TZ_OFFSET = $TZ_OFFSET, get_unapproved=" . $get_unapproved . "<br />";
 
   for ( $i = 0; $i < count ( $events ); $i++ ) {
     if ( ( ! $get_unapproved ) && $events[$i]['cal_status'] == 'W' ) {
@@ -1062,48 +1062,48 @@ function get_entries ( $user, $date, $get_unapproved=true ) {
         $ret[$n++] = $events[$i];
     } else if ( $TZ_OFFSET > 0 ) {
       $cutoff = ( 24 - $TZ_OFFSET ) * 10000;
-      //echo "<P> cal_time " . $events[$i]['cal_time'] . "<P>";
+      //echo "<br /> cal_time " . $events[$i]['cal_time'] . "<br />";
       $sy = substr ( $date, 0, 4 );
       $sm = substr ( $date, 4, 2 );
       $sd = substr ( $date, 6, 2 );
       $prev_day = date ( ( "Ymd" ), mktime ( 3, 0, 0, $sm, $sd - 1, $sy ) );
-        //echo "prev_date = $prev_day <P>";
+        //echo "prev_date = $prev_day <br />";
       if ( $events[$i]['cal_date'] == $date &&
         $events[$i]['cal_time'] == -1 ) {
         $ret[$n++] = $events[$i];
-        //echo "added event $events[$i][cal_id] <BR>";
+        //echo "added event $events[$i][cal_id] <br />";
       } else if ( $events[$i]['cal_date'] == $date &&
         $events[$i]['cal_time'] < $cutoff ) {
         $ret[$n++] = $events[$i];
-        //echo "added event {$events[$i][cal_id]} <BR>";
+        //echo "added event {$events[$i][cal_id]} <br />";
       } else if ( $events[$i]['cal_date'] == $prev_day &&
         $events[$i]['cal_time'] >= $cutoff ) {
         $ret[$n++] = $events[$i];
-        //echo "added event {$events[$i][cal_id]} <BR>";
+        //echo "added event {$events[$i][cal_id]} <br />";
       }
     } else {
       //TZ < 0
       $cutoff = ( 0 - $TZ_OFFSET ) * 10000;
-      //echo "<P> cal_time " . $events[$i]['cal_time'] . "<P>";
+      //echo "<br /> cal_time " . $events[$i]['cal_time'] . "<br />";
       $sy = substr ( $date, 0, 4 );
       $sm = substr ( $date, 4, 2 );
       $sd = substr ( $date, 6, 2 );
       $next_day = date ( ( "Ymd" ), mktime ( 3, 0, 0, $sm, $sd + 1, $sy ) );
-      //echo "next_date = $next_day <P>";
+      //echo "next_date = $next_day <br />";
       if ( $events[$i]['cal_time'] == -1 ) {
 	if ( $events[$i]['cal_date'] == $date ) {
           $ret[$n++] = $events[$i];
-          //echo "added event $events[$i][cal_id] <BR>";
+          //echo "added event $events[$i][cal_id] <br />";
         }
       } else {
 	if ( $events[$i]['cal_date'] == $date &&
           $events[$i]['cal_time'] > $cutoff ) {
           $ret[$n++] = $events[$i];
-          //echo "added event $events[$i][cal_id] <BR>";
+          //echo "added event $events[$i][cal_id] <br />";
         } else if ( $events[$i]['cal_date'] == $next_day &&
           $events[$i]['cal_time'] <= $cutoff ) {
           $ret[$n++] = $events[$i];
-          //echo "added event $events[$i][cal_id] <BR>";
+          //echo "added event $events[$i][cal_id] <br />";
         }
       }
     }
@@ -1171,7 +1171,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   // now order the results by time and by entry id.
   $sql .= " ORDER BY webcal_entry.cal_time, webcal_entry.cal_id";
 
-  //echo "<B>SQL:</B> $sql<P>";
+  //echo "<b>SQL:</b> $sql<br />";
   
   $res = dbi_query ( $sql );
   if ( $res ) {
@@ -1451,7 +1451,7 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved=true ) {
   global $repeated_events;
   $n = 0;
   $ret = array ();
-  //echo count($repeated_events)."<BR>";
+  //echo count($repeated_events)."<br />";
   for ( $i = 0; $i < count ( $repeated_events ); $i++ ) {
     if ( $repeated_events[$i]['cal_status'] == 'A' || $get_unapproved ) {
       if ( repeated_event_matches_date ( $repeated_events[$i], $dateYmd ) ) {
@@ -1645,27 +1645,27 @@ function week_number ( $date ) {
 // user has access to edit and delete.
 function icon_text ( $id, $can_edit, $can_delete ) {
   global $readonly, $is_admin;
-  $ret = "<A HREF=\"view_entry.php?id=$id\">" .
-    "<IMG SRC=\"view.gif\" ALT=\"" . translate("View this entry") .
-    "\" BORDER=\"0\" " .
-    "WIDTH=\"10\" HEIGHT=\"10\">" .
-    "</A>";
+  $ret = "<a href=\"view_entry.php?id=$id\">" .
+    "<img src=\"view.gif\" alt=\"" . translate("View this entry") .
+    "\" border=\"0\" " .
+    "width=\"10\" height=\"10\" />" .
+    "</a>";
   if ( $can_edit && $readonly == "N" )
-    $ret .= "<A HREF=\"edit_entry.php?id=$id\">" .
-      "<IMG SRC=\"edit.gif\" ALT=\"" . translate("Edit entry") .
-      "\" BORDER=\"0\" " .
-      "WIDTH=\"10\" HEIGHT=\"10\">" .
-      "</A>";
+    $ret .= "<a href=\"edit_entry.php?id=$id\">" .
+      "<img src=\"edit.gif\" alt=\"" . translate("Edit entry") .
+      "\" border=\"0\" " .
+      "width=\"10\" height=\"10\" />" .
+      "</a>";
   if ( $can_delete && ( $readonly == "N" || $is_admin ) )
-    $ret .= "<A HREF=\"del_entry.php?id=$id\" " .
+    $ret .= "<a href=\"del_entry.php?id=$id\" " .
       "onClick=\"return confirm('" .
       translate("Are you sure you want to delete this entry?") .
       "\\n\\n" . translate("This will delete this entry for all users.") .
       "');\">" .
-      "<IMG SRC=\"delete.gif\" ALT=\"" . translate("Delete entry") .
-      "\" BORDER=\"0\" " .
-      "WIDTH=\"10\" HEIGHT=\"10\">" .
-      "</A>";
+      "<img src=\"delete.gif\" alt=\"" . translate("Delete entry") .
+      "\" border=\"0\" " .
+      "width=\"10\" height=\"10\" />" .
+      "</a>";
   return $ret;
 }
 
@@ -1700,30 +1700,30 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
     $can_add = false;
 
   if ( ! $hide_icons && ! $ssi && $can_add ) {
-    print "<A HREF=\"edit_entry.php?";
+    print "<a href=\"edit_entry.php?";
     if ( strcmp ( $user, $GLOBALS["login"] ) )
       print "user=$user&";
     print "date=$date\">" .
-      "<IMG SRC=\"new.gif\" WIDTH=\"10\" HEIGHT=\"10\" ALT=\"" .
-      translate("New Entry") . "\" BORDER=\"0\" ALIGN=\"right\">" .
-      "</A>";
+      "<img src=\"new.gif\" width=\"10\" height=\"10\" alt=\"" .
+      translate("New Entry") . "\" border=\"0\" align=\"right\" />" .
+      "</a>";
     $cnt++;
   }
   if ( ! $ssi ) {
-    echo "<FONT SIZE=\"-1\"><A CLASS=\"dayofmonth\" HREF=\"day.php?";
+    echo "<font size=\"-1\"><a class=\"dayofmonth\" href=\"day.php?";
     if ( strcmp ( $user, $GLOBALS["login"] ) )
       echo "user=$user&";
-    echo "date=$date\">$day</A></FONT>";
+    echo "date=$date\">$day</a></font>";
     if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" &&
       date ( "w", $dateu ) == $GLOBALS["WEEK_START"] ) {
-      echo "<A HREF=\"week.php?date=$date";
+      echo "<a href=\"week.php?date=$date";
       if ( strcmp ( $user, $GLOBALS["login"] ) )
         echo "&user=$user";
-       echo "\" CLASS=\"weeknumber\">";
-      echo "<FONT SIZE=\"-2\" CLASS=\"weeknumber\">(" .
-        translate("Week") . " " . week_number ( $dateu ) . ")</FONT></A>";
+       echo "\" class=\"weeknumber\">";
+      echo "<font size=\"-2\" class=\"weeknumber\">(" .
+        translate("Week") . " " . week_number ( $dateu ) . ")</font></a>";
     }
-    print "<BR>\n";
+    print "<br />\n";
     $cnt++;
   }
 
@@ -1804,7 +1804,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
 // time1 and time2 should be an integer like 235900
 // duration1 and duration2 are integers in minutes
 function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
-  //echo "times_overlap ( $time1, $duration1, $time2, $duration2 )<BR>";
+  //echo "times_overlap ( $time1, $duration1, $time2, $duration2 )<br />";
   $hour1 = (int) ( $time1 / 10000 );
   $min1 = ( $time1 / 100 ) % 100;
   $hour2 = (int) ( $time2 / 10000 );
@@ -1819,7 +1819,7 @@ function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
   $tmins1end = $tmins1start + $duration1;
   $tmins2start = $hour2 * 60 + $min2;
   $tmins2end = $tmins2start + $duration2;
-  //echo "tmins1start=$tmins1start, tmins1end=$tmins1end, tmins2start=$tmins2start, tmins2end=$tmins2end<BR>";
+  //echo "tmins1start=$tmins1start, tmins1end=$tmins1end, tmins2start=$tmins2start, tmins2end=$tmins2end<br />";
 
   if ( ( $tmins1start >= $tmins2end ) || ( $tmins2start >= $tmins1end ) )
     return false;
@@ -1883,7 +1883,7 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
   $sql .= " )";
   // make sure we don't get something past the end date of the
   // event we are saving.
-  //echo "SQL: $sql<P>";
+  //echo "SQL: $sql<br />";
   $conflicts = "";
   $res = dbi_query ( $sql );
   $found = array();
@@ -1907,16 +1907,16 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
         }
         if ( $over_limit ||
           times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
-          $conflicts .= "<LI>";
+          $conflicts .= "<li>";
           if ( $single_user != "Y" )
             $conflicts .= "$row[0]: ";
           if ( $row[6] == 'R' && $row[0] != $login )
             $conflicts .=  "(" . translate("Private") . ")";
           else {
-            $conflicts .=  "<A HREF=\"view_entry.php?id=$row[4]";
+            $conflicts .=  "<a href=\"view_entry.php?id=$row[4]";
             if ( $user != $login )
               $conflicts .= "&user=$user";
-            $conflicts .= "\">$row[3]</A>";
+            $conflicts .= "\">$row[3]</a>";
           }
           if ( $duration2 == ( 24 * 60 ) ) {
             $conflicts .= " (" . translate("All day event") . ")";
@@ -1933,6 +1933,7 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
             $tmp = str_replace ( "XXX", $limit_appts_number, $tmp );
             $conflicts .= " (" . $tmp . ")";
           }
+          $conflicts .= "</li>\n";
         }
       }
     }
@@ -1957,7 +1958,7 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
     //for performance reasons.
     $repeated_events=query_events($participants[$q],true,$date_filter);
     //for ($dd=0; $dd<count($repeated_events); $dd++) {
-    //  echo $repeated_events[$dd]['cal_id'] . "<BR>";
+    //  echo $repeated_events[$dd]['cal_id'] . "<br />";
     //}
     for ($i=0; $i < count($dates); $i++) {
       $dateYmd = date ( "Ymd", $dates[$i] );
@@ -1973,16 +1974,16 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
           $time2 = $row['cal_time'];
           $duration2 = $row['cal_duration'];
           if ( times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
-            $conflicts .= "<LI>";
+            $conflicts .= "<li>";
             if ( $single_user != "Y" )
               $conflicts .= $row['cal_login'] . ": ";
             if ( $row['cal_access'] == 'R' && $row['cal_login'] != $login )
               $conflicts .=  "(" . translate("Private") . ")";
             else {
-              $conflicts .=  "<A HREF=\"view_entry.php?id=" . $row['cal_id'];
+              $conflicts .=  "<a href=\"view_entry.php?id=" . $row['cal_id'];
               if ( $user != $login )
                 $conflicts .= "&user=$user";
-              $conflicts .= "\">" . $row['cal_name'] . "</A>";
+              $conflicts .= "\">" . $row['cal_name'] . "</a>";
             }
             $conflicts .= " (" . display_time ( $time2 );
             if ( $duration2 > 0 )
@@ -1990,6 +1991,7 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
                 display_time ( add_duration ( $time2, $duration2 ) );
             $conflicts .= ")";
             $conflicts .= " on " . date("l, F j, Y", $dates[$i]);
+            $conflicts .= "</li>\n";
           }
         }
       }
@@ -2025,12 +2027,12 @@ function calc_time_slot ( $time, $round_down = false ) {
     if ( $ret * $interval == $mins_since_midnight )
       $ret--;
   }
-  //echo "$mins_since_midnight / $interval = $ret <BR>";
+  //echo "$mins_since_midnight / $interval = $ret <br />";
 
   if ( $ret > $TIME_SLOTS )
     $ret = $TIME_SLOTS;
 
-  //echo "<P>calc_time_slot($time) = $ret <BR> TIME_SLOTS = $TIME_SLOTS<BR>";
+  //echo "<br />calc_time_slot($time) = $ret <br /> TIME_SLOTS = $TIME_SLOTS<br />";
 
   return $ret;
 }
@@ -2044,12 +2046,12 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   global $TZ_OFFSET;
   if ( ! empty ( $hour ) )
     $hour += $TZ_OFFSET;
-  return "<A HREF=\"edit_entry.php?" . $u_url .
+  return "<a href=\"edit_entry.php?" . $u_url .
     "date=$date" . ( $hour > 0 ? "&hour=$hour" : "" ) .
     ( $minute > 0 ? "&minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&defusers=$user&user=$user" ) .
-    "\"><IMG SRC=\"new.gif\" WIDTH=\"10\" HEIGHT=\"10\" ALT=\"" .
-    translate("New Entry") . "\" BORDER=\"0\" ALIGN=\"right\">" .  "</A>";
+    "\"><img src=\"new.gif\" width=\"10\" height=\"10\" alt=\"" .
+    translate("New Entry") . "\" border=\"0\" align=\"right\" />" .  "</a>";
 }
 
 
@@ -2099,7 +2101,7 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
 
   if ( ! $hide_icons ) {
     $hour_arr[$ind] .=
-      "<A CLASS=\"$class\" HREF=\"view_entry.php?id=$id&date=$date";
+      "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
     if ( strlen ( $GLOBALS["user"] ) > 0 )
       $hour_arr[$ind] .= "&user=" . $GLOBALS["user"];
     $hour_arr[$ind] .= "\" onMouseOver=\"window.status='" .
@@ -2107,12 +2109,12 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
       "'; show(event, '$divname'); return true;\" onMouseOut=\"hide('$divname'); return true;\">";
   }
   if ( $pri == 3 )
-    $hour_arr[$ind] .= "<B>";
+    $hour_arr[$ind] .= "<b>";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     for ( $index = 0; $index < sizeof($layers); $index++ ) {
       if ( $layers[$index]['cal_layeruser'] == $event_owner ) {
-        $hour_arr[$ind] .= "<FONT COLOR=\"" .
+        $hour_arr[$ind] .= "<font color=\"" .
           $layers[$index]['cal_color'] . "\">";
       }
     }
@@ -2163,17 +2165,17 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= "(" . translate("Private") . ")";
   } else if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-    $hour_arr[$ind] .= "</FONT>";
+    $hour_arr[$ind] .= "</font>";
   } else {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
   }
 
-  if ( $pri == 3 ) $hour_arr[$ind] .= "</B>";
-    $hour_arr[$ind] .= "</A>";
+  if ( $pri == 3 ) $hour_arr[$ind] .= "</b>";
+    $hour_arr[$ind] .= "</a>";
   //if ( $DISPLAY_ICONS == "Y" ) {
   //  $hour_arr[$ind] .= icon_text ( $id, true, true );
   //}
-  $hour_arr[$ind] .= "<BR>";
+  $hour_arr[$ind] .= "<br />";
   if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
     $eventinfo .= build_event_popup ( $divname, $event_owner,
       translate("This event is confidential"), "" );
@@ -2230,7 +2232,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
       $last_slot = $ind;
   } else
     $ind = 9999;
-  //echo "time = $time <BR> ind = $ind <BR> first_slot = $first_slot <BR>";
+  //echo "time = $time <br /> ind = $ind <br /> first_slot = $first_slot <br />";
 
   if ( empty ( $hour_arr[$ind] ) )
     $hour_arr[$ind] = "";
@@ -2252,20 +2254,20 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
 
   if ( ! $hide_icons ) {
     $hour_arr[$ind] .=
-      "<A CLASS=\"$class\" HREF=\"view_entry.php?id=$id&date=$date";
+      "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
     if ( strlen ( $GLOBALS["user"] ) > 0 )
       $hour_arr[$ind] .= "&user=" . $GLOBALS["user"];
     $hour_arr[$ind] .= "\" onMouseOver=\"window.status='" .
       translate("View this entry") .
       "'; show(event, '$divname'); return true;\" onMouseOut=\"hide('$divname'); return true;\">";
   }
-  if ( $pri == 3 ) $hour_arr[$ind] .= "<B>";
+  if ( $pri == 3 ) $hour_arr[$ind] .= "<b>";
 
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     for ( $index = 0; $index < sizeof($layers); $index++) {
       if ( $layers[$index]['cal_layeruser'] == $event_owner) {
-        $hour_arr[$ind] .= "<FONT COLOR=\"" .
+        $hour_arr[$ind] .= "<font color=\"" .
           $layers[$index]['cal_color'] . "\">";
       }
     }
@@ -2310,23 +2312,23 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-    $hour_arr[$ind] .= "</FONT>";
+    $hour_arr[$ind] .= "</font>";
   }
 
 
   else
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-  if ( $pri == 3 ) $hour_arr[$ind] .= "</B>";
+  if ( $pri == 3 ) $hour_arr[$ind] .= "</b>";
 
   if (!($hide_icons)) {
-    $hour_arr[$ind] .= "</A>";
+    $hour_arr[$ind] .= "</a>";
   } else if ( $GLOBALS["DISPLAY_DESC_PRINT_DAY"] == "Y" ) {
-    $hour_arr[$ind] .= "<BR>";
-    $hour_arr[$ind] .= "<B>Description:</B> ";
+    $hour_arr[$ind] .= "<br />";
+    $hour_arr[$ind] .= "<b>Description:</b> ";
     $hour_arr[$ind] .= htmlspecialchars ( $description );
   }
 
-  $hour_arr[$ind] .= "<BR>";
+  $hour_arr[$ind] .= "<br />";
 }
 
 //
@@ -2348,7 +2350,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
   if ( $user == "__public__" )
     $get_unapproved = false;
   if ( empty ( $TIME_SLOTS ) ) {
-    echo "Error: TIME_SLOTS undefined!<P>";
+    echo "Error: TIME_SLOTS undefined!<br />";
     return;
   }
 
@@ -2370,7 +2372,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
   $interval = ( 24 * 60 ) / $TIME_SLOTS;
   $first_slot = (int) ( ( ( $WORK_DAY_START_HOUR - $TZ_OFFSET ) * 60 ) / $interval );
   $last_slot = (int) ( ( ( $WORK_DAY_END_HOUR - $TZ_OFFSET ) * 60 ) / $interval);
-  //echo "first_slot = $first_slot <BR> last_slot = $last_slot <BR> interval = $interval <BR> TIME_SLOTS = $TIME_SLOTS <BR>";
+  //echo "first_slot = $first_slot <br /> last_slot = $last_slot <br /> interval = $interval <br /> TIME_SLOTS = $TIME_SLOTS <br />";
   $rowspan_arr = array ();
   $all_day = 0;
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
@@ -2444,7 +2446,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
   // want to show up in the 8:00-9:59 cell.
   $rowspan = 0;
   $last_row = -1;
-  //echo "First SLot: $first_slot; Last Slot: $last_slot <BR>";
+  //echo "First SLot: $first_slot; Last Slot: $last_slot <br />";
   $i = 0;
   if ( $first_slot < 0 )
     $i = $first_slot;
@@ -2461,7 +2463,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
         $start_time = $i;
         $diff_start_time = $start_time - $last_row;
         for ( $u = $diff_start_time ; $u > 0 ; $u-- )
-          $hour_arr[$last_row] .= "<BR>";
+          $hour_arr[$last_row] .= "<br />";
         $hour_arr[$last_row] .= $hour_arr[$i];
         $hour_arr[$i] = "";
         $rowspan_arr[$i] = 0;
@@ -2473,46 +2475,46 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     }
   }
   if ( ! empty ( $hour_arr[9999] ) ) {
-    echo "<TR><TD HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">&nbsp;</TD><TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">$hour_arr[9999]</TD></TR>\n";
+    echo "<tr><td height=\"40\" bgcolor=\"$TODAYCELLBG\">&nbsp;</td><td valign=\"top\" height=\"40\" bgcolor=\"$TODAYCELLBG\">$hour_arr[9999]</td></tr>\n";
   }
   $rowspan = 0;
-  //echo "first_slot = $first_slot <BR> last_slot = $last_slot <BR> interval = $interval <BR>";
+  //echo "first_slot = $first_slot <br /> last_slot = $last_slot <br /> interval = $interval <br />";
   for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     $time_h = (int) ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
     $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-    echo "<TR><TH VALIGN=\"top\" HEIGHT=\"40\" WIDTH=\"14%\" BGCOLOR=\"$THBG\" CLASS=\"tableheader\">" .
-      "<FONT COLOR=\"$THFG\">" .
-      $time . "</FONT></TH>\n";
+    echo "<tr><th valign=\"top\" height=\"40\" width=\"14%\" bgcolor=\"$THBG\" class=\"tableheader\">" .
+      "<font color=\"$THFG\">" .
+      $time . "</font></th>\n";
     if ( $rowspan > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
       if ( strlen ( $hour_arr[$i] ) ) {
-        echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">";
+        echo "<td valign=\"top\" height=\"40\" bgcolor=\"$TODAYCELLBG\">";
         if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-        echo "$hour_arr[$i]</TD>";
+        echo "$hour_arr[$i]</td>";
       }
       $rowspan--;
     } else {
       $color = $all_day ? $TODAYCELLBG : $CELLBG;
       if ( empty ( $hour_arr[$i] ) ) {
-        echo "<TD HEIGHT=\"40\" BGCOLOR=\"$color\">";
+        echo "<td height=\"40\" bgcolor=\"$color\">";
         if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-        echo "&nbsp;</TD></TR>\n";
+        echo "&nbsp;</td></tr>\n";
       } else {
         $rowspan = $rowspan_arr[$i];
         if ( $rowspan > 1 ) {
-          echo "<TD VALIGN=\"top\" BGCOLOR=\"$TODAYCELLBG\" ROWSPAN=\"$rowspan\">";
+          echo "<td valign=\"top\" bgcolor=\"$TODAYCELLBG\" rowspan=\"$rowspan\">";
           if ( $can_add && ! $hide_icons )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-          echo "$hour_arr[$i]</TD></TR>\n";
+          echo "$hour_arr[$i]</td></tr>\n";
         } else {
-          echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">";
+          echo "<td valign=\"top\" height=\"40\" bgcolor=\"$TODAYCELLBG\">";
           if ( $can_add && ! $hide_icons )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-          echo "$hour_arr[$i]</TD></TR>\n";
+          echo "$hour_arr[$i]</td></tr>\n";
         }
       }
     }
@@ -2541,15 +2543,15 @@ function display_unapproved_events ( $user ) {
     $sql .= " OR webcal_entry_user.cal_login = '__public__' )";
   else
     $sql .= " )";
-  //print "SQL: $sql<BR>";
+  //print "SQL: $sql<br />";
   $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] > 0 )
 	$str = translate ("You have XXX unapproved events");
 	$str = str_replace ( "XXX", $row[0], $str );
-        echo "<A CLASS=\"navlinks\" " .
-          "HREF=\"list_unapproved.php?user=$user\">" . $str .  "</A><BR>\n";
+        echo "<a class=\"navlinks\" " .
+          "href=\"list_unapproved.php?user=$user\">" . $str .  "</a><br />\n";
     }
     dbi_free_result ( $res );
   }
@@ -2562,9 +2564,9 @@ function display_unapproved_events ( $user ) {
 //   $text - input text
 function activate_urls ( $text ) {
   $str = eregi_replace ( "(http://[^[:space:]$]+)",
-    "<A HREF=\"\\1\">\\1</A>", $text );
+    "<a href=\"\\1\">\\1</a>", $text );
   $str = eregi_replace ( "(https://[^[:space:]$]+)",
-    "<A HREF=\"\\1\">\\1</A>", $str );
+    "<a href=\"\\1\">\\1</a>", $str );
   return $str;
 }
 
@@ -2808,10 +2810,10 @@ function hextoint ( $val ) {
 // $instr is a hex-encoded string. "Hello" would be "678ea786a5".
 function decode_string ( $instr ) {
   global $offsets;
-  //echo "<P>DECODE <BR>";
+  //echo "<br />DECODE <br />";
   $orig = "";
   for ( $i = 0; $i < strlen ( $instr ); $i += 2 ) {
-    //echo "<P>";
+    //echo "<br />";
     $ch1 = substr ( $instr, $i, 1 );
     $ch2 = substr ( $instr, $i + 1, 1 );
     $val = hextoint ( $ch1 ) * 16 + hextoint ( $ch2 );
@@ -2832,10 +2834,10 @@ function decode_string ( $instr ) {
 // that we can use as a session cookie.
 function encode_string ( $instr ) {
   global $offsets;
-  //echo "<P>ENCODE<BR>";
+  //echo "<br />ENCODE<br />";
   $ret = "";
   for ( $i = 0; $i < strlen ( $instr ); $i++ ) {
-    //echo "<P>";
+    //echo "<br />";
     $ch1 = substr ( $instr, $i, 1 );
     $val = ord ( $ch1 );
     //echo "val = $val for \"$ch1\" <br>\n";
@@ -3031,9 +3033,9 @@ function boss_must_approve_event ( $assistant, $boss ) {
 
 // Use this for testing....
 function fake_mail ( $mailto, $subj, $text, $hdrs ) { 
-  echo "To: $mailto <BR>" .
-    "Subject: $subj <BR>" .
-    nl2br ( $hdrs ) . "<P>" .
+  echo "To: $mailto <br />" .
+    "Subject: $subj <br />" .
+    nl2br ( $hdrs ) . "<br />" .
     nl2br ( $text );
 }
 
@@ -3168,21 +3170,21 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   else                     { $pos = 0; }
 
 
-  echo "<TABLE WIDTH=\"100%\" BGCOLOR=\"black\" BORDER=\"0\" CELLPADDING=\"0\" CELLSPACING=\"0\">\n";
-  echo "<TR>";
-  echo "<TD ALIGN=\"right\" WIDTH=\"$ev_start%\" BGCOLOR=\"white\">";
+  echo "<table width=\"100%\" bgcolor=\"black\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n";
+  echo "<tr>";
+  echo "<td align=\"right\" width=\"$ev_start%\" bgcolor=\"white\">";
   if ( $pos > 0 ) {
-    echo "&nbsp;</TD>";
-    echo "<TD WIDTH=\"$ev_duration%\">
-    <TABLE WIDTH=\"100%\" BORDER=\"0\" BGCOLOR=\"black\" CELLSPACING=\"1\">
-    <TR><TD ALIGN=\"middle\" BGCOLOR=\"#F5DEB3\">";
+    echo "&nbsp;</td>";
+    echo "<td width=\"$ev_duration%\">
+    <table width=\"100%\" border=\"0\" bgcolor=\"black\" cellspacing=\"1\">
+    <tr><td align=\"middle\" bgcolor=\"#F5DEB3\">";
     if ( $pos > 1 ) {
-      echo "&nbsp;</TD></TR></TABLE></TD>";
-      echo "<TD ALIGN=\"left\" WIDTH=\"$ev_padding%\" BGCOLOR=\"white\">";
+      echo "&nbsp;</td></tr></table></td>";
+      echo "<td align=\"left\" width=\"$ev_padding%\" bgcolor=\"white\">";
     }
   };
 
-  echo "<FONT SIZE=\"-1\">";
+  echo "<font size=\"-1\">";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $class = "layerentry";
@@ -3197,11 +3199,11 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
-  if ( $pri == 3 ) echo "<B>";
+  if ( $pri == 3 ) echo "<b>";
   if ( ! $hide_icons ) {
     $divname = "eventinfo-$id-$key";
     $key++;
-    echo "<A CLASS=\"$class\" HREF=\"view_entry.php?id=$id&date=$date";
+    echo "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
     if ( strlen ( $user ) > 0 )
       echo "&user=" . $user;
     echo "\" onMouseOver=\"window.status='" . translate("View this entry") .
@@ -3215,7 +3217,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     {
         if($layers[$index]['cal_layeruser'] == $event_owner)
         {
-            echo("<FONT COLOR=\"" . $layers[$index]['cal_color'] . "\">");
+            echo("<font color=\"" . $layers[$index]['cal_color'] . "\">");
         }
     }
   }
@@ -3250,27 +3252,27 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
     echo htmlspecialchars ( $name );
-    echo ("</FONT>");
+    echo ("</font>");
   }
 
   else
     echo htmlspecialchars ( $name );
 
-  echo "</A>";
-  if ( $pri == 3 ) echo "</B>";
-  echo "</FONT>";
-  echo "</TD>";
+  echo "</a>";
+  if ( $pri == 3 ) echo "</b>";
+  echo "</font>";
+  echo "</td>";
   if ( $pos < 2 ) {
     if ( $pos < 1 ) {
-      echo "<TD WIDTH=\"$ev_duration%\"> <TABLE WIDTH=\"100%\"
-      BORDER=\"0\" CELLPADDING=\"0\" CELLSPACING=\"1\"
-      BGCOLOR=\"black\"><TR><TD ALIGN=\"middle\"
-      BGCOLOR=\"#F5DEB3\">&nbsp;</TD>";
+      echo "<td width=\"$ev_duration%\"> <table width=\"100%\"
+      border=\"0\" cellpadding=\"0\" cellspacing=\"1\"
+      bgcolor=\"black\"><tr><td align=\"middle\"
+      bgcolor=\"#F5DEB3\">&nbsp;</td>";
     }
-    echo "</TR></TABLE></TD>";
-    echo "<TD ALIGN=\"left\" WIDTH=\"$ev_padding%\" BGCOLOR=\"white\"> &nbsp;</TD>";
+    echo "</tr></table></td>";
+    echo "<td align=\"left\" width=\"$ev_padding%\" bgcolor=\"white\"> &nbsp;</td>";
   }
-  echo "</TR></TABLE>";
+  echo "</tr></table>";
   if ( ! $hide_icons ) {
     if ( $login != $user && $access == 'R' && strlen ( $user ) )
       $eventinfo .= build_event_popup ( $divname, $event_owner,
@@ -3297,29 +3299,29 @@ function print_header_timebar($start_hour, $end_hour) {
     $offset = 0;
   else
     $offset = round(100/($end_hour - $start_hour)/2);
-  echo "<TABLE WIDTH=\"100%\" BGCOLOR=\"white\" BORDER=\"0\" CELLSPACING=\"0\" CELLPADDING=\"0\">
-        <TR><TD BGCOLOR=\"white\" WIDTH=\"$offset%\">&nbsp;</TD>\n";
+  echo "<table width=\"100%\" bgcolor=\"white\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
+        <tr><td bgcolor=\"white\" width=\"$offset%\">&nbsp;</td>\n";
   for ($i = $start_hour+1; $i < $end_hour; $i++) {
     $prev_offset = $offset;
     $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
     $width = $offset - $prev_offset;
-    echo "<TD BGCOLOR=\"white\" WIDTH=\"$width%\"
-    ALIGN=\"middle\"><FONT COLOR=\"#C0C0C0\" SIZE=\"-2\">$i</FONT></TD>\n";
+    echo "<td bgcolor=\"white\" width=\"$width%\"
+    align=\"middle\"><font color=\"#C0C0C0\" size=\"-2\">$i</font></td>\n";
   }
   $width = 100 - $offset;
-  echo "<TD WIDTH=\"$width%\">&nbsp;</TD>\n";
-  echo "</TR></TABLE>\n";
+  echo "<td width=\"$width%\">&nbsp;</td>\n";
+  echo "</tr></table>\n";
 
   // print yardstick
-  echo "<TABLE WIDTH=\"100%\" BGCOLOR=\"#C0C0C0\" BORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"0\">
-        <TR>\n";
+  echo "<table width=\"100%\" bgcolor=\"#C0C0C0\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\">
+        <tr>\n";
   for ($i = $start_hour, $offset = 0; $i < $end_hour; $i++) {
     $prev_offset = $offset;
     $offset = round(100/($end_hour - $start_hour)*(i - $start_hour));
     $width = $offset - $prev_offset;
-    echo "<TD WIDTH\"$width%\" BGCOLOR=\"white\">&nbsp;</TD>\n";
+    echo "<td width=\"$width%\" bgcolor=\"white\">&nbsp;</td>\n";
   }
-  echo "</TR></TABLE>\n";
+  echo "</tr></table>\n";
 }
 
 
@@ -3547,3 +3549,4 @@ function clean($value){
 }
 
 ?>
+<?php

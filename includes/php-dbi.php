@@ -149,7 +149,7 @@ function dbi_query ( $sql ) {
     $res = mysql_query ( $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query: " . dbi_error() .
-        "\n\n<P>\n" . $sql );
+        "\n\n<br />\n" . $sql );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     $GLOBALS["oracle_statement"] =
@@ -161,7 +161,7 @@ function dbi_query ( $sql ) {
     $res =  pg_exec ( $GLOBALS["postgresql_connection"], $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query: " . dbi_error() .
-        "\n\n<P>\n" . $sql );
+        "\n\n<br />\n" . $sql );
     $GLOBALS["postgresql_numrows[\"$res\"]"] = pg_numrows ( $res );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
@@ -170,7 +170,7 @@ function dbi_query ( $sql ) {
     $res = ibase_query ( $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query: " . dbi_error() .
-        "\n\n<P>\n" . $sql );
+        "\n\n<br />\n" . $sql );
     return $res;
   } else {
     dbi_fatal_error ( "dbi_query(): db_type not defined." );
@@ -273,7 +273,7 @@ function dbi_error () {
 
 // display an error message and exit
 function dbi_fatal_error ( $msg ) {
-  echo "<H2>Error</H2>\n";
+  echo "<h2>Error</h2>\n";
   echo "<!--begin_error(dbierror)-->\n";
   echo "$msg\n";
   echo "<!--end_error-->\n";

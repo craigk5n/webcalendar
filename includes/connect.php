@@ -5,8 +5,8 @@
 // Establish a database connection.
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
 if ( ! $c ) {
-  echo "Error connecting to database:<BLOCKQUOTE>" .
-    dbi_error () . "</BLOCKQUOTE>\n";
+  echo "Error connecting to database:<blockquote>" .
+    dbi_error () . "</blockquote>\n";
   exit;
 }
 
@@ -103,7 +103,7 @@ if ( empty ( $login ) && $use_http_auth ) {
   }
 }
 //else if ( ! $single_user ) {
-//  echo "Error(3)! no login info found: " . dbi_error () . "<P><B>SQL:</B> $sql";
+//  echo "Error(3)! no login info found: " . dbi_error () . "<br /><b>SQL:</b> $sql";
 //  exit;
 //}
 
@@ -173,9 +173,9 @@ if ( $readonly == "Y" ) {
 // just redirect to some other page.
 if ( $not_auth ) {
   /*
-  echo "<HTML><HEAD><TITLE>" . translate($application_name) . " " .
-    translate("Error") .  "</TITLE></HEAD><BODY>\n";
-  echo "<H2>" . translate ( "Error" ) . "</H2>\n" .
+  echo "<html><head><title>" . translate($application_name) . " " .
+    translate("Error") .  "</title></head><body>\n";
+  echo "<h2>" . translate ( "Error" ) . "</h2>\n" .
     translate ( "You are not authorized" );
   */
   do_redirect ( "week.php" );

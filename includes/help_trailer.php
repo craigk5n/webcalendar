@@ -1,2 +1,2 @@
-<HR>
-<B><?php etranslate("Go to")?>:</B> <A HREF="help_index.php"><?php etranslate("Help Index")?></A>
+<hr />
+<b><?php etranslate("Go to")?>:</b> <a href="help_index.php"><?php etranslate("Help Index")?></a>
