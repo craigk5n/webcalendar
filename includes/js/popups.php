@@ -96,9 +96,9 @@ function show ( evt, name ) {
     //ele.ypos = parseInt ( y );
     ele.top = parseInt ( y );
     ele.visibility = "show";
-  } else {  // IE4 & W3C
-    ele.style.left = parseInt ( x );
-    ele.style.top = parseInt ( y );
+  } else {  // IE4 & W3C & Mozilla
+    ele.style.left = parseInt ( x ) + "px";
+    ele.style.top = parseInt ( y ) + "px";
     ele.style.visibility = "visible";
   }
 }
