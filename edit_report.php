@@ -225,8 +225,7 @@ if ( ! empty ( $error ) ) {
  <tr><td>
   <label for="rpt_name"><?php etranslate("Report name")?>:</label></td><td>
   <input type="text" name="report_name" id="rpt_name" size="40" maxlength="50"
-    value="<?php echo htmlentities ( $report_name, ENT_COMPAT, $charset );
-    ?>" />
+    value="<?php echo  $report_name; ?>" />
  </td></tr>
 <?php
 if ( $show_participants ) {
