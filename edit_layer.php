@@ -77,7 +77,7 @@ if ( $single_user == "N" ) {
 </td></tr>
 
 <tr><td style="font-weight:bold;"><?php etranslate("Duplicates")?>:</td>
-    <td><input type="checkbox" name="dups" value="Y" <?php if ( ! empty ( $layers[$id]['cal_dups'] ) && $layers[$id]['cal_dups'] == 'Y') echo "checked=\"checked\""; ?>>&nbsp;&nbsp;<?php etranslate("Show layer events that are the same as your own")?></td></tr>
+    <td><label><input type="checkbox" name="dups" value="Y" <?php if ( ! empty ( $layers[$id]['cal_dups'] ) && $layers[$id]['cal_dups'] == 'Y') echo " checked=\"checked\""; ?> />&nbsp;&nbsp;<?php etranslate("Show layer events that are the same as your own")?></label></td></tr>
 
 <tr><td colspan="2"><input type="submit" value="<?php etranslate("Save")?>" />
 <input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" />
