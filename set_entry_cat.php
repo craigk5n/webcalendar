@@ -76,13 +76,13 @@ print_header();
 <input type="hidden" name="date" value="<?php echo $date?>" />
 <input type="hidden" name="id" value="<?php echo $id?>" />
 
-<table border="0" cellpadding="5">
+<table style="border-width:0px;" cellpadding="5">
 <tr>
-<td valign="top"><b><?php etranslate("Brief Description")?>:</b></td>
-<td valign="top"><?php echo $event_name; ?></td></tr>
+<td style="vertical-align:top; font-weight:bold;"><?php etranslate("Brief Description")?>:</td>
+<td style="vertical-align:top;"><?php echo $event_name; ?></td></tr>
 
-<tr><td valign="top"><b><?php etranslate("Category")?>:</b>&nbsp;&nbsp;</td>
-<td valign="top"><select name="cat_id">
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Category")?>:&nbsp;&nbsp;</td>
+<td style="vertical-align:top;"><select name="cat_id">
   <option value="NULL"><?php etranslate("None")?></option>
   <?php
     foreach ( $categories as $K => $V ) {
@@ -92,10 +92,10 @@ print_header();
         echo "<option value=\"$K\">$V</option>\n";
     }
   ?>
-  </SELECT></td>
+  </select></td>
 </tr>
 
-<tr><td valign="top" colspan="2">
+<tr><td style="vertical-align:top;" colspan="2">
 <input type="submit" value="<?php etranslate("Save");?>" />
 </td></tr>
 </table>
