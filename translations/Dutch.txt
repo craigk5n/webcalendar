@@ -5,7 +5,7 @@
 # Last update: 29 January 2003
 # check out the tools directory which contains two perl scripts:
 # check_translation.pl will tell you if you have successfully translated all re
-# Translation last updated on 06-23-2003
+# Translation last updated on 07-21-2003
 
 # No charset specified
 # charset:
@@ -126,6 +126,59 @@ User sees only his groups: gebruiker heeft enkel inzage in eigen groep(en)
 Categories: categorieen
 categories-enabled-help: Activeert ondersteuning bij afspraak-categorieen
 Categories enabled: activeer gebruik van categorieen
+#
+# << MISSING >>
+# Nonuser:
+# English text: Nonuser Calendars
+#
+#
+# << MISSING >>
+# nonuser-enabled-help:
+# English text: If enabled, admins will have the option to add nonuser calendars
+#
+#
+# << MISSING >>
+# Nonuser enabled:
+# English text: Nonuser Calendars Enabled
+#
+#
+# << MISSING >>
+# nonuser-list-help:
+# English text: Where to display the nonuser calendars in the participant list
+#
+#
+# << MISSING >>
+# Nonuser list:
+# English text: Display in participants list at
+#
+#
+# << MISSING >>
+# Top:
+#
+# << MISSING >>
+# Bottom:
+#
+# << MISSING >>
+# Reports:
+#
+# << MISSING >>
+# reports-enabled-help:
+# English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
+#
+#
+# << MISSING >>
+# Reports enabled:
+#
+# << MISSING >>
+# Subscribe/Publish:
+#
+# << MISSING >>
+# subscriptions-enabled-help:
+# English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+#
+#
+# << MISSING >>
+# Allow remote subscriptions:
 Email: email
 email-enabled-help: Activeer of deactiveer hier het verzenden van email-notificaties en herinneringen bij een afspraak
 Email enabled: activeer gebruik van email
@@ -177,6 +230,7 @@ Event deleted: afspraak verwijderd
 Notification sent: notificatie verzonden
 Reminder sent: herinnering verzonden
 Database error: databasefout
+Previous: vorige
 Next: volgende
 
 
@@ -220,7 +274,6 @@ Add New Category: categorie toevoegen
 ###############################################
 # Page: datesel.php
 #
-Previous: vorige
 
 
 ###############################################
@@ -286,6 +339,9 @@ Daily: dagelijks
 Weekly: wekelijks
 Monthly: maandelijks
 by day: op dag
+#
+# << MISSING >>
+# by day (from end):
 by date: op datum
 Yearly: jaarlijks
 repeat-end-date-help: Specificeert de datum waarop het herhalingspatroon eindigt.
@@ -440,6 +496,19 @@ Default Category: toon de volgende categorieen in mijn agenda
 #
 # << MISSING >>
 # I want to approve events:
+#
+# << MISSING >>
+# allow-remote-subscriptions-help:
+# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+#
+#
+# << MISSING >>
+# remote-subscriptions-url-help:
+# English text: Displays the URL remote users should use to subscribe to your calendar.
+#
+#
+# << MISSING >>
+# URL:
 Sun: zo
 Mon: ma
 Tue: di
@@ -467,6 +536,9 @@ Adding/Editing Calendar Entries: afspraken toevoegen/wijzigen
 #
 Help Index: overzicht help-onderwerpen
 Layers: lagen
+#
+# << MISSING >>
+# Import:
 
 
 ###############################################
@@ -598,14 +670,37 @@ Ok: OK
 
 
 ###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
 # Page: view_entry.php
 #
 every: elke
-1st: 1e
 2nd: 2e
 3rd: 3e
 4th: 4e
 5th: 5e
+1st: 1e
+#
+# << MISSING >>
+# last:
 Description: omschrijving
 Status: status
 Waiting for approval: nog niet bevestigd
@@ -672,6 +767,12 @@ View Type: type
 #
 # << MISSING >>
 # Week (Timebar):
+#
+# << MISSING >>
+# Month (side by side):
+#
+# << MISSING >>
+# Month (on same calendar):
 
 
 ###############################################
@@ -724,8 +825,165 @@ Private: prive-afspraak
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: import_handler.php
+#
+#
+# << MISSING >>
+# Conflicting events:
+#
+# << MISSING >>
+# Errors:
+Back to My Calendar: EIGEN AGENDA
+#
+# << MISSING >>
+# There was an error parsing the import file or no events were returned:
+#
+# << MISSING >>
+# The import file contained no data:
+#
+# << MISSING >>
+# Event Imported:
+
+
+###############################################
 # Page: year.php
 #
+
+
+###############################################
+# Page: edit_report.php
+#
+#
+# << MISSING >>
+# Tomorrow:
+#
+# << MISSING >>
+# Today:
+#
+# << MISSING >>
+# Yesterday:
+#
+# << MISSING >>
+# Day before yesterday:
+#
+# << MISSING >>
+# Next week:
+#
+# << MISSING >>
+# This week:
+#
+# << MISSING >>
+# Last week:
+#
+# << MISSING >>
+# Week before last:
+#
+# << MISSING >>
+# Next week and week after:
+#
+# << MISSING >>
+# This week and next week:
+#
+# << MISSING >>
+# Last week and this week:
+#
+# << MISSING >>
+# Last two weeks:
+#
+# << MISSING >>
+# Next month:
+#
+# << MISSING >>
+# This month:
+#
+# << MISSING >>
+# Last month:
+#
+# << MISSING >>
+# Month before last:
+#
+# << MISSING >>
+# Next year:
+#
+# << MISSING >>
+# This year:
+#
+# << MISSING >>
+# Last year:
+#
+# << MISSING >>
+# Year before last:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Unnamed Report:
+#
+# << MISSING >>
+# Add Report:
+#
+# << MISSING >>
+# Edit Report:
+#
+# << MISSING >>
+# Report name:
+Current User: huidige gebruiker
+#
+# << MISSING >>
+# Include link in trailer:
+#
+# << MISSING >>
+# Include standard header/trailer:
+#
+# << MISSING >>
+# Date range:
+#
+# << MISSING >>
+# Include previous/next links:
+#
+# << MISSING >>
+# Include empty dates:
+#
+# << MISSING >>
+# Template variables:
+#
+# << MISSING >>
+# Page template:
+#
+# << MISSING >>
+# Day template:
+#
+# << MISSING >>
+# Event template:
+#
+# << MISSING >>
+# Are you sure you want to delete this report?:
+
+
+###############################################
+# Page: report.php
+#
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Manage Reports:
 
 
 ###############################################
@@ -746,15 +1004,68 @@ Yours assistants: uw agenda-assisten
 
 
 ###############################################
+# Page: publish.php
+#
+
+
+###############################################
 # Page: purge.php
 #
+
+
+###############################################
+# Page: help_import.php
+#
+#
+# << MISSING >>
+# Palm Desktop:
+#
+# << MISSING >>
+# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
+#
+# << MISSING >>
+# The following entries will not be imported:
+#
+# << MISSING >>
+# Entries older than the current date:
+#
+# << MISSING >>
+# Entries creted in the Palm Desktop that have not been HotSync'd:
+#
+# << MISSING >>
+# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
+#
+# << MISSING >>
+# Therefore, updates should be made in the Palm Desktop.:
+#
+# << MISSING >>
+# vCal:
+#
+# << MISSING >>
+# The following formats have been tested:
+#
+# << MISSING >>
+# Palm Desktop 4:
+#
+# << MISSING >>
+# Lotus Organizer 6:
+#
+# << MISSING >>
+# Microsoft Outlook 2002:
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+#
+# << MISSING >>
+# Variable N not found:
 
 
 ###############################################
 # Page: includes/trailer.php
 #
 Go to: ga naar
-Back to My Calendar: EIGEN AGENDA
 My Calendar: VANDAAG
 Logout: afmelden
 Another User's Calendar: agenda andere gebruiker
@@ -762,7 +1073,6 @@ Add New Entry: afspraak toevoegen
 Manage Views: overzichten instellen
 Edit Layers: lagen wijzigen
 Account: account
-Current User: huidige gebruiker
 Manage calendar of: beheer de agenda van
 
 

@@ -7,8 +7,12 @@
 # Check out the tools directory which contains two perl scripts:
 #   check_translation.pl will tell you if you have successfully translated
 #        all required text
-#   pagify_translation.pl will take an old translation file and move the
+#   update_translation.pl will take an old translation file and move the
 #        translations around so they age grouped by the page they appear in.
+#        It will also identify any missing translations and tag them
+#        with a comment.  If it is a non-english translation, the english
+#        translation will be included in the comment to simplify completing
+#        the translation.
 #
 # Note: You will notice the entry for "May_" below.  There's a reason for
 # this.  Translate "May_" to the full month name and "May" to the three-letter
@@ -17,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 07-11-2003
+# Translation last updated on 07-21-2003
 
 
 ###############################################
@@ -634,11 +638,11 @@ vCal File: vCal File
 # Page: view_entry.php
 #
 every: every
-1st: 1st
 2nd: 2nd
 3rd: 3rd
 4th: 4th
 5th: 5th
+1st: 1st
 last: last
 Description: Description
 Status: Status

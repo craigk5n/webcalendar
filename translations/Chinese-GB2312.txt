@@ -4,7 +4,7 @@
 # Translated by: liao_bin@371.net shenyi@jite.net
 # Last update: 2002-6-26
 # $Id$
-# Translation last updated on 06-23-2003
+# Translation last updated on 07-21-2003
 
 
 ###############################################
@@ -210,6 +210,59 @@ User sees only his groups: 用户只能看见自己的组
 Categories: 分类
 categories-enabled-help: 允许-分类-帮助
 Categories enabled: 允许分类
+#
+# << MISSING >>
+# Nonuser:
+# English text: Nonuser Calendars
+#
+#
+# << MISSING >>
+# nonuser-enabled-help:
+# English text: If enabled, admins will have the option to add nonuser calendars
+#
+#
+# << MISSING >>
+# Nonuser enabled:
+# English text: Nonuser Calendars Enabled
+#
+#
+# << MISSING >>
+# nonuser-list-help:
+# English text: Where to display the nonuser calendars in the participant list
+#
+#
+# << MISSING >>
+# Nonuser list:
+# English text: Display in participants list at
+#
+#
+# << MISSING >>
+# Top:
+#
+# << MISSING >>
+# Bottom:
+#
+# << MISSING >>
+# Reports:
+#
+# << MISSING >>
+# reports-enabled-help:
+# English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
+#
+#
+# << MISSING >>
+# Reports enabled:
+#
+# << MISSING >>
+# Subscribe/Publish:
+#
+# << MISSING >>
+# subscriptions-enabled-help:
+# English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+#
+#
+# << MISSING >>
+# Allow remote subscriptions:
 Email: 邮件
 email-enabled-help: 邮件-允许-帮助
 Email enabled: 使用邮件
@@ -265,6 +318,9 @@ Event deleted: 事件已删除
 Notification sent: 发送通知
 Reminder sent: 发送提醒
 Database error: 数据库错误
+#
+# << MISSING >>
+# Previous:
 Next: 下一页
 
 
@@ -308,9 +364,6 @@ Add New Category: 添加新分类
 ###############################################
 # Page: datesel.php
 #
-#
-# << MISSING >>
-# Previous:
 
 
 ###############################################
@@ -390,6 +443,9 @@ Daily: 每日的
 Weekly: 每周的
 Monthly: 每月的
 by day: 依第几天
+#
+# << MISSING >>
+# by day (from end):
 by date: 依日期
 Yearly: 每年的
 repeat-end-date-help: Specifies the date the event should repeat until.
@@ -562,6 +618,19 @@ Default Category: 默认分类
 #
 # << MISSING >>
 # I want to approve events:
+#
+# << MISSING >>
+# allow-remote-subscriptions-help:
+# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+#
+#
+# << MISSING >>
+# remote-subscriptions-url-help:
+# English text: Displays the URL remote users should use to subscribe to your calendar.
+#
+#
+# << MISSING >>
+# URL:
 Sun: 周日
 Mon: 周一
 Tue: 周二
@@ -589,6 +658,9 @@ Adding/Editing Calendar Entries: 新增/编辑 日历項目
 #
 Help Index: 輔助索引
 Layers: 阶层架構
+#
+# << MISSING >>
+# Import:
 
 
 ###############################################
@@ -732,14 +804,37 @@ Ok: 确认
 
 
 ###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
 # Page: view_entry.php
 #
 every: 每
-1st: 第一
 2nd: 第二
 3rd: 第三
 4th: 第四
 5th: 第五
+1st: 第一
+#
+# << MISSING >>
+# last:
 Description: 描述
 Status: 状态
 Waiting for approval: 等待核准
@@ -808,6 +903,12 @@ View Type: 视图类型
 #
 # << MISSING >>
 # Week (Timebar):
+#
+# << MISSING >>
+# Month (side by side):
+#
+# << MISSING >>
+# Month (on same calendar):
 
 
 ###############################################
@@ -862,8 +963,165 @@ Private: 私人的
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: import_handler.php
+#
+#
+# << MISSING >>
+# Conflicting events:
+#
+# << MISSING >>
+# Errors:
+Back to My Calendar: 返回我的日历
+#
+# << MISSING >>
+# There was an error parsing the import file or no events were returned:
+#
+# << MISSING >>
+# The import file contained no data:
+#
+# << MISSING >>
+# Event Imported:
+
+
+###############################################
 # Page: year.php
 #
+
+
+###############################################
+# Page: edit_report.php
+#
+#
+# << MISSING >>
+# Tomorrow:
+#
+# << MISSING >>
+# Today:
+#
+# << MISSING >>
+# Yesterday:
+#
+# << MISSING >>
+# Day before yesterday:
+#
+# << MISSING >>
+# Next week:
+#
+# << MISSING >>
+# This week:
+#
+# << MISSING >>
+# Last week:
+#
+# << MISSING >>
+# Week before last:
+#
+# << MISSING >>
+# Next week and week after:
+#
+# << MISSING >>
+# This week and next week:
+#
+# << MISSING >>
+# Last week and this week:
+#
+# << MISSING >>
+# Last two weeks:
+#
+# << MISSING >>
+# Next month:
+#
+# << MISSING >>
+# This month:
+#
+# << MISSING >>
+# Last month:
+#
+# << MISSING >>
+# Month before last:
+#
+# << MISSING >>
+# Next year:
+#
+# << MISSING >>
+# This year:
+#
+# << MISSING >>
+# Last year:
+#
+# << MISSING >>
+# Year before last:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Unnamed Report:
+#
+# << MISSING >>
+# Add Report:
+#
+# << MISSING >>
+# Edit Report:
+#
+# << MISSING >>
+# Report name:
+Current User: 当前用户
+#
+# << MISSING >>
+# Include link in trailer:
+#
+# << MISSING >>
+# Include standard header/trailer:
+#
+# << MISSING >>
+# Date range:
+#
+# << MISSING >>
+# Include previous/next links:
+#
+# << MISSING >>
+# Include empty dates:
+#
+# << MISSING >>
+# Template variables:
+#
+# << MISSING >>
+# Page template:
+#
+# << MISSING >>
+# Day template:
+#
+# << MISSING >>
+# Event template:
+#
+# << MISSING >>
+# Are you sure you want to delete this report?:
+
+
+###############################################
+# Page: report.php
+#
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Manage Reports:
 
 
 ###############################################
@@ -888,15 +1146,68 @@ Private: 私人的
 
 
 ###############################################
+# Page: publish.php
+#
+
+
+###############################################
 # Page: purge.php
 #
+
+
+###############################################
+# Page: help_import.php
+#
+#
+# << MISSING >>
+# Palm Desktop:
+#
+# << MISSING >>
+# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
+#
+# << MISSING >>
+# The following entries will not be imported:
+#
+# << MISSING >>
+# Entries older than the current date:
+#
+# << MISSING >>
+# Entries creted in the Palm Desktop that have not been HotSync'd:
+#
+# << MISSING >>
+# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
+#
+# << MISSING >>
+# Therefore, updates should be made in the Palm Desktop.:
+#
+# << MISSING >>
+# vCal:
+#
+# << MISSING >>
+# The following formats have been tested:
+#
+# << MISSING >>
+# Palm Desktop 4:
+#
+# << MISSING >>
+# Lotus Organizer 6:
+#
+# << MISSING >>
+# Microsoft Outlook 2002:
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+#
+# << MISSING >>
+# Variable N not found:
 
 
 ###############################################
 # Page: includes/trailer.php
 #
 Go to: 功能选择
-Back to My Calendar: 返回我的日历
 My Calendar: 我的日历
 Logout: 注销
 Another User's Calendar: 別人的日历
@@ -904,7 +1215,6 @@ Add New Entry: 新增事件
 Manage Views: 管理视图
 Edit Layers: 编辑层
 Account: 编辑個人资料
-Current User: 当前用户
 #
 # << MISSING >>
 # Manage calendar of:

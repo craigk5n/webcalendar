@@ -5,7 +5,7 @@
 #	Simone Cortesi <php@cortesi.com>
 #	Alessandro <a.orlandi@iol.it>
 # Last update: 22 July 2000
-# Translation last updated on 06-23-2003
+# Translation last updated on 07-21-2003
 
 # No charset specified
 # charset:
@@ -292,6 +292,59 @@ Categories: Categorie
 # English text: Enables support for event categories.
 #
 Categories enabled: Abilita categorie
+#
+# << MISSING >>
+# Nonuser:
+# English text: Nonuser Calendars
+#
+#
+# << MISSING >>
+# nonuser-enabled-help:
+# English text: If enabled, admins will have the option to add nonuser calendars
+#
+#
+# << MISSING >>
+# Nonuser enabled:
+# English text: Nonuser Calendars Enabled
+#
+#
+# << MISSING >>
+# nonuser-list-help:
+# English text: Where to display the nonuser calendars in the participant list
+#
+#
+# << MISSING >>
+# Nonuser list:
+# English text: Display in participants list at
+#
+#
+# << MISSING >>
+# Top:
+#
+# << MISSING >>
+# Bottom:
+#
+# << MISSING >>
+# Reports:
+#
+# << MISSING >>
+# reports-enabled-help:
+# English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
+#
+#
+# << MISSING >>
+# Reports enabled:
+#
+# << MISSING >>
+# Subscribe/Publish:
+#
+# << MISSING >>
+# subscriptions-enabled-help:
+# English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+#
+#
+# << MISSING >>
+# Allow remote subscriptions:
 Email: E-Mail
 #
 # << MISSING >>
@@ -355,6 +408,7 @@ Event deleted: Evento cancellato
 Notification sent: Notifica inviata
 Reminder sent: Avviso mandato
 Database error: Errore nel database
+Previous: Precedente
 Next: Successivo
 
 
@@ -402,7 +456,6 @@ Add New Category: Aggiungi una nuova categoria
 ###############################################
 # Page: datesel.php
 #
-Previous: Precedente
 
 
 ###############################################
@@ -476,6 +529,9 @@ Daily: Giornaliera
 Weekly: Settimanale
 Monthly: Mensile
 by day: per giorno
+#
+# << MISSING >>
+# by day (from end):
 by date: per data
 Yearly: Annuale
 repeat-end-date-help: Specifica fino a quale data l'evento dovrà ripetersi.
@@ -640,6 +696,19 @@ server time: ora del server
 #
 # << MISSING >>
 # I want to approve events:
+#
+# << MISSING >>
+# allow-remote-subscriptions-help:
+# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+#
+#
+# << MISSING >>
+# remote-subscriptions-url-help:
+# English text: Displays the URL remote users should use to subscribe to your calendar.
+#
+#
+# << MISSING >>
+# URL:
 Sun: Do
 Mon: Lu
 Tue: Ma
@@ -667,6 +736,9 @@ Adding/Editing Calendar Entries: Aggiungere/Modificare note nel Calendario
 #
 Help Index: Indice della Guida
 Layers: Livelli
+#
+# << MISSING >>
+# Import:
 
 
 ###############################################
@@ -810,14 +882,37 @@ Remove: Rimuovi
 
 
 ###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
 # Page: view_entry.php
 #
 every: sempre
-1st: 1°
 2nd: 2°
 3rd: 3°
 4th: 4°
 5th: 5°
+1st: 1°
+#
+# << MISSING >>
+# last:
 Description: Descrizione
 Status: Stato
 Waiting for approval: In attesa di approvazione
@@ -888,6 +983,12 @@ View Type: Tipo di vista
 #
 # << MISSING >>
 # Week (Timebar):
+#
+# << MISSING >>
+# Month (side by side):
+#
+# << MISSING >>
+# Month (on same calendar):
 
 
 ###############################################
@@ -942,8 +1043,165 @@ Private: Privato
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: import_handler.php
+#
+#
+# << MISSING >>
+# Conflicting events:
+#
+# << MISSING >>
+# Errors:
+Back to My Calendar: Torna al mio calendario
+#
+# << MISSING >>
+# There was an error parsing the import file or no events were returned:
+#
+# << MISSING >>
+# The import file contained no data:
+#
+# << MISSING >>
+# Event Imported:
+
+
+###############################################
 # Page: year.php
 #
+
+
+###############################################
+# Page: edit_report.php
+#
+#
+# << MISSING >>
+# Tomorrow:
+#
+# << MISSING >>
+# Today:
+#
+# << MISSING >>
+# Yesterday:
+#
+# << MISSING >>
+# Day before yesterday:
+#
+# << MISSING >>
+# Next week:
+#
+# << MISSING >>
+# This week:
+#
+# << MISSING >>
+# Last week:
+#
+# << MISSING >>
+# Week before last:
+#
+# << MISSING >>
+# Next week and week after:
+#
+# << MISSING >>
+# This week and next week:
+#
+# << MISSING >>
+# Last week and this week:
+#
+# << MISSING >>
+# Last two weeks:
+#
+# << MISSING >>
+# Next month:
+#
+# << MISSING >>
+# This month:
+#
+# << MISSING >>
+# Last month:
+#
+# << MISSING >>
+# Month before last:
+#
+# << MISSING >>
+# Next year:
+#
+# << MISSING >>
+# This year:
+#
+# << MISSING >>
+# Last year:
+#
+# << MISSING >>
+# Year before last:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Unnamed Report:
+#
+# << MISSING >>
+# Add Report:
+#
+# << MISSING >>
+# Edit Report:
+#
+# << MISSING >>
+# Report name:
+Current User: Utente Corrente
+#
+# << MISSING >>
+# Include link in trailer:
+#
+# << MISSING >>
+# Include standard header/trailer:
+#
+# << MISSING >>
+# Date range:
+#
+# << MISSING >>
+# Include previous/next links:
+#
+# << MISSING >>
+# Include empty dates:
+#
+# << MISSING >>
+# Template variables:
+#
+# << MISSING >>
+# Page template:
+#
+# << MISSING >>
+# Day template:
+#
+# << MISSING >>
+# Event template:
+#
+# << MISSING >>
+# Are you sure you want to delete this report?:
+
+
+###############################################
+# Page: report.php
+#
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Manage Reports:
 
 
 ###############################################
@@ -964,15 +1222,68 @@ Yours assistants: Tuoi Assistenti
 
 
 ###############################################
+# Page: publish.php
+#
+
+
+###############################################
 # Page: purge.php
 #
+
+
+###############################################
+# Page: help_import.php
+#
+#
+# << MISSING >>
+# Palm Desktop:
+#
+# << MISSING >>
+# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
+#
+# << MISSING >>
+# The following entries will not be imported:
+#
+# << MISSING >>
+# Entries older than the current date:
+#
+# << MISSING >>
+# Entries creted in the Palm Desktop that have not been HotSync'd:
+#
+# << MISSING >>
+# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
+#
+# << MISSING >>
+# Therefore, updates should be made in the Palm Desktop.:
+#
+# << MISSING >>
+# vCal:
+#
+# << MISSING >>
+# The following formats have been tested:
+#
+# << MISSING >>
+# Palm Desktop 4:
+#
+# << MISSING >>
+# Lotus Organizer 6:
+#
+# << MISSING >>
+# Microsoft Outlook 2002:
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+#
+# << MISSING >>
+# Variable N not found:
 
 
 ###############################################
 # Page: includes/trailer.php
 #
 Go to: Vai a
-Back to My Calendar: Torna al mio calendario
 My Calendar: Il mio calendario
 Logout: Esci
 Another User's Calendar: Calendario di altro utente
@@ -980,7 +1291,6 @@ Add New Entry: Aggiungi nuova nota
 Manage Views: Gestione Viste
 Edit Layers: Gestione Livelli
 Account: Account
-Current User: Utente Corrente
 Manage calendar of: Gestisci il calendario di
 
 
