@@ -43,7 +43,7 @@ th {
 	background-color: #000000;
 }
 .colorheader {
-	background: #6060C0;
+	background-color: #000000;
 	color: #FFFFFF;
 	margin-left: 3px;
 	margin-right: 3px;
@@ -78,10 +78,8 @@ h2 {
 <body>
 <h1>WebCalendar System Administrator's Guide</h1>
 <p><strong>WebCalendar Version:</strong> 0.9.45</p>
-<br />
 
 <h2>Table of Contents</h2>
-
 <ul>
 	<li><a href="#intro">Introduction</a></li>
 	<li><a href="#requirements">System Requirements</a></li>
@@ -181,9 +179,9 @@ h2 {
 	<li>Activity log that tracks:
 		<ul>
 			<li>event creation</li>
-			<li>update</li>
-			<li>accept</li>
-			<li>reject</li>
+			<li>event updates</li>
+			<li>event acceptance</li>
+			<li>event rejection</li>
 			<li>email notifications</li>
 			<li>email reminders</li>
 		</ul>
@@ -195,14 +193,14 @@ h2 {
 <a name="requirements"></a>
 <h2>System Requirements</h2>
 	<ul>
-		<li>PHP3 or PHP4</li>
+		<li>PHP 4 (PHP 5 not yet tested)</li>
 		<li>Database (see <a href="#database">below</a>)</li>
+		<li>CSS-enabled browser</li>
 		<li>JavaScript-enabled browser</li>
 		<li>If not using HTTP-based authentication, then browser cookies are required</li>
 	</ul>
 	<p><strong>Recommended:</strong></p>
 	<ul>
-		<li>CSS-enabled browser</li>
 		<li>pilot-link (if exporting to Palm):
 		<a href="http://sourceforge.net/project/?group_id=2158">http://sourceforge.net/project/?group_id=2158</a>&nbsp;<a href="http://sourceforge.net/project/?group_id=2158" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
 	</ul>
@@ -212,7 +210,7 @@ h2 {
 		<li>Oracle 8</li>
 		<li>PostgreSQL</li>
 		<li>Interbase</li>
-		<li>ODBC</li>
+		<li>ODBC (PHP ODBC includes support for Adabas D, IBM DB2, Solid and Sybase SQL Anywhere as well as ODBC)</li>
 	</ul>
 	<p>For the database you choose, you must have its drivers built into
 		PHP.  For example, to use MySQL, PHP must be compiled with MySQL
@@ -268,7 +266,7 @@ h2 {
 	</ol>
 	<p>Follow the steps outlined below for the database you are using.
 		When complete, a single user account will be created
-		with the <b>login "admin" and password "admin"</b>, which you are encouraged
+		with the <strong>login "admin" and password "admin"</strong>, which you are encouraged
 		to use to create your own account.</p>
 	<p><span class="note">Note:</span> In the examples below, text in <strong>bold</strong>
 		represents text that you must type in.</p>
@@ -337,12 +335,8 @@ input path/table-ibase.sql;</strong></pre>
 
 <a name="appsetup"></a>
 	<h2>Application Setup</h2>
-	<p>Next, you will need to customize the file <tt>includes/config.php</tt>
-		to tell WebCalendar which database you are using and what
-		the database login/password is.
-		Use your favorite text editor (vim, emacs, notepad, etc.)
-		to make these changes.</p>
-	<p>To configure your database access.  Set the values for:</p>
+	<p>Next, you will need to either run the installation script (simply direct your browser to your new WebCalendar), or rename the file <tt>includes/settings.php.orig</tt> to <tt>includes/settings.php</tt>. If manually editing the file, you will need to set the values as follows:</p>
+	<p>To configure your database access. Set the values for:</p>
 	<table class="distinguish">
 		<tr><td>
 			$db_type</td><td>
@@ -383,7 +377,7 @@ input path/table-ibase.sql;</strong></pre>
 	<p><span class="note">Note:</span> If you do decide to switch from single-user mode to multi-user mode,
 		make sure you add in a user to the system for the login you set the
 		<tt>$single_user_login</tt> variable to.  You will need to do this via the
-		database (mysql, sqlplus, etc...)  Look in the <tt>tables-mysql.sql</tt>
+		database (mysql, sqlplus, etc.)  Look in the <tt>tables-mysql.sql</tt>
 		(or <tt>tables-oracle.sql</tt>, etc.) to see the example of adding in the "admin" user.</p>
 	<p>If you are setting up a multi-user calendar, you will need to choose
 		how your users are authenticated. You must change the settings of 
@@ -473,7 +467,7 @@ input path/table-ibase.sql;</strong></pre>
 		<li>You should have a version of PHP built as a CGI (so that you can run
   		php from the command line).  This does not mean you must build all
   		of PHP as a CGI.  You can still build PHP as a module for your web
-  		server and then build the CGI-based PHP later.
+		server and then build the CGI-based PHP later.<br />
   		<span class="note">Note:</span> Many Linux distributions and some Windows LAMP packages
   		come with the PHP built for CGI.</li>
 		<li>You must setup cron (on Linux/UNIX) or something like cron for Windows
@@ -1079,7 +1073,7 @@ cal_firstname, cal_is_admin ) VALUES
   		to access the calendar.
   		See the <a href="#samplepublic">simple instructions</a> for
   		setting this up in the <a href="#faq">FAQ section</a>.
-  		(Required WebCalendar to be configued in Multi-User Mode).</dd>
+  		(Requires WebCalendar to be configued in Multi-User Mode).</dd>
 		<dt><a name="g_reminder">Reminder</a></dt>
 			<dd>An email message that is sent before an event to remind
   		the participant</dd>
@@ -1101,113 +1095,6 @@ cal_firstname, cal_is_admin ) VALUES
   		user <a href="#pref">Preferences</a>)</dd>
 	</dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-
-<!--
-History of changes to this document.  No need to show users this....
-$Log$
-Revision 1.32  2004/11/17 13:30:33  musus
-making code validate & look a bit more snazzy
-
-Revision 1.31  2004/11/16 22:57:42  musus
-making valid
-
-Revision 1.30  2004/11/16 19:50:14  cknudsen
-Fixed html error with '>'
-
-Revision 1.29  2004/11/15 16:21:59  cknudsen
-Updated to remove all tabs/javascript.
-I prefer to keep this one big, long page so users can easily print the
-entire document for reference.  Down the road we may want to make this
-page available also as multiple files.
-
-Revision 1.28  2004/11/06 02:43:38  musus
-removing blank lines from the end of files
-
-Revision 1.27  2004/10/24 01:16:50  musus
-updating admin docs with more efficient CSS & HTML, partially implementing new style system for view_t.php in functions.php, removing blank lines in site_extras.php & js.php, adding more comments & eliminating old classes in styles.php
-
-Revision 1.26  2004/10/20 13:42:35  cknudsen
-Added troubleshooting entry.
-
-Revision 1.25  2004/10/16 04:18:04  musus
-streamlining, plus correcting a couple typos
-
-Revision 1.24  2004/09/15 01:49:59  musus
-adding "open in new window" links
-
-Revision 1.23  2004/09/13 02:02:36  musus
-added "top" links
-
-Revision 1.22  2004/09/12 21:10:48  musus
-Removing self-inserted history item (didn't realize CVS did it automatically...oops)
-
-Revision 1.21  2004/09/12 21:08:05  musus
-New layout, made it validate as xHTML 1.0 Transitional &amp; added xHTML 1.0 Valid icon, also valid css2
-
-Revision 1.20  2004/08/05 03:01:08  cknudsen
-Updated help forum URL.
-
-Revision 1.19  2004/08/04 16:28:40  cknudsen
-Added "how do I reset my admin password" to troubleshooting section.
-
-Revision 1.18  2004/08/01 15:22:56  cknudsen
-Grammer fix
-
-Revision 1.17  2004/07/31 23:35:58  cknudsen
-Added info on upcoming.html
-
-Revision 1.16  2004/07/14 16:44:25  cknudsen
-fixed strange lowercase/uppercase problem
-
-Revision 1.15  2004/07/14 00:27:55  cknudsen
-minor changes...
-
-Revision 1.14  2004/07/14 00:19:23  cknudsen
-Added solution in troublehshooting about error that says
-Can't connect to local MySQL server through socket '/tmp/mysql.sock'
-
-Revision 1.13  2004/07/08 01:01:22  cknudsen
-updated to include initial URL of WebCalendar and instructions for
-creating users.
-
-Revision 1.12  2004/06/27 02:50:27  cknudsen
-Fixed bug 980373: missing end tag for h2.
-
-Revision 1.11  2004/03/27 03:08:57  cknudsen
-Added Bulgarian translation
-
-Revision 1.10  2004/03/24 20:47:10  cknudsen
-Added some questions to the FAQ that used to be in FAQ.html.
-
-Revision 1.9  2004/03/10 17:15:22  cknudsen
-Updated for 0.9.43
-xhtml changes
-
-Revision 1.8  2004/02/17 18:36:10  cknudsen
-Added new FAQ
-
-Revision 1.7  2004/01/29 16:23:40  cknudsen
-Added missing comma
-
-Revision 1.6  2003/12/15 10:57:10  cknudsen
-Added Basque translation
-
-Revision 1.5  2003/12/15 10:44:30  cknudsen
-updated troubleshooting entry
-
-Revision 1.4  2003/09/03 15:23:51  cknudsen
-Fatal error all pages if magic_quotes_gpc is Off.
-
-Revision 1.3  2003/07/17 18:19:50  cknudsen
-Added more to FAQ.
-
-Revision 1.2  2003/07/17 17:52:44  cknudsen
-Added to FAQ: issued with undefined variables
-
-Revision 1.1  2003/06/26 17:52:44  cknudsen
-First draft</pre>
-
--->
 <p>
 	<a href="http://validator.w3.org/check?uri=referer"><img 
 		src="http://www.w3.org/Icons/valid-xhtml10" 
