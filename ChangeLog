@@ -1,4 +1,6 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Security fix: added new getValue() function that will error check formats
+    of variables from users (HTTP GET/POST).
   - Fixed bug 769755: Saturday events not showing in week view (negative offset)
   - Check for magic_quotes_gpc.  If not enabled, fatal exit and tell user
     to modify php.ini.

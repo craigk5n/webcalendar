@@ -59,6 +59,17 @@ if ( empty ( $ovrd ) )
 
 include_once 'includes/translate.php';
 
+// error-check some commonly used form variable names
+$id = getValue ( "id", "[0-9]+", true );
+$user = getValue ( "user", "[A-Za-z_\.=@,;]+", true );
+$date = getValue ( "date", "[0-9]+" );
+$year = getValue ( "year", "[0-9]+" );
+$month = getValue ( "month", "[0-9]+" );
+$hour = getValue ( "hour", "[0-9]+" );
+$minute = getValue ( "minute", "[0-9]+" );
+$cat_id = getValue ( "cat_id", "[0-9]+" );
+$friendly = getValue ( "friendly", "[01]" );
+
 // Load if $SCRIPT is in $special array:
 if ($DMW) {
   
