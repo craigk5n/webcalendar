@@ -38,6 +38,12 @@ A: I've received confirmation of someone using WebCalendar using
    a cron-like application to run your send_reminders.php script
    periodically.
 
+   If you don't have PHP setup yet on your Windows machine, you
+   may want to take a look at PHPTriad.  This nifty tool installs
+   a PHP server environment (PHP, MySQL, and Apache) on Windows
+   for you.  The URL is:
+     http://www.phpgeek.com/phptriad.php
+
 Q: Does it work with PHP 4?
 A: Yep.
 
