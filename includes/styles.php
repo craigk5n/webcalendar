@@ -40,7 +40,7 @@
   font-family: <?php echo $FONTS ?>;
   font-size: 14px;
   color: <?php echo ( $TABLECELLFG == "" ? "#000000" : $TABLECELLFG ); ?> ;
-  background-color: <?php echo ( $TABLECELLBG == "" ? "#C0C0C0" : $TABLECELLBG ); ?> ;
+  background-color: <?php echo ( $TODAYCELLBG == "" ? "#C0C0C0" : $TODAYCELLBG ); ?> ;
 }
 .dayofmonth {
   font-family: <?php echo $FONTS ?>;
