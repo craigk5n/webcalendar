@@ -59,8 +59,9 @@ etranslate("Layers")?></FONT></H2>
 if ( $is_admin ) {
   if ( empty ( $public ) ) {
     echo "<blockquote><a href=\"layers.php?public=1\">" .
-      translate("Click here") . "</a> " .
-      translate("to modify the layers settings for the Public Access calendar") .
+      translate("Click here") . "</a> " . 
+      translate("to modify the layers settings for the") . " " .
+      translate($PUBLIC_ACCESS_FULLNAME);
       "</blockquote>\n";
   }
 }
