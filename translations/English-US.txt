@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 03-10-2004
+# Translation last updated on 03-23-2004
 
 
 ###############################################
@@ -29,6 +29,17 @@
 #
 charset: iso-8859-1
 
+
+
+###############################################
+# Page: week.php
+#
+Week: Week
+Admin mode: Admin mode
+Assistant mode: Assistant mode
+cont.: cont.
+Generate printer-friendly version: Generate printer-friendly version
+Printer Friendly: Printer Friendly
 
 
 ###############################################
@@ -67,7 +78,6 @@ Custom trailer: Custom trailer
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: Preferred view
 Day: Day
-Week: Week
 Month: Month
 Year: Year
 display-weekends-help: Include weekends when viewing a week.
@@ -275,10 +285,6 @@ Add New Category: Add New Category
 ###############################################
 # Page: day.php
 #
-Admin mode: Admin mode
-Assistant mode: Assistant mode
-Generate printer-friendly version: Generate printer-friendly version
-Printer Friendly: Printer Friendly
 
 
 ###############################################
@@ -512,12 +518,6 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_admin.php
 #
-
-
-###############################################
-# Page: week.php
-#
-cont.: cont.
 
 
 ###############################################
@@ -868,6 +868,13 @@ Are you sure you want to delete events for: Are you sure you want to delete even
 
 
 ###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: You have not added any categories
+Set Category: Set Category
+
+
+###############################################
 # Page: help_import.php
 #
 Palm Desktop: Palm Desktop
@@ -902,13 +909,6 @@ Please look on: Please look on
 to accept or reject this appointment: to accept or reject this appointment
 to view this appointment: to view this appointment
 Your suggested time of: Your suggested time of
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-You have not added any categories: You have not added any categories
-Set Category: Set Category
 
 
 ###############################################
@@ -1015,6 +1015,7 @@ Dec: Dec
 #
 Server URL is required: Server URL is required
 Server URL must end with '/': Server URL must end with '/'
+Invalid work hours: Invalid work hours
 Invalid color for document background: Invalid color for document background
 Invalid color for document title: Invalid color for document title
 Invalid color for table cell background: Invalid color for table cell background
