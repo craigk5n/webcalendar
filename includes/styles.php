@@ -224,10 +224,15 @@ textarea {
 }
 /* standard table appearing mainly in prefs.php & admin.php */
 table.standard {
-	border-width: 1px;
-	border-color: #000000;
-	border-style: solid;
-	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+  border: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+  font-size: 12px;
+}
+table.standard th {
+  background-color: <?php echo $GLOBALS['THBG']; ?>;
+  font-size: 18px;
+  padding: 0;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 
 
