@@ -666,37 +666,37 @@ if ( $single_user == "N" && $show_participants ) {
 	<select name="rpt_type" id="rpttype" onchange="rpttype_handler()">
 	<?php
 		echo "<option value=\"none\"" . 
-			( strcmp ( $rpt_type, 'none' ) == 0 ? " selected=\"selected\"" : "" ) . " />" . 
+			( strcmp ( $rpt_type, 'none' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
 			translate("None") . 
 		"</option>\n";
 		echo "<option value=\"daily\"" . 
-			( strcmp ( $rpt_type, 'daily' ) == 0 ? " selected=\"selected\"" : "" ) . " />" . 
+			( strcmp ( $rpt_type, 'daily' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
 			translate("Daily") . 
 		"</option>\n";
 		echo "<option value=\"weekly\"" . 
-			( strcmp ( $rpt_type, 'weekly' ) == 0 ? " selected=\"selected\"" : "" ) . " />" . 
+			( strcmp ( $rpt_type, 'weekly' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
 			translate("Weekly") . 
 		"</option>\n";
 		echo "<option value=\"monthlyByDay\"" . 
-			( strcmp ( $rpt_type, 'monthlyByDay' ) == 0 ? " selected=\"selected\"" : "" ) . " />" . 
+			( strcmp ( $rpt_type, 'monthlyByDay' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
 			translate("Monthly") . " (" . translate("by day") . ")" . "
 		</option>\n";
 		echo "<option value=\"monthlyByDayR\"" . 
-			( strcmp ( $rpt_type, 'monthlyByDayR' ) == 0 ? " selected=\"selected\"" : "" ) . " />" . 
+			( strcmp ( $rpt_type, 'monthlyByDayR' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
 			translate("Monthly") . " (" . translate("by day (from end)") . ")" . 
 		"</option>\n";
 		echo "<option value=\"monthlyByDate\"" . 
-			( strcmp ( $rpt_type, 'monthlyByDate' ) == 0 ? " selected=\"selected\"" : "" ) . " />" . 
+			( strcmp ( $rpt_type, 'monthlyByDate' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
 			translate("Monthly") . " (" . translate("by date") . ")" . 
 		"</option>\n";
 		echo "<option value=\"yearly\"" . 
-			( strcmp ( $rpt_type, 'yearly' ) == 0 ? " selected=\"selected\"" : "" ) . " />" . 
+			( strcmp ( $rpt_type, 'yearly' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
 			translate("Yearly") . 
 		"</option>\n";
 	?>
 	</select>
 </td></tr>
-<tr id="enddate" style="visibility:hidden;"><td class="tooltip" title="<?php etooltip("repeat-end-date-help")?>">
+<tr id="rptenddate" style="visibility:hidden;"><td class="tooltip" title="<?php etooltip("repeat-end-date-help")?>">
 	<?php etranslate("Repeat End Date")?>:</td><td>
 	<label><input type="checkbox" name="rpt_end_use" value="y" <?php 
 		echo ( ! empty ( $rpt_end ) ? " checked=\"checked\"" : "" ); 
@@ -706,11 +706,11 @@ if ( $single_user == "N" && $show_participants ) {
 		print_date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date )
 	?></span>
 </td></tr>
-<tr id="freq" style="visibility:hidden;" title="<?php etooltip("repeat-frequency-help")?>"><td class="tooltip">
+<tr id="rptfreq" style="visibility:hidden;" title="<?php etooltip("repeat-frequency-help")?>"><td class="tooltip">
 	<label for="entry_freq"><?php etranslate("Frequency")?>:</label></td><td>
 	<input type="text" name="rpt_freq" id="entry_freq" size="4" maxlength="4" value="<?php echo $rpt_freq; ?>" />
 </td></tr>
-<tr id="day" style="visibility:hidden;" title="<?php etooltip("repeat-day-help")?>"><td class="tooltip">
+<tr id="rptday" style="visibility:hidden;" title="<?php etooltip("repeat-day-help")?>"><td class="tooltip">
 	<?php etranslate("Repeat Day")?>:&nbsp;</td><td>
 	<?php
 		if( $WEEK_START != 1)

@@ -149,18 +149,18 @@ function rpttype_handler () {
   //i == 0 when event does not repeat
   if ( i != 0 ) {
     // none (not repeating)
-    makeVisible ( "enddate" );
-    makeVisible ( "freq" );
+    makeVisible ( "rptenddate" );
+    makeVisible ( "rptfreq" );
     if ( i == 2 ) {
-      makeVisible ( "day" );
+      makeVisible ( "rptday" );
     } else {
-      makeInvisible ( "day" );
+      makeInvisible ( "rptday" );
     }
   } else {
     // Timed Event
-    makeInvisible ( "enddate" );
-    makeInvisible ( "freq" );
-    makeInvisible ( "day" );
+    makeInvisible ( "rptenddate" );
+    makeInvisible ( "rptfreq" );
+    makeInvisible ( "rptday" );
   }
 }
 
