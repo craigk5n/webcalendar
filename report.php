@@ -15,6 +15,9 @@
  *	  the report will display 5 days from now.  Should only be specified
  *	  if report_id is specified.  Will be ignored if specified report
  *	  does not have the webcal_report.cal_allow_nav field set to 'Y'.
+ *	user (optional) - specifies which user's calendar to use for the
+ *	  report.  This will be ignored if the chosen report is tied to
+ *	  a specific user.
  *
  * Security:
  *	If system setting $reports_enabled is set to anything other than
