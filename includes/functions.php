@@ -273,9 +273,9 @@ function load_user_preferences () {
   }
 
   if ( empty ( $GLOBALS["DATE_FORMAT_MY"] ) )
-    $GLOBALS["DATE_FORMAT_MY"] = "month yyyy";
+    $GLOBALS["DATE_FORMAT_MY"] = "__month__ __yyyy__";
   if ( empty ( $GLOBALS["DATE_FORMAT_MD"] ) )
-    $GLOBALS["DATE_FORMAT_MD"] = "month dd";
+    $GLOBALS["DATE_FORMAT_MD"] = "__month__ __dd__";
 }
 
 

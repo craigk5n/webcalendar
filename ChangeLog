@@ -1,3 +1,5 @@
+Version 0.9.40dev (?? ??? 2002)
+  - Fixed bug 598765: Fixed default date setting.
 Version 0.9.39 (21 Aug 2002)
   - Fixed bug 597815: Fixed autoset of 'server_url' config setting to
     work when admin.php isn't the first page accessed.
