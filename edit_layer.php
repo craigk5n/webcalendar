@@ -40,8 +40,10 @@ else
 <?php
 if ( $single_user == "N" ) {
   $userlist = get_my_users ();
-  $nonusers = get_nonuser_cals ();
-  $userlist = array_merge($userlist, $nonusers);
+  if ($nonuser_enabled == "Y" ) {
+    $nonusers = get_nonuser_cals ();
+    $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+  }
   $num_users = 0;
   $size = 0;
   $users = "";

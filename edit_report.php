@@ -75,8 +75,10 @@ $ranges = array (
 // Get list of users that the current user can see
 if ( empty ( $error ) && $show_participants ) {
   $userlist = get_my_users ();
-  $nonusers = get_nonuser_cals ();
-  $userlist = array_merge ( $userlist, $nonusers );
+  if ($nonuser_enabled == "Y" ) {
+    $nonusers = get_nonuser_cals ();
+    $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+  }
 }
 
 // Default values
