@@ -5,7 +5,7 @@ $fday = $day;$fmonth = $month;$fyear = $year;
 
 include_once 'includes/init.php';
 $INC = array('js/datesel.php');
-print_header($INC,'','',false);
+print_header($INC,'','',true);
 
 if ( strlen ( $date ) > 0 ) {
   $thisyear = substr ( $date, 0, 4 );
