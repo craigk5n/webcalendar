@@ -487,8 +487,9 @@ if ( empty ( $error ) ) {
             translate("The subject is") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
+            ( ( empty ( $hour ) && empty ( $minute ) ) ? "" :
             translate("Time") . ": " .
-            display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) . "\n\n\n";
+            display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) ) .
             translate("Please look on") . " " . translate($application_name) . " " .
             ( $require_approvals == "Y" ?
             translate("to accept or reject this appointment") :
@@ -540,8 +541,9 @@ if ( empty ( $error ) ) {
             translate("The subject is") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
+            ( ( empty ( $hour ) && empty ( $minute ) ) ? "" :
             translate("Time") . ": " .
-            display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) . "\n\n\n";
+            display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) ) .
             translate("Please look on") . " " . translate($application_name) .
             ".";
           // add URL to event, if we can figure it out
