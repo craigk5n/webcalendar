@@ -1,5 +1,4 @@
 <?php
-
 /*
  * $Id$
  *
@@ -22,7 +21,6 @@
  *	Must have "allow view others" enabled ($allow_view_other) in
  *	  System Settings unless the user is an admin user ($is_admin).
  *	Must be owner of the view.
- *
  */
 
 include_once 'includes/init.php';
@@ -157,23 +155,21 @@ display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth", "view_l.ph
 ?></span></div>
 <br /><br /><br /><br />
 
-
-<table class="main" cellspacing="0" cellpadding="0" style="clear:both;">
+<table class="main" style="clear:both;" cellspacing="0" cellpadding="0">
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
-<th><?php etranslate("Sun")?></th>
+<th class="weekend"><?php etranslate("Sun")?></th>
 <?php } ?>
 <th><?php etranslate("Mon")?></th>
 <th><?php etranslate("Tue")?></th>
 <th><?php etranslate("Wed")?></th>
 <th><?php etranslate("Thu")?></th>
 <th><?php etranslate("Fri")?></th>
-<th><?php etranslate("Sat")?></th>
+<th class="weekend"><?php etranslate("Sat")?></th>
 <?php if ( $WEEK_START == 1 ) { ?>
-<th><?php etranslate("Sun")?></th>
+<th class="weekend"><?php etranslate("Sun")?></th>
 <?php } ?>
 </tr>
-
 <?php
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.
@@ -191,8 +187,8 @@ $monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 //echo "<br /><br />monthstart = " . date ( "D, m-d-Y", $monthstart ) . "<br />";
 //echo "<br /><br />monthend = " . date ( "D, m-d-Y", $monthend ) . "<br />";
 
-// NOTE: if you make HTML changes to this table, make the same changes
-// to the example table in pref.php.
+//NOTE: if you make HTML changes to this table, make the same changes
+//to the example table in pref.php.
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( 24 * 3600 * 7 ) ) {
   print "<tr>\n";
@@ -203,21 +199,20 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $thiswday = date ( "w", $date );
       $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
       if ( empty ( $WEEKENDBG ) ) $is_weekend = false;
-      $class = $is_weekend ? "tablecellweekend" : "tablecell";
-      $color = $is_weekend ? $WEEKENDBG : $CELLBG;
-      if ( empty ( $color ) )
-        $color = "#C0C0C0";
-      print "<td class=\"$class\" style=\""; 
-      if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) )
-        echo "background-color:$TODAYCELLBG;\">";
-      else
-        echo "background-color:$color;\">";
-      //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
+	print "<td";
+	if ( $date == date ( "Ymd", $today ) ) {
+		echo " class=\"today\">";
+	} elseif ( $is_weekend ) {
+		echo " class=\"weekend\">";
+	} else {
+		echo ">";
+	}
+	//echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       print_date_entries ( date ( "Ymd", $date ),
         ( ! empty ( $user ) ) ? $user : $login, false );
       print "</td>\n";
     } else {
-      print "<td class=\"tablecell\">&nbsp;</td>\n";
+      print "<td>&nbsp;</td>\n";
     }
   }
   print "</tr>\n";
@@ -227,19 +222,21 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 
 <?php
   echo $eventinfo;
-
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
 <br />
-<a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="view_l.php?id=<?php echo $id?>&amp;<?php
-  if ( $thisyear ) {
-    echo "year=$thisyear&amp;month=$thismonth&amp;";
-  }
-  if ( ! empty ( $user ) ) echo "user=$user&amp;";
-  if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
-?>friendly=1" target="cal_printer_friendly"
-onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
+<a title="<?php 
+	etranslate("Generate printer-friendly version")
+?>" class="printer" href="view_l.php?id=<?php echo $id?>&amp;<?php
+	if ( $thisyear ) {
+		echo "year=$thisyear&amp;month=$thismonth&amp;";
+	}
+	if ( ! empty ( $user ) ) echo "user=$user&amp;";
+	if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
+?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php 
+	etranslate("Generate printer-friendly version")?>'">[<?php 
+	etranslate("Printer Friendly")?>]</a>
 
 <?php print_trailer ();?>
 </body>

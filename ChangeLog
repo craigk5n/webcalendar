@@ -1,4 +1,7 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Reorganizing styles.php to be more logical
+  - Adding new help & '+' images
+  - A few minor style changes to remedy problems with views
   - Applying patch 1061811: leading &amp; in minicals week url
   - Applying patch 1062782: view_t styles moving to styles.php
   - Fixing bug 1062275: border thickness in various views

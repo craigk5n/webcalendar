@@ -98,7 +98,7 @@ function updateColor ( input ) {
 
 	if (!valid_color ( color ) ) {
 	  // Color specified is invalid; use black instead
-		colorCell.style.backgroundColor = "#000";
+		colorCell.style.backgroundColor = "#000000";
 	} else {
 		colorCell.style.backgroundColor = color;
 	}
@@ -145,7 +145,6 @@ function eu_handler () {
     makeInvisible ( "eu3" );
     makeInvisible ( "eu4" );
   }
-
 }
 
 // Gets called on page load and when user changes setting for
@@ -192,10 +191,8 @@ function showTab (name) {
 tabs[1] = "settings";
 tabs[2] = "public";
 tabs[3] = "groups";
-tabs[4] = "categories";
 tabs[5] = "nonuser";
-tabs[6] = "reports";
-tabs[7] = "publish";
+tabs[6] = "other";
 tabs[8] = "email";
 tabs[9] = "colors";
 //]]> -->
