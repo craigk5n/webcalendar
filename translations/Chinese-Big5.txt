@@ -3,62 +3,7 @@
 # There cannot be a ":" in the English text.
 # Translated by: Liang-Kuan Liu <lianguan@pchome.com.tw>
 # Last update: 15 February 2001
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-#
-# << MISSING >>
-# Activity Log:
-User: 使&nbsp;用&nbsp;者
-#
-# << MISSING >>
-# Calendar:
-Date: 日&nbsp;期
-Time: 時&nbsp;間
-#
-# << MISSING >>
-# Event:
-#
-# << MISSING >>
-# Action:
-#
-# << MISSING >>
-# Event created:
-#
-# << MISSING >>
-# Event approved:
-#
-# << MISSING >>
-# Event rejected:
-#
-# << MISSING >>
-# Event updated:
-#
-# << MISSING >>
-# Event deleted:
-#
-# << MISSING >>
-# Notification sent:
-#
-# << MISSING >>
-# Reminder sent:
-#
-# << MISSING >>
-# Database error:
-#
-# << MISSING >>
-# Next:
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Invalid entry id
-This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
-Error adding event: Error adding event
+# Translation last updated on 09-10-2002
 
 
 ###############################################
@@ -170,7 +115,6 @@ No: 否
 # << MISSING >>
 # Date format:
 December: 十二月
-Dec: 12月
 time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
 Time format: 時間格式
 12 hour: 12時制
@@ -437,6 +381,61 @@ Table cell background for current day: 當日顏色
 
 
 ###############################################
+# Page: activity_log.php
+#
+#
+# << MISSING >>
+# Activity Log:
+User: 使&nbsp;用&nbsp;者
+#
+# << MISSING >>
+# Calendar:
+Date: 日&nbsp;期
+Time: 時&nbsp;間
+#
+# << MISSING >>
+# Event:
+#
+# << MISSING >>
+# Action:
+#
+# << MISSING >>
+# Event created:
+#
+# << MISSING >>
+# Event approved:
+#
+# << MISSING >>
+# Event rejected:
+#
+# << MISSING >>
+# Event updated:
+#
+# << MISSING >>
+# Event deleted:
+#
+# << MISSING >>
+# Notification sent:
+#
+# << MISSING >>
+# Reminder sent:
+#
+# << MISSING >>
+# Database error:
+#
+# << MISSING >>
+# Next:
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Invalid entry id
+This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
+Error adding event: Error adding event
+
+
+###############################################
 # Page: admin_handler.php
 #
 Error: 錯誤
@@ -673,14 +672,6 @@ Modified since: 更改自
 
 
 ###############################################
-# Page: groups.php
-#
-#
-# << MISSING >>
-# Add New Group:
-
-
-###############################################
 # Page: group_edit.php
 #
 #
@@ -703,11 +694,42 @@ Users: 使用者
 ###############################################
 # Page: group_edit_handler.php
 #
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+#
+# << MISSING >>
+# Add New Group:
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: 參數設定
+#
+# << MISSING >>
+# to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# Default Category:
+Sun: 週日
+Mon: 週一
+Tue: 週二
+Wed: 週三
+Thu: 週四
+Fri: 週五
+Sat: 週六
+Save Preferences: 儲存參數
 
 
 ###############################################
@@ -729,7 +751,6 @@ Adding/Editing Calendar Entries: 新增/編輯 行事曆項目
 #
 Help Index: 輔助索引
 Layers: 階層架構
-Preferences: 參數設定
 
 
 ###############################################
@@ -772,11 +793,13 @@ Preferences: 參數設定
 #
 #
 # << MISSING >>
-# Default Category:
-#
-# << MISSING >>
 # default-category-help:
 # English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: week.php
 #
 
 
@@ -788,9 +811,14 @@ Preferences: 參數設定
 ###############################################
 # Page: layers.php
 #
+#
+# << MISSING >>
+# to modify the layers settings for the:
 Layers are currently: 階層架構目前是
-Disabled: 停用的
 Enabled: 啟用的
+Disabled: 停用的
+Disable Layers: 停用階層架構
+Enable Layers: 啟用階層架構
 Layer: 階層
 Edit layer: 編輯階層
 Add layer: 新增階層
@@ -833,22 +861,6 @@ cookies-note: <B>注意:</B> 本程式須要 cookies 才能使用.
 ###############################################
 # Page: month.php
 #
-Sun: 週日
-Mon: 週一
-Tue: 週二
-Wed: 週三
-Thu: 週四
-Fri: 週五
-Sat: 週六
-
-
-###############################################
-# Page: pref.php
-#
-#
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-Save Preferences: 儲存參數
 
 
 ###############################################
@@ -901,11 +913,6 @@ Go: 前往
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: 使用者管理員
@@ -927,42 +934,6 @@ Add New User: 新增使用者
 #
 # << MISSING >>
 # Ok:
-
-
-###############################################
-# Page: views.php
-#
-#
-# << MISSING >>
-# Views:
-#
-# << MISSING >>
-# Add New View:
-
-
-###############################################
-# Page: views_edit.php
-#
-#
-# << MISSING >>
-# Unnamed View:
-#
-# << MISSING >>
-# Add View:
-#
-# << MISSING >>
-# Edit View:
-#
-# << MISSING >>
-# View Name:
-#
-# << MISSING >>
-# View Type:
-
-
-###############################################
-# Page: views_edit_handler.php
-#
 
 
 ###############################################
@@ -1042,14 +1013,48 @@ Add to My Calendar: 新增到我的行事曆
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: 新的記事
+#
+# << MISSING >>
+# Views:
+#
+# << MISSING >>
+# Add New View:
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+# << MISSING >>
+# Unnamed View:
+#
+# << MISSING >>
+# Add View:
+#
+# << MISSING >>
+# Edit View:
+#
+# << MISSING >>
+# View Name:
+#
+# << MISSING >>
+# View Type:
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: 新的記事
 Private: 私人的
 
 
@@ -1060,11 +1065,6 @@ Private: 私人的
 
 ###############################################
 # Page: year.php
-#
-
-
-###############################################
-# Page: includes/config.php
 #
 
 
@@ -1100,12 +1100,60 @@ Aug: 8月
 Sep: 9月
 Oct: 10月
 Nov: 11月
+Dec: 12月
+
+
+###############################################
+# Page: includes/user.php
+#
+#
+# << MISSING >>
+# Invalid login:
+#
+# << MISSING >>
+# Invalid user login:
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+#
+# << MISSING >>
+# Send Reminder:
+#
+# << MISSING >>
+# Reminder:
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: 功能選擇
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -1121,17 +1169,6 @@ Go to: 功能選擇
 ###############################################
 # Page: includes/php-dbi.php
 #
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-#
-# << MISSING >>
-# Send Reminder:
-#
-# << MISSING >>
-# Reminder:
 
 
 ###############################################
@@ -1151,41 +1188,8 @@ Add New Entry: 新增記事
 # << MISSING >>
 # Manage Views:
 Edit Layers: 編輯階層架構
-Enable Layers: 啟用階層架構
-Disable Layers: 停用階層架構
 Account: 編輯個人資料
 Current User: 目前使用者
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-#
-# << MISSING >>
-# Invalid login:
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-#
-# << MISSING >>
-# Invalid user login:
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
 
 
 ###############################################

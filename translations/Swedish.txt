@@ -4,60 +4,7 @@
 # Translated by: Jesper Thörn <jesper@thorn.as>
 # Updated by: Patrik Grip-Jansson <patrikj@gnulix.org>
 # Last update: 2001-08-02
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-#
-# << MISSING >>
-# Activity Log:
-User: Användare
-#
-# << MISSING >>
-# Calendar:
-Date: Datum
-Time: Klockan
-#
-# << MISSING >>
-# Event:
-#
-# << MISSING >>
-# Action:
-#
-# << MISSING >>
-# Event created:
-#
-# << MISSING >>
-# Event approved:
-#
-# << MISSING >>
-# Event rejected:
-#
-# << MISSING >>
-# Event updated:
-#
-# << MISSING >>
-# Event deleted:
-#
-# << MISSING >>
-# Notification sent:
-#
-# << MISSING >>
-# Reminder sent:
-Database error: Fel i databasen
-#
-# << MISSING >>
-# Next:
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Ogiltigt händelse-ID
-This is a private event and may not be added to your calendar.: Detta är ett privat möte och kan inte läggas till i din kalender.
-Error adding event: Fel vid inläggning av ny händelse
+# Translation last updated on 09-10-2002
 
 
 ###############################################
@@ -169,7 +116,6 @@ No: Nej
 # << MISSING >>
 # Date format:
 December: December
-Dec: Dec
 time-format-help: Skall tiden visas i 12 eller 24-timmars format.
 Time format: Tidsformat
 12 hour: 12 timmar
@@ -404,6 +350,59 @@ Table cell background for current day: Tabellbakgrund för nuvarande dag
 
 
 ###############################################
+# Page: activity_log.php
+#
+#
+# << MISSING >>
+# Activity Log:
+User: Användare
+#
+# << MISSING >>
+# Calendar:
+Date: Datum
+Time: Klockan
+#
+# << MISSING >>
+# Event:
+#
+# << MISSING >>
+# Action:
+#
+# << MISSING >>
+# Event created:
+#
+# << MISSING >>
+# Event approved:
+#
+# << MISSING >>
+# Event rejected:
+#
+# << MISSING >>
+# Event updated:
+#
+# << MISSING >>
+# Event deleted:
+#
+# << MISSING >>
+# Notification sent:
+#
+# << MISSING >>
+# Reminder sent:
+Database error: Fel i databasen
+#
+# << MISSING >>
+# Next:
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Ogiltigt händelse-ID
+This is a private event and may not be added to your calendar.: Detta är ett privat möte och kan inte läggas till i din kalender.
+Error adding event: Fel vid inläggning av ny händelse
+
+
+###############################################
 # Page: admin_handler.php
 #
 Error: Fel
@@ -632,14 +631,6 @@ Modified since: Ändrad efter
 
 
 ###############################################
-# Page: groups.php
-#
-#
-# << MISSING >>
-# Add New Group:
-
-
-###############################################
 # Page: group_edit.php
 #
 #
@@ -662,11 +653,42 @@ Users: Användare
 ###############################################
 # Page: group_edit_handler.php
 #
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+#
+# << MISSING >>
+# Add New Group:
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: Inställningar
+#
+# << MISSING >>
+# to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# Default Category:
+Sun: Sön
+Mon: Mån
+Tue: Tis
+Wed: Ons
+Thu: Tor
+Fri: Fre
+Sat: Lör
+Save Preferences: Spara inställningarna
 
 
 ###############################################
@@ -688,7 +710,6 @@ Adding/Editing Calendar Entries: Lägg till/ändra aktivitet
 #
 Help Index: Hjälpöversikt
 Layers: Lager
-Preferences: Inställningar
 
 
 ###############################################
@@ -731,11 +752,13 @@ Preferences: Inställningar
 #
 #
 # << MISSING >>
-# Default Category:
-#
-# << MISSING >>
 # default-category-help:
 # English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: week.php
 #
 
 
@@ -747,9 +770,14 @@ Preferences: Inställningar
 ###############################################
 # Page: layers.php
 #
+#
+# << MISSING >>
+# to modify the layers settings for the:
 Layers are currently: Lager-nr
-Disabled: Inaktiverat
 Enabled: Aktiverat
+Disabled: Inaktiverat
+Disable Layers: Inaktivera lager
+Enable Layers: Aktivera lager
 Layer: Lager
 Edit layer: Redigera lager
 Add layer: Lägg till lager
@@ -792,22 +820,6 @@ cookies-note: <strong>OBS:</strong> Programmet kräver att din webbläsare tillåte
 ###############################################
 # Page: month.php
 #
-Sun: Sön
-Mon: Mån
-Tue: Tis
-Wed: Ons
-Thu: Tor
-Fri: Fre
-Sat: Lör
-
-
-###############################################
-# Page: pref.php
-#
-#
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-Save Preferences: Spara inställningarna
 
 
 ###############################################
@@ -860,11 +872,6 @@ Go: Gå till
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: indikerar administratör
@@ -886,42 +893,6 @@ Add New User: Lägg till en ny användare
 #
 # << MISSING >>
 # Ok:
-
-
-###############################################
-# Page: views.php
-#
-#
-# << MISSING >>
-# Views:
-#
-# << MISSING >>
-# Add New View:
-
-
-###############################################
-# Page: views_edit.php
-#
-#
-# << MISSING >>
-# Unnamed View:
-#
-# << MISSING >>
-# Add View:
-#
-# << MISSING >>
-# Edit View:
-#
-# << MISSING >>
-# View Name:
-#
-# << MISSING >>
-# View Type:
-
-
-###############################################
-# Page: views_edit_handler.php
-#
 
 
 ###############################################
@@ -989,14 +960,48 @@ Add to My Calendar: Lägg till i min kalender
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: Ny händelse
+#
+# << MISSING >>
+# Views:
+#
+# << MISSING >>
+# Add New View:
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+# << MISSING >>
+# Unnamed View:
+#
+# << MISSING >>
+# Add View:
+#
+# << MISSING >>
+# Edit View:
+#
+# << MISSING >>
+# View Name:
+#
+# << MISSING >>
+# View Type:
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: Ny händelse
 Private: Privat
 
 
@@ -1007,11 +1012,6 @@ Private: Privat
 
 ###############################################
 # Page: year.php
-#
-
-
-###############################################
-# Page: includes/config.php
 #
 
 
@@ -1049,12 +1049,56 @@ Aug: Aug
 Sep: Sep
 Oct: Okt
 Nov: Nov
+Dec: Dec
+
+
+###############################################
+# Page: includes/user.php
+#
+Invalid login: Felaktig inloggning
+#
+# << MISSING >>
+# Invalid user login:
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+#
+# << MISSING >>
+# Send Reminder:
+Reminder: Påminnelse
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Gå till
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -1070,15 +1114,6 @@ Go to: Gå till
 ###############################################
 # Page: includes/php-dbi.php
 #
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-#
-# << MISSING >>
-# Send Reminder:
-Reminder: Påminnelse
 
 
 ###############################################
@@ -1098,39 +1133,8 @@ Add New Entry: Lägg till ny händelse
 # << MISSING >>
 # Manage Views:
 Edit Layers: Redigera lager
-Enable Layers: Aktivera lager
-Disable Layers: Inaktivera lager
 Account: Konto
 Current User: Nuvarande Användare
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: Felaktig inloggning
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-#
-# << MISSING >>
-# Invalid user login:
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
 
 
 ###############################################

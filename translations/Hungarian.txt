@@ -4,60 +4,7 @@
 # Translated by:
 #	Gyorgy Baffia <gyorgy@baffia.hu>
 # Last update: 05 Sep 2001
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-#
-# << MISSING >>
-# Activity Log:
-User: Felhasználó
-#
-# << MISSING >>
-# Calendar:
-Date: Dátum
-Time: Idõ
-#
-# << MISSING >>
-# Event:
-#
-# << MISSING >>
-# Action:
-#
-# << MISSING >>
-# Event created:
-#
-# << MISSING >>
-# Event approved:
-#
-# << MISSING >>
-# Event rejected:
-#
-# << MISSING >>
-# Event updated:
-#
-# << MISSING >>
-# Event deleted:
-#
-# << MISSING >>
-# Notification sent:
-#
-# << MISSING >>
-# Reminder sent:
-Database error: Adatbázis hiba
-#
-# << MISSING >>
-# Next:
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Érvénytelen bejegyzés-azonosító
-This is a private event and may not be added to your calendar.: Ez magánprogram, nem adhatod hozzá a saját naptáradhoz.
-Error adding event: Esemény hozzáadási hiba
+# Translation last updated on 09-10-2002
 
 
 ###############################################
@@ -169,7 +116,6 @@ No: Nem
 # << MISSING >>
 # Date format:
 December: December
-Dec: Dec
 time-format-help: Megadja, hogy melyik formátumot használod: <BR><I>12 órás:</I> Az idõpontok du 3:30 formában jelennek meg.  <BR><I>24 órás:</I> Idõpontok 20:30 formában jelennek meg.
 Time format: Idõpont formátum
 12 hour: 12 órás
@@ -404,6 +350,59 @@ Table cell background for current day: Táblázat cella háttere a MAI napra
 
 
 ###############################################
+# Page: activity_log.php
+#
+#
+# << MISSING >>
+# Activity Log:
+User: Felhasználó
+#
+# << MISSING >>
+# Calendar:
+Date: Dátum
+Time: Idõ
+#
+# << MISSING >>
+# Event:
+#
+# << MISSING >>
+# Action:
+#
+# << MISSING >>
+# Event created:
+#
+# << MISSING >>
+# Event approved:
+#
+# << MISSING >>
+# Event rejected:
+#
+# << MISSING >>
+# Event updated:
+#
+# << MISSING >>
+# Event deleted:
+#
+# << MISSING >>
+# Notification sent:
+#
+# << MISSING >>
+# Reminder sent:
+Database error: Adatbázis hiba
+#
+# << MISSING >>
+# Next:
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Érvénytelen bejegyzés-azonosító
+This is a private event and may not be added to your calendar.: Ez magánprogram, nem adhatod hozzá a saját naptáradhoz.
+Error adding event: Esemény hozzáadási hiba
+
+
+###############################################
 # Page: admin_handler.php
 #
 Error: Hiba
@@ -632,14 +631,6 @@ Modified since: Módosítva
 
 
 ###############################################
-# Page: groups.php
-#
-#
-# << MISSING >>
-# Add New Group:
-
-
-###############################################
 # Page: group_edit.php
 #
 #
@@ -662,11 +653,42 @@ Users: Felhasználók
 ###############################################
 # Page: group_edit_handler.php
 #
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+#
+# << MISSING >>
+# Add New Group:
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: Beállítások
+#
+# << MISSING >>
+# to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# Default Category:
+Sun: V
+Mon: H
+Tue: K
+Wed: Sze
+Thu: Cs
+Fri: P
+Sat: Szo
+Save Preferences: Beállítások mentése
 
 
 ###############################################
@@ -688,7 +710,6 @@ Adding/Editing Calendar Entries: Naptár-bejegyzések hozzáadása/módosítása
 #
 Help Index: Súgó tartalomjegyzék
 Layers: Rétegek
-Preferences: Beállítások
 
 
 ###############################################
@@ -731,11 +752,13 @@ Preferences: Beállítások
 #
 #
 # << MISSING >>
-# Default Category:
-#
-# << MISSING >>
 # default-category-help:
 # English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: week.php
 #
 
 
@@ -747,9 +770,14 @@ Preferences: Beállítások
 ###############################################
 # Page: layers.php
 #
+#
+# << MISSING >>
+# to modify the layers settings for the:
 Layers are currently: A rétegek jelenleg
-Disabled: Letiltva
 Enabled: Engedélyezve
+Disabled: Letiltva
+Disable Layers: Rétegek tiltása
+Enable Layers: Rétegek engedélyezése
 Layer: Réteg
 Edit layer: Réteg módosítása
 Add layer: Új réteg
@@ -792,22 +820,6 @@ cookies-note: <B>Megjegyzés:</B> A cookie-k engedélyezése szükséges a naptár has
 ###############################################
 # Page: month.php
 #
-Sun: V
-Mon: H
-Tue: K
-Wed: Sze
-Thu: Cs
-Fri: P
-Sat: Szo
-
-
-###############################################
-# Page: pref.php
-#
-#
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-Save Preferences: Beállítások mentése
 
 
 ###############################################
@@ -860,11 +872,6 @@ Go: Mehet
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: adminisztrátor
@@ -886,42 +893,6 @@ Add New User: Új felhasználó hozzáadása
 #
 # << MISSING >>
 # Ok:
-
-
-###############################################
-# Page: views.php
-#
-#
-# << MISSING >>
-# Views:
-#
-# << MISSING >>
-# Add New View:
-
-
-###############################################
-# Page: views_edit.php
-#
-#
-# << MISSING >>
-# Unnamed View:
-#
-# << MISSING >>
-# Add View:
-#
-# << MISSING >>
-# Edit View:
-#
-# << MISSING >>
-# View Name:
-#
-# << MISSING >>
-# View Type:
-
-
-###############################################
-# Page: views_edit_handler.php
-#
 
 
 ###############################################
@@ -989,14 +960,48 @@ Add to My Calendar: Hozzáadás a Saját Naptáramhoz
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: Új bejegyzés
+#
+# << MISSING >>
+# Views:
+#
+# << MISSING >>
+# Add New View:
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+# << MISSING >>
+# Unnamed View:
+#
+# << MISSING >>
+# Add View:
+#
+# << MISSING >>
+# Edit View:
+#
+# << MISSING >>
+# View Name:
+#
+# << MISSING >>
+# View Type:
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: Új bejegyzés
 Private: Magán
 
 
@@ -1007,11 +1012,6 @@ Private: Magán
 
 ###############################################
 # Page: year.php
-#
-
-
-###############################################
-# Page: includes/config.php
 #
 
 
@@ -1049,12 +1049,56 @@ Aug: Aug
 Sep: Szept
 Oct: Okt
 Nov: Nov
+Dec: Dec
+
+
+###############################################
+# Page: includes/user.php
+#
+Invalid login: Érvénytelen azonosító
+#
+# << MISSING >>
+# Invalid user login:
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Emlékeztetõ küldése
+#
+# << MISSING >>
+# Reminder:
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Ugrás
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -1070,15 +1114,6 @@ Go to: Ugrás
 ###############################################
 # Page: includes/php-dbi.php
 #
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Emlékeztetõ küldése
-#
-# << MISSING >>
-# Reminder:
 
 
 ###############################################
@@ -1098,39 +1133,8 @@ Add New Entry: Új bejegyzés
 # << MISSING >>
 # Manage Views:
 Edit Layers: Rétegek módosítása
-Enable Layers: Rétegek engedélyezése
-Disable Layers: Rétegek tiltása
 Account: Adataim
 Current User: Felhasználó
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: Érvénytelen azonosító
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-#
-# << MISSING >>
-# Invalid user login:
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
 
 
 ###############################################

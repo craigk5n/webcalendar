@@ -4,68 +4,7 @@
 #
 # Translator: Atilla Kazanci <support@dig-it-berlin.de>,
 # Last update: 29 March 2001
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-#
-# << MISSING >>
-# Activity Log:
-#
-# << MISSING >>
-# User:
-#
-# << MISSING >>
-# Calendar:
-Date: Tarih
-Time: Saat
-#
-# << MISSING >>
-# Event:
-#
-# << MISSING >>
-# Action:
-#
-# << MISSING >>
-# Event created:
-#
-# << MISSING >>
-# Event approved:
-#
-# << MISSING >>
-# Event rejected:
-#
-# << MISSING >>
-# Event updated:
-#
-# << MISSING >>
-# Event deleted:
-#
-# << MISSING >>
-# Notification sent:
-#
-# << MISSING >>
-# Reminder sent:
-#
-# << MISSING >>
-# Database error:
-#
-# << MISSING >>
-# Next:
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: gecersiz Islem
-#
-# << MISSING >>
-# This is a private event and may not be added to your calendar.:
-#
-# << MISSING >>
-# Error adding event:
+# Translation last updated on 09-10-2002
 
 
 ###############################################
@@ -187,7 +126,6 @@ No: Hayir
 # << MISSING >>
 # Date format:
 December: Aralik
-Dec: Ara
 time-format-help: Hangi saat özelligi kullanildigini gösterir: <BR><I>12-saatlik:</I> Saati 3am, 8:30pm vs. diye gösterir.  <BR><I>24-saatlik:</I> Saati 3.00, 20.30 vs. diye gösterir.
 Time format: Saat
 12 hour: 12-saatlik
@@ -455,6 +393,67 @@ Table cell background for current day: Tabela-arkasi 'Bugün' icin
 #
 # << MISSING >>
 # Event popup text:
+
+
+###############################################
+# Page: activity_log.php
+#
+#
+# << MISSING >>
+# Activity Log:
+#
+# << MISSING >>
+# User:
+#
+# << MISSING >>
+# Calendar:
+Date: Tarih
+Time: Saat
+#
+# << MISSING >>
+# Event:
+#
+# << MISSING >>
+# Action:
+#
+# << MISSING >>
+# Event created:
+#
+# << MISSING >>
+# Event approved:
+#
+# << MISSING >>
+# Event rejected:
+#
+# << MISSING >>
+# Event updated:
+#
+# << MISSING >>
+# Event deleted:
+#
+# << MISSING >>
+# Notification sent:
+#
+# << MISSING >>
+# Reminder sent:
+#
+# << MISSING >>
+# Database error:
+#
+# << MISSING >>
+# Next:
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: gecersiz Islem
+#
+# << MISSING >>
+# This is a private event and may not be added to your calendar.:
+#
+# << MISSING >>
+# Error adding event:
 
 
 ###############################################
@@ -742,14 +741,6 @@ Modified since: Degistirimler
 
 
 ###############################################
-# Page: groups.php
-#
-#
-# << MISSING >>
-# Add New Group:
-
-
-###############################################
 # Page: group_edit.php
 #
 #
@@ -772,11 +763,42 @@ Users: Kullanici
 ###############################################
 # Page: group_edit_handler.php
 #
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+#
+# << MISSING >>
+# Add New Group:
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: Ana Ayar
+#
+# << MISSING >>
+# to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# Default Category:
+Sun: Pa
+Mon: Pt
+Tue: Sa
+Wed: Ca
+Thu: Pe
+Fri: Cu
+Sat: Ct
+Save Preferences: Ayarlari kayit et
 
 
 ###############################################
@@ -800,7 +822,6 @@ Help Index: Yardim-Endeksi
 #
 # << MISSING >>
 # Layers:
-Preferences: Ana Ayar
 
 
 ###############################################
@@ -843,11 +864,13 @@ Preferences: Ana Ayar
 #
 #
 # << MISSING >>
-# Default Category:
-#
-# << MISSING >>
 # default-category-help:
 # English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: week.php
 #
 
 
@@ -861,13 +884,22 @@ Preferences: Ana Ayar
 #
 #
 # << MISSING >>
+# to modify the layers settings for the:
+#
+# << MISSING >>
 # Layers are currently:
+#
+# << MISSING >>
+# Enabled:
 #
 # << MISSING >>
 # Disabled:
 #
 # << MISSING >>
-# Enabled:
+# Disable Layers:
+#
+# << MISSING >>
+# Enable Layers:
 #
 # << MISSING >>
 # Layer:
@@ -916,22 +948,6 @@ cookies-note: <B>Not:</B> Takvimi kullanmak icin, Browser'inizde Cookie'leri kab
 ###############################################
 # Page: month.php
 #
-Sun: Pa
-Mon: Pt
-Tue: Sa
-Wed: Ca
-Thu: Pe
-Fri: Cu
-Sat: Ct
-
-
-###############################################
-# Page: pref.php
-#
-#
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-Save Preferences: Ayarlari kayit et
 
 
 ###############################################
@@ -986,11 +1002,6 @@ Go: göster
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: Sef Kullaniciyi gösterir
@@ -1012,42 +1023,6 @@ Add New User: Yeni Kullanici ekle
 #
 # << MISSING >>
 # Ok:
-
-
-###############################################
-# Page: views.php
-#
-#
-# << MISSING >>
-# Views:
-#
-# << MISSING >>
-# Add New View:
-
-
-###############################################
-# Page: views_edit.php
-#
-#
-# << MISSING >>
-# Unnamed View:
-#
-# << MISSING >>
-# Add View:
-#
-# << MISSING >>
-# Edit View:
-#
-# << MISSING >>
-# View Name:
-#
-# << MISSING >>
-# View Type:
-
-
-###############################################
-# Page: views_edit_handler.php
-#
 
 
 ###############################################
@@ -1135,14 +1110,48 @@ Edit entry: Islem degistir
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: Yeni islem
+#
+# << MISSING >>
+# Views:
+#
+# << MISSING >>
+# Add New View:
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+# << MISSING >>
+# Unnamed View:
+#
+# << MISSING >>
+# Add View:
+#
+# << MISSING >>
+# Edit View:
+#
+# << MISSING >>
+# View Name:
+#
+# << MISSING >>
+# View Type:
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: Yeni islem
 Private: özel
 
 
@@ -1153,11 +1162,6 @@ Private: özel
 
 ###############################################
 # Page: year.php
-#
-
-
-###############################################
-# Page: includes/config.php
 #
 
 
@@ -1195,12 +1199,60 @@ Aug: Agu
 Sep: Eyl
 Oct: Eki
 Nov: Kas
+Dec: Ara
+
+
+###############################################
+# Page: includes/user.php
+#
+#
+# << MISSING >>
+# Invalid login:
+#
+# << MISSING >>
+# Invalid user login:
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+#
+# << MISSING >>
+# Send Reminder:
+#
+# << MISSING >>
+# Reminder:
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Git
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -1216,17 +1268,6 @@ Go to: Git
 ###############################################
 # Page: includes/php-dbi.php
 #
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-#
-# << MISSING >>
-# Send Reminder:
-#
-# << MISSING >>
-# Reminder:
 
 
 ###############################################
@@ -1248,45 +1289,8 @@ Add New Entry: Islem ekle
 #
 # << MISSING >>
 # Edit Layers:
-#
-# << MISSING >>
-# Enable Layers:
-#
-# << MISSING >>
-# Disable Layers:
 Account: Account
 Current User: aktüel Kullanici
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-#
-# << MISSING >>
-# Invalid login:
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-#
-# << MISSING >>
-# Invalid user login:
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
 
 
 ###############################################

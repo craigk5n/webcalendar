@@ -4,60 +4,7 @@
 # Translated by:
 #	your name and email here...
 # Last update: 20 May 2001
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-#
-# << MISSING >>
-# Activity Log:
-User: ユーザ
-#
-# << MISSING >>
-# Calendar:
-Date: 日付け
-Time: 時間
-#
-# << MISSING >>
-# Event:
-#
-# << MISSING >>
-# Action:
-#
-# << MISSING >>
-# Event created:
-#
-# << MISSING >>
-# Event approved:
-#
-# << MISSING >>
-# Event rejected:
-#
-# << MISSING >>
-# Event updated:
-#
-# << MISSING >>
-# Event deleted:
-#
-# << MISSING >>
-# Notification sent:
-#
-# << MISSING >>
-# Reminder sent:
-Database error: データベースエラー
-#
-# << MISSING >>
-# Next:
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: エントリーＩＤが無効です
-This is a private event and may not be added to your calendar.: これはプライベートなイベントなので、あなたのカレンダーへの追加ができないことがあります
-Error adding event: イベント追加エラー
+# Translation last updated on 09-10-2002
 
 
 ###############################################
@@ -169,7 +116,6 @@ No: いいえ
 # << MISSING >>
 # Date format:
 December: １２月
-Dec: １２月
 time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
 Time format: Time format
 12 hour: １２時間
@@ -404,6 +350,59 @@ Table cell background for current day: 今日のテーブル背景色
 
 
 ###############################################
+# Page: activity_log.php
+#
+#
+# << MISSING >>
+# Activity Log:
+User: ユーザ
+#
+# << MISSING >>
+# Calendar:
+Date: 日付け
+Time: 時間
+#
+# << MISSING >>
+# Event:
+#
+# << MISSING >>
+# Action:
+#
+# << MISSING >>
+# Event created:
+#
+# << MISSING >>
+# Event approved:
+#
+# << MISSING >>
+# Event rejected:
+#
+# << MISSING >>
+# Event updated:
+#
+# << MISSING >>
+# Event deleted:
+#
+# << MISSING >>
+# Notification sent:
+#
+# << MISSING >>
+# Reminder sent:
+Database error: データベースエラー
+#
+# << MISSING >>
+# Next:
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: エントリーＩＤが無効です
+This is a private event and may not be added to your calendar.: これはプライベートなイベントなので、あなたのカレンダーへの追加ができないことがあります
+Error adding event: イベント追加エラー
+
+
+###############################################
 # Page: admin_handler.php
 #
 Error: エラー
@@ -632,14 +631,6 @@ Modified since: 以下の日より修正されています：
 
 
 ###############################################
-# Page: groups.php
-#
-#
-# << MISSING >>
-# Add New Group:
-
-
-###############################################
 # Page: group_edit.php
 #
 #
@@ -662,11 +653,42 @@ Users: ユーザ
 ###############################################
 # Page: group_edit_handler.php
 #
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+#
+# << MISSING >>
+# Add New Group:
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: Preferences
+#
+# << MISSING >>
+# to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# Default Category:
+Sun: 日
+Mon: 月
+Tue: 火
+Wed: 水
+Thu: 木
+Fri: 金
+Sat: 土
+Save Preferences: 初期設定を保存
 
 
 ###############################################
@@ -688,7 +710,6 @@ Adding/Editing Calendar Entries: カレンダー・エントリーを追加／編集
 #
 Help Index: ヘルプ索引
 Layers: レイヤー
-Preferences: Preferences
 
 
 ###############################################
@@ -731,11 +752,13 @@ Preferences: Preferences
 #
 #
 # << MISSING >>
-# Default Category:
-#
-# << MISSING >>
 # default-category-help:
 # English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: week.php
 #
 
 
@@ -747,9 +770,14 @@ Preferences: Preferences
 ###############################################
 # Page: layers.php
 #
+#
+# << MISSING >>
+# to modify the layers settings for the:
 Layers are currently: 現在のレイヤー
-Disabled: 作動しなくなりました
 Enabled: 作動させました
+Disabled: 作動しなくなりました
+Disable Layers: レイヤーを作動しなくする
+Enable Layers: レイヤーを作動させる
 Layer: レイヤー
 Edit layer: レイヤーを編集
 Add layer: レイヤーを追加
@@ -792,22 +820,6 @@ cookies-note: <B>Note:</B> This application requires cookies to be enabled.
 ###############################################
 # Page: month.php
 #
-Sun: 日
-Mon: 月
-Tue: 火
-Wed: 水
-Thu: 木
-Fri: 金
-Sat: 土
-
-
-###############################################
-# Page: pref.php
-#
-#
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-Save Preferences: 初期設定を保存
 
 
 ###############################################
@@ -860,11 +872,6 @@ Go: ゴー
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: アドミン／管理ユーザを表示
@@ -886,42 +893,6 @@ Add New User: 新しいユーザを追加
 #
 # << MISSING >>
 # Ok:
-
-
-###############################################
-# Page: views.php
-#
-#
-# << MISSING >>
-# Views:
-#
-# << MISSING >>
-# Add New View:
-
-
-###############################################
-# Page: views_edit.php
-#
-#
-# << MISSING >>
-# Unnamed View:
-#
-# << MISSING >>
-# Add View:
-#
-# << MISSING >>
-# Edit View:
-#
-# << MISSING >>
-# View Name:
-#
-# << MISSING >>
-# View Type:
-
-
-###############################################
-# Page: views_edit_handler.php
-#
 
 
 ###############################################
@@ -989,14 +960,48 @@ Add to My Calendar: マイ・カレンダーに追加
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: 新しいエントリー
+#
+# << MISSING >>
+# Views:
+#
+# << MISSING >>
+# Add New View:
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+# << MISSING >>
+# Unnamed View:
+#
+# << MISSING >>
+# Add View:
+#
+# << MISSING >>
+# Edit View:
+#
+# << MISSING >>
+# View Name:
+#
+# << MISSING >>
+# View Type:
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: 新しいエントリー
 Private: プライベート　　Private
 
 
@@ -1007,11 +1012,6 @@ Private: プライベート　　Private
 
 ###############################################
 # Page: year.php
-#
-
-
-###############################################
-# Page: includes/config.php
 #
 
 
@@ -1053,12 +1053,56 @@ Aug: ８月
 Sep: ９月
 Oct: １０月
 Nov: １１月
+Dec: １２月
+
+
+###############################################
+# Page: includes/user.php
+#
+Invalid login: ログインは無効です
+#
+# << MISSING >>
+# Invalid user login:
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+#
+# << MISSING >>
+# Send Reminder:
+Reminder: リマインダー
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: 移動
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -1074,15 +1118,6 @@ Go to: 移動
 ###############################################
 # Page: includes/php-dbi.php
 #
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-#
-# << MISSING >>
-# Send Reminder:
-Reminder: リマインダー
 
 
 ###############################################
@@ -1102,39 +1137,8 @@ Add New Entry: 新しいエントリーを追加
 # << MISSING >>
 # Manage Views:
 Edit Layers: レイヤーを編集
-Enable Layers: レイヤーを作動させる
-Disable Layers: レイヤーを作動しなくする
 Account: アカウント
 Current User: 現在のユーザ
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: ログインは無効です
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-#
-# << MISSING >>
-# Invalid user login:
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
 
 
 ###############################################

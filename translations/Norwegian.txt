@@ -3,60 +3,7 @@
 # There cannot be a ":" in the English text.
 # Translated by: Pål Løberg/Magni Onsøien <initio@initio.no>
 # Last update: 2002-06-28
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-#
-# << MISSING >>
-# Activity Log:
-User: Bruker
-#
-# << MISSING >>
-# Calendar:
-Date: Dato
-Time: Klokken
-#
-# << MISSING >>
-# Event:
-#
-# << MISSING >>
-# Action:
-#
-# << MISSING >>
-# Event created:
-#
-# << MISSING >>
-# Event approved:
-#
-# << MISSING >>
-# Event rejected:
-#
-# << MISSING >>
-# Event updated:
-#
-# << MISSING >>
-# Event deleted:
-#
-# << MISSING >>
-# Notification sent:
-#
-# << MISSING >>
-# Reminder sent:
-Database error: Feil i databasen
-#
-# << MISSING >>
-# Next:
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Ugyldig avtale-ID
-This is a private event and may not be added to your calendar.: Dette er en privat avtale og kan ikke legges til din kalender.
-Error adding event: Feil ved innlegging av avtale
+# Translation last updated on 09-10-2002
 
 
 ###############################################
@@ -168,7 +115,6 @@ No: Nei
 # << MISSING >>
 # Date format:
 December: Desember
-Dec: Dec
 time-format-help: Skal tiden vises i 12 eller 24-timer.
 Time format: Tidsformat
 12 hour: 12 timer
@@ -403,6 +349,59 @@ Table cell background for current day: Tabellbakgrunn for inneværende dag
 
 
 ###############################################
+# Page: activity_log.php
+#
+#
+# << MISSING >>
+# Activity Log:
+User: Bruker
+#
+# << MISSING >>
+# Calendar:
+Date: Dato
+Time: Klokken
+#
+# << MISSING >>
+# Event:
+#
+# << MISSING >>
+# Action:
+#
+# << MISSING >>
+# Event created:
+#
+# << MISSING >>
+# Event approved:
+#
+# << MISSING >>
+# Event rejected:
+#
+# << MISSING >>
+# Event updated:
+#
+# << MISSING >>
+# Event deleted:
+#
+# << MISSING >>
+# Notification sent:
+#
+# << MISSING >>
+# Reminder sent:
+Database error: Feil i databasen
+#
+# << MISSING >>
+# Next:
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Ugyldig avtale-ID
+This is a private event and may not be added to your calendar.: Dette er en privat avtale og kan ikke legges til din kalender.
+Error adding event: Feil ved innlegging av avtale
+
+
+###############################################
 # Page: admin_handler.php
 #
 Error: Feil
@@ -631,14 +630,6 @@ Modified since: Endret etter
 
 
 ###############################################
-# Page: groups.php
-#
-#
-# << MISSING >>
-# Add New Group:
-
-
-###############################################
 # Page: group_edit.php
 #
 #
@@ -661,11 +652,42 @@ Users: Brukere
 ###############################################
 # Page: group_edit_handler.php
 #
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+#
+# << MISSING >>
+# Add New Group:
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: Innstillinger
+#
+# << MISSING >>
+# to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# Default Category:
+Sun: Søn
+Mon: Man
+Tue: Tir
+Wed: Ons
+Thu: Tor
+Fri: Fre
+Sat: Lør
+Save Preferences: Lagre innstillinger
 
 
 ###############################################
@@ -687,7 +709,6 @@ Adding/Editing Calendar Entries: Legg til/endre aktivitet
 #
 Help Index: Oversikt
 Layers: Lag
-Preferences: Innstillinger
 
 
 ###############################################
@@ -730,11 +751,13 @@ Preferences: Innstillinger
 #
 #
 # << MISSING >>
-# Default Category:
-#
-# << MISSING >>
 # default-category-help:
 # English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: week.php
 #
 
 
@@ -746,9 +769,14 @@ Preferences: Innstillinger
 ###############################################
 # Page: layers.php
 #
+#
+# << MISSING >>
+# to modify the layers settings for the:
 Layers are currently: Lagene er nå
-Disabled: Deaktivert
 Enabled: Aktivert
+Disabled: Deaktivert
+Disable Layers: Deaktiver lag
+Enable Layers: Aktiver lag
 Layer: Lag
 Edit layer: Editer lag
 Add layer: Legg til lag
@@ -791,22 +819,6 @@ cookies-note: <B>OBS:</B> Programmet krever at "cookies" er slått på
 ###############################################
 # Page: month.php
 #
-Sun: Søn
-Mon: Man
-Tue: Tir
-Wed: Ons
-Thu: Tor
-Fri: Fre
-Sat: Lør
-
-
-###############################################
-# Page: pref.php
-#
-#
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-Save Preferences: Lagre innstillinger
 
 
 ###############################################
@@ -859,11 +871,6 @@ Go: Gå til
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: indikerer administrator
@@ -885,42 +892,6 @@ Add New User: Opprett bruker
 #
 # << MISSING >>
 # Ok:
-
-
-###############################################
-# Page: views.php
-#
-#
-# << MISSING >>
-# Views:
-#
-# << MISSING >>
-# Add New View:
-
-
-###############################################
-# Page: views_edit.php
-#
-#
-# << MISSING >>
-# Unnamed View:
-#
-# << MISSING >>
-# Add View:
-#
-# << MISSING >>
-# Edit View:
-#
-# << MISSING >>
-# View Name:
-#
-# << MISSING >>
-# View Type:
-
-
-###############################################
-# Page: views_edit_handler.php
-#
 
 
 ###############################################
@@ -988,14 +959,48 @@ Add to My Calendar: Legg til kalenderen min
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: Ny aktivitet
+#
+# << MISSING >>
+# Views:
+#
+# << MISSING >>
+# Add New View:
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+# << MISSING >>
+# Unnamed View:
+#
+# << MISSING >>
+# Add View:
+#
+# << MISSING >>
+# Edit View:
+#
+# << MISSING >>
+# View Name:
+#
+# << MISSING >>
+# View Type:
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: Ny aktivitet
 Private: Privat
 
 
@@ -1006,11 +1011,6 @@ Private: Privat
 
 ###############################################
 # Page: year.php
-#
-
-
-###############################################
-# Page: includes/config.php
 #
 
 
@@ -1048,12 +1048,56 @@ Aug: Aug
 Sep: Sep
 Oct: Okt
 Nov: Nov
+Dec: Dec
+
+
+###############################################
+# Page: includes/user.php
+#
+Invalid login: Ugyldig innlogging
+#
+# << MISSING >>
+# Invalid user login:
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+#
+# << MISSING >>
+# Send Reminder:
+Reminder: Påminnelse
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Gå til
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -1069,15 +1113,6 @@ Go to: Gå til
 ###############################################
 # Page: includes/php-dbi.php
 #
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-#
-# << MISSING >>
-# Send Reminder:
-Reminder: Påminnelse
 
 
 ###############################################
@@ -1097,39 +1132,8 @@ Add New Entry: Legg til aktivitet
 # << MISSING >>
 # Manage Views:
 Edit Layers: Editer lag
-Enable Layers: Aktiver lag
-Disable Layers: Deaktiver lag
 Account: Konto
 Current User: Nåværende bruker
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: Ugyldig innlogging
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-#
-# << MISSING >>
-# Invalid user login:
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
 
 
 ###############################################
