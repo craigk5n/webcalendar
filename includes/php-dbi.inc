@@ -22,6 +22,9 @@
 //	(Some db APIs don't support xxx_fetch_array().)
 //
 // History:
+//	11-Jul-2001	Craig Knudsen <cknudsen@radix.net>
+//			Removed pass by reference for odbc_fetch_into()
+//			Removed ++ in call to pg_fetch_array()
 //	22-Apr-2000	Ken Harris <kharris@lhinfo.com>
 //			PostgreSQL fixes
 //	23-Feb-2000	Craig Knudsen <cknudsen@radix.net>
@@ -154,7 +157,8 @@ function dbi_fetch_row ( $res ) {
     return 0;
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
     if ( $GLOBALS["postgresql_numrows"]  > $GLOBALS["postgresql_row"] ) {
-        $r =  pg_fetch_array ( $res, $GLOBALS["postgresql_row"]++ );
+        $r =  pg_fetch_array ( $res, $GLOBALS["postgresql_row"] );
+        $GLOBALS["postgresql_row"]++;
         if ( ! $r ) {
             echo "Unable to fetch row\n"; 
             return '';
@@ -165,7 +169,7 @@ function dbi_fetch_row ( $res ) {
     }
     return $r;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
-    if ( ! odbc_fetch_into ( $res, &$ret ) )
+    if ( ! odbc_fetch_into ( $res, $ret ) )
       return false;
     return $ret;
   } else {
