@@ -3,6 +3,8 @@ global $form,$listid,$groups;
 if (preg_match("/usersel\.php/", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
+$form = clean_word($form);
+$listid = clean_int($listid);
 ?>
 
 <script type="text/javascript">

@@ -3,6 +3,7 @@ global $color;
 if (preg_match("/colors\.php/", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
+$color = clean_word($color);
 ?>
 
 <script type="text/javascript">
