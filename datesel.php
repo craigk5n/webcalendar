@@ -35,13 +35,13 @@ $prevdate = date ( "Ym", $prev ) . "01";
 </tr>
 <?php
 echo "<tr>";
-if ( $WEEK_START == 0 ) echo "<td style=\"font-size:12px;\">" .
+if ( $WEEK_START == 0 ) echo "<td><font size=\"-1\">" .
   weekday_short_name ( 0 ) . "</td>";
 for ( $i = 1; $i < 7; $i++ ) {
-  echo "<td style=\"font-size:12px;\">" .
+  echo "<td><font size=\"-1\">" .
     weekday_short_name ( $i ) . "</td>";
 }
-if ( $WEEK_START == 1 ) echo "<td style=\"font-size:12px;\">" .
+if ( $WEEK_START == 1 ) echo "<td><font size=\"-1\">" .
   weekday_short_name ( 0 ) . "</td>";
 echo "</tr>\n";
 if ( $WEEK_START == "1" )
