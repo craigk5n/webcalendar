@@ -17,7 +17,7 @@ else if ( ! empty ( $HTTP_POST_FILES['FileName'] ) )
   $file = $HTTP_POST_FILES['FileName'];
 
 if ( empty ( $file ) )
-  echo "No file! <br />";
+  echo "No file!<br />";
 
 // Handle user
 $calUser = getValue ( "calUser" );
@@ -63,7 +63,7 @@ if ($file['size'] > 0) {
   $count_con = $count_suc = $error_num = 0;
   if (! empty ($data) && empty ($errormsg) ) {
     import_data ( $data, $doOverwrite, $type );
-    echo "<p>" . translate("Import Results") . "</p>\n<br /><br />" .
+    echo "<p>" . translate("Import Results") . "</p>\n<br /><br />\n" .
       translate("Events successfully imported") . " : $count_suc<br />\n";
     echo translate("Events from prior import marked as deleted") .
       ": $numDeleted <br />\n";
@@ -72,14 +72,14 @@ if ($file['size'] > 0) {
     }
     echo translate ( "Errors" ) . ": $error_num<br>\n<br>\n";
   } elseif ($errormsg) {
-    echo "<br /><br /><b>" . translate("Error") . ":</b> $errormsg<br />\n";
+    echo "<br /><br />\n<b>" . translate("Error") . ":</b> $errormsg<br />\n";
   } else {
-    echo "<br /><br /><b>" . translate("Error") . ":</b> " .
+    echo "<br /><br />\n<b>" . translate("Error") . ":</b> " .
       translate("There was an error parsing the import file or no events were returned") .
       ".<br />\n";
   }
 } else {
-	echo "<br /><br /><b>" . translate("Error") . ":</b> " .
+	echo "<br /><br />\n<b>" . translate("Error") . ":</b> " .
     translate("The import file contained no data") . ".<br />\n";
 }
 
@@ -189,7 +189,7 @@ function import_data ( $data, $overwrite, $type ) {
     }
 
     if ( empty ( $error ) && ! empty ( $overlap ) ) {
-      $error = translate("The following conflicts with the suggested time").":<ul>$overlap</ul>";
+      $error = translate("The following conflicts with the suggested time").":<ul>$overlap</ul>\n";
     }
 
     if ( empty ( $error ) ) {
@@ -232,7 +232,7 @@ function import_data ( $data, $overwrite, $type ) {
         dbi_free_result ( $res );
       } else {
         $id = 1;
-        //$error = "Unable to select MAX cal_id: " . dbi_error () . "<br /><br /><b>SQL:</b> $sql";
+        //$error = "Unable to select MAX cal_id: " . dbi_error () . "<br /><br />\n<b>SQL:</b> $sql";
         //break;
       }
       if ( $firstEventId == 0 )
@@ -284,8 +284,8 @@ function import_data ( $data, $overwrite, $type ) {
         $Entry['Description'] = substr ( $Entry['Description'], 0, 1019 ) . "...";
       $names[] = 'cal_description';
       $values[] = "'" . $Entry['Description'] .  "'";
-      //echo "Summary:<p>" . nl2br ( htmlspecialchars ( $Entry['Summary'] ) ) . "<p>";
-      //echo "Description:<p>" . nl2br ( htmlspecialchars ( $Entry['Description'] ) ); exit;
+      //echo "Summary:<p>" . nl2br ( htmlspecialchars ( $Entry['Summary'] ) ) . "</p>";
+      //echo "Description:<p>" . nl2br ( htmlspecialchars ( $Entry['Description'] ) ) . "</p>"; exit;
       if ( $updateMode ) {
         $sql = "UPDATE webcal_entry SET ";
         for ( $f = 0; $f < count ( $names ); $f++ ) {
@@ -301,7 +301,7 @@ function import_data ( $data, $overwrite, $type ) {
 
       if ( empty ( $error ) ) {
         $sqlLog .= $sql . "<br />\n";
-        //echo "SQL: $sql <br />";
+        //echo "SQL: $sql <br />\n";
         if ( ! dbi_query ( $sql ) ) {
           $error .= "<p>" . translate("Database error") . ": " . dbi_error () .
             "</p>\n";
@@ -395,7 +395,7 @@ function import_data ( $data, $overwrite, $type ) {
           "( $id, '$rpt_type', $end, $days, $freq )";
         $sqlLog .= $sql . "<br />\n";
         if ( ! dbi_query ( $sql ) ) {
-            $error = "Unable to add to webcal_entry_repeats: ".dbi_error ()."<br /><br /><b>SQL:</b> $sql";
+            $error = "Unable to add to webcal_entry_repeats: ".dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
             break;
         }
 
@@ -406,7 +406,7 @@ function import_data ( $data, $overwrite, $type ) {
             $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date ) VALUES ( $id, $ex_date )";
             $sqlLog .= $sql . "<br />\n";
             if ( ! dbi_query ( $sql ) ) {
-              $error = "Unable to add to webcal_entry_repeats_not: ".dbi_error ()."<br /><br /><b>SQL:</b> $sql";
+              $error = "Unable to add to webcal_entry_repeats_not: ".dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
               break;
             }
           }
@@ -433,17 +433,17 @@ function import_data ( $data, $overwrite, $type ) {
 
     if ( ! empty ($error) && empty ($overlap))  {
       $error_num++;
-      echo "<h2><font color=\"$H2COLOR\">". translate("Error") .
-        "</h2></font>\n<blockquote>\n";
-      echo $error . "</blockquote><br />\n";
+      echo "<h2>". translate("Error") .
+        "</h2>\n<blockquote>\n";
+      echo $error . "</blockquote>\n<br />\n";
     }
 
     // Conflicting
     if ( ! empty ( $overlap ) ) {
-      echo "<b><font color=\"$H2COLOR\">" .
+      echo "<b><h2>" .
         translate("Scheduling Conflict") . ": ";
       $count_con++;
-      echo "</b></font>";
+      echo "</h2></b>";
 
       if ( $Entry['Duration'] > 0 ) {
         $time = display_time ( $Entry['StartHour'].$Entry['StartMinute']."00" ) .
@@ -458,15 +458,15 @@ function import_data ( $data, $overwrite, $type ) {
       echo "</a> (" . $dd;
       $time = trim ( $time );
       if ( ! empty ( $time ) )
-        echo "&nbsp;  " . $time;
+        echo "&nbsp; " . $time;
       echo ")<br />\n";
       etranslate("conflicts with the following existing calendar entries");
       echo ":<ul>\n" . $overlap . "</ul>\n";
     } else {
 
     // No Conflict
-      echo "<b><font color=\"$H2COLOR\">" .
-        translate("Event Imported") . ":</b></font>\n";
+      echo "<b><h2>" .
+        translate("Event Imported") . ":</h2></b>\n";
       $count_suc++;
       if ( $Entry['Duration'] > 0 ) {
         $time = display_time ( $Entry['StartHour'].$Entry['StartMinute']."00" ) .
@@ -482,7 +482,7 @@ function import_data ( $data, $overwrite, $type ) {
       echo htmlspecialchars ( $Entry['Summary'] );
       echo "</a> (" . $dd;
       if ( ! empty ( $time ) )
-        echo "&nbsp;  " . $time;
+        echo "&nbsp; " . $time;
       echo ")<br />\n";
     }
 
@@ -520,7 +520,7 @@ function import_data ( $data, $overwrite, $type ) {
     }
   }
 
-  //echo "<b>SQL:</b><br />$sqlLog\n";
+  //echo "<b>SQL:</b><br />\n$sqlLog\n";
 }
 
 // Convert interval to webcal repeat type
