@@ -38,6 +38,7 @@ include_once 'includes/init.php';
 load_user_categories ();
 
 $error = "";
+$report_id = getIntValue ( "report_id", true );
 
 if ( empty ( $reports_enabled ) || $reports_enabled != 'Y' ) {
   $error = translate ( "You are not authorized" ) . ".";
