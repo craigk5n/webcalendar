@@ -107,6 +107,21 @@ function myOnLoad() {
 }
 </SCRIPT>
 <?php include "includes/styles.php"; ?>
+<?php
+// Print custom header (since we do not call print_header function)
+if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
+  $res = dbi_query (
+    "SELECT cal_template_text FROM webcal_report_template " .
+    "WHERE cal_template_type = 'S' and cal_report_id = 0" );
+  if ( $res ) {
+    if ( $row = dbi_fetch_row ( $res ) ) {
+      echo $row[0];
+    }
+    dbi_free_result ( $res );
+  }
+}
+?>
+
 </HEAD>
 <BODY BGCOLOR="<?php echo $BGCOLOR;?>"
 ONLOAD="myOnLoad();" CLASS="defaulttext">
