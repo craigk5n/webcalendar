@@ -95,8 +95,8 @@ function purge_events ( $ids ) {
 
   foreach ( $ids as $cal_id ) {
     for ( $i = 0; $i < $TT; $i++ ) {
-      dbi_query ( "DELETE FROM {$tables[$i][T]} WHERE {$tables[$i][C]} like '$cal_id'" );
-      $num[$tables[$i][T]] += dbi_affected_rows();
+      $res = dbi_query ( "DELETE FROM {$tables[$i][T]} WHERE {$tables[$i][C]} like '$cal_id'" );
+      $num[$tables[$i][T]] += dbi_affected_rows( $res );
     }
   }
   for ( $i = 0; $i < $TT; $i++ ) {
