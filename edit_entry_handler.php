@@ -404,6 +404,9 @@ if ( empty ( $error ) ) {
         $tmp_status : "A";
       $tmp_cat = ( ! empty ( $old_category[$participants[$i]]) ) ?
         $old_category[$participants[$i]] : 'NULL';
+      // Allow cat to be changed for public access (if admin user)
+      if ( $participants[$i] == "__public__" && $is_admin )
+        $tmp_cat = $cat_id;
       $my_cat_id = ( $participants[$i] != $login ) ? $tmp_cat : $cat_id;
     } else {
       $send_user_mail = true;
