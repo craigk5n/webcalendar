@@ -346,19 +346,19 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
         echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$color\">";
         if ( $can_add )
-          echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $i );
+          echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m );
         echo "&nbsp;</TD>\n";
       } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         if ( $rowspan_day[$d] > 1 ) {
           echo "<TD VALIGN=\"top\" WIDTH=\"12%\" VALIGN=\"top\" BGCOLOR=\"$TODAYCELLBG\" ROWSPAN=\"$rowspan_day[$d]\">";
           if ( $can_add )
-            echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $i );
+            echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m );
           echo "<FONT SIZE=\"-1\">" . $save_hour_arr[$d][$i] . "</FONT></TD>\n";
         } else {
           echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$TODAYCELLBG\"><FONT SIZE=\"-1\">";
           if ( $can_add )
-            echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $i );
+            echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m );
           echo $save_hour_arr[$d][$i] . "</FONT></TD>\n";
         }
       }
