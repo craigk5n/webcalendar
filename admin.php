@@ -97,7 +97,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 </td></tr>
 
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("fonts-help")?>"><?php etranslate("Fonts")?>:</td>
-  <td><input size="40" name="admin_fonts" value="<?php echo htmlspecialchars ( $FONTS );?>" /></td></tr>
+  <td><input size="40" name="admin_FONTS" value="<?php echo htmlspecialchars ( $FONTS );?>" /></td></tr>
 
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("custom-script-help");?>"><?php etranslate("Custom script/stylesheet")?>:</td>
   <td><input type="radio" name="admin_custom_script" value="Y" <?php if ( $s["CUSTOM_SCRIPT"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_custom_script" value="N" <?php if ( $s["CUSTOM_SCRIPT"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?>
