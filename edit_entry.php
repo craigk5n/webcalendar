@@ -289,7 +289,9 @@ if ( $is_assistant || $is_nonuser_admin || ! empty ( $user ) )
 <div id="tabs">
  <span class="tabfor" id="tab_details"><a href="#tabdetails" onclick="return showTab('details')"><?php etranslate("Details") ?></a></span>
  <span class="tabbak" id="tab_sched"><a href="#tabsched" onclick="return showTab('sched')"><?php etranslate("Scheduling") ?></a></span>
- <span class="tabbak" id="tab_participants"><a href="#tabparticipants" onclick="return showTab('participants')"><?php etranslate("Participants") ?></a></span>
+ <?php if ( $disable_participants_field != "Y" ) { ?>
+   <span class="tabbak" id="tab_participants"><a href="#tabparticipants" onclick="return showTab('participants')"><?php etranslate("Participants") ?></a></span>
+ <?php } ?> 
  <?php if ( $disable_repeating_field != "Y" ) { ?>
    <span class="tabbak" id="tab_pete"><a href="#tabpete" onclick="return showTab('pete')"><?php etranslate("Repeat") ?></a></span>
  <?php } ?>
