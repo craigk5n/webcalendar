@@ -2431,6 +2431,8 @@ function print_date_entries ( $date, $user, $ssi ) {
     echo "<a class=\"dayofmonth\" href=\"day.php?";
     if ( strcmp ( $user, $GLOBALS["login"] ) )
       echo "user=$user&amp;";
+    if ( ! empty ( $cat_id ) )
+      echo "cat_id=$cat_id&amp;";
     echo "date=$date\">$day</a>";
     if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" &&
       date ( "w", $dateu ) == $GLOBALS["WEEK_START"] ) {
@@ -2438,6 +2440,8 @@ function print_date_entries ( $date, $user, $ssi ) {
         translate("Week") . "&nbsp;" . week_number ( $dateu ) . "\" href=\"week.php?date=$date";
       if ( strcmp ( $user, $GLOBALS["login"] ) )
         echo "&amp;user=$user";
+      if ( ! empty ( $cat_id ) )
+      echo "&amp;cat_id=$cat_id";
        echo "\" class=\"weeknumber\">";
       echo "(" .
         translate("Week") . "&nbsp;" . week_number ( $dateu ) . ")</a>";
@@ -2445,7 +2449,7 @@ function print_date_entries ( $date, $user, $ssi ) {
     print "<br />\n";
     $cnt++;
   }
-
+  
   // get all the repeating events for this date and store in array $rep
   $rep = get_repeating_entries ( $user, $date, $get_unapproved );
   $cur_rep = 0;
