@@ -24,6 +24,7 @@ function valid_color ( str ) {
 
 function valid_form ( form ) {
   var err = "";
+  var colorErr = false;
   <?php if ( $allow_color_customization ) { ?>
   if ( ! valid_color ( form.pref_BGCOLOR.value ) )
     err += "<?php etranslate("Invalid color for document background")?>.\n";
@@ -34,11 +35,24 @@ function valid_form ( form ) {
   if ( ! valid_color ( form.pref_TODAYCELLBG.value ) )
     err += "<?php etranslate("Invalid color for table cell background for today")?>.\n";
   <?php } ?>
-  if ( err.length > 0 ) {
+  if ( err.length > 0 )
+    colorErr = true;
+  if ( ! validWorkHours ( form ) ) {
+    err += "<?php etranslate("Invalid work hours"); ?>.\n";
+    err += form.pref_WORK_DAY_START_HOUR.value + " > " + form.pref_WORK_DAY_END_HOUR.value + "\n";
+  }
+  if ( colorErr ) {
     alert ( "Error:\n\n" + err + "\n\n<?php etranslate("Color format should be '#RRGGBB'")?>" );
+    return false;
+  } else if ( err.length > 0 ) {
+    alert ( "Error:\n\n" + err );
     return false;
   }
   return true;
+}
+function validWorkHours ( form ) {
+  return ( parseInt ( form.pref_WORK_DAY_START_HOUR.value ) <
+    parseInt ( form.pref_WORK_DAY_END_HOUR.value ) );
 }
 function selectColor ( color ) {
   url = "colors.php?color=" + color;

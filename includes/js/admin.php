@@ -33,6 +33,12 @@ function valid_form ( form ) {
     form.admin_server_url.focus ();
   }
 
+  if ( parseInt ( form.admin_WORK_DAY_START_HOUR.value ) >=
+    parseInt ( form.admin_WORK_DAY_END_HOUR.value ) ) {
+    err += "<?php etranslate("Invalid work hours")?>.\n";
+    form.admin_WORK_DAY_START_HOUR.focus ();
+  }
+
   if ( err != "" ) {
     alert ( "Error:\n\n" + err );
     return false;
