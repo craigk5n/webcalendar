@@ -25,7 +25,7 @@ $wkend = $wkstart + ( 3600 * 24 * 6 );
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
 
-if ( $DISPLAY_WEEKENDS == "N" ) {
+if ( ! empty ( $DISPLAY_WEEKENDS ) && $DISPLAY_WEEKENDS == "N" ) {
   if ( $WEEK_START == 1 ) {
     $start_ind = 0;
     $end_ind = 5;
@@ -39,7 +39,8 @@ if ( $DISPLAY_WEEKENDS == "N" ) {
 }
 
 $HeadX = '';
-if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
+if ( ! empty ( $auto_refresh ) && $auto_refresh == "Y" &&
+  ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week.php?$u_url" .
     "date=$startdate$caturl\" />\n";
