@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 10-27-2004
+# Translation last updated on 11-05-2004
 
 
 ###############################################
@@ -249,6 +249,7 @@ Event deleted: Event deleted
 Notification sent: Notification sent
 Reminder sent: Reminder sent
 Database error: Database error
+Events: Events
 
 
 ###############################################
@@ -299,33 +300,32 @@ Edit Entry: Edit Entry
 Add Entry: Add Entry
 brief-description-help: This should provide a short description (about 20 characters) of the event.  This will represent the event when viewing the calendar.
 Brief Description: Brief Description
+category-help: Specifies the category of the event.
+Category: Category
+None: None
 full-description-help: This should complete details of the event.  This information can be seen when a user views the event.
 Full Description: Full Description
-date-help: Specifies the date of the event.
-Untimed event: Untimed event
-Timed event: Timed event
-All day event: All day event
-time-help: Specifies the time of the event.<br />Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
-Start Time: Start Time
-am: am
-pm: pm
-duration-help: Specifies the duration (in hours:minutes) of the event.  <br /><i>This field can be left blank.</i>
-hours: hours
-end-time-help: Specifies the time the event is expected to end.
+access-help: Specifies the access level of the event.<br /> <i>Public</i>: Everyone can see the full details of the event.  <br /><i>Confidential</i>: Others can see that you have an entry for that date and time, but not the details of what it is.
+Access: Access
+Public: Public
+Confidential: Confidential
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
 Priority: Priority
 Low: Low
 Medium: Medium
 High: High
-access-help: Specifies the access level of the event.<br /> <i>Public</i>: Everyone can see the full details of the event.  <br /><i>Confidential</i>: Others can see that you have an entry for that date and time, but not the details of what it is.
-Access: Access
-Public: Public
-Confidential: Confidential
-category-help: Specifies the category of the event.
-Category: Category
-None: None
 days: days
+hours: hours
 before event: before event
+date-help: Specifies the date of the event.
+Untimed event: Untimed event
+Timed event: Timed event
+All day event: All day event
+time-help: Specifies the time of the event.<br />Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
+am: am
+pm: pm
+duration-help: Specifies the duration (in hours:minutes) of the event.  <br /><i>This field can be left blank.</i>
+end-time-help: Specifies the time the event is expected to end.
 participants-help: Lists the participants of this entry.
 Participants: Participants
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
@@ -341,16 +341,15 @@ Yearly: Yearly
 repeat-end-date-help: Specifies the date the event should repeat until.
 Repeat End Date: Repeat End Date
 Use end date: Use end date
+repeat-frequency-help: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <i>Repeat Type</i> is set to <i>Weekly</i>), every other month (if <i>Repeat Type</i> is set to <i>Monthly</i>), etc.
+Frequency: Frequency
 repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
 Repeat Day: Repeat Day
-for weekly: for weekly
 Tuesday: Tuesday
 Wednesday: Wednesday
 Thursday: Thursday
 Friday: Friday
 Saturday: Saturday
-repeat-frequency-help: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <i>Repeat Type</i> is set to <i>Weekly</i>), every other month (if <i>Repeat Type</i> is set to <i>Monthly</i>), etc.
-Frequency: Frequency
 Delete entry: Delete entry
 You are not authorized to edit this entry: You are not authorized to edit this entry
 
@@ -406,6 +405,7 @@ You have not entered a password: You have not entered a password
 Export: Export
 Export format: Export format
 Palm Pilot: Palm Pilot
+Include all layers: Include all layers
 Export all dates: Export all dates
 Start date: Start date
 End date: End date
@@ -446,6 +446,7 @@ Add New Group: Add New Group
 # Page: pref.php
 #
 Preferences: Preferences
+Save Preferences: Save Preferences
 to modify the preferences for the Public Access calendar: to modify the preferences for the Public Access calendar
 tz-help: Specifies how many hours to adjust the time from server time to local time.
 Timezone Offset: Timezone Offset
@@ -467,7 +468,6 @@ Wed: Wed
 Thu: Thu
 Fri: Fri
 Sat: Sat
-Save Preferences: Save Preferences
 
 
 ###############################################
@@ -529,8 +529,8 @@ Add layer: Add layer
 # Page: list_unapproved.php
 #
 View this entry: View this entry
-Approve this entry?: Approve this entry?
 Approve/Confirm: Approve/Confirm
+Approve this entry?: Approve this entry?
 Reject this entry?: Reject this entry?
 Reject: Reject
 No unapproved events for: No unapproved events for
@@ -552,21 +552,23 @@ Status: Status
 Waiting for approval: Waiting for approval
 Deleted: Deleted
 Rejected: Rejected
+day: day
+minute: minute
 External User: External User
 Approve/Confirm entry: Approve/Confirm entry
 Reject entry: Reject entry
 Set category: Set category
 Edit repeating entry for all dates: Edit repeating entry for all dates
 Edit entry for this date: Edit entry for this date
-This will delete this entry for all users.: This will delete this entry for all users.
 Delete repeating event for all dates: Delete repeating event for all dates
+This will delete this entry for all users.: This will delete this entry for all users.
 Delete entry only for this date: Delete entry only for this date
 Edit entry: Edit entry
 Copy entry: Copy entry
 This will delete the entry from your calendar.: This will delete the entry from your calendar.
+Add to My Calendar: Add to My Calendar
 Do you want to add this entry to your calendar?: Do you want to add this entry to your calendar?
 This will add the entry to your calendar.: This will add the entry to your calendar.
-Add to My Calendar: Add to My Calendar
 Email all participants: Email all participants
 Show activity log: Show activity log
 Hide activity log: Hide activity log
@@ -668,6 +670,7 @@ Week (Timebar): Week (Timebar)
 Month (Timebar): Month (Timebar)
 Month (side by side): Month (side by side)
 Month (on same calendar): Month (on same calendar)
+preview: preview
 
 
 ###############################################
@@ -675,9 +678,10 @@ Month (on same calendar): Month (on same calendar)
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
 NonUser: NonUser Calendars
+word characters only: can only contain word characters (a-zA-Z_0-9)
 Calendar ID: Calendar ID
 Add New NonUser Calendar: Add New NonUser Calendar
-word characters only: can only contain word characters (a-zA-Z_0-9)
+
 
 ###############################################
 # Page: help_pref.php
@@ -853,10 +857,10 @@ Edit Custom Trailer: Edit Custom Trailer
 Go to: Go to
 My Calendar: My Calendar
 Back to My Calendar: Back to My Calendar
-Logout: Logout
 Another User's Calendar: Another User's Calendar
 Add New Entry: Add New Entry
 Manage Views: Manage Views
+Logout: Logout
 Manage calendar of: Manage calendar of
 
 
