@@ -13,6 +13,21 @@ load_user_layers ();
 
 include "includes/translate.inc";
 
+// don't allow them to create new users if it's not allowed
+if ( ! strlen ( $user ) ) {
+  // asking to create a new user
+  if ( ! $is_admin ) {
+    // must be admin...
+    do_redirect ( "index.php" );
+    exit;
+  }
+  if ( ! $admin_can_add_user ) {
+    // if adding users is not allowed...
+    do_redirect ( "index.php" );
+    exit;
+  }
+}
+
 ?>
 <HTML>
 <HEAD>
@@ -72,13 +87,15 @@ if ( strlen ( $user ) ) {
 <TR><TD COLSPAN=2>
 <?php if ( $demo_mode ) { ?>
   <INPUT TYPE="button" VALUE="<?php etranslate("Save")?>" ONCLICK="alert('<?php etranslate("Disabled for demo")?>')">
-  <?php if ( $is_admin && strlen ( $user ) && $admin_can_delete_user ) { ?>
+  <?php if ( $is_admin && strlen ( $user ) ) { ?>
     <INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="alert('<?php etranslate("Disabled for demo")?>')">
-   <?php } ?>
+   <?php }?>
 <?php } else { ?>
   <INPUT TYPE="submit" VALUE="<?php etranslate("Save")?>">
-  <?php if ( $is_admin && strlen ( $user ) ) { ?>
-    <INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>">
+  <?php if ( $is_admin && strlen ( $user ) ) {
+          if ( $admin_can_delete_user )
+    ?>
+    <INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')">
   <?php } ?>
 <?php } ?>
 </TD></TR>
