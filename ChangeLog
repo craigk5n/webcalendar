@@ -1,4 +1,7 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Fixed bug 597815: After setting preferences for the public user, each
+    page had a SQL error at the bottom due to an incorrect entry being added
+    to the webcal_user_pref table.
   - Added ability of an admin user to configure layers for public access user.
   - Fixed bug 595976, 583269: error generated in SQL when layers enabled
   - Updated FAQ.html with simpler instructions for configuring public access

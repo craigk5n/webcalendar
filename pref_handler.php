@@ -25,7 +25,9 @@ if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
 
 while ( list ( $key, $value ) = each ( $HTTP_POST_VARS ) ) {
   $setting = substr ( $key, 5 );
-  if ( strlen ( $setting ) > 0 ) {
+  $prefix = substr ( $key, 0, 5 );
+  //echo "Setting = $setting, key = $key, prefix = $prefix <BR>\n";
+  if ( strlen ( $setting ) > 0 && $prefix == "pref_" ) {
     $sql =
       "DELETE FROM webcal_user_pref WHERE cal_login = '$prefuser' " .
       "AND cal_setting = '$setting'";
