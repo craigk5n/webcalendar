@@ -94,7 +94,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
   if ( $categories_enabled == "Y" ) {
     echo "<br />\n<br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
-  }
+  } ?>
 </td>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <td style="text-align:right;"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" class="prevnext" /></a></td>
@@ -102,10 +102,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 </tr>
 </table>
 
-<table style="border-width:0px; width:90%;" cellspacing="0" cellpadding="0">
-<tr><td style="background-color:<?php echo $TABLEBG?>;">
-<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
-
+<table class="weekdetails" cellspacing="1" cellpadding="2">
 <?php
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
@@ -113,20 +110,12 @@ for ( $d = 0; $d < 7; $d++ ) {
   $thiswday = date ( "w", $days[$d] );
   $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
   if ( $date == date ( "Ymd", $today ) ) {
-    $hcolor = $THBG;
-    $hclass = "tableheadertoday";
-    $color = $TODAYCELLBG;
+    echo "<tr><th class=\"today\">";
   } else if ( $is_weekend ) {
-    $hcolor = $THBG;
-    $hclass = "tableheader";
-    $color = $WEEKENDBG;
+    echo "<tr><th class=\"weekend\">";
   } else {
-    $hcolor = $THBG;
-    $hclass = "tableheader";
-    $color = $CELLBG;
+    echo "<tr><th>";
   }
-
-  echo "<tr><th style=\"width:100%; background-color:$hcolor;\" class=\"$hclass\">";
   if ( empty ( $friendly ) && $can_add ) {
     echo "<a href=\"edit_entry.php?" . $u_url .
       "date=" . date ( "Ymd", $days[$d] ) . "\">" .
@@ -137,20 +126,19 @@ for ( $d = 0; $d < 7; $d++ ) {
     "date=" . date("Ymd", $days[$d] ) . "$caturl\">" .
     $header[$d] . "</a></th></tr>";
 
-  print "<tr><td style=\"vertical-align:top; height:75px;";
+  print "<tr><td";
   if ( $date == date ( "Ymd" ) )
-    echo " background-color:$color;\">";
+    echo " class=\"today\">";
   else
-    echo " background-color:$color;\">";
+    echo ">";
 
   print_det_date_entries ( $date, $user, $hide_icons, true );
   echo "&nbsp;";
   echo "</td></tr>\n";
 }
 ?>
-</tr>
 </table>
-</td></tr></table></center>
+</center>
 
 <?php if ( empty ( $friendly ) ) { ?>
 <?php echo $eventinfo; ?>
@@ -212,7 +200,7 @@ function print_detailed_entry ( $id, $date, $time, $duration,
       echo "&amp;user=" . $user;
     echo "\" onmouseover=\"window.status='" . translate("View this entry") .
       "'; return true;\" onmouseout=\"window.status=''; return true;\">";
-    echo "<img src=\"circle.gif\" style=\"width:5px; height:7px; border-width:0px;\" alt=\"view icon\" />";
+    echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"view icon\" />";
   }
 
 
