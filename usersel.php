@@ -52,8 +52,6 @@ print_header($INC,'','',true);
 
 <center>
 <form action="#">
-
-
 <table style="border-width:0px; width:100%;">
 <tr><td style="vertical-align:top;">
 <b><?php etranslate("Users"); ?>:</b><br />
@@ -68,17 +66,15 @@ if ($nonuser_enabled == "Y" ) {
 
 for ( $i = 0; $i < count ( $users ); $i++ ) {
   $u = $users[$i]['cal_login'];
-  echo "<option value=\"$u\" ";
+  echo "<option value=\"$u\"";
   if ( ! empty ( $selected[$u] ) )
-    echo "selected=\"selected\"";
-  echo "> " . $users[$i]['cal_fullname'];
+    echo " selected=\"selected\"";
+  echo ">" . $users[$i]['cal_fullname'] . "</option>\n";
 }
 ?>
 </select><br />
-<input type="button" value="<?php etranslate("All");?>"
-  onclick="selectAll()" />
-<input type="button" value="<?php etranslate("None");?>"
-  onclick="selectNone()" />
+<input type="button" value="<?php etranslate("All");?>" onclick="selectAll()" />
+<input type="button" value="<?php etranslate("None");?>" onclick="selectNone()" />
 <input type="reset" value="<?php etranslate("Reset");?>" />
 </td>
 
@@ -92,23 +88,18 @@ for ( $i = 0; $i < count ( $groups ); $i++ ) {
 }
 ?>
 </select><br />
-<input type="button" value="<?php etranslate("Add");?>"
-  onclick="selectGroupMembers();" />
-<input type="button" value="<?php etranslate("Remove");?>"
-  onclick="deselectGroupMembers();" />
+<input type="button" value="<?php etranslate("Add");?>" onclick="selectGroupMembers();" />
+<input type="button" value="<?php etranslate("Remove");?>" onclick="deselectGroupMembers();" />
 </td></tr>
 
-<tr><td colspan="2"><center>
+<tr><td style="text-align:center;" colspan="2">
 <br /><br />
-<input type="button" value="<?php etranslate("Ok");?>"
-  onclick="OkButton()" />
-<input type="button" value="<?php etranslate("Cancel");?>"
-  onclick="window.close()" />
-</center></td></tr>
+<input type="button" value="<?php etranslate("Ok");?>" onclick="OkButton()" />
+<input type="button" value="<?php etranslate("Cancel");?>" onclick="window.close()" />
+</td></tr>
 
 </table>
 
 <?php print_trailer ( false, true, true ); ?>
-
 </body>
 </html>
