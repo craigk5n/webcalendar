@@ -7,7 +7,8 @@ if ( ! $is_admin ) {
   exit;
 }
 
-print_header();
+$INC = array('js/purge.php');
+print_header($INC);
 ?>
 
 <TABLE BORDER=0>
@@ -36,7 +37,7 @@ if ( ! empty ( $user ) ) {
 } else {
 ?>
 <H2><FONT COLOR="<?=$H2COLOR?>">Delete Events</FONT></H2>
-<FORM ACTION="<?=$PHP_SELF;?>" METHOD="POST">
+<FORM ACTION="<?=$PHP_SELF;?>" METHOD="POST" NAME="purgeform">
 <TABLE>
  <TR><TD>User:</TD><TD>
 <SELECT NAME="user">
