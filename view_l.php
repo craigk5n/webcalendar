@@ -144,7 +144,7 @@ for ( $i = 0; $i < count ( $re_save ); $i++ ) {
 <tr>
 <?php
 if ( ! $friendly ) {
-  echo "<td style=\"text-align:left;\"><table class=\"viewlminical\" cellpadding=\"1\" cellspacing=\"2\">";
+  echo "<td align=\"left\"><table class=\"viewlminical\" cellpadding=\"1\" cellspacing=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $prevyear, $prevmonth, 1 );
   else
@@ -178,6 +178,9 @@ if ( ! $friendly ) {
         print "<td>&nbsp;</td>\n";
       }
     }
+    if ( isset ( $DISPLAY_WEEKNUMBER ) && $DISPLAY_WEEKNUMBER == 'Y' ) {
+      print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
+    }
     print "</tr>\n";
   }
   echo "</table></td>\n";
@@ -185,21 +188,17 @@ if ( ! $friendly ) {
 
 ?>
 <td class="viewltitle">
-<span class="date">
-<?php
+<span class="date"><?php
   echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
     $DATE_FORMAT_MY, false, false );
-?>
-</span>
-<span class="viewname">
-<?php
+?></span>
+<span class="viewname"><?php
     echo "<br />\n";
     echo $view_name;
-?>
-</span></td>
+?></span></td>
 <?php
 if ( ! $friendly ) {
-  echo "<td style=\"text-align:right;\"><table class=\"viewlminical\" cellpadding=\"1\" cellspacing=\"2\">";
+  echo "<td align=\"right\"><table class=\"viewlminical\" cellpadding=\"1\" cellspacing=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $nextyear, $nextmonth, 1 );
   else
@@ -233,6 +232,9 @@ if ( ! $friendly ) {
         print "<td>&nbsp;</td>\n";
       }
     }
+    if ( isset ( $DISPLAY_WEEKNUMBER ) && $DISPLAY_WEEKNUMBER == 'Y' ) {
+      print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
+    }
     print "</tr>\n";
   }
   echo "</table></td>\n";
@@ -245,7 +247,7 @@ if ( ! $friendly ) {
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <table class="viewl" cellspacing="1" cellpadding="2">
 <?php } else { ?>
-<table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
+<table class="viewl" cellspacing="0" cellpadding="0">
 <?php } ?>
 
 <tr>
