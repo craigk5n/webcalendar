@@ -1,3 +1,5 @@
+Verion 0.9.43 (?? ??? ????)
+  - Updated palm & vcal import tools to support new repeat type (monthlyByDayR)
 Verion 0.9.42 (21 Jul 2003)
   - Added admin options for nonuser calendars
   - Fixed bug 760236: Timezone Offset is buggy in edit_entry_handler.php

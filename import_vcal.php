@@ -189,6 +189,9 @@ function format_vcal($event) {
     } elseif (preg_match("/^MP(.+)$/i", $RR[0], $match)) {
       $fevent[Repeat][Interval] = '3';
       $fevent[Repeat][Frequency] = $match[1];
+      if ($RR[1] == '5+') {
+        $fevent[Repeat][Interval] = '6'; // Last week (monthlyByDayR)
+      }
     } elseif (preg_match("/^MD(.+)$/i", $RR[0], $match)) {
       $fevent[Repeat][Interval] = '4';
       $fevent[Repeat][Frequency] = $match[1];
@@ -271,6 +274,8 @@ function rrule_endtime($int,$freq,$start,$end) {
       $plus_m = $T;
     } elseif ($int == '5') {
       $plus_y = $T;
+    } elseif ($int == '6') {
+      $plus_m = $T;
     }
     $endtime = vcaldate_to_timestamp($start,$plus_d,$plus_m,$plus_y);
 
