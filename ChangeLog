@@ -1,3 +1,6 @@
+Version 0.9.31dev (???)
+  - Added back selectDate javascript function that was mistakenly
+    removed from edit_entry.php.
 Version 0.9.30 (08 Jun 01)
   - Generate a fatal error when MySQL returns an error instead of
     ignoring it.
