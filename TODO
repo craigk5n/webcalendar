@@ -7,6 +7,9 @@ ple     Description
 te?
 --- -------------------------------------
 
+[ ] Allow forms in custom header (right now we reference our forms by
+    number as in document.forms[0], which will not work if the user
+    has a form in the custom header)
 [ ] PHP4 sessions instead of my cookie code
     (which may be behind some of the login problems)
 [ ] User self-registration with optional email and/or admin validation
