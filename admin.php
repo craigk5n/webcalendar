@@ -26,7 +26,7 @@ $INC = array('js/admin.php');
 print_header($INC);
 ?>
 
-<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("System Settings")?></font></h2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("System Settings")?></h2>
 
 <?php
 
@@ -60,12 +60,14 @@ if ( empty ( $ovrd ) && ! $error ) {
 if ( ! $error ) {
 ?>
 
-<form action="admin_handler.php" method="post" onsubmit="return valid_form(this);">
+<form action="admin_handler.php" method="post" onSubmit="return valid_form(this);">
 
 <table style="border-width:0px;"><tr><td>
 <input type="submit" value="<?php etranslate("Save")?>" name="" />
 <script type="text/javascript">
+<!--
   document.writeln ( '<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( \'help_admin.php\', \'cal_help\', \'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420\');" />' );
+-->
 </script>
 </td></tr></table>
 <br />
@@ -78,18 +80,18 @@ if ( ! $error ) {
 <h3><?php etranslate("Settings")?></h3>
 
 <table style="border-width:0px;" cellspacing="0" cellpadding="0"><tr><td style="background-color:#000000;"><table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2"><tr><td style="width:100%; background-color:<?php echo $CELLBG ?>;"><table style="border-width:0px; width:100%;">
-<tr><td><b class="tooltip" title="<?php etooltip("app-name-help")?>"><?php etranslate("Application Name")?>:</b></td>
+<tr><td><span style="font-weight:bold;" class="tooltip" title="<?php etooltip("app-name-help")?>"><?php etranslate("Application Name")?>:</span></td>
   <td><input size="40" name="admin_application_name" value="<?php echo htmlspecialchars ( $application_name );?>" /></td></tr>
-<tr><td><b class="tooltip" title="<?php etooltip("server-url-help")?>"><?php etranslate("Server URL")?>:</b></td>
+<tr><td><span style="font-weight:bold;" class="tooltip" title="<?php etooltip("server-url-help")?>"><?php etranslate("Server URL")?>:</span></td>
   <td><input size="40" name="admin_server_url" value="<?php echo htmlspecialchars ( $server_url );?>" /></td></tr>
-<tr><td valign="top"><b class="tooltip" title="<?php etooltip("language-help");?>"><?php etranslate("Language")?>:</b></td>
-<td><select name="admin_LANGUAGE">
+<tr><td valign="top"><span style="font-weight:bold;" class="tooltip" title="<?php etooltip("language-help");?>"><?php etranslate("Language")?>:</span></td>
+<td><select name="admin_language">
 <?php
 reset ( $languages );
 while ( list ( $key, $val ) = each ( $languages ) ) {
   echo "<option value=\"" . $val . "\"";
   if ( $val == $LANGUAGE ) echo " selected=\"selected\"";
-  echo "> " . $key . "</option>\n";
+  echo ">" . $key . "</option>\n";
 }
 ?>
 </select>
@@ -97,25 +99,25 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <?php etranslate("Your browser default language is"); echo " " . get_browser_language () . "."; ?>
 </td></tr>
 
-<tr><td><b class="tooltip" title="<?php etooltip("fonts-help")?>"><?php etranslate("Fonts")?>:</b></td>
-  <td><input size="40" name="admin_FONTS" value="<?php echo htmlspecialchars ( $FONTS );?>" /></td></tr>
+<tr><td><span style="font-weight:bold;" class="tooltip" title="<?php etooltip("fonts-help")?>"><?php etranslate("Fonts")?>:</span></td>
+  <td><input size="40" name="admin_fonts" value="<?php echo htmlspecialchars ( $FONTS );?>" /></td></tr>
 
 <tr><td><b class="tooltip" title="<?php etooltip("custom-script-help");?>"><?php etranslate("Custom script/stylesheet")?>:</b></td>
-  <td><input type="radio" name="admin_CUSTOM_SCRIPT" value="Y" <?php if ( $s["CUSTOM_SCRIPT"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_CUSTOM_SCRIPT" value="N" <?php if ( $s["CUSTOM_SCRIPT"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?>
+  <td><input type="radio" name="admin_custom_script" value="Y" <?php if ( $s["CUSTOM_SCRIPT"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_custom_script" value="N" <?php if ( $s["CUSTOM_SCRIPT"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?>
   &nbsp;&nbsp;
-  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=S','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
+  <input type="button" value="<?php etranslate("Edit");?>..." onClick="window.open('edit_template.php?type=S','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
   </td></tr>
 
 <tr><td><b class="tooltip" title="<?php etooltip("custom-header-help");?>"><?php etranslate("Custom header")?>:</b></td>
   <td><input type="radio" name="admin_CUSTOM_HEADER" value="Y" <?php if ( $s["CUSTOM_HEADER"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_CUSTOM_HEADER" value="N" <?php if ( $s["CUSTOM_HEADER"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?>
   &nbsp;&nbsp;
-  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=H','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
+  <input type="button" value="<?php etranslate("Edit");?>..." onClick="window.open('edit_template.php?type=H','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
   </td></tr>
 
 <tr><td><b class="tooltip" title="<?php etooltip("custom-trailer-help");?>"><?php etranslate("Custom trailer")?>:</b></td>
   <td><input type="radio" name="admin_CUSTOM_TRAILER" value="Y" <?php if ( $s["CUSTOM_TRAILER"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_CUSTOM_TRAILER" value="N" <?php if ( $s["CUSTOM_TRAILER"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?>
   &nbsp;&nbsp;
-  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=T','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
+  <input type="button" value="<?php etranslate("Edit");?>..." onClick="window.open('edit_template.php?type=T','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
   </td></tr>
 <tr><td><b class="tooltip" title="<?php etooltip("preferred-view-help");?>"><?php etranslate("Preferred view")?>:</b></td>
 <td>
@@ -126,16 +128,16 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <option value="year" <?php if ( $s["STARTVIEW"] == "year" ) echo " selected=\"selected\"";?>><?php etranslate("Year")?></option>
 </select></td></tr>
 <tr><td><b class="tooltip" title="<?php etooltip("display-weekends-help");?>"><?php etranslate("Display weekends in week view")?>:</b></td>
-  <td><input type="radio" name="admin_DISPLAY_WEEKENDS" value="Y" <?php if ( $s["DISPLAY_WEEKENDS"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_DISPLAY_WEEKENDS" value="N" <?php if ( $s["DISPLAY_WEEKENDS"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_display_weekends" value="Y" <?php if ( $s["DISPLAY_WEEKENDS"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_display_weekends" value="N" <?php if ( $s["DISPLAY_WEEKENDS"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td><b class="tooltip" title="<?php etooltip("yearly-shows-events-help");?>"><?php etranslate("Display days with events in bold in year view")?>:</b></td>
   <td><input type="radio" name="admin_bold_days_in_year" value="Y" <?php if ( $s["bold_days_in_year"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_bold_days_in_year" value="N" <?php if ( $s["bold_days_in_year"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td><b class="tooltip" title="<?php etooltip("display-desc-print-day-help");?>"><?php etranslate("Display description in printer day view")?>:</b></td>
-  <td><input type="radio" name="admin_DISPLAY_DESC_PRINT_DAY" value="Y" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_DISPLAY_DESC_PRINT_DAY" value="N" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_display_desc_print_day" value="Y" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_display_desc_print_day" value="N" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td valign="top"><b class="tooltip" title="<?php etooltip("date-format-help");?>"><?php etranslate("Date format")?>:</b></td>
-  <td><select name="admin_DATE_FORMAT">
+  <td><select name="admin_date_format">
   <?php
   // You can add new date formats below if you want.
   // but also add in pref.php.
@@ -194,7 +196,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   ?>
   </select>
   <br />
-  <select name="admin_DATE_FORMAT_MD">
+  <select name="admin_date_format_md">
   <?php
   // Date format for a month and day (with no year displayed)
   // You can add new date formats below if you want.
@@ -218,10 +220,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 </td></tr>
 
 <tr><td><b class="tooltip" title="<?php etooltip("time-format-help")?>"><?php etranslate("Time format")?>:</b></td>
-  <td><input type="radio" name="admin_TIME_FORMAT" value="12" <?php if ( $s["TIME_FORMAT"] == "12" ) echo " checked=\"checked\"";?>> <?php etranslate("12 hour")?> <input type="radio" name="admin_TIME_FORMAT" value="24" <?php if ( $s["TIME_FORMAT"] != "12" ) echo " checked=\"checked\"";?>> <?php etranslate("24 hour")?></td></tr>
+  <td><input type="radio" name="admin_time_format" value="12" <?php if ( $s["TIME_FORMAT"] == "12" ) echo " checked=\"checked\"";?>> <?php etranslate("12 hour")?> <input type="radio" name="admin_time_format" value="24" <?php if ( $s["TIME_FORMAT"] != "12" ) echo " checked=\"checked\"";?>> <?php etranslate("24 hour")?></td></tr>
 
 <tr><td><b class="tooltip" title="<?php etooltip("time-interval-help")?>"><?php etranslate("Time interval")?>:</b></td>
-  <td><select name="admin_TIME_SLOTS">
+  <td><select name="admin_time_slots">
   <option value="24" <?php if ( $s["TIME_SLOTS"] == "24" ) echo " selected=\"selected\""?>>1 <?php etranslate("hour")?></option>
   <option value="48" <?php if ( $s["TIME_SLOTS"] == "48" ) echo " selected=\"selected\""?>>30 <?php etranslate("minutes")?></option>
   <option value="72" <?php if ( $s["TIME_SLOTS"] == "72" ) echo " selected=\"selected\""?>>20 <?php etranslate("minutes")?></option>
@@ -239,17 +241,17 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   <td><input type="radio" name="admin_require_approvals" value="Y" <?php if ( $s["require_approvals"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_require_approvals" value="N" <?php if ( $s["require_approvals"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b class="tooltip" title="<?php etooltip("display-unapproved-help");?>"><?php etranslate("Display unapproved")?>:</b></td>
-  <td><input type="radio" name="admin_DISPLAY_UNAPPROVED" value="Y" <?php if ( $s["DISPLAY_UNAPPROVED"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_DISPLAY_UNAPPROVED" value="N" <?php if ( $s["DISPLAY_UNAPPROVED"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_display_unapproved" value="Y" <?php if ( $s["DISPLAY_UNAPPROVED"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_display_unapproved" value="N" <?php if ( $s["DISPLAY_UNAPPROVED"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td><b class="tooltip" title="<?php etooltip("display-week-number-help")?>"><?php etranslate("Display week number")?>:</b></td>
-  <td><input type="radio" name="admin_DISPLAY_WEEKNUMBER" value="Y" <?php if ( $s["DISPLAY_WEEKNUMBER"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_DISPLAY_WEEKNUMBER" value="N" <?php if ( $s["DISPLAY_WEEKNUMBER"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_display_weeknumber" value="Y" <?php if ( $s["DISPLAY_WEEKNUMBER"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_display_weeknumber" value="N" <?php if ( $s["DISPLAY_WEEKNUMBER"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td><b class="tooltip" title="<?php etooltip("display-week-starts-on")?>"><?php etranslate("Week starts on")?>:</b></td>
-  <td><input type="radio" name="admin_WEEK_START" value="0" <?php if ( $s["WEEK_START"] != "1" ) echo " checked=\"checked\"";?>> <?php etranslate("Sunday")?> <input type="radio" name="admin_WEEK_START" value="1" <?php if ( $s["WEEK_START"] == "1" ) echo " checked=\"checked\"";?>> <?php etranslate("Monday")?></td></tr>
+  <td><input type="radio" name="admin_week_start" value="0" <?php if ( $s["WEEK_START"] != "1" ) echo " checked=\"checked\"";?>> <?php etranslate("Sunday")?> <input type="radio" name="admin_week_start" value="1" <?php if ( $s["WEEK_START"] == "1" ) echo " checked=\"checked\"";?>> <?php etranslate("Monday")?></td></tr>
 
 <tr><td><b class="tooltip" title="<?php etooltip("work-hours-help")?>"><?php etranslate("Work hours")?>:</b></td>
   <td>
-  <?php etranslate("From")?> <select name="admin_WORK_DAY_START_HOUR">
+  <?php etranslate("From")?> <select name="admin_work_day_start_hour">
   <?php
   for ( $i = 0; $i < 24; $i++ ) {
     echo "<option value=\"$i\" " .
@@ -258,7 +260,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   }
   ?>
   </select> <?php etranslate("to")?>
-  <select name="admin_WORK_DAY_END_HOUR">
+  <select name="admin_work_day_end_hour">
   <?php
   for ( $i = 0; $i < 24; $i++ ) {
     echo "<option value=\"$i\" " .
@@ -335,8 +337,6 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b class="tooltip" title="<?php etooltip("limit-appts-number-help")?>"><?php etranslate("Maximum timed events per day")?>:</b></td>
   <td><input size="3" name="admin_limit_appts_number" value="<?php echo htmlspecialchars ( $limit_appts_number );?>" /></td></tr>
-
-
 </table></td></tr></table></td></tr></table>
 
 <!--
@@ -426,77 +426,77 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <tr><td><b class="tooltip" title="<?php etooltip("email-enabled-help")?>"><?php etranslate("Email enabled")?>:</b></td>
   <td><input type="radio" name="admin_send_email" value="Y" <?php if ( $s["send_email"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_send_email" value="N" <?php if ( $s["send_email"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b class="tooltip" title="<?php etooltip("email-default-sender")?>"><?php etranslate("Default sender address")?>:</b></td>
-  <td><input size="30" name="admin_email_fallback_from" value="<?php echo htmlspecialchars ( $email_fallback_from );?>"></td></tr>
+  <td><input size="30" name="admin_email_fallback_from" value="<?php echo htmlspecialchars ($email_fallback_from );?>" /></td></tr>
 
 
 <tr><td colspan="2" style="font-weight:bold;"><?php etranslate("Default user settings")?>:</td></tr>
 
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b class="tooltip" title="<?php etooltip("email-event-reminders-help")?>"><?php etranslate("Event reminders")?>:</b></td>
-  <td><input type="radio" name="admin_EMAIL_REMINDER" value="Y" <?php if ( $s["EMAIL_REMINDER"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_EMAIL_REMINDER" value="N" <?php if ( $s["EMAIL_REMINDER"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_email_reminder" value="Y" <?php if ( $s["EMAIL_REMINDER"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_email_reminder" value="N" <?php if ( $s["EMAIL_REMINDER"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b class="tooltip" title="<?php etooltip("email-event-added")?>"><?php etranslate("Events added to my calendar")?>:</b></td>
-  <td><input type="radio" name="admin_EMAIL_EVENT_ADDED" value="Y" <?php if ( $s["EMAIL_EVENT_ADDED"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_EMAIL_EVENT_ADDED" value="N" <?php if ( $s["EMAIL_EVENT_ADDED"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_email_event_added" value="Y" <?php if ( $s["EMAIL_EVENT_ADDED"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_email_event_added" value="N" <?php if ( $s["EMAIL_EVENT_ADDED"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b class="tooltip" title="<?php etooltip("email-event-updated")?>"><?php etranslate("Events updated on my calendar")?>:</b></td>
-  <td><input type="radio" name="admin_EMAIL_EVENT_UPDATED" value="Y" <?php if ( $s["EMAIL_EVENT_UPDATED"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_EMAIL_EVENT_UPDATED" value="N" <?php if ( $s["EMAIL_EVENT_UPDATED"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_email_event_updated" value="Y" <?php if ( $s["EMAIL_EVENT_UPDATED"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_email_event_updated" value="N" <?php if ( $s["EMAIL_EVENT_UPDATED"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b class="tooltip" title="<?php etooltip("email-event-deleted");?>"><?php etranslate("Events removed from my calendar")?>:</b></td>
-  <td><input type="radio" name="admin_EMAIL_EVENT_DELETED" value="Y" <?php if ( $s["EMAIL_EVENT_DELETED"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_EMAIL_EVENT_DELETED" value="N" <?php if ( $s["EMAIL_EVENT_DELETED"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_email_event_deleted" value="Y" <?php if ( $s["EMAIL_EVENT_DELETED"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_email_event_deleted" value="N" <?php if ( $s["EMAIL_EVENT_DELETED"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<b class="tooltip" title="<?php etooltip("email-event-rejected")?>"><?php etranslate("Event rejected by participant")?>:</b></td>
-  <td><input type="radio" name="admin_EMAIL_EVENT_REJECTED" value="Y" <?php if ( $s["EMAIL_EVENT_REJECTED"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_EMAIL_EVENT_REJECTED" value="N" <?php if ( $s["EMAIL_EVENT_REJECTED"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_email_event_rejected" value="Y" <?php if ( $s["EMAIL_EVENT_REJECTED"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_email_event_rejected" value="N" <?php if ( $s["EMAIL_EVENT_REJECTED"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 </table></td></tr></table></td></tr></table>
 
 
 <h3><span class="tooltip" title="<?php etooltip("colors-help")?>"><?php etranslate("Colors")?></span></h3>
 
-<table border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#000000"><table border="0" width="100%" cellspacing="1" cellpadding="2"><tr><td width="100%" bgcolor="<?php echo $CELLBG ?>"><table border="0" width="100%">
+<table style="border-width:0px;" cellspacing="0" cellpadding="0"><tr><td style="background-color:#000000;"><table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2"><tr><td style="width:100%; background-color:<?php echo $CELLBG ?>;"><table style="border-width:0px; width:100%;">
 
 <tr><td><b><?php etranslate("Allow user to customize colors")?>:</b></td>
   <td colspan="3"><input type="radio" name="admin_allow_color_customization" value="Y" <?php if ( $s["allow_color_customization"] != "N" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_allow_color_customization" value="N" <?php if ( $s["allow_color_customization"] == "N" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 
 
 <tr><td><b><?php etranslate("Document background")?>:</b></td>
-  <td><input name="admin_BGCOLOR" size="8" maxlength="7" value="<?php echo $s["BGCOLOR"]; ?>"></td><td bgcolor="<?php echo $s["BGCOLOR"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onclick="selectColor('admin_BGCOLOR')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
+  <td><input name="admin_bgcolor" size="8" maxlength="7" value="<?php echo $s["BGCOLOR"]; ?>" /></td><td style="background-color:<?php echo $s["BGCOLOR"]?>;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onClick="selectColor('admin_BGCOLOR')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
 
 <tr><td><b><?php etranslate("Document title")?>:</b></td>
-  <td><input name="admin_H2COLOR" size="8" maxlength="7" value="<?php echo $s["H2COLOR"]; ?>"> </td><td bgcolor="<?php echo $s["H2COLOR"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onclick="selectColor('admin_H2COLOR')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
+  <td><input name="admin_h2color" size="8" maxlength="7" value="<?php echo $s["H2COLOR"]; ?>" /> </td><td bgcolor="<?php echo $s["H2COLOR"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onClick="selectColor('admin_H2COLOR')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
 
 <tr><td><b><?php etranslate("Document text")?>:</b></td>
-  <td><input name="admin_TEXTCOLOR" size="8" maxlength="7" value="<?php echo $s["TEXTCOLOR"]; ?>"> </td><td bgcolor="<?php echo $s["TEXTCOLOR"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onclick="selectColor('admin_TEXTCOLOR')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
+  <td><input name="admin_TEXTCOLOR" size="8" maxlength="7" value="<?php echo $s["TEXTCOLOR"]; ?>"> </td><td bgcolor="<?php echo $s["TEXTCOLOR"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onClick="selectColor('admin_TEXTCOLOR')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
 
 <tr><td><b><?php etranslate("Table grid color")?>:</b></td>
-  <td><input name="admin_TABLEBG" size="8" maxlength="7" value="<?php echo $s["TABLEBG"]; ?>"> </td><td bgcolor="<?php echo $s["TABLEBG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onclick="selectColor('admin_TABLEBG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
+  <td><input name="admin_TABLEBG" size="8" maxlength="7" value="<?php echo $s["TABLEBG"]; ?>"> </td><td bgcolor="<?php echo $s["TABLEBG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onClick="selectColor('admin_TABLEBG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
 
 <tr><td><b><?php etranslate("Table header background")?>:</b></td>
-  <td><input name="admin_THBG" size="8" maxlength="7" value="<?php echo $s["THBG"]; ?>"></td><td bgcolor="<?php echo $s["THBG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onclick="selectColor('admin_THBG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
+  <td><input name="admin_THBG" size="8" maxlength="7" value="<?php echo $s["THBG"]; ?>"></td><td bgcolor="<?php echo $s["THBG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onClick="selectColor('admin_THBG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
 
 	<tr><td><b><?php etranslate("Table header text")?>:</b></td>
-	  <td><input name="admin_THFG" size="8" maxlength="7" value="<?php echo $s["THFG"]; ?>"></td><td bgcolor="<?php echo $s["THFG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onclick="selectColor('admin_THFG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
+	  <td><input name="admin_THFG" size="8" maxlength="7" value="<?php echo $s["THFG"]; ?>"></td><td bgcolor="<?php echo $s["THFG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onClick="selectColor('admin_THFG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
 
 	<tr><td><b><?php etranslate("Table cell background")?>:</b></td>
-	  <td><input name="admin_CELLBG" size="8" maxlength="7" value="<?php echo $s["CELLBG"]; ?>"></td><td bgcolor="<?php echo $s["CELLBG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onclick="selectColor('admin_CELLBG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
+	  <td><input name="admin_CELLBG" size="8" maxlength="7" value="<?php echo $s["CELLBG"]; ?>"></td><td bgcolor="<?php echo $s["CELLBG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onClick="selectColor('admin_CELLBG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
 
 	<tr><td><b><?php etranslate("Table cell background for current day")?>:</b></td>
-	  <td><input name="admin_TODAYCELLBG" size="8" maxlength="7" value="<?php echo $s["TODAYCELLBG"]; ?>"></td><td bgcolor="<?php echo $s["TODAYCELLBG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onclick="selectColor('admin_TODAYCELLBG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
+	  <td><input name="admin_TODAYCELLBG" size="8" maxlength="7" value="<?php echo $s["TODAYCELLBG"]; ?>"></td><td bgcolor="<?php echo $s["TODAYCELLBG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onClick="selectColor('admin_TODAYCELLBG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
 
 	<tr><td><b><?php etranslate("Table cell background for weekends")?>:</b></td>
-	  <td><input name="admin_WEEKENDBG" size="8" maxlength="7" value="<?php echo $s["WEEKENDBG"]; ?>"></td><td bgcolor="<?php echo $s["WEEKENDBG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onclick="selectColor('admin_WEEKENDBG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
+	  <td><input name="admin_WEEKENDBG" size="8" maxlength="7" value="<?php echo $s["WEEKENDBG"]; ?>"></td><td bgcolor="<?php echo $s["WEEKENDBG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onClick="selectColor('admin_WEEKENDBG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
 
 	<tr><td><b><?php etranslate("Event popup background")?>:</b></td>
-	  <td><input name="admin_POPUP_BG" size="8" maxlength="7" value="<?php echo $s["POPUP_BG"]; ?>"></td><td bgcolor="<?php echo $s["POPUP_BG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onclick="selectColor('admin_POPUP_BG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
+	  <td><input name="admin_POPUP_BG" size="8" maxlength="7" value="<?php echo $s["POPUP_BG"]; ?>"></td><td bgcolor="<?php echo $s["POPUP_BG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onClick="selectColor('admin_POPUP_BG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
 
 <tr><td><b><?php etranslate("Event popup text")?>:</b></td>
-  <td><input name="admin_POPUP_FG" size="8" maxlength="7" value="<?php echo $s["POPUP_FG"]; ?>" name=""></td><td bgcolor="<?php echo $s["POPUP_FG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onclick="selectColor('admin_POPUP_FG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
-
+  <td><input name="admin_POPUP_FG" size="8" maxlength="7" value="<?php echo $s["POPUP_FG"];?>" name="" /></td><td bgcolor="<?php echo $s["POPUP_FG"]?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input type="button" onClick="selectColor('admin_POPUP_FG')" value="<?php etranslate("Select")?>..." name="" /></td></tr>
 </table></td></tr></table></td></tr></table>
-
 
 <br /><br />
 <table border="0"><tr><td>
 <input type="submit" value="<?php etranslate("Save")?>" name="" />
 <script type="text/javascript">
+<!--
   document.writeln ( '<input type="button" VALUE="<?php etranslate("Help")?>..." onclick="window.open ( \'help_admin.php\', \'cal_help\', \'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420\');" />' );
+-->
 </script>
 </td></tr></table>
 </form>

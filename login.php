@@ -123,7 +123,7 @@ if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
 ?>
 
 </head>
-<body bgcolor="<?php echo $BGCOLOR;?>" onload="myOnLoad();" class="defaulttext">
+<body style="background-color:<?php echo $BGCOLOR;?>;" onload="myOnLoad();" class="defaulttext">
 
 <?php
 // Print custom header (since we do not call print_header function)
@@ -140,7 +140,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 }
 ?>
 
-<h2><font color="<?php echo $H2COLOR?>"><?php etranslate($application_name)?></font></h2>
+<h2 style="color:<?php echo $H2COLOR?>;"><?php etranslate($application_name)?></h2>
 
 <?php
 if ( ! empty ( $error ) ) {
@@ -148,7 +148,7 @@ if ( ! empty ( $error ) ) {
     ": $error</span><br />\n";
 }
 ?>
-<form name="login_form" action="login.php" method="POST" onsubmit="return valid_form(this)">
+<form name="login_form" action="login.php" method="post" onsubmit="return valid_form(this)">
 
 <?php
 if ( ! empty ( $return_path ) )

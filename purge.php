@@ -11,14 +11,14 @@ $INC = array('js/purge.php');
 print_header($INC);
 ?>
 
-<TABLE BORDER="0">
-<TR><TD VALIGN="top" WIDTH="50%">
+<table border="0">
+<tr><td valign="top" width="50%">
 
 <?php
 $ALL = 0;
 if ( ! empty ( $user ) ) {
-  echo "<H2><FONT COLOR=\"$H2COLOR\">" .
-    translate("Purging events for") . " $user...</FONT></H2>\n";
+  echo "<h2 style=\"color:$H2COLOR;\">" .
+    translate("Purging events for") . " $user...</h2>\n";
   $ids = '';
   $end_date = sprintf ( "%04d%02d%02d, ", $end_year,$end_month,$end_day);
   if ( $purge_all == "Y" ) {
@@ -38,15 +38,15 @@ if ( ! empty ( $user ) ) {
     $ids = array_merge ( $E_ids, $M_ids );
   }
   if ( $ids ) purge_events ( $ids );
-  echo "<H2><FONT COLOR=\"$H2COLOR\">..." .
-    translate("Finished") . ".</FONT></H2>\n";
+  echo "<h2 style=\"color:$H2COLOR;\">..." .
+    translate("Finished") . ".</h2>\n";
 } else {
 ?>
-<H2><FONT COLOR="<?=$H2COLOR?>"><?php etranslate("Delete Events")?></FONT></H2>
-<FORM ACTION="<?=$PHP_SELF;?>" METHOD="POST" NAME="purgeform">
-<TABLE>
- <TR><TD><?php etranslate("User");?>:</TD><TD>
-<SELECT NAME="user">
+<h2 style="color:<?=$H2COLOR?>;"><?php etranslate("Delete Events")?></h2>
+<form action="<?=$PHP_SELF;?>" method="post" name="purgeform">
+<table>
+ <tr><td><?php etranslate("User");?>:</td><td>
+<select name="user">
 
 <?
   $userlist = get_my_users ();
@@ -55,27 +55,27 @@ if ( ! empty ( $user ) ) {
     $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-    echo "<OPTION VALUE=\"".$userlist[$i]['cal_login']."\">".$userlist[$i]['cal_fullname']."</option>\n";
+    echo "<option value=\"".$userlist[$i]['cal_login']."\">".$userlist[$i]['cal_fullname']."</option>\n";
   }
 ?>
 
-<OPTION VALUE="ALL" SELECTED="SELECTED"><?php etranslate("All")?></option>
-</SELECT></TD></TR>
-<TR><TD><?php etranslate("Delete all events before");?>:</TD><TD>
+<option value="all" selected="selected"><?php etranslate("All")?></option>
+</select></td></tr>
+<tr><td><?php etranslate("Delete all events before");?>:</td><td>
 <? print_date_selection ( "end_", date ( "Ymd" ) ) ?>
-</TD></TR>
-<TR><TD><?php etranslate("Check box to delete <b>ALL</b> events for a user")?>:</TD><TD valign="bottom"><INPUT TYPE="checkbox" NAME="purge_all" VALUE="Y" /></TD></TR>
-<TR><TD colspan="2">
-<INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="return confirm('<?php etranslate("Are you sure you want to delete events for");?> ' + document.forms[0].user.value + '?')" />
-</TD></TR></TABLE>
-</FORM>
+</td></tr>
+<tr><td><?php etranslate("Check box to delete <b>ALL</b> events for a user")?>:</td><td valign="bottom"><input type="checkbox" name="purge_all" value="Y" /></td></tr>
+<tr><td colspan="2">
+<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete events for");?> ' + document.forms[0].user.value + '?')" />
+</td></tr></table>
+</form>
 
 <?php } ?>
-</TD></TR></TABLE>
+</td></tr></table>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>
 
 <?
 function purge_events ( $ids ) {

@@ -21,17 +21,17 @@ $COLUMNS = 3;
 
 
 $style = "
-<style>
-table.admintable {
+<style type=\"text/css\">
+table.admin {
   padding: 5px;
   border: 1px solid #000000;
   background-color: #CCCCCC;
 }
-td.admincell {
+table.admin td {
   padding: 20px;
   text-align: center;
 }
-td.admincell a {
+.admin td a {
   padding: 10px;
   width: 200px;
   text-align: center;
@@ -41,7 +41,7 @@ td.admincell a {
   border-bottom: 1px solid #777777;
   border-right: 1px solid #777777;
 }
-td.admincell a:hover {
+.admin td a:hover {
   padding: 10px;
   width: 200px;
   text-align: center;
@@ -129,7 +129,7 @@ if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' &&
 
 <h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Administrative Tools")?></h2>
 
-<table class="admintable">
+<table class="admin">
 
 <?php
   for ( $i = 0; $i < count ( $names ); $i++ ) {
@@ -137,9 +137,9 @@ if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' &&
     echo "<tr>\n";
 //  if ( $i % 0 == 1 )
 //      echo "<tr>\n";
-    echo "<td class=\"admincell\">";
+    echo "<td>";
     if ( ! empty ( $links[$i] ) )
-      echo "<a href=\"$links[$i]\" class=\"admincell\">";
+      echo "<a href=\"$links[$i]\">";
     echo $names[$i];
     if ( ! empty ( $links[$i] ) )
       echo "</a>";

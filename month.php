@@ -23,8 +23,8 @@ $enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
 
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
-  $HeadX = "<META HTTP-EQUIV=\"refresh\" content=\"$refresh; URL=month.php?$u_url" .
-    "date=$startdate$caturl\" TARGET=\"_self\">\n";
+  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=month.php?$u_url" .
+    "date=$startdate$caturl\" target=\"_self\" />\n";
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
@@ -39,89 +39,89 @@ $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
 
 ?>
 
-<TABLE BORDER="0" WIDTH="100%">
-<TR>
+<table style="border-width:0px; width:100%;">
+<tr>
 <?php
 
 if ( ! $friendly ) {
-  echo '<TD ALIGN="left"><TABLE BORDER=0>';
+  echo '<td style=\"text-align:left;\"><table style=\"border-width:0px;\">';
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $prevyear, $prevmonth, 1 );
   else
     $wkstart = get_sunday_before ( $prevyear, $prevmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $prevmonth, 1, $prevyear );
   $monthend = mktime ( 3, 0, 0, $prevmonth + 1, 0, $prevyear );
-  echo "<TR><TD COLSPAN=7 ALIGN=\"middle\"><FONT SIZE=\"-1\">" .
-    "<A HREF=\"month.php?$u_url&";
+  echo "<tr><td colspan=\"7\" style=\"text-align:center;\"><FONT SIZE=\"-1\">" .
+    "<a href=\"month.php?$u_url&";
   $prevmonth_name = month_name ( $prevmonth );
-  echo "year=$prevyear&month=$prevmonth$caturl\" CLASS=\"monthlink\">" .
+  echo "year=$prevyear&month=$prevmonth$caturl\" class=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $prevyear, $prevmonth ),
     $DATE_FORMAT_MY, false, false ) .
-    "</A></FONT></TD></TR>\n";
-  echo "<TR>";
-  if ( $WEEK_START == 0 ) echo "<TD><FONT SIZE=\"-2\">" .
-    weekday_short_name ( 0 ) . "</TD>";
+    "</a></font></td></tr>\n";
+  echo "<tr>";
+  if ( $WEEK_START == 0 ) echo "<td><font size=\"-2\">" .
+    weekday_short_name ( 0 ) . "</td>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<TD><FONT SIZE=\"-2\">" .
-      weekday_short_name ( $i ) . "</TD>";
+    echo "<td><font size=\"-2\">" .
+      weekday_short_name ( $i ) . "</td>";
   }
-  if ( $WEEK_START == 1 ) echo "<TD><FONT SIZE=\"-2\">" .
-    weekday_short_name ( 0 ) . "</TD>";
-  echo "</TR>\n";
+  if ( $WEEK_START == 1 ) echo "<td><font size=\"-2\">" .
+    weekday_short_name ( 0 ) . "</td>";
+  echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     $i += ( 24 * 3600 * 7 ) ) {
-    print "<TR>\n";
+    print "<tr>\n";
     for ( $j = 0; $j < 7; $j++ ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<TD><FONT SIZE=\"-2\">" . date ( "d", $date ) . "</FONT></TD>\n";
+        print "<td><font size=\"-2\">" . date ( "d", $date ) . "</font></td>\n";
       } else {
-        print "<TD></TD>\n";
+        print "<td>&nbsp;</td>\n";
       }
     }
-    print "</TR>\n";
+    print "</tr>\n";
   }
-  echo "</TABLE></TD>\n";
+  echo "</table></td>\n";
 }
 
 ?>
 
-<TD ALIGN="middle">
-<FONT SIZE="+2" COLOR="<?php echo $H2COLOR?>">
-<B>
+<td style="text-align:center;">
+<font size="+2" color="<?php echo $H2COLOR?>">
+<b>
 <?php
   echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
     $DATE_FORMAT_MY, false, false );
 ?>
-</B></FONT>
-<FONT COLOR="<?php echo $H2COLOR?>" SIZE="+1">
+</b></font>
+<font color="<?php echo $H2COLOR?>" size="+1">
 <?php
   if ( $single_user == "N" ) {
-    echo "<BR>\n";
+    echo "<br />\n";
     echo $user_fullname;
   }
   if ( $is_nonuser_admin )
-    echo "<B><BR>-- " . translate("Admin mode") . " --</B>";
+    echo "<b><br />-- " . translate("Admin mode") . " --</b>";
   if ( $is_assistant )
-    echo "<B><BR>-- " . translate("Assistant mode") . " --</B>";
+    echo "<b><br />-- " . translate("Assistant mode") . " --</b>";
   if ( $categories_enabled == "Y" && (!$user || $user == $login)) {
-    echo "<BR>\n<BR>\n";
+    echo "<br />\n<br />\n";
     print_category_menu('month',sprintf ( "%04d%02d01",$thisyear, $thismonth ),$cat_id, $friendly );
   }
 
 ?>
-</FONT></TD>
+</font></td>
 <?php
 if ( ! $friendly ) {
-  echo '<TD ALIGN="right"><TABLE BORDER=0>';
+  echo '<td align=\"right\"><table border=\"0\">';
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $nextyear, $nextmonth, 1 );
   else
     $wkstart = get_sunday_before ( $nextyear, $nextmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $nextmonth, 1, $nextyear );
   $monthend = mktime ( 3, 0, 0, $nextmonth + 1, 0, $nextyear );
-  echo "<TR><TD COLSPAN=7 ALIGN=\"middle\"><FONT SIZE=\"-1\">" .
+  echo "<TR><TD COLSPAN=\"7\" ALIGN=\"middle\"><FONT SIZE=\"-1\">" .
     "<A HREF=\"month.php?$u_url";
   echo "year=$nextyear&month=$nextmonth$caturl\" CLASS=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $nextyear, $nextmonth ),
@@ -161,25 +161,25 @@ if ( ! $friendly ) {
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <TABLE BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
 <TR><TD BGCOLOR="<?php echo $TABLEBG?>">
-<TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2">
+<TABLE style="border:0px; width:100%;" CELLSPACING="1" CELLPADDING="2">
 <?php } else { ?>
-<TABLE BORDER="1" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
+<TABLE style="border:1px; width:100%;" CELLSPACING="0" CELLPADDING="0">
 <?php } ?>
 
-<TR>
+<tr>
 <?php if ( $WEEK_START == 0 ) { ?>
-<TH WIDTH="14%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php etranslate("Sun")?></FONT></TH>
+<th style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Sun")?></th>
 <?php } ?>
-<TH WIDTH="14%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php etranslate("Mon")?></FONT></TH>
-<TH WIDTH="14%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php etranslate("Tue")?></FONT></TH>
-<TH WIDTH="14%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php etranslate("Wed")?></FONT></TH>
-<TH WIDTH="14%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php etranslate("Thu")?></FONT></TH>
-<TH WIDTH="14%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php etranslate("Fri")?></FONT></TH>
-<TH WIDTH="14%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php etranslate("Sat")?></FONT></TH>
+<th style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Mon")?></th>
+<th style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Tue")?></th>
+<th style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Wed")?></th>
+<th style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Thu")?></th>
+<th style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Fri")?></th>
+<th style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Sat")?></th>
 <?php if ( $WEEK_START == 1 ) { ?>
-<TH WIDTH="14%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php etranslate("Sun")?></FONT></TH>
+<th style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Sun")?></th>
 <?php } ?>
-</TR>
+</tr>
 
 <?php
 
@@ -195,15 +195,15 @@ $monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
 $monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 
 // debugging
-//echo "<P>sun = " . date ( "D, m-d-Y", $sun ) . "<BR>";
-//echo "<P>monthstart = " . date ( "D, m-d-Y", $monthstart ) . "<BR>";
-//echo "<P>monthend = " . date ( "D, m-d-Y", $monthend ) . "<BR>";
+//echo "<p>sun = " . date ( "D, m-d-Y", $sun ) . "</p>";
+//echo "<p>monthstart = " . date ( "D, m-d-Y", $monthstart ) . "</p>";
+//echo "<p>monthend = " . date ( "D, m-d-Y", $monthend ) . "</p>";
 
 // NOTE: if you make HTML changes to this table, make the same changes
 // to the example table in pref.php.
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( 24 * 3600 * 7 ) ) {
-  print "<TR>\n";
+  print "<tr>\n";
   for ( $j = 0; $j < 7; $j++ ) {
     $date = $i + ( $j * 24 * 3600 );
     if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
@@ -215,34 +215,34 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $color = $is_weekend ? $WEEKENDBG : $CELLBG;
       if ( empty ( $color ) )
         $color = "#C0C0C0";
-      print "<TD VALIGN=\"top\" HEIGHT=75 ID=\"$class\" ";
+      print "<td valign=\"top\" height=\"75\" id=\"$class\" ";
       if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) )
-        echo "BGCOLOR=\"$TODAYCELLBG\">";
+        echo "style=\"background-color:$TODAYCELLBG;\">";
       else
-        echo "BGCOLOR=\"$color\">";
-      //echo date ( "D, m-d-Y H:i:s", $date ) . "<BR>";
+        echo "style=\"background-color:$color;\">";
+      //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       print_date_entries ( date ( "Ymd", $date ),
         ( ! empty ( $user ) ) ? $user : $login,
         $friendly, false );
-      print "</TD>\n";
+      print "</td>\n";
     } else {
-      print "<TD VALIGN=\"top\" HEIGHT=75 ID=\"tablecell\" BGCOLOR=\"$CELLBG\">&nbsp;</TD>\n";
+      print "<td valign=\"top\" height=\"75\" id=\"tablecell\" style=\"background-color:$CELLBG;\">&nbsp;</TD>\n";
     }
   }
-  print "</TR>\n";
+  print "</tr>\n";
 }
 
 ?>
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-</TABLE>
-</TD></TR></TABLE>
+</table>
+</td></tr></table>
 <?php } else { ?>
-</TABLE>
+</table>
 <?php } ?>
 
 
-<P>
+<br /><br />
 
 <?php if ( empty ( $friendly ) ) echo $eventinfo; ?>
 
@@ -250,19 +250,19 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
-<P>
-<A CLASS="navlinks" HREF="month.php?<?php
+<br /><br />
+<a class="navlinks" href="month.php?<?php
   if ( $thisyear ) {
     echo "year=$thisyear&month=$thismonth&";
   }
   if ( ! empty ( $user ) ) echo "user=$user&";
   if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&";
-?>friendly=1" TARGET="cal_printer_friendly"
-onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
+?>friendly=1" target="cal_printer_friendly"
+onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 <?php }
 print_trailer ();
 ?>
 
-</BODY>
-</HTML>
+</body>
+</html>

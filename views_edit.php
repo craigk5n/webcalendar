@@ -8,7 +8,7 @@ $INC = array('js/views_edit.php');
 print_header($INC);
 ?>
 
-<FORM ACTION="views_edit_handler.php" METHOD="POST" NAME="editviewform">
+<form action="views_edit_handler.php" method="post" name="editviewform">
 
 <?php
 
@@ -35,37 +35,31 @@ if ( empty ( $id ) ) {
 
 if ( $newview ) {
   $v = array ();
-  echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Add View") . "</FONT></H2>\n";
-  echo "<INPUT TYPE=\"hidden\" NAME=\"add\" VALUE=\"1\">\n";
+  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Add View") . "</h2>\n";
+  echo "<input type=\"hidden\" name=\"add\" value=\"1\" />\n";
 } else {
-  echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Edit View") . "</FONT></H2>\n";
-  echo "<INPUT NAME=\"id\" TYPE=\"hidden\" VALUE=\"$id\">";
+  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Edit View") . "</H2>\n";
+  echo "<input name=\"id\" type=\"hidden\" value=\"$id\" />";
 }
 ?>
 
-<TABLE BORDER="0">
-<TR><TD><B><?php etranslate("View Name")?>:</B></TD>
-  <TD><INPUT NAME="viewname" SIZE=20 VALUE="<?php echo htmlspecialchars ( $viewname );?>"></TD></TR>
-<TR><TD><B><?php etranslate("View Type")?>:</B></TD>
+<table border="0">
+<tr><td><b><?php etranslate("View Name")?>:</b></td>
+  <td><input name="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>"></td></tr>
+<tr><td><b><?php etranslate("View Type")?>:</b></td>
   <TD><SELECT NAME="viewtype">
-      <OPTION VALUE="D" <?php if ( $viewtype == "D" ) echo "SELECTED";?> >
-        <?php etranslate("Day"); ?>
-      <OPTION VALUE="W" <?php if ( $viewtype == "W" ) echo "SELECTED";?> >
-        <?php etranslate("Week (Users horizontal)"); ?>
-      <OPTION VALUE="V" <?php if ( $viewtype == "V" ) echo "SELECTED";?> >
-        <?php etranslate("Week (Users vertical)"); ?>
-      <OPTION VALUE="T" <?php if ( $viewtype == "T" ) echo "SELECTED";?> >
-        <?php etranslate("Week (Timebar)"); ?>
-      <OPTION VALUE="M" <?php if ( $viewtype == "M" ) echo "SELECTED";?> >
-        <?php etranslate("Month (side by side)"); ?>
-      <OPTION VALUE="L" <?php if ( $viewtype == "L" ) echo "SELECTED";?> >
-        <?php etranslate("Month (on same calendar)"); ?>
+      <OPTION VALUE="D" <?php if ( $viewtype == "D" ) echo " selected=\"selected\"";?>><?php etranslate("Day"); ?></option>
+      <OPTION VALUE="W" <?php if ( $viewtype == "W" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Users horizontal)"); ?></option>
+      <OPTION VALUE="V" <?php if ( $viewtype == "V" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Users vertical)"); ?></option>
+      <OPTION VALUE="T" <?php if ( $viewtype == "T" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Timebar)"); ?></option>
+      <OPTION VALUE="M" <?php if ( $viewtype == "M" ) echo " selected=\"selected\"";?>><?php etranslate("Month (side by side)"); ?></option>
+      <OPTION VALUE="L" <?php if ( $viewtype == "L" ) echo " selected=\"selected\"";?>><?php etranslate("Month (on same calendar)"); ?></option>
       </SELECT>
       </TD></TR>
 <TR><TD VALIGN="top">
 <B><?php etranslate("Users"); ?>:</B></TD>
 <TD>
-<SELECT NAME="users[]" SIZE="10" MULTIPLE>
+<SELECT NAME="users[]" SIZE="10" multiple="multiple">
 <?php
   // get list of all users
   $users = get_my_users ();
@@ -86,16 +80,16 @@ if ( $newview ) {
   }
   for ( $i = 0; $i < count ( $users ); $i++ ) {
     $u = $users[$i]['cal_login'];
-    echo "<OPTION VALUE=\"$u\" ";
+    echo "<OPTION VALUE=\"$u\"";
     if ( ! empty ( $viewuser[$u] ) ) {
-      echo "SELECTED";
+      echo " selected=\"selected\"";
     }
     echo "> " . $users[$i]['cal_fullname'];
   }
 ?>
 </SELECT>
 <?php if ( $groups_enabled == "Y" ) { ?>
-  <INPUT TYPE="button" ONCLICK="selectUsers()" VALUE="<?php etranslate("Select");?>...">
+  <INPUT TYPE="button" ONCLICK="selectUsers()" VALUE="<?php etranslate("Select");?>..." />
 <?php } ?>
 </TD></TR>
 <TR><TD COLSPAN="2">

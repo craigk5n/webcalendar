@@ -5,18 +5,18 @@ $PAGE_SIZE = 25;
 print_header();
 
 echo "<h3>" . translate("Activity Log") . "</h3>\n";
-echo "<table border=\"0\" width=\"100%\">\n";
+echo "<table style=\"border-width:0px; width:100%;\">\n";
 echo "<tr>";
-echo "<th align=\"left\" bgcolor=\"$THBG\" width=\"10%\"><font color=\"$THFG\">" .
-  translate("User") . "</font></th>";
-echo "<th align=\"left\" bgcolor=\"$THBG\" width=\"10%\"><font COLOR=\"$THFG\">" .
-  translate("Calendar") . "</font></th>";
-echo "<th ALIGN=\"left\" bgcolor=\"$THBG\" width=\"25%\"><font COLOR=\"$THFG\">" .
-  translate("Date") . "/" . translate("Time") . "</font></th>";
-echo "<th ALIGN=\"left\" bgcolor=\"$THBG\" width=\"30%\"><font COLOR=\"$THFG\">" .
-  translate("Event") . "</font></th>";
-echo "<th ALIGN=\"left\" bgcolor=\"$THBG\" width=\"15%\"><font COLOR=\"$THFG\">" .
-  translate("Action") . "</font></th></tr>\n";
+echo "<th style=\"text-align:left; background-color:$THBG; width:10%; color:$THFG;\">" .
+  translate("User") . "</th>";
+echo "<th style=\"text-align:left; background-color:$THBG; width:10%; color:$THFG;\">" .
+  translate("Calendar") . "</th>";
+echo "<th style=\"text-align:left; background-color:$THBG; width:25%; color:$THFG;\">" .
+  translate("Date") . "/" . translate("Time") . "</th>";
+echo "<th style=\"text-align:left; background-color:$THBG; width:30%; color:$THFG;\">" .
+  translate("Event") . "</th>";
+echo "<th style=\"text-align:left; background-color:$THBG; width:15%; color:$THFG;\">" .
+  translate("Action") . "</th></tr>\n";
 $sql = "SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, " .
   "webcal_entry_log.cal_type, webcal_entry_log.cal_date, " .
   "webcal_entry_log.cal_time, webcal_entry.cal_id, " .
@@ -40,17 +40,17 @@ if ( $res ) {
       break;
     } else {
       echo "<tr>";
-      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" .
-        $font . $row[0] . "</font></td>";
-      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" .
-        $font . $row[1] . "</font></td>";
-      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" . $font .
+      echo "<td valign=\"top\" style=\"background-color:$CELLBG;\">" .
+        $font . $row[0] . "</td>";
+      echo "<td valign=\"top\" style=\"background-color:$CELLBG;\">" .
+        $font . $row[1] . "</td>";
+      echo "<td valign=\"top\" style=\"background-color:$CELLBG;\">" . $font .
         date_to_str ( $row[3] ) . " " .
-        display_time ( $row[4] ) . "</font></td>";
-      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" . $font .
-        "<A HREF=\"view_entry.php?id=$row[5]\" CLASS=\"navlinks\">" .
-        htmlspecialchars($row[6]) . "</A></font></td>";
-      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" . $font;
+        display_time ( $row[4] ) . "</td>";
+      echo "<td valign=\"top\" style=\"background-color:$CELLBG;\">" . $font .
+        "<a href=\"view_entry.php?id=$row[5]\" class=\"navlinks\">" .
+        htmlspecialchars($row[6]) . "</a></td>";
+      echo "<td valign=\"top\" style=\"background-color:$CELLBG;\">" . $font;
       if ( $row[2] == $LOG_CREATE )
         etranslate("Event created");
       else if ( $row[2] == $LOG_APPROVE )
@@ -67,7 +67,7 @@ if ( $res ) {
         etranslate("Reminder sent");
       else
         echo "???";
-      echo "</font></td></tr>\n";
+      echo "</td></tr>\n";
     }
   }
   dbi_free_result ( $res );

@@ -24,14 +24,14 @@ $prev = mktime ( 3, 0, 0, $thismonth - 1, 1, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevdate = date ( "Ym", $prev ) . "01";
-
 ?>
-<center>
-<table border="0">
+
+<div align="center">
+<table style="border-width:0px;">
 <tr>
-<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $prevdate?>"><img src="leftarrowsmall.gif" width="18" height="18" border="0" alt="<?php etranslate("Previous")?>"></a></td>
+<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $prevdate?>"><img src="leftarrowsmall.gif" width="18" height="18" style="border-width:0px;" alt="<?php etranslate("Previous")?>"></a></td>
 <th colspan="5"><?php echo month_name ( $thismonth - 1 ) . " " . $thisyear;?></th>
-<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif" width="18" height="18" border="0" alt="<?php etranslate("Next")?>" /></a></td>
+<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif" width="18" height="18" style="border-width:0px;" alt="<?php etranslate("Next")?>" /></a></td>
 </tr>
 <?php
 echo "<tr>";
@@ -68,7 +68,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 }
 ?>
 </table>
-</center>
+</div>
 
 <?php print_trailer ( false, true, true ); ?>
 </body>
