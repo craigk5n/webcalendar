@@ -4,6 +4,15 @@
 
 Below are the steps needed to upgrade from a previous version:
 
+<P><HR><P><B>To upgrade to 0.9.39 from 0.9.38 or older:</B>
+<P>
+  The names of the date settings in the database were modified.
+  All old data settings need to be removed from the database.
+  <BLOCKQUOTE><PRE>
+    DELETE FROM webcal_config WHERE cal_setting LIKE 'DATE_FORMAT%';
+    DELETE FROM webcal_user_pref WHERE cal_setting LIKE 'DATE_FORMAT%';
+  </PRE></BLOCKQUOTE>
+
 <P><HR><P><B>To upgrade to 0.9.38 from 0.9.37 or older:</B>
 <P>
   The webcal_entry_user table was modified, and a new table

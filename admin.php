@@ -229,22 +229,22 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   // You can add new date formats below if you want.
   // but also add in pref.php.
   $datestyles = array (
-    "month dd, yyyy", translate("December") . " 31, 2000",
-    "dd month, yyyy", "31 " . translate("December") . ", 2000",
-    "dd-month-yyyy", "31-" . translate("December") . "-2000",
-    "dd-month-yy", "31-" . translate("December") . "-00",
-    "mm/dd/yyyy", "12/31/2000",
-    "mm/dd/yy", "12/31/00",
-    "mm-dd-yyyy", "12-31-2000",
-    "mm-dd-yy", "12-31-00",
-    "yyyy-mm-dd", "2000-12-31",
-    "yy-mm-dd", "00-12-31",
-    "yyyy/mm/dd", "2000/12/31",
-    "yy/mm/dd", "00/12/31",
-    "dd/mm/yyyy", "31/12/2000",
-    "dd/mm/yy", "31/12/00",
-    "dd-mm-yyyy", "31-12-2000",
-    "dd-mm-yy", "31-12-00"
+    "__month__ __dd__, __yyyy__", translate("December") . " 31, 2000",
+    "__dd__ __month__, __yyyy__", "31 " . translate("December") . ", 2000",
+    "__dd__-__month__-__yyyy__", "31-" . translate("December") . "-2000",
+    "__dd__-__month__-__yy__", "31-" . translate("December") . "-00",
+    "__mm__/__dd__/__yyyy__", "12/31/2000",
+    "__mm__/__dd__/__yy__", "12/31/00",
+    "__mm__-__dd__-__yyyy__", "12-31-2000",
+    "__mm__-__dd__-__yy__", "12-31-00",
+    "__yyyy__-__mm__-__dd__", "2000-12-31",
+    "__yy__-__mm__-__dd__", "00-12-31",
+    "__yyyy__/__mm__/__dd__", "2000/12/31",
+    "__yy__/__mm__/__dd__", "00/12/31",
+    "__dd__/__mm__/__yyyy__", "31/12/2000",
+    "__dd__/__mm__/__yy__", "31/12/00",
+    "__dd__-__mm__-__yyyy__", "31-12-2000",
+    "__dd__-__mm__-__yy__", "31-12-00"
   );
   for ( $i = 0; $i < count ( $datestyles ); $i += 2 ) {
     echo "<OPTION VALUE=\"" . $datestyles[$i] . "\"";
@@ -261,22 +261,22 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   // You can add new date formats below if you want.
   // but also add in admin.php.
   $datestyles = array (
-    "month yyyy", translate("December") . " 2000",
-    "month yy", translate("December") . " 00",
-    "month-yyyy", translate("December") . "-2000",
-    "month-yy", translate("December") . "-00",
-    "mm/yyyy", "12/2000",
-    "mm/yy", "12/00",
-    "mm-yyyy", "12-2000",
-    "mm-yy", "12-00",
-    "yyyy-mm", "2000-12",
-    "yy-mm", "00-12",
-    "yyyy/mm", "2000/12",
-    "yy/mm", "00/12"
+    "__month__ __yyyy__", translate("December") . " 2000",
+    "__month__ __yy__", translate("December") . " 00",
+    "__month__-__yyyy__", translate("December") . "-2000",
+    "__month__-__yy__", translate("December") . "-00",
+    "__mm__/__yyyy__", "12/2000",
+    "__mm__/__yy__", "12/00",
+    "__mm__-__yyyy__", "12-2000",
+    "__mm__-__yy__", "12-00",
+    "__yyyy__-__mm__", "2000-12",
+    "__yy__-__mm__", "00-12",
+    "__yyyy__/__mm__", "2000/12",
+    "__yy__/__mm__", "00/12"
   );
   for ( $i = 0; $i < count ( $datestyles ); $i += 2 ) {
     echo "<OPTION VALUE=\"" . $datestyles[$i] . "\"";
-    if ( $prefarray["DATE_FORMAT_MY"] == $datestyles[$i] )
+    if ( $s["DATE_FORMAT_MY"] == $datestyles[$i] )
       echo " SELECTED";
     echo "> " . $datestyles[$i + 1] . "\n";
   }
@@ -289,16 +289,16 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   // You can add new date formats below if you want.
   // but also add in admin.php.
   $datestyles = array (
-    "month dd", translate("December") . " 31",
-    "month-dd", translate("December") . "-31",
-    "mm/dd", "12/31",
-    "mm-dd", "12-31",
-    "dd/mm", "31/12",
-    "dd-mm", "31-12"
+    "__month__ __dd__", translate("December") . " 31",
+    "__month__-__dd__", translate("December") . "-31",
+    "__mm__/__dd__", "12/31",
+    "__mm__-__dd__", "12-31",
+    "__dd__/__mm__", "31/12",
+    "__dd__-__mm__", "31-12"
   );
   for ( $i = 0; $i < count ( $datestyles ); $i += 2 ) {
     echo "<OPTION VALUE=\"" . $datestyles[$i] . "\"";
-    if ( $prefarray["DATE_FORMAT_MD"] == $datestyles[$i] )
+    if ( $s["DATE_FORMAT_MD"] == $datestyles[$i] )
       echo " SELECTED";
     echo "> " . $datestyles[$i + 1] . "\n";
   }
