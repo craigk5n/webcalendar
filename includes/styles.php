@@ -166,5 +166,11 @@ a:hover {
   font-family: <?php echo $FONTS ?>;
   color: #0000FF;
 }
+.dailymatrix {
+  cursor:pointer;cursor:hand;
+  font-family: <?php echo $FONTS ?>;
+  font-size: 12px;
+  text-decoration: none;
+}
 -->
 </STYLE>
