@@ -315,7 +315,7 @@ print_header($INC);
 <?php
 	echo "<option value=\"\"";
 	if ( empty ( $prefarray["CATEGORY_VIEW"] ) ) echo " selected=\"selected\"";
-	echo ">".translate('All')."</option>\n";
+	echo ">".translate("All")."</option>\n";
 	
 	if ( ! empty ( $categories ) ) {
 		foreach( $categories as $K => $V ){
