@@ -244,21 +244,23 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
  if ( ! empty ( $LANGUAGE ) ) {
    $charset = translate ( "charset" );
    if ( $charset != "charset" ) {
-	echo "<?xml version=\"1.0\" encoding=\"$charset\"?>
-<!DOCTYPE html
-	PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-	\"DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"$lang\" lang=\"$lang\">
-<head>
-	<title>".translate($application_name)."</title>\n";
+     echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n" .
+       "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
+       "\"DTD/xhtml1-transitional.dtd\">\n" .
+       "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
+       "xml:lang=\"$lang\" lang=\"$lang\">\n" .
+       "<head>\n" .
+       "<meta http-equiv=\"Content-Type\" content=\"text/html; " .
+       "charset=$charset\" />\n";
+     echo "<title>".translate($application_name)."</title>\n";
    } else {
-	echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>
-<!DOCTYPE html
-	PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-	\"DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
-<head>
-	<title>".translate($application_name)."</title>\n";
+     echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n" .
+       "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
+       "\"DTD/xhtml1-transitional.dtd\">\n" .
+       "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
+       "xml:lang=\"en\" lang=\"en\">\n" .
+       "<head>\n" .
+       "<title>".translate($application_name)."</title>\n";
    }
  }
 
