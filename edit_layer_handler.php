@@ -9,10 +9,6 @@ include "includes/connect.php";
 
 load_global_settings ();
 load_user_preferences ();
-$save_status = $LAYERS_STATUS;
-$LAYERS_STATUS = "Y";
-load_user_layers ();
-$LAYERS_STATUS = $save_status;
 
 include "includes/translate.php";
 
@@ -21,8 +17,18 @@ $error = "";
 if ( empty ( $dups ) )
   $dups = 'N';
 
-if ( $login == $layeruser )
+$updating_public = false;
+if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
+  $updating_public = true;
+  $layer_user = "__public__";
+} else {
+  $layer_user = $login;
+}
+
+if ( $layer_user == $layeruser )
   $error = translate ("You cannot create a layer for yourself") . ".";
+
+load_user_layers ( $layer_user, 1 );
 
 if ( ! empty ( $layeruser ) && $error == "" ) {
   // existing layer entry
@@ -36,7 +42,7 @@ if ( ! empty ( $layeruser ) && $error == "" ) {
     // new layer entry
     // check for existing layer for user.  can only have one layer per user
     $res = dbi_query ( "SELECT COUNT(cal_layerid) FROM webcal_user_layers " .
-      "WHERE cal_login = '$login' AND cal_layeruser = '$layeruser'" );
+      "WHERE cal_login = '$layer_user' AND cal_layeruser = '$layeruser'" );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       if ( $row[0] > 0 ) {
@@ -54,14 +60,17 @@ if ( ! empty ( $layeruser ) && $error == "" ) {
       }
       dbi_query ( "INSERT INTO webcal_user_layers ( ".
         "cal_layerid, cal_login, cal_layeruser, cal_color, cal_dups ) " .
-	"VALUES ('$layerid', '$login', '$layeruser', " .
+	"VALUES ('$layerid', '$layer_user', '$layeruser', " .
 	"'$layercolor', '$dups')");
     }
   }
 }
 
 if ( $error == "" ) {
-  do_redirect ( "layers.php" );
+  if ( $updating_public )
+    do_redirect ( "layers.php?public=1" );
+  else
+    do_redirect ( "layers.php" );
   exit;
 }
 

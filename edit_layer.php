@@ -9,12 +9,18 @@ include "includes/connect.php";
 
 load_global_settings ();
 load_user_preferences ();
-$save_status = $LAYERS_STATUS;
-$LAYERS_STATUS = "Y";
-load_user_layers ();
-$LAYERS_STATUS = $save_status;
 
 include "includes/translate.php";
+
+$updating_public = false;
+if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
+  $updating_public = true;
+  $layer_user = "__public__";
+} else {
+  $layer_user = $login;
+}
+
+load_user_layers ( $layer_user, 1 );
 
 ?>
 
@@ -66,12 +72,24 @@ function selectColor ( color ) {
 </HEAD>
 <BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) echo translate("Edit Layer"); else echo translate("Add Layer"); ?></FONT></H2>
+<H2><FONT COLOR="<?php echo $H2COLOR;?>">
+<?php
+if ( $updating_public )
+  echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
+if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
+  etranslate("Edit Layer");
+else
+  etranslate("Add Layer");
+
+?></FONT></H2>
 
 
 
 <FORM ACTION="edit_layer_handler.php" METHOD="POST" ONSUBMIT="return valid_form(this);" NAME="prefform">
 
+<?php if ( $updating_public ) { ?>
+  <INPUT TYPE="hidden" NAME="public" VALUE="1">
+<?php } ?>
 
 <TABLE BORDER=0>
 
@@ -83,7 +101,7 @@ if ( $single_user == "N" ) {
   $size = 0;
   $users = "";
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-    if ( $userlist[$i]['cal_login'] != $login ) {
+    if ( $userlist[$i]['cal_login'] != $layer_user ) {
       $size++;
       $users .= "<OPTION VALUE=\"" . $userlist[$i]['cal_login'] . "\"";
       if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) {
@@ -132,7 +150,7 @@ if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
 
 ?>
 
-<TR><TD><BR><A HREF="del_layer.php?id=<?php echo $id; ?>" onClick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></A><BR></TD></TR>
+<TR><TD><BR><A HREF="del_layer.php?id=<?php echo $id; if ( $updating_public ) echo "&public=1"; ?>" onClick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></A><BR></TD></TR>
 
 <?php
 

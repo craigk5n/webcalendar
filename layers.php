@@ -10,11 +10,32 @@ include "includes/connect.php";
 send_no_cache_header ();
 load_global_settings ();
 load_user_preferences ();
-$save_status = $LAYERS_STATUS;
-$LAYERS_STATUS = "Y";
-load_user_layers ();
 
 include "includes/translate.php";
+
+$updating_public = false;
+if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
+  $updating_public = true;
+  $layer_user = "__public__";
+  $u_url = "&public=1";
+  $ret = "ret=layers.php%3Fpublic=1";
+} else {
+  $layer_user = $login;
+  $u_url = "";
+  $ret = "ret=layers.php";
+}
+
+load_user_layers ( $layer_user, 1 );
+
+$layers_enabled = 0;
+$sql = "SELECT cal_value FROM webcal_user_pref " .
+  "WHERE cal_setting = 'LAYERS_STATUS' AND cal_login = '$layer_user'";
+$res = dbi_query ( $sql );
+if ( $res ) {
+  $row = dbi_fetch_row ( $res );
+  $layers_enabled = ( $row[0] == "Y" ? 1 : 0 );
+  dbi_free_result ( $res );
+}
 
 
 ?>
@@ -27,29 +48,39 @@ include "includes/translate.php";
 </HEAD>
 <BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Layers")?></FONT></H2>
+<H2><FONT COLOR="<?php echo $H2COLOR;?>">
+<?php
+if ( $updating_public )
+  echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
+etranslate("Layers")?></FONT></H2>
 
 <?php
-etranslate("Layers are currently");
-echo " <B>";
-//$sql = "SELECT cal_value FROM webcal_user_pref " .
-//  "WHERE cal_setting = 'LAYERS_STATUS' AND cal_login = '$login'";
-//$res = dbi_query ( $sql );
-//if ( $res ) {
-//  $row = dbi_fetch_row ( $res );
-//  $PREF_LAYERS_ENABLED = $row[0];
-//  dbi_free_result ( $res );
-//}
 
-$LAYERS_STATUS = $save_status;
-//echo "LAYERS_STATUS: $LAYERS_STATUS <P>";
-
-if ( $LAYERS_STATUS == "N" ) {
-  etranslate ( "Disabled" );
-} else {
-  etranslate ( "Enabled" );
+if ( $is_admin ) {
+  if ( empty ( $public ) ) {
+    echo "<blockquote><a href=\"layers.php?public=1\">" .
+      translate("Click here") . "</a> " .
+      translate("to modify the layers settings for the Public Access calendar") .
+      "</blockquote>\n";
+  }
 }
-echo "</B>.";
+
+etranslate("Layers are currently");
+
+echo " <B>";
+if ( $layers_enabled ) {
+  etranslate ( "Enabled" );
+} else {
+  etranslate ( "Disabled" );
+}
+echo "</B>.<P>";
+
+if ( $layers_enabled )
+  echo "<A CLASS=\"navlinks\" HREF=\"layers_toggle.php?status=off$u_url&$ret\">" .
+    translate ("Disable Layers") . "</A>\n";
+else
+  echo "<A CLASS=\"navlinks\" HREF=\"layers_toggle.php?status=on$u_url&$ret\">" .
+    translate ("Enable Layers") . "</A>\n";
 
 
 ?>
@@ -60,8 +91,7 @@ echo "</B>.";
 
 <?php
 
-   for($index = 0; $index < sizeof($layers); $index++)
-   {
+   for($index = 0; $index < sizeof($layers); $index++) {
       $layeruser = $layers[$index]['cal_layeruser'];
       user_load_variables ( $layeruser, "layer" );
 ?>
@@ -84,8 +114,8 @@ echo "</B>.";
 
 
 
-       <TR><TD><A HREF="edit_layer.php?id=<?php echo ($index); ?>"><?php echo (translate("Edit layer")) ?></A></TD></TR>
-       <TR><TD><A HREF="del_layer.php?id=<?php echo ($index); ?>" onClick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></A><BR></TD></TR>
+       <TR><TD><A HREF="edit_layer.php?id=<?php echo $index . $u_url; ?>"><?php echo (translate("Edit layer")) ?></A></TD></TR>
+       <TR><TD><A HREF="del_layer.php?id=<?php echo $index . $u_url; ?>" onClick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></A><BR></TD></TR>
 
 
        <TR><TD><BR></TD></TR>
@@ -94,7 +124,7 @@ echo "</B>.";
    }
 ?>
 
-       <TR><TD><A HREF="edit_layer.php"><?php echo (translate("Add layer")); ?></A></TD></TR>
+       <TR><TD><A HREF="edit_layer.php<?php if ( $updating_public ) echo "?public=1";?>"><?php echo (translate("Add layer")); ?></A></TD></TR>
 
 </TABLE>
 

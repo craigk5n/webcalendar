@@ -447,18 +447,21 @@ function get_browser_language () {
 
 
 // Load current user's layer info and stuff it into layer global variable.
-function load_user_layers () {
+function load_user_layers ($user="",$force=0) {
   global $login;
   global $layers;
   global $LAYERS_STATUS;
 
+  if ( $user == "" )
+    $user = $login;
+
   $layers = array ();
 
-  if ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS != "N" ) {
+  if ( $force || ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS != "N" ) ) {
     $res = dbi_query (
       "SELECT cal_layerid, cal_layeruser, cal_color, cal_dups " .
       "FROM webcal_user_layers " .
-      "WHERE cal_login = '$login' ORDER BY cal_layerid" );
+      "WHERE cal_login = '$user' ORDER BY cal_layerid" );
     if ( $res ) {
       $count = 0;
       while ( $row = dbi_fetch_row ( $res ) ) {
