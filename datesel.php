@@ -1,4 +1,8 @@
 <?php
+// month and year are being overwritten so we will copy vars to fix.
+// this will make datesel.php still work where ever it is called from.
+$fday = $day;$fmonth = $month;$fyear = $year;
+
 include_once 'includes/init.php';
 $INC = array('js/datesel.php');
 print_header($INC);
@@ -25,9 +29,9 @@ $prevdate = date ( "Ym", $prev ) . "01";
 <CENTER>
 <TABLE BORDER=0>
 <TR>
-<TD><A HREF="datesel.php?form=<?php echo $form?>&day=<?php echo $day?>&month=<?php echo $month?>&year=<?php echo $year?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrowsmall.gif" WIDTH="18" HRIGHT="18" BORDER="0" ALT="<?php etranslate("Previous")?>"></A></TD>
+<TD><A HREF="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrowsmall.gif" WIDTH="18" HRIGHT="18" BORDER="0" ALT="<?php etranslate("Previous")?>"></A></TD>
 <TH COLSPAN="5"><?php echo month_name ( $thismonth - 1 ) . " " . $thisyear;?></TH>
-<TD><A HREF="datesel.php?form=<?php echo $form?>&day=<?php echo $day?>&month=<?php echo $month?>&year=<?php echo $year?>&date=<?php echo $nextdate?>"><IMG SRC="rightarrowsmall.gif" WIDTH="18" HEIGHT="18" BORDER="0" ALT="<?php etranslate("Next")?>"></A></TD>
+<TD><A HREF="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $nextdate?>"><IMG SRC="rightarrowsmall.gif" WIDTH="18" HEIGHT="18" BORDER="0" ALT="<?php etranslate("Next")?>"></A></TD>
 </TR>
 <?php
 echo "<TR>";
