@@ -61,25 +61,29 @@ for ( $i = 0; $i < 7; $i++ ) {
 <table style="border-width:0px; width:100%;">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_v.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
+<br />
+<a title="<?php etranslate("Previous")?>" href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
 </td>
-<td style="text-align:center; color:<?php echo $H2COLOR?>;">
-<span style="font-size:24px; font-weight:bold;">
+<td class="viewvtitle">
+<span class="date">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), false );
 ?>
 </span><br />
+<span class="viewname">
 <?php echo $view_name ?>
+</span>
 </td>
 <td style="text-align:right;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_v.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<br />
+<a title="<?php etranslate("Next")?>" href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 </td></tr>
-</table>
+</table><br /><br />
 
 <?php
 // The table has names across the top and dates for rows.  Since we need
@@ -120,14 +124,12 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 ?>
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<table style="border-width:0px; width:100%;" cellspacing="0" cellpadding="0">
-<tr><td style="background-color:<?php echo $TABLEBG?>;">
-<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
+<table style="border-width:0px; width:100%; background-color:<?php echo $TABLEBG?>;" cellspacing="1" cellpadding="2">
 <?php } else { ?>
 <table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
 <?php } ?>
 
-<tr><td style="width:10%; background-color:<?php echo $THBG?>;">&nbsp;</td>
+<tr><th class="empty" style="width:10%; background-color:<?php echo $THBG?>;">&nbsp;</th>
 
 <?php
 
@@ -191,7 +193,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   }
 
   if ( empty ( $friendly ) || ! $friendly )
-    echo "</td></tr></table>\n</table>\n<br /><br />\n";
+    echo "</table>\n<br /><br />\n";
   else
     echo "</table>\n<br /><br />\n";
 }

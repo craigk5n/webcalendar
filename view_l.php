@@ -152,19 +152,19 @@ if ( ! $friendly ) {
   $monthstart = mktime ( 3, 0, 0, $prevmonth, 1, $prevyear );
   $monthend = mktime ( 3, 0, 0, $prevmonth + 1, 0, $prevyear );
   echo "<tr><td colspan=\"7\" style=\"text-align:center;\">" .
-    "<a href=\"view_l.php?id=$id&date=$prevdate\" class=\"monthlink\">" .
+    "<a href=\"view_l.php?id=$id&amp;date=$prevdate\" class=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $prevyear, $prevmonth ),
     $DATE_FORMAT_MY, false, false ) .
     "</a></td></tr>\n";
-  echo "<tr class=\"dayname\">";
-  if ( $WEEK_START == 0 ) echo "<td>" .
-    weekday_short_name ( 0 ) . "</td>";
+  echo "<tr class=\"day\">";
+  if ( $WEEK_START == 0 ) echo "<th>" .
+    weekday_short_name ( 0 ) . "</th>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<td>" .
-      weekday_short_name ( $i ) . "</td>";
+    echo "<th>" .
+      weekday_short_name ( $i ) . "</th>";
   }
-  if ( $WEEK_START == 1 ) echo "<td>" .
-    weekday_short_name ( 0 ) . "</td>";
+  if ( $WEEK_START == 1 ) echo "<th>" .
+    weekday_short_name ( 0 ) . "</th>";
   echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     $i += ( 24 * 3600 * 7 ) ) {
@@ -184,14 +184,14 @@ if ( ! $friendly ) {
 }
 
 ?>
-<td style="text-align:center; color:<?php echo $H2COLOR?>;">
-<span style="font-weight:bold; font-size:10px;">
+<td class="viewltitle">
+<span class="date">
 <?php
   echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
     $DATE_FORMAT_MY, false, false );
 ?>
 </span>
-<span style="font-size:18px;">
+<span class="viewname">
 <?php
     echo "<br />\n";
     echo $view_name;
@@ -199,7 +199,7 @@ if ( ! $friendly ) {
 </span></td>
 <?php
 if ( ! $friendly ) {
-  echo '<td style=\"text-align:right;\"><table style=\"border-width:0px;\">';
+  echo '<td style="text-align:right;"><table style="border-width:0px;">';
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $nextyear, $nextmonth, 1 );
   else
@@ -207,19 +207,19 @@ if ( ! $friendly ) {
   $monthstart = mktime ( 3, 0, 0, $nextmonth, 1, $nextyear );
   $monthend = mktime ( 3, 0, 0, $nextmonth + 1, 0, $nextyear );
   echo "<tr><td colspan=\"7\" style=\"text-align:center;\">" .
-    "<a href=\"view_l.php?id=$id&date=$nextdate\" class=\"monthlink\">" .
+    "<a href=\"view_l.php?id=$id&amp;date=$nextdate\" class=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $nextyear, $nextmonth ),
     $DATE_FORMAT_MY, false, false ) .
     "</a></td></tr>\n";
-  echo "<tr class=\"dayname\">";
-  if ( $WEEK_START == 0 ) echo "<td>" .
-    weekday_short_name ( 0 ) . "</td>";
+  echo "<tr class=\"day\">";
+  if ( $WEEK_START == 0 ) echo "<th>" .
+    weekday_short_name ( 0 ) . "</th>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<td>" .
-      weekday_short_name ( $i ) . "</td>";
+    echo "<th>" .
+      weekday_short_name ( $i ) . "</th>";
   }
-  if ( $WEEK_START == 1 ) echo "<td>" .
-    weekday_short_name ( 0 ) . "</td>";
+  if ( $WEEK_START == 1 ) echo "<th>" .
+    weekday_short_name ( 0 ) . "</th>";
   echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     $i += ( 24 * 3600 * 7 ) ) {
@@ -243,25 +243,23 @@ if ( ! $friendly ) {
 </table>
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<table style="border-width:0px; width:100%;" cellspacing="0" cellpadding="0">
-<tr><td style="background-color:<?php echo $TABLEBG?>;">
-<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
+<table class="viewl" cellspacing="1" cellpadding="2">
 <?php } else { ?>
 <table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
 <?php } ?>
 
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
-<th style="width:14%;" class="tableheader"><?php etranslate("Sun")?></th>
+<th><?php etranslate("Sun")?></th>
 <?php } ?>
-<th style="width:14%;" class="tableheader"><?php etranslate("Mon")?></th>
-<th style="width:14%;" class="tableheader"><?php etranslate("Tue")?></th>
-<th style="width:14%;" class="tableheader"><?php etranslate("Wed")?></th>
-<th style="width:14%;" class="tableheader"><?php etranslate("Thu")?></th>
-<th style="width:14%;" class="tableheader"><?php etranslate("Fri")?></th>
-<th style="width:14%;" class="tableheader"><?php etranslate("Sat")?></th>
+<th><?php etranslate("Mon")?></th>
+<th><?php etranslate("Tue")?></th>
+<th><?php etranslate("Wed")?></th>
+<th><?php etranslate("Thu")?></th>
+<th><?php etranslate("Fri")?></th>
+<th><?php etranslate("Sat")?></th>
 <?php if ( $WEEK_START == 1 ) { ?>
-<th style="width:14%;" class="tableheader"><?php etranslate("Sun")?></th>
+<th><?php etranslate("Sun")?></th>
 <?php } ?>
 </tr>
 
@@ -321,7 +319,6 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 </table>
-</td></tr></table>
 <?php } else { ?>
 </table>
 <?php } ?>
@@ -335,12 +332,12 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 ?>
 
 <br /><br />
-<a class="navlinks" href="view_l.php?id=<?php echo $id?>&<?php
+<a class="navlinks" href="view_l.php?id=<?php echo $id?>&amp;<?php
   if ( $thisyear ) {
-    echo "year=$thisyear&month=$thismonth&";
+    echo "year=$thisyear&amp;month=$thismonth&amp;";
   }
-  if ( ! empty ( $user ) ) echo "user=$user&";
-  if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&";
+  if ( ! empty ( $user ) ) echo "user=$user&amp;";
+  if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
 ?>friendly=1" target="cal_printer_friendly"
 onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
