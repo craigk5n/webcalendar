@@ -156,7 +156,7 @@ if ( ! $friendly ) {
 </tr>
 </table>
 
-<table border="1" rules="all" width="100%" cellspacing="0" cellpadding="0" style="border-color: <?php echo $TABLEBG;?>;">
+<table border="0" class="tableborder" width="100%" cellspacing="0" cellpadding="0">
 
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
@@ -204,14 +204,16 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
       if ( empty ( $WEEKENDBG ) ) $is_weekend = false;
       $class = $is_weekend ? "tablecellweekend" : "tablecell";
-      $color = $is_weekend ? $WEEKENDBG : $CELLBG;
-      if ( empty ( $color ) )
-        $color = "#C0C0C0";
-      print "<td valign=\"top\" style=\"height:75px;";
+      //$color = $is_weekend ? $WEEKENDBG : $CELLBG;
+      //if ( empty ( $color ) )
+      //  $color = "#C0C0C0";
+      print "<td valign=\"top\" ";
+      //print "style=\"height:75px;";
       if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) )
-        echo "background-color:$TODAYCELLBG;\"";
-      else
-        echo "background-color:$color;\"";
+        //echo "background-color:$TODAYCELLBG;\"";
+         $class = 'tablecelltoday';
+      //else
+        //echo "background-color:$color;\"";
       echo " class=\"$class\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       print_date_entries ( date ( "Ymd", $date ),
@@ -219,7 +221,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         $friendly, false );
       print "</td>\n";
     } else {
-      print "<td valign=\"top\" style=\"height:75px; background-color:$CELLBG;\" id=\"tablecell\">&nbsp;</td>\n";
+      print "<td valign=\"top\" class=\"tablecell\">&nbsp;</td>\n";
     }
   }
   print "</tr>\n";
