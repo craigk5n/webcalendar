@@ -1,3 +1,7 @@
+<?php
+  global $allow_color_customization;
+?>
+
 <SCRIPT LANGUAGE="JavaScript">
 // error check the colors
 function valid_color ( str ) {
