@@ -129,8 +129,8 @@ foreach $text ( sort { uc($a) cmp uc($b) } keys ( %trans ) ) {
 if ( ! $notfound ) {
   print "All text was found in $infile.  Good job :-)\n";
 } else {
-  printf "\n$notfound of $total translation(s) missing. (%1.1f%%)\n", 
-   ( 100 * $notfound / $total );
+  printf "\n$notfound of $total translation(s) missing. (%1.1f%% complete)\n", 
+   ( 100 * ( $total - $notfound ) / $total );
 }
 
 exit 0;

@@ -25,8 +25,8 @@ foreach $f ( @files ) {
     # missing some translations
     @lines = split ( /\n/, $out );
     ( $l ) = grep ( / translation.s. missing/, @lines );
-    if ( $l =~ /^(\d+) / ) {
-      printf "%-20s %d\n", $f . ":", $1;
+    if ( $l =~ /^(\d+).*\((\d\S+)% complete/ ) {
+      printf "%-20s %d (%1.1f%% complete)\n", $f . ":", $1, $2;
     }
   } else {
     # all translations found :-)
