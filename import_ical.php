@@ -216,10 +216,12 @@ function format_ical($event) {
   } else if ( empty ( $fevent['Duration'] ) ) {
     $fevent['Duration'] = ($fevent['EndTime'] - $fevent['StartTime']) / 60;
   }
-  if ( $fevent['Duration'] == '1440' ||
-    preg_match ( "/\d\d\d\d\d\d\d\d$/", $event['dtstart'], $pmatch ) ) {
-    //All day (untimed)
-    $fevent['Duration'] = '0';
+  if ( $fevent['Duration'] == '1440' ) {
+    // All day event... nothing to do here :-)
+  } else if ( preg_match ( "/\d\d\d\d\d\d\d\d$/",
+    $event['dtstart'], $pmatch ) ) {
+    // Untimed event
+    $fevent['Duration'] = 0;
     $fevent['Untimed'] = 1;
   }
   if ( preg_match ( "/\d\d\d\d\d\d\d\d$/", $event['dtstart'],
