@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 02-03-2005
+# Translation last updated on 02-21-2005
 
 
 ###############################################
@@ -273,13 +273,6 @@ Error approving event: Error approving event
 
 
 ###############################################
-# Page: availability.php
-#
-Busy: Busy
-Tentative: Tentative
-
-
-###############################################
 # Page: category.php
 #
 Categories: Categories
@@ -393,6 +386,7 @@ Subtract N hours from: Subtract N hours from
 same as: same as
 server time: server time
 Default Category: Default Category
+All: All
 When I am the boss: When I am the boss
 Email me event notification: Email me event notification
 I want to approve events: I want to approve events
@@ -595,7 +589,6 @@ denotes administrative user: denotes administrative user
 ###############################################
 # Page: usersel.php
 #
-All: All
 None: None
 Reset: Reset
 Remove: Remove
@@ -721,6 +714,7 @@ Scheduling: Scheduling
 Repeat: Repeat
 category-help: Specifies the category of the event.
 Timed event: Timed event
+Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
 External Participants: External Participants
 Daily: Daily
@@ -736,7 +730,6 @@ Thursday: Thursday
 Friday: Friday
 Saturday: Saturday
 You are not authorized to edit this entry: You are not authorized to edit this entry
-Availability: Availability
 
 
 ###############################################
@@ -966,6 +959,9 @@ Sep: Sep
 Oct: Oct
 Nov: Nov
 Dec: Dec
+All Attendees: All Attendees
+Busy: Busy
+Tentative: Tentative
 
 
 ###############################################

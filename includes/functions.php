@@ -3596,7 +3596,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   if ( ! empty($date) ) echo "<input type=\"hidden\" name=\"date\" value=\"$date\" />\n";
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
-  echo translate ('Category') . ": <select name=\"cat_id\" onchange=\"document.SelectCategory.submit()\">\n";
+  echo translate ("Category") . ": <select name=\"cat_id\" onchange=\"document.SelectCategory.submit()\">\n";
   echo "<option value=\"\"";
   if ( $cat_id == '' ) echo " selected=\"selected\"";
   echo ">" . translate("All") . "</option>\n";
@@ -3613,7 +3613,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   }
   echo "</select>\n";
   echo "</form>\n";
-  echo "<span id=\"cat\">" . translate ('Category') . ": ";
+  echo "<span id=\"cat\">" . translate ("Category") . ": ";
   echo ( strlen ( $cat_id ) ? $categories[$cat_id] : translate ('All') ) . "</span>\n";
 }
 
@@ -4544,7 +4544,8 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
       // exchange space for &nbsp; to keep from breaking
       $user_nospace = preg_replace ( '/\s/', '&nbsp;', $user_fullname );
     } else {
-      $user_nospace = "All&nbsp;Attendees";
+      $user_nospace = translate("All Attendees");
+      $user_nospace = preg_replace ( '/\s/', '&nbsp;', $user_nospace );
     }
 
     echo "<tr>\n<th class=\"row\" style=\"width:{$participant_pct};\">".$user_nospace."</th>\n";
@@ -4563,6 +4564,9 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
          $r = sprintf ("%02d",$j) . '.' . sprintf ("%02d", (25 * $k)).'';
          if ( empty ( $master[$participants[$i]][$r] ) ) {
            // ignore this..
+         } else if ( empty ( $master[$participants[$i]][$r]['ID'] ) ) {
+           // This is the first line for 'all' users.  No event here.
+           $space = "<span class=\"matrix\"><img src=\"pix.gif\" alt=\"\" height=\"8\" /></span>";
          } else if ($master[$participants[$i]][$r]['stat'] == "A") {
            $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"pix.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
          } else if ($master[$participants[$i]][$r]['stat'] == "W") {
@@ -4581,8 +4585,8 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   } // End foreach participant
   
   echo "</table>\n";
-  $busy = translate ('Busy');
-  $tentative = translate ('Tentative');
+  $busy = translate ("Busy");
+  $tentative = translate ("Tentative");
   echo "<div class=\"matrixlegend\">\n";
   echo "<img src=\"pix.gif\" title=\"$busy\" alt=\"$busy\" /> $busy &nbsp; &nbsp; &nbsp;\n";
   echo "<img src=\"pixb.gif\" title=\"$tentative\" alt=\"$tentative\" /> $tentative\n";
