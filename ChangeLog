@@ -1,4 +1,7 @@
 Version 0.9.31dev (???)
+  - Patch 435396 from Franz Sedlmaier for bug 435390:
+    Notification for rejecting events was not working.  Don't send
+    the notification to other users who rejected the event.
   - Patch 435387 from Franz Sedlmaier for bug 435386:
     Fix HTML errors in preferences page.  Fix error that caused
     Oracle to complain about NULL values.
