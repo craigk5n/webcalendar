@@ -4,8 +4,8 @@
 // file, be sure to declare it global in the print_trialer function.
 ?>
 
-<br clear="all" />
-<hr clear="all" />
+<br style="clear:both;" />
+<hr style="clear:both;" />
 <font size="-1">
 <table style="border-width:0px; width:100%;" cellpadding="0" cellspacing="0">
 <form action="month.php" method="get" name="selectmonth">
@@ -127,6 +127,8 @@
 </form>
 </tr>
 </table>
+
+
 <br />
 <b><?php etranslate("Go to")?>:</b> 
 <?php

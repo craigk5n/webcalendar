@@ -165,7 +165,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
     $charset = translate ( "charset" );
     if ( $charset != "charset" ) {
       echo "<meta http-equiv=\"Content-type\" " .
-        " content=\"text/html;charset=$charset\">\n";
+        " content=\"text/html;charset=$charset\" />\n";
     } else {
       echo "<!-- no charset defined for $LANGUAGE -->\n";
     }
