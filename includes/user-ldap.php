@@ -41,6 +41,9 @@ $ldap_server = 'localhost';
 // Port LDAP listens on (default 389)        
 $ldap_port = '389';                   
 
+// Use TLS for the connection (not the same as ldaps://)
+$ldap_start_tls = false;
+
 // base DN to search for users      
 $ldap_base_dn = 'ou=people,dc=company,dc=com';
 
@@ -132,11 +135,20 @@ function user_search_dn ( $login ,$dn ) {
 // returns: true or false
 function user_valid_login ( $login, $password ) {
   global $error, $ldap_server, $ldap_port, $ldap_base_dn, $ldap_login_attr;
-  global $ldap_admin_dn,$ldap_admin_pwd;
+  global $ldap_admin_dn, $ldap_admin_pwd, $ldap_start_tls;
 
   $ret = false;
   $ds = @ldap_connect ( $ldap_server, $ldap_port );
   if ( $ds ) {
+    if ($ldap_start_tls) {
+      if (ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3)) {
+        if (!ldap_start_tls($ds)) {
+          $error = 'Could not start TLS for LDAP connection';
+          return $ret;      
+        }
+      }
+    }
+
     if ( user_search_dn ( $login, &$dn) ) {
       $r = @ldap_bind ( $ds, $dn, $password );
       if (!$r) {
@@ -372,16 +384,27 @@ function stripdn($dn){
 // Tries to connect as $ldap_admin_dn if we set it.
 //  returns: bind result or false
 function connect_and_bind() {
-  global $ds, $error, $ldap_server, $ldap_port, $ldap_admin_dn, $ldap_admin_pwd;
+  global $ds, $error, $ldap_server, $ldap_port; 
+  global $ldap_admin_dn, $ldap_admin_pwd, $ldap_start_tls;
 
   $ret = false;
   $ds = @ldap_connect ( $ldap_server, $ldap_port );
   if ( $ds ) {
+    if ($ldap_start_tls) {
+      if (ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3)) {
+        if (!ldap_start_tls($ds)) {
+          $error = 'Could not start TLS for LDAP connection';
+          return $ret;      
+        }
+      }
+    }
+    
     if ( $ldap_admin_dn != '') {
       $r = @ldap_bind ( $ds, $ldap_admin_dn, $ldap_admin_pwd );
     } else {
       $r = @ldap_bind ( $ds );
     }
+
     if (!$r) {
       $error = 'Invalid Admin login for LDAP Server';
     } else {
