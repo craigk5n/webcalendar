@@ -36,10 +36,18 @@ foreach $f ( @files )
 
 # Do some regex replacements to both questions and answers.
 for ( $i = 0; $i < @questions; $i++ ) {
-  $questions[$i];
+  $questions[$i] =~ s/\s+/ /g;
   # remove the "new window" icons
   $questions[$i] =~ s/<a href=\"\S+\"[^>]+><img[^>]+><\/a>//g;
   $answers[$i] =~ s/<a href=\"\S+\"[^>]+><img[^>]+><\/a>//g;
+
+  # remove any href or name tags in question
+  $questions[$i] =~ s/<a name=\"[a-z]+\">(.*)<\/a>/$1/ig;
+  $questions[$i] =~ s/<a href=\"\S+\"[^>]*>(.+)<\/a>/$1/gi;
+  if ( $questions[$i] =~ /href/ ) {
+     die "Error removing link: $questions[$i]\n";
+  }
+
   # For 
   if ( $answers[$i] =~ /<a href="#([a-z]+)">/ ) {
     $answers[$i] = $` . "<a href=\"" .
@@ -52,10 +60,6 @@ print "<ul>\n";
 for ( $i = 0; $i < @questions; $i++ ) {
   $anchor = "faq_" . ( $i + 1 );
   $q = $questions[$i];
-  $q =~ s/<a href=\"\S+\"[^>]*>(.+)<\/a>/$1/gi;
-  if ( $q =~ /href/ ) {
-     die "Error removing link: $q\n";
-  }
   print "  <li><a href=\"#$anchor\">$q</a></li>\n";
 }
 print "</ul>\n<hr/>\n<dl>\n";
@@ -79,7 +83,7 @@ sub makeCVSURL {
   my ( $f, $anchor ) = @_;
 
   return "http://cvs.sourceforge.net/viewcvs.py/*checkout*/webcalendar/webcalendar/docs/" . $f .
-    "?rev=HEAD&content-type=text/html#" . $anchor;
+    "?rev=HEAD&amp;content-type=text/html#" . $anchor;
 }
 
 
