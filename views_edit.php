@@ -20,12 +20,13 @@ $error = "";
 if ( ! $is_admin )
   $user = $login;
 
+$BodyX = 'onload="usermode_handler();"';
 if ( $groups_enabled == "Y" ) {
-  $INC = array('js/assistant_edit.php');
+  $INC = array('js/assistant_edit.php', 'js/visible.php', 'js/views_edit.php' );
 } else {
-  $INC = '';
+  $INC = array( 'js/visible.php', 'js/views_edit.php' );
 }
-print_header($INC);
+print_header ( $INC, "", $BodyX );
 ?>
 
 <form action="views_edit_handler.php" method="post" name="editviewform">
@@ -33,6 +34,7 @@ print_header($INC);
 $newview = true;
 $viewname = "";
 $viewtype = "";
+$viewisglobal = 'N';
 
 if ( empty ( $id ) ) {
   $viewname = translate("Unnamed View");
@@ -45,6 +47,7 @@ if ( empty ( $id ) ) {
       if ( empty ( $viewname ) )
         $viewname = translate("Unnamed View");
       $viewtype = $views[$i]["cal_view_type"];
+      $viewisglobal = $views[$i]["cal_is_global"];
     }
   }
 }
@@ -56,15 +59,18 @@ if ( empty( $viewname ) ) {
 }
 
 // get list of users for this view
+$all_users = false;
 if ( ! $newview ) {
   $sql = "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id";
     $res = dbi_query ( $sql );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $viewuser[$row[0]] = 1;
+        if ( $row[0] == "__all__" )
+          $all_users = true;
       }
       dbi_free_result ( $res );
-				} else {
+    } else {
       $error = translate ( "Database error" ) . ": " . dbi_error ();
     }
 }
@@ -109,8 +115,38 @@ if ( $newview ) {
       <a class="nav" href="docs/preview-views.html" target="_blank">(<?php etranslate("preview"); ?>)</a>
 -->
       </td></tr>
+
+<?php if ( $is_admin ) { ?>
+<tr><td><label>
+	<?php etranslate("Global")?>:</label></td><td>
+	<label><input type="radio" name="is_global" value="Y"
+  <?php if ( $viewisglobal != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
+  &nbsp;&nbsp;&nbsp;
+  	<label><input type="radio" name="is_global" value="N"
+  <?php if ( $viewisglobal == 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("No") ?></label>
+</td></tr>
+<?php } ?>
+
 <tr><td valign="top">
 	<label for="viewusers"><?php etranslate("Users"); ?>:</label></td><td>
+<label><input type="radio" name="viewuserall" value="N" onclick="usermode_handler()"
+<?php
+  if ( ! $all_users ) {
+    echo "checked=\"checked\"";
+  }
+?>/>
+<?php etranslate("Selected");?></label>
+&nbsp;&nbsp;
+<label><input type="radio" name="viewuserall" value="Y" onclick="usermode_handler()"
+<?php
+  if ( $all_users ) {
+    echo "checked=\"checked\"";
+  }
+?>/>
+<?php etranslate("All");?></label>
+<br/>
+<div id="viewuserlist">
+&nbsp;&nbsp;
 	<select name="users[]" id="viewusers" size="10" multiple="multiple">
 <?php
   // get list of all users
@@ -132,6 +168,7 @@ if ( $newview ) {
 <?php if ( $groups_enabled == "Y" ) { ?>
 	<input type="button" onclick="selectUsers()" value="<?php etranslate("Select");?>..." />
 <?php } ?>
+</div>
 </td></tr>
 <tr><td colspan="2" style="text-align:center;">
 <br />

@@ -614,17 +614,19 @@ function load_user_preferences () {
     }
     dbi_free_result ( $res );
   }
-  // get views for this user
+  // get views for this user and global views
   $res = dbi_query (
-    "SELECT cal_view_id, cal_name, cal_view_type FROM webcal_view " .
-    "WHERE cal_owner = '$login'" );
+    "SELECT cal_view_id, cal_name, cal_view_type, cal_is_global " .
+    "FROM webcal_view " .
+    "WHERE cal_owner = '$login' OR cal_is_global = 'Y'" );
   if ( $res ) {
     $views = array ();
     while ( $row = dbi_fetch_row ( $res ) ) {
       $v = array (
         "cal_view_id" => $row[0],
         "cal_name" => $row[1],
-        "cal_view_type" => $row[2]
+        "cal_view_type" => $row[2],
+        "cal_is_global" => $row[3],
         );
       $views[] = $v;
     }

@@ -10,12 +10,18 @@ Version 1.0RC3 (?? ??? 2005)
     + Fixed date_selection_html function to include values for day control
     + Purge events was not deleting from webcal_entry_ext_user table
     + Fixed issues with ODBC returning 'invalid db_type'
-    + Fixed issue where month.php and mini-calendar today highlight based on server time
+    + Fixed issue where month.php and mini-calendar today highlight
+      based on server time
   - New Features / Enhancements / Changes:
-    + Replaced all instances of forms[0] in javascript with the real form names. This
-      will allow WebCalendar to co-exist with other forms on the same page.
+    + Replaced all instances of forms[0] in javascript with the real form
+      names. This will allow WebCalendar to co-exist with other forms on
+      the same page.
     + Added patch to allow TLS with LDAP
     + Added patch 900968: Add outlook-style availability popup
+    + Added global views (available to all users)
+    + Added option to select all users for a view (rather than having
+      to select all users in the list).  If users are added later, they
+      will be automatically included in the view.
   - The following translations were updated:
     + Spanish, Japanese (utf8, euc-jp, shift-jis)
 

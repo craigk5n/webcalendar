@@ -1,6 +1,10 @@
 Version 1.0RC3 (?? ??? 2005)
- - Replaced all instances of forms[0] in javascript with the real form names. This
-   will allow WebCalendar to co-exist with other forms on the same page.
+ - Added global views (available to all users)
+ - Added option to select all users for a view (rather than having
+   to select all users in the list).  If users are added later, they
+   will be automatically included in the view.
+ - Replaced all instances of forms[0] in javascript with the real form names.
+   This will allow WebCalendar to co-exist with other forms on the same page.
  - Added javascript that enables visibility of the start/end time or duration
    on the edit_entry page from availability.php.
  - Fixed bug 1148603: Assistants can't view Bosses Unapproved Events

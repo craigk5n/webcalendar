@@ -273,12 +273,6 @@ Error approving event: Error approving event
 
 
 ###############################################
-# Page: includes/js/availability.php
-#
-Change the date and time of this entry?: Change the date and time of this entry?
-
-
-###############################################
 # Page: category.php
 #
 Categories: Categories
@@ -645,6 +639,7 @@ Month (Timebar): Month (Timebar)
 Month (side by side): Month (side by side)
 Month (on same calendar): Month (on same calendar)
 preview: preview
+Selected: Selected
 
 
 ###############################################
@@ -797,10 +792,12 @@ Administrative Tools: Administrative Tools
 ###############################################
 # Page: purge.php
 #
+Preview: Preview
 Purging events for: Purging events for
 Finished: Finished
-Delete all events before: Delete all events before
 Check box to delete <b>ALL</b> events for a user: Check box to delete <b>ALL</b> events for a user
+Delete all events before: Delete all events before
+Preview delete: Preview delete
 Are you sure you want to delete events for: Are you sure you want to delete events for
 Records deleted from: Records deleted from
 
@@ -996,10 +993,17 @@ You have not entered a valid time of day: You have not entered a valid time of d
 The time you have entered begins before your preferred work hours.  Is this correct?: The time you have entered begins before your preferred work hours.  Is this correct?
 Please add a participant: Please add a participant
 
+
 ###############################################
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Invalid color
+
+
+###############################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Change the date and time of this entry?
 
 
 ###############################################

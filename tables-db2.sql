@@ -126,6 +126,7 @@ CREATE TABLE webcal_view (
   cal_owner VARCHAR(25) NOT NULL,
   cal_name VARCHAR(50) NOT NULL,
   cal_view_type CHAR(1),
+  cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
   PRIMARY KEY ( cal_view_id )
 );
 
