@@ -676,9 +676,13 @@ if ( strlen ( $conflicts ) ) {
     if (is_array($xval)) {
       $xkey.="[]";
       while (list($ykey, $yval)=each($xval)) {
+        if (get_magic_quotes_gpc())
+          $yval = stripslashes($yval);
         echo "<input type=\"hidden\" name=\"$xkey\" value=\"$yval\" />\n";
       }
     } else {
+      if (get_magic_quotes_gpc())
+        $xval = stripslashes($xval);
       echo "<input type=\"hidden\" name=\"$xkey\" value=\"$xval\" />\n";
     }
   }

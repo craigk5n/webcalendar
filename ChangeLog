@@ -1,4 +1,6 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Patch 931248: Mishandled single quotes in event name/description when
+    overriding a conflict.
   - Fixed bug 929977: site_extras not showing up in event popups when enabled
   - Updated purge.php to not use '<?' and always use '<?php' instead.
   - Added support for repeating events in iCal import
