@@ -2767,7 +2767,7 @@ function user_has_boss ( $assistant ) {
 // Return false if boss don't want to be notified, true otherwise
 function boss_must_be_notified ( $assistant, $boss ) {
   if (user_is_assistant ( $assistant, $boss ) )
-    return ( get_pref_setting ( $boss, "EMAIL_ASSISTANT_EVENT_NOTIFICATION" )=="Y" ? true : false );
+    return ( get_pref_setting ( $boss, "EMAIL_ASSISTANT_EVENTS" )=="Y" ? true : false );
   return true;
 }
 
