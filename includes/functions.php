@@ -652,15 +652,20 @@ function get_browser_language () {
 }
 
 // Load current user's layer info and stuff it into layer global variable.
+// If the system setting $allow_view_other is not set to 'Y', then
+// we ignore all layer functionality
 function load_user_layers ($user="",$force=0) {
   global $login;
   global $layers;
-  global $LAYERS_STATUS;
+  global $LAYERS_STATUS, $allow_view_other;
 
   if ( $user == "" )
     $user = $login;
 
   $layers = array ();
+
+  if ( empty ( $allow_view_other ) || $allow_view_other != 'Y' )
+    return; // not allowed to view others' calendars, so cannot use layers
 
   if ( $force || ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS != "N" ) ) {
     $res = dbi_query (

@@ -4,6 +4,13 @@ load_user_layers ();
 
 // echo "ret: $ret\n"; exit;
 
+if ( $allow_view_other != 'Y' ) {
+  print_header ();
+  etranslate("You are not authorized");
+  print_trailer ();
+  exit;
+}
+
 $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
   $updating_public = true;

@@ -3,6 +3,10 @@ include_once 'includes/init.php';
 
 $error = "";
 
+if ( $allow_view_other != 'Y' ) {
+  $error = translate("You are not authorized");
+}
+
 if ( empty ( $dups ) )
   $dups = 'N';
 

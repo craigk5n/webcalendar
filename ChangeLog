@@ -1,4 +1,7 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Disable all layer functionality if system settings do not allow
+    viewing another user's calendar (since this would be a security
+    problem.)
   - When admin is editing an approved public event, do not require the
     event to be approved again.
   - Added support for category icons.  No Admin UI yet.  Icons should

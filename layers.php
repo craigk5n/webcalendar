@@ -6,7 +6,7 @@ $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
   $updating_public = true;
   $layer_user = "__public__";
-  $u_url = "&amp;public=1";
+  $u_url = "&public=1";
   $ret = "ret=layers.php%3Fpublic=1";
 } else {
   $layer_user = $login;
@@ -27,6 +27,10 @@ if ( $res ) {
 }
 
 print_header();
+
+if ( $allow_view_other != 'Y') {
+  echo translate("You are not authorized");
+} else {
 ?>
 
 <h2><?php
@@ -110,6 +114,8 @@ else
        <tr><td><a href="edit_layer.php<?php if ( $updating_public ) echo "?public=1";?>"><?php echo (translate("Add layer")); ?></a></td></tr>
 
 </table>
+
+<?php } ?>
 
 <?php print_trailer(); ?>
 </body>
