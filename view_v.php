@@ -103,7 +103,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   $tdw = 12; // column width percent
 ?>
 
-<table cellspacing="0" cellpadding="0">
+<table class="main" cellspacing="0" cellpadding="0">
 <tr><th class="empty">&nbsp;</th>
 <?php
   for ( $date = $wkstart, $h = 0;

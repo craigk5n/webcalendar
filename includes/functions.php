@@ -3123,14 +3123,14 @@ function user_has_boss ( $assistant ) {
   return $ret;
 }
 
-// Return false if boss don't want to be notified, true otherwise
+// Return false if boss doesn't want to be notified, true otherwise
 function boss_must_be_notified ( $assistant, $boss ) {
   if (user_is_assistant ( $assistant, $boss ) )
     return ( get_pref_setting ( $boss, "EMAIL_ASSISTANT_EVENTS" )=="Y" ? true : false );
   return true;
 }
 
-// Return false if boss don't want to approve events, true otherwise
+// Return false if boss doesn't want to approve events, true otherwise
 function boss_must_approve_event ( $assistant, $boss ) {
   if (user_is_assistant ( $assistant, $boss ) )
     return ( get_pref_setting ( $boss, "APPROVE_ASSISTANT_EVENT" )=="Y" ? true : false );
@@ -3145,7 +3145,6 @@ function fake_mail ( $mailto, $subj, $text, $hdrs ) {
     nl2br ( $text );
 }
 
-//
 // Print all the entries in a time bar format for the specified user
 // for the
 // specified date.  If we are displaying data from someone other than

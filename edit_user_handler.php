@@ -72,12 +72,12 @@ if ( ! empty ( $error ) ) {
 
 echo $error;
 //if ( $sql != "" )
-//  echo "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
+//  echo "<br /><br /><strong>SQL:</strong> $sql";
 //?>
 </blockquote>
 </body>
 </html>
 <?php } else if ( empty ( $error ) ) {
-?><html><head><body onload="alert('<?php etranslate("Changes successfully saved");?>'); window.parent.location.href='users.php';">
+?><html><head></head><body onload="alert('<?php etranslate("Changes successfully saved");?>'); window.parent.location.href='users.php';">
 </body></html>
 <?php } ?>

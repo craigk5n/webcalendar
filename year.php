@@ -58,7 +58,7 @@ if ( $user == "__public__" )
 				echo $fullname;
 			}
 			if ( $is_assistant )
-				echo "<br /><span style=\"font-weight:bold;\">-- " . translate("Assistant mode") . " --</span>";
+				echo "<br /><strong>-- " . translate("Assistant mode") . " --</strong>";
 		}
 	?></span>
 </div>
@@ -90,13 +90,14 @@ if ( $user == "__public__" )
 <br />
 <?php display_unapproved_events ( $login ); ?>
 <br />
-<a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="year.php?<?php
-  if ( $thisyear )
-    echo "year=$thisyear&amp;";
-  if ( $user != $login && ! empty ( $user ) )
-    echo "user=$user&amp;";
-?>friendly=1" target="cal_printer_friendly"
-onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
+<a title="<?php 
+	etranslate("Generate printer-friendly version")
+?>" class="printer" href="year.php?<?php
+	if ( $thisyear )
+		echo "year=$thisyear&amp;";
+	if ( $user != $login && ! empty ( $user ) )
+		echo "user=$user&amp;";
+?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 <?php print_trailer(); ?>
 </body>

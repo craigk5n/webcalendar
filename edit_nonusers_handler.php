@@ -5,7 +5,7 @@ load_user_layers ();
 if ( ! $is_admin ) {
   echo "<h2>" . translate("Error") .
     "</h2>" . translate("You are not authorized") . ".\n";
-  echo "</body></html>\n";
+  echo "</body>\n</html>";
   exit;
 }
 $error = "";
@@ -81,9 +81,9 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
   }
 }
 
-print_header();
-
-if ( !empty ($error) ) { ?>
+if ( ! empty ( $error ) ) {
+  print_header( '', '', '', true );
+?>
 
 <h2><?php etranslate("Error")?></h2>
 
@@ -94,9 +94,9 @@ echo $error;
 //  echo "<br /><br /><b>SQL:</b> $sql";
 //?>
 </blockquote>
-<?php } else {
-	echo "Success! The changes you requested have been saved.";
-}
-?>
 </body>
 </html>
+<?php } else if ( empty ( $error ) ) {
+?><html><head></head><body onload="alert('<?php etranslate("Changes successfully saved");?>'); window.parent.location.href='users.php';">
+</body></html>
+<?php } ?>

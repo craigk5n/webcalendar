@@ -50,23 +50,23 @@ if ( ! $is_admin ) {
   }
 }
 
-print_header();
+if ( ! empty ( $error ) ) {
+  print_header( '', '', '', true );
 
-if ( $error != "" ) { ?>
+?>
 <h2><?php etranslate("Error")?></h2>
 
 <blockquote>
 <?php
+
 echo $error;
-
 //if ( $sql != "" )
-//  echo "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
-?>
+//  echo "<br /><br /><strong>SQL:</strong> $sql";
+//?>
 </blockquote>
-
-<?php } else if ( $error == "" ) {
-	echo "Success! The changes you requested were saved.";
-}
-?>
 </body>
 </html>
+<?php } else if ( empty ( $error ) ) {
+?><html><head></head><body onload="alert('<?php etranslate("Changes successfully saved");?>'); window.parent.location.href='users.php';">
+</body></html>
+<?php } ?>

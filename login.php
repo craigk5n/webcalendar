@@ -1,5 +1,4 @@
 <?php
-
 include "includes/config.php";
 include "includes/php-dbi.php";
 include "includes/functions.php";
@@ -17,6 +16,7 @@ if ( ! empty ( $last_login ) )
 
 if ( empty ( $webcalendar_login ) )
   $webcalendar_login = "";
+
 if ( $remember_last_login == "Y" && empty ( $login ) ) {
   $last_login = $login = $webcalendar_login;
 }
@@ -125,10 +125,10 @@ function valid_form ( form ) {
 }
 function myOnLoad() {
   <?php if ( $plugins_enabled ) { ?>
-  if (self != top)  {
-    window.open("login.php","_top","");
-    return;
-  }
+	  if (self != top)  {
+	    window.open("login.php","_top","");
+	    return;
+	  }
   <?php } ?>
   document.forms[0].login.focus();
   <?php
@@ -139,20 +139,21 @@ function myOnLoad() {
   ?>
 }
 </script>
-<?php include "includes/styles.php"; ?>
-<?php
-// Print custom header (since we do not call print_header function)
-if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
-  $res = dbi_query (
-    "SELECT cal_template_text FROM webcal_report_template " .
-    "WHERE cal_template_type = 'S' and cal_report_id = 0" );
-  if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) ) {
-      echo $row[0];
-    }
-    dbi_free_result ( $res );
-  }
-}
+<?php 
+	include "includes/styles.php";
+
+	// Print custom header (since we do not call print_header function)
+	if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
+	  $res = dbi_query (
+	    "SELECT cal_template_text FROM webcal_report_template " .
+	    "WHERE cal_template_type = 'S' and cal_report_id = 0" );
+	  if ( $res ) {
+	    if ( $row = dbi_fetch_row ( $res ) ) {
+	      echo $row[0];
+	    }
+	    dbi_free_result ( $res );
+	  }
+	}
 ?>
 </head>
 <body onload="myOnLoad();">
@@ -179,55 +180,48 @@ if ( ! empty ( $error ) ) {
     ": $error</span><br />\n";
 }
 ?>
-<div align="middle" style="margin-top: 70px; margin-bottom: 50px;">
-<form name="login_form" action="login.php" method="post" onsubmit="return valid_form(this)">
-
+<form name="login_form" id="login" action="login.php" method="post" onsubmit="return valid_form(this)">
 <?php
 if ( ! empty ( $return_path ) )
   echo "<input type=\"hidden\" name=\"return_path\" value=\"" .
     htmlentities ( $return_path ) . "\" />\n";
 ?>
 
-<table class="standard" style="border: 1px solid <?php echo $TABLEBG;?>;" cellpadding="10">
+<table cellpadding="10">
 <tr><td rowspan="2">
-	<img src="login.gif" alt="Login" /></td><td style="font-weight:bold;" align="right">
-	<label for="login"><?php etranslate("Username")?>:</label></td><td>
-	<input name="login" id="login" size="10" value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" tabindex="1" />
+	<img src="login.gif" alt="Login" /></td><td align="right">
+	<label for="user"><?php etranslate("Username")?>:</label></td><td>
+	<input name="login" id="user" size="10" value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" tabindex="1" />
 </td></tr>
-<tr><td style="font-weight:bold;" align="right">
+<tr><td style="text-align:right;">
 	<label for="password"><?php etranslate("Password")?>:</label></td><td>
 	<input name="password" id="password" type="password" size="10" tabindex="2" />
 </td></tr>
 <tr><td colspan="3" style="font-size: 10px;">
-	<input type="checkbox" name="remember" id="remember" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked=\"checked\""; ?> /><label for="remember">&nbsp;<?php etranslate("Save login via cookies so I don't have to login next time")?></label>
+	<input type="checkbox" name="remember" id="remember" tabindex="3" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked=\"checked\""; ?> /><label for="remember">&nbsp;<?php etranslate("Save login via cookies so I don't have to login next time")?></label>
 </td></tr>
-<tr><td colspan="4" align="middle">
-	<input type="submit" value="<?php etranslate("Login")?>" tabindex="3" />
+<tr><td colspan="4" style="text-align:center;">
+	<input type="submit" value="<?php etranslate("Login")?>" tabindex="4" />
 </td></tr>
 </table>
 </form>
-</div>
 
-<br /><br />
 <?php if ( $public_access == "Y" ) { ?>
+	<br /><br />
 	<a class="nav" href="index.php"><?php etranslate("Access public calendar")?></a><br />
 <?php } ?>
 
-<?php
-if ( $demo_mode == "Y" ) {
-  // This is used on the sourceforge demo page
-  echo "Demo login: user = \"demo\", password = \"demo\" <br />";
-}
-?>
+<?php if ( $demo_mode == "Y" ) {
+	// This is used on the sourceforge demo page
+	echo "Demo login: user = \"demo\", password = \"demo\"<br />";
+} ?>
 <br /><br /><br />
-<span style="font-size:13px;">
-<?php etranslate("cookies-note")?></span>
-<br />
-<hr /><br /><br />
-<a href="<?php echo $PROGRAM_URL ?>" class="aboutinfo"><?php echo $PROGRAM_NAME?></a>
+<span class="cookies"><?php etranslate("cookies-note")?></span><br />
+<hr />
+<br /><br />
+<a href="<?php echo $PROGRAM_URL ?>" id="programname"><?php echo $PROGRAM_NAME?></a>
 
-<?php
-// Print custom trailer (since we do not call print_trailer function)
+<?php // Print custom trailer (since we do not call print_trailer function)
 if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
   $res = dbi_query (
     "SELECT cal_template_text FROM webcal_report_template " .
@@ -238,7 +232,6 @@ if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
     }
     dbi_free_result ( $res );
   }
-}
-?>
+} ?>
 </body>
 </html>

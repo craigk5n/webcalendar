@@ -46,7 +46,7 @@ print_header();
 ?>
 
 <table style="border-width:0px;">
-	<tr><td style="font-weight:bold;">
+	<tr><td>
 		<label for="username"><?php etranslate("Username")?>:</label></td><td>
   <?php
     if ( ! empty ( $user ) ) {
@@ -60,24 +60,24 @@ print_header();
     }
 ?>
 	</td></tr>
-	<tr><td style="font-weight:bold;">
+	<tr><td>
 		<label for="first"><?php etranslate("First Name")?>:</label></td><td>
 		<input type="text" name="ufirstname" id="first"	size="20" value="<?php echo htmlspecialchars ( $ufirstname );?>" />
 	</td></tr>
-	<tr><td style="font-weight:bold;">
+	<tr><td>
 		<label for="last"><?php etranslate("Last Name")?>:</label></td><td>
 		<input type="text" name="ulastname" id="last" size="20" value="<?php echo htmlspecialchars ( $ulastname );?>" />
 	</td></tr>
-	<tr><td style="font-weight:bold;">
+	<tr><td>
 		<label for="email"><?php etranslate("E-mail address")?>:</label></td><td>
 		<input type="text" name="uemail" id="email" size="20" value="<?php echo htmlspecialchars ( $uemail );?>" />
 	</td></tr>
 <?php if ( empty ( $user ) && ! $use_http_auth && $user_can_update_password ) { ?>
-	<tr><td style="font-weight:bold;">
+	<tr><td>
 		<label for="pass1"><?php etranslate("Password")?>:</label></td><td>
 		<input name="upassword1" id="pass1" size="15" value="" type="password" />
 	</td></tr>
-	<tr><td style="font-weight:bold;">
+	<tr><td>
 		<label for="pass2"><?php etranslate("Password")?> (<?php etranslate("again")?>):</label></td><td>
 		<input name="upassword2" id="pass2" size="15" value="" type="password" />
 	</td></tr>
@@ -119,11 +119,11 @@ if ( $is_admin ) { ?>
 	<input type="hidden" name="user" value="<?php echo $user;?>" />
 <?php } ?>
 <table style="border-width:0px;">
-	<tr><td style="font-weight:bold;">
+	<tr><td>
 		<label for="newpass1"><?php etranslate("New Password")?>:</label></td><td>
 		<input name="upassword1" id="newpass1" type="password" size="15" />
 	</td></tr>
-	<tr><td style="font-weight:bold;">
+	<tr><td>
 		<label for="username"><?php etranslate("New Password")?> (<?php etranslate("again")?>):</label></td><td>
 		<input name="upassword2" id="newpass2" type="password" size="15" />
 	</td></tr>
@@ -138,7 +138,6 @@ if ( $is_admin ) { ?>
 </form>
 <?php } ?>
 </td></tr></table>
-
 
 </body>
 </html>
