@@ -250,18 +250,17 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   for ( $i = 0; $i < $TIME_SLOTS; $i++ ) {
     if ( $rowspan > 1 ) {
       if ( ! empty ( $hour_arr[$i] ) ) {
+        $diff_start_time = $i - $last_row;
         if ( $rowspan_arr[$i] > 1 ) {
-          if ( $rowspan_arr[$i] >=  $rowspan_arr[$last_row] ) {
-            $rowspan_arr[$last_row] += ( $rowspan_arr[$i] -
-              $rowspan_arr[$last_row]  + 1 );
-          } 
+          if (  $rowspan_arr[$i] + ( $diff_start_time ) >  $rowspan_arr[$last_row]  ) {
+            $rowspan_arr[$last_row] = ( $rowspan_arr[$i] + ( $diff_start_time ) );
+          }
           $rowspan += ( $rowspan_arr[$i] - 1 );
-        } else
+        } else {
           $rowspan_arr[$last_row] += $rowspan_arr[$i];
+        }
         // this will move entries apart that appear in one field,
         // yet start on different hours
-        $start_time = $i;
-        $diff_start_time = $start_time - $last_row;
         for ( $u = $diff_start_time ; $u > 0 ; $u-- ) {
           $hour_arr[$last_row] .= "<br />\n"; 
         }
