@@ -15,7 +15,7 @@ print_header($INC);
 <TR><TD VALIGN="top" WIDTH=50%>
 
 <?php
-
+$ALL = 0;
 if ( ! empty ( $user ) ) {
   echo "<H2><FONT COLOR=\"$H2COLOR\">Purging events for $user...</FONT></H2>\n";
   $ids = '';
@@ -27,9 +27,13 @@ if ( ! empty ( $user ) ) {
       $ids = get_ids ( "SELECT cal_id FROM webcal_entry  WHERE cal_create_by = '$user'" );
     }
   } elseif ( $end_date ) {
-    if ( $user != 'ALL' ) $tail = " AND webcal_entry.cal_create_by = '$user'";
-    $E_ids = get_ids ( "SELECT cal_id FROM webcal_entry WHERE cal_type = 'E' AND cal_date < '$end_date' $tail" );
-    $M_ids = get_ids ( "SELECT webcal_entry.cal_id FROM webcal_entry INNER JOIN webcal_entry_repeats ON webcal_entry.cal_id = webcal_entry_repeats.cal_id WHERE webcal_entry.cal_type = 'M' AND cal_end IS NOT NULL AND cal_end < '$end_date' $tail" );
+    if ( $user != 'ALL' ) {
+      $tail = " AND webcal_entry.cal_create_by = '$user'";
+    } else {
+      $ALL = 1;  // Need this to tell get_ids to ignore participant check
+    }
+    $E_ids = get_ids ( "SELECT cal_id FROM webcal_entry WHERE cal_type = 'E' AND cal_date < '$end_date' $tail", $ALL );
+    $M_ids = get_ids ( "SELECT webcal_entry.cal_id FROM webcal_entry INNER JOIN webcal_entry_repeats ON webcal_entry.cal_id = webcal_entry_repeats.cal_id WHERE webcal_entry.cal_type = 'M' AND cal_end IS NOT NULL AND cal_end < '$end_date' $tail", $ALL );
     $ids = array_merge ( $E_ids, $M_ids );
   }
   if ( $ids ) purge_events ( $ids );
@@ -95,13 +99,26 @@ function purge_events ( $ids ) {
   }
 }
 
-function get_ids ( $sql ) {
+function get_ids ( $sql, $ALL = '' ) {
   $ids = array();
   $res = dbi_query ( $sql );
   if ( $res ) {
-     while ( $row = dbi_fetch_row ( $res ) ) {
-       $ids[] = $row['cal_id'];
-     }
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      if ($ALL == 1) {
+        $ids[] = $row['cal_id'];
+      } else {
+        //ONLY Delete event if no other participants.
+        $ID = $row['cal_id'];
+        $res2 = dbi_query ( "SELECT COUNT(*) FROM webcal_entry_user " .
+          "WHERE cal_id = $ID" );
+        if ( $res2 ) {
+          if ( $row2 = dbi_fetch_row ( $res2 ) ) {
+            if ( $row2[0] == 1 ) $ids[] = $ID;
+          }
+          dbi_free_result ( $res2 );
+        }
+      } // End if ($ALL)
+    } // End while
   }
   dbi_free_result ( $res );
   return $ids;
