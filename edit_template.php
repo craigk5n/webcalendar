@@ -43,7 +43,7 @@ if ( empty ( $REQUEST_METHOD ) )
 if ( $REQUEST_METHOD == 'POST' ) {
   //$template = getPostValue ( "template" );
   $template = $_POST['template'];
-  //echo "Template: " . htmlentities ( $template ) . "<br />\n"; exit;
+  //echo "Template: " .  $template  . "<br />\n"; exit;
   if ( $found ) {
     $sql = "UPDATE webcal_report_template " .
       "SET cal_template_text = '$template' " .
@@ -86,7 +86,7 @@ if ( ! empty ( $error ) ) {
 <form action="edit_template.php" method="post" name="reportform">
 
 <input type="hidden" name="type" value="<?php echo $type;?>" />
-<textarea rows="15" cols="60" name="template"><?php echo htmlentities ( $cur )?></textarea>
+<textarea rows="15" cols="60" name="template"><?php echo htmlspecialchars ( $cur )?></textarea>
 
 <br />
 <input type="button" value="<?php etranslate("Cancel")?>" onclick="window.close();" />
