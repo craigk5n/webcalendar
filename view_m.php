@@ -49,12 +49,11 @@ $thisdate = $startdate;
 <?php } ?>
 </td>
 <td style="text-align:center; color:<?php echo $H2COLOR?>;">
-<font size="+2">
-<span style="font-weight:bold;">
+<span style="font-weight:bold; font-size:24px;">
 <?php
   printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
 ?>
-</span></font><br />
+</span><br />
 <?php echo $view_name ?>
 </td>
 <td style="text-align:right;">
@@ -150,9 +149,9 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
         $color = $CELLBG;
       $class = "tableheader";
     }
-    echo "<tr><th class=\"$class\" style=\"width:10%; background-color:$color; vertical-align:top;\">" .
-      "<font size=\"-1\">" . $weekday . " " .
-      round ( date ( "d", $date ) ) . "</font></th>\n";
+    echo "<tr><th class=\"$class\" style=\"width:10%; background-color:$color; vertical-align:top; font-size:13px;\">" .
+      $weekday . " " .
+      round ( date ( "d", $date ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
       $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $user = $viewusers[$i];
