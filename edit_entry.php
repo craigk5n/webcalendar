@@ -78,7 +78,8 @@ if ( $readonly == 'Y' ) {
     $month = ( $cal_date / 100 ) % 100;
     $day = $cal_date % 100;
     $time = $row[2];
-    if ( $time >= 0 ) { /* -1 = no time specified */
+    // test for AllDay event, if so, don't adjust time
+    if ( $time > 0  || ( $time = 0 &&  $row[5] != 1440 ) ) { /* -1 = no time specified */
       $time += ( ! empty ( $TZ_OFFSET )?$TZ_OFFSET : 0)  * 10000;
       if ( $time > 240000 ) {
         $time -= 240000;

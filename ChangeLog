@@ -1,4 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed bug 1065461: timezone offset & all-day events
+ - Fixed bug 1107253: time zone offset
  - Fixed bug 1140453: Time zone offset in email notifications
  - Fixed problem with second edit of a single event in a repeating series 
    losing linkage with the original event.
