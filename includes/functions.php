@@ -849,12 +849,12 @@ function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
         " AND webcal_entry.cal_time >= $cutoff ) )";
     } else {
       $next_day = mktime ( 3, 0, 0, $sm, $sd + 1, $sy );
-      $cutoff = 24 + $TZ_OFFSET . "0000";
+      $cutoff = ( 0 - $TZ_OFFSET ) * 10000;
       $date_filter = " AND ( ( webcal_entry.cal_date = $startdate AND " .
-        "( webcal_entry.cal_time >= $cutoff OR " .
+        "( webcal_entry.cal_time > $cutoff OR " .
         "webcal_entry.cal_time = -1 ) ) OR " .
         "( webcal_entry.cal_date = " . date("Ymd", $next_day ) .
-        " AND webcal_entry.cal_time < $cutoff ) )";
+        " AND webcal_entry.cal_time =< $cutoff ) )";
     }
   } else {
     if ( $TZ_OFFSET == 0 ) {
@@ -878,14 +878,14 @@ function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
       $next_day = date ( ( "Ymd" ), mktime ( 3, 0, 0, $sm, $sd + 1, $sy ) );
       $enddate_plus1 =
         date ( ( "Ymd" ), mktime ( 3, 0, 0, $em, $ed + 1, $ey ) );
-      $cutoff = 24 + $TZ_OFFSET . "0000";
+      $cutoff = ( 0 - $TZ_OFFSET ) * 10000;
       $date_filter = " AND ( ( webcal_entry.cal_date >= $startdate " .
         "AND webcal_entry.cal_date <= $enddate AND " .
         "webcal_entry.cal_time = -1 ) OR " .
         "( webcal_entry.cal_date = $startdate AND " .
-        "webcal_entry.cal_time >= $cutoff ) OR " .
+        "webcal_entry.cal_time > $cutoff ) OR " .
         "( webcal_entry.cal_date = $enddate_plus1 AND " .
-        "webcal_entry.cal_time < $cutoff ) OR " .
+        "webcal_entry.cal_time <= $cutoff ) OR " .
         "( webcal_entry.cal_date > $startdate AND " .
         "webcal_entry.cal_date < $enddate ) )";
     }
