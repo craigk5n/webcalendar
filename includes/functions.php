@@ -1160,7 +1160,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     if ( $showyear != '' ) {
       echo " $thisyear";
     }
-    echo "</th></tr>\n";
+    echo "</th></tr>\n<tr>\n";
   } else {
     //print the month name
     echo "<caption><a href=\"{$month_link}{$u_url}&amp;year=$thisyear&amp;month=$thismonth\">";
