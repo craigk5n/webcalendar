@@ -68,12 +68,16 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
     }
   } else {
   // Adding
-    $nid = $NONUSER_PREFIX.$nid;
-    $sql = "INSERT INTO webcal_nonuser_cals " .
-    "( cal_login, cal_firstname, cal_lastname, cal_admin ) " .
-    "VALUES ( '$nid', '$nfirstname', '$nlastname', '$nadmin' )";
-    if ( ! dbi_query ( $sql ) ) {
-      $error = translate ("Database error") . ": " . dbi_error();
+    if (preg_match( "/^[\w]+$/", $nid )) {
+      $nid = $NONUSER_PREFIX.$nid;
+      $sql = "INSERT INTO webcal_nonuser_cals " .
+      "( cal_login, cal_firstname, cal_lastname, cal_admin ) " .
+      "VALUES ( '$nid', '$nfirstname', '$nlastname', '$nadmin' )";
+      if ( ! dbi_query ( $sql ) ) {
+        $error = translate ("Database error") . ": " . dbi_error();
+      }
+    } else {
+      $error = translate ("Calendar ID")." ".translate ("word characters only").".";
     }
   }
 }

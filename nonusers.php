@@ -37,7 +37,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
     $button = translate("Save");
     $nonusertemp_login = substr($nonusertemp_login, strlen($NONUSER_PREFIX));
   } else {
-    $id_display = "<input name=\"nid\" size=\"20\" maxlength=\"20\" />";
+    $id_display = "<input name=\"nid\" size=\"20\" maxlength=\"20\" /> " . translate ("word characters only");
   }
   ?>
 <table>
