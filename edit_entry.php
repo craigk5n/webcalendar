@@ -231,17 +231,17 @@ if ( $allow_html_description == "Y" ){
   // If they have installed the htmlarea widget, make use of it
   $textareasize = 'rows="15" cols="50"';
   if ( file_exists ( "includes/htmlarea/htmlarea.php" ) ) {
-    $BodyX = 'onload="initEditor();timetype_handler()"';
+    $BodyX = 'onload="initEditor();timetype_handler();rpttype_handler()"';
     $INC = array ( 'htmlarea/htmlarea.php', 'js/edit_entry.php',
       'js/visible.php', 'htmlarea/core.php' );
   } else {
     // No htmlarea files found...
-    $BodyX = 'onload="timetype_handler()"';
+    $BodyX = 'onload="timetype_handler();rpttype_handler()"';
     $INC = array ( 'js/edit_entry.php', 'js/visible.php' );
   }
 } else {
   $textareasize = 'rows="5" cols="40"';
-  $BodyX = 'onload="timetype_handler()"';
+  $BodyX = 'onload="timetype_handler();rpttype_handler()"';
   $INC = array('js/edit_entry.php','js/visible.php');
 }
 
