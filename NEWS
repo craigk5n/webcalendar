@@ -38,6 +38,7 @@ Version 1.0RC3 (?? ??? 2005)
     + Fixed issue where month.php and mini-calendar today highlight
       based on server time
   - New Features / Enhancements / Changes:
+    + Added 'Public Access' to Manage Calendar of: list, if Admin. 
     + Allow user-created views to be the default view set in user preferences.
       After saving or deleting an event, the user will return to this page.
     + Replaced popups.php code with new knoppix based code. This should eliminate
