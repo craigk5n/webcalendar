@@ -1,4 +1,27 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Reapplied patch 1044285: today & weekend classes got reversed
+  - Changed '>' character to be '&raquo;'
+  - Added 'bullet' class for event bullets being styled in styles.php
+  - Changed background color for date links to a border
+  - Moved help button to new icon in-line with the header
+  - Added unique id to body tag for new style system
+  - Added "preview" link to preview view types while managing views
+  - Fixed funky rendering of new trailer in Opera & Safari
+  - Added .printer class to format printer-friendly link
+  - Converted headers for most pages to use divs & new styling rather than
+  tables
+  - Added line breaks to code for easier reading post-rendering
+  - Reorganized CSS in styles.php & eliminated duplicate code
+  - Cleaned up & updated code for week.php, month.php, and most of the views to
+  use new styling system
+  - Added title attributes to links
+  - Recommitted corrupted images so Windows users could use CVS
+  - Patch 1040376: Added code to style cells for today & for the day being viewed
+  - Patch 1019183: Removed tables from trailer & added necessary styles
+  - Patch 1041179: Added code for today, weekends & days that have events to year.php
+  - Patch 1044285: Cell for today doesn't get colored on weekends (month.php)
+  - Fixed Bug 1030575: extra tag
+  - Fixed Bug 1016668: Changing table cell background for current day modifies events background too
   - Fixed Bug 1031253: Can't add events for non-standard usernames
   - Fixed issue: Cell for today doesn't get colored on weekends (ref patch 1044285)
   - Fixed Bug 1025547: Exporting data - change vcal to ical
