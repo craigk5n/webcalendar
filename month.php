@@ -50,7 +50,7 @@ if ( ! $friendly ) {
     $wkstart = get_sunday_before ( $prevyear, $prevmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $prevmonth, 1, $prevyear );
   $monthend = mktime ( 3, 0, 0, $prevmonth + 1, 0, $prevyear );
-  echo "<tr><td colspan=\"7\" style=\"text-align:center;\"><FONT SIZE=\"-1\">" .
+  echo "<tr><td colspan=\"7\" style=\"text-align:center;\"><font size=\"-1\">" .
     "<a href=\"month.php?$u_url&";
   $prevmonth_name = month_name ( $prevmonth );
   echo "year=$prevyear&month=$prevmonth$caturl\" class=\"monthlink\">" .
@@ -119,49 +119,49 @@ if ( ! $friendly ) {
     $wkstart = get_sunday_before ( $nextyear, $nextmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $nextmonth, 1, $nextyear );
   $monthend = mktime ( 3, 0, 0, $nextmonth + 1, 0, $nextyear );
-  echo "<TR><TD COLSPAN=\"7\" ALIGN=\"middle\"><FONT SIZE=\"-1\">" .
-    "<A HREF=\"month.php?$u_url";
+  echo "<tr><td COLSPAN=\"7\" ALIGN=\"middle\"><font size=\"-1\">" .
+    "<a href=\"month.php?$u_url";
   echo "year=$nextyear&month=$nextmonth$caturl\" CLASS=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $nextyear, $nextmonth ),
     $DATE_FORMAT_MY, false, false ) .
-    "</A></FONT></TD></TR>\n";
-  echo "<TR>";
-  if ( $WEEK_START == 0 ) echo "<TD><FONT SIZE=\"-2\">" .
-    weekday_short_name ( 0 ) . "</font></TD>";
+    "</a></font></td></tr>\n";
+  echo "<tr>";
+  if ( $WEEK_START == 0 ) echo "<td><font size=\"-2\">" .
+    weekday_short_name ( 0 ) . "</font></td>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<TD><FONT SIZE=\"-2\">" .
-      weekday_short_name ( $i ) . "</font></TD>";
+    echo "<td><font size=\"-2\">" .
+      weekday_short_name ( $i ) . "</font></td>";
   }
-  if ( $WEEK_START == 1 ) echo "<TD><FONT SIZE=\"-2\">" .
-    weekday_short_name ( 0 ) . "</font></TD>";
-  echo "</TR>\n";
+  if ( $WEEK_START == 1 ) echo "<td><font size=\"-2\">" .
+    weekday_short_name ( 0 ) . "</font></td>";
+  echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     $i += ( 24 * 3600 * 7 ) ) {
-    print "<TR>\n";
+    print "<tr>\n";
     for ( $j = 0; $j < 7; $j++ ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<TD><FONT SIZE=\"-2\">" . date ( "d", $date ) . "</FONT></TD>\n";
+        print "<td><font size=\"-2\">" . date ( "d", $date ) . "</font></td>\n";
       } else {
-        print "<TD>&nbsp;</TD>\n";
+        print "<td>&nbsp;</td>\n";
       }
     }
-    print "</TR>\n";
+    print "</tr>\n";
   }
-  echo "</TABLE></TD>\n";
+  echo "</table></td>\n";
 }
 
 ?>
-</TR>
-</TABLE>
+</tr>
+</table>
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<TABLE style="border-width:0px; width:100%;" CELLSPACING="0" CELLPADDING="0">
-<TR><TD style="background-color:<?php echo $TABLEBG?>;">
-<TABLE style="border:0px; width:100%;" CELLSPACING="1" CELLPADDING="2">
+<table style="border-width:0px; width:100%;" CELLSPACING="0" CELLPADDING="0">
+<tr><td style="background-color:<?php echo $TABLEBG?>;">
+<table style="border:0px; width:100%;" CELLSPACING="1" CELLPADDING="2">
 <?php } else { ?>
-<TABLE style="border:1px; width:100%;" CELLSPACING="0" CELLPADDING="0">
+<table style="border:1px; width:100%;" CELLSPACING="0" CELLPADDING="0">
 <?php } ?>
 
 <tr>
@@ -213,18 +213,19 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $color = $is_weekend ? $WEEKENDBG : $CELLBG;
       if ( empty ( $color ) )
         $color = "#C0C0C0";
-      print "<td style=\"vertical-align:top; height:75px;\" id=\"$class\" ";
+      print "<td style=\"vertical-align:top; height:75px;";
       if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) )
-        echo "style=\"background-color:$TODAYCELLBG;\">";
+        echo "background-color:$TODAYCELLBG;\"";
       else
-        echo "style=\"background-color:$color;\">";
+        echo "background-color:$color;\"";
+      echo " id=\"$class\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       print_date_entries ( date ( "Ymd", $date ),
         ( ! empty ( $user ) ) ? $user : $login,
         $friendly, false );
       print "</td>\n";
     } else {
-      print "<td style=\"vertical-align:top; height:75px;\" id=\"tablecell\" style=\"background-color:$CELLBG;\">&nbsp;</TD>\n";
+      print "<td style=\"vertical-align:top; height:75px; background-color:$CELLBG;\" id=\"tablecell\">&nbsp;</td>\n";
     }
   }
   print "</tr>\n";
