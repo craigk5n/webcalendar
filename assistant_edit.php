@@ -24,7 +24,7 @@ print_header($INC);
 <a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 
 <table style="border-width:0px;">
-<tr><td style="vertical-align:top; font-weight:bold;"><label for="users"><?php etranslate("Assistants"); ?>:</label></td>
+<tr><td style="vertical-align:top;"><label for="users"><?php etranslate("Assistants"); ?>:</label></td>
 <td>
 <select name="users[]" id="users" size="10" multiple="multiple">
 <?php
@@ -58,12 +58,9 @@ if ( $groups_enabled == "Y" ) {
 }
 ?>
 </td></tr>
-<tr><td colspan="2">
-<br /><br />
-
-<div style="text-align:center;">
+<tr><td colspan="2" style="text-align:center;">
+<br />
 <input type="submit" name="action" value="<?php etranslate("Save"); ?>" />
-</div>
 </td></tr>
 </table>
 </form>

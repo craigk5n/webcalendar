@@ -59,16 +59,16 @@ print_header('', '', '', true);
 ?>
 	</td></tr>
 	<tr><td>
-		<label for="first"><?php etranslate("First Name")?>:</label></td><td>
-		<input type="text" name="ufirstname" id="first"	size="20" value="<?php echo htmlspecialchars ( $ufirstname );?>" />
+		<label for="ufirstname"><?php etranslate("First Name")?>:</label></td><td>
+		<input type="text" name="ufirstname" id="ufirstname" size="20" value="<?php echo htmlspecialchars ( $ufirstname );?>" />
 	</td></tr>
 	<tr><td>
-		<label for="last"><?php etranslate("Last Name")?>:</label></td><td>
-		<input type="text" name="ulastname" id="last" size="20" value="<?php echo htmlspecialchars ( $ulastname );?>" />
+		<label for="ulastname"><?php etranslate("Last Name")?>:</label></td><td>
+		<input type="text" name="ulastname" id="ulastname" size="20" value="<?php echo htmlspecialchars ( $ulastname );?>" />
 	</td></tr>
 	<tr><td>
-		<label for="email"><?php etranslate("E-mail address")?>:</label></td><td>
-		<input type="text" name="uemail" id="email" size="20" value="<?php echo htmlspecialchars ( $uemail );?>" />
+		<label for="uemail"><?php etranslate("E-mail address")?>:</label></td><td>
+		<input type="text" name="uemail" id="uemail" size="20" value="<?php echo htmlspecialchars ( $uemail );?>" />
 	</td></tr>
 <?php if ( empty ( $user ) && ! $use_http_auth && $user_can_update_password ) { ?>
 	<tr><td>
@@ -121,7 +121,7 @@ if ( $is_admin ) { ?>
 		<input name="upassword1" id="newpass1" type="password" size="15" />
 	</td></tr>
 	<tr><td>
-		<label for="username"><?php etranslate("New Password")?> (<?php etranslate("again")?>):</label></td><td>
+		<label for="newpass2"><?php etranslate("New Password")?> (<?php etranslate("again")?>):</label></td><td>
 		<input name="upassword2" id="newpass2" type="password" size="15" />
 	</td></tr>
 	<tr><td colspan="2">

@@ -27,11 +27,11 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
   <?php
   if ( ! empty ( $nid ) ) {
     nonuser_load_variables ( $nid, 'nonusertemp_' );
-    $id_display = "$nid <input name=\"nid\" type=\"hidden\" value=\"$nid\" />";
+    $id_display = "$nid <input type=\"hidden\" name=\"nid\" value=\"$nid\" />";
     $button = translate("Save");
     $nonusertemp_login = substr($nonusertemp_login, strlen($NONUSER_PREFIX));
   } else {
-    $id_display = "<input type=\"text\" name=\"nid\" size=\"20\" maxlength=\"20\" /> " . translate ("word characters only");
+    $id_display = "<input type=\"text\" name=\"nid\" id=\"calid\" size=\"20\" maxlength=\"20\" /> " . translate ("word characters only");
   }
   ?>
 <h2><?php
@@ -39,32 +39,33 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
 	nonuser_load_variables ( $nid, 'nonusertemp_' );
 	echo translate("Edit User");
   } else {
-		echo translate("Add User");
+	echo translate("Add User");
   }
 ?></h2>
 <table>
 	<tr><td>
-		<?php etranslate("Calendar ID")?>:</td><td>
+		<label for="calid"><?php etranslate("Calendar ID")?>:</label></td><td>
 		<?php echo $id_display ?>
 	</td></tr>
 	<tr><td>
-		<?php etranslate("First Name")?>:</td><td>
-		<input type="text" name="nfirstname" size="20" maxlength="25" value="<?php echo htmlspecialchars ( $nonusertemp_firstname ); ?>" />
+		<label for="nfirstname"><?php etranslate("First Name")?>:</label></td><td>
+		<input type="text" name="nfirstname" id="nfirstname" size="20" maxlength="25" value="<?php echo htmlspecialchars ( $nonusertemp_firstname ); ?>" />
 	</td></tr>
 	<tr><td>
-		<?php etranslate("Last Name")?>:</td><td>
-		<input type="text" name="nlastname" size="20" maxlength="25" value="<?php echo htmlspecialchars ( $nonusertemp_lastname ); ?>" />
+		<label for="nlastname"><?php etranslate("Last Name")?>:</label></td><td>
+		<input type="text" name="nlastname" id="nlastname" size="20" maxlength="25" value="<?php echo htmlspecialchars ( $nonusertemp_lastname ); ?>" />
 	</td></tr>
 	<tr><td>
-		<?php etranslate("Admin")?>:</td><td>
-		<select name="nadmin">
-  <?php
+		<label for="nadmin"><?php etranslate("Admin")?>:</label></td><td>
+		<select name="nadmin" id="nadmin">
+<?php
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-    echo "<option value=\"".$userlist[$i]['cal_login']."\"";
-    if ($nonusertemp_admin == $userlist[$i]['cal_login'] ) echo " selected=\"selected\"";
-    echo ">".$userlist[$i]['cal_fullname']."</option>\n";
+	echo "<option value=\"".$userlist[$i]['cal_login']."\"";
+	if ($nonusertemp_admin == $userlist[$i]['cal_login'] ) 
+		echo " selected=\"selected\"";
+	echo ">".$userlist[$i]['cal_fullname']."</option>\n";
   }
-  ?>
+?>
 		</select>
 	</td></tr>
 </table>
