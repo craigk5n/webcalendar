@@ -58,10 +58,10 @@ for ( $i = 0; $i < 7; $i++ ) {
 
 ?>
 
-<table style="border-width:0px; width:100%;">
+<table border="0" width="100%">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_w.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" style="width:36px; height:32px; border-width:0px;" alt="<?php etranslate("Previous")?>" /></a>
+<a href="view_w.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
 </td>
 <td style="text-align:center; color:<?php echo $H2COLOR?>;">
@@ -77,7 +77,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 </td>
 <td style="text-align:right;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_w.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" style="width:36px; height:32px; border-width:0px;" alt="<?php etranslate("Next")?>" /></a>
+<a href="view_w.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 </td></tr>
 </table>
@@ -132,15 +132,9 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 
 ?>
 
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<table style="border-width:0px; width:100%;" CELLSPACING="0" CELLPADDING="0">
-<tr><td style="background-color:<?php echo $TABLEBG?>;">
-<table style="border-width:0px; width:100%;" CELLSPACING="1" CELLPADDING="2">
-<?php } else { ?>
-<table style="border-width:1px; width:100%;" CELLSPACING="0" CELLPADDING="0">
-<?php } ?>
+<table border="1" rules="all" width="100%" cellspacing="0" cellpadding="0" style="border-color: <?php echo $TABLEBG;?>;">
 
-<tr><td style="width:10%; background-color:<?php echo $THBG?>;">&nbsp;</td>
+<tr><td width="10%" style="width:10%; background-color:<?php echo $THBG?>;">&nbsp;</td>
 
 <?php
 
@@ -156,12 +150,12 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
   echo "</tr>\n";
   
   
-  for ( $date = $wkstart, $h = 0;
-    date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
-    $date += ( 24 * 3600 ), $h++ ) {
-    $wday = strftime ( "%w", $date );
+  for ( $xdate = $wkstart, $h = 0;
+    date ( "Ymd", $xdate ) <= date ( "Ymd", $wkend );
+    $xdate += ( 24 * 3600 ), $h++ ) {
+    $wday = strftime ( "%w", $xdate );
     $weekday = weekday_short_name ( $wday );
-    if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
+    if ( date ( "Ymd", $xdate ) == date ( "Ymd", $today ) ) {
       $color = $TODAYCELLBG;
       $class = "tableheadertoday";
     } else {
@@ -171,30 +165,27 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
         $color = $CELLBG;
       $class = "tableheader";
     }
-    echo "<tr><th class=\"$class\" style=\"width:10%; background-color:$color; vertical-align:top;\">" .
+    echo "<tr><th width=\"10%\" class=\"$class\" style=\"width:10%; background-color:$color; vertical-align:top;\">" .
       "<font size=\"-1\" class=\"$class\">" . $weekday . " " .
-      round ( date ( "d", $date ) ) . "</font></th>\n";
+      round ( date ( "d", $xdate ) ) . "</font></th>\n";
     for ( $i = $j, $k = 0;
       $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
       echo "<td style=\"width:$tdw%; background-color:$color;\">";
-      //echo date ( "D, m-d-Y H:i:s", $date ) . "<BR>";
+      //echo date ( "D, m-d-Y H:i:s", $xdate ) . "<BR>";
       if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
         empty ( $friendly ) )
-        echo html_for_add_icon ( date ( "Ymd", $date ), "", "", $user );
-      print_date_entries ( date ( "Ymd", $date ),
+        echo html_for_add_icon ( date ( "Ymd", $xdate ), "", "", $user );
+      print_date_entries ( date ( "Ymd", $xdate ),
         $user, $friendly, true );
       echo "</td>";
     }
     echo "</tr>\n";
   }
 
-  if ( empty ( $friendly ) || ! $friendly )
-    echo "</td></tr></table>\n</table>\n<br /><br />\n";
-  else
-    echo "</table>\n<br /><br />\n";
+  echo "</table>\n<br /><br />\n";
 }
 
 
