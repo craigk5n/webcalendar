@@ -126,7 +126,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <table class="viewv" cellspacing="1" cellpadding="2">
 <?php } else { ?>
-<table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
+<table class="viewv" cellspacing="0" cellpadding="0">
 <?php } ?>
 
 <tr><th class="empty">&nbsp;</th>
@@ -161,7 +161,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
       // ------
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
-    echo "<th class=\"tableheader\" style=\"$tdw%;\">$tempfullname</th>";
+    echo "<th class=\"tableheader\" style=\"width:$tdw%;\">$tempfullname</th>";
 
       // ------
   for ( $date = $wkstart, $h = 0;

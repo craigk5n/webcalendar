@@ -118,7 +118,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <table class="viewm" cellspacing="1" cellpadding="2">
 <?php } else { // if printer-friendly, use table tag below ?>
-<table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
+<table class="viewm" cellspacing="0" cellpadding="0">
 <?php } ?>
 
 <tr><th class="empty">&nbsp;</th>
