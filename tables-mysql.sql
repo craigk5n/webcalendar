@@ -102,8 +102,10 @@ CREATE TABLE webcal_entry_repeats (
   cal_id INT DEFAULT 0 NOT NULL,
   /* type of repeating:<UL> */
   /* <LI>  daily - repeats daily */
-  /* <LI>  monthlyByDate - repeats on same day of the month */
-  /* <LI>  monthlyByDay - repeats on specified day (2nd Monday, for example) */
+  /* <LI>  monthlyByDate - repeats on same kday of the month */
+  /* <LI>  monthlyByDayR - repeats on same weekday of the month */
+  /*         (counting weeks from the end of the month is in last Monday) */
+  /* <LI>  monthlyByDay - repeats on specified weekday (2nd Monday, for example) */
   /* <LI>  weekly - repeats every week */
   /* <LI>  yearly - repeats on same date every year */
   cal_type VARCHAR(20),
