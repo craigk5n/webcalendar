@@ -155,6 +155,8 @@ $events = read_events ( $username, $date, $endDate, $cat_id );
 // Print header without custom header and no style sheet
 if ( ! empty ( $LANGUAGE ) ) {
   $charset = translate ( "charset" );
+  $lang = languageToAbbrev ( ( $LANGUAGE == "Browser-defined" || 
+    $LANGUAGE == "none" )? $lang : $LANGUAGE );
   if ( $charset != "charset" ) {
     echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n" .
       "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
