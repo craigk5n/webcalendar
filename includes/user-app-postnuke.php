@@ -43,7 +43,7 @@ $pn_admin_gid = '2';
 $app_login_page = 'http://www.mysite.com/postnuke/html/user.php?op=loginscreen&module=NS-User'; 
 
 // Is there a parameter we can pass to tell the application to
-// redirect the user back to the calendar?
+// redirect the user back to the calendar after login?
 $app_redir_param = 'url';  // postnuke uses 'url'
 
 // What is the full URL to the logout page (including http:// or https://)
@@ -96,7 +96,7 @@ function user_logged_in() {
 //  returns: login id
 function pn_active_session($sid) {
   global $pn_user_table, $pn_session_table, $pn_settings_table;
-  global $app_host, $app_login, $app_pass, $app_db;
+  global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
   global $c, $db_host, $db_login, $db_password, $db_database;
 
   // if postnuke is in a separate db, we have to connect to it
@@ -135,7 +135,7 @@ function pn_active_session($sid) {
 //  Updates the session table to set the last access time to now 
 function pn_update_session($sid) {
   global $pn_session_table;
-  global $app_host, $app_login, $app_pass, $app_db;
+  global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
   global $c, $db_host, $db_login, $db_password, $db_database;
 
   // if postnuke is in a separate db, we have to connect to it
@@ -157,7 +157,7 @@ function pn_update_session($sid) {
 // returns: array of admin ids
 function get_admins() {
   global $cached_admins, $pn_group_table, $pn_admin_gid;
-  global $app_host, $app_login, $app_pass, $app_db;
+  global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
   global $c, $db_host, $db_login, $db_password, $db_database;
 
   if ( ! empty ( $cached_admins ) ) return $cached_admins;
@@ -185,7 +185,7 @@ function get_admins() {
 // returns: array of users
 function user_get_users () {
   global $public_access, $PUBLIC_ACCESS_FULLNAME, $pn_user_table;
-  global $app_host, $app_login, $app_pass, $app_db;
+  global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
   global $c, $db_host, $db_login, $db_password, $db_database;
 
   $Admins = get_admins();
@@ -234,7 +234,7 @@ function user_get_users () {
 function user_load_variables ( $login, $prefix ) {
   global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX;
   global $app_host, $app_login, $app_pass, $app_db, $pn_user_table;
-  global $c, $db_host, $db_login, $db_password, $db_database;
+  global $c, $db_host, $db_login, $db_password, $db_database, $app_same_db;
   
   if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
