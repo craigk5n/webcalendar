@@ -1,6 +1,6 @@
 <?php
 include_once 'includes/init.php';
-print_header();
+print_header( '', '', '', true );
 
 if ( ! $is_admin ) {
   echo "<h2>" . translate("Error") . "</h2>\n" . 
@@ -68,5 +68,6 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
   <?php }  ?>
   </form>
 <?php } ?>
+<?php print_trailer ( false, true, true ); ?>
 </body>
 </html>
