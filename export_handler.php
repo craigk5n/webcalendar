@@ -1,7 +1,9 @@
 <?php
 include_once 'includes/init.php';
 
-if ( preg_match ( "/v(\d\S+) /", $GLOBALS['PROGRAM_NAME'], $matches ) ) {
+if ( ! empty ( $PROGRAM_VERSION ) ) {
+  $prodid = "PRODID:-//WebCalendar-$PROGRAM_VERSION";
+} else if ( preg_match ( "/v(\d\S+) /", $GLOBALS['PROGRAM_NAME'], $matches ) ) {
   $prodid = "PRODID:-//WebCalendar-$matches[1]";
 } else {
   $prodid = "PRODID:-//WebCalendar-UnknownVersion";
