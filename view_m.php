@@ -43,19 +43,16 @@ $thisdate = $startdate;
 ?>
 
 <div style="border-width:0px; width:99%;">
-<div style="float:left;">
 <?php if ( ! $friendly ) { ?>
+<div style="float:left;">
 <a title="<?php etranslate("Previous")?>" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
-<?php } ?>
 </div>
 <div style="float:right;">
-<?php if ( ! $friendly ) { ?>
 <a title="<?php etranslate("Next")?>" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-<?php } ?>
 </div>
+<?php } ?>
 <div class="title">
-<span class="date">
-<?php
+<span class="date"><?php
   printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
 ?></span><br />
 <span class="viewname"><?php echo $view_name ?></span>
@@ -122,8 +119,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
-    echo "<th style=\"width:$tdw%; border-bottom: 1px solid $TABLEBG; " .
-      "border-right: 1px solid $TABLEBG;\">$tempfullname</th>\n";
+    echo "<th style=\"width:$tdw%;\">$tempfullname</th>\n";
   }
   echo "</tr>\n";
   
@@ -141,7 +137,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
         $color = $CELLBG;
       $class = "tableheader";
     }
-    echo "<tr><th class=\"$class\" style=\"width:10%; vertical-align:top; font-size:13px; border-right: 1px solid $TABLEBG; border-bottom: 1px solid $TABLEBG;\">" .
+    echo "<tr><th class=\"$class\" style=\"width:10%;\">" .
       $weekday . " " .
       round ( date ( "d", $date ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
@@ -149,8 +145,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
       $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
-      echo "<td style=\"width:$tdw%; background-color:$color; " .
-        "border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
+      echo "<td style=\"width:$tdw%; background-color:$color;\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
         empty ( $friendly ) )
