@@ -2431,7 +2431,7 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
   }
 
   $newdate = $indate;
-  if ( ! empty ( $server_time ) ) {
+  if ( ! empty ( $server_time ) && $server_time > 0 ) {
     $y = substr ( $indate, 0, 4 );
     $m = substr ( $indate, 4, 2 );
     $d = substr ( $indate, 6, 2 );
