@@ -15,7 +15,8 @@
 # Last update: 17 Feb 2004 by Markus Egartner <edv@kh-hallein.at>
 # Last update: 27 Feb 2004 by Markus Egartner <edv@kh-hallein.at>
 # Last update: 11 Mar 2004 by Markus Egartner <edv@kh-hallein.at>
-# Translation last updated on 03-11-2004
+# Last update: 25 Mar 2004 by Markus Egartner <edv@kh-hallein.at>
+# Translation last updated on 03-25-2004
 
 
 ###############################################
@@ -155,6 +156,7 @@ Approve this entry?: Eintrag bestätigen?
 Approve/Confirm: Eintrag bestätigen
 Reject this entry?: Eintrag ablehnen?
 Reject: Ablehnen
+Are you sure you want to delete this entry?: Wollen Sie den Eintrag wirklich löschen?
 No unapproved events for: Keine unbestätigten Termine für
 Unapproved Events: Unbestätigte Termine
 Public Access: Öffentlicher Zugang
@@ -177,7 +179,6 @@ Month (on same calendar): Monat (am gleichen Kalender)
 Users: Benutzer
 Select: Auswählen 
 Add: Hinzufügen
-Are you sure you want to delete this entry?: Wollen Sie den Eintrag wirklich löschen?
 
 
 ###############################################
@@ -432,7 +433,7 @@ Disable Participants field: Benutzerfeld deaktivieren
 disable-repeating-field-help: Wenn sie Ja wählen wird das Wiederholungsfeld bei "Einträge hinzufügen" entfernt,  um eine einfachere Handhabung zu gewährleisten.
 Disable Repeating field: Terminwiederholungsfeld deaktivieren
 popup-includes-siteextras-help: Falls aktiviert, ermöglicht die Anzeige benutzerdefinierte Felder die in site_extra.php aktiviert wurden.
-Display Site Extras in popup: Anzeiger der Site Extras in einem Pop-Up
+Display Site Extras in popup: Anzeige der 'Site Extras' im Pop-Up
 allow-html-description-help: Falls aktiviert, Benutzer kann HTML in der Beschreibung der Termine eintragen. Wenn nicht aktiviert, werden die HTML-Tags als Plain Text angezeigt. Warnung: Bei Aktivierung ermöglicht es dem Benutzer Bildverknüpfungen auf andere Webseiten.
 Allow HTML in Description: Ermöglicht HTMLs in Beschreibung der Termine
 allow-view-other-help: Gibt an ob de Benutzer die Kalender anderer Teilnehmer sehen kann.
@@ -551,7 +552,7 @@ Cancel: Abbrechen
 ###############################################
 # Page: assistant_edit.php
 #
-Yours assistants: Ihre Assistenten
+Your assistants: Ihre Assistenten
 
 
 ###############################################
@@ -1005,6 +1006,7 @@ Invalid user login: Ungültige Anmeldung
 #
 Server URL is required: Server URL wird benötigt
 Server URL must end with '/': Server URL muß mit einem '/' enden
+Invalid work hours: Ungültige Arbeitszeit
 Invalid color for document background: Ungültige Farbe für Hintergrund
 Invalid color for document title: Ungültige Farbe für Titel
 Invalid color for table cell background: Ungültige Farbe für Tabellen-Hintergrund
