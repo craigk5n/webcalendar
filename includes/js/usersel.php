@@ -19,7 +19,7 @@ function OkButton () {
     var state = false;
     for ( j = 0; j < thislist.length; j++ ) {
       if ( thislist.options[j].value == parentlist.options[i].value ) {
-        state = thislist.options[i].selected;
+        state = thislist.options[j].selected;
         found += " " + thislist.options[j].value;
       }
     }
