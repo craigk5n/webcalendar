@@ -1,39 +1,40 @@
+#!/usr/local/bin/php -q
 <?php
 /* $Id
  *
  * Description:
- *	This is a command-line script that will send out any email
- *	reminders that are due.
+ * This is a command-line script that will send out any email
+ * reminders that are due.
  *
  * Usage:
- *	php send_reminders.php
+ * php send_reminders.php
  *
  * Setup:
- *	This script should be setup to run periodically on your system.
- *	You could run it once every minute, but every 5-15 minutes should be
- *	sufficient.
+ * This script should be setup to run periodically on your system.
+ * You could run it once every minute, but every 5-15 minutes should be
+ * sufficient.
  *
- *	To set this up in cron, add a line like the following in your crontab
- *	to run it every 10 minutes:
- *	  1,11,21,31,41,51 * * * * php /some/path/here/send_reminders.php
- *	Of course, change the path to where this script lives.  If the
- *	php binary is not in your $PATH, you may also need to provide
- *	the full path to "php".
- *	On Linux, just type crontab -e to edit your crontab.
+ * To set this up in cron, add a line like the following in your crontab
+ * to run it every 10 minutes:
+ *   1,11,21,31,41,51 * * * * php /some/path/here/send_reminders.php
+ * Of course, change the path to where this script lives.  If the
+ * php binary is not in your $PATH, you may also need to provide
+ * the full path to "php".
+ * On Linux, just type crontab -e to edit your crontab.
  *
- *	If you're a Windows user, you'll either need to find a cron clone
- *	for Windows (they're out there) or use the Windows Task Scheduler.
- *	(See docs/WebCalendar-SysAdmin.html for instructions.)
+ * If you're a Windows user, you'll either need to find a cron clone
+ * for Windows (they're out there) or use the Windows Task Scheduler.
+ * (See docs/WebCalendar-SysAdmin.html for instructions.)
  * 
  * Comments:
- *	You will need access to the PHP binary (command-line) rather than
- *	the module-based version that is typically installed for use with
- *	a web server.to build as a CGI (rather than an Apache module) for
+ * You will need access to the PHP binary (command-line) rather than
+ * the module-based version that is typically installed for use with
+ * a web server.to build as a CGI (rather than an Apache module) for
  *
- *	If running this script from the command line generates PHP
- *	warnings, you can disable error_reporting by adding
- *	"-d error_reporting=0" to the command line:
- *	  php -d error_reporting=0 /some/path/here/tools/send_reminders.php
+ * If running this script from the command line generates PHP
+ * warnings, you can disable error_reporting by adding
+ * "-d error_reporting=0" to the command line:
+ *   php -d error_reporting=0 /some/path/here/tools/send_reminders.php
  *
  *********************************************************************/
 
@@ -236,7 +237,7 @@ function send_reminder ( $id, $event_date ) {
         $recipients[] = $participants[$i];
       } else {
         if ( $debug )
-	  echo "No email for user $participants[$i] <br />\n";
+   echo "No email for user $participants[$i] <br />\n";
       }
     }
     for ( $i = 0; $i < count ( $ext_participants ); $i++ ) {
