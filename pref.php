@@ -326,7 +326,11 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   <td><label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="Y" <?php if ( $prefarray["USER_PUBLISH_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="N" <?php if ( $prefarray["USER_PUBLISH_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 <?php if ( ! empty ( $server_url ) ) { ?>
 <tr><td style="vertical-align:top;" class="tooltip" title="<?php etooltip("remote-subscriptions-url-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("URL")?>:</td>
-  <td><?php echo htmlentities ( $server_url ) . "publish.php/$login.ics";?></td></tr>
+  <td>
+  <?php
+    echo htmlentities ( $server_url ) .
+      "publish.php/" . ( $updating_public ? "public" : $login ) .  ".ics";
+  ?></td></tr>
 <?php } /* $server_url */ ?>
 </table>
 <?php } /* $PUBLISH_ENABLED == 'Y' */ ?>
