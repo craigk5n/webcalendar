@@ -15,7 +15,7 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
 }
 
 // Modify the time to be server time rather than user time.
-if ( ! empty ( $hour ) || ( $timetype == 'T' ) ) {
+if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
   // Convert to 24 hour before subtracting TZ_OFFSET so am/pm isn't confused.
   // Note this obsoltes any code in the file below that deals with am/pm
   // so the code can be deleted
@@ -140,7 +140,7 @@ if ( $timetype == "A" ) {
 }
 
 $duration = ( $duration_h * 60 ) + $duration_m;
-if ( $hour > 0 ) {
+if ( $hour > 0 && $timetype != 'U' ) {
   if ( $TIME_FORMAT == '12' ) {
     $ampmt = $ampm;
     //This way, a user can pick am and still
@@ -215,7 +215,7 @@ if ( empty ( $allow_conflict_override ) || $allow_conflict_override != "Y" ) {
   $confirm_conflicts = ""; // security precaution
 }
 if ( $allow_conflicts != "Y" && empty ( $confirm_conflicts ) &&
-  strlen ( $hour ) > 0 ) {
+  strlen ( $hour ) > 0 && $timetype != 'U' ) {
   $date = mktime ( 3, 0, 0, $month, $day, $year );
   $str_cal_date = date ( "Ymd", $date );
   if ( strlen ( $hour ) > 0 )
@@ -321,7 +321,7 @@ if ( empty ( $error ) ) {
 
   $date = mktime ( 3, 0, 0, $month, $day, $year );
   $sql .= date ( "Ymd", $date ) . ", ";
-  if ( strlen ( $hour ) > 0 ) {
+  if ( strlen ( $hour ) > 0 && $timetype != 'U' ) {
     $sql .= sprintf ( "%02d%02d00, ", $hour, $minute );
   } else
     $sql .= "-1, ";
