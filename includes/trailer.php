@@ -236,7 +236,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
       translate("Search") . "</a>\n";
     if ( $login != '__public__' ) {
       echo " | <a title=\"" . 
-        translate("Import") . "/" . translate("Export") . "\ " .
+        translate("Import") . "/" . translate("Export") . "\"  ".
         "href=\"import.php\">" . 
         translate("Import") . "/" . translate("Export") . "</a>\n";
     }
