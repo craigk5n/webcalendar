@@ -166,7 +166,7 @@ if ( ! $friendly ) {
 </table>
 <br />
 
-<table class="monthview" cellspacing="0" cellpadding="0">
+<table class="monthview" cellspacing="0" cellpadding="0" style="border-top: 1px solid <?php echo $TABLEBG;?>; border-left: 1px solid <?php echo $TABLEBG;?>;">
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
 <th><?php etranslate("Sun")?></th>
