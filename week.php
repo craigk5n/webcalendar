@@ -243,7 +243,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 
   // now save the output...
   if ( ! empty ( $hour_arr[9999] ) && strlen ( $hour_arr[9999] ) ) {
-    $untimed[$d] = "<td class=\"today\">$hour_arr[9999]</td>\n";
+    $untimed[$d] = "<td>$hour_arr[9999]</td>\n";
     $untimed_found = true;
   }
   $save_hour_arr[$d] = $hour_arr;
