@@ -12,13 +12,26 @@ $LOG_DELETE = "D";
 $LOG_NOTIFICATION = "N";
 $LOG_REMINDER = "R";
 
+// Don't allow a user to put "login=XXX" in the URL if they are not
+// coming from the login.php page.
+if ( ! strstr ( $PHP_SELF, "login.php" ) && ! empty ( $GLOBALS["login"] ) ) {
+  $GLOBALS["login"] = "";
+}
+
 
 // This code is a temporary hack to make the application work when
 // register_globals is set to Off in php.ini (the default setting in
 // PHP 4.2.0 and after).
 if ( ! empty ( $HTTP_GET_VARS ) ) {
   while (list($key, $val) = @each($HTTP_GET_VARS)) {
-    $GLOBALS[$key] = $val;
+    if ( $key == "login" ) {
+      if ( strstr ( $PHP_SELF, "login.php" ) ) {
+        $GLOBALS[$key] = $val;
+      }
+    } else {
+      $GLOBALS[$key] = $val;
+        echo "XXX $key<BR>";
+    }
     //echo "GET var '$key' = '$val' <BR>";
   }
   reset ( $HTTP_GET_VARS );

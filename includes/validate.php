@@ -41,7 +41,8 @@ if ( $single_user == "Y" ) {
           }
 
           if (!user_valid_crypt($login, $cryptpw)) {
-            do_debug ( "User not logged in; redirecting to login page" );           do_redirect ( "login.php" );
+            do_debug ( "User not logged in; redirecting to login page" );
+            do_redirect ( "login.php" );
           }
 
           do_debug ( "Decoded login from cookie: $login" );
