@@ -27,7 +27,7 @@ to load your user preferences when viewing this page: om de gebruikersinstelling
 Save: bewaren
 Help: help
 Settings: instellingen
-app-name-help: Hier wordt de naam van de applicatie gedefinieerd, deze naam verschijnt in het browservenster op elke pagina en op de login-pagina. 
+app-name-help: Hier wordt de naam van de applicatie gedefinieerd, deze naam verschijnt in het browservenster op elke pagina en op de login-pagina.
 Application Name: programmanaam
 server-url-help: Specificeert de basis URL van de applicatie, deze URL wordt gebruikt bij het verzenden van email notificaties en herinneringen.
 Server URL: server URL
@@ -79,9 +79,9 @@ disable-priority-field-help: Door ja te kiezen wordt het veld Priority niet geto
 Disable Priority field: de-activeer veld Priority
 disable-access-field-help: Door [ja] te kiezen wordt het veld Toegang niet getoond in de afspraak-view; uw agenda kan hierdoor overzichtelijker worden.
 Disable Access field: de-activeer veld Toegang
-disable-participants-field-help: Door [ja] te kiezen wordt het veld Aanwezigenniet getoond in de afspraak-view. Hierdoor voorkomt u dat andere gebruikers aanwezigen aan hun afspraken toevoegen. Indien u deze optie activeert wenst u wellicht ook om de optie [sta raadplegen agenda andere gebruikers toe] te de-activeren. 
+disable-participants-field-help: Door [ja] te kiezen wordt het veld Aanwezigenniet getoond in de afspraak-view. Hierdoor voorkomt u dat andere gebruikers aanwezigen aan hun afspraken toevoegen. Indien u deze optie activeert wenst u wellicht ook om de optie [sta raadplegen agenda andere gebruikers toe] te de-activeren.
 Disable Participants field: de-activeer veld Aanwezigen
-disable-repeating-field-help: Door [ja] te kiezen wordt het veld [herhalingspatroon] niet getoond bij het toevoegen van afspraken; uw agenda kan hierdoor overzichtelijk worden. 
+disable-repeating-field-help: Door [ja] te kiezen wordt het veld [herhalingspatroon] niet getoond bij het toevoegen van afspraken; uw agenda kan hierdoor overzichtelijk worden.
 Disable Repeating field: de-activeer veld Herhalingspatroon
 allow-view-other-help: Definieert of een gebruiker de agenda van andere gebruikers mag inzien.
 Allow viewing other user's calendars: inzage agenda andere gebruikers toestaan
@@ -92,15 +92,15 @@ Public access can view other users: inzage agenda overige gebruikers bij publiek
 public-access-can-add-help: Indien ingeschakeld kunnen gebruikers, die de agenda via publeike toegang inzien, wel nieuwe afspraken toevoegen. Deze worden echter pas getoond na goedkeuring van de Administrator.
 Public access can add events: toevoegen nieuwe afspraken bij publieke toegang toestaan
 public-access-add-requires-approval-help: Deze optie bepaalt of afspraken voor de publieke agenda goedgekeurd moeten worden voordat zij zichtbaar zijn.
-Public access new events require approval: goedkeuring vereisen voor afspraken in publieke agenda 
-allow-view-add-help: in alle views wordt een '+' getoond zodat sneller een afspraak in een andere agenda kan worden gezet.  
+Public access new events require approval: goedkeuring vereisen voor afspraken in publieke agenda
+allow-view-add-help: in alle views wordt een '+' getoond zodat sneller een afspraak in een andere agenda kan worden gezet.
 Include add event link in views: toon icoon voor maken van afspraken in alle views
 allow-external-users-help: Hiermee kan een extern persoon als aanwezige bij een bepaalde afspraak worden gespecificeerd.
 Allow external users: toon externe deelnemers
-external-can-receive-notification-help: Als externe deelnemers en emailgebruik beide zijn geactiveerd en het mailadres van de externe deelnemer is ingevuld kunnen externe deelnemers email notificaties ontvangen bij het toevoegen, wijzigen of verwijderen van een afspraak. 
+external-can-receive-notification-help: Als externe deelnemers en emailgebruik beide zijn geactiveerd en het mailadres van de externe deelnemer is ingevuld kunnen externe deelnemers email notificaties ontvangen bij het toevoegen, wijzigen of verwijderen van een afspraak.
 External users can receive email notifications: emailnotificaties voor externe deelnemers toestaan
 external-can-receive-reminder-help: Als externe deelnemers en emailgebruik beide zijn geactiveerd en het mailadres is ingevuld kunnen externe deelnemers emailreminders ontvangen.
-External users can receive email reminders: herinneringen voor externe deelnemers toestaan 
+External users can receive email reminders: herinneringen voor externe deelnemers toestaan
 remember-last-login-help: Indien ingeschakeld zal, bij een volgend bezoek, de gebruikersnaam maar niet het password automatisch worden ingevoerd en worden de gebruikersinstellingen geladen inclusief kleurpatroon en taalselectie.
 Remember last login: onthoud loginnaam
 conflict-check-help: check op conflicterende afspraken (= afspraken van een persoon op hetzelfde tijdstip. Door [ja] te kiezen blijft het mogelijk om conflicterende afspraken in te stellen door de waarschuwing te bevestigen. Door [nee] te kiezen wordt geen check op conflicterende afspraken uitgevoerd.
@@ -109,7 +109,7 @@ conflict-months-help: Indien u bij optie Check op conflicterende afspraken [ja] 
 Conflict checking months: aantal maanden conflictencheck
 conflict-check-override-help: deze optie staat gebruikers toe om conflicterende afspraken te overrulen en twee of meer afspraken op dezelfde tijd te maken.
 Allow users to override conflicts: sta overrulen dubbele afspraken toe
-limit-appts-help: deze optie staat de Administrator toe om het aantal afspraken per dag voor alle gebruikers te beperken. 
+limit-appts-help: deze optie staat de Administrator toe om het aantal afspraken per dag voor alle gebruikers te beperken.
 Limit number of timed events per day: stel beperking in voor het aantal afspraken per gebruiker per dag
 limit-appts-number-help: deze optie bepaalt het maximale aantal tijdgebonden afspraken per gebruiker per dag
 Maximum timed events per day: maximum aantal tijdsgebonden afspraken per gebruiker per dag
@@ -134,7 +134,7 @@ Nonuser list: positie losse agenda
 Top: bovenaan
 Bottom: onderaan
 Reports: rapportages
-reports-enabled-help: Indien deze optie is geactiveerd wordt een nieuwe rapportage-sectie zichtbaar in het beheerpaneel onderaan de pagina. Hier kan een gebruiker eigen agendarapportages definieren. <br>Beheerders kunnen algemene rapportages toevoegen die in het rapportagemenu van alle gebruikers beschikbaar zijn. 
+reports-enabled-help: Indien deze optie is geactiveerd wordt een nieuwe rapportage-sectie zichtbaar in het beheerpaneel onderaan de pagina. Hier kan een gebruiker eigen agendarapportages definieren. <br>Beheerders kunnen algemene rapportages toevoegen die in het rapportagemenu van alle gebruikers beschikbaar zijn.
 Reports enabled: activeer rapportages
 Subscribe/Publish: aanmelden voor agendapublicatie via internet
 subscriptions-enabled-help: Met deze optie bepaalt u of remote gebruikers zich op een WebCalendar-agenda kunnen aanmelden om zo de inhoud van deze agenda in hun iCal-applicatie te bekijken (bijvoorbeeld Apple's iCal of Mozilla Calendar).
@@ -249,7 +249,7 @@ Printer Friendly: printversie
 # Page: del_entry.php
 #
 Hello: Dag
-An appointment has been canceled for you by: Er is een afspraak voor u geannuleerd door 
+An appointment has been canceled for you by: Er is een afspraak voor u geannuleerd door
 The subject was: Het betreft afspraak
 Notification: notificatie
 
@@ -324,7 +324,7 @@ The following conflicts with the suggested time: De voorgestelde tijd conflictee
 Unnamed Event: naamloze afspraak
 The description is: De omschrijving van de afspraak luidt
 Title: Titel
-A new appointment has been made for you by: Er is een nieuwe afspraak voor u gemaakt door 
+A new appointment has been made for you by: Er is een nieuwe afspraak voor u gemaakt door
 An appointment has been updated by: Er is een afspraak voor u bijgewerkt door
 The subject is: Het betreft afspraak
 Please look on: Raadpleegt u
@@ -437,8 +437,8 @@ to modify the preferences for the Public Access calendar: om de voorkeuren voor 
 tz-help: Deze optie bepaalt het aantal uren tijdsverschil tussen de servertijd en de lokale tijd.
 Timezone Offset: tijdverschil server-lokaal
 Add N hours to: voeg N uren toe aan
-Subtract N hours from: trek N uren af van 
-same as: net als 
+Subtract N hours from: trek N uren af van
+same as: net als
 server time: servertijd
 Default Category: toon de volgende categorieen in mijn agenda
 When I am the boss: Als mijn agenda door een assistent wordt beheerd
@@ -625,7 +625,7 @@ every: elke
 5th: 5e
 1st: 1e
 #
- last: laatste
+last: laatste
 Description: omschrijving
 Status: status
 Waiting for approval: nog niet bevestigd
@@ -831,11 +831,11 @@ Palm Desktop: Palm Desktop
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Al uw Palm Datebook-afspraken zijn opgeslagen in een bestand met de naam datebook.dat. U kunt dit bestand vinden in de Palm-directory op uw computer. In deze directory vindt u een subdirectory met uw gebruikersnaam als naam. Hierin vindt u het bestand <tt>datebook/datebook.dat</tt> - dit bestand heeft u nodig om uw Palm Desktop datebookgegevens in uw WebCalendar agenda te kunnen importeren.
 The following entries will not be imported: De volgende items zullen niet worden geimporteerd
 Entries older than the current date: items ouder dan de huidige datum
-Entries creted in the Palm Desktop that have not been HotSync'd: Items gemaakt in de Palm Desktop agenda die nog niet met HotSync gesynchroniseerd zijn
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Telkens als u uw Palm Datebook in uw WebCalendar agenda importeert zullen de gegevens van een vorige import-activiteit worden overschreven. Dit geldt niet voor afspraken in het verleden - items ouder dan de huidige datum worden immers niet geimporteerd.  
-Therefore, updates should be made in the Palm Desktop.: &nbsp;Derhalve dient u <b>nieuwe afspraken in de Palm Desktop agenda toe te voegen</b> en niet in uw WebCalendar agenda. 
+Entries created in the Palm Desktop that have not been HotSync'd: Items gemaakt in de Palm Desktop agenda die nog niet met HotSync gesynchroniseerd zijn
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Telkens als u uw Palm Datebook in uw WebCalendar agenda importeert zullen de gegevens van een vorige import-activiteit worden overschreven. Dit geldt niet voor afspraken in het verleden - items ouder dan de huidige datum worden immers niet geimporteerd.
+Therefore, updates should be made in the Palm Desktop.: &nbsp;Derhalve dient u <b>nieuwe afspraken in de Palm Desktop agenda toe te voegen</b> en niet in uw WebCalendar agenda.
 vCal: vCal
-The following formats have been tested: De volgende bestandsformaten zijn getest 
+The following formats have been tested: De volgende bestandsformaten zijn getest
 Palm Desktop 4: Palm Desktop 4
 Lotus Organizer 6: Lotus Organiser 6
 Microsoft Outlook 2002: Microsoft Outlook 2002
