@@ -77,8 +77,8 @@ h3 {
 <table style="border-width:0px;">
 <tr><td>Home Page:</td>
   <td><a href="http://webcalendar.sourceforge.net/">http://webcalendar.sourceforge.net/</a></td></tr>
-<tr><td>WebCalendar Version:</td><td>v1.0RC2 (09 Feb 2005)</td></tr>
-<tr><td>Last updated:</td><td>09-Feb-2005</td></tr>
+<tr><td>WebCalendar Version:</td><td>v1.0RC3+CVS (?? ??? 2005)</td></tr>
+<tr><td>Last updated:</td><td>24-Feb-2005</td></tr>
 </table>
 <h2>List of Functions</h2>
 <ul>
@@ -94,6 +94,7 @@ h3 {
 <li><a href="#clean_int">clean_int</a></li>
 <li><a href="#clean_whitespace">clean_whitespace</a></li>
 <li><a href="#clean_word">clean_word</a></li>
+<li><a href="#daily_matrix">daily_matrix</a></li>
 <li><a href="#date_selection_html">date_selection_html</a></li>
 <li><a href="#date_to_str">date_to_str</a></li>
 <li><a href="#dbi_affected_rows">dbi_affected_rows</a></li>
@@ -185,7 +186,7 @@ h3 {
 <li><tt>$text</tt> - input text</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The text altered to have HTML links for any web links (http or https)</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3195</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3206</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="activity_log">activity_log</a></h3>
@@ -200,7 +201,7 @@ h3 {
 <li><tt>$text</tt> - text comment to add with activity log entry</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value used in the HTML form (or URL)</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 698</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 700</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="background_css">background_css</a></h3>
@@ -213,7 +214,7 @@ h3 {
 <li><tt>$percent</tt> - how many percent lighter the top color should be than the base color at the bottom of the image</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The style sheet text to use</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 4353</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4364</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="boss_must_approve_event">boss_must_approve_event</a></h3>
@@ -225,7 +226,7 @@ h3 {
 <li><tt>$boss</tt> - boss login</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true if the boss must approve new events</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3730</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3741</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="boss_must_be_notified">boss_must_be_notified</a></h3>
@@ -237,7 +238,7 @@ h3 {
 <li><tt>$boss</tt> - boss login</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true if the boss wants email notifications</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3714</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3725</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="build_event_popup">build_event_popup</a></h3>
@@ -252,7 +253,7 @@ h3 {
 <li><tt>$site_extras</tt> - the HTML for any site_extras for this event</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The HTML for the event popup</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1006</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 1013</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="calc_time_slot">calc_time_slot</a></h3>
@@ -265,7 +266,7 @@ h3 {
 <li><tt>$10AM</tt> - 100AM appointment just shows up in the 10AM slow and not in the 11AM slot also.) <br/><br/><span class="note">Note</span> the global variable $TIME_SLOTS is used to determine how many time slots there are and how many minutes each is. This variable is defined user preferences (or defaulted to admin system settings).</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The time slot index</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 2578</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2588</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="check_for_conflicts">check_for_conflicts</a></h3>
@@ -282,7 +283,7 @@ h3 {
 <li><tt>$id</tt> - current event id (this keeps overlaps from wrongly checking an event against itself)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Return empty string for no conflicts or return the HTML of the conflicts when one or more are found.</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 2384</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2394</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="clean_html">clean_html</a></h3>
@@ -293,7 +294,7 @@ h3 {
 <li><tt>$value</tt> - input text</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the cleaned text</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 4283</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4294</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="clean_int">clean_int</a></h3>
@@ -304,7 +305,7 @@ h3 {
 <li><tt>$data</tt> - input text</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the converted text</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 4312</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4323</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="clean_whitespace">clean_whitespace</a></h3>
@@ -315,7 +316,7 @@ h3 {
 <li><tt>$data</tt> - input text</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the converted text</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 4324</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4335</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="clean_word">clean_word</a></h3>
@@ -326,7 +327,19 @@ h3 {
 <li><tt>$data</tt> - input text</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the converted text</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 4300</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4311</blockquote>
+<br /><br />
+<br /><br />
+<h3><a name="daily_matrix">daily_matrix</a></h3>
+<tt>daily_matrix ( $date, $participants )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Draws a daily outlook style availability grid showing events that  are approved and awaiting approval.</blockquote>
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$date</tt> - the date to show the grid for</li>
+<li><tt>$participants</tt> - which users should be included in the grid</li>
+</ul>
+<span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4405</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="date_selection_html">date_selection_html</a></h3>
@@ -338,7 +351,7 @@ h3 {
 <li><tt>$date</tt> - currently selected date (in YYYYMMDD) format</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value used in the HTML form (or URL)</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1074</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 1081</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="date_to_str">date_to_str</a></h3>
@@ -353,7 +366,7 @@ h3 {
 <li><tt>$server_time</tt> - ???</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The query result resource on queries (which can then be passed to the <a href="#dbi_fetch_row"><tt>dbi_fetch_row</tt></a> function to obtain the results), or true/false on insert or delete queries.</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3350</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3361</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="dbi_affected_rows">dbi_affected_rows</a></h3>
@@ -460,7 +473,7 @@ h3 {
 <li><tt>$instr</tt> - a hex-encoded string. "Hello" would be "678ea786a5".</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The decoded string</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3450</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3461</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="die_miserable_death">die_miserable_death</a></h3>
@@ -487,7 +500,7 @@ h3 {
 <li><tt>$month_link</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;amp;) [defaults to 'month.php?']</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1116</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 1124</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="display_time">display_time</a></h3>
@@ -499,7 +512,7 @@ h3 {
 <li><tt>$ignore_offset</tt> - if true, then do not use the timezone offset (optional)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The query result resource on queries (which can then be passed to the <a href="#dbi_fetch_row"><tt>dbi_fetch_row</tt></a> function to obtain the results), or true/false on insert or delete queries.</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3212</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3223</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="display_unapproved_events">display_unapproved_events</a></h3>
@@ -510,7 +523,7 @@ h3 {
 <li><tt>$user</tt> - current user login</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3142</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3153</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="do_debug">do_debug</a></h3>
@@ -543,7 +556,7 @@ h3 {
 <li><tt>$instr</tt> - text to encode</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the encoded text</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3484</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3495</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="etooltip">etooltip</a></h3>
@@ -554,7 +567,7 @@ h3 {
 <li><tt>$str</tt> - the input text to translate and print</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>translate.php, line 172</blockquote>
+<span class="prompt">Location:</span><blockquote>translate.php, line 176</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="etranslate">etranslate</a></h3>
@@ -565,7 +578,7 @@ h3 {
 <li><tt>$str</tt> - input text to translate and print</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>translate.php, line 143</blockquote>
+<span class="prompt">Location:</span><blockquote>translate.php, line 147</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="event_get_external_users">event_get_external_users</a></h3>
@@ -577,7 +590,7 @@ h3 {
 <li><tt>$use_mailto</tt> - when set to 1, email address will contain an href link with a mailto URL.</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The list of external users for an event formatte in HTML.</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 656</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 658</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="getGetValue">getGetValue</a></h3>
@@ -640,7 +653,7 @@ h3 {
 <li><tt>$freq</tt> - frequency of repetition</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of dates (in UNIX time format)</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1781</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 1789</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="get_entries">get_entries</a></h3>
@@ -653,7 +666,7 @@ h3 {
 <li><tt>$get_unapproved</tt> - load unapproved events (true/false)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of events</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1519</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 1527</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="get_last_view">get_last_view</a></h3>
@@ -677,7 +690,7 @@ h3 {
 <li><tt>$day</tt> - day of the month</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The date (in unix time format)</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 2163</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2171</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="get_my_users">get_my_users</a></h3>
@@ -688,7 +701,7 @@ h3 {
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of users, where each element in the array is an array with the following keys:<ul> <li>cal_login</li> <li>cal_lastname</li> <li>cal_firstname</li> <li>cal_is_admin</li> <li>cal_is_admin</li> <li>cal_email</li> <li>cal_password</li> <li>cal_fullname</li> </ul></blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 753</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 755</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="get_nonuser_cals">get_nonuser_cals</a></h3>
@@ -699,7 +712,7 @@ h3 {
 <li><tt>$user</tt> - (optional) login of admin of the nonuser calendars</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of nonuser cals, where each is an array with the following fields: <ul> <li> cal_login </li> <li> cal_lastname </li> <li> cal_firstname </li> <li> cal_admin </li> <li> cal_fullname </li> </ul></blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 4027</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4038</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="get_pref_setting">get_pref_setting</a></h3>
@@ -711,7 +724,7 @@ h3 {
 <li><tt>$setting</tt> - the name of the setting</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value found in the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table for the specified setting or the sytem default if no user settings was found.</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 828</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 830</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="get_repeating_entries">get_repeating_entries</a></h3>
@@ -724,7 +737,7 @@ h3 {
 <li><tt>$get_unapproved</tt> - include unapproved events in results</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The query result resource on queries (which can then be passed to the <a href="#dbi_fetch_row"><tt>dbi_fetch_row</tt></a> function to obtain the results), or true/false on insert or delete queries.</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1964</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 1972</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="get_site_extra_fields">get_site_extra_fields</a></h3>
@@ -735,7 +748,7 @@ h3 {
 <li><tt>$eventid</tt> - event id</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Return an array of array with the keys as follows:  <ul> <li> cal_name </li> <li> cal_type </li> <li> cal_date </li> <li> cal_remind </li> <li> cal_data </li> </ul></blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1400</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 1408</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="get_sunday_before">get_sunday_before</a></h3>
@@ -748,7 +761,7 @@ h3 {
 <li><tt>$day</tt> - day of the month</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The date (in unix time format)</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 2146</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2154</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="html_for_add_icon">html_for_add_icon</a></h3>
@@ -759,7 +772,7 @@ h3 {
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The HTML for the add event icon</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 2613</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2623</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="html_for_event_day_at_a_glance">html_for_event_day_at_a_glance</a></h3>
@@ -780,7 +793,7 @@ h3 {
 <li><tt>$event_category</tt> - category id for event</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 2793</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2804</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="html_for_event_week_at_a_glance">html_for_event_week_at_a_glance</a></h3>
@@ -801,7 +814,7 @@ h3 {
 <li><tt>$event_category</tt> - category id for event</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 2644</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2655</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="html_to_8bits">html_to_8bits</a></h3>
@@ -812,7 +825,7 @@ h3 {
 <li><tt>$html</tt> - HTML text</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The converted text</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3612</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3623</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="languageToAbbrev">languageToAbbrev</a></h3>
@@ -823,7 +836,7 @@ h3 {
 <li><tt>$name</tt> - Name of the language (such as "French")</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The abbreviation ("fr" for "French")</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 4336</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4347</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="load_global_settings">load_global_settings</a></h3>
@@ -845,7 +858,7 @@ h3 {
 <li><tt>$nonuser</tt> - login name for nonuser calendar</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 4138</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4149</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="load_translation_text">load_translation_text</a></h3>
@@ -856,7 +869,7 @@ h3 {
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>translate.php, line 67</blockquote>
+<span class="prompt">Location:</span><blockquote>translate.php, line 71</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="load_user_categories">load_user_categories</a></h3>
@@ -867,7 +880,7 @@ h3 {
 <li><tt>$ex_global</tt> - Don't include global categories ('' or '1')</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3544</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3555</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="load_user_layers">load_user_layers</a></h3>
@@ -879,7 +892,7 @@ h3 {
 <li><tt>$force</tt> - If set to 1, then load layers for this user even if user preferences have layers turned off.</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 885</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 892</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="load_user_preferences">load_user_preferences</a></h3>
@@ -901,7 +914,7 @@ h3 {
 <li><tt>$m</tt> - month (0-11)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The full name of the specified month</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3250</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3261</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="month_short_name">month_short_name</a></h3>
@@ -912,7 +925,7 @@ h3 {
 <li><tt>$m</tt> - month (0-11)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The abbreviated name of the specified month (example: "Jan")</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3278</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3289</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="nonuser_load_variables">nonuser_load_variables</a></h3>
@@ -924,7 +937,7 @@ h3 {
 <li><tt>$prefix</tt> - prefix to use for variables that will be set. For example, if prefix is "temp", then the login will be stored in the $templogin global variable. </li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 4069</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4080</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="print_category_menu">print_category_menu</a></h3>
@@ -937,7 +950,7 @@ h3 {
 <li><tt>$cat_id</tt> - category id that should be pre-selected</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3577</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3588</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="print_date_entries">print_date_entries</a></h3>
@@ -950,7 +963,7 @@ h3 {
 <li><tt>$is_ssi</tt> - is this being called from week_ssi.php?  If so, then</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 2221</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2229</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="print_date_entries_timebar">print_date_entries_timebar</a></h3>
@@ -963,7 +976,7 @@ h3 {
 <li><tt>$ssi</tt> - should we not include links to add new events?</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3754</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3765</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="print_date_selection">print_date_selection</a></h3>
@@ -975,7 +988,7 @@ h3 {
 <li><tt>$date</tt> - currently selected date (in YYYYMMDD) format</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value used in the HTML form (or URL)</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1061</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 1068</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="print_day_at_a_glance">print_day_at_a_glance</a></h3>
@@ -987,7 +1000,7 @@ h3 {
 <li><tt>$user</tt> - username of calendar</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 2948</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2959</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="print_entry">print_entry</a></h3>
@@ -1008,7 +1021,7 @@ h3 {
 <li><tt>$event_cat</tt> - category of event for event_owner</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1275</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 1283</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="print_entry_timebar">print_entry_timebar</a></h3>
@@ -1029,7 +1042,7 @@ h3 {
 <li><tt>$event_category</tt> - category id for event</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3834</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3845</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="print_header">print_header</a></h3>
@@ -1044,7 +1057,7 @@ h3 {
 <li><tt>$disableStyle</tt> - do not include the standard css</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>init.php, line 214</blockquote>
+<span class="prompt">Location:</span><blockquote>init.php, line 216</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="print_header_timebar">print_header_timebar</a></h3>
@@ -1056,7 +1069,7 @@ h3 {
 <li><tt>$end_hour</tt> - end hour</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3989</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4000</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="print_trailer">print_trailer</a></h3>
@@ -1069,7 +1082,7 @@ h3 {
 <li><tt>$disableCustom</tt> - disable the custom trailer the administrator has setup.  (This is useful for small popup windows and pages being used in an iframe.)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>init.php, line 333</blockquote>
+<span class="prompt">Location:</span><blockquote>init.php, line 335</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="query_events">query_events</a></h3>
@@ -1084,7 +1097,7 @@ h3 {
 <li><tt>$cat_id</tt> - category ID to filter on.  May be empty.</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of events</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1601</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 1609</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="read_events">read_events</a></h3>
@@ -1098,7 +1111,7 @@ h3 {
 <li><tt>$cat_id</tt> - category ID to filter on</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of events</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1437</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 1445</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="read_repeated_events">read_repeated_events</a></h3>
@@ -1111,7 +1124,7 @@ h3 {
 <li><tt>$date</tt> - cutoff date for repeating event endtimes in YYYYMMDD format (may be empty)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of repeating events</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1753</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 1761</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="remember_this_view">remember_this_view</a></h3>
@@ -1134,7 +1147,7 @@ h3 {
 <li><tt>$dateYmd</tt> - the date to check in YYYYMMDD format</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true or false</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 1998</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2006</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="reset_language">reset_language</a></h3>
@@ -1145,7 +1158,7 @@ h3 {
 <li><tt>$new_language</tt> - new language file to load (just the base filename, no directory or file suffix.  Example: "French")</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>translate.php, line 44</blockquote>
+<span class="prompt">Location:</span><blockquote>translate.php, line 48</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="send_http_login">send_http_login</a></h3>
@@ -1178,7 +1191,7 @@ h3 {
 <li><tt>$date</tt> - the date in YYYYMMDD format</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 4166</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4177</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="site_extras_for_popup">site_extras_for_popup</a></h3>
@@ -1189,7 +1202,7 @@ h3 {
 <li><tt>$id</tt> - event id</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The HTML to be used within the event popup for any site_extra fields found for the specified event</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 933</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 940</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="time_to_minutes">time_to_minutes</a></h3>
@@ -1200,7 +1213,7 @@ h3 {
 <li><tt>$time</tt> - input time in HHMMSS format</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The number of minutes since midnight</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 2562</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2572</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="times_overlap">times_overlap</a></h3>
@@ -1214,7 +1227,7 @@ h3 {
 <li><tt>$duration1</tt> - duration 1 in minutes</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true if the two times overlap, false if they do not</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 2351</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2361</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="tooltip">tooltip</a></h3>
@@ -1225,7 +1238,7 @@ h3 {
 <li><tt>$str</tt> - the input text to translate</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The translated text with all HTML removed</blockquote>
-<span class="prompt">Location:</span><blockquote>translate.php, line 154</blockquote>
+<span class="prompt">Location:</span><blockquote>translate.php, line 158</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="translate">translate</a></h3>
@@ -1236,7 +1249,7 @@ h3 {
 <li><tt>$str</tt> - text to translate</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The translated text, if available.  If no translation is avalailable, then the original untranslated text is returned.</blockquote>
-<span class="prompt">Location:</span><blockquote>translate.php, line 111</blockquote>
+<span class="prompt">Location:</span><blockquote>translate.php, line 115</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="user_get_boss_list">user_get_boss_list</a></h3>
@@ -1247,7 +1260,7 @@ h3 {
 <li><tt>$assistant</tt> - login of assistant</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of bosses, where each boss is an array with the following fields: <ul> <li> cal_login </li> <li> cal_fullname </li> </ul></blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3634</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3645</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="user_has_boss">user_has_boss</a></h3>
@@ -1258,7 +1271,7 @@ h3 {
 <li><tt>$assistant</tt> - login for user</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true if the user is an assistant to one or more bosses</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3693</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3704</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="user_is_assistant">user_is_assistant</a></h3>
@@ -1270,7 +1283,7 @@ h3 {
 <li><tt>$boss</tt> - login of potential boss</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true or false</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3668</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3679</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="user_is_nonuser_admin">user_is_nonuser_admin</a></h3>
@@ -1282,7 +1295,7 @@ h3 {
 <li><tt>$nonuser</tt> - login name for nonuser calendar</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true if the user is the administrator for the nonuser calendar</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 4115</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 4126</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="week_number">week_number</a></h3>
@@ -1293,7 +1306,7 @@ h3 {
 <li><tt>$date</tt> - date in UNIX time format</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The week number of the specified date</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 2183</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 2191</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="weekday_name">weekday_name</a></h3>
@@ -1304,7 +1317,7 @@ h3 {
 <li><tt>$w</tt> - weekday (0=Sunday,...,6=Saturday)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the full weekday name ("Sunday")</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3306</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3317</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="weekday_short_name">weekday_short_name</a></h3>
@@ -1315,7 +1328,7 @@ h3 {
 <li><tt>$w</tt> - weekday (0=Sunday,...,6=Saturday)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the abbreviated weekday name ("Sun")</blockquote>
-<span class="prompt">Location:</span><blockquote>functions.php, line 3328</blockquote>
+<span class="prompt">Location:</span><blockquote>functions.php, line 3339</blockquote>
 <br /><br />
 <hr/>
 <p>
