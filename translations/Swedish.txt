@@ -1731,7 +1731,7 @@ January: Januari
 February: Februari
 March: Mars
 April: April
-May_: Kan_
+May_: Maj
 June: Juni
 July: Juli
 August: Augusti
