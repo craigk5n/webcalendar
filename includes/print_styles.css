@@ -29,3 +29,8 @@ a {
 #day dl.desc {
 	display: block !important;
 }
+#viewt table,
+#viewt tr,
+#viewt td {
+	border-color: black !important;
+}

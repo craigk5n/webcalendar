@@ -923,5 +923,46 @@ table.glance {
 	vertical-align: top;
 	height: 75px;
 }
+#viewt table {
+	border-collapse: collapse;
+}
+#viewt table.timebar {
+	padding: 0px;
+	width: 100%;
+	border: 0px;
+}
+#viewt table.timebar td {
+	padding: 0px;
+	background-color: #fff;
+	text-align: center;
+	color: #ccc;
+	font-size: 10px;
+}
+#viewt table.yardstick {
+	width: 100%;
+	padding: 0px;
+	border: 0px;
+}
+#viewt table.yardstick td {
+	background-color: #fff;
+	border: 1px solid #ccc;
+}
+#viewt table.entrycont {
+	width: 100%;
+	padding: 0px;
+	border: 0px;
+}
+#viewt table.entrycont td {
+	text-align: right;
+}
+#viewt table.entrybar {
+	width: 100%;
+	border: 0px;
+}
+#viewt table.entrybar td.entry {
+	text-align: center;
+	background-color: #f5deb3;
+	border: 1px solid #000;
+}
 -->
 </style>
