@@ -16,11 +16,17 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
 
 // Modify the time to be server time rather than user time.
 if ( ! empty ( $hour ) ) {
-  $hour -= $TZ_OFFSET;
-  if (($hour == 12 && $ampm == 'pm') && $TZ_OFFSET < 0) {
-    // Server hour should be midnight not noon
-    $hour = 24;
+  // Convert to 24 hour before subtracting TZ_OFFSET so am/pm isn't confused.
+  // Note this obsoltes any code in the file below that deals with am/pm
+  // so the code can be deleted
+  if ( $TIME_FORMAT == '12' && $hour < 12 ) {
+    if ( $ampm == 'pm' )
+    	$hour += 12;
+  } elseif ($TIME_FORMAT == '12' && $hour == '12' && $ampm == 'am' ) {
+    $hour = 0;
   }
+  $TIME_FORMAT=24;
+  $hour -= $TZ_OFFSET;
   if ( $hour < 0 ) {
     $hour += 24;
     // adjust date
