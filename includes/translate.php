@@ -33,7 +33,6 @@ if ( $LANGUAGE == "Browser-defined" || $LANGUAGE == "none" ) {
   if ( $lang == "none" )
     $lang = "";
 }
-
 if ( strlen ( $lang ) == 0 || $lang == 'none' ) {
   $lang = "English-US"; // Default
 }
@@ -91,9 +90,10 @@ function load_translation_text () {
   while ( ! feof ( $fp ) ) {
     $buffer = fgets ( $fp, 4096 );
     $buffer = trim ( $buffer );
-    // we can't simply stripslashes because of Japanese translations
+    //  stripslashes may cause problems with Japanese translations
+   // if so, we may have to make this configurable.
     if ( get_magic_quotes_runtime() ) {
-      $buffer = str_replace ( "\'", "'", $buffer );
+      $buffer = stripslashes ( $buffer );
     }
     if ( substr ( $buffer, 0, 1 ) == "#" || strlen ( $buffer ) == 0 )
       continue;
