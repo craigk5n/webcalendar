@@ -19,6 +19,9 @@ A: The latest code snapshot is always available through CVS on
 
      cvs update
 
+   You can find these instructions online at:
+     http://sourceforge.net/cvs/?group_id=3870
+
 Q: How do I get more info on CVS?
 A: You can start at the SourceForge CVS HOWTO:
      http://sourceforge.net/docman/display_doc.php?docid=763&group_id=1
@@ -98,4 +101,10 @@ Q: Where do I get help?
 A: Try the Forums on SourceForge:
    http://sourceforge.net/forum/?group_id=3870
    Someone has even posted some links for problems setting up PHP and MySQL.
+
+Q: What license is WebCalendar distributed under?
+A: WebCalender is distrubuted under the GPL.  (See COPYING file included
+   with the distribution.)
+   There is a FAQ about the GPL at:
+   http://www.gnu.org/copyleft/gpl-faq.html
 
