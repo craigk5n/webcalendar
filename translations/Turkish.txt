@@ -4,7 +4,7 @@
 #
 # Translator: Atilla Kazanci <support@dig-it-berlin.de>,
 # Last update: 29 March 2001
-# Translation last updated on 07-11-2002
+# Translation last updated on 07-19-2002
 
 
 ###############################################
@@ -13,75 +13,47 @@
 #
 # << MISSING >>
 # Activity Log:
-# English text: Activity Log
-#
 #
 # << MISSING >>
 # User:
-# English text: User
-#
 #
 # << MISSING >>
 # Calendar:
-# English text: Calendar
-#
 Date: Tarih
 Time: Saat
 #
 # << MISSING >>
 # Event:
-# English text: Event
-#
 #
 # << MISSING >>
 # Action:
-# English text: Action
-#
 #
 # << MISSING >>
 # Event created:
-# English text: Event created
-#
 #
 # << MISSING >>
 # Event approved:
-# English text: Event approved
-#
 #
 # << MISSING >>
 # Event rejected:
-# English text: Event rejected
-#
 #
 # << MISSING >>
 # Event updated:
-# English text: Event updated
-#
 #
 # << MISSING >>
 # Event deleted:
-# English text: Event deleted
-#
 #
 # << MISSING >>
 # Notification sent:
-# English text: Notification sent
-#
 #
 # << MISSING >>
 # Reminder sent:
-# English text: Reminder sent
-#
 #
 # << MISSING >>
 # Database error:
-# English text: Database error
-#
 #
 # << MISSING >>
 # Next:
-# English text: Next
-#
 
 
 ###############################################
@@ -91,13 +63,9 @@ Invalid entry id: gecersiz Islem
 #
 # << MISSING >>
 # This is a private event and may not be added to your calendar.:
-# English text: This is a private event and may not be added to your calendar.
-#
 #
 # << MISSING >>
 # Error adding event:
-# English text: Error adding event
-#
 
 
 ###############################################
@@ -106,99 +74,54 @@ Invalid entry id: gecersiz Islem
 #
 # << MISSING >>
 # Server URL is required:
-# English text: Server URL is required
-#
 #
 # << MISSING >>
 # Server URL must end with '/':
-# English text: Server URL must end with '/'
-#
 Invalid color for document background: Renk Sayfa-arkasi icin gecerli degil
 Invalid color for document title: Renk Baslik icin gecerli degil
 Invalid color for table cell background: Renk Tabela-arkasi icin gecerli degil
 #
 # << MISSING >>
 # Invalid color for table grid:
-# English text: Invalid color for table grid
-#
 #
 # << MISSING >>
 # Invalid color for table header background:
-# English text: Invalid color for table header background
-#
 #
 # << MISSING >>
 # Invalid color for table text background:
-# English text: Invalid color for table text background
-#
 #
 # << MISSING >>
 # Invalid color for event popup background:
-# English text: Invalid color for event popup background
-#
 #
 # << MISSING >>
 # Invalid color for event popup text:
-# English text: Invalid color for event popup text
-#
 Invalid color for table cell background for today: Renk Tabela-arkasi 'Bugün' icin gecerli degil
 Color format should be '#RRGGBB': Renkler sadece '#RRGGBB' seklinde verilebilir.
 #
 # << MISSING >>
 # System Settings:
-# English text: System Settings
-#
 You are not authorized: Hak sahibi degilsiniz
 #
 # << MISSING >>
 # Note:
-# English text: Note
-#
 #
 # << MISSING >>
 # Your user preferences:
-# English text: Your user preferences
-#
 #
 # << MISSING >>
 # may be affecting the appearance of this page.:
-# English text: may be affecting the appearance of this page.
-#
 #
 # << MISSING >>
 # Click here:
-# English text: Click here
-#
 #
 # << MISSING >>
 # to not use your user preferences when viewing this page:
-# English text: to not use your user preferences when viewing this page
-#
-#
-# << MISSING >>
-# Note:
-# English text: Note
-#
-#
-# << MISSING >>
-# Your user preferences:
-# English text: Your user preferences
-#
 #
 # << MISSING >>
 # are being ignored while viewing this page.:
-# English text: are being ignored while viewing this page.
-#
-#
-# << MISSING >>
-# Click here:
-# English text: Click here
-#
 #
 # << MISSING >>
 # to load your user preferences when viewing this page:
-# English text: to load your user preferences when viewing this page
-#
 Save: Kayit
 Help: Yardim
 Settings: Ayar
@@ -210,8 +133,6 @@ Settings: Ayar
 #
 # << MISSING >>
 # Application Name:
-# English text: Application Name
-#
 #
 # << MISSING >>
 # server-url-help:
@@ -220,8 +141,6 @@ Settings: Ayar
 #
 # << MISSING >>
 # Server URL:
-# English text: Server URL
-#
 #
 # << MISSING >>
 # language-help:
@@ -231,8 +150,6 @@ Language: Lisan
 #
 # << MISSING >>
 # Your browser default language is:
-# English text: Your browser default language is
-#
 #
 # << MISSING >>
 # fonts-help:
@@ -241,8 +158,6 @@ Language: Lisan
 #
 # << MISSING >>
 # Fonts:
-# English text: Fonts
-#
 #
 # << MISSING >>
 # preferred-view-help:
@@ -261,14 +176,34 @@ Year: Sene
 #
 # << MISSING >>
 # Display weekends in week view:
-# English text: Display weekends in week view
-#
 Yes: Evet
 No: Hayir
+#
+# << MISSING >>
+# date-format-help:
+# English text: Specifies the preferred date format.
+#
+#
+# << MISSING >>
+# Date format:
+December: Aralik
+Dec: Ara
 time-format-help: Hangi saat özelligi kullanildigini gösterir: <BR><I>12-saatlik:</I> Saati 3am, 8:30pm vs. diye gösterir.  <BR><I>24-saatlik:</I> Saati 3.00, 20.30 vs. diye gösterir.
 Time format: Saat
 12 hour: 12-saatlik
 24 hour: 24-saatlik
+#
+# << MISSING >>
+# time-interval-help:
+# English text: Specifies how long the time blocks in the week view and day view will be.
+#
+#
+# << MISSING >>
+# Time interval:
+#
+# << MISSING >>
+# hour:
+minutes: Dakika
 #
 # << MISSING >>
 # auto-refresh-help:
@@ -277,8 +212,6 @@ Time format: Saat
 #
 # << MISSING >>
 # Auto-refresh calendars:
-# English text: Auto-refresh calendars
-#
 #
 # << MISSING >>
 # auto-refresh-time-help:
@@ -287,9 +220,6 @@ Time format: Saat
 #
 # << MISSING >>
 # Auto-refresh time:
-# English text: Auto-refresh time
-#
-minutes: Dakika
 #
 # << MISSING >>
 # require-approvals-help:
@@ -298,8 +228,6 @@ minutes: Dakika
 #
 # << MISSING >>
 # Require event approvals:
-# English text: Require event approvals
-#
 display-unapproved-help: Onaylanmamis Terminler Takviminizde görülsünmü.<BR> Eger "Evet", Onaylanmamis Termin'ler baska bir renkte olur.<BR> Eger "Hayir", onaylanmamis Termin'ler onaylandiktan sonra Takvimde görünebilir. 
 Display unapproved: Onaylanmamis Termin'leri gör
 display-week-number-help: Kacinci Hafta oldugunu (1-52) Aylik ve Haftalik görünümlerinde gösterir.
@@ -324,8 +252,6 @@ to: Kime
 #
 # << MISSING >>
 # Disable Priority field:
-# English text: Disable Priority field
-#
 #
 # << MISSING >>
 # disable-access-field-help:
@@ -334,8 +260,6 @@ to: Kime
 #
 # << MISSING >>
 # Disable Access field:
-# English text: Disable Access field
-#
 #
 # << MISSING >>
 # disable-participants-field-help:
@@ -344,8 +268,6 @@ to: Kime
 #
 # << MISSING >>
 # Disable Participants field:
-# English text: Disable Participants field
-#
 #
 # << MISSING >>
 # disable-repeating-field-help:
@@ -354,8 +276,6 @@ to: Kime
 #
 # << MISSING >>
 # Disable Repeating field:
-# English text: Disable Repeating field
-#
 #
 # << MISSING >>
 # allow-public-access-help:
@@ -364,8 +284,6 @@ to: Kime
 #
 # << MISSING >>
 # Allow public access:
-# English text: Allow public access
-#
 #
 # << MISSING >>
 # public-access-view-others-help:
@@ -374,8 +292,6 @@ to: Kime
 #
 # << MISSING >>
 # Public access can view other users:
-# English text: Public access can view other users
-#
 #
 # << MISSING >>
 # public-access-can-add-help:
@@ -384,8 +300,6 @@ to: Kime
 #
 # << MISSING >>
 # Public access can add events:
-# English text: Public access can add events
-#
 #
 # << MISSING >>
 # allow-view-other-help:
@@ -394,8 +308,6 @@ to: Kime
 #
 # << MISSING >>
 # Allow viewing other user's calendars:
-# English text: Allow viewing other user's calendars
-#
 #
 # << MISSING >>
 # remember-last-login-help:
@@ -404,8 +316,6 @@ to: Kime
 #
 # << MISSING >>
 # Remember last login:
-# English text: Remember last login
-#
 #
 # << MISSING >>
 # conflict-check-help:
@@ -414,8 +324,6 @@ to: Kime
 #
 # << MISSING >>
 # Check for event conflicts:
-# English text: Check for event conflicts
-#
 #
 # << MISSING >>
 # conflict-months-help:
@@ -424,13 +332,9 @@ to: Kime
 #
 # << MISSING >>
 # Conflict checking months:
-# English text: Conflict checking months
-#
 #
 # << MISSING >>
 # Groups:
-# English text: Groups
-#
 #
 # << MISSING >>
 # groups-enabled-help:
@@ -439,8 +343,6 @@ to: Kime
 #
 # << MISSING >>
 # Groups enabled:
-# English text: Groups enabled
-#
 #
 # << MISSING >>
 # user-sees-his-group-help:
@@ -449,13 +351,9 @@ to: Kime
 #
 # << MISSING >>
 # User sees only his groups:
-# English text: User sees only his groups
-#
 #
 # << MISSING >>
 # Categories:
-# English text: Categories
-#
 #
 # << MISSING >>
 # categories-enabled-help:
@@ -464,13 +362,9 @@ to: Kime
 #
 # << MISSING >>
 # Categories enabled:
-# English text: Categories enabled
-#
 #
 # << MISSING >>
 # Email:
-# English text: Email
-#
 #
 # << MISSING >>
 # email-enabled-help:
@@ -479,8 +373,6 @@ to: Kime
 #
 # << MISSING >>
 # Email enabled:
-# English text: Email enabled
-#
 #
 # << MISSING >>
 # email-default-sender:
@@ -489,13 +381,9 @@ to: Kime
 #
 # << MISSING >>
 # Default sender address:
-# English text: Default sender address
-#
 #
 # << MISSING >>
 # Default user settings:
-# English text: Default user settings
-#
 #
 # << MISSING >>
 # email-event-reminders-help:
@@ -504,8 +392,6 @@ to: Kime
 #
 # << MISSING >>
 # Event reminders:
-# English text: Event reminders
-#
 #
 # << MISSING >>
 # email-event-added:
@@ -514,8 +400,6 @@ to: Kime
 #
 # << MISSING >>
 # Events added to my calendar:
-# English text: Events added to my calendar
-#
 #
 # << MISSING >>
 # email-event-updated:
@@ -524,8 +408,6 @@ to: Kime
 #
 # << MISSING >>
 # Events updated on my calendar:
-# English text: Events updated on my calendar
-#
 #
 # << MISSING >>
 # email-event-deleted:
@@ -534,8 +416,6 @@ to: Kime
 #
 # << MISSING >>
 # Events removed from my calendar:
-# English text: Events removed from my calendar
-#
 #
 # << MISSING >>
 # email-event-rejected:
@@ -544,61 +424,42 @@ to: Kime
 #
 # << MISSING >>
 # Event rejected by participant:
-# English text: Event rejected by participant
-#
 colors-help: Tüm renkler "#RRGGBB" olarak verilebilir. "RR" Kirmizi icin hexadesimal olarak, "GG" Yesil icin ve "BB" Mavi icin.
 Colors: Renkler
 #
 # << MISSING >>
 # Allow user to customize colors:
-# English text: Allow user to customize colors
-#
 Document background: Sayfa-arkasi
 Select: Sec
 Document title: Baslik
 #
 # << MISSING >>
 # Document text:
-# English text: Document text
-#
 #
 # << MISSING >>
 # Table grid color:
-# English text: Table grid color
-#
 #
 # << MISSING >>
 # Table header background:
-# English text: Table header background
-#
 #
 # << MISSING >>
 # Table header text:
-# English text: Table header text
-#
 Table cell background: Tabela Sayfa-arkasi
 Table cell background for current day: Tabela-arkasi 'Bugün' icin
 #
 # << MISSING >>
 # Table cell background for weekends:
-# English text: Table cell background for weekends
-#
 #
 # << MISSING >>
 # Event popup background:
-# English text: Event popup background
-#
 #
 # << MISSING >>
 # Event popup text:
-# English text: Event popup text
-#
 
 
 ###############################################
 # Page: admin_handler.php
 #
-# "You are not authorized" previously defined (in admin.php)
 Error: Hata
 The following error occurred: Takipteki Hatalar cikiyor
 
@@ -612,87 +473,25 @@ Error approving event: Islem onayinda hata
 ###############################################
 # Page: category.php
 #
-# "Invalid entry id" previously defined (in add_entry.php)
-# "You are not authorized" previously defined (in admin.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Categories:
-# English text: Categories
-#
 #
 # << MISSING >>
 # Add:
-# English text: Add
-#
-# "Save" previously defined (in admin.php)
 #
 # << MISSING >>
 # Category Name:
-# English text: Category Name
-#
 #
 # << MISSING >>
 # Global:
-# English text: Global
-#
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
 Delete: Sil
 Are you sure you want to delete this entry?: Islemi sahiden silmek istiyormusunuz?
 #
 # << MISSING >>
-# Global:
-# English text: Global
-#
-#
-# << MISSING >>
 # Add New Category:
-# English text: Add New Category
-#
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: category_handler.php
 #
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "You are not authorized" previously defined (in admin.php)
-# "Delete" previously defined (in category.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -703,6 +502,9 @@ Are you sure you want to delete this entry?: Islemi sahiden silmek istiyormusunu
 ###############################################
 # Page: datesel.php
 #
+#
+# << MISSING >>
+# Previous:
 
 
 ###############################################
@@ -715,20 +517,14 @@ Printer Friendly: Dostca Baski
 ###############################################
 # Page: del_entry.php
 #
-# "You are not authorized" previously defined (in admin.php)
 Hello: Iyi günler 
 #
 # << MISSING >>
 # An appointment has been canceled for you by:
-# English text: An appointment has been canceled for you by
-#
 #
 # << MISSING >>
 # The subject was:
-# English text: The subject was
-#
 Notification: Not
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -744,8 +540,6 @@ You have not entered a valid time of day: Gecerli saat vermediniz
 #
 # << MISSING >>
 # The time you have entered begins before your preferred work hours.  Is this correct?:
-# English text: The time you have entered begins before your preferred work hours.  Is this correct?
-#
 Edit Entry: Islem degistir
 Add Entry: Islem ekle
 brief-description-help: Termin icin kisa Özet (20 Isaret). Takvimde bu görünür.
@@ -753,9 +547,7 @@ Brief Description: Özel Anlami
 full-description-help: Terminin tamamen aciklamasi. Bu aciklamayi Kullanici Termin'de görür.
 Full Description: Tüm Anlam
 date-help: Termin'in tarihini gösterir.
-# "Date" previously defined (in activity_log.php)
 time-help: Termin'in saatini gösterir.<BR><I>Bos birakilabilir.</I>
-# "Time" previously defined (in activity_log.php)
 am: am
 pm: pm
 duration-help: Dakika olarak Termin'in sürecegi zamani gösterir.<BR><I>Bos birakilabilir.</I>
@@ -763,9 +555,6 @@ Duration: Zaman
 #
 # << MISSING >>
 # hours:
-# English text: hours
-#
-# "minutes" previously defined (in admin.php)
 priority-help: Termin'in Prioritesini gösterir.  Prioritesi yüksek olan Termin'ler kalin yazi olarak gösterilir.
 Priority: Priorite
 Low: alcak
@@ -783,28 +572,14 @@ Confidential: özel
 #
 # << MISSING >>
 # Category:
-# English text: Category
-#
-# "Yes" previously defined (in admin.php)
-# "No" previously defined (in admin.php)
 #
 # << MISSING >>
 # days:
-# English text: days
-#
-#
-# << MISSING >>
-# hours:
-# English text: hours
-#
 #
 # << MISSING >>
 # before event:
-# English text: before event
-#
 participants-help: Termine katilanlari gösterir.
 Participants: Katilanlar
-# "Select" previously defined (in admin.php)
 #
 # << MISSING >>
 # repeat-type-help:
@@ -832,8 +607,6 @@ Use end date: Bugün bitiyor
 #
 Repeat Day: Tekrarin günü
 for weekly: Haftalik Termin'lerde
-# "Sunday" previously defined (in admin.php)
-# "Monday" previously defined (in admin.php)
 Tuesday: Sali
 Wednesday: Carsamba
 Thursday: Persembe
@@ -845,9 +618,6 @@ Saturday: Cumartesi
 # English text: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <I>Repeat Type</I> is set to <I>Weekly</I>), every other month (if <I>Repeat Type</I> is set to <I>Monthly</I>), etc.
 #
 Frequency: defa
-# "Save" previously defined (in admin.php)
-# "Help" previously defined (in admin.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 Delete entry: Islemi sil
 You are not authorized to edit this entry: Sizin bu Islemi silmek icin hak sahibiz yok.
 
@@ -855,99 +625,26 @@ You are not authorized to edit this entry: Sizin bu Islemi silmek icin hak sahib
 ###############################################
 # Page: edit_entry_handler.php
 #
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "You are not authorized" previously defined (in admin.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
 The following conflicts with the suggested time: Önerilen Terminde saat carpismasi
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
 Unnamed Event: isimsiz olay
 #
 # << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "Hello" previously defined (in del_entry.php)
-#
-# << MISSING >>
-# An appointment has been canceled for you by:
-# English text: An appointment has been canceled for you by
-#
-#
-# << MISSING >>
-# The subject was:
-# English text: The subject was
-#
-#
-# << MISSING >>
 # The description is:
-# English text: The description is
-#
-# "Date" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
 Title: WebTakvimi
-# "Notification" previously defined (in del_entry.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
 A new appointment has been made for you by: Sizin icin bir Termin eklendi -->  
 #
 # << MISSING >>
 # An appointment has been updated by:
-# English text: An appointment has been updated by
-#
 The subject is: Tarif 
-#
-# << MISSING >>
-# The description is:
-# English text: The description is
-#
 Please look on: Bakiniz  
 to accept or reject this appointment: Termini onaylamak/ret etmek.
 to view this appointment: Termini gör
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
 Scheduling Conflict: Termin carpismasi
 Your suggested time of: Isleminiz 
 conflicts with the following existing calendar entries: takiben Takvimde baska bir Islemle carpisiyor.
-# "Save" previously defined (in admin.php)
 #
 # << MISSING >>
 # Cancel:
-# English text: Cancel
-#
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -956,52 +653,30 @@ conflicts with the following existing calendar entries: takiben Takvimde baska b
 #
 # << MISSING >>
 # Invalid color:
-# English text: Invalid color
-#
-# "Color format should be '#RRGGBB'" previously defined (in admin.php)
 #
 # << MISSING >>
 # Edit Layer:
-# English text: Edit Layer
-#
 #
 # << MISSING >>
 # Add Layer:
-# English text: Add Layer
-#
 #
 # << MISSING >>
 # Source:
-# English text: Source
-#
 #
 # << MISSING >>
 # Color:
-# English text: Color
-#
-# "Select" previously defined (in admin.php)
 #
 # << MISSING >>
 # Duplicates:
-# English text: Duplicates
-#
 #
 # << MISSING >>
 # Show layer events that are the same as your own:
-# English text: Show layer events that are the same as your own
-#
-# "Save" previously defined (in admin.php)
-# "Help" previously defined (in admin.php)
 #
 # << MISSING >>
 # Are you sure you want to delete this layer?:
-# English text: Are you sure you want to delete this layer?
-#
 #
 # << MISSING >>
 # Delete layer:
-# English text: Delete layer
-#
 
 
 ###############################################
@@ -1010,14 +685,9 @@ conflicts with the following existing calendar entries: takiben Takvimde baska b
 #
 # << MISSING >>
 # You cannot create a layer for yourself:
-# English text: You cannot create a layer for yourself
-#
 #
 # << MISSING >>
 # You can only create one layer for each user:
-# English text: You can only create one layer for each user
-#
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -1032,44 +702,22 @@ E-mail address: E-Mail-Adresi
 Password: Sifre
 again: Tekrar
 Admin: Sef
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
-# "Save" previously defined (in admin.php)
 #
 # << MISSING >>
 # Disabled for demo:
-# English text: Disabled for demo
-#
-# "Delete" previously defined (in category.php)
-#
-# << MISSING >>
-# Disabled for demo:
-# English text: Disabled for demo
-#
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 Change Password: Sifre degistir
 New Password: Yeni Sifre
 Set Password: Sifreyi kullan
-#
-# << MISSING >>
-# Disabled for demo:
-# English text: Disabled for demo
-#
 
 
 ###############################################
 # Page: edit_user_handler.php
 #
-# "Delete" previously defined (in category.php)
 #
 # << MISSING >>
 # Deleting users not supported:
-# English text: Deleting users not supported
-#
-# "You are not authorized" previously defined (in admin.php)
 The passwords were not identical: Verilen Sifreler esit degil
 You have not entered a password: Sifre vermediniz
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -1080,15 +728,10 @@ Export format: Export sekli
 #
 # << MISSING >>
 # Palm Pilot:
-# English text: Palm Pilot
-#
 #
 # << MISSING >>
 # Export all dates:
-# English text: Export all dates
-#
 Start date: Baslangic tarihi
-# "Select" previously defined (in admin.php)
 End date: Bitis tarihi
 Modified since: Degistirimler
 
@@ -1096,8 +739,6 @@ Modified since: Degistirimler
 ###############################################
 # Page: export_handler.php
 #
-# "Export" previously defined (in export.php)
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -1105,14 +746,7 @@ Modified since: Degistirimler
 #
 #
 # << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
 # Add New Group:
-# English text: Add New Group
-#
 
 
 ###############################################
@@ -1121,560 +755,100 @@ Modified since: Degistirimler
 #
 # << MISSING >>
 # Unnamed Group:
-# English text: Unnamed Group
-#
 #
 # << MISSING >>
 # Add Group:
-# English text: Add Group
-#
 #
 # << MISSING >>
 # Edit Group:
-# English text: Edit Group
-#
 #
 # << MISSING >>
 # Group name:
-# English text: Group name
-#
 Updated: degistirme tarihi
 Created by: kuran kisi
 Users: Kullanici
-#
-# << MISSING >>
-# Add:
-# English text: Add
-#
-# "Save" previously defined (in admin.php)
-# "Delete" previously defined (in category.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 
 
 ###############################################
 # Page: group_edit_handler.php
 #
-# "Delete" previously defined (in category.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: help_admin.php
 #
-# "Help" previously defined (in admin.php)
-#
-# << MISSING >>
-# System Settings:
-# English text: System Settings
-#
-# "Settings" previously defined (in admin.php)
-# "Language" previously defined (in admin.php)
-#
-# << MISSING >>
-# language-help:
-# English text: Specifies which language to use.
+
+
+###############################################
+# Page: help_bug.php
 #
 #
 # << MISSING >>
-# Fonts:
-# English text: Fonts
-#
-#
-# << MISSING >>
-# fonts-help:
-# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
-#
-# "Preferred view" previously defined (in admin.php)
-#
-# << MISSING >>
-# preferred-view-help:
-# English text: Specifies the default view (Day, Week, Month, or Year).
-#
-# "Time format" previously defined (in admin.php)
-# "time-format-help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Require event approvals:
-# English text: Require event approvals
-#
-#
-# << MISSING >>
-# require-approvals-help:
-# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
-#
-# "Display unapproved" previously defined (in admin.php)
-# "display-unapproved-help" previously defined (in admin.php)
-# "Display week number" previously defined (in admin.php)
-# "display-week-number-help" previously defined (in admin.php)
-# "Week starts on" previously defined (in admin.php)
-#
-# << MISSING >>
-# display-week-starts-on:
-# English text: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
-#
-# "Work hours" previously defined (in admin.php)
-# "work-hours-help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Disable Priority field:
-# English text: Disable Priority field
-#
-#
-# << MISSING >>
-# disable-priority-field-help:
-# English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Access field:
-# English text: Disable Access field
-#
-#
-# << MISSING >>
-# disable-access-field-help:
-# English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Participants field:
-# English text: Disable Participants field
-#
-#
-# << MISSING >>
-# disable-participants-field-help:
-# English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
-#
-#
-# << MISSING >>
-# Disable Repeating field:
-# English text: Disable Repeating field
-#
-#
-# << MISSING >>
-# disable-repeating-field-help:
-# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Allow public access:
-# English text: Allow public access
-#
-#
-# << MISSING >>
-# allow-public-access-help:
-# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
-#
-#
-# << MISSING >>
-# Public access can view other users:
-# English text: Public access can view other users
-#
-#
-# << MISSING >>
-# public-access-view-others-help:
-# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
-#
-#
-# << MISSING >>
-# Allow viewing other user's calendars:
-# English text: Allow viewing other user's calendars
-#
-#
-# << MISSING >>
-# allow-view-other-help:
-# English text: Specifies whether one user may view another user's calendar.
-#
-#
-# << MISSING >>
-# Remember last login:
-# English text: Remember last login
-#
-#
-# << MISSING >>
-# remember-last-login-help:
-# English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
-#
-#
-# << MISSING >>
-# Check for event conflicts:
-# English text: Check for event conflicts
-#
-#
-# << MISSING >>
-# conflict-check-help:
-# English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
-#
-#
-# << MISSING >>
-# Conflict checking months:
-# English text: Conflict checking months
-#
-#
-# << MISSING >>
-# conflict-months-help:
-# English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
-#
-#
-# << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
-# Groups enabled:
-# English text: Groups enabled
-#
-#
-# << MISSING >>
-# groups-enabled-help:
-# English text: Enables group support, allowing users to select users by groups.
-#
-#
-# << MISSING >>
-# User sees only his groups:
-# English text: User sees only his groups
-#
-#
-# << MISSING >>
-# user-sees-his-group-help:
-# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
-#
-#
-# << MISSING >>
-# Email:
-# English text: Email
-#
-#
-# << MISSING >>
-# Email enabled:
-# English text: Email enabled
-#
-#
-# << MISSING >>
-# email-enabled-help:
-# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
-#
-#
-# << MISSING >>
-# Default sender address:
-# English text: Default sender address
-#
-#
-# << MISSING >>
-# email-default-sender:
-# English text: Specifies the email address to specify as the sender when sending out reminders.
-#
-#
-# << MISSING >>
-# Event reminders:
-# English text: Event reminders
-#
-#
-# << MISSING >>
-# email-event-reminders-help:
-# English text: Specifies whether or not to send event reminders.
-#
-#
-# << MISSING >>
-# Events added to my calendar:
-# English text: Events added to my calendar
-#
-#
-# << MISSING >>
-# email-event-added:
-# English text: Specifies whether or not to send email notifications when an event is added to your calendar.
-#
-#
-# << MISSING >>
-# Events updated on my calendar:
-# English text: Events updated on my calendar
-#
-#
-# << MISSING >>
-# email-event-updated:
-# English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
-#
-#
-# << MISSING >>
-# Events removed from my calendar:
-# English text: Events removed from my calendar
-#
-#
-# << MISSING >>
-# email-event-deleted:
-# English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
-#
-#
-# << MISSING >>
-# Event rejected by participant:
-# English text: Event rejected by participant
-#
-#
-# << MISSING >>
-# email-event-rejected:
-# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
-#
-# "Colors" previously defined (in admin.php)
-# "colors-help" previously defined (in admin.php)
+# Report Bug:
 
 
 ###############################################
 # Page: help_edit_entry.php
 #
-# "Help" previously defined (in admin.php)
 Adding/Editing Calendar Entries: Takvim-Islemi ekle/degistir
-# "Brief Description" previously defined (in edit_entry.php)
-# "brief-description-help" previously defined (in edit_entry.php)
-# "Full Description" previously defined (in edit_entry.php)
-# "full-description-help" previously defined (in edit_entry.php)
-# "Date" previously defined (in activity_log.php)
-# "date-help" previously defined (in edit_entry.php)
-# "Time" previously defined (in activity_log.php)
-# "time-help" previously defined (in edit_entry.php)
-# "Duration" previously defined (in edit_entry.php)
-# "duration-help" previously defined (in edit_entry.php)
-# "Priority" previously defined (in edit_entry.php)
-# "priority-help" previously defined (in edit_entry.php)
-# "Access" previously defined (in edit_entry.php)
-# "access-help" previously defined (in edit_entry.php)
-# "Participants" previously defined (in edit_entry.php)
-# "participants-help" previously defined (in edit_entry.php)
-# "Repeat Type" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# repeat-type-help:
-# English text: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
-#
-# "Repeat End Date" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# repeat-end-date-help:
-# English text: Specifies the date the event should repeat until.
-#
-# "Repeat Day" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# repeat-day-help:
-# English text: Specifies which days of the week the event should repeat on.  This is for use only when <I>Repeat Type</I> is set to <I>Weekly</I>.
-#
-# "Frequency" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# repeat-frequency-help:
-# English text: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <I>Repeat Type</I> is set to <I>Weekly</I>), every other month (if <I>Repeat Type</I> is set to <I>Monthly</I>), etc.
-#
 
 
 ###############################################
 # Page: help_index.php
 #
 Help Index: Yardim-Endeksi
-# "Adding/Editing Calendar Entries" previously defined (in help_edit_entry.php)
 #
 # << MISSING >>
 # Layers:
-# English text: Layers
-#
 Preferences: Ana Ayar
-#
-# << MISSING >>
-# System Settings:
-# English text: System Settings
-#
-#
-# << MISSING >>
-# Report Bug:
-# English text: Report Bug
-#
 
 
 ###############################################
 # Page: help_layers.php
 #
-# "Help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Layers:
-# English text: Layers
-#
 #
 # << MISSING >>
 # Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
-# English text: Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.
-#
 #
 # << MISSING >>
 # Add/Edit/Delete:
-# English text: Add/Edit/Delete
-#
 #
 # << MISSING >>
 # Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
-# English text: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
-#
-#
-# << MISSING >>
-# Source:
-# English text: Source
-#
 #
 # << MISSING >>
 # Specifies the user that you would like to see displayed in your calendar.:
-# English text: Specifies the user that you would like to see displayed in your calendar.
-#
-# "Colors" previously defined (in admin.php)
 #
 # << MISSING >>
 # The text color of the new layer that will be displayed in your calendar.:
-# English text: The text color of the new layer that will be displayed in your calendar.
-#
-#
-# << MISSING >>
-# Duplicates:
-# English text: Duplicates
-#
 #
 # << MISSING >>
 # If checked, events that are duplicates of your events will be shown.:
-# English text: If checked, events that are duplicates of your events will be shown.
-#
 #
 # << MISSING >>
 # Disabling:
-# English text: Disabling
-#
 #
 # << MISSING >>
 # Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
-# English text: Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.
-#
 #
 # << MISSING >>
 # Enabling:
-# English text: Enabling
-#
 #
 # << MISSING >>
 # Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
-# English text: Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.
-#
-# "colors-help" previously defined (in admin.php)
 
 
 ###############################################
 # Page: help_pref.php
 #
-# "Help" previously defined (in admin.php)
-# "Preferences" previously defined (in help_index.php)
-# "Settings" previously defined (in admin.php)
-# "Language" previously defined (in admin.php)
 #
 # << MISSING >>
-# language-help:
-# English text: Specifies which language to use.
-#
+# Default Category:
 #
 # << MISSING >>
-# Fonts:
-# English text: Fonts
+# default-category-help:
+# English text: Specifies the category a new event should default to.
 #
-#
-# << MISSING >>
-# fonts-help:
-# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
-#
-# "Preferred view" previously defined (in admin.php)
-#
-# << MISSING >>
-# preferred-view-help:
-# English text: Specifies the default view (Day, Week, Month, or Year).
-#
-# "Time format" previously defined (in admin.php)
-# "time-format-help" previously defined (in admin.php)
-# "Display unapproved" previously defined (in admin.php)
-# "display-unapproved-help" previously defined (in admin.php)
-# "Display week number" previously defined (in admin.php)
-# "display-week-number-help" previously defined (in admin.php)
-# "Week starts on" previously defined (in admin.php)
-#
-# << MISSING >>
-# display-week-starts-on:
-# English text: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
-#
-# "Work hours" previously defined (in admin.php)
-# "work-hours-help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Email:
-# English text: Email
-#
-#
-# << MISSING >>
-# Event reminders:
-# English text: Event reminders
-#
-#
-# << MISSING >>
-# email-event-reminders-help:
-# English text: Specifies whether or not to send event reminders.
-#
-#
-# << MISSING >>
-# Events added to my calendar:
-# English text: Events added to my calendar
-#
-#
-# << MISSING >>
-# email-event-added:
-# English text: Specifies whether or not to send email notifications when an event is added to your calendar.
-#
-#
-# << MISSING >>
-# Events updated on my calendar:
-# English text: Events updated on my calendar
-#
-#
-# << MISSING >>
-# email-event-updated:
-# English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
-#
-#
-# << MISSING >>
-# Events removed from my calendar:
-# English text: Events removed from my calendar
-#
-#
-# << MISSING >>
-# email-event-deleted:
-# English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
-#
-#
-# << MISSING >>
-# Event rejected by participant:
-# English text: Event rejected by participant
-#
-#
-# << MISSING >>
-# email-event-rejected:
-# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
-#
-# "Colors" previously defined (in admin.php)
-# "colors-help" previously defined (in admin.php)
 
 
 ###############################################
@@ -1687,74 +861,27 @@ Preferences: Ana Ayar
 #
 #
 # << MISSING >>
-# Layers:
-# English text: Layers
-#
-#
-# << MISSING >>
 # Layers are currently:
-# English text: Layers are currently
-#
 #
 # << MISSING >>
 # Disabled:
-# English text: Disabled
-#
 #
 # << MISSING >>
 # Enabled:
-# English text: Enabled
-#
 #
 # << MISSING >>
 # Layer:
-# English text: Layer
-#
-#
-# << MISSING >>
-# Source:
-# English text: Source
-#
-#
-# << MISSING >>
-# Color:
-# English text: Color
-#
-#
-# << MISSING >>
-# Duplicates:
-# English text: Duplicates
-#
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
 #
 # << MISSING >>
 # Edit layer:
-# English text: Edit layer
-#
-#
-# << MISSING >>
-# Are you sure you want to delete this layer?:
-# English text: Are you sure you want to delete this layer?
-#
-#
-# << MISSING >>
-# Delete layer:
-# English text: Delete layer
-#
 #
 # << MISSING >>
 # Add layer:
-# English text: Add layer
-#
-# "Help" previously defined (in admin.php)
 
 
 ###############################################
 # Page: layers_toggle.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "The following error occurred" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -1768,30 +895,21 @@ Reject: Ret
 #
 # << MISSING >>
 # No unapproved events for:
-# English text: No unapproved events for
-#
 Unapproved Events: Onaylanmamis Termin
 #
 # << MISSING >>
 # Public Access:
-# English text: Public Access
-#
 
 
 ###############################################
 # Page: login.php
 #
 You must enter a login and password: Kullanici Adi ve Sifre vermeniz gerekiyor.
-# "Error" previously defined (in admin_handler.php)
-# "Username" previously defined (in edit_user.php)
-# "Password" previously defined (in edit_user.php)
 Save login via cookies so I don't have to login next time: Tanimlamayi Cookie'ye kayit et, birdahakinde otamatik olarak girisi gecmek icin.
 Login: Giris
 #
 # << MISSING >>
 # Access public calendar:
-# English text: Access public calendar
-#
 cookies-note: <B>Not:</B> Takvimi kullanmak icin, Browser'inizde Cookie'leri kabul etmeniz gerekiyor.
 
 
@@ -1805,165 +923,28 @@ Wed: Ca
 Thu: Pe
 Fri: Cu
 Sat: Ct
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
 # Page: pref.php
 #
-# "Invalid color for document background" previously defined (in admin.php)
-# "Invalid color for document title" previously defined (in admin.php)
-# "Invalid color for table cell background" previously defined (in admin.php)
-# "Invalid color for table cell background for today" previously defined (in admin.php)
-# "Color format should be '#RRGGBB'" previously defined (in admin.php)
-# "Preferences" previously defined (in help_index.php)
-# "Settings" previously defined (in admin.php)
-# "Language" previously defined (in admin.php)
 #
 # << MISSING >>
-# Your browser default language is:
-# English text: Your browser default language is
-#
-#
-# << MISSING >>
-# fonts-help:
-# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
-#
-#
-# << MISSING >>
-# Fonts:
-# English text: Fonts
-#
-# "Preferred view" previously defined (in admin.php)
-# "Day" previously defined (in admin.php)
-# "Week" previously defined (in admin.php)
-# "Month" previously defined (in admin.php)
-# "Year" previously defined (in admin.php)
-#
-# << MISSING >>
-# display-weekends-help:
-# English text: Include weekends when viewing a week.
-#
-#
-# << MISSING >>
-# Display weekends in week view:
-# English text: Display weekends in week view
-#
-# "Yes" previously defined (in admin.php)
-# "No" previously defined (in admin.php)
-# "Time format" previously defined (in admin.php)
-# "12 hour" previously defined (in admin.php)
-# "24 hour" previously defined (in admin.php)
-#
-# << MISSING >>
-# auto-refresh-help:
-# English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
-#
-#
-# << MISSING >>
-# Auto-refresh calendars:
-# English text: Auto-refresh calendars
-#
-#
-# << MISSING >>
-# auto-refresh-time-help:
-# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
-#
-#
-# << MISSING >>
-# Auto-refresh time:
-# English text: Auto-refresh time
-#
-# "minutes" previously defined (in admin.php)
-# "Display unapproved" previously defined (in admin.php)
-# "Display week number" previously defined (in admin.php)
-# "Week starts on" previously defined (in admin.php)
-# "Sunday" previously defined (in admin.php)
-# "Monday" previously defined (in admin.php)
-# "Work hours" previously defined (in admin.php)
-# "From" previously defined (in admin.php)
-# "to" previously defined (in admin.php)
-#
-# << MISSING >>
-# Default Category:
-# English text: Default Category
-#
-#
-# << MISSING >>
-# Email:
-# English text: Email
-#
-#
-# << MISSING >>
-# Event reminders:
-# English text: Event reminders
-#
-#
-# << MISSING >>
-# Events added to my calendar:
-# English text: Events added to my calendar
-#
-#
-# << MISSING >>
-# Events updated on my calendar:
-# English text: Events updated on my calendar
-#
-#
-# << MISSING >>
-# Events removed from my calendar:
-# English text: Events removed from my calendar
-#
-#
-# << MISSING >>
-# Event rejected by participant:
-# English text: Event rejected by participant
-#
-# "Colors" previously defined (in admin.php)
-# "Document background" previously defined (in admin.php)
-# "Select" previously defined (in admin.php)
-# "Document title" previously defined (in admin.php)
-# "Table cell background" previously defined (in admin.php)
-# "Table cell background for current day" previously defined (in admin.php)
-#
-# << MISSING >>
-# Table cell background for weekends:
-# English text: Table cell background for weekends
-#
+# to modify the preferences for the Public Access calendar:
 Save Preferences: Ayarlari kayit et
-# "Help" previously defined (in admin.php)
 
 
 ###############################################
 # Page: pref_handler.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "The following error occurred" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: reject_entry.php
 #
-# "Error approving event" previously defined (in approve_entry.php)
-# "Hello" previously defined (in del_entry.php)
 #
 # << MISSING >>
 # An appointment has been rejected by:
-# English text: An appointment has been rejected by
-#
-#
-# << MISSING >>
-# The subject was:
-# English text: The subject was
-#
-#
-# << MISSING >>
-# The description is:
-# English text: The description is
-#
-# "Date" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
-# "Notification" previously defined (in del_entry.php)
 
 
 ###############################################
@@ -1973,16 +954,7 @@ Search: Arama
 #
 # << MISSING >>
 # Advanced Search:
-# English text: Advanced Search
-#
 Keywords: Kelimeler
-#
-# << MISSING >>
-# Advanced Search:
-# English text: Advanced Search
-#
-# "Users" previously defined (in group_edit.php)
-# "Select" previously defined (in admin.php)
 
 
 ###############################################
@@ -1990,7 +962,6 @@ Keywords: Kelimeler
 #
 You must enter one or more search keywords: En az bir Kelime girmeniz gerekiyor
 Search Results: Arama sonucu
-# "Error" previously defined (in admin_handler.php)
 match found: Bulunan
 matches found: Bulunan
 No matches found: Bulunmiyor
@@ -2000,56 +971,28 @@ No matches found: Bulunmiyor
 # Page: select_user.php
 #
 View Another User's Calendar: Baska Kullanicilarin Takvimini göster 
-# "You are not authorized" previously defined (in admin.php)
 Go: göster 
 
 
 ###############################################
 # Page: set_entry_cat.php
 #
-# "Invalid entry id" previously defined (in add_entry.php)
-# "You are not authorized" previously defined (in admin.php)
 #
 # << MISSING >>
 # You have not added any categories:
-# English text: You have not added any categories
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "Error" previously defined (in admin_handler.php)
 #
 # << MISSING >>
 # Set Category:
-# English text: Set Category
+
+
+###############################################
+# Page: test.php
 #
-# "Brief Description" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# Category:
-# English text: Category
-#
-# "Save" previously defined (in admin.php)
 
 
 ###############################################
 # Page: users.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "You are not authorized" previously defined (in admin.php)
-# "Users" previously defined (in group_edit.php)
 denotes administrative user: Sef Kullaniciyi gösterir
 Add New User: Yeni Kullanici ekle
 
@@ -2057,43 +1000,18 @@ Add New User: Yeni Kullanici ekle
 ###############################################
 # Page: usersel.php
 #
-# "Users" previously defined (in group_edit.php)
 #
 # << MISSING >>
 # All:
-# English text: All
-#
-# "None" previously defined (in edit_entry.php)
 #
 # << MISSING >>
 # Reset:
-# English text: Reset
-#
-#
-# << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
-# Add:
-# English text: Add
-#
 #
 # << MISSING >>
 # Remove:
-# English text: Remove
-#
 #
 # << MISSING >>
 # Ok:
-# English text: Ok
-#
-#
-# << MISSING >>
-# Cancel:
-# English text: Cancel
-#
 
 
 ###############################################
@@ -2102,13 +1020,9 @@ Add New User: Yeni Kullanici ekle
 #
 # << MISSING >>
 # Views:
-# English text: Views
-#
 #
 # << MISSING >>
 # Add New View:
-# English text: Add New View
-#
 
 
 ###############################################
@@ -2117,311 +1031,119 @@ Add New User: Yeni Kullanici ekle
 #
 # << MISSING >>
 # Unnamed View:
-# English text: Unnamed View
-#
 #
 # << MISSING >>
 # Add View:
-# English text: Add View
-#
 #
 # << MISSING >>
 # Edit View:
-# English text: Edit View
-#
 #
 # << MISSING >>
 # View Name:
-# English text: View Name
-#
 #
 # << MISSING >>
 # View Type:
-# English text: View Type
-#
-# "Week" previously defined (in admin.php)
-# "Month" previously defined (in admin.php)
-# "Users" previously defined (in group_edit.php)
-# "Select" previously defined (in admin.php)
-#
-# << MISSING >>
-# Add:
-# English text: Add
-#
-# "Save" previously defined (in admin.php)
-# "Delete" previously defined (in category.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 
 
 ###############################################
 # Page: views_edit_handler.php
 #
-# "Delete" previously defined (in category.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: view_entry.php
 #
-# "Low" previously defined (in edit_entry.php)
-# "Medium" previously defined (in edit_entry.php)
-# "High" previously defined (in edit_entry.php)
-# "Invalid entry id" previously defined (in add_entry.php)
-# "Error" previously defined (in admin_handler.php)
-# "You are not authorized" previously defined (in admin.php)
 #
 # << MISSING >>
 # every:
-# English text: every
-#
 #
 # << MISSING >>
 # 1st:
-# English text: 1st
-#
 #
 # << MISSING >>
 # 2nd:
-# English text: 2nd
-#
 #
 # << MISSING >>
 # 3rd:
-# English text: 3rd
-#
 #
 # << MISSING >>
 # 4th:
-# English text: 4th
-#
 #
 # << MISSING >>
 # 5th:
-# English text: 5th
-#
-# "Day" previously defined (in admin.php)
-# "Week" previously defined (in admin.php)
-# "Month" previously defined (in admin.php)
-# "by day" previously defined (in edit_entry.php)
-# "by date" previously defined (in edit_entry.php)
-# "Year" previously defined (in admin.php)
-# "Confidential" previously defined (in edit_entry.php)
 Description: Anlam
 #
 # << MISSING >>
 # Status:
-# English text: Status
-#
 #
 # << MISSING >>
 # Waiting for approval:
-# English text: Waiting for approval
-#
 #
 # << MISSING >>
 # Deleted:
-# English text: Deleted
-#
 Rejected: Islem onaylanmadi, eklenmeyecek  
-# "Date" previously defined (in activity_log.php)
-# "Repeat Type" previously defined (in edit_entry.php)
-# "Time" previously defined (in activity_log.php)
-# "Duration" previously defined (in edit_entry.php)
-# "minutes" previously defined (in admin.php)
-# "Priority" previously defined (in edit_entry.php)
-# "Access" previously defined (in edit_entry.php)
-# "Public" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# Category:
-# English text: Category
-#
-# "Created by" previously defined (in group_edit.php)
-# "Updated" previously defined (in group_edit.php)
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
-#
-# << MISSING >>
-# days:
-# English text: days
-#
-#
-# << MISSING >>
-# hours:
-# English text: hours
-#
-#
-# << MISSING >>
-# before event:
-# English text: before event
-#
-# "Participants" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "Approve this entry?" previously defined (in list_unapproved.php)
 Approve/Confirm entry: Islem onaylansin?
-# "Reject this entry?" previously defined (in list_unapproved.php)
 Reject entry: Isleme ret?
 #
 # << MISSING >>
 # Set category:
-# English text: Set category
-#
 #
 # << MISSING >>
 # Edit repeating entry for all dates:
-# English text: Edit repeating entry for all dates
-#
 #
 # << MISSING >>
 # Edit entry for this date:
-# English text: Edit entry for this date
-#
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 This will delete this entry for all users.: Bu Islem tüt Kullanicilar icin siliniyor.
 #
 # << MISSING >>
 # Delete repeating event for all dates:
-# English text: Delete repeating event for all dates
-#
 #
 # << MISSING >>
 # Delete entry only for this date:
-# English text: Delete entry only for this date
-#
 Edit entry: Islem degistir
-# "Delete entry" previously defined (in edit_entry.php)
 #
 # << MISSING >>
 # This will delete the entry from your calendar.:
-# English text: This will delete the entry from your calendar.
-#
 #
 # << MISSING >>
 # Do you want to add this entry to your calendar?:
-# English text: Do you want to add this entry to your calendar?
-#
 #
 # << MISSING >>
 # This will add the entry to your calendar.:
-# English text: This will add the entry to your calendar.
-#
 #
 # << MISSING >>
 # Add to My Calendar:
-# English text: Add to My Calendar
-#
 #
 # << MISSING >>
 # Email all participants:
-# English text: Email all participants
-#
 #
 # << MISSING >>
 # Show activity log:
-# English text: Show activity log
-#
 #
 # << MISSING >>
 # Hide activity log:
-# English text: Hide activity log
-#
-#
-# << MISSING >>
-# Activity Log:
-# English text: Activity Log
-#
-#
-# << MISSING >>
-# User:
-# English text: User
-#
-#
-# << MISSING >>
-# Calendar:
-# English text: Calendar
-#
-#
-# << MISSING >>
-# Action:
-# English text: Action
-#
-#
-# << MISSING >>
-# Event created:
-# English text: Event created
-#
-#
-# << MISSING >>
-# Event approved:
-# English text: Event approved
-#
-#
-# << MISSING >>
-# Event rejected:
-# English text: Event rejected
-#
-#
-# << MISSING >>
-# Event updated:
-# English text: Event updated
-#
-#
-# << MISSING >>
-# Event deleted:
-# English text: Event deleted
-#
-#
-# << MISSING >>
-# Notification sent:
-# English text: Notification sent
-#
-#
-# << MISSING >>
-# Reminder sent:
-# English text: Reminder sent
-#
 
 
 ###############################################
 # Page: view_m.php
 #
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
 # Page: view_w.php
 #
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
 # Page: week.php
 #
-# "Week" previously defined (in admin.php)
 New Entry: Yeni islem
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
+
+
+###############################################
+# Page: week_details.php
+#
+Private: özel
 
 
 ###############################################
@@ -2432,8 +1154,6 @@ New Entry: Yeni islem
 ###############################################
 # Page: year.php
 #
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
@@ -2444,41 +1164,15 @@ New Entry: Yeni islem
 ###############################################
 # Page: includes/connect.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "You are not authorized" previously defined (in admin.php)
 
 
 ###############################################
 # Page: includes/functions.php
 #
-# "Title" previously defined (in edit_entry_handler.php)
-# "You are not authorized" previously defined (in admin.php)
-#
-# << MISSING >>
-# User:
-# English text: User
-#
-# "Time" previously defined (in activity_log.php)
-# "Description" previously defined (in view_entry.php)
-# "Select" previously defined (in admin.php)
-# "View this entry" previously defined (in list_unapproved.php)
-# "am" previously defined (in edit_entry.php)
-# "pm" previously defined (in edit_entry.php)
-Private: özel
 This event is confidential: özel Termin 
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
-# "This will delete this entry for all users." previously defined (in view_entry.php)
-# "New Entry" previously defined (in week.php)
-# "Week" previously defined (in admin.php)
 #
 # << MISSING >>
-# Database error:
-# English text: Database error
-#
-You have: Sizin
-unapproved: onaylanmamis
-events: Islemler
-event: Islem 
+# You have XXX unapproved events:
 January: Ocak
 February: Subat
 March: Mart
@@ -2490,7 +1184,6 @@ August: Agustos
 September: Eylül
 October: Ekim
 November: Kasim
-December: Aralik
 Jan: Oca
 Feb: Sub
 Mar: Mar
@@ -2502,33 +1195,12 @@ Aug: Agu
 Sep: Eyl
 Oct: Eki
 Nov: Kas
-Dec: Ara
-# "Sunday" previously defined (in admin.php)
-# "Monday" previously defined (in admin.php)
-# "Tuesday" previously defined (in edit_entry.php)
-# "Wednesday" previously defined (in edit_entry.php)
-# "Thursday" previously defined (in edit_entry.php)
-# "Friday" previously defined (in edit_entry.php)
-# "Saturday" previously defined (in edit_entry.php)
-# "Sun" previously defined (in month.php)
-# "Mon" previously defined (in month.php)
-# "Tue" previously defined (in month.php)
-# "Wed" previously defined (in month.php)
-# "Thu" previously defined (in month.php)
-# "Fri" previously defined (in month.php)
-# "Sat" previously defined (in month.php)
-#
-# << MISSING >>
-# All:
-# English text: All
-#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Git
-# "Help Index" previously defined (in help_index.php)
 
 
 ###############################################
@@ -2552,13 +1224,9 @@ Go to: Git
 #
 # << MISSING >>
 # Send Reminder:
-# English text: Send Reminder
-#
 #
 # << MISSING >>
 # Reminder:
-# English text: Reminder
-#
 
 
 ###############################################
@@ -2569,80 +1237,29 @@ Go to: Git
 ###############################################
 # Page: includes/trailer.php
 #
-# "Month" previously defined (in admin.php)
-# "Go" previously defined (in select_user.php)
-# "Week" previously defined (in admin.php)
-# "Year" previously defined (in admin.php)
-# "Go to" previously defined (in includes/help_trailer.php)
 Back to My Calendar: Takvimime geri
 My Calendar: Benim Takvimim
-# "Login" previously defined (in login.php)
 Logout: Cikis
-# "Unapproved Events" previously defined (in list_unapproved.php)
 Another User's Calendar: Baska Kullanicilarin Takvimi 
-# "Search" previously defined (in search.php)
-# "Export" previously defined (in export.php)
-#
-# << MISSING >>
-# Categories:
-# English text: Categories
-#
 Add New Entry: Islem ekle
-# "Help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Views:
-# English text: Views
-#
 #
 # << MISSING >>
 # Manage Views:
-# English text: Manage Views
-#
-# "Admin" previously defined (in edit_user.php)
-#
-# << MISSING >>
-# System Settings:
-# English text: System Settings
-#
-# "Preferences" previously defined (in help_index.php)
 #
 # << MISSING >>
 # Edit Layers:
-# English text: Edit Layers
-#
 #
 # << MISSING >>
 # Enable Layers:
-# English text: Enable Layers
-#
 #
 # << MISSING >>
 # Disable Layers:
-# English text: Disable Layers
-#
-# "Users" previously defined (in group_edit.php)
-#
-# << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
-# Activity Log:
-# English text: Activity Log
-#
 Account: Account
 Current User: aktüel Kullanici
 
 
 ###############################################
 # Page: includes/translate.php
-#
-#
-# << MISSING >>
-# Public Access:
-# English text: Public Access
 #
 
 
@@ -2652,23 +1269,6 @@ Current User: aktüel Kullanici
 #
 # << MISSING >>
 # Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
 
 
 ###############################################
@@ -2676,113 +1276,11 @@ Current User: aktüel Kullanici
 #
 #
 # << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
 # Invalid user login:
-# English text: Invalid user login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Invalid user login:
-# English text: Invalid user login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
 
 
 ###############################################
 # Page: includes/user.php
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Invalid user login:
-# English text: Invalid user login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Invalid user login:
-# English text: Invalid user login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
 #
 
 
@@ -2794,30 +1292,6 @@ Current User: aktüel Kullanici
 ###############################################
 # Page: tools/send_reminders.php
 #
-# "Low" previously defined (in edit_entry.php)
-# "Medium" previously defined (in edit_entry.php)
-# "High" previously defined (in edit_entry.php)
 #
 # << MISSING >>
 # This is a reminder for the event detailed below.:
-# English text: This is a reminder for the event detailed below.
-#
-# "Description" previously defined (in view_entry.php)
-# "Date" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
-# "Duration" previously defined (in edit_entry.php)
-# "minutes" previously defined (in admin.php)
-# "Priority" previously defined (in edit_entry.php)
-# "Access" previously defined (in edit_entry.php)
-# "Public" previously defined (in edit_entry.php)
-# "Confidential" previously defined (in edit_entry.php)
-# "Created by" previously defined (in group_edit.php)
-# "Updated" previously defined (in group_edit.php)
-# "Yes" previously defined (in admin.php)
-# "No" previously defined (in admin.php)
-# "Participants" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# Reminder:
-# English text: Reminder
-#

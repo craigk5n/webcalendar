@@ -1,281 +1,119 @@
 # Use this as a starting point to translate this application into
 # another language.  The format is "English text: translated text"
 # There cannot be a ":" in the English text.
-# Translated by: liao_bin@371.net
+# Translated by: liao_bin@371.net shenyi@jite.net
 # Last update: 2002-6-26
 # $Id$
-# Translation last updated on 07-11-2002
+# Translation last updated on 07-19-2002
 
 
 ###############################################
 # Page: activity_log.php
 #
-#
-# << MISSING >>
-# Activity Log:
-# English text: Activity Log
-#
-User: Ê¹&nbsp;ÓÃ&nbsp;Õß
-#
-# << MISSING >>
-# Calendar:
-# English text: Calendar
-#
-Date: ÈÕ&nbsp;ÆÚ
-Time: Ê±&nbsp;¼ä
-#
-# << MISSING >>
-# Event:
-# English text: Event
-#
-#
-# << MISSING >>
-# Action:
-# English text: Action
-#
-#
-# << MISSING >>
-# Event created:
-# English text: Event created
-#
-#
-# << MISSING >>
-# Event approved:
-# English text: Event approved
-#
-#
-# << MISSING >>
-# Event rejected:
-# English text: Event rejected
-#
-#
-# << MISSING >>
-# Event updated:
-# English text: Event updated
-#
-#
-# << MISSING >>
-# Event deleted:
-# English text: Event deleted
-#
-#
-# << MISSING >>
-# Notification sent:
-# English text: Notification sent
-#
-#
-# << MISSING >>
-# Reminder sent:
-# English text: Reminder sent
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Next:
-# English text: Next
-#
+Activity Log: »î¶¯ÈÕÖ¾
+User: ÓÃ»§
+Calendar: ÈÕÀú
+Date: ÈÕÆÚ
+Time: Ê±¼ä
+Event: ÊÂ¼ş
+Action: »î¶¯
+Event created: ÊÂ¼şÒÑ´´½¨
+Event approved: ÊÂ¼şÒÑµ½´ï
+Event rejected: ÊÂ¼şÒÑ¾Ü¾ø
+Event updated: ÊÂ¼şÒÑ¾­¸üĞÂ
+Event deleted: ÊÂ¼şÒÑÉ¾³ı
+Notification sent: ·¢ËÍÍ¨Öª
+Reminder sent: ·¢ËÍÌáĞÑ
+Database error: Êı¾İ¿â´íÎó
+Next: ÏÂÒ»Ò³
 
 
 ###############################################
 # Page: add_entry.php
 #
-Invalid entry id: Invalid entry id
-This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
-Error adding event: Error adding event
+Invalid entry id: ÎŞĞ§µÄ¼ÍÂ¼ID
+This is a private event and may not be added to your calendar.: ÕâÊÇÒ»¸öË½ÈËÊÂ¼ş²»ÄÜÌí¼Óµ½ÄúµÄÈÕÀúÖĞ.
+Error adding event: Ìí¼ÓÊÂ¼ş´íÎó
 
 
 ###############################################
 # Page: admin.php
 #
-#
-# << MISSING >>
-# Server URL is required:
-# English text: Server URL is required
-#
-#
-# << MISSING >>
-# Server URL must end with '/':
-# English text: Server URL must end with '/'
-#
-Invalid color for document background: Invalid color for document background
-Invalid color for document title: Invalid color for document title
-Invalid color for table cell background: Invalid color for table cell background
-#
-# << MISSING >>
-# Invalid color for table grid:
-# English text: Invalid color for table grid
-#
-#
-# << MISSING >>
-# Invalid color for table header background:
-# English text: Invalid color for table header background
-#
-#
-# << MISSING >>
-# Invalid color for table text background:
-# English text: Invalid color for table text background
-#
-#
-# << MISSING >>
-# Invalid color for event popup background:
-# English text: Invalid color for event popup background
-#
-#
-# << MISSING >>
-# Invalid color for event popup text:
-# English text: Invalid color for event popup text
-#
-Invalid color for table cell background for today: Invalid color for table cell background for today
-Color format should be '#RRGGBB': Color format should be '#RRGGBB'
-#
-# << MISSING >>
-# System Settings:
-# English text: System Settings
-#
+Server URL is required: ÌîĞ´ÏµÍ³URL
+Server URL must end with '/': ÏµÍ³URL±ØĞëÒÔ'/'½áÎ²
+Invalid color for document background: ÎŞĞ§µÄÎÄµµ±³¾°ÑÕÉ«
+Invalid color for document title: ÎŞĞ§µÄÎÄµµ±êÌâÑÕÉ«
+Invalid color for table cell background: ÎŞĞ§µÄ±í¸ñµ¥Ôª±³¾°ÑÕÉ«
+Invalid color for table grid: ÎŞĞ§µÄ±í¸ñÍø¸ñÑÕÉ«
+Invalid color for table header background: ÎŞĞ§µÄ±íÍ·±³¾°ÑÕÉ«
+Invalid color for table text background: ÎŞĞ§µÄ±íÍ·ÎÄ±¾ÑÕÉ«
+Invalid color for event popup background: ÎŞĞ§µÄ±³¾°ÑÕÉ«
+Invalid color for event popup text: ÎŞĞ§µÄÎÄ±¾ÑÕÉ«     
+Invalid color for table cell background for today: ÎŞĞ§µÄµ±Ìì±í¸ñµ¥Ôª±³¾°ÑÕÉ«
+Color format should be '#RRGGBB': ÑÕÉ«¸ñÊ½ĞèÒªÊÇ '#RRGGBB'
+System Settings: ÏµÍ³ÉèÖÃ 
 You are not authorized: ÄúÎ´½›ÊÚ™à
-#
-# << MISSING >>
-# Note:
-# English text: Note
-#
-#
-# << MISSING >>
-# Your user preferences:
-# English text: Your user preferences
-#
-#
-# << MISSING >>
-# may be affecting the appearance of this page.:
-# English text: may be affecting the appearance of this page.
-#
-#
-# << MISSING >>
-# Click here:
-# English text: Click here
-#
-#
-# << MISSING >>
-# to not use your user preferences when viewing this page:
-# English text: to not use your user preferences when viewing this page
-#
-#
-# << MISSING >>
-# Note:
-# English text: Note
-#
-#
-# << MISSING >>
-# Your user preferences:
-# English text: Your user preferences
-#
-#
-# << MISSING >>
-# are being ignored while viewing this page.:
-# English text: are being ignored while viewing this page.
-#
-#
-# << MISSING >>
-# Click here:
-# English text: Click here
-#
-#
-# << MISSING >>
-# to load your user preferences when viewing this page:
-# English text: to load your user preferences when viewing this page
-#
+Note: ÃèÊö
+Your user preferences: ÓÃ»§²ÎÊıÉè¶¨
+may be affecting the appearance of this page.: ¿ÉÄÜÓ°Ïì±¾Ò³
+Click here: µã»÷´Ë´¦
+to not use your user preferences when viewing this page: ä¯ÀÀ´ËÒ³ÃæÊ±²»ÆôÓÃÄãµÄ²ÎÊıÉèÖÃ
+are being ignored while viewing this page.: µ±²é¿´±¾Ò³Ê±±»ºöÂÔÁË.
+to load your user preferences when viewing this page: ä¯ÀÀ´ËÒ³ÃæÊ±ÆôÓÃÄãµÄ²ÎÊıÉèÖÃ
 Save: ƒ¦´æ
-Help: ÕfÃ÷
-Settings: ÔO¶¨ÖĞ
-#
-# << MISSING >>
-# app-name-help:
-# English text: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
-#
-#
-# << MISSING >>
-# Application Name:
-# English text: Application Name
-#
-#
-# << MISSING >>
-# server-url-help:
-# English text: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
-#
-#
-# << MISSING >>
-# Server URL:
-# English text: Server URL
-#
+Help: ËµÃ÷
+Settings: ÉèÖÃ
+app-name-help: Ó¦ÓÃ-Ãû³Æ-°ïÖú
+Application Name: Ó¦ÓÃÃû³Æ
+server-url-help: ÏµÍ³-URL-°ïÖú
+Server URL: ÏµÍ³URL
 language-help: ÇëÑ¡ÔñÊ¹ÓÃµÄÓïÑÔ.
-Language: ÕZÏµ
+Language: ÓïÑÔ
 Your browser default language is: ÄúµÄä¯ÀÀÆ÷Ô¤ÉèµÄÓïÑÔÊÇ
-#
-# << MISSING >>
-# fonts-help:
-# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
-#
-#
-# << MISSING >>
-# Fonts:
-# English text: Fonts
-#
+fonts-help: ×ÖÌå°ïÖú
+Fonts: ×ÖÌå
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
-Preferred view: ™zÒ•Ñ¡Ôñ
+Preferred view: ²é¿´Ñ¡Ôñ
 Day: ÈÕ
 Week: ÖÜ
 Month: ÔÂ
 Year: Äê
-#
-# << MISSING >>
-# display-weekends-help:
-# English text: Include weekends when viewing a week.
-#
-#
-# << MISSING >>
-# Display weekends in week view:
-# English text: Display weekends in week view
-#
+display-weekends-help: ÏÔÊ¾-ÖÜÄ©-°ïÖú
+Display weekends in week view: ÏÔÊ¾ÖÜÄ©
 Yes: ÊÇ
 No: ·ñ
+#
+# << MISSING >>
+# date-format-help:
+# English text: Specifies the preferred date format.
+#
+#
+# << MISSING >>
+# Date format:
+December: Ê®¶şÔÂ
+Dec: 12ÔÂ
 time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
 Time format: Ê±¼ä¸ñÊ½
 12 hour: 12Ê±ÖÆ
 24 hour: 24Ê±ÖÆ
 #
 # << MISSING >>
-# auto-refresh-help:
-# English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
+# time-interval-help:
+# English text: Specifies how long the time blocks in the week view and day view will be.
 #
 #
 # << MISSING >>
-# Auto-refresh calendars:
-# English text: Auto-refresh calendars
-#
+# Time interval:
 #
 # << MISSING >>
-# auto-refresh-time-help:
-# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
-#
-#
-# << MISSING >>
-# Auto-refresh time:
-# English text: Auto-refresh time
-#
+# hour:
 minutes: ·Ö
-#
-# << MISSING >>
-# require-approvals-help:
-# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
-#
-#
-# << MISSING >>
-# Require event approvals:
-# English text: Require event approvals
-#
+auto-refresh-help: ×Ô¶¯-Ë¢ĞÂ-°ïÖú
+Auto-refresh calendars: ×Ô¶¯-Ë¢ĞÂÈÕÀú
+auto-refresh-time-help: ×Ô¶¯-Ë¢ĞÂ-Ê±¼ä-°ïÖú
+Auto-refresh time: ×Ô¶¯-Ë¢ĞÂÊ±¼ä
+require-approvals-help: ÊÇ·ñĞèÒªºË×¼ÊÂ¼ş
+Require event approvals: ĞèÒªÊÂ¼şºË×¼
 display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<BR> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<BR> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: ÏÔÊ¾Î´ºË×¼µÄ
 display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month view and the week view.
@@ -285,29 +123,13 @@ Week starts on: Ã¿ÖÜé_Ê¼ì¶
 Sunday: ĞÇÆÚÈÕ
 Monday: ĞÇÆÚÒ»
 work-hours-help: Specifies the time range to display for the day view.
-Work hours: ÔÂ•Ñ¿ÉÏÔÊ¾Ö®¹¤×÷Ê±¼ä
+Work hours: ÔÂÀú¿ÉÏÔÊ¾Ö®¹¤×÷Ê±¼ä
 From: ×Ô
 to: ÖÁ
-#
-# << MISSING >>
-# disable-priority-field-help:
-# English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Priority field:
-# English text: Disable Priority field
-#
-#
-# << MISSING >>
-# disable-access-field-help:
-# English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Access field:
-# English text: Disable Access field
-#
+disable-priority-field-help: ¹Ø±Õ-ÓÅÏÈ¼¶-Óò-°ïÖú
+Disable Priority field: ¹Ø±ÕÓÅÏÈ¼¶Óò
+disable-access-field-help: ¹Ø±Õ-·ÃÎÊ-Óò-°ïÖú
+Disable Access field: ¹Ø±Õ·ÃÎÊÓò
 #
 # << MISSING >>
 # disable-participants-field-help:
@@ -316,261 +138,70 @@ to: ÖÁ
 #
 # << MISSING >>
 # Disable Participants field:
-# English text: Disable Participants field
-#
-#
-# << MISSING >>
-# disable-repeating-field-help:
-# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Repeating field:
-# English text: Disable Repeating field
-#
-#
-# << MISSING >>
-# allow-public-access-help:
-# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
-#
-#
-# << MISSING >>
-# Allow public access:
-# English text: Allow public access
-#
-#
-# << MISSING >>
-# public-access-view-others-help:
-# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
-#
-#
-# << MISSING >>
-# Public access can view other users:
-# English text: Public access can view other users
-#
-#
-# << MISSING >>
-# public-access-can-add-help:
-# English text: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
-#
-#
-# << MISSING >>
-# Public access can add events:
-# English text: Public access can add events
-#
-#
-# << MISSING >>
-# allow-view-other-help:
-# English text: Specifies whether one user may view another user's calendar.
-#
-#
-# << MISSING >>
-# Allow viewing other user's calendars:
-# English text: Allow viewing other user's calendars
-#
-#
-# << MISSING >>
-# remember-last-login-help:
-# English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
-#
-#
-# << MISSING >>
-# Remember last login:
-# English text: Remember last login
-#
-#
-# << MISSING >>
-# conflict-check-help:
-# English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
-#
-#
-# << MISSING >>
-# Check for event conflicts:
-# English text: Check for event conflicts
-#
-#
-# << MISSING >>
-# conflict-months-help:
-# English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
-#
-#
-# << MISSING >>
-# Conflict checking months:
-# English text: Conflict checking months
-#
-#
-# << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
-# groups-enabled-help:
-# English text: Enables group support, allowing users to select users by groups.
-#
-#
-# << MISSING >>
-# Groups enabled:
-# English text: Groups enabled
-#
-#
-# << MISSING >>
-# user-sees-his-group-help:
-# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
-#
-#
-# << MISSING >>
-# User sees only his groups:
-# English text: User sees only his groups
-#
-#
-# << MISSING >>
-# Categories:
-# English text: Categories
-#
-#
-# << MISSING >>
-# categories-enabled-help:
-# English text: Enables support for event categories.
-#
-#
-# << MISSING >>
-# Categories enabled:
-# English text: Categories enabled
-#
-#
-# << MISSING >>
-# Email:
-# English text: Email
-#
-#
-# << MISSING >>
-# email-enabled-help:
-# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
-#
-#
-# << MISSING >>
-# Email enabled:
-# English text: Email enabled
-#
-#
-# << MISSING >>
-# email-default-sender:
-# English text: Specifies the email address to specify as the sender when sending out reminders.
-#
-#
-# << MISSING >>
-# Default sender address:
-# English text: Default sender address
-#
-#
-# << MISSING >>
-# Default user settings:
-# English text: Default user settings
-#
+disable-repeating-field-help: ¹Ø±Õ-ÖØ¸´-Óò-°ïÖú
+Disable Repeating field: ¹Ø±ÕÖØ¸´Óò
+allow-public-access-help: ÔÊĞí-¹«¹²-½øÈë-°ïÖú
+Allow public access: ÔÊĞí¹«¹²µÇÂ¼
+public-access-view-others-help: ¿ÉÒÔÎª¹«¹²ÈÕÀúÌí¼ÓÆäËûÊÓÍ¼
+Public access can view other users: ¹«¹²µÇÂ¼ÄÜ²éÑ¯ÆäËûÓÃ»§
+public-access-can-add-help: ¿ÉÒÔÉèÖÃÎª¹«¹²µÄ
+Public access can add events: ¹«¹²µÇÂ¼ÄÜÌí¼ÓÊÂ¼ş
+allow-view-other-help: ÔÊĞí-ÆäËü-ÊÓÍ¼-°ïÖú
+Allow viewing other user's calendars: ÔÊĞí²é¿´ÆäËûÓÃ»§ÈÕÀú
+remember-last-login-help: ¼ÇÂ¼×îºóÒ»´ÎµÇÂ¼
+Remember last login: ¼Ç×¡×îºóÒ»´ÎµÇÂ¼
+conflict-check-help: ³åÍ»-¼ì²é-°ïÖú
+Check for event conflicts: ¼ì²éÊÂ¼ş³åÍ»
+conflict-months-help: ³åÍ»-ÔÂ-°ïÖú
+Conflict checking months: ³åÍ»¼ì²éÔÂÊı
+Groups: ×é
+groups-enabled-help: ×é-¿ª·Å-°ïÖú
+Groups enabled: Ê¹ÓÃ×é
+user-sees-his-group-help: ²ì¿´-ËùÔÚ×é-°ïÖú
+User sees only his groups: ÓÃ»§Ö»ÄÜ¿´¼û×Ô¼ºµÄ×é
+Categories: ·ÖÀà
+categories-enabled-help: ÔÊĞí-·ÖÀà-°ïÖú
+Categories enabled: ÔÊĞí·ÖÀà
+Email: ÓÊ¼ş
+email-enabled-help: ÓÊ¼ş-ÔÊĞí-°ïÖú
+Email enabled: Ê¹ÓÃÓÊ¼ş
+email-default-sender: ÓÊ¼ş-Ä¬ÈÏ-·¢ËÍÕß
+Default sender address: Ä¬ÈÏÓÊ¼şµØÖ·
+Default user settings: Ä¬ÈÏÓÃ»§ÉèÖÃ
 #
 # << MISSING >>
 # email-event-reminders-help:
 # English text: Specifies whether or not to send event reminders.
 #
-#
-# << MISSING >>
-# Event reminders:
-# English text: Event reminders
-#
-#
-# << MISSING >>
-# email-event-added:
-# English text: Specifies whether or not to send email notifications when an event is added to your calendar.
-#
-#
-# << MISSING >>
-# Events added to my calendar:
-# English text: Events added to my calendar
-#
-#
-# << MISSING >>
-# email-event-updated:
-# English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
-#
-#
-# << MISSING >>
-# Events updated on my calendar:
-# English text: Events updated on my calendar
-#
-#
-# << MISSING >>
-# email-event-deleted:
-# English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
-#
-#
-# << MISSING >>
-# Events removed from my calendar:
-# English text: Events removed from my calendar
-#
-#
-# << MISSING >>
-# email-event-rejected:
-# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
-#
-#
-# << MISSING >>
-# Event rejected by participant:
-# English text: Event rejected by participant
-#
-colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue
+Event reminders: ÊÂ¼ş·¢ÉúÊ±Í¨Öª
+email-event-added: ÓÊ¼ş-ÊÂ¼ş-ÒÑÌí¼Ó
+Events added to my calendar: ÊÂ¼şÌí¼Óµ½ÎÒµÄÈÕÀúÊ±Í¨Öª
+email-event-updated: ÓÊ¼ş-ÊÂ¼ş-ÒÑ¸üĞÂ
+Events updated on my calendar: ÎÒµÄÈÕÀúÖĞÊÂ¼ş¸üĞÂÊ±Í¨Öª
+email-event-deleted: ÓÊ¼ş-ÊÂ¼ş-ÒÑÉ¾³ı
+Events removed from my calendar: ÎÒµÄÈÕÀúÖĞÊÂ¼şÉ¾³ıÊ±Í¨Öª
+email-event-rejected: ÓÊ¼ş-ÊÂ¼ş-ÒÑ¾Ü¾ø
+Event rejected by participant: ÊÂ¼şÉóºËÎ´Í¨¹ıÊ±Í¨Öª
+colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 Colors: îÉ«
-#
-# << MISSING >>
-# Allow user to customize colors:
-# English text: Allow user to customize colors
-#
+Allow user to customize colors: ÔÊĞíÓÃ»§¸öĞÔ»¯ÑÕÉ«
 Document background: ÎÄ¼ş±³¾°
 Select: Ñ¡Ôñ
 Document title: ÎÄ¼ş˜Ëî}
-#
-# << MISSING >>
-# Document text:
-# English text: Document text
-#
-#
-# << MISSING >>
-# Table grid color:
-# English text: Table grid color
-#
-#
-# << MISSING >>
-# Table header background:
-# English text: Table header background
-#
-#
-# << MISSING >>
-# Table header text:
-# English text: Table header text
-#
+Document text: ÎÄµµÎÄ±¾
+Table grid color: ±íÕ¤¸ñÑÕÉ«
+Table header background: ±íÍ·±³¾°ÑÕÉ«
+Table header text: ±íÍ·ÎÄ±¾ÑÕÉ«
 Table cell background: ±í¸ñ±³¾°
-Table cell background for current day: ®”ÈÕîÉ«
-#
-# << MISSING >>
-# Table cell background for weekends:
-# English text: Table cell background for weekends
-#
-#
-# << MISSING >>
-# Event popup background:
-# English text: Event popup background
-#
-#
-# << MISSING >>
-# Event popup text:
-# English text: Event popup text
-#
+Table cell background for current day: µ±ÌìÑÕÉ«
+Table cell background for weekends: ÉèÖÃÖÜÄ©±³¾°É«
+Event popup background: ÊÂ¼şµ¯³ö±³¾°ÑÕÉ«
+Event popup text: ÊÂ¼şµ¯³öÎÄ±¾ÑÕÉ«
 
 
 ###############################################
 # Page: admin_handler.php
 #
-# "You are not authorized" previously defined (in admin.php)
 Error: ´íÎó
 The following error occurred: The following error occurred
 
@@ -584,87 +215,17 @@ Error approving event: Error approving event
 ###############################################
 # Page: category.php
 #
-# "Invalid entry id" previously defined (in add_entry.php)
-# "You are not authorized" previously defined (in admin.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Categories:
-# English text: Categories
-#
-#
-# << MISSING >>
-# Add:
-# English text: Add
-#
-# "Save" previously defined (in admin.php)
-#
-# << MISSING >>
-# Category Name:
-# English text: Category Name
-#
-#
-# << MISSING >>
-# Global:
-# English text: Global
-#
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
+Add: Ìí¼Ó
+Category Name: ·ÖÀàÃû³Æ
+Global: È«¾Ö
 Delete: É¾³ı
-Are you sure you want to delete this entry?: ÄúÈ·¶¨ÒªÉ¾³ıÕâ¸ö¼ÇÊÂÂğ?
-#
-# << MISSING >>
-# Global:
-# English text: Global
-#
-#
-# << MISSING >>
-# Add New Category:
-# English text: Add New Category
-#
-# "Error" previously defined (in admin_handler.php)
+Are you sure you want to delete this entry?: ÄúÈ·¶¨ÒªÉ¾³ıÕâ¸öÊÂ¼şÂğ?
+Add New Category: Ìí¼ÓĞÂ·ÖÀà
 
 
 ###############################################
 # Page: category_handler.php
 #
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "You are not authorized" previously defined (in admin.php)
-# "Delete" previously defined (in category.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -675,6 +236,9 @@ Are you sure you want to delete this entry?: ÄúÈ·¶¨ÒªÉ¾³ıÕâ¸ö¼ÇÊÂÂğ?
 ###############################################
 # Page: datesel.php
 #
+#
+# << MISSING >>
+# Previous:
 
 
 ###############################################
@@ -687,12 +251,10 @@ Printer Friendly: ÓÑÉÆ´òÓ¡
 ###############################################
 # Page: del_entry.php
 #
-# "You are not authorized" previously defined (in admin.php)
 Hello: ÄúºÃ
 An appointment has been canceled for you by: Ô¼»áÒÑ½›±»È¡Ïû, È¡ÏûÕßÊÇ
 The subject was: Ö÷î}ÊÇ
 Notification: Í¨¸æ
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -705,231 +267,115 @@ Notification: Í¨¸æ
 #
 You have not entered a Brief Description: ÄúÃ»ÓĞÊäÈë¸ÅÒªÃèÊö
 You have not entered a valid time of day: ÄúÃ»ÓĞÊäÈëÕıÈ·µÄÊ±¼ä
-The time you have entered begins before your preferred work hours.  Is this correct?: Õâ¸öÊ±¶Î²»ÔÚÄú×Ô¶¨µÄ¹¤×÷Ê±¼äƒÈ.  ß@ÊÇÕıÈ·µÄÂğ?
-Edit Entry: ±à¼­¼ÇÊÂ
-Add Entry: ĞÂÔö¼ÇÊÂ
+The time you have entered begins before your preferred work hours.  Is this correct?: Õâ¸öÊ±¶Î²»ÔÚÄú×Ô¶¨µÄ¹¤×÷Ê±¼äƒÈ.  ÕâÊÇÕıÈ·µÄÂğ?
+Edit Entry: ±à¼­ÊÂ¼ş
+Add Entry: ĞÂÔöÊÂ¼ş
 brief-description-help: This should provide a short description (about 20 characters) of the event.  This will represent the event when viewing the calendar.
 Brief Description: ¸ÅÒªÃèÊö
 full-description-help: This should complete details of the event.  This information can be seen when a user views the event.
 Full Description: ÍêÕûÃèÊö
 date-help: Specifies the date of the event.
-# "Date" previously defined (in activity_log.php)
 time-help: Specifies the time of the event.<BR><I>This field can be left blank.</I>
-# "Time" previously defined (in activity_log.php)
 am: ÉÏÎç
 pm: ÏÂÎç
 duration-help: Specifies the duration (in minutes) of the event.  <BR><I>This field can be left blank.</I>
 Duration: ³ÖĞøÊ±¼ä
 hours: Ê±
-# "minutes" previously defined (in admin.php)
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
-Priority: ƒÏÈµÈ¼‰
+Priority: ÓÅÏÈµÈ¼‰
 Low: µÍ
 Medium: ÖĞ
 High: ¸ß
 access-help: Specifies the access level of the event.<BR> <I>Public</I>: Everyone can see the full details of the event.  <BR><I>Confidential</I>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: ÏÔÊ¾ÔO¶¨
-Public: ¹«±ŠµÄ
+Public: ¹«ÖÚµÄ
 Confidential: »úÃÜµÄ
-#
-# << MISSING >>
-# category-help:
-# English text: Specifies the category of the event.
-#
-#
-# << MISSING >>
-# Category:
-# English text: Category
-#
-# "Yes" previously defined (in admin.php)
-# "No" previously defined (in admin.php)
-#
-# << MISSING >>
-# days:
-# English text: days
-#
-#
-# << MISSING >>
-# before event:
-# English text: before event
-#
+category-help: ·ÖÀà-°ïÖú
+Category: ·ÖÀ
+days: Ìì
+before event: (ÊÂ¼şÖ®Ç°ËÍ³ö)
 participants-help: Lists the participants of this entry.
 Participants: …¢ÅcÕß
-# "Select" previously defined (in admin.php)
 repeat-type-help: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
 Repeat Type: ÖÜÆÚĞÔÔO¶¨
-None: Ÿo
+None: ÎŞ
 Daily: Ã¿ÈÕµÄ
 Weekly: Ã¿ÖÜµÄ
 Monthly: Ã¿ÔÂµÄ
-by day: ÒÀµÚ×Ìì
+by day: ÒÀµÚ¼¸Ìì
 by date: ÒÀÈÕÆÚ
 Yearly: Ã¿ÄêµÄ
 repeat-end-date-help: Specifies the date the event should repeat until.
-Repeat End Date: ÖÜÆÚ½YÊøÈÕÆÚ
-Use end date: Ê¹ÓÃ½YÊøÈÕÆÚÔO¶¨
+Repeat End Date: ÖÜÆÚ½áÊøÈÕÆÚ
+Use end date: Ê¹ÓÃ½áÊøÈÕÆÚÔO¶¨
 repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <I>Repeat Type</I> is set to <I>Weekly</I>.
-Repeat Day: ÖØÑ}ì¶
+Repeat Day: ÖØ¸´ì¶
 for weekly: ƒHÃ¿ÖÜµÄ
-# "Sunday" previously defined (in admin.php)
-# "Monday" previously defined (in admin.php)
 Tuesday: ĞÇÆÚ¶ş
 Wednesday: ĞÇÆÚÈı
 Thursday: ĞÇÆÚËÄ
 Friday: ĞÇÆÚÎå
 Saturday: ĞÇÆÚÁù
 repeat-frequency-help: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <I>Repeat Type</I> is set to <I>Weekly</I>), every other month (if <I>Repeat Type</I> is set to <I>Monthly</I>), etc.
-Frequency: ÖØÑ}´Î”µ
-# "Save" previously defined (in admin.php)
-# "Help" previously defined (in admin.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
-Delete entry: É¾³ı¼ÇÊÂ
+Frequency: ÖØ¸´´Î”µ
+Delete entry: É¾³ıÊÂ¼ş
 You are not authorized to edit this entry: You are not authorized to edit this entry
 
 
 ###############################################
 # Page: edit_entry_handler.php
 #
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "You are not authorized" previously defined (in admin.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
 The following conflicts with the suggested time: The following conflicts with the suggested time
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
 Unnamed Event: Unnamed Event
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "Hello" previously defined (in del_entry.php)
-# "An appointment has been canceled for you by" previously defined (in del_entry.php)
-# "The subject was" previously defined (in del_entry.php)
-#
-# << MISSING >>
-# The description is:
-# English text: The description is
-#
-# "Date" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
+The description is: ÏêÏ¸ËµÃ÷
 Title: ÍøÂçÈÕÀú
-# "Notification" previously defined (in del_entry.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-A new appointment has been made for you by: ÄúÓĞÒ»‚€ĞÂÔ¼»á, ÑûÕˆÕßÊÇ
-#
-# << MISSING >>
-# An appointment has been updated by:
-# English text: An appointment has been updated by
-#
+A new appointment has been made for you by: ÄúÓĞÒ»‚€ĞÂÊÂ¼ş, Ìá½»ÕßÊÇ
+An appointment has been updated by: Ò»¸öÔ¼»áÒÑ¾­¸üĞÂ,¸üĞÂÈË:
 The subject is: Ö÷î}ÊÇ
-#
-# << MISSING >>
-# The description is:
-# English text: The description is
-#
 Please look on: Õˆ²é¿´
-to accept or reject this appointment: ›Q¶¨½ÓÊÜ»ò¾Ü½^Õâ¸öÔ¼»á
+to accept or reject this appointment: ›Q¶¨½ÓÊÜ»ò¾Ü¾øÕâ¸öÊÂ¼ş
 to view this appointment: to view this appointment
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
 Scheduling Conflict: Scheduling Conflict
 Your suggested time of: Your suggested time of
 conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
-# "Save" previously defined (in admin.php)
-#
-# << MISSING >>
-# Cancel:
-# English text: Cancel
-#
-# "Error" previously defined (in admin_handler.php)
+Cancel: È¡Ïû
 
 
 ###############################################
 # Page: edit_layer.php
 #
 Invalid color: Invalid color
-# "Color format should be '#RRGGBB'" previously defined (in admin.php)
-Edit Layer: ±à¼­½×²ã
-Add Layer: ĞÂÔö½×²ã
-Source: íÔ´
+Edit Layer: ±à¼­²ã
+Add Layer: ĞÂÔö²ã
+Source: À´Ô´
 Color: îÉ«
-# "Select" previously defined (in admin.php)
 Duplicates: ¸±±¾
-Show layer events that are the same as your own: ÔÚÄúµÄÈÕÀúÖĞÍ¬Ê±ÏÔÊ¾íÔ´ÕßµÄ¼ÇÊÂ
-# "Save" previously defined (in admin.php)
-# "Help" previously defined (in admin.php)
-Are you sure you want to delete this layer?: ÄúÈ·¶¨ÒªÉ¾³ıÕâ¸ö½×²ãÂğ?
-Delete layer: É¾³ı½×²ã
+Show layer events that are the same as your own: ÔÚÄúµÄÈÕÀúÖĞÍ¬Ê±ÏÔÊ¾À´Ô´ÕßµÄÊÂ¼ş
+Are you sure you want to delete this layer?: ÄúÈ·¶¨ÒªÉ¾³ıÕâ¸ö²ãÂğ?
+Delete layer: É¾³ı²ã
 
 
 ###############################################
 # Page: edit_layer_handler.php
 #
-#
-# << MISSING >>
-# You cannot create a layer for yourself:
-# English text: You cannot create a layer for yourself
-#
-#
-# << MISSING >>
-# You can only create one layer for each user:
-# English text: You can only create one layer for each user
-#
-# "Error" previously defined (in admin_handler.php)
+You cannot create a layer for yourself: Äú²»ÄÜÄú×Ô¼º´´½¨Ò»¸ö²ã
+You can only create one layer for each user: ÄúÖ»ÄÜÎªÒ»¸öÓÃ»§À´Ô´Éè¶¨Ò»¸ö²ã
 
 
 ###############################################
 # Page: edit_user.php
 #
-Edit User: ±à¼­Ê¹ÓÃÕßÙYÁÏ
-Add User: ĞÂÔöÊ¹ÓÃÕß
-Username: Ê¹ÓÃÕßÃû·Q
+Edit User: ±à¼­ÓÃ»§×ÊÁÏ
+Add User: ĞÂÔöÓÃ»§
+Username: ÓÃ»§Ãû³Æ
 First Name: ĞÕ
 Last Name: Ãû
 E-mail address: µç×ÓÓÊ¼şµØÖ·
 Password: ÃÜÂë
 again: ÔÙ´Î
 Admin: ¹ÜÀí
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
-# "Save" previously defined (in admin.php)
 Disabled for demo: Disabled for demo
-# "Delete" previously defined (in category.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
-Change Password: ×ƒ¸üÃÜÂë
+Change Password: ¸ü¸ÄÃÜÂë
 New Password: ĞÂµÄÃÜÂë
 Set Password: ÔO¶¨ÃÜÂë
 
@@ -937,16 +383,9 @@ Set Password: ÔO¶¨ÃÜÂë
 ###############################################
 # Page: edit_user_handler.php
 #
-# "Delete" previously defined (in category.php)
-#
-# << MISSING >>
-# Deleting users not supported:
-# English text: Deleting users not supported
-#
-# "You are not authorized" previously defined (in admin.php)
-The passwords were not identical: ÃÜÂë²»Ò»˜Ó
+Deleting users not supported: ²»Ö§³ÖÉ¾³ıÓÃ»§¹¦ÄÜ
+The passwords were not identical: ÃÜÂë²»Ò»Ñù
 You have not entered a password: ÄúÃ»ÓĞÊäÈëÃÜÂë
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -955,9 +394,8 @@ You have not entered a password: ÄúÃ»ÓĞÊäÈëÃÜÂë
 Export: Êä³ö
 Export format: Êä³ö¸ñÊ½
 Palm Pilot: Palm Pilot
-Export all dates: Êä³öËùÓĞÙYÁÏ
+Export all dates: Êä³öËùÓĞ×ÊÁÏ
 Start date: ¿ªÊ¼ÈÕÆÚ
-# "Select" previously defined (in admin.php)
 End date: ½áÊøÈÕÆÚ
 Modified since: ¸ü¸Ä×Ô
 
@@ -965,529 +403,84 @@ Modified since: ¸ü¸Ä×Ô
 ###############################################
 # Page: export_handler.php
 #
-# "Export" previously defined (in export.php)
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: groups.php
 #
-#
-# << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
-# Add New Group:
-# English text: Add New Group
-#
+Add New Group: Ìí¼ÓĞÂ×é
 
 
 ###############################################
 # Page: group_edit.php
 #
-#
-# << MISSING >>
-# Unnamed Group:
-# English text: Unnamed Group
-#
-#
-# << MISSING >>
-# Add Group:
-# English text: Add Group
-#
-#
-# << MISSING >>
-# Edit Group:
-# English text: Edit Group
-#
-#
-# << MISSING >>
-# Group name:
-# English text: Group name
-#
+Unnamed Group: Î´ÃüÃûµÄ×é
+Add Group: Ìí¼Ó×é
+Edit Group: ±à¼­×é
+Group name: ×éÃû
 Updated: ¸üĞÂ
 Created by: ¹«²¼Õß
-Users: Ê¹ÓÃÕß
-#
-# << MISSING >>
-# Add:
-# English text: Add
-#
-# "Save" previously defined (in admin.php)
-# "Delete" previously defined (in category.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
+Users: ÓÃ»§
 
 
 ###############################################
 # Page: group_edit_handler.php
 #
-# "Delete" previously defined (in category.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: help_admin.php
 #
-# "Help" previously defined (in admin.php)
-#
-# << MISSING >>
-# System Settings:
-# English text: System Settings
-#
-# "Settings" previously defined (in admin.php)
-# "Language" previously defined (in admin.php)
-# "language-help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Fonts:
-# English text: Fonts
-#
-#
-# << MISSING >>
-# fonts-help:
-# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
-#
-# "Preferred view" previously defined (in admin.php)
-# "preferred-view-help" previously defined (in admin.php)
-# "Time format" previously defined (in admin.php)
-# "time-format-help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Require event approvals:
-# English text: Require event approvals
-#
-#
-# << MISSING >>
-# require-approvals-help:
-# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
-#
-# "Display unapproved" previously defined (in admin.php)
-# "display-unapproved-help" previously defined (in admin.php)
-# "Display week number" previously defined (in admin.php)
-# "display-week-number-help" previously defined (in admin.php)
-# "Week starts on" previously defined (in admin.php)
-# "display-week-starts-on" previously defined (in admin.php)
-# "Work hours" previously defined (in admin.php)
-# "work-hours-help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Disable Priority field:
-# English text: Disable Priority field
-#
-#
-# << MISSING >>
-# disable-priority-field-help:
-# English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Access field:
-# English text: Disable Access field
-#
-#
-# << MISSING >>
-# disable-access-field-help:
-# English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Participants field:
-# English text: Disable Participants field
-#
-#
-# << MISSING >>
-# disable-participants-field-help:
-# English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
-#
-#
-# << MISSING >>
-# Disable Repeating field:
-# English text: Disable Repeating field
-#
-#
-# << MISSING >>
-# disable-repeating-field-help:
-# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Allow public access:
-# English text: Allow public access
-#
-#
-# << MISSING >>
-# allow-public-access-help:
-# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
-#
-#
-# << MISSING >>
-# Public access can view other users:
-# English text: Public access can view other users
-#
-#
-# << MISSING >>
-# public-access-view-others-help:
-# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
-#
-#
-# << MISSING >>
-# Allow viewing other user's calendars:
-# English text: Allow viewing other user's calendars
-#
-#
-# << MISSING >>
-# allow-view-other-help:
-# English text: Specifies whether one user may view another user's calendar.
-#
-#
-# << MISSING >>
-# Remember last login:
-# English text: Remember last login
-#
-#
-# << MISSING >>
-# remember-last-login-help:
-# English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
-#
-#
-# << MISSING >>
-# Check for event conflicts:
-# English text: Check for event conflicts
-#
-#
-# << MISSING >>
-# conflict-check-help:
-# English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
-#
-#
-# << MISSING >>
-# Conflict checking months:
-# English text: Conflict checking months
-#
-#
-# << MISSING >>
-# conflict-months-help:
-# English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
-#
-#
-# << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
-# Groups enabled:
-# English text: Groups enabled
-#
-#
-# << MISSING >>
-# groups-enabled-help:
-# English text: Enables group support, allowing users to select users by groups.
-#
-#
-# << MISSING >>
-# User sees only his groups:
-# English text: User sees only his groups
-#
-#
-# << MISSING >>
-# user-sees-his-group-help:
-# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
-#
-#
-# << MISSING >>
-# Email:
-# English text: Email
-#
-#
-# << MISSING >>
-# Email enabled:
-# English text: Email enabled
-#
-#
-# << MISSING >>
-# email-enabled-help:
-# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
-#
-#
-# << MISSING >>
-# Default sender address:
-# English text: Default sender address
-#
-#
-# << MISSING >>
-# email-default-sender:
-# English text: Specifies the email address to specify as the sender when sending out reminders.
-#
-#
-# << MISSING >>
-# Event reminders:
-# English text: Event reminders
-#
-#
-# << MISSING >>
-# email-event-reminders-help:
-# English text: Specifies whether or not to send event reminders.
-#
-#
-# << MISSING >>
-# Events added to my calendar:
-# English text: Events added to my calendar
-#
-#
-# << MISSING >>
-# email-event-added:
-# English text: Specifies whether or not to send email notifications when an event is added to your calendar.
-#
-#
-# << MISSING >>
-# Events updated on my calendar:
-# English text: Events updated on my calendar
-#
-#
-# << MISSING >>
-# email-event-updated:
-# English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
-#
-#
-# << MISSING >>
-# Events removed from my calendar:
-# English text: Events removed from my calendar
-#
-#
-# << MISSING >>
-# email-event-deleted:
-# English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
-#
-#
-# << MISSING >>
-# Event rejected by participant:
-# English text: Event rejected by participant
-#
-#
-# << MISSING >>
-# email-event-rejected:
-# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
-#
-# "Colors" previously defined (in admin.php)
-# "colors-help" previously defined (in admin.php)
+
+
+###############################################
+# Page: help_bug.php
+#
+Report Bug: ±¨¸æ´íÎó
 
 
 ###############################################
 # Page: help_edit_entry.php
 #
-# "Help" previously defined (in admin.php)
 Adding/Editing Calendar Entries: ĞÂÔö/±à¼­ ÈÕÀúí—Ä¿
-# "Brief Description" previously defined (in edit_entry.php)
-# "brief-description-help" previously defined (in edit_entry.php)
-# "Full Description" previously defined (in edit_entry.php)
-# "full-description-help" previously defined (in edit_entry.php)
-# "Date" previously defined (in activity_log.php)
-# "date-help" previously defined (in edit_entry.php)
-# "Time" previously defined (in activity_log.php)
-# "time-help" previously defined (in edit_entry.php)
-# "Duration" previously defined (in edit_entry.php)
-# "duration-help" previously defined (in edit_entry.php)
-# "Priority" previously defined (in edit_entry.php)
-# "priority-help" previously defined (in edit_entry.php)
-# "Access" previously defined (in edit_entry.php)
-# "access-help" previously defined (in edit_entry.php)
-# "Participants" previously defined (in edit_entry.php)
-# "participants-help" previously defined (in edit_entry.php)
-# "Repeat Type" previously defined (in edit_entry.php)
-# "repeat-type-help" previously defined (in edit_entry.php)
-# "Repeat End Date" previously defined (in edit_entry.php)
-# "repeat-end-date-help" previously defined (in edit_entry.php)
-# "Repeat Day" previously defined (in edit_entry.php)
-# "repeat-day-help" previously defined (in edit_entry.php)
-# "Frequency" previously defined (in edit_entry.php)
-# "repeat-frequency-help" previously defined (in edit_entry.php)
 
 
 ###############################################
 # Page: help_index.php
 #
 Help Index: İoÖúË÷Òı
-# "Adding/Editing Calendar Entries" previously defined (in help_edit_entry.php)
 Layers: ½×²ã¼Ü˜‹
 Preferences: ²ÎÊıÔO¶¨
-#
-# << MISSING >>
-# System Settings:
-# English text: System Settings
-#
-#
-# << MISSING >>
-# Report Bug:
-# English text: Report Bug
-#
 
 
 ###############################################
 # Page: help_layers.php
 #
-# "Help" previously defined (in admin.php)
-# "Layers" previously defined (in help_index.php)
-#
-# << MISSING >>
-# Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
-# English text: Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.
-#
-#
-# << MISSING >>
-# Add/Edit/Delete:
-# English text: Add/Edit/Delete
-#
+Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: ÉèÖÃ½×²ãÊ¹ÔÚÄãµÄÈÕÀúÖĞÏÔÊ¾ÆäËûÓÃ»§µÄÊÂ¼ş. Ñ¡ÔñÓÃ»§¼°Éè¶¨ÆäÊÂ¼şµÄÑÕÉ«
+Add/Edit/Delete: Ìí¼Ó/±à¼­/É¾³ı
 #
 # << MISSING >>
 # Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
-# English text: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
-#
-# "Source" previously defined (in edit_layer.php)
-#
-# << MISSING >>
-# Specifies the user that you would like to see displayed in your calendar.:
-# English text: Specifies the user that you would like to see displayed in your calendar.
-#
-# "Colors" previously defined (in admin.php)
-#
-# << MISSING >>
-# The text color of the new layer that will be displayed in your calendar.:
-# English text: The text color of the new layer that will be displayed in your calendar.
-#
-# "Duplicates" previously defined (in edit_layer.php)
+Specifies the user that you would like to see displayed in your calendar.: Ñ¡ÔñÓÃ»§Ê¹ÔÚÄãµÄÈÕÀúÖĞÏÔÊ¾ËûµÄÊÂ¼ş
+The text color of the new layer that will be displayed in your calendar.: ÄãµÄÈÕÀúÖĞÏÔÊ¾µÄĞÂ½×²ãµÄÎÄ±¾ÑÕÉ«
 #
 # << MISSING >>
 # If checked, events that are duplicates of your events will be shown.:
-# English text: If checked, events that are duplicates of your events will be shown.
-#
-#
-# << MISSING >>
-# Disabling:
-# English text: Disabling
-#
-#
-# << MISSING >>
-# Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
-# English text: Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.
-#
-#
-# << MISSING >>
-# Enabling:
-# English text: Enabling
-#
-#
-# << MISSING >>
-# Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
-# English text: Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.
-#
-# "colors-help" previously defined (in admin.php)
+Disabling: ÕıÔÚ¹Ø±Õ
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: µã»÷Ò³ÃæÏÂ¶Ë¹ÜÀí²¿·ÖµÄÍ£ÓÃ½×²ã¼Ü¹¹²»ÏÔÊ¾½×²ã¼Ü¹¹ 
+Enabling: ÕıÔÚ´ò¿ª
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: µã»÷Ò³ÃæÏÂ¶Ë¹ÜÀí²¿·ÖµÄÆôÓÃ½×²ã¼Ü¹¹ÏÔÊ¾½×²ã¼Ü¹¹ 
 
 
 ###############################################
 # Page: help_pref.php
 #
-# "Help" previously defined (in admin.php)
-# "Preferences" previously defined (in help_index.php)
-# "Settings" previously defined (in admin.php)
-# "Language" previously defined (in admin.php)
-# "language-help" previously defined (in admin.php)
+Default Category: Ä¬ÈÏ·ÖÀà
 #
 # << MISSING >>
-# Fonts:
-# English text: Fonts
+# default-category-help:
+# English text: Specifies the category a new event should default to.
 #
-#
-# << MISSING >>
-# fonts-help:
-# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
-#
-# "Preferred view" previously defined (in admin.php)
-# "preferred-view-help" previously defined (in admin.php)
-# "Time format" previously defined (in admin.php)
-# "time-format-help" previously defined (in admin.php)
-# "Display unapproved" previously defined (in admin.php)
-# "display-unapproved-help" previously defined (in admin.php)
-# "Display week number" previously defined (in admin.php)
-# "display-week-number-help" previously defined (in admin.php)
-# "Week starts on" previously defined (in admin.php)
-# "display-week-starts-on" previously defined (in admin.php)
-# "Work hours" previously defined (in admin.php)
-# "work-hours-help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Email:
-# English text: Email
-#
-#
-# << MISSING >>
-# Event reminders:
-# English text: Event reminders
-#
-#
-# << MISSING >>
-# email-event-reminders-help:
-# English text: Specifies whether or not to send event reminders.
-#
-#
-# << MISSING >>
-# Events added to my calendar:
-# English text: Events added to my calendar
-#
-#
-# << MISSING >>
-# email-event-added:
-# English text: Specifies whether or not to send email notifications when an event is added to your calendar.
-#
-#
-# << MISSING >>
-# Events updated on my calendar:
-# English text: Events updated on my calendar
-#
-#
-# << MISSING >>
-# email-event-updated:
-# English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
-#
-#
-# << MISSING >>
-# Events removed from my calendar:
-# English text: Events removed from my calendar
-#
-#
-# << MISSING >>
-# email-event-deleted:
-# English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
-#
-#
-# << MISSING >>
-# Event rejected by participant:
-# English text: Event rejected by participant
-#
-#
-# << MISSING >>
-# email-event-rejected:
-# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
-#
-# "Colors" previously defined (in admin.php)
-# "colors-help" previously defined (in admin.php)
 
 
 ###############################################
@@ -1498,65 +491,39 @@ Preferences: ²ÎÊıÔO¶¨
 ###############################################
 # Page: layers.php
 #
-# "Layers" previously defined (in help_index.php)
 Layers are currently: ½×²ã¼Ü˜‹Ä¿Ç°ÊÇ
 Disabled: Í£ÓÃµÄ
 Enabled: †¢ÓÃµÄ
 Layer: ½×²ã
-# "Source" previously defined (in edit_layer.php)
-# "Color" previously defined (in edit_layer.php)
-# "Duplicates" previously defined (in edit_layer.php)
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
 Edit layer: ±à¼­½×²ã
-# "Are you sure you want to delete this layer?" previously defined (in edit_layer.php)
-# "Delete layer" previously defined (in edit_layer.php)
 Add layer: ĞÂÔö½×²ã
-# "Help" previously defined (in admin.php)
 
 
 ###############################################
 # Page: layers_toggle.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "The following error occurred" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: list_unapproved.php
 #
-View this entry: ™zÒ•Õâ¸ö¼ÇÊÂ
-Approve this entry?: ºË×¼Õâ¸ö¼ÇÊÂ?
+View this entry: ²é¿´Õâ¸öÊÂ¼ş
+Approve this entry?: ºË×¼Õâ¸öÊÂ¼ş?
 Approve/Confirm: ºË×¼/È·¶¨
-Reject this entry?: ¾Ü½^Õâ¸ö¼ÇÊÂ?
-Reject: ¾Ü½^
-#
-# << MISSING >>
-# No unapproved events for:
-# English text: No unapproved events for
-#
-Unapproved Events: Î´ºË×¼µÄ¼ÇÊÂ
-#
-# << MISSING >>
-# Public Access:
-# English text: Public Access
-#
+Reject this entry?: ¾Ü¾øÕâ¸öÊÂ¼ş?
+Reject: ¾Ü¾ø
+No unapproved events for: Ã»ÓĞÄúÎ´ºË×¼µÄÊÂ¼ş: 
+Unapproved Events: Î´ºË×¼µÄÊÂ¼ş
+Public Access: ¹«¹²µÄ
 
 
 ###############################################
 # Page: login.php
 #
-You must enter a login and password: Äú±ØíšÊäÈëÊ¹ÓÃÕßÃû·Q¼°ÃÜÂë
-# "Error" previously defined (in admin_handler.php)
-# "Username" previously defined (in edit_user.php)
-# "Password" previously defined (in edit_user.php)
-Save login via cookies so I don't have to login next time: Œ¢µÇÈëÙYÁÏƒ¦´æì¶ cookies ÖĞ£¬ÏÂ´Î¾Í²»ĞèÒªÔÙµÇÈëÏµ½y¡£
+You must enter a login and password: Äú±ØíšÊäÈëÓÃ»§Ãû³Æ¼°ÃÜÂë
+Save login via cookies so I don't have to login next time: Œ¢µÇÂ¼×ÊÁÏ´æ´¢ÓÚ cookies ÖĞ£¬ÏÂ´Î¾Í²»ĞèÒªÔÙµÇÂ¼ÏµÍ³¡£
 Login: µÇÂ¼
-#
-# << MISSING >>
-# Access public calendar:
-# English text: Access public calendar
-#
+Access public calendar: ½øÈë¹«¹²ÈÕÀú
 cookies-note: <B>×¢Òâ:</B> ±¾³ÌÊ½íšÒª cookies ²ÅÄÜÊ¹ÓÃ.
 
 
@@ -1570,587 +537,155 @@ Wed: ÖÜÈı
 Thu: ÖÜËÄ
 Fri: ÖÜÎå
 Sat: ÖÜÁù
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
 # Page: pref.php
 #
-# "Invalid color for document background" previously defined (in admin.php)
-# "Invalid color for document title" previously defined (in admin.php)
-# "Invalid color for table cell background" previously defined (in admin.php)
-# "Invalid color for table cell background for today" previously defined (in admin.php)
-# "Color format should be '#RRGGBB'" previously defined (in admin.php)
-# "Preferences" previously defined (in help_index.php)
-# "Settings" previously defined (in admin.php)
-# "Language" previously defined (in admin.php)
-# "Your browser default language is" previously defined (in admin.php)
 #
 # << MISSING >>
-# fonts-help:
-# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
-#
-#
-# << MISSING >>
-# Fonts:
-# English text: Fonts
-#
-# "Preferred view" previously defined (in admin.php)
-# "Day" previously defined (in admin.php)
-# "Week" previously defined (in admin.php)
-# "Month" previously defined (in admin.php)
-# "Year" previously defined (in admin.php)
-#
-# << MISSING >>
-# display-weekends-help:
-# English text: Include weekends when viewing a week.
-#
-#
-# << MISSING >>
-# Display weekends in week view:
-# English text: Display weekends in week view
-#
-# "Yes" previously defined (in admin.php)
-# "No" previously defined (in admin.php)
-# "Time format" previously defined (in admin.php)
-# "12 hour" previously defined (in admin.php)
-# "24 hour" previously defined (in admin.php)
-#
-# << MISSING >>
-# auto-refresh-help:
-# English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
-#
-#
-# << MISSING >>
-# Auto-refresh calendars:
-# English text: Auto-refresh calendars
-#
-#
-# << MISSING >>
-# auto-refresh-time-help:
-# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
-#
-#
-# << MISSING >>
-# Auto-refresh time:
-# English text: Auto-refresh time
-#
-# "minutes" previously defined (in admin.php)
-# "Display unapproved" previously defined (in admin.php)
-# "Display week number" previously defined (in admin.php)
-# "Week starts on" previously defined (in admin.php)
-# "Sunday" previously defined (in admin.php)
-# "Monday" previously defined (in admin.php)
-# "Work hours" previously defined (in admin.php)
-# "From" previously defined (in admin.php)
-# "to" previously defined (in admin.php)
-#
-# << MISSING >>
-# Default Category:
-# English text: Default Category
-#
-#
-# << MISSING >>
-# Email:
-# English text: Email
-#
-#
-# << MISSING >>
-# Event reminders:
-# English text: Event reminders
-#
-#
-# << MISSING >>
-# Events added to my calendar:
-# English text: Events added to my calendar
-#
-#
-# << MISSING >>
-# Events updated on my calendar:
-# English text: Events updated on my calendar
-#
-#
-# << MISSING >>
-# Events removed from my calendar:
-# English text: Events removed from my calendar
-#
-#
-# << MISSING >>
-# Event rejected by participant:
-# English text: Event rejected by participant
-#
-# "Colors" previously defined (in admin.php)
-# "Document background" previously defined (in admin.php)
-# "Select" previously defined (in admin.php)
-# "Document title" previously defined (in admin.php)
-# "Table cell background" previously defined (in admin.php)
-# "Table cell background for current day" previously defined (in admin.php)
-#
-# << MISSING >>
-# Table cell background for weekends:
-# English text: Table cell background for weekends
-#
+# to modify the preferences for the Public Access calendar:
 Save Preferences: ƒ¦´æ²ÎÊı
-# "Help" previously defined (in admin.php)
 
 
 ###############################################
 # Page: pref_handler.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "The following error occurred" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: reject_entry.php
 #
-# "Error approving event" previously defined (in approve_entry.php)
-# "Hello" previously defined (in del_entry.php)
-An appointment has been rejected by: Ô¼»áÒÑ½›±»¾Ü½^, ¾Ü½^ÕßÊÇ
-# "The subject was" previously defined (in del_entry.php)
-#
-# << MISSING >>
-# The description is:
-# English text: The description is
-#
-# "Date" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
-# "Notification" previously defined (in del_entry.php)
+An appointment has been rejected by: Ô¼»áÒÑ½›±»¾Ü¾ø, ¾Ü¾øÕßÊÇ
 
 
 ###############################################
 # Page: search.php
 #
 Search: ²éÑ¯
-#
-# << MISSING >>
-# Advanced Search:
-# English text: Advanced Search
-#
+Advanced Search: ¸ß¼¶²éÑ¯
 Keywords: ¹Ø¼ü×Ö
-#
-# << MISSING >>
-# Advanced Search:
-# English text: Advanced Search
-#
-# "Users" previously defined (in group_edit.php)
-# "Select" previously defined (in admin.php)
 
 
 ###############################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: ÄúÖÁÉÙÒªÊäÈëÒ»‚€ËÑÑ°ÎÄ×Ö»ò¾ä×Ó
-Search Results: ²éÑ¯½Y¹û
-# "Error" previously defined (in admin_handler.php)
-match found: ±Ê·ûºÏ²éÔƒ
-matches found: ±Ê·ûºÏ²éÔƒ
-No matches found: ²éŸoÙYÁÏ
+Search Results: ²éÑ¯½á¹û
+match found: ±Ê·ûºÏ²éÑ¯
+matches found: ±Ê·ûºÏ²éÑ¯
+No matches found: ²éÎŞ×ÊÁÏ
 
 
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: ™zÒ•ÆäËûÈËµÄÔÂ•Ñ
-# "You are not authorized" previously defined (in admin.php)
+View Another User's Calendar: ²é¿´ÆäËûÈËµÄÔÂÀú
 Go: Ç°Íù
 
 
 ###############################################
 # Page: set_entry_cat.php
 #
-# "Invalid entry id" previously defined (in add_entry.php)
-# "You are not authorized" previously defined (in admin.php)
+You have not added any categories: Äú»¹Ã»ÓĞÌí¼ÓÈÎºÎ·ÖÀà
+Set Category: ÉèÖÃ·ÖÀà
+
+
+###############################################
+# Page: test.php
 #
-# << MISSING >>
-# You have not added any categories:
-# English text: You have not added any categories
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "Error" previously defined (in admin_handler.php)
-#
-# << MISSING >>
-# Set Category:
-# English text: Set Category
-#
-# "Brief Description" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# Category:
-# English text: Category
-#
-# "Save" previously defined (in admin.php)
 
 
 ###############################################
 # Page: users.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "You are not authorized" previously defined (in admin.php)
-# "Users" previously defined (in group_edit.php)
-denotes administrative user: Ê¹ÓÃÕß¹ÜÀí†T
-Add New User: ĞÂÔöÊ¹ÓÃÕß
+denotes administrative user: ÓÃ»§¹ÜÀí†T
+Add New User: ĞÂÔöÓÃ»§
 
 
 ###############################################
 # Page: usersel.php
 #
-# "Users" previously defined (in group_edit.php)
-#
-# << MISSING >>
-# All:
-# English text: All
-#
-# "None" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# Reset:
-# English text: Reset
-#
-#
-# << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
-# Add:
-# English text: Add
-#
-#
-# << MISSING >>
-# Remove:
-# English text: Remove
-#
-#
-# << MISSING >>
-# Ok:
-# English text: Ok
-#
-#
-# << MISSING >>
-# Cancel:
-# English text: Cancel
-#
+All: È«²¿
+Reset: ¸üĞÂ
+Remove: É¾³ı
+Ok: È·ÈÏ
 
 
 ###############################################
 # Page: views.php
 #
-#
-# << MISSING >>
-# Views:
-# English text: Views
-#
-#
-# << MISSING >>
-# Add New View:
-# English text: Add New View
-#
+Views: ÊÓÍ¼
+Add New View: Ìí¼ÓĞÂÊÓÍ¼
 
 
 ###############################################
 # Page: views_edit.php
 #
-#
-# << MISSING >>
-# Unnamed View:
-# English text: Unnamed View
-#
-#
-# << MISSING >>
-# Add View:
-# English text: Add View
-#
-#
-# << MISSING >>
-# Edit View:
-# English text: Edit View
-#
-#
-# << MISSING >>
-# View Name:
-# English text: View Name
-#
-#
-# << MISSING >>
-# View Type:
-# English text: View Type
-#
-# "Week" previously defined (in admin.php)
-# "Month" previously defined (in admin.php)
-# "Users" previously defined (in group_edit.php)
-# "Select" previously defined (in admin.php)
-#
-# << MISSING >>
-# Add:
-# English text: Add
-#
-# "Save" previously defined (in admin.php)
-# "Delete" previously defined (in category.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
+Unnamed View: Î´ÃüÃûµÄÊÓÍ¼
+Add View: Ìí¼ÓÊÓÍ¼
+Edit View: ±à¼­ÊÓÍ¼
+View Name: ÊÓÍ¼Ãû³Æ
+View Type: ÊÓÍ¼ÀàĞÍ
 
 
 ###############################################
 # Page: views_edit_handler.php
 #
-# "Delete" previously defined (in category.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: view_entry.php
 #
-# "Low" previously defined (in edit_entry.php)
-# "Medium" previously defined (in edit_entry.php)
-# "High" previously defined (in edit_entry.php)
-# "Invalid entry id" previously defined (in add_entry.php)
-# "Error" previously defined (in admin_handler.php)
-# "You are not authorized" previously defined (in admin.php)
-#
-# << MISSING >>
-# every:
-# English text: every
-#
-#
-# << MISSING >>
-# 1st:
-# English text: 1st
-#
-#
-# << MISSING >>
-# 2nd:
-# English text: 2nd
-#
-#
-# << MISSING >>
-# 3rd:
-# English text: 3rd
-#
-#
-# << MISSING >>
-# 4th:
-# English text: 4th
-#
-#
-# << MISSING >>
-# 5th:
-# English text: 5th
-#
-# "Day" previously defined (in admin.php)
-# "Week" previously defined (in admin.php)
-# "Month" previously defined (in admin.php)
-# "by day" previously defined (in edit_entry.php)
-# "by date" previously defined (in edit_entry.php)
-# "Year" previously defined (in admin.php)
-# "Confidential" previously defined (in edit_entry.php)
-Description: Ãè&nbsp;Êö
-#
-# << MISSING >>
-# Status:
-# English text: Status
-#
-#
-# << MISSING >>
-# Waiting for approval:
-# English text: Waiting for approval
-#
-#
-# << MISSING >>
-# Deleted:
-# English text: Deleted
-#
-Rejected: ¾Ü½^µÄ
-# "Date" previously defined (in activity_log.php)
-# "Repeat Type" previously defined (in edit_entry.php)
-# "Time" previously defined (in activity_log.php)
-# "Duration" previously defined (in edit_entry.php)
-# "minutes" previously defined (in admin.php)
-# "Priority" previously defined (in edit_entry.php)
-# "Access" previously defined (in edit_entry.php)
-# "Public" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# Category:
-# English text: Category
-#
-# "Created by" previously defined (in group_edit.php)
-# "Updated" previously defined (in group_edit.php)
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
-#
-# << MISSING >>
-# days:
-# English text: days
-#
-# "hours" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# before event:
-# English text: before event
-#
-# "Participants" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-# "Approve this entry?" previously defined (in list_unapproved.php)
-Approve/Confirm entry: ºË×¼/È·¶¨ ¼ÇÊÂ
-# "Reject this entry?" previously defined (in list_unapproved.php)
-Reject entry: ¾Ü½^¼ÇÊÂ
-#
-# << MISSING >>
-# Set category:
-# English text: Set category
-#
-#
-# << MISSING >>
-# Edit repeating entry for all dates:
-# English text: Edit repeating entry for all dates
-#
-#
-# << MISSING >>
-# Edit entry for this date:
-# English text: Edit entry for this date
-#
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
-This will delete this entry for all users.: Œ¦ËùÓĞµÄÊ¹ÓÃÕßÒ²Œ¢•şÉ¾³ıÕâ¸ö¼ÇÊÂ.
-#
-# << MISSING >>
-# Delete repeating event for all dates:
-# English text: Delete repeating event for all dates
-#
-#
-# << MISSING >>
-# Delete entry only for this date:
-# English text: Delete entry only for this date
-#
-Edit entry: ±à¼­¼ÇÊÂ
-# "Delete entry" previously defined (in edit_entry.php)
-This will delete the entry from your calendar.: ß@Œ¢•şÄÄúµÄÈÕÀúÉ¾³ıÕâ¸ö¼ÇÊÂ.
-Do you want to add this entry to your calendar?: ÄúÒªĞÂÔöÕâ¸ö¼ÇÊÂµ½ÄúµÄÈÕÀúÂğ?
-This will add the entry to your calendar.: ß@Œ¢•şĞÂÔöÕâ¸ö¼ÇÊÂµ½ÄúµÄÈÕÀú.
+every: Ã¿
+1st: µÚÒ»
+2nd: µÚ¶ş
+3rd: µÚÈı
+4th: µÚËÄ
+5th: µÚÎå
+Description: ÃèÊö
+Status: ×´Ì¬
+Waiting for approval: µÈ´ıºË×¼
+Deleted: ÒÑ¾­É¾³ı
+Rejected: ¾Ü¾øµÄ
+Approve/Confirm entry: ºË×¼/È·¶¨ ÊÂ¼ş
+Reject entry: ¾Ü¾øÊÂ¼ş
+Set category: ÉèÖÃÖÖÀà
+Edit repeating entry for all dates: ±à¼­ËùÓĞÈÕÆÚµÄÖØ¸´ÌõÄ¿
+Edit entry for this date: ±à¼­Õâ¸öÈÕÆÚµÄÌõÄ¿
+This will delete this entry for all users.: ¶ÔËùÓĞµÄÓÃ»§Ò²Œ¢•şÉ¾³ıÕâ¸öÊÂ¼ş.
+Delete repeating event for all dates: É¾³ıËùÓĞÊ±¼äµÄÕâ¸öÖØ¸´ÊÂ¼ş
+Delete entry only for this date: Ö»ÓĞÕâ¸öÈÕÆÚÉ¾³ıÌõÄ¿
+Edit entry: ±à¼­ÊÂ¼ş
+This will delete the entry from your calendar.: ÕâŒ¢•şÄÄúµÄÈÕÀúÉ¾³ıÕâ¸öÊÂ¼ş.
+Do you want to add this entry to your calendar?: ÄúÒªĞÂÔöÕâ¸öÊÂ¼şµ½ÄúµÄÈÕÀúÂğ?
+This will add the entry to your calendar.: ÕâŒ¢•şĞÂÔöÕâ¸öÊÂ¼şµ½ÄúµÄÈÕÀú.
 Add to My Calendar: ĞÂÔöµ½ÎÒµÄÈÕÀú
-#
-# << MISSING >>
-# Email all participants:
-# English text: Email all participants
-#
-#
-# << MISSING >>
-# Show activity log:
-# English text: Show activity log
-#
-#
-# << MISSING >>
-# Hide activity log:
-# English text: Hide activity log
-#
-#
-# << MISSING >>
-# Activity Log:
-# English text: Activity Log
-#
-# "User" previously defined (in activity_log.php)
-#
-# << MISSING >>
-# Calendar:
-# English text: Calendar
-#
-#
-# << MISSING >>
-# Action:
-# English text: Action
-#
-#
-# << MISSING >>
-# Event created:
-# English text: Event created
-#
-#
-# << MISSING >>
-# Event approved:
-# English text: Event approved
-#
-#
-# << MISSING >>
-# Event rejected:
-# English text: Event rejected
-#
-#
-# << MISSING >>
-# Event updated:
-# English text: Event updated
-#
-#
-# << MISSING >>
-# Event deleted:
-# English text: Event deleted
-#
-#
-# << MISSING >>
-# Notification sent:
-# English text: Notification sent
-#
-#
-# << MISSING >>
-# Reminder sent:
-# English text: Reminder sent
-#
+Email all participants: ÓÊ¼Ä¸øËùÓĞµÄ²ÎÓëÕß
+Show activity log: ÏÔÊ¾»î¶¯ÈÕÖ¾
+Hide activity log: Òş²Ø»î¶¯ÈÕÖ¾
 
 
 ###############################################
 # Page: view_m.php
 #
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
 # Page: view_w.php
 #
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
 # Page: week.php
 #
-# "Week" previously defined (in admin.php)
-New Entry: ĞÂµÄ¼ÇÊÂ
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
+New Entry: ĞÂµÄÊÂ¼ş
+
+
+###############################################
+# Page: week_details.php
+#
+Private: Ë½ÈËµÄ
 
 
 ###############################################
@@ -2161,8 +696,6 @@ New Entry: ĞÂµÄ¼ÇÊÂ
 ###############################################
 # Page: year.php
 #
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
@@ -2173,37 +706,13 @@ New Entry: ĞÂµÄ¼ÇÊÂ
 ###############################################
 # Page: includes/connect.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "You are not authorized" previously defined (in admin.php)
 
 
 ###############################################
 # Page: includes/functions.php
 #
-# "Title" previously defined (in edit_entry_handler.php)
-# "You are not authorized" previously defined (in admin.php)
-# "User" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
-# "Description" previously defined (in view_entry.php)
-# "Select" previously defined (in admin.php)
-# "View this entry" previously defined (in list_unapproved.php)
-# "am" previously defined (in edit_entry.php)
-# "pm" previously defined (in edit_entry.php)
-Private: Ë½ÈËµÄ
-This event is confidential: Õâ¸ö¼ÇÊÂÊÇ»úÃÜµÄ
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
-# "This will delete this entry for all users." previously defined (in view_entry.php)
-# "New Entry" previously defined (in week.php)
-# "Week" previously defined (in admin.php)
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-You have: ÄúÓĞ
-unapproved: Î´ºË×¼µÄ
-events: ¼ÇÊÂ
-event: ¼ÇÊÂ
+This event is confidential: Õâ¸öÊÂ¼şÊÇ»úÃÜµÄ
+You have XXX unapproved events: ÄúÓĞ XXX Î´ºË×¼µÄ ÊÂ¼ş
 January: Ò»ÔÂ
 February: ¶şÔÂ
 March: ÈıÔÂ
@@ -2215,7 +724,6 @@ August: °ËÔÂ
 September: ¾ÅÔÂ
 October: Ê®ÔÂ
 November: Ê®Ò»ÔÂ
-December: Ê®¶şÔÂ
 Jan: 1ÔÂ
 Feb: 2ÔÂ
 Mar: 3ÔÂ
@@ -2227,33 +735,12 @@ Aug: 8ÔÂ
 Sep: 9ÔÂ
 Oct: 10ÔÂ
 Nov: 11ÔÂ
-Dec: 12ÔÂ
-# "Sunday" previously defined (in admin.php)
-# "Monday" previously defined (in admin.php)
-# "Tuesday" previously defined (in edit_entry.php)
-# "Wednesday" previously defined (in edit_entry.php)
-# "Thursday" previously defined (in edit_entry.php)
-# "Friday" previously defined (in edit_entry.php)
-# "Saturday" previously defined (in edit_entry.php)
-# "Sun" previously defined (in month.php)
-# "Mon" previously defined (in month.php)
-# "Tue" previously defined (in month.php)
-# "Wed" previously defined (in month.php)
-# "Thu" previously defined (in month.php)
-# "Fri" previously defined (in month.php)
-# "Sat" previously defined (in month.php)
-#
-# << MISSING >>
-# All:
-# English text: All
-#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: ¹¦ÄÜÑ¡Ôñ
-# "Help Index" previously defined (in help_index.php)
 
 
 ###############################################
@@ -2274,16 +761,8 @@ Go to: ¹¦ÄÜÑ¡Ôñ
 ###############################################
 # Page: includes/site_extras.php
 #
-#
-# << MISSING >>
-# Send Reminder:
-# English text: Send Reminder
-#
-#
-# << MISSING >>
-# Reminder:
-# English text: Reminder
-#
+Send Reminder: ·¢ËÍÓÊ¼şÍ¨Öª
+Reminder: ÌáĞÑ
 
 
 ###############################################
@@ -2294,208 +773,38 @@ Go to: ¹¦ÄÜÑ¡Ôñ
 ###############################################
 # Page: includes/trailer.php
 #
-# "Month" previously defined (in admin.php)
-# "Go" previously defined (in select_user.php)
-# "Week" previously defined (in admin.php)
-# "Year" previously defined (in admin.php)
-# "Go to" previously defined (in includes/help_trailer.php)
-Back to My Calendar: »Øµ½ÎÒµÄÈÕÀú
+Back to My Calendar: ·µ»ØÎÒµÄÈÕÀú
 My Calendar: ÎÒµÄÈÕÀú
-# "Login" previously defined (in login.php)
 Logout: ×¢Ïú
-# "Unapproved Events" previously defined (in list_unapproved.php)
 Another User's Calendar: „eÈËµÄÈÕÀú
-# "Search" previously defined (in search.php)
-# "Export" previously defined (in export.php)
-#
-# << MISSING >>
-# Categories:
-# English text: Categories
-#
-Add New Entry: ĞÂÔö¼ÇÊÂ
-# "Help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Views:
-# English text: Views
-#
-#
-# << MISSING >>
-# Manage Views:
-# English text: Manage Views
-#
-# "Admin" previously defined (in edit_user.php)
-#
-# << MISSING >>
-# System Settings:
-# English text: System Settings
-#
-# "Preferences" previously defined (in help_index.php)
-Edit Layers: ±à¼­½×²ã¼Ü˜‹
-Enable Layers: †¢ÓÃ½×²ã¼Ü˜‹
-Disable Layers: Í£ÓÃ½×²ã¼Ü˜‹
-# "Users" previously defined (in group_edit.php)
-#
-# << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
-# Activity Log:
-# English text: Activity Log
-#
-Account: ±à¼­‚€ÈËÙYÁÏ
-Current User: Ä¿Ç°Ê¹ÓÃÕß
+Add New Entry: ĞÂÔöÊÂ¼ş
+Manage Views: ¹ÜÀíÊÓÍ¼
+Edit Layers: ±à¼­²ã
+Enable Layers: †¢ÓÃ²ã
+Disable Layers: Í£ÓÃ²ã
+Account: ±à¼­‚€ÈË×ÊÁÏ
+Current User: µ±Ç°ÓÃ»§
 
 
 ###############################################
 # Page: includes/translate.php
-#
-#
-# << MISSING >>
-# Public Access:
-# English text: Public Access
 #
 
 
 ###############################################
 # Page: includes/user-ldap.php
 #
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
+Invalid login: ÎŞĞ§µÄµÇÂ¼
 
 
 ###############################################
 # Page: includes/user-nis.php
 #
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Invalid user login:
-# English text: Invalid user login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Invalid user login:
-# English text: Invalid user login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
+Invalid user login: ÎŞĞ§µÄÓÃ»§µÇÂ¼
 
 
 ###############################################
 # Page: includes/user.php
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Invalid login:
-# English text: Invalid login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Invalid user login:
-# English text: Invalid user login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Invalid user login:
-# English text: Invalid user login
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
-#
-#
-# << MISSING >>
-# Database error:
-# English text: Database error
 #
 
 
@@ -2507,30 +816,4 @@ Current User: Ä¿Ç°Ê¹ÓÃÕß
 ###############################################
 # Page: tools/send_reminders.php
 #
-# "Low" previously defined (in edit_entry.php)
-# "Medium" previously defined (in edit_entry.php)
-# "High" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# This is a reminder for the event detailed below.:
-# English text: This is a reminder for the event detailed below.
-#
-# "Description" previously defined (in view_entry.php)
-# "Date" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
-# "Duration" previously defined (in edit_entry.php)
-# "minutes" previously defined (in admin.php)
-# "Priority" previously defined (in edit_entry.php)
-# "Access" previously defined (in edit_entry.php)
-# "Public" previously defined (in edit_entry.php)
-# "Confidential" previously defined (in edit_entry.php)
-# "Created by" previously defined (in group_edit.php)
-# "Updated" previously defined (in group_edit.php)
-# "Yes" previously defined (in admin.php)
-# "No" previously defined (in admin.php)
-# "Participants" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# Reminder:
-# English text: Reminder
-#
+This is a reminder for the event detailed below.: ÌáĞÑÓĞÍêÕûÃèÊöµÄÊÂ¼ş

@@ -4,7 +4,7 @@
 # Translated by:
 #	Raúl Araya Tauler, nubeiro@nubeiro.com
 # Last update: 20 May 2001
-# Translation last updated on 07-11-2002
+# Translation last updated on 07-19-2002
 
 
 ###############################################
@@ -13,67 +13,43 @@
 #
 # << MISSING >>
 # Activity Log:
-# English text: Activity Log
-#
 User: Usuario
 #
 # << MISSING >>
 # Calendar:
-# English text: Calendar
-#
 Date: Data
 Time: Hora
 #
 # << MISSING >>
 # Event:
-# English text: Event
-#
 #
 # << MISSING >>
 # Action:
-# English text: Action
-#
 #
 # << MISSING >>
 # Event created:
-# English text: Event created
-#
 #
 # << MISSING >>
 # Event approved:
-# English text: Event approved
-#
 #
 # << MISSING >>
 # Event rejected:
-# English text: Event rejected
-#
 #
 # << MISSING >>
 # Event updated:
-# English text: Event updated
-#
 #
 # << MISSING >>
 # Event deleted:
-# English text: Event deleted
-#
 #
 # << MISSING >>
 # Notification sent:
-# English text: Notification sent
-#
 #
 # << MISSING >>
 # Reminder sent:
-# English text: Reminder sent
-#
 Database error: Erro da base de datos
 #
 # << MISSING >>
 # Next:
-# English text: Next
-#
 
 
 ###############################################
@@ -90,99 +66,54 @@ Error adding event: Erro ó engadi-lo evento
 #
 # << MISSING >>
 # Server URL is required:
-# English text: Server URL is required
-#
 #
 # << MISSING >>
 # Server URL must end with '/':
-# English text: Server URL must end with '/'
-#
 Invalid color for document background: Color non válido para o fondo do documento
 Invalid color for document title: Color non válido para o título do documento
 Invalid color for table cell background: Color non válido para o fondo da cela
 #
 # << MISSING >>
 # Invalid color for table grid:
-# English text: Invalid color for table grid
-#
 #
 # << MISSING >>
 # Invalid color for table header background:
-# English text: Invalid color for table header background
-#
 #
 # << MISSING >>
 # Invalid color for table text background:
-# English text: Invalid color for table text background
-#
 #
 # << MISSING >>
 # Invalid color for event popup background:
-# English text: Invalid color for event popup background
-#
 #
 # << MISSING >>
 # Invalid color for event popup text:
-# English text: Invalid color for event popup text
-#
 Invalid color for table cell background for today: Color non válido para o fondo da cela de hoxe
 Color format should be '#RRGGBB': O formato da cor debería ser '#RRGGBB'
 #
 # << MISSING >>
 # System Settings:
-# English text: System Settings
-#
 You are not authorized: Non está autorizado
 #
 # << MISSING >>
 # Note:
-# English text: Note
-#
 #
 # << MISSING >>
 # Your user preferences:
-# English text: Your user preferences
-#
 #
 # << MISSING >>
 # may be affecting the appearance of this page.:
-# English text: may be affecting the appearance of this page.
-#
 #
 # << MISSING >>
 # Click here:
-# English text: Click here
-#
 #
 # << MISSING >>
 # to not use your user preferences when viewing this page:
-# English text: to not use your user preferences when viewing this page
-#
-#
-# << MISSING >>
-# Note:
-# English text: Note
-#
-#
-# << MISSING >>
-# Your user preferences:
-# English text: Your user preferences
-#
 #
 # << MISSING >>
 # are being ignored while viewing this page.:
-# English text: are being ignored while viewing this page.
-#
-#
-# << MISSING >>
-# Click here:
-# English text: Click here
-#
 #
 # << MISSING >>
 # to load your user preferences when viewing this page:
-# English text: to load your user preferences when viewing this page
-#
 Save: Gravar
 Help: Axuda
 Settings: Configuración
@@ -194,8 +125,6 @@ Settings: Configuración
 #
 # << MISSING >>
 # Application Name:
-# English text: Application Name
-#
 #
 # << MISSING >>
 # server-url-help:
@@ -204,8 +133,6 @@ Settings: Configuración
 #
 # << MISSING >>
 # Server URL:
-# English text: Server URL
-#
 language-help: Especifica o idioma que se empregará.
 Language: Idioma
 Your browser default language is: O idioma por defecto do seu navegador é
@@ -217,8 +144,6 @@ Your browser default language is: O idioma por defecto do seu navegador é
 #
 # << MISSING >>
 # Fonts:
-# English text: Fonts
-#
 preferred-view-help: Especifica a vista por defecto (Día, Semana, Mes ou Ano).
 Preferred view: Vista preferida
 Day: Día
@@ -233,14 +158,34 @@ Year: Ano
 #
 # << MISSING >>
 # Display weekends in week view:
-# English text: Display weekends in week view
-#
 Yes: Si
 No: Non
+#
+# << MISSING >>
+# date-format-help:
+# English text: Specifies the preferred date format.
+#
+#
+# << MISSING >>
+# Date format:
+December: Decembro
+Dec: Dec
 time-format-help: Especifica qué formato horario empregar: <BR><I>12 horas:</I> Amosa-las horas co formato 3am, 8:30pm, etc.  <BR><I>24 horas:</I> Amosa-las horas co formato 300, 2030, etc.
 Time format: Formato da hora
 12 hour: 12 horas
 24 hour: 24 horas
+#
+# << MISSING >>
+# time-interval-help:
+# English text: Specifies how long the time blocks in the week view and day view will be.
+#
+#
+# << MISSING >>
+# Time interval:
+#
+# << MISSING >>
+# hour:
+minutes: minutos
 #
 # << MISSING >>
 # auto-refresh-help:
@@ -249,8 +194,6 @@ Time format: Formato da hora
 #
 # << MISSING >>
 # Auto-refresh calendars:
-# English text: Auto-refresh calendars
-#
 #
 # << MISSING >>
 # auto-refresh-time-help:
@@ -259,9 +202,6 @@ Time format: Formato da hora
 #
 # << MISSING >>
 # Auto-refresh time:
-# English text: Auto-refresh time
-#
-minutes: minutos
 #
 # << MISSING >>
 # require-approvals-help:
@@ -270,8 +210,6 @@ minutes: minutos
 #
 # << MISSING >>
 # Require event approvals:
-# English text: Require event approvals
-#
 display-unapproved-help: Especifica se amosar ou non os eventos non aprobados no seu calendario.<BR> Se selecciona "Si", entón amosaranse os eventos non aprobados no seu calendario (cunha cor de texto diferente).<BR> Se selecciona "Non", entón deberanse aproba-los eventos antes de que poidan ser amosados no seu calendario.
 Display unapproved: Amosar non aprobados
 display-week-number-help: Especifica se o número da semana (1-52) debería amosarse na vista do mes e na vista da semana.
@@ -292,8 +230,6 @@ to: ata
 #
 # << MISSING >>
 # Disable Priority field:
-# English text: Disable Priority field
-#
 #
 # << MISSING >>
 # disable-access-field-help:
@@ -302,8 +238,6 @@ to: ata
 #
 # << MISSING >>
 # Disable Access field:
-# English text: Disable Access field
-#
 #
 # << MISSING >>
 # disable-participants-field-help:
@@ -312,8 +246,6 @@ to: ata
 #
 # << MISSING >>
 # Disable Participants field:
-# English text: Disable Participants field
-#
 #
 # << MISSING >>
 # disable-repeating-field-help:
@@ -322,8 +254,6 @@ to: ata
 #
 # << MISSING >>
 # Disable Repeating field:
-# English text: Disable Repeating field
-#
 #
 # << MISSING >>
 # allow-public-access-help:
@@ -332,8 +262,6 @@ to: ata
 #
 # << MISSING >>
 # Allow public access:
-# English text: Allow public access
-#
 #
 # << MISSING >>
 # public-access-view-others-help:
@@ -342,8 +270,6 @@ to: ata
 #
 # << MISSING >>
 # Public access can view other users:
-# English text: Public access can view other users
-#
 #
 # << MISSING >>
 # public-access-can-add-help:
@@ -352,8 +278,6 @@ to: ata
 #
 # << MISSING >>
 # Public access can add events:
-# English text: Public access can add events
-#
 #
 # << MISSING >>
 # allow-view-other-help:
@@ -362,8 +286,6 @@ to: ata
 #
 # << MISSING >>
 # Allow viewing other user's calendars:
-# English text: Allow viewing other user's calendars
-#
 #
 # << MISSING >>
 # remember-last-login-help:
@@ -372,8 +294,6 @@ to: ata
 #
 # << MISSING >>
 # Remember last login:
-# English text: Remember last login
-#
 #
 # << MISSING >>
 # conflict-check-help:
@@ -382,8 +302,6 @@ to: ata
 #
 # << MISSING >>
 # Check for event conflicts:
-# English text: Check for event conflicts
-#
 #
 # << MISSING >>
 # conflict-months-help:
@@ -392,13 +310,9 @@ to: ata
 #
 # << MISSING >>
 # Conflict checking months:
-# English text: Conflict checking months
-#
 #
 # << MISSING >>
 # Groups:
-# English text: Groups
-#
 #
 # << MISSING >>
 # groups-enabled-help:
@@ -407,8 +321,6 @@ to: ata
 #
 # << MISSING >>
 # Groups enabled:
-# English text: Groups enabled
-#
 #
 # << MISSING >>
 # user-sees-his-group-help:
@@ -417,13 +329,9 @@ to: ata
 #
 # << MISSING >>
 # User sees only his groups:
-# English text: User sees only his groups
-#
 #
 # << MISSING >>
 # Categories:
-# English text: Categories
-#
 #
 # << MISSING >>
 # categories-enabled-help:
@@ -432,8 +340,6 @@ to: ata
 #
 # << MISSING >>
 # Categories enabled:
-# English text: Categories enabled
-#
 Email: correo electrónico
 #
 # << MISSING >>
@@ -443,8 +349,6 @@ Email: correo electrónico
 #
 # << MISSING >>
 # Email enabled:
-# English text: Email enabled
-#
 #
 # << MISSING >>
 # email-default-sender:
@@ -453,13 +357,9 @@ Email: correo electrónico
 #
 # << MISSING >>
 # Default sender address:
-# English text: Default sender address
-#
 #
 # << MISSING >>
 # Default user settings:
-# English text: Default user settings
-#
 email-event-reminders-help: Especifica se enviar ou non recordatorios de evento.
 Event reminders: Recordatorios de eventos
 email-event-added: Especifica se enviar ou non notificacións por correo electrónico cando se engade un evento ó seu calendario.
@@ -475,54 +375,37 @@ Colors: Cores
 #
 # << MISSING >>
 # Allow user to customize colors:
-# English text: Allow user to customize colors
-#
 Document background: Fondo do documento
 Select: Seleccionar
 Document title: Título do documento
 #
 # << MISSING >>
 # Document text:
-# English text: Document text
-#
 #
 # << MISSING >>
 # Table grid color:
-# English text: Table grid color
-#
 #
 # << MISSING >>
 # Table header background:
-# English text: Table header background
-#
 #
 # << MISSING >>
 # Table header text:
-# English text: Table header text
-#
 Table cell background: Fondo da cela da táboa
 Table cell background for current day: Fondo da cela para hoxe
 #
 # << MISSING >>
 # Table cell background for weekends:
-# English text: Table cell background for weekends
-#
 #
 # << MISSING >>
 # Event popup background:
-# English text: Event popup background
-#
 #
 # << MISSING >>
 # Event popup text:
-# English text: Event popup text
-#
 
 
 ###############################################
 # Page: admin_handler.php
 #
-# "You are not authorized" previously defined (in admin.php)
 Error: Erro
 The following error occurred: Ocorreu o seguinte erro
 
@@ -536,54 +419,25 @@ Error approving event: Erro ó aproba-lo evento
 ###############################################
 # Page: category.php
 #
-# "Invalid entry id" previously defined (in add_entry.php)
-# "You are not authorized" previously defined (in admin.php)
-# "Database error" previously defined (in activity_log.php)
-#
-# << MISSING >>
-# Categories:
-# English text: Categories
-#
 #
 # << MISSING >>
 # Add:
-# English text: Add
-#
-# "Save" previously defined (in admin.php)
 #
 # << MISSING >>
 # Category Name:
-# English text: Category Name
-#
 #
 # << MISSING >>
 # Global:
-# English text: Global
-#
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
 Delete: Borrar
 Are you sure you want to delete this entry?: ¿Está seguro de que quere borrar esta entrada?
 #
 # << MISSING >>
-# Global:
-# English text: Global
-#
-#
-# << MISSING >>
 # Add New Category:
-# English text: Add New Category
-#
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: category_handler.php
 #
-# "Database error" previously defined (in activity_log.php)
-# "You are not authorized" previously defined (in admin.php)
-# "Delete" previously defined (in category.php)
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -594,6 +448,9 @@ Are you sure you want to delete this entry?: ¿Está seguro de que quere borrar es
 ###############################################
 # Page: datesel.php
 #
+#
+# << MISSING >>
+# Previous:
 
 
 ###############################################
@@ -606,12 +463,10 @@ Printer Friendly: Versión para imprimir
 ###############################################
 # Page: del_entry.php
 #
-# "You are not authorized" previously defined (in admin.php)
 Hello: Ola
 An appointment has been canceled for you by: Foille cancelada unha cita por
 The subject was: O tema era
 Notification: Notificación
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -632,15 +487,12 @@ Brief Description: Descrición breve
 full-description-help: Esto debería completa-la descrición do evento. Esta información amósase cando o usuario ve o evento.
 Full Description: Descrición completa
 date-help: Especifica a data do evento.
-# "Date" previously defined (in activity_log.php)
 time-help: Especifica a hora do evento.<BR><I>Este campo pode deixarse en branco.</I>
-# "Time" previously defined (in activity_log.php)
 am: am
 pm: pm
 duration-help: Especifica a duración (en horas:minutos) do evento.<BR><I>Este campo pode deixarse en branco.</I>
 Duration: Duración
 hours: horas
-# "minutes" previously defined (in admin.php)
 priority-help: Especifica a prioridade do evento. As prioridades altas amosaránse en negriña.
 Priority: Prioridade
 Low: Baixa
@@ -658,15 +510,10 @@ Confidential: Confidencial
 #
 # << MISSING >>
 # Category:
-# English text: Category
-#
-# "Yes" previously defined (in admin.php)
-# "No" previously defined (in admin.php)
 days: días
 before event: antes do evento
 participants-help: Lista dos participantes desta entrada.
 Participants: Participantes
-# "Select" previously defined (in admin.php)
 repeat-type-help: Seleccione con qué frecuencia se repetirá o evento.<I>Mensualmente (por días)</I> permite que o evento se repita o primeiro luns do mes, o terceiro xoves do mes, etc.<I>Mensualmente (por data)</I> permite que o evento se repita o mesmo día de cada mes.
 Repeat Type: Tipo de repetición
 None: Ningunha
@@ -682,8 +529,6 @@ Use end date: Data final de uso
 repeat-day-help: Especifica qué días da semana se repetirá o evento. Esta opción só se pode usar cando en <I>Tipo de Repetición</I> se selecciona <I>Semanalmente</I>.
 Repeat Day: Día de repetición
 for weekly: da semana
-# "Sunday" previously defined (in admin.php)
-# "Monday" previously defined (in admin.php)
 Tuesday: Martes
 Wednesday: Mércores
 Thursday: Xoves
@@ -691,9 +536,6 @@ Friday: Venres
 Saturday: Sábado
 repeat-frequency-help: Especifica con qué frecuencia se repetirá o evento.  O 1 por defecto indica que debería ter lugar cada vez.  Se se especifica 2, o evento terá lugar nas outras semanas (se en <I>Tipo de Repetición</I> se selecciona <I>Semanalmente</I>), terá lugar nos outros meses (se en <I>Tipo de Repetición</I> se selecciona <I>Mensualmente</I>), etc.
 Frequency: Frecuencia
-# "Save" previously defined (in admin.php)
-# "Help" previously defined (in admin.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 Delete entry: Borrar entrada
 You are not authorized to edit this entry: Non está autorizado para modificar esta entrada
 
@@ -701,55 +543,34 @@ You are not authorized to edit this entry: Non está autorizado para modificar es
 ###############################################
 # Page: edit_entry_handler.php
 #
-# "Database error" previously defined (in activity_log.php)
-# "You are not authorized" previously defined (in admin.php)
 The following conflicts with the suggested time: O seguinte entra en conflicto coa hora suxerida
 Unnamed Event: Evento sen nome
-# "Hello" previously defined (in del_entry.php)
-# "An appointment has been canceled for you by" previously defined (in del_entry.php)
-# "The subject was" previously defined (in del_entry.php)
 #
 # << MISSING >>
 # The description is:
-# English text: The description is
-#
-# "Date" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
 Title: WebCalendar
-# "Notification" previously defined (in del_entry.php)
 A new appointment has been made for you by: Foille engadida unha nova cita por
 An appointment has been updated by: Foille actualizada unha cita por
 The subject is: O tema é
-#
-# << MISSING >>
-# The description is:
-# English text: The description is
-#
 Please look on: Por favor mire en
 to accept or reject this appointment: para aceptar ou rexeitar esta cita
 to view this appointment: para ver esta cita
 Scheduling Conflict: Conflicto de horario
 Your suggested time of: A súa hora suxerida de
 conflicts with the following existing calendar entries: entra en conflicto coas seguintes entradas existentes no calendario
-# "Save" previously defined (in admin.php)
 Cancel: Cancelar
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: edit_layer.php
 #
 Invalid color: Color non válido
-# "Color format should be '#RRGGBB'" previously defined (in admin.php)
 Edit Layer: Modificar Capa
 Add Layer: Engadir Capa
 Source: Fonte
 Color: Cor
-# "Select" previously defined (in admin.php)
 Duplicates: Duplicados
 Show layer events that are the same as your own: Amosa-los eventos da capa que son iguais ós seus
-# "Save" previously defined (in admin.php)
-# "Help" previously defined (in admin.php)
 Are you sure you want to delete this layer?: ¿Está seguro de que quere borrar esta capa?
 Delete layer: Borrar capa
 
@@ -760,14 +581,9 @@ Delete layer: Borrar capa
 #
 # << MISSING >>
 # You cannot create a layer for yourself:
-# English text: You cannot create a layer for yourself
-#
 #
 # << MISSING >>
 # You can only create one layer for each user:
-# English text: You can only create one layer for each user
-#
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -782,12 +598,7 @@ E-mail address: enderezo de correo electrónico
 Password: Contrasinal
 again: outra vez
 Admin: Xestión
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
-# "Save" previously defined (in admin.php)
 Disabled for demo: Desactivado para a demo
-# "Delete" previously defined (in category.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 Change Password: Cambiar contrasinal
 New Password: Novo contrasinal
 Set Password: Fixar contrasinal
@@ -796,16 +607,11 @@ Set Password: Fixar contrasinal
 ###############################################
 # Page: edit_user_handler.php
 #
-# "Delete" previously defined (in category.php)
 #
 # << MISSING >>
 # Deleting users not supported:
-# English text: Deleting users not supported
-#
-# "You are not authorized" previously defined (in admin.php)
 The passwords were not identical: Os contrasinais non eran idénticos
 You have not entered a password: Non introduciu ningún contrasinal
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -816,7 +622,6 @@ Export format: Formato ó que exportar
 Palm Pilot: Palm Pilot
 Export all dates: Exportar tódalas datas
 Start date: Data de comezo
-# "Select" previously defined (in admin.php)
 End date: Data final
 Modified since: Modificado dende
 
@@ -824,8 +629,6 @@ Modified since: Modificado dende
 ###############################################
 # Page: export_handler.php
 #
-# "Export" previously defined (in export.php)
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -833,14 +636,7 @@ Modified since: Modificado dende
 #
 #
 # << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
 # Add New Group:
-# English text: Add New Group
-#
 
 
 ###############################################
@@ -849,402 +645,98 @@ Modified since: Modificado dende
 #
 # << MISSING >>
 # Unnamed Group:
-# English text: Unnamed Group
-#
 #
 # << MISSING >>
 # Add Group:
-# English text: Add Group
-#
 #
 # << MISSING >>
 # Edit Group:
-# English text: Edit Group
-#
 #
 # << MISSING >>
 # Group name:
-# English text: Group name
-#
 Updated: Actualizado
 Created by: Creado por
 Users: Usuarios
-#
-# << MISSING >>
-# Add:
-# English text: Add
-#
-# "Save" previously defined (in admin.php)
-# "Delete" previously defined (in category.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 
 
 ###############################################
 # Page: group_edit_handler.php
 #
-# "Delete" previously defined (in category.php)
-# "Database error" previously defined (in activity_log.php)
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: help_admin.php
 #
-# "Help" previously defined (in admin.php)
-#
-# << MISSING >>
-# System Settings:
-# English text: System Settings
-#
-# "Settings" previously defined (in admin.php)
-# "Language" previously defined (in admin.php)
-# "language-help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Fonts:
-# English text: Fonts
+
+
+###############################################
+# Page: help_bug.php
 #
 #
 # << MISSING >>
-# fonts-help:
-# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
-#
-# "Preferred view" previously defined (in admin.php)
-# "preferred-view-help" previously defined (in admin.php)
-# "Time format" previously defined (in admin.php)
-# "time-format-help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Require event approvals:
-# English text: Require event approvals
-#
-#
-# << MISSING >>
-# require-approvals-help:
-# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
-#
-# "Display unapproved" previously defined (in admin.php)
-# "display-unapproved-help" previously defined (in admin.php)
-# "Display week number" previously defined (in admin.php)
-# "display-week-number-help" previously defined (in admin.php)
-# "Week starts on" previously defined (in admin.php)
-# "display-week-starts-on" previously defined (in admin.php)
-# "Work hours" previously defined (in admin.php)
-# "work-hours-help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Disable Priority field:
-# English text: Disable Priority field
-#
-#
-# << MISSING >>
-# disable-priority-field-help:
-# English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Access field:
-# English text: Disable Access field
-#
-#
-# << MISSING >>
-# disable-access-field-help:
-# English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Participants field:
-# English text: Disable Participants field
-#
-#
-# << MISSING >>
-# disable-participants-field-help:
-# English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
-#
-#
-# << MISSING >>
-# Disable Repeating field:
-# English text: Disable Repeating field
-#
-#
-# << MISSING >>
-# disable-repeating-field-help:
-# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Allow public access:
-# English text: Allow public access
-#
-#
-# << MISSING >>
-# allow-public-access-help:
-# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
-#
-#
-# << MISSING >>
-# Public access can view other users:
-# English text: Public access can view other users
-#
-#
-# << MISSING >>
-# public-access-view-others-help:
-# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
-#
-#
-# << MISSING >>
-# Allow viewing other user's calendars:
-# English text: Allow viewing other user's calendars
-#
-#
-# << MISSING >>
-# allow-view-other-help:
-# English text: Specifies whether one user may view another user's calendar.
-#
-#
-# << MISSING >>
-# Remember last login:
-# English text: Remember last login
-#
-#
-# << MISSING >>
-# remember-last-login-help:
-# English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
-#
-#
-# << MISSING >>
-# Check for event conflicts:
-# English text: Check for event conflicts
-#
-#
-# << MISSING >>
-# conflict-check-help:
-# English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
-#
-#
-# << MISSING >>
-# Conflict checking months:
-# English text: Conflict checking months
-#
-#
-# << MISSING >>
-# conflict-months-help:
-# English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
-#
-#
-# << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
-# Groups enabled:
-# English text: Groups enabled
-#
-#
-# << MISSING >>
-# groups-enabled-help:
-# English text: Enables group support, allowing users to select users by groups.
-#
-#
-# << MISSING >>
-# User sees only his groups:
-# English text: User sees only his groups
-#
-#
-# << MISSING >>
-# user-sees-his-group-help:
-# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
-#
-# "Email" previously defined (in admin.php)
-#
-# << MISSING >>
-# Email enabled:
-# English text: Email enabled
-#
-#
-# << MISSING >>
-# email-enabled-help:
-# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
-#
-#
-# << MISSING >>
-# Default sender address:
-# English text: Default sender address
-#
-#
-# << MISSING >>
-# email-default-sender:
-# English text: Specifies the email address to specify as the sender when sending out reminders.
-#
-# "Event reminders" previously defined (in admin.php)
-# "email-event-reminders-help" previously defined (in admin.php)
-# "Events added to my calendar" previously defined (in admin.php)
-# "email-event-added" previously defined (in admin.php)
-# "Events updated on my calendar" previously defined (in admin.php)
-# "email-event-updated" previously defined (in admin.php)
-# "Events removed from my calendar" previously defined (in admin.php)
-# "email-event-deleted" previously defined (in admin.php)
-# "Event rejected by participant" previously defined (in admin.php)
-# "email-event-rejected" previously defined (in admin.php)
-# "Colors" previously defined (in admin.php)
-# "colors-help" previously defined (in admin.php)
+# Report Bug:
 
 
 ###############################################
 # Page: help_edit_entry.php
 #
-# "Help" previously defined (in admin.php)
 Adding/Editing Calendar Entries: Engadindo/Modificando Entradas do Calendario
-# "Brief Description" previously defined (in edit_entry.php)
-# "brief-description-help" previously defined (in edit_entry.php)
-# "Full Description" previously defined (in edit_entry.php)
-# "full-description-help" previously defined (in edit_entry.php)
-# "Date" previously defined (in activity_log.php)
-# "date-help" previously defined (in edit_entry.php)
-# "Time" previously defined (in activity_log.php)
-# "time-help" previously defined (in edit_entry.php)
-# "Duration" previously defined (in edit_entry.php)
-# "duration-help" previously defined (in edit_entry.php)
-# "Priority" previously defined (in edit_entry.php)
-# "priority-help" previously defined (in edit_entry.php)
-# "Access" previously defined (in edit_entry.php)
-# "access-help" previously defined (in edit_entry.php)
-# "Participants" previously defined (in edit_entry.php)
-# "participants-help" previously defined (in edit_entry.php)
-# "Repeat Type" previously defined (in edit_entry.php)
-# "repeat-type-help" previously defined (in edit_entry.php)
-# "Repeat End Date" previously defined (in edit_entry.php)
-# "repeat-end-date-help" previously defined (in edit_entry.php)
-# "Repeat Day" previously defined (in edit_entry.php)
-# "repeat-day-help" previously defined (in edit_entry.php)
-# "Frequency" previously defined (in edit_entry.php)
-# "repeat-frequency-help" previously defined (in edit_entry.php)
 
 
 ###############################################
 # Page: help_index.php
 #
 Help Index: Índice da axuda
-# "Adding/Editing Calendar Entries" previously defined (in help_edit_entry.php)
 Layers: Capas
 Preferences: Preferencias
-#
-# << MISSING >>
-# System Settings:
-# English text: System Settings
-#
-#
-# << MISSING >>
-# Report Bug:
-# English text: Report Bug
-#
 
 
 ###############################################
 # Page: help_layers.php
 #
-# "Help" previously defined (in admin.php)
-# "Layers" previously defined (in help_index.php)
 #
 # << MISSING >>
 # Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
-# English text: Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.
-#
 #
 # << MISSING >>
 # Add/Edit/Delete:
-# English text: Add/Edit/Delete
-#
 #
 # << MISSING >>
 # Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
-# English text: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
-#
-# "Source" previously defined (in edit_layer.php)
 #
 # << MISSING >>
 # Specifies the user that you would like to see displayed in your calendar.:
-# English text: Specifies the user that you would like to see displayed in your calendar.
-#
-# "Colors" previously defined (in admin.php)
 #
 # << MISSING >>
 # The text color of the new layer that will be displayed in your calendar.:
-# English text: The text color of the new layer that will be displayed in your calendar.
-#
-# "Duplicates" previously defined (in edit_layer.php)
 #
 # << MISSING >>
 # If checked, events that are duplicates of your events will be shown.:
-# English text: If checked, events that are duplicates of your events will be shown.
-#
 #
 # << MISSING >>
 # Disabling:
-# English text: Disabling
-#
 #
 # << MISSING >>
 # Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
-# English text: Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.
-#
 #
 # << MISSING >>
 # Enabling:
-# English text: Enabling
-#
 #
 # << MISSING >>
 # Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
-# English text: Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.
-#
-# "colors-help" previously defined (in admin.php)
 
 
 ###############################################
 # Page: help_pref.php
 #
-# "Help" previously defined (in admin.php)
-# "Preferences" previously defined (in help_index.php)
-# "Settings" previously defined (in admin.php)
-# "Language" previously defined (in admin.php)
-# "language-help" previously defined (in admin.php)
 #
 # << MISSING >>
-# Fonts:
-# English text: Fonts
-#
+# Default Category:
 #
 # << MISSING >>
-# fonts-help:
-# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+# default-category-help:
+# English text: Specifies the category a new event should default to.
 #
-# "Preferred view" previously defined (in admin.php)
-# "preferred-view-help" previously defined (in admin.php)
-# "Time format" previously defined (in admin.php)
-# "time-format-help" previously defined (in admin.php)
-# "Display unapproved" previously defined (in admin.php)
-# "display-unapproved-help" previously defined (in admin.php)
-# "Display week number" previously defined (in admin.php)
-# "display-week-number-help" previously defined (in admin.php)
-# "Week starts on" previously defined (in admin.php)
-# "display-week-starts-on" previously defined (in admin.php)
-# "Work hours" previously defined (in admin.php)
-# "work-hours-help" previously defined (in admin.php)
-# "Email" previously defined (in admin.php)
-# "Event reminders" previously defined (in admin.php)
-# "email-event-reminders-help" previously defined (in admin.php)
-# "Events added to my calendar" previously defined (in admin.php)
-# "email-event-added" previously defined (in admin.php)
-# "Events updated on my calendar" previously defined (in admin.php)
-# "email-event-updated" previously defined (in admin.php)
-# "Events removed from my calendar" previously defined (in admin.php)
-# "email-event-deleted" previously defined (in admin.php)
-# "Event rejected by participant" previously defined (in admin.php)
-# "email-event-rejected" previously defined (in admin.php)
-# "Colors" previously defined (in admin.php)
-# "colors-help" previously defined (in admin.php)
 
 
 ###############################################
@@ -1255,28 +747,17 @@ Preferences: Preferencias
 ###############################################
 # Page: layers.php
 #
-# "Layers" previously defined (in help_index.php)
 Layers are currently: As capas están actualmente
 Disabled: Desactivado
 Enabled: Activado
 Layer: Capa
-# "Source" previously defined (in edit_layer.php)
-# "Color" previously defined (in edit_layer.php)
-# "Duplicates" previously defined (in edit_layer.php)
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
 Edit layer: Modificar capa
-# "Are you sure you want to delete this layer?" previously defined (in edit_layer.php)
-# "Delete layer" previously defined (in edit_layer.php)
 Add layer: Engadir capa
-# "Help" previously defined (in admin.php)
 
 
 ###############################################
 # Page: layers_toggle.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "The following error occurred" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -1290,30 +771,21 @@ Reject: Rexeitar
 #
 # << MISSING >>
 # No unapproved events for:
-# English text: No unapproved events for
-#
 Unapproved Events: Eventos sen aprobar
 #
 # << MISSING >>
 # Public Access:
-# English text: Public Access
-#
 
 
 ###############################################
 # Page: login.php
 #
 You must enter a login and password: Debe introducir un login e un contrasinal
-# "Error" previously defined (in admin_handler.php)
-# "Username" previously defined (in edit_user.php)
-# "Password" previously defined (in edit_user.php)
 Save login via cookies so I don't have to login next time: Gravar login mediante cookies para non ter que volver introducilo a próxima vez
 Login: Entrar
 #
 # << MISSING >>
 # Access public calendar:
-# English text: Access public calendar
-#
 cookies-note: <B>Nota:</B> Este programa necesita que as cookies estean activadas.
 
 
@@ -1327,129 +799,26 @@ Wed: Mér
 Thu: Xov
 Fri: Ven
 Sat: Sab
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
 # Page: pref.php
 #
-# "Invalid color for document background" previously defined (in admin.php)
-# "Invalid color for document title" previously defined (in admin.php)
-# "Invalid color for table cell background" previously defined (in admin.php)
-# "Invalid color for table cell background for today" previously defined (in admin.php)
-# "Color format should be '#RRGGBB'" previously defined (in admin.php)
-# "Preferences" previously defined (in help_index.php)
-# "Settings" previously defined (in admin.php)
-# "Language" previously defined (in admin.php)
-# "Your browser default language is" previously defined (in admin.php)
 #
 # << MISSING >>
-# fonts-help:
-# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
-#
-#
-# << MISSING >>
-# Fonts:
-# English text: Fonts
-#
-# "Preferred view" previously defined (in admin.php)
-# "Day" previously defined (in admin.php)
-# "Week" previously defined (in admin.php)
-# "Month" previously defined (in admin.php)
-# "Year" previously defined (in admin.php)
-#
-# << MISSING >>
-# display-weekends-help:
-# English text: Include weekends when viewing a week.
-#
-#
-# << MISSING >>
-# Display weekends in week view:
-# English text: Display weekends in week view
-#
-# "Yes" previously defined (in admin.php)
-# "No" previously defined (in admin.php)
-# "Time format" previously defined (in admin.php)
-# "12 hour" previously defined (in admin.php)
-# "24 hour" previously defined (in admin.php)
-#
-# << MISSING >>
-# auto-refresh-help:
-# English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
-#
-#
-# << MISSING >>
-# Auto-refresh calendars:
-# English text: Auto-refresh calendars
-#
-#
-# << MISSING >>
-# auto-refresh-time-help:
-# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
-#
-#
-# << MISSING >>
-# Auto-refresh time:
-# English text: Auto-refresh time
-#
-# "minutes" previously defined (in admin.php)
-# "Display unapproved" previously defined (in admin.php)
-# "Display week number" previously defined (in admin.php)
-# "Week starts on" previously defined (in admin.php)
-# "Sunday" previously defined (in admin.php)
-# "Monday" previously defined (in admin.php)
-# "Work hours" previously defined (in admin.php)
-# "From" previously defined (in admin.php)
-# "to" previously defined (in admin.php)
-#
-# << MISSING >>
-# Default Category:
-# English text: Default Category
-#
-# "Email" previously defined (in admin.php)
-# "Event reminders" previously defined (in admin.php)
-# "Events added to my calendar" previously defined (in admin.php)
-# "Events updated on my calendar" previously defined (in admin.php)
-# "Events removed from my calendar" previously defined (in admin.php)
-# "Event rejected by participant" previously defined (in admin.php)
-# "Colors" previously defined (in admin.php)
-# "Document background" previously defined (in admin.php)
-# "Select" previously defined (in admin.php)
-# "Document title" previously defined (in admin.php)
-# "Table cell background" previously defined (in admin.php)
-# "Table cell background for current day" previously defined (in admin.php)
-#
-# << MISSING >>
-# Table cell background for weekends:
-# English text: Table cell background for weekends
-#
+# to modify the preferences for the Public Access calendar:
 Save Preferences: Gravar preferencias
-# "Help" previously defined (in admin.php)
 
 
 ###############################################
 # Page: pref_handler.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "The following error occurred" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: reject_entry.php
 #
-# "Error approving event" previously defined (in approve_entry.php)
-# "Hello" previously defined (in del_entry.php)
 An appointment has been rejected by: Foille rexeitada unha cita por
-# "The subject was" previously defined (in del_entry.php)
-#
-# << MISSING >>
-# The description is:
-# English text: The description is
-#
-# "Date" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
-# "Notification" previously defined (in del_entry.php)
 
 
 ###############################################
@@ -1459,16 +828,7 @@ Search: Buscar
 #
 # << MISSING >>
 # Advanced Search:
-# English text: Advanced Search
-#
 Keywords: Palabras clave
-#
-# << MISSING >>
-# Advanced Search:
-# English text: Advanced Search
-#
-# "Users" previously defined (in group_edit.php)
-# "Select" previously defined (in admin.php)
 
 
 ###############################################
@@ -1476,7 +836,6 @@ Keywords: Palabras clave
 #
 You must enter one or more search keywords: Debe introducir unha ou máis palabras clave para a busca
 Search Results: Resultados da busca
-# "Error" previously defined (in admin_handler.php)
 match found: coincidencia atopada
 matches found: coincidencias atopadas
 No matches found: Non se atoparon coincidencias
@@ -1486,42 +845,28 @@ No matches found: Non se atoparon coincidencias
 # Page: select_user.php
 #
 View Another User's Calendar: Ve-lo Calendario de outro Usuario
-# "You are not authorized" previously defined (in admin.php)
 Go: Ir
 
 
 ###############################################
 # Page: set_entry_cat.php
 #
-# "Invalid entry id" previously defined (in add_entry.php)
-# "You are not authorized" previously defined (in admin.php)
 #
 # << MISSING >>
 # You have not added any categories:
-# English text: You have not added any categories
-#
-# "Database error" previously defined (in activity_log.php)
-# "Error" previously defined (in admin_handler.php)
 #
 # << MISSING >>
 # Set Category:
-# English text: Set Category
+
+
+###############################################
+# Page: test.php
 #
-# "Brief Description" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# Category:
-# English text: Category
-#
-# "Save" previously defined (in admin.php)
 
 
 ###############################################
 # Page: users.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "You are not authorized" previously defined (in admin.php)
-# "Users" previously defined (in group_edit.php)
 denotes administrative user: denota usuario administrativo
 Add New User: Engadir Novo Usuario
 
@@ -1529,39 +874,18 @@ Add New User: Engadir Novo Usuario
 ###############################################
 # Page: usersel.php
 #
-# "Users" previously defined (in group_edit.php)
 #
 # << MISSING >>
 # All:
-# English text: All
-#
-# "None" previously defined (in edit_entry.php)
 #
 # << MISSING >>
 # Reset:
-# English text: Reset
-#
-#
-# << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
-# Add:
-# English text: Add
-#
 #
 # << MISSING >>
 # Remove:
-# English text: Remove
-#
 #
 # << MISSING >>
 # Ok:
-# English text: Ok
-#
-# "Cancel" previously defined (in edit_entry_handler.php)
 
 
 ###############################################
@@ -1570,13 +894,9 @@ Add New User: Engadir Novo Usuario
 #
 # << MISSING >>
 # Views:
-# English text: Views
-#
 #
 # << MISSING >>
 # Add New View:
-# English text: Add New View
-#
 
 
 ###############################################
@@ -1585,144 +905,64 @@ Add New User: Engadir Novo Usuario
 #
 # << MISSING >>
 # Unnamed View:
-# English text: Unnamed View
-#
 #
 # << MISSING >>
 # Add View:
-# English text: Add View
-#
 #
 # << MISSING >>
 # Edit View:
-# English text: Edit View
-#
 #
 # << MISSING >>
 # View Name:
-# English text: View Name
-#
 #
 # << MISSING >>
 # View Type:
-# English text: View Type
-#
-# "Week" previously defined (in admin.php)
-# "Month" previously defined (in admin.php)
-# "Users" previously defined (in group_edit.php)
-# "Select" previously defined (in admin.php)
-#
-# << MISSING >>
-# Add:
-# English text: Add
-#
-# "Save" previously defined (in admin.php)
-# "Delete" previously defined (in category.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 
 
 ###############################################
 # Page: views_edit_handler.php
 #
-# "Delete" previously defined (in category.php)
-# "Database error" previously defined (in activity_log.php)
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: view_entry.php
 #
-# "Low" previously defined (in edit_entry.php)
-# "Medium" previously defined (in edit_entry.php)
-# "High" previously defined (in edit_entry.php)
-# "Invalid entry id" previously defined (in add_entry.php)
-# "Error" previously defined (in admin_handler.php)
-# "You are not authorized" previously defined (in admin.php)
 every: cada
 1st: 1º
 2nd: 2º
 3rd: 3º
 4th: 4º
 5th: 5º
-# "Day" previously defined (in admin.php)
-# "Week" previously defined (in admin.php)
-# "Month" previously defined (in admin.php)
-# "by day" previously defined (in edit_entry.php)
-# "by date" previously defined (in edit_entry.php)
-# "Year" previously defined (in admin.php)
-# "Confidential" previously defined (in edit_entry.php)
 Description: Descrición
 #
 # << MISSING >>
 # Status:
-# English text: Status
-#
 #
 # << MISSING >>
 # Waiting for approval:
-# English text: Waiting for approval
-#
 #
 # << MISSING >>
 # Deleted:
-# English text: Deleted
-#
 Rejected: Rexeitada
-# "Date" previously defined (in activity_log.php)
-# "Repeat Type" previously defined (in edit_entry.php)
-# "Time" previously defined (in activity_log.php)
-# "Duration" previously defined (in edit_entry.php)
-# "minutes" previously defined (in admin.php)
-# "Priority" previously defined (in edit_entry.php)
-# "Access" previously defined (in edit_entry.php)
-# "Public" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# Category:
-# English text: Category
-#
-# "Created by" previously defined (in group_edit.php)
-# "Updated" previously defined (in group_edit.php)
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
-# "days" previously defined (in edit_entry.php)
-# "hours" previously defined (in edit_entry.php)
-# "before event" previously defined (in edit_entry.php)
-# "Participants" previously defined (in edit_entry.php)
-# "Database error" previously defined (in activity_log.php)
-# "Approve this entry?" previously defined (in list_unapproved.php)
 Approve/Confirm entry: Aprobar/Confirmar entrada
-# "Reject this entry?" previously defined (in list_unapproved.php)
 Reject entry: Rexeitar entrada
 #
 # << MISSING >>
 # Set category:
-# English text: Set category
-#
 #
 # << MISSING >>
 # Edit repeating entry for all dates:
-# English text: Edit repeating entry for all dates
-#
 #
 # << MISSING >>
 # Edit entry for this date:
-# English text: Edit entry for this date
-#
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 This will delete this entry for all users.: Esto borrará esta entrada para tódolos usuarios.
 #
 # << MISSING >>
 # Delete repeating event for all dates:
-# English text: Delete repeating event for all dates
-#
 #
 # << MISSING >>
 # Delete entry only for this date:
-# English text: Delete entry only for this date
-#
 Edit entry: Modificar entrada
-# "Delete entry" previously defined (in edit_entry.php)
 This will delete the entry from your calendar.: Esto borrará a entrada do seu calendario.
 Do you want to add this entry to your calendar?: ¿Quere engadir esta entrada ó seu calendario?
 This will add the entry to your calendar.: Esto engadirá a entrada ó seu calendario.
@@ -1730,92 +970,34 @@ Add to My Calendar: Engadir ó meu Calendario
 #
 # << MISSING >>
 # Email all participants:
-# English text: Email all participants
-#
 #
 # << MISSING >>
 # Show activity log:
-# English text: Show activity log
-#
 #
 # << MISSING >>
 # Hide activity log:
-# English text: Hide activity log
-#
-#
-# << MISSING >>
-# Activity Log:
-# English text: Activity Log
-#
-# "User" previously defined (in activity_log.php)
-#
-# << MISSING >>
-# Calendar:
-# English text: Calendar
-#
-#
-# << MISSING >>
-# Action:
-# English text: Action
-#
-#
-# << MISSING >>
-# Event created:
-# English text: Event created
-#
-#
-# << MISSING >>
-# Event approved:
-# English text: Event approved
-#
-#
-# << MISSING >>
-# Event rejected:
-# English text: Event rejected
-#
-#
-# << MISSING >>
-# Event updated:
-# English text: Event updated
-#
-#
-# << MISSING >>
-# Event deleted:
-# English text: Event deleted
-#
-#
-# << MISSING >>
-# Notification sent:
-# English text: Notification sent
-#
-#
-# << MISSING >>
-# Reminder sent:
-# English text: Reminder sent
-#
 
 
 ###############################################
 # Page: view_m.php
 #
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
 # Page: view_w.php
 #
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
 # Page: week.php
 #
-# "Week" previously defined (in admin.php)
 New Entry: Nova entrada
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
+
+
+###############################################
+# Page: week_details.php
+#
+Private: Privado
 
 
 ###############################################
@@ -1826,8 +1008,6 @@ New Entry: Nova entrada
 ###############################################
 # Page: year.php
 #
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
@@ -1838,33 +1018,15 @@ New Entry: Nova entrada
 ###############################################
 # Page: includes/connect.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "You are not authorized" previously defined (in admin.php)
 
 
 ###############################################
 # Page: includes/functions.php
 #
-# "Title" previously defined (in edit_entry_handler.php)
-# "You are not authorized" previously defined (in admin.php)
-# "User" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
-# "Description" previously defined (in view_entry.php)
-# "Select" previously defined (in admin.php)
-# "View this entry" previously defined (in list_unapproved.php)
-# "am" previously defined (in edit_entry.php)
-# "pm" previously defined (in edit_entry.php)
-Private: Privado
 This event is confidential: Este evento é confidencial
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
-# "This will delete this entry for all users." previously defined (in view_entry.php)
-# "New Entry" previously defined (in week.php)
-# "Week" previously defined (in admin.php)
-# "Database error" previously defined (in activity_log.php)
-You have: Ten vostede
-unapproved: sen aprobar
-events: eventos
-event: evento
+#
+# << MISSING >>
+# You have XXX unapproved events:
 January: Xaneiro
 February: Febreiro
 March: Marzo
@@ -1876,7 +1038,6 @@ August: Agosto
 September: Setembro
 October: Outubro
 November: Novembro
-December: Decembro
 Jan: Xan
 Feb: Feb
 Mar: Mar
@@ -1888,33 +1049,12 @@ Aug: Ago
 Sep: Set
 Oct: Out
 Nov: Nov
-Dec: Dec
-# "Sunday" previously defined (in admin.php)
-# "Monday" previously defined (in admin.php)
-# "Tuesday" previously defined (in edit_entry.php)
-# "Wednesday" previously defined (in edit_entry.php)
-# "Thursday" previously defined (in edit_entry.php)
-# "Friday" previously defined (in edit_entry.php)
-# "Saturday" previously defined (in edit_entry.php)
-# "Sun" previously defined (in month.php)
-# "Mon" previously defined (in month.php)
-# "Tue" previously defined (in month.php)
-# "Wed" previously defined (in month.php)
-# "Thu" previously defined (in month.php)
-# "Fri" previously defined (in month.php)
-# "Sat" previously defined (in month.php)
-#
-# << MISSING >>
-# All:
-# English text: All
-#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Ir a
-# "Help Index" previously defined (in help_index.php)
 
 
 ###############################################
@@ -1938,8 +1078,6 @@ Go to: Ir a
 #
 # << MISSING >>
 # Send Reminder:
-# English text: Send Reminder
-#
 Reminder: Recordatorio
 
 
@@ -1951,68 +1089,23 @@ Reminder: Recordatorio
 ###############################################
 # Page: includes/trailer.php
 #
-# "Month" previously defined (in admin.php)
-# "Go" previously defined (in select_user.php)
-# "Week" previously defined (in admin.php)
-# "Year" previously defined (in admin.php)
-# "Go to" previously defined (in includes/help_trailer.php)
 Back to My Calendar: Volver ó meu Calendario
 My Calendar: O Meu Calendario
-# "Login" previously defined (in login.php)
 Logout: Saír
-# "Unapproved Events" previously defined (in list_unapproved.php)
 Another User's Calendar: Calendario de outro usuario
-# "Search" previously defined (in search.php)
-# "Export" previously defined (in export.php)
-#
-# << MISSING >>
-# Categories:
-# English text: Categories
-#
 Add New Entry: Engadir nova entrada
-# "Help" previously defined (in admin.php)
-#
-# << MISSING >>
-# Views:
-# English text: Views
-#
 #
 # << MISSING >>
 # Manage Views:
-# English text: Manage Views
-#
-# "Admin" previously defined (in edit_user.php)
-#
-# << MISSING >>
-# System Settings:
-# English text: System Settings
-#
-# "Preferences" previously defined (in help_index.php)
 Edit Layers: Modificar Capas
 Enable Layers: Activar Capas
 Disable Layers: Desactivar Capas
-# "Users" previously defined (in group_edit.php)
-#
-# << MISSING >>
-# Groups:
-# English text: Groups
-#
-#
-# << MISSING >>
-# Activity Log:
-# English text: Activity Log
-#
 Account: Conta
 Current User: Usuario actual
 
 
 ###############################################
 # Page: includes/translate.php
-#
-#
-# << MISSING >>
-# Public Access:
-# English text: Public Access
 #
 
 
@@ -2025,34 +1118,13 @@ Invalid login: Login inválido
 ###############################################
 # Page: includes/user-nis.php
 #
-# "Invalid login" previously defined (in includes/user-ldap.php)
-# "Database error" previously defined (in activity_log.php)
 #
 # << MISSING >>
 # Invalid user login:
-# English text: Invalid user login
-#
-#
-# << MISSING >>
-# Invalid user login:
-# English text: Invalid user login
-#
 
 
 ###############################################
 # Page: includes/user.php
-#
-# "Invalid login" previously defined (in includes/user-ldap.php)
-# "Database error" previously defined (in activity_log.php)
-#
-# << MISSING >>
-# Invalid user login:
-# English text: Invalid user login
-#
-#
-# << MISSING >>
-# Invalid user login:
-# English text: Invalid user login
 #
 
 
@@ -2064,22 +1136,4 @@ Invalid login: Login inválido
 ###############################################
 # Page: tools/send_reminders.php
 #
-# "Low" previously defined (in edit_entry.php)
-# "Medium" previously defined (in edit_entry.php)
-# "High" previously defined (in edit_entry.php)
 This is a reminder for the event detailed below.: Esto é un recordatorio para o evento descrito máis abaixo.
-# "Description" previously defined (in view_entry.php)
-# "Date" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
-# "Duration" previously defined (in edit_entry.php)
-# "minutes" previously defined (in admin.php)
-# "Priority" previously defined (in edit_entry.php)
-# "Access" previously defined (in edit_entry.php)
-# "Public" previously defined (in edit_entry.php)
-# "Confidential" previously defined (in edit_entry.php)
-# "Created by" previously defined (in group_edit.php)
-# "Updated" previously defined (in group_edit.php)
-# "Yes" previously defined (in admin.php)
-# "No" previously defined (in admin.php)
-# "Participants" previously defined (in edit_entry.php)
-# "Reminder" previously defined (in includes/site_extras.php)
