@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Improved sizing of event popups on MSIE/Mozilla
   - Fixed export URL so users should now be prompted to save with
     correct filename.
   - Added delete link on list of unapproved events, making it easier to

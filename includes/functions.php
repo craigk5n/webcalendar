@@ -726,13 +726,10 @@ function site_extras_for_popup ( $id )
 function build_event_popup ( $divname, $user, $description, $time,
   $site_extras='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname;
-  $ret = "<DIV ID=\"" . $divname .
-    "\" STYLE=\"position: absolute; z-index: 20; visibility: hidden; top: 0px; left: 0px;\">\n" .
-    "<TABLE BORDER=\"0\" WIDTH=\"30%\" CELLPADDING=\"0\" CELLSPACING=\"1\"><TR><TD BGCOLOR=\"" .
-    $GLOBALS["POPUP_FG"] . "\">\n" .
-    "<TABLE BORDER=\"0\" WIDTH=\"100%\" CELLPADDING=\"0\" CELLSPACING=\"1\"><TR><TD BGCOLOR=\"" .
-    $GLOBALS["POPUP_BG"] . "\" CLASS=\"popup\">\n" .
-    "<FONT COLOR=\"" . $GLOBALS["POPUP_FG"] . "\">";
+  $ret = "<div id=\"" . $divname .
+    "\" style=\"position: absolute; z-index: 20; visibility: hidden; top: 0px; left: 0px; width: 300px;\">\n" .
+    "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"border: 1px solid $GLOBALS[POPUP_FG];\">\n" .
+    "<tr><td style=\"background-color: $GLOBALS[POPUP_BG]; color: $GLOBAL[POPUP_FG];\" class=\"popup\">";
 
   if ( empty ( $popup_fullnames ) )
     $popup_fullnames = array ();
@@ -742,12 +739,12 @@ function build_event_popup ( $divname, $user, $description, $time,
       user_load_variables ( $user, "popuptemp_" );
       $popup_fullnames[$user] = $popuptemp_fullname;
     }
-    $ret .= "<B>" . translate ("User") .
-      ":</B> $popup_fullnames[$user]<BR>";
+    $ret .= "<b>" . translate ("User") .
+      ":</b> $popup_fullnames[$user]<BR>";
   }
   if ( strlen ( $time ) )
-    $ret .= "<B>" . translate ("Time") . ":</B> $time<BR>";
-  $ret .= "<B>" . translate ("Description") . ":</B>\n";
+    $ret .= "<b>" . translate ("Time") . ":</b> $time<br />";
+  $ret .= "<b>" . translate ("Description") . ":</b>\n";
   if ( ! empty ( $GLOBALS['allow_html_description'] ) &&
     $GLOBALS['allow_html_description'] == 'Y' ) {
     $str = str_replace ( "&", "&amp;", $description );
@@ -756,10 +753,9 @@ function build_event_popup ( $divname, $user, $description, $time,
     $ret .= nl2br ( htmlspecialchars ( $description ) );
   }
   if ( ! empty ( $site_extras ) )
-    $ret .= "\n<br>" . $site_extras;
-  $ret .= "</FONT></TD></TR></TABLE>\n" .
-    "</TD></TR></TABLE>\n" .
-    "</DIV>\n";
+    $ret .= "\n<br />" . $site_extras;
+  $ret .= "</td></tr></table>\n" .
+    "</div>\n";
   return $ret;
 }
 
