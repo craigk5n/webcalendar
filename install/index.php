@@ -368,6 +368,29 @@ li {
 <p>Current Status:</p>
 <ul>
 
+<li>Supported databases:
+<?php
+  $dbs = array ();
+  if ( function_exists ( "mysql_pconnect" ) ) {
+    $dbs[] = "mysql";
+  } else if ( function_exists ( "mysqli_connect" ) ) {
+    $dbs[] = "mysqli";
+  } else if ( function_exists ( "OCIPLogon" ) ) {
+    $dbs[] = "oracle";
+  } else if ( function_exists ( "pg_pconnect" ) ) {
+    $dbs[] = "postgresql";
+  } else if ( function_exists ( "odbc_pconnect" ) ) {
+    $dbs[] = "odbc";
+  } else if ( function_exists ( "ibase_pconnect" ) ) {
+    $dbs[] = "ibase";
+  }
+  for ( $i = 0; $i < count ( $dbs ); $i++ ) {
+    if ( $i ) echo ", ";
+    echo $dbs[$i];
+    $supported[$dbs[$i]] = true;
+  }
+?>
+</li>
 <?php if ( ! $forcePassword ) { ?>
   <?php if ( $connectSuccess ) { ?>
   <li> Your current database settings are able to
@@ -377,6 +400,11 @@ li {
   access the database.</li>
   <?php } ?>
 <?php } ?>
+
+<?php if ( empty ( $password ) ) { ?>
+  <li> You have not set a password for this page. </li>
+<?php } ?>
+
 
 
 <?php if ( $exists && ! $canWrite ) { ?>
@@ -442,25 +470,30 @@ You should select "Web Server" from the list of
 <td>
 <select name="form_db_type">
 <?php
-  echo "<option value=\"mysql\" " .
-    ( $settings['db_type'] == 'mysql' ? " selected=\"selected\"" : "" ) .
-    "> MySQL </option>\n";
+  if ( ! empty ( $supported['mysql'] ) )
+    echo "<option value=\"mysql\" " .
+      ( $settings['db_type'] == 'mysql' ? " selected=\"selected\"" : "" ) .
+      "> MySQL </option>\n";
 
-  echo "<option value=\"oracle\" " .
-    ( $settings['db_type'] == 'oracle' ? " selected=\"selected\"" : "" ) .
-    "> Oracle (OCI) </option>\n";
+  if ( ! empty ( $supported['oracle'] ) )
+    echo "<option value=\"oracle\" " .
+      ( $settings['db_type'] == 'oracle' ? " selected=\"selected\"" : "" ) .
+      "> Oracle (OCI) </option>\n";
 
-  echo "<option value=\"postgresql\" " .
-    ( $settings['db_type'] == 'postgresql' ? " selected=\"selected\"" : "" ) .
-    "> PostgreSQL </option>\n";
+  if ( ! empty ( $supported['postgresql'] ) )
+    echo "<option value=\"postgresql\" " .
+      ( $settings['db_type'] == 'postgresql' ? " selected=\"selected\"" : "" ) .
+      "> PostgreSQL </option>\n";
 
-  echo "<option value=\"odbc\" " .
-    ( $settings['db_type'] == 'odbc' ? " selected=\"selected\"" : "" ) .
-    "> ODBC </option>\n";
+  if ( ! empty ( $supported['odbc'] ) )
+    echo "<option value=\"odbc\" " .
+      ( $settings['db_type'] == 'odbc' ? " selected=\"selected\"" : "" ) .
+      "> ODBC </option>\n";
 
-  echo "<option value=\"ibase\" " .
-    ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
-    "> Interbase </option>\n";
+  if ( ! empty ( $supported['ibase'] ) )
+    echo "<option value=\"ibase\" " .
+      ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
+      "> Interbase </option>\n";
 ?>
 </select>
 </td></tr>
