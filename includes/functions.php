@@ -745,7 +745,13 @@ function build_event_popup ( $divname, $user, $description, $time,
   if ( strlen ( $time ) )
     $ret .= "<B>" . translate ("Time") . ":</B> $time<BR>";
   $ret .= "<B>" . translate ("Description") . ":</B>\n";
-  $ret .= nl2br ( htmlspecialchars ( $description ) );
+  if ( ! empty ( $GLOBALS['allow_html_description'] ) &&
+    $GLOBALS['allow_html_description'] == 'Y' ) {
+    $str = str_replace ( "&", "&amp;", $description );
+    $ret .= str_replace ( "&amp;amp;", "&amp", $str );
+  } else {
+    $ret .= nl2br ( htmlspecialchars ( $description ) );
+  }
   if ( ! empty ( $site_extras ) )
     $ret .= "\n<br>" . $site_extras;
   $ret .= "</FONT></TD></TR></TABLE>\n" .

@@ -1,4 +1,7 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Allow users to enter HTML for the event description.  Includes
+    addition to System Settings to enable this feature.  It is not
+    enabled by default.
   - Patch 853298: allow event description to appear in day view for
     printer-friendly (enabled by new system setting)
   - Added ability to use custom header and trailer from System Settings page

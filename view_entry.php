@@ -376,7 +376,15 @@ if ( $categories_enabled == "Y" ) {
 
 <TABLE BORDER=0>
 <TR><TD VALIGN="top"><B><?php etranslate("Description")?>:</B></TD>
-  <TD><?php echo nl2br ( activate_urls ( htmlspecialchars ( $description ) ) ); ?></TD></TR>
+  <TD><?php
+  if ( ! empty ( $allow_html_description ) &&
+    $allow_html_description == 'Y' ) {
+    $str = str_replace ( '&', '&amp;', $description );
+    echo str_replace ( '&amp;amp;', '&amp', $str );
+  } else {
+    echo nl2br ( activate_urls ( htmlspecialchars ( $description ) ) );
+  }
+?></TD></TR>
 
 <?php if ( $event_status != 'A' && ! empty ( $event_status ) ) { ?>
   <TR><TD VALIGN="top"><B><?php etranslate("Status")?>:</B></TD>

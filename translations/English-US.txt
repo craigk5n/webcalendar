@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 07-21-2003
+# Translation last updated on 01-15-2004
 
 
 ###############################################
@@ -55,6 +55,12 @@ Language: Language
 Your browser default language is: Your browser default language is
 fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
 Fonts: Fonts
+custom-header-help: Allows a custom HTML snippet to be included in the top of every page.
+Custom header: Custom header
+Yes: Yes
+No: No
+custom-trailer-help: Allows a custom HTML snippet to be included at the end of every page.
+Custom trailer: Custom trailer
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: Preferred view
 Day: Day
@@ -65,8 +71,6 @@ display-weekends-help: Include weekends when viewing a week.
 Display weekends in week view: Display weekends in week view
 display-desc-print-day-help: Include event descriptions in printer-friendly version of day view.
 Display description in printer day view: Display description in printer day view
-Yes: Yes
-No: No
 date-format-help: Specifies the preferred date format.
 Date format: Date format
 December: December
@@ -104,6 +108,10 @@ disable-participants-field-help: Selecting "Yes" will remove the "Particpants" f
 Disable Participants field: Disable Participants field
 disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
 Disable Repeating field: Disable Repeating field
+popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+Display Site Extras in popup: Display Site Extras in popup
+allow-html-description-help: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+Allow HTML in Description: Allow HTML in Description
 allow-view-other-help: Specifies whether one user may view another user's calendar.
 Allow viewing other user's calendars: Allow viewing other user's calendars
 allow-public-access-help: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
@@ -114,6 +122,8 @@ public-access-can-add-help: When enabled, users that access the system through P
 Public access can add events: Public access can add events
 public-access-add-requires-approval-help: Specifies whether events added via the public access account require approval before being displayed.
 Public access new events require approval: Public access new events require approval
+public-access-sees-participants-help: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+Public access can view participants: Public access can view participants
 allow-view-add-help: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
 Include add event link in views: Include add event link in views
 allow-external-users-help: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
@@ -339,25 +349,6 @@ You are not authorized to edit this entry: You are not authorized to edit this e
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: The following conflicts with the suggested time
-Unnamed Event: Unnamed Event
-The description is: The description is
-Title: WebCalendar
-A new appointment has been made for you by: A new appointment has been made for you by
-An appointment has been updated by: An appointment has been updated by
-The subject is: The subject is
-Please look on: Please look on
-to accept or reject this appointment: to accept or reject this appointment
-to view this appointment: to view this appointment
-Scheduling Conflict: Scheduling Conflict
-Your suggested time of: Your suggested time of
-conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
-Cancel: Cancel
-
-
-###############################################
 # Page: edit_layer.php
 #
 Edit Layer: Edit Layer
@@ -446,11 +437,6 @@ Add New Group: Add New Group
 
 
 ###############################################
-# Page: help_admin.php
-#
-
-
-###############################################
 # Page: pref.php
 #
 Preferences: Preferences
@@ -514,9 +500,8 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
-# Page: help_pref.php
+# Page: help_admin.php
 #
-default-category-help: Specifies the category a new event should default to.
 
 
 ###############################################
@@ -558,85 +543,6 @@ Public Access: Public Access
 
 
 ###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: An appointment has been rejected by
-
-
-###############################################
-# Page: search.php
-#
-Search: Search
-Advanced Search: Advanced Search
-Keywords: Keywords
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: You must enter one or more search keywords
-Search Results: Search Results
-match found: match found
-matches found: matches found
-No matches found: No matches found
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: View Another User's Calendar
-Go: Go
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-You have not added any categories: You have not added any categories
-Set Category: Set Category
-
-
-###############################################
-# Page: users.php
-#
-denotes administrative user: denotes administrative user
-Add New User: Add New User
-
-
-###############################################
-# Page: usersel.php
-#
-All: All
-Reset: Reset
-Remove: Remove
-Ok: Ok
-
-
-###############################################
-# Page: import.php
-#
-This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
-Exclude private records: Exclude private records
-Datebook File: Datebook File
-This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
-vCal File: vCal File
-
-
-###############################################
 # Page: view_entry.php
 #
 every: every
@@ -669,6 +575,86 @@ Email all participants: Email all participants
 Show activity log: Show activity log
 Hide activity log: Hide activity log
 Export this entry to: Export this entry to
+
+
+###############################################
+# Page: view_v.php
+#
+
+
+###############################################
+# Page: month.php
+#
+
+
+###############################################
+# Page: pref_handler.php
+#
+
+
+###############################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: An appointment has been rejected by
+The description is: The description is
+Title: WebCalendar
+
+
+###############################################
+# Page: search.php
+#
+Search: Search
+Advanced Search: Advanced Search
+Keywords: Keywords
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: You must enter one or more search keywords
+Search Results: Search Results
+match found: match found
+matches found: matches found
+No matches found: No matches found
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: View Another User's Calendar
+Go: Go
+
+
+###############################################
+# Page: publish.php
+#
+
+
+###############################################
+# Page: users.php
+#
+denotes administrative user: denotes administrative user
+Add New User: Add New User
+
+
+###############################################
+# Page: usersel.php
+#
+All: All
+Reset: Reset
+Remove: Remove
+Ok: Ok
+Cancel: Cancel
+
+
+###############################################
+# Page: import.php
+#
+This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
+Exclude private records: Exclude private records
+Datebook File: Datebook File
+This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
+vCal File: vCal File
 
 
 ###############################################
@@ -723,6 +709,29 @@ Add New NonUser Calendar: Add New NonUser Calendar
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+default-category-help: Specifies the category a new event should default to.
+
+
+###############################################
+# Page: report.php
+#
+Private: Private
+Approved: Approved
+Unknown: Unknown
+to manage reports for the Public Access calendar: to manage reports for the Public Access calendar
+Add new report: Add new report
+Invalid report id: Invalid report id
+Manage Reports: Manage Reports
+
+
+###############################################
 # Page: login.php
 #
 You must enter a login and password: You must enter a login and password
@@ -742,12 +751,6 @@ You must specify a view name: You must specify a view name
 # Page: week_details.php
 #
 New Entry: New Entry
-Private: Private
-
-
-###############################################
-# Page: view_l.php
-#
 
 
 ###############################################
@@ -758,6 +761,10 @@ Errors: Errors
 Back to My Calendar: Back to My Calendar
 There was an error parsing the import file or no events were returned: There was an error parsing the import file or no events were returned
 The import file contained no data: The import file contained no data
+The following conflicts with the suggested time: The following conflicts with the suggested time
+Unnamed Event: Unnamed Event
+Scheduling Conflict: Scheduling Conflict
+conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
 Event Imported: Event Imported
 
 
@@ -789,7 +796,6 @@ Next year: Next year
 This year: This year
 Last year: Last year
 Year before last: Year before last
-Invalid report id: Invalid report id
 Unnamed Report: Unnamed Report
 Add Report: Add Report
 Edit Report: Edit Report
@@ -808,16 +814,6 @@ Are you sure you want to delete this report?: Are you sure you want to delete th
 
 
 ###############################################
-# Page: report.php
-#
-Approved: Approved
-Unknown: Unknown
-to manage reports for the Public Access calendar: to manage reports for the Public Access calendar
-Add new report: Add new report
-Manage Reports: Manage Reports
-
-
-###############################################
 # Page: assistant_edit.php
 #
 Assistants: Assistants
@@ -831,11 +827,6 @@ Yours assistants: Yours assistants
 
 ###############################################
 # Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: publish.php
 #
 
 
@@ -868,6 +859,32 @@ Variable N not found: Variable N not found
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: A new appointment has been made for you by
+An appointment has been updated by: An appointment has been updated by
+The subject is: The subject is
+Please look on: Please look on
+to accept or reject this appointment: to accept or reject this appointment
+to view this appointment: to view this appointment
+Your suggested time of: Your suggested time of
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: You have not added any categories
+Set Category: Set Category
+
+
+###############################################
+# Page: edit_template.php
+#
+Edit Custom Header: Edit Custom Header
+Edit Custom Trailer: Edit Custom Trailer
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: Go to
@@ -884,37 +901,6 @@ Manage calendar of: Manage calendar of
 ###############################################
 # Page: includes/connect.php
 #
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: This event is confidential
-exceeds limit of XXX events per day: exceeds limit of XXX events per day
-You have XXX unapproved events: You have XXX unapproved events
-January: January
-February: February
-March: March
-April: April
-May_: May
-June: June
-July: July
-August: August
-September: September
-October: October
-November: November
-Jan: Jan
-Feb: Feb
-Mar: Mar
-Apr: Apr
-May: May
-Jun: Jun
-Jul: Jul
-Aug: Aug
-Sep: Sep
-Oct: Oct
-Nov: Nov
-Dec: Dec
 
 
 ###############################################
@@ -958,6 +944,37 @@ Send Reminder: Send Reminder
 ###############################################
 # Page: includes/dbtable.php
 #
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: This event is confidential
+exceeds limit of XXX events per day: exceeds limit of XXX events per day
+You have XXX unapproved events: You have XXX unapproved events
+January: January
+February: February
+March: March
+April: April
+May_: May
+June: June
+July: July
+August: August
+September: September
+October: October
+November: November
+Jan: Jan
+Feb: Feb
+Mar: Mar
+Apr: Apr
+May: May
+Jun: Jun
+Jul: Jul
+Aug: Aug
+Sep: Sep
+Oct: Oct
+Nov: Nov
+Dec: Dec
 
 
 ###############################################
