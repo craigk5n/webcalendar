@@ -891,7 +891,7 @@ function print_entry ( $id, $date, $time, $duration,
   } else if ( $time != -1 ) {
     $timestr = display_time ( $time );
     $time_short = preg_replace ("/(:00)/", '', $timestr);
-    echo $time_short . "&gt;";
+    echo $time_short . "&raquo;&nbsp;";
     if ( $duration > 0 ) {
       if ( $duration == ( 24 * 60 ) ) {
         $timestr = translate("All day event");
@@ -1688,6 +1688,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
   return $ret;
 }
 
+// DATE AND WEEK NUMBER
 // Print all the calendar entries for the specified user for the
 // specified date.  If we are displaying data from someone other than
 // the logged in user, then check the access permission of the entry.
@@ -1731,12 +1732,13 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
     echo "date=$date\">$day</a>";
     if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" &&
       date ( "w", $dateu ) == $GLOBALS["WEEK_START"] ) {
-      echo "<a href=\"week.php?date=$date";
+      echo "&nbsp;<a title=\"" .
+        translate("Week") . " " . week_number ( $dateu ) . "\" href=\"week.php?date=$date";
       if ( strcmp ( $user, $GLOBALS["login"] ) )
         echo "&amp;user=$user";
        echo "\" class=\"weeknumber\">";
       echo "(" .
-        translate("Week") . " " . week_number ( $dateu ) . ")</a>";
+        translate("Week") . "&nbsp;" . week_number ( $dateu ) . ")</a>";
     }
     print "<br />";
     $cnt++;
