@@ -669,7 +669,7 @@ if ( $single_user == "N" && $show_participants ) {
       translate("Select") . "...\" />\n";
   }
   echo "<input type=\"button\" onclick=\"showSchedule()\" value=\"" .
-  translate("Availability") . "\" />\n";
+    translate("Availability") . "...\" />\n";
   print "</td></tr>\n";
 
   // external users
