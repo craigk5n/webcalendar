@@ -93,8 +93,8 @@ if ( $single_user == "Y" ) {
     SetCookie ( "webcalendar_session", "", 0, substr($cookie_path, 0, -1)  );
 }
 
+echo '<?xml version="1.0" encoding="utf-8"?>'."\n";
 ?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "DTD/xhtml1-transitional.dtd">
