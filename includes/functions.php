@@ -3243,4 +3243,33 @@ function load_nonuser_preferences ($nonuser) {
   }
 }
 
+// Determines what today is after the $TZ_OFFSET and sets it globally
+function set_today($date) {
+  global $thisyear, $thisday, $thismonth, $today;
+  global $TZ_OFFSET, $month, $day, $year, $thisday;
+
+  // Adjust for TimeZone
+  $today = time() + ($TZ_OFFSET * 60 * 60);
+
+  if ( ! empty ( $date ) && ! empty ( $date ) ) {
+    $thisyear = substr ( $date, 0, 4 );
+    $thismonth = substr ( $date, 4, 2 );
+    $thisday = substr ( $date, 6, 2 );
+  } else {
+    if ( empty ( $month ) || $month == 0 )
+      $thismonth = date("m", $today);
+    else
+      $thismonth = $month;
+    if ( empty ( $year ) || $year == 0 )
+      $thisyear = date("Y", $today);
+    else
+      $thisyear = $year;
+    if ( empty ( $day ) || $day == 0 )
+      $thisday = date("d", $today);
+    else
+      $thisday = $day;
+  }
+  $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
+}
+
 ?>
