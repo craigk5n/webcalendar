@@ -29,11 +29,10 @@ if ( $res ) {
 print_header();
 ?>
 
-<h2>
-<?php
+<h2><?php
 if ( $updating_public )
   echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
-etranslate("Layers")?></h2>
+etranslate("Layers")?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" onclick="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 
 <?php
 
@@ -111,14 +110,6 @@ else
        <tr><td><a href="edit_layer.php<?php if ( $updating_public ) echo "?public=1";?>"><?php echo (translate("Add layer")); ?></a></td></tr>
 
 </table>
-
-<form action="#">
-<script type="text/javascript">
-<!-- <![CDATA[
-  document.writeln ( '<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( \'help_layers.php\', \'cal_help\', \'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420\');" />' );
-//]]> -->
-</script>
-</form>
 
 <?php print_trailer(); ?>
 </body>
