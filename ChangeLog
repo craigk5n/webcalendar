@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Allow admin users to import events into other user's calendars.
   - Patch 931248: Mishandled single quotes in event name/description when
     overriding a conflict.
   - Fixed bug 929977: site_extras not showing up in event popups when enabled
