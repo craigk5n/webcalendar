@@ -179,7 +179,7 @@ function TimeMatrix ($date,$participants) {
     user_load_variables ( $participants[$i], "user_" );
 
     /* Pre-Load the repeated events for quckier access */
-    $repeated_events = read_repeated_events ( $participants[$i] );
+    $repeated_events = read_repeated_events ( $participants[$i], "", $nowYmd );
     /* Pre-load the non-repeating events for quicker access */
     $events = read_events ( $participants[$i], $nowYmd, $nowYmd );
 

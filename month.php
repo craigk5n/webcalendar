@@ -32,7 +32,7 @@ print_header($INC,$HeadX);
 
 /* Pre-Load the repeated events for quckier access */
 $repeated_events = read_repeated_events (
-  ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login, $cat_id );
+  ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login, $cat_id, $startdate );
 
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )

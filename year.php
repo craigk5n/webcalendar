@@ -97,7 +97,7 @@ $boldDays = false;
 if ( ! empty ( $bold_days_in_year ) && $bold_days_in_year == 'Y' ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events (
-    ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login, $cat_id );
+    ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login, $cat_id, $year . "0101" );
 
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )

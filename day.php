@@ -41,7 +41,7 @@ print_header($INC,$HeadX);
 
 /* Pre-Load the repeated events for quckier access */
 $repeated_events = read_repeated_events ( empty ( $user ) ? $login : $user,
-  $cat_id  );
+  $cat_id, $nowYmd  );
 
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
