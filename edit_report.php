@@ -380,9 +380,9 @@ if ( $is_admin ) {
  <tr><td colspan="2">
   <input type="submit" value="<?php etranslate("Save")?>" />
 <?php if ( ! $adding_report ) { ?>
-  &nbsp;&nbsp;<input type="submit" name="action" value="
-    <?php etranslate("Delete");?>" onclick="return confirm('
-    <?php etranslate("Are you sure you want to delete this report?")?>');" />
+  &nbsp;&nbsp;<input type="submit" name="action" 
+  value="<?php etranslate("Delete");?>"
+  onclick="return confirm('<?php etranslate("Are you sure you want to delete this report?")?>');" />
 <?php } ?>
  </td></tr>
 </table>
