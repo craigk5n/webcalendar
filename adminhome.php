@@ -24,7 +24,14 @@ $style = "
 table.admin {
   padding: 5px;
   border: 1px solid #000000;
-  background-color: #CCCCCC;
+";
+if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) {
+  $style .= "  background-image: url(\"gradient.php?height=300&base=CCCCCC&percent=10\");\n";
+} else { 
+  $style .= "  background-color: #CCCCCC;\n";
+}
+$style .= "
 }
 table.admin td {
   padding: 20px;
