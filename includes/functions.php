@@ -2330,22 +2330,20 @@ function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
   *	Check for conflicts.
   *	Find overlaps between an array of dates and the other dates in
   *	the database.
+  *	<br/>Limits on number of appointments: if enabled in
+  *	System Settings ($limit_appts global variable),
+  *	too many appointments can also generate a scheduling conflict.
+  *	<br/>TODO: Update this to handle exceptions to repeating events
   * Parameters:
   *	$date - is an array of dates in YYYYMMDD format that is checked
-  *	        for overlaps.
+  *	  for overlaps.
   *	$duration - event duration in minutes
   *	$hour - hour of event (0-23)
   *	$minute - minute of the event (0-59)
-  *	$particpants - an array of users whose calendars are to be checked
+  *	$participants - an array of users whose calendars are to be checked
   *	$login - the current user name
-  *	$id - current event id entry being checked if it has been stored before
-  *	(this keeps overlaps from wrongly checking an event against itself)
-  *	<br/><b>TODO:</b> Update this to handle exceptions to repeating events
-  *	<br/>Limits on number of appointments: if enabled in
-  *	System Settings ($limit_appts global variable),
-  *	we will store each event in an array using
-  *	the key $user-$date.  Too many appointments can also be
-  *	returned as a conflict.
+  *	$id - current event id
+  *	  (this keeps overlaps from wrongly checking an event against itself)
   * Returns:
   *	Return empty string for no conflicts or return the HTML of the
   *	conflicts when one or more are found.
@@ -3194,7 +3192,7 @@ function display_time ( $time, $ignore_offset=0 ) {
 /** month_name
   * Description:
   *	Return the full name of the specified month.
-  *	Use the month_name_short function to get the abbreviated
+  *	Use the month_short_name function to get the abbreviated
   *	name of the month.
   * Parameters:
   *	$m - month (0-11)
@@ -3272,7 +3270,7 @@ function weekday_name ( $w ) {
 /** weekday_short_name
   * Description:
   *	Return the abbreviated weekday name.  Use the
-  *	weekday__name function to get the full weekday name.
+  *	weekday_name function to get the full weekday name.
   * Parameters:
   *	$w - weekday (0=Sunday,...,6=Saturday)
   * Returns:
@@ -3706,7 +3704,7 @@ function boss_must_be_notified ( $assistant, $boss ) {
 
 /** boss_must_approve_event
   * Description:
-  *	The the boss user preferences to see if the boss must approve
+  *	Check the boss user preferences to see if the boss must approve
   *	events added to their calendar.
   * Parameters:
   *	$assistant - assistant login
