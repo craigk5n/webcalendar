@@ -28,6 +28,9 @@ if ( ! empty ( $return_path ) ) {
   $url = "index.php";
 }
 
+$login = getPostValue ( 'login' );
+$password = getPostValue ( 'password' );
+
 // calculate path for cookie
 if ( empty ( $PHP_SELF ) )
   $PHP_SELF = $_SERVER["PHP_SELF"];
@@ -72,7 +75,13 @@ if ( $single_user == "Y" ) {
       else
         SetCookie ( "webcalendar_login", $login, 0, $cookie_path );
       do_redirect ( $url );
+    } else {
+      // Invalid login
+      $error = translate("Invalid login" );
     }
+  } else {
+    // No login info... just present empty login page
+    //$error = "Start";
   }
   // delete current user
   SetCookie ( "webcalendar_session", "", 0, $cookie_path );
@@ -107,6 +116,9 @@ function myOnLoad() {
   document.forms[0].login.focus();
   <?php
     if ( ! empty ( $login ) ) echo "document.forms[0].login.select();";
+    if ( ! empty ( $error ) ) {
+      echo "  alert ( \"$error\" );\n";
+    }
   ?>
 }
 </script>

@@ -15,12 +15,6 @@ $ONE_DAY = 86400;
 $days_per_month = array ( 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
 $ldays_per_month = array ( 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
 
-// Don't allow a user to put "login=XXX" in the URL if they are not
-// coming from the login.php page.
-if ( ! strstr ( $PHP_SELF, "login.php" ) && ! empty ( $GLOBALS["login"] ) ) {
-  $GLOBALS["login"] = "";
-}
-
 // List global variables that will not be allowed to be set via HTTP GET/POST
 // This is a security precaution to prevent users from overriding any
 // global variables.
@@ -104,8 +98,17 @@ if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
   reset ( $HTTP_COOKIE_VARS );
 }
 
+// Don't allow a user to put "login=XXX" in the URL if they are not
+// coming from the login.php page.
+if ( ! strstr ( $PHP_SELF, "login.php" ) && ! empty ( $GLOBALS["login"] ) ) {
+  $GLOBALS["login"] = "";
+}
+
+
 function getPostValue ( $name )
 {
+  if ( ! empty ( $_POST[$name] ) )
+    return $_POST[$name];
   if ( ! isset ( $HTTP_POST_VARS ) )
     return null;
   if ( ! isset ( $HTTP_POST_VARS[$name] ) )
@@ -115,6 +118,8 @@ function getPostValue ( $name )
 
 function getGetValue ( $name )
 {
+  if ( ! empty ( $_GET[$name] ) )
+    return $_GET[$name];
   if ( ! isset ( $HTTP_GET_VARS ) )
     return null;
   if ( ! isset ( $HTTP_GET_VARS[$name] ) )
