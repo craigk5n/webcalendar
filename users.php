@@ -80,8 +80,8 @@ print_header($INC);
 	*&nbsp;<?php etranslate("denotes administrative user")?><br />
 
 		<?php 
-			echo "<iframe src=\"edit_user.php?user=" . 
-				$userlist[$i]["cal_login"] . "\" name=\"useriframe\" id=\"useriframe\" style=\"width:90%;border-width:0px; height:280px;\"></iframe>";
+			echo "<iframe " .
+				" name=\"useriframe\" id=\"useriframe\" style=\"width:90%;border-width:0px; height:280px;\"></iframe>";
 		?>
 <?php } else { ?>
 <iframe src="edit_user.php" name="accountiframe" id="accountiframe" style="width:90%;border-width:0px; height:210px;\"></iframe>

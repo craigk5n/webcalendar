@@ -335,7 +335,7 @@ if ( empty ( $error ) ) {
   $sql .= date ( "Ymd" ) . ", " . date ( "Gis" ) . ", ";
   $sql .= sprintf ( "%d, ", $duration );
   $sql .= sprintf ( "%d, ", $priority );
-  $sql .= "'$access', ";
+  $sql .= empty ( $access ) ? "'P', " : "'$access', ";
   if ( $rpt_type != 'none' )
     $sql .= "'M', ";
   else

@@ -12,6 +12,7 @@ load_user_layers ();
 $error = "";
 if ( ! $is_admin )
   $user = $login;
+$action = getValue ( "action" );
 
 // Handle delete
 if ( ( $action == "Delete" || $action == translate ("Delete") ) &&

@@ -19,6 +19,6 @@
 			?>
 		</ul>
 		<?php 
-			echo "<iframe src=\"group_edit.php?id=" . $row[0] . "\" name=\"grpiframe\" id=\"grpiframe\" style=\"width:90%;border-width:0px; height:325px;\"></iframe>";
+			echo "<iframe name=\"grpiframe\" id=\"grpiframe\" style=\"width:90%;border-width:0px; height:325px;\"></iframe>";
 		?>
 </div>

@@ -242,6 +242,7 @@ function dbi_close ( $conn ) {
   *	or true/false on insert or delete queries.
   */
 function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
+  global $phpdbiVerbose;
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     $res = mysql_query ( $sql );
     if ( ! $res )

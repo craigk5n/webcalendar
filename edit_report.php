@@ -269,7 +269,7 @@ if ( $is_admin ) {
 <tr><td><label>
 	<?php etranslate("Include standard header/trailer")?>:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td>
 	<label><input type="radio" name="include_header" value="Y"
-  <?php if ( $include_header != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
+  <?php if ( $report_include_header != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
   &nbsp;&nbsp;&nbsp;
 	<label><input type="radio" name="include_header" value="N"
   <?php if ( $report_include_header == 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("No") ?></label>
