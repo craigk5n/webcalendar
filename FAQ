@@ -60,6 +60,19 @@ A: The system is designed to work with PHP's magic quotes feature
    that automatically adds backslashes for you.  (This is configurable
    in php.ini.)
 
+Q: What are layers?
+A: Using layers allows you to overlay another user's calendar onto
+   your calendar.  Each calendar of another user that you overlay
+   onto your calendar is called a layer (for lack of a better word).
+
+Q: Why do my reminders get sent later than I think they should be sent?
+A: If you setup a reminder to be sent 15 minutes before an event (like
+   a meeting), you must run the send_reminders.php script frequently
+   enough so that it will run after the reminder should be sent and
+   before the actual event.  (Meaning it needs to be run more frequently
+   than every 15 minutes.  Maybe every 5 minutes would work well in this
+   situation.)
+
 Q: I'd like to translate WebCalendar into another language.  What do I do?
 A: It's a fairly simple process.  If you've ever translated a C-based app
    that used GNU's gettext tool, then you'll have no problem.  The I18N
