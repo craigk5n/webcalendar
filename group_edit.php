@@ -36,7 +36,7 @@ if ( $newgroup ) {
   echo "<input type=\"hidden\" name=\"add\" value=\"1\" />\n";
 } else {
   echo "<h2>" . translate("Edit Group") . "</h2>\n";
-  echo "<input name=\"id\" type=\"hidden\" value=\"$id\" />";
+  echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />";
 }
 ?>
 

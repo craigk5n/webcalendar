@@ -81,15 +81,13 @@ if ( $single_user == "N" ) {
 	<input type="submit" value="<?php etranslate("Save")?>" />
 </td></tr>
 <?php
-// If this is 'Edit Layer' (a layer already exists) put a 'Delete Layer' link
-if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
-{
-?>
+// If a layer already exists put a 'Delete Layer' link
+if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) { ?>
 <tr><td>
-	<br /><a href="del_layer.php?id=<?php echo $id; if ( $updating_public ) echo "&public=1"; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></a><br />
+	<br /><a href="del_layer.php?id=<?php echo $id; if ( $updating_public ) echo "&amp;public=1"; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></a><br />
 </td></tr>
 <?php
-}  // end of 'Delete Layer' link if
+}  // end 'Delete Layer' link
 ?>
 </table>
 
