@@ -166,9 +166,8 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
       echo "<a title=\"" . translate("My Calendar") . "\" class=\"navlinks\" href=\"$mycal\" style=\"font-weight:bold;\">" .
         translate("My Calendar") . "</a>";
     if ( ! empty ( $user ) && $user != $login )
-      $todayURL .= '&user=' . $user;
-    echo " | <a title=\"" . translate("Today") . "\" class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") .
-      "</a>";
+      $todayURL .= '&amp;user=' . $user;
+    echo " | <a title=\"" . translate("Today") . "\" class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") . "</a>";
     if ( $login != '__public__' )
       echo " | <a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" .
         translate("Admin") . "</a>";
@@ -193,7 +192,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
       echo " | <a title=\"" . translate("Another User's Calendar") . "\" class=\"navlinks\" href=\"select_user.php\">" . translate("Another User's Calendar") . "</a>";
   } else {
     echo "<a title=\"" . translate("My Calendar") . "\" class=\"navlinks\" href=\"$mycal\" style=\"font-weight:bold;\">" . translate("My Calendar") . "</a>";
-    echo "| <a title=\"" . translate("Today") . "\" class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") . "</a>";
+    echo " | <a title=\"" . translate("Today") . "\" class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") . "</a>";
     echo " | <a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" . translate("Admin") . "</a>";
   }
   // only display some links if we're viewing our own calendar.
@@ -239,7 +238,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
   for ( $i = 0; $i < count ( $views ); $i++ ) {
     if ( $i > 0 )
       echo " | ";
-    echo "<a class=\"navlinks\" href=\"";
+    echo "<a title=\"" . $views[$i]['cal_name'] . "\" class=\"navlinks\" href=\"";
     if ( $views[$i]['cal_view_type'] == 'W' )
       echo "view_w.php?";
     elseif ( $views[$i]['cal_view_type'] == 'D' )
@@ -269,18 +268,16 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
   }
 ?>
 
-
 <!-- REPORTS -->
 <br />
 <?php } // if ( $login != "__public__" ) ?>
-
 <?php if ( ! empty ( $reports_enabled ) && $reports_enabled == 'Y' ) { ?>
 <?php
 $res = dbi_query ( "SELECT cal_report_name, cal_report_id " .
   "FROM webcal_report " .
   "WHERE cal_login = '$login' OR " .
   "( cal_is_global = 'Y' AND cal_show_in_trailer = 'Y' ) " .
-  "ORDER by cal_report_id" );
+  "ORDER BY cal_report_id" );
 $found_report = false;
 if ( ! empty ( $user ) && $user != $login ) {
   $u_url = "&amp;user=$user";
@@ -309,7 +306,6 @@ if ( $login != "__public__" ) {
 }
 ?>
 
-
 <!-- CURRENT USER -->
 <br />
 <?php } ?>
@@ -329,10 +325,10 @@ if ( $login != "__public__" ) {
       $l = $grouplist[$i]['cal_login'];
       $f = $grouplist[$i]['cal_fullname'];
       if ( $i > 0) $groups .= ",&nbsp;";
-      $groups .= "<a class=\"navlinks\" href=\"$GLOBALS[STARTVIEW].php?user=$l\">$f</a>";
+		$groups .= "<a title=\"$f\" class=\"navlinks\" href=\"$GLOBALS[STARTVIEW].php?user=$l\">$f</a>";
     }
     print $groups;
   }
-  print "<br /><a href=\"$GLOBALS[PROGRAM_URL]\" id=\"programname\" target=\"_new\">" .
+  print "<br />\n<a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" href=\"$GLOBALS[PROGRAM_URL]\" id=\"programname\" target=\"_new\">" .
     $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 ?>
