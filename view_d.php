@@ -6,15 +6,23 @@
  *	Display a timebar view of a single day.
  *
  * Input Parameters:
- *	date (optional) - The date to view
- *
+ *	id (*) - specify view id in webcal_view table
+ *	date - specify the starting date of the view.
+ *	  If not specified, current date will be used.
+ *	friendly - if set to 1, then page does not include links or
+ *	  trailer navigation.
+ *	(*) required field
+	*
  * Security:
- *
+ *	Must have "allow view others" enabled ($allow_view_other) in
+ *	  System Settings unless the user is an admin user ($is_admin).
+ *	Must be owner of the view.
  */
 //$start = microtime();
 
 include_once 'includes/init.php';
 
+$error = "";
 // Don't allow users to use this feature if "allow view others" is
 // disabled.
 if ( $allow_view_other == "N" && ! $is_admin ) {
@@ -23,7 +31,7 @@ if ( $allow_view_other == "N" && ! $is_admin ) {
 }
 
 if ( empty ( $id ) ) {
-  echo "Error: no id"; exit;
+  do_redirect ( "views.php" );
 }
 
 // Find view name in $views[]
@@ -34,8 +42,34 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   }
 }
 
+// If view_name not found, then the specified view id does not
+// belong to current user. 
+if ( empty( $view_name ) ) {
+  $error = translate ( "You are not authorized" );
+}
+
 $INC = array ( 'js/view_d.php' );
 print_header ( $INC );
+
+// get users in this view
+$res = dbi_query (
+  "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
+$participants = array ();
+if ( $res ) {
+  while ( $row = dbi_fetch_row ( $res ) ) {
+    $participants[] = $row[0];
+  }
+  dbi_free_result ( $res );
+} else {
+  $error = translate ( "Database error" ) . ": " . dbi_error ();
+}
+
+if ( ! empty ( $error ) ) {
+  echo "<h2>" . translate ( "Error" ) .
+    "</h2>\n" . $error;
+  print_trailer ();
+  exit;
+}
 
 set_today($date);
 if (!$date) $date = $thisdate;
@@ -60,9 +94,9 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 ?>
 
 <div style="border-width:0px; width:99%;">
-<a title="<?php etranslate("Previous")?>" class="prev" href="view_d.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate("Previous")?>" class="prev" href="view_d.php?id=<?php echo $id . "&amp;date=" . $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 
-<a title="<?php etranslate("Next")?>" class="next" href="view_d.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<a title="<?php etranslate("Next")?>" class="next" href="view_d.php?id=<?php echo $id . "&amp;date=" . $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php 
   printf ( "%s, %s %d, %d", weekday_name ( $wday ),
@@ -73,16 +107,6 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 
 <center>
 <?php
-// get users in this view
-$res = dbi_query (
-  "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
-$participants = array ();
-if ( $res ) {
-  while ( $row = dbi_fetch_row ( $res ) ) {
-    $participants[] = $row[0];
-  }
-  dbi_free_result ( $res );
-}
 TimeMatrix($date,$participants);
 ?>
 <br />

@@ -1,11 +1,35 @@
 <?php
+/*
+ * $Id$
+ *
+ * Page Description:
+ *	Display view of a week with users side by side.
+ *
+ * Input Parameters:
+ *	id (*) - specify view id in webcal_view table
+ *	date - specify the starting date of the view.
+ *	  If not specified, current date will be used.
+ *	friendly - if set to 1, then page does not include links or
+ *	  trailer navigation.
+ *	(*) required field
+	*
+ * Security:
+ *	Must have "allow view others" enabled ($allow_view_other) in
+ *	  System Settings unless the user is an admin user ($is_admin).
+ *	Must be owner of the view.
+ */
 include_once 'includes/init.php';
 
+$error = "";
 $USERS_PER_TABLE = 6;
 
 if ( $allow_view_other == "N" && ! $is_admin ) {
   // not allowed...
   do_redirect ( "$STARTVIEW.php" );
+}
+
+if ( empty ( $id ) ) {
+  do_redirect ( "views.php" );
 }
 
 // Find view name in $views[]
@@ -16,8 +40,16 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   }
 }
 
+// If view_name not found, then the specified view id does not
+// belong to current user. 
+if ( empty( $view_name ) ) {
+  $error = translate ( "You are not authorized" );
+}
+
 $INC = array('js/popups.php');
 print_header($INC);
+
+
 
 set_today($date);
 
@@ -53,6 +85,26 @@ for ( $i = 0; $i < 7; $i++ ) {
      " " . date ( "d", $days[$i] );
 }
 
+
+// get users in this view
+$res = dbi_query (
+  "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
+$viewusers = array ();
+if ( $res ) {
+  while ( $row = dbi_fetch_row ( $res ) ) {
+    $viewusers[] = $row[0];
+  }
+  dbi_free_result ( $res );
+} else {
+  $error = translate ( "Database error" ) . ": " . dbi_error ();
+}
+
+if ( ! empty ( $error ) ) {
+  echo "<h2>" . translate ( "Error" ) .
+    "</h2>\n" . $error;
+  print_trailer ();
+  exit;
+}
 ?>
 
 <div style="border-width:0px; width:99%;">
@@ -76,16 +128,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 // Additionally, we only want to put at most 6 users in one table since
 // any more than that doesn't really fit in the page.
 
-// get users in this view
-$res = dbi_query (
-  "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
-$viewusers = array ();
-if ( $res ) {
-  while ( $row = dbi_fetch_row ( $res ) ) {
-    $viewusers[] = $row[0];
-  }
-  dbi_free_result ( $res );
-}
+
 $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < count ( $viewusers ); $i++ ) {

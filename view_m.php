@@ -1,5 +1,26 @@
 <?php
+/*
+ * $Id$
+ *
+ * Page Description:
+ *	Display a month view with users side by side.
+ *
+ * Input Parameters:
+ *	id (*) - specify view id in webcal_view table
+ *	date - specify the starting date of the view.
+ *	  If not specified, current date will be used.
+ *	friendly - if set to 1, then page does not include links or
+ *	  trailer navigation.
+ *	(*) required field
+	*
+ * Security:
+ *	Must have "allow view others" enabled ($allow_view_other) in
+ *	  System Settings unless the user is an admin user ($is_admin).
+ *	Must be owner of the view.
+ */
 include_once 'includes/init.php';
+
+$error = "";
 
 $USERS_PER_TABLE = 6;
 
@@ -8,12 +29,22 @@ if ( $allow_view_other == "N" && ! $is_admin ) {
   do_redirect ( "$STARTVIEW.php" );
 }
 
+if ( empty ( $id ) ) {
+  do_redirect ( "views.php" );
+}
+
 // Find view name in $views[]
 $view_name = "";
 for ( $i = 0; $i < count ( $views ); $i++ ) {
   if ( $views[$i]['cal_view_id'] == $id ) {
     $view_name = $views[$i]['cal_name'];
   }
+}
+
+// If view_name not found, then the specified view id does not
+// belong to current user. 
+if ( $view_name == "" ) {
+  $error = translate ( "You are not authorized" );
 }
 
 $INC = array('js/popups.php');
@@ -66,7 +97,17 @@ if ( $res ) {
     $viewusers[] = $row[0];
   }
   dbi_free_result ( $res );
+} else {
+  $error = translate ( "Database error" ) . ": " . dbi_error ();
 }
+
+if ( ! empty ( $error ) ) {
+  echo "<h2>" . translate ( "Error" ) .
+    "</h2>\n" . $error;
+  print_trailer ();
+  exit;
+}
+
 $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
