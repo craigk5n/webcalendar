@@ -1,4 +1,8 @@
 Version 0.9.31dev (???)
+  - Patch 435403 from Franz Sedlmaier:
+    When a user edits an event, save the existing status (accepted,
+    rejected) of each user rather than resetting it back to
+    pending.  Don't send users notifications unless the date/time changed.
   - Patch 435396 from Franz Sedlmaier for bug 435390:
     Notification for rejecting events was not working.  Don't send
     the notification to other users who rejected the event.

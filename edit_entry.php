@@ -156,10 +156,38 @@ function validate_and_submit () {
           echo "if ( h < $WORK_DAY_START_HOUR && document.forms[0].ampm[0].checked ) {";
         }
   ?>
-
     if ( ! confirm ( "<?php etranslate ("The time you have entered begins before your preferred work hours.  Is this correct?")?> "))
       return false;
   }
+  // is there really a change?
+  changed = false;
+  form=document.forms[0];
+  for ( i = 0; i < form.elements.length; i++ ) {
+    field = form.elements[i];
+    switch ( field.type ) {
+      case "radio":
+      case "checkbox":
+        if ( field.checked != field.defaultChecked )
+          changed = true;
+        break;
+      case "text":
+//      case "textarea":
+        if ( field.value != field.defaultValue )
+          changed = true;
+        break;
+      case "select-one":
+//      case "select-multiple":
+        for( j = 0; j < field.length; j++ ) {
+          if ( field.options[j].selected != field.options[j].defaultSelected )
+            changed = true;
+        }
+        break;
+    }
+  }
+  if ( changed ) {
+    form.entry_changed.value = "yes";
+  }
+
   // would be nice to also check date to not allow Feb 31, etc...
   document.forms[0].submit ();
   return true;
@@ -186,7 +214,11 @@ if ( $can_edit ) {
 ?>
 <FORM ACTION="edit_entry_handler.php" METHOD="POST" NAME="editentryform">
 
-<?php if ( $id ) echo "<INPUT TYPE=\"hidden\" NAME=\"id\" VALUE=\"$id\">\n"; ?>
+<?php
+if ( $id ) echo "<INPUT TYPE=\"hidden\" NAME=\"id\" VALUE=\"$id\">\n";
+// we need an additional hidden input field
+echo "<INPUT TYPE=\"hidden\" NAME=\"entry_changed\" VALUE=\"\">\n";
+?>
 
 <TABLE BORDER=0>
 
