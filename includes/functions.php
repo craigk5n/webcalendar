@@ -691,6 +691,7 @@ function load_user_layers ($user="",$force=0) {
       "FROM webcal_user_layers " .
       "WHERE cal_login = '$user' ORDER BY cal_layerid" );
     if ( $res ) {
+      $count = 1;
       while ( $row = dbi_fetch_row ( $res ) ) {
         $layers[$row[0]] = array (
           "cal_layerid" => $row[0],
@@ -698,6 +699,7 @@ function load_user_layers ($user="",$force=0) {
           "cal_color" => $row[2],
           "cal_dups" => $row[3]
         );
+        $count++;
       }
       dbi_free_result ( $res );
     }
@@ -899,11 +901,11 @@ function print_entry ( $id, $date, $time, $duration,
 
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
-    for($index = 0; $index < sizeof($layers); $index++)
+    foreach ($layers as $layer)
     {
-        if($layers[$index]['cal_layeruser'] == $event_owner)
+        if($layer['cal_layeruser'] == $event_owner)
         {
-            echo("<span style=\"color:" . $layers[$index]['cal_color'] . "\">");
+            echo("<span style=\"color:" . $layer['cal_color'] . "\">");
         }
     }
   }
@@ -953,9 +955,9 @@ function print_entry ( $id, $date, $time, $duration,
   echo "</a>";
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
-    for($index = 0; $index < sizeof($layers); $index++)
+    foreach ($layers as $layer)
     {
-        if($layers[$index]['cal_layeruser'] == $event_owner)
+        if($layer['cal_layeruser'] == $event_owner)
         {
             echo "</span>\n";
         }
@@ -1206,14 +1208,14 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
     $sql .= "AND (webcal_entry_user.cal_login = '" . $user . "' ";
 
   if ( $user == $login && strlen ( $user ) > 0 ) {
-    for ($index = 0; $index < sizeof($layers); $index++) {
-      $layeruser = $layers[$index]['cal_layeruser'];
+    foreach ($layers as $layer) {
+      $layeruser = $layer['cal_layeruser'];
 
       $sql .= "OR webcal_entry_user.cal_login = '" . $layeruser . "' ";
 
       // while we are parsing the whole layers array, build ourselves
       // a new array that will help when we have to check for dups
-      $layers_byuser["$layeruser"] = $layers[$index]['cal_dups'];
+      $layers_byuser["$layeruser"] = $layer['cal_dups'];
     }
   }
   if ( $user == $login && strlen ( $user ) &&
@@ -2182,10 +2184,10 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
-    for ( $index = 0; $index < sizeof($layers); $index++ ) {
-      if ( $layers[$index]['cal_layeruser'] == $event_owner ) {
+    foreach ($layers as $layer) {
+      if ( $layer['cal_layeruser'] == $event_owner ) {
         $hour_arr[$ind] .= "<span style=\"color:" .
-          $layers[$index]['cal_color'] . ";\">";
+          $layer['cal_color'] . ";\">";
       }
     }
   }
@@ -2341,10 +2343,10 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
 
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
-    for ( $index = 0; $index < sizeof($layers); $index++) {
-      if ( $layers[$index]['cal_layeruser'] == $event_owner) {
+    foreach ($layers as $layer) {
+      if ( $layer['cal_layeruser'] == $event_owner) {
         $hour_arr[$ind] .= "<span style=\"color:" .
-          $layers[$index]['cal_color'] . ";\">";
+          $layer['cal_color'] . ";\">";
       }
     }
   }
@@ -3305,11 +3307,11 @@ function print_entry_timebar ( $id, $date, $time, $duration,
 
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
-    for($index = 0; $index < sizeof($layers); $index++)
+    foreach ($layers as $layer)
     {
-        if($layers[$index]['cal_layeruser'] == $event_owner)
+        if($layer['cal_layeruser'] == $event_owner)
         {
-            echo("<span style=\"color:" . $layers[$index]['cal_color'] . ";\">");
+            echo("<span style=\"color:" . $layer['cal_color'] . ";\">");
         }
     }
   }
