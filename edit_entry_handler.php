@@ -406,7 +406,7 @@ if ( empty ( $error ) ) {
             $user_day = $day;
             $user_year = $year;
           }
-          if ($GLOBALS['LANGUAGE'] != $user_language){
+          if (($GLOBALS['LANGUAGE'] != $user_language) && ! empty ( $user_language ) && ( $user_language != 'none' )){
             reset_language ( $user_language );
           }
           //do_debug($user_language);				
@@ -548,7 +548,7 @@ if ( empty ( $error ) ) {
             $user_day = $day;
             $user_year = $year;
           }
-          if ($GLOBALS['LANGUAGE'] != $user_language){
+          if (($GLOBALS['LANGUAGE'] != $user_language) && ! empty ( $user_language ) && ( $user_language != 'none' )){
              reset_language ( $user_language );
           }
           //do_debug($user_language);

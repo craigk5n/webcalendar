@@ -118,7 +118,7 @@ if ( $id > 0 && empty ( $error ) ) {
       user_load_variables ( $partlogin[$i], "temp" );						
       if ( $partlogin[$i] != $login && $do_send == "Y" && boss_must_be_notified ( $login, $partlogin[$i] ) && 
         strlen ( $tempemail ) && $send_email != "N" ) {
-        if ($GLOBALS['LANGUAGE'] != $user_language){
+         if (($GLOBALS['LANGUAGE'] != $user_language) && ! empty ( $user_language ) && ( $user_language != 'none' )){
           reset_language ( $user_language );
         }
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
