@@ -11,11 +11,13 @@ $showLoginFailureReason = false;
 
 load_global_settings ();
 
-if ( ! empty ( $last_login ) )
+if ( ! empty ( $last_login ) ) {
   $login = "";
+}
 
-if ( empty ( $webcalendar_login ) )
+if ( empty ( $webcalendar_login ) ) {
   $webcalendar_login = "";
+}
 
 if ( $remember_last_login == "Y" && empty ( $login ) ) {
   $last_login = $login = $webcalendar_login;
@@ -34,10 +36,12 @@ if ( ! empty ( $return_path ) ) {
 }
 
 $lang = '';
-if ( ! empty ( $LANGUAGE ) )
+if ( ! empty ( $LANGUAGE ) ) {
   $lang = languageToAbbrev ( $LANGUAGE );
-if ( empty ( $lang ) )
+}
+if ( empty ( $lang ) ) {
   $lang = 'en';
+}
 
 $login = getPostValue ( 'login' );
 $password = getPostValue ( 'password' );
@@ -47,8 +51,9 @@ if ( ! empty ( $settings['session'] ) && $settings['session'] = 'php' ) {
 }
 
 // calculate path for cookie
-if ( empty ( $PHP_SELF ) )
+if ( empty ( $PHP_SELF ) ) {
   $PHP_SELF = $_SERVER["PHP_SELF"];
+}
 $cookie_path = str_replace ( "login.php", "", $PHP_SELF );
 //echo "Cookie path: $cookie_path\n";
 
@@ -79,11 +84,12 @@ if ( $single_user == "Y" ) {
       if ( ! empty ( $settings['session'] ) && $settings['session'] = 'php' ) {
         $_SESSION['webcalendar_session'] = $encoded_login;
       } else {
-        if ( ! empty ( $remember ) && $remember == "yes" )
+        if ( ! empty ( $remember ) && $remember == "yes" ) {
           SetCookie ( "webcalendar_session", $encoded_login,
             time() + ( 24 * 3600 * 365 ), $cookie_path );
-        else
+        } else {
           SetCookie ( "webcalendar_session", $encoded_login, 0, $cookie_path );
+        }
       }
       // The cookie "webcalendar_login" is provided as a convenience to
       // other apps that may wish to find out what the last calendar
@@ -92,16 +98,18 @@ if ( $single_user == "Y" ) {
       // is not used to allow logins within this app.  It is used to
       // load user preferences on the login page (before anyone has
       // logged in) if $remember_last_login is set to "Y" (in admin.php).
-      if ( ! empty ( $remember ) && $remember == "yes" )
+      if ( ! empty ( $remember ) && $remember == "yes" ) {
         SetCookie ( "webcalendar_login", $login,
           time() + ( 24 * 3600 * 365 ), $cookie_path );
-      else
+      } else {
         SetCookie ( "webcalendar_login", $login, 0, $cookie_path );
+      }
       do_redirect ( $url );
     } else {
       // Invalid login
-      if ( empty ( $error ) || ! $showLoginFailureReason )
+      if ( empty ( $error ) || ! $showLoginFailureReason ) {
         $error = translate("Invalid login" );
+      }
     }
   } else {
     // No login info... just present empty login page
@@ -113,8 +121,9 @@ if ( $single_user == "Y" ) {
   // thinks "path/" and "path" are different, so the line above does not
   // delete the "old" cookie. This prohibits the login. So we delete the
   // cookie with the trailing slash removed
-  if (substr($cookie_path, -1) == '/')
+  if (substr($cookie_path, -1) == '/') {
     SetCookie ( "webcalendar_session", "", 0, substr($cookie_path, 0, -1)  );
+  }
 }
 
 echo '<?xml version="1.0" encoding="utf-8"?>'."\n";
@@ -122,7 +131,8 @@ echo '<?xml version="1.0" encoding="utf-8"?>'."\n";
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" lang="<?php echo $lang; ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" 
+  lang="<?php echo $lang; ?>">
 <head>
 <title><?php etranslate($application_name)?></title>
 <script type="text/javascript">
@@ -136,14 +146,14 @@ function valid_form ( form ) {
 }
 function myOnLoad() {
   <?php if ( ! empty ( $plugins_enabled ) && ( $plugins_enabled ) ){ ?>
-	  if (self != top)  {
-	    window.open("login.php","_top","");
-	    return;
-	  }
+   if (self != top)  {
+     window.open("login.php","_top","");
+     return;
+   }
   <?php } ?>
-  document.forms[0].login.focus();
+  document.login_form.login.focus();
   <?php
-    if ( ! empty ( $login ) ) echo "document.forms[0].login.select();";
+    if ( ! empty ( $login ) ) echo "document.login_form.login.select();";
     if ( ! empty ( $error ) ) {
       echo "  alert ( \"$error\" );\n";
     }
@@ -151,20 +161,20 @@ function myOnLoad() {
 }
 </script>
 <?php 
-	include "includes/styles.php";
+ include "includes/styles.php";
 
-	// Print custom header (since we do not call print_header function)
-	if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
-	  $res = dbi_query (
-	    "SELECT cal_template_text FROM webcal_report_template " .
-	    "WHERE cal_template_type = 'S' and cal_report_id = 0" );
-	  if ( $res ) {
-	    if ( $row = dbi_fetch_row ( $res ) ) {
-	      echo $row[0];
-	    }
-	    dbi_free_result ( $res );
-	  }
-	}
+ // Print custom header (since we do not call print_header function)
+ if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
+   $res = dbi_query (
+     "SELECT cal_template_text FROM webcal_report_template " .
+     "WHERE cal_template_type = 'S' and cal_report_id = 0" );
+   if ( $res ) {
+     if ( $row = dbi_fetch_row ( $res ) ) {
+       echo $row[0];
+     }
+     dbi_free_result ( $res );
+   }
+ }
 ?>
 </head>
 <body onload="myOnLoad();">
@@ -183,48 +193,67 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 }
 ?>
 
-<h2><?php etranslate($application_name)?></h2>
+<h2><?php 
+// If Application Name is set to Title then get translation
+// If not, use the Admin defined Application Name
+if ( ! empty ( $application_name ) &&  $application_name =="Title") {
+  etranslate($application_name);
+} else {
+  echo htmlspecialchars ( $application_name );
+}  
+?></h2>
 
 <?php
 if ( ! empty ( $error ) ) {
-  print "<span style=\"color:#FF0000; font-weight:bold;\">" . translate("Error") .
-    ": $error</span><br />\n";
+  print "<span style=\"color:#FF0000; font-weight:bold;\">" . 
+    translate("Error") . ": $error</span><br />\n";
+} else {
+  print "<br />\n";
 }
 ?>
-<form name="login_form" id="login" action="login.php" method="post" onsubmit="return valid_form(this)">
+<form name="login_form" id="login" action="login.php" method="post" 
+  onsubmit="return valid_form(this)">
 <?php
-if ( ! empty ( $return_path ) )
+if ( ! empty ( $return_path ) ) {
   echo "<input type=\"hidden\" name=\"return_path\" value=\"" .
     htmlentities ( $return_path ) . "\" />\n";
+}
 ?>
 
 <table cellpadding="10" align="center">
 <tr><td rowspan="2">
-	<img src="login.gif" alt="Login" /></td><td align="right">
-	<label for="user"><?php etranslate("Username")?>:</label></td><td>
-	<input name="login" id="user" size="15" maxlength="25" value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" tabindex="1" />
+ <img src="login.gif" alt="Login" /></td><td align="right">
+ <label for="user"><?php etranslate("Username")?>:</label></td><td>
+ <input name="login" id="user" size="15" maxlength="25" 
+   value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" 
+   tabindex="1" />
 </td></tr>
 <tr><td style="text-align:right;">
-	<label for="password"><?php etranslate("Password")?>:</label></td><td>
-	<input name="password" id="password" type="password" size="15" maxlength="30" tabindex="2" />
+ <label for="password"><?php etranslate("Password")?>:</label></td><td>
+ <input name="password" id="password" type="password" size="15" 
+   maxlength="30" tabindex="2" />
 </td></tr>
 <tr><td colspan="3" style="font-size: 10px;">
-	<input type="checkbox" name="remember" id="remember" tabindex="3" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked=\"checked\""; ?> /><label for="remember">&nbsp;<?php etranslate("Save login via cookies so I don't have to login next time")?></label>
+ <input type="checkbox" name="remember" id="remember" tabindex="3" 
+   value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) {
+     echo "checked=\"checked\""; }?> /><label for="remember">&nbsp;
+   <?php etranslate("Save login via cookies so I don't have to login next time")?></label>
 </td></tr>
 <tr><td colspan="4" style="text-align:center;">
-	<input type="submit" value="<?php etranslate("Login")?>" tabindex="4" />
+ <input type="submit" value="<?php etranslate("Login")?>" tabindex="4" />
 </td></tr>
 </table>
 </form>
 
 <?php if ( $public_access == "Y" ) { ?>
-	<br /><br />
-	<a class="nav" href="index.php"><?php etranslate("Access public calendar")?></a><br />
+ <br /><br />
+ <a class="nav" href="index.php">
+   <?php etranslate("Access public calendar")?></a><br />
 <?php } ?>
 
 <?php if ( $demo_mode == "Y" ) {
-	// This is used on the sourceforge demo page
-	echo "Demo login: user = \"demo\", password = \"demo\"<br />";
+ // This is used on the sourceforge demo page
+ echo "Demo login: user = \"demo\", password = \"demo\"<br />";
 } ?>
 <br /><br /><br />
 <span class="cookies"><?php etranslate("cookies-note")?></span><br />
