@@ -1,16 +1,17 @@
 Version 1.0RC4-CVS (?? ??? 2005)
-  - Fixed bug 1167281: View_l loses colour for "today"
-  - Added new default webcal_config values to all sql table definition files
-  - Fixed bug 1167790: class="selectedday" assignments in other than day.php
-  - Changed edit_entry_handler to remove requirement for Admins to approve
-    Public events that they create.
-  - Applied bug fix 1151442: Overlapping events display error in week.php
-  - Removed most instances of htnlentities as unneeded
-  - Fixed bug 1162486: Path exposure issue with view_entry.php
-  - Fixed problem, if non-user calendars are diabled, the most recent change
-    to add Public Access to the 'Manage Calendar of:' list throws a Warning.
-  - Updated Finnish translation
-  - Added option to set LDAP_OPT_PROTOCOL_VERSION in user-ldap.php
+ - Fixed bug 1167281: View_l loses colour for "today"
+ - Added new default webcal_config values to all sql table definition files
+ - Fixed bug 1167790: class="selectedday" assignments in other than day.php
+ - Changed edit_entry_handler to remove requirement for Admins to approve
+   Public events that they create.
+ - Applied bug fix 1151442: Overlapping events display error in week.php
+ - Removed most instances of htnlentities as unneeded
+ - Fixed bug 1162486: Path exposure issue with view_entry.php
+ - Fixed problem, if non-user calendars are diabled, the most recent change
+   to add Public Access to the 'Manage Calendar of:' list throws a Warning.
+ - Added option to set LDAP_OPT_PROTOCOL_VERSION in user-ldap.php
+ - Updated Danish translation
+ - Updated Finnish translation
 Version 1.0RC3 (11 Mar 2005)
  - Added 'Public Access' to Manage Calendar of: list, if Admin. 
  - Removed ODBC host:database option from php-dbi.php. If needed, host can be 
