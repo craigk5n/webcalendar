@@ -137,6 +137,10 @@ if ( empty ( $error ) && $report_id > 0 ) {
         // If not admin, only creator can edit/delete the event
         $error = translate ( "You are not authorized" );
       }
+      
+      // If we are editing a public user report we need to set $updating_public
+      if ( $is_admin && $report_login == "__public__" ) $updating_public = true;
+        
     } else {
       $error = translate ( "Invalid report id" ) . ": $report_id";
     }
