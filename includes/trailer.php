@@ -137,8 +137,10 @@
 
   if ( strlen ( get_last_view() ) )
     $mycal = get_last_view ();
-  else
+  else if ( ! empty ( $STARTVIEW ) )
     $mycal = "$STARTVIEW.php";
+  else
+    $mycal = "index.php";
   if ( $single_user != "Y" ) {
     if ( ! empty ( $user ) && $user != $login )
       echo "<A CLASS=\"navlinks\" HREF=\"$mycal\"><B>" .
