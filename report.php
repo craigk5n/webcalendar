@@ -489,7 +489,8 @@ if ( empty ( $friendly ) && empty ( $error ) && empty ( $list ) ) {
   }
   if ( $report_include_header == 'Y' ) {
     echo '<p><a class="navlinks" href="report.php?report_id=' . $report_id .
-      '&friendly=1$u_url" target="cal_printer_friendly" onmouseover="window.status=\'' .
+      '&friendly=1' . $u_url . '&offset=' . $offset .
+      '" target="cal_printer_friendly" onmouseover="window.status=\'' .
       translate("Generate printer-friendly version") .
       '\'">[' . translate("Printer Friendly") . ']</a>';
   }
