@@ -95,7 +95,7 @@ $thisdate = $startdate;
 $res = dbi_query (
   "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
 $viewusers = array ();
-$all_users = true;
+$all_users = false;
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $viewusers[] = $row[0];
