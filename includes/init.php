@@ -45,6 +45,9 @@ $SCRIPT = $match[1];
 $special = array('month.php', 'day.php', 'week.php', 'week_details.php');
 $DMW = in_array($SCRIPT, $special);
 
+// Unset some variables that shouldn't be set
+unset($user_inc);
+ 
 include_once 'includes/config.php';
 include_once 'includes/php-dbi.php';
 include_once 'includes/functions.php';

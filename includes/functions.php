@@ -472,7 +472,7 @@ function load_user_preferences () {
     $GLOBALS["DATE_FORMAT_MD"] = "__month__ __dd__";
   $is_assistant = user_is_assistant ( $login, $user );
   $has_boss = user_has_boss ( $login );
-  if ($user) $is_nonuser_admin = user_is_nonuser_admin ( $login, $user );
+  $is_nonuser_admin = ($user) ? user_is_nonuser_admin ( $login, $user ) : false;
   if ( $is_nonuser_admin ) load_nonuser_preferences ($user);
 }
 
