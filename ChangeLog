@@ -1,4 +1,5 @@
 Version 0.9.35dev (?? ??? 2002)
+  - Added tables-db2.sql for IBM DB2 users
   - Updated German translation
   - Added Finnish translation
 Version 0.9.34 (16 Dec 2001)
