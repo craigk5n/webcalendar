@@ -67,7 +67,7 @@ CREATE TABLE webcal_entry_ext_user (
 CREATE TABLE webcal_user_pref (
   cal_login varchar(25) NOT NULL,
   cal_setting varchar(25) NOT NULL,
-  cal_value varchar(50),
+  cal_value varchar(100),
   PRIMARY KEY ( cal_login, cal_setting )
 );
 
@@ -133,7 +133,7 @@ CREATE TABLE webcal_view_user (
 
 CREATE TABLE webcal_config (
   cal_setting VARCHAR(50) NOT NULL,
-  cal_value VARCHAR(50) NOT NULL,
+  cal_value VARCHAR(100) NOT NULL,
   PRIMARY KEY ( cal_setting )
 );
 

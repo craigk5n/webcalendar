@@ -1,4 +1,6 @@
 Version 0.9.41dev (?? ??? ???)
+  - Altered webcal_user_pref and webcal_config tables to allow
+    values of 100 chars instead of 50.
   - Fixed bug 732887: extra CR chars in external users
   - Fixed bug 736411: Array elements disappear if using + to concat
   - Added patch 673899: Viewing rights set wrong for view_entry.php
