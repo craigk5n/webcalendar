@@ -25,7 +25,9 @@ $db_persistent = 1;
 
 // Oracle example
 //$db_type = "oracle";
-//$db_host = ""; // use localhost
+// Note: may not need to define db_host at all on some systems (use "").
+// If you get an error logging into Oracle, try leaving this blank.
+//$db_host = ""; // use localhost.
 //$db_login = "webcalendar";
 //$db_password = "webcal01";
 // for oracle, db_database should be the name in tnsnames.ora
