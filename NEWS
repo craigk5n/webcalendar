@@ -1,4 +1,4 @@
-Version 1.0RC1 (?? ??? 2005)
+Version 1.0RC1 (04 Feb 2005)
   - Fixed the following bugs reports on SourceForge:
        824268: Emails notifications used wront timezone
        931096: Restrict views and view edits to owner of that view
