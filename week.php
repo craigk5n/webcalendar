@@ -65,7 +65,8 @@ for ( $i = 0; $i < 7; $i++ ) {
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <td align="left"><a title="<?php etranslate("Previous")?>" href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a></td>
 <?php } ?>
-<td style="text-align:center;"><span class="pagetitle">
+<td class="weekviewtitle">
+<span class="date">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
@@ -74,11 +75,11 @@ for ( $i = 0; $i < 7; $i++ ) {
 </span>
 <?php
 if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
-  echo "<br />\n<span style=\"font-size:10px; color:$H2COLOR;\">(" .
+  echo "<br />\n<span class=\"weeknumber\">(" .
     translate("Week") . " " . week_number ( $wkstart ) . ")</span>";
 }
 ?>
-<span style="font-size:18px; color:<?php echo $H2COLOR;?>;">
+<span class="user">
 <?php
   if ( $single_user == "N" ) {
     echo "<br />$user_fullname\n";
@@ -101,7 +102,6 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 </table>
 
 <table class="weekview" cellspacing="0" cellpadding="0">
-
 <tr>
 <th class="empty">&nbsp;</th>
 <?php

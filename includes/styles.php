@@ -71,10 +71,10 @@
   background-color: #E7E7E7;
 }
 .weeknumber {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
-  font-size: 10px;
-  color: #B04040;
-  text-decoration: none;
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 10px;
+	color: #B04040;
+	text-decoration: none;
 }
 .entry {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
@@ -371,6 +371,24 @@ table.weekview {
 	vertical-align: top;
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
 }
+.weekviewtitle {
+	text-align: center;
+}
+/* contains the year (i.e. 2004) in year.php */
+td.weekviewtitle .date {
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+}
+td.weekviewtitle .user {
+	font-size: 18px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	text-align: center;
+}
+
+
 .new {
 	border-width: 0px;
 	width: 10px;
