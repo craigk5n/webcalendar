@@ -254,7 +254,7 @@ print_header();
 
 <h2><?php etranslate("Error")?></h2>
 <blockquote>
-<?php echo htmlentities ( $error ); ?>
+<?php echo  $error ; ?>
 </blockquote>
 
 <?php print_trailer(); ?>
