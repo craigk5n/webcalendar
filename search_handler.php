@@ -17,11 +17,11 @@ if ( $readonly == "Y" || $single_user == "Y" )
 print_header();
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Search Results")?></FONT></H2>
+<h2><?php etranslate("Search Results")?></h2>
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo "<B>" . translate("Error") . ":</B> $error";
+  echo "<b>" . translate("Error") . ":</b> $error";
 } else {
   $ids = array ();
   $words = split ( " ", $keywords );
@@ -77,9 +77,9 @@ if ( $matches > 0 )
   $matches = count ( $ids );
 
 if ( $matches == 1 )
-  echo "<B>$matches " . translate("match found") . ".</B><P>";
+  echo "<b>$matches " . translate("match found") . ".</b><br /><br />";
 else if ( $matches > 0 )
-  echo "<B>$matches " . translate("matches found") . ".</B><P>";
+  echo "<b>$matches " . translate("matches found") . ".</b><br /><br />";
 else
   echo translate("No matches found") . ".";
 
@@ -87,15 +87,15 @@ else
 if ( empty ( $error ) ) {
   arsort ( $ids );
   for ( reset ( $ids ); $key = key ( $ids ); next ( $ids ) ) {
-    echo "<LI><A CLASS=\"navlinks\" HREF=\"view_entry.php?id=$key\">" . $info[$key] . "</A>\n";
+    echo "<li><a class=\"navlinks\" href=\"view_entry.php?id=$key\">" . $info[$key] . "</a>\n";
   }
 }
 
 ?>
 
-<P>
+<br /><br />
 
 <?php print_trailer(); ?>
 
-</BODY>
-</HTML>
+</body>
+</html>

@@ -3,16 +3,16 @@ include_once 'includes/init.php';
 print_header();
 
 if ( ! $is_admin ) {
-  echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Error") .
-    "</FONT></H2>" . translate("You are not authorized") . ".\n";
+  echo "<h2>" . translate("Error") .
+    "</h2>" . translate("You are not authorized") . ".\n";
   print_trailer ();
-  echo "</BODY></HTML>\n";
+  echo "</body></html>\n";
   exit;
 }
 ?>
 
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Users")?></FONT></H2>
+<h2><?php etranslate("Users")?></h2>
 
 <ul>
 <?php
@@ -31,13 +31,13 @@ for ( $i = 0; $i < count ( $userlist ); $i++ ) {
 ?>
 </ul>
 <sup>*</sup> <?php etranslate("denotes administrative user")?>
-<P>
+<br /><br />
 <?php
   if ( $admin_can_add_user )
-    echo "<A HREF=\"edit_user.php\">" . translate("Add New User") .
-      "</A><BR>\n";
+    echo "<a href=\"edit_user.php\">" . translate("Add New User") .
+      "</a><br />\n";
 ?>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

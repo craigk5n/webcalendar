@@ -35,10 +35,10 @@ if ( empty ( $id ) ) {
 
 if ( $newview ) {
   $v = array ();
-  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Add View") . "</h2>\n";
+  echo "<h2>" . translate("Add View") . "</h2>\n";
   echo "<input type=\"hidden\" name=\"add\" value=\"1\" />\n";
 } else {
-  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Edit View") . "</h2>\n";
+  echo "<h2>" . translate("Edit View") . "</h2>\n";
   echo "<input name=\"id\" type=\"hidden\" value=\"$id\" />\n";
 }
 ?>

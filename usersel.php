@@ -76,14 +76,14 @@ for ( $i = 0; $i < count ( $users ); $i++ ) {
 ?>
 </select><br />
 <input type="button" value="<?php etranslate("All");?>"
-  ONCLICK="selectAll()">
+  onclick="selectAll()" />
 <input type="button" value="<?php etranslate("None");?>"
-  ONCLICK="selectNone()">
-<input type="reset" value="<?php etranslate("Reset");?>">
+  onclick="selectNone()" />
+<input type="reset" value="<?php etranslate("Reset");?>" />
 </td>
 
-<td VALIGN="top">
-<B><?php etranslate("Groups"); ?>:<B><br />
+<td valign="top">
+<b><?php etranslate("Groups"); ?>:</b><br />
 <select name="groups" size="15">
 <?php
 for ( $i = 0; $i < count ( $groups ); $i++ ) {
@@ -93,22 +93,22 @@ for ( $i = 0; $i < count ( $groups ); $i++ ) {
 ?>
 </select><br />
 <input type="button" value="<?php etranslate("Add");?>"
-  ONCLICK="selectGroupMembers();">
+  onclick="selectGroupMembers();" />
 <input type="button" value="<?php etranslate("Remove");?>"
-  ONCLICK="deselectGroupMembers();">
+  onclick="deselectGroupMembers();" />
 </td></tr>
 
 <tr><td colspan="2"><center>
 <br /><br />
 <input type="button" value="<?php etranslate("Ok");?>"
-  ONCLICK="OkButton()">
+  onclick="OkButton()" />
 <input type="button" value="<?php etranslate("Cancel");?>"
-  ONCLICK="window.close()">
+  onclick="window.close()" />
 </center></td></tr>
 
 </table>
 
 <?php print_trailer ( false, true, true ); ?>
 
-</BODY>
-</HTML>
+</body>
+</html>

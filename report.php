@@ -467,17 +467,17 @@ for ( $cur_time = $start_time; $cur_time <= $end_time; $cur_time += $ONE_DAY ) {
 }
 
 if ( ! empty ( $error ) ) {
-  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Error") .
+  echo "<h2>" . translate("Error") .
     "</h2>\n" . $error;
 } else if ( ! empty ( $list ) ) {
-  echo "<h2 style=\"color:$H2COLOR;\">";
+  echo "<h2>";
   if ( $updating_public )
     echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
   echo translate("Manage Reports");
   echo "</h2>\n" . $list;
 } else {
   if ( $report_include_header == 'Y' ) {
-    echo "<h2 style=\"color:$H2COLOR;\">" . $report_name . "</h2>\n";
+    echo "<h2>" . $report_name . "</h2>\n";
   }
   $text = str_replace ( '${report_id}', $report_id, $page_template );
   echo str_replace ( '${days}', $day_str, $text );

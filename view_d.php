@@ -69,7 +69,7 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 <?php } ?>
 </td></tr>
 </table>
-<CENTER>
+<center>
 
 <?php
 // get users in this view
@@ -225,7 +225,7 @@ function TimeMatrix ($date,$participants) {
          $col++;
        }
     }
-    echo " </tr>\n <tr><td style=\"height:1px; background-color:#000000;\" colspan=\"$cols\"><img src=\"pix.gif\" style=\"height:1px; width:100%;\"></td></tr>\n";
+    echo " </tr>\n <tr><td style=\"height:1px; background-color:#000000;\" colspan=\"$cols\"><img src=\"pix.gif\" style=\"height:1px; width:100%;\" /></td></tr>\n";
   } // End foreach participant
   echo "</table></td></tr></table>\n";
 

@@ -62,49 +62,48 @@ print_header();
 
 <?php if ( ! empty ( $error ) ) { ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></H2></FONT>
-<BLOCKQUOTE>
+<h2><?php etranslate("Error")?></h2>
+<blockquote>
 <?php echo $error; ?>
-</BLOCKQUOTE>
+</blockquote>
 
 <?php } else { ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Set Category")?></H2></FONT>
+<h2><?php etranslate("Set Category")?></h2>
 
-<FORM ACTION="set_entry_cat.php" METHOD="POST" NAME="SelectCategory">
+<form action="set_entry_cat.php" method="post" name="SelectCategory">
 
-<INPUT TYPE="hidden" NAME="date" VALUE="<?php echo $date?>">
-<INPUT TYPE="hidden" NAME="id" VALUE="<?php echo $id?>">
+<input type="hidden" name="date" value="<?php echo $date?>" />
+<input type="hidden" name="id" value="<?php echo $id?>" />
 
-<TABLE BORDER="0" CELLPADDING="5">
+<table border="0" cellpadding="5">
+<tr>
+<td valign="top"><b><?php etranslate("Brief Description")?>:</b></td>
+<td valign="top"><?php echo $event_name; ?></td></tr>
 
-<TR>
-<TD VALIGN="top"><B><?php etranslate("Brief Description")?>:</B></TD>
-<TD VALIGN="top"><?php echo $event_name; ?></TD></TR>
-
-<TR><TD VALIGN="top"><B><?php etranslate("Category")?>:</B>&nbsp;&nbsp;</TD>
-<TD VALIGN="top"><SELECT NAME="cat_id">
-  <OPTION VALUE="NULL"><?php etranslate("None")?></OPTION>
+<tr><td valign="top"><b><?php etranslate("Category")?>:</b>&nbsp;&nbsp;</td>
+<td valign="top"><select name="cat_id">
+  <option value="NULL"><?php etranslate("None")?></option>
   <?php
     foreach ( $categories as $K => $V ) {
       if ( $K == $cur_cat )
-        echo "<OPTION VALUE=\"$K\" SELECTED>$V</OPTION>\n";
+        echo "<option value=\"$K\" selected=\"selected\">$V</option>\n";
       else
-        echo "<OPTION VALUE=\"$K\">$V</OPTION>\n";
+        echo "<option value=\"$K\">$V</option>\n";
     }
   ?>
-  </SELECT></TD>
-</TR>
+  </SELECT></td>
+</tr>
 
-<TR><TD VALIGN="top" COLSPAN="2">
-<INPUT TYPE="submit" VALUE="<?php etranslate("Save");?>">
-</TD></TR>
-</TABLE>
+<tr><td valign="top" colspan="2">
+<input type="submit" value="<?php etranslate("Save");?>" />
+</td></tr>
+</table>
 
-</FORM>
+</form>
 
 <?php } ?>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

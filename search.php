@@ -5,18 +5,18 @@ if ( $groups_enabled == "Y" ) $INC = array('js/search.php');
 print_header($INC);
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php if ( empty ( $advanced ) ) { etranslate("Search"); } else { etranslate ( "Advanced Search" ); } ?></FONT></H2>
+<h2><?php if ( empty ( $advanced ) ) { etranslate("Search"); } else { etranslate ( "Advanced Search" ); } ?></h2>
 
-<FORM ACTION="search_handler.php" METHOD="POST" NAME="searchformentry">
+<form action="search_handler.php" method="post" name="searchformentry">
 
 <?php if ( empty ( $advanced ) ) { ?>
 
-<B><?php etranslate("Keywords")?>:</B>
-<INPUT NAME="keywords" SIZE=30>
-<INPUT TYPE="submit" VALUE="<?php etranslate("Search")?>">
+<b><?php etranslate("Keywords")?>:</b>
+<input name="keywords" size="30" />
+<input type="submit" value="<?php etranslate("Search")?>" />
 
-<P>
-<A CLASS="navlinks" HREF="search.php?advanced=1"><?php etranslate("Advanced Search") ?></A>
+<br /><br />
+<a class="navlinks" href="search.php?advanced=1"><?php etranslate("Advanced Search") ?></a>
 
 <?php } else {
 $show_participants = ( $disable_participants_field != "Y" );
@@ -27,25 +27,25 @@ if ( $login == "__public__" && $public_access_others != "Y" )
 
 ?>
 
-<TABLE BORDER="0">
+<table border="0">
 
-<INPUT TYPE="hidden" NAME="advanced" VALUE="1">
+<input type="hidden" name="advanced" value="1" />
 
-<TR><TD><B><?php etranslate("Keywords")?>:</B></TD>
-<TD><INPUT NAME="keywords" SIZE=30></TD>
-<TD><INPUT TYPE="submit" VALUE="<?php etranslate("Search")?>"></TD></TR>
+<tr><td><b><?php etranslate("Keywords")?>:</b></td>
+<td><input name="keywords" size="30" /></td>
+<td><input type="submit" value="<?php etranslate("Search")?>" /></td></tr>
 
 <?php if ( $show_participants ) { ?>
-<TR><TD VALIGN="top"><B><?php etranslate("Users"); ?></B></TD>
+<tr><td valign="top"><b><?php etranslate("Users"); ?></b></td>
 <?php
   $users = get_my_users ();
   $size = 0;
   $out = "";
   for ( $i = 0; $i < count ( $users ); $i++ ) {
-    $out .= "<OPTION VALUE=\"" . $users[$i]['cal_login'] . "\"";
+    $out .= "<option value=\"" . $users[$i]['cal_login'] . "\"";
     if ( $users[$i]['cal_login'] == $login )
-      $out .= " SELECTED";
-    $out .= "> " . $users[$i]['cal_fullname'];
+      $out .= " selected=\"selected\"";
+    $out .= ">" . $users[$i]['cal_fullname'] . "</option>\n";
   }
   if ( count ( $users ) > 50 )
     $size = 15;
@@ -54,23 +54,23 @@ if ( $login == "__public__" && $public_access_others != "Y" )
   else
     $size = count ( $users );
 ?>
-<TD><SELECT NAME="users[]" SIZE="<?php echo $size;?>" MULTIPLE><?php echo $out; ?></SELECT>
+<td><select name="users[]" size="<?php echo $size;?>" multiple="multiple"><?php echo $out; ?></select>
 <?php 
   if ( $groups_enabled == "Y" ) {
-    echo "<INPUT TYPE=\"button\" ONCLICK=\"selectUsers()\" VALUE=\"" .
-      translate("Select") . "...\">";
+    echo "<input type=\"button\" onclick=\"selectUsers()\" value=\"" .
+      translate("Select") . "...\" />";
   }
 ?>
-</TD></TR>
+</td></tr>
 
 <?php } /* if show_participants */ ?>
 
-</TABLE>
+</table>
 
 <?php } ?>
 
-</FORM>
+</form>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

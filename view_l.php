@@ -96,7 +96,7 @@ if ( count ( $viewusers ) == 0 ) {
 }
 
 if ( ! empty ( $error ) ) {
-  echo "<h2 style=\"color:$H2COLOR;\">" . translate ( "Error" ) .
+  echo "<h2>" . translate ( "Error" ) .
     "</h2>\n" . $error;
   print_trailer ();
   exit;
