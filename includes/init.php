@@ -149,31 +149,30 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $LANGUAGE;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
 
-  // Start the header
-  echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE html 
-     PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-     \"DTD/xhtml1-transitional.dtd\">
+ // Start the header & Specify the charset
+ // The charset is defined in the translation file.
+ if ( ! empty ( $LANGUAGE ) ) {
+   $charset = translate ( "charset" );
+   if ( $charset != "charset" ) {
+ echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n<!DOCTYPE html
+    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+    \"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"\" lang=\"\">\n
+ <head>\n<title>".translate($application_name)."</title>\n";
+  } else {
+echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html
+    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+    \"DTD/xhtml1-transitional.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n
-  <head>\n<title>".translate($application_name)."</title>\n";
+ <head>\n<title>".translate($application_name)."</title>\n";    }
+ }
 
-  // Any other includes?
-  if ( is_array ( $includes ) ) {
-    foreach( $includes as $inc ){
-      include_once 'includes/'.$inc;
-    }
-  }
-
-  // Specify the charset via a meta tag.
-  // The charset is defined in the translation file.
-  if ( ! empty ( $LANGUAGE ) ) {
-    $charset = translate ( "charset" );
-    if ( $charset != "charset" ) {
-      echo "<meta http-equiv=\"Content-type\" " .
-        " content=\"text/html;charset=$charset\" />\n";
-    } else {
-      echo "<!-- no charset defined for $LANGUAGE -->\n";
-    }
-  }
+ // Any other includes?
+ if ( is_array ( $includes ) ) {
+   foreach( $includes as $inc ){
+     include_once 'includes/'.$inc;
+   }
+ }
 
   // Do we need anything else inside the header tag?
   if ($HeadX) echo $HeadX."\n";
