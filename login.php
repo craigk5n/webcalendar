@@ -187,7 +187,7 @@ if ( ! empty ( $return_path ) )
     htmlentities ( $return_path ) . "\" />\n";
 ?>
 
-<table cellpadding="10">
+<table cellpadding="10" align="center">
 <tr><td rowspan="2">
 	<img src="login.gif" alt="Login" /></td><td align="right">
 	<label for="user"><?php etranslate("Username")?>:</label></td><td>
