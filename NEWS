@@ -14,6 +14,9 @@ Version 1.0RC3 (?? ??? 2005)
       1123508: RC3 browser language detection always returns none.
       1112787: missing charset in upcoming.php
   - Other bugs fixed:
+    + Fixed issue with Application Name containing ? characters in logon.php.
+      If Application Name = "Title" then translate, else use Admin defined 
+      name and run through htmlspecialchars
     + Fixed issues with display_small_month URLs. Extra & if no $user specified.
     - Add meta tag for charset since MSIE requires it.
     + Fixed broken advanced search that would not allowing searching other
