@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 #
 # This tool helps with the translation into other languages by verifying that
 # all text specified in translate(), etranslate() and etooltip()
