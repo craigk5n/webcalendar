@@ -3162,11 +3162,11 @@ function print_date_entries_timebar ( $date, $user, $hide_icons, $ssi ) {
     $can_add = false;
 
   // get all the repeating events for this date and store in array $rep
-  $rep = get_repeating_entries ( $users[$i], $date ) ;
+  $rep = get_repeating_entries ( $user, $date ) ;
   $cur_rep = 0;
 
   // get all the non-repeating events for this date and store in $ev
-  $ev = get_entries ( $users[$i], $date, $get_unapproved );
+  $ev = get_entries ( $user, $date, $get_unapproved );
 
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     // print out any repeating events that are before this one...
@@ -3225,7 +3225,7 @@ function print_date_entries_timebar ( $date, $user, $hide_icons, $ssi ) {
 function print_entry_timebar ( $id, $date, $time, $duration,
   $name, $description, $status,
   $pri, $access, $event_owner, $hide_icons ) {
-  global $eventinfo, $login, $user, $PHP_SELF;
+  global $eventinfo, $login, $user, $PHP_SELF, $prefarray;
   static $key = 0;
   
   global $layers;
@@ -3408,7 +3408,7 @@ function print_header_timebar($start_hour, $end_hour) {
         <tr>\n";
   for ($i = $start_hour, $offset = 0; $i < $end_hour; $i++) {
     $prev_offset = $offset;
-    $offset = round(100/($end_hour - $start_hour)*(i - $start_hour));
+    $offset = round(100/($end_hour - $start_hour)*($i - $start_hour));
     $width = $offset - $prev_offset;
     echo "<td style=\"width:$width%; background-color:#FFFFFF;\">&nbsp;</td>\n";
   }
