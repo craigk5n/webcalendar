@@ -3,7 +3,9 @@
 // Parse the datebook file and return the data hash.
 //
 function parse_palmdesktop ($file, $exc_private = 1) {
-  exec (EscapeShellCmd("perl tools/palm_datebook.pl $file $exc_private"), $Entries);
+  $file = EscapeShellArg($file);
+  $exc_private = EscapeShellArg($exc_private);
+  exec ("perl tools/palm_datebook.pl $file $exc_private", $Entries);
   $data = array ();
   while ( list( $line_num, $line ) = each( $Entries ) ) {
     $data[] = ParseLine($line);
