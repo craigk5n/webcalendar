@@ -1,15 +1,32 @@
 <?php
+<<<<<<< datesel.php
+<<<<<<< datesel.php
+=======
+=======
 include_once 'includes/init.php';
 
+>>>>>>> 1.27
 // month and year are being overwritten so we will copy vars to fix.
 // this will make datesel.php still work where ever it is called from.
+<<<<<<< datesel.php
+$fday = $_REQUEST["day"];$fmonth = $_REQUEST["month"];$fyear = $_REQUEST["year"];
+>>>>>>> 1.26
+=======
 $fday = getGetValue ( "fday" );
 $fmonth = getGetValue ( "fmonth" );
 $fyear = getGetValue ( "fyear" );
 
+>>>>>>> 1.27
 
 $INC = array('js/datesel.php');
 print_header($INC,'','',true);
+
+// month and year are being overwritten so we will copy vars to fix.
+// this will make datesel.php still work where ever it is called from.
+//$fday = $day;$fmonth = $month;$fyear = $year;
+$fday = getValue ( "day", "[0-9]+" );
+$fmonth = getValue ( "month", "[0-9]+" );
+$fyear = getValue ( "year", "[0-9]+" );
 
 if ( strlen ( $date ) > 0 ) {
   $thisyear = substr ( $date, 0, 4 );
