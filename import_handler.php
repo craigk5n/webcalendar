@@ -110,7 +110,7 @@ $Entry[AlarmSet]           =  1 = true  0 = false
 $Entry[AlarmAdvanceAmount] =  How many units in AlarmAdvanceType (-1 means not set)
 $Entry[AlarmAdvanceType]   =  Units: (0=minutes, 1=hours, 2=days)
 $Entry[Repeat]             =  Array containing repeat information (if repeat)
-$Entry[Repeat][Interval]   =  1=daily,2=weekly,3=MonthlyByDate,4=MonthlyByDay,5=Yearly
+$Entry[Repeat][Interval]   =  1=daily,2=weekly,3=MonthlyByDay,4=MonthlyByDate,5=Yearly,6=monthlyByDayR
 $Entry[Repeat][Frequency]  =  How often event occurs. (1=every, 2=every other,etc.)
 $Entry[Repeat][EndTime]    =  When the repeat ends (In seconds since 1970 (Unix Epoch))
 $Entry[Repeat][Exceptions] =  Exceptions to the repeat (In seconds since 1970 (Unix Epoch))
@@ -362,7 +362,7 @@ function import_data($data) {
 
 // Convert interval to webcal repeat type
 function RepeatType ($type) {
-  $Repeat = array (0,'daily','weekly','monthlyByDay','monthlyByDate','yearly');
+  $Repeat = array (0,'daily','weekly','monthlyByDay','monthlyByDate','yearly','monthlyByDayR');
   return $Repeat[$type];
 }
 

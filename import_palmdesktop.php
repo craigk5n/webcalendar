@@ -51,9 +51,11 @@ function ParseLine($line){
     $Entry[Repeat][EndTime],
     $Exceptions,
     $Entry[Repeat][RepeatDays],
+    $WeekNum,
       ) = explode("|", $line);
 
   if ($Exceptions) $Entry[Repeat][Exceptions] = explode(":",$Exceptions);
+  if (($WeekNum == '5') && ($Entry[Repeat][Interval] == '3')) $Entry[Repeat][Interval] = '6';
   return $Entry;
 }
 ?>
