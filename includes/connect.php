@@ -124,6 +124,9 @@ if ( ! empty ( $login_return_path ) )
   $login_url .= "return_path=$login_return_path";
  
 
+if ( empty ( $session_not_found ) )
+  $session_not_found = false;
+
 if ( $pub_acc_enabled && ! empty ( $session_not_found ) ) {
   $login = "__public__";
   $is_admin =  false;
