@@ -128,6 +128,66 @@ if ($DMW) {
   else
     $caturl = "&amp;cat_id=$cat_id";
 
+// Maps page filenames to the id that page's <body> tag will have
+$bodyid = array(
+	"activity_log.php" => "activitylog",
+	"add_entry.php" => "addentry",
+	"admin.php" => "admin",
+	"adminhome.php" => "adminhome",
+	"approve_entry.php" => "approveentry",
+	"assistant_edit.php" => "assistantedit",
+	"category.php" => "category",
+	"day.php" => "day",
+	"del_entry.php" => "delentry",
+	"del_layer.php" => "dellayer",
+	"edit_entry.php" => "editentry",
+	"edit_layer.php" => "editlayer",
+	"edit_report.php" => "editreport",
+	"edit_template.php" => "edittemplate",
+	"edit_user.php" => "edituser",
+	"export.php" => "export",
+	"group_edit.php" => "groupedit",
+	"groups.php" => "groups",
+	"help_admin.php" => "helpadmin",
+	"help_bug.php" => "helpbug",
+	"help_edit_entry.php" => "helpeditentry",
+	"help_import.php" => "helpimport",
+	"help_index.php" => "helpindex",
+	"help_layers.php" => "helplayers",
+	"help_pref.php" => "helppref",
+	"import.php" => "import",
+	"index.php" => "index",
+	"layers.php" => "layers",
+	"layers_toggle.php" => "layerstoggle",
+	"list_unapproved.php" => "listunapproved",
+	"login.php" => "login",
+	"month.php" => "month",
+	"nonusers.php" => "nonusers",
+	"pref.php" => "pref",
+	"publish.php" => "publish",
+	"purge.php" => "purge",
+	"reject_entry.php" => "rejectentry",
+	"report.php" => "report",
+	"search.php" => "search",
+	"select_user.php" => "selectuser",
+	"set_entry_cat.php" => "setentrycat",
+	"upcoming.php" => "upcoming",
+	"users.php" => "users",
+	"usersel.php" => "usersel",
+	"view_d.php" => "viewd",
+	"view_entry.php" => "viewentry",
+	"view_l.php" => "viewl",
+	"view_m.php" => "viewm",
+	"view_t.php" => "viewt",
+	"view_v.php" => "viewv",
+	"view_w.php" => "vieww",
+	"views.php" => "views",
+	"views_edit.php" => "viewedit",
+	"week.php" => "week",
+	"week_details.php" => "weekdetails",
+	"week_ssi.php" => "weekssi",
+	"year.php" => "year"
+);
 }
 
 // Prints the HTML header and opening Body tag.
@@ -149,6 +209,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $POPUP_FG,$BGCOLOR;
   global $LANGUAGE;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
+  global $bodyid, $self;
   $lang = '';
   if ( ! empty ( $LANGUAGE ) )
     $lang = languageToAbbrev ( $LANGUAGE );
@@ -202,7 +263,17 @@ echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html
   }
 
   // Finish the header
-  echo "</head>\n<body $BodyX>\n";
+  echo "</head>\n<body";
+
+	// Find the filename of this page and give the <body> tag the corresponding id
+	$thisPage = substr($self, strrpos($self, '/') + 1);
+	if ( isset( $bodyid[$thisPage] ) )
+		echo " id=\"" . $bodyid[$thisPage] . "\"";
+
+	// Add any extra parts to the <body> tag
+	if ( ! empty( $BodyX ) )
+		echo " $BodyX";
+	echo ">\n";
 
   // Add custom header if enabled
   if ( $CUSTOM_HEADER == 'Y' && ! $disableCustom ) {
