@@ -18,17 +18,15 @@
 	}
 	tr {
 		background-color: #606080;
-		color: #f0f0f0;
+		color: #F0F0F0;
 	}
 	td {
-		background-color: #c0c0c0;
+		background-color: #C0C0C0;
 	}
 	.colorheader {
 		background-color: #6060C0;
 	}
 	.valid {
-		height: 31px;
-		width: 88px;
 		border-width: 0px;
 	}
 	pre {
@@ -54,22 +52,24 @@ in sequence.</p>
 
 <h4>I'm using..</h4>
 <ul>
-	<li><a href="UPGRADING.html#dot945">v0.9.44</a></li>
-	<li><a href="UPGRADING.html#dot944">v0.9.43</a></li>
-	<li><a href="UPGRADING.html#dot943">v0.9.42</a></li>
-	<li><a href="UPGRADING.html#dot942">v0.9.41</a></li>
-	<li><a href="UPGRADING.html#dot941">v0.9.40</a></li>
-	<li><a href="UPGRADING.html#dot940">v0.9.39</a></li>
-	<li><a href="UPGRADING.html#dot939">v0.9.38</a></li>
-	<li><a href="UPGRADING.html#dot938">v0.9.37</a></li>
-	<li><a href="UPGRADING.html#dot937">v0.9.36 or v0.9.35</a></li>
-	<li><a href="UPGRADING.html#dot935">v0.9.34 - v0.9.27</a></li>
-	<li><a href="UPGRADING.html#dot927">v0.9.26 - v0.9.22</a></li>
-	<li><a href="UPGRADING.html#dot922">v0.9.21 - v0.9.14</a></li>
-	<li><a href="UPGRADING.html#dot914">v0.9.13 or v0.9.12</a></li>
-	<li><a href="UPGRADING.html#dot912">v0.9.11 - v0.9.07</a></li>
-	<li><a href="UPGRADING.html#dot907">v0.9.06 - v0.9.01</a></li>
-	<li><a href="UPGRADING.html#dot901">v0.9</a></li>
+	<li>
+		<a href="UPGRADING.html#dot945">v0.9.44</a></li><li>
+		<a href="UPGRADING.html#dot944">v0.9.43</a></li><li>
+		<a href="UPGRADING.html#dot943">v0.9.42</a></li><li>
+		<a href="UPGRADING.html#dot942">v0.9.41</a></li><li>
+		<a href="UPGRADING.html#dot941">v0.9.40</a></li><li>
+		<a href="UPGRADING.html#dot940">v0.9.39</a></li><li>
+		<a href="UPGRADING.html#dot939">v0.9.38</a></li><li>
+		<a href="UPGRADING.html#dot938">v0.9.37</a></li><li>
+		<a href="UPGRADING.html#dot937">v0.9.36 or v0.9.35</a></li><li>
+		<a href="UPGRADING.html#dot935">v0.9.34 - v0.9.27</a></li><li>
+		<a href="UPGRADING.html#dot927">v0.9.26 - v0.9.22</a></li><li>
+		<a href="UPGRADING.html#dot922">v0.9.21 - v0.9.14</a></li><li>
+		<a href="UPGRADING.html#dot914">v0.9.13 or v0.9.12</a></li><li>
+		<a href="UPGRADING.html#dot912">v0.9.11 - v0.9.07</a></li><li>
+		<a href="UPGRADING.html#dot907">v0.9.06 - v0.9.01</a></li><li>
+		<a href="UPGRADING.html#dot901">v0.9</a>
+	</li>
 </ul>
 <hr />
 
@@ -427,10 +427,8 @@ the URL to access the script in your browser: <br />
 <p>There are no database changes from 0.9.44 to 0.9.45.
 However, the database settings were moved from <tt>includes/config.php</tt>
 to a new file <tt>includes/settings.php</tt>.
-This new file does not exist until you create it.
-</p>
-<p>
-The first time you attempt to access WebCalendar with the new 0.9.45 files,
+This new file does not exist until you create it.</p>
+<p>The first time you attempt to access WebCalendar with the new 0.9.45 files,
 your browser will be redirected to a web-based admin page for configuring
 the database settings.  You will need to make sure the <tt>includes</tt>
 directory is writable by the web server user.
@@ -438,10 +436,9 @@ The simplest solution is to make it writable by all users until you
 have correctly setup your database connection.  Then, you can change it
 to more restrictive permissions.
 </p>
-<p>
-After saving your database settings, be sure to setup an install
+<p>After saving your database settings, be sure to setup an install
 password via this same web page so that other users may not change
-your database settings.
+your database settings.</p>
 <hr />
 
 <p>
