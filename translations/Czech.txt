@@ -1,0 +1,219 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Translated by: Hanu¹ Adler <had@penguin.cz>
+# Last update: 31 July 2000
+
+# Title is what will appear in the title bar for pages
+Title: WebCalendar
+
+Month: Mìsíc
+Week: Týden
+Year: Rok
+Error: Chyba
+
+Sun: ne
+Mon: po
+Tue: út
+Wed: st
+Thu: èt
+Fri: pá
+Sat: so
+
+Sunday: nedìle
+Monday: pondìlí
+Tuesday: úterý
+Wednesday: støeda
+Thursday: ètvrtek
+Friday: pátek
+Saturday: sobota
+
+January: leden
+February: únor
+March: bøezen
+April: duben
+May: kvìten
+June: èerven
+July: èervenec
+August: srpen
+September: záøí
+October: øíjen
+November: listopad
+December: prosinec
+
+Jan: led
+Feb: úno
+Mar: bøe
+Apr: dub
+May: kvì
+Jun: èen
+Jul: èec
+Aug: srp
+Sep: záø
+Oct: øíj
+Nov: lis
+Dec: pro
+
+Language: Jazyk
+Generate printer-friendly version: Verze pro tiskárnu
+Printer Friendly: Pro tiskárnu
+Go: Jdi
+My Calendar: Mùj kalendáø
+Back to My Calendar: Zpìt na mùj kalendáø
+Another User's Calendar: Kalendáø jiného u¾ivatele
+Search: Hledat
+Add New Entry: Pøidat nový záznam
+New Entry: Nový záznam
+Admin: Admin
+Preferences: Nastavení
+Users: U¾ivatelé
+Account: Úèet
+Current User: Souèasný u¾ivatel
+View this entry: Prohlédnout tento záznam
+Private: Soukromé
+This event is confidential: Tento záznam je dùvìrný
+You have: Máte
+unapproved: neschválené
+event: záznam
+events: záznamy
+Go to: Jít na
+Help Index: Index nápovìdy
+Error approving event: Chyba pøi schvalování záznamu
+This user has: Tento u¾ivatel má
+calendar entries: záznamù v kalendáøi
+They must all be deleted (or this user removed as a participant) before this user can be deleted: They must all be deleted (or this user removed as a participant) before this user can be deleted
+The passwords were not identical: Hesla nebyla shodná
+You have not entered a password: Nevlo¾il jste heslo
+You have not entered a Brief Description: Nevlo¾il jste struèný popis
+You have not entered a valid time of day: Nevlo¾il jste platný èas
+Brief Description: Struèný popis
+Full Description: Celkový popis
+Description: Popis
+Date: Datum
+Time: Èas
+am: am
+pm: pm
+Duration: Délka
+minutes: minut
+Priority: Priorita
+Low: nízká
+Medium: støední
+High: vysoká
+Access: Pøístup
+Public: veøejný
+Confidential: dùvìrný
+Participants: Úèastníci
+Created by: Vytvoøil
+Updated: Aktualizováno
+Daily: dennì
+for weekly: dny v týdnu
+by date: podle data
+by day: podle dne
+Monthly: mìsíènì
+None: ¾ádný
+Repeat Day: Den opakování
+Repeat End Date: Datum konce opakování
+Repeat Type: Typ opakování
+Use end date: Use end date
+Weekly: týdnì
+Yearly: roènì
+Frequency: Frekvence
+Save: Ulo¾it
+Help: Nápovìda
+Approve this entry?: Potvrdit tento záznam?
+Approve/Confirm entry: Potvrdit/schválit záznam
+Edit entry: Editovat záznam
+Add Entry: Pøidat záznam
+Are you sure you want to delete this entry?: Are you sure you want to delete this entry?
+This will delete this entry for all users.:This will delete this entry for all users.
+Delete: Delete
+Delete entry: Delete entry
+You are not authorized to edit this entry: You are not authorized to edit this entry
+Scheduling Conflict: Scheduling Conflict
+The following conflicts with the suggested time: The following conflicts with the suggested time
+Unnamed Event: Unnamed Event
+Hello: Hello
+A new appointment has been made for you by: A new appointment has been made for you by
+The subject is: The subject is
+Please look on: Please look on
+to accept or reject this appointment: to accept or reject this appointment
+to view this appointment: to view this appointment
+Notification: Notification
+Your suggested time of: Your suggested time of
+conflicts with the following existing calendar entries: konflikt s následujícími záznamy v kalendáøi
+Edit User: Editovat u¾ivatele
+Add User: Pøidat u¾ivatele
+Username: U¾ivatelské jméno
+Login: Login
+Logout: Logout
+First Name: Jméno
+Last Name: Pøíjmení
+E-mail address: E-mailová adresa
+Password: Heslo
+again: znovu
+Yes: Ano
+No: Ne
+Change Password: Zmìnit heslo
+New Password: Nové heslo
+Set Password: Nastavit heslo
+Adding/Editing Calendar Entries: Pøidávání/editování záznamù v kalendáøi
+Unapproved Events: Nepotvrzené události
+No unapproved events: ®ádné nepotvrzené události
+You must enter a login and password: You must enter a login and password
+Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
+cookies-note: <B>Note:</B> This application requires cookies to be enabled.
+Invalid color for document background: Invalid color for document background
+Invalid color for document title: Invalid color for document title
+Invalid color for table cell background: Invalid color for table cell background
+Invalid color for table cell background for today: Invalid color for table cell background for today
+Color format should be '#RRGGBB': Color format should be '#RRGGBB'
+12 hour: 12 hour
+24 hour: 24 hour
+From: From
+to: to
+Select: Vyber
+Document background: Pozadí dokumentu
+Document title: Titulek
+Table cell background: Pozadí políèek v tabulce
+Table cell background for current day: Pozadí políèka pro dne¹ní den
+Save Preferences: Ulo¾it nastavení
+The following error occurred: Nastala následující chyba:
+Search: Hledat
+Keywords: Klíèová slova
+You must enter one or more search keywords: Musíte vlo¾it jedno nebo více klíèových slov pro vyhledávání
+Search Results: Výsledky vyhledávání
+match found: nalezen záznam
+matches found: nalezeny záznamy
+No matches found: ®ádné záznamy nenalezeny
+View Another User's Calendar: Prohlédnou si kalendáø jiného u¾ivatele
+You are not authorized: Nemáte oprávnìní
+Add New User: Pøidat nového u¾ivatele
+denotes administrative user: oznaèuje u¾ivatele s administrátorskými právy
+Invalid entry id: Neplatné id záznamu
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help: This should provide a short description (about 20 characters) of the event.  This will represent the event when viewing the calendar.
+full-description-help: This should complete details of the event.  This information can be seen when a user views the event.
+date-help: Specifies the date of the event.
+time-help: Specifies the time of the event.<BR><I>This field can be left blank.</I>
+duration-help: Specifies the duration (in minutes) of the event.  <BR><I>This field can be left blank.</I>
+priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
+access-help: Specifies the access level of the event.<BR> <I>Public</I>: Everyone can see the full details of the event.  <BR><I>Confidential</I>: Others can see that you have an entry for that date and time, but not the details of what it is.
+participants-help: Lists the participants of this entry.
+repeat-type-help: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
+repeat-end-date-help: Specifies the date the event should repeat until.
+repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <I>Repeat Type</I> is set to <I>Weekly</I>.
+repeat-frequency-help: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <I>Repeat Type</I> is set to <I>Weekly</I>), every other month (if <I>Repeat Type</I> is set to <I>Monthly</I>), etc.
+Preferences: Mo¾nosti
+Settings: Nastavení
+Time format: Formát èasu
+time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
+Display unapproved: Zobrazovat nepotvrzené události
+display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<BR> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<BR> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
+Display week number: Zobrazovat èíslo týdne
+display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month view and the week view.
+display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
+Work hours: Pracovní doba
+work-hours-help: Specifies the time range to display for the day view.
+Colors: Barvy
+colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.

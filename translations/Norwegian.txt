@@ -1,0 +1,272 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Translated by: Pål Løberg/Magni Onsøien <initio@initio.no>
+# Last update: 2001-05-18
+
+# Title is what will appear in the title bar for pages
+Title: Webkalenderen
+
+Month: Måned
+Week: Uke
+Error: Feil
+
+Sun: Søn
+Mon: Man
+Tue: Tir
+Wed: Ons
+Thu: Tor
+Fri: Fre
+Sat: Lør
+
+Sunday: Søndag
+Monday: Mandag
+Tuesday: Tirsdag
+Wednesday: Onsdag
+Thursday: Torsdag
+Friday: Fredag
+Saturday: Lørdag
+
+January: Januar
+February: Februar
+March: Mars
+April: April
+May: Mai
+June: Juni
+July: Juli
+August: August
+September: September
+October: Oktober
+November: November
+December: Desember
+
+Jan: Jan
+Feb: Feb
+Mar: Mar
+Apr: Apr
+May: Mai
+Jun: Jun
+Jul: Jul
+Aug: Aug
+Sep: Sep
+Oct: Okt
+Nov: Nov
+Dec: Dec
+
+Language: Språk
+Generate printer-friendly version: Vis som utskriftsvennlig side
+Printer Friendly: Utskriftsvennlig
+Go: Gå til
+Back to My Calendar: Tilbake til min kalender
+Another User's Calendar: Se en annen brukers kalender
+Search: Søk
+Add New Entry: Legg til aktivitet
+New Entry: Ny aktivitet
+Admin: Admin
+Preferences: Innstillinger
+Users: Brukere
+Account: Konto
+Current User: Nåværende bruker
+View this entry: Vis aktivitet
+Private: Privat
+This event is confidential: Denne aktiviteten er privat
+You have: Du har
+unapproved: ikke godkjent
+event: aktivitet
+events: aktiviteter
+Go to: Gå til
+Help Index: Oversikt
+Error approving event: Feil ved godkjenning av aktivitet
+This user has: Denne brukeren har
+calendar entries: aktiviteter i kalenderen
+They must all be deleted (or this user removed as a participant) before this user can be deleted: Alle må slettes (eller personen fjernes som deltaker) før brukeren kan slettes
+The passwords were not identical: Passordene var ikke identiske
+You have not entered a password: Du har ikke oppgitt passord
+You have not entered a Brief Description: Du har ikke oppgitt noen kort beskrivelse
+You have not entered a valid time of day: Du har ikke oppgitt noe gyldig tidspunkt
+Brief Description: Kort beskrivelse
+Full Description: Full beskrivelse
+Description: Beskrivelse
+Date: Dato
+Time: Klokken
+am: am
+pm: pm
+Duration: Varighet
+minutes: minutter
+Priority: Prioritet
+Low: Lav
+Medium: Medium
+High: Høy
+Access: Tilgang
+Public: Offentlig
+Confidential: Privat
+Participants: Deltakere
+Created by: Opprettet av
+Updated: Oppdatert
+Daily: Daglig
+for weekly: for ukentlig
+by date: etter dato
+by day: etter dag
+Monthly: Månedlig
+None: Aldri
+Repeat Day: Gjenta dato
+Repeat End Date: Gjenta sluttdato
+Repeat Type: Gjenta type
+Use end date: Benytt sluttdato
+Weekly: Ukentlig
+Yearly: Årlig
+Frequency: Hyppighet
+Save: Lagre
+Help: Hjelp
+Approve this entry?: Godkjenn aktiviteten?
+Approve/Confirm: Godkjenn/Bekreft
+Approve/Confirm entry: Godkjenn/Bekreft aktiviteten
+Reject: Avvis
+Reject entry: Avvis aktiviteten
+Reject this entry?: Avvis denne aktiviteten?
+Rejected: Avvist
+Edit entry: Endre aktiviteten
+Edit Entry: Endre aktiviteten
+Add Entry: Legg til aktivitet
+Are you sure you want to delete this entry?: Er du sikker på at du vil slette denne aktiviteten ?
+This will delete this entry for all users.: Dette vil slette aktiviteten for alle brukerene
+Delete: Slett
+Delete entry: Slett aktivitet
+You are not authorized to edit this entry: Du har ikke lov å redigere denne aktiviteten
+Scheduling Conflict: Kalenderkonflikt
+The following conflicts with the suggested time: Følgende aktiviteter er i konflikt med det foreslåtte tidspunktet
+Unnamed Event: Aktivitet uten navn
+Hello: Hei
+A new appointment has been made for you by: En ny avtale er gjort for deg av
+The subject is: Emnet er 
+Please look on: Vennligst se på
+to accept or reject this appointment: for å akseptere eller avvise avtalen
+to view this appointment: for å se denne avtalen
+Notification: Påminnelse
+Your suggested time of: Den foreslåtte tiden for
+conflicts with the following existing calendar entries: er i konflikt med eksisterende avtaler
+Edit User: Rediger bruker
+Add User: Ny bruker
+Username: Brukernavn
+Login: Logg inn
+Logout: Logg ut
+First Name: Fornavn
+Last Name: Etternavn
+E-mail address: E-postadresse
+Password: Passord
+again: igjen
+Yes: Ja
+No: Nei
+Change Password: Endre passord
+New Password: Nytt passord
+Set Password: Sett passord
+Adding/Editing Calendar Entries: Legg til/endre aktivitet
+Unapproved Events: Ikke godkjente aktiviteter
+No unapproved events: Ingen ikke-godkjente aktiviteter
+You must enter a login and password: Vennligst oppgi brukernavn og passord
+Save login via cookies so I don't have to login next time: Husk brukernavn til neste gang
+cookies-note: <B>OBS:</B> Programmet krever at "cookies" er slått på
+Invalid color for document background: Ugyldig bakgrunnsfarge
+Invalid color for document title: Ugyldig tittelfarge
+Invalid color for table cell background: Ugyldig farge for tabellbakgrunn
+Invalid color for table cell background for today: Ugyldig farge for dagens tabellbakgrunn
+Color format should be '#RRGGBB': Fargen skal skrives som '#RRGGBB'
+12 hour: 12 timer
+24 hour: 24 timer
+From: Fra
+to: til
+Select: Velg
+Preferred view: Foretrukket valg
+Week starts on: Uken starter på
+Day: Dag
+Year: År
+Document background: Dokumentbakgrunn
+Document title: Dokumenttittel
+Table cell background: Tabellbakgrunn
+Table cell background for current day: Tabellbakgrunn for inneværende dag
+Save Preferences: Lagre innstillinger
+The following error occurred: Følgende feil oppstod
+Search: Søk
+Keywords: Nøkkelord
+You must enter one or more search keywords: Vennligst oppgi ett eller flere søkeord
+Search Results: Søkeresultat
+Export: Eksporter
+Export format: Eksportformat
+Modified since: Endret etter
+Start date: Startdato
+End date: Sluttdato
+Palm Pilot: Palm Pilot
+match found: treff funnet
+matches found: treff funnet
+No matches found: Ingen treff funnet
+View Another User's Calendar: Se en anden brukers kalender
+You are not authorized: Du har ikke tillatelse
+Add New User: Opprett bruker
+denotes administrative user: indikerer administrator
+Invalid entry id: Ugyldig avtale-ID
+My Calendar: Min kalender
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help: Her skal det stå en kort beskrivelse av aktiviteten - den blir vist når man står over aktiviteten i oversiktskalenderen.
+full-description-help: Her kan det stå en komplett beskrivelse av aktiviteten.
+date-help: Angir dato for aktiviteten.
+time-help: Angir tidspunkt for aktiviteten.<BR><I>Dette feltet trenger ikke være utfylt.</I>
+duration-help: I dette feltet kan du angi varigheden på aktiviteten <BR><I>Dette feltet trenger ikke være udfyldt.</I>
+priority-help: Angi aktivitetens prioritet.
+access-help: Angi om aktiviteten skal kunne sees av alle eller om den er fortrolig.
+participants-help: Vis deltagerne i dette innlegget.
+repeat-type-help: Hvor ofte skal aktiviteten gjentas.
+repeat-end-date-help: Spesifiser sluttdato for gjentakelse av denne aktiviteten.
+repeat-day-help: Hvilke ukedager skal aktiviteten gjentas på.
+repeat-frequency-help: Hvor ofte skal aktiviteten gjentas? Tallet 1 viser at det skal skje hver gang, 2 hver annen gang...
+Preferences: Innstillinger
+Settings: Innstillinger
+Time format: Tidsformat
+time-format-help: Skal tiden vises i 12 eller 24-timer.
+Display unapproved: Vis ikke-godkjente.
+display-unapproved-help: Spesifiser om din kalender skal vise ikke-godkendte aktiviteter.
+Display week number: Vis ukenummer
+display-week-number-help: Spesifiser om ukenumre skal være påklistret ukevisningene.
+display-week-starts-on: Vis om uken starter mandag eller søndag.
+Work hours: Arbeidstimer
+work-hours-help: Spesifiser daglige arbeidstimer.
+Colors: Farger
+colors-help: Alle farger skal skrives inn som #RRGGBB hvor RR er hexkoden for rødt, GG er hexkoden for grønn og BB er hexkoden for den blå fargeen.
+Add layer: Legg til lag
+Add Layer: Legg til lag
+Add to My Calendar: Legg til kalenderen min
+An appointment has been canceled for you by: En avtale har blitt avlyst for deg av
+An appointment has been rejected by: En avtale har blitt avvist av
+Are you sure you want to delete this layer?: Er du sikker på du vil slette dette laget?
+Color: Farge
+Delete layer: Slett lag
+Disable Layers: Deaktiver lag
+Disabled: Deaktivert
+Disabled for demo: Deaktivert for demo
+Display icons: Vis ikoner
+display-icons-help: Vis ikoner ved hver avtale som skal vises, endres og slettes. Dersom denne settes til Nei må du klikke på avtalen for å komme til visningssiden der du kan aksessere disse funksjonene.
+Do you want to add this entry to your calendar?: Vil du legge inn denne avtalen i kalenderen din?
+Duplicates: Duplikater
+Edit Layer: Editer lag
+Edit layer: Editer lag
+Edit Layers: Editer lag
+Enable Layers: Aktiver lag
+Enabled: Aktivert
+Error adding event: Feil ved innlegging av avtale
+Export all dates: Eksporter alle datoer
+hours: timer
+Invalid color: Ugyldig farge
+language-help: Spesifiserer hvilket språk som skal brukes.
+Layer: Lag
+Layers: Lag
+Layers are currently: Lagene er nå
+preferred-view-help: Spesifiserer standardvisning (dag, uke, måned eller år).
+Show layer events that are the same as your own: Vis lag som er lik dine egne
+Source: Kilde
+The subject was: Emnet var
+The time you have entered begins before your preferred work hours.  Is this correct?: Tidspunktet du har angitt er før din foretrukne arbeidstid. Er dette korrekt?
+This is a private event and may not be added to your calendar.: Dette er en privat avtale og kan ikke legges til din kalender.
+This will add the entry to your calendar.: Dette vil legge til avtalen i kalenderen din.
+This will delete the entry from your calendar.: Dette vil slette avtalen fra kalenderen din.
+User: Bruker
+Your browser default language is: Standardspråk i nettleseren din er

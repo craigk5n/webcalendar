@@ -1,0 +1,273 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Translated by: Liang-Kuan Liu <lianguan@pchome.com.tw>
+# Last update: 15 February 2001
+
+# Title is what will appear in the title bar for pages
+Title: 網路行事曆
+
+Month: 月
+Week: 週
+Error: 錯誤
+
+Sun: 週日
+Mon: 週一
+Tue: 週二
+Wed: 週三
+Thu: 週四
+Fri: 週五
+Sat: 週六
+
+Sunday: 星期日
+Monday: 星期一
+Tuesday: 星期二
+Wednesday: 星期三
+Thursday: 星期四
+Friday: 星期五
+Saturday: 星期六
+
+January: 一月
+February: 二月
+March: 三月
+April: 四月
+May: 五月
+June: 六月
+July: 七月
+August: 八月
+September: 九月
+October: 十月
+November: 十一月
+December: 十二月
+
+Jan: 1月
+Feb: 2月
+Mar: 3月
+Apr: 4月
+May: 5月
+Jun: 6月
+Jul: 7月
+Aug: 8月
+Sep: 9月
+Oct: 10月
+Nov: 11月
+Dec: 12月
+
+Generate printer-friendly version: Generate printer-friendly version
+Printer Friendly: 友善列印
+Go: 前往
+Back to My Calendar: 回到我的行事曆
+Another User's Calendar: 別人的行事曆
+Search: 搜尋
+Add New Entry: 新增記事
+New Entry: 新的記事
+Admin: 管理
+Preferences: 參數選擇
+Users: 使用者
+Account: 編輯個人資料
+Current User: 目前使用者
+View this entry: 檢視這個記事
+Private: 私人的
+This event is confidential: 這個記事是機密的
+You have: 你有
+unapproved: 未核准的
+event: 記事
+events: 記事
+Go to: 功能選擇
+Help Index: 輔助索引
+Error approving event: Error approving event
+This user has: This user has
+calendar entries: calendar entries
+They must all be deleted (or this user removed as a participant) before this user can be deleted:They must all be deleted (or this user removed as a participant) before this user can be deleted
+The passwords were not identical: 密碼不一樣
+You have not entered a password: 你沒有輸入密碼
+You have not entered a Brief Description: 你沒有輸入概要描述
+You have not entered a valid time of day: 你沒有輸入正確的時間
+Brief Description: 概要描述
+Full Description: 完整描述
+Description: 描&nbsp;述
+Date: 日&nbsp;期
+Time: 時&nbsp;間
+am: 上午
+pm: 下午
+Duration: 持續時間
+minutes: 分
+Priority: 優先等級
+Low: 低
+Medium: 中
+High: 高
+Access: 顯示設定
+Public: 公眾的
+Confidential: 機密的
+Participants: 參與者
+Created by: 公布者
+Updated: 更新
+Daily: 每日的
+for weekly: 僅每週的
+by date: 依日期
+by day: 依第幾天
+Monthly: 每月的
+None: 無
+Repeat Day: 重複於
+Repeat End Date: 週期結束日期
+Repeat Type: 週期性設定
+Use end date: 使用結束日期設定
+Weekly: 每週的
+Yearly: 每年的
+Frequency: 重複次數
+Save: 儲存
+Help: 說明
+Approve this entry?: 核准這個記事?
+Approve/Confirm: 核准/確定
+Approve/Confirm entry: 核准/確定 記事
+Reject: 拒絕
+Reject entry: 拒絕記事
+Reject this entry?: 拒絕這個記事?
+Rejected: 拒絕的
+Edit entry: 編輯記事
+Edit Entry: 編輯記事
+Add Entry: 新增記事
+Add to My Calendar: 新增到我的行事曆
+Do you want to add this entry to your calendar?: 你要新增這個記事到你的行事曆嗎?
+Error adding event: Error adding event
+The time you have entered begins before your preferred work hours.  Is this correct?: 這個時段不在你自定的工作時間內.  這是正確的嗎?
+Are you sure you want to delete this entry?: 你確定要刪除這個記事嗎?
+This will delete this entry for all users.: 對所有的使用者也將會刪除這個記事.
+Delete: 刪除
+Delete entry: 刪除記事
+You are not authorized to edit this entry: You are not authorized to edit this entry
+This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
+This will add the entry to your calendar.: 這將會新增這個記事到你的行事曆.
+This will delete the entry from your calendar.: 這將會從你的行事曆刪除這個記事.
+Scheduling Conflict: Scheduling Conflict
+The following conflicts with the suggested time: The following conflicts with the suggested time
+Unnamed Event: Unnamed Event
+Hello: 你好
+A new appointment has been made for you by: 你有一個新約會, 邀請者是
+The subject is: 主題是
+Please look on: 請查看
+to accept or reject this appointment: 決定接受或拒絕這個約會
+to view this appointment: to view this appointment
+An appointment has been canceled for you by: 約會已經被取消, 取消者是
+An appointment has been rejected by: 約會已經被拒絕, 拒絕者是
+Export all dates: 輸出所有資料
+The subject was: 主題是
+Notification: 通告
+Your suggested time of: Your suggested time of
+conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
+Edit User: 編輯使用者資料
+Add User: 新增使用者
+Username: 使用者名稱
+Login: 登入
+Logout: 登出
+First Name: 姓
+Last Name: 名
+E-mail address: 電子郵件地址
+Password: 密碼
+again: 再一次
+Yes: 是
+No: 否
+Change Password: 變更密碼
+New Password: 新的密碼
+Set Password: 設定密碼
+Adding/Editing Calendar Entries: 新增/編輯 行事曆項目
+Unapproved Events: 未核准的記事
+No unapproved events: 沒有 未核准的記事
+You must enter a login and password: 你必須輸入使用者名稱及密碼
+Save login via cookies so I don't have to login next time: 將登入資料儲存於 cookies 中，下次就不需要再登入系統。
+cookies-note: <B>注意:</B> 本程式須要 cookies 才能使用.
+Invalid color for document background: Invalid color for document background
+Invalid color for document title: Invalid color for document title
+Invalid color for table cell background: Invalid color for table cell background
+Invalid color for table cell background for today: Invalid color for table cell background for today
+Color format should be '#RRGGBB': Color format should be '#RRGGBB'
+12 hour: 12時制
+24 hour: 24時制
+From: 自
+to: 至
+Select: 選擇
+Preferred view: 檢視選擇
+Week starts on: 每週開始於
+Day: 日
+Year: 年
+Document background: 文件背景
+Document title: 文件標題
+Table cell background: 表格背景
+Table cell background for current day: 當日顏色
+Save Preferences: 儲存參數
+The following error occurred: The following error occurred
+Search: 搜尋
+Keywords: 關鍵字
+You must enter one or more search keywords: 你至少要輸入一個搜尋文字或句子
+Search Results: 搜尋結果
+Export: 輸出
+Export format: 輸出格式
+Modified since: 更改自
+Start date: 開始日期
+End date: 結束日期
+Palm Pilot: Palm Pilot
+match found: 筆符合查詢
+matches found: 筆符合查詢
+No matches found: 查無資料
+View Another User's Calendar: 檢視其他人的月曆
+You are not authorized: 您未經授權
+Add New User: 新增使用者
+denotes administrative user: 使用者管理員
+Invalid entry id: Invalid entry id
+My Calendar: 我的行事曆
+Add Layer: 新增階層
+Add layer: 新增階層
+Disable Layers: 停用階層架構
+Disabled: 停用的
+Edit Layers: 編輯階層架構
+Enable Layers: 啟用階層架構
+Enabled: 啟用的
+hours: 時
+Layers are currently: 階層架構目前是
+User: 使&nbsp;用&nbsp;者
+Color: 顏色
+Delete layer: 刪除階層
+Edit layer: 編輯階層
+Edit Layer: 編輯階層
+Invalid color: Invalid color
+Layer: 階層
+Layers: 階層架構
+Source: 來源
+Show layer events that are the same as your own: 在你的行事曆中同時顯示來源者的記事
+Are you sure you want to delete this layer?: 你確定要刪除這個階層嗎?
+Duplicates: 副本
+Disabled for demo: Disabled for demo
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help: This should provide a short description (about 20 characters) of the event.  This will represent the event when viewing the calendar.
+full-description-help: This should complete details of the event.  This information can be seen when a user views the event.
+date-help: Specifies the date of the event.
+time-help: Specifies the time of the event.<BR><I>This field can be left blank.</I>
+duration-help: Specifies the duration (in minutes) of the event.  <BR><I>This field can be left blank.</I>
+priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
+access-help: Specifies the access level of the event.<BR> <I>Public</I>: Everyone can see the full details of the event.  <BR><I>Confidential</I>: Others can see that you have an entry for that date and time, but not the details of what it is.
+participants-help: Lists the participants of this entry.
+repeat-type-help: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
+repeat-end-date-help: Specifies the date the event should repeat until.
+repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <I>Repeat Type</I> is set to <I>Weekly</I>.
+repeat-frequency-help: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <I>Repeat Type</I> is set to <I>Weekly</I>), every other month (if <I>Repeat Type</I> is set to <I>Monthly</I>), etc.
+Preferences: 參數設定
+Settings: 設定中
+Language: 語系
+Your browser default language is: 你的瀏覽器預設的語系是
+language-help: Specifies which language to use.
+Preferred view: 檢視選擇
+preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
+Time format: 時間格式
+time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
+Display unapproved: 顯示未核准的
+display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<BR> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<BR> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
+Display icons: 顯示圖示
+display-icons-help: Display icons next to each event for view, edit and delete.  If set to No, then you must click on the event to get to the view page where you can access these functions.
+Display week number: 顯示週數(以年計算)
+display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month view and the week view.
+display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
+Work hours: 月曆可顯示之工作時間
+work-hours-help: Specifies the time range to display for the day view.
+Colors: 顏色
+colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.

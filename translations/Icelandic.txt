@@ -1,0 +1,240 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Translated by:
+#	Kristofer Arnar Einarsson kristofer@kristofer.com
+# Last update: 18 August 2000
+
+# Title is what will appear in the title bar for pages
+Title: VefDagatal
+
+Month: Mánuður
+Week: Vika
+Error: Villa
+
+Sun: Sun
+Mon: Mán
+Tue: Þri
+Wed: Mið
+Thu: Fim
+Fri: Fös
+Sat: Lau
+
+Sunday: Sunnudagur
+Monday: Mánudagur
+Tuesday: Þriðjudagur
+Wednesday: Miðvikudagur
+Thursday: Fimmtudagur
+Friday: Föstudagur
+Saturday: Laugardagur
+
+January: Janúar
+February: Febrúar
+March: Mars
+April: Apríl
+May: Maí
+June: Júní
+July: Júlí
+August: Ágúst
+September: September
+October: Október
+November: Nóvember
+December: Desember
+
+Jan: Jan
+Feb: Feb
+Mar: Mar
+Apr: Apr
+May: Maí
+Jun: Jún
+Jul: Júl
+Aug: Ágú
+Sep: Sep
+Oct: Okt
+Nov: Nóv
+Dec: Des
+
+Generate printer-friendly version: Búa til prentvæna útgáfu
+Printer Friendly: Prentvænt
+Go: Velja
+Back to My Calendar: Aftur í mitt dagatal
+Another User's Calendar: Dagatal annarra
+Search: Leita
+Add New Entry: Bæta við
+New Entry: Nýtt atriði
+Admin: Stjórnandi
+Preferences: Stilla
+Users: Notendur
+Account: Reikningur
+Current User: Núverandi notandi
+View this entry: Skoða
+Private: Einka
+This event is confidential: Þetta er trúnaðarmál
+You have: Þú átt
+unapproved: ósamþykkt
+event: atburður
+events: atburðir
+Go to: Fara í
+Help Index: Efnisyfirlit
+Error approving event: Villa við samþykkt atriðis
+This user has: Notandi á
+calendar entries: atriði
+They must all be deleted (or this user removed as a participant) before this user can be deleted:Það verður að eyða þeim öllum (eða fjarlægja þennan notanda) áður en hægt er að eyða þessum notanda
+The passwords were not identical: Lykilorðin passa ekki saman
+You have not entered a password: Lykilorð vantar
+You have not entered a Brief Description: Stutta lýsingu vantar
+You have not entered a valid time of day: Rangur tími sleginn inn
+Brief Description: Stutt skrýring
+Full Description: Full skýring
+Description: Lýsing
+Date: Dags
+Time: Tími
+am: fh
+pm: eh
+Duration: Lengd
+minutes: mínútur
+Priority: Forgangur
+Low: Lágur
+Medium: Meðal
+High: Hár
+Access: Aðgangur
+Public: Allir
+Confidential: Trúnaðarmál
+Participants: Þátttakendur
+Created by: Gert af
+Updated: Uppfært
+Daily: Daglega
+for weekly: vikulega
+by date: eftir dags
+by day: eftir degi
+Monthly: Mánaðarlega
+None: Engin
+Repeat Day: Endurtekning
+Repeat End Date: Lok endurtekningar
+Repeat Type: Tegund endurtekningar
+Use end date: Loka dags
+Weekly: Vikulega
+Yearly: Árlega
+Frequency: Tíðni
+Save: Vista
+Help: Hjálp
+Approve this entry?: Samþykkja?
+Approve/Confirm: Samþykkja/Staðfesta
+Approve/Confirm entry: Samþykkja/Staðfesta atriði
+Reject: Hafna
+Reject entry: Hafna atriði
+Reject this entry?: Hafna þessu atriði?
+Rejected: Hafnað
+Edit entry: Breyta atriði
+Edit Entry: Breyta atriði
+Add Entry: Bæta við
+Are you sure you want to delete this entry?: Viltu örugglega eyða þessu atriði?
+This will delete this entry for all users.:Atriði verður eytt hjá öllum notendum.
+Delete: Eyða
+Delete entry: Eyða atriði
+You are not authorized to edit this entry: Þú hefur ekki réttindi til þess að breyta þessu atriði
+Scheduling Conflict: Scheduling Conflict
+The following conflicts with the suggested time: Eftirfarandi stangast á við tíma
+Unnamed Event: Ónafngreint atriði
+Hello: Halló
+A new appointment has been made for you by: Nýr fundur hefur verið búinn til af
+The subject is: Tilefnið er
+Please look on: Vinsamlegast skoðið
+to accept or reject this appointment: til að staðfesta eða hafna þessum fundi
+to view this appointment: til að skoða fund
+Notification: Tilkynning
+Your suggested time of: Uppgefinn tími
+conflicts with the following existing calendar entries: stangast á við eftirfarandi atriði
+Edit User: Breyta notanda
+Add User: Nýr notandi
+Username: Notandanafn
+Login: Skrá inn
+Logout: Skrá út
+First Name: Fornafn
+Last Name: Eftirnafn
+E-mail address: Tölvupóstur
+Password: Lykilorð
+again: aftur
+Yes: Já
+No: Nei
+Change Password: Breyta lykilorði
+New Password: Nýtt lykilorð
+Set Password: Breyta
+Adding/Editing Calendar Entries: Bæta við/Eyða atriðum í dagatali
+Unapproved Events: Ósamþykkt atriði
+No unapproved events: Engin ósamþykkt atriði
+You must enter a login and password: Þú verður að slá inn notandanafn og lykilorð
+Save login via cookies so I don't have to login next time: Vista upplýsingar með kökum
+cookies-note: <B>Athugið:</B> Kökur verða að vera virkar
+Invalid color for document background: Ólöglegur litur í bakgrunni
+Invalid color for document title: Ólöglegur litur í titli
+Invalid color for table cell background: Ólöglegur litur í bakgrunni taflna
+Invalid color for table cell background for today: Ólöglegur litur í bakgrunni taflna núverandi dags
+Color format should be '#RRGGBB': Form lita á að vera '#RRGGBB'
+12 hour: 12 tíma
+24 hour: 24 tíma
+From: Frá
+to: til
+Select: Velja
+Preferred view: Sjálfgefin sýn
+Week starts on: Vika byrjar á
+Day: Dagur
+Year: Ár
+Document background: Bakgrunnur
+Document title: Titill
+Table cell background: Bakgrunnur dálka
+Table cell background for current day: Bakgrunnur dálka núverandi dags
+Save Preferences: Vista stillingar
+The following error occurred: Eftirfarandi villa kom upp
+Search: Leit
+Keywords: Leitarorð
+You must enter one or more search keywords: Þú verður að slá inn amk eitt leitarorð
+Search Results: Niðurstaða leitar
+Export: Flytja
+Export format: Snið til að flytja á
+Modified since: Breytt síðan
+Start date: Byrjun dags
+End date: Endir dags
+Palm Pilot: Palm Pilot
+match found: fannst
+matches found: fundust
+No matches found: Ekkert fannst
+View Another User's Calendar: Skoða dagatal annarra
+You are not authorized: Þú hefur ekki heimild
+Add New User: Bæta nýjum notanda við
+denotes administrative user: táknar stjórnanda
+Invalid entry id: Óleyfilegt einkenni
+My Calendar: Dagatalið mitt
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help: Hér á að vera stutt lýsing (u.þ.b 20 stafir) atriðis.  Þetta mun vera einkenni atriðis í dagatali.
+full-description-help: Hér á að vera full lýsing atriðis.  Upplýsingarnar er hægt að sjá þegar atriði er skoðað.
+date-help: Tilgreinir dagsetningu atriðis.
+time-help: Tilgreinir tíma atriðis.<BR><I>Þessu sviði má sleppa.</I>
+duration-help: Tilgreinir áætlaða lengd (í mínútum) atriðis.  <BR><I>Þessu sviði má sleppa.</I>
+priority-help: Tilgreinir forgang atriðis.  Atriði með háan forgang eru birt með feitu letri.
+access-help: Tilgreinir aðgang að atriði.<BR> <I>Allir</I>: Allir geta séð fulla lýsingu atriðis.  <BR><I>Trúnaðarmál</I>: Aðrir sjá að viðkomandi hefur atriði á tilgreindum tíma en sjá ekkert um efnið.
+participants-help: Fá fram þá sem koma að atriði.
+repeat-type-help: Velja hversu oft endurtaka á atburðinn.<I>Mánaðarlega (eftir degi)</I> gerir kleift að endurtaka atriði fyrsta mánudag mánaðar, þriðja þriðjudag o.s.frv.  <I>Mánaðarlega (eftir dags)</I> gerir kleift að endurtaka atriði á sama mánaðardegi.
+repeat-end-date-help: Tilgreinir dagsetningu sem endurtaka á atriði þangað til.
+repeat-day-help: Tilgreinir á hvaða vikudegi á að endurtaka atriði. Þetta á aðeins við um þegar valin <I>Endurtekning</I> er <I>Vikulega</I>.
+repeat-frequency-help: Tilgreinir hversu oft á að endurtaka atriði. 1 er sjálfgefið fyrir hvert skipti.  Með því að velja 2 er hægt að láta atriði gerast aðra hverja viku (ef valin <I>Endurtekning</I> er <I>Vikulega</I>), annan hvern mánuð (ef valin <I>Endurtekning</I> er <I>Mánaðarlega</I>), o.s.frv.
+Preferences: Stilla
+Settings: Stillingar
+Language: Tungumál
+language-help: Tilgreinir tungumál.
+Preferred view: Birting
+preferred-view-help: Tilgreinir sjálfgefið val (Dagur, vika, mánuður eða ár).
+Time format: Klukka
+time-format-help: Tilgreinir á hvaða tímasnið á að nota: <BR><I>12 tíma:</I> Birtir tíma sem 3fh, 8:30eh, o.s.frv.  <BR><I>24 tíma:</I> Birtir tíma sem 300, 2030, o.s.frv.
+Display unapproved: Birta ósamþykkt
+display-unapproved-help: Tilgreinir hvort birta eigi ósamþykkt atriði í dagatali.<BR> Ef "Já", eru ósamþykkt atriði birt á dagatali (í öðrum lit).<BR> Ef "Nei", verður að samþykkta atriði til þess að þau birtist á dagatali.
+Display icons: Sýna táknmyndir
+display-icons-help: Birta táknmyndir við hlið hvers atriðis til þess að skoða, breyta og eyða.  Ef "Nei" verður að velja atriði til þess að fá aðgang að þessum möguleikum.
+Display week number: Birta númer viku
+display-week-number-help: Tilgreinir hvort vikunúmer (1-52) eigi að birtast í mánaðar og viku vali.
+display-week-starts-on: Tilgreinir hvort vikan byrjar á sunnudegi eða mánudegi.  Ef mánudagur er valinn munu vikunúmerin á ISO viku númer.
+Work hours: Vinnutími
+work-hours-help: Tilgreinir vinnutíma sem á að birta.
+Colors: Litir
+colors-help: Alla liti á að skilgreina með "#RRGGBB" hex sniði þar sem "RR" er hex gildið fyrir rauðan, "GG" er hex gildi fyrir grænan, og "BB" er hex gildi fyrir bláan.

@@ -1,0 +1,240 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Translated by:
+#	Andre E. Bar'yudin <baryudin@pob.huji.ac.il>
+# Last update: Wed Oct 25 14:34:05 IST 2000
+
+# Title is what will appear in the title bar for pages
+Title: WebCalendar
+
+Month: Месяц
+Week: Неделя
+Error: Ошибка
+
+Sun: Вск
+Mon: Пон
+Tue: Втр
+Wed: Срд
+Thu: Чет
+Fri: Пят
+Sat: Суб
+
+Sunday: Воскресенье
+Monday: Понедельник
+Tuesday: Вторник
+Wednesday: Среда
+Thursday: Четверг
+Friday: Пятница
+Saturday: Суббота
+
+January: Январь
+February: Февраль
+March: Март
+April: Апрель
+May: Май
+June: Июнь
+July: Июль
+August: Август
+September: Сентябрь
+October: Октябрь
+November: Ноябрь
+December: Декабрь
+
+Jan: Янв
+Feb: Фев
+Mar: Мар
+Apr: Апр
+May: Май
+Jun: Июн
+Jul: Июл
+Aug: Авг
+Sep: Сен
+Oct: Окт
+Nov: Ноя
+Dec: Дек
+
+Generate printer-friendly version: Создать версию для печати
+Printer Friendly: Версия для печати
+Go: Перейти
+Back to My Calendar: Вернуться к моему календалю
+Another User's Calendar: Календарь другого пользователя
+Search: Поиск
+Add New Entry: Добавить новую запись
+New Entry: Новая запись
+Admin: Администратор
+Preferences: Предпочтения
+Users: Пользователи
+Account: Счет
+Current User: Текущий пользователь
+View this entry: Просмотр этой записи
+Private: Личное
+This event is confidential: Эта запись конфидециальна
+You have: У вас есть
+unapproved: не утверждено
+event: событие
+events: события
+Go to: Перейти к
+Help Index: Индекс подсказки
+Error approving event: Ошибка в процессе подтверждения события
+This user has: У этого пользователя есть
+calendar entries: календарные записи
+They must all be deleted (or this user removed as a participant) before this user can be deleted:Они все должны быть стерты (или данный пользователь удален из списка участников) прежде чем данный пользователь может быть уничтожен
+The passwords were not identical: Пароли не совпали
+You have not entered a password: Вы не ввели пароль
+You have not entered a Brief Description: Вы не ввели краткое описание
+You have not entered a valid time of day: Вы не ввели легальное время дня
+Brief Description: Краткое описание
+Full Description: Полное описание
+Description: Описание
+Date: Дата
+Time: Время
+am: am
+pm: pm
+Duration: Продолжительность
+minutes: минуты
+Priority: Срочность
+Low: Низкая
+Medium: Средняя
+High: Высокая
+Access: Доступ
+Public: Общедоступный
+Confidential: Конфидециальный
+Participants: Участники
+Created by: Добавлено
+Updated: Обновлено
+Daily: Ежедневно
+for weekly: для еженедельного
+by date: по дате
+by day: по дню недели
+Monthly: Ежемесячно
+None: Никакой
+Repeat Day: День Повтора
+Repeat End Date: Последний день повтора
+Repeat Type: Вид повтора
+Use end date: Использовать дату завершения
+Weekly: Еженедельно
+Yearly: Ежегодно
+Frequency: Частота
+Save: Сохранить
+Help: Подсказка
+Approve this entry?: Подтвердить эту запись?
+Approve/Confirm: Подтвердить
+Approve/Confirm entry: Подтвердить запись
+Reject: Отвергнуть
+Reject entry: Отвергнуть запись
+Reject this entry?: Отвергнуть эту запись?
+Rejected: Отвергнуто
+Edit entry: Редактировать запись
+Edit Entry: Редактировать Запись
+Add Entry: Добавить Запись
+Are you sure you want to delete this entry?: Вы уверены, что вы хотите удалить эту запись?
+This will delete this entry for all users.:Данная операция удалит эту запись у всех пользователей.
+Delete: Удалить
+Delete entry: Удалить запись
+You are not authorized to edit this entry: Вы не имеете прав доступа для удаления данной записи
+Scheduling Conflict: Конфликт в рассписании
+The following conflicts with the suggested time: Следующие записи конфликтуют с предложеным временем
+Unnamed Event: Событие без имени
+Hello: Привет
+A new appointment has been made for you by: Вам назначена новая встреча
+The subject is: Тема
+Please look on: Смотрите дальше
+to accept or reject this appointment: для подтверждения или отвержения этой встречи
+to view this appointment: для просмотра это встречи
+Notification: Уведомление
+Your suggested time of: Ваше предлагаемое время
+conflicts with the following existing calendar entries: конфликтует с нижеследующими календарными записями
+Edit User: Редактировать Пользователя
+Add User: Добавить Пользователя
+Username: Имя пользователя
+Login: Вход
+Logout: Выход
+First Name: Имя
+Last Name: Фамилия
+E-mail address: Адрес электронной почты
+Password: Пароль
+again: еще раз
+Yes: Да
+No: Нет
+Change Password: Сменить пароль
+New Password: Новый пароль
+Set Password: Установить пароль
+Adding/Editing Calendar Entries: Добавление/Редактирование календарных записей
+Unapproved Events: Не подтвержденные события
+No unapproved events: Нет подтвержденных событий
+You must enter a login and password: Необходимо ввести имя и пароль
+Save login via cookies so I don't have to login next time: Сохранить имя в браузере, чтобы не нужно было совершать загрузку в следующий раз
+cookies-note: <B>Note:</B> This application requires cookies to be enabled.
+Invalid color for document background: Недопустимый цвет для фона документа
+Invalid color for document title: Недопустимый цвет для заголовка документа
+Invalid color for table cell background: Недопустимый цвет для фона таблицы
+Invalid color for table cell background for today: Недопустимый цвет для фона клетки текущего дня
+Color format should be '#RRGGBB': Формат цвета должен быть вида '#RRGGBB'
+12 hour: 12 часов
+24 hour: 24 часа
+From: От
+to: до
+Select: Выбрать
+Preferred view: Предпочимый вид
+Week starts on: Неделя начинается в
+Day: День
+Year: Год
+Document background: Фон документа
+Document title: Заголовок документа
+Table cell background: Фон таблицы
+Table cell background for current day: Фон клетки текущего дня
+Save Preferences: Сохранить Предпочтения
+The following error occurred: Произошла следующая ошибка
+Search: Поиск
+Keywords: Ключевые слова
+You must enter one or more search keywords: Следует ввести одно ключевое слово или более
+Search Results: Результаты поиска
+Export: Экспортировать
+Export format: Формат экспорта
+Modified since: Изменено
+Start date: Дата начала
+End date: Дата завершения
+Palm Pilot: Palm Pilot
+match found: найдено соответствие
+matches found: найдены соответствия
+No matches found: Ничего не найдено
+View Another User's Calendar: Просмотреть календарь другого пользователя
+You are not authorized: У вас нет права доступа
+Add New User: Добавить нового пользователя
+denotes administrative user: обозначает адмнинистративного пользователя
+Invalid entry id: Неправильный идентификатор записи
+My Calendar: Мой календарь
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help:Сдесь должно находиться краткое (около 20 символов) описание события.  Это описание будет видно при просмотре календаря.
+full-description-help: Сдесь следует разместить детальное описание события.  Эта информация будет видна при просмотре самого события.
+date-help: Задает дату события.
+time-help: Задает время события.<br> <i>Это поле можно не заполнять.</i>
+duration-help: Задает продолжительность события.  <BR><i>Это поле можно не заполнять.</i>
+priority-help: Задает срочность события.  События с высокой срочностью будут выделены.
+access-help: Задает уровень доступа к событию.<br> <i>Общедоступный:</i> каждый может видеть все детали данного события.<br> <i>Конфидециальный:</i> другие пользователи могут видеть, что у вас есть некая запись в данное время, но не имеют доступа к деталям.
+participants-help: Список участников данного события.
+repeat-type-help: Выберите, с какой частотой это событие повторяется.  <i>Ежемесячное (день недели)</i> задает ежемесячное повторение типа 1-ое воскресенье, 2-ая пятница и т.д.  <i>Ежемесячное (дата)</i> позволяет повторения в заданное число месяца.
+repeat-end-date-help: Задает день до которого событие должно повторятся.
+repeat-day-help: Задает в какие дни недели это событие повторяется.  Используется только для еженедельного вида повторения событий.
+repeat-frequency-help: Задает как часто событие повторяется.  Значение по умолчанию 1 означает, что оно должно происходить каждый раз, когда наступает означеное время.  Значение 2 приведет к тому, что событие будет происходить через раз и т.д.
+Preferences: Предпочтения
+Settings: Установки
+Language: Язык
+language-help: Определяет какой язык должен быть использован.
+Preferred view: Предпочимый вид
+preferred-view-help: Определяет предпочтимый вид (день, неделя, месяц или год).
+Time format: Формат времени
+time-format-help: Определяет формат времени:<br> <i>12-часовой:</i> или <i>24-часовой</i>.
+Display unapproved: Показывать неподтвержденные
+display-unapproved-help: Задает, видны ли неподтвержденные события в вашем календаре.<b> Если выбрано "Да", то они будут отображены в календаре, в цвете отличном от подтвержденных событий.<br>  При выборе "Нет", необходимо сперва подтвердить событие, прежде чем оно будет видно в календаре.
+Display icons: Показывать иконки
+display-icons-help: Задает показывать ли иконки для просмотра, редактирования и уничтожения возле каждого события.  Если вы не хотите видеть эти иконки, то вам придется щелкнуть по записи, прежде чем вы получите доступ к этим функциям.
+Display week number: Показывать день недели
+display-week-number-help: Задает показывать ли нумерацию недель (1-52) в просмотре месяца и недели.
+display-week-starts-on: Задает первый день недели - воскресенье или понедельник (во многих странах, включая Америку и Израиль, первым днем недели считается воскресенье).  Если был выбран понедельник, то нумерация недель будет производиться по стандарту ISO.
+Work hours: Рабочие часы
+work-hours-help: Определяет временной промежуток используемый календарем.
+Colors: Цвета
+colors-help: Все цвета дожны быть представлены в шестнадцатиричном формате "#RRGGBB", где RR - красная составляющая, GG - зеленая, BB - голубая.

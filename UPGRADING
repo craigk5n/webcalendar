@@ -1,0 +1,111 @@
+Below are the steps needed to upgrade from a previous version:
+
+To upgrade to 0.9.27:
+  Two new tables were added for custom event fields and reminders.
+  Look at tables-mysql.sql, tables-oracle.sql, or tables-postgres.sql.
+  Execute the SQL for creating webcal_site_extras and webcal_reminder_log.
+  For MySQL and PostgreSQL, the SQL is:
+
+    CREATE TABLE webcal_site_extras (
+      cal_id INT DEFAULT '0' NOT NULL,
+      cal_name VARCHAR(25) NOT NULL,
+      cal_type INT NOT NULL,
+      cal_date INT DEFAULT '0',
+      cal_remind INT DEFAULT '0',
+      cal_data TEXT,
+      PRIMARY KEY ( cal_id, cal_name, cal_type )
+    );
+
+    CREATE TABLE webcal_reminder_log (
+      cal_id INT DEFAULT '0' NOT NULL,
+      cal_name VARCHAR(25) NOT NULL,
+      cal_event_date INT NOT NULL DEFAULT 0,
+      cal_last_sent INT NOT NULL DEFAULT 0,
+      PRIMARY KEY ( cal_id, cal_name, cal_event_date )
+    );
+
+  For Oracle, the SQL is:
+    CREATE TABLE webcal_site_extras (
+      cal_id INT DEFAULT '0' NOT NULL,
+      cal_name VARCHAR(25) NOT NULL,
+      cal_type INT NOT NULL,
+      cal_date INT DEFAULT '0',
+      cal_remind INT DEFAULT '0',
+      cal_data LONG,
+      PRIMARY KEY ( cal_id, cal_name, cal_type )
+    );
+
+    CREATE TABLE webcal_reminder_log (
+      cal_id INT DEFAULT '0' NOT NULL,
+      cal_name VARCHAR(25) NOT NULL,
+      cal_event_date INT NOT NULL DEFAULT 0,
+      cal_last_sent INT NOT NULL DEFAULT 0,
+      PRIMARY KEY ( cal_id, cal_name, cal_event_date )
+    );
+
+  You will also need to setup the tools/send_reminders.php script
+  to be run periodically.  I would recommend once an hour.  For
+  Linux/UNIX, this is simple.  Just use cron and add a line to
+  your crontab file that looks like:
+
+    1 * * * * cd /some/directory/webcalendar/tools; ./send_reminders.php
+
+  This will tell cron to run the script at one minute after the hour.
+  Windows users will have to find another way to run the script.
+  There are ports/look-a-likes of cron for Windows, so look around.
+
+
+To upgrade to 0.9.22:
+
+  A new table was added to support layering.  Look at
+  tables-mysql.sql, tables-oracle.sql, or tables-postgres.sql.
+  Execute the SQL for creating the webcal_entry_repeats.  For MySQL,
+  the SQL is:
+    CREATE TABLE webcal_user_layers (
+      cal_layerid INT DEFAULT '0' NOT NULL,
+      cal_login varchar(25) NOT NULL,
+      cal_layeruser varchar(25) NOT NULL,
+      cal_color varchar(25) NULL,
+      cal_dups CHAR(1) DEFAULT 'N',
+      PRIMARY KEY ( cal_login, cal_layeruser )
+    );
+
+
+To upgrade to 0.9.14:
+  A new table was added to support repeating events.  Look at
+  tables-mysql.sql, tables-oracle.sql, or tables-postgres.sql.
+  Execute the SQL for creating the webcal_entry_repeats.  For MySQL,
+  the SQL is:
+    CREATE TABLE webcal_entry_repeats (
+      cal_id INT DEFAULT '0' NOT NULL,
+      cal_type VARCHAR(20),
+      cal_end INT,
+      cal_frequency INT DEFAULT '1',
+      cal_days CHAR(7),
+      PRIMARY KEY (cal_id)
+   );
+
+To upgrade from 0.9.7-0.9.11 to 0.9.12:
+  To fix a bug in the handing of events at midnight, all the
+  entries with NULL for cal_time are changed to -1.  Use the
+  following SQL command:
+    update webcal_entry set cal_time = -1 where cal_time is null;
+To upgrade from 0.9.[23456] to 0.9.7:
+  Entirely new tables are used.  Use the following commands to
+  convery your existing MySQL tables to the new tables:
+    cd tools
+    ./upgrade_to_0.9.7.pl
+    mysql intranet < commands.sql
+  where "intranet" is the name of the MySQL database that contains
+  your WebCalendar tables.
+
+To upgrade from 0.9.[23]:
+  Not a thing....
+
+To upgrade from 0.9.1:
+  You only need to create the table cal_user_pref in tables.sql
+
+To upgrade from 0.9:
+  You need to create the table cal_user_pref in tables.sql
+  You need to create the table cal_entry_user in tables.sql that
+    was mistakenly created as "cal_event_user" in the 0.9 release

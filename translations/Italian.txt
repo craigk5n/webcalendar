@@ -1,0 +1,231 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Translated by:
+#	Simone Cortesi <php@cortesi.com>
+#	Alessandro <a.orlandi@iol.it>
+# Last update: 22 July 2000
+
+# Title is what will appear in the title bar for pages
+Title: WebCalendar
+
+Month: Mese
+Week: Settimana
+Error: Errore
+
+Sun: Do
+Mon: Lu
+Tue: Ma
+Wed: Me
+Thu: Gi
+Fri: Ve
+Sat: Sa
+
+Sunday: Domenica
+Monday: Lunedì
+Tuesday: Martedì
+Wednesday: Mercoledì
+Thursday: Giovedì
+Friday: Venerdì
+Saturday: Sabato
+
+January: Gennaio
+February: Febbraio
+March: Marzo
+April: Aprile
+May: Maggio
+June: Giugno
+July: Luglio
+August: Agosto
+September: Settembre
+October: Ottobre
+November: Novembre
+December: Dicembre
+
+Jan: Gen
+Feb: Feb
+Mar: Mar
+Apr: Apr
+May: Mag
+Jun: Gun
+Jul: Lug
+Aug: Ago
+Sep: Set
+Oct: Ott
+Nov: Nov
+Dec: Dic
+
+Language: Lingua
+Generate printer-friendly version: Genera versione adatta alla stampa
+Printer Friendly: Versione per Stampa
+Go: Vai
+Back to My Calendar: Torna al mio calendario
+Another User's Calendar: Calendario di altro utente
+Search: Cerca
+Add New Entry: Aggiungi nuova nota
+New Entry: Nuova Nota
+Admin: Amministratore
+Preferences: Preferenze
+Users: Utenti
+Account: Account
+Current User: Utente Corrente
+View this entry: Visualizza questa nota
+Private: Privato
+This event is confidential: Questo evento è confidenziale
+You have: Hai
+unapproved: non approvato
+event: evento
+events: eventi
+Go to: Vai a
+Help Index: Indice della Guida
+Error approving event: Errore durante l'aprovazione di un evento
+This user has: Questo utente ha
+calendar entries: annotazioni nel calendario
+They must all be deleted (or this user removed as a participant) before this user can be deleted: Queste dovranno essere cancellate tutte (o questo utente rimosso come partecipante) prima che questo utente possa essere cancellato
+The passwords were not identical: Le password non sono identiche
+You have not entered a password: Non si è inserita nessuna password
+You have not entered a Brief Description: Non è stata inserita una breve descrizione
+You have not entered a valid time of day: Non è stato inserito un orario corretto
+Brief Description: Descrizione Breve
+Full Description: Descrizione Completa
+Description: Descrizione
+Date: Data
+Time: Ora
+am: am
+pm: pm
+Duration: Durata
+minutes: minuti
+Priority: Priorità
+Low: Bassa
+Medium: Media
+High: Alta
+Access: Accesso
+Public: Pubblico
+Confidential: Confidenziale
+Participants: Partecipanti
+Created by: Creato da
+Updated: Agiornato
+Daily: Giornaliera
+for weekly: per settimanale
+by date: per data
+by day: per giorno
+Monthly: Mensile
+None: Nessuna
+Repeat Day: Giorno Ripetizione
+Repeat End Date: Data ultima ripetizione
+Repeat Type: Tipo di ripetizione
+Use end date: Data termine
+Weekly: Settimanale
+Yearly: Annuale
+Frequency: Frequenza
+Save: Salva
+Help: Guida
+Approve this entry?: Approva questa nota?
+Approve/Confirm entry: Approva/Conferma nota
+Edit entry: Modifica Nota
+Edit Entry: Modifica Nota
+Add Entry: Aggiungi Nota
+Are you sure you want to delete this entry?: Siete sicuri di voler eliminare questa nota?
+This will delete this entry for all users.: Questo cancellerà la nota per tutti gli utenti.
+Delete: Cancella
+Delete entry: Cancella nota
+You are not authorized to edit this entry: Non sei autorizzato a modificare questa nota
+Scheduling Conflict: Conflitto di appuntamenti
+The following conflicts with the suggested time: Il seguente è in conflitto con l'orario suggerito
+Unnamed Event: Evento Senza Nome
+Hello: Ciao
+A new appointment has been made for you by: Un nuovo appuntamento è stato fissato per te da
+The subject is: Il titolo è
+Please look on: Per favore guarda
+to accept or reject this appointment: per accettare o respingere questo appuntamento
+to view this appointment: per visualizzare questo appuntamento
+Notification: Notifica
+Your suggested time of: L'ora suggerita
+conflicts with the following existing calendar entries: è in conflitto con il seguente appuntamento già presente nel calendario
+Edit User: Modifica Utente
+Add User: Aggiungi Utente
+Username: Nome Utente
+Login: Entra
+Logout: Esci
+First Name: Nome
+Last Name: Cognome
+E-mail address: Indirizzo email
+Password: Password
+again: di nuovo
+Yes: Sì
+No: No
+Change Password: Cambiare Password
+New Password: Nuova Password
+Set Password: Assegnare Password
+Adding/Editing Calendar Entries: Aggiungere/Modificare note nel Calendario
+Unapproved Events: Eventi non approvati
+No unapproved events: Non sono presenti eventi non approvati
+You must enter a login and password: Inserire nome utente e password
+Save login via cookies so I don't have to login next time: Salvare le informazioni di login tramite i cookie così da non doversi più registrare la prossima volta
+cookies-note: <B>Nota:</B> Questo applicativo necessita dei cookie abilitati.
+Invalid color for document background: Il colore dello sfondo del documento non è valido
+Invalid color for document title: Il colore del titolo del documento non è valido
+Invalid color for table cell background: Il colore dello sfondo della cella non è valido
+Invalid color for table cell background for today: Il colore dello sfondo della cella della data odierna non è valido
+Color format should be '#RRGGBB': Il fomrato del colore deve essere '#RRGGBB'
+12 hour: 12 ore
+24 hour: 24 ore
+From: Da
+to: a
+Select: Seleziona
+Document background: Sfondo documento
+Document title: Titolo documento
+Table cell background: Sfondo cella tabella
+Table cell background for current day: Sfondo cella tabella per oggi
+Save Preferences: Salva Preferenze
+The following error occurred: E' avvenuto il seguente errore
+Search: Cerca
+Keywords: Parole Chiave
+You must enter one or more search keywords: Occorre inserire una o più parole chiave
+Search Results: Risultati della Ricerca
+match found: corrispondenza trovata
+matches found: corrispondenze trovate
+No matches found: Nessuna corrispondenza trovata
+View Another User's Calendar: Visualizza calendario di un altro utente
+You are not authorized: Non sei autorizzato
+Add New User: Aggiungere Nuovo Utente
+denotes administrative user: denota utente con privilegi amministrativi
+Invalid entry id: Identificativo nota non valido
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help: Questo dovrebbe dare una breve descrizione (circa 20 caratteri) dell'evento. Questo rappresenterà l'evento quando si visita il calendario.
+full-description-help: Questo dovrebbe dare dettagli completi dell'evento. Questa informazione sarà mostrata quando l'utente visualizza l'evento.
+date-help: Specifica la data di un evento.
+time-help: Specifica l'ora di un evento.<BR><I>Questo campo può essere lasciato in bianco.</I>
+duration-help: Specifica la durata (in minuti) dell'evento. <BR><I>Questo campo può essere lasciato in bianco.</I>
+priority-help: Specifica la priorità dell'evento. Eventi con un alta priorità saranno mostrati in grassetto.
+access-help: Specifica il livello di accesso dell'evento.<BR> <I>Pubblico</I>: Chiunque può vedere tutti i dettagli dell'evento.  <BR><I>Confidenziale</I>: Gli altri possono vedere che è presente una nota per quella data e ora, ma non i dettagli relativi.
+participants-help: Elenca i partecipanti di questa nota.
+repeat-type-help: Seleziona quanto spesso l'evento si deve ripetere.<I>Mensile (per giorno)</I> permette ad un evento di ripetersi il 1° Lunedì del mese, 3° Giovedì del mese, ecc.  <I>Mensile (per data)</I> permette ad un evento di ripetersi nello stesso giorno del mese.
+repeat-end-date-help: Specifica fino a quale data l'evento dovrà ripetersi.
+repeat-day-help: Specifica in quali giorni della settimana l'evento può ripetersi. Questo può essere usato solo quando <I>Tipo di ripetizione</I> è impostato su <I>Settimanale</I>.
+repeat-frequency-help: Specifica quanto spesso l'evento si deve ripetere. Il valore di default 1 indica che deve avvenire ogni volta. Specificando 2 l'evento avverrà una volta sì e una no (se <I>Tipo di ripetizione</I> è impostato su <I>Settimanale</I>), un mese sì e uno no (se <I>Tipo di ripetizione</I> è impostato su <I>Mensile</I>), ecc.
+Preferences: Preferenze
+Settings: Settaggi
+Time format: Formato ora
+time-format-help: Specifica quale formato orario usare: <BR><I>12 ore:</I> Mostra le ore come 3am, 8:30pm, ecc.  <BR><I>24 ore:</I> Mostra le ore come 3:00, 20:30, ecc.
+Display unapproved: Mostrare eventi non approvati
+display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<BR> Se settato su "Sì", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<BR> Se settato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
+Display week number: Mostrare numero settimana
+display-week-number-help: Specifica se mostrare o meno il numero della settimana (1-52) quando il calendario viene visualizzato per mese o per settimana.
+display-week-starts-on: Specifica se la settimana inizia Domenica o Lunedì.. Se si specifica Lunedì, i numeri delle settimane saranno numeri di settimane secondo lo standard ISO.
+Work hours: Ore lavorative
+work-hours-help: Specifica l'arco temporale da mostrare nella vista giornaliera.
+Colors: Colori
+colors-help: Tutti i colori devono essere specificati nel formato esadecimale "#RRGGBB" dove "RR" è il valore esadecimale della componente rossa, "GG" è il valore esadecimale della componente verde, e "BB" è il valore esadecimale della componente blu.
+
+# Added by Simone Cortesi <php@cortesi.com>
+
+Export: Esporta
+My Calendar: Il mio calendario
+Week starts on: La settimana inizia
+Export format: Formato esportazione
+Start date: Data inizio
+End date: Data fine
+Modified since: Modificato dal
+Palm Pilot: Palm Pilot
