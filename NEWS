@@ -7,6 +7,7 @@ Version 1.0RC4-CVS (?? ??? 2005)
     + Applied bug fix 1151442: Overlapping events display error in week.php
 
   - New Features / Enhancements / Changes:
+    + Added new default webcal_config values to all sql table definition files
     + Removed most instances of htmlentities as unneeded
     + Admin no longer needs to approve Public events that they create
     + Added option to set LDAP_OPT_PROTOCOL_VERSION in user-ldap.php

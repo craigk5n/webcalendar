@@ -20,8 +20,8 @@ INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, ca
  * cal_priority: 1=Low, 2=Med, 3=High
  * cal_type: E=Event ... and not yet implemented: D=Deadline, R=Reminder
  * cal_access:
- *	P=Public
- *	C=Confidential (others can see time allocated but not what it is)
+ * P=Public
+ * C=Confidential (others can see time allocated but not what it is)
  */
 CREATE TABLE webcal_entry (
   cal_id INT NOT NULL,
@@ -266,6 +266,73 @@ INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'EMAIL_EVENT_DELETED', 'Y' );
 INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'EMAIL_EVENT_REJECTED', 'Y' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('auto_refresh', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('nonuser_enabled', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('allow_html_description', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('reports_enabled', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('DISPLAY_WEEKENDS', 'Y');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('DISPLAY_DESC_PRINT_DAY', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('DATE_FORMAT', '__month__ __dd__, __yyyy__');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('TIME_SLOTS', '12');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('TIMED_EVT_LEN', 'D');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('PUBLISH_ENABLED', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('DATE_FORMAT_MY', '__month__ __yyyy__');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('DATE_FORMAT_MD', '__month__ __dd__');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('CUSTOM_SCRIPT', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('CUSTOM_HEADER', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('CUSTOM_TRAILER', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('bold_days_in_year', 'Y');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('site_extras_in_popup', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('add_link_in_views', 'Y');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('allow_conflict_override', 'Y');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('limit_appts', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('limit_appts_number', '6');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access_default_visible', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access_default_selected', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access_others', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access_can_add', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access_add_needs_approval', 'Y');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access_view_part', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('nonuser_at_top', 'Y');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('allow_external_users', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('external_notifications', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('external_reminders', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('enable_gradients', 'N');
+
 
 
 /* activity log for an event */
