@@ -45,6 +45,7 @@ $TROUBLE_URL = "docs/WebCalendar-SysAdmin.html#trouble";
   */
 function die_miserable_death ( $error )
 {
+global $TROUBLE_URL;
   echo "<html><head><title>WebCalendar: Fatal Error</title></head>\n" .
     "<body><h2>WebCalendar Error</h2>\n" .
     "<p>$error</p>\n<hr />" .
