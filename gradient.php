@@ -24,7 +24,6 @@ $PERCENT = 15; // Percent to change brightness
 
 $width = 5; // could be 1, doesn't really matter since browser will stretch it
 
-
 // Get a value from a GET URL
 function getGetValue ( $name ) {
   if ( ! empty ( $_GET[$name] ) )
@@ -61,13 +60,11 @@ function hextoint ( $val ) {
   return 0;
 }
 
-
 $height = getGetValue ( "height" );
 if ( empty ( $height ) )
   $height = 50;
 if ( $height > $MAX_HEIGHT )
   $height = $MAX_HEIGHT;
-
 
 $numcolors = getGetValue ( "colors" );
 if ( empty ( $numcolors ) )
@@ -114,8 +111,8 @@ if ( strlen ( $base ) == 6 ) {
   // Invalid color specification
 }
 
-//echo "Base=$base<br>";
-//echo "Red=$red<br>Green=$green<br>Blue=$blue<br>\n"; exit;
+//echo "Base=$base<br />";
+//echo "Red=$red<br />Green=$green<br />Blue=$blue<br />\n"; exit;
 $image = imagecreate ( $width, $height );
 
 // Allocate array of colors
@@ -128,11 +125,11 @@ if ( $green + $deltagreen > 255 )
   $deltagreen = 255 - $green;
 if ( $blue + $deltablue > 255 )
   $deltablue = 255 - $blue;
-//echo "deltared=$deltared<br>deltagreen=$deltagreen<br>deltablue=$deltablue<br>";
-//echo "red=$red<br>green=$green<br>blue=$blue<br>";
+//echo "deltared=$deltared<br />deltagreen=$deltagreen<br />deltablue=$deltablue<br />";
+//echo "red=$red<br />green=$green<br />blue=$blue<br />";
 for ( $i = 0; $i < $numcolors; $i++ ) {
   $thisdelta = ceil ($delta * $i / $numcolors);
-  //echo "thisdelta=$thisdelta<br>";
+  //echo "thisdelta=$thisdelta<br />";
   $thisred = $red + ( $deltared * $i / $numcolors );
   if ( $thisread > 255 )
     $thisread = 255;
@@ -146,7 +143,7 @@ for ( $i = 0; $i < $numcolors; $i++ ) {
   $thisgreen = floor ( $thisgreen );
   $thisblue = floor ( $thisblue );
   $colors[$i] = imagecolorallocate ( $image, $thisred, $thisgreen, $thisblue );
-  //echo "Color $i: $thisred $thisgreen $thisblue<br>";
+  //echo "Color $i: $thisred $thisgreen $thisblue<br />";
 }
 
 for ( $i = 0; $i < $height; $i++ ) {
@@ -157,7 +154,7 @@ for ( $i = 0; $i < $height; $i++ ) {
   $y = $height - $i - 1;
   imageline ( $image, 0, $y, $width - 1, $y,
     $colors[$ind] );
-  //echo "Line $i, color $ind<br>";
+  //echo "Line $i, color $ind<br />";
 }
 //exit;
 
@@ -168,7 +165,7 @@ if ( function_exists ( "imagepng" ) ) {
   Header ( "Content-type: image/gif" );
   imagegif ( $image );
 } else {
-  echo "No image formats supported!<br/>\n";
+  echo "No image formats supported!<br />\n";
 }
 imagedestroy ( $image );
 ?>

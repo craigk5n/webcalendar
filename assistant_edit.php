@@ -15,7 +15,7 @@ print_header($INC);
   if ($user) echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   if ( $is_nonuser_admin ) {
     nonuser_load_variables ( $user, "nonuser" );
-    echo "<h2 style=\"font-weight:bold;\">" . $nonuserfullname . " " . translate("Assistants")
+    echo "<h2>" . $nonuserfullname . " " . translate("Assistants")
         ."<br />\n-- " . translate("Admin mode") . " --</h2>\n";
   } else {
     echo "<h2>" . translate("Your assistants") . "</h2>\n";
@@ -24,9 +24,9 @@ print_header($INC);
 <a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 
 <table style="border-width:0px;">
-<tr><td style="vertical-align:top;"><label for="users"><?php etranslate("Assistants"); ?>:</label></td>
-<td>
-<select name="users[]" id="users" size="10" multiple="multiple">
+<tr><td style="vertical-align:top;">
+	<label for="users"><?php etranslate("Assistants"); ?>:</label></td><td>
+	<select name="users[]" id="users" size="10" multiple="multiple">
 <?php
   // get list of all users
   $users = get_my_users ();
