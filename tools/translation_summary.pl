@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 #
 # Examine all translation files to create a report that shows how
 # many translations are missing from each translation file.

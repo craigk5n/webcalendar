@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 #
 # This tool will update a translation file by doing the following:
 # - Insert an empty translation when a missing translation is found.
