@@ -64,6 +64,8 @@ blockquote {
 <li><a href="#intro">Introduction</a>
 <li><a href="#users">Users and Events</a>
 <li><a href="#repeat">Repeating Events</a>
+<li><a href="#publicaccess">Public Access</a>
+<li><a href="#subscriptions">Remote Subscriptions</a>
 <li><a href="#external">External Users</a>
 <li><a href="#nonuser">NonUser Calendars</a>
 <li><a href="#categories">Categories</a>
@@ -217,6 +219,35 @@ will repeat on June 12th and so on.
 If you select "Yearly", the event will repeat on the
 same date every year
 until the end date (if specified).
+
+</p><hr><h2><a name="publicaccess">Public Access</a></h2><p>
+
+If your system is not configured to allow Public Access,
+you may skip this section.
+</p><p>
+Public Access is useful if you want to publish part of the calendar to 
+a larger userbase that isn't allowed to edit it.
+</p><p>
+If Public Access is turned on, an extra user will show up when creating a new event:
+the 'Public Access' user. To make an event visible to users that aren't logged in, 
+simply include the 'Public Access' user to the list of participants. 
+</p><p>
+Note: Setting the 'Access' field to 'Confidential' will still publish the event if 
+you include 'Public Access' in the event.
+
+</p><hr><h2><a name="subscriptions">Remote Subscriptions</a></h2><p>
+
+If your system is not configured to allow Remote Subscriptions,
+you may skip this section.
+</p><p>
+When Remote Subscriptions are enabled for the site, a user can enable it for his account
+by setting 'Admin', 'Preferences', 'Subscribe/Publish' to 'Yes'.
+</p><p>
+If a user has this option turned on, the URL listed there can be used by external 
+iCalendar-aware applications (like Mozilla Calendar or Apple iCal) to view the calendar.
+</p><p>
+The 'Public Access' calendar, if any, can be enabled by the administrator, and accessed
+using that URL with username '__public__'.
 
 </p><hr><h2><a name="external">External Users</a></h2><p>
 
@@ -623,6 +654,9 @@ If you do not see anything similar, submit a new bug.
 <div style="margin: 15px">
 <pre>
 $Log$
+Revision 1.6  2004/06/26 10:35:04  cknudsen
+Patch 972551: added sections for public access and remote subscriptions
+
 Revision 1.5  2004/02/25 17:35:58  cknudsen
 updated version number
 
