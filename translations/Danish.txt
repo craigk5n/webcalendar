@@ -335,13 +335,13 @@ Brief Description: Kort beskrivelse
 full-description-help: Her kan der stå en komplet beskrivelse af aftalen.
 Full Description: Komplet beskrivelse
 date-help: Angiver datoen for aftalen.
-time-help: Angiver tidspunktet for aftalen.<BR><I>Dette felt behøver ikke at være udfyldt.</I>
+time-help: Angiver tidspunktet for aftalen.<br /><i>Dette felt behøver ikke at være udfyldt.</i>
 am: am
 pm: pm
 Untimed event: Ikke tidsbestemt aftale
 Timed event: Tidsbestemt aftale
 All day event: aftalefor hele dagen
-duration-help: I dette felt kan du angive varigheden af aftalen <BR><I>Dette felt behøver ikke at være udfyldt.</I>
+duration-help: I dette felt kan du angive varigheden af aftalen <br /><i>Dette felt behøver ikke at være udfyldt.</i>
 Duration: Varighed
 hours: timer
 priority-help: Angiv aftalens prioritet.
@@ -801,7 +801,7 @@ You must enter a login and password: Du skal indtaste et brugernavn og kodeord
 Save login via cookies so I don't have to login next time: Gem login-informationer i en cookie, så jeg ikke skal logge ind næste gang
 Login: Log ind
 Access public calendar: Tilgå offentlig kalender
-cookies-note: <B>OBS:</B> Dette program kræver at cookies er slået til i browseren
+cookies-note: <b>OBS:</b> Dette program kræver at cookies er slået til i browseren
 
 
 ###############################################

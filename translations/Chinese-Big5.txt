@@ -139,7 +139,7 @@ Year: 年
 # << MISSING >>
 # Date format:
 December: 十二月
-time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
+time-format-help: Specifies which time format to use: <br /><i>12 hour:</i> Display times as 3am, 8:30pm, etc.  <br /><i>24 hour:</i> Display times as 300, 2030, etc.
 Time format: 時間格式
 12 hour: 12時制
 24 hour: 24時制
@@ -179,7 +179,7 @@ minutes: 分
 #
 # << MISSING >>
 # Require event approvals:
-display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<BR> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<BR> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
+display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: 顯示未核准的
 display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month view and the week view.
 Display week number: 顯示週數(以年計算)
@@ -696,7 +696,7 @@ Brief Description: 概要描述
 full-description-help: This should complete details of the event.  This information can be seen when a user views the event.
 Full Description: 完整描述
 date-help: Specifies the date of the event.
-time-help: Specifies the time of the event.<BR><I>This field can be left blank.</I>
+time-help: Specifies the time of the event.<br /><i>This field can be left blank.</i>
 am: 上午
 pm: 下午
 #
@@ -708,7 +708,7 @@ pm: 下午
 #
 # << MISSING >>
 # All day event:
-duration-help: Specifies the duration (in minutes) of the event.  <BR><I>This field can be left blank.</I>
+duration-help: Specifies the duration (in minutes) of the event.  <br /><i>This field can be left blank.</i>
 Duration: 持續時間
 hours: 時
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
@@ -716,7 +716,7 @@ Priority: 優先等級
 Low: 低
 Medium: 中
 High: 高
-access-help: Specifies the access level of the event.<BR> <I>Public</I>: Everyone can see the full details of the event.  <BR><I>Confidential</I>: Others can see that you have an entry for that date and time, but not the details of what it is.
+access-help: Specifies the access level of the event.<br /> <i>Public</i>: Everyone can see the full details of the event.  <br /><i>Confidential</i>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: 顯示設定
 Public: 公眾的
 Confidential: 機密的
@@ -745,7 +745,7 @@ Participants: 參與者
 #
 # << MISSING >>
 # External Participants:
-repeat-type-help: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
+repeat-type-help: Select how often the event should repeat.<i>Monthly (by day)</i> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <i>Monthly (by date)</i> allows an event to repeat on the same day of the month.
 Repeat Type: 週期性設定
 Daily: 每日的
 Weekly: 每週的
@@ -759,7 +759,7 @@ Yearly: 每年的
 repeat-end-date-help: Specifies the date the event should repeat until.
 Repeat End Date: 週期結束日期
 Use end date: 使用結束日期設定
-repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <I>Repeat Type</I> is set to <I>Weekly</I>.
+repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
 Repeat Day: 重複於
 for weekly: 僅每週的
 Tuesday: 星期二
@@ -767,7 +767,7 @@ Wednesday: 星期三
 Thursday: 星期四
 Friday: 星期五
 Saturday: 星期六
-repeat-frequency-help: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <I>Repeat Type</I> is set to <I>Weekly</I>), every other month (if <I>Repeat Type</I> is set to <I>Monthly</I>), etc.
+repeat-frequency-help: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <i>Repeat Type</i> is set to <i>Weekly</i>), every other month (if <i>Repeat Type</i> is set to <i>Monthly</i>), etc.
 Frequency: 重複次數
 Delete entry: 刪除記事
 You are not authorized to edit this entry: You are not authorized to edit this entry
@@ -1386,7 +1386,7 @@ Login: 登入
 #
 # << MISSING >>
 # Access public calendar:
-cookies-note: <B>注意:</B> 本程式須要 cookies 才能使用.
+cookies-note: <b>注意:</b> 本程式須要 cookies 才能使用.
 
 
 ###############################################

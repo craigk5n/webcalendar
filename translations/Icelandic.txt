@@ -140,7 +140,7 @@ Year: Ár
 # << MISSING >>
 # Date format:
 December: Desember
-time-format-help: Tilgreinir á hvaða tímasnið á að nota: <BR><I>12 tíma:</I> Birtir tíma sem 3fh, 8:30eh, o.s.frv.  <BR><I>24 tíma:</I> Birtir tíma sem 300, 2030, o.s.frv.
+time-format-help: Tilgreinir á hvaða tímasnið á að nota: <br /><i>12 tíma:</i> Birtir tíma sem 3fh, 8:30eh, o.s.frv.  <br /><i>24 tíma:</i> Birtir tíma sem 300, 2030, o.s.frv.
 Time format: Klukka
 12 hour: 12 tíma
 24 hour: 24 tíma
@@ -180,7 +180,7 @@ minutes: mínútur
 #
 # << MISSING >>
 # Require event approvals:
-display-unapproved-help: Tilgreinir hvort birta eigi ósamþykkt atriði í dagatali.<BR> Ef "Já", eru ósamþykkt atriði birt á dagatali (í öðrum lit).<BR> Ef "Nei", verður að samþykkta atriði til þess að þau birtist á dagatali.
+display-unapproved-help: Tilgreinir hvort birta eigi ósamþykkt atriði í dagatali.<br /> Ef "Já", eru ósamþykkt atriði birt á dagatali (í öðrum lit).<br /> Ef "Nei", verður að samþykkta atriði til þess að þau birtist á dagatali.
 Display unapproved: Birta ósamþykkt
 display-week-number-help: Tilgreinir hvort vikunúmer (1-52) eigi að birtast í mánaðar og viku vali.
 Display week number: Birta númer viku
@@ -707,7 +707,7 @@ Brief Description: Stutt skrýring
 full-description-help: Hér á að vera full lýsing atriðis.  Upplýsingarnar er hægt að sjá þegar atriði er skoðað.
 Full Description: Full skýring
 date-help: Tilgreinir dagsetningu atriðis.
-time-help: Tilgreinir tíma atriðis.<BR><I>Þessu sviði má sleppa.</I>
+time-help: Tilgreinir tíma atriðis.<br /><i>Þessu sviði má sleppa.</i>
 am: fh
 pm: eh
 #
@@ -719,7 +719,7 @@ pm: eh
 #
 # << MISSING >>
 # All day event:
-duration-help: Tilgreinir áætlaða lengd (í mínútum) atriðis.  <BR><I>Þessu sviði má sleppa.</I>
+duration-help: Tilgreinir áætlaða lengd (í mínútum) atriðis.  <br /><i>Þessu sviði má sleppa.</i>
 Duration: Lengd
 #
 # << MISSING >>
@@ -729,7 +729,7 @@ Priority: Forgangur
 Low: Lágur
 Medium: Meðal
 High: Hár
-access-help: Tilgreinir aðgang að atriði.<BR> <I>Allir</I>: Allir geta séð fulla lýsingu atriðis.  <BR><I>Trúnaðarmál</I>: Aðrir sjá að viðkomandi hefur atriði á tilgreindum tíma en sjá ekkert um efnið.
+access-help: Tilgreinir aðgang að atriði.<br /> <i>Allir</i>: Allir geta séð fulla lýsingu atriðis.  <br /><i>Trúnaðarmál</i>: Aðrir sjá að viðkomandi hefur atriði á tilgreindum tíma en sjá ekkert um efnið.
 Access: Aðgangur
 Public: Allir
 Confidential: Trúnaðarmál
@@ -758,7 +758,7 @@ Participants: Þátttakendur
 #
 # << MISSING >>
 # External Participants:
-repeat-type-help: Velja hversu oft endurtaka á atburðinn.<I>Mánaðarlega (eftir degi)</I> gerir kleift að endurtaka atriði fyrsta mánudag mánaðar, þriðja þriðjudag o.s.frv.  <I>Mánaðarlega (eftir dags)</I> gerir kleift að endurtaka atriði á sama mánaðardegi.
+repeat-type-help: Velja hversu oft endurtaka á atburðinn.<i>Mánaðarlega (eftir degi)</i> gerir kleift að endurtaka atriði fyrsta mánudag mánaðar, þriðja þriðjudag o.s.frv.  <i>Mánaðarlega (eftir dags)</i> gerir kleift að endurtaka atriði á sama mánaðardegi.
 Repeat Type: Tegund endurtekningar
 Daily: Daglega
 Weekly: Vikulega
@@ -772,7 +772,7 @@ Yearly: Árlega
 repeat-end-date-help: Tilgreinir dagsetningu sem endurtaka á atriði þangað til.
 Repeat End Date: Lok endurtekningar
 Use end date: Loka dags
-repeat-day-help: Tilgreinir á hvaða vikudegi á að endurtaka atriði. Þetta á aðeins við um þegar valin <I>Endurtekning</I> er <I>Vikulega</I>.
+repeat-day-help: Tilgreinir á hvaða vikudegi á að endurtaka atriði. Þetta á aðeins við um þegar valin <i>Endurtekning</i> er <i>Vikulega</i>.
 Repeat Day: Endurtekning
 for weekly: vikulega
 Tuesday: Þriðjudagur
@@ -780,7 +780,7 @@ Wednesday: Miðvikudagur
 Thursday: Fimmtudagur
 Friday: Föstudagur
 Saturday: Laugardagur
-repeat-frequency-help: Tilgreinir hversu oft á að endurtaka atriði. 1 er sjálfgefið fyrir hvert skipti.  Með því að velja 2 er hægt að láta atriði gerast aðra hverja viku (ef valin <I>Endurtekning</I> er <I>Vikulega</I>), annan hvern mánuð (ef valin <I>Endurtekning</I> er <I>Mánaðarlega</I>), o.s.frv.
+repeat-frequency-help: Tilgreinir hversu oft á að endurtaka atriði. 1 er sjálfgefið fyrir hvert skipti.  Með því að velja 2 er hægt að láta atriði gerast aðra hverja viku (ef valin <i>Endurtekning</i> er <i>Vikulega</i>), annan hvern mánuð (ef valin <i>Endurtekning</i> er <i>Mánaðarlega</i>), o.s.frv.
 Frequency: Tíðni
 Delete entry: Eyða atriði
 You are not authorized to edit this entry: Þú hefur ekki réttindi til þess að breyta þessu atriði
@@ -1447,7 +1447,7 @@ Login: Skrá inn
 #
 # << MISSING >>
 # Access public calendar:
-cookies-note: <B>Athugið:</B> Kökur verða að vera virkar
+cookies-note: <b>Athugið:</b> Kökur verða að vera virkar
 
 
 ###############################################

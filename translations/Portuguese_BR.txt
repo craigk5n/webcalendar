@@ -70,7 +70,7 @@ Display days with events in bold in year view:Mostrar dias que contenham eventos
 date-format-help: Especifique um formato de data preferido.
 Date format: Formato da Data
 December: Dezembro
-time-format-help: Especifica o formato da hora a ser utilizada: <BR><I>12 horas
+time-format-help: Especifica o formato da hora a ser utilizada: <br /><i>12 horas
 Time format: Formato da Hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -423,7 +423,7 @@ Brief Description: Descrição breve
 full-description-help: Descrição completa do evento. Esta informação é apresent
 Full Description: Descrição completa
 date-help: Especifica a data do evento.
-time-help: Especifica a hora do evento<BR><I>Este campo é opcional.</I>
+time-help: Especifica a hora do evento<br /><i>Este campo é opcional.</i>
 am: am
 pm: pm
 #
@@ -435,7 +435,7 @@ pm: pm
 #
 # << MISSING >>
 # All day event:
-duration-help: Especifica a duração (em minutos) do evento.  <BR><I>Este campo
+duration-help: Especifica a duração (em minutos) do evento.  <br /><i>Este campo
 Duration: Duração
 hours: horas
 priority-help: Especifica a prioridade do evento.  Prioridade Alta é apresentad
@@ -443,7 +443,7 @@ Priority: Prioridade
 Low: Baixa
 Medium: Média
 High: Alta
-access-help: Especifica o nível de acesso do evento.<BR> <I>Publico</I> Todos o
+access-help: Especifica o nível de acesso do evento.<br /> <i>Publico</i> Todos o
 Access: Accesso
 Public: Publico
 Confidential: Confidencial
@@ -462,7 +462,7 @@ Participants: Participantes
 #
 # << MISSING >>
 # External Participants:
-repeat-type-help: Seleciona a periodicidade do evento<I>Mensal (por dia)</I> fa
+repeat-type-help: Seleciona a periodicidade do evento<i>Mensal (por dia)</i> fa
 Repeat Type: Tipo de repetição
 Daily: Diário
 Weekly: Semanal
@@ -1003,7 +1003,7 @@ You must enter a login and password: Tem de digitar um usuário e senha
 Save login via cookies so I don't have to login next time: Gravar usuário e sen
 Login: Entrar
 Access public calendar: Acesso publico ao calendario
-cookies-note: <B>Nota:</B> Esta opção requer a opção de 'cookies' no seu browse
+cookies-note: <b>Nota:</b> Esta opção requer a opção de 'cookies' no seu browse
 
 
 ###############################################

@@ -96,7 +96,7 @@ Display weekends in week view: Mostrar fines de semana en vista semanal
 date-format-help: Especifica el formato de fecha preferido
 Date format: Formato de fecha
 December: Diciembre
-time-format-help: Especifica qué formato de hora se usará: <BR><I>12 horas:</I> Muestra tiempos como 3am, 8:30pm, etc.  <BR><I>24 horas:</I> Muestra horas como 300, 2030, etc.
+time-format-help: Especifica qué formato de hora se usará: <br /><i>12 horas:</i> Muestra tiempos como 3am, 8:30pm, etc.  <br /><i>24 horas:</i> Muestra horas como 300, 2030, etc.
 Time format: Formato de Hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -110,7 +110,7 @@ auto-refresh-time-help: Si el refresco automático está habilitado, este campo es
 Auto-refresh time: Tiempo de Refresco automático
 require-approvals-help: Cuando se habilita, un usuario debe aprobar un evento antes de que se muestre en su calendario (excepto si está habilitado Mostrar no aprobados). Ajustado a "No" impide el acceso público al calendario (si el acceso público al calendario está habilitado).
 Require event approvals: Requerir aprobación de eventos
-display-unapproved-help: Especifica si eventos no aprobados se mostraran en su calendario.<BR> Si se ajusta a "Sí", los eventos no aprobados se mostrarán en su calendario (en un color de texto diferente).<BR> Si se ajusta a "No", los eventos no aprobados deben ser aprobados antes de que se muestren en su calendario.
+display-unapproved-help: Especifica si eventos no aprobados se mostraran en su calendario.<br /> Si se ajusta a "Sí", los eventos no aprobados se mostrarán en su calendario (en un color de texto diferente).<br /> Si se ajusta a "No", los eventos no aprobados deben ser aprobados antes de que se muestren en su calendario.
 Display unapproved: Mostrar no aprobados
 display-week-number-help: Especifica si el número correspondiente a la semana (1-52) debe mostrarse en las vistas de mes y de semana.
 Display week number: Mostrar número de la semana
@@ -335,13 +335,13 @@ Brief Description: Breve Descripción
 full-description-help: Descripción completa y detallada del evento. Esta información puede ser vista por un usuario cuando ve el evento.
 Full Description: Descripción Ampliada
 date-help: Especifica la fecha del evento.
-time-help: Especifica la hora del evento.<BR>Selecciona "Evento con hora" (para un evento planificado a una hora especifica del día), "Evento sin hora" (para un evento que no tiene hora, como un festivo) o "Evento para todo el día" (para un evento que dura todo el día, como estar fuera de la oficina).
+time-help: Especifica la hora del evento.<br />Selecciona "Evento con hora" (para un evento planificado a una hora especifica del día), "Evento sin hora" (para un evento que no tiene hora, como un festivo) o "Evento para todo el día" (para un evento que dura todo el día, como estar fuera de la oficina).
 am: am
 pm: pm
 Untimed event: Evento sin hora
 Timed event: Evento con hora
 All day event: Evento para todo el día
-duration-help: Especifica la duración (en horas:minutos) del evento.  <BR><I>Este campo puede dejarse vacío.</I>
+duration-help: Especifica la duración (en horas:minutos) del evento.  <br /><i>Este campo puede dejarse vacío.</i>
 Duration: Duración
 hours: horas
 priority-help: Especifica la prioridad del evento.  Eventos de Alta Prioridad se mostrarán en negrita.
@@ -349,7 +349,7 @@ Priority: Prioridad
 Low: Baja
 Medium: Media
 High: Alta
-access-help: Especifica el nivel de acceso del evento.<BR> <I>Público</I>: Cualquiera puede ver los detalles del evento.  <BR><I>Confidencial</I>: Otros pueden ver que tienes una entrada para ese día y esa hora, pero no los detalles de qué es.
+access-help: Especifica el nivel de acceso del evento.<br /> <i>Público</i>: Cualquiera puede ver los detalles del evento.  <br /><i>Confidencial</i>: Otros pueden ver que tienes una entrada para ese día y esa hora, pero no los detalles de qué es.
 Access: Acceso
 Public: Público
 Confidential: Confidencial
@@ -362,7 +362,7 @@ participants-help: Lista de participantes en esta entrada.
 Participants: Participantes
 external-participants-help: Especifica una lista de participantes en el evento que no son usuarios del calentario. Los usuario deben ser listados uno por línea y pueden incluir su dirección de email. Si la dirección de email se especifica, el usuario es elegible para recibir notications y recordatorios.
 External Participants: Participantes externos
-repeat-type-help: Seleccione con que frecuencia un evento debe repetirse.<I>Mensual (por día)</I> permite que un evento se repita el primer lunes de mes, 3 jueves del mes, etc.  <I>Mensual (por fecha)</I> permite que un evento se repita el mismo día del mes.
+repeat-type-help: Seleccione con que frecuencia un evento debe repetirse.<i>Mensual (por día)</i> permite que un evento se repita el primer lunes de mes, 3 jueves del mes, etc.  <i>Mensual (por fecha)</i> permite que un evento se repita el mismo día del mes.
 Repeat Type: Tipo de repetición
 Daily: Diario
 Weekly: Semanalmente
@@ -374,7 +374,7 @@ Yearly: Anualmente
 repeat-end-date-help: Especifica hasta que día debe repetirse un evento.
 Repeat End Date: Fecha fin de repetir
 Use end date: Usar fecha fin
-repeat-day-help: Especifica en que dias del mes debe repetirse el evento.  PAra usar sólo cuando <I>Tipo de repetición</I> está ajustado a <I>Semanal</I>. 
+repeat-day-help: Especifica en que dias del mes debe repetirse el evento.  PAra usar sólo cuando <i>Tipo de repetición</i> está ajustado a <i>Semanal</i>. 
 Repeat Day: Día repetición
 for weekly: para semanal
 Tuesday: Martes
@@ -382,7 +382,7 @@ Wednesday: Miércoles
 Thursday: Jueves
 Friday: Viernes
 Saturday: Sabado
-repeat-frequency-help: Especifica con qué frecuencia un evento debe repetirse. Por defecto 1 indica que debe ocurrir cada vez. Especificando 2 hará que el evento ocurrá cada semana (si <I>Repetir tipo</I> está ajustado a <I>Semanal</I>), cada mes (si <I>Repetir tipo</I> está ajustado a <I>Mensual</I>), etc.
+repeat-frequency-help: Especifica con qué frecuencia un evento debe repetirse. Por defecto 1 indica que debe ocurrir cada vez. Especificando 2 hará que el evento ocurrá cada semana (si <i>Repetir tipo</i> está ajustado a <i>Semanal</i>), cada mes (si <i>Repetir tipo</i> está ajustado a <i>Mensual</i>), etc.
 Frequency: Frequencia
 Delete entry: Borrar entrada
 You are not authorized to edit this entry: Usted no está autorizado para editar esta entrada
@@ -797,7 +797,7 @@ You must enter a login and password: Usted debe introducor nombre de usuario y c
 Save login via cookies so I don't have to login next time: Guardar datos via cookies para no hacer login la próxima vez
 Login: Entrar
 Access public calendar: Acceso a calendario público
-cookies-note: <B>Nota:</B> Esta aplicación requiere tener habilitado cookies.
+cookies-note: <b>Nota:</b> Esta aplicación requiere tener habilitado cookies.
 
 
 ###############################################

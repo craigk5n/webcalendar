@@ -99,7 +99,7 @@ Display description in printer day view: Leírás megjelenítése napi nyomtatási né
 date-format-help: Megadja a kívánt dátumformátumot.
 Date format: Dátumformátum
 December: December
-time-format-help: Megadja, hogy melyik formátumot használod: <BR><I>12 órás:</I> Az idõpontok du 3:30 formában jelennek meg.  <BR><I>24 órás:</I> Idõpontok 20:30 formában jelennek meg.
+time-format-help: Megadja, hogy melyik formátumot használod: <br /><i>12 órás:</i> Az idõpontok du 3:30 formában jelennek meg.  <br /><i>24 órás:</i> Idõpontok 20:30 formában jelennek meg.
 Time format: Idõpont formátum
 12 hour: 12 órás
 24 hour: 24 órás
@@ -113,7 +113,7 @@ auto-refresh-time-help: Megadja a frissítési idõközt, ha az automatikus frissíté
 Auto-refresh time: Automatikus frissítési idõ
 require-approvals-help: Bekapcsolva a felhasználónak jóvá kell hagynia az eseményt, mielõtt megjelenne a naptárában (hacsak a jóváhagyás nélküliek megjelenítése nincs bekapcsolva). Megjegyzés: ha ezt kikapcsolod, attól még a nyilvános naptár eseményeit jóvá kell hagynod (már ha a nyilvános naptár be van kapcsolva).
 Require event approvals: Események jóváhagyásának megkövetelése
-display-unapproved-help: Megadja, hogy a jóváhagyatlan események megjelenjenek-e.<BR> Ha "Igen", a jóváhagyatlan események megjelennek (más színnel).<BR> Ha "Nem", az eseményeket jóvá kell hagyni ahhoz, hogy megjelenjenek a naptáradban.
+display-unapproved-help: Megadja, hogy a jóváhagyatlan események megjelenjenek-e.<br /> Ha "Igen", a jóváhagyatlan események megjelennek (más színnel).<br /> Ha "Nem", az eseményeket jóvá kell hagyni ahhoz, hogy megjelenjenek a naptáradban.
 Display unapproved: Jóváhagyás nélküliek megjelenítése
 display-week-number-help: Megadja, hogy a havi és a heti nézetben megjelenjenek-e a hetek számai (1-52).
 Display week number: Hetek számának kiírása
@@ -321,13 +321,13 @@ Brief Description: Rövid leírás
 full-description-help: Az esemény részletes leírása, mely a naptár-bejegyzésben jelenik meg.
 Full Description: Teljes leírás
 date-help: Az esemény dátuma.
-time-help: Az esemény idõpontja.<BR><I>Kötelezõ megadni.</I>
+time-help: Az esemény idõpontja.<br /><i>Kötelezõ megadni.</i>
 am: de
 pm: du
 Untimed event: Idõpont nélküli esemény
 Timed event: Idõzített esemény
 All day event: Egész napos esemény.
-duration-help: Az esemény idõtartama (óra:perc formátumban).<BR><I>Nem kötelezõ megadni.</I>
+duration-help: Az esemény idõtartama (óra:perc formátumban).<br /><i>Nem kötelezõ megadni.</i>
 Duration: Idõtartam
 hours: óra
 priority-help: Az esemény fontossága.  A sürgõs dolgok vastagon szedve jelennek meg.
@@ -335,7 +335,7 @@ Priority: Fontosság
 Low: Ráér
 Medium: Fontos
 High: Életbevágó
-access-help: Az esemény publikussága.<BR> <I>Nyilvános</I>: Mindenki láthatja az esemény részleteit.  <BR><I>Bizalmas</I>: Mások is látják, hogy van elfoglaltságod ebben az idõpontban, de azt nem, hogy mi az.
+access-help: Az esemény publikussága.<br /> <i>Nyilvános</i>: Mindenki láthatja az esemény részleteit.  <br /><i>Bizalmas</i>: Mások is látják, hogy van elfoglaltságod ebben az idõpontban, de azt nem, hogy mi az.
 Access: Hozzáférés
 Public: Nyilvános
 Confidential: Bizalmas
@@ -348,7 +348,7 @@ participants-help: Az esemény résztvevõinek listája.
 Participants: Résztvevõk
 external-participants-help: Megadja az esemény azon résztvevõinek listáját, akik nem WebCalendar felhasználók. Soronként egy felhasználót kell megadni, mely tartalmazhat email-címet. Ha megadsz email-címet, a felhasználó kaphat értesítéseket és emlékeztetõket.
 External Participants: Külsõ résztvevõk
-repeat-type-help: Válaszd ki, milyen gyakran ismétlõdjön az esemény. <I>Havi (hét napja szerint)</I> esetén pl. a hónap minden 3. keddjén ismétlõdik.  <I>Havi (dátum szerint)</I> esetén minden hó adott napján ismétlõdik.
+repeat-type-help: Válaszd ki, milyen gyakran ismétlõdjön az esemény. <i>Havi (hét napja szerint)</i> esetén pl. a hónap minden 3. keddjén ismétlõdik.  <i>Havi (dátum szerint)</i> esetén minden hó adott napján ismétlõdik.
 Repeat Type: Ismétlés tipusa
 Daily: Napi
 Weekly: Heti
@@ -360,7 +360,7 @@ Yearly: Évi
 repeat-end-date-help: Megadja, hogy meddig ismétlõdjön az esemény.
 Repeat End Date: Ismétlés vége
 Use end date: Befejezõ dátum
-repeat-day-help: Megadja, hogy a hét melyik napján ismétlõdjön az esemény.  Ez csak akkor mûködik, ha az <I>Ismétlõdés tipusa</I> <I>Heti</I>-re van állítva.
+repeat-day-help: Megadja, hogy a hét melyik napján ismétlõdjön az esemény.  Ez csak akkor mûködik, ha az <i>Ismétlõdés tipusa</i> <i>Heti</i>-re van állítva.
 Repeat Day: Ismétlés napja
 for weekly: heti
 Tuesday: Kedd
@@ -368,7 +368,7 @@ Wednesday: Szerda
 Thursday: Csütörtök
 Friday: Péntek
 Saturday: Szombat
-repeat-frequency-help: Az ismétlõdés gyakoriságát adja meg.  Az alapértelmezett 1 minden esetben ismétel.  A 2 megadása minden második héten (ha az <I>Ismétlõdés típusa</I> <I>Heti</I>-re van állítva), vagy minden második hónap (ha az <I>Ismétlõdés típusa</I> <I>Hónap</I>-ra van állítva), stb.
+repeat-frequency-help: Az ismétlõdés gyakoriságát adja meg.  Az alapértelmezett 1 minden esetben ismétel.  A 2 megadása minden második héten (ha az <i>Ismétlõdés típusa</i> <i>Heti</i>-re van állítva), vagy minden második hónap (ha az <i>Ismétlõdés típusa</i> <i>Hónap</i>-ra van állítva), stb.
 Frequency: Gyakoriság
 Delete entry: Bejegyzés törlése
 You are not authorized to edit this entry: Nincs jogod ezt a bejegyzést módosítani
@@ -778,7 +778,7 @@ You must enter a login and password: Add meg az azonosítódat és jelszavadat
 Save login via cookies so I don't have to login next time: A bejelentkezési jelszó mentése, így errõl a géprõl legközelebb nem kell megadni
 Login: Bejelentkezés
 Access public calendar: Nyilvános naptár elérése
-cookies-note: <B>Megjegyzés:</B> A sütiket engedélyezni kell a naptár használatához.
+cookies-note: <b>Megjegyzés:</b> A sütiket engedélyezni kell a naptár használatához.
 
 
 ###############################################

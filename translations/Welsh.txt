@@ -105,7 +105,7 @@ Display weekends in week view: Dangoser penwythnosau yn y golwg wythnosol
 date-format-help: Mae hwn yn dynodi y fformat dyddiad arferol.
 Date format: Fformat dyddiad
 December: Rhagfyr
-time-format-help: Mae hwn yn dynodi y fformat amser i'w ddefnyddio: <BR><I>12 awr:</I> Dangoser amserau megis 3am, 8:30pm, ac ati.  <BR><I>24 awr:</I> Dangoser amserau megis 300, 2030, ac ati.
+time-format-help: Mae hwn yn dynodi y fformat amser i'w ddefnyddio: <br /><i>12 awr:</i> Dangoser amserau megis 3am, 8:30pm, ac ati.  <br /><i>24 awr:</i> Dangoser amserau megis 300, 2030, ac ati.
 Time format: Fformat amser
 12 hour: 12 awr
 24 hour: 24 awr
@@ -119,7 +119,7 @@ auto-refresh-time-help: Os yw adfywio awtomatig yn cael ei ddefnyddio, yna mae h
 Auto-refresh time: Amser i adfywio'n awtomatig
 require-approvals-help: Pan mae hwn yn cael ei ddefnyddio rhaid i'r defnyddwr cymeradwyo digwyddiad cyn iddo gael ei ddangos ar ei calendr (os nad yw 'Dangos heb Cymeradwyaeth' ymlaen) Noder wrth gosod hwn i 'Na' ni fydd hwn yn hepgor ar yr angen i cymeradwyo digwyddiadau i'r Calendr Cyhoeddus (os yw'r Calendr Cyhoeddus wedi ei 'alluogi').
 Require event approvals: Cymeradwyaeth i ddigwyddiadau'n angenrheidiol
-display-unapproved-help: Mae hwn yn dynodi a yw digwyddiadau heb cymeradwyaeth yn cael eu dangos yn eich calendr.<BR> Os goseder i "Ie", Yna fe ddangosir digwyddiadau heb cymeradwyaeth yn eich calendr (mewn lliw gwahanaol).<BR> Os gosoder i "Na", yna mae angen cymeradwyo digwyddiadau cyn iddynt gael eu dangos ar eich calendr.
+display-unapproved-help: Mae hwn yn dynodi a yw digwyddiadau heb cymeradwyaeth yn cael eu dangos yn eich calendr.<br /> Os goseder i "Ie", Yna fe ddangosir digwyddiadau heb cymeradwyaeth yn eich calendr (mewn lliw gwahanaol).<br /> Os gosoder i "Na", yna mae angen cymeradwyo digwyddiadau cyn iddynt gael eu dangos ar eich calendr.
 Display unapproved: Dangoser digwyddiadau heb cymeradwyaeth
 display-week-number-help: Mae hwn yn dynodi os y dylid dangos rhif yr wythnos (1-52) yn y golwg misol neu wythnosol.
 Display week number: Dangoser rhif yr wythnos
@@ -450,7 +450,7 @@ Brief Description: Disgrifiad Byr
 full-description-help: Defnyddir hwn i gwblhau manylion y digwyddiad.  Mi all y defnyddiwr weld y wybodaeth yma wrth iddynt glicio ar y digwyddiad neu trwy symud y llygoden dros y digwyddiad.
 Full Description: Disgrifiad llawn
 date-help: Mae hwn yn dynodi dyddiad y digwyddiad.
-time-help: Mae hwn yn dynodi amser y digwyddiad.<BR><I>Mi ellir gadael hwn yn wag.</I>
+time-help: Mae hwn yn dynodi amser y digwyddiad.<br /><i>Mi ellir gadael hwn yn wag.</i>
 am: am
 pm: pm
 #
@@ -462,7 +462,7 @@ pm: pm
 #
 # << MISSING >>
 # All day event:
-duration-help: Mae hwn yn dynodi (mewn Oriau:Munudau) parhad y digwyddiad. <BR><I>Mi ellir gadael hwn yn wag.</I>
+duration-help: Mae hwn yn dynodi (mewn Oriau:Munudau) parhad y digwyddiad. <br /><i>Mi ellir gadael hwn yn wag.</i>
 Duration: Parhad
 hours: awr
 priority-help: Mae hwn yn dynodi blaenoriaeth y digwyddiad. Mi fydd digwyddiadau gyda blaenoriaeth uchel yn cael ei dangos gyda llythrennau bras.
@@ -470,7 +470,7 @@ Priority: Blaenoriaeth
 Low: Isel
 Medium: Canolig
 High: Uchel
-access-help: Mae hwn yn dynodi lefel caniatad y digwyddiad.<BR> <I>Cyhoeddus</I>: Mae pawb yn gallu gweld holl fanylion y digwyddiad.  <BR><I>Cyfrinachol</I>: Gall eraill gweld fod ganddoch digwyddiad am amser a dyddiad penodol, ond nid ydynt yn gallu gweld y manylion. 
+access-help: Mae hwn yn dynodi lefel caniatad y digwyddiad.<br /> <i>Cyhoeddus</i>: Mae pawb yn gallu gweld holl fanylion y digwyddiad.  <br /><i>Cyfrinachol</i>: Gall eraill gweld fod ganddoch digwyddiad am amser a dyddiad penodol, ond nid ydynt yn gallu gweld y manylion. 
 Access: Caniatad
 Public: Cyhoeddus
 Confidential: Cyfrinachol
@@ -489,7 +489,7 @@ Participants: Cyfranogwyr
 #
 # << MISSING >>
 # External Participants:
-repeat-type-help: Dewiswch pa more aml y dylsai'r digwyddiad ailgyflawni. Wrth dewis <I>Misol (wrth dydd o'r wythnos)</I> mi all digwyddiad ailgyflawni ar y Llun 1af o'r mis, 3ydd Iau o'r mis, ayyb.  Wrth dewis <I>Misol (wrth dyddiad)</I> mi all digwyddiad ailgyflawni ar yr un diwrnod o'r mis (e.e. y 3ydd) 
+repeat-type-help: Dewiswch pa more aml y dylsai'r digwyddiad ailgyflawni. Wrth dewis <i>Misol (wrth dydd o'r wythnos)</i> mi all digwyddiad ailgyflawni ar y Llun 1af o'r mis, 3ydd Iau o'r mis, ayyb.  Wrth dewis <i>Misol (wrth dyddiad)</i> mi all digwyddiad ailgyflawni ar yr un diwrnod o'r mis (e.e. y 3ydd) 
 Repeat Type: Amlder Ailgyflawni
 Daily: Dyddiol
 Weekly: Wythnosol
@@ -503,7 +503,7 @@ Yearly: Blynyddol
 repeat-end-date-help: Mae hwn yn dynodi y dyddiad olaf y gall y digwyddiad ailgyflawni hyd iddi.
 Repeat End Date: Diwrnod olaf a ailgyflawnir
 Use end date: Mae angen diwrnod diwethaf
-repeat-day-help: Mae hwn yn dynodi pa ddiwrnodau o'r wythnos y bydd y digwyddiad yn ailgyflawni arnynt.  Defnyddir hwn ond pan fod <I>Amlder Ailgyflawni</I> wedi ei osod i <I>Wythnosol</I>.
+repeat-day-help: Mae hwn yn dynodi pa ddiwrnodau o'r wythnos y bydd y digwyddiad yn ailgyflawni arnynt.  Defnyddir hwn ond pan fod <i>Amlder Ailgyflawni</i> wedi ei osod i <i>Wythnosol</i>.
 Repeat Day: Diwrnod yr ailgyflawniad
 for weekly: os wythnosol
 Tuesday: Mawrth
@@ -511,7 +511,7 @@ Wednesday: Mercher
 Thursday: Iau
 Friday: Gwener
 Saturday: Sadwrn
-repeat-frequency-help: Mae hwn yn dynodi pa mor aml bydd y digwyddiad yn ailgyflawni. Wrth dewis 1 mi fydd y digwyddiad yn digwydd pob tro. Wrth dewis 2 mi fydd y digwyddiad yn digwydd bob yn ail wythnos (os yw <I>Amlder Ailgyflawni</I> wedi ei osod i <I>Wythnosol</I>), neu bob yn ail mis (os yw <I>Amlder Ailgyflawni</I> wedi ei osod i <I>Misol</I>), ayyb.
+repeat-frequency-help: Mae hwn yn dynodi pa mor aml bydd y digwyddiad yn ailgyflawni. Wrth dewis 1 mi fydd y digwyddiad yn digwydd pob tro. Wrth dewis 2 mi fydd y digwyddiad yn digwydd bob yn ail wythnos (os yw <i>Amlder Ailgyflawni</i> wedi ei osod i <i>Wythnosol</i>), neu bob yn ail mis (os yw <i>Amlder Ailgyflawni</i> wedi ei osod i <i>Misol</i>), ayyb.
 Frequency: Amlder
 Delete entry: Dileu digwyddiad
 You are not authorized to edit this entry: Nid oes ganddo chi yr awdurdod i newid y digwyddiad yma
@@ -1016,7 +1016,7 @@ You must enter a login and password: Rhaid i chi cynnig mewngofnodiad a gair cyd
 Save login via cookies so I don't have to login next time: Arbedwch fy mewngofnodiad trwy 'cookies' fel nad oes raid i mi mewngofnodi y tro nesaf
 Login: Mewngofnodiad
 Access public calendar: Calendr Cyhoeddus
-cookies-note: <B>Note:</B> Mae'n hanfodol bod 'cookies' yn gweithio i'r meddalwedd yma redeg.
+cookies-note: <b>Note:</b> Mae'n hanfodol bod 'cookies' yn gweithio i'r meddalwedd yma redeg.
 
 
 ###############################################

@@ -150,7 +150,7 @@ Year: Sene
 # << MISSING >>
 # Date format:
 December: Aralik
-time-format-help: Hangi saat özelligi kullanildigini gösterir: <BR><I>12-saatlik:</I> Saati 3am, 8:30pm vs. diye gösterir.  <BR><I>24-saatlik:</I> Saati 3.00, 20.30 vs. diye gösterir.
+time-format-help: Hangi saat özelligi kullanildigini gösterir: <br /><i>12-saatlik:</i> Saati 3am, 8:30pm vs. diye gösterir.  <br /><i>24-saatlik:</i> Saati 3.00, 20.30 vs. diye gösterir.
 Time format: Saat
 12 hour: 12-saatlik
 24 hour: 24-saatlik
@@ -190,7 +190,7 @@ minutes: Dakika
 #
 # << MISSING >>
 # Require event approvals:
-display-unapproved-help: Onaylanmamis Terminler Takviminizde görülsünmü.<BR> Eger "Evet", Onaylanmamis Termin'ler baska bir renkte olur.<BR> Eger "Hayir", onaylanmamis Termin'ler onaylandiktan sonra Takvimde görünebilir. 
+display-unapproved-help: Onaylanmamis Terminler Takviminizde görülsünmü.<br /> Eger "Evet", Onaylanmamis Termin'ler baska bir renkte olur.<br /> Eger "Hayir", onaylanmamis Termin'ler onaylandiktan sonra Takvimde görünebilir. 
 Display unapproved: Onaylanmamis Termin'leri gör
 display-week-number-help: Kacinci Hafta oldugunu (1-52) Aylik ve Haftalik görünümlerinde gösterir.
 Display week number: Kacinci Hafta
@@ -721,7 +721,7 @@ Brief Description: Özel Anlami
 full-description-help: Terminin tamamen aciklamasi. Bu aciklamayi Kullanici Termin'de görür.
 Full Description: Tüm Anlam
 date-help: Termin'in tarihini gösterir.
-time-help: Termin'in saatini gösterir.<BR><I>Bos birakilabilir.</I>
+time-help: Termin'in saatini gösterir.<br /><i>Bos birakilabilir.</i>
 am: am
 pm: pm
 #
@@ -733,7 +733,7 @@ pm: pm
 #
 # << MISSING >>
 # All day event:
-duration-help: Dakika olarak Termin'in sürecegi zamani gösterir.<BR><I>Bos birakilabilir.</I>
+duration-help: Dakika olarak Termin'in sürecegi zamani gösterir.<br /><i>Bos birakilabilir.</i>
 Duration: Zaman
 #
 # << MISSING >>
@@ -743,7 +743,7 @@ Priority: Priorite
 Low: alcak
 Medium: orta
 High: yüksek
-access-help: Termine giris özelliklerini gösterir.<BR> <I>Acik</I>: Herkes her Detayli görebilir.<BR><I>Özel</I>: Termin'in varligini görebilir, ama hicbir Detayli göremez.
+access-help: Termine giris özelliklerini gösterir.<br /> <i>Acik</i>: Herkes her Detayli görebilir.<br /><i>Özel</i>: Termin'in varligini görebilir, ama hicbir Detayli göremez.
 Access: Giris
 Public: acik
 Confidential: özel 
@@ -775,7 +775,7 @@ Participants: Katilanlar
 #
 # << MISSING >>
 # repeat-type-help:
-# English text: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
+# English text: Select how often the event should repeat.<i>Monthly (by day)</i> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <i>Monthly (by date)</i> allows an event to repeat on the same day of the month.
 #
 Repeat Type: Tekrar türü
 Daily: Günliük
@@ -797,7 +797,7 @@ Use end date: Bugün bitiyor
 #
 # << MISSING >>
 # repeat-day-help:
-# English text: Specifies which days of the week the event should repeat on.  This is for use only when <I>Repeat Type</I> is set to <I>Weekly</I>.
+# English text: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
 #
 Repeat Day: Tekrarin günü
 for weekly: Haftalik Termin'lerde
@@ -809,7 +809,7 @@ Saturday: Cumartesi
 #
 # << MISSING >>
 # repeat-frequency-help:
-# English text: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <I>Repeat Type</I> is set to <I>Weekly</I>), every other month (if <I>Repeat Type</I> is set to <I>Monthly</I>), etc.
+# English text: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <i>Repeat Type</i> is set to <i>Weekly</i>), every other month (if <i>Repeat Type</i> is set to <i>Monthly</i>), etc.
 #
 Frequency: defa
 Delete entry: Islemi sil
@@ -1479,7 +1479,7 @@ Login: Giris
 #
 # << MISSING >>
 # Access public calendar:
-cookies-note: <B>Not:</B> Takvimi kullanmak icin, Browser'inizde Cookie'leri kabul etmeniz gerekiyor.
+cookies-note: <b>Not:</b> Takvimi kullanmak icin, Browser'inizde Cookie'leri kabul etmeniz gerekiyor.
 
 
 ###############################################

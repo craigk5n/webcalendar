@@ -1028,7 +1028,7 @@ You must enter a login and password: Erabiltzaile eta pasahitz bat sartu behar d
 Save login via cookies so I don't have to login next time: Datuak gorde
 Login: Sartu
 Access public calendar: Egutegi publikora joan
-cookies-note: <B>Oharra:</B> Aplikazio honek cookiak gaituak egotea behar du.
+cookies-note: <b>Oharra:</b> Aplikazio honek cookiak gaituak egotea behar du.
 
 
 ###############################################

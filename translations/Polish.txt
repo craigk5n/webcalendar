@@ -142,7 +142,7 @@ Year: Rok
 # << MISSING >>
 # Date format:
 December: Grudzieñ
-time-format-help: Okre¶la którego formatu czasu u¿ywaæ <BR><I>12 godz.:</I> Wy¶wietla czas jakoo 3am, 8:30pm, itd. <BR><I>24 godz.:</I> Wy¶wietla czas jako 300, 2030 itd. 
+time-format-help: Okre¶la którego formatu czasu u¿ywaæ <br /><i>12 godz.:</i> Wy¶wietla czas jakoo 3am, 8:30pm, itd. <br /><i>24 godz.:</i> Wy¶wietla czas jako 300, 2030 itd. 
 Time format: Format czasu
 12 hour: 12 godzin
 24 hour: 24 godziny
@@ -182,7 +182,7 @@ minutes: minut
 #
 # << MISSING >>
 # Require event approvals:
-display-unapproved-help: Okre¶la czy niezatwierdzone wydarzenia bêd± wy¶wietlane w twoim kalendarzu.<BR> Je¶li "tak" wtedy niezatwierdzone wydarzenia bêd± wy¶wietlane (innym kolorem).<BR> Je¶li "Nie" wtedy najpierw bêd± musia³y zostaæ zatwierdzone nim pojawi± siê w Twoim kalendarzu.
+display-unapproved-help: Okre¶la czy niezatwierdzone wydarzenia bêd± wy¶wietlane w twoim kalendarzu.<br /> Je¶li "tak" wtedy niezatwierdzone wydarzenia bêd± wy¶wietlane (innym kolorem).<br /> Je¶li "Nie" wtedy najpierw bêd± musia³y zostaæ zatwierdzone nim pojawi± siê w Twoim kalendarzu.
 Display unapproved: Wy¶wietlaj niezatwierdzone
 display-week-number-help: Okre¶la czy numer tygodnia (1-52) powinien byæ wy¶wietlany w widoku miesi±ca i tygodnia.
 Display week number: Wy¶wietl numery tygodni
@@ -709,7 +709,7 @@ Brief Description: Krótki opis
 full-description-help: Powinien to byæ pe³ny opis wydarzenia. Bêdzie wy¶wietlany podczas ogl±dania wydarznia.
 Full Description: Pe³ny opis
 date-help: Okre¶la datê wydarzenia.
-time-help: Okre¶la czas wydarzenia.<BR><I>Mo¿e zostaæ puste.</I>
+time-help: Okre¶la czas wydarzenia.<br /><i>Mo¿e zostaæ puste.</i>
 am: Przed po³udniem
 pm: Po po³udniu
 #
@@ -721,7 +721,7 @@ pm: Po po³udniu
 #
 # << MISSING >>
 # All day event:
-duration-help: Okre¶la (w minutach) czas trwania wydarzenia.<BR><I>Mo¿e zostaæ puste.</I>
+duration-help: Okre¶la (w minutach) czas trwania wydarzenia.<br /><i>Mo¿e zostaæ puste.</i>
 Duration: Czas trwania
 #
 # << MISSING >>
@@ -731,7 +731,7 @@ Priority: Priorytet
 Low: Niski
 Medium: ¦redni
 High: Wysoki
-access-help: Okre¶la poziom dostêpu do wydarzenia.<BR><I>Publiczny</I>: Ka¿dy mo¿e ogl±daæ wszystkie szczegó³y wydarzenia.<BR><I>Poufny</I>: Inni u¿ytkownicy i widz± ¿e masz taki wpis ale nie mog± ogl±daæ jego szczegó³ów.
+access-help: Okre¶la poziom dostêpu do wydarzenia.<br /><i>Publiczny</i>: Ka¿dy mo¿e ogl±daæ wszystkie szczegó³y wydarzenia.<br /><i>Poufny</i>: Inni u¿ytkownicy i widz± ¿e masz taki wpis ale nie mog± ogl±daæ jego szczegó³ów.
 Access: Dostêp
 Public: Dla wszystkich
 Confidential: Poufny
@@ -760,7 +760,7 @@ Participants: Wspó³uczestnicy
 #
 # << MISSING >>
 # External Participants:
-repeat-type-help: Wybierz z jak± czêstotliwo¶ci± wydarzenie ma byæ powtarzane.<I>Co miesi±c (wg dnia)</I> pozwala powtarzaæ wydarzenie w pierwszy poniedzia³ek ka¿dego miesi±ca, trzeci wtorek .. itd. <I>Co miesi±c (po dacie)</I> pozwala powtarzaæ wydarzenie tego samego dnia ka¿dego miesi±ca.
+repeat-type-help: Wybierz z jak± czêstotliwo¶ci± wydarzenie ma byæ powtarzane.<i>Co miesi±c (wg dnia)</i> pozwala powtarzaæ wydarzenie w pierwszy poniedzia³ek ka¿dego miesi±ca, trzeci wtorek .. itd. <i>Co miesi±c (po dacie)</i> pozwala powtarzaæ wydarzenie tego samego dnia ka¿dego miesi±ca.
 Repeat Type: Typ powtarzania
 Daily: Codziennie
 Weekly: co tydzieñ
@@ -774,7 +774,7 @@ Yearly: co rok
 repeat-end-date-help: Okre¶la datê do której dane wydarzenie ma byc ponawiane.
 Repeat End Date: Powtórz datê zakoñczenia
 Use end date: U¿yj daty zakoñczenia
-repeat-day-help: Okre¶la w które dni tygodnia wydarzenie ma byæ powtarzane.  U¿ywane jest tylko gdy <I>Typ powtarzania</I> jest ustawiony na <I>Co tydzieñ</I>.
+repeat-day-help: Okre¶la w które dni tygodnia wydarzenie ma byæ powtarzane.  U¿ywane jest tylko gdy <i>Typ powtarzania</i> jest ustawiony na <i>Co tydzieñ</i>.
 Repeat Day: Powtórz dzieñ
 for weekly: co tydzieñ
 Tuesday: Wtorek
@@ -782,7 +782,7 @@ Wednesday: ¦roda
 Thursday: Czwartek
 Friday: Pi±tek
 Saturday: Sobota
-repeat-frequency-help: Okre¶la jak czêsto wydarzenia ba byæ powtarzane. Domy¶lnie 1 oznacza ¿e bêdzie powtarzany za ka¿dym razem. Ustawiaj±c 2 bêdzie powtarzany co drugi tydzieñ (je¶li <I>Typ powtarzania</I> jest ustawiony na <I>Co tydzieñ</I>), co drugi miesi±c (je¶li <I>Typ powtarzania</I> jest ustawiony na <I>Co miesi±c</I>), itd.
+repeat-frequency-help: Okre¶la jak czêsto wydarzenia ba byæ powtarzane. Domy¶lnie 1 oznacza ¿e bêdzie powtarzany za ka¿dym razem. Ustawiaj±c 2 bêdzie powtarzany co drugi tydzieñ (je¶li <i>Typ powtarzania</i> jest ustawiony na <i>Co tydzieñ</i>), co drugi miesi±c (je¶li <i>Typ powtarzania</i> jest ustawiony na <i>Co miesi±c</i>), itd.
 Frequency: Czêstotliwo¶æ
 Delete entry: Skasuj wpis
 You are not authorized to edit this entry: Nie masz autoryzacji by skasowaæ ten wpis
@@ -1449,7 +1449,7 @@ Login: Login
 #
 # << MISSING >>
 # Access public calendar:
-cookies-note: <B>Uwaga:</B> Ta aplikacja wymaga w³±czonych cookies
+cookies-note: <b>Uwaga:</b> Ta aplikacja wymaga w³±czonych cookies
 
 
 ###############################################

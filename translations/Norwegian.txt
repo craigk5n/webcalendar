@@ -290,13 +290,13 @@ Brief Description: Kort beskrivelse
 full-description-help: Her kan det stå en komplett beskrivelse av aktiviteten.
 Full Description: Full beskrivelse
 date-help: Angir dato for aktiviteten.
-time-help: Angir tidspunkt for aktiviteten.<BR><I>Dette feltet trenger ikke være utfylt.</I>
+time-help: Angir tidspunkt for aktiviteten.<br /><i>Dette feltet trenger ikke være utfylt.</i>
 am: am
 pm: pm
 Untimed event: Aktivitet uten tidsangivelse
 Timed event: Aktivitet med tidsangivelse
 All day event: Fulldagsaktivitet
-duration-help: I dette feltet kan du angi varigheten på aktiviteten <BR><I>Dette feltet trenger ikke være utfylt.</I>
+duration-help: I dette feltet kan du angi varigheten på aktiviteten <br /><i>Dette feltet trenger ikke være utfylt.</i>
 Duration: Varighet
 hours: timer
 priority-help: Angi aktivitetens prioritet.
@@ -746,7 +746,7 @@ You must enter a login and password: Vennligst oppgi brukernavn og passord
 Save login via cookies so I don't have to login next time: Husk brukernavn til neste gang
 Login: Logg inn
 Access public calendar: Gå til offentlig kalender
-cookies-note: <B>OBS:</B> Programmet krever at "cookies" er slått på
+cookies-note: <b>OBS:</b> Programmet krever at "cookies" er slått på
 
 
 ###############################################

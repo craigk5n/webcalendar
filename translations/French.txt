@@ -99,7 +99,7 @@ Display weekends in week view: Afficher les week-ends dans la représentation de 
 date-format-help: Spécifie le format d'affichage des dates.
 Date format: Format des dates
 December: décembre 
-time-format-help: Spécifie quel format utiliser pour l'heure : <BR><I>12 heures:</I> Affiche l'heure de cette façon : 3am, 8:30pm, etc.  <BR><I>24 heures:</I> Affiche l'heure de cette façon 3:00, 20:30, etc.
+time-format-help: Spécifie quel format utiliser pour l'heure : <br /><i>12 heures:</i> Affiche l'heure de cette façon : 3am, 8:30pm, etc.  <br /><i>24 heures:</i> Affiche l'heure de cette façon 3:00, 20:30, etc.
 Time format: Format de l'heure
 12 hour: 12 heures
 24 hour: 24 heures
@@ -113,7 +113,7 @@ auto-refresh-time-help: Spécifie la période de rafraichissement des pages.
 Auto-refresh time: Période de rafraichissement
 require-approvals-help: Quand activé, un utilisateur doit approuver un événement avant qu'il ne soit affiché dans l'agenda (à moins que « Afficher les événements en attente » ne soit activé). Notez que le réglage sur « Non » désactivera les approbations pour l'agenda à accès public (si l'accès public à l'agenda est activé).
 Require event approvals: Réclamer l'approbation des événements
-display-unapproved-help: Spécifie si vous voulez afficher dans votre calendrier les événements en attente.<BR> Si vous choisissez « Oui », les événements en attente seront affichés dans votre calendrier (dans une couleur différente).<BR> Si vous choisissez « Non », les événements en attente seront affichés dans votre calendrier seulement quand vous les accepterez.
+display-unapproved-help: Spécifie si vous voulez afficher dans votre calendrier les événements en attente.<br /> Si vous choisissez « Oui », les événements en attente seront affichés dans votre calendrier (dans une couleur différente).<br /> Si vous choisissez « Non », les événements en attente seront affichés dans votre calendrier seulement quand vous les accepterez.
 Display unapproved: Afficher les événements en attente
 display-week-number-help: Spécifie si le numéro de la semaine (1-52) doit être affiché.
 Display week number: Afficher le numéro de semaine
@@ -342,13 +342,13 @@ Brief Description: Description courte
 full-description-help: Ceci doit être une description complète de l'événement. Cette information sera vue par l'utilisateur quand celui-ci cliquera sur l'événement.
 Full Description: Description complète
 date-help: Spécification de la date de l'événement.
-time-help: Spécification de l'heure de l'événement.<BR><I>Ce champ peut être laissé vide.</I>
+time-help: Spécification de l'heure de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
 am: am
 pm: pm
 Untimed event: Événement intemporel
 Timed event: Événement temporel
 All day event: Événement permanent
-duration-help: Spécification de la durée (en minutes) de l'événement.  <BR><I>Ce champ peut être laissé vide.</I>
+duration-help: Spécification de la durée (en minutes) de l'événement.  <br /><i>Ce champ peut être laissé vide.</i>
 Duration: Durée
 hours: heures
 priority-help: Spécification de la priorité de l'événement. Une haute priorité sera affichée en gras.
@@ -356,7 +356,7 @@ Priority: Priorité
 Low: Basse
 Medium: Moyenne
 High: Haute
-access-help: Spécification du niveau d'accès de l'événement.<BR> <I>Public</I>: Tous les utilisateurs peuvent voir les détails de l'événement.<BR><I>Confidentiel</I>: Les utilisateurs peuvent voir que vous avez un événement pour ces date et heure, mais ils ne peuvent pas en consulter les détails.
+access-help: Spécification du niveau d'accès de l'événement.<br /> <i>Public</i>: Tous les utilisateurs peuvent voir les détails de l'événement.<br /><i>Confidentiel</i>: Les utilisateurs peuvent voir que vous avez un événement pour ces date et heure, mais ils ne peuvent pas en consulter les détails.
 Access: Accès
 Public: Public
 Confidential: Confidentiel
@@ -369,7 +369,7 @@ participants-help: Liste des participants pour cet événement.
 Participants: Participants
 external-participants-help: Spécifie une liste de participants pour cet événement qui ne font pas partie des utilisateurs de l'agenda. Ces utilisateurs devraient figurer un par ligne evec éventuellement leur adresse de couriel. Si une adresse de couriel figure, l'utilisateur peut recevoir par couriel les notifications et rappels.
 External Participants: Participants extérieurs
-repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br><I>Mensuel (par jour)</I> autorise un événement à être répété tous les premiers Lundi du mois, 3ème Jeudi du mois, etc. <br><I>Mensuel (par date)</I> autorise un événement à être répété le même jour du mois.
+repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br /><i>Mensuel (par jour)</i> autorise un événement à être répété tous les premiers Lundi du mois, 3ème Jeudi du mois, etc. <br /><i>Mensuel (par date)</i> autorise un événement à être répété le même jour du mois.
 Repeat Type: Type de répétition
 Daily: Quotidienne
 Weekly: Hebdomadaire
@@ -381,7 +381,7 @@ Yearly: Annuelle
 repeat-end-date-help: Spécifie la date de fin de répétition de l'événement.
 Repeat End Date: Date de fin de répétition
 Use end date: Utiliser une date de fin
-repeat-day-help: Spécifie quels jours de la semaine l'événement doit être répété. Vous devez l'utiliser seulement si <I>Type de répétition</I> est sur <I>Hebdomadaire</I>.
+repeat-day-help: Spécifie quels jours de la semaine l'événement doit être répété. Vous devez l'utiliser seulement si <i>Type de répétition</i> est sur <i>Hebdomadaire</i>.
 Repeat Day: Répétiton du Jour
 for weekly: type hebdomadaire
 Tuesday: Mardi
@@ -389,7 +389,7 @@ Wednesday: Mercredi
 Thursday: Jeudi
 Friday: Vendredi
 Saturday: Samedi
-repeat-frequency-help: Spécifie combien l'événement doit être répété. La valeur par défaut 1 indique que cela doit arriver à chaque fois.  Si vous choisissez 2, cela indique que l'événement doit arriver toutes les autres semaines (si <I>Type de répétition</I> est sur <I>Hebdomadaire</I>), tous les autres Mois (si <I>Type de répétition</I> est sur <I>Mensuel</I>), etc.
+repeat-frequency-help: Spécifie combien l'événement doit être répété. La valeur par défaut 1 indique que cela doit arriver à chaque fois.  Si vous choisissez 2, cela indique que l'événement doit arriver toutes les autres semaines (si <i>Type de répétition</i> est sur <i>Hebdomadaire</i>), tous les autres Mois (si <i>Type de répétition</i> est sur <i>Mensuel</i>), etc.
 Frequency: Fréquence
 Delete entry: Supprimer l'événement
 You are not authorized to edit this entry: Vous n'êtes pas autorisé à modifier cet événement
@@ -814,7 +814,7 @@ You must enter a login and password: Vous devez saisir un login et un mot de pas
 Save login via cookies so I don't have to login next time: Sauvegarder le login dans un cookie, pour ne plus taper le login la prochaine fois
 Login: Connexion
 Access public calendar: Agenda à accès public
-cookies-note: <B>Note:</B> Cette application nécessite l'activation des cookies.
+cookies-note: <b>Note:</b> Cette application nécessite l'activation des cookies.
 
 
 ###############################################

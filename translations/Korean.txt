@@ -155,7 +155,7 @@ Month: 월
 # << MISSING >>
 # Date format:
 December: 12월
-time-format-help: 시간 표시 형식을 명시합니다.<BR><I>12 hour:</I>시간표시가 3am, 8:30pm, 등등으로 표시됨<BR><I>24 hour:</I>시간표시가 300, 2030 등등으로 표시됨
+time-format-help: 시간 표시 형식을 명시합니다.<br /><i>12 hour:</i>시간표시가 3am, 8:30pm, 등등으로 표시됨<br /><i>24 hour:</i>시간표시가 300, 2030 등등으로 표시됨
 Time format: 시간 표시 형식
 12 hour: 12 hour
 24 hour: 24 hour
@@ -195,7 +195,7 @@ minutes: 분
 #
 # << MISSING >>
 # Require event approvals:
-display-unapproved-help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다. <BR> "Yes"로 설정시 미승인된 행사도 표시됩니다.(다른 색깔로).<BR>"No"로 설정하면 미승인 행사는 승인 후에만 달력에 표시됩니다.
+display-unapproved-help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다. <br /> "Yes"로 설정시 미승인된 행사도 표시됩니다.(다른 색깔로).<br />"No"로 설정하면 미승인 행사는 승인 후에만 달력에 표시됩니다.
 Display unapproved: 승인안된 행사 표시
 display-week-number-help: 월별 화면과 주별 화면에 몇주차인가(1~52) 표시여부를 명시.
 Display week number: 몇주차인가 표시
@@ -730,7 +730,7 @@ Brief Description: 요약 설명
 full-description-help: 행사의 자세한 설명입니다. 
 Full Description: 상세 설명
 date-help: 행사일을 나타냅니다. 
-time-help: 행사 시각입니다.<BR><I>이 항목은 비워둘 수 있습니다.</I>
+time-help: 행사 시각입니다.<br /><i>이 항목은 비워둘 수 있습니다.</i>
 am: am
 pm: pm
 #
@@ -742,7 +742,7 @@ pm: pm
 #
 # << MISSING >>
 # All day event:
-duration-help: 행사기간 명시(분단위)<BR><I>이 항목은 비워둘 수 있습니다.</I>
+duration-help: 행사기간 명시(분단위)<br /><i>이 항목은 비워둘 수 있습니다.</i>
 Duration: 기간
 #
 # << MISSING >>
@@ -752,7 +752,7 @@ Priority: 우선 순위
 Low: 낮음
 Medium: 중간
 High: 높음
-access-help: 행사의 접근 수준을 명시.<BR> <I>공용</I>: 모든 사람이 행사의 세부 내용까지 볼 수 있음.  <BR><I>비밀</I>: 타 사용자는 일자와 시각을 볼 수 있으나 세부 사항은 볼 수 없음.
+access-help: 행사의 접근 수준을 명시.<br /> <i>공용</i>: 모든 사람이 행사의 세부 내용까지 볼 수 있음.  <br /><i>비밀</i>: 타 사용자는 일자와 시각을 볼 수 있으나 세부 사항은 볼 수 없음.
 Access: 접근
 Public: 공용
 Confidential: 비밀
@@ -786,7 +786,7 @@ Participants: 참가자
 #
 # << MISSING >>
 # repeat-type-help:
-# English text: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
+# English text: Select how often the event should repeat.<i>Monthly (by day)</i> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <i>Monthly (by date)</i> allows an event to repeat on the same day of the month.
 #
 #
 # << MISSING >>
@@ -826,7 +826,7 @@ Participants: 참가자
 #
 # << MISSING >>
 # repeat-day-help:
-# English text: Specifies which days of the week the event should repeat on.  This is for use only when <I>Repeat Type</I> is set to <I>Weekly</I>.
+# English text: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
 #
 #
 # << MISSING >>
@@ -842,7 +842,7 @@ Saturday: 토요일
 #
 # << MISSING >>
 # repeat-frequency-help:
-# English text: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <I>Repeat Type</I> is set to <I>Weekly</I>), every other month (if <I>Repeat Type</I> is set to <I>Monthly</I>), etc.
+# English text: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <i>Repeat Type</i> is set to <i>Weekly</i>), every other month (if <i>Repeat Type</i> is set to <i>Monthly</i>), etc.
 #
 #
 # << MISSING >>
@@ -1536,7 +1536,7 @@ Login: 로그인
 #
 # << MISSING >>
 # Access public calendar:
-cookies-note: <B>주:</B> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
+cookies-note: <b>주:</b> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
 
 
 ###############################################

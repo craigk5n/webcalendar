@@ -765,7 +765,7 @@ You must enter a login and password: You must enter a login and password
 Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
 Login: Login
 Access public calendar: Access public calendar
-cookies-note: <B>Note:</B> This application requires cookies to be enabled.
+cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 
 
 ###############################################
