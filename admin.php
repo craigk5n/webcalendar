@@ -77,10 +77,8 @@ if ( ! $error ) {
 	<span class="tabfor" id="tab_settings"><a href="#tabsettings" onclick="return showTab('settings')"><?php etranslate("Settings")?></a></span>
 	<span class="tabbak" id="tab_public"><a href="#tabpublic" onclick="return showTab('public')"><?php etranslate("Public Access")?></a></span>
 	<span class="tabbak" id="tab_groups"><a href="#tabgroups" onclick="return showTab('groups')"><?php etranslate("Groups")?></a></span>
-	<span class="tabbak" id="tab_categories"><a href="#tabcategories" onclick="return showTab('categories')"><?php etranslate("Categories")?></a></span>
 	<span class="tabbak" id="tab_nonuser"><a href="#tabnonuser" onclick="return showTab('nonuser')"><?php etranslate("Non-user Calendars")?></a></span>
-	<span class="tabbak" id="tab_reports"><a href="#tabreports" onclick="return showTab('reports')"><?php etranslate("Reports")?></a></span>
-	<span class="tabbak" id="tab_publish"><a href="#tabpublish" onclick="return showTab('publish')"><?php etranslate("Subscribe/Publish")?></a></span>
+	<span class="tabbak" id="tab_other"><a href="#tabother" onclick="return showTab('other')"><?php etranslate("Other")?></a></span>
 	<span class="tabbak" id="tab_email"><a href="#tabemail" onclick="return showTab('email')"><?php etranslate("Email")?></a></span>
 	<span class="tabbak" id="tab_colors" title="<?php etooltip("colors-help")?>"><a href="#tabcolors" onclick="return showTab('colors')"><?php etranslate("Colors")?></a></span>
 </div>
@@ -508,17 +506,6 @@ if ( ! $error ) {
 </table>
 </div>
 
-<!-- BEGIN CATEGORIES -->
-<div id="tabscontent_categories">
-<table cellspacing="0" cellpadding="3">
-	<tr><td class="tooltip" title="<?php etooltip("categories-enabled-help")?>">
-		<?php etranslate("Categories enabled")?>:</td><td>
-		<label><input type="radio" name="admin_categories_enabled" value="Y" <?php if ( $s["categories_enabled"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-		<label><input type="radio" name="admin_categories_enabled" value="N" <?php if ( $s["categories_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
-	</td></tr>
-</table>
-</div>
-
 <!-- BEGIN NONUSER -->
 <div id="tabscontent_nonuser">
 <table cellspacing="0" cellpadding="3">
@@ -536,7 +523,7 @@ if ( ! $error ) {
 </div>
 
 <!-- BEGIN REPORTS -->
-<div id="tabscontent_reports">
+<div id="tabscontent_other">
 <table cellspacing="0" cellpadding="3">
 <tr><td class="tooltip" title="<?php etooltip("reports-enabled-help")?>">
 	<?php etranslate("Reports enabled")?>:</td><td>
@@ -544,16 +531,23 @@ if ( ! $error ) {
 	<label><input type="radio" name="admin_reports_enabled" value="N" <?php if ( $s["reports_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 </table>
-</div>
 
 <!-- BEGIN PUBLISHING -->
-<div id="tabscontent_publish">
 <table cellspacing="0" cellpadding="3">
 <tr><td class="tooltip" title="<?php etooltip("subscriptions-enabled-help")?>">
 	<?php etranslate("Allow remote subscriptions")?>:</td><td>
 	<label><input type="radio" name="admin_PUBLISH_ENABLED" value="Y" <?php if ( $s["PUBLISH_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 	<label><input type="radio" name="admin_PUBLISH_ENABLED" value="N" <?php if ( $s["PUBLISH_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
+</table>
+
+<!-- BEGIN CATEGORIES -->
+<table cellspacing="0" cellpadding="3">
+	<tr><td class="tooltip" title="<?php etooltip("categories-enabled-help")?>">
+		<?php etranslate("Categories enabled")?>:</td><td>
+		<label><input type="radio" name="admin_categories_enabled" value="Y" <?php if ( $s["categories_enabled"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+		<label><input type="radio" name="admin_categories_enabled" value="N" <?php if ( $s["categories_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+	</td></tr>
 </table>
 </div>
 
@@ -603,74 +597,74 @@ if ( ! $error ) {
 <!-- BEGIN COLORS -->
 <div id="tabscontent_colors">
 <table cellspacing="0" cellpadding="3">
-<tr><td style="font-weight:bold;">
+<tr><td>
 	<?php etranslate("Allow user to customize colors")?>:</td><td colspan="3">
-	<label><input type="radio" name="admin_allow_color_customization" value="Y" <?php if ( $s["allow_color_customization"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-	<label><input type="radio" name="admin_allow_color_customization" value="N" <?php if ( $s["allow_color_customization"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+	<label><input type="radio" name="admin_allow_color_customization" value="Y"<?php if ( $s["allow_color_customization"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+	<label><input type="radio" name="admin_allow_color_customization" value="N"<?php if ( $s["allow_color_customization"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 <tr><td>
-	<label for="docbg" style="font-weight:bold;"><?php etranslate("Document background")?>:</td><td>
-	<input type="text" name="admin_BGCOLOR" id="docbg" size="8" maxlength="7" value="<?php echo $s["BGCOLOR"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $s["BGCOLOR"]?>; border-style: groove;">
+	<label for="docbg"><?php etranslate("Document background")?>:</td><td>
+	<input type="text" name="admin_BGCOLOR" id="docbg" size="8" maxlength="7" value="<?php echo $s["BGCOLOR"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["BGCOLOR"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_BGCOLOR')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
-	<label for="doctitle" style="font-weight:bold;"><?php etranslate("Document title")?>:</td><td>
-	<input type="text" name="admin_H2COLOR" id="doctitle" size="8" maxlength="7" value="<?php echo $s["H2COLOR"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $s["H2COLOR"]?>; border-style: groove;">
+	<label for="doctitle"><?php etranslate("Document title")?>:</td><td>
+	<input type="text" name="admin_H2COLOR" id="doctitle" size="8" maxlength="7" value="<?php echo $s["H2COLOR"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["H2COLOR"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_H2COLOR')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
-	<label for="doctext" style="font-weight:bold;"><?php etranslate("Document text")?>:</label></td><td>
-	<input type="text" name="admin_TEXTCOLOR" id="doctext" size="8" maxlength="7" value="<?php echo $s["TEXTCOLOR"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $s["TEXTCOLOR"]?>; border-style: groove;">
+	<label for="doctext"><?php etranslate("Document text")?>:</label></td><td>
+	<input type="text" name="admin_TEXTCOLOR" id="doctext" size="8" maxlength="7" value="<?php echo $s["TEXTCOLOR"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["TEXTCOLOR"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_TEXTCOLOR')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
-	<label for="tblgrid" style="font-weight:bold;"><?php etranslate("Table grid color")?>:</label></td><td>
-	<input type="text" name="admin_TABLEBG" id="tblgrid" size="8" maxlength="7" value="<?php echo $s["TABLEBG"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $s["TABLEBG"]?>; border-style: groove;">
+	<label for="tblgrid"><?php etranslate("Table grid color")?>:</label></td><td>
+	<input type="text" name="admin_TABLEBG" id="tblgrid" size="8" maxlength="7" value="<?php echo $s["TABLEBG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["TABLEBG"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_TABLEBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
-	<label for="thbg" style="font-weight:bold;"><?php etranslate("Table header background")?>:</label></td><td>
-	<input type="text" name="admin_THBG" id="thbg" size="8" maxlength="7" value="<?php echo $s["THBG"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $s["THBG"]?>; border-style: groove;">
+	<label for="thbg"><?php etranslate("Table header background")?>:</label></td><td>
+	<input type="text" name="admin_THBG" id="thbg" size="8" maxlength="7" value="<?php echo $s["THBG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["THBG"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_THBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
-	<label for="thfg" style="font-weight:bold;"><?php etranslate("Table header text")?>:</label></td><td>
-	<input type="text" name="admin_THFG" id="thfg" size="8" maxlength="7" value="<?php echo $s["THFG"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $s["THFG"]?>; border-style: groove;">
+	<label for="thfg"><?php etranslate("Table header text")?>:</label></td><td>
+	<input type="text" name="admin_THFG" id="thfg" size="8" maxlength="7" value="<?php echo $s["THFG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["THFG"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_THFG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
-	<label for="tdbg" style="font-weight:bold;"><?php etranslate("Table cell background")?>:<label></td><td>
-	<input type="text" name="admin_CELLBG" id="tdbg" size="8" maxlength="7" value="<?php echo $s["CELLBG"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $s["CELLBG"]?>; border-style: groove;">
+	<label for="tdbg"><?php etranslate("Table cell background")?>:<label></td><td>
+	<input type="text" name="admin_CELLBG" id="tdbg" size="8" maxlength="7" value="<?php echo $s["CELLBG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["CELLBG"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_CELLBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
-	<label for="tdbgtoday" style="font-weight:bold;"><?php etranslate("Table cell background for current day")?>:</label></td><td>
-	<input type="text" name="admin_TODAYCELLBG" id="tdbgtoday" size="8" maxlength="7" value="<?php echo $s["TODAYCELLBG"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $s["TODAYCELLBG"]?>; border-style: groove;">
+	<label for="tdbgtoday"><?php etranslate("Table cell background for current day")?>:</label></td><td>
+	<input type="text" name="admin_TODAYCELLBG" id="tdbgtoday" size="8" maxlength="7" value="<?php echo $s["TODAYCELLBG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["TODAYCELLBG"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_TODAYCELLBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
-	<label for="tdbgweekend" style="font-weight:bold;"><?php etranslate("Table cell background for weekends")?>:</label></td><td>
-	<input type="text" name="admin_WEEKENDBG" id="tdbgweekend" size="8" maxlength="7" value="<?php echo $s["WEEKENDBG"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $s["WEEKENDBG"]?>; border-style: groove;">
+	<label for="tdbgweekend"><?php etranslate("Table cell background for weekends")?>:</label></td><td>
+	<input type="text" name="admin_WEEKENDBG" id="tdbgweekend" size="8" maxlength="7" value="<?php echo $s["WEEKENDBG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["WEEKENDBG"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_WEEKENDBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
-	<label for="popupbg" style="font-weight:bold;"><?php etranslate("Event popup background")?>:</label></td><td>
-	<input type="text" name="admin_POPUP_BG" id="popupbg" size="8" maxlength="7" value="<?php echo $s["POPUP_BG"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $s["POPUP_BG"]?>; border-style: groove;">
+	<label for="popupbg"><?php etranslate("Event popup background")?>:</label></td><td>
+	<input type="text" name="admin_POPUP_BG" id="popupbg" size="8" maxlength="7" value="<?php echo $s["POPUP_BG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["POPUP_BG"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_POPUP_BG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
-	<label for="popupfg" style="font-weight:bold;"><?php etranslate("Event popup text")?>:</label></td><td>
-	<input type="text" name="admin_POPUP_FG" id="popupfg" size="8" maxlength="7" value="<?php echo $s["POPUP_FG"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $s["POPUP_FG"]?>; border-style: groove;">
+	<label for="popupfg"><?php etranslate("Event popup text")?>:</label></td><td>
+	<input type="text" name="admin_POPUP_FG" id="popupfg" size="8" maxlength="7" value="<?php echo $s["POPUP_FG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["POPUP_FG"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_POPUP_FG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>

@@ -91,20 +91,23 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 </div>
 
 <center>
-<table cellspacing="1" cellpadding="2">
+<table cellspacing="0" cellpadding="0">
 <?php
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
   $date = date ( "Ymd", $days[$d] );
   $thiswday = date ( "w", $days[$d] );
   $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
+
+  print "<tr><th";
   if ( $date == date ( "Ymd", $today ) ) {
-    echo "<tr><th class=\"today\">";
-  } else if ( $is_weekend ) {
-    echo "<tr><th class=\"weekend\">";
+    echo " class=\"today\">";
+  } elseif ( $is_weekend ) {
+    echo " class=\"weekend\">";
   } else {
-    echo "<tr><th>";
+    echo ">";
   }
+
   if ( $can_add ) {
     echo "<a title=\"" .
       translate("New Entry") . "\" href=\"edit_entry.php?" . 
@@ -119,10 +122,13 @@ for ( $d = 0; $d < 7; $d++ ) {
     $header[$d] . "</a></th>\n</tr>\n";
 
   print "<tr>\n<td";
-  if ( $date == date ( "Ymd" ) )
+  if ( $date == date ( "Ymd", $today ) ) {
     echo " class=\"today\">";
-  else
+  } elseif ( $is_weekend ) {
+    echo " class=\"weekend\">";
+  } else {
     echo ">";
+  }
 
   print_det_date_entries ( $date, $user, true );
   echo "&nbsp;";
@@ -148,7 +154,6 @@ onmouseover="window.status = '<?php etranslate("Generate printer-friendly versio
 <?php print_trailer(); ?>
 </body>
 </html><?php
-
 
 // Print the HTML for one day's events in detailed view.
 // params:
@@ -176,7 +181,7 @@ function print_detailed_entry ( $id, $date, $time, $duration,
     if ( $status == "W" ) $class = "unapprovedentry";
   }
 
-  if ( $pri == 3 ) echo "<b>";
+  if ( $pri == 3 ) echo "<strong>";
 	$divname = "eventinfo-$id-$key";
 	$key++;
 	echo "<a title=\"" . 
@@ -243,10 +248,11 @@ function print_detailed_entry ( $id, $date, $time, $duration,
   }
   echo $PN;
   echo "</a>";
-  if ( $pri == 3 ) echo "</b>";
+  if ( $pri == 3 ) echo "</strong>";
   # Only display description if it is different than the event name.
   if ( $PN != $PD )
     echo " - " . $PD;
+  echo "<br />\n";
 }
 
 //

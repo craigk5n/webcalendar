@@ -45,7 +45,6 @@ $noSet = array (
   "admin_can_delete_user" => 1,
 );
 
-
 // This code is a temporary hack to make the application work when
 // register_globals is set to Off in php.ini (the default setting in
 // PHP 4.2.0 and after).
@@ -110,7 +109,6 @@ if ( ! strstr ( $PHP_SELF, "login.php" ) && ! empty ( $GLOBALS["login"] ) ) {
   $GLOBALS["login"] = "";
 }
 
-
 function getPostValue ( $name ) {
   if ( ! empty ( $_POST[$name] ) )
     return $_POST[$name];
@@ -153,13 +151,11 @@ function getValue ( $name, $format="", $fatal=false ) {
   return $val;
 }
 
-
 // Get an integer value
 function getIntValue ( $name, $fatal=false ) {
   $val = getValue ( $name, "-?[0-9]+", $fatal );
   return $val;
 }
-
 
 // Load default system settings (which can be updated via admin.php)
 // System settings are stored in webcal_config.
@@ -188,7 +184,6 @@ function load_global_settings () {
       $value = $row[1];
       //echo "Setting '$setting' to '$value' <br />\n";
       $GLOBALS[$setting] = $value;
-
     }
     dbi_free_result ( $res );
   }
@@ -212,7 +207,7 @@ function load_global_settings () {
         if ( ! empty ( $SERVER_PORT ) && $SERVER_PORT != 80 )
           $server_url .= ":" . $SERVER_PORT;
         $server_url .= $uri;
-      
+
         dbi_query ( "INSERT INTO webcal_config ( cal_setting, cal_value ) ".
           "VALUES ( 'server_url', '$server_url' )" );
         $GLOBALS["server_url"] = $server_url;
@@ -314,7 +309,7 @@ function do_redirect ( $url ) {
     \"DTD/xhtml1-transitional.dtd\">\n
 <html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<title>Redirect</title>\n" .
       "<meta http-equiv=\"refresh\" content=\"0; url=$url\" />\n</head>\n<body>\n" .
-      "Redirecting to ... <a href=\"" . $url . "\">here</a>.</body>\n</html>";
+      "Redirecting to.. <a href=\"" . $url . "\">here</a>.</body>\n</html>";
   } else {
     Header ( "Location: $url" );
     echo "<?xml version=\"1.0\" encoding=\"utf8\"?>\n<!DOCTYPE html
@@ -836,19 +831,17 @@ function date_selection_html ( $prefix, $date ) {
 //                 defaults to 'month.php?'
 //
 function display_small_month ( $thismonth, $thisyear, $showyear,
-  $show_weeknums=false, $minical_id='', $month_link='month.php?' )
-{
+  $show_weeknums=false, $minical_id='', $month_link='month.php?' ) {
   global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
   global $DISPLAY_WEEKNUMBER;
   global $SCRIPT, $thisday; // Needed for day.php
 
   // TODO: Make day.php NOT be a special case
-
   if ( $user != $login && ! empty ( $user ) ) {
     $u_url = "user=$user&amp;";
- 	} else {
+  } else {
      $u_url = '';
- 	}
+  }
 
   //start the minical table for each month
   echo "\n<table class=\"minical\"";
@@ -869,14 +862,12 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     echo "<caption>$thisday</caption>\n";
     echo "<thead>\n";
     echo "<tr class=\"monthnav\"><th colspan=\"7\">\n";
-    echo "<a title=\"" . translate("Previous") .
-      "\" class=\"prev\" href=\"day.php?{$u_url}date=$month_ago$caturl\">";
-    echo "<img src=\"leftarrowsmall.gif\" alt=\"" .
-      translate("Previous") . "\" /></a>\n";
-    echo "<a title=\"" . translate("Next") .
-      "\" class=\"next\" href=\"day.php?{$u_url}date=$month_ahead$caturl\">";
-    echo "<img src=\"rightarrowsmall.gif\" alt=\"" .
-      translate("Next") . "\" /></a>\n";
+    echo "<a title=\"" . 
+	translate("Previous") . "\" class=\"prev\" href=\"day.php?{$u_url}date=$month_ago$caturl\"><img src=\"leftarrowsmall.gif\" alt=\"" .
+	translate("Previous") . "\" /></a>\n";
+    echo "<a title=\"" . 
+	translate("Next") . "\" class=\"next\" href=\"day.php?{$u_url}date=$month_ahead$caturl\"><img src=\"rightarrowsmall.gif\" alt=\"" .
+	translate("Next") . "\" /></a>\n";
     echo month_name ( $thismonth - 1 );
     if ( $showyear != '' ) {
       echo " $thisyear";
@@ -884,12 +875,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     echo "</th></tr>\n";
   } else {
     //print the month name
-    echo "<caption>";
-
-		echo "<a href=\"{$month_link}{$u_url}year=$thisyear&amp;month=$thismonth\">";
- 		echo month_name ( $thismonth - 1 ) .
- 			( $showyear ? " $thisyear" : "" ) .
- 			"</a></caption>\n";
+    echo "<caption><a href=\"{$month_link}{$u_url}year=$thisyear&amp;month=$thismonth\">";
+	echo month_name ( $thismonth - 1 ) .
+		( $showyear ? " $thisyear" : "" );
+    echo "</a></caption>\n";
 
     echo "<thead>\n<tr>\n";
   }
@@ -939,41 +928,35 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       }
       if ( $dateYmd >= date ("Ymd",$monthstart) &&
         $dateYmd <= date ("Ymd",$monthend) ) {
-        echo '<td';
+        echo "<td";
         $wday = date ( 'w', $date );
         $class = '';
-
+	//add class="weekend" if it's saturday or sunday
         if ( $wday == 0 || $wday == 6 ) {
-          $class = 'weekend';
+          $class = "weekend";
         }
-
+	//if the day being viewed is today's date
         if ( $dateYmd == $thisyear . $thismonth . $thisday ) {
-          if ( $class != '' ) {
+	  //if it's also a weekend, add a space between class names to combine styles
+	  if ( $class != '' ) {
             $class .= ' ';
           }
-          $class .= 'selectedday';
+          $class .= "selectedday";
         }
-
         if ( $hasEvents ) {
           if ( $class != '' ) {
             $class .= ' ';
           }
           $class .= "hasevents";
         }
-
         if ( $class != '' ) {
           echo " class=\"$class\"";
         }
-
         if ( $dateYmd == date ( 'Ymd' ) ) {
           echo " id=\"today\"";
         }
-
-        echo '>';
-        echo "<a href=\"day.php?date=" . $dateYmd . $u_url . "\">";
-        echo date ( "d", $date );
-        echo "</a>";
-        echo "</td>\n";
+        echo "><a href=\"day.php?date=" . $dateYmd . $u_url . "\">";
+        echo date ( "d", $date ) . "</a></td>\n";
         } else {
           echo "<td class=\"empty\">&nbsp;</td>\n";
         }
@@ -1023,20 +1006,17 @@ function print_entry ( $id, $date, $time, $duration,
 		translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
 	if ( strlen ( $user ) > 0 )
 		echo "&amp;user=" . $user;
-	echo "\" onmouseover=\"window.status='" . translate("View this entry") .
-		"'; show(event, '$popupid'); return true;\" onmouseout=\"window.status=''; hide('$popupid'); return true;\">";
-	echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"" . translate("View this entry") . "\" />";
+	echo "\" onmouseover=\"window.status='" . 
+		translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"window.status=''; hide('$popupid'); return true;\">";
+	echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"" . 
+		translate("View this entry") . "\" />";
 
-
-  if ( $login != $event_owner && strlen ( $event_owner ) )
-  {
-    if ($layers) foreach ($layers as $layer)
-    {
-        if($layer['cal_layeruser'] == $event_owner)
-        {
-            echo("<span style=\"color:" . $layer['cal_color'] . ";\">");
-        }
-    }
+  if ( $login != $event_owner && strlen ( $event_owner ) ) {
+	if ($layers) foreach ($layers as $layer) {
+		if ($layer['cal_layeruser'] == $event_owner) {
+			echo("<span style=\"color:" . $layer['cal_color'] . ";\">");
+		}
+	}
   }
 
 
@@ -1067,14 +1047,12 @@ function print_entry ( $id, $date, $time, $duration,
   }
   if ( $login != $user && $access == 'R' && strlen ( $user ) )
     echo "(" . translate("Private") . ")";
-
   else
   if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
     echo "(" . translate("Private") . ")";
   else
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     echo htmlspecialchars ( $name );
-//    echo ("</span>"); //end color span
   }
 
   else
@@ -1090,7 +1068,6 @@ function print_entry ( $id, $date, $time, $duration,
   }
 
   if ( $pri == 3 ) echo "</span>\n"; //end font-weight span
-//  echo "</span><br />\n"; //end font-size span
   echo "<br />";
 	if ( $login != $user && $access == 'R' && strlen ( $user ) )
 		$eventinfo .= build_event_popup ( $popupid, $event_owner,
@@ -1397,8 +1374,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
             $i--;
           }
         }
-      }
-      else {
+      } else {
         if ($i == $first_i_this_id
           || ( ! empty ( $layers_byuser[$item['cal_login']] ) &&
           $layers_byuser[$item['cal_login']] != 'N' ) ) {
@@ -1441,6 +1417,7 @@ function read_repeated_events ( $user, $cat_id = '', $date = ''  ) {
   $filter = ($date != '') ? "AND (webcal_entry_repeats.cal_end >= $date OR webcal_entry_repeats.cal_end IS NULL) " : '';
   return query_events ( $user, true, $filter, $cat_id );
 }
+
 //Returns all the dates a specific event will fall on accounting for
 //the repeating.  Any event with no end will be assigned one.
 //params:
@@ -1804,11 +1781,11 @@ function get_monday_before ( $year, $month, $day ) {
 // params:
 //   $date - date in UNIX time format
 function week_number ( $date ) {
-  $tmp = getdate($date);
-  $iso    = gregorianToISO($tmp['mday'], $tmp['mon'], $tmp['year']);
-  $parts  = explode('-',$iso);
-  $week_number = intval($parts[1]);
-  return sprintf("%02d",$week_number);
+	$tmp = getdate($date);
+	$iso    = gregorianToISO($tmp['mday'], $tmp['mon'], $tmp['year']);
+	$parts  = explode('-',$iso);
+	$week_number = intval($parts[1]);
+	return sprintf("%02d",$week_number);
 }
 
 // This function is not yet used.  Some of the places that will call it
@@ -1816,24 +1793,19 @@ function week_number ( $date ) {
 // user has access to edit and delete.
 function icon_text ( $id, $can_edit, $can_delete ) {
   global $readonly, $is_admin;
-  $ret = "<a title=\"" . translate("View this entry") . "\" href=\"view_entry.php?id=$id\">" .
-    "<img src=\"view.gif\" alt=\"" . translate("View this entry") .
-    "\" style=\"border-width:0px; width:10px; height:10px;\" />" .
-    "</a>";
+  $ret = "<a title=\"" . 
+	translate("View this entry") . "\" href=\"view_entry.php?id=$id\"><img src=\"view.gif\" alt=\"" . 
+	translate("View this entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" /></a>";
   if ( $can_edit && $readonly == "N" )
-    $ret .= "<a title=\"" . translate("Edit entry") . "\" href=\"edit_entry.php?id=$id\">" .
-      "<img src=\"edit.gif\" alt=\"" . translate("Edit entry") .
-      "\" style=\"border-width:0px; width:10px; height:10px;\" />" .
-      "</a>";
+    $ret .= "<a title=\"" . 
+	translate("Edit entry") . "\" href=\"edit_entry.php?id=$id\"><img src=\"edit.gif\" alt=\"" . 
+	translate("Edit entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" /></a>";
   if ( $can_delete && ( $readonly == "N" || $is_admin ) )
-    $ret .= "<a title=\"" . translate("Delete entry") . "\" href=\"del_entry.php?id=$id\" " .
-      "onclick=\"return confirm('" .
-      translate("Are you sure you want to delete this entry?") .
-      "\\n\\n" . translate("This will delete this entry for all users.") .
-      "');\">" .
-      "<img src=\"delete.gif\" alt=\"" . translate("Delete entry") .
-      "\" style=\"border-width:0px; width:10px; height:10px;\" />" .
-      "</a>";
+    $ret .= "<a title=\"" . 
+    	translate("Delete entry") . "\" href=\"del_entry.php?id=$id\" onclick=\"return confirm('" .
+	translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+	translate("This will delete this entry for all users.") . "');\"><img src=\"delete.gif\" alt=\"" . 
+	translate("Delete entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" /></a>";
   return $ret;
 }
 
@@ -1867,10 +1839,8 @@ function print_date_entries ( $date, $user, $ssi ) {
       translate("New Entry") . "\" href=\"edit_entry.php?";
     if ( strcmp ( $user, $GLOBALS["login"] ) )
       print "user=$user&amp;";
-    print "date=$date\">" .
-      "<img src=\"new.gif\" alt=\"" .
-      translate("New Entry") . "\" class=\"new\" />" .
-      "</a>";
+    print "date=$date\"><img src=\"new.gif\" alt=\"" .
+      translate("New Entry") . "\" class=\"new\" /></a>";
     $cnt++;
   }
   if ( ! $ssi ) {
@@ -2202,13 +2172,13 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
     $u_url = "user=$user&amp;";
   if ( ! empty ( $hour ) )
     $hour += $TZ_OFFSET;
-  return "<a title=\"" . translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
+  return "<a title=\"" . 
+	translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
     "date=$date" . ( $hour > 0 ? "&amp;hour=$hour" : "" ) .
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&amp;defusers=$user&amp;user=$user" ) .
-    "\"><img src=\"new.gif\" class=\"new\" " .
-    "alt=\"" . translate("New Entry") . "\" />" .
-    "</a>";
+    "\"><img src=\"new.gif\" class=\"new\" alt=\"" . 
+	translate("New Entry") . "\" /></a>\n";
 }
 
 // Generate the HTML for an event to be viewed in the week-at-glance.
@@ -2252,15 +2222,12 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   if ( empty ( $hour_arr[$ind] ) )
     $hour_arr[$ind] = "";
 
-  $hour_arr[$ind] .=
-    "<a title=\"" .
-    translate("View this entry") .
-    "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+  $hour_arr[$ind] .= "<a title=\"" . 
+	translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
   if ( strlen ( $GLOBALS["user"] ) > 0 )
     $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
   $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
-    translate("View this entry") .
-    "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
+    translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
   if ( $pri == 3 )
     $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">";
 
@@ -2402,7 +2369,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
-// TODO: The following section has several nested spans that need to be extracted & then combined separate from the PHP code.
+// TODO: The following section has several nested spans.
 	$hour_arr[$ind] .=
 		"<a title=\"" .
 		translate("View this entry") .
@@ -2622,7 +2589,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
     }
   }
   if ( ! empty ( $hour_arr[9999] ) ) {
-    echo "<tr><th class=\"empty\">&nbsp;</th>\n<td style=\"background-color:$TODAYCELLBG;\">$hour_arr[9999]</td></tr>\n";
+    echo "<tr><th class=\"empty\">&nbsp;</th>\n<td>$hour_arr[9999]</td></tr>\n";
   }
   $rowspan = 0;
   //echo "first_slot = $first_slot<br />\nlast_slot = $last_slot<br />\ninterval = $interval<br />\n";
@@ -3297,11 +3264,11 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   }
   $ev_padding = 100 - $ev_start - $ev_duration;
   // choose where to position the text (pos=0->before,pos=1->on,pos=2->after)
-  if ($ev_duration > 20) {    $pos = 1; }
-   elseif ($ev_padding > 20) { $pos = 2; }
-   else                     { $pos = 0; }
+  if ($ev_duration > 20) 	{ $pos = 1; }
+   elseif ($ev_padding > 20) 	{ $pos = 2; }
+   else				{ $pos = 0; }
  
-  echo "\n<!-- begin entry bar -->\n<table class=\"entrycont\">\n";
+  echo "\n<!-- ENTRY BAR -->\n<table class=\"entrycont\">\n";
    echo "<tr>\n";
    echo "<td style=\"text-align:right; width:$ev_start%;\">";
    if ( $pos > 0 ) {
@@ -3313,8 +3280,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     }
   };
 
-//TODO: The following section has several nested spans.  They need to be extracted & then combined separately from the PHP code.
-//  echo "<span style=\"font-size:13px;\">";
+//TODO: The following section has several nested spans.
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $class = "layerentry";
   } else {
@@ -3383,7 +3349,6 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     echo htmlspecialchars ( $name );
   echo "</a>";
   if ( $pri == 3 ) echo "</span>"; //end font-weight span
-//  echo "</span>"; //end font-size span
   echo "</td>\n";
   if ( $pos < 2 ) {
     if ( $pos < 1 ) {
@@ -3415,7 +3380,7 @@ function print_header_timebar($start_hour, $end_hour) {
     $offset = 0;
   else
     $offset = round(50/($end_hour - $start_hour));
-    echo "\n<!-- begin timebar -->\n<table class=\"timebar\">\n<tr>\n<td style=\"width:$offset%;\">&nbsp;</td>\n";
+    echo "\n<!-- TIMEBAR -->\n<table class=\"timebar\">\n<tr>\n<td style=\"width:$offset%;\">&nbsp;</td>\n";
    for ($i = $start_hour+1; $i < $end_hour; $i++) {
      $prev_offset = $offset;
      $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
@@ -3424,15 +3389,15 @@ function print_header_timebar($start_hour, $end_hour) {
    }
    $width = 100 - $offset;
    echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
-   echo "</tr>\n</table>\n<!-- end timebar -->\n";
+   echo "</tr>\n</table>\n<!-- /TIMEBAR -->\n";
  
    // print yardstick
-  echo "\n<!-- begin yardstick -->\n<table class=\"yardstick\">\n<tr>\n";
+  echo "\n<!-- YARDSTICK -->\n<table class=\"yardstick\">\n<tr>\n";
 	$width = round(100/($end_hour - $start_hour));
   for ($i = $start_hour; $i < $end_hour; $i++) {
     echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
    }
-   echo "</tr>\n</table>\n<!-- end yardstick -->\n";
+   echo "</tr>\n</table>\n<!-- /YARDSTICK -->\n";
  }
 
 // Get a list of nonuser calendars and return info in an array.
