@@ -527,6 +527,7 @@ function get_last_view () {
     $val = $HTTP_COOKIE_VARS["webcalendar_last_view"];
   else if ( isset ( $_COOKIE["webcalendar_last_view"] ) )
     $val = $_COOKIE["webcalendar_last_view"];
+  $val =   str_replace ( "&", "&amp;", $val );
   return $val;
 }
 
@@ -829,12 +830,10 @@ function get_my_users () {
   *	was found.
   */
 function get_pref_setting ( $user, $setting ) {
-  $ret = ''; // default
   // set default
   if ( ! isset ( $GLOBALS["sys_" .$setting] ) ) {
     // this could happen if the current user has not saved any pref. yet
-    if ( ! empty ( $GLOBALS[$setting] ) )
-      $ret = $GLOBALS[$setting];
+    $ret = $GLOBALS[$setting];
   } else {
     $ret = $GLOBALS["sys_" .$setting];
   }
@@ -1124,7 +1123,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
   global $DISPLAY_WEEKNUMBER;
   global $SCRIPT, $thisday; // Needed for day.php
-  global $caturl;
+  global $caturl, $today;
 
   // TODO: Make day.php NOT be a special case
   if ( $user != $login && ! empty ( $user ) ) {
@@ -1248,7 +1247,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
         if ( $class != '' ) {
           echo " class=\"$class\"";
         }
-        if ( $dateYmd == date ( 'Ymd' ) ) {
+        if ( date ( "Ymd", $date  ) == date ( "Ymd", $today ) ){
           echo " id=\"today\"";
         }
         echo "><a href=\"day.php?date=" . $dateYmd .
@@ -1367,15 +1366,14 @@ function print_entry ( $id, $date, $time, $duration,
     echo htmlspecialchars ( $name );
   }
 
-  echo "</a>";
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     if ($layers) foreach ($layers as $layer) {
         if($layer['cal_layeruser'] == $event_owner) {
-            echo "</span>\n";
+            echo "</span>";
         }
     }
   }
-
+  echo "</a>\n";
   if ( $pri == 3 ) echo "</strong>\n"; //end font-weight span
   echo "<br />";
 	if ( $login != $user && $access == 'R' && strlen ( $user ) )
@@ -1536,7 +1534,8 @@ function get_entries ( $user, $date, $get_unapproved=true ) {
       continue;
     if ( ( ! $get_unapproved ) && $events[$i]['cal_status'] == 'W' ) {
       // ignore this event
-    } else if ( empty ( $TZ_OFFSET ) ) {
+    //don't adjust anything  if  no TZ offset or ALL Day Event or Untimed
+    } else if ( empty ( $TZ_OFFSET) ||  ( $events[$i]['cal_time'] <= 0 ) ) {
       if ( $events[$i]['cal_date'] == $date )
         $ret[$n++] = $events[$i];
     } else if ( $TZ_OFFSET > 0 ) {
@@ -3844,7 +3843,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   $pri, $access, $event_owner, $event_category=-1 ) {
   global $eventinfo, $login, $user, $PHP_SELF, $prefarray;
   static $key = 0;
-  
+  $insidespan = false;
   global $layers;
 
   // compute time offsets in % of total table width
@@ -3916,6 +3915,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     if ($layers) foreach ($layers as $layer) {
         if($layer['cal_layeruser'] == $event_owner) {
+            $insidespan = true;
             echo("<span style=\"color:" . $layer['cal_color'] . ";\">");
         }
     }
@@ -3950,7 +3950,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
     echo htmlspecialchars ( $name );
-    echo ("</span>"); //end color span
+    if ( $insidespan ) { echo ("</span>"); } //end color span
   }
   else
     echo htmlspecialchars ( $name );
