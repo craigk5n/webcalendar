@@ -97,11 +97,18 @@ span.tabfor {
 	border-right: 2px ridge #C0C0C0;
 	border-bottom: 2px solid #F8F8FF;
 	background-color: #F8F8FF;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	font-size: 14px;
 }
 span.tabbak {
 	padding: 0.2em 0.2em 0px 0.2em;
 	margin: 0 0.2em 0 0.8em;
-	background-color: #DDDDDD;
+	border-top: 2px ridge #C0C0C0;
+	border-left: 2px ridge #C0C0C0;
+	border-right: 2px ridge #C0C0C0;
+	background-color: #E0E0E0;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	font-size: 14px;
 }
 span.tabbak a {
 	text-decoration: none;
@@ -127,6 +134,7 @@ span.tabfor a {
 }
 label {
 	font-weight: bold;
+	font-size: 12px;
 }
 .sample {
 	border-style: groove;
