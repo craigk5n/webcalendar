@@ -1,4 +1,4 @@
-Version 0.9.47dev (?? ??? 2004)
+Version 0.9.47/CVS+dev (?? ??? 2004)
   - Fixed Bug 1085971: repeat tab does not display details
   - Fixed Bug 1074403: Day View is not accounting for server offset
   - Added support for automatic gradient background images for table cells.
