@@ -3642,4 +3642,14 @@ function clean_int($data) {
 function clean_whitespace($data) { 
   return preg_replace("/\s/", '', $data);
 }
+
+//converts language names to their abbreviation
+function languageToAbbrev ( $name ) {
+  global $browser_languages;
+  foreach ( $browser_languages as $abbrev => $langname ) {
+    if ( $langname == $name )
+      return $abbrev;
+  }
+  return false;
+}
 ?>
