@@ -143,10 +143,16 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        if ( date ( "Ymd", $date ) == date ( "Ymd", $now ) )
-          echo "<td style=\"background-color:$TODAYCELLBG;\">";
-        else
-          echo "<td style=\"background-color:$CELLBG;\">";
+		echo "<td";
+		if ( date ( "Ymd", $date ) == date ( "Ymd" ) ) {
+			// This is today
+			echo " id=\"today\"";
+		}
+        	if ( date ( "Ymd", $date ) == date ( "Ymd", $now ) ) {
+			// This is the day we're looking at
+			echo " class=\"selectedday\"";
+		}
+		echo ">";
         echo "<a href=\"day.php?";
         echo $u_url;
         echo "date=" . date ( "Ymd", $date ) . "$caturl\" class=\"monthlink\">" .
@@ -169,11 +175,17 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        if ( date ( "Ymd", $date ) == date ( "Ymd", $now ) )
-          echo "<td style=\"background-color:$TODAYCELLBG;\">";
-        else
-          echo "<td style=\"background-color:$CELLBG;\">";
-        echo "" . date ( "d", $date ) . "</a></td>\n";
+		echo "<td";
+		if ( date ( "Ymd", $date ) == date ( "Ymd" ) ) {
+			// This is today
+			echo " id=\"today\"";
+		}
+        	if ( date ( "Ymd", $date ) == date ( "Ymd", $now ) ) {
+			// This is the day we're looking at
+			echo " class=\"selectedday\"";
+		}
+		echo ">";
+        	echo "" . date ( "d", $date ) . "</a></td>\n";
       } else {
         print "<td style=\"background-color:$CELLBG;\">&nbsp;</td>\n";
       }
