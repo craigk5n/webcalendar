@@ -102,6 +102,7 @@ while ( <F> ) {
 }
 
 $notfound = 0;
+$total = 0;
 foreach $text ( sort { uc($a) cmp uc($b) } keys ( %text ) ) {
   if ( ! defined ( $trans{$text} ) ) {
     if ( ! $notfound ) {
@@ -110,6 +111,7 @@ foreach $text ( sort { uc($a) cmp uc($b) } keys ( %text ) ) {
     print "$text\n";
     $notfound++;
   }
+  $total++;
 }
 
 # Check for translations that are not used...
@@ -127,7 +129,8 @@ foreach $text ( sort { uc($a) cmp uc($b) } keys ( %trans ) ) {
 if ( ! $notfound ) {
   print "All text was found in $infile.  Good job :-)\n";
 } else {
-  print "\n$notfound translation(s) missing.\n";
+  printf "\n$notfound of $total translation(s) missing. (%1.1f%%)\n", 
+   ( 100 * $notfound / $total );
 }
 
 exit 0;
