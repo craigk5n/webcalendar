@@ -362,6 +362,10 @@ function remember_this_view () {
   if ( empty ( $REQUEST_URI ) )
     $REQUEST_URI = $_SERVER["REQUEST_URI"];
 
+  // do not use anything with friendly in the URI
+  if ( strstr ( $REQUEST_URI, "friendly=" ) )
+    return;
+
   SetCookie ( "webcalendar_last_view", $REQUEST_URI );
 }
 
