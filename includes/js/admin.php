@@ -94,5 +94,78 @@ function selectColor ( color ) {
   url = "colors.php?color=" + color;
   var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
 }
+
+
+// Gets called on page load and when user changes setting for
+// "Allow public access".
+function public_handler () {
+  var enabled = document.prefform.admin_public_access[0].checked;
+  //alert ( "public enabled =  " + enabled );
+  if ( enabled ) {
+    // Public Access enabled
+    makeVisible ( "pa1" );
+    makeVisible ( "pa2" );
+    makeVisible ( "pa3" );
+    makeVisible ( "pa4" );
+    makeVisible ( "pa5" );
+    makeVisible ( "pa6" );
+  } else {
+    // Public Access disabled
+    makeInvisible ( "pa1" );
+    makeInvisible ( "pa2" );
+    makeInvisible ( "pa3" );
+    makeInvisible ( "pa4" );
+    makeInvisible ( "pa5" );
+    makeInvisible ( "pa6" );
+  }
+}
+
+// Gets called on page load and when user changes setting for
+// "Allow external users".
+function eu_handler () {
+  var enabled = document.prefform.admin_allow_external_users[0].checked;
+  //alert ( "allow external =  " + enabled );
+  if ( enabled ) {
+    // External Users enabled
+    makeVisible ( "eu1" );
+    makeVisible ( "eu2" );
+    makeVisible ( "eu3" );
+    makeVisible ( "eu4" );
+  } else {
+    makeInvisible ( "eu1" );
+    makeInvisible ( "eu2" );
+    makeInvisible ( "eu3" );
+    makeInvisible ( "eu4" );
+  }
+
+}
+
+
+// Gets called on page load and when user changes setting for
+// "Email enabled".
+function email_handler () {
+  var enabled = document.prefform.admin_send_email[0].checked;
+  //alert ( "allow external =  " + enabled );
+  if ( enabled ) {
+    // Email enabled
+    makeVisible ( "em1" );
+    makeVisible ( "em2" );
+    makeVisible ( "em3" );
+    makeVisible ( "em4" );
+    makeVisible ( "em5" );
+    makeVisible ( "em6" );
+    makeVisible ( "em7" );
+  } else {
+    makeInvisible ( "em1" );
+    makeInvisible ( "em2" );
+    makeInvisible ( "em3" );
+    makeInvisible ( "em4" );
+    makeInvisible ( "em5" );
+    makeInvisible ( "em6" );
+    makeInvisible ( "em7" );
+  }
+}
+
+
 //]]> -->
 </script>

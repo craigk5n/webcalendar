@@ -1,4 +1,6 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Added javascript to admin page to remove options that are not relavant
+    (such as all the options for public access when public access is disabled)
   - Added login icon to login page
   - Added system setting for making public access selected as a participant
     by default for new events.
