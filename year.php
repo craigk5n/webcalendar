@@ -55,26 +55,26 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
 		"</th>\n";
 	//end the header row
 	echo "</tr>\n";
-  for ($i = $wkstart; date("Ymd",$i) <= date ("Ymd",$monthend);
+  for ($i = $wkstart; date("Ymd",$i) <= date ("Ymd",$monthend); //for each week of the month...
     $i += (24 * 3600 * 7) ) {
-		echo "<tr class=\"numdate\">\n";
+		echo "<tr class=\"numdate\">\n"; //..print this
      for ($j = 0; $j < 7; $j++) {
        $date = $i + ($j * 24 * 3600);
        $dateYmd = date ( "Ymd", $date );
-      $hasEvents = false;
-      if ( $boldDays ) {
+      $hasEvents = false; //presume no events exist, until proven otherwise
+      if ( $boldDays ) { //if the user has enabled the option to distinguish days with events...
         $ev = get_entries ( $user, $dateYmd, $get_unapproved );
-        if ( count ( $ev ) > 0 ) {
-          $hasEvents = true;
+        if ( count ( $ev ) > 0 ) { //..determine if there are events
+          $hasEvents = true; //there are events
         } else {
           $rep = get_repeating_entries ( $user, $dateYmd, $get_unapproved );
-          if ( count ( $rep ) > 0 )
-            $hasEvents = true;
+          if ( count ( $rep ) > 0 ) //..also determine if we have repeating events
+            $hasEvents = true; //there are repeating events
         }
       }
-       if ( $dateYmd >= date ("Ymd",$monthstart) &&
-         $dateYmd <= date ("Ymd",$monthend) ) {
-         echo "<td";
+	if ( $dateYmd >= date ("Ymd",$monthstart) &&
+          $dateYmd <= date ("Ymd",$monthend) ) { //if there are still days left in the month...
+            echo "<td"; //..start the cell containing each date
 		$wday = date ( "w", $date );
 		$class = array();  // array of classes this cell belongs to
 		if ( $wday == 0 || $wday == 6 ) $class[] = "weekend";
@@ -96,7 +96,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
 	}                 // end for $j
 echo "</tr>\n";
 }                         // end for $i
-echo "</table>\n";
+echo "</table>\n"; //end this minicalendar
 }
 
 if ( empty ( $year ) )
@@ -138,8 +138,8 @@ if ( $user == "__public__" )
  
 <div class="title">
 	<?php if ( empty ( $friendly ) ) { ?>
-		<a title="<?php etranslate("Previous")?>" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="leftarrow.gif" class="prevnext" style="float:left; margin-left:3px; margin-top:7px;" alt="<?php etranslate("Previous")?>" /></a>
-		<a title="<?php etranslate("Next")?>" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="rightarrow.gif" class="prevnext" style="float:right; margin-right:3px; margin-top:7px;" alt="<?php etranslate("Next")?>" /></a>
+		<a title="<?php etranslate("Previous")?>" class="prev" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
+		<a title="<?php etranslate("Next")?>" class="next" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
 	<?php } ?>
 	<span class="date"><?php echo $thisyear ?></span>
 	<span class="user"><?php
