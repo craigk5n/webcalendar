@@ -1045,15 +1045,17 @@ function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
 // params:
 //   $user - username
 //   $date - date to get events for in YYYYMMDD format
-function get_entries ( $user, $date ) {
+function get_entries ( $user, $date, $get_unapproved=true ) {
   global $events, $TZ_OFFSET;
   $n = 0;
   $ret = array ();
 
-  //echo "<P>Checking " . count ( $events ) . " events.  TZ_OFFSET = $TZ_OFFSET<P>";
+  //echo "<P>Checking " . count ( $events ) . " events.  TZ_OFFSET = $TZ_OFFSET, get_unapproved=" . $get_unapproved . "<P>";
 
   for ( $i = 0; $i < count ( $events ); $i++ ) {
-    if ( empty ( $TZ_OFFSET ) ) {
+    if ( ( ! $get_unapproved ) && $events[$i]['cal_status'] == 'W' ) {
+      // ignore this event
+    } else if ( empty ( $TZ_OFFSET ) ) {
       if ( $events[$i]['cal_date'] == $date )
         $ret[$n++] = $events[$i];
     } else if ( $TZ_OFFSET > 0 ) {
@@ -1442,17 +1444,20 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
 // params:
 //   $user - username
 //   $date - date to get events for in YYYYMMDD format
-function get_repeating_entries ( $user, $dateYmd ) {
+//   $get_unapproved - include unapproved events in results
+function get_repeating_entries ( $user, $dateYmd, $get_unapproved=true ) {
   global $repeated_events;
   $n = 0;
   $ret = array ();
   //echo count($repeated_events)."<BR>";
   for ( $i = 0; $i < count ( $repeated_events ); $i++ ) {
-    if ( repeated_event_matches_date ( $repeated_events[$i], $dateYmd ) ) {
-      // make sure this is not an exception date...
-      $unixtime = date_to_epoch ( $dateYmd );
-      if ( ! is_exception ( $unixtime, $repeated_events[$i]['cal_exceptions'] ) )
-        $ret[$n++] = $repeated_events[$i];
+    if ( $repeated_events[$i]['cal_status'] == 'A' || $get_unapproved ) {
+      if ( repeated_event_matches_date ( $repeated_events[$i], $dateYmd ) ) {
+        // make sure this is not an exception date...
+        $unixtime = date_to_epoch ( $dateYmd );
+        if ( ! is_exception ( $unixtime, $repeated_events[$i]['cal_exceptions'] ) )
+          $ret[$n++] = $repeated_events[$i];
+      }
     }
   }
   return $ret;
@@ -1719,11 +1724,11 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
   }
 
   // get all the repeating events for this date and store in array $rep
-  $rep = get_repeating_entries ( $user, $date );
+  $rep = get_repeating_entries ( $user, $date, $get_unapproved );
   $cur_rep = 0;
 
   // get all the non-repeating events for this date and store in $ev
-  $ev = get_entries ( $user, $date );
+  $ev = get_entries ( $user, $date, $get_unapproved );
 
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     // print out any repeating events that are before this one...
@@ -2356,7 +2361,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
   $cur_rep = 0;
 
   // Get static non-repeating events
-  $ev = get_entries ( $user, $date );
+  $ev = get_entries ( $user, $date, $get_unapproved );
   $hour_arr = array ();
   $interval = ( 24 * 60 ) / $TIME_SLOTS;
   $first_slot = (int) ( ( ( $WORK_DAY_START_HOUR - $TZ_OFFSET ) * 60 ) / $interval );
@@ -3058,7 +3063,7 @@ function print_date_entries_timebar ( $date, $user, $hide_icons, $ssi ) {
   $cur_rep = 0;
 
   // get all the non-repeating events for this date and store in $ev
-  $ev = get_entries ( $users[$i], $date );
+  $ev = get_entries ( $users[$i], $date, $get_unapproved );
 
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     // print out any repeating events that are before this one...

@@ -1,4 +1,6 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - In year view, show days with events in bold.  Must enable new
+    setting in System Settings since this is CPU-intensive.
   - Fixed bug 877797: edit_user.php would show form for changing password
     even if user.php was configured to not allow changing of passwords.
   - Allow users to enter HTML for the event description.  Includes

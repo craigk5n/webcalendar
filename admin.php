@@ -131,6 +131,9 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("display-weekends-help");?>"><?php etranslate("Display weekends in week view")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_DISPLAY_WEEKENDS" VALUE="Y" <?php if ( $s["DISPLAY_WEEKENDS"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_DISPLAY_WEEKENDS" VALUE="N" <?php if ( $s["DISPLAY_WEEKENDS"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("yearly-shows-events-help");?>"><?php etranslate("Display days with events in bold in year view")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_bold_days_in_year" VALUE="Y" <?php if ( $s["bold_days_in_year"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_bold_days_in_year" VALUE="N" <?php if ( $s["bold_days_in_year"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("display-desc-print-day-help");?>"><?php etranslate("Display description in printer day view")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_DISPLAY_DESC_PRINT_DAY" VALUE="Y" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_DISPLAY_DESC_PRINT_DAY" VALUE="N" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
