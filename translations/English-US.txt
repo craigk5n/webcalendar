@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 07-26-2004
+# Translation last updated on 08-09-2004
 
 
 ###############################################
@@ -32,16 +32,33 @@ charset: iso-8859-1
 
 
 ###############################################
-# Page: week.php
+# Page: activity_log.php
 #
+Activity Log: Activity Log
+User: User
+Calendar: Calendar
+Date: Date
+Time: Time
+Event: Event
+Action: Action
+Event created: Event created
+Event approved: Event approved
+Event rejected: Event rejected
+Event updated: Event updated
+Event deleted: Event deleted
+Notification sent: Notification sent
+Reminder sent: Reminder sent
+Database error: Database error
 Previous: Previous
-Week: Week
-Admin mode: Admin mode
-Assistant mode: Assistant mode
 Next: Next
-cont.: cont.
-Generate printer-friendly version: Generate printer-friendly version
-Printer Friendly: Printer Friendly
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Invalid entry id
+This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
+Error adding event: Error adding event
 
 
 ###############################################
@@ -80,6 +97,7 @@ Custom trailer: Custom trailer
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: Preferred view
 Day: Day
+Week: Week
 Month: Month
 Year: Year
 display-weekends-help: Include weekends when viewing a week.
@@ -227,31 +245,19 @@ Event popup text: Event popup text
 
 
 ###############################################
-# Page: activity_log.php
+# Page: adminhome.php
 #
-Activity Log: Activity Log
-User: User
-Calendar: Calendar
-Date: Date
-Time: Time
-Event: Event
-Action: Action
-Event created: Event created
-Event approved: Event approved
-Event rejected: Event rejected
-Event updated: Event updated
-Event deleted: Event deleted
-Notification sent: Notification sent
-Reminder sent: Reminder sent
-Database error: Database error
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Invalid entry id
-This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
-Error adding event: Error adding event
+Preferences: Preferences
+Users: Users
+Account: Account
+Assistants: Assistants
+NonUser Calendars: NonUser Calendars
+Views: Views
+Layers: Layers
+Delete Events: Delete Events
+Public Preferences: Public Preferences
+Unapproved Public Events: Unapproved Public Events
+Administrative Tools: Administrative Tools
 
 
 ###############################################
@@ -268,6 +274,13 @@ Error approving event: Error approving event
 
 
 ###############################################
+# Page: assistant_edit.php
+#
+Admin mode: Admin mode
+Your assistants: Your assistants
+
+
+###############################################
 # Page: category.php
 #
 Add: Add
@@ -279,18 +292,11 @@ Add New Category: Add New Category
 
 
 ###############################################
-# Page: category_handler.php
-#
-
-
-###############################################
-# Page: datesel.php
-#
-
-
-###############################################
 # Page: day.php
 #
+Assistant mode: Assistant mode
+Generate printer-friendly version: Generate printer-friendly version
+Printer Friendly: Printer Friendly
 
 
 ###############################################
@@ -367,6 +373,25 @@ You are not authorized to edit this entry: You are not authorized to edit this e
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+The following conflicts with the suggested time: The following conflicts with the suggested time
+Unnamed Event: Unnamed Event
+The description is: The description is
+Title: WebCalendar
+A new appointment has been made for you by: A new appointment has been made for you by
+An appointment has been updated by: An appointment has been updated by
+The subject is: The subject is
+Please look on: Please look on
+to accept or reject this appointment: to accept or reject this appointment
+to view this appointment: to view this appointment
+Scheduling Conflict: Scheduling Conflict
+Your suggested time of: Your suggested time of
+conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
+Cancel: Cancel
+
+
+###############################################
 # Page: edit_layer.php
 #
 Edit Layer: Edit Layer
@@ -384,6 +409,61 @@ Delete layer: Delete layer
 #
 You cannot create a layer for yourself: You cannot create a layer for yourself
 You can only create one layer for each user: You can only create one layer for each user
+
+
+###############################################
+# Page: edit_report.php
+#
+Tomorrow: Tomorrow
+Today: Today
+Yesterday: Yesterday
+Day before yesterday: Day before yesterday
+Next week: Next week
+This week: This week
+Last week: Last week
+Week before last: Week before last
+Next week and week after: Next week and week after
+This week and next week: This week and next week
+Last week and this week: Last week and this week
+Last two weeks: Last two weeks
+Next month: Next month
+This month: This month
+Last month: Last month
+Month before last: Month before last
+Next year: Next year
+This year: This year
+Last year: Last year
+Year before last: Year before last
+Invalid report id: Invalid report id
+Unnamed Report: Unnamed Report
+Add Report: Add Report
+Edit Report: Edit Report
+Report name: Report name
+Current User: Current User
+Include link in trailer: Include link in trailer
+Include standard header/trailer: Include standard header/trailer
+Date range: Date range
+Include previous/next links: Include previous/next links
+Include empty dates: Include empty dates
+Template variables: Template variables
+Page template: Page template
+Day template: Day template
+Event template: Event template
+Are you sure you want to delete this report?: Are you sure you want to delete this report?
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+Variable N not found: Variable N not found
+
+
+###############################################
+# Page: edit_template.php
+#
+Edit Custom Script/Stylesheet: Edit Custom Script/Stylesheet
+Edit Custom Header: Edit Custom Header
+Edit Custom Trailer: Edit Custom Trailer
 
 
 ###############################################
@@ -431,6 +511,12 @@ export format not defined or incorrect: export format not defined or incorrect
 
 
 ###############################################
+# Page: groups.php
+#
+Add New Group: Add New Group
+
+
+###############################################
 # Page: group_edit.php
 #
 Unnamed Group: Unnamed Group
@@ -439,52 +525,12 @@ Edit Group: Edit Group
 Group name: Group name
 Updated: Updated
 Created by: Created by
-Users: Users
 
 
 ###############################################
 # Page: group_edit_handler.php
 #
 You must specify a group name: You must specify a group name
-
-
-###############################################
-# Page: groups.php
-#
-Add New Group: Add New Group
-
-
-###############################################
-# Page: icalfb.php
-#
-
-
-###############################################
-# Page: pref.php
-#
-Preferences: Preferences
-to modify the preferences for the Public Access calendar: to modify the preferences for the Public Access calendar
-tz-help: Specifies how many hours to adjust the time from server time to local time.
-Timezone Offset: Timezone Offset
-Add N hours to: Add N hours to
-Subtract N hours from: Subtract N hours from
-same as: same as
-server time: server time
-Default Category: Default Category
-When I am the boss: When I am the boss
-Email me event notification: Email me event notification
-I want to approve events: I want to approve events
-allow-remote-subscriptions-help: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
-URL: URL
-Sun: Sun
-Mon: Mon
-Tue: Tue
-Wed: Wed
-Thu: Thu
-Fri: Fri
-Sat: Sat
-Save Preferences: Save Preferences
 
 
 ###############################################
@@ -500,11 +546,32 @@ Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
 
 
 ###############################################
+# Page: help_import.php
+#
+Import: Import
+Palm Desktop: Palm Desktop
+This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
+The following entries will not be imported: The following entries will not be imported
+Entries older than the current date: Entries older than the current date
+Entries created in the Palm Desktop that have not been HotSync'd: Entries created in the Palm Desktop that have not been HotSync'd
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
+Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
+vCal: vCal
+This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
+The following formats have been tested: The following formats have been tested
+Palm Desktop 4: Palm Desktop 4
+Lotus Organizer 6: Lotus Organizer 6
+Microsoft Outlook 2002: Microsoft Outlook 2002
+iCalendar: iCalendar
+This form will import iCalendar (.ics) events: This form will import iCalendar (.ics) events
+Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.
+
+
+###############################################
 # Page: help_index.php
 #
 Help Index: Help Index
-Layers: Layers
-Import: Import
 
 
 ###############################################
@@ -523,8 +590,37 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
-# Page: help_admin.php
+# Page: help_pref.php
 #
+Default Category: Default Category
+default-category-help: Specifies the category a new event should default to.
+allow-remote-subscriptions-help: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+URL: URL
+remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
+
+
+###############################################
+# Page: import.php
+#
+Exclude private records: Exclude private records
+Datebook File: Datebook File
+vCal File: vCal File
+iCal File: iCal File
+Overwrite Prior Import: Overwrite Prior Import
+
+
+###############################################
+# Page: import_handler.php
+#
+Import Results: Import Results
+Events successfully imported: Events successfully imported
+Events from prior import marked as deleted: Events from prior import marked as deleted
+Conflicting events: Conflicting events
+Errors: Errors
+There was an error parsing the import file or no events were returned: There was an error parsing the import file or no events were returned
+The import file contained no data: The import file contained no data
+View this entry: View this entry
+Event Imported: Event Imported
 
 
 ###############################################
@@ -542,14 +638,8 @@ Add layer: Add layer
 
 
 ###############################################
-# Page: layers_toggle.php
-#
-
-
-###############################################
 # Page: list_unapproved.php
 #
-View this entry: View this entry
 Approve this entry?: Approve this entry?
 Approve/Confirm: Approve/Confirm
 Reject this entry?: Reject this entry?
@@ -560,62 +650,84 @@ Public Access: Public Access
 
 
 ###############################################
-# Page: view_entry.php
+# Page: login.php
 #
-every: every
-2nd: 2nd
-3rd: 3rd
-4th: 4th
-5th: 5th
-1st: 1st
-last: last
-Description: Description
-Status: Status
-Waiting for approval: Waiting for approval
-Deleted: Deleted
-Rejected: Rejected
-External User: External User
-Approve/Confirm entry: Approve/Confirm entry
-Reject entry: Reject entry
-Set category: Set category
-Edit repeating entry for all dates: Edit repeating entry for all dates
-Edit entry for this date: Edit entry for this date
-This will delete this entry for all users.: This will delete this entry for all users.
-Delete repeating event for all dates: Delete repeating event for all dates
-Delete entry only for this date: Delete entry only for this date
-Edit entry: Edit entry
-Copy entry: Copy entry
-This will delete the entry from your calendar.: This will delete the entry from your calendar.
-Do you want to add this entry to your calendar?: Do you want to add this entry to your calendar?
-This will add the entry to your calendar.: This will add the entry to your calendar.
-Add to My Calendar: Add to My Calendar
-Email all participants: Email all participants
-Show activity log: Show activity log
-Hide activity log: Hide activity log
-Export this entry to: Export this entry to
-
-
-###############################################
-# Page: view_v.php
-#
+Invalid login: Invalid login
+You must enter a login and password: You must enter a login and password
+Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
+Login: Login
+Access public calendar: Access public calendar
+cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 
 
 ###############################################
 # Page: month.php
 #
+Sun: Sun
+Mon: Mon
+Tue: Tue
+Wed: Wed
+Thu: Thu
+Fri: Fri
+Sat: Sat
 
 
 ###############################################
-# Page: pref_handler.php
+# Page: nonusers.php
 #
+NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
+NonUser: NonUser Calendars
+Calendar ID: Calendar ID
+Add New NonUser Calendar: Add New NonUser Calendar
+
+
+###############################################
+# Page: pref.php
+#
+to modify the preferences for the Public Access calendar: to modify the preferences for the Public Access calendar
+tz-help: Specifies how many hours to adjust the time from server time to local time.
+Timezone Offset: Timezone Offset
+Add N hours to: Add N hours to
+Subtract N hours from: Subtract N hours from
+same as: same as
+server time: server time
+When I am the boss: When I am the boss
+Email me event notification: Email me event notification
+I want to approve events: I want to approve events
+Save Preferences: Save Preferences
+
+
+###############################################
+# Page: purge.php
+#
+Purging events for: Purging events for
+Finished: Finished
+All: All
+Delete all events before: Delete all events before
+Check box to delete <b>ALL</b> events for a user: Check box to delete <b>ALL</b> events for a user
+Are you sure you want to delete events for: Are you sure you want to delete events for
+Records deleted from: Records deleted from
 
 
 ###############################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: An appointment has been rejected by
-The description is: The description is
-Title: WebCalendar
+
+
+###############################################
+# Page: report.php
+#
+Private: Private
+Waiting for approval: Waiting for approval
+Deleted: Deleted
+Rejected: Rejected
+Approved: Approved
+Unknown: Unknown
+to manage reports for the Public Access calendar: to manage reports for the Public Access calendar
+Add new report: Add new report
+cont.: cont.
+Manage Reports: Manage Reports
 
 
 ###############################################
@@ -644,8 +756,10 @@ Go: Go
 
 
 ###############################################
-# Page: publish.php
+# Page: set_entry_cat.php
 #
+You have not added any categories: You have not added any categories
+Set Category: Set Category
 
 
 ###############################################
@@ -658,50 +772,14 @@ Add New User: Add New User
 ###############################################
 # Page: usersel.php
 #
-All: All
 Reset: Reset
 Remove: Remove
 Ok: Ok
-Cancel: Cancel
-
-
-###############################################
-# Page: import.php
-#
-This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
-Exclude private records: Exclude private records
-Datebook File: Datebook File
-This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
-vCal File: vCal File
-This form will import iCalendar (.ics) events: This form will import iCalendar (.ics) events
-iCal File: iCal File
-Overwrite Prior Import: Overwrite Prior Import
-
-
-###############################################
-# Page: year.php
-#
-
-
-###############################################
-# Page: view_d.php
-#
-
-
-###############################################
-# Page: view_m.php
-#
-
-
-###############################################
-# Page: view_w.php
-#
 
 
 ###############################################
 # Page: views.php
 #
-Views: Views
 Add New View: Add New View
 
 
@@ -716,56 +794,9 @@ View Type: View Type
 Week (Users horizontal): Week (Users horizontal)
 Week (Users vertical): Week (Users vertical)
 Week (Timebar): Week (Timebar)
+Month (Timebar): Month (Timebar)
 Month (side by side): Month (side by side)
 Month (on same calendar): Month (on same calendar)
-
-
-###############################################
-# Page: nonusers.php
-#
-NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
-NonUser: NonUser Calendars
-Calendar ID: Calendar ID
-Add New NonUser Calendar: Add New NonUser Calendar
-
-
-###############################################
-# Page: nonusers_handler.php
-#
-
-
-###############################################
-# Page: view_l.php
-#
-
-
-###############################################
-# Page: help_pref.php
-#
-default-category-help: Specifies the category a new event should default to.
-
-
-###############################################
-# Page: report.php
-#
-Private: Private
-Approved: Approved
-Unknown: Unknown
-to manage reports for the Public Access calendar: to manage reports for the Public Access calendar
-Add new report: Add new report
-Invalid report id: Invalid report id
-Manage Reports: Manage Reports
-
-
-###############################################
-# Page: login.php
-#
-Invalid login: Invalid login
-You must enter a login and password: You must enter a login and password
-Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
-Login: Login
-Access public calendar: Access public calendar
-cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 
 
 ###############################################
@@ -775,207 +806,42 @@ You must specify a view name: You must specify a view name
 
 
 ###############################################
+# Page: view_entry.php
+#
+every: every
+2nd: 2nd
+3rd: 3rd
+4th: 4th
+5th: 5th
+1st: 1st
+last: last
+Description: Description
+Status: Status
+External User: External User
+Approve/Confirm entry: Approve/Confirm entry
+Reject entry: Reject entry
+Set category: Set category
+Edit repeating entry for all dates: Edit repeating entry for all dates
+Edit entry for this date: Edit entry for this date
+This will delete this entry for all users.: This will delete this entry for all users.
+Delete repeating event for all dates: Delete repeating event for all dates
+Delete entry only for this date: Delete entry only for this date
+Edit entry: Edit entry
+Copy entry: Copy entry
+This will delete the entry from your calendar.: This will delete the entry from your calendar.
+Do you want to add this entry to your calendar?: Do you want to add this entry to your calendar?
+This will add the entry to your calendar.: This will add the entry to your calendar.
+Add to My Calendar: Add to My Calendar
+Email all participants: Email all participants
+Show activity log: Show activity log
+Hide activity log: Hide activity log
+Export this entry to: Export this entry to
+
+
+###############################################
 # Page: week_details.php
 #
 New Entry: New Entry
-
-
-###############################################
-# Page: import_handler.php
-#
-Import Results: Import Results
-Events successfully imported: Events successfully imported
-Events from prior import marked as deleted: Events from prior import marked as deleted
-Conflicting events: Conflicting events
-Errors: Errors
-There was an error parsing the import file or no events were returned: There was an error parsing the import file or no events were returned
-The import file contained no data: The import file contained no data
-The following conflicts with the suggested time: The following conflicts with the suggested time
-Unnamed Event: Unnamed Event
-Scheduling Conflict: Scheduling Conflict
-conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
-Event Imported: Event Imported
-
-
-###############################################
-# Page: edit_report.php
-#
-Tomorrow: Tomorrow
-Today: Today
-Yesterday: Yesterday
-Day before yesterday: Day before yesterday
-Next week: Next week
-This week: This week
-Last week: Last week
-Week before last: Week before last
-Next week and week after: Next week and week after
-This week and next week: This week and next week
-Last week and this week: Last week and this week
-Last two weeks: Last two weeks
-Next month: Next month
-This month: This month
-Last month: Last month
-Month before last: Month before last
-Next year: Next year
-This year: This year
-Last year: Last year
-Year before last: Year before last
-Unnamed Report: Unnamed Report
-Add Report: Add Report
-Edit Report: Edit Report
-Report name: Report name
-Current User: Current User
-Include link in trailer: Include link in trailer
-Include standard header/trailer: Include standard header/trailer
-Date range: Date range
-Include previous/next links: Include previous/next links
-Include empty dates: Include empty dates
-Template variables: Template variables
-Page template: Page template
-Day template: Day template
-Event template: Event template
-Are you sure you want to delete this report?: Are you sure you want to delete this report?
-
-
-###############################################
-# Page: assistant_edit.php
-#
-Assistants: Assistants
-Your assistants: Your assistants
-
-
-###############################################
-# Page: view_t.php
-#
-
-
-###############################################
-# Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: adminhome.php
-#
-Account: Account
-NonUser Calendars: NonUser Calendars
-Delete Events: Delete Events
-Public Preferences: Public Preferences
-Unapproved Public Events: Unapproved Public Events
-Administrative Tools: Administrative Tools
-
-
-###############################################
-# Page: purge.php
-#
-Purging events for: Purging events for
-Finished: Finished
-Delete all events before: Delete all events before
-Check box to delete <b>ALL</b> events for a user: Check box to delete <b>ALL</b> events for a user
-Are you sure you want to delete events for: Are you sure you want to delete events for
-Records deleted from: Records deleted from
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-You have not added any categories: You have not added any categories
-Set Category: Set Category
-
-
-###############################################
-# Page: help_import.php
-#
-Palm Desktop: Palm Desktop
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
-The following entries will not be imported: The following entries will not be imported
-Entries older than the current date: Entries older than the current date
-Entries created in the Palm Desktop that have not been HotSync'd: Entries created in the Palm Desktop that have not been HotSync'd
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
-Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
-vCal: vCal
-The following formats have been tested: The following formats have been tested
-Palm Desktop 4: Palm Desktop 4
-Lotus Organizer 6: Lotus Organizer 6
-Microsoft Outlook 2002: Microsoft Outlook 2002
-iCalendar: iCalendar
-Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.
-
-
-###############################################
-# Page: edit_report_handler.php
-#
-Variable N not found: Variable N not found
-
-
-###############################################
-# Page: edit_entry_handler.php
-#
-A new appointment has been made for you by: A new appointment has been made for you by
-An appointment has been updated by: An appointment has been updated by
-The subject is: The subject is
-Please look on: Please look on
-to accept or reject this appointment: to accept or reject this appointment
-to view this appointment: to view this appointment
-Your suggested time of: Your suggested time of
-
-
-###############################################
-# Page: edit_template.php
-#
-Edit Custom Script/Stylesheet: Edit Custom Script/Stylesheet
-Edit Custom Header: Edit Custom Header
-Edit Custom Trailer: Edit Custom Trailer
-
-
-###############################################
-# Page: includes/trailer.php
-#
-Go to: Go to
-Back to My Calendar: Back to My Calendar
-My Calendar: My Calendar
-Logout: Logout
-Another User's Calendar: Another User's Calendar
-Add New Entry: Add New Entry
-Manage Views: Manage Views
-Manage calendar of: Manage calendar of
-
-
-###############################################
-# Page: includes/connect.php
-#
-
-
-###############################################
-# Page: includes/user.php
-#
-Invalid user login: Invalid user login
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Send Reminder
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-
-
-###############################################
-# Page: includes/help_trailer.php
-#
 
 
 ###############################################
@@ -1012,16 +878,6 @@ Turkish: Turkish
 
 
 ###############################################
-# Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/init.php
-#
-
-
-###############################################
 # Page: includes/functions.php
 #
 This event is confidential: This event is confidential
@@ -1050,6 +906,36 @@ Sep: Sep
 Oct: Oct
 Nov: Nov
 Dec: Dec
+
+
+###############################################
+# Page: includes/help_trailer.php
+#
+Go to: Go to
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Send Reminder
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Back to My Calendar: Back to My Calendar
+My Calendar: My Calendar
+Logout: Logout
+Another User's Calendar: Another User's Calendar
+Add New Entry: Add New Entry
+Manage Views: Manage Views
+Manage calendar of: Manage calendar of
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+Invalid user login: Invalid user login
 
 
 ###############################################
@@ -1082,11 +968,6 @@ The time you have entered begins before your preferred work hours.  Is this corr
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Invalid color
-
-
-###############################################
-# Page: includes/js/pref.php
-#
 
 
 ###############################################

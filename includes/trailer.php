@@ -246,20 +246,22 @@
       echo " | ";
     echo "<a class=\"navlinks\" href=\"";
     if ( $views[$i]['cal_view_type'] == 'W' )
-      echo "view_w.php";
+      echo "view_w.php?";
     elseif ( $views[$i]['cal_view_type'] == 'D' )
-      echo "view_d.php";
+      echo "view_d.php?";
     elseif ( $views[$i]['cal_view_type'] == 'V' )
-      echo "view_v.php";
+      echo "view_v.php?";
     elseif ( $views[$i]['cal_view_type'] == 'T' )
-      echo "view_t.php";
+      echo "view_t.php?timeb=0&";
     elseif ( $views[$i]['cal_view_type'] == 'M' )
-      echo "view_m.php";
+      echo "view_m.php?";
     elseif ( $views[$i]['cal_view_type'] == 'L' )
-      echo "view_l.php";
+      echo "view_l.php?";
+    elseif ( $views[$i]['cal_view_type'] == 'S' )
+      echo "view_t.php?timeb=1&";
     else
-      echo "view_m.php";
-    echo "?id=" . $views[$i]['cal_view_id'];
+      echo "view_m.php?";
+    echo "id=" . $views[$i]['cal_view_id'];
     if ( ! empty ( $thisdate ) )
       echo "&amp;date=$thisdate";
     echo "\">" . $views[$i]['cal_name'] . "</a>";
