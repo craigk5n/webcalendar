@@ -12,7 +12,8 @@
  *	file is in ../includes/htmlarea/htmlarea.php
  *	The htmlarea code can be downloaded from:
  *		http://www.htmlarea.com
- *
+ * TODO
+ * This file will not pass XHTML validation with HTMLArea enabled
  */
 include_once 'includes/init.php';
 include_once 'includes/site_extras.php';
