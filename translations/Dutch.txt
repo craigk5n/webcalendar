@@ -4,8 +4,8 @@
 # Translated by: Marieke Timmer / marieke.timmer@tijdhof.nl and Arnout Engelen / arnouten@bzzt.net
 # Last update: 27 July 2003
 # check out the tools directory which contains two perl scripts:
-# check_translation.pl will tell you if you have successfully translated all re
-# Translation last updated on 03-03-2005
+# check_translation.pl will tell you if you have successfully translated all records
+# Translation last updated on 07-03-2005
 
 
 ###############################################
@@ -39,7 +39,7 @@ Note: Let op!
 Your user preferences: Gebruikersinstellingen
 may be affecting the appearance of this page.: kunnen de weergave van deze pagina beinvloeden
 Click here: Klik hier
-to not use your user preferences when viewing this page: om de gebruikersinstelllingen uit te schakelen bij het bekijken van deze pagina
+to not use your user preferences when viewing this page: om de gebruikersinstellingen uit te schakelen bij het bekijken van deze pagina
 are being ignored while viewing this page.: worden genegeerd bij het bekijken van deze pagina
 to load your user preferences when viewing this page: om de gebruikersinstellingen te activeren bij het bekijken van deze pagina
 Save: Opslaan
@@ -47,9 +47,7 @@ Settings: Instellingen
 Public Access: Publieke Toegang
 Groups: Groepen
 NonUser Calendars: Losse kalenders
-#
-# << MISSING >>
-# Other:
+Other: Overige
 Email: E-mail
 colors-help: Alle kleuren moeten worden aangegeven als #RRGGBB hexadecimaal formaat waarin RR de hexadecimale waarde is voor rood, GG voor groen en BB voor blauw
 Colors: Kleuren
@@ -79,9 +77,7 @@ Year: Jaar
 display-weekends-help: Toon ook weekends in week-view
 Display weekends in week view: Toon ook weekends in week-view
 yearly-shows-events-help: Als deze optie aan staat worden dagen met afspraken in de jaar-view vet gedruk weergegeven.
-#
-# << MISSING >>
-# Display days with events in bold in month and year views:
+Display days with events in bold in month and year views: Nummers van dagen met afspraken vet weergeven bij maand- en jaarweergave
 display-desc-print-day-help: Als deze optie aan staat worden de beschrijvingen van afspraak in de printversie van de dag-view ook getoond
 Display description in printer day view: Beschrijving weergeven in printversie dag-view
 date-format-help: Hier geeft u aan hoe de datum wordt weergegeven.
@@ -154,14 +150,9 @@ allow-public-access-help: Indien ingeschakeld kan de agenda worden gebruikt als 
 Allow public access: Publieke toegang tot agenda toestaan
 public-access-default-visible: Afspraken op de publieke kalender verschijnen automatisch op de kalenders van alle gebruikers
 Public access visible by default: Publieke afspraken standaard zichtbaar
-#
-# << MISSING >>
-# public-access-default-selected:
-# English text: When adding a new event, the public user will be selected by default as a participant.
-#
-#
-# << MISSING >>
-# Public access is default participant:
+public-access-default-selected: Publieke toegang is standaard geselecteerd
+When adding a new event, the public user will be selected by default as a participant.: Bij het toevoegen van een afspraak zullen ook de niet geregistreerde gebruikers standaard deelnemer zijn.
+Public access is default participant: Publieke toegang is de standaard instelling voor deelnemers
 public-access-view-others-help: Indien publieke toegang is ingeschakeld bepaalt deze optie of de gebruiker de agenda van overige gebruikers kan inzien.
 Public access can view other users: Inzage agenda overige gebruikers bij publieke toegang toestaan
 public-access-can-add-help: Indien ingeschakeld kunnen gebruikers, die de agenda via publeike toegang inzien, wel nieuwe afspraken toevoegen. Deze worden echter pas getoond na goedkeuring van de Administrator.
@@ -208,12 +199,8 @@ Events removed from my calendar: Stuur mij een email-notificatie als afspraken u
 email-event-rejected: Specificeert of er email-notificaties worden verzonden indien een genodigde een afsparak weigert
 Event rejected by participant: Stuur mij een email-notificatie als een afspraak door een genodigde wordt geweigerd
 Allow user to customize colors: Gebruikers mogen kleuren van eigen agenda aanpassen
-#
-# << MISSING >>
-# Enable gradient images for background colors:
-#
-# << MISSING >>
-# Not available:
+Enable gradient images for background colors: Maak gradient images voor achtergrondkleuren mogelijk
+Not available: Niet beschikbaar
 Document background: Achtergrondkleur agenda
 Select: Kies
 Document title: Tekstkleur programmanaam inlogscherm
@@ -246,9 +233,7 @@ Event deleted: Afspraak verwijderd
 Notification sent: Notificatie verzonden
 Reminder sent: Herinnering verzonden
 Database error: Databasefout
-#
-# << MISSING >>
-# Events:
+Events: Afspraken
 
 
 ###############################################
@@ -319,20 +304,14 @@ You can only create one layer for each user: U kunt slechts een laag per gebruik
 Deleting users not supported: Het verwijderen van gebruikers is niet mogelijk
 The passwords were not identical: De ingevoerde wachtwoorden zijn niet identiek of u heeft het wachtwoord maar een keer ingevuld <br />Probeert u het nog eens
 You have not entered a password: U heeft geen wachtwoord ingevuld.
-#
-# << MISSING >>
-# Changes successfully saved:
+Changes successfully saved: Wijzigingen succesvol opgeslagen
 
 
 ###############################################
 # Page: subscription.php
 #
-#
-# << MISSING >>
-# Publishing Disabled (Admin):
-#
-# << MISSING >>
-# Publishing Disabled (User):
+Publishing Disabled (Admin): Publiceren is uitgeschakeld (Admin)
+Publishing Disabled (User): Publiceren is uitgeschakeld (Gebruiker)
 Unnamed Event: Naamloze afspraak
 
 
@@ -341,9 +320,7 @@ Unnamed Event: Naamloze afspraak
 #
 Export format: Exportformaat
 Palm Pilot: Palm Pilot
-#
-# << MISSING >>
-# Include all layers:
+Include all layers: Inclusief alle lagen
 Export all dates: Alles exporteren
 Start date: Startdatum
 End date: Einddatum
@@ -485,9 +462,7 @@ Disable Layers: Lagen deactiveren
 Disabled: niet weergegeven
 Enable Layers: Lagen activeren
 to modify the layers settings for the: om de instellingen aan te passen voor
-#
-# << MISSING >>
-# calendar:
+calendar: kalender
 Add layer: Laag toevoegen
 Layer: Laag
 Edit layer: Laag wijzigen
@@ -529,13 +504,9 @@ All day event: Dagvullende afspraak
 Public: Publiekelijk
 Category: Categorie
 days: dagen
-#
-# << MISSING >>
-# day:
+day: dag
 hours: uren
-#
-# << MISSING >>
-# minute:
+minute: minuut
 before event: voor de afspraak
 External User: Externe Gebruiker
 Approve/Confirm entry: Afspraak bevestigen
@@ -613,9 +584,7 @@ Cancel: Annuleer
 ###############################################
 # Page: import.php
 #
-#
-# << MISSING >>
-# Import format:
+Import format: Te importeren formaat
 Exclude private records: Negeer privégegevens
 Overwrite Prior Import: Vorige import overschrijven
 
@@ -651,17 +620,11 @@ View Type: Type
 Week (Users horizontal): Weekoverzicht - gebruikers boven
 Week (Users vertical): Weekoverzicht - gebruikers links
 Week (Timebar): Weekoverzicht - tijdbalkweergave
-#
-# << MISSING >>
-# Month (Timebar):
+Month (Timebar): Maandoverzicht - tijdbalk
 Month (side by side): Maandoverzicht - gebruikers boven naast elkaar
 Month (on same calendar): Maandoverzicht -  gebruikers in één agenda
-#
-# << MISSING >>
-# preview:
-#
-# << MISSING >>
-# Selected:
+preview: preview
+Selected: Geselecteerd
 
 
 ###############################################
@@ -675,11 +638,8 @@ Add New NonUser Calendar: Losse agenda toevoegen
 # Page: nonusers_handler.php
 #
 Calendar ID: Agenda ID
-#
-# << MISSING >>
-# word characters only:
-# English text: can only contain word characters (a-zA-Z_0-9)
-#
+word characters only: Enkel word karakters
+can only contain word characters (a-zA-Z_0-9): Enkel letters en cijfers zijn toegestaan (a-zA-Z_0-9)
 
 
 ###############################################
@@ -736,20 +696,12 @@ Event Imported: Item geimporteerd
 #
 Edit Entry: Afspraak wijzigen
 Add Entry: Afspraak toevoegen
-#
-# << MISSING >>
-# Details:
-#
-# << MISSING >>
-# Scheduling:
-#
-# << MISSING >>
-# Repeat:
+Details: Details
+Scheduling: Plannen
+Repeat: Herhalen
 category-help: Hier geeft u aan in welke categorie de afspraak thuishoort.
 Timed event: Tijdgebonden afspraak
-#
-# << MISSING >>
-# Availability:
+Availability: Beschikbaarheid
 external-participants-help: Hier wordt een lijst van externe deelnemers gegeven. Vul per regel een gebruiker en emailadres in. Als een emailadres is ingevoerd kan de externe gebruiker ook notificaties en herinneringen ontvangen.
 External Participants: externe deelnemers
 Daily: Dagelijks
@@ -826,16 +778,12 @@ Administrative Tools: Administratieve gereedschappen
 ###############################################
 # Page: purge.php
 #
-#
-# << MISSING >>
-# Preview:
+Preview: Preview
 Purging events for: Afspraken geheel verwijderen voor
 Finished: Klaar
 Check box to delete <b>ALL</b> events for a user: Vinkje om <b>ALLE</b> afspraken van een gebruiker te verwijderen
 Delete all events before: Alle afspraken verwijderen voor
-#
-# << MISSING >>
-# Preview delete:
+Preview delete: Preview verwijderen
 Are you sure you want to delete events for: Weet u zeker dat u alle afspraken wilt verwijderen voor
 Records deleted from: Afspraken verwijderd van
 
@@ -897,9 +845,7 @@ Last Name: Achternaam
 E-mail address: E-mailadres
 again: opnieuw
 Disabled for demo: Uitgeschakeld in demo-versie
-#
-# << MISSING >>
-# Are you sure you want to delete this user?:
+Are you sure you want to delete this user?: Weet u zeker dat u deze gebruiker wilt wissen?
 Change Password: Wijzig wachtwoord
 New Password: Nieuw wachtwoord
 Set Password: Bewaar wachtwoord
@@ -928,12 +874,8 @@ Manage calendar of: Beheer de agenda van
 ###############################################
 # Page: includes/user.php
 #
-#
-# << MISSING >>
-# incorrect password:
-#
-# << MISSING >>
-# no such user:
+incorrect password: Onjuist wachtwoord
+no such user: Gebruiker bestaat niet
 Invalid user login: Ongeldige gebruikerslogin
 
 
@@ -970,9 +912,7 @@ Norwegian: Noors
 Polish: Pools
 Portuguese: Portugees
 Portuguese/Brazil: Protugees/Braziliaans
-#
-# << MISSING >>
-# Romanian:
+Romanian: Roemeens
 Russian: Russisch
 Spanish: Spaans
 Swedish: Zweeds
@@ -1008,15 +948,9 @@ Sep: sep
 Oct: okt
 Nov: nov
 Dec: dec
-#
-# << MISSING >>
-# All Attendees:
-#
-# << MISSING >>
-# Busy:
-#
-# << MISSING >>
-# Tentative:
+All Attendees: Alle deelnemers
+Busy: Bezig
+Tentative: Voorlopig
 
 
 ###############################################
@@ -1043,9 +977,7 @@ Color format should be '#RRGGBB': Kleur weergeven in #RRGGBB-formaat
 You have not entered a Brief Description: U heeft geen korte omschrijving ingevuld
 You have not entered a valid time of day: U heeft geen geldige tijd ingevuld
 The time you have entered begins before your preferred work hours.  Is this correct?: De tijd die u heeft ingevoerd is eerder dan uw normale werkdag. Is dit juist?
-#
-# << MISSING >>
-# Please add a participant:
+Please add a participant: Voeg a.u.b. een deelnemer toe
 
 
 ###############################################
@@ -1057,9 +989,7 @@ Invalid color: Ongeldige kleur
 ###############################################
 # Page: includes/js/availability.php
 #
-#
-# << MISSING >>
-# Change the date and time of this entry?:
+Change the date and time of this entry?: Wilt u de datum en tijd van deze afspraak wijzigen?
 
 
 ###############################################
