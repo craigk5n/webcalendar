@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 #
 # sql2html.pl
 #
@@ -6,8 +6,8 @@
 #	Create HTML documentation from a sql file.
 #
 # History:
+#	13-Apr-2004	xHTML & CSS work
 #	12-Oct-2002	Created
-#	13-April-2004	xHTML & CSS work
 #
 #######################################################################
 
