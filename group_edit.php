@@ -41,10 +41,11 @@ if ( $newgroup ) {
 }
 ?>
 
+&laquo; <a href="javascript:history.go(-1);">Back</a>
 <table style="border-width:0px;">
 <tr><td style="font-weight:bold;">
-	<?php etranslate("Group name")?>:</td><td>
-	<input type="text" name="groupname" size="20" value="<?php echo htmlspecialchars ( $groupname );?>" />
+	<label for="groupname"><?php etranslate("Group name")?>:</label></td><td>
+	<input type="text" name="groupname" id="groupname" size="20" value="<?php echo htmlspecialchars ( $groupname );?>" />
 </td></tr>
 <?php if ( ! $newgroup ) { ?>
 	<tr><td style="vertical-align:top; font-weight:bold;">
@@ -57,8 +58,8 @@ if ( $newgroup ) {
 	</td></tr>
 <?php } ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Users"); ?>:</td><td>
-	<select name="users[]" size="10" multiple="multiple">
+	<label for="users"><?php etranslate("Users"); ?>:</label></td><td>
+	<select name="users[]" id="users" size="10" multiple="multiple">
 <?php
   // get list of all users
   $users = user_get_users ();
@@ -89,13 +90,11 @@ if ( $newgroup ) {
 ?>
 	</select>
 </td></tr>
-<tr><td colspan="2">
-	<br /><br /><div style="text-align:center;">
-		<input type="submit" name="action" value="<?php if ( $newgroup ) etranslate("Add"); else etranslate("Save"); ?>" />
-		<?php if ( ! $newgroup ) { ?>
-			<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
-		<?php } ?>
-	</div>
+<tr><td colspan="2" style="text-align:center;">
+	<br /><input type="submit" name="action" value="<?php if ( $newgroup ) etranslate("Add"); else etranslate("Save"); ?>" />
+	<?php if ( ! $newgroup ) { ?>
+		<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
+	<?php } ?>
 </td></tr>
 </table>
 </form>

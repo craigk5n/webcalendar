@@ -620,86 +620,86 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 <tr><td>
 	<label for="docbg" style="font-weight:bold;"><?php etranslate("Document background")?>:</td><td>
-	<input type="text" name="admin_BGCOLOR" id="docbg" size="8" maxlength="7" value="<?php echo $s["BGCOLOR"]; ?>" /></td><td style="background-color:<?php echo $s["BGCOLOR"]?>; border: 1px solid #000000;">
+	<input type="text" name="admin_BGCOLOR" id="docbg" size="8" maxlength="7" value="<?php echo $s["BGCOLOR"]; ?>" /></td><td style="background-color:<?php echo $s["BGCOLOR"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_BGCOLOR')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
 <tr><td>
 	<label for="doctitle" style="font-weight:bold;"><?php etranslate("Document title")?>:</td><td>
-	<input type="text" name="admin_H2COLOR" id="doctitle" size="8" maxlength="7" value="<?php echo $s["H2COLOR"]; ?>" /></td><td style="background-color:<?php echo $s["H2COLOR"]?>; border: 1px solid #000000;">
+	<input type="text" name="admin_H2COLOR" id="doctitle" size="8" maxlength="7" value="<?php echo $s["H2COLOR"]; ?>" /></td><td style="background-color:<?php echo $s["H2COLOR"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_H2COLOR')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
 <tr><td>
 	<label for="doctext" style="font-weight:bold;"><?php etranslate("Document text")?>:</label></td><td>
-	<input type="text" name="admin_TEXTCOLOR" id="doctext" size="8" maxlength="7" value="<?php echo $s["TEXTCOLOR"]; ?>" /></td><td style="background-color:<?php echo $s["TEXTCOLOR"]?>; border: 1px solid #000000;">
+	<input type="text" name="admin_TEXTCOLOR" id="doctext" size="8" maxlength="7" value="<?php echo $s["TEXTCOLOR"]; ?>" /></td><td style="background-color:<?php echo $s["TEXTCOLOR"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_TEXTCOLOR')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
 <tr><td>
 	<label for="tblgrid" style="font-weight:bold;"><?php etranslate("Table grid color")?>:</label></td><td>
-	<input type="text" name="admin_TABLEBG" id="tblgrid" size="8" maxlength="7" value="<?php echo $s["TABLEBG"]; ?>" /></td><td style="background-color:<?php echo $s["TABLEBG"]?>; border: 1px solid #000000;">
+	<input type="text" name="admin_TABLEBG" id="tblgrid" size="8" maxlength="7" value="<?php echo $s["TABLEBG"]; ?>" /></td><td style="background-color:<?php echo $s["TABLEBG"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_TABLEBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
 <tr><td>
 	<label for="thbg" style="font-weight:bold;"><?php etranslate("Table header background")?>:</label></td><td>
-	<input type="text" name="admin_THBG" id="thbg" size="8" maxlength="7" value="<?php echo $s["THBG"]; ?>" /></td><td style="background-color:<?php echo $s["THBG"]?>; border: 1px solid #000000;">
+	<input type="text" name="admin_THBG" id="thbg" size="8" maxlength="7" value="<?php echo $s["THBG"]; ?>" /></td><td style="background-color:<?php echo $s["THBG"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_THBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
 <tr><td>
 	<label for="thfg" style="font-weight:bold;"><?php etranslate("Table header text")?>:</label></td><td>
-	<input type="text" name="admin_THFG" id="thfg" size="8" maxlength="7" value="<?php echo $s["THFG"]; ?>" /></td><td style="background-color:<?php echo $s["THFG"]?>; border: 1px solid #000000;">
+	<input type="text" name="admin_THFG" id="thfg" size="8" maxlength="7" value="<?php echo $s["THFG"]; ?>" /></td><td style="background-color:<?php echo $s["THFG"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_THFG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
 <tr><td>
 	<label for="tdbg" style="font-weight:bold;"><?php etranslate("Table cell background")?>:<label></td><td>
-	<input type="text" name="admin_CELLBG" id="tdbg" size="8" maxlength="7" value="<?php echo $s["CELLBG"]; ?>" /></td><td style="background-color:<?php echo $s["CELLBG"]?>; border: 1px solid #000000;">
+	<input type="text" name="admin_CELLBG" id="tdbg" size="8" maxlength="7" value="<?php echo $s["CELLBG"]; ?>" /></td><td style="background-color:<?php echo $s["CELLBG"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_CELLBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
 <tr><td>
 	<label for="tdbgtoday" style="font-weight:bold;"><?php etranslate("Table cell background for current day")?>:</label></td><td>
-	<input type="text" name="admin_TODAYCELLBG" id="tdbgtoday" size="8" maxlength="7" value="<?php echo $s["TODAYCELLBG"]; ?>" /></td><td style="background-color:<?php echo $s["TODAYCELLBG"]?>; border: 1px solid #000000;">
+	<input type="text" name="admin_TODAYCELLBG" id="tdbgtoday" size="8" maxlength="7" value="<?php echo $s["TODAYCELLBG"]; ?>" /></td><td style="background-color:<?php echo $s["TODAYCELLBG"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_TODAYCELLBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
 <tr><td>
 	<label for="tdbgweekend" style="font-weight:bold;"><?php etranslate("Table cell background for weekends")?>:</label></td><td>
-	<input type="text" name="admin_WEEKENDBG" id="tdbgweekend" size="8" maxlength="7" value="<?php echo $s["WEEKENDBG"]; ?>" /></td><td style="background-color:<?php echo $s["WEEKENDBG"]?>; border: 1px solid #000000;">
+	<input type="text" name="admin_WEEKENDBG" id="tdbgweekend" size="8" maxlength="7" value="<?php echo $s["WEEKENDBG"]; ?>" /></td><td style="background-color:<?php echo $s["WEEKENDBG"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_WEEKENDBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
 <tr><td>
 	<label for="popupbg" style="font-weight:bold;"><?php etranslate("Event popup background")?>:</label></td><td>
-	<input type="text" name="admin_POPUP_BG" id="popupbg" size="8" maxlength="7" value="<?php echo $s["POPUP_BG"]; ?>" /></td><td style="background-color:<?php echo $s["POPUP_BG"]?>; border: 1px solid #000000;">
+	<input type="text" name="admin_POPUP_BG" id="popupbg" size="8" maxlength="7" value="<?php echo $s["POPUP_BG"]; ?>" /></td><td style="background-color:<?php echo $s["POPUP_BG"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_POPUP_BG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
 <tr><td>
 	<label for="popupfg" style="font-weight:bold;"><?php etranslate("Event popup text")?>:</label></td><td>
-	<input type="text" name="admin_POPUP_FG" id="popupfg" size="8" maxlength="7" value="<?php echo $s["POPUP_FG"]; ?>" /></td><td style="background-color:<?php echo $s["POPUP_FG"]?>; border: 1px solid #000000;">
+	<input type="text" name="admin_POPUP_FG" id="popupfg" size="8" maxlength="7" value="<?php echo $s["POPUP_FG"]; ?>" /></td><td style="background-color:<?php echo $s["POPUP_FG"]?>; border-style: groove;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_POPUP_FG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 </table>
 
 <br /><br />
-<table style="border-width:0px;"><tr><td>
+<div style="border-width:0px;">
 	<input type="submit" value="<?php etranslate("Save")?>" name="" />
-</td></tr></table>
+</div>
 </form>
 
 <?php } // if $error ?>

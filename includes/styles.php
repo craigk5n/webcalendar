@@ -589,6 +589,7 @@ td.month a:hover {
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
 #year .minical td {
+	background-color: <?php echo $GLOBALS['CELLBG'];?>;
 	padding: 0px 2px;
 	border: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
@@ -654,8 +655,7 @@ td.month a:hover {
       // used as "tr class="day"" to format the cells WITHIN that row 
 ?>#viewl .minical tr.day,
 #month .minical tr.day th,
-#day .minical tr.day,
-.dayviewminical tr.day {
+#day .minical tr.day {
 	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
 	text-align: center;
 }
@@ -677,52 +677,14 @@ td.month a:hover {
 	color: #0000FF;
 	text-decoration: none;
 }
-#viewm th,
-#viewd th {
-	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
-	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-}
-#vieww th.today,
-#viewm th.today {
-	font-size: 13px;
-	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#000000" : $GLOBALS['THFG'] ); ?>;
-	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
-	width: 10%;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-collapse: collapse;
-	vertical-align: top;
-}
+
 #viewv table,
 #viewm table,
-#viewl table.main,
+#viewl .main,
 .viewt {
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>; 
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
-}
-#viewt th.row {
-	width: 10%;
-	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#000000" : $GLOBALS['THFG'] ); ?>;
-	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
-	vertical-align: top;
-	border-top-width: 0px;
-	border-left-width: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-}
-#viewt th.today {
-	width: 10%;
-	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#000000" : $GLOBALS['THFG'] ); ?>;
-	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
-	border-top-width: 0px;
-	border-left-width: 0px;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	vertical-align: top;
-	font-size:13px;
 }
 #viewt td.reg {
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
@@ -733,15 +695,6 @@ td.month a:hover {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 90%;
 }
-#viewt td.today {
-	width: 90%;
-	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
-	border-top-width: 0px;
-	border-left-width: 0px;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	vertical-align: top;
-}
 #viewt .weekend {
 	width: 90%;
 	background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
@@ -750,33 +703,6 @@ td.month a:hover {
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
-}
-#viewm th.empty,
-#viewv th.empty {
-	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
-	border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
-	border-left: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-collapse: collapse;
-}
-#viewv th.today {
-	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#000000" : $GLOBALS['THFG'] ); ?>;
-	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
-	border-top-width: 0px;
-	border-left-width: 0px;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	vertical-align: top;
-	font-size:13px;
-}
-#viewv th.row {
-	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
-	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
-	border-top-width: 0px;
-	border-left-width: 0px;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 #vieww .title,
 #viewd .title,
@@ -805,7 +731,6 @@ td.month a:hover {
 #viewt .title .viewname,
 #viewv .title .viewname,
 #day .title .user,
-td.dayviewtitle .user,
 #year .title .user {
 	font-size: 18px;
 	font-weight: bold;
@@ -817,17 +742,33 @@ td.dayviewtitle .user,
 	width: 100%;
 	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
+#viewv th.row,
+#viewm th.row,
+#viewt th.row {
+	width: 10%;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#000000" : $GLOBALS['THFG'] ); ?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	vertical-align: top;
+	border-top-width: 0px;
+	border-left-width: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+#viewm th,
+#viewd th {
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+}
 #vieww th {
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
 	width: 10%;
 	vertical-align: top;
 }
-#vieww th.weekend {
-	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
-	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
-	width: 10%;
-}
+#viewv th.empty,
+#viewm th.empty,
 #vieww th.empty {
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
@@ -835,6 +776,7 @@ td.dayviewtitle .user,
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 10%;
+	border-collapse: collapse;
 }
 #viewm td,
 #vieww td,
@@ -850,6 +792,30 @@ td.dayviewtitle .user,
 	background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	vertical-align: top;
+}
+#vieww th.today,
+#viewm th.today,
+#viewv th.today,
+#viewt th.today {
+	width: 10%;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#000000" : $GLOBALS['THFG'] ); ?>;
+	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+	border-top-width: 0px;
+	border-left-width: 0px;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-collapse: collapse;
+	vertical-align: top;
+	font-size:13px;
+}
+#viewt td.today {
+	width: 90%;
+	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+	border-top-width: 0px;
+	border-left-width: 0px;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
 }
 #viewm td.today,
