@@ -12,7 +12,7 @@ if ( ! $is_admin && $user != $login )
 $HeadX = '';
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
-  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; URL=list_unapproved.php\" target=\"_self\">\n";
+  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; URL=list_unapproved.php\" target=\"_self\" />\n";
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
@@ -53,7 +53,7 @@ function list_unapproved ( $user ) {
       $duration = $row[6];
       $status = $row[7];
       $divname = "eventinfo-$id-$key";
-      echo "<li><a class=\"entry\" href=\"view_entry.php?id=$id&user=$user";
+      echo "<li><a class=\"entry\" href=\"view_entry.php?id=$id&amp;user=$user";
       echo "\" onmouseover=\"window.status='" . translate("View this entry") .
         "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
       $timestr = "";
@@ -76,21 +76,21 @@ function list_unapproved ( $user ) {
       echo htmlspecialchars ( $name );
       echo "</a>";
       echo " (" . date_to_str ($date) . ")\n";
-      echo ": <a href=\"approve_entry.php?id=$id&ret=list&user=$user";
+      echo ": <a href=\"approve_entry.php?id=$id&amp;ret=list&amp;user=$user";
       if ( $user == "__public__" )
-        echo "&public=1";
+        echo "&amp;public=1";
       echo "\" class=\"navlinks\" onclick=\"return confirm('" .
         translate("Approve this entry?") .
         "');\">" . translate("Approve/Confirm") . "</a>, ";
-      echo "<a href=\"reject_entry.php?id=$id&ret=list&user=$user";
+      echo "<a href=\"reject_entry.php?id=$id&amp;ret=list&amp;user=$user";
       if ( $user == "__public__" )
-        echo "&public=1";
+        echo "&amp;public=1";
       echo "\" class=\"navlinks\" onclick=\"return confirm('" .
         translate("Reject this entry?") .
         "');\">" . translate("Reject") . "</a>";
-      echo ", <a href=\"del_entry.php?id=$id&ret=list";
+      echo ", <a href=\"del_entry.php?id=$id&amp;ret=list";
       if ( $user != $login )
-        echo "&user=$user";
+        echo "&amp;user=$user";
       echo "\" class=\"navlinks\" onclick=\"return confirm('" .
         translate("Are you sure you want to delete this entry?") .
         "');\">" . translate("Delete") . "</a>";

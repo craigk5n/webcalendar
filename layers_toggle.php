@@ -8,7 +8,7 @@ $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
   $updating_public = true;
   $layer_user = "__public__";
-  $u_url = "&public=1";
+  $u_url = "&amp;public=1";
 } else {
   $layer_user = $login;
   $u_url = "";

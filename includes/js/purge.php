@@ -10,8 +10,8 @@ function selectDate ( day, month, year ) {
     date += "0";
   date += curmonth;
   date += "01";
-  url = "datesel.php?form=purgeform&day=" + day +
-    "&month=" + month + "&year=" + year + "&date=" + date;
+  url = "datesel.php?form=purgeform&amp;day=" + day +
+    "&amp;month=" + month + "&amp;year=" + year + "&amp;date=" + date;
   var colorWindow = window.open(url,"DateSelection","width=300,height=200,resizable=yes,scrollbars=yes");
 }
 </script>

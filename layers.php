@@ -6,7 +6,7 @@ $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
   $updating_public = true;
   $layer_user = "__public__";
-  $u_url = "&public=1";
+  $u_url = "&amp;public=1";
   $ret = "ret=layers.php%3Fpublic=1";
 } else {
   $layer_user = $login;
@@ -58,10 +58,10 @@ if ( $layers_enabled ) {
 echo "</b>.<br /><br />";
 
 if ( $layers_enabled )
-  echo "<a class=\"navlinks\" href=\"layers_toggle.php?status=off$u_url&$ret\">" .
+  echo "<a class=\"navlinks\" href=\"layers_toggle.php?status=off$u_url&amp;$ret\">" .
     translate ("Disable Layers") . "</a>\n";
 else
-  echo "<a class=\"navlinks\" href=\"layers_toggle.php?status=on$u_url&$ret\">" .
+  echo "<a class=\"navlinks\" href=\"layers_toggle.php?status=on$u_url&amp;$ret\">" .
     translate ("Enable Layers") . "</a>\n";
 
 

@@ -1,6 +1,6 @@
 <script type="text/javascript">
 function selectUsers () {
-  url = "usersel.php?form=editviewform&listid=3&users=";
+  url = "usersel.php?form=editviewform&amp;listid=3&amp;users=";
   // add currently selected users
   for ( i = 0, j = 0; i < document.forms[0].elements[3].length; i++ ) {
     if ( document.forms[0].elements[3].options[i].selected ) {
