@@ -208,12 +208,12 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
       if ( empty ( $WEEKENDBG ) ) $is_weekend = false;
       print "<td";
-      if ( $is_weekend != false ) {
-	echo " class=\"weekend\">";
-      } elseif ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
-	echo " class=\"today\">";
+      if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
+	      echo " class=\"weekend\">";
+      } elseif ( $is_weekend != false ) {
+	      echo " class=\"today\">";
       } else {
-	echo ">";
+	      echo ">";
       }
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       print_date_entries ( date ( "Ymd", $date ),

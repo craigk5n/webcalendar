@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixed issue: Cell for today doesn't get colored on weekends (ref patch 1044285)
   - Fixed Bug 1025547: Exporting data - change vcal to ical
   - Patch 1021530: Fixed purge with "all" selected
   - SQL Query enhancement for function read_repeated_events to speed up processing
