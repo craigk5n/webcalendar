@@ -197,6 +197,12 @@
       echo "\">" . translate("Add New Entry") . "</A>";
     }
   }
+  if ( $login != '__public__' && $single_user != 'Y' ) {
+    $url = "assistant_edit.php";
+    if ($is_nonuser_admin) $url .= "?user=$user";
+    echo " | <A CLASS=\"navlinks\" HREF=\"$url\">" .
+      translate ("Assistants") . "</A>\n";
+  }
   if ( $login != '__public__' ) {
     echo " | <A CLASS=\"navlinks\" HREF=\"#\" ONCLICK=\"window.open ( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );\" " .
       "ONMOUSEOVER=\"window.status='" . translate("Help") . "'\">" .

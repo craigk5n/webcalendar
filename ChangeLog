@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Added back "Assistants" link in trailer that was accidentally removed.
   - Fixed bug 914537: Error when user rejects an event.
   - Fixed bug 920796: printer friendly versions of Views were always showing
     the current date
