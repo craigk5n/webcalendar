@@ -758,10 +758,10 @@ function build_event_popup ( $divname, $user, $description, $time,
       $popup_fullnames[$user] = $popuptemp_fullname;
     }
     $ret .= "<span style=\"font-weight:bold;\">" . translate ("User") .
-      ":</span> $popup_fullnames[$user]<br />";
+      ":</span> $popup_fullnames[$user]<br />\n";
   }
   if ( strlen ( $time ) )
-    $ret .= "<span style=\"font-weight:bold;\">" . translate ("Time") . ":</span> $time<br />";
+    $ret .= "<span style=\"font-weight:bold;\">" . translate ("Time") . ":</span> $time<br />\n";
   $ret .= "<span style=\"font-weight:bold;\">" . translate ("Description") . ":</span>\n";
   if ( ! empty ( $GLOBALS['allow_html_description'] ) &&
     $GLOBALS['allow_html_description'] == 'Y' ) {
@@ -801,16 +801,16 @@ function date_selection_html ( $prefix, $date ) {
   $thisday = $day = substr ( $date, 6, 2 );
   if ( $thisyear - date ( "Y" ) >= ( $num_years - 1 ) )
     $num_years = $thisyear - date ( "Y" ) + 2;
-  $ret .= "<select name=\"" . $prefix . "day\">";
+  $ret .= "<select name=\"" . $prefix . "day\">\n";
   for ( $i = 1; $i <= 31; $i++ )
     $ret .= "<option" . ( $i == $thisday ? " selected=\"selected\"" : "" ) . ">$i</option>\n";
-  $ret .= "</select>\n<select name=\"" . $prefix . "month\">";
+  $ret .= "</select>\n<select name=\"" . $prefix . "month\">\n";
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
     $ret .= "<option value=\"$i\"" .
       ( $i == $thismonth ? " selected=\"selected\"" : "" ) . ">$m</option>\n";
   }
-  $ret .= "</select>\n<select name=\"" . $prefix . "year\">";
+  $ret .= "</select>\n<select name=\"" . $prefix . "year\">\n";
   for ( $i = -10; $i < $num_years; $i++ ) {
     $y = $thisyear + $i;
     $ret .= "<option value=\"$y\"" .
@@ -933,7 +933,7 @@ function print_entry ( $id, $date, $time, $duration,
     {
         if($layers[$index]['cal_layeruser'] == $event_owner)
         {
-            echo "</span>";
+            echo "</span>\n";
         }
     }
   }
@@ -1737,7 +1737,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
       print "user=$user&amp;";
     print "date=$date\">" .
       "<img src=\"new.gif\" alt=\"" .
-      translate("New Entry") . "\" class=\"new\" align=\"right\" />" .
+      translate("New Entry") . "\" class=\"new\" />" .
       "</a>";
     $cnt++;
   }
@@ -2091,7 +2091,7 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&amp;defusers=$user&amp;user=$user" ) .
     "\"><img src=\"new.gif\" class=\"new\" " .
-    "alt=\"" . translate("New Entry") . "\" align=\"right\" />" .
+    "alt=\"" . translate("New Entry") . "\" />" .
     "</a>";
 }
 
@@ -2370,12 +2370,12 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   if (!($hide_icons)) {
     $hour_arr[$ind] .= "</a>";
   } else if ( $GLOBALS["DISPLAY_DESC_PRINT_DAY"] == "Y" ) {
-    $hour_arr[$ind] .= "<br />";
+    $hour_arr[$ind] .= "<br />\n";
     $hour_arr[$ind] .= "<b>Description:</b> ";
     $hour_arr[$ind] .= htmlspecialchars ( $description );
   }
 
-  $hour_arr[$ind] .= "<br />";
+  $hour_arr[$ind] .= "<br />\n";
 }
 
 //
@@ -2397,7 +2397,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
   if ( $user == "__public__" )
     $get_unapproved = false;
   if ( empty ( $TIME_SLOTS ) ) {
-    echo "Error: TIME_SLOTS undefined!<br />";
+    echo "Error: TIME_SLOTS undefined!<br />\n";
     return;
   }
 
@@ -2510,7 +2510,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
         $start_time = $i;
         $diff_start_time = $start_time - $last_row;
         for ( $u = $diff_start_time ; $u > 0 ; $u-- )
-          $hour_arr[$last_row] .= "<br />";
+          $hour_arr[$last_row] .= "<br />\n";
         $hour_arr[$last_row] .= $hour_arr[$i];
         $hour_arr[$i] = "";
         $rowspan_arr[$i] = 0;
@@ -2522,7 +2522,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     }
   }
   if ( ! empty ( $hour_arr[9999] ) ) {
-    echo "<tr><td style=\"height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG;\">&nbsp;</td><td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">$hour_arr[9999]</td></tr>\n";
+    echo "<tr><td style=\"height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG;\">&nbsp;</td>\n<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">$hour_arr[9999]</td></tr>\n";
   }
   $rowspan = 0;
   //echo "first_slot = $first_slot <br /> last_slot = $last_slot <br /> interval = $interval <br />";
@@ -2530,7 +2530,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     $time_h = (int) ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
     $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-    echo "<tr><th style=\"vertical-align:top; height:40px; width:14%;\" class=\"tableheader\">" .
+    echo "<tr>\n<th style=\"vertical-align:top; height:40px; width:14%;\" class=\"tableheader\">" .
       $time . "</th>\n";
     if ( $rowspan > 1 ) {
       // this might mean there's an overlap, or it could mean one event
@@ -2539,7 +2539,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
         echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
         if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-        echo "$hour_arr[$i]</td>";
+        echo "$hour_arr[$i]</td>\n";
       }
       $rowspan--;
     } else {
@@ -2548,7 +2548,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
         echo "<td style=\"height:40px; background-color:$color; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
         if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-        echo "&nbsp;</td></tr>\n";
+        echo "&nbsp;</td>\n</tr>\n";
       } else {
         if ( empty ( $rowspan_arr[$i] ) )
           $rowspan = '';
@@ -2558,12 +2558,12 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
           echo "<td style=\"vertical-align:top; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\" rowspan=\"$rowspan\">";
           if ( $can_add && ! $hide_icons )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-          echo "$hour_arr[$i]</td></tr>\n";
+          echo "$hour_arr[$i]</td>\n</tr>\n";
         } else {
           echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
           if ( $can_add && ! $hide_icons )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-          echo "$hour_arr[$i]</td></tr>\n";
+          echo "$hour_arr[$i]</td>\n</tr>\n";
         }
       }
     }
@@ -3230,15 +3230,15 @@ function print_entry_timebar ( $id, $date, $time, $duration,
 
 
   echo "<table style=\"width:100%; background-color:#000000; border-width:0px;\" cellpadding=\"0\" cellspacing=\"0\">\n";
-  echo "<tr>";
+  echo "<tr>\n";
   echo "<td style=\"text-align:right; width:$ev_start%; background-color:#FFFFFF;\">";
   if ( $pos > 0 ) {
-    echo "&nbsp;</td>";
+    echo "&nbsp;</td>\n";
     echo "<td style=\"width:$ev_duration%;\">
-    <table style=\"width:100%; border-width:0px; background-color:#000000;\" cellspacing=\"1\">
-    <tr><td style=\"text-align:center; background-color:#F5DEB3;\">";
+    <table style=\"width:100%; border-width:0px; background-color:#000000;\" cellspacing=\"1\">\n
+    <tr>\n<td style=\"text-align:center; background-color:#F5DEB3;\">";
     if ( $pos > 1 ) {
-      echo "&nbsp;</td></tr></table></td>";
+      echo "&nbsp;</td>\n</tr>\n</table></td>\n";
       echo "<td style=\"text-align:left; width:$ev_padding%; background-color:#FFFFFF;\">";
     }
   };
@@ -3322,16 +3322,16 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   echo "</a>";
   if ( $pri == 3 ) echo "</span>"; //end font-weight span
   echo "</span>"; //end font-size span
-  echo "</td>";
+  echo "</td>\n";
   if ( $pos < 2 ) {
     if ( $pos < 1 ) {
-      echo "<td style=\"width:$ev_duration%;\"><table style=\"width:100%; border-width:0px; background-color:#000000;\" cellpadding=\"0\" cellspacing=\"1\">
-      <tr><td style=\"text-align:center; background-color:#F5DEB3;\">&nbsp;</td>";
+      echo "<td style=\"width:$ev_duration%;\"><table style=\"width:100%; border-width:0px; background-color:#000000;\" cellpadding=\"0\" cellspacing=\"1\">\n
+      <tr>\n<td style=\"text-align:center; background-color:#F5DEB3;\">&nbsp;</td>\n";
     }
-    echo "</tr></table></td>";
-    echo "<td style=\"text-align:left; width:$ev_padding%; background-color:#FFFFFF;\">&nbsp;</td>";
+    echo "</tr>\n</table></td>\n";
+    echo "<td style=\"text-align:left; width:$ev_padding%; background-color:#FFFFFF;\">&nbsp;</td>\n";
   }
-  echo "</tr></table>";
+  echo "</tr>\n</table>\n";
   if ( ! $hide_icons ) {
     if ( $login != $user && $access == 'R' && strlen ( $user ) )
       $eventinfo .= build_event_popup ( $divname, $event_owner,
@@ -3358,8 +3358,8 @@ function print_header_timebar($start_hour, $end_hour) {
     $offset = 0;
   else
     $offset = round(100/($end_hour - $start_hour)/2);
-  echo "<table style=\"width:100%; background-color:#FFFFFF; border-width:0px;\" cellspacing=\"0\" cellpadding=\"0\">
-        <tr><td style=\"background-color:#FFFFFF; width:$offset%;\">&nbsp;</td>\n";
+  echo "<table style=\"width:100%; background-color:#FFFFFF; border-width:0px;\" cellspacing=\"0\" cellpadding=\"0\">\n
+        <tr>\n<td style=\"background-color:#FFFFFF; width:$offset%;\">&nbsp;</td>\n";
   for ($i = $start_hour+1; $i < $end_hour; $i++) {
     $prev_offset = $offset;
     $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
@@ -3368,10 +3368,10 @@ function print_header_timebar($start_hour, $end_hour) {
   }
   $width = 100 - $offset;
   echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
-  echo "</tr></table>\n";
+  echo "</tr>\n</table>\n";
 
   // print yardstick
-  echo "<table style=\"width:100%; background-color:#C0C0C0; border-width:0px;\" cellspacing=\"1\" cellpadding=\"0\">
+  echo "<table style=\"width:100%; background-color:#C0C0C0; border-width:0px;\" cellspacing=\"1\" cellpadding=\"0\">\n
         <tr>\n";
   for ($i = $start_hour, $offset = 0; $i < $end_hour; $i++) {
     $prev_offset = $offset;
