@@ -87,6 +87,10 @@ if ($DMW) {
       $thisyear = date("Y");
     else
       $thisyear = $year;
+    if ( empty ( $day ) || $day == 0 )
+      $thisday = date("d");
+    else
+      $thisday = $day;
   }
 
   if ( $categories_enabled == "Y" && ( !$user || $user == $login ) ) {
@@ -124,9 +128,6 @@ function print_header($includes = '', $HeadX = '', $BodyX = '') {
   // Start the header
   echo "<HTML>\n<HEAD>\n<TITLE>".translate($application_name)."</TITLE>\n";
 
-  // Include the styles
-  include_once 'includes/styles.php';
-
   // Any other includes?
   if ( is_array ( $includes ) ) {
     foreach( $includes as $inc ){
@@ -136,6 +137,9 @@ function print_header($includes = '', $HeadX = '', $BodyX = '') {
 
   // Do we need anything else inside the header tag?
   if ($HeadX) echo $HeadX."\n";
+
+  // Include the styles
+  include_once 'includes/styles.php';
 
   // Finish the header
   echo "</HEAD>\n<BODY BGCOLOR=\"$BGCOLOR\" CLASS=\"defaulttext\" $BodyX>\n";
