@@ -38,8 +38,9 @@ Features:
 - Email reminders
 - Email notifications for new events
 - Support for 17 languages: Chinese-Big5, Czech, Danish, Dutch,
-  English, French, German, Icelandic, Italian, Korean, Norwegian, Polish,
-  Portuguese, Portuguese/Brazil, Russian, Spanish, Swedish, Turkish
+  English, French, Hungarian, Galician, German, Icelandic, Italian, Korean,
+  Norwegian, Polish, Portuguese, Portuguese/Brazil, Russian, Spanish,
+  Swedish, Turkish
 - Exporting to Palm Pilot (via install-datebook, part of pilot-link)
   Note: install-datebook must be patched and rebuilt since it has
   a big old bug in it.  See INSTALL for instructions.
