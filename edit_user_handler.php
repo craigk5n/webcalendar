@@ -55,14 +55,10 @@ if ( ( $action == "Delete" || $action == translate ("Delete") ) && $is_admin ) {
   }
 }
 if ( strlen ( $error ) == 0 ) {
-    if ( ! dbi_query ( $sql ) )
-      $error = dbi_error ();
-    else {
-      if ( $is_admin )
-        do_redirect ( "users.php" );
-      else
-        do_redirect ( "edit_user.php" );
-    }
+  if ( $is_admin )
+    do_redirect ( "users.php" );
+  else
+    do_redirect ( "edit_user.php" );
 }
 ?>
 <HTML>

@@ -114,9 +114,9 @@ function user_add_user ( $user, $password, $firstname, $lastname, $email,
     $admin = "N";
   $sql = "INSERT INTO webcal_user " .
     "( cal_login, cal_lastname, cal_firstname, " .
-    "cal_is_admin, cal_passwd ) " .
+    "cal_is_admin, cal_passwd, cal_email ) " .
     "VALUES ( '$user', $ulastname, $ufirstname, " .
-    "'$admin', $upassword )";
+    "'$admin', $upassword, $uemail )";
   if ( ! dbi_query ( $sql ) ) {
     $error = translate ("Database error") . ": " . dbi_error ();
     return false;
