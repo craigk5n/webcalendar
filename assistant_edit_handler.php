@@ -19,17 +19,17 @@ do_redirect ( $url );
 
 print_header();
 ?>
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></FONT></H2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Error")?></h2>
 
-<BLOCKQUOTE>
+<blockquote>
 <?php
 
 echo $error;
 //if ( $sql != "" )
-//  echo "<P><B>SQL:</B> $sql";
+//  echo "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
 //?>
-</BLOCKQUOTE>
+</blockquote>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

@@ -14,7 +14,7 @@ if ( $error == "" ) {
       $sql = "DELETE FROM webcal_config WHERE cal_setting = '$setting'";
       if ( ! dbi_query ( $sql ) ) {
         $error = translate("Error") . ": " . dbi_error () .
-          "<br /><br /><b>SQL:</b> $sql";
+          "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
         break;
       }
       if ( strlen ( $value ) > 0 ) {
@@ -23,7 +23,7 @@ if ( $error == "" ) {
           "( '$setting', '$value' )";
         if ( ! dbi_query ( $sql ) ) {
           $error = translate("Error") . ": " . dbi_error () .
-            "<br /><br /><b>SQL:</b> $sql";
+            "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
           break;
         }
       }
@@ -41,7 +41,7 @@ if ( empty ( $error ) ) {
 print_header();
 ?>
 
-<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></font></h2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Error")?></h2>
 
 <?php etranslate("The following error occurred")?>:
 <blockquote>
