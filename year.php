@@ -45,10 +45,8 @@ if ( $user == "__public__" )
  ?>
  
 <div class="title">
-	<?php if ( empty ( $friendly ) ) { ?>
-		<a title="<?php etranslate("Previous")?>" class="prev" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
-		<a title="<?php etranslate("Next")?>" class="next" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
-	<?php } ?>
+	<a title="<?php etranslate("Previous")?>" class="prev" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
+	<a title="<?php etranslate("Next")?>" class="next" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
 	<span class="date"><?php echo $thisyear ?></span>
 	<span class="user"><?php
 		if ( $single_user == "N" ) {
@@ -90,9 +88,7 @@ if ( $user == "__public__" )
 </div>
 
 <br />
-<?php if ( empty ( $friendly ) ) {
-	display_unapproved_events ( $login );
-?>
+<?php display_unapproved_events ( $login ); ?>
 <br />
 <a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="year.php?<?php
   if ( $thisyear )
@@ -102,8 +98,6 @@ if ( $user == "__public__" )
 ?>friendly=1" target="cal_printer_friendly"
 onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
-<?php }
-print_trailer();
-?>
+<?php print_trailer(); ?>
 </body>
 </html>

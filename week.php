@@ -72,11 +72,9 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
     translate("Week") . " " . week_number ( $wkstart ) . ")</span>";
 }
 ?>
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <a title="<?php etranslate("Previous")?>" class="prev" href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
 
 <a title="<?php etranslate("Next")?>" class="next" href="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
-<?php } ?>
 <span class="user"><?php
   if ( $single_user == "N" ) {
     echo "<br />$user_fullname\n";
@@ -89,7 +87,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 <?php
   if ( $categories_enabled == "Y" ) {
     echo "<br /><br />\n";
-    print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
+    print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
   }
 ?></div>
 <br />
@@ -104,7 +102,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   } else {
 	echo "<th>";
   }
-  if ( empty ( $friendly ) && $can_add ) {
+  if ( $can_add ) {
     echo html_for_add_icon (  date ( "Ymd", $days[$d] ), "", "", $user );
   }
   echo "<a href=\"day.php?" . $u_url .
@@ -159,7 +157,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
           $viewname, $rep[$cur_rep]['cal_description'],
           $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
           $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
-          $rep[$cur_rep]['cal_login'], $hide_icons );
+          $rep[$cur_rep]['cal_login'] );
       }
       $cur_rep++;
     }
@@ -179,7 +177,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
         $viewname, $ev[$i]['cal_description'],
         $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
         $ev[$i]['cal_access'], $ev[$i]['cal_duration'],
-        $ev[$i]['cal_login'], $hide_icons );
+        $ev[$i]['cal_login'] );
     }
   }
   // print out any remaining repeating events
@@ -200,7 +198,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
         $viewname, $rep[$cur_rep]['cal_description'],
         $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
         $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
-        $rep[$cur_rep]['cal_login'], $hide_icons );
+        $rep[$cur_rep]['cal_login'] );
     }
     $cur_rep++;
   }
@@ -291,19 +289,19 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     } else {
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
         echo "<td style=\"background-color:$color;\">";
-        if ( empty ( $friendly ) && $can_add ) //if not in printer-friendly view, and user can add events...
+        if ( $can_add ) //if user can add events...
           echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user ); //..then echo the add event icon
         echo "&nbsp;</td>\n";
       } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         if ( $rowspan_day[$d] > 1 ) {
           echo "<td style=\"background-color:$color;\" rowspan=\"$rowspan_day[$d]\">";
-          if ( empty ( $friendly ) && $can_add )
+          if ( $can_add )
             echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
           echo $save_hour_arr[$d][$i] . "</td>\n";
         } else {
           echo "<td style=\"background-color:$color;\">";
-          if ( empty ( $friendly ) && $can_add )
+          if ( $can_add )
             echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
           echo $save_hour_arr[$d][$i] . "</td>\n";
         }
@@ -317,9 +315,9 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 </table>
 <br />
 
-<?php if ( ! empty ( $eventinfo ) && empty ( $friendly ) ) echo $eventinfo; ?>
+<?php
+  if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
-<?php if ( empty ( $friendly ) ) {
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
@@ -333,7 +331,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 ?>friendly=1" target="cal_printer_friendly"
 onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
-<?php }
+<?php
 print_trailer ();
 ?>
 </body>

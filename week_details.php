@@ -61,10 +61,8 @@ for ( $i = 0; $i < 7; $i++ ) {
 ?>
 
 <div class="title">
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <div style="float:left;"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" /></a></div>
 <div style="float: right;"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" class="prevnext" /></a></div>
-<?php } ?>
 <span class="date">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
@@ -92,7 +90,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 <?php
   if ( $categories_enabled == "Y" ) {
     echo "<br />\n<br />\n";
-    print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
+    print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
   } ?>
 </div>
 
@@ -111,7 +109,7 @@ for ( $d = 0; $d < 7; $d++ ) {
   } else {
     echo "<tr>\n<th>";
   }
-  if ( empty ( $friendly ) && $can_add ) {
+  if ( $can_add ) {
     echo "<a title=\"" .
       translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
       "date=" . date ( "Ymd", $days[$d] ) . "\">" .
@@ -129,7 +127,7 @@ for ( $d = 0; $d < 7; $d++ ) {
   else
     echo ">";
 
-  print_det_date_entries ( $date, $user, $hide_icons, true );
+  print_det_date_entries ( $date, $user, true );
   echo "&nbsp;";
   echo "</td>\n</tr>\n";
 }
@@ -137,7 +135,6 @@ for ( $d = 0; $d < 7; $d++ ) {
 </table>
 </center>
 
-<?php if ( empty ( $friendly ) ) { ?>
 <?php echo $eventinfo; ?>
 <br /><br />
 <a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="week_details.php?<?php
@@ -150,9 +147,7 @@ for ( $d = 0; $d < 7; $d++ ) {
 onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 
-<?php }
-print_trailer();
-?>
+<?php print_trailer(); ?>
 
 </body>
 </html>
@@ -169,10 +164,9 @@ print_trailer();
 //   $pri - event priority
 //   $access - event access
 //   $event_owner - user associated with this event
-//   $hide_icons - hide icons to make printer-friendly
 function print_detailed_entry ( $id, $date, $time, $duration,
   $name, $description, $status,
-  $pri, $access, $event_owner, $hide_icons ) {
+  $pri, $access, $event_owner ) {
   global $eventinfo, $login, $user, $TZ_OFFSET;
   static $key = 0;
 
@@ -186,17 +180,15 @@ function print_detailed_entry ( $id, $date, $time, $duration,
   }
 
   if ( $pri == 3 ) echo "<b>";
-  if ( ! $hide_icons ) {
-    $divname = "eventinfo-$id-$key";
-    $key++;
-    echo "<a title=\"" . translate("View this entry") .
-      "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
-    if ( strlen ( $user ) > 0 )
-      echo "&amp;user=" . $user;
-    echo "\" onmouseover=\"window.status='" . translate("View this entry") .
-      "'; return true;\" onmouseout=\"window.status=''; return true;\">";
-    echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"view icon\" />";
-  }
+	$divname = "eventinfo-$id-$key";
+	$key++;
+	echo "<a title=\"" . translate("View this entry") .
+		"\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+	if ( strlen ( $user ) > 0 )
+		echo "&amp;user=" . $user;
+	echo "\" onmouseover=\"window.status='" . translate("View this entry") .
+		"'; return true;\" onmouseout=\"window.status=''; return true;\">";
+	echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"view icon\" />";
 
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
@@ -269,9 +261,8 @@ function print_detailed_entry ( $id, $date, $time, $duration,
 // params:
 //   $date - date in YYYYMMDD format
 //   $user - username
-//   $hide_icons - hide icons to make printer-friendly
 //   $is_ssi - is this being called from week_ssi.php?
-function print_det_date_entries ( $date, $user, $hide_icons, $ssi ) {
+function print_det_date_entries ( $date, $user, $ssi ) {
   global $events, $readonly, $is_admin;
 
   $year = substr ( $date, 0, 4 );
@@ -298,8 +289,7 @@ function print_det_date_entries ( $date, $user, $hide_icons, $ssi ) {
           $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
           $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
           $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
-          $hide_icons );
+          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
       $cur_rep++;
     }
     if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
@@ -308,7 +298,7 @@ function print_det_date_entries ( $date, $user, $hide_icons, $ssi ) {
         $date, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
         $ev[$i]['cal_name'], $ev[$i]['cal_description'],
         $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
-        $ev[$i]['cal_access'], $ev[$i]['cal_login'], $hide_icons );
+        $ev[$i]['cal_access'], $ev[$i]['cal_login'] );
   }
   // print out any remaining repeating events
   while ( $cur_rep < count ( $rep ) ) {
@@ -318,8 +308,7 @@ function print_det_date_entries ( $date, $user, $hide_icons, $ssi ) {
         $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
         $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
         $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
-        $hide_icons );
+        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
     $cur_rep++;
   }
 }

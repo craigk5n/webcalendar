@@ -492,7 +492,7 @@ if ( ! empty ( $error ) ) {
 }
 
 
-if ( empty ( $friendly ) && empty ( $error ) && empty ( $list ) ) {
+if ( empty ( $error ) && empty ( $list ) ) {
   if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
     if ( empty ( $offset ) )
       $offset = 0;
@@ -516,8 +516,7 @@ if ( empty ( $friendly ) && empty ( $error ) && empty ( $list ) ) {
   }
 }
 
-if ( ( empty ( $friendly ) && 
-  ( ! empty ( $list ) || $report_include_header == 'Y' ) )
+if ( ! empty ( $list ) || $report_include_header == 'Y'
   || ! empty ( $error ) || ! empty ( $list ) ) {
   print_trailer ();
 } else {

@@ -52,10 +52,8 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 <table style="border-width:0px; width:100%;">
 <tr><td style="vertical-align:top; width:70%;">
 <div style="border-width:0px; width:100%;">
-<?php if ( empty ( $friendly ) ) { ?>
 <a title="<?php etranslate("Next"); ?>" class="next" href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img src="rightarrow.gif" alt="<?php etranslate("Next"); ?>" /></a>
 <a title="<?php etranslate("Previous"); ?>" class="prev" href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous"); ?>" /></a>
-<?php } ?>
 <div class="title">
 <span class="date"><?php
   echo date_to_str ( $nowYmd );
@@ -74,7 +72,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 <?php
   if ( $categories_enabled == "Y" ) {
     echo "<br />\n<br />\n";
-    print_category_menu('day', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly);
+    print_category_menu( 'day', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
   }
 ?>
 </div>
@@ -86,7 +84,7 @@ if ( empty ( $TIME_SLOTS ) )
   $TIME_SLOTS = 24;
 
 print_day_at_a_glance ( date ( "Ymd", $now ),
-  empty ( $user ) ? $login : $user, ! empty ( $friendly ), $can_add );
+  empty ( $user ) ? $login : $user, $can_add );
 ?>
 </table>
 
@@ -97,13 +95,9 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 <table class="minical" cellspacing="1" cellpadding="2">
 <tr><th colspan="7" class="date"><?php echo $thisday?></th></tr>
 <tr class="monthnav">
-<?php if ( ! $friendly ) { ?>
 <td style="text-align:left;"><a title="<?php etranslate("Previous")?>" href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>"><img src="leftarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Previous")?>" /></a></td>
 <th colspan="5"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></th>
 <td style="text-align:right;"><a title="<?php etranslate("Next") ?>" href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead . $caturl?>"><img src="rightarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Next") ?>" /></a></td>
-<?php } else { ?>
-<th colspan="7"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></th>
-<?php } ?>
 </tr>
 <?php
 echo "<tr class=\"day\">\n";
@@ -125,7 +119,6 @@ else
   $wkstart = get_sunday_before ( $thisyear, $thismonth, 1 );
 $wkend = $wkstart + ( 3600 * 24 * 7 );
 
-if ( ! $friendly ) {
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( 24 * 3600 * 7 ) ) {
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
@@ -157,35 +150,6 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     echo "</tr>\n";
   }
 }
-} else { 
-for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
-  $i += ( 24 * 3600 * 7 ) ) {
-  for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
-    $i += ( 24 * 3600 * 7 ) ) {
-    echo "<tr style=\"text-align:center;\">\n";
-    for ( $j = 0; $j < 7; $j++ ) {
-      $date = $i + ( $j * 24 * 3600 );
-      if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
-        date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-		echo "<td";
-		if ( date ( "Ymd", $date ) == date ( "Ymd" ) ) {
-			//today
-			echo " id=\"today\"";
-		}
-        	if ( date ( "Ymd", $date ) == date ( "Ymd", $now ) ) {
-			//the day we're looking at
-			echo " class=\"selectedday\"";
-		}
-		echo ">";
-        	echo "" . date ( "d", $date ) . "</a></td>\n";
-      } else {
-        print "<td style=\"background-color:$CELLBG;\">&nbsp;</td>\n";
-      }
-    }
-    echo "</tr>\n";
-  }
-}
-}
 ?>
 </table>
 </div>
@@ -193,9 +157,9 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 
 <br /><br />
 
-<?php if ( ! empty ( $eventinfo ) && empty ( $friendly ) ) echo $eventinfo; ?>
+<?php
+	echo $eventinfo;
 
-<?php if ( empty ( $friendly ) ) {
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
@@ -209,11 +173,6 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 ?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 <?php print_trailer (); ?>
-
-<?php } else {
-	print_trailer ( false );
-      }
-?>
 
 </body>
 </html>

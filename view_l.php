@@ -38,9 +38,6 @@ if ( empty ( $id ) ) {
   do_redirect ( "views.php" );
 }
 
-if ( empty ( $friendly ) )
-  $friendly = 0;
-
 // Find view name in $views[]
 $view_name = "";
 for ( $i = 0; $i < count ( $views ); $i++ ) {
@@ -141,95 +138,89 @@ for ( $i = 0; $i < count ( $re_save ); $i++ ) {
 ?>
 
 <?php
-if ( ! $friendly ) {
-  echo "<table class=\"minical\" style=\"float:left;\" cellpadding=\"1\" cellspacing=\"2\">";
-  if ( $WEEK_START == "1" )
-    $wkstart = get_monday_before ( $prevyear, $prevmonth, 1 );
-  else
-    $wkstart = get_sunday_before ( $prevyear, $prevmonth, 1 );
-  $monthstart = mktime ( 3, 0, 0, $prevmonth, 1, $prevyear );
-  $monthend = mktime ( 3, 0, 0, $prevmonth + 1, 0, $prevyear );
-  echo "<tr><td colspan=\"7\" class=\"month\">" .
-    "<a href=\"view_l.php?id=$id&amp;date=$prevdate\">" .
-    date_to_str ( sprintf ( "%04d%02d01", $prevyear, $prevmonth ),
-    $DATE_FORMAT_MY, false, false ) .
-    "</a></td></tr>\n";
-  echo "<tr class=\"day\">";
-  if ( $WEEK_START == 0 ) echo "<th>" .
-    weekday_short_name ( 0 ) . "</th>";
-  for ( $i = 1; $i < 7; $i++ ) {
-    echo "<th>" .
-      weekday_short_name ( $i ) . "</th>";
-  }
-  if ( $WEEK_START == 1 ) echo "<th>" .
-    weekday_short_name ( 0 ) . "</th>";
-  echo "</tr>\n";
-  for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
-    $i += ( 24 * 3600 * 7 ) ) {
-    print "<tr class=\"numdate\">\n";
-    for ( $j = 0; $j < 7; $j++ ) {
-      $date = $i + ( $j * 24 * 3600 );
-      if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
-        date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<td>" . date ( "d", $date ) . "</td>\n";
-      } else {
-        print "<td>&nbsp;</td>\n";
-      }
-    }
-    if ( isset ( $DISPLAY_WEEKNUMBER ) && $DISPLAY_WEEKNUMBER == 'Y' ) {
-      print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
-    }
-    print "</tr>\n";
-  }
-  echo "</table>\n";
+echo "<table class=\"minical\" style=\"float:left;\" cellpadding=\"1\" cellspacing=\"2\">";
+if ( $WEEK_START == "1" )
+	$wkstart = get_monday_before ( $prevyear, $prevmonth, 1 );
+else
+	$wkstart = get_sunday_before ( $prevyear, $prevmonth, 1 );
+$monthstart = mktime ( 3, 0, 0, $prevmonth, 1, $prevyear );
+$monthend = mktime ( 3, 0, 0, $prevmonth + 1, 0, $prevyear );
+echo "<tr><td colspan=\"7\" class=\"month\">" .
+	"<a href=\"view_l.php?id=$id&amp;date=$prevdate\">" .
+	date_to_str ( sprintf ( "%04d%02d01", $prevyear, $prevmonth ),
+	$DATE_FORMAT_MY, false, false ) .
+	"</a></td></tr>\n";
+echo "<tr class=\"day\">";
+if ( $WEEK_START == 0 ) echo "<th>" .
+	weekday_short_name ( 0 ) . "</th>";
+for ( $i = 1; $i < 7; $i++ ) {
+	echo "<th>" .
+		weekday_short_name ( $i ) . "</th>";
 }
-
+if ( $WEEK_START == 1 ) echo "<th>" .
+	weekday_short_name ( 0 ) . "</th>";
+echo "</tr>\n";
+for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
+	$i += ( 24 * 3600 * 7 ) ) {
+	print "<tr class=\"numdate\">\n";
+	for ( $j = 0; $j < 7; $j++ ) {
+		$date = $i + ( $j * 24 * 3600 );
+		if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
+			date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
+			print "<td>" . date ( "d", $date ) . "</td>\n";
+		} else {
+			print "<td>&nbsp;</td>\n";
+		}
+	}
+	if ( isset ( $DISPLAY_WEEKNUMBER ) && $DISPLAY_WEEKNUMBER == 'Y' ) {
+		print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
+	}
+	print "</tr>\n";
+}
+echo "</table>\n";
 ?>
 
 <?php
-if ( ! $friendly ) {
-  echo "<table class=\"minical\" style=\"float:right;\" cellpadding=\"1\" cellspacing=\"2\">";
-  if ( $WEEK_START == "1" )
-    $wkstart = get_monday_before ( $nextyear, $nextmonth, 1 );
-  else
-    $wkstart = get_sunday_before ( $nextyear, $nextmonth, 1 );
-  $monthstart = mktime ( 3, 0, 0, $nextmonth, 1, $nextyear );
-  $monthend = mktime ( 3, 0, 0, $nextmonth + 1, 0, $nextyear );
-  echo "<tr><td colspan=\"7\" class=\"month\">" .
-    "<a href=\"view_l.php?id=$id&amp;date=$nextdate\">" .
-    date_to_str ( sprintf ( "%04d%02d01", $nextyear, $nextmonth ),
-    $DATE_FORMAT_MY, false, false ) .
-    "</a></td></tr>\n";
-  echo "<tr class=\"day\">";
-  if ( $WEEK_START == 0 ) echo "<th>" .
-    weekday_short_name ( 0 ) . "</th>";
-  for ( $i = 1; $i < 7; $i++ ) {
-    echo "<th>" .
-      weekday_short_name ( $i ) . "</th>";
-  }
-  if ( $WEEK_START == 1 ) echo "<th>" .
-    weekday_short_name ( 0 ) . "</th>";
-  echo "</tr>\n";
-  for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
-    $i += ( 24 * 3600 * 7 ) ) {
-    print "<tr class=\"numdate\">\n";
-    for ( $j = 0; $j < 7; $j++ ) {
-      $date = $i + ( $j * 24 * 3600 );
-      if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
-        date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<td>" . date ( "d", $date ) . "</td>\n";
-      } else {
-        print "<td>&nbsp;</td>\n";
-      }
-    }
-    if ( isset ( $DISPLAY_WEEKNUMBER ) && $DISPLAY_WEEKNUMBER == 'Y' ) {
-      print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
-    }
-    print "</tr>\n";
-  }
-  echo "</table>\n";
+echo "<table class=\"minical\" style=\"float:right;\" cellpadding=\"1\" cellspacing=\"2\">";
+if ( $WEEK_START == "1" )
+	$wkstart = get_monday_before ( $nextyear, $nextmonth, 1 );
+else
+	$wkstart = get_sunday_before ( $nextyear, $nextmonth, 1 );
+$monthstart = mktime ( 3, 0, 0, $nextmonth, 1, $nextyear );
+$monthend = mktime ( 3, 0, 0, $nextmonth + 1, 0, $nextyear );
+echo "<tr><td colspan=\"7\" class=\"month\">" .
+	"<a href=\"view_l.php?id=$id&amp;date=$nextdate\">" .
+	date_to_str ( sprintf ( "%04d%02d01", $nextyear, $nextmonth ),
+	$DATE_FORMAT_MY, false, false ) .
+	"</a></td></tr>\n";
+echo "<tr class=\"day\">";
+if ( $WEEK_START == 0 ) echo "<th>" .
+	weekday_short_name ( 0 ) . "</th>";
+for ( $i = 1; $i < 7; $i++ ) {
+	echo "<th>" .
+		weekday_short_name ( $i ) . "</th>";
 }
-
+if ( $WEEK_START == 1 ) echo "<th>" .
+	weekday_short_name ( 0 ) . "</th>";
+echo "</tr>\n";
+for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
+	$i += ( 24 * 3600 * 7 ) ) {
+	print "<tr class=\"numdate\">\n";
+	for ( $j = 0; $j < 7; $j++ ) {
+		$date = $i + ( $j * 24 * 3600 );
+		if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
+			date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
+			print "<td>" . date ( "d", $date ) . "</td>\n";
+		} else {
+			print "<td>&nbsp;</td>\n";
+		}
+	}
+	if ( isset ( $DISPLAY_WEEKNUMBER ) && $DISPLAY_WEEKNUMBER == 'Y' ) {
+		print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
+	}
+	print "</tr>\n";
+}
+echo "</table>\n";
 ?><br /><br />
 <div class="title">
 <span class="date"><?php
@@ -299,8 +290,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         echo "background-color:$color;\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       print_date_entries ( date ( "Ymd", $date ),
-        ( ! empty ( $user ) ) ? $user : $login,
-        $friendly, false );
+        ( ! empty ( $user ) ) ? $user : $login, false );
       print "</td>\n";
     } else {
       print "<td class=\"tablecell\">&nbsp;</td>\n";
@@ -312,9 +302,9 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 ?>
 </table><br />
 
-<?php if ( empty ( $friendly ) ) echo $eventinfo; ?>
+<?php
+  echo $eventinfo;
 
-<?php if ( ! $friendly ) {
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
@@ -328,9 +318,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 ?>friendly=1" target="cal_printer_friendly"
 onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
-<?php
-      }
-print_trailer ();?>
+<?php print_trailer ();?>
 
 </body>
 </html>

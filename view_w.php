@@ -8,9 +8,6 @@ if ( $allow_view_other == "N" && ! $is_admin ) {
   do_redirect ( "$STARTVIEW.php" );
 }
 
-if ( empty ( $friendly ) )
-  $friendly = 0;
-
 // Find view name in $views[]
 $view_name = "";
 for ( $i = 0; $i < count ( $views ); $i++ ) {
@@ -60,16 +57,12 @@ for ( $i = 0; $i < 7; $i++ ) {
 
 <div style="border-width:0px; width:99%;">
 <div style="float:left;">
-<?php if ( ! $friendly ) { ?>
 <br />
 <a href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
-<?php } ?>
 </div>
 <div style="float:right;">
-<?php if ( ! $friendly ) { ?>
 <br />
 <a href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-<?php } ?>
 </div>
 <div class="title">
 <span class="date"><?php
@@ -174,11 +167,9 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
       }
     }
       //echo date ( "D, m-d-Y H:i:s", $xdate ) . "<br />";
-      if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
-        empty ( $friendly ) )
+      if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" )
         echo html_for_add_icon ( date ( "Ymd", $xdate ), "", "", $user );
-      print_date_entries ( date ( "Ymd", $xdate ),
-        $user, $friendly, true );
+      print_date_entries ( date ( "Ymd", $xdate ), $user, true );
       echo "</td>\n";
     }
     echo "</tr>\n";
@@ -189,14 +180,12 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 
 $user = ""; // reset
 
-if ( empty ( $friendly ) )
-  echo $eventinfo;
+echo $eventinfo;
 
-if ( ! $friendly )
-  echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_w.php?id=$id&amp;date=$date&amp;friendly=1\" " .
-    "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
-    translate("Generate printer-friendly version") .
-    "'\">[" . translate("Printer Friendly") . "]</a>\n";
+echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_w.php?id=$id&amp;date=$date&amp;friendly=1\" " .
+	"target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
+	translate("Generate printer-friendly version") .
+	"'\">[" . translate("Printer Friendly") . "]</a>\n";
 
 print_trailer ();
 ?>
