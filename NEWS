@@ -1,5 +1,6 @@
 Version 1.0RC3 (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1145390: Merge arrays with array_merge vs + in view_t.php
       1151442: Overlapping events display error in day.php
       1146037: Availibility legend size not dynamic and not centered in IE.
       1148603: Assistants can't view Bosses Unapproved Events.

@@ -1,4 +1,5 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Fixed bug 1145390: Merge arrays with array_merge vs + in view_t.php
  - Fixed bug 1112787: missing charset in upcoming.php
  - Patch 1086250: add meta tag for charset since MSIE requires it.
  - Fixed broken advanced search that would not allowing searching other
