@@ -74,7 +74,7 @@ if ( empty ( $user ) ) {
 <?php }
   if ( $is_admin ) { ?>
 <tr><td style="font-weight:bold;"><?php etranslate("Admin")?>:</td>
-  <td><input type="radio" name="uis_admin" value="N" <?php if ( $uis_admin != "Y" ) echo "checked=\"checked\"";?>><?php etranslate("No")?> <input type="radio" name="uis_admin" value="Y" <?php if ( $uis_admin == "Y" ) echo "checked=\"checked\"";?>><?php etranslate("Yes")?></td></tr>
+  <td><input type="radio" name="uis_admin" value="N" <?php if ( $uis_admin != "Y" ) echo "checked=\"checked\"";?> /><?php etranslate("No")?> <input type="radio" name="uis_admin" value="Y" <?php if ( $uis_admin == "Y" ) echo "checked=\"checked\"";?> /><?php etranslate("Yes")?></td></tr>
 <?php } ?>
 <tr><td colspan="2">
 <?php if ( $demo_mode == "Y" ) { ?>
