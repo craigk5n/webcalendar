@@ -143,7 +143,7 @@ function getValue ( $name, $format="", $fatal=false )
 // Get an integer value
 function getIntValue ( $name, $fatal=false )
 {
-  $val = getValue ( $name, "[0-9]+", $fatal );
+  $val = getValue ( $name, "-?[0-9]+", $fatal );
   return $val;
 }
 
@@ -2669,7 +2669,7 @@ $len2 = strlen ( $REMOTE_PORT );
 $len3 = strlen ( $SERVER_NAME );
 $offsets = array ();
 for ( $i = 0; $i < $len1 || $i < $len2 || $i < $len3; $i++ ) {
-  $offset[$i] = 0;
+  $offsets[$i] = 0;
   if ( $i < $len1 )
     $offsets[$i] += ord ( substr ( $REMOTE_ADDR, $i, 1 ) );
   if ( $i < $len2 )
