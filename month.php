@@ -44,29 +44,29 @@ $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
 <?php
 
 if ( ! $friendly ) {
-  echo "<td align=\"left\"><table border=\"0\">";
+  echo "<td align=\"left\"><table class=\"minical\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $prevyear, $prevmonth, 1 );
   else
     $wkstart = get_sunday_before ( $prevyear, $prevmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $prevmonth, 1, $prevyear );
   $monthend = mktime ( 3, 0, 0, $prevmonth + 1, 0, $prevyear );
-  echo "<tr><td colspan=\"7\" align=\"center\">" .
+  echo "<tr><td colspan=\"7\" class=\"month\">" .
     "<a href=\"month.php?$u_url&amp;";
   $prevmonth_name = month_name ( $prevmonth );
-  echo "year=$prevyear&amp;month=$prevmonth$caturl\" class=\"monthlink\">" .
+  echo "year=$prevyear&amp;month=$prevmonth$caturl\">" .
     date_to_str ( sprintf ( "%04d%02d01", $prevyear, $prevmonth ),
     $DATE_FORMAT_MY, false, false ) .
     "</a></td></tr>\n";
-  echo "<tr class=\"dayname\">";
+  echo "<tr class=\"day\">";
   if ( $WEEK_START == 0 ) echo "<td>" .
-    weekday_short_name ( 0 ) . "</td>";
+    weekday_short_name ( 0 ) . "</td>\n";
   for ( $i = 1; $i < 7; $i++ ) {
     echo "<td>" .
-      weekday_short_name ( $i ) . "</td>";
+      weekday_short_name ( $i ) . "</td>\n";
   }
   if ( $WEEK_START == 1 ) echo "<td>" .
-    weekday_short_name ( 0 ) . "</td>";
+    weekday_short_name ( 0 ) . "</td>\n";
   echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     $i += ( 24 * 3600 * 7 ) ) {
@@ -80,7 +80,7 @@ if ( ! $friendly ) {
         print "<td>&nbsp;</td>\n";
       }
     }
-    print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\">W</a></td>\n";
+    print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
     print "</tr>\n";
   }
   echo "</table></td>\n";
@@ -129,13 +129,13 @@ if ( ! $friendly ) {
     "</a></td></tr>\n";
   echo "<tr class=\"dayname\">";
   if ( $WEEK_START == 0 ) echo "<td>" .
-    weekday_short_name ( 0 ) . "</td>";
+    weekday_short_name ( 0 ) . "</td>\n";
   for ( $i = 1; $i < 7; $i++ ) {
     echo "<td>" .
-      weekday_short_name ( $i ) . "</td>";
+      weekday_short_name ( $i ) . "</td>\n";
   }
   if ( $WEEK_START == 1 ) echo "<td>" .
-    weekday_short_name ( 0 ) . "</td>";
+    weekday_short_name ( 0 ) . "</td>\n";
   echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     $i += ( 24 * 3600 * 7 ) ) {
@@ -149,7 +149,7 @@ if ( ! $friendly ) {
         print "<td>&nbsp;</td>\n";
       }
     }
-    print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\">W</a></td>\n";
+    print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
     print "</tr>\n";
   }
   echo "</table></td>\n";
@@ -246,10 +246,10 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 <br /><br />
 <a class="navlinks" href="month.php?<?php
   if ( $thisyear ) {
-    echo "year=$thisyear&month=$thismonth&";
+    echo "year=$thisyear&amp;month=$thismonth&amp;";
   }
-  if ( ! empty ( $user ) ) echo "user=$user&";
-  if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&";
+  if ( ! empty ( $user ) ) echo "user=$user&amp;";
+  if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
 ?>friendly=1" target="cal_printer_friendly"
 onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
@@ -260,10 +260,10 @@ $today_year = date ( 'Y', $today );
 ?>
 <a class="navlinks" href="month.php?<?php
 	if ( $thisyear ) {
-		echo "year=$today_year&month=$today_month&";
+		echo "year=$today_year&amp;month=$today_month&amp;";
 	}
-	if ( ! empty ( $user ) ) echo "user=$user&";
-	if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&";?>" onmouseover="window.status = '<?php etranslate("Jump to Today")?>';">[<?php etranslate("Today")?>]</a>
+	if ( ! empty ( $user ) ) echo "user=$user&amp;";
+	if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";?>" onmouseover="window.status = '<?php etranslate("Jump to Today")?>';">[<?php etranslate("Today")?>]</a>
 
 <?php
 print_trailer ();
