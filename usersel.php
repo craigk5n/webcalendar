@@ -6,10 +6,10 @@ include_once 'includes/init.php';
 // form: name of form on parent page
 // listid: element id of user selection object in form
 //   ... to be used like form.elements[$listid]
-if ( !isset ( $form ) ) {
+if ( empty ( $form ) ) {
   echo "Program Error: No form specified!"; exit;
 }
-if ( !isset ( $listid ) ) {
+if ( empty ( $listid ) ) {
   echo "Program Error: No listid specified!"; exit;
 }
 

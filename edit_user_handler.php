@@ -50,7 +50,7 @@ else if ( $formtype == "edituser" ) {
     }
   } else if ( strlen ( $add ) && ! $is_admin )
     $error = translate("You are not authorized") . ".";
-  else if ( isset ( $ulastname ) ) {
+  else if ( ! empty ( $ulastname ) ) {
     // Don't allow a user to change themself to an admin by setting
     // uis_admin in the URL by hand.  They must be admin beforehand.
     if ( ! $is_admin )

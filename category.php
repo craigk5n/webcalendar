@@ -13,7 +13,7 @@ if ( $categories_enabled == "N" ) {
 
 // If editing, make sure they are editing their own
 // (or they are an admin user).
-if ( isset ( $id ) ) {
+if ( ! empty ( $id ) ) {
   $res = dbi_query ( "SELECT cat_id, cat_owner FROM webcal_categories WHERE " .
     "cat_id = $id" );
   if ( $res ) {
@@ -36,12 +36,12 @@ print_header();
 <?php
 
 // Adding/Editing category
-if ( ( ( $add == '1' ) || ( isset ( $id ) ) ) && empty ( $error ) ) {
+if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   $button = translate("Add");
   ?>
   <FORM ACTION="category_handler.php" METHOD="POST">
   <?php
-  if ( isset ( $id ) ) {
+  if ( ! empty ( $id ) ) {
     echo "<INPUT NAME=\"id\" TYPE=\"hidden\" VALUE=\"$id\">";
     $button = translate("Save");
     $catname = $categories[$id];
@@ -57,7 +57,7 @@ if ( ( ( $add == '1' ) || ( isset ( $id ) ) ) && empty ( $error ) ) {
   <?php } ?>
   <BR><BR>
   <INPUT TYPE="submit" NAME="action" VALUE="<?php echo $button;?>">
-  <?php if ( isset ( $id ) ) {  ?>
+  <?php if ( ! empty ( $id ) ) {  ?>
     <INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete");?>" ONCLICK="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')">
   <?php }  ?>
   </FORM>

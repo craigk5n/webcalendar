@@ -178,7 +178,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 
 <P>
 
-<?php if ( isset ( $eventinfo ) && empty ( $friendly ) ) echo $eventinfo; ?>
+<?php if ( ! empty ( $eventinfo ) && empty ( $friendly ) ) echo $eventinfo; ?>
 
 <?php if ( empty ( $friendly ) ) {
 

@@ -407,7 +407,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
       else
         print_date_selection ( $extra_name, $cal_date );
     } else if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
-      if ( isset ( $extras[$extra_name]['cal_data'] ) )
+      if ( ! empty ( $extras[$extra_name]['cal_data'] ) )
         $minutes = $extras[$extra_name]['cal_data'];
       else
         $minutes = $extra_arg1;
@@ -573,7 +573,7 @@ echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"yearly\" " .
 <TABLE BORDER=0><TR><TD>
 <SCRIPT LANGUAGE="JavaScript">
   document.writeln ( '<INPUT TYPE="button" VALUE="<?php etranslate("Save")?>" ONCLICK="validate_and_submit()">' );
-  document.writeln ( '<INPUT TYPE="button" VALUE="<?php etranslate("Help")?>..." ONCLICK="window.open ( \'help_edit_entry.php<?php if ( ! isset ( $id ) ) echo "?add=1"; ?>\', \'cal_help\', \'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420\');">' );
+  document.writeln ( '<INPUT TYPE="button" VALUE="<?php etranslate("Help")?>..." ONCLICK="window.open ( \'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>\', \'cal_help\', \'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420\');">' );
 </SCRIPT>
 
 <NOSCRIPT>
