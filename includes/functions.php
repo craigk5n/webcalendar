@@ -2524,8 +2524,9 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
 
 // display a link to any unapproved events
 // If the user is an admin user, also count up any public events.
+// If the user is a nonuser admin, count up events on the nonuser calendar.
 function display_unapproved_events ( $user ) {
-  global $public_access, $is_admin;
+  global $public_access, $is_admin, $nonuser_enabled, $login;
 
   // Don't do this for public access login, admin user must approve public
   // events
@@ -2539,10 +2540,17 @@ function display_unapproved_events ( $user ) {
     "AND ( webcal_entry.cal_ext_for_id IS NULL " .
     "OR webcal_entry.cal_ext_for_id = 0 ) " .
     "AND ( webcal_entry_user.cal_login = '$user'";
-  if ( $public_access == "Y" && $is_admin )
-    $sql .= " OR webcal_entry_user.cal_login = '__public__' )";
-  else
-    $sql .= " )";
+  if ( $public_access == "Y" && $is_admin ) {
+    $sql .= " OR webcal_entry_user.cal_login = '__public__'";
+  }
+  if ( $nonuser_enabled == 'Y' ) {
+    $admincals = get_nonuser_cals ( $login );
+    for ( $i = 0; $i < count ( $admincals ); $i++ ) {
+      $sql .= " OR webcal_entry_user.cal_login = '" .
+        $admincals[$i]['cal_login'] . "'";
+    }
+  }
+  $sql .= " )";
   //print "SQL: $sql<br />";
   $res = dbi_query ( $sql );
   if ( $res ) {
@@ -2550,8 +2558,10 @@ function display_unapproved_events ( $user ) {
       if ( $row[0] > 0 )
 	$str = translate ("You have XXX unapproved events");
 	$str = str_replace ( "XXX", $row[0], $str );
-        echo "<a class=\"navlinks\" " .
-          "href=\"list_unapproved.php?user=$user\">" . $str .  "</a><br />\n";
+        echo "<a class=\"navlinks\" href=\"list_unapproved.php";
+        if ( $user != $login )
+          echo "?user=$user\"";
+        echo "\">" . $str .  "</a><br />\n";
     }
     dbi_free_result ( $res );
   }
