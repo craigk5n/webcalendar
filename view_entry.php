@@ -177,7 +177,7 @@ $thisday = $row[1] % 100;
   <TD><?php echo ( $row[8] == "P" ) ? translate("Public") : translate("Confidential"); ?></TD></TR>
 <?php } ?>
 <?php
-if ( ! strlen ( $single_user_login ) ) {
+if ( ! $single_user ) {
   echo "<TR><TD VALIGN=\"top\"><B>" . translate("Created by") . ":</B></TD>\n";
   if ( $is_private )
     echo "<TD>[" . translate("Confidential") . "]</TD></TR>\n";
@@ -259,7 +259,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
 $show_participants = ! $disable_participants_field;
 if ( $is_admin )
   $show_participants = true;
-if ( ! strlen ( $single_user_login ) && $show_participants ) {
+if ( ! $single_user && $show_participants ) {
 ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Participants")?>:</B></TD>
   <TD><?php
@@ -323,7 +323,7 @@ if ( $login != $user && strlen ( $user ) )
   $u_url = "&user=$user";
 
 if ( $is_admin ||
-  ( ! $readonly && ( $login == $create_by || strlen ( $single_user_login ) ) ) ) {
+  ( ! $readonly && ( $login == $create_by || $single_user ) ) ) {
   echo "<A HREF=\"edit_entry.php?id=$id\">" .
     translate("Edit entry") . "</A><BR>\n";
   echo "<A HREF=\"del_entry.php?id=$id$u_url\" onClick=\"return confirm('" .

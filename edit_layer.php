@@ -74,7 +74,7 @@ function selectColor ( color ) {
 
 
 <?php
-if ( ! strlen ( $single_user_login ) ) {
+if ( $single_user ) {
   $userlist = user_get_users ();
   $num_users = 0;
   $size = 0;

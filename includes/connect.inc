@@ -45,7 +45,7 @@ if ( strlen ( $login ) == 0 && $use_http_auth ) {
     }
   }
 }
-//else if ( ! strlen ( $single_user_login ) ) {
+//else if ( ! $single_user ) {
 //  echo "Error(3)! no login info found: " . dbi_error () . "<P><B>SQL:</B> $sql";
 //  exit;
 //}

@@ -178,7 +178,7 @@ if ( strlen ( $error ) == 0 ) {
     $error = "Unable to add entry: " . dbi_error () . "<P><B>SQL:</B> $sql";
   $msg .= "<B>SQL:</B> $sql<P>";
   
-  if ( strlen ( $single_user_login ) ) {
+  if ( $single_user ) {
     $participants[0] = $single_user_login;
   }
 
