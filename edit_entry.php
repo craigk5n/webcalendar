@@ -646,11 +646,11 @@ if ( $single_user == "N" && $show_participants ) {
       } else {
         if ( ($l == $login && ! $is_assistant  && ! $is_nonuser_admin) || (! empty ($user) && $l == $user) )
           $users .= " selected=\"selected\"";
-        else if ( $l == '__public__' &&
-          ! empty ($public_access_default_selected) &&
-          $public_access_default_selected == 'Y' )
-          $users .= " selected=\"selected\"";
       }
+      if ( $l == '__public__' &&
+        ! empty ($public_access_default_selected) &&
+         $public_access_default_selected == 'Y' )
+           $users .= " selected=\"selected\"";
     }
     $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
