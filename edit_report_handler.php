@@ -48,7 +48,7 @@ if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
   $updating_public = true;
 }
 
-if ( $single_user == 'Y' || $disable_participants_field ) {
+if ( $single_user == 'Y' || $disable_participants_field == 'Y' ) {
   $report_user = '';
 }
 
