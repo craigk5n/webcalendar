@@ -131,10 +131,10 @@ for ( $d = 0; $d < 7; $d++ ) {
     echo "<a href=\"edit_entry.php?" . $u_url .
       "date=" . date ( "Ymd", $days[$d] ) . "\">" .
       "<img src=\"new.gif\" class=\"new\" alt=\"" .
-      translate("New Entry") . "\" align=\"right\" />" .  "</a>";
+      translate("New Entry") . "\" />" .  "</a>";
   }
   echo "<a href=\"day.php?" . $u_url .
-    "date=" . date("Ymd", $days[$d] ) . "$caturl\" class=\"$hclass\">" .
+    "date=" . date("Ymd", $days[$d] ) . "$caturl\">" .
     $header[$d] . "</a></th></tr>";
 
   print "<tr><td style=\"vertical-align:top; height:75px;";
