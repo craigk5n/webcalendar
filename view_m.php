@@ -98,7 +98,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 ?>
 <br /><br />
 
-<table cellspacing="0" cellpadding="0">
+<table class="main" cellspacing="0" cellpadding="0">
 <tr><th class="empty">&nbsp;</th>
 <?php
   // $j points to start of this table/row

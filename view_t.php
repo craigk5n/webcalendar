@@ -135,19 +135,13 @@ for ( $date = $wkstart, $h = 0;
   $wday = strftime ( "%w", $date );
   $weekday = weekday_short_name ( $wday );
   if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
-//    $color = $TODAYCELLBG;
-//    $class = "tableheadertoday";
 	echo "<tr><th class=\"today\">";
   } else {
-//    if ( $wday == 0 || $wday == 6 )
-//      $color = $WEEKENDBG;
-//    else
-//      $color = $CELLBG;
-//    $class = "tableheader";
 	echo "<tr><th class=\"row\">";
   }
-//  echo "<tr><th class=\"$class\" style=\"width:10%;  vertical-align:top;\">";
-	echo $weekday . "&nbsp;" . round ( date ( "d", $date ) ) . "</th>\n";
+  if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" )
+    echo html_for_add_icon ( date ( "Ymd", $date ), "", "", $user );
+  echo $weekday . "&nbsp;" . round ( date ( "d", $date ) ) . "</th>\n";
 
   //start the container cell for each day, with its appropriate style
   if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
@@ -158,9 +152,6 @@ for ( $date = $wkstart, $h = 0;
 	else
 		echo "<td class=\"reg\">";
   }
-//  echo "<td style=\"width:90%; background-color:$color;\">";
-  if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" )
-    echo html_for_add_icon ( date ( "Ymd", $date ), "", "", $user );
 
   // Parametres par defaut
   if ($prefarray["WORK_DAY_START_HOUR"]==NULL || $prefarray["WORK_DAY_END_HOUR"]==NULL) {

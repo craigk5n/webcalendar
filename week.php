@@ -92,7 +92,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 ?></div>
 <br />
 
-<table cellspacing="0" cellpadding="0">
+<table class="main" cellspacing="0" cellpadding="0">
 <tr>
 <th class="empty">&nbsp;</th>
 <?php
