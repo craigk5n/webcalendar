@@ -4,24 +4,26 @@
 #
 # Translator: Ralph Boßler <vertrieb@sylphen.com>,
 #	Peter Huetmannsberger <huetmann@site38.ping.at>
-# Last update: 28 June 2000
-# Last update: 15 July 2002 by Markus Egartner & Markus Kronberger <edv@kh-hallein.at>
-# Last update: 18 July 2002 by Markus Egartner & Markus Kronberger <edv@kh-hallein.at>
-# Last update: 22 July 2002 by Markus Egartner & Markus Kronberger <edv@kh-hallein.at>
-# Last update: 26 August 2002 by Markus Egartner & Markus Kornberger <edv@kh-hallein.at>
-# Last update: 18 November 2002 by Markus Egartner & Markus Kornberger <edv@kh-hallein.at>
-# Last update: 3 December 2002 by Markus Egartner <edv@kh-hallein.at>
-# Last update: 13 December 2002 by Markus Egartner <edv@kh-hallein.at>
-# Last update: 27 January 2003 by Markus Egartner <edv@kh-hallein.at>
-# Last update: 5 February 2003 by Markus Egartner <edv@kh-hallein.at>
-# Last update: 10 February 2003 by Markus Egartner <edv@kh-hallein.at>
-# Translation last updated on 02-10-2003
+# Last update: 28 Jun 2000
+# Last update: 15 Jul 2002 by Markus Egartner & Markus Kronberger <edv@kh-hallein.at>
+# Last update: 18 Jul 2002 by Markus Egartner & Markus Kronberger <edv@kh-hallein.at>
+# Last update: 22 Jul 2002 by Markus Egartner & Markus Kronberger <edv@kh-hallein.at>
+# Last update: 26 Aug 2002 by Markus Egartner & Markus Kornberger <edv@kh-hallein.at>
+# Last update: 18 Nov 2002 by Markus Egartner & Markus Kornberger <edv@kh-hallein.at>
+# Last update: 3 Dec 2002 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Last update: 13 Dec 2002 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Last update: 27 Jan 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Last update: 5 Feb 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Last update: 10 Feb 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Last update: 14 Feb 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Translation last updated on 02-14-2003
 
 
 ###############################################
 # Page: day.php
 #
 Previous: Vorherige
+Admin mode: Administratormodus
 Assistant mode: Assistentenmodus
 Next: Nächsten
 Generate printer-friendly version: Erzeuge Version zum Drucken
@@ -31,7 +33,7 @@ Printer Friendly: Druckansicht
 ###############################################
 # Page: del_entry.php
 #
-You are not authorized: Sie haben keine Berechtigung hiefür
+You are not authorized: Sie haben keine Berechtigung hierfür
 Hello: Guten Tag 
 An appointment has been canceled for you by: Einer ihrer Termine wurde storniert von 
 The subject was: Der Betreff lautete
@@ -96,7 +98,7 @@ Week (Users horizontal): Woche (Teilnehmer horizontal)
 Week (Users vertical): Woche (Teilnehmer vertikal)
 Week (Timebar): Woche (Zeitschiene)
 Month: Monat
-Users: Benutzer
+Users: Benützer
 Select: Auswählen 
 Add: Hinzufügen
 Save: Speichern
@@ -122,7 +124,7 @@ Error approving event: Fehler bei Bestätigung des Ereignisses
 
 ###############################################
 # Page: add_entry.php
-#
+#file:/root
 Invalid entry id: ungültiger Eintrag
 This is a private event and may not be added to your calendar.: Das ist ein PRIVATER Termin und kann Ihrem Kalender nicht hinzugefügt werden.
 Error adding event: Fehler beim Hinzufügen eines Termines
@@ -133,8 +135,8 @@ Error adding event: Fehler beim Hinzufügen eines Termines
 #
 Week: Woche
 New Entry: Neuer Eintrag
-am: am
-pm: pm
+am: Vormittag
+pm: Nachmittag
 Private: Privat
 
 
@@ -156,7 +158,7 @@ You must enter a login and password: Sie müssen einen Benutzernamen und ein Kenn
 Username: Benutzername
 Password: Kennwort
 Save login via cookies so I don't have to login next time: Login in Cookie abspeichern, um Anmeldung beim nächsten Mal automatisch zu überspringen.
-Login: Login
+Login: Anmelden
 Access public calendar: Zugang öffentlicher Kalender
 cookies-note: <B>Hinweis:</B> Für diese Anwendung müssen Cookies im Browser akzeptiert werden.
 
@@ -210,7 +212,7 @@ Rejected: Eintrag abgelehnt, wird nicht teilnehmen
 Date: Datum
 Repeat Type: Art der Wiederholung
 Time: Zeit
-All day event: Termin für GANZEN Tag
+All day event: Termin für den GANZEN Tag
 Duration: Dauer
 minutes: Minute(n)
 Priority: Priorität
@@ -227,9 +229,9 @@ Reject entry: Eintrag ablehnen?
 Set category: Kategorie zuweisen
 Edit repeating entry for all dates: Ändern ALLER wiederkehrenden Termine des Eintrags
 Edit entry for this date: Ändern des Termines für DIESES Datum
-This will delete this entry for all users.: Dieser Eintrag wird für alle Benutzer gelöscht.
+This will delete this entry for all users.: Dieser Eintrag wird für alle Benützer gelöscht.
 Delete repeating event for all dates: Löschen ALLER wiederkehrenden Termine des Eintrags 
-Delete entry only for this date: Löschen des Termins für DIESES Datum
+Delete entry only for this date: Löschen des Termines für DIESES Datum
 Edit entry: Eintrag ändern
 Delete entry: Lösche Eintrag
 This will delete the entry from your calendar.: Dies löscht den Eintrag von Ihrem Kalender
@@ -317,19 +319,19 @@ Allow viewing other user's calendars: Ansicht anderer Benutzer-Kalender zulassen
 allow-public-access-help: Wenn diese Option gewählt ist, kann  der Kalender als öffentlicher Kalenende ohne Schreibzugriff und ohne Login verwendet werden.
 Allow public access: öffentlichen Zugriff erlauben
 public-access-view-others-help: Gibt an ob ein öffentlicher Benutzer die Kalender anderer Benutzer sehen kann.
-Public access can view other users: Öffentlichkeit kann andere Benutzer ansehen
+Public access can view other users: Öffentlichkeit kann andere Benützer ansehen
 public-access-can-add-help: Diese Einstellung ermöglicht es einem öffentlichen Benutzer einen Termin einzutragen, dieser muss jedoch durch den Administrator bestätigt werden um angezeigt werden zu können 
 Public access can add events: Öffentlichkeit kann Termine hinzufügen
 public-access-add-requires-approval-help: Legt fest, ob hinzugefügte Termine via öffentlichen Zugang eine Genehmigung benötigen, bevor diese angezeigt werden
 Public access new events require approval: Erfordert Genehmigung bei einem NEUEN öffentlichen Termin
 allow-view-add-help: Ein "+" Icon wird bei Ansichten beigefügt, welches Teilnehmern ein schnelles hinzufügen von Terminen bei anderen Kalendern ermöglicht
 Include add event link in views: Beeinhaltet LINK-Adressen von Terminen bei den Ansichten
-allow-external-users-help: Externer Benutzer kann Hilfe aufrufen
-Allow external users: Externe Benutzer zulassen
+allow-external-users-help: Externer Benützer können die Hilfe aufrufen
+Allow external users: Externe Benützer zulassen
 external-can-receive-notification-help: Externer Benutzer kann Hilfe für BENACHRICHTIUGUNGEN erhalten
-External users can receive email notifications: Externe Benutzer können E-Mail BENACHRICHTIUGUNGEN empfangen
+External users can receive email notifications: Externe Benützer können E-Mail BENACHRICHTIUGUNGEN empfangen
 external-can-receive-reminder-help: Externe Benutzer können Hilfe für E-Mail ERINNERUNGEN empfangen
-External users can receive email reminders: Externe Benutzer können E-Mail ERINNERUNGEN empfangen
+External users can receive email reminders: Externe Benützer können E-Mail ERINNERUNGEN empfangen
 remember-last-login-help: Mit dieser Einstellung merkt sich der kalender den Benutzernamen für das nächte Anmelden (nicht das Passwort) sowie die benutzerdefinierten Voreinstellungen.
 Remember last login: letzte Anmeldung merken
 conflict-check-help: Prüft Terminüberschneidungen (Zwei Termine die für dieselbe Person zur gleichen Zeit gesetzt wurden).  Wenn die Option auf Ja gesetzt wurde kann man Terminüberschneidungen über ein Eingabefenster zulassen. Wenn Sie Nein wählen werden Konflikte nicht geprüft.  Es wird empfohlen die Option auf Ja zu setzen.
@@ -452,7 +454,7 @@ Help Index: Hilfe-Index
 Adding/Editing Calendar Entries: Hinzufügen/Ändern von Kalender-Einträgen
 Preferences: Voreinstellungen
 Report Bug: Fehlermeldung
-Report Bug local: Fehlerbericht an den Administrator senden (lokal)
+Report Bug local: <B><U>Fehlerbericht an den Administrator senden</U></B> (lokal)
 
 
 ###############################################
@@ -466,28 +468,28 @@ Go: Zeigen
 # Page: help_edit_entry.php
 #
 Brief Description: Kurzbeschreibung
-brief-description-help: Kurzbeschreibung (ca. 20 Zeichen) des Termins. Dies erscheint, wenn der Kalender angezeigt wird.
+brief-description-help: Kurzbeschreibung (ca. 20 Zeichen) des Termines. Dies erscheint, wenn der Kalender angezeigt wird.
 Full Description: ausführliche Beschreibung
-full-description-help: Komplette Beschreibung des Termins. Diese Information sieht der Benutzer beim Termin.
-date-help: Gibt das Datum des Termins an.
-time-help: Gibt die Uhrzeit des Termins an.<BR><I>Kann leer gelassen werden.</I>
+full-description-help: Komplette Beschreibung des Termines. Diese Information sieht der Benutzer beim Termin.
+date-help: Gibt das Datum des Termines an.
+time-help: Gibt die Uhrzeit des Termines an.<BR><I>Kann leer gelassen werden.</I>
 duration-help: Gibt die Dauer des Termin in Minuten an.<BR><I>Kann leer gelassen werden.</I>
-priority-help: Gibt die Priorität des Termins an.  Termine mit hoher Priorität werden fett angezeigt.
-access-help: Gibt den Zugriff auf den Termin an.<BR> <I>Öffentlich</I>: Jeder kann alle Details des Termins sehen.<BR><I>Geheim</I>: Andere können sehen, dass ein Termin existiert, können jedoch keine Details ansehen.
-participants-help: Gibt die Benutzer des Termins an.
+priority-help: Gibt die Priorität des Termines an. Termine mit hoher Priorität werden fett angezeigt.
+access-help: Gibt den Zugriff auf den Termin an.<BR> <I>Öffentlich</I>: Jeder kann alle Details des Termines sehen.<BR><I>Geheim</I>: Andere können sehen, dass ein Termin existiert, können jedoch keine Details ansehen.
+participants-help: Gibt die Benutzer des Termines an.
 repeat-type-help: Wählen Sie wie oft ein Termin wiederholt werden soll.<I>Monatlich (tagesorientiert)</I> wiederholt einen Termin jeden 1. Montag des Monats, jeden 3. Donnerstag des Monats, etc.  
 Repeat End Date: Ende der wiederkehrenden Termine
 repeat-end-date-help: Gibt an bis zu welchem Datum der Termin wiederholt werden soll.
 Repeat Day: Tag der Wiederholung
 repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden soll. Dies gilt nur wenn <I>Art der Wiederholung</I> auf <I>Wöchentlich</I> gesetzt ist.
 Frequency: Häufigkeit
-repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll.  Standard ist 1 das der Termin immer wiederholt werden soll.  Wenn sie 2 auswählen wird der Termin jede 2. Woche wiederholt (wenn <I>Art der Wiederholung</I> auf <I>Wöchentlich</I> gesetzt ist), jeden 2. Monat (wenn <I>Art der Wiederholung</I> auf <I>Monatlich</I> gesetzt ist), etc.
+repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist 1 das der Termin immer wiederholt werden soll. Wenn sie 2 auswählen wird der Termin jede 2. Woche wiederholt (wenn <I>Art der Wiederholung</I> auf <I>Wöchentlich</I> gesetzt ist), jeden 2. Monat (wenn <I>Art der Wiederholung</I> auf <I>Monatlich</I> gesetzt ist), etc.
 
 
 ###############################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Gelöschte Benutzer nicht unterstützt
+Deleting users not supported: Gelöschte Benützer werden nicht unterstützt
 The passwords were not identical: Die eingebenen Kennwörter stimmten nicht überein
 You have not entered a password: Sie haben kein Kennwort eingegeben
 
@@ -524,7 +526,7 @@ Save Preferences: Voreinstellungen speichern
 ###############################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Layers sind sinnvoll um andere Termine von anderen Benutzern im eigenen Kalender anzuzeigen.  Sie können den Benutzer und die Farbe des Termines selber spezifizieren.
+Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Layers sind sinnvoll um andere Termine von anderen Benützern im eigenen Kalender anzuzeigen. Sie können den Benützer und die Farbe des Termines selber spezifizieren.
 Add/Edit/Delete: Hinzufügen/Editieren/Löschen
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Drücken Sie den "Layer editieren" im Admin-User um die Layers HINZUFÜGEN/EDITIEREN/LÖSCHEN (am Ende der Seite).
 Specifies the user that you would like to see displayed in your calendar.: Definieren Sie Ihren gewünschten Benutzer den Sie in Ihren Kalender sehen möchten.
@@ -573,6 +575,11 @@ Set Category: Kategorie zuweisen
 Edit Layer: Layer editieren
 Add Layer: Layer hinzufügen
 Show layer events that are the same as your own: Zeige Layer welche die gleichen Termine sind wie die eigenen
+
+
+###############################################
+# Page: nonusers_handler.php
+#
 
 
 ###############################################
@@ -673,6 +680,15 @@ You must specify a view name: Sie müssen einen Ansichtsnamen anlegen
 
 
 ###############################################
+# Page: nonusers.php
+#
+NONUSER_PREFIX not set: 'NONUSER_PREFIX' nicht definiert
+NonUser: 'NonUser' Kalender
+Calendar ID: Kalender ID
+Add New NonUser Calendar: Neuen 'NonUser' Kalender hinzufügen
+
+
+###############################################
 # Page: category.php
 #
 Category Name: Kategorie Name
@@ -734,7 +750,7 @@ Go to: Gehe zu
 ###############################################
 # Page: includes/functions.php
 #
-This event is confidential: privater Termin 
+This event is confidential: Dies ist ein privater Termin 
 exceeds limit of XXX events per day: überschrittenes Limit von XXX Termin(e) pro Tag
 You have XXX unapproved events: Sie haben XXX unbestätigte(n) Termin(e)
 January: Januar
@@ -798,7 +814,7 @@ Send Reminder: Erinnerung senden
 #
 Back to My Calendar: Zurück zu meinem Kalender
 My Calendar: Mein Kalender
-Logout: Logout
+Logout: Abmelden
 Another User's Calendar: Kalender anderer Benutzer 
 Add New Entry: Eintrag hinzufügen
 Manage Views: Ansichten einrichten
@@ -923,7 +939,7 @@ Invalid color: Ungültige Farbe
 #
 You have not entered a Brief Description: Sie haben keine Kurzbeschreibung eingegeben.
 You have not entered a valid time of day: Sie haben keine gültige Zeit für diesen Tag eingetragen
-The time you have entered begins before your preferred work hours.  Is this correct?: Die eingetragene Zeit beginnt vor der normalen Arbeitszeit.  Ist das korrekt?
+The time you have entered begins before your preferred work hours.  Is this correct?: Die eingetragene Zeit beginnt vor der normalen Arbeitszeit. Ist das korrekt?
 
 
 ###############################################
