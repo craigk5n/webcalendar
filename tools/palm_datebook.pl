@@ -6,10 +6,6 @@ palm_datebook.pl
 =head1 SYNOPSIS
 Reads the events from a Palm Desktop DateBook.dat
 
-=head1 COPYRIGHT
-Copyright: (C) 2002, 2003  Jeff Hoover <jhoov_AT_thebusstop_DOT_net>.
-You may distribute this file under the terms of the GPL License.
-
 =head1 DESCRIPTION
 This file reads a Palm Desktop DateBook file (datebook.dat) and prints
 all the non-expired entries (can return all, see below) to STDOUT.  It prints a pipe
@@ -179,29 +175,6 @@ sub ReadEntry {
   # Calculate duration in minutes
   $Entry{Duration} = ($Entry{EndTime} - $Entry{StartTime}) / 60;
 
-  # Return some additional date/time info
-#  my @START = localtime($Entry{StartTime});
-#  my @END = localtime($Entry{EndTime});
-
-#  $Entry{StartMinute}        = sprintf ("%02d",$START[1]);
-#  $Entry{StartHour}          = sprintf ("%02d",$START[2]);
-#  $Entry{StartDay}           = sprintf ("%02d",$START[3]);
-#  $Entry{StartMonth}         = sprintf ("%02d",$START[4] + 1);
-#  $Entry{StartYear}          = sprintf ("%04d",$START[5] + 1900);
-#  $Entry{EndMinute}          = sprintf ("%02d",$END[1]);
-#  $Entry{EndHour}            = sprintf ("%02d",$END[2]);
-#  $Entry{EndDay}             = sprintf ("%02d",$END[3]);
-#  $Entry{EndMonth}           = sprintf ("%02d",$END[4] + 1);
-#  $Entry{EndYear}            = sprintf ("%04d",$END[5] + 1900);
-
-  # Check for untimed
-#  if ($Entry{Untimed} == 1) {
-#    $Entry{StartMinute} = '';
-#    $Entry{StartHour} = '';
-#    $Entry{EndMinute} = '';
-#    $Entry{EndHour} = '';
-#  }
-
   # Skip private records if $exc_private
   if (($exc_private) && ($Entry{Private} == 1)) {
     return 0;
@@ -272,14 +245,6 @@ sub ReadPilotField {
        $RA{Frequency} = $Frequency;
        $RA{EndTime}  = $EndTime;
        if ($exceptions){ $RA{Exceptions} = $exceptions;}
-
-       # Pass some addtional EndTime data
-#       if ($EndTime) {
-#         my @E = localtime ($EndTime);
-#         $RA{EndDay}   = sprintf ("%02d",$E[3]);
-#         $RA{EndMonth} = sprintf ("%02d",$E[4] + 1);
-#         $RA{EndYear}  = sprintf ("%04d",$E[5] + 1900);
-#       }
 
        if ($Interval == 2) {            # Weekly repeat
          # $Position is an integer that tells what days of the week
@@ -469,20 +434,8 @@ sub ReadCategory {
 
 foreach $Entry (sort ByDateAscending ReadDateBook($DateBookFileName)) {
   $DATA .=  $Entry->{RecordID}. $sep;
-#  $DATA .=  $Entry->{Status}. $sep;
-#  $DATA .=  $Entry->{Position}. $sep;
   $DATA .=  $Entry->{StartTime}. $sep;
-#  $DATA .=  $Entry->{StartMinute}. $sep;
-#  $DATA .=  $Entry->{StartHour}. $sep;
-#  $DATA .=  $Entry->{StartDay}. $sep;
-#  $DATA .=  $Entry->{StartMonth}. $sep;
-#  $DATA .=  $Entry->{StartYear}. $sep;
   $DATA .=  $Entry->{EndTime}. $sep;
-#  $DATA .=  $Entry->{EndMinute}. $sep;
-#  $DATA .=  $Entry->{EndHour}. $sep;
-#  $DATA .=  $Entry->{EndDay}. $sep;
-#  $DATA .=  $Entry->{EndMonth}. $sep;
-#  $DATA .=  $Entry->{EndYear}. $sep;
   $DATA .=  $Entry->{Description}. $sep;
   $DATA .=  $Entry->{Duration}. $sep;
   $DATA .=  $Entry->{Note}. $sep;
@@ -495,9 +448,6 @@ foreach $Entry (sort ByDateAscending ReadDateBook($DateBookFileName)) {
   $DATA .=  $Entry->{Repeat}->{Interval}. $sep;
   $DATA .=  $Entry->{Repeat}->{Frequency}. $sep;
   $DATA .=  $Entry->{Repeat}->{EndTime}. $sep;
-#  $DATA .=  $Entry->{Repeat}->{EndDay}. $sep;
-#  $DATA .=  $Entry->{Repeat}->{EndMonth}. $sep;
-#  $DATA .=  $Entry->{Repeat}->{EndYear}. $sep;
   $DATA .=  $Entry->{Repeat}->{Exceptions}. $sep;
   $DATA .=  $Entry->{Repeat}->{RepeatDays}. $sep;
 #  $DATA .=  $Entry->{Repeat}->{DayNum}. $sep;
