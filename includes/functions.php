@@ -1492,15 +1492,11 @@ function get_monday_before ( $year, $month, $day ) {
 // params:
 //   $date - date in UNIX time format
 function week_number ( $date ) {
-  $ret = "";
-  if ( $GLOBALS["WEEK_START"] == "1" ) {
-    $ret = strftime ( "%V", $date ); // ISO Weeks -- which start on Mondays
-    if ( $ret == "" ) // %V not implemented on older versions of PHP :-(
-      $ret = strftime ( "%W", $date ); // not 100%
-  } else {
-    $ret = strftime ( "%W", $date );
-  }
-  return $ret;
+  $tmp = getdate($date);
+  $iso    = gregorianToISO($tmp['mday'], $tmp['mon'], $tmp['year']);
+  $parts  = explode('-',$iso);
+  $week_number = intval($parts[1]);
+  return sprintf("%02d",$week_number);
 }
 
 
@@ -3151,6 +3147,7 @@ function print_header_timebar($start_hour, $end_hour) {
   echo "</TR></TABLE>\n";
 }
 
+
 // Get a list of nonuser calendars and return info in an array.
 function get_nonuser_cals ($user = '') {
   $count = 0;
@@ -3178,6 +3175,8 @@ function get_nonuser_cals ($user = '') {
   }
   return $ret;
 }
+
+
 
 function nonuser_load_variables ( $login, $prefix ) {
   global $error,$nuloadtmp_email;
@@ -3207,6 +3206,7 @@ function nonuser_load_variables ( $login, $prefix ) {
   return $ret;
 }
 
+
 // Return true if $login is $nonuser administrator
 function user_is_nonuser_admin ( $login, $nonuser ) {
   $ret = false;
@@ -3220,6 +3220,7 @@ function user_is_nonuser_admin ( $login, $nonuser ) {
   }
   return $ret;
 }
+
 
 // Loads nonuser preferences if on a nonuser admin page
 function load_nonuser_preferences ($nonuser) {
@@ -3242,6 +3243,7 @@ function load_nonuser_preferences ($nonuser) {
     dbi_free_result ( $res );
   }
 }
+
 
 // Determines what today is after the $TZ_OFFSET and sets it globally
 function set_today($date) {
@@ -3270,6 +3272,84 @@ function set_today($date) {
       $thisday = $day;
   }
   $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
+}
+
+
+// JGH borrowed gregorianToISO from PEAR Date_Calc Class
+//   and added $GLOBALS["WEEK_START"] (change noted)
+//
+// Converts from Gregorian Year-Month-Day to ISO YearNumber-WeekNumber-WeekDay
+function gregorianToISO($day,$month,$year) {
+    $mnth = array (0,31,59,90,120,151,181,212,243,273,304,334);
+    $y_isleap = isLeapYear($year);
+    $y_1_isleap = isLeapYear($year - 1);
+    $day_of_year_number = $day + $mnth[$month - 1];
+    if ($y_isleap && $month > 2) {
+        $day_of_year_number++;
+    }
+    // find Jan 1 weekday (monday = 1, sunday = 7)
+    $yy = ($year - 1) % 100;
+    $c = ($year - 1) - $yy;
+    $g = $yy + intval($yy/4);
+    $jan1_weekday = 1 + intval((((($c / 100) % 4) * 5) + $g) % 7);
+
+
+    // JGH added next if/else to compensate for week begins on Sunday
+    if (! $GLOBALS["WEEK_START"] && $jan1_weekday < 7) {
+      $jan1_weekday++;
+    } elseif (! $GLOBALS["WEEK_START"] && $jan1_weekday == 7) {
+      $jan1_weekday=1;
+    }
+
+    // weekday for year-month-day
+    $h = $day_of_year_number + ($jan1_weekday - 1);
+    $weekday = 1 + intval(($h - 1) % 7);
+    // find if Y M D falls in YearNumber Y-1, WeekNumber 52 or
+    if ($day_of_year_number <= (8 - $jan1_weekday) && $jan1_weekday > 4){
+        $yearnumber = $year - 1;
+        if ($jan1_weekday == 5 || ($jan1_weekday == 6 && $y_1_isleap)) {
+            $weeknumber = 53;
+        } else {
+            $weeknumber = 52;
+        }
+    } else {
+        $yearnumber = $year;
+    }
+    // find if Y M D falls in YearNumber Y+1, WeekNumber 1
+    if ($yearnumber == $year) {
+        if ($y_isleap) {
+            $i = 366;
+        } else {
+            $i = 365;
+        }
+        if (($i - $day_of_year_number) < (4 - $weekday)) {
+            $yearnumber++;
+            $weeknumber = 1;
+        }
+    }
+    // find if Y M D falls in YearNumber Y, WeekNumber 1 through 53
+    if ($yearnumber == $year) {
+        $j = $day_of_year_number + (7 - $weekday) + ($jan1_weekday - 1);
+        $weeknumber = intval($j / 7);
+        if ($jan1_weekday > 4) {
+            $weeknumber--;
+        }
+    }
+    // put it all together
+    if ($weeknumber < 10)
+        $weeknumber = '0'.$weeknumber;
+    return "{$yearnumber}-{$weeknumber}-{$weekday}";
+}
+
+
+// JGH Borrowed isLeapYear from PEAR Date_Calc Class
+//
+// Returns true for a leap year, else false
+function isLeapYear($year='') {
+  if (empty($year)) $year = strftime("%Y",time());
+  if (strlen($year) != 4) return false;
+  if (preg_match('/\D/',$year)) return false;
+  return (($year % 4 == 0 && $year % 100 != 0) || $year % 400 == 0);
 }
 
 ?>
