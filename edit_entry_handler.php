@@ -66,7 +66,7 @@ function add_duration ( $time, $duration ) {
   $h = $minutes / 60;
   $m = $minutes % 60;
   $ret = sprintf ( "%d%02d00", $h, $m );
-  //echo "add_duration ( $time, $duration ) = $ret <BR>";
+  //echo "add_duration ( $time, $duration ) = $ret <br />";
   return $ret;
 }
 
