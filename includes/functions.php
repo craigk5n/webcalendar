@@ -3079,7 +3079,8 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
     }
   }
   if ( ! empty ( $hour_arr[9999] ) ) {
-    echo "<tr><th class=\"empty\">&nbsp;</th>\n<td>$hour_arr[9999]</td></tr>\n";
+    echo "<tr><th class=\"empty\">&nbsp;</th>\n" .
+      "<td class=\"hasevents\">$hour_arr[9999]</td></tr>\n";
   }
   $rowspan = 0;
   //echo "first_slot = $first_slot<br />\nlast_slot = $last_slot<br />\ninterval = $interval<br />\n";
@@ -3092,7 +3093,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
       if ( ! empty ( $hour_arr[$i] ) ) {
-        echo "<td>";
+        echo "<td class=\"hasevents\">";
         if ( $can_add )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
         echo "$hour_arr[$i]</td>\n";
@@ -3113,12 +3114,12 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
         else
           $rowspan = $rowspan_arr[$i];
         if ( $rowspan > 1 ) {
-          echo "<td rowspan=\"$rowspan\">";
+          echo "<td rowspan=\"$rowspan\" class=\"hasevents\">";
           if ( $can_add )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</td></tr>\n";
         } else {
-          echo "<td>";
+          echo "<td class=\"hasevents\">";
           if ( $can_add )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</td></tr>\n";

@@ -286,6 +286,12 @@ if ( $untimed_found ) {
 	}
 	echo "<td";
 
+	// Use the class 'hasevents' for any hour block that has events
+	// in it.
+	if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
+		$class = 'hasevents';
+	}
+
 	if ( $class != "" ) {
 		echo " class=\"$class\"";
 	}
@@ -323,6 +329,13 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 			$class .= " ";
 		}
 		$class .= "today";
+	}
+
+	// Use the class 'hasevents' for any hour block that has events
+	// in it.
+	if ( ! empty ( $save_hour_arr[$d][$i] ) &&
+		strlen ( $save_hour_arr[$d][$i] ) ) {
+		$class = 'hasevents';
 	}
 
     if ( $rowspan_day[$d] > 1 ) {
