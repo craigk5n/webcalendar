@@ -1,4 +1,6 @@
 Version 0.9.33dev (?? July 01)
+  - Fixed bug: the "back to my calendar" link would go to another user's
+    calendar if you just viewed another user's calendar.
   - Fixed bug: was not displaying more than one event per day in the
     week view.
   - Removed all the <?php_track_vars?> from every .php file since it was
