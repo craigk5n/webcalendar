@@ -2616,7 +2616,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
     }
   }
   if ( ! empty ( $hour_arr[9999] ) ) {
-    echo "<tr><td style=\"height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG;\">&nbsp;</td>\n<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">$hour_arr[9999]</td></tr>\n";
+    echo "<tr><th class=\"empty\">&nbsp;</th>\n<td style=\"background-color:$TODAYCELLBG;\">$hour_arr[9999]</td></tr>\n";
   }
   $rowspan = 0;
   //echo "first_slot = $first_slot<br />\nlast_slot = $last_slot<br />\ninterval = $interval<br />\n";
@@ -2624,13 +2624,13 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
     $time_h = (int) ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
     $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-    echo "<tr>\n<th style=\"height:40px; width:14%;\" class=\"tableheader\">" .
+    echo "<tr>\n<th class=\"row\">" .
       $time . "</th>\n";
     if ( $rowspan > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
       if ( ! empty ( $hour_arr[$i] ) ) {
-        echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
+        echo "<td>";
         if ( $can_add )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
         echo "$hour_arr[$i]</td>\n";
@@ -2639,25 +2639,25 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
     } else {
       $color = $all_day ? $TODAYCELLBG : $CELLBG;
       if ( empty ( $hour_arr[$i] ) ) {
-        echo "<td style=\"height:40px; background-color:$color; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
+        echo "<td style=\"background-color:$color;\">";
         if ( $can_add )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-        echo "&nbsp;</td>\n</tr>\n";
+        echo "&nbsp;</td></tr>\n";
       } else {
         if ( empty ( $rowspan_arr[$i] ) )
           $rowspan = '';
         else
           $rowspan = $rowspan_arr[$i];
         if ( $rowspan > 1 ) {
-          echo "<td style=\"vertical-align:top; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\" rowspan=\"$rowspan\">";
+          echo "<td style=\"background-color:$TODAYCELLBG;\" rowspan=\"$rowspan\">";
           if ( $can_add )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-          echo "$hour_arr[$i]</td>\n</tr>\n";
+          echo "$hour_arr[$i]</td></tr>\n";
         } else {
-          echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
+          echo "<td style=\"background-color:$TODAYCELLBG;\">";
           if ( $can_add )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-          echo "$hour_arr[$i]</td>\n</tr>\n";
+          echo "$hour_arr[$i]</td></tr>\n";
         }
       }
     }

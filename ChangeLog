@@ -1,4 +1,7 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixing a TON of bugs in almost all of the views NOTE: view_m, day, and
+  week.php are in need of a major php code overhaul to fix some of the
+  remaining bugs
   - Fixed bug 1060764: forgot to add translation stuff to "public access" in
   trailer
   - Fixed bug 1060779: also forgot to translation stuff for "preview" views
