@@ -52,9 +52,9 @@ if ( ! $friendly ) {
   $monthstart = mktime ( 3, 0, 0, $prevmonth, 1, $prevyear );
   $monthend = mktime ( 3, 0, 0, $prevmonth + 1, 0, $prevyear );
   echo "<tr><td colspan=\"7\" align=\"center\">" .
-    "<a href=\"month.php?$u_url&";
+    "<a href=\"month.php?$u_url&amp;";
   $prevmonth_name = month_name ( $prevmonth );
-  echo "year=$prevyear&month=$prevmonth$caturl\" class=\"monthlink\">" .
+  echo "year=$prevyear&amp;month=$prevmonth$caturl\" class=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $prevyear, $prevmonth ),
     $DATE_FORMAT_MY, false, false ) .
     "</a></td></tr>\n";
@@ -75,11 +75,12 @@ if ( ! $friendly ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<td class=\"numericdate\">" . date ( "d", $date ) . "</td>\n";
+        print "<td class=\"numericdate\"><a href=\"day.php?$u_url&amp;date=".date("Ymd", $date)."\">" . date ( "d", $date ) . "</a></td>\n";
       } else {
         print "<td>&nbsp;</td>\n";
       }
     }
+    print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\">W</a></td>\n";
     print "</tr>\n";
   }
   echo "</table></td>\n";
@@ -143,11 +144,12 @@ if ( ! $friendly ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<td class=\"numericdate\">" . date ( "d", $date ) . "</td>\n";
+        print "<td class=\"numericdate\"><a href=\"day.php?$u_url&amp;date=".date("Ymd", $date)."\">" . date ( "d", $date ) . "</a></td>\n";
       } else {
         print "<td>&nbsp;</td>\n";
       }
     }
+    print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\">W</a></td>\n";
     print "</tr>\n";
   }
   echo "</table></td>\n";
