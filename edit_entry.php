@@ -262,10 +262,10 @@ if ( $time < 0 )
 <input name="hour" size="2" value="<?php if ( $allday != "Y" ) echo $h12;?>" maxlength="2" />:<input name="minute" size="2" value="<?php if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $minute );?>" maxlength="2" />
 <?php
 if ( $TIME_FORMAT == "12" ) {
-  echo "<input type=\"radio\" name=\"ampm\" value=\"am\" $amsel>" .
-    translate("am") . "\n";
-  echo "<input type=\"radio\" name=\"ampm\" value=\"pm\" $pmsel>" .
-    translate("pm") . "\n";
+  echo "<label><input type=\"radio\" name=\"ampm\" value=\"am\" $amsel />" .
+    translate("am") . "</label>\n";
+  echo "<label><input type=\"radio\" name=\"ampm\" value=\"pm\" $pmsel />" .
+    translate("pm") . "</label>\n";
 }
 ?>
 </span>
@@ -330,10 +330,10 @@ if ( $allday != "Y" && $hour == -1 ) {
 <input name="endhour" size="2" value="<?php if ( $allday != "Y" ) echo $endhour;?>" maxlength="2" />:<input name="endminute" size="2" value="<?php if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $endminute );?>" maxlength="2" />
 <?php
 if ( $TIME_FORMAT == "12" ) {
-  echo "<input type=\"radio\" name=\"endampm\" value=\"am\" $endamsel>" .
-    translate("am") . "\n";
-  echo "<input type=\"radio\" name=\"endampm\" value=\"pm\" $endpmsel>" .
-    translate("pm") . "\n";
+  echo "<label><input type=\"radio\" name=\"endampm\" value=\"am\" $endamsel />" .
+    translate("am") . "</label>\n";
+  echo "<label><input type=\"radio\" name=\"endampm\" value=\"pm\" $endpmsel />" .
+    translate("pm") . "</label>\n";
 }
 ?>
 </span>
@@ -449,12 +449,12 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     }
     if ( $rem_status )
       echo " checked=\"checked\"";
-    echo "> ";
+    echo " /> ";
     etranslate ( "Yes" );
     echo "&nbsp;<input type=\"radio\" name=\"" . $extra_name . "\" value=\"0\"";
     if ( ! $rem_status )
       echo " checked=\"checked\"";
-    echo "> ";
+    echo " /> ";
     etranslate ( "No" );
     echo "&nbsp;&nbsp;";
     if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
@@ -473,12 +473,12 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
       $minutes -= ( $d * 24 * 60 );
       $h = (int) ( $minutes / 60 );
       $minutes -= ( $h * 60 );
-      echo "<input size=\"2\" name=\"" . $extra_name .
-        "_days\" value=\"$d\"> " .  translate("days") . "&nbsp;&nbsp;";
-      echo "<input size=\"2\" name=\"" . $extra_name .
-        "_hours\" value=\"$h\"> " .  translate("hours") . "&nbsp;&nbsp;";
-      echo "<input size=\"2\" name=\"" . $extra_name .
-        "_minutes\" value=\"$minutes\"> " .  translate("minutes") .
+      echo "<input type=\"text\" size=\"2\" name=\"" . $extra_name .
+        "_days\" value=\"$d\" /> " .  translate("days") . "&nbsp;&nbsp;";
+      echo "<input type=\"text\" size=\"2\" name=\"" . $extra_name .
+        "_hours\" value=\"$h\" /> " .  translate("hours") . "&nbsp;&nbsp;";
+      echo "<input type=\"text\" size=\"2\" name=\"" . $extra_name .
+        "_minutes\" value=\"$minutes\" /> " .  translate("minutes") .
         "&nbsp;&nbsp;";
       etranslate("before event");
     }
@@ -568,31 +568,31 @@ if ( $single_user == "N" && $show_participants ) {
 <tr><td style="vertical-align:top;" class="tooltip" title="<?php etooltip("repeat-type-help")?>"><?php etranslate("Repeat Type")?>:</td>
 <td style="vertical-align:top;"><?php
 echo "<input type=\"radio\" name=\"rpt_type\" value=\"none\"" .
-  ( strcmp ( $rpt_type, 'none' ) == 0 ? " checked=\"checked\"" : "" ) . ">" .
+  ( strcmp ( $rpt_type, 'none' ) == 0 ? " checked=\"checked\"" : "" ) . " />" .
   translate("None");
 echo "<input type=\"radio\" name=\"rpt_type\" value=\"daily\"" .
-  ( strcmp ( $rpt_type, 'daily' ) == 0 ? " checked=\"checked\"" : "" ) . ">" .
+  ( strcmp ( $rpt_type, 'daily' ) == 0 ? " checked=\"checked\"" : "" ) . " />" .
   translate("Daily");
 echo "<input type=\"radio\" name=\"rpt_type\" value=\"weekly\"" .
-  ( strcmp ( $rpt_type, 'weekly' ) == 0 ? " checked=\"checked\"" : "" ) . ">" .
+  ( strcmp ( $rpt_type, 'weekly' ) == 0 ? " checked=\"checked\"" : "" ) . " />" .
   translate("Weekly");
 echo "<input type=\"radio\" name=\"rpt_type\" value=\"monthlyByDay\"" .
-  ( strcmp ( $rpt_type, 'monthlyByDay' ) == 0 ? " checked=\"checked\"" : "" ) . ">" .
+  ( strcmp ( $rpt_type, 'monthlyByDay' ) == 0 ? " checked=\"checked\"" : "" ) . " />" .
   translate("Monthly") . " (" . translate("by day") . ")";
 echo "<input type=\"radio\" name=\"rpt_type\" value=\"monthlyByDayR\"" .
-  ( strcmp ( $rpt_type, 'monthlyByDayR' ) == 0 ? " checked=\"checked\"" : "" ) . ">" .
+  ( strcmp ( $rpt_type, 'monthlyByDayR' ) == 0 ? " checked=\"checked\"" : "" ) . " />" .
   translate("Monthly") . " (" . translate("by day (from end)") . ")";
 echo "<input type=\"radio\" name=\"rpt_type\" value=\"monthlyByDate\"" .
-  ( strcmp ( $rpt_type, 'monthlyByDate' ) == 0 ? " checked=\"checked\"" : "" ) . ">" .
+  ( strcmp ( $rpt_type, 'monthlyByDate' ) == 0 ? " checked=\"checked\"" : "" ) . " />" .
   translate("Monthly") . " (" . translate("by date") . ")";
 echo "<input type=\"radio\" name=\"rpt_type\" value=\"yearly\"" .
-  ( strcmp ( $rpt_type, 'yearly' ) == 0 ? " checked=\"checked\"" : "" ) . ">" .
+  ( strcmp ( $rpt_type, 'yearly' ) == 0 ? " checked=\"checked\"" : "" ) . " />" .
   translate("Yearly");
 ?>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip("repeat-end-date-help")?>"><?php etranslate("Repeat End Date")?>:</td>
-<td><input type="checkbox" name="rpt_end_use" value="y" <?php
-  echo ( ! empty ( $rpt_end ) ? " checked=\"checked\"" : "" ); ?>> <?php etranslate("Use end date")?>
+<td><label><input type="checkbox" name="rpt_end_use" value="y" <?php
+  echo ( ! empty ( $rpt_end ) ? " checked=\"checked\"" : "" ); ?> /> <?php etranslate("Use end date")?></label>
 &nbsp;&nbsp;&nbsp;
 <span class="end_day_selection">
   <?php
@@ -602,28 +602,28 @@ echo "<input type=\"radio\" name=\"rpt_type\" value=\"yearly\"" .
 <tr><td class="tooltip" title="<?php etooltip("repeat-day-help")?>"><?php etranslate("Repeat Day")?>: (<?php etranslate("for weekly")?>)</td>
   <td><?php
   if( $WEEK_START != 1)
-    echo "<input type=\"checkbox\" name=\"rpt_sun\" value=\"y\""
-       . (!empty($rpt_sun)?" checked=\"checked\"":"") . ">" . translate("Sunday");
-  echo "<input type=\"checkbox\" name=\"rpt_mon\" value=\"y\""
-     . (!empty($rpt_mon)?" checked=\"checked\"":"") . ">" . translate("Monday");
-  echo "<input type=\"checkbox\" name=\"rpt_tue\" value=\"y\""
-     . (!empty($rpt_tue)?" checked=\"checked\"":"") . ">" . translate("Tuesday");
-  echo "<input type=\"checkbox\" name=\"rpt_wed\" value=\"y\""
-     . (!empty($rpt_wed)?" checked=\"checked\"":"") . ">" . translate("Wednesday");
-  echo "<input type=\"checkbox\" name=\"rpt_thu\" value=\"y\""
-     . (!empty($rpt_thu)?" checked=\"checked\"":"") . ">" . translate("Thursday");
-  echo "<input type=\"checkbox\" name=\"rpt_fri\" value=\"y\""
-     . (!empty($rpt_fri)?" checked=\"checked\"":"") . ">" . translate("Friday");
-  echo "<input type=\"checkbox\" name=\"rpt_sat\" value=\"y\""
-     . (!empty($rpt_sat)?" checked=\"checked\"":"") . ">" . translate("Saturday");
+    echo "<label><input type=\"checkbox\" name=\"rpt_sun\" value=\"y\""
+       . (!empty($rpt_sun)?" checked=\"checked\"":"") . " />" . translate("Sunday") . "</label>";
+  echo "<label><input type=\"checkbox\" name=\"rpt_mon\" value=\"y\""
+     . (!empty($rpt_mon)?" checked=\"checked\"":"") . " />" . translate("Monday") . "</label>";
+  echo "<label><input type=\"checkbox\" name=\"rpt_tue\" value=\"y\""
+     . (!empty($rpt_tue)?" checked=\"checked\"":"") . " />" . translate("Tuesday") . "</label>";
+  echo "<label><input type=\"checkbox\" name=\"rpt_wed\" value=\"y\""
+     . (!empty($rpt_wed)?" checked=\"checked\"":"") . " />" . translate("Wednesday") . "</label>";
+  echo "<label><input type=\"checkbox\" name=\"rpt_thu\" value=\"y\""
+     . (!empty($rpt_thu)?" checked=\"checked\"":"") . " />" . translate("Thursday") . "</label>";
+  echo "<label><input type=\"checkbox\" name=\"rpt_fri\" value=\"y\""
+     . (!empty($rpt_fri)?" checked=\"checked\"":"") . " />" . translate("Friday") . "</label>";
+  echo "<label><input type=\"checkbox\" name=\"rpt_sat\" value=\"y\""
+     . (!empty($rpt_sat)?" checked=\"checked\"":"") . " />" . translate("Saturday") . "</label>";
   if( $WEEK_START == 1)
-    echo "<input type=\"checkbox\" name=\"rpt_sun\" value=\"y\""
-       . (!empty($rpt_sun)?" checked=\"checked\"":"") . ">" . translate("Sunday");
+    echo "<label><input type=\"checkbox\" name=\"rpt_sun\" value=\"y\""
+       . (!empty($rpt_sun)?" checked=\"checked\"":"") . " />" . translate("Sunday") . "</label>";
   ?></td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("repeat-frequency-help")?>"><label for="entry_freq"><?php etranslate("Frequency")?>:</label></td>
 <td>
-  <input name="rpt_freq" id="entry_freq" size="4" maxlength="4" value="<?php echo $rpt_freq; ?>" />
+  <input type="text" name="rpt_freq" id="entry_freq" size="4" maxlength="4" value="<?php echo $rpt_freq; ?>" />
  </td>
 </tr>
 <?php } ?>

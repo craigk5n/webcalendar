@@ -207,14 +207,14 @@ if ( ! empty ( $ret ) ) {
     $redir = "?date=$thisdate";
   if ( $user != "" ) {
     if ( $redir != "" )
-      $redir .= "&";
+      $redir .= "&amp;";
     $redir .= "user=$user";
   }
   $url = "$STARTVIEW.php" . $redir;
 }
 if ( empty ( $error ) ) {
   if ($is_assistant || $is_nonuser_admin)
-     $url = $url . (strpos($url, "?") === false ? "?" : "&") . "user=$user";
+     $url = $url . (strpos($url, "?") === false ? "?" : "&amp;") . "user=$user";
   do_redirect ( $url );
   exit;
 }
