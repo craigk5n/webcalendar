@@ -317,7 +317,7 @@ function send_reminder ( $id, $event_date ) {
     $subject = translate("Reminder") . ": " . $name;
 
     if ( strlen ( $GLOBALS["email_fallback_from"] ) )
-      $extra_hdrs = "From: " . $GLOBALS["email_fallback_from"] . "\n" .
+      $extra_hdrs = "From: " . $GLOBALS["email_fallback_from"] . "\r\n" .
         "X-Mailer: " . translate($application_name);
     else
       $extra_hdrs = "X-Mailer: " . translate($application_name);

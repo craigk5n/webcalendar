@@ -121,10 +121,10 @@ if ( $id > 0 && empty ( $error ) ) {
           translate("Date") . ": " . date_to_str ($eventdate) . "\n" .
           translate("Time") . ": " . display_time ($eventtime) . "\n\n";
         if ( strlen ( $login_email ) )
-          $extra_hdrs = "From: $login_email\nX-Mailer: " .
+          $extra_hdrs = "From: $login_email\r\nX-Mailer: " .
             translate($application_name);
         else
-          $extra_hdrs = "From: $email_fallback_from\nX-Mailer: " .
+          $extra_hdrs = "From: $email_fallback_from\r\nX-Mailer: " .
             translate($application_name);
         mail ( $tempemail,
           translate($application_name) . " " .
