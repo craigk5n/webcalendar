@@ -1,10 +1,11 @@
 <?php
 include_once 'includes/init.php';
 
-if (($user != $login) && $is_nonuser_admin)
-  load_user_layers ($user);
-else
-  load_user_layers ();
+if (($user != $login) && $is_nonuser_admin) {
+   load_user_layers ($user);
+} else {
+   load_user_layers ();
+}
 
 load_user_categories ();
 
@@ -13,12 +14,14 @@ $prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.
-if ( $WEEK_START == 1 )
-  $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
-else
-  $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
-$wkend = $wkstart + ( 3600 * 24 * 6 );
+if ( $WEEK_START == 1 ) {
+   $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
+} else {
+   $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
+}
 
+$wkend = $wkstart + ( 3600 * 24 * 6 );
+ 
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
 
@@ -97,25 +100,27 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 <th class="empty">&nbsp;</th>
 <?php
 for ( $d = $start_ind; $d < $end_ind; $d++ ) {
-  if ( date ( "Ymd", $days[$d] ) == date ( "Ymd", $today ) ) {
-	  echo "<th class=\"today\">";
+	if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
+		echo '<th class="today">';
   } else {
-	echo "<th>";
+	echo '<th>';
   }
+
   if ( $can_add ) {
     echo html_for_add_icon (  date ( "Ymd", $days[$d] ), "", "", $user );
   }
-  echo "<a href=\"day.php?" . $u_url .
-    "date=" . date ("Ymd", $days[$d] ) . "$caturl\">" .
-    $header[$d] . "</a></th>\n";
+	echo '<a href="day.php?' . $u_url .
+		'date=' . date ('Ymd', $days[$d] ) . $caturl . '">' .
+		$header[$d] . "</a></th>\n";
 }
 ?>
 </tr>
 
 <?php
-
-if ( empty ( $TIME_SLOTS ) )
+if ( empty ( $TIME_SLOTS ) ) {
   $TIME_SLOTS = 24;
+}
+
 $interval = ( 24 * 60 ) / $TIME_SLOTS;
 
 $first_slot = (int)( ( ( $WORK_DAY_START_HOUR - $TZ_OFFSET ) * 60 ) / $interval );
@@ -235,7 +240,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 
   // now save the output...
   if ( ! empty ( $hour_arr[9999] ) && strlen ( $hour_arr[9999] ) ) {
-    $untimed[$d] = "<td>$hour_arr[9999]</td>\n";
+		$untimed[$d] = $hour_arr[9999];
     $untimed_found = true;
   }
   $save_hour_arr[$d] = $hour_arr;
@@ -247,18 +252,30 @@ if ( $untimed_found ) {
   echo "<tr>\n<th class=\"empty\">&nbsp;</th>\n";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
+
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-    if ( empty ( $WEEKENDBG ) )
-      $is_weekend = false;
-    if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
-      echo $untimed[$d];
-    } else {
-    	if ($is_weekend) {
-		echo "<td class=\"weekend\">&nbsp;</td>\n";
-	} else {
-		echo "<td>&nbsp;</td>\n";
-	}
+
+		if ($is_weekend) {
+			$class = 'weekend';
+		} else {
+			$class = '';
+		}
+
+		echo '<td';
+
+		if ( $class != '' ) {
+			echo " class=\"$class\"";
     }
+
+		echo '>';
+
+		if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
+			echo $untimed[$d];
+		} else {
+			echo '&nbsp;';
+		}
+
+		echo "</td>\n";
   }
   echo "</tr>\n";
 }
@@ -273,36 +290,79 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   echo "<tr>\n<th class=\"row\">" .  $time . "</th>\n";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
+
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-    if ( empty ( $WEEKENDBG ) )
-      $is_weekend = false;
-    $color = $is_weekend ? $WEEKENDBG : $CELLBG;
-    if ( ! empty ( $all_day[$d] ) && $all_day[$d] > 0 )
-      $color = $TODAYCELLBG;
+
+		if ( $is_weekend ) {
+			$class = 'weekend';
+		} else {
+			$class = '';
+		}
+
+		if ( ! empty ( $all_day[$d] ) && $all_day[$d] > 0 ) {
+			if (strlen($class)) {
+				$class .= ' ';
+			}
+			$class .= 'today';
+		}
+
     if ( $rowspan_day[$d] > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
-      if ( ! empty ( $save_hour_arr[$d][$i] ) )
-        echo "<td style=\"background-color:$color;\">" .
-          $save_hour_arr[$d][$i] . "</td>\n";
+			if ( ! empty ( $save_hour_arr[$d][$i] ) ) {
+				echo '<td';
+
+				if ( $class != '' ) {
+					echo " class=\"$class\"";
+				}
+
+				echo '>' . $save_hour_arr[$d][$i] . "</td>\n";
+			}
       $rowspan_day[$d]--;
     } else {
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
-        echo "<td style=\"background-color:$color;\">";
-        if ( $can_add ) //if user can add events...
+				echo '<td';
+
+				if ( $class != '' ) {
+					echo " class=\"$class\"";
+				}
+
+				echo '>';
+
+				if ( $can_add ) { //if user can add events...
           echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user ); //..then echo the add event icon
+				}
+
         echo "&nbsp;</td>\n";
       } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         if ( $rowspan_day[$d] > 1 ) {
-          echo "<td style=\"background-color:$color;\" rowspan=\"$rowspan_day[$d]\">";
-          if ( $can_add )
+					echo '<td';
+
+					if ( $class != '' ) {
+						echo " class=\"$class\"";
+					}
+
+					echo " rowspan=\"$rowspan_day[$d]\">";
+
+					if ( $can_add ) {
             echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
+					}
+
           echo $save_hour_arr[$d][$i] . "</td>\n";
         } else {
-          echo "<td style=\"background-color:$color;\">";
-          if ( $can_add )
+					echo '<td';
+
+					if ( $class != '' ) {
+						echo " class=\"$class\"";
+					}
+
+					echo '>';
+
+					if ( $can_add ) {
             echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
+					}
+
           echo $save_hour_arr[$d][$i] . "</td>\n";
         }
       }
@@ -316,7 +376,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 <br />
 
 <?php
-  if ( ! empty ( $eventinfo ) ) echo $eventinfo;
+	echo $eventinfo;
 
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
