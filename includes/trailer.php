@@ -8,6 +8,9 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     die ( "You can't access this file directly!" );
 }
 
+// Pass the current charset to avoid errors using Japanese
+$charset = ( ! empty ( $LANGUAGE ) ? translate ( "charset" ) : "iso-8859-1" );
+
 // NOTE: This file is included within the print_trailer function found
 // in includes/init.php.  If you add a global variable somewhere in this
 // file, be sure to declare it global in the print_trialer function
@@ -140,204 +143,207 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 <input type="submit" value="<?php etranslate("Go")?>" />
 </form>
 <div id="menu">
-<!-- GO TO -->
-<span class="prefix"><?php etranslate("Go to")?>:</span> 
+
 <?php
-  $can_add = ( $readonly == "N" );
-  if ( $public_access == "Y" && $public_access_can_add != "Y" &&
-    $login == "__public__" ) {
-    $can_add = false;
-  }
+$goto_link = array ( );
+$views_link = array ( );
+$reports_link = array ( );
+$manage_calendar_link = array ( );
 
-  if ( ! empty ( $GLOBALS['STARTVIEW'] ) ) {
-    $mycal = $GLOBALS['STARTVIEW'];
-  } else {
-    $mycal = "index.php";
-  }
+// Go To links
+$can_add = ( $readonly == "N" );
+if ( $public_access == "Y" && $public_access_can_add != "Y" &&
+  $login == "__public__" ) {
+  $can_add = false;
+}
 
-  // calc URL to today
-  $todayURL = 'month.php';
-  $reqURI = 'month.php';
-  if ( ! empty ( $GLOBALS['SCRIPT_NAME'] ) ) {
-    $reqURI = $GLOBALS['SCRIPT_NAME'];
-  } else if ( ! empty ( $_SERVER['SCRIPT_NAME'] ) ) {
-    $reqURI = $_SERVER['SCRIPT_NAME'];
-  }
-  if ( ! strstr ( $reqURI, "month.php" ) &&
-     ! strstr ( $reqURI, "week.php" ) &&
-     ! strstr ( $reqURI, "day.php" ) ) {
-    $todayURL = 'day.php';
-  } else {
-    $todayURL = $reqURI;
-  }
+if ( ! empty ( $GLOBALS['STARTVIEW'] ) ) {
+  $mycal = $GLOBALS['STARTVIEW'];
+} else {
+  $mycal = "index.php";
+}
 
-  if ( $single_user != "Y" ) {
-    if ( ! empty ( $user ) && $user != $login ) {
-      echo "<a title=\"" . 
-        translate("My Calendar") . "\" style=\"font-weight:bold;\" " .
-        "href=\"$mycal\">" . 
-        translate("Back to My Calendar") . "</a>";
-    } else {
-      echo "<a title=\"" . 
-        translate("My Calendar") . "\" style=\"font-weight:bold;\" " .
-        "href=\"$mycal\">" . 
-        translate("My Calendar") . "</a>\n";
-    }
-    if ( ! empty ( $user ) && $user != $login ) {
-      $todayURL .= '?user=' . $user;
-    }
-    echo " | <a title=\"" . 
-      translate("Today") . "\" style=\"font-weight:bold;\" " .
-      "href=\"$todayURL\">" . 
-      translate("Today") . "</a>\n";
-    if ( $login != '__public__' && $readonly == 'N' ) {
-      echo " | <a title=\"" . 
-        translate("Admin") . "\" style=\"font-weight:bold;\" " .
-        "href=\"adminhome.php\">" . 
-        translate("Admin") . "</a>\n";
-    }
-    if ( $login != "__public__" && $readonly == "N" &&
-      ( $require_approvals == "Y" || $public_access == "Y" ) ) {
-      $url = 'list_unapproved.php';
-      if ($is_nonuser_admin) {
-        $url .= "?user=$user";
-      }
-      echo " | <a title=\"" . 
-        translate("Unapproved Events") . "\" href=\"$url\">" . 
-        translate("Unapproved Events") . "</a>\n";
-    }
-    if ( $login == "__public__" && $public_access_others != "Y" ) {
-      // don't allow them to see other people's calendar
-    } else if ( $allow_view_other == "Y" || $is_admin ) {
-      echo " | <a title=\"" . 
-        translate("Another User's Calendar") . "\" href=\"select_user.php\">" . 
-        translate("Another User's Calendar") . "</a>\n";
-    }
-  } else {
-    echo "<a title=\"" . 
+// calc URL to today
+$todayURL = 'month.php';
+$reqURI = 'month.php';
+if ( ! empty ( $GLOBALS['SCRIPT_NAME'] ) ) {
+  $reqURI = $GLOBALS['SCRIPT_NAME'];
+} else if ( ! empty ( $_SERVER['SCRIPT_NAME'] ) ) {
+  $reqURI = $_SERVER['SCRIPT_NAME'];
+}
+if ( ! strstr ( $reqURI, "month.php" ) &&
+   ! strstr ( $reqURI, "week.php" ) &&
+   ! strstr ( $reqURI, "day.php" ) ) {
+  $todayURL = 'day.php';
+} else {
+  $todayURL = $reqURI;
+}
+
+if ( $single_user != "Y" ) {
+  if ( ! empty ( $user ) && $user != $login ) {
+    $goto_link[] = "<a title=\"" . 
       translate("My Calendar") . "\" style=\"font-weight:bold;\" " .
       "href=\"$mycal\">" . 
-      translate("My Calendar") . "</a>\n";
-    echo " | <a title=\"" . 
-      translate("Today") . "\" style=\"font-weight:bold;\" " .
-      "href=\"$todayURL\">" . 
-      translate("Today") . "</a>\n";
-    if ( $readonly == 'N' ) {
-      echo " | <a title=\"" . 
-        translate("Admin") . "\" style=\"font-weight:bold;\" " .
-        "href=\"adminhome.php\">" . 
-        translate("Admin") . "</a>\n";
-    }
+      translate("Back to My Calendar") . "</a>";
+  } else {
+    $goto_link[] = "<a title=\"" . 
+      translate("My Calendar") . "\" style=\"font-weight:bold;\" " .
+      "href=\"$mycal\">" . 
+      translate("My Calendar") . "</a>";
   }
-  // only display some links if we're viewing our own calendar.
-  if ( empty ( $user ) || $user == $login ) {
-    echo " | <a title=\"" . 
-      translate("Search") . "\" href=\"search.php\">" .
-      translate("Search") . "</a>\n";
-    if ( $login != '__public__' ) {
-      echo " | <a title=\"" . 
-        translate("Import") . "/" . translate("Export") . "\"  ".
-        "href=\"import.php\">" . 
-        translate("Import") . "/" . translate("Export") . "</a>\n";
-    }
-    if ( $can_add ) {
-      echo " | <a title=\"" . 
-        translate("Add New Entry") . "\" href=\"edit_entry.php";
-      if ( ! empty ( $thisyear ) ) {
-        print "?year=$thisyear";
-        if ( ! empty ( $thismonth ) ) {
-          print "&amp;month=$thismonth";
-        }
-        if ( ! empty ( $thisday ) ) {
-          print "&amp;day=$thisday";
-        }
-      }
-      echo "\">" . 
-        translate("Add New Entry") . "</a>\n";
-    }
+  if ( ! empty ( $user ) && $user != $login ) {
+    $todayURL .= '?user=' . $user;
   }
+  $goto_link[] = "<a title=\"" . 
+    translate("Today") . "\" style=\"font-weight:bold;\" " .
+    "href=\"$todayURL\">" . 
+    translate("Today") . "</a>";
+  if ( $login != '__public__' && $readonly == 'N' ) {
+    $goto_link[] = "<a title=\"" . 
+      translate("Admin") . "\" style=\"font-weight:bold;\" " .
+      "href=\"adminhome.php\">" . 
+      translate("Admin") . "</a>";
+  }
+  if ( $login != "__public__" && $readonly == "N" &&
+    ( $require_approvals == "Y" || $public_access == "Y" ) ) {
+    $url = 'list_unapproved.php';
+    if ($is_nonuser_admin) {
+      $url .= "?user=$user";
+    }
+    $goto_link[] = "<a title=\"" . 
+      translate("Unapproved Events") . "\" href=\"$url\">" . 
+      translate("Unapproved Events") . "</a>";
+  }
+  if ( $login == "__public__" && $public_access_others != "Y" ) {
+    // don't allow them to see other people's calendar
+  } else if ( $allow_view_other == "Y" || $is_admin ) {
+    $goto_link[] = "<a title=\"" . 
+      translate("Another User's Calendar") . "\" href=\"select_user.php\">" . 
+      translate("Another User's Calendar") . "</a>";
+  }
+} else {
+  $goto_link[] = "<a title=\"" . 
+    translate("My Calendar") . "\" style=\"font-weight:bold;\" " .
+    "href=\"$mycal\">" . 
+    translate("My Calendar") . "</a>";
+  $goto_link[] = "<a title=\"" . 
+    translate("Today") . "\" style=\"font-weight:bold;\" " .
+    "href=\"$todayURL\">" . 
+    translate("Today") . "</a>";
+  if ( $readonly == 'N' ) {
+    $goto_link[] = "<a title=\"" . 
+      translate("Admin") . "\" style=\"font-weight:bold;\" " .
+      "href=\"adminhome.php\">" . 
+      translate("Admin") . "</a>";
+  }
+}
+// only display some links if we're viewing our own calendar.
+if ( empty ( $user ) || $user == $login ) {
+  $goto_link[] = "<a title=\"" . 
+    translate("Search") . "\" href=\"search.php\">" .
+    translate("Search") . "</a>";
   if ( $login != '__public__' ) {
-    echo " | <a title=\"" . 
-      translate("Help") . "\" href=\"#\" onclick=\"window.open " .
-      "( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars, " .
-      "height=400,width=400,innerHeight=420,outerWidth=420' );\"  " .
-      "onmouseover=\"window.status='" . 
-      translate("Help") . "'\">" . 
-      translate("Help") . "</a>\n";
+    $goto_link[] = "<a title=\"" . 
+      translate("Import") . "/" . translate("Export") . "\"  ".
+      "href=\"import.php\">" . 
+      translate("Import") . "/" . translate("Export") . "</a>";
   }
+  if ( $can_add ) {
+    $url = "<a title=\"" . 
+      translate("Add New Entry") . "\" href=\"edit_entry.php";
+    if ( ! empty ( $thisyear ) ) {
+      $url .= "?year=$thisyear";
+      if ( ! empty ( $thismonth ) ) {
+        $url .= "&amp;month=$thismonth";
+      }
+      if ( ! empty ( $thisday ) ) {
+        $url .= "&amp;day=$thisday";
+      }
+    }
+    $url .= "\">" . translate("Add New Entry") . "</a>";
+    $goto_link[] = $url;
+  }
+}
+if ( $login != '__public__' ) {
+  $goto_link[] = "<a title=\"" . 
+    translate("Help") . "\" href=\"#\" onclick=\"window.open " .
+    "( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars, " .
+    "height=400,width=400,innerHeight=420,outerWidth=420' );\"  " .
+    "onmouseover=\"window.status='" . 
+    translate("Help") . "'\">" . 
+    translate("Help") . "</a>";
+}
+
+if ( count ( $goto_link ) > 0 ) {
+  ?><span class="prefix"><?php etranslate("Go to")?>:</span> <?php
+  for ( $i = 0; $i < count ( $goto_link ); $i++ ) {
+    if ( $i > 0 )
+      echo " | ";
+    echo $goto_link[$i];
+  }
+}
 ?>
 
 <!-- VIEWS -->
-<?php if ( ( $login != "__public__" ) &&
-         ($allow_view_other != "N") && count ( $views ) > 0 ) { ?>
-<br /><span class="prefix"><?php etranslate("Views")?>:</span>&nbsp;
 <?php
+if ( ( $is_admin || $allow_view_other != "N" ) && count ( $views ) > 0 ) {
   for ( $i = 0; $i < count ( $views ); $i++ ) {
+    $out = "<a title=\"" .
+      htmlentities ( $views[$i]['cal_name'], ENT_COMPAT, $charset ) .
+      "\" href=\"";
+    $out .= $views[$i]['url'];
+    if ( ! empty ( $thisdate ) )
+      $out .= "&amp;date=$thisdate";
+    $out .= "\">" .
+      htmlentities ( $views[$i]['cal_name'], ENT_COMPAT, $charset  ) . "</a>\n";
+    $views_link[] = $out;
+  }
+}
+if ( count ( $views_link ) > 0 ) {
+  ?><br /><span class="prefix"><?php etranslate("Views")?>:</span>&nbsp;<?php
+  for ( $i = 0; $i < count ( $views_link ); $i++ ) {
     if ( $i > 0 )
       echo " | ";
-    echo "<a title=\"" . 
- $views[$i]['cal_name'] . "\" href=\"";
-    if ( $views[$i]['cal_view_type'] == 'W' )
-      echo "view_w.php?";
-    elseif ( $views[$i]['cal_view_type'] == 'D' )
-      echo "view_d.php?";
-    elseif ( $views[$i]['cal_view_type'] == 'V' )
-      echo "view_v.php?";
-    elseif ( $views[$i]['cal_view_type'] == 'T' )
-      echo "view_t.php?timeb=0&amp;";
-    elseif ( $views[$i]['cal_view_type'] == 'M' )
-      echo "view_m.php?";
-    elseif ( $views[$i]['cal_view_type'] == 'L' )
-      echo "view_l.php?";
-    elseif ( $views[$i]['cal_view_type'] == 'S' )
-      echo "view_t.php?timeb=1&amp;";
-    else
-      echo "view_m.php?";
-    echo "id=" . $views[$i]['cal_view_id'];
-    if ( ! empty ( $thisdate ) )
-      echo "&amp;date=$thisdate";
-    echo "\">" . 
- $views[$i]['cal_name'] . "</a>\n";
+    echo $views_link[$i];
   }
+}
 ?>
 
 <!-- REPORTS -->
-<?php } // if ( $login != "__public__" ) ?>
-<?php if ( ! empty ( $reports_enabled ) && $reports_enabled == 'Y' ) { ?>
-<br />
 <?php
-$res = dbi_query ( "SELECT cal_report_name, cal_report_id " .
-  "FROM webcal_report " .
-  "WHERE cal_login = '$login' OR " .
-  "( cal_is_global = 'Y' AND cal_show_in_trailer = 'Y' ) " .
-  "ORDER BY cal_report_id" );
-$found_report = false;
-if ( ! empty ( $user ) && $user != $login ) {
-  $u_url = "&amp;user=$user";
-} else {
-  $u_url = "";
-}
-if ( $res ) {
-  // Pass the current charset to avoid errors using Japanese
-  $charset = ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" );
-  while ( $row = dbi_fetch_row ( $res ) ) {
-    if ( $found_report )
-      echo " | ";
-    else
-      echo "<span class=\"prefix\">" . 
-       translate("Reports") . ":</span>&nbsp;";
-    echo "<a title=\"" . 
- htmlentities ( $row[0], ENT_COMPAT, $charset ) . 
-   "\" href=\"report.php?report_id=$row[1]$u_url\">" . 
- htmlentities ( $row[0], ENT_COMPAT, $charset ) . "</a>\n";
-    $found_report = true;
+if ( ! empty ( $reports_enabled ) && $reports_enabled == 'Y' ) {
+  if ( ! empty ( $user ) && $user != $login ) {
+    $u_url = "&amp;user=$user";
+  } else {
+    $u_url = "";
   }
-  dbi_free_result ( $res );
+  $res = dbi_query ( "SELECT cal_report_name, cal_report_id " .
+    "FROM webcal_report " .
+    "WHERE cal_login = '$login' OR " .
+    "( cal_is_global = 'Y' AND cal_show_in_trailer = 'Y' ) " .
+    "ORDER BY cal_report_id" );
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      $reports_link[] = "<a title=\"" . 
+        htmlentities ( $row[0], ENT_COMPAT, $charset ) . 
+        "\" href=\"report.php?report_id=$row[1]$u_url\">" . 
+        htmlentities ( $row[0], ENT_COMPAT, $charset ) . "</a>";
+    }
+    dbi_free_result ( $res );
+  }
+
+  if ( count ( $reports_link ) > 0 ) {
+    ?><br/><span class="prefix"><?php etranslate("Reports");?>:</span>&nbsp;<?php
+    for ( $i = 0; $i < count ( $reports_link ); $i++ ) {
+      if ( $i > 0 )
+        echo " | ";
+      echo $reports_link[$i];
+    }
+  }
 }
 ?>
 
 <!-- CURRENT USER -->
-<?php } ?>
 <br />
 <?php
 if ( ! $use_http_auth ) {
@@ -347,15 +353,15 @@ if ( ! $use_http_auth ) {
   $login_url = "login.php?return_path=$login_return_path";
 
   // Should we use another application's login/logout pages?
-  if ( substr($GLOBALS['user_inc'],0,9) == 'user-app-' ) {  
-    global $app_logout_page,$app_login_page,$app_redir_param;
+  if ( substr ( $GLOBALS['user_inc'], 0, 9 ) == 'user-app-' ) {  
     if ( strlen ( $login ) && $login != "__public__" ) {
-      $login_url = $app_logout_page;
+      $login_url = $GLOBALS['app_logout_page'];
     } else {
-      if ($login_return_path != '' && $app_redir_param != '') {
-        $app_login_page .= '?'.$app_redir_param.'='.$login_return_path;
+      if ($login_return_path != '' && $GLOBALS['app_redir_param'] != '') {
+        $GLOBALS['app_login_page'] .= '?'. $GLOBALS['app_redir_param'] .
+          '=' . $login_return_path;
       } 
-      $login_url = $app_login_page;
+      $login_url = $GLOBALS['app_login_page'];
     }
   }  
     
@@ -363,49 +369,59 @@ if ( ! $use_http_auth ) {
   echo "<span class=\"prefix\">" .
    translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 
    translate("Logout") . "\" href=\"$login_url\">" . 
-   translate("Logout") . "</a>)<br />\n";
+   translate("Logout") . "</a>)\n";
  } else {
   echo "<span class=\"prefix\">" .
    translate("Current User") . ":</span>&nbsp;" . 
    translate("Public Access") . "&nbsp;(<a title=\"" . 
    translate("Login") . "\" href=\"$login_url\">" . 
-   translate("Login") . "</a>)<br />\n";
+   translate("Login") . "</a>)\n";
  }
 }
-  if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
-  if ( $has_boss || ! empty ( $admincals[0] ) || ( $is_admin && $public_access ) ) {
-    $grouplist = user_get_boss_list ($login);
-    if ( ! empty ( $admincals[0] ) ) {
-      $grouplist = array_merge($admincals,$grouplist);
-    }
-    if ( $is_admin && $public_access == 'Y' ) {
-      $public = array("cal_login" => "__public__",
-        "cal_fullname" => translate("Public Access") );
-      array_unshift($grouplist, $public);
-    }
-    $groups = "";
-    for ( $i = 0; $i < count ( $grouplist ); $i++ ) {
-      $l = $grouplist[$i]['cal_login'];
-      $f = $grouplist[$i]['cal_fullname'];
-      if ( $i > 0) $groups .= ", ";
-      // Use the preferred view if it is day/week/month/year.php.  Do
-      // not use a user-created view because it might not display the
-      // proper user's events.  (Fallback to month.php if this is true.)
-      $xurl = get_preferred_view ( "", "user=$l" );
-      if ( strstr ( $xurl, "view_" ) ) {
-        $xurl = "month.php?user=$l";
-      }
-      $groups .= "<a title=\"$f\" href=\"$xurl\">$f</a>";
-    }
-    if ( ! empty ( $groups ) ) {
-      echo "<span class=\"prefix\">";
-      etranslate("Manage calendar of");
-      echo ":</span>&nbsp;" . $groups . "<br/>\n";
-    }
+
+// Manage Calendar links
+if ( ! empty ( $nonuser_enabled ) && $nonuser_enabled == "Y" )
+  $admincals = get_nonuser_cals ( $login );
+if ( $has_boss || ! empty ( $admincals[0] ) ||
+  ( $is_admin && $public_access ) ) {
+  $grouplist = user_get_boss_list ( $login );
+  if ( ! empty ( $admincals[0] ) ) {
+    $grouplist = array_merge ( $admincals, $grouplist );
   }
-  print "<a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" " .
-    "id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_new\">" .
-    $GLOBALS['PROGRAM_NAME'] . "</a>\n";
+  if ( $is_admin && $public_access == 'Y' ) {
+    $public = array (
+      "cal_login" => "__public__",
+      "cal_fullname" => translate ( "Public Access" )
+    );
+    array_unshift ( $grouplist, $public );
+  }
+  $groups = "";
+  for ( $i = 0; $i < count ( $grouplist ); $i++ ) {
+    $l = $grouplist[$i]['cal_login'];
+    $f = $grouplist[$i]['cal_fullname'];
+    // Use the preferred view if it is day/week/month/year.php.  Do
+    // not use a user-created view because it might not display the
+    // proper user's events.  (Fallback to month.php if this is true.)
+    $xurl = get_preferred_view ( "", "user=$l" );
+    if ( strstr ( $xurl, "view_" ) ) {
+      $xurl = "month.php?user=$l";
+    }
+    if ( $i > 0 )
+      $groups .= ", ";
+    $groups .= "<a title=\"$f\" href=\"$xurl\">$f</a>";
+  }
+  if ( ! empty ( $groups ) ) {
+    echo "<br/><span class=\"prefix\">";
+    etranslate ( "Manage calendar of" );
+    echo ":</span>&nbsp;" . $groups;
+  }
+}
+
+// WebCalendar Info...
+print "<br/><br/><a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" " .
+  "id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_new\">" .
+  $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 ?>
 </div>
-</div><!-- /TRAILER -->
+</div>
+<!-- /TRAILER -->
