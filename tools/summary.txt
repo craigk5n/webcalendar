@@ -3,10 +3,10 @@ Swedish.txt:         154
 Chinese-Big5.txt:    178
 Czech.txt:           230
 Danish.txt:          179
-Dutch.txt:           9
+Dutch.txt:           5
 English-US.txt:      Complete
 French.txt:          4
-German.txt:          1
+German.txt:          Complete
 Icelandic.txt:       213
 Italian.txt:         223
 Korean.txt:          253
