@@ -301,7 +301,7 @@ if ( $login != "__public__" ) {
     echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>&nbsp;$fullname<br />\n";
   }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
-  if ( $has_boss || $admincals[0] ) {
+  if ( $has_boss || ! empty ( $admincals[0] ) ) {
     echo "<span style=\"font-weight:bold;\">";
     etranslate("Manage calendar of");
     echo ":</span>&nbsp;";

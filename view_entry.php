@@ -220,7 +220,7 @@ if ( $event_time >= 0 && $TZ_OFFSET != 0 ) { // -1 = no time specified
   }
 }
 // Set alterted date
-$tz_date = ( $gmt ) ? date ( "Ymd", $gmt ) : $row[1];
+$tz_date = ( ! empty ( $gmt ) ) ? date ( "Ymd", $gmt ) : $row[1];
 
 // save date so the trailer links are for the same time period
 $thisyear = (int) ( $tz_date / 10000 );
@@ -241,6 +241,7 @@ $sql = "SELECT cal_type, cal_end, cal_frequency, cal_days " .
   "FROM webcal_entry_repeats WHERE cal_id = $id";
 
 $res = dbi_query ($sql);
+$rep_str = '';
 if ( $res ) {
   if ( $tmprow = dbi_fetch_row ( $res ) ) {
     $event_repeats = true;
@@ -465,7 +466,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   $extra_type = $site_extras[$i][2];
   $extra_arg1 = $site_extras[$i][3];
   $extra_arg2 = $site_extras[$i][4];
-  if ( $extras[$extra_name]['cal_name'] != "" ) {
+  if ( ! empty ( $extras[$extra_name]['cal_name'] ) ) {
     echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">" .
       translate ( $site_extras[$i][1] ) .
       ":</td><td>";

@@ -9,6 +9,7 @@ if ( empty ( $user ) )
 if ( ! $is_admin && $user != $login )
   $user = $login;
 
+$HeadX = '';
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; URL=list_unapproved.php\" target=\"_self\">\n";

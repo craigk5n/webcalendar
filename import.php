@@ -66,7 +66,7 @@ function print_user_list () {
     $userlist = get_my_users ();
     if ($nonuser_enabled == "Y" ) {
       $nonusers = get_nonuser_cals ();
-      $userlist = ($nonuser_at_top == "Y") ?
+      $userlist = ( ! empty ( $nonuser_at_top ) && $nonuser_at_top == "Y") ?
         array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
     }
     $num_users = 0;
@@ -76,7 +76,7 @@ function print_user_list () {
       $l = $userlist[$i]['cal_login'];
       $size++;
       $users .= "<option value=\"" . $l . "\"";
-      if ( $id > 0 ) {
+      if ( ! empty ( $id ) && $id > 0 ) {
         if ( ! empty ( $participants[$l] ) )
           $users .= " selected=\"selected\"";
       } else {

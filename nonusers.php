@@ -16,6 +16,7 @@ if ( ! $NONUSER_PREFIX ) {
   echo "</body></html>\n";
   exit;
 }
+$add = getValue ( "add" );
 ?>
 
 <h2><?php etranslate("NonUser")?></h2>

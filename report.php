@@ -51,7 +51,8 @@ function event_to_text ( $id, $date, $time, $duration,
   $pri, $access, $event_owner ) {
   global $login, $user, $event_template, $report_id, $allow_html_description;
 
-  $time_str = "";
+  $time_str = $start_time_str = $end_time_str = '';
+
   if ( $duration == ( 24 * 60 ) ) {
     $time_str = translate("All day event");
   } else if ( $time == -1 ) {
@@ -298,15 +299,18 @@ if ( empty ( $error ) && empty ( $list ) ) {
 
 <?php
 
-if ( $report_include_header == 'Y' || ! empty ( $list ) || ! empty ( $error ) )
-  print_header($INC);
+if ( ! empty ( $report_include_header ) && $report_include_header == 'Y' ||
+  ! empty ( $list ) || ! empty ( $error ) )
+  print_header();
 
 if ( empty ( $offset ) || empty ( $report_allow_nav ) ||
   $report_allow_nav != 'Y' )
   $offset = 0;
 
 // Set time range based on cal_time_range field.
-if ( $report_time_range >= 0 && $report_time_range < 10 ) {
+if ( empty ( $report_time_range ) ) {
+  // manage reports
+} else if ( $report_time_range >= 0 && $report_time_range < 10 ) {
   $today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
   $days_offset = 1 - $report_time_range + $offset;
   $start_date = date ( "Ymd", $today + ( $days_offset * $ONE_DAY ) );
@@ -359,46 +363,82 @@ if ( $report_time_range >= 0 && $report_time_range < 10 ) {
   exit;
 }
 
-$cat_id = empty ( $report_cat_id ) ? "" : $report_cat_id;
+if ( empty ( $error ) && empty ( $list ) ) {
+  $cat_id = empty ( $report_cat_id ) ? "" : $report_cat_id;
 
-$repeated_events = read_repeated_events ( $report_user, $cat_id );
+  $repeated_events = read_repeated_events ( $report_user, $cat_id );
 
-$events = read_events ( $report_user, $start_date, $end_date, $cat_id );
+  $events = read_events ( $report_user, $start_date, $end_date, $cat_id );
 
-$get_unapproved = $DISPLAY_UNAPPROVED == 'Y';
-if ( $report_user == "__public__" )
-  $get_unapproved = false;
+  $get_unapproved = $DISPLAY_UNAPPROVED == 'Y';
+  if ( $report_user == "__public__" )
+    $get_unapproved = false;
 
-//echo "User: $report_user <br />\n";
-//echo "Date Range: $start_date - $end_date <br /><br />\n";
+  //echo "User: $report_user <br />\n";
+  //echo "Date Range: $start_date - $end_date <br /><br />\n";
 
-$start_year = substr ( $start_date, 0, 4 );
-$start_month = substr ( $start_date, 4, 2 );
-$start_day = substr ( $start_date, 6, 2 );
-$start_time = mktime ( 3, 0, 0, $start_month, $start_day, $start_year );
+  $start_year = substr ( $start_date, 0, 4 );
+  $start_month = substr ( $start_date, 4, 2 );
+  $start_day = substr ( $start_date, 6, 2 );
+  $start_time = mktime ( 3, 0, 0, $start_month, $start_day, $start_year );
 
-$end_year = substr ( $end_date, 0, 4 );
-$end_month = substr ( $end_date, 4, 2 );
-$end_day = substr ( $end_date, 6, 2 );
-$end_time = mktime ( 3, 0, 0, $end_month, $end_day, $end_year );
+  $end_year = substr ( $end_date, 0, 4 );
+  $end_month = substr ( $end_date, 4, 2 );
+  $end_day = substr ( $end_date, 6, 2 );
+  $end_time = mktime ( 3, 0, 0, $end_month, $end_day, $end_year );
 
-$day_str = '';
+  $day_str = '';
 
-// Loop through each day
-// Get events for each day (both normal and repeating).
-// (Most of this code was copied from week.php)
-for ( $cur_time = $start_time; $cur_time <= $end_time; $cur_time += $ONE_DAY ) {
-  $event_str = '';
-  $dateYmd = date ( "Ymd", $cur_time );
-  $rep = get_repeating_entries ( empty ( $user ) ? $login : $user, $dateYmd );
-  $ev = get_entries ( empty ( $user ) ? $login : $user, $dateYmd );
-  $cur_rep = 0;
-  //echo "DATE: $dateYmd <br />\n";
-
-  for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    // print out any repeating events that are before this one...
-    while ( $cur_rep < count ( $rep ) &&
-      $rep[$cur_rep]['cal_time'] < $ev[$i]['cal_time'] ) {
+  // Loop through each day
+  // Get events for each day (both normal and repeating).
+  // (Most of this code was copied from week.php)
+  for ( $cur_time = $start_time; $cur_time <= $end_time; $cur_time += $ONE_DAY ) {
+    $event_str = '';
+    $dateYmd = date ( "Ymd", $cur_time );
+    $rep = get_repeating_entries ( empty ( $user ) ? $login : $user, $dateYmd );
+    $ev = get_entries ( empty ( $user ) ? $login : $user, $dateYmd );
+    $cur_rep = 0;
+    //echo "DATE: $dateYmd <br />\n";
+  
+    for ( $i = 0; $i < count ( $ev ); $i++ ) {
+      // print out any repeating events that are before this one...
+      while ( $cur_rep < count ( $rep ) &&
+        $rep[$cur_rep]['cal_time'] < $ev[$i]['cal_time'] ) {
+        if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' ) {
+          if ( ! empty ( $rep[$cur_rep]['cal_ext_for_id'] ) ) {
+            $viewid = $rep[$cur_rep]['cal_ext_for_id'];
+            $viewname = $rep[$cur_rep]['cal_name'] . " (" .
+              translate("cont.") . ")";
+          } else {
+            $viewid = $rep[$cur_rep]['cal_id'];
+            $viewname = $rep[$cur_rep]['cal_name'];
+          }
+          $event_str .= event_to_text ( $viewid,
+            $dateYmd, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
+            $viewname, $rep[$cur_rep]['cal_description'],
+            $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
+            $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
+        }
+        $cur_rep++;
+      }
+      if ( $get_unapproved || $ev[$i]['cal_status'] == 'A' ) {
+        if ( ! empty ( $ev[$i]['cal_ext_for_id'] ) ) {
+          $viewid = $ev[$i]['cal_ext_for_id'];
+          $viewname = $ev[$i]['cal_name'] . " (" .
+            translate("cont.") . ")";
+        } else {
+          $viewid = $ev[$i]['cal_id'];
+          $viewname = $ev[$i]['cal_name'];
+        }
+        $event_str .= event_to_text ( $viewid,
+          $dateYmd, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
+          $viewname, $ev[$i]['cal_description'],
+          $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
+          $ev[$i]['cal_access'], $ev[$i]['cal_login'] );
+      }
+    }
+    // print out any remaining repeating events
+    while ( $cur_rep < count ( $rep ) ) {
       if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' ) {
         if ( ! empty ( $rep[$cur_rep]['cal_ext_for_id'] ) ) {
           $viewid = $rep[$cur_rep]['cal_ext_for_id'];
@@ -413,56 +453,19 @@ for ( $cur_time = $start_time; $cur_time <= $end_time; $cur_time += $ONE_DAY ) {
           $viewname, $rep[$cur_rep]['cal_description'],
           $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
           $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
-        $cnt++;
       }
       $cur_rep++;
     }
-    if ( $get_unapproved || $ev[$i]['cal_status'] == 'A' ) {
-      if ( ! empty ( $ev[$i]['cal_ext_for_id'] ) ) {
-        $viewid = $ev[$i]['cal_ext_for_id'];
-        $viewname = $ev[$i]['cal_name'] . " (" .
-          translate("cont.") . ")";
-      } else {
-        $viewid = $ev[$i]['cal_id'];
-        $viewname = $ev[$i]['cal_name'];
-      }
-      $event_str .= event_to_text ( $viewid,
-        $dateYmd, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
-        $viewname, $ev[$i]['cal_description'],
-        $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
-        $ev[$i]['cal_access'], $ev[$i]['cal_login'] );
-      $cnt++;
+  
+    if ( ! empty ( $event_str ) || $report_include_empty == 'Y' ||
+      $report_time_range < 10 ) {
+      $date_str = date_to_str ( $dateYmd, "", false );
+      $date_full_str = date_to_str ( $dateYmd, "", true, false );
+      $text = str_replace ( '${events}', $event_str, $day_template );
+      $text = str_replace ( '${report_id}', $report_id, $text );
+      $text = str_replace ( '${fulldate}', $date_full_str, $text );
+      $day_str .= str_replace ( '${date}', $date_str, $text );
     }
-  }
-  // print out any remaining repeating events
-  while ( $cur_rep < count ( $rep ) ) {
-    if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' ) {
-      if ( ! empty ( $rep[$cur_rep]['cal_ext_for_id'] ) ) {
-        $viewid = $rep[$cur_rep]['cal_ext_for_id'];
-        $viewname = $rep[$cur_rep]['cal_name'] . " (" .
-          translate("cont.") . ")";
-      } else {
-        $viewid = $rep[$cur_rep]['cal_id'];
-        $viewname = $rep[$cur_rep]['cal_name'];
-      }
-      $event_str .= event_to_text ( $viewid,
-        $dateYmd, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
-        $viewname, $rep[$cur_rep]['cal_description'],
-        $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
-      $cnt++;
-    }
-    $cur_rep++;
-  }
-
-  if ( ! empty ( $event_str ) || $report_include_empty == 'Y' ||
-    $report_time_range < 10 ) {
-    $date_str = date_to_str ( $dateYmd, "", false );
-    $date_full_str = date_to_str ( $dateYmd, "", true, false );
-    $text = str_replace ( '${report_id}', $report_id, $text );
-    $text = str_replace ( '${events}', $event_str, $day_template );
-    $text = str_replace ( '${fulldate}', $date_full_str, $text );
-    $day_str .= str_replace ( '${date}', $date_str, $text );
   }
 }
 
@@ -506,7 +509,8 @@ if ( empty ( $friendly ) && empty ( $error ) && empty ( $list ) ) {
   }
 }
 
-if ( ( empty ( $friendly ) && $report_include_header == 'Y' )
+if ( ( empty ( $friendly ) && 
+  ( ! empty ( $list ) || $report_include_header == 'Y' ) )
   || ! empty ( $error ) || ! empty ( $list ) ) {
   print_trailer ();
 } else {

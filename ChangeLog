@@ -1,4 +1,6 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Fixed some of the "undefined variable" errors that you get when
+    global variables is turned off in php.ini.
   - Fixed bug: If user creates a report that does not include themself,
     the user will be unable to edit/delete the report.
   - Added patch 975787: allow automatic inclusion of public access events

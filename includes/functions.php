@@ -100,6 +100,8 @@ if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
 
 // Don't allow a user to put "login=XXX" in the URL if they are not
 // coming from the login.php page.
+if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER['PHP_SELF'] ) )
+  $PHP_SELF = $_SERVER['PHP_SELF']; // backward compatibility
 if ( ! strstr ( $PHP_SELF, "login.php" ) && ! empty ( $GLOBALS["login"] ) ) {
   $GLOBALS["login"] = "";
 }
@@ -134,7 +136,8 @@ function getValue ( $name, $format="", $fatal=false )
   if ( ! isset ( $val ) )
     $val = getGetValue ( $name );
   // for older PHP versions...
-  if ( ! isset ( $val  ) && get_magic_quotes_gpc () == 1 )
+  if ( ! isset ( $val  ) && get_magic_quotes_gpc () == 1 &&
+    ! empty ( $GLOBALS[$name] ) )
     $val = $GLOBALS[$name];
   if ( ! isset ( $val  ) )
     return "";
@@ -360,6 +363,8 @@ function remember_this_view () {
 // Get the last page stored using above function.
 // Return empty string if we don't know.
 function get_last_view () {
+  global $HTTP_COOKIE_VARS;
+
   $val = $HTTP_COOKIE_VARS["webcalendar_last_view"];
   if ( empty ( $val )) 
     $val = $_COOKIE["webcalendar_last_view"];
@@ -672,6 +677,7 @@ function load_user_layers ($user="",$force=0) {
 function site_extras_for_popup ( $id )
 {
   global $site_extras_in_popup, $site_extras;
+  $ret = '';
 
   if ( $site_extras_in_popup != 'Y' )
     return '';
@@ -684,7 +690,7 @@ function site_extras_for_popup ( $id )
     $extra_type = $site_extras[$i][2];
     $extra_arg1 = $site_extras[$i][3];
     $extra_arg2 = $site_extras[$i][4];
-    if ( $extras[$extra_name]['cal_name'] != "" ) {
+    if ( ! empty ( $extras[$extra_name]['cal_name'] ) ) {
       $ret .= "<span style=\"font-weight:bold;\">" .  translate ( $site_extras[$i][1] ) . ":</span> ";
       if ( $extra_type == $EXTRA_DATE ) {
         if ( $extras[$extra_name]['cal_date'] > 0 )
@@ -2051,6 +2057,11 @@ function calc_time_slot ( $time, $round_down = false ) {
 // hour = hour of day (eg. 1,13,23)
 function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   global $TZ_OFFSET;
+  global $login;
+  $u_url = '';
+
+  if ( $user != $login )
+    $u_url = "user=$user&";
   if ( ! empty ( $hour ) )
     $hour += $TZ_OFFSET;
   return "<a href=\"edit_entry.php?" . $u_url .

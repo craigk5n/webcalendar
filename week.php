@@ -35,6 +35,7 @@ if ( $DISPLAY_WEEKENDS == "N" ) {
   $end_ind = 7;
 }
 
+$HeadX = '';
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week.php?$u_url" .
@@ -281,7 +282,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     if ( empty ( $WEEKENDBG ) )
       $is_weekend = false;
     $color = $is_weekend ? $WEEKENDBG : $CELLBG;
-    if ( $all_day[$d] > 0 )
+    if ( ! empty ( $all_day[$d] ) && $all_day[$d] > 0 )
       $color = $TODAYCELLBG;
     if ( $rowspan_day[$d] > 1 ) {
       // this might mean there's an overlap, or it could mean one event
