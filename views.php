@@ -7,22 +7,22 @@ if ( ! $is_admin )
 print_header();
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Views")?></FONT></H2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Views")?></h2>
 
-<UL>
+<ul>
 <?php
 for ( $i = 0; $i < count ( $views ); $i++ ) {
-  echo "<LI><A HREF=\"views_edit.php?id=" . $views[$i]["cal_view_id"] .
-    "\">" . $views[$i]["cal_name"] . "</A> ";
+  echo "<li><a href=\"views_edit.php?id=" . $views[$i]["cal_view_id"] .
+    "\">" . $views[$i]["cal_name"] . "</a></li>";
 }
 ?>
-</UL>
-<P>
+</ul>
+<br /><br />
 <?php
-  echo "<A HREF=\"views_edit.php\">" . translate("Add New View") .
-    "</A><BR>\n";
+  echo "<a href=\"views_edit.php\">" . translate("Add New View") .
+    "</a><br />\n";
 ?>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

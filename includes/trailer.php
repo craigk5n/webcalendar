@@ -6,7 +6,6 @@
 
 <br style="clear:both;" />
 <hr style="clear:both;" />
-<font size="-1">
 <table style="border-width:0px; width:100%;" cellpadding="0" cellspacing="0">
 <form action="month.php" method="get" name="selectmonth">
 <?php
@@ -17,7 +16,7 @@
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
 <tr><td style="text-align:left; width:33%;" valign="top"><font size="-1">
-<b><?php etranslate("Month")?>:</b>
+<span style="font-weight:bold;"><?php etranslate("Month")?>:</span></font>
 <select name="date" onchange="document.SelectMonth.submit()">
 <?php
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
@@ -47,9 +46,11 @@
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
-</font></td>
+</td>
 </form>
-<form action="week.php" method="get" name="SelectWeek">
+
+
+<form action="week.php" method="get" name="selectweek">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -58,7 +59,7 @@
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
 <td style="text-align:center; width:33%;" valign="top"><font size="-1">
-<b><?php etranslate("Week")?>:</b>
+<span style="font-weight:bold;"><?php etranslate("Week")?>:</span></font>
 <select name="date" onchange="document.SelectWeek.submit()">
 <?php
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
@@ -96,8 +97,10 @@
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
-</font></td>
+</td>
 </form>
+
+
 <form action="year.php" method="get" name="selectyear">
 <?php
   if ( ! empty ( $user ) && $user != $login )
@@ -107,7 +110,7 @@
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
 <td style="text-align:right; width:33%;" valign="top"><font size="-1">
-<b><?php etranslate("Year")?>:</b>
+<span style="font-weight:bold;"><?php etranslate("Year")?>:</span></font>
 <select name="year" onchange="document.SelectYear.submit()">
 <?php
   if ( ! empty ( $thisyear ) ) {
@@ -124,14 +127,15 @@
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
-</font></td>
+</td>
 </form>
 </tr>
 </table>
 
-
+<font size="-1">
+<!-- GO TO -->
 <br />
-<b><?php etranslate("Go to")?>:</b> 
+<span style="font-weight:bold;"><?php etranslate("Go to")?>:</span> 
 <?php
   $can_add = ( $readonly == "N" || $is_admin == "Y" );
   if ( $public_access == "Y" && $public_access_can_add != "Y" &&
@@ -212,10 +216,12 @@
       translate("Help") . "</a>";
   }
 ?>
+
+<!-- VIEWS -->
 <br />
 <?php if ( ( $login != "__public__" ) &&
          ( $allow_view_other != "N" || $is_admin ) ) { ?>
-<b><?php etranslate("Views")?>:</b>
+<span style="font-weight:bold;"><?php etranslate("Views")?>:</span>
 <?php
   for ( $i = 0; $i < count ( $views ); $i++ ) {
     if ( $i > 0 )
@@ -247,6 +253,9 @@
       translate("Manage Views") . "</a>";
   }
 ?>
+
+
+<!-- REPORTS -->
 <br />
 <?php } // if ( $login != "__public__" ) ?>
 
@@ -281,18 +290,20 @@ if ( $login != "__public__" ) {
     translate("Manage Reports") . "</a>\n";
 }
 ?>
+
+
+<!-- CURRENT USER -->
 <br />
 <?php } ?>
-
 <?php
   if ( strlen ( $login ) && $login != "__public__" ) {
-    echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":&nbsp;</span>$fullname<br />\n";
+    echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>&nbsp;$fullname<br />\n";
   }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
   if ( $has_boss || $admincals[0] ) {
     echo "<span style=\"font-weight:bold;\">";
     etranslate("Manage calendar of");
-    echo "</span>:&nbsp;";
+    echo ":</span>&nbsp;";
     $grouplist = user_get_boss_list ($login);
     $grouplist = array_merge($admincals,$grouplist);
     $groups = "";
