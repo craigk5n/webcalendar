@@ -56,7 +56,7 @@ include "includes/translate.php";
 
 // Change this to false if you still want to access this page even
 // though you do not have public access enabled.
-$public_must_be_enabled = true;
+$public_must_be_enabled = false;
 
 // Do we include a link to view the event?  If so, what target
 // should we use.
@@ -102,8 +102,11 @@ if ( $public_must_be_enabled && $public_access != 'Y' ) {
 
 if ( $allow_user_override ) {
   $u = getValue ( "user", "[A-Za-z0-9_\.=@,\-]+", true );
-  if ( ! empty ( $u ) )
+  if ( ! empty ( $u ) ) {
     $username = $u;
+    $login = $u;
+    // We also set $login since some functions assume that it is set.
+  }
 }
 
 $cat_id = '';
