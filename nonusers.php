@@ -27,7 +27,7 @@ $add = getValue ( "add" );
 if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
   $userlist = get_my_users ();
   $button = translate("Add");
-  $nid = clean($nid);
+  $nid = clean_html($nid);
   ?>
   <form action="nonusers_handler.php" method="post">
   <?php
