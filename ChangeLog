@@ -1,4 +1,4 @@
-Version 0.9.34dev (?? ??? ??)
+Version 0.9.34 (16 Dec 2001)
   - Patch 468897: Fix default for new calendar entries to be public (not
     confidential)
   - Patch 469755: Do not allow users to change preferences in a read-only
