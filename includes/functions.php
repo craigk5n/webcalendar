@@ -54,7 +54,7 @@ $noSet = array (
 if ( ! empty ( $HTTP_GET_VARS ) ) {
   while (list($key, $val) = @each($HTTP_GET_VARS)) {
     // don't allow anything to have <script> in it...
-    if ( ! is_arrray ( $val ) ) {
+    if ( ! is_array ( $val ) ) {
       if ( preg_match ( "/<\s*script/i", $val ) ) {
         echo "Security violation!"; exit;
       }
@@ -77,7 +77,7 @@ if ( ! empty ( $HTTP_GET_VARS ) ) {
 if ( ! empty ( $HTTP_POST_VARS ) ) {
   while (list($key, $val) = @each($HTTP_POST_VARS)) {
     // don't allow anything to have <script> in it...
-    if ( ! is_arrray ( $val ) ) {
+    if ( ! is_array ( $val ) ) {
       if ( preg_match ( "/<\s*script/i", $val ) ) {
         echo "Security violation!"; exit;
       }
