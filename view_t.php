@@ -8,9 +8,6 @@ if ( $allow_view_other == "N" && ! $is_admin ) {
   do_redirect ( "$STARTVIEW.php" );
 }
 
-if ( empty ( $friendly ) )
-  $friendly = 0;
-
 // Find view name in $views[]
 $view_name = "";
 for ( $i = 0; $i < count ( $views ); $i++ ) {
@@ -85,11 +82,9 @@ for ( $i = 0; $i < $val_boucle; $i++ ) {
 ?>
 
 <div style="border-width:0px; width:99%;">
-<?php if ( ! $friendly ) { ?>
 <a title="<?php etranslate("Previous")?>" class="prev" href="view_t.php?timeb=<?php echo $timeb?>&id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 
 <a title="<?php etranslate("Next")?>" class="next" href="view_t.php?timeb=<?php echo $timeb?>&id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-<?php } ?>
 <div class="title">
 <span class="date"><?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
@@ -135,7 +130,7 @@ $repeated_events = $re_save;
 
 ?>
 
-<table class="viewt" cellspacing="0" cellpadding="0">
+<table class="viewt">
 <?php
 for ( $date = $wkstart, $h = 0;
   date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
@@ -167,8 +162,7 @@ for ( $date = $wkstart, $h = 0;
 		echo "<td class=\"reg\">";
   }
 //  echo "<td style=\"width:90%; background-color:$color;\">";
-  if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
-    empty ( $friendly ) )
+  if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" )
     echo html_for_add_icon ( date ( "Ymd", $date ), "", "", $user );
 
   // Parametres par defaut
@@ -180,24 +174,21 @@ for ( $date = $wkstart, $h = 0;
      $prefarray["WORK_DAY_END_HOUR"]=$val[0];
   }
     
-  print_header_timebar($prefarray["WORK_DAY_START_HOUR"],
-      $prefarray["WORK_DAY_END_HOUR"]);
-  print_date_entries_timebar ( date ( "Ymd", $date ),
-    $GLOBALS["login"], $friendly, true );
+  print_header_timebar($prefarray["WORK_DAY_START_HOUR"], $prefarray["WORK_DAY_END_HOUR"]);
+  print_date_entries_timebar ( date ( "Ymd", $date ), $GLOBALS["login"], true );
   echo "</td>";
   echo "</tr>\n";
 }
 
-  echo "</table>\n<br />\n";
+echo "</table>\n<br />\n";
 
 $user = ""; // reset
 
 echo $eventinfo;
 
-if ( ! $friendly )
-  echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_t.php?timeb=$timeb&amp;id=$id&amp;date=$thisdate&amp;friendly=1\" target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
-    translate("Generate printer-friendly version") .
-    "'\">[" . translate("Printer Friendly") . "]</a>\n";
+echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_t.php?timeb=$timeb&amp;id=$id&amp;date=$thisdate&amp;friendly=1\" target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
+	translate("Generate printer-friendly version") .
+	"'\">[" . translate("Printer Friendly") . "]</a>\n";
 
 print_trailer ();
 ?>

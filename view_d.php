@@ -14,9 +14,6 @@ if ( empty ( $id ) ) {
   echo "Error: no id"; exit;
 }
 
-if ( empty ( $friendly ) )
-  $friendly = 0;
-
 // Find view name in $views[]
 $view_name = "";
 for ( $i = 0; $i < count ( $views ); $i++ ) {
@@ -51,13 +48,9 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 ?>
 
 <div style="border-width:0px; width:99%;">
-<?php if ( ! $friendly ) { ?>
 <a title="<?php etranslate("Previous")?>" class="prev" href="view_d.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
-<?php } ?>
 
-<?php if ( ! $friendly ) { ?>
 <a title="<?php etranslate("Next")?>" class="next" href="view_d.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-<?php } ?>
 <div class="title">
 <span class="date"><?php 
 	printf ( "%s, %s %d, %d", weekday_name ( $wday ), month_name ( $thismonth - 1 ), $thisday, $thisyear ); 
@@ -92,14 +85,13 @@ TimeMatrix($date,$participants);
 </form>
 </center>
 
-<?php if ( empty ( $friendly ) ) {
-  echo "<br /><a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_d.php?id=$id&amp;";
-  echo $u_url . "date=$nowYmd";
-  echo $caturl;
-  echo '&amp;friendly=1" target="cal_printer_friendly" onmouseover="window.status=\'' .
-    translate("Generate printer-friendly version") .
-    '\'">[' . translate("Printer Friendly") . ']</a>';
-}
+<?php
+echo "<br /><a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_d.php?id=$id&amp;";
+echo $u_url . "date=$nowYmd";
+echo $caturl;
+echo '&amp;friendly=1" target="cal_printer_friendly" onmouseover="window.status=\'' .
+	translate("Generate printer-friendly version") .
+	'\'">[' . translate("Printer Friendly") . ']</a>';
 print_trailer ();
 ?>
 

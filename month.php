@@ -44,13 +44,9 @@ $repeated_events = read_repeated_events (
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
   ? $user : $login, $startdate, $enddate, $cat_id );
-?>
 
-<?php
-if ( ! $friendly ) {
-	display_small_month ( $prevmonth, $prevyear, true, true, "prevmonth" );
-	display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth" );
-}
+display_small_month ( $prevmonth, $prevyear, true, true, "prevmonth" );
+display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth" );
 ?>
 <div class="title">
 <span class="date"><br /><?php
@@ -70,7 +66,7 @@ if ( ! $friendly ) {
 <?php
   if ( $categories_enabled == "Y" && (!$user || $user == $login)) {
     echo "<br /><br />\n";
-    print_category_menu('month',sprintf ( "%04d%02d01",$thisyear, $thismonth ),$cat_id, $friendly );
+    print_category_menu('month',sprintf ( "%04d%02d01",$thisyear, $thismonth ),$cat_id );
   }
 ?>
 </div>
@@ -132,8 +128,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 	echo ">";
        //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       print_date_entries ( date ( "Ymd", $date ),
-        ( ! empty ( $user ) ) ? $user : $login,
-        $friendly, false );
+        ( ! empty ( $user ) ) ? $user : $login, false );
 	print "</td>\n";
     } else {
       print "<td>&nbsp;</td>\n";
@@ -143,9 +138,9 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 }
 ?></table>
 <br />
-<?php if ( empty ( $friendly ) ) echo $eventinfo; ?>
+<?php
+	echo $eventinfo;
 
-<?php if ( ! $friendly ) {
 	display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
@@ -157,7 +152,6 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 			if ( ! empty ( $user ) ) echo "user=$user&amp;";
 			if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
 		?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
-<?php } //end if ( ! $friendly ) ?>
 <?php
 	print_trailer ();
 ?>
