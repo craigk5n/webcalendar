@@ -178,6 +178,10 @@ if ( $single_user == "N" &&
             $ext_names[$ext_count] .= $ext_words[$j];
           }
         }
+        if ( strlen ( $ext_emails[$ext_count] ) &&
+          empty ( $ext_names[$ext_count] ) ) {
+          $ext_names[$ext_count] = $ext_emails[$ext_count];
+        }
         $ext_count++;
       }
     }
