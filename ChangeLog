@@ -1,4 +1,6 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Added delete link on list of unapproved events, making it easier to
+    delete bogus events.
   - For external users, use email address as fullname if only an email address
     was given.
   - Fixed bug 81255: when site extras are displayed in popups, reminders

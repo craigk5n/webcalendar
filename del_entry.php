@@ -190,7 +190,16 @@ if ( $id > 0 && empty ( $error ) ) {
   }
 }
 
-if ( strlen ( get_last_view() ) ) {
+$ret = getValue ( "ret" );
+if ( ! empty ( $ret ) ) {
+  if ( $ret == "list" ) {
+    $url = "list_unapproved.php";
+    if ( ! empty ( $user ) )
+      $url .= "?user=$user";
+  }
+  else
+    $url = "$STARTVIEW.php";
+} else if ( strlen ( get_last_view() ) ) {
   $url = get_last_view();
 } else {
   $redir = "";

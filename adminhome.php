@@ -123,7 +123,7 @@ if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' ) {
 if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' &&
   $public_access_can_add == 'Y' && $public_access_add_needs_approval == 'Y' ) {
   $names[] = translate("Unapproved Public Events");
-  $links[] = "list_unapproved.php?public=1";
+  $links[] = "list_unapproved.php?user=__public__";
 }
 
 
