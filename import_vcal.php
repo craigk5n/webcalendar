@@ -5,6 +5,8 @@ function parse_vcal($cal_file) {
 
   $vcal_data = array();
 
+  //echo "Parsing vcal file... <br />\n";
+
   if (!$fd=@fopen($cal_file,"r")) {
     $errormsg .= "Can't read temporary file: $cal_file\n";
     exit();
@@ -52,9 +54,12 @@ function parse_vcal($cal_file) {
           } elseif (preg_match("/^DESCRIPTION:(.+)$/i", $buff, $match)) {
               $substate = "description";
               $event[$substate] = $match[1];
-          } elseif (preg_match("/^DESCRIPTION.*:(.+)$/i", $buff, $match)) {
+          } elseif (preg_match("/^DESCRIPTION\S*:(.+)$/i", $buff, $match)) {
               $substate = "description";
               $event[$substate] = $match[1];
+              if ( preg_match ( "/encoding=quoted-printable/i", $buff ) ) {
+                $event[$substate] = quoted_printable_decode ( $match[1] );
+              }
           } elseif (preg_match("/^CLASS.*:(.+)$/i", $buff, $match)) {
               $substate = "class";
               $event[$substate] = $match[1];
