@@ -58,21 +58,20 @@ for ( $i = 0; $i < 7; $i++ ) {
 
 ?>
 
-<table border="0" width="100%">
+<table style="border-width:0px; width:100%;">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
 <a href="view_w.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
 </td>
 <td style="text-align:center; color:<?php echo $H2COLOR?>;">
-<font size="+2">
-<b>
+<span style="font-size:24px; font-weight:bold;">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), false );
 ?>
-</b></font><br />
+</span><br />
 <?php echo $view_name ?>
 </td>
 <td style="text-align:right;">
@@ -132,8 +131,8 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 
 ?>
 
-<table border="1" rules="all" width="100%" cellspacing="0" cellpadding="0" style="border-color: <?php echo $TABLEBG;?>;">
-<tr><td width="10%" style="width:10%; background-color:<?php echo $THBG?>;">&nbsp;</td>
+<table style="border-width:1px; width:100%; border-color: <?php echo $TABLEBG;?>;" rules="all" cellspacing="0" cellpadding="0">
+<tr><td style="width:10%; background-color:<?php echo $THBG?>;">&nbsp;</td>
 
 <?php
 
@@ -164,9 +163,9 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
         $color = $CELLBG;
       $class = "tableheader";
     }
-    echo "<tr><th class=\"$class\" style=\"width:10%; background-color:$color; vertical-align:top;\">" .
-      "<font size=\"-1\" class=\"$class\">" . $weekday . " " .
-      round ( date ( "d", $xdate ) ) . "</font></th>\n";
+    echo "<tr><th class=\"$class\" style=\"width:10%; background-color:$color; vertical-align:top; font-size:13px;\">" .
+      $weekday . " " .
+      round ( date ( "d", $xdate ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
       $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $user = $viewusers[$i];
