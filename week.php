@@ -137,7 +137,7 @@ for ( $d = 0; $d < 7; $d++ ) {
   else
     $color = $THBG;
   echo "<TH WIDTH=\"13%\" BGCOLOR=\"$color\">";
-  if ( ! $friendly && ( ! $readonly || $is_admin ) ) {
+  if ( ! $friendly && ! $readonly ) {
     echo "<A HREF=\"edit_entry.php?" . $u_url .
       "date=" . date ( "Ymd", $days[$d] ) . "\">" .
       "<IMG SRC=\"new.gif\" WIDTH=\"10\" HEIGHT=\"10\" ALT=\"" .
