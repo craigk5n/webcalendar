@@ -1,4 +1,8 @@
 Version 0.9.34dev (?? ??? ??)
+  - Fixed bug 447339: In week view, events would not span enough hours
+    in the display if there was another event later in that day.  In
+    day view, all events would display in a one hour block even if they
+    were longer than an hour.
   - Updated Swedish translation.
   - Updated French translation.
 Version 0.9.33 (02 Aug 01)

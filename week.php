@@ -172,7 +172,7 @@ $first_hour = $WORK_DAY_START_HOUR;
 $last_hour = $WORK_DAY_END_HOUR;
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
- // get all the repeating events for this date and store in array $rep
+  // get all the repeating events for this date and store in array $rep
   $date = date ( "Ymd", $days[$d] );
   $rep = get_repeating_entries ( $user, $date );
   $cur_rep = 0;
@@ -230,7 +230,8 @@ for ( $d = 0; $d < 7; $d++ ) {
           $rowspan += ( $rowspan_arr[$i] - 1 );
         } else
           $rowspan_arr[$last_row] += $rowspan_arr[$i];
-        // this will move entries apart that appear in one field, yet start on different hours
+        // this will move entries apart that appear in one field,
+        // yet start on different hours
         $start_time = $i;
         $diff_start_time = $start_time - $last_row;
         for ( $u = $diff_start_time ; $u > 0 ; $u-- ) 
@@ -255,7 +256,6 @@ for ( $d = 0; $d < 7; $d++ ) {
   $save_rowspan_arr[$d] = $rowspan_arr;
 }
 
-
 // untimed events first
 if ( $untimed_found ) {
   echo "<TR><TD WIDTH=\"12%\" BGCOLOR=\"$THBG\">&nbsp;</TD>";
@@ -276,6 +276,7 @@ for ( $i = $first_hour; $i <= $last_hour; $i++ ) {
   echo "<TR><TH VALIGN=\"top\" WIDTH=\"13%\" BGCOLOR=\"$THBG\" HEIGHT=\"40\">" .
     "<FONT COLOR=\"$THFG\">" .  $time . "</FONT></TH>\n";
   for ( $d = 0; $d < 7; $d++ ) {
+        $x = $save_rowspan_arr[$d][$i];
     if ( $rowspan_day[$d] > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.

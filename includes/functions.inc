@@ -1084,10 +1084,6 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   global $DISPLAY_ICONS;
   global $layers;
 
-  $rowspan_arr = array ();
-  for ( $i = 0; $i < 24; $i++ )
-    $rowspan_arr[$i] = 0;
-
   $divname = "eventinfo-day-$id-$key";
   $key++;
   if ( $time >= 0 ) {
@@ -1149,6 +1145,8 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
       }
       $end_time = sprintf ( "%02d%02d00", $h, $m );
       $timestr .= "-" . display_time ( $end_time );
+      if ( empty ( $rowspan_arr[$ind] ) )
+        $rowspan_arr[$ind] = 0; // avoid warning below
       if ( $m == 0 )
         $rowspan = $h - $ind;
       else
@@ -1323,6 +1321,11 @@ function print_day_at_a_glance ( $date, $user, $hide_icons ) {
   global $CELLBG, $TODAYCELLBG, $THFG, $THBG;
   global $repeated_events;
 
+  $rowspan_arr = array ();
+  for ( $i = 0; $i < 24; $i++ ) {
+    $rowspan_arr[$i] = 0;
+  }
+
   // get all the repeating events for this date and store in array $rep
   $rep = get_repeating_entries ( $user, $date );
   $cur_rep = 0;
@@ -1374,13 +1377,9 @@ function print_day_at_a_glance ( $date, $user, $hide_icons ) {
   // want to show up in the 8:00-9:59 cell.
   $rowspan = 0;
   $last_row = -1;
-  $rowspan_arr = array ();
-  for ( $i = 0; $i < 24; $i++ ) {
-    $rowspan_arr[$i] = 0;
-  }
   for ( $i = 0; $i < 24; $i++ ) {
     if ( $rowspan > 1 ) {
-      if ( strlen ( $hour_arr[$i] ) ) {
+      if ( ! empty ( $hour_arr[$i] ) ) {
         if ( $rowspan_arr[$i] > 1 ) {
           $rowspan_arr[$last_row] += ( $rowspan_arr[$i] - 1 );
           $rowspan += ( $rowspan_arr[$i] - 1 );
@@ -1397,7 +1396,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons ) {
         $rowspan_arr[$i] = 0;
       }
       $rowspan--;
-    } else if ( $rowspan_arr[$i] > 1 ) {
+    } else if ( ! empty ( $rowspan_arr[$i] ) && $rowspan_arr[$i] > 1 ) {
       $rowspan = $rowspan_arr[$i];
       $last_row = $i;
     }
