@@ -69,7 +69,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
         $year = date ( "Y", $gmt );
       }
       // Set alterted date
-      $cal_date = $year . $month . $day;
+      $cal_date = sprintf("%04d%02d%02d",$year,$month,$day);
     }
     if ( $time >= 0 ) {
       $hour = floor($time / 10000);
@@ -177,7 +177,6 @@ if ( empty ( $rpt_freq ) )
   $rpt_freq = 0;
 if ( empty ( $rpt_end_date ) )
   $rpt_end_date = 0;
-
 
 if ( ( empty ( $year ) || ! $year ) &&
   ( empty ( $month ) || ! $month ) &&
