@@ -34,6 +34,14 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
     $id_display = "<input type=\"text\" name=\"nid\" size=\"20\" maxlength=\"20\" /> " . translate ("word characters only");
   }
   ?>
+<h2><?php
+  if ( ! empty ( $nid ) ) {
+	nonuser_load_variables ( $nid, 'nonusertemp_' );
+	echo translate("Edit User");
+  } else {
+		echo translate("Add User");
+  }
+?></h2>
 <table>
 	<tr><td>
 		<?php etranslate("Calendar ID")?>:</td><td>
@@ -60,8 +68,7 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
 		</select>
 	</td></tr>
 </table>
-
-  <br /><br />
+  <br />
   <input type="submit" name="action" value="<?php echo $button;?>" />
   <?php if ( ! empty ( $nid ) ) {  ?>
     <input type="submit" name="action" value="<?php etranslate("Delete");?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
