@@ -1,86 +1,64 @@
 # Brazilian Portuguese Translation
+# Revision 1.0
 # Translated by:
-#       José Roberto Kerne - joseroberto@dicaslinux.com.br
+# Paulino Michelazzo - paulino@michelazzo.com.br
+#
+# Based in Portuguese version, by José Roberto Kerne - joseroberto@dicaslinux.com.br
 # Based in Portugues version, by Sérgio Oliveira - sloliv@terra.com.br
-#   Based in Portuguese version, by Nuno Lopes - nml@maxitel.pt
-# Last update: 27 December 2000
-# Translation last updated on 03-10-2004
-
+# Based in Portuguese version, by Nuno Lopes - nml@maxitel.pt
+#
+# Last update: 30 March 2004
+# Translation last updated on 30-mar-2004
+#
+#
 # No charset specified (not needed for iso-8859-1)
 # "charset" is used in a meta tag, do not translate "charset" here.
 # charset:
-
 
 
 ###############################################
 # Page: admin.php
 #
 System Settings: Configurações
-You are not authorized: Não está autorizado
+You are not authorized: Você não está autorizado
 Note: Nota
 Your user preferences: Suas preferências
-may be affecting the appearance of this page.: aplicar efeito de aparência nest
+may be affecting the appearance of this page.: podem afetar a aparência desta página
 Click here: Clique aqui
-to not use your user preferences when viewing this page: não usar suas preferên
-are being ignored while viewing this page.: são ignoradas enquanto visualiar es
-to load your user preferences when viewing this page: para carregar suas prefer
-Save: Gravar
+to not use your user preferences when viewing this page: para não usar suas preferências quando visualizar esta página
+are being ignored while viewing this page.: são ignoradas enquanto visualizar esta página
+to load your user preferences when viewing this page: para carregar suas preferências quando visualizar esta página
+Save: Salvar
 Help: Ajuda
-Settings: Parâmetros
-app-name-help: Especificar o nome do aplicativo a ser mostrado na barra de títu
+Settings: Configurações
+app-name-help: Especificar o nome do aplicativo a ser mostrado na barra de título
 Application Name: Nome da Aplicação
-server-url-help: Especifique a URL base para a aplicação. Isto será incluído qu
+server-url-help: Especificar a URL base para a aplicação.
 Server URL: URL do Servidor
-language-help: Especifica a língua a ser utilizada.
-Language: Linguagem
-Your browser default language is: A linguagem do browser é;
-fonts-help: Especifique uma lista de fontes do sistema para uso (Exemplo: Aria,
+language-help: Especificar o idioma a ser utilizado.
+Language: Idioma
+Your browser default language is: O idioma padrão do seu browser é:
+fonts-help: Especificar uma lista de fontes do sistema para uso (Exemplo: Arial, Verdana)
 Fonts: Fontes
-#
-# << MISSING >>
-# custom-script-help:
-# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
-#
-#
-# << MISSING >>
-# Custom script/stylesheet:
+custom-script-help:Permite a indicação de Javacript ou folha de estilos própria que pode ser inserida na seção "head" de cada página
+Custom script/stylesheet:Script/Folha de estilos própria
 Yes: Sim
 No: Não
-#
-# << MISSING >>
-# Edit:
-#
-# << MISSING >>
-# custom-header-help:
-# English text: Allows a custom HTML snippet to be included in the top of every page.
-#
-#
-# << MISSING >>
-# Custom header:
-#
-# << MISSING >>
-# custom-trailer-help:
-# English text: Allows a custom HTML snippet to be included at the end of every page.
-#
-#
-# << MISSING >>
-# Custom trailer:
-preferred-view-help: Especifica a visualização padrão (Dia, Semana, Mês, ou Ano
+Edit: Editar
+custom-header-help:Permite a inclusão de um pedaço de código HTML no topo de todas as páginas
+Custom header: Cabeçalho customizado
+custom-trailer-help:Permite a inclusão de um pedaço de código HTML no rodapé de todas as páginas 
+Custom trailer: Rodapé customizado
+preferred-view-help: Especificar a visualização padrão (Dia, Semana, Mês ou Ano)
 Preferred view: Visualização preferida
 Day: Dia
 Week: Semana
 Month: Mês
 Year: Ano
-display-weekends-help: Incluir feriados quando visualizar a semana.
-Display weekends in week view: Mostrar feriados na visão semanal
-#
-# << MISSING >>
-# yearly-shows-events-help:
-# English text: On the yearly view, display days that contain events in a bold font.
-#
-#
-# << MISSING >>
-# Display days with events in bold in year view:
+display-weekends-help: Mostrar feriados na visualização semanal
+Display weekends in week view: Mostrar feriados na visualização semanal
+yearly-shows-events-help: Na visualização anual, mostrar dias que contenham eventos em negrito
+Display days with events in bold in year view:Mostrar dias que contenham eventos em negrito
 #
 # << MISSING >>
 # display-desc-print-day-help:
