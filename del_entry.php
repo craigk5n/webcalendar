@@ -109,7 +109,7 @@ if ( $id > 0 && empty ( $error ) ) {
 
       $do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
       user_load_variables ( $partlogin[$i], "temp" );
-      if ( $partlogin[$i] != $login && $do_send == "Y" &&
+      if ( $partlogin[$i] != $login && $do_send == "Y" && boss_must_be_notified ( $login, $partlogin[$i] ) && 
         strlen ( $tempemail ) && $send_email != "N" ) {
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
           translate("An appointment has been canceled for you by") .

@@ -8,7 +8,7 @@ $error = "";
 if ( $public_access == "Y" && ! empty ( $public ) && $is_admin )
   $app_user = "__public__";
 else
-  $app_user = $login;
+  $app_user = ( $is_assistant ? $user : $login );
 
 if ( $id > 0 ) {
   if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'A' " .
@@ -33,7 +33,7 @@ if ( $id > 0 ) {
 }
 
 if ( $ret == "list" )
-  do_redirect ( "list_unapproved.php" );
+  do_redirect ( "list_unapproved.php?user=$user" );
 else
-  do_redirect ( "view_entry.php?id=$id" );
+  do_redirect ( "view_entry.php?id=$id&user=$user" );
 ?>

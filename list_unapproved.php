@@ -45,7 +45,7 @@ function list_unapproved ( $user ) {
       $duration = $row[6];
       $status = $row[7];
       $divname = "eventinfo-$id-$key";
-      echo "<LI><A CLASS=\"entry\" HREF=\"view_entry.php?id=$id";
+      echo "<LI><A CLASS=\"entry\" HREF=\"view_entry.php?id=$id&user=$user";
       echo "\" onMouseOver=\"window.status='" . translate("View this entry") .
         "'; show(event, '$divname'); return true;\" onMouseOut=\"hide('$divname'); return true;\">";
       $timestr = "";
@@ -68,13 +68,13 @@ function list_unapproved ( $user ) {
       echo htmlspecialchars ( $name );
       echo "</A>";
       echo " (" . date_to_str ($date) . ")\n";
-      echo ": <A HREF=\"approve_entry.php?id=$id&ret=list";
+      echo ": <A HREF=\"approve_entry.php?id=$id&ret=list&user=$user";
       if ( $user == "__public__" )
         echo "&public=1";
       echo "\" CLASS=\"navlinks\" onClick=\"return confirm('" .
         translate("Approve this entry?") .
         "');\">" . translate("Approve/Confirm") . "</A>, ";
-      echo "<A HREF=\"reject_entry.php?id=$id&ret=list";
+      echo "<A HREF=\"reject_entry.php?id=$id&ret=list&user=$user";
       if ( $user == "__public__" )
         echo "&public=1";
       echo "\" CLASS=\"navlinks\" onClick=\"return confirm('" .
@@ -103,7 +103,7 @@ function list_unapproved ( $user ) {
 <?php
 
 // List unapproved events for this user.
-list_unapproved ( $login );
+list_unapproved ( ( $is_assistant ? $user : $login ) );
 
 // Admin users can also approve Public Access events
 if ( $is_admin && $public_access == "Y" ) {

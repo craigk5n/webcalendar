@@ -345,6 +345,7 @@ function load_user_preferences () {
     $GLOBALS["DATE_FORMAT_MD"] = "__month__ __dd__";
   $is_assistant = user_is_assistant ( $login, $user );
   $has_boss = user_has_boss ( $login );
+
 }
 
 
@@ -1803,7 +1804,7 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   return "<A HREF=\"edit_entry.php?" . $u_url .
     "date=$date" . ( $hour > 0 ? "&hour=$hour" : "" ) .
     ( $minute > 0 ? "&minute=$minute" : "" ) .
-    ( empty ( $user ) ? "" :  "&defusers=$user" ) .
+    ( empty ( $user ) ? "" :  "&defusers=$user&user=$user" ) .
     "\"><IMG SRC=\"new.gif\" WIDTH=\"10\" HEIGHT=\"10\" ALT=\"" .
     translate("New Entry") . "\" BORDER=\"0\" ALIGN=\"right\">" .  "</A>";
 }
@@ -2236,7 +2237,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
       if ( strlen ( $hour_arr[$i] ) ) {
         echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">";
         if ( $can_add && ! $hide_icons )
-          echo html_for_add_icon ( $date, $time_h, $time_m );
+          echo html_for_add_icon ( $date, $time_h, $time_m, $user );
         echo "$hour_arr[$i]</TD>";
       }
       $rowspan--;
@@ -2245,19 +2246,19 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
       if ( empty ( $hour_arr[$i] ) ) {
         echo "<TD HEIGHT=\"40\" BGCOLOR=\"$color\">";
         if ( $can_add && ! $hide_icons )
-          echo html_for_add_icon ( $date, $time_h, $time_m );
+          echo html_for_add_icon ( $date, $time_h, $time_m, $user );
         echo "&nbsp;</TD></TR>\n";
       } else {
         $rowspan = $rowspan_arr[$i];
         if ( $rowspan > 1 ) {
           echo "<TD VALIGN=\"top\" BGCOLOR=\"$TODAYCELLBG\" ROWSPAN=\"$rowspan\">";
           if ( $can_add && ! $hide_icons )
-            echo html_for_add_icon ( $date, $time_h, $time_m );
+            echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</TD></TR>\n";
         } else {
           echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">";
           if ( $can_add && ! $hide_icons )
-            echo html_for_add_icon ( $date, $time_h, $time_m );
+            echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</TD></TR>\n";
         }
       }
@@ -2295,7 +2296,7 @@ function display_unapproved_events ( $user ) {
 	$str = translate ("You have XXX unapproved events");
 	$str = str_replace ( "XXX", $row[0], $str );
         echo "<A CLASS=\"navlinks\" " .
-          "HREF=\"list_unapproved.php\">" . $str .  "</A><BR>\n";
+          "HREF=\"list_unapproved.php?user=$user\">" . $str .  "</A><BR>\n";
     }
     dbi_free_result ( $res );
   }
@@ -2760,6 +2761,21 @@ function user_has_boss ( $assistant ) {
     dbi_free_result ( $res );
   }
   return $ret;
+}
+
+
+// Return false if boss don't want to be notified, true otherwise
+function boss_must_be_notified ( $assistant, $boss ) {
+  if (user_is_assistant ( $assistant, $boss ) )
+    return ( get_pref_setting ( $boss, "EMAIL_ASSISTANT_EVENT_NOTIFICATION" )=="Y" ? true : false );
+  return true;
+}
+
+// Return false if boss don't want to approve events, true otherwise
+function boss_must_approve_event ( $assistant, $boss ) {
+  if (user_is_assistant ( $assistant, $boss ) )
+    return ( get_pref_setting ( $boss, "APPROVE_ASSISTANT_EVENT" )=="Y" ? true : false );
+  return true;
 }
 
 

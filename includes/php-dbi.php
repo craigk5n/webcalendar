@@ -133,13 +133,12 @@ function dbi_query ( $sql ) {
     return OCIExecute ( $GLOBALS["oracle_statement"],
       OCI_COMMIT_ON_SUCCESS );
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
-    $GLOBALS["postgresql_row"] = 0;
-    $GLOBALS["postgresql_row"] = 0;
+    $GLOBALS["postgresql_row[\"$res\"]"] = 0;
     $res =  pg_exec ( $GLOBALS["postgresql_connection"], $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query: " . dbi_error() .
         "\n\n<P>\n" . $sql );
-    $GLOBALS["postgresql_numrows"] = pg_numrows ( $res );
+    $GLOBALS["postgresql_numrows[\"$res\"]"] = pg_numrows ( $res );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     return odbc_exec ( $GLOBALS["odbc_connection"], $sql );
@@ -177,9 +176,9 @@ function dbi_fetch_row ( $res ) {
       return $row;
     return 0;
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
-    if ( $GLOBALS["postgresql_numrows"]  > $GLOBALS["postgresql_row"] ) {
-        $r =  pg_fetch_array ( $res, $GLOBALS["postgresql_row"] );
-        $GLOBALS["postgresql_row"]++;
+    if ( $GLOBALS["postgresql_numrows[\"$res\"]"]  > $GLOBALS["postgresql_row[\"$res\"]"] ) {
+        $r =  pg_fetch_array ( $res, $GLOBALS["postgresql_row[\"$res\"]"] );
+        $GLOBALS["postgresql_row[\"$res\"]"]++;
         if ( ! $r ) {
             echo "Unable to fetch row\n"; 
             return '';
