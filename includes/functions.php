@@ -1866,6 +1866,8 @@ function print_date_entries ( $date, $user, $ssi ) {
   if ( $public_access == "Y" && $public_access_can_add != "Y" &&
     $login == "__public__" )
     $can_add = false;
+  if ( $readonly == 'Y' )
+    $can_add = false;
   if ( ! $ssi && $can_add ) {
     print "<a title=\"" .
       translate("New Entry") . "\" href=\"edit_entry.php?";
@@ -2200,8 +2202,11 @@ function calc_time_slot ( $time, $round_down = false ) {
 // hour = hour of day (eg. 1,13,23)
 function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   global $TZ_OFFSET;
-  global $login;
+  global $login, $readonly;
   $u_url = '';
+
+  if ( $readonly == 'Y' )
+    return '';
 
   if ( $user != $login )
     $u_url = "user=$user&amp;";
