@@ -36,6 +36,32 @@ $pri[3] = translate("High");
 
 $unapproved = FALSE;
 
+// Make sure this is not a continuation event.
+// If it is, redirect the user to the original event.
+$ext_id = -1;
+if ( $id > 0 ) {
+  $res = dbi_query ( "SELECT cal_ext_for_id FROM webcal_entry " .
+    "WHERE cal_id = $id" );
+  if ( $res ) {
+    if ( $row = dbi_fetch_row ( $res ) ) {
+      $ext_id = $row[0];
+    }
+    dbi_free_result ( $res );
+  } else {
+    // db error... ignore it, I guess.
+  }
+}
+if ( $ext_id > 0 ) {
+  $url = "view_entry.php?id=$ext_id";
+  if ( $date != "" )
+    $url .= "&date=$date";
+  if ( $user != "" )
+    $url .= "&user=$user";
+  if ( $cat_id != "" )
+    $url .= "&cat_id=$cat_id";
+  do_redirect ( $url );
+}
+
 ?>
 <HTML>
 <HEAD>
@@ -117,6 +143,7 @@ if ( ! $res ) {
 }
 $row = dbi_fetch_row ( $res );
 $create_by = $row[0];
+$event_time = $row[2];
 $name = $row[9];
 $description = $row[10];
 // $subject is used for mailto URLs
@@ -176,7 +203,7 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 /* calculate end time */
-if ( $row[2] > 0 && $row[5] > 0 )
+if ( $event_time > 0 && $row[5] > 0 )
   $end_str = "-" . display_time ( add_duration ( $row[2], $row[5] ) );
 else
   $end_str = "";
@@ -239,14 +266,14 @@ if ( $categories_enabled == "Y" ) {
 <TR><TD VALIGN="top"><B><?php etranslate("Date")?>:</B></TD>
   <TD><?php
   if ( $event_repeats ) {
-    echo date_to_str ( $event_date );
+    echo date_to_str ( $event_date, "", true, false, $event_time );
   } else {
-    echo date_to_str ( $row[1] );
+    echo date_to_str ( $row[1], "", true, false, $event_time );
   }
   ?></TD></TR>
 <?php if ( $event_repeats ) { ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Repeat Type")?>:</B></TD>
-  <TD><?php echo date_to_str ( $row[1] ) . $rep_str; ?></TD></TR>
+  <TD><?php echo date_to_str ( $row[1], "", true, false, $event_time ) . $rep_str; ?></TD></TR>
 <?php } ?>
 <?php
 // save date so the trailer links are for the same time period
@@ -255,7 +282,7 @@ $thisyear = (int) ( $row[1] / 10000 );
 $thismonth = ( $row[1] / 100 ) % 100;
 $thisday = $row[1] % 100;
 ?>
-<?php if ( $row[2] >= 0 ) { ?>
+<?php if ( $event_time >= 0 ) { ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Time")?>:</B></TD>
   <TD><?php echo display_time ( $row[2] ) . $end_str; ?></TD></TR>
 <?php } ?>
@@ -351,7 +378,8 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
           echo " " . translate("before event" );
         }
       }
-    
+    } else if ( $extra_type == $EXTRA_SELECTLIST ) {
+      echo $extras[$extra_name]['cal_data'];
     }
     echo "</TD></TR>\n";
   }
@@ -406,6 +434,16 @@ if ( $single_user == "N" && $show_participants ) {
       echo $tempfullname . "<BR>\n";
     }
   }
+  // show external users here...
+  if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" ) {
+    $external_users = event_get_external_users ( $id, 1 );
+    $ext_users = explode ( "\n", $external_users );
+    if ( is_array ( $ext_users ) ) {
+      for ( $i = 0; $i < count( $ext_users ); $i++ ) {
+        echo $ext_users[$i] . " (" . translate("External User") . ")<BR>\n";
+      }
+    }
+  }
   for ( $i = 0; $i < $num_wait; $i++ ) {
     user_load_variables ( $waiting[$i], "temp" );
     if ( strlen ( $tempemail ) ) {
@@ -458,7 +496,7 @@ if ( ! empty ( $user ) && $login != $user )
 else
   $u_url = "";
 
-$can_edit = ( $is_admin ||
+$can_edit = ( $is_admin || ( $is_assistant && ! $is_private ) ||
   ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
 if ( $public_access == "Y" && $login == "__public__" )
   $can_edit = false;

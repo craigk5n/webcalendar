@@ -145,7 +145,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <TD ALIGN="left"><A HREF="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0"></A></TD>
 <?php } ?>
-<TD ALIGN="middle"><FONT SIZE="+2" COLOR="<?php echo $H2COLOR;?>"><B>
+<TD ALIGN="middle"><FONT SIZE="+2" COLOR="<?php echo $H2COLOR;?>"><B CLASS="pagetitle">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
@@ -163,6 +163,8 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
   if ( $single_user == "N" ) {
     echo "<BR>$user_fullname\n";
   }
+  if ( $is_assistant )
+    echo "<B><BR>-- " . translate("Assistant mode") . " --</B>";
   if ( $categories_enabled == "Y" ) {
     echo "<BR>\n<BR>\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
@@ -175,7 +177,6 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 <?php } ?>
 </TR>
 </TABLE>
-
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <TABLE BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
 <TR><TD BGCOLOR="<?php echo $TABLEBG?>">
@@ -234,32 +235,59 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     // print out any repeating events that are before this one...
     while ( $cur_rep < count ( $rep ) &&
       $rep[$cur_rep]['cal_time'] < $ev[$i]['cal_time'] ) {
-      if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' )
-        html_for_event_week_at_a_glance ( $rep[$cur_rep]['cal_id'],
+      if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' ) {
+        if ( ! empty ( $rep[$cur_rep]['cal_ext_for_id'] ) ) {
+          $viewid = $rep[$cur_rep]['cal_ext_for_id'];
+          $viewname = $rep[$cur_rep]['cal_name'] . " (" .
+            translate("cont.") . ")";
+        } else {
+          $viewid = $rep[$cur_rep]['cal_id'];
+          $viewname = $rep[$cur_rep]['cal_name'];
+        }
+        html_for_event_week_at_a_glance ( $viewid,
           $date, $rep[$cur_rep]['cal_time'],
-          $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
+          $viewname, $rep[$cur_rep]['cal_description'],
           $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
           $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
           $rep[$cur_rep]['cal_login'], $hide_icons );
+      }
       $cur_rep++;
     }
-    if ( $get_unapproved || $ev[$i]['cal_status'] == 'A' )
-      html_for_event_week_at_a_glance ( $ev[$i]['cal_id'],
+    if ( $get_unapproved || $ev[$i]['cal_status'] == 'A' ) {
+      if ( ! empty ( $ev[$i]['cal_ext_for_id'] ) ) {
+        $viewid = $ev[$i]['cal_ext_for_id'];
+        $viewname = $ev[$i]['cal_name'] . " (" .
+          translate("cont.") . ")";
+      } else {
+        $viewid = $ev[$i]['cal_id'];
+        $viewname = $ev[$i]['cal_name'];
+      }
+      html_for_event_week_at_a_glance ( $viewid,
         $date, $ev[$i]['cal_time'],
-        $ev[$i]['cal_name'], $ev[$i]['cal_description'],
+        $viewname, $ev[$i]['cal_description'],
         $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
         $ev[$i]['cal_access'], $ev[$i]['cal_duration'],
         $ev[$i]['cal_login'], $hide_icons );
+    }
   }
   // print out any remaining repeating events
   while ( $cur_rep < count ( $rep ) ) {
-    if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' )
-      html_for_event_week_at_a_glance ( $rep[$cur_rep]['cal_id'],
+    if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' ) {
+      if ( ! empty ( $rep[$cur_rep]['cal_ext_for_id'] ) ) {
+        $viewid = $rep[$cur_rep]['cal_ext_for_id'];
+        $viewname = $rep[$cur_rep]['cal_name'] . " (" .
+          translate("cont.") . ")";
+      } else {
+        $viewid = $rep[$cur_rep]['cal_id'];
+        $viewname = $rep[$cur_rep]['cal_name'];
+      }
+      html_for_event_week_at_a_glance ( $viewid,
         $date, $rep[$cur_rep]['cal_time'],
-        $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
+        $viewname, $rep[$cur_rep]['cal_description'],
         $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
         $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
         $rep[$cur_rep]['cal_login'], $hide_icons );
+    }
     $cur_rep++;
   }
 
@@ -377,7 +405,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 
 <P>
 
-<?php if ( ! empty ( $eventinfo ) ) echo $eventinfo; ?>
+<?php if ( ! empty ( $eventinfo ) && empty ( $friendly ) ) echo $eventinfo; ?>
 
 <?php if ( empty ( $friendly ) ) {
   display_unapproved_events ( $login );
@@ -395,7 +423,10 @@ onMouseOver="window.status = '<?php etranslate("Generate printer-friendly versio
 
 <?php include "includes/trailer.php"; ?>
 
-<?php } ?>
+<?php } else {
+        dbi_close ( $c );
+      }
+?>
 
 </BODY>
 </HTML>

@@ -184,8 +184,6 @@ for ( $i = 0; $i < 7; $i++ ) {
 
 <?php
 
-$first_hour = $WORK_DAY_START_HOUR;
-$last_hour = $WORK_DAY_END_HOUR;
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
   $date = date ( "Ymd", $days[$d] );
@@ -233,6 +231,7 @@ for ( $d = 0; $d < 7; $d++ ) {
 </td></tr></table></center>
 
 <?php if ( empty ( $friendly ) ) { ?>
+<?php echo $eventinfo; ?>
 <P>
 <A CLASS="navlinks" HREF="week_details.php?<?php
   echo $u_url;
@@ -246,7 +245,10 @@ onMouseOver="window.status = '<?php etranslate("Generate printer-friendly versio
 
 <?php include "includes/trailer.php"; ?>
 
-<?php } ?>
+<?php } else {
+        dbi_close ( $c );
+      }
+?>
 
 </body>
 </html>
@@ -269,7 +271,7 @@ onMouseOver="window.status = '<?php etranslate("Generate printer-friendly versio
 function print_detailed_entry ( $id, $date, $time, $duration,
   $name, $description, $status,
   $pri, $access, $event_owner, $hide_icons ) {
-  global $eventinfo, $login, $user;
+  global $eventinfo, $login, $user, $TZ_OFFSET;
   static $key = 0;
 
   global $layers;
@@ -307,19 +309,20 @@ function print_detailed_entry ( $id, $date, $time, $duration,
 
 
   $timestr = "";
+  $my_time = $time + ( $TZ_OFFSET * 10000 );
   if ( $time >= 0 ) {
     if ( $GLOBALS["TIME_FORMAT"] == "24" ) {
-      printf ( "%02d:%02d", $time / 10000, ( $time / 100 ) % 100 );
+      printf ( "%02d:%02d", $my_time / 10000, ( $my_time / 100 ) % 100 );
     } else {
-      $h = ( (int) ( $time / 10000 ) ) % 12;
+      $h = ( (int) ( $my_time / 10000 ) ) % 12;
       if ( $h == 0 ) $h = 12;
       echo $h;
-      $m = ( $time / 100 ) % 100;
+      $m = ( $my_time / 100 ) % 100;
       if ( $m > 0 )
         printf ( ":%02d", $m );
       else
         print (":00");
-      echo ( (int) ( $time / 10000 ) ) < 12 ? translate("am") : translate("pm");
+      echo ( (int) ( $my_time / 10000 ) ) < 12 ? translate("am") : translate("pm");
     }
     //echo "&gt;";
     $timestr = display_time ( $time );

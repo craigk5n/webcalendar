@@ -23,10 +23,11 @@ if ( $login == "__public__" && $id > 0 ) {
   $id = 0;
 }
 
+$external_users = "";
 
 if ( ! empty ( $id ) && $id > 0 ) {
   // first see who has access to edit this entry
-  if ( $is_admin ) {
+  if ( $is_admin || $is_assistant ) {
     $can_edit = true;
   } else {
     $can_edit = false;
@@ -61,6 +62,24 @@ if ( ! empty ( $id ) && $id > 0 ) {
     $month = ( $cal_date / 100 ) % 100;
     $day = $cal_date % 100;
     $time = $row[2];
+    if ( $time >= 0 ) { /* -1 = no time specified */
+      $time += $TZ_OFFSET * 10000;
+      if ( $time > 240000 ) {
+        $time -= 240000;
+        $gmt = mktime ( 3, 0, 0, $month, $day, $year );
+        $gmt -= $ONE_DAY;
+        $month = date ( "m", $gmt );
+        $day = date ( "d", $gmt );
+        $year = date ( "Y", $gmt );
+      } else if ( $time < 0 ) {
+        $time += 240000;
+        $gmt = mktime ( 3, 0, 0, $month, $day, $year );
+        $gmt -= $ONE_DAY;
+        $month = date ( "m", $gmt );
+        $day = date ( "d", $gmt );
+        $year = date ( "Y", $gmt );
+      }
+    }
     if ( $time >= 0 ) {
       $hour = floor($time / 10000);
       $minute = ( $time / 100 ) % 100;
@@ -114,9 +133,12 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $participants[$row[0]] = 1;
+      if ( ! $is_secretary || $login != $row[0] ) $participants[$row[0]] = 1;
       if ($login == $row[0]) $cat_id = $row[1];
     }
+  }
+  if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" ) {
+    $external_users = event_get_external_users ( $id );
   }
 } else {
   $id = 0; // to avoid warnings below about use of undefined var
@@ -309,6 +331,9 @@ if ( $override ) {
   echo "<INPUT TYPE=\"hidden\" NAME=\"override\" VALUE=\"1\">\n";
   echo "<INPUT TYPE=\"hidden\" NAME=\"override_date\" VALUE=\"$cal_date\">\n";
 }
+// if assistant, need to remember boss = user
+if ( $is_assistant )
+   echo "<INPUT TYPE=\"hidden\" NAME=\"user\" VALUE=\"$user\">\n";
 
 ?>
 
@@ -504,6 +529,19 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
         "&nbsp;&nbsp;";
       etranslate("before event");
     }
+  } else if ( $extra_type == $EXTRA_SELECTLIST ) {
+    // show custom select list.
+    echo "<SELECT NAME=\"" . $extra_name . "\">";
+    if ( is_array ( $extra_arg1 ) ) {
+      for ( $i = 0; $i < count ( $extra_arg1 ); $i++ ) {
+        echo "<OPTION";
+        if ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
+          $extra_arg1[$i] == $extras[$extra_name]['cal_data'] )
+          echo " SELECTED";
+        echo ">" . $extra_arg1[$i] . "</OPTION>\n";
+      }
+    }
+    echo "</SELECT>";
   }
   echo "</TD></TR>\n";
 }
@@ -531,7 +569,7 @@ if ( $single_user == "N" && $show_participants ) {
       if ( ! empty ( $participants[$l] ) )
         $users .= " SELECTED";
     } else {
-      if ( $l == $login || ( ! empty ( $user ) && $l == $user ) )
+      if ( ( $l == $login && ! $is_assistant ) || ( ! empty ( $user ) && $l == $user ) )
         $users .= " SELECTED";
     }
     $users .= "> " . $userlist[$i]['cal_fullname'];
@@ -551,6 +589,16 @@ if ( $single_user == "N" && $show_participants ) {
       translate("Select") . "...\">";
   }
   print "</TD></TR>\n";
+
+  // external users
+  if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" ) {
+    print "<TR><TD VALIGN=\"top\"><B CLASS=\"tooltip\" TITLE=\"" .
+      tooltip("external-participants-help") . "\">" .
+      translate("External Participants") . ":</B></TD>";
+    print "<TD><TEXTAREA NAME=\"externalparticipants\" ROWS=\"5\" COLS=\"40\">";
+    print $external_users . "</TEXTAREA></TD></TR>\n";
+    print "</TD></TR>\n";
+  }
 }
 ?>
 

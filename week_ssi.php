@@ -107,8 +107,8 @@ for ( $d = 0; $d < 7; $d++ ) {
 
 <?php
 
-$first_hour = $WORK_DAY_START_HOUR;
-$last_hour = $WORK_DAY_END_HOUR;
+$first_hour = $WORK_DAY_START_HOUR - $TZ_OFFSET;
+$last_hour = $WORK_DAY_END_HOUR + $TZ_OFFSET;
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
   $date = date ( "Ymd", $days[$d] );

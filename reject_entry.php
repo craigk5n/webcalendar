@@ -28,6 +28,20 @@ if ( $id > 0 ) {
     activity_log ( $id, $login, $app_user, $LOG_REJECT, "" );
   }
 
+  // Update any extension events related to this one.
+  $res = dbi_query ( "SELECT cal_id FROM webcal_entry " .
+    "WHERE cal_ext_for_id = $id" );
+  if ( $res ) {
+    if ( $row = dbi_fetch_row ( $res ) ) {
+      $ext_id = $row[0];
+      if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'R' " .
+        "WHERE cal_login = '$app_user' AND cal_id = $ext_id" ) ) {
+        $error = translate("Error approving event") . ": " . dbi_error ();
+      } 
+    }
+    dbi_free_result ( $res );
+  }
+
   // Email participants to notify that it was rejected.
   // Get list of participants
   $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id and cal_status = 'A'";
@@ -79,7 +93,7 @@ if ( $id > 0 ) {
 
       mail ( $tempemail,
         translate($application_name) . " " . translate("Notification") . ": " . $name,
-        $msg, $extra_hdrs );
+        html_to_8bits ($msg), $extra_hdrs );
       activity_log ( $id, $login, $partlogin[$i], $LOG_NOTIFICATION,
         "Event rejected by $app_user" );
     }

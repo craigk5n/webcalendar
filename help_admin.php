@@ -61,6 +61,12 @@ include "includes/translate.php";
   <TD><?php etranslate("public-access-view-others-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Allow viewing other user's calendars")?>:</B></TD>
   <TD><?php etranslate("allow-view-other-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Allow external users")?>:</B></TD>
+  <TD><?php etranslate("allow-external-users-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("External users can receive email notifications")?>:</B></TD>
+  <TD><?php etranslate("external-can-receive-notification-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("External users can receive email reminders")?>:</B></TD>
+  <TD><?php etranslate("external-can-receive-reminder-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Remember last login")?>:</B></TD>
   <TD><?php etranslate("remember-last-login-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Check for event conflicts")?>:</B></TD>

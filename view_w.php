@@ -235,7 +235,8 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 
 $user = ""; // reset
 
-echo $eventinfo;
+if ( empty ( $friendly ) )
+  echo $eventinfo;
 
 if ( ! $friendly )
   echo "<A CLASS=\"navlinks\" HREF=\"view_w.php?id=$id&date=$thisdate&friendly=1\" " .
@@ -246,6 +247,8 @@ if ( ! $friendly )
 
 if ( ! $friendly ) {
   include "includes/trailer.php";
+} else {
+  dbi_close ( $c );
 }
 ?>
 

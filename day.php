@@ -136,6 +136,8 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
     echo "<BR>";
     echo $user_fullname;
   }
+  if ( $is_assistant )
+    echo "<B><BR>-- " . translate("Assistant mode") . " --</B>";
   if ( $categories_enabled == "Y" ) {
     echo "<BR>\n<BR>\n";
     print_category_menu('day', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly);
@@ -243,7 +245,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 
 <P>
 
-<?php if ( isset ( $eventinfo ) ) echo $eventinfo; ?>
+<?php if ( isset ( $eventinfo ) && empty ( $friendly ) ) echo $eventinfo; ?>
 
 <?php if ( empty ( $friendly ) ) {
 
@@ -263,7 +265,10 @@ onMouseOver="window.status = '<?php etranslate("Generate printer-friendly versio
 
 <?php include "includes/trailer.php"; ?>
 
-<?php } ?>
+<?php } else {
+        dbi_close ( $c );
+      }
+?>
 
 </BODY>
 </HTML>

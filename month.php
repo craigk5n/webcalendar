@@ -166,6 +166,8 @@ if ( ! $friendly ) {
     echo "<BR>\n";
     echo $user_fullname;
   }
+  if ( $is_assistant )
+    echo "<B><BR>-- " . translate("Assistant mode") . " --</B>";
   if ( $categories_enabled == "Y" && (!$user || $user == $login)) {
     echo "<BR>\n<BR>\n";
     print_category_menu('month',sprintf ( "%04d%02d01",$thisyear, $thismonth ),$cat_id, $friendly );
@@ -306,7 +308,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 
 <P>
 
-<?php echo $eventinfo; ?>
+<?php if ( empty ( $friendly ) ) echo $eventinfo; ?>
 
 <?php if ( ! $friendly ) {
   display_unapproved_events ( $login );
@@ -324,7 +326,10 @@ onMouseOver="window.status = '<?php etranslate("Generate printer-friendly versio
 
 <?php include "includes/trailer.php"; ?>
 
-<?php } ?>
+<?php } else {
+        dbi_close ( $c );
+      }
+?>
 
 </BODY>
 </HTML>

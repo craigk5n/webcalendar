@@ -34,6 +34,7 @@ if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
 $key = 0;
 
 // List all unapproved events for the user
+// Exclude "extension" events (used when an event goes past midnight)
 function list_unapproved ( $user ) {
   global $temp_fullname, $key, $login;
   //echo "Listing events for $user <BR>";
@@ -45,7 +46,9 @@ function list_unapproved ( $user ) {
     "webcal_entry.cal_time, webcal_entry.cal_duration, " .
     "webcal_entry_user.cal_status " .
     "FROM webcal_entry, webcal_entry_user " .
-    "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id AND " .
+    "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id " .
+    "AND ( webcal_entry.cal_ext_for_id IS NULL " .
+    "OR webcal_entry.cal_ext_for_id = 0 ) AND " .
     "webcal_entry_user.cal_login = '$user' AND " .
     "webcal_entry_user.cal_status = 'W' " .
     "ORDER BY webcal_entry.cal_date";

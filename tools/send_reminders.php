@@ -101,6 +101,21 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
+// Get all users timezone settings.
+$res = dbi_query ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
+  "WHERE cal_setting = 'TZ_OFFSET'" );
+$tzoffset = array ();
+if ( $res ) {
+  while ( $row = dbi_fetch_row ( $res ) ) {
+    $user = $row[0];
+    $user_tzoffset = $row[1];
+    $tzoffset[$user] = $user_tzoffset;
+    if ( $debug )
+      echo "TZ OFFSET for $user is \"$user_tzoffset\" <br>\n";
+  }
+  dbi_free_result ( $res );
+}
+
 // Now read events all the repeating events (for all users)
 $repeated_events = read_repeated_events ( "" );
 
@@ -125,7 +140,7 @@ function indent ( $str ) {
 // approved.  But, don't send to users how rejected (cal_status='R').
 function send_reminder ( $id, $event_date ) {
   global $names, $emails, $site_extras, $debug, $only_testing,
-    $server_url, $languages, $application_name;
+    $server_url, $languages, $tzoffset, $application_name;
   global $EXTRA_TEXT, $EXTRA_MULTILINETEXT, $EXTRA_URL, $EXTRA_DATE,
     $EXTRA_EMAIL, $EXTRA_USER, $EXTRA_REMINDER, $LANGUAGE, $LOG_REMINDER;
 
@@ -146,7 +161,25 @@ function send_reminder ( $id, $event_date ) {
       $participants[$num_participants++] = $row[0];
     }
   }
-  if ( ! $num_participants ) {
+
+  // get external participants
+  $ext_participants = array ();
+  $num_ext_participants = 0;
+  if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" &&
+    ! empty ( $external_reminders ) && $external_reminders == "Y" ) {
+    $sql = "SELECT cal_fullname, cal_email FROM webcal_entry_ext_user " .
+      "WHERE cal_id = $id AND cal_email NOT NULL " .
+      "ORDER BY cal_fullname";
+    $res = dbi_query ( $sql );
+    if ( $res ) {
+      while ( $row = dbi_fetch_row ( $res ) ) {
+        $ext_participants[$num_ext_participants] = $row[0];
+        $ext_participants_email[$num_ext_participants++] = $row[1];
+      }
+    }
+  }
+
+  if ( ! $num_participants && ! $num_ext_participants ) {
     if ( $debug )
       echo "No participants found for event id: $id <br>\n";
     return;
@@ -186,6 +219,10 @@ function send_reminder ( $id, $event_date ) {
 	  echo "No email for user $participants[$i] <br>\n";
       }
     }
+    for ( $i = 0; $i < count ( $ext_participants ); $i++ ) {
+      $mailusers[] = $ext_participants_email[$i];
+      $recipients[] = $ext_participants[$i];
+    }
   }
   if ( $debug )
     echo "Found " . count ( $mailusers ) . " with email addresses <br>\n";
@@ -201,6 +238,11 @@ function send_reminder ( $id, $event_date ) {
     if ( $debug )
       echo "Setting language to \"$userlang\" <br>\n";
     reset_language ( $userlang );
+    // reset timezone setting for current user
+    if ( empty ( $tzoffset[$user] ) )
+      $GLOBALS["TZ_OFFSET"] = 0;
+    else
+      $GLOBALS["TZ_OFFSET"] = $tzoffset[$user];
 
     $body = translate("This is a reminder for the event detailed below.") .
       "\n\n";
@@ -257,6 +299,10 @@ function send_reminder ( $id, $event_date ) {
       $body .= translate("Participants") . ":\n";
       for ( $i = 0; $i < count ( $participants ); $i++ ) {
         $body .= "  " . $names[$participants[$i]] . "\n";
+      }
+      for ( $i = 0; $i < count ( $ext_participants ); $i++ ) {
+        $body .= "  " . $ext_participants[$i] . " (" .
+          translate("External User") . ")\n";
       }
     }
   

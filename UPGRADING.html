@@ -4,6 +4,28 @@
 
 Below are the steps needed to upgrade from a previous version:
 
+<P><HR><P><B>To upgrade to 0.9.40 from 0.9.39 or older:</B>
+<P>
+  Two new tables were created: webcal_asst and webcal_entry_ext_user.
+  And the column cal_ext_for_id was added to the webcal_entry table.
+  Use the following SQL
+  for MySQL and PostgreSQL:
+  <BLOCKQUOTE><PRE>
+    CREATE TABLE webcal_asst (
+      cal_boss VARCHAR(25) NOT NULL,
+      cal_assistant VARCHAR(25) NOT NULL,
+      PRIMARY KEY ( cal_boss, cal_assistant )
+    );
+    CREATE TABLE webcal_entry_ext_user (
+      cal_id INT DEFAULT 0 NOT NULL,
+      cal_fullname VARCHAR(50) NOT NULL,
+      cal_email VARCHAR(75) NULL,
+      PRIMARY KEY ( cal_id, cal_fullname )
+    );
+  ALTER TABLE webcal_entry ADD cal_ext_for_id INT NULL;
+  </PRE></BLOCKQUOTE>
+  For Oracle, use VARCHAR2 instead of VARCHAR.
+
 <P><HR><P><B>To upgrade to 0.9.39 from 0.9.38 or older:</B>
 <P>
   The names of the date settings in the database were modified.

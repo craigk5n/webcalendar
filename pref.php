@@ -14,28 +14,30 @@ load_user_categories ();
 
 include "includes/translate.php";
 
-// if updating preferences for public user, reload public user prefs into
-// $prefarray[].
+// Reload preferences into $prefarray[].
 // Get system settings first.
 $updating_public = false;
+$prefarray = array ();
+$res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_config " );
+if ( $res ) {
+  while ( $row = dbi_fetch_row ( $res ) ) {
+    $prefarray[$row[0]] = $row[1];
+  }
+  dbi_free_result ( $res );
+}
 if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
   $updating_public = true;
-  $prefarray = array ();
-  $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_config " );
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $prefarray[$row[0]] = $row[1];
-    }
-    dbi_free_result ( $res );
-  }
   $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
     "WHERE cal_login = '__public__'" );
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $prefarray[$row[0]] = $row[1];
-    }
-    dbi_free_result ( $res );
+} else {
+  $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
+    "WHERE cal_login = '$login'" );
+}
+if ( $res ) {
+  while ( $row = dbi_fetch_row ( $res ) ) {
+    $prefarray[$row[0]] = $row[1];
   }
+  dbi_free_result ( $res );
 }
 
 ?>
@@ -138,6 +140,27 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <BR>
 <?php etranslate("Your browser default language is"); echo " " . get_browser_language () . "."; ?>
 </TD></TR>
+<TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("tz-help")?>"><?php etranslate("Timezone Offset")?>:</B></TD>
+  <TD><SELECT NAME="pref_TZ_OFFSET">
+  <?php
+  $text_add = translate("Add N hours to");
+  $text_sub = translate("Subtract N hours from");
+  if ( empty ( $prefarray["TZ_OFFSET"] ) )
+    $prefarray["TZ_OFFSET"] = 0;
+  for ( $i = -12; $i <= 12; $i++ ) {
+    echo "<OPTION VALUE=\"$i\"";
+    if ( $prefarray["TZ_OFFSET"] == $i ) echo " SELECTED";
+    echo "> ";
+    if ( $i < 0 )
+      echo str_replace ( "N", -$i, $text_sub );
+    else if ( $i == 0 )
+      etranslate("same as");
+    else
+      echo str_replace ( "N", $i, $text_add );
+  }
+  ?>
+  </SELECT><?php etranslate("server time");?></TD></TR>
+
 <TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("fonts-help")?>"><?php etranslate("Fonts")?>:</B></TD>
   <TD><INPUT SIZE="40" NAME="pref_FONTS" VALUE="<?php echo htmlspecialchars ( $prefarray["FONTS"] );?>" </TD></TR>
 
@@ -272,7 +295,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   for ( $i = 0; $i < 24; $i++ ) {
     echo "<OPTION VALUE=\"$i\" " .
       ( $i == $prefarray["WORK_DAY_START_HOUR"] ? "SELECTED " : "" ) .
-      "> " . display_time ( $i * 10000 );
+      "> " . display_time ( $i * 10000, 1 );
   }
   ?>
   </SELECT> <?php etranslate("to")?>
@@ -281,7 +304,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   for ( $i = 0; $i < 24; $i++ ) {
     echo "<OPTION VALUE=\"$i\" " .
       ( $i == $prefarray["WORK_DAY_END_HOUR"] ? "SELECTED " : "" ) .
-      "> " . display_time ( $i * 10000 );
+      "> " . display_time ( $i * 10000, 1 );
   }
   ?>
   </SELECT>

@@ -8,10 +8,9 @@ include "includes/connect.php";
 
 load_global_settings ();
 load_user_preferences ();
-load_user_layers ();
 
-if ( empty ( $STARTVIEW ) )
-  $STARTVIEW = "month";
+// If not yet logged in, you will be redirected to login.php before
+// we get to this point (by connect.php included above)
 
-do_redirect ( "$STARTVIEW.php" );
+do_redirect ( empty ( $STARTVIEW ) ? "month.php" : "$STARTVIEW.php" );
 ?>
