@@ -88,12 +88,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 </tr>
 </table>
 
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<table style="border-width:0px; width:100%; background-color:<?php echo $TABLEBG?>;" cellspacing="1" cellpadding="2">
-<?php } else { ?>
-<table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
-<?php } ?>
-
+<table style="border-top: 1px solid <?php echo $TABLEBG;?>; border-left: 1px solid <?php echo $TABLEBG;?>; width:100%;" cellspacing="0" cellpadding="0">
 
 <?php
 if ( empty ( $TIME_SLOTS ) )
@@ -103,11 +98,7 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
   empty ( $user ) ? $login : $user, ! empty ( $friendly ), $can_add );
 ?>
 
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 </table>
-<?php } else { ?>
-</table>
-<?php } ?>
 
 </td>
 <td style="vertical-align:top;">

@@ -2176,6 +2176,8 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
       }
       $end_time = sprintf ( "%02d%02d00", $h, $m );
       $timestr .= "-" . display_time ( $end_time );
+    } else {
+      $end_time = 0;
     }
     if ( empty ( $rowspan_arr[$ind] ) )
       $rowspan_arr[$ind] = 0; // avoid warning below
@@ -2364,7 +2366,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= "</a>";
   } else if ( $GLOBALS["DISPLAY_DESC_PRINT_DAY"] == "Y" ) {
     $hour_arr[$ind] .= "<br />";
-    $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">Description:</span> ";
+    $hour_arr[$ind] .= "<b>Description:</b> ";
     $hour_arr[$ind] .= htmlspecialchars ( $description );
   }
 
@@ -2383,7 +2385,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
 //   $hide_icons - should we hide the icons to make it printer-friendly
 function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan;
-  global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TIME_SLOTS, $TZ_OFFSET;
+  global $TABLEBG, $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TIME_SLOTS, $TZ_OFFSET;
   global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR;
   global $repeated_events;
   $get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
@@ -2515,7 +2517,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     }
   }
   if ( ! empty ( $hour_arr[9999] ) ) {
-    echo "<tr><td style=\"height:40px; background-color:$TODAYCELLBG;\">&nbsp;</td><td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG;\">$hour_arr[9999]</td></tr>\n";
+    echo "<tr><td style=\"height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG;\">&nbsp;</td><td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">$hour_arr[9999]</td></tr>\n";
   }
   $rowspan = 0;
   //echo "first_slot = $first_slot <br /> last_slot = $last_slot <br /> interval = $interval <br />";
@@ -2529,7 +2531,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
       if ( strlen ( $hour_arr[$i] ) ) {
-        echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG;\">";
+        echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
         if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
         echo "$hour_arr[$i]</td>";
@@ -2538,19 +2540,22 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     } else {
       $color = $all_day ? $TODAYCELLBG : $CELLBG;
       if ( empty ( $hour_arr[$i] ) ) {
-        echo "<td style=\"height:40px; background-color:$color;\">";
+        echo "<td style=\"height:40px; background-color:$color; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
         if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
         echo "&nbsp;</td></tr>\n";
       } else {
-        $rowspan = $rowspan_arr[$i];
+        if ( empty ( $rowspan_arr[$i] ) )
+          $rowspan = '';
+        else
+          $rowspan = $rowspan_arr[$i];
         if ( $rowspan > 1 ) {
-          echo "<td style=\"vertical-align:top; background-color:$TODAYCELLBG;\" rowspan=\"$rowspan\">";
+          echo "<td style=\"vertical-align:top; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\" rowspan=\"$rowspan\">";
           if ( $can_add && ! $hide_icons )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</td></tr>\n";
         } else {
-          echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG;\">";
+          echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
           if ( $can_add && ! $hide_icons )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</td></tr>\n";
