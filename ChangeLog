@@ -1,3 +1,5 @@
+Version 0.9.35dev (?? ??? 2002)
+  - Added Finnish translation
 Version 0.9.34 (16 Dec 2001)
   - Patch 468897: Fix default for new calendar entries to be public (not
     confidential)
