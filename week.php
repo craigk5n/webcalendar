@@ -322,7 +322,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 
 </table>
 
-<br /><br />
+<br />
 
 <?php if ( ! empty ( $eventinfo ) && empty ( $friendly ) ) echo $eventinfo; ?>
 
