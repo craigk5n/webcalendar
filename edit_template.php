@@ -43,7 +43,7 @@ if ( empty ( $REQUEST_METHOD ) )
 if ( $REQUEST_METHOD == 'POST' ) {
   //$template = getPostValue ( "template" );
   $template = $_POST['template'];
-  //echo "Template: " . htmlentities ( $template ) . " <br />"; exit;
+  //echo "Template: " . htmlentities ( $template ) . "<br />\n"; exit;
   if ( $found ) {
     $sql = "UPDATE webcal_report_template " .
       "SET cal_template_text = '$template' " .
@@ -56,8 +56,8 @@ if ( $REQUEST_METHOD == 'POST' ) {
   if ( ! dbi_query ( $sql ) ) {
     $error = translate("Database error") . ": " . dbi_error ();
   } else {
-    //echo "SQL: $sql <br>";
-    echo "<html><head><body onload=\"window.close();\">Done</body></html>\n";
+    //echo "SQL: $sql <br />\n";
+    echo "<html>\n<head>\n</head>\n<body onload=\"window.close();\">\nDone</body>\n</html>";
     exit;
   }
 }
@@ -68,8 +68,7 @@ print_header( '', '', '', true );
 //echo "report_user: $report_user <br />\n";
 ?>
 
-<h2>
-<?php
+<h2><?php
 if ( $type == 'S' )
   etranslate("Edit Custom Script/Stylesheet");
 else if ( $type == 'H' )

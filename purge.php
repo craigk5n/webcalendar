@@ -13,7 +13,6 @@ print_header($INC);
 
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top; width:50%;">
-
 <?php
 $ALL = 0;
 
@@ -49,12 +48,13 @@ if ( ! empty ( $user ) ) {
     translate("Finished") . ".</h2>\n";
 } else {
 ?>
+
 <h2><?php etranslate("Delete Events")?></h2>
 <form action="<?php echo $PHP_SELF; ?>" method="post" name="purgeform">
 <table>
- <tr><td><?php etranslate("User");?>:</td><td>
-<select name="user">
-
+	<tr><td>
+		<?php etranslate("User");?>:</td><td>
+		<select name="user">
 <?php
   $userlist = get_my_users ();
   if ($nonuser_enabled == "Y" ) {
@@ -65,16 +65,21 @@ if ( ! empty ( $user ) ) {
     echo "<option value=\"".$userlist[$i]['cal_login']."\">".$userlist[$i]['cal_fullname']."</option>\n";
   }
 ?>
-
 <option value="ALL" selected="selected"><?php etranslate("All")?></option>
-</select></td></tr>
-<tr><td><?php etranslate("Delete all events before");?>:</td><td>
-<?php print_date_selection ( "end_", date ( "Ymd" ) ) ?>
-</td></tr>
-<tr><td><?php etranslate("Check box to delete <b>ALL</b> events for a user")?>:</td><td valign="bottom"><input type="checkbox" name="purge_all" value="Y" /></td></tr>
-<tr><td colspan="2">
-<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete events for");?> ' + document.forms[0].user.value + '?')" />
-</td></tr></table>
+		</select>
+	</td></tr>
+	<tr><td>
+		<?php etranslate("Delete all events before");?>:</td><td>
+		<?php print_date_selection ( "end_", date ( "Ymd" ) ) ?>
+	</td></tr>
+	<tr><td>
+		<?php etranslate("Check box to delete <b>ALL</b> events for a user")?>:</td><td valign="bottom">
+		<input type="checkbox" name="purge_all" value="Y" />
+	</td></tr>
+	<tr><td colspan="2">
+		<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete events for");?> ' + document.forms[0].user.value + '?')" />
+	</td></tr>
+</table>
 </form>
 
 <?php } ?>
@@ -83,7 +88,6 @@ if ( ! empty ( $user ) ) {
 <?php print_trailer(); ?>
 </body>
 </html>
-
 <?php
 function purge_events ( $ids ) {
   global $c; // db connection
