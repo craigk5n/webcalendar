@@ -386,6 +386,9 @@ print_header($INC);
   <?php
     echo htmlentities ( $server_url ) .
       "publish.php/" . ( $updating_public ? "public" : $login ) .  ".ics";
+    echo "<br/>\n";
+    echo htmlentities ( $server_url ) .
+      "publish.php?user=" . ( $updating_public ? "public" : $login );
   ?></td></tr>
 <?php } /* $server_url */ ?>
 </table>
