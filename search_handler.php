@@ -89,9 +89,11 @@ else
 // now sort by number of hits
 if ( empty ( $error ) ) {
   arsort ( $ids );
+  echo "<ul>\n";
   for ( reset ( $ids ); $key = key ( $ids ); next ( $ids ) ) {
     echo "<li><a class=\"nav\" href=\"view_entry.php?id=$key\">" . $info[$key] . "</a></li>\n";
   }
+  echo "</ul>\n";
 }
 
 ?>
