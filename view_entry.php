@@ -373,8 +373,8 @@ if ( $categories_enabled == "Y" ) {
 ?>
 <h2><?php echo htmlspecialchars ( $name ); ?></h2>
 
-<table border="0">
-<tr><td valign="top"><b><?php etranslate("Description")?>:</b></td>
+<table style="border-width:0px;">
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Description")?>:</td>
   <td><?php
   if ( ! empty ( $allow_html_description ) &&
     $allow_html_description == 'Y' ) {
@@ -386,7 +386,7 @@ if ( $categories_enabled == "Y" ) {
 ?></td></tr>
 
 <?php if ( $event_status != 'A' && ! empty ( $event_status ) ) { ?>
-  <tr><td valign="top"><b><?php etranslate("Status")?>:</b></td>
+  <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Status")?>:</td>
   <td><?php
      if ( $event_status == 'W' )
        etranslate("Waiting for approval");
@@ -397,7 +397,7 @@ if ( $categories_enabled == "Y" ) {
       ?></td></tr>
 <?php } ?>
 
-<tr><td valign="top"><b><?php etranslate("Date")?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Date")?>:</td>
   <td><?php
   if ( $event_repeats ) {
     echo date_to_str ( $event_date );
@@ -406,11 +406,11 @@ if ( $categories_enabled == "Y" ) {
   }
   ?></td></tr>
 <?php if ( $event_repeats ) { ?>
-<tr><td valign="top"><b><?php etranslate("Repeat Type")?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Repeat Type")?>:</td>
   <td><?php echo date_to_str ( $row[1], "", true, false, $event_time ) . $rep_str; ?></td></tr>
 <?php } ?>
 <?php if ( $event_time >= 0 ) { ?>
-<tr><td valign="top"><b><?php etranslate("Time")?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Time")?>:</td>
   <td><?php
     if ( $row[5] == ( 24 * 60 ) )
       etranslate("All day event");
@@ -419,24 +419,24 @@ if ( $categories_enabled == "Y" ) {
   ?></td></tr>
 <?php } ?>
 <?php if ( $row[5] > 0 && $row[5] != ( 24 * 60 ) ) { ?>
-<tr><td valign="top"><b><?php etranslate("Duration")?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Duration")?>:</td>
   <td><?php echo $row[5]; ?> <?php etranslate("minutes")?></td></tr>
 <?php } ?>
 <?php if ( $disable_priority_field != "Y" ) { ?>
-<tr><td valign="top"><b><?php etranslate("Priority")?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Priority")?>:</td>
   <td><?php echo $pri[$row[6]]; ?></td></tr>
 <?php } ?>
 <?php if ( $disable_access_field != "Y" ) { ?>
-<tr><td valign="top"><b><?php etranslate("Access")?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Access")?>:</td>
   <td><?php echo ( $row[8] == "P" ) ? translate("Public") : translate("Confidential"); ?></td></tr>
 <?php } ?>
 <?php if ( $categories_enabled == "Y" && ! empty ( $category ) ) { ?>
-<tr><td valign="top"><b><?php etranslate("Category")?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Category")?>:</td>
   <td><?php echo $category; ?></td></tr>
 <?php } ?>
 <?php
 if ( $single_user == "N" ) {
-  echo "<tr><td valign=\"top\"><b>" . translate("Created by") . ":</b></td>\n";
+  echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">" . translate("Created by") . ":</td>\n";
   if ( $is_private )
     echo "<td>[" . translate("Confidential") . "]</td></tr>\n";
   else {
@@ -451,7 +451,7 @@ if ( $single_user == "N" ) {
   }
 }
 ?>
-<tr><td valign="top"><b><?php etranslate("Updated")?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Updated")?>:</td>
   <td><?php
     echo date_to_str ( $row[3] );
     echo " ";
@@ -466,9 +466,9 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   $extra_arg1 = $site_extras[$i][3];
   $extra_arg2 = $site_extras[$i][4];
   if ( $extras[$extra_name]['cal_name'] != "" ) {
-    echo "<tr><td valign=\"top\"><b>" .
+    echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">" .
       translate ( $site_extras[$i][1] ) .
-      ":</b></td><td>";
+      ":</td><td>";
     if ( $extra_type == $EXTRA_URL ) {
       if ( strlen ( $extras[$extra_name]['cal_data'] ) )
         echo "<a href=\"" . $extras[$extra_name]['cal_data'] . "\">" .
@@ -529,7 +529,7 @@ if ( $public_access == "Y" && $login == "__public__" &&
   $show_participants = false;
 if ( $single_user == "N" && $show_participants ) {
 ?>
-<tr><td valign="top"><b><?php etranslate("Participants")?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Participants")?>:</td>
   <td><?php
   if ( $is_private ) {
     echo "[" . translate("Confidential") . "]";
@@ -712,10 +712,10 @@ if ( $is_admin ) {
 
 if ( $show_log ) {
   echo "<h3>" . translate("Activity Log") . "</h3>\n";
-  echo "<table border=\"0\" width=\"100%\">\n";
+  echo "<table style=\"border-width:0px; width:100%;\">\n";
   echo "<tr>";
   echo "<th style=\"background-color:$THBG; color:$THFG;\">" .
-    translate("User") . "</font></th>";
+    translate("User") . "</th>";
   echo "<th style=\"background-color:$THBG; color:$THFG;\">" .
     translate("Calendar") . "</th>";
   echo "<th style=\"background-color:$THBG; color:$THFG;\">" .
@@ -727,17 +727,17 @@ if ( $show_log ) {
     "FROM webcal_entry_log WHERE cal_entry_id = $id " .
     "ORDER BY cal_log_id DESC" );
   if ( $res ) {
-    $font = "<font SIZE=\"-1\">";
+    $font = "font-size:13px;";
     while ( $row = dbi_fetch_row ( $res ) ) {
       echo "<tr>";
-      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" . $font . $row[0] .
-        "</font></td>";
-      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" . $font . $row[1] .
-        "</font></td>";
-      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" . $font .
+      echo "<td style=\"vertical-align:top; background-color:$CELLBG; $font\">" . $row[0] .
+        "</td>";
+      echo "<td style=\"vertical-align:top; background-color:$CELLBG; $font\">" . $row[1] .
+        "</td>";
+      echo "<td style=\"vertical-align:top; background-color:$CELLBG; $font\">" . 
 	date_to_str ( $row[3] ) . " " .
-        display_time ( $row[4] ) . "</font></td>";
-      echo "<td bgcolor=\"$CELLBG\">" . $font;
+        display_time ( $row[4] ) . "</td>";
+      echo "<td style=\"background-color:$CELLBG; $font\">";
       if ( $row[2] == $LOG_CREATE )
         etranslate("Event created");
       else if ( $row[2] == $LOG_APPROVE )
@@ -752,7 +752,7 @@ if ( $show_log ) {
         etranslate("Notification sent");
       else if ( $row[2] == $LOG_REMINDER )
         etranslate("Reminder sent");
-      echo "</font></td></tr>\n";
+      echo "</td></tr>\n";
     }
     dbi_free_result ( $res );
   }
