@@ -20,7 +20,10 @@
  * Security:
  *	Must have "allow view others" enabled ($allow_view_other) in
  *	  System Settings unless the user is an admin user ($is_admin).
- *	Must be owner of the view.
+ *	If the view is not global, the user must be owner of the view.
+ *	If the view is global, then and user_sees_only_his_groups is
+ *	enabled, then we remove users not in this user's groups
+ *	(except for nonuser calendars... which we allow regardless of group).
  */
 
 include_once 'includes/init.php';
@@ -107,6 +110,9 @@ if ( $all_users ) {
   if ( ! empty ( $user_sees_only_his_groups ) &&
     $user_sees_only_his_groups == 'Y' ) {
     $myusers = get_my_users ();
+    if ( ! empty ( $nonuser_enabled ) && $nonuser_enabled == "Y" ) {
+      $myusers = array_merge ( $myusers, get_nonuser_cals () );
+    }
     $userlookup = array();
     for ( $i = 0; $i < count ( $myusers ); $i++ ) {
       $userlookup[$myusers[$i]['cal_login']] = 1;
