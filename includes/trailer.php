@@ -19,7 +19,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<p><label for="monthselect"><?php etranslate("Month")?>:&nbsp;</label>
+<label for="monthselect"><?php etranslate("Month")?>:&nbsp;</label>
 <select name="date" id="monthselect" onchange="document.SelectMonth.submit()">
 <?php
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
@@ -49,7 +49,6 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
-</p>
 </form>
 
 <form action="week.php" method="get" name="SelectWeek" id="weekform">
@@ -60,7 +59,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<p><label for="weekselect"><?php etranslate("Week")?>:&nbsp;</label>
+<label for="weekselect"><?php etranslate("Week")?>:&nbsp;</label>
 <select name="date" id="weekselect" onchange="document.SelectWeek.submit()">
 <?php
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
@@ -98,7 +97,6 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
-</p>
 </form>
 
 <form action="year.php" method="get" name="SelectYear" id="yearform">
@@ -109,7 +107,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<p><label for="yearselect"><?php etranslate("Year")?>:&nbsp;</label>
+<label for="yearselect"><?php etranslate("Year")?>:&nbsp;</label>
 <select name="year" id="yearselect" onchange="document.SelectYear.submit()">
 <?php
   if ( ! empty ( $thisyear ) ) {
@@ -126,7 +124,6 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
-</p>
 </form>
 
 <!-- GO TO -->
