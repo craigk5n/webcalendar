@@ -126,7 +126,7 @@ if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' &&
 }
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Administrative Tools")?></h2>
+<h2><?php etranslate("Administrative Tools")?></h2>
 
 <table class="admin">
 

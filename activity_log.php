@@ -7,15 +7,15 @@ print_header();
 echo "<h3>" . translate("Activity Log") . "</h3>\n";
 echo "<table style=\"border-width:0px; width:100%;\">\n";
 echo "<tr>";
-echo "<th style=\"text-align:left; background-color:$THBG; width:10%; color:$THFG;\">" .
+echo "<th style=\"background-color:$THBG; width:10%; color:$THFG;\">" .
   translate("User") . "</th>";
-echo "<th style=\"text-align:left; background-color:$THBG; width:10%; color:$THFG;\">" .
+echo "<th style=\"background-color:$THBG; width:10%; color:$THFG;\">" .
   translate("Calendar") . "</th>";
-echo "<th style=\"text-align:left; background-color:$THBG; width:25%; color:$THFG;\">" .
+echo "<th style=\"background-color:$THBG; width:25%; color:$THFG;\">" .
   translate("Date") . "/" . translate("Time") . "</th>";
-echo "<th style=\"text-align:left; background-color:$THBG; width:30%; color:$THFG;\">" .
+echo "<th style=\"background-color:$THBG; width:30%; color:$THFG;\">" .
   translate("Event") . "</th>";
-echo "<th style=\"text-align:left; background-color:$THBG; width:15%; color:$THFG;\">" .
+echo "<th style=\"background-color:$THBG; width:15%; color:$THFG;\">" .
   translate("Action") . "</th></tr>\n";
 $sql = "SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, " .
   "webcal_entry_log.cal_type, webcal_entry_log.cal_date, " .

@@ -157,6 +157,7 @@ a:hover {
 h2 {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 20px;
+  color: <?php echo $H2COLOR;?>;
 }
 h3 {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;

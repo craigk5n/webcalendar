@@ -39,7 +39,7 @@ if ( $newview ) {
   echo "<input type=\"hidden\" name=\"add\" value=\"1\" />\n";
 } else {
   echo "<h2 style=\"color:$H2COLOR;\">" . translate("Edit View") . "</h2>\n";
-  echo "<input name=\"id\" type=\"hidden\" value=\"$id\" />";
+  echo "<input name=\"id\" type=\"hidden\" value=\"$id\" />\n";
 }
 ?>
 
@@ -84,7 +84,7 @@ if ( $newview ) {
     if ( ! empty ( $viewuser[$u] ) ) {
       echo " selected=\"selected\"";
     }
-    echo ">" . $users[$i]['cal_fullname'] . "</option>";
+    echo ">" . $users[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
 </select>

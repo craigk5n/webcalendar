@@ -21,7 +21,7 @@ print_header($INC);
   <td><select name="fromday">
 <?php
   $day = date ( "d" );
-  for ( $i = 1; $i <= 31; $i++ ) echo "<option" . ( $i == $day ? " selected=\"selected\"" : "" ) . ">$i</option>";
+  for ( $i = 1; $i <= 31; $i++ ) echo "<option" . ( $i == $day ? " selected=\"selected\"" : "" ) . ">$i</option>\n";
 ?>
   </select>
   <select name="frommonth">
@@ -30,7 +30,7 @@ print_header($INC);
   $year = date ( "Y" );
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    print "<option value=\"$i\"" . ( $i == $month ? " selected=\"selected\"" : "" ) . ">$m</option>";
+    print "<option value=\"$i\"" . ( $i == $month ? " selected=\"selected\"" : "" ) . ">$m</option>\n";
   }
 ?>
   </select>
@@ -39,7 +39,7 @@ print_header($INC);
   $year = date ( "Y" ) - 1;
   for ( $i = -1; $i < 5; $i++ ) {
     $y = date ( "Y" ) + $i;
-    print "<option value=\"$y\"" . ( $y == $year ? " selected=\"selected\"" : "" ) . ">$y</option>";
+    print "<option value=\"$y\"" . ( $y == $year ? " selected=\"selected\"" : "" ) . ">$y</option>\n";
   }
 ?>
   </select>
@@ -50,7 +50,7 @@ print_header($INC);
   <td><select name="endday">
 <?php
   $day = date ( "d" );
-  for ( $i = 1; $i <= 31; $i++ ) echo "<option" . ( $i == $day ? " selected=\"selected\"" : "" ) . ">$i</option>";
+  for ( $i = 1; $i <= 31; $i++ ) echo "<option" . ( $i == $day ? " selected=\"selected\"" : "" ) . ">$i</option>\n";
 ?>
   </select>
   <select name="endmonth">
@@ -59,7 +59,7 @@ print_header($INC);
   $year = date ( "Y" );
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    print "<option value=\"$i\"" . ( $i == $month ? " selected=\"selected\"" : "" ) . ">$m</option>";
+    print "<option value=\"$i\"" . ( $i == $month ? " selected=\"selected\"" : "" ) . ">$m</option>\n";
   }
 ?>
   </select>
@@ -68,7 +68,7 @@ print_header($INC);
   $year = date ( "Y" ) + 1;
   for ( $i = -1; $i < 5; $i++ ) {
     $y = date ( "Y" ) + $i;
-    print "<option value=\"$y\"" . ( $y == $year ? " selected=\"selected\"" : "" ) . ">$y</option>";
+    print "<option value=\"$y\"" . ( $y == $year ? " selected=\"selected\"" : "" ) . ">$y</option>\n";
   }i
 ?>
   </select>
@@ -80,7 +80,7 @@ print_header($INC);
 <?php
   $week_ago = mktime ( 0, 0, 0, date ( "m" ), date ( "d" ) - 7, date ( "Y" ) );
   $day = date ( "d", $week_ago );
-  for ( $i = 1; $i <= 31; $i++ ) echo "<option " . ( $i == $day ? " selected=\"selected\"" : "" ) . ">$i</option>";
+  for ( $i = 1; $i <= 31; $i++ ) echo "<option " . ( $i == $day ? " selected=\"selected\"" : "" ) . ">$i</option>\n";
 ?>
   </select>
   <select name="modmonth">
@@ -89,7 +89,7 @@ print_header($INC);
   $year = date ( "Y", $week_ago );
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    print "<option value=\"$i\"" . ( $i == $month ? " selected=\"selected\"" : "" ) . ">$m</option>";
+    print "<option value=\"$i\"" . ( $i == $month ? " selected=\"selected\"" : "" ) . ">$m</option>\n";
   }
 ?>
   </select>
@@ -98,7 +98,7 @@ print_header($INC);
   $year = date ( "Y", $week_ago );
   for ( $i = -1; $i < 5; $i++ ) {
     $y = date ( "Y" ) + $i;
-    print "<option value=\"$y\"" . ( $y == $year ? " selected=\"selected\"" : "" ) . ">$y</option>";
+    print "<option value=\"$y\"" . ( $y == $year ? " selected=\"selected\"" : "" ) . ">$y</option>\n";
   }
 ?>
   </select>

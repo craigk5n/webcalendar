@@ -16,7 +16,7 @@ if ( strlen ( $login ) == 0 ) {
   } else if ( strlen ( $webcalendar_login ) > 0 ) {
     $login = $user = $webcalendar_login;
   } else {
-    echo "<span style=\"color:#FF0000;\"><b>Error:</b> No calendar user specified.</span>";
+    echo "<span style=\"color:#FF0000;\"><span style=\"font-weight:bold;\">Error:</span> No calendar user specified.</span>";
     exit;
   }
 }
