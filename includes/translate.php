@@ -1,14 +1,21 @@
 <?php
+/*
+ * $Id$
+ *
+ * File Description:
+ *	Functions here are used to support translating this application into
+ *	multiple languages.  The idea is very much stolen from the GNU
+ *	translate C library.
+ *
+ * Comments:
+ *	Although there is a PHP gettext() function, I prefer to use this
+ *	home-grown translate function since it is simpler to work with.
+ */
 
 if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
 
-// Functions here are used to support translating this application into
-// multiple languages.  The idea is very much stolen from the GNU translate
-// C library.  I implemneted this before I realized that there was a gettext()
-// function added to PHP3 and PHP4.  Rather than using the built-in PHP, I'll
-// stick with my implementation since it works with older PHP3.
 
 
 // If set to use browser settings.
@@ -29,8 +36,14 @@ $translation_loaded = false;
 $PUBLIC_ACCESS_FULLNAME = "Public Access"; // default
 
 
-// Unload translations so we can switch languages and translate into
-// a different language).
+/** reset_language
+  * Description:
+  *	Unload translations so we can switch languages and translate into
+  *	a different language).
+  * Parameters:
+  *	$new_language - new language file to load (just the base filename,
+  *	  no directory or file suffix.  Example: "French")
+  */
 function reset_language ( $new_language ) {
   global $lang_file, $translations, $basedir, $lang, $translation_loaded;
 
@@ -46,7 +59,12 @@ function reset_language ( $new_language ) {
 
 
 
-// Load all the language translation into an array for quick lookup.
+/** load_translation_text
+  * Description:
+  *	Load all the language translation into an array for quick lookup.
+  *	<br/>Note: There is no need to call this manually.  It will be
+  *	invoked by the translate function the first time it is called.
+  */
 function load_translation_text () {
   global $lang_file, $translations, $basedir, $PUBLIC_ACCESS_FULLNAME, $fullname;
   $translations = array ();
@@ -85,7 +103,17 @@ function load_translation_text () {
 
 
 
-// Translate a string from the default English usage to some other language
+/** translate
+  * Description:
+  *	Translate a string from the default English usage to some
+  *	other language.  The first time that this is called, the translation
+  *	file will be loaded (with the load_translation_text function).
+  * Parameters:
+  *	$str - text to translate
+  * Returns:
+  *	The translated text, if available.  If no translation is avalailable,
+  *	then the original untranslated text is returned.
+  */
 function translate ( $str ) {
   global $translations, $translation_loaded;
 
@@ -107,13 +135,28 @@ function translate ( $str ) {
 
 
 
-// this is just an abbreviation for: echo translate ( $str )
+/** etranslate
+  * Description:
+  *	Translate text and print it.
+  *	This is just an abbreviation for: echo translate ( $str )
+  * Parameters:
+  *	$str - input text to translate and print
+  */
 function etranslate ( $str ) {
   echo translate ( $str );
 }
 
-// a version of etranslate that strips HTML out.  Useful for tooltips
-// which will barf on HTML.
+/** tooltip
+  * Description:
+  *	Translate text and remove and HTML from it.
+  *	This is useful for tooltips, which barf on HTML.
+  *	<br/>Note: The etooltip function will print the result
+  *	rather than return the value.
+  * Parameters:
+  *	$str - the input text to translate
+  * Returns:
+  *	The translated text with all HTML removed
+  */
 function tooltip ( $str ) {
   $ret = translate ( $str );
   $ret = eregi_replace ( "<[^>]+>", "", $ret );
@@ -121,6 +164,15 @@ function tooltip ( $str ) {
   return $ret;
 }
 
+/** etooltip
+  * Description:
+  *	Translate text and remove and HTML from it.
+  *	This is useful for tooltips, which barf on HTML.
+  *	<br/>Note: The tooltip function will return the result
+  *	rather than print the value.
+  * Parameters:
+  *	$str - the input text to translate and print
+  */
 function etooltip ( $str ) {
   echo tooltip ( $str );
 }
