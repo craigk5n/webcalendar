@@ -1,4 +1,7 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Fixed bug 903285: PHP balise problem <? ?>
+    (fixed for view_d.php, didn't check all files)
+  - Fixed bug 850719: repeating whole day event has only on the
   - Improved sizing of event popups on MSIE/Mozilla
   - Fixed export URL so users should now be prompted to save with
     correct filename.
