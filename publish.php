@@ -195,8 +195,7 @@ function export_fold_lines($string, $encoding="none", $limit=76) {
   return $res;
 }
 
-function export_time($date, $duration, $time, $texport)
-{
+function export_time($date, $duration, $time, $texport) {
   $allday = ( $time == -1 || $duration == 24*60 );
   $year = (int) substr($date,0,-4);
   $month = (int) substr($date,-4,2);
@@ -238,8 +237,7 @@ function export_time($date, $duration, $time, $texport)
   }
 }
 
-function export_recurrence_ical($id, $date)
-{
+function export_recurrence_ical($id, $date) {
   global $days_per_month, $ldays_per_month;
   $str_day = array( 'SU','MO','TU','WE','TH','FR','SA' );
 
@@ -385,8 +383,7 @@ function export_alarm_ical($id, $description) {
   }
 }
 
-function export_get_utc_date($date, $time=0)
-{
+function export_get_utc_date($date, $time=0) {
   $year = (int) substr($date,0,-4);
   $month = (int) substr($date,-4,2);
   $day = (int) substr($date,-2,2);
@@ -517,9 +514,7 @@ function export_ical () {
     echo "END:VCALENDAR\r\n";
 }
 
-
 //header ( "Content-Type: text/plain" );
 header ( "Content-Type: text/calendar" );
 export_ical();
-
 ?>

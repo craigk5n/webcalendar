@@ -35,7 +35,6 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 	BGCOLOR - background-color for the page
 	TABLEBG - background-color for tables (typically used when the table also has cellspacing, thereby
 		creating a border effect)
-	TABLECELLFG - text color for normal cells (not weekends, today, or any other types of cells)
 	CELLBG - background-color for normal cells (not weekends, today, or any other types of cells)
 	TODAYCELLBG - background-color for cells that make up today's date
 	WEEKENDBG - background-color for cells that make up the weekend
@@ -48,7 +47,24 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 ?>
 <style type="text/css">
 <!--
-body {
+<?php //=============================== SECTION A ==========================================
+	/* The CSS for WebCalendar is broken down into several sections.
+	This should make it easier to understand, debug & understand the logical sequence
+	of how the new style system is built.
+	Each page in WebCalendar is assigned a unique ID. This unique ID is determined by 
+	taking the name of the page & removing any underscores (_). For a complete list of
+	and their IDs, look in includes/init.php.
+
+	The following sections appear below:
+		Section A - basic, required elements that affect WebCalendar as a whole
+		Section R - more specific to select areas of WebCalendar, yet still 
+			affects many areas of WebCalendar
+		Section B - classes specific to certain pages, but that affect either 
+			the page as a whole, or large areas within that page
+		Section S - the "nitty gritty" of classes. Used specifically for 
+			fine-tuning elements within a specific page
+*/
+?>body {
 	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
 	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 12px;
@@ -80,7 +96,7 @@ span.tabfor {
 	border-left: 2px ridge #C0C0C0;
 	border-right: 2px ridge #C0C0C0;
 	border-bottom: 2px solid #F8F8FF;
-	background-color: #f8f8ff;
+	background-color: #F8F8FF;
 }
 span.tabbak {
 	padding: 0.2em 0.2em 0px 0.2em;
@@ -199,8 +215,6 @@ a:hover {
 <?php //new event icon (i.e. '+' symbol)
 ?>.new {
 	border-width: 0px;
-	width: 10px;
-	height: 10px;
 	float: right;
 }
 <?php //links to unapproved entries/events
@@ -228,8 +242,6 @@ a:hover {
 ?>.entry img,
 .layerentry img,
 .unapprovedentry img {
-	width: 5px;
-	height: 7px;
 	border-width: 0px;
 	margin-left: 2px;
 	margin-right: 2px;
@@ -248,14 +260,9 @@ a:hover {
 }
 <?php //numerical date links in main calendars on hover
 ?>.dayofmonth:hover {
-	font-size: 13px;
 	color: #0000FF;
-	text-decoration: none;
-	border-top-width: 0px;
-	border-left-width: 0px;
 	border-right: 1px solid #0000FF;
 	border-bottom: 1px solid #0000FF;
-	padding: 0px 2px 0px 3px;
 }
 <?php //left arrow images
 ?>.prev img {
@@ -271,7 +278,10 @@ a:hover {
 	margin-top: 7px;
 	float: right;
 }
-#activitylog .prev {
+<?php //====================================== /SECTION A ================================
+
+      //====================================== SECTION R =================================
+?>#activitylog .prev {
 	border-width: 0px;
 	float: left;
 }
@@ -288,7 +298,7 @@ a:hover {
 <?php //right arrow image in day.php
 ?>#day .next img {
 	border-width: 0px;
-	margin-top:37px;
+	margin-top: 37px;
 	float: right;
 }
 <?php //left arrow image in day.php
@@ -334,9 +344,9 @@ a.matrix img {
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .nav {
-  font-size: 14px;
-  color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
-  text-decoration: none;
+	font-size: 14px;
+	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+	text-decoration: none;
 }
 .popup {
 	font-size: 12px;
@@ -390,17 +400,6 @@ textarea {
 	font-size: 12px;
 	overflow: auto;
 }
-<?php //left & right arrow images 
-?>.prevnext {
-	border-width: 0px;
-	width: 36px;
-	height: 32px;
-}
-.prevnextsmall {
-	width: 18px;
-	height: 18px;
-	border-width: 0px;
-}
 .user {
 	font-size: 18px;
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
@@ -422,12 +421,12 @@ textarea {
 	cursor: help;
 }
 <?php //standard table appearing mainly in prefs.php & admin.php 
-?>table.standard {
+?>.standard {
   border: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   background-color: <?php echo $GLOBALS['CELLBG']; ?>;
   font-size: 12px;
 }
-table.standard th {
+.standard th {
   color: <?php echo $GLOBALS['THFG']; ?>;
   background-color: <?php echo $GLOBALS['THBG']; ?>;
   font-size: 18px;
@@ -535,7 +534,7 @@ table.standard th {
 	border-width: 0px;
 	padding: 3px;
 }
-table.glance {
+.glance {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
@@ -557,7 +556,6 @@ table.glance {
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	padding-left: 3px;
 }
-
 <?php //display: none; is unhidden by includes/print_styles.css for printer-friendly pages
 ?>#day dl.desc {
 	display: none;
@@ -760,9 +758,7 @@ th {
 #month .minical {
 	border-width: 0px;
 }
-
 #viewt td.reg {
-	color: <?php echo $GLOBALS['TABLECELLFG']; ?>;
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;

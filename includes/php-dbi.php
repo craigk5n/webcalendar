@@ -1,5 +1,4 @@
 <?php
-
 if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
@@ -155,7 +154,6 @@ function dbi_close ( $conn ) {
 
 }
 
-
 // Select the database that all queries should use
 //function dbi_select_db ( $database ) {
 //  if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
@@ -213,7 +211,6 @@ function dbi_query ( $sql ) {
   }
 }
 
-
 // Determine the number of rows from a result
 //function dbi_num_rows ( $res ) {
 //  if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
@@ -261,7 +258,6 @@ function dbi_fetch_row ( $res ) {
   }
 }
 
-
 // Returns the number of rows affected by the last INSERT, UPDATE or
 // DELETE.
 //   $conn - db connection
@@ -288,7 +284,6 @@ function dbi_affected_rows ( $conn, $res ) {
   }
 }
 
-
 // Free a result set.
 // This isn't really necessary for PHP4 since this is done automatically,
 // but it's a good habit for PHP3.
@@ -314,7 +309,6 @@ function dbi_free_result ( $res ) {
   }
 }
 
-
 // Get the latest db error message.
 function dbi_error () {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
@@ -339,7 +333,6 @@ function dbi_error () {
     return "Unknown error";
 }
 
-
 // display an error message and exit
 function dbi_fatal_error ( $msg ) {
   echo "<h2>Error</h2>\n";
@@ -348,5 +341,4 @@ function dbi_fatal_error ( $msg ) {
   echo "<!--end_error-->\n";
   exit;
 }
-
 ?>
