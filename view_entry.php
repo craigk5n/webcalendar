@@ -3,8 +3,14 @@
  * $Id$
  *
  * Description:
- *	Presents page to view an event
+ * Presents page to view an event with links to edit, delete
+	* confirm, copy, add event
  *
+	* Input Parameters:
+ *	id (*) - cal_id of requested event
+ *	date  - yyyymmdd format of requested event
+ *	user  - user to dispaly
+ *	(*) required field
  */
 include_once 'includes/init.php';
 include_once 'includes/site_extras.php';
@@ -13,8 +19,9 @@ include_once 'includes/site_extras.php';
 $can_view = false;
 $is_my_event = false;
 
-if ( $is_admin || $is_nonuser_admin || $is_assistant )
+if ( $is_admin || $is_nonuser_admin || $is_assistant ) {
   $can_view = true;
+} 
 
 // is this user a participant or the creator of the event?
 $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
@@ -41,12 +48,13 @@ if ( ! $can_view ) {
   // if not a participant in the event, must be allowed to look at
   // other user's calendar.
   if ( $login == "__public__" ) {
-    if ( $public_access_others == "Y" )
+    if ( $public_access_others == "Y" ) {
       $check_group = true;
-  }
-  else {
-    if ( $allow_view_other == "Y" )
+    }
+  } else {
+    if ( $allow_view_other == "Y" ) {
       $check_group = true;
+    }
   }
   // If $check_group is true now, it means this user can look at the
   // event only if they are in the same group as some of the people in
@@ -65,23 +73,26 @@ if ( ! $can_view ) {
       "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
       "AND webcal_entry_user.cal_login IN ( ";
     for ( $i = 0; $i < count ( $my_users ); $i++ ) {
-      if ( $i > 0 )
+      if ( $i > 0 ) {
         $sql .= ", ";
+      }
       $sql .= "'" . $my_users[$i]['cal_login'] . "'";
     }
     $sql .= " )";
     $res = dbi_query ( $sql );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
-      if ( $row && $row[0] > 0 )
+      if ( $row && $row[0] > 0 ) {
         $can_view = true;
+      }
       dbi_free_result ( $res );
     }
   }
   // If we didn't indicate we need to check groups, then this user
   // can't view this event.
-  if ( ! $check_group )
+  if ( ! $check_group ) {
     $can_view = false;
+  }
 }
 
 // If they still cannot view, make sure they are not looking at a nonuser
@@ -100,10 +111,11 @@ if ( ! $can_view && ! empty ( $nonuser_enabled ) &&
   $found_reg_user = false;
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( ! empty ( $nonuser_lookup[$row[0]] ) )
+      if ( ! empty ( $nonuser_lookup[$row[0]] ) ) {
         $found_nonuser_cal = true;
-      else
+      } else {
         $found_reg_user = true;
+      }
     }
     dbi_free_result ( $res );
   }
@@ -130,10 +142,12 @@ function add_duration ( $time, $duration ) {
   return $ret;
 }
 
-if ( ! empty ( $year ) )
+if ( ! empty ( $year ) ) {
   $thisyear = $year;
-if ( ! empty ( $month ) )
+}
+if ( ! empty ( $month ) ) {
   $thismonth = $month;
+}
 $pri[1] = translate("Low");
 $pri[2] = translate("Medium");
 $pri[3] = translate("High");
@@ -157,12 +171,15 @@ if ( $id > 0 ) {
 }
 if ( $ext_id > 0 ) {
   $url = "view_entry.php?id=$ext_id";
-  if ( $date != "" )
+  if ( $date != "" ) {
     $url .= "&amp;date=$date";
-  if ( $user != "" )
+  }
+  if ( $user != "" ) {
     $url .= "&amp;user=$user";
-  if ( $cat_id != "" )
+  }
+  if ( $cat_id != "" ) {
     $url .= "&amp;cat_id=$cat_id";
+  }
   do_redirect ( $url );
 }
 
@@ -183,8 +200,9 @@ if ( ! empty ( $user ) && $login != $user ) {
     "WHERE cal_login = '$user' AND cal_id = $id";
   $res = dbi_query ( $sql );
   if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) )
+    if ( $row = dbi_fetch_row ( $res ) ) {
       $event_status = $row[0];
+    }
     dbi_free_result ( $res );
   }
 } else {
@@ -212,8 +230,9 @@ if ( empty ( $event_status ) ) {
     "WHERE cal_status <> 'D' ORDER BY cal_status";
   $res = dbi_query ( $sql );
   if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) )
+    if ( $row = dbi_fetch_row ( $res ) ) {
       $event_status = $row[0];
+    }
     dbi_free_result ( $res );
   }
 }
@@ -221,8 +240,8 @@ if ( empty ( $event_status ) ) {
 // If we have no event status yet, it must have been deleted.
 if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
   echo "<h2>" . 
-	translate("Error") . "</h2>" . 
-	translate("You are not authorized") . ".\n";
+    translate("Error") . "</h2>" . 
+    translate("You are not authorized") . ".\n";
   print_trailer ();
   echo "</body>\n</html>";
   exit;
@@ -246,7 +265,8 @@ $name = $row[9];
 $description = $row[10];
 
 // Timezone Adjustments
-if ( $event_time >= 0 && ! empty ( $TZ_OFFSET )  && $TZ_OFFSET != 0 ) { // -1 = no time specified
+if ( $event_time >= 0 && ! empty ( $TZ_OFFSET )  && $TZ_OFFSET != 0 ) { 
+  // -1 = no time specified
   $adjusted_time = $event_time + $TZ_OFFSET * 10000;
   $year = substr($row[1],0,4);
   $month = substr($row[1],4,2);
@@ -273,7 +293,9 @@ $thisdow = date ( "w", $thistime );
 $subject = translate($application_name) . ": " . $name;
 // Remove the '"' character since it causes some mailers to barf
 $subject = str_replace ( "\"", "", $subject );
-$subject = htmlentities ( $subject );
+// Pass the current charset to avoid errors using Japanese
+$charset = ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" );
+$subject = htmlentities ( $subject, ENT_COMPAT, $charset );
 
 $event_repeats = false;
 // build info string for repeating events and end date
@@ -303,8 +325,9 @@ if ( $res ) {
         case 4: $rep_str .= translate("4th"); break;
         case 5: $rep_str .= translate("5th"); break;
         case 12: if ( $cal_type == 'monthlyByDay' ||
-          $cal_type == 'monthlyByDayR' )
-          break;
+                   $cal_type == 'monthlyByDayR' ) {
+                   break;
+                 }
         default: $rep_str .= $cal_frequency; break;
       }
     }
@@ -413,8 +436,8 @@ if ( $categories_enabled == "Y" ) {
 <h2><?php echo htmlspecialchars ( $name ); ?></h2>
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Description")?>:</td><td>
-	<?php
+ <?php etranslate("Description")?>:</td><td>
+ <?php
   if ( ! empty ( $allow_html_description ) &&
     $allow_html_description == 'Y' ) {
     $str = str_replace ( '&', '&amp;', $description );
@@ -434,8 +457,8 @@ if ( $categories_enabled == "Y" ) {
 
 <?php if ( $event_status != 'A' && ! empty ( $event_status ) ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Status")?>:</td><td>
-	<?php
+ <?php etranslate("Status")?>:</td><td>
+ <?php
      if ( $event_status == 'W' )
        etranslate("Waiting for approval");
      if ( $event_status == 'D' )
@@ -447,8 +470,8 @@ if ( $categories_enabled == "Y" ) {
 <?php } ?>
 
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Date")?>:</td><td>
-	<?php
+ <?php etranslate("Date")?>:</td><td>
+ <?php
   if ( $event_repeats ) {
     echo date_to_str ( $event_date );
   } else {
@@ -458,65 +481,67 @@ if ( $categories_enabled == "Y" ) {
 </td></tr>
 <?php if ( $event_repeats ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Repeat Type")?>:</td><td>
-	<?php echo date_to_str ( $row[1], "", true, false, $event_time ) . $rep_str; ?>
+ <?php etranslate("Repeat Type")?>:</td><td>
+ <?php echo date_to_str ( $row[1], "", true, false, $event_time ) . $rep_str; ?>
 </td></tr>
 <?php } ?>
 <?php if ( $event_time >= 0 ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Time")?>:</td><td>
-	<?php
-    if ( $row[5] == ( 24 * 60 ) )
+ <?php etranslate("Time")?>:</td><td>
+ <?php
+    if ( $row[5] == ( 24 * 60 ) ) {
       etranslate("All day event");
-    else
+    } else {
       echo display_time ( $row[2] ) . $end_str;
+    }
   ?>
 </td></tr>
 <?php } ?>
 <?php if ( $row[5] > 0 && $row[5] != ( 24 * 60 ) ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Duration")?>:</td><td>
-	<?php echo $row[5]; ?> <?php etranslate("minutes")?>
+ <?php etranslate("Duration")?>:</td><td>
+ <?php echo $row[5]; ?> <?php etranslate("minutes")?>
 </td></tr>
 <?php } ?>
 <?php if ( $disable_priority_field != "Y" ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Priority")?>:</td><td>
-	<?php echo $pri[$row[6]]; ?>
+ <?php etranslate("Priority")?>:</td><td>
+ <?php echo $pri[$row[6]]; ?>
 </td></tr>
 <?php } ?>
 <?php if ( $disable_access_field != "Y" ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Access")?>:</td><td>
-	<?php echo ( $row[8] == "P" ) ? translate("Public") : translate("Confidential"); ?>
+ <?php etranslate("Access")?>:</td><td>
+ <?php echo ( $row[8] == "P" ) ? translate("Public") : translate("Confidential"); ?>
 </td></tr>
 <?php } ?>
 <?php if ( $categories_enabled == "Y" && ! empty ( $category ) ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Category")?>:</td><td>
-	<?php echo $category; ?>
+ <?php etranslate("Category")?>:</td><td>
+ <?php echo $category; ?>
 </td></tr>
 <?php } ?>
 <?php
 if ( $single_user == "N" ) {
   echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n" . 
-	translate("Created by") . ":</td><td>\n";
-  if ( $is_private )
+ translate("Created by") . ":</td><td>\n";
+  if ( $is_private ) {
     echo "[" . translate("Confidential") . "]\n</td></tr>";
-  else {
-    if ( strlen ( $email_addr ) )
+  } else {
+    if ( strlen ( $email_addr ) ) {
       echo "<a href=\"mailto:$email_addr?subject=$subject\">" .
         ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
-	"</a>\n</td></tr>";
-    else
+        "</a>\n</td></tr>";
+    } else {
       echo ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
-	"\n</td></tr>";
+        "\n</td></tr>";
+    }
   }
 }
 ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Updated")?>:</td><td>
-	<?php
+ <?php etranslate("Updated")?>:</td><td>
+ <?php
     echo date_to_str ( $row[3] );
     echo " ";
     echo display_time ( $row[4] );
@@ -535,26 +560,29 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
       translate ( $site_extras[$i][1] ) .
       ":</td><td>\n";
     if ( $extra_type == $EXTRA_URL ) {
-      if ( strlen ( $extras[$extra_name]['cal_data'] ) )
+      if ( strlen ( $extras[$extra_name]['cal_data'] ) ) {
         echo "<a href=\"" . $extras[$extra_name]['cal_data'] . "\">" .
           $extras[$extra_name]['cal_data'] . "</a>\n";
+      }
     } else if ( $extra_type == $EXTRA_EMAIL ) {
-      if ( strlen ( $extras[$extra_name]['cal_data'] ) )
+      if ( strlen ( $extras[$extra_name]['cal_data'] ) ) {
         echo "<a href=\"mailto:" . $extras[$extra_name]['cal_data'] .
           "?subject=$subject\">" .
           $extras[$extra_name]['cal_data'] . "</a>\n";
+      }
     } else if ( $extra_type == $EXTRA_DATE ) {
-      if ( $extras[$extra_name]['cal_date'] > 0 )
+      if ( $extras[$extra_name]['cal_date'] > 0 ) {
         echo date_to_str ( $extras[$extra_name]['cal_date'] );
+      }
     } else if ( $extra_type == $EXTRA_TEXT ||
       $extra_type == $EXTRA_MULTILINETEXT ) {
       echo nl2br ( $extras[$extra_name]['cal_data'] );
     } else if ( $extra_type == $EXTRA_USER ) {
       echo $extras[$extra_name]['cal_data'];
     } else if ( $extra_type == $EXTRA_REMINDER ) {
-      if ( $extras[$extra_name]['cal_remind'] <= 0 )
+      if ( $extras[$extra_name]['cal_remind'] <= 0 ) {
         etranslate ( "No" );
-      else {
+      } else {
         etranslate ( "Yes" );
         if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
           echo "&nbsp;&nbsp;-&nbsp;&nbsp;";
@@ -566,18 +594,21 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
           $minutes -= ( $d * 24 * 60 );
           $h = (int) ( $minutes / 60 );
           $minutes -= ( $h * 60 );
-          if ( $d > 1 )
+          if ( $d > 1 ) {
             echo $d . " " . translate("days") . " ";
-	  else if ( $d == 1 )
-	    echo $d . " " . translate("day") . " ";
-          if ( $h > 1 )
+          } else if ( $d == 1 ) {
+            echo $d . " " . translate("day") . " ";
+          }
+          if ( $h > 1 ) {
             echo $h . " " . translate("hours") . " ";
-	  else if ( $h == 1 )
-	    echo $h . " " . translate("hour") . " ";
-          if ( $minutes > 1 )
+          } else if ( $h == 1 ) {
+            echo $h . " " . translate("hour") . " ";
+          }
+          if ( $minutes > 1 ) {
             echo $minutes . " " . translate("minutes");
-	  else if ( $minutes == 1 )
-	    echo $minutes . " " . translate("minute");
+          } else if ( $minutes == 1 ) {
+            echo $minutes . " " . translate("minute");
+          }
           echo " " . translate("before event" );
         }
       }
@@ -593,16 +624,17 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
 // Only ask for participants if we are multi-user.
 $allmails = array ();
 $show_participants = ( $disable_participants_field != "Y" );
-if ( $is_admin )
+if ( $is_admin ) {
   $show_participants = true;
+}
 if ( $public_access == "Y" && $login == "__public__" &&
-  ( $public_access_others != "Y" || $public_access_view_part == "N" ) )
+  ( $public_access_others != "Y" || $public_access_view_part == "N" ) ) {
   $show_participants = false;
-if ( $single_user == "N" && $show_participants ) {
-?>
-<tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Participants")?>:</td><td>
-	<?php
+}
+if ( $single_user == "N" && $show_participants ) { ?>
+  <tr><td style="vertical-align:top; font-weight:bold;">
+  <?php etranslate("Participants")?>:</td><td>
+  <?php
   if ( $is_private ) {
     echo "[" . translate("Confidential") . "]";
   } else {
@@ -615,14 +647,16 @@ if ( $single_user == "N" && $show_participants ) {
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $pname = $row[0];
-        if ( $login == $row[0] && $row[1] == 'W' )
+        if ( $login == $row[0] && $row[1] == 'W' ) {
           $unapproved = TRUE;
-        if ( $row[1] == 'A' )
+        }
+        if ( $row[1] == 'A' ) {
           $approved[$num_app++] = $pname;
-        else if ( $row[1] == 'W' )
+        } else if ( $row[1] == 'W' ) {
           $waiting[$num_wait++] = $pname;
-        else if ( $row[1] == 'R' )
+        } else if ( $row[1] == 'R' )  {
           $rejected[$num_rej++] = $pname;
+        }
       }
       dbi_free_result ( $res );
     } else {
@@ -632,7 +666,8 @@ if ( $single_user == "N" && $show_participants ) {
   for ( $i = 0; $i < $num_app; $i++ ) {
     user_load_variables ( $approved[$i], "temp" );
     if ( strlen ( $tempemail ) ) {
-      echo "<a href=\"mailto:" . $tempemail . "?subject=$subject\">" . $tempfullname . "</a><br />\n";
+      echo "<a href=\"mailto:" . $tempemail . "?subject=$subject\">" . 
+        $tempfullname . "</a><br />\n";
       $allmails[] = $tempemail;
     } else {
       echo $tempfullname . "<br />\n";
@@ -644,15 +679,18 @@ if ( $single_user == "N" && $show_participants ) {
     $ext_users = explode ( "\n", $external_users );
     if ( is_array ( $ext_users ) ) {
       for ( $i = 0; $i < count( $ext_users ); $i++ ) {
-        if ( ! empty ( $ext_users[$i] ) )
-          echo $ext_users[$i] . " (" . translate("External User") . ")<br />\n";
+        if ( ! empty ( $ext_users[$i] ) ) {
+          echo $ext_users[$i] . " (" . translate("External User") . 
+            ")<br />\n";
+        }
       }
     }
   }
   for ( $i = 0; $i < $num_wait; $i++ ) {
     user_load_variables ( $waiting[$i], "temp" );
     if ( strlen ( $tempemail ) ) {
-      echo "<br /><a href=\"mailto:" . $tempemail . "?subject=$subject\">" . $tempfullname . "</a> (?)\n";
+      echo "<br /><a href=\"mailto:" . $tempemail . "?subject=$subject\">" . 
+        $tempfullname . "</a> (?)\n";
       $allmails[] = $tempemail;
     } else {
       echo "<br />" . $tempfullname . " (?)\n";
@@ -665,13 +703,14 @@ if ( $single_user == "N" && $show_participants ) {
         "?subject=$subject\">" . $tempfullname .
         "</a></strike> (" . translate("Rejected") . ")\n";
     } else {
-      echo "<br /><strike>$tempfullname</strike> (" . translate("Rejected") . ")\n";
+      echo "<br /><strike>$tempfullname</strike> (" . 
+        translate("Rejected") . ")\n";
     }
   }
 ?>
 </td></tr>
 <?php
-	} // end participants
+ } // end participants
 ?>
 
 </table>
@@ -679,8 +718,9 @@ if ( $single_user == "N" && $show_participants ) {
 <br /><?php
 
 $rdate = "";
-if ( $event_repeats )
+if ( $event_repeats ) {
   $rdate = "&amp;date=$event_date";
+}
 
 // Show a printer-friendly link
 if ( empty ( $friendly ) ) {
@@ -700,26 +740,33 @@ if ( empty ( $event_status ) ) {
 
 if ( $unapproved && $readonly == 'N' ) {
   echo "<a title=\"" . 
-	translate("Approve/Confirm entry") . "\" href=\"approve_entry.php?id=$id\" onclick=\"return confirm('" . 
-	translate("Approve this entry?") . "');\">" . 
-	translate("Approve/Confirm entry") . "</a><br />\n";
+    translate("Approve/Confirm entry") . 
+    "\" href=\"approve_entry.php?id=$id\" " .
+    "onclick=\"return confirm('" . 
+    translate("Approve this entry?") . "');\">" . 
+    translate("Approve/Confirm entry") . "</a><br />\n";
   echo "<a title=\"" . 
-	translate("Reject entry") . "\" href=\"reject_entry.php?id=$id\" onclick=\"return confirm('" .
-	translate("Reject this entry?") . "');\">" . 
-	translate("Reject entry") . "</a><br />\n";
+    translate("Reject entry") . "\" href=\"reject_entry.php?id=$id\" " .
+    "onclick=\"return confirm('" .
+    translate("Reject this entry?") . "');\">" . 
+    translate("Reject entry") . "</a><br />\n";
 }
 
-if ( ! empty ( $user ) && $login != $user )
+if ( ! empty ( $user ) && $login != $user ) {
   $u_url = "&amp;user=$user";
-else
+} else {
   $u_url = "";
+}
 
-$can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
+$can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || 
+  ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
   ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
-if ( $public_access == "Y" && $login == "__public__" )
+if ( $public_access == "Y" && $login == "__public__" ) {
   $can_edit = false;
-if ( $readonly == 'Y' )
+}
+if ( $readonly == 'Y' ) {
   $can_edit = false;
+}
 
 // If approved, but event category not set (and user does not have permission
 // to edit where they could also set the category), then allow them to
@@ -728,70 +775,86 @@ if ( empty ( $user ) && $categories_enabled == "Y" &&
   $readonly != "Y" && $is_my_event && $login != "__public__" &&
   $event_status != "D" && ! $can_edit )  {
   echo "<a title=\"" . 
-	translate("Set category") . "\" class=\"nav\" href=\"set_entry_cat.php?id=$id$rdate\">" .
-	translate("Set category") . "</a><br />\n";
+    translate("Set category") . "\" class=\"nav\" " .
+    "href=\"set_entry_cat.php?id=$id$rdate\">" .
+    translate("Set category") . "</a><br />\n";
 }
 
 if ( $can_edit && $event_status != "D" ) {
   if ( $event_repeats ) {
     echo "<a title=\"" .
-	translate("Edit repeating entry for all dates") . "\" class=\"nav\" href=\"edit_entry.php?id=$id$u_url\">" . 
-	translate("Edit repeating entry for all dates") . "</a><br />\n";
+      translate("Edit repeating entry for all dates") . 
+      "\" class=\"nav\" href=\"edit_entry.php?id=$id$u_url\">" . 
+      translate("Edit repeating entry for all dates") . "</a><br />\n";
     // Don't allow override of first event
-    if ( ! empty ( $date ) && $date != $orig_date )
+    if ( ! empty ( $date ) && $date != $orig_date ) {
       echo "<a title=\"" .
-	translate("Edit entry for this date") . "\" class=\"nav\" href=\"edit_entry.php?id=$id$u_url$rdate&amp;override=1\">" .
-	translate("Edit entry for this date") . "</a><br />\n";
+        translate("Edit entry for this date") . "\" class=\"nav\" " . 
+        "href=\"edit_entry.php?id=$id$u_url$rdate&amp;override=1\">" .
+        translate("Edit entry for this date") . "</a><br />\n";
+    }
     echo "<a title=\"" . 
-	translate("Delete repeating event for all dates") . "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url&amp;override=1\" onclick=\"return confirm('" . 
-	translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
-	translate("This will delete this entry for all users.") . "');\">" . 
-	translate("Delete repeating event for all dates") . "</a><br />\n";
+      translate("Delete repeating event for all dates") . 
+      "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url&amp;override=1\" " .
+      "onclick=\"return confirm('" . 
+      translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+      translate("This will delete this entry for all users.") . "');\">" . 
+      translate("Delete repeating event for all dates") . "</a><br />\n";
     // Don't allow deletion of first event
-    if ( ! empty ( $date ) && $date != $orig_date )
+    if ( ! empty ( $date ) && $date != $orig_date ) {
       echo "<a title=\"" . 
-	translate("Delete entry only for this date") . "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate&amp;override=1\" onclick=\"return confirm('" .
-	translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
-	translate("This will delete this entry for all users.") . "');\">" . 
-	translate("Delete entry only for this date") . "</a><br />\n";
+        translate("Delete entry only for this date") . 
+        "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate&amp;override=1\" " .
+        "onclick=\"return confirm('" .
+        translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+        translate("This will delete this entry for all users.") . "');\">" . 
+        translate("Delete entry only for this date") . "</a><br />\n";
+    }
   } else {
     echo "<a title=\"" .
-      translate("Edit entry") . "\" class=\"nav\" href=\"edit_entry.php?id=$id$u_url\">" .
+      translate("Edit entry") . "\" class=\"nav\" " .
+      "href=\"edit_entry.php?id=$id$u_url\">" .
       translate("Edit entry") . "</a><br />\n";
     echo "<a title=\"" . 
-	translate("Delete entry") . "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
-	translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
-	translate("This will delete this entry for all users.") . "');\">" . 
-	translate("Delete entry") . "</a><br />\n";
+      translate("Delete entry") . "\" class=\"nav\" " .
+      "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
+       translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+       translate("This will delete this entry for all users.") . "');\">" . 
+       translate("Delete entry") . "</a><br />\n";
   }
   echo "<a title=\"" . 
-	translate("Copy entry") . "\" class=\"nav\" href=\"edit_entry.php?id=$id$u_url&amp;copy=1\">" . 
-	translate("Copy entry") . "</a><br />\n";  
+    translate("Copy entry") . "\" class=\"nav\" " .
+    "href=\"edit_entry.php?id=$id$u_url&amp;copy=1\">" . 
+    translate("Copy entry") . "</a><br />\n";  
 } elseif ( $readonly != "Y" && $is_my_event && $login != "__public__" &&
   $event_status != "D" )  {
   echo "<a title=\"" . 
-	translate("Delete entry") . "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
-	translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
-	translate("This will delete the entry from your calendar.") . "');\">" . 
-	translate("Delete entry") . "</a><br />\n";
+    translate("Delete entry") . "\" class=\"nav\" " .
+    "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
+    translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+    translate("This will delete the entry from your calendar.") . "');\">" . 
+    translate("Delete entry") . "</a><br />\n";
   echo "<a title=\"" . 
-	translate("Copy entry") . "\" class=\"nav\" href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
-	translate("Copy entry") . "</a><br />\n";
+    translate("Copy entry") . "\" class=\"nav\" " .
+    "href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
+    translate("Copy entry") . "</a><br />\n";
 }
 if ( $readonly != "Y" && ! $is_my_event && ! $is_private && 
   $event_status != "D" && $login != "__public__" )  {
   echo "<a title=\"" . 
-	translate("Add to My Calendar") . "\" class=\"nav\" href=\"add_entry.php?id=$id\" onclick=\"return confirm('" . 
-	translate("Do you want to add this entry to your calendar?") . "\\n\\n" . 
-	translate("This will add the entry to your calendar.") . "');\">" . 
-	translate("Add to My Calendar") . "</a><br />\n";
+    translate("Add to My Calendar") . "\" class=\"nav\" " .
+    "href=\"add_entry.php?id=$id\" onclick=\"return confirm('" . 
+    translate("Do you want to add this entry to your calendar?") . "\\n\\n" . 
+    translate("This will add the entry to your calendar.") . "');\">" . 
+    translate("Add to My Calendar") . "</a><br />\n";
 }
 
 if ( count ( $allmails ) > 0 ) {
   echo "<a title=\"" . 
-	translate("Email all participants") . "\" class=\"nav\" href=\"mailto:" . implode ( ",", $allmails ) .
+    translate("Email all participants") . "\" class=\"nav\" " .
+    "href=\"mailto:" . implode ( ",", $allmails ) .
     "?subject=" . rawurlencode($subject) . "\">" . 
-	translate("Email all participants") . "</a><br />\n";
+    translate("Email all participants") . "</a><br />\n";
 }
 
 $show_log = false;
@@ -799,12 +862,14 @@ $show_log = false;
 if ( $is_admin ) {
   if ( empty ( $log ) ) {
     echo "<a title=\"" . 
-	translate("Show activity log") . "\" class=\"nav\" href=\"view_entry.php?id=$id&amp;log=1\">" . 
-	translate("Show activity log") . "</a><br />\n";
+      translate("Show activity log") . "\" class=\"nav\" " .
+      "href=\"view_entry.php?id=$id&amp;log=1\">" . 
+      translate("Show activity log") . "</a><br />\n";
   } else {
     echo "<a title=\"" . 
-	translate("Hide activity log") . "\" class=\"nav\" href=\"view_entry.php?id=$id\">" . 
-	translate("Hide activity log") . "</a><br />\n";
+      translate("Hide activity log") . "\" class=\"nav\" " .
+      "href=\"view_entry.php?id=$id\">" . 
+       translate("Hide activity log") . "</a><br />\n";
     $show_log = true;
   }
 }
@@ -816,7 +881,7 @@ if ( $show_log ) {
   echo translate("User") . "</th><th class=\"cal\">\n";
   echo translate("Calendar") . "</th><th class=\"date\">\n";
   echo translate("Date") . "/" . 
-  	translate("Time") . "</th><th class=\"action\">\n";
+   translate("Time") . "</th><th class=\"action\">\n";
   echo translate("Action") . "\n</th></tr>\n";
 
   $res = dbi_query ( "SELECT cal_login, cal_user_cal, cal_type, " .
@@ -828,22 +893,23 @@ if ( $show_log ) {
       echo "<tr><td>\n";
       echo $row[0] . "</td><td>\n";
       echo $row[1] . "</td><td>\n" . 
-	date_to_str ( $row[3] ) . "&nbsp;" .
+        date_to_str ( $row[3] ) . "&nbsp;" .
         display_time ( $row[4] ) . "</td><td>\n";
-      if ( $row[2] == $LOG_CREATE )
+      if ( $row[2] == $LOG_CREATE ) {
         etranslate("Event created");
-      else if ( $row[2] == $LOG_APPROVE )
+      } else if ( $row[2] == $LOG_APPROVE ) {
         etranslate("Event approved");
-      else if ( $row[2] == $LOG_REJECT )
+      } else if ( $row[2] == $LOG_REJECT ) {
         etranslate("Event rejected");
-      else if ( $row[2] == $LOG_UPDATE )
+      } else if ( $row[2] == $LOG_UPDATE ) {
         etranslate("Event updated");
-      else if ( $row[2] == $LOG_DELETE )
+      } else if ( $row[2] == $LOG_DELETE ) {
         etranslate("Event deleted");
-      else if ( $row[2] == $LOG_NOTIFICATION )
+      } else if ( $row[2] == $LOG_NOTIFICATION ) {
         etranslate("Notification sent");
-      else if ( $row[2] == $LOG_REMINDER )
+      } else if ( $row[2] == $LOG_REMINDER ) {
         etranslate("Reminder sent");
+      }
       echo "</td></tr>\n";
     }
     dbi_free_result ( $res );
@@ -852,26 +918,27 @@ if ( $show_log ) {
 }
 
 if (! $is_private) {
-  echo "<br /><form method=\"post\" name=\"exportform\" action=\"export_handler.php\">\n";
+  echo "<br /><form method=\"post\" name=\"exportform\" " .
+    "action=\"export_handler.php\">\n";
   echo "<label for=\"exformat\">" . 
-	translate("Export this entry to") . ":&nbsp;</label>\n";
+    translate("Export this entry to") . ":&nbsp;</label>\n";
   echo "<select name=\"format\" id=\"exformat\">\n";
-  echo "	<option value=\"ical\">iCalendar</option>\n";
-  echo "	<option value=\"vcal\">vCalendar</option>\n";
-  echo "	<option value=\"pilot-csv\">Pilot-datebook CSV (" . 
-  			translate("Palm Pilot") . ")</option>\n";
-  echo "	<option value=\"pilot-text\">Install-datebook (" . 
-			translate("Palm Pilot") . ")</option>\n";
+  echo " <option value=\"ical\">iCalendar</option>\n";
+  echo " <option value=\"vcal\">vCalendar</option>\n";
+  echo " <option value=\"pilot-csv\">Pilot-datebook CSV (" . 
+    translate("Palm Pilot") . ")</option>\n";
+  echo " <option value=\"pilot-text\">Install-datebook (" . 
+    translate("Palm Pilot") . ")</option>\n";
   echo "</select>\n";
   echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
   echo "<input type=\"submit\" value=\"" . 
-	translate("Export") . "\" />\n";
+    translate("Export") . "\" />\n";
   echo "</form>\n";
 }
 ?>
 
 <?php
-	print_trailer ( empty ($friendly) );
+ print_trailer ( empty ($friendly) );
 ?>
 </body>
 </html>
