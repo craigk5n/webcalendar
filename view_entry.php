@@ -371,7 +371,7 @@ if ( $categories_enabled == "Y" ) {
 }
 
 ?>
-<h2><FONT COLOR="<?php echo $H2COLOR;?>"><?php echo htmlspecialchars ( $name ); ?></FONT></h2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php echo htmlspecialchars ( $name ); ?></h2>
 
 <table BORDER=0>
 <tr><td VALIGN="top"><B><?php etranslate("Description")?>:</B></td>

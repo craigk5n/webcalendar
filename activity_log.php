@@ -31,7 +31,7 @@ $res = dbi_query ( $sql );
 $nextpage = "";
 
 if ( $res ) {
-  $font = "<font size=\"-1\">";
+  $font = "<span style=\"font-size:13px;\">";
   $num = 0;
   while ( $row = dbi_fetch_row ( $res ) ) {
     $num++;
@@ -40,17 +40,17 @@ if ( $res ) {
       break;
     } else {
       echo "<tr>";
-      echo "<td valign=\"top\" style=\"background-color:$CELLBG;\">" .
-        $font . $row[0] . "</td>";
-      echo "<td valign=\"top\" style=\"background-color:$CELLBG;\">" .
-        $font . $row[1] . "</td>";
-      echo "<td valign=\"top\" style=\"background-color:$CELLBG;\">" . $font .
+      echo "<td style=\"vertical-align:top; background-color:$CELLBG;\">" .
+        $font . $row[0] . "</span></td>";
+      echo "<td style=\"vertical-align:top; background-color:$CELLBG;\">" .
+        $font . $row[1] . "</span></td>";
+      echo "<td style=\"vertical-align:top; background-color:$CELLBG;\">" . $font .
         date_to_str ( $row[3] ) . " " .
-        display_time ( $row[4] ) . "</td>";
-      echo "<td valign=\"top\" style=\"background-color:$CELLBG;\">" . $font .
+        display_time ( $row[4] ) . "</span></td>";
+      echo "<td style=\"vertical-align:top; background-color:$CELLBG;\">" . $font .
         "<a href=\"view_entry.php?id=$row[5]\" class=\"navlinks\">" .
-        htmlspecialchars($row[6]) . "</a></td>";
-      echo "<td valign=\"top\" style=\"background-color:$CELLBG;\">" . $font;
+        htmlspecialchars($row[6]) . "</a></span></td>";
+      echo "<td style=\"vertical-align:top; background-color:$CELLBG;\">" . $font;
       if ( $row[2] == $LOG_CREATE )
         etranslate("Event created");
       else if ( $row[2] == $LOG_APPROVE )
@@ -67,7 +67,7 @@ if ( $res ) {
         etranslate("Reminder sent");
       else
         echo "???";
-      echo "</td></tr>\n";
+      echo "</span></td></tr>\n";
     }
   }
   dbi_free_result ( $res );

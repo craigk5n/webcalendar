@@ -140,8 +140,8 @@ for ( $i = 0; $i < count ( $re_save ); $i++ ) {
 }
 ?>
 
-<TABLE BORDER="0" WIDTH="100%">
-<TR>
+<table style="border-width:0px; width:100%;">
+<tr>
 <?php
 if ( ! $friendly ) {
   echo '<td style=\"text-align:left;\"><table style=\"border-width:0px;\">';
@@ -151,21 +151,21 @@ if ( ! $friendly ) {
     $wkstart = get_sunday_before ( $prevyear, $prevmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $prevmonth, 1, $prevyear );
   $monthend = mktime ( 3, 0, 0, $prevmonth + 1, 0, $prevyear );
-  echo "<tr><td colspan=\"7\" style=\"text-align:center;\"><font size=\"-1\">" .
+  echo "<tr><td colspan=\"7\" style=\"text-align:center; font-size:13px;\">" .
     "<a href=\"view_l.php?id=$id&date=$prevdate\" class=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $prevyear, $prevmonth ),
     $DATE_FORMAT_MY, false, false ) .
-    "</a></font></td></tr>\n";
+    "</a></td></tr>\n";
   echo "<tr>";
-  if ( $WEEK_START == 0 ) echo "<td><font size=\"-2\">" .
+  if ( $WEEK_START == 0 ) echo "<td style=\"font-size:10px;\">" .
     weekday_short_name ( 0 ) . "</td>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<td><font size=\"-2\">" .
+    echo "<td style=\"font-size:10px;\">" .
       weekday_short_name ( $i ) . "</td>";
   }
-  if ( $WEEK_START == 1 ) echo "<td><font size=\"-2\">" .
+  if ( $WEEK_START == 1 ) echo "<td style=\"font-size:10px;\">" .
     weekday_short_name ( 0 ) . "</td>";
-  echo "</TR>\n";
+  echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     $i += ( 24 * 3600 * 7 ) ) {
     print "<tr>\n";
@@ -173,7 +173,7 @@ if ( ! $friendly ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<td><font size=\"-2\">" . date ( "d", $date ) . "</font></td>\n";
+        print "<td style=\"font-size:10px;\">" . date ( "d", $date ) . "</td>\n";
       } else {
         print "<td>&nbsp;</td>\n";
       }
@@ -184,20 +184,19 @@ if ( ! $friendly ) {
 }
 
 ?>
-<td style="text-align:center; color:<?php echo $H2COLOR?>">
-<FONT SIZE="+2">
-<span style="font-weight:bold;">
+<td style="text-align:center; color:<?php echo $H2COLOR?>;">
+<span style="font-weight:bold; font-size:10px;">
 <?php
   echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
     $DATE_FORMAT_MY, false, false );
 ?>
-</span></FONT>
-<FONT SIZE="+1">
+</span>
+<span style="font-size:18px;">
 <?php
     echo "<br />\n";
     echo $view_name;
 ?>
-</font></td>
+</span></td>
 <?php
 if ( ! $friendly ) {
   echo '<td style=\"text-align:right;\"><table style=\"border-width:0px;\">';
@@ -207,19 +206,19 @@ if ( ! $friendly ) {
     $wkstart = get_sunday_before ( $nextyear, $nextmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $nextmonth, 1, $nextyear );
   $monthend = mktime ( 3, 0, 0, $nextmonth + 1, 0, $nextyear );
-  echo "<tr><td colspan=\"7\" style=\"text-align:center;\"><font size=\"-1\">" .
+  echo "<tr><td colspan=\"7\" style=\"text-align:center; font-size:13px;\">" .
     "<a href=\"view_l.php?id=$id&date=$nextdate\" class=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $nextyear, $nextmonth ),
     $DATE_FORMAT_MY, false, false ) .
-    "</a></font></td></tr>\n";
+    "</a></td></tr>\n";
   echo "<tr>";
-  if ( $WEEK_START == 0 ) echo "<td><font size=\"-2\">" .
+  if ( $WEEK_START == 0 ) echo "<td style=\"font-size:10px;\">" .
     weekday_short_name ( 0 ) . "</td>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<td><font size=\"-2\">" .
+    echo "<td style=\"font-size:10px;\">" .
       weekday_short_name ( $i ) . "</td>";
   }
-  if ( $WEEK_START == 1 ) echo "<td><font size=\"-2\">" .
+  if ( $WEEK_START == 1 ) echo "<td style=\"font-size:10px;\">" .
     weekday_short_name ( 0 ) . "</td>";
   echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
@@ -229,7 +228,7 @@ if ( ! $friendly ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<td><font size=\"-2\">" . date ( "d", $date ) . "</font></td>\n";
+        print "<td style=\"font-size:10px;\">" . date ( "d", $date ) . "</td>\n";
       } else {
         print "<td>&nbsp;</td>\n";
       }
@@ -305,7 +304,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) )
         echo " background-color:$TODAYCELLBG;\">";
       else
-        echo " background-color: $color;\">";
+        echo " background-color:$color;\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<BR>";
       print_date_entries ( date ( "Ymd", $date ),
         ( ! empty ( $user ) ) ? $user : $login,
@@ -342,8 +341,8 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   }
   if ( ! empty ( $user ) ) echo "user=$user&";
   if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&";
-?>friendly=1" TARGET="cal_printer_friendly"
-onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
+?>friendly=1" target="cal_printer_friendly"
+onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 <?php
       }
