@@ -18,11 +18,24 @@ print_header($INC);
 		<option value="pilot-text">install-datebook (<?php etranslate("Palm Pilot")?>)</option>
 	</select>
 </td></tr>
+
+<?php
+// Only include layers if they are enabled.
+if ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ) {
+?>
+<tr><td>
+	&nbsp;</td><td>
+	<input type="checkbox" name="include_layers" id="include_layers" value="y" />
+	<label for="include_layers" style="font-weight:bold;"><?php etranslate("Include all layers")?></label>
+</td></tr>
+<?php } ?>
+
 <tr><td>
 	&nbsp;</td><td>
 	<input type="checkbox" name="use_all_dates" id="exportall" value="y" />
 	<label for="exportall" style="font-weight:bold;"><?php etranslate("Export all dates")?></label>
 </td></tr>
+
 <tr><td style="font-weight:bold;">
 	<?php etranslate("Start date")?>:</td><td>
 	<select name="fromday">
