@@ -12,7 +12,7 @@
 //
 /////////////////////////////////////////////////////////////////
 
-$PROGRAM_NAME = "WebCalendar v0.9.39 (21 Aug 2002)";
+$PROGRAM_NAME = "WebCalendar v0.9.40dev (28 Sep 2002)";
 $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
 
 // MySQL example
@@ -146,6 +146,8 @@ $languages = array (
 // our available language files.
 // NOTE: These should all be lowercase on the left side even though
 // the proper listing is like "en-US"!
+// Not sure what the abbreviation is?  Check out the following URL:
+// http://www.geocities.com/click2speak/languages.html
 $browser_languages = array (
   "zh" => "Chinese-GB2312",    // Simplified Chinese
   "zh-cn" => "Chinese-GB2312",
@@ -177,7 +179,8 @@ $browser_languages = array (
   "ru" =>"Russian",
   "es" =>"Spanish",
   "sv" =>"Swedish",
-  "tr" =>"Turkish"
+  "tr" =>"Turkish",
+  "cy" => "Welsh"
 );
 
 if ( $single_user != "Y" )

@@ -1,4 +1,15 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Added Welsh language translation
+  - Added call to dbi_close() to pages that do printer-friendly versions
+    (which do not include trailer.php, where to normal dbi_close() is.)
+  - Added boss/assistant code that simplifies managing the calendar of
+    another user.
+  - Changed "ORDER BY UPPER(cal_name)" to "ORDER BY cal_name" in groups.php
+    since older versions of MySQL do not like this.
+  - Fixed bug 616143: removed irrelevant line of code causing
+    errors in week.php
+  - Fixed bug 614273: unable to delete global categories
+  - Added timezone offset support.
   - When editing system preferences for public access, use system settings
     for default values in pref.php.
   - Updated Portuguese_BR translation
