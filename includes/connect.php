@@ -46,7 +46,7 @@ if ( empty ( $PHP_SELF ) )
 if ( empty ( $login_url ) )
   $login_url = "login.php";
 if ( strstr ( $login_url, "?" ) )
-  $login_url .= "&";
+  $login_url .= "&amp;";
 else
   $login_url .= "?";
 if ( ! empty ( $login_return_path ) )
@@ -97,7 +97,7 @@ if ( empty ( $login ) && $use_http_auth ) {
         // This shouldn't happen since login should be validated in validate.php
         // If it does happen, it means we received an invalid login cookie.
         //echo "Error getting user info for login \"$login\".";
-        do_redirect ( $login_url . "&error=Invalid+session+found." );
+        do_redirect ( $login_url . "&amp;error=Invalid+session+found." );
       }
     }
   }
