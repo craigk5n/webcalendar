@@ -1,4 +1,6 @@
-Verion 0.9.41dev (16 Jun 2002)
+Verion 0.9.42-devcvs (?? ??? ????)
+  - Fixed bug 755709: parse error in search_handler.php
+Verion 0.9.41 (16 Jun 2002)
   - Fixed bug 755178: "Public User" not being translated
   - Fixed bug 652871: Don't display assistant link in trailer if read-only
   - Fixed bug 680626: Fix attempt too insert duplicate entries in the
@@ -8,7 +10,7 @@ Verion 0.9.41dev (16 Jun 2002)
   - Fixed bug 727616: conflict not working on repeating events
   - Fixed bug 650045: add missing '/' is server URL
   - Fixed bug 664641: not using $login_url in connect.php
-  - Fixed bug 677677: year.php used "<?" rather than "<?php"
+  - Fixed bug 677677: year.php used "?" rather than "?php" after "<"
   - Fixed bug 705756: conflicts page not showing user name
   - Fixed bug 732729: public access link on login.php ignores preference
     for default view
@@ -57,7 +59,7 @@ Verion 0.9.41dev (16 Jun 2002)
   - Fixed bug where My Calendar linked to 80/443. There were duplicate
     bugs reported for this: 657172, 638642, 614080, 646225
   - Fixed bug 680793: failure descrip. and date in emails for rejected events
-  - Fixed bug 677683: day.php (<? to <?php)
+  - Fixed bug 677683: day.php (? to ?php)
   - Fixed bug 647180: user_get_boss_list not LDAP aware
   - Fixed bug 575598: LDAP get_admins() group case sensitive
   - Fixed bug 575600: LDAP stripdn() is destructive

@@ -14,7 +14,7 @@ if ( $login == "__public__" && $public_access_others != "Y" )
 if ( $readonly == "Y" || $single_user == "Y" )
   $search_others = false;
 
-print_header():
+print_header();
 ?>
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Search Results")?></FONT></H2>
