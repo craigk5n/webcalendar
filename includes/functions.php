@@ -4574,22 +4574,28 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $MouseOut = "onmouseout=\"window.status=''; this.style.backgroundColor='".$THBG."';\"";
   $CC = 1;
   for($i=$first_hour;$i<$last_hour;$i++) {
+    $hour = $i;
+    if ( $GLOBALS["TIME_FORMAT"] == "12" ) {
+      $hour %= 12;
+      if ( $hour == 0 ) $hour = 12;
+    }
+
      for($j=0;$j<$interval;$j++) {
         $str .= '	<td  id="C'.$CC.'" class="dailymatrix" ';
         $MouseDown = 'onmousedown="schedule_event('.$i.','.sprintf ("%02d",($increment * $j)).');"';
         switch($j) {
           case 1:
-                  if($interval == 4) { $k = ($i<=9?'0':substr($i,0,1)); }
-		  $str .= 'style="width:'.$cell_pct.'%; text-align:right;"  '.$MouseDown." onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+                  if($interval == 4) { $k = ($hour<=9?'0':substr($hour,0,1)); }
+		  $str .= 'style="width:'.$cell_pct.'%; text-align:right;"  '.$MouseDown." onmouseover=\"window.status='Schedule a ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
                   $str .= $k."</td>\n";
                   break;
           case 2:
-                  if($interval == 4) { $k = ($i<=9?substr($i,0,1):substr($i,1,2)); }
-		  $str .= 'style="width:'.$cell_pct.'%; text-align:left;" '.$MouseDown." onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+                  if($interval == 4) { $k = ($hour<=9?substr($hour,0,1):substr($hour,1,2)); }
+		  $str .= 'style="width:'.$cell_pct.'%; text-align:left;" '.$MouseDown." onmouseover=\"window.status='Schedule a ".$hour.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
                   $str .= $k."</td>\n";
                   break;
           default:
-		  $str .= 'style="width:'.$cell_pct.'%;" '.$MouseDown." onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+		  $str .= 'style="width:'.$cell_pct.'%;" '.$MouseDown." onmouseover=\"window.status='Schedule a ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
                   $str .= "&nbsp;&nbsp;</td>\n";
                   break;
         }
