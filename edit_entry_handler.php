@@ -376,20 +376,46 @@ if ( empty ( $error ) ) {
       // and we are the admin
       if ( !$found_flag && !$is_nonuser_admin) {
         // only send mail if their email address is filled in
-        $do_send = get_pref_setting ( $old_participants, "EMAIL_EVENT_DELETED" );
+        $do_send = get_pref_setting ( $old_participant, "EMAIL_EVENT_DELETED" );
+        $user_TZ = get_pref_setting ( $old_participant, "TZ_OFFSET" );
         user_load_variables ( $old_participant, "temp" );
         if ( $old_participant != $login && strlen ( $tempemail ) &&
           $do_send == "Y" && $send_email != "N" ) {
-          $fmtdate = sprintf ( "%04d%02d%02d", $year, $month, $day );
+
+          // Want date/time in user's timezone
+          $user_hour = $hour + $user_TZ;
+          if ( $user_hour < 0 ) {
+            $user_hour += 24;
+            // adjust date
+            $user_date = mktime ( 3, 0, 0, $month, $day, $year );
+            $user_date -= $ONE_DAY;
+            $user_month = date ( "m", $date );
+            $user_day = date ( "d", $date );
+            $user_year = date ( "Y", $date );
+          } elseif ( $user_hour >= 24 ) {
+            $user_hour -= 24;
+            // adjust date
+            $user_date = mktime ( 3, 0, 0, $month, $day, $year );
+            $user_date += $ONE_DAY;
+            $user_month = date ( "m", $date );
+            $user_day = date ( "d", $date );
+            $user_year = date ( "Y", $date );
+          } else {
+            $user_month = $month;
+            $user_day = $day;
+            $user_year = $year;
+          }
+
+          $fmtdate = sprintf ( "%04d%02d%02d", $user_year, $user_month, $user_day );
           $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
             translate("An appointment has been canceled for you by") .
             " " . $login_fullname .  ". " .
             translate("The subject was") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-            ( ( empty ( $hour ) && empty ( $minute ) ) ? "" :
+            ( ( empty ( $user_hour ) && empty ( $minute ) ) ? "" :
             translate("Time") . ": " .
-              display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) ) .
+              display_time ( ( $user_hour * 10000 ) + ( $minute * 100 ) ) ) .
             "\n\n\n";
           // add URL to event, if we can figure it out
           if ( ! empty ( $server_url ) ) {
@@ -489,10 +515,36 @@ if ( empty ( $error ) ) {
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $participants[$i],
            $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
+        $user_TZ = get_pref_setting ( $participants[$i], "TZ_OFFSET" );
         user_load_variables ( $participants[$i], "temp" );
         if ( $participants[$i] != $login && boss_must_be_notified ( $login, $participants[$i] ) && strlen ( $tempemail ) &&
           $do_send == "Y" && $send_user_mail && $send_email != "N" ) {
-          $fmtdate = sprintf ( "%04d%02d%02d", $year, $month, $day );
+
+          // Want date/time in user's timezone
+          $user_hour = $hour + $user_TZ;
+          if ( $user_hour < 0 ) {
+            $user_hour += 24;
+            // adjust date
+            $user_date = mktime ( 3, 0, 0, $month, $day, $year );
+            $user_date -= $ONE_DAY;
+            $user_month = date ( "m", $date );
+            $user_day = date ( "d", $date );
+            $user_year = date ( "Y", $date );
+          } elseif ( $user_hour >= 24 ) {
+            $user_hour -= 24;
+            // adjust date
+            $user_date = mktime ( 3, 0, 0, $month, $day, $year );
+            $user_date += $ONE_DAY;
+            $user_month = date ( "m", $date );
+            $user_day = date ( "d", $date );
+            $user_year = date ( "Y", $date );
+          } else {
+            $user_month = $month;
+            $user_day = $day;
+            $user_year = $year;
+          }
+
+          $fmtdate = sprintf ( "%04d%02d%02d", $user_year, $user_month, $user_day );
           $msg = translate("Hello") . ", " . $tempfullname . ".\n\n";
           if ( $newevent || $old_status[$participants[$i]] == '' )
             $msg .= translate("A new appointment has been made for you by");
@@ -502,9 +554,9 @@ if ( empty ( $error ) ) {
             translate("The subject is") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-            ( ( empty ( $hour ) && empty ( $minute ) ) ? "" :
+            ( ( empty ( $user_hour ) && empty ( $minute ) ) ? "" :
             translate("Time") . ": " .
-            display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) . "\n" ) .
+            display_time ( ( $user_hour * 10000 ) + ( $minute * 100 ) ) . "\n" ) .
             translate("Please look on") . " " . translate($application_name) . " " .
             ( $require_approvals == "Y" ?
             translate("to accept or reject this appointment") :
