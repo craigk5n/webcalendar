@@ -100,7 +100,7 @@ function myOnLoad() {
   <?php } ?>
   document.forms[0].login.focus();
   <?php
-    if ( ! empty ( $login ) ) echo "document.forms[0].login.select();"
+    if ( ! empty ( $login ) ) echo "document.forms[0].login.select();";
   ?>
 }
 </SCRIPT>
