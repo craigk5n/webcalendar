@@ -6,7 +6,7 @@ function selectUsers () {
     if ( document.forms[0].elements[i].name == "users[]" )
       listid = i;
   }
-  url = "usersel.php?form=searchformentry&listid=" + listid + "&users=";
+  url = "usersel.php?form=searchformentry&amp;listid=" + listid + "&amp;users=";
   // add currently selected users
   for ( i = 0, j = 0; i < document.forms[0].elements[listid].length; i++ ) {
     if ( document.forms[0].elements[listid].options[i].selected ) {

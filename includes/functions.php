@@ -854,9 +854,9 @@ function print_entry ( $id, $date, $time, $duration,
   if ( ! $hide_icons ) {
     $divname = "eventinfo-$id-$key";
     $key++;
-    echo "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
+    echo "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
     if ( strlen ( $user ) > 0 )
-      echo "&user=" . $user;
+      echo "&amp;user=" . $user;
     echo "\" onmouseover=\"window.status='" . translate("View this entry") .
       "'; show(event, '$divname'); return true;\" onmouseout=\"window.status=''; hide('$divname'); return true;\">";
     echo "<img src=\"circle.gif\" style=\"width:5px; height:7px; border-width:0px;\" alt=\"view\" />";
@@ -1709,7 +1709,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
   if ( ! $hide_icons && ! $ssi && $can_add ) {
     print "<a href=\"edit_entry.php?";
     if ( strcmp ( $user, $GLOBALS["login"] ) )
-      print "user=$user&";
+      print "user=$user&amp;";
     print "date=$date\">" .
       "<img src=\"new.gif\" alt=\"" .
       translate("New Entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" align=\"right\" />" .
@@ -1719,13 +1719,13 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
   if ( ! $ssi ) {
     echo "<a class=\"dayofmonth\" href=\"day.php?";
     if ( strcmp ( $user, $GLOBALS["login"] ) )
-      echo "user=$user&";
+      echo "user=$user&amp;";
     echo "date=$date\">$day</a>";
     if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" &&
       date ( "w", $dateu ) == $GLOBALS["WEEK_START"] ) {
       echo "<a href=\"week.php?date=$date";
       if ( strcmp ( $user, $GLOBALS["login"] ) )
-        echo "&user=$user";
+        echo "&amp;user=$user";
        echo "\" class=\"weeknumber\">";
       echo "(" .
         translate("Week") . " " . week_number ( $dateu ) . ")</a>";
@@ -1922,7 +1922,7 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
           else {
             $conflicts .=  "<a href=\"view_entry.php?id=$row[4]";
             if ( $user != $login )
-              $conflicts .= "&user=$user";
+              $conflicts .= "&amp;user=$user";
             $conflicts .= "\">$row[3]</a>";
           }
           if ( $duration2 == ( 24 * 60 ) ) {
@@ -1989,7 +1989,7 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
             else {
               $conflicts .=  "<a href=\"view_entry.php?id=" . $row['cal_id'];
               if ( $user != $login )
-                $conflicts .= "&user=$user";
+                $conflicts .= "&amp;user=$user";
               $conflicts .= "\">" . $row['cal_name'] . "</a>";
             }
             $conflicts .= " (" . display_time ( $time2 );
@@ -2054,9 +2054,9 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   if ( ! empty ( $hour ) )
     $hour += $TZ_OFFSET;
   return "<a href=\"edit_entry.php?" . $u_url .
-    "date=$date" . ( $hour > 0 ? "&hour=$hour" : "" ) .
-    ( $minute > 0 ? "&minute=$minute" : "" ) .
-    ( empty ( $user ) ? "" :  "&defusers=$user&user=$user" ) .
+    "date=$date" . ( $hour > 0 ? "&amp;hour=$hour" : "" ) .
+    ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
+    ( empty ( $user ) ? "" :  "&amp;defusers=$user&amp;user=$user" ) .
     "\"><img src=\"new.gif\" alt=\"" .
     translate("New Entry") . "\" width=\"10\" height=\"10\" " .
     "alt=\"" . translate("New Entry") . "\" border=\"0\" align=\"right\" />" .
@@ -2112,9 +2112,9 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
 
   if ( ! $hide_icons ) {
     $hour_arr[$ind] .=
-      "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
+      "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
     if ( strlen ( $GLOBALS["user"] ) > 0 )
-      $hour_arr[$ind] .= "&user=" . $GLOBALS["user"];
+      $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
     $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
       translate("View this entry") .
       "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
@@ -2267,9 +2267,9 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
 
   if ( ! $hide_icons ) {
     $hour_arr[$ind] .=
-      "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
+      "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
     if ( strlen ( $GLOBALS["user"] ) > 0 )
-      $hour_arr[$ind] .= "&user=" . $GLOBALS["user"];
+      $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
     $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
       translate("View this entry") .
       "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
@@ -3227,9 +3227,9 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   if ( ! $hide_icons ) {
     $divname = "eventinfo-$id-$key";
     $key++;
-    echo "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
+    echo "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
     if ( strlen ( $user ) > 0 )
-      echo "&user=" . $user;
+      echo "&amp;user=" . $user;
     echo "\" onmouseover=\"window.status='" . translate("View this entry") .
       "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
   }
