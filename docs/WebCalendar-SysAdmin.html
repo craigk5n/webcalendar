@@ -19,8 +19,6 @@ dt {
 	margin-top: 20px;
 }
 .valid {
-	height: 31px;
-	width: 88px;
 	border-width: 0px;
 }
 pre {
@@ -356,37 +354,30 @@ input path/table-ibase.sql;</strong></pre>
 
 <a name="appsetup"></a>
 	<h2>Application Setup</h2>
-	<p>Next, you will need to run the web-based
-	database setup script
+	<p>Next, you will need to run the web-based database setup script
 	(simply direct your browser to your new WebCalendar location).
 	You will need to modify the permissions of the <tt>includes</tt>
 	directory.  On Linux/UNIX, you should change this directory
 	to be read/write for all users (<tt>chmod 777 includes</tt>).
 	On Windows, change this directory to have full access for all users
-	using Windows Explorer.
-	Changing the write permissions will allow the web-based
-	database configuration tool to create the <tt>settings.php</tt> file.
-	<p>
+	using Windows Explorer.	Changing the write permissions will allow the web-based
+	database configuration tool to create the <tt>settings.php</tt> file.</p>
+	
 	<p><span class="tip">TIP</span> After you have created the
 	<tt>settings.php</tt> file (with the "Save Settings" button),
-	you can change the permissions back
-	to a more restrictive setting.
-	</p>
+	you can change the permissions back to a more restrictive setting.</p>
+	
 	<p>After you test and save your database settings, you
 	will be prompted to enter an installation password.
-	<b>Write this password down somewhere.</b>
-	There is no way to reset this password.  If you forget this
-	password and need to change your database settings, you will need
-	to hand-edit the <tt>settings.php</tt> file with a text editor.
-	</p>
-	<p>
-	If you choose not to use the web-based database configuration
+	<b>Write this password down somewhere.</b> There is no way to reset 
+	this password. If you forget this password and need to change your database settings, 
+	you will need to manually edit the <tt>settings.php</tt> file with a text editor.</p>
+	
+	<p>If you choose not to use the web-based database configuration
 	tool, you can manually edit the <tt>settings.php</tt> file.
 	There is an example file <tt>settings.php.orig</tt> that you
-	can use as a starting point.   Simply rename this file
-	to <tt>settings.php</tt>.
-	You will need to set the values
-	as follows in <tt>settings.php</tt>:</p>
+	can use as a starting point. Simply rename this file to <tt>settings.php</tt>. 
+	You will need to set the values as follows in <tt>settings.php</tt>:</p>
 	<p>To configure your database access. Set the values for:</p>
 	<table class="distinguish">
 		<tr><td>
@@ -415,21 +406,19 @@ input path/table-ibase.sql;</strong></pre>
 		</td></tr>
 		<tr><td>
 			db_persistent</td><td>
-			Enable use of persistent (pooled) database
-			connections.  This should typically be enabled.
+			Enable use of persistent (pooled) database connections. 
+			This should typically be enabled.
 		</td></tr>
 	</table>
 
-	<p>You can configure the calendar to run in 
-		single-user<sup><a href="#g_singleuser">*</a></sup> 
-		mode or multi-user<sup><a href="#g_multiuser">*</a></sup> mode.
-		If this is your first time using the calendar, it's easier to try single-user.
-		You can always switch to multi-user later.  Leave <tt>single_user</tt> set to 
-		"N" (the default) for multi-user or set it to "Y" and set the
-		value of <tt>single_user_login</tt> to a login name of your liking
-		to set the system to single-user mode.
-		(And be sure to set the value of <tt>single_user_login</tt> to the login that you
-		would choose if you decide to switch to multi-user mode some day.)</p>
+	<p>You can configure the calendar to run in single-user<a href="#g_singleuser">*</a> mode or 
+	multi-user<a href="#g_multiuser">*</a> mode. If this is your first time using the 
+	calendar, it's easier to try single-user. You can always switch to multi-user 
+	later. Leave <tt>single_user</tt> set to "N" (the default) for multi-user or set 
+	it to "Y" and set the value of <tt>single_user_login</tt> to a login name of your liking 
+	to set the system to single-user mode. (And be sure to set the value of 
+	<tt>single_user_login</tt> to the login that you would choose if you decide to switch 
+	to multi-user mode some day.)</p>
 	<p><span class="note">Note:</span> If you do decide to switch from single-user mode to multi-user mode,
 		make sure you add in a user to the system for the login you set the
 		<tt>single_user_login</tt> variable to.  You will need to do this via the
@@ -487,19 +476,16 @@ input path/table-ibase.sql;</strong></pre>
    	<pre>http://yourserverhere/calendar/index.php</pre>
 	<p>If you have not previously configured your database settings,
 		you will be automatically redirected to a web page for
-		configuring your database settings.
-		After you have configured the database, use the URL again
-		to access WebCalendar.
-	</p>
+		configuring your database settings. After you have configured the database, 
+		use the URL again to access WebCalendar.</p>
    	<p>If you have configured your web server to use <tt>index.php</tt> as the
 		default index page for a directory, you can omit that from the URL.
 		On a single-user system, your browser should be redirected to week.php
 		initially. On a multi-user system, your browser should be redirected to login.php
 		so that you can login.</p>
 	<p><span class="tip">TIP</span> On a multi-user system, the only user account created
-		during installation has the username of "admin" and a password
-		of "admin".   You should create a new admin account and delete this
-		one for security reasons.</p>
+	during installation has the username of "admin" and a password of "admin". You should create 
+	a new admin account and delete this one for security reasons.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
@@ -556,20 +542,25 @@ input path/table-ibase.sql;</strong></pre>
 		job to access the URL.  For Linux/UNIX users, add the following line to
 		the crontab entry of a user.</p>
 	<pre><tt>1 * * * * wget http://yourserverhere/webcalendardirectoryhere/tools/send_reminders.php &gt; /dev/null</tt></pre>
-   	<p>You should test this from the command line first to make sure your setup is correct. If you do not have <tt>wget</tt> installed on your system, you can use any tool (lynx, perl script, etc.) that is capable of making an HTTP request for this.</p>
+		<p>You should test this from the command line first to make sure your setup is 
+		correct. If you do not have <tt>wget</tt> installed on your system, you can use 
+		any tool (lynx, perl script, etc.) that is capable of making an HTTP request for this.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="systemsettings"></a>
 	<h2>System Settings</h2>
-	<p>System Settings allows the administrator to control what features are available to users as well as default values for certain features.</p>
+	<p>System Settings allows the administrator to control what features are available to users 
+	as well as default values for certain features.</p>
 	<p>Many of these settings can be overridden by users in their Preferences (such as color).</p>
 	<h3>Settings</h3>
 	<dl>
 		<dt>Application Name</dt>
-			<dd>Specifies the document title (typically displayed in the window title bar of most browsers)</dd>
+		<dd>Specifies the document title (typically displayed in the window title bar 
+		of most browsers)</dd>
 		<dt>Server URL</dt>
-			<dd>Specifies the base URL of the calendar. This information is needed to accurately include URLs in email messages (Notifications and Reminders).</dd>
+		<dd>Specifies the base URL of the calendar. This information is needed to 
+		accurately include URLs in email messages (Notifications and Reminders).</dd>
 		<dt>Language</dt>
 			<dd>Specifies the default language setting for all users.</dd>
 		<dt>Fonts</dt>
@@ -577,19 +568,24 @@ input path/table-ibase.sql;</strong></pre>
 		<dt>Preferred View</dt>
 			<dd>Specify if users should see the day, week, month, or year after loggin in.</dd>
 		<dt>Display weekends in view</dt>
-			<dd>Specifies default setting for if Saturdays and Sundays should appear in the calendar when viewing a month or week</dd>
+		<dd>Specifies default setting for if Saturdays and Sundays should appear in the 
+		calendar when viewing a month or week</dd>
 		<dt>Date format</dt>
 			<dd>Specifies the default format for displaying dates</dd>
 		<dt>Time format</dt>
 			<dd>Specifies the default time format as either 12-hour (3:45pm) or 24-hour (15:14)</dd>
 		<dt>Time interval</dt>
-  			<dd>Specify the default number of minutes each time block represents in the day and week display</dd>
+		<dd>Specify the default number of minutes each time block represents in the day and 
+		week display</dd>
 		<dt>Auto-referesh calendars</dt>
-			<dd>If set to "yes," the day, week, and month pages will automatically reload after a specified duration</dd>
+		<dd>If set to "yes," the day, week, and month pages will automatically 
+		reload after a specified duration</dd>
 		<dt>Auto-refresh time</dt>
-			<dd>Specifies how long to wait before the auto-refresh should force a page to be reloaded</dd>
+		<dd>Specifies how long to wait before the auto-refresh should force a page 
+		to be reloaded</dd>
 		<dt>Display unapproved</dt>
-			<dd>Specifies whether events that have been added to a calendar but not yet approved should display on the calendar (in a different color)</dd>
+		<dd>Specifies whether events that have been added to a calendar but not yet 
+		approved should display on the calendar (in a different color)</dd>
 		<dt>Display week number</dt>
 			<dd>Specifies whether the week number should be displayed in month and week views</dd>
 		<dt>Week starts on</dt>
@@ -601,27 +597,37 @@ input path/table-ibase.sql;</strong></pre>
 		<dt>Disable Access field</dt>
 			<dd>If enabled, the Access field will not be used</dd>
 		<dt>Disable Participants field</dt>
-			<dd>If enabled, the Participants field will not be used, and users will not be able to add events to any calendar other than their own.</dd>
+		<dd>If enabled, the Participants field will not be used, and users will not be 
+		able to add events to any calendar other than their own.</dd>
 		<dt>Disable Repeating field</dt>
 			<dd>If enabled, users will not be able to create repeating events</dd>
 		<dt>Allow viewing other user's calendars</dt>
 			<dd>If enabled, users will be able to view the calendar of another user</dd>
 		<dt>Allow public access</dt>
-			<dd>If enabled, anonymous users will be able to view the public access calendar without logging in.</dd>
+		<dd>If enabled, anonymous users will be able to view the public access 
+		calendar without logging in.</dd>
 		<dt>Public access can view other users</dt>
 			<dd>If enabled, anonymous users will be able to view the calendars of other users</dd>
 		<dt>Public access can add events</dt>
 			<dd>If enabled, anonymous users will be able to submit new events.</dd>
 		<dt>Public access new events require approval</dt>
-			<dd>If enabled, events submitted to the public access calendar (by anonymous users) will require approval by an admin user.  If not enabled, then new events will appear on the public access calendar as soon as they are submitted.</dd>
+		<dd>If enabled, events submitted to the public access calendar (by anonymous 
+		users) will require approval by an admin user.  If not enabled, then new events 
+		will appear on the public access calendar as soon as they are submitted.</dd>
 		<dt>Include add event link in views</dt>
-			<dd>If enabled, Views will include a link to quickly add events to the specified user's calendar.</dd>
+		<dd>If enabled, Views will include a link to quickly add events to the 
+		specified user's calendar.</dd>
 		<dt>Allow external users</dt>
-			<dd>If enabled, the create/edit event page will contain a text area to include the names (and optional email address) of event participants that are not calendar users.</dd>
+		<dd>If enabled, the create/edit event page will contain a text area to include 
+		the names (and optional email address) of event participants that are not calendar users.</dd>
 		<dt>External users can receive email notifications</dt>
-			<dd>If enabled, event participants entered into the External Participants area will receive email notifications at the same time as calendar users (if an email address was specified for the Exernal Participant).</dd>
+		<dd>If enabled, event participants entered into the External Participants 
+		area will receive email notifications at the same time as calendar users (if an email 
+		address was specified for the Exernal Participant).</dd>
 		<dt>External users can receive email reminders</dt>
-			<dd>If enabled, event participants entered into the External Participants area will receive email reminders at the same time as calendar users (if an email address was specified for the Exernal Participant).</dd>
+		<dd>If enabled, event participants entered into the External Participants 
+		area will receive email reminders at the same time as calendar users (if an email 
+		address was specified for the Exernal Participant).</dd>
 		<dt>Remember last login</dt>
 			<dd>If enabled, when a returning calendar user reaches the login page, their login name will be pre-filled with the last login username that they entered.  (The password field will still be blank.)</dd>
 		<dt>Check for event conflicts</dt>
@@ -1182,7 +1188,7 @@ cal_firstname, cal_is_admin ) VALUES
 <p>
 	<a href="http://validator.w3.org/check?uri=referer"><img 
 		src="http://www.w3.org/Icons/valid-xhtml10" 
-		alt="Valid XHTML 1.0!" style="border-width:0px;" /></a>
+		alt="Valid XHTML 1.0!" class="valid" /></a>
 </p>
 </body>
 </html>
