@@ -82,6 +82,12 @@ print_header();
   <TD><?php etranslate("reports-enabled-help")?></TD></TR>
 </TABLE>
 
+<H3><?php etranslate("Subscribe/Publish")?></H3>
+<TABLE BORDER=0>
+<TR><TD VALIGN="top"><B><?php etranslate("Allow remote subscriptions")?>:</B></TD>
+  <TD><?php etranslate("subscriptions-enabled-help")?></TD></TR>
+</TABLE>
+
 
 <H3><?php etranslate("Email")?></H3>
 

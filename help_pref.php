@@ -51,6 +51,16 @@ print_header();
   <TD><?php etranslate("email-event-rejected")?></TD></TR>
 </TABLE>
 
+<?php if ( $PUBLISH_ENABLED == 'Y' ) { ?>
+<H3><?php etranslate("Subscribe/Publish")?></H3>
+<TABLE BORDER=0>
+<TR><TD VALIGN="top"><B><?php etranslate("Allow remote subscriptions")?>:</B></TD>
+  <TD><?php etranslate("allow-remote-subscriptions-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("URL")?>:</B></TD>
+  <TD><?php etranslate("remote-subscriptions-url-help")?></TD></TR>
+</TABLE>
+<?php } ?>
+
 <?php if ( $allow_color_customization ) { ?>
 <H3><?php etranslate("Colors")?></H3>
 <?php etranslate("colors-help")?>
