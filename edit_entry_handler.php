@@ -54,6 +54,13 @@ if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
     $day = date ( "d", $date );
     $year = date ( "Y", $date );
   }
+
+  // Must adjust $endhour too
+  if ($TZ_OFFSET) {
+    $endhour -= $TZ_OFFSET;
+    if ( $endhour < 0 )   $endhour += 24;
+    if ( $endhour >= 24 ) $endhour -= 24;
+  }
 }
 
 // Return the time in HHMMSS format of input time + duration

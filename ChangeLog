@@ -1,4 +1,5 @@
 Version 0.9.45/CVS+fixes (?? ??? 2004)
+  - Fixed Bug 1066440: End Time increased by timezone offset
   - Fixed Bug 1085337: Categories combo-box in month.php in assistant mode
   - Fixed Bug 1087604: Vanishing Layers / cookies
   - Fixed Bug 1086357: repeating details display
