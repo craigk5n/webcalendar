@@ -1,5 +1,9 @@
 <?php
 
+if (preg_match("/\/includes\//", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
 // This file contains all the functions for getting information
 // about users from PostNuke 0.7.2x.
 
