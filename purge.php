@@ -81,6 +81,7 @@ function purge_events ( $ids ) {
     'webcal_entry_user',
     'webcal_entry_repeats',
     'webcal_entry_repeats_not',
+    'webcal_entry_log',
     'webcal_import_data',
     'webcal_site_extras',
     'webcal_reminder_log',
