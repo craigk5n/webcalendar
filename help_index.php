@@ -8,6 +8,7 @@ print_header();
 <UL>
 <LI><A HREF="help_edit_entry.php"><?php etranslate("Adding/Editing Calendar Entries")?></A>
 <LI><A HREF="help_layers.php"><?php etranslate("Layers")?></A>
+<LI><A HREF="help_import.php"><?php etranslate("Import")?></A>
 <LI><A HREF="help_pref.php"><?php etranslate("Preferences")?></A>
 <?php if ( $is_admin ) { ?>
 <LI><A HREF="help_admin.php"><?php etranslate("System Settings")?></A>
