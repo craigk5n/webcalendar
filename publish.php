@@ -58,9 +58,9 @@ if ( empty ( $user ) ) {
     PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
     \"DTD/xhtml1-transitional.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n
- <head>\n<title>" . translate("Error") . "</title></head>" .
-    "<body><h2>" . translate("Error") . "</h2>" .
-    "No user specified.\n</body></html>\n";
+ <head>\n<title>" . translate("Error") . "</title>\n</head>\n" .
+    "<body>\n<h2>" . translate("Error") . "</h2>\n" .
+    "No user specified.\n</body>\n</html>";
 }
 
 // Load user preferences (to get the USER_PUBLISH_ENABLED and
@@ -194,8 +194,6 @@ function export_fold_lines($string, $encoding="none", $limit=76) {
 
   return $res;
 }
-
-
 
 function export_time($date, $duration, $time, $texport)
 {
@@ -366,7 +364,6 @@ function export_recurrence_ical($id, $date)
   }
 }
 
-
 function export_alarm_ical($id, $description) {
   $sql = "SELECT cal_data FROM webcal_site_extras " .
          "WHERE cal_id = $id AND cal_type = 7 AND cal_remind = 1";
@@ -387,7 +384,6 @@ function export_alarm_ical($id, $description) {
     echo "END:VALARM\r\n";
   }
 }
-
 
 function export_get_utc_date($date, $time=0)
 {
@@ -427,7 +423,6 @@ function generate_uid($id) {
   $uid = strtoupper ( $uid );
   return $uid;
 }
-
 
 function export_ical () {
   global $publish_fullname, $user;

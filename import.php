@@ -98,7 +98,7 @@ function print_user_list () {
 }
 ?>
 
-<h2>Import&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" /></h2>
+<h2>Import&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" /></h2>
 
 <form action="import_handler.php" method="post" name="importform" enctype="multipart/form-data">
 <?php

@@ -202,7 +202,7 @@ $INC = array('js/edit_entry.php','js/visible.php');
 print_header($INC,'',$BodyX);
 ?>
 
-<h2><?php if ( $id ) echo translate("Edit Entry"); else echo translate("Add Entry"); ?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" onclick="window.open ( 'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
+<h2><?php if ( $id ) echo translate("Edit Entry"); else echo translate("Add Entry"); ?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 
 <?php
 if ( $can_edit ) {

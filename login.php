@@ -94,7 +94,11 @@ if ( $single_user == "Y" ) {
 }
 
 ?>
-<html>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <title><?php etranslate($application_name)?></title>
 <script type="text/javascript">
@@ -137,10 +141,8 @@ if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
   }
 }
 ?>
-
 </head>
 <body onload="myOnLoad();">
-
 <?php
 // Print custom header (since we do not call print_header function)
 if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
@@ -173,32 +175,29 @@ if ( ! empty ( $return_path ) )
     htmlentities ( $return_path ) . "\" />\n";
 ?>
 
-
 <table class="standard" style="border: 1px solid <?php echo $TABLEBG;?>;" cellpadding="10">
 <tr><td rowspan="2">
-<img src="login.gif" alt="Login" />
-</td>
-<td style="font-weight:bold;" align="right">
-		<label for="login"><?php etranslate("Username")?>:</label></td><td>
-		<input name="login" id="login" size="10" value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" tabindex="1" />
-	</td></tr>
-	<tr><td style="font-weight:bold;" align="right">
-		<label for="password"><?php etranslate("Password")?>:</label></td><td>
-		<input name="password" id="password" type="password" size="10" tabindex="2" />
-	</td></tr>
-	<tr><td colspan="3" style="font-size: 10px;">
-		<input type="checkbox" name="remember" id="remember" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked=\"checked\""; ?> /><label for="remember">&nbsp;<?php etranslate("Save login via cookies so I don't have to login next time")?></label>
-	</td></tr>
-	<tr><td colspan="4" align="middle">
-		<input type="submit" value="<?php etranslate("Login")?>" tabindex="3" />
-	</td></tr>
+	<img src="login.gif" alt="Login" /></td><td style="font-weight:bold;" align="right">
+	<label for="login"><?php etranslate("Username")?>:</label></td><td>
+	<input name="login" id="login" size="10" value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" tabindex="1" />
+</td></tr>
+<tr><td style="font-weight:bold;" align="right">
+	<label for="password"><?php etranslate("Password")?>:</label></td><td>
+	<input name="password" id="password" type="password" size="10" tabindex="2" />
+</td></tr>
+<tr><td colspan="3" style="font-size: 10px;">
+	<input type="checkbox" name="remember" id="remember" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked=\"checked\""; ?> /><label for="remember">&nbsp;<?php etranslate("Save login via cookies so I don't have to login next time")?></label>
+</td></tr>
+<tr><td colspan="4" align="middle">
+	<input type="submit" value="<?php etranslate("Login")?>" tabindex="3" />
+</td></tr>
 </table>
 </form>
 </div>
 
 <br /><br />
 <?php if ( $public_access == "Y" ) { ?>
-  <a class="navlinks" href="index.php"><?php etranslate("Access public calendar")?></a><br />
+	<a class="navlinks" href="index.php"><?php etranslate("Access public calendar")?></a><br />
 <?php } ?>
 
 <?php

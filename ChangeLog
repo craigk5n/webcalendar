@@ -1,4 +1,8 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Added img.help class for help images
+  - Added docs to styles.php (will eventually end up in a styles
+  documentation, of some sort)
+  - Continued making code easier to read post-rendering
   - Removing blank lines at the end of js files
   - Updating functions.php to partially implement new styling system for
   viewt.php

@@ -129,7 +129,6 @@ if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' &&
 <h2><?php etranslate("Administrative Tools")?></h2>
 
 <table class="admin">
-
 <?php
   for ( $i = 0; $i < count ( $names ); $i++ ) {
   if ( $i % $COLUMNS == 0 )

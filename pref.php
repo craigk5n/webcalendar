@@ -47,7 +47,7 @@ if ( $is_nonuser_admin ) {
   nonuser_load_variables ( $user, "nonuser" );
   echo "<br />\n<span style=\"font-weight:bold;\">-- " . translate("Admin mode") . ": ".$nonuserfullname." --</span>\n";
 }
-?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" style="border-width:0px;" onclick="window.open ( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
+?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 
 <a title="<?php etranslate("Admin") ?>" class="navlinks" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 
