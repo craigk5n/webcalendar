@@ -693,7 +693,7 @@ function print_entry ( $id, $date, $time, $duration,
     if ( strlen ( $user ) > 0 )
       echo "&user=" . $user;
     echo "\" onMouseOver=\"window.status='" . translate("View this entry") .
-      "'; show(event, '$divname'); return true;\" onMouseOut=\"hide('$divname'); return true;\">";
+      "'; show(event, '$divname'); return true;\" onMouseOut=\"window.status=''; hide('$divname'); return true;\">";
     echo "<IMG SRC=\"circle.gif\" WIDTH=\"5\" HEIGHT=\"7\" BORDER=\"0\">";
   }
 
