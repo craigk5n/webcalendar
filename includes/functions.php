@@ -729,7 +729,7 @@ function build_event_popup ( $divname, $user, $description, $time,
   $ret = "<div id=\"" . $divname .
     "\" style=\"position:absolute; z-index:20; visibility:hidden; top:0px; left:0px; width:300px;\">\n" .
     "<table cellpadding=\"0\" cellspacing=\"0\" style=\"border:1px solid $GLOBALS[POPUP_FG];\">\n" .
-    "<tr><td style=\"background-color:$GLOBALS[POPUP_BG]; color:$GLOBAL[POPUP_FG];\" class=\"popup\">";
+    "<tr><td class=\"popup\">";
 
   if ( empty ( $popup_fullnames ) )
     $popup_fullnames = array ();
