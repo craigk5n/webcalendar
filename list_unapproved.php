@@ -103,7 +103,7 @@ function list_unapproved ( $user ) {
 	translate("Delete") . "</a>";
       echo "\n</li>\n";
       $eventinfo .= build_event_popup ( $divname, $user, $description,
-        $timestr, $time );
+        $timestr, site_extras_for_popup ( $id ));
       $count++;
     }
     dbi_free_result ( $res );
