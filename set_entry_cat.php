@@ -75,16 +75,14 @@ print_header();
 <input type="hidden" name="id" value="<?php echo $id?>" />
 
 <table style="border-width:0px;" cellpadding="5">
-<tr style="vertical-align:top;">
-<td style="font-weight:bold;">
-<?php etranslate("Brief Description")?>:</td><td>
-<?php echo $event_name; ?>
+<tr style="vertical-align:top;"><td style="font-weight:bold;">
+	<?php etranslate("Brief Description")?>:</td><td>
+	<?php echo $event_name; ?>
 </td></tr>
-<tr style="vertical-align:top;">
-<td style="font-weight:bold;">
-<?php etranslate("Category")?>:&nbsp;</td><td>
+<tr style="vertical-align:top;"><td style="font-weight:bold;">
+	<?php etranslate("Category")?>:&nbsp;</td><td>
 	<select name="cat_id">
-  <option value="NULL"><?php etranslate("None")?></option>
+		<option value="NULL"><?php etranslate("None")?></option>
   <?php
     foreach ( $categories as $K => $V ) {
       if ( $K == $cur_cat )
@@ -93,15 +91,15 @@ print_header();
         echo "<option value=\"$K\">$V</option>\n";
     }
   ?>
-  </select></td>
-</tr>
+	</select>
+</td></tr>
 <tr style="vertical-align:top;"><td colspan="2">
-<input type="submit" value="<?php etranslate("Save");?>" />
+	<input type="submit" value="<?php etranslate("Save");?>" />
 </td></tr>
 </table>
 </form>
-
 <?php } ?>
+
 <?php print_trailer(); ?>
 </body>
 </html>
