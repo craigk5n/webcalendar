@@ -25,5 +25,15 @@ function selectDate (  day, month, year, current, evt ) {
     "&fmonth=" + month + "&fyear=" + year + "&date=" + date;
   var colorWindow = window.open(url,"DateSelection","width=300,height=200,"  + MyPosition);
 }
+
+function all_handler () {
+  var enabled = document.purgeform.purge_all.checked;
+  if ( enabled ) {
+    makeInvisible ( "dateArea" );
+  } else {
+    makeVisible ( "dateArea" );
+  }
+}
+
 //]]> -->
 </script>
