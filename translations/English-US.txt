@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 11-22-2004
+# Translation last updated on 11-30-2004
 
 
 ###############################################
@@ -312,23 +312,6 @@ You can only create one layer for each user: You can only create one layer for e
 
 
 ###############################################
-# Page: edit_user.php
-#
-Edit User: Edit User
-Add User: Add User
-Username: Username
-First Name: First Name
-Last Name: Last Name
-E-mail address: E-mail address
-Password: Password
-again: again
-Disabled for demo: Disabled for demo
-Change Password: Change Password
-New Password: New Password
-Set Password: Set Password
-
-
-###############################################
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Deleting users not supported
@@ -340,7 +323,6 @@ Changes successfully saved: Changes successfully saved
 ###############################################
 # Page: export.php
 #
-Export: Export
 Export format: Export format
 Palm Pilot: Palm Pilot
 Include all layers: Include all layers
@@ -348,6 +330,7 @@ Export all dates: Export all dates
 Start date: Start date
 End date: End date
 Modified since: Modified since
+Export: Export
 
 
 ###############################################
@@ -586,6 +569,7 @@ Go: Go
 ###############################################
 # Page: users.php
 #
+Account: Account
 Add New User: Add New User
 denotes administrative user: denotes administrative user
 
@@ -614,6 +598,8 @@ Overwrite Prior Import: Overwrite Prior Import
 #
 Invalid login: Invalid login
 You must enter a login and password: You must enter a login and password
+Username: Username
+Password: Password
 Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
 Login: Login
 Access public calendar: Access public calendar
@@ -785,7 +771,6 @@ Your assistants: Your assistants
 ###############################################
 # Page: adminhome.php
 #
-Account: Account
 Delete Events: Delete Events
 Public Preferences: Public Preferences
 Unapproved Public Events: Unapproved Public Events
@@ -851,11 +836,32 @@ Your suggested time of: Your suggested time of
 
 
 ###############################################
+# Page: edit_nonusers.php
+#
+Edit User: Edit User
+Add User: Add User
+First Name: First Name
+Last Name: Last Name
+
+
+###############################################
 # Page: edit_template.php
 #
 Edit Custom Script/Stylesheet: Edit Custom Script/Stylesheet
 Edit Custom Header: Edit Custom Header
 Edit Custom Trailer: Edit Custom Trailer
+
+
+###############################################
+# Page: edit_user.php
+#
+E-mail address: E-mail address
+again: again
+Disabled for demo: Disabled for demo
+Are you sure you want to delete this user?: Are you sure you want to delete this user?
+Change Password: Change Password
+New Password: New Password
+Set Password: Set Password
 
 
 ###############################################
