@@ -26,23 +26,23 @@ $prevmonth = date ( "m", $prev );
 $prevdate = date ( "Ym", $prev ) . "01";
 ?>
 
-<div align="center">
+<div style="text-align:center;">
 <table style="border-width:0px;">
 <tr>
-<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $prevdate?>"><img src="leftarrowsmall.gif" width="18" height="18" style="border-width:0px;" alt="<?php etranslate("Previous")?>"></a></td>
+<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $prevdate?>"><img src="leftarrowsmall.gif" style="width:18px; height:18px; border-width:0px;" alt="<?php etranslate("Previous")?>" /></a></td>
 <th colspan="5"><?php echo month_name ( $thismonth - 1 ) . " " . $thisyear;?></th>
-<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif" width="18" height="18" style="border-width:0px;" alt="<?php etranslate("Next")?>" /></a></td>
+<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif" style="width:18px; height:18px; border-width:0px;" alt="<?php etranslate("Next")?>" /></a></td>
 </tr>
 <?php
 echo "<tr>";
-if ( $WEEK_START == 0 ) echo "<td><font size=\"-1\">" .
-  weekday_short_name ( 0 ) . "</font></td>";
+if ( $WEEK_START == 0 ) echo "<td style=\"font-size:12px;\">" .
+  weekday_short_name ( 0 ) . "</td>";
 for ( $i = 1; $i < 7; $i++ ) {
-  echo "<td><font size=\"-1\">" .
-    weekday_short_name ( $i ) . "</font></td>";
+  echo "<td style=\"font-size:12px;\">" .
+    weekday_short_name ( $i ) . "</td>";
 }
-if ( $WEEK_START == 1 ) echo "<td><font size=\"-1\">" .
-  weekday_short_name ( 0 ) . "</font></td>";
+if ( $WEEK_START == 1 ) echo "<td style=\"font-size:12px;\">" .
+  weekday_short_name ( 0 ) . "</td>";
 echo "</tr>\n";
 if ( $WEEK_START == "1" )
   $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );

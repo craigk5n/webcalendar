@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 print_header('','','',true);
 ?>
 
-<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Report Bug")?></font></h2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Report Bug")?></h2>
 
 <!--
 No need to translate the text below since I want all bugs
@@ -12,19 +12,18 @@ Americans only speak English, of course ;-)
 -->
 Please include all the information below when reporting a bug.
 <?php if ( $LANGUAGE != "English-US" ) { ?>
-Also.... when reporting a bug, please use <b>English</b>
-rather than <?php echo $LANGUAGE?>.
+Also.... when reporting a bug, please use <span style="font-weight:bold;">English</span> rather than <?php echo $LANGUAGE?>.
 <?php } ?>
 
-<FORM ACTION="http://sourceforge.net/tracker/" TARGET="_new">
-<INPUT TYPE="hidden" NAME="func" VALUE="add" />
-<INPUT TYPE="hidden" NAME="group_id" VALUE="3870" />
-<INPUT TYPE="hidden" NAME="atid" VALUE="103870" />
-<INPUT TYPE="submit" VALUE="<?php etranslate("Report Bug")?>" />
-</FORM>
+<form action="http://sourceforge.net/tracker/" target="_new">
+<input type="hidden" name="func" value="add" />
+<input type="hidden" name="group_id" value="3870" />
+<input type="hidden" name="atid" value="103870" />
+<input type="submit" value="<?php etranslate("Report Bug")?>" />
+</form>
 <br /><br />
 
-<h3><font color="<?php echo $H2COLOR;?>"><?php etranslate("System Settings")?></font></h3>
+<h3 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("System Settings")?></h3>
 <?php
 
 if ( empty ( $SERVER_SOFTWARE ) )
@@ -54,7 +53,6 @@ if ( $res ) {
 }
 
 echo "</pre>\n";
-
 ?>
 
 <?php include_once "includes/help_trailer.php"; ?>

@@ -15,7 +15,7 @@ $INC = array('js/edit_layer.php');
 print_header($INC);
 ?>
 
-<h2><font color="<?php echo $H2COLOR;?>">
+<h2 style="color:<?php echo $H2COLOR;?>;">
 <?php
 if ( $updating_public )
   echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
@@ -24,9 +24,7 @@ if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
 else
   etranslate("Add Layer");
 
-?></font></h2>
-
-
+?></h2>
 
 <form action="edit_layer_handler.php" method="post" onsubmit="return valid_form(this);" name="prefform">
 
@@ -34,7 +32,7 @@ else
   <input type="hidden" name="public" value="1" />
 <?php } ?>
 
-<table border="0">
+<table style="border-width:0px;">
 
 
 <?php
@@ -53,9 +51,9 @@ if ( $single_user == "N" ) {
       $users .= "<option value=\"" . $userlist[$i]['cal_login'] . "\"";
       if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) {
         if ( $layers[$id]['cal_layeruser'] == $userlist[$i]['cal_login'] )
-          $users .= " SELECTED=\"SELECTED\"";
+          $users .= " selected=\"selected\"";
       } 
-      $users .= "> " . $userlist[$i]['cal_fullname'];
+      $users .= ">" . $userlist[$i]['cal_fullname'];
     }
   }
   if ( $size > 50 )
@@ -63,8 +61,8 @@ if ( $single_user == "N" ) {
   else if ( $size > 5 )
     $size = 5;
   if ( $size >= 1 ) {
-    print "<tr><td valign=\"top\"><b>" .
-      translate("Source") . ":</b></td>";
+    print "<tr><td style=\"vertical-align:top; font-weight:bold;\">" .
+      translate("Source") . ":</td>";
     print "<td><select name=\"layeruser\" size=\"1\">$users\n";
     print "</select>\n";
     print "</td></tr>\n";
@@ -78,9 +76,8 @@ if ( $single_user == "N" ) {
 <input type="button" onclick="selectColor('layercolor')" value="<?php etranslate("Select")?>..." />
 </td></tr>
 
-
-<tr><td><b><?php etranslate("Duplicates")?>:</b></td>
-    <td><input type="checkbox" name="dups" value="Y" <?php if ( ! empty ( $layers[$id]['cal_dups'] ) && $layers[$id]['cal_dups'] == 'Y') echo "checked"; ?>>&nbsp;&nbsp;<?php etranslate("Show layer events that are the same as your own")?></td></tr>
+<tr><td style="font-weight:bold;"><?php etranslate("Duplicates")?>:</td>
+    <td><input type="checkbox" name="dups" value="Y" <?php if ( ! empty ( $layers[$id]['cal_dups'] ) && $layers[$id]['cal_dups'] == 'Y') echo "checked=\"checked\""; ?>>&nbsp;&nbsp;<?php etranslate("Show layer events that are the same as your own")?></td></tr>
 
 <tr><td colspan="2"><input type="submit" value="<?php etranslate("Save")?>" />
 <input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" />
@@ -98,16 +95,11 @@ if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
 <tr><td><br /><a href="del_layer.php?id=<?php echo $id; if ( $updating_public ) echo "&public=1"; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></a><br /></td></tr>
 
 <?php
-
 }  // end of 'Delete Layer' link if
-
 ?>
-
-
 </table>
 
 <?php if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n"; ?>
-
 </form>
 
 <?php print_trailer(); ?>

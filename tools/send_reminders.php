@@ -124,10 +124,10 @@ $repeated_events = query_events ( "", true, "AND (webcal_entry_repeats.cal_end >
 
 // Read non-repeating events (for all users)
 if ( $debug )
-  echo "Checking for events from date $startdate to date $enddate <br>\n";
+  echo "Checking for events from date $startdate to date $enddate <br />\n";
 $events = read_events ( "", $startdate, $enddate );
 if ( $debug )
-  echo "Found " . count ( $events ) . " events in time range. <br>\n";
+  echo "Found " . count ( $events ) . " events in time range. <br />\n";
 
 
 function indent ( $str ) {
@@ -183,7 +183,7 @@ function send_reminder ( $id, $event_date ) {
 
   if ( ! $num_participants && ! $num_ext_participants ) {
     if ( $debug )
-      echo "No participants found for event id: $id <br>\n";
+      echo "No participants found for event id: $id <br />\n";
     return;
   }
 
@@ -218,7 +218,7 @@ function send_reminder ( $id, $event_date ) {
         $recipients[] = $participants[$i];
       } else {
         if ( $debug )
-	  echo "No email for user $participants[$i] <br>\n";
+	  echo "No email for user $participants[$i] <br />\n";
       }
     }
     for ( $i = 0; $i < count ( $ext_participants ); $i++ ) {
@@ -238,7 +238,7 @@ function send_reminder ( $id, $event_date ) {
     if ( $userlang == "none" )
       $userlang = "English-US"; // gotta pick something
     if ( $debug )
-      echo "Setting language to \"$userlang\" <br>\n";
+      echo "Setting language to \"$userlang\" <br />\n";
     reset_language ( $userlang );
     // reset timezone setting for current user
     if ( empty ( $tzoffset[$user] ) )
@@ -359,7 +359,7 @@ function process_event ( $id, $name, $event_date, $event_time ) {
   global $EXTRA_REMINDER_WITH_OFFSET, $EXTRA_REMINDER_WITH_DATE;
 
   if ( $debug )
-    printf ( "Event %d: \"%s\" at %s on %s <br>\n",
+    printf ( "Event %d: \"%s\" at %s on %s <br />\n",
       $id, $name, $event_time, $event_date );
 
   // Check to see if this event has any reminders
@@ -374,7 +374,7 @@ function process_event ( $id, $name, $event_date, $event_time ) {
     //  $extra_name, $extra_type, $extra_arg1, $extra_arg2 );
     if ( ! empty ( $extras[$extra_name]['cal_remind'] ) ) {
       if ( $debug )
-        echo "  Reminder set for event. <br>\n";
+        echo "  Reminder set for event. <br />\n";
       // how many minutes before event should we send the reminder?
       $ev_h = (int) ( $event_time / 10000 );
       $ev_m = ( $event_time / 100 ) % 100;
@@ -396,10 +396,10 @@ function process_event ( $id, $name, $event_date, $event_time ) {
         $remind_time = $event_time - ( $minsbefore * 60 );
       }
       if ( $debug )
-        echo "  Mins Before: $minsbefore <br>\n";
+        echo "  Mins Before: $minsbefore <br />\n";
       if ( $debug ) {
-        echo "  Event time is: " . date ( "m/d/Y H:i", $event_time ) . "<br>\n";
-        echo "  Remind time is: " . date ( "m/d/Y H:i", $remind_time ) . "<br>\n";
+        echo "  Event time is: " . date ( "m/d/Y H:i", $event_time ) . "<br />\n";
+        echo "  Remind time is: " . date ( "m/d/Y H:i", $remind_time ) . "<br />\n";
       }
       if ( time() > $remind_time ) {
         // It's later than the remind time.  See if one has already been sent
@@ -415,11 +415,11 @@ function process_event ( $id, $name, $event_date, $event_time ) {
           dbi_free_result ( $res );
         }
         if ( $debug )
-          echo "  Last sent on: " . date ( "m/d/Y H:i", $last_sent ) . "<br>\n";
+          echo "  Last sent on: " . date ( "m/d/Y H:i", $last_sent ) . "<br />\n";
         if ( $last_sent < $remind_time ) {
           // Send a reminder
           if ( $debug )
-            echo "  SENDING REMINDER! <br>\n";
+            echo "  SENDING REMINDER! <br />\n";
           send_reminder ( $id, $event_date );
           // now update the db...
           log_reminder ( $id, $extra_name, $event_date );
@@ -457,6 +457,6 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
 }
 
 if ( $debug )
-  echo "Done.<br>\n";
+  echo "Done.<br />\n";
 
 ?>

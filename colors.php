@@ -4,9 +4,9 @@ $INC = array('js/colors.php');
 print_header($INC,'','',true);
 ?>
 
-<center>
+<div style="text-align:center;">
 
-<table border="2">
+<table style="border-width:2px;">
 <tr>
 <?php
 $colors = array (
@@ -27,21 +27,19 @@ for ( $r = 0; $r < 16; $r += 3 ) {
       else if ( $i % 16 == 0 )
         echo "</tr><tr>\n";
       $c = sprintf ( "%X0%X0%X0", $r, $g, $b );
-      echo "<td bgcolor=\"#" . $c .
-        "\"><a href=\"javascript:sendColor('#" . $c .
-        "')\"><img src=\"spacer.gif\" width=\"15\" height=\"15\" border=\"0\"></a></td>\n";
+      echo "<td style=\"background-color:#" . $c . ";\"><a href=\"javascript:sendColor('#" . $c .
+        "')\"><img src=\"spacer.gif\" style=\"border-width:0px;\" width=\"15\" height=\"15\" /></a></td>\n";
       $i++;
     }
   }
 }
 $c = "FFFFFF";
-  echo "<td bgcolor=\"#" . $c .
-    "\"><a href=\"javascript:sendColor('#" . $c .
-    "')\"><img src=\"spacer.gif\" width=\"15\" height=\"15\" border=\"0\" /></a></td>\n";
+  echo "<td style=\"background-color:#" . $c . ";\"><a href=\"javascript:sendColor('#" . $c .
+    "')\"><img src=\"spacer.gif\" style=\"border-width:0px; width:15px; height:15px;\" /></a></td>\n";
 echo "</tr>\n";
 ?>
 </table>
-</center>
+</div>
 
 <?php print_trailer ( false, false, true ); ?>
 </body>

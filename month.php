@@ -36,7 +36,6 @@ $repeated_events = read_repeated_events (
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
   ? $user : $login, $startdate, $enddate, $cat_id );
-
 ?>
 
 <table style="border-width:0px; width:100%;">
@@ -88,33 +87,32 @@ if ( ! $friendly ) {
 ?>
 
 <td style="text-align:center;">
-<font size="+2" color="<?php echo $H2COLOR?>">
-<b>
+<span style="color:<?php echo $H2COLOR?>; font-weight:bold;"><font size="+2">
 <?php
   echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
     $DATE_FORMAT_MY, false, false );
 ?>
-</b></font>
-<font color="<?php echo $H2COLOR?>" size="+1">
+</font>
+<font size="+1">
 <?php
   if ( $single_user == "N" ) {
     echo "<br />\n";
     echo $user_fullname;
   }
   if ( $is_nonuser_admin )
-    echo "<b><br />-- " . translate("Admin mode") . " --</b>";
+    echo "<br />-- " . translate("Admin mode") . " --";
   if ( $is_assistant )
-    echo "<b><br />-- " . translate("Assistant mode") . " --</b>";
+    echo "<br />-- " . translate("Assistant mode") . " --";
   if ( $categories_enabled == "Y" && (!$user || $user == $login)) {
     echo "<br />\n<br />\n";
     print_category_menu('month',sprintf ( "%04d%02d01",$thisyear, $thismonth ),$cat_id, $friendly );
   }
-
 ?>
-</font></td>
+</font></span>
+</td>
 <?php
 if ( ! $friendly ) {
-  echo '<td align=\"right\"><table border=\"0\">';
+  echo '<td style=\"text-align:right;\"><table style=\"border-width:0px;\">';
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $nextyear, $nextmonth, 1 );
   else
@@ -129,13 +127,13 @@ if ( ! $friendly ) {
     "</A></FONT></TD></TR>\n";
   echo "<TR>";
   if ( $WEEK_START == 0 ) echo "<TD><FONT SIZE=\"-2\">" .
-    weekday_short_name ( 0 ) . "</TD>";
+    weekday_short_name ( 0 ) . "</font></TD>";
   for ( $i = 1; $i < 7; $i++ ) {
     echo "<TD><FONT SIZE=\"-2\">" .
-      weekday_short_name ( $i ) . "</TD>";
+      weekday_short_name ( $i ) . "</font></TD>";
   }
   if ( $WEEK_START == 1 ) echo "<TD><FONT SIZE=\"-2\">" .
-    weekday_short_name ( 0 ) . "</TD>";
+    weekday_short_name ( 0 ) . "</font></TD>";
   echo "</TR>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     $i += ( 24 * 3600 * 7 ) ) {
@@ -146,7 +144,7 @@ if ( ! $friendly ) {
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
         print "<TD><FONT SIZE=\"-2\">" . date ( "d", $date ) . "</FONT></TD>\n";
       } else {
-        print "<TD></TD>\n";
+        print "<TD>&nbsp;</TD>\n";
       }
     }
     print "</TR>\n";
@@ -159,8 +157,8 @@ if ( ! $friendly ) {
 </TABLE>
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<TABLE BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
-<TR><TD BGCOLOR="<?php echo $TABLEBG?>">
+<TABLE style="border-width:0px; width:100%;" CELLSPACING="0" CELLPADDING="0">
+<TR><TD style="background-color:<?php echo $TABLEBG?>;">
 <TABLE style="border:0px; width:100%;" CELLSPACING="1" CELLPADDING="2">
 <?php } else { ?>
 <TABLE style="border:1px; width:100%;" CELLSPACING="0" CELLPADDING="0">
@@ -215,7 +213,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $color = $is_weekend ? $WEEKENDBG : $CELLBG;
       if ( empty ( $color ) )
         $color = "#C0C0C0";
-      print "<td valign=\"top\" height=\"75\" id=\"$class\" ";
+      print "<td style=\"vertical-align:top; height:75px;\" id=\"$class\" ";
       if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) )
         echo "style=\"background-color:$TODAYCELLBG;\">";
       else
@@ -226,7 +224,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         $friendly, false );
       print "</td>\n";
     } else {
-      print "<td valign=\"top\" height=\"75\" id=\"tablecell\" style=\"background-color:$CELLBG;\">&nbsp;</TD>\n";
+      print "<td style=\"vertical-align:top; height:75px;\" id=\"tablecell\" style=\"background-color:$CELLBG;\">&nbsp;</TD>\n";
     }
   }
   print "</tr>\n";

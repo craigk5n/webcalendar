@@ -254,7 +254,7 @@ if ( $time < 0 )
 ?>
   <td>
 <span id="timeentry">
-<input name="hour" size="2" value="<?php if ( $allday != "Y" ) echo $h12;?>" maxlength="2">:<input name="minute" size="2" value="<?php if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $minute );?>" maxlength="2">
+<input name="hour" size="2" value="<?php if ( $allday != "Y" ) echo $h12;?>" maxlength="2" />:<input name="minute" size="2" value="<?php if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $minute );?>" maxlength="2" />
 <?php
 if ( $TIME_FORMAT == "12" ) {
   echo "<input type=\"radio\" name=\"ampm\" value=\"am\" $amsel>" .
@@ -266,9 +266,9 @@ if ( $TIME_FORMAT == "12" ) {
 </span>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <select name="timetype" onchange="timetype_handler()">
-<option value="U" <?php if ( $allday != "Y" && $hour == -1 ) echo selected?>><?php etranslate("Untimed event"); ?></option>
-<option value="T" <?php if ( $allday != "Y" && $hour >= 0 ) echo selected?>><?php etranslate("Timed event"); ?></option>
-<option value="A" <?php if ( $allday == "Y" ) echo selected?>><?php etranslate("All day event"); ?></option>
+<option value="U" <?php if ( $allday != "Y" && $hour == -1 ) echo " selected=\"selected\""?>><?php etranslate("Untimed event"); ?></option>
+<option value="T" <?php if ( $allday != "Y" && $hour >= 0 ) echo " selected=\"selected\""?>><?php etranslate("Timed event"); ?></option>
+<option value="A" <?php if ( $allday == "Y" ) echo " selected=\"selected\""?>><?php etranslate("All day event"); ?></option>
 </select>
 </td></tr>
 
@@ -277,22 +277,22 @@ if ( $TIME_FORMAT == "12" ) {
   $dur_m = $duration - ( $dur_h * 60 );
 ?>
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("duration-help")?>"><?php etranslate("Duration")?>:</td>
-  <td><input name="duration_h" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%d", $dur_h );?>">:<input name="duration_m" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%02d", $dur_m );?>"> (<?php echo translate("hours") . ":" . translate("minutes")?>)</td></tr>
+  <td><input name="duration_h" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%d", $dur_h );?>" />:<input name="duration_m" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%02d", $dur_m );?>" /> (<?php echo translate("hours") . ":" . translate("minutes")?>)</td></tr>
 
 <?php if ( $disable_priority_field != "Y" ) { ?>
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("priority-help")?>"><?php etranslate("Priority")?>:</td>
   <td><select name="priority">
-    <option value="1"<?php if ( $priority == 1 ) echo " selected";?>><?php etranslate("Low")?></option>
-    <option value="2"<?php if ( $priority == 2 || $priority == 0 ) echo " selected";?>><?php etranslate("Medium")?></option>
-    <option value="3"<?php if ( $priority == 3 ) echo " selected";?>><?php etranslate("High")?></option>
+    <option value="1"<?php if ( $priority == 1 ) echo " selected=\"selected\"";?>><?php etranslate("Low")?></option>
+    <option value="2"<?php if ( $priority == 2 || $priority == 0 ) echo " selected=\"selected\"";?>><?php etranslate("Medium")?></option>
+    <option value="3"<?php if ( $priority == 3 ) echo " selected=\"selected\"";?>><?php etranslate("High")?></option>
   </select></td></tr>
 <?php } ?>
 
 <?php if ( $disable_access_field != "Y" ) { ?>
 <tr><td style="font-weight:bold;" class="tooltip" title="<?php etooltip("access-help")?>"><?php etranslate("Access")?>:</td>
   <td><select name="access">
-    <option value="P"<?php if ( $access == "P" || ! strlen ( $access ) ) echo " selected";?>><?php etranslate("Public")?></option>
-    <option value="R"<?php if ( $access == "R" ) echo " selected";?>><?php etranslate("Confidential")?></option>
+    <option value="P"<?php if ( $access == "P" || ! strlen ( $access ) ) echo " selected=\"selected\"";?>><?php etranslate("Public")?></option>
+    <option value="R"<?php if ( $access == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Confidential")?></option>
   </select></td></tr>
 <?php } ?>
 
@@ -303,7 +303,7 @@ if ( $TIME_FORMAT == "12" ) {
 <?php
   foreach( $categories as $K => $V ){
     echo "<option value=\"$K\"";
-    if ( $cat_id == $K ) echo " selected";
+    if ( $cat_id == $K ) echo " selected=\"selected\"";
     echo ">$V</option>";
   }
 ?>
@@ -370,7 +370,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
       echo "<option value=\"" . $userlist[$j]['cal_login'] . "\"";
         if ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
           $userlist[$j]['cal_login'] == $extras[$extra_name]['cal_data'] )
-          echo " selected";
+          echo " selected=\"selected\"";
         echo ">" . $userlist[$j]['cal_fullname'];
     }
     echo "</select>";
@@ -429,7 +429,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
         echo "<option";
         if ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
           $extra_arg1[$j] == $extras[$extra_name]['cal_data'] )
-          echo " selected";
+          echo " selected=\"selected\"";
         echo ">" . $extra_arg1[$j] . "</option>\n";
       }
     }
@@ -463,15 +463,15 @@ if ( $single_user == "N" && $show_participants ) {
     $users .= "<option value=\"" . $l . "\"";
     if ( $id > 0 ) {
       if ( ! empty ( $participants[$l] ) )
-        $users .= " selected";
+        $users .= " selected=\"selected\"";
     } else {
       if ( ! empty ( $defusers ) ) {
         // default selection of participants was in the URL
         if ( ! empty ( $participants[$l] ) )
-          $users .= " selected";
+          $users .= " selected=\"selected\"";
       } else {
         if ( ( $l == $login && ! $is_assistant  && ! $is_nonuser_admin ) || ( ! empty ( $user ) && $l == $user ) )
-          $users .= " selected";
+          $users .= " selected=\"selected\"";
       }
     }
     $users .= "> " . $userlist[$i]['cal_fullname'];
@@ -488,7 +488,7 @@ if ( $single_user == "N" && $show_participants ) {
   print "</select>";
   if ( $groups_enabled == "Y" ) {
     echo "<input type=\"button\" onclick=\"selectUsers()\" value=\"" .
-      translate("Select") . "...\">";
+      translate("Select") . "...\" />";
   }
   print "</td></tr>\n";
 
@@ -568,12 +568,12 @@ echo "<input type=\"radio\" name=\"rpt_type\" value=\"yearly\" " .
 
 <table style="border-width:0px;"><tr><td>
 <SCRIPT LANGUAGE="JavaScript">
-  document.writeln ( '<input type="button" value="<?php etranslate("Save")?>" onclick="validate_and_submit()">' );
+  document.writeln ( '<input type="button" value="<?php etranslate("Save")?>" onclick="validate_and_submit()" />' );
   document.writeln ( '<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( \'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>\', \'cal_help\', \'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420\');">' );
 </SCRIPT>
 
 <NOSCRIPT>
-<input type="submit" value="<?php etranslate("Save")?>">
+<input type="submit" value="<?php etranslate("Save")?>" />
 </NOSCRIPT>
 </td></tr></table>
 <input type="hidden" name="participant_list" value="" />

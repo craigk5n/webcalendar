@@ -19,7 +19,7 @@ $res = dbi_query ( "SELECT cal_group_id, cal_name FROM webcal_group " .
   "ORDER BY cal_name" );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
-    echo "<li><A HREF=\"group_edit.php?id=" . $row[0] .
+    echo "<li><a href=\"group_edit.php?id=" . $row[0] .
       "\">" . $row[1] . "</a></li>";
   }
   dbi_free_result ( $res );

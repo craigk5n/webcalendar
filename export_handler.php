@@ -561,7 +561,6 @@ function export_recurrence_vcal($id, $date) {
 }
 
 
-
 function export_get_utc_date($date, $time=0)
 {
   $year = (int) substr($date,0,-4);
@@ -1090,14 +1089,14 @@ else
 
   print_header();
 			 
-  echo "<h2><font color=\"" . $H2COLOR . "\">";
+  echo "<h2 style=\"color:$H2COLOR;\">";
   etranslate("Export");
   echo " ";
   etranslate("Error");
-  echo "</font></h2>\n";			 
-  echo "<b>";
+  echo "</h2>\n";			 
+  echo "<span style=\"font-weight:bold;\">";
   etranslate("Error");
-  echo " : </b>";
+  echo ":</span> ";
   echo translate("export format not defined or incorrect") . ".";
   echo "<br />\n";
 
