@@ -2640,7 +2640,7 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
 	translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
     "date=$date" . ( $hour > 0 ? "&amp;hour=$hour" : "" ) .
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
-    ( empty ( $user ) ? "" :  "&amp;defusers=$user&amp;user=$user" ) .
+    ( empty ( $user ) ? "" :  "&amp;defusers=$user" ) .
     "\"><img src=\"new.gif\" class=\"new\" alt=\"" . 
 	translate("New Entry") . "\" /></a>\n";
 }
