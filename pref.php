@@ -16,10 +16,18 @@ include "includes/translate.php";
 
 // if updating preferences for public user, reload public user prefs into
 // $prefarray[].
+// Get system settings first.
 $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
   $updating_public = true;
   $prefarray = array ();
+  $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_config " );
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      $prefarray[$row[0]] = $row[1];
+    }
+    dbi_free_result ( $res );
+  }
   $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
     "WHERE cal_login = '__public__'" );
   if ( $res ) {
