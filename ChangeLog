@@ -29,6 +29,7 @@ Verion 0.9.44dev (?? ??? 2004)
   - Fixed bug: custom script/stylesheet was not being included on login page
   - Updated German translation
   - Updated Norwegian translation
+  - Updated Portuguese_BR translation
 Verion 0.9.43 (10 Mar 2004)
   - Added iCal import
   - Fixed non-translated text in purge.php
