@@ -435,11 +435,11 @@ if ( $single_user == "N" ) {
   else {
     if ( strlen ( $email_addr ) )
       echo "<TD><A HREF=\"mailto:$email_addr?subject=$subject\">" .
-        ( $row[0] == "__public__" ? "Public Access" : $row[0] ) .
+        ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
 	"</A></TD></TR>\n";
     else
       echo "<TD>" .
-        ( $row[0] == "__public__" ? "Public Access" : $row[0] ) .
+        ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
 	"</TD></TR>\n";
   }
 }
