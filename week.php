@@ -334,7 +334,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 ?>
 
 <br /><br />
-<a class="navlinks" href="week.php?<?php
+<a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="week.php?<?php
   echo $u_url;
   if ( $thisyear ) {
     echo "year=$thisyear&amp;month=$thismonth&amp;day=$thisday";

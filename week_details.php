@@ -66,7 +66,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <td style="text-align:left;"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" /></a></td>
 <?php } ?>
-<td style="text-align:center; color:<?php echo $H2COLOR;?>;"><span style="font-size:24px; font-weight:bold;" class="pagetitle">
+<td style="text-align:center; color:<?php echo $H2COLOR;?>;"><span class="pagetitle">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
@@ -143,7 +143,7 @@ for ( $d = 0; $d < 7; $d++ ) {
 <?php if ( empty ( $friendly ) ) { ?>
 <?php echo $eventinfo; ?>
 <br /><br />
-<a class="navlinks" href="week_details.php?<?php
+<a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="week_details.php?<?php
   echo $u_url;
   if ( $thisyear ) {
     echo "year=$thisyear&amp;month=$thismonth&amp;day=$thisday";
@@ -195,7 +195,8 @@ function print_detailed_entry ( $id, $date, $time, $duration,
   if ( ! $hide_icons ) {
     $divname = "eventinfo-$id-$key";
     $key++;
-    echo "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+    echo "<a title=\"" . translate("View this entry") .
+      "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
     if ( strlen ( $user ) > 0 )
       echo "&amp;user=" . $user;
     echo "\" onmouseover=\"window.status='" . translate("View this entry") .
@@ -207,7 +208,7 @@ function print_detailed_entry ( $id, $date, $time, $duration,
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     if ($layers) foreach ($layers as $layer) {
       if($layer['cal_layeruser'] == $event_owner) {
-        echo("<font color=\"" . $layer['cal_color'] . "\">");
+        echo("<span style=\"color:#" . $layer['cal_color'] . ";\">");
       }
     }
   }
@@ -251,7 +252,7 @@ function print_detailed_entry ( $id, $date, $time, $duration,
   } elseif ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) ) {
     $PN = "(" . translate("Private") . ")";$PD ="(" . translate("Private") . ")";
   } elseif ( $login != $event_owner && strlen ( $event_owner ) ) {
-    $PN = htmlspecialchars ( $name ) ."</font>";
+    $PN = htmlspecialchars ( $name ) ."</span>";
     $PD = activate_urls ( htmlspecialchars ( $description ) );
   } else {
     $PN = htmlspecialchars ( $name );
