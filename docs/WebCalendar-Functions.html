@@ -1,0 +1,444 @@
+<html>
+<head>
+<title>WebCalendar Function Documentation</title>
+<style type="text/css">
+body {
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+}
+a {
+	text-decoration: none;
+}
+p {
+	margin-top: 2px;
+}
+ul {
+	margin-bottom: 2px;
+	margin-top: 2px;
+}
+tt {
+	font-family: courier, monospace;
+	font-size: 14px;
+}
+pre {
+	font-family: courier, monospace;
+	font-size: 14px;
+	border: 1px solid #0000FF;
+	background-color: #EEEEFF;
+	padding: 4px;
+	margin-left: 25px;
+	margin-right: 25px;
+}
+.prompt {
+	font-weight: bold;
+}
+.tip {
+	font-weight: bold;
+	background-color: #FFFF00;
+	border: 1px solid #000000;
+	padding: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-right: 10px;
+}
+.note {
+	font-weight: bold;
+	background-color: blue;
+	color: #FFFFFF;
+	border: 1px solid #000000;
+	padding: 2px;
+}
+hr {
+	margin-bottom: 7px;
+}
+h3 {
+	background-color: #191970;
+	color: #FFFFFF;
+	padding: 5px;
+}
+.top {
+	text-align: right;
+}
+</style>
+</head>
+<body style="background-color:#FFFFFF;">
+<h2>WebCalendar Function Documentation</h2>
+<blockquote>
+
+</blockquote>
+<table style="border-width:0px;">
+<tr><td>Home Page:</td>
+  <td><a href="http://webcalendar.sourceforge.net/">http://webcalendar.sourceforge.net//a></td></tr>
+<tr><td>WebCalendar Version:</td><td>v1.0RC1/CVS+dev (?? ??? 2004)</td></tr>
+<tr><td>Last updated:</td><td>23-Jan-2005</td></tr>
+</table>
+<h2>Function Documentation</h2>
+<ul>
+<li><a href="#activity_log">activity_log</a></li>
+<li><a href="#build_event_popup">build_event_popup</a></li>
+<li><a href="#date_selection_html">date_selection_html</a></li>
+<li><a href="#display_small_month">display_small_month</a></li>
+<li><a href="#do_debug">do_debug</a></li>
+<li><a href="#do_redirect">do_redirect</a></li>
+<li><a href="#event_get_external_users">event_get_external_users</a></li>
+<li><a href="#getGetValue">getGetValue</a></li>
+<li><a href="#getIntValue">getIntValue</a></li>
+<li><a href="#getPostValue">getPostValue</a></li>
+<li><a href="#getValue">getValue</a></li>
+<li><a href="#get_entries">get_entries</a></li>
+<li><a href="#get_last_view">get_last_view</a></li>
+<li><a href="#get_my_users">get_my_users</a></li>
+<li><a href="#get_pref_setting">get_pref_setting</a></li>
+<li><a href="#get_site_extra_fields">get_site_extra_fields</a></li>
+<li><a href="#load_global_settings">load_global_settings</a></li>
+<li><a href="#load_user_layers">load_user_layers</a></li>
+<li><a href="#load_user_preferences">load_user_preferences</a></li>
+<li><a href="#print_date_selection">print_date_selection</a></li>
+<li><a href="#print_entry">print_entry</a></li>
+<li><a href="#query_events">query_events</a></li>
+<li><a href="#read_events">read_events</a></li>
+<li><a href="#remember_this_view">remember_this_view</a></li>
+<li><a href="#send_http_login">send_http_login</a></li>
+<li><a href="#send_no_cache_header">send_no_cache_header</a></li>
+<li><a href="#site_extras_for_popup">site_extras_for_popup</a></li>
+</ul>
+<hr />
+<br /><br />
+<h3><a name="activity_log">activity_log</a></h3>
+<tt>activity_log ( $event_id, $user, $user_cal, $type, $text )</tt><br /><br />
+Add something to the activity log for an event. The information will be saved to the <a href="WebCalendar-Database.html#webcal_entry_log"><tt>webcal_entry_log</tt></a>.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$event_id</tt> - text comment to add with activity log entry</li>
+<li><tt>$user</tt> - text comment to add with activity log entry</li>
+<li><tt>$user_cal</tt> - text comment to add with activity log entry</li>
+<li><tt>$type</tt> - text comment to add with activity log entry</li>
+<li><tt>$text</tt> - text comment to add with activity log entry</li>
+</ul>
+<p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="build_event_popup">build_event_popup</a></h3>
+<tt>build_event_popup ( $popupid, $user, $description, $time, $site_extras )</tt><br /><br />
+Build the HTML for the event popup (but don't print it yet since we don't want this HTML to go inside the table for the month).<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$popupid</tt> - the HTML for any site_extras for this event</li>
+<li><tt>$user</tt> - the HTML for any site_extras for this event</li>
+<li><tt>$description</tt> - the HTML for any site_extras for this event</li>
+<li><tt>$time</tt> - the HTML for any site_extras for this event</li>
+<li><tt>$site_extras</tt> - the HTML for any site_extras for this event</li>
+</ul>
+<p><span class="prompt">Returns:</span> The HTML for the event popup<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="date_selection_html">date_selection_html</a></h3>
+<tt>date_selection_html ( $prefix, $date )</tt><br /><br />
+Print out a date selection for use in a form.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$prefix</tt> - currently selected date (in YYYYMMDD) format</li>
+<li><tt>$date</tt> - currently selected date (in YYYYMMDD) format</li>
+</ul>
+<p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="display_small_month">display_small_month</a></h3>
+<tt>display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums, $minical_id, $month_link )</tt><br /><br />
+Prints out a minicalendar for a month<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$thismonth</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;) [defaults to 'month.php?']</li>
+<li><tt>$thisyear</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;) [defaults to 'month.php?']</li>
+<li><tt>$showyear</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;) [defaults to 'month.php?']</li>
+<li><tt>$show_weeknums</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;) [defaults to 'month.php?']</li>
+<li><tt>$minical_id</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;) [defaults to 'month.php?']</li>
+<li><tt>$month_link</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;) [defaults to 'month.php?']</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="do_debug">do_debug</a></h3>
+<tt>do_debug ( $msg )</tt><br /><br />
+Log a debug message.  Generally, we do not leave calls to <a href="#this"><tt>this</tt></a> function in the code.  It is used for debugging only.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$msg</tt> - Text to be logged</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="do_redirect">do_redirect</a></h3>
+<tt>do_redirect ( $url )</tt><br /><br />
+Send a redirect to the specified page. The database connection is closed and execution terminates in <a href="#this"><tt>this</tt></a> function. <br/> Note: MS IIS/PWS has a bug in which it does not allow us to send a cookie and a redirect in the same HTTP header.  When we detect that the web server is IIS, we accomplish the redirect using meta-refresh. See the following for more info on the IIS bug: <blockquote> <a href="http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4"> http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4</a> </blockquote><br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$url</tt> - The page to redirect to.  In theory, this should be an absolute URL, but all browsers accept relative URLs (like "month.php").</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="event_get_external_users">event_get_external_users</a></h3>
+<tt>event_get_external_users ( $event_id, $use_mailto )</tt><br /><br />
+Get the list of external users for an event from the <a href="WebCalendar-Database.html#webcal_entry_ext_user"><tt>webcal_entry_ext_user</tt></a> in an HTML format.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$event_id</tt> - when set to 1, email address will contain an href link with a mailto URL.</li>
+<li><tt>$use_mailto</tt> - when set to 1, email address will contain an href link with a mailto URL.</li>
+</ul>
+<p><span class="prompt">Returns:</span> The list of external users for an event formatte in HTML.<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="getGetValue">getGetValue</a></h3>
+<tt>getGetValue ( $name )</tt><br /><br />
+Get the value resulting from an HTTP GET method.   <br/> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file. If you need to enforce a specific input format (such as numeric input), then use the <a href="#getValue"><tt>getValue</tt></a> function.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$name</tt> - Name used in the HTML form or found in the URL</li>
+</ul>
+<p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="getIntValue">getIntValue</a></h3>
+<tt>getIntValue ( $name, $fatal )</tt><br /><br />
+Get an integer value resulting from an HTTP GET or HTTP POST method.   <br/> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$name</tt> - Is it considered a fatal error requiring execution to stop if the value retrieved does not match the format regular expression?</li>
+<li><tt>$fatal</tt> - Is it considered a fatal error requiring execution to stop if the value retrieved does not match the format regular expression?</li>
+</ul>
+<p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="getPostValue">getPostValue</a></h3>
+<tt>getPostValue ( $name )</tt><br /><br />
+Get the value resulting from an HTTP POST method.   <br/> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$name</tt> - Name used in the HTML form</li>
+</ul>
+<p><span class="prompt">Returns:</span> the value used in the HTML form<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="getValue">getValue</a></h3>
+<tt>getValue ( $name, $format, $fatal )</tt><br /><br />
+Get the value resulting from either HTTP GET method or HTTP POST method.  <br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.  <br /> Note: If you need to get an integer value, yuou can use the <a href="#getIntValue"><tt>getIntValue</tt></a> function.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$name</tt> - Is it considered a fatal error requiring execution to stop if the value retrieved does not match the format regular expression?</li>
+<li><tt>$format</tt> - Is it considered a fatal error requiring execution to stop if the value retrieved does not match the format regular expression?</li>
+<li><tt>$fatal</tt> - Is it considered a fatal error requiring execution to stop if the value retrieved does not match the format regular expression?</li>
+</ul>
+<p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="get_entries">get_entries</a></h3>
+<tt>get_entries ( $user, $date, $get_unapproved )</tt><br /><br />
+Get all the events for a specific date from the array of pre-loaded events (which was loaded all at once to improve performance). The returned events will be sorted by time of day.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$user</tt> - load unapproved events (true/false)</li>
+<li><tt>$date</tt> - load unapproved events (true/false)</li>
+<li><tt>$get_unapproved</tt> - load unapproved events (true/false)</li>
+</ul>
+<p><span class="prompt">Returns:</span> An array of events<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="get_last_view">get_last_view</a></h3>
+<tt>get_last_view ( $ )</tt><br /><br />
+Get the last page stored using the <a href="#remember_this_view"><tt>remember_this_view</tt></a> function. Return empty string if we don't know.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li>None</li>
+</ul>
+<p><span class="prompt">Returns:</span> The URL of the last view or an empty string if it cannot bedetermined.<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="get_my_users">get_my_users</a></h3>
+<tt>get_my_users ( $ )</tt><br /><br />
+Get a list of users. If groups are enabled, this will restrict the list of users to only those users who are in the same group(s) as the user (unless the user is an admin user). We allow admin users to see all users because they can also edit someone else's events (so they may need access to users who are not in the same groups that they are in).<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li>None</li>
+</ul>
+<p><span class="prompt">Returns:</span> An array of users, where each element in the array is an arraywith the following keys:<ul><li>cal_login</li><li>cal_lastname</li><li>cal_firstname</li><li>cal_is_admin</li><li>cal_is_admin</li><li>cal_email</li><li>cal_password</li><li>cal_fullname</li></ul><br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="get_pref_setting">get_pref_setting</a></h3>
+<tt>get_pref_setting ( $user, $setting )</tt><br /><br />
+Get a preference setting for the specified user.  If no value is found in the database, then the system default setting will be returned.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$user</tt> - the name of the setting</li>
+<li><tt>$setting</tt> - the name of the setting</li>
+</ul>
+<p><span class="prompt">Returns:</span> The value found in the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> for thespecified setting or the sytem default if no user settingswas found.<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="get_site_extra_fields">get_site_extra_fields</a></h3>
+<tt>get_site_extra_fields ( $eventid )</tt><br /><br />
+Get any site-specific fields for an entry that are stored in the database in the <a href="WebCalendar-Database.html#webcal_site_extras"><tt>webcal_site_extras</tt></a>.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$eventid</tt> - event id</li>
+</ul>
+<p><span class="prompt">Returns:</span> Return an array of array with the keys as follows:  <ul><li> cal_name </li><li> cal_type </li><li> cal_date </li><li> cal_remind </li><li> cal_data </li></ul><br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="load_global_settings">load_global_settings</a></h3>
+<tt>load_global_settings ( $ )</tt><br /><br />
+Load default system settings (which can be updated via admin.php) System settings are stored in the <a href="WebCalendar-Database.html#webcal_config"><tt>webcal_config</tt></a>. <br/> Note: If the setting for "server_url" is not set, the value will be calculated and stored in the database.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li>None</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="load_user_layers">load_user_layers</a></h3>
+<tt>load_user_layers ( $user, $force )</tt><br /><br />
+Load current user's layer info and stuff it into layer global variable. If the system setting $allow_view_other is not set to 'Y', then we ignore all <a href="#layer"><tt>layer</tt></a> functionality. If $force is 0, we only load layers if the current user preferences have layers turned on.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$user</tt> - If set to 1, then load layers for this user even if user preferences have layers turned off.</li>
+<li><tt>$force</tt> - If set to 1, then load layers for this user even if user preferences have layers turned off.</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="load_user_preferences">load_user_preferences</a></h3>
+<tt>load_user_preferences ( $ )</tt><br /><br />
+Load the current user's preferences as global variables from the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a>. Also load the list of views for this user (not really a preference, but this is a convenient place to put this...) <br/>Notes:   <ul> <li>If the $allow_color_customization is set to 'N', then we ignore any color preferences.</li> <li>Other default values will also be set if the user has not saved a preference and no global value has been set by the administrator in the system settings.</li> </ul><br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li>None</li>
+</ul>
+<p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="print_date_selection">print_date_selection</a></h3>
+<tt>print_date_selection ( $prefix, $date )</tt><br /><br />
+Print out a date selection for use in a form.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$prefix</tt> - currently selected date (in YYYYMMDD) format</li>
+<li><tt>$date</tt> - currently selected date (in YYYYMMDD) format</li>
+</ul>
+<p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="print_entry">print_entry</a></h3>
+<tt>print_entry ( $id, $date, $time, $duration, $name, $description, $status, $pri, $access, $event_owner, $event_cat )</tt><br /><br />
+Print the HTML for one day's events in the month view.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$id</tt> - category of event for event_owner</li>
+<li><tt>$date</tt> - category of event for event_owner</li>
+<li><tt>$time</tt> - category of event for event_owner</li>
+<li><tt>$duration</tt> - category of event for event_owner</li>
+<li><tt>$name</tt> - category of event for event_owner</li>
+<li><tt>$description</tt> - category of event for event_owner</li>
+<li><tt>$status</tt> - category of event for event_owner</li>
+<li><tt>$pri</tt> - category of event for event_owner</li>
+<li><tt>$access</tt> - category of event for event_owner</li>
+<li><tt>$event_owner</tt> - category of event for event_owner</li>
+<li><tt>$event_cat</tt> - category of event for event_owner</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="query_events">query_events</a></h3>
+<tt>query_events ( $user, $want_repeated, $non, $date_filter, $cat_id )</tt><br /><br />
+Read events visible to a user (including layers and possibly public access if enabled); Return results in an array sorted by time of day.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$user</tt> - category ID to filter on.  May be empty.</li>
+<li><tt>$want_repeated</tt> - category ID to filter on.  May be empty.</li>
+<li><tt>$non</tt> - category ID to filter on.  May be empty.</li>
+<li><tt>$date_filter</tt> - category ID to filter on.  May be empty.</li>
+<li><tt>$cat_id</tt> - category ID to filter on.  May be empty.</li>
+</ul>
+<p><span class="prompt">Returns:</span> An array of events<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="read_events">read_events</a></h3>
+<tt>read_events ( $user, $startdate, $enddate, $cat_id )</tt><br /><br />
+Read all the events for a user for the specified range of dates. This is only called once per page request to improve performance. All the events get loaded into the array $events sorted by time of day (not date).<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$user</tt> - category ID to filter on</li>
+<li><tt>$startdate</tt> - category ID to filter on</li>
+<li><tt>$enddate</tt> - category ID to filter on</li>
+<li><tt>$cat_id</tt> - category ID to filter on</li>
+</ul>
+<p><span class="prompt">Returns:</span> An array of events<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="remember_this_view">remember_this_view</a></h3>
+<tt>remember_this_view ( $ )</tt><br /><br />
+Generate a cookie that saves the last calendar view (month, week, day) based on the current $REQUEST_URI so we can return to this same page after a user edits/deletes/etc an event.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li>None</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="send_http_login">send_http_login</a></h3>
+<tt>send_http_login ( $ )</tt><br /><br />
+Send an HTTP login request to the browser and stop execution.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li>None</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="send_no_cache_header">send_no_cache_header</a></h3>
+<tt>send_no_cache_header ( $ )</tt><br /><br />
+Send header stuff that tells the browser not to cache this page. Different browser use different mechanisms for this, so a series of HTTP header directives are sent. <br/>Note: <a href="#This"><tt>This</tt></a> function needs to be called before any HTML output is sent to the browser.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li>None</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="site_extras_for_popup">site_extras_for_popup</a></h3>
+<tt>site_extras_for_popup ( $id )</tt><br /><br />
+Generate the HTML used in an event popup for the site_extras fields of an event.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$id</tt> - event id</li>
+</ul>
+<p><span class="prompt">Returns:</span> The HTML to be used within the event popup for any site_extrafields found for the specified event<br/>
+<span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+</body>
+</html>
