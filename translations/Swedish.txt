@@ -2,10 +2,11 @@
 # another language.  The format is "English text: translated text"
 # There cannot be a ":" in the English text.
 # Translated by: Jesper Thörn <jesper@thorn.as>
-# Last update: 2001-06-28
+# Updated by: Patrik Grip-Jansson <patrikj@gnulix.org>
+# Last update: 2001-08-02
 
 # Title is what will appear in the title bar for pages
-Title: Webkalender
+Title: Webbkalender
 
 Month: Månad
 Week: Vecka
@@ -58,7 +59,7 @@ Generate printer-friendly version: Visa i utskriftsversion
 Printer Friendly: Utskriftsversion
 Go: Gå till
 Back to My Calendar: Tillbaka till kalendern
-Another User's Calendar: Titta på en annan kalender
+Another User's Calendar: Titta på andras kalendrar
 Search: Sök
 Add New Entry: Lägg till ny händelse
 New Entry: Ny händelse
@@ -71,19 +72,19 @@ View this entry: Visa aktivitet
 Private: Privat
 This event is confidential: Privat aktivitet
 You have: Du har
-unapproved: inte godkänt
+unapproved: icke godkända
 event: aktivitet
 events: aktiviteter
 Go to: Gå till
-Help Index: Hjälp översikt
-Error approving event: Fel på godkännande av händelse
+Help Index: Hjälpöversikt
+Error approving event: Ett fel uppstod när händelsen skulle godkännas
 This user has: Den här användaren har
-calendar entries: händelseer i kalendern
-They must all be deleted (or this user removed as a participant) before this user can be deleted: Alla måste raderas (eller den deltagande personen) innan användaren kan raderas
+calendar entries: händelser i kalendern
+They must all be deleted (or this user removed as a participant) before this user can be deleted: Innan användaren kan raderas måste alla händelser där denne ingår åtgärdas. Ta antingen bort användaren från deltagarlistan eller radera händelsen.
 The passwords were not identical: Lösenorden stämmer inte överens med varandra
-You have not entered a password: Du har inte uppgivit något lösenord
-You have not entered a Brief Description: Da har inte uppgivit någon kortare beskrivning
-You have not entered a valid time of day: Du har inte uppgivit någon tidpunkt
+You have not entered a password: Du har inte angivit något lösenord
+You have not entered a Brief Description: Da har inte angivit någon kort beskrivning
+You have not entered a valid time of day: Du har inte angivit någon tidpunkt
 Brief Description: Kort beskrivning
 Full Description: Fullständig beskrivning
 Description: Beskrivning
@@ -105,46 +106,46 @@ Created by: Skapad av
 Updated: Uppdaterad
 Daily: Dagligen
 for weekly: Veckovis
-by date: Efter bestämt datum
-by day: Efter bestämd dag
+by date: efter bestämt datum
+by day: efter bestämd dag
 Monthly: Månatlig
 None: Aldrig
 Repeat Day: Upprepa datum
 Repeat End Date: Upprepa slutdatum
-Repeat Type: Upprepa typ
+Repeat Type: Upprepningstyp
 Use end date: Använd slutdatum
 Weekly: Veckovis
-Yearly: Årligt
-Frequency: Frekvens
+Yearly: Årlig
+Frequency: Upprepningsfrekvens
 Save: Spara
 Help: Hjälp
-Approve this entry?: Godkänna händelseen?
-Approve/Confirm: Godkänna/bekräfta
-Approve/Confirm entry: Godkänna/bekräfta händelseen
-Reject: Avvisa
-Reject entry: Avvisa händelseen
-Reject this entry?: Avvisa denna händelse?
-Rejected: Avvisad
+Approve this entry?: Godkänn händelsen?
+Approve/Confirm: Godkänn/bekräfta
+Approve/Confirm entry: Godkänn/bekräfta händelsen
+Reject: Avböj
+Reject entry: Avböj händelsen
+Reject this entry?: Avböj denna händelse?
+Rejected: Avböjd
 Edit entry: Ändra händelse
 Edit Entry: Ändra händelse
 Add Entry: Lägg till händelse
-Are you sure you want to delete this entry?: Är du säker på att du vill ta bort den här händelseen?
-This will delete this entry for all users.: Det här kommer att radera händelseen för alla deltagare
+Are you sure you want to delete this entry?: Är du säker på att du vill radera händelsen?
+This will delete this entry for all users.: Det här kommer att radera händelsen för alla deltagare
 Delete: Radera
 Delete entry: Radera händelse
 You are not authorized to edit this entry: Du har inte lov att radera denna händelse
 Scheduling Conflict: Konflikt i kalendern
-The following conflicts with the suggested time: Följande händelseer är i konflikt med valt tidpunkt
-Unnamed Event: händelseen är utan namn
+The following conflicts with the suggested time: Följande händelseer krockar med vald tidpunkt
+Unnamed Event: händelsen är utan namn
 Hello: Hej
-A new appointment has been made for you by: Ett nytt möte har gjorts till dig i från
+A new appointment has been made for you by: Du har fått en mötesinbjudan från
 The subject is: Ämnet är 
 Please look on: Var vänlig se på
-to accept or reject this appointment: För att acceptera/avvisa avtalet
+to accept or reject this appointment: För att acceptera/avböja mötet
 to view this appointment: För att se detta möte
 Notification: Påminnelse
 Your suggested time of: Den föreslagna tiden för
-conflicts with the following existing calendar entries: Står i konflikt med existerande möte
+conflicts with the following existing calendar entries: krockar med tidigare möten i din kalender
 Edit User: Redigera användare
 Add User: Ny användare
 Username: Användarnamn
@@ -161,14 +162,14 @@ Change Password: Ändra lösenord
 New Password: Nytt lösenord
 Set Password: Bestäm lösenord
 Adding/Editing Calendar Entries: Lägg till/ändra aktivitet
-Unapproved Events: Aktiviteter som ej är godkända
-No unapproved events: Inga godkända aktiviteter
-You must enter a login and password: Var vänlig uppge användarnamn & lösenord
+Unapproved Events: Aktiviteter som icke är godkända
+No unapproved events: Det finns inga icke-godkända aktiviteter
+You must enter a login and password: Ange användarnamn och lösenord
 Save login via cookies so I don't have to login next time: Kom ihåg användarnamnet tills nästa gång (cookie)
-cookies-note: <B>OBS:</B> Programmet kräver att din webläsare tillåter cookies, ändra i dina inställningar i webläsaren
+cookies-note: <strong>OBS:</strong> Programmet kräver att din webbläsare tillåter cookies, ändra dina inställningar i webbläsaren
 Invalid color for document background: Ogiltig bakgrundsfärg
 Invalid color for document title: Ogiltig färg för dokumenttiteln
-Invalid color for table cell background: Ogiltig färg i tabellbakgrunden
+Invalid color for table cell background: Ogiltig färg f tabellbakgrunden
 Invalid color for table cell background for today: Ogiltig färg för dagens tabellbakgrund
 Color format should be '#RRGGBB': Färgen skall skrivas som '#RRGGBB'
 12 hour: 12 timmar
@@ -177,56 +178,56 @@ From: Från
 to: till
 Select: Välj
 Preferred view: Vald vy
-Week starts on: Veckan börjar med
+Week starts on: Veckan börjar på
 Day: Dag
 Year: År
 Document background: Dokumentbakgrund
-Document title: Dokumenttittel
+Document title: Dokumenttitel
 Table cell background: Tabellbakgrund
 Table cell background for current day: Tabellbakgrund för nuvarande dag
 Save Preferences: Spara inställningarna
 The following error occurred: Följande fel uppstod
 Search: Sök
-Keywords: Nyckelord
-You must enter one or more search keywords: Du måste uppge ett eller flera sökord
+Keywords: Sökord
+You must enter one or more search keywords: Du måste ange ett eller flera sökord
 Search Results: Sökresultat
-Export: Exporterar
+Export: Exportera
 Export format: Exportformat
-Modified since: Ändrat efter
+Modified since: Ändrad efter
 Start date: Startdatum
 End date: Slutdatum
 Palm Pilot: Palm Pilot
 match found: träff hittad
 matches found: träffar hittade
-No matches found: Ingen träff hittad
+No matches found: Inga träffar
 View Another User's Calendar: Titta på en annan användares kalender
 You are not authorized: Förbjuden åtgärd 
 Add New User: Lägg till en ny användare
 denotes administrative user: indikerar administratör
-Invalid entry id: Ogiltigt avtals-ID
+Invalid entry id: Ogiltigt händelse-ID
 My Calendar: Min kalender
 
 # Help text.  The left side is typically abbreviates since this can be long
-brief-description-help: Här skall det stå en kort beskrivning av aktiviteten /händelseen - den visas när man står på händelseen i översiktskalendern.
+brief-description-help: Här skall det stå en kort beskrivning av aktiviteten/händelsen - den i översiktskalendern.
 full-description-help: Här kan du skriva en komplett beskrivning av aktiviteten.
 date-help: Anger datum för aktiviteten.
 time-help: Anger tidpunkt för aktiviteten.<BR><I>Det här fältet behöver inte vara ifyllt.</I>
 duration-help: I detta fält anger du aktivitetens varaktighet <BR><I>Det här fältet behöver inte vara ifyllt.</I>
 priority-help: Ange aktivitetens prioritet.
-access-help: Ange om händelseen/aktiviteten skall kunna ses av andra eller om den skall vara privat.
-participants-help: Visa deltagarna i detta inlägg.
+access-help: Ange om händelsen/aktiviteten skall kunna ses av andra eller om den skall vara privat.
+participants-help: Visa deltagare för denna händelse.
 repeat-type-help: Hur ofta skall aktiviteten upprepas.
 repeat-end-date-help: Specificera slutdatum och upprepning av denna aktivitet.
-repeat-day-help: Vilka veckodagar skall aktiviteten upprepas på.
+repeat-day-help: Vilka veckodagar skall aktiviteten upprepas på
 repeat-frequency-help: Hur ofta skall aktiviteten upprepas? Talet 1 visar att det skall ske varje gång, 2 varannan o.s.v...
 Preferences: Inställningar
 Settings: Inställningar 
 Time format: Tidsformat
-time-format-help: Skall tiden visas i 12 eller 24-timmars perioder.
-Display unapproved: Visa inte-godkända.
-display-unapproved-help: Specificera om din kalender skall visa icke-godkända aktiviteter.
+time-format-help: Skall tiden visas i 12 eller 24-timmars format.
+Display unapproved: Visa icke godkända.
+display-unapproved-help: Specificera om din kalender skall visa icke godkända aktiviteter.
 Display week number: Visa veckonummer
-display-week-number-help: Specificera om veckonummerna skall vara stå på veckovyn.
+display-week-number-help: Specificera om veckonummerna skall visas på veckovyn.
 display-week-starts-on: Börjar din vecka på söndagar eller måndagar.
 Work hours: Arbetstimmar.
 work-hours-help: Specificera dagliga arbetstimmar.
@@ -235,38 +236,38 @@ colors-help: Alla färger skall skrivas in som #RRGGBB där RR är hexkoden för röt
 Add layer: Lägg till lager
 Add Layer: Lägg till lager
 Add to My Calendar: Lägg till i min kalender
-An appointment has been canceled for you by: Ett av dina avtal avbröts av
-An appointment has been rejected by: Ett avtal har avbrutits av
+An appointment has been canceled for you by: Ett möte inställts av
+An appointment has been rejected by: Ett möte har inte godkänts av
 Are you sure you want to delete this layer?: Är du säker på att du vill ta bort detta lager?
 Color: Färg
 Delete layer: Ta bort lager
 Disable Layers: Inaktivera lager
 Disabled: Inaktiverat
-Disabled for demo: Inaktiverat för demonstration
+Disabled for demo: Avslaget i demoversionen
 Display icons: Visa ikoner
-display-icons-help: Visa ikoner för varje händelse som skall visas, ändras eller raderas. Väljer du nej, måste du klicka på avtalen för att komma till visningssidan där du kan ändra dessa funktioner.
+display-icons-help: Visa ikoner för varje händelse som skall visas, ändras eller raderas. Väljer du nej, måste du klicka på händelsen för att komma till visningssidan där du kan ändra dessa funktioner.
 Do you want to add this entry to your calendar?: Vill du lägga till detta möte i kalendern?
 Duplicates: Dubbletter
 Edit Layer: Redigera lager
 Edit layer: Redigera lager
-Edit Layers: Redigera flera lager
+Edit Layers: Redigera lager
 Enable Layers: Aktivera lager
 Enabled: Aktiverat
-Error adding event: Fel vid inläggning av händelse
-Export all dates: Exportera alla datum
+Error adding event: Fel vid inläggning av ny händelse
+Export all dates: Exportera allt
 hours: timmar
-Invalid color: Förbjuden färg
-language-help: Specificera vilket språk du vill använda.
+Invalid color: Ogiltig färg
+language-help: Ange vilket språk du vill använda.
 Layer: Lager
 Layers: Lager
-Layers are currently: Lager nr
+Layers are currently: Lager-nr
 preferred-view-help: Specificera standardvisning (dag, vecka, månad eller år).
-Show layer events that are the same as your own: Visa lager som är lika dina egna
+Show layer events that are the same as your own: Visa lagerhändelser som är samma som dina egna
 Source: Källa
 The subject was: Ämnet var
-The time you have entered begins before your preferred work hours.  Is this correct?: Tidpunkten du har angivit är din önskade arbetstid. Är detta korrekt?
+The time you have entered begins before your preferred work hours.  Is this correct?: Tidpunkten du har angivit ligger före din önskade arbetstid. Är detta korrekt?
 This is a private event and may not be added to your calendar.: Detta är ett privat möte och kan inte läggas till i din kalender.
 This will add the entry to your calendar.: Detta kommer att lägga till mötet i din kalender.
-This will delete the entry from your calendar.: Detta kommer att ta bort mötet i din kalender.
+This will delete the entry from your calendar.: Detta kommer att ta bort mötet från din kalender.
 User: Användare
 Your browser default language is: Standardspråket i din webläsare är
