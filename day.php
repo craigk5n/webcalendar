@@ -22,6 +22,11 @@ if ( $allow_view_other != "Y" && ! $is_admin )
 
 $view = "day";
 
+$can_add = ( $readonly == "N" || $is_admin == "Y" );
+if ( $public_access == "Y" && $public_access_can_add != "Y" &&
+  $login == "__public__" )
+  $can_add = false;
+
 if ( ! empty ( $user ) ) {
   $u_url = "user=$user&";
   user_load_variables ( $user, "user_" );
@@ -159,7 +164,7 @@ if ( empty ( $TIME_SLOTS ) )
   $TIME_SLOTS = 24;
 
 print_day_at_a_glance ( date ( "Ymd", $now ),
-  empty ( $user ) ? $login : $user, ! empty ( $friendly ) );
+  empty ( $user ) ? $login : $user, ! empty ( $friendly ), $can_add );
 
 ?>
 
