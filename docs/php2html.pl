@@ -24,13 +24,16 @@ $TITLE = 'WebCalendar Function Documentation';
 sub add_links {
   my ( $in ) = @_;
 
-  $in =~ s/(webcal_[a-z_]+)\s+table/<a href="WebCalendar-Database.html#$1"><tt>$1<\/tt><\/a>/g;
+  $in =~ s/(webcal_[a-z_]+)\s+table/<a href="WebCalendar-Database.html#$1"><tt>$1<\/tt><\/a> table/g;
 
-  $in =~ s/([a-z_]+)\s+function/<a href="#$1"><tt>$1<\/tt><\/a> function/ig;
+  foreach $funcName ( keys ( %funcNames ) ) {
+    $in =~ s/($funcName)\s+function/<a href="#$1"><tt>$1<\/tt><\/a> function/ig;
+  }
 
   $in =~ s/&/&amp;/g;
   $in =~ s/&amp&amp;/&amp;/g;
-  $in =~ s/<br\s*\/>(Note|Notes):/<br\><span class=\"note\">$1:<\/span>/gi;
+  $in =~ s/<br\s*\/>(Note|Notes):/<br\/><br\/><span class=\"note\">$1<\/span>/gi;
+  $in =~ s/<br\s*\/>(TODO):/<br\/><br\/><span class=\"note\">$1<\/span>/gi;
 
   return $in;
 }
@@ -41,23 +44,43 @@ sub print_function {
   $out{$name} = "<h3><a name=\"$name\">$name</a></h3>\n";
   $out{$name} .= "<tt>$name ( " . '$' . join ( ', $', @params ) .
     " )</tt><br /><br />\n";
-  $out{$name} .= add_links ( $description ) . "<br /><br />\n"
-    if ( defined ( $description ) );
+  if ( defined ( $description ) ) {
+    $out{$name} .= "<span class=\"prompt\">Description:</span>" .
+      "<blockquote>";
+    $out{$name} .= add_links ( $description ) . "</blockquote>\n";
+  }
   $out{$name} .= "<span class=\"prompt\">Parameters:</span><br />\n<ul>\n";
   if ( @params == 0 ) {
     $out{$name} .= "<li>None</li>\n";
   }
-  for ( $i = 0; $i < @params; $i++ ) {
-    $out{$name} .= "<li><tt>\$$params[$i]</tt>";
-    $out{$name} .= " - " . add_links ( $paramDescr[$params[$i]] )
-      if ( defined ( $paramDescr[$params[$i]] ) );
+  foreach $p ( @params ) {
+    $out{$name} .= "<li><tt>\$$p</tt>";
+    $out{$name} .= " - " . add_links ( $paramDescr{$p} )
+      if ( defined ( $paramDescr{$p} ) );
     $out{$name} .= "</li>\n";
   }
   $out{$name} .= "</ul>\n";
-  $out{$name} .= "<p><span class=\"prompt\">Returns:</span> " .
-    ( $returns eq '' ? "Nothing" : add_links ( $returns ) ) . "<br/>\n";
-  $out{$name} .= "<span class=\"prompt\">Location:</span> $loc<br/>\n";
-  $out{$name} .= "</p><br /><br />\n";
+  $out{$name} .= "<span class=\"prompt\">Returns:</span><blockquote>" .
+    ( $returns eq '' ? "Nothing" : add_links ( $returns ) ) . "</blockquote>\n";
+  $out{$name} .= "<span class=\"prompt\">Location:</span>" .
+    "<blockquote>$loc</blockquote>\n";
+  $out{$name} .= "<br /><br />\n";
+}
+
+%funcNames = ( );
+
+# Ok... this is kind of lame... but we read each file twice.
+# The first scan, we gather all the function names.
+# This will allow us to create links from one function to another
+# when the documentation of one function mentions another.
+foreach $f ( @ARGV ) {
+  open ( F, $f ) || die "Error opening $f";
+  while ( <F> ) {
+    if ( /^\/\*\*\s+(\S+)/ ) {
+      $funcNames{$1} = 1;
+    }
+  }
+  close ( F );
 }
 
 foreach $f ( @ARGV ) {
@@ -97,7 +120,7 @@ foreach $f ( @ARGV ) {
         undef ( $returns );
         undef ( @params );
         undef ( $param );
-        undef ( $paramDescr );
+        undef ( %paramDescr );
         undef ( $funcLine );
         $state = 'none';
       } elsif ( $state ne 'none' && defined ( $name ) ) {
@@ -110,11 +133,10 @@ foreach $f ( @ARGV ) {
           if ( /\${0,1}(\S+)\s*-\s*/ ) {
             $param = $1;
             push ( @params, $param );
-            $paramDescr[$param] .= ' ' if ( $paramDescr[$param] ne '' );
-            $paramDescr[$param] = $';
-          } elsif ( /\*\s*/ ) {
+            $paramDescr{$param} = $';
+          } elsif ( /\*\s+/ ) {
             # continuation line for same parameter
-            $paramDescr[$param] .= ' ' . $';
+            $paramDescr{$param} .= ' ' . $';
           }
         } elsif ( $state eq 'returns' ) {
           if ( /\*\s+/ ) {
@@ -188,6 +210,10 @@ pre {
 	margin-left: 25px;
 	margin-right: 25px;
 }
+blockquote {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
 .prompt {
 	font-weight: bold;
 }
@@ -202,8 +228,8 @@ pre {
 }
 .note {
 	font-weight: bold;
-	background-color: blue;
-	color: #FFFFFF;
+	background-color: #CCCCCC;
+	color: #000000;
 	border: 1px solid #000000;
 	padding: 1px;
 }
