@@ -6,14 +6,12 @@ if ( ! $is_admin ) {
   echo "<h2>" . translate("Error") .
     "</h2>" . translate("You are not authorized") . ".\n";
   print_trailer ();
-  echo "</body></html>\n";
+  echo "</body>\n</html>";
   exit;
 }
 ?>
 
-
 <h2><?php etranslate("Users")?></h2>
-
 <ul>
 <?php
 $userlist = user_get_users ();
@@ -25,7 +23,7 @@ for ( $i = 0; $i < count ( $userlist ); $i++ ) {
     echo "</a>";
     if (  $userlist[$i]["cal_is_admin"] == 'Y' )
       echo "<sup>*</sup>";
-    echo " </li>\n";
+    echo "</li>\n";
   }
 }
 ?>

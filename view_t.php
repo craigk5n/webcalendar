@@ -85,24 +85,21 @@ for ( $i = 0; $i < $val_boucle; $i++ ) {
 ?>
 
 <div style="border-width:0px; width:99%;">
+<?php if ( ! $friendly ) { ?>
 <div style="float:left;">
-<?php if ( ! $friendly ) { ?>
 <br /><a title="<?php etranslate("Previous")?>" href="view_t.php?timeb=<?php echo $timeb?>&id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
-<?php } ?>
 </div>
+
 <div style="float:right;">
-<?php if ( ! $friendly ) { ?>
 <br /><a title="<?php etranslate("Next")?>" href="view_t.php?timeb=<?php echo $timeb?>&id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-<?php } ?>
 </div>
+<?php } ?>
 <div class="title">
-<span class="date">
-<?php
+<span class="date"><?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), false );
-?>
-</span><br />
+?></span><br />
 <span class="viewname"><?php echo $view_name ?></span>
 </div>
 </div><br /><br />
@@ -147,7 +144,6 @@ $repeated_events = $re_save;
 <?php } ?>
 
 <?php
-
 for ( $date = $wkstart, $h = 0;
   date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
   $date += ( 24 * 3600 ), $h++ ) {
@@ -188,10 +184,10 @@ for ( $date = $wkstart, $h = 0;
   echo "</tr>\n";
 }
 
-if ( empty ( $friendly ) || ! $friendly )
+//if ( empty ( $friendly ) || ! $friendly )
   echo "</table>\n<br />\n<br />\n";
-else
-  echo "</table>\n<br />\n<br />\n";
+//else
+//  echo "</table>\n<br />\n<br />\n";
 
 
 $user = ""; // reset
@@ -203,7 +199,6 @@ if ( ! $friendly )
     "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</a>\n";
-
 
 print_trailer ();
 ?>

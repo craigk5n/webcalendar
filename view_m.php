@@ -128,16 +128,11 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $wday = strftime ( "%w", $date );
     $weekday = weekday_short_name ( $wday );
     if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
-      $color = $TODAYCELLBG;
-      $class = "today";
+      echo "<tr><th class=\"today\"";
     } else {
-      if ( $wday == 0 || $wday == 6 )
-        $color = $WEEKENDBG;
-      else
-        $color = $CELLBG;
-      $class = "tableheader";
+	echo "<tr><th";
     }
-    echo "<tr><th class=\"$class\" style=\"width:10%;\">" .
+    echo " style=\"width:10%;\">" .
       $weekday . " " .
       round ( date ( "d", $date ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
@@ -145,7 +140,15 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
       $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
-      echo "<td style=\"width:$tdw%; background-color:$color;\">";
+    if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
+      echo "<td class=\"today\"";
+    } else {
+      if ( $wday == 0 || $wday == 6 )
+          echo "<td class=\"weekend\"";
+      else
+	  echo "<td";
+    }
+    echo " style=\"width:$tdw%;\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
         empty ( $friendly ) )

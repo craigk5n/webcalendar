@@ -184,7 +184,7 @@ if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
   echo "<h2>" . translate("Error") .
     "</h2>" . translate("You are not authorized") . ".\n";
   print_trailer ();
-  echo "</body></html>\n";
+  echo "</body>\n</html>";
   exit;
 }
 
@@ -254,7 +254,7 @@ if ( $res ) {
       $rep_str .= "&nbsp; - &nbsp;";
       $rep_str .= date_to_str ( $cal_end );
     }
-    $rep_str .= "&nbsp; (" . translate("every") . " ";
+    $rep_str .= "&nbsp;(" . translate("every") . " ";
 
     if ( $cal_frequency > 1 ) {
       switch ( $cal_frequency ) {
@@ -450,12 +450,13 @@ if ( $single_user == "N" ) {
   }
 }
 ?>
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Updated")?>:</td>
-  <td><?php
+<tr><td style="vertical-align:top; font-weight:bold;">
+	<?php etranslate("Updated")?>:</td><td><?php
     echo date_to_str ( $row[3] );
     echo " ";
     echo display_time ( $row[4] );
-   ?></td></tr>
+   ?>
+</td></tr>
 <?php
 // load any site-specific fields and display them
 $extras = get_site_extra_fields ( $id );
@@ -528,8 +529,8 @@ if ( $public_access == "Y" && $login == "__public__" &&
   $show_participants = false;
 if ( $single_user == "N" && $show_participants ) {
 ?>
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Participants")?>:</td>
-  <td><?php
+<tr><td style="vertical-align:top; font-weight:bold;">
+	<?php etranslate("Participants")?>:</td><td><?php
   if ( $is_private ) {
     echo "[" . translate("Confidential") . "]";
   } else {
@@ -553,7 +554,7 @@ if ( $single_user == "N" && $show_participants ) {
       }
       dbi_free_result ( $res );
     } else {
-      echo translate ("Database error") . ": " . dbi_error() . "<br />";
+      echo translate ("Database error") . ": " . dbi_error() . "<br />\n";
     }
   }
   for ( $i = 0; $i < $num_app; $i++ ) {

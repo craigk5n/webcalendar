@@ -81,8 +81,10 @@ print_header();
 <td style="font-weight:bold;"><?php etranslate("Brief Description")?>:</td>
 <td><?php echo $event_name; ?></td></tr>
 
-<tr style="vertical-align:top;"><td style="font-weight:bold;"><?php etranslate("Category")?>:&nbsp;&nbsp;</td>
-<td><select name="cat_id">
+<tr style="vertical-align:top;">
+<td style="font-weight:bold;">
+<?php etranslate("Category")?>:&nbsp;&nbsp;</td><td>
+	<select name="cat_id">
   <option value="NULL"><?php etranslate("None")?></option>
   <?php
     foreach ( $categories as $K => $V ) {

@@ -23,6 +23,11 @@
 a:hover {
 	color: #0000FF;
 }
+img.color {
+	border-width: 0px;
+	width: 15px;
+	height: 15px;
+}
 .trailerform {
 	float: left;
 	width: 33%;
@@ -49,7 +54,8 @@ a:hover {
 	text-align: right;
 	clear: right;
 }
-a#programname {
+<?php //link to webcalendar site -- NOTE: by modifying this style, you can make this link disappear
+?>a#programname {
 	margin-top: 10px;
 	font-size: 10px;
 }
@@ -291,10 +297,7 @@ table.standard th {
   padding: 0px;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-<?php // 
-// ALL STYLES BELOW THIS LINE ARE NEW as of 8 July 2004
-// ================== MISC.
-// formerly .monthlink 
+<?php // formerly .monthlink 
 ?>td.month a {
 	font-size: 13px;
 	color: #B04040;

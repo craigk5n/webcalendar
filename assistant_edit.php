@@ -12,7 +12,7 @@ print_header($INC);
 
 <form action="assistant_edit_handler.php" method="post" name="editentryform">
 <?php
-  if ($user) echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />";
+  if ($user) echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   if ( $is_nonuser_admin ) {
     nonuser_load_variables ( $user, "nonuser" );
     echo "<h2 style=\"font-weight:bold;\">" . $nonuserfullname . " " . translate("Assistants")
@@ -53,7 +53,7 @@ print_header($INC);
 <?php
 if ( $groups_enabled == "Y" ) {
   echo "<input type=\"button\" onclick=\"selectUsers()\" value=\"" .
-    translate("Select") . "...\" />";
+    translate("Select") . "...\" />\n";
 }
 ?>
 </td></tr>

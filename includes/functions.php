@@ -286,7 +286,7 @@ function get_web_browser () {
     return "Netscape";
   if ( ereg ( "Mozilla/[5678]", getenv ( "HTTP_USER_AGENT" ) ) )
     return "Mozilla";
-  return "Uknown";
+  return "Unknown";
 }
 
 // log a debug message

@@ -11,7 +11,6 @@ $green2 = array("66", "33", "00");
 ?>
 
 <div style="text-align:center;">
-
 <table style="border-collapse: separate;border: none;background-color:#000000;border-spacing: 1px;">
 <?php
 // First green array 
@@ -21,7 +20,7 @@ for ($r=0; $r<count($colors); $r++){     //the red colors loop
     for ($b=0; $b<count($colors); $b++){ //iterate through the six blue colors
       $c = $colors[$r].$green1[$g].$colors[$b];
       echo "<td style=\"background-color:#" . $c . ";\"><a href=\"javascript:sendColor('#" . $c .
-        "')\"><img src=\"spacer.gif\" style=\"border-width:0px;\" width=\"15\" height=\"15\" alt=\"\" /></a></td>\n";
+        "')\"><img src=\"spacer.gif\" class=\"color\" alt=\"\" /></a></td>\n";
     } //End of b-blue innermost loop
   } //End of g-green loop
   echo "</tr>\n"; // close row 
@@ -34,7 +33,7 @@ for ($r=0; $r<count($colors); $r++){     //the red colors loop
     for ($b=0; $b<count($colors); $b++){ //iterate through the six blue colors
       $c = $colors[$r].$green2[$g].$colors[$b];
       echo "<td style=\"background-color:#" . $c . ";\"><a href=\"javascript:sendColor('#" . $c .
-        "')\"><img src=\"spacer.gif\" style=\"border-width:0px;\" width=\"15\" height=\"15\" alt=\"\" /></a></td>\n";
+        "')\"><img src=\"spacer.gif\" class=\"color\" alt=\"\" /></a></td>\n";
     } //End of b-blue innermost loop
   } //End of g-green loop
   echo "</tr>\n"; // close row 
@@ -47,7 +46,7 @@ for ($r=0; $r<count($colors); $r++){     //the red colors loop
 for ($gs=0; $gs<count($grayscale); $gs++){     
   $c = $grayscale[$gs];
   echo "<td style=\"background-color:#" . $c . ";\"><a href=\"javascript:sendColor('#" . $c .
-       "')\"><img src=\"spacer.gif\" style=\"border-width:0px;\" width=\"15\" height=\"15\" alt=\"\" /></a></td>\n";
+       "')\"><img src=\"spacer.gif\" class=\"color\" alt=\"\" /></a></td>\n";
 } 
 ?>
 </tr></table>
