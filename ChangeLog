@@ -1,4 +1,8 @@
 Verion 0.9.42-devcvs (?? ??? ????)
+  - Added new publishing support.  Users can subscribe using the Calendar
+    client from Mozilla or from Apple's iCal.  The URL would be
+    http://your-calendar-url-here/publish.php/username.ics
+    where 'username' would be the login of the calendar to subscribe to.
   - Added new custom report feature (requires two new database tables, see
     UPGRADING.html for details)
   - Added previous link to Activity Log page
