@@ -329,7 +329,7 @@ table.weekview {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	background-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
 	border-top: 1px solid <?php echo $GLOBALS['BGCOLOR'] ?>;
-	border-left: 1px solid <?php echo $GLOBALS['TABLEBG'] ?>;
+	border-left: 1px solid <?php echo $GLOBALS['BGCOLOR'] ?>;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
