@@ -129,7 +129,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 <!-- GO TO -->
 <span class="prefix"><?php etranslate("Go to")?>:</span> 
 <?php
-  $can_add = ( $readonly == "N" || $is_admin == "Y" );
+  $can_add = ( $readonly == "N" );
   if ( $public_access == "Y" && $public_access_can_add != "Y" &&
     $login == "__public__" )
     $can_add = false;
@@ -171,7 +171,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
     	translate("Today") . "\" style=\"font-weight:bold;\" href=\"$todayURL\">" . 
 	translate("Today") . "</a>\n";
 
-    if ( $login != '__public__' )
+    if ( $login != '__public__' && $readonly == 'N' )
       echo " | <a title=\"" . 
 	translate("Admin") . "\" style=\"font-weight:bold;\" href=\"adminhome.php\">" . 
 	translate("Admin") . "</a>\n";
@@ -196,9 +196,11 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
     echo " | <a title=\"" . 
 		translate("Today") . "\" style=\"font-weight:bold;\" href=\"$todayURL\">" . 
 		translate("Today") . "</a>\n";
-    echo " | <a title=\"" . 
+    if ( $readonly == 'N' ) {
+      echo " | <a title=\"" . 
 		translate("Admin") . "\" style=\"font-weight:bold;\" href=\"adminhome.php\">" . 
 		translate("Admin") . "</a>\n";
+    }
   }
   // only display some links if we're viewing our own calendar.
   if ( empty ( $user ) || $user == $login ) {
