@@ -32,7 +32,7 @@ if ( ! empty ( $id ) ) {
 print_header();
 ?>
 <h2><?php etranslate("Categories")?></h2>
-
+<a title="<?php etranslate("Admin") ?>" class="navlinks" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 <?php
 
 // Adding/Editing category

@@ -27,7 +27,7 @@ $INC = array('js/admin.php','js/visible.php');
 print_header ( $INC, '', $BodyX );
 ?>
 
-<h2><?php etranslate("System Settings")?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>..." style="border-width:0px;" onclick="window.open ( 'help_admin.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
+<h2><?php etranslate("System Settings")?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" style="border-width:0px;" onclick="window.open ( 'help_admin.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 <?php
 $error = false;
 
@@ -35,6 +35,10 @@ if ( ! $is_admin ) {
   etranslate ( "You are not authorized" );
   $error = true;
 }
+if ( ! $error ) {
+	echo "<a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n";
+}
+
 if ( empty ( $ovrd ) && ! $error ) {
   echo "<blockquote>" . translate ( "Note" ) . ":&nbsp;" .
     "<a href=\"pref.php\">" .

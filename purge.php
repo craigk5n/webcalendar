@@ -50,6 +50,7 @@ if ( ! empty ( $user ) ) {
 ?>
 
 <h2><?php etranslate("Delete Events")?></h2>
+<a title="<?php etranslate("Admin") ?>" class="navlinks" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 <form action="<?php echo $PHP_SELF; ?>" method="post" name="purgeform">
 <table>
 	<tr><td>

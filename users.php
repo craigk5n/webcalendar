@@ -12,6 +12,8 @@ if ( ! $is_admin ) {
 ?>
 
 <h2><?php etranslate("Users")?></h2>
+<a title="<?php etranslate("Admin") ?>" class="navlinks" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
+
 <ul>
 <?php
 $userlist = user_get_users ();
