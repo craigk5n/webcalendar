@@ -201,6 +201,14 @@ function format_ical($event) {
     $fevent[Duration] = '0';
     $fevent[Untimed] = 1;
   }
+  if ( preg_match ( "/\d\d\d\d\d\d\d\d$/", $event['dtstart'],
+    $pmatch ) && preg_match ( "/\d\d\d\d\d\d\d\d$/", $event['dtend'],
+    $pmatch2 ) && $event['dtstart'] != $event['dtend'] ) {
+    // Event spans multiple days
+    $fevent[Repeat][Interval] = '1'; // 1 = daily
+    $fevent[Repeat][Frequency] = '1'; // 1 = every day
+    $fevent[Repeat][EndTime] = icaldate_to_timestamp($event[dtend]);
+  }
 
   $fevent[Summary] = $event['summary'];
   $fevent[Description] = $event['description'];
