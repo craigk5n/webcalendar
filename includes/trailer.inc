@@ -163,7 +163,7 @@
       echo ", <A CLASS=\"navlinks\" HREF=\"layers.php\">" .
         translate ("Edit Layers") . "</A>\n";
 
-      if ( $LAYERS_STATUS == "N" )
+      if ( $LAYERS_STATUS == "N" || $LAYERS_STATUS == "" )
         echo ", <A CLASS=\"navlinks\" HREF=\"layers_toggle.php?status=on\">" .
           translate ("Enable Layers") . "</A>\n";
       else

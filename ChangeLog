@@ -1,4 +1,6 @@
 Version 0.9.34dev (?? ??? ??)
+  - Fixed bug: layers would not work until a user turns them off and then
+    back on.
   - Display users in a table on page to select other user's calendar for
     better display (if more than 20 users).
   - Patch 483782: Delete users even if they have events and delete those
