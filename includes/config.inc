@@ -10,7 +10,7 @@
 unset ( $single_user_login );
 
 
-$PROGRAM_NAME = "WebCalendar v0.9.29";
+$PROGRAM_NAME = "WebCalendar v0.9.30";
 $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
 
 // demo_mode is used on the sourceforge demo.  It disables changing the
@@ -34,6 +34,13 @@ $db_database = "intranet";
 //$db_password = "webcal01";
 // for oracle, db_database should be the name in tnsnames.ora
 //$db_database = "orcl";
+
+// Postgres example
+//$db_type = "postgresql";
+//$db_host = "localhost";
+//$db_login = "webcalendar";
+//$db_password = "webcalendar";
+//$db_database = "webcalendar";
 
 // ODBC example
 //$db_type = "odbc";
