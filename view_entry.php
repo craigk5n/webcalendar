@@ -181,8 +181,9 @@ if ( empty ( $event_status ) ) {
 
 // If we have no event status yet, it must have been deleted.
 if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
-  echo "<h2>" . translate("Error") .
-    "</h2>" . translate("You are not authorized") . ".\n";
+  echo "<h2>" . 
+	translate("Error") . "</h2>" . 
+	translate("You are not authorized") . ".\n";
   print_trailer ();
   echo "</body>\n</html>";
   exit;
@@ -369,7 +370,6 @@ if ( $categories_enabled == "Y" ) {
     dbi_free_result ( $res2 );
   }
 }
-
 ?>
 <h2><?php echo htmlspecialchars ( $name ); ?></h2>
 <table style="border-width:0px;">
@@ -452,18 +452,18 @@ if ( $categories_enabled == "Y" ) {
 <?php } ?>
 <?php
 if ( $single_user == "N" ) {
-  echo "<tr>\n<td style=\"vertical-align:top; font-weight:bold;\">" . translate("Created by") . ":</td>";
+  echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n" . 
+	translate("Created by") . ":</td><td>\n";
   if ( $is_private )
-    echo "<td>[" . translate("Confidential") . "]</td></tr>\n";
+    echo "[" . translate("Confidential") . "]\n</td></tr>";
   else {
     if ( strlen ( $email_addr ) )
-      echo "<td><a href=\"mailto:$email_addr?subject=$subject\">" .
+      echo "<a href=\"mailto:$email_addr?subject=$subject\">" .
         ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
-	"</a></td></tr>\n";
+	"</a>\n</td></tr>";
     else
-      echo "<td>" .
-        ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
-	"</td></tr>\n";
+      echo ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
+	"\n</td></tr>";
   }
 }
 ?>
@@ -537,7 +537,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     } else if ( $extra_type == $EXTRA_SELECTLIST ) {
       echo $extras[$extra_name]['cal_data'];
     }
-    echo "</td></tr>\n";
+    echo "\n</td></tr>\n";
   }
 }
 ?>
