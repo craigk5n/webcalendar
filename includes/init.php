@@ -93,6 +93,8 @@ $hour = getValue ( "hour", "[0-9]+" );
 $minute = getValue ( "minute", "[0-9]+" );
 $cat_id = getValue ( "cat_id", "[0-9]+" );
 $friendly = getValue ( "friendly", "[01]" );
+if ( empty ( $public_access ) )
+  $public_access = 'N';
 
 // Load if $SCRIPT is in $special array:
 if ($DMW) {
