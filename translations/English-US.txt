@@ -112,7 +112,7 @@ Public access can view other users: Public access can view other users
 public-access-can-add-help: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
 Public access can add events: Public access can add events
 public-access-add-requires-approval-help: Specifies whether events added via the public access account require approval before being displayed.
-Public access new events require approval: Public access new events require approval:
+Public access new events require approval: Public access new events require approval
 allow-view-add-help: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
 Include add event link in views: Include add event link in views
 allow-external-users-help: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
