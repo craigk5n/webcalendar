@@ -271,6 +271,9 @@ echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html
 	// browsers that don't support media="print" stylsheets
 	echo "<link rel=\"stylesheet\" type=\"text/css\" " . ( empty ( $friendly ) ? "media=\"print\" " : "" ) . "href=\"includes/print_styles.css\" />\n";
 
+  // Link to favicon
+  echo "<link rel=\"shortcut icon\" href=\"favicon.ico\" type=\"image/x-icon\" />\n";
+
   // Finish the header
   echo "</head>\n<body";
 
