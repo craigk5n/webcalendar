@@ -1375,16 +1375,18 @@ function repeated_event_matches_date($event,$dateYmd) {
     $dowS1 = ( date ( "w", $start - ( $ONE_DAY * ( $dayS - 1 ) ) ) + 35 ) % 7;
     $days_in_first_weekS = ( 7 - $dowS1 ) % 7;
     $whichWeekS = floor ( ( $dayS - $days_in_first_weekS ) / 7 );
-    if ( $dowS >= $dowS1 )
+    if ( $dowS >= $dowS1 && $days_in_first_weekS )
       $whichWeekS++;
+    //echo "dayS=$dayS;dowS=$dowS;dowS1=$dowS1;wWS=$whichWeekS<br>";
     $mth  = date("m", $date);
     $yr   = date("Y", $date);
     $day  = date("d", $date);
     $dow1 = ( date ( "w", $date - ( $ONE_DAY * ( $day - 1 ) ) ) + 35 ) % 7;
     $days_in_first_week = ( 7 - $dow1 ) % 7;
     $whichWeek = floor ( ( $day - $days_in_first_week ) / 7 );
-    if ( $dow >= $dow1 )
+    if ( $dow >= $dow1 && $days_in_first_week )
       $whichWeek++;
+    //echo "day=$day;dow=$dow;dow1=$dow1;wW=$whichWeek<br>";
 
     if ((($yr - $yrS)*12 + $mth - $mthS) % $freq)
       return false;
