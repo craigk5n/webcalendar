@@ -121,7 +121,7 @@ CREATE TABLE webcal_entry_repeats (
  * This table specifies which dates in a repeating
  * event have either been deleted or replaced with
  * a replacement event for that day.  When replaced, the cal_group_id
- * (I know... not the best name, but it wasn't being used) column will
+ * (I know... not the best name, but it was n0t being used) column will
  * be set to the original event.  That way the user can delete the original
  * event and (at the same time) delete any exception events.
  */
@@ -405,7 +405,7 @@ CREATE TABLE webcal_entry_log (
   cal_entry_id INT NOT NULL,
   /* user who performed this action */
   cal_login VARCHAR(25) NOT NULL,
-  /* user who's calendar was affected */
+  /* user of calendar affected */
   cal_user_cal VARCHAR(25) NULL,
   /* log types:  <UL> */
   /* <LI>    C: Created  */
