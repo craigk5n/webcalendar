@@ -6,44 +6,12 @@
 #             Pedro Del Medico <pdmp@interhoster.com>
 #             Eduardo Dominguez <lalo_notthisplease@teligens.com>
 # Last update: 10 Dec 2003
-# Translation last updated on 12-23-2003
+# Translation last updated on 02-17-2004
 
+# No charset specified (not needed for iso-8859-1)
+# "charset" is used in a meta tag, do not translate "charset" here.
+# charset:
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
-charset: charset
-
-
-
-###############################################
-# Page: activity_log.php
-#
-Activity Log: Registro de Actividad
-User: Usuario
-Calendar: Calendario
-Date: Fecha
-Time: Hora
-Event: Evento
-Action: Acción
-Event created: Evento creado
-Event approved: Evento aprobado
-Event rejected: Evento rechazado
-Event updated: Evento actualizado
-Event deleted: Evento eliminado
-Notification sent: Notificación enviada
-Reminder sent: Recordatorio enviado
-Database error: Error en base de datos
-Previous: Previo
-Next: Siguiente
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Identificador de entrada inválida
-This is a private event and may not be added to your calendar.: Este es un evento privado y no puedes ser añadido a su calendario.
-Error adding event: Error al añadir evento
 
 
 ###############################################
@@ -72,6 +40,27 @@ Language: Idioma
 Your browser default language is: El idioma por defecto de tu navegador es
 fonts-help: Especifica la fuente del sistema a utilizar (como "Arial, Helvetica")
 Fonts: Fuentes
+#
+# << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: Si
+No: No
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
 preferred-view-help: Especifica la vista por defecto (Día, Semana, Mes, o Año)
 Preferred view: Vista preferida
 Day: Día
@@ -80,8 +69,22 @@ Month: Mes
 Year: Año
 display-weekends-help: Incluir los fines de semana al ver una semana
 Display weekends in week view: Mostrar fines de semana en vista semanal
-Yes: Si
-No: No
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 date-format-help: Especifica el formato de fecha preferido
 Date format: Formato de fecha
 December: Diciembre
@@ -119,6 +122,22 @@ disable-participants-field-help: Seleccionar "Si" esconde el campo "Participante
 Disable Participants field: Deshabilitar campo de Participantes
 disable-repeating-field-help: Seleccionar "Si" esconde el campo "Repetición" al añadir nuevos eventos. Esto proporciona una interfaz simple para novatos.
 Disable Repeating field: Deshabilitar Campo de Repetición
+#
+# << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
 allow-view-other-help: Especifica si un usuario puede ver los eventos de otro usuario.
 Allow viewing other user's calendars: Permitir ver los calendarios de otros usuarios
 allow-public-access-help: Si se selecciona, el calendario puede ser usado como un calendario público de sólo lectura que no exige login a los usuarios.
@@ -129,6 +148,14 @@ public-access-can-add-help: Si se selecciona, los usuarios anonimos que acceden 
 Public access can add events: Usuarios anónimos pueden agregar eventos
 public-access-add-requires-approval-help: Especifica si los eventos añadidos mediante acceso público requieren aprobación antes de ser mostrados.
 Public access new events require approval: Nuevos eventos anónimos requieren aprobación
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 allow-view-add-help: Un icono '+' se mostrará en las vistas, permitiendo a los usuarios añadir rápidamente eventos al calendario de otros usuarios.
 Include add event link in views: Inluir enlace para añadir evento en las vistas
 allow-external-users-help: Especifica si usuarios que no sean usuarios del calendario puede ser añadidos a un evento. Esto permite a usuarios que no sean usuarios del calendario ser listados como participantes del evento.
@@ -209,6 +236,36 @@ Event popup text: Texto del popup de evento
 
 
 ###############################################
+# Page: activity_log.php
+#
+Activity Log: Registro de Actividad
+User: Usuario
+Calendar: Calendario
+Date: Fecha
+Time: Hora
+Event: Evento
+Action: Acción
+Event created: Evento creado
+Event approved: Evento aprobado
+Event rejected: Evento rechazado
+Event updated: Evento actualizado
+Event deleted: Evento eliminado
+Notification sent: Notificación enviada
+Reminder sent: Recordatorio enviado
+Database error: Error en base de datos
+Previous: Previo
+Next: Siguiente
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Identificador de entrada inválida
+This is a private event and may not be added to your calendar.: Este es un evento privado y no puedes ser añadido a su calendario.
+Error adding event: Error al añadir evento
+
+
+###############################################
 # Page: admin_handler.php
 #
 Error: Error
@@ -219,19 +276,6 @@ The following error occurred: Ocurrió el siguiente error
 # Page: approve_entry.php
 #
 Error approving event: Error aprobando evento
-
-
-###############################################
-# Page: assistant_edit.php
-#
-Assistants: Asistentes
-Admin mode: Modo administrador
-Yours assistants: Tus asistentes
-
-
-###############################################
-# Page: assistant_edit_handler.php
-#
 
 
 ###############################################
@@ -258,6 +302,7 @@ Add New Category: Añadir Nueva Categoría
 ###############################################
 # Page: day.php
 #
+Admin mode: Modo administrador
 Assistant mode: Modo asistente
 Generate printer-friendly version: Generar formato imprimible
 Printer Friendly: Imprimible
@@ -336,25 +381,6 @@ You are not authorized to edit this entry: Usted no está autorizado para editar 
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: Lo siguiente hace conflicto con la hora indicada
-Unnamed Event: Evento sin nombre
-The description is: La descripción es
-Title: WebCalendar
-A new appointment has been made for you by: Una nueva cita ha sido hecha para usted por
-An appointment has been updated by: Una cita/evento ha sido actualizada por
-The subject is: El Asunto es
-Please look on: Por favor busque
-to accept or reject this appointment: para aceptar o no esta cita
-to view this appointment: para ver esta cita
-Scheduling Conflict: Conflicto entre Citas
-Your suggested time of: Su hora sugerida es
-conflicts with the following existing calendar entries: conflictos con las siguiente entradas existentes en el calendario
-Cancel: Cancelar
-
-
-###############################################
 # Page: edit_layer.php
 #
 Edit Layer: Editar Capa
@@ -372,53 +398,6 @@ Delete layer: Eliminar capa
 #
 You cannot create a layer for yourself: No puede crear una capa para usted mismo
 You can only create one layer for each user: Sólo puede crear una capa para cada usuario
-
-
-###############################################
-# Page: edit_report.php
-#
-Tomorrow: Mañana
-Today: Hoy
-Yesterday: Ayer
-Day before yesterday: Antes de ayer
-Next week: Próxima semana
-This week: Esta semana
-Last week: La última semana
-Week before last: La semana antes de la anterior
-Next week and week after: Semana siguiente y semana después
-This week and next week: Esta semana y la siguiente
-Last week and this week: Semana anterior y esta semana
-Last two weeks: Últimas dos semanas
-Next month: Próximo mes
-This month: Este mes
-Last month: Último mes
-Month before last: Mes antes último
-Next year: Siguiente año
-This year: Este año
-Last year: Último año
-Year before last: Año antes del último
-Invalid report id: ID de informe inválido
-Unnamed Report: Informe sin nombre
-Add Report: Añadir informe
-Edit Report: Editar informe
-Report name: Nombre del informe
-Current User: Usuario Actual
-Include link in trailer: Incluir enlace en trailer
-Include standard header/trailer: Incluir cabecera/trailer standard
-Date range: Rango fecha
-Include previous/next links: Incluir enlaces previo/siguiente
-Include empty dates: Incluir fechas vacías
-Template variables: Variables de plantilla
-Page template: Página de plantilla
-Day template: Día plantilla
-Event template: Evento plantilla
-Are you sure you want to delete this report?: ¿Estás seguro que quieres borrar este evento?
-
-
-###############################################
-# Page: edit_report_handler.php
-#
-Variable N not found: Variable n no encontrada
 
 
 ###############################################
@@ -490,8 +469,36 @@ Add New Group: Agregar nuevo grupo
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: Preferencias
+to modify the preferences for the Public Access calendar: para modificar las preferencias de acceso público del calendario
+tz-help: Especifica cuántas horas para ajustar la hora del servidor con la hora local.
+Timezone Offset: Offset de zona horaria
+Add N hours to: Añadir n horas a
+Subtract N hours from: Quitar n horas de
+same as: igual a
+server time: hora del servidor
+Default Category: Categoría por defecto
+When I am the boss: Cuando yo soy el jefe
+Email me event notification: Envíame notificaciones por email
+I want to approve events: Quiero aprobar los eventos
+allow-remote-subscriptions-help: Especifica si usuarios remotos pueden suscribirse a tu calendario, permitiéndoles ver tus eventos en una aplicación i-Cal (como Apple's iCal o Mozilla Calendar).
+remote-subscriptions-url-help: Muestra la URL que los usuarios remotos deben utilizar para suscribirse a tu calendario
+URL: URL
+Sun: Dom
+Mon: Lun
+Tue: Mar
+Wed: Mie
+Thu: Jue
+Fri: Vie
+Sat: Sab
+Save Preferences: Guardar Preferencias
 
 
 ###############################################
@@ -507,33 +514,11 @@ Adding/Editing Calendar Entries: Añadir/editar entradas del calendario
 
 
 ###############################################
-# Page: help_import.php
-#
-Import: Importar
-Palm Desktop: Palm Desktop
-This form will allow you to import entries from the Palm Desktop Datebook.: Este formulario te permite importar entradas de la agenda del Palm Desktop
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Debe estar en tu directorio de Palm en <tt>datebook/datebook.dat</tt> en un subdirectorio llamado con tu nombre de usuario.
-The following entries will not be imported: Las siguientes entradas no se importarán
-Entries older than the current date: Entradas anteriores a la fecha actual
-#
-# << MISSING >>
-# Entries created in the Palm Desktop that have not been HotSync'd:
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Cualquier elemento importado de Palm será sobreescrito durante la próxima importación (excepto se la fecha del evento ha pasado).
-Therefore, updates should be made in the Palm Desktop.: Por lo tanto, se debe realizar actualizaciones en Palm Desktop.
-vCal: vCal
-This form will import vCalendar (.vcs) 1.0 events: Este formulario importará eventos vCalendar (.vcs) 1.0
-The following formats have been tested: Los siguientes formatos se han comprobado
-Palm Desktop 4: Palm Desktop 4
-Lotus Organizer 6: Lotus Organizer 6
-Microsoft Outlook 2002: Microsoft Outlook 2002
-
-
-###############################################
 # Page: help_index.php
 #
 Help Index: Ayuda
 Layers: Capas
-Preferences: Preferencias
+Import: Importar
 
 
 ###############################################
@@ -552,33 +537,14 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
-# Page: help_pref.php
+# Page: help_admin.php
 #
-Default Category: Categoría por defecto
-default-category-help: Especifica la categoría por defecto donde debe ir un evento.
-allow-remote-subscriptions-help: Especifica si usuarios remotos pueden suscribirse a tu calendario, permitiéndoles ver tus eventos en una aplicación i-Cal (como Apple's iCal o Mozilla Calendar).
-URL: URL
-remote-subscriptions-url-help: Muestra la URL que los usuarios remotos deben utilizar para suscribirse a tu calendario
 
 
 ###############################################
-# Page: import.php
+# Page: week.php
 #
-Exclude private records: excluir eventos privados
-Datebook File: Fichero agenda
-vCal File: Fichero vCal
-
-
-###############################################
-# Page: import_handler.php
-#
-Conflicting events: Eventos que están en conflicto
-Errors: Errores
-Back to My Calendar: Regresar a Mi Calendario
-There was an error parsing the import file or no events were returned: Ha habido un error al analizar el archivo de importación o no se devolvió ningún acontecimiento
-The import file contained no data: El fichero de importación no contiene datos
-View this entry: Ver esta entrada
-Event Imported: Evento importado
+cont.: cont.
 
 
 ###############################################
@@ -603,6 +569,7 @@ Add layer: Agregar capa
 ###############################################
 # Page: list_unapproved.php
 #
+View this entry: Ver esta entrada
 Approve this entry?: ¿Aprueba esta entrada?
 Approve/Confirm: Aprobar/Confirmar
 Reject this entry?: ¿Rechazar este registro?
@@ -613,55 +580,48 @@ Public Access: Acceso público
 
 
 ###############################################
-# Page: login.php
+# Page: view_entry.php
 #
-You must enter a login and password: Usted debe introducor nombre de usuario y contraseña
-Save login via cookies so I don't have to login next time: Guardar datos via cookies para no hacer login la próxima vez
-Login: Entrar
-Access public calendar: Acceso a calendario público
-cookies-note: <B>Nota:</B> Esta aplicación requiere tener habilitado cookies.
+every: cada
+2nd: 2a
+3rd: 3era
+4th: 4a
+5th: 5a
+1st: 1era
+last: última
+Description: Descripción
+Status: Status
+Waiting for approval: Esperando aprobación
+Deleted: Eliminados
+Rejected: Rechazados
+External User: Usuario externo
+Approve/Confirm entry: Aprobar/Confirmar registro
+Reject entry: Rechazar registro
+Set category: Fijar categoría
+Edit repeating entry for all dates: Editar registro repetitivo para todas las fechas
+Edit entry for this date: Editar entrada para este día
+This will delete this entry for all users.: Esta acción borrará esta entrada para todos los usuarios
+Delete repeating event for all dates: Eliminar eventos repetitivos para todas las fechas
+Delete entry only for this date: Borrar entrada sólo para esta fecha
+Edit entry: Editar entrada
+This will delete the entry from your calendar.: Esta acción eliminara el registro de tu calendario.
+Do you want to add this entry to your calendar?: ¿Desea agregar este registro a su calendario?
+This will add the entry to your calendar.: Esto agregara el registro a tu calendario.
+Add to My Calendar: Agregar a mi calendario
+Email all participants: Enviar email a todos los participantes
+Show activity log: Mostrar registro de actividad
+Hide activity log: Esconder registro de actividad
+Export this entry to: Exportar esta entrada a
+
+
+###############################################
+# Page: view_v.php
+#
 
 
 ###############################################
 # Page: month.php
 #
-Sun: Dom
-Mon: Lun
-Tue: Mar
-Wed: Mie
-Thu: Jue
-Fri: Vie
-Sat: Sab
-
-
-###############################################
-# Page: nonusers.php
-#
-NONUSER_PREFIX not set: NONUSER_PREFIX no ha sido ajustado en config.php.
-NonUser: Calendarios de usuarios que no son usuarios del calendario
-Calendar ID: ID de calendario
-Add New NonUser Calendar: Añadir nuevo calendario de usuario que no es usuario del calendario
-
-
-###############################################
-# Page: nonusers_handler.php
-#
-
-
-###############################################
-# Page: pref.php
-#
-to modify the preferences for the Public Access calendar: para modificar las preferencias de acceso público del calendario
-tz-help: Especifica cuántas horas para ajustar la hora del servidor con la hora local.
-Timezone Offset: Offset de zona horaria
-Add N hours to: Añadir n horas a
-Subtract N hours from: Quitar n horas de
-same as: igual a
-server time: hora del servidor
-When I am the boss: Cuando yo soy el jefe
-Email me event notification: Envíame notificaciones por email
-I want to approve events: Quiero aprobar los eventos
-Save Preferences: Guardar Preferencias
 
 
 ###############################################
@@ -670,34 +630,11 @@ Save Preferences: Guardar Preferencias
 
 
 ###############################################
-# Page: publish.php
-#
-
-
-###############################################
-# Page: purge.php
-#
-
-
-###############################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: Un evento ha sido rechazado por
-
-
-###############################################
-# Page: report.php
-#
-Private: Privado
-Waiting for approval: Esperando aprobación
-Deleted: Eliminados
-Rejected: Rechazados
-Approved: Aprobado
-Unknown: Desconocido
-to manage reports for the Public Access calendar: para manejar informes para el calendario de acceso público
-Add new report: Añadir nuevo informe
-cont.: cont.
-Manage Reports: Manejar informes
+The description is: La descripción es
+Title: WebCalendar
 
 
 ###############################################
@@ -726,10 +663,8 @@ Go: Ir
 
 
 ###############################################
-# Page: set_entry_cat.php
+# Page: publish.php
 #
-You have not added any categories: Usted no ha agregado categorías
-Set Category: Fijar Categoría
 
 
 ###############################################
@@ -746,6 +681,22 @@ All: Todos
 Reset: Resetear
 Remove: Quitar
 Ok: Ok
+Cancel: Cancelar
+
+
+###############################################
+# Page: import.php
+#
+This form will allow you to import entries from the Palm Desktop Datebook.: Este formulario te permite importar entradas de la agenda del Palm Desktop
+Exclude private records: excluir eventos privados
+Datebook File: Fichero agenda
+This form will import vCalendar (.vcs) 1.0 events: Este formulario importará eventos vCalendar (.vcs) 1.0
+vCal File: Fichero vCal
+
+
+###############################################
+# Page: year.php
+#
 
 
 ###############################################
@@ -754,54 +705,7 @@ Ok: Ok
 
 
 ###############################################
-# Page: view_entry.php
-#
-every: cada
-2nd: 2a
-3rd: 3era
-4th: 4a
-5th: 5a
-1st: 1era
-last: última
-Description: Descripción
-Status: Status
-External User: Usuario externo
-Approve/Confirm entry: Aprobar/Confirmar registro
-Reject entry: Rechazar registro
-Set category: Fijar categoría
-Edit repeating entry for all dates: Editar registro repetitivo para todas las fechas
-Edit entry for this date: Editar entrada para este día
-This will delete this entry for all users.: Esta acción borrará esta entrada para todos los usuarios
-Delete repeating event for all dates: Eliminar eventos repetitivos para todas las fechas
-Delete entry only for this date: Borrar entrada sólo para esta fecha
-Edit entry: Editar entrada
-This will delete the entry from your calendar.: Esta acción eliminara el registro de tu calendario.
-Do you want to add this entry to your calendar?: ¿Desea agregar este registro a su calendario?
-This will add the entry to your calendar.: Esto agregara el registro a tu calendario.
-Add to My Calendar: Agregar a mi calendario
-Email all participants: Enviar email a todos los participantes
-Show activity log: Mostrar registro de actividad
-Hide activity log: Esconder registro de actividad
-Export this entry to: Exportar esta entrada a
-
-
-###############################################
-# Page: view_l.php
-#
-
-
-###############################################
 # Page: view_m.php
-#
-
-
-###############################################
-# Page: view_t.php
-#
-
-
-###############################################
-# Page: view_v.php
 #
 
 
@@ -833,14 +737,56 @@ Month (on same calendar): Mes (en el mismo calendario)
 
 
 ###############################################
-# Page: views_edit_handler.php
+# Page: nonusers.php
 #
-You must specify a view name: Debes especificar un nombre de vista
+NONUSER_PREFIX not set: NONUSER_PREFIX no ha sido ajustado en config.php.
+NonUser: Calendarios de usuarios que no son usuarios del calendario
+Calendar ID: ID de calendario
+Add New NonUser Calendar: Añadir nuevo calendario de usuario que no es usuario del calendario
 
 
 ###############################################
-# Page: week.php
+# Page: nonusers_handler.php
 #
+
+
+###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+default-category-help: Especifica la categoría por defecto donde debe ir un evento.
+
+
+###############################################
+# Page: report.php
+#
+Private: Privado
+Approved: Aprobado
+Unknown: Desconocido
+to manage reports for the Public Access calendar: para manejar informes para el calendario de acceso público
+Add new report: Añadir nuevo informe
+Invalid report id: ID de informe inválido
+Manage Reports: Manejar informes
+
+
+###############################################
+# Page: login.php
+#
+You must enter a login and password: Usted debe introducor nombre de usuario y contraseña
+Save login via cookies so I don't have to login next time: Guardar datos via cookies para no hacer login la próxima vez
+Login: Entrar
+Access public calendar: Acceso a calendario público
+cookies-note: <B>Nota:</B> Esta aplicación requiere tener habilitado cookies.
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Debes especificar un nombre de vista
 
 
 ###############################################
@@ -850,13 +796,195 @@ New Entry: Nuevo registro
 
 
 ###############################################
-# Page: year.php
+# Page: import_handler.php
 #
+Conflicting events: Eventos que están en conflicto
+Errors: Errores
+Back to My Calendar: Regresar a Mi Calendario
+There was an error parsing the import file or no events were returned: Ha habido un error al analizar el archivo de importación o no se devolvió ningún acontecimiento
+The import file contained no data: El fichero de importación no contiene datos
+The following conflicts with the suggested time: Lo siguiente hace conflicto con la hora indicada
+Unnamed Event: Evento sin nombre
+Scheduling Conflict: Conflicto entre Citas
+conflicts with the following existing calendar entries: conflictos con las siguiente entradas existentes en el calendario
+Event Imported: Evento importado
+
+
+###############################################
+# Page: edit_report.php
+#
+Tomorrow: Mañana
+Today: Hoy
+Yesterday: Ayer
+Day before yesterday: Antes de ayer
+Next week: Próxima semana
+This week: Esta semana
+Last week: La última semana
+Week before last: La semana antes de la anterior
+Next week and week after: Semana siguiente y semana después
+This week and next week: Esta semana y la siguiente
+Last week and this week: Semana anterior y esta semana
+Last two weeks: Últimas dos semanas
+Next month: Próximo mes
+This month: Este mes
+Last month: Último mes
+Month before last: Mes antes último
+Next year: Siguiente año
+This year: Este año
+Last year: Último año
+Year before last: Año antes del último
+Unnamed Report: Informe sin nombre
+Add Report: Añadir informe
+Edit Report: Editar informe
+Report name: Nombre del informe
+Current User: Usuario Actual
+Include link in trailer: Incluir enlace en trailer
+Include standard header/trailer: Incluir cabecera/trailer standard
+Date range: Rango fecha
+Include previous/next links: Incluir enlaces previo/siguiente
+Include empty dates: Incluir fechas vacías
+Template variables: Variables de plantilla
+Page template: Página de plantilla
+Day template: Día plantilla
+Event template: Evento plantilla
+Are you sure you want to delete this report?: ¿Estás seguro que quieres borrar este evento?
+
+
+###############################################
+# Page: assistant_edit.php
+#
+Assistants: Asistentes
+Yours assistants: Tus asistentes
+
+
+###############################################
+# Page: view_t.php
+#
+
+
+###############################################
+# Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: help_import.php
+#
+Palm Desktop: Palm Desktop
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Debe estar en tu directorio de Palm en <tt>datebook/datebook.dat</tt> en un subdirectorio llamado con tu nombre de usuario.
+The following entries will not be imported: Las siguientes entradas no se importarán
+Entries older than the current date: Entradas anteriores a la fecha actual
+#
+# << MISSING >>
+# Entries created in the Palm Desktop that have not been HotSync'd:
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Cualquier elemento importado de Palm será sobreescrito durante la próxima importación (excepto se la fecha del evento ha pasado).
+Therefore, updates should be made in the Palm Desktop.: Por lo tanto, se debe realizar actualizaciones en Palm Desktop.
+vCal: vCal
+The following formats have been tested: Los siguientes formatos se han comprobado
+Palm Desktop 4: Palm Desktop 4
+Lotus Organizer 6: Lotus Organizer 6
+Microsoft Outlook 2002: Microsoft Outlook 2002
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+Variable N not found: Variable n no encontrada
+
+
+###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Una nueva cita ha sido hecha para usted por
+An appointment has been updated by: Una cita/evento ha sido actualizada por
+The subject is: El Asunto es
+Please look on: Por favor busque
+to accept or reject this appointment: para aceptar o no esta cita
+to view this appointment: para ver esta cita
+Your suggested time of: Su hora sugerida es
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: Usted no ha agregado categorías
+Set Category: Fijar Categoría
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Go to: Ir a
+My Calendar: Mi Calendario
+Logout: Salir
+Another User's Calendar: Ver calendario de otro usuario
+Add New Entry: Agregar nueva entrada
+Manage Views: Administrar vistas
+Edit Layers: Editar capas
+Account: Cuenta
+Manage calendar of: Manejar calendario de
 
 
 ###############################################
 # Page: includes/connect.php
 #
+
+
+###############################################
+# Page: includes/user.php
+#
+Invalid login: Usuario/contraseña incorrectos
+Invalid user login: Usuario/contraseña incorrectos
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Enviar recordatorio
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+
+
+###############################################
+# Page: includes/help_trailer.php
+#
+
+
+###############################################
+# Page: includes/init.php
+#
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
@@ -893,58 +1021,6 @@ Sep: Sep
 Oct: Oct
 Nov: Nov
 Dec: Dic
-
-
-###############################################
-# Page: includes/help_trailer.php
-#
-Go to: Ir a
-
-
-###############################################
-# Page: includes/init.php
-#
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Enviar recordatorio
-
-
-###############################################
-# Page: includes/trailer.php
-#
-My Calendar: Mi Calendario
-Logout: Salir
-Another User's Calendar: Ver calendario de otro usuario
-Add New Entry: Agregar nueva entrada
-Manage Views: Administrar vistas
-Edit Layers: Editar capas
-Account: Cuenta
-Manage calendar of: Manejar calendario de
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: Usuario/contraseña incorrectos
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-Invalid user login: Usuario/contraseña incorrectos
-
-
-###############################################
-# Page: includes/user.php
-#
 
 
 ###############################################

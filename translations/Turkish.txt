@@ -4,7 +4,7 @@
 #
 # Translator: Atilla Kazanci <support@dig-it-berlin.de>,
 # Last update: 29 March 2001
-# Translation last updated on 07-21-2003
+# Translation last updated on 02-17-2004
 
 
 ###############################################
@@ -80,6 +80,27 @@ Language: Lisan
 # Fonts:
 #
 # << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: Evet
+No: Hayir
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
+#
+# << MISSING >>
 # preferred-view-help:
 # English text: Specifies the default view (Day, Week, Month, or Year).
 #
@@ -96,8 +117,22 @@ Year: Sene
 #
 # << MISSING >>
 # Display weekends in week view:
-Yes: Evet
-No: Hayir
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 #
 # << MISSING >>
 # date-format-help:
@@ -197,6 +232,22 @@ to: Kime
 # Disable Repeating field:
 #
 # << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
+#
+# << MISSING >>
 # allow-view-other-help:
 # English text: Specifies whether one user may view another user's calendar.
 #
@@ -235,6 +286,14 @@ to: Kime
 #
 # << MISSING >>
 # Public access new events require approval:
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -750,31 +809,6 @@ You are not authorized to edit this entry: Sizin bu Islemi silmek icin hak sahib
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: Önerilen Terminde saat carpismasi
-Unnamed Event: isimsiz olay
-#
-# << MISSING >>
-# The description is:
-Title: WebTakvimi
-A new appointment has been made for you by: Sizin icin bir Termin eklendi -->  
-#
-# << MISSING >>
-# An appointment has been updated by:
-The subject is: Tarif 
-Please look on: Bakiniz  
-to accept or reject this appointment: Termini onaylamak/ret etmek.
-to view this appointment: Termini gör
-Scheduling Conflict: Termin carpismasi
-Your suggested time of: Isleminiz 
-conflicts with the following existing calendar entries: takiben Takvimde baska bir Islemle carpisiyor.
-#
-# << MISSING >>
-# Cancel:
-
-
-###############################################
 # Page: edit_layer.php
 #
 #
@@ -905,7 +939,7 @@ Users: Kullanici
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
 
 
@@ -1033,12 +1067,7 @@ Help Index: Yardim-Endeksi
 
 
 ###############################################
-# Page: help_pref.php
-#
-#
-# << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
+# Page: help_admin.php
 #
 
 
@@ -1102,111 +1131,6 @@ Unapproved Events: Onaylanmamis Termin
 #
 # << MISSING >>
 # Public Access:
-
-
-###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-#
-# << MISSING >>
-# An appointment has been rejected by:
-
-
-###############################################
-# Page: search.php
-#
-Search: Arama
-#
-# << MISSING >>
-# Advanced Search:
-Keywords: Kelimeler
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: En az bir Kelime girmeniz gerekiyor
-Search Results: Arama sonucu
-match found: Bulunan
-matches found: Bulunan
-No matches found: Bulunmiyor
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: Baska Kullanicilarin Takvimini göster 
-Go: göster 
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-#
-# << MISSING >>
-# You have not added any categories:
-#
-# << MISSING >>
-# Set Category:
-
-
-###############################################
-# Page: users.php
-#
-denotes administrative user: Sef Kullaniciyi gösterir
-Add New User: Yeni Kullanici ekle
-
-
-###############################################
-# Page: usersel.php
-#
-#
-# << MISSING >>
-# All:
-#
-# << MISSING >>
-# Reset:
-#
-# << MISSING >>
-# Remove:
-#
-# << MISSING >>
-# Ok:
-
-
-###############################################
-# Page: import.php
-#
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
 
 
 ###############################################
@@ -1290,6 +1214,117 @@ Edit entry: Islem degistir
 #
 # << MISSING >>
 # Export this entry to:
+
+
+###############################################
+# Page: view_v.php
+#
+
+
+###############################################
+# Page: month.php
+#
+
+
+###############################################
+# Page: pref_handler.php
+#
+
+
+###############################################
+# Page: reject_entry.php
+#
+#
+# << MISSING >>
+# An appointment has been rejected by:
+#
+# << MISSING >>
+# The description is:
+Title: WebTakvimi
+
+
+###############################################
+# Page: search.php
+#
+Search: Arama
+#
+# << MISSING >>
+# Advanced Search:
+Keywords: Kelimeler
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: En az bir Kelime girmeniz gerekiyor
+Search Results: Arama sonucu
+match found: Bulunan
+matches found: Bulunan
+No matches found: Bulunmiyor
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: Baska Kullanicilarin Takvimini göster 
+Go: göster 
+
+
+###############################################
+# Page: publish.php
+#
+
+
+###############################################
+# Page: users.php
+#
+denotes administrative user: Sef Kullaniciyi gösterir
+Add New User: Yeni Kullanici ekle
+
+
+###############################################
+# Page: usersel.php
+#
+#
+# << MISSING >>
+# All:
+#
+# << MISSING >>
+# Reset:
+#
+# << MISSING >>
+# Remove:
+#
+# << MISSING >>
+# Ok:
+#
+# << MISSING >>
+# Cancel:
+
+
+###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
+# Page: year.php
+#
 
 
 ###############################################
@@ -1380,6 +1415,45 @@ Edit entry: Islem degistir
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+#
+# << MISSING >>
+# default-category-help:
+# English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: report.php
+#
+Private: özel
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
 # Page: login.php
 #
 You must enter a login and password: Kullanici Adi ve Sifre vermeniz gerekiyor.
@@ -1403,12 +1477,6 @@ cookies-note: <B>Not:</B> Takvimi kullanmak icin, Browser'inizde Cookie'leri kab
 # Page: week_details.php
 #
 New Entry: Yeni islem
-Private: özel
-
-
-###############################################
-# Page: view_l.php
-#
 
 
 ###############################################
@@ -1427,14 +1495,13 @@ Back to My Calendar: Takvimime geri
 #
 # << MISSING >>
 # The import file contained no data:
+The following conflicts with the suggested time: Önerilen Terminde saat carpismasi
+Unnamed Event: isimsiz olay
+Scheduling Conflict: Termin carpismasi
+conflicts with the following existing calendar entries: takiben Takvimde baska bir Islemle carpisiyor.
 #
 # << MISSING >>
 # Event Imported:
-
-
-###############################################
-# Page: year.php
-#
 
 
 ###############################################
@@ -1502,9 +1569,6 @@ Back to My Calendar: Takvimime geri
 # Year before last:
 #
 # << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
 # Unnamed Report:
 #
 # << MISSING >>
@@ -1549,26 +1613,6 @@ Current User: aktüel Kullanici
 
 
 ###############################################
-# Page: report.php
-#
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
 # Page: assistant_edit.php
 #
 #
@@ -1586,11 +1630,6 @@ Current User: aktüel Kullanici
 
 ###############################################
 # Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: publish.php
 #
 
 
@@ -1649,6 +1688,42 @@ Current User: aktüel Kullanici
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Sizin icin bir Termin eklendi -->  
+#
+# << MISSING >>
+# An appointment has been updated by:
+The subject is: Tarif 
+Please look on: Bakiniz  
+to accept or reject this appointment: Termini onaylamak/ret etmek.
+to view this appointment: Termini gör
+Your suggested time of: Isleminiz 
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+#
+# << MISSING >>
+# You have not added any categories:
+#
+# << MISSING >>
+# Set Category:
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: Git
@@ -1671,41 +1746,6 @@ Account: Account
 ###############################################
 # Page: includes/connect.php
 #
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: özel Termin 
-#
-# << MISSING >>
-# exceeds limit of XXX events per day:
-#
-# << MISSING >>
-# You have XXX unapproved events:
-January: Ocak
-February: Subat
-March: Mart
-April: Nisan
-May_: Mayis
-June: Haziran
-July: Temmuz
-August: Agustos
-September: Eylül
-October: Ekim
-November: Kasim
-Jan: Oca
-Feb: Sub
-Mar: Mar
-Apr: Nis
-May: May
-Jun: Haz
-Jul: Tem
-Aug: Agu
-Sep: Eyl
-Oct: Eki
-Nov: Kas
-Dec: Ara
 
 
 ###############################################
@@ -1755,6 +1795,41 @@ Dec: Ara
 ###############################################
 # Page: includes/dbtable.php
 #
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: özel Termin 
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
+#
+# << MISSING >>
+# You have XXX unapproved events:
+January: Ocak
+February: Subat
+March: Mart
+April: Nisan
+May_: Mayis
+June: Haziran
+July: Temmuz
+August: Agustos
+September: Eylül
+October: Ekim
+November: Kasim
+Jan: Oca
+Feb: Sub
+Mar: Mar
+Apr: Nis
+May: May
+Jun: Haz
+Jul: Tem
+Aug: Agu
+Sep: Eyl
+Oct: Eki
+Nov: Kas
+Dec: Ara
 
 
 ###############################################

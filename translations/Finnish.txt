@@ -1,13 +1,9 @@
 ################################################################
 # Finnish translation by Juha-Matti ≈berg (juffe@liveware.fi)  #
-################################################################
-# Page: admin.php
-#
-#
-# << MISSING >>
-# Translation last updated on 08-05-2003
+# Translation last updated on 02-17-2004
 
-# No charset specified
+# No charset specified (not needed for iso-8859-1)
+# "charset" is used in a meta tag, do not translate "charset" here.
 # charset:
 
 
@@ -36,6 +32,27 @@ Language: Kieli
 Your browser default language is: Selaimen oletuskieli on
 fonts-help: M‰‰ritt‰‰ k‰ytett‰v‰t j‰rjestelm‰fontit (esim. "Arial, Helvetica")
 Fonts: Fontit
+#
+# << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: Kyll‰
+No: Ei
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
 preferred-view-help: M‰‰rittelee oletusn‰kym‰n (P‰iv‰, Viikko, Kuukausi tai Vuosi).
 Preferred view: Oletusn‰kym‰
 Day: P‰iv‰
@@ -44,8 +61,22 @@ Month: Kuukausi
 Year: Vuosi
 display-weekends-help: N‰yt‰ viikonloput viikkoa katseltaessa.
 Display weekends in week view: N‰yt‰ viikonloput viikkoa katseltaessa
-Yes: Kyll‰
-No: Ei
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 date-format-help: M‰‰ritt‰‰ p‰iv‰n esitysmuodon.
 Date format: P‰iv‰yksen muoto
 December: Joulukuu
@@ -83,6 +114,22 @@ disable-participants-field-help: Poistaa mahdollisuuden lis‰t‰ muita henkilˆit‰ 
 Disable Participants field: Poista muiden henkilˆiden lis‰ys tapahtumaan
 disable-repeating-field-help: Poistaa toistettavien tapahtumien mahdollisuuden.
 Disable Repeating field: Poista toistettavat tapahtumat k‰ytˆst‰.
+#
+# << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
 allow-view-other-help: M‰‰ritt‰‰, salliiko kalenteri k‰ytt‰j‰n tarkastella toisen k‰ytt‰j‰n kalenteria.
 Allow viewing other user's calendars: Salli muiden henkilˆiden kalenterien tarkastelu
 allow-public-access-help: Sallii tapahtuman n‰kymisen kaikille
@@ -93,6 +140,14 @@ public-access-can-add-help: Sallii yleisten k‰ytt‰jien lis‰t‰ tapahtumia, mutta 
 Public access can add events: Yleiset k‰ytt‰j‰t voivat lis‰t‰ tapahtumia
 public-access-add-requires-approval-help: Yleisten k‰ytt‰jien tapahtumalis‰ykset vaativat vahvistuksen
 Public access new events require approval: Yleisten k‰ytt‰jien uudet tapahtumat vaativat vahvistuksen
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 allow-view-add-help: Asettaa '+'-merkin ilmestym‰‰n n‰kymiin, jolloin k‰ytt‰j‰ voi helposti lis‰t‰ uuden tapahtuman toisen(kin) k‰ytt‰j‰n kalenteriin.
 Include add event link in views: Lis‰‰ linkki "Lis‰‰ tapahtuma" kaikkiin n‰kymiin
 allow-external-users-help: M‰‰ritt‰‰ salliiko kalenteri sellaisen henkilˆn lis‰‰misen tapahtumaan, joka ei k‰yt‰ kalenteria.
@@ -452,7 +507,7 @@ Add New Group: Lis‰‰ uusi ryhm‰
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
 
 
@@ -542,9 +597,8 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
-# Page: help_pref.php
+# Page: help_admin.php
 #
-default-category-help: M‰‰ritt‰‰ kategorian johon uusi tapahtuma lis‰t‰‰n
 
 
 ###############################################
@@ -583,6 +637,43 @@ Reject: Hylk‰‰
 No unapproved events for: Ei hyv‰ksym‰ttˆmi‰ tapahtumia henkilˆlle
 Unapproved Events: Hyv‰ksym‰ttˆm‰t tapahtumat
 Public Access: Yleinen k‰yttˆ
+
+
+###############################################
+# Page: view_entry.php
+#
+every: joka
+2nd: 2.
+3rd: 3.
+4th: 4.
+5th: 5.
+1st: 1.
+#
+# << MISSING >>
+# last:
+Description: Kuvaus
+Status: Tila
+Waiting for approval: Odottaa hyv‰ksymist‰
+Deleted: Poistettu
+Rejected: Hyl‰tty
+External User: Ulkoinen k‰ytt‰j‰
+Approve/Confirm entry: Hyv‰ksy/Vahvista merkint‰
+Reject entry: Hylk‰‰ merkint‰
+Set category: Aseta kategoria
+Edit repeating entry for all dates: Muokkaa toistuvaa entry‰ kaikille p‰iville
+Edit entry for this date: Muokkaa t‰m‰n p‰iv‰n entry‰
+This will delete this entry for all users.: T‰m‰ merkint‰ poistetaan kaikilta k‰ytt‰jilt‰.
+Delete repeating event for all dates: Poista toistuvat tapahtumat kaikilta p‰ivilt‰
+Delete entry only for this date: Poista vain t‰m‰n p‰iv‰n entryt
+Edit entry: Muokkaa merkint‰‰
+This will delete the entry from your calendar.: Poistetaan merkint‰ kalenteristasi.
+Do you want to add this entry to your calendar?: Haluatko lis‰t‰ t‰m‰n merkinn‰n kalenteriisi?
+This will add the entry to your calendar.: Lis‰t‰‰n merkint‰ kalenteriisi.
+Add to My Calendar: Lis‰‰ kalenteriin
+Email all participants: L‰het‰ s‰hkˆpostia kaikille osallistujille
+Show activity log: N‰yt‰ aktiviteettiloki
+Hide activity log: Piilota aktiviteettiloki
+Export this entry to: L‰het‰ t‰m‰ tapahtuma
 
 
 ###############################################
@@ -636,10 +727,8 @@ Go: Mene
 
 
 ###############################################
-# Page: set_entry_cat.php
+# Page: publish.php
 #
-You have not added any categories: Et ole lis‰nnyt kategorioita
-Set Category: Aseta kategoria
 
 
 ###############################################
@@ -680,40 +769,8 @@ Cancel: Kumoa
 
 
 ###############################################
-# Page: view_entry.php
+# Page: year.php
 #
-every: joka
-2nd: 2.
-3rd: 3.
-4th: 4.
-5th: 5.
-1st: 1.
-#
-# << MISSING >>
-# last:
-Description: Kuvaus
-Status: Tila
-Waiting for approval: Odottaa hyv‰ksymist‰
-Deleted: Poistettu
-Rejected: Hyl‰tty
-External User: Ulkoinen k‰ytt‰j‰
-Approve/Confirm entry: Hyv‰ksy/Vahvista merkint‰
-Reject entry: Hylk‰‰ merkint‰
-Set category: Aseta kategoria
-Edit repeating entry for all dates: Muokkaa toistuvaa entry‰ kaikille p‰iville
-Edit entry for this date: Muokkaa t‰m‰n p‰iv‰n entry‰
-This will delete this entry for all users.: T‰m‰ merkint‰ poistetaan kaikilta k‰ytt‰jilt‰.
-Delete repeating event for all dates: Poista toistuvat tapahtumat kaikilta p‰ivilt‰
-Delete entry only for this date: Poista vain t‰m‰n p‰iv‰n entryt
-Edit entry: Muokkaa merkint‰‰
-This will delete the entry from your calendar.: Poistetaan merkint‰ kalenteristasi.
-Do you want to add this entry to your calendar?: Haluatko lis‰t‰ t‰m‰n merkinn‰n kalenteriisi?
-This will add the entry to your calendar.: Lis‰t‰‰n merkint‰ kalenteriisi.
-Add to My Calendar: Lis‰‰ kalenteriin
-Email all participants: L‰het‰ s‰hkˆpostia kaikille osallistujille
-Show activity log: N‰yt‰ aktiviteettiloki
-Hide activity log: Piilota aktiviteettiloki
-Export this entry to: L‰het‰ t‰m‰ tapahtuma
 
 
 ###############################################
@@ -782,6 +839,41 @@ Add New NonUser Calendar: Lis‰‰ uusi ulkoinen k‰ytt‰j‰
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+default-category-help: M‰‰ritt‰‰ kategorian johon uusi tapahtuma lis‰t‰‰n
+
+
+###############################################
+# Page: report.php
+#
+Private: Yksityinen
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
 # Page: login.php
 #
 You must enter a login and password: Syˆt‰ k‰ytt‰j‰tunnus ja salasana
@@ -801,12 +893,6 @@ You must specify a view name: Sinun t‰ytyy m‰‰ritt‰‰ n‰kym‰n nimi
 # Page: week_details.php
 #
 New Entry: Uusi merkit‰
-Private: Yksityinen
-
-
-###############################################
-# Page: view_l.php
-#
 
 
 ###############################################
@@ -832,11 +918,6 @@ conflicts with the following existing calendar entries: on ristiriidassa seuraav
 #
 # << MISSING >>
 # Event Imported:
-
-
-###############################################
-# Page: year.php
-#
 
 
 ###############################################
@@ -904,9 +985,6 @@ conflicts with the following existing calendar entries: on ristiriidassa seuraav
 # Year before last:
 #
 # << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
 # Unnamed Report:
 #
 # << MISSING >>
@@ -951,26 +1029,6 @@ Current User: K‰ytt‰j‰
 
 
 ###############################################
-# Page: report.php
-#
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
 # Page: assistant_edit.php
 #
 Assistants: Apurit
@@ -984,11 +1042,6 @@ Yours assistants: Sinun apurisi
 
 ###############################################
 # Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: publish.php
 #
 
 
@@ -1059,6 +1112,24 @@ Your suggested time of: Ehdottamasi aika
 
 
 ###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: Et ole lis‰nnyt kategorioita
+Set Category: Aseta kategoria
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: Siirry
@@ -1075,37 +1146,6 @@ Manage calendar of: Hallitse henkilˆn kalenteria
 ###############################################
 # Page: includes/connect.php
 #
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: Luottamuksellinen merkint‰
-exceeds limit of XXX events per day: ylitt‰‰ sallitun tapahtumien m‰‰r‰n p‰iv‰ss‰
-You have XXX unapproved events: Sinulla on XXX kuittaamatonta tapahtumaa
-January: Tammikuu
-February: Helmikuu
-March: Maaliskuu
-April: Huhtikuu
-May_: Toukokuu
-June: Kes‰kuu
-July: Hein‰kuu
-August: Elokuu
-September: Syyskuu
-October: Lokakuu
-November: Marraskuu
-Jan: Tammi
-Feb: Helmi
-Mar: Maalis
-Apr: Huhti
-May: Touko
-Jun: Kes‰
-Jul: Hein‰
-Aug: Elo
-Sep: Syys
-Oct: Loka
-Nov: Marras
-Dec: Joulu
 
 
 ###############################################
@@ -1152,6 +1192,37 @@ Send Reminder: L‰het‰ muistutus
 ###############################################
 # Page: includes/dbtable.php
 #
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: Luottamuksellinen merkint‰
+exceeds limit of XXX events per day: ylitt‰‰ sallitun tapahtumien m‰‰r‰n p‰iv‰ss‰
+You have XXX unapproved events: Sinulla on XXX kuittaamatonta tapahtumaa
+January: Tammikuu
+February: Helmikuu
+March: Maaliskuu
+April: Huhtikuu
+May_: Toukokuu
+June: Kes‰kuu
+July: Hein‰kuu
+August: Elokuu
+September: Syyskuu
+October: Lokakuu
+November: Marraskuu
+Jan: Tammi
+Feb: Helmi
+Mar: Maalis
+Apr: Huhti
+May: Touko
+Jun: Kes‰
+Jul: Hein‰
+Aug: Elo
+Sep: Syys
+Oct: Loka
+Nov: Marras
+Dec: Joulu
 
 
 ###############################################

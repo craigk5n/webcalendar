@@ -3,7 +3,7 @@
 # There cannot be a ":" in the English text.
 # Author: Joonyup Jeon <goodwill@wowbook.com>
 # Last updated: 07 June 2000
-# Translation last updated on 07-21-2003
+# Translation last updated on 02-17-2004
 
 
 ###############################################
@@ -79,6 +79,27 @@ Language: 언어
 # Fonts:
 #
 # << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: 예
+No: 아니오
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
+#
+# << MISSING >>
 # preferred-view-help:
 # English text: Specifies the default view (Day, Week, Month, or Year).
 #
@@ -101,8 +122,22 @@ Month: 월
 #
 # << MISSING >>
 # Display weekends in week view:
-Yes: 예
-No: 아니오
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 #
 # << MISSING >>
 # date-format-help:
@@ -204,6 +239,22 @@ to: 종료
 # Disable Repeating field:
 #
 # << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
+#
+# << MISSING >>
 # allow-view-other-help:
 # English text: Specifies whether one user may view another user's calendar.
 #
@@ -242,6 +293,14 @@ to: 종료
 #
 # << MISSING >>
 # Public access new events require approval:
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -785,33 +844,6 @@ You are not authorized to edit this entry: 이 항목을 편집할 권한이 없습니다.
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: 다음 사항은 제시된 시간과 겹칩니다.
-Unnamed Event: 이름없는 행사
-#
-# << MISSING >>
-# The description is:
-Title: 웹 캘린더
-A new appointment has been made for you by: 새 약속이 생성되었습니다. 생성자:
-#
-# << MISSING >>
-# An appointment has been updated by:
-The subject is: 주제는
-Please look on: 다음을 살펴볼 것-
-to accept or reject this appointment: 이 약속을 수락하거나 거절
-to view this appointment: 이 약속을 보기
-#
-# << MISSING >>
-# Scheduling Conflict:
-Your suggested time of: 제안한 시간
-conflicts with the following existing calendar entries: 다음과 같은 항목과 겹칩니다.
-#
-# << MISSING >>
-# Cancel:
-
-
-###############################################
 # Page: edit_layer.php
 #
 #
@@ -954,7 +986,7 @@ Users: 사용자
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
 
 
@@ -1082,12 +1114,7 @@ Help Index: 도움말 목차
 
 
 ###############################################
-# Page: help_pref.php
-#
-#
-# << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
+# Page: help_admin.php
 #
 
 
@@ -1157,111 +1184,6 @@ Unapproved Events: 미승인 행사
 #
 # << MISSING >>
 # Public Access:
-
-
-###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-#
-# << MISSING >>
-# An appointment has been rejected by:
-
-
-###############################################
-# Page: search.php
-#
-Search: 검색
-#
-# << MISSING >>
-# Advanced Search:
-Keywords: 검색어
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: 검색어를 입력하셔야 합니다.
-Search Results: 검색 결과
-match found: 항목 발견
-matches found: 항목 발견
-No matches found: 찾은 항목 없음
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: 다른 사용자의 달력 보기
-Go: 시작
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-#
-# << MISSING >>
-# You have not added any categories:
-#
-# << MISSING >>
-# Set Category:
-
-
-###############################################
-# Page: users.php
-#
-denotes administrative user: 관리자를 나타냄
-Add New User: 새 사용자 추가
-
-
-###############################################
-# Page: usersel.php
-#
-#
-# << MISSING >>
-# All:
-#
-# << MISSING >>
-# Reset:
-#
-# << MISSING >>
-# Remove:
-#
-# << MISSING >>
-# Ok:
-
-
-###############################################
-# Page: import.php
-#
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
 
 
 ###############################################
@@ -1352,6 +1274,117 @@ Edit entry: 항목 편집
 
 
 ###############################################
+# Page: view_v.php
+#
+
+
+###############################################
+# Page: month.php
+#
+
+
+###############################################
+# Page: pref_handler.php
+#
+
+
+###############################################
+# Page: reject_entry.php
+#
+#
+# << MISSING >>
+# An appointment has been rejected by:
+#
+# << MISSING >>
+# The description is:
+Title: 웹 캘린더
+
+
+###############################################
+# Page: search.php
+#
+Search: 검색
+#
+# << MISSING >>
+# Advanced Search:
+Keywords: 검색어
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: 검색어를 입력하셔야 합니다.
+Search Results: 검색 결과
+match found: 항목 발견
+matches found: 항목 발견
+No matches found: 찾은 항목 없음
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: 다른 사용자의 달력 보기
+Go: 시작
+
+
+###############################################
+# Page: publish.php
+#
+
+
+###############################################
+# Page: users.php
+#
+denotes administrative user: 관리자를 나타냄
+Add New User: 새 사용자 추가
+
+
+###############################################
+# Page: usersel.php
+#
+#
+# << MISSING >>
+# All:
+#
+# << MISSING >>
+# Reset:
+#
+# << MISSING >>
+# Remove:
+#
+# << MISSING >>
+# Ok:
+#
+# << MISSING >>
+# Cancel:
+
+
+###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
+# Page: year.php
+#
+
+
+###############################################
 # Page: view_d.php
 #
 
@@ -1439,6 +1472,45 @@ Edit entry: 항목 편집
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+#
+# << MISSING >>
+# default-category-help:
+# English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: report.php
+#
+Private: 개인용
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
 # Page: login.php
 #
 You must enter a login and password: 아이디와 비밀번호를 입력해야 합니다.
@@ -1462,12 +1534,6 @@ cookies-note: <B>주:</B> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
 # Page: week_details.php
 #
 New Entry: 새 항목
-Private: 개인용
-
-
-###############################################
-# Page: view_l.php
-#
 
 
 ###############################################
@@ -1486,14 +1552,15 @@ Back to My Calendar: 내 달력으로 돌아가기
 #
 # << MISSING >>
 # The import file contained no data:
+The following conflicts with the suggested time: 다음 사항은 제시된 시간과 겹칩니다.
+Unnamed Event: 이름없는 행사
+#
+# << MISSING >>
+# Scheduling Conflict:
+conflicts with the following existing calendar entries: 다음과 같은 항목과 겹칩니다.
 #
 # << MISSING >>
 # Event Imported:
-
-
-###############################################
-# Page: year.php
-#
 
 
 ###############################################
@@ -1561,9 +1628,6 @@ Back to My Calendar: 내 달력으로 돌아가기
 # Year before last:
 #
 # << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
 # Unnamed Report:
 #
 # << MISSING >>
@@ -1608,26 +1672,6 @@ Current User: 현 사용자
 
 
 ###############################################
-# Page: report.php
-#
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
 # Page: assistant_edit.php
 #
 #
@@ -1645,11 +1689,6 @@ Current User: 현 사용자
 
 ###############################################
 # Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: publish.php
 #
 
 
@@ -1708,6 +1747,42 @@ Current User: 현 사용자
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: 새 약속이 생성되었습니다. 생성자:
+#
+# << MISSING >>
+# An appointment has been updated by:
+The subject is: 주제는
+Please look on: 다음을 살펴볼 것-
+to accept or reject this appointment: 이 약속을 수락하거나 거절
+to view this appointment: 이 약속을 보기
+Your suggested time of: 제안한 시간
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+#
+# << MISSING >>
+# You have not added any categories:
+#
+# << MISSING >>
+# Set Category:
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: 가기
@@ -1734,41 +1809,6 @@ Account: 계정
 ###############################################
 # Page: includes/connect.php
 #
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: 이 행사는 비밀항목입니다.
-#
-# << MISSING >>
-# exceeds limit of XXX events per day:
-#
-# << MISSING >>
-# You have XXX unapproved events:
-January: 1월
-February: 2월
-March: 3월
-April: 4월
-May_: 5월
-June: 6월
-July: 7월
-August: 8월
-September: 9월
-October: 10월
-November: 11월
-Jan: 1월
-Feb: 2월
-Mar: 3월
-Apr: 4월
-May: 5월
-Jun: 6월
-Jul: 7월
-Aug: 8월
-Sep: 9월
-Oct: 10월
-Nov: 11월
-Dec: 12월
 
 
 ###############################################
@@ -1818,6 +1858,41 @@ Dec: 12월
 ###############################################
 # Page: includes/dbtable.php
 #
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: 이 행사는 비밀항목입니다.
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
+#
+# << MISSING >>
+# You have XXX unapproved events:
+January: 1월
+February: 2월
+March: 3월
+April: 4월
+May_: 5월
+June: 6월
+July: 7월
+August: 8월
+September: 9월
+October: 10월
+November: 11월
+Jan: 1월
+Feb: 2월
+Mar: 3월
+Apr: 4월
+May: 5월
+Jun: 6월
+Jul: 7월
+Aug: 8월
+Sep: 9월
+Oct: 10월
+Nov: 11월
+Dec: 12월
 
 
 ###############################################
