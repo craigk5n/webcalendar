@@ -89,22 +89,22 @@ function print_user_list () {
 			<option value="ICAL">iCal</option>
 		</select>
 </td></tr>
-<tr id="palm"><td>
-		<?php etranslate("Exclude private records")?>:</td><td>
+<tr id="palm"><td><label>
+		<?php etranslate("Exclude private records")?>:</label></td><td>
 		<label><input type="radio" name="exc_private" value="1" checked="checked" />&nbsp;<?php etranslate("Yes")?></label>
 		&nbsp;&nbsp;<label><input type="radio" name="exc_private" value="0" />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 <!-- /PALM -->
 
-<tr id="ivcal"><td>
-	<?php etranslate("Overwrite Prior Import")?>:</td<td>
+<tr id="ivcal"><td><label>
+	<?php etranslate("Overwrite Prior Import")?>:</label></td<td>
 	<label><input type="radio" name="overwrite" value="Y" checked="checked" />&nbsp;<?php etranslate("Yes");?></label>
 	&nbsp;&nbsp;<label><input type="radio" name="overwrite" value="N" />&nbsp;<?php etranslate("No");?></label>
 </td></tr>
 <!-- /IVCAL -->
 
-<tr class="browse"><td>
-	Upload file:</td><td>
+<tr class="browse"><td><label>
+	Upload file:</label></td><td>
 	<input type="file" name="FileName" size="45" maxlength="50" />
 </td></tr>
 
@@ -145,8 +145,8 @@ function print_user_list () {
 	<input type="checkbox" name="use_all_dates" id="exportall" value="y" />
 	<label for="exportall"><?php etranslate("Export all dates")?></label>
 </td></tr>
-<tr><td style="font-weight:bold;">
-	<?php etranslate("Start date")?>:</td><td>
+<tr><td style="font-weight:bold;"><label>
+	<?php etranslate("Start date")?>:</label></td><td>
 	<select name="fromday">
 		<?php
 			$day = date ( "d" );
@@ -175,8 +175,8 @@ function print_user_list () {
 	<input type="button" onclick="selectDate('fromday','frommonth','fromyear')" value="<?php etranslate("Select")?>..." />
 </td></tr>
 
-<tr><td style="font-weight:bold;">
-	<?php etranslate("End date")?>:</td><td>
+<tr><td style="font-weight:bold;"><label>
+	<?php etranslate("End date")?>:</label></td><td>
 	<select name="endday">
 		<?php
 			$day = date ( "d" );
@@ -205,8 +205,8 @@ function print_user_list () {
 	<input type="button" onclick="selectDate('endday','endmonth','endyear')" value="<?php etranslate("Select")?>..." />
 </td></tr>
 
-<tr><td style="font-weight:bold;">
-	<?php etranslate("Modified since")?>:</td><td>
+<tr><td style="font-weight:bold;"><label>
+	<?php etranslate("Modified since")?>:</label></td><td>
 	<select name="modday">
 		<?php
 			$week_ago = mktime ( 0, 0, 0, date ( "m" ), date ( "d" ) - 7, date ( "Y" ) );
