@@ -31,11 +31,12 @@ function parse_ical ( $cal_file ) {
       $data .= fgets($fd, 4096);
     }
     fclose($fd);
-    // No fix folding.  According to RFC, lines can fold by having
+    // Now fix folding.  According to RFC, lines can fold by having
     // a CRLF and then a single white space character.
     // We will allow it to be CRLF, CR or LF or any repeated sequence
     // so long as there is a single white space character next.
-    $data = preg_replace ( "/[\r\n]+\s/", "", $data );
+    //echo "Orig:<br><pre>$data</pre><br/><br/>\n";
+    $data = preg_replace ( "/[\r\n]+ /", "", $data );
     $data = preg_replace ( "/[\r\n]+/", "\n", $data );
     //echo "Data:<br><pre>$data</pre><P>";
 
@@ -92,7 +93,7 @@ function parse_ical ( $cal_file ) {
           } elseif (preg_match("/^PRIORITY.*:(.*)$/i", $buff, $match)) {
               $substate = "priority";
               $event[$substate] = $match[1];
-	  } elseif (preg_match("/^DTSTART.*:\s*(\d+T\d+)Z?\s*$/i", $buff, $match)) {
+	  } elseif (preg_match("/^DTSTART.*:\s*(\d+T\d+Z?)\s*$/i", $buff, $match)) {
               $substate = "dtstart";
               $event[$substate] = $match[1];
 	  } elseif (preg_match("/^DTSTART.*:\s*(\d+)\s*$/i", $buff, $match)) {
@@ -171,7 +172,8 @@ function parse_ical ( $cal_file ) {
 }
 
 // Convert ical format (yyyymmddThhmmssZ) to epoch time
-function icaldate_to_timestamp($vdate,$plus_d = '0',$plus_m = '0', $plus_y = '0') {
+function icaldate_to_timestamp ($vdate, $plus_d = '0', $plus_m = '0',
+  $plus_y = '0') {
   global $TZoffset;
 
   $y = substr($vdate, 0, 4) + $plus_y;
@@ -181,6 +183,7 @@ function icaldate_to_timestamp($vdate,$plus_d = '0',$plus_m = '0', $plus_y = '0'
   $M = substr($vdate, 11, 2);
   $S = substr($vdate, 13, 2);
   $Z = substr($vdate, 15, 1);
+
   if ($Z == 'Z') {
     $TS = gmmktime($H,$M,$S,$m,$d,$y);
   } else {
