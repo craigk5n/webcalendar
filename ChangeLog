@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Fixed bug: ${date} was not being handled properly in report templates.
   - Fixed bug 862177: invalid '?' in URL
   - Fixed bug: custom script/stylesheet was not being included on login page
 Verion 0.9.43 (10 Mar 2004)
