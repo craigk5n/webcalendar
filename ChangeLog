@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Applying patch #1055122: making custom colors update on change
   - Fixed bug 1044374: random issues with Bulgarian translation file
   - Implemented minicalendar function
   - Consolidated styles
