@@ -43,7 +43,7 @@ function reset_language ( $new_language ) {
 
 // Load all the language translation into an array for quick lookup.
 function load_translation_text () {
-  global $lang_file, $translations, $basedir, $PUBLIC_ACCESS_FULLNAME;
+  global $lang_file, $translations, $basedir, $PUBLIC_ACCESS_FULLNAME, $fullname;
   $translations = array ();
   if ( strlen ( $basedir ) ) {
     $lang_file_2 = "$basedir/$lang_file";
@@ -75,6 +75,9 @@ function load_translation_text () {
   fclose ( $fp );
 
   $PUBLIC_ACCESS_FULLNAME = translate("Public Access");
+  if ( $fullname == "Public Access" ) {
+    $fullname = $PUBLIC_ACCESS_FULLNAME;
+  }
 }
 
 

@@ -48,7 +48,7 @@ if ( $pub_acc_enabled && $session_not_found ) {
   $is_admin =  false;
   $lastname = "";
   $firstname = "";
-  $fullname = "Public User";
+  $fullname = "Public Access"; // Will be translated after translation is loaded
   $user_email = "";
 } else if ( ! $pub_acc_enabled && $session_not_found && ! $use_http_auth ) {
   do_redirect ( $login_url );
@@ -69,7 +69,7 @@ if ( empty ( $login ) && $use_http_auth ) {
     $is_admin =  false;
     $lastname = "";
     $firstname = "";
-    $fullname = "Public User";
+    $fullname = "Public Access";
     $user_email = "";
   } else {
     user_load_variables ( $login, "login_" );
