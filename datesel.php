@@ -27,21 +27,21 @@ $prevdate = date ( "Ym", $prev ) . "01";
 ?>
 
 <div style="text-align:center;">
-<table style="border-width:0px;">
+<table class="minical">
 <tr>
-<td><a title="<?php etranslate("Previous")?>" href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $prevdate?>"><img src="leftarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Previous")?>" /></a></td>
+<td><a title="<?php etranslate("Previous")?>" href="datesel.php?form=<?php echo $form?>&amp;fday=<?php echo $fday?>&amp;fmonth=<?php echo $fmonth?>&amp;fyear=<?php echo $fyear?>&amp;date=<?php echo $prevdate?>"><img src="leftarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Previous")?>" /></a></td>
 <th colspan="5"><?php echo month_name ( $thismonth - 1 ) . " " . $thisyear;?></th>
-<td><a title="<?php etranslate("Next")?>" href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Next")?>" /></a></td>
+<td><a title="<?php etranslate("Next")?>" href="datesel.php?form=<?php echo $form?>&amp;fday=<?php echo $fday?>&amp;fmonth=<?php echo $fmonth?>&amp;fyear=<?php echo $fyear?>&amp;date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Next")?>" /></a></td>
 </tr>
 <?php
-echo "<tr>";
-if ( $WEEK_START == 0 ) echo "<td style=\"font-size:13px;\">" .
+echo "<tr class=\"day\">";
+if ( $WEEK_START == 0 ) echo "<td>" .
   weekday_short_name ( 0 ) . "</td>";
 for ( $i = 1; $i < 7; $i++ ) {
-  echo "<td style=\"font-size:13px;\">" .
+  echo "<td>" .
     weekday_short_name ( $i ) . "</td>";
 }
-if ( $WEEK_START == 1 ) echo "<td style=\"font-size:13px;\">" .
+if ( $WEEK_START == 1 ) echo "<td>" .
   weekday_short_name ( 0 ) . "</td>";
 echo "</tr>\n";
 if ( $WEEK_START == "1" )
