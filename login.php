@@ -36,9 +36,13 @@ if ( ! empty ( $return_path ) ) {
 }
 
 $lang = '';
-if ( ! empty ( $LANGUAGE ) ) {
+if ( ! empty ( $LANGUAGE ) &&  $LANGUAGE != "Browser-defined" && $LANGUAGE != "none" ) {
   $lang = languageToAbbrev ( $LANGUAGE );
+} else {
+  $lang_long = get_browser_language ();
+  $lang = languageToAbbrev ( $lang_long );
 }
+
 if ( empty ( $lang ) ) {
   $lang = 'en';
 }
@@ -125,15 +129,14 @@ if ( $single_user == "Y" ) {
     SetCookie ( "webcalendar_session", "", 0, substr($cookie_path, 0, -1)  );
   }
 }
-
-echo '<?xml version="1.0" encoding="utf-8"?>'."\n";
+$charset = ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" );
+echo '<?xml version="1.0" ?>'."\n";
 ?>
 <!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" 
-  lang="<?php echo $lang; ?>">
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" lang="<?php echo $lang; ?>">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
 <title><?php etranslate($application_name)?></title>
 <script type="text/javascript">
 // error check login/password
