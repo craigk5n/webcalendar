@@ -110,7 +110,7 @@ else
 
 </table>
 
-<form>
+<form action="#">
 <input type="button" value="<?php etranslate("Help")?>..."
   onclick="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" />
 </form>
