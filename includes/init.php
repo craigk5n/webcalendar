@@ -1,10 +1,4 @@
 <?php
-if ( empty ( $PHP_SELF ) )
-  $PHP_SELF = $_SERVER['PHP_SELF'];
-if (preg_match("/\/includes\//", $PHP_SELF)) {
-    die ("You can't access this file directly!");
-}
-
 /*--------------------------------------------------------------------
  init.php written by Jeff Hoover
  - simplifies script initialization
@@ -39,6 +33,18 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 
 //--------------------------------------------------------------------
 */
+
+// Security Check
+if ( empty ( $PHP_SELF ) )
+  $PHP_SELF = $_SERVER['PHP_SELF'];
+if (preg_match("/\/includes\//", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
+// Make sure another app in the same domain doesn't have a 'user' cookie
+if (!$HTTP_GET_VARS['user'] && !$HTTP_POST_VARS['user'] && isset($GLOBALS['user'])) {
+  unset($GLOBALS['user']);
+}
 
 // Get script name
 $self = $_SERVER['PHP_SELF'];
