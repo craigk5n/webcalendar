@@ -1,4 +1,6 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Cleaning up HTML & CSS
+  - Updated view-preview doc with more modular code
   - Adding additional save button in pref.php to mirror admin.php
   - Extending admin.php to pref.php
   - Modifying class 'navlinks' to now read just 'nav'
