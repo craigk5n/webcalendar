@@ -55,7 +55,6 @@ if ( $groups_enabled == "Y" ) {
   echo "<input type=\"button\" onclick=\"selectUsers()\" value=\"" .
     translate("Select") . "...\" />";
 }
-echo "</td></tr>\n";
 ?>
 </td></tr>
 <tr><td colspan="2">
