@@ -50,7 +50,7 @@ if ( ! empty ( $user ) ) {
 ?>
 
 <h2><?php etranslate("Delete Events")?></h2>
-<a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
+<a title="<?php etranslate("Admin") ?>" class="nav" href="../CVS/webcalendar/adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 <form action="<?php echo $PHP_SELF; ?>" method="post" name="purgeform">
 <table>
 	<tr><td>
@@ -125,10 +125,10 @@ function get_ids ( $sql, $ALL = '' ) {
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ($ALL == 1) {
-        $ids[] = $row['cal_id'];
+        $ids[] = $row[0];
       } else {
         //ONLY Delete event if no other participants.
-        $ID = $row['cal_id'];
+        $ID = $row[0];
         $res2 = dbi_query ( "SELECT COUNT(*) FROM webcal_entry_user " .
           "WHERE cal_id = $ID" );
         if ( $res2 ) {
