@@ -15,6 +15,14 @@ include "includes/translate.inc";
 
 $view = "month";
 
+if ( strlen ( $user ) ) {
+  $u_url = "user=$user&";
+  user_load_variables ( $user, "user_" );
+} else {
+  $u_url = "";
+  $user_fullname = $fullname;
+}
+
 ?>
 <HTML>
 <HEAD>
@@ -121,10 +129,7 @@ if ( ! $friendly ) {
 <?php
   if ( ! strlen ( $single_user_login ) ) {
     echo "<BR>\n";
-    if ( strlen ( $lastname ) && strlen ( $firstname ) )
-      echo "$firstname $lastname";
-    else
-      echo $login;
+    echo $user_fullname;
   }
 ?>
 </FONT></TD>

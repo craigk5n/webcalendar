@@ -15,10 +15,13 @@ $view = "week";
 
 include "includes/translate.inc";
 
-if ( strlen ( $user ) )
+if ( strlen ( $user ) ) {
   $u_url = "user=$user&";
-else
+  user_load_variables ( $user, "user_" );
+} else {
   $u_url = "";
+  $user_fullname = $fullname;
+}
 
 ?>
 <HTML>
@@ -110,7 +113,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <FONT SIZE="+1" COLOR="<?php echo $H2COLOR;?>">
 <?php
   if ( ! strlen ( $single_user_login ) ) {
-    echo "<BR>$fullname\n";
+    echo "<BR>$user_fullname\n";
   }
 ?>
 </FONT>
