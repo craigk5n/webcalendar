@@ -79,20 +79,15 @@ function event_to_text ( $id, $date, $time, $duration,
       }
     }
   }
-  if ( ! empty ( $LANGUAGE ) ) {
-    $charset = translate("charset");
-  } else {
-    $charset = "iso-8859-1";
-  }
   if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
     $name_str = "(" . translate("Private") . ")";
   } else if ( $login != $event_owner && $access == 'R' &&
     strlen ( $event_owner ) ) {
     $name_str = "(" . translate("Private") . ")";
   } else if ( $login != $event_owner && strlen ( $event_owner ) ) {
-    $name_str = htmlentities ( $name, ENT_COMPAT, $charset );
+    $name_str = htmlspecialchars ( $name );
   } else {
-    $name_str = htmlentities ( $name, ENT_COMPAT, $charset );
+    $name_str = htmlspecialchars ( $name );
   }
 
   $date_str = date_to_str ( $date, "", false );
@@ -130,7 +125,7 @@ function event_to_text ( $id, $date, $time, $duration,
     $description_str = str_replace ( '&amp;amp;', '&amp', $str );
   } else {
     $description_str = nl2br (
-      activate_urls ( htmlentities ( $description, ENT_COMPAT, ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" ) ) ) );
+      activate_urls ( htmlspecialchars ( $description ) ) );
   }
 
   $href_str = "view_entry.php?id=$id";
