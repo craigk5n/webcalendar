@@ -109,6 +109,34 @@ if ( ! strstr ( $PHP_SELF, "login.php" ) && ! empty ( $GLOBALS["login"] ) ) {
   $GLOBALS["login"] = "";
 }
 
+
+/*
+ * Functions start here.  All non-function code should be above this
+ *
+ * Note to developers:
+ *	Documentation is generated from the function comments below.
+ *	When adding/updating functions, please follow the following conventions
+ *	seen below.  Your cooperation in this matter is appreciated :-)
+ *
+ *	If you want your documentation to link to the db documentation,
+ *	just make sure you mention the db table name followed by "table"
+ *	on the same line.  Here's an example:
+ *		Retrieve preferences from the webcal_user_pref table.
+ *	The same can be done to link to other functions:
+ *		Use the getIntValue function to obtain integer values.
+ *
+ */
+
+/** getPostValue
+  * Description:
+  *	Get the value resulting from an HTTP POST method.   <br/>
+  *	Note: The return value will be affected by the value of
+  *	<tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.
+  * Parameters:
+  *	$name - Name used in the HTML form
+  * Returns:
+  *	the value used in the HTML form
+  */
 function getPostValue ( $name ) {
   if ( ! empty ( $_POST[$name] ) )
     return $_POST[$name];
@@ -119,6 +147,19 @@ function getPostValue ( $name ) {
   return ( $HTTP_POST_VARS[$name] );
 }
 
+/** getGetValue
+  * Description:
+  *	Get the value resulting from an HTTP GET method.   <br/>
+  *	Note: The return value will be affected by the value of
+  *	<tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.
+  *	If you need to enforce a specific input format (such
+  *	as numeric input), then use the
+  *	getValue function.
+  * Parameters:
+  *	$name - Name used in the HTML form or found in the URL
+  * Returns:
+  *	The value used in the HTML form (or URL)
+  */
 function getGetValue ( $name ) {
   if ( ! empty ( $_GET[$name] ) )
     return $_GET[$name];
@@ -129,7 +170,27 @@ function getGetValue ( $name ) {
   return ( $HTTP_GET_VARS[$name] );
 }
 
-// Get value from HTTP GET or POST
+/** getValue
+  * Description:
+  *	Get the value resulting from either HTTP GET method or
+  *	HTTP POST method.  <br />
+  *	Note: The return value will be affected by the value of
+  *	<tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.  <br />
+  *	Note: If you need to get an integer value, yuou can use the
+  *	getIntValue function.
+  * Parameters:
+  *	$name - Name used in the HTML form or found in the URL
+  *	$format - A regular expression format that the input must
+  *	  match.  If the input does not match, an empty string is
+  *	  returned and a warning is sent to the browser.  If
+  *	  The $fatal parameter is true, then execution will also stop
+  *	  when the input does not match the format.
+  *	$fatal - Is it considered a fatal error requiring execution to
+  *	  stop if the value retrieved does not match the format
+  *	  regular expression?
+  * Returns:
+  *	The value used in the HTML form (or URL)
+  */
 function getValue ( $name, $format="", $fatal=false ) {
   $val = getPostValue ( $name );
   if ( ! isset ( $val ) )
@@ -143,7 +204,7 @@ function getValue ( $name, $format="", $fatal=false ) {
   if ( ! empty ( $format ) && ! preg_match ( "/^" . $format . "$/", $val ) ) {
     // does not match
     if ( $fatal ) {
-      echo "Fatal Error: Invalid data format for $name\n"; exit;
+      dieMiserableDeath ( "Fatal Error: Invalid data format for $name" );
     }
     // ignore value
     return "";
@@ -151,21 +212,32 @@ function getValue ( $name, $format="", $fatal=false ) {
   return $val;
 }
 
-// Get an integer value
+/** getIntValue
+  * Description:
+  *	Get an integer value resulting from an HTTP GET or
+  *	HTTP POST method.   <br/>
+  *	Note: The return value will be affected by the value of
+  *	<tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.
+  * Parameters:
+  *	$name - Name used in the HTML form or found in the URL
+  *	$fatal - Is it considered a fatal error requiring execution to
+  *	  stop if the value retrieved does not match the format
+  *	  regular expression?
+  * Returns:
+  *	The value used in the HTML form (or URL)
+  */
 function getIntValue ( $name, $fatal=false ) {
   $val = getValue ( $name, "-?[0-9]+", $fatal );
   return $val;
 }
 
-// Load default system settings (which can be updated via admin.php)
-// System settings are stored in webcal_config.
-// In addition to WebCalendar settings, plugin settings are also stored.
-// The convention for plugin settings is to prefix all settings with
-// the short name of the plugin.  For example, for a plugin
-// called "Package Tracking" and a short name of "pt", all settings
-// would be prefixed with "pt." (as in "pt.somesetting").
-// (Some can also be overridden with user settings.
-// User settings are stored in webcal_pref.)
+/** load_global_settings
+  * Description:
+  *	Load default system settings (which can be updated via admin.php)
+  *	System settings are stored in the webcal_config table. <br/>
+  *	Note: If the setting for "server_url" is not set, the value will
+  *	be calculated and stored in the database.
+  */
 function load_global_settings () {
   global $login, $readonly;
   global $HTTP_HOST, $SERVER_PORT, $REQUEST_URI, $_SERVER;
@@ -216,17 +288,19 @@ function load_global_settings () {
   }
 
   // If no font settings, then set some
-  if ( empty ( $GLOBALS["fontS"] ) ) {
+  if ( empty ( $GLOBALS["FONTS"] ) ) {
     if ( $GLOBALS["LANGUAGE"] == "Japanese" )
-      $GLOBALS["fontS"] = "Osaka, Arial, Helvetica, sans-serif";
+      $GLOBALS["FONTS"] = "Osaka, Arial, Helvetica, sans-serif";
     else
-      $GLOBALS["fontS"] = "Arial, Helvetica, sans-serif";
+      $GLOBALS["FONTS"] = "Arial, Helvetica, sans-serif";
   }
 }
 
 // Return a list of active plugins.
 // Should be called after load_global_settings() and
 // load_user_preferences().
+// cek: not documented yet since I am not sure this will ever
+// be used...
 function get_plugin_list ( $include_disabled=false ) {
   // first get list of available plugins
   $sql = "SELECT cal_setting FROM webcal_config " .
@@ -284,7 +358,14 @@ function get_web_browser () {
   return "Unknown";
 }
 
-// log a debug message
+
+/** do_debug
+  * Description:
+  *	Log a debug message.  Generally, we do not leave calls to this
+  *	function in the code.  It is used for debugging only.
+  * Parameters:
+  *	$msg - Text to be logged
+  */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
   //error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
@@ -293,11 +374,25 @@ function do_debug ( $msg ) {
   //  2, "sockieman:2000" );
 }
 
-// send a redirect to the specified page
-// MS IIS/PWS has a bug in which it does not allow us to send a cookie
-// and a redirect in the same HTTP header.
-// See the following for more info on the IIS bug:
-//   http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4
+/** do_redirect
+  * Description:
+  *	Send a redirect to the specified page.
+  *	The database connection is closed and execution terminates
+  *	in this function. <br/>
+  *	Note:
+  *	MS IIS/PWS has a bug in which it does not allow us to send a cookie
+  *	and a redirect in the same HTTP header.  When we detect that the
+  *	web server is IIS, we accomplish the redirect using meta-refresh.
+  *	See the following for more info on the IIS bug:
+  *	  <blockquote>
+  *	  <a href="http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4">
+  *	  http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4</a>
+  *	  </blockquote>
+  * Parameters:
+  *	$url - The page to redirect to.  In theory, this should be an
+  *	absolute URL, but all browsers accept relative URLs
+  *	(like "month.php").
+  */
 function do_redirect ( $url ) {
   global $SERVER_SOFTWARE, $_SERVER, $c;
   if ( empty ( $SERVER_SOFTWARE ) )
@@ -325,7 +420,10 @@ function do_redirect ( $url ) {
   exit;
 }
 
-// send an HTTP login request
+/** send_http_login
+  * Description:
+  *	Send an HTTP login request to the browser and stop execution.
+  */
 function send_http_login () {
   global $lang_file, $application_name;
 
@@ -355,9 +453,13 @@ function send_http_login () {
   exit;
 }
 
-// Generate a cookie that saves the last calendar view (month, week, day)
-// so we can return to this same page after a user edits/deletes/etc an
-// event
+/** remember_this_view
+  * Description:
+  *	Generate a cookie that saves the last calendar view (month, week, day)
+  *	based on the current $REQUEST_URI
+  *	so we can return to this same page after a user edits/deletes/etc an
+  *	event.
+  */
 function remember_this_view () {
   global $server_url, $REQUEST_URI;
   if ( empty ( $REQUEST_URI ) )
@@ -370,8 +472,14 @@ function remember_this_view () {
   SetCookie ( "webcalendar_last_view", $REQUEST_URI );
 }
 
-// Get the last page stored using above function.
-// Return empty string if we don't know.
+/** get_last_view
+  * Description:
+  *	Get the last page stored using the remember_this_view function.
+  *	Return empty string if we don't know.
+  * Returns:
+  *	The URL of the last view or an empty string if it cannot be
+  *	determined.
+  */
 function get_last_view () {
   global $HTTP_COOKIE_VARS;
   $val = '';
@@ -383,7 +491,14 @@ function get_last_view () {
   return $val;
 }
 
-// Send header stuff that tells the browser not to cache this page.
+/** send_no_cache_header
+  * Description:
+  *	Send header stuff that tells the browser not to cache this page.
+  *	Different browser use different mechanisms for this, so a series
+  *	of HTTP header directives are sent.
+  *	<br/>Note: This function needs to be called before any HTML output
+  *	is sent to the browser.
+  */
 function send_no_cache_header () {
   header ( "Expires: Mon, 26 Jul 1997 05:00:00 GMT" );
   header ( "Last-Modified: " . gmdate ( "D, d M Y H:i:s" ) . " GMT" );
@@ -392,11 +507,22 @@ function send_no_cache_header () {
   header ( "Pragma: no-cache" );
 }
 
-// Load the current user's preferences as global variables.
-// Also load the list of views for this user (not really a preference,
-// but this is a convenient place to put this...)
-// Note: If the $allow_color_customization is set to 'N', then we ignore any
-// color preferences.
+/** load_user_preferences
+  * Description:
+  *	Load the current user's preferences as global variables
+  *	from the webcal_user_pref table.
+  *	Also load the list of views for this user (not really a preference,
+  *	but this is a convenient place to put this...)
+  *	<br/>Notes:   <ul>
+  *	<li>If the $allow_color_customization is set to 'N',
+  *	then we ignore any color preferences.</li>
+  *	<li>Other default values will also be set if the user
+  *	has not saved a preference and no global value has been set
+  *	by the administrator in the system settings.</li>
+  *	</ul>
+  * Returns:
+  *	The value used in the HTML form (or URL)
+  */
 function load_user_preferences () {
   global $login, $browser, $views, $prefarray, $is_assistant,
     $has_boss, $user, $is_nonuser_admin, $allow_color_customization;
@@ -477,9 +603,17 @@ function load_user_preferences () {
   if ( $is_nonuser_admin ) load_nonuser_preferences ($user);
 }
 
-// Get the list of external users for an event
-// $use_mailto - when set to 1, email address will contain an href
-//   link with a mailto URL.
+/** event_get_external_users
+  * Description:
+  *	Get the list of external users for an event from the
+  *	webcal_entry_ext_user table in an HTML format.
+  * Parameters:
+  *	$event_id - event id
+  *	$use_mailto - when set to 1, email address will contain an href
+  *	  link with a mailto URL.
+  * Returns:
+  *	The list of external users for an event formatte in HTML.
+  */
 function event_get_external_users ( $event_id, $use_mailto=0 ) {
   global $error;
   $ret = "";
@@ -511,9 +645,28 @@ function event_get_external_users ( $event_id, $use_mailto=0 ) {
   return $ret;
 }
 
-// Add something to the activity log for an event
-// $user - user doing this
-// $user_cal - user who's calendar is affected
+/** activity_log
+  * Description:
+  *	Add something to the activity log for an event.
+  *	The information will be saved to the
+  *	webcal_entry_log table.
+  * Parameters:
+  *	$event_id - event id
+  *	$user - user doing this
+  *	$user_cal - user whose calendar is affected
+  *	$type - type of activity we are logging:  <ul>
+  *	  <li>$LOG_CREATE</li>
+  *	  <li>$LOG_APPROVE</li>
+  *	  <li>$LOG_REJECT</li>
+  *	  <li>$LOG_UPDATE</li>
+  *	  <li>$LOG_DELETE</li>
+  *	  <li>$LOG_NOTIFICATION</li>
+  *	  <li>$LOG_REMINDER</li>
+  *	</ul>
+  *	$text - text comment to add with activity log entry
+  * Returns:
+  *	The value used in the HTML form (or URL)
+  */
 function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
   $next_id = 1;
 
@@ -547,13 +700,28 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
   }
 }
 
-// Get a list of users.  We used to just call user_get_users() directly.
-// Now, we use this instead.  If groups are enabled, this can restrict
-// the list of users to only those users who are in the same group(s)
-// as the user.
-// We allow admin users to see all users because they can also edit
-// someone else's events (so they may need access to users who are not
-// in the same groups that they are in).
+/** get_my_users
+  * Description:
+  *	Get a list of users.
+  *	If groups are enabled, this will restrict
+  *	the list of users to only those users who are in the same group(s)
+  *	as the user (unless the user is an admin user).
+  *	We allow admin users to see all users because they can also edit
+  *	someone else's events (so they may need access to users who are not
+  *	in the same groups that they are in).
+  * Returns:
+  *	An array of users, where each element in the array is an array
+  *	with the following keys:<ul>
+  *		<li>cal_login</li>
+  *		<li>cal_lastname</li>
+  *		<li>cal_firstname</li>
+  *		<li>cal_is_admin</li>
+  *		<li>cal_is_admin</li>
+  *		<li>cal_email</li>
+  *		<li>cal_password</li>
+  *		<li>cal_fullname</li>
+  *	</ul>
+  */
 function get_my_users () {
   global $login, $is_admin, $groups_enabled, $user_sees_only_his_groups;
 
@@ -607,11 +775,19 @@ function get_my_users () {
   }
 }
 
-// Get a preference setting for the specified user.  If no value is
-// found in the db, then the system default setting will be returned.
-// params:
-//   $user - user login we are getting preference for
-//   $setting - the name of the setting
+/** get_pref_setting
+  * Description:
+  *	Get a preference setting for the specified user.  If no value is
+  *	found in the database, then the system default setting will be
+  *	returned.
+  * Parameters:
+  *	$user - user login we are getting preference for
+  *	$setting - the name of the setting
+  * Returns:
+  *	The value found in the webcal_user_pref table for the
+  *	specified setting or the sytem default if no user settings
+  *	was found.
+  */
 function get_pref_setting ( $user, $setting ) {
   // set default
   if ( $GLOBALS["sys_" .$setting] == "" ) {
@@ -656,9 +832,18 @@ function get_browser_language () {
     return "none";
 }
 
-// Load current user's layer info and stuff it into layer global variable.
-// If the system setting $allow_view_other is not set to 'Y', then
-// we ignore all layer functionality
+/** load_user_layers
+  * Description:
+  *	Load current user's layer info and stuff it into layer global variable.
+  *	If the system setting $allow_view_other is not set to 'Y', then
+  *	we ignore all layer functionality.
+  *	If $force is 0, we only load layers if the current user preferences
+  *	have layers turned on.
+  * Parameters:
+  *	$user - User to load layers for
+  *	$force - If set to 1, then load layers for this user even if
+  *		user preferences have layers turned off.
+  */
 function load_user_layers ($user="",$force=0) {
   global $login;
   global $layers;
@@ -695,6 +880,16 @@ function load_user_layers ($user="",$force=0) {
   }
 }
 
+/** site_extras_for_popup
+  * Description:
+  *	Generate the HTML used in an event popup for the site_extras
+  *	fields of an event.
+  * Parameters:
+  *	$id - event id
+  * Returns:
+  *	The HTML to be used within the event popup for any site_extra
+  *	fields found for the specified event
+  */
 function site_extras_for_popup ( $id ) {
   global $site_extras_in_popup, $site_extras;
   // These are needed in case the site_extras.php file was already
@@ -758,8 +953,19 @@ function site_extras_for_popup ( $id ) {
   return $ret;
 }
 
-// Build the HTML for the event popup (but don't print it yet since we
-// don't want this HTML to go inside the table for the month).
+/** build_event_popup
+  * Description:
+  *	Build the HTML for the event popup (but don't print it yet since we
+  *	don't want this HTML to go inside the table for the month).
+  * Parameters:
+  *	$popupid - CSS id to use for event popup
+  *	$user - user the event pertains to
+  *	$description - event description
+  *	$time - time of the event (already formatted in a display format)
+  *	$site_extras - the HTML for any site_extras for this event
+  * Returns:
+  *	The HTML for the event popup
+  */
 function build_event_popup ( $popupid, $user, $description, $time, $site_extras='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname;
   $ret = "<dl id=\"$popupid\" class=\"popup\">\n";
@@ -802,18 +1008,28 @@ function build_event_popup ( $popupid, $user, $description, $time, $site_extras=
   return $ret;
 }
 
-// Print out a date selection for use in a form.
-// params:
-//   $prefix - prefix to use in front of form element names
-//   $date - currently selected date (in YYYYMMDD) format
+/** print_date_selection
+  * Description:
+  *	Print out a date selection for use in a form.
+  * Parameters:
+  *	$prefix - prefix to use in front of form element names
+  *	$date - currently selected date (in YYYYMMDD) format
+  * Returns:
+  *	The value used in the HTML form (or URL)
+  */
 function print_date_selection ( $prefix, $date ) {
   print date_selection_html ( $prefix, $date );
 }
 
-// Generate a date selection for use in a form and return in.
-// params:
-//   $prefix - prefix to use in front of form element names
-//   $date - currently selected date (in YYYYMMDD) format
+/** date_selection_html
+  * Description:
+  *	Print out a date selection for use in a form.
+  * Parameters:
+  *	$prefix - prefix to use in front of form element names
+  *	$date - currently selected date (in YYYYMMDD) format
+  * Returns:
+  *	The value used in the HTML form (or URL)
+  */
 function date_selection_html ( $prefix, $date ) {
   $ret = "";
   $num_years = 20;
@@ -847,16 +1063,20 @@ function date_selection_html ( $prefix, $date ) {
   return $ret;
 }
 
-// Prints out a minicalendar for a month
-// params:
-//   $thismonth - number of the month to print
-//   $thisyear - number of the year
-//   $showyear - boolean whether to show the year in the calendar's title
-//   $show_weeknums - boolean whether to show week numbers to the left of each row
-//   $minical_id - id attribute for the minical table
-//   $month_link - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;)
-//                 defaults to 'month.php?'
-//
+/** display_small_month
+  * Description:
+  *	Prints out a minicalendar for a month
+  * Parameters:
+  *	$thismonth - number of the month to print
+  *	$thisyear - number of the year
+  *	$showyear - boolean whether to show the year in the calendar's title
+  *	$show_weeknums - boolean whether to show week numbers to the left of each row
+  *	$minical_id - id attribute for the minical table
+  *	$month_link - URL and query string for month link that should
+  *	come before the date specification
+  *	(i.e. month.php?  or  view_l.php?id=7&amp;)
+  *	[defaults to 'month.php?']
+  */
 function display_small_month ( $thismonth, $thisyear, $showyear,
   $show_weeknums=false, $minical_id='', $month_link='month.php?' ) {
   global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
@@ -1001,19 +1221,22 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   echo "</tbody>\n</table>\n";
 }
 
-// Print the HTML for one day's events in the month view.
-// params:
-//   $id - event id
-//   $date - date (not used)
-//   $time - time (in HHMMSS format)
-//   $duration - event duration (in minutes)
-//   $name - event name
-//   $description - long description of event
-//   $status - event status
-//   $pri - event priority
-//   $access - event access
-//   $event_owner - user associated with this event
-//   $event_cat - category of event for event_owner
+/** print_entry
+  * Description:
+  *	Print the HTML for one day's events in the month view.
+  * Parameters:
+  *	$id - event id
+  *	$date - date of event (relavant in repeating events) in YYYYMMDD format
+  *	$time - time (in HHMMSS format)
+  *	$duration - event duration (in minutes)
+  *	$name - event name
+  *	$description - long description of event
+  *	$status - event status
+  *	$pri - event priority
+  *	$access - event access
+  *	$event_owner - user associated with this event
+  *	$event_cat - category of event for event_owner
+  */
 function print_entry ( $id, $date, $time, $duration,
   $name, $description, $status,
   $pri, $access, $event_owner, $event_cat=-1 ) {
@@ -1124,10 +1347,21 @@ function print_entry ( $id, $date, $time, $duration,
 			$description, $timestr, site_extras_for_popup ( $id ) );
 }
 
-// Get any site-specific fields for an entry that are stored in the database.
-// Return an array.
-// params:
-//   $eventid - unique event id
+/** get_site_extra_fields
+  * Description:
+  *	Get any site-specific fields for an entry that are stored
+  *	in the database in the webcal_site_extras table.
+  * Parameters:
+  *	$eventid - event id
+  * Returns:
+  *	Return an array of array with the keys as follows:  <ul>
+  *	  <li> cal_name </li>
+  *	  <li> cal_type </li>
+  *	  <li> cal_date </li>
+  *	  <li> cal_remind </li>
+  *	  <li> cal_data </li>
+  *	</ul>
+  */
 function get_site_extra_fields ( $eventid ) {
   $sql = "SELECT cal_name, cal_type, cal_date, cal_remind, cal_data " .
     "FROM webcal_site_extras " .
@@ -1150,15 +1384,20 @@ function get_site_extra_fields ( $eventid ) {
   return $extras;
 }
 
-// Read all the events for a user for the specified range of dates.
-// This is only called once per page request to improve performance.
-// All the events get loaded into the array $events sorted by
-// time of day (not date).
-// params:
-//   $user - username
-//   $startdate - start date range, inclusive (in YYYYMMDD format)
-//   $enddate - end date range, inclusive (in YYYYMMDD format)
-//   $cat_id - category ID to filter on
+/** read_events
+  * Description:
+  *	Read all the events for a user for the specified range of dates.
+  *	This is only called once per page request to improve performance.
+  *	All the events get loaded into the array $events sorted by
+  *	time of day (not date).
+  * Parameters:
+  *	$user - username
+  *	$startdate - start date range, inclusive (in YYYYMMDD format)
+  *	$enddate - end date range, inclusive (in YYYYMMDD format)
+  *	$cat_id - category ID to filter on
+  * Returns:
+  *	An array of events
+  */
 function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
   global $login;
   global $layers;
@@ -1227,12 +1466,18 @@ function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
   return query_events ( $user, false, $date_filter, $cat_id  );
 }
 
-// Get all the events for a specific date from the array of pre-loaded
-// events (which was loaded all at once to improve performance).
-// The returned events will be sorted by time of day.
-// params:
-//   $user - username
-//   $date - date to get events for in YYYYMMDD format
+/** get_entries
+  * Description:
+  *	Get all the events for a specific date from the array of pre-loaded
+  *	events (which was loaded all at once to improve performance).
+  *	The returned events will be sorted by time of day.
+  * Parameters:
+  *	$user - username
+  *	$date - date to get events for in YYYYMMDD format
+  *	$get_unapproved - load unapproved events (true/false)
+  * Returns:
+  *	An array of events
+  */
 function get_entries ( $user, $date, $get_unapproved=true ) {
   global $events, $TZ_OFFSET;
   $n = 0;
@@ -1297,16 +1542,21 @@ function get_entries ( $user, $date, $get_unapproved=true ) {
   return $ret;
 }
 
-// Read events visible to a user (including layers and possibly public access
-// if enabled); return results
-// in an array sorted by time of day.
-// params:
-//   $user - username
-//   $want_repeated - true to get repeating events; false to get
-//     non-repeating.
-//   $date_filter - SQL phrase starting with AND, to be appended to
-//     the WHERE clause.  May be empty string.
-//   $cat_id - category ID to filter on.  May be empty.
+/** query_events
+  * Description:
+  *	Read events visible to a user (including layers and possibly
+  *	public access if enabled); Return results
+  *	in an array sorted by time of day.
+  * Parameters:
+  *	$user - username
+  *	$want_repeated - true to get repeating events; false to get
+  *	  non-repeating.
+  *	$date_filter - SQL phrase starting with AND, to be appended to
+  *	  the WHERE clause.  May be empty string.
+  *	$cat_id - category ID to filter on.  May be empty.
+  * Returns:
+  *	An array of events
+  */
 function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   global $login;
   global $layers, $public_access_default_visible;
