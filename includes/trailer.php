@@ -332,8 +332,8 @@ if ( ! $use_http_auth ) {
     for ( $i = 0; $i < count ( $grouplist ); $i++ ) {
       $l = $grouplist[$i]['cal_login'];
       $f = $grouplist[$i]['cal_fullname'];
-      if ( $i > 0) $groups .= ",&nbsp;";
-		$groups .= "<a title=\"$f\" href=\"$GLOBALS[STARTVIEW].php?user=$l\">$f</a>\n";
+      if ( $i > 0) $groups .= ", ";
+		$groups .= "<a title=\"$f\" href=\"$GLOBALS[STARTVIEW].php?user=$l\">$f</a>";
     }
     print $groups;
   }
