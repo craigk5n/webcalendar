@@ -780,11 +780,14 @@ function print_date_selection ( $prefix, $date ) {
 //   $date - currently selected date (in YYYYMMDD) format
 function date_selection_html ( $prefix, $date ) {
   $ret = "";
+  $num_years = 6;
   if ( strlen ( $date ) != 8 )
     $date = date ( "Ymd" );
   $thisyear = $year = substr ( $date, 0, 4 );
   $thismonth = $month = substr ( $date, 4, 2 );
   $thisday = $day = substr ( $date, 6, 2 );
+  if ( $thisyear - date ( "Y" ) >= ( $num_years - 1 ) )
+    $num_years = $thisyear - date ( "Y" ) + 2;
   $ret .= "<SELECT NAME=\"" . $prefix . "day\">";
   for ( $i = 1; $i <= 31; $i++ )
     $ret .= "<OPTION " . ( $i == $thisday ? " SELECTED" : "" ) . ">$i";
@@ -795,7 +798,7 @@ function date_selection_html ( $prefix, $date ) {
       ( $i == $thismonth ? " SELECTED" : "" ) . ">$m";
   }
   $ret .= "</SELECT>\n<SELECT NAME=\"" . $prefix . "year\">";
-  for ( $i = -1; $i < 5; $i++ ) {
+  for ( $i = -1; $i < $num_years; $i++ ) {
     $y = date ( "Y" ) + $i;
     $ret .= "<OPTION VALUE=\"$y\"" .
       ( $y == $thisyear ? " SELECTED" : "" ) . ">$y";
