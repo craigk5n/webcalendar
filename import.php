@@ -37,7 +37,7 @@ function print_tabs ( $items, $sel=0 ) {
   for ( $i = 0; $i < count ( $items ); $i++ ) {
     echo "    <a class=\"tab";
     if ( $i == $sel ) echo " active";
-    echo "\" href=\"import.php?tab=$i\" style=\"font-weight:bold;font-size:18;\">$items[$i]</a>\n";
+    echo "\" href=\"import.php?tab=$i\" style=\"font-weight:bold; font-size:18;\">$items[$i]</a>\n";
   }
   echo "  </div>\n";
 
@@ -54,7 +54,7 @@ function end_tabs() {
 }
 ?>
 
-<h2><font color="<?= $H2COLOR;?>">Import</font></h2>
+<h2 style="color:<?= $H2COLOR;?>;">Import</h2>
 
 <form action="import_handler.php" method="post" name="importform" enctype="multipart/form-data">
 <?php
@@ -71,8 +71,8 @@ if ( $tab == 0 ) {
 <input type="radio" name="exc_private" value="1" CHECKED="CHECKED"><?php etranslate("Yes")?>
 <input type="radio" name="exc_private" value="0"><?php etranslate("No")?>
 <br /><br />
-<table border="0">
-<tr><td><b><?php etranslate("Datebook File")?>:</b></td>
+<table style="border-width:0px;">
+<tr><td style="font-weight:bold;"><?php etranslate("Datebook File")?>:</td>
   <td><input type="file" name="FileName" size="45" maxlength="50" /></td></tr>
 <tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>" />
 <input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
@@ -88,8 +88,8 @@ if ( $tab == 0 ) {
 <?php etranslate("This form will import vCalendar (.vcs) 1.0 events");?>.
 <br /><br />
 <input type="hidden" name="ImportType" value="VCAL" />
-<table border="0">
-<tr><td><b><?php etranslate("vCal File")?>:</b></td>
+<table style="border-width:0px;">
+<tr><td style="font-weight:bold;"><?php etranslate("vCal File")?>:</td>
   <td><input type="file" name="FileName" size="45" maxlength=50" /></td></tr>
 <tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>" />
 <input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
@@ -104,10 +104,10 @@ if ( $tab == 0 ) {
 <?php etranslate("This form will import iCalendar (.ics) events");?>.
 <br /><br />
 <input type="hidden" name="ImportType" value="ICAL" />
-<table border="0">
-<tr><td><b><?php etranslate("iCal File")?>:</b></td>
+<table style="border-width:0px;">
+<tr><td style="font-weight:bold;"><?php etranslate("iCal File")?>:</td>
   <td><input type="file" name="FileName" size="45" maxlength=50" /></td></tr>
-<tr><td><b><?php etranslate("Overwrite Prior Import")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Overwrite Prior Import")?>:</td>
   <td><input type="radio" name="overwrite" value="Y" CHECKED="CHECKED" /> <?php etranslate("Yes");?>
   &nbsp;&nbsp;
   <input type="radio" name="overwrite" value="N"/> <?php etranslate("No");?>
