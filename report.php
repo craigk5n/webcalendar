@@ -85,9 +85,9 @@ function event_to_text ( $id, $date, $time, $duration,
     strlen ( $event_owner ) )
     $name_str = "(" . translate("Private") . ")";
   else if ( $login != $event_owner && strlen ( $event_owner ) ) {
-    $name_str = htmlspecialchars ( $name );
+    $name_str = htmlentities ( $name );
   } else
-    $name_str = htmlspecialchars ( $name );
+    $name_str = htmlentities ( $name );
 
   $date_str = date_to_str ( $date, "", false );
   $date_full_str = date_to_str ( $date, "", true, false );
@@ -116,7 +116,7 @@ function event_to_text ( $id, $date, $time, $duration,
     $status_str = translate ( "Unknown" );
 
   $description_str = nl2br (
-    activate_urls ( htmlspecialchars ( $description ) ) );
+    activate_urls ( htmlentities ( $description ) ) );
 
   $href_str = "view_entry.php?id=$id";
 
