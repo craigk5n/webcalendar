@@ -1,4 +1,5 @@
 Version 0.9.41dev (?? ??? ???)
+  - Fixed bug 727315: Bad SQL in send_reminders.php
   - Fixed bug 704918: functionality (logic) to admin the boss
   - Fixed bug 705871: Unnecessary rows in webcal_site_extras
   - Fixed bug 703563: catagory "None" not translated if using another language

@@ -120,7 +120,7 @@ $startdate = date ( "Ymd" );
 $enddate = date ( "Ymd", time() + ( $DAYS_IN_ADVANCE * 24 * 3600 ) );
 
 // Now read events all the repeating events (for all users)
-$repeated_events = query_events ( "", true, "AND (webcal_entry_repeats.cal_end > $startdate || webcal_entry_repeats.cal_end IS NULL) " );
+$repeated_events = query_events ( "", true, "AND (webcal_entry_repeats.cal_end > $startdate OR webcal_entry_repeats.cal_end IS NULL) " );
 
 // Read non-repeating events (for all users)
 if ( $debug )
