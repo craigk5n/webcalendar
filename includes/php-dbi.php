@@ -65,9 +65,17 @@ function dbi_connect ( $host, $login, $password, $database ) {
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
     if ( strlen ( $password ) ) {
-      $dbargs = "host=$host dbname=$database user=$login password=$password";
+      if ( strlen ( $host ) ) {
+        $dbargs = "host=$host dbname=$database user=$login password=$password";
+      } else {
+        $dbargs = "dbname=$database user=$login password=$password";
+      }
     } else {
-      $dbargs = "host=$host dbname=$database user=$login";
+      if ( strlen ( $host ) ) {
+        $dbargs = "host=$host dbname=$database user=$login";
+      } else {
+        $dbargs = "dbname=$database user=$login";
+      }
     }
     if ($GLOBALS["db_persistent"]) {
       $c = pg_pconnect ( $dbargs );
