@@ -54,8 +54,10 @@ $noSet = array (
 if ( ! empty ( $HTTP_GET_VARS ) ) {
   while (list($key, $val) = @each($HTTP_GET_VARS)) {
     // don't allow anything to have <script> in it...
-    if ( preg_match ( "/<\s*script/i", $val ) ) {
-      echo "Security violation!"; exit;
+    if ( ! is_arrray ( $val ) ) {
+      if ( preg_match ( "/<\s*script/i", $val ) ) {
+        echo "Security violation!"; exit;
+      }
     }
     if ( $key == "login" ) {
       if ( strstr ( $PHP_SELF, "login.php" ) ) {
@@ -75,8 +77,10 @@ if ( ! empty ( $HTTP_GET_VARS ) ) {
 if ( ! empty ( $HTTP_POST_VARS ) ) {
   while (list($key, $val) = @each($HTTP_POST_VARS)) {
     // don't allow anything to have <script> in it...
-    if ( preg_match ( "/<\s*script/i", $val ) ) {
-      echo "Security violation!"; exit;
+    if ( ! is_arrray ( $val ) ) {
+      if ( preg_match ( "/<\s*script/i", $val ) ) {
+        echo "Security violation!"; exit;
+      }
     }
     if ( empty ( $noSet[$key] ) ) {
       $GLOBALS[$key] = $val;
