@@ -523,7 +523,6 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
 // in the same groups that they are in).
 function get_my_users () {
   global $login, $is_admin, $groups_enabled, $user_sees_only_his_groups;
-  global $nonuser_enabled;
 
   if ( $groups_enabled == "Y" && $user_sees_only_his_groups == "Y" &&
     ! $is_admin ) {
@@ -569,12 +568,7 @@ function get_my_users () {
   } else {
     // groups not enabled... return all users
     //echo "No groups. ";
-    $userlist = user_get_users ();
-    if ($nonuser_enabled == "Y" ) {
-      $nonusers = get_nonuser_cals ();
-      $userlist = array_merge($nonusers, $userlist);
-    }
-    return $userlist;
+    return user_get_users ();
   }
 }
 
