@@ -1,4 +1,4 @@
-<SCRIPT LANGUAGE="JavaScript">
+<script language="JavaScript">
 
 function valid_color ( str ) {
   var ch, j;
@@ -35,4 +35,4 @@ function selectColor ( color ) {
   var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
 }
 
-</SCRIPT>
+</script>

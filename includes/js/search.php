@@ -1,4 +1,4 @@
-<SCRIPT LANGUAGE="JavaScript">
+<script language="JavaScript">
 function selectUsers () {
   // find id of user selection object
   var listid = 0;
@@ -21,4 +21,4 @@ function selectUsers () {
   window.open ( url, "UserSelection",
     "width=500,height=500,resizable=yes,scrollbars=yes" );
 }
-</SCRIPT>
+</script>

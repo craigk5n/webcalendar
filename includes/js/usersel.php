@@ -2,7 +2,7 @@
 global $form,$listid,$groups;
 ?>
 
-<SCRIPT LANGUAGE="JavaScript">
+<script language="JavaScript">
 function OkButton () {
   var parentlist = window.opener.document.<?php echo $form?>.elements[<?php echo $listid?>];
   var thislist = document.forms[0].elements[0];
@@ -85,4 +85,4 @@ function deselectGroupMembers () {
   toggleGroup ( false );
 }
 
-</SCRIPT>
+</script>
