@@ -20,7 +20,7 @@ $MAX_HEIGHT = 600;
 $MIN_COLORS = 4;
 $MAX_COLORS = 256;
 $DEFAULT_COLORS = 32;
-$PERCENT = 20; // Percent to change brightness
+$PERCENT = 15; // Percent to change brightness
 
 $width = 5; // could be 1, doesn't really matter since browser will stretch it
 
