@@ -20,7 +20,7 @@ table.admin {
 ";
 if ( function_exists ("imagepng") &&
   ( empty ($GLOBALS['enable_gradients']) || $GLOBALS['enable_gradients'] == 'Y' ) ) {
-	$style .= "	background-image: url(\"gradient.php?height=300&base=CCCCCC&percent=10\");\n";
+	$style .= "	background-image: url(\"gradient.php?height=300&base=ccc&percent=10\");\n";
 } else {
 	$style .= "	background-color: #CCCCCC;\n";
 }
