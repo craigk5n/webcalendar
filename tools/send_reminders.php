@@ -252,8 +252,14 @@ function send_reminder ( $id, $event_date ) {
     $name = $row[9];
     $description = $row[10];
 
-    if ( ! empty ( $server_url ) )
-      $body .= $server_url . "view_entry.php?id=" . $id . "\n\n";
+    // add trailing '/' if not found in server_url
+    if ( ! empty ( $server_url ) ) {
+      if ( substr ( $server_url, -1, 1 ) == "/" ) {
+        $body .= $server_url . "view_entry.php?id=" . $id . "\n\n";
+      } else {
+        $body .= $server_url . "/view_entry.php?id=" . $id . "\n\n";
+      }
+    }
 
     $body .= strtoupper ( $name ) . "\n\n";
     $body .= translate("Description") . ":\n";
