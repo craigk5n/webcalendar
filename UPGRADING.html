@@ -394,7 +394,7 @@ script below since this will <b>set all user's passwords to 'admin'</b>.</p>
 <pre>
 ALTER TABLE webcal_user RENAME COLUMN cal_passwd to cal_oldpass;
 ALTER TABLE webcal_user ADD COLUMN cal_passwd VARCHAR(32) NULL;
-UPDATE webvcal_user SET cal_passwd = '21232f297a57a5a743894a0e4a801fc3';
+UPDATE webcal_user SET cal_passwd = '21232f297a57a5a743894a0e4a801fc3';
 </pre>
 
 <p>For Oracle, use VARCHAR2 instead of VARCHAR. 

@@ -139,7 +139,6 @@ a:hover {
 }
 label {
 	font-weight: bold;
-	font-size: 12px;
 }
 .sample {
 	border-style: groove;
@@ -281,10 +280,7 @@ label {
 	margin-top: 7px;
 	float: right;
 }
-<?php	//====================================== /SECTION A
-
-	//====================================== SECTION R 
-?>#activitylog .prev {
+#activitylog .prev {
 	border-width: 0px;
 	float: left;
 }
@@ -719,13 +715,6 @@ th {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-#viewt .main td.today {
-	width: 90%;
-	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
-	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	vertical-align: top;
-}
 #viewl .main td.today,
 #month .main td.today,
 #viewm .main td.today,
@@ -873,6 +862,20 @@ th {
 	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	vertical-align: top;
+}
+#viewt td.today {
+	width: 90%;
+	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	vertical-align: top;
+}
+#viewt th.today {
+	color: <?php echo $GLOBALS['THFG']; ?>;
+	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
 }
 #login {

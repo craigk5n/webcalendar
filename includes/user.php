@@ -104,7 +104,7 @@ function user_valid_crypt ( $login, $crypt_password ) {
     dbi_free_result ( $res );
   } else {
     //$error = translate("Database error") . ": " . dbi_error();
-    $error = "Database error : " . dbi_error();
+    $error = "Database error: " . dbi_error();
   }
 
   return $ret;

@@ -1,25 +1,53 @@
 <?php
+/*
+	NOTE:
+	There are THREE components that make up the functionality of users.php.
+	1. users.php
+		- contains the tabs
+		- lists users
+		- has an iframe for adding/editing users
+		- include statements for groups.php and nonusers.php
+	2. edit_user.php
+		- the contents of the iframe (i.e. a form for adding/editing users)
+	3. edit_user_handler.php
+		- handles form submittal from edit_user.php
+		- provides user with confirmation of successful operation
+		- refreshes the parent frame (users.php)
+
+	This structure is mirrored for groups & nonusers
+*/
+	include_once 'includes/init.php';
+	$INC = array('js/users.php','js/visible.php');
+	print_header($INC);
+
+
 /* $Id */
 include_once 'includes/init.php';
 $INC = array('js/users.php','js/visible.php');
 print_header($INC);
 
-if ( ! $is_admin ) {
-echo "<h2>" . translate("Error") . "</h2>\n" . 
-  translate("You are not authorized") . ".\n";
-  echo "</body>\n</html>";
-  exit;
-}
+//if ( ! $is_admin ) {
+//echo "<h2>" . translate("Error") . "</h2>\n" . 
+//  translate("You are not authorized") . ".\n";
+//  echo "</body>\n</html>";
+//  exit;
+//}
 ?>
 <a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 
 <!-- TABS -->
 <div id="tabs">
-	<span class="tabfor" id="tab_users"><a href="#tabusers" onclick="return showTab('users')"><?php etranslate("Users")?></a></span>
-	<?php if ($groups_enabled == "Y") { ?>
+	<span class="tabfor" id="tab_users"><a href="#tabusers" onclick="return showTab('users')"><?php 
+		if ($is_admin) {
+			echo translate("Users");
+		} else {
+			echo translate("Account");
+		}
+	?></a></span>
+	<?php if ($groups_enabled == "Y" && $is_admin) { ?>
 		<span class="tabbak" id="tab_groups"><a href="#tabgroups" onclick="return showTab('groups')"><?php etranslate("Groups")?></a></span>
 	<?php } 
-	if ($nonuser_enabled == 'Y') { ?>
+	if ($nonuser_enabled == 'Y' && $is_admin) { ?>
 		<span class="tabbak" id="tab_nonusers"><a href="#tabnonusers" onclick="return showTab('nonusers')"><?php etranslate("NonUser Calendars")?></a></span>
 	<?php } ?>
 </div>
@@ -64,12 +92,11 @@ echo "<h2>" . translate("Error") . "</h2>\n" .
 <?php } ?>
 </div>
 
-
 <?php 
-	if ($groups_enabled == "Y") { 
+	if ($groups_enabled == "Y" && $is_admin) { 
 		include_once 'groups.php';
 	} 
-	if ($nonuser_enabled == 'Y') {
+	if ($nonuser_enabled == 'Y' && $is_admin) {
 		include_once 'nonusers.php';
 	}
 ?>

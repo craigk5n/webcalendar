@@ -373,8 +373,9 @@ if ( $categories_enabled == "Y" ) {
 ?>
 <h2><?php echo htmlspecialchars ( $name ); ?></h2>
 <table style="border-width:0px;">
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Description")?>:</td>
-  <td><?php
+<tr><td style="vertical-align:top; font-weight:bold;">
+	<?php etranslate("Description")?>:</td><td>
+	<?php
   if ( ! empty ( $allow_html_description ) &&
     $allow_html_description == 'Y' ) {
     $str = str_replace ( '&', '&amp;', $description );
@@ -385,57 +386,73 @@ if ( $categories_enabled == "Y" ) {
 ?></td></tr>
 
 <?php if ( $event_status != 'A' && ! empty ( $event_status ) ) { ?>
-  <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Status")?>:</td>
-  <td><?php
+<tr><td style="vertical-align:top; font-weight:bold;">
+	<?php etranslate("Status")?>:</td><td>
+	<?php
      if ( $event_status == 'W' )
        etranslate("Waiting for approval");
      if ( $event_status == 'D' )
        etranslate("Deleted");
      else if ( $event_status == 'R' )
        etranslate("Rejected");
-      ?></td></tr>
+      ?>
+</td></tr>
 <?php } ?>
 
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Date")?>:</td>
-  <td><?php
+<tr><td style="vertical-align:top; font-weight:bold;">
+	<?php etranslate("Date")?>:</td><td>
+	<?php
   if ( $event_repeats ) {
     echo date_to_str ( $event_date );
   } else {
     echo date_to_str ( $row[1], "", true, false, $event_time );
   }
-  ?></td></tr>
+  ?>
+</td></tr>
 <?php if ( $event_repeats ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Repeat Type")?>:</td>
-  <td><?php echo date_to_str ( $row[1], "", true, false, $event_time ) . $rep_str; ?></td></tr>
+<tr><td style="vertical-align:top; font-weight:bold;">
+	<?php etranslate("Repeat Type")?>:</td><td>
+	<?php echo date_to_str ( $row[1], "", true, false, $event_time ) . $rep_str; ?>
+</td></tr>
 <?php } ?>
 <?php if ( $event_time >= 0 ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Time")?>:</td>
-  <td><?php
+<tr><td style="vertical-align:top; font-weight:bold;">
+	<?php etranslate("Time")?>:</td><td>
+	<?php
     if ( $row[5] == ( 24 * 60 ) )
       etranslate("All day event");
     else
       echo display_time ( $row[2] ) . $end_str;
-  ?></td></tr>
+  ?>
+</td></tr>
 <?php } ?>
 <?php if ( $row[5] > 0 && $row[5] != ( 24 * 60 ) ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Duration")?>:</td>
-  <td><?php echo $row[5]; ?> <?php etranslate("minutes")?></td></tr>
+<tr><td style="vertical-align:top; font-weight:bold;">
+	<?php etranslate("Duration")?>:</td><td>
+	<?php echo $row[5]; ?> <?php etranslate("minutes")?>
+</td></tr>
 <?php } ?>
 <?php if ( $disable_priority_field != "Y" ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Priority")?>:</td>
-  <td><?php echo $pri[$row[6]]; ?></td></tr>
+<tr><td style="vertical-align:top; font-weight:bold;">
+	<?php etranslate("Priority")?>:</td><td>
+	<?php echo $pri[$row[6]]; ?>
+</td></tr>
 <?php } ?>
 <?php if ( $disable_access_field != "Y" ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Access")?>:</td>
-  <td><?php echo ( $row[8] == "P" ) ? translate("Public") : translate("Confidential"); ?></td></tr>
+<tr><td style="vertical-align:top; font-weight:bold;">
+	<?php etranslate("Access")?>:</td><td>
+	<?php echo ( $row[8] == "P" ) ? translate("Public") : translate("Confidential"); ?>
+</td></tr>
 <?php } ?>
 <?php if ( $categories_enabled == "Y" && ! empty ( $category ) ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Category")?>:</td>
-  <td><?php echo $category; ?></td></tr>
+<tr><td style="vertical-align:top; font-weight:bold;">
+	<?php etranslate("Category")?>:</td><td>
+	<?php echo $category; ?>
+</td></tr>
 <?php } ?>
 <?php
 if ( $single_user == "N" ) {
-  echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">" . translate("Created by") . ":</td>\n";
+  echo "<tr>\n<td style=\"vertical-align:top; font-weight:bold;\">" . translate("Created by") . ":</td>";
   if ( $is_private )
     echo "<td>[" . translate("Confidential") . "]</td></tr>\n";
   else {
@@ -451,7 +468,8 @@ if ( $single_user == "N" ) {
 }
 ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Updated")?>:</td><td><?php
+	<?php etranslate("Updated")?>:</td><td>
+	<?php
     echo date_to_str ( $row[3] );
     echo " ";
     echo display_time ( $row[4] );
@@ -466,18 +484,18 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   $extra_arg1 = $site_extras[$i][3];
   $extra_arg2 = $site_extras[$i][4];
   if ( ! empty ( $extras[$extra_name]['cal_name'] ) ) {
-    echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">" .
+    echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n" .
       translate ( $site_extras[$i][1] ) .
-      ":</td><td>";
+      ":</td><td>\n";
     if ( $extra_type == $EXTRA_URL ) {
       if ( strlen ( $extras[$extra_name]['cal_data'] ) )
         echo "<a href=\"" . $extras[$extra_name]['cal_data'] . "\">" .
-          $extras[$extra_name]['cal_data'] . "</a>";
+          $extras[$extra_name]['cal_data'] . "</a>\n";
     } else if ( $extra_type == $EXTRA_EMAIL ) {
       if ( strlen ( $extras[$extra_name]['cal_data'] ) )
         echo "<a href=\"mailto:" . $extras[$extra_name]['cal_data'] .
           "?subject=$subject\">" .
-          $extras[$extra_name]['cal_data'] . "</a>";
+          $extras[$extra_name]['cal_data'] . "</a>\n";
     } else if ( $extra_type == $EXTRA_DATE ) {
       if ( $extras[$extra_name]['cal_date'] > 0 )
         echo date_to_str ( $extras[$extra_name]['cal_date'] );
@@ -536,7 +554,8 @@ if ( $public_access == "Y" && $login == "__public__" &&
 if ( $single_user == "N" && $show_participants ) {
 ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<?php etranslate("Participants")?>:</td><td><?php
+	<?php etranslate("Participants")?>:</td><td>
+	<?php
   if ( $is_private ) {
     echo "[" . translate("Confidential") . "]";
   } else {
@@ -602,15 +621,15 @@ if ( $single_user == "N" && $show_participants ) {
       echo "<br /><strike>$tempfullname</strike> (" . translate("Rejected") . ")\n";
     }
   }
-?></td></tr>
+?>
+</td></tr>
 <?php
-} // end participants
+	} // end participants
 ?>
 
 </table>
 
-<p>
-<?php
+<p><?php
 if ( empty ( $event_status ) ) {
   // this only happens when an admin views a deleted event that he is
   // not a participant for.  Set to $event_status to "D" just to get
@@ -771,8 +790,7 @@ if ( $show_log ) {
 }
 
 if (! $is_private) {
-  echo "<br />\n";
-  echo "<form method=\"post\" name=\"exportform\" action=\"export_handler.php\">\n";
+  echo "<br /><form method=\"post\" name=\"exportform\" action=\"export_handler.php\">\n";
   echo "<strong>";
   etranslate("Export this entry to");
   echo ":</strong>\n";
