@@ -91,7 +91,7 @@ if ( empty ( $id ) ) {
   $res = dbi_query($sql);
   if ($res) {
     $row = dbi_fetch_row ( $res );
-    if ( $row[0] == $login ) || (( $user == $row[0] ) && ( $is_assistant || $is_nonuser_admin ))
+    if (( $row[0] == $login ) || (( $user == $row[0] ) && ( $is_assistant || $is_nonuser_admin )))
       $can_edit = true;
     dbi_free_result ( $res );
   } else
