@@ -1,4 +1,5 @@
 Version 1.0RC1/CVS+dev (?? ??? 2004)
+  - Fixed Bug 1109323: Error in LDAP get_admins function
   - Patch 1113315: Change maxsize of username from 20 to 25 in
     admin add user form (db was already 25)
   - Patch 1113319: fixed finding of username for http authentication
