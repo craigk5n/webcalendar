@@ -112,9 +112,9 @@ if ($DMW) {
   set_today($date);
 
   if ( $categories_enabled == "Y" && ( !$user || $user == $login ) ) {
-    if ( isset ( $cat_id ) ) {
+    if ( ! empty ( $cat_id ) ) {
       $cat_id = $cat_id;
-    } elseif ( isset ( $CATEGORY_VIEW ) ) {
+    } elseif ( ! empty ( $CATEGORY_VIEW ) ) {
       $cat_id = $CATEGORY_VIEW;
     } else {
       $cat_id = '';

@@ -22,13 +22,13 @@ if ( ! $NONUSER_PREFIX ) {
 
 <?php
 // Adding/Editing category
-if ( ( ( $add == '1' ) || ( isset ( $id ) ) ) && empty ( $error ) ) {
+if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   $userlist = get_my_users ();
   $button = translate("Add");
   ?>
   <FORM ACTION="nonusers_handler.php" METHOD="POST">
   <?php
-  if ( isset ( $id ) ) {
+  if ( ! empty ( $id ) ) {
     nonuser_load_variables ( $id, 'nonusertemp_' );
     $id_display = "$id <INPUT NAME=\"id\" TYPE=\"hidden\" VALUE=\"$id\">";
     $button = translate("Save");
@@ -54,7 +54,7 @@ if ( ( ( $add == '1' ) || ( isset ( $id ) ) ) && empty ( $error ) ) {
 
   <BR><BR>
   <INPUT TYPE="submit" NAME="action" VALUE="<?php echo $button;?>">
-  <?php if ( isset ( $id ) ) {  ?>
+  <?php if ( ! empty ( $id ) ) {  ?>
     <INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete");?>" ONCLICK="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')">
   <?php }  ?>
   </FORM>

@@ -1065,7 +1065,7 @@ $modday = $HTTP_POST_VARS["modday"];
 
 mt_srand((float) microtime()*1000000);
 
-if (!isset($id))
+if (empty($id))
 {
   $id = "all";
 }

@@ -92,7 +92,7 @@ function translate ( $str ) {
   }
 
   $str = trim ( $str );
-  if ( isset ( $translations[$str] ) )
+  if ( ! empty ( $translations[$str] ) )
     return $translations[$str];
   else {
     // To help in translating, use the following to help identify text that

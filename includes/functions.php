@@ -140,13 +140,13 @@ function getValue ( $name, $format="", $fatal=false )
   return $val;
 }
 
+
 // Get an integer value
 function getIntValue ( $name, $fatal=false )
 {
   $val = getValue ( $name, "-?[0-9]+", $fatal );
   return $val;
 }
-
 
 
 // Load default system settings (which can be updated via admin.php)
@@ -186,7 +186,7 @@ function load_global_settings () {
   // is included.
   // Note: We usually use translate($application_name) instead of
   // translate("Title").
-  if ( ! isset ( $GLOBALS["application_name"] ) )
+  if ( empty ( $GLOBALS["application_name"] ) )
     $GLOBALS["application_name"] = "Title";
 
   // If $server_url not set, then calculate one for them, then store it
@@ -612,7 +612,7 @@ function get_browser_language () {
   for ( $i = 0; $i < count ( $langs ); $i++ ) {
     $l = strtolower ( trim ( $langs[$i] ) );
     $ret .= "\"$l\" ";
-    if ( isset ( $browser_languages[$l] ) ) {
+    if ( ! empty ( $browser_languages[$l] ) ) {
       return $browser_languages[$l];
     }
   }
@@ -1562,7 +1562,6 @@ function week_number ( $date ) {
   $week_number = intval($parts[1]);
   return sprintf("%02d",$week_number);
 }
-
 
 
 // This function is not yet used.  Some of the places that will call it
@@ -3253,7 +3252,7 @@ function get_nonuser_cals ($user = '') {
 }
 
 
-
+// Loads nonuser variables
 function nonuser_load_variables ( $login, $prefix ) {
   global $error,$nuloadtmp_email;
   $ret =  false;
