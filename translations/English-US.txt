@@ -849,7 +849,7 @@ Palm Desktop: Palm Desktop
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
 The following entries will not be imported: The following entries will not be imported
 Entries older than the current date: Entries older than the current date
-Entries creted in the Palm Desktop that have not been HotSync'd: Entries creted in the Palm Desktop that have not been HotSync'd
+Entries created in the Palm Desktop that have not been HotSync'd: Entries created in the Palm Desktop that have not been HotSync'd
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
 Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
 vCal: vCal
