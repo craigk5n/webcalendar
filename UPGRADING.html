@@ -16,10 +16,6 @@
 	dt {
 		font-weight: bold;
 	}
-	blockquote {
-		font-family: courier;
-		background-color: #c0c0c0;
-	}
 	td {
 		background-color: #c0c0c0;
 	}
@@ -31,7 +27,16 @@
 		background-color: #6060c0;
 	}
 	.valid {
-
+		height: 31px;
+		width: 88px;
+		border: 0px;
+	}
+	pre {
+		font-family: courier, monospace;
+		border: 1px solid blue;
+		background-color: #EEEEFF;
+		padding: 4px;
+		margin-left: 25px;
 	}
 </style>
 </head>
@@ -76,11 +81,11 @@ was mistakenly created as "cal_event_user" in the 0.9 release.</p>
 <h4><a id="dot907">To upgrade from v0.9.01 to v0.9.07:</a></h4>
 <p>Entirely new tables are used. Use the following commands to 
 convert your existing MySQL tables to the new tables:</p>
-  <blockquote><pre>
-    cd tools
-    ./upgrade_to_0.9.7.pl
-    mysql intranet &lt; commands.sql
-  </pre></blockquote>
+<pre>
+cd tools
+./upgrade_to_0.9.7.pl
+mysql intranet &lt; commands.sql
+</pre>
 <p>where "intranet" is the name of the MySQL database that contains 
 your WebCalendar tables.</p>
 <a href="UPGRADING.html#dot912">next..</a>
@@ -90,9 +95,7 @@ your WebCalendar tables.</p>
 <p>To fix a bug in the handing of events at midnight, all the 
 entries with NULL for cal_time are changed to -1. Use the 
 following SQL command:</p>
-  <blockquote><pre>
-    update webcal_entry set cal_time = -1 where cal_time is null;
-  </pre></blockquote>
+	<pre>update webcal_entry set cal_time = -1 where cal_time is null;</pre>
 <a href="UPGRADING.html#dot914">next..</a>
 <hr />
 
@@ -101,16 +104,16 @@ following SQL command:</p>
 tables-mysql.sql, tables-oracle.sql, or tables-postgres.sql. 
 Execute the SQL for creating the webcal_entry_repeats. For MySQL, 
 the SQL is:</p>
-  <blockquote><pre>
-    CREATE TABLE webcal_entry_repeats (
-      cal_id INT DEFAULT '0' NOT NULL,
-      cal_type VARCHAR(20),
-      cal_end INT,
-      cal_frequency INT DEFAULT '1',
-      cal_days CHAR(7),
-      PRIMARY KEY (cal_id)
-   );
-  </pre></blockquote>
+<pre>
+CREATE TABLE webcal_entry_repeats (
+	cal_id INT DEFAULT '0' NOT NULL,
+	cal_type VARCHAR(20),
+	cal_end INT,
+	cal_frequency INT DEFAULT '1',
+	cal_days CHAR(7),
+	PRIMARY KEY (cal_id)
+);
+</pre>
 <a href="UPGRADING.html#dot922">next..</a>
 <hr />
 
@@ -119,16 +122,16 @@ the SQL is:</p>
 tables-mysql.sql, tables-oracle.sql, or tables-postgres.sql. 
 Execute the SQL for creating the webcal_entry_repeats. For MySQL, 
 the SQL is:</p>
-  <blockquote><pre>
-    CREATE TABLE webcal_user_layers (
-      cal_layerid INT DEFAULT '0' NOT NULL,
-      cal_login varchar(25) NOT NULL,
-      cal_layeruser varchar(25) NOT NULL,
-      cal_color varchar(25) NULL,
-      cal_dups CHAR(1) DEFAULT 'N',
-      PRIMARY KEY ( cal_login, cal_layeruser )
-    );
-  </pre></blockquote>
+<pre>
+CREATE TABLE webcal_user_layers (
+	cal_layerid INT DEFAULT '0' NOT NULL,
+	cal_login varchar(25) NOT NULL,
+	cal_layeruser varchar(25) NOT NULL,
+	cal_color varchar(25) NULL,
+	cal_dups CHAR(1) DEFAULT 'N',
+	PRIMARY KEY ( cal_login, cal_layeruser )
+);
+</pre>
 <a href="UPGRADING.html#dot927">next..</a>
 <hr />
 
@@ -137,50 +140,48 @@ the SQL is:</p>
 Look at tables-mysql.sql, tables-oracle.sql, or tables-postgres.sql. 
 Execute the SQL for creating webcal_site_extras and webcal_reminder_log. 
 For MySQL and PostgreSQL, the SQL is:</p>
-  <blockquote><pre>
-    CREATE TABLE webcal_site_extras (
-      cal_id INT DEFAULT '0' NOT NULL,
-      cal_name VARCHAR(25) NOT NULL,
-      cal_type INT NOT NULL,
-      cal_date INT DEFAULT '0',
-      cal_remind INT DEFAULT '0',
-      cal_data TEXT,
-      PRIMARY KEY ( cal_id, cal_name, cal_type )
-    );
-    CREATE TABLE webcal_reminder_log (
-      cal_id INT DEFAULT '0' NOT NULL,
-      cal_name VARCHAR(25) NOT NULL,
-      cal_event_date INT NOT NULL DEFAULT 0,
-      cal_last_sent INT NOT NULL DEFAULT 0,
-      PRIMARY KEY ( cal_id, cal_name, cal_event_date )
-    );
-  </pre></blockquote>
+<pre>
+CREATE TABLE webcal_site_extras (
+	cal_id INT DEFAULT '0' NOT NULL,
+	cal_name VARCHAR(25) NOT NULL,
+	cal_type INT NOT NULL,
+	cal_date INT DEFAULT '0',
+	cal_remind INT DEFAULT '0',
+	cal_data TEXT,
+	PRIMARY KEY ( cal_id, cal_name, cal_type )
+);
+CREATE TABLE webcal_reminder_log (
+	cal_id INT DEFAULT '0' NOT NULL,
+	cal_name VARCHAR(25) NOT NULL,
+	cal_event_date INT NOT NULL DEFAULT 0,
+	cal_last_sent INT NOT NULL DEFAULT 0,
+	PRIMARY KEY ( cal_id, cal_name, cal_event_date )
+);
+</pre>
 <p>For Oracle, the SQL is:</p>
-  <blockquote><pre>
-    CREATE TABLE webcal_site_extras (
-      cal_id INT DEFAULT '0' NOT NULL,
-      cal_name VARCHAR(25) NOT NULL,
-      cal_type INT NOT NULL,
-      cal_date INT DEFAULT '0',
-      cal_remind INT DEFAULT '0',
-      cal_data LONG,
-      PRIMARY KEY ( cal_id, cal_name, cal_type )
-    );
-    CREATE TABLE webcal_reminder_log (
-      cal_id INT DEFAULT '0' NOT NULL,
-      cal_name VARCHAR(25) NOT NULL,
-      cal_event_date INT NOT NULL DEFAULT 0,
-      cal_last_sent INT NOT NULL DEFAULT 0,
-      PRIMARY KEY ( cal_id, cal_name, cal_event_date )
-    );
-    </pre></blockquote>
+<pre>
+CREATE TABLE webcal_site_extras (
+	cal_id INT DEFAULT '0' NOT NULL,
+	cal_name VARCHAR(25) NOT NULL,
+	cal_type INT NOT NULL,
+	cal_date INT DEFAULT '0',
+	cal_remind INT DEFAULT '0',
+	cal_data LONG,
+	PRIMARY KEY ( cal_id, cal_name, cal_type )
+);
+CREATE TABLE webcal_reminder_log (
+	cal_id INT DEFAULT '0' NOT NULL,
+	cal_name VARCHAR(25) NOT NULL,
+	cal_event_date INT NOT NULL DEFAULT 0,
+	cal_last_sent INT NOT NULL DEFAULT 0,
+	PRIMARY KEY ( cal_id, cal_name, cal_event_date )
+);
+</pre>
 <p>You will also need to setup the tools/send_reminders.php script 
 to be run periodically. I would recommend once an hour. For 
 Linux/UNIX, this is simple. Just use cron and add a line to 
 your crontab file that looks like:</p>
-  <blockquote><pre>
-    1 * * * * cd /some/directory/webcalendar/tools; ./send_reminders.php
-  </pre></blockquote>
+	<pre>1 * * * * cd /some/directory/webcalendar/tools; ./send_reminders.php</pre>
 <p>This will tell cron to run the script at one minute after the hour. 
 Windows users will have to find another way to run the script. 
 There are ports/look-a-likes of cron for Windows, so look around.</p>
@@ -197,47 +198,47 @@ After adding these tables, be sure to go to the System Settings page
 (admin.php) since you will be missing some config stuff in your 
 database that you can add from the System Settings page. 
 For MySQL and PostgreSQL, the SQL is:</p>
-  <blockquote><pre>
-    CREATE TABLE webcal_group (
-      cal_group_id INT NOT NULL,
-      cal_owner VARCHAR(25) NULL,
-      cal_name VARCHAR(50) NOT NULL,
-      cal_last_update INT NOT NULL,
-      PRIMARY KEY ( cal_group_id )
-    );
-    CREATE TABLE webcal_group_user (
-      cal_group_id INT NOT NULL,
-      cal_login VARCHAR(25) NOT NULL,
-      PRIMARY KEY ( cal_group_id, cal_login )
-    );
-    CREATE TABLE webcal_view (
-      cal_view_id INT NOT NULL,
-      cal_owner VARCHAR(25) NOT NULL,
-      cal_name VARCHAR(50) NOT NULL,
-      cal_view_type CHAR(1),
-      PRIMARY KEY ( cal_view_id )
-    );
-    CREATE TABLE webcal_view_user (
-      cal_view_id INT NOT NULL,
-      cal_login VARCHAR(25) NOT NULL,
-      PRIMARY KEY ( cal_view_id, cal_login )
-    );
-    CREATE TABLE webcal_config (
-      cal_setting VARCHAR(50) NOT NULL,
-      cal_value VARCHAR(50) NULL,
-      PRIMARY KEY ( cal_setting )
-    );
-    CREATE TABLE webcal_entry_log (
-      cal_log_id INT NOT NULL,
-      cal_entry_id INT NOT NULL,
-      cal_login VARCHAR(25) NOT NULL,
-      cal_type CHAR(1) NOT NULL,
-      cal_date INT NOT NULL,
-      cal_time INT NULL,
-      cal_text TEXT,
-      PRIMARY KEY ( cal_log_id )
-    );
-    </pre></blockquote>
+<pre>
+CREATE TABLE webcal_group (
+	cal_group_id INT NOT NULL,
+	cal_owner VARCHAR(25) NULL,
+	cal_name VARCHAR(50) NOT NULL,
+	cal_last_update INT NOT NULL,
+	PRIMARY KEY ( cal_group_id )
+);
+CREATE TABLE webcal_group_user (
+	cal_group_id INT NOT NULL,
+	cal_login VARCHAR(25) NOT NULL,
+	PRIMARY KEY ( cal_group_id, cal_login )
+);
+CREATE TABLE webcal_view (
+	cal_view_id INT NOT NULL,
+	cal_owner VARCHAR(25) NOT NULL,
+	cal_name VARCHAR(50) NOT NULL,
+	cal_view_type CHAR(1),
+	PRIMARY KEY ( cal_view_id )
+);
+CREATE TABLE webcal_view_user (
+	cal_view_id INT NOT NULL,
+	cal_login VARCHAR(25) NOT NULL,
+	PRIMARY KEY ( cal_view_id, cal_login )
+);
+CREATE TABLE webcal_config (
+	cal_setting VARCHAR(50) NOT NULL,
+	cal_value VARCHAR(50) NULL,
+	PRIMARY KEY ( cal_setting )
+);
+CREATE TABLE webcal_entry_log (
+	cal_log_id INT NOT NULL,
+	cal_entry_id INT NOT NULL,
+	cal_login VARCHAR(25) NOT NULL,
+	cal_type CHAR(1) NOT NULL,
+	cal_date INT NOT NULL,
+	cal_time INT NULL,
+	cal_text TEXT,
+	PRIMARY KEY ( cal_log_id )
+);
+</pre>
 <a href="UPGRADING.html#dot937">next..</a>
 <hr />
 
@@ -245,14 +246,14 @@ For MySQL and PostgreSQL, the SQL is:</p>
 <p>The webcal_entry_log table was modified, and a new table 
 webcal_entry_repeats_not was created. Use the following SQL 
 to modify your table for MySQL and PostgreSQL:</p>
-  <blockquote><pre>
-    ALTER TABLE webcal_entry_log ADD cal_user_cal VARCHAR(25);
-    CREATE TABLE webcal_entry_repeats_not (
-      cal_id INT NOT NULL,
-      cal_date INT NOT NULL,
-      PRIMARY KEY ( cal_id, cal_date )
-    );
-  </pre></blockquote>
+<pre>
+ALTER TABLE webcal_entry_log ADD cal_user_cal VARCHAR(25);
+CREATE TABLE webcal_entry_repeats_not (
+	cal_id INT NOT NULL,
+	cal_date INT NOT NULL,
+	PRIMARY KEY ( cal_id, cal_date )
+);
+</pre>
 <a href="UPGRADING.html#dot938">next..</a>
 <hr />
 
@@ -260,25 +261,25 @@ to modify your table for MySQL and PostgreSQL:</p>
 <p>The webcal_entry_user table was modified, and a new table 
 webcal_categories was created. Use the following SQL 
 to modify your table for MySQL and PostgreSQL:</p>
-  <blockquote><pre>
-    ALTER TABLE webcal_entry_user ADD cal_category INT DEFAULT NULL;
-    CREATE TABLE webcal_categories (
-      cat_id INT NOT NULL,
-      cat_owner VARCHAR(25),
-      cat_name VARCHAR(80) NOT NULL,
-      PRIMARY KEY ( cat_id )
-    );
-  </pre></blockquote>
+<pre>
+ALTER TABLE webcal_entry_user ADD cal_category INT DEFAULT NULL;
+CREATE TABLE webcal_categories (
+	cat_id INT NOT NULL,
+	cat_owner VARCHAR(25),
+	cat_name VARCHAR(80) NOT NULL,
+	PRIMARY KEY ( cat_id )
+);
+</pre>
 <a href="UPGRADING.html#dot939">next..</a>
 <hr />
 
 <h4><a id="dot939">To upgrade from v0.9.38 to v0.9.39:</a></h4>
 <p>The names of the date settings in the database were modified. 
 All old data settings need to be removed from the database.</p>
-  <blockquote><pre>
-    DELETE FROM webcal_config WHERE cal_setting LIKE 'DATE_FORMAT%';
-    DELETE FROM webcal_user_pref WHERE cal_setting LIKE 'DATE_FORMAT%';
-  </pre></blockquote>
+<pre>
+DELETE FROM webcal_config WHERE cal_setting LIKE 'DATE_FORMAT%';
+DELETE FROM webcal_user_pref WHERE cal_setting LIKE 'DATE_FORMAT%';
+</pre>
 <a href="UPGRADING.html#dot940">next..</a>
 <hr />
 
@@ -286,20 +287,20 @@ All old data settings need to be removed from the database.</p>
 <p>Two new tables were created: webcal_asst and webcal_entry_ext_user. 
 And the column cal_ext_for_id was added to the webcal_entry table. 
 Use the following SQL for MySQL and PostgreSQL:</p>
-  <blockquote><pre>
-    CREATE TABLE webcal_asst (
-      cal_boss VARCHAR(25) NOT NULL,
-      cal_assistant VARCHAR(25) NOT NULL,
-      PRIMARY KEY ( cal_boss, cal_assistant )
-    );
-    CREATE TABLE webcal_entry_ext_user (
-      cal_id INT DEFAULT 0 NOT NULL,
-      cal_fullname VARCHAR(50) NOT NULL,
-      cal_email VARCHAR(75) NULL,
-      PRIMARY KEY ( cal_id, cal_fullname )
-    );
-    ALTER TABLE webcal_entry ADD cal_ext_for_id INT NULL;
-  </pre></blockquote>
+<pre>
+CREATE TABLE webcal_asst (
+	cal_boss VARCHAR(25) NOT NULL,
+	cal_assistant VARCHAR(25) NOT NULL,
+	PRIMARY KEY ( cal_boss, cal_assistant )
+);
+CREATE TABLE webcal_entry_ext_user (
+	cal_id INT DEFAULT 0 NOT NULL,
+	cal_fullname VARCHAR(50) NOT NULL,
+	cal_email VARCHAR(75) NULL,
+	PRIMARY KEY ( cal_id, cal_fullname )
+);
+ALTER TABLE webcal_entry ADD cal_ext_for_id INT NULL;
+</pre>
 <p>For Oracle, use VARCHAR2 instead of VARCHAR.</p>
 <a href="UPGRADING.html#dot941">next..</a>
 <hr />
@@ -307,15 +308,15 @@ Use the following SQL for MySQL and PostgreSQL:</p>
 <h4><a id="dot941">To upgrade from v0.9.40 to v0.9.41:</a></h4>
 <p>One new table was added: webcal_nonuser_cals. 
 Use the following SQL for MySQL and PostgreSQL:</p>
-  <blockquote><pre>
-   CREATE TABLE webcal_nonuser_cals (
-     cal_login VARCHAR(25) NOT NULL,
-     cal_lastname VARCHAR(25),
-     cal_firstname VARCHAR(25),
-     cal_admin VARCHAR(25) NOT NULL,
-     PRIMARY KEY ( cal_login )
-   );
-  </pre></blockquote>
+<pre>
+CREATE TABLE webcal_nonuser_cals (
+	cal_login VARCHAR(25) NOT NULL,
+	cal_lastname VARCHAR(25),
+	cal_firstname VARCHAR(25),
+	cal_admin VARCHAR(25) NOT NULL,
+	PRIMARY KEY ( cal_login )
+);
+</pre>
 <p>For Oracle, use VARCHAR2 instead of VARCHAR and LONG instead of TEXT.</p>
 <a href="UPGRADING.html#dot942">next..</a>
 <hr />
@@ -324,37 +325,37 @@ Use the following SQL for MySQL and PostgreSQL:</p>
 <p>Three new tables were added: webcal_report, 
 webcal_report_template, and webcal_import_data. 
 Use the following SQL for MySQL and PostgreSQL:</p>
-  <blockquote><pre>
-   CREATE TABLE webcal_report (
-     cal_login VARCHAR(25) NOT NULL,
-     cal_report_id INT NOT NULL,
-     cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
-     cal_report_type VARCHAR(20) NOT NULL,
-     cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
-     cal_report_name VARCHAR(50) NOT NULL,
-     cal_time_range INT NOT NULL,
-     cal_user VARCHAR(25) NULL,
-     cal_allow_nav CHAR(1) DEFAULT 'Y',
-     cal_cat_id INT NULL,
-     cal_include_empty CHAR(1) DEFAULT 'N',
-     cal_show_in_trailer CHAR(1) DEFAULT 'N',
-     cal_update_date INT NOT NULL,
-     PRIMARY KEY ( cal_report_id )
-   );
-   CREATE TABLE webcal_report_template (
-     cal_report_id INT NOT NULL,
-     cal_template_type CHAR(1) NOT NULL,
-     cal_template_text TEXT,
-     PRIMARY KEY ( cal_report_id, cal_template_type )
-   );
-   CREATE TABLE webcal_import_data (
-     cal_id int NOT NULL,
-     cal_login VARCHAR(25) NOT NULL,
-     cal_import_type VARCHAR(15) NOT NULL,
-     cal_external_id VARCHAR(200) NULL,
-     PRIMARY KEY  ( cal_id, cal_login )
-   );
-  </pre></blockquote>
+<pre>
+CREATE TABLE webcal_report (
+	cal_login VARCHAR(25) NOT NULL,
+	cal_report_id INT NOT NULL,
+	cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
+	cal_report_type VARCHAR(20) NOT NULL,
+	cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
+	cal_report_name VARCHAR(50) NOT NULL,
+	cal_time_range INT NOT NULL,
+	cal_user VARCHAR(25) NULL,
+	cal_allow_nav CHAR(1) DEFAULT 'Y',
+	cal_cat_id INT NULL,
+	cal_include_empty CHAR(1) DEFAULT 'N',
+	cal_show_in_trailer CHAR(1) DEFAULT 'N',
+	cal_update_date INT NOT NULL,
+	PRIMARY KEY ( cal_report_id )
+);
+CREATE TABLE webcal_report_template (
+	cal_report_id INT NOT NULL,
+	cal_template_type CHAR(1) NOT NULL,
+	cal_template_text TEXT,
+	PRIMARY KEY ( cal_report_id, cal_template_type )
+);
+CREATE TABLE webcal_import_data (
+	cal_id int NOT NULL,
+	cal_login VARCHAR(25) NOT NULL,
+	cal_import_type VARCHAR(15) NOT NULL,
+	cal_external_id VARCHAR(200) NULL,
+	PRIMARY KEY  ( cal_id, cal_login )
+);
+</pre>
 <p>For Oracle, use VARCHAR2 instead of VARCHAR.</p>
 <a href="UPGRADING.html#dot943">next..</a>
 <hr />
@@ -363,42 +364,40 @@ Use the following SQL for MySQL and PostgreSQL:</p>
 <p>User passwords are now stored using md5 and require the webcal_user 
 table to be altered to accomodate larger password data. 
 Use the following SQL for MySQL and PostgreSQL:</p>
-  <blockquote><pre>
-   ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(32) NULL;
-   DROP TABLE webcal_import_data;
-   CREATE TABLE webcal_import (
-     cal_import_id INT NOT NULL,
-     cal_name VARCHAR(50) NULL,
-     cal_date INT NOT NULL,
-     cal_type VARCHAR(10) NOT NULL,
-     cal_login VARCHAR(25) NULL,
-     PRIMARY KEY ( cal_import_id )
-   );
-   CREATE TABLE webcal_import_data (
-     cal_import_id INT NOT NULL,
-     cal_id INT NOT NULL,
-     cal_login VARCHAR(25) NOT NULL,
-     cal_import_type VARCHAR(15) NOT NULL,
-     cal_external_id VARCHAR(200) NULL,
-     PRIMARY KEY  ( cal_id, cal_login )
-   );
-  </pre></blockquote>
+<pre>
+ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(32) NULL;
+DROP TABLE webcal_import_data;
+CREATE TABLE webcal_import (
+	cal_import_id INT NOT NULL,
+	cal_name VARCHAR(50) NULL,
+	cal_date INT NOT NULL,
+	cal_type VARCHAR(10) NOT NULL,
+	cal_login VARCHAR(25) NULL,
+	PRIMARY KEY ( cal_import_id )
+);
+CREATE TABLE webcal_import_data (
+	cal_import_id INT NOT NULL,
+	cal_id INT NOT NULL,
+	cal_login VARCHAR(25) NOT NULL,
+	cal_import_type VARCHAR(15) NOT NULL,
+	cal_external_id VARCHAR(200) NULL,
+	PRIMARY KEY  ( cal_id, cal_login )
+);
+</pre>
 
 <p>For Oracle, use VARCHAR2 instead of VARCHAR. 
 On very old MySQL installations (not sure which version), if you get 
 a parse error, you can try the following instead:</p>
-  <blockquote><pre>
-   ALTER TABLE webcal_user CHANGE cal_passwd cal_passwd VARCHAR(32) NULL;
-  </pre></blockquote>
+<pre>ALTER TABLE webcal_user CHANGE cal_passwd cal_passwd VARCHAR(32) NULL;</pre>
 
 <p>Next, you will need to run the script found in the <tt>tools</tt> 
 subdirectory.  This will convert all your passwords from plain text 
 to md5.  You can either run this from the command line (if you have 
 a standalone version of PHP compiled):</p>
-  <blockquote><pre>
-    cd tools
-    php convert_passwords.php
-  </pre></blockquote>
+<pre>
+cd tools
+php convert_passwords.php
+</pre>
 
 <p>If you do not have a standalone version of PHP, you can just type in 
 the URL to access the script in your browser: <br />
@@ -413,6 +412,6 @@ the URL to access the script in your browser: <br />
 <p>
 <a href="http://validator.w3.org/check?uri=referer"><img
  src="http://www.w3.org/Icons/valid-xhtml10"
- alt="Valid XHTML 1.0!" style="height:31px; width:88px; border:0px;"  /></a>
+ alt="Valid XHTML 1.0!" class="valid"  /></a>
 </p>
 </body></html>
