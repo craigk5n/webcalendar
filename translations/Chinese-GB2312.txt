@@ -4,8 +4,7 @@
 # Translated by: liao_bin@371.net shenyi@jite.net
 # Last update: 2002-6-26
 # $Id$
-# Translation last updated on 11-30-2002
-# Translation last updated on 02-07-2003
+# Translation last updated on 06-07-2003
 
 
 ###############################################
@@ -115,8 +114,6 @@ Public access can add events: ¹«¹²µÇÂ¼ÄÜÌí¼ÓÊÂ¼ş
 #
 # << MISSING >>
 # Public access new events require approval:
-# English text: Public access new events require approval:
-#
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -319,6 +316,9 @@ Add New Category: Ìí¼ÓĞÂ·ÖÀà
 #
 #
 # << MISSING >>
+# Admin mode:
+#
+# << MISSING >>
 # Assistant mode:
 Generate printer-friendly version: ²úÉúÓÑÉÆ´òÓ¡
 Printer Friendly: ÓÑÉÆ´òÓ¡
@@ -374,6 +374,7 @@ Public: ¹«ÖÚµÄ
 Confidential: »úÃÜµÄ
 category-help: ·ÖÀà-°ïÖú
 Category: ·ÖÀ
+None: ÎŞ
 days: Ìì
 before event: (ÊÂ¼şÖ®Ç°ËÍ³ö)
 participants-help: Lists the participants of this entry.
@@ -388,7 +389,6 @@ Participants: …¢ÅcÕß
 # External Participants:
 repeat-type-help: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
 Repeat Type: ÖÜÆÚĞÔÔO¶¨
-None: ÎŞ
 Daily: Ã¿ÈÕµÄ
 Weekly: Ã¿ÖÜµÄ
 Monthly: Ã¿ÔÂµÄ
@@ -492,6 +492,9 @@ Modified since: ¸ü¸Ä×Ô
 ###############################################
 # Page: export_handler.php
 #
+#
+# << MISSING >>
+# export format not defined or incorrect:
 
 
 ###############################################
@@ -553,6 +556,15 @@ Preferences: ²ÎÊıÔO¶¨
 # << MISSING >>
 # server time:
 Default Category: Ä¬ÈÏ·ÖÀà
+#
+# << MISSING >>
+# When I am the boss:
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# I want to approve events:
 Sun: ÖÜÈÕ
 Mon: ÖÜÒ»
 Tue: ÖÜ¶ş
@@ -770,6 +782,9 @@ Add to My Calendar: ĞÂÔöµ½ÎÒµÄÈÕÀú
 Email all participants: ÓÊ¼Ä¸øËùÓĞµÄ²ÎÓëÕß
 Show activity log: ÏÔÊ¾»î¶¯ÈÕÖ¾
 Hide activity log: Òş²Ø»î¶¯ÈÕÖ¾
+#
+# << MISSING >>
+# Export this entry to:
 
 
 ###############################################
@@ -797,6 +812,41 @@ Add View: Ìí¼ÓÊÓÍ¼
 Edit View: ±à¼­ÊÓÍ¼
 View Name: ÊÓÍ¼Ãû³Æ
 View Type: ÊÓÍ¼ÀàĞÍ
+#
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# NONUSER_PREFIX not set:
+# English text: NONUSER_PREFIX has not been set in config.php.
+#
+#
+# << MISSING >>
+# NonUser:
+# English text: NonUser Calendars
+#
+#
+# << MISSING >>
+# Calendar ID:
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: nonusers_handler.php
+#
 
 
 ###############################################
@@ -829,10 +879,15 @@ Private: Ë½ÈËµÄ
 #
 #
 # << MISSING >>
-# Yours assistants:
+# Assistants:
 #
 # << MISSING >>
-# Assistants:
+# Yours assistants:
+
+
+###############################################
+# Page: view_t.php
+#
 
 
 ###############################################
@@ -950,11 +1005,6 @@ Send Reminder: ·¢ËÍÓÊ¼şÍ¨Öª
 
 
 ###############################################
-# Page: includes/init.php
-#
-
-
-###############################################
 # Page: includes/js.php
 #
 
@@ -970,15 +1020,18 @@ Send Reminder: ·¢ËÍÓÊ¼şÍ¨Öª
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: tools/send_reminders.php
+# Page: includes/js/export.php
 #
-This is a reminder for the event detailed below.: ÌáĞÑÓĞÍêÕûÃèÊöµÄÊÂ¼ş
-Reminder: ÌáĞÑ
 
 
 ###############################################
@@ -1028,11 +1081,6 @@ Invalid color: Invalid color
 
 
 ###############################################
-# Page: includes/js/export.php
-#
-
-
-###############################################
 # Page: includes/js/popups.php
 #
 
@@ -1055,3 +1103,15 @@ Invalid color: Invalid color
 ###############################################
 # Page: includes/js/views_edit.php
 #
+
+
+###############################################
+# Page: includes/js/view_entry.php
+#
+
+
+###############################################
+# Page: tools/send_reminders.php
+#
+This is a reminder for the event detailed below.: ÌáĞÑÓĞÍêÕûÃèÊöµÄÊÂ¼ş
+Reminder: ÌáĞÑ

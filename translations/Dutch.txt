@@ -5,24 +5,12 @@
 # Last update: 29 January 2003
 # check out the tools directory which contains two perl scripts:
 # check_translation.pl will tell you if you have successfully translated all re
-# Translation last updated on 01-29-2003
+# Translation last updated on 06-07-2003
 
 
 ###############################################
 # Page: admin.php
 #
-Server URL is required: server-URL vereist
-Server URL must end with '/': server-URL moet eindigen op /
-Invalid color for document background: ongeldige kleur voor de achtergrond
-Invalid color for document title: ongeldige kleur voor de agendatitel
-Invalid color for table cell background: ongeldige kleur voor de tabelcel
-Invalid color for table grid: ongeldige kleur voor tabelraster
-Invalid color for table header background: ongeldige kleur voor achtergrond agendatitel
-Invalid color for table text background: ongeldige kleur voor tekstachtergrond
-Invalid color for event popup background: ongeldige achtergrondkleur voor afspraak-popup
-Invalid color for event popup text: ongeldige tekstkleur voor afspraak-popup
-Invalid color for table cell background for today: ongeldige achtergrondkleur voor huidige datum
-Color format should be '#RRGGBB': kleur weergeven in #RRGGBB-formaat
 System Settings: instellingen
 You are not authorized: u heeft geen toegang
 Note: Let op!
@@ -239,6 +227,9 @@ Previous: vorige
 ###############################################
 # Page: day.php
 #
+#
+# << MISSING >>
+# Admin mode:
 Assistant mode: assistentie-modus
 Generate printer-friendly version: genereer printversie
 Printer Friendly: printversie
@@ -261,9 +252,6 @@ Notification: notificatie
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: U heeft geen korte omschrijving ingevuld
-You have not entered a valid time of day: U heeft geen geldige tijd ingevuld
-The time you have entered begins before your preferred work hours.  Is this correct?: De tijd die u heeft ingevoerd is eerder dan uw normale werkdag. Is dit juist?
 Edit Entry: afspraak wijzigen
 Add Entry: afspraak toevoegen
 brief-description-help: In dit veld kunt u een korte afspraakomschrijving invullen (ca. 20 karakters). De omschrijving wordt in de agenda getoond.
@@ -291,6 +279,7 @@ Public: publiekelijk
 Confidential: vertrouwelijk
 category-help: Hier geeft u aan in welke categorie de afspraak thuishoort.
 Category: categorie
+None: geen
 days: dagen
 before event: voor de afspraak
 participants-help: Noteer hier welke externe deelnemers bij de afspraak aanwezig zullen zijn. Zorg dat elke regel maximaal één deelnemer omvat en voeg een mailadres toe om de externe deelnemer een email-notificatie of herinnering te laten ontvangen. <br>N.B. het verzenden van notificaties en herinneringen zal alleen plaatsvinden indien de agenda-instellingen en uw server dit ondersteunen.
@@ -299,7 +288,6 @@ external-participants-help: Hier wordt een lijst van externe deelnemers gegeven.
 External Participants: externe deelnemers
 repeat-type-help: Geef aan hoe vaak de afspraak moet worden herhaald: <I>maandelijks (op dag)</I> zorgt ervoor dat de afspraak wordt herhaald op elke 1e maandag van de maand, 3e donderdag van de maand, etc. <I>Maandelijks (op datum)</I> zorgt ervoor dat de afspraak wordt herhaald op dezelfde dag van de maand.
 Repeat Type: herhalingspatroon
-None: geen
 Daily: dagelijks
 Weekly: wekelijks
 Monthly: maandelijks
@@ -345,7 +333,6 @@ Cancel: annuleer
 ###############################################
 # Page: edit_layer.php
 #
-Invalid color: ongeldige kleur
 Edit Layer: laag wijzigen
 Add Layer: laag toevoegen
 Source: bron
@@ -404,6 +391,9 @@ Modified since: wijzigingen vanaf
 ###############################################
 # Page: export_handler.php
 #
+#
+# << MISSING >>
+# export format not defined or incorrect:
 
 
 ###############################################
@@ -447,6 +437,15 @@ Subtract N hours from: trek N uren af van
 same as: net als 
 server time: servertijd
 Default Category: toon de volgende categorieen in mijn agenda
+#
+# << MISSING >>
+# When I am the boss:
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# I want to approve events:
 Sun: zo
 Mon: ma
 Tue: di
@@ -650,6 +649,9 @@ Add to My Calendar: zet afspraak ook in mijn eigen agenda
 Email all participants: stuur emailbericht naar alle aanwezigen
 Show activity log: toon logboek
 Hide activity log: verberg logboek
+#
+# << MISSING >>
+# Export this entry to:
 
 
 ###############################################
@@ -677,6 +679,41 @@ Add View: overzicht toevoegen
 Edit View: overzicht wijzigen
 View Name: naam
 View Type: type
+#
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# NONUSER_PREFIX not set:
+# English text: NONUSER_PREFIX has not been set in config.php.
+#
+#
+# << MISSING >>
+# NonUser:
+# English text: NonUser Calendars
+#
+#
+# << MISSING >>
+# Calendar ID:
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: nonusers_handler.php
+#
 
 
 ###############################################
@@ -705,8 +742,13 @@ Private: prive-afspraak
 ###############################################
 # Page: assistant_edit.php
 #
-Yours assistants: uw agenda-assisten
 Assistants: assistenten
+Yours assistants: uw agenda-assisten
+
+
+###############################################
+# Page: view_t.php
+#
 
 
 ###############################################
@@ -744,7 +786,7 @@ Manage calendar of: beheer de agenda van
 # Page: includes/functions.php
 #
 This event is confidential: vertrouwelijk - details niet beschikbaar
-exceeds limit of XXX events per day:  de grens van XXX afspraken per dag is bereikt
+exceeds limit of XXX events per day: de grens van XXX afspraken per dag is bereikt
 You have XXX unapproved events: Er zijn XXX openstaande afspraken
 January: januari
 February: februari
@@ -835,7 +877,93 @@ Send Reminder: herinnering sturen
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/dbtable.php
+#
+
+
+###############################################
+# Page: includes/js/export.php
+#
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+Server URL is required: server-URL vereist
+Server URL must end with '/': server-URL moet eindigen op /
+Invalid color for document background: ongeldige kleur voor de achtergrond
+Invalid color for document title: ongeldige kleur voor de agendatitel
+Invalid color for table cell background: ongeldige kleur voor de tabelcel
+Invalid color for table grid: ongeldige kleur voor tabelraster
+Invalid color for table header background: ongeldige kleur voor achtergrond agendatitel
+Invalid color for table text background: ongeldige kleur voor tekstachtergrond
+Invalid color for event popup background: ongeldige achtergrondkleur voor afspraak-popup
+Invalid color for event popup text: ongeldige tekstkleur voor afspraak-popup
+Invalid color for table cell background for today: ongeldige achtergrondkleur voor huidige datum
+Color format should be '#RRGGBB': kleur weergeven in #RRGGBB-formaat
+
+
+###############################################
+# Page: includes/js/assistant_edit.php
+#
+
+
+###############################################
+# Page: includes/js/colors.php
+#
+
+
+###############################################
+# Page: includes/js/datesel.php
+#
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: U heeft geen korte omschrijving ingevuld
+You have not entered a valid time of day: U heeft geen geldige tijd ingevuld
+The time you have entered begins before your preferred work hours.  Is this correct?: De tijd die u heeft ingevoerd is eerder dan uw normale werkdag. Is dit juist?
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: ongeldige kleur
+
+
+###############################################
+# Page: includes/js/popups.php
+#
+
+
+###############################################
+# Page: includes/js/pref.php
+#
+
+
+###############################################
+# Page: includes/js/search.php
+#
+
+
+###############################################
+# Page: includes/js/usersel.php
+#
+
+
+###############################################
+# Page: includes/js/views_edit.php
+#
+
+
+###############################################
+# Page: includes/js/view_entry.php
 #
 
 

@@ -4,8 +4,7 @@
 # Translated by: Jesper Thörn <jesper@thorn.as>
 # Updated by: Patrik Grip-Jansson <patrikj@gnulix.org>
 # Last update: 2001-08-02
-# Translation last updated on 11-30-2002
-# Translation last updated on 02-07-2003
+# Translation last updated on 06-07-2003
 
 
 ###############################################
@@ -215,8 +214,6 @@ to: till
 #
 # << MISSING >>
 # Public access new events require approval:
-# English text: Public access new events require approval:
-#
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -517,6 +514,9 @@ Are you sure you want to delete this entry?: Är du säker på att du vill radera h
 #
 #
 # << MISSING >>
+# Admin mode:
+#
+# << MISSING >>
 # Assistant mode:
 Generate printer-friendly version: Visa i utskriftsversion
 Printer Friendly: Utskriftsversion
@@ -578,6 +578,7 @@ Confidential: Privat
 #
 # << MISSING >>
 # Category:
+None: Aldrig
 days: dagar
 before event: före händelse
 participants-help: Visa deltagare för denna händelse.
@@ -592,7 +593,6 @@ Participants: Deltagare
 # External Participants:
 repeat-type-help: Hur ofta skall aktiviteten upprepas.
 Repeat Type: Upprepningstyp
-None: Aldrig
 Daily: Dagligen
 Weekly: Veckovis
 Monthly: Månatlig
@@ -704,6 +704,9 @@ Modified since: Ändrad efter
 ###############################################
 # Page: export_handler.php
 #
+#
+# << MISSING >>
+# export format not defined or incorrect:
 
 
 ###############################################
@@ -777,6 +780,15 @@ Preferences: Inställningar
 #
 # << MISSING >>
 # Default Category:
+#
+# << MISSING >>
+# When I am the boss:
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# I want to approve events:
 Sun: Sön
 Mon: Mån
 Tue: Tis
@@ -1054,6 +1066,9 @@ Add to My Calendar: Lägg till i min kalender
 #
 # << MISSING >>
 # Hide activity log:
+#
+# << MISSING >>
+# Export this entry to:
 
 
 ###############################################
@@ -1095,6 +1110,41 @@ Add to My Calendar: Lägg till i min kalender
 #
 # << MISSING >>
 # View Type:
+#
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# NONUSER_PREFIX not set:
+# English text: NONUSER_PREFIX has not been set in config.php.
+#
+#
+# << MISSING >>
+# NonUser:
+# English text: NonUser Calendars
+#
+#
+# << MISSING >>
+# Calendar ID:
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: nonusers_handler.php
+#
 
 
 ###############################################
@@ -1127,10 +1177,15 @@ Private: Privat
 #
 #
 # << MISSING >>
-# Yours assistants:
+# Assistants:
 #
 # << MISSING >>
-# Assistants:
+# Yours assistants:
+
+
+###############################################
+# Page: view_t.php
+#
 
 
 ###############################################
@@ -1256,11 +1311,6 @@ Invalid login: Felaktig inloggning
 
 
 ###############################################
-# Page: includes/init.php
-#
-
-
-###############################################
 # Page: includes/js.php
 #
 
@@ -1276,15 +1326,18 @@ Invalid login: Felaktig inloggning
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: tools/send_reminders.php
+# Page: includes/js/export.php
 #
-This is a reminder for the event detailed below.: Detta är en påminnelse angående följande aktivitet
-Reminder: Påminnelse
 
 
 ###############################################
@@ -1348,11 +1401,6 @@ Invalid color: Ogiltig färg
 
 
 ###############################################
-# Page: includes/js/export.php
-#
-
-
-###############################################
 # Page: includes/js/popups.php
 #
 
@@ -1375,3 +1423,15 @@ Invalid color: Ogiltig färg
 ###############################################
 # Page: includes/js/views_edit.php
 #
+
+
+###############################################
+# Page: includes/js/view_entry.php
+#
+
+
+###############################################
+# Page: tools/send_reminders.php
+#
+This is a reminder for the event detailed below.: Detta är en påminnelse angående följande aktivitet
+Reminder: Påminnelse

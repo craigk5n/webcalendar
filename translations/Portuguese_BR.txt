@@ -4,8 +4,7 @@
 # Based in Portugues version, by Sérgio Oliveira - sloliv@terra.com.br
 #   Based in Portuguese version, by Nuno Lopes - nml@maxitel.pt
 # Last update: 27 December 2000
-# Translation last updated on 11-30-2002
-# Translation last updated on 02-07-2003
+# Translation last updated on 06-07-2003
 
 
 ###############################################
@@ -99,8 +98,6 @@ Public access can add events: Acesso público pode criar eventos
 #
 # << MISSING >>
 # Public access new events require approval:
-# English text: Public access new events require approval:
-#
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -301,6 +298,9 @@ Previous: Anterior
 #
 #
 # << MISSING >>
+# Admin mode:
+#
+# << MISSING >>
 # Assistant mode:
 Generate printer-friendly version: Visualizar em formato de impressora
 Printer Friendly: Formato de impressora
@@ -356,6 +356,7 @@ Public: Publico
 Confidential: Confidencial
 category-help: Espeficificar a categoria do evento
 Category: Categoria
+None: Nenhuma
 days: dias
 before event: Evento anterior
 participants-help: Lista os participantes desse evento
@@ -370,7 +371,6 @@ Participants: Participantes
 # External Participants:
 repeat-type-help: Seleciona a periodicidade do evento<I>Mensal (por dia)</I> fa
 Repeat Type: Tipo de repetição
-None: Nenhuma
 Daily: Diário
 Weekly: Semanal
 Monthly: Mensal
@@ -474,6 +474,9 @@ Modified since: Modificado desde
 ###############################################
 # Page: export_handler.php
 #
+#
+# << MISSING >>
+# export format not defined or incorrect:
 
 
 ###############################################
@@ -533,6 +536,15 @@ to modify the preferences for the Public Access calendar: para motificar as pre
 # << MISSING >>
 # server time:
 Default Category: Categoria padrão
+#
+# << MISSING >>
+# When I am the boss:
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# I want to approve events:
 Sun: Dom
 Mon: Seg
 Tue: Ter
@@ -756,6 +768,9 @@ Add to My Calendar: Adicionar ao meu calendário
 Email all participants: Enviar e-mail para participantes
 Show activity log: Mostrar log de atividade
 Hide activity log: Esconder log de atividade
+#
+# << MISSING >>
+# Export this entry to:
 
 
 ###############################################
@@ -783,6 +798,41 @@ Add View: Adicionar Visualização
 Edit View: Editar Visualização
 View Name: Nome da Visualização
 View Type: Tipo da Visualização
+#
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# NONUSER_PREFIX not set:
+# English text: NONUSER_PREFIX has not been set in config.php.
+#
+#
+# << MISSING >>
+# NonUser:
+# English text: NonUser Calendars
+#
+#
+# << MISSING >>
+# Calendar ID:
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: nonusers_handler.php
+#
 
 
 ###############################################
@@ -815,10 +865,15 @@ Private: Pessoal
 #
 #
 # << MISSING >>
-# Yours assistants:
+# Assistants:
 #
 # << MISSING >>
-# Assistants:
+# Yours assistants:
+
+
+###############################################
+# Page: view_t.php
+#
 
 
 ###############################################
@@ -834,16 +889,36 @@ Private: Pessoal
 ###############################################
 # Page: includes/trailer.php
 #
-Go to: Ir para
-Back to My Calendar: Voltar ao meu calendário
-My Calendar: O Meu Calendário
-Logout: Sair
-Another User's Calendar: Calendário de outro usuário
-Add New Entry: Adicionar nova entrada
-Manage Views: Gerenciar visualizações
-Edit Layers: Editar Níveis
-Account: Conta
-Current User: Usuário atual
+#
+# << MISSING >>
+# Go to:
+#
+# << MISSING >>
+# Back to My Calendar:
+#
+# << MISSING >>
+# My Calendar:
+#
+# << MISSING >>
+# Logout:
+#
+# << MISSING >>
+# Another User's Calendar:
+#
+# << MISSING >>
+# Add New Entry:
+#
+# << MISSING >>
+# Manage Views:
+#
+# << MISSING >>
+# Edit Layers:
+#
+# << MISSING >>
+# Account:
+#
+# << MISSING >>
+# Current User:
 #
 # << MISSING >>
 # Manage calendar of:
@@ -857,47 +932,105 @@ Current User: Usuário atual
 ###############################################
 # Page: includes/functions.php
 #
-This event is confidential: Este evento é confidencial
+#
+# << MISSING >>
+# This event is confidential:
 #
 # << MISSING >>
 # exceeds limit of XXX events per day:
-You have XXX unapproved events: Você possui XXX eventos não aprovados
-January: Janeiro
-February: Fevereiro
-March: Março
-April: Abril
-May_: Maio
-June: Junho
-July: Julho
-August: Agosto
-September: Setembro
-October: Outubro
-November: Novembro
-Jan: Jan
-Feb: Fev
-Mar: Mar
-Apr: Abr
-May: Mai
-Jun: Jun
-Jul: Jul
-Aug: Ago
-Sep: Set
-Oct: Out
-Nov: Nov
-Dec: Dez
+#
+# << MISSING >>
+# You have XXX unapproved events:
+#
+# << MISSING >>
+# January:
+#
+# << MISSING >>
+# February:
+#
+# << MISSING >>
+# March:
+#
+# << MISSING >>
+# April:
+#
+# << MISSING >>
+# May_:
+# English text: May
+#
+#
+# << MISSING >>
+# June:
+#
+# << MISSING >>
+# July:
+#
+# << MISSING >>
+# August:
+#
+# << MISSING >>
+# September:
+#
+# << MISSING >>
+# October:
+#
+# << MISSING >>
+# November:
+#
+# << MISSING >>
+# Jan:
+#
+# << MISSING >>
+# Feb:
+#
+# << MISSING >>
+# Mar:
+#
+# << MISSING >>
+# Apr:
+#
+# << MISSING >>
+# May:
+#
+# << MISSING >>
+# Jun:
+#
+# << MISSING >>
+# Jul:
+#
+# << MISSING >>
+# Aug:
+#
+# << MISSING >>
+# Sep:
+#
+# << MISSING >>
+# Oct:
+#
+# << MISSING >>
+# Nov:
+#
+# << MISSING >>
+# Dec:
 
 
 ###############################################
 # Page: includes/user.php
 #
-Invalid login: Usuário inválido
-Invalid user login: Usuário inválido
+#
+# << MISSING >>
+# Invalid login:
+#
+# << MISSING >>
+# Invalid user login:
 
 
 ###############################################
 # Page: includes/site_extras.php
 #
-Send Reminder: Enviar lembrete
+#
+# << MISSING >>
+# Send Reminder:
 
 
 ###############################################
@@ -936,11 +1069,6 @@ Send Reminder: Enviar lembrete
 
 
 ###############################################
-# Page: includes/init.php
-#
-
-
-###############################################
 # Page: includes/js.php
 #
 
@@ -956,32 +1084,59 @@ Send Reminder: Enviar lembrete
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: tools/send_reminders.php
+# Page: includes/js/export.php
 #
-This is a reminder for the event detailed below.: Este é um lembrete para o eve
-Reminder: Lembrete
 
 
 ###############################################
 # Page: includes/js/admin.php
 #
-Server URL is required: URL do servidor é requerida
-Server URL must end with '/': URL do servidor não termina em '/'
-Invalid color for document background: Cor inválida para o fundo do documento
-Invalid color for document title: Cor inválida para o título do documento
-Invalid color for table cell background: Cor inválida para o fundo da célula da
-Invalid color for table grid: Cor inválida para a grade da tabela
-Invalid color for table header background: Cor inválida para o cabeçalho da tab
-Invalid color for table text background: Cor inválida para fundo do texto da ta
-Invalid color for event popup background: Cor inválida para fundo do evento pop
-Invalid color for event popup text: Cor inválida para texto do evento pop-up
-Invalid color for table cell background for today: Cor inválida para o fundo da
-Color format should be '#RRGGBB': O formato do código de cor deve ser '#RRGGBB'
+#
+# << MISSING >>
+# Server URL is required:
+#
+# << MISSING >>
+# Server URL must end with '/':
+#
+# << MISSING >>
+# Invalid color for document background:
+#
+# << MISSING >>
+# Invalid color for document title:
+#
+# << MISSING >>
+# Invalid color for table cell background:
+#
+# << MISSING >>
+# Invalid color for table grid:
+#
+# << MISSING >>
+# Invalid color for table header background:
+#
+# << MISSING >>
+# Invalid color for table text background:
+#
+# << MISSING >>
+# Invalid color for event popup background:
+#
+# << MISSING >>
+# Invalid color for event popup text:
+#
+# << MISSING >>
+# Invalid color for table cell background for today:
+#
+# << MISSING >>
+# Color format should be '#RRGGBB':
 
 
 ###############################################
@@ -1002,8 +1157,12 @@ Color format should be '#RRGGBB': O formato do código de cor deve ser '#RRGGBB'
 ###############################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Não introduziu uma breve descrição
-You have not entered a valid time of day: Não introduziu uma hora do dia válida
+#
+# << MISSING >>
+# You have not entered a Brief Description:
+#
+# << MISSING >>
+# You have not entered a valid time of day:
 #
 # << MISSING >>
 # The time you have entered begins before your preferred work hours.  Is this correct?:
@@ -1012,12 +1171,9 @@ You have not entered a valid time of day: Não introduziu uma hora do dia válida
 ###############################################
 # Page: includes/js/edit_layer.php
 #
-Invalid color: Cor inapropriada
-
-
-###############################################
-# Page: includes/js/export.php
 #
+# << MISSING >>
+# Invalid color:
 
 
 ###############################################
@@ -1043,3 +1199,19 @@ Invalid color: Cor inapropriada
 ###############################################
 # Page: includes/js/views_edit.php
 #
+
+
+###############################################
+# Page: includes/js/view_entry.php
+#
+
+
+###############################################
+# Page: tools/send_reminders.php
+#
+#
+# << MISSING >>
+# This is a reminder for the event detailed below.:
+#
+# << MISSING >>
+# Reminder:

@@ -4,8 +4,7 @@
 # Translated by:
 #	Raúl Araya Tauler, nubeiro@nubeiro.com
 # Last update: 20 May 2001
-# Translation last updated on 11-30-2002
-# Translation last updated on 02-07-2003
+# Translation last updated on 06-07-2003
 
 
 ###############################################
@@ -215,8 +214,6 @@ to: ata
 #
 # << MISSING >>
 # Public access new events require approval:
-# English text: Public access new events require approval:
-#
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -517,6 +514,9 @@ Are you sure you want to delete this entry?: ¿Está seguro de que quere borrar es
 #
 #
 # << MISSING >>
+# Admin mode:
+#
+# << MISSING >>
 # Assistant mode:
 Generate printer-friendly version: Xenerar versión para imprimir
 Printer Friendly: Versión para imprimir
@@ -578,6 +578,7 @@ Confidential: Confidencial
 #
 # << MISSING >>
 # Category:
+None: Ningunha
 days: días
 before event: antes do evento
 participants-help: Lista dos participantes desta entrada.
@@ -592,7 +593,6 @@ Participants: Participantes
 # External Participants:
 repeat-type-help: Seleccione con qué frecuencia se repetirá o evento.<I>Mensualmente (por días)</I> permite que o evento se repita o primeiro luns do mes, o terceiro xoves do mes, etc.<I>Mensualmente (por data)</I> permite que o evento se repita o mesmo día de cada mes.
 Repeat Type: Tipo de repetición
-None: Ningunha
 Daily: Diariamente
 Weekly: Semanalmente
 Monthly: Mensualmente
@@ -704,6 +704,9 @@ Modified since: Modificado dende
 ###############################################
 # Page: export_handler.php
 #
+#
+# << MISSING >>
+# export format not defined or incorrect:
 
 
 ###############################################
@@ -777,6 +780,15 @@ Preferences: Preferencias
 #
 # << MISSING >>
 # Default Category:
+#
+# << MISSING >>
+# When I am the boss:
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# I want to approve events:
 Sun: Dom
 Mon: Lun
 Tue: Mar
@@ -1054,6 +1066,9 @@ Add to My Calendar: Engadir ó meu Calendario
 #
 # << MISSING >>
 # Hide activity log:
+#
+# << MISSING >>
+# Export this entry to:
 
 
 ###############################################
@@ -1095,6 +1110,41 @@ Add to My Calendar: Engadir ó meu Calendario
 #
 # << MISSING >>
 # View Type:
+#
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# NONUSER_PREFIX not set:
+# English text: NONUSER_PREFIX has not been set in config.php.
+#
+#
+# << MISSING >>
+# NonUser:
+# English text: NonUser Calendars
+#
+#
+# << MISSING >>
+# Calendar ID:
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: nonusers_handler.php
+#
 
 
 ###############################################
@@ -1127,10 +1177,15 @@ Private: Privado
 #
 #
 # << MISSING >>
-# Yours assistants:
+# Assistants:
 #
 # << MISSING >>
-# Assistants:
+# Yours assistants:
+
+
+###############################################
+# Page: view_t.php
+#
 
 
 ###############################################
@@ -1256,11 +1311,6 @@ Invalid login: Login inválido
 
 
 ###############################################
-# Page: includes/init.php
-#
-
-
-###############################################
 # Page: includes/js.php
 #
 
@@ -1276,15 +1326,18 @@ Invalid login: Login inválido
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: tools/send_reminders.php
+# Page: includes/js/export.php
 #
-This is a reminder for the event detailed below.: Esto é un recordatorio para o evento descrito máis abaixo.
-Reminder: Recordatorio
 
 
 ###############################################
@@ -1348,11 +1401,6 @@ Invalid color: Color non válido
 
 
 ###############################################
-# Page: includes/js/export.php
-#
-
-
-###############################################
 # Page: includes/js/popups.php
 #
 
@@ -1375,3 +1423,15 @@ Invalid color: Color non válido
 ###############################################
 # Page: includes/js/views_edit.php
 #
+
+
+###############################################
+# Page: includes/js/view_entry.php
+#
+
+
+###############################################
+# Page: tools/send_reminders.php
+#
+This is a reminder for the event detailed below.: Esto é un recordatorio para o evento descrito máis abaixo.
+Reminder: Recordatorio

@@ -9,36 +9,7 @@
 # Mise à jour : Mario Dragone <mario.dragone@reims.iufm.fr>
 # Title is what will appear in the title bar for pages
 #
-# Translation last updated on 04-23-2003
-
-
-###############################################
-# Page: activity_log.php
-#
-Activity Log: Journal de suivi
-User: Utilisateur
-Calendar: Agenda
-Date: Date
-Time: Heure
-Event: Événement
-Action: Action
-Event created: Événement créé
-Event approved: Événement approuvé
-Event rejected: Événement rejeté
-Event updated: Événement mis à jour
-Event deleted: Événement supprimé 
-Notification sent: Notification envoyée
-Reminder sent: Rappel envoyé
-Database error: Erreur de la base de données
-Next: Suivant
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Id non valable
-This is a private event and may not be added to your calendar.: Ceci est un événement privé et ne peut pas être ajouté à votre agenda.
-Error adding event: Erreur en ajoutant l'événement
+# Translation last updated on 06-07-2003
 
 
 ###############################################
@@ -189,6 +160,35 @@ Event popup text: Texte surgissant des événements
 
 
 ###############################################
+# Page: activity_log.php
+#
+Activity Log: Journal de suivi
+User: Utilisateur
+Calendar: Agenda
+Date: Date
+Time: Heure
+Event: Événement
+Action: Action
+Event created: Événement créé
+Event approved: Événement approuvé
+Event rejected: Événement rejeté
+Event updated: Événement mis à jour
+Event deleted: Événement supprimé 
+Notification sent: Notification envoyée
+Reminder sent: Rappel envoyé
+Database error: Erreur de la base de données
+Next: Suivant
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Id non valable
+This is a private event and may not be added to your calendar.: Ceci est un événement privé et ne peut pas être ajouté à votre agenda.
+Error adding event: Erreur en ajoutant l'événement
+
+
+###############################################
 # Page: admin_handler.php
 #
 Error: Erreur
@@ -199,19 +199,6 @@ The following error occurred: L'erreur suivante est survenue
 # Page: approve_entry.php
 #
 Error approving event: Erreur en approuvant l'événement
-
-
-###############################################
-# Page: assistant_edit.php
-#
-Assistants: Assistants(es)
-Admin mode: Mode administrateur
-Yours assistants: Vos assistants(es)
-
-
-###############################################
-# Page: assistant_edit_handler.php
-#
 
 
 ###############################################
@@ -244,6 +231,7 @@ Previous: Précédent
 ###############################################
 # Page: day.php
 #
+Admin mode: Mode administrateur
 Assistant mode: Mode assistant
 Generate printer-friendly version: Générer une version imprimable
 Printer Friendly: Version imprimable
@@ -405,6 +393,9 @@ Modified since: Modifié depuis
 ###############################################
 # Page: export_handler.php
 #
+#
+# << MISSING >>
+# export format not defined or incorrect:
 
 
 ###############################################
@@ -437,6 +428,35 @@ Add New Group: Ajouter un nouveau groupe
 
 
 ###############################################
+# Page: pref.php
+#
+Preferences: Préférences
+to modify the preferences for the Public Access calendar: pour modifier les préférences de l'agenda public
+tz-help: Spécifie de combien d'heures ajuster l'heure du serveur à l'heure locale.
+Timezone Offset: Décalage horaire
+Add N hours to: Ajouter N heures à
+Subtract N hours from: Oter N heures de
+same as: comme
+server time: heure du serveur
+Default Category: Catégorie par défaut
+When I am the boss: Lorsque je suis le "boss"
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# I want to approve events:
+Sun: Dim
+Mon: Lun
+Tue: Mar
+Wed: Mer
+Thu: Jeu
+Fri: Ven
+Sat: Sam
+Save Preferences: Sauvegarder les préférences
+
+
+###############################################
 # Page: help_bug.php
 #
 Report Bug: Signaler un problème
@@ -453,7 +473,6 @@ Adding/Editing Calendar Entries: Ajouter/Modifier un événement
 #
 Help Index: Index de l'aide
 Layers: Calques
-Preferences: Préférences
 
 
 ###############################################
@@ -474,8 +493,13 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_pref.php
 #
-Default Category: Catégorie par défaut
 default-category-help: Spécifie la catégorie par défaut lors de la création d'événement.
+
+
+###############################################
+# Page: week.php
+#
+cont.: suite
 
 
 ###############################################
@@ -526,40 +550,17 @@ cookies-note: <B>Note:</B> Cette application nécessite l'activation des cookies.
 
 
 ###############################################
-# Page: month.php
+# Page: view_v.php
 #
-Sun: Dim
-Mon: Lun
-Tue: Mar
-Wed: Mer
-Thu: Jeu
-Fri: Ven
-Sat: Sam
 
 
 ###############################################
-# Page: pref.php
+# Page: month.php
 #
-to modify the preferences for the Public Access calendar: pour modifier les préférences de l'agenda public
-tz-help: Spécifie de combien d'heures ajuster l'heure du serveur à l'heure locale.
-Timezone Offset: Décalage horaire
-Add N hours to: Ajouter N heures à
-Subtract N hours from: Oter N heures de
-same as: comme
-server time: heure du serveur
-When I am the boss: Lorsque je suis le "boss"
-email me event notification: Notifiez-moi par couriel des rendez-vous pris par mon assistant
-I want approve events: Je veux approuver les rendez-vous pris par mon assistant
-Save Preferences: Sauvegarder les préférences
 
 
 ###############################################
 # Page: pref_handler.php
-#
-
-
-###############################################
-# Page: purge.php
 #
 
 
@@ -648,21 +649,11 @@ Add to My Calendar: Ajouter à mon agenda
 Email all participants: Envoyer un courriel à tous les participants
 Show activity log: Montrer le journal de suivi
 Hide activity log: Cacher le journal de suivi
-
 Export this entry to: Exporter cet événement au format
+
 
 ###############################################
 # Page: view_m.php
-#
-
-
-###############################################
-# Page: view_t.php
-#
-
-
-###############################################
-# Page: view_v.php
 #
 
 
@@ -692,15 +683,23 @@ Week (Timebar): Semaine (planning)
 
 
 ###############################################
-# Page: views_edit_handler.php
+# Page: nonusers.php
 #
-You must specify a view name: Vous devez indiquer une vue
+NONUSER_PREFIX not set: NONUSER_PREFIX n'a pas été initialisé
+NonUser: Utilisateur générique
+Calendar ID: ID calendrier
+Add New NonUser Calendar: Ajouter un nouvel utilisateur générique
 
 
 ###############################################
-# Page: week.php
+# Page: nonusers_handler.php
 #
-cont.: suite
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Vous devez indiquer une vue
 
 
 ###############################################
@@ -721,31 +720,45 @@ Private: Privé
 
 
 ###############################################
-# Page: nonusers.php
+# Page: assistant_edit.php
 #
-NONUSER_PREFIX not set: NONUSER_PREFIX n'a pas été initialisé
-NonUser: Utilisateur générique
-Calendar ID: ID calendrier
-Add New NonUser Calendar: Ajouter un nouvel utilisateur générique
+Assistants: Assistants(es)
+Yours assistants: Vos assistants(es)
 
 
 ###############################################
-# Page: nonusers_handler.php
+# Page: view_t.php
 #
 
 
 ###############################################
-# Page: includes/config.php
+# Page: assistant_edit_handler.php
 #
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Go to: Aller à
+Back to My Calendar: Retour à mon Agenda
+My Calendar: Mon agenda
+Logout: Déconnexion
+Another User's Calendar: Agenda d'un autre utilisateur
+Add New Entry: Ajouter un événement
+Manage Views: Gérer les vues
+Edit Layers: Modifier les calques
+Account: Compte
+Current User: Utilisateur actuel
+Manage calendar of: Gérer le calendrier de
 
 
 ###############################################
 # Page: includes/connect.php
-#
-
-
-###############################################
-# Page: includes/dbtable.php
 #
 
 
@@ -781,18 +794,50 @@ Dec: Déc
 
 
 ###############################################
+# Page: includes/user.php
+#
+Invalid login: Utilisateur incorrect
+Invalid user login: Identifiant non valable
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Envoyer un rappel
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+
+
+###############################################
 # Page: includes/help_trailer.php
 #
-Go to: Aller à
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
 # Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/init.php
 #
 
 
@@ -807,55 +852,22 @@ Go to: Aller à
 
 
 ###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Envoyer un rappel
-
-
-###############################################
 # Page: includes/styles.php
 #
 
 
 ###############################################
-# Page: includes/trailer.php
-#
-Back to My Calendar: Retour à mon Agenda
-My Calendar: Mon agenda
-Logout: Déconnexion
-Another User's Calendar: Agenda d'un autre utilisateur
-Add New Entry: Ajouter un événement
-Manage Views: Gérer les vues
-Edit Layers: Modifier les calques
-Account: Compte
-Current User: Utilisateur actuel
-Manage calendar of: Gérer le calendrier de
-
-
-###############################################
-# Page: includes/translate.php
+# Page: includes/init.php
 #
 
 
 ###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: Utilisateur incorrect
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-Invalid user login: Identifiant non valable
-
-
-###############################################
-# Page: includes/user.php
+# Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: includes/validate.php
+# Page: includes/js/export.php
 #
 
 
@@ -906,11 +918,6 @@ Invalid color: Couleur incorrecte
 
 
 ###############################################
-# Page: includes/js/export.php
-#
-
-
-###############################################
 # Page: includes/js/popups.php
 #
 
@@ -932,6 +939,11 @@ Invalid color: Couleur incorrecte
 
 ###############################################
 # Page: includes/js/views_edit.php
+#
+
+
+###############################################
+# Page: includes/js/view_entry.php
 #
 
 
