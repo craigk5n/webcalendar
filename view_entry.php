@@ -622,7 +622,7 @@ if ( ! empty ( $user ) && $login != $user )
 else
   $u_url = "";
 
-$can_edit = ( $is_admin || ( $is_assistant && ! $is_private ) ||
+$can_edit = ( $is_admin || $is_nonuser_admin || ( $is_assistant && ! $is_private ) ||
   ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
 if ( $public_access == "Y" && $login == "__public__" )
   $can_edit = false;
