@@ -30,6 +30,12 @@ if ( ! empty ( $return_path ) ) {
   $url = "index.php";
 }
 
+$lang = '';
+if ( ! empty ( $LANGUAGE ) )
+  $lang = languageToAbbrev ( $LANGUAGE );
+if ( empty ( $lang ) )
+  $lang = 'en';
+
 $login = getPostValue ( 'login' );
 $password = getPostValue ( 'password' );
 
@@ -100,7 +106,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>'."\n";
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" lang="<?php echo $lang; ?>">
 <head>
 <title><?php etranslate($application_name)?></title>
 <script type="text/javascript">

@@ -1,4 +1,6 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixing login.php so it's both xHTML 1.0T valid, and properly handles
+  translations
   - Fixed Bug 1050786: Mail fails if not "\r\n" in extra headers
   - Fixed Bug 1052000: Error in Day view for several users
   - Fixed Bug 1050624: upcoming.php doesn't work when requiring public access
