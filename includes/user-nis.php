@@ -36,7 +36,7 @@ function user_valid_login ( $login, $password ) {
 
   $login_error = "";
 
-  $data = yp_match (yp_get_default_domain(), "passwd.byname", $login);
+  $data = @yp_match (yp_get_default_domain(), "passwd.byname", $login);
   if ( strlen ( $data ) ) {
     $data = explode ( ":", $data );
     if ( $user_external_group && $user_external_group != $data[3] ) {

@@ -1,4 +1,5 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Fixed bug 792731: NIS login failure
   - Fixed bug 609900: wrong week number
   - Fixed bug 761793: invalid weeknumber
   - Fixed bug 607788: Number of week
