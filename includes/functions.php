@@ -1479,10 +1479,10 @@ function calc_time_slot ( $time, $round_down = false ) {
 // Generate the HTML for the add icon.
 // date = date in YYYYMMDD format
 // hour = hour of day (eg. 1,13,23)
-function html_for_add_icon ( $date=0,$hour="" ) {
+function html_for_add_icon ( $date=0,$hour="", $minute="" ) {
   return "<A HREF=\"edit_entry.php?" . $u_url .
     "date=$date" . ( $hour > 0 ? "&hour=$hour" : "" ) .
-    "\">" .
+    ( $minute > 0 ? "&minute=$minute" : "" ) . "\">" .
     "<IMG SRC=\"new.gif\" WIDTH=\"10\" HEIGHT=\"10\" ALT=\"" .
     translate("New Entry") . "\" BORDER=\"0\" ALIGN=\"right\">" .  "</A>";
 }
@@ -1863,7 +1863,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
       if ( strlen ( $hour_arr[$i] ) ) {
         echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">";
         if ( $can_add )
-          echo html_for_add_icon ( $date, $time_h );
+          echo html_for_add_icon ( $date, $time_h, $time_m );
         echo "$hour_arr[$i]</TD>";
       }
       $rowspan--;
@@ -1871,19 +1871,19 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
       if ( empty ( $hour_arr[$i] ) ) {
         echo "<TD HEIGHT=\"40\" BGCOLOR=\"$CELLBG\">";
         if ( $can_add )
-          echo html_for_add_icon ( $date, $time_h );
+          echo html_for_add_icon ( $date, $time_h, $time_m );
         echo "&nbsp;</TD></TR>\n";
       } else {
         $rowspan = $rowspan_arr[$i];
         if ( $rowspan > 1 ) {
           echo "<TD VALIGN=\"top\" BGCOLOR=\"$TODAYCELLBG\" ROWSPAN=\"$rowspan\">";
           if ( $can_add )
-            echo html_for_add_icon ( $date, $time_h );
+            echo html_for_add_icon ( $date, $time_h, $time_m );
           echo "hour_arr[$i]</TD></TR>\n";
         } else {
           echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">";
           if ( $can_add )
-            echo html_for_add_icon ( $date, $time_h );
+            echo html_for_add_icon ( $date, $time_h, $time_m );
           echo "$hour_arr[$i]</TD></TR>\n";
         }
       }
