@@ -1,7 +1,11 @@
 <?php
 
-if (preg_match("/\/includes\//", $PHP_SELF)) {
-    die ("You can't access this file directly!");
+if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
+  ! empty ( $_SERVER['PHP_SELF'] ) ) {
+  $PHP_SELF = $_SERVER['PHP_SELF'];
+}
+if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
+    die ( "You can't access this file directly!" );
 }
 
 // NOTE: This file is included within the print_trailer function found
