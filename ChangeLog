@@ -6,6 +6,7 @@ Version 0.9.41dev (?? ??? ???)
     in includes/js/ directory.
   - Fixed bug where My Calendar linked to 80/443. There were duplicate
     bugs reported for this: 657172, 638642, 614080
+  - Fixed bug 680793: failure descrip. and date in emails for rejected events
   - Fixed bug 677683: day.php (<? to <?php)
   - Fixed bug 647180: user_get_boss_list not LDAP aware
   - Fixed bug 575598: LDAP get_admins() group case sensitive
