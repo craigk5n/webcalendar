@@ -14,7 +14,6 @@
  */
 
 // Parse the ical file and return the data hash.
-//
 function parse_ical ( $cal_file ) {
   global $tz, $errormsg;
 
@@ -39,11 +38,11 @@ function parse_ical ( $cal_file ) {
       $buff = chop($buff);
 
       // parser debugging code...
-      //echo "line = $line <br>";
-      //echo "state = $state <br>";
-      //echo "substate = $substate <br>";
-      //echo "subsubstate = $subsubstate <br>";
-      //echo "buff = " . htmlspecialchars ( $buff ) . "<br><br>\n";
+      //echo "line = $line <br />";
+      //echo "state = $state <br />";
+      //echo "substate = $substate <br />";
+      //echo "subsubstate = $subsubstate <br />";
+      //echo "buff = " . htmlspecialchars ( $buff ) . "<br /><br />\n";
 
       if ($state == "VEVENT") {
           if ( ! empty ( $subsubstate ) ) {
@@ -54,9 +53,8 @@ function parse_ical ( $cal_file ) {
             } else if ( $subsubstate == "VALARM" && 
               preg_match ( "/TRIGGER:(.+)$/i", $buff, $match ) ) {
               // Example: TRIGGER;VALUE=DATE-TIME:19970317T133000Z
-              //echo "Set reminder to $match[1]<br>";
+              //echo "Set reminder to $match[1]<br />";
               // reminder time is $match[1]
-              // TODO: 
             }
           }
           else if (preg_match("/^BEGIN:(.+)$/i", $buff, $match)) {
@@ -122,7 +120,7 @@ function parse_ical ( $cal_file ) {
               if ($substate != "none") {
                   $event[$substate] .= $match[1];
               } else {
-                  $errormsg .= "Error in file $cal_file line $line:<br />$buff\n";
+                  $errormsg .= "Error in file $cal_file on line $line:<br />$buff\n";
                   $error = true;
               }
           // For unsupported properties
@@ -156,7 +154,6 @@ function parse_ical ( $cal_file ) {
 }
 
 // Convert ical format (yyyymmddThhmmssZ) to epoch time
-//
 function icaldate_to_timestamp($vdate,$plus_d = '0',$plus_m = '0', $plus_y = '0') {
   global $TZoffset;
 
@@ -179,7 +176,6 @@ function icaldate_to_timestamp($vdate,$plus_d = '0',$plus_m = '0', $plus_y = '0'
 
 
 // Put all ical data into import hash structure
-//
 function format_ical($event) {
 
   // Start and end time
@@ -238,7 +234,6 @@ function format_ical($event) {
   // Repeats
   //
   // Handle RRULE
-  //
   if ($event['rrule']) {
     // first remove and EndTime that may have been calculated above
     unset ( $fevent['Repeat']['EndTime'] );
@@ -265,7 +260,7 @@ function format_ical($event) {
           $fevent['Repeat']['Interval'] = 1;
         } else {
           // not supported :-(
-          echo "Unsupported iCal FREQ value \"$match[1]\" <br />\n";
+          echo "Unsupported iCal FREQ value \"$match[1]\"<br />\n";
         }
       } else if ( preg_match ( "/^INTERVAL=(.+)$/i", $RR[$i], $match ) ) {
         $fevent['Repeat']['Frequency'] = $match[1];
@@ -274,16 +269,16 @@ function format_ical($event) {
         $fevent['Repeat']['EndTime'] = icaldate_to_timestamp ( $match[1] );
       } else if ( preg_match ( "/^COUNT=(.+)$/i", $RR[$i], $match ) ) {
         // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal COUNT value \"$RR[$i]\" <br />\n";
+        echo "Unsupported iCal COUNT value \"$RR[$i]\"<br />\n";
       } else if ( preg_match ( "/^BYSECOND=(.+)$/i", $RR[$i], $match ) ) {
         // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal BYSECOND value \"$RR[$i]\" <br />\n";
+        echo "Unsupported iCal BYSECOND value \"$RR[$i]\"<br />\n";
       } else if ( preg_match ( "/^BYMINUTE=(.+)$/i", $RR[$i], $match ) ) {
         // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal BYMINUTE value \"$RR[$i]\" <br />\n";
+        echo "Unsupported iCal BYMINUTE value \"$RR[$i]\"<br />\n";
       } else if ( preg_match ( "/^BYHOUR=(.+)$/i", $RR[$i], $match ) ) {
         // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal BYHOUR value \"$RR[$i]\" <br />\n";
+        echo "Unsupported iCal BYHOUR value \"$RR[$i]\"<br />\n";
       } else if ( preg_match ( "/^BYMONTH=(.+)$/i", $RR[$i], $match ) ) {
         // this event repeats during the specified months
         $months = explode ( ",", $match[1] );
@@ -304,16 +299,16 @@ function format_ical($event) {
           }
         } else {
           // WebCalendar does not support this
-          echo "Unsupported iCal BYMONTH value \"$match[1]\" <br />\n";
+          echo "Unsupported iCal BYMONTH value \"$match[1]\"<br />\n";
         }
       } else if ( preg_match ( "/^BYDAY=(.+)$/i", $RR[$i], $match ) ) {
         $fevent['Repeat']['RepeatDays'] = rrule_repeat_days( $match[1] );
       } else if ( preg_match ( "/^BYMONTHDAY=(.+)$/i", $RR[$i], $match ) ) {
         // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal BYMONTHDAY value \"$RR[$i]\" <br />\n";
+        echo "Unsupported iCal BYMONTHDAY value \"$RR[$i]\"<br />\n";
       } else if ( preg_match ( "/^BYSETPOS=(.+)$/i", $RR[$i], $match ) ) {
         // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal BYSETPOS value \"$RR[$i]\" <br />\n";
+        echo "Unsupported iCal BYSETPOS value \"$RR[$i]\"<br />\n";
       }
     }
 
@@ -331,7 +326,6 @@ function format_ical($event) {
 }
 
 // Figure out days of week for weekly repeats
-//
 function rrule_repeat_days($RA) {
   $T = count($RA);
   $j = $T - 1;
@@ -358,7 +352,6 @@ function rrule_repeat_days($RA) {
 
 
 // Calculate repeating ending time
-//
 function rrule_endtime($int,$freq,$start,$end) {
 
   // if # then we have to add the difference to the start time
