@@ -16,6 +16,7 @@ Verion 0.9.43dev (?? ??? 2003)
   - Fixed bug: printer-friendly link on report page lost user and
     offset info.
   - Updated palm & vcal import tools to support new repeat type (monthlyByDayR)
+  - Updated Finnish translation
   - Updated German translation
   - Updated Dutch translation
   - Updated Chinese-GB2312 translation
