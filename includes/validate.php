@@ -9,6 +9,8 @@ if ( $single_user == "Y" ) {
   if ( $use_http_auth ) {
     // HTTP server did validation for us....
     if ( empty ( $PHP_AUTH_USER ) )
+      $PHP_AUTH_USER = $_SERVER['PHP_AUTH_USER'];
+    if ( empty ( $PHP_AUTH_USER ) )
       $session_not_found = true;
     else
       $login = $PHP_AUTH_USER;
