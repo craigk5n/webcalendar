@@ -129,7 +129,7 @@ for ( $d = 0; $d < 7; $d++ ) {
   if ( empty ( $friendly ) && $can_add ) {
     echo "<a href=\"edit_entry.php?" . $u_url .
       "date=" . date ( "Ymd", $days[$d] ) . "\">" .
-      "<img src=\"new.gif\" style=\"width:10px; height:10px; border-width:0px;\" alt=\"" .
+      "<img src=\"new.gif\" class=\"new\" alt=\"" .
       translate("New Entry") . "\" align=\"right\" />" .  "</a>";
   }
   echo "<a href=\"day.php?" . $u_url .
@@ -157,9 +157,9 @@ for ( $d = 0; $d < 7; $d++ ) {
 <a class="navlinks" href="week_details.php?<?php
   echo $u_url;
   if ( $thisyear ) {
-    echo "year=$thisyear&month=$thismonth&day=$thisday";
+    echo "year=$thisyear&amp;month=$thismonth&amp;day=$thisday";
   }
-  echo $caturl . "&";
+  echo $caturl . "&amp;";
 ?>friendly=1" target="cal_printer_friendly"
 onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
@@ -206,9 +206,9 @@ function print_detailed_entry ( $id, $date, $time, $duration,
   if ( ! $hide_icons ) {
     $divname = "eventinfo-$id-$key";
     $key++;
-    echo "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
+    echo "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
     if ( strlen ( $user ) > 0 )
-      echo "&user=" . $user;
+      echo "&amp;user=" . $user;
     echo "\" onmouseover=\"window.status='" . translate("View this entry") .
       "'; return true;\" onmouseout=\"window.status=''; return true;\">";
     echo "<img src=\"circle.gif\" style=\"width:5px; height:7px; border-width:0px;\" alt=\"view icon\" />";
