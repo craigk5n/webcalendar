@@ -3518,24 +3518,22 @@ function isLeapYear($year='') {
 }
 
 // Replace unsafe characters with HTML encoded equivalents
-function clean($value){
-  $value = htmlspecialchars($value);
+function clean_html($value){
+  $value = htmlspecialchars($value, ENT_QUOTES);
   $value = strtr($value, array(
     '('   => '&#40;',
-    ')'   => '&#41;',
-    '%28' => '&#40;',
-    '%29' => '&#41;',
-    '%2e' => '&#43;',
-    '%2E' => '&#43;',
-    '%3c' => '&#60;',
-    '%3C' => '&#60;',
-    '%3e' => '&#62;',
-    '%3E' => '&#62;',
-    '%0a' => '&#10;',
-    '%0A' => '&#10;',
-    '%0d' => '&#13;',
-    '%0D' => '&#13;'
+    ')'   => '&#41;'
   ));
   return $value;
+}
+
+// Remove non-word characters
+function clean_word($data) { 
+  return preg_replace("/\W/", '', $data);
+}
+
+// Remove non-digits
+function clean_int($data) { 
+  return preg_replace("/\D/", '', $data);
 }
 ?>
