@@ -161,6 +161,30 @@ $require_approvals = TRUE; // set to TRUE or FALSE
 // same person).
 $allow_conflicts = FALSE; // set to TRUE or FALSE
 
+// How far into the future should we check for conflicts of repeating
+// events?  6 months is probably sufficient.  If you find it's taking
+// a long time to save repeating events, try making this less.
+// Set it to 0 to not check for conflicts except for the original date
+// of the repeating event.
+$conflict_repeat_months = 6;
+
+// You can disable some standard event fields if you want to simplify
+// the interface.  This will only remove them from the interface, and
+// you can always change this to add them back later.  The repeating
+// event stuff seems to be confusing to novice users.  Note that
+// the $disable_participants_field setting will allow you to prevent
+// users from adding other users to events they create.  If you set
+// this to true, you might want to set $allow_view_other to false
+// below.
+$disable_priority_field = false;
+$disable_access_field = false;
+$disable_participants_field = false;
+$disable_repeating_field = false;
+
+// Can non-admin users view the calendar of another user?
+// Note: An admin user can still view another user's calendar.
+$allow_view_other = true;
+
 // If email addresses are provided for users, then they will receive
 // email notifications when an event is added/modified in their calendar.
 // Set the from address here.  This will only be used if the person adding

@@ -77,6 +77,9 @@ load_user_layers ();
 
 include "includes/translate.inc";
 
+if ( ! $allow_view_other && ! $is_admin )
+  $user = "";
+
 ?>
 
 <HTML>

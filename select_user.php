@@ -21,18 +21,27 @@ include "includes/translate.inc";
 </HEAD>
 <BODY BGCOLOR="<?php echo $BGCOLOR;?>">
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("View Another User's Calendar")?></FONT></H2>
 
-<UL>
+<H2><FONT COLOR="<?php echo $H2COLOR; ?>"><?php etranslate("View Another User's Calendar"); ?></H2></FONT>
+
 <?php
-$userlist = user_get_users ();
-for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-  echo "<LI><A HREF=\"$STARTVIEW.php?user=" . $userlist[$i]['cal_login'] .
-    "\">" . $userlist[$i]['cal_fullname'] . "</A>";
+if ( ! $allow_view_other && ! $is_admin ) {
+  $error = translate ( "You are not authorized" );
+}
+
+if ( strlen ( $error ) ) {
+  echo "<BLOCKQUOTE>$error</BLOCKQUOTE>\n";
+} else {
+  $userlist = user_get_users ();
+  echo "<UL>\n";
+  for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+    echo "<LI><A HREF=\"$STARTVIEW.php?user=" . $userlist[$i]['cal_login'] .
+      "\">" . $userlist[$i]['cal_fullname'] . "</A>";
+  }
+  echo "</UL>\n";
 }
 
 ?>
-</UL>
 <P>
 
 <?php include "includes/trailer.inc"; ?>

@@ -119,12 +119,13 @@
       translate("Login") . "/" . translate("Logout") . "</A>,\n";
     if ( strlen ( $user ) && $user != $login )
       echo "<A CLASS=\"navlinks\" HREF=\"$STARTVIEW.php\"><B>" .
-        translate("Back to My Calendar") . "</B></A>,\n";
+        translate("Back to My Calendar") . "</B></A>\n";
     else
       echo "<A CLASS=\"navlinks\" HREF=\"$STARTVIEW.php\"><B>" .
-        translate("My Calendar") . "</B></A>,\n";
-    echo "<A CLASS=\"navlinks\" HREF=\"select_user.php\">" .
-      translate("Another User's Calendar") . "</A>\n";
+        translate("My Calendar") . "</B></A>\n";
+    if ( $allow_view_other || $is_admin )
+      echo ", <A CLASS=\"navlinks\" HREF=\"select_user.php\">" .
+        translate("Another User's Calendar") . "</A>\n";
   } else {
     echo "<A CLASS=\"navlinks\" HREF=\"$STARTVIEW.php\"><B>" .
       translate("My Calendar") . "</B></A>\n";
@@ -154,15 +155,17 @@
 <?php
   if ( ! strlen ( $single_user_login ) && ( ! $readonly || $is_admin ) ) {
 
-    echo ", <A CLASS=\"navlinks\" HREF=\"layers.php\">" .
-      translate ("Edit Layers") . "</A>\n";
+    if ( $allow_view_other || $is_admin ) {
+      echo ", <A CLASS=\"navlinks\" HREF=\"layers.php\">" .
+        translate ("Edit Layers") . "</A>\n";
 
-    if ( $LAYERS_STATUS == "N" )
-      echo ", <A CLASS=\"navlinks\" HREF=\"layers_toggle.php?status=on\">" .
-        translate ("Enable Layers") . "</A>\n";
-    else
-      echo ", <A CLASS=\"navlinks\" HREF=\"layers_toggle.php?status=off\">" .
-        translate ("Disable Layers") . "</A>\n";
+      if ( $LAYERS_STATUS == "N" )
+        echo ", <A CLASS=\"navlinks\" HREF=\"layers_toggle.php?status=on\">" .
+          translate ("Enable Layers") . "</A>\n";
+      else
+        echo ", <A CLASS=\"navlinks\" HREF=\"layers_toggle.php?status=off\">" .
+          translate ("Disable Layers") . "</A>\n";
+    }
 
     if ( $is_admin ) {
       echo ", <A CLASS=\"navlinks\" HREF=\"users.php\">" .
