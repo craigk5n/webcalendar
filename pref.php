@@ -71,7 +71,7 @@ if ( $is_admin ) {
 }
 ?>
 
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2"><tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Language")?>:</td>
+<table class="standard" cellspacing="1" cellpadding="2"><tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Language")?>:</td>
 <td><select name="pref_LANGUAGE">
 <?php
 reset ( $languages );
@@ -291,7 +291,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 <?php if ( ! $updating_public ) { ?>
 <h3><?php etranslate("Email")?></h3>
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2"><tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Event reminders")?>:</td>
+<table class="standard" cellspacing="1" cellpadding="2"><tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Event reminders")?>:</td>
   <td><label><input type="radio" name="pref_EMAIL_REMINDER" value="Y" <?php if ( $prefarray["EMAIL_REMINDER"] != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_EMAIL_REMINDER" value="N" <?php if ( $prefarray["EMAIL_REMINDER"] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
 <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Events added to my calendar")?>:</td>
@@ -311,7 +311,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 <?php if ( ! $updating_public ) { ?>
 <h3><?php etranslate("When I am the boss")?></h3>
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
+<table class="standard" cellspacing="1" cellpadding="2">
 <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Email me event notification")?>:</td>
   <td><label><input type="radio" name="pref_EMAIL_ASSISTANT_EVENTS" value="Y" <?php if ( $prefarray["EMAIL_ASSISTANT_EVENTS"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_EMAIL_ASSISTANT_EVENTS" value="N" <?php if ( $prefarray["EMAIL_ASSISTANT_EVENTS"] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
@@ -323,7 +323,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 <?php if ( $PUBLISH_ENABLED == 'Y' ) { ?>
 <h3><?php etranslate("Subscribe/Publish")?></h3>
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
+<table class="standard" cellspacing="1" cellpadding="2">
 <tr><td style="vertical-align:top;" class="tooltip" title="<?php etooltip("allow-remote-subscriptions-help")?>"><?php etranslate("Allow remote subscriptions")?>:</td>
   <td><label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="Y" <?php if ( $prefarray["USER_PUBLISH_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="N" <?php if ( $prefarray["USER_PUBLISH_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 <?php if ( ! empty ( $server_url ) ) { ?>
@@ -339,7 +339,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 <table style="border-width:0px; width:100%;"><tr><td style="vertical-align:top; text-align:left;">
 
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
+<table class="standard" cellspacing="1" cellpadding="2">
 <tr><td style="font-weight:bold;"><?php etranslate("Document background")?>:</td>
   <td><input type="text" name="pref_BGCOLOR" size="8" maxlength="7" value="<?php echo $prefarray["BGCOLOR"]; ?>" /> <input type="button" onclick="selectColor('pref_BGCOLOR')" value="<?php etranslate("Select")?>..." /></td></tr>
 <tr><td style="font-weight:bold;"><?php etranslate("Document title")?>:</td>
@@ -371,16 +371,16 @@ echo date_to_str ( "20001201", $DATE_FORMAT_MY, false, false );?></td></tr>
 <table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
 <tr>
 <?php if ( $prefarray["WEEK_START"] == 0 ) { ?>
-<th style="width:14%; background-color:<?php echo $prefarray["THBG"]?>; color:<?php echo $prefarray["THFG"]?>;" class="tableheader"><?php etranslate("Sun")?></th>
+<th style="width:14%;" class="tableheader"><?php etranslate("Sun")?></th>
 <?php } ?>
-<th style="width:14%; background-color:<?php echo $prefarray["THBG"]?>; color:<?php echo $prefarray["THFG"]?>;" class="tableheader"><?php etranslate("Mon")?></th>
-<th style="width:14%; background-color:<?php echo $prefarray["THBG"]?>; color:<?php echo $prefarray["THFG"]?>;" class="tableheader"><?php etranslate("Tue")?></th>
-<th style="width:14%; background-color:<?php echo $prefarray["THBG"]?>; color:<?php echo $prefarray["THFG"]?>;" class="tableheader"><?php etranslate("Wed")?></th>
-<th style="width:14%; background-color:<?php echo $prefarray["THBG"]?>; color:<?php echo $prefarray["THFG"]?>;" class="tableheader"><?php etranslate("Thu")?></th>
-<th style="width:14%; background-color:<?php echo $prefarray["THBG"]?>; color:<?php echo $prefarray["THFG"]?>;" class="tableheader"><?php etranslate("Fri")?></th>
-<th style="width:14%; background-color:<?php echo $prefarray["THBG"]?>; color:<?php echo $prefarray["THFG"]?>;" class="tableheader"><?php etranslate("Sat")?></th>
+<th style="width:14%;" class="tableheader"><?php etranslate("Mon")?></th>
+<th style="width:14%;" class="tableheader"><?php etranslate("Tue")?></th>
+<th style="width:14%;" class="tableheader"><?php etranslate("Wed")?></th>
+<th style="width:14%;" class="tableheader"><?php etranslate("Thu")?></th>
+<th style="width:14%;" class="tableheader"><?php etranslate("Fri")?></th>
+<th style="width:14%;" class="tableheader"><?php etranslate("Sat")?></th>
 <?php if ( $prefarray["WEEK_START"] == 1 ) { ?>
-<th style="width:14%; background-color:<?php echo $prefarray["THBG"]?>; color:<?php echo $prefarray["THFG"]?>;" class="tableheader"><?php etranslate("Sun")?></th>
+<th style="width:14%;" class="tableheader"><?php etranslate("Sun")?></th>
 <?php } ?>
 </tr>
 <?php

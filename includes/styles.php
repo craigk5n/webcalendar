@@ -222,6 +222,13 @@ td.numericdate {
 	vertical-align: top;
 	font-weight: bold;
 }
+table.standard {
+	border-width: 1px;
+	border-color: #000000;
+	border-style: solid;
+	background-color: <?php echo $GLOBALS['CELLBG'] ?>;
+}
+
 
 
 /* ALL STYLES BELOW THIS LINE ARE NEW as of 8 July 2004 */
