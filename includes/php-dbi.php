@@ -23,6 +23,9 @@
 //	(Some db APIs don't support xxx_fetch_array().)
 //
 // History:
+//	02-Jul-2004	Craig Knudsen <cknudsen@cknudsen.com>
+//			Added mysqli support
+//			Code from Francesco Riosa
 //	31-May-2002	Craig Knudsen <cknudsen@radix.net>
 //			Added support for Interbase contributed by
 //			Marco Forlin
@@ -33,7 +36,7 @@
 //			PostgreSQL fixes
 //	23-Feb-2000	Craig Knudsen <cknudsen@radix.net>
 //			Initial release
-//	
+//
 
 // Limitations:
 // Fetched rows are returned in non-associative arrays.
@@ -52,6 +55,22 @@ function dbi_connect ( $host, $login, $password, $database ) {
     if ( $c ) {
       if ( ! mysql_select_db ( $database ) )
         return false;
+      return $c;
+    } else {
+      return false;
+    }
+  } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
+    if ($GLOBALS["db_persistent"]) {
+      $c = mysqli_connect ( $host, $login, $password, $database);
+    } else {
+      $c = mysqli_connect ( $host, $login, $password, $database);
+    }
+    if ( $c ) {
+      /*
+      if ( ! mysqli_select_db ( $c, $database ) )
+        return false;
+      */
+      $GLOBALS["db_connection"] = $c;
       return $c;
     } else {
       return false;
@@ -115,6 +134,8 @@ function dbi_connect ( $host, $login, $password, $database ) {
 function dbi_close ( $conn ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     return mysql_close ( $conn );
+  } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
+    return mysqli_close ( $conn );
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     return OCILogOff ( $conn );
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
@@ -126,7 +147,7 @@ function dbi_close ( $conn ) {
   } else {
     dbi_fatal_error ( "dbi_close(): db_type not defined." );
   }
-  
+
 }
 
 
@@ -147,6 +168,12 @@ function dbi_close ( $conn ) {
 function dbi_query ( $sql ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     $res = mysql_query ( $sql );
+    if ( ! $res )
+      dbi_fatal_error ( "Error executing query: " . dbi_error() .
+        "\n\n<br />\n" . $sql );
+    return $res;
+  } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
+    $res = mysqli_query ( $GLOBALS["db_connection"], $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query: " . dbi_error() .
         "\n\n<br />\n" . $sql );
@@ -194,6 +221,8 @@ function dbi_query ( $sql ) {
 function dbi_fetch_row ( $res ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     return mysql_fetch_array ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
+    return mysqli_fetch_array ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     if ( OCIFetchInto ( $GLOBALS["oracle_statement"], $row,
       OCI_NUM + OCI_RETURN_NULLS  ) )
@@ -204,7 +233,7 @@ function dbi_fetch_row ( $res ) {
         $r =  pg_fetch_array ( $res, $GLOBALS["postgresql_row[\"$res\"]"] );
         $GLOBALS["postgresql_row[\"$res\"]"]++;
         if ( ! $r ) {
-            echo "Unable to fetch row\n"; 
+            echo "Unable to fetch row\n";
             return '';
         }
     }
@@ -231,6 +260,8 @@ function dbi_fetch_row ( $res ) {
 function dbi_affected_rows ( $conn, $res ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     return mysql_affected_rows ( $conn );
+  } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
+    return mysqli_affected_rows ( $conn );
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     if ( $GLOBALS["oracle_statement"] >= 0 ) {
       return OCIRowCount ( $GLOBALS["oracle_statement"] );
@@ -255,6 +286,8 @@ function dbi_affected_rows ( $conn, $res ) {
 function dbi_free_result ( $res ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     return mysql_free_result ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
+    return mysqli_free_result ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     // Not supported.  Ingore.
     if ( $GLOBALS["oracle_statement"] >= 0 ) {
@@ -277,6 +310,8 @@ function dbi_free_result ( $res ) {
 function dbi_error () {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     $ret = mysql_error ();
+  } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
+    $ret = mysqli_error ($GLOBALS["db_connection"]);
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     $ret = OCIError ( $GLOBALS["oracle_connection"] );
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
