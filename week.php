@@ -60,12 +60,8 @@ for ( $i = 0; $i < 7; $i++ ) {
 }
 ?>
 
-<table style="border-width:0px; width:100%;">
-<tr>
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td align="left"><a title="<?php etranslate("Previous")?>" href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a></td>
-<?php } ?>
-<td class="weekviewtitle">
+<div style="border-width:0px; width:100%;">
+<div class="weekviewtitle">
 <span class="date">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
@@ -79,8 +75,13 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
     translate("Week") . " " . week_number ( $wkstart ) . ")</span>";
 }
 ?>
-<span class="user">
-<?php
+<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
+<a title="<?php etranslate("Previous")?>" href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" style="float:left;" alt="<?php etranslate("Previous")?>" /></a>
+<?php } ?>
+<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
+<a href="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" class="prevnext" style="float:right;" alt="<?php etranslate("Next")?>" /></a>
+<?php } ?>
+<span class="user"><?php
   if ( $single_user == "N" ) {
     echo "<br />$user_fullname\n";
   }
@@ -88,20 +89,15 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
     echo "<br /><span style=\"font-weight:bold;\">-- " . translate("Admin mode") . " --</span>";
   if ( $is_assistant )
     echo "<br /><span style=\"font-weight:bold;\">-- " . translate("Assistant mode") . " --</span>";
-?>
-</span>
+?></span>
 <?php
   if ( $categories_enabled == "Y" ) {
     echo "<br />\n<br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
   }
 ?>
-</td>
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td align="right"><a href="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a></td>
-<?php } ?>
-</tr>
-</table>
+</div>
+</div>
 
 <table class="weekview" cellspacing="0" cellpadding="0">
 <tr>
