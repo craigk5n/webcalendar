@@ -82,9 +82,13 @@ if ($DMW) {
   if ( ! empty ( $user ) ) {
     $u_url = "user=$user&";
     user_load_variables ( $user, "user_" );
+    if ( $user == "__public__" )
+      $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
   } else {
     $u_url = "";
     $user_fullname = $fullname;
+    if ( $login == "__public__" )
+      $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
   }
 
   if ( empty ( $friendly ) ) {

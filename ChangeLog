@@ -1,4 +1,11 @@
-Verion 0.9.43 (?? ??? ????)
+Verion 0.9.43dev (?? ??? 2003)
+  - Fixed bug 777524: Fixed preference issues with language.  Also
+    fixed translation of "Public Access" into other languages.
+  - When editing an event and changing the category, allow admin users to
+    also change the category saved for the public user.
+  - Fixed bug 772197: Oracle insert error for new reports
+  - Fixed bug: printer-friendly link on report page lost user and
+    offset info.
   - Updated palm & vcal import tools to support new repeat type (monthlyByDayR)
 Verion 0.9.42 (21 Jul 2003)
   - Added admin options for nonuser calendars
