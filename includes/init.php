@@ -1,19 +1,38 @@
 <?php
-//--------------------------------------------------------------------------
-// init.php written by Jeff Hoover
-// - simplifies script initialization
-// - puts HTML headers in an easy to call function
-//
-// ** NOTE that the following scripts do not use this file:
-//  - login.php
-//  - week_ssi.php
-//  - tools/send_reminders.php
-//
-// How to use:
-// 1. call include_once 'includes/init.php'; at the top of your script.
-// 2. call any other functions or includes not in this file that you need
-// 3. call the print_header function with proper arguments
-//--------------------------------------------------------------------------
+/*--------------------------------------------------------------------
+ init.php written by Jeff Hoover
+ - simplifies script initialization
+ - puts HTML headers in an easy to call function
+
+ ** NOTE that the following scripts do not use this file:
+  - login.php
+  - week_ssi.php
+  - tools/send_reminders.php
+
+ How to use:
+ 1. call include_once 'includes/init.php'; at the top of your script.
+ 2. call any other functions or includes not in this file that you need
+ 3. call the print_header function with proper arguments
+
+ What gets called:
+
+  include_once 'includes/config.php';
+  include_once 'includes/php-dbi.php';
+  include_once 'includes/functions.php';
+  include_once "includes/$user_inc";
+  include_once 'includes/validate.php';
+  include_once 'includes/connect.php';
+  load_global_settings ();
+  load_user_preferences ();
+  include_once 'includes/translate.php';
+  include_once 'includes/styles.php';
+
+ Also, for month.php, day.php, week.php, week_details.php:
+
+  send_no_cache_header ();
+
+//--------------------------------------------------------------------
+*/
 
 // Get script name
 $self = $_SERVER['PHP_SELF'];
