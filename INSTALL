@@ -131,6 +131,9 @@ database (mysql, sqlplus, etc...)  Look in the tables-mysql.sql
 (or tables-oracle.sql, etc.) to see the example of adding in the
 "admin" user.
 
+Note: if you are using LDAP or NIS authentication then you will want to
+set the $user_inc variable in includes/config.inc appropriately.
+
 Next, you will want to customize the event-specific fields found in
 the includes/site_extras.inc field.  You can use this to add extra
 fields to your calendar events.  For example, you can add a URL or

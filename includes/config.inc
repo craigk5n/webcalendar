@@ -93,6 +93,9 @@ $user_inc = "user.inc";
 // LDAP: if you select this, you must also configure some variables
 // in includes/user-ldap.inc such as your LDAP server...
 //$user_inc = "user-ldap.inc";
+// NIS: if you select this, you must also configure some variables
+// in includes/user-nis
+//$user_inc = "user-nis.inc";
 
 // Approval: this doesn't apply if you're running single-user.  If you
 // are running multi-user, you can optionally allow users to approve/confirm
