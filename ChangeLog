@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Fixed bug 921557: warnings about invalid parameter for localtime().
   - Fixed bug 919038: category selecting was not working when viewing
     another user's calendar.
   - Don't list "Public Access" on list of users for admin to edit.
