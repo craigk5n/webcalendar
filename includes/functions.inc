@@ -29,10 +29,20 @@ function do_debug ( $msg ) {
 
 
 // send a redirect to the specified page
+// MS IIS/PWS has a bug in which it does not allow us to send a cookie
+// and a redirect in the same HTTP header.
+// See the following for more info on the IIS bug:
+//   http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4
 function do_redirect ( $url ) {
-  Header ( "Location: $url" );
-  echo "<HTML><HEAD><TITLE>Redirect</TITLE></HEAD><BODY>" .
-    "Please go <A HREF=\"" . $url . "\">here</A>.</BODY></HTML>.\n";
+  if ( substr ( $SERVER_SOFTWARE, 0, 5 ) == "Micro" ) {
+    echo "<HTML><HEAD><TITLE>Redirect</TITLE>" .
+      "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0; URL=$url\"></HEAD><BODY>" .
+      "Redirecting to ... <A HREF=\"" . $url . "\">here</A>.</BODY></HTML>.\n";
+  } else {
+    Header ( "Location: $url" );
+    echo "<HTML><HEAD><TITLE>Redirect</TITLE></HEAD><BODY>" .
+      "Redirecting to ... <A HREF=\"" . $url . "\">here</A>.</BODY></HTML>.\n";
+  }
   exit;
 }
 

@@ -1,4 +1,7 @@
 Version 0.9.34dev (?? ??? ??)
+  - MS IIS/PSW workaround: IIS does not allow you to send a cookie and
+    a redirect in the same http header, so all redirects are handled
+    using html meta tags when IIS is detected.
   - Fixed bug 447339: In week view, events would not span enough hours
     in the display if there was another event later in that day.  In
     day view, all events would display in a one hour block even if they
