@@ -1,4 +1,11 @@
-Version 0.9.30dev (?? Jun 01)
+Version 0.9.30dev (???)
+  - Generate a fatal error when MySQL returns an error instead of
+    ignoring it.
+  - Fixed bug 420352: when viewing a repeating event for a date other
+    than its first date, it was always showing the first date.
+  - Fixed bug 430290: non-admin users could not update their name
+    or password.
+  - Fixed bug 430347: displaying duplicates when using ODBC.
   - Fixed bug: Was not displaying the correct user name in month, week
     and year view when viewing another user's calendar.
   - Fixed bug: send_reminders.php was dying because of SQL error
