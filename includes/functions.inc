@@ -1546,7 +1546,6 @@ function weekday_name ( $w ) {
     case 4: return translate("Thursday");
     case 5: return translate("Friday");
     case 6: return translate("Saturday");
-    case 7: return translate("July");
   }
   return "unknown-weekday($w)";
 }
@@ -1563,7 +1562,6 @@ function weekday_short_name ( $w ) {
     case 4: return translate("Thu");
     case 5: return translate("Fri");
     case 6: return translate("Sat");
-    case 7: return translate("Jul");
   }
   return "unknown-weekday($w)";
 }
