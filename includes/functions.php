@@ -842,9 +842,6 @@ function print_entry ( $id, $date, $time, $duration,
   
   global $layers;
 
-//TODO: the following section has 3 nested spans that need to be extracted, and then combined together separately from the PHP code.  Currently the code won't validate. I'm not yet comfortable enough editing PHP to make such a change. Craig, if you're willing to walk me through it, that would be terrific! Thanks.
-  echo "<span style=\"font-size:13px;\">";
-
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $class = "layerentry";
   } else {
@@ -918,15 +915,27 @@ function print_entry ( $id, $date, $time, $duration,
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
     echo htmlspecialchars ( $name );
-    echo ("</span>"); //end color span
+//    echo ("</span>"); //end color span
   }
 
   else
     echo htmlspecialchars ( $name );
-
+    
   echo "</a>";
-  if ( $pri == 3 ) echo "</span>"; //end font-weight span
-  echo "</span><br />"; //end font-size span
+  if ( $login != $event_owner && strlen ( $event_owner ) )
+  {
+    for($index = 0; $index < sizeof($layers); $index++)
+    {
+        if($layers[$index]['cal_layeruser'] == $event_owner)
+        {
+            echo "</span>";
+        }
+    }
+  }
+
+  if ( $pri == 3 ) echo "</span>\n"; //end font-weight span
+//  echo "</span><br />"; //end font-size span
+  echo "<br />"; //end font-size span
   if ( ! $hide_icons ) {
     if ( $login != $user && $access == 'R' && strlen ( $user ) )
       $eventinfo .= build_event_popup ( $divname, $event_owner,
@@ -2115,8 +2124,6 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
-
-// TODO: The following area (similiar to the one earlier in this document) has several nested spans which need to be extracted & combined separate from the PHP code.
 
   // avoid php warning for undefined array index
   if ( empty ( $hour_arr[$ind] ) )
