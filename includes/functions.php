@@ -3638,8 +3638,8 @@ function clean_int($data) {
   return preg_replace("/\D/", '', $data);
 }
 
-// Remove whitespace to prevent HTTP Response Splitting
-function clean_http($data) { 
+// Remove whitespace
+function clean_whitespace($data) { 
   return preg_replace("/\s/", '', $data);
 }
 ?>
