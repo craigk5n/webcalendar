@@ -172,7 +172,7 @@ function dbi_fetch_row ( $res ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     return mysql_fetch_array ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
-    if ( OCIFetchInto ( $GLOBALS["oracle_statement"], &$row,
+    if ( OCIFetchInto ( $GLOBALS["oracle_statement"], $row,
       OCI_NUM + OCI_RETURN_NULLS  ) )
       return $row;
     return 0;

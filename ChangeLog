@@ -1,4 +1,5 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Fixed bug: removed call by reference in php-dbi.php.
   - Fixed bug: Event description popup were not displayed in Netscape 4 if
     the event appeared near the bottom of the page.
   - Fixed bug 599323: categories were not being saved properly.
