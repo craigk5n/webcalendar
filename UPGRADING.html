@@ -46,7 +46,7 @@
 
 <p>Below are the steps needed to upgrade from a previous version.
 Select your current version from the list below. If you are more 
-than one version behind (i.e. the current version is v0.9.44, 
+than one version behind (i.e. the current version is v0.9.45, 
 and you're using v0.9.39), click the "next.." link at the end of 
 each section to move to the next version. Always follow the versions 
 in sequence.</p>
@@ -54,6 +54,7 @@ in sequence.</p>
 
 <h4>I'm using..</h4>
 <ul>
+	<li><a href="UPGRADING.html#dot945">v0.9.44</a></li>
 	<li><a href="UPGRADING.html#dot944">v0.9.43</a></li>
 	<li><a href="UPGRADING.html#dot943">v0.9.42</a></li>
 	<li><a href="UPGRADING.html#dot942">v0.9.41</a></li>
@@ -419,6 +420,28 @@ the URL to access the script in your browser: <br />
 
 <h4><a id="dot944">To upgrade from v0.9.43 to v0.9.44:</a></h4>
 <p>No manual changes required for upgrading from 0.9.43 to 0.9.44.</p>
+<a href="UPGRADING.html#dot945">next..</a>
+<hr />
+
+<h4><a id="dot945">To upgrade from v0.9.44 to v0.9.45:</a></h4>
+<p>There are no database changes from 0.9.44 to 0.9.45.
+However, the database settings were moved from <tt>includes/config.php</tt>
+to a new file <tt>includes/settings.php</tt>.
+This new file does not exist until you create it.
+</p>
+<p>
+The first time you attempt to access WebCalendar with the new 0.9.45 files,
+your browser will be redirected to a web-based admin page for configuring
+the database settings.  You will need to make sure the <tt>includes</tt>
+directory is writable by the web server user.
+The simplest solution is to make it writable by all users until you
+have correctly setup your database connection.  Then, you can change it
+to more restrictive permissions.
+</p>
+<p>
+After saving your database settings, be sure to setup an install
+password via this same web page so that other users may not change
+your database settings.
 <hr />
 
 <p>
