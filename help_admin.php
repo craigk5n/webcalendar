@@ -76,6 +76,14 @@ print_header();
   <TD><?php etranslate("categories-enabled-help")?></TD></TR>
 </TABLE>
 
+<H3><?php etranslate("Nonuser")?></H3>
+<TABLE BORDER=0>
+<TR><TD VALIGN="top"><B><?php etranslate("Nonuser enabled")?>:</B></TD>
+  <TD><?php etranslate("nonuser-enabled-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Nonuser list")?>:</B></TD>
+  <TD><?php etranslate("nonuser-list-help")?></TD></TR>
+</TABLE>
+
 <H3><?php etranslate("Reports")?></H3>
 <TABLE BORDER=0>
 <TR><TD VALIGN="top"><B><?php etranslate("Reports enabled")?>:</B></TD>
