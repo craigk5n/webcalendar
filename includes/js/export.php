@@ -19,7 +19,7 @@ function selectDate ( day, month, year ) {
 <?php //see the showTab function in includes/js.php for common code shared by all pages
 	//using the tabbed GUI.
 ?>var tabs = new Array();
-tabs[1] = "import";
-tabs[2] = "export";
+tabs[0] = "import";
+tabs[1] = "export";
 //]]> -->
 </script>
