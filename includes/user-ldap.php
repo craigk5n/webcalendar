@@ -321,6 +321,7 @@ function user_get_users () {
       // search for user
       $sr = @ldap_search ( $ds, $ldap_base_dn, $ldap_user_filter,
         $ldap_user_attr );
+      if ( (float)substr(PHP_VERSION,0,3) >= 4.2 ) ldap_sort ( $ds, $sr, "cn");
       $info = @ldap_get_entries( $ds, $sr );
       for ( $i = 0; $i < $info["count"]; $i++ ) {
         $ret[$count++] = array (
