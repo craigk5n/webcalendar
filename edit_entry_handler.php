@@ -122,6 +122,14 @@ if ( strlen ( $error ) == 0 ) {
     }
     $newevent = true;
   } else {
+    // save old status values of participants
+    $sql = "SELECT cal_login, cal_status FROM webcal_entry_user " .
+      "WHERE cal_id = $id ";
+    $res = dbi_query ( $sql );
+    for ( $i = 0; $tmprow = dbi_fetch_row ( $res ); $i++ ) {
+      $old_status[$tmprow[0]] = $tmprow[1]; 
+    }
+    dbi_free_result ( $res );
     dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = $id" );
     dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_id = $id" );
     dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id" );
@@ -165,9 +173,47 @@ if ( strlen ( $error ) == 0 ) {
     $participants[0] = $single_user_login;
   }
 
+  // check if participants have been removed and send out emails
+  if ( ! $newevent ) {  // nur bei Update!!!
+    while ( list ( $old_participant, $dummy ) = each ( $old_status ) ) {
+      $found_flag = false;
+      for ( $i = 0; $i < count ( $participants ); $i++ ) {
+        if ( $participants[$i] == $old_participant ) {
+          $found_flag = true;
+          break;
+        }
+      }
+      if ( !$found_flag ) {
+        // only send mail if their email address is filled in
+        $do_send = get_pref_setting ( $old_participants, "EMAIL_EVENT_DELETED" );
+        user_load_variables ( $old_participant, "temp" );
+        if ( $old_participant != $login && strlen ( $tempemail ) &&
+          $do_send == "Y" ) {
+          $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
+            translate("An appointment has been canceled for you by") .
+            " " . $login_fullname .  ". " .
+            translate("The subject was") . " \"" . $name . "\"\n\n";
+          if ( strlen ( $login_email ) )
+            $extra_hdrs = "From: $login_email\nX-Mailer: " . translate("Title");
+          else
+            $extra_hdrs = "From: $email_fallback_from\nX-Mailer: " . translate("Title");
+          mail ( $tempemail,
+            translate("Title") . " " . translate("Notification") . ": " . $name,
+            $msg, $extra_hdrs );
+        }
+      }
+    }
+  }
+
   // now add participants and send out notifications
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
-    $status = ( $participants[$i] != $login && $require_approvals ) ? "W" : "A";
+    // keep the old status if no email will be sent
+    $send_mail = ( $old_status[$participants[$i]] == '' || $entry_changed ) ?
+      true : false;
+    $tmp_status = ( $old_status[$participants[$i]] && ! $send_mail ) ?
+      $old_status[$participants[$i]] : "W";
+    $status = ( $participants[$i] != $login && $require_approvals ) ?
+      $tmp_status : "A";
     $sql = "INSERT INTO webcal_entry_user " .
       "( cal_id, cal_login, cal_status ) VALUES ( $id, '" .
       $participants[$i] . "', '$status' )";
@@ -184,9 +230,9 @@ if ( strlen ( $error ) == 0 ) {
          newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
       user_load_variables ( $participants[$i], "temp" );
       if ( $participants[$i] != $login && strlen ( $tempemail ) &&
-        $do_send == "Y" ) {
+        $do_send == "Y" && $send_mail ) {
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n";
-        if ( $newevent )
+        if ( $newevent || $old_status[$participants[$i]] == '' )
           $msg .= translate("A new appointment has been made for you by");
         else
           $msg .= translate("An appointment has been updated by");
