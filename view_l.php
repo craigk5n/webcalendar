@@ -242,10 +242,9 @@ if ( ! $friendly ) {
 
 ?>
 </tr>
-</table>
+</table><br />
 
 <table class="viewl" cellspacing="0" cellpadding="0" style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>;">
-
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
 <th><?php etranslate("Sun")?></th>
@@ -260,8 +259,6 @@ if ( ! $friendly ) {
 <th><?php etranslate("Sun")?></th>
 <?php } ?>
 </tr>
-
-
 <?php
 
 // We add 2 hours on to the time so that the switch to DST doesn't
@@ -314,10 +311,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 }
 
 ?>
-
-</table>
-
-<br /><br />
+</table><br />
 
 <?php if ( empty ( $friendly ) ) echo $eventinfo; ?>
 
@@ -325,7 +319,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
-<br /><br />
+<br />
 <a class="navlinks" href="view_l.php?id=<?php echo $id?>&amp;<?php
   if ( $thisyear ) {
     echo "year=$thisyear&amp;month=$thismonth&amp;";
