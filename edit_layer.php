@@ -27,7 +27,7 @@ else
 <form action="edit_layer_handler.php" method="post" onsubmit="return valid_form(this);" name="prefform">
 
 <?php if ( $updating_public ) { ?>
-  <input type="hidden" name="public" value="1" />
+	<input type="hidden" name="public" value="1" />
 <?php } ?>
 
 <table style="border-width:0px;">
@@ -57,18 +57,18 @@ if ( $single_user == "N" ) {
   else if ( $size > 5 )
     $size = 5;
   if ( $size >= 1 ) {
-    print "<tr><td style=\"vertical-align:top; font-weight:bold;\">" .
-      translate("Source") . ":</td>\n";
-    print "<td><select name=\"layeruser\" size=\"1\">$users\n";
+	print "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n<label for=\"layeruser\">" .
+      translate("Source") . ":</label></td><td>\n";
+    print "<select name=\"layeruser\" id=\"layeruser\" size=\"1\">$users\n";
     print "</select>\n";
     print "</td></tr>\n";
   }
 }
 ?>
 
-<tr><td style="font-weight:bold;">
-	<?php etranslate("Color")?>:</td><td>
-	<input type="text" name="layercolor" size="7" maxlength="7" value="<?php echo empty ( $layers[$id]['cal_color'] ) ? "" :  $layers[$id]['cal_color']; ?>" />
+<tr><td>
+	<label for="layercolor"><?php etranslate("Color")?>:</label></td><td>
+	<input type="text" name="layercolor" id="layercolor" size="7" maxlength="7" value="<?php echo empty ( $layers[$id]['cal_color'] ) ? "" :  $layers[$id]['cal_color']; ?>" />
 	<input type="button" onclick="selectColor('layercolor')" value="<?php etranslate("Select")?>..." />
 </td></tr>
 
@@ -91,7 +91,9 @@ if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) { ?>
 ?>
 </table>
 
-<?php if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n"; ?>
+<?php if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
+	echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
+?>
 </form>
 
 <?php print_trailer(); ?>

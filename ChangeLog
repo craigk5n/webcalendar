@@ -1,4 +1,11 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Updated admin docs to reflect updated info in readme.html & removed
+  duplicate info from readme.html
+  - Standardized styling for all documentation
+  - Put developers notes within php tags for javascript files (less data sent
+  to browser)
+  - Added title attributes to links
+  - Adding labels for form fields
   - Fixed bug 1071619: today border in view_t.php
   - Applied patch 1068220: implementing styles.php in week.php
   - Adjusting iframe height & adding title for editing/adding non-users
