@@ -305,7 +305,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         echo "background-color:$TODAYCELLBG;\">";
       else
         echo "background-color:$color;\">";
-      //echo date ( "D, m-d-Y H:i:s", $date ) . "<BR>";
+      //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       print_date_entries ( date ( "Ymd", $date ),
         ( ! empty ( $user ) ) ? $user : $login,
         $friendly, false );

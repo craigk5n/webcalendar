@@ -119,7 +119,7 @@ $repeated_events = $re_save;
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <table class="viewt" cellspacing="1" cellpadding="1">
 <?php } else { ?>
-<table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
+<table class="viewt" cellspacing="0" cellpadding="0">
 <?php } ?>
 
 <?php

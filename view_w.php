@@ -167,7 +167,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
         $color = $CELLBG;
       $class = "tableheader";
     }
-    echo "<tr><th class=\"$class\" style=\"width:10%; vertical-align:top; font-size:13px;\">" .
+    echo "<tr><th class=\"$class\" style=\"width:10%;\">" .
       $weekday . " " .
       round ( date ( "d", $xdate ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
