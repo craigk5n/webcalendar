@@ -104,7 +104,10 @@ $user_inc = "user.inc";
 $require_approvals = true; // set to true or false
 
 // Allow event conflicts (two events scheduled for the same time for the
-// same person).
+// same person).  If you set this to false, you will still be able to
+// override this in the user interface.  If you set this to true, no
+// checking for conflicts will be done.
+// You probably want to set this to false, so conflict checking occurs.
 $allow_conflicts = false; // set to true or false
 
 // How far into the future should we check for conflicts of repeating
@@ -144,8 +147,8 @@ $email_fallback_from = "youremailhere@somewhere.com";
 $remember_last_login = true;
 
 // DEFAULT SETTINGS: everything below here can be customized by the
-// user in the Preferences page.
-// Default color settings.  Users can override these.
+// user in the Preferences page.  User settings will be stored in the
+// webcal_user_pref table.
 $allow_color_customization = true; // can users change their own color settings
 $BGCOLOR = "#C0C0C0"; // document background color
 $H2COLOR = "#000000"; // color of page titles
