@@ -115,11 +115,8 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 
 ?>
 
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<table class="viewm" cellspacing="1" cellpadding="2">
-<?php } else { // if printer-friendly, use table tag below ?>
-<table class="viewm" cellspacing="0" cellpadding="0">
-<?php } ?>
+<table class="viewm" cellspacing="0" cellpadding="0"
+  style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>;">
 
 <tr><th class="empty">&nbsp;</th>
 
@@ -131,7 +128,8 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
-    echo "<th style=\"width:$tdw%;\">$tempfullname</th>";
+    echo "<th style=\"width:$tdw%; border-bottom: 1px solid $TABLEBG; " .
+      "border-right: 1px solid $TABLEBG;\">$tempfullname</th>";
   }
   echo "</tr>\n";
   
@@ -149,7 +147,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
         $color = $CELLBG;
       $class = "tableheader";
     }
-    echo "<tr><th class=\"$class\" style=\"width:10%; vertical-align:top; font-size:13px;\">" .
+    echo "<tr><th class=\"$class\" style=\"width:10%; vertical-align:top; font-size:13px; border-right: 1px solid $TABLEBG; border-bottom: 1px solid $TABLEBG;\">" .
       $weekday . " " .
       round ( date ( "d", $date ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
@@ -157,7 +155,8 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
       $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
-      echo "<td style=\"width:$tdw%; background-color:$color;\">";
+      echo "<td style=\"width:$tdw%; background-color:$color; " .
+        "border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
         empty ( $friendly ) )
@@ -169,10 +168,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     echo "</tr>\n";
   }
 
-  if ( empty ( $friendly ) || ! $friendly )
-    echo "</table>\n<br /><br />\n";
-  else
-    echo "</table>\n<br /><br />\n";
+  echo "</table>\n<br /><br />\n";
   
 }
 
