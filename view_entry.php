@@ -201,6 +201,24 @@ $create_by = $row[0];
 $event_time = $row[2];
 $name = $row[9];
 $description = $row[10];
+
+// Timezone Adjustments
+if ( $event_time >= 0 && $TZ_OFFSET != 0 ) { // -1 = no time specified
+  $adjusted_time = $event_time + $TZ_OFFSET * 10000;
+  $year = substr($row[1],0,4);
+  $month = substr($row[1],4,2);
+  $day = substr($row[1],-2);
+  if ( $adjusted_time > 240000 ) {
+    $gmt = mktime ( 3, 0, 0, $month, $day, $year );
+    $gmt += $ONE_DAY;
+  } else if ( $adjusted_time < 0 ) {
+    $gmt = mktime ( 3, 0, 0, $month, $day, $year );
+    $gmt -= $ONE_DAY;
+  }
+}
+// Set alterted date
+$tz_date = ( $gmt ) ? date ( "Ymd", $gmt ) : $row[1];
+
 // $subject is used for mailto URLs
 $subject = translate($application_name) . ": " . $name;
 // Remove the '"' character since it causes some mailers to barf
@@ -321,7 +339,7 @@ if ( $categories_enabled == "Y" ) {
 <TR><TD VALIGN="top"><B><?php etranslate("Date")?>:</B></TD>
   <TD><?php
   if ( $event_repeats ) {
-    echo date_to_str ( $event_date, "", true, false, $event_time );
+    echo date_to_str ( $event_date );
   } else {
     echo date_to_str ( $row[1], "", true, false, $event_time );
   }
@@ -332,10 +350,10 @@ if ( $categories_enabled == "Y" ) {
 <?php } ?>
 <?php
 // save date so the trailer links are for the same time period
-$list = split ( "-", $row[1] );
-$thisyear = (int) ( $row[1] / 10000 );
-$thismonth = ( $row[1] / 100 ) % 100;
-$thisday = $row[1] % 100;
+$list = split ( "-", $tz_date );
+$thisyear = (int) ( $tz_date / 10000 );
+$thismonth = ( $tz_date / 100 ) % 100;
+$thisday = $tz_date % 100;
 ?>
 <?php if ( $event_time >= 0 ) { ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Time")?>:</B></TD>

@@ -56,18 +56,20 @@ if ( ! empty ( $id ) && $id > 0 ) {
       if ( $time > 240000 ) {
         $time -= 240000;
         $gmt = mktime ( 3, 0, 0, $month, $day, $year );
-        $gmt -= $ONE_DAY;
+        $gmt += $ONE_DAY;
         $month = date ( "m", $gmt );
         $day = date ( "d", $gmt );
         $year = date ( "Y", $gmt );
       } else if ( $time < 0 ) {
         $time += 240000;
         $gmt = mktime ( 3, 0, 0, $month, $day, $year );
-        $gmt -= $ONE_DAY;
-        $month = date ( "m", $gmt );
+	$gmt -= $ONE_DAY;
+	$month = date ( "m", $gmt );
         $day = date ( "d", $gmt );
         $year = date ( "Y", $gmt );
       }
+      // Set alterted date
+      $cal_date = $year . $month . $day;
     }
     if ( $time >= 0 ) {
       $hour = floor($time / 10000);

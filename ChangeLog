@@ -1,4 +1,11 @@
 Version 0.9.41dev (?? ??? ???)
+  - Fixed timezone bug 686829: displays pm instead of am for midnight events
+  - Fixed timezone bug 686789: TimeZone Error when servertime is midnight
+  - Fixed timezone bug 648692: Problem with Timezone Offset
+  - Fixed timezone bug 688208: Date wrong in edit & view entry for TZ offsets
+  - Fixed timezone bug in function read_events for a negative TZ_OFFSET
+  - Fixed timezone bug in function get_entries for a negative TZ_OFFSET
+    causing event to displaying on the wrong day.
   - Fixed bug 649681: Wrong date on event detail page
   - Added the ability to create 'nonuser' calendars, such as a corporate
     calendar, and assign the calendar administrator.
@@ -9,7 +16,7 @@ Version 0.9.41dev (?? ??? ???)
     in includes/js/ directory.
   - Updated all translation files to add sections for includes/js/ files.
   - Fixed bug where My Calendar linked to 80/443. There were duplicate
-    bugs reported for this: 657172, 638642, 614080
+    bugs reported for this: 657172, 638642, 614080, 646225
   - Fixed bug 680793: failure descrip. and date in emails for rejected events
   - Fixed bug 677683: day.php (<? to <?php)
   - Fixed bug 647180: user_get_boss_list not LDAP aware
