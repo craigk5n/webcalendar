@@ -22,12 +22,12 @@ include_once 'includes/init.php';
 $INC = array('js/users.php','js/visible.php');
 print_header($INC);
 
-//if ( ! $is_admin ) {
-//echo "<h2>" . translate("Error") . "</h2>\n" . 
-//  translate("You are not authorized") . ".\n";
-//  echo "</body>\n</html>";
-//  exit;
-//}
+if ( ! $is_admin ) {
+echo "<h2>" . translate("Error") . "</h2>\n" . 
+  translate("You are not authorized") . ".\n";
+  echo "</body>\n</html>";
+  exit;
+}
 ?>
 <a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 
