@@ -535,7 +535,7 @@ th {
 		job to access the URL.  For Linux/UNIX users, add the following line to
 		the crontab entry of a user.</p>
 	<blockquote>
-		<tt>1 * * * * wget http://yourserverhere/webcalendardirectoryhere/tools/send_reminders.php > /dev/null</tt>
+		<tt>1 * * * * wget http://yourserverhere/webcalendardirectoryhere/tools/send_reminders.php &gt; /dev/null</tt>
 	</blockquote>
    	<p>You should test this from the command line first to make sure your setup is correct. If you do not have <tt>wget</tt> installed on your system, you can use any tool (lynx, perl script, etc.) that is capable of making an HTTP request for this.</p>
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
@@ -1149,6 +1149,9 @@ th {
 <!--
 History of changes to this document.  No need to show users this....
 $Log$
+Revision 1.30  2004/11/16 19:50:14  cknudsen
+Fixed html error with '>'
+
 Revision 1.29  2004/11/15 16:21:59  cknudsen
 Updated to remove all tabs/javascript.
 I prefer to keep this one big, long page so users can easily print the
