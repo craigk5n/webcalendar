@@ -1,4 +1,4 @@
-Version 0.9.28dev (31 May 01)
+Version 0.9.28 (01 Jun 01)
   - Moved all the references to the webcal_user table to be in the
     new includes/user.inc file.  This BREAKS the NIS user authentication,
     but it should make adding LDAP (or any other user table) support
@@ -6,16 +6,20 @@ Version 0.9.28dev (31 May 01)
   - Added preference settings for receiving email.  Users can now
     decide whether they want to receive email for event reminders,
     new events, updated events, deleted events, and rejected events.
+  - Fixed bug 429264: The $is_admin variable was not being set properly,
+    so no users were able to access admin functions.
   - Fixed bug: Was displaying unapproved events when user set preferences
     to not display them (in day, week and month views).
-  - Fixed bug: SQL syntax error in getting events for other people for
-    layers.
-  - Fixed bug: Edit event page would get JavaScript error on save
-    if using 24-hour mode.
+  - Fixed bug 231236: event popup info was not displaying on the list
+    unapproved events page.
+  - Fixed bug 428365 : SQL syntax error in getting events for other people
+    for layers.
+  - Fixed bug 429269, 428716: Edit event page would get JavaScript
+    error on save if using 24-hour mode.
   - Fixed bug: code to send email reminder was commented out
   - Fixed bug: was displaying event duration incorrectly in email
     reminders.
-  - Fixed bug: error message on missing argument to my_array_slice().
+  - Fixed bug 429271: error message on missing argument to my_array_slice().
   - Security fixes
   - Updated translations: French
 Version 0.9.27 (20 May 01)
