@@ -30,7 +30,7 @@ print_header($INC);
 
 <?php
 
-$error = $false;
+$error = false;
 
 if ( ! $is_admin ) {
   etranslate ( "You are not authorized" );
