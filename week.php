@@ -143,7 +143,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <TABLE BORDER="0" WIDTH="100%">
 <TR>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<TD ALIGN="left"><A HREF="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER=\"0\"></A></TD>
+<TD ALIGN="left"><A HREF="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0"></A></TD>
 <?php } ?>
 <TD ALIGN="middle"><FONT SIZE="+2" COLOR="<?php echo $H2COLOR;?>"><B>
 <?php
