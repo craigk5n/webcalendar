@@ -1,5 +1,5 @@
 <?php
-	global $groups_enabled,$WORK_DAY_START_HOUR;
+	global $groups_enabled,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
 ?><script type="text/javascript">
 <!-- <![CDATA[
 // do a little form verifying
@@ -184,10 +184,61 @@ function rpttype_handler () {
 
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
 	//using the tabbed GUI.
-?>var tabs = new Array();
+?>
+var tabs = new Array();
 tabs[0] = "details";
 tabs[1] = "sched";
 tabs[2] = "participants";
 tabs[3] = "pete";
+
+var sch_win;
+
+function getUserList () {
+  var listid = 0;
+  for ( i = 0; i < document.forms[0].elements.length; i++ ) {
+    if ( document.forms[0].elements[i].name == "participants[]" )
+      listid = i;
+  }
+  return listid;
+}
+
+// Show Availability for the first selection
+function showSchedule () {
+  //var agent=navigator.userAgent.toLowerCase();
+  //var agent_isIE=(agent.indexOf("msie") > -1);
+  var myForm = document.forms[0];
+  var userlist = myForm.elements[getUserList()];
+  var delim = '';
+  var users = '';
+  var cols = <?php echo $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ?>;
+  //var w = 140 + ( cols * 31 );
+  var w = 760;
+  var h = 100 + (userlist.length * 20);
+  for ( i = 0; i < userlist.length; i++ ) {
+    if (userlist.options[i].selected) {
+      users += delim + userlist.options[i].value;
+      delim = ',';
+      h += 18;
+    }
+  }
+  if (users == '') {
+    alert('Please add a participant');
+    return false;
+  }
+  var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=no';
+  var url = 'availability.php?users=' + users + 
+           '&year='  + myForm.year.value  + 
+           '&month=' + myForm.month.value + 
+           '&day='   + myForm.day.value   + '';
+
+  if (sch_win != null && !sch_win.closed) {
+     h = h + 30;
+     sch_win.location.replace( url );
+     sch_win.resizeTo(w,h);
+  } else {
+     sch_win = window.open( url, "showSchedule", features );
+  }
+}
+
 //]]> -->
 </script>
