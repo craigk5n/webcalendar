@@ -44,6 +44,10 @@ $ldap_port = '389';
 // Use TLS for the connection (not the same as ldaps://)
 $ldap_start_tls = false;
 
+// If you need to set LDAP_OPT_PROTOCOL_VERSION
+$set_ldap_version = false;
+$ldap_version = '3'; // (usually 3)
+
 // base DN to search for users      
 $ldap_base_dn = 'ou=people,dc=company,dc=com';
 
@@ -135,17 +139,18 @@ function user_search_dn ( $login ,$dn ) {
 // returns: true or false
 function user_valid_login ( $login, $password ) {
   global $error, $ldap_server, $ldap_port, $ldap_base_dn, $ldap_login_attr;
-  global $ldap_admin_dn, $ldap_admin_pwd, $ldap_start_tls;
+  global $ldap_admin_dn, $ldap_admin_pwd, $ldap_start_tls, $set_ldap_version, $ldap_version;
 
   $ret = false;
   $ds = @ldap_connect ( $ldap_server, $ldap_port );
   if ( $ds ) {
+    if ($set_ldap_version || $ldap_start_tls) 
+      ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, $ldap_version);
+  
     if ($ldap_start_tls) {
-      if (ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3)) {
-        if (!ldap_start_tls($ds)) {
-          $error = 'Could not start TLS for LDAP connection';
-          return $ret;      
-        }
+      if (!ldap_start_tls($ds)) {
+        $error = 'Could not start TLS for LDAP connection';
+        return $ret;      
       }
     }
 
@@ -384,18 +389,19 @@ function stripdn($dn){
 // Tries to connect as $ldap_admin_dn if we set it.
 //  returns: bind result or false
 function connect_and_bind() {
-  global $ds, $error, $ldap_server, $ldap_port; 
-  global $ldap_admin_dn, $ldap_admin_pwd, $ldap_start_tls;
+  global $ds, $error, $ldap_server, $ldap_port, $ldap_version; 
+  global $ldap_admin_dn, $ldap_admin_pwd, $ldap_start_tls, $set_ldap_version;
 
   $ret = false;
   $ds = @ldap_connect ( $ldap_server, $ldap_port );
   if ( $ds ) {
+    if ($set_ldap_version || $ldap_start_tls) 
+      ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, $ldap_version);
+  
     if ($ldap_start_tls) {
-      if (ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3)) {
-        if (!ldap_start_tls($ds)) {
-          $error = 'Could not start TLS for LDAP connection';
-          return $ret;      
-        }
+      if (!ldap_start_tls($ds)) {
+        $error = 'Could not start TLS for LDAP connection';
+        return $ret;      
       }
     }
     
