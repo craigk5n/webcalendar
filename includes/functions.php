@@ -3162,13 +3162,14 @@ function display_unapproved_events ( $user ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
-      if ( $row[0] > 0 )
+      if ( $row[0] > 0 ) {
 	$str = translate ("You have XXX unapproved events");
 	$str = str_replace ( "XXX", $row[0], $str );
         echo "<a class=\"nav\" href=\"list_unapproved.php";
         if ( $user != $login )
           echo "?user=$user\"";
         echo "\">" . $str .  "</a><br />\n";
+      }
     }
     dbi_free_result ( $res );
   }
