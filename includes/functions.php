@@ -1052,18 +1052,14 @@ function print_entry ( $id, $date, $time, $duration,
       }
     }
   }
-  if ( $login != $user && $access == 'R' && strlen ( $user ) )
+  if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
     echo "(" . translate("Private") . ")";
-  else
-  if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
+  } else if ( $login != $event_owner && $access == 'R' &&
+    strlen ( $event_owner ) ) {
     echo "(" . translate("Private") . ")";
-  else
-  if ( $login != $event_owner && strlen ( $event_owner ) ) {
+  } else {
     echo htmlspecialchars ( $name );
   }
-
-  else
-    echo htmlspecialchars ( $name );
 
   echo "</a>";
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
