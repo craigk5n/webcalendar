@@ -132,9 +132,15 @@ if ( ! $can_edit && empty ( $error ) )
 // was no selection list available in the form or because the user
 // refused to select any participant from the list), then we will
 // assume the only participant is the current user.
-if ( ! strlen ( $participants[0] ) )
+if ( empty ( $participants[0] ) ) {
   $participants[0] = $login;
-
+  // There might be a better way to do this, but if Admin sets this value,
+  // WebCalendar should respect it
+  if ( ! empty ( $public_access_default_selected ) &&
+    $public_access_default_selected == "Y" ) {
+    $participants[1] = "__public__";     
+  }
+}
 // If "all day event" was selected, then we set the event time
 // to be 12AM with a duration of 24 hours.
 // We don't actually store the "all day event" flag per se.  This method
@@ -189,7 +195,9 @@ $ext_emails = array ();
 $matches = array ();
 $ext_count = 0;
 if ( $single_user == "N" &&
-  ! empty ( $allow_external_users ) && $allow_external_users == "Y" ) {
+  ! empty ( $allow_external_users ) && 
+  $allow_external_users == "Y" &&
+  ! empty ( $externalparticipants ) ) {
   $lines = explode ( "\n", $externalparticipants );
   if ( ! is_array ( $lines ) )
     $lines = array ( $externalparticipants );
