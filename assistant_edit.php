@@ -23,9 +23,9 @@ print_header($INC);
 ?>
 
 <table style="border-width:0px;">
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Assistants"); ?>:</td>
+<tr><td style="vertical-align:top; font-weight:bold;"><label for="users"><?php etranslate("Assistants"); ?>:</label></td>
 <td>
-<select name="users[]" size="10" multiple="multiple">
+<select name="users[]" id="users" size="10" multiple="multiple">
 <?php
   // get list of all users
   $users = get_my_users ();
