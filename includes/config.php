@@ -13,8 +13,8 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 // editing the settings.php file instead.)
 /////////////////////////////////////////////////////////////////
 
-$PROGRAM_VERSION = "v0.9.45";
-$PROGRAM_DATE = "13 Dec 2004";
+$PROGRAM_VERSION = "v0.9.46dev";
+$PROGRAM_DATE = "?? ??? 2004";
 $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
 $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
 
