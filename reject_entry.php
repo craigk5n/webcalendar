@@ -101,5 +101,5 @@ if ( $id > 0 ) {
 if ( $ret == "list" )
   do_redirect ( "list_unapproved.php?user=$user" );
 else
-  do_redirect ( "view_entry.php?id=$id&user=$user" );
+  do_redirect ( "view_entry.php?id=$id&user=$app_user" );
 ?>
