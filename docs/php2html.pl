@@ -1,113 +1,128 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 #
-# h2html.pl
+# php2html.pl
 #
 # Image library
 #
 # Description:
-#	Create HTML documentation from a C include file.
+#	Create HTML documentation from a PHP include file.
+#	The PHP file must use a specific syntax for documenting
+#	functions.
 #
 # History:
-#	29-Nov-99	Craig Knudsen	cknudsen@radix.net
-#			Updated to show prototype
-#	20-Aug-99	Craig Knudsen	cknudsen@radix.net
-#			Misc. bug fix
-#	19-Jul-99	Craig Knudsen	cknudsen@radix.net
-#			Modified for nicer looking output.
-#	29-May-96	Craig Knudsen	cknudsen@radix.net
+#	21-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
+#			Updated
+#	30-Nov-2002	Craig Knudsen <cknudsen@cknudsen.com>
 #			Created
 #
 #######################################################################
 
 
-sub print_function {
-  $out{$name} = "<h3><a name=\"$name\">$name</a></h3>\n";
-  $out{$name} .= "<tt>$ret_type $name ( $args )</tt><br /><br />\n";
-  $out{$name} .= "$description<br /><br />\n"
-    if ( defined ( $description ) );
-  $out{$name} .= "Returns: <tt>$ret_type</tt><br /><br />\n" .
-    "Input Parameters:<br />\n<ul>\n";
-  for ( $i = 0; $i < $num_ivars; $i++ ) {
-    $out{$name} .= "<li><tt>$vars[$i]</tt>";
-    $out{$name} .= " - $comments[$i]" if ( defined ( $comments[$i] ) );
-    $out{$name} .= "</li>\n";
-  }
-  $out{$name} .= "</ul><br /><br />\n";
-  if ( $i < $num_vars ) {
-    $out{$name} .= "Output Parameters:<br />\n<ul><br /><br />\n";
-    for ( ; $i < $num_vars; $i++ ) {
-      $out{$name} .= "<li><tt>$vars[$i]</tt>";
-      $out{$name} .= " - $comments[$i]" if ( defined ( $comments[$i] ) );
-      $out{$name} .= "</li>\n";
-    }
-    $out{$name} .= "</ul>\n";
-  }
+$TITLE = 'WebCalendar Function Documentation';
+
+
+sub add_links {
+  my ( $in ) = @_;
+
+  $in =~ s/(webcal_[a-z_]+)\s+table/<a href="WebCalendar-Database.html#$1"><tt>$1<\/tt><\/a>/g;
+
+  $in =~ s/([a-z_]+)\s+function/<a href="#$1"><tt>$1<\/tt><\/a> function/ig;
+
+  return $in;
 }
 
-$line = 1;
-$functions_found;
-while ( <> ) {
-  chop;
-  $line++;
-  if ( /Description:/ ) {
-    $in_info = 1;
-  } elsif ( /History:/ ) {
-    $in_info = 0;
-  } elsif ( $in_info ) {
-    if ( /\*\s+/ ) {
-      $info .= " " if length ( $info );
-      $info .= $';
-    }
-  } elsif ( ! $functions_found ) {
-    if ( /^\*\* Functions/ ) {
-      $functions_found = 1;
-    } else {
-      next;
-    }
+
+sub print_function {
+  my ( $f ) = @_;
+  $out{$name} = "<h3><a name=\"$name\">$name</a></h3>\n";
+  $out{$name} .= "<tt>$name ( " . '$' . join ( ', $', @params ) .
+    " )</tt><br /><br />\n";
+  $out{$name} .= add_links ( $description ) . "<br /><br />\n"
+    if ( defined ( $description ) );
+  $out{$name} .= "<span class=\"prompt\">Parameters:</span><br />\n<ul>\n";
+  if ( @params == 0 ) {
+    $out{$name} .= "<li>None</li>\n";
   }
-  elsif ( /^([^\*]\S+)\s+(\S+)\s+\(/ ) {
-    # start of a function.
-    $name = $2;
-    $ret_type = $1;
-    if ( $name =~ /^\*/ ) {
-      $name = $';
-      $ret_type .= " *";
-    }
-    $name =~ s/^_//;
-    $num_vars = 0;
-    $num_ivars = 0;
-  } elsif ( defined ( $name ) ) {
-    if ( /^\s+(\S.*)\s+\/\*\s*(\S.*)\s*\*\// ) {
-      $vars[$num_vars] = $1;
-      $comments[$num_vars] = $2;
-      if ( $comments[$num_vars] =~ /^out: / ) {
-        $comments[$num_vars] =~ s/^out:\s*//;;
-      } else {
-        $num_ivars++;
+  for ( $i = 0; $i < @params; $i++ ) {
+    $out{$name} .= "<li><tt>\$$params[$i]</tt>";
+    $out{$name} .= " - " . add_links ( $paramDescr[$params[$i]] )
+      if ( defined ( $paramDescr[$params[$i]] ) );
+    $out{$name} .= "</li>\n";
+  }
+  $out{$name} .= "</ul>\n";
+  $out{$name} .= "<p><span class=\"prompt\">Returns:</span> " .
+    ( $returns eq '' ? "Nothing" : add_links ( $returns ) ) . "<br/>\n";
+  $out{$name} .= "<span class=\"prompt\">Location:</span> $f<br/>\n";
+  $out{$name} .= "</p><br /><br />\n";
+}
+
+foreach $f ( @ARGV ) {
+  open ( F, $f ) || die "Error opening $f";
+  $line = 1;
+  $state = 'none';
+  print STDERR "Reading $f\n";
+  ( $basefile ) =  ( reverse split ( /\//, $f ) )[0];
+  while ( <F> ) {
+    chop;
+    $line++;
+    if ( /^\/\*\*\s+(\S+)/ ) {
+      if ( $name ne '' ) {
+        die "Doc syntax error at line $line of $f: starting function '$1' without properly " .
+          "ending '$name'\n";
       }
-      $vars[$num_vars] =~ s/[\s,]+$//;
-      $args .= ", " if ( $args ne "" );
-      $args .= $vars[$num_vars];
-      $num_vars++;
-    } elsif ( /^\);/ ) {
-      &print_function;
-      undef ( $name );
-      undef ( @vars );
-      undef ( @comments );
-      undef ( $description );
-      undef ( $args );
-    } elsif ( /\s+\/\*\s*(\S.*)\s*\*\// ) {
-if ( $num_vars <= 0 ) { print "ERROR ($line): $_\n"; exit ( 1 ); }
-      $comments[$num_vars-1] .= " " . $1;
+      # start of a function.
+      $name = $1;
+      $state = 'start';
+      @params = ( );
+      $param = '';
+      %paramDescr = ( );
+      $description = '';
+      $returns = '';
+    } elsif ( $name ne '' ) {
+      if ( /\*\s*Description:/i ) {
+        $state = 'description';
+      } elsif ( /\*\s*Parameters:/i ) {
+        $state = 'parameters';
+      } elsif ( /\*\s*(Returns|Return):/i ) {
+        $state = 'returns';
+      } elsif ( /\*\// ) {
+        &print_function ( $basefile );
+        undef ( $name );
+        undef ( $description );
+        undef ( $returns );
+        undef ( @params );
+        undef ( $param );
+        undef ( $paramDescr );
+        $state = 'none';
+      } elsif ( $state ne 'none' && defined ( $name ) ) {
+        if ( $state eq 'description' ) {
+          if ( /\*\s+/ ) {
+            $description .= ' ' if (  $description ne '' );
+            $description .= $';
+          }
+        } elsif ( $state eq 'parameters' ) {
+          if ( /\${0,1}(\S+)\s*-\s*/ ) {
+            $param = $1;
+            push ( @params, $param );
+            $paramDescr[$param] .= ' ' if ( $paramDescr[$param] ne '' );
+            $paramDescr[$param] = $';
+          } elsif ( /\*\s*/ ) {
+            # continuation line for same parameter
+            $paramDescr[$param] .= ' ' . $';
+          }
+        } elsif ( $state eq 'returns' ) {
+          if ( /\*\s+/ ) {
+            $returns .= $';
+          }
+        } else {
+          die "Unknown state: $state";
+        }
+      }
+    } else {
+      # do nothing... we are not in a comment right now...
     }
-  } elsif ( /^\*+\// ) {
-    # end comment
-  } elsif ( /^\*+\s*(\S.*)$/ ) {
-    $description .= " " if ( length ( $description ) );
-    $description .= $1;
-  } elsif ( /^\/*/ ) {
-    undef ( $description );
   }
+  close ( F );
 }
 
 @months = ( "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
@@ -116,24 +131,100 @@ if ( $num_vars <= 0 ) { print "ERROR ($line): $_\n"; exit ( 1 ); }
 $now = sprintf "%02d-%s-%04d",
   $mday, $months[$mon], $year + 1900;
 
+
+# Get version info
+open ( F, "../includes/config.php" ) ||
+  die "Error reading ../includes/config.php";
+$version = "UnknownVersion";
+$date = "?? ??? ????";
+$url = "?";
+while ( <F> ) {
+  if ( /PROGRAM_VERSION.*"(\S+)"/ ) {
+    $version = $1;
+  } elsif ( /PROGRAM_DATE.*"(\S.*)"/ ) {
+    $date = $1;
+  } elsif ( /PROGRAM_URL.*"(\S.*)"/ ) {
+    $url = $1;
+  }
+}
+close ( F );
+
 print<<EOF;
 <html>
 <head>
-<title>ILib API Documentation</title>
+<title>$TITLE</title>
+<style type="text/css">
+body {
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+}
+a {
+	text-decoration: none;
+}
+p {
+	margin-top: 2px;
+}
+ul {
+	margin-bottom: 2px;
+	margin-top: 2px;
+}
+tt {
+	font-family: courier, monospace;
+	font-size: 14px;
+}
+pre {
+	font-family: courier, monospace;
+	font-size: 14px;
+	border: 1px solid #0000FF;
+	background-color: #EEEEFF;
+	padding: 4px;
+	margin-left: 25px;
+	margin-right: 25px;
+}
+.prompt {
+	font-weight: bold;
+}
+.tip {
+	font-weight: bold;
+	background-color: #FFFF00;
+	border: 1px solid #000000;
+	padding: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-right: 10px;
+}
+.note {
+	font-weight: bold;
+	background-color: blue;
+	color: #FFFFFF;
+	border: 1px solid #000000;
+	padding: 2px;
+}
+hr {
+	margin-bottom: 7px;
+}
+h3 {
+	background-color: #191970;
+	color: #FFFFFF;
+	padding: 5px;
+}
+.top {
+	text-align: right;
+}
+</style>
 </head>
 <body style="background-color:#FFFFFF;">
-<h2>Ilib Image Library</h2>
+<h2>$TITLE</h2>
 <blockquote>
 $info
 </blockquote>
 <table style="border-width:0px;">
 <tr><td>Home Page:</td>
-  <td><a href="http://www.radix.net/~cknudsen/Ilib/">http://www.radix.net/~cknudsen/Ilib/</a></td></tr>
-<tr><td>Author:</td>
-  <td><a href="http://www.radix.net/~cknudsen/">Craig Knudsen</a>, <a href="mailto:cknudsen\@radix.net">cknudsen\@radix.net</a></td></tr>
+  <td><a href="$url">$url/a></td></tr>
+<tr><td>WebCalendar Version:</td><td>$version ($date)</td></tr>
 <tr><td>Last updated:</td><td>$now</td></tr>
 </table>
-<h2>API Documentation</h2>
+<h2>Function Documentation</h2>
 <ul>
 EOF
 
