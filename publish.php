@@ -360,6 +360,27 @@ function export_recurrence_ical($id, $date)
 }
 
 
+function export_alarm_ical($id, $description) {
+  $sql = "SELECT cal_data FROM webcal_site_extras " .
+         "WHERE cal_id = $id AND cal_type = 7 AND cal_remind = 1";
+  $res = dbi_query ( $sql );
+  $row = dbi_fetch_row ( $res );
+  dbi_free_result ( $res );
+
+  if ($row) {
+    echo "BEGIN:VALARM\r\n";
+    echo "TRIGGER:-PT".$row[0]."M\r\n";
+    echo "ACTION:DISPLAY\r\n";
+
+    $array = export_fold_lines($description,"utf8");
+    while (list($key,$value) = each($array)) {
+      echo "$value\r\n";
+    }
+
+    echo "END:VALARM\r\n";
+  }
+}
+
 
 function export_get_utc_date($date, $time=0)
 {
@@ -483,7 +504,8 @@ function export_ical () {
     /* Recurrence */
     export_recurrence_ical($uid, $date);
 
-    // FIXME: handle alarms
+    /* handle alarms */
+    export_alarm_ical($uid);
 
     /* Goodbye event */
     echo "END:VEVENT\n";
