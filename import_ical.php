@@ -78,7 +78,7 @@ function parse_ical ( $cal_file ) {
           } elseif (preg_match("/^PRIORITY.*:(.+)$/i", $buff, $match)) {
               $substate = "priority";
               $event[$substate] = $match[1];
-	  } elseif (preg_match("/^DTSTART.*:(\d+T\d+)$/i", $buff, $match)) {
+	  } elseif (preg_match("/^DTSTART.*:(\d+T\d+)Z?$/i", $buff, $match)) {
               $substate = "dtstart";
               $event[$substate] = $match[1];
 	  } elseif (preg_match("/^DTSTART.*:(\d+)$/i", $buff, $match)) {
