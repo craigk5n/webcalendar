@@ -17,7 +17,7 @@
 #
 #
 #
-# Translation last updated on 07-01-2003
+# Translation last updated on 07-02-2003
 
 
 ###############################################
@@ -606,7 +606,6 @@ Ok: Ok
 ###############################################
 # Page: import.php
 #
-#
 This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
 Exclude private records: Exclude private records
 Datebook File: Datebook File
@@ -730,7 +729,11 @@ Private: Private
 ###############################################
 # Page: import_handler.php
 #
+Conflicting events: Conflicting events
+Errors: Errors
 Back to My Calendar: Back to My Calendar
+There was an error parsing the import file or no events were returned: There was an error parsing the import file or no events were returned
+The import file contained no data: The import file contained no data
 Event Imported: Event Imported
 
 
@@ -764,7 +767,6 @@ Yours assistants: Yours assistants
 ###############################################
 # Page: help_import.php
 #
-#
 Palm Desktop: Palm Desktop
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
 The following entries will not be imported: The following entries will not be imported
@@ -774,6 +776,9 @@ Anything imported from Palm will be overwritten during the next import (unless t
 Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
 vCal: vCal
 The following formats have been tested: The following formats have been tested
+Palm Desktop 4: Palm Desktop 4
+Lotus Organizer 6: Lotus Organizer 6
+Microsoft Outlook 2002: Microsoft Outlook 2002
 
 
 ###############################################

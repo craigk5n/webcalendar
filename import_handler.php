@@ -32,18 +32,23 @@ if ($HTTP_POST_FILES['FileName']['size'] > 0) {
     import_data($data);
     echo "<P><B>Datebook Import Report:</B><BR>\n";
     echo "Successful Imports: $count_suc<BR>\n";
-    if ( empty ( $allow_conflicts )) echo "Conflicting Events: $count_con<BR>\n";
-    echo "Errors: $error_num<BR>\n<BR>";
+    if ( empty ( $allow_conflicts ) ) {
+      echo translate("Conflicting events") . ": " . $count_con . "<br>\n";
+    }
+    echo translate ( "Errors" ) . ": $error_num<br>\n<br>\n";
     $url = sprintf ( "%s.php?date=%04d%02d%02d",$STARTVIEW, $year, $month, $day );
     echo "  <A CLASS=\"navlinks\" HREF=\"$url\">" .
       translate("Back to My Calendar") . "</A></p>\n";
   } elseif ($errormsg) {
-    echo "<P><B>ERROR:</B> $errormsg<BR>\n";
+    echo "<p><b>" . translate("Error") . ":</b> $errormsg<br>\n";
   } else {
-    echo "<P><B>ERROR:</B> There was an error parsing the file or no events were returned.<BR>\n";
+    echo "<p><b>" . translate("Error") . ":</b> " .
+      translate("There was an error parsing the import file or no events were returned") .
+      ".<br>\n";
   }
 } else {
-  echo "<P><B>ERROR:</B> The file contained no data.<BR>\n";
+  echo "<p><b>" . translate("Error") . ":</b> " .
+    translate("The import file contained no data") . ".<br>\n";
 }
 
 include "includes/trailer.php";
