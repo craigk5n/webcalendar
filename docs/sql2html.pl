@@ -53,7 +53,7 @@ sub print_table {
 # first, get WebCalendar version
 open ( F, "../includes/config.php" ) || die "Error reading config.php: $!\n";
 while ( <F> ) {
-  if ( /PROGRAM_NAME/ ) {
+  if ( /PROGRAM_VERSION/ ) {
     if ( /"/ ) {
       $v = $';
       if ( $v =~ /"/ ) { $v = $`; }
