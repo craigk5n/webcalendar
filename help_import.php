@@ -3,9 +3,9 @@ include_once 'includes/init.php';
 print_header();
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Help")?>: <?php etranslate("Import")?></FONT></H2>
+<h2><font COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Help")?>: <?php etranslate("Import")?></font></h2>
 
-<H3><?php etranslate("Palm Desktop")?></H3>
+<h3><?php etranslate("Palm Desktop")?></h3>
 
 <?php etranslate("This form will allow you to import entries from the Palm Desktop Datebook."); ?>
 <br>
@@ -20,15 +20,15 @@ print_header();
 <?php etranslate("Anything imported from Palm will be overwritten during the next import (unless the event date has passed).") ?>
 <?php etranslate("Therefore, updates should be made in the Palm Desktop.");?>
 
-<H3><?php etranslate("vCal")?></H3>
+<h3><?php etranslate("vCal")?></h3>
 
 <?php etranslate("This form will import vCalendar (.cvs) 1.0 events");?>.
 <p>
 <?php etranslate("The following formats have been tested");?>:
 <ul>
-<li>Palm Desktop 4
-<li>Lotus Organizer 6
-<li>Microsoft Outlook 2002
+<li><?php etranslate("Palm Desktop 4"); ?>
+<li><?php etranslate("Lotus Organizer 6"); ?>
+<li><?php etranslate("Microsoft Outlook 2002"); ?>
 </ul>
 
 <?php include_once "includes/help_trailer.php"; ?>
