@@ -414,8 +414,14 @@ php convert_passwords.php
 </pre>
 
 <p>If you do not have a standalone version of PHP, you can just type in 
-the URL to access the script in your browser: <br />
+the URL to access the script in your browser:
+</p><p>
 <tt>http://yourcalendarurl/tools/convert_passwords.php</tt><br /></p>
+
+<p>Delete all webcalendar_login browser cookies. Details should be available on 
+your local browser help section.
+</p>
+
 <a href="UPGRADING.html#dot944">next..</a>
 <hr />
 
@@ -449,16 +455,13 @@ your database settings.</p>
 <a href="UPGRADING.html#1dot0RC3">next..</a>
 <hr />
 
-<h4><a id="1dot0RC3">To upgrade from v0.9.44 to v1.0RC3:</a></h4>
+<h4><a id="1dot0RC3">To upgrade from v1.0RC2 to v1.0RC3:</a></h4>
 <p>The <tt>webcal_view</tt> table was modified.
 Execute the following SQL to update your database:
 </p>
 <pre>
 ALTER TABLE webcal_view ADD cal_is_global CHAR(1) DEFAULT 'N' NOT NULL;
 </pre>
-<p>Delete all webcalendar_login browser cookies. Details should be available on 
-your local browser help section.
-</p>
 <hr />
 
 <p>
