@@ -297,6 +297,21 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 <?php } /* if ( ! $updating_public ) */ ?>
 
+<?php if ( ! $updating_public ) { ?>
+<H3><?php etranslate("When I am the boss")?></H3>
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
+
+<TR><TD VALIGN="top"><B><?php etranslate("email me event notification")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="pref_EMAIL_ASSISTANT_EVENT_NOTIFICATION" VALUE="Y" <?php if ( $prefarray["EMAIL_ASSISTANT_EVENT_NOTIFICATION"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="pref_EMAIL_ASSISTANT_EVENT_NOTIFICATION" VALUE="N" <?php if ( $prefarray["EMAIL_ASSISTANT_EVENT_NOTIFICATION"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<TR><TD VALIGN="top"><B><?php etranslate("I want approve events")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="pref_APPROVE_ASSISTANT_EVENT" VALUE="Y" <?php if ( $prefarray["APPROVE_ASSISTANT_EVENT"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="pref_APPROVE_ASSISTANT_EVENT" VALUE="N" <?php if ( $prefarray["APPROVE_ASSISTANT_EVENT"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+</TABLE></TD></TR></TABLE></TD></TR></TABLE>
+
+<?php } /* if ( ! $updating_public ) */ ?>
+
 <?php if ( $allow_color_customization ) { ?>
 
 <H3><?php etranslate("Colors")?></H3>

@@ -67,7 +67,7 @@ if ( empty ( $id ) ) {
 } else if ( $is_admin || $is_assistant ) {
   $can_edit = true;
 } else {
-  // event owner?
+  // event owner or assistant event ?
   $sql = "SELECT cal_create_by FROM webcal_entry WHERE cal_id = '$id'";
   $res = dbi_query($sql);
   if ($res) {
@@ -279,7 +279,7 @@ if ( empty ( $error ) ) {
     "cal_access, cal_type, cal_name, cal_description ) " .
     "VALUES ( $id, " .
     ( $old_id > 0 ? " $old_id, " : "" ) .
-    "'$login', ";
+    "'" . ($is_assistant ? $user : $login) . "', ";
 
   $date = mktime ( 3, 0, 0, $month, $day, $year );
   $sql .= date ( "Ymd", $date ) . ", ";
@@ -382,14 +382,14 @@ if ( empty ( $error ) ) {
         $entry_changed ) ?  true : false;
       $tmp_status = ( $old_status[$participants[$i]] && ! $send_user_mail ) ?
         $old_status[$participants[$i]] : "W";
-      $status = ( $participants[$i] != $login && $require_approvals == "Y" ) ?
+      $status = ( $participants[$i] != $login && boss_must_approve_event ( $login, $participants[$i] ) && $require_approvals == "Y" ) ?
         $tmp_status : "A";
       $tmp_cat = ( ! empty ( $old_category[$participants[$i]]) ) ?
         $old_category[$participants[$i]] : 'NULL';
       $my_cat_id = ( $participants[$i] != $login ) ? $tmp_cat : $cat_id;
     } else {
       $send_user_mail = true;
-      $status = ( $participants[$i] != $login && $require_approvals == "Y" ) ?
+      $status = ( $participants[$i] != $login && boss_must_approve_event ( $login, $participants[$i] ) && $require_approvals == "Y" ) ?
         "W" : "A";
       if ( $participants[$i] == $login ) {
         $my_cat_id = $cat_id;
@@ -420,7 +420,7 @@ if ( empty ( $error ) ) {
       $do_send = get_pref_setting ( $participants[$i],
          $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
       user_load_variables ( $participants[$i], "temp" );
-      if ( $participants[$i] != $login && strlen ( $tempemail ) &&
+      if ( $participants[$i] != $login && boss_must_be_notified ( $login, $participants[$i] ) && strlen ( $tempemail ) &&
         $do_send == "Y" && $send_user_mail && $send_email != "N" ) {
         $fmtdate = sprintf ( "%04d%02d%02d", $year, $month, $day );
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n";

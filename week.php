@@ -54,7 +54,6 @@ for ( $i = 0; $i < 7; $i++ ) {
   $header[$i] = $weekdays[$i] . "<BR>" .
      date_to_str ( date ( "Ymd", $days[$i] ), $DATE_FORMAT_MD, false );
 }
-
 ?>
 
 <TABLE BORDER="0" WIDTH="100%">
@@ -115,7 +114,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   }
   echo "<TH WIDTH=\"13%\" CLASS=\"$class\" BGCOLOR=\"$color\">";
   if ( empty ( $friendly ) && $can_add ) {
-    echo html_for_add_icon (  date ( "Ymd", $days[$d] ) );
+    echo html_for_add_icon (  date ( "Ymd", $days[$d] ), "", "", $user );
   }
   echo "<A HREF=\"day.php?" . $u_url .
     "date=" . date ("Ymd", $days[$d] ) . "$caturl\" CLASS=\"$class\">" .
@@ -299,19 +298,19 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
         echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$color\">";
         if ( empty ( $friendly ) && $can_add )
-          echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m );
+          echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
         echo "&nbsp;</TD>\n";
       } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         if ( $rowspan_day[$d] > 1 ) {
           echo "<TD VALIGN=\"top\" WIDTH=\"12%\" VALIGN=\"top\" BGCOLOR=\"$TODAYCELLBG\" ROWSPAN=\"$rowspan_day[$d]\">";
           if ( empty ( $friendly ) && $can_add )
-            echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m );
+            echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
           echo "<FONT SIZE=\"-1\">" . $save_hour_arr[$d][$i] . "</FONT></TD>\n";
         } else {
           echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$TODAYCELLBG\"><FONT SIZE=\"-1\">";
           if ( empty ( $friendly ) && $can_add )
-            echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m );
+            echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
           echo $save_hour_arr[$d][$i] . "</FONT></TD>\n";
         }
       }
@@ -334,7 +333,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 <?php if ( ! empty ( $eventinfo ) && empty ( $friendly ) ) echo $eventinfo; ?>
 
 <?php if ( empty ( $friendly ) ) {
-  display_unapproved_events ( $login );
+  display_unapproved_events ( ( $is_assistant ? $user : $login ) );
 ?>
 
 <P>

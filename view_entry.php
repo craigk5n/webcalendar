@@ -6,7 +6,7 @@ include_once 'includes/site_extras.php';
 $can_view = false;
 $is_my_event = false;
 
-if ( $is_admin )
+if ( $is_admin || $is_assistant )
   $can_view = true;
 
 if ( ! $can_view ) {
@@ -579,9 +579,9 @@ if ( empty ( $user ) && $categories_enabled == "Y" &&
 
 if ( $can_edit && $event_status != "D" ) {
   if ( $event_repeats ) {
-    echo "<A CLASS=\"navlinks\" HREF=\"edit_entry.php?id=$id\">" .
+    echo "<A CLASS=\"navlinks\" HREF=\"edit_entry.php?id=$id$u_url\">" .
       translate("Edit repeating entry for all dates") . "</A><BR>\n";
-    echo "<A CLASS=\"navlinks\" HREF=\"edit_entry.php?id=$id$rdate&override=1\">" .
+    echo "<A CLASS=\"navlinks\" HREF=\"edit_entry.php?id=$id$u_url$rdate&override=1\">" .
       translate("Edit entry for this date") . "</A><BR>\n";
     echo "<A CLASS=\"navlinks\" HREF=\"del_entry.php?id=$id$u_url&override=1\" onClick=\"return confirm('" .
       translate("Are you sure you want to delete this entry?") .
