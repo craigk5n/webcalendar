@@ -22,11 +22,9 @@ if ( empty ( $user ) ) {
 print_header();
 ?>
 
-<TABLE BORDER=0>
-<TR><TD VALIGN="top" WIDTH=50%>
+<TABLE BORDER="o">
+<TR><TD VALIGN="top" WIDTH="50%">
 
-<FORM ACTION="edit_user_handler.php" METHOD="POST">
-<INPUT TYPE="hidden" NAME="formtype" VALUE="edituser">
 
 <?php
 
@@ -34,8 +32,16 @@ if ( ! empty ( $user ) ) {
   user_load_variables ( $user, "u" );
   echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Edit User") . "</FONT></H2>\n";
 } else {
-  echo "<INPUT TYPE=\"hidden\" NAME=\"add\" VALUE=\"1\">\n";
   echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Add User") . "</FONT></H2>\n";
+}
+?>
+
+<FORM ACTION="edit_user_handler.php" METHOD="POST">
+<INPUT TYPE="hidden" NAME="formtype" VALUE="edituser">
+
+<?php
+if ( empty ( $user ) ) {
+  echo "<INPUT TYPE=\"hidden\" NAME=\"add\" VALUE=\"1\">\n";
 }
 ?>
 
@@ -87,7 +93,8 @@ if ( ! empty ( $user ) ) {
 
 </FORM>
 
-<?php if ( ! empty ( $user ) && ! $use_http_auth ) { ?>
+<?php if ( ! empty ( $user ) && ! $use_http_auth &&
+  ( isset ( $user_can_update_password ) && $user_can_update_password ) ) { ?>
 
 </TD>
 <TD>&nbsp;&nbsp;</TD>
