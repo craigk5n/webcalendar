@@ -76,14 +76,12 @@ Verion 0.9.45dev (?? ??? 2004)
   remaining bugs
   - Fixed bug 1060764: forgot to add translation stuff to "public access" in
   trailer
-  - Fixed bug 1060779: also forgot to translation stuff for "preview" views
   - Fixing bug 1060784: "category" id in functions.php because it caused a conflict with category.php
   - Added a favicon.ico and supporting code
   - Adding new edit_entry & admin.php code (tabbed GUI)
   - Made view_entry reminders statement use singular/plural days, hours & minutes as needed
   - Added title attributes in activity_log.php
   - Cleaning up HTML & CSS
-  - Updated view-preview doc with more modular code
   - Adding additional save button in pref.php to mirror admin.php
   - Extending admin.php to pref.php
   - Modifying class 'navlinks' to now read just 'nav'
@@ -156,7 +154,6 @@ Verion 0.9.45dev (?? ??? 2004)
   - Changed background color for date links to a border
   - Moved help button to new icon in-line with the header
   - Added unique id to body tag for new style system
-  - Added "preview" link to preview view types while managing views
   - Fixed funky rendering of new trailer in Opera & Safari
   - Added .printer class to format printer-friendly link
   - Converted headers for most pages to use divs & new styling rather than

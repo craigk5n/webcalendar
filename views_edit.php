@@ -54,7 +54,13 @@ if ( $newview ) {
 		<option value="T" <?php if ( $viewtype == "T" ) echo " selected=\"selected\"";?>><?php etranslate("Month (Timebar)"); ?></option>
 		<option value="M" <?php if ( $viewtype == "M" ) echo " selected=\"selected\"";?>><?php etranslate("Month (side by side)"); ?></option>
 		<option value="L" <?php if ( $viewtype == "L" ) echo " selected=\"selected\"";?>><?php etranslate("Month (on same calendar)"); ?></option>
-      </select>&nbsp;<a class="nav" href="docs/preview-views.html" target="_blank">(<?php etranslate("preview"); ?>)</a>
+      </select>&nbsp;
+<!--
+  cek - commented out since preview-views.html is hard-coded to English
+  and causes the download .tar.gz file to be 300k bigger.
+  I will add this back when we can resolve these issues.
+      <a class="nav" href="docs/preview-views.html" target="_blank">(<?php etranslate("preview"); ?>)</a>
+-->
       </td></tr>
 <tr><td valign="top">
 	<label for="viewusers"><?php etranslate("Users"); ?>:</label></td><td>
