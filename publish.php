@@ -54,7 +54,11 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
 
 // Make sure they specified a username
 if ( empty ( $user ) ) {
-  echo "<html><head><title>" . translate("Error") . "</title></head>" .
+  echo "<?xml version=\"1.0\" encoding=\"utf8\"?>\n<!DOCTYPE html
+    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+    \"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n
+ <head>\n<title>" . translate("Error") . "</title></head>" .
     "<body><h2>" . translate("Error") . "</h2>" .
     "No user specified.\n</body></html>\n";
 }
