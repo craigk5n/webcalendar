@@ -95,9 +95,7 @@ load_user_preferences ();
 
 
 if ( $public_must_be_enabled && $public_access != 'Y' ) {
-  etranslate ( "You are not authorized" ) . ".";
-  print "</body>\n</html>";
-  exit;
+  $error = translate ( "You are not authorized" ) . ".";
 }
 
 if ( $allow_user_override ) {
@@ -183,6 +181,12 @@ echo "<title>".translate($application_name)."</title>\n";
 ?></head>
 <body>
 <?php
+if ( ! empty ( $error ) ) {
+  echo "<h2>" . translate ( "Error" ) .
+    "</h2>\n" . $error;
+  echo "\n<br /><br />\n</body></html>";
+  exit;
+}
 print "<dl>\n";
 
 print "<!-- \nstartTime: $startTime\nendTime: $endTime\nstartDate: " .
