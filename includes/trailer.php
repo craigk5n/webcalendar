@@ -15,8 +15,7 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<tr><td style="text-align:left; width:33%;" valign="top"><font size="-1">
-<span style="font-weight:bold;"><?php etranslate("Month")?>:</span></font>
+<tr><td style="text-align:left; width:33%; vertical-align:top;"><span style="font-weight:bold; font-size: 13px;"><?php etranslate("Month")?>:</span>
 <select name="date" onchange="document.SelectMonth.submit()">
 <?php
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
@@ -58,8 +57,7 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<td style="text-align:center; width:33%;" valign="top"><font size="-1">
-<span style="font-weight:bold;"><?php etranslate("Week")?>:</span></font>
+<td style="text-align:center; width:33%; vertical-align:top;"><span style="font-weight:bold;font-size:13px;"><?php etranslate("Week")?>:</span>
 <select name="date" onchange="document.SelectWeek.submit()">
 <?php
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
@@ -109,8 +107,7 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<td style="text-align:right; width:33%;" valign="top"><font size="-1">
-<span style="font-weight:bold;"><?php etranslate("Year")?>:</span></font>
+<td style="text-align:right; width:33%; vertical-align:top;"><span style="font-weight:bold;font-size:13px;"><?php etranslate("Year")?>:</span>
 <select name="year" onchange="document.SelectYear.submit()">
 <?php
   if ( ! empty ( $thisyear ) ) {
