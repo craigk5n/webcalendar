@@ -148,8 +148,9 @@
     else
       echo "<A CLASS=\"navlinks\" HREF=\"$mycal\"><B>" .
         translate("My Calendar") . "</B></A>";
-    echo " | <A CLASS=\"navlinks\" HREF=\"adminhome.php\"><B>" .
-      translate("Admin") . "</B></A>";
+    if ( $login != '__public__' )
+      echo " | <A CLASS=\"navlinks\" HREF=\"adminhome.php\"><B>" .
+        translate("Admin") . "</B></A>";
     if ( ! $use_http_auth ) {
       if ( empty ( $login_return_path ) )
         $login_url = "login.php";
