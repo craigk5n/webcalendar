@@ -17,10 +17,10 @@ include "includes/translate.php";
 // form: name of form on parent page
 // listid: element id of user selection object in form
 //   ... to be used like form.elements[$listid]
-if ( empty ( $form ) ) {
+if ( !isset ( $form ) ) {
   echo "Program Error: No form specified!"; exit;
 }
-if ( empty ( $listid ) ) {
+if ( !isset ( $listid ) ) {
   echo "Program Error: No listid specified!"; exit;
 }
 

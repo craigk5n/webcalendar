@@ -29,7 +29,7 @@ include "includes/translate.php";
 <?php if ( $is_admin ) { ?>
 <LI><A HREF="help_admin.php"><?php etranslate("System Settings")?></A>
 <?php } ?>
-<LI><A HREF="http://sourceforge.net/tracker/?func=add&group_id=3870&atid=103870" TARGET="_new"><?php etranslate("Report Bug")?></A>
+<LI><A HREF="help_bug.php"><?php etranslate("Report Bug")?></A>
 </UL>
 
 <?php include "includes/help_trailer.php"; ?>

@@ -19,7 +19,8 @@ if ( ! empty ( $last_login ) )
 include "includes/translate.php";
 
 // calculate path for cookie
-$ptr = strstr ( $PHP_SELF, "login.php" );
+if ( empty ( $PHP_SELF ) )
+  $PHP_SELF = $_SERVER["PHP_SELF"];
 $cookie_path = str_replace ( "login.php", "", $PHP_SELF );
 //echo "Cookie path: $cookie_path\n";
 
@@ -60,6 +61,12 @@ if ( $single_user == "Y" ) {
   }
   // delete current user
   SetCookie ( "webcalendar_session", "", 0, $cookie_path );
+  // In older versions the cookie path had no trailing slash and NS 4.78
+  // thinks "path/" and "path" are different, so the line above does not
+  // delete the "old" cookie. This prohibits the login. So we delete the
+  // cookie with the trailing slash removed
+  if (substr($cookie_path, -1) == '/')
+    SetCookie ( "webcalendar_session", "", 0, substr($cookie_path, 0, -1)  );
 }
 
 ?>

@@ -418,7 +418,7 @@ if ( $single_user == "N" && $show_participants ) {
   for ( $i = 0; $i < $num_rej; $i++ ) {
     user_load_variables ( $rejected[$i], "temp" );
     if ( strlen ( $tempemail ) ) {
-      echo "<BR><STRIKE><A HREF=\mailto:" . $tempemail . "?subject=$subject\>" . $tempfullname . "</a></STRIKE> (" . translate("Rejected") . ")\n";
+      echo "<BR><STRIKE><A HREF=\"mailto:" . $tempemail . "?subject=$subject\>" . $tempfullname . "</a></STRIKE> (" . translate("Rejected") . ")\n";
     } else {
       echo "<BR><STRIKE>$tempfullname</STRIKE> (" . translate("Rejected") . ")\n";
     }

@@ -76,8 +76,6 @@
    Make sure that you built PHP with <TT>--enable-track-vars</TT> during the
    <TT>configure</TT> step.  Make sure your browser has cookies enabled.  Either
    of these can cause this problem.
-   <P>Additionally, if you are running PHP 4.2 or later, make sure
-   that you have <TT>register_globals</TT> enabled in <TT>php.ini</TT>.
 </BLOCKQUOTE>
 
 <A NAME="windows">Does WebCalendar work under Windows?</A>
@@ -203,7 +201,7 @@ Alias /admincalendar		"/opt/calandar"
    <LI> When you're done making changes, move into the "tools" directory.
      Run the <TT>check_translation.pl</TT> script on your new data file to make
      sure you have all the needed translations.
-     (e.g. <TT>./check_translation.pl ../translations/French.txt</TT>)
+     (e.g. <TT>perl check_translation.pl French</TT>)
    <LI> Add the new language to both the $languages array and the
      $browser_languages arrays defined in <TT>includes/config.php</TT>.
    <LI> Test it out...
@@ -223,7 +221,7 @@ Alias /admincalendar		"/opt/calandar"
    When you're done making changes, move into the <TT>tools</TT> directory.
      Run the <TT>check_translation.pl</TT> script on your new data file to make
      sure you have all the needed translations.
-     (e.g. <TT>./check_translation.pl ../translations/French.txt</TT>)
+     (e.g. <TT>perl check_translation.pl French</TT>)
    <P>Don't forget to contribute the updated translation back to the project!
 </BLOCKQUOTE>
 
@@ -244,7 +242,7 @@ Alias /admincalendar		"/opt/calandar"
 <A NAME="adodb">Why aren't you using ADODB for database access?</A>
 <BLOCKQUOTE>
    Again, this would be overkill for what we need.  ADODB is almost
-   as big as WebCalendar itself, so I'm partial to my leaner php-dbi.inc
+   as big as WebCalendar itself, so I'm partial to my leaner php-dbi.php
    solution.
 </BLOCKQUOTE>
 

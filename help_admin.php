@@ -31,8 +31,12 @@ include "includes/translate.php";
   <TD><?php etranslate("fonts-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Preferred view")?>:</B></TD>
   <TD><?php etranslate("preferred-view-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Date format")?>:</B></TD>
+  <TD><?php etranslate("date-format-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Time format")?>:</B></TD>
   <TD><?php etranslate("time-format-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Time interval")?>:</B></TD>
+  <TD><?php etranslate("time-interval-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Require event approvals")?>:</B></TD>
   <TD><?php etranslate("require-approvals-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Display unapproved")?>:</B></TD>

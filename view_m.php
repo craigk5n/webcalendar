@@ -75,7 +75,7 @@ $monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 <TABLE BORDER="0" WIDTH="100%">
 <TR><TD ALIGN="left">
 <?php if ( ! $friendly ) { ?>
-<A HREF="view_m.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="Previous"></A>
+<A HREF="view_m.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Previous")?>"></A>
 <?php } ?>
 </TD>
 <TD ALIGN="middle">
@@ -90,7 +90,7 @@ $monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 </TD>
 <TD ALIGN="right">
 <?php if ( ! $friendly ) { ?>
-<A HREF="view_m.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="Next"></A>
+<A HREF="view_m.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Next")?>"></A>
 <?php } ?>
 </TD></TR>
 </TABLE>
@@ -176,7 +176,10 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
       $color = $TODAYCELLBG;
       $class = "tableheadertoday";
     } else {
-      $color = $CELLBG;
+      if ( $wday == 0 || $wday == 6 )
+        $color = $WEEKENDBG;
+      else
+        $color = $CELLBG;
       $class = "tableheader";
     }
     echo "<TR><TH CLASS=\"$class\" WIDTH=\"10%\" BGCOLOR=\"$color\" VALIGN=\"top\">" .

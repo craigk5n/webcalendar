@@ -94,7 +94,7 @@ if ( $allow_view_other != "Y" && ! $is_admin )
 <TR>
 <?php if ( empty ( $friendly ) ) { ?>
 <TD ALIGN="left"><FONT SIZE="-1">
-<A HREF="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" CLASS="monthlink"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="Previous"></A>
+<A HREF="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" CLASS="monthlink"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Previous")?>"></A>
 </FONT></TD>
 <?php } ?>
 <TD ALIGN="center">
@@ -115,7 +115,7 @@ if ( $allow_view_other != "Y" && ! $is_admin )
 </FONT></TD>
 <?php if ( empty ( $friendly ) ) { ?>
 <TD ALIGN="right">
-<A HREF="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" CLASS="monthlink"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="Next"></A>
+<A HREF="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" CLASS="monthlink"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Next")?>"></A>
 </FONT></TD>
 <?php } ?>
 </TR>

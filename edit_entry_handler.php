@@ -495,8 +495,9 @@ if ( empty ( $error ) ) {
 // month).  If this is a new event, then go to the preferred view for
 // the date range that this event was added to.
 if ( empty ( $error ) ) {
-  if ( strlen ( get_last_view() ) && ! $newevent ) {
-    $url = get_last_view();
+  $last_view = get_last_view ();
+  if ( strlen ( $last_view ) && ! $newevent ) {
+    $url = $last_view;
   } else {
     $url = sprintf ( "%s.php?date=%04d%02d%02d",
       $STARTVIEW, $year, $month, $day );

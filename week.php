@@ -15,6 +15,7 @@ load_user_categories ();
 if ( empty ( $friendly ) && empty ( $user ) )
   remember_this_view ();
 
+
 $view = "week";
 
 include "includes/translate.php";
@@ -134,8 +135,7 @@ for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
   $header[$i] = $weekdays[$i] . "<BR>" .
-     month_short_name ( date ( "m", $days[$i] ) - 1 ) .
-     " " . date ( "d", $days[$i] );
+     date_to_str ( date ( "Ymd", $days[$i] ), $DATE_FORMAT_MD, false );
 }
 
 ?>
@@ -147,23 +147,9 @@ for ( $i = 0; $i < 7; $i++ ) {
 <?php } ?>
 <TD ALIGN="middle"><FONT SIZE="+2" COLOR="<?php echo $H2COLOR;?>"><B>
 <?php
-  if ( date ( "m", $wkstart ) == date ( "m", $wkend ) ) {
-    printf ( "%s %d - %d, %d", month_name ( $thismonth - 1 ),
-      date ( "d", $wkstart ), date ( "d", $wkend ), $thisyear );
-  } else {
-    if ( date ( "Y", $wkstart ) == date ( "Y", $wkend ) ) {
-      printf ( "%s %d - %s %d, %d",
-        month_name ( date ( "m", $wkstart ) - 1 ), date ( "d", $wkstart ),
-        month_name ( date ( "m", $wkend ) - 1 ), date ( "d", $wkend ),
-        $thisyear );
-    } else {
-      printf ( "%s %d, %d - %s %d, %d",
-        month_name ( date ( "m", $wkstart ) - 1 ), date ( "d", $wkstart ),
-        date ( "Y", $wkstart ),
-        month_name ( date ( "m", $wkend ) - 1 ), date ( "d", $wkend ),
-        date ( "Y", $wkend ) );
-    }
-  }
+  echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
+    "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
+    date_to_str ( date ( "Ymd", $wkend ), "", false );
 ?>
 </B></FONT>
 <?php
@@ -225,8 +211,13 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 
 <?php
 
-$first_hour = $WORK_DAY_START_HOUR;
-$last_hour = $WORK_DAY_END_HOUR;
+if ( empty ( $TIME_SLOTS ) )
+  $TIME_SLOTS = 24;
+$interval = ( 24 * 60 ) / $TIME_SLOTS;
+
+$first_slot = (int)( ( $WORK_DAY_START_HOUR * 60 ) / $interval );
+$last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
+
 $untimed_found = false;
 $get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
 if ( $login == "__public__" )
@@ -280,7 +271,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   // want to show up in the 8:00-9:59 cell.
   $rowspan = 0;
   $last_row = -1;
-  for ( $i = 0; $i < 24; $i++ ) {
+  for ( $i = 0; $i < $TIME_SLOTS; $i++ ) {
     if ( $rowspan > 1 ) {
       if ( ! empty ( $hour_arr[$i] ) ) {
         if ( $rowspan_arr[$i] > 1 ) {
@@ -306,8 +297,8 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   }
 
   // now save the output...
-  if ( ! empty ( $hour_arr[99] ) && strlen ( $hour_arr[99] ) ) {
-    $untimed[$d] = "<TD WIDTH=\"12%\" BGCOLOR=\"$TODAYCELLBG\"><FONT SIZE=\"-1\">$hour_arr[99]</FONT></TD>\n";
+  if ( ! empty ( $hour_arr[9999] ) && strlen ( $hour_arr[9999] ) ) {
+    $untimed[$d] = "<TD WIDTH=\"12%\" BGCOLOR=\"$TODAYCELLBG\"><FONT SIZE=\"-1\">$hour_arr[9999]</FONT></TD>\n";
     $untimed_found = true;
   }
   $save_hour_arr[$d] = $hour_arr;
@@ -329,12 +320,19 @@ if ( $untimed_found ) {
 for ( $d = $start_ind; $d < $end_ind; $d++ )
   $rowspan_day[$d] = 0;
 
-for ( $i = $first_hour; $i <= $last_hour; $i++ ) {
-  $time = display_time ( $i * 10000 );
+for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
+  $time_h = (int) ( ( $i * $interval ) / 60 );
+  $time_m = ( $i * $interval ) % 60;
+  $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
   echo "<TR><TH CLASS=\"tableheader\" VALIGN=\"top\" WIDTH=\"13%\" BGCOLOR=\"$THBG\" HEIGHT=\"40\">" .
     "<FONT COLOR=\"$THFG\">" .  $time . "</FONT></TH>\n";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
         $x = $save_rowspan_arr[$d][$i];
+    $thiswday = date ( "w", $days[$d] );
+    $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
+    if ( empty ( $WEEKENDBG ) )
+      $is_weekend = false;
+    $color = $is_weekend ? $WEEKENDBG : $CELLBG;
     if ( $rowspan_day[$d] > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
@@ -344,7 +342,7 @@ for ( $i = $first_hour; $i <= $last_hour; $i++ ) {
       $rowspan_day[$d]--;
     } else {
       if ( empty ( $save_hour_arr[$d][$i] ) )
-        echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$CELLBG\">&nbsp;</TD>\n";
+        echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$color\">&nbsp;</TD>\n";
       else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         if ( $rowspan_day[$d] > 1 )

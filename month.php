@@ -120,7 +120,8 @@ if ( ! $friendly ) {
     "<A HREF=\"month.php?$u_url&";
   $prevmonth_name = month_name ( $prevmonth );
   echo "year=$prevyear&month=$prevmonth$caturl\" CLASS=\"monthlink\">" .
-    sprintf ( "%s %04d", month_name ( $prevmonth - 1 ), $prevyear ) .
+    date_to_str ( sprintf ( "%04d%02d01", $prevyear, $prevmonth ),
+    $DATE_FORMAT_MY, false, false ) .
     "</A></FONT></TD></TR>\n";
   echo "<TR>";
   if ( $WEEK_START == 0 ) echo "<TD><FONT SIZE=\"-2\">" .
@@ -155,7 +156,8 @@ if ( ! $friendly ) {
 <FONT SIZE="+2" COLOR="<?php echo $H2COLOR?>">
 <B>
 <?php
-  printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
+  echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
+    $DATE_FORMAT_MY, false, false );
 ?>
 </B></FONT>
 <FONT COLOR="<?php echo $H2COLOR?>" SIZE="+1">
@@ -183,7 +185,8 @@ if ( ! $friendly ) {
   echo "<TR><TD COLSPAN=7 ALIGN=\"middle\"><FONT SIZE=\"-1\">" .
     "<A HREF=\"month.php?$u_url";
   echo "year=$nextyear&month=$nextmonth$caturl\" CLASS=\"monthlink\">" .
-    sprintf ( "%s %04d", month_name ( $nextmonth - 1 ), $nextyear ) .
+    date_to_str ( sprintf ( "%04d%02d01", $nextyear, $nextmonth ),
+    $DATE_FORMAT_MY, false, false ) .
     "</A></FONT></TD></TR>\n";
   echo "<TR>";
   if ( $WEEK_START == 0 ) echo "<TD><FONT SIZE=\"-2\">" .
@@ -235,7 +238,7 @@ if ( ! $friendly ) {
 <TH WIDTH="14%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php etranslate("Fri")?></FONT></TH>
 <TH WIDTH="14%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php etranslate("Sat")?></FONT></TH>
 <?php if ( $WEEK_START == 1 ) { ?>
-<TH WIDTH="14%" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php etranslate("Sun")?></FONT></TH>
+<TH WIDTH="14%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php etranslate("Sun")?></FONT></TH>
 <?php } ?>
 </TR>
 
@@ -257,6 +260,8 @@ $monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 //echo "<P>monthstart = " . date ( "D, m-d-Y", $monthstart ) . "<BR>";
 //echo "<P>monthend = " . date ( "D, m-d-Y", $monthend ) . "<BR>";
 
+// NOTE: if you make HTML changes to this table, make the same changes
+// to the example table in pref.php.
 $today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( 24 * 3600 * 7 ) ) {
@@ -267,6 +272,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
       $thiswday = date ( "w", $date );
       $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
+      if ( empty ( $WEEKENDBG ) ) $is_weekend = false;
       $class = $is_weekend ? "tablecellweekend" : "tablecell";
       $color = $is_weekend ? $WEEKENDBG : $CELLBG;
       if ( empty ( $color ) )

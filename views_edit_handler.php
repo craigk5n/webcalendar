@@ -21,7 +21,10 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
   dbi_query ( "DELETE FROM webcal_view WHERE cal_view_id = $id " .
     "AND cal_owner = '$login'" );
 } else {
-  if ( ! empty ( $id ) ) {
+  if ( empty ( $viewname ) ) {
+    $error = translate("You must specify a view name");
+  }
+  else if ( ! empty ( $id ) ) {
     # update
     if ( ! dbi_query ( "UPDATE webcal_view SET cal_name = " .
       "'$viewname', cal_view_type = '$viewtype' " .

@@ -10,5 +10,8 @@ load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
+if ( empty ( $STARTVIEW ) )
+  $STARTVIEW = "month";
+
 do_redirect ( "$STARTVIEW.php" );
 ?>
