@@ -1,4 +1,6 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Fixed bug 919038: category selecting was not working when viewing
+    another user's calendar.
   - Don't list "Public Access" on list of users for admin to edit.
   - Fixed bug: ${date} was not being handled properly in report templates.
   - Fixed bug 862177: invalid '?' in URL
