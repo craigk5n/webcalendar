@@ -151,19 +151,19 @@ if ( ! $friendly ) {
     $wkstart = get_sunday_before ( $prevyear, $prevmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $prevmonth, 1, $prevyear );
   $monthend = mktime ( 3, 0, 0, $prevmonth + 1, 0, $prevyear );
-  echo "<tr><td colspan=\"7\" style=\"text-align:center; font-size:13px;\">" .
+  echo "<tr><td colspan=\"7\" style=\"text-align:center;\">" .
     "<a href=\"view_l.php?id=$id&date=$prevdate\" class=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $prevyear, $prevmonth ),
     $DATE_FORMAT_MY, false, false ) .
     "</a></td></tr>\n";
-  echo "<tr>";
-  if ( $WEEK_START == 0 ) echo "<td style=\"font-size:10px;\">" .
+  echo "<tr class=\"dayname\">";
+  if ( $WEEK_START == 0 ) echo "<td>" .
     weekday_short_name ( 0 ) . "</td>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<td style=\"font-size:10px;\">" .
+    echo "<td>" .
       weekday_short_name ( $i ) . "</td>";
   }
-  if ( $WEEK_START == 1 ) echo "<td style=\"font-size:10px;\">" .
+  if ( $WEEK_START == 1 ) echo "<td>" .
     weekday_short_name ( 0 ) . "</td>";
   echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
@@ -206,19 +206,19 @@ if ( ! $friendly ) {
     $wkstart = get_sunday_before ( $nextyear, $nextmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $nextmonth, 1, $nextyear );
   $monthend = mktime ( 3, 0, 0, $nextmonth + 1, 0, $nextyear );
-  echo "<tr><td colspan=\"7\" style=\"text-align:center; font-size:13px;\">" .
+  echo "<tr><td colspan=\"7\" style=\"text-align:center;\">" .
     "<a href=\"view_l.php?id=$id&date=$nextdate\" class=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $nextyear, $nextmonth ),
     $DATE_FORMAT_MY, false, false ) .
     "</a></td></tr>\n";
-  echo "<tr>";
-  if ( $WEEK_START == 0 ) echo "<td style=\"font-size:10px;\">" .
+  echo "<tr class=\"dayname\">";
+  if ( $WEEK_START == 0 ) echo "<td>" .
     weekday_short_name ( 0 ) . "</td>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<td style=\"font-size:10px;\">" .
+    echo "<td>" .
       weekday_short_name ( $i ) . "</td>";
   }
-  if ( $WEEK_START == 1 ) echo "<td style=\"font-size:10px;\">" .
+  if ( $WEEK_START == 1 ) echo "<td>" .
     weekday_short_name ( 0 ) . "</td>";
   echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );

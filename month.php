@@ -50,21 +50,21 @@ if ( ! $friendly ) {
     $wkstart = get_sunday_before ( $prevyear, $prevmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $prevmonth, 1, $prevyear );
   $monthend = mktime ( 3, 0, 0, $prevmonth + 1, 0, $prevyear );
-  echo "<tr><td colspan=\"7\" align=\"center\"><font size=\"-1\">" .
+  echo "<tr><td colspan=\"7\" align=\"center\">" .
     "<a href=\"month.php?$u_url&";
   $prevmonth_name = month_name ( $prevmonth );
   echo "year=$prevyear&month=$prevmonth$caturl\" class=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $prevyear, $prevmonth ),
     $DATE_FORMAT_MY, false, false ) .
-    "</a></font></td></tr>\n";
-  echo "<tr>";
-  if ( $WEEK_START == 0 ) echo "<td><font size=\"-2\">" .
+    "</a></td></tr>\n";
+  echo "<tr class=\"dayname\">";
+  if ( $WEEK_START == 0 ) echo "<td>" .
     weekday_short_name ( 0 ) . "</td>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<td><font size=\"-2\">" .
+    echo "<td>" .
       weekday_short_name ( $i ) . "</td>";
   }
-  if ( $WEEK_START == 1 ) echo "<td><font size=\"-2\">" .
+  if ( $WEEK_START == 1 ) echo "<td>" .
     weekday_short_name ( 0 ) . "</td>";
   echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
@@ -74,7 +74,7 @@ if ( ! $friendly ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<td><font size=\"-2\">" . date ( "d", $date ) . "</font></td>\n";
+        print "<td class=\"numericdate\">" . date ( "d", $date ) . "</td>\n";
       } else {
         print "<td>&nbsp;</td>\n";
       }
@@ -87,13 +87,13 @@ if ( ! $friendly ) {
 ?>
 
 <td align="center">
-<span style="color:<?php echo $H2COLOR?>; font-weight:bold;"><font size="+2">
+<span class="monthyear">
 <?php
   echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
     $DATE_FORMAT_MY, false, false );
 ?>
-</font>
-<font size="+1">
+</span>
+<span class="user">
 <?php
   if ( $single_user == "N" ) {
     echo "<br />\n";
@@ -108,7 +108,7 @@ if ( ! $friendly ) {
     print_category_menu('month',sprintf ( "%04d%02d01",$thisyear, $thismonth ),$cat_id, $friendly );
   }
 ?>
-</font></span>
+</span>
 </td>
 <?php
 if ( ! $friendly ) {
@@ -119,21 +119,21 @@ if ( ! $friendly ) {
     $wkstart = get_sunday_before ( $nextyear, $nextmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $nextmonth, 1, $nextyear );
   $monthend = mktime ( 3, 0, 0, $nextmonth + 1, 0, $nextyear );
-  echo "<tr><td COLSPAN=\"7\" ALIGN=\"middle\"><font size=\"-1\">" .
+  echo "<tr><td colspan=\"7\" align=\"middle\">" .
     "<a href=\"month.php?$u_url";
-  echo "year=$nextyear&month=$nextmonth$caturl\" CLASS=\"monthlink\">" .
+  echo "year=$nextyear&month=$nextmonth$caturl\" class=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $nextyear, $nextmonth ),
     $DATE_FORMAT_MY, false, false ) .
-    "</a></font></td></tr>\n";
-  echo "<tr>";
-  if ( $WEEK_START == 0 ) echo "<td><font size=\"-2\">" .
-    weekday_short_name ( 0 ) . "</font></td>";
+    "</a></td></tr>\n";
+  echo "<tr class=\"dayname\">";
+  if ( $WEEK_START == 0 ) echo "<td>" .
+    weekday_short_name ( 0 ) . "</td>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<td><font size=\"-2\">" .
-      weekday_short_name ( $i ) . "</font></td>";
+    echo "<td>" .
+      weekday_short_name ( $i ) . "</td>";
   }
-  if ( $WEEK_START == 1 ) echo "<td><font size=\"-2\">" .
-    weekday_short_name ( 0 ) . "</font></td>";
+  if ( $WEEK_START == 1 ) echo "<td>" .
+    weekday_short_name ( 0 ) . "</td>";
   echo "</tr>\n";
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     $i += ( 24 * 3600 * 7 ) ) {
@@ -142,7 +142,7 @@ if ( ! $friendly ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<td><font size=\"-2\">" . date ( "d", $date ) . "</font></td>\n";
+        print "<td class=\"numericdate\">" . date ( "d", $date ) . "</td>\n";
       } else {
         print "<td>&nbsp;</td>\n";
       }
@@ -156,7 +156,7 @@ if ( ! $friendly ) {
 </tr>
 </table>
 
-<table border="0" class="tableborder" width="100%" cellspacing="0" cellpadding="0">
+<table class="tableborder" width="100%" cellspacing="0" cellpadding="0">
 
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
