@@ -314,7 +314,7 @@ if ( ! $use_http_auth ) {
 		$login_url = "login.php?return_path=$login_return_path";
 
   // Should we use another application's login/logout pages?
-  if ( substr($GLOBALS[user_inc],0,9) == 'user-app-' ) {  
+  if ( substr($GLOBALS['user_inc'],0,9) == 'user-app-' ) {  
     global $app_logout_page,$app_login_page,$app_redir_param;
     if ( strlen ( $login ) && $login != "__public__" ) {
       $login_url = $app_logout_page;
