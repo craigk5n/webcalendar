@@ -686,7 +686,6 @@ $php_settings = array (
    ?>
    </td></tr>
 <?php } ?>
-<tr><td colspan="2"><?php echo $phpinfo;?></td></tr>
 </table></td></tr>
 
 <tr><td align="center" colspan="2">
