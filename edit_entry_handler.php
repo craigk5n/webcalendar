@@ -26,12 +26,12 @@ if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
   // so the code can be deleted
   if ( $TIME_FORMAT == '12' && $hour < 12 ) {
     if ( $ampm == 'pm' )
-    	$hour += 12;
+     $hour += 12;
   } elseif ($TIME_FORMAT == '12' && $hour == '12' && $ampm == 'am' ) {
     $hour = 0;
   }
   if ( $GLOBALS['TIMED_EVT_LEN'] == 'E') {
-    if ( !empty ( $endhour ) ) {
+    if ( ! empty ( $endhour ) ) {
       // Convert end time to a twenty-four hour time scale.
       if ( $endampm == 'pm' && $endhour < 12 )
         $endhour += 12;
@@ -417,7 +417,7 @@ if ( empty ( $error ) ) {
           if (($GLOBALS['LANGUAGE'] != $user_language) && ! empty ( $user_language ) && ( $user_language != 'none' )){
             reset_language ( $user_language );
           }
-          //do_debug($user_language);				
+          //do_debug($user_language);    
           $fmtdate = sprintf ( "%04d%02d%02d", $user_year, $user_month, $user_day );
           $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
             translate("An appointment has been canceled for you by") .
@@ -434,7 +434,7 @@ if ( empty ( $error ) ) {
             $url = $server_url .  "view_entry.php?id=" .  $id;
             $msg .= $url . "\n\n";
           }
-	  # translate("Title")
+   # translate("Title")
           if ( strlen ( $login_email ) )
             $extra_hdrs = "From: $login_email\r\nX-Mailer: " . translate($application_name);
           else
@@ -443,7 +443,7 @@ if ( empty ( $error ) ) {
             translate($application_name) . " " . translate("Notification") . ": " . $name,
             html_to_8bits ($msg), $extra_hdrs );
           activity_log ( $id, $login, $old_participant, $LOG_NOTIFICATION,
-	    "User removed from participants list" );
+     "User removed from participants list" );
         }
       }
     }
@@ -468,10 +468,10 @@ if ( empty ( $error ) ) {
       $my_cat_id = $cat_id;
     } else if ( ! $newevent ) {
       // keep the old status if no email will be sent
-      $send_user_mail = ( $old_status[$participants[$i]] == '' ||
-        $entry_changed ) ?  true : false;
-      $tmp_status = ( $old_status[$participants[$i]] && ! $send_user_mail ) ?
-        $old_status[$participants[$i]] : "W";
+        $send_user_mail = ( empty ( $old_status[$participants[$i]] ) ||
+          $entry_changed ) ?  true : false;
+        $tmp_status = ( ! empty ( $old_status[$participants[$i]] ) && ! $send_user_mail ) ?
+          $old_status[$participants[$i]] : "W";
       $status = ( $participants[$i] != $login && boss_must_approve_event ( $login, $participants[$i] ) && $require_approvals == "Y" && ! $is_nonuser_admin ) ?
         $tmp_status : "A";
       $tmp_cat = ( ! empty ( $old_category[$participants[$i]]) ) ?
@@ -491,6 +491,10 @@ if ( empty ( $error ) ) {
       $send_user_mail = true;
       $status = ( $participants[$i] != $login && boss_must_approve_event ( $login, $participants[$i] ) && $require_approvals == "Y" && ! $is_nonuser_admin ) ?
         "W" : "A";
+      // If admin, no need to approve Public Access Events
+      if ( $participants[$i] == "__public__" && $is_admin ) {
+        $status = "A";
+      }
       if ( $participants[$i] == $login ) {
         $my_cat_id = $cat_id;
       } else {
@@ -562,7 +566,7 @@ if ( empty ( $error ) ) {
           //do_debug($user_language);
           $fmtdate = sprintf ( "%04d%02d%02d", $user_year, $user_month, $user_day );
           $msg = translate("Hello") . ", " . $tempfullname . ".\n\n";
-          if ( $newevent || $old_status[$participants[$i]] == '' )
+          if ( $newevent || ( empty ( $old_status[$participants[$i]] ) ) )
             $msg .= translate("A new appointment has been made for you by");
           else
             $msg .= translate("An appointment has been updated by");
