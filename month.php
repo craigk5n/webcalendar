@@ -251,6 +251,18 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 <?php }
+
+$today_month = date ( 'm', $today );
+$today_year = date ( 'Y', $today );
+?>
+<a class="navlinks" href="month.php?<?php
+	if ( $thisyear ) {
+		echo "year=$today_year&month=$today_month&";
+	}
+	if ( ! empty ( $user ) ) echo "user=$user&";
+	if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&";?>" onmouseover="window.status = '<?php etranslate("Jump to Today")?>';">[<?php etranslate("Today")?>]</a>
+
+<?php
 print_trailer ();
 ?>
 
