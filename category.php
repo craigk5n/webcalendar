@@ -52,8 +52,8 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   <br />
   <?php if ( $is_admin && empty ( $id ) ) { ?>
     <?php etranslate("Global")?>:
-      <input type="radio" name="isglobal" value="N" <?php if ( ! empty ( $catowner ) || empty ( $id ) ) echo "checked=\"checked\"";?> /> <?php etranslate("No")?>
-      <input type="radio" name="isglobal" value="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo "checked=\"checked\"";?> /> <?php etranslate("Yes")?>
+      <label><input type="radio" name="isglobal" value="N" <?php if ( ! empty ( $catowner ) || empty ( $id ) ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
+      <label><input type="radio" name="isglobal" value="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>
   <?php } ?>
   <br /><br />
   <input type="submit" name="action" value="<?php echo $button;?>" />
