@@ -3741,9 +3741,10 @@ function my_array_splice(&$input,$offset,$length,$replacement) {
 function load_user_categories ($ex_global = '') {
   global $login, $user, $is_assistant;
   global $categories, $category_owners;
-  global $categories_enabled;
+  global $categories_enabled, $is_admin;
 
-  $cat_owner =  ( ! empty ( $user ) && strlen ( $user ) && $is_assistant ) ? $user : $login;
+  $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
+    $is_admin ) ) ? $user : $login;  
   $categories = array ();
   $category_owners = array ();
   if ( $categories_enabled == "Y" ) {
