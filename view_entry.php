@@ -4,13 +4,13 @@
  *
  * Description:
  * Presents page to view an event with links to edit, delete
-	* confirm, copy, add event
+ * confirm, copy, add event
  *
-	* Input Parameters:
- *	id (*) - cal_id of requested event
- *	date  - yyyymmdd format of requested event
- *	user  - user to dispaly
- *	(*) required field
+ * Input Parameters:
+ * id (*) - cal_id of requested event
+ * date  - yyyymmdd format of requested event
+ * user  - user to display
+ * (*) required field
  */
 include_once 'includes/init.php';
 include_once 'includes/site_extras.php';
@@ -23,50 +23,51 @@ if ( $is_admin || $is_nonuser_admin || $is_assistant ) {
   $can_view = true;
 } 
 
-// is this user a participant or the creator of the event?
-$sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
-  "webcal_entry_user WHERE webcal_entry.cal_id = " .
-  "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
-  "AND (webcal_entry.cal_create_by = '$login' " .
-  "OR webcal_entry_user.cal_login = '$login')";
-$res = dbi_query ( $sql );
-if ( $res ) {
-  $row = dbi_fetch_row ( $res );
-  if ( $row && $row[0] > 0 ) {
+if ( ! empty ( $id ) && $id > 0 && is_numeric ( $id ) ) {
+  // is this user a participant or the creator of the event?
+  $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
+    "webcal_entry_user WHERE webcal_entry.cal_id = " .
+    "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
+    "AND (webcal_entry.cal_create_by = '$login' " .
+    "OR webcal_entry_user.cal_login = '$login')";
+  $res = dbi_query ( $sql );
+  if ( $res ) {
+    $row = dbi_fetch_row ( $res );
+    if ( $row && $row[0] > 0 ) {
+      $can_view = true;
+      $is_my_event = true;
+    }
+    dbi_free_result ( $res );
+  }
+
+  if ( ($login != "__public__") && ($public_access_others == "Y") ) {
     $can_view = true;
-    $is_my_event = true;
   }
-  dbi_free_result ( $res );
-}
 
-if ( ($login != "__public__") && ($public_access_others == "Y") ) {
-  $can_view = true;
-}
-
-if ( ! $can_view ) {
-  $check_group = false;
-  // if not a participant in the event, must be allowed to look at
-  // other user's calendar.
-  if ( $login == "__public__" ) {
-    if ( $public_access_others == "Y" ) {
-      $check_group = true;
-    }
-  } else {
-    if ( $allow_view_other == "Y" ) {
-      $check_group = true;
-    }
-  }
-  // If $check_group is true now, it means this user can look at the
-  // event only if they are in the same group as some of the people in
-  // the event.
-  // This gets kind of tricky.  If there is a participant from a different
-  // group, do we still show it?  For now, the answer is no.
-  // This could be configurable somehow, but how many lines of text would
-  // it need in the admin page to describe this scenario?  Would confuse
-  // 99.9% of users.
-  // In summary, make sure at least one event participant is in one of
-  // this user's groups.
-  $my_users = get_my_users ();
+  if ( ! $can_view ) {
+    $check_group = false;
+    // if not a participant in the event, must be allowed to look at
+    // other user's calendar.
+    if ( $login == "__public__" ) {
+      if ( $public_access_others == "Y" ) {
+        $check_group = true;
+      }
+    } else {
+      if ( $allow_view_other == "Y" ) {
+        $check_group = true;
+      }
+   }
+    // If $check_group is true now, it means this user can look at the
+    // event only if they are in the same group as some of the people in
+    // the event.
+    // This gets kind of tricky.  If there is a participant from a different
+    // group, do we still show it?  For now, the answer is no.
+    // This could be configurable somehow, but how many lines of text would
+    // it need in the admin page to describe this scenario?  Would confuse
+    // 99.9% of users.
+    // In summary, make sure at least one event participant is in one of
+    // this user's groups.
+    $my_users = get_my_users ();
   if ( is_array ( $my_users ) ) {
     $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
       "webcal_entry_user WHERE webcal_entry.cal_id = " .
@@ -183,13 +184,20 @@ if ( $ext_id > 0 ) {
   do_redirect ( $url );
 }
 
+} else { // $id is empty
+  $error =  translate("Invalid entry id") . "."; 
+}
 print_header();
 
-if ( $id < 1 ) {
-  echo translate("Invalid entry id") . ".";
+if ( ! empty ( $error ) ) {
+  echo "<h2>" . translate ( "Error" ) .
+    "</h2>\n" . $error;
+  print_trailer ();
+  echo "</body>\n</html>";
+  exit;
+
   exit;
 }
-
 // Try to determine the event status.
 $event_status = "";
 
@@ -251,18 +259,28 @@ if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
 // Load event info now.
 $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
   "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-  "cal_name, cal_description FROM webcal_entry WHERE cal_id = " . $id;
+  "cal_name, cal_description FROM webcal_entry WHERE cal_id = $id";
 $res = dbi_query ( $sql );
 if ( ! $res ) {
   echo translate("Invalid entry id") . ": $id";
   exit;
 }
+
 $row = dbi_fetch_row ( $res );
-$create_by = $row[0];
-$orig_date = $row[1];
-$event_time = $row[2];
-$name = $row[9];
-$description = $row[10];
+if ( $row ) { 
+  $create_by = $row[0];
+  $orig_date = $row[1];
+  $event_time = $row[2];
+  $name = $row[9];
+  $description = $row[10];
+} else {
+  echo "<h2>" . 
+    translate("Error") . "</h2>" . 
+    translate("Invalid entry id") . ".\n";
+  print_trailer ();
+  echo "</body>\n</html>";
+  exit;
+}
 
 // Timezone Adjustments
 if ( $event_time >= 0 && ! empty ( $TZ_OFFSET )  && $TZ_OFFSET != 0 ) { 
@@ -293,9 +311,7 @@ $thisdow = date ( "w", $thistime );
 $subject = translate($application_name) . ": " . $name;
 // Remove the '"' character since it causes some mailers to barf
 $subject = str_replace ( "\"", "", $subject );
-// Pass the current charset to avoid errors using Japanese
-$charset = ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" );
-$subject = htmlentities ( $subject, ENT_COMPAT, $charset );
+$subject = htmlspecialchars ( $subject );
 
 $event_repeats = false;
 // build info string for repeating events and end date
@@ -392,7 +408,7 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 /* calculate end time */
-if ( $event_time > 0 && $row[5] > 0 )
+if ( $event_time >= 0 && $row[5] > 0 )
   $end_str = "-" . display_time ( add_duration ( $row[2], $row[5] ) );
 else
   $end_str = "";
@@ -522,6 +538,22 @@ if ( $categories_enabled == "Y" ) {
 </td></tr>
 <?php } ?>
 <?php
+// Display who originally created event
+// useful if assistant or Admin
+$proxy_fullname = '';  
+if ( !empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == "Y" ) {
+  $res = dbi_query ( "SELECT wu.cal_firstname, wu.cal_lastname " .
+    "FROM webcal_user wu INNER JOIN webcal_entry_log wel ON wu.cal_login = wel.cal_login " .
+    "WHERE wel.cal_entry_id = $id " .
+    "AND wel.cal_type = 'C'" );
+  if ( $res ) {
+    $row3 = dbi_fetch_row ( $res ) ;
+   $proxy_fullname = $row3[0] . " " . $row3[1];
+   $proxy_fullname = ($createby_fullname == $proxy_fullname ? ""  :
+      " ( by " . $proxy_fullname . " )");
+  }
+}
+
 if ( $single_user == "N" ) {
   echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n" . 
  translate("Created by") . ":</td><td>\n";
@@ -531,10 +563,10 @@ if ( $single_user == "N" ) {
     if ( strlen ( $email_addr ) ) {
       echo "<a href=\"mailto:$email_addr?subject=$subject\">" .
         ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
-        "</a>\n</td></tr>";
+        "</a>$proxy_fullname\n</td></tr>";
     } else {
       echo ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
-        "\n</td></tr>";
+        "$proxy_fullname\n</td></tr>";
     }
   }
 }
