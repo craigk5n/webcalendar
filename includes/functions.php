@@ -597,7 +597,8 @@ function load_user_preferences () {
     $GLOBALS["DATE_FORMAT_MY"] = "__month__ __yyyy__";
   if ( empty ( $GLOBALS["DATE_FORMAT_MD"] ) )
     $GLOBALS["DATE_FORMAT_MD"] = "__month__ __dd__";
-  $is_assistant = user_is_assistant ( $login, $user );
+  $is_assistant = empty ( $user ) ? false :
+    user_is_assistant ( $login, $user );
   $has_boss = user_has_boss ( $login );
   $is_nonuser_admin = ($user) ? user_is_nonuser_admin ( $login, $user ) : false;
   if ( $is_nonuser_admin ) load_nonuser_preferences ($user);
@@ -3655,6 +3656,8 @@ function user_get_boss_list ( $assistant ) {
 function user_is_assistant ( $assistant, $boss ) {
   $ret = false;
 
+  if ( empty ( $boss ) )
+    return false;
   $res = dbi_query ( "SELECT * FROM webcal_asst " . 
      "WHERE cal_assistant = '$assistant' AND cal_boss = '$boss'" );
   if ( $res ) {
