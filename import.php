@@ -30,8 +30,8 @@ if ( empty ( $tab ) ) $tab = 0;
 // $sel - which item is currently selected (0 = first)
 function print_tabs ( $items, $sel=0 ) {
   // Start tab block
-  echo "<div class=\"tabBox\" style=\"clear:both;\">\n";
-  echo "  <div class=\"tabArea\">\n";
+  echo "<div class=\"tabbox\" style=\"clear:both;\">\n";
+  echo "  <div class=\"tabarea\">\n";
 
   // Print each tab
   for ( $i = 0; $i < count ( $items ); $i++ ) {
@@ -42,13 +42,13 @@ function print_tabs ( $items, $sel=0 ) {
   echo "  </div>\n";
 
   // Start content area
-  echo "  <div class=\"tabMain\">\n";
-  echo "    <div class=\"tabContent\"><br>\n";
+  echo "  <div class=\"tabmain\">\n";
+  echo "    <div class=\"tabcontent\"><br>\n";
 }
 
 // Close our tab area
 function end_tabs() {
-  echo "    <br></div>\n";
+  echo "    <br /></div>\n";
   echo "  </div>\n";
   echo "</div>\n";
 }
@@ -56,27 +56,26 @@ function end_tabs() {
 
 <h2><font color="<?= $H2COLOR;?>">Import</font></h2>
 
-<form action="import_handler.php" method="POST" name="importform" enctype="multipart/form-data">
+<form action="import_handler.php" method="post" name="importform" enctype="multipart/form-data">
 <?php
 print_tabs ( $tabs, $tab );
 
 if ( $tab == 0 ) {
 ?>
 
-<br>
+<br />
 <?php etranslate("This form will allow you to import entries from the Palm Desktop Datebook."); ?>
-<br><br>
-<input type="hidden" name="ImportType" value="PALMDESKTOP">
+<br /><br />
+<input type="hidden" name="ImportType" value="PALMDESKTOP" />
 <b><?php etranslate("Exclude private records")?>:</b>
-<input type=radio name=exc_private value="1" checked><?php etranslate("Yes")?>
-<input type=radio name=exc_private value="0"><?php etranslate("No")?>
-<br><br>
-<table border=0>
+<input type="radio" name="exc_private" value="1" CHECKED="CHECKED"><?php etranslate("Yes")?>
+<input type="radio" name="exc_private" value="0"><?php etranslate("No")?>
+<br /><br />
+<table border="0">
 <tr><td><b><?php etranslate("Datebook File")?>:</b></td>
-  <td><input type="file" name="FileName" size=45 maxlength=50"></td></tr>
-<tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>">
-<input type="button" value="<?php etranslate("Help")?>..."
-  onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');">
+  <td><input type="file" name="FileName" size="45" maxlength="50" /></td></tr>
+<tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>" />
+<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
 </td></tr>
 </table>
 
@@ -85,13 +84,13 @@ if ( $tab == 0 ) {
 ?>
 
 
-<br>
+<br />
 <?php etranslate("This form will import vCalendar (.vcs) 1.0 events");?>.
-<br><br>
+<br /><br />
 <input type="hidden" name="ImportType" value="VCAL" />
 <table border="0">
 <tr><td><b><?php etranslate("vCal File")?>:</b></td>
-  <td><input type="file" name="FileName" size="45" maxlength=50" /> &nbsp; </td></tr>
+  <td><input type="file" name="FileName" size="45" maxlength=50" /></td></tr>
 <tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>" />
 <input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
 </td></tr>
@@ -101,15 +100,15 @@ if ( $tab == 0 ) {
 } else if ( $tab == 2 ) {
 ?>
 
-<br>
+<br />
 <?php etranslate("This form will import iCalendar (.ics) events");?>.
-<br><br>
+<br /><br />
 <input type="hidden" name="ImportType" value="ICAL" />
 <table border="0">
 <tr><td><b><?php etranslate("iCal File")?>:</b></td>
-  <td><input type="file" name="FileName" size="45" maxlength=50" /> &nbsp; </td></tr>
+  <td><input type="file" name="FileName" size="45" maxlength=50" /></td></tr>
 <tr><td><b><?php etranslate("Overwrite Prior Import")?>:</b></td>
-  <td><input type="radio" name="overwrite" value="Y" CHECKED /> <?php etranslate("Yes");?>
+  <td><input type="radio" name="overwrite" value="Y" CHECKED="CHECKED" /> <?php etranslate("Yes");?>
   &nbsp;&nbsp;
   <input type="radio" name="overwrite" value="N"/> <?php etranslate("No");?>
    </td></tr>
@@ -127,5 +126,5 @@ echo "</form>";
 
 print_trailer ();
 ?>
-</BODY>
-</HTML>
+</body>
+</html>

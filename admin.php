@@ -2,7 +2,7 @@
 include_once 'includes/init.php';
 
 function print_color_sample ( $color ) {
-  echo "<table border=\"0\"><tr><td bgcolor=\"$color\">&nbsp;&nbsp;</td></tr></table>";
+  echo "<table style=\"border-width:0px;\"><tr><td style=\"background-color:$color;\">&nbsp;&nbsp;</td></tr></table>";
 }
 
 
@@ -77,7 +77,7 @@ if ( ! $error ) {
 
 <h3><?php etranslate("Settings")?></h3>
 
-<table border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#000000"><table border="0" width="100%" cellspacing="1" cellpadding="2"><tr><td width="100%" bgcolor="<?php echo $CELLBG ?>"><table border="0" width="100%">
+<table style="border-width:0px;" cellspacing="0" cellpadding="0"><tr><td style="background-color:#000000;"><table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2"><tr><td style="width:100%; background-color:<?php echo $CELLBG ?>;"><table style="border-width:0px; width:100%;">
 
 <tr><td><b class="tooltip" title="<?php etooltip("app-name-help")?>"><?php etranslate("Application Name")?>:</b></td>
   <td><input size="40" name="admin_application_name" value="<?php echo htmlspecialchars ( $application_name );?>"></td></tr>
@@ -98,13 +98,12 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 }
 ?>
 </select>
-<br>
+<br />
 <?php etranslate("Your browser default language is"); echo " " . get_browser_language () . "."; ?>
 </td></tr>
 
-
 <tr><td><b class="tooltip" title="<?php etooltip("fonts-help")?>"><?php etranslate("Fonts")?>:</b></td>
-  <td><input size="40" name="admin_FONTS" value="<?php echo htmlspecialchars ( $FONTS );?>"></td></tr>
+  <td><input size="40" name="admin_FONTS" value="<?php echo htmlspecialchars ( $FONTS );?>" /></td></tr>
 
 <tr><td><b class="tooltip" title="<?php etooltip("custom-script-help");?>"><?php etranslate("Custom script/stylesheet")?>:</b></td>
   <td><input type="radio" name="admin_CUSTOM_SCRIPT" value="Y" <?php if ( $s["CUSTOM_SCRIPT"] == "Y" ) echo "CHECKED=\"CHECKED\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_CUSTOM_SCRIPT" value="N" <?php if ( $s["CUSTOM_SCRIPT"] != "Y" ) echo "CHECKED=\"CHECKED\"";?>> <?php etranslate("No")?>

@@ -11,27 +11,27 @@ if ( $groups_enabled == "N" ) {
 print_header();
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Groups")?></FONT></H2>
+<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Groups")?></font></h2>
 
-<UL>
+<ul>
 <?php
 $res = dbi_query ( "SELECT cal_group_id, cal_name FROM webcal_group " .
   "ORDER BY cal_name" );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
-    echo "<LI><A HREF=\"group_edit.php?id=" . $row[0] .
-      "\">" . $row[1] . "</A> ";
+    echo "<li><A HREF=\"group_edit.php?id=" . $row[0] .
+      "\">" . $row[1] . "</a></li>";
   }
   dbi_free_result ( $res );
 }
 ?>
-</UL>
-<P>
+</ul>
+<br /><br />
 <?php
-  echo "<A HREF=\"group_edit.php\">" . translate("Add New Group") .
-    "</A><BR>\n";
+  echo "<a href=\"group_edit.php\">" . translate("Add New Group") .
+    "</a><br />\n";
 ?>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

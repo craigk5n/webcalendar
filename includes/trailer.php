@@ -7,8 +7,8 @@
 <br clear="all" />
 <hr clear="all" />
 <font size="-1">
-<table border="0" width="100%" cellpadding="0" cellspacing="0">
-<form action="month.php" method="GET" name="SelectMonth">
+<table style="border-width:0px; width:100%;" cellpadding="0" cellspacing="0">
+<form action="month.php" method="get" name="selectmonth">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -16,7 +16,7 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<tr><td align="left" valign="top" width="33%"><font size="-1">
+<tr><td style="text-align:left; width:33%;" valign="top"><font size="-1">
 <b><?php etranslate("Month")?>:</b>
 <select name="date" onchange="document.SelectMonth.submit()">
 <?php
@@ -39,7 +39,7 @@
     $d = mktime ( 3, 0, 0, $m, 1, $y );
     echo "<option value=\"" . date ( "Ymd", $d ) . "\"";
     if ( date ( "Ymd", $d ) == $thisdate )
-      echo " selected";
+      echo " SELECTED=\"SELECTED\"";
     echo ">";
     echo date_to_str ( date ( "Ymd", $d ), $DATE_FORMAT_MY, false, true );
   }
@@ -56,7 +56,7 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<td align="center" valign="top" width="33%"><font size="-1">
+<td style="text-align:center; width:33%;" valign="top"><font size="-1">
 <b><?php etranslate("Week")?>:</b>
 <select name="date" onchange="document.SelectWeek.submit()">
 <?php
@@ -85,19 +85,19 @@
     echo "<option value=\"" . date ( "Ymd", $twkstart ) . "\"";
     if ( date ( "Ymd", $twkstart ) <= $thisdate &&
       date ( "Ymd", $twkend ) >= $thisdate )
-      echo " selected";
+      echo " SELECTED=\"SELECTED\"";
     echo ">";
     printf ( "%s - %s",
       date_to_str ( date ( "Ymd", $twkstart ), $DATE_FORMAT_MD, false, true ),
       date_to_str ( date ( "Ymd", $twkend ), $DATE_FORMAT_MD, false, true ) );
-    echo "\n";
+    echo "</option>\n";
   }
 ?>
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
 </font></td>
 </form>
-<form action="year.php" method="GET" name="SelectYear">
+<form action="year.php" method="GET" name="selectyear">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -105,7 +105,7 @@
     && ( ! $user || $user == $login ) )
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
 ?>
-<td align="right" valign="top" width="33%"><font size="-1">
+<td style="text-align:right; width:33%;" valign="top"><font size="-1">
 <b><?php etranslate("Year")?>:</b>
 <select name="year" onchange="document.SelectYear.submit()">
 <?php
@@ -117,8 +117,8 @@
   for ( $i = $y - 4; $i < $y + 4; $i++ ) {
     echo "<option value=\"$i\"";
     if ( $i == $y )
-      echo " selected";
-    echo ">$i\n";
+      echo " SELECTED=\"SELECTED\"";
+    echo ">$i</option>\n";
   }
 ?>
 </select>
@@ -143,14 +143,14 @@
     $mycal = "index.php";
   if ( $single_user != "Y" ) {
     if ( ! empty ( $user ) && $user != $login )
-      echo "<a class=\"navlinks\" href=\"$mycal\"><b>" .
-        translate("Back to My Calendar") . "</b></a>";
+      echo "<a class=\"navlinks\" style=\"font-weight:bold;\" href=\"$mycal\">" .
+        translate("Back to My Calendar") . "</a>";
     else
-      echo "<a class=\"navlinks\" href=\"$mycal\"><b>" .
-        translate("My Calendar") . "</b></a>";
+      echo "<a class=\"navlinks\" href=\"$mycal\" style=\"font-weight:bold;\">" .
+        translate("My Calendar") . "</a>";
     if ( $login != '__public__' )
-      echo " | <a class=\"navlinks\" href=\"adminhome.php\"><b>" .
-        translate("Admin") . "</b></a>";
+      echo " | <a class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" .
+        translate("Admin") . "</a>";
     if ( ! $use_http_auth ) {
       if ( empty ( $login_return_path ) )
         $login_url = "login.php";
@@ -172,10 +172,10 @@
       echo " | <a class=\"navlinks\" href=\"select_user.php\">" .
         translate("Another User's Calendar") . "</a>";
   } else {
-    echo "<a class=\"navlinks\" href=\"$mycal\"><b>" .
-      translate("My Calendar") . "</b></a>";
-    echo " | <a class=\"navlinks\" href=\"adminhome.php\"><b>" .
-      translate("Admin") . "</b></a>";
+    echo "<a class=\"navlinks\" href=\"$mycal\" style=\"font-weight:bold;\">" .
+      translate("My Calendar") . "</a>";
+    echo " | <a class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" .
+      translate("Admin") . "</a>";
   }
   // only display some links if we're viewing our own calendar.
   if ( empty ( $user ) || $user == $login ) {
@@ -283,13 +283,13 @@ if ( $login != "__public__" ) {
 
 <?php
   if ( strlen ( $login ) && $login != "__public__" ) {
-    echo "<b>" . translate("Current User") . ":</b>$fullname<br />\n";
+    echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>$fullname<br />\n";
   }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
   if ( $has_boss || $admincals[0] ) {
-    echo "<b>";
+    echo "<span style=\"font-weight:bold;\">";
     etranslate("Manage calendar of");
-    echo "</b>: ";
+    echo "</span>: ";
     $grouplist = user_get_boss_list ($login);
     $grouplist = array_merge($admincals,$grouplist);
     $groups = "";
@@ -297,7 +297,7 @@ if ( $login != "__public__" ) {
       $l = $grouplist[$i]['cal_login'];
       $f = $grouplist[$i]['cal_fullname'];
       if ( $i > 0) $groups .= ",&nbsp;";
-      $groups .= "<a class=\"navlinks\" href=$STARTVIEW.php?user=$l>$f</a>";
+      $groups .= "<a class=\"navlinks\" href=\"$STARTVIEW.php?user=$l\">$f</a>";
     }
     print $groups;
   }

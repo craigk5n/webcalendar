@@ -16,7 +16,7 @@ print_header($INC);
   <option value="pilot-csv">pilot-datebook CSV (<?php etranslate("Palm Pilot")?>)</option>
   <option value="pilot-text">install-datebook (<?php etranslate("Palm Pilot")?>)</option>
 </select></td></tr>
-<tr><td></td><td><input type="checkbox" name="use_all_dates" value="y"></input>
+<tr><td></td><td><input type="checkbox" name="use_all_dates" value="y" />
   <b><?php etranslate("Export all dates")?></b></td></tr>
 <tr><td><b><?php etranslate("Start date")?>:</b></td>
   <td><select name="fromday">
@@ -70,7 +70,7 @@ print_header($INC);
   for ( $i = -1; $i < 5; $i++ ) {
     $y = date ( "Y" ) + $i;
     print "<option value=\"$y\"" . ( $y == $year ? " SELECTED=\"SELECTED\"" : "" ) . ">$y</option>";
-  }
+  }i
 ?>
   </select>
   <input type="button" onclick="selectDate('endday','endmonth','endyear')" value="<?php etranslate("Select")?>..." />

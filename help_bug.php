@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 print_header('','','',true);
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Report Bug")?></FONT></H2>
+<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Report Bug")?></font></h2>
 
 <!--
 No need to translate the text below since I want all bugs
@@ -12,19 +12,19 @@ Americans only speak English, of course ;-)
 -->
 Please include all the information below when reporting a bug.
 <?php if ( $LANGUAGE != "English-US" ) { ?>
-Also.... when reporting a bug, please use <B>English</B>
+Also.... when reporting a bug, please use <b>English</b>
 rather than <?php echo $LANGUAGE?>.
 <?php } ?>
 
 <FORM ACTION="http://sourceforge.net/tracker/" TARGET="_new">
-<INPUT TYPE="hidden" NAME="func" VALUE="add">
-<INPUT TYPE="hidden" NAME="group_id" VALUE="3870">
-<INPUT TYPE="hidden" NAME="atid" VALUE="103870">
-<INPUT TYPE="submit" VALUE="<?php etranslate("Report Bug")?>">
+<INPUT TYPE="hidden" NAME="func" VALUE="add" />
+<INPUT TYPE="hidden" NAME="group_id" VALUE="3870" />
+<INPUT TYPE="hidden" NAME="atid" VALUE="103870" />
+<INPUT TYPE="submit" VALUE="<?php etranslate("Report Bug")?>" />
 </FORM>
-<P>
+<br /><br />
 
-<H3><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("System Settings")?></FONT></H3>
+<h3><font color="<?php echo $H2COLOR;?>"><?php etranslate("System Settings")?></font></h3>
 <?php
 
 if ( empty ( $SERVER_SOFTWARE ) )
@@ -34,7 +34,7 @@ if ( empty ( $HTTP_USER_AGENT ) )
 if ( empty ( $HTTP_USER_AGENT ) )
   $HTTP_USER_AGENT = $_SERVER["HTTP_USER_AGENT"];
 
-echo "<PRE>";
+echo "<pre>";
 printf ( "%-25s: %s\n", "PROGRAM_NAME", $PROGRAM_NAME );
 printf ( "%-25s: %s\n", "SERVER_SOFTWARE", $SERVER_SOFTWARE );
 printf ( "%-25s: %s\n", "Web Browser", $HTTP_USER_AGENT );
@@ -53,11 +53,11 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-echo "</PRE>\n";
+echo "</pre>\n";
 
 ?>
 
 <?php include_once "includes/help_trailer.php"; ?>
 
-</BODY>
-</HTML>
+</body>
+</html>
