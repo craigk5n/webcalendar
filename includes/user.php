@@ -21,7 +21,7 @@ $admin_can_delete_user = true;
 
 
 // Check to see if a given login/password is valid.  If invalid,
-// the error message will be placed in $login_error.
+// the error message will be placed in $error.
 // params:
 //   $login - user login
 //   $password - user password
@@ -29,8 +29,6 @@ $admin_can_delete_user = true;
 function user_valid_login ( $login, $password ) {
   global $error;
   $ret = false;
-
-  $login_error = "";
 
   $sql = "SELECT cal_login FROM webcal_user WHERE " .
     "cal_login = '" . $login . "' AND cal_passwd = '" . md5($password) . "'";
@@ -43,9 +41,27 @@ function user_valid_login ( $login, $password ) {
       if ( $row[0] == $login )
         $ret = true; // found login/password
       else
-        $error = translate ("Invalid login");
+        $error = translate ("Invalid login") . ": " .
+          translate("incorrect password");
     } else {
       $error = translate ("Invalid login");
+      // Could be no such user or bad password
+      // Check if user exists, so we can tell.
+      $res2 = dbi_query ( "SELECT cal_login FROM webcal_user " .
+        "WHERE cal_login = '$login'" );
+      if ( $res2 ) {
+        $row = dbi_fetch_row ( $res2 );
+        if ( $row && ! empty ( $row[0] ) ) {
+          // got a valid username, but wrong password
+          $error = translate ("Invalid login") . ": " .
+            translate("incorrect password" );
+        } else {
+          // No such user.
+          $error = translate ("Invalid login") . ": " .
+            translate("no such user" );
+        }
+        dbi_free_result ( $res2 );
+      }
     }
     dbi_free_result ( $res );
   } else {
@@ -56,7 +72,7 @@ function user_valid_login ( $login, $password ) {
 }
 
 // Check to see if a given login/crypted password is valid.  If invalid,
-// the error message will be placed in $login_error.
+// the error message will be placed in $error.
 // params:
 //   $login - user login
 //   $crypt_password - crypted user password
@@ -65,7 +81,6 @@ function user_valid_crypt ( $login, $crypt_password ) {
   global $error;
   $ret = false;
 
-  $login_error = "";
   $salt = substr($crypt_password, 0, 2);
 
   $sql = "SELECT cal_login, cal_passwd FROM webcal_user WHERE " .

@@ -85,7 +85,8 @@ if ( $single_user == "Y" ) {
       do_redirect ( $url );
     } else {
       // Invalid login
-      $error = translate("Invalid login" );
+      if ( empty ( $error ) )
+        $error = translate("Invalid login" );
     }
   } else {
     // No login info... just present empty login page
