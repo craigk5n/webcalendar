@@ -38,6 +38,8 @@ if ( empty ( $user ) ) {
   $user = $arr[count($arr)-1];
   # remove any trailing ".ics" in user name
   $user = preg_replace ( "/\.[iI][cC][sS]$/", '', $user );
+  if ( $user == 'public' )
+    $user = '__public__';
 }
 
 load_global_settings ();
