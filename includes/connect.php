@@ -115,7 +115,9 @@ if ( $login == "__public__" ) {
     strstr ( $PHP_SELF, "views_edit_handler.php" ) ||
     strstr ( $PHP_SELF, "category.php" ) ||
     strstr ( $PHP_SELF, "category_handler.php" ) ||
+    strstr ( $PHP_SELF, "activity_log.php" ) ||
     strstr ( $PHP_SELF, "admin.php" ) ||
+    strstr ( $PHP_SELF, "adminhome.php" ) ||
     strstr ( $PHP_SELF, "admin_handler.php" ) ||
     strstr ( $PHP_SELF, "groups.php" ) ||
     strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
@@ -129,13 +131,15 @@ if ( $login == "__public__" ) {
     strstr ( $PHP_SELF, "set_entry_cat.php" ) ||
     strstr ( $PHP_SELF, "list_unapproved.php" ) ||
     strstr ( $PHP_SELF, "layers.php" ) ||
-    strstr ( $PHP_SELF, "layer_toggle.php" ) ) {
+    strstr ( $PHP_SELF, "layer_toggle.php" ) ||
+    strstr ( $PHP_SELF, "import.php" ) ||
+    strstr ( $PHP_SELF, "import_handler.php" ) ||
+    strstr ( $PHP_SELF, "edit_template.php" ) ) {
     $not_auth = true;
   }
   if ( $public_access_can_add != 'Y' ) { // do not allow add
     if ( strstr ( $PHP_SELF, "edit_entry.php" ) ||
-      strstr ( $PHP_SELF, "edit_entry_handler.php" ) ||
-      strstr ( $PHP_SELF, "import.php" ) ) {
+      strstr ( $PHP_SELF, "edit_entry_handler.php" ) ) {
       $not_auth = true;
     }
   }
@@ -162,7 +166,9 @@ if ( $readonly == "Y" ) {
     strstr ( $PHP_SELF, "groups.php" ) ||
     strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
     strstr ( $PHP_SELF, "pref.php" ) ||
-    strstr ( $PHP_SELF, "pref_handler.php" ) ) {
+    strstr ( $PHP_SELF, "pref_handler.php" ) ||
+    strstr ( $PHP_SELF, "import.php" ) ||
+    strstr ( $PHP_SELF, "import_handler.php" ) ) {
     $not_auth = true;
   }
 }

@@ -190,7 +190,8 @@
       translate("Search") . "</a>";
     echo " | <a class=\"navlinks\" href=\"export.php\">" .
       translate("Export") . "</a>";
-    echo " | <a class=\"navlinks\" href=\"import.php\">" .
+    if ( $login != '__public__' )
+      echo " | <a class=\"navlinks\" href=\"import.php\">" .
       translate("Import") . "</a>";
     if ( $can_add ) {
       echo " | <a class=\"navlinks\" href=\"edit_entry.php";
@@ -260,7 +261,6 @@
 <?php } // if ( $login != "__public__" ) ?>
 
 <?php if ( ! empty ( $reports_enabled ) && $reports_enabled == 'Y' ) { ?>
-<b><?php etranslate("Reports")?>:&nbsp;</b>
 <?php
 $res = dbi_query ( "SELECT cal_report_name, cal_report_id " .
   "FROM webcal_report " .
@@ -277,6 +277,8 @@ if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     if ( $found_report )
       echo " | ";
+    else
+      echo "<b>" . translate("Reports") . ":</b> ";
     echo "<a href=\"report.php?report_id=$row[1]$u_url\" class=\"navlinks\">" .
       htmlentities ( $row[0] ) . "</a>";
     $found_report = true;
@@ -286,6 +288,8 @@ if ( $res ) {
 if ( $login != "__public__" ) {
   if ( $found_report )
     echo " | ";
+  else
+    echo "<b>" . translate("Reports") . ":</b> ";
   echo "<a href=\"report.php\" class=\"navlinks\">" .
     translate("Manage Reports") . "</a>\n";
 }
