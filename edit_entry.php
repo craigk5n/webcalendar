@@ -393,10 +393,10 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   //  " - " . $extras[$extra_name]['cal_name'] .
   //  "arg1: $extra_arg1, arg2: $extra_arg2 </td></tr>\n";
   if ( $extra_type == $EXTRA_MULTILINETEXT )
-    echo "<tr><td style=\"vertical-align:top;\"><br />";
+    echo "<tr><td style=\"vertical-align:top;\"><br />\n";
   else
     echo "<tr><td style=\"font-weight:bold;\">";
-  echo translate ( $extra_descr ) .  ":</td><td>";
+  echo translate ( $extra_descr ) .  ":</td>\n<td>";
   if ( $extra_type == $EXTRA_URL ) {
     echo '<input type="text" size="50" name="' . $extra_name .
       '" value="' .
@@ -431,8 +431,8 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
       '</textarea>';
   } else if ( $extra_type == $EXTRA_USER ) {
     // show list of calendar users...
-    echo "<select name=\"" . $extra_name . "\">";
-    echo "<option value=\"\">None</option>";
+    echo "<select name=\"" . $extra_name . "\">\n";
+    echo "<option value=\"\">None</option>\n";
     $userlist = get_my_users ();
     for ( $j = 0; $j < count ( $userlist ); $j++ ) {
       echo "<option value=\"" . $userlist[$j]['cal_login'] . "\"";
@@ -441,7 +441,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
           echo " selected=\"selected\"";
         echo ">" . $userlist[$j]['cal_fullname'] . "</option>\n";
     }
-    echo "</select>";
+    echo "</select>\n";
   } else if ( $extra_type == $EXTRA_REMINDER ) {
     $rem_status = 0; // don't send
     echo "<input type=\"radio\" name=\"" . $extra_name . "\" value=\"1\"";
@@ -481,9 +481,9 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
       $h = (int) ( $minutes / 60 );
       $minutes -= ( $h * 60 );
       echo "<input type=\"text\" size=\"2\" name=\"" . $extra_name .
-        "_days\" value=\"$d\" /> " .  translate("days") . "&nbsp;&nbsp;";
+        "_days\" value=\"$d\" /> " .  translate("days") . "&nbsp;&nbsp;\n";
       echo "<input type=\"text\" size=\"2\" name=\"" . $extra_name .
-        "_hours\" value=\"$h\" /> " .  translate("hours") . "&nbsp;&nbsp;";
+        "_hours\" value=\"$h\" /> " .  translate("hours") . "&nbsp;&nbsp;\n";
       echo "<input type=\"text\" size=\"2\" name=\"" . $extra_name .
         "_minutes\" value=\"$minutes\" /> " .  translate("minutes") .
         "&nbsp;&nbsp;";
@@ -491,7 +491,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     }
   } else if ( $extra_type == $EXTRA_SELECTLIST ) {
     // show custom select list.
-    echo "<select name=\"" . $extra_name . "\">";
+    echo "<select name=\"" . $extra_name . "\">\n";
     if ( is_array ( $extra_arg1 ) ) {
       for ( $j = 0; $j < count ( $extra_arg1 ); $j++ ) {
         echo "<option";
@@ -501,7 +501,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
         echo ">" . $extra_arg1[$j] . "</option>\n";
       }
     }
-    echo "</select>";
+    echo "</select>\n";
   }
   echo "</td></tr>\n";
 }
@@ -550,12 +550,12 @@ if ( $single_user == "N" && $show_participants ) {
   else if ( $size > 5 )
     $size = 5;
   print "<tr><td style=\"vertical-align:top;\" class=\"tooltip\" title=\"" . tooltip("participants-help") . "\"><label for=\"entry_part\">" . 
-  translate("Participants") . ":</label></td>";
+  translate("Participants") . ":</label></td>\n";
   print "<td><select name=\"participants[]\" id=\"entry_part\" size=\"$size\" multiple=\"multiple\">$users\n";
-  print "</select>";
+  print "</select>\n";
   if ( $groups_enabled == "Y" ) {
     echo "<input type=\"button\" onclick=\"selectUsers()\" value=\"" .
-      translate("Select") . "...\" />";
+      translate("Select") . "...\" />\n";
   }
   print "</td></tr>\n";
 
@@ -563,10 +563,10 @@ if ( $single_user == "N" && $show_participants ) {
   if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" ) {
     print "<tr><td style=\"vertical-align:top;\" class=\"tooltip\" title=\"" .
       tooltip("external-participants-help") . "\"><label for=\"entry_extpart\">" .
-      translate("External Participants") . ":</label></td>";
+      translate("External Participants") . ":</label></td>\n";
     print "<td><textarea name=\"externalparticipants\" id=\"entry_extpart\" rows=\"5\" cols=\"40\">";
     print $external_users . "</textarea></td></tr>\n";
-    print "</td></tr>\n";
+//    print "</td></tr>\n";
   }
 }
 ?>
@@ -601,31 +601,29 @@ echo "<label><input type=\"radio\" name=\"rpt_type\" value=\"yearly\"" .
 <td><label><input type="checkbox" name="rpt_end_use" value="y" <?php
   echo ( ! empty ( $rpt_end ) ? " checked=\"checked\"" : "" ); ?> /> <?php etranslate("Use end date")?></label>
 &nbsp;&nbsp;&nbsp;
-<span class="end_day_selection">
-  <?php
+<span class="end_day_selection"><?php
     print_date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date )
-  ?>
-</td></tr>
+  ?></span></td></tr>
 <tr><td class="tooltip" title="<?php etooltip("repeat-day-help")?>"><?php etranslate("Repeat Day")?>: (<?php etranslate("for weekly")?>)</td>
   <td><?php
   if( $WEEK_START != 1)
     echo "<label><input type=\"checkbox\" name=\"rpt_sun\" value=\"y\""
-       . (!empty($rpt_sun)?" checked=\"checked\"":"") . " />" . translate("Sunday") . "</label>";
+       . (!empty($rpt_sun)?" checked=\"checked\"":"") . " />" . translate("Sunday") . "</label>\n";
   echo "<label><input type=\"checkbox\" name=\"rpt_mon\" value=\"y\""
-     . (!empty($rpt_mon)?" checked=\"checked\"":"") . " />" . translate("Monday") . "</label>";
+     . (!empty($rpt_mon)?" checked=\"checked\"":"") . " />" . translate("Monday") . "</label>\n";
   echo "<label><input type=\"checkbox\" name=\"rpt_tue\" value=\"y\""
-     . (!empty($rpt_tue)?" checked=\"checked\"":"") . " />" . translate("Tuesday") . "</label>";
+     . (!empty($rpt_tue)?" checked=\"checked\"":"") . " />" . translate("Tuesday") . "</label>\n";
   echo "<label><input type=\"checkbox\" name=\"rpt_wed\" value=\"y\""
-     . (!empty($rpt_wed)?" checked=\"checked\"":"") . " />" . translate("Wednesday") . "</label>";
+     . (!empty($rpt_wed)?" checked=\"checked\"":"") . " />" . translate("Wednesday") . "</label>\n";
   echo "<label><input type=\"checkbox\" name=\"rpt_thu\" value=\"y\""
-     . (!empty($rpt_thu)?" checked=\"checked\"":"") . " />" . translate("Thursday") . "</label>";
+     . (!empty($rpt_thu)?" checked=\"checked\"":"") . " />" . translate("Thursday") . "</label>\n";
   echo "<label><input type=\"checkbox\" name=\"rpt_fri\" value=\"y\""
-     . (!empty($rpt_fri)?" checked=\"checked\"":"") . " />" . translate("Friday") . "</label>";
+     . (!empty($rpt_fri)?" checked=\"checked\"":"") . " />" . translate("Friday") . "</label>\n";
   echo "<label><input type=\"checkbox\" name=\"rpt_sat\" value=\"y\""
-     . (!empty($rpt_sat)?" checked=\"checked\"":"") . " />" . translate("Saturday") . "</label>";
+     . (!empty($rpt_sat)?" checked=\"checked\"":"") . " />" . translate("Saturday") . "</label>\n";
   if( $WEEK_START == 1)
     echo "<label><input type=\"checkbox\" name=\"rpt_sun\" value=\"y\""
-       . (!empty($rpt_sun)?" checked=\"checked\"":"") . " />" . translate("Sunday") . "</label>";
+       . (!empty($rpt_sun)?" checked=\"checked\"":"") . " />" . translate("Sunday") . "</label>\n";
   ?></td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("repeat-frequency-help")?>"><label for="entry_freq"><?php etranslate("Frequency")?>:</label></td>
