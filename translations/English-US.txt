@@ -342,7 +342,6 @@ Cancel: Cancel
 ###############################################
 # Page: edit_layer.php
 #
-Invalid color: Invalid color
 Edit Layer: Edit Layer
 Add Layer: Add Layer
 Source: Source
@@ -891,6 +890,7 @@ The time you have entered begins before your preferred work hours.  Is this corr
 ###############################################
 # Page: includes/js/edit_layer.php
 #
+Invalid color: Invalid color
 
 
 ###############################################
