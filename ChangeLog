@@ -1,4 +1,5 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Show date/time of event in email notification for deleted event
   - Fixed bug 847246: week issue? (has been fixed in CVS)
   - Fixed bug 848302: \r still missing from publish.php
   - Fixed bug 848307: export_alarm_ical is called without description argument
