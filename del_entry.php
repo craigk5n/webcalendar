@@ -199,30 +199,15 @@ if ( $id > 0 && empty ( $error ) ) {
 }
 
 $ret = getValue ( "ret" );
-if ( ! empty ( $ret ) ) {
-  if ( $ret == "list" ) {
-    $url = "list_unapproved.php";
-    if ( ! empty ( $user ) )
-      $url .= "?user=$user";
-  }
-  else
-    $url = "$STARTVIEW.php";
-} else if ( strlen ( get_last_view() ) ) {
-  $url = get_last_view();
+if ( ! empty ( $ret ) && $ret == "list" ) {
+  $url = "list_unapproved.php";
+  if ( ! empty ( $user ) )
+    $url .= "?user=$user";
 } else {
-  $redir = "";
-  if ( $thisdate != "" )
-    $redir = "?date=$thisdate";
-  if ( $user != "" ) {
-    if ( $redir != "" )
-      $redir .= "&amp;";
-    $redir .= "user=$user";
-  }
-  $url = "$STARTVIEW.php" . $redir;
+  $url = get_preferred_view ( "", empty ( $user ) ? "" : "user=$user" );
 }
+
 if ( empty ( $error ) ) {
-  if ($is_assistant || $is_nonuser_admin)
-     $url = $url . (strpos($url, "?") === false ? "?" : "&amp;") . "user=$user";
   do_redirect ( $url );
   exit;
 }

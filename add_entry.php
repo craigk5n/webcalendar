@@ -48,12 +48,6 @@ if ( $id > 0 ) {
   }
 }
 
-if ( strlen ( get_last_view() ) ) {
-  $url = get_last_view();
-} else {
-  $url = "$STARTVIEW.php" . ( $thisdate > 0 ? "?date=$thisdate" : "" );
-}
-
-do_redirect ( $url );
+send_to_preferred_view ();
 exit;
 ?>

@@ -421,6 +421,64 @@ function do_debug ( $msg ) {
   //  2, "sockieman:2000" );
 }
 
+/** get_preferred_view
+  * Description:
+  *	Get user's preferred view.
+  *	The user's preferred view is stored in the $STARTVIEW
+  *	global variable.  This is loaded from the user preferences
+  *	(or system settings if there are no user prefererences.)
+  * Parameters:
+  *	$date - (optional) date to pass to preferred view in YYYYMMDD format
+  *	$args - (optional) arguments to include in the URL (such as
+  *	        "user=joe")
+  */
+function get_preferred_view ( $indate="", $args="" ) {
+  global $STARTVIEW, $thisdate;
+
+  $url = empty ( $STARTVIEW ) ? "month.php" : $STARTVIEW;
+  // We used to just store "month" in $STARTVIEW without the ".php"
+  // This is just to prevent users from getting a "404 not found" if
+  // they have not updated their preferences.
+  if ( $url == "month" || $url == "day" || $url == "week" || $url == "year" )
+    $url .= ".php";
+
+  $url = str_replace ( '&amp;', '&', $url );
+  $url = str_replace ( '&', '&amp;', $url );
+
+  $xdate = empty ( $indate ) ? $thisdate : $indate;
+  if ( ! empty ( $xdate ) ) {
+    if ( strstr ( $url, "?" ) )
+      $url .= '&amp;' . "date=$xdate";
+    else
+      $url .= '?' . "date=$xdate";
+  }
+
+  if ( ! empty ( $args ) ) {
+    if ( strstr ( $url, "?" ) )
+      $url .= '&amp;' . $args;
+    else
+      $url .= '?' . $args;
+  }
+
+  return $url;
+}
+
+/** send_to_preferred_view
+  * Description:
+  *	Send a redirect to the user's preferred view.
+  *	The user's preferred view is stored in the $STARTVIEW
+  *	global variable.  This is loaded from the user preferences
+  *	(or system settings if there are no user prefererences.)
+  * Parameters:
+  *	$date - (optional) date to pass to preferred view in YYYYMMDD format
+  *	$args - (optional) arguments to include in the URL (such as
+  *	        "user=joe")
+  */
+function send_to_preferred_view ( $indate="", $args="" ) {
+  $url = get_preferred_view ( $indate, $args );
+  do_redirect ( $url );
+}
+
 /** do_redirect
   * Description:
   *	Send a redirect to the specified page.
@@ -442,6 +500,11 @@ function do_debug ( $msg ) {
   */
 function do_redirect ( $url ) {
   global $SERVER_SOFTWARE, $_SERVER, $c;
+
+  // Replace any '&amp;' with '&' since we don't want that in the HTTP
+  // header.
+  $url = str_replace ( '&amp;', '&', $url );
+
   if ( empty ( $SERVER_SOFTWARE ) )
     $SERVER_SOFTWARE = $_SERVER["SERVER_SOFTWARE"];
   //echo "SERVER_SOFTWARE = $SERVER_SOFTWARE <br />\n"; exit;
@@ -618,15 +681,23 @@ function load_user_preferences () {
   $res = dbi_query (
     "SELECT cal_view_id, cal_name, cal_view_type, cal_is_global " .
     "FROM webcal_view " .
-    "WHERE cal_owner = '$login' OR cal_is_global = 'Y'" );
+    "WHERE cal_owner = '$login' OR cal_is_global = 'Y' " .
+    "ORDER BY cal_name" );
   if ( $res ) {
     $views = array ();
     while ( $row = dbi_fetch_row ( $res ) ) {
+      if ( $row[2] == 'S' )
+        $url = "view_t.php?timeb=1&amp;id=$row[0]";
+      else if ( $row[2] == 'T' )
+        $url = "view_t.php?timeb=0&amp;id=$row[0]";
+      else
+        $url = "view_" . strtolower ( $row[2] ) . ".php?id=$row[0]";
       $v = array (
         "cal_view_id" => $row[0],
         "cal_name" => $row[1],
         "cal_view_type" => $row[2],
         "cal_is_global" => $row[3],
+        "url" => $url
         );
       $views[] = $v;
     }
@@ -4189,7 +4260,7 @@ function load_nonuser_preferences ($nonuser) {
   *	$date - the date in YYYYMMDD format
   */
 function set_today($date) {
-  global $thisyear, $thisday, $thismonth, $today;
+  global $thisyear, $thisday, $thismonth, $thisdate, $today;
   global $TZ_OFFSET, $month, $day, $year, $thisday;
 
   // Adjust for TimeZone

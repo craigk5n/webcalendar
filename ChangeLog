@@ -1,4 +1,8 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Removed remember_this_view and get_last_view functions.  Instead, send
+   users to their preferred view from their preferences ($STARTVIEW).
+   Modified preferences to allow user-created views to be saved as their
+   preferred page.
  - Replaced popups.php code with new knoppix based code. This should eliminate
    the problems with popups going off screen. Popups also follow the cursor now,
    but can be disabled in the file.

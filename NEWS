@@ -17,6 +17,8 @@ Version 1.0RC3 (?? ??? 2005)
     + Fixed issue where month.php and mini-calendar today highlight
       based on server time
   - New Features / Enhancements / Changes:
+    + Allow user-created views to be the default view set in user preferences.
+      After saving or deleting an event, the user will return to this page.
     + Replaced popups.php code with new knoppix based code. This should eliminate
       the problems with popups going off screen. Popups also follow the cursor now,
       but can be disabled in the file.

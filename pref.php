@@ -129,10 +129,28 @@ print_header($INC);
 
 <tr><td class="tooltip" title="<?php etooltip("preferred-view-help");?>"><?php etranslate("Preferred view")?>:</td><td>
 <select name="pref_STARTVIEW">
-<option value="day" <?php if ( $prefarray["STARTVIEW"] == "day" ) echo " selected=\"selected\"";?>><?php etranslate("Day")?></option>
-<option value="week" <?php if ( $prefarray["STARTVIEW"] == "week" ) echo " selected=\"selected\"";?>><?php etranslate("Week")?></option>
-<option value="month" <?php if ( $prefarray["STARTVIEW"] == "month" ) echo " selected=\"selected\"";?>><?php etranslate("Month")?></option>
-<option value="year" <?php if ( $prefarray["STARTVIEW"] == "year" ) echo " selected=\"selected\"";?>><?php etranslate("Year")?></option>
+<?php
+// For backwards compatibility.  We used to store without the .php extension
+if ( $prefarray['STARTVIEW'] == 'month' || $prefarray['STARTVIEW'] == 'day' ||
+  $prefarray['STARTVIEW'] == 'week' || $prefarray['STARTVIEW'] == 'year' )
+  $prefarray['STARTVIEW'] .= '.php';
+?>
+<option value="day.php" <?php if ( $prefarray["STARTVIEW"] == "day.php" ) echo " selected=\"selected\"";?>><?php etranslate("Day")?></option>
+<option value="week.php" <?php if ( $prefarray["STARTVIEW"] == "week.php" ) echo " selected=\"selected\"";?>><?php etranslate("Week")?></option>
+<option value="month.php" <?php if ( $prefarray["STARTVIEW"] == "month.php" ) echo " selected=\"selected\"";?>><?php etranslate("Month")?></option>
+<option value="year.php" <?php if ( $prefarray["STARTVIEW"] == "year.php" ) echo " selected=\"selected\"";?>><?php etranslate("Year")?></option>
+<?php
+// Allow user to select a view also
+for ( $i = 0; $i < count ( $views ); $i++ ) {
+  $xurl = $views[$i]['url'];
+  echo "<option value=\"";
+  echo $xurl . "\" ";
+  $xurl_strip = str_replace ( "&amp;", "&", $xurl );
+  if ( $STARTVIEW == $xurl_strip )
+    echo "selected=\"selected\" ";
+  echo ">" . $views[$i]['cal_name'] . "</option>\n";
+}
+?>
 </select>
 </td></tr>
 

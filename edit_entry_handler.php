@@ -743,20 +743,9 @@ if ( empty ( $error ) ) {
 // month).  If this is a new event, then go to the preferred view for
 // the date range that this event was added to.
 if ( empty ( $error ) ) {
-  $last_view = get_last_view ();
-  if ( strlen ( $last_view ) && ! $newevent ) {
-    $url = $last_view;
-  } else {
-    $url = sprintf ( "%s.php?date=%04d%02d%02d",
-      $STARTVIEW, $year, $month, $day );
-  }
-  if ($is_assistant || $is_nonuser_admin)
-    $url .= (strpos($url, "?") === false ? "?" : "&") . "user=$user";
-  else if ( ! empty ( $user ) )
-    $url .= (strpos($url, "?") === false ? "?" : "&") . "user=$user";
-//echo "last_view: $last_view<br>\n"; exit;
-//echo "URL: $url<br>\n"; exit;
-  do_redirect ( $url );
+  $xdate = sprintf ( "%04d%02d%02d", $year, $month, $day );
+  $user_args = ( empty ( $user ) ? '' : "user=$user" );
+  send_to_preferred_view ( $xdate, $user_args );
 }
 
 print_header();
