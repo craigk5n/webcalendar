@@ -1,13 +1,11 @@
-#trailer, 
+#trailer,
 form,
-#month .minical, 
+#month .minical,
 .popup,
-.printer, 
+.printer,
 .nav,
-.bullet, 
-.new, 
-.prevnext, 
-.prevnextsmall,
+.bullet,
+.new,
 .prev,
 .next {
 	display: none !important;
@@ -15,13 +13,12 @@ form,
 a {
 	color: inherit !important;
 }
-#category {
+#cat {
 	display: inline !important;
 }
 .entry, 
 .layerentry, 
-.unapprovedentry, 
-.monthlink {
+.unapprovedentry {
 	font-size: 12px;
 }
 #viewt .entry, 
