@@ -2680,53 +2680,22 @@ function html_to_8bits ( $html ) {
 // Functions for getting information about boss and their assistant.
 // ***********************************************************************
 
-
-// Get a list of a boss assistants
-function user_get_assistants ( $boss ) {
-  $res = dbi_query ( "SELECT u.cal_login, u.cal_lastname, u.cal_firstname " .
-    "FROM webcal_user as u, webcal_asst as b " .
-    "WHERE b.cal_boss = '$boss' AND b.cal_assistant = u.cal_login " .
-    "ORDER BY u.cal_lastname, u.cal_firstname, u.cal_login" );
-  $count = 0;
-  $ret = array ();
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( strlen ( $row[1] ) && strlen ( $row[2] ) )
-        $fullname = "$row[2] $row[1]";
-      else
-        $fullname = $row[0];
-      $ret[$count++] = array (
-        "cal_login" => $row[0],
-        "cal_lastname" => $row[1],
-        "cal_firstname" => $row[2],
-        "cal_fullname" => $fullname
-      );
-    }
-    dbi_free_result ( $res );
-  }
-  return $ret;
-}
-
 // Get a list of an assistant's boss
 function user_get_boss_list ( $assistant ) {
+  global $bosstemp_fullname;
+
   $res = dbi_query (
-    "SELECT u.cal_login, u.cal_lastname, u.cal_firstname " .
-    "FROM webcal_user as u, webcal_asst as b " .
-    "WHERE b.cal_assistant = '$assistant' AND b.cal_boss = u.cal_login " .
-    "ORDER BY u.cal_lastname, u.cal_firstname, u.cal_login" );
+    "SELECT cal_boss " .
+    "FROM webcal_asst " .
+    "WHERE cal_assistant = '$assistant'" );
   $count = 0;
   $ret = array ();
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( strlen ( $row[1] ) && strlen ( $row[2] ) )
-        $fullname = "$row[2] $row[1]";
-      else
-        $fullname = $row[0];
+      user_load_variables ( $row[0], "bosstemp_" );
       $ret[$count++] = array (
         "cal_login" => $row[0],
-        "cal_lastname" => $row[1],
-        "cal_firstname" => $row[2],
-        "cal_fullname" => $fullname
+        "cal_fullname" => $bosstemp_fullname
       );
     }
     dbi_free_result ( $res );
