@@ -818,7 +818,7 @@ input path/table-ibase.sql;</strong></pre>
 	<h2>Frequently Asked Questions</h2>
 	<dl>
 <!-- cek: leave these comments here... extractfaqs.pl looks for them -->
-<!-- START FAQ -->
+<!-- START FAQ: Installation/Setup -->
 		<dt>How do I setup PHP, MySQL and Apache on Windows?</dt>
 			<dd>The easiest way to do this is to try one of the prepackaged	bundles that will install all of these for you:
   		<ul>
@@ -958,14 +958,6 @@ input path/table-ibase.sql;</strong></pre>
 	<dt>I get an error about binhex() being an unsupported function.  What does that mean?</dt>
 		<dd>The <tt>binhex()</tt> function was not in the early PHP 3.0.X releases.  You
    		need to upgrade to a more recent PHP3 (or use PHP4).</dd>
-	<dt>Why aren't you using PHP4 sessions or PHPLIB sessions?</dt>
-		<dd>It would really be overkill for what the application needs.  It also
-   		simplifies installation by not requiring PHPLIB or PHP4.  A future
-   		version might switch to PHP4 if PHP4 is detected.</dd>
-	<dt>Why aren't you using ADODB for database access?</dt>
-		<dd>Again, this would be overkill for what we need.  ADODB is almost
-   		as big as WebCalendar itself, so I'm partial to my leaner php-dbi.php
-   		solution.</dd>
 <!-- END FAQ -->
 	</dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
@@ -975,7 +967,7 @@ input path/table-ibase.sql;</strong></pre>
 	<h2>Troubleshooting</h2>
     <dl>
 <!-- cek: leave these comments here... extractfaqs.pl looks for them -->
-<!-- START FAQ -->
+<!-- START FAQ: Troubleshooting -->
 	<dt>I get error messages about undefined variables when I try to view any page.</dt>
 		<dd>On newer versions of PHP, the default setting of PHP is to display
   		messages when an undefined variable is referenced.  To prevent
