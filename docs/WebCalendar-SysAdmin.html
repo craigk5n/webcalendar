@@ -81,7 +81,7 @@ h2 {
 </head>
 <body>
 <h1>WebCalendar System Administrator's Guide</h1>
-<p><strong>WebCalendar Version:</strong> 0.9.45</p>
+<p><strong>WebCalendar Version:</strong> 1.0RC2</p>
 
 <h2>Table of Contents</h2>
 <ul>
@@ -98,6 +98,8 @@ h2 {
 	<li><a href="#help">Getting Help</a></li>
 	<li><a href="#license">Licensing</a></li>
 	<li><a href="#glossary">Glossary</a></li>
+	<li><a href="#appendixA">Appendix A: Database Setup with phpMyAdmin</a></li>
+	<li><a href="#appendixB">Appendix B: Displaying Upcoming Events on Your Site</a></li>
 </ul>
 <hr />
 
@@ -1257,6 +1259,117 @@ following steps to setup WebCalendar.
 <li>You have now finished creating the WebCalendar database tables.</li>
 
 </ol>
+
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
+
+<a name="appendixB"></a>
+<h2>Appendix B: Displaying Upcoming Events on Your Site</h2>
+
+<p>
+If you would like to list upcoming events somewhere on a page on your site
+(someplace other than the WebCalendar pages),
+you can use the <tt>upcoming.php</tt> page to do this.
+This page is intended to be included in other pages using the
+<tt>iframe</tt> tag.
+</p>
+<p>You may need to modify some of the variables near the top of
+<tt>upcoming.php</tt> with a text editor:
+</p>
+<table border="0" style="margin-left: 20px; margin-right: 20px;">
+
+<tr><td valign="top">$public_must_be_enabled</td>
+  <td>
+      Specifies if Public Access must be enabled in System Settings
+      for this page to be viewed.
+      <br/>Default setting: false
+  </td></tr>
+
+<tr><td valign="top">$display_link</td>
+  <td>
+      Specifies if events should have a link to the URL
+      within WebCalendar to view the event.
+      <br/>Default setting: true
+  </td></tr>
+
+<tr><td valign="top">$link_target</td>
+  <td>
+      Specifies the name of the window that be used for
+      the link target.
+      <br/>Default setting: _top
+  </td></tr>
+
+<tr><td valign="top">$numDays</td>
+  <td>
+      Specifies how many days of events should be listed.
+      <br/>Can override this by passing "num" in within the URL
+           with "upcoming.php?num=60"
+      <br/>Default setting: 30
+  </td></tr>
+
+<tr><td valign="top">$maxEvents</td>
+  <td>
+      Specifies the maximum number of events to list.
+      <br/>Default setting: 10
+  </td></tr>
+
+<tr><td valign="top">$username</td>
+  <td>
+      The login of the calendar to display upcoming events for.
+      If you want to see upcoming events for user login "joe",
+      then you would change this to "joe".
+      <br/>Default setting: __public__ (The public calendar)
+  </td></tr>
+
+<tr><td valign="top">$allow_user_override</td>
+  <td>
+      Specifies whether the calendar user can be specified in the URL
+      (in which case the $username setting will be ignored) using
+      a URL like "upcoming.php?user=joe".
+      <br/>Default setting: true
+  </td></tr>
+
+<tr><td valign="top">$load_layers</td>
+  <td>
+      Specifies if the calendar user's layers should also be
+      included in the upcoming events.
+      <br/>Note: Layers must be enabled in the user's preferences.
+      <br/>Default setting: true
+  </td></tr>
+
+<tr><td valign="top">$cat_id</td>
+  <td>
+      Specifies a category id to filter events on.
+      <br/>Note: Categories must be enabled in System Settings.
+      <br/>Default setting: (empty)
+  </td></tr>
+
+</table>
+
+<p>Below is an example of how you would include <tt>upcoming.php</tt>
+   in a simple HTML page.</p>
+
+</p>
+<pre>
+&lt;html&gt;&lt;head&gt;&lt;title&gt;ACME Home Page&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to the ACME Home Page&lt;/h1&gt;
+&lt;h2&gt;News&lt;/h2&gt;&lt;
+p&gt;No news....&lt;/p&gt;
+&lt;h2&gt;Upcoming Events&lt;/h2&gt;
+&lt;iframe src="upcoming.php" width="400" height="400" name="califrame" /&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+
+<p><span class="tip">TIP</span>
+  The <a href="http://www.w3schools.com/tags/tag_iframe.asp"
+  target="_blank">W3 Schools</a> site provides documentation
+  about the different options that you can use
+  with the <tt>iframe</tt> tag.
+</p>
+
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
