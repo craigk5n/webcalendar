@@ -253,7 +253,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 
 // untimed events first
 if ( $untimed_found ) {
-  echo "<tr><td style=\"background-color:$THBG;\">&nbsp;</td>";
+  echo "<tr><th class=\"row\">&nbsp;</td>";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
