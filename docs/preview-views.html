@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	    <head>
+<title>WebCalendar System Administrator's Guide</title>
+<script type="text/javascript">
+function show(foo,f,section) {
+	document.getElementById(foo).style.display = "block";
+	if (f) { setCookie(foo, "o", section); }
+}
+
+function hide(foo,f, section) {
+	if (document.getElementById(foo)) {
+		document.getElementById(foo).style.display = "none";
+		if (f) { deleteCookie(foo, section); }
+	}
+}
+</script>
+
+<style type="text/css">
+	#viewd,
+#viewl,
+#viewm,
+#viewt,
+#viewtmonth,
+#viewv,
+#vieww {
+	display: none;
+	text-align: center;
+}
+#menu {
+	text-align: center;
+}
+.nav {
+	background-color:#0000CC;
+	color:#CCCCCC;
+}
+.nav a {
+	margin: 3px;
+	color: #CCCCCC;
+}
+body {
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+}
+a {
+	text-decoration: none;
+}
+</style>
+</head>
+<body>
+<h1>WebCalendar Views</h1>
+
+<p><b>WebCalendar Version:</b> 0.9.44<br /></p>
+
+<div id="menu">
+<span class="nav"><a href="javascript:hide('viewl');
+	hide('viewm');
+	hide('viewt');
+	hide('viewtmonth');
+	hide('viewv');
+	hide('vieww');
+	show('viewd');">Day view</a></span>
+
+<span class="nav"><a href="javascript:hide('viewd');
+	hide('viewl');
+	hide('viewm');
+	hide('viewt');
+	hide('viewtmonth');
+	hide('viewv');
+	show('vieww');">Week (Users horizontal)</a></span>
+
+<span class="nav"><a href="javascript:hide('viewd');
+	hide('viewl');
+	hide('viewm');
+	hide('viewt');
+	hide('viewtmonth');
+	hide('vieww');
+	show('viewv');">Week (Users vertical)</a></span>
+
+<span class="nav"><a href="javascript:hide('viewd');
+	hide('viewl');
+	hide('viewm');
+	hide('viewtmonth');
+	hide('viewv');
+	hide('vieww');
+	show('viewt');">Week (Timebar)</a></span>
+
+<span class="nav"><a href="javascript:hide('viewd');
+	hide('viewl');
+	hide('viewm');
+	hide('viewt');
+	hide('viewv');
+	hide('vieww');
+	show('viewtmonth');">Month (Timebar)</a></span>
+
+<span class="nav"><a href="javascript:hide('viewd');
+	hide('viewl');
+	hide('viewt');
+	hide('viewtmonth');
+	hide('viewv');
+	hide('vieww');
+	show('viewm');">Month (side-by-side)</a></span>
+<br />
+<span class="nav"><a href="javascript:hide('viewd');
+	hide('viewm');
+	hide('viewt');
+	hide('viewtmonth');
+	hide('viewv');
+	hide('vieww');
+	show('viewl');">Month (on same calendar)</a></span>
+</div>
+<br /><br />
+<div id="viewd"><img src="day_view.gif" alt="Day view" /></div>
+<div id="viewl"><img src="month_view_2.gif" alt="Month view (on same calendar)" /></div>
+<div id="viewm"><img src="month_view.gif" alt="Month view (side by side)" /></div>
+<div id="viewt"><img src="week_view_v.gif" alt="Week view (timebar)" /></div>
+<div id="viewtmonth">Sorry, preview unavailable.<br />
+	<img src="month_timebar.gif" alt="Month view (timebar)" /></div>
+<div id="viewv">Sorry, preview unavailable.<br />
+	<img src="week_users_vert.gif" alt="Week view (users vertical)"	/></div>
+<div id="vieww"><img src="week_view_h.gif" alt="Week view (users horizontal)" /></div>
+<p>
+	<a href="http://validator.w3.org/check?uri=referer"><img
+	src="http://www.w3.org/Icons/valid-xhtml10"
+	alt="Valid XHTML 1.0!" style="height:31px; width:88px; border-width:0px;" /></a>
+</p>
+</body>
+</html>
