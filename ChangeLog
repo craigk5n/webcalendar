@@ -1,7 +1,7 @@
 Version 0.9.41dev (?? ??? ???)
   - Fixed bug 732729: public access link on login.php ignores preference
     for default view
-  - Fixed bug 753159: bug in site extras with select list.
+  - Fixed bugs 753159, 684230: bug in site extras in edit_entry.php -
     was using $i for inner and outer loop.
   - Fixed bug 753107: Not handling rejected or deleted events properly
   - Fixed bug 739309: "All Day Event" not saved properly
