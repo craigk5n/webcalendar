@@ -297,15 +297,6 @@ echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html
   }
 }
 
-function languageToAbbrev ( $name ) {
-  global $browser_languages;
-  foreach ( $browser_languages as $abbrev => $langname ) {
-    if ( $langname == $name )
-      return $abbrev;
-  }
-  return false;
-}
-
 
 // Print the common trailer.
 // Include custom trailer if enabled
