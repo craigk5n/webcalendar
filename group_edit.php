@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 print_header();
 ?>
 
-<FORM ACTION="group_edit_handler.php" METHOD="POST">
+<form action="group_edit_handler.php" method="POST">
 
 <?php
 
@@ -34,29 +34,29 @@ if ( empty ( $id ) ) {
 
 if ( $newgroup ) {
   $v = array ();
-  echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Add Group") . "</FONT></H2>\n";
-  echo "<INPUT TYPE=\"hidden\" NAME=\"add\" VALUE=\"1\">\n";
+  echo "<h2><span style=\"color:$H2COLOR;\">" . translate("Add Group") . "</span></h2>\n";
+  echo "<input type=\"hidden\" name=\"add\" value=\"1\" />\n";
 } else {
-  echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Edit Group") . "</FONT></H2>\n";
-  echo "<INPUT NAME=\"id\" TYPE=\"hidden\" VALUE=\"$id\">";
+  echo "<h2><span style=\"color: $H2COLOR;\">" . translate("Edit Group") . "</span></h2>\n";
+  echo "<input name=\"id\" type=\"hidden\" value=\"$id\" />";
 }
 ?>
 
-<TABLE BORDER="0">
-<TR><TD><B><?php etranslate("Group name")?>:</B></TD>
-  <TD><INPUT NAME="groupname" SIZE=20 VALUE="<?php echo htmlspecialchars ( $groupname );?>"></TD></TR>
+<table border="0">
+<tr><td><b><?php etranslate("Group name")?>:</b></td>
+  <td><input name="groupname" size="20" value="<?php echo htmlspecialchars ( $groupname );?>"></td></tr>
 <?php if ( ! $newgroup ) { ?>
-<TR><TD VALIGN="top">
-<B><?php etranslate("Updated"); ?>:</B></TD>
-<TD> <?php echo date_to_str ( $groupupdated ); ?></TD></TR>
-<TR><TD VALIGN="top">
-<B><?php etranslate("Created by"); ?>:</B></TD>
-<TD> <?php echo $groupowner; ?></TD></TR>
+<tr><td valign="top">
+<b><?php etranslate("Updated"); ?>:</b></td>
+<td> <?php echo date_to_str ( $groupupdated ); ?></td></tr>
+<tr><td valign="top">
+<b><?php etranslate("Created by"); ?>:</b></td>
+<td> <?php echo $groupowner; ?></td></tr>
 <?php } ?>
-<TR><TD VALIGN="top">
-<B><?php etranslate("Users"); ?>:</B></TD>
-<TD>
-<SELECT NAME="users[]" SIZE="10" MULTIPLE>
+<tr><td valign="top">
+<b><?php etranslate("Users"); ?>:</b></td>
+<td>
+<select name="users[]" size="10" multiple>
 <?php
   // get list of all users
   $users = user_get_users ();
@@ -78,28 +78,28 @@ if ( $newgroup ) {
   }
   for ( $i = 0; $i < count ( $users ); $i++ ) {
     $u = $users[$i]['cal_login'];
-    echo "<OPTION VALUE=\"$u\" ";
+    echo "<option value=\"$u\" ";
     if ( ! empty ( $groupuser[$u] ) ) {
       echo "SELECTED";
     }
     echo "> " . $users[$i]['cal_fullname'];
   }
 ?>
-</SELECT>
-</TD></TR>
-<TR><TD COLSPAN="2">
-<BR><BR>
-<CENTER>
-<INPUT TYPE="submit" NAME="action" VALUE="<?php if ( $newgroup ) etranslate("Add"); else etranslate("Save"); ?>" >
+</select>
+</td></tr>
+<tr><td colspan="2">
+<br><br>
+<center>
+<input type="submit" name="action" value="<?php if ( $newgroup ) etranslate("Add"); else etranslate("Save"); ?>" />
 <?php if ( ! $newgroup ) { ?>
-<INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')">
+<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
 <?php } ?>
-</CENTER>
-</TD></TR>
-</TABLE>
+</center>
+</td></tr>
+</table>
 
-</FORM>
+</form>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

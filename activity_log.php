@@ -4,19 +4,19 @@ include_once 'includes/site_extras.php';
 $PAGE_SIZE = 25;
 print_header();
 
-echo "<H3>" . translate("Activity Log") . "</H3>\n";
-echo "<TABLE BORDER=\"0\" WIDTH=\"100%\">\n";
-echo "<TR>";
-echo "<TH ALIGN=\"left\" BGCOLOR=\"$THBG\" WIDTH=\"10%\"><FONT COLOR=\"$THFG\">" .
-  translate("User") . "</FONT></TH>";
-echo "<TH ALIGN=\"left\" BGCOLOR=\"$THBG\" WIDTH=\"10%\"><FONT COLOR=\"$THFG\">" .
-  translate("Calendar") . "</FONT></TH>";
-echo "<TH ALIGN=\"left\" BGCOLOR=\"$THBG\" WIDTH=\"25%\"><FONT COLOR=\"$THFG\">" .
-  translate("Date") . "/" . translate("Time") . "</FONT></TH>";
-echo "<TH ALIGN=\"left\" BGCOLOR=\"$THBG\" WIDTH=\"30%\"><FONT COLOR=\"$THFG\">" .
-  translate("Event") . "</FONT></TH>";
-echo "<TH ALIGN=\"left\" BGCOLOR=\"$THBG\" WIDTH=\"15%\"><FONT COLOR=\"$THFG\">" .
-  translate("Action") . "</FONT></TH></TR>\n";
+echo "<h3>" . translate("Activity Log") . "</h3>\n";
+echo "<table border=\"0\" width=\"100%\">\n";
+echo "<tr>";
+echo "<th align=\"left\" bgcolor=\"$THBG\" width=\"10%\"><font color=\"$THFG\">" .
+  translate("User") . "</font></th>";
+echo "<th align=\"left\" bgcolor=\"$THBG\" width=\"10%\"><font COLOR=\"$THFG\">" .
+  translate("Calendar") . "</font></th>";
+echo "<th ALIGN=\"left\" bgcolor=\"$THBG\" width=\"25%\"><font COLOR=\"$THFG\">" .
+  translate("Date") . "/" . translate("Time") . "</font></th>";
+echo "<th ALIGN=\"left\" bgcolor=\"$THBG\" width=\"30%\"><font COLOR=\"$THFG\">" .
+  translate("Event") . "</font></th>";
+echo "<th ALIGN=\"left\" bgcolor=\"$THBG\" width=\"15%\"><font COLOR=\"$THFG\">" .
+  translate("Action") . "</font></th></tr>\n";
 $sql = "SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, " .
   "webcal_entry_log.cal_type, webcal_entry_log.cal_date, " .
   "webcal_entry_log.cal_time, webcal_entry.cal_id, " .
@@ -31,7 +31,7 @@ $res = dbi_query ( $sql );
 $nextpage = "";
 
 if ( $res ) {
-  $font = "<FONT SIZE=\"-1\">";
+  $font = "<font size=\"-1\">";
   $num = 0;
   while ( $row = dbi_fetch_row ( $res ) ) {
     $num++;
@@ -39,18 +39,18 @@ if ( $res ) {
       $nextpage = $row[7];
       break;
     } else {
-      echo "<TR>";
-      echo "<TD VALIGN=\"top\" BGCOLOR=\"$CELLBG\">" .
-        $font . $row[0] . "</FONT></TD>";
-      echo "<TD VALIGN=\"top\" BGCOLOR=\"$CELLBG\">" .
-        $font . $row[1] . "</FONT></TD>";
-      echo "<TD VALIGN=\"top\" BGCOLOR=\"$CELLBG\">" . $font .
+      echo "<tr>";
+      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" .
+        $font . $row[0] . "</font></td>";
+      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" .
+        $font . $row[1] . "</font></td>";
+      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" . $font .
         date_to_str ( $row[3] ) . " " .
-        display_time ( $row[4] ) . "</FONT></TD>";
-      echo "<TD VALIGN=\"top\" BGCOLOR=\"$CELLBG\">" . $font .
+        display_time ( $row[4] ) . "</font></td>";
+      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" . $font .
         "<A HREF=\"view_entry.php?id=$row[5]\" CLASS=\"navlinks\">" .
-        htmlspecialchars($row[6]) . "</A></FONT></TD>";
-      echo "<TD VALIGN=\"top\" BGCOLOR=\"$CELLBG\">" . $font;
+        htmlspecialchars($row[6]) . "</A></font></td>";
+      echo "<td valign=\"top\" bgcolor=\"$CELLBG\">" . $font;
       if ( $row[2] == $LOG_CREATE )
         etranslate("Event created");
       else if ( $row[2] == $LOG_APPROVE )
@@ -67,7 +67,7 @@ if ( $res ) {
         etranslate("Reminder sent");
       else
         echo "???";
-      echo "</FONT></TD></TR>\n";
+      echo "</font></td></tr>\n";
     }
   }
   dbi_free_result ( $res );
@@ -76,7 +76,7 @@ if ( $res ) {
 }
 ?>
 
-</TABLE><BR>
+</table><br />
 
 <?php
 if ( ! empty ( $startid ) ) {
@@ -91,17 +91,17 @@ if ( ! empty ( $startid ) ) {
         $prevarg = "?startid=$previd";
       }
       echo "<a href=\"activity_log.php$prevarg\" class=\"navlinks\">" .
-        translate("Previous") . " $PAGE_SIZE</a><br>\n";
+        translate("Previous") . " $PAGE_SIZE</a><br />\n";
     }
     dbi_free_result ( $res );
   }
 }
 if ( ! empty ( $nextpage ) ) {
   echo "<a href=\"activity_log.php?startid=$nextpage\" class=\"navlinks\">" .
-    translate("Next") . " $PAGE_SIZE</a><br>\n";
+    translate("Next") . " $PAGE_SIZE</a><br />\n";
 }
 ?>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

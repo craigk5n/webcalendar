@@ -1099,7 +1099,7 @@ else
   etranslate("Error");
   echo " : </b>";
   echo translate("export format not defined or incorrect") . ".";
-  echo "<br>\n";
+  echo "<br />\n";
 
   print_trailer ();
 			 

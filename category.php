@@ -31,7 +31,7 @@ if ( ! empty ( $id ) ) {
 
 print_header();
 ?>
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Categories")?></FONT></H2>
+<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Categories")?></font></h2>
 
 <?php
 
@@ -39,60 +39,58 @@ print_header();
 if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   $button = translate("Add");
   ?>
-  <FORM ACTION="category_handler.php" METHOD="POST">
+  <form action="category_handler.php" method="POST">
   <?php
   if ( ! empty ( $id ) ) {
-    echo "<INPUT NAME=\"id\" TYPE=\"hidden\" VALUE=\"$id\">";
+    echo "<input name=\"id\" type=\"hidden\" value=\"$id\">";
     $button = translate("Save");
     $catname = $categories[$id];
     $catowner = $category_owners[$id];
   }
   ?>
-  <?php etranslate("Category Name")?>: <INPUT NAME="catname" SIZE="20" VALUE="<?php echo htmlspecialchars ( $catname ); ?>">
-  <BR>
+  <?php etranslate("Category Name")?>: <input name="catname" size="20" value="<?php echo htmlspecialchars ( $catname ); ?>" />
+  <br />
   <?php if ( $is_admin && empty ( $id ) ) { ?>
     <?php etranslate("Global")?>:
-      <INPUT TYPE="radio" NAME="isglobal" VALUE="N" <?php if ( ! empty ( $catowner ) || empty ( $id ) ) echo "CHECKED";?>> <?php etranslate("No")?>
-      <INPUT TYPE="radio" NAME="isglobal" VALUE="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo "CHECKED";?>> <?php etranslate("Yes")?>
+      <input type="radio" name="isglobal" value="N" <?php if ( ! empty ( $catowner ) || empty ( $id ) ) echo "CHECKED=\"CHECKED\"";?>> <?php etranslate("No")?>
+      <input type="radio" name="isglobal" value="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo "CHECKED=\"CHECKED\"";?>> <?php etranslate("Yes")?>
   <?php } ?>
-  <BR><BR>
-  <INPUT TYPE="submit" NAME="action" VALUE="<?php echo $button;?>">
+  <br /><br />
+  <input type="submit" name="action" value="<?php echo $button;?>" />
   <?php if ( ! empty ( $id ) ) {  ?>
-    <INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete");?>" ONCLICK="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')">
+    <input type="submit" name="action" value="<?php etranslate("Delete");?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
   <?php }  ?>
-  </FORM>
+  </form>
   <?php
 } else if ( empty ( $error ) ) {
   // Displaying Categories
   $global_found = false;
   if ( ! empty ( $categories ) ) {
-    echo "<UL>";
+    echo "<ul>";
     foreach ( $categories as $K => $V ) {
-      echo "<LI>";
+      echo "<li>";
       if ( $category_owners[$K] == $login || $is_admin )
-        echo "<A HREF=\"category.php?id=$K\">$V</A>";
+        echo "<a href=\"category.php?id=$K\">$V</a>";
       else
         echo $V;
       if ( empty ( $category_owners[$K] ) ) {
-        echo "<SUP>*</SUP>";
+        echo "<sup>*</sup>";
 	$global_found = true;
       }
-      echo "</LI>\n";
+      echo "</li>\n";
     }
-    echo "</UL>";
+    echo "</ul>";
   }
   if ( $global_found )
-    echo "<P><SUP>*</SUP> " . translate ( "Global" );
-  echo "<P><A HREF=\"category.php?add=1\">" . translate("Add New Category") . "</A></P><BR>\n";
+    echo "<br /><br /><sup>*</sup> " . translate ( "Global" );
+  echo "<p><a href=\"category.php?add=1\">" . translate("Add New Category") . "</a></p><br />\n";
 }
 
 if ( ! empty ( $error ) ) {
-  echo "<B>" . translate ( "Error" ) . ":</B>" . $error;
+  echo "<b>" . translate ( "Error" ) . ":</b>" . $error;
 }
-
 ?>
 
-
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

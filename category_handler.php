@@ -81,12 +81,12 @@ if ( empty ( $error ) )
 
 print_header();
 ?>
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></FONT></H2>
+<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></font></h2>
 
-<BLOCKQUOTE>
+<blockquote>
 <?php echo $error; ?>
-</BLOCKQUOTE>
+</blockquote>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 print_header();
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR; ?>"><?php etranslate("View Another User's Calendar"); ?></H2></FONT>
+<h2><font color="<?php echo $H2COLOR; ?>"><?php etranslate("View Another User's Calendar"); ?></h2></font>
 
 <?php
 if (( $allow_view_other != "Y" && ! $is_admin ) ||
@@ -12,7 +12,7 @@ if (( $allow_view_other != "Y" && ! $is_admin ) ||
 }
 
 if ( ! empty ( $error ) ) {
-  echo "<BLOCKQUOTE>$error</BLOCKQUOTE>\n";
+  echo "<blockquote>$error</blockquote>\n";
 } else {
   $userlist = get_my_users ();
   if ($nonuser_enabled == "Y" ) {
@@ -20,21 +20,21 @@ if ( ! empty ( $error ) ) {
     $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
   ?>
-  <FORM ACTION="<?php echo $STARTVIEW;?>.php" METHOD="GET" NAME="SelectUser">
-  <SELECT NAME="user" ONCHANGE="document.SelectUser.submit()">
+  <form action="<?php echo $STARTVIEW;?>.php" method="get" name="SelectUser">
+  <select name="user" onchange="document.SelectUser.submit()">
   <?php
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-    echo "<OPTION VALUE=\"".$userlist[$i]['cal_login']."\">".$userlist[$i]['cal_fullname']."\n";
+    echo "<option value=\"".$userlist[$i]['cal_login']."\">".$userlist[$i]['cal_fullname']."\n";
   }
   ?>
-  </SELECT>
-  <INPUT TYPE="submit" VALUE="<?php etranslate("Go")?>"></FORM>
+  </select>
+  <input type="submit" value="<?php etranslate("Go")?>" /></form>
   <?php
 }
 
 ?>
-<P>
+<br /><br />
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

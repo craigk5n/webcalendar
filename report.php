@@ -264,8 +264,8 @@ if ( empty ( $report_user ) )
 $page_template = '<dl>${days}</dl>';
 $day_template = '<dt><b>${date}</b></dt><dd><dl>${events}</dl></dd>';
 $event_template = '<dt>${name}</dt><dd>' .
-  translate ( "Date" ) . ': ${date}</b><br>' .
-  translate ( "Time" ) . ': ${time}</b><br>' .
+  translate ( "Date" ) . ': ${date}</b><br />' .
+  translate ( "Time" ) . ': ${time}</b><br />' .
   '${description}</dd>';
 
 // Load templates for this report.
@@ -318,9 +318,9 @@ if ( $report_time_range >= 0 && $report_time_range < 10 ) {
   else
     $wkstart = get_sunday_before ( date ( "Y" ), date ( "m" ),
       date ( "d" ) );
-  //echo "wkstart = " . date("Ymd",$wkstart) . "<br>";
+  //echo "wkstart = " . date("Ymd",$wkstart) . "<br />";
   $week_offset = 11 - $report_time_range + $offset;
-  //echo "week_offset=$week_offset <br>";
+  //echo "week_offset=$week_offset <br />";
   $start_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * $ONE_DAY ) );
   $end_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * $ONE_DAY ) + 
     ( $ONE_DAY * 6 ) );
@@ -331,16 +331,16 @@ if ( $report_time_range >= 0 && $report_time_range < 10 ) {
   else
     $wkstart = get_sunday_before ( date ( "Y" ), date ( "m" ),
       date ( "d" ) );
-  //echo "wkstart = " . date("Ymd",$wkstart) . "<br>";
+  //echo "wkstart = " . date("Ymd",$wkstart) . "<br />";
   $week_offset = 21 - $report_time_range + $offset;
-  //echo "week_offset=$week_offset <br>";
+  //echo "week_offset=$week_offset <br />";
   $start_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * $ONE_DAY ) );
   $end_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * $ONE_DAY ) + 
     ( $ONE_DAY * 13 ) );
 } else if ( $report_time_range >= 30 && $report_time_range < 40 ) {
   $thismonth = date ( "m" );
   $month_offset = 31 - $report_time_range + $offset;
-  //echo "month_offset=$month_offset <br>";
+  //echo "month_offset=$month_offset <br />";
   $start_date = date ( "Ymd", mktime ( 3, 0, 0, $thismonth + $month_offset,
     1, date ( "Y" ) ) );
   $end_date = date ( "Ymd", mktime ( 3, 0, 0, $thismonth + $month_offset + 1,
@@ -348,7 +348,7 @@ if ( $report_time_range >= 0 && $report_time_range < 10 ) {
 } else if ( $report_time_range >= 40 && $report_time_range < 50 ) {
   $thisyear = date ( "Y" );
   $year_offset = 41 - $report_time_range + $offset;
-  //echo "year_offset=$year_offset <br>";
+  //echo "year_offset=$year_offset <br />";
   $start_date = date ( "Ymd", mktime ( 3, 0, 0, 1, 1,
     $thisyear + $year_offset ) );
   $end_date = date ( "Ymd", mktime ( 3, 0, 0, 12, 31,
@@ -369,8 +369,8 @@ $get_unapproved = $DISPLAY_UNAPPROVED == 'Y';
 if ( $report_user == "__public__" )
   $get_unapproved = false;
 
-//echo "User: $report_user <br>\n";
-//echo "Date Range: $start_date - $end_date <p>\n";
+//echo "User: $report_user <br />\n";
+//echo "Date Range: $start_date - $end_date <br /><br />\n";
 
 $start_year = substr ( $start_date, 0, 4 );
 $start_month = substr ( $start_date, 4, 2 );
@@ -393,7 +393,7 @@ for ( $cur_time = $start_time; $cur_time <= $end_time; $cur_time += $ONE_DAY ) {
   $rep = get_repeating_entries ( empty ( $user ) ? $login : $user, $dateYmd );
   $ev = get_entries ( empty ( $user ) ? $login : $user, $dateYmd );
   $cur_rep = 0;
-  //echo "DATE: $dateYmd <br>\n";
+  //echo "DATE: $dateYmd <br />\n";
 
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     // print out any repeating events that are before this one...
@@ -464,7 +464,6 @@ for ( $cur_time = $start_time; $cur_time <= $end_time; $cur_time += $ONE_DAY ) {
     $text = str_replace ( '${fulldate}', $date_full_str, $text );
     $day_str .= str_replace ( '${date}', $date_str, $text );
   }
-
 }
 
 if ( ! empty ( $error ) ) {
@@ -491,15 +490,15 @@ if ( empty ( $friendly ) && empty ( $error ) && empty ( $list ) ) {
       $offset = 0;
     $next = $offset + 1;
     $prev = $offset - 1;
-    echo "<p><a href=\"report.php?report_id=$report_id$u_url" .
+    echo "<br /><br /><a href=\"report.php?report_id=$report_id$u_url" .
       ( empty ( $prev ) ? "" : "&offset=$prev" ) . "\" class=\"navlinks\">" .
       translate ( "Previous" ) . "</a>\n";
     echo "&nbsp;&nbsp;<a href=\"report.php?report_id=$report_id$u_url" .
       ( empty ( $next ) ? "" : "&offset=$next" ) . "\" class=\"navlinks\">" .
-      translate ( "Next" ) . "</a><br>\n";
+      translate ( "Next" ) . "</a><br />\n";
   }
   if ( $report_include_header == 'Y' ) {
-    echo '<p><a class="navlinks" href="report.php?report_id=' . $report_id .
+    echo '<br /><br /><a class="navlinks" href="report.php?report_id=' . $report_id .
       '&friendly=1' . $u_url . '&offset=' . $offset .
       '" target="cal_printer_friendly" onmouseover="window.status=\'' .
       translate("Generate printer-friendly version") .
@@ -516,5 +515,5 @@ if ( ( empty ( $friendly ) && $report_include_header == 'Y' )
 
 
 ?>
-</BODY>
-</HTML>
+</body>
+</html>

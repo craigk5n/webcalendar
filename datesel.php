@@ -26,24 +26,24 @@ $prevmonth = date ( "m", $prev );
 $prevdate = date ( "Ym", $prev ) . "01";
 
 ?>
-<CENTER>
-<TABLE BORDER=0>
-<TR>
-<TD><A HREF="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrowsmall.gif" WIDTH="18" HRIGHT="18" BORDER="0" ALT="<?php etranslate("Previous")?>"></A></TD>
-<TH COLSPAN="5"><?php echo month_name ( $thismonth - 1 ) . " " . $thisyear;?></TH>
-<TD><A HREF="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $nextdate?>"><IMG SRC="rightarrowsmall.gif" WIDTH="18" HEIGHT="18" BORDER="0" ALT="<?php etranslate("Next")?>"></A></TD>
-</TR>
+<center>
+<table border="0">
+<tr>
+<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $prevdate?>"><img src="leftarrowsmall.gif" width="18" height="18" border="0" alt="<?php etranslate("Previous")?>"></a></td>
+<th colspan="5"><?php echo month_name ( $thismonth - 1 ) . " " . $thisyear;?></th>
+<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif" width="18" height="18" border="0" alt="<?php etranslate("Next")?>" /></a></td>
+</tr>
 <?php
-echo "<TR>";
-if ( $WEEK_START == 0 ) echo "<TD><FONT SIZE=\"-1\">" .
-  weekday_short_name ( 0 ) . "</TD>";
+echo "<tr>";
+if ( $WEEK_START == 0 ) echo "<td><font size=\"-1\">" .
+  weekday_short_name ( 0 ) . "</td>";
 for ( $i = 1; $i < 7; $i++ ) {
-  echo "<TD><FONT SIZE=\"-1\">" .
-    weekday_short_name ( $i ) . "</TD>";
+  echo "<td><font size=\"-1\">" .
+    weekday_short_name ( $i ) . "</font></td>";
 }
-if ( $WEEK_START == 1 ) echo "<TD><FONT SIZE=\"-1\">" .
-  weekday_short_name ( 0 ) . "</TD>";
-echo "</TR>\n";
+if ( $WEEK_START == 1 ) echo "<td><font size=\"-1\">" .
+  weekday_short_name ( 0 ) . "</td>";
+echo "</tr>\n";
 if ( $WEEK_START == "1" )
   $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
 else
@@ -52,24 +52,24 @@ $monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
 $monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( 24 * 3600 * 7 ) ) {
-  echo "<TR>\n";
+  echo "<tr>\n";
   for ( $j = 0; $j < 7; $j++ ) {
     $date = $i + ( $j * 24 * 3600 );
     if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
       date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-      echo "<TD><A HREF=\"javascript:sendDate('" .
+      echo "<td><a href=\"javascript:sendDate('" .
         date ( "Ymd", $date ) . "')\">" .
-        date ( "d", $date ) . "</A></TD>";
+        date ( "d", $date ) . "</a></td>";
     } else {
-      echo "<TD></TD>\n";
+      echo "<td></td>\n";
     }
   }
-  echo "</TR>\n";
+  echo "</tr>\n";
 }
 ?>
-</TABLE>
-</CENTER>
+</table>
+</center>
 
 <?php print_trailer ( false, true, true ); ?>
-</BODY>
-</HTML>
+</body>
+</html>

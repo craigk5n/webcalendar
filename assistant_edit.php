@@ -54,16 +54,16 @@ print_header($INC);
 <?php
 if ( $groups_enabled == "Y" ) {
   echo "<input type=\"button\" onclick=\"selectUsers()\" value=\"" .
-    translate("Select") . "...\">";
+    translate("Select") . "...\" />";
 }
 echo "</td></tr>\n";
 ?>
 </td></tr>
 <tr><td colspan="2">
 <br /><br />
+
 <center>
 <input type="submit" name="action" value="<?php etranslate("Save"); ?>" />
-
 </center>
 </td></tr>
 </table>
