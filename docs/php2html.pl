@@ -28,12 +28,16 @@ sub add_links {
 
   $in =~ s/([a-z_]+)\s+function/<a href="#$1"><tt>$1<\/tt><\/a> function/ig;
 
+  $in =~ s/&/&amp;/g;
+  $in =~ s/&amp&amp;/&amp;/g;
+  $in =~ s/<br\s*\/>Note:/<br\><span class=\"note\">Note:<\/span>/gi;
+
   return $in;
 }
 
 
 sub print_function {
-  my ( $f ) = @_;
+  my ( $loc ) = @_;
   $out{$name} = "<h3><a name=\"$name\">$name</a></h3>\n";
   $out{$name} .= "<tt>$name ( " . '$' . join ( ', $', @params ) .
     " )</tt><br /><br />\n";
@@ -52,7 +56,7 @@ sub print_function {
   $out{$name} .= "</ul>\n";
   $out{$name} .= "<p><span class=\"prompt\">Returns:</span> " .
     ( $returns eq '' ? "Nothing" : add_links ( $returns ) ) . "<br/>\n";
-  $out{$name} .= "<span class=\"prompt\">Location:</span> $f<br/>\n";
+  $out{$name} .= "<span class=\"prompt\">Location:</span> $loc<br/>\n";
   $out{$name} .= "</p><br /><br />\n";
 }
 
@@ -78,6 +82,7 @@ foreach $f ( @ARGV ) {
       %paramDescr = ( );
       $description = '';
       $returns = '';
+      $funcLine = $line;
     } elsif ( $name ne '' ) {
       if ( /\*\s*Description:/i ) {
         $state = 'description';
@@ -86,13 +91,14 @@ foreach $f ( @ARGV ) {
       } elsif ( /\*\s*(Returns|Return):/i ) {
         $state = 'returns';
       } elsif ( /\*\// ) {
-        &print_function ( $basefile );
+        &print_function ( "$basefile, line $funcLine" );
         undef ( $name );
         undef ( $description );
         undef ( $returns );
         undef ( @params );
         undef ( $param );
         undef ( $paramDescr );
+        undef ( $funcLine );
         $state = 'none';
       } elsif ( $state ne 'none' && defined ( $name ) ) {
         if ( $state eq 'description' ) {
@@ -198,7 +204,7 @@ pre {
 	background-color: blue;
 	color: #FFFFFF;
 	border: 1px solid #000000;
-	padding: 2px;
+	padding: 1px;
 }
 hr {
 	margin-bottom: 7px;

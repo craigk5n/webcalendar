@@ -46,7 +46,7 @@ pre {
 	background-color: blue;
 	color: #FFFFFF;
 	border: 1px solid #000000;
-	padding: 2px;
+	padding: 1px;
 }
 hr {
 	margin-bottom: 7px;
@@ -70,7 +70,7 @@ h3 {
 <tr><td>Home Page:</td>
   <td><a href="http://webcalendar.sourceforge.net/">http://webcalendar.sourceforge.net//a></td></tr>
 <tr><td>WebCalendar Version:</td><td>v1.0RC1/CVS+dev (?? ??? 2004)</td></tr>
-<tr><td>Last updated:</td><td>23-Jan-2005</td></tr>
+<tr><td>Last updated:</td><td>24-Jan-2005</td></tr>
 </table>
 <h2>Function Documentation</h2>
 <ul>
@@ -85,9 +85,12 @@ h3 {
 <li><a href="#dbi_fetch_row">dbi_fetch_row</a></li>
 <li><a href="#dbi_free_result">dbi_free_result</a></li>
 <li><a href="#dbi_query">dbi_query</a></li>
+<li><a href="#dieMiserableDeath">dieMiserableDeath</a></li>
 <li><a href="#display_small_month">display_small_month</a></li>
 <li><a href="#do_debug">do_debug</a></li>
 <li><a href="#do_redirect">do_redirect</a></li>
+<li><a href="#etooltip">etooltip</a></li>
+<li><a href="#etranslate">etranslate</a></li>
 <li><a href="#event_get_external_users">event_get_external_users</a></li>
 <li><a href="#getGetValue">getGetValue</a></li>
 <li><a href="#getIntValue">getIntValue</a></li>
@@ -99,16 +102,22 @@ h3 {
 <li><a href="#get_pref_setting">get_pref_setting</a></li>
 <li><a href="#get_site_extra_fields">get_site_extra_fields</a></li>
 <li><a href="#load_global_settings">load_global_settings</a></li>
+<li><a href="#load_translation_text">load_translation_text</a></li>
 <li><a href="#load_user_layers">load_user_layers</a></li>
 <li><a href="#load_user_preferences">load_user_preferences</a></li>
 <li><a href="#print_date_selection">print_date_selection</a></li>
 <li><a href="#print_entry">print_entry</a></li>
+<li><a href="#print_header">print_header</a></li>
+<li><a href="#print_trailer">print_trailer</a></li>
 <li><a href="#query_events">query_events</a></li>
 <li><a href="#read_events">read_events</a></li>
 <li><a href="#remember_this_view">remember_this_view</a></li>
+<li><a href="#reset_language">reset_language</a></li>
 <li><a href="#send_http_login">send_http_login</a></li>
 <li><a href="#send_no_cache_header">send_no_cache_header</a></li>
 <li><a href="#site_extras_for_popup">site_extras_for_popup</a></li>
+<li><a href="#tooltip">tooltip</a></li>
+<li><a href="#translate">translate</a></li>
 </ul>
 <hr />
 <br /><br />
@@ -124,7 +133,7 @@ Add something to the activity log for an event. The information will be saved to
 <li><tt>$text</tt> - text comment to add with activity log entry</li>
 </ul>
 <p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 649<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="build_event_popup">build_event_popup</a></h3>
@@ -139,7 +148,7 @@ Build the HTML for the event popup (but don't print it yet since we don't want t
 <li><tt>$site_extras</tt> - the HTML for any site_extras for this event</li>
 </ul>
 <p><span class="prompt">Returns:</span> The HTML for the event popup<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 957<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="date_selection_html">date_selection_html</a></h3>
@@ -151,19 +160,19 @@ Print out a date selection for use in a form.<br /><br />
 <li><tt>$date</tt> - currently selected date (in YYYYMMDD) format</li>
 </ul>
 <p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 1025<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="dbi_affected_rows">dbi_affected_rows</a></h3>
 <tt>dbi_affected_rows ( $conn, $res )</tt><br /><br />
-Returns the number of rows affected by the last INSERT, UPDATE or DELETE. <br/>Note: Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.<br /><br />
+Returns the number of rows affected by the last INSERT, UPDATE or DELETE. <br><span class="note">Note:</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.<br /><br />
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$conn</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
 <li><tt>$res</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
 </ul>
 <p><span class="prompt">Returns:</span> The number or database rows affected.<br/>
-<span class="prompt">Location:</span> php-dbi.php<br/>
+<span class="prompt">Location:</span> php-dbi.php, line 355<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="dbi_close">dbi_close</a></h3>
@@ -174,12 +183,12 @@ Close a database connection. (Not necessary for any database that uses pooled co
 <li><tt>$conn</tt> - The database connection</li>
 </ul>
 <p><span class="prompt">Returns:</span> true on success, false on error<br/>
-<span class="prompt">Location:</span> php-dbi.php<br/>
+<span class="prompt">Location:</span> php-dbi.php, line 185<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="dbi_connect">dbi_connect</a></h3>
 <tt>dbi_connect ( $host, $login, $password, $database )</tt><br /><br />
-Open up a database connection. Use a pooled connection if the db supports it and the <tt>db_persistent</tt> setting is enabled. <br/>Notes:<ul> <li> For ODBC, $host is ignored, $database = DSN</li> <li> For Oracle, $database = tnsnames name</li> <li> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails </li> </ul><br /><br />
+Open up a database connection. Use a pooled connection if the db supports it and the <tt>db_persistent</tt> setting is enabled. <br/>Notes:<ul> <li> The database type is determined by the global variable <tt>db_type</tt> <li> For ODBC, $host is ignored, $database = DSN</li> <li> For Oracle, $database = tnsnames name</li> <li> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails </li> </ul><br /><br />
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$host</tt> - Name of database</li>
@@ -188,7 +197,7 @@ Open up a database connection. Use a pooled connection if the db supports it and
 <li><tt>$database</tt> - Name of database</li>
 </ul>
 <p><span class="prompt">Returns:</span> The connection<br/>
-<span class="prompt">Location:</span> php-dbi.php<br/>
+<span class="prompt">Location:</span> php-dbi.php, line 64<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="dbi_error">dbi_error</a></h3>
@@ -199,7 +208,7 @@ Get the latest database error message.<br /><br />
 <li>None</li>
 </ul>
 <p><span class="prompt">Returns:</span> The text of the last database error.(The type of information varies depending on the whichtype of database is being used.)<br/>
-<span class="prompt">Location:</span> php-dbi.php<br/>
+<span class="prompt">Location:</span> php-dbi.php, line 425<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="dbi_fatal_error">dbi_fatal_error</a></h3>
@@ -212,18 +221,18 @@ Display a fatal database error and abort execution.<br /><br />
 <li><tt>$showError</tt> - Show the details of the error (possibly including the SQL that caused the error)</li>
 </ul>
 <p><span class="prompt">Returns:</span> Nothing<br/>
-<span class="prompt">Location:</span> php-dbi.php<br/>
+<span class="prompt">Location:</span> php-dbi.php, line 458<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="dbi_fetch_row">dbi_fetch_row</a></h3>
 <tt>dbi_fetch_row ( $res )</tt><br /><br />
-Retrieve a single row from the database and return it as an array. <br/>Note: we don't use the more useful xxx_fetch_array because not all databases support <a href="#this"><tt>this</tt></a> function. <br/>Note: Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.<br /><br />
+Retrieve a single row from the database and return it as an array. <br><span class="note">Note:</span> we don't use the more useful xxx_fetch_array because not all databases support <a href="#this"><tt>this</tt></a> function. <br><span class="note">Note:</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.<br /><br />
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$res</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
 </ul>
 <p><span class="prompt">Returns:</span> An array of database columns representing a single row inthe query result or false on an error.<br/>
-<span class="prompt">Location:</span> php-dbi.php<br/>
+<span class="prompt">Location:</span> php-dbi.php, line 302<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="dbi_free_result">dbi_free_result</a></h3>
@@ -234,12 +243,12 @@ Free a result set.<br /><br />
 <li><tt>$res</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
 </ul>
 <p><span class="prompt">Returns:</span> true on success<br/>
-<span class="prompt">Location:</span> php-dbi.php<br/>
+<span class="prompt">Location:</span> php-dbi.php, line 392<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="dbi_query">dbi_query</a></h3>
 <tt>dbi_query ( $sql, $fatalOnError, $showError )</tt><br /><br />
-Execute a SQL query. <br/>Note: Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.<br /><br />
+Execute a SQL query. <br><span class="note">Note:</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.<br /><br />
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$sql</tt> - Display error to use (including possibly the SQL) if there is a database error</li>
@@ -247,7 +256,18 @@ Execute a SQL query. <br/>Note: Use the <a href="#dbi_error"><tt>dbi_error</tt><
 <li><tt>$showError</tt> - Display error to use (including possibly the SQL) if there is a database error</li>
 </ul>
 <p><span class="prompt">Returns:</span> The query result resource on queries (which can then bepassed to the <a href="#dbi_fetch_row"><tt>dbi_fetch_row</tt></a> function to obtain the results),or true/false on insert or delete queries.<br/>
-<span class="prompt">Location:</span> php-dbi.php<br/>
+<span class="prompt">Location:</span> php-dbi.php, line 228<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="dieMiserableDeath">dieMiserableDeath</a></h3>
+<tt>dieMiserableDeath ( $error )</tt><br /><br />
+Print a fatal error message to the user along with a link to the Troubleshooting section of the WebCalendar System Administrator's Guide.   Execution is aborted.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$error</tt> - The error message to display</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> config.php, line 35<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="display_small_month">display_small_month</a></h3>
@@ -255,15 +275,15 @@ Execute a SQL query. <br/>Note: Use the <a href="#dbi_error"><tt>dbi_error</tt><
 Prints out a minicalendar for a month<br /><br />
 <span class="prompt">Parameters:</span><br />
 <ul>
-<li><tt>$thismonth</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;) [defaults to 'month.php?']</li>
-<li><tt>$thisyear</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;) [defaults to 'month.php?']</li>
-<li><tt>$showyear</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;) [defaults to 'month.php?']</li>
-<li><tt>$show_weeknums</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;) [defaults to 'month.php?']</li>
-<li><tt>$minical_id</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;) [defaults to 'month.php?']</li>
-<li><tt>$month_link</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;) [defaults to 'month.php?']</li>
+<li><tt>$thismonth</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;amp;) [defaults to 'month.php?']</li>
+<li><tt>$thisyear</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;amp;) [defaults to 'month.php?']</li>
+<li><tt>$showyear</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;amp;) [defaults to 'month.php?']</li>
+<li><tt>$show_weeknums</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;amp;) [defaults to 'month.php?']</li>
+<li><tt>$minical_id</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;amp;) [defaults to 'month.php?']</li>
+<li><tt>$month_link</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;amp;) [defaults to 'month.php?']</li>
 </ul>
 <p><span class="prompt">Returns:</span> Nothing<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 1067<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="do_debug">do_debug</a></h3>
@@ -274,7 +294,7 @@ Log a debug message.  Generally, we do not leave calls to <a href="#this"><tt>th
 <li><tt>$msg</tt> - Text to be logged</li>
 </ul>
 <p><span class="prompt">Returns:</span> Nothing<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 363<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="do_redirect">do_redirect</a></h3>
@@ -285,7 +305,29 @@ Send a redirect to the specified page. The database connection is closed and exe
 <li><tt>$url</tt> - The page to redirect to.  In theory, this should be an absolute URL, but all browsers accept relative URLs (like "month.php").</li>
 </ul>
 <p><span class="prompt">Returns:</span> Nothing<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 378<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="etooltip">etooltip</a></h3>
+<tt>etooltip ( $str )</tt><br /><br />
+Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML. <br><span class="note">Note:</span> The <a href="#tooltip"><tt>tooltip</tt></a> function will return the result rather than print the value.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$str</tt> - the input text to translate and print</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> translate.php, line 168<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="etranslate">etranslate</a></h3>
+<tt>etranslate ( $str )</tt><br /><br />
+Translate text and print it. This is just an abbreviation for: echo translate ( $str )<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$str</tt> - input text to translate and print</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> translate.php, line 139<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="event_get_external_users">event_get_external_users</a></h3>
@@ -297,7 +339,7 @@ Get the list of external users for an event from the <a href="WebCalendar-Databa
 <li><tt>$use_mailto</tt> - when set to 1, email address will contain an href link with a mailto URL.</li>
 </ul>
 <p><span class="prompt">Returns:</span> The list of external users for an event formatte in HTML.<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 607<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="getGetValue">getGetValue</a></h3>
@@ -308,7 +350,7 @@ Get the value resulting from an HTTP GET method.   <br/> Note: The return value 
 <li><tt>$name</tt> - Name used in the HTML form or found in the URL</li>
 </ul>
 <p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 151<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="getIntValue">getIntValue</a></h3>
@@ -320,7 +362,7 @@ Get an integer value resulting from an HTTP GET or HTTP POST method.   <br/> Not
 <li><tt>$fatal</tt> - Is it considered a fatal error requiring execution to stop if the value retrieved does not match the format regular expression?</li>
 </ul>
 <p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 216<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="getPostValue">getPostValue</a></h3>
@@ -331,7 +373,7 @@ Get the value resulting from an HTTP POST method.   <br/> Note: The return value
 <li><tt>$name</tt> - Name used in the HTML form</li>
 </ul>
 <p><span class="prompt">Returns:</span> the value used in the HTML form<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 131<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="getValue">getValue</a></h3>
@@ -344,7 +386,7 @@ Get the value resulting from either HTTP GET method or HTTP POST method.  <br />
 <li><tt>$fatal</tt> - Is it considered a fatal error requiring execution to stop if the value retrieved does not match the format regular expression?</li>
 </ul>
 <p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 174<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="get_entries">get_entries</a></h3>
@@ -357,7 +399,7 @@ Get all the events for a specific date from the array of pre-loaded events (whic
 <li><tt>$get_unapproved</tt> - load unapproved events (true/false)</li>
 </ul>
 <p><span class="prompt">Returns:</span> An array of events<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 1470<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="get_last_view">get_last_view</a></h3>
@@ -368,7 +410,7 @@ Get the last page stored using the <a href="#remember_this_view"><tt>remember_th
 <li>None</li>
 </ul>
 <p><span class="prompt">Returns:</span> The URL of the last view or an empty string if it cannot bedetermined.<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 476<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="get_my_users">get_my_users</a></h3>
@@ -379,7 +421,7 @@ Get a list of users. If groups are enabled, this will restrict the list of users
 <li>None</li>
 </ul>
 <p><span class="prompt">Returns:</span> An array of users, where each element in the array is an arraywith the following keys:<ul><li>cal_login</li><li>cal_lastname</li><li>cal_firstname</li><li>cal_is_admin</li><li>cal_is_admin</li><li>cal_email</li><li>cal_password</li><li>cal_fullname</li></ul><br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 704<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="get_pref_setting">get_pref_setting</a></h3>
@@ -391,7 +433,7 @@ Get a preference setting for the specified user.  If no value is found in the da
 <li><tt>$setting</tt> - the name of the setting</li>
 </ul>
 <p><span class="prompt">Returns:</span> The value found in the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> for thespecified setting or the sytem default if no user settingswas found.<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 779<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="get_site_extra_fields">get_site_extra_fields</a></h3>
@@ -402,7 +444,7 @@ Get any site-specific fields for an entry that are stored in the database in the
 <li><tt>$eventid</tt> - event id</li>
 </ul>
 <p><span class="prompt">Returns:</span> Return an array of array with the keys as follows:  <ul><li> cal_name </li><li> cal_type </li><li> cal_date </li><li> cal_remind </li><li> cal_data </li></ul><br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 1351<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="load_global_settings">load_global_settings</a></h3>
@@ -413,7 +455,18 @@ Load default system settings (which can be updated via admin.php) System setting
 <li>None</li>
 </ul>
 <p><span class="prompt">Returns:</span> Nothing<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 235<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="load_translation_text">load_translation_text</a></h3>
+<tt>load_translation_text ( $ )</tt><br /><br />
+Load all the language translation into an array for quick lookup. <br><span class="note">Note:</span> There is no need to call this manually.  It will be invoked by the <a href="#translate"><tt>translate</tt></a> function the first time it is called.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li>None</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> translate.php, line 63<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="load_user_layers">load_user_layers</a></h3>
@@ -425,7 +478,7 @@ Load current user's layer info and stuff it into layer global variable. If the s
 <li><tt>$force</tt> - If set to 1, then load layers for this user even if user preferences have layers turned off.</li>
 </ul>
 <p><span class="prompt">Returns:</span> Nothing<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 836<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="load_user_preferences">load_user_preferences</a></h3>
@@ -436,7 +489,7 @@ Load the current user's preferences as global variables from the <a href="WebCal
 <li>None</li>
 </ul>
 <p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 511<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="print_date_selection">print_date_selection</a></h3>
@@ -448,7 +501,7 @@ Print out a date selection for use in a form.<br /><br />
 <li><tt>$date</tt> - currently selected date (in YYYYMMDD) format</li>
 </ul>
 <p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 1012<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="print_entry">print_entry</a></h3>
@@ -469,7 +522,35 @@ Print the HTML for one day's events in the month view.<br /><br />
 <li><tt>$event_cat</tt> - category of event for event_owner</li>
 </ul>
 <p><span class="prompt">Returns:</span> Nothing<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 1225<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="print_header">print_header</a></h3>
+<tt>print_header ( $includes, $HeadX, $BodyX, $disbleCustom, $disableStyle )</tt><br /><br />
+Prints the HTML header and opening HTML body tag.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$includes</tt> - do not include the standard css</li>
+<li><tt>$HeadX</tt> - do not include the standard css</li>
+<li><tt>$BodyX</tt> - do not include the standard css</li>
+<li><tt>$disbleCustom</tt> - do not include the standard css</li>
+<li><tt>$disableStyle</tt> - do not include the standard css</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> init.php, line 210<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="print_trailer">print_trailer</a></h3>
+<tt>print_trailer ( $include_nav_links, $closeDb, $disableCustom )</tt><br /><br />
+Print the common trailer.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$include_nav_links</tt> - disable the custom trailer the administrator has setup.  (This is useful for small popup windows and pages being used in an iframe.)</li>
+<li><tt>$closeDb</tt> - disable the custom trailer the administrator has setup.  (This is useful for small popup windows and pages being used in an iframe.)</li>
+<li><tt>$disableCustom</tt> - disable the custom trailer the administrator has setup.  (This is useful for small popup windows and pages being used in an iframe.)</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> init.php, line 329<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="query_events">query_events</a></h3>
@@ -484,7 +565,7 @@ Read events visible to a user (including layers and possibly public access if en
 <li><tt>$cat_id</tt> - category ID to filter on.  May be empty.</li>
 </ul>
 <p><span class="prompt">Returns:</span> An array of events<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 1546<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="read_events">read_events</a></h3>
@@ -498,7 +579,7 @@ Read all the events for a user for the specified range of dates. This is only ca
 <li><tt>$cat_id</tt> - category ID to filter on</li>
 </ul>
 <p><span class="prompt">Returns:</span> An array of events<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 1388<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="remember_this_view">remember_this_view</a></h3>
@@ -509,7 +590,18 @@ Generate a cookie that saves the last calendar view (month, week, day) based on 
 <li>None</li>
 </ul>
 <p><span class="prompt">Returns:</span> Nothing<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 457<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="reset_language">reset_language</a></h3>
+<tt>reset_language ( $new_language )</tt><br /><br />
+Unload translations so we can switch languages and translate into a different language).<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$new_language</tt> - new language file to load (just the base filename, no directory or file suffix.  Example: "French")</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> translate.php, line 40<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="send_http_login">send_http_login</a></h3>
@@ -520,18 +612,18 @@ Send an HTTP login request to the browser and stop execution.<br /><br />
 <li>None</li>
 </ul>
 <p><span class="prompt">Returns:</span> Nothing<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 424<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="send_no_cache_header">send_no_cache_header</a></h3>
 <tt>send_no_cache_header ( $ )</tt><br /><br />
-Send header stuff that tells the browser not to cache this page. Different browser use different mechanisms for this, so a series of HTTP header directives are sent. <br/>Note: <a href="#This"><tt>This</tt></a> function needs to be called before any HTML output is sent to the browser.<br /><br />
+Send header stuff that tells the browser not to cache this page. Different browser use different mechanisms for this, so a series of HTTP header directives are sent. <br><span class="note">Note:</span> <a href="#This"><tt>This</tt></a> function needs to be called before any HTML output is sent to the browser.<br /><br />
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
 </ul>
 <p><span class="prompt">Returns:</span> Nothing<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 495<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="site_extras_for_popup">site_extras_for_popup</a></h3>
@@ -542,7 +634,29 @@ Generate the HTML used in an event popup for the site_extras fields of an event.
 <li><tt>$id</tt> - event id</li>
 </ul>
 <p><span class="prompt">Returns:</span> The HTML to be used within the event popup for any site_extrafields found for the specified event<br/>
-<span class="prompt">Location:</span> functions.php<br/>
+<span class="prompt">Location:</span> functions.php, line 884<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="tooltip">tooltip</a></h3>
+<tt>tooltip ( $str )</tt><br /><br />
+Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML. <br><span class="note">Note:</span> The <a href="#etooltip"><tt>etooltip</tt></a> function will print the result rather than return the value.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$str</tt> - the input text to translate</li>
+</ul>
+<p><span class="prompt">Returns:</span> The translated text with all HTML removed<br/>
+<span class="prompt">Location:</span> translate.php, line 150<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="translate">translate</a></h3>
+<tt>translate ( $str )</tt><br /><br />
+Translate a string from the default English usage to some other language.  The first time that this is called, the translation file will be loaded (with the <a href="#load_translation_text"><tt>load_translation_text</tt></a> function).<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$str</tt> - text to translate</li>
+</ul>
+<p><span class="prompt">Returns:</span> The translated text, if available.  If no translation is avalailable,then the original untranslated text is returned.<br/>
+<span class="prompt">Location:</span> translate.php, line 107<br/>
 </p><br /><br />
 </body>
 </html>
