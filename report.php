@@ -187,9 +187,9 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
         translate("Click here") . " " .
         translate("to manage reports for the Public Access calendar") . "." .
         "\" href=\"report.php?public=1\">" .
-        translate("Click here") . "</a> " .
+        translate("Click here") . " " .
         translate("to manage reports for the Public Access calendar") . "." .
-        "</p>\n";
+        "</a></p>\n";
       $sql = "SELECT cal_report_id, cal_report_name " .
         "FROM webcal_report WHERE cal_login = '$login' OR " .
         "cal_is_global = 'Y' ORDER BY cal_update_date DESC, cal_report_name";
@@ -481,7 +481,8 @@ if ( ! empty ( $error ) ) {
   if ( $updating_public )
     echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
   echo translate("Manage Reports");
-  echo "</h2>\n" . $list;
+  echo "</h2>\n" . 
+  "<a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n" . $list;
 } else {
   if ( $report_include_header == 'Y' ) {
     echo "<h2>" . $report_name . "</h2>\n";

@@ -49,6 +49,8 @@ if ( $is_nonuser_admin ) {
 }
 ?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" style="border-width:0px;" onclick="window.open ( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 
+<a title="<?php etranslate("Admin") ?>" class="navlinks" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
+
 <form action="pref_handler.php" method="post" onsubmit="return valid_form(this);" name="prefform">
 <?php if ($user) echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n"; ?>
 <?php if ( $updating_public ) { ?>

@@ -21,6 +21,7 @@ print_header($INC);
     echo "<h2>" . translate("Your assistants") . "</h2>\n";
   }
 ?>
+<a title="<?php etranslate("Admin") ?>" class="navlinks" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top; font-weight:bold;"><label for="users"><?php etranslate("Assistants"); ?>:</label></td>
