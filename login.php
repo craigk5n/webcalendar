@@ -248,7 +248,7 @@ if ( ! empty ( $return_path ) ) {
 </table>
 </form>
 
-<?php if ( $public_access == "Y" ) { ?>
+<?php if ( ! empty ( $public_access ) && $public_access == "Y" ) { ?>
  <br /><br />
  <a class="nav" href="index.php">
    <?php etranslate("Access public calendar")?></a><br />
