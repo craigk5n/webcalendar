@@ -4499,7 +4499,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   for($i=$first_hour;$i<$last_hour;$i++) {
      for($j=0;$j<$interval;$j++) {
         $str .= '	<td  id="C'.$CC.'" class="dailymatrix" ';
-        $MouseDown = 'onmousedown="schedule_event('.$i.','.($increment * $j).');"';
+        $MouseDown = 'onmousedown="schedule_event('.$i.','.sprintf ("%02d",($increment * $j)).');"';
         switch($j) {
           case 1:
                   if($interval == 4) { $k = ($i<=9?'0':substr($i,0,1)); }
@@ -4525,6 +4525,10 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   // Add user _all_ to beginning of $participants array
   array_unshift($participants, '_all_');
 
+  // Javascript for cells
+  $MouseOver = "onmouseover=\"this.style.backgroundColor='#CCFFCC';\"";
+  $MouseOut = "onmouseout=\"this.style.backgroundColor='".$CELLBG."';\"";
+
   // Display each participant
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
     if ($participants[$i] != '_all_') {
@@ -4545,6 +4549,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
     for ( $j = $first_hour; $j < $last_hour; $j++ ) {
        for ( $k = 0; $k < $interval; $k++ ) {
          $border = ($k == '0') ? ' border-left: 1px solid #000000;' : "";
+         $MouseDown = 'onmousedown="schedule_event('.$j.','.sprintf ("%02d",($increment * $k)).');"';
 	       $RC = $CELLBG;
          //$space = '';
          $space = "&nbsp;";
@@ -4555,7 +4560,9 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
          else if ($master[$participants[$i]][$r]['stat'] == "W")
            $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"pixb.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
 
-         echo "<td class=\"matrixappts\" style=\"width:{$cell_pct}%;$border\">$space</td>\n";
+         echo "<td class=\"matrixappts\" style=\"width:{$cell_pct}%;$border\" ";
+         if ($space == "&nbsp;") echo "$MouseDown $MouseOver $MouseOut";
+         echo ">$space</td>\n";
          $col++;
       }
     }

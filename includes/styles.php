@@ -340,6 +340,7 @@ label {
   background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 }
 td.matrixappts {
+  cursor: pointer;
   text-align: left;
   background-color: <?php echo $GLOBALS['CELLBG']; ?>;
   vertical-align: middle;
