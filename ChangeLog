@@ -1,4 +1,9 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Modified setting of db parameters.  They are now stored in a data
+    file "includes/settings.php".
+    When someone tries to access WebCalendar for the first time and this
+    file is not found, the user is redirected to a new dbinstall page
+    (install/index.php) where the user can set db host/user/password.
   - Added check for webcalendar db tables right after initial db connection.
     Give user an error if tables not found.
   - Modified user-*.php to tell user either "no such user" or
