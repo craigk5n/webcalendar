@@ -4,7 +4,7 @@
 # Translated by: liao_bin@371.net shenyi@jite.net
 # Last update: 2002-6-26
 # $Id$
-# Translation last updated on 09-10-2002
+# Translation last updated on 09-28-2002
 
 
 ###############################################
@@ -442,6 +442,26 @@ Preferences: 参数設定
 #
 # << MISSING >>
 # to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# tz-help:
+# English text: Specifies how many hours to adjust the time from server time to local time.
+#
+#
+# << MISSING >>
+# Timezone Offset:
+#
+# << MISSING >>
+# Add N hours to:
+#
+# << MISSING >>
+# Subtract N hours from:
+#
+# << MISSING >>
+# same as:
+#
+# << MISSING >>
+# server time:
 Default Category: 默认分类
 Sun: 周日
 Mon: 周一
