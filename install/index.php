@@ -371,19 +371,18 @@ li {
 <li>Supported databases:
 <?php
   $dbs = array ();
-  if ( function_exists ( "mysql_pconnect" ) ) {
+  if ( function_exists ( "mysql_pconnect" ) )
     $dbs[] = "mysql";
-  } else if ( function_exists ( "mysqli_connect" ) ) {
+  if ( function_exists ( "mysqli_connect" ) )
     $dbs[] = "mysqli";
-  } else if ( function_exists ( "OCIPLogon" ) ) {
+  if ( function_exists ( "OCIPLogon" ) )
     $dbs[] = "oracle";
-  } else if ( function_exists ( "pg_pconnect" ) ) {
+  if ( function_exists ( "pg_pconnect" ) )
     $dbs[] = "postgresql";
-  } else if ( function_exists ( "odbc_pconnect" ) ) {
+  if ( function_exists ( "odbc_pconnect" ) )
     $dbs[] = "odbc";
-  } else if ( function_exists ( "ibase_pconnect" ) ) {
+  if ( function_exists ( "ibase_pconnect" ) )
     $dbs[] = "ibase";
-  }
   for ( $i = 0; $i < count ( $dbs ); $i++ ) {
     if ( $i ) echo ", ";
     echo $dbs[$i];
