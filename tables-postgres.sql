@@ -14,7 +14,7 @@ INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, ca
 CREATE TABLE webcal_entry (
   cal_id INT NOT NULL,
   cal_group_id INT,
-  cal_ext_for_id INT NOT NULL,
+  cal_ext_for_id INT NULL,
   cal_create_by VARCHAR(25) NOT NULL,
   cal_date INT NOT NULL,
   cal_time INT,
