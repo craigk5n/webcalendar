@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 12-14-2004
+# Translation last updated on 01-24-2005
 
 
 ###############################################
@@ -320,6 +320,15 @@ Deleting users not supported: Deleting users not supported
 The passwords were not identical: The passwords were not identical
 You have not entered a password: You have not entered a password
 Changes successfully saved: Changes successfully saved
+
+
+###############################################
+# Page: subscription.php
+#
+#
+Publishing Disabled (Admin): Publishing Disabled (Admin)
+Publishing Disabled (User): Publishing Disabled (User)
+Unnamed Event: Unnamed Event
 
 
 ###############################################
@@ -690,7 +699,6 @@ Errors: Errors
 There was an error parsing the import file or no events were returned: There was an error parsing the import file or no events were returned
 The import file contained no data: The import file contained no data
 The following conflicts with the suggested time: The following conflicts with the suggested time
-Unnamed Event: Unnamed Event
 Scheduling Conflict: Scheduling Conflict
 conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
 Event Imported: Event Imported
@@ -914,6 +922,7 @@ Norwegian: Norwegian
 Polish: Polish
 Portuguese: Portuguese
 Portuguese/Brazil: Portuguese/Brazil
+Romanian: Romanian
 Russian: Russian
 Spanish: Spanish
 Swedish: Swedish
