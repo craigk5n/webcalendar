@@ -74,7 +74,7 @@ else
 <?php
 
      $layer_count = 1;
-     foreach ($layers as $layer) {
+     if ($layers) foreach ($layers as $layer) {
        $layeruser = $layer['cal_layeruser'];
        user_load_variables ( $layeruser, "layer" );
 ?>
