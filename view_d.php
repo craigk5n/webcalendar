@@ -1,4 +1,16 @@
 <?php
+/*
+ * $Id$
+ *
+ * Page Description:
+ *	Display a timebar view of a single day.
+ *
+ * Input Parameters:
+ *	date (optional) - The date to view
+ *
+ * Security:
+ *
+ */
 //$start = microtime();
 
 include_once 'includes/init.php';
@@ -53,11 +65,10 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 <a title="<?php etranslate("Next")?>" class="next" href="view_d.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php 
-	printf ( "%s, %s %d, %d", weekday_name ( $wday ), month_name ( $thismonth - 1 ), $thisday, $thisyear ); 
+  printf ( "%s, %s %d, %d", weekday_name ( $wday ),
+    month_name ( $thismonth - 1 ), $thisday, $thisyear ); 
 ?></span><br />
-<span class="viewname"><?php 
-	echo $view_name 
-?></span>
+<span class="viewname"><?php echo $view_name; ?></span>
 </div></div>
 
 <center>
@@ -78,10 +89,10 @@ TimeMatrix($date,$participants);
 
 <!-- Hidden form for booking events -->
 <form action="edit_entry.php" method="post" name="schedule">
-	<input type="hidden" name="date" value="<?php echo $thisyear.$thismonth.$thisday;?>" />
-	<input type="hidden" name="defusers" value="<?php echo implode ( ",", $participants ); ?>" />
-	<input type="hidden" name="hour" value="" />
-	<input type="hidden" name="minute" value="" />
+<input type="hidden" name="date" value="<?php echo $thisyear.$thismonth.$thisday;?>" />
+<input type="hidden" name="defusers" value="<?php echo implode ( ",", $participants ); ?>" />
+<input type="hidden" name="hour" value="" />
+<input type="hidden" name="minute" value="" />
 </form>
 </center>
 
@@ -90,8 +101,8 @@ echo "<br /><a title=\"" . translate("Generate printer-friendly version") . "\" 
 echo $u_url . "date=$nowYmd";
 echo $caturl;
 echo '&amp;friendly=1" target="cal_printer_friendly" onmouseover="window.status=\'' .
-	translate("Generate printer-friendly version") .
-	'\'">[' . translate("Printer Friendly") . ']</a>';
+translate ( "Generate printer-friendly version" ) .
+  '\'">[' . translate("Printer Friendly") . ']</a>';
 print_trailer ();
 ?>
 
@@ -104,7 +115,7 @@ print_trailer ();
 ?>
 </body>
 </html><?php
-function TimeMatrix ($date,$participants) {
+function TimeMatrix ( $date, $participants ) {
   global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TABLEBG;
   global $user_fullname,$nowYmd,$repeated_events,$events;
   global $thismonth, $thisday, $thisyear, $TZ_OFFSET,$ignore_offset;
@@ -123,10 +134,9 @@ function TimeMatrix ($date,$participants) {
 
 <br />
 <table class="matrixd" style="width:<?php echo $total_pct;?>;" cellspacing="0" cellpadding="0">
-	<tr  ><td class="matrix" colspan="<?php echo $cols;?>"></td>
-	</tr>
-	<tr><th style="width:<?php echo $participant_pct;?>;">
-		<?php etranslate("Participants");?></th>
+  <tr  ><td class="matrix" colspan="<?php echo $cols;?>"></td></tr>
+  <tr><th style="width:<?php echo $participant_pct;?>;">
+    <?php etranslate("Participants");?></th>
 <?php
   $str = '';
   $MouseOut = "onmouseout=\"window.status=''; this.style.backgroundColor='".$CELLBG."';\"";
@@ -153,12 +163,12 @@ function TimeMatrix ($date,$participants) {
        $CC++;
      }
   }
-  echo $str.
-       "</tr>\n<tr><td class=\"matrix\" colspan=\"$cols\"></td></tr>\n";
+  echo $str .
+    "</tr>\n<tr><td class=\"matrix\" colspan=\"$cols\"></td></tr>\n";
 
   // Display each participant
 
-  for($i=0;$i<count($participants);$i++) {
+  for ( $i = 0; $i < count ( $participants ); $i++ ) {
     user_load_variables ( $participants[$i], "user_" );
 
     /* Pre-Load the repeated events for quckier access */
@@ -172,13 +182,13 @@ function TimeMatrix ($date,$participants) {
     $ev = get_entries ( $participants[$i], $nowYmd );
 
     // combine into a single array for easy processing
-    $ALL = array_merge($rep,$ev);
+    $ALL = array_merge ( $rep, $ev );
     $all_events = array();
 
     // exchange space for &nbsp; to keep from breaking
-    $user_nospace = preg_replace('/\s/','&nbsp;',$user_fullname);
+    $user_nospace = preg_replace ( '/\s/', '&nbsp;', $user_fullname );
 
-    foreach ($ALL as $E) {
+    foreach ( $ALL as $E ) {
       $E['cal_time'] = sprintf ( "%06d", $E['cal_time']);
       $Tmp['cal_hour'] = substr($E['cal_time'], 0, 2 );
       $Tmp['cal_min']  = substr($E['cal_time'], 2, 2 );
@@ -188,7 +198,8 @@ function TimeMatrix ($date,$participants) {
       while ( $Tmp['cal_hour'] < 0 ) $Tmp['cal_hour'] += 24;
       while ( $Tmp['cal_hour'] > 23 ) $Tmp['cal_hour'] -= 24;
 
-      $Tmp['START'] = mktime ( $Tmp['cal_hour'], $Tmp['cal_min'], 0, $thismonth, $thisday, $thisyear );
+      $Tmp['START'] = mktime ( $Tmp['cal_hour'], $Tmp['cal_min'],
+        0, $thismonth, $thisday, $thisyear );
       $Tmp['END'] = $Tmp['START'] + ( $E['cal_duration'] * 60 );
       $Tmp['ID'] = $E['cal_id'];
       $all_events[] = $Tmp;
@@ -196,23 +207,27 @@ function TimeMatrix ($date,$participants) {
     echo "<tr>\n<th class=\"row\" style=\"width:{$participant_pct};\">".$user_nospace."</th>\n";
     $col = 1;
 
-    for($j=$first_hour;$j<$last_hour;$j++) {
-       for($k=0;$k<$interval;$k++) {
+    $viewMsg = translate ( "View this entry" );
+
+    for ( $j = $first_hour; $j < $last_hour; $j++ ) {
+       for ( $k = 0; $k < $interval; $k++ ) {
          $border = ($k == '0') ? ' border-left: 1px solid #000000;' : "";
-	       $RC = $CELLBG;
-         $TIME = mktime ( sprintf ( "%02d",$j), ($increment * $k), 0, $thismonth, $thisday, $thisyear );
+	 $RC = $CELLBG;
+         $TIME = mktime ( sprintf ( "%02d",$j), ($increment * $k),
+           0, $thismonth, $thisday, $thisyear );
          $space = "&nbsp;";
-         
-         foreach ($all_events as $ET) {
-           if (($TIME >= $ET['START']) && ($TIME < $ET['END'])) {
-             $space = "<a class=\"matrix\" href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" title=\"Click to View\" /></a>";
-	   }
-	 }
-	echo "	<td class=\"matrixappts\" style=\"width:{$cell_pct}%;$border\">$space</td>\n";
+
+         foreach ( $all_events as $ET ) {
+           if ( ( $TIME >= $ET['START'] ) && ( $TIME < $ET['END'] ) ) {
+             $space = "<a class=\"matrix\" href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
+           }
+        }
+        echo "<td class=\"matrixappts\" style=\"width:{$cell_pct}%;$border\">$space</td>\n";
          $col++;
        }
     }
-    echo "</tr><tr>\n<td class=\"matrix\" colspan=\"$cols\"><img src=\"pix.gif\" /></td></tr>\n";
+    echo "</tr><tr>\n<td class=\"matrix\" colspan=\"$cols\">" .
+      "<img src=\"pix.gif\" alt=\"-\" /></td></tr>\n";
   } // End foreach participant
   echo "</table>\n";
 
