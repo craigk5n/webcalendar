@@ -389,9 +389,23 @@ function send_no_cache_header () {
 // Load the current user's preferences as global variables.
 // Also load the list of views for this user (not really a preference,
 // but this is a convenient place to put this...)
+// Note: If the $allow_color_customization is set to 'N', then we ignore any
+// color preferences.
 function load_user_preferences () {
-  global $login, $browser, $views, $prefarray, $is_assistant, $has_boss, $user, $is_nonuser_admin;
+  global $login, $browser, $views, $prefarray, $is_assistant,
+    $has_boss, $user, $is_nonuser_admin, $allow_color_customization;
   $lang_found = false;
+  $colors = array (
+    "BGCOLOR" => 1,
+    "H2COLOR" => 1,
+    "THBG" => 1,
+    "THFG" => 1,
+    "CELLBG" => 1,
+    "TODAYCELLBG" => 1,
+    "WEEKENDBG" => 1,
+    "POPUP_BG" => 1,
+    "POPUP_FG" => 1,
+  );
 
   $browser = get_web_browser ();
   $browser_lang = get_browser_language ();
@@ -405,6 +419,10 @@ function load_user_preferences () {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $setting = $row[0];
       $value = $row[1];
+      if ( $allow_color_customization == 'N' ) {
+        if ( isset ( $colors[$setting] ) )
+          continue;
+      }
       $sys_setting = "sys_" . $setting;
       // save system defaults
       if ( ! empty ( $GLOBALS[$setting] ) )

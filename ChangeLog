@@ -1,4 +1,6 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixed bug 1004162: user color preferences remain active after the
+    admin turns "allow user color customizations" off.
   - Updated week/day/month view to not include "target" in meta-refresh
     since it will not xhtml validate.
   - Fixed bug: iCal for multiday events was adding extra day at end
