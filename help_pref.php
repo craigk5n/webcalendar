@@ -21,9 +21,9 @@ include "includes/translate.inc";
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Help")?>: <?php etranslate("Preferences")?></FONT></H2>
 
+<H3><?php etranslate("Settings")?></H3>
 <TABLE BORDER=0>
 
-<TR><TD COLSPAN=2><H2><?php etranslate("Settings")?></H2></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Language")?>:</B></TD>
   <TD><?php etranslate("language-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Preferred view")?>:</B></TD>
@@ -47,12 +47,24 @@ include "includes/translate.inc";
 </TABLE>
 <P>
 
-<?php if ( $allow_color_customization ) { ?>
+<H3><?php etranslate("Email")?></H3>
 <TABLE BORDER=0>
-<TR><TD COLSPAN=2><H2><?php etranslate("Colors")?></H2>
-<?php etranslate("colors-help")?>
-</TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Event reminders")?>:</B></TD>
+  <TD><?php etranslate("email-event-reminders-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Events added to my calendar")?>:</B></TD>
+  <TD><?php etranslate("email-event-added")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Events updated on my calendar")?>:</B></TD>
+  <TD><?php etranslate("email-event-updated")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Events removed from my calendar")?>:</B></TD>
+  <TD><?php etranslate("email-event-deleted")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Event rejected by participant")?>:</B></TD>
+  <TD><?php etranslate("email-event-rejected")?></TD></TR>
 </TABLE>
+
+<?php if ( $allow_color_customization ) { ?>
+<H3><?php etranslate("Colors")?></H3>
+<?php etranslate("colors-help")?>
+<P>
 <?php } // if $allow_color_customization ?>
 
 <?php include "includes/help_trailer.inc"; ?>

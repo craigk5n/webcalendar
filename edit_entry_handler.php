@@ -119,11 +119,13 @@ if ( strlen ( $error ) == 0 ) {
     } else {
       $id = 1;
     }
+    $newevent = true;
   } else {
     dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = $id" );
     dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_id = $id" );
     dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id" );
     dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_id = $id" );
+    $newevent = false;
   }
 
   $sql = "INSERT INTO webcal_entry ( cal_id, cal_create_by, cal_date, " .
@@ -175,7 +177,10 @@ if ( strlen ( $error ) == 0 ) {
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants_email[$i] = $row[3];
-      $participants_name[$i] = $row[2];
+      if ( strlen ( $row[1] ) && strlen ( $row[2] ) )
+        $participants_name[$i] = "$row[2] $row[1] ($row[0])";
+      else
+        $participants_name[$i] = $row[2];
       $i++;
     }
   }
@@ -195,10 +200,16 @@ if ( strlen ( $error ) == 0 ) {
       if ( strlen ( $from ) == 0 && strlen ( $GLOBALS["email_fallback_from"] ) )
         $from = $GLOBALS["email_fallback_from"];
       // only send mail if their email address is filled in
-      if ( $participants[$i] != $login && strlen ( $participants_email[$i] ) ) {
-        $msg = translate("Hello") . ", " . $participants_name[$i] . ".\n\n" .
-          translate("A new appointment has been made for you by") .
-          " " . $login .  ". " .
+      $do_send = get_pref_setting ( $participants[$i],
+         newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
+      if ( $participants[$i] != $login && strlen ( $participants_email[$i] ) &&
+        $do_send == "Y" ) {
+        $msg = translate("Hello") . ", " . $participants_name[$i] . ".\n\n";
+        if ( $newevent )
+          $msg .= translate("A new appointment has been made for you by");
+        else
+          $msg .= translate("An appointment has been updated by");
+        $msg .= " " . $login .  ". " .
           translate("The subject is") . " \"" . $name . "\"\n\n" .
           translate("Please look on") . " " . translate("Title") . " " .
           ( $GLOBALS["require_approvals"] ?
@@ -208,7 +219,7 @@ if ( strlen ( $error ) == 0 ) {
           $extra_hdrs = "From: $from\nX-Mailer: " . translate("Title");
         else
           $extra_hdrs = "X-Mailer: " . translate("Title");
-          mail ( $participants_email[$i],
+        mail ( $participants_email[$i],
           translate("Title") . " " . translate("Notification") . ": " . $name,
           $msg, $extra_hdrs );
       }

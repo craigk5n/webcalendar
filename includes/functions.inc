@@ -61,10 +61,43 @@ function load_user_preferences () {
     "WHERE cal_login = '$login'" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $GLOBALS[($row[0])] = $row[1];
+      $setting = $row[0];
+      $value = $row[1];
+      $sys_setting = "sys_" . $setting;
+      $GLOBALS["sys_" . $setting] = $GLOBALS[$setting]; // save system defaults
+      $GLOBALS[$setting] = $value;
     }
     dbi_free_result ( $res );
   }
+}
+
+
+// Get a preference setting for the specified user.  If no value is
+// found in the db, then the system default setting will be returned.
+// params:
+//   $user - user login we are getting preference for
+//   $setting - the name of the setting
+function get_pref_setting ( $user, $setting ) {
+
+  // set default
+  if ( $GLOBALS["sys_" .$setting] == "" ) {
+    // this could happen if the current user has not saved any pref. yet
+    $ret = $GLOBALS[$setting];
+  } else {
+    $ret = $GLOBALS["sys_" .$setting];
+  }
+
+  $sql = "SELECT cal_value FROM webcal_user_pref " .
+    "WHERE cal_login = '" . $user . "' AND " .
+    "cal_setting = '" . $setting . "'";
+  //echo "SQL: $sql <P>\n";
+  $res = dbi_query ( $sql );
+  if ( $res ) {
+    if ( $row = dbi_fetch_row ( $res ) )
+      $ret = $row[0];
+    dbi_free_result ( $res );
+  }
+  return $ret;
 }
 
 

@@ -1,4 +1,7 @@
 Version 0.9.28 (23 May 01)
+  - Added preference settings for receiving email.  Users can now
+    decide whether they want to receive email for event reminders,
+    new events, updated events, deleted events, and rejected events.
   - Fixed bug: SQL syntax errir in getting events for other people for
     layers.
   - Fixed bug: Edit event page would get JavaScript error on save
