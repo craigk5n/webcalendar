@@ -55,7 +55,9 @@ if ( $newview ) {
       <OPTION VALUE="T" <?php if ( $viewtype == "T" ) echo "SELECTED";?> >
         <?php etranslate("Week (Timebar)"); ?>
       <OPTION VALUE="M" <?php if ( $viewtype == "M" ) echo "SELECTED";?> >
-        <?php etranslate("Month"); ?>
+        <?php etranslate("Month (side by side)"); ?>
+      <OPTION VALUE="L" <?php if ( $viewtype == "L" ) echo "SELECTED";?> >
+        <?php etranslate("Month (on same calendar)"); ?>
       </SELECT>
       </TD></TR>
 <TR><TD VALIGN="top">

@@ -203,8 +203,10 @@
       echo "view_t.php";
     elseif ( $views[$i]['cal_view_type'] == 'M' )
       echo "view_m.php";
+    elseif ( $views[$i]['cal_view_type'] == 'L' )
+      echo "view_l.php";
     else
-      echo "view_m.php"; // add day view here when it's implemented
+      echo "view_m.php";
     echo "?id=" . $views[$i]['cal_view_id'];
     if ( ! empty ( $thisdate ) )
       echo "&date=$thisdate";
