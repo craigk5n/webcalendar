@@ -1,4 +1,6 @@
 Version 1.0RC1/CVS+dev (?? ??? 2004)
+  - Streamlined layers.php & made layers only be displayed when layers are
+  enabled
   - Updated Admin docs for content & xhtml/css validity
   - Adding Styling docs (still under construction.. feel free to contribute)
   - Adding title attribute to links

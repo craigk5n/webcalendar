@@ -40,7 +40,23 @@ etranslate("Layers")?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>"
 
 <a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 <?php
-if ($is_admin) {
+etranslate("Layers are currently");
+
+echo "&nbsp;<strong>";
+if ($layers_enabled) {
+	etranslate ("Enabled");
+	echo "</strong>.&nbsp;(<a title=\"" . 
+		translate ("Disable Layers") . "\" class=\"nav\" href=\"layers_toggle.php?status=off$u_url&amp;$ret\">" .
+		translate ("Disable Layers") . "</a>)\n";
+} else {
+	etranslate ("Disabled");
+	echo "</strong>.&nbsp;(<a title=\"" .
+		translate ("Enable Layers") . "\" class=\"nav\" href=\"layers_toggle.php?status=on$u_url&amp;$ret\">" . 
+		translate ("Enable Layers") . "</a>)\n";
+}
+echo "<br />";
+
+if ($is_admin && $layers_enabled) {
   if ( empty ($public) ) {
     echo "<blockquote><a href=\"layers.php?public=1\">" .
       translate("Click here") . "&nbsp;" . 
@@ -51,34 +67,25 @@ if ($is_admin) {
   }
 }
 
-etranslate("Layers are currently");
+if ($layers_enabled) { ?>
 
-echo "&nbsp;<strong>";
-if ($layers_enabled) {
-	etranslate ( "Enabled" );
-	echo "</strong>.&nbsp;(<a title=\"" . 
-		translate ("Disable Layers") . "\" class=\"nav\" href=\"layers_toggle.php?status=off$u_url&amp;$ret\">" .
-		translate ("Disable Layers") . "</a>)\n";
-} else {
-	etranslate ( "Disabled" );
-	echo "</strong>.&nbsp;(<a title=\"" .
-		translate ("Enable Layers") . "\" class=\"nav\" href=\"layers_toggle.php?status=on$u_url&amp;$ret\">" . 
-		translate ("Enable Layers") . "</a>)\n";
-}
-echo "<br /><br />";
-?>
-<br /><br />
+<a title="<?php etranslate("Add layer"); ?>" href="edit_layer.php<?php if ( $updating_public ) echo "?public=1";?>"><?php etranslate("Add layer"); ?></a><br /><br />
 
-<table style="border-width:0px;">
 <?php
      $layer_count = 1;
      if ($layers) foreach ($layers as $layer) {
        $layeruser = $layer['cal_layeruser'];
        user_load_variables ( $layeruser, "layer" );
 ?>
-	<tr><td style="vertical-align:top; font-weight:bold;">
-		<?php etranslate("Layer")?>&nbsp;<?php echo ($layer_count) ?>
-	</td></tr>
+	<span style="font-weight:bold;"><?php etranslate("Layer")?>&nbsp;<?php echo ($layer_count); ?></span>
+	(<a title="<?php 
+		etranslate("Edit layer"); ?>" href="edit_layer.php?id=<?php echo $layer['cal_layerid'] . $u_url; ?>"><?php 
+		etranslate("Edit"); ?></a> / 
+	<a title="<?php 
+		etranslate("Delete layer")?>" href="del_layer.php?id=<?php echo $layer['cal_layerid'] . $u_url; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php 
+		etranslate("Delete")?></a>)
+
+<table style="margin-left:20px; border-width:0px;">
 	<tr><td style="vertical-align:top; font-weight:bold;">
 		<?php etranslate("Source")?>:</td><td>
 		<?php echo $layerfullname; ?>
@@ -96,21 +103,13 @@ echo "<br /><br />";
 				etranslate("Yes");
 		?>
 	</td></tr>
-	<tr><td>
-		<a href="edit_layer.php?id=<?php echo $layer['cal_layerid'] . $u_url; ?>"><?php echo (translate("Edit layer")) ?></a>
-	</td></tr>
-	<tr><td>
-		<a href="del_layer.php?id=<?php echo $layer['cal_layerid'] . $u_url; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></a><br /><br />
-	</td></tr>
+</table>
 <?php
      $layer_count++;
    }
+ }
+}
 ?>
-	<tr><td>
-		<a href="edit_layer.php<?php if ( $updating_public ) echo "?public=1";?>"><?php echo (translate("Add layer")); ?></a>
-	</td></tr>
-</table>
-<?php } ?>
 
 <?php print_trailer(); ?>
 </body>
