@@ -56,7 +56,7 @@ include "includes/translate.php";
 
 // Change this to false if you still want to access this page even
 // though you do not have public access enabled.
-$public_must_be_enabled = false;
+$public_must_be_enabled = true;
 
 // Do we include a link to view the event?  If so, what target
 // should we use.
@@ -77,7 +77,7 @@ $username = '__public__';
 
 // Allow the URL to override the user setting such as
 // "upcoming.php?user=craig"
-$allow_user_override = true;
+$allow_user_override = false;
 
 // Load layers
 $load_layers = true;
