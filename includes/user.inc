@@ -70,7 +70,7 @@ function user_load_variables ( $login, $prefix ) {
       $GLOBALS[$prefix . "firstname"] = $row[0];
       $GLOBALS[$prefix . "lastname"] = $row[1];
       $GLOBALS[$prefix . "is_admin"] = $row[2];
-      $GLOBALS[$prefix . "email"] = $row[3];
+      $GLOBALS[$prefix . "email"] = empty ( $row[3] ) ? "" : $row[3];
       if ( strlen ( $row[0] ) && strlen ( $row[1] ) )
         $GLOBALS[$prefix . "fullname"] = "$row[0] $row[1]";
       else
@@ -213,7 +213,7 @@ function user_get_users () {
         "cal_lastname" => $row[1],
         "cal_firstname" => $row[2],
         "cal_is_admin" => $row[3],
-        "cal_email" => $row[4],
+        "cal_email" => empty ( $row[4] ) ? "" : $row[4],
         "cal_password" => $row[5],
         "cal_fullname" => $fullname
       );

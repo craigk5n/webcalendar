@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -71,12 +71,12 @@ function valid_form ( form ) {
 <?php include "includes/styles.inc"; ?>
 </HEAD>
 <BODY BGCOLOR="<?php echo $BGCOLOR;?>"
-ONLOAD="document.forms[0].login.focus(); <?php if ( strlen ( $login ) ) echo "document.forms[0].login.select();" ?>">
+ONLOAD="document.forms[0].login.focus(); <?php if ( ! empty ( $login ) ) echo "document.forms[0].login.select();" ?>">
 
 <H2><FONT COLOR="<?php echo $H2COLOR?>"><?php etranslate("Title")?></FONT></H2>
 
 <?php
-if ( strlen ( $error ) > 0 ) {
+if ( ! empty ( $error ) ) {
   print "<FONT COLOR=\"#FF0000\"><B>" . translate("Error") .
     ":</B> $error</FONT><P>\n";
 }

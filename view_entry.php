@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -26,8 +26,10 @@ function add_duration ( $time, $duration ) {
   return $ret;
 }
 
-if ( $year ) $thisyear = $year;
-if ( $month ) $thismonth = $month;
+if ( ! empty ( $year ) )
+  $thisyear = $year;
+if ( ! empty ( $month ) )
+  $thismonth = $month;
 $pri[1] = translate("Low");
 $pri[2] = translate("Medium");
 $pri[3] = translate("High");
@@ -118,7 +120,8 @@ if ( $res ) {
         $rep_str .= translate("Year"); break;
     }
     $rep_str .= ")";
-  }
+  } else
+    $rep_str = "";
   dbi_free_result ( $res );
 }
 /* calculate end time */
@@ -318,8 +321,10 @@ if ( $unapproved ) {
     "');\">" . translate("Reject entry") . "</A><BR>\n";
 }
 
-if ( $login != $user && strlen ( $user ) )
+if ( ! empty ( $user ) && $login != $user )
   $u_url = "&user=$user";
+else
+  $u_url = "";
 
 if ( $is_admin ||
   ( ! $readonly && ( $login == $create_by || $single_user ) ) ) {

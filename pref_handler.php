@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -35,7 +35,7 @@ while ( list ( $key, $value ) = each ( $HTTP_POST_VARS ) ) {
   }
 }
 
-if ( strlen ( $error ) == 0 ) {
+if ( empty ( $error ) ) {
   if ( strlen ( get_last_view() ) ) {
     $url = get_last_view();
   } else {

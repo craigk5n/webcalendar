@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -10,7 +10,8 @@ include "includes/connect.inc";
 
 load_user_preferences ();
 load_user_layers ();
-remember_this_view ();
+if ( empty ( $friendly ) )
+  remember_this_view ();
 
 include "includes/translate.inc";
 

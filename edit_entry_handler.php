@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -87,9 +87,10 @@ if ( strlen ( $hour ) > 0 ) {
 }
 
 // first check for any schedule conflicts
-if ( $allow_conflicts == 0 && !$confirm_conflicts && strlen ( $hour ) > 0 ) {
+if ( empty ( $allow_conflicts ) && empty ( $confirm_conflicts ) &&
+  strlen ( $hour ) > 0 ) {
   $date = mktime ( 0, 0, 0, $month, $day, $year );
-  if ( $rpt_end_use )
+  if ( ! empty ( $rpt_end_use ) )
     $endt = mktime (0,0,0, $rpt_month, $rpt_day,$rpt_year );
   else
     $endt = 'NULL';
@@ -108,19 +109,22 @@ if ( $allow_conflicts == 0 && !$confirm_conflicts && strlen ( $hour ) > 0 ) {
   
   $dates = get_all_dates($date, $rpt_type, $endt, $dayst, $rpt_freq);
   //echo $id . "<BR>";
-  $overlap = overlap($dates,$duration,$hour,$minute,$participants,$login,$id);
+  $overlap = overlap ( $dates, $duration, $hour, $minute, $participants,
+    $login, empty ( $id ) ? 0 : $id );
 
 }
-if ( strlen ( $overlap ) ) {
+if ( ! empty ( $overlap ) ) {
   $error = translate("The following conflicts with the suggested time") .
     ":<UL>$overlap</UL>";
 }
 
 
-if ( strlen ( $error ) == 0 ) {
+$msg = "";
 
+if ( empty ( $error ) ) {
+  $newevent = true;
   // now add the entries
-  if ( $id == 0 ) {
+  if ( empty ( $id ) ) {
     $res = dbi_query ( "SELECT MAX(cal_id) FROM webcal_entry" );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
@@ -129,8 +133,8 @@ if ( strlen ( $error ) == 0 ) {
     } else {
       $id = 1;
     }
-    $newevent = true;
   } else {
+    $newevent = false;
     // save old status values of participants
     $sql = "SELECT cal_login, cal_status FROM webcal_entry_user " .
       "WHERE cal_id = $id ";
@@ -217,12 +221,18 @@ if ( strlen ( $error ) == 0 ) {
   // now add participants and send out notifications
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
     // keep the old status if no email will be sent
-    $send_mail = ( $old_status[$participants[$i]] == '' || $entry_changed ) ?
-      true : false;
-    $tmp_status = ( $old_status[$participants[$i]] && ! $send_mail ) ?
-      $old_status[$participants[$i]] : "W";
-    $status = ( $participants[$i] != $login && $require_approvals ) ?
-      $tmp_status : "A";
+    if ( ! $newevent ) {
+      $send_mail = ( $old_status[$participants[$i]] == '' || $entry_changed ) ?
+        true : false;
+      $tmp_status = ( $old_status[$participants[$i]] && ! $send_mail ) ?
+        $old_status[$participants[$i]] : "W";
+      $status = ( $participants[$i] != $login && $require_approvals ) ?
+        $tmp_status : "A";
+    } else {
+      $send_mail = true;
+      $status = ( $participants[$i] != $login && $require_approvals ) ?
+        "W" : "A";
+    }
     $sql = "INSERT INTO webcal_entry_user " .
       "( cal_id, cal_login, cal_status ) VALUES ( $id, '" .
       $participants[$i] . "', '$status' )";
@@ -232,11 +242,11 @@ if ( strlen ( $error ) == 0 ) {
       break;
     } else {
       $from = $user_email;
-      if ( strlen ( $from ) == 0 && strlen ( $email_fallback_from ) )
+      if ( empty ( $from ) && ! empty ( $email_fallback_from ) )
         $from = $email_fallback_from;
       // only send mail if their email address is filled in
       $do_send = get_pref_setting ( $participants[$i],
-         newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
+         $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
       user_load_variables ( $participants[$i], "temp" );
       if ( $participants[$i] != $login && strlen ( $tempemail ) &&
         $do_send == "Y" && $send_mail ) {
@@ -352,7 +362,7 @@ if ( strlen ( $error ) == 0 ) {
 // If we were editing this event, then go back to the last view (week, day,
 // month).  If this is a new event, then go to the preferred view for
 // the date range that this event was added to.
-if ( strlen ( $error ) == 0 ) {
+if ( empty ( $error ) ) {
   if ( strlen ( get_last_view() ) && ! $newevent ) {
     $url = get_last_view();
   } else {

@@ -1,4 +1,4 @@
-<?php php_track_vars?>
+<?php_track_vars?>
 <?php
 
 include "includes/config.inc";
@@ -10,7 +10,8 @@ include "includes/connect.inc";
 
 load_user_preferences ();
 load_user_layers ();
-remember_this_view ();
+if ( empty ( $friendly ) )
+  remember_this_view ();
 
 include "includes/translate.inc";
 
@@ -19,13 +20,16 @@ if ( ! $allow_view_other && ! $is_admin )
 
 $view = "month";
 
-if ( strlen ( $user ) ) {
+if ( ! empty ( $user ) ) {
   $u_url = "user=$user&";
   user_load_variables ( $user, "user_" );
 } else {
   $u_url = "";
   $user_fullname = $fullname;
 }
+
+if ( empty ( $friendly ) )
+  $friendly = 0;
 
 ?>
 <HTML>
@@ -37,16 +41,16 @@ if ( strlen ( $user ) ) {
 <BODY BGCOLOR=<?php echo "\"$BGCOLOR\"";?>>
 <?php
 
-if ( strlen ( $date ) > 0 ) {
+if ( ! empty ( $date ) && ! empty ( $date ) ) {
   $thisyear = substr ( $date, 0, 4 );
   $thismonth = substr ( $date, 4, 2 );
   $thisday = substr ( $date, 6, 2 );
 } else {
-  if ( $month == 0 )
+  if ( empty ( $month ) || $month == 0 )
     $thismonth = date("m");
   else
     $thismonth = $month;
-  if ( $year == 0 )
+  if ( empty ( $year ) || $year == 0 )
     $thisyear = date("Y");
   else
     $thisyear = $year;
@@ -66,11 +70,12 @@ $startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
 $enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
 
 /* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login );
+$repeated_events = read_repeated_events (
+  ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login );
 
 /* Pre-load the non-repeating events for quicker access */
-$events = read_events ( strlen ( $user ) ? $user : $login,
-  $startdate, $enddate );
+$events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
+  ? $user : $login, $startdate, $enddate );
 
 ?>
 
@@ -87,8 +92,7 @@ if ( ! $friendly ) {
   $monthstart = mktime ( 0, 0, 0, $prevmonth, 1, $prevyear );
   $monthend = mktime ( 0, 0, 0, $prevmonth + 1, 0, $prevyear );
   echo "<TR><TD COLSPAN=7 ALIGN=\"middle\"><FONT SIZE=\"-1\">" .
-    "<A HREF=\"month.php?";
-  if ( strlen ( $user ) > 0 ) echo "user=$user&";
+    "<A HREF=\"month.php?$u_url&";
   $prevmonth_name = month_name ( $prevmonth );
   echo "year=$prevyear&month=$prevmonth\" CLASS=\"monthlink\">" .
     sprintf ( "%s %04d", month_name ( $prevmonth - 1 ), $prevyear ) .
@@ -147,8 +151,7 @@ if ( ! $friendly ) {
   $monthstart = mktime ( 2, 0, 0, $nextmonth, 1, $nextyear );
   $monthend = mktime ( 2, 0, 0, $nextmonth + 1, 0, $nextyear );
   echo "<TR><TD COLSPAN=7 ALIGN=\"middle\"><FONT SIZE=\"-1\">" .
-    "<A HREF=\"month.php?";
-  if ( strlen ( $user ) ) echo "user=$user&";
+    "<A HREF=\"month.php?$u_url";
   echo "year=$nextyear&month=$nextmonth\" CLASS=\"monthlink\">" .
     sprintf ( "%s %04d", month_name ( $nextmonth - 1 ), $nextyear ) .
     "</A></FONT></TD></TR>\n";
@@ -235,7 +238,8 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         echo "BGCOLOR=\"$CELLBG\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<BR>";
       print_date_entries ( date ( "Ymd", $date ),
-        strlen ( $user ) > 0 ? $user : $login, $friendly, false );
+        ( ! empty ( $user ) ) ? $user : $login,
+        $friendly, false );
       print "</TD>\n";
     } else {
       print "<TD VALIGN=\"top\" WIDTH=75 HEIGHT=75 ID=\"tablecell\" BGCOLOR=\"$CELLBG\">&nbsp;</TD>\n";
@@ -263,7 +267,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   if ( $thisyear ) {
     echo "year=$thisyear&month=$thismonth&";
   }
-  if ( strlen ( $user ) > 0 ) echo "user=$user&";
+  if ( ! empty ( $user ) ) echo "user=$user&";
 ?>friendly=1" TARGET="cal_printer_friendly"
 onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
 

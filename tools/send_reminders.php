@@ -270,7 +270,7 @@ function process_event ( $id, $name, $event_date, $event_time ) {
     //if ( $debug )
     //  printf ( "  name: %s\n  type: %d\n  arg1: %s\n  arg2: %s\n",
     //  $extra_name, $extra_type, $extra_arg1, $extra_arg2 );
-    if ( $extras[$extra_name]['cal_remind'] > 0 ) {
+    if ( ! empty ( $extras[$extra_name]['cal_remind'] ) ) {
       if ( $debug )
         echo "  Reminder set for event.\n";
       // how many minutes before event should we send the reminder?
@@ -336,21 +336,20 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   // An event will be included one time for each participant.
   $ev = get_entries ( "", $date );
   // Keep track of duplicates
-  $ids = array ( );
+  $completed_ids = array ( );
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     $id = $ev[$i]['cal_id'];
-    if ( $ids[$id] > 0 )
+    if ( ! empty ( $completed_ids[$id] ) )
       continue;
-    $ids[$id] = 1;
+    $completed_ids[$id] = 1;
     process_event ( $id, $ev[$i]['cal_name'], $date, $ev[$i]['cal_time'] );
   }
   $rep = get_repeating_entries ( "", $date );
-  $ids = array ( );
   for ( $i = 0; $i < count ( $rep ); $i++ ) {
     $id = $rep[$i]['cal_id'];
-    if ( $ids[$id] > 0 )
+    if ( ! empty ( $completed_ids[$id] ) )
       continue;
-    $ids[$id] = 1;
+    $completed_ids[$id] = 1;
     process_event ( $id, $rep[$i]['cal_name'], $date, $rep[$i]['cal_time'] );
   }
 }
