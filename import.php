@@ -22,65 +22,117 @@
 
 include_once 'includes/init.php';
 print_header();
+
+// This is really a poor man's windows-style tab.
+// If anyone can put together something that looks nicer without
+// having to resort to images, please do!
+// $items - array of titles for tab
+// $sel - which item is currently selected (0 = first)
+function print_tab ( $items, $sel=0 ) {
+  $width = sprintf ( "%2d", 100 / count ( $items ) );
+  print '<tr>';
+  for ( $i = 0; $i < count ( $items ); $i++ ) {
+    if ( $i > 0 ) {
+      print "<td width=\"1\" bgcolor=\"" . $GLOBALS['TABLEBG'] . "\">" .
+        "<img src=\"spacer.gif\" width=\"1\" height=\"50\"></td>";
+    }
+    if ( $i == $sel ) {
+      $color = $GLOBALS['CELLBG'];
+      $title = $items[$i];
+    } else {
+      $color = $GLOBALS['BGCOLOR'];
+      $title = "<a href=\"import.php?tab=$i\">$items[$i]</a>";
+    }
+    print '<td width="' . $width . '%" bgcolor="' . $color . '">' .
+      "<h2><center>$title</center></h2></td>";
+    
+  }
+  print '</td></tr><tr>';
+
+  for ( $i = 0; $i < count ( $items ); $i++ ) {
+    if ( $i > 0 )
+      print "<td></td>";
+    if ( $i == $sel ) {
+      $color = $GLOBALS['CELLBG'];
+    } else {
+      $color = $GLOBALS['TABLEBG'];
+    }
+    print '<td width="1" bgcolor="' . $color . '">' .
+      "<img src=\"spacer.gif\" width=\"" . $width . "%\" height=\"1\"></td>";
+    
+  }
+  print "</tr>";
+}
+
+
 ?>
 
-<H2><FONT COLOR="<?= $H2COLOR;?>">Import</FONT></H2>
+<h2><font color="<?= $H2COLOR;?>">Import</font></h2>
 
-<FORM ACTION="import_handler.php" METHOD="POST" NAME="importform" enctype="multipart/form-data">
-<H3><FONT COLOR="<?= $H2COLOR;?>">Palm Desktop Datebook</FONT></H3>
-<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="<?= $TEXTCOLOR ?>"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
-<P>
-This form will import entries from the Palm Desktop Datebook. It should be located in
-your Palm directory under <B>palm_user_name/datebook/datebook.dat</B>.
-The following entries <B>will not</b> be imported:<br>
-<UL>
-<LI>Entries older than the current time (except repeating events that have not expired).
-<LI>Entries created in the Palm Desktop that have NOT been HotSync'd.<BR> (because a
-record_id isn't created until the hotsync)
-</UL>
+<form action="import_handler.php" method="POST" name="importform" enctype="multipart/form-data">
+<table border="0" cellspacing="0" cellpadding="0" width="75%"><tr><td bgcolor="<?= $TEXTCOLOR ?>"><table border="0" width="100%" cellspacing="1" cellpadding="2"><tr><td width="100%" bgcolor="<?php echo $CELLBG ?>"><table border="0" width="100%">
+<?php
+$tabs = array ( "Palm Desktop", "vCal" );
+if ( empty ( $tab ) )
+  $tab = 0;
+print_tab ( $tabs, $tab );
+$colspan = 2 * count ( $tabs ) - 1;
+?>
+<tr><td colspan="<?php echo $colspan; ?>">
+<?php if ( $tab == 0 ) { ?>
+<h3><font color="<?= $H2COLOR;?>">Palm Desktop</font></h3>
+<p>
+<?php etranslate("This form will allow you to import entries from the Palm Desktop Datebook."); ?>
+</p>
+<p>
+<input type="hidden" name="ImportType" value="PALMDESKTOP">
+<b><?php etranslate("Exclude private records")?>:</b>
+<input type=radio name=exc_private value="1" checked><?php etranslate("Yes")?>
+<input type=radio name=exc_private value="0"><?php etranslate("No")?>
+<p>
 
-<B>NOTE:</B> Anything imported from the Palm will be overwritten during the next import
-(unless the event date has passed).
-Therefore, updates should be made in the Palm/Desktop rather than the web calendar.
-</P>
-<P>
-<INPUT TYPE="hidden" NAME="ImportType" VALUE="PALMDESKTOP">
-<B>Exclude Private Records:</B>
-<INPUT TYPE=radio NAME=exc_private VALUE="1" CHECKED>Yes
-<INPUT TYPE=radio NAME=exc_private VALUE="0">No
+<table border=0>
+<tr><td><b><?php etranslate("Datebook File")?>:</b></td>
+  <td><input type="file" name="FileName" size=45 maxlength=50"> 
+<tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>">
+<input type="button" value="<?php etranslate("Help")?>..."
+  onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,screollbars,height=400,width=400,innerHeight=420,outerWidth=420');">
+</td>
+</tr>
+</table></p>
+</td></tr></table>
+</td></tr></table></td></tr></table>
+</form>
 
-<TABLE BORDER=0>
-<TR><TD><B><?php etranslate("Select Datebook File")?>:</B></TD>
-  <TD><INPUT TYPE="file" NAME="FileName" SIZE=45 MAXLENGTH=50"> &nbsp;
-ex: C:\palm\hooverj\datebook\datebook.dat</TD></TR>
-<TR><TD COLSPAN="2"><INPUT TYPE="submit" VALUE="<?php etranslate("Import")?>"></TD></TR>
-</TABLE></P>
-</TD></TR></TABLE></TD></TR></TABLE></TD></TR></TABLE>
-</FORM>
+<?php 
+} else if ( $tab == 1 ) {
+?>
 
 
-<FORM ACTION="import_handler.php" METHOD="POST" NAME="importform" enctype="multipart/form-data">
-<H3><FONT COLOR="<?= $H2COLOR;?>">vCalendar</FONT></H3>
-<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="<?= $TEXTCOLOR ?>"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
-<P>
-This form will import vCalendar (.vcs) 1.0 events.<br>
-<BR>
-The following formats have been tested:<BR>
-<UL>
-<LI>Palm Desktop 4</LI>
-<LI>Lotus Organizer 6</LI>
-</UL>
-</P>
-<P>
-<INPUT TYPE="hidden" NAME="ImportType" VALUE="VCAL">
+<form action="import_handler.php" method="POST" name="importform" enctype="multipart/form-data">
+<h3><font color="<?= $H2COLOR;?>">vCalendar</font></h3>
+<p>
+<?php etranslate("This form will import vCalendar (.cvs) 1.0 events");?>.
+</p>
+<p>
+<input type="hidden" name="ImportType" value="VCAL">
 
-<TABLE BORDER=0>
-<TR><TD><B><?php etranslate("Select vCal File")?>:</B></TD>
-  <TD><INPUT TYPE="file" NAME="FileName" SIZE=45 MAXLENGTH=50"> &nbsp; </TD></TR>
-<TR><TD COLSPAN="2"><INPUT TYPE="submit" VALUE="<?php etranslate("Import")?>"></TD></TR>
-</TABLE></P>
-</TD></TR></TABLE></TD></TR></TABLE></TD></TR></TABLE>
-</FORM>
+<table border=0>
+<tr><td><b><?php etranslate("vCal File")?>:</b></td>
+  <td><input type="file" name="FileName" size="45" maxlength=50"> &nbsp; </td></tr>
+<tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>">
+<input type="button" value="<?php etranslate("Help")?>..."
+  onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,screollbars,height=400,width=400,innerHeight=420,outerWidth=420');">
+</td></tr>
+</table></p>
+
+<?php 
+} else {
+  echo "No such tab!";
+}
+?>
+</td></tr></table></td></tr></table></td></tr></table>
+</form>
 
 
 <?php include "includes/trailer.php"; ?>
