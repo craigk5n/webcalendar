@@ -1,8 +1,11 @@
 Version 1.0RC3 (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
       1118121: get_admins in user-ldap has bad search
+      1123508: RC3 browser language detection always returns none.
   - Other bugs fixed:
     + Purge events was not deleting from webcal_entry_ext_user table
+    + Fixed issues with ODBC returning 'invalid db_type'
+    + Fixed issue where month.php and mini-calendar today highlight based on server time
   - New Features / Enhancements / Changes:
     + Added patch to allow TLS with LDAP
   - The following translations were updated:
