@@ -1,4 +1,5 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Updated Spanish translation
   - Fixed bug 491366: If event goes past midnight, don't display 25:00.
   - Fixed bug 601006: Missing quote in URL notification for rejected event.
   - Fixed bug 597815: After setting preferences for the public user, each
