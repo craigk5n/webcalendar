@@ -116,10 +116,10 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 <table style="border-width:0px;" cellspacing="0" cellpadding="0">
 <tr><td style="background-color:<?php echo $TABLEBG?>;">
 <table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
-<tr><th colspan="7" style="background-color:<?php echo $THBG?>; color:<?php echo $THFG?>; font-size:47px;"><?php echo $thisday?></th></tr>
+<tr><th colspan="7" style="text-align:center; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>; font-size:47px;"><?php echo $thisday?></th></tr>
 <tr>
 <td style="text-align:left; background-color:<?php echo $THBG?>;"><a href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>" class="monthlink"><img src="leftarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Previous")?>" /></a></td>
-<th colspan="5" style="background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></th>
+<th colspan="5" style="text-align:center; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></th>
 <td style="text-align:right; background-color:<?php echo $THBG?>;"><a href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead . $caturl?>" class="monthlink"><img src="rightarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Next") ?>" /></a></td>
 </tr>
 <?php
