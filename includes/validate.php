@@ -42,7 +42,10 @@ if ( $single_user == "Y" ) {
 
           if (!user_valid_crypt($login, $cryptpw)) {
             do_debug ( "User not logged in; redirecting to login page" );
-            do_redirect ( "login.php" );
+            if ( empty ( $login_return_path ) )
+              do_redirect ( "login.php" );
+            else
+              do_redirect ( "login.php?return_path=$login_return_path" );
           }
 
           do_debug ( "Decoded login from cookie: $login" );

@@ -17,6 +17,8 @@
 //   EXTRA_REMINDER_DATE - will allow reminder email messages to be sent
 //     out to all event participants on the specified date.  Can use
 //     extra options to send it out before this date also.
+//   EXTRA_SELECTION_LIST - allows a custom selection list.  Can use
+//     this to specify a list of possible locations, etc.
 //
 // NOTE: If you want to fully support using languages other than what
 // you define below, you will need to add the 2nd field of the arrays
@@ -39,6 +41,7 @@ $EXTRA_DATE = 4;
 $EXTRA_EMAIL = 5;
 $EXTRA_USER = 6;
 $EXTRA_REMINDER = 7;
+$EXTRA_SELECTLIST = 8;
 
 // Options for reminders - these should be or-ed together when
 // it makes sense.  (Right now the only two available options wouldn't
@@ -67,6 +70,7 @@ $EXTRA_REMINDER_DEFAULT_YES =	0x0004;
 //         as in <TEXTAREA ROWS="XX" COLS="XX"
 //       for text (single line), how many columns to display
 //         as in <INPUT SIZE="XX"
+//	for selection list, contains an array of possible values
 // arg2: for reminders, this specifies options such as
 //         $EXTRA_REMINDER_WITH_DATE or $EXTRA_REMINDER_WITH_OFFSET.
 //       for multi-line text, how many rows to display in the form
@@ -114,6 +118,14 @@ $EXTRA_REMINDER_DEFAULT_YES =	0x0004;
 //                          // be sent (21 days in this case)
 //     $EXTRA_REMINDER_WITH_OFFSET | $EXTRA_REMINDER_DEFAULT_YES
 //                          // specifies reminder options bit-or
+//   ),
+//   array (
+//     "RoomLocation",       // unique name of this extra field (used in db)
+//     "Location",           // how this field will be described to users
+//     $EXTRA_SELECTLIST,    // type of field
+//                           // List of options (first will be default)
+//     array ( "None", "Room 101", "Room 102", "Conf Room 8", "Conf Room 12" ),
+//     0                     // arg 2 (unused)
 //   )
 // );
 
@@ -122,10 +134,13 @@ $EXTRA_REMINDER_DEFAULT_YES =	0x0004;
 
 // Define your stuff here...
 // Below translate calls are here so they get picked up by check_translation.pl.
+// They are never executed in PHP.
 // Make sure you add translations in the translations file for anything
 // you need to translate to another language.
-// translate("Send Reminder")
-// translate("Reminder")
+// Use tools/check_translation.pl to verify you have all your translations.
+//
+// Kludge for picking up translations:
+//    translate("Send Reminder")
 $site_extras = array (
   array (
     "Reminder",          // unique name of this extra field (used in db)
