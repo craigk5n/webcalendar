@@ -140,7 +140,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 }
 ?>
 
-<h2 style="color:<?php echo $H2COLOR?>;"><?php etranslate($application_name)?></h2>
+<h2><?php etranslate($application_name)?></h2>
 
 <?php
 if ( ! empty ( $error ) ) {

@@ -5,7 +5,7 @@ $INC = array('js/export.php');
 print_header($INC);
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Export")?></h2>
+<h2><?php etranslate("Export")?></h2>
 
 <form action="export_handler.php" method="post" name="exportform">
 <table style="border-width:0px;">

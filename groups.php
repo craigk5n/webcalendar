@@ -11,7 +11,7 @@ if ( $groups_enabled == "N" ) {
 print_header();
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Groups")?></h2>
+<h2><?php etranslate("Groups")?></h2>
 
 <ul>
 <?php
@@ -20,7 +20,7 @@ $res = dbi_query ( "SELECT cal_group_id, cal_name FROM webcal_group " .
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     echo "<li><a href=\"group_edit.php?id=" . $row[0] .
-      "\">" . $row[1] . "</a></li>";
+      "\">" . $row[1] . "</a></li>\n";
   }
   dbi_free_result ( $res );
 }

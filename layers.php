@@ -49,27 +49,27 @@ if ( $is_admin ) {
 
 etranslate("Layers are currently");
 
-echo " <B>";
+echo " <b>";
 if ( $layers_enabled ) {
   etranslate ( "Enabled" );
 } else {
   etranslate ( "Disabled" );
 }
-echo "</B>.<P>";
+echo "</b>.<br /><br />";
 
 if ( $layers_enabled )
-  echo "<A CLASS=\"navlinks\" HREF=\"layers_toggle.php?status=off$u_url&$ret\">" .
-    translate ("Disable Layers") . "</A>\n";
+  echo "<a class=\"navlinks\" href=\"layers_toggle.php?status=off$u_url&$ret\">" .
+    translate ("Disable Layers") . "</a>\n";
 else
-  echo "<A CLASS=\"navlinks\" HREF=\"layers_toggle.php?status=on$u_url&$ret\">" .
-    translate ("Enable Layers") . "</A>\n";
+  echo "<a class=\"navlinks\" href=\"layers_toggle.php?status=on$u_url&$ret\">" .
+    translate ("Enable Layers") . "</a>\n";
 
 
 ?>
-<P>
+<br /><br />
 
 
-<TABLE BORDER=0>
+<table border="0">
 
 <?php
 
@@ -77,44 +77,44 @@ else
       $layeruser = $layers[$index]['cal_layeruser'];
       user_load_variables ( $layeruser, "layer" );
 ?>
-       <TR><TD VALIGN="top"><B><?php etranslate("Layer")?> <?php echo ($index+1) ?></B></TD></TR>
-       <TR><TD VALIGN="top"><B><?php etranslate("Source")?>:</B></TD>
-           <TD> <?php echo $layerfullname; ?> </TD></TR>
+       <tr><td valign="top"><b><?php etranslate("Layer")?> <?php echo ($index+1) ?></b></td></tr>
+       <tr><td valign="top"><b><?php etranslate("Source")?>:</b></td>
+           <td><?php echo $layerfullname; ?></td></tr>
 
-       <TR><TD><B><?php etranslate("Color")?>:</B></TD>
-          <TD BGCOLOR="<?php echo $CELLBG;?>"><FONT COLOR="<?php echo ( $layers[$index]['cal_color'] ); ?>"><?php echo ( $layers[$index]['cal_color'] ); ?></FONT></TD></TR>
+       <tr><td><b><?php etranslate("Color")?>:</b></td>
+          <td bgcolor="<?php echo $CELLBG;?>"><font color="<?php echo ( $layers[$index]['cal_color'] ); ?>"><?php echo ( $layers[$index]['cal_color'] ); ?></font></td></tr>
 
-       <TR><TD><B><?php etranslate("Duplicates")?>:</B></TD>
-          <TD>
+       <tr><td><b><?php etranslate("Duplicates")?>:</b></td>
+          <td>
               <?php
               if( $layers[$index]['cal_dups'] == 'N')
                 etranslate("No");
               else
                 etranslate("Yes");
               ?>
-          </TD></TR>
+          </td></tr>
 
 
 
-       <TR><TD><A HREF="edit_layer.php?id=<?php echo $index . $u_url; ?>"><?php echo (translate("Edit layer")) ?></A></TD></TR>
-       <TR><TD><A HREF="del_layer.php?id=<?php echo $index . $u_url; ?>" onClick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></A><BR></TD></TR>
+       <tr><td><a href="edit_layer.php?id=<?php echo $index . $u_url; ?>"><?php echo (translate("Edit layer")) ?></a></td></tr>
+       <tr><td><a href="del_layer.php?id=<?php echo $index . $u_url; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></a><br /></td></tr>
 
 
-       <TR><TD><BR></TD></TR>
+       <tr><td><br /></td></tr>
 
 <?php
    }
 ?>
 
-       <TR><TD><A HREF="edit_layer.php<?php if ( $updating_public ) echo "?public=1";?>"><?php echo (translate("Add layer")); ?></A></TD></TR>
+       <tr><td><a href="edit_layer.php<?php if ( $updating_public ) echo "?public=1";?>"><?php echo (translate("Add layer")); ?></a></td></tr>
 
-</TABLE>
+</table>
 
-<FORM>
-<INPUT TYPE="button" VALUE="<?php etranslate("Help")?>..."
-  ONCLICK="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );">
-</FORM>
+<form>
+<input type="button" value="<?php etranslate("Help")?>..."
+  onclick="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" />
+</form>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

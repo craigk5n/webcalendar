@@ -100,7 +100,7 @@ function list_unapproved ( $user ) {
     }
     dbi_free_result ( $res );
   }
-  echo "</ul><p>\n";
+  echo "</ul><br /><br />\n";
   if ( $count == 0 ) {
     user_load_variables ( $user, "temp_" );
     echo translate("No unapproved events for") . " " . $temp_fullname . ".";
@@ -112,7 +112,7 @@ function list_unapproved ( $user ) {
 
 ?>
 
-<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Unapproved Events"); if ( $user == '__public__' ) echo " - " . $PUBLIC_ACCESS_FULLNAME; ?></font></h2>
+<h2><?php etranslate("Unapproved Events"); if ( $user == '__public__' ) echo " - " . $PUBLIC_ACCESS_FULLNAME; ?></h2>
 
 <?php
 

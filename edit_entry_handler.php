@@ -651,7 +651,7 @@ if ( empty ( $error ) ) {
 print_header();
 if ( strlen ( $conflicts ) ) { 
 ?>
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Scheduling Conflict")?></H2>
+<h2><?php etranslate("Scheduling Conflict")?></h2>
 
 <?php etranslate("Your suggested time of")?> <span style="font-weight:bold;">
 <?php
@@ -703,7 +703,7 @@ if ( strlen ( $conflicts ) ) {
 </form>
 
 <?php } else { ?>
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Error")?></h2>
+<h2><?php etranslate("Error")?></h2>
 <blockquote>
 <?php echo $error; ?>
 </blockquote>

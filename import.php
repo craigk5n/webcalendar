@@ -98,7 +98,7 @@ function print_user_list () {
 }
 ?>
 
-<h2 style="color:<?= $H2COLOR;?>;">Import</h2>
+<h2>Import</h2>
 
 <form action="import_handler.php" method="post" name="importform" enctype="multipart/form-data">
 <?php

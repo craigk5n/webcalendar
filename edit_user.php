@@ -32,9 +32,9 @@ print_header();
 <?php
 if ( ! empty ( $user ) ) {
   user_load_variables ( $user, "u" );
-  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Edit User") . "</h2>\n";
+  echo "<h2>" . translate("Edit User") . "</h2>\n";
 } else {
-  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Add User") . "</h2>\n";
+  echo "<h2>" . translate("Add User") . "</h2>\n";
 }
 ?>
 
@@ -102,7 +102,7 @@ if ( empty ( $user ) ) {
 <td>&nbsp;&nbsp;</td>
 <td style="vertical-align:top;">
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Change Password")?></h2>
+<h2><?php etranslate("Change Password")?></h2>
 <form action="edit_user_handler.php" method="post">
 <input type="hidden" name="formtype" value="setpassword" />
 <?php if ( $is_admin ) { ?>

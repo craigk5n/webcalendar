@@ -1089,7 +1089,7 @@ else
 
   print_header();
 			 
-  echo "<h2 style=\"color:$H2COLOR;\">";
+  echo "<h2>";
   etranslate("Export");
   echo " ";
   etranslate("Error");

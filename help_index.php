@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 print_header('','','',true);
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Help Index")?></h2>
+<h2><?php etranslate("Help Index")?></h2>
 
 <ul>
 	<li><a href="help_edit_entry.php"><?php etranslate("Adding/Editing Calendar Entries")?></a></li>

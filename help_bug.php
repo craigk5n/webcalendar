@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 print_header('','','',true);
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Report Bug")?></h2>
+<h2><?php etranslate("Report Bug")?></h2>
 
 <!--
 No need to translate the text below since I want all bugs
