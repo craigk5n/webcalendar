@@ -164,7 +164,7 @@ display_unapproved_events ( $login );
 
 ?>
 <br />
-<a class="navlinks" href="year.php?<?php
+<a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="year.php?<?php
   if ( $thisyear )
     echo "year=$thisyear&amp;";
   if ( $user != $login && ! empty ( $user ) )
