@@ -1,4 +1,7 @@
 Version 0.9.47/CVS+dev (?? ??? 2004)
+  - Updated upgrading docs so they're xhtml valid
+  - Updated admin & user docs to reflect new content, correct minor typos, and
+  minor clarification of phrasing/language.
   - Making edit_entry.php valid xhtml & slightly easier to read
   - Fixed bug 1102167: custom header when non-admin user
   - When html is allowed in event description, still replace newline with
