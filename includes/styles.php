@@ -230,13 +230,6 @@ table.standard {
 
 /* ALL STYLES BELOW THIS LINE ARE NEW as of 8 July 2004 */
 
-/* These styles are intentionally placed above all other styles */
-/* to serve as a default, which can be overridden if customized otherwise below */
-th {
-	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
-	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
-}
-
 
 /* ======================== */
 /* ACTIVITY_LOG.PHP */
@@ -381,30 +374,28 @@ table.minical {
 /* contains the name of the month (i.e. January, June, December, etc) in year.php */
 .minical td.month a {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
 	font-size: 13px;
-	color: #B04040;
 	text-decoration: none;
 }
 /* formats the day name (i.e. Sun, Mon, etc) */
 /* used as "<tr class="day">" to format the cells WITHIN that row */
 /* NOTE: removing the "th" below will modify the appearance of mini calendars */
 .minical tr.day th {
-	font-size: 10px;
-	font-weight: normal;
+	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+	text-align: center;
 }
 /* cells in year.php that contain the numeric date */
 /* NOTE: removing the "td" below will modify the appearance of mini calendars */
-.minical tr.date td {
+.minical td.date {
 	text-align: right;
 }
-.minical tr.date a {
+.minical td.date a {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
-	font-size: 10px;
+	font-size: 13px;
 	text-decoration: none;
 }
-td.numericdate {
-	font-size: 10px;
-}
+
 
 /* ========================= */
 /* WEEK.PHP */
