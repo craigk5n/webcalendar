@@ -60,7 +60,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 }
 ?>
 
-<div style="border-width:0px; width:100%;">
+<div style="border-width:0px; width:99%;">
 <div class="weekviewtitle">
 <span class="date">
 <?php
