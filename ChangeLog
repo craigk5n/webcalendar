@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Added patch 1081875: added parseInt calls in js/popups.js
   - Added patch 1082460: better layout for timebar views
   - Fixed Bug 1022224: Stranded Branch in Code
   - Fixed bug 1080911: Copy entry doesn't work for assistant
