@@ -2658,16 +2658,16 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
 // cookie to the user's machine (or the proxy they connect through).
 // We also use the server name so that cannot use their own server to
 // generate a cookie for a different server.
-/* cek - the following code is buggy... 
+/* cek - the following code is buggy...  */
 if ( empty ( $REMOTE_ADDR ) )
   $REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
 if ( empty ( $REMOTE_PORT ) )
-  $REMOTE_PORT = $_SERVER['REMOTE_PORT'];
+  $SERVER_PORT = $_SERVER['SERVER_PORT'];
 if ( empty ( $SERVER_NAME ) )
   $SERVER_NAME = $_SERVER['SERVER_NAME'];
 $unique_id = "";
 $len1 = strlen ( $REMOTE_ADDR );
-$len2 = strlen ( $REMOTE_PORT );
+$len2 = strlen ( $SERVER_PORT );
 $len3 = strlen ( $SERVER_NAME );
 $offsets = array ();
 for ( $i = 0; $i < $len1 || $i < $len2 || $i < $len3; $i++ ) {
@@ -2675,19 +2675,22 @@ for ( $i = 0; $i < $len1 || $i < $len2 || $i < $len3; $i++ ) {
   if ( $i < $len1 )
     $offsets[$i] += ord ( substr ( $REMOTE_ADDR, $i, 1 ) );
   if ( $i < $len2 )
-    $offsets[$i] += ord ( substr ( $REMOTE_PORT, $i, 1 ) );
+    $offsets[$i] += ord ( substr ( $SERVER_PORT, $i, 1 ) );
   if ( $i < $len3 )
     $offsets[$i] += ord ( substr ( $SERVER_NAME, $i, 1 ) );
   $offsets[$i] %= 128;
 }
+/* debugging code...
 for ( $i = 0; $i < count ( $offsets ); $i++ ) {
-  //echo "offset $i: $offsets[$i] <br>";
+  echo "offset $i: $offsets[$i] <br>";
 }
-cek -- end buggy code
+echo "REMOTE_ADDR = $REMOTE_ADDR <br>\nSERVER_PORT = $SERVER_PORT <br>\nSERVER_NAME = $SERVER_NAME <br>";
+
 */
 
-$offsets = array ( 24, 34, 12, 45, 88, 19, 33 );
-
+// old code for offsets -- use this if we find bugs in
+// code above.
+//$offsets = array ( 24, 34, 12, 45, 88, 19, 33 );
 
 
 function hextoint ( $val ) {
