@@ -985,9 +985,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
 //   $pri - event priority
 //   $access - event access
 //   $event_owner - user associated with this event
+//   $event_cat - category of event for event_owner
 function print_entry ( $id, $date, $time, $duration,
   $name, $description, $status,
-  $pri, $access, $event_owner ) {
+  $pri, $access, $event_owner, $event_cat=-1 ) {
   global $eventinfo, $login, $user, $PHP_SELF, $TZ_OFFSET;
   static $key = 0;
   
@@ -1007,23 +1008,38 @@ function print_entry ( $id, $date, $time, $duration,
     $class = "entry";
 
   if ( $pri == 3 ) echo "<strong>";
-	$popupid = "eventinfo-$id-$key";
-	$key++;
-	echo "<a title=\"" . 
-		translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
-	if ( strlen ( $user ) > 0 )
-		echo "&amp;user=" . $user;
-	echo "\" onmouseover=\"window.status='" . 
-		translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"window.status=''; hide('$popupid'); return true;\">";
-	echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"" . 
-		translate("View this entry") . "\" />";
+  $popupid = "eventinfo-$id-$key";
+  $key++;
+  echo "<a title=\"" . 
+    translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+  if ( strlen ( $user ) > 0 )
+    echo "&amp;user=" . $user;
+  echo "\" onmouseover=\"window.status='" . 
+    translate("View this entry") .
+    "'; show(event, '$popupid'); return true;\" onmouseout=\"window.status=''; hide('$popupid'); return true;\">";
+  $icon = "circle.gif";
+  $catIcon = '';
+  if ( $event_cat > 0 ) {
+    $catIcon = "icons/cat-" . $event_cat . ".gif";
+    if ( ! file_exists ( $catIcon ) )
+      $catIcon = '';
+  }
+
+  if ( empty ( $catIcon ) ) {
+    echo "<img src=\"$icon\" class=\"bullet\" alt=\"" . 
+      translate("View this entry") . "\" />";
+  } else {
+    // Use category icon
+    echo "<img src=\"$catIcon\" alt=\"" . 
+      translate("View this entry") . "\" /><br />";
+  }
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
-	if ($layers) foreach ($layers as $layer) {
-		if ($layer['cal_layeruser'] == $event_owner) {
-			echo("<span style=\"color:" . $layer['cal_color'] . ";\">");
-		}
-	}
+    if ($layers) foreach ($layers as $layer) {
+      if ($layer['cal_layeruser'] == $event_owner) {
+        echo("<span style=\"color:" . $layer['cal_color'] . ";\">");
+      }
+    }
   }
 
 
@@ -1279,6 +1295,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
     . "webcal_entry.cal_priority, "
     . "webcal_entry.cal_access, webcal_entry.cal_duration, "
     . "webcal_entry_user.cal_status, "
+    . "webcal_entry_user.cal_category, "
     . "webcal_entry_user.cal_login ";
   if ( $want_repeated ) {
     $sql .= ", "
@@ -1343,14 +1360,15 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
         "cal_access" => $row[7],
         "cal_duration" => $row[8],
         "cal_status" => $row[9],
-        "cal_login" => $row[10],
+        "cal_category" => $row[10],
+        "cal_login" => $row[11],
 	"cal_exceptions" => array()
         );
-      if ( $want_repeated && ! empty ( $row[11] ) ) {
-        $item['cal_type'] = empty ( $row[11] ) ? "" : $row[11];
-        $item['cal_end'] = empty ( $row[12] ) ? "" : $row[12];
-        $item['cal_frequency'] = empty ( $row[13] ) ? "" : $row[13];
-        $item['cal_days'] = empty ( $row[14] ) ? "" : $row[14];
+      if ( $want_repeated && ! empty ( $row[12] ) ) {
+        $item['cal_type'] = empty ( $row[12] ) ? "" : $row[12];
+        $item['cal_end'] = empty ( $row[13] ) ? "" : $row[13];
+        $item['cal_frequency'] = empty ( $row[14] ) ? "" : $row[14];
+        $item['cal_days'] = empty ( $row[15] ) ? "" : $row[15];
       }
 
       if ( $item['cal_id'] != $checkdup_id ) {
@@ -1887,7 +1905,8 @@ function print_date_entries ( $date, $user, $ssi ) {
           $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
           $viewname, $rep[$cur_rep]['cal_description'],
           $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
+          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
+          $rep[$cur_rep]['cal_category'] );
         $cnt++;
       }
       $cur_rep++;
@@ -1905,7 +1924,8 @@ function print_date_entries ( $date, $user, $ssi ) {
         $date, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
         $viewname, $ev[$i]['cal_description'],
         $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
-        $ev[$i]['cal_access'], $ev[$i]['cal_login'] );
+        $ev[$i]['cal_access'], $ev[$i]['cal_login'],
+        $ev[$i]['cal_category'] );
       $cnt++;
     }
   }
@@ -1924,7 +1944,8 @@ function print_date_entries ( $date, $user, $ssi ) {
         $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
         $viewname, $rep[$cur_rep]['cal_description'],
         $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
+        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
+        $rep[$cur_rep]['cal_category'] );
       $cnt++;
     }
     $cur_rep++;
@@ -2186,7 +2207,8 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
 // The HTML will be stored in an array ($hour_arr) indexed on the event's
 // starting hour.
 function html_for_event_week_at_a_glance ( $id, $date, $time,
-  $name, $description, $status, $pri, $access, $duration, $event_owner ) {
+  $name, $description, $status, $pri, $access, $duration, $event_owner,
+  $event_category=-1 ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user;
   static $key = 0;
@@ -2222,6 +2244,11 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   // avoid php warning for undefined array index
   if ( empty ( $hour_arr[$ind] ) )
     $hour_arr[$ind] = "";
+
+  $catIcon = "icons/cat-" . $event_category . ".gif";
+  if ( $event_category > 0 && file_exists ( $catIcon ) ) {
+    $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catIcon\" />";
+  }
 
   $hour_arr[$ind] .= "<a title=\"" . 
 	translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
@@ -2313,7 +2340,8 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
 // The HTML will be stored in an array ($hour_arr) indexed on the event's
 // starting hour.
 function html_for_event_day_at_a_glance ( $id, $date, $time,
-  $name, $description, $status, $pri, $access, $duration, $event_owner ) {
+  $name, $description, $status, $pri, $access, $duration, $event_owner,
+  $event_category=-1 ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user;
   static $key = 0;
@@ -2369,12 +2397,17 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
-	$hour_arr[$ind] .= "<a title=\"" .
-		translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
-	if ( strlen ( $GLOBALS["user"] ) > 0 )
-		$hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
-	$hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
-		translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
+  $catIcon = "icons/cat-" . $event_category . ".gif";
+  if ( $event_category > 0 && file_exists ( $catIcon ) ) {
+    $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catIcon\" />";
+  }
+
+  $hour_arr[$ind] .= "<a title=\"" .
+    translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+  if ( strlen ( $GLOBALS["user"] ) > 0 )
+    $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
+  $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
+    translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
   if ( $pri == 3 ) $hour_arr[$ind] .= "<strong>";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
@@ -2436,7 +2469,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= "\n<dl class=\"desc\">\n";
     $hour_arr[$ind] .= "<dt>Description:</dt>\n<dd>";
     $hour_arr[$ind] .= htmlspecialchars ( $description );
-		$hour_arr[$ind] .= "</dd>\n</dl>\n";
+    $hour_arr[$ind] .= "</dd>\n</dl>\n";
   }
 
   $hour_arr[$ind] .= "<br />\n";
@@ -2504,7 +2537,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
           $viewname, $rep[$cur_rep]['cal_description'],
           $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
           $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
-          $rep[$cur_rep]['cal_login'] );
+          $rep[$cur_rep]['cal_login'], $rep[$cur_rep]['cal_category'] );
       }
       $cur_rep++;
     }
@@ -2524,7 +2557,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
         $viewname, $ev[$i]['cal_description'],
         $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
         $ev[$i]['cal_access'], $ev[$i]['cal_duration'],
-        $ev[$i]['cal_login'] );
+        $ev[$i]['cal_login'], $ev[$i]['cal_category'] );
     }
   }
   // print out any remaining repeating events
@@ -2545,7 +2578,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
         $viewname, $rep[$cur_rep]['cal_description'],
         $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
         $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
-        $rep[$cur_rep]['cal_login'] );
+        $rep[$cur_rep]['cal_login'], $rep[$cur_rep]['cal_category'] );
     }
     $cur_rep++;
   }
@@ -3182,7 +3215,8 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
           $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
           $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
           $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
+          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
+          $rep[$cur_rep]['cal_category'] );
         $cnt++;
       }
       $cur_rep++;
@@ -3192,7 +3226,8 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
         $date, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
         $ev[$i]['cal_name'], $ev[$i]['cal_description'],
         $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
-        $ev[$i]['cal_access'], $ev[$i]['cal_login'] );
+        $ev[$i]['cal_access'], $ev[$i]['cal_login'],
+        $ev[$i]['cal_category'] );
       $cnt++;
     }
   }
@@ -3203,7 +3238,8 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
         $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
         $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
         $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
+        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
+        $rep[$cur_rep]['cal_category'] );
       $cnt++;
     }
     $cur_rep++;
@@ -3224,9 +3260,10 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
 //   $pri - event priority
 //   $access - event access
 //   $event_owner - user associated with this event
+//   $event_category - category of event for event_owner
 function print_entry_timebar ( $id, $date, $time, $duration,
   $name, $description, $status,
-  $pri, $access, $event_owner ) {
+  $pri, $access, $event_owner, $event_category=-1 ) {
   global $eventinfo, $login, $user, $PHP_SELF, $prefarray;
   static $key = 0;
   
