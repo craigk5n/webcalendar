@@ -115,7 +115,7 @@ function dbi_query ( $sql ) {
     $GLOBALS["postgresql_row"] = 0;
     $res =  pg_exec ( $GLOBALS["postgresql_connection"], $sql );
     if ( ! $res ) {
-	dbi_fatal_error ( "Error executing SQL" );
+	dbi_fatal_error ( "Error executing SQL: " . $sql );
     }
     $GLOBALS["postgresql_numrows"] = pg_numrows ( $res );
     return $res;
