@@ -1,7 +1,7 @@
 #
 # FitBak ( http://www.fitbak.com ) -ek itzulia
 #
-# Translation last updated on 02-17-2004
+# Translation last updated on 03-10-2004
 
 
 ###############################################
@@ -39,17 +39,25 @@ fonts-help: Erabili beharreko tipografiak adierazten ditu ( Arial, Helvetica ...
 Fonts: Tipografiak
 #
 # << MISSING >>
+# custom-script-help:
+# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
+#
+#
+# << MISSING >>
+# Custom script/stylesheet:
+Yes: Bai
+No: Ez
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
 #
 # << MISSING >>
 # Custom header:
-Yes: Bai
-No: Ez
-#
-# << MISSING >>
-# Edit:
 #
 # << MISSING >>
 # custom-trailer-help:
@@ -885,6 +893,15 @@ Cancel: Utzi
 #
 # << MISSING >>
 # vCal File:
+#
+# << MISSING >>
+# This form will import iCalendar (.ics) events:
+#
+# << MISSING >>
+# iCal File:
+#
+# << MISSING >>
+# Overwrite Prior Import:
 
 
 ###############################################
@@ -1031,6 +1048,15 @@ New Entry: Sarrera berria
 ###############################################
 # Page: import_handler.php
 #
+#
+# << MISSING >>
+# Import Results:
+#
+# << MISSING >>
+# Events successfully imported:
+#
+# << MISSING >>
+# Events from prior import marked as deleted:
 #
 # << MISSING >>
 # Conflicting events:
@@ -1183,8 +1209,44 @@ Current User: Une hontako erabiltzailea
 
 
 ###############################################
+# Page: adminhome.php
+#
+Account: Kontua
+#
+# << MISSING >>
+# NonUser Calendars:
+#
+# << MISSING >>
+# Delete Events:
+#
+# << MISSING >>
+# Public Preferences:
+#
+# << MISSING >>
+# Unapproved Public Events:
+#
+# << MISSING >>
+# Administrative Tools:
+
+
+###############################################
 # Page: purge.php
 #
+#
+# << MISSING >>
+# Purging events for:
+#
+# << MISSING >>
+# Finished:
+#
+# << MISSING >>
+# Delete all events before:
+#
+# << MISSING >>
+# Check box to delete <b>ALL</b> events for a user:
+#
+# << MISSING >>
+# Are you sure you want to delete events for:
 
 
 ###############################################
@@ -1226,6 +1288,12 @@ Current User: Une hontako erabiltzailea
 #
 # << MISSING >>
 # Microsoft Outlook 2002:
+#
+# << MISSING >>
+# iCalendar:
+#
+# << MISSING >>
+# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
@@ -1260,6 +1328,9 @@ Set Category: Atala ezarri
 #
 #
 # << MISSING >>
+# Edit Custom Script/Stylesheet:
+#
+# << MISSING >>
 # Edit Custom Header:
 #
 # << MISSING >>
@@ -1275,8 +1346,6 @@ Logout: Irten
 Another User's Calendar: Beste erabiltzaile baten egutegia ikusi
 Add New Entry: Sarrera berria gehitu
 Manage Views: Ikus era administratu
-Edit Layers: Geruzak editatu
-Account: Kontua
 #
 # << MISSING >>
 # Manage calendar of:
@@ -1321,12 +1390,12 @@ Send Reminder: Gogorarazteko abixua bidali
 
 
 ###############################################
-# Page: includes/init.php
+# Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: includes/dbtable.php
+# Page: includes/init.php
 #
 
 
