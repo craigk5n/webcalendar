@@ -1,4 +1,5 @@
 Verion 0.9.42-devcvs (?? ??? ????)
+  - Added patch 654625: Added daily as an option for custom views
   - Fixed bug 756177, 644299: public access got "+" icon in month view
     when viewing non-user calendar in month view.
   - Fixed some of the undefined variable warnings
