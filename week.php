@@ -150,7 +150,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   $cur_rep = 0;
 
   // Get static non-repeating events
-  $ev = get_entries ( $user, $date );
+  $ev = get_entries ( $user, $date, $get_unapproved );
   $hour_arr = array ();
   $rowspan_arr = array ();
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
