@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Fixed bug 872036: Allow '-' in username
   - Fixed bug 892081: Don't allow users to use work hours with end hour
     before start hour (in admin and pref).
   - Fixed bug 858560: Allow adding events more than four years in the future.
