@@ -78,7 +78,15 @@ a:hover {
 	width: 15px;
 	height: 15px;
 }
-.trailerform {
+#category {
+  display: none; <?php // ^^^ Gets unhidden by includes/print_styles.css for printer-friendly pages ?>
+	font-size: 18px;
+}
+#trailer {
+  margin: 0;
+  padding: 0;
+}
+#trailer form {
 	float: left;
 	width: 33%;
 	border-top: 1px solid #000000;
@@ -86,12 +94,12 @@ a:hover {
 	margin-top: 5px;
 	margin-bottom: 25px;
 }
-.trailerform p {
+#trailer form p {
 	margin: 0px;
 	padding: 0px;
 	font-weight: bold;
 }
-.trailerform p select {
+#trailer form p select {
 	font-weight: normal;
 }
 #monthform {
@@ -446,7 +454,7 @@ td.month a:hover {
 	color: #0000FF;
 }
 .minical th, 
-#year .minical td.empty {
+.minical td.empty {
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
 .minical td {
@@ -524,6 +532,18 @@ td.month a:hover {
 #day .selectedday {
 	border: 1px solid #OOOOOO;
 }
+#day dl.desc {
+	display: none; <?php // This gets unhidden by includes/print_styles.css for printer-friendly pages ?>
+	margin: 0px;
+	padding: 0px;
+}
+#day dl.desc dt {
+	font-weight: bold;
+}
+#day dl.desc dd {
+	margin: 0px;
+	padding-left: 20px;
+}
 #viewl .main,
 #month .main {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -577,6 +597,7 @@ td.month a:hover {
 <?php //keep font-size:12px; for IE6 rendering
 ?>#year .minical {
 	margin: 5px auto;
+	display: block; <?php // Keeps the caption vertically close to the day names ?>
 }
 #year .minical caption {
 	margin: 0px auto;

@@ -84,7 +84,7 @@ if ($DMW) {
   // Tell the browser not to cache
   send_no_cache_header ();
 
-  if ( empty ( $friendly ) && empty ( $user ) )
+  if ( empty ( $user ) )
     remember_this_view ();
 
   if ( $allow_view_other != 'Y' && ! $is_admin )
@@ -108,13 +108,6 @@ if ($DMW) {
     $user_fullname = $fullname;
     if ( $login == "__public__" )
       $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
-  }
-
-  if ( empty ( $friendly ) ) {
-    $friendly = 0;
-    $hide_icons = false;
-  } else {
-    $hide_icons = true;
   }
 
   set_today($date);
@@ -217,6 +210,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $POPUP_FG,$BGCOLOR;
   global $LANGUAGE;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
+	global $friendly;
   global $bodyid, $self;
   $lang = '';
   if ( ! empty ( $LANGUAGE ) )
@@ -270,6 +264,13 @@ echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html
     }
   }
 
+	// Inlucde includes/print_styles.css as a media="print" stylesheet.  If the
+	// user clicked on the "Print Friendly" link, $friendly will be non-empty, so
+	// we should include this as a normal stylesheet so that they may see how it
+	// will look when printed.  This maintains backwards-compatibility with
+	// browsers that don't support media="print" stylsheets
+	echo "<link rel=\"stylesheet\" type=\"text/css\" " . ( empty ( $friendly ) ? "media=\"print\" " : "" ) . "href=\"includes/print_styles.css\" />\n";
+
   // Finish the header
   echo "</head>\n<body";
 
@@ -303,7 +304,7 @@ echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html
 function print_trailer ( $include_nav_links=true, $closeDb=true,
   $disableCustom=false )
 {
-  global $CUSTOM_TRAILER, $c, $friendly, $STARTVIEW;
+  global $CUSTOM_TRAILER, $c, $STARTVIEW;
   global $login, $user, $cat_id, $categories_enabled, $thisyear,
     $thismonth, $thisday, $DATE_FORMAT_MY, $WEEK_START, $DATE_FORMAT_MD,
     $readonly, $is_admin, $public_access, $public_access_can_add,
@@ -313,7 +314,7 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
     $groups_enabled, $fullname, $has_boss;
   
 
-  if ( $include_nav_links && empty ( $friendly ) ) {
+  if ( $include_nav_links ) {
     include_once "includes/trailer.php";
   }
 

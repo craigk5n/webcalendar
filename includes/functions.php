@@ -834,7 +834,7 @@ function date_selection_html ( $prefix, $date ) {
 //   $minical_id - id attribute for the minical table
 //                    row
 function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=false, $minical_id="" ) {
-  global $WEEK_START, $user, $login, $boldDays, $get_unapproved, $friendly;
+  global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
 	global $DISPLAY_WEEKNUMBER;
 
   if ( $user != $login && ! empty ( $user ) )
@@ -852,16 +852,11 @@ function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=
 	$monthend = mktime(2,0,0,$thismonth + 1,0,$thisyear);
 
 	//print the month name
-	//if not in printer-friendly mode, also link it to month view
 	echo "<caption>";
-	if ( empty ( $friendly ) ) {
-		echo "<a href=\"month.php?year=$thisyear&amp;month=$thismonth"
-			. $u_url . "\">";
-	}
+	echo "<a href=\"month.php?year=$thisyear&amp;month=$thismonth$u_url\">";
 	echo month_name ( $thismonth - 1 ) .
 		( $showyear ? " $thisyear" : "" ) .
-		( empty ( $friendly ) ? "</a>" : "" ) . 
-		"</caption>\n";
+		"</a></caption>\n";
 	//determine if the week starts on sunday or monday
 	if ( $WEEK_START == "1" ) {
 		$wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
@@ -913,20 +908,25 @@ function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=
 				echo "<td";
 				$wday = date ( "w", $date );
 				$class = "";
-				if ( $wday == 0 || $wday == 6 ) $class = "weekend";
+				if ( $wday == 0 || $wday == 6 ) {
+					$class = "weekend";
+				}
 				if ( $hasEvents ) {
-					if ( strlen ( $class ) ) $class .= " ";
+					if ( strlen ( $class ) ) {
+						$class .= " ";
+					}
 					$class .= "hasevents";
 				}
-				if ( strlen ( $class ) ) echo " class=\"$class\"";
-				if ( $dateYmd == date ( "Ymd" ) )
+				if ( strlen ( $class ) ) {
+					echo " class=\"$class\"";
+				}
+				if ( $dateYmd == date ( "Ymd" ) ) {
 					echo " id=\"today\"";
-					echo ">";
-				if ( empty ( $friendly ) )
-					echo "<a href=\"day.php?date=" .  $dateYmd . $u_url .  "\">";
+				}
+				echo ">";
+				echo "<a href=\"day.php?date=" .  $dateYmd . $u_url .  "\">";
 				echo date ( "d", $date );
-				if ( empty ( $friendly ) )
-					echo "</a>";
+				echo "</a>";
 				echo "</td>\n";
 				} else {
 					echo "<td class=\"empty\">&nbsp;</td>\n";
@@ -949,10 +949,9 @@ function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=
 //   $pri - event priority
 //   $access - event access
 //   $event_owner - user associated with this event
-//   $hide_icons - hide icons to make printer-friendly
 function print_entry ( $id, $date, $time, $duration,
   $name, $description, $status,
-  $pri, $access, $event_owner, $hide_icons ) {
+  $pri, $access, $event_owner ) {
   global $eventinfo, $login, $user, $PHP_SELF, $TZ_OFFSET;
   static $key = 0;
   
@@ -972,16 +971,14 @@ function print_entry ( $id, $date, $time, $duration,
     $class = "entry";
 
   if ( $pri == 3 ) echo "<span style=\"font-weight:bold;\">";
-  if ( ! $hide_icons ) {
-    $popupid = "eventinfo-$id-$key";
-    $key++;
-    echo "<a title=\"" . translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
-    if ( strlen ( $user ) > 0 )
-      echo "&amp;user=" . $user;
-    echo "\" onmouseover=\"window.status='" . translate("View this entry") .
-      "'; show(event, '$popupid'); return true;\" onmouseout=\"window.status=''; hide('$popupid'); return true;\">";
-    echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"" . translate("View this entry") . "\" />";
-  }
+	$popupid = "eventinfo-$id-$key";
+	$key++;
+	echo "<a title=\"" . translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+	if ( strlen ( $user ) > 0 )
+		echo "&amp;user=" . $user;
+	echo "\" onmouseover=\"window.status='" . translate("View this entry") .
+		"'; show(event, '$popupid'); return true;\" onmouseout=\"window.status=''; hide('$popupid'); return true;\">";
+	echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"" . translate("View this entry") . "\" />";
 
 
   if ( $login != $event_owner && strlen ( $event_owner ) )
@@ -1052,19 +1049,17 @@ function print_entry ( $id, $date, $time, $duration,
   if ( $pri == 3 ) echo "</span>\n"; //end font-weight span
 //  echo "</span><br />\n"; //end font-size span
   echo "<br />";
-  if ( ! $hide_icons ) {
-    if ( $login != $user && $access == 'R' && strlen ( $user ) )
-      $eventinfo .= build_event_popup ( $popupid, $event_owner,
-        translate("This event is confidential"), "" );
+	if ( $login != $user && $access == 'R' && strlen ( $user ) )
+		$eventinfo .= build_event_popup ( $popupid, $event_owner,
+			translate("This event is confidential"), "" );
 
-    else
-    if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
-      $eventinfo .= build_event_popup ( $popupid, $event_owner,
-        translate("This event is confidential"), "" );
-    else
-      $eventinfo .= build_event_popup ( $popupid, $event_owner,
-        $description, $timestr, site_extras_for_popup ( $id ) );
-  }
+	else
+	if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
+		$eventinfo .= build_event_popup ( $popupid, $event_owner,
+			translate("This event is confidential"), "" );
+	else
+		$eventinfo .= build_event_popup ( $popupid, $event_owner,
+			$description, $timestr, site_extras_for_popup ( $id ) );
 }
 
 // Get any site-specific fields for an entry that are stored in the database.
@@ -1806,9 +1801,8 @@ function icon_text ( $id, $can_edit, $can_delete ) {
 // params:
 //   $date - date in YYYYMMDD format
 //   $user - username
-//   $hide_icons - hide icons to make printer-friendly
 //   $is_ssi - is this being called from week_ssi.php?
-function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
+function print_date_entries ( $date, $user, $ssi ) {
   global $events, $readonly, $is_admin, $login,
     $public_access, $public_access_can_add;
   $cnt = 0;
@@ -1825,7 +1819,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
   if ( $public_access == "Y" && $public_access_can_add != "Y" &&
     $login == "__public__" )
     $can_add = false;
-  if ( ! $hide_icons && ! $ssi && $can_add ) {
+  if ( ! $ssi && $can_add ) {
     print "<a title=\"" .
       translate("New Entry") . "\" href=\"edit_entry.php?";
     if ( strcmp ( $user, $GLOBALS["login"] ) )
@@ -1879,8 +1873,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
           $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
           $viewname, $rep[$cur_rep]['cal_description'],
           $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
-          $hide_icons );
+          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
         $cnt++;
       }
       $cur_rep++;
@@ -1898,7 +1891,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
         $date, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
         $viewname, $ev[$i]['cal_description'],
         $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
-        $ev[$i]['cal_access'], $ev[$i]['cal_login'], $hide_icons );
+        $ev[$i]['cal_access'], $ev[$i]['cal_login'] );
       $cnt++;
     }
   }
@@ -1917,8 +1910,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
         $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
         $viewname, $rep[$cur_rep]['cal_description'],
         $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
-        $hide_icons );
+        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
       $cnt++;
     }
     $cur_rep++;
@@ -2180,8 +2172,7 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
 // The HTML will be stored in an array ($hour_arr) indexed on the event's
 // starting hour.
 function html_for_event_week_at_a_glance ( $id, $date, $time,
-  $name, $description, $status, $pri, $access, $duration, $event_owner,
-  $hide_icons ) {
+  $name, $description, $status, $pri, $access, $duration, $event_owner ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user;
   static $key = 0;
@@ -2218,17 +2209,15 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   if ( empty ( $hour_arr[$ind] ) )
     $hour_arr[$ind] = "";
 
-  if ( ! $hide_icons ) {
-    $hour_arr[$ind] .=
-      "<a title=\"" .
-      translate("View this entry") .
-      "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
-    if ( strlen ( $GLOBALS["user"] ) > 0 )
-      $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
-    $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
-      translate("View this entry") .
-      "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
-  }
+  $hour_arr[$ind] .=
+    "<a title=\"" .
+    translate("View this entry") .
+    "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+  if ( strlen ( $GLOBALS["user"] ) > 0 )
+    $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
+  $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
+    translate("View this entry") .
+    "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
   if ( $pri == 3 )
     $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">";
 
@@ -2314,7 +2303,7 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
 // The HTML will be stored in an array ($hour_arr) indexed on the event's
 // starting hour.
 function html_for_event_day_at_a_glance ( $id, $date, $time,
-  $name, $description, $status, $pri, $access, $duration, $event_owner, $hide_icons ) {
+  $name, $description, $status, $pri, $access, $duration, $event_owner ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user;
   static $key = 0;
@@ -2371,17 +2360,15 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
     $class = "entry";
 
 // TODO: The following section has several nested spans that need to be extracted & then combined separate from the PHP code.
-  if ( ! $hide_icons ) {
-    $hour_arr[$ind] .=
-      "<a title=\"" .
-      translate("View this entry") .
-      "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
-    if ( strlen ( $GLOBALS["user"] ) > 0 )
-      $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
-    $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
-      translate("View this entry") .
-      "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
-  }
+	$hour_arr[$ind] .=
+		"<a title=\"" .
+		translate("View this entry") .
+		"\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+	if ( strlen ( $GLOBALS["user"] ) > 0 )
+		$hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
+	$hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
+		translate("View this entry") .
+		"'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
   if ( $pri == 3 ) $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
@@ -2439,12 +2426,12 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= htmlspecialchars ( $name );
   if ( $pri == 3 ) $hour_arr[$ind] .= "</span>"; //end font-weight span
 
-  if (!($hide_icons)) {
-    $hour_arr[$ind] .= "</a>";
-  } else if ( $GLOBALS["DISPLAY_DESC_PRINT_DAY"] == "Y" ) {
-    $hour_arr[$ind] .= "<br />\n";
-    $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">Description:</span> ";
+  $hour_arr[$ind] .= "</a>";
+  if ( $GLOBALS["DISPLAY_DESC_PRINT_DAY"] == "Y" ) {
+    $hour_arr[$ind] .= "\n<dl class=\"desc\">\n";
+    $hour_arr[$ind] .= "<dt>Description:</dt>\n<dd>";
     $hour_arr[$ind] .= htmlspecialchars ( $description );
+		$hour_arr[$ind] .= "</dd>\n</dl>\n";
   }
 
   $hour_arr[$ind] .= "<br />\n";
@@ -2458,8 +2445,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
 // params:
 //   $date - date in YYYYMMDD format
 //   $user - username
-//   $hide_icons - should we hide the icons to make it printer-friendly
-function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
+function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan;
   global $TABLEBG, $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TIME_SLOTS, $TZ_OFFSET;
   global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR;
@@ -2513,7 +2499,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
           $viewname, $rep[$cur_rep]['cal_description'],
           $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
           $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
-          $rep[$cur_rep]['cal_login'], $hide_icons );
+          $rep[$cur_rep]['cal_login'] );
       }
       $cur_rep++;
     }
@@ -2533,7 +2519,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
         $viewname, $ev[$i]['cal_description'],
         $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
         $ev[$i]['cal_access'], $ev[$i]['cal_duration'],
-        $ev[$i]['cal_login'], $hide_icons );
+        $ev[$i]['cal_login'] );
     }
   }
   // print out any remaining repeating events
@@ -2554,7 +2540,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
         $viewname, $rep[$cur_rep]['cal_description'],
         $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
         $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
-        $rep[$cur_rep]['cal_login'], $hide_icons );
+        $rep[$cur_rep]['cal_login'] );
     }
     $cur_rep++;
   }
@@ -2608,7 +2594,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
       // ends at 11:15 and another starts at 11:30.
       if ( ! empty ( $hour_arr[$i] ) ) {
         echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
-        if ( $can_add && ! $hide_icons )
+        if ( $can_add )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
         echo "$hour_arr[$i]</td>\n";
       }
@@ -2617,7 +2603,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
       $color = $all_day ? $TODAYCELLBG : $CELLBG;
       if ( empty ( $hour_arr[$i] ) ) {
         echo "<td style=\"height:40px; background-color:$color; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
-        if ( $can_add && ! $hide_icons )
+        if ( $can_add )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
         echo "&nbsp;</td>\n</tr>\n";
       } else {
@@ -2627,12 +2613,12 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
           $rowspan = $rowspan_arr[$i];
         if ( $rowspan > 1 ) {
           echo "<td style=\"vertical-align:top; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\" rowspan=\"$rowspan\">";
-          if ( $can_add && ! $hide_icons )
+          if ( $can_add )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</td>\n</tr>\n";
         } else {
           echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
-          if ( $can_add && ! $hide_icons )
+          if ( $can_add )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</td>\n</tr>\n";
         }
@@ -3033,35 +3019,31 @@ function load_user_categories ($ex_global = '') {
 //   $form - the page to submit data to (without .php)
 //   $date - YYYYMMDD
 //   $ID - category that should be pre-selected
-//   $friendly - printer friendly?
-function print_category_menu ( $form, $date = '', $cat_id = '', $friendly = '' ) {
+function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   global $categories, $category_owners, $user, $login;
 
-  if ( $friendly == '' ) {
-    echo "<form action=\"{$form}.php\" method=\"get\" name=\"SelectCategory\" class=\"categories\">\n";
-    if ( ! empty($date) ) echo "<input type=\"hidden\" name=\"date\" value=\"$date\" />\n";
-    if ( ! empty ( $user ) && $user != $login )
-      echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
-    echo translate ('Category').": <select name=\"cat_id\" onchange=\"document.SelectCategory.submit()\">\n";
-    echo "<option value=\"\"";
-    if ( $cat_id == '' ) echo " selected=\"selected\"";
-    echo ">" . translate("All") . "</option>\n";
-    if ( is_array ( $categories ) ) {
-      foreach ( $categories as $K => $V ){
-        if ( empty ( $user ) || $user == $login ||
-          empty ( $category_owners[$K] ) ) {
-          echo "<option value=\"$K\"";
-          if ( $cat_id == $K ) echo " selected=\"selected\"";
-          echo ">$V</option>\n";
-        }
+  echo "<form action=\"{$form}.php\" method=\"get\" name=\"SelectCategory\" class=\"categories\">\n";
+  if ( ! empty($date) ) echo "<input type=\"hidden\" name=\"date\" value=\"$date\" />\n";
+  if ( ! empty ( $user ) && $user != $login )
+    echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
+  echo translate ('Category').": <select name=\"cat_id\" onchange=\"document.SelectCategory.submit()\">\n";
+  echo "<option value=\"\"";
+  if ( $cat_id == '' ) echo " selected=\"selected\"";
+  echo ">" . translate("All") . "</option>\n";
+  if ( is_array ( $categories ) ) {
+    foreach ( $categories as $K => $V ){
+      if ( empty ( $user ) || $user == $login ||
+        empty ( $category_owners[$K] ) ) {
+        echo "<option value=\"$K\"";
+        if ( $cat_id == $K ) echo " selected=\"selected\"";
+        echo ">$V</option>\n";
       }
     }
-    echo "</select>\n";
-    echo "</form>\n";
-  } else {
-    echo translate ('Category').": ";
-    echo ( $cat_id != '' ) ? $categories[$cat_id] . "\n" : translate ('All')."\n";
   }
+  echo "</select>\n";
+  echo "</form>\n";
+  echo "<span id=\"category\">" . translate ('Category') . ": ";
+  echo ( strlen ( $cat_id ) ? $categories[$cat_id] : translate ('All') ) . "</span>\n";
 }
 
 // Convert HTML entities in 8bit
@@ -3158,9 +3140,8 @@ function fake_mail ( $mailto, $subj, $text, $hdrs ) {
 // params:
 //   $date - date in YYYYMMDD format
 //   $user - username
-//   $hide_icons - hide icons to make printer-friendly
 //   $is_ssi - is this being called from week_ssi.php?
-function print_date_entries_timebar ( $date, $user, $hide_icons, $ssi ) {
+function print_date_entries_timebar ( $date, $user, $ssi ) {
   global $events, $readonly, $is_admin,
     $public_access, $public_access_can_add;
   $cnt = 0;
@@ -3196,8 +3177,7 @@ function print_date_entries_timebar ( $date, $user, $hide_icons, $ssi ) {
           $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
           $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
           $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
-          $hide_icons );
+          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
         $cnt++;
       }
       $cur_rep++;
@@ -3207,7 +3187,7 @@ function print_date_entries_timebar ( $date, $user, $hide_icons, $ssi ) {
         $date, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
         $ev[$i]['cal_name'], $ev[$i]['cal_description'],
         $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
-        $ev[$i]['cal_access'], $ev[$i]['cal_login'], $hide_icons );
+        $ev[$i]['cal_access'], $ev[$i]['cal_login'] );
       $cnt++;
     }
   }
@@ -3218,8 +3198,7 @@ function print_date_entries_timebar ( $date, $user, $hide_icons, $ssi ) {
         $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
         $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
         $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
-        $hide_icons );
+        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
       $cnt++;
     }
     $cur_rep++;
@@ -3240,10 +3219,9 @@ function print_date_entries_timebar ( $date, $user, $hide_icons, $ssi ) {
 //   $pri - event priority
 //   $access - event access
 //   $event_owner - user associated with this event
-//   $hide_icons - hide icons to make printer-friendly
 function print_entry_timebar ( $id, $date, $time, $duration,
   $name, $description, $status,
-  $pri, $access, $event_owner, $hide_icons ) {
+  $pri, $access, $event_owner ) {
   global $eventinfo, $login, $user, $PHP_SELF, $prefarray;
   static $key = 0;
   
@@ -3308,15 +3286,13 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     $class = "entry";
 
   if ( $pri == 3 ) echo "<span style=\"font-weight:bold;\">";
-  if ( ! $hide_icons ) {
-    $popupid = "eventinfo-$id-$key";
-    $key++;
-    echo "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
-    if ( strlen ( $user ) > 0 )
-      echo "&amp;user=" . $user;
-    echo "\" onmouseover=\"window.status='" . translate("View this entry") .
-      "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
-  }
+  $popupid = "eventinfo-$id-$key";
+  $key++;
+  echo "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+  if ( strlen ( $user ) > 0 )
+    echo "&amp;user=" . $user;
+  echo "\" onmouseover=\"window.status='" . translate("View this entry") .
+    "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
 
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
@@ -3374,18 +3350,16 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     echo "<td style=\"text-align:left; width:$ev_padding%;\">&nbsp;</td>\n";
   }
   echo "</tr>\n</table>\n";
-  if ( ! $hide_icons ) {
-    if ( $login != $user && $access == 'R' && strlen ( $user ) )
-      $eventinfo .= build_event_popup ( $popupid, $event_owner,
-        translate("This event is confidential"), "" );
-    else
-    if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
-      $eventinfo .= build_event_popup ( $popupid, $event_owner,
-        translate("This event is confidential"), "" );
-    else
-      $eventinfo .= build_event_popup ( $popupid, $event_owner,
-        $description, $timestr, site_extras_for_popup ( $id ) );
-  }
+	if ( $login != $user && $access == 'R' && strlen ( $user ) )
+		$eventinfo .= build_event_popup ( $popupid, $event_owner,
+			translate("This event is confidential"), "" );
+	else
+	if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
+		$eventinfo .= build_event_popup ( $popupid, $event_owner,
+			translate("This event is confidential"), "" );
+	else
+		$eventinfo .= build_event_popup ( $popupid, $event_owner,
+			$description, $timestr, site_extras_for_popup ( $id ) );
 }
 
 function print_header_timebar($start_hour, $end_hour) {
