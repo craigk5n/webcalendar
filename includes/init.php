@@ -1,43 +1,43 @@
 <?php
-/*
- * $Id$
+/**
+ * Does various initialization tasks and includes all needed files.
  *
- * Page Description:
- *	This page is included by most WebCalendar pages as the only
- *	include file.  It does various initialization tasks and
- *	includes all needed files.  This greatly simplifies the other
- *	PHP pages since they don't need to worry about what files it
- *	include.
+ * This page is included by most WebCalendar pages as the only include file.
+ * This greatly simplifies the other PHP pages since they don't need to worry
+ * about what files it includes.
  *
- * Comments:
- *	The following scripts do not use this file:
- *	- login.php
- *	- week_ssi.php
- *	- upcoming.php
- *	- tools/send_reminders.php
+ * <b>Comments:</b>
+ * The following scripts do not use this file:
+ * - login.php
+ * - week_ssi.php
+ * - upcoming.php
+ * - tools/send_reminders.php
  *
  * How to use:
- *	1. call include_once 'includes/init.php'; at the top of your script.
- *	2. call any other functions or includes not in this file that you need
- *	3. call the print_header function with proper arguments
+ * 1. call include_once 'includes/init.php'; at the top of your script.
+ * 2. call any other functions or includes not in this file that you need
+ * 3. call the print_header function with proper arguments
  *
  * What gets called:
  *
- *	include_once 'includes/config.php';
- *	include_once 'includes/php-dbi.php';
- *	include_once 'includes/functions.php';
- *	include_once "includes/$user_inc";
- *	include_once 'includes/validate.php';
- *	include_once 'includes/connect.php';
- *	load_global_settings ();
- *	load_user_preferences ();
- *	include_once 'includes/translate.php';
- *	include_once 'includes/styles.php';
+ * - include_once 'includes/config.php';
+ * - include_once 'includes/php-dbi.php';
+ * - include_once 'includes/functions.php';
+ * - include_once "includes/$user_inc";
+ * - include_once 'includes/validate.php';
+ * - include_once 'includes/connect.php';
+ * - {@link load_global_settings()};
+ * - {@link load_user_preferences()};
+ * - include_once 'includes/translate.php';
+ * - include_once 'includes/styles.php';
  *
- *	Also, for month.php, day.php, week.php, week_details.php:
- *	send_no_cache_header ();
+ * Also, for month.php, day.php, week.php, week_details.php:
+ * - {@link send_no_cache_header()};
  *
- **********************************************************************/
+ * @version $Id$
+ * @package WebCalendar
+ *
+ */
 
 // Security Check
 if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
@@ -145,7 +145,10 @@ if ($DMW) {
     $caturl = "&amp;cat_id=$cat_id";
 }
 
-// Maps page filenames to the id that page's <body> tag will have
+/** Maps page filenames to the id that page's <body> tag will have
+ *
+ * @global array $bodyid
+ */
 $bodyid = array(
 	"activity_log.php" => "activitylog",
 	"add_entry.php" => "addentry",
@@ -209,20 +212,19 @@ $bodyid = array(
 	"year.php" => "year"
 );
 
-/** print_header
-  * Description:
-  *	Prints the HTML header and opening HTML body tag.
-  * Parameters:
-  *	$includes - an array of additional files to include referenced from
-  *	            the includes directory
-  *	$HeadX - a variable containing any other data to be printed inside
-  *	         the head tag (meta, script, etc)
-  *	$BodyX - a variable containing any other data to be printed inside
-  *	         the Body tag (onload for example)
-  *	$disbleCustom - do not include custom header (useful for small
-  *	  popup windows, such as color selection)
-  *	$disableStyle - do not include the standard css
-  */
+/**
+ * Prints the HTML header and opening HTML body tag.
+ *
+ * @param array  $includes     Array of additional files to include referenced
+ *                             from the includes directory
+ * @param string $HeadX        Data to be printed inside the head tag (meta,
+ *                             script, etc)
+ * @param string $BodyX        Data to be printed inside the Body tag (onload
+ *                             for example)
+ * @param bool   $disbleCustom Do not include custom header? (useful for small
+ *                             popup windows, such as color selection)
+ * @param bool   $disableStyle Do not include the standard css?
+ */
 function print_header($includes = '', $HeadX = '', $BodyX = '',
   $disableCustom=false, $disableStyle=false) {
   global $application_name;
@@ -330,17 +332,16 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
 }
 
 
-/** print_trailer
-  * Description:
-  *	Print the common trailer.
-  * Parameters:
-  *	$include_nav_links - should the standard navigation links be
-  *	  included in the trailer (true/false). 
-  *	$closeDb - close the database connection (true/false)
-  *	$disableCustom - disable the custom trailer the administrator
-  *	  has setup.  (This is useful for small popup windows and
-  *	  pages being used in an iframe.)
-  */
+/**
+ * Prints the common trailer.
+ *
+ * @param bool $include_nav_links Should the standard navigation links be
+ *	                              included in the trailer?
+ * @param bool $closeDb           Close the database connection when finished?
+ * @param bool $disableCustom     Disable the custom trailer the administrator
+ *                                has setup?  (This is useful for small popup
+ *                                windows and pages being used in an iframe.)
+ */
 function print_trailer ( $include_nav_links=true, $closeDb=true,
   $disableCustom=false )
 {
