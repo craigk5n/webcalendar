@@ -12,7 +12,7 @@ Version 1.0RC3 (?? ??? 2005)
     + Added patch to allow TLS with LDAP
     + Added patch 900968: Add outlook-style availability popup
   - The following translations were updated:
-    + Spanish
+    + Spanish, Japanese (utf8, euc-jp, shift-jis)
 
 ---------------------------------------------------------------------------
 

@@ -1,23 +1,28 @@
 Version 1.0RC3 (?? ??? 2005)
  - Fixed bug 1145342: Category selected when adding event is not transferred
- to edit_entry page.
+   to edit_entry page.
  - Revisited Bug 986774: Editing Category for and event as Assistant. This fix
- induced another bug. When viewing 'Another User's Calendar', and not
- assistant, and adding event, the category control is populated with the other
- user's categories.
- - Fixed date_selection_html function to include values fo  pratch 900968: Add outlook-style availability popup
+   induced another bug. When viewing 'Another User's Calendar', and not
+   assistant, and adding event, the category control is populated with the other
+   user's categories.
+ - Fixed date_selection_html function to include values for
+   patch 900968: Add outlook-style availability popup
  - Added patch 900968: Add outlook-style availability popup
  - Fixed VCS export function, PRODID was not defined
  - Fixed bug 1123508: RC3 browser language detection always returns none.
  - Fixed issues with ODBC returning 'invalid db_type'
- - Fixed Bug 1120165: Disabled Repeat Field causes SAVE button and trailer to vanish.
- - Fixed issue where month.php and mini-calendar today highlight based on server time.
- - Added patch 1109344: Enabling WebCalendar connections to a "startTLS" LDAP server
+ - Fixed Bug 1120165: Disabled Repeat Field causes SAVE button and
+   trailer to vanish.
+ - Fixed issue where month.php and mini-calendar today highlight based
+   on server time.
+ - Added patch 1109344: Enabling WebCalendar connections to a
+   "startTLS" LDAP server
  - Fixed Bug 1118121: get_admins in user-ldap has bad search
  - Fixed Selectdate popups to work with new getGetvalue function and
- make popup follow cursor.
+   make popup follow cursor.
  - Purge events was not deleting from webcal_entry_ext_user table
  - Updated Spanish translation
+ - Updated all 3 Japanese translations
 Version 1.0RC2 (09 Feb 2005)
  - Fixed PHP warnings about undefined variable $enventinfo if empty.
  - Fixed issue where month.php and mini-calendar today highlight based on
