@@ -1,57 +1,74 @@
 <?php
-include_once 'includes/init.php';
-print_header('','','',true);
+	include_once 'includes/init.php';
+	print_header('','','',true);
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Help")?>: <?php etranslate("Adding/Editing Calendar Entries")?></FONT></H2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Help")?>: <?php etranslate("Adding/Editing Calendar Entries")?></h2>
 
-<TABLE BORDER=0>
-<TR>
-<TD VALIGN="top"><B><?php etranslate("Brief Description")?>:</B></TD>
-  <TD><?php etranslate("brief-description-help")?></TD></TR>
-<TD VALIGN="top"><B><?php etranslate("Full Description")?>:</B></TD>
-  <TD><?php etranslate("full-description-help")?></TD></TR>
-<TD VALIGN="top"><B><?php etranslate("Date")?>:</B></TD>
-  <TD><?php etranslate("date-help")?></TD></TR>
-<TD VALIGN="top"><B><?php etranslate("Time")?>:</B></TD>
-  <TD><?php etranslate("time-help")?></TD></TR>
-<TD VALIGN="top"><B><?php etranslate("Duration")?>:</B></TD>
-  <TD><?php etranslate("duration-help")?></TD></TR>
-
-<?php if ( $disable_priority_field != "Y" ) { ?>
-<TD VALIGN="top"><B><?php etranslate("Priority")?>:</B></TD>
-  <TD><?php etranslate("priority-help")?></TD></TR>
-<?php } ?>
-
-<?php if ( $disable_access_field != "Y" ) { ?>
-<TD VALIGN="top"><B><?php etranslate("Access")?>:</B></TD>
-  <TD><?php etranslate("access-help")?></TD></TR>
-<?php } ?>
-
-<?php
-$show_participants = ( $disable_participants_field != "Y" );
-if ( $is_admin )
-  $show_participants = true;
-if ( $single_user == "N" && $show_participants ) { ?>
-<TD VALIGN="top"><B><?php etranslate("Participants")?>:</B></TD>
-  <TD><?php etranslate("participants-help")?></TD></TR>
-<?php } ?>
-
-
-<?php if ( $disable_repeating_field != "Y" ) { ?>
-<TD VALIGN="top"><B><?php etranslate("Repeat Type")?>:</B></TD>
-  <TD><?php etranslate("repeat-type-help")?></TD></TR>
-<TD VALIGN="top"><B><?php etranslate("Repeat End Date")?>:</B></TD>
-  <TD><?php etranslate("repeat-end-date-help")?></TD></TR>
-<TD VALIGN="top"><B><?php etranslate("Repeat Day")?>:</B></TD>
-  <TD><?php etranslate("repeat-day-help")?></TD></TR>
-<TD VALIGN="top"><B><?php etranslate("Frequency")?>:</B></TD>
-  <TD><?php etranslate("repeat-frequency-help")?></TD></TR>
-<?php } ?>
-
-</TABLE>
+<table style="border-width:0px;">
+	<tr><td style="vertical-align:top; font-weight:bold;">
+		<?php etranslate("Brief Description")?>:</td><td>
+		<?php etranslate("brief-description-help")?>
+	</td></tr>
+	<tr><td style="vertical-align:top; font-weight:bold;">
+		<?php etranslate("Full Description")?>:</td><td>
+		<?php etranslate("full-description-help")?>
+	</td></tr>
+	<tr><td style="vertical-align:top; font-weight:bold;">
+		<?php etranslate("Date")?>:</td><td>
+		<?php etranslate("date-help")?>
+	</td></tr>
+	<tr><td style="vertical-align:top; font-weight:bold;">
+		<?php etranslate("Time")?>:</td><td>
+		<?php etranslate("time-help")?>
+	</td></tr>
+	<tr><td style="vertical-align:top; font-weight:bold;">
+		<?php etranslate("Duration")?>:</td><td>
+		<?php etranslate("duration-help")?>
+	</td></tr>
+	<?php if ( $disable_priority_field != "Y" ) { ?>
+		<tr><td style="vertical-align:top; font-weight:bold;">
+			<?php etranslate("Priority")?>:</td><td>
+			<?php etranslate("priority-help")?>
+		</td></tr>
+	<?php } ?>
+	<?php if ( $disable_access_field != "Y" ) { ?>
+		<tr><td style="vertical-align:top; font-weight:bold;">
+			<?php etranslate("Access")?>:</td><td>
+			<?php etranslate("access-help")?>
+		</td></tr>
+	<?php } ?>
+	<?php
+		$show_participants = ( $disable_participants_field != "Y" );
+		if ( $is_admin )
+			$show_participants = true;
+		if ( $single_user == "N" && $show_participants ) { ?>
+			<tr><td style="vertical-align:top; font-weight:bold;">
+				<?php etranslate("Participants")?>:</td><td>
+				<?php etranslate("participants-help")?>
+			</td></tr>
+		<?php } ?>
+	<?php if ( $disable_repeating_field != "Y" ) { ?>
+		<tr><td style="vertical-align:top; font-weight:bold;">
+			<?php etranslate("Repeat Type")?>:</td><td>
+			<?php etranslate("repeat-type-help")?>
+		</td></tr>
+		<tr><td style="vertical-align:top; font-weight:bold;">
+			<?php etranslate("Repeat End Date")?>:</td><td>
+			<?php etranslate("repeat-end-date-help")?>
+		</td></tr>
+		<tr><td style="vertical-align:top; font-weight:bold;">
+			<?php etranslate("Repeat Day")?>:</td><td>
+			<?php etranslate("repeat-day-help")?>
+		</td></tr>
+		<tr><td style="vertical-align:top; font-weight:bold;">
+			<?php etranslate("Frequency")?>:</td><td>
+			<?php etranslate("repeat-frequency-help")?>
+		</td></tr>
+	<?php } ?>
+</table>
 
 <?php include_once "includes/help_trailer.php"; ?>
 
-</BODY>
-</HTML>
+</body>
+</html>

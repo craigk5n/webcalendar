@@ -3,36 +3,50 @@ include_once 'includes/init.php';
 print_header('','','',true);
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Help")?>: <?php etranslate("Layers")?></FONT></H2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Help")?>: <?php etranslate("Layers")?></h2>
 
-<TABLE BORDER=0>
+<table style="border-width:0px;">
+	<tr><td colspan="2">
+		<?php etranslate("Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.")?>
+	</td></tr>
+	<tr><td colspan="2">&nbsp;</td></tr>
+	<tr><td style="vertical-align:top; font-weight:bold;">
+		<?php etranslate("Add/Edit/Delete")?>:</td><td>
+		<?php etranslate("Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.")?>
+	</td></tr>
+	<tr><td style="vertical-align:top; font-weight:bold;">
+		<?php etranslate("Source")?>:</td><td>
+		<?php etranslate("Specifies the user that you would like to see displayed in your calendar.")?>
+	</td></tr>
+	<tr><td style="vertical-align:top; font-weight:bold;">
+		<?php etranslate("Colors")?>:</td><td>
+		<?php etranslate("The text color of the new layer that will be displayed in your calendar.")?>
+	</td></tr>
+	<tr><td style="vertical-align:top; font-weight:bold;">
+		<?php etranslate("Duplicates")?>:</td><td>
+		<?php etranslate("If checked, events that are duplicates of your events will be shown.")?>
+	</td></tr>
+	<tr><td style="vertical-align:top; font-weight:bold;">
+		<?php etranslate("Disabling")?>:</td><td>
+		<?php etranslate("Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.")?>
+	</td></tr>
+	<tr><td style="vertical-align:top; font-weight:bold;">
+		<?php etranslate("Enabling")?>:</td><td>
+		<?php etranslate("Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.")?>
+	</td></tr>
+</table>
+<br /><br />
 
-<TR><TD COLSPAN=2><?php etranslate("Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.")?></TD></TR>
-<TR><TD COLSPAN=2> &nbsp; </TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Add/Edit/Delete")?>:</B></TD>
-  <TD><?php etranslate("Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Source")?>:</B></TD>
-  <TD><?php etranslate("Specifies the user that you would like to see displayed in your calendar.")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Colors")?>:</B></TD>
-  <TD><?php etranslate("The text color of the new layer that will be displayed in your calendar.")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Duplicates")?>:</B></TD>
-  <TD><?php etranslate("If checked, events that are duplicates of your events will be shown.")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Disabling")?>:</B></TD>
-  <TD><?php etranslate("Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Enabling")?>:</B></TD>
-  <TD><?php etranslate("Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.")?></TD></TR>
-      </TD></TR>
-
-</TABLE>
-<P>
 
 <?php if ( $allow_color_customization ) { ?>
-<H3><?php etranslate("Colors")?></H3>
-<?php etranslate("colors-help")?>
-<P>
+	<h3><?php etranslate("Colors")?></h3>
+	<?php etranslate("colors-help")?>
+	<br /><br />
+
+
 <?php } // if $allow_color_customization ?>
 
 <?php include_once "includes/help_trailer.php"; ?>
 
-</BODY>
-</HTML>
+</body>
+</html>
