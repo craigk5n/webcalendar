@@ -24,9 +24,9 @@ if ( empty ( $user ) ) {
   }
 }
 
-$showHeader = empty ( $is_admin );
+$disableCustom = true;
 
-print_header ( '', '', '', ! $showHeader );
+print_header ( '', '', '', $disableCustom );
 ?>
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top; width:50%;">
