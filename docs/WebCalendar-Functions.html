@@ -77,6 +77,14 @@ h3 {
 <li><a href="#activity_log">activity_log</a></li>
 <li><a href="#build_event_popup">build_event_popup</a></li>
 <li><a href="#date_selection_html">date_selection_html</a></li>
+<li><a href="#dbi_affected_rows">dbi_affected_rows</a></li>
+<li><a href="#dbi_close">dbi_close</a></li>
+<li><a href="#dbi_connect">dbi_connect</a></li>
+<li><a href="#dbi_error">dbi_error</a></li>
+<li><a href="#dbi_fatal_error">dbi_fatal_error</a></li>
+<li><a href="#dbi_fetch_row">dbi_fetch_row</a></li>
+<li><a href="#dbi_free_result">dbi_free_result</a></li>
+<li><a href="#dbi_query">dbi_query</a></li>
 <li><a href="#display_small_month">display_small_month</a></li>
 <li><a href="#do_debug">do_debug</a></li>
 <li><a href="#do_redirect">do_redirect</a></li>
@@ -144,6 +152,102 @@ Print out a date selection for use in a form.<br /><br />
 </ul>
 <p><span class="prompt">Returns:</span> The value used in the HTML form (or URL)<br/>
 <span class="prompt">Location:</span> functions.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="dbi_affected_rows">dbi_affected_rows</a></h3>
+<tt>dbi_affected_rows ( $conn, $res )</tt><br /><br />
+Returns the number of rows affected by the last INSERT, UPDATE or DELETE. <br/>Note: Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$conn</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
+<li><tt>$res</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
+</ul>
+<p><span class="prompt">Returns:</span> The number or database rows affected.<br/>
+<span class="prompt">Location:</span> php-dbi.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="dbi_close">dbi_close</a></h3>
+<tt>dbi_close ( $conn )</tt><br /><br />
+Close a database connection. (Not necessary for any database that uses pooled connections such as MySQL, but a good programming practice.)<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$conn</tt> - The database connection</li>
+</ul>
+<p><span class="prompt">Returns:</span> true on success, false on error<br/>
+<span class="prompt">Location:</span> php-dbi.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="dbi_connect">dbi_connect</a></h3>
+<tt>dbi_connect ( $host, $login, $password, $database )</tt><br /><br />
+Open up a database connection. Use a pooled connection if the db supports it and the <tt>db_persistent</tt> setting is enabled. <br/>Notes:<ul> <li> For ODBC, $host is ignored, $database = DSN</li> <li> For Oracle, $database = tnsnames name</li> <li> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails </li> </ul><br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$host</tt> - Name of database</li>
+<li><tt>$login</tt> - Name of database</li>
+<li><tt>$password</tt> - Name of database</li>
+<li><tt>$database</tt> - Name of database</li>
+</ul>
+<p><span class="prompt">Returns:</span> The connection<br/>
+<span class="prompt">Location:</span> php-dbi.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="dbi_error">dbi_error</a></h3>
+<tt>dbi_error ( $ )</tt><br /><br />
+Get the latest database error message.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li>None</li>
+</ul>
+<p><span class="prompt">Returns:</span> The text of the last database error.(The type of information varies depending on the whichtype of database is being used.)<br/>
+<span class="prompt">Location:</span> php-dbi.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="dbi_fatal_error">dbi_fatal_error</a></h3>
+<tt>dbi_fatal_error ( $msg, $doExit, $showError )</tt><br /><br />
+Display a fatal database error and abort execution.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$msg</tt> - Show the details of the error (possibly including the SQL that caused the error)</li>
+<li><tt>$doExit</tt> - Show the details of the error (possibly including the SQL that caused the error)</li>
+<li><tt>$showError</tt> - Show the details of the error (possibly including the SQL that caused the error)</li>
+</ul>
+<p><span class="prompt">Returns:</span> Nothing<br/>
+<span class="prompt">Location:</span> php-dbi.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="dbi_fetch_row">dbi_fetch_row</a></h3>
+<tt>dbi_fetch_row ( $res )</tt><br /><br />
+Retrieve a single row from the database and return it as an array. <br/>Note: we don't use the more useful xxx_fetch_array because not all databases support <a href="#this"><tt>this</tt></a> function. <br/>Note: Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$res</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
+</ul>
+<p><span class="prompt">Returns:</span> An array of database columns representing a single row inthe query result or false on an error.<br/>
+<span class="prompt">Location:</span> php-dbi.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="dbi_free_result">dbi_free_result</a></h3>
+<tt>dbi_free_result ( $res )</tt><br /><br />
+Free a result set.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$res</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
+</ul>
+<p><span class="prompt">Returns:</span> true on success<br/>
+<span class="prompt">Location:</span> php-dbi.php<br/>
+</p><br /><br />
+<br /><br />
+<h3><a name="dbi_query">dbi_query</a></h3>
+<tt>dbi_query ( $sql, $fatalOnError, $showError )</tt><br /><br />
+Execute a SQL query. <br/>Note: Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.<br /><br />
+<span class="prompt">Parameters:</span><br />
+<ul>
+<li><tt>$sql</tt> - Display error to use (including possibly the SQL) if there is a database error</li>
+<li><tt>$fatalOnError</tt> - Display error to use (including possibly the SQL) if there is a database error</li>
+<li><tt>$showError</tt> - Display error to use (including possibly the SQL) if there is a database error</li>
+</ul>
+<p><span class="prompt">Returns:</span> The query result resource on queries (which can then bepassed to the <a href="#dbi_fetch_row"><tt>dbi_fetch_row</tt></a> function to obtain the results),or true/false on insert or delete queries.<br/>
+<span class="prompt">Location:</span> php-dbi.php<br/>
 </p><br /><br />
 <br /><br />
 <h3><a name="display_small_month">display_small_month</a></h3>

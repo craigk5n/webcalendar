@@ -30,6 +30,8 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 //	(Some db APIs don't support xxx_fetch_array().)
 //
 // History:
+//	23-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
+/			Added documentation to be used with php2html.pl
 //	19-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
 //			Add option for verbose error messages.
 //	19-Jan-2004	Craig Knudsen <cknudsen@cknudsen.com>
@@ -58,10 +60,25 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 // on for debugging purposes.
 $phpdbiVerbose = false;
 
-// Open up a database connection
-// Always do a pooled connection if the db supports it
-// For ODBC, $host is ignored, $database = DSN
-// For Oracle, $database = tnsnames name
+/** dbi_connect
+  * Description:
+  *	Open up a database connection.
+  *	Use a pooled connection if the db supports it and
+  *	the <tt>db_persistent</tt> setting is enabled.
+  *	<br/>Notes:<ul>
+  *	<li> For ODBC, $host is ignored, $database = DSN</li>
+  *	<li> For Oracle, $database = tnsnames name</li>
+  *	<li> Use the dbi_error function to get error information if
+  *	     the connection fails </li>
+  *	</ul>
+  * Parameters:
+  *	$host - Hostname of database server
+  *	$login - Database login
+  *	$password - Database login password
+  *	$database - Name of database
+  * Returns:
+  *	The connection
+  */
 function dbi_connect ( $host, $login, $password, $database ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     if ($GLOBALS["db_persistent"]) {
@@ -162,9 +179,16 @@ function dbi_connect ( $host, $login, $password, $database ) {
   }
 }
 
-// Close a database connection
-// Not necessary for any database that uses pooled connections
-// such as MySQL
+/** dbi_close
+  * Description:
+  *	Close a database connection.
+  *	(Not necessary for any database that uses pooled connections
+  *	such as MySQL, but a good programming practice.)
+  * Parameters:
+  *	$conn - The database connection
+  * Returns:
+  *	true on success, false on error
+  */
 function dbi_close ( $conn ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     return mysql_close ( $conn );
@@ -198,7 +222,21 @@ function dbi_close ( $conn ) {
 //  }
 //}
 
-// Execute an SQL query
+/** dbi_query
+  * Description:
+  *	Execute a SQL query.
+  *	<br/>Note: Use the dbi_error function to get error information if
+  *	     the connection fails.
+  * Parameters:
+  *	$sql - SQL of query to execute
+  *	$fatalOnError - Abort execution if there is a database error
+  *	$showError - Display error to use (including possibly the
+  *	  SQL) if there is a database error
+  * Returns:
+  *	The query result resource on queries (which can then be
+  *	passed to the dbi_fetch_row function to obtain the results),
+  *	or true/false on insert or delete queries.
+  */
 function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     $res = mysql_query ( $sql );
@@ -258,10 +296,21 @@ function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
 //  }
 //}
 
-// Retrieve a single row from the database and return it
-// as an array.
-// Note: we don't use the more useful xxx_fetch_array because not all
-// databases support this function.
+/** dbi_fetch_row
+  * Description:
+  *	Retrieve a single row from the database and return it
+  *	as an array.
+  *	<br/>Note: we don't use the more useful xxx_fetch_array because not all
+  *	databases support this function.
+  *	<br/>Note: Use the dbi_error function to get error information if
+  *	     the connection fails.
+  * Parameters:
+  *	$res - The database query resource returned from
+  *	       the dbi_query function.
+  * Returns:
+  *	An array of database columns representing a single row in
+  *	the query result or false on an error.
+  */
 function dbi_fetch_row ( $res ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     return mysql_fetch_array ( $res );
@@ -298,10 +347,21 @@ function dbi_fetch_row ( $res ) {
   }
 }
 
-// Returns the number of rows affected by the last INSERT, UPDATE or
-// DELETE.
 //   $conn - db connection
 //   $res - returned from dbi_query
+/** dbi_affected_rows
+  * Description:
+  *	Returns the number of rows affected by the last INSERT, UPDATE or
+  *	DELETE.
+  *	<br/>Note: Use the dbi_error function to get error information if
+  *	     the connection fails.
+  * Parameters:
+  *	$conn - The database connection
+  *	$res - The database query resource returned from
+  *	       the dbi_query function.
+  * Returns:
+  *	The number or database rows affected.
+  */
 function dbi_affected_rows ( $conn, $res ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     return mysql_affected_rows ( $conn );
@@ -326,9 +386,15 @@ function dbi_affected_rows ( $conn, $res ) {
   }
 }
 
-// Free a result set.
-// This isn't really necessary for PHP4 since this is done automatically,
-// but it's a good habit for PHP3.
+/** dbi_free_result
+  * Description:
+  *	Free a result set.
+  * Parameters:
+  *	$res - The database query resource returned from
+  *	       the dbi_query function.
+  * Returns:
+  *	true on success
+  */
 function dbi_free_result ( $res ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     return mysql_free_result ( $res );
@@ -353,7 +419,14 @@ function dbi_free_result ( $res ) {
   }
 }
 
-// Get the latest db error message.
+/** dbi_error
+  * Description:
+  *	Get the latest database error message.
+  * Returns:
+  *	The text of the last database error.
+  *	(The type of information varies depending on the which
+  *	type of database is being used.)
+  */
 function dbi_error () {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     $ret = mysql_error ();
@@ -379,7 +452,15 @@ function dbi_error () {
     return "Unknown error";
 }
 
-// display an error message and exit
+/** dbi_fatal_error
+  * Description:
+  *	Display a fatal database error and abort execution.
+  * Parameters:
+  *	$msg - The database error message
+  *	$doExit - Abort execution (true/false)
+  *	$showError - Show the details of the error (possibly including
+  *		the SQL that caused the error)
+  */
 function dbi_fatal_error ( $msg, $doExit=true, $showError=true ) {
   if ( $showError ) {
     echo "<h2>Error</h2>\n";
