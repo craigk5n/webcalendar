@@ -24,7 +24,7 @@ print_header();
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo "<b>" . translate("Error") . ":</b> $error";
+  echo "<span style=\"font-weight:bold;\">" . translate("Error") . ":</span> $error";
 } else {
   $ids = array ();
   $words = split ( " ", $keywords );
@@ -58,7 +58,7 @@ if ( ! empty ( $error ) ) {
       "OR UPPER(webcal_entry.cal_description) " .
       "LIKE UPPER('%" .  $words[$i] . "%') ) " .
       "ORDER BY cal_date";
-    //echo "SQL: $sql<P>";
+    //echo "SQL: $sql<br />";
     $res = dbi_query ( $sql );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -80,9 +80,9 @@ if ( $matches > 0 )
   $matches = count ( $ids );
 
 if ( $matches == 1 )
-  echo "<b>$matches " . translate("match found") . ".</b><br /><br />";
+  echo "<span style=\"font-weight:bold;\">$matches " . translate("match found") . ".</span><br /><br />";
 else if ( $matches > 0 )
-  echo "<b>$matches " . translate("matches found") . ".</b><br /><br />";
+  echo "<span style=\"font-weight:bold;\">$matches " . translate("matches found") . ".</span><br /><br />";
 else
   echo translate("No matches found") . ".";
 
@@ -95,7 +95,6 @@ if ( empty ( $error ) ) {
 }
 
 ?>
-
 <br /><br />
 
 <?php print_trailer(); ?>
