@@ -50,20 +50,22 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 <?php //=============================== SECTION A ==========================================
 	/* The CSS for WebCalendar is broken down into several sections.
 	This should make it easier to understand, debug & understand the logical sequence
-	of how the new style system is built.
+	of how the style system is built.
 	Each page in WebCalendar is assigned a unique ID. This unique ID is determined by 
 	taking the name of the page & removing any underscores (_). For a complete list of
-	and their IDs, look in includes/init.php.
+	and their IDs, see includes/init.php or docs/WebCalendar-StyleSystem.html.
 
 	The following sections appear below:
 		Section A - basic, required elements that affect WebCalendar as a whole
-		Section R - more specific to select areas of WebCalendar, yet still 
+		Section B - more specific to select areas of WebCalendar, yet still 
 			affects many areas of WebCalendar
-		Section B - classes specific to certain pages, but that affect either 
+		Section C - classes specific to certain pages, but that affect either 
 			the page as a whole, or large areas within that page
-		Section S - the "nitty gritty" of classes. Used specifically for 
+		Section D - the "nitty gritty" of classes. Used specifically for 
 			fine-tuning elements within a specific page
 */
+
+/* SECTION A */
 ?>body {
 	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
 	font-family: <?php echo $GLOBALS['FONTS']; ?>;
@@ -95,9 +97,6 @@ a:hover {
 #groupedithandler,
 #editnonusershandler {
 	background-color: #F8F8FF;
-	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
-	font-family: <?php echo $GLOBALS['FONTS']; ?>;
-	font-size: 12px;
 }
 #tabscontent {
 	margin: 0px;
@@ -233,6 +232,9 @@ label {
 	color: #800000;
 	text-decoration: none;
 	padding-right: 3px;
+}
+.nounapproved {
+	margin-left: 20px;
 }
 <?php //links to entries/events on layers
 ?>.layerentry {
@@ -549,12 +551,7 @@ textarea {
 .glance th.empty {
 	border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
-<?php if ( function_exists ( "imagepng" ) &&
-  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['BGCOLOR'], 1 ); ?>");
-<?php } else { ?>
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
-<?php } ?>
 }
 .glance th.row {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -638,12 +635,7 @@ th {
 #viewm .main th.empty,
 #vieww .main th.empty,
 #week .main th.empty {
-<?php if ( function_exists ( "imagepng" ) &&
-  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['BGCOLOR'], 1 ); ?>");
-<?php } else { ?>
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
-<?php } ?>
 	border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
