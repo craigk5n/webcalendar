@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Patch 972689: use preferences for example month date format in pref.php
   - Patch 975785: admin.php was not showing language setting properly
   - Patch 975554: event end time as an option (rather than just duration)
   - Patch 972695: in edit_entry.php, use preferences to determine

@@ -362,7 +362,13 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 <!-- BEGIN EXAMPLE MONTH -->
 <table style="border:0px; width:100%;"><tr>
-<td style="text-align:center; color:<?php echo $H2COLOR?>; font-weight:bold;"><?php echo translate("December") . " 2000";?></td></tr>
+<td style="text-align:center; color:<?php echo $H2COLOR?>; font-weight:bold;"><?php
+$today = mktime ( 3, 0, 0, 12, 13, 2000 );
+if ( $prefarray["WEEK_START"] == 1 )
+  $wkstart = get_monday_before ( 2000, 12, 1 );
+else
+  $wkstart = get_sunday_before ( 2000, 12, 1 );
+echo date_to_str ( "20001201", $DATE_FORMAT_MY, false, false );?></td></tr>
 </table>
 
 <table style="border-width:0px; width:90%;" cellspacing="0" cellpadding="0">
@@ -383,12 +389,6 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <?php } ?>
 </tr>
 <?php
-
-$today = mktime ( 3, 0, 0, 12, 13, 2000 );
-if ( $prefarray["WEEK_START"] == 1 )
-  $wkstart = get_monday_before ( 2000, 12, 1 );
-else
-  $wkstart = get_sunday_before ( 2000, 12, 1 );
 // generate values for first day and last day of month
 $monthstart = mktime ( 3, 0, 0, 12, 1, 2000 );
 $monthend = mktime ( 3, 0, 0, 13, 0, 2000 );
