@@ -104,7 +104,11 @@ function dbi_close ( $conn ) {
 // Execute an SQL query
 function dbi_query ( $sql ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
-    return mysql_query ( $sql );
+    $res = mysql_query ( $sql );
+    if ( ! $res )
+      dbi_fatal_error ( "Error executing query: " . dbi_error() .
+        "\n\n<P>\n" . $sql );
+    return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     $GLOBALS["oracle_statement"] =
       OCIParse ( $GLOBALS["oracle_connection"], $sql );
@@ -114,13 +118,12 @@ function dbi_query ( $sql ) {
     $GLOBALS["postgresql_row"] = 0;
     $GLOBALS["postgresql_row"] = 0;
     $res =  pg_exec ( $GLOBALS["postgresql_connection"], $sql );
-    if ( ! $res ) {
-	dbi_fatal_error ( "Error executing SQL: " . $sql );
-    }
+    if ( ! $res )
+      dbi_fatal_error ( "Error executing query: " . dbi_error() .
+        "\n\n<P>\n" . $sql );
     $GLOBALS["postgresql_numrows"] = pg_numrows ( $res );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
-    $GLOBALS["odbc_row"] = 0;
     return odbc_exec ( $GLOBALS["odbc_connection"], $sql );
   } else {
     dbi_fatal_error ( "dbi_query(): db_type not defined." );
@@ -162,8 +165,7 @@ function dbi_fetch_row ( $res ) {
     }
     return $r;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
-    $num_fields = odbc_num_fields ( $res );
-    if ( ! odbc_fetch_into ( $res, $GLOBALS["odbc_row"]++, &$ret ) )
+    if ( ! odbc_fetch_into ( $res, &$ret ) )
       return false;
     return $ret;
   } else {
