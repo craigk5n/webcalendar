@@ -17,5 +17,6 @@ function hide(foo,f,section) {
 ?>var tabs = new Array();
 tabs[1] = "users";
 tabs[2] = "groups";
+tabs[3] = "nonusers";
 //]]> -->
 </script>

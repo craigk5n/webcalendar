@@ -1,17 +1,25 @@
 <?php
-include_once 'includes/init.php';
-$INC = array('js/users.php','js/visible.php');
-print_header($INC);
+	include_once 'includes/init.php';
+	$INC = array('js/users.php','js/visible.php');
+	print_header($INC);
+
+	if ( ! $is_admin ) {
+		echo "<h2>" . translate("Error") . "</h2>\n" . 
+			translate("You are not authorized") . ".\n";
+		echo "</body>\n</html>";
+		exit;
+	}
 ?>
 <a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 
 <!-- TABS -->
 <div id="tabs">
-	<?php if ( $is_admin ) { ?>
-		<span class="tabfor" id="tab_users"><a href="#tabusers" onclick="return showTab('users')"><?php etranslate("Users")?></a></span>
-	<?php }	
-	if (( $groups_enabled == "Y" ) && ($is_admin)) { ?>
+	<span class="tabfor" id="tab_users"><a href="#tabusers" onclick="return showTab('users')"><?php etranslate("Users")?></a></span>
+	<?php if ($groups_enabled == "Y") { ?>
 		<span class="tabbak" id="tab_groups"><a href="#tabgroups" onclick="return showTab('groups')"><?php etranslate("Groups")?></a></span>
+	<?php } 
+	if ($nonuser_enabled == 'Y') { ?>
+		<span class="tabbak" id="tab_nonusers"><a href="#tabnonusers" onclick="return showTab('nonusers')"><?php etranslate("NonUser Calendars")?></a></span>
 	<?php } ?>
 </div>
 
@@ -56,9 +64,14 @@ print_header($INC);
 </div>
 
 
-<?php if (( $groups_enabled == "Y" ) && ($is_admin)) { 
-	include_once 'groups.php';
-} ?>
+<?php 
+	if ($groups_enabled == "Y") { 
+		include_once 'groups.php';
+	} 
+	if ($nonuser_enabled == 'Y') {
+		include_once 'nonusers.php';
+	}
+?>
 </div>
 
 <?php print_trailer(); ?>
