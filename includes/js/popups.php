@@ -3,127 +3,88 @@
 // The following code is used to support the small popups that
 // give the full description of an event when the user move the
 // mouse over it.
+// Thanks to Klaus Knopper (www.knoppix.com) for this script.
+// It has been modified to work with the existing WebCalendar
+// architecture on 02/25/2005
+ 
+// Bubblehelp infoboxes, (C) 2002 Klaus Knopper <infobox@knopper.net>
+// You can copy/modify and distribute this code under the conditions
+// of the GNU GENERAL PUBLIC LICENSE Version 2.
+//
+var ns4            // Are we using Netscape4?
+var ie4            // Are we using Internet Explorer Version 4?
+var ie5            // Are we using Internet Explorer Version 5 and up?
+var kon            // Are we using KDE Konqueror?
+var x,y,winW,winH  // Current help position and main window size
+var idiv=null      // Pointer to infodiv container
+var px="px"        // position suffix with "px" in some cases
+var popupW         // width of popup
+var popupH         // height of popup
+var xoffset = 8    // popup distance from cursor x coordinate
+var yoffset = 12   // popup distance from cursor y coordinate
+var followMe = 1   // allow popup to follow cursor...turn off for better performance
 
-// Developer's note:
-// I (Benoit Maisonny <benoit@synclude.com>) tested this code with Mozilla 0.8.1 (on Linux),
-// with IE5.5 SP1 (on WinNT4) and with Netscape Communicator 4.74 (on Linux).
-// Netscape 6.0 and 6.01 seem to have a bug related to the visibility attribute.
-// I suppose it will be corrected as soon as they release a new version, based on
-// a more recent Mozilla source code.
-// I'm not able to test this javascript code with IE4. It'd be glad to know if it works.
+function nsfix(){setTimeout("window.onresize = rebrowse", 2000);}
 
-NS4 = (document.layers) ? 1 : 0;
-IE4 = (document.all) ? 1 : 0;
-W3C = (document.getElementById) ? 1 : 0;  
-// W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
+function rebrowse(){window.location.reload();}
 
-// Function show(evt, name)
-//  evt is a pointer to the Event object passed when the event occurs
-//  name is the ID attribute of the element to show
-function show ( evt, name ) {
-  if (IE4) {
-    evt = window.event;  //is it necessary?
+function infoinit(){
+  ns4=(document.layers)?true:false, ie4=(document.all)?true:false;
+  ie5=((ie4)&&((navigator.userAgent.indexOf('MSIE 5')>0)||(navigator.userAgent.indexOf('MSIE 6')>0)))?true:false;
+  kon=(navigator.userAgent.indexOf('konqueror')>0)?true:false;
+  x=0;y=0;winW=800;winH=600;
+  idiv=null;
+  if (followMe) {
+    document.onmousemove = mousemove;
+    if(ns4&&document.captureEvents) document.captureEvents(Event.MOUSEMOVE);
   }
+  // Workaround for just another netscape bug: Fix browser confusion on resize
+  // obviously conqueror has a similar problem :-(
+  if(ns4||kon){ nsfix() }
+  if(ns4) { px=""; }
+}
 
-  var currentX,   //mouse position on X axis
-      currentY,   //mouse position on X axis
-      x,    //layer target position on X axis
-      y,    //layer target position on Y axis
-      docWidth,   //width of current frame
-      docHeight,  //height of current frame
-      layerWidth, //width of popup layer
-      layerHeight,  //height of popup layer
-      ele;    //points to the popup element
+function hide(name){
+  idiv.visibility=ns4?"hide":"hidden";
+  idiv=null;
+}
 
-  // First let's initialize our variables
-  if ( W3C ) {
-    ele = document.getElementById(name);
-    currentX = evt.clientX,
-    currentY = evt.clientY;
-    docWidth = document.width;
-    docHeight = document.height;
-    layerWidth = ele.style.width;
-    layerHeight = ele.style.height;
+function gettip(name){return (document.layers&&document.layers[name])?document.layers[name]:(document.all&&document.all[name]&&document.all[name].style)?document.all[name].style:document[name]?document[name]:(document.getElementById(name)?document.getElementById(name).style:0);}
 
-  } else if ( NS4 ) {
-    ele = document.layers[name];
-    currentX = evt.pageX,
-    currentY = evt.pageY;
-    docWidth = document.width;
-    docHeight = document.height;
-    layerWidth = ele.clip.width;
-    layerHeight = ele.clip.height;
+function show(evt, name){
+  if(idiv) hide(name);
+  idiv=gettip(name);
+  if(idiv){
+   scrollX =0; scrollY=0;
+   winW=(window.innerWidth)? window.innerWidth+window.pageXOffset-16:document.body.offsetWidth-20;
+   winH=(window.innerHeight)?window.innerHeight+window.pageYOffset  :document.body.offsetHeight;
+   scrollX=(typeof window.pageXOffset == "number")? window.pageXOffset:(document.documentElement && document.documentElement.scrollLeft)?document.documentElement.scrollLeft:(document.body && document.body.scrollLeft)?document.body.scrollLeft:window.scrollX;
+   scrollY=(typeof window.pageYOffset == "number")? window.pageYOffset:(document.documentElement && document.documentElement.scrollTop)?document.documentElement.scrollTop:(document.body && document.body.scrollTop)?document.body.scrollTop:window.scrollY;
+   popupW = document.getElementById(name).offsetWidth;
+   popupH = document.getElementById(name).offsetHeight;			
 
-  } else {  // meant for IE4
-    ele = document.all[name];
-    currentX = evt.clientX,
-    currentY = evt.clientY;
-    docHeight = document.body.offsetHeight;
-    docWidth = document.body.offsetWidth;
-    //var layerWidth = document.all[name].offsetWidth;
-    // for some reason, this doesn't seem to work... so set it to 200
-    layerWidth = 200;
-    layerHeight = ele.offsetHeight;
-  }
-
-  // Then we calculate the popup element's new position
-  //   Make sure we use parseInt so that strings are converted
-  //   to ints before doing math. - joel@joeldare.com
-  if ( ( currentX + parseInt(layerWidth) ) > docWidth ) {
-    x = ( currentX - parseInt(layerWidth) );
-  }
-  else {
-    x = currentX;
-  }
-  if ( ( currentY + parseInt(layerHeight) ) >= docHeight ) {
-     y = ( currentY - parseInt(layerHeight) - 20 );
-  }
-  else {
-    y = currentY + 20;
-  }
-  if ( IE4 ) {
-    x += document.body.scrollLeft;
-    y += document.body.scrollTop;
-  } else if ( NS4)  {
-  } else {
-    x += window.pageXOffset;
-    y += window.pageYOffset;
-  }
-// (for debugging purpose) alert("docWidth " + docWidth + ", docHeight " + docHeight + "\nlayerWidth " + layerWidth + ", layerHeight " + layerHeight + "\ncurrentX " + currentX + ", currentY " + currentY + "\nx " + x + ", y " + y);
-
-  // Finally, we set its position and visibility
-  if ( NS4 ) {
-    //ele.xpos = parseInt ( x );
-    ele.left = parseInt ( x );
-    //ele.ypos = parseInt ( y );
-    ele.top = parseInt ( y );
-    ele.visibility = "show";
-  } else {  // IE4 & W3C & Mozilla
-    ele.style.left = parseInt ( x ) + "px";
-    ele.style.top = parseInt ( y ) + "px";
-    ele.style.visibility = "visible";
+   showtip(evt);
   }
 }
 
-function hide ( name ) {
-  if (W3C) {
-    document.getElementById(name).style.visibility = "hidden";
-  } else if (NS4) {
-    document.layers[name].visibility = "hide";
-  } else {
-    document.all[name].style.visibility = "hidden";
-  }
+function showtip(e){
+  e = e? e: window.event;
+  if(idiv) {
+    if(e)   {
+      x=e.pageX?e.pageX:e.clientX?e.clientX + scrollX:0; 
+      y=e.pageY?e.pageY:e.clientY?e.clientY + scrollY:0;
+	   }
+    else {x=0; y=0;}
+      idiv.left=(((x + popupW + xoffset)>winW)?x - popupW - xoffset:x + xoffset)+px;
+      idiv.top=(((y + popupH + yoffset)>winH)?y - popupH - yoffset:y + yoffset)+px;
+      idiv.visibility=ns4?"show":"visible";
+    }
 }
 
-function unhide ( name ) {
-  if (W3C) {
-    document.getElementById(name).style.visibility = "visible";
-  } else if (NS4) {
-    document.layers[name].visibility = "show";
-  } else {
-    document.all[name].style.visibility = "visible";
-  }
+function mousemove(e){
+  showtip(e);
 }
-
+// Initialize after loading the page
+window.onload=infoinit;
 //]]> -->
 </script>
