@@ -348,13 +348,13 @@ table.dayviewminical {
 }
 
 <?php // ========================= MONTH.PHP ?>
-#month table,
+#month table.main,
 table.monthview {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 }
-#month table td,
+#month table.main td,
 table.monthview td {
   font-size: 12px;
   width: 14%;
@@ -364,7 +364,7 @@ table.monthview td {
   background-color: <?php echo $GLOBALS['CELLBG'];?>;
   vertical-align: top;
 }
-#month table td.weekend,
+#month table.main td.weekend,
 table.monthview td.weekend {
   font-size: 12px;
   width: 14%;
@@ -374,7 +374,7 @@ table.monthview td.weekend {
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-#month table td.today,
+#month table.main td.today,
 table.monthview td.today {
   font-size: 12px;
   width: 14%;
@@ -387,7 +387,7 @@ table.monthview td.today {
 
 <?php // ========================= YEAR.PHP
 // contains ALL months ?>
-#year table,
+#year table.main,
 table.yearview {
 	border-width: 0px;
 }
@@ -428,7 +428,7 @@ table.viewd {
 .viewv th,
 #viewl th,
 .viewl th,
-#month th,
+#month table.main th,
 .monthview th {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
@@ -476,11 +476,11 @@ table.monthviewminical {
 }
 <?php // formats the day name (i.e. Sun, Mon, etc)
       // used as "tr class="day"" to format the cells WITHIN that row ?>
-#viewl .minical,
+#viewl .minical tr.day,
 .viewlminical tr.day,
 #year .minical tr.day,
 .yearviewminical tr.day,
-#month .minical tr.day,
+#month .minical tr.day th,
 .monthviewminical tr.day,
 #day .minical tr.day,
 .dayviewminical tr.day {
