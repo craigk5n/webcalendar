@@ -1,4 +1,6 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Updated README.html to not assume user has downloaded user manual.
+    Instead link to the download area on SourceForge.
   - Fixed bug 903285: PHP balise problem <? ?>
     (fixed for view_d.php, didn't check all files)
   - Fixed bug 850719: repeating whole day event has only on the
