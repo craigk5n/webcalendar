@@ -1,3 +1,10 @@
+Version 0.9.30dev (?? Jun 01)
+  - Fixed bug: Was not displaying the correct user name in month, week
+    and year view when viewing another user's calendar.
+  - Fixed bug: send_reminders.php was dying because of SQL error
+    on Postgres.
+  - Fixed bug: conflict checking was not working properly for repeating
+    events when future dates were in a different daylight savings mode.
 Version 0.9.29 (05 Jun 01)
   - Fixed bug: When editing an event, the event date is set to the
     current date rather than the event's date.
