@@ -42,7 +42,11 @@ if ( ! empty ( $user ) ) {
 <SELECT NAME="user">
 
 <?
-  $userlist = user_get_users ();
+  $userlist = get_my_users ();
+  if ($nonuser_enabled == "Y" ) {
+    $nonusers = get_nonuser_cals ();
+    $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+  }
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
     echo "<OPTION VALUE=\"".$userlist[$i]['cal_login']."\">".$userlist[$i]['cal_fullname']."\n";
   }
@@ -71,6 +75,8 @@ function purge_events ( $ids ) {
   $tables = array (
     'webcal_entry_user',
     'webcal_entry_repeats',
+    'webcal_entry_repeats_not',
+    'webcal_import_data',
     'webcal_site_extras',
     'webcal_reminder_log',
     'webcal_entry');
