@@ -50,7 +50,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 ?>
 
 <table style="border-width:0px; width:100%;">
-<tr><td style="vertical-align:top; width:70%;"><tr><td>
+<tr><td style="vertical-align:top; width:70%;">
 <table style="border-width:0px; width:100%;">
 <tr>
 <?php if ( empty ( $friendly ) ) { ?>
@@ -89,9 +89,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 </table>
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<table style="border-width:0px; width:100%;" cellspacing="0" cellpadding="0">
-<tr><td style="background-color:<?php echo $TABLEBG?>;">
-<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
+<table style="border-width:0px; width:100%; background-color:<?php echo $TABLEBG?>;" cellspacing="1" cellpadding="2">
 <?php } else { ?>
 <table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
 <?php } ?>
@@ -107,7 +105,6 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 </table>
-</td></tr></table>
 <?php } else { ?>
 </table>
 <?php } ?>
