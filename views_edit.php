@@ -65,6 +65,8 @@ if ( $newview ) {
 <?php
   // get list of all users
   $users = get_my_users ();
+  $nonusers = get_nonuser_cals ();
+  $users = array_merge($users,$nonusers);
   // get list of users for this view
   if ( ! $newview ) {
     $sql = "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id";
