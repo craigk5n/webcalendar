@@ -62,6 +62,14 @@ function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
 // Otherwise, someone could hand type in the URL to edit someone else's
 // event.
 
+// If display of participants is disabled, set the participant list
+// to the event creator.  This also works for single-user mode.
+// Basically, if no participants were selected (because there
+// was no selection list available in the form or because the user
+// refused to select any participant from the list), then we will
+// assume the only participant is the current user.
+if ( ! strlen ( $participants[0] ) )
+  $participants[0] = $login;
 
 $duration = ( $duration_h * 60 ) + $duration_m;
 if ( strlen ( $hour ) > 0 ) {
