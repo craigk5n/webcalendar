@@ -244,11 +244,7 @@ if ( ! $friendly ) {
 </tr>
 </table>
 
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<table class="viewl" cellspacing="1" cellpadding="2">
-<?php } else { ?>
-<table class="viewl" cellspacing="0" cellpadding="0">
-<?php } ?>
+<table class="viewl" cellspacing="0" cellpadding="0" style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>;">
 
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
@@ -319,11 +315,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 
 ?>
 
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 </table>
-<?php } else { ?>
-</table>
-<?php } ?>
 
 <br /><br />
 
