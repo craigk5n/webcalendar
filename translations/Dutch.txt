@@ -5,7 +5,11 @@
 # Last update: 29 January 2003
 # check out the tools directory which contains two perl scripts:
 # check_translation.pl will tell you if you have successfully translated all re
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+# No charset specified
+# charset:
+
 
 
 ###############################################
@@ -214,11 +218,6 @@ Add New Category: categorie toevoegen
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 Previous: vorige
@@ -242,11 +241,6 @@ Hello: Dag
 An appointment has been canceled for you by: Er is een afspraak voor u geannuleerd door 
 The subject was: Het betreft afspraak
 Notification: notificatie
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -503,11 +497,6 @@ cont.: cont.
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 to modify the layers settings for the: instellingen aanpassen voor
@@ -537,16 +526,6 @@ Reject: weigeren
 No unapproved events for: geen openstaande afspraken voor
 Unapproved Events: openstaande afspraken
 Public Access: publieke toegang
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: U moet een gebruikersnaam en een wachtwoord invullen.
-Save login via cookies so I don't have to login next time: Bewaar inloggegevens
-Login: aanmelden
-Access public calendar: ga naar publieke agenda
-cookies-note: <B>NB:</B> deze applicatie maakt gebruik van cookies.
 
 
 ###############################################
@@ -655,6 +634,11 @@ Hide activity log: verberg logboek
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -717,6 +701,16 @@ View Type: type
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: U moet een gebruikersnaam en een wachtwoord invullen.
+Save login via cookies so I don't have to login next time: Bewaar inloggegevens
+Login: aanmelden
+Access public calendar: ga naar publieke agenda
+cookies-note: <B>NB:</B> deze applicatie maakt gebruik van cookies.
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Bepaal de naam voor dit overzicht
@@ -727,11 +721,6 @@ You must specify a view name: Bepaal de naam voor dit overzicht
 #
 New Entry: nieuwe afspraak
 Private: prive-afspraak
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -832,11 +821,6 @@ Send Reminder: herinnering sturen
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -852,42 +836,15 @@ Send Reminder: herinnering sturen
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -909,21 +866,6 @@ Color format should be '#RRGGBB': kleur weergeven in #RRGGBB-formaat
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: U heeft geen korte omschrijving ingevuld
@@ -938,32 +880,7 @@ Invalid color: ongeldige kleur
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 

@@ -8,7 +8,11 @@
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=576931
 # Last update: 26 February 2003 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=693581
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+# No charset specified
+# charset:
+
 
 
 ###############################################
@@ -217,11 +221,6 @@ Add New Category: Legg til ny kategori
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 Previous: Forrige
@@ -245,11 +244,6 @@ Hello: Hei
 An appointment has been canceled for you by: En avtale har blitt avlyst for deg av
 The subject was: Emnet var
 Notification: Påminnelse
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -506,11 +500,6 @@ cont.: forts.
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 to modify the layers settings for the: for å modifisere laginnstilling for
@@ -540,16 +529,6 @@ Reject: Avvis
 No unapproved events for: Ingen ikke-godkjente aktiviteter for
 Unapproved Events: Ikke-godkjente aktiviteter
 Public Access: Offentlig tilgang
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Vennligst oppgi brukernavn og passord
-Save login via cookies so I don't have to login next time: Husk brukernavn til neste gang
-Login: Logg inn
-Access public calendar: Gå til offentlig kalender
-cookies-note: <B>OBS:</B> Programmet krever at "cookies" er slått på
 
 
 ###############################################
@@ -658,6 +637,11 @@ Hide activity log: Skjul aktivitetslogg
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -720,6 +704,16 @@ View Type: Oversiktstype
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: Vennligst oppgi brukernavn og passord
+Save login via cookies so I don't have to login next time: Husk brukernavn til neste gang
+Login: Logg inn
+Access public calendar: Gå til offentlig kalender
+cookies-note: <B>OBS:</B> Programmet krever at "cookies" er slått på
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Du må angi et oversiktnavn
@@ -730,11 +724,6 @@ You must specify a view name: Du må angi et oversiktnavn
 #
 New Entry: Ny aktivitet
 Private: Privat
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -835,11 +824,6 @@ Send Reminder: Send påminnelse
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -855,42 +839,15 @@ Send Reminder: Send påminnelse
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -912,21 +869,6 @@ Color format should be '#RRGGBB': Fargen skal skrives som '#RRGGBB'
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Du har ikke oppgitt noen kort beskrivelse
@@ -941,32 +883,7 @@ Invalid color: Ugyldig farge
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 

@@ -5,7 +5,11 @@
 # Translator: Pedro Del Medico <pdmp@interhoster.com>
 #             Eduardo Dominguez <lalo_notthisplease@teligens.com>
 # Last update: 26 June 2000
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+# No charset specified
+# charset:
+
 
 
 ###############################################
@@ -282,11 +286,6 @@ Add New Category: Agregar Nueva Categoría
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 Previous: Previo
@@ -312,11 +311,6 @@ Hello: Hola
 An appointment has been canceled for you by: Una cita/evento suyo ha sido cance
 The subject was: El título era
 Notification: Notificación
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -621,11 +615,6 @@ Enabling: Habilitando
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 #
@@ -657,16 +646,6 @@ Reject: Rechazar
 No unapproved events for: No existen sin aprobar para
 Unapproved Events: Eventos no Aprobados
 Public Access: Acceso Público
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Usted debe ingresar un Nombre de usuario y
-Save login via cookies so I don't have to login next time: Guardar datos via Co
-Login: Entrar
-Access public calendar: Accesar calendario público
-cookies-note: <B>Nota:</B> Esta aplicación requiere tener habilitado cookies.
 
 
 ###############################################
@@ -779,6 +758,11 @@ Hide activity log: Esconder bitácora de actividad
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -841,6 +825,16 @@ View Type: Ver Tipo
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: Usted debe ingresar un Nombre de usuario y
+Save login via cookies so I don't have to login next time: Guardar datos via Co
+Login: Entrar
+Access public calendar: Accesar calendario público
+cookies-note: <B>Nota:</B> Esta aplicación requiere tener habilitado cookies.
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 #
@@ -853,11 +847,6 @@ View Type: Ver Tipo
 #
 New Entry: Nuevo Registro
 Private: Privado
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -966,11 +955,6 @@ Send Reminder: Enviar Recordatorio
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -986,42 +970,15 @@ Send Reminder: Enviar Recordatorio
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -1045,21 +1002,6 @@ Color format should be '#RRGGBB': Formato de Color debe ser Hexadecimal '#RRGGB
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Usted no ha ingresado una Breve Descr
@@ -1076,32 +1018,7 @@ Invalid color: Color inválido
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 

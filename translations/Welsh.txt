@@ -17,7 +17,11 @@
 #
 #
 #
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+# No charset specified
+# charset:
+
 
 
 ###############################################
@@ -288,11 +292,6 @@ Add New Category: Ychwanegwch Dosbarth newydd
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 Previous: Blaenorol
@@ -318,11 +317,6 @@ Hello: Helo
 An appointment has been canceled for you by: Mae digwyddiad wedi ei dileu drostoch gan
 The subject was: Y pwnc oedd
 Notification: Rhybydd
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -609,11 +603,6 @@ default-category-help: Mae hwn yn dynodi pa dosbarth y bydd digwyddiad newydd yn
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 #
@@ -645,16 +634,6 @@ Reject: Gwrthod
 No unapproved events for: Dim digwyddiad heb cymeradwyaeth gan
 Unapproved Events: Digwyddiadau heb Cymeradwyaeth
 Public Access: Calendr Cyhoeddus
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Rhaid i chi cynnig mewngofnodiad a gair cydd
-Save login via cookies so I don't have to login next time: Arbedwch fy mewngofnodiad trwy 'cookies' fel nad oes raid i mi mewngofnodi y tro nesaf
-Login: Mewngofnodiad
-Access public calendar: Calendr Cyhoeddus
-cookies-note: <B>Note:</B> Mae'n hanfodol bod 'cookies' yn gweithio i'r meddalwedd yma redeg.
 
 
 ###############################################
@@ -765,6 +744,11 @@ Hide activity log: Cyddio cofnod gweithgarwch
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -827,6 +811,16 @@ View Type: Math Golwg
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: Rhaid i chi cynnig mewngofnodiad a gair cydd
+Save login via cookies so I don't have to login next time: Arbedwch fy mewngofnodiad trwy 'cookies' fel nad oes raid i mi mewngofnodi y tro nesaf
+Login: Mewngofnodiad
+Access public calendar: Calendr Cyhoeddus
+cookies-note: <B>Note:</B> Mae'n hanfodol bod 'cookies' yn gweithio i'r meddalwedd yma redeg.
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 #
@@ -839,11 +833,6 @@ View Type: Math Golwg
 #
 New Entry: Digwyddiad newydd
 Private: Preifat
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -952,11 +941,6 @@ Send Reminder: Anfoner atgofiad
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -972,42 +956,15 @@ Send Reminder: Anfoner atgofiad
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -1029,21 +986,6 @@ Color format should be '#RRGGBB': Mae angen fformat lliw megis '#RRGGBB'
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Mae angen Disgrifiad Byr
@@ -1058,32 +1000,7 @@ Invalid color: Lliw annerbyniol
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 

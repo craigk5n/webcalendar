@@ -3,7 +3,11 @@
 # There cannot be a ":" in the English text.
 # Author: Joonyup Jeon <goodwill@wowbook.com>
 # Last updated: 07 June 2000
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+# No charset specified
+# charset:
+
 
 
 ###############################################
@@ -560,11 +564,6 @@ Are you sure you want to delete this entry?: 정말로 이 항목을 지우시겠습니까?
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 #
@@ -596,11 +595,6 @@ Hello: 안녕!
 # << MISSING >>
 # The subject was:
 Notification: 통보
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -1031,11 +1025,6 @@ Help Index: 도움말 목차
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 #
@@ -1093,18 +1082,6 @@ Unapproved Events: 미승인 행사
 #
 # << MISSING >>
 # Public Access:
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: 아이디와 비밀번호를 입력해야 합니다.
-Save login via cookies so I don't have to login next time: 다음번에 로그인 할 필요가 없도록 로그인 정보 저장.
-Login: 로그인
-#
-# << MISSING >>
-# Access public calendar:
-cookies-note: <B>주:</B> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
 
 
 ###############################################
@@ -1277,6 +1254,11 @@ Edit entry: 항목 편집
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -1353,6 +1335,18 @@ Edit entry: 항목 편집
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: 아이디와 비밀번호를 입력해야 합니다.
+Save login via cookies so I don't have to login next time: 다음번에 로그인 할 필요가 없도록 로그인 정보 저장.
+Login: 로그인
+#
+# << MISSING >>
+# Access public calendar:
+cookies-note: <B>주:</B> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 #
@@ -1365,11 +1359,6 @@ Edit entry: 항목 편집
 #
 New Entry: 새 항목
 Private: 개인용
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -1494,11 +1483,6 @@ Dec: 12월
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -1514,42 +1498,15 @@ Dec: 12월
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -1585,21 +1542,6 @@ Color format should be '#RRGGBB': 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF00
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: 요약 설명을 입력하지 않았습니다.
@@ -1618,32 +1560,7 @@ You have not entered a valid time of day: 유효한 일자/시각이 아닙니다.
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 
