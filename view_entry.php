@@ -291,7 +291,7 @@ if ( $res ) {
           $days_per_month[$thismonth];
         if ( $cal_type == 'monthlyByDay' ) {
           $dow1 = date ( "w", mktime ( 3, 0, 0, $thismonth, 1, $thisyear ) );
-          $days_in_first_week = ( 7 - $dow1 ) % 7;
+          $days_in_first_week = ( 7 - $dow1 );
           $whichWeek = floor ( ( $thisday - $days_in_first_week ) / 7 );
           if ( $thisdow >= $dow1 )
             $whichWeek++;

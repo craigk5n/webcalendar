@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixed Bug 1007496: Repeat Type off-by-one in Event Details
   - Fixed bug: iCal import would fail if the file included section with
     timezone info in it.
   - Patch 1002156: improved html for event popups
