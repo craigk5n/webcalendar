@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixing up styles in views
   - Fixed bug 1048157: user select in managing views
   - Fixing login.php so it's both xHTML 1.0T valid, and properly handles
   translations

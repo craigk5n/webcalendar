@@ -130,10 +130,9 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
       echo "<tr><th class=\"today\"";
     } else {
-	echo "<tr><th";
+	echo "<tr><th class=\"row\">";
     }
-    echo " style=\"width:10%;\">" .
-      $weekday . " " .
+    echo $weekday . "&nbsp;" .
       round ( date ( "d", $date ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
       $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
@@ -161,7 +160,6 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
   }
 
   echo "</table>\n<br /><br />\n";
-  
 }
 
 
