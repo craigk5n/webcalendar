@@ -29,9 +29,9 @@ $prevdate = date ( "Ym", $prev ) . "01";
 <div style="text-align:center;">
 <table style="border-width:0px;">
 <tr>
-<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $prevdate?>"><img src="leftarrowsmall.gif" style="width:18px; height:18px; border-width:0px;" alt="<?php etranslate("Previous")?>" /></a></td>
+<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $prevdate?>"><img src="leftarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Previous")?>" /></a></td>
 <th colspan="5"><?php echo month_name ( $thismonth - 1 ) . " " . $thisyear;?></th>
-<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif" style="width:18px; height:18px; border-width:0px;" alt="<?php etranslate("Next")?>" /></a></td>
+<td><a href="datesel.php?form=<?php echo $form?>&fday=<?php echo $fday?>&fmonth=<?php echo $fmonth?>&fyear=<?php echo $fyear?>&date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif" class="prevnextsmall" alt="<?php etranslate("Next")?>" /></a></td>
 </tr>
 <?php
 echo "<tr>";
