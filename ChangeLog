@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Converting day.php over to new style system (particularly the header)
   - Making code in activity log easier to read both before & after rendering
   - Disallow includes from being called directly
   - Fixed several security issues reported by Joxean Koret 

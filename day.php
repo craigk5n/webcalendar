@@ -51,19 +51,16 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 
 <table style="border-width:0px; width:100%;">
 <tr><td style="vertical-align:top; width:70%;">
-<table style="border-width:0px; width:100%;">
-<tr>
+<div style="border-width:0px; width:100%;">
 <?php if ( empty ( $friendly ) ) { ?>
-<td style="text-align:left;"><a title="<?php etranslate("Previous"); ?>" href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous"); ?>" /></a></td>
+<a title="<?php etranslate("Next"); ?>" class="next" href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img src="rightarrow.gif" alt="<?php etranslate("Next"); ?>" /></a>
+<a title="<?php etranslate("Previous"); ?>" class="prev" href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous"); ?>" /></a>
 <?php } ?>
-<td class="dayviewtitle">
-<span class="date">
-<?php
+<div class="title">
+<span class="date"><?php
   echo date_to_str ( $nowYmd );
-?>
-</span>
-<span class="user">
-<?php
+?></span>
+<span class="user"><?php
   // display current calendar's user (if not in single user)
   if ( $single_user == "N" ) {
     echo "<br />";
@@ -73,20 +70,15 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
     echo "<br />-- " . translate("Admin mode") . " --";
   if ( $is_assistant )
     echo "<br />-- " . translate("Assistant mode") . " --";
-?>
-</span>
+?></span>
 <?php
   if ( $categories_enabled == "Y" ) {
     echo "<br />\n<br />\n";
     print_category_menu('day', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly);
   }
 ?>
-</td>
-<?php if ( empty ( $friendly ) ) { ?>
-<td style="text-align:right;"><a title="<?php etranslate("Next"); ?>" href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img class="prevnext" src="rightarrow.gif" alt="<?php etranslate("Next"); ?>" /></a></td>
-<?php } ?>
-</tr>
-</table>
+</div>
+</div>
 
 <table class="glance" cellspacing="0" cellpadding="0">
 <?php
@@ -102,7 +94,7 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 <td style="vertical-align:top;">
 <!-- START MINICAL -->
 <div style="text-align:right;">
-<table class="dayviewminical" cellspacing="1" cellpadding="2">
+<table class="minical" cellspacing="1" cellpadding="2">
 <tr><th colspan="7" class="date"><?php echo $thisday?></th></tr>
 <tr class="monthnav">
 <?php if ( ! $friendly ) { ?>
@@ -145,11 +137,11 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
 		echo "<td";
 		if ( date ( "Ymd", $date ) == date ( "Ymd" ) ) {
-			// This is today
+			//today
 			echo " id=\"today\"";
 		}
         	if ( date ( "Ymd", $date ) == date ( "Ymd", $now ) ) {
-			// This is the day we're looking at
+			//the day we're looking at
 			echo " class=\"selectedday\"";
 		}
 		echo ">";
@@ -177,11 +169,11 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
 		echo "<td";
 		if ( date ( "Ymd", $date ) == date ( "Ymd" ) ) {
-			// This is today
+			//today
 			echo " id=\"today\"";
 		}
         	if ( date ( "Ymd", $date ) == date ( "Ymd", $now ) ) {
-			// This is the day we're looking at
+			//the day we're looking at
 			echo " class=\"selectedday\"";
 		}
 		echo ">";
@@ -204,9 +196,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 <?php if ( ! empty ( $eventinfo ) && empty ( $friendly ) ) echo $eventinfo; ?>
 
 <?php if ( empty ( $friendly ) ) {
-
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
-
 ?>
 
 <br /><br />
