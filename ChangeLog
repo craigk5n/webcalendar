@@ -1,4 +1,5 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Added patch 900968: Add outlook-style availability popup
  - Fixed bug 1145342: Category selected when adding event is not transferred
  to edit_entry page.
  - Revisited Bug 986774: Editing Category for and event as Assistant. This fix
