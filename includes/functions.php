@@ -2048,7 +2048,9 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
     ( $minute > 0 ? "&minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&defusers=$user&user=$user" ) .
     "\"><img src=\"new.gif\" alt=\"" .
-    translate("New Entry") . "\" style=\"border-width:0px; width:10px; height:10px; text-align:right;\" />" .  "</a>";
+    translate("New Entry") . "\" width=\"10\" height=\"10\" " .
+    "alt=\"" . translate("New Entry") . "\" border=\"0\" align=\"right\" />" .
+    "</a>";
 }
 
 
