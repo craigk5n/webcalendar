@@ -1,5 +1,12 @@
 Version 1.0RC1/CVS+dev (?? ??? 2004)
-  - Second pass at Bug Fix 1109141: Added empty and "none" testing of language pref
+  - Security fix: Fixed protential problem if a user attempts to login
+    with a username that has charaters that will affect the database.
+    Example, attempt to login with username:
+      "'x' or cal_login in (drop table x) or cal_login='x"
+    For databases that allow subqueries (Oracle, but not MySQL), this
+    would drop the table.
+  - Second pass at Bug Fix 1109141: Added empty and "none" testing of
+    language pref
   - Changed encode/decode functions used in generating session cookies
     to use md5 of install_password rather than various server variables.
     (Hoping this may help with IE login problems...)
@@ -13,8 +20,8 @@ Version 1.0RC1/CVS+dev (?? ??? 2004)
   - Fixed bug 1061746: layout issues with view_d.php
   - If php.ini setting for "file_uploads" is not enabled, then indicate
     this on the import page (import.php).
-  - Streamlined layers.php & made layers only be displayed when layers are
-  enabled
+  - Streamlined layers.php & made layers only be displayed when layers
+    are enabled
   - Updated Admin docs for content & xhtml/css validity
   - Adding Styling docs (still under construction.. feel free to contribute)
   - Adding title attribute to links
