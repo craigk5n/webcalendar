@@ -90,8 +90,8 @@ if ( $readonly == 'Y' ) {
       } else if ( $time < 0 ) {
         $time += 240000;
         $gmt = mktime ( 3, 0, 0, $month, $day, $year );
- $gmt -= $ONE_DAY;
- $month = date ( "m", $gmt );
+        $gmt -= $ONE_DAY;
+        $month = date ( "m", $gmt );
         $day = date ( "d", $gmt );
         $year = date ( "Y", $gmt );
       }
@@ -163,10 +163,13 @@ if ( $readonly == 'Y' ) {
 } else {
   // New event.
   $id = 0; // to avoid warnings below about use of undefined var
-  if ( ! isset ( $hour ) )
-    $time = -1;
-  else
+  // Anything other then testing for strlen breaks either hour=0 or no hour in URL
+  if ( strlen ( $hour ) ) {
     $time = $hour * 100;
+  } else {
+    $time = -1;
+    $hour = -1;
+  }
   if ( ! empty ( $defusers ) ) {
     $tmp_ar = explode ( ",", $defusers );
     for ( $i = 0; $i < count ( $tmp_ar ); $i++ ) {
