@@ -61,7 +61,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <table style="border-width:0px; width:100%;">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_w.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
+<a href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
 </td>
 <td style="text-align:center; color:<?php echo $H2COLOR?>;">
@@ -76,7 +76,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 </td>
 <td style="text-align:right;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_w.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<a href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 </td></tr>
 </table>
@@ -193,7 +193,7 @@ if ( empty ( $friendly ) )
   echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<a class=\"navlinks\" href=\"view_w.php?id=$id&date=$date&friendly=1\" " .
+  echo "<a class=\"navlinks\" href=\"view_w.php?id=$id&amp;date=$date&amp;friendly=1\" " .
     "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</a>\n";
