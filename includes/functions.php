@@ -303,7 +303,8 @@ function do_redirect ( $url ) {
   if ( empty ( $SERVER_SOFTWARE ) )
     $SERVER_SOFTWARE = $_SERVER["SERVER_SOFTWARE"];
   //echo "SERVER_SOFTWARE = $SERVER_SOFTWARE <br />\n"; exit;
-  if ( substr ( $SERVER_SOFTWARE, 0, 5 ) == "Micro" ) {
+  if ( ( substr ( $SERVER_SOFTWARE, 0, 5 ) == "Micro" ) ||
+    ( substr ( $SERVER_SOFTWARE, 0, 3 ) == "WN/" ) ) {
     echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html
     PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
     \"DTD/xhtml1-transitional.dtd\">

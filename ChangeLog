@@ -1,4 +1,5 @@
 Version 0.9.47/CVS+dev (?? ??? 2004)
+  - Update do_redirect to use meta-refresh work-around for WN web server.
   - Pointing 'account' option for non-admin users to edit_users.php & making indentation of css & php code easier to read by using tabs
   - Making the trailer not be displayed in edit_user.php (since it's always in an iframe now)
   - Fixing users.php so it only shows a single user's info when the user isn't an admin
