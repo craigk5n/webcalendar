@@ -263,7 +263,7 @@ table.standard th {
 
 <?php // 
 // ALL STYLES BELOW THIS LINE ARE NEW as of 8 July 2004
-// ================== MISC. 
+// ================== MISC. ?>
 <?php // formerly .monthlink ?>
 td.month a {
 	font-size: 13px;
