@@ -10,7 +10,9 @@
 				$res = dbi_query ( "SELECT cal_group_id, cal_name FROM webcal_group ORDER BY cal_name" );
 				if ( $res ) {
 					while ( $row = dbi_fetch_row ( $res ) ) {
-					echo "<li><a href=\"group_edit.php?id=" . $row[0] . "\" target=\"grpiframe\" onclick=\"javascript:show('grpiframe');\">" . $row[1] . "</a></li>\n";
+					echo "<li><a title=\"" . 
+						$row[1] . "\" href=\"group_edit.php?id=" . $row[0] . "\" target=\"grpiframe\" onclick=\"javascript:show('grpiframe');\">" . 
+						$row[1] . "</a></li>\n";
 					}
 					dbi_free_result ( $res );
 				}
