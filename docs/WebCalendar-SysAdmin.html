@@ -872,6 +872,29 @@ input path/table-ibase.sql;</strong></pre>
      		the public calendar.</li>
   		</ol>
 		</dd>
+
+	<dt>How can I add holidays to the calendar?</dt>
+	<dd>There is no built-in support for holidays because it is
+	not necessary.  You can add holidays into WebCalendar by importing
+	one of the many iCal holiday files that are freely available.
+	A good resource for free iCal files is
+	<a href="http://www.icalshare.com">iCalShare
+        <img src="newwin.gif" alt="new" class="newwin" /></a>.
+	For example, the U.S. holiday ics file can be downloaded from:
+	<blockquote>
+	<a href="http://icalshare.com/article.php?story=20020912105939521">http://icalshare.com/article.php?story=20020912105939521
+        <img src="newwin.gif" alt="new" class="newwin" /></a>
+	</blockquote>
+	If you don't want each individual user to have to import
+	the holiday calendar, you can use nonuser calendars.
+	First, make sure nonuser calendars are enabled in your
+	system settings.  Then, from Admin->Users, you can
+	access nonuser calendars.  Create a new nonuser calendar
+	(such as "usholidays").  Then, notify your users that they
+	can add this nonuser calendar as a layer to their own
+	calendar in order to see the holidays.
+	</dd>
+
 	<dt>Why are deleted events still present in the database?</dt>
 		<dd>When you delete an event from your calendar, it is not
   		deleted from the database.  Instead, it is marked as deleted.
@@ -962,9 +985,7 @@ input path/table-ibase.sql;</strong></pre>
 		<pre><tt>perl check_translation.pl French</tt></pre>
    		Post a copy of your translation to the 
 		<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> for WebCalendar.</dd>
-	<dt>I get an error about binhex() being an unsupported function.  What does that mean?</dt>
-		<dd>The <tt>binhex()</tt> function was not in the early PHP 3.0.X releases.  You
-   		need to upgrade to a more recent PHP3 (or use PHP4).</dd>
+
 <!-- END FAQ -->
 	</dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
