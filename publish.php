@@ -509,7 +509,7 @@ function export_ical () {
     export_alarm_ical($uid,$description);
 
     /* Goodbye event */
-    echo "END:VEVENT\n";
+    echo "END:VEVENT\r\n";
   }
 
   if ($count > 0)
