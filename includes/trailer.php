@@ -244,7 +244,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 <br />
 <?php if ( ( $login != "__public__" ) &&
          ( $allow_view_other != "N" || $is_admin ) ) { ?>
-<span style="font-weight:bold;"><?php etranslate("Views")?>: </span>
+<span style="font-weight:bold; font-size: 14px;"><?php etranslate("Views")?>: </span>
 <?php
   for ( $i = 0; $i < count ( $views ); $i++ ) {
     if ( $i > 0 )
@@ -303,7 +303,7 @@ if ( $res ) {
     if ( $found_report )
       echo " | ";
     else
-      echo "<span style=\"font-weight:bold;\">" . 
+      echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
 	translate("Reports") . ":</span> ";
     echo "<a title=\"" . 
 	htmlentities ( $row[0] ) . "\" href=\"report.php?report_id=$row[1]$u_url\">" . 
@@ -316,7 +316,7 @@ if ( $login != "__public__" ) {
   if ( $found_report )
     echo " | ";
   else
-    echo "<span style=\"font-weight:bold;\">" . 
+    echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
 	translate("Reports") . ":</span> ";
   echo "<a title=\"" . 
 	translate("Manage Reports") . "\" class=\"nav\" href=\"report.php\">" . 
@@ -334,12 +334,12 @@ if ( ! $use_http_auth ) {
 	else
 		$login_url = "login.php?return_path=$login_return_path";
 if ( strlen ( $login ) && $login != "__public__" ) {
-	echo "<span style=\"font-weight:bold;\">" . 
-		translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 
+	echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
+		translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a class=\"nav\" title=\"" . 
 		translate("Logout") . "\" href=\"$login_url\">" . 
 		translate("logout") . "</a>)<br />\n";
   } else {
-	  echo "<span style=\"font-weight:bold;\">" . 
+	  echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
 		translate("Current User") . ":</span>&nbsp;" . 
 		translate("Public Access") . "&nbsp;(<a title=\"" . 
 		translate("Login") . "\" href=\"$login_url\">" . 
@@ -348,7 +348,7 @@ if ( strlen ( $login ) && $login != "__public__" ) {
 }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
   if ( $has_boss || ! empty ( $admincals[0] ) ) {
-    echo "<span style=\"font-weight:bold;\">";
+    echo "<span style=\"font-weight:bold; font-size: 14px;\">";
     etranslate("Manage calendar of");
     echo ":</span>&nbsp;";
     $grouplist = user_get_boss_list ($login);
