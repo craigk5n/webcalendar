@@ -1,4 +1,5 @@
 <script type="text/javascript">
+<!-- <![CDATA[
 function selectDate ( day, month, year ) {
   // get currently selected month/year
   monthobj = eval ( 'document.purgeform.' + month );
@@ -14,4 +15,5 @@ function selectDate ( day, month, year ) {
     "&amp;month=" + month + "&amp;year=" + year + "&amp;date=" + date;
   var colorWindow = window.open(url,"DateSelection","width=300,height=200,resizable=yes,scrollbars=yes");
 }
+//]]> -->
 </script>

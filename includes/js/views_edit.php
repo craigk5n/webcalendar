@@ -1,4 +1,5 @@
 <script type="text/javascript">
+<!-- <![CDATA[
 function selectUsers () {
   url = "usersel.php?form=editviewform&amp;listid=3&amp;users=";
   // add currently selected users
@@ -15,4 +16,5 @@ function selectUsers () {
   window.open ( url, "UserSelection",
     "width=500,height=500,resizable=yes,scrollbars=yes" );
 }
+//]]> -->
 </script>

@@ -1,5 +1,5 @@
 <script type="text/javascript">
-
+<!-- <![CDATA[
 function valid_color ( str ) {
   var ch, j;
   var valid = "0123456789abcdefABCDEF";
@@ -34,5 +34,5 @@ function selectColor ( color ) {
   url = "colors.php?color=" + color;
   var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
 }
-
+//]]> -->
 </script>

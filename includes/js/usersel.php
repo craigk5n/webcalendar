@@ -3,6 +3,7 @@ global $form,$listid,$groups;
 ?>
 
 <script type="text/javascript">
+<!-- <![CDATA[
 function OkButton () {
   var parentlist = window.opener.document.<?php echo $form?>.elements[<?php echo $listid?>];
   var thislist = document.forms[0].elements[0];
@@ -84,5 +85,5 @@ function selectGroupMembers () {
 function deselectGroupMembers () {
   toggleGroup ( false );
 }
-
+//]]> -->
 </script>
