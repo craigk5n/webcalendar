@@ -2919,7 +2919,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '', $friendly = '' )
   global $categories, $category_owners, $user, $login;
 
   if ( $friendly == '' ) {
-    echo "<form action=\"{$form}.php\" method=\"get\" name=\"selectcategory\">\n";
+    echo "<form action=\"{$form}.php\" method=\"get\" name=\"SelectCategory\">\n";
     if ( ! empty($date) ) echo "<input type=\"hidden\" name=\"date\" value=\"$date\" />\n";
     if ( ! empty ( $user ) && $user != $login )
       echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";

@@ -7,7 +7,7 @@
 <br style="clear:both;" />
 <hr style="clear:both;" />
 <table style="border-width:0px; width:100%;" cellpadding="0" cellspacing="0">
-<form action="month.php" method="get" name="selectmonth">
+<form action="month.php" method="get" name="SelectMonth">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -50,7 +50,7 @@
 </form>
 
 
-<form action="week.php" method="get" name="selectweek">
+<form action="week.php" method="get" name="SelectWeek">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -101,7 +101,7 @@
 </form>
 
 
-<form action="year.php" method="get" name="selectyear">
+<form action="year.php" method="get" name="SelectYear">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
