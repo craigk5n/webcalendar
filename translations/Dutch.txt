@@ -2,7 +2,8 @@
 # another language.  The format is "English text: translated text"
 # There cannot be a ":" in the English text.
 # Translated by: Marcel van der Broom <marcel@hsdev.com>
-# Last updated: 09 June 2000
+# Updated by: Klaus Spithost <k.spithost@it-works.nl>
+# Last updated: 27 June 2000
 
 # Title is what will appear in the title bar for pages
 Title: Web Kalender
@@ -33,7 +34,7 @@ January: Januari
 February: Februari
 March: Maart
 April: April
-May_: Mei
+May: Mei
 June: Juni
 July: Juli
 August: Augustus
@@ -41,6 +42,8 @@ September: September
 October: Oktober
 November: November
 December: December
+
+hours: uren
 
 Jan: Jan
 Feb: Feb
@@ -56,6 +59,8 @@ Nov: Nov
 Dec: Dec
 
 Language: Taal
+Your browser default language is: De standaardtaal van je browser is
+My Calendar: Mijn agenda
 Generate printer-friendly version: Maak printer-vriendelijke versie
 Printer Friendly: Printer Vriendelijk
 Go: Go
@@ -64,8 +69,10 @@ Another User's Calendar: Agenda andere gebruiker
 Search: Zoeken
 Add New Entry: Nieuw item toevoegen
 New Entry: Nieuw item
-Admin: Admin
+Admin: Onderhoud
 Preferences: Voorkeuren
+Edit Layers: Lagen aanpassen
+Disable Layers: Lagen uitzetten
 Users: Gebruikers
 Account: Account
 Current User: Huidige gebruiker
@@ -102,7 +109,22 @@ High: Hoog
 Access: Toegang
 Public: Publiek
 Confidential: Vertrouwelijk
+Send Reminder: Verstuur herinnering
+days: dagen
+before event: voor gebeurtenis
 Participants: Deelnemers
+Repeat Type: Herhalings type
+None: Geen
+Daily: Dagelijks
+Weekly: Wekelijks
+Monthly: Maandelijks 
+by day: per dag
+by date: per datum
+Yearly: Jaarlijks
+Repeat End Date: Herhalings slotdatum
+Repeat Day: Herhalingsdag
+for weekly: bij wekelijks
+Frequency: Frequentie
 Created by: Aangemaakt door
 Updated: Gewijzigd
 Save: Bewaar
@@ -202,3 +224,22 @@ Preferred view: Weergave per
 Colors: Kleuren
 colors-help: Alle kleuren moeten worden aangegeven als  "#RRGGBB" hexadecimaal formaat waarin "RR" de hexadecimale waarde is voor rood, "GG" voor groen en "BB" voor blauw.
 
+Layers: Lagen
+Enabled: ingeschakeld
+Disabled: uitgeschakeld
+Layers are currently: Lagen zijn momenteel
+Layer: Laag
+Source: Bron
+Color: Kleur
+Duplicates: Dubbelen
+Edit layer: Wijzig laag
+Delete layer: Wis laag
+Add layer: Laag toevoegen
+Show layer events that are the same as your own: Toon lagen die hetzelfde zijn als bij jezelf
+
+Email: E-mail
+Event reminders: Gebeurtenis herinneringen
+Events added to my calendar: Gebeurtenissen toegevoegd aan mijn agenda
+Events updated on my calendar: Gebeurtenissen bijgewerkt op mijn agenda
+Events removed from my calendar: Gebeurtenissen verwijderd van mijn agenda
+Event rejected by participant: Gebeurtenis geweigerd door deelnemer

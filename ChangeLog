@@ -1,4 +1,5 @@
 Version 0.9.31dev (???)
+  - Updated Dutch translation.
   - Added ability to disable some of the standard event fields (access,
     priority, participants, repeating) to simplify interface for some
     users.  Set in includes/config.inc with $disable_priority_field,
