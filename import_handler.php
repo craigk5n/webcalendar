@@ -33,22 +33,25 @@ if ($file['size'] > 0) {
       include "import_palmdesktop.php";
       if (delete_palm_events($login) != 1) $errormsg = "Error deleting palm events from webcalendar.";
       $data = parse_palmdesktop($file['tmp_name'], $exc_private);
+      $type = 'palm';
       break;
 
     case VCAL:
       include "import_vcal.php";
       $data = parse_vcal($file['tmp_name']);
+      $type = 'vcal';
       break;
 
     case ICAL:
       include "import_ical.php";
       $data = parse_ical($file['tmp_name']);
+      $type = 'ical';
       break;
   }
 
   $count_con = $count_suc = $error_num = 0;
   if (! empty ($data) && empty ($errormsg) ) {
-    import_data ( $data, $doOverwrite );
+    import_data ( $data, $doOverwrite, $type );
     echo "<p>" . translate("Import Results") . "</p>\n<p>" .
       translate("Events successfully imported") . " : $count_suc<br />\n";
     echo translate("Events from prior import marked as deleted") .
@@ -105,14 +108,31 @@ $Entry[Repeat][RepeatDays] =  For Weekly: What days to repeat on (7 characters..
 // TODO: Figure out category from $Entry[Category] or have a drop-down asking which
 //       category to import into.
 //
-function import_data ( $data, $overwrite ) {
+function import_data ( $data, $overwrite, $type ) {
   global $login, $count_con, $count_suc, $error_num, $ImportType, $LOG_CREATE;
   global $single_user, $single_user_login, $allow_conflicts;
-  global $numDeleted;
+  global $numDeleted, $errormsg;
 
   $oldUIDs = array ();
   $oldIds = array ();
   $firstEventId = 0;
+  $importId = 1;
+
+  // Generate a unique import id
+  $res = dbi_query ( "SELECT MAX(cal_import_id) FROM webcal_import" );
+  if ( $res ) {
+    if ( $row = dbi_fetch_row ( $res ) ) {
+      $importId = $row[0] + 1;
+    }
+    dbi_free_result ( $res );
+  }
+  $sql = "INSERT INTO webcal_import ( cal_import_id, cal_name, " .
+    "cal_date, cal_type, cal_login ) VALUES ( $importId, NULL, " .
+    date("Ymd") . ", '$type', '$login' )";
+  if ( ! dbi_query ( $sql ) ) {
+    $errormsg = translate("Database error") . ": " . dbi_error ();
+    return;
+  }
 
   foreach ( $data as $Entry ){
 
@@ -293,8 +313,9 @@ function import_data ( $data, $overwrite ) {
       // Now add to webcal_import_data
       if ( ! $updateMode ) {
         if ($ImportType == "PALMDESKTOP") {
-          $sql = "INSERT INTO webcal_import_data VALUES ( $id, '" . $login . 
-            "', 'palm', '" .  $Entry[RecordID] . "' )";
+          $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
+            "cal_login, cal_import_type, cal_external_id ) VALUES ( " .
+            "$importId, $id, '$login', 'palm', '$Entry[RecordID]' )";
           $sqlLog .= $sql . "<br />\n";
           if ( ! dbi_query ( $sql ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
@@ -304,9 +325,10 @@ function import_data ( $data, $overwrite ) {
         else if ($ImportType == "VCAL") {
           $uid = empty ( $Entry[UID] ) ? "null" : "'$Entry[UID]'";
           if ( strlen ( $uid ) > 200 )
-            $uid = "null";
-          $sql = "INSERT INTO webcal_import_data VALUES ( $id, '" . $login . 
-            "', 'vcal', $uid )";
+            $uid = "NULL";
+          $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
+            "cal_login, cal_import_type, cal_external_id ) VALUES ( " .
+            "$importId, $id, '$login', 'vcal', $uid )";
           $sqlLog .= $sql . "<br />\n";
           if ( ! dbi_query ( $sql ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
@@ -316,9 +338,10 @@ function import_data ( $data, $overwrite ) {
         else if ($ImportType == "ICAL") {
           $uid = empty ( $Entry[UID] ) ? "null" : "'$Entry[UID]'";
           if ( strlen ( $uid ) > 200 )
-            $uid = "null";
-          $sql = "INSERT INTO webcal_import_data VALUES ( $id, '" . $login . 
-            "', 'ical', $uid )";
+            $uid = "NULL";
+          $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
+            "cal_login, cal_import_type, cal_external_id ) VALUES ( " .
+            "$importId, $id, '$login', 'ical', $uid )";
           $sqlLog .= $sql . "<br />\n";
           if ( ! dbi_query ( $sql ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
@@ -403,7 +426,6 @@ function import_data ( $data, $overwrite ) {
       echo "<H2><FONT COLOR=\"$H2COLOR\">". translate("Error") .
         "</H2></FONT>\n<BLOCKQUOTE>\n";
       echo $error . "</BLOCKQUOTE><BR>\n";
-echo "<hr>$sqlLog\n";
     }
 
     // Conflicting
@@ -454,18 +476,13 @@ echo "<hr>$sqlLog\n";
   if ( $overwrite && count ( $oldUIDs ) > 0 ) {
     // We could do this with a single SQL using sub-select, but
     // I'm pretty sure MySQL does not support it.
-    if ( $ImportType == 'ICAL' )
-      $type = 'ical';
-    else if ( $ImportType == 'VCAL' )
-      $type = 'vcal';
-    else
-      $type = 'palm';
     $old = array_keys ( $oldUIDs );
     for ( $i = 0; $i < count ( $old ); $i++ ) {
-      $res = dbi_query ( "SELECT cal_id FROM webcal_import_data WHERE " .
+      $sql = "SELECT cal_id FROM webcal_import_data WHERE " .
         "cal_import_type = '$type' AND " .
         "cal_external_id = '$old[$i]' AND " .
-        "cal_id < $firstEventId" );
+        "cal_id < $firstEventId";
+      $res = dbi_query ( $sql );
       if ( $res ) {
         while ( $row = dbi_fetch_row ( $res ) ) {
           $oldIds[] = $row[0];

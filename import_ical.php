@@ -195,7 +195,8 @@ function format_ical($event) {
   } else if ( empty ( $fevent[Duration] ) ) {
     $fevent[Duration] = ($fevent[EndTime] - $fevent[StartTime]) / 60;
   }
-  if ($fevent[Duration] == '1440') {
+  if ( $fevent[Duration] == '1440' ||
+    preg_match ( "/\d\d\d\d\d\d\d\d$/", $event['dtstart'], $pmatch ) ) {
     //All day (untimed)
     $fevent[Duration] = '0';
     $fevent[Untimed] = 1;
