@@ -186,6 +186,16 @@ if ( -d "$p_base_dir/includes" ) {
     push ( @files, "includes/$f" );
   }
 }
+if ( -d "$p_base_dir/includes/js" ) {
+  print "Searching for PHP files in $p_base_dir/includes/js\n" if ( $verbose );
+  opendir ( DIR, "$p_base_dir/includes/js" ) ||
+    die "Error opening $p_base_dir/includes/js";
+  @incfiles = grep ( /\.php$/, readdir ( DIR ) );
+  closedir ( DIR );
+  foreach $f ( @incfiles ) {
+    push ( @files, "includes/js/$f" );
+  }
+}
 if ( $plugin eq "" ) {
   push ( @files, "tools/send_reminders.php" );
 }
