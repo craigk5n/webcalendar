@@ -1,0 +1,60 @@
+Version 1.0RC1 (?? ??? 2005)
+  - Fixed the following bugs reports on SourceForge:
+       824268: Emails notifications used wront timezone
+       931096: Restrict views and view edits to owner of that view
+       986774: Editing category as assistant was not working
+      1061746: layout issues with views (daily)
+      1066440: End Time increased by timezone offset
+      1085337: Categories combo-box in month.php in assistant mode
+      1088857: SQL bug affecting ODBC users when viewing event
+      1101823: Problem importing palm desktop datebook.dat file
+      1102167: custom header when non-admin user
+      1109141: Email notifications where using sender language
+               rather than recipient language
+      1109323: Error in LDAP function for getting list of admins
+      1087604: Vanishing Layers / cookies
+      1086357: repeating details display
+      1085846: SQL error in when listing users on some databases
+      1085971: repeat tab does not display details
+      1074403: Day View is not accounting for server offset
+  - Other bugs fixed:
+    + Security fix: Fixed protential problem if a user attempts to login
+      with a username that has charaters that will affect the database.
+    + When using web-based authentication, two database connections
+      were being opened and only one was being closed.
+    + vCal import was completely broken
+    + Fixed problem using htmlarea where event description would not be saved
+    + View Event page would not display links to edit/delete under
+      some circumstances
+    + Fixes for WN web server
+    + Removed duplicate trailer from edit user page (when using a custom
+      trailer)
+  - New Features / Enhancements:
+    + MS SQL Server is now suppported
+    + If php.ini setting for "file_uploads" is not enabled, then indicate
+      this on the import page
+    + Streamlined layers.php & made layers only be displayed when layers
+      are enabled
+    + Updated Admin docs for content & xhtml/css validity
+    + Added new documentation in docs directory:
+      WebCalendar-Functions.html
+      WebCalendar-DeveloperGuide.html
+      WebCalendar-Styling.html
+    + Fixed various xhtml/css issues
+    + Updated reading of settings file to better handle when file
+      is not in exact format we are expecting.
+    + Added database sanity check
+    + Updated default color scheme (Will only apply to new installs)
+    + When html is allowed in event description, still replace newline with
+      html break in view page and event popup if the user did not use any html.
+    + Fixing users.php so it only shows a single user's info when the user
+      isn't an admin
+    + Added ability to authenticate users with postnuke user info.
+    + Added support for automatic gradient background images for table cells
+  - The following translations were updated:
+    + Japanese (with support for 3 character sets)
+    + Romanian (new)
+    + French
+    + German
+    + Italian
+    + Norwegian
