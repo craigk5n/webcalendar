@@ -81,7 +81,7 @@ $ldap_admin_group_attr = strtolower($ldap_admin_group_attr);
 $ldap_admin_group_type = strtolower($ldap_admin_group_type);
 
 // Function to search the dn of a given user
-// the error message will be placed in $login_error.
+// the error message will be placed in $error.
 // params:
 //   $login - user login
 //   $dn - complete dn for the user (must be given by ref )
@@ -127,7 +127,7 @@ function user_search_dn ( $login ,$dn ) {
 
 
 // Check to see if a given login/password is valid.  If invalid,
-// the error message will be placed in $login_error.
+// the error message will be placed in $error.
 // params:
 //   $login - user login
 //   $password - user password
@@ -143,12 +143,14 @@ function user_valid_login ( $login, $password ) {
       $r = @ldap_bind ( $ds, $dn, $password ); // bind as the user. The LDAP
       // Server will valide the login and passowrd
       if (!$r) {
-        $error = translate ("Invalid login");
+        $error = translate ("Invalid login") . ": " .
+          translate("incorrect password");
       } else {
         $ret = true;
       }
     } else {
-      $error = translate ("Invalid login");
+      $error = translate ("Invalid login") . ": " .
+        translate("no such user");
     }
     @ldap_close ( $ds );
   } else {
@@ -159,7 +161,7 @@ function user_valid_login ( $login, $password ) {
 
 // TODO: implement this function properly for LDAP.
 // Check to see if a given login/crypted password is valid.  If invalid,
-// the error message will be placed in $login_error.
+// the error message will be placed in $error.
 // params:
 //   $login - user login
 //   $crypt_password - crypted user password

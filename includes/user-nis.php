@@ -4,7 +4,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 }
 
 // This file contains all the functions for getting information
-// about users.  So, if you want to use an authentication scheme
+// about users via NIS.  So, if you want to use an authentication scheme
 // other than the webcal_user table, you can just create a new
 // version of each function found below.
 //
@@ -25,7 +25,7 @@ $admin_can_delete_user = false;
 $user_external_email = "domain.com";
 
 // Check to see if a given login/password is valid.  If invalid,
-// the error message will be placed in $login_error.
+// the error message will be placed in $error (a global variable).
 // params:
 //   $login - user login
 //   $password - user password
@@ -33,8 +33,6 @@ $user_external_email = "domain.com";
 function user_valid_login ( $login, $password ) {
   global $error,$user_external_group,$user_external_email;
   $ret = false;
-
-  $login_error = "";
 
   $data = @yp_match (yp_get_default_domain(), "passwd.byname", $login);
   if ( strlen ( $data ) ) {
@@ -46,9 +44,10 @@ function user_valid_login ( $login, $password ) {
     if ( $data[1] == crypt ( $password, substr ( $data[1], 0, 2 ) ) ) {
       if ( count ( $data ) >= 4 ) {
         $ret = true;
-
-	// Check for user in webcal_user.  If in NIS and not in DB then insert...
-	$sql = "SELECT cal_login FROM webcal_user WHERE cal_login = '" . $login . "'";
+	// Check for user in webcal_user.
+        // If in NIS and not in DB, then insert...
+	$sql = "SELECT cal_login FROM webcal_user WHERE cal_login = '" .
+          $login . "'";
         $res = dbi_query ( $sql );
         if ( ! $res || ! dbi_fetch_row ( $res ) ) {
           // insert user
@@ -66,16 +65,21 @@ function user_valid_login ( $login, $password ) {
           }
         }
       } else {
-       $error = translate ("Invalid login");
+       $error = translate ("Invalid login") . ": " .
+         translate("incorrect password" );
        $ret = false;
       }
     }
+  } else {
+     // no such user
+     $error = translate ("Invalid login") . ": " . translate("no such user");
+     $ret = false;
   }
   return $ret;
 }
 
 // Check to see if a given login/crypted password is valid.  If invalid,
-// the error message will be placed in $login_error.
+// the error message will be placed in $error.
 // params:
 //   $login - user login
 //   $crypt_password - crypted user password
