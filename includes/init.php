@@ -127,6 +127,7 @@ if ($DMW) {
     $caturl = "";
   else
     $caturl = "&amp;cat_id=$cat_id";
+}
 
 // Maps page filenames to the id that page's <body> tag will have
 $bodyid = array(
@@ -182,13 +183,12 @@ $bodyid = array(
 	"view_v.php" => "viewv",
 	"view_w.php" => "vieww",
 	"views.php" => "views",
-	"views_edit.php" => "viewedit",
+	"views_edit.php" => "viewsedit",
 	"week.php" => "week",
 	"week_details.php" => "weekdetails",
 	"week_ssi.php" => "weekssi",
 	"year.php" => "year"
 );
-}
 
 // Prints the HTML header and opening Body tag.
 //      $includes - an array of additional files to include referenced from
