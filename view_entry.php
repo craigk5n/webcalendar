@@ -501,12 +501,18 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
           $minutes -= ( $d * 24 * 60 );
           $h = (int) ( $minutes / 60 );
           $minutes -= ( $h * 60 );
-          if ( $d > 0 )
+          if ( $d > 1 )
             echo $d . " " . translate("days") . " ";
-          if ( $h > 0 )
+	  else if ( $d == 1 )
+	    echo $d . " " . translate("day") . " ";
+          if ( $h > 1 )
             echo $h . " " . translate("hours") . " ";
-          if ( $minutes > 0 )
+	  else if ( $h == 1 )
+	    echo $h . " " . translate("hour") . " ";
+          if ( $minutes > 1 )
             echo $minutes . " " . translate("minutes");
+	  else if ( $minutes == 1 )
+	    echo $minutes . " " . translate("minute");
           echo " " . translate("before event" );
         }
       }
@@ -596,8 +602,6 @@ if ( $single_user == "N" && $show_participants ) {
       echo "<br /><strike>$tempfullname</strike> (" . translate("Rejected") . ")\n";
     }
   }
-
-
 ?></td></tr>
 <?php
 } // end participants
@@ -607,7 +611,6 @@ if ( $single_user == "N" && $show_participants ) {
 
 <p>
 <?php
-
 if ( empty ( $event_status ) ) {
   // this only happens when an admin views a deleted event that he is
   // not a participant for.  Set to $event_status to "D" just to get
@@ -616,12 +619,14 @@ if ( empty ( $event_status ) ) {
 }
 
 if ( $unapproved ) {
-  echo "<a href=\"approve_entry.php?id=$id\" onclick=\"return confirm('" .
-    translate("Approve this entry?") .
-    "');\">" . translate("Approve/Confirm entry") . "</a><br />\n";
-  echo "<a href=\"reject_entry.php?id=$id\" onclick=\"return confirm('" .
-    translate("Reject this entry?") .
-    "');\">" . translate("Reject entry") . "</a><br />\n";
+  echo "<a title=\"" . 
+	translate("Approve/Confirm entry") . "\" href=\"approve_entry.php?id=$id\" onclick=\"return confirm('" . 
+	translate("Approve this entry?") . "');\">" . 
+	translate("Approve/Confirm entry") . "</a><br />\n";
+  echo "<a title=\"" . 
+	translate("Reject entry") . "\" href=\"reject_entry.php?id=$id\" onclick=\"return confirm('" .
+	translate("Reject this entry?") . "');\">" . 
+	translate("Reject entry") . "</a><br />\n";
 }
 
 if ( ! empty ( $user ) && $login != $user )
@@ -644,104 +649,106 @@ if ( $event_repeats )
 if ( empty ( $user ) && $categories_enabled == "Y" &&
   $readonly != "Y" && $is_my_event && $login != "__public__" &&
   $event_status != "D" && ! $can_edit )  {
-  echo "<a class=\"nav\" href=\"set_entry_cat.php?id=$id$rdate\">" .
-    translate("Set category") . "</a><br />\n";
+  echo "<a title=\"" . 
+	translate("Set category") . "\" class=\"nav\" href=\"set_entry_cat.php?id=$id$rdate\">" .
+	translate("Set category") . "</a><br />\n";
 }
-
 
 if ( $can_edit && $event_status != "D" ) {
   if ( $event_repeats ) {
-    echo "<a class=\"nav\" href=\"edit_entry.php?id=$id$u_url\">" .
-      translate("Edit repeating entry for all dates") . "</a><br />\n";
+    echo "<a title=\"" .
+	translate("Edit repeating entry for all dates") . "\" class=\"nav\" href=\"edit_entry.php?id=$id$u_url\">" . 
+	translate("Edit repeating entry for all dates") . "</a><br />\n";
     // Don't allow override of first event
     if ( ! empty ( $date ) && $date != $orig_date )
-      echo "<a class=\"nav\" href=\"edit_entry.php?id=$id$u_url$rdate&amp;override=1\">" .
-        translate("Edit entry for this date") . "</a><br />\n";
-    echo "<a class=\"nav\" href=\"del_entry.php?id=$id$u_url&amp;override=1\" onclick=\"return confirm('" .
-      translate("Are you sure you want to delete this entry?") .
-      "\\n\\n" . translate("This will delete this entry for all users.") .
-      "');\">" . translate("Delete repeating event for all dates") . "</a><br />\n";
+      echo "<a title=\"" .
+	translate("Edit entry for this date") . "\" class=\"nav\" href=\"edit_entry.php?id=$id$u_url$rdate&amp;override=1\">" .
+	translate("Edit entry for this date") . "</a><br />\n";
+    echo "<a title=\"" . 
+	translate("Delete repeating event for all dates") . "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url&amp;override=1\" onclick=\"return confirm('" . 
+	translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+	translate("This will delete this entry for all users.") . "');\">" . 
+	translate("Delete repeating event for all dates") . "</a><br />\n";
     // Don't allow deletion of first event
     if ( ! empty ( $date ) && $date != $orig_date )
-      echo "<a class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate&amp;override=1\" onclick=\"return confirm('" .
-        translate("Are you sure you want to delete this entry?") .
-        "\\n\\n" . translate("This will delete this entry for all users.") .
-        "');\">" . translate("Delete entry only for this date") . "</a><br />\n";
+      echo "<a title=\"" . 
+	translate("Delete entry only for this date") . "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate&amp;override=1\" onclick=\"return confirm('" .
+	translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+	translate("This will delete this entry for all users.") . "');\">" . 
+	translate("Delete entry only for this date") . "</a><br />\n";
   } else {
-    echo "<a class=\"nav\" href=\"edit_entry.php?id=$id$u_url\">" .
+    echo "<a title=\"" .
+      translate("Edit entry") . "\" class=\"nav\" href=\"edit_entry.php?id=$id$u_url\">" .
       translate("Edit entry") . "</a><br />\n";
-    echo "<a class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" .
-      translate("Are you sure you want to delete this entry?") .
-      "\\n\\n" . translate("This will delete this entry for all users.") .
-      "');\">" . translate("Delete entry") . "</a><br />\n";
+    echo "<a title=\"" . 
+	translate("Delete entry") . "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
+	translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+	translate("This will delete this entry for all users.") . "');\">" . 
+	translate("Delete entry") . "</a><br />\n";
   }
-  echo "<a class=\"nav\" href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
-  translate("Copy entry") . "</a><br />\n";  
+  echo "<a title=\"" . 
+	translate("Copy entry") . "\" class=\"nav\" href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
+	translate("Copy entry") . "</a><br />\n";  
 } elseif ( $readonly != "Y" && $is_my_event && $login != "__public__" &&
   $event_status != "D" )  {
-  echo "<a class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" .
-    translate("Are you sure you want to delete this entry?") .
-    "\\n\\n" . translate("This will delete the entry from your calendar.") .
-    "');\">" . translate("Delete entry") . "</a><br />\n";
-  echo "<a class=\"nav\" href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
-  translate("Copy entry") . "</a><br />\n";  
+  echo "<a title=\"" . 
+	translate("Delete entry") . "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
+	translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+	translate("This will delete the entry from your calendar.") . "');\">" . 
+	translate("Delete entry") . "</a><br />\n";
+  echo "<a title=\"" . 
+	translate("Copy entry") . "\" class=\"nav\" href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
+	translate("Copy entry") . "</a><br />\n";
 }
 if ( $readonly != "Y" && ! $is_my_event && ! $is_private && 
   $event_status != "D" && $login != "__public__" )  {
-  echo "<a class=\"nav\" href=\"add_entry.php?id=$id\" onclick=\"return confirm('" .
-    translate("Do you want to add this entry to your calendar?") .
-    "\\n\\n" . translate("This will add the entry to your calendar.") .
-    "');\">" . translate("Add to My Calendar") . "</a><br />\n";
+  echo "<a title=\"" . 
+	translate("Add to My Calendar") . "\" class=\"nav\" href=\"add_entry.php?id=$id\" onclick=\"return confirm('" . 
+	translate("Do you want to add this entry to your calendar?") . "\\n\\n" . 
+	translate("This will add the entry to your calendar.") . "');\">" . 
+	translate("Add to My Calendar") . "</a><br />\n";
 }
 
 if ( count ( $allmails ) > 0 ) {
-  echo "<a class=\"nav\" href=\"mailto:" . implode ( ",", $allmails ) .
-    "?subject=" . rawurlencode($subject) . "\">" .
-    translate("Email all participants") . "</a><br />\n";
+  echo "<a title=\"" . 
+	translate("Email all participants") . "\" class=\"nav\" href=\"mailto:" . implode ( ",", $allmails ) .
+    "?subject=" . rawurlencode($subject) . "\">" . 
+	translate("Email all participants") . "</a><br />\n";
 }
 
 $show_log = false;
 
 if ( $is_admin ) {
   if ( empty ( $log ) ) {
-    echo "<a class=\"nav\" href=\"view_entry.php?id=$id&amp;log=1\">" .
-      translate("Show activity log") . "</a><br />\n";
+    echo "<a title=\"" . 
+	translate("Show activity log") . "\" class=\"nav\" href=\"view_entry.php?id=$id&amp;log=1\">" . 
+	translate("Show activity log") . "</a><br />\n";
   } else {
-    echo "<a class=\"nav\" href=\"view_entry.php?id=$id\">" .
-      translate("Hide activity log") . "</a><br />\n";
+    echo "<a title=\"" . 
+	translate("Hide activity log") . "\" class=\"nav\" href=\"view_entry.php?id=$id\">" . 
+	translate("Hide activity log") . "</a><br />\n";
     $show_log = true;
   }
 }
 
-
 if ( $show_log ) {
   echo "<h3>" . translate("Activity Log") . "</h3>\n";
-  echo "<table style=\"border-width:0px; width:100%;\">\n";
-  echo "<tr>";
-  echo "<th style=\"background-color:$THBG; color:$THFG;\">" .
-    translate("User") . "</th>";
-  echo "<th style=\"background-color:$THBG; color:$THFG;\">" .
-    translate("Calendar") . "</th>";
-  echo "<th style=\"background-color:$THBG; color:$THFG;\">" .
-    translate("Date") . "/" . translate("Time") . "</th>";
-  echo "<th style=\"background-color:$THBG; color:$THFG;\">" .
-    translate("Action") . "</th></tr>\n";
+  echo "<table class=\"embactlog\">\n";
+  echo "<tr><th class=\"usr\">\n" . translate("User") . "</th><th class=\"cal\">\n";
+  echo translate("Calendar") . "</th><th class=\"date\">\n";
+  echo translate("Date") . "/" . translate("Time") . "</th><th class=\"action\">\n";
+  echo translate("Action") . "\n</th></tr>\n";
   $res = dbi_query ( "SELECT cal_login, cal_user_cal, cal_type, " .
     "cal_date, cal_time " .
     "FROM webcal_entry_log WHERE cal_entry_id = $id " .
     "ORDER BY cal_log_id DESC" );
   if ( $res ) {
-    $font = "font-size:13px;";
     while ( $row = dbi_fetch_row ( $res ) ) {
-      echo "<tr>";
-      echo "<td style=\"vertical-align:top; background-color:$CELLBG; $font\">" . $row[0] .
-        "</td>";
-      echo "<td style=\"vertical-align:top; background-color:$CELLBG; $font\">" . $row[1] .
-        "</td>";
-      echo "<td style=\"vertical-align:top; background-color:$CELLBG; $font\">" . 
-	date_to_str ( $row[3] ) . " " .
-        display_time ( $row[4] ) . "</td>";
-      echo "<td style=\"background-color:$CELLBG; $font\">";
+      echo "<tr><td>\n";
+      echo $row[0] . "</td><td>\n";
+      echo $row[1] . "</td><td>\n" . 
+	date_to_str ( $row[3] ) . "&nbsp;" .
+        display_time ( $row[4] ) . "</td><td>\n";
       if ( $row[2] == $LOG_CREATE )
         etranslate("Event created");
       else if ( $row[2] == $LOG_APPROVE )
@@ -766,9 +773,9 @@ if ( $show_log ) {
 if (! $is_private) {
   echo "<br />\n";
   echo "<form method=\"post\" name=\"exportform\" action=\"export_handler.php\">\n";
-  echo "<b>";
+  echo "<strong>";
   etranslate("Export this entry to");
-  echo ":</b>\n";
+  echo ":</strong>\n";
   echo "<select name=\"format\">\n";
   echo "<option value=\"ical\">iCalendar</option>\n";
   echo "<option value=\"vcal\">vCalendar</option>\n";
@@ -785,7 +792,6 @@ if (! $is_private) {
   echo "\" />\n";
   echo "</form>\n";
 }
-
 ?>
 
 <?php print_trailer(); ?>
