@@ -124,12 +124,12 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 ?>
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<table style="border-width:0px; width:100%; background-color:<?php echo $TABLEBG?>;" cellspacing="1" cellpadding="2">
+<table class="viewv" cellspacing="1" cellpadding="2">
 <?php } else { ?>
 <table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
 <?php } ?>
 
-<tr><th class="empty" style="width:10%; background-color:<?php echo $THBG?>;">&nbsp;</th>
+<tr><th class="empty">&nbsp;</th>
 
 <?php
 
