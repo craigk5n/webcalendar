@@ -134,7 +134,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 		<label><input type="radio" name="admin_DISPLAY_WEEKENDS" value="N" <?php if ( $s["DISPLAY_WEEKENDS"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 	</td></tr>
 	<tr><td class="tooltip" title="<?php etooltip("yearly-shows-events-help");?>">
-		<?php etranslate("Display days with events in bold in month and year views")?>:</td><td>
+		<?php etranslate("Display days with events in bold in small month calendars")?>:</td><td>
 		<label><input type="radio" name="admin_bold_days_in_year" value="Y" <?php if ( $s["bold_days_in_year"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 		<label><input type="radio" name="admin_bold_days_in_year" value="N" <?php if ( $s["bold_days_in_year"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 	</td></tr>
