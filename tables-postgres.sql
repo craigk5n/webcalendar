@@ -46,13 +46,6 @@ CREATE TABLE webcal_entry_repeats_not (
 );
 
 
-CREATE TABLE webcal_entry_repeats_not (
-  cal_id INT NOT NULL,
-  cal_date INT NOT NULL,
-  PRIMARY KEY ( cal_id, cal_date )
-);
-
-
 CREATE TABLE webcal_entry_user (
   cal_id int DEFAULT '0' NOT NULL,
   cal_login varchar(25) DEFAULT '' NOT NULL, 
