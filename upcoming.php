@@ -40,7 +40,6 @@ include "includes/functions.php";
 include "includes/$user_inc";
 include "includes/connect.php";
 
-load_user_preferences ();
 load_global_settings ();
 
 include "includes/translate.php";
@@ -90,6 +89,10 @@ $cat_id = '';
 
 // End configurable settings...
 
+// Set for use elsewhere as a global
+$login = $username;
+load_user_preferences ();
+
 
 if ( $public_must_be_enabled && $public_access != 'Y' ) {
   etranslate ( "You are not authorized" ) . ".";
@@ -109,9 +112,6 @@ if ( $categories_enabled == 'Y' ) {
   if ( ! empty ( $x ) )
     $cat_id = $x;
 }
-
-// Set for use elsewhere as a global
-$login = $username;
 
 if ( $load_layers ) {
   load_user_layers ( $username );
