@@ -157,14 +157,21 @@ if ( ! empty ( $return_path ) )
 ?>
 
 <table style="border-width:0px;">
-<tr><td style="font-weight:bold;"><?php etranslate("Username")?>:</td>
-  <td><input name="login" size="10" value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" tabindex="1" /></td></tr>
-<tr><td style="font-weight:bold;"><?php etranslate("Password")?>:</td>
-  <td><input name="password" type="password" size="10" tabindex="2" /></td></tr>
-<tr><td colspan="2"><input type="checkbox" name="remember" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked=\"checked\""; ?> /> <?php etranslate("Save login via cookies so I don't have to login next time")?></td></tr>
-<tr><td colspan="2"><input type="submit" value="<?php etranslate("Login")?>" tabindex="3" /></td></tr>
+	<tr><td style="font-weight:bold;">
+		<label for="login"><?php etranslate("Username")?>:</label></td><td>
+		<input name="login" id="login" size="10" value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" tabindex="1" />
+	</td></tr>
+	<tr><td style="font-weight:bold;">
+		<label for="password"><?php etranslate("Password")?>:</label></td><td>
+		<input name="password" id="password"type="password" size="10" tabindex="2" />
+	</td></tr>
+	<tr><td colspan="2">
+		<input type="checkbox" name="remember" id="remember" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked=\"checked\""; ?> /><label for="remember">&nbsp;<?php etranslate("Save login via cookies so I don't have to login next time")?></label>
+	</td></tr>
+	<tr><td colspan="2">
+		<input type="submit" value="<?php etranslate("Login")?>" tabindex="3" />
+	</td></tr>
 </table>
-
 </form>
 
 <br /><br />

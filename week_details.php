@@ -65,34 +65,34 @@ for ( $i = 0; $i < 7; $i++ ) {
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <td style="text-align:left;"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" style="width:36px; height:32px; border-width:0px;" /></a></td>
 <?php } ?>
-<td style="text-align:center; color:<?php echo $H2COLOR;?>;"><font size="+2"><span style="font-weight:bold;" class="pagetitle">
+<td style="text-align:center; color:<?php echo $H2COLOR;?>;"><span style="font-size:24px; font-weight:bold;" class="pagetitle">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), "", false );
 ?>
-</span></font>
+</span>
 <?php
 if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
-  echo "<br />\n<font size=\"-2\">(" .
-    translate("Week") . " " . week_number ( $wkstart ) . ")</font>";
+  echo "<br />\n<span style=\"font-size:24px;\">(" .
+    translate("Week") . " " . week_number ( $wkstart ) . ")</span>";
 }
 ?>
-<font size="+1">
+<span style="font-size:18px;">
 <?php
   if ( $single_user == "N" ) {
     echo "<br />$user_fullname\n";
   }
   if ( $is_nonuser_admin )
-    echo "<br /><b>-- " . translate("Admin mode") . " --</b>";
+    echo "<br /><span style=\"font-weight:bold;\">-- " . translate("Admin mode") . " --</span>";
   if ( $is_assistant )
-    echo "<br /><b>-- " . translate("Assistant mode") . " --</b>";
+    echo "<br /><span style=\"font-weight:bold;\">-- " . translate("Assistant mode") . " --</span>";
   if ( $categories_enabled == "Y" ) {
     echo "<br />\n<br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
   }
 ?>
-</font>
+</span>
 </td>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <td style="text-align:right;"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" style="width:36px; height:32px; border-width:0px;" /></a></td>

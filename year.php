@@ -29,13 +29,13 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
   echo month_name ( $thismonth - 1 ) .
     "</a></td></tr>";
   echo "<tr>";
-  if ( $WEEK_START == 0 ) echo "<td><font size=\"-3\">" .
+  if ( $WEEK_START == 0 ) echo "<td style=\"font-size:6px;\">" .
     weekday_short_name ( 0 ) . "</td>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<td><font size=\"-3\">" .
+    echo "<td style=\"font-size:6px;\">" .
       weekday_short_name ( $i ) . "</td>";
   }
-  if ( $WEEK_START == 1 ) echo "<td><font size=\"-3\">" .
+  if ( $WEEK_START == 1 ) echo "<td style=\"font-size:6px;\">" .
     weekday_short_name ( 0 ) . "</td>";
   for ($i = $wkstart; date("Ymd",$i) <= date ("Ymd",$monthend);
     $i += (24 * 3600 * 7) ) {
@@ -116,7 +116,7 @@ print_header();
 <a href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" class="monthlink"><img src="leftarrow.gif" style="width:36px; height:32px; border:0px;" alt="<?php etranslate("Previous")?>" /></A>
 </font></td>
 <?php } ?>
-<td style="text-align:center; color: <?php echo $H2COLOR?>;">
+<td style="text-align:center; color:<?php echo $H2COLOR?>;">
 <font size="+2"><b>
 <?php echo $thisyear ?>
 </b></font>

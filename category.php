@@ -31,7 +31,7 @@ if ( ! empty ( $id ) ) {
 
 print_header();
 ?>
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Categories")?></h2>
+<h2><?php etranslate("Categories")?></h2>
 
 <?php
 
@@ -52,8 +52,8 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   <br />
   <?php if ( $is_admin && empty ( $id ) ) { ?>
     <?php etranslate("Global")?>:
-      <input type="radio" name="isglobal" value="N" <?php if ( ! empty ( $catowner ) || empty ( $id ) ) echo "checked=\"checked\"";?>> <?php etranslate("No")?>
-      <input type="radio" name="isglobal" value="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo "checked=\"checked\"";?>> <?php etranslate("Yes")?>
+      <input type="radio" name="isglobal" value="N" <?php if ( ! empty ( $catowner ) || empty ( $id ) ) echo "checked=\"checked\"";?> /> <?php etranslate("No")?>
+      <input type="radio" name="isglobal" value="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo "checked=\"checked\"";?> /> <?php etranslate("Yes")?>
   <?php } ?>
   <br /><br />
   <input type="submit" name="action" value="<?php echo $button;?>" />
