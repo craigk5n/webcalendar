@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 06-17-2004
+# Translation last updated on 06-26-2004
 
 
 ###############################################
@@ -161,6 +161,10 @@ limit-appts-help: Allows the system administrator to set a system-wide limit on 
 Limit number of timed events per day: Limit number of timed events per day
 limit-appts-number-help: Specifies the maximum number of timed events a user can have in a single day.
 Maximum timed events per day: Maximum timed events per day
+timed-evt-len-help: Specifies input method for determining the length of a timed event.
+Specify timed event length by: Specify timed event length by
+Duration: Duration
+End Time: End Time
 Plugins: Plugins
 plugins-enabled-help: Enable plugin applications.
 Enable Plugins: Enable Plugins
@@ -307,14 +311,15 @@ full-description-help: This should complete details of the event.  This informat
 Full Description: Full Description
 date-help: Specifies the date of the event.
 time-help: Specifies the time of the event.<BR>Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
+Start Time: Start Time
 am: am
 pm: pm
 Untimed event: Untimed event
 Timed event: Timed event
 All day event: All day event
 duration-help: Specifies the duration (in hours:minutes) of the event.  <BR><I>This field can be left blank.</I>
-Duration: Duration
 hours: hours
+end-time-help: Specifies the time the event is expected to end.
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
 Priority: Priority
 Low: Low
@@ -864,6 +869,7 @@ Finished: Finished
 Delete all events before: Delete all events before
 Check box to delete <b>ALL</b> events for a user: Check box to delete <b>ALL</b> events for a user
 Are you sure you want to delete events for: Are you sure you want to delete events for
+Records deleted from: Records deleted from
 
 
 ###############################################

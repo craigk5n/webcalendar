@@ -333,6 +333,9 @@ admin_DATE_FORMAT_MD  </select>
 
 <tr><td class="tooltip" title="<?php etooltip("limit-appts-number-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Maximum timed events per day")?>:</td>
   <td><input size="3" name="admin_limit_appts_number" value="<?php echo htmlspecialchars ( $limit_appts_number );?>" /></td></tr>
+
+<tr><td class="tooltip" title="<?php etooltip("timed-evt-len-help")?>"><?php etranslate("Specify timed event length by")?>:</td>
+  <td><input type="radio" name="admin_TIMED_EVT_LEN" value="D" <?php if ( $s["TIMED_EVT_LEN"] != "E" ) echo " checked=\"checked\"";?>> <?php etranslate("Duration")?> <input type="radio" name="admin_TIMED_EVT_LEN" value="E" <?php if ( $s["TIMED_EVT_LEN"] == "E" ) echo " checked=\"checked\"";?>> <?php etranslate("End Time")?></td></tr>
 </table></td></tr></table></td></tr></table>
 
 <!--

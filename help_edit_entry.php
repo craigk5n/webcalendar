@@ -22,10 +22,18 @@
 		<?php etranslate("Time")?>:</td><td>
 		<?php etranslate("time-help")?>
 	</td></tr>
+   <?php if ( $GLOBALS['TIMED_EVT_LEN'] != 'E' ) { ?>
 	<tr><td class="help">
 		<?php etranslate("Duration")?>:</td><td>
 		<?php etranslate("duration-help")?>
 	</td></tr>
+   <?php } else { ?>
+ 	<tr><td style="vertical-align:top; font-weight:bold;">
+ 		<?php etranslate("End Time")?>:</td><td>
+ 		<?php etranslate("end-time-help")?>
+ 	</td></tr>
+   <?php } ?>
+
 	<?php if ( $disable_priority_field != "Y" ) { ?>
 		<tr><td class="help">
 			<?php etranslate("Priority")?>:</td><td>

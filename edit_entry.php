@@ -235,7 +235,11 @@ if ( $is_assistant || $is_nonuser_admin )
   ?>
 </td></tr>
 
+<?php if ($GLOBALS['TIMED_EVT_LEN'] != 'E') { ?>
 <tr><td class="tooltip" title="<?php etooltip("time-help")?>"><?php etranslate("Time")?>:</td>
+<?php } else { ?>
+<tr><td class="tooltip" title="<?php etooltip("time-help")?>"><?php etranslate("Start Time")?>:</td>
+<?php } ?>
 <?php
 
 $h12 = $hour;
@@ -276,8 +280,64 @@ if ( $TIME_FORMAT == "12" ) {
   $dur_h = (int)( $duration / 60 );
   $dur_m = $duration - ( $dur_h * 60 );
 ?>
+<?php if ($GLOBALS['TIMED_EVT_LEN'] != 'E') { ?>
+
 <tr><td class="tooltip" title="<?php etooltip("duration-help")?>"><?php etranslate("Duration")?>:</td>
   <td><input name="duration_h" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%d", $dur_h );?>" />:<input name="duration_m" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%02d", $dur_m );?>" /> (<?php echo translate("hours") . ":" . translate("minutes")?>)</td></tr>
+
+<?php } else {
+if ( $id ) {
+  $t_h12 = $h12;
+  if ( $TIME_FORMAT == "12" ) {
+    // Convert to a twenty-four hour time scale.
+    if ( !empty ( $amsel ) && $t_h12 == 12 )
+      $t_h12 = 0;
+    if ( !empty ( $pmsel ) && $t_h12 < 12 )
+      $t_h12 += 12;
+  }
+  // Add duration.
+  $endhour = $t_h12 + $dur_h;
+  $endminute = $minute + $dur_m;
+  $endhour = $endhour + ( $endminute / 60 );
+  $endminute %= 60;
+
+  if ( $TIME_FORMAT == "12" ) {
+    // Convert back to a standard time format.
+    if ( $endhour < 12 ) {
+      $endamsel = " checked=\"checked\""; $endpmsel = "";
+    } else {
+      $endamsel = ""; $endpmsel = " checked=\"checked\"";
+    }
+    $endhour %= 12;
+    if ( $endhour == 0 ) $endhour = 12;
+  }
+}
+else {
+  $endhour = $h12;
+  $endminute = $minute;
+  $endamsel = $amsel; $endpmsel = $pmsel;
+}
+if ( $allday != "Y" && $hour == -1 ) {
+  $endhour = "";
+  $endminute = "";
+}
+?>
+
+<tr><td class="tooltip" title="<?php etooltip("end-time-help")?>"><?php etranslate("End Time")?>:</td>
+<td>
+<span id="endtimeentry">
+<input name="endhour" size="2" value="<?php if ( $allday != "Y" ) echo $endhour;?>" maxlength="2" />:<input name="endminute" size="2" value="<?php if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $endminute );?>" maxlength="2" />
+<?php
+if ( $TIME_FORMAT == "12" ) {
+  echo "<input type=\"radio\" name=\"endampm\" value=\"am\" $endamsel>" .
+    translate("am") . "\n";
+  echo "<input type=\"radio\" name=\"endampm\" value=\"pm\" $endpmsel>" .
+    translate("pm") . "\n";
+}
+?>
+</span>
+</td></tr>
+<?php } ?>
 
 <?php if ( $disable_priority_field != "Y" ) { ?>
 <tr><td class="tooltip" title="<?php etooltip("priority-help")?>"><label for="entry_prio"><?php etranslate("Priority")?>:</label></td>
