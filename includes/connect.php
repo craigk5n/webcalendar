@@ -35,7 +35,7 @@ if ( empty ( $PHP_SELF ) )
 
 if ( empty ( $login_url ) )
   $login_url = "login.php";
-if ( strstr ( login.php, "?" ) )
+if ( strstr ( $login_url, "?" ) )
   $login_url .= "&";
 else
   $login_url .= "?";
