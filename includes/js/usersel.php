@@ -1,12 +1,11 @@
 <?php
-global $form,$listid,$groups;
-if (preg_match("/\/includes\//", $PHP_SELF)) {
-    die ("You can't access this file directly!");
-}
-$form = clean_word($form);
-$listid = clean_int($listid);
+	global $form,$listid,$groups;
+	if (preg_match("/\/includes\//", $PHP_SELF)) {
+		die ("You can't access this file directly!");
+	}
+	$form = clean_word($form);
+	$listid = clean_int($listid);
 ?>
-
 <script type="text/javascript">
 <!-- <![CDATA[
 function OkButton () {

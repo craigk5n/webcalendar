@@ -70,6 +70,16 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 	font-size: 12px;
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
+<?php //links that don't have a specific class
+//NOTE: these must appear ABOVE the 'printer' & all other 
+//link-related classes for those classes to work 
+?>a {
+	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+	text-decoration: none;
+}
+a:hover {
+	color: #0000FF;
+}
 #edituser,
 #groupedit,
 #groupedithandler,
@@ -89,32 +99,26 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 	width: 70%;
 	background-color: #F8F8FF;
 }
-span.tabfor {
+.tabfor {
 	padding: 0.2em 0.2em 0.07em 0.2em;
-	margin: 0px 0.2em 0px 0.5em;
+	margin: 0px 0.2em 0px 0.8em;
 	border-top: 2px ridge #C0C0C0;
 	border-left: 2px ridge #C0C0C0;
 	border-right: 2px ridge #C0C0C0;
 	border-bottom: 2px solid #F8F8FF;
 	background-color: #F8F8FF;
-	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
+	text-decoration: none;
+	color: #000000;
 }
-span.tabbak {
+.tabbak {
 	padding: 0.2em 0.2em 0px 0.2em;
 	margin: 0 0.2em 0 0.8em;
 	border-top: 2px ridge #C0C0C0;
 	border-left: 2px ridge #C0C0C0;
 	border-right: 2px ridge #C0C0C0;
 	background-color: #E0E0E0;
-	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 14px;
-}
-span.tabbak a {
-	text-decoration: none;
-	color: #000000;
-} 
-span.tabfor a {
 	text-decoration: none;
 	color: #000000;
 }
@@ -145,16 +149,6 @@ label {
 	font-size: 10px;
 	color: #B04040;
 	text-decoration: none;
-}
-<?php //links that don't have a specific class
-//NOTE: these must appear ABOVE the 'printer' & all other 
-//link-related classes for those classes to work 
-?>a {
-	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
-	text-decoration: none;
-}
-a:hover {
-	color: #0000FF;
 }
 <?php //transparent images used for visual color-selection
 ?>img.color {

@@ -83,7 +83,6 @@ function selectColor ( color ) {
   var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
 }
 
-// function updateColor(input)
 // Updates the background-color of a table cell
 // Parameters:
 //    input - <input> element containing the new color value
@@ -172,22 +171,9 @@ function email_handler () {
   }
 }
 
-var tabs = new Array();
-function showTab (name) {
-	if (! document.getElementById) { return true; }
-	for (var i=0; i<tabs.length; i++) {
-		var tname = tabs[i];
-		var tab = document.getElementById("tab_" + tname);
-		if (tab) {
-			tab.className = (tname == name) ? "tabfor" : "tabbak";
-		}
-		var div = document.getElementById("tabscontent_" + tname);
-		if (div) {
-			div.style.display = (tname == name) ? "block" : "none";
-		}
-	}
-	return false;
-}
+<?php //see the showTab function in includes/js.php for common code shared by all pages
+	//using the tabbed GUI.
+?>var tabs = new Array();
 tabs[1] = "settings";
 tabs[2] = "public";
 tabs[3] = "groups";

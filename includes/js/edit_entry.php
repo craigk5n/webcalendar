@@ -121,7 +121,7 @@ function selectDate ( day, month, year, current ) {
 ?>function timetype_handler () {
   var i = document.forms[0].timetype.selectedIndex;
   var val = document.forms[0].timetype.options[i].text;
-  //alert ( "val " + i + "  = " + val );
+  //alert ( "val " + i + " = " + val );
   // i == 1 when set to timed event
   if ( i != 1 ) {
     // Untimed/All Day
@@ -145,7 +145,7 @@ function selectDate ( day, month, year, current ) {
 function rpttype_handler () {
   var i = document.forms[0].rpttype.selectedIndex;
   var val = document.forms[0].rpttype.options[i].text;
-  //alert ( "val " + i + "  = " + val );
+  //alert ( "val " + i + " = " + val );
   //i == 0 when event does not repeat
   if ( i != 0 ) {
     // none (not repeating)
@@ -164,22 +164,9 @@ function rpttype_handler () {
   }
 }
 
-var tabs = new Array();
-function showTab (name) {
-	if (! document.getElementById) { return true; }
-	for (var i=0; i<tabs.length; i++) {
-		var tname = tabs[i];
-		var tab = document.getElementById("tab_" + tname);
-		if (tab) {
-			tab.className = (tname == name) ? "tabfor" : "tabbak";
-		}
-		var div = document.getElementById("tabscontent_" + tname);
-		if (div) {
-			div.style.display = (tname == name) ? "block" : "none";
-		}
-	}
-	return false;
-}
+<?php //see the showTab function in includes/js.php for common code shared by all pages
+	//using the tabbed GUI.
+?>var tabs = new Array();
 tabs[0] = "details";
 tabs[1] = "sched";
 tabs[2] = "participants";
