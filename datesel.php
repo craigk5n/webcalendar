@@ -1,21 +1,18 @@
 <?php
+/* $Id */
 include_once 'includes/init.php';
 
 // month and year are being overwritten so we will copy vars to fix.
 // this will make datesel.php still work where ever it is called from.
+// The values $fday, $fmonth and $fyear hold the form variable names
+// to update when the user selects a date.  (This is needed in
+// the js/datesel.php file that gets included below.)
 $fday = getGetValue ( "fday" );
 $fmonth = getGetValue ( "fmonth" );
 $fyear = getGetValue ( "fyear" );
 
 $INC = array('js/datesel.php');
 print_header($INC,'','',true);
-
-// month and year are being overwritten so we will copy vars to fix.
-// this will make datesel.php still work where ever it is called from.
-//$fday = $day;$fmonth = $month;$fyear = $year;
-$fday = getValue ( "day", "[0-9]+" );
-$fmonth = getValue ( "month", "[0-9]+" );
-$fyear = getValue ( "year", "[0-9]+" );
 
 if ( strlen ( $date ) > 0 ) {
   $thisyear = substr ( $date, 0, 4 );
