@@ -1,4 +1,6 @@
 Version 0.9.33dev (?? July 01)
+  - Fixed bug: was not displaying more than one event per day in the
+    week view.
   - Removed all the <?php_track_vars?> from every .php file since it was
     causing problems for a lot of people.
 Version 0.9.32 (26 July 01)
