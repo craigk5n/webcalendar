@@ -666,7 +666,7 @@ function load_user_layers ($user="",$force=0) {
 
 function site_extras_for_popup ( $id )
 {
-  global $site_extras_in_popup;
+  global $site_extras_in_popup, $site_extras;
 
   if ( $site_extras_in_popup != 'Y' )
     return '';
