@@ -1,4 +1,6 @@
-Version 0.9.47/CVS+dev (?? ??? 2004)
+Version 0.9.46/CVS+dev (?? ??? 2004)
+  - Fix bug: view_entry.php would not display links to edit/delete under
+    some circumstances.
   - Updated upgrading docs so they're xhtml valid
   - Updated admin & user docs to reflect new content, correct minor typos, and
   minor clarification of phrasing/language.
