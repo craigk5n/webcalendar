@@ -186,7 +186,7 @@ echo "<title>".translate($application_name)."</title>\n";
 print "<dl>\n";
 
 print "<!-- \nstartTime: $startTime\nendTime: $endTime\nstartDate: " .
-  $date\nnumDays: $numDays\nuser: $username\nevents: " . 
+  "$date\nnumDays: $numDays\nuser: $username\nevents: " . 
   count ( $events ) . "\nrepeated_events: " . 
   count ( $repeated_events ) . " -->\n";
 

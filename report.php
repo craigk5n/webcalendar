@@ -120,7 +120,7 @@ function event_to_text ( $id, $date, $time, $duration,
     $status_str = translate ( "Rejected" );
   } else if ( $status == 'A' ) {
     $status_str = translate ( "Approved" );
-  } else 
+  } else {
     $status_str = translate ( "Unknown" );
   }
 
@@ -270,7 +270,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
   }
 }
 
-if ( empty ( $report_user ) )
+if ( empty ( $report_user ) ) {
   $report_user = $login;
 }
 //echo "User: $report_user <p>";
@@ -496,7 +496,7 @@ if ( ! empty ( $error ) ) {
   echo translate("Manage Reports");
   echo "</h2>\n" . 
   "<a title=\"" . translate("Admin") . "\" class=\"nav\" href=\"adminhome.php\"> " .
-     &laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n" . $list;
+     "&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n" . $list;
 } else {
   if ( $report_include_header == 'Y' ) {
     echo "<h2>" . $report_name . "</h2>\n";
