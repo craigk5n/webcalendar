@@ -13,6 +13,7 @@ Version 0.9.34dev (?? ??? ??)
     in the display if there was another event later in that day.  In
     day view, all events would display in a one hour block even if they
     were longer than an hour.
+  - Added Galician translation.
   - Added Hungarian translation.
   - Updated Swedish translation.
   - Updated French translation.
