@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Applying print-media patch. Credit to Adam Roben.
   - Fixed bug causing today link not to work when not logged in
   - Fixed Bug 1057889: Public events duplicated in month view (view_t.php)
   - Fixed Bug 1057887: Month view (view_t.php) doubles last sunday in October (DST)

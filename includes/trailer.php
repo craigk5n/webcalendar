@@ -10,7 +10,8 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 // or use $GLOBALS[].
 ?>
 
-<form action="month.php" method="get" name="SelectMonth" class="trailerform" id="monthform">
+<div id="trailer">
+<form action="month.php" method="get" name="SelectMonth" id="monthform">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -51,7 +52,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 </p>
 </form>
 
-<form action="week.php" method="get" name="SelectWeek" class="trailerform" id="weekform">
+<form action="week.php" method="get" name="SelectWeek" id="weekform">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -100,7 +101,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 </p>
 </form>
 
-<form action="year.php" method="get" name="SelectYear" class="trailerform" id="yearform">
+<form action="year.php" method="get" name="SelectYear" id="yearform">
 <?php
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -329,3 +330,4 @@ if ( $login != "__public__" ) {
   print "<br />\n<a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_new\">" .
     $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 ?>
+</div>

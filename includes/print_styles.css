@@ -1,17 +1,19 @@
 #trailer, 
 form,
-.minical, 
+#month .minical, 
 .popup,
 .printer, 
 .navlinks,
 .bullet, 
 .new, 
 .prevnext, 
-.prevnextsmall {
+.prevnextsmall,
+.prev,
+.next {
 	display: none !important;
 }
 a {
-	color: #000000 !important;
+	color: inherit !important;
 }
 #category {
 	display: inline !important;
@@ -21,15 +23,6 @@ a {
 .unapprovedentry, 
 .monthlink {
 	font-size: 12px;
-}
-/* don't hide the minicals in year.php */
-#year .minical {
-	display: block !important;
-}
-#year .minical td, 
-#year .minical th, 
-#year .minical td a {
-	padding: 0px 1px !important;
 }
 #viewt .entry, 
 #viewt .layerentry, 
