@@ -363,7 +363,7 @@ if ( empty ( $error ) ) {
             $extra_hdrs = "From: $email_fallback_from\nX-Mailer: " . translate($application_name);
           mail ( $tempemail,
             translate($application_name) . " " . translate("Notification") . ": " . $name,
-            html_to_8bit ($msg), $extra_hdrs );
+            html_to_8bits ($msg), $extra_hdrs );
           activity_log ( $id, $login, $old_participant, $LOG_NOTIFICATION,
 	    "User removed from participants list" );
         }
