@@ -1,4 +1,6 @@
 Version 0.9.41dev (?? ??? ???)
+  - Added patch 656318: when adding new user, passwords are not compared
+    to determine if they match.
   - Added a config option for persistent connections.
   - Fixed bug 727317: Used html_to_8bits(), not html_to_8bits().
   - Fixed bug 727315: Bad SQL in send_reminders.php
