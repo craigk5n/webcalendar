@@ -19,121 +19,92 @@
  *	"work".
  *
  */
-
 include_once 'includes/init.php';
-print_header();
+print_header('','<link href="includes/tabs.css" rel="stylesheet" type="text/css">');
 
-// This is really a poor man's windows-style tab.
-// If anyone can put together something that looks nicer without
-// having to resort to images, please do!
+$tabs = array( "Palm Desktop", "vCalendar" );
+if ( empty ( $tab ) ) $tab = 0;
+
+
 // $items - array of titles for tab
 // $sel - which item is currently selected (0 = first)
-function print_tab ( $items, $sel=0 ) {
-  $width = sprintf ( "%2d", 100 / count ( $items ) );
-  print '<tr>';
+function print_tabs ( $items, $sel=0 ) {
+  // Start tab block
+  echo "<div class=\"tabBox\" style=\"clear:both;\">\n";
+  echo "  <div class=\"tabArea\">\n";
+
+  // Print each tab
   for ( $i = 0; $i < count ( $items ); $i++ ) {
-    if ( $i > 0 ) {
-      print "<td width=\"1\" bgcolor=\"" . $GLOBALS['TABLEBG'] . "\">" .
-        "<img src=\"spacer.gif\" width=\"1\" height=\"50\"></td>";
-    }
-    if ( $i == $sel ) {
-      $color = $GLOBALS['CELLBG'];
-      $title = $items[$i];
-    } else {
-      $color = $GLOBALS['BGCOLOR'];
-      $title = "<a href=\"import.php?tab=$i\">$items[$i]</a>";
-    }
-    print '<td width="' . $width . '%" bgcolor="' . $color . '">' .
-      "<h2><center>$title</center></h2></td>";
-
+    echo "    <a class=\"tab";
+    if ( $i == $sel ) echo " active";
+    echo "\" href=\"import.php?tab=$i\" style=\"font-weight:bold;font-size:18;\">$items[$i]</a>\n";
   }
-  print '</td></tr><tr>';
+  echo "  </div>\n";
 
-  for ( $i = 0; $i < count ( $items ); $i++ ) {
-    if ( $i > 0 )
-      print "<td></td>";
-    if ( $i == $sel ) {
-      $color = $GLOBALS['CELLBG'];
-    } else {
-      $color = $GLOBALS['TABLEBG'];
-    }
-    print '<td width="1" bgcolor="' . $color . '">' .
-      "<img src=\"spacer.gif\" width=\"" . $width . "%\" height=\"1\"></td>";
-
-  }
-  print "</tr>";
+  // Start content area
+  echo "  <div class=\"tabMain\">\n";
+  echo "    <div class=\"tabContent\"><br>\n";
 }
 
-
+// Close our tab area
+function end_tabs() {
+  echo "    <br></div>\n";
+  echo "  </div>\n";
+  echo "</div>\n";
+}
 ?>
 
 <h2><font color="<?= $H2COLOR;?>">Import</font></h2>
 
 <form action="import_handler.php" method="POST" name="importform" enctype="multipart/form-data">
-<table border="0" cellspacing="0" cellpadding="0" width="75%"><tr><td bgcolor="<?= $TEXTCOLOR ?>"><table border="0" width="100%" cellspacing="1" cellpadding="2"><tr><td width="100%" bgcolor="<?php echo $CELLBG ?>"><table border="0" width="100%">
 <?php
-$tabs = array ( "Palm Desktop", "vCal" );
-if ( empty ( $tab ) )
-  $tab = 0;
-print_tab ( $tabs, $tab );
-$colspan = 2 * count ( $tabs ) - 1;
+print_tabs ( $tabs, $tab );
+
+if ( $tab == 0 ) {
 ?>
-<tr><td colspan="<?php echo $colspan; ?>">
-<?php if ( $tab == 0 ) { ?>
-<h3><font color="<?= $H2COLOR;?>">Palm Desktop</font></h3>
-<p>
+
+<br>
 <?php etranslate("This form will allow you to import entries from the Palm Desktop Datebook."); ?>
-</p>
-<p>
+<br><br>
 <input type="hidden" name="ImportType" value="PALMDESKTOP">
 <b><?php etranslate("Exclude private records")?>:</b>
 <input type=radio name=exc_private value="1" checked><?php etranslate("Yes")?>
 <input type=radio name=exc_private value="0"><?php etranslate("No")?>
-<p>
-
+<br><br>
 <table border=0>
 <tr><td><b><?php etranslate("Datebook File")?>:</b></td>
-  <td><input type="file" name="FileName" size=45 maxlength=50">
+  <td><input type="file" name="FileName" size=45 maxlength=50"></td></tr>
 <tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>">
 <input type="button" value="<?php etranslate("Help")?>..."
   onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');">
-</td>
-</tr>
-</table></p>
-</td></tr></table>
-</td></tr></table></td></tr></table>
-</form>
+</td></tr>
+</table>
 
 <?php
 } else if ( $tab == 1 ) {
 ?>
 
 
-<form action="import_handler.php" method="POST" name="importform" enctype="multipart/form-data">
-<h3><font color="<?= $H2COLOR;?>">vCalendar</font></h3>
-<p>
+<br>
 <?php etranslate("This form will import vCalendar (.vcs) 1.0 events");?>.
-</p>
-<p>
+<br><br>
 <input type="hidden" name="ImportType" value="VCAL">
-
 <table border=0>
 <tr><td><b><?php etranslate("vCal File")?>:</b></td>
   <td><input type="file" name="FileName" size="45" maxlength=50"> &nbsp; </td></tr>
 <tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>">
 <input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');">
 </td></tr>
-</table></p>
+</table>
 
 <?php
 } else {
   echo "No such tab!";
 }
+end_tabs();
+echo "</form>";
+
+include "includes/trailer.php";
 ?>
-</td></tr></table></td></tr></table></td></tr></table>
-</form>
-
-
-<?php include "includes/trailer.php"; ?>
 </BODY>
 </HTML>
