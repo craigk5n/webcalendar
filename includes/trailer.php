@@ -168,6 +168,8 @@
       translate("Search") . "</A>";
     echo " | <A CLASS=\"navlinks\" HREF=\"export.php\">" .
       translate("Export") . "</A>";
+    echo " | <A CLASS=\"navlinks\" HREF=\"import.php\">" .
+      translate("Import") . "</A>";
     if ( $can_add ) {
       echo " | <A CLASS=\"navlinks\" HREF=\"edit_entry.php";
       if ( ! empty ( $thisyear ) ) {
