@@ -2007,7 +2007,7 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
 
   // if they have not set a preference yet...
   if ( $DATE_FORMAT == "" )
-    $DATE_FORMAT = "month dd, yyyy";
+    $DATE_FORMAT = "__month__ __dd__, __yyyy__";
 
   if ( empty ( $format ) )
     $format = $DATE_FORMAT;
@@ -2030,12 +2030,12 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
   $yy = sprintf ( "%02d", $y %= 100 );
 
   $ret = $format;
-  $ret = str_replace ( "yyyy", $yyyy, $ret );
-  $ret = str_replace ( "yy", $yy, $ret );
-  $ret = str_replace ( "month", $month, $ret );
-  $ret = str_replace ( "mon", $month, $ret );
-  $ret = str_replace ( "dd", $d, $ret );
-  $ret = str_replace ( "mm", $m, $ret );
+  $ret = str_replace ( "__yyyy__", $yyyy, $ret );
+  $ret = str_replace ( "__yy__", $yy, $ret );
+  $ret = str_replace ( "__month__", $month, $ret );
+  $ret = str_replace ( "__mon__", $month, $ret );
+  $ret = str_replace ( "__dd__", $d, $ret );
+  $ret = str_replace ( "__mm__", $m, $ret );
 
   if ( $show_weekday )
     return "$weekday, $ret";
