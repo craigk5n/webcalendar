@@ -1,5 +1,6 @@
 Version 0.9.47/CVS+dev (?? ??? 2004)
-  - Fixed bug 1086357: repeating details display
+  - Fixed Bug 1087604: Vanishing Layers / cookies
+  - Fixed Bug 1086357: repeating details display
   - Fixed Bug 1085846: SQL error in get_my_users() function
   - Fixed Bug 1085971: repeat tab does not display details
   - Fixed Bug 1074403: Day View is not accounting for server offset

@@ -93,7 +93,7 @@ if ( ! empty ( $HTTP_POST_VARS ) ) {
 //}
 if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
   while (list($key, $val) = @each($HTTP_COOKIE_VARS)) {
-    if ( empty ( $noSet[$key] ) ) {
+    if ( empty ( $noSet[$key] ) && substr($key,0,12) == "webcalendar_" ) {
       $GLOBALS[$key] = $val;
     }
     //echo "COOKIE var '$key' = '$val' <br />\n";
