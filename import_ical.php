@@ -26,7 +26,8 @@ function parse_ical ( $cal_file ) {
 
     // Read in contents of entire file first
     $data = '';
-    while (!feof($fd) && !$error) {
+    $line = 0;
+    while (!feof($fd) && empty( $error ) ) {
       $line++;
       $data .= fgets($fd, 4096);
     }
