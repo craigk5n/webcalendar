@@ -138,10 +138,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     $login == "__public__" )
     $can_add = false;
 
-  if ( strlen ( get_last_view() ) )
-    $mycal = get_last_view ();
-  else if ( ! empty ( $GLOBALS['STARTVIEW'] ) )
-    $mycal = "$GLOBALS[STARTVIEW].php";
+  if ( ! empty ( $GLOBALS['STARTVIEW'] ) )
+    $mycal = $GLOBALS['STARTVIEW'];
   else
     $mycal = "index.php";
 
@@ -351,7 +349,13 @@ if ( ! $use_http_auth ) {
       $l = $grouplist[$i]['cal_login'];
       $f = $grouplist[$i]['cal_fullname'];
       if ( $i > 0) $groups .= ", ";
-		$groups .= "<a title=\"$f\" href=\"$GLOBALS[STARTVIEW].php?user=$l\">$f</a>";
+      // Use the preferred view if it is day/week/month/year.php.  Do
+      // not use a user-created view because it might not display the
+      // proper user's events.  (Fallback to month.php if this is true.)
+      $xurl = get_preferred_view ( "", "user=$l" );
+      if ( strstr ( $xurl, "view_" ) )
+        $xurl = "month.php?user=$l";
+      $groups .= "<a title=\"$f\" href=\"$xurl\">$f</a>";
     }
     print $groups;
   }

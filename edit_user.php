@@ -14,12 +14,12 @@ if ( empty ( $user ) ) {
   // asking to create a new user
   if ( ! $is_admin ) {
     // must be admin...
-    do_redirect ( empty ( $STARTVIEW ) ? "month.php" : "$STARTVIEW.php" );
+    do_redirect ( empty ( $STARTVIEW ) ? "month.php" : "$STARTVIEW" );
     exit;
   }
   if ( ! $admin_can_add_user ) {
     // if adding users is not allowed...
-    do_redirect ( empty ( $STARTVIEW ) ? "month.php" : "$STARTVIEW.php" );
+    do_redirect ( empty ( $STARTVIEW ) ? "month.php" : "$STARTVIEW" );
     exit;
   }
 }

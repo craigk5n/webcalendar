@@ -142,17 +142,17 @@ if ( ! $error ) {
 	<tr><td class="tooltip" title="<?php etooltip("preferred-view-help");?>">
 		<label for="admin_startview"><?php etranslate("Preferred view")?>:</label></td><td>
 		<select name="admin_STARTVIEW" id="admin_startview">
-			<option value="day"<?php 
-						if ( $s["STARTVIEW"] == "day" ) echo " selected=\"selected\"";
+			<option value="day.php"<?php 
+						if ( $s["STARTVIEW"] == "day.php" ) echo " selected=\"selected\"";
 					?>><?php etranslate("Day")?></option>
-			<option value="week"<?php 
-						if ( $s["STARTVIEW"] == "week" ) echo " selected=\"selected\"";
+			<option value="week.php"<?php 
+						if ( $s["STARTVIEW"] == "week.php" ) echo " selected=\"selected\"";
 					?>><?php etranslate("Week")?></option>
-			<option value="month" <?php 
-						if ( $s["STARTVIEW"] == "month" ) echo " selected=\"selected\"";
+			<option value="month.php" <?php 
+						if ( $s["STARTVIEW"] == "month.php" ) echo " selected=\"selected\"";
 					?>><?php etranslate("Month")?></option>
-			<option value="year" <?php 
-						if ( $s["STARTVIEW"] == "year" ) echo " selected=\"selected\"";
+			<option value="year.php" <?php 
+						if ( $s["STARTVIEW"] == "year.php" ) echo " selected=\"selected\"";
 					?>><?php etranslate("Year")?></option>
 		</select>
 	</td></tr>

@@ -102,9 +102,6 @@ if ($DMW) {
   // Tell the browser not to cache
   send_no_cache_header ();
 
-  if ( empty ( $user ) )
-    remember_this_view ();
-
   if ( $allow_view_other != 'Y' && ! $is_admin )
     $user = "";
 

@@ -40,12 +40,10 @@ if ( empty ( $error ) ) {
   // Go back to where we where if we can figure it out.
   if ( strlen ( $ret ) )
     do_redirect ( $ret );
-  else if ( strlen ( $HTTP_REFERER ) )
+  else if ( ! empty ( $HTTP_REFERER ) )
     do_redirect ( $HTTP_REFERER );
-  else if ( strlen ( get_last_view() )  )
-    do_redirect ( get_last_view() );
   else
-    do_redirect ( "$STARTVIEW.php" );
+    send_to_preferred_view ();
 }
 
 print_header();

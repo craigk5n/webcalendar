@@ -19,8 +19,12 @@ if ( ! empty ( $error ) ) {
     $nonusers = get_nonuser_cals ();
     $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
+  if ( strstr ( $STARTVIEW, "view" ) )
+    $url = "month.php";
+  else
+    $url = $STARTVIEW;
   ?>
-  <form action="<?php echo $STARTVIEW;?>.php" method="get" name="SelectUser">
+  <form action="<?php echo $url;?>" method="get" name="SelectUser">
   <select name="user" onchange="document.SelectUser.submit()">
   <?php
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {

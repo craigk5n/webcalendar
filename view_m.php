@@ -26,7 +26,7 @@ $USERS_PER_TABLE = 6;
 
 if ( $allow_view_other == "N" && ! $is_admin ) {
   // not allowed...
-  do_redirect ( "$STARTVIEW.php" );
+  send_to_preferred_view ();
 }
 
 if ( empty ( $id ) ) {

@@ -7,7 +7,7 @@ load_user_categories ();
 $error = "";
 
 if ( $categories_enabled == "N" ) {
-  do_redirect ( "$STARTVIEW.php" );
+  send_to_preferred_view ();
   exit;
 }
 
