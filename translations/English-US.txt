@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 02-21-2005
+# Translation last updated on 02-23-2005
 
 
 ###############################################
@@ -270,6 +270,12 @@ The following error occurred: The following error occurred
 # Page: approve_entry.php
 #
 Error approving event: Error approving event
+
+
+###############################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Change the date and time of this entry?
 
 
 ###############################################
@@ -988,7 +994,7 @@ Color format should be '#RRGGBB': Color format should be '#RRGGBB'
 You have not entered a Brief Description: You have not entered a Brief Description
 You have not entered a valid time of day: You have not entered a valid time of day
 The time you have entered begins before your preferred work hours.  Is this correct?: The time you have entered begins before your preferred work hours.  Is this correct?
-
+Please add a participant: Please add a participant
 
 ###############################################
 # Page: includes/js/edit_layer.php
