@@ -57,10 +57,9 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 <?php } ?>
 </td>
 <td style="text-align:center; color:<?php echo $H2COLOR?>;">
-<font size="+2">
-<span style="font-weight:bold;">
+<span style="font-size:24px; font-weight:bold;">
 <?php printf ( "%s, %s %d, %d", weekday_name ( $wday ), month_name ( $thismonth - 1 ), $thisday, $thisyear ); ?>
-</span></font><br />
+</span><br />
 <?php echo $view_name ?>
 </td>
 <td style="text-align:left;">
@@ -142,7 +141,7 @@ function TimeMatrix ($date,$participants) {
 <table style="width:<?php echo $total_pix;?>; border-width:0px;" cellspacing="0" cellpadding="0" cols="<?php echo $cols;?>">
  <tr><td style="height:1px; background-color:#000000;" colspan="<?php echo $cols;?>"><img src="pix.gif" style="height:1px; width:100%;" /></td></tr>
  <tr>
-   <td style="width:<?php echo $participant_pix;?>; background-color:<?php echo $THBG;?>; color:<?php echo $THFG;?>;"><font size="-1"><?php etranslate("Participants");?></font></td>
+   <td style="width:<?php echo $participant_pix;?>; background-color:<?php echo $THBG;?>; color:<?php echo $THFG;?>; font-size:13px;"><?php etranslate("Participants");?></td>
 
 <?php
   $str = '';
@@ -202,7 +201,7 @@ function TimeMatrix ($date,$participants) {
       $Tmp['ID'] = $E['cal_id'];
       $all_events[] = $Tmp;
     }
-    echo "<tr>\n <td style=\"width:$participant_pix; background-color:$CELLBG; color:$THFG;\"><font size=\"-1\">".$user_nospace."</font></td>\n";
+    echo "<tr>\n <td style=\"width:$participant_pix; background-color:$CELLBG; color:$THFG; font-size:13px;\">".$user_nospace."</td>\n";
     $col = 1;
 
     for($j=$first_hour;$j<$last_hour;$j++) {

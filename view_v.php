@@ -65,14 +65,13 @@ for ( $i = 0; $i < 7; $i++ ) {
 <?php } ?>
 </td>
 <td style="text-align:center; color:<?php echo $H2COLOR?>;">
-<font size="+2">
-<b>
+<span style="font-size:24px; font-weight:bold;">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), false );
 ?>
-</b></font><br />
+</span><br />
 <?php echo $view_name ?>
 </td>
 <td style="text-align:right;">
@@ -147,9 +146,9 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
         $color = $CELLBG;
       $class = "tableheader";
     }
-    echo "<th class=\"$class\" style=\"width:$tdw%; background-color:$color; vertical-align:top;\">" .
-      "<font size=\"-1\" class=\"$class\">" . $weekday . " " .
-      round ( date ( "d", $date ) ) . "</font></th>\n";
+    echo "<th class=\"$class\" style=\"width:$tdw%; background-color:$color; vertical-align:top; font-size:13px;\">" .
+      $weekday . " " .
+      round ( date ( "d", $date ) ) . "</th>\n";
   }
   echo "</tr>\n";
   

@@ -65,14 +65,13 @@ for ( $i = 0; $i < 7; $i++ ) {
 <?php } ?>
 </td>
 <td style="text-align:center; color:<?php echo $H2COLOR?>;">
-<font size="+2">
-<b>
+<span style="font-size:24px; font-weight:bold;">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), false );
 ?>
-</b></font><br />
+</span><br />
 <?php echo $view_name ?>
 </td>
 <td style="text-align:right;">
@@ -140,9 +139,9 @@ for ( $date = $wkstart, $h = 0;
       $color = $CELLBG;
     $class = "tableheader";
   }
-  echo "<tr><th class=\"$class\" style=\"width:$tdw%; background-color:$THBG; vertical-align:top;\">" .
-    "<font size=\"-1\">" . $weekday . " " .
-    round ( date ( "d", $date ) ) . "</font></th>\n";
+  echo "<tr><th class=\"$class\" style=\"width:$tdw%; background-color:$THBG; vertical-align:top; font-size:13px;\">" .
+    $weekday . " " .
+    round ( date ( "d", $date ) ) . "</th>\n";
   echo "<td style=\"width:$tdw%; background-color:$color;\">";
   if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
     empty ( $friendly ) )
