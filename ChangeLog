@@ -1,4 +1,5 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Fixed bug 1124461: Apostrophe in Text Aborts Translation
  - Fixed bug 1154854: Nonuser cals not showing up in views
  - Fixed issues with display_small_month URLs. Extra & if no $user specified.
  - Fixed bug 1154007: Highlight today in Year view
