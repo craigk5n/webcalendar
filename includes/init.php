@@ -148,6 +148,9 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $POPUP_FG,$BGCOLOR;
   global $LANGUAGE;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
+  $lang = '';
+  if ( ! empty ( $LANGUAGE ) )
+    $lang = languageToAbbrev ( $LANGUAGE );
 
  // Start the header & Specify the charset
  // The charset is defined in the translation file.
@@ -157,7 +160,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
  echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n<!DOCTYPE html
     PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
     \"DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"\" lang=\"\">\n
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"$lang\" lang=\"$lang\">\n
  <head>\n<title>".translate($application_name)."</title>\n";
   } else {
 echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html
@@ -209,6 +212,16 @@ echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html
     }
   }
 }
+
+function languageToAbbrev ( $name ) {
+  global $browser_languages;
+  foreach ( $browser_languages as $abbrev => $langname ) {
+    if ( $langname == $name )
+      return $abbrev;
+  }
+  return false;
+}
+
 
 // Print the common trailer.
 // Include custom trailer if enabled
