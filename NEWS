@@ -14,7 +14,10 @@ Version 1.0RC4-CVS (?? ??? 2005)
     + Added option to set LDAP_OPT_PROTOCOL_VERSION in user-ldap.php
 
   - The following translations were updated:
-    + Finnish
+    + Danish, Finnish
+
+---------------------------------------------------------------------------
+
 Version 1.0RC3 (11 Mar 2005)
   - Fixed the following bug reports on SourceForge:
       1156729: Global-view with no valid user creates a non-translatable message
