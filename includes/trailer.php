@@ -125,9 +125,8 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 </select>
 <input type="submit" value="<?php etranslate("Go")?>" />
 </form>
-
+<div id="menu">
 <!-- GO TO -->
-<br />
 <span style="font-weight:bold; font-size: 14px;"><?php etranslate("Go to")?>:</span> 
 <?php
   $can_add = ( $readonly == "N" || $is_admin == "Y" );
@@ -327,4 +326,5 @@ if ( strlen ( $login ) && $login != "__public__" ) {
   print "<br />\n<a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_new\">" .
     $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 ?>
+</div>
 </div><!-- /TRAILER -->

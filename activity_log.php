@@ -36,16 +36,17 @@ if ( $res ) {
       $nextpage = $row[7];
       break;
     } else {
-	echo '<tr';
+	echo "<tr";
 		if ( $num % 2 ) {
-			echo ' class="odd"';
+			echo " class=\"odd\"";
 		}
 	echo "><td>\n" .
         $row[0] . "</td><td>\n" .
         $row[1] . "</td><td>\n" . 
-        date_to_str ( $row[3] ) . " " .
+        date_to_str ( $row[3] ) . "&nbsp;" .
         display_time ( $row[4] ) . "</td><td>\n" . 
-        "<a href=\"view_entry.php?id=$row[5]\" class=\"nav\">" .
+        "<a title=\"" .
+        htmlspecialchars($row[6]) . "\" href=\"view_entry.php?id=$row[5]\">" .
         htmlspecialchars($row[6]) . "</a></td><td>\n";
       if ( $row[2] == $LOG_CREATE )
         etranslate("Event created");
@@ -72,8 +73,17 @@ if ( $res ) {
 }
 ?>
 </table><br />
-
+<div class="navigation">
 <?php
+//go BACK in time
+if ( ! empty ( $nextpage ) ) {
+  echo "<a title=\"" . 
+  	translate("Previous") . "&nbsp;$PAGE_SIZE&nbsp;" . 
+	translate("Events") . "\" class=\"prev\" href=\"activity_log.php?startid=$nextpage\">" . 
+  	translate("Previous") . "&nbsp;$PAGE_SIZE&nbsp;" . 
+	translate("Events") . "</a>\n";
+}
+
 if ( ! empty ( $startid ) ) {
   $previd = $startid + $PAGE_SIZE;
   $res = dbi_query ( "SELECT MAX(cal_log_id) FROM " .
@@ -85,18 +95,18 @@ if ( ! empty ( $startid ) ) {
       } else {
         $prevarg = "?startid=$previd";
       }
-      echo "<a href=\"activity_log.php$prevarg\" class=\"nav\">" .
-        translate("Previous") . " $PAGE_SIZE</a><br />\n";
+      //go FORWARD in time
+      echo "<a title=\"" . 
+  	translate("Next") . "&nbsp;$PAGE_SIZE&nbsp;" . 
+	translate("Events") . "\" class=\"next\" href=\"activity_log.php$prevarg\">" . 
+  	translate("Next") . "&nbsp;$PAGE_SIZE&nbsp;" . 
+	translate("Events") . "</a><br />\n";
     }
     dbi_free_result ( $res );
   }
 }
-if ( ! empty ( $nextpage ) ) {
-  echo "<a href=\"activity_log.php?startid=$nextpage\" class=\"nav\">" .
-    translate("Next") . " $PAGE_SIZE</a><br />\n";
-}
 ?>
-
+</div>
 <?php print_trailer(); ?>
 </body>
 </html>

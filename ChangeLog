@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Added title attributes in activity_log.php
   - Cleaning up HTML & CSS
   - Updated view-preview doc with more modular code
   - Adding additional save button in pref.php to mirror admin.php

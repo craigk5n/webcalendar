@@ -89,7 +89,7 @@ a:hover {
 }
 #trailer form {
 	float: left;
-	width: 33%;
+	width: 33.33%;
 	border-top: 1px solid #000000;
 	padding-top: 5px;
 	margin-top: 5px;
@@ -109,6 +109,9 @@ a:hover {
 #yearform {
 	text-align: right;
 	clear: right;
+}
+#menu {
+	clear: both;
 }
 <?php //link to webcalendar site -- NOTE: by modifying this style, you can make this link disappear
 ?>a#programname {
@@ -185,8 +188,6 @@ a:hover {
 <?php //left arrow images
 ?>.prev img {
 	border-width: 0px;
-	width: 36px;
-	height: 32px;
 	margin-left: 3px;
 	margin-top: 7px;
 	float: left;
@@ -194,26 +195,40 @@ a:hover {
 <?php //right arrow images
 ?>.next img {
 	border-width: 0px;
-	width: 36px;
-	height: 32px;
 	margin-right: 3px;
 	margin-top: 7px;
+	float: right;
+}
+#activitylog .prev {
+	border-width: 0px;
+	float: left;
+}
+#activitylog .next {
+	border-width: 0px;
 	float: right;
 }
 <?php //left arrow image in day.php
 ?>#day .prev img {
 	border-width: 0px;
-	width: 36px;
-	height: 32px;
 	margin-top: 37px;
 	float: left;
 }
 <?php //right arrow image in day.php
 ?>#day .next img {
 	border-width: 0px;
-	width: 36px;
-	height: 32px;
 	margin-top:37px;
+	float: right;
+}
+<?php //left arrow image in day.php
+?>#day .monthnav .prev img {
+	border-width: 0px;
+	margin: 0px;
+	float: left;
+}
+<?php //right arrow image in day.php
+?>#day .monthnav .next img {
+	border-width: 0px;
+	margin: 0px;
 	float: right;
 }
 .dailymatrix {
@@ -399,13 +414,12 @@ table.standard th {
 	color: #0000FF;
 }
 <?php //formats the day name (i.e. Sun, Mon, etc) in minicals
-?>.minical thead th {
+?>.minical th, 
+.minical td.empty {
 	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
 	text-align: center;
-}
-.minical th, 
-.minical td.empty {
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+	width: 14%;
 }
 .minical td {
 	padding: 0px 2px;
@@ -429,14 +443,23 @@ table.standard th {
 }
 #activitylog table {
 	width: 100%;
-	border: 1px solid #000000;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-spacing: 0px;
 }
-#activitylog th {
-	color: #000000;
+#activitylog tr {
 	background-color: #FFFFFF;
-	border-right: 1px solid #AAAAAA;
-	border-bottom: 1px solid #000000;
+}
+#activitylog .odd {
+	background-color: #EEEEEE;
+}
+#activitylog th {
+	width: 14%;
+	color: <?php echo $GLOBALS['THFG']; ?>;
+	background-color: <?php echo $GLOBALS['THBG']; ?>;
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	padding: 1px 3px;
 }
 #activitylog th.usr,
@@ -444,21 +467,9 @@ table.standard th {
 #activitylog th.action {
 	width: 7%;
 }
-#activitylog th.scheduled,
-#activitylog th.dsc {
-	width: 14%;
-}
-#activitylog tr {
-	background-color: #FFFFFF;
-}
-tr.odd {
-	background-color: #EEEEEE;
-}
 #activitylog td {
-	vertical-align: top;
-	border-right: 1px solid #AAAAAA;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	padding: 1px 3px;
-	font-size: 13px;
 }
 #day div.minicalcontainer {
 	text-align: right;
@@ -473,15 +484,12 @@ tr.odd {
 	background-color: <?php echo $GLOBALS['THBG']; ?>;
 	font-size: 47px;
 }
-#day .minical tr.monthnav th {
+#day .monthnav th {
 	text-align: center;
 	color: <?php echo $GLOBALS['THFG']; ?>;
 	background-color: <?php echo $GLOBALS['THBG']; ?>;
 	border-width: 0px;
-}
-#day .minical tr.monthnav td {
-	background-color: <?php echo $GLOBALS['THBG']; ?>;
-	border-width: 0px;
+	padding: 3px;
 }
 .glance {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
