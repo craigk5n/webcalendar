@@ -173,7 +173,8 @@ print<<EOF;
   <TD><A HREF="http://webcalendar.sourceforge.net/">http://webcalendar.sourceforge.net/</A></TD></TR>
 <TR><TD>Author:</TD>
   <TD><A HREF="http://www.cknudsen.com">Craig Knudsen</A>, <A HREF="mailto:cknudsen\@cknudsen.com">cknudsen\@cknudsen.com</A></TD></TR>
-<TR><TD>Version:</TD><TD>$v</TD></TR>
+<TR><TD VALIGN="top">Version:</TD><TD>$v<BR>
+\$Id\$ </TD></TR>
 <TR><TD>Last updated:</TD><TD>$now</TD></TR>
 </TABLE>
 <BLOCKQUOTE>
@@ -185,6 +186,8 @@ names shown in red are the primary keys for that table.
 If you update the SQL for WebCalendar, use the sql2html.pl script
 to regenerate this file.
 </BLOCKQUOTE>
+<B>Version:</B> $Id$
+<P>
 <H2>List of Tables</H2>
 <UL>
 EOF
