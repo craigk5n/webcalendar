@@ -1,4 +1,7 @@
 Version 0.9.32dev (?? ??? 01)
+  - Fixed bug: when view a non-repeating event, some of the
+    text for repeating events ("every") would be displayed next
+    to the event date.
   - Remember the last view (week, day or month) and return to it
     instead of returning to the preferred view.  For example, if
     you were viewing March 2002, then viewed an event in that

@@ -75,17 +75,15 @@ $name = $row[9];
 $description = $row[10];
 
 // build info string for repeating events and end date
-$sql = "SELECT cal_type, cal_end, cal_frequency, cal_days FROM webcal_entry_repeats " .
-   "WHERE cal_id = $id";
+$sql = "SELECT cal_type, cal_end, cal_frequency, cal_days " .
+  "FROM webcal_entry_repeats WHERE cal_id = $id";
 $res = dbi_query ($sql);
 if ( $res ) {
-  $tmprow = dbi_fetch_row ( $res );
-  if ( count ( $tmprow ) > 0 ) {
+  if ( $tmprow = dbi_fetch_row ( $res ) ) {
     $cal_type = $tmprow[0];
     $cal_end = $tmprow[1];
     $cal_frequency = $tmprow[2];
     $cal_days = $tmprow[3];
-    dbi_free_result ( $res );
 
     if ( $cal_end ) {
       $rep_str .= "&nbsp; - &nbsp;";
@@ -121,6 +119,7 @@ if ( $res ) {
     }
     $rep_str .= ")";
   }
+  dbi_free_result ( $res );
 }
 /* calculate end time */
 if ( $row[2] > 0 && $row[5] > 0 ) { 
