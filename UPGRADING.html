@@ -4,6 +4,33 @@
 
 Below are the steps needed to upgrade from a previous version:
 
+<P><HR><P><B>To upgrade to 0.9.43 from 0.9.42 or older:</B>
+<P>
+  User passwords are now stored using md5 and require the webcal_user
+  table to be altered to accomodate larger password data.
+  Use the following SQL for MySQL and PostgreSQL:
+  <BLOCKQUOTE><PRE>
+   ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(32) NULL;
+  </PRE></BLOCKQUOTE>
+  For Oracle, use VARCHAR2 instead of VARCHAR.
+  On very old MySQL installations (not sure which version), if you get
+  a parse error, you can try the following instead:
+  <BLOCKQUOTE><PRE>
+   ALTER TABLE webcal_user CHANGE cal_passwd cal_passwd VARCHAR(32) NULL;
+  </PRE></BLOCKQUOTE>
+  </p><p>
+  Next, you will need to run the script found in the <tt>tools</tt>
+  subdirectory.  This will convert all your passwords from plain text
+  to md5.  You can either run this from the command line (if you have
+  a standalone version of PHP compiled):
+  <BLOCKQUOTE><PRE>
+    cd tools
+    php convert_passwords.php
+  </PRE></BLOCKQUOTE>
+  If you do not have a standalone version of PHP, you can just type in
+  the URL to access the script in your browser: <br>
+  <tt>http://yourcalendarurl/tools/convert_passwords.php</tt><br>
+
 <P><HR><P><B>To upgrade to 0.9.42 from 0.9.41 or older:</B>
 <P>
   Three new tables were added: webcal_report,
