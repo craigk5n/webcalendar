@@ -1,4 +1,6 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Fixed bug 801850: Don't allow adding of events via public calendar
+    if user enters URL by hand.
   - Modified to use md5 hashes for passwords in webcal_user rather than
     storing the passwords as plain text.  (Requires updating database
     and running conversion script.   See UPGRADING.html.)
