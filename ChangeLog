@@ -4,6 +4,9 @@ Verion 0.9.45dev (?? ??? 2004)
   - Modified user-*.php to tell user either "no such user" or
     "incorrect password".  This should help sysadmins trying to setup
     WebCalendar figure out why a login is not working.
+    Admins will need to enable $showLoginFailureReason in login.php to
+    turn this feature on.  For security reason, the default will be
+    to always say "Invalid login."
   - Fixed bug 1061702: site extras (reminder info) not showing up
     properly in event popups
   - Reorganizing styles.php to be more logical
