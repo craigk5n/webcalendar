@@ -1157,6 +1157,13 @@ settings.
   file by changing the setting of the <tt>max_execution_time</tt> setting.
 </dd>
 
+<dt>I get an error message that says
+  "Can't connect to local MySQL server through socket '/tmp/mysql.sock'"</dt>
+<dd>This is a PHP/MySQL issue.  The value of <tt>mysql.default_socket</tt>
+  in your <tt>php.ini</tt> file must match the
+  value of <tt>socket</tt> in your <tt>my.cnf</tt> file.
+</dd>
+
 <dt>I am not receiving any email messages from WebCalendar.</dt>
 <dd>WebCalendar sends two types of email messages:
   Notifications<sup><a href="#g_notification">*</a></sup> and
@@ -1338,6 +1345,10 @@ read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.
 
 <pre>
 $Log$
+Revision 1.14  2004/07/14 00:19:23  cknudsen
+Added solution in troublehshooting about error that says
+Can't connect to local MySQL server through socket '/tmp/mysql.sock'
+
 Revision 1.13  2004/07/08 01:01:22  cknudsen
 updated to include initial URL of WebCalendar and instructions for
 creating users.
