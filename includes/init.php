@@ -18,12 +18,10 @@
 // Get script name
 preg_match("/\/(\w+\.php)/",$_SERVER['PHP_SELF'],$match);
 $SCRIPT = $match[1];
-unset($match); // clean-up
 
 // Several files need a no-cache header and some of the same code
 $special = array('month.php', 'day.php', 'week.php', 'week_details.php');
 $DMW = in_array($SCRIPT, $special);
-unset($special); // clean-up
 
 include_once 'includes/config.php';
 include_once 'includes/php-dbi.php';
