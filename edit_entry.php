@@ -108,7 +108,8 @@ if ( ! $year && ! $month && strlen ( $date ) ) {
   $thisday = $day = substr ( $date, 6, 2 );
   $cal_date = $date;
 } else {
-  $cal_date = date ( "Ymd" );
+  if ( $cal_date == 0 )
+    $cal_date = date ( "Ymd" );
 }
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 if ( ! $cal_date )
@@ -150,19 +151,13 @@ function validate_and_submit () {
           echo "if ( h < $WORK_DAY_START_HOUR && document.forms[0].ampm[0].checked ) {";
         }
   ?>
+
     if ( ! confirm ( "<?php etranslate ("The time you have entered begins before your preferred work hours.  Is this correct?")?> "))
       return false;
   }
   // would be nice to also check date to not allow Feb 31, etc...
   document.forms[0].submit ();
   return true;
-}
-function selectDate ( day, month, year, current ) {
-  url = "datesel.php?form=editentryform&day=" + day +
-    "&month=" + month + "&year=" + year;
-  if ( current > 0 )
-    url += '&date=' + current;
-  var colorWindow = window.open(url,"DateSelection","width=200,height=160,resizable=yes,scrollbars=yes");
 }
 
 </SCRIPT>
