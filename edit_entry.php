@@ -207,7 +207,7 @@ if ( $can_edit ) {
 <form action="edit_entry_handler.php" method="post" name="editentryform">
 
 <?php
-if ( ! empty ( $id ) ) echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
+if ( ! empty ( $id ) && ( $copy != '1' ) ) echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
 // we need an additional hidden input field
 echo "<input type=\"hidden\" name=\"entry_changed\" value=\"\" />\n";
 
