@@ -1013,7 +1013,8 @@ function print_entry ( $id, $date, $time, $duration,
   if ( $pri == 3 ) echo "<span style=\"font-weight:bold;\">";
 	$popupid = "eventinfo-$id-$key";
 	$key++;
-	echo "<a title=\"" . translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+	echo "<a title=\"" . 
+		translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
 	if ( strlen ( $user ) > 0 )
 		echo "&amp;user=" . $user;
 	echo "\" onmouseover=\"window.status='" . translate("View this entry") .
@@ -1027,7 +1028,7 @@ function print_entry ( $id, $date, $time, $duration,
     {
         if($layer['cal_layeruser'] == $event_owner)
         {
-            echo("<span style=\"color:" . $layer['cal_color'] . "\">");
+            echo("<span style=\"color:" . $layer['cal_color'] . ";\">");
         }
     }
   }
@@ -3078,7 +3079,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   }
   echo "</select>\n";
   echo "</form>\n";
-  echo "<span id=\"category\">" . translate ('Category') . ": ";
+  echo "<span id=\"cat\">" . translate ('Category') . ": ";
   echo ( strlen ( $cat_id ) ? $categories[$cat_id] : translate ('All') ) . "</span>\n";
 }
 

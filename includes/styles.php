@@ -123,7 +123,7 @@ a:hover {
 	height: 15px;
 }
 <?php //display:none; is unhidden by includes/print_styles.css for printer-friendly pages 
-?>#category {
+?>#cat {
 	display: none;
 	font-size: 18px;
 }
@@ -355,7 +355,7 @@ a.matrix img {
 }
 .popup {
 	font-size: 12px;
-	color: <?php echo ( $GLOBALS['POPUP_FG'] == "" ? "#000000" : $GLOBALS['POPUP_FG'] ); ?>;
+	color: <?php echo $GLOBALS['POPUP_FG']; ?>;
 	background-color: <?php echo $GLOBALS['POPUP_BG']; ?>;
 	text-decoration: none;
 	position: absolute;
@@ -363,7 +363,7 @@ a.matrix img {
 	visibility: hidden;
 	top: 0px;
 	left: 0px;
-	border: 1px solid <?php echo ( $GLOBALS['POPUP_FG'] == "" ? "#000000" : $GLOBALS['POPUP_FG'] ); ?>;
+	border: 1px solid <?php echo $GLOBALS['POPUP_FG']; ?>;
 	padding: 3px;
 }
 .popup dl {
@@ -396,12 +396,8 @@ h2 {
 h3 {
 	font-size: 18px;
 }
-p {
-	font-size: 12px;
-}
-input {
-	font-size: 12px;
-}
+p,
+input,
 select {
 	font-size: 12px;
 }
@@ -922,9 +918,6 @@ table.standard th {
 	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
 	vertical-align: top;
 	height: 75px;
-}
-#pref #month table.main td {
-	height: 30px;
 }
 -->
 </style>

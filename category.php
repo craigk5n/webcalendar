@@ -82,7 +82,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
     echo "</ul>";
   }
   if ( $global_found )
-    echo "<br />\n<br />\n<sup>*</sup> " . translate ( "Global" );
+    echo "<br /><br />\n<sup>*</sup> " . translate ( "Global" );
   echo "<p><a href=\"category.php?add=1\">" . translate("Add New Category") . "</a></p><br />\n";
 }
 

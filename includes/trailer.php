@@ -160,37 +160,37 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
       echo "<a title=\"" . translate("My Calendar") . "\" class=\"nav\" style=\"font-weight:bold;\" href=\"$mycal\">" . translate("Back to My Calendar") . "</a>";
     else
       echo "<a title=\"" . translate("My Calendar") . "\" class=\"nav\" style=\"font-weight:bold;\" href=\"$mycal\">" .
-        translate("My Calendar") . "</a>";
+        translate("My Calendar") . "</a>\n";
     if ( ! empty ( $user ) && $user != $login )
       $todayURL .= '?user=' . $user;
-    echo " | <a title=\"" . translate("Today") . "\" class=\"nav\" style=\"font-weight:bold;\" href=\"$todayURL\">" . translate("Today") . "</a>";
+    echo " | <a title=\"" . translate("Today") . "\" class=\"nav\" style=\"font-weight:bold;\" href=\"$todayURL\">" . translate("Today") . "</a>\n";
     if ( $login != '__public__' )
       echo " | <a title=\"" . translate("Admin") . "\" class=\"nav\" style=\"font-weight:bold;\" href=\"adminhome.php\">" .
-        translate("Admin") . "</a>";
+        translate("Admin") . "</a>\n";
     if ( $login != "__public__" && $readonly == "N" &&
       ( $require_approvals == "Y" || $public_access == "Y" ) ) {
 	$url = 'list_unapproved.php';
         if ($is_nonuser_admin) $url .= "?user=$user";
-	echo " | <a title=\"" . translate("Unapproved Events") . "\" class=\"nav\" href=\"$url\">" . translate("Unapproved Events") . "</a>";
+	echo " | <a title=\"" . translate("Unapproved Events") . "\" class=\"nav\" href=\"$url\">" . translate("Unapproved Events") . "</a>\n";
     }
     if ( $login == "__public__" && $public_access_others != "Y" ) {
       // don't allow them to see other people's calendar
     } else if ( $allow_view_other == "Y" || $is_admin )
-      echo " | <a title=\"" . translate("Another User's Calendar") . "\" class=\"nav\" href=\"select_user.php\">" . translate("Another User's Calendar") . "</a>";
+      echo " | <a title=\"" . translate("Another User's Calendar") . "\" class=\"nav\" href=\"select_user.php\">" . translate("Another User's Calendar") . "</a>\n";
   } else {
-    echo "<a title=\"" . translate("My Calendar") . "\" class=\"nav\" style=\"font-weight:bold;\" href=\"$mycal\">" . translate("My Calendar") . "</a>";
-    echo " | <a title=\"" . translate("Today") . "\" class=\"nav\" style=\"font-weight:bold;\" href=\"$todayURL\">" . translate("Today") . "</a>";
-    echo " | <a title=\"" . translate("Admin") . "\" class=\"nav\" style=\"font-weight:bold;\" href=\"adminhome.php\">" . translate("Admin") . "</a>";
+    echo "<a title=\"" . translate("My Calendar") . "\" class=\"nav\" style=\"font-weight:bold;\" href=\"$mycal\">" . translate("My Calendar") . "</a>\n";
+    echo " | <a title=\"" . translate("Today") . "\" class=\"nav\" style=\"font-weight:bold;\" href=\"$todayURL\">" . translate("Today") . "</a>\n";
+    echo " | <a title=\"" . translate("Admin") . "\" class=\"nav\" style=\"font-weight:bold;\" href=\"adminhome.php\">" . translate("Admin") . "</a>\n";
   }
   // only display some links if we're viewing our own calendar.
   if ( empty ( $user ) || $user == $login ) {
     echo " | <a title=\"" . translate("Search") . "\" class=\"nav\" href=\"search.php\">" .
-      translate("Search") . "</a>";
+      translate("Search") . "</a>\n";
     echo " | <a title=\"" . translate("Export") . "\" class=\"nav\" href=\"export.php\">" .
-      translate("Export") . "</a>";
+      translate("Export") . "</a>\n";
     if ( $login != '__public__' )
       echo " | <a title=\"" . translate("Import") . "\" class=\"nav\" href=\"import.php\">" .
-      translate("Import") . "</a>";
+      translate("Import") . "</a>\n";
     if ( $can_add ) {
       echo " | <a title=\"" . translate("Add New Entry") . "\" class=\"nav\" href=\"edit_entry.php";
       if ( ! empty ( $thisyear ) ) {
@@ -200,7 +200,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
         if ( ! empty ( $thisday ) )
           print "&amp;day=$thisday";
       }
-      echo "\">" . translate("Add New Entry") . "</a>";
+      echo "\">" . translate("Add New Entry") . "</a>\n";
     }
   }
   if ( $login != '__public__' && $single_user != 'Y' ) {
@@ -212,7 +212,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
   if ( $login != '__public__' ) {
     echo " | <a title=\"" . translate("Help") . "\" class=\"nav\" href=\"#\" onclick=\"window.open ( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );\"" .
       " onmouseover=\"window.status='" . translate("Help") . "'\">" .
-      translate("Help") . "</a>";
+      translate("Help") . "</a>\n";
   }
 ?>
 
@@ -245,13 +245,13 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
     echo "id=" . $views[$i]['cal_view_id'];
     if ( ! empty ( $thisdate ) )
       echo "&amp;date=$thisdate";
-    echo "\">" . $views[$i]['cal_name'] . "</a>";
+    echo "\">" . $views[$i]['cal_name'] . "</a>\n";
   }
   if ( $readonly != "Y" ) {
     if ( count ( $views ) > 0 )
       echo " | ";
     echo "<a title=\"" . translate("Manage Views") . "\" class=\"nav\" href=\"views.php\">" .
-      translate("Manage Views") . "</a>";
+      translate("Manage Views") . "</a>\n";
   }
 ?>
 
@@ -304,7 +304,7 @@ if ( ! $use_http_auth ) {
 if ( strlen ( $login ) && $login != "__public__" ) {
 	echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . translate("Logout") . "\" href=\"$login_url\">" . translate("logout") . "</a>)<br />\n";
   } else {
-	echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>&nbsp;Public Access&nbsp;(<a title=\"" . translate("Login") . "\" href=\"$login_url\">" . translate("login") . "</a>)<br />\n";
+	  echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>&nbsp;" . translate("Public Access") . "&nbsp;(<a title=\"" . translate("Login") . "\" href=\"$login_url\">" . translate("login") . "</a>)<br />\n";
   }
 }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
@@ -319,7 +319,7 @@ if ( strlen ( $login ) && $login != "__public__" ) {
       $l = $grouplist[$i]['cal_login'];
       $f = $grouplist[$i]['cal_fullname'];
       if ( $i > 0) $groups .= ",&nbsp;";
-		$groups .= "<a title=\"$f\" class=\"nav\" href=\"$GLOBALS[STARTVIEW].php?user=$l\">$f</a>";
+		$groups .= "<a title=\"$f\" class=\"nav\" href=\"$GLOBALS[STARTVIEW].php?user=$l\">$f</a>\n";
     }
     print $groups;
   }
