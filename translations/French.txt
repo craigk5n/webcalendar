@@ -766,6 +766,7 @@ View Type: Type de la vue
 Week (Users horizontal): Semaine (utilisateurs à l'horizontale)
 Week (Users vertical): Semaine (utilisateurs à la verticale)
 Week (Timebar): Semaine (planning)
+Month (Timebar): Mois (planning)
 Month (side by side): Mois (Côte à côte)
 Month (on same calendar): Mois (sur le même calendrier)
 

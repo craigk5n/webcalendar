@@ -22,15 +22,26 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 $INC = array('js/popups.php');
 print_header($INC);
 
+// Initialise la date au premier du mois en cours
+if ( $timeb == 0 )
+   $date = substr($date,0,6)."01";
+
 set_today($date);
 
-$next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
+// Week timebar
+if ( $timeb == 1 )
+   $next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
+else
+   $next = mktime ( 3, 0, 0, $thismonth + 1, $thisday, $thisyear );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 $nextday = date ( "d", $next );
 $nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
 
-$prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
+if ( $timeb == 1 )
+   $prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
+else
+   $prev = mktime ( 3, 0, 0, $thismonth - 1, $thisday, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );
@@ -38,19 +49,34 @@ $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.
-if ( $WEEK_START == 1 )
-  $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
+if ( $timeb == 1 )
+{
+   if ( $WEEK_START == 1 )
+      $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
+   else
+      $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
+}
 else
-  $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
-$wkend = $wkstart + ( 3600 * 24 * 6 );
+   $wkstart = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );    // Debut
+
+if ( $timeb == 1 )
+   $wkend = $wkstart + ( 3600 * 24 * 6 );
+else
+   $wkend = $wkstart + ( 3600 * 24 * (date("t", $wkstart)-1) );    // Fin (1 mois plus tard)
+
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
 
 $thisdate = $startdate;
 
-for ( $i = 0; $i < 7; $i++ ) {
+if ( $timeb == 1 )
+   $val_boucle = 7;
+else
+   $val_boucle = date("t", $wkstart);
+
+for ( $i = 0; $i < $val_boucle; $i++ ) {
   $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
-  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
+  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % $val_boucle );
   $header[$i] = $weekdays[$i] . "<br />" .
      month_short_name ( date ( "m", $days[$i] ) - 1 ) .
      " " . date ( "d", $days[$i] );
@@ -61,7 +87,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <table style="border-width:0px; width:100%;">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<br /><a title="<?php etranslate("Previous")?>" href="view_t.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
+<br /><a title="<?php etranslate("Previous")?>" href="view_t.php?timeb=<?php echo $timeb?>&id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
 </td>
 <td class="viewttitle">
@@ -78,7 +104,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 </td>
 <td style="text-align:right;">
 <?php if ( ! $friendly ) { ?>
-<br /><a title="<?php etranslate("Next")?>" href="view_t.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<br /><a title="<?php etranslate("Next")?>" href="view_t.php?timeb=<?php echo $timeb?>&id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 </td></tr>
 </table><br /><br />
@@ -139,16 +165,25 @@ for ( $date = $wkstart, $h = 0;
       $color = $CELLBG;
     $class = "tableheader";
   }
-  echo "<tr><th class=\"$class\" style=\"width:$tdw%;  vertical-align:top;\">" .
+  echo "<tr><th class=\"$class\" style=\"width:10%;  vertical-align:top;\">" .
     $weekday . " " .
     round ( date ( "d", $date ) ) . "</th>\n";
-  echo "<td style=\"width:$tdw%; background-color:$color;\">";
+  echo "<td style=\"width:90%; background-color:$color;\">";
   if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
     empty ( $friendly ) )
     echo html_for_add_icon ( date ( "Ymd", $date ), "", "", $user );
 
+  // Parametres par defaut
+  if ($prefarray["WORK_DAY_START_HOUR"]==NULL || $prefarray["WORK_DAY_END_HOUR"]==NULL)
+  {
+     $val = dbi_fetch_row ( dbi_query ( "SELECT cal_value FROM webcal_config where cal_setting=\"WORK_DAY_START_HOUR\"" ));
+     $prefarray["WORK_DAY_START_HOUR"]=$val[0];
+     $val = dbi_fetch_row ( dbi_query ( "SELECT cal_value FROM webcal_config where cal_setting=\"WORK_DAY_END_HOUR\"" ));
+     $prefarray["WORK_DAY_END_HOUR"]=$val[0];
+  }
+    
   print_header_timebar($prefarray["WORK_DAY_START_HOUR"],
-    $prefarray["WORK_DAY_END_HOUR"]);
+      $prefarray["WORK_DAY_END_HOUR"]);
   print_date_entries_timebar ( date ( "Ymd", $date ),
     $GLOBALS["login"], $friendly, true );
   echo "</td>";
@@ -166,7 +201,7 @@ $user = ""; // reset
 echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<a class=\"navlinks\" href=\"view_t.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
+  echo "<a class=\"navlinks\" href=\"view_t.php?timeb=$timeb&id=$id&amp;date=$thisdate&amp;friendly=1\" " .
     "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</a>\n";
