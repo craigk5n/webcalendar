@@ -27,10 +27,9 @@ if ( $login == "__public__" && $public_access_others != "Y" )
 
 ?>
 
-<table style="border-width:0px;">
-
 <input type="hidden" name="advanced" value="1" />
 
+<table style="border-width:0px;">
 <tr><td style="font-weight:bold;"><?php etranslate("Keywords")?>:</td>
 <td><input type="text" name="keywords" size="30" /></td>
 <td><input type="submit" value="<?php etranslate("Search")?>" /></td></tr>
