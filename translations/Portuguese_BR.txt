@@ -6,8 +6,10 @@
 # Based in Portuguese version, by José Roberto Kerne - joseroberto@dicaslinux.com.br
 # Based in Portugues version, by Sérgio Oliveira - sloliv@terra.com.br
 # Based in Portuguese version, by Nuno Lopes - nml@maxitel.pt
+# Based in Portuguese version, by Andre Oliveira - zack22@ig.com.br
 #
-# Translation last updated on 12-02-2004
+# Last update: 30 March 2004
+# Translation last updated on 12-03-2004
 
 # No charset specified (not needed for iso-8859-1)
 # "charset" is used in a meta tag, do not translate "charset" here.
@@ -23,9 +25,7 @@ Previous: Anterior
 Next: Próximo
 Admin mode: Modo de Administrador
 Assistant mode: Modo Assistente
-#
-# << MISSING >>
-# cont.:
+cont.: cont.
 Generate printer-friendly version: Visualizar em formato de impressora
 Printer Friendly: Formato de impressora
 
@@ -172,9 +172,7 @@ Conflict checking months: Checar conflitos no mês
 # conflict-check-override-help:
 # English text: Allows users to override event conflicts and schedule two or more events for the same time.
 #
-#
-# << MISSING >>
-# Allow users to override conflicts:
+Allow users to override conflicts: Permitir usuários para sobrescrever conflitos
 #
 # << MISSING >>
 # limit-appts-help:
@@ -215,9 +213,7 @@ Enable Plugins: Habilita Plugins
 # plugins-sort-key-help:
 # English text: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
 #
-#
-# << MISSING >>
-# Plugin:
+Plugin: Plugin
 #
 # << MISSING >>
 # allow-public-access-help:
@@ -307,9 +303,7 @@ Categories enabled: Categorias habilitadas.
 # allow-external-users-help:
 # English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
 #
-#
-# << MISSING >>
-# Allow external users:
+Allow external users: Permitir usuários externos
 #
 # << MISSING >>
 # external-can-receive-notification-help:
@@ -600,9 +594,7 @@ Add/Edit/Delete: Adicionar/Editar/Deletar
 #
 # << MISSING >>
 # Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
-#
-# << MISSING >>
-# Specifies the user that you would like to see displayed in your calendar.:
+Specifies the user that you would like to see displayed in your calendar.: Especifica o usuário que será exibido no seu calendário
 #
 # << MISSING >>
 # The text color of the new layer that will be displayed in your calendar.:
@@ -921,9 +913,7 @@ Timed event: Eventos com Hora
 # external-participants-help:
 # English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
 #
-#
-# << MISSING >>
-# External Participants:
+External Participants: Participantes Externos
 Daily: Diário
 Weekly: Semanal
 Monthly: Mensal
@@ -1016,9 +1006,7 @@ Administrative Tools: Ferramentas Administrativas
 # << MISSING >>
 # Purging events for:
 Finished: Finalizado
-#
-# << MISSING >>
-# Delete all events before:
+Delete all events before: Excluir todos os eventos ateriores
 #
 # << MISSING >>
 # Check box to delete <b>ALL</b> events for a user:
@@ -1038,41 +1026,23 @@ Set Category: Selecionar Categoria
 ###############################################
 # Page: help_import.php
 #
-#
-# << MISSING >>
-# Palm Desktop:
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Permite que você importe os compromissos de seu Palm Desktop
-#
-# << MISSING >>
-# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Deverá ser localizado no diretório do seu Palm em <tt>datebook/datebook.dat</tt> no subdiretório do usuário
 The following entries will not be imported: Os seguintes eventos não serão importados
 Entries older than the current date: Eventos anteriores a data corrente
-#
-# << MISSING >>
-# Entries created in the Palm Desktop that have not been HotSync'd:
-#
-# << MISSING >>
-# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
-#
-# << MISSING >>
-# Therefore, updates should be made in the Palm Desktop.:
-#
-# << MISSING >>
-# vCal:
+Entries created in the Palm Desktop that have not been HotSync'd: Entradas geradas no Palm Desktop que não foram sincronizados
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Qualquer evento importado do Palm será sobrescrito durante a próxima importação
+Therefore, updates should be made in the Palm Desktop.: Por isso, atualizações deverão ser feitas no Palm Desktop
+vCal: vCal
 This form will import vCalendar (.vcs) 1.0 events: Este formulário importa do vCalendar (.vcs)
 The following formats have been tested: Os seguintes formatos foram testados
 #
 # << MISSING >>
 # Palm Desktop 4:
-#
-# << MISSING >>
-# Lotus Organizer 6:
-#
-# << MISSING >>
-# Microsoft Outlook 2002:
-#
-# << MISSING >>
-# iCalendar:
+Lotus Organizer 6: Organizador Lotus 6
+Microsoft Outlook 2002: Microsoft Outlook 2002
+iCalendar: iCalendar
 This form will import iCalendar (.ics) events: Este formulário importa do iCalendar (.ics)
 #
 # << MISSING >>
@@ -1256,86 +1226,36 @@ Invalid user login: Usuário Inválido
 ###############################################
 # Page: includes/functions.php
 #
-#
-# << MISSING >>
-# This event is confidential:
-#
-# << MISSING >>
-# exceeds limit of XXX events per day:
-#
-# << MISSING >>
-# You have XXX unapproved events:
-#
-# << MISSING >>
-# January:
-#
-# << MISSING >>
-# February:
-#
-# << MISSING >>
-# March:
-#
-# << MISSING >>
-# April:
+This event is confidential: Este evento é confidencial
+exceeds limit of XXX events per day: limite excedido de XXX eventos por dia
+You have XXX unapproved events: Você tem XXX eventos não aprovados
+January: Janeiro
+February: Fevereiro
+March: Março
+April: Abril
 #
 # << MISSING >>
 # May_:
 # English text: May
 #
-#
-# << MISSING >>
-# June:
-#
-# << MISSING >>
-# July:
-#
-# << MISSING >>
-# August:
-#
-# << MISSING >>
-# September:
-#
-# << MISSING >>
-# October:
-#
-# << MISSING >>
-# November:
-#
-# << MISSING >>
-# Jan:
-#
-# << MISSING >>
-# Feb:
-#
-# << MISSING >>
-# Mar:
-#
-# << MISSING >>
-# Apr:
-#
-# << MISSING >>
-# May:
-#
-# << MISSING >>
-# Jun:
-#
-# << MISSING >>
-# Jul:
-#
-# << MISSING >>
-# Aug:
-#
-# << MISSING >>
-# Sep:
-#
-# << MISSING >>
-# Oct:
-#
-# << MISSING >>
-# Nov:
-#
-# << MISSING >>
-# Dec:
+June: Junho
+July: Julho
+August: Agosto
+September: Setembro
+October: Outubro
+November: Novembro
+Jan: Jan
+Feb: Fev
+Mar: Mar
+Apr: Abr
+May: Mai
+Jun: Jun
+Jul: Jul
+Aug: Ago
+Sep: Set
+Oct: Out
+Nov: Nov
+Dec: Dez
 
 
 ###############################################
@@ -1349,59 +1269,29 @@ Invalid user login: Usuário Inválido
 ###############################################
 # Page: includes/js/admin.php
 #
-#
-# << MISSING >>
-# Server URL is required:
-#
-# << MISSING >>
-# Server URL must end with '/':
+Server URL is required: Endereço do Servidor é Necessário
+Server URL must end with '/': Endereço do Servidor deve acabar com /
 #
 # << MISSING >>
 # Invalid work hours:
-#
-# << MISSING >>
-# Invalid color for document background:
-#
-# << MISSING >>
-# Invalid color for document title:
-#
-# << MISSING >>
-# Invalid color for table cell background:
-#
-# << MISSING >>
-# Invalid color for table grid:
-#
-# << MISSING >>
-# Invalid color for table header background:
-#
-# << MISSING >>
-# Invalid color for table text background:
-#
-# << MISSING >>
-# Invalid color for event popup background:
-#
-# << MISSING >>
-# Invalid color for event popup text:
-#
-# << MISSING >>
-# Invalid color for table cell background for today:
-#
-# << MISSING >>
-# Color format should be '#RRGGBB':
+Invalid color for document background: Cor de fundo inválida para o documento
+Invalid color for document title: Cor inválida para o título do documento
+Invalid color for table cell background: Cor inválida para cor de fundo da célula
+Invalid color for table grid: Cor inválida para a grade da tabela
+Invalid color for table header background: Cor de fundo inválida para cabeçalho da tabela
+Invalid color for table text background: Cor de fundo inválida para o texto da tabela
+Invalid color for event popup background: Cor de fundo inválida para o evento popup
+Invalid color for event popup text: Cor inválida para evento popup
+Invalid color for table cell background for today: Cor de fundo inválida para a celula de hoje
+Color format should be '#RRGGBB': Formato da cor deve ser '#RRGGBB'
 
 
 ###############################################
 # Page: includes/js/edit_entry.php
 #
-#
-# << MISSING >>
-# You have not entered a Brief Description:
-#
-# << MISSING >>
-# You have not entered a valid time of day:
-#
-# << MISSING >>
-# The time you have entered begins before your preferred work hours.  Is this correct?:
+You have not entered a Brief Description: Você não inseriu uma Descrição Breve
+You have not entered a valid time of day: Você não inseriu uma hora válida do dia
+The time you have entered begins before your preferred work hours.  Is this correct?: A data que você inseriu começa antes da sua hora preferida
 
 
 ###############################################
@@ -1413,7 +1303,5 @@ Invalid color: Cor inválida
 ###############################################
 # Page: tools/send_reminders.php
 #
-#
-# << MISSING >>
-# This is a reminder for the event detailed below.:
+This is a reminder for the event detailed below.: Este é um lembrete para o evento abaixo descrito
 Reminder: Despertador
