@@ -79,6 +79,19 @@ function print_user_list () {
 <div id="tabscontent">
 	<!-- DETAILS -->
 	<a name="tabimport"></a>
+<?php
+$upload = ini_get ( "file_uploads" );
+$upload_enabled = ! empty ( $upload ) &&
+  preg_match ( "/(On|1|true|yes)/i", $upload );
+if ( ! $upload_enabled ) {
+  // The php.ini file does not have file_uploads enabled, so we will
+  // not receive the uploaded import file.
+  // Note: do not translate "php.ini file_uploads" since these
+  // are the filename and config name.
+  echo "<p>" . translate ( "Disabled" ) . " (php.ini file_uploads)</p>\n";
+} else {
+  // file uploads enabled
+?>
 	<div id="tabscontent_import">
 	<form action="import_handler.php" method="post" name="importform" enctype="multipart/form-data">
 <table style="border-width:0px;">
@@ -114,6 +127,8 @@ function print_user_list () {
 <br /><input type="submit" value="<?php etranslate("Import")?>" />
 </form>
 </div> <!-- /IMPORT -->
+<?php } // end if $file_upload_enabled
+?>
 
 <?php include_once 'export.php'; ?>
 </div>
