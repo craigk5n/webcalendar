@@ -1,4 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed bug 1169403:  Public Access not default selected if 
+   Particiapants not shown. 
  - Fixed bug 1169078: Bad function call in import_handler.php
  - Fixed bug 1168092: Overlapping events display problem
  - Fixed bug 1167281: View_l loses colour for "today"
