@@ -31,7 +31,7 @@ $TROUBLE_URL = "docs/WebCalendar-SysAdmin.html#trouble";
 // We don't normally put functions in this file.  But, since this file
 // is included before some of the others, this function either goes here
 // or we repeat this code in multiple files.
-/** dieMiserableDeath
+/** die_miserable_death
   * Description:
   *	Print a fatal error message to the user along with a link to
   *	the Troubleshooting section of the WebCalendar System Administrator's
@@ -39,7 +39,7 @@ $TROUBLE_URL = "docs/WebCalendar-SysAdmin.html#trouble";
   * Parameters:
   *	$error - The error message to display
   */
-function dieMiserableDeath ( $error )
+function die_miserable_death ( $error )
 {
   echo "<html><head><title>WebCalendar: Fatal Error</title></head>\n" .
     "<body><h2>WebCalendar Error</h2>\n" .
@@ -61,7 +61,7 @@ if ( empty ( $fd ) ) {
     Header ( "Location: install/index.php" );
     exit;
   } else {
-    dieMiserableDeath ( "Could not find settings.php file.<br />\n" .
+    die_miserable_death ( "Could not find settings.php file.<br />\n" .
       "Please copy settings.php.orig to settings.php and modify for your " .
       "site.\n" );
   }
@@ -93,7 +93,7 @@ $db_persistent = preg_match ( "/(1|yes|true|on)/i",
 
 foreach ( array ( "db_type", "db_host", "db_login", "db_password" ) as $s ) {
   if ( empty ( $settings[$s] ) ) {
-    dieMiserableDeath ( "Could not find <tt>$s</tt> defined in " .
+    die_miserable_death ( "Could not find <tt>$s</tt> defined in " .
       "your <tt>settings.php</tt> file.\n" );
   }
 }
@@ -108,7 +108,7 @@ if ( $single_user == 'Y' )
   $single_user_login = $settings['single_user_login'];
 
 if ( $single_user == 'Y' && empty ( $single_user_login ) ) {
-  dieMiserableDeath ( "You must define <tt>single_user_login</tt> in " .
+  die_miserable_death ( "You must define <tt>single_user_login</tt> in " .
     "the settings.php file.\n" );
 }
 
@@ -262,7 +262,7 @@ if ( get_magic_quotes_gpc () == 0 ) {
       "<br /><br />\n" .
       "<blockquote>\n<tt>" . $matches[1] . "</tt>\n</blockquote>\n";
   }
-  dieMiserableDeath ( "You must reconfigure your <tt>php.ini</tt> file to " .
+  die_miserable_death ( "You must reconfigure your <tt>php.ini</tt> file to " .
     "have <span style=\"font-weight:bold;\">magic_quotes_gpc</span> set " .
     " to <span style=\"font-weight:bold;\">ON</span>.<br /><br />\n" .
     $loc );

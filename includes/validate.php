@@ -22,7 +22,7 @@ function doDbSanityCheck () {
       // Note: cannot translate this since we have not included
       // translate.php yet.
       dbi_free_result ( $res );
-      dieMiserableDeath (
+      die_miserable_death (
         "Error finding WebCalendar tables in database '$db_database' " .
         "using db login '$db_login' on db server '$db_host'.<br/><br/>\n" .
         "Have you created the database tables as specified in the " .
@@ -33,7 +33,7 @@ function doDbSanityCheck () {
     // Error accessing table.
     // User has wrong db name or has not created tables.
     // Note: cannot translate this since we have not included translate.php yet.
-    dieMiserableDeath (
+    die_miserable_death (
       "Error finding WebCalendar tables in database '$db_database' " .
       "using db login '$db_login' on db server '$db_host'.<br/><br/>\n" .
       "Have you created the database tables as specified in the " .
@@ -90,12 +90,18 @@ if ( $single_user == "Y" ) {
     if (! $login = user_logged_in()) app_login_screen(clean_whitespace($login_return_path));
   
   } else {
+    if ( ! empty ( $settings['session'] ) && $settings['session'] == 'php' ) {
+      session_start ();
+      if ( ! empty ( $_SESSION['webcalendar_session'] ) ) {
+        $webcalendar_session = $_SESSION['webcalendar_session'];
+      }
+    }
     // We can't actually check the database yet since we haven't connected
     // to the database.  That happens in connect.php.
 
     // Check for session.  If not found, then note it for later
     // handling in connect.php.
-    if ( empty ( $webcalendar_session ) && empty ( $login ) ) {
+    else if ( empty ( $webcalendar_session ) && empty ( $login ) ) {
       $session_not_found = true;
     }
 
@@ -113,7 +119,7 @@ if ( $single_user == "Y" ) {
           // make sure we are connected to the database for password check
           $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
           if ( ! $c ) {
-            dieMiserableDeath (
+            die_miserable_death (
               "Error connecting to database:<blockquote>" .
               dbi_error () . "</blockquote>\n" );
           }

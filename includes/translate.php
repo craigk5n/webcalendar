@@ -74,11 +74,11 @@ function load_translation_text () {
       $lang_file = $lang_file_2;
   }
   if ( ! file_exists ( $lang_file ) ) {
-    dieMiserableDeath ( "Cannot find language file: $lang_file" );
+    die_miserable_death ( "Cannot find language file: $lang_file" );
   }
   $fp = fopen ( $lang_file, "r" );
   if ( ! $fp ) {
-    dieMiserableDeath ( "Could not open language file: $lang_file" );
+    die_miserable_death ( "Could not open language file: $lang_file" );
   }
   while ( ! feof ( $fp ) ) {
     $buffer = fgets ( $fp, 4096 );

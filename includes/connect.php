@@ -12,7 +12,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 if ( empty ( $c ) ) {
   $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
   if ( ! $c ) {
-    dieMiserableDeath (
+    die_miserable_death (
       "Error connecting to database:<blockquote>" .
       dbi_error () . "</blockquote>\n" );
   }
@@ -27,7 +27,7 @@ if ( empty ( $c ) ) {
 // a valid login.
 if ( $single_user == 'Y' ) {
   if ( empty ( $single_user_login ) ) {
-    dieMiserableDeath ( "You have not defined <tt>single_user_login</tt> in " .
+    die_miserable_death ( "You have not defined <tt>single_user_login</tt> in " .
       "<tt>includes/settings.php</tt>" );
   }
   $res = dbi_query ( "SELECT COUNT(*) FROM webcal_user " .
@@ -41,7 +41,7 @@ if ( $single_user == 'Y' ) {
     if ( ! dbi_query ( "INSERT INTO webcal_user ( cal_login, " .
       "cal_passwd, cal_is_admin ) VALUES ( '$single_user_login', " .
        "'" . md5($single_user_login) . "', 'Y' )" ) ) {
-      dieMiserableDeath ( "User <tt>$single_user_login</tt> does not " .
+      die_miserable_death ( "User <tt>$single_user_login</tt> does not " .
         "exist in <tt>webcal_user</tt> table and was not able to add " .
         "it for you:<br /><blockquote>" .
         dbi_error () . "</blockquote>" );
