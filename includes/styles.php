@@ -472,7 +472,7 @@ table.dayviewminical {
 }
 #viewv th,
 #viewl .main th,
-#month table.main th {
+#month .main th {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -480,8 +480,8 @@ table.dayviewminical {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 14%;
 }
-#viewl table.minical,
-#month table.minical {
+#viewl .minical,
+#month .minical {
 	border-width: 0px;
 }
 #viewl .minical td.month,
@@ -542,6 +542,9 @@ table.dayviewminical {
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
 	width: 10%;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-collapse: collapse;
 	vertical-align: top;
 }
 <?php // ======================== VIEW_V.PHP 
@@ -656,6 +659,7 @@ td.dayviewtitle .user,
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 10%;
 }
+#viewm td,
 #vieww td,
 #viewv td {
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
@@ -663,6 +667,7 @@ td.dayviewtitle .user,
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
 }
+#viewm td.weekend,
 #viewv td.weekend,
 #vieww td.weekend {
 	background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
@@ -670,6 +675,7 @@ td.dayviewtitle .user,
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
 }
+#viewm td.today,
 #vieww td.today,
 #viewv td.today {
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
