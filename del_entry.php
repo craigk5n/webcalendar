@@ -1,16 +1,17 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 $my_event = false;
 $can_edit = false;
@@ -20,7 +21,7 @@ if ( $id > 0 ) {
   // first see who has access to edit this entry
   if ( $is_admin ) {
     $can_edit = true;
-  } else if ( $readonly ) {
+  } else if ( $readonly == "Y" ) {
     $can_edit = false;
   } else {
     $can_edit = false;
@@ -52,6 +53,20 @@ if ( $res ) {
   }
 }
 
+// Is this a repeating event?
+$event_repeats = false;
+$res = dbi_query ( "SELECT COUNT(cal_id) FROM webcal_entry_repeats " .
+  "WHERE cal_id = $id" );
+if ( $res ) {
+  $row = dbi_fetch_row ( $res );
+  if ( $row[0] > 0 )
+    $event_repeats = true;
+  dbi_free_result ( $res );
+}
+$override_repeat = false;
+if ( ! empty ( $date ) && $event_repeats && ! empty ( $override ) ) {
+  $override_repeat = true;
+}
 
 if ( ! $can_edit ) {
   $error = translate ( "You are not authorized" );
@@ -74,8 +89,10 @@ if ( $id > 0 && empty ( $error ) ) {
   if ( $is_admin || $my_event ) {
 
     // Email participants that the event was deleted
-  
-    $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id";
+    // First, get list of participants (with status Approved or
+    // Waiting on approval).
+    $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id " .
+      "AND cal_status IN ('A','W')";
     $res = dbi_query ( $sql );
     $partlogin = array ();
     if ( $res ) {
@@ -96,56 +113,87 @@ if ( $id > 0 && empty ( $error ) ) {
     }
   
   
+    // TODO: switch transation language based on user so each user
+    // gets message in their selected language.
     for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
+      // Log the deletion
+      activity_log ( $id, $login, $partlogin[$i], $LOG_DELETE, "" );
+
       $do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
       user_load_variables ( $partlogin[$i], "temp" );
       if ( $partlogin[$i] != $login && $do_send == "Y" &&
-        strlen ( $tempemail ) ) {
+        strlen ( $tempemail ) && $send_email != "N" ) {
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
           translate("An appointment has been canceled for you by") .
           " " . $login_fullname .  ". " .
           translate("The subject was") . " \"" . $name . "\"\n\n";
         if ( strlen ( $login_email ) )
-          $extra_hdrs = "From: $login_email\nX-Mailer: " . translate("Title");
+          $extra_hdrs = "From: $login_email\nX-Mailer: " .
+            translate($application_name);
         else
-          $extra_hdrs = "From: $email_fallback_from\nX-Mailer: " . translate("Title");
+          $extra_hdrs = "From: $email_fallback_from\nX-Mailer: " .
+            translate($application_name);
         mail ( $tempemail,
-          translate("Title") . " " . translate("Notification") . ": " . $name,
+          translate($application_name) . " " .
+	  translate("Notification") . ": " . $name,
           $msg, $extra_hdrs );
       }
     }
 
-    dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = $id" );
-    dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_id = $id" );
-    dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id" );
-    dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_id = $id" );
-    dbi_query ( "DELETE FROM webcal_reminder_log WHERE cal_id = $id" );
-  } else {
-    // not the owner of the event and are not the admin
-    // just delete the event from this user's calendar and leave it for
-    // everyone else, unless this user is the only participant, in which
-    // case, we delete everything about this event.
-    $res = dbi_query (
-      "SELECT COUNT(cal_login) FROM webcal_entry_user " .
-      "WHERE cal_id = $id" );
-    $delete_all = FALSE;
-    if ( $res ) {
-      $row = dbi_fetch_row ( $res );
-      if ( $row[0] <= 1 )
-        $delete_all = TRUE;
-      dbi_free_result ( $res );
-    }
-    
-    if ( $delete_all ) {
-      dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = $id" );
-      dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_id = $id" );
-      dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id" );
-      dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_id = $id" );
-      dbi_query ( "DELETE FROM webcal_reminder_log WHERE cal_id = $id" );
+    // Instead of deleting from the database... mark it as deleted
+    // by setting the status for each participant to "D" (instead
+    // of "A"/Accepted, "W"/Waiting-on-approval or "R"/Rejected)
+    if ( $override_repeat ) {
+      dbi_query ( "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date ) " .
+        "VALUES ( $id, $date )" );
+      // Should we log this to the activity log???
     } else {
-      dbi_query ( "DELETE FROM webcal_entry_user " .
-        "WHERE cal_id = $id AND cal_login = '$login'" );
+      // If it's a repeating event, delete any event exceptions
+      // that were entered.
+      if ( $event_repeats ) {
+	$res = dbi_query ( "SELECT cal_id FROM webcal_entry " .
+	  "WHERE cal_group_id = $id" );
+        if ( $res ) {
+	  $ex_events = array ();
+          while ( $row = dbi_fetch_row ( $res ) ) {
+	    $ex_events[] = $row[0];
+	  }
+          dbi_free_result ( $res );
+          for ( $i = 0; $i < count ( $ex_events ); $i++ ) {
+	    $res = dbi_query ( "SELECT cal_login FROM " .
+              "webcal_entry_user WHERE cal_id = $ex_events[$i]" );
+            if ( $res ) {
+              $delusers = array ();
+              while ( $row = dbi_fetch_row ( $res ) ) {
+                $delusers[] = $row[0];
+              }
+              dbi_free_result ( $res );
+              for ( $i = 0; $i < count ( $delusers ); $i++ ) {
+                // Log the deletion
+	        activity_log ( $ex_events[$i], $login, $delusers[$i],
+                  $LOG_DELETE, "" );
+                dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
+	          "WHERE cal_id = $ex_events[$i] " .
+                  "AND cal_login = '$delusers[$i]'" );
+              }
+            }
+          }
+	}
+      }
+
+      // Now, mark event as deleted for all users.
+      dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
+        "WHERE cal_id = $id" );
     }
+  } else {
+    // Not the owner of the event and are not the admin.
+    // Just delete the event from this user's calendar.
+    // We could just set the status to 'D' instead of deleting.
+    // (but we would need to make some changes to edit_entry_handler.php
+    // to accomodate this).
+    dbi_query ( "DELETE FROM webcal_entry_user " .
+      "WHERE cal_id = $id AND cal_login = '$login'" );
+    activity_log ( $id, $login, $login, $LOG_REJECT, "" );
   }
 }
 
@@ -168,17 +216,17 @@ if ( empty ( $error ) ) {
 }
 ?>
 <HTML>
-<HEAD><TITLE><?php etranslate("Title")?></TITLE>
-<?php include "includes/styles.inc"; ?>
+<HEAD><TITLE><?php etranslate($application_name)?></TITLE>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>">
+<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></H2></FONT>
 <BLOCKQUOTE>
 <?php echo $error; ?>
 </BLOCKQUOTE>
 
-<?php include "includes/trailer.inc"; ?>
+<?php include "includes/trailer.php"; ?>
 
 </BODY>
 </HTML>

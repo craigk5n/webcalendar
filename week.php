@@ -1,22 +1,25 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+send_no_cache_header ();
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
+load_user_categories ();
 if ( empty ( $friendly ) && empty ( $user ) )
   remember_this_view ();
 
 $view = "week";
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
-if ( ( ! $allow_view_other && ! $is_admin ) || empty ( $user ) )
+if ( ( $allow_view_other != "Y" && ! $is_admin ) || empty ( $user ) )
   $user = "";
 
 if ( ! empty ( $friendly ) )
@@ -32,16 +35,11 @@ if ( strlen ( $user ) ) {
   $user_fullname = $fullname;
 }
 
-?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
-<?php include "includes/styles.inc"; ?>
-<?php include "includes/js.inc"; ?>
-</HEAD>
-<BODY BGCOLOR=<?php echo "\"$BGCOLOR\"";?>>
+$can_add = ( $readonly == "N" || $is_admin == "Y" );
+if ( $public_access == "Y" && $public_access_can_add != "Y" &&
+  $login == "__public__" )
+  $can_add = false;
 
-<?php
 if ( ! empty ( $date ) && strlen ( $date ) > 0 ) {
   $thisyear = $year = substr ( $date, 0, 4 );
   $thismonth = $month = substr ( $date, 4, 2 );
@@ -61,10 +59,10 @@ if ( ! empty ( $date ) && strlen ( $date ) > 0 ) {
     $thisday = $day;
 }
 
-$next = mktime ( 2, 0, 0, $thismonth, $thisday + 7, $thisyear );
-$prev = mktime ( 2, 0, 0, $thismonth, $thisday - 7, $thisyear );
+$next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
+$prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
-$today = mktime ( 2, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
+$today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
 
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.
@@ -73,15 +71,64 @@ if ( $WEEK_START == 1 )
 else
   $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
 $wkend = $wkstart + ( 3600 * 24 * 6 );
+
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
 
+if ( $DISPLAY_WEEKENDS == "N" ) {
+  if ( $WEEK_START == 1 ) {
+    $start_ind = 0;
+    $end_ind = 5;
+  } else {
+    $start_ind = 1;
+    $end_ind = 6;
+  }
+} else {
+  $start_ind = 0;
+  $end_ind = 7;
+}
+
+if ( $categories_enabled == "Y" && (!$user || $user == $login)) {
+  if (isset ($cat_id)) {
+    $cat_id = $cat_id;
+  } elseif (isset ($CATEGORY_VIEW)) {
+    $cat_id = $CATEGORY_VIEW;
+  } else {
+    $cat_id = '';
+  }
+} else {
+  $cat_id = '';
+}
+if ( empty ( $cat_id ) )
+  $caturl = "";
+else
+  $caturl = "&cat_id=$cat_id";
+
+?>
+<HTML>
+<HEAD>
+<TITLE><?php etranslate($application_name)?></TITLE>
+<?php include "includes/styles.php"; ?>
+<?php include "includes/js.php"; ?>
+<?php
+if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
+  $refresh = $auto_refresh_time * 60; // convert to seconds
+  echo "<META HTTP-EQUIV=\"refresh\" content=\"$refresh; URL=week.php?$u_url" .
+    "date=$startdate$caturl\" TARGET=\"_self\">\n";
+}
+?>
+</HEAD>
+<BODY BGCOLOR=<?php echo "\"$BGCOLOR\"";?> CLASS="defaulttext">
+
+<?php
+
 /* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login );
+$repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login,
+  $cat_id );
 
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( strlen ( $user ) ? $user : $login,
-  $startdate, $enddate );
+  $startdate, $enddate, $cat_id );
 
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
@@ -96,7 +143,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <TABLE BORDER="0" WIDTH="100%">
 <TR>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<TD ALIGN="left"><A HREF="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev );?>">&lt;&lt;</A></TD>
+<TD ALIGN="left"><A HREF="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER=\"0\"></A></TD>
 <?php } ?>
 <TD ALIGN="middle"><FONT SIZE="+2" COLOR="<?php echo $H2COLOR;?>"><B>
 <?php
@@ -127,40 +174,50 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 ?>
 <FONT SIZE="+1" COLOR="<?php echo $H2COLOR;?>">
 <?php
-  if ( ! $single_user ) {
+  if ( $single_user == "N" ) {
     echo "<BR>$user_fullname\n";
+  }
+  if ( $categories_enabled == "Y" ) {
+    echo "<BR>\n<BR>\n";
+    print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
   }
 ?>
 </FONT>
 </TD>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<TD ALIGN="right"><A HREF="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next );?>">&gt;&gt;</A></TD>
+<TD ALIGN="right"><A HREF="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0"></A></TD>
 <?php } ?>
 </TR>
 </TABLE>
 
+<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <TABLE BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
 <TR><TD BGCOLOR="<?php echo $TABLEBG?>">
 <TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2">
+<?php } else { ?>
+<TABLE BORDER="1" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
+<?php } ?>
 
 <TR>
-<TH WIDTH=12% BGCOLOR="<?php echo $THBG?>">&nbsp;</TH>
+<TH WIDTH="12%" CLASS="tableheader" BGCOLOR="<?php echo $THBG?>">&nbsp;</TH>
 <?php
-for ( $d = 0; $d < 7; $d++ ) {
-  if ( date ( "Ymd", $days[$d] ) == date ( "Ymd", $today ) )
+for ( $d = $start_ind; $d < $end_ind; $d++ ) {
+  if ( date ( "Ymd", $days[$d] ) == date ( "Ymd", $today ) ) {
     $color = $TODAYCELLBG;
-  else
+    $class = "tableheadertoday";
+  } else {
     $color = $THBG;
-  echo "<TH WIDTH=\"13%\" BGCOLOR=\"$color\">";
-  if ( empty ( $friendly ) &&
-    ( empty ( $readonly ) || $is_admin ) ) {
+    $class = "tableheader";
+  }
+  echo "<TH WIDTH=\"13%\" CLASS=\"$class\" BGCOLOR=\"$color\">";
+  if ( empty ( $friendly ) && $can_add ) {
     echo "<A HREF=\"edit_entry.php?" . $u_url .
       "date=" . date ( "Ymd", $days[$d] ) . "\">" .
       "<IMG SRC=\"new.gif\" WIDTH=\"10\" HEIGHT=\"10\" ALT=\"" .
       translate("New Entry") . "\" BORDER=\"0\" ALIGN=\"right\">" .  "</A>";
   }
   echo "<A HREF=\"day.php?" . $u_url .
-    "date=" . date ("Ymd", $days[$d] ) . "\" CLASS=\"dayofmonthweekview\">" .
+    "date=" . date ("Ymd", $days[$d] ) . "$caturl\" CLASS=\"$class\">" .
     $header[$d] . "</A></TH>\n";
 }
 ?>
@@ -171,7 +228,11 @@ for ( $d = 0; $d < 7; $d++ ) {
 $first_hour = $WORK_DAY_START_HOUR;
 $last_hour = $WORK_DAY_END_HOUR;
 $untimed_found = false;
-for ( $d = 0; $d < 7; $d++ ) {
+$get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
+if ( $login == "__public__" )
+  $get_unapproved = false;
+
+for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   // get all the repeating events for this date and store in array $rep
   $date = date ( "Ymd", $days[$d] );
   $rep = get_repeating_entries ( $user, $date );
@@ -185,8 +246,7 @@ for ( $d = 0; $d < 7; $d++ ) {
     // print out any repeating events that are before this one...
     while ( $cur_rep < count ( $rep ) &&
       $rep[$cur_rep]['cal_time'] < $ev[$i]['cal_time'] ) {
-      if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
-        $rep[$cur_rep]['cal_status'] == 'A' )
+      if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' )
         html_for_event_week_at_a_glance ( $rep[$cur_rep]['cal_id'],
           $date, $rep[$cur_rep]['cal_time'],
           $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
@@ -195,8 +255,7 @@ for ( $d = 0; $d < 7; $d++ ) {
           $rep[$cur_rep]['cal_login'], $hide_icons );
       $cur_rep++;
     }
-    if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
-      $ev[$i]['cal_status'] == 'A' )
+    if ( $get_unapproved || $ev[$i]['cal_status'] == 'A' )
       html_for_event_week_at_a_glance ( $ev[$i]['cal_id'],
         $date, $ev[$i]['cal_time'],
         $ev[$i]['cal_name'], $ev[$i]['cal_description'],
@@ -206,8 +265,7 @@ for ( $d = 0; $d < 7; $d++ ) {
   }
   // print out any remaining repeating events
   while ( $cur_rep < count ( $rep ) ) {
-    if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
-      $rep[$cur_rep]['cal_status'] == 'A' )
+    if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' )
       html_for_event_week_at_a_glance ( $rep[$cur_rep]['cal_id'],
         $date, $rep[$cur_rep]['cal_time'],
         $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
@@ -249,7 +307,7 @@ for ( $d = 0; $d < 7; $d++ ) {
 
   // now save the output...
   if ( ! empty ( $hour_arr[99] ) && strlen ( $hour_arr[99] ) ) {
-    $untimed[$d] = "<TD WIDTH=\"12%\" BGCOLOR=\"$TODAYCELLBG\">$hour_arr[99]</TD>\n";
+    $untimed[$d] = "<TD WIDTH=\"12%\" BGCOLOR=\"$TODAYCELLBG\"><FONT SIZE=\"-1\">$hour_arr[99]</FONT></TD>\n";
     $untimed_found = true;
   }
   $save_hour_arr[$d] = $hour_arr;
@@ -258,8 +316,8 @@ for ( $d = 0; $d < 7; $d++ ) {
 
 // untimed events first
 if ( $untimed_found ) {
-  echo "<TR><TD WIDTH=\"12%\" BGCOLOR=\"$THBG\">&nbsp;</TD>";
-  for ( $d = 0; $d < 7; $d++ ) {
+  echo "<TR><TD CLASS=\"tableheader\" WIDTH=\"12%\" BGCOLOR=\"$THBG\">&nbsp;</TD>";
+  for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) )
       echo $untimed[$d];
     else
@@ -268,14 +326,14 @@ if ( $untimed_found ) {
   echo "</TR>\n";
 }
 
-for ( $d = 0; $d < 7; $d++ )
+for ( $d = $start_ind; $d < $end_ind; $d++ )
   $rowspan_day[$d] = 0;
 
 for ( $i = $first_hour; $i <= $last_hour; $i++ ) {
   $time = display_time ( $i * 10000 );
-  echo "<TR><TH VALIGN=\"top\" WIDTH=\"13%\" BGCOLOR=\"$THBG\" HEIGHT=\"40\">" .
+  echo "<TR><TH CLASS=\"tableheader\" VALIGN=\"top\" WIDTH=\"13%\" BGCOLOR=\"$THBG\" HEIGHT=\"40\">" .
     "<FONT COLOR=\"$THFG\">" .  $time . "</FONT></TH>\n";
-  for ( $d = 0; $d < 7; $d++ ) {
+  for ( $d = $start_ind; $d < $end_ind; $d++ ) {
         $x = $save_rowspan_arr[$d][$i];
     if ( $rowspan_day[$d] > 1 ) {
       // this might mean there's an overlap, or it could mean one event
@@ -303,8 +361,12 @@ for ( $i = $first_hour; $i <= $last_hour; $i++ ) {
 
 ?>
 
+<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 </TABLE>
 </TD></TR></TABLE>
+<?php } else { ?>
+</TABLE>
+<?php } ?>
 
 <P>
 
@@ -315,15 +377,16 @@ for ( $i = $first_hour; $i <= $last_hour; $i++ ) {
 ?>
 
 <P>
-<A HREF="week.php?<?php
+<A CLASS="navlinks" HREF="week.php?<?php
   echo $u_url;
   if ( $thisyear ) {
-    echo "year=$thisyear&month=$thismonth&day=$thisday&";
+    echo "year=$thisyear&month=$thismonth&day=$thisday";
   }
+  echo $caturl . "&";
 ?>friendly=1" TARGET="cal_printer_friendly"
 onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
 
-<?php include "includes/trailer.inc"; ?>
+<?php include "includes/trailer.php"; ?>
 
 <?php } ?>
 

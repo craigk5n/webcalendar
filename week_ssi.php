@@ -8,29 +8,32 @@
 // we are in single-user mode, where no login info is needed.
 // If no login info is passed, we check for the last login used.
 
+$user = "__none__"; // don't let user specify in URL
+
 if ( strlen ( $login ) == 0 ) {
-  if ( $single_user ) {
-    $login = $single_user_login;
+  if ( $single_user == "Y" ) {
+    $login = $user = $single_user_login;
   } else if ( strlen ( $webcalendar_login ) > 0 ) {
-    $login = $webcalendar_login;
+    $login = $user = $webcalendar_login;
   } else {
     echo "<FONT COLOR=\"#FF0000\"><B>Error:</B> No calendar user specified.</FONT>";
     exit;
   }
 }
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/connect.inc";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
 $view = "week";
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 
 if ( strlen ( $date ) > 0 ) {
@@ -52,10 +55,10 @@ if ( strlen ( $date ) > 0 ) {
     $thisday = $day;
 }
 
-$next = mktime ( 2, 0, 0, $thismonth, $thisday + 7, $thisyear );
-$prev = mktime ( 2, 0, 0, $thismonth, $thisday - 7, $thisyear );
+$next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
+$prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
-$today = mktime ( 2, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
+$today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
 
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.

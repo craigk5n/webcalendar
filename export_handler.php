@@ -1,13 +1,14 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/translate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/translate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
@@ -33,7 +34,7 @@ if (!$use_all_dates)
   $moddate = sprintf ( "%04d%02d%02d", $modyear, $modmonth, $modday );
   $sql .= " AND webcal_entry.cal_mod_date >= $moddate";
 }
-if ( $DISPLAY_UNAPPROVED == "N" )
+if ( $DISPLAY_UNAPPROVED == "N" || $login == "__public__" )
   $sql .= " AND webcal_entry_user.cal_status = 'A'";
 $sql .= " ORDER BY webcal_entry.cal_date";
 
@@ -131,18 +132,14 @@ function export_install_datebook ($res) {
   }
 }
 
-// Set the output to be text.
-header ( "Content-Type: text/plain" );
-// Even though this is text/plain, use "application/octet-stream", so the
-// use is prompted to save the file.
-//header ( "Content-Type: application/octet-stream" );
-
 //echo "SQL: $sql\n";
 
 if ($format == "ical") {
+  header ( "Content-Type: text/calendar" );
   export_ical ( $res );
 }
 else {
+  header ( "Content-Type: text/plain" );
   export_install_datebook ( $res );
 }
 
@@ -151,9 +148,9 @@ exit;
 <HTML>
 <HEAD>
 <TITLE><?php etranslate("Export")?></TITLE>
-<?php include "includes/styles.inc"; ?>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>">
+<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Export") . " " . etranslate("Error")?></FONT></H2>
 
@@ -162,7 +159,7 @@ exit;
 
 <P>
 
-<?php include "includes/trailer.inc"; ?>
+<?php include "includes/trailer.php"; ?>
 
 </BODY>
 </HTML>

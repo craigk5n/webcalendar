@@ -1,32 +1,38 @@
 <?php
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 ?>
 <HTML>
 <HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
-<?php include "includes/styles.inc"; ?>
+<TITLE><?php etranslate($application_name)?></TITLE>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>">
+<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Help Index")?></FONT></H2>
 
 <UL>
 <LI><A HREF="help_edit_entry.php"><?php etranslate("Adding/Editing Calendar Entries")?></A>
+<LI><A HREF="help_layers.php"><?php etranslate("Layers")?></A>
 <LI><A HREF="help_pref.php"><?php etranslate("Preferences")?></A>
+<?php if ( $is_admin ) { ?>
+<LI><A HREF="help_admin.php"><?php etranslate("System Settings")?></A>
+<?php } ?>
+<LI><A HREF="http://sourceforge.net/tracker/?func=add&group_id=3870&atid=103870" TARGET="_new"><?php etranslate("Report Bug")?></A>
 </UL>
 
-<?php include "includes/help_trailer.inc"; ?>
+<?php include "includes/help_trailer.php"; ?>
 
 </BODY>
 </HTML>

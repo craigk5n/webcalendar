@@ -1,23 +1,24 @@
 <?php
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 ?>
 <HTML>
 <HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
-<?php include "includes/styles.inc"; ?>
+<TITLE><?php etranslate($application_name)?></TITLE>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>">
+<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Help")?>: <?php etranslate("Preferences")?></FONT></H2>
 
@@ -26,16 +27,14 @@ include "includes/translate.inc";
 
 <TR><TD VALIGN="top"><B><?php etranslate("Language")?>:</B></TD>
   <TD><?php etranslate("language-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Fonts")?>:</B></TD>
+  <TD><?php etranslate("fonts-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Preferred view")?>:</B></TD>
   <TD><?php etranslate("preferred-view-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Time format")?>:</B></TD>
   <TD><?php etranslate("time-format-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Display unapproved")?>:</B></TD>
   <TD><?php etranslate("display-unapproved-help")?></TD></TR>
-<!--
-<TR><TD VALIGN="top"><B><?php etranslate("Display icons")?>:</B></TD>
-  <TD><?php etranslate("display-icons-help")?></TD></TR>
--->
 <TR><TD VALIGN="top"><B><?php etranslate("Display week number")?>:</B></TD>
   <TD><?php etranslate("display-week-number-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Week starts on")?>:</B></TD>
@@ -67,7 +66,7 @@ include "includes/translate.inc";
 <P>
 <?php } // if $allow_color_customization ?>
 
-<?php include "includes/help_trailer.inc"; ?>
+<?php include "includes/help_trailer.php"; ?>
 
 </BODY>
 </HTML>

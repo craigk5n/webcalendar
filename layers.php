@@ -1,30 +1,31 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+send_no_cache_header ();
+load_global_settings ();
 load_user_preferences ();
 $save_status = $LAYERS_STATUS;
 $LAYERS_STATUS = "Y";
 load_user_layers ();
-$LAYERS_STATUS = $save_status;
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 
 ?>
 <HTML>
 <HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
+<TITLE><?php etranslate($application_name)?></TITLE>
 
 
-<?php include "includes/styles.inc"; ?>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>">
+<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Layers")?></FONT></H2>
 
@@ -40,12 +41,17 @@ echo " <B>";
 //  dbi_free_result ( $res );
 //}
 
+$LAYERS_STATUS = $save_status;
+//echo "LAYERS_STATUS: $LAYERS_STATUS <P>";
+
 if ( $LAYERS_STATUS == "N" ) {
   etranslate ( "Disabled" );
 } else {
   etranslate ( "Enabled" );
 }
 echo "</B>.";
+
+
 ?>
 <P>
 
@@ -92,6 +98,11 @@ echo "</B>.";
 
 </TABLE>
 
-<?php include "includes/trailer.inc"; ?>
+<FORM>
+<INPUT TYPE="button" VALUE="<?php etranslate("Help")?>..."
+  ONCLICK="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );">
+</FORM>
+
+<?php include "includes/trailer.php"; ?>
 </BODY>
 </HTML>

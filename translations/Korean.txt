@@ -3,13 +3,2039 @@
 # There cannot be a ":" in the English text.
 # Author: Joonyup Jeon <goodwill@wowbook.com>
 # Last updated: 07 June 2000
+# Translation last updated on 07-11-2002
 
-# Title is what will appear in the title bar for pages
-Title: 웹 캘린더
 
-Month: 월
+###############################################
+# Page: activity_log.php
+#
+#
+# << MISSING >>
+# Activity Log:
+# English text: Activity Log
+#
+#
+# << MISSING >>
+# User:
+# English text: User
+#
+#
+# << MISSING >>
+# Calendar:
+# English text: Calendar
+#
+Date: 일자
+Time: 시각
+#
+# << MISSING >>
+# Event:
+# English text: Event
+#
+#
+# << MISSING >>
+# Action:
+# English text: Action
+#
+#
+# << MISSING >>
+# Event created:
+# English text: Event created
+#
+#
+# << MISSING >>
+# Event approved:
+# English text: Event approved
+#
+#
+# << MISSING >>
+# Event rejected:
+# English text: Event rejected
+#
+#
+# << MISSING >>
+# Event updated:
+# English text: Event updated
+#
+#
+# << MISSING >>
+# Event deleted:
+# English text: Event deleted
+#
+#
+# << MISSING >>
+# Notification sent:
+# English text: Notification sent
+#
+#
+# << MISSING >>
+# Reminder sent:
+# English text: Reminder sent
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Next:
+# English text: Next
+#
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: 틀린 항목 아이디
+#
+# << MISSING >>
+# This is a private event and may not be added to your calendar.:
+# English text: This is a private event and may not be added to your calendar.
+#
+#
+# << MISSING >>
+# Error adding event:
+# English text: Error adding event
+#
+
+
+###############################################
+# Page: admin.php
+#
+#
+# << MISSING >>
+# Server URL is required:
+# English text: Server URL is required
+#
+#
+# << MISSING >>
+# Server URL must end with '/':
+# English text: Server URL must end with '/'
+#
+Invalid color for document background: 배경 색상 틀림
+Invalid color for document title: 제목 색상 틀림
+Invalid color for table cell background: 테이블 셀 배경색 틀림
+#
+# << MISSING >>
+# Invalid color for table grid:
+# English text: Invalid color for table grid
+#
+#
+# << MISSING >>
+# Invalid color for table header background:
+# English text: Invalid color for table header background
+#
+#
+# << MISSING >>
+# Invalid color for table text background:
+# English text: Invalid color for table text background
+#
+#
+# << MISSING >>
+# Invalid color for event popup background:
+# English text: Invalid color for event popup background
+#
+#
+# << MISSING >>
+# Invalid color for event popup text:
+# English text: Invalid color for event popup text
+#
+Invalid color for table cell background for today: 오늘 날짜 표시 색상 틀림
+Color format should be '#RRGGBB': 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF0000" (빨강)
+#
+# << MISSING >>
+# System Settings:
+# English text: System Settings
+#
+You are not authorized: 권한이 없습니다:
+#
+# << MISSING >>
+# Note:
+# English text: Note
+#
+#
+# << MISSING >>
+# Your user preferences:
+# English text: Your user preferences
+#
+#
+# << MISSING >>
+# may be affecting the appearance of this page.:
+# English text: may be affecting the appearance of this page.
+#
+#
+# << MISSING >>
+# Click here:
+# English text: Click here
+#
+#
+# << MISSING >>
+# to not use your user preferences when viewing this page:
+# English text: to not use your user preferences when viewing this page
+#
+#
+# << MISSING >>
+# Note:
+# English text: Note
+#
+#
+# << MISSING >>
+# Your user preferences:
+# English text: Your user preferences
+#
+#
+# << MISSING >>
+# are being ignored while viewing this page.:
+# English text: are being ignored while viewing this page.
+#
+#
+# << MISSING >>
+# Click here:
+# English text: Click here
+#
+#
+# << MISSING >>
+# to load your user preferences when viewing this page:
+# English text: to load your user preferences when viewing this page
+#
+Save: 저장
+Help: 도움말
+Settings: 설정
+#
+# << MISSING >>
+# app-name-help:
+# English text: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
+#
+#
+# << MISSING >>
+# Application Name:
+# English text: Application Name
+#
+#
+# << MISSING >>
+# server-url-help:
+# English text: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
+#
+#
+# << MISSING >>
+# Server URL:
+# English text: Server URL
+#
+#
+# << MISSING >>
+# language-help:
+# English text: Specifies which language to use.
+#
+Language: 언어
+#
+# << MISSING >>
+# Your browser default language is:
+# English text: Your browser default language is
+#
+#
+# << MISSING >>
+# fonts-help:
+# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+#
+#
+# << MISSING >>
+# Fonts:
+# English text: Fonts
+#
+#
+# << MISSING >>
+# preferred-view-help:
+# English text: Specifies the default view (Day, Week, Month, or Year).
+#
+#
+# << MISSING >>
+# Preferred view:
+# English text: Preferred view
+#
+#
+# << MISSING >>
+# Day:
+# English text: Day
+#
 Week: 주
+Month: 월
+#
+# << MISSING >>
+# Year:
+# English text: Year
+#
+#
+# << MISSING >>
+# display-weekends-help:
+# English text: Include weekends when viewing a week.
+#
+#
+# << MISSING >>
+# Display weekends in week view:
+# English text: Display weekends in week view
+#
+Yes: 예
+No: 아니오
+time-format-help: 시간 표시 형식을 명시합니다.<BR><I>12 hour:</I>시간표시가 3am, 8:30pm, 등등으로 표시됨<BR><I>24 hour:</I>시간표시가 300, 2030 등등으로 표시됨
+Time format: 시간 표시 형식
+12 hour: 12 hour
+24 hour: 24 hour
+#
+# << MISSING >>
+# auto-refresh-help:
+# English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
+#
+#
+# << MISSING >>
+# Auto-refresh calendars:
+# English text: Auto-refresh calendars
+#
+#
+# << MISSING >>
+# auto-refresh-time-help:
+# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
+#
+#
+# << MISSING >>
+# Auto-refresh time:
+# English text: Auto-refresh time
+#
+minutes: 분
+#
+# << MISSING >>
+# require-approvals-help:
+# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
+#
+#
+# << MISSING >>
+# Require event approvals:
+# English text: Require event approvals
+#
+display-unapproved-help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다. <BR> "Yes"로 설정시 미승인된 행사도 표시됩니다.(다른 색깔로).<BR>"No"로 설정하면 미승인 행사는 승인 후에만 달력에 표시됩니다.
+Display unapproved: 승인안된 행사 표시
+display-week-number-help: 월별 화면과 주별 화면에 몇주차인가(1~52) 표시여부를 명시.
+Display week number: 몇주차인가 표시
+#
+# << MISSING >>
+# display-week-starts-on:
+# English text: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
+#
+#
+# << MISSING >>
+# Week starts on:
+# English text: Week starts on
+#
+Sunday: 일요일 
+Monday: 월요일 
+work-hours-help: 일별 화면에서 표시대상시간을 명시
+Work hours: 근무 시간
+From: 시작
+to: 종료
+#
+# << MISSING >>
+# disable-priority-field-help:
+# English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Priority field:
+# English text: Disable Priority field
+#
+#
+# << MISSING >>
+# disable-access-field-help:
+# English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Access field:
+# English text: Disable Access field
+#
+#
+# << MISSING >>
+# disable-participants-field-help:
+# English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
+#
+#
+# << MISSING >>
+# Disable Participants field:
+# English text: Disable Participants field
+#
+#
+# << MISSING >>
+# disable-repeating-field-help:
+# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Repeating field:
+# English text: Disable Repeating field
+#
+#
+# << MISSING >>
+# allow-public-access-help:
+# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
+#
+#
+# << MISSING >>
+# Allow public access:
+# English text: Allow public access
+#
+#
+# << MISSING >>
+# public-access-view-others-help:
+# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
+#
+#
+# << MISSING >>
+# Public access can view other users:
+# English text: Public access can view other users
+#
+#
+# << MISSING >>
+# public-access-can-add-help:
+# English text: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
+#
+#
+# << MISSING >>
+# Public access can add events:
+# English text: Public access can add events
+#
+#
+# << MISSING >>
+# allow-view-other-help:
+# English text: Specifies whether one user may view another user's calendar.
+#
+#
+# << MISSING >>
+# Allow viewing other user's calendars:
+# English text: Allow viewing other user's calendars
+#
+#
+# << MISSING >>
+# remember-last-login-help:
+# English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
+#
+#
+# << MISSING >>
+# Remember last login:
+# English text: Remember last login
+#
+#
+# << MISSING >>
+# conflict-check-help:
+# English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
+#
+#
+# << MISSING >>
+# Check for event conflicts:
+# English text: Check for event conflicts
+#
+#
+# << MISSING >>
+# conflict-months-help:
+# English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
+#
+#
+# << MISSING >>
+# Conflict checking months:
+# English text: Conflict checking months
+#
+#
+# << MISSING >>
+# Groups:
+# English text: Groups
+#
+#
+# << MISSING >>
+# groups-enabled-help:
+# English text: Enables group support, allowing users to select users by groups.
+#
+#
+# << MISSING >>
+# Groups enabled:
+# English text: Groups enabled
+#
+#
+# << MISSING >>
+# user-sees-his-group-help:
+# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
+#
+#
+# << MISSING >>
+# User sees only his groups:
+# English text: User sees only his groups
+#
+#
+# << MISSING >>
+# Categories:
+# English text: Categories
+#
+#
+# << MISSING >>
+# categories-enabled-help:
+# English text: Enables support for event categories.
+#
+#
+# << MISSING >>
+# Categories enabled:
+# English text: Categories enabled
+#
+#
+# << MISSING >>
+# Email:
+# English text: Email
+#
+#
+# << MISSING >>
+# email-enabled-help:
+# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
+#
+#
+# << MISSING >>
+# Email enabled:
+# English text: Email enabled
+#
+#
+# << MISSING >>
+# email-default-sender:
+# English text: Specifies the email address to specify as the sender when sending out reminders.
+#
+#
+# << MISSING >>
+# Default sender address:
+# English text: Default sender address
+#
+#
+# << MISSING >>
+# Default user settings:
+# English text: Default user settings
+#
+#
+# << MISSING >>
+# email-event-reminders-help:
+# English text: Specifies whether or not to send event reminders.
+#
+#
+# << MISSING >>
+# Event reminders:
+# English text: Event reminders
+#
+#
+# << MISSING >>
+# email-event-added:
+# English text: Specifies whether or not to send email notifications when an event is added to your calendar.
+#
+#
+# << MISSING >>
+# Events added to my calendar:
+# English text: Events added to my calendar
+#
+#
+# << MISSING >>
+# email-event-updated:
+# English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
+#
+#
+# << MISSING >>
+# Events updated on my calendar:
+# English text: Events updated on my calendar
+#
+#
+# << MISSING >>
+# email-event-deleted:
+# English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
+#
+#
+# << MISSING >>
+# Events removed from my calendar:
+# English text: Events removed from my calendar
+#
+#
+# << MISSING >>
+# email-event-rejected:
+# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
+#
+#
+# << MISSING >>
+# Event rejected by participant:
+# English text: Event rejected by participant
+#
+colors-help: 모든 색상은 "#RRGGBB" 같은 16진수 형식으로 표시해야 합니다. "RR" 은 적색, "GG"는 녹색, "BB"는 청색의 16진수 값입니다. 
+Colors: 색상
+#
+# << MISSING >>
+# Allow user to customize colors:
+# English text: Allow user to customize colors
+#
+Document background: 배경 색상
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+Document title: 제목 색상
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# Document text:
+# English text: Document text
+#
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# Table grid color:
+# English text: Table grid color
+#
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# Table header background:
+# English text: Table header background
+#
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# Table header text:
+# English text: Table header text
+#
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+Table cell background: 테이블 셀 배경 색상
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+Table cell background for current day: 오늘 날짜 표시 색상
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# Table cell background for weekends:
+# English text: Table cell background for weekends
+#
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# Event popup background:
+# English text: Event popup background
+#
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# Event popup text:
+# English text: Event popup text
+#
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+
+
+###############################################
+# Page: admin_handler.php
+#
+# "You are not authorized" previously defined (in admin.php)
 Error: 오류
+The following error occurred: 다음과 같은 오류 발생:
+
+
+###############################################
+# Page: approve_entry.php
+#
+Error approving event: 행사 승인 중 에러
+
+
+###############################################
+# Page: category.php
+#
+# "Invalid entry id" previously defined (in add_entry.php)
+# "You are not authorized" previously defined (in admin.php)
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Categories:
+# English text: Categories
+#
+#
+# << MISSING >>
+# Add:
+# English text: Add
+#
+# "Save" previously defined (in admin.php)
+#
+# << MISSING >>
+# Category Name:
+# English text: Category Name
+#
+#
+# << MISSING >>
+# Global:
+# English text: Global
+#
+# "No" previously defined (in admin.php)
+# "Yes" previously defined (in admin.php)
+Delete: 지우기
+Are you sure you want to delete this entry?: 정말로 이 항목을 지우시겠습니까?
+#
+# << MISSING >>
+# Global:
+# English text: Global
+#
+#
+# << MISSING >>
+# Add New Category:
+# English text: Add New Category
+#
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: category_handler.php
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+# "You are not authorized" previously defined (in admin.php)
+# "Delete" previously defined (in category.php)
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: colors.php
+#
+
+
+###############################################
+# Page: datesel.php
+#
+
+
+###############################################
+# Page: day.php
+#
+Generate printer-friendly version: 인쇄용 화면 생성
+Printer Friendly: 인쇄용 화면
+
+
+###############################################
+# Page: del_entry.php
+#
+# "You are not authorized" previously defined (in admin.php)
+Hello: 안녕!
+#
+# << MISSING >>
+# An appointment has been canceled for you by:
+# English text: An appointment has been canceled for you by
+#
+#
+# << MISSING >>
+# The subject was:
+# English text: The subject was
+#
+Notification: 통보
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: del_layer.php
+#
+
+
+###############################################
+# Page: edit_entry.php
+#
+You have not entered a Brief Description: 요약 설명을 입력하지 않았습니다.
+You have not entered a valid time of day: 유효한 일자/시각이 아닙니다.
+#
+# << MISSING >>
+# The time you have entered begins before your preferred work hours.  Is this correct?:
+# English text: The time you have entered begins before your preferred work hours.  Is this correct?
+#
+Edit Entry: 항목 편집
+Add Entry: 항목 추가
+brief-description-help: 행사의 간략한 설명(약 20자)입니다. 달력상의 행사를  나타냅니다.
+Brief Description: 요약 설명
+full-description-help: 행사의 자세한 설명입니다. 
+Full Description: 상세 설명
+date-help: 행사일을 나타냅니다. 
+# "Date" previously defined (in activity_log.php)
+time-help: 행사 시각입니다.<BR><I>이 항목은 비워둘 수 있습니다.</I>
+# "Time" previously defined (in activity_log.php)
+am: am
+pm: pm
+duration-help: 행사기간 명시(분단위)<BR><I>이 항목은 비워둘 수 있습니다.</I>
+Duration: 기간
+#
+# << MISSING >>
+# hours:
+# English text: hours
+#
+# "minutes" previously defined (in admin.php)
+priority-help: 행사 우선순위 명시. 높은 우선순위의 행사는 굵은 글씨로 표시됩니다.
+Priority: 우선 순위
+Low: 낮음
+Medium: 중간
+High: 높음
+access-help: 행사의 접근 수준을 명시.<BR> <I>공용</I>: 모든 사람이 행사의 세부 내용까지 볼 수 있음.  <BR><I>비밀</I>: 타 사용자는 일자와 시각을 볼 수 있으나 세부 사항은 볼 수 없음.
+Access: 접근
+Public: 공용
+Confidential: 비밀
+#
+# << MISSING >>
+# category-help:
+# English text: Specifies the category of the event.
+#
+#
+# << MISSING >>
+# Category:
+# English text: Category
+#
+# "Yes" previously defined (in admin.php)
+# "No" previously defined (in admin.php)
+#
+# << MISSING >>
+# days:
+# English text: days
+#
+#
+# << MISSING >>
+# hours:
+# English text: hours
+#
+#
+# << MISSING >>
+# before event:
+# English text: before event
+#
+participants-help: 참가자의 목록 표시.
+Participants: 참가자
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# repeat-type-help:
+# English text: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
+#
+#
+# << MISSING >>
+# Repeat Type:
+# English text: Repeat Type
+#
+#
+# << MISSING >>
+# None:
+# English text: None
+#
+#
+# << MISSING >>
+# Daily:
+# English text: Daily
+#
+#
+# << MISSING >>
+# Weekly:
+# English text: Weekly
+#
+#
+# << MISSING >>
+# Monthly:
+# English text: Monthly
+#
+#
+# << MISSING >>
+# by day:
+# English text: by day
+#
+#
+# << MISSING >>
+# Monthly:
+# English text: Monthly
+#
+#
+# << MISSING >>
+# by date:
+# English text: by date
+#
+#
+# << MISSING >>
+# Yearly:
+# English text: Yearly
+#
+#
+# << MISSING >>
+# repeat-end-date-help:
+# English text: Specifies the date the event should repeat until.
+#
+#
+# << MISSING >>
+# Repeat End Date:
+# English text: Repeat End Date
+#
+#
+# << MISSING >>
+# Use end date:
+# English text: Use end date
+#
+#
+# << MISSING >>
+# repeat-day-help:
+# English text: Specifies which days of the week the event should repeat on.  This is for use only when <I>Repeat Type</I> is set to <I>Weekly</I>.
+#
+#
+# << MISSING >>
+# Repeat Day:
+# English text: Repeat Day
+#
+#
+# << MISSING >>
+# for weekly:
+# English text: for weekly
+#
+# "Sunday" previously defined (in admin.php)
+# "Monday" previously defined (in admin.php)
+Tuesday: 화요일
+Wednesday: 수요일
+Thursday: 목요일
+Friday: 금요일
+Saturday: 토요일
+#
+# << MISSING >>
+# repeat-frequency-help:
+# English text: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <I>Repeat Type</I> is set to <I>Weekly</I>), every other month (if <I>Repeat Type</I> is set to <I>Monthly</I>), etc.
+#
+#
+# << MISSING >>
+# Frequency:
+# English text: Frequency
+#
+# "Save" previously defined (in admin.php)
+# "Help" previously defined (in admin.php)
+# "Are you sure you want to delete this entry?" previously defined (in category.php)
+Delete entry: 항목 지우기
+You are not authorized to edit this entry: 이 항목을 편집할 권한이 없습니다.
+
+
+###############################################
+# Page: edit_entry_handler.php
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+# "You are not authorized" previously defined (in admin.php)
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+The following conflicts with the suggested time: 다음 사항은 제시된 시간과 겹칩니다.
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+Unnamed Event: 이름없는 행사
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+# "Hello" previously defined (in del_entry.php)
+#
+# << MISSING >>
+# An appointment has been canceled for you by:
+# English text: An appointment has been canceled for you by
+#
+#
+# << MISSING >>
+# The subject was:
+# English text: The subject was
+#
+#
+# << MISSING >>
+# The description is:
+# English text: The description is
+#
+# "Date" previously defined (in activity_log.php)
+# "Time" previously defined (in activity_log.php)
+Title: 웹 캘린더
+# "Notification" previously defined (in del_entry.php)
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+A new appointment has been made for you by: 새 약속이 생성되었습니다. 생성자:
+#
+# << MISSING >>
+# An appointment has been updated by:
+# English text: An appointment has been updated by
+#
+The subject is: 주제는
+#
+# << MISSING >>
+# The description is:
+# English text: The description is
+#
+Please look on: 다음을 살펴볼 것-
+to accept or reject this appointment: 이 약속을 수락하거나 거절
+to view this appointment: 이 약속을 보기
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Scheduling Conflict:
+# English text: Scheduling Conflict
+#
+Your suggested time of: 제안한 시간
+conflicts with the following existing calendar entries: 다음과 같은 항목과 겹칩니다.
+# "Save" previously defined (in admin.php)
+#
+# << MISSING >>
+# Cancel:
+# English text: Cancel
+#
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: edit_layer.php
+#
+#
+# << MISSING >>
+# Invalid color:
+# English text: Invalid color
+#
+# "Color format should be '#RRGGBB'" previously defined (in admin.php)
+#
+# << MISSING >>
+# Edit Layer:
+# English text: Edit Layer
+#
+#
+# << MISSING >>
+# Add Layer:
+# English text: Add Layer
+#
+#
+# << MISSING >>
+# Source:
+# English text: Source
+#
+#
+# << MISSING >>
+# Color:
+# English text: Color
+#
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# Duplicates:
+# English text: Duplicates
+#
+#
+# << MISSING >>
+# Show layer events that are the same as your own:
+# English text: Show layer events that are the same as your own
+#
+# "Save" previously defined (in admin.php)
+# "Help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Are you sure you want to delete this layer?:
+# English text: Are you sure you want to delete this layer?
+#
+#
+# << MISSING >>
+# Delete layer:
+# English text: Delete layer
+#
+
+
+###############################################
+# Page: edit_layer_handler.php
+#
+#
+# << MISSING >>
+# You cannot create a layer for yourself:
+# English text: You cannot create a layer for yourself
+#
+#
+# << MISSING >>
+# You can only create one layer for each user:
+# English text: You can only create one layer for each user
+#
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: edit_user.php
+#
+Edit User: 사용자 편집
+Add User: 사용자 추가
+#
+# << MISSING >>
+# Username:
+# English text: Username
+#
+First Name: 이름
+Last Name: 성
+E-mail address: E-mail 주소
+Password: 비밀번호
+again: again
+Admin: 관리
+# "No" previously defined (in admin.php)
+# "Yes" previously defined (in admin.php)
+# "Save" previously defined (in admin.php)
+#
+# << MISSING >>
+# Disabled for demo:
+# English text: Disabled for demo
+#
+# "Delete" previously defined (in category.php)
+#
+# << MISSING >>
+# Disabled for demo:
+# English text: Disabled for demo
+#
+# "Are you sure you want to delete this entry?" previously defined (in category.php)
+Change Password: 비밀번호 변경
+New Password: 새 비밀번호
+Set Password: 비밀번호 설정
+#
+# << MISSING >>
+# Disabled for demo:
+# English text: Disabled for demo
+#
+
+
+###############################################
+# Page: edit_user_handler.php
+#
+# "Delete" previously defined (in category.php)
+#
+# << MISSING >>
+# Deleting users not supported:
+# English text: Deleting users not supported
+#
+# "You are not authorized" previously defined (in admin.php)
+The passwords were not identical: The passwords were not identical
+You have not entered a password: 암호를 입력하지 않았습니다.
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: export.php
+#
+#
+# << MISSING >>
+# Export:
+# English text: Export
+#
+#
+# << MISSING >>
+# Export format:
+# English text: Export format
+#
+#
+# << MISSING >>
+# Palm Pilot:
+# English text: Palm Pilot
+#
+#
+# << MISSING >>
+# Export all dates:
+# English text: Export all dates
+#
+#
+# << MISSING >>
+# Start date:
+# English text: Start date
+#
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# End date:
+# English text: End date
+#
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# Modified since:
+# English text: Modified since
+#
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# Export:
+# English text: Export
+#
+
+
+###############################################
+# Page: export_handler.php
+#
+#
+# << MISSING >>
+# Export:
+# English text: Export
+#
+#
+# << MISSING >>
+# Export:
+# English text: Export
+#
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: groups.php
+#
+#
+# << MISSING >>
+# Groups:
+# English text: Groups
+#
+#
+# << MISSING >>
+# Add New Group:
+# English text: Add New Group
+#
+
+
+###############################################
+# Page: group_edit.php
+#
+#
+# << MISSING >>
+# Unnamed Group:
+# English text: Unnamed Group
+#
+#
+# << MISSING >>
+# Add Group:
+# English text: Add Group
+#
+#
+# << MISSING >>
+# Edit Group:
+# English text: Edit Group
+#
+#
+# << MISSING >>
+# Group name:
+# English text: Group name
+#
+Updated: 갱신된
+Created by: 작성자:
+Users: 사용자
+#
+# << MISSING >>
+# Add:
+# English text: Add
+#
+# "Save" previously defined (in admin.php)
+# "Delete" previously defined (in category.php)
+# "Are you sure you want to delete this entry?" previously defined (in category.php)
+
+
+###############################################
+# Page: group_edit_handler.php
+#
+# "Delete" previously defined (in category.php)
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: help_admin.php
+#
+# "Help" previously defined (in admin.php)
+#
+# << MISSING >>
+# System Settings:
+# English text: System Settings
+#
+# "Settings" previously defined (in admin.php)
+# "Language" previously defined (in admin.php)
+#
+# << MISSING >>
+# language-help:
+# English text: Specifies which language to use.
+#
+#
+# << MISSING >>
+# Fonts:
+# English text: Fonts
+#
+#
+# << MISSING >>
+# fonts-help:
+# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+#
+#
+# << MISSING >>
+# Preferred view:
+# English text: Preferred view
+#
+#
+# << MISSING >>
+# preferred-view-help:
+# English text: Specifies the default view (Day, Week, Month, or Year).
+#
+# "Time format" previously defined (in admin.php)
+# "time-format-help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Require event approvals:
+# English text: Require event approvals
+#
+#
+# << MISSING >>
+# require-approvals-help:
+# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
+#
+# "Display unapproved" previously defined (in admin.php)
+# "display-unapproved-help" previously defined (in admin.php)
+# "Display week number" previously defined (in admin.php)
+# "display-week-number-help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Week starts on:
+# English text: Week starts on
+#
+#
+# << MISSING >>
+# display-week-starts-on:
+# English text: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
+#
+# "Work hours" previously defined (in admin.php)
+# "work-hours-help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Disable Priority field:
+# English text: Disable Priority field
+#
+#
+# << MISSING >>
+# disable-priority-field-help:
+# English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Access field:
+# English text: Disable Access field
+#
+#
+# << MISSING >>
+# disable-access-field-help:
+# English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Participants field:
+# English text: Disable Participants field
+#
+#
+# << MISSING >>
+# disable-participants-field-help:
+# English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
+#
+#
+# << MISSING >>
+# Disable Repeating field:
+# English text: Disable Repeating field
+#
+#
+# << MISSING >>
+# disable-repeating-field-help:
+# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Allow public access:
+# English text: Allow public access
+#
+#
+# << MISSING >>
+# allow-public-access-help:
+# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
+#
+#
+# << MISSING >>
+# Public access can view other users:
+# English text: Public access can view other users
+#
+#
+# << MISSING >>
+# public-access-view-others-help:
+# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
+#
+#
+# << MISSING >>
+# Allow viewing other user's calendars:
+# English text: Allow viewing other user's calendars
+#
+#
+# << MISSING >>
+# allow-view-other-help:
+# English text: Specifies whether one user may view another user's calendar.
+#
+#
+# << MISSING >>
+# Remember last login:
+# English text: Remember last login
+#
+#
+# << MISSING >>
+# remember-last-login-help:
+# English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
+#
+#
+# << MISSING >>
+# Check for event conflicts:
+# English text: Check for event conflicts
+#
+#
+# << MISSING >>
+# conflict-check-help:
+# English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
+#
+#
+# << MISSING >>
+# Conflict checking months:
+# English text: Conflict checking months
+#
+#
+# << MISSING >>
+# conflict-months-help:
+# English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
+#
+#
+# << MISSING >>
+# Groups:
+# English text: Groups
+#
+#
+# << MISSING >>
+# Groups enabled:
+# English text: Groups enabled
+#
+#
+# << MISSING >>
+# groups-enabled-help:
+# English text: Enables group support, allowing users to select users by groups.
+#
+#
+# << MISSING >>
+# User sees only his groups:
+# English text: User sees only his groups
+#
+#
+# << MISSING >>
+# user-sees-his-group-help:
+# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
+#
+#
+# << MISSING >>
+# Email:
+# English text: Email
+#
+#
+# << MISSING >>
+# Email enabled:
+# English text: Email enabled
+#
+#
+# << MISSING >>
+# email-enabled-help:
+# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
+#
+#
+# << MISSING >>
+# Default sender address:
+# English text: Default sender address
+#
+#
+# << MISSING >>
+# email-default-sender:
+# English text: Specifies the email address to specify as the sender when sending out reminders.
+#
+#
+# << MISSING >>
+# Event reminders:
+# English text: Event reminders
+#
+#
+# << MISSING >>
+# email-event-reminders-help:
+# English text: Specifies whether or not to send event reminders.
+#
+#
+# << MISSING >>
+# Events added to my calendar:
+# English text: Events added to my calendar
+#
+#
+# << MISSING >>
+# email-event-added:
+# English text: Specifies whether or not to send email notifications when an event is added to your calendar.
+#
+#
+# << MISSING >>
+# Events updated on my calendar:
+# English text: Events updated on my calendar
+#
+#
+# << MISSING >>
+# email-event-updated:
+# English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
+#
+#
+# << MISSING >>
+# Events removed from my calendar:
+# English text: Events removed from my calendar
+#
+#
+# << MISSING >>
+# email-event-deleted:
+# English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
+#
+#
+# << MISSING >>
+# Event rejected by participant:
+# English text: Event rejected by participant
+#
+#
+# << MISSING >>
+# email-event-rejected:
+# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
+#
+# "Colors" previously defined (in admin.php)
+# "colors-help" previously defined (in admin.php)
+
+
+###############################################
+# Page: help_edit_entry.php
+#
+# "Help" previously defined (in admin.php)
+Adding/Editing Calendar Entries: 달력 항목의 추가/편집
+# "Brief Description" previously defined (in edit_entry.php)
+# "brief-description-help" previously defined (in edit_entry.php)
+# "Full Description" previously defined (in edit_entry.php)
+# "full-description-help" previously defined (in edit_entry.php)
+# "Date" previously defined (in activity_log.php)
+# "date-help" previously defined (in edit_entry.php)
+# "Time" previously defined (in activity_log.php)
+# "time-help" previously defined (in edit_entry.php)
+# "Duration" previously defined (in edit_entry.php)
+# "duration-help" previously defined (in edit_entry.php)
+# "Priority" previously defined (in edit_entry.php)
+# "priority-help" previously defined (in edit_entry.php)
+# "Access" previously defined (in edit_entry.php)
+# "access-help" previously defined (in edit_entry.php)
+# "Participants" previously defined (in edit_entry.php)
+# "participants-help" previously defined (in edit_entry.php)
+#
+# << MISSING >>
+# Repeat Type:
+# English text: Repeat Type
+#
+#
+# << MISSING >>
+# repeat-type-help:
+# English text: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
+#
+#
+# << MISSING >>
+# Repeat End Date:
+# English text: Repeat End Date
+#
+#
+# << MISSING >>
+# repeat-end-date-help:
+# English text: Specifies the date the event should repeat until.
+#
+#
+# << MISSING >>
+# Repeat Day:
+# English text: Repeat Day
+#
+#
+# << MISSING >>
+# repeat-day-help:
+# English text: Specifies which days of the week the event should repeat on.  This is for use only when <I>Repeat Type</I> is set to <I>Weekly</I>.
+#
+#
+# << MISSING >>
+# Frequency:
+# English text: Frequency
+#
+#
+# << MISSING >>
+# repeat-frequency-help:
+# English text: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <I>Repeat Type</I> is set to <I>Weekly</I>), every other month (if <I>Repeat Type</I> is set to <I>Monthly</I>), etc.
+#
+
+
+###############################################
+# Page: help_index.php
+#
+Help Index: 도움말 목차
+# "Adding/Editing Calendar Entries" previously defined (in help_edit_entry.php)
+#
+# << MISSING >>
+# Layers:
+# English text: Layers
+#
+Preferences: 환경 설정
+#
+# << MISSING >>
+# System Settings:
+# English text: System Settings
+#
+#
+# << MISSING >>
+# Report Bug:
+# English text: Report Bug
+#
+
+
+###############################################
+# Page: help_layers.php
+#
+# "Help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Layers:
+# English text: Layers
+#
+#
+# << MISSING >>
+# Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
+# English text: Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.
+#
+#
+# << MISSING >>
+# Add/Edit/Delete:
+# English text: Add/Edit/Delete
+#
+#
+# << MISSING >>
+# Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
+# English text: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
+#
+#
+# << MISSING >>
+# Source:
+# English text: Source
+#
+#
+# << MISSING >>
+# Specifies the user that you would like to see displayed in your calendar.:
+# English text: Specifies the user that you would like to see displayed in your calendar.
+#
+# "Colors" previously defined (in admin.php)
+#
+# << MISSING >>
+# The text color of the new layer that will be displayed in your calendar.:
+# English text: The text color of the new layer that will be displayed in your calendar.
+#
+#
+# << MISSING >>
+# Duplicates:
+# English text: Duplicates
+#
+#
+# << MISSING >>
+# If checked, events that are duplicates of your events will be shown.:
+# English text: If checked, events that are duplicates of your events will be shown.
+#
+#
+# << MISSING >>
+# Disabling:
+# English text: Disabling
+#
+#
+# << MISSING >>
+# Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
+# English text: Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.
+#
+#
+# << MISSING >>
+# Enabling:
+# English text: Enabling
+#
+#
+# << MISSING >>
+# Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
+# English text: Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.
+#
+# "colors-help" previously defined (in admin.php)
+
+
+###############################################
+# Page: help_pref.php
+#
+# "Help" previously defined (in admin.php)
+# "Preferences" previously defined (in help_index.php)
+# "Settings" previously defined (in admin.php)
+# "Language" previously defined (in admin.php)
+#
+# << MISSING >>
+# language-help:
+# English text: Specifies which language to use.
+#
+#
+# << MISSING >>
+# Fonts:
+# English text: Fonts
+#
+#
+# << MISSING >>
+# fonts-help:
+# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+#
+#
+# << MISSING >>
+# Preferred view:
+# English text: Preferred view
+#
+#
+# << MISSING >>
+# preferred-view-help:
+# English text: Specifies the default view (Day, Week, Month, or Year).
+#
+# "Time format" previously defined (in admin.php)
+# "time-format-help" previously defined (in admin.php)
+# "Display unapproved" previously defined (in admin.php)
+# "display-unapproved-help" previously defined (in admin.php)
+# "Display week number" previously defined (in admin.php)
+# "display-week-number-help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Week starts on:
+# English text: Week starts on
+#
+#
+# << MISSING >>
+# display-week-starts-on:
+# English text: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
+#
+# "Work hours" previously defined (in admin.php)
+# "work-hours-help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Email:
+# English text: Email
+#
+#
+# << MISSING >>
+# Event reminders:
+# English text: Event reminders
+#
+#
+# << MISSING >>
+# email-event-reminders-help:
+# English text: Specifies whether or not to send event reminders.
+#
+#
+# << MISSING >>
+# Events added to my calendar:
+# English text: Events added to my calendar
+#
+#
+# << MISSING >>
+# email-event-added:
+# English text: Specifies whether or not to send email notifications when an event is added to your calendar.
+#
+#
+# << MISSING >>
+# Events updated on my calendar:
+# English text: Events updated on my calendar
+#
+#
+# << MISSING >>
+# email-event-updated:
+# English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
+#
+#
+# << MISSING >>
+# Events removed from my calendar:
+# English text: Events removed from my calendar
+#
+#
+# << MISSING >>
+# email-event-deleted:
+# English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
+#
+#
+# << MISSING >>
+# Event rejected by participant:
+# English text: Event rejected by participant
+#
+#
+# << MISSING >>
+# email-event-rejected:
+# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
+#
+# "Colors" previously defined (in admin.php)
+# "colors-help" previously defined (in admin.php)
+
+
+###############################################
+# Page: index.php
+#
+
+
+###############################################
+# Page: layers.php
+#
+#
+# << MISSING >>
+# Layers:
+# English text: Layers
+#
+#
+# << MISSING >>
+# Layers are currently:
+# English text: Layers are currently
+#
+#
+# << MISSING >>
+# Disabled:
+# English text: Disabled
+#
+#
+# << MISSING >>
+# Enabled:
+# English text: Enabled
+#
+#
+# << MISSING >>
+# Layer:
+# English text: Layer
+#
+#
+# << MISSING >>
+# Source:
+# English text: Source
+#
+#
+# << MISSING >>
+# Color:
+# English text: Color
+#
+#
+# << MISSING >>
+# Duplicates:
+# English text: Duplicates
+#
+# "No" previously defined (in admin.php)
+# "Yes" previously defined (in admin.php)
+#
+# << MISSING >>
+# Edit layer:
+# English text: Edit layer
+#
+#
+# << MISSING >>
+# Are you sure you want to delete this layer?:
+# English text: Are you sure you want to delete this layer?
+#
+#
+# << MISSING >>
+# Delete layer:
+# English text: Delete layer
+#
+#
+# << MISSING >>
+# Add layer:
+# English text: Add layer
+#
+# "Help" previously defined (in admin.php)
+
+
+###############################################
+# Page: layers_toggle.php
+#
+# "Error" previously defined (in admin_handler.php)
+# "The following error occurred" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: list_unapproved.php
+#
+View this entry: 항목 보기
+Approve this entry?: 이 항목을 승인함.
+#
+# << MISSING >>
+# Approve/Confirm:
+# English text: Approve/Confirm
+#
+#
+# << MISSING >>
+# Reject this entry?:
+# English text: Reject this entry?
+#
+#
+# << MISSING >>
+# Reject:
+# English text: Reject
+#
+#
+# << MISSING >>
+# No unapproved events for:
+# English text: No unapproved events for
+#
+Unapproved Events: 미승인 행사
+#
+# << MISSING >>
+# Public Access:
+# English text: Public Access
+#
+
+
+###############################################
+# Page: login.php
+#
+You must enter a login and password: 아이디와 비밀번호를 입력해야 합니다.
+# "Error" previously defined (in admin_handler.php)
+#
+# << MISSING >>
+# Username:
+# English text: Username
+#
+# "Password" previously defined (in edit_user.php)
+Save login via cookies so I don't have to login next time: 다음번에 로그인 할 필요가 없도록 로그인 정보 저장.
+Login: 로그인
+#
+# << MISSING >>
+# Access public calendar:
+# English text: Access public calendar
+#
+cookies-note: <B>주:</B> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
+
+
+###############################################
+# Page: month.php
+#
 Sun: 일 
 Mon: 월 
 Tue: 화
@@ -17,15 +2043,778 @@ Wed: 수
 Thu: 목
 Fri: 금
 Sat: 토
+# "Generate printer-friendly version" previously defined (in day.php)
+# "Printer Friendly" previously defined (in day.php)
 
-Sunday: 일요일 
-Monday: 월요일 
-Tuesday: 화요일
-Wednesday: 수요일
-Thursday: 목요일
-Friday: 금요일
-Saturday: 토요일
 
+###############################################
+# Page: pref.php
+#
+# "Invalid color for document background" previously defined (in admin.php)
+# "Invalid color for document title" previously defined (in admin.php)
+# "Invalid color for table cell background" previously defined (in admin.php)
+# "Invalid color for table cell background for today" previously defined (in admin.php)
+# "Color format should be '#RRGGBB'" previously defined (in admin.php)
+# "Preferences" previously defined (in help_index.php)
+# "Settings" previously defined (in admin.php)
+# "Language" previously defined (in admin.php)
+#
+# << MISSING >>
+# Your browser default language is:
+# English text: Your browser default language is
+#
+#
+# << MISSING >>
+# fonts-help:
+# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+#
+#
+# << MISSING >>
+# Fonts:
+# English text: Fonts
+#
+#
+# << MISSING >>
+# Preferred view:
+# English text: Preferred view
+#
+#
+# << MISSING >>
+# Day:
+# English text: Day
+#
+# "Week" previously defined (in admin.php)
+# "Month" previously defined (in admin.php)
+#
+# << MISSING >>
+# Year:
+# English text: Year
+#
+#
+# << MISSING >>
+# display-weekends-help:
+# English text: Include weekends when viewing a week.
+#
+#
+# << MISSING >>
+# Display weekends in week view:
+# English text: Display weekends in week view
+#
+# "Yes" previously defined (in admin.php)
+# "No" previously defined (in admin.php)
+# "Time format" previously defined (in admin.php)
+# "12 hour" previously defined (in admin.php)
+# "24 hour" previously defined (in admin.php)
+#
+# << MISSING >>
+# auto-refresh-help:
+# English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
+#
+#
+# << MISSING >>
+# Auto-refresh calendars:
+# English text: Auto-refresh calendars
+#
+#
+# << MISSING >>
+# auto-refresh-time-help:
+# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
+#
+#
+# << MISSING >>
+# Auto-refresh time:
+# English text: Auto-refresh time
+#
+# "minutes" previously defined (in admin.php)
+# "Display unapproved" previously defined (in admin.php)
+# "Display week number" previously defined (in admin.php)
+#
+# << MISSING >>
+# Week starts on:
+# English text: Week starts on
+#
+# "Sunday" previously defined (in admin.php)
+# "Monday" previously defined (in admin.php)
+# "Work hours" previously defined (in admin.php)
+# "From" previously defined (in admin.php)
+# "to" previously defined (in admin.php)
+#
+# << MISSING >>
+# Default Category:
+# English text: Default Category
+#
+#
+# << MISSING >>
+# Email:
+# English text: Email
+#
+#
+# << MISSING >>
+# Event reminders:
+# English text: Event reminders
+#
+#
+# << MISSING >>
+# Events added to my calendar:
+# English text: Events added to my calendar
+#
+#
+# << MISSING >>
+# Events updated on my calendar:
+# English text: Events updated on my calendar
+#
+#
+# << MISSING >>
+# Events removed from my calendar:
+# English text: Events removed from my calendar
+#
+#
+# << MISSING >>
+# Event rejected by participant:
+# English text: Event rejected by participant
+#
+# "Colors" previously defined (in admin.php)
+# "Document background" previously defined (in admin.php)
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+# "Document title" previously defined (in admin.php)
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+# "Table cell background" previously defined (in admin.php)
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+# "Table cell background for current day" previously defined (in admin.php)
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# Table cell background for weekends:
+# English text: Table cell background for weekends
+#
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+Save Preferences: 환경설정 저장
+# "Help" previously defined (in admin.php)
+
+
+###############################################
+# Page: pref_handler.php
+#
+# "Error" previously defined (in admin_handler.php)
+# "The following error occurred" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: reject_entry.php
+#
+# "Error approving event" previously defined (in approve_entry.php)
+# "Hello" previously defined (in del_entry.php)
+#
+# << MISSING >>
+# An appointment has been rejected by:
+# English text: An appointment has been rejected by
+#
+#
+# << MISSING >>
+# The subject was:
+# English text: The subject was
+#
+#
+# << MISSING >>
+# The description is:
+# English text: The description is
+#
+# "Date" previously defined (in activity_log.php)
+# "Time" previously defined (in activity_log.php)
+# "Notification" previously defined (in del_entry.php)
+
+
+###############################################
+# Page: search.php
+#
+Search: 검색
+#
+# << MISSING >>
+# Advanced Search:
+# English text: Advanced Search
+#
+Keywords: 검색어
+#
+# << MISSING >>
+# Advanced Search:
+# English text: Advanced Search
+#
+# "Users" previously defined (in group_edit.php)
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: 검색어를 입력하셔야 합니다.
+Search Results: 검색 결과
+# "Error" previously defined (in admin_handler.php)
+match found: 항목 발견
+matches found: 항목 발견
+No matches found: 찾은 항목 없음
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: 다른 사용자의 달력 보기
+# "You are not authorized" previously defined (in admin.php)
+Go: 시작
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+# "Invalid entry id" previously defined (in add_entry.php)
+# "You are not authorized" previously defined (in admin.php)
+#
+# << MISSING >>
+# You have not added any categories:
+# English text: You have not added any categories
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+# "Error" previously defined (in admin_handler.php)
+#
+# << MISSING >>
+# Set Category:
+# English text: Set Category
+#
+# "Brief Description" previously defined (in edit_entry.php)
+#
+# << MISSING >>
+# Category:
+# English text: Category
+#
+# "Save" previously defined (in admin.php)
+
+
+###############################################
+# Page: users.php
+#
+# "Error" previously defined (in admin_handler.php)
+# "You are not authorized" previously defined (in admin.php)
+# "Users" previously defined (in group_edit.php)
+denotes administrative user: 관리자를 나타냄
+Add New User: 새 사용자 추가
+
+
+###############################################
+# Page: usersel.php
+#
+# "Users" previously defined (in group_edit.php)
+#
+# << MISSING >>
+# All:
+# English text: All
+#
+#
+# << MISSING >>
+# None:
+# English text: None
+#
+#
+# << MISSING >>
+# Reset:
+# English text: Reset
+#
+#
+# << MISSING >>
+# Groups:
+# English text: Groups
+#
+#
+# << MISSING >>
+# Add:
+# English text: Add
+#
+#
+# << MISSING >>
+# Remove:
+# English text: Remove
+#
+#
+# << MISSING >>
+# Ok:
+# English text: Ok
+#
+#
+# << MISSING >>
+# Cancel:
+# English text: Cancel
+#
+
+
+###############################################
+# Page: views.php
+#
+#
+# << MISSING >>
+# Views:
+# English text: Views
+#
+#
+# << MISSING >>
+# Add New View:
+# English text: Add New View
+#
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+# << MISSING >>
+# Unnamed View:
+# English text: Unnamed View
+#
+#
+# << MISSING >>
+# Add View:
+# English text: Add View
+#
+#
+# << MISSING >>
+# Edit View:
+# English text: Edit View
+#
+#
+# << MISSING >>
+# View Name:
+# English text: View Name
+#
+#
+# << MISSING >>
+# View Type:
+# English text: View Type
+#
+# "Week" previously defined (in admin.php)
+# "Month" previously defined (in admin.php)
+# "Users" previously defined (in group_edit.php)
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+#
+# << MISSING >>
+# Add:
+# English text: Add
+#
+# "Save" previously defined (in admin.php)
+# "Delete" previously defined (in category.php)
+# "Are you sure you want to delete this entry?" previously defined (in category.php)
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+# "Delete" previously defined (in category.php)
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: view_entry.php
+#
+# "Low" previously defined (in edit_entry.php)
+# "Medium" previously defined (in edit_entry.php)
+# "High" previously defined (in edit_entry.php)
+# "Invalid entry id" previously defined (in add_entry.php)
+# "Error" previously defined (in admin_handler.php)
+# "You are not authorized" previously defined (in admin.php)
+#
+# << MISSING >>
+# every:
+# English text: every
+#
+#
+# << MISSING >>
+# 1st:
+# English text: 1st
+#
+#
+# << MISSING >>
+# 2nd:
+# English text: 2nd
+#
+#
+# << MISSING >>
+# 3rd:
+# English text: 3rd
+#
+#
+# << MISSING >>
+# 4th:
+# English text: 4th
+#
+#
+# << MISSING >>
+# 5th:
+# English text: 5th
+#
+#
+# << MISSING >>
+# Day:
+# English text: Day
+#
+# "Week" previously defined (in admin.php)
+# "Month" previously defined (in admin.php)
+#
+# << MISSING >>
+# by day:
+# English text: by day
+#
+#
+# << MISSING >>
+# by date:
+# English text: by date
+#
+#
+# << MISSING >>
+# Year:
+# English text: Year
+#
+# "Confidential" previously defined (in edit_entry.php)
+Description: 설명
+#
+# << MISSING >>
+# Status:
+# English text: Status
+#
+#
+# << MISSING >>
+# Waiting for approval:
+# English text: Waiting for approval
+#
+#
+# << MISSING >>
+# Deleted:
+# English text: Deleted
+#
+#
+# << MISSING >>
+# Rejected:
+# English text: Rejected
+#
+# "Date" previously defined (in activity_log.php)
+#
+# << MISSING >>
+# Repeat Type:
+# English text: Repeat Type
+#
+# "Time" previously defined (in activity_log.php)
+# "Duration" previously defined (in edit_entry.php)
+# "minutes" previously defined (in admin.php)
+# "Priority" previously defined (in edit_entry.php)
+# "Access" previously defined (in edit_entry.php)
+# "Public" previously defined (in edit_entry.php)
+#
+# << MISSING >>
+# Category:
+# English text: Category
+#
+# "Created by" previously defined (in group_edit.php)
+# "Updated" previously defined (in group_edit.php)
+# "No" previously defined (in admin.php)
+# "Yes" previously defined (in admin.php)
+#
+# << MISSING >>
+# days:
+# English text: days
+#
+#
+# << MISSING >>
+# hours:
+# English text: hours
+#
+#
+# << MISSING >>
+# before event:
+# English text: before event
+#
+# "Participants" previously defined (in edit_entry.php)
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Rejected:
+# English text: Rejected
+#
+#
+# << MISSING >>
+# Rejected:
+# English text: Rejected
+#
+# "Approve this entry?" previously defined (in list_unapproved.php)
+Approve/Confirm entry: 이 항목을 승인/확인함
+#
+# << MISSING >>
+# Reject this entry?:
+# English text: Reject this entry?
+#
+#
+# << MISSING >>
+# Reject entry:
+# English text: Reject entry
+#
+#
+# << MISSING >>
+# Set category:
+# English text: Set category
+#
+#
+# << MISSING >>
+# Edit repeating entry for all dates:
+# English text: Edit repeating entry for all dates
+#
+#
+# << MISSING >>
+# Edit entry for this date:
+# English text: Edit entry for this date
+#
+# "Are you sure you want to delete this entry?" previously defined (in category.php)
+This will delete this entry for all users.: 모든 사용자들에서도 이 항목이 지워집니다.
+#
+# << MISSING >>
+# Delete repeating event for all dates:
+# English text: Delete repeating event for all dates
+#
+#
+# << MISSING >>
+# Delete entry only for this date:
+# English text: Delete entry only for this date
+#
+Edit entry: 항목 편집
+# "Delete entry" previously defined (in edit_entry.php)
+#
+# << MISSING >>
+# This will delete the entry from your calendar.:
+# English text: This will delete the entry from your calendar.
+#
+#
+# << MISSING >>
+# Do you want to add this entry to your calendar?:
+# English text: Do you want to add this entry to your calendar?
+#
+#
+# << MISSING >>
+# This will add the entry to your calendar.:
+# English text: This will add the entry to your calendar.
+#
+#
+# << MISSING >>
+# Add to My Calendar:
+# English text: Add to My Calendar
+#
+#
+# << MISSING >>
+# Email all participants:
+# English text: Email all participants
+#
+#
+# << MISSING >>
+# Show activity log:
+# English text: Show activity log
+#
+#
+# << MISSING >>
+# Hide activity log:
+# English text: Hide activity log
+#
+#
+# << MISSING >>
+# Activity Log:
+# English text: Activity Log
+#
+#
+# << MISSING >>
+# User:
+# English text: User
+#
+#
+# << MISSING >>
+# Calendar:
+# English text: Calendar
+#
+#
+# << MISSING >>
+# Action:
+# English text: Action
+#
+#
+# << MISSING >>
+# Event created:
+# English text: Event created
+#
+#
+# << MISSING >>
+# Event approved:
+# English text: Event approved
+#
+#
+# << MISSING >>
+# Event rejected:
+# English text: Event rejected
+#
+#
+# << MISSING >>
+# Event updated:
+# English text: Event updated
+#
+#
+# << MISSING >>
+# Event deleted:
+# English text: Event deleted
+#
+#
+# << MISSING >>
+# Notification sent:
+# English text: Notification sent
+#
+#
+# << MISSING >>
+# Reminder sent:
+# English text: Reminder sent
+#
+
+
+###############################################
+# Page: view_m.php
+#
+# "Generate printer-friendly version" previously defined (in day.php)
+# "Printer Friendly" previously defined (in day.php)
+
+
+###############################################
+# Page: view_w.php
+#
+# "Generate printer-friendly version" previously defined (in day.php)
+# "Printer Friendly" previously defined (in day.php)
+
+
+###############################################
+# Page: week.php
+#
+# "Week" previously defined (in admin.php)
+New Entry: 새 항목
+# "Generate printer-friendly version" previously defined (in day.php)
+# "Printer Friendly" previously defined (in day.php)
+
+
+###############################################
+# Page: week_ssi.php
+#
+
+
+###############################################
+# Page: year.php
+#
+# "Generate printer-friendly version" previously defined (in day.php)
+# "Printer Friendly" previously defined (in day.php)
+
+
+###############################################
+# Page: includes/config.php
+#
+
+
+###############################################
+# Page: includes/connect.php
+#
+# "Error" previously defined (in admin_handler.php)
+# "You are not authorized" previously defined (in admin.php)
+
+
+###############################################
+# Page: includes/functions.php
+#
+# "Title" previously defined (in edit_entry_handler.php)
+# "You are not authorized" previously defined (in admin.php)
+#
+# << MISSING >>
+# User:
+# English text: User
+#
+# "Time" previously defined (in activity_log.php)
+# "Description" previously defined (in view_entry.php)
+#
+# << MISSING >>
+# Select:
+# English text: Select
+#
+# "View this entry" previously defined (in list_unapproved.php)
+# "am" previously defined (in edit_entry.php)
+# "pm" previously defined (in edit_entry.php)
+Private: 개인용
+This event is confidential: 이 행사는 비밀항목입니다.
+# "Are you sure you want to delete this entry?" previously defined (in category.php)
+# "This will delete this entry for all users." previously defined (in view_entry.php)
+# "New Entry" previously defined (in week.php)
+# "Week" previously defined (in admin.php)
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+You have: You have
+unapproved: 미승인
+events: 행사들
+event: 행사
 January: 1월
 February: 2월
 March: 3월
@@ -38,7 +2827,6 @@ September: 9월
 October: 10월
 November: 11월
 December: 12월
-
 Jan: 1월
 Feb: 2월
 Mar: 3월
@@ -51,146 +2839,342 @@ Sep: 9월
 Oct: 10월
 Nov: 11월
 Dec: 12월
+# "Sunday" previously defined (in admin.php)
+# "Monday" previously defined (in admin.php)
+# "Tuesday" previously defined (in edit_entry.php)
+# "Wednesday" previously defined (in edit_entry.php)
+# "Thursday" previously defined (in edit_entry.php)
+# "Friday" previously defined (in edit_entry.php)
+# "Saturday" previously defined (in edit_entry.php)
+# "Sun" previously defined (in month.php)
+# "Mon" previously defined (in month.php)
+# "Tue" previously defined (in month.php)
+# "Wed" previously defined (in month.php)
+# "Thu" previously defined (in month.php)
+# "Fri" previously defined (in month.php)
+# "Sat" previously defined (in month.php)
+#
+# << MISSING >>
+# All:
+# English text: All
+#
 
-Language: 언어
-Generate printer-friendly version: 인쇄용 화면 생성
-Printer Friendly: 인쇄용 화면
-Go: 시작
+
+###############################################
+# Page: includes/help_trailer.php
+#
+Go to: 가기
+# "Help Index" previously defined (in help_index.php)
+
+
+###############################################
+# Page: includes/index.php
+#
+
+
+###############################################
+# Page: includes/js.php
+#
+
+
+###############################################
+# Page: includes/php-dbi.php
+#
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+#
+# << MISSING >>
+# Send Reminder:
+# English text: Send Reminder
+#
+#
+# << MISSING >>
+# Reminder:
+# English text: Reminder
+#
+
+
+###############################################
+# Page: includes/styles.php
+#
+
+
+###############################################
+# Page: includes/trailer.php
+#
+# "Month" previously defined (in admin.php)
+# "Go" previously defined (in select_user.php)
+# "Week" previously defined (in admin.php)
+#
+# << MISSING >>
+# Year:
+# English text: Year
+#
+# "Go to" previously defined (in includes/help_trailer.php)
 Back to My Calendar: 내 달력으로 돌아가기
+#
+# << MISSING >>
+# My Calendar:
+# English text: My Calendar
+#
+# "Login" previously defined (in login.php)
+#
+# << MISSING >>
+# Logout:
+# English text: Logout
+#
+# "Unapproved Events" previously defined (in list_unapproved.php)
 Another User's Calendar: 다른 사용자 달력
-Search: 검색
+#
+# << MISSING >>
+# My Calendar:
+# English text: My Calendar
+#
+# "Search" previously defined (in search.php)
+#
+# << MISSING >>
+# Export:
+# English text: Export
+#
+#
+# << MISSING >>
+# Categories:
+# English text: Categories
+#
 Add New Entry: 새 항목 추가
-New Entry: 새 항목
-Admin: 관리
-Preferences: 사용자 정의
-Users: 사용자
+# "Help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Views:
+# English text: Views
+#
+#
+# << MISSING >>
+# Manage Views:
+# English text: Manage Views
+#
+# "Admin" previously defined (in edit_user.php)
+#
+# << MISSING >>
+# System Settings:
+# English text: System Settings
+#
+# "Preferences" previously defined (in help_index.php)
+#
+# << MISSING >>
+# Edit Layers:
+# English text: Edit Layers
+#
+#
+# << MISSING >>
+# Enable Layers:
+# English text: Enable Layers
+#
+#
+# << MISSING >>
+# Disable Layers:
+# English text: Disable Layers
+#
+# "Users" previously defined (in group_edit.php)
+#
+# << MISSING >>
+# Groups:
+# English text: Groups
+#
+#
+# << MISSING >>
+# Activity Log:
+# English text: Activity Log
+#
 Account: 계정
 Current User: 현 사용자
-View this entry: 항목 보기
-Private: 개인용
-This event is confidential: 이 행사는 비밀항목입니다.
-You have: You have
-unapproved: 미승인
-event: 행사
-events: 행사들
-Go to: 가기
-Help Index: 도움말 목차
-Error approving event: 행사 승인 중 에러
-This user has: 이 사용자는 다음을 갖고 있음:
-calendar entries: 달력 항목
-They must all be deleted (or this user removed as a participant) before this user can be deleted:They must all be deleted (or this user removed as a participant) before this user can be deleted
-The passwords were not identical: The passwords were not identical
-You have not entered a password: 암호를 입력하지 않았습니다.
-You have not entered a Brief Description: 요약 설명을 입력하지 않았습니다.
-You have not entered a valid time of day: 유효한 일자/시각이 아닙니다.
-Brief Description: 요약 설명
-Full Description: 상세 설명
-Description: 설명
-Date: 일자
-Time: 시각
-am: am
-pm: pm
-Duration: 기간
-minutes: 분
-Priority: 우선 순위
-Low: 낮음
-Medium: 중간
-High: 높음
-Access: 접근
-Public: 공용
-Confidential: 비밀
-Participants: 참가자
-Created by: 작성자:
-Updated: 갱신된
-Save: 저장
-Help: 도움말
-Approve this entry?: 이 항목을 승인함.
-Approve/Confirm entry: 이 항목을 승인/확인함
-Edit entry: 항목 편집
-Edit Entry: 항목 편집
-Add Entry: 항목 추가
-Are you sure you want to delete this entry?: 정말로 이 항목을 지우시겠습니까?
-This will delete this entry for all users.: 모든 사용자들에서도 이 항목이 지워집니다.
-Delete: 지우기
-Delete entry: 항목 지우기
-You are not authorized to edit this entry: 이 항목을 편집할 권한이 없습니다.
-#Unauthorized: 권한 없음
-The following conflicts with the suggested time: 다음 사항은 제시된 시간과 겹칩니다.
-Unnamed Event: 이름없는 행사
-Hello: 안녕!
-A new appointment has been made for you by: 새 약속이 생성되었습니다. 생성자:
-The subject is: 주제는
-Please look on: 다음을 살펴볼 것-
-to accept or reject this appointment: 이 약속을 수락하거나 거절
-to view this appointment: 이 약속을 보기
-Notification: 통보
-Your suggested time of: 제안한 시간
-conflicts with the following existing calendar entries: 다음과 같은 항목과 겹칩니다.
-Edit User: 사용자 편집
-Add User: 사용자 추가
-Login: 로그인
-First Name: 이름
-Last Name: 성
-E-mail address: E-mail 주소
-Password: 비밀번호
-again: again
-Yes: 예
-No: 아니오
-Change Password: 비밀번호 변경
-New Password: 새 비밀번호
-Set Password: 비밀번호 설정
-Adding/Editing Calendar Entries: 달력 항목의 추가/편집
-Unapproved Events: 미승인 행사
-No unapproved events: 미승인 행사 없음.
-You must enter a login and password: 아이디와 비밀번호를 입력해야 합니다.
-Save login via cookies so I don't have to login next time: 다음번에 로그인 할 필요가 없도록 로그인 정보 저장.
-cookies-note: <B>주:</B> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
-Invalid color for document background: 배경 색상 틀림
-Invalid color for document title: 제목 색상 틀림
-Invalid color for table cell background: 테이블 셀 배경색 틀림
-Invalid color for table cell background for today: 오늘 날짜 표시 색상 틀림
-Color format should be '#RRGGBB': 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF0000" (빨강)
-12 hour: 12 hour
-24 hour: 24 hour
-From: 시작
-to: 종료
-Document background: 배경 색상
-Document title: 제목 색상
-Table cell background: 테이블 셀 배경 색상
-Table cell background for current day: 오늘 날짜 표시 색상
-Save Preferences: 환경설정 저장
-The following error occurred: 다음과 같은 오류 발생:
-Search: 검색
-Keywords: 검색어
-You must enter one or more search keywords: 검색어를 입력하셔야 합니다.
-Search Results: 검색 결과
-match found: 항목 발견
-matches found: 항목 발견
-No matches found: 찾은 항목 없음
-View Another User's Calendar: 다른 사용자의 달력 보기
-You are not authorized: 권한이 없습니다:
-Add New User: 새 사용자 추가
-denotes administrative user: 관리자를 나타냄
-Invalid entry id: 틀린 항목 아이디
 
-# Help text.  The left side is typically abbreviates since this can be long
-brief-description-help: 행사의 간략한 설명(약 20자)입니다. 달력상의 행사를  나타냅니다.
-full-description-help: 행사의 자세한 설명입니다. 
-date-help: 행사일을 나타냅니다. 
-time-help: 행사 시각입니다.<BR><I>이 항목은 비워둘 수 있습니다.</I>
-duration-help: 행사기간 명시(분단위)<BR><I>이 항목은 비워둘 수 있습니다.</I>
-priority-help: 행사 우선순위 명시. 높은 우선순위의 행사는 굵은 글씨로 표시됩니다.
-access-help: 행사의 접근 수준을 명시.<BR> <I>공용</I>: 모든 사람이 행사의 세부 내용까지 볼 수 있음.  <BR><I>비밀</I>: 타 사용자는 일자와 시각을 볼 수 있으나 세부 사항은 볼 수 없음.
-participants-help: 참가자의 목록 표시.
-Preferences: 환경 설정
-Settings: 설정
-Time format: 시간 표시 형식
-time-format-help: 시간 표시 형식을 명시합니다.<BR><I>12 hour:</I>시간표시가 3am, 8:30pm, 등등으로 표시됨<BR><I>24 hour:</I>시간표시가 300, 2030 등등으로 표시됨
-Display unapproved: 승인안된 행사 표시
-display-unapproved-help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다. <BR> "Yes"로 설정시 미승인된 행사도 표시됩니다.(다른 색깔로).<BR>"No"로 설정하면 미승인 행사는 승인 후에만 달력에 표시됩니다.
-Display week number: 몇주차인가 표시
-display-week-number-help: 월별 화면과 주별 화면에 몇주차인가(1~52) 표시여부를 명시.
-Work hours: 근무 시간
-work-hours-help: 일별 화면에서 표시대상시간을 명시
-Colors: 색상
-colors-help: 모든 색상은 "#RRGGBB" 같은 16진수 형식으로 표시해야 합니다. "RR" 은 적색, "GG"는 녹색, "BB"는 청색의 16진수 값입니다. 
+
+###############################################
+# Page: includes/translate.php
+#
+#
+# << MISSING >>
+# Public Access:
+# English text: Public Access
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+#
+# << MISSING >>
+# Invalid login:
+# English text: Invalid login
+#
+#
+# << MISSING >>
+# Invalid login:
+# English text: Invalid login
+#
+#
+# << MISSING >>
+# Invalid login:
+# English text: Invalid login
+#
+#
+# << MISSING >>
+# Invalid login:
+# English text: Invalid login
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+#
+# << MISSING >>
+# Invalid login:
+# English text: Invalid login
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Invalid login:
+# English text: Invalid login
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Invalid user login:
+# English text: Invalid user login
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Invalid user login:
+# English text: Invalid user login
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+
+
+###############################################
+# Page: includes/user.php
+#
+#
+# << MISSING >>
+# Invalid login:
+# English text: Invalid login
+#
+#
+# << MISSING >>
+# Invalid login:
+# English text: Invalid login
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Invalid login:
+# English text: Invalid login
+#
+#
+# << MISSING >>
+# Invalid login:
+# English text: Invalid login
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Invalid user login:
+# English text: Invalid user login
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Invalid user login:
+# English text: Invalid user login
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+#
+# << MISSING >>
+# Database error:
+# English text: Database error
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: tools/send_reminders.php
+#
+# "Low" previously defined (in edit_entry.php)
+# "Medium" previously defined (in edit_entry.php)
+# "High" previously defined (in edit_entry.php)
+#
+# << MISSING >>
+# This is a reminder for the event detailed below.:
+# English text: This is a reminder for the event detailed below.
+#
+# "Description" previously defined (in view_entry.php)
+# "Date" previously defined (in activity_log.php)
+# "Time" previously defined (in activity_log.php)
+# "Duration" previously defined (in edit_entry.php)
+# "minutes" previously defined (in admin.php)
+# "Priority" previously defined (in edit_entry.php)
+# "Access" previously defined (in edit_entry.php)
+# "Public" previously defined (in edit_entry.php)
+# "Confidential" previously defined (in edit_entry.php)
+# "Created by" previously defined (in group_edit.php)
+# "Updated" previously defined (in group_edit.php)
+# "Yes" previously defined (in admin.php)
+# "No" previously defined (in admin.php)
+# "Participants" previously defined (in edit_entry.php)
+#
+# << MISSING >>
+# Reminder:
+# English text: Reminder
+#
