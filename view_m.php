@@ -8,7 +8,7 @@ if ( $allow_view_other == "N" && ! $is_admin ) {
   do_redirect ( "$STARTVIEW.php" );
 }
 
-if ( empty ( $friendly ) )
+if ( empty ( $friendly ) || $friendly != "1" )
   $friendly = 0;
 
 // Find view name in $views[]
@@ -160,7 +160,8 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
       $repeated_events = $re_save[$i];
       echo "<TD WIDTH=\"$tdw%\" BGCOLOR=\"$color\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<BR>";
-      if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" )
+      if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
+        empty ( $friendly ) )
         echo html_for_add_icon ( date ( "Ymd", $date ), "", "", $user );
       print_date_entries ( date ( "Ymd", $date ),
         $user, $friendly, true );
