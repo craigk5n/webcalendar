@@ -49,8 +49,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 }
 
 // Make sure another app in the same domain doesn't have a 'user' cookie
-if ( ( ! empty ( $HTTP_GET_VARS ) && ! $HTTP_GET_VARS['user'] ) &&
-  ( ! empty ( $HTTP_POST_VARS ) && ! $HTTP_POST_VARS['user'] ) &&
+if ( ( ! empty ( $HTTP_GET_VARS ) && empty ( $HTTP_GET_VARS['user'] ) ) &&
+  ( ! empty ( $HTTP_POST_VARS ) && empty ( $HTTP_POST_VARS['user'] ) ) &&
   isset ( $GLOBALS['user'] ) ) {
   unset ( $GLOBALS['user'] );
 }
