@@ -839,7 +839,7 @@ function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
         "( webcal_entry.cal_time > $cutoff OR " .
         "webcal_entry.cal_time = -1 ) ) OR " .
         "( webcal_entry.cal_date = " . date("Ymd", $next_day ) .
-        " AND webcal_entry.cal_time =< $cutoff ) )";
+        " AND webcal_entry.cal_time <= $cutoff ) )";
     }
   } else {
     if ( $TZ_OFFSET == 0 ) {
