@@ -5,37 +5,12 @@
 #	Ari Vaulo and ari.vaulo@tol.oulu.fi
 # Last update: 06 Dec 2001
 # Translation last updated on 11-30-2002
+# Translation last updated on 02-07-2003
 
 
 ###############################################
 # Page: admin.php
 #
-#
-# << MISSING >>
-# Server URL is required:
-#
-# << MISSING >>
-# Server URL must end with '/':
-Invalid color for document background: Taustaväri on virheellinen
-Invalid color for document title: Otsikon väri on virheellinen
-Invalid color for table cell background: Ruudukon taustaväri on virheellinen
-#
-# << MISSING >>
-# Invalid color for table grid:
-#
-# << MISSING >>
-# Invalid color for table header background:
-#
-# << MISSING >>
-# Invalid color for table text background:
-#
-# << MISSING >>
-# Invalid color for event popup background:
-#
-# << MISSING >>
-# Invalid color for event popup text:
-Invalid color for table cell background for today: Kuluvan päivän taustaväri on virheellinen
-Color format should be '#RRGGBB': Värikoodin tulee olla muotoa '#RRGGBB'
 #
 # << MISSING >>
 # System Settings:
@@ -564,9 +539,6 @@ Notification: Muistutus
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: Selite puuttuu
-You have not entered a valid time of day: Kellonaika puuttuu
-The time you have entered begins before your preferred work hours.  Is this correct?: Alkuaika on ennen normaalin työajan alkua. Onko se oikein?
 Edit Entry: Muokkaa merkintää
 Add Entry: Lisää merkintä
 brief-description-help: Kalenterimerkinnän otsikko (noin 20 merkkiä). Näytetään kalenteritaulukossa.
@@ -668,7 +640,6 @@ Cancel: Kumoa
 ###############################################
 # Page: edit_layer.php
 #
-Invalid color: Virheellinen värikoodi
 Edit Layer: Muokattava taso
 Add Layer: Lisää taso
 Source: Lähde
@@ -1283,6 +1254,11 @@ Send Reminder: Lähetä muistutus
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/js.php
 #
 
@@ -1307,3 +1283,93 @@ Send Reminder: Lähetä muistutus
 #
 This is a reminder for the event detailed below.: Muistutus alla esitetystä tapahtumasta.
 Reminder: Muistutus
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+#
+# << MISSING >>
+# Server URL is required:
+#
+# << MISSING >>
+# Server URL must end with '/':
+Invalid color for document background: Taustaväri on virheellinen
+Invalid color for document title: Otsikon väri on virheellinen
+Invalid color for table cell background: Ruudukon taustaväri on virheellinen
+#
+# << MISSING >>
+# Invalid color for table grid:
+#
+# << MISSING >>
+# Invalid color for table header background:
+#
+# << MISSING >>
+# Invalid color for table text background:
+#
+# << MISSING >>
+# Invalid color for event popup background:
+#
+# << MISSING >>
+# Invalid color for event popup text:
+Invalid color for table cell background for today: Kuluvan päivän taustaväri on virheellinen
+Color format should be '#RRGGBB': Värikoodin tulee olla muotoa '#RRGGBB'
+
+
+###############################################
+# Page: includes/js/assistant_edit.php
+#
+
+
+###############################################
+# Page: includes/js/colors.php
+#
+
+
+###############################################
+# Page: includes/js/datesel.php
+#
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Selite puuttuu
+You have not entered a valid time of day: Kellonaika puuttuu
+The time you have entered begins before your preferred work hours.  Is this correct?: Alkuaika on ennen normaalin työajan alkua. Onko se oikein?
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Virheellinen värikoodi
+
+
+###############################################
+# Page: includes/js/export.php
+#
+
+
+###############################################
+# Page: includes/js/popups.php
+#
+
+
+###############################################
+# Page: includes/js/pref.php
+#
+
+
+###############################################
+# Page: includes/js/search.php
+#
+
+
+###############################################
+# Page: includes/js/usersel.php
+#
+
+
+###############################################
+# Page: includes/js/views_edit.php
+#

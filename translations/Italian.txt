@@ -7,27 +7,12 @@
 #     Paolo Cravero <paolo.cravero@ccstech.it>
 # Last update: 22 July 2000
 # Translation last updated on 12-04-2002
+# Translation last updated on 02-07-2003
 
 
 ###############################################
 # Page: admin.php
 #
-Server URL is required: L&#146;URL del server è obbligatorio
-#
-# << MISSING >>
-# Server URL must end with '/':
-Invalid color for document background: Il colore dello sfondo del documento non
-Invalid color for document title: Il colore del titolo del documento non è vali
-Invalid color for table cell background: Il colore dello sfondo della cella non
-Invalid color for table grid: Colore non valido per la griglia della tabella
-Invalid color for table header background: Colore non valido per lo sfondo dell
-Invalid color for table text background: Colore non valido per lo sfondo della
-Invalid color for event popup background: Colore non valido per lo sfondo del p
-Invalid color for event popup text: Colore non valido per il testo del popup de
-Invalid color for table cell background for today: Il colore dello sfondo della
-#
-# << MISSING >>
-# Color format should be '#RRGGBB':
 System Settings: Parametri del sistema
 You are not authorized: Non sei autorizzato
 Note: Note
@@ -332,11 +317,6 @@ Notification: Notifica
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: Non è stata inserita una breve descri
-You have not entered a valid time of day: Non è stato inserito un orario corret
-#
-# << MISSING >>
-# The time you have entered begins before your preferred work hours.  Is this correct?:
 Edit Entry: Modifica Evento
 Add Entry: Aggiungi Evento
 brief-description-help: Questo dovrebbe dare una breve descrizione (circa 20 ca
@@ -430,7 +410,6 @@ Cancel: Cancella
 ###############################################
 # Page: edit_layer.php
 #
-Invalid color: Colore non valido
 Edit Layer: Modifica Layer
 Add Layer: Aggiungi Layer
 Source: Sorgente
@@ -945,6 +924,11 @@ Send Reminder: Invia Promemoria
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/js.php
 #
 
@@ -969,3 +953,85 @@ Send Reminder: Invia Promemoria
 #
 This is a reminder for the event detailed below.: Questo è un promemoria per l'
 Reminder: Promemoria
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+Server URL is required: L&#146;URL del server è obbligatorio
+#
+# << MISSING >>
+# Server URL must end with '/':
+Invalid color for document background: Il colore dello sfondo del documento non
+Invalid color for document title: Il colore del titolo del documento non è vali
+Invalid color for table cell background: Il colore dello sfondo della cella non
+Invalid color for table grid: Colore non valido per la griglia della tabella
+Invalid color for table header background: Colore non valido per lo sfondo dell
+Invalid color for table text background: Colore non valido per lo sfondo della
+Invalid color for event popup background: Colore non valido per lo sfondo del p
+Invalid color for event popup text: Colore non valido per il testo del popup de
+Invalid color for table cell background for today: Il colore dello sfondo della
+#
+# << MISSING >>
+# Color format should be '#RRGGBB':
+
+
+###############################################
+# Page: includes/js/assistant_edit.php
+#
+
+
+###############################################
+# Page: includes/js/colors.php
+#
+
+
+###############################################
+# Page: includes/js/datesel.php
+#
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Non è stata inserita una breve descri
+You have not entered a valid time of day: Non è stato inserito un orario corret
+#
+# << MISSING >>
+# The time you have entered begins before your preferred work hours.  Is this correct?:
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Colore non valido
+
+
+###############################################
+# Page: includes/js/export.php
+#
+
+
+###############################################
+# Page: includes/js/popups.php
+#
+
+
+###############################################
+# Page: includes/js/pref.php
+#
+
+
+###############################################
+# Page: includes/js/search.php
+#
+
+
+###############################################
+# Page: includes/js/usersel.php
+#
+
+
+###############################################
+# Page: includes/js/views_edit.php
+#

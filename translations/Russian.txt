@@ -5,37 +5,12 @@
 #	Andre E. Bar'yudin <baryudin@pob.huji.ac.il>
 # Last update: Wed Oct 25 14:34:05 IST 2000
 # Translation last updated on 11-30-2002
+# Translation last updated on 02-07-2003
 
 
 ###############################################
 # Page: admin.php
 #
-#
-# << MISSING >>
-# Server URL is required:
-#
-# << MISSING >>
-# Server URL must end with '/':
-Invalid color for document background: Недопустимый цвет для фона документа
-Invalid color for document title: Недопустимый цвет для заголовка документа
-Invalid color for table cell background: Недопустимый цвет для фона таблицы
-#
-# << MISSING >>
-# Invalid color for table grid:
-#
-# << MISSING >>
-# Invalid color for table header background:
-#
-# << MISSING >>
-# Invalid color for table text background:
-#
-# << MISSING >>
-# Invalid color for event popup background:
-#
-# << MISSING >>
-# Invalid color for event popup text:
-Invalid color for table cell background for today: Недопустимый цвет для фона клетки текущего дня
-Color format should be '#RRGGBB': Формат цвета должен быть вида '#RRGGBB'
 #
 # << MISSING >>
 # System Settings:
@@ -610,11 +585,6 @@ Notification: Уведомление
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: Вы не ввели краткое описание
-You have not entered a valid time of day: Вы не ввели легальное время дня
-#
-# << MISSING >>
-# The time you have entered begins before your preferred work hours.  Is this correct?:
 Edit Entry: Редактировать Запись
 Add Entry: Добавить Запись
 brief-description-help: Сдесь должно находиться краткое (около 20 символов) описание события.  Это описание будет видно при просмотре календаря.
@@ -726,9 +696,6 @@ conflicts with the following existing calendar entries: конфликтует с нижеследую
 ###############################################
 # Page: edit_layer.php
 #
-#
-# << MISSING >>
-# Invalid color:
 #
 # << MISSING >>
 # Edit Layer:
@@ -1409,6 +1376,11 @@ Dec: Дек
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/js.php
 #
 
@@ -1437,3 +1409,97 @@ Dec: Дек
 #
 # << MISSING >>
 # Reminder:
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+#
+# << MISSING >>
+# Server URL is required:
+#
+# << MISSING >>
+# Server URL must end with '/':
+Invalid color for document background: Недопустимый цвет для фона документа
+Invalid color for document title: Недопустимый цвет для заголовка документа
+Invalid color for table cell background: Недопустимый цвет для фона таблицы
+#
+# << MISSING >>
+# Invalid color for table grid:
+#
+# << MISSING >>
+# Invalid color for table header background:
+#
+# << MISSING >>
+# Invalid color for table text background:
+#
+# << MISSING >>
+# Invalid color for event popup background:
+#
+# << MISSING >>
+# Invalid color for event popup text:
+Invalid color for table cell background for today: Недопустимый цвет для фона клетки текущего дня
+Color format should be '#RRGGBB': Формат цвета должен быть вида '#RRGGBB'
+
+
+###############################################
+# Page: includes/js/assistant_edit.php
+#
+
+
+###############################################
+# Page: includes/js/colors.php
+#
+
+
+###############################################
+# Page: includes/js/datesel.php
+#
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Вы не ввели краткое описание
+You have not entered a valid time of day: Вы не ввели легальное время дня
+#
+# << MISSING >>
+# The time you have entered begins before your preferred work hours.  Is this correct?:
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+#
+# << MISSING >>
+# Invalid color:
+
+
+###############################################
+# Page: includes/js/export.php
+#
+
+
+###############################################
+# Page: includes/js/popups.php
+#
+
+
+###############################################
+# Page: includes/js/pref.php
+#
+
+
+###############################################
+# Page: includes/js/search.php
+#
+
+
+###############################################
+# Page: includes/js/usersel.php
+#
+
+
+###############################################
+# Page: includes/js/views_edit.php
+#

@@ -5,37 +5,12 @@
 #	Gyorgy Baffia <gyorgy@baffia.hu>
 # Last update: 05 Sep 2001
 # Translation last updated on 11-30-2002
+# Translation last updated on 02-07-2003
 
 
 ###############################################
 # Page: admin.php
 #
-#
-# << MISSING >>
-# Server URL is required:
-#
-# << MISSING >>
-# Server URL must end with '/':
-Invalid color for document background: Érvéntelen háttérszín
-Invalid color for document title: Érvénytelen betûszín
-Invalid color for table cell background: Érvénytelen táblázat-háttérszín
-#
-# << MISSING >>
-# Invalid color for table grid:
-#
-# << MISSING >>
-# Invalid color for table header background:
-#
-# << MISSING >>
-# Invalid color for table text background:
-#
-# << MISSING >>
-# Invalid color for event popup background:
-#
-# << MISSING >>
-# Invalid color for event popup text:
-Invalid color for table cell background for today: Érvénytelen táblázat-háttérszín a MAI napra
-Color format should be '#RRGGBB': A szineket '#RRGGBB' formátumban kell megadni
 #
 # << MISSING >>
 # System Settings:
@@ -564,9 +539,6 @@ Notification: Emlékeztetõ
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: Nem írtál rövid leírást
-You have not entered a valid time of day: Nem írtál valós dátumot
-The time you have entered begins before your preferred work hours.  Is this correct?: Az idõpont, amit megadtál, munkaidõn kívül van.  Jó így?
 Edit Entry: Bejegyzés módosítása
 Add Entry: Bejegyzés hozzáadása
 brief-description-help: Megadhatsz egy rövid leírást errõl az eseményrõl (max 20 betû). Ez fog megjelenni a naptárban.
@@ -668,7 +640,6 @@ Cancel: Mégsem
 ###############################################
 # Page: edit_layer.php
 #
-Invalid color: Érvénytelen szín
 Edit Layer: Réteg módosítása
 Add Layer: Új réteg
 Source: Forrás
@@ -1283,6 +1254,11 @@ Send Reminder: Emlékeztetõ küldése
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/js.php
 #
 
@@ -1309,3 +1285,93 @@ This is a reminder for the event detailed below.: Ez egy emlékeztetõ az alábbi e
 #
 # << MISSING >>
 # Reminder:
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+#
+# << MISSING >>
+# Server URL is required:
+#
+# << MISSING >>
+# Server URL must end with '/':
+Invalid color for document background: Érvéntelen háttérszín
+Invalid color for document title: Érvénytelen betûszín
+Invalid color for table cell background: Érvénytelen táblázat-háttérszín
+#
+# << MISSING >>
+# Invalid color for table grid:
+#
+# << MISSING >>
+# Invalid color for table header background:
+#
+# << MISSING >>
+# Invalid color for table text background:
+#
+# << MISSING >>
+# Invalid color for event popup background:
+#
+# << MISSING >>
+# Invalid color for event popup text:
+Invalid color for table cell background for today: Érvénytelen táblázat-háttérszín a MAI napra
+Color format should be '#RRGGBB': A szineket '#RRGGBB' formátumban kell megadni
+
+
+###############################################
+# Page: includes/js/assistant_edit.php
+#
+
+
+###############################################
+# Page: includes/js/colors.php
+#
+
+
+###############################################
+# Page: includes/js/datesel.php
+#
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Nem írtál rövid leírást
+You have not entered a valid time of day: Nem írtál valós dátumot
+The time you have entered begins before your preferred work hours.  Is this correct?: Az idõpont, amit megadtál, munkaidõn kívül van.  Jó így?
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Érvénytelen szín
+
+
+###############################################
+# Page: includes/js/export.php
+#
+
+
+###############################################
+# Page: includes/js/popups.php
+#
+
+
+###############################################
+# Page: includes/js/pref.php
+#
+
+
+###############################################
+# Page: includes/js/search.php
+#
+
+
+###############################################
+# Page: includes/js/usersel.php
+#
+
+
+###############################################
+# Page: includes/js/views_edit.php
+#
