@@ -144,6 +144,8 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   for ( $date = $wkstart, $h = 0;
     date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
     $date += ( 24 * 3600 ), $h++ ) {
+    $wday = strftime ( "%w", $date );
+
       // ------
 //    if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
 //      $color = $TODAYCELLBG;
