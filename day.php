@@ -1,6 +1,11 @@
 <?php
 include_once 'includes/init.php';
-load_user_layers ();
+
+if (($user != $login) && $is_nonuser_admin)
+  load_user_layers ($user);
+else
+  load_user_layers ();
+
 load_user_categories ();
 
 $wday = strftime ( "%w", mktime ( 3, 0, 0, $thismonth, $thisday, $thisyear ) );

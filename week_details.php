@@ -1,7 +1,12 @@
 <?php
 include_once 'includes/init.php';
 send_no_cache_header ();
-load_user_layers ();
+
+if (($user != $login) && $is_nonuser_admin)
+  load_user_layers ($user);
+else
+  load_user_layers ();
+
 load_user_categories ();
 
 
@@ -17,8 +22,22 @@ if ( $WEEK_START == 1 )
 else
   $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
 $wkend = $wkstart + ( 3600 * 24 * 6 );
+
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
+
+if ( $DISPLAY_WEEKENDS == "N" ) {
+  if ( $WEEK_START == 1 ) {
+    $start_ind = 0;
+    $end_ind = 5;
+  } else {
+    $start_ind = 1;
+    $end_ind = 6;
+  }
+} else {
+  $start_ind = 0;
+  $end_ind = 7;
+}
 
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
@@ -27,6 +46,19 @@ if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
+
+/* Pre-Load the repeated events for quckier access */
+$repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login, $cat_id  );
+
+/* Pre-load the non-repeating events for quicker access */
+$events = read_events ( strlen ( $user ) ? $user : $login, $startdate, $enddate, $cat_id  );
+
+for ( $i = 0; $i < 7; $i++ ) {
+  $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
+  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
+  $header[$i] = $weekdays[$i] . " " .
+    date_to_str ( date ( "Ymd", $days[$i] ), $DATE_FORMAT_MD, false );
+}
 ?>
 
 <center>
@@ -36,30 +68,11 @@ print_header($INC,$HeadX);
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <td align="left"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" width="36" height="32" border=\"0\"></a></td>
 <?php } ?>
-<td align="middle"><font size="+2" color="<?php echo $H2COLOR;?>"><B>
+<td align="middle"><font size="+2" color="<?php echo $H2COLOR;?>"><B CLASS="pagetitle">
 <?php
-  echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
+  echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
-    date_to_str ( date ( "Ymd", $wkend ), false );
-  /*
-  if ( date ( "m", $wkstart ) == date ( "m", $wkend ) ) {
-    printf ( "%s %d - %d, %d", month_name ( $thismonth - 1 ),
-      date ( "d", $wkstart ), date ( "d", $wkend ), $thisyear );
-  } else {
-    if ( date ( "Y", $wkstart ) == date ( "Y", $wkend ) ) {
-      printf ( "%s %d - %s %d, %d",
-        month_name ( date ( "m", $wkstart ) - 1 ), date ( "d", $wkstart ),
-        month_name ( date ( "m", $wkend ) - 1 ), date ( "d", $wkend ),
-        $thisyear );
-    } else {
-      printf ( "%s %d, %d - %s %d, %d",
-        month_name ( date ( "m", $wkstart ) - 1 ), date ( "d", $wkstart ),
-        date ( "Y", $wkstart ),
-        month_name ( date ( "m", $wkend ) - 1 ), date ( "d", $wkend ),
-        date ( "Y", $wkend ) );
-    }
-  }
-  */
+    date_to_str ( date ( "Ymd", $wkend ), "", false );
 ?>
 </b></font>
 <?php
@@ -73,6 +86,10 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
   if ( $single_user == "N" ) {
     echo "<br>$user_fullname\n";
   }
+  if ( $is_nonuser_admin )
+    echo "<b><br>-- " . translate("Admin mode") . " --</b>";
+  if ( $is_assistant )
+    echo "<b><br>-- " . translate("Assistant mode") . " --</b>";
   if ( $categories_enabled == "Y" ) {
     echo "<br>\n<br>\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
@@ -85,23 +102,6 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 <?php } ?>
 </tr>
 </table>
-
-
-<?php 
-
-/* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login, $cat_id  );
-
-/* Pre-load the non-repeating events for quicker access */
-$events = read_events ( strlen ( $user ) ? $user : $login, $startdate, $enddate, $cat_id  );
-
-for ( $i = 0; $i < 7; $i++ ) {
-  $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
-  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
-  $header[$i] = date_to_str ( date ( "Ymd", $days[$i] ) );
-}
-
-?>
 
 <table border="0" width="90%" cellspacing="0" cellpadding="0">
 <tr><td bgcolor="<?php echo $TABLEBG?>">
