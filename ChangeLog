@@ -1,4 +1,4 @@
-Version 1.0RC1/CVS+dev (?? ??? 2004)
+Version 1.0RC1 (04 Feb 2005)
   - Fixed Bug 1088857: sql statement was using != vs <> and failing with db2 7.1/odbc
     affected file view_entry.php
   - Declare $HTTP_POST_VARS and $HTTP_GET_VARS as global in getPostValue
