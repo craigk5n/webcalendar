@@ -33,6 +33,15 @@ if ( $res ) {
 if ( empty ( $PHP_SELF ) )
   $PHP_SELF = $_SERVER["PHP_SELF"];
 
+if ( empty ( $login_url ) )
+  $login_url = "login.php";
+if ( strstr ( login.php, "?" ) )
+  $login_url .= "&";
+else
+  $login_url .= "?";
+if ( ! empty ( $login_return_path ) )
+  $login_url .= "return_path=$login_return_path";
+ 
 
 if ( $pub_acc_enabled && $session_not_found ) {
   $login = "__public__";
@@ -42,7 +51,7 @@ if ( $pub_acc_enabled && $session_not_found ) {
   $fullname = "Public User";
   $user_email = "";
 } else if ( ! $pub_acc_enabled && $session_not_found && ! $use_http_auth ) {
-  do_redirect ( "login.php" );
+  do_redirect ( $login_url );
   exit;
 }
 
@@ -80,7 +89,7 @@ if ( empty ( $login ) && $use_http_auth ) {
         // This shouldn't happen since login should be validated in validate.php
         // If it does happen, it means we received an invalid login cookie.
         //echo "Error getting user info for login \"$login\".";
-        do_redirect ( "login.php?error=Invalid+session+found." );
+        do_redirect ( $login_url . "&error=Invalid+session+found." );
       }
     }
   }
@@ -103,7 +112,6 @@ if ( $login == "__public__" ) {
     strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
     strstr ( $PHP_SELF, "pref.php" ) ||
     strstr ( $PHP_SELF, "pref_handler.php" ) ||
-    strstr ( $PHP_SELF, "select_user.php" ) ||
     strstr ( $PHP_SELF, "edit_user.php" ) ||
     strstr ( $PHP_SELF, "edit_user_handler.php" ) ||
     strstr ( $PHP_SELF, "approve_entry.php" ) ||

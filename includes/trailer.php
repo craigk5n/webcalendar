@@ -141,9 +141,14 @@
     else
       echo "<A CLASS=\"navlinks\" HREF=\"$mycal\"><B>" .
         translate("My Calendar") . "</B></A>";
-    if ( ! $use_http_auth )
-      echo " | <A CLASS=\"navlinks\" HREF=\"login.php\">" .
+    if ( ! $use_http_auth ) {
+      if ( empty ( $login_return_path ) )
+        $login_url = "login.php";
+      else
+        $login_url = "login.php?return_path=$login_return_path";
+      echo " | <A TARGET=\"top\" CLASS=\"navlinks\" TARGET=\"_top\" HREF=\"$login_url\">" .
         translate("Login") . "/" . translate("Logout") . "</A>";
+    }
     if ( $login != "__public__" && $readonly == "N" &&
       ( $require_approvals == "Y" || $public_access == "Y" ) )
       echo " | <A CLASS=\"navlinks\" HREF=\"list_unapproved.php\">" .
@@ -163,10 +168,6 @@
       translate("Search") . "</A>";
     echo " | <A CLASS=\"navlinks\" HREF=\"export.php\">" .
       translate("Export") . "</A>";
-    if ( $categories_enabled == "Y" && $login != "__public__"
-      && $readonly != "Y" )
-      echo " | <A CLASS=\"navlinks\" HREF=\"category.php\">" .
-      translate ("Categories") . "</A>\n";
     if ( $can_add ) {
       echo " | <A CLASS=\"navlinks\" HREF=\"edit_entry.php";
       if ( ! empty ( $thisyear ) ) {
@@ -219,6 +220,10 @@
       echo "<A CLASS=\"navlinks\" HREF=\"admin.php\">" . translate("System Settings") . "</A> |\n";
     echo "<A CLASS=\"navlinks\" HREF=\"pref.php\">" . translate("Preferences") . "</A>\n";
 
+    if ( $categories_enabled == "Y" && $login != "__public__"
+      && $readonly != "Y" )
+      echo " | <A CLASS=\"navlinks\" HREF=\"category.php\">" .
+      translate ("Categories") . "</A>\n";
     if ( $allow_view_other == "Y" || $is_admin ) {
       echo " | <A CLASS=\"navlinks\" HREF=\"layers.php\">" .
         translate ("Edit Layers") . "</A>\n";
@@ -243,18 +248,28 @@
       echo " | <A CLASS=\"navlinks\" HREF=\"edit_user.php\">" .
         translate ("Account") . "</A>\n";
     }
+    echo " | <A CLASS=\"navlinks\" HREF=\"assistant_edit.php\">" .
+      translate ("Assistants") . "</A>\n";
     if ( strlen ( $login ) && $login != "__public__" ) {
-      print "<BR><B>" . translate("Current User") . ":</B> ";
-      if ( strlen ( $lastname ) )
-        echo "$lastname, $firstname";
-      else
-        echo "$login";
-      echo "<BR>";
+      echo "<BR><B>" . translate("Current User") . ":</B>$fullname<BR>\n";
     }
+
+  }
+  if ( $has_boss ) {
+    echo "<B>"; 
+    etranslate("Manage calendar of"); 
+    echo "</B>: ";
+    $grouplist = user_get_boss_list ($login);
+    $groups = "";
+    for ( $i = 0; $i < count ( $grouplist ); $i++ ) {
+      $l = $grouplist[$i]['cal_login'];
+      $f = $grouplist[$i]['cal_fullname'];
+      if ( $i > 0) $groups .= ",&nbsp;";
+      $groups .= "<A CLASS=\"navlinks\" HREF=$STARTVIEW.php?user=$l>$f</A>";
+    }
+    print $groups;
   }
 ?>
-<BR>
-
 </FONT>
 <?php
 dbi_close ( $c );

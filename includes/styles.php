@@ -120,6 +120,18 @@ A {
   font-size: 12px;
   color: <?php echo ( $TEXTCOLOR == "" ? "#000000" : $TEXTCOLOR ); ?> ;
 }
+h2 {
+  font-family: <?php echo $FONTS ?>;
+  font-size: 20px;
+}
+h3 {
+  font-family: <?php echo $FONTS ?>;
+  font-size: 18px;
+}
+.pagetitle {
+  font-family: <?php echo $FONTS ?>;
+  font-size: 18px;
+}
 body {
   font-family: <?php echo $FONTS ?>;
   font-size: 12px;
