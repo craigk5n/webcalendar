@@ -236,6 +236,8 @@ foreach $f ( @files ) {
         $text = $`;
 	if ( defined ( $thispage{$text} ) ) {
           # text already found within this page...
+	} elsif ( $text eq 'charset' ) {
+          # ignore...
 	} elsif ( defined ( $text{$text} ) ) {
           if ( ! show_dups ) {
             if ( $pageHeader ne '' ) {
