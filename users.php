@@ -4,6 +4,7 @@
 include "includes/config.inc";
 include "includes/php-dbi.inc";
 include "includes/functions.inc";
+include "includes/user.inc";
 include "includes/validate.inc";
 include "includes/connect.inc";
 
@@ -35,27 +36,20 @@ if ( ! $is_admin ) {
 
 <UL>
 <?php
-$sql = "SELECT cal_login, cal_lastname, cal_firstname, cal_is_admin " .
-  "FROM webcal_user ORDER BY cal_lastname, cal_firstname, cal_login";
-$res = dbi_query ( $sql );
-if ( $res ) {
-  while ( $row = dbi_fetch_row ( $res ) ) {
-    echo "<LI><A HREF=\"edit_user.php?user=$row[0]\">";
-    if ( strlen ( $row[1] ) ) {
-      echo "$row[1]";
-      if ( strlen ( $row[2] ) )
-        echo ", $row[2]";
-      echo " ($row[0])";
-    } else {
-      echo "$row[0]";
-    }
-    echo "</A>";
-    if ( $row[3] == 'Y' )
-      echo "<SUP>*</SUP>";
-  }
-  dbi_free_result ( $res );
+$userlist = user_get_users ();
+for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+  echo "<LI><A HREF=\"edit_user.php?user=" . $userlist[$i]["cal_login"] .
+    "\">";
+  if ( strlen ( $userlist[$i]["cal_firstname"] ) &&
+    strlen ( $userlist[$i]["cal_lastname"] ) )
+    echo $userlist[$i]["cal_firstname"] . " " .
+      $userlist[$i]["cal_lastname"];
+  else
+    echo $userlist[$i]["cal_login"];
+  echo "</A>";
+  if (  $userlist[$i]["cal_is_admin"] == 'Y' )
+    echo "<SUP>*</SUP>";
 }
-
 ?>
 </UL>
 <SUP>*</SUP> <?php etranslate("denotes administrative user")?>

@@ -4,6 +4,7 @@
 include "includes/config.inc";
 include "includes/php-dbi.inc";
 include "includes/functions.inc";
+include "includes/user.inc";
 include "includes/site_extras.inc";
 include "includes/validate.inc";
 include "includes/connect.inc";
@@ -164,28 +165,7 @@ if ( strlen ( $error ) == 0 ) {
     $participants[0] = $single_user_login;
   }
 
-  // build list of users for sending out an email list
-  $sql = "SELECT cal_login, cal_lastname, cal_firstname, cal_email " .
-    "FROM webcal_user WHERE ( ";
-  for ( $i = 0; $i < count ( $participants ); $i++ ) {
-    if ( $i ) $sql .= " OR ";
-      $sql .= "cal_login = '" . $participants[$i] . "'";
-  }
-  $sql .= " ) ORDER BY cal_lastname, cal_firstname, cal_login, cal_email";
-  $i = 0;
-  $res = dbi_query ( $sql );
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $participants_email[$i] = $row[3];
-      if ( strlen ( $row[1] ) && strlen ( $row[2] ) )
-        $participants_name[$i] = "$row[2] $row[1] ($row[0])";
-      else
-        $participants_name[$i] = $row[2];
-      $i++;
-    }
-  }
-
-  // now add participants
+  // now add participants and send out notifications
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
     $status = ( $participants[$i] != $login && $require_approvals ) ? "W" : "A";
     $sql = "INSERT INTO webcal_entry_user " .
@@ -197,34 +177,34 @@ if ( strlen ( $error ) == 0 ) {
       break;
     } else {
       $from = $user_email;
-      if ( strlen ( $from ) == 0 && strlen ( $GLOBALS["email_fallback_from"] ) )
-        $from = $GLOBALS["email_fallback_from"];
+      if ( strlen ( $from ) == 0 && strlen ( $email_fallback_from ) )
+        $from = $email_fallback_from;
       // only send mail if their email address is filled in
       $do_send = get_pref_setting ( $participants[$i],
          newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
-      if ( $participants[$i] != $login && strlen ( $participants_email[$i] ) &&
+      user_load_variables ( $participants[$i], "temp" );
+      if ( $participants[$i] != $login && strlen ( $tempemail ) &&
         $do_send == "Y" ) {
-        $msg = translate("Hello") . ", " . $participants_name[$i] . ".\n\n";
+        $msg = translate("Hello") . ", " . $tempfullname . ".\n\n";
         if ( $newevent )
           $msg .= translate("A new appointment has been made for you by");
         else
           $msg .= translate("An appointment has been updated by");
-        $msg .= " " . $login .  ". " .
+        $msg .= " " . $login_fullname .  ". " .
           translate("The subject is") . " \"" . $name . "\"\n\n" .
           translate("Please look on") . " " . translate("Title") . " " .
-          ( $GLOBALS["require_approvals"] ?
+          ( $require_approvals ?
           translate("to accept or reject this appointment") :
           translate("to view this appointment") ) . ".";
         if ( strlen ( $from ) )
           $extra_hdrs = "From: $from\nX-Mailer: " . translate("Title");
         else
           $extra_hdrs = "X-Mailer: " . translate("Title");
-        mail ( $participants_email[$i],
+        mail ( $tempemail,
           translate("Title") . " " . translate("Notification") . ": " . $name,
           $msg, $extra_hdrs );
       }
     }
-    $msg .= "<B>SQL:</B> $sql<P>";
   }
 
   // add site extras

@@ -1,4 +1,8 @@
-Version 0.9.28 (23 May 01)
+Version 0.9.28dev (31 May 01)
+  - Moved all the references to the webcal_user table to be in the
+    new includes/user.inc file.  This BREAKS the NIS user authentication,
+    but it should make adding LDAP (or any other user table) support
+    much simpler.
   - Added preference settings for receiving email.  Users can now
     decide whether they want to receive email for event reminders,
     new events, updated events, deleted events, and rejected events.

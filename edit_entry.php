@@ -4,6 +4,7 @@
 include "includes/config.inc";
 include "includes/php-dbi.inc";
 include "includes/functions.inc";
+include "includes/user.inc";
 include "includes/site_extras.inc";
 include "includes/validate.inc";
 include "includes/connect.inc";
@@ -285,20 +286,12 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     // show list of calendar users...
     echo "<SELECT NAME=\"" . $extra_name . "\">";
     echo "<OPTION VALUE=\"\"> None";
-    $sql = "SELECT cal_login, cal_lastname, cal_firstname " .
-      "FROM webcal_user ORDER BY cal_lastname, cal_firstname, cal_login";
-    $res = dbi_query ( $sql );
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( strlen ( $row[0] ) ) {
-        echo "<OPTION VALUE=\"" . $row[0] . "\"";
-        if ( $row[0] == $extras[$extra_name]['cal_data'] )
+    $userlist = user_get_users ();
+    for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+      echo "<OPTION VALUE=\"" . $userlist[$i]['cal_login'] . "\"";
+        if ( $userlist[$i]['cal_login'] == $extras[$extra_name]['cal_data'] )
           echo " SELECTED";
-        echo "> ";
-        if ( strlen ( $row[2] ) && strlen ( $row[1] ) )
-          echo "$row[2], $row[1] ";
-        else
-          echo $row[0];
-      }
+        echo "> " . $userlist[$i]['cal_fullname'];
     }
     echo "</SELECT>";
   } else if ( $extra_type == $EXTRA_REMINDER ) {
@@ -346,43 +339,32 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
 <?php
 // Only ask for participants if we are multi-user.
 if ( ! strlen ( $single_user_login ) ) {
-  $sql = "SELECT cal_login, cal_lastname, cal_firstname " .
-    "FROM webcal_user ORDER BY cal_lastname, cal_firstname, cal_login";
-  $res = dbi_query ( $sql );
-  if ( $res ) {
-    $num_users = 0;
-    $size = 0;
-    $users = "";
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $size++;
-      $users .= "<OPTION VALUE=\"$row[0]\"";
-      if ( $id > 0 ) {
-        if ( $participants[$row[0]] )
-          $users .= " SELECTED";
-      } else {
-        if ( $row[0] == $login || $row[0] == $user )
-          $users .= " SELECTED";
-      }
-      $users .= ">";
-
-      if ( strlen ( $row[1] ) ) {
-        $users .= $row[1];
-        if ( strlen ( $row[2] ) )
-          $users .= ", $row[2]";
-      } else {
-        $users .= $row[0];
-      }
-
+  $userlist = user_get_users ();
+  $num_users = 0;
+  $size = 0;
+  $users = "";
+  for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+     $l = $userlist[$i]['cal_login'];
+    $size++;
+    $users .= "<OPTION VALUE=\"" . $l . "\"";
+    if ( $id > 0 ) {
+      if ( $participants[$l] )
+        $users .= " SELECTED";
+    } else {
+      if ( $l == $login || $l == $user )
+        $users .= " SELECTED";
     }
-    if ( $size > 50 )
-      $size = 15;
-    else if ( $size > 5 )
-      $size = 5;
-    print "<TR><TD VALIGN=\"top\"><B>" .
-      translate("Participants") . ":</B></TD>";
-    print "<TD><SELECT NAME=\"participants[]\" SIZE=$size MULTIPLE>$users\n";
-    print "</SELECT></TD></TR>\n";
+    $users .= "> " . $userlist[$i]['cal_fullname'];
   }
+
+  if ( $size > 50 )
+    $size = 15;
+  else if ( $size > 5 )
+    $size = 5;
+  print "<TR><TD VALIGN=\"top\"><B>" .
+    translate("Participants") . ":</B></TD>";
+  print "<TD><SELECT NAME=\"participants[]\" SIZE=$size MULTIPLE>$users\n";
+  print "</SELECT></TD></TR>\n";
 }
 ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Repeat Type")?>:</B></TD>

@@ -3,9 +3,7 @@
 include "includes/config.inc";
 include "includes/php-dbi.inc";
 include "includes/functions.inc";
-
-if ( $use_external_auth )
-  do_redirect ( "index.php" );
+include "includes/user.inc";
 
 include "includes/validate.inc";
 include "includes/connect.inc";
@@ -34,17 +32,7 @@ if ( ! $is_admin )
   $user = $login;
 
 if ( strlen ( $user ) ) {
-  $sql = "SELECT cal_lastname, cal_firstname, cal_is_admin, cal_email FROM webcal_user " .
-    "WHERE cal_login = '$user'";
-  $res = dbi_query ( $sql );
-  if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) ) {
-      $ulastname = $row[0];
-      $ufirstname = $row[1];
-      $uis_admin = $row[2];
-      $uemail = $row[3];
-    }
-  }
+  user_load_variables ( $user, "u" );
   echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Edit User") . "</FONT></H2>\n";
 } else {
   echo "<INPUT TYPE=\"hidden\" NAME=\"add\" VALUE=\"1\">\n";
@@ -84,7 +72,7 @@ if ( strlen ( $user ) ) {
 <TR><TD COLSPAN=2>
 <?php if ( $demo_mode ) { ?>
   <INPUT TYPE="button" VALUE="<?php etranslate("Save")?>" ONCLICK="alert('<?php etranslate("Disabled for demo")?>')">
-  <?php if ( $is_admin && strlen ( $user ) ) { ?>
+  <?php if ( $is_admin && strlen ( $user ) && $admin_can_delete_user ) { ?>
     <INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="alert('<?php etranslate("Disabled for demo")?>')">
    <?php } ?>
 <?php } else { ?>

@@ -4,6 +4,7 @@
 include "includes/config.inc";
 include "includes/php-dbi.inc";
 include "includes/functions.inc";
+include "includes/user.inc";
 include "includes/validate.inc";
 include "includes/translate.inc";
 include "includes/connect.inc";

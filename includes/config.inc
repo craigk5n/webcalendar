@@ -166,13 +166,6 @@ $email_fallback_from = "youremailhere@somewhere.com";
 // been loaded (color settings and language setting).
 $remember_last_login = true;
 
-// Options for using NIS for user authorization (via ypmatch command)
-// Uncomment the following 3 lines to enable NIS authentication.
-//$use_external_auth = true;
-//$user_external_group = 100;
-//$user_external_email = "your.domain.here";
-
-
 // DEFAULT SETTINGS: everything below here can be customized by the
 // user in the Preferences page.
 // Default color settings.  Users can override these.
