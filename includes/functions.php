@@ -691,15 +691,13 @@ function load_user_layers ($user="",$force=0) {
       "FROM webcal_user_layers " .
       "WHERE cal_login = '$user' ORDER BY cal_layerid" );
     if ( $res ) {
-      $count = 0;
       while ( $row = dbi_fetch_row ( $res ) ) {
-        $layers[$count] = array (
+        $layers[$row[0]] = array (
           "cal_layerid" => $row[0],
           "cal_layeruser" => $row[1],
           "cal_color" => $row[2],
           "cal_dups" => $row[3]
         );
-        $count++;
       }
       dbi_free_result ( $res );
     }
@@ -1317,13 +1315,15 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
 // per page request to improve performance.  All the events get loaded
 // into the array $repeated_events sorted by time of day (not date).
 // params:
-//   $user - username
-//   $cat_id - category ID to filter on.  May be empty.
-function read_repeated_events ( $user, $cat_id = ''  ) {
+//   $user   - username
+//   $cat_id - Category ID to filter on.  May be empty.
+//   $date   - Cutoff date for repeating event endtimes. May be empty.
+function read_repeated_events ( $user, $cat_id = '', $date = ''  ) {
   global $login;
   global $layers;
 
-  return query_events ( $user, true, "", $cat_id );
+  $filter = ($date != '') ? "AND (webcal_entry_repeats.cal_end >= $date OR webcal_entry_repeats.cal_end IS NULL) " : '';
+  return query_events ( $user, true, $filter, $cat_id );
 }
 //Returns all the dates a specific event will fall on accounting for
 //the repeating.  Any event with no end will be assigned one.

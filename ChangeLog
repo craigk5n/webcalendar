@@ -1,4 +1,6 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - SQL Query enhancement for function read_repeated_events to speed up processing
+  - Fixed Bug 1017097: Can't Delete/Edit First Layer
   - Fixed Bug 1007496: Repeat Type off-by-one in Event Details
   - Fixed bug: iCal import would fail if the file included section with
     timezone info in it.
