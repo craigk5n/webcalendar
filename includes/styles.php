@@ -3,7 +3,7 @@
 .weekview td {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
-  width: 75px;
+  width: 14%;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   background-color: <?php echo $GLOBALS['CELLBG'];?>;
@@ -12,7 +12,7 @@
 .tablecell {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
-  width: 75px;
+  width: 14%;
   height: 75px;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -22,7 +22,7 @@
 .tablecelltoday {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
-  width: 75px;
+  width: 14%;
   height: 75px;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -40,7 +40,7 @@
 .weekview td.weekend {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
-  width: 75px;
+  width: 14%;
   vertical-align: top;
   background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -49,7 +49,7 @@
 .tablecellweekend {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
-  width: 75px;
+  width: 14%;
   height: 75px;
   vertical-align: top;
   background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
