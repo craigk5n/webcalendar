@@ -40,6 +40,8 @@ else
 <?php
 if ( $single_user == "N" ) {
   $userlist = get_my_users ();
+  $nonusers = get_nonuser_cals ();
+  $userlist = $nonusers + $userlist;
   $num_users = 0;
   $size = 0;
   $users = "";

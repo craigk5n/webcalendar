@@ -8,7 +8,7 @@ $error = "";
 if ( $public_access == "Y" && ! empty ( $public ) && $is_admin )
   $app_user = "__public__";
 else
-  $app_user = ( $is_assistant ? $user : $login );
+  $app_user = ( $is_assistant || $is_nonuser_admin ? $user : $login );
 
 if ( $id > 0 ) {
   if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'A' " .

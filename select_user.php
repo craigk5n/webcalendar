@@ -14,6 +14,8 @@ if ( ! empty ( $error ) ) {
   echo "<BLOCKQUOTE>$error</BLOCKQUOTE>\n";
 } else {
   $userlist = get_my_users ();
+  $nonusers = get_nonuser_cals ();
+  $userlist = $nonusers + $userlist;
   ?>
   <FORM ACTION="<?php echo $STARTVIEW;?>.php" METHOD="GET" NAME="SelectUser">
   <SELECT NAME="user" ONCHANGE="document.SelectUser.submit()">

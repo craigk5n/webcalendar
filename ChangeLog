@@ -1,4 +1,7 @@
 Version 0.9.41dev (?? ??? ???)
+  - Added the ability to create 'nonuser' calendars, such as a corporate
+    calendar, and assign the calendar administrator.  Very similar to 
+    assistant/boss feature.
   - Removed html headers and common include calls from all files.  All files
     now include init.php and print the header by calling print_header. As a
     result of this cosmetic change, javascript has been moved out of the

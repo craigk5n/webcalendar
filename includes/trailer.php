@@ -243,6 +243,8 @@
     if ( $is_admin ) {
       echo " | <A CLASS=\"navlinks\" HREF=\"users.php\">" .
         translate ("Users") . "</A>\n";
+      echo " | <A CLASS=\"navlinks\" HREF=\"nonusers.php\">" .
+        translate ("NonUser") . "</A>\n";
       if ( $groups_enabled == "Y" )
         echo " | <A CLASS=\"navlinks\" HREF=\"groups.php\">" .
           translate ("Groups") . "</A>\n";

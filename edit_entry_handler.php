@@ -64,7 +64,7 @@ $can_edit = false;
 if ( empty ( $id ) ) {
   // New event...
   $can_edit = true;
-} else if ( $is_admin || $is_assistant ) {
+} else if ( $is_admin || $is_assistant || $is_nonuser_admin ) {
   $can_edit = true;
 } else {
   // event owner or assistant event ?
@@ -279,7 +279,7 @@ if ( empty ( $error ) ) {
     "cal_access, cal_type, cal_name, cal_description ) " .
     "VALUES ( $id, " .
     ( $old_id > 0 ? " $old_id, " : "" ) .
-    "'" . ($is_assistant ? $user : $login) . "', ";
+    "'" . ($is_assistant || $is_nonuser_admin ? $user : $login) . "', ";
 
   $date = mktime ( 3, 0, 0, $month, $day, $year );
   $sql .= date ( "Ymd", $date ) . ", ";
@@ -326,7 +326,10 @@ if ( empty ( $error ) ) {
           break;
         }
       }
-      if ( !$found_flag ) {
+     $is_nonuser_admin = user_is_nonuser_admin ( $login, $old_participant );
+      // Don't send mail if we are editing a non-user calendar
+      // and we are the admin
+      if ( !$found_flag && !$is_nonuser_admin) {
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $old_participants, "EMAIL_EVENT_DELETED" );
         user_load_variables ( $old_participant, "temp" );
@@ -366,6 +369,9 @@ if ( empty ( $error ) ) {
   // now add participants and send out notifications
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
     $my_cat_id = "";
+    // Is the person adding the nonuser calendar admin
+    $is_nonuser_admin = user_is_nonuser_admin ( $login, $participants[$i] );
+
     // if public access, require approval unless
     // $public_access_add_needs_approval is set to "N"
     if ( $login == "__public__" ) {
@@ -382,14 +388,14 @@ if ( empty ( $error ) ) {
         $entry_changed ) ?  true : false;
       $tmp_status = ( $old_status[$participants[$i]] && ! $send_user_mail ) ?
         $old_status[$participants[$i]] : "W";
-      $status = ( $participants[$i] != $login && boss_must_approve_event ( $login, $participants[$i] ) && $require_approvals == "Y" ) ?
+      $status = ( $participants[$i] != $login && boss_must_approve_event ( $login, $participants[$i] ) && $require_approvals == "Y" && ! $is_nonuser_admin ) ?
         $tmp_status : "A";
       $tmp_cat = ( ! empty ( $old_category[$participants[$i]]) ) ?
         $old_category[$participants[$i]] : 'NULL';
       $my_cat_id = ( $participants[$i] != $login ) ? $tmp_cat : $cat_id;
     } else {
       $send_user_mail = true;
-      $status = ( $participants[$i] != $login && boss_must_approve_event ( $login, $participants[$i] ) && $require_approvals == "Y" ) ?
+      $status = ( $participants[$i] != $login && boss_must_approve_event ( $login, $participants[$i] ) && $require_approvals == "Y" && ! $is_nonuser_admin ) ?
         "W" : "A";
       if ( $participants[$i] == $login ) {
         $my_cat_id = $cat_id;
@@ -413,44 +419,48 @@ if ( empty ( $error ) ) {
       $error = translate("Database error") . ": " . dbi_error ();
       break;
     } else {
-      $from = $user_email;
-      if ( empty ( $from ) && ! empty ( $email_fallback_from ) )
-        $from = $email_fallback_from;
-      // only send mail if their email address is filled in
-      $do_send = get_pref_setting ( $participants[$i],
-         $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
-      user_load_variables ( $participants[$i], "temp" );
-      if ( $participants[$i] != $login && boss_must_be_notified ( $login, $participants[$i] ) && strlen ( $tempemail ) &&
-        $do_send == "Y" && $send_user_mail && $send_email != "N" ) {
-        $fmtdate = sprintf ( "%04d%02d%02d", $year, $month, $day );
-        $msg = translate("Hello") . ", " . $tempfullname . ".\n\n";
-        if ( $newevent || $old_status[$participants[$i]] == '' )
-          $msg .= translate("A new appointment has been made for you by");
-        else
-          $msg .= translate("An appointment has been updated by");
-        $msg .= " " . $login_fullname .  ". " .
-          translate("The subject is") . " \"" . $name . "\"\n\n" .
-          translate("The description is") . " \"" . $description . "\"\n" .
-          translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-          translate("Time") . ": " .
-          display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) . "\n\n\n";
-          translate("Please look on") . " " . translate($application_name) . " " .
-          ( $require_approvals == "Y" ?
-          translate("to accept or reject this appointment") :
-          translate("to view this appointment") ) . ".";
-        // add URL to event, if we can figure it out
-        if ( ! empty ( $server_url ) ) {
-          $url = $server_url .  "view_entry.php?id=" .  $id;
-          $msg .= "\n\n" . $url;
+      // Don't send mail if we are editing a non-user calendar
+      // and we are the admin
+      if (!$is_nonuser_admin) {
+        $from = $user_email;
+        if ( empty ( $from ) && ! empty ( $email_fallback_from ) )
+          $from = $email_fallback_from;
+        // only send mail if their email address is filled in
+        $do_send = get_pref_setting ( $participants[$i],
+           $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
+        user_load_variables ( $participants[$i], "temp" );
+        if ( $participants[$i] != $login && boss_must_be_notified ( $login, $participants[$i] ) && strlen ( $tempemail ) &&
+          $do_send == "Y" && $send_user_mail && $send_email != "N" ) {
+          $fmtdate = sprintf ( "%04d%02d%02d", $year, $month, $day );
+          $msg = translate("Hello") . ", " . $tempfullname . ".\n\n";
+          if ( $newevent || $old_status[$participants[$i]] == '' )
+            $msg .= translate("A new appointment has been made for you by");
+          else
+            $msg .= translate("An appointment has been updated by");
+          $msg .= " " . $login_fullname .  ". " .
+            translate("The subject is") . " \"" . $name . "\"\n\n" .
+            translate("The description is") . " \"" . $description . "\"\n" .
+            translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
+            translate("Time") . ": " .
+            display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) . "\n\n\n";
+            translate("Please look on") . " " . translate($application_name) . " " .
+            ( $require_approvals == "Y" ?
+            translate("to accept or reject this appointment") :
+            translate("to view this appointment") ) . ".";
+          // add URL to event, if we can figure it out
+          if ( ! empty ( $server_url ) ) {
+            $url = $server_url .  "view_entry.php?id=" .  $id;
+            $msg .= "\n\n" . $url;
+          }
+          if ( strlen ( $from ) )
+            $extra_hdrs = "From: $from\nX-Mailer: " . translate($application_name);
+          else
+            $extra_hdrs = "X-Mailer: " . translate($application_name);
+          mail ( $tempemail,
+            translate($application_name) . " " . translate("Notification") . ": " . $name,
+            html_to_8bits ($msg), $extra_hdrs );
+          activity_log ( $id, $login, $participants[$i], $LOG_NOTIFICATION, "" );
         }
-        if ( strlen ( $from ) )
-          $extra_hdrs = "From: $from\nX-Mailer: " . translate($application_name);
-        else
-          $extra_hdrs = "X-Mailer: " . translate($application_name);
-        mail ( $tempemail,
-          translate($application_name) . " " . translate("Notification") . ": " . $name,
-          html_to_8bits ($msg), $extra_hdrs );
-        activity_log ( $id, $login, $participants[$i], $LOG_NOTIFICATION, "" );
       }
     }
   }
@@ -610,7 +620,7 @@ if ( empty ( $error ) ) {
     $url = sprintf ( "%s.php?date=%04d%02d%02d",
       $STARTVIEW, $year, $month, $day );
   }
-  if ($is_assistant)
+  if ($is_assistant || $is_nonuser_admin)
      $url = $url . (strpos($url, "?") === false ? "?" : "&") . "user=$user";
   do_redirect ( $url );
 }

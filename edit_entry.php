@@ -16,7 +16,7 @@ $participants = array ();
 
 if ( ! empty ( $id ) && $id > 0 ) {
   // first see who has access to edit this entry
-  if ( $is_admin || $is_assistant ) {
+  if ( $is_admin || $is_assistant || $is_nonuser_admin) {
     $can_edit = true;
   } else {
     $can_edit = false;
@@ -215,7 +215,7 @@ if ( $override ) {
   echo "<INPUT TYPE=\"hidden\" NAME=\"override_date\" VALUE=\"$cal_date\">\n";
 }
 // if assistant, need to remember boss = user
-if ( $is_assistant )
+if ( $is_assistant || $is_nonuser_admin )
    echo "<INPUT TYPE=\"hidden\" NAME=\"user\" VALUE=\"$user\">\n";
 
 ?>
@@ -453,6 +453,8 @@ if ( $login == "__public__" && $public_access_others != "Y" )
 
 if ( $single_user == "N" && $show_participants ) {
   $userlist = get_my_users ();
+  $nonusers = get_nonuser_cals ();
+  $userlist = $nonusers + $userlist;
   $num_users = 0;
   $size = 0;
   $users = "";
@@ -469,7 +471,7 @@ if ( $single_user == "N" && $show_participants ) {
         if ( ! empty ( $participants[$l] ) )
           $users .= " SELECTED";
       } else {
-        if ( ( $l == $login && ! $is_assistant  ) || ( ! empty ( $user ) && $l == $user ) )
+        if ( ( $l == $login && ! $is_assistant  && ! $is_nonuser_admin ) || ( ! empty ( $user ) && $l == $user ) )
           $users .= " SELECTED";
       }
     }
