@@ -41,10 +41,14 @@ else if ( $formtype == "setpassword" && strlen ( $user ) ) {
 
 // Handle update of user info
 else if ( $formtype == "edituser" ) {
-  if ( strlen ( $add ) && $is_admin )
-    user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
-      $uemail, $uis_admin );
-  else if ( strlen ( $add ) && ! $is_admin )
+  if ( strlen ( $add ) && $is_admin ) {
+    if ( $upassword1 != $upassword2 ) { 
+      $error = translate( "The passwords were not identical" ) . "."; 
+    } else {
+      user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
+        $uemail, $uis_admin );
+    }
+  } else if ( strlen ( $add ) && ! $is_admin )
     $error = translate("You are not authorized") . ".";
   else if ( isset ( $ulastname ) ) {
     // Don't allow a user to change themself to an admin by setting
