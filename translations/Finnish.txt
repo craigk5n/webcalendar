@@ -1,0 +1,306 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Translated by:
+#	Ari Vaulo and ari.vaulo@tol.oulu.fi
+# Last update: 06 Dec 2001
+
+# Title is what will appear in the title bar for pages
+Title: WebCalendar
+
+Month: Kuukausi
+Week: Viikko
+Error: Virhe
+
+Sun: Su
+Mon: Ma
+Tue: Ti
+Wed: Ke
+Thu: To
+Fri: Pe
+Sat: La
+
+Sunday: Sunnuntai
+Monday: Maanantai
+Tuesday: Tiistai
+Wednesday: Keskiviikko
+Thursday: Torstai
+Friday: Perjantai
+Saturday: Lauantai
+
+January: Tammikuu
+February: Helmikuu
+March: Maaliskuu
+April: Huhtikuu
+May_: Toukokuu
+June: Kesäkuu
+July: Heinäkuu
+August: Elokuu
+September: Syyskuu
+October: Lokakuu
+November: Marraskuu
+December: Joulukuu
+
+Jan: Tammi
+Feb: Helmi
+Mar: Maalis
+Apr: Huhti
+May: Touko
+Jun: Kesä
+Jul: Heinä
+Aug: Elo
+Sep: Syys
+Oct: Loka
+Nov: Marras
+Dec: Joulu
+
+1st: 1.
+2nd: 2.
+3rd: 3.
+4th: 4.
+5th: 5.
+
+Generate printer-friendly version: Luo tulostusversio
+Printer Friendly: Tulostusversio
+Go: Mene
+Back to My Calendar: Palaa kalenterisivulle
+Another User's Calendar: Toisen käyttäjän kalenteri
+Search: Etsi
+Add New Entry: Lisää uusi merkintä
+New Entry: Uusi merkitä
+Admin: Ylläpito
+Preferences: Asetukset
+Users: Käyttäjät
+Account: Käyttäjän tiedot
+Current User: Käyttäjä
+View this entry: Näytä merkintä
+Private: Yksityinen
+This event is confidential: Luottamuksellinen merkintä
+You have: Sinulle on
+unapproved: hyväksymätön
+event: tapahtuma
+events: tapahtumia
+Go to: Siirry
+Help Index: Ohjehakemisto
+Error approving event: Merkintää ei hyväksytty
+This user has: Käyttäjällä on
+calendar entries: kalenterimerkintää
+They must all be deleted (or this user removed as a participant) before this user can be deleted:Ryhmän jäsenet on poistettava (tai tämä käyttäjä ryhmstä) ennenkuin käyttäjän voi poistaa
+The passwords were not identical: Salasanat eivät vastaa toisiaan
+You have not entered a password: salasanaa ei ole syötetty
+You have not entered a Brief Description: Selite puuttuu
+You have not entered a valid time of day: Kellonaika puuttuu
+Brief Description: Selite
+Full Description: Selitys
+Description: Kuvaus
+Date: Pvm
+Time: Klo
+am: am
+pm: pm
+Duration: Kesto
+minutes: minuuttia
+Priority: Prioriteetti
+Low: Pieni
+Medium: Keskinkertainen
+High: Suuri
+Access: Saantioikeus
+Public: Julkinen
+Confidential: Luottamuksellinen
+Send Reminder: Lähetä muistutus
+Participants: Ryhmän jäsenet
+Created by: Luonut
+Updated: Päivittänyt
+Daily: Päivittäin
+for weekly: viikottain
+by date: päivän mukaan
+by day: viikonpäivän mukaan
+Monthly: Kuukausittainen
+None: Ei mitään
+Repeat Day: Toista viikonpäivittäin
+Repeat End Date: Toiston lopetuspäivä
+Repeat Type: Toiston tyyppi
+Use end date: Käytä lopetuspäivää
+every: joka
+Weekly: Viikottain
+Yearly: Vuosittain
+Frequency: Tiheys
+# use "every" as in "repeats every 2 weeks"
+Save: Talleta
+Cancel: Kumoa
+Help: Ohjeita
+Approve this entry?: Hyväksytäänkö merkintä?
+Approve/Confirm: Hyväksy/Vahvista
+Approve/Confirm entry: Hyväksy/Vahvista merkintä
+Reject: Hylkää
+Reject entry: Hylkää merkintä
+Reject this entry?: Hylätäänkö merkintä?
+Rejected: Hylätty
+Edit entry: Muokkaa merkintää
+Edit Entry: Muokkaa merkintää
+Add Entry: Lisää merkintä
+Add to My Calendar: Lisää kalenteriin
+Do you want to add this entry to your calendar?: Haluatko lisätä tämän merkinnän kalenteriisi?
+Error adding event: Virhe merkintää lisättäessä
+The time you have entered begins before your preferred work hours.  Is this correct?: Alkuaika on ennen normaalin työajan alkua. Onko se oikein?
+Are you sure you want to delete this entry?: Haluatko varmasti poistaa tämän merkinnän?
+This will delete this entry for all users.:Tämä merkintä poistetaan kaikilta käyttäjiltä.
+Delete: Poista
+Delete entry: Poista merkintä
+You are not authorized to edit this entry: Sinulla ei ole oikeutta muokata tätä merkintää
+This is a private event and may not be added to your calendar.: Tämä on henkilökohtainen merkintä, eikä sitä voi kopioida kalenteriisi.
+This will add the entry to your calendar.: Lisätään merkintä kalenteriisi.
+This will delete the entry from your calendar.: Poistetaan merkintä kalenteristasi.
+Scheduling Conflict: Aikataulussa ristiriita
+The following conflicts with the suggested time: Ehdotettuna aikana on seuraavat muut merkinnät
+Unnamed Event: Nimetön merkintä
+Hello: Hei
+A new appointment has been made for you by: Sinulle on lisätty uusi kalenterimerkintä - 
+An appointment has been updated by: Kalenterimerkintää on muutettu -
+The subject is: Otsikko
+Please look on: Tarkista
+to accept or reject this appointment: ja hyväksy tai hylkää merkintä
+to view this appointment: tarkista kalenterimerkintä
+An appointment has been canceled for you by: Kalenterimerkintä on poistettu -
+An appointment has been rejected by: Kalenterimerkintä on hylätty
+Export all dates: Talleta kaikki päiväysmerkinnät
+The subject was: Otsikko
+Notification: Muistutus
+Your suggested time of: Ehdottamasi aika
+conflicts with the following existing calendar entries: on ristiriidassa seuraavien merkintöjen kanssa
+Edit User: Muokkaa käyttäjäntietoja
+Add User: Lisää käyttäjä
+Username: Käyttäjätunnus
+Login: Kirjoittaudu
+Logout: Lopeta
+First Name: Etunimi
+Last Name: Sukunimi
+E-mail address: Sähköposti
+Password: Salasana
+again: uudestaan
+Yes: Kyllä
+No: Ei
+Change Password: Vaihda salasana
+New Password: Uusi salasana
+Set Password: Aseta salasana
+Adding/Editing Calendar Entries: Lisää/Muuta kalenterimerkintöjä
+Unapproved Events: Hyväksymättömät tapahtumat
+No unapproved events: Ei hyväksymättömiä tapahtumia
+You must enter a login and password: Syötä käyttäjätunnus ja salasana
+Invalid login: Kirjoittauminen järjestelmään ei onnistunut
+Save login via cookies so I don't have to login next time: Talleta kirjautuminen evästeeseen
+cookies-note: <B>Huom:</B> Tätä sovellusta käytettäessä piparien pitää olla käytössä.
+Invalid color for document background: Taustaväri on virheellinen
+Invalid color for document title: Otsikon väri on virheellinen
+Invalid color for table cell background: Ruudukon taustaväri on virheellinen
+Invalid color for table cell background for today: Kuluvan päivän taustaväri on virheellinen
+Color format should be '#RRGGBB': Värikoodin tulee olla muotoa '#RRGGBB'
+12 hour: 12 tuntia
+24 hour: 24 tuntia
+From: Alkaen
+to: ulottuen
+Select: Valitse
+Preferred view: Valitse näkemys
+Week starts on: Viikon ensimmäinen päivä
+Day: Päivä
+days: päivää
+Year: Vuosi
+before event: ennen
+Reminder: Muistutus
+This is a reminder for the event detailed below.: Muistutus alla esitetystä tapahtumasta.
+Document background: Sivun pohja
+Document title: Sivun otsikko
+Table cell background: Taulukon tausta
+Table cell background for current day: Kuluvan päivän tausta
+Save Preferences: Talleta asetukset
+The following error occurred: Tapahtui virhe
+Database error: Tietokantavirhe
+Search: Etsi
+Keywords: Hakusanat
+You must enter one or more search keywords: Syötä yksi tai useampi hakusana
+Search Results: Haun tulokset
+Export: Talleta
+Export format: Talletusmuoto
+Modified since: Viimeksi muokattu
+Start date: Alkupäivä
+End date: Lopetustuspäivä
+Palm Pilot: Palm Pilot
+match found: kohde löytyi
+matches found: kohdetta löytyi
+No matches found: Kohteita ei löytynyt
+View Another User's Calendar: Näytä toisen käyttäjän kalenteri
+You are not authorized: Käyttöoikeus puuttuu
+Add New User: Lisää uusi käyttäjä
+denotes administrative user: tarvitaan pääkäyttäjän oikeudet
+Invalid entry id: Väärä tunnus
+My Calendar: Kalenteri
+Add Layer: Lisää taso
+Add layer: Lisättävä taso
+Disable Layers: Poista tasot käytöstä
+Disabled: Poistettu käytöstä
+Edit Layers: Muokkaa tasoja
+Enable Layers: Ota tasot käyttöön
+Enabled: Käytössä
+hours: tuntia
+Layers are currently: Tasot ovat
+User: Käyttäjä
+Color: Väri
+Delete layer: Poista taso
+Edit layer: Muokkaa tasoa
+Edit Layer: Muokattava taso
+Invalid color: Virheellinen värikoodi
+Layer: Taso
+Layers: Tasoja
+Source: Lähde
+Show layer events that are the same as your own: Näytä kaikki tason tapahtumat, jotka ovat samoja kuin omat
+Are you sure you want to delete this layer?: Haluatko poistaa tämän tason?
+Duplicates: Päällekkäisiä
+Disabled for demo: Toiminto ei käytössä (demoversio)
+
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help: Kalenterimerkinnän otsikko (noin 20 merkkiä). Näytetään kalenteritaulukossa.
+This should provide a short description (about 20 characters) of the event.  This will represent the event when viewing the calendar.
+full-description-help: Sisältää tapahtuman tiedot. Nämä näytetään kun käyttäjä katsoo kalenterimerkinnän tietoja.
+date-help: Määrittelee tapahtuman päivämäärän.
+time-help: Määrittelee tapahtuman ajan. <BR><I>(Voidaan jättää tyhjäksi)</I>
+duration-help: Määrittelee tapahtuman keston (tunteina ja minuutteina). <BR><I>(Voidaan jättää tyhjäksi)</I>
+priority-help: Määrittelee tapahtuman prioriteetin. Tärkeimmät näytetään lihavoituna.
+access-help: Määrittelee tapahtuman näkyvyyden.<BR> <I>Julkinen</I>: Kaikki näkevät kaikki tapahtuman tiedot.  <BR><I>Luottamuksellinen</I>: Muut näkevät vain tapahtuman päivämäärän ja ajan, mutta ei muita tietoja.
+participants-help: Luetteloi tapahtuman osanottajat.
+repeat-type-help: Valitaan kuinka usein tapahtuma toistetaan.<I>Kuukausittain (viikonpäivän mukaan)</I> mahdollistaa merkinnän toistamisen
+esimerkiksi kuukauden ensimmäisenä maanantaina tai kolmantena torstaina, jne. <I>Kuukausittain (päivämäärän mukaan)</I> mahdollistaa
+tapahtuman toistamisen tiettynä päivänä.
+repeat-end-date-help: Määrittelee päivämäärän mihin asti tapahtumaa toistetaan.
+repeat-day-help: Määrittelee viikonpäivä, joina tapahtumaa toistetaan. Käytettävissä vain kun <I>Toistotyypiksi</I> on asetettu <I>Viikottain</I>.
+repeat-frequency-help: Määrittelee tapahtuman toistotiheyden. Oletusarvo 1 tarkoittaa toistoa joka kerta, 2 joka toinen kerta (esim. joka toinen viikko tai kuukausi), jne.
+Preferences: Asetukset
+Settings: Yleisasetukset
+Language: Kieli
+Your browser default language is: Selaimen oletuskieli on
+language-help: Määrittelee käytettävän kielen.
+Preferred view: Oletusnäkymä
+preferred-view-help: Määrittelee oletusnäkymän (Päivä, Viikko, Kuukausi tai Vuosi).
+Time format: Ajan esitystapa
+time-format-help: Määrittelee ajan esitysmuodon, <BR><I>12 tuntia</I> <BR><I>24 tuntia</I>
+Display unapproved: Näytä hyväksymättömät tapahtumat
+display-unapproved-help: Määrittelee näytetäänkö hyväksymättömät tapahtumat kalenterissa. <BR>Jos valittu "Kyllä", niin hyväksymättömät tapahtumat näytetään (eri värillä).<BR>Jos valittu "Ei", niin tapahtumat tulee hyväksyä ennenkuin ne näkyvät kalenterissa. 
+Display icons: Näytä ikonit
+display-icons-help: Jos valittu, niin sijoitetaan Näytä-, Muokkaa- ja Poista-ikoni kunkin kalenterimerkinnän yhteydessä. Jos valittu "Ei", niin kalenterimerkintä pitää avata käsiteltäväksi ennenkuin ko. toiminnot voidaan siihen kohdistaa.
+Display week number: Näytä viikonnumero
+display-week-number-help: Määrittelee näytetäänkö viikonnumero (1-52) kuukausi- ja viikkonäkymässä. 
+display-week-starts-on: Määrittelee viikon alkamispäiväksi joko sunnuntai tai maanantai. Jos maanantai valittu, niin viikonnumero lasketaan ISO-järjestelmän mukaisesti.
+Work hours: Työtunnit
+work-hours-help: Määrittelee päivänäkymässä esitettävät tunnit.
+Email: Sähköposti-ilmoitukset
+Event rejected by participant: Ryhmän jäsen hylkäsi tapahtuman
+Event reminders: Tapahtumamuistutukset
+Events added to my calendar: Kalenterimerkintöjä lisätty
+Events removed from my calendar: Kalenterimerkintöjä poistettu
+Events updated on my calendar: Kalenterimerkintöjä muutettu
+email-event-reminders-help: Määrittelee lähetetäänkö tapahtumamuistutuksia vai ei
+email-event-added: Määrittelee lähetetäänkö sähköpostilla tiedote lisätyistä kalenterimerkinnöistä.
+email-event-updated: Määrittelee lähetetäänkö sähköpostilla tiedote muutetuista kalenterimerkinnöistä.
+email-event-deleted: Määrittelee lähetetäänkö sähköpostilla tiedote poistetuista kalenterimerkinnöistä.
+email-event-rejected: Määrittelee lähetetäänkö sähköpostilla tiedote ryhmän jäsenten hylkäämistä kalenterimerkinnöistä.
+Colors: Värit
+colors-help: Kaikki värit määritellään koodaamalla ne heksadesimaalinumeroksi #RRGGBB-muotoon. (RR-punainen, GG-vihreä ja BB-sininen arvo (00-FF)). 
