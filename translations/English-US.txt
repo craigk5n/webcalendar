@@ -17,7 +17,7 @@
 #
 #
 #
-# Translation last updated on 06-24-2003
+# Translation last updated on 06-27-2003
 
 
 ###############################################
@@ -603,6 +603,15 @@ Ok: Ok
 
 
 ###############################################
+# Page: import.php
+#
+#
+Select Datebook File: Select Datebook File
+Import: Import
+Select vCal File: Select vCal File
+
+
+###############################################
 # Page: view_entry.php
 #
 every: every
@@ -716,6 +725,14 @@ Private: Private
 
 
 ###############################################
+# Page: import_handler.php
+#
+Back to My Calendar: Back to My Calendar
+#
+Event Imported: Event Imported
+
+
+###############################################
 # Page: year.php
 #
 
@@ -746,7 +763,6 @@ Yours assistants: Yours assistants
 # Page: includes/trailer.php
 #
 Go to: Go to
-Back to My Calendar: Back to My Calendar
 My Calendar: My Calendar
 Logout: Logout
 Another User's Calendar: Another User's Calendar
