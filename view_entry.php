@@ -578,7 +578,7 @@ if ( $single_user == "N" && $show_participants ) {
   } else {
     $sql = "SELECT cal_login, cal_status FROM webcal_entry_user " .
       "WHERE cal_id = $id";
-    //echo "$sql<P>\n";
+    //echo "$sql\n";
     $res = dbi_query ( $sql );
     $first = 1;
     $num_app = $num_wait = $num_rej = 0;
@@ -646,7 +646,7 @@ if ( $single_user == "N" && $show_participants ) {
 
 </table>
 
-<p><?php
+<br /><?php
 
 $rdate = "";
 if ( $event_repeats )
