@@ -17,7 +17,7 @@ print_header($INC);
 <?php
 $ALL = 0;
 if ( ! empty ( $user ) ) {
-  echo "<h2 style=\"color:$H2COLOR;\">" .
+  echo "<h2>" .
     translate("Purging events for") . " $user...</h2>\n";
   $ids = '';
   $end_date = sprintf ( "%04d%02d%02d, ", $end_year,$end_month,$end_day);
@@ -38,11 +38,11 @@ if ( ! empty ( $user ) ) {
     $ids = array_merge ( $E_ids, $M_ids );
   }
   if ( $ids ) purge_events ( $ids );
-  echo "<h2 style=\"color:$H2COLOR;\">..." .
+  echo "<h2>..." .
     translate("Finished") . ".</h2>\n";
 } else {
 ?>
-<h2 style="color:<?php echo $H2COLOR; ?>;"><?php etranslate("Delete Events")?></h2>
+<h2><?php etranslate("Delete Events")?></h2>
 <form action="<?php echo $PHP_SELF; ?>" method="post" name="purgeform">
 <table>
  <tr><td><?php etranslate("User");?>:</td><td>

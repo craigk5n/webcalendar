@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 print_header('','','',true);
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Help")?>: <?php etranslate("Layers")?></h2>
+<h2><?php etranslate("Help")?>: <?php etranslate("Layers")?></h2>
 
 <table style="border-width:0px;">
 	<tr><td colspan="2">

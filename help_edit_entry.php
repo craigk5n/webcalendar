@@ -3,7 +3,7 @@
 	print_header('','','',true);
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Help")?>: <?php etranslate("Adding/Editing Calendar Entries")?></h2>
+<h2><?php etranslate("Help")?>: <?php etranslate("Adding/Editing Calendar Entries")?></h2>
 
 <table style="border-width:0px;">
 	<tr><td style="vertical-align:top; font-weight:bold;">

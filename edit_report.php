@@ -177,7 +177,7 @@ print_header();
 //echo "report_user: $report_user <br />\n";
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;">
+<h2>
 <?php
 if ( $updating_public )
   echo translate($PUBLIC_ACCESS_FULLNAME) . " ";

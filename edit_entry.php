@@ -198,7 +198,7 @@ $INC = array('js/popups.php','js/edit_entry.php');
 print_header($INC,'',$BodyX);
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php if ( $id ) echo translate("Edit Entry"); else echo translate("Add Entry"); ?></h2>
+<h2><?php if ( $id ) echo translate("Edit Entry"); else echo translate("Add Entry"); ?></h2>
 
 <?php
 if ( $can_edit ) {
@@ -304,7 +304,7 @@ if ( $TIME_FORMAT == "12" ) {
   foreach( $categories as $K => $V ){
     echo "<option value=\"$K\"";
     if ( $cat_id == $K ) echo " selected=\"selected\"";
-    echo ">$V</option>";
+    echo ">$V</option>\n";
   }
 ?>
   </select></td></tr>
@@ -474,7 +474,7 @@ if ( $single_user == "N" && $show_participants ) {
           $users .= " selected=\"selected\"";
       }
     }
-    $users .= "> " . $userlist[$i]['cal_fullname'] . "</option>\n";
+    $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
 
   if ( $size > 50 )

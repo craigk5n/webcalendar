@@ -26,7 +26,7 @@ $INC = array('js/admin.php');
 print_header($INC);
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("System Settings")?></h2>
+<h2><?php etranslate("System Settings")?></h2>
 <?php
 $error = false;
 

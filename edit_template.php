@@ -68,7 +68,7 @@ print_header( '', '', '', true );
 //echo "report_user: $report_user <br />\n";
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;">
+<h2>
 <?php
 if ( $type == 'S' )
   etranslate("Edit Custom Script/Stylesheet");
@@ -80,7 +80,7 @@ else
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo "<h2 style=\"color:$h2color;\">" . translate("Error") . "</h2>" .
+  echo "<h2>" . translate("Error") . "</h2>" .
     $error . "\n";
 } else {
 ?>

@@ -15,7 +15,7 @@ $INC = array('js/edit_layer.php');
 print_header($INC);
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;">
+<h2>
 <?php
 if ( $updating_public )
   echo translate($PUBLIC_ACCESS_FULLNAME) . " ";

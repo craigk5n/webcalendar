@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 print_header('','','',true);
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Help")?>: <?php etranslate("Preferences")?></h2>
+<h2><?php etranslate("Help")?>: <?php etranslate("Preferences")?></h2>
 
 <h3><?php etranslate("Settings")?></h3>
 <table style="border-width:0px;">

@@ -15,10 +15,10 @@ print_header($INC);
   if ($user) echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />";
   if ( $is_nonuser_admin ) {
     nonuser_load_variables ( $user, "nonuser" );
-    echo "<h2 style=\"color:$H2COLOR; font-weight:bold;\">" . $nonuserfullname . " " . translate("Assistants")
+    echo "<h2 style=\"font-weight:bold;\">" . $nonuserfullname . " " . translate("Assistants")
         ."<br />\n-- " . translate("Admin mode") . " --</h2>\n";
   } else {
-    echo "<h2 style=\"color:$H2COLOR;\">" . translate("Your assistants") . "</h2>\n";
+    echo "<h2>" . translate("Your assistants") . "</h2>\n";
   }
 ?>
 

@@ -3,7 +3,7 @@
 	print_header('','','',true);
 ?>
 
-<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Help")?>: <?php etranslate("Import")?></h2>
+<h2><?php etranslate("Help")?>: <?php etranslate("Import")?></h2>
 
 <h3><?php etranslate("Palm Desktop")?></h3>
 	<?php etranslate("This form will allow you to import entries from the Palm Desktop Datebook."); ?>
