@@ -160,16 +160,15 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 
   if ( $single_user != "Y" ) {
     if ( ! empty ( $user ) && $user != $login )
-      echo "<a title=\"" . translate("My Calendar") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"$mycal\">" .
-        translate("Back to My Calendar") . "</a>";
+      echo "<a title=\"" . translate("My Calendar") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"$mycal\">" . translate("Back to My Calendar") . "</a>";
     else
-      echo "<a title=\"" . translate("My Calendar") . "\" class=\"navlinks\" href=\"$mycal\" style=\"font-weight:bold;\">" .
+      echo "<a title=\"" . translate("My Calendar") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"$mycal\">" .
         translate("My Calendar") . "</a>";
     if ( ! empty ( $user ) && $user != $login )
       $todayURL .= '&amp;user=' . $user;
-    echo " | <a title=\"" . translate("Today") . "\" class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") . "</a>";
+    echo " | <a title=\"" . translate("Today") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"$todayURL\">" . translate("Today") . "</a>";
     if ( $login != '__public__' )
-      echo " | <a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" .
+      echo " | <a title=\"" . translate("Admin") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"adminhome.php\">" .
         translate("Admin") . "</a>";
     if ( ! $use_http_auth ) {
       if ( empty ( $login_return_path ) )
@@ -183,17 +182,16 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
       ( $require_approvals == "Y" || $public_access == "Y" ) ) {
 	$url = 'list_unapproved.php';
         if ($is_nonuser_admin) $url .= "?user=$user";
-	echo " | <a title=\"" . translate("Unapproved Events") . "\" class=\"navlinks\" href=\"$url\">" .
-        translate("Unapproved Events") . "</a>";
+	echo " | <a title=\"" . translate("Unapproved Events") . "\" class=\"navlinks\" href=\"$url\">" . translate("Unapproved Events") . "</a>";
     }
     if ( $login == "__public__" && $public_access_others != "Y" ) {
       // don't allow them to see other people's calendar
     } else if ( $allow_view_other == "Y" || $is_admin )
       echo " | <a title=\"" . translate("Another User's Calendar") . "\" class=\"navlinks\" href=\"select_user.php\">" . translate("Another User's Calendar") . "</a>";
   } else {
-    echo "<a title=\"" . translate("My Calendar") . "\" class=\"navlinks\" href=\"$mycal\" style=\"font-weight:bold;\">" . translate("My Calendar") . "</a>";
-    echo " | <a title=\"" . translate("Today") . "\" class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") . "</a>";
-    echo " | <a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" . translate("Admin") . "</a>";
+    echo "<a title=\"" . translate("My Calendar") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"$mycal\">" . translate("My Calendar") . "</a>";
+    echo " | <a title=\"" . translate("Today") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"$todayURL\">" . translate("Today") . "</a>";
+    echo " | <a title=\"" . translate("Admin") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"adminhome.php\">" . translate("Admin") . "</a>";
   }
   // only display some links if we're viewing our own calendar.
   if ( empty ( $user ) || $user == $login ) {
@@ -290,7 +288,7 @@ if ( $res ) {
       echo " | ";
     else
       echo "<span style=\"font-weight:bold;\">" . translate("Reports") . ":</span> ";
-    echo "<a href=\"report.php?report_id=$row[1]$u_url\" class=\"navlinks\">" .
+    echo "<a title=\"" . htmlentities ( $row[0] ) . "\" class=\"navlinks\" href=\"report.php?report_id=$row[1]$u_url\">" .
       htmlentities ( $row[0] ) . "</a>\n";
     $found_report = true;
   }
@@ -301,8 +299,7 @@ if ( $login != "__public__" ) {
     echo " | ";
   else
     echo "<span style=\"font-weight:bold;\">" . translate("Reports") . ":</span> ";
-  echo "<a title=\"" . translate("Manage Reports") . "\" href=\"report.php\" class=\"navlinks\">" .
-    translate("Manage Reports") . "</a>\n";
+  echo "<a title=\"" . translate("Manage Reports") . "\" class=\"navlinks\" href=\"report.php\">" . translate("Manage Reports") . "</a>\n";
 }
 ?>
 
@@ -329,6 +326,6 @@ if ( $login != "__public__" ) {
     }
     print $groups;
   }
-  print "<br />\n<a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" href=\"$GLOBALS[PROGRAM_URL]\" id=\"programname\" target=\"_new\">" .
+  print "<br />\n<a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_new\">" .
     $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 ?>
