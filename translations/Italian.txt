@@ -152,7 +152,7 @@ Last Name: Cognome
 E-mail address: Indirizzo email
 Password: Password
 again: di nuovo
-Yes: Sì
+Yes: S&igrave:
 No: No
 Change Password: Cambiare Password
 New Password: Nuova Password
@@ -229,3 +229,80 @@ Start date: Data inizio
 End date: Data fine
 Modified since: Modificato dal
 Palm Pilot: Palm Pilot
+
+1st: 1°
+2nd: 2°
+3rd: 3°
+4th: 4°
+5th: 5°
+Add Layer: Aggiungi Livello
+Add layer: Aggiungi Livello
+Approve/Confirm: Approva/Conferma
+Are you sure you want to delete this layer?: Sei sicuro di voler cancellare questo livello?
+Your browser default language is: La lingua predefinita del tuo browser &egrave;
+Preferred view: Visualizzazione preferita
+Event reminders: Promemoria eventi
+Events added to my calendar: Eventi aggiunti al mio calendario
+Events removed from my calendar: Eventi rimossi dal mio calendario
+Events updated on my calendar: Eventi aggiornati nel mio calendario
+Event rejected by participant: Evento rifiutato da un partecipante
+User: Utente
+Year: Anno
+The time you have entered begins before your preferred work hours.  Is this correct?: L'ora che hai scelto inizia prima del tuo orario di lavoro. E\' corretto?
+Email: Email
+This is a private event and may not be added to your calendar.: Questo &egrave; un evento privato e non pu&ograve; essere aggiunto al tuo calendario.
+This is a reminder for the event detailed below.: Questo &egrave; un promemoria per l'evento esposto in dettaglio  sotto.
+This will add the entry to your calendar.: Questo aggiunger&agrave; la nota nel tuo calendario.
+This will delete the entry from your calendar.: Questo canceller&agrave; la nota dal tuo calendario.
+hours: ore
+Add to My Calendar
+An appointment has been canceled for you by: Un appuntamento &egrave; stato cancellato da
+An appointment has been rejected by: Un appuntamento &egrave; stato rifiutato da
+An appointment has been updated by: Un appuntamento &egrave; stato aggiornato da
+Edit layer: Modifica livello
+Edit Layer: Modifica Livello
+Edit Layers: Modifica Livelli
+Add to My Calendar: Aggiungi al mio calendario
+before event: prima dell'evento
+Cancel: Cancella
+Color: Colore
+Database error: Errore database
+Day: Giorno
+days: giorni
+Delete layer: Cancella Livelli
+Disable Layers: Disabilita Livelli
+Disabled: Disabilitato
+Disabled for demo: Disabilitato nella demo
+every: ogni
+Export all dates: Esporta tutte le date
+Invalid color: Colore non valido
+Invalid login: Login non valido
+Layer: Livello
+Layers: Livelli
+Layers are currently: Livelli attualmente
+Enable Layers: Abilita Livelli
+Enabled: Abilitati
+Error adding event: Errore durante l'aggiunta di un evento
+display-icons-help: Visualizza le icone vicino a ciascun evento per la visualizzazione, la modifica e la cancellazione. Se impostato su No, devi cliccare sull'evento per poter avere accesso a queste funzioni.
+Reject: Rifiuta
+Reject entry: Rifiuta nota
+Reject this entry?: Rifiuti questa nota?
+Rejected: Rifiutato
+Reminder: Promemoria
+Display icons: Visualizza icone
+Do you want to add this entry to your calendar?: Vuoi aggiungere questa nota al tuo calendario?
+Duplicates: Duplicati
+Source: Fonte
+Show layer events that are the same as your own: Visualizza con i livelli gli eventi identici ai tuoi
+The subject was: L'oggetto era
+email-event-added: Specifica se inviare o meno le notifiche via email quando un evento viene aggiunto al tuo 
+calendario.
+email-event-deleted: Specifica se inviare o meno le notifiche via email quando un evento viene cancellato dal tuo 
+calendario.
+email-event-rejected: Specifica se inviare o meno le notifiche via email quando un partecipante rifiuta un evento 
+presente nel tuo calendario.
+email-event-reminders-help: Specifica se inviare o meno promemoria degli eventi prossimi.
+email-event-updated: Specifica se inviare o meno le notifiche via email quando viene modificato un evento presente 
+nel tuo calendario.
+language-help: Specifica quale lingua usare.
+preferred-view-help: Specifica la visualizzazione preferita (Giorno, Settimana, Mese o Anno).
