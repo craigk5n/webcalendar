@@ -22,6 +22,8 @@ Version 1.0RC4-CVS (?? ??? 2005)
     + Removed most instances of htmlentities as unneeded
     + Admin no longer needs to approve Public events that they create
     + Added option to set LDAP_OPT_PROTOCOL_VERSION in user-ldap.php
+    + Updated install web page to work better on Windows systems.
+      Added display of current PHP settings.
 
   - The following translations were updated:
     + Danish, Finnish
