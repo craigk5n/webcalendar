@@ -364,9 +364,11 @@ function remember_this_view () {
 // Return empty string if we don't know.
 function get_last_view () {
   global $HTTP_COOKIE_VARS;
+  $val = '';
 
-  $val = $HTTP_COOKIE_VARS["webcalendar_last_view"];
-  if ( empty ( $val )) 
+  if ( isset ( $HTTP_COOKIE_VARS["webcalendar_last_view"] ) )
+    $val = $HTTP_COOKIE_VARS["webcalendar_last_view"];
+  else if ( isset ( $_COOKIE["webcalendar_last_view"] ) )
     $val = $_COOKIE["webcalendar_last_view"];
   return $val;
 }
