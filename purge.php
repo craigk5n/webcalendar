@@ -79,6 +79,7 @@ if ( ! empty ( $user ) ) {
 
 <?php
 function purge_events ( $ids ) {
+  global $c; // db connection
   $tables = array ();
   $tables[0][T] = 'webcal_entry_user';        $tables[0][C] = 'cal_id';
   $tables[1][T] = 'webcal_entry_repeats';     $tables[1][C] = 'cal_id';
@@ -95,8 +96,8 @@ function purge_events ( $ids ) {
 
   foreach ( $ids as $cal_id ) {
     for ( $i = 0; $i < $TT; $i++ ) {
-      $res = dbi_query ( "DELETE FROM {$tables[$i][T]} WHERE {$tables[$i][C]} like '$cal_id'" );
-      $num[$tables[$i][T]] += dbi_affected_rows( $res );
+      dbi_query ( "DELETE FROM {$tables[$i][T]} WHERE {$tables[$i][C]} like '$cal_id'" );
+      $num[$tables[$i][T]] += dbi_affected_rows ( $c );
     }
   }
   for ( $i = 0; $i < $TT; $i++ ) {
