@@ -28,7 +28,7 @@ if ( strlen ( $login ) == 0 && $use_http_auth ) {
   } else {
     user_load_variables ( $login, "login_" );
     if ( $login_login != "" ) {
-      $is_admin =  ( $login_admin == "Y" ? true : false );
+      $is_admin =  ( $login_is_admin == "Y" ? true : false );
       $lastname = $login_lastname;
       $firstname = $login_firstname;
       $fullname = $login_fullname;
