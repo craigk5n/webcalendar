@@ -80,18 +80,20 @@ function load_global_settings () {
     $GLOBALS["application_name"] = "Title";
 
   // If $server_url not set, then calculate one for them, then store it
-  // in the database.
+  // in the database.  We only do this for the admin.php page.
   if ( empty ( $GLOBALS["server_url"] ) ) {
     if ( ! empty ( $SERVER_NAME ) && ! empty ( $REQUEST_URI ) ) {
-      $ptr = strpos ( $REQUEST_URI, "admin.php" );
-      $uri = substr ( $REQUEST_URI, 0, $ptr );
-      $server_url = "http://" . $SERVER_NAME;
-      if ( ! empty ( $SERVER_PORT ) && $SERVER_PORT != 80 )
-        $server_url .= ":" . $SERVER_PORT;
-      $server_url .= $uri;
+      $ptr = strpos ( $REQUEST_URI, "/" );
+      if ( $ptr > 0 ) {
+        $uri = substr ( $REQUEST_URI, 0, $ptr );
+        $server_url = "http://" . $SERVER_NAME;
+        if ( ! empty ( $SERVER_PORT ) && $SERVER_PORT != 80 )
+          $server_url .= ":" . $SERVER_PORT;
+        $server_url .= $uri;
       
-      dbi_query ( "INSERT INTO webcal_config ( cal_setting, cal_value ) ".
-        "VALUES ( 'server_url', '$server_url' )" );
+        dbi_query ( "INSERT INTO webcal_config ( cal_setting, cal_value ) ".
+          "VALUES ( 'server_url', '$server_url' )" );
+      }
     }
   }
 
