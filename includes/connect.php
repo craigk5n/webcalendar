@@ -14,6 +14,42 @@ if ( ! $c ) {
   exit;
 }
 
+// First, do a sanity check.  Make sure we can access webcal_config table.
+$res = dbi_query ( "SELECT COUNT(cal_value) FROM webcal_config",
+  false, false );
+if ( $res ) {
+  if ( $row = dbi_fetch_row ( $res ) ) {
+    // Found database.  All is peachy.
+    dbi_free_result ( $res );
+  } else {
+    // Error accessing table.
+    // User has wrong db name or has not created tables.
+    // Note: cannot translate this since we have not included translate.php yet.
+    dbi_free_result ( $res );
+    echo "<html><head><title>Database error</title>\n" .
+      "</head>\n<body><h2>Database error</h2><p>" .
+      "Cannot find WebCalendar tables in database '$db_database' " .
+      "using db login '$db_login' on db server '$db_host'.<br/><br/>\n" .
+      "Have you created the database tables as specified in the " .
+      "<a href=\"docs/WebCalendar-SysAdmin.html\" target=\"other\">WebCalendar " .
+      "System Administrator's Guide</a>?</p></body></html>\n";
+    exit;
+  }
+} else {
+  // Error accessing table.
+  // User has wrong db name or has not created tables.
+  // Note: cannot translate this since we have not included translate.php yet.
+  echo "<html><head><title>Database error</title>\n" .
+    "</head>\n<body><h2>Database error</h2><p>" .
+    "Cannot find WebCalendar tables in database '$db_database' " .
+    "using db login '$db_login' on db server '$db_host'.<br/><br/>\n" .
+    "Have you created the database tables as specified in the " .
+    "<a href=\"docs/WebCalendar-SysAdmin.html\" target=\"other\">WebCalendar " .
+    "System Administrator's Guide</a>?</p></body></html>\n";
+  exit;
+}
+
+
 // global settings have not been loaded yet, so check for public_access now
 $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
   "WHERE cal_setting = 'public_access'" );
