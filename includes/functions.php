@@ -1108,7 +1108,6 @@ function get_site_extra_fields ( $eventid ) {
     }
     dbi_free_result ( $res );
   }
-
   return $extras;
 }
 
@@ -1186,7 +1185,6 @@ function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
         "webcal_entry.cal_date < $enddate_plus1 ) )";
     }
   }
-
   return query_events ( $user, false, $date_filter, $cat_id  );
 }
 
@@ -1257,7 +1255,6 @@ function get_entries ( $user, $date, $get_unapproved=true ) {
       }
     }
   }
-
   return $ret;
 }
 
@@ -1323,7 +1320,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   // now order the results by time and by entry id.
   $sql .= " ORDER BY webcal_entry.cal_time, webcal_entry.cal_id";
 
-  //echo "<span style=\"font-weight:bold;\">SQL:</span> $sql<br />\n";
+  //echo "<strong>SQL:</strong> $sql<br />\n";
   
   $res = dbi_query ( $sql );
   if ( $res ) {
@@ -1406,8 +1403,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   return $result;
 }
 
-// Read all the repeated events for a user.  This is only called once
-// per page request to improve performance.  All the events get loaded
+// Read all the repeated events for a user. This is only called once
+// per page request to improve performance. All the events get loaded
 // into the array $repeated_events sorted by time of day (not date).
 // params:
 //   $user   - username
@@ -1422,7 +1419,7 @@ function read_repeated_events ( $user, $cat_id = '', $date = ''  ) {
 }
 
 //Returns all the dates a specific event will fall on accounting for
-//the repeating.  Any event with no end will be assigned one.
+//the repeating. Any event with no end will be assigned one.
 //params:
 //  $date - initial date in raw format
 //  $rpt_type - repeating type as stored in the database
@@ -1598,6 +1595,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
   }
   return $ret;
 }
+
 // Get all the repeating events for the specified data and return them
 // in an array (which is sorted by time of day).
 // params:
@@ -1621,6 +1619,7 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved=true ) {
   }
   return $ret;
 }
+
 //Returns a boolean stating whether or not the event passed
 //in will fall on the date passed.
 function repeated_event_matches_date($event,$dateYmd) {
@@ -1861,7 +1860,7 @@ function print_date_entries ( $date, $user, $ssi ) {
       echo "(" .
         translate("Week") . "&nbsp;" . week_number ( $dateu ) . ")</a>";
     }
-    print "<br />";
+    print "<br />\n";
     $cnt++;
   }
 
@@ -2232,13 +2231,12 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
     translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
   if ( $pri == 3 )
-    $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">";
+    $hour_arr[$ind] .= "<strong>";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     if ($layers) foreach ($layers as $layer) {
       if ( $layer['cal_layeruser'] == $event_owner ) {
-        $hour_arr[$ind] .= "<span style=\"color:" .
-          $layer['cal_color'] . ";\">";
+        $hour_arr[$ind] .= "<span style=\"color:" . $layer['cal_color'] . ";\">";
       }
     }
   }
@@ -2293,7 +2291,7 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= htmlspecialchars ( $name );
   }
 
-  if ( $pri == 3 ) $hour_arr[$ind] .= "</span>"; //end font-weight span
+  if ( $pri == 3 ) $hour_arr[$ind] .= "</strong>"; //end font-weight span
     $hour_arr[$ind] .= "</a>";
   //if ( $DISPLAY_ICONS == "Y" ) {
   //  $hour_arr[$ind] .= icon_text ( $id, true, true );
@@ -2372,23 +2370,18 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
-// TODO: The following section has several nested spans.
-	$hour_arr[$ind] .=
-		"<a title=\"" .
-		translate("View this entry") .
-		"\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+	$hour_arr[$ind] .= "<a title=\"" .
+		translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
 	if ( strlen ( $GLOBALS["user"] ) > 0 )
 		$hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
 	$hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
-		translate("View this entry") .
-		"'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
-  if ( $pri == 3 ) $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">";
+		translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
+  if ( $pri == 3 ) $hour_arr[$ind] .= "<strong>";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     if ($layers) foreach ($layers as $layer) {
       if ( $layer['cal_layeruser'] == $event_owner) {
-        $hour_arr[$ind] .= "<span style=\"color:" .
-          $layer['cal_color'] . ";\">";
+        $hour_arr[$ind] .= "<span style=\"color:" . $layer['cal_color'] . ";\">";
       }
     }
   }
@@ -2437,7 +2430,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
 
   else
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-  if ( $pri == 3 ) $hour_arr[$ind] .= "</span>"; //end font-weight span
+  if ( $pri == 3 ) $hour_arr[$ind] .= "</strong>"; //end font-weight span
 
   $hour_arr[$ind] .= "</a>";
   if ( $GLOBALS["DISPLAY_DESC_PRINT_DAY"] == "Y" ) {
@@ -2600,8 +2593,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
     $time_h = (int) ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
     $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-    echo "<tr>\n<th class=\"row\">" .
-      $time . "</th>\n";
+    echo "<tr>\n<th class=\"row\">" . $time . "</th>\n";
     if ( $rowspan > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
@@ -3039,7 +3031,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   if ( ! empty($date) ) echo "<input type=\"hidden\" name=\"date\" value=\"$date\" />\n";
   if ( ! empty ( $user ) && $user != $login )
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
-  echo translate ('Category').": <select name=\"cat_id\" onchange=\"document.SelectCategory.submit()\">\n";
+  echo translate ('Category') . ": <select name=\"cat_id\" onchange=\"document.SelectCategory.submit()\">\n";
   echo "<option value=\"\"";
   if ( $cat_id == '' ) echo " selected=\"selected\"";
   echo ">" . translate("All") . "</option>\n";
@@ -3248,7 +3240,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
 
   if ($time >= 0) {
     $ev_start=$time/10000 * 60 + (($time/100)%100);
-    $ev_start = round(100 * ($ev_start - $day_start) / ($day_end - $day_start));
+    $ev_start = round(100 * (($ev_start - $day_start) / ($day_end - $day_start)));
   } else {
     $ev_start= 0;
   }
@@ -3282,7 +3274,6 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     }
   };
 
-//TODO: The following section has several nested spans.
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $class = "layerentry";
   } else {
@@ -3296,21 +3287,18 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
-  if ( $pri == 3 ) echo "<span style=\"font-weight:bold;\">";
+  if ( $pri == 3 ) echo "<strong>";
   $popupid = "eventinfo-$id-$key";
   $key++;
   echo "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
   if ( strlen ( $user ) > 0 )
     echo "&amp;user=" . $user;
-  echo "\" onmouseover=\"window.status='" . translate("View this entry") .
-    "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
+  echo "\" onmouseover=\"window.status='" . 
+  	translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
 
-  if ( $login != $event_owner && strlen ( $event_owner ) )
-  {
-    if ($layers) foreach ($layers as $layer)
-    {
-        if($layer['cal_layeruser'] == $event_owner)
-        {
+  if ( $login != $event_owner && strlen ( $event_owner ) ) {
+    if ($layers) foreach ($layers as $layer) {
+        if($layer['cal_layeruser'] == $event_owner) {
             echo("<span style=\"color:" . $layer['cal_color'] . ";\">");
         }
     }
@@ -3350,7 +3338,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   else
     echo htmlspecialchars ( $name );
   echo "</a>";
-  if ( $pri == 3 ) echo "</span>"; //end font-weight span
+  if ( $pri == 3 ) echo "</strong>"; //end font-weight span
   echo "</td>\n";
   if ( $pos < 2 ) {
     if ( $pos < 1 ) {
@@ -3381,16 +3369,17 @@ function print_header_timebar($start_hour, $end_hour) {
   if ( ($end_hour - $start_hour) == 0 )
     $offset = 0;
   else
-    $offset = round(50/($end_hour - $start_hour));
-    echo "\n<!-- TIMEBAR -->\n<table class=\"timebar\">\n<tr>\n<td style=\"width:$offset%;\">&nbsp;</td>\n";
+    $offset = round(100/($end_hour - $start_hour));
+    echo "\n<!-- TIMEBAR -->\n<table class=\"timebar\">\n<tr><td style=\"width:$offset%;\">&nbsp;</td>\n";
    for ($i = $start_hour+1; $i < $end_hour; $i++) {
-     $prev_offset = $offset;
-     $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
-     $width = $offset - $prev_offset;
-    echo "<td style=\"width:$width%;\">$i</td>\n";
+//     $prev_offset = $offset;
+//     $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
+     $offset = round(100/($end_hour - $start_hour));
+     $width = $offset;
+    echo "<td style=\"width:$width%;text-align:left;\">$i</td>\n";
    }
-   $width = 100 - $offset;
-   echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
+//   $width = 100 - $offset;
+//   echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
    echo "</tr>\n</table>\n<!-- /TIMEBAR -->\n";
  
    // print yardstick

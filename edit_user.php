@@ -26,7 +26,6 @@ if ( empty ( $user ) ) {
 
 print_header('', '', '', true);
 ?>
-
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top; width:50%;">
 <h2><?php
@@ -37,7 +36,6 @@ print_header('', '', '', true);
 		echo translate("Add User");
 	}
 ?></h2>
-
 <form action="edit_user_handler.php" method="post">
 <input type="hidden" name="formtype" value="edituser" />
 <?php
@@ -45,7 +43,6 @@ print_header('', '', '', true);
 		echo "<input type=\"hidden\" name=\"add\" value=\"1\" />\n";
 	}
 ?>
-
 <table style="border-width:0px;">
 	<tr><td>
 		<label for="username"><?php etranslate("Username")?>:</label></td><td>
@@ -86,8 +83,8 @@ print_header('', '', '', true);
 if ( $is_admin ) { ?>
 	<tr><td style="font-weight:bold;">
 		<?php etranslate("Admin")?>:</td><td>
-		<label><input type="radio" name="uis_admin" value="Y"<?php if ( $uis_admin == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>
-		&nbsp;<label><input type="radio" name="uis_admin" value="N"<?php if ( $uis_admin != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+		<label><input type="radio" name="uis_admin" value="Y"<?php if ( $uis_admin == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+		<label><input type="radio" name="uis_admin" value="N"<?php if ( $uis_admin != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 	</td></tr>
 <?php } //end if ($is_admin ) ?>
 	<tr><td colspan="2">
@@ -99,9 +96,8 @@ if ( $is_admin ) { ?>
 		<?php } else { ?>
 			<input type="submit" value="<?php etranslate("Save")?>" />
 			<?php if ( $is_admin && ! empty ( $user ) ) {
-				if ( $admin_can_delete_user )
-			?>
-				<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
+				if ( $admin_can_delete_user ) ?>
+				<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this user?"); ?>')" />
 			<?php } ?>
 		<?php } ?>
 	</td></tr>
@@ -139,6 +135,5 @@ if ( $is_admin ) { ?>
 </form>
 <?php } ?>
 </td></tr></table>
-
 </body>
 </html>

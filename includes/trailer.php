@@ -127,7 +127,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 </form>
 <div id="menu">
 <!-- GO TO -->
-<span style="font-weight:bold; font-size: 14px;"><?php etranslate("Go to")?>:</span> 
+<span class="prefix"><?php etranslate("Go to")?>:</span> 
 <?php
   $can_add = ( $readonly == "N" || $is_admin == "Y" );
   if ( $public_access == "Y" && $public_access_can_add != "Y" &&
@@ -232,10 +232,9 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 ?>
 
 <!-- VIEWS -->
-<br />
 <?php if ( ( $login != "__public__" ) &&
-         ( $allow_view_other != "N" || $is_admin ) ) { ?>
-<span style="font-weight:bold; font-size: 14px;"><?php etranslate("Views")?>: </span>
+         ($allow_view_other != "N") ) { ?>
+<br /><span class="prefix"><?php etranslate("Views")?>:</span>&nbsp;
 <?php
   for ( $i = 0; $i < count ( $views ); $i++ ) {
     if ( $i > 0 )
@@ -287,8 +286,8 @@ if ( $res ) {
     if ( $found_report )
       echo " | ";
     else
-      echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
-	translate("Reports") . ":</span> ";
+      echo "<span class=\"prefix\">" . 
+      	translate("Reports") . ":</span>&nbsp;";
     echo "<a title=\"" . 
 	htmlentities ( $row[0] ) . "\" href=\"report.php?report_id=$row[1]$u_url\">" . 
 	htmlentities ( $row[0] ) . "</a>\n";
@@ -309,12 +308,12 @@ if ( ! $use_http_auth ) {
 		$login_url = "login.php?return_path=$login_return_path";
 
 	if ( strlen ( $login ) && $login != "__public__" ) {
-		echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
+		echo "<span class=\"prefix\">" .
 			translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 
 			translate("Logout") . "\" href=\"$login_url\">" . 
 			translate("Logout") . "</a>)<br />\n";
 	} else {
-		echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
+		echo "<span class=\"prefix\">" .
 			translate("Current User") . ":</span>&nbsp;" . 
 			translate("Public Access") . "&nbsp;(<a title=\"" . 
 			translate("Login") . "\" href=\"$login_url\">" . 
@@ -323,7 +322,7 @@ if ( ! $use_http_auth ) {
 }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
   if ( $has_boss || ! empty ( $admincals[0] ) ) {
-    echo "<span style=\"font-weight:bold; font-size: 14px;\">";
+    echo "<span class=\"prefix\">";
     etranslate("Manage calendar of");
     echo ":</span>&nbsp;";
     $grouplist = user_get_boss_list ($login);

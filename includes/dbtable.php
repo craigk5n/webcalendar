@@ -8,8 +8,6 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 // in a table.
 // You need to define the tables (typically this is done in tables.php).
 
-
-
 // $tablear - array that defines table (see tables.php)
 // $fieldname - name of field
 function dbtable_get_field_index ( $tablear, $fieldname ) {
@@ -82,16 +80,14 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
           $ret .= " value=\"" . htmlspecialchars ( $valuesar[$i] ) . "\"";
         $ret .= " />";
       } else if ( $tablear[$i]["type"] == "boolean" ) {
-        $ret .= "<input type=\"radio\" value=\"Y\" name=\"" . $tablear[$i]["name"] .
-          "\"";
+        $ret .= "<input type=\"radio\" value=\"Y\" name=\"" . $tablear[$i]["name"] . "\"";
         if ( $valuesar[$i] == "Y" )
           $ret .= " checked=\"checked\"";
-        $ret .= "> " . translate("Yes") . "&nbsp;&nbsp;&nbsp;";
-        $ret .= "<input type=\"radio\" value=\"N\" name=\"" . $tablear[$i]["name"] .
-          "\"";
+        $ret .= ">" . translate("Yes") . "&nbsp;&nbsp;&nbsp;";
+        $ret .= "<input type=\"radio\" value=\"N\" name=\"" . $tablear[$i]["name"] . "\"";
         if ( $valuesar[$i] != "Y" )
           $ret .= " checked=\"checked\"";
-        $ret .= "> " . translate("No");
+        $ret .= ">" . translate("No");
       } else if ( $tablear[$i]["type"] == "date" ) {
         $ret .= date_selection_html ( $tablear[$i]["name"], $valuesar[$i] );
       } else if ( $tablear[$i]["type"] == "dbdate" ) {
@@ -130,14 +126,13 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
     $ret .= "</td></tr>\n";
   }
   if ( ! empty ( $actionlabel ) )
-    $ret .= "<tr><td colspan=\"2\" style=\"text-align:center;\"><input type=\"submit\"" .
-      " VALUE=\"" . htmlspecialchars ( $actionlabel ) . "\" />" .
-      "</td></tr></form>\n";
+    $ret .= "<tr><td colspan=\"2\" style=\"text-align:center;\">\n" . 
+    	"<input type=\"submit\" value=\"" . htmlspecialchars ( $actionlabel ) . "\" />" . 
+	"</td></tr></form>\n";
   $ret .= "</table>\n</td></tr></table>\n</td></tr></table>\n";
 
   return $ret;
 }
-
 
 // Print rows of a table into an HTML table.  The first column will
 // include (optionally) href links to a page which can show further 
@@ -172,8 +167,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
 */
     if ( empty ( $tablear[$ind]["hide"] ) )
       $ret .= "<th style=\"background-color:$THBG; color:$THFG;\">" .
-        $tablear[$ind]["prompt"] .
-        "</th>";
+        $tablear[$ind]["prompt"] . "</th>";
   }
   $ret .= "</tr>\n";
   $sql = "SELECT " . $fields[0];
@@ -206,7 +200,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
   }
   if ( ! empty ( $order ) )
     $sql .= " ORDER BY " . $order;
-  //echo "SQL: $sql<P>\n";
+  //echo "SQL: $sql<br />\n";
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -250,8 +244,6 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
   return $ret;
 }
 
-
-
 // Load a single row of a db table
 // $tablear - db table (defined in tables.php)
 // $tablename - db table name
@@ -260,11 +252,11 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
   $ret = false;
   $sql = "SELECT ";
   if ( ! is_array ( $tablear ) ) {
-    echo "Error: dbtable_load parameter 1 is not an array!\n<br />\n";
+    echo "Error: dbtable_load parameter 1 is not an array!<br />\n";
     exit;
   }
   if ( ! is_array ( $keys ) ) {
-    echo "Error: dbtable_load parameter 3 is not an array!\n<br />\n";
+    echo "Error: dbtable_load parameter 3 is not an array!<br />\n";
     exit;
   }
   $first = 1;
@@ -300,7 +292,7 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
       }
     }
   }
-  //echo "SQL: $sql <br /><br />\n";
+  //echo "SQL: $sql<br />\n";
   $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
@@ -315,11 +307,8 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
   } else {
     echo translate("Database error") . ": " . dbi_error (); exit;
   }
-
   return $ret;
 }
-
-
 
 // Delete a single row of a db table
 // $tablear - db table (defined in tables.php)
@@ -328,11 +317,11 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
 function dbtable_delete ( $tablear, $tablename, $keys ) {
   $ret = false;
   if ( ! is_array ( $tablear ) ) {
-    echo "Error: dbtable_delete parameter 1 is not an array!\n<br />\n";
+    echo "Error: dbtable_delete parameter 1 is not an array!<br />\n";
     exit;
   }
   if ( ! is_array ( $keys ) ) {
-    echo "Error: dbtable_delete parameter 3 is not an array!\n<br />\n";
+    echo "Error: dbtable_delete parameter 3 is not an array!<br />\n";
     exit;
   }
   $sql = "DELETE FROM $tablename WHERE ";
@@ -357,14 +346,12 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
       }
     }
   }
-  //echo "SQL: $sql <br /><br />\n";
+  //echo "SQL: $sql<br />";
   if ( ! dbi_query ( $sql ) ) {
     echo translate("Database error") . ": " . dbi_error (); exit;
   }
-
   return $ret;
 }
-
 
 // Add a row into a table (SQL insert)
 // $tablear - db table (defined in tables.php)
@@ -375,11 +362,11 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
   $ret = false;
   $sql = "INSERT INTO " . $tablename . " (";
   if ( ! is_array ( $tablear ) ) {
-    echo "Error: dbtable_add parameter 1 is not an array!\n<br />\n";
+    echo "Error: dbtable_add parameter 1 is not an array!<br />\n";
     exit;
   }
   if ( ! is_array ( $valuesar ) ) {
-    echo "Error: dbtable_add parameter 3 is not an array!\n<br />\n";
+    echo "Error: dbtable_add parameter 3 is not an array!<br />\n";
     exit;
   }
   $first = 1;
@@ -410,7 +397,7 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
       $sql .= "'" . $valuesar[$i] . "'";
   }
   $sql .= " )";
-  //echo "SQL: $sql <P>\n";
+  //echo "SQL: $sql<br />\n";
   if ( ! dbi_query ( $sql ) ) {
     // Shouldn't happen... complain if it does.
     $error = translate("Database error") . ": " . dbi_error ();
@@ -418,7 +405,6 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
   }
   return true;
 }
-
 
 // Update a row in a table (SQL update)
 // $tablear - db table (defined in tables.php)
@@ -428,11 +414,11 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
   global $error;
   $sql = "UPDATE " . $tablename . " SET";
   if ( ! is_array ( $tablear ) ) {
-    echo "Error: dbtable_update parameter 1 is not an array!\n<br />\n";
+    echo "Error: dbtable_update parameter 1 is not an array!<br />\n";
     exit;
   }
   if ( ! is_array ( $valuesar ) ) {
-    echo "Error: dbtable_update parameter 3 is not an array!\n<br />\n";
+    echo "Error: dbtable_update parameter 3 is not an array!<br />\n";
     exit;
   }
   $first = 1;
@@ -467,7 +453,7 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
       $sql .= " AND";
     if ( empty ( $valuesar[$i] ) ) {
       echo "Error: you must set field $i (" . $tablear[$i]["name"] .
-        ") by hand.  Cannot be empty.";
+        ") by hand. Cannot be empty.";
       exit;
     }
     $sql .= " " . $tablear[$i]["name"] . " = '" . $valuesar[$i] . "'";
