@@ -201,6 +201,7 @@ if ( ! $res ) {
 }
 $row = dbi_fetch_row ( $res );
 $create_by = $row[0];
+$orig_date = $row[1];
 $event_time = $row[2];
 $name = $row[9];
 $description = $row[10];
@@ -602,16 +603,20 @@ if ( $can_edit && $event_status != "D" ) {
   if ( $event_repeats ) {
     echo "<A CLASS=\"navlinks\" HREF=\"edit_entry.php?id=$id$u_url\">" .
       translate("Edit repeating entry for all dates") . "</A><BR>\n";
-    echo "<A CLASS=\"navlinks\" HREF=\"edit_entry.php?id=$id$u_url$rdate&override=1\">" .
-      translate("Edit entry for this date") . "</A><BR>\n";
+    // Don't allow override of first event
+    if ( ! empty ( $date ) && $date != $orig_date )
+      echo "<A CLASS=\"navlinks\" HREF=\"edit_entry.php?id=$id$u_url$rdate&override=1\">" .
+        translate("Edit entry for this date") . "</A><BR>\n";
     echo "<A CLASS=\"navlinks\" HREF=\"del_entry.php?id=$id$u_url&override=1\" onClick=\"return confirm('" .
       translate("Are you sure you want to delete this entry?") .
       "\\n\\n" . translate("This will delete this entry for all users.") .
       "');\">" . translate("Delete repeating event for all dates") . "</A><BR>\n";
-    echo "<A CLASS=\"navlinks\" HREF=\"del_entry.php?id=$id$u_url$rdate&override=1\" onClick=\"return confirm('" .
-      translate("Are you sure you want to delete this entry?") .
-      "\\n\\n" . translate("This will delete this entry for all users.") .
-      "');\">" . translate("Delete entry only for this date") . "</A><BR>\n";
+    // Don't allow deletion of first event
+    if ( ! empty ( $date ) && $date != $orig_date )
+      echo "<A CLASS=\"navlinks\" HREF=\"del_entry.php?id=$id$u_url$rdate&override=1\" onClick=\"return confirm('" .
+        translate("Are you sure you want to delete this entry?") .
+        "\\n\\n" . translate("This will delete this entry for all users.") .
+        "');\">" . translate("Delete entry only for this date") . "</A><BR>\n";
   } else {
     echo "<A CLASS=\"navlinks\" HREF=\"edit_entry.php?id=$id$u_url\">" .
       translate("Edit entry") . "</A><BR>\n";
