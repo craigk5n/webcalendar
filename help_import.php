@@ -22,7 +22,7 @@ print_header();
 
 <h3><?php etranslate("vCal")?></h3>
 
-<?php etranslate("This form will import vCalendar (.cvs) 1.0 events");?>.
+<?php etranslate("This form will import vCalendar (.vcs) 1.0 events");?>.
 <p>
 <?php etranslate("The following formats have been tested");?>:
 <ul>
