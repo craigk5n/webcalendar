@@ -352,7 +352,12 @@ a.matrix img {
 .popup {
 	font-size: 12px;
 	color: <?php echo $GLOBALS['POPUP_FG']; ?>;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+	background: <?php echo $GLOBALS['POPUP_BG']; ?> url("gradient.php?height=200&base=<?php echo substr ( $GLOBALS['POPUP_BG'], 1 ); ?>") repeat-x;
+<?php } else { ?>
 	background-color: <?php echo $GLOBALS['POPUP_BG']; ?>;
+<?php } ?>
 	text-decoration: none;
 	position: absolute;
 	z-index: 20;
@@ -559,7 +564,7 @@ textarea {
 	vertical-align: top;
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=50&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['CELLBG']; ?> url("gradient.php?height=50&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['CELLBG'];?>;
 <?php } ?>
@@ -656,7 +661,7 @@ th {
 	width: 10%;
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['TODAYCELLBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 <?php } ?>
@@ -667,7 +672,7 @@ th {
 #week .main th.today {
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['TODAYCELLBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 <?php } ?>
@@ -695,7 +700,7 @@ th {
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['CELLBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['CELLBG'];?>;
 <?php } ?>
@@ -708,7 +713,7 @@ th {
 	font-size: 12px;
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['CELLBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['CELLBG'];?>;
 <?php } ?>
@@ -725,7 +730,7 @@ th {
 #week .main td.weekend {
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['WEEKENDBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['WEEKENDBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['WEEKENDBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
 <?php } ?>
@@ -739,7 +744,7 @@ th {
 #viewv .main td.today {
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['TODAYCELLBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 <?php } ?>
@@ -775,7 +780,7 @@ th {
 #viewt td.reg {
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['CELLBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 <?php } ?>
@@ -820,7 +825,7 @@ th {
 	color: <?php echo $GLOBALS['THFG']; ?>;
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['THBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['THBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['THBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['THBG']; ?>;
 <?php } ?>
@@ -834,7 +839,7 @@ th {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['CELLBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 <?php } ?>
@@ -847,7 +852,7 @@ th {
 ?>#weekdetails .main th.today {
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['TODAYCELLBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 <?php } ?>
@@ -858,7 +863,7 @@ th {
 ?>#weekdetails .main td.weekend {
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['WEEKENDBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['WEEKENDBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['WEEKENDBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
 <?php } ?>
@@ -908,7 +913,7 @@ th {
 	width: 90%;
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['WEEKENDBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['WEEKENDBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['WEEKENDBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
 <?php } ?>
@@ -920,7 +925,7 @@ th {
 	width: 90%;
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['TODAYCELLBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 <?php } ?>
@@ -932,7 +937,7 @@ th {
 	color: <?php echo $GLOBALS['THFG']; ?>;
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['TODAYCELLBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['TODAYCELLBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 <?php } ?>
@@ -949,7 +954,7 @@ th {
 	border: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=200&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['CELLBG']; ?> url("gradient.php?height=200&base=<?php echo substr ( $GLOBALS['CELLBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 <?php } ?>
@@ -962,7 +967,7 @@ th {
 	color: <?php echo $GLOBALS['THFG']; ?>;
 <?php if ( function_exists ( "imagepng" ) &&
   ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
-	background-image: url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['THBG'], 1 ); ?>");
+	background: <?php echo $GLOBALS['THBG']; ?> url("gradient.php?height=100&base=<?php echo substr ( $GLOBALS['THBG'], 1 ); ?>") repeat-x;
 <?php } else { ?>
 	background-color: <?php echo $GLOBALS['THBG']; ?>;
 <?php } ?>
