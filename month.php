@@ -80,7 +80,9 @@ if ( ! $friendly ) {
         print "<td>&nbsp;</td>\n";
       }
     }
-    print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
+    if ( isset ( $DISPLAY_WEEKNUMBER ) && $DISPLAY_WEEKNUMBER == 'Y' ) {
+      print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
+    }
     print "</tr>\n";
   }
   echo "</table></td>\n";
@@ -151,7 +153,9 @@ if ( ! $friendly ) {
         print "<td>&nbsp;</td>\n";
       }
     }
-    print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
+    if ( isset ( $DISPLAY_WEEKNUMBER ) && $DISPLAY_WEEKNUMBER == 'Y' ) {
+      print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
+    }
     print "</tr>\n";
   }
   echo "</table></td>\n";
