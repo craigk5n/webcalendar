@@ -1,4 +1,6 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Removed "Admin" menu from trailer and replaced with a new admin page
+    (adminhome.php) that lists all admin functions.
   - Updated documentation in docs directory.
   - In week "view", table columns had wrong width setting
   - In year view, show days with events in bold.  Must enable new

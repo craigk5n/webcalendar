@@ -148,6 +148,8 @@
     else
       echo "<A CLASS=\"navlinks\" HREF=\"$mycal\"><B>" .
         translate("My Calendar") . "</B></A>";
+    echo " | <A CLASS=\"navlinks\" HREF=\"adminhome.php\"><B>" .
+      translate("Admin") . "</B></A>";
     if ( ! $use_http_auth ) {
       if ( empty ( $login_return_path ) )
         $login_url = "login.php";
@@ -171,6 +173,8 @@
   } else {
     echo "<A CLASS=\"navlinks\" HREF=\"$mycal\"><B>" .
       translate("My Calendar") . "</B></A>";
+    echo " | <A CLASS=\"navlinks\" HREF=\"adminhome.php\"><B>" .
+      translate("Admin") . "</B></A>";
   }
   // only display some links if we're viewing our own calendar.
   if ( empty ( $user ) || $user == $login ) {
@@ -269,55 +273,8 @@ if ( $login != "__public__" ) {
 <?php } ?>
 
 <?php
-  if ( $single_user != "Y" && $readonly != "Y" && $login != "__public__" ) {
-    echo "<B>" . translate("Admin") . ":</B>\n";
-    if ( $is_admin )
-      echo "<A CLASS=\"navlinks\" HREF=\"admin.php\">" . translate("System Settings") . "</A> |\n";
-    
-    $url = "pref.php"; if ($is_nonuser_admin) $url .= "?user=$user";
-    echo "<A CLASS=\"navlinks\" HREF=\"$url\">" . translate("Preferences") . "</A>\n";
-
-    if ( $categories_enabled == "Y" && $login != "__public__"
-      && $readonly != "Y" )
-      echo " | <A CLASS=\"navlinks\" HREF=\"category.php\">" .
-      translate ("Categories") . "</A>\n";
-    if ( $allow_view_other == "Y" || $is_admin ) {
-      echo " | <A CLASS=\"navlinks\" HREF=\"layers.php\">" .
-        translate ("Edit Layers") . "</A>\n";
-
-      if ( $LAYERS_STATUS == "N" || $LAYERS_STATUS == "" )
-        echo " | <A CLASS=\"navlinks\" HREF=\"layers_toggle.php?status=on\">" .
-          translate ("Enable Layers") . "</A>\n";
-      else
-        echo " | <A CLASS=\"navlinks\" HREF=\"layers_toggle.php?status=off\">" .
-          translate ("Disable Layers") . "</A>\n";
-    }
-
-    if ( $is_admin ) {
-      echo " | <A CLASS=\"navlinks\" HREF=\"users.php\">" .
-        translate ("Users") . "</A>\n";
-      if ($nonuser_enabled == "Y" )
-        echo " | <A CLASS=\"navlinks\" HREF=\"nonusers.php\">" .
-          translate ("NonUser") . "</A>\n";
-      if ( $groups_enabled == "Y" )
-        echo " | <A CLASS=\"navlinks\" HREF=\"groups.php\">" .
-          translate ("Groups") . "</A>\n";
-      echo " | <A CLASS=\"navlinks\" HREF=\"activity_log.php\">" .
-        translate ("Activity Log") . "</A>\n";
-    } else {
-      echo " | <A CLASS=\"navlinks\" HREF=\"edit_user.php\">" .
-        translate ("Account") . "</A>\n";
-    }
-    if ( $single_user != "Y" ) {
-      $url = "assistant_edit.php";
-      if ($is_nonuser_admin) $url .= "?user=$user";
-      echo " | <A CLASS=\"navlinks\" HREF=\"$url\">" .
-        translate ("Assistants") . "</A>\n";
-    }
-    if ( strlen ( $login ) && $login != "__public__" ) {
-      echo "<BR><B>" . translate("Current User") . ":</B>$fullname<BR>\n";
-    }
-
+  if ( strlen ( $login ) && $login != "__public__" ) {
+    echo "<b>" . translate("Current User") . ":</b>$fullname<br>\n";
   }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
   if ( $has_boss || $admincals[0] ) {
