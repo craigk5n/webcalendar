@@ -117,7 +117,7 @@ function import_data ( $data, $overwrite, $type ) {
   global $login, $count_con, $count_suc, $error_num, $ImportType, $LOG_CREATE;
   global $single_user, $single_user_login, $allow_conflicts;
   global $numDeleted, $errormsg;
-  global $calUser, $H2COLOR;
+  global $calUser, $H2COLOR, $sqlLog;
 
   $oldUIDs = array ();
   $oldIds = array ();
