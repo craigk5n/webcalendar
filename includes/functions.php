@@ -4403,17 +4403,17 @@ function background_css ( $color, $height = '', $percent = '' ) {
   *	$date - the date to show the grid for
   *	$participants - which users should be included in the grid
   */
-function daily_matrix ( $date, $participants ) {
+function daily_matrix ( $date, $participants, $popup = '' ) {
   global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TABLEBG;
-  global $user_fullname,$nowYmd,$repeated_events,$events;
-  global $thismonth, $thisday, $thisyear, $TZ_OFFSET,$ignore_offset;
+  global $user_fullname, $repeated_events, $events;
+  global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR, $TZ_OFFSET,$ignore_offset;
 
   $increment = 15;
   $interval = 4;
   $participant_pct = '20%'; //use percentage
 
-  $first_hour = $GLOBALS["WORK_DAY_START_HOUR"];
-  $last_hour = $GLOBALS["WORK_DAY_END_HOUR"];
+  $first_hour = $WORK_DAY_START_HOUR;
+  $last_hour = $WORK_DAY_END_HOUR;
   $hours = $last_hour - $first_hour;
   $cols = (($hours * $interval) + 1);
   $total_pct = '80%';
@@ -4424,14 +4424,14 @@ function daily_matrix ( $date, $participants ) {
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
 
     /* Pre-Load the repeated events for quckier access */
-    $repeated_events = read_repeated_events ( $participants[$i], "", $nowYmd );
+    $repeated_events = read_repeated_events ( $participants[$i], "", $date );
     /* Pre-load the non-repeating events for quicker access */
-    $events = read_events ( $participants[$i], $nowYmd, $nowYmd );
+    $events = read_events ( $participants[$i], $date, $date );
 
     // get all the repeating events for this date and store in array $rep
-    $rep = get_repeating_entries ( $participants[$i], $nowYmd );
+    $rep = get_repeating_entries ( $participants[$i], $date );
     // get all the non-repeating events for this date and store in $ev
-    $ev = get_entries ( $participants[$i], $nowYmd );
+    $ev = get_entries ( $participants[$i], $date );
 
     // combine into a single array for easy processing
     $ALL = array_merge ( $rep, $ev );
@@ -4499,19 +4499,20 @@ function daily_matrix ( $date, $participants ) {
   for($i=$first_hour;$i<$last_hour;$i++) {
      for($j=0;$j<$interval;$j++) {
         $str .= '	<td  id="C'.$CC.'" class="dailymatrix" ';
+        $MouseDown = 'onmousedown="schedule_event('.$i.','.($increment * $j).');"';
         switch($j) {
           case 1:
                   if($interval == 4) { $k = ($i<=9?'0':substr($i,0,1)); }
-		  $str .= 'style="width:'.$cell_pct.'%; text-align:right;"  onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+		  $str .= 'style="width:'.$cell_pct.'%; text-align:right;"  '.$MouseDown." onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
                   $str .= $k."</td>\n";
                   break;
           case 2:
                   if($interval == 4) { $k = ($i<=9?substr($i,0,1):substr($i,1,2)); }
-		  $str .= 'style="width:'.$cell_pct.'%; text-align:left;" onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+		  $str .= 'style="width:'.$cell_pct.'%; text-align:left;" '.$MouseDown." onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
                   $str .= $k."</td>\n";
                   break;
           default:
-		  $str .= 'style="width:'.$cell_pct.'%;" onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+		  $str .= 'style="width:'.$cell_pct.'%;" '.$MouseDown." onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
                   $str .= "&nbsp;&nbsp;</td>\n";
                   break;
         }
