@@ -1,6 +1,5 @@
 <!-- Note: Although we may set the font size in here, we also make heavy
-     use of the HTML font tag since many browsers do not properly support 
-     style sheet font settings.
+     use of the HTML font tag since many browsers do not properly support style sheet font settings.
 -->
 <style type="text/css">
 <!--
@@ -21,7 +20,7 @@
   font-size: 12px;
   width: 80px;
   height: 80px;
-  background-color: <?php echo ( $WEEKENDBG == "" ?!T!8X"#E0E0E0" : $WEEKENDBG );?>;
+  background-color: <?php echo ( $WEEKENDBG == "" ? "#E0E0E0" : $WEEKENDBG );?>;
 }
 .tablecellweekenddemo {
   font-family: <?php echo $FONTS ?>;
