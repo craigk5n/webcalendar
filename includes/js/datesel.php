@@ -1,5 +1,8 @@
 <?php
 global $form, $fmonth, $fday, $fyear;
+if (preg_match("/datesel\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
 ?>
 
 <script type="text/javascript">
