@@ -13,7 +13,7 @@ $error = "";
 
 if ( $action == "Delete" || $action == translate ("Delete") ) {
   // delete this nonuser calendar
-  $user = $id;
+  $user = $nid;
 
   // Get event ids for all events this user is a participant
   $events = array ();
@@ -62,16 +62,16 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
     $sql = "UPDATE webcal_nonuser_cals SET ";
     if ($nlastname) $sql .= " cal_lastname = '$nlastname', ";
     if ($nfirstname) $sql .= " cal_firstname = '$nfirstname', ";
-    $sql .= "cal_admin = '$nadmin' WHERE cal_login = '$id'";
+    $sql .= "cal_admin = '$nadmin' WHERE cal_login = '$nid'";
     if ( ! dbi_query ( $sql ) ) {
       $error = translate ("Database error") . ": " . dbi_error();
     }
   } else {
   // Adding
-    $id = $NONUSER_PREFIX.$id;
+    $nid = $NONUSER_PREFIX.$nid;
     $sql = "INSERT INTO webcal_nonuser_cals " .
     "( cal_login, cal_firstname, cal_lastname, cal_admin ) " .
-    "VALUES ( '$id', '$nfirstname', '$nlastname', '$nadmin' )";
+    "VALUES ( '$nid', '$nfirstname', '$nlastname', '$nadmin' )";
     if ( ! dbi_query ( $sql ) ) {
       $error = translate ("Database error") . ": " . dbi_error();
     }

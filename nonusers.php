@@ -21,20 +21,21 @@ if ( ! $NONUSER_PREFIX ) {
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("NonUser")?></FONT></H2>
 
 <?php
-// Adding/Editing category
-if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
+// Adding/Editing nonuser calendar
+if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
   $userlist = get_my_users ();
   $button = translate("Add");
+  $nid = clean($nid);
   ?>
   <FORM ACTION="nonusers_handler.php" METHOD="POST">
   <?php
-  if ( ! empty ( $id ) ) {
-    nonuser_load_variables ( $id, 'nonusertemp_' );
-    $id_display = "$id <INPUT NAME=\"id\" TYPE=\"hidden\" VALUE=\"$id\">";
+  if ( ! empty ( $nid ) ) {
+    nonuser_load_variables ( $nid, 'nonusertemp_' );
+    $id_display = "$nid <INPUT NAME=\"nid\" TYPE=\"hidden\" VALUE=\"$nid\">";
     $button = translate("Save");
     $nonusertemp_login = substr($nonusertemp_login, strlen($NONUSER_PREFIX));
   } else {
-    $id_display = "<INPUT NAME=\"id\" SIZE=\"20\" MAX=\"20\">";
+    $id_display = "<INPUT NAME=\"nid\" SIZE=\"20\" MAX=\"20\">";
   }
   ?>
   <table>
@@ -54,7 +55,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
 
   <BR><BR>
   <INPUT TYPE="submit" NAME="action" VALUE="<?php echo $button;?>">
-  <?php if ( ! empty ( $id ) ) {  ?>
+  <?php if ( ! empty ( $nid ) ) {  ?>
     <INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete");?>" ONCLICK="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')">
   <?php }  ?>
   </FORM>
@@ -65,7 +66,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   if ( ! empty ( $userlist ) ) {
     echo "<UL>";
     for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-      echo "<LI><A HREF=\"nonusers.php?id=" . $userlist[$i]["cal_login"] . "\">"
+      echo "<LI><A HREF=\"nonusers.php?nid=" . $userlist[$i]["cal_login"] . "\">"
           . $userlist[$i]['cal_fullname'] . "</A></LI>\n";
     }
     echo "</UL>";
