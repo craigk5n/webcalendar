@@ -63,7 +63,7 @@ print_header('','','',true);
 </TABLE>
 <?php } ?>
 
-<?php if ( $allow_color_customization ) { ?>
+<?php if ( $allow_color_customization == 'Y' ) { ?>
 <H3><?php etranslate("Colors")?></H3>
 <?php etranslate("colors-help")?>
 <P>

@@ -339,7 +339,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 </TABLE></TD></TR></TABLE></TD></TR></TABLE>
 <?php } /* $PUBLISH_ENABLED == 'Y' */ ?>
 
-<?php if ( $allow_color_customization ) { ?>
+<?php if ( $allow_color_customization == 'Y' ) { ?>
 
 <H3><?php etranslate("Colors")?></H3>
 
