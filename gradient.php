@@ -80,6 +80,14 @@ else {
   }
 }
 
+$percent = getGetValue ( "percent" );
+if ( ! empty ( $percent ) ) {
+  if ( preg_match ( "/^\d+$/", $percent ) ) {
+    if ( $percent > 0 && $percent < 100 )
+      $PERCENT = $percent;
+  }
+}
+
 // Get base color
 $red = $green = $blue = 192;
 $base = getGetValue ( "base" );
