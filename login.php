@@ -42,6 +42,10 @@ if ( $single_user == "Y" ) {
   do_redirect ( "index.php" );
 } else {
   if ( ! empty ( $login ) && ! empty ( $password ) ) {
+    if ( get_magic_quotes_gpc() ) {
+      $password = stripslashes ( $password );
+      $login = stripslashes ( $login );
+    }
     $login = trim ( $login );
     if ( user_valid_login ( $login, $password ) ) {
       user_load_variables ( $login, "" );
