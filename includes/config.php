@@ -127,6 +127,7 @@ $languages = array (
   "Browser-defined" =>"none",
   "English" =>"English-US",
   "Basque" => "Basque",
+  "Bulgarian" => "Bulgarian",
   "Chinese (Traditonal/Big5)" => "Chinese-Big5",
   "Chinese (Simplified/GB2312)" => "Chinese-GB2312",
   "Czech" => "Czech",
@@ -164,6 +165,7 @@ $languages = array (
 // http://www.geocities.com/click2speak/languages.html
 $browser_languages = array (
   "eu" => "Basque",
+  "bg" => "Bulgarian",
   "zh" => "Chinese-GB2312",    // Simplified Chinese
   "zh-cn" => "Chinese-GB2312",
   "zh-tw" => "Chinese-Big5",   // Traditional Chinese
