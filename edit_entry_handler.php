@@ -31,7 +31,7 @@ if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
     $hour = 0;
   }
   if ( $GLOBALS['TIMED_EVT_LEN'] == 'E') {
-    if ( ! empty ( $endhour ) ) {
+    if ( isset ( $endhour ) ) {
       // Convert end time to a twenty-four hour time scale.
       if ( $endampm == 'pm' && $endhour < 12 )
         $endhour += 12;
@@ -177,7 +177,7 @@ if ( $hour > 0 && $timetype != 'U' ) {
 //echo "SERVER HOUR: $hour $ampm";
 
 if ( $GLOBALS['TIMED_EVT_LEN'] == 'E' && $timetype == "T" ) {
-    if ( empty ( $endhour ) )
+    if ( ! isset ( $endhour ) )
         $duration = 0;
     else {
       // Calculate duration.
