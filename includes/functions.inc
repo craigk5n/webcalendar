@@ -1406,6 +1406,16 @@ function display_unapproved_events ( $user ) {
 
 
 
+// Look for URLs in the given text, and make them into links.
+// params:
+//   $text - input text
+function activate_urls ( $text ) {
+  $str = eregi_replace ( "(http://[[:alnum:].,=?+;-]+)",
+    "<A HREF=\"\\1\">\\1</A>", $text );
+  return $str;
+}
+
+
 // Display a time in either 12 or 24 hour format
 // params:
 //   $time - an interger like 235900

@@ -150,7 +150,7 @@ if ( $row[8] == "R" && ! $is_my_event ) {
 
 <TABLE BORDER=0>
 <TR><TD VALIGN="top"><B><?php etranslate("Description")?>:</B></TD>
-  <TD><?php echo nl2br ( htmlspecialchars ( $description ) ); ?></TD></TR>
+  <TD><?php echo nl2br ( activate_urls ( htmlspecialchars ( $description ) ) ); ?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Date")?>:</B></TD>
   <TD><?php echo date_to_str ( $row[1] ) . $rep_str; ?></TD></TR>
 <?php

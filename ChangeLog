@@ -1,4 +1,8 @@
 Version 0.9.31dev (???)
+  - Feature request 423034: On the event view page, any URLs found
+    in the description field will be turned into an HTML link for
+    you.  Don't enter HTML in the description, just enter the URL
+    somewhere in the description.
   - Feature request 432334: Display week number in week view.
   - Updated French translation to use HTML escapes for non-standard
     characters.
