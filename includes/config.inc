@@ -10,7 +10,7 @@
 unset ( $single_user_login );
 
 
-$PROGRAM_NAME = "WebCalendar v0.9.28dev";
+$PROGRAM_NAME = "WebCalendar v0.9.29";
 $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
 
 // demo_mode is used on the sourceforge demo.  It disables changing the
