@@ -5,7 +5,21 @@ include_once 'includes/site_extras.php';
 $error = '';
 print_header();
 
-if ($HTTP_POST_FILES['FileName']['size'] > 0) {
+$overwrite = getValue("overwrite");
+$doOverwrite = ( empty ( $overwrite ) || $overwrite != 'Y' ) ? false : true;
+$numDeleted = 0;
+
+$sqlLog = '';
+
+if ( ! empty ( $_FILES['FileName'] ) )
+  $file = $_FILES['FileName'];
+else if ( ! empty ( $HTTP_POST_FILES['FileName'] ) )
+  $file = $HTTP_POST_FILES['FileName'];
+
+if ( empty ( $file ) )
+  echo "No file! <br />";
+
+if ($file['size'] > 0) {
   switch ($ImportType) {
 
 // ADD New modules here:
@@ -18,20 +32,27 @@ if ($HTTP_POST_FILES['FileName']['size'] > 0) {
     case PALMDESKTOP:
       include "import_palmdesktop.php";
       if (delete_palm_events($login) != 1) $errormsg = "Error deleting palm events from webcalendar.";
-      $data = parse_palmdesktop($HTTP_POST_FILES['FileName']['tmp_name'], $exc_private);
+      $data = parse_palmdesktop($file['tmp_name'], $exc_private);
       break;
 
     case VCAL:
       include "import_vcal.php";
-      $data = parse_vcal($HTTP_POST_FILES['FileName']['tmp_name']);
+      $data = parse_vcal($file['tmp_name']);
+      break;
+
+    case ICAL:
+      include "import_ical.php";
+      $data = parse_ical($file['tmp_name']);
       break;
   }
 
   $count_con = $count_suc = $error_num = 0;
   if (! empty ($data) && empty ($errormsg) ) {
-    import_data($data);
-    echo "<P><B>Datebook Import Report:</B><BR>\n";
-    echo "Successful Imports: $count_suc<BR>\n";
+    import_data ( $data, $doOverwrite );
+    echo "<p>" . translate("Import Results") . "</p>\n<p>" .
+      translate("Events successfully imported") . " : $count_suc<br />\n";
+    echo translate("Events from prior import marked as deleted") .
+      ": $numDeleted <br />\n";
     if ( empty ( $allow_conflicts ) ) {
       echo translate("Conflicting events") . ": " . $count_con . "<br>\n";
     }
@@ -54,9 +75,11 @@ if ($HTTP_POST_FILES['FileName']['size'] > 0) {
     translate("The import file contained no data") . ".<br>\n";
 }
 
+
+//echo "<hr />$sqlLog\n";
+
 print_trailer ();
 echo "</BODY>\n</HTML>";
-
 
 /* Import the data structure
 $Entry[RecordID]           =  Record ID (in the Palm) ** only required for palm desktop
@@ -82,9 +105,14 @@ $Entry[Repeat][RepeatDays] =  For Weekly: What days to repeat on (7 characters..
 // TODO: Figure out category from $Entry[Category] or have a drop-down asking which
 //       category to import into.
 //
-function import_data($data) {
+function import_data ( $data, $overwrite ) {
   global $login, $count_con, $count_suc, $error_num, $ImportType, $LOG_CREATE;
   global $single_user, $single_user_login, $allow_conflicts;
+  global $numDeleted;
+
+  $oldUIDs = array ();
+  $oldIds = array ();
+  $firstEventId = 0;
 
   foreach ( $data as $Entry ){
 
@@ -92,8 +120,8 @@ function import_data($data) {
     $participants[0] = $login;
 
     // Some additional date/time info
-    $START = localtime($Entry[StartTime]);
-    $END   = localtime($Entry[EndTime]);
+    $START = $Entry[StartTime] > 0 ? localtime($Entry[StartTime]) : 0;
+    $END   = $Entry[EndTime] > 0 ? localtime($Entry[EndTime]) : 0;
     $Entry[StartMinute]        = sprintf ("%02d",$START[1]);
     $Entry[StartHour]          = sprintf ("%02d",$START[2]);
     $Entry[StartDay]           = sprintf ("%02d",$START[3]);
@@ -104,6 +132,9 @@ function import_data($data) {
     $Entry[EndDay]             = sprintf ("%02d",$END[3]);
     $Entry[EndMonth]           = sprintf ("%02d",$END[4] + 1);
     $Entry[EndYear]            = sprintf ("%04d",$END[5] + 1900);
+    if ( $overwrite && ! empty ( $Entry[UID] ) ) {
+      $oldUIDs[$Entry[UID]]++;
+    }
 
     // Check for untimed
     if ($Entry[Untimed] == 1) {
@@ -136,6 +167,36 @@ function import_data($data) {
 
     if ( empty ( $error ) ) {
 
+      $updateMode = false;
+
+      // See if event already is there from prior import.
+      // The same UID is used for all events imported at once with iCal.
+      // So, we still don't have enough info to find the exact
+      // event we want to replace.  We could just delete all
+      // existing events that correspond to the UID.
+/************************************************************************
+  Not sure what to do with this code since I don't know how Palm and vCal
+  use the UID stuff yet...
+  
+      if ( ! empty ( $Entry[UID] ) ) {
+        $res = dbi_query ( "SELECT webcal_import_data.cal_id " .
+          "FROM webcal_import_data, webcal_entry_user " .
+          "WHERE cal_import_type = 'ical' AND " .
+          "webcal_import_data.cal_id = webcal_entry_user.cal_id AND " .
+          "webcal_entry_user.cal_login = '$login' AND " .
+          "cal_external_id = '$Entry[UID]'" );
+        if ( $res ) {
+          if ( $row = dbi_fetch_row ( $res ) ) {
+            if ( ! empty ( $row[0] ) ) {
+              $id = $row[0];
+              $updateMode = true;
+              // update rather than add a new event
+            }
+          }
+        }
+      }
+************************************************************************/
+
       // Add the Event
       $res = dbi_query ( "SELECT MAX(cal_id) FROM webcal_entry" );
       if ( $res ) {
@@ -147,85 +208,145 @@ function import_data($data) {
         //$error = "Unable to select MAX cal_id: " . dbi_error () . "<P><B>SQL:</B> $sql";
         //break;
       }
+      if ( $firstEventId == 0 )
+        $firstEventId = $id;
 
+      $names = array ();
+      $values = array ();
+      $names[] = 'cal_id';
+      $values[] = "$id";
+      if ( ! $updateMode ) {
+        $names[] = 'cal_create_by';
+        $values[] = "'$login'";
+      }
+      $names[] = 'cal_date';
+      $values[] = sprintf ( "%04d%02d%02d",
+        $Entry[StartYear],$Entry[StartMonth],$Entry[StartDay]);
+      $names[] = 'cal_time';
+      $values[] = ($Entry[Untimed] == 1) ? "-1" :
+        sprintf ( "%02d%02d00", $Entry[StartHour],$Entry[StartMinute]);
+      $names[] = 'cal_mod_date';
+      $values[] = date("Ymd");
+      $names[] = 'cal_mod_time';
+      $values[] = date("Gis");
+      $names[] = 'cal_duration';
+      $values[] = sprintf ( "%d", $Entry[Duration] );
+      $names[] = 'cal_priority';
+      $values[] = $priority;
+      $names[] = 'cal_access';
+      $values[] = ($Entry[Private] == 1) ? "'R'" : "'P'";
+      $names[] = 'cal_type';
+      $values[] = ($Entry[Repeat]) ? "'M'" : "'E'";
 
-      $sql = "INSERT INTO webcal_entry ( cal_id, cal_create_by, cal_date, " .
-        "cal_time, cal_mod_date, cal_mod_time, cal_duration, cal_priority, " .
-        "cal_access, cal_type, cal_name, cal_description ) " .
-        "VALUES ( $id, '$login', ";
-
-      $sql .= sprintf ( "%04d%02d%02d, ", $Entry[StartYear],$Entry[StartMonth],$Entry[StartDay]);
-      $sql .=  ($Entry[Untimed] == 1) ? "-1, " : sprintf ( "%02d%02d00, ", $Entry[StartHour],$Entry[StartMinute]);
-      $sql .= date ( "Ymd" ) . ", " . date ( "Gis" ) . ", ";
-      $sql .= sprintf ( "%d, ", $Entry[Duration] );
-      $sql .= "$priority, ";
-      $sql .=  ($Entry[Private] == 1) ? "'R', " : "'P', ";
-      $sql .=  ($Entry[Repeat]) ? "'M', " : "'E', ";
       if ( strlen ( $Entry[Summary] ) == 0 )
         $Entry[Summary] = translate("Unnamed Event");
       if ( strlen ( $Entry[Description] ) == 0 )
         $Entry[Description] = $Entry[Summary];
-      $Entry[Summary] = str_replace ( "\\,", ",", $Entry[Summary] );
       $Entry[Summary] = str_replace ( "\\n", "\n", $Entry[Summary] );
+      $Entry[Summary] = str_replace ( "\\'", "'", $Entry[Summary] );
+      $Entry[Summary] = str_replace ( "\\\"", "\"", $Entry[Summary] );
       $Entry[Summary] = str_replace ( "'", "\\'", $Entry[Summary] );
-      $sql .= "'" . $Entry[Summary] .  "', ";
-      $Entry[Description] = str_replace ( "\\,", ",", $Entry[Description] );
+      $names[] = 'cal_name';
+      $values[] = "'" . $Entry[Summary] .  "'";
       $Entry[Description] = str_replace ( "\\n", "\n", $Entry[Description] );
+      $Entry[Description] = str_replace ( "\\'", "'", $Entry[Description] );
+      $Entry[Description] = str_replace ( "\\\"", "\"", $Entry[Description] );
       $Entry[Description] = str_replace ( "'", "\\'", $Entry[Description] );
       // limit length to 1024 chars since we setup tables that way
       if ( strlen ( $Entry[Description] ) >= 1024 )
         $Entry[Description] = substr ( $Entry[Description], 0, 1019 ) . "...";
-      $sql .= "'" . $Entry[Description] . "' )";
+      $names[] = 'cal_description';
+      $values[] = "'" . $Entry[Description] .  "'";
       //echo "Summary:<p>" . nl2br ( htmlspecialchars ( $Entry[Summary] ) ) . "<p>";
       //echo "Description:<p>" . nl2br ( htmlspecialchars ( $Entry[Description] ) ); exit;
+      if ( $updateMode ) {
+        $sql = "UPDATE webcal_entry SET ";
+        for ( $f = 0; $f < count ( $names ); $f++ ) {
+          if ( $f > 0 )
+            $sql .= ", ";
+          $sql .= $names[$f] . " = " . $values[$f];
+        }
+        $sql .= " WHERE cal_id = $id";
+      } else {
+        $sql = "INSERT INTO webcal_entry ( " . implode ( ", ", $names ) .
+          " ) VALUES ( " . implode ( ", ", $values ) . " )";
+      }
 
       if ( empty ( $error ) ) {
+        $sqlLog .= $sql . "<br />\n";
+        //echo "SQL: $sql <br />";
         if ( ! dbi_query ( $sql ) ) {
-          $error = translate("Database error") . ": " . dbi_error ();
+          $error .= "<p>" . translate("Database error") . ": " . dbi_error () .
+            "</p>\n";
           break;
         }
       }
 
       // log add/update
-      activity_log ( $id, $login, $login, $LOG_CREATE, "" );
+      activity_log ( $id, $login, $login,
+        $updateMode ? $LOG_UPDATE : $LOG_CREATE, "Import from $ImportType" );
 
       if ( $single_user == "Y" ) {
         $participants[0] = $single_user_login;
       }
 
       // Now add to webcal_import_data
-      if ($ImportType == "PALMDESKTOP") {
-        $sql = "INSERT INTO webcal_import_data VALUES ( $id, '" . $login . 
-          "', 'palm', '" .  $Entry[RecordID] . "' )";
-        if ( ! dbi_query ( $sql ) ) {
-          $error = translate("Database error") . ": " . dbi_error ();
-          break;
+      if ( ! $updateMode ) {
+        if ($ImportType == "PALMDESKTOP") {
+          $sql = "INSERT INTO webcal_import_data VALUES ( $id, '" . $login . 
+            "', 'palm', '" .  $Entry[RecordID] . "' )";
+          $sqlLog .= $sql . "<br />\n";
+          if ( ! dbi_query ( $sql ) ) {
+            $error = translate("Database error") . ": " . dbi_error ();
+            break;
+          }
         }
-      }
-      else if ($ImportType == "VCAL") {
-        $uid = empty ( $Entry[UID] ) ? "null" : "'$Entry[UID]'";
-        if ( strlen ( $uid ) > 200 )
-          $uid = "null";
-        $sql = "INSERT INTO webcal_import_data VALUES ( $id, '" . $login . 
-          "', 'vcal', $uid )";
-        if ( ! dbi_query ( $sql ) ) {
-          $error = translate("Database error") . ": " . dbi_error ();
-          break;
+        else if ($ImportType == "VCAL") {
+          $uid = empty ( $Entry[UID] ) ? "null" : "'$Entry[UID]'";
+          if ( strlen ( $uid ) > 200 )
+            $uid = "null";
+          $sql = "INSERT INTO webcal_import_data VALUES ( $id, '" . $login . 
+            "', 'vcal', $uid )";
+          $sqlLog .= $sql . "<br />\n";
+          if ( ! dbi_query ( $sql ) ) {
+            $error = translate("Database error") . ": " . dbi_error ();
+            break;
+          }
+        }
+        else if ($ImportType == "ICAL") {
+          $uid = empty ( $Entry[UID] ) ? "null" : "'$Entry[UID]'";
+          if ( strlen ( $uid ) > 200 )
+            $uid = "null";
+          $sql = "INSERT INTO webcal_import_data VALUES ( $id, '" . $login . 
+            "', 'ical', $uid )";
+          $sqlLog .= $sql . "<br />\n";
+          if ( ! dbi_query ( $sql ) ) {
+            $error = translate("Database error") . ": " . dbi_error ();
+            break;
+          }
         }
       }
 
       // Now add participants
-      $status = ( $login == "__public__" ) ? 'W' : 'A';
-      if ( empty ( $cat_id ) ) $cat_id = 'NULL';
-      $sql = "INSERT INTO webcal_entry_user " .
-        "( cal_id, cal_login, cal_status, cal_category ) VALUES ( $id, '" .
-        $participants[0] . "', '$status', $cat_id )";
-      if ( ! dbi_query ( $sql ) ) {
-        $error = translate("Database error") . ": " . dbi_error ();
-        break;
+      if ( ! $updateMode ) {
+        $status = ( $login == "__public__" ) ? 'W' : 'A';
+        if ( empty ( $cat_id ) ) $cat_id = 'NULL';
+        $sql = "INSERT INTO webcal_entry_user " .
+          "( cal_id, cal_login, cal_status, cal_category ) VALUES ( $id, '" .
+          $participants[0] . "', '$status', $cat_id )";
+        $sqlLog .= $sql . "<br />\n";
+        if ( ! dbi_query ( $sql ) ) {
+          $error = translate("Database error") . ": " . dbi_error ();
+          break;
+        }
       }
 
       // Add repeating info
+      if ( $updateMode ) {
+        // remove old repeating info
+        dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id" );
+        dbi_query ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = $id" );
+      }
       if (! empty ($Entry[Repeat][Interval])) {
         $rpt_type = RepeatType($Entry[Repeat][Interval]);
         $freq = ( $Entry[Repeat][Frequency] ? $Entry[Repeat][Frequency] : 1 );
@@ -239,6 +360,7 @@ function import_data($data) {
         $sql = "INSERT INTO webcal_entry_repeats ( cal_id, " .
           "cal_type, cal_end, cal_days, cal_frequency ) VALUES " .
           "( $id, '$rpt_type', $end, $days, $freq )";
+        $sqlLog .= $sql . "<br />\n";
         if ( ! dbi_query ( $sql ) ) {
             $error = "Unable to add to webcal_entry_repeats: ".dbi_error ()."<P><B>SQL:</B> $sql";
             break;
@@ -249,6 +371,7 @@ function import_data($data) {
           foreach ($Entry[Repeat][Exceptions] as $ex_date) {
             $ex_date = date("Ymd",$ex_date);
             $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date ) VALUES ( $id, $ex_date )";
+            $sqlLog .= $sql . "<br />\n";
             if ( ! dbi_query ( $sql ) ) {
               $error = "Unable to add to webcal_entry_repeats_not: ".dbi_error ()."<P><B>SQL:</B> $sql";
               break;
@@ -258,6 +381,9 @@ function import_data($data) {
       } // End Repeat
 
       // Add Alarm info -> site_extras
+      if ( $updateMode ) {
+        dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_id = $id" );
+      }
       if ($Entry[AlarmSet] == 1) {
         $RM = $Entry[AlarmAdvanceAmount];
         if ($Entry[AlarmAdvanceType] == 1){ $RM = $RM * 60; }
@@ -265,6 +391,7 @@ function import_data($data) {
         $sql = "INSERT INTO webcal_site_extras ( cal_id, " .
           "cal_name, cal_type, cal_remind, cal_data ) VALUES " .
           "( $id, 'Reminder', 7, 1, $RM )";
+        $sqlLog .= $sql . "<br />\n";
         if ( ! dbi_query ( $sql ) ) {
           $error = translate("Database error") . ": " . dbi_error ();
         }
@@ -276,6 +403,7 @@ function import_data($data) {
       echo "<H2><FONT COLOR=\"$H2COLOR\">". translate("Error") .
         "</H2></FONT>\n<BLOCKQUOTE>\n";
       echo $error . "</BLOCKQUOTE><BR>\n";
+echo "<hr>$sqlLog\n";
     }
 
     // Conflicting
@@ -313,6 +441,7 @@ function import_data($data) {
       echo "<A CLASS=\"entry\" HREF=\"view_entry.php?id=$id";
       echo "\" onMouseOver=\"window.status='" . translate("View this entry") ."'; return true;\" onMouseOut=\"window.status=''; return true;\">";
       $Entry[Summary] = str_replace( "''", "'", $Entry[Summary]);
+      $Entry[Summary] = str_replace( "\\", "", $Entry[Summary]);
       echo htmlspecialchars ( $Entry[Summary] );
       echo "</A> (" . $dd . "&nbsp;  " . $time . ")<BR>\n";
     }
@@ -320,6 +449,42 @@ function import_data($data) {
     // Reset Variables
     $overlap = $error = $dd = $time = '';
   }
+
+  // Mark old events from prior import as deleted.
+  if ( $overwrite && count ( $oldUIDs ) > 0 ) {
+    // We could do this with a single SQL using sub-select, but
+    // I'm pretty sure MySQL does not support it.
+    if ( $ImportType == 'ICAL' )
+      $type = 'ical';
+    else if ( $ImportType == 'VCAL' )
+      $type = 'vcal';
+    else
+      $type = 'palm';
+    $old = array_keys ( $oldUIDs );
+    for ( $i = 0; $i < count ( $old ); $i++ ) {
+      $res = dbi_query ( "SELECT cal_id FROM webcal_import_data WHERE " .
+        "cal_import_type = '$type' AND " .
+        "cal_external_id = '$old[$i]' AND " .
+        "cal_id < $firstEventId" );
+      if ( $res ) {
+        while ( $row = dbi_fetch_row ( $res ) ) {
+          $oldIds[] = $row[0];
+        }
+        dbi_free_result ( $res );
+      } else {
+        echo translate("Database error") . ": " . dbi_error () . "<br />\n";
+      }
+    }
+    for ( $i = 0; $i < count ( $oldIds ); $i++ ) {
+      $sql = "UPDATE webcal_entry_user SET cal_status = 'D' " .
+        "WHERE cal_id = $oldIds[$i]";
+      $sqlLog .= $sql . "<br />\n";
+      dbi_query ( $sql );
+      $numDeleted++;
+    }
+  }
+
+  //echo "<b>SQL:</b><br />$sqlLog\n";
 }
 
 // Convert interval to webcal repeat type
