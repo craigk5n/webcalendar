@@ -241,7 +241,7 @@ function send_reminder ( $id, $event_date ) {
 // do it again.
 function log_reminder ( $id, $name, $event_date ) {
   dbi_query ( "DELETE FROM webcal_reminder_log " .
-    "WHERE cal_id = $id AND cal_name = $name " .
+    "WHERE cal_id = $id AND cal_name = '$name' " .
     "AND cal_event_date = $event_date" );
   dbi_query ( "INSERT INTO webcal_reminder_log " .
     "( cal_id, cal_name, cal_event_date, cal_last_sent ) VALUES ( " .
