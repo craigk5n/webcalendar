@@ -23,7 +23,7 @@ You must have PHP and one of the following databases installed:
   - MySQL
   - Oracle 8
   - PostgreSQL
-  - ODBC
+  - ODBC (DB2, etc.)
 For the database you choose, you must have its drivers built into
 PHP.  For example, to use MySQL, PHP must be compiled with MySQL
 support.  See the PHP (www.php.net) for more info on setting up
@@ -69,6 +69,8 @@ create a new database with the following:
 	\c webcalendar
 	\i tables-postgres.sql
 	\q
+  DB2:
+	Use the file tables-db2.sql
 
 For Oracle, you will want to setup a new user that defaults to
 this new tablesapce:
