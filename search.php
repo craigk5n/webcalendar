@@ -61,13 +61,9 @@ if ( $login == "__public__" && $public_access_others != "Y" )
   }
 ?>
 </td></tr>
-
 <?php } /* if show_participants */ ?>
-
 </table>
-
 <?php } ?>
-
 </form>
 
 <?php print_trailer(); ?>

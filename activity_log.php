@@ -5,7 +5,7 @@ $PAGE_SIZE = 25;
 print_header();
 
 echo "<h3>" . translate("Activity Log") . "</h3>\n";
-echo "<table class=\"activitylog\">\n";
+echo "<table>\n";
 echo "<tr>";
 echo "<th>" .
   translate("User") . "</th>";
