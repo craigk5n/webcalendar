@@ -1,4 +1,6 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Fixed bug: If user creates a report that does not include themself,
+    the user will be unable to edit/delete the report.
   - Added patch 975787: allow automatic inclusion of public access events
   - Added patch 980287: added mysqli support to php-dbi.php
   - Fixed bug 966948: single quotes not working in passwords if magic

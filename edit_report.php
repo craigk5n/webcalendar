@@ -16,6 +16,8 @@
  *	  'Y', then don't allow access to this page.
  *	If $allow_view_other is 'N', then do not allow selection of
  *	  participants.
+ *	If not an admin user, only report creator (cal_login in webcal_report)
+ *	  can edit/delete report.
  */
 include_once 'includes/init.php';
 load_user_categories ();
@@ -124,11 +126,12 @@ if ( empty ( $error ) && $report_id > 0 ) {
           if ( $report_user == $userlist[$i]['cal_login'] )
             $user_is_in_list = true;
         }
-        if ( ! $user_is_in_list ) {
+        if ( ! $user_is_in_list && $report_login != $login && ! $is_admin ) {
           $error = translate ( "You are not authorized" );
         }
       }
       if ( ! $is_admin && $login != $report_login ) {
+        // If not admin, only creator can edit/delete the event
         $error = translate ( "You are not authorized" );
       }
     } else {
