@@ -379,7 +379,7 @@ if ( ! $use_http_auth ) {
     echo ":</span>&nbsp;";
     $grouplist = user_get_boss_list ($login);
     $grouplist = array_merge($admincals,$grouplist);
-    if ( $is_admin && $public_access ) {
+    if ( $is_admin && $public_access == 'Y' ) {
       $public = array("cal_login" => "__public__",
         "cal_fullname" => translate("Public Access") );
       array_unshift($grouplist, $public);
