@@ -23,9 +23,8 @@ Please include all the information below when reporting a bug.
 </form>
 <br /><br />
 
-<h3 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("System Settings")?></h3>
+<h3><?php etranslate("System Settings")?></h3>
 <?php
-
 if ( empty ( $SERVER_SOFTWARE ) )
   $SERVER_SOFTWARE = $_SERVER["SERVER_SOFTWARE"];
 if ( empty ( $HTTP_USER_AGENT ) )

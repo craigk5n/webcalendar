@@ -28,12 +28,11 @@
 		<?php etranslate("duration-help")?>
 	</td></tr>
    <?php } else { ?>
- 	<tr><td style="vertical-align:top; font-weight:bold;">
+	<tr><td class="help">
  		<?php etranslate("End Time")?>:</td><td>
  		<?php etranslate("end-time-help")?>
  	</td></tr>
    <?php } ?>
-
 	<?php if ( $disable_priority_field != "Y" ) { ?>
 		<tr><td class="help">
 			<?php etranslate("Priority")?>:</td><td>

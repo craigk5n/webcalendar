@@ -37,16 +37,12 @@ print_header('','','',true);
 </table>
 <br /><br />
 
-
 <?php if ( $allow_color_customization ) { ?>
 	<h3><?php etranslate("Colors")?></h3>
 	<?php etranslate("colors-help")?>
 	<br /><br />
-
-
 <?php } // if $allow_color_customization ?>
 
 <?php include_once "includes/help_trailer.php"; ?>
-
 </body>
 </html>

@@ -6,50 +6,25 @@
 <title>WebCalendar README</title>
 <style type="text/css">
 <!--
+body {
+	font-family: arial, verdana;
+}
 a {
-  text-decoration: none;
-}
-p {
-  font-family: arial;
-}
-ul {
-  font-family: arial;
-}
-ol {
-  font-family: arial;
-}
-h1 {
-  font-family: arial;
-}
-h2 {
-  font-family: arial;
-}
-h3 {
-  font-family: arial;
+	text-decoration: none;
 }
 dt {
-  font-family: arial;
-  font-weight: bold;
-}
-dd {
-  font-family: arial;
-}
-blockquote {
-  font-family: courier;
-  background: #c0c0c0;
-}
-td {
-  font-family: arial;
-  background: #c0c0c0;
+	font-weight: bold;
 }
 tr {
-  font-family: arial;
-  background: #606080;
-  foreground: #f0f0f0;
+	background-color: #606080;
 }
-.colorheader {
-  font-family: arial;
-  background: #6060c0;
+td {
+	background-color: #C0C0C0;
+}
+h3 {
+	background-color: #191970;
+	color: #FFFFFF;
+	padding: 5px;
 }
 -->
 </style>
@@ -74,9 +49,9 @@ Adam Shantz, <a href="mailto:adamATadamshantzDOTcom">adamATadamshantzDOTcom</a>,
 <a href="http://adamshantz.com">adamshantz.com</a></td></tr>
 
 <tr><td style="vertical-align:top; font-weight:bold;">Documentation:</td>
-<td valign="top">
+<td>
 	<a href="docs/WebCalendar-SysAdmin.html">System Administrator's Guide</a> (Installation instructions, FAQ)<br />
-	User Manual (<a href="http://sourceforge.net/project/showfiles.php?group_id=3870&package_id=112017">download</a>)<br />
+	User Manual (<a href="http://sourceforge.net/project/showfiles.php?group_id=3870&amp;package_id=112017">download</a>)<br />
 	<a href="UPGRADING.html">Upgrading Instructions</a>
 	(<b>Required</b> when upgrading from an older version)<br />
 	<a href="GPL.html">License</a><br />
@@ -95,103 +70,16 @@ Adam Shantz, <a href="mailto:adamATadamshantzDOTcom">adamATadamshantzDOTcom</a>,
 </td></tr>
 </table>
 
-<p>
-<b>Note:</b> Installation instructions for WebCalendar
-can be found in the <a href="docs/WebCalendar-SysAdmin.html">WebCalendar
-System Administrator's Guide</a>.</p>
+<h3>Note</h3>
+<p>For a complete feature list, system requirements, and installation instructions, please see the <a href="docs/WebCalendar-SysAdmin.html">WebCalendar System Administrator's Guide</a>.</p>
 
-<p>WebCalender is an open source PHP-based multi-user calendar.</p>
-<p><b>Features:</b></p>
-<ul>
-	<li>Multi-user support</li>
-	<li>Group support</li>
-	<li>View day-at-glance</li>
-	<li>View month-at-glance</li>
-	<li>View week-at-glance</li>
-	<li>View year-at-glance</li>
-	<li>View another user's calendar</li>
-	<li>View multiple users' calendars at the same time</li>
-	<li>View one or more users' calendar via layers on top of your own calendar</li>
-	<li>Public calendar (that requires no login) where anonymous users submit events that are approved by an administrator.</li>
-	<li>Add/Edit/Delete users</li>
-	<li>Add/Edit/Delete events</li>
-	<li>Repeating events</li>
-	<li>Custom event fields</li>
-	<li>Search interface for calendar entries</li>
-	<li>User-configurable preferences for colors, 12/24 time format, Week start on Sun or Mon, default work hours</li>
-	<li>Online help</li>
-	<li>Checks for scheduling conflicts</li>
-	<li>Support for multiple timezones</li>
-	<li>Users can accept or reject events added by another user to their calendar</li>
-	<li>Email reminders</li>
-	<li>Email notifications for new events</li>
-	<li>Support for 29 different languages: 
-		<ul>
-			<li>Basque</li>
-			<li>Bulgarian</li>
-			<li>Catalan</li>
-			<li>繁體中文(Big5)</li>
-			<li>简体中文(GB2312)</li>
-			<li>Czech</li>
-			<li>Danish</li>
-			<li>Deutsch</li>
-			<li>English</li>
-			<li>Espa&#241;ol</li>
-			<li>Estonian</li>
-			<li>Fran&#231;ais</li>
-			<li>Galician</li>
-			<li>Hollands (Dutch)</li>
-			<li>Holo (Taiwanese)</li>
-			<li>Hungarian</li>
-			<li>Icelandic</li>
-			<li>Italiano</li>
-			<li>Japanese</li>
-			<li>Korean</li>
-			<li>Norsk (Norwegian)</li>
-			<li>Polish</li>
-			<li>Portuguese</li>
-			<li>Portuguese/Brazil</li>
-			<li>Русско</li>
-			<li>Suomalainen (Finnish)</li>
-			<li>Svensk (Swedish)</li>
-			<li>Turkish</li>
-			<li>Welsh</li>
-		</ul>
-	</li>
-	<li>Exporting to Palm Pilot, vCal, and iCal</li>
-	<li>Importing from Palm Pilot, vCal, and iCal</li>
-	<li>Authentication using LDAP, HTTP authentication, NIS, or web-based.</li>
-	<li>Activity log that tracks event creation, update, accept, reject, email notifications, and email reminders</li>
-</ul>
-
-<p><b>System Requirements:</b></p>
-<ul>
-	<li>PHP 4 (PHP 5 not yet tested)</li>
-	<li>Database: 
-		<ul>
-			<li>MySQL</li>
-			<li>Oracle</li>
-			<li>PostgreSQL</li>
-			<li>Interbase or ODBC (PHP ODBC includes support for Adabas D, IBM DB2, Solid and Sybase SQL Anywhere as well as ODBC)</li>
-		</ul>
-	</li>
-	<li>JavaScript-enabled browser with CSS support (Netscape 6+,
-            Mozilla 1.0+, Firefox 0.9+, Safari, MS Internet Explorer)</li>
-	<li>Cookie-enabled browser</li>
-</ul>
-
-<p>See <a href="docs/WebCalendar-SysAdmin.html#requirements">System Administrator's Guide</a> for more specific PHP requirements.</p>
-
-<p><b>Outstanding issues:</b></p>
+<h3>Outstanding issues</h3>
 <ul>
 	<li>Updated translatations (some are slightly out of date)</li>
 </ul>
 
-<p><b>Possible features for future releases:</b></p>
+<h3>Possible features for future releases</h3>
 <ul>
-<li>
-See <a href="http://www.k5n.us/webcalendar.php?topic=Plans">Plans</a> on the WebCalendar home page.
-</li>
+<li>See <a href="http://www.k5n.us/webcalendar.php?topic=Plans">Plans</a> on the WebCalendar home page.</li>
 </ul>
-
 </body></html>
