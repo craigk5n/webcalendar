@@ -1,4 +1,6 @@
 Version 0.9.31dev (???)
+  - Updated French translation to use HTML escapes for non-standard
+    characters.
   - Patch 435431 from Franz Sedlmaier:
     Display repeating event information on event view page.
   - Patch 435403 from Franz Sedlmaier:
