@@ -145,11 +145,8 @@ display_unapproved_events ( $login );
 ?>friendly=1" TARGET="cal_printer_friendly"
 onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
 
-<?php include_once "includes/trailer.php"; ?>
-
-<?php } else {
-        dbi_close ( $c );
-      }
+<?php }
+print_trailer();
 ?>
 
 </BODY>

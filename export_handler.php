@@ -1104,7 +1104,7 @@ else
   echo translate("export format not defined or incorrect") . ".";
   echo "<br>\n";
 
-  include_once "includes/trailer.php";
+  print_trailer ();
 			 
   echo " </body>\n";
   echo "</html>\n";

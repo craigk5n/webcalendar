@@ -660,11 +660,68 @@ function load_user_layers ($user="",$force=0) {
 }
 
 
+function site_extras_for_popup ( $id )
+{
+  global $site_extras_in_popup;
+
+  if ( $site_extras_in_popup != 'Y' )
+    return '';
+
+  include_once 'includes/site_extras.php';
+
+  $extras = get_site_extra_fields ( $id );
+  $ret = '';
+  for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
+    $extra_name = $site_extras[$i][0];
+    $extra_type = $site_extras[$i][2];
+    $extra_arg1 = $site_extras[$i][3];
+    $extra_arg2 = $site_extras[$i][4];
+    if ( $extras[$extra_name]['cal_name'] != "" ) {
+      $ret .= "<b>" .  translate ( $site_extras[$i][1] ) . ":</b> ";
+      if ( $extra_type == $EXTRA_DATE ) {
+        if ( $extras[$extra_name]['cal_date'] > 0 )
+          $ret .= date_to_str ( $extras[$extra_name]['cal_date'] );
+      } else if ( $extra_type == $EXTRA_TEXT ||
+        $extra_type == $EXTRA_MULTILINETEXT ) {
+        $ret .= nl2br ( $extras[$extra_name]['cal_data'] );
+      } else if ( $extra_type == $EXTRA_REMINDER ) {
+        if ( $extras[$extra_name]['cal_remind'] <= 0 )
+          etranslate ( "No" );
+        else {
+          etranslate ( "Yes" );
+          if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
+            $ret .= "&nbsp;&nbsp;-&nbsp;&nbsp;";
+            $ret .= date_to_str ( $extras[$extra_name]['cal_date'] );
+          } else if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
+            $ret .= "&nbsp;&nbsp;-&nbsp;&nbsp;";
+            $minutes = $extras[$extra_name]['cal_data'];
+            $d = (int) ( $minutes / ( 24 * 60 ) );
+            $minutes -= ( $d * 24 * 60 );
+            $h = (int) ( $minutes / 60 );
+            $minutes -= ( $h * 60 );
+            if ( $d > 0 )
+              $ret .= $d . " " . translate("days") . " ";
+            if ( $h > 0 )
+              $ret .= $h . " " . translate("hours") . " ";
+            if ( $minutes > 0 )
+              $ret .= $minutes . " " . translate("minutes");
+            $ret .= " " . translate("before event" );
+          }
+        }
+      } else {
+        $ret .= $extras[$extra_name]['cal_data'];
+      }
+    }
+  }
+  return $ret;
+}
+
 
 
 // Build the HTML for the event popup (but don't print it yet since we
 // don't want this HTML to go inside the table for the month).
-function build_event_popup ( $divname, $user, $description, $time ) {
+function build_event_popup ( $divname, $user, $description, $time,
+  $site_extras='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname;
   $ret = "<DIV ID=\"" . $divname .
     "\" STYLE=\"position: absolute; z-index: 20; visibility: hidden; top: 0px; left: 0px;\">\n" .
@@ -689,6 +746,8 @@ function build_event_popup ( $divname, $user, $description, $time ) {
     $ret .= "<B>" . translate ("Time") . ":</B> $time<BR>";
   $ret .= "<B>" . translate ("Description") . ":</B>\n";
   $ret .= nl2br ( htmlspecialchars ( $description ) );
+  if ( ! empty ( $site_extras ) )
+    $ret .= "\n<br>" . $site_extras;
   $ret .= "</FONT></TD></TR></TABLE>\n" .
     "</TD></TR></TABLE>\n" .
     "</DIV>\n";
@@ -859,7 +918,7 @@ function print_entry ( $id, $date, $time, $duration,
 
     else
       $eventinfo .= build_event_popup ( $divname, $event_owner,
-        $description, $timestr );
+        $description, $timestr, site_extras_for_popup ( $id ) );
   }
 }
 
@@ -988,7 +1047,7 @@ function get_entries ( $user, $date ) {
   //echo "<P>Checking " . count ( $events ) . " events.  TZ_OFFSET = $TZ_OFFSET<P>";
 
   for ( $i = 0; $i < count ( $events ); $i++ ) {
-    if ( $TZ_OFFSET == 0 ) {
+    if ( empty ( $TZ_OFFSET ) ) {
       if ( $events[$i]['cal_date'] == $date )
         $ret[$n++] = $events[$i];
     } else if ( $TZ_OFFSET > 0 ) {
@@ -2109,7 +2168,7 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
       translate("This event is confidential"), "" );
   } else {
     $eventinfo .= build_event_popup ( $divname, $event_owner,
-      $description, $timestr );
+      $description, $timestr, site_extras_for_popup ( $id ) );
   }
 }
 
@@ -2136,7 +2195,8 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
     $eventinfo .= build_event_popup ( $divname, $event_owner,
       translate("This event is confidential"), "" );
   else
-    $eventinfo .= build_event_popup ( $divname, $event_owner, $description, "" );
+    $eventinfo .= build_event_popup ( $divname, $event_owner, $description,
+      "", site_extras_for_popup ( $id ) );
 
   // calculate slot length in minutes
   $interval = ( 60 * 24 ) / $TIME_SLOTS;
@@ -3194,7 +3254,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
 
     else
       $eventinfo .= build_event_popup ( $divname, $event_owner,
-        $description, $timestr );
+        $description, $timestr, site_extras_for_popup ( $id ) );
   }
 }
 

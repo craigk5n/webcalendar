@@ -112,6 +112,6 @@ if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
 
 </FORM>
 
-<?php include_once "includes/trailer.php"; ?>
+<?php print_trailer(); ?>
 </BODY>
 </HTML>

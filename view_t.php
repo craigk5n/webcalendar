@@ -171,9 +171,7 @@ if ( ! $friendly )
     "'\">[" . translate("Printer Friendly") . "]</A>\n";
 
 
-if ( ! $friendly ) {
-  include_once "includes/trailer.php";
-}
+print_trailer ();
 ?>
 
 </BODY>

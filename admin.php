@@ -106,6 +106,19 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("fonts-help")?>"><?php etranslate("Fonts")?>:</B></TD>
   <TD><INPUT SIZE="40" NAME="admin_FONTS" VALUE="<?php echo htmlspecialchars ( $FONTS );?>" </TD></TR>
 
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("custom-header-help");?>"><?php etranslate("Custom header")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_CUSTOM_HEADER" VALUE="Y" <?php if ( $s["CUSTOM_HEADER"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_CUSTOM_HEADER" VALUE="N" <?php if ( $s["CUSTOM_HEADER"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?>
+  &nbsp;&nbsp;
+  <input type="button" value="Edit..." onclick="window.open('edit_template.php?type=H','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');">
+  </TD></TR>
+
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("custom-trailer-help");?>"><?php etranslate("Custom trailer")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_CUSTOM_TRAILER" VALUE="Y" <?php if ( $s["CUSTOM_TRAILER"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_CUSTOM_TRAILER" VALUE="N" <?php if ( $s["CUSTOM_TRAILER"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?>
+  &nbsp;&nbsp;
+  <input type="button" value="Edit..." onclick="window.open('edit_template.php?type=T','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');">
+  </TD></TR>
+
+
 <TR><TD><B CLASS="tooltip" HREF="#" TITLE="<?php etooltip("preferred-view-help");?>"><?php etranslate("Preferred view")?>:</B></TD>
 <TD>
 <SELECT NAME="admin_STARTVIEW">
@@ -265,6 +278,9 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("disable-repeating-field-help")?>"><?php etranslate("Disable Repeating field")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_disable_repeating_field" VALUE="Y" <?php if ( $s["disable_repeating_field"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_disable_repeating_field" VALUE="N" <?php if ( $s["disable_repeating_field"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("popup-includes-siteextras-help")?>"><?php etranslate("Display Site Extras in popup")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_site_extras_in_popup" VALUE="Y" <?php if ( $s["site_extras_in_popup"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_site_extras_in_popup" VALUE="N" <?php if ( $s["site_extras_in_popup"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("allow-view-other-help")?>"><?php etranslate("Allow viewing other user's calendars")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_allow_view_other" VALUE="Y" <?php if ( $s["allow_view_other"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_allow_view_other" VALUE="N" <?php if ( $s["allow_view_other"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
@@ -279,6 +295,9 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 <TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("public-access-add-requires-approval-help")?>"><?php etranslate("Public access new events require approval")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_public_access_add_needs_approval" VALUE="Y" <?php if ( $s["public_access_add_needs_approval"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_public_access_add_needs_approval" VALUE="N" <?php if ( $s["public_access_add_needs_approval"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("public-access-sees-participants-help")?>"><?php etranslate("Public access can view participants")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_public_access_view_part" VALUE="Y" <?php if ( $s["public_access_view_part"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_public_access_view_part" VALUE="N" <?php if ( $s["public_access_view_part"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("allow-view-add-help")?>"><?php etranslate("Include add event link in views")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_add_link_in_views" VALUE="Y" <?php if ( $s["add_link_in_views"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_add_link_in_views" VALUE="N" <?php if ( $s["add_link_in_views"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
@@ -492,6 +511,6 @@ if ( $plugins_enabled == "Y" ) {
 
 <?php } // if $error ?>
 
-<?php include_once "includes/trailer.php"; ?>
+<?php print_trailer (); ?>
 </BODY>
 </HTML>

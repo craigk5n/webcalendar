@@ -102,10 +102,8 @@ TimeMatrix($date,$participants);
   echo '&friendly=1" target="cal_printer_friendly" onmouseover="window.status=\'' .
     translate("Generate printer-friendly version") .
     '\'">[' . translate("Printer Friendly") . ']</a>';
-  include_once "includes/trailer.php"; 
-} else {
-  dbi_close ( $c );
 }
+print_trailer ();
 ?>
 
 <?

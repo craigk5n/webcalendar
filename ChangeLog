@@ -1,4 +1,5 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Added ability to use custom header and trailer from System Settings page
   - Fixed bug 826653,825315: could not add events as public user event when
     system settings were configured to allow it
   - Show date/time of event in email notification for deleted event

@@ -1,7 +1,7 @@
 <?php
 include_once 'includes/init.php';
 $INC = array('js/colors.php');
-print_header($INC);
+print_header($INC,'','',true);
 ?>
 
 <CENTER>
@@ -43,5 +43,6 @@ echo "</TR>\n";
 </TABLE>
 </CENTER>
 
+<?php print_trailer ( false, false, true ); ?>
 </BODY>
 </HTML>

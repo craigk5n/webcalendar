@@ -5,7 +5,7 @@ $fday = $day;$fmonth = $month;$fyear = $year;
 
 include_once 'includes/init.php';
 $INC = array('js/datesel.php');
-print_header($INC);
+print_header($INC,'','',false);
 
 if ( strlen ( $date ) > 0 ) {
   $thisyear = substr ( $date, 0, 4 );
@@ -70,5 +70,6 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 </TABLE>
 </CENTER>
 
+<?php print_trailer ( false, true, true ); ?>
 </BODY>
 </HTML>

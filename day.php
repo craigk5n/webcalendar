@@ -196,10 +196,10 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 ?>friendly=1" TARGET="cal_printer_friendly"
 onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
 
-<?php include_once "includes/trailer.php"; ?>
+<?php print_trailer (); ?>
 
 <?php } else {
-        dbi_close ( $c );
+	print_trailer ( false );
       }
 ?>
 

@@ -703,7 +703,7 @@ if ( strlen ( $conflicts ) ) {
 <?php } ?>
 
 
-<?php include_once "includes/trailer.php"; ?>
+<?php print_trailer(); ?>
 
 </BODY>
 </HTML>

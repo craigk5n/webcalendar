@@ -1,3 +1,8 @@
+<?php
+// NOTE: This file is included within the print_trailer function found
+// in includes/init.php.  If you add a global variable somewhere in this
+// file, be sure to declare it global in the print_trialer function.
+?>
 
 <BR CLEAR="all">
 <HR CLEAR="all">
@@ -330,6 +335,3 @@ if ( $login != "__public__" ) {
   }
 ?>
 </FONT>
-<?php
-dbi_close ( $c );
-?>

@@ -96,7 +96,7 @@ if ( count ( $viewusers ) == 0 ) {
 if ( ! empty ( $error ) ) {
   echo "<h2><font color=\"$H2COLOR\">" . translate ( "Error" ) .
     "</font></h2>\n" . $error;
-  include_once "includes/trailer.php";
+  print_trailer ();
   exit;
 }
 
@@ -343,11 +343,8 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 ?>friendly=1" TARGET="cal_printer_friendly"
 onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
 
-<?php include_once "includes/trailer.php"; ?>
-
-<?php } else {
-        dbi_close ( $c );
       }
+print_trailer ();
 ?>
 
 </BODY>

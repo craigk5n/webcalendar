@@ -503,9 +503,9 @@ if ( empty ( $friendly ) && empty ( $error ) && empty ( $list ) ) {
 
 if ( ( empty ( $friendly ) && $report_include_header == 'Y' )
   || ! empty ( $error ) || ! empty ( $list ) ) {
-  include_once "includes/trailer.php";
+  print_trailer ();
 } else {
-  dbi_close ( $c );
+  print_trailer ( false );
 }
 
 

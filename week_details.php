@@ -166,11 +166,8 @@ for ( $d = 0; $d < 7; $d++ ) {
 onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
 
 
-<?php include_once "includes/trailer.php"; ?>
-
-<?php } else {
-        dbi_close ( $c );
-      }
+<?php }
+print_trailer();
 ?>
 
 </body>

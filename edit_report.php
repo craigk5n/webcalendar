@@ -375,6 +375,6 @@ if ( $is_admin ) {
 
 </form>
 
-<?php include_once "includes/trailer.php"; ?>
+<?php print_trailer(); ?>
 </body>
 </html>

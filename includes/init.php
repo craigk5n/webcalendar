@@ -136,13 +136,17 @@ if ($DMW) {
 //               the head tag (META, SCRIPT, etc)
 //      $BodyX - a variable containing any other data to be printed inside
 //               the Body tag (onload for example)
+//	$disableCustom - do not include custom header (useful for small
+//		popup windows, such as color selection)
 //
-function print_header($includes = '', $HeadX = '', $BodyX = '') {
+function print_header($includes = '', $HeadX = '', $BodyX = '',
+  $disableCustom=false) {
   global $application_name;
   global $FONTS,$WEEKENDBG,$THFG,$THBG;
   global $TABLECELLFG,$TODAYCELLBG,$TEXTCOLOR;
   global $POPUP_FG,$BGCOLOR;
   global $LANGUAGE;
+  global $CUSTOM_HEADER;
 
   // Start the header
   echo "<HTML>\n<HEAD>\n<TITLE>".translate($application_name)."</TITLE>\n";
@@ -174,5 +178,57 @@ function print_header($includes = '', $HeadX = '', $BodyX = '') {
 
   // Finish the header
   echo "</HEAD>\n<BODY BGCOLOR=\"$BGCOLOR\" CLASS=\"defaulttext\" $BodyX>\n";
+
+  // Add custom header if enabled
+  if ( $CUSTOM_HEADER == 'Y' && ! $disableCustom ) {
+    $res = dbi_query (
+      "SELECT cal_template_text FROM webcal_report_template " .
+      "WHERE cal_template_type = 'H' and cal_report_id = 0" );
+    if ( $res ) {
+      if ( $row = dbi_fetch_row ( $res ) ) {
+        echo $row[0];
+      }
+      dbi_free_result ( $res );
+    }
+  }
+}
+
+// Print the common trailer.
+// Include custom trailer if enabled
+function print_trailer ( $include_nav_links=true, $closeDb=true,
+  $disableCustom=false )
+{
+  global $CUSTOM_TRAILER, $c, $friendly;
+  global $login, $user, $cat_id, $categories_enabled, $thisyear,
+    $thismonth, $thisday, $DATE_FORMAT_MY, $WEEK_START, $DATE_FORMAT_MD,
+    $readonly, $is_admin, $public_access, $public_access_can_add,
+    $single_user, $use_http_auth, $login_return_path, $require_approvals,
+    $is_nonuser_admin, $public_access_others, $allow_view_other,
+    $views, $reports_enabled, $LAYER_STATUS, $nonuser_enabled,
+    $groups_enabled, $fullname, $has_boss;
+  
+
+  if ( $include_nav_links && empty ( $friendly ) ) {
+    include_once "includes/trailer.php";
+  }
+
+  // Add custom trailer if enabled
+  if ( $CUSTOM_TRAILER == 'Y' && ! $disableCustom && isset ( $c ) ) {
+    $res = dbi_query (
+      "SELECT cal_template_text FROM webcal_report_template " .
+      "WHERE cal_template_type = 'T' and cal_report_id = 0" );
+    if ( $res ) {
+      if ( $row = dbi_fetch_row ( $res ) ) {
+        echo $row[0];
+      }
+      dbi_free_result ( $res );
+    }
+  }
+
+  if ( $closeDb ) {
+    if ( isset ( $c ) )
+      dbi_close ( $c );
+    unset ( $c );
+  }
 }
 ?>

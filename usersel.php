@@ -47,7 +47,7 @@ if ( $res ) {
 }
 
 $INC = array('js/usersel.php');
-print_header($INC);
+print_header($INC,'','',true);
 ?>
 
 <CENTER>
@@ -107,6 +107,8 @@ for ( $i = 0; $i < count ( $groups ); $i++ ) {
 </CENTER></TD></TR>
 
 </TABLE>
+
+<?php print_trailer ( false, true, true ); ?>
 
 </BODY>
 </HTML>
