@@ -11,7 +11,7 @@
   <TD><A HREF="http://www.cknudsen.com">Craig Knudsen</A>, <A HREF="mailto:cknudsen@cknudsen.com">cknudsen@cknudsen.com</A></TD></TR>
 <TR><TD VALIGN="top">Version:</TD><TD>WebCalendar v0.9.43 (15 Oct 2003)<BR>
 $Id$ </TD></TR>
-<TR><TD>Last updated:</TD><TD>15-Oct-2003</TD></TR>
+<TR><TD>Last updated:</TD><TD>10-Mar-2004</TD></TR>
 </TABLE>
 <BLOCKQUOTE>
 This file is generated from <TT>tables-mysql.sql</TT>.
@@ -36,6 +36,7 @@ to regenerate this file.
 <LI><A HREF="#webcal_entry_user">webcal_entry_user</A>
 <LI><A HREF="#webcal_group">webcal_group</A>
 <LI><A HREF="#webcal_group_user">webcal_group_user</A>
+<LI><A HREF="#webcal_import">webcal_import</A>
 <LI><A HREF="#webcal_import_data">webcal_import_data</A>
 <LI><A HREF="#webcal_nonuser_cals">webcal_nonuser_cals</A>
 <LI><A HREF="#webcal_reminder_log">webcal_reminder_log</A>
@@ -127,11 +128,18 @@ to regenerate this file.
 <TR><TD VALIGN="top" BGCOLOR="#E0E0E0"><FONT COLOR="#A00000"><B>cal_group_id</B></FONT></TD><TD VALIGN="top" BGCOLOR="#E0E0E0">INT</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">N</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> group id </TD><TR><TD VALIGN="top" BGCOLOR="#E0E0E0"><FONT COLOR="#A00000"><B>cal_login</B></FONT></TD><TD VALIGN="top" BGCOLOR="#E0E0E0">VARCHAR</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">25</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">N</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> user login </TD></TABLE>
 </BLOCKQUOTE>
 <P>
+<H3><A NAME="webcal_import">webcal_import</A></H3>
+<BLOCKQUOTE>
+ Used to track import data (one row per import) <P>
+<TABLE BORDER="0"><TR><TH VALIGN="top" BGCOLOR="#C0C0C0">Column Name</TH><TH VALIGN="top" BGCOLOR="#C0C0C0">Type</TH><TH VALIGN="top" BGCOLOR="#C0C0C0">Length</TH><TH VALIGN="top" BGCOLOR="#C0C0C0">Null</TH><TH VALIGN="top" BGCOLOR="#C0C0C0">Default</TH><TH VALIGN="top" BGCOLOR="#C0C0C0">Description</TH></TR>
+<TR><TD VALIGN="top" BGCOLOR="#E0E0E0"><FONT COLOR="#A00000"><B>cal_import_id</B></FONT></TD><TD VALIGN="top" BGCOLOR="#E0E0E0">INT</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">N</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> unique id for import </TD><TR><TD VALIGN="top" BGCOLOR="#E0E0E0">cal_name</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">VARCHAR</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">50</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">Y</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> name of import (optional) </TD><TR><TD VALIGN="top" BGCOLOR="#E0E0E0">cal_date</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">INT</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">N</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> date of import (YYYYMMDD format) </TD><TR><TD VALIGN="top" BGCOLOR="#E0E0E0">cal_type</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">VARCHAR</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">10</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">N</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> type of import (ical, vcal, palm) </TD><TR><TD VALIGN="top" BGCOLOR="#E0E0E0">cal_login</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">VARCHAR</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">25</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">Y</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> user who performed the import </TD></TABLE>
+</BLOCKQUOTE>
+<P>
 <H3><A NAME="webcal_import_data">webcal_import_data</A></H3>
 <BLOCKQUOTE>
- Used to track importing data. <P>
+ Used to track import data (one row per event) <P>
 <TABLE BORDER="0"><TR><TH VALIGN="top" BGCOLOR="#C0C0C0">Column Name</TH><TH VALIGN="top" BGCOLOR="#C0C0C0">Type</TH><TH VALIGN="top" BGCOLOR="#C0C0C0">Length</TH><TH VALIGN="top" BGCOLOR="#C0C0C0">Null</TH><TH VALIGN="top" BGCOLOR="#C0C0C0">Default</TH><TH VALIGN="top" BGCOLOR="#C0C0C0">Description</TH></TR>
-<TR><TD VALIGN="top" BGCOLOR="#E0E0E0"><FONT COLOR="#A00000"><B>cal_id</B></FONT></TD><TD VALIGN="top" BGCOLOR="#E0E0E0">int</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">N</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> event id in WebCalendar </TD><TR><TD VALIGN="top" BGCOLOR="#E0E0E0"><FONT COLOR="#A00000"><B>cal_login</B></FONT></TD><TD VALIGN="top" BGCOLOR="#E0E0E0">VARCHAR</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">25</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">N</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> user login </TD><TR><TD VALIGN="top" BGCOLOR="#E0E0E0">cal_import_type</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">VARCHAR</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">15</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">N</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> type of import: 'palm', 'vcal', etc. </TD><TR><TD VALIGN="top" BGCOLOR="#E0E0E0">cal_external_id</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">VARCHAR</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">200</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">Y</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> external id used in external calendar system </TD></TABLE>
+<TR><TD VALIGN="top" BGCOLOR="#E0E0E0">cal_import_id</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">INT</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">N</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> import id (from webcal_import table) </TD><TR><TD VALIGN="top" BGCOLOR="#E0E0E0"><FONT COLOR="#A00000"><B>cal_id</B></FONT></TD><TD VALIGN="top" BGCOLOR="#E0E0E0">INT</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">N</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> event id in WebCalendar </TD><TR><TD VALIGN="top" BGCOLOR="#E0E0E0"><FONT COLOR="#A00000"><B>cal_login</B></FONT></TD><TD VALIGN="top" BGCOLOR="#E0E0E0">VARCHAR</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">25</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">N</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> user login </TD><TR><TD VALIGN="top" BGCOLOR="#E0E0E0">cal_import_type</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">VARCHAR</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">15</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">N</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> type of import: 'palm', 'vcal', etc. </TD><TR><TD VALIGN="top" BGCOLOR="#E0E0E0">cal_external_id</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">VARCHAR</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">200</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">Y</TD><TD VALIGN="top" BGCOLOR="#E0E0E0">&nbsp;</TD><TD VALIGN="top" BGCOLOR="#E0E0E0"> external id used in external calendar system </TD></TABLE>
 </BLOCKQUOTE>
 <P>
 <H3><A NAME="webcal_nonuser_cals">webcal_nonuser_cals</A></H3>
