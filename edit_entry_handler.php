@@ -146,6 +146,9 @@ if ( $timetype == "A" ) {
   $minute = 0;
 }
 
+$duration_h = getValue ( "duration_h" );
+$duration_m = getValue ( "duration_h" );
+
 $duration = ( $duration_h * 60 ) + $duration_m;
 if ( $hour > 0 && $timetype != 'U' ) {
   if ( $TIME_FORMAT == '12' ) {
