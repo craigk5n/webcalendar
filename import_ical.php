@@ -251,7 +251,10 @@ function format_ical($event) {
 
   $fevent['Summary'] = $event['summary'];
   $fevent['Description'] = $event['description'];
-  $fevent['Private'] = preg_match("/private|confidential/i", $event['class']) ? '1' : '0';
+  if ( ! empty ( $event['class'] ) ) {
+    $fevent['Private'] = preg_match("/private|confidential/i", 
+      $event['class']) ? '1' : '0';
+  }
   $fevent['UID'] = $event['uid'];
 
   // Repeats
@@ -336,7 +339,7 @@ function format_ical($event) {
     }
 
     // Repeating exceptions?
-    if ($event['exdate']) {
+    if ( ! empty ( $event['exdate'] ) && $event['exdate']) {
       $fevent['Repeat']['Exceptions'] = array();
       $EX = explode(",", $event['exdate']);
       foreach ( $EX as $exdate ){
