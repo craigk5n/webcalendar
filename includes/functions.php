@@ -918,8 +918,7 @@ function get_entries ( $user, $date ) {
       $sy = substr ( $date, 0, 4 );
       $sm = substr ( $date, 4, 2 );
       $sd = substr ( $date, 6, 2 );
-      $prev_time = mktime ( 3, 0, 0, $sm, $sd - 1, $sy );
-      $prev_date = date ( "Ymd", $prev_time );
+      $prev_day = date ( ( "Ymd" ), mktime ( 3, 0, 0, $sm, $sd - 1, $sy ) );
         //echo "prev_date = $prev_day <P>";
       if ( $events[$i]['cal_date'] == $date &&
         $events[$i]['cal_time'] == -1 ) {
@@ -935,24 +934,24 @@ function get_entries ( $user, $date ) {
         //echo "added event $events[$i][cal_id] <BR>";
       }
     } else {
-      $cutoff = ( 24 + $TZ_OFFSET ) * 10000;
+      //TZ < 0
+      $cutoff = ( 0 - $TZ_OFFSET ) * 10000;
       //echo "<P> cal_time " . $events[$i]['cal_time'] . "<P>";
       $sy = substr ( $date, 0, 4 );
       $sm = substr ( $date, 4, 2 );
       $sd = substr ( $date, 6, 2 );
-      $next_time = mktime ( 3, 0, 0, $sm, $sd + 1, $sy );
-      $next_date = date ( "Ymd", $next_time );
+      $next_day = date ( ( "Ymd" ), mktime ( 3, 0, 0, $sm, $sd + 1, $sy ) );
       //echo "next_date = $next_day <P>";
       if ( $events[$i]['cal_date'] == $date &&
         $events[$i]['cal_time'] == -1 ) {
         $ret[$n++] = $events[$i];
         //echo "added event $events[$i][cal_id] <BR>";
       } if ( $events[$i]['cal_date'] == $date &&
-        $events[$i]['cal_time'] >= $cutoff ) {
+        $events[$i]['cal_time'] > $cutoff ) {
         $ret[$n++] = $events[$i];
         //echo "added event $events[$i][cal_id] <BR>";
       } else if ( $events[$i]['cal_date'] == $next_date &&
-        $events[$i]['cal_time'] < $cutoff ) {
+        $events[$i]['cal_time'] <= $cutoff ) {
         $ret[$n++] = $events[$i];
         //echo "added event $events[$i][cal_id] <BR>";
       }
