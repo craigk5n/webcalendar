@@ -2235,7 +2235,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
   */
 function print_date_entries ( $date, $user, $ssi ) {
   global $events, $readonly, $is_admin, $login,
-    $public_access, $public_access_can_add;
+    $public_access, $public_access_can_add, $cat_id;
   $cnt = 0;
   $get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
   // public access events always must be approved before being displayed
@@ -2257,6 +2257,8 @@ function print_date_entries ( $date, $user, $ssi ) {
       translate("New Entry") . "\" href=\"edit_entry.php?";
     if ( strcmp ( $user, $GLOBALS["login"] ) )
       print "user=$user&amp;";
+    if ( ! empty ( $cat_id ) )
+      print "cat_id=$cat_id&amp;";
     print "date=$date\"><img src=\"new.gif\" alt=\"" .
       translate("New Entry") . "\" class=\"new\" /></a>";
     $cnt++;
@@ -2627,7 +2629,7 @@ function calc_time_slot ( $time, $round_down = false ) {
   */
 function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   global $TZ_OFFSET;
-  global $login, $readonly;
+  global $login, $readonly, $cat_id;
   $u_url = '';
 
   if ( $readonly == 'Y' )
@@ -2642,6 +2644,7 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
     "date=$date" . ( $hour > 0 ? "&amp;hour=$hour" : "" ) .
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&amp;defusers=$user" ) .
+    ( empty ( $cat_id ) ? "" :  "&amp;cat_id=$cat_id" ) .
     "\"><img src=\"new.gif\" class=\"new\" alt=\"" . 
 	translate("New Entry") . "\" /></a>\n";
 }
@@ -3554,11 +3557,11 @@ function my_array_splice(&$input,$offset,$length,$replacement) {
   *	$ex_global - Don't include global categories ('' or '1')
   */
 function load_user_categories ($ex_global = '') {
-  global $login, $user;
+  global $login, $user, $is_assistant;
   global $categories, $category_owners;
   global $categories_enabled;
 
-  $cat_owner =  ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login;
+  $cat_owner =  ( ! empty ( $user ) && strlen ( $user ) && $is_assistant ) ? $user : $login;
   $categories = array ();
   $category_owners = array ();
   if ( $categories_enabled == "Y" ) {
