@@ -354,6 +354,37 @@ table.monthview {
 	width: 100%;
 }
 
+table.monthview td {
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
+  font-size: 12px;
+  width: 14%;
+  height: 75px;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  background-color: <?php echo $GLOBALS['CELLBG'];?>;
+  vertical-align: top;
+}
+table.monthview td.weekend {
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
+  font-size: 12px;
+  width: 14%;
+  height: 75px;
+  vertical-align: top;
+  background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+table.monthview td.today {
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
+  font-size: 12px;
+  width: 14%;
+  height: 75px;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+  vertical-align: top;
+}
+
 /* ========================= YEAR.PHP */
 /* contains ALL months */
 table.yearview {
@@ -364,7 +395,7 @@ table.yearview {
 }
 .yearview th {
 	font-family: <?php echo $GLOBALS['FONTS']; ?>;
-	font-size: 14px;
+	font-size: 13px;
 /*	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>; */
 	width: 14%;
@@ -511,7 +542,7 @@ table.viewt {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .viewv th.today {
-	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#000000" : $GLOBALS['THFG'] ); ?>;
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
 	border-top-width: 0px;
 	border-left-width: 0px;
