@@ -76,8 +76,8 @@ if ( ! empty ( $HTTP_GET_VARS ) ) {
 }
 if ( ! empty ( $HTTP_POST_VARS ) ) {
   while (list($key, $val) = @each($HTTP_POST_VARS)) {
-    // don't allow anything to have <script> in it...
-    if ( ! is_array ( $val ) ) {
+    // don't allow anything to have <script> in it... except 'template'
+    if ( ! is_array ( $val ) && $key != 'template' ) {
       if ( preg_match ( "/<\s*script/i", $val ) ) {
         echo "Security violation!"; exit;
       }

@@ -106,6 +106,12 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("fonts-help")?>"><?php etranslate("Fonts")?>:</B></TD>
   <TD><INPUT SIZE="40" NAME="admin_FONTS" VALUE="<?php echo htmlspecialchars ( $FONTS );?>" </TD></TR>
 
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("custom-script-help");?>"><?php etranslate("Custom script/stylesheet")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_CUSTOM_SCRIPT" VALUE="Y" <?php if ( $s["CUSTOM_SCRIPT"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_CUSTOM_SCRIPT" VALUE="N" <?php if ( $s["CUSTOM_SCRIPT"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?>
+  &nbsp;&nbsp;
+  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=S','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');">
+  </TD></TR>
+
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("custom-header-help");?>"><?php etranslate("Custom header")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_CUSTOM_HEADER" VALUE="Y" <?php if ( $s["CUSTOM_HEADER"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_CUSTOM_HEADER" VALUE="N" <?php if ( $s["CUSTOM_HEADER"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?>
   &nbsp;&nbsp;

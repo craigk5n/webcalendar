@@ -146,7 +146,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $TABLECELLFG,$TODAYCELLBG,$TEXTCOLOR;
   global $POPUP_FG,$BGCOLOR;
   global $LANGUAGE;
-  global $CUSTOM_HEADER;
+  global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
 
   // Start the header
   echo "<HTML>\n<HEAD>\n<TITLE>".translate($application_name)."</TITLE>\n";
@@ -175,6 +175,19 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
 
   // Include the styles
   include_once 'includes/styles.php';
+
+  // Add custom script/stylesheet if enabled
+  if ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom ) {
+    $res = dbi_query (
+      "SELECT cal_template_text FROM webcal_report_template " .
+      "WHERE cal_template_type = 'S' and cal_report_id = 0" );
+    if ( $res ) {
+      if ( $row = dbi_fetch_row ( $res ) ) {
+        echo $row[0];
+      }
+      dbi_free_result ( $res );
+    }
+  }
 
   // Finish the header
   echo "</HEAD>\n<BODY BGCOLOR=\"$BGCOLOR\" CLASS=\"defaulttext\" $BodyX>\n";

@@ -20,7 +20,7 @@ include_once 'includes/init.php';
 $report_id = 0;
 $error = '';
 
-$type = getValue ( "type", "H|T", true );
+$type = getValue ( "type", "S|H|T", true );
 $cur = '';
 $found = false;
 
@@ -41,7 +41,9 @@ if ( empty ( $REQUEST_METHOD ) )
 
 // Handle form submission
 if ( $REQUEST_METHOD == 'POST' ) {
-  $template = getValue ( "template" );
+  //$template = getPostValue ( "template" );
+  $template = $_POST['template'];
+  //echo "Template: " . htmlentities ( $template ) . " <br>"; exit;
   if ( $found ) {
     $sql = "UPDATE webcal_report_template " .
       "SET cal_template_text = '$template' " .
@@ -68,7 +70,9 @@ print_header( '', '', '', true );
 
 <h2><font color="<?php echo $H2COLOR;?>">
 <?php
-if ( $type == 'H' )
+if ( $type == 'S' )
+  etranslate("Edit Custom Script/Stylesheet");
+else if ( $type == 'H' )
   etranslate("Edit Custom Header");
 else
   etranslate("Edit Custom Trailer");
