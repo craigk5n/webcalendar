@@ -4,6 +4,10 @@ include_once 'includes/init.php';
 if ( ! $is_admin )
   $user = $login;
 
+// cannot edit public user.
+if ( $user == '__public__' )
+  $user = $login;
+
 // don't allow them to create new users if it's not allowed
 if ( empty ( $user ) ) {
   // asking to create a new user

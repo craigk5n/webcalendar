@@ -14,20 +14,23 @@ if ( ! $is_admin ) {
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Users")?></FONT></H2>
 
-<UL>
+<ul>
 <?php
 $userlist = user_get_users ();
 for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-  echo "<LI><A HREF=\"edit_user.php?user=" . $userlist[$i]["cal_login"] .
-    "\">";
-  echo $userlist[$i]['cal_fullname'];
-  echo "</A>";
-  if (  $userlist[$i]["cal_is_admin"] == 'Y' )
-    echo "<SUP>*</SUP>";
+  if ( $userlist[$i]['cal_login'] != '__public__' ) {
+    echo "<li><a href=\"edit_user.php?user=" . $userlist[$i]["cal_login"] .
+      "\">";
+    echo $userlist[$i]['cal_fullname'];
+    echo "</a>";
+    if (  $userlist[$i]["cal_is_admin"] == 'Y' )
+      echo "<sup>*</sup>";
+    echo " </li>\n";
+  }
 }
 ?>
-</UL>
-<SUP>*</SUP> <?php etranslate("denotes administrative user")?>
+</ul>
+<sup>*</sup> <?php etranslate("denotes administrative user")?>
 <P>
 <?php
   if ( $admin_can_add_user )
