@@ -126,7 +126,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   </SELECT>
   </TD></TR>
 
-</TABLE></TD></TR></TABLE></TD></TR></TABLE></TD></TR>
+</TABLE></TD></TR></TABLE></TD></TR></TABLE>
 
 <H3><?php etranslate("Email")?></H3>
 
@@ -147,7 +147,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD VALIGN="top"><B><?php etranslate("Event rejected by participant")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="pref_EMAIL_EVENT_REJECTED" VALUE="Y" <?php if ( $EMAIL_EVENT_REJECTED != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="pref_EMAIL_EVENT_REJECTED" VALUE="N" <?php if ( $EMAIL_EVENT_REJECTED == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
-</TABLE></TD></TR></TABLE></TD></TR></TABLE></TD></TR>
+</TABLE></TD></TR></TABLE></TD></TR></TABLE>
 
 <?php if ( $allow_color_customization ) { ?>
 
@@ -165,7 +165,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B><?php etranslate("Table cell background for current day")?>:</B></TD>
   <TD><INPUT NAME="pref_TODAYCELLBG" SIZE=7 MAXLENGTH=7 VALUE="<?php echo $TODAYCELLBG; ?>"> <INPUT TYPE="button" ONCLICK="selectColor('pref_TODAYCELLBG')" VALUE="<?php etranslate("Select")?>..."></TD></TR>
 
-</TABLE></TD></TR></TABLE></TD></TR></TABLE></TD></TR>
+</TABLE></TD></TR></TABLE></TD></TR></TABLE>
 
 <?php } // if $allow_color_customization ?>
 
