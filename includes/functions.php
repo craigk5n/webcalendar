@@ -3691,4 +3691,37 @@ function languageToAbbrev ( $name ) {
   }
   return false;
 }
+
+// Creates the CSS for using gradient.php, if the appropriate GD
+// functions are available.  A one-pixel wide image will be used
+// for the background image.
+// Parameters:
+//	color - base color
+//	height - height of gradient image
+//	percent - how many percent lighter the top color should be
+//		than the base color at the bottom of the image
+function background_css ( $color, $height = '', $percent = '' ) {
+  $ret = '';
+
+  if ( ( function_exists ( 'imagepng' ) || function_exists ( 'imagegif' ) )
+    && ( empty ( $GLOBALS['enable_gradients'] ) ||
+    $GLOBALS['enable_gradients'] == 'Y' ) ) {
+    $ret = "background: $color url(\"gradient.php?base=" . substr ( $color, 1 );
+
+    if ( $height != '' ) {
+      $ret .= "&height=$height";
+    }
+
+    if ( $percent != '' ) {
+      $ret .= "&percent=$percent";
+    }
+
+    $ret .= "\") repeat-x;\n";
+  } else {
+    $ret = "background-color: $color;\n";
+  }
+
+  return $ret;
+}
+
 ?>
