@@ -9,17 +9,12 @@ echo "<h3>" . translate("Activity Log") . "</h3>\n";
 echo "<a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n";
 
 echo "<table>\n";
-echo "<tr>";
-echo "<th>" .
-  translate("User") . "</th>";
-echo "<th>" .
-  translate("Calendar") . "</th>";
-echo "<th>" .
-  translate("Date") . "/" . translate("Time") . "</th>";
-echo "<th>" .
-  translate("Event") . "</th>";
-echo "<th>" .
-  translate("Action") . "</th></tr>\n";
+echo "<tr><th class=\"usr\">\n" .
+  translate("User") . "</th><th class=\"cal\">\n" .
+  translate("Calendar") . "</th><th class=\"scheduled\">\n" .
+  translate("Date") . "/" . translate("Time") . "</th><th class=\"dsc\">\n" .
+  translate("Event") . "</th><th class=\"action\">\n" .
+  translate("Action") . "\n</th></tr>\n";
 $sql = "SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, " .
   "webcal_entry_log.cal_type, webcal_entry_log.cal_date, " .
   "webcal_entry_log.cal_time, webcal_entry.cal_id, " .
@@ -41,18 +36,13 @@ if ( $res ) {
       $nextpage = $row[7];
       break;
     } else {
-      echo "<tr>";
-      echo "<td>" .
-        $row[0] . "</td>";
-      echo "<td>" .
-        $row[1] . "</td>";
-      echo "<td>" . 
+      echo "<tr><td>\n" .
+        $row[0] . "</td><td>\n" .
+        $row[1] . "</td><td>\n" . 
         date_to_str ( $row[3] ) . " " .
-        display_time ( $row[4] ) . "</td>";
-      echo "<td>" . 
+        display_time ( $row[4] ) . "</td><td>\n" . 
         "<a href=\"view_entry.php?id=$row[5]\" class=\"navlinks\">" .
-        htmlspecialchars($row[6]) . "</a></td>";
-      echo "<td>";
+        htmlspecialchars($row[6]) . "</a></td><td>\n";
       if ( $row[2] == $LOG_CREATE )
         etranslate("Event created");
       else if ( $row[2] == $LOG_APPROVE )
@@ -69,7 +59,7 @@ if ( $res ) {
         etranslate("Reminder sent");
       else
         echo "???";
-      echo "</td></tr>\n";
+      echo "\n</td></tr>\n";
     }
   }
   dbi_free_result ( $res );

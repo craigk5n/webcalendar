@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Making code in activity log easier to read both before & after rendering
   - Disallow includes from being called directly
   - Fixed several security issues reported by Joxean Koret 
   - Added "Admin" links to return user to adminhome.php from admin pages
