@@ -1,5 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1168682:  RC3 Language Detection Broken for Safari.
       1169403:  Public Access not default selected if Particiapants not shown. 
       1169078: Bad function call in import_handler.php
       1168092: Overlapping events display problem

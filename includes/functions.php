@@ -1012,7 +1012,7 @@ function get_browser_language () {
   } else {
     $langs = explode ( ",", $HTTP_ACCEPT_LANGUAGE );
     for ( $i = 0; $i < count ( $langs ); $i++ ) {
-      $l = strtolower ( trim ( $langs[$i] ) );
+     $l = strtolower ( trim ( ereg_replace(';.*', '', $langs[$i] ) ) );
       $ret .= "\"$l\" ";
       if ( ! empty ( $browser_languages[$l] ) ) {
         return $browser_languages[$l];
