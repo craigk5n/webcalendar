@@ -33,7 +33,7 @@ if ( $groups_enabled == "N" ) {
 <UL>
 <?php
 $res = dbi_query ( "SELECT cal_group_id, cal_name FROM webcal_group " .
-  "ORDER BY UPPER(cal_name)" );
+  "ORDER BY cal_name" );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     echo "<LI><A HREF=\"group_edit.php?id=" . $row[0] .
