@@ -125,6 +125,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '') {
   global $FONTS,$WEEKENDBG,$THFG,$THBG;
   global $TABLECELLFG,$TODAYCELLBG,$TEXTCOLOR;
   global $POPUP_FG,$BGCOLOR;
+  global $LANGUAGE;
 
   // Start the header
   echo "<HTML>\n<HEAD>\n<TITLE>".translate($application_name)."</TITLE>\n";
@@ -133,6 +134,18 @@ function print_header($includes = '', $HeadX = '', $BodyX = '') {
   if ( is_array ( $includes ) ) {
     foreach( $includes as $inc ){
       include_once 'includes/'.$inc;
+    }
+  }
+
+  // Specify the charset via a meta tag.
+  // The charset is defined in the translation file.
+  if ( ! empty ( $LANGUAGE ) ) {
+    $charset = translate ( "charset" );
+    if ( $charset != "charset" ) {
+      echo "<meta http-equiv=\"Content-type\" " .
+        " content=\"text/html;charset=$charset\">\n";
+    } else {
+      echo "<!-- no charset defined for $LANGUAGE -->\n";
     }
   }
 
