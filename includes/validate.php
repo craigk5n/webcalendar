@@ -36,7 +36,7 @@ if ( $single_user == "Y" ) {
           // make sure we are connected to the database for password check
           $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
           if ( ! $c ) {
-            echo "Error connecting to database:<BLOCKQUOTE>" . dbi_error () . "</BLOCKQUOTE>\n";
+            echo "Error connecting to database:<blockquote>" . dbi_error () . "</blockquote>\n";
             exit;
           }
 
