@@ -737,8 +737,49 @@ table.vieww {
 .vieww th {
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	width: 10%;
 }
-
+.vieww th.weekend {
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	width: 10%;
+}
+.vieww th.today {
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
+	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+	width: 10%;
+}
+.vieww th.empty {
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 10%;
+}
+.vieww td {
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+}
+.vieww td.weekend {
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
+}
+.vieww td.today {
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+}
 /* ========================= */
 /* WEEK.PHP */
 table.weekview {
@@ -956,6 +997,5 @@ table.weekdetails {
 	vertical-align: top;
 	height: 75px;
 }
-
 -->
 </style>
