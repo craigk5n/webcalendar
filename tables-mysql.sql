@@ -490,9 +490,9 @@ CREATE TABLE webcal_import_data (
   cal_id INT NOT NULL,
   /* user login */
   cal_login VARCHAR(25) NOT NULL,
-  /* type of import: 'palm', 'vcal', etc. */
+  /* type of import: 'palm', 'vcal', 'ical' or 'publish' */
   cal_import_type VARCHAR(15) NOT NULL,
-  /* external id used in external calendar system */
+  /* external id used in external calendar system (for example, UID in iCal) */
   cal_external_id VARCHAR(200) NULL,
   PRIMARY KEY  ( cal_id, cal_login )
 );
