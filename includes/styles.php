@@ -69,6 +69,7 @@
   color: #000000;
   text-decoration: none;
   background-color: #E7E7E7;
+  padding-left: 1px;
 }
 .weeknumber {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
