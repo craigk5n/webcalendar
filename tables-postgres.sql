@@ -14,7 +14,7 @@ INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, ca
 CREATE TABLE webcal_entry (
   cal_id INT NOT NULL,
   cal_group_id INT,
-  cal_ext_for_id INT NULL,
+  cal_ext_for_id INT NOT NULL,
   cal_create_by VARCHAR(25) NOT NULL,
   cal_date INT NOT NULL,
   cal_time INT,
@@ -59,7 +59,7 @@ CREATE TABLE webcal_entry_user (
 CREATE TABLE webcal_entry_ext_user (
   cal_id INT DEFAULT 0 NOT NULL,
   cal_fullname VARCHAR(50) NOT NULL,
-  cal_email VARCHAR(75) NULL,
+  cal_email VARCHAR(75) NOT NULL,
   PRIMARY KEY ( cal_id, cal_fullname )
 );
 
@@ -105,7 +105,7 @@ CREATE TABLE webcal_reminder_log (
 
 CREATE TABLE webcal_group (
   cal_group_id INT NOT NULL,
-  cal_owner VARCHAR(25) NULL,
+  cal_owner VARCHAR(25) NOT NULL,
   cal_name VARCHAR(50) NOT NULL,
   cal_last_update INT NOT NULL,
   PRIMARY KEY ( cal_group_id )
@@ -133,7 +133,7 @@ CREATE TABLE webcal_view_user (
 
 CREATE TABLE webcal_config (
   cal_setting VARCHAR(50) NOT NULL,
-  cal_value VARCHAR(50) NULL,
+  cal_value VARCHAR(50) NOT NULL,
   PRIMARY KEY ( cal_setting )
 );
 
@@ -222,10 +222,10 @@ CREATE TABLE webcal_entry_log (
   cal_log_id INT NOT NULL,
   cal_entry_id INT NOT NULL,
   cal_login VARCHAR(25) NOT NULL,
-  cal_user_cal VARCHAR(25) NULL,
+  cal_user_cal VARCHAR(25) NOT NULL,
   cal_type CHAR(1) NOT NULL,
   cal_date INT NOT NULL,
-  cal_time INT NULL,
+  cal_time INT NOT NULL,
   cal_text TEXT,
   PRIMARY KEY ( cal_log_id )
 );
