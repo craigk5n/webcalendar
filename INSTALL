@@ -31,9 +31,7 @@ PHP.
 
 No optional PHP packages (other than MySQL) are required for this
 application.  However, PHP shoud be compiled with --enable-track-vars
-on some systems.  (Not sure why this is.  The <?php php_track_vars?>
-directive seemed to work fine on my system without having to use
---enable-track-vars.)
+on some systems.
 
 You can run PHP either as a CGI or an Apache module.  You'll get better
 performance with PHP setup as a module.  Not only will you not have to

@@ -1,4 +1,3 @@
-<?php_track_vars?>
 <?php
 include "includes/config.inc";
 include "includes/php-dbi.inc";
