@@ -56,12 +56,12 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
       }
       if ( $dateYmd >= date ("Ymd",$monthstart) &&
         $dateYmd <= date ("Ymd",$monthend) ) {
-        echo "<td><a href=\"day.php?date=" .
+        echo "<td";
+        echo ( $hasEvents ? " class=\"highlight\">" : ">" ) .
+	  "<a href=\"day.php?date=" .
           $dateYmd . $u_url .
-          "\">";
-        echo ( $hasEvents ? "<span style=\"font-weight:bold;\">" : "" ) .
-          date ( "j", $date ) .
-          ( $hasEvents ? "</span>" : "" ) .
+          "\">" .
+	  date ( "j", $date ) .
           "</a></td>";
       } else
         echo "<td>&nbsp;</td>";
@@ -140,7 +140,7 @@ print_header();
 </table>
 
 <div align="center">
-<table class="yearview" cellspacing="4" cellpadding="4">
+<table class="yearview" cellspacing="1" cellpadding="2">
 <tr>
 <td><?php display_small_month(1,$year,False); ?></td>
 <td><?php display_small_month(2,$year,False); ?></td>
