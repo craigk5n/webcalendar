@@ -144,7 +144,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 
 <?php
 if ( ! empty ( $error ) ) {
-  print "<span style=\"color:#FF0000; font-weight: bold;\">" . translate("Error") .
+  print "<span style=\"color:#FF0000; font-weight:bold;\">" . translate("Error") .
     ": $error</span><br />\n";
 }
 ?>
@@ -156,12 +156,12 @@ if ( ! empty ( $return_path ) )
     htmlentities ( $return_path ) . "\" />\n";
 ?>
 
-<table border="0">
-<tr><td><b><?php etranslate("Username")?>:</b></td>
+<table style="border-width:0px;">
+<tr><td style="font-weight:bold;"><?php etranslate("Username")?>:</td>
   <td><input name="login" size="10" value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" tabindex="1" /></td></tr>
-<tr><td><b><?php etranslate("Password")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Password")?>:</td>
   <td><input name="password" type="password" size="10" tabindex="2" /></td></tr>
-<tr><td colspan="2"><input type="checkbox" name="remember" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked"; ?> /> <?php etranslate("Save login via cookies so I don't have to login next time")?></td></tr>
+<tr><td colspan="2"><input type="checkbox" name="remember" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked=\"checked\""; ?> /> <?php etranslate("Save login via cookies so I don't have to login next time")?></td></tr>
 <tr><td colspan="2"><input type="submit" value="<?php etranslate("Login")?>" tabindex="3" /></td></tr>
 </table>
 

@@ -53,7 +53,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 <table style="border-width:0px; width:100%;">
 <tr>
 <?php if ( empty ( $friendly ) ) { ?>
-<td style="text-align:left;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img align="left" src="leftarrow.gif" width="36" height="32" style="border-width:0px;" alt="<?php etranslate("Previous"); ?>" /></a></td>
+<td style="text-align:left;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img src="leftarrow.gif" style="border-width:0px; width:36px; height:32px; text-align:left;" alt="<?php etranslate("Previous"); ?>" /></a></td>
 <?php } ?>
 <td style="text-align:center; color:<?php echo $H2COLOR;?>; font-weight:bold;"><font size="+2">
 <?php
@@ -79,7 +79,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 </font>
 </td>
 <?php if ( empty ( $friendly ) ) { ?>
-<td style="text-align:right;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img align="right" src="rightarrow.gif" width="36" height="32" style="border-width:0px;" alt="<?php etranslate("Next"); ?>" /></a></td>
+<td style="text-align:right;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img style="text-align:right; width:36px; height:32px; border-width:0px;" src="rightarrow.gif" alt="<?php etranslate("Next"); ?>" /></a></td>
 <?php } ?>
 </tr>
 </table>
@@ -109,7 +109,7 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 <?php } ?>
 
 </td>
-<td valign="top">
+<td style="vertical-align:top;">
 <?php if ( empty ( $friendly ) ) { ?>
 <div style="text-align:right;">
 <table style="border-width:0px;" cellspacing="0" cellpadding="0">
@@ -117,19 +117,19 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 <table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
 <tr><th colspan="7" style="background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;"><font size="+4"><?php echo $thisday?></font></th></tr>
 <tr>
-<td style="text-align:left; background-color:ALIGN="left" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>" CLASS="monthlink"><img src="leftarrowsmall.gif" width="18" height="18" border="0" alt="<?php etranslate("Previous")?>"></a></td>
-<th colspan="5" bgcolor="<?php echo $THBG?>"><font color="<?php echo $THFG?>"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></font></th>
-<td align="right" bgcolor="<?php echo $THBG?>"><a href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead . $caturl?>" class="monthlink"><img src="rightarrowsmall.gif" width="18" height="18" border="0" alt="<?php etranslate("Next") ?>"></a></td>
+<td style="text-align:left; background-color:<?php echo $THBG?>;"><a href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>" class="monthlink"><img src="leftarrowsmall.gif" style="width:18px; height:18px; border-width:0px;" alt="<?php etranslate("Previous")?>" /></a></td>
+<th colspan="5" style="background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></th>
+<td style="text-align:right; background-color:<?php echo $THBG?>;"><a href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead . $caturl?>" class="monthlink"><img src="rightarrowsmall.gif" style="width:18px; height:18px; border-width:0px;" alt="<?php etranslate("Next") ?>" /></a></td>
 </tr>
 <?php
 echo "<tr>";
-if ( $WEEK_START == 0 ) echo "<td bgcolor=\"$CELLBG\"><font size=\"-3\">" .
+if ( $WEEK_START == 0 ) echo "<td style=\"background-color:$CELLBG;\"><font size=\"-3\">" .
   weekday_short_name ( 0 ) . "</td>";
 for ( $i = 1; $i < 7; $i++ ) {
-  echo "<td bgcolor=\"$CELLBG\"><font size=\"-3\">" .
+  echo "<td style=\"background-color:$CELLBG;\"><font size=\"-3\">" .
     weekday_short_name ( $i ) . "</td>";
 }
-if ( $WEEK_START == 1 ) echo "<td bgcolor=\"$CELLBG\"><font size=\"-3\">" .
+if ( $WEEK_START == 1 ) echo "<td style=\"background-color:$CELLBG;\"><font size=\"-3\">" .
   weekday_short_name ( 0 ) . "</td>";
 echo "</tr>\n";
 // generate values for first day and last day of month
@@ -145,15 +145,15 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( 24 * 3600 * 7 ) ) {
   for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     $i += ( 24 * 3600 * 7 ) ) {
-    echo "<tr align=\"center\">\n";
+    echo "<tr style=\"text-align:center;\">\n";
     for ( $j = 0; $j < 7; $j++ ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
         if ( date ( "Ymd", $date ) == date ( "Ymd", $now ) )
-          echo "<td bgcolor=\"$TODAYCELLBG\">";
+          echo "<td style=\"background-color:$TODAYCELLBG;\">";
         else
-          echo "<td bgcolor=\"$CELLBG\">";
+          echo "<td style=\"background-color:$CELLBG;\">";
         echo "<font size=\"-2\">";
         echo "<a href=\"day.php?";
         echo $u_url;
@@ -161,7 +161,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
          date ( "d", $date ) .
          "</a></font></td>\n";
       } else {
-        print "<td bgcolor=\"$CELLBG\">&nbsp;</td>\n";
+        print "<td style=\"background-color:$CELLBG;\">&nbsp;</td>\n";
       }
     }
     echo "</tr>\n";
@@ -191,8 +191,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
     echo "year=$thisyear&month=$thismonth&day=$thisday&";
   }
   if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&";
-?>friendly=1" target="cal_printer_friendly"
-onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
+?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 <?php print_trailer (); ?>
 

@@ -43,7 +43,7 @@ if ( empty ( $REQUEST_METHOD ) )
 if ( $REQUEST_METHOD == 'POST' ) {
   //$template = getPostValue ( "template" );
   $template = $_POST['template'];
-  //echo "Template: " . htmlentities ( $template ) . " <br>"; exit;
+  //echo "Template: " . htmlentities ( $template ) . " <br />"; exit;
   if ( $found ) {
     $sql = "UPDATE webcal_report_template " .
       "SET cal_template_text = '$template' " .
@@ -63,12 +63,12 @@ if ( $REQUEST_METHOD == 'POST' ) {
 }
 
 print_header( '', '', '', true );
-//echo "report_id: $report_id <br>\n";
+//echo "report_id: $report_id <br />\n";
 //echo "report_name: $report_name <br />\n";
 //echo "report_user: $report_user <br />\n";
 ?>
 
-<h2><font color="<?php echo $H2COLOR;?>">
+<h2 style="color:<?php echo $H2COLOR;?>;">
 <?php
 if ( $type == 'S' )
   etranslate("Edit Custom Script/Stylesheet");
@@ -76,7 +76,7 @@ else if ( $type == 'H' )
   etranslate("Edit Custom Header");
 else
   etranslate("Edit Custom Trailer");
-?></font></h2>
+?></h2>
 
 <?php
 if ( ! empty ( $error ) ) {

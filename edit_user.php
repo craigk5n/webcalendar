@@ -26,12 +26,10 @@ if ( empty ( $user ) ) {
 print_header();
 ?>
 
-<table border="0">
-<tr><td valign="top" width="50%">
-
+<table style="border-width:0px;">
+<tr><td style="vertical-align:top; width:50%;">
 
 <?php
-
 if ( ! empty ( $user ) ) {
   user_load_variables ( $user, "u" );
   echo "<h2 style=\"color:$H2COLOR;\">" . translate("Edit User") . "</h2>\n";
@@ -49,8 +47,8 @@ if ( empty ( $user ) ) {
 }
 ?>
 
-<table border="0">
-<tr><td><b><?php etranslate("Username")?>:</b></td>
+<table style="border-width:0px;">
+<tr><td style="font-weight:bold;"><?php etranslate("Username")?>:</td>
   <td><?php
     if ( ! empty ( $user ) ) {
       if ( $is_admin )
@@ -62,20 +60,20 @@ if ( empty ( $user ) ) {
       echo "<input name=\"user\" size=\"20\" maxlength=\"20\" />";
     }
 ?></td></tr>
-<tr><td><b><?php etranslate("First Name")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("First Name")?>:</td>
   <td><input name="ufirstname" size="20" value="<?php echo htmlspecialchars ( $ufirstname );?>" /></td></tr>
-<tr><td><b><?php etranslate("Last Name")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Last Name")?>:</td>
   <td><input name="ulastname" size="20" value="<?php echo htmlspecialchars ( $ulastname );?>" /></td></tr>
-<tr><td><b><?php etranslate("E-mail address")?>:</b></td>
-  <td><input name="uemail" size="20" value="<?php echo htmlspecialchars ( $uemail );?>"></td></tr>
+<tr><td style="font-weight:bold;"><?php etranslate("E-mail address")?>:</td>
+  <td><input name="uemail" size="20" value="<?php echo htmlspecialchars ( $uemail );?>" /></td></tr>
 <?php if ( empty ( $user ) && ! $use_http_auth && $user_can_update_password ) { ?>
-<tr><TD><b><?php etranslate("Password")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Password")?>:</td>
   <td><input name="upassword1" size="15" value="" type="password" /></td></tr>
-<tr><td><b><?php etranslate("Password")?> (<?php etranslate("again")?>):</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Password")?> (<?php etranslate("again")?>):</td>
   <td><input name="upassword2" size="15" value="" type="password" /></td></tr>
 <?php }
   if ( $is_admin ) { ?>
-<tr><td><b><?php etranslate("Admin")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Admin")?>:</td>
   <td><input type="radio" name="uis_admin" value="N" <?php if ( $uis_admin != "Y" ) echo "checked=\"checked\"";?>><?php etranslate("No")?> <input type="radio" name="uis_admin" value="Y" <?php if ( $uis_admin == "Y" ) echo "checked=\"checked\"";?>><?php etranslate("Yes")?></td></tr>
 <?php } ?>
 <tr><td colspan="2">
@@ -102,18 +100,18 @@ if ( empty ( $user ) ) {
 
 </td>
 <td>&nbsp;&nbsp;</td>
-<td valign="top">
+<td style="vertical-align:top;">
 
-<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Change Password")?></font></h2>
-<form action="edit_user_handler.php" method="POST">
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Change Password")?></h2>
+<form action="edit_user_handler.php" method="post">
 <input type="hidden" name="formtype" value="setpassword" />
 <?php if ( $is_admin ) { ?>
 <input type="hidden" name="user" value="<?php echo $user;?>" />
 <?php } ?>
-<table border="0">
-<tr><td><b><?php etranslate("New Password")?>:</b></td>
+<table style="border-width:0px;">
+<tr><td style="font-weight:bold;"><?php etranslate("New Password")?>:</td>
   <td><input name="upassword1" type="password" size="15" /></td></tr>
-<tr><td><b><?php etranslate("New Password")?> (<?php etranslate("again")?>):</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("New Password")?> (<?php etranslate("again")?>):</td>
   <td><input name="upassword2" type="password" size="15" /></td></tr>
 <tr><td colspan="2">
   <?php if ( $demo_mode == "Y" ) { ?>

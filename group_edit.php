@@ -37,7 +37,7 @@ if ( $newgroup ) {
   echo "<h2 style=\"color:$H2COLOR;\">" . translate("Add Group") . "</h2>\n";
   echo "<input type=\"hidden\" name=\"add\" value=\"1\" />\n";
 } else {
-  echo "<h2 style=\"color: $H2COLOR;\">" . translate("Edit Group") . "</h2>\n";
+  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Edit Group") . "</h2>\n";
   echo "<input name=\"id\" type=\"hidden\" value=\"$id\" />";
 }
 ?>
@@ -89,7 +89,7 @@ if ( $newgroup ) {
 </td></tr>
 <tr><td colspan="2">
 <br /><br />
-<div align="center">
+<div style="text-align:center;">
 <input type="submit" name="action" value="<?php if ( $newgroup ) etranslate("Add"); else etranslate("Save"); ?>" />
 <?php if ( ! $newgroup ) { ?>
 <input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />

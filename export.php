@@ -5,24 +5,23 @@ $INC = array('js/export.php');
 print_header($INC);
 ?>
 
-<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Export")?></font></h2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Export")?></h2>
 
 <form action="export_handler.php" method="post" name="exportform">
-
-<table border="0">
-<tr><td><b><?php etranslate("Export format")?>:</b></td><td><select name="format">
+<table style="border-width:0px;">
+<tr><td style="font-weight:bold;"><?php etranslate("Export format")?>:</td><td><select name="format">
   <option value="ical">iCalendar</option>
   <option value="vcal">vCalendar</option>
   <option value="pilot-csv">pilot-datebook CSV (<?php etranslate("Palm Pilot")?>)</option>
   <option value="pilot-text">install-datebook (<?php etranslate("Palm Pilot")?>)</option>
 </select></td></tr>
-<tr><td></td><td><input type="checkbox" name="use_all_dates" value="y" />
-  <b><?php etranslate("Export all dates")?></b></td></tr>
-<tr><td><b><?php etranslate("Start date")?>:</b></td>
+<tr><td>&nbsp;</td><td><input type="checkbox" name="use_all_dates" value="y" />
+  <span style="font-weight:bold;"><?php etranslate("Export all dates")?></span></td></tr>
+<tr><td style="font-weight:bold;"><?php etranslate("Start date")?>:</td>
   <td><select name="fromday">
 <?php
   $day = date ( "d" );
-  for ( $i = 1; $i <= 31; $i++ ) echo "<option" . ( $i == $day ? " SELECTED=\"SELECTED\"" : "" ) . ">$i</option>";
+  for ( $i = 1; $i <= 31; $i++ ) echo "<option" . ( $i == $day ? " selected=\"selected\"" : "" ) . ">$i</option>";
 ?>
   </select>
   <select name="frommonth">
@@ -31,7 +30,7 @@ print_header($INC);
   $year = date ( "Y" );
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    print "<option value=\"$i\"" . ( $i == $month ? " SELECTED=\"SELECTED\"" : "" ) . ">$m</option>";
+    print "<option value=\"$i\"" . ( $i == $month ? " selected=\"selected\"" : "" ) . ">$m</option>";
   }
 ?>
   </select>
@@ -40,18 +39,18 @@ print_header($INC);
   $year = date ( "Y" ) - 1;
   for ( $i = -1; $i < 5; $i++ ) {
     $y = date ( "Y" ) + $i;
-    print "<option value=\"$y\"" . ( $y == $year ? " SELECTED=\"SELECTED\"" : "" ) . ">$y</option>";
+    print "<option value=\"$y\"" . ( $y == $year ? " selected=\"selected\"" : "" ) . ">$y</option>";
   }
 ?>
   </select>
   <input type="button" onclick="selectDate('fromday','frommonth','fromyear')" value="<?php etranslate("Select")?>..." />
 </td></tr>
 
-<tr><td><b><?php etranslate("End date")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("End date")?>:</td>
   <td><select name="endday">
 <?php
   $day = date ( "d" );
-  for ( $i = 1; $i <= 31; $i++ ) echo "<option" . ( $i == $day ? " SELECTED=\"SELECTED\"" : "" ) . ">$i</option>";
+  for ( $i = 1; $i <= 31; $i++ ) echo "<option" . ( $i == $day ? " selected=\"selected\"" : "" ) . ">$i</option>";
 ?>
   </select>
   <select name="endmonth">
@@ -60,7 +59,7 @@ print_header($INC);
   $year = date ( "Y" );
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    print "<option value=\"$i\"" . ( $i == $month ? " SELECTED=\"SELECTED\"" : "" ) . ">$m</option>";
+    print "<option value=\"$i\"" . ( $i == $month ? " selected=\"selected\"" : "" ) . ">$m</option>";
   }
 ?>
   </select>
@@ -69,19 +68,19 @@ print_header($INC);
   $year = date ( "Y" ) + 1;
   for ( $i = -1; $i < 5; $i++ ) {
     $y = date ( "Y" ) + $i;
-    print "<option value=\"$y\"" . ( $y == $year ? " SELECTED=\"SELECTED\"" : "" ) . ">$y</option>";
+    print "<option value=\"$y\"" . ( $y == $year ? " selected=\"selected\"" : "" ) . ">$y</option>";
   }i
 ?>
   </select>
   <input type="button" onclick="selectDate('endday','endmonth','endyear')" value="<?php etranslate("Select")?>..." />
 </td></tr>
 
-<tr><td><b><?php etranslate("Modified since")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Modified since")?>:</td>
   <td><select name="modday">
 <?php
   $week_ago = mktime ( 0, 0, 0, date ( "m" ), date ( "d" ) - 7, date ( "Y" ) );
   $day = date ( "d", $week_ago );
-  for ( $i = 1; $i <= 31; $i++ ) echo "<option " . ( $i == $day ? " SELECTED=\"SELECTED\"" : "" ) . ">$i</option>";
+  for ( $i = 1; $i <= 31; $i++ ) echo "<option " . ( $i == $day ? " selected=\"selected\"" : "" ) . ">$i</option>";
 ?>
   </select>
   <select name="modmonth">
@@ -90,7 +89,7 @@ print_header($INC);
   $year = date ( "Y", $week_ago );
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    print "<option value=\"$i\"" . ( $i == $month ? " SELECTED=\"SELECTED\"" : "" ) . ">$m</option>";
+    print "<option value=\"$i\"" . ( $i == $month ? " selected=\"selected\"" : "" ) . ">$m</option>";
   }
 ?>
   </select>
@@ -99,7 +98,7 @@ print_header($INC);
   $year = date ( "Y", $week_ago );
   for ( $i = -1; $i < 5; $i++ ) {
     $y = date ( "Y" ) + $i;
-    print "<option value=\"$y\"" . ( $y == $year ? " SELECTED=\"SELECTED\"" : "" ) . ">$y</option>";
+    print "<option value=\"$y\"" . ( $y == $year ? " selected=\"selected\"" : "" ) . ">$y</option>";
   }
 ?>
   </select>

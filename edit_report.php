@@ -87,8 +87,8 @@ if ( empty ( $error ) && $show_participants ) {
 $page_template = '<dl>${days}</dl>';
 $day_template = '<dt><b>${date}</b></dt><dd><dl>${events}</dl></dd>';
 $event_template = '<dt>${name}</dt><dd>' .
-  translate ( "Date" ) . ': ${date}</b><br>' .
-  translate ( "Time" ) . ': ${time}</b><br>' .
+  translate ( "Date" ) . ': ${date}</b><br />' .
+  translate ( "Time" ) . ': ${time}</b><br />' .
   '${description}</dd>';
 
 if ( empty ( $error ) && $report_id > 0 ) {
@@ -172,12 +172,12 @@ else {
 }
 
 print_header();
-//echo "report_id: $report_id <br>\n";
-//echo "report_name: $report_name <br>\n";
-//echo "report_user: $report_user <br>\n";
+//echo "report_id: $report_id <br />\n";
+//echo "report_name: $report_name <br />\n";
+//echo "report_user: $report_user <br />\n";
 ?>
 
-<h2><font color="<?php echo $H2COLOR;?>">
+<h2 style="color:<?php echo $H2COLOR;?>;">
 <?php
 if ( $updating_public )
   echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
@@ -185,8 +185,7 @@ if ( $adding_report )
   etranslate("Add Report");
 else
   etranslate("Edit Report");
-
-?></font></h2>
+?></h2>
 
 <?php
 if ( ! empty ( $error ) ) {
@@ -198,7 +197,6 @@ if ( ! empty ( $error ) ) {
 
 
 <form action="edit_report_handler.php" method="post" name="reportform">
-
 <?php if ( $updating_public ) { ?>
   <input type="hidden" name="public" value="1" />
 <?php } ?>
@@ -206,7 +204,7 @@ if ( ! empty ( $error ) ) {
   <input type="hidden" name="report_id" value="<?php echo $report_id?>" />
 <?php } ?>
 
-<table border="0">
+<table style="border-width:0px;">
 
 <tr><td><b><?php etranslate("Report name")?>:</b></td>
   <td><input name="report_name" size="40" maxlength="50" value="<?php echo htmlentities ( $report_name ); ?>" /></td></tr>
@@ -215,13 +213,13 @@ if ( ! empty ( $error ) ) {
 if ( $show_participants ) {
   $users = "<option value=\"\"";
   if ( empty ( $report_user ) )
-    $users .= " SELECTED=\"SELECTED\"";
+    $users .= " selected=\"selected\"";
   $users .= "> " . translate ( "Current User" );
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
     $users .= "<option value=\"" . $userlist[$i]['cal_login'] . "\"";
     if ( ! empty ( $report_user ) ) {
       if ( $report_user == $userlist[$i]['cal_login'] )
-        $users .= " SELECTED=\"SELECTED\"";
+        $users .= " selected=\"selected\"";
     } 
     $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
@@ -275,8 +273,8 @@ if ( $is_admin ) {
     while ( list ( $num, $descr ) = each ( $ranges ) ) {
       echo "<option value=\"$num\"";
       if ( $report_time_range == $num )
-        echo " SELECTED=\"SELECTED\"";
-      echo "> $descr\n";
+        echo " selected=\"selected\"";
+      echo ">$descr\n";
     }
   ?></select></td></tr>
 
@@ -287,8 +285,8 @@ if ( $is_admin ) {
     while ( list ( $cat_id, $descr ) = each ( $categories ) ) {
       echo "<option value=\"$cat_id\"";
       if ( $report_cat_id == $cat_id )
-        echo " SELECTED=\"SELECTED\"";
-      echo "> $descr\n";
+        echo " selected=\"selected\"";
+      echo ">$descr\n";
     }
   ?></select></td></tr>
 

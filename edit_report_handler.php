@@ -251,7 +251,7 @@ if ( empty ( $error ) ) {
 print_header();
 ?>
 
-<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></h2></font>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Error")?></h2>
 <blockquote>
 <?php echo htmlentities ( $error ); ?>
 </blockquote>

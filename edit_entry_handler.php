@@ -240,7 +240,7 @@ if ( $allow_conflicts != "Y" && empty ( $confirm_conflicts ) &&
 }
 if ( empty ( $error ) && ! empty ( $conflicts ) ) {
   $error = translate("The following conflicts with the suggested time") .
-    ":<UL>$conflicts</UL>";
+    ":<ul>$conflicts</ul>";
 }
 
 
@@ -550,7 +550,7 @@ if ( empty ( $error ) ) {
     $extra_arg2 = $site_extras[$i][4];
     $value = $$extra_name;
     //echo "Looking for $extra_name... value = " . $value . " ... type = " .
-    // $extra_type . "<BR>\n";
+    // $extra_type . "<br />\n";
     if ( strlen ( $$extra_name ) || $extra_type == $EXTRA_DATE ) {
       if ( $extra_type == $EXTRA_URL || $extra_type == $EXTRA_EMAIL ||
         $extra_type == $EXTRA_TEXT || $extra_type == $EXTRA_USER ||
@@ -625,7 +625,7 @@ if ( empty ( $error ) ) {
         "cal_type, cal_end, cal_days, cal_frequency ) VALUES " .
         "( $id, '$rpt_type', $end, '$days', $freq )";
       dbi_query ( $sql );
-      $msg .= "<B>SQL:</B> $sql<P>";
+      $msg .= "<span style=\"font-weight:bold;\">SQL:</span> $sql<br /><br />";
     }
   }
 }
@@ -651,9 +651,9 @@ if ( empty ( $error ) ) {
 print_header();
 if ( strlen ( $conflicts ) ) { 
 ?>
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Scheduling Conflict")?></H2></FONT>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Scheduling Conflict")?></H2>
 
-<?php etranslate("Your suggested time of")?> <B>
+<?php etranslate("Your suggested time of")?> <span style="font-weight:bold;">
 <?php
   if ( $allday == "Y" )
     etranslate("All day event");
@@ -664,10 +664,10 @@ if ( strlen ( $conflicts ) ) {
       echo "-" . display_time ( add_duration ( $time, $duration ) );
   }
 ?>
-</B> <?php etranslate("conflicts with the following existing calendar entries")?>:
-<UL>
+</span> <?php etranslate("conflicts with the following existing calendar entries")?>:
+<ul>
 <?php echo $conflicts; ?>
-</UL>
+</ul>
 
 <?php
 // user can confirm conflicts
@@ -676,10 +676,10 @@ if ( strlen ( $conflicts ) ) {
     if (is_array($xval)) {
       $xkey.="[]";
       while (list($ykey, $yval)=each($xval)) {
-        echo "<input type=\"hidden\" name=\"$xkey\" value=\"$yval\">\n";
+        echo "<input type=\"hidden\" name=\"$xkey\" value=\"$yval\" />\n";
       }
     } else {
-      echo "<input type=\"hidden\" name=\"$xkey\" value=\"$xval\">\n";
+      echo "<input type=\"hidden\" name=\"$xkey\" value=\"$xval\" />\n";
     }
   }
 ?>
@@ -690,24 +690,24 @@ if ( strlen ( $conflicts ) ) {
   if ( ! empty ( $allow_conflict_override ) &&
     $allow_conflict_override == "Y" ) {
     echo "<td><input type=\"submit\" name=\"confirm_conflicts\" " .
-      "value=\"&nbsp;" . translate("Save") . "&nbsp;\"></td>\n";
+      "value=\"" . translate("Save") . "\" /></td>\n";
   }
 ?>
-   <td><input type="button" value="<?php etranslate("Cancel")?>" onClick="history.back()"><td>
+   <td><input type="button" value="<?php etranslate("Cancel")?>" onclick="history.back()" /><td>
  </tr>
 </table>
 </form>
 
 <?php } else { ?>
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></H2></FONT>
-<BLOCKQUOTE>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Error")?></h2>
+<blockquote>
 <?php echo $error; ?>
-</BLOCKQUOTE>
+</blockquote>
 
 <?php } ?>
 
 
 <?php print_trailer(); ?>
 
-</BODY>
-</HTML>
+</body>
+</html>
