@@ -54,6 +54,7 @@ $forcePassword = false;
 if ( ! empty ( $fd ) ) {
   while ( ! feof ( $fd ) ) {
     $buffer = fgets ( $fd, 4096 );
+    $buffer = trim ( $buffer, "\r\n " );
     if ( preg_match ( "/^(\S+):\s*(.*)/", $buffer, $matches ) ) {
       if ( $matches[1] == "install_password" ) {
         $password = $matches[2];
@@ -141,6 +142,7 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
 $action = getGetValue ( "action" );
 if ( ! empty ( $action ) && $action == "dbtest" ) {
   // TODO: restrict access here also...
+  $db_persistent = false; ( 'db_type' );
   $db_type = getGetValue ( 'db_type' );
   $db_host = getGetValue ( 'db_host' );
   $db_database = getGetValue ( 'db_database' );
@@ -248,6 +250,7 @@ $fd = @fopen ( $file, "rb", true );
 if ( ! empty ( $fd ) ) {
   while ( ! feof ( $fd ) ) {
     $buffer = fgets ( $fd, 4096 );
+    $buffer = trim ( $buffer, "\r\n " );
     if ( preg_match ( "/^#/", $buffer ) )
       continue;
     if ( preg_match ( "/^<\?/", $buffer ) ) // start php code
@@ -266,6 +269,7 @@ if ( ! empty ( $fd ) ) {
 // Attempt a db connection
 $connectSuccess = false;
 $db_type = $settings['db_type'];
+$db_persistent = false;
 $c = @dbi_connect ( $settings['db_host'], $settings['db_login'],
   $settings['db_password'], $settings['db_database'] );
 if ( $c ) {
