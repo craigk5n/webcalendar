@@ -59,7 +59,7 @@ load_global_settings ();
 include "$includedir/translate.php";
 
 if ( $debug )
-  echo "<br>\n";
+  echo "<br />\n";
 
 // Get a list of people who have asked not to receive email
 $res = dbi_query ( "SELECT cal_login FROM webcal_user_pref " .
@@ -71,7 +71,7 @@ if ( $res ) {
     $user = $row[0];
     $noemail[$user] = 1;
     if ( $debug )
-      echo "User $user does not want email. <br>\n";
+      echo "User $user does not want email. <br />\n";
   }
   dbi_free_result ( $res );
 }
@@ -96,7 +96,7 @@ if ( $res ) {
     $user_lang = $row[1];
     $languages[$user] = $user_lang;
     if ( $debug )
-      echo "Language for $user is \"$user_lang\" <br>\n";
+      echo "Language for $user is \"$user_lang\" <br />\n";
   }
   dbi_free_result ( $res );
 }
@@ -111,7 +111,7 @@ if ( $res ) {
     $user_tzoffset = $row[1];
     $tzoffset[$user] = $user_tzoffset;
     if ( $debug )
-      echo "TZ OFFSET for $user is \"$user_tzoffset\" <br>\n";
+      echo "TZ OFFSET for $user is \"$user_tzoffset\" <br />\n";
   }
   dbi_free_result ( $res );
 }
@@ -227,7 +227,7 @@ function send_reminder ( $id, $event_date ) {
     }
   }
   if ( $debug )
-    echo "Found " . count ( $mailusers ) . " with email addresses <br>\n";
+    echo "Found " . count ( $mailusers ) . " with email addresses <br />\n";
   for ( $j = 0; $j < count ( $mailusers ); $j++ ) {
     $recip = $mailusers[$j];
     $user = $participants[$j];
@@ -326,7 +326,7 @@ function send_reminder ( $id, $event_date ) {
       echo "Sending mail to $recip (in $userlang)\n";
     if ( $only_testing ) {
       if ( $debug )
-        echo "<HR><PRE>To: $recip\nSubject: $subject\n$extra_hdrs\n\n$body\n\n</PRE>\n";
+        echo "<hr /><pre>To: $recip\nSubject: $subject\n$extra_hdrs\n\n$body\n\n</pre>\n";
     } else {
       mail ( $recip, $subject, $body, $extra_hdrs );
       activity_log ( $id, "system", $user, $LOG_REMINDER, "" );
