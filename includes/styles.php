@@ -396,6 +396,46 @@ table.minical {
 	text-decoration: none;
 }
 
+/* ======================== */
+/* VIEW_T.PHP */
+.viewttitle {
+	text-align: center;
+}
+.viewttitle .date {
+	font-size: 24px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+}
+.viewttitle .viewname {
+	font-size: 18px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	text-align: center;
+}
+table.viewt {
+	border-width: 0px;
+	width: 100%;
+	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+
+/* ======================== */
+/* VIEW_V.PHP */
+.viewvtitle {
+	text-align: center;
+}
+.viewvtitle .date {
+	font-size: 24px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+}
+.viewvtitle .viewname {
+	font-size: 18px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	text-align: center;
+}
+
+
 
 /* ========================= */
 /* WEEK.PHP */
