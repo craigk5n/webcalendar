@@ -1,6 +1,11 @@
 <?php
 include_once 'includes/init.php';
-load_user_categories ();
+
+if ($user != $login)
+  $user = (($is_admin || $is_nonuser_admin) && $user) ? $user : $login;
+
+// Load categories only if editing our own calendar
+if (!$user || $user == $login) load_user_categories ();
 
 // Reload preferences into $prefarray[].
 // Get system settings first.
@@ -19,7 +24,7 @@ if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
     "WHERE cal_login = '__public__'" );
 } else {
   $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
-    "WHERE cal_login = '$login'" );
+    "WHERE cal_login = '$user'" );
 }
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
@@ -36,12 +41,16 @@ print_header($INC);
 <?php
 if ( $updating_public )
   echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
-etranslate("Preferences")
+etranslate("Preferences");
+if ( $is_nonuser_admin ) {
+  nonuser_load_variables ( $user, "nonuser" );
+  echo "<BR>\n<B>-- " . translate("Admin mode") . ": ".$nonuserfullname." --</B></FONT></H2>\n";
+}
 ?>
 </FONT></H2>
 
 <FORM ACTION="pref_handler.php" METHOD="POST" ONSUBMIT="return valid_form(this);" NAME="prefform">
-
+<?php if ($user) echo "<input type=\"hidden\" name=\"user\" value=\"$user\">"; ?>
 <?php if ( $updating_public ) { ?>
   <INPUT TYPE="hidden" NAME="public" VALUE="1">
 <?php } /*if ( $updating_public )*/ ?>

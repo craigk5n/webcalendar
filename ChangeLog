@@ -1,4 +1,5 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Allow preferences to be set for nonuser cals (only nonuser admin will see)
   - Fixed bug 777524: Fixed preference issues with language.  Also
     fixed translation of "Public Access" into other languages.
   - When editing an event and changing the category, allow admin users to
