@@ -1,4 +1,4 @@
-Version 1.0RC3 (?? ??? 2005)
+Version 1.0RC3 (11 Mar 2005)
   - Fixed the following bug reports on SourceForge:
       1156729: Global-view with no valid user creates a non-translatable message
       1152863: Japanese strings munged by reports.php and upcoming.php
