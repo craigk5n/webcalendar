@@ -60,13 +60,12 @@ for ( $i = 0; $i < 7; $i++ ) {
 }
 ?>
 
-<center>
-<table style="border-width:0px; width:100%;">
-<tr>
+<div class="title">
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td style="text-align:left;"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" /></a></td>
+<div style="float:left;"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" /></a></div>
+<div style="float: right;"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" class="prevnext" /></a></div>
 <?php } ?>
-<td style="text-align:center; color:<?php echo $H2COLOR;?>;"><span class="pagetitle">
+<span class="date">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
@@ -75,19 +74,19 @@ for ( $i = 0; $i < 7; $i++ ) {
 </span>
 <?php
 if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
-  echo "<br />\n<span style=\"font-size:24px;\">(" .
+  echo "<br />\n<span class=\"weeknumber\">(" .
     translate("Week") . " " . week_number ( $wkstart ) . ")</span>";
 }
 ?>
-<span style="font-size:18px;">
+<span class="user">
 <?php
   if ( $single_user == "N" ) {
     echo "<br />$user_fullname\n";
   }
   if ( $is_nonuser_admin )
-    echo "<br /><span style=\"font-weight:bold;\">-- " . translate("Admin mode") . " --</span>";
+    echo "<br />-- " . translate("Admin mode") . " --";
   if ( $is_assistant )
-    echo "<br /><span style=\"font-weight:bold;\">-- " . translate("Assistant mode") . " --</span>";
+    echo "<br />-- " . translate("Assistant mode") . " --";
 ?>
 </span>
 <?php
@@ -95,14 +94,10 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
     echo "<br />\n<br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
   } ?>
-</td>
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td style="text-align:right;"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" class="prevnext" /></a></td>
-<?php } ?>
-</tr>
-</table>
+</div>
 
-<table class="weekdetails" cellspacing="1" cellpadding="2">
+<center>
+<table cellspacing="1" cellpadding="2">
 <?php
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
@@ -110,23 +105,25 @@ for ( $d = 0; $d < 7; $d++ ) {
   $thiswday = date ( "w", $days[$d] );
   $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
   if ( $date == date ( "Ymd", $today ) ) {
-    echo "<tr><th class=\"today\">";
+    echo "<tr>\n<th class=\"today\">";
   } else if ( $is_weekend ) {
-    echo "<tr><th class=\"weekend\">";
+    echo "<tr>\n<th class=\"weekend\">";
   } else {
-    echo "<tr><th>";
+    echo "<tr>\n<th>";
   }
   if ( empty ( $friendly ) && $can_add ) {
-    echo "<a href=\"edit_entry.php?" . $u_url .
+    echo "<a title=\"" .
+      translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
       "date=" . date ( "Ymd", $days[$d] ) . "\">" .
       "<img src=\"new.gif\" class=\"new\" alt=\"" .
-      translate("New Entry") . "\" />" .  "</a>";
+      translate("New Entry") . "\" />" .  "</a>\n";
   }
-  echo "<a href=\"day.php?" . $u_url .
+  echo "<a title=\"" .
+    $header[$d] . "\" href=\"day.php?" . $u_url .
     "date=" . date("Ymd", $days[$d] ) . "$caturl\">" .
-    $header[$d] . "</a></th></tr>";
+    $header[$d] . "</a></th>\n</tr>\n";
 
-  print "<tr><td";
+  print "<tr>\n<td";
   if ( $date == date ( "Ymd" ) )
     echo " class=\"today\">";
   else
@@ -134,7 +131,7 @@ for ( $d = 0; $d < 7; $d++ ) {
 
   print_det_date_entries ( $date, $user, $hide_icons, true );
   echo "&nbsp;";
-  echo "</td></tr>\n";
+  echo "</td>\n</tr>\n";
 }
 ?>
 </table>
@@ -180,9 +177,6 @@ function print_detailed_entry ( $id, $date, $time, $duration,
   static $key = 0;
 
   global $layers;
-
-
-  #echo "<font size=\"-1\">";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $class = "layerentry";
@@ -230,7 +224,6 @@ function print_detailed_entry ( $id, $date, $time, $duration,
         print (":00");
       echo ( (int) ( $my_time / 10000 ) ) < 12 ? translate("am") : translate("pm");
     }
-    //echo "&gt;";
     $timestr = display_time ( $time );
     if ( $duration > 0 ) {
       // calc end time
@@ -244,7 +237,10 @@ function print_detailed_entry ( $id, $date, $time, $duration,
       }
       $end_time = sprintf ( "%02d%02d00", $h, $m );
       $timestr .= " - " . display_time ( $end_time );
-      echo " - " .display_time ( $end_time ). " ";
+      echo " - " .display_time ( $end_time ). "";
+      echo "&raquo;&nbsp;";
+    } else {
+	echo "&raquo;&nbsp;";
     }
   }
   if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
@@ -264,7 +260,6 @@ function print_detailed_entry ( $id, $date, $time, $duration,
   # Only display description if it is different than the event name.
   if ( $PN != $PD )
     echo " - " . $PD;
-  echo "</font><br /><br />";
 }
 
 //

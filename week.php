@@ -60,8 +60,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 }
 ?>
 
-<div style="border-width:0px; width:99%;">
-<div class="weekviewtitle">
+<div class="title">
 <span class="date">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
@@ -86,9 +85,9 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
     echo "<br />$user_fullname\n";
   }
   if ( $is_nonuser_admin )
-    echo "<br /><span style=\"font-weight:bold;\">-- " . translate("Admin mode") . " --</span>";
+    echo "<br />-- " . translate("Admin mode") . " --";
   if ( $is_assistant )
-    echo "<br /><span style=\"font-weight:bold;\">-- " . translate("Assistant mode") . " --</span>";
+    echo "<br />-- " . translate("Assistant mode") . " --";
 ?></span>
 <?php
   if ( $categories_enabled == "Y" ) {
@@ -97,10 +96,9 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
   }
 ?>
 </div>
-</div>
 <br />
 
-<table class="weekview" cellspacing="0" cellpadding="0">
+<table cellspacing="0" cellpadding="0">
 <tr>
 <th class="empty">&nbsp;</th>
 <?php
@@ -252,13 +250,12 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 
 // untimed events first
 if ( $untimed_found ) {
-  echo "<tr>\n<th class=\"row\">&nbsp;</th>\n";
+  echo "<tr>\n<th class=\"empty\">&nbsp;</th>\n";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
     if ( empty ( $WEEKENDBG ) )
       $is_weekend = false;
-//    $color = $is_weekend ? $WEEKENDBG : $CELLBG;
     if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
       echo $untimed[$d];
     } else {
@@ -267,7 +264,6 @@ if ( $untimed_found ) {
 	} else {
 		echo "<td>&nbsp;</td>\n";
 	}
-//      echo "<td style=\"background-color:$color;\">&nbsp;</td>";
     }
   }
   echo "</tr>\n";
@@ -322,7 +318,6 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 }
 
 ?>
-
 </table>
 
 <br />
