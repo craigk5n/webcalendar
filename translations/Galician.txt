@@ -1,0 +1,302 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Translated by:
+#	Raúl Araya Tauler, nubeiro@nubeiro.com
+# Last update: 20 May 2001
+
+# Title is what will appear in the title bar for pages
+Title: WebCalendar
+
+Month: Mes
+Week: Semana
+Error: Erro
+
+Sun: Dom
+Mon: Lun
+Tue: Mar
+Wed: Mér
+Thu: Xov
+Fri: Ven
+Sat: Sab
+
+Sunday: Domingo
+Monday: Luns
+Tuesday: Martes
+Wednesday: Mércores
+Thursday: Xoves
+Friday: Venres
+Saturday: Sábado
+
+January: Xaneiro
+February: Febreiro
+March: Marzo
+April: Abril
+May_: Maio
+June: Xuño
+July: Xullo
+August: Agosto
+September: Setembro
+October: Outubro
+November: Novembro
+December: Decembro
+
+Jan: Xan
+Feb: Feb
+Mar: Mar
+Apr: Abr
+May: Mai
+Jun: Xuñ
+Jul: Xul
+Aug: Ago
+Sep: Set
+Oct: Out
+Nov: Nov
+Dec: Dec
+
+1st: 1º
+2nd: 2º
+3rd: 3º
+4th: 4º
+5th: 5º
+
+Generate printer-friendly version: Xenerar versión para imprimir
+Printer Friendly: Versión para imprimir
+Go: Ir
+Back to My Calendar: Volver ó meu Calendario
+Another User's Calendar: Calendario de outro usuario
+Search: Buscar
+Add New Entry: Engadir nova entrada
+New Entry: Nova entrada
+Admin: Xestión
+Preferences: Preferencias
+Users: Usuarios
+Account: Conta
+Current User: Usuario actual
+View this entry: Ver esta entrada
+Private: Privado
+This event is confidential: Este evento é confidencial
+You have: Ten vostede
+unapproved: sen aprobar
+event: evento
+events: eventos
+Go to: Ir a
+Help Index: Índice da axuda
+Error approving event: Erro ó aproba-lo evento
+This user has: Este usuario ten
+calendar entries: entradas no calendario
+They must all be deleted (or this user removed as a participant) before this user can be deleted:Deben borrarse todas (ou debe eliminarse este usuario como participante) antes de poder borrar este usuario
+The passwords were not identical: Os contrasinais non eran idénticos
+You have not entered a password: Non introduciu ningún contrasinal
+You have not entered a Brief Description: Non introduciu ningunha descrición breve
+You have not entered a valid time of day: Non introduciu unha hora válida do día
+Brief Description: Descrición breve
+Full Description: Descrición completa
+Description: Descrición
+Date: Data
+Time: Hora
+am: am
+pm: pm
+Duration: Duración
+minutes: minutos
+Priority: Prioridade
+Low: Baixa
+Medium: Media
+High: Alta
+Access: Acceso
+Public: Público
+Confidential: Confidencial
+Participants: Participantes
+Created by: Creado por
+Updated: Actualizado
+Daily: Diariamente
+for weekly: da semana
+by date: por data
+by day: por día
+Monthly: Mensualmente
+None: Ningunha
+Repeat Day: Día de repetición
+Repeat End Date: Data final de repetición
+Repeat Type: Tipo de repetición
+Use end date: Data final de uso
+every: cada
+Weekly: Semanalmente
+Yearly: Anualmente
+Frequency: Frecuencia
+# use "every" as in "repeats every 2 weeks"
+Save: Gravar
+Cancel: Cancelar
+Help: Axuda
+Approve this entry?: ¿Aprobar esta entrada?
+Approve/Confirm: Aprobar/Confirmar
+Approve/Confirm entry: Aprobar/Confirmar entrada
+Reject: Rexeitar
+Reject entry: Rexeitar entrada
+Reject this entry?: ¿Rexeitar esta entrada?
+Rejected: Rexeitada
+Edit entry: Modificar entrada
+Edit Entry: Modificar Entrada
+Add Entry: Engadir Entrada
+Add to My Calendar: Engadir ó meu Calendario
+Do you want to add this entry to your calendar?: ¿Quere engadir esta entrada ó seu calendario?
+Error adding event: Erro ó engadi-lo evento
+The time you have entered begins before your preferred work hours.  Is this correct?: A hora que introduciu comeza antes das súas horas de traballo indicadas. ¿Está ben?
+Are you sure you want to delete this entry?: ¿Está seguro de que quere borrar esta entrada?
+This will delete this entry for all users.:Esto borrará esta entrada para tódolos usuarios.
+Delete: Borrar
+Delete entry: Borrar entrada
+You are not authorized to edit this entry: Non está autorizado para modificar esta entrada
+This is a private event and may not be added to your calendar.: Este evento é privado e non o pode engadir ó seu calendario.
+This will add the entry to your calendar.: Esto engadirá a entrada ó seu calendario.
+This will delete the entry from your calendar.: Esto borrará a entrada do seu calendario.
+Scheduling Conflict: Conflicto de horario
+The following conflicts with the suggested time: O seguinte entra en conflicto coa hora suxerida
+Unnamed Event: Evento sen nome
+Hello: Ola
+A new appointment has been made for you by: Foille engadida unha nova cita por
+An appointment has been updated by: Foille actualizada unha cita por
+The subject is: O tema é
+Please look on: Por favor mire en
+to accept or reject this appointment: para aceptar ou rexeitar esta cita
+to view this appointment: para ver esta cita
+An appointment has been canceled for you by: Foille cancelada unha cita por
+An appointment has been rejected by: Foille rexeitada unha cita por
+Export all dates: Exportar tódalas datas
+The subject was: O tema era
+Notification: Notificación
+Your suggested time of: A súa hora suxerida de
+conflicts with the following existing calendar entries: entra en conflicto coas seguintes entradas existentes no calendario
+Edit User: Modificar Usuario
+Add User: Engadir Usuario
+Username: Nome de usuario
+Login: Entrar
+Logout: Saír
+First Name: Nome
+Last Name: Apelido
+E-mail address: enderezo de correo electrónico
+Password: Contrasinal
+again: outra vez
+Yes: Si
+No: Non
+Change Password: Cambiar contrasinal
+New Password: Novo contrasinal
+Set Password: Fixar contrasinal
+Adding/Editing Calendar Entries: Engadindo/Modificando Entradas do Calendario
+Unapproved Events: Eventos sen aprobar
+No unapproved events: Non hai eventos sen aprobar
+You must enter a login and password: Debe introducir un login e un contrasinal
+Invalid login: Login inválido
+Save login via cookies so I don't have to login next time: Gravar login mediante cookies para non ter que volver introducilo a próxima vez
+cookies-note: <B>Nota:</B> Este programa necesita que as cookies estean activadas.
+Invalid color for document background: Color non válido para o fondo do documento
+Invalid color for document title: Color non válido para o título do documento
+Invalid color for table cell background: Color non válido para o fondo da cela
+Invalid color for table cell background for today: Color non válido para o fondo da cela de hoxe
+Color format should be '#RRGGBB': O formato da cor debería ser '#RRGGBB'
+12 hour: 12 horas
+24 hour: 24 horas
+From: De
+to: ata
+Select: Seleccionar
+Preferred view: Vista preferida
+Week starts on: A semana comeza o
+Day: Día
+days: días
+Year: Ano
+before event: antes do evento
+Reminder: Recordatorio
+This is a reminder for the event detailed below.: Esto é un recordatorio para o evento descrito máis abaixo.
+Document background: Fondo do documento
+Document title: Título do documento
+Table cell background: Fondo da cela da táboa
+Table cell background for current day: Fondo da cela para hoxe
+Save Preferences: Gravar preferencias
+The following error occurred: Ocorreu o seguinte erro
+Database error: Erro da base de datos
+Search: Buscar
+Keywords: Palabras clave
+You must enter one or more search keywords: Debe introducir unha ou máis palabras clave para a busca
+Search Results: Resultados da busca
+Export: Exportar
+Export format: Formato ó que exportar
+Modified since: Modificado dende
+Start date: Data de comezo
+End date: Data final
+Palm Pilot: Palm Pilot
+match found: coincidencia atopada
+matches found: coincidencias atopadas
+No matches found: Non se atoparon coincidencias
+View Another User's Calendar: Ve-lo Calendario de outro Usuario
+You are not authorized: Non está autorizado
+Add New User: Engadir Novo Usuario
+denotes administrative user: denota usuario administrativo
+Invalid entry id: id de entrada non válido
+My Calendar: O Meu Calendario
+Add Layer: Engadir Capa
+Add layer: Engadir capa
+Disable Layers: Desactivar Capas
+Disabled: Desactivado
+Edit Layers: Modificar Capas
+Enable Layers: Activar Capas
+Enabled: Activado
+hours: horas
+Layers are currently: As capas están actualmente
+User: Usuario
+Color: Cor
+Delete layer: Borrar capa
+Edit layer: Modificar capa
+Edit Layer: Modificar Capa
+Invalid color: Color non válido
+Layer: Capa
+Layers: Capas
+Source: Fonte
+Show layer events that are the same as your own: Amosa-los eventos da capa que son iguais ós seus
+Are you sure you want to delete this layer?: ¿Está seguro de que quere borrar esta capa?
+Duplicates: Duplicados
+Disabled for demo: Desactivado para a demo
+
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help: Debería proporcionar unha descrición breve (arredor de 20 caracteres) do evento. Esta descrición representará o evento cando se amose no calendario.
+full-description-help: Esto debería completa-la descrición do evento. Esta información amósase cando o usuario ve o evento.
+date-help: Especifica a data do evento.
+time-help: Especifica a hora do evento.<BR><I>Este campo pode deixarse en branco.</I>
+duration-help: Especifica a duración (en horas:minutos) do evento.<BR><I>Este campo pode deixarse en branco.</I>
+priority-help: Especifica a prioridade do evento. As prioridades altas amosaránse en negriña.
+access-help: Especifica o nivel de acceso do evento.<BR> <I>Público</I>: Todos poden ve-la descrición completa do evento.<BR><I>Confidencial</I>: Os demais poden ver que ten unha entrada para ese día e hora, pero non os detalles sobre a entrada.
+participants-help: Lista dos participantes desta entrada.
+repeat-type-help: Seleccione con qué frecuencia se repetirá o evento.<I>Mensualmente (por días)</I> permite que o evento se repita o primeiro luns do mes, o terceiro xoves do mes, etc.<I>Mensualmente (por data)</I> permite que o evento se repita o mesmo día de cada mes.
+repeat-end-date-help: Especifica a data ata a qeu se debe repeti-lo evento.
+repeat-day-help: Especifica qué días da semana se repetirá o evento. Esta opción só se pode usar cando en <I>Tipo de Repetición</I> se selecciona <I>Semanalmente</I>.
+repeat-frequency-help: Especifica con qué frecuencia se repetirá o evento.  O 1 por defecto indica que debería ter lugar cada vez.  Se se especifica 2, o evento terá lugar nas outras semanas (se en <I>Tipo de Repetición</I> se selecciona <I>Semanalmente</I>), terá lugar nos outros meses (se en <I>Tipo de Repetición</I> se selecciona <I>Mensualmente</I>), etc.
+Preferences: Preferencias
+Settings: Configuración
+Language: Idioma
+Your browser default language is: O idioma por defecto do seu navegador é
+language-help: Especifica o idioma que se empregará.
+Preferred view: Vista preferida
+preferred-view-help: Especifica a vista por defecto (Día, Semana, Mes ou Ano).
+Time format: Formato da hora
+time-format-help: Especifica qué formato horario empregar: <BR><I>12 horas:</I> Amosa-las horas co formato 3am, 8:30pm, etc.  <BR><I>24 horas:</I> Amosa-las horas co formato 300, 2030, etc.
+Display unapproved: Amosar non aprobados
+display-unapproved-help: Especifica se amosar ou non os eventos non aprobados no seu calendario.<BR> Se selecciona "Si", entón amosaranse os eventos non aprobados no seu calendario (cunha cor de texto diferente).<BR> Se selecciona "Non", entón deberanse aproba-los eventos antes de que poidan ser amosados no seu calendario.
+Display icons: Amosar iconos
+display-icons-help: Amosar iconos á beira de cada evento para ver, modificar e borrar. Se selecciona "Non", entón debe clicar no evento para chegar á páxina da vista na que pode acceder a esas funcións.
+Display week number: Amosa-lo número da semana
+display-week-number-help: Especifica se o número da semana (1-52) debería amosarse na vista do mes e na vista da semana.
+display-week-starts-on: Especifica se a semana comeza o Domingo ou o Luns. Se se selecciona Luns, enton os números da semana amosaránse no formato ISO.
+Work hours: Horas de traballo
+work-hours-help: Especifica o devalo de horas que se amosarán na vista do día.
+Email: correo electrónico
+Event rejected by participant: Evento rexeitado polo participante
+Event reminders: Recordatorios de eventos
+Events added to my calendar: Eventos engadidos no meu calendario
+Events removed from my calendar: Eventos borrados do meu calendario
+Events updated on my calendar: Eventos actualizados no meu calendario
+email-event-reminders-help: Especifica se enviar ou non recordatorios de evento.
+email-event-added: Especifica se enviar ou non notificacións por correo electrónico cando se engade un evento ó seu calendario.
+email-event-updated: Especifica se enviar ou non notificacións por correo electrónico cando se actualiza un evento do seu calendario.
+email-event-deleted: Especifica se enviar ou non notificacións por correo electrónico cando se borra un evento do seu calendario.
+email-event-rejected: Especifica se enviar ou non notificacións por correo electrónico cando un participante rexeita un evento do seu calendario.
+Colors: Cores
+colors-help: Tódolas cores deben especificarse no formato hexadecimal "#RRGGBB" onde "RR" é o valor hexadecimal para o vermello, "GG" é o valor hexadecimal para o verde e "BB" é o valor hexadecimal para o azul.
