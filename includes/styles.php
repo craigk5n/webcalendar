@@ -55,6 +55,50 @@ body {
 	font-size: 12px;
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
+#tabs {
+	font-size: 1.2em;
+}
+#tabscontent {
+	margin: 0px;
+	padding: 0.5em;
+	border: 2px groove #C0C0C0;
+	width: 70%;
+}
+span.tabfor {
+	color: #DDDDDD;
+	padding: 0.25em;
+	margin: 0 0.2em 0 0.8em;
+	border-top: 2px ridge #000000;
+	border-left: 2px ridge #000000;
+	border-right: 2px ridge #000000;
+	background-color: #000000;
+}
+span.tabbak {
+	margin: 0 0.2em 0 0.8em;
+	background-color: #DDDDDD;
+	color: #000000;
+}
+span.tabbak a {
+	text-decoration: none;
+	color: #000000;
+} 
+span.tabfor a {
+	text-decoration: none;
+	color: #DDDDDD;
+}
+#tabscontent_public,
+#tabscontent_categories,
+#tabscontent_groups,
+#tabscontent_nonuser,
+#tabscontent_reports,
+#tabscontent_publish,
+#tabscontent_email,
+#tabscontent_colors,
+#tabscontent_participants,
+#tabscontent_sched,
+#tabscontent_pete {
+	display: none;
+}
 <?php //week number in monthview & such 
 ?>.weeknumber,
 .weeknumber a {
@@ -112,6 +156,15 @@ a:hover {
 }
 #menu {
 	clear: both;
+}
+#menu a {
+	font-size: 14px;
+	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+	text-decoration: none;
+}
+.prefix {
+	font-weight: bold;
+	font-size: 14px;
 }
 <?php //link to webcalendar site -- NOTE: by modifying this style, you can make this link disappear
 ?>a#programname {
@@ -441,19 +494,23 @@ table.standard th {
 	background-color: #DDDDFF;
 	font-weight: bold;
 }
-#activitylog table {
+#activitylog table,
+.embactlog {
 	width: 100%;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-spacing: 0px;
 }
-#activitylog tr {
+#activitylog tr,
+.embactlog tr {
 	background-color: #FFFFFF;
 }
-#activitylog .odd {
+#activitylog .odd,
+.embactlog .odd {
 	background-color: #EEEEEE;
 }
-#activitylog th {
+#activitylog th,
+.embactlog th {
 	width: 14%;
 	color: <?php echo $GLOBALS['THFG']; ?>;
 	background-color: <?php echo $GLOBALS['THBG']; ?>;
@@ -463,11 +520,15 @@ table.standard th {
 	padding: 1px 3px;
 }
 #activitylog th.usr,
+.embactlog th.usr,
 #activitylog th.cal,
-#activitylog th.action {
+.embactlog th.cal,
+#activitylog th.action,
+.embactlog th.action {
 	width: 7%;
 }
-#activitylog td {
+#activitylog td,
+.embactlog td {
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	padding: 1px 3px;
 }

@@ -36,7 +36,7 @@ if ( ! $is_admin ) {
   $error = true;
 }
 if ( ! $error ) {
-	echo "<a title=\"" . translate("Admin") . "\" class=\"nav\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n";
+	echo "<a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n";
 }
 
 if ( empty ( $ovrd ) && ! $error ) {
@@ -71,6 +71,25 @@ if ( ! $error ) {
 <?php if ( ! empty ( $ovrd ) ) { ?>
   <input type="hidden" name="ovrd" id="ovrd" value="1" />
 <?php } ?>
+
+<!-- TABS -->
+<div id="tabs">
+	<span class="tabfor" id="tab_settings"><a href="#tabsettings" onclick="return showTab('settings')">settings</a></span>
+	<span class="tabbak" id="tab_public"><a href="#tabpublic" onclick="return showTab('public')">public</a></span>
+	<span class="tabbak" id="tab_groups"><a href="#tabgroups" onclick="return showTab('groups')">groups</a></span>
+	<span class="tabbak" id="tab_categories"><a href="#tabcategories" onclick="return showTab('categories')">categories</a></span>
+	<span class="tabbak" id="tab_nonuser"><a href="#tabnonuser" onclick="return showTab('nonuser')">nonuser</a></span>
+	<span class="tabbak" id="tab_reports"><a href="#tabreports" onclick="return showTab('reports')">reports</a></span>
+	<span class="tabbak" id="tab_publish"><a href="#tabpublish" onclick="return showTab('publish')">publish</a></span>
+	<span class="tabbak" id="tab_email"><a href="#tabemail" onclick="return showTab('email')">email</a></span>
+	<span class="tabbak" id="tab_colors"><a href="#tabcolors" onclick="return showTab('colors')">colors</a></span>
+</div>
+
+<!-- TABS BODY -->
+<div id="tabscontent">
+	<!-- DETAILS -->
+	<a name="tabsettings"></a>
+	<div id="tabscontent_settings">
 
 <table class="standard" cellspacing="0" cellpadding="3">
 <tr><th colspan="2"><?php etranslate("Settings")?></th></tr>
@@ -119,8 +138,8 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 		<label><input type="radio" name="admin_CUSTOM_TRAILER" value="N" <?php if ( $s["CUSTOM_TRAILER"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>&nbsp;&nbsp;
 		<input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=T','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
 	</td></tr>
-	<tr><td class="tooltip" title="<?php etooltip("preferred-view-help");?>">
-		<label for="admin_startview"><?php etranslate("Preferred view")?>:</label></td><td>
+	<tr><td class="tooltip">
+		<label for="admin_startview" title="<?php etooltip("preferred-view-help");?>"><?php etranslate("Preferred view")?>:</label></td><td>
 		<select name="admin_STARTVIEW" id="admin_startview">
 			<option value="day" <?php if ( $s["STARTVIEW"] == "day" ) echo " selected=\"selected\"";?>><?php etranslate("Day")?></option>
 			<option value="week" <?php if ( $s["STARTVIEW"] == "week" ) echo " selected=\"selected\"";?>><?php etranslate("Week")?></option>
@@ -134,7 +153,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 		<label><input type="radio" name="admin_DISPLAY_WEEKENDS" value="N" <?php if ( $s["DISPLAY_WEEKENDS"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 	</td></tr>
 	<tr><td class="tooltip" title="<?php etooltip("yearly-shows-events-help");?>">
-		<?php etranslate("Display days with events in bold in small month calendars")?>:</td><td>
+		<?php etranslate("Display days with events in bold in month and year views")?>:</td><td>
 		<label><input type="radio" name="admin_bold_days_in_year" value="Y" <?php if ( $s["bold_days_in_year"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 		<label><input type="radio" name="admin_bold_days_in_year" value="N" <?php if ( $s["bold_days_in_year"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 	</td></tr>
@@ -233,8 +252,8 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<label><input type="radio" name="admin_TIME_FORMAT" value="24" <?php if ( $s["TIME_FORMAT"] != "12" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("24 hour")?></label>
 </td></tr>
 
-<tr><td class="tooltip" title="<?php etooltip("time-interval-help")?>">
-	<label for="admin_time_int"><?php etranslate("Time interval")?>:</label></td><td>
+<tr><td class="tooltip">
+	<label for="admin_time_int" title="<?php etooltip("time-interval-help")?>"><?php etranslate("Time interval")?>:</label></td><td>
 	<select name="admin_TIME_SLOTS" id="admin_time_int">
 		<option value="24" <?php if ( $s["TIME_SLOTS"] == "24" ) echo " selected=\"selected\""?>>1 <?php etranslate("hour")?></option>
 		<option value="48" <?php if ( $s["TIME_SLOTS"] == "48" ) echo " selected=\"selected\""?>>30 <?php etranslate("minutes")?></option>
@@ -388,6 +407,9 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<label><input type="radio" name="admin_TIMED_EVT_LEN" value="E" <?php if ( $s["TIMED_EVT_LEN"] == "E" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("End Time")?></label>
 </td></tr>
 </table>
+</div>
+<!-- END SETTINGS -->
+
 
 <!--
 // <h3><?php etranslate("Plugins")?></h3>
@@ -421,7 +443,8 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 -->
 
 <!-- BEGIN PUBLIC ACCESS -->
-<br /><br />
+<a name="tabpublic"></a>
+<div id="tabscontent_public">
 <table class="standard" cellspacing="0" cellpadding="3">
 <tr><th colspan="2"><?php etranslate("Public Access")?></th></tr>
 
@@ -466,10 +489,9 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<label><input type="radio" name="admin_public_access_view_part" value="Y" <?php if ( $s["public_access_view_part"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 	<label><input type="radio" name="admin_public_access_view_part" value="N" <?php if ( $s["public_access_view_part"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
-</table>
+</table><br /><br />
 
 <!-- BEGIN EXT PARTICIPANTS -->
-<br /><br />
 <table class="standard" cellspacing="0" cellpadding="3">
 <tr><th colspan="2"><?php etranslate("External Participants")?></th></tr>
 
@@ -479,21 +501,22 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<label><input type="radio" name="admin_allow_external_users" value="N" <?php if ( $s["allow_external_users"] != "Y" ) echo " checked=\"checked\"";?> onclick="eu_handler()" />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 
-<tr><td id="eu1" class="tooltip" title="<?php etooltip("external-can-receive-notification-help")?>">
-	&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("External users can receive email notifications")?>:</td><td id="eu2">
+<tr id="eu1"><td class="tooltip" title="<?php etooltip("external-can-receive-notification-help")?>">
+	&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("External users can receive email notifications")?>:</td><td>
 	<label><input type="radio" name="admin_external_notifications" value="Y" <?php if ( $s["external_notifications"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 	<label><input type="radio" name="admin_external_notifications" value="N" <?php if ( $s["external_notifications"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 
-<tr><td id="eu3" class="tooltip" title="<?php etooltip("external-can-receive-reminder-help")?>">
-	&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("External users can receive email reminders")?>:</td><td id="eu4">
+<tr id="eu2"><td class="tooltip" title="<?php etooltip("external-can-receive-reminder-help")?>">
+	&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("External users can receive email reminders")?>:</td><td>
 	<label><input type="radio" name="admin_external_reminders" value="Y" <?php if ( $s["external_reminders"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 	<label><input type="radio" name="admin_external_reminders" value="N" <?php if ( $s["external_reminders"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 </table>
+</div>
 
 <!-- BEGIN GROUPS -->
-<br /><br />
+<div id="tabscontent_groups">
 <table class="standard" cellspacing="0" cellpadding="3">
 <tr><th colspan="2"><?php etranslate("Groups")?></th></tr>
 <tr><td class="tooltip" title="<?php etooltip("groups-enabled-help")?>">
@@ -508,9 +531,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<label><input type="radio" name="admin_user_sees_only_his_groups" value="N" <?php if ( $s["user_sees_only_his_groups"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 </table>
+</div>
 
 <!-- BEGIN CATEGORIES -->
-<br /><br />
+<div id="tabscontent_categories">
 <table class="standard" cellspacing="0" cellpadding="3">
 <tr><th colspan="2"><?php etranslate("Categories")?></th></tr>
 <tr><td class="tooltip" title="<?php etooltip("categories-enabled-help")?>">
@@ -519,9 +543,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<label><input type="radio" name="admin_categories_enabled" value="N" <?php if ( $s["categories_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 </table>
+</div>
 
 <!-- BEGIN NONUSER -->
-<br /><br />
+<div id="tabscontent_nonuser">
 <table class="standard" cellspacing="0" cellpadding="3">
 <tr><th colspan="2"><?php etranslate("Nonuser")?></th></tr>
 <tr><td class="tooltip" title="<?php etooltip("nonuser-enabled-help")?>">
@@ -536,9 +561,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<label><input type="radio" name="admin_nonuser_at_top" value="N" <?php if ( $s["nonuser_at_top"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Bottom")?></label>
 </td></tr>
 </table>
+</div>
 
 <!-- BEGIN REPORTS -->
-<br /><br />
+<div id="tabscontent_reports">
 <table class="standard" cellspacing="0" cellpadding="3">
 <tr><th colspan="2"><?php etranslate("Reports")?></th></tr>
 <tr><td class="tooltip" title="<?php etooltip("reports-enabled-help")?>">
@@ -547,9 +573,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<label><input type="radio" name="admin_reports_enabled" value="N" <?php if ( $s["reports_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 </table>
+</div>
 
 <!-- BEGIN PUBLISHING -->
-<br /><br />
+<div id="tabscontent_publish">
 <table class="standard" cellspacing="0" cellpadding="3">
 <tr><th colspan="2">
 	<?php etranslate("Subscribe/Publish")?>
@@ -560,9 +587,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<label><input type="radio" name="admin_PUBLISH_ENABLED" value="N" <?php if ( $s["PUBLISH_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 </table>
+</div>
 
 <!-- BEGIN EMAIL -->
-<br /><br />
+<div id="tabscontent_email">
 <table class="standard" cellspacing="0" cellpadding="3">
 <tr><th colspan="2"><?php etranslate("Email")?></th></tr>
 <tr><td class="tooltip" title="<?php etooltip("email-enabled-help")?>">
@@ -607,9 +635,10 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<label><input type="radio" name="admin_EMAIL_EVENT_REJECTED" value="N" <?php if ( $s["EMAIL_EVENT_REJECTED"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 </table>
+</div>
 
 <!-- BEGIN COLORS -->
-<br /><br />
+<div id="tabscontent_colors">
 <table class="standard" cellspacing="0" cellpadding="3">
 <tr><th colspan="4" class="tooltip" title="<?php etooltip("colors-help")?>"><?php etranslate("Colors")?></th></tr>
 <tr><td style="font-weight:bold;">
@@ -695,6 +724,8 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<input type="button" onclick="selectColor('admin_POPUP_FG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 </table>
+</div>
+</div>
 
 <br /><br />
 <div style="border-width:0px;">

@@ -90,7 +90,6 @@ function selectColor ( color ) {
 // Note: this function relies on the following structure:
 //   <td><input onkeyup="updateColor(this);" /></td>
 //   <td>(this is the cell to be updated)</td>
-//
 function updateColor ( input ) {
 	// The cell to be updated
 	var colorCell = input.parentNode.nextSibling;
@@ -149,7 +148,6 @@ function eu_handler () {
 
 }
 
-
 // Gets called on page load and when user changes setting for
 // "Email enabled".
 function email_handler () {
@@ -175,6 +173,30 @@ function email_handler () {
   }
 }
 
-
+var tabs = new Array();
+function showTab (name) {
+	if (! document.getElementById) { return true; }
+	for (var i=0; i<tabs.length; i++) {
+		var tname = tabs[i];
+		var tab = document.getElementById("tab_" + tname);
+		if (tab && tab.setAttribute) {
+			tab.setAttribute("class", (tname == name) ? "tabfor" : "tabbak");
+		}
+		var div = document.getElementById("tabscontent_" + tname);
+		if (div) {
+			div.style.display = (tname == name) ? "block" : "none";
+		}
+	}
+	return false;
+}
+tabs[1] = "settings";
+tabs[2] = "public";
+tabs[3] = "groups";
+tabs[4] = "categories";
+tabs[5] = "nonuser";
+tabs[6] = "reports";
+tabs[7] = "publish";
+tabs[8] = "email";
+tabs[9] = "colors";
 //]]> -->
 </script>
