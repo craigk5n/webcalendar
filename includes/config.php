@@ -54,6 +54,8 @@ function die_miserable_death ( $error )
 // Open settings file to read
 $settings = array ();
 $fd = @fopen ( "settings.php", "rb", true );
+if ( ! $fd )
+  $fd = @fopen ( "includes/settings.php", "rb", true );
 if ( empty ( $fd ) ) {
   // There is no settings.php file.
   // Redirect user to install page if it exists.
@@ -66,8 +68,25 @@ if ( empty ( $fd ) ) {
       "site.\n" );
   }
 }
+
+// We don't use fgets() since it seems to have problems with Mac-formatted
+// text files.  Instead, we read in the entire file, then split the lines
+// manually.
+$data = '';
 while ( ! feof ( $fd ) ) {
-  $buffer = fgets ( $fd, 4096 );
+  $data .= fgets ( $fd, 4096 );
+}
+fclose ( $fd );
+
+// Replace any combination of carriage return (\r) and new line (\n)
+// with a single new line.
+$data = preg_replace ( "/[\r\n]+/", "\n", $data );
+
+// Split the data into lines.
+$configLines = explode ( "\n", $data );
+
+for ( $n = 0; $n < count ( $configLines ); $n++ ) {
+  $buffer = $configLines[$n];
   $buffer = trim ( $buffer, "\r\n " );
   if ( preg_match ( "/^#/", $buffer ) )
     continue;
@@ -80,7 +99,7 @@ while ( ! feof ( $fd ) ) {
     //echo "settings $matches[1] => $matches[2] <br>";
   }
 }
-fclose ( $fd );
+$configLines = $data = '';
 
 // Extract db settings into global vars
 $db_type = $settings['db_type'];

@@ -1,4 +1,7 @@
 Version 1.0RC? (?? ??? ??)
+  - Rewrote reading of config.php to manually split lines rather than
+    relying on fgets() which does not seem to be reliable.
+    Also try opening "includes/settings.php" if "settings.php" fails.
   - XHTML fix for day.php mini-cal. Missing <tr>
   - Fixed bug 1116008: Got "invalid user" error when clicking on '+' icon
     to add new event
