@@ -111,7 +111,8 @@ if ($DMW) {
 
   set_today($date);
 
-  if ( $categories_enabled == "Y" && ( !$user || $user == $login ) ) {
+  //if ( $categories_enabled == "Y" && ( !$user || $user == $login ) ) {
+  if ( $categories_enabled == "Y" ) {
     if ( ! empty ( $cat_id ) ) {
       $cat_id = $cat_id;
     } elseif ( ! empty ( $CATEGORY_VIEW ) ) {

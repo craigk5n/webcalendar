@@ -2915,24 +2915,29 @@ function load_user_categories ($ex_global = '') {
 //   $ID - category that should be pre-selected
 //   $friendly - printer friendly?
 function print_category_menu ( $form, $date = '', $cat_id = '', $friendly = '' ) {
-  global $categories;
+  global $categories, $category_owners, $user, $login;
 
   if ( $friendly == '' ) {
-    echo "<form ACTION=\"{$form}.php\" METHOD=\"GET\" NAME=\"SelectCategory\">\n";
-    if ( ! empty($date) ) echo "<input type=\"hidden\" NAME=\"date\" VALUE=\"$date\">\n";
-    echo translate ('Category').": <select name=\"cat_id\" ONCHANGE=\"document.SelectCategory.submit()\">\n";
+    echo "<form action=\"{$form}.php\" method=\"GET\" name=\"SelectCategory\">\n";
+    if ( ! empty($date) ) echo "<input type=\"hidden\" name=\"date\" value=\"$date\">\n";
+    if ( ! empty ( $user ) && $user != $login )
+      echo "<input type=\"hidden\" name=\"user\" value=\"$user\">\n";
+    echo translate ('Category').": <select name=\"cat_id\" onchange=\"document.SelectCategory.submit()\">\n";
     echo "<option value=\"\"";
-    if ( $cat_id == '' ) echo " SELECTED";
+    if ( $cat_id == '' ) echo " selected";
     echo ">" . translate("All") . "</option>\n";
     if ( is_array ( $categories ) ) {
-      foreach( $categories as $K => $V ){
-        echo "<option value=\"$K\"";
-        if ( $cat_id == $K ) echo " SELECTED";
-        echo ">$V\n";
+      foreach ( $categories as $K => $V ){
+        if ( empty ( $user ) || $user == $login ||
+          empty ( $category_owners[$K] ) ) {
+          echo "<option value=\"$K\"";
+          if ( $cat_id == $K ) echo " selected";
+          echo ">$V\n";
+        }
       }
     }
     echo "</select>\n";
-    echo "</FORM>\n";
+    echo "</form>\n";
   } else {
     echo translate ('Category').": ";
     echo ( $cat_id != '' ) ? $categories[$cat_id] . "\n" : translate ('All')."\n";
