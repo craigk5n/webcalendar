@@ -54,7 +54,7 @@ function list_unapproved ( $user ) {
       $status = $row[7];
       $divname = "eventinfo-$id-$key";
       echo "<li><a title=\"" . 
-      		translate("View this entry") . "\" class=\"entry\" href=\"view_entry.php?id=$id&amp;user=$user";
+      		translate("View this entry") . "\" class=\"entry\" href=\"view_entry.php?id=$id&user=$user";
       echo "\" onmouseover=\"window.status='" . translate("View this entry") .
         "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
       $timestr = "";
@@ -79,21 +79,21 @@ function list_unapproved ( $user ) {
       echo " (" . date_to_str ($date) . ")\n";
 //approve
       echo ": <a title=\"" . 
-	translate("Approve/Confirm") . "\" class=\"nav\" href=\"approve_entry.php?id=$id&amp;ret=list&amp;user=$user";
+	translate("Approve/Confirm") . "\" class=\"nav\" href=\"approve_entry.php?id=$id&ret=list&user=$user";
       if ( $user == "__public__" )
-        echo "&amp;public=1";
+        echo "&public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
         translate("Approve this entry?") .
         "');\">" . translate("Approve/Confirm") . "</a>, ";
-      echo "<a href=\"reject_entry.php?id=$id&amp;ret=list&amp;user=$user";
+      echo "<a href=\"reject_entry.php?id=$id&ret=list&user=$user";
       if ( $user == "__public__" )
-        echo "&amp;public=1";
+        echo "&public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
         translate("Reject this entry?") .
         "');\">" . translate("Reject") . "</a>";
-      echo ", <a href=\"del_entry.php?id=$id&amp;ret=list";
+      echo ", <a href=\"del_entry.php?id=$id&ret=list";
       if ( $user != $login )
-        echo "&amp;user=$user";
+        echo "&user=$user";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
         translate("Are you sure you want to delete this entry?") .
         "');\">" . translate("Delete") . "</a>";
