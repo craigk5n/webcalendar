@@ -1892,7 +1892,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
           echo "<TD VALIGN=\"top\" BGCOLOR=\"$TODAYCELLBG\" ROWSPAN=\"$rowspan\">";
           if ( $can_add )
             echo html_for_add_icon ( $date, $time_h, $time_m );
-          echo "hour_arr[$i]</TD></TR>\n";
+          echo "$hour_arr[$i]</TD></TR>\n";
         } else {
           echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">";
           if ( $can_add )
