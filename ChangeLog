@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Added patch 1001078: xhtml error in week.php
   - Added patch 1000911: no CR in site_extras field when displayed
   - Added patch 1000220: removed font tag from trailer.php
   - Fixed bug in repeating event conflict checking when using "month by day"
