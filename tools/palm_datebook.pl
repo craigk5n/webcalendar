@@ -25,7 +25,7 @@ The following data is available in $Entry:
 
 $Entry->{RecordID}           =  Record ID in the Palm
 $Entry->{Status}             =  Identifies new and deleted records (status in datebook)
-$Entry->{Position}           =  Position in list?....Who Cares?
+$Entry->{Position}           =  Position in list?
 $Entry->{StartTime}          =  In seconds since 1970
 $Entry->{EndTime}            =  In seconds since 1970
 $Entry->{Description}        =  Description of event (string)
@@ -38,7 +38,7 @@ $Entry->{AlarmSet}           =  1 = true  0 = false
 $Entry->{AlarmAdvanceAmount} =  How many units in AlarmAdvanceType (-1 means not set)
 $Entry->{AlarmAdvanceType}   =  Units: (0=minutes, 1=hours, 2=days)
 $Entry->{Repeat}             =  Array containing repeat information (if repeat)
-$Entry->{Repeat}->{Interval}   =  1=daily,2=weekly,3=MonthlyByDate,4=MonthlyByDay,5=Yearly
+$Entry->{Repeat}->{Interval}   =  1=daily,2=weekly,3=MonthlyByDay,4=MonthlyByDate,5=Yearly
 $Entry->{Repeat}->{Frequency}  =  How often event occurs. (1=every, 2=every other,etc.)
 $Entry->{Repeat}->{EndTime}    =  When the repeat ends (In seconds since 1970)
 $Entry->{Repeat}->{Exceptions} =  An exception to the repeat (In seconds since 1970)
@@ -438,7 +438,7 @@ foreach $Entry (sort ByDateAscending ReadDateBook($DateBookFileName)) {
   $DATA .=  $Entry->{Repeat}->{Exceptions}. $sep;
   $DATA .=  $Entry->{Repeat}->{RepeatDays}. $sep;
 #  $DATA .=  $Entry->{Repeat}->{DayNum}. $sep;
-#  $DATA .=  $Entry->{Repeat}->{WeekNum}. $sep;
+  $DATA .=  $Entry->{Repeat}->{WeekNum}. $sep;
   $DATA .=  "\n";
 }
 
