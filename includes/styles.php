@@ -300,7 +300,7 @@ td.dayviewtitle .user {
 table.dayviewminical {
 	border-width: 1px;
 	border-style: solid;
-	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .dayviewminical th.date {
 	text-align: center;
