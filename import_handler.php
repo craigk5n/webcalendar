@@ -22,13 +22,10 @@ if ( empty ( $file ) )
 // Handle user
 $calUser = getValue ( "calUser" );
 if ( ! empty ( $calUser ) ) {
-  if ( $single_user == "N" && $is_admin ) {
-    if ( empty ( $calUser ) )
-      $calUser = $login;
-  }
-}
-if ( empty ( $calUser ) )
+  if ( $single_user == "N" && ! $is_admin ) $calUser = $login;
+} else {
   $calUser = $login;
+}
 
 if ($file['size'] > 0) {
   switch ($ImportType) {
