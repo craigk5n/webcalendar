@@ -402,6 +402,8 @@ doc.li {
     $dbs[] = "odbc";
   if ( function_exists ( "ibase_pconnect" ) )
     $dbs[] = "ibase";
+  if ( function_exists ( "mssql_pconnect" ) )
+    $dbs[] = "mssql";
   for ( $i = 0; $i < count ( $dbs ); $i++ ) {
     if ( $i ) echo ", ";
     echo $dbs[$i];
@@ -528,6 +530,11 @@ You should select "Web Server" from the list of
     echo "<option value=\"ibase\" " .
       ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
       "> Interbase </option>\n";
+
+  if ( ! empty ( $supported['mssql'] ) )
+    echo "<option value=\"mssql\" " .
+      ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
+      "> MS SQL Server </option>\n";
 ?>
 </select>
 </td></tr>
@@ -627,7 +634,7 @@ You should select "Web Server" from the list of
 
 <?php } ?>
 </div>
-<div style="border-top: 1px solid #000; padding-bottom: 20px;">
+<div style="border-top: 1px solid #000; padding: 10px;">
 <p>
 <b>Documentation:</b>
 </p>
