@@ -40,7 +40,7 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
   # update user list
   if ( $error == "" ) {
     dbi_query ( "DELETE FROM webcal_view_user WHERE cal_view_id = $id" );
-    for ( $i = 0; $i < count ( $users ); $i++ ) {
+    for ( $i = 0; ! empty ( $users ) && $i < count ( $users ); $i++ ) {
       dbi_query ( "INSERT INTO webcal_view_user ( cal_view_id, cal_login ) " .
         "VALUES ( $id, '$users[$i]' )" );
     }
