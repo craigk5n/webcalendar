@@ -160,16 +160,16 @@ if ( ! $friendly ) {
 
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
-<th width="14%" style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>" class="tableheader"><?php etranslate("Sun")?></th>
+<th width="14%" class="tableheader"><?php etranslate("Sun")?></th>
 <?php } ?>
-<th width="14%" style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Mon")?></th>
-<th width="14%" style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Tue")?></th>
-<th width="14%" style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Wed")?></th>
-<th width="14%" style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Thu")?></th>
-<th width="14%" style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Fri")?></th>
-<th width="14%" style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Sat")?></th>
+<th width="14%" class="tableheader"><?php etranslate("Mon")?></th>
+<th width="14%" class="tableheader"><?php etranslate("Tue")?></th>
+<th width="14%" class="tableheader"><?php etranslate("Wed")?></th>
+<th width="14%" class="tableheader"><?php etranslate("Thu")?></th>
+<th width="14%" class="tableheader"><?php etranslate("Fri")?></th>
+<th width="14%" class="tableheader"><?php etranslate("Sat")?></th>
 <?php if ( $WEEK_START == 1 ) { ?>
-<th width="14%" style="width:14%; background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;" class="tableheader"><?php etranslate("Sun")?></th>
+<th width="14%" class="tableheader"><?php etranslate("Sun")?></th>
 <?php } ?>
 </tr>
 
