@@ -120,7 +120,7 @@ if ( ! $friendly ) {
     $wkstart = get_sunday_before ( $nextyear, $nextmonth, 1 );
   $monthstart = mktime ( 3, 0, 0, $nextmonth, 1, $nextyear );
   $monthend = mktime ( 3, 0, 0, $nextmonth + 1, 0, $nextyear );
-  echo "<tr><td colspan=\"7\" align=\"middle\">" .
+  echo "<tr><td colspan=\"7\" align=\"center\">" .
     "<a href=\"month.php?$u_url";
   echo "year=$nextyear&month=$nextmonth$caturl\" class=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $nextyear, $nextmonth ),
