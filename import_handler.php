@@ -201,9 +201,12 @@ function import_data($data) {
       $sql .=  ($Entry[Repeat]) ? "'M', " : "'E', ";
       if ( strlen ( $Entry[Summary] ) == 0 )
         $Entry[Summary] = translate("Unnamed Event");
-      $sql .= "'" . $Entry[Summary] .  "', ";
       if ( strlen ( $Entry[Description] ) == 0 )
         $Entry[Description] = $Entry[Summary];
+      $Entry[Summary] = str_replace ( "\\,", ",", $Entry[Summary] );
+      $Entry[Summary] = str_replace ( "\\n", "\n", $Entry[Summary] );
+      $Entry[Summary] = str_replace ( "'", "\\'", $Entry[Summary] );
+      $sql .= "'" . $Entry[Summary] .  "', ";
       $Entry[Description] = str_replace ( "\\,", ",", $Entry[Description] );
       $Entry[Description] = str_replace ( "\\n", "\n", $Entry[Description] );
       $Entry[Description] = str_replace ( "'", "\\'", $Entry[Description] );
