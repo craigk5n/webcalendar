@@ -18,6 +18,11 @@ include_once 'includes/init.php';
 include_once 'includes/site_extras.php';
 load_user_categories ();
 
+// Default for using tabs is enabled
+if ( empty ( $EVENT_EDIT_TABS ) )
+  $EVENT_EDIT_TABS = 'Y'; // default
+$useTabs = ( $EVENT_EDIT_TABS == 'Y' );
+
 // make sure this is not a read-only calendar
 $can_edit = false;
 
@@ -273,18 +278,22 @@ if ( $is_assistant || $is_nonuser_admin || ! empty ( $user ) )
 ?>
 
 <!-- TABS -->
+<?php if ( $useTabs ) { ?>
 <div id="tabs">
 	<span class="tabfor" id="tab_details"><a href="#tabdetails" onclick="return showTab('details')"><?php etranslate("Details") ?></a></span>
 	<span class="tabbak" id="tab_sched"><a href="#tabsched" onclick="return showTab('sched')"><?php etranslate("Scheduling") ?></a></span>
 	<span class="tabbak" id="tab_participants"><a href="#tabparticipants" onclick="return showTab('participants')"><?php etranslate("Participants") ?></a></span>
 	<span class="tabbak" id="tab_pete"><a href="#tabpete" onclick="return showTab('pete')"><?php etranslate("Repeat") ?></a></span>
 </div>
+<? } ?>
 
 <!-- TABS BODY -->
+<?php if ( $useTabs ) { ?>
 <div id="tabscontent">
 	<!-- DETAILS -->
 	<a name="tabdetails"></a>
 	<div id="tabscontent_details">
+<? } ?>
 		<table style="border-width:0px;">
 			<tr><td style="width:14%;" class="tooltip" title="<?php etooltip("brief-description-help")?>">
 				<label for="entry_brief"><?php etranslate("Brief Description")?>:</label></td><td>
@@ -454,11 +463,15 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
 // end site-specific extra fields
 ?>
 </table>
+<?php if ( $useTabs ) { ?>
 </div>
+<?php } /* $useTabs */ ?>
 
 <!-- SCHEDULING -->
+<?php if ( $useTabs ) { ?>
 <a name="tabsched"></a>
 <div id="tabscontent_sched">
+<?php } /* $useTabs */ ?>
 	<table>
 		<tr><td class="tooltip" title="<?php etooltip("date-help")?>">
 			<?php etranslate("Date")?>:</td><td>
@@ -584,11 +597,15 @@ if ( $allday != "Y" && $hour == -1 ) {
 </td></tr>
 </table>
 <?php } ?>
+<?php if ( $useTabs ) { ?>
 </div>
+<?php } /* $useTabs */ ?>
 
+<!-- PARTICIPANTS -->
+<?php if ( $useTabs ) { ?>
 <a name="tabparticipants"></a>
 <div id="tabscontent_participants">
-<!-- PARTICIPANTS -->
+<?php } /* $useTabs */ ?>
 <table>
 <?php
 // Only ask for participants if we are multi-user.
@@ -657,11 +674,15 @@ if ( $single_user == "N" && $show_participants ) {
 }
 ?>
 </table>
+<?php if ( $useTabs ) { ?>
 </div>
+<?php } /* $useTabs */ ?>
 
 <!-- REPEATING INFO -->
+<?php if ( $useTabs ) { ?>
 <a name="tabpete"></a>
 <div id="tabscontent_pete">
+<?php } /* $useTabs */ ?>
 <table>
 <?php if ( $disable_repeating_field != "Y" ) { ?>
 <tr style="vertical-align:top;"><td class="tooltip" title="<?php etooltip("repeat-type-help")?>">
@@ -745,7 +766,9 @@ if ( $single_user == "N" && $show_participants ) {
 	?></td></tr>
 </table>
 </div>
+<?php if ( $useTabs ) { ?>
 </div>
+<?php } /* $useTabs */ ?>
 <?php } ?>
 
 <table style="border-width:0px;">
