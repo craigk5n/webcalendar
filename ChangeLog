@@ -4,6 +4,7 @@ Version 0.9.41dev (?? ??? ???)
     result of this cosmetic change, javascript has been moved out of the
     files and into its own file.  The file has the same name and is located
     in includes/js/ directory.
+  - Updated all translation files to add sections for includes/js/ files.
   - Fixed bug where My Calendar linked to 80/443. There were duplicate
     bugs reported for this: 657172, 638642, 614080
   - Fixed bug 680793: failure descrip. and date in emails for rejected events
