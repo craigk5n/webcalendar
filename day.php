@@ -15,11 +15,13 @@ include "includes/translate.inc";
 
 $view = "day";
 
-if ( strlen ( $user ) )
+if ( strlen ( $user ) ) {
   $u_url = "user=$user&";
-else
+  user_load_variables ( $user, "user_" );
+} else {
   $u_url = "";
-
+  $user_fullname = $fullname;
+}
 ?>
 <HTML>
 <HEAD>
@@ -87,7 +89,8 @@ $events = read_events ( strlen ( $user ) ? $user : $login, $nowYmd, $nowYmd );
 <?php
   // display current calendar's user (if not in single user)
   if ( ! strlen ( $single_user_login ) ) {
-    echo $fullname;
+    echo "<BR>";
+    echo $user_fullname;
   }
 ?>
 </FONT>
