@@ -3,105 +3,105 @@
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	    <head>
+     <head>
 <title>WebCalendar System Administrator's Guide</title>
 <style type="text/css">
 body {
-	background-color: #FFFFFF;
-	font-family: Arial, Helvetica, sans-serif;
+ background-color: #FFFFFF;
+ font-family: Arial, Helvetica, sans-serif;
 }
 a {
-	text-decoration: none;
+ text-decoration: none;
 }
 dt {
-	font-weight: bold;
-	margin-left: 25px;
-	margin-top: 20px;
+ font-weight: bold;
+ margin-left: 25px;
+ margin-top: 20px;
 }
 .valid {
-	border-width: 0px;
+ border-width: 0px;
 }
 pre {
-	font-family: courier, monospace;
-	font-size: 14px;
-	border: 1px solid #0000FF;
-	background-color: #EEEEFF;
-	padding: 4px;
-	margin-left: 25px;
-	margin-right: 25px;
+ font-family: courier, monospace;
+ font-size: 14px;
+ border: 1px solid #0000FF;
+ background-color: #EEEEFF;
+ padding: 4px;
+ margin-left: 25px;
+ margin-right: 25px;
 }
 tr {
-	background-color: #606080;
-	color: #F0F0F0;
+ background-color: #606080;
+ color: #F0F0F0;
 }
 td {
-	vertical-align: top;
+ vertical-align: top;
 }
 th {
-	background-color: #000000;
+ background-color: #000000;
 }
 .colorheader {
-	background-color: #000000;
-	color: #FFFFFF;
-	margin-left: 3px;
-	margin-right: 3px;
-	padding: 2px;
+ background-color: #000000;
+ color: #FFFFFF;
+ margin-left: 3px;
+ margin-right: 3px;
+ padding: 2px;
 }
 .newwin {
-	border-width: 0px;
+ border-width: 0px;
 }
 .tip {
-	font-weight: bold;
-	background-color: #FFFF00;
-	border: 1px solid #000000;
-	padding: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-	margin-right: 10px;
+ font-weight: bold;
+ background-color: #FFFF00;
+ border: 1px solid #000000;
+ padding: 1px;
+ padding-left: 5px;
+ padding-right: 5px;
+ margin-right: 10px;
 }
 .note {
-	font-weight: bold;
-	background-color: blue;
-	color: #FFFFFF;
-	border: 1px solid #000000;
-	padding: 2px;
+ font-weight: bold;
+ background-color: blue;
+ color: #FFFFFF;
+ border: 1px solid #000000;
+ padding: 2px;
 }
 hr {
-	margin-bottom: 7px;
+ margin-bottom: 7px;
 }
 h2 {
-	background-color: #191970;
-	color: #FFFFFF;
-	padding: 5px;
+ background-color: #191970;
+ color: #FFFFFF;
+ padding: 5px;
 }
 .top {
-	text-align: right;
+ text-align: right;
 }
 </style>
 </head>
 <body>
 <h1>WebCalendar System Administrator's Guide</h1>
-<p><strong>WebCalendar Version:</strong> 1.0RC2</p>
+<p><strong>WebCalendar Version:</strong> 1.0RC4</p>
 
 <h2>Table of Contents</h2>
 <ul>
-	<li><a href="#intro">Introduction</a></li>
-	<li><a href="#requirements">System Requirements</a></li>
-	<li><a href="#fileunpacking">File Unpacking</a></li>
-	<li><a href="#dbsetup">Database Setup</a></li>
-	<li><a href="#appsetup">Application Setup</a></li>
-	<li><a href="#reminders">Setting Up Email Reminders</a></li>
-	<li><a href="#systemsettings">System Settings</a></li>
-	<li><a href="#siteextras">Custom Event Fields</a></li>
-	<li><a href="#faq">FAQ</a></li>
-	<li><a href="#trouble">Troubleshooting</a></li>
-	<li><a href="#help">Getting Help</a></li>
-	<li><a href="#license">Licensing</a></li>
-	<li><a href="#glossary">Glossary</a></li>
-	<li><a href="#appendixA">Appendix A: Database Setup with phpMyAdmin</a></li>
-	<li><a href="#appendixB">Appendix B: Setting Up Reminders on Windows</a></li>
-	<li><a href="#appendixC">Appendix C: Displaying Upcoming Events on Your Site</a></li>
-	<li><a href="#appendixD">Appendix D: How to setup to work with LDAP</a></li>
+ <li><a href="#intro">Introduction</a></li>
+ <li><a href="#requirements">System Requirements</a></li>
+ <li><a href="#fileunpacking">File Unpacking</a></li>
+ <li><a href="#dbsetup">Database Setup</a></li>
+ <li><a href="#appsetup">Application Setup</a></li>
+ <li><a href="#reminders">Setting Up Email Reminders</a></li>
+ <li><a href="#systemsettings">System Settings</a></li>
+ <li><a href="#siteextras">Custom Event Fields</a></li>
+ <li><a href="#faq">FAQ</a></li>
+ <li><a href="#trouble">Troubleshooting</a></li>
+ <li><a href="#help">Getting Help</a></li>
+ <li><a href="#license">Licensing</a></li>
+ <li><a href="#glossary">Glossary</a></li>
+ <li><a href="#appendixA">Appendix A: Database Setup with phpMyAdmin</a></li>
+ <li><a href="#appendixB">Appendix B: Setting Up Reminders on Windows</a></li>
+ <li><a href="#appendixC">Appendix C: Displaying Upcoming Events on Your Site</a></li>
+ <li><a href="#appendixD">Appendix D: How to setup to work with LDAP</a></li>
 </ul>
 <hr />
 
@@ -110,1115 +110,1126 @@ h2 {
 
 <p>WebCalender is an open source PHP-based multi-user calendar.</p>
 
-	<p><strong>Features:</strong></p>
-	<ul>
-		<li>Multi-user support</li>
-		<li>Group support</li>
-		<li>View day-at-glance</li>
-		<li>View month-at-glance</li>
-		<li>View week-at-glance</li>
-		<li>View year-at-glance</li>
-		<li>View another user's calendar</li>
-		<li>View multiple users' calendars at the same time</li>
-		<li>View one or more users' calendar via layers on top of your own calendar</li>
-		<li>Public calendar (that requires no login) where anonymous users
-  		submit events that are approved by an administrator</li>
-		<li>Add/Edit/Delete users</li>
-		<li>Add/Edit/Delete events</li>
-		<li>Repeating events</li>
-		<li>Custom event fields</li>
-		<li>Search interface for calendar entries</li>
-		<li>User-configurable preferences for colors, 12/24 time format,
-  		Week start on Sun or Mon, default work hours</li>
-		<li>Online help</li>
-		<li>Checks for scheduling conflicts</li>
-		<li>Support for multiple timezones</li>
-		<li>Users can accept or reject events added by another user to their calendar</li>
-		<li>Email reminders</li>
-		<li>Email notifications for new events</li>
-		<li>Support for 30 different languages:
-		<ul>
-			<li>Basque</li>
-			<li>Bulgarian</li>
-			<li>Catalan</li>
-			<li>繁體中文(Big5)</li>
-			<li>简体中文(GB2312)</li>
-			<li>Czech</li>
-			<li>Danish</li>
-			<li>Deutsch (German)</li>
-			<li>English</li>
-			<li>Espa&#241;ol (Spanish)</li>
-			<li>Estonian</li>
-			<li>Fran&#231;ais (French)</li>
-			<li>Galician</li>
-			<li>Hollands (Dutch)</li>
-			<li>Holo (Taiwanese)</li>
-			<li>Hungarian</li>
-			<li>Icelandic</li>
-			<li>Italiano (Italian)</li>
-			<li>Japanese</li>
-			<li>Korean</li>
-			<li>Norsk (Norwegian)</li>
-			<li>Polish</li>
-			<li>Portuguese</li>
-			<li>Portuguese/Brazil</li>
-			<li>Romanian</li>
-			<li>Русско (Russian)</li>
-			<li>Suomalainen (Finnish)</li>
-			<li>Svensk (Swedish)</li>
-			<li>Turkish</li>
-			<li>Welsh</li>
-		</ul>
-	</li>
-	<li>Exporting to and importing from:
-		<ul>
-			<li>Palm Pilot</li>
-			<li>iCal</li>
-			<li>vCal</li>
-		</ul>
-	</li>
-	<li>Authentication using:
-		<ul>
-			<li>LDAP</li>
-			<li>HTTP authentication</li>
-			<li>NIS</li>
-			<li>web-based</li>
-		</ul>
-	</li>
-	<li>Activity log that tracks:
-		<ul>
-			<li>event creation</li>
-			<li>event updates</li>
-			<li>event acceptance</li>
-			<li>event rejection</li>
-			<li>email notifications</li>
-			<li>email reminders</li>
-		</ul>
-	</li>
+ <p><strong>Features:</strong></p>
+ <ul>
+  <li>Multi-user support</li>
+  <li>Group support</li>
+  <li>View day-at-glance</li>
+  <li>View month-at-glance</li>
+  <li>View week-at-glance</li>
+  <li>View year-at-glance</li>
+  <li>View another user's calendar</li>
+  <li>View multiple users' calendars at the same time</li>
+  <li>View one or more users' calendar via layers on top of your own calendar</li>
+  <li>Public calendar (that requires no login) where anonymous users
+    submit events that are approved by an administrator</li>
+  <li>Add/Edit/Delete users</li>
+  <li>Add/Edit/Delete events</li>
+  <li>Repeating events</li>
+  <li>Custom event fields</li>
+  <li>Search interface for calendar entries</li>
+  <li>User-configurable preferences for colors, 12/24 time format,
+    Week start on Sun or Mon, default work hours</li>
+  <li>Online help</li>
+  <li>Checks for scheduling conflicts</li>
+  <li>Support for multiple timezones</li>
+  <li>Users can accept or reject events added by another user to their calendar</li>
+  <li>Email reminders</li>
+  <li>Email notifications for new events</li>
+  <li>Support for 30 different languages:
+  <ul>
+   <li>Basque</li>
+   <li>Bulgarian</li>
+   <li>Catalan</li>
+   <li>繁體中文(Big5)</li>
+   <li>简体中文(GB2312)</li>
+   <li>Czech</li>
+   <li>Danish</li>
+   <li>Deutsch (German)</li>
+   <li>English</li>
+   <li>Espa&#241;ol (Spanish)</li>
+   <li>Estonian</li>
+   <li>Fran&#231;ais (French)</li>
+   <li>Galician</li>
+   <li>Hollands (Dutch)</li>
+   <li>Holo (Taiwanese)</li>
+   <li>Hungarian</li>
+   <li>Icelandic</li>
+   <li>Italiano (Italian)</li>
+   <li>Japanese</li>
+   <li>Korean</li>
+   <li>Norsk (Norwegian)</li>
+   <li>Polish</li>
+   <li>Portuguese</li>
+   <li>Portuguese/Brazil</li>
+   <li>Romanian</li>
+   <li>Русско (Russian)</li>
+   <li>Suomalainen (Finnish)</li>
+   <li>Svensk (Swedish)</li>
+   <li>Turkish</li>
+   <li>Welsh</li>
+  </ul>
+ </li>
+ <li>Exporting to and importing from:
+  <ul>
+   <li>Palm Pilot</li>
+   <li>iCal</li>
+   <li>vCal</li>
+  </ul>
+ </li>
+ <li>Authentication using:
+  <ul>
+   <li>LDAP</li>
+   <li>HTTP authentication</li>
+   <li>NIS</li>
+   <li>web-based</li>
+  </ul>
+ </li>
+ <li>Activity log that tracks:
+  <ul>
+   <li>event creation</li>
+   <li>event updates</li>
+   <li>event acceptance</li>
+   <li>event rejection</li>
+   <li>email notifications</li>
+   <li>email reminders</li>
+  </ul>
+ </li>
 </ul>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="requirements"></a>
 <h2>System Requirements</h2>
-	<ul>
-		<li>PHP 4 (PHP 5 not yet tested) with <tt>magic_quotes_gpc</tt> enabled</li>
-		<li>Database (see <a href="#database">below</a>)</li>
-		<li>CSS-enabled browser</li>
-		<li>JavaScript-enabled browser</li>
-		<li>If not using HTTP-based authentication, then browser cookies are required</li>
-	</ul>
-	<p><strong>Recommended:</strong></p>
-	<ul>
-		<li>pilot-link (if exporting to Palm):
-		<a href="http://sourceforge.net/project/?group_id=2158">http://sourceforge.net/project/?group_id=2158</a>&nbsp;<a href="http://sourceforge.net/project/?group_id=2158" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
-	</ul>
-	<p><a name="database">You must have one of the following databases installed</a>:</p>
-	<ul>
-		<li>MySQL</li>
-		<li>Oracle 8</li>
-		<li>PostgreSQL</li>
-		<li>Interbase</li>
-		<li>MS SQL Server</li>
-		<li>ODBC (PHP ODBC includes support for Adabas D, IBM DB2, Solid and Sybase SQL Anywhere as well as ODBC)</li>
-	</ul>
-	<p>For the database you choose, you must have its drivers built into
-		PHP.  For example, to use MySQL, PHP must be compiled with MySQL
-		support (which is the default setting when installing PHP).
-		See the PHP pages (<a href="http://www.php.net">www.php.net</a>&nbsp;<a href="http://www.php.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>)
-		for more information on setting up PHP.</p>
-	<p>No optional PHP packages (other than MySQL) are required for this
-		application.  However, PHP shoud be compiled with <tt>--enable-track-vars</tt>
-		on some systems.</p>
-	<p>Make sure that <tt>magic_quotes_gpc</tt> in <tt>php.ini</tt>
-		is turned on (otherwise, you will get an error message when you try to access WebCalendar.)</p>
-	<p><span class="tip">TIP</span> If you are using Apache
-		as your web server and if you cannot or do not want to enable
-		<tt>magic_quotes_gpc</tt> for your entire site, you can enable
-		it just for WebCalendar.
-		Create a <tt>.htaccess</tt> file in the toplevel WebCalendar
-		directory that contains a single line:</p>
-		<pre>php_value magic_quotes_gpc 1</pre>
-		<p>(For this to work with Apache, you must have the Apache
-		<tt>AllowOverride All</tt> directive enabled for the directory
-		where WebCalendar is installed.
-		Additionally, PHP must be running as an Apache module, not
-		a CGI.)</p>
+ <ul>
+  <li>PHP 4 (PHP 5 not yet tested) with <tt>magic_quotes_gpc</tt> enabled</li>
+  <li>Database (see <a href="#database">below</a>)</li>
+  <li>CSS-enabled browser</li>
+  <li>JavaScript-enabled browser</li>
+  <li>If not using HTTP-based authentication, then browser cookies are required</li>
+ </ul>
+ <p><strong>Recommended:</strong></p>
+ <ul>
+  <li>pilot-link (if exporting to Palm):
+  <a href="http://sourceforge.net/project/?group_id=2158">http://sourceforge.net/project/?group_id=2158</a>&nbsp;<a href="http://sourceforge.net/project/?group_id=2158" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
+ </ul>
+ <p><a name="database">You must have one of the following databases installed</a>:</p>
+ <ul>
+  <li>MySQL</li>
+  <li>Oracle 8</li>
+  <li>PostgreSQL</li>
+  <li>Interbase</li>
+  <li>MS SQL Server</li>
+  <li>ODBC (PHP ODBC includes support for Adabas D, IBM DB2, Solid and Sybase SQL Anywhere as well as ODBC)</li>
+ </ul>
+ <p>For the database you choose, you must have its drivers built into
+  PHP.  For example, to use MySQL, PHP must be compiled with MySQL
+  support (which is the default setting when installing PHP).
+  See the PHP pages (<a href="http://www.php.net">www.php.net</a>&nbsp;<a href="http://www.php.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>)
+  for more information on setting up PHP.</p>
+ <p>No optional PHP packages (other than MySQL) are required for this
+  application.  However, PHP shoud be compiled with <tt>--enable-track-vars</tt>
+  on some systems.</p>
+ <p>Make sure that <tt>magic_quotes_gpc</tt> in <tt>php.ini</tt>
+  is turned on (otherwise, you will get an error message when you try to access WebCalendar.)</p>
+ <p><span class="tip">TIP</span> If you are using Apache
+  as your web server and if you cannot or do not want to enable
+  <tt>magic_quotes_gpc</tt> for your entire site, you can enable
+  it just for WebCalendar.
+  Create a <tt>.htaccess</tt> file in the toplevel WebCalendar
+  directory that contains a single line:</p>
+  <pre>php_value magic_quotes_gpc 1</pre>
+  <p>(For this to work with Apache, you must have the Apache
+  <tt>AllowOverride All</tt> directive enabled for the directory
+  where WebCalendar is installed.
+  Additionally, PHP must be running as an Apache module, not
+  a CGI.)</p>
 
-	<p>You can run PHP either as a CGI or an Apache module.  You'll get better
-		performance with PHP setup as a module.  Not only will you not have to
-		deal with the CGI performance hit, but you'll be able to use PHP's
-		database connection pooling.  Additionally, this application can use
-		a form/cookie-based authentication or traditional HTTP authentication.
-		For traditional HTTP authentication, PHP must be built as an Apache
-		module.</p>
-	<p>If you are planning on using email reminders, you will need to build
-		PHP as a CGI in order to run the <tt>send_reminders.php</tt> script.  I would
-		strongly recommend building a module-based PHP for your web server
-		and then a second PHP build to create the CGI version.</p>
-	<p><span class="tip">TIP</span> Some Linux distributions come with both a module-based PHP
-		with Apache and a standalone PHP binary.
-		Check for <tt>/usr/bin/php</tt> to see if you already have the
-		PHP standalone executable.  If it's there, you can use
-		the following command to see what version of PHP you have:</p>
-	<pre>/usr/bin/php -v</pre>
+ <p>You can run PHP either as a CGI or an Apache module.  You'll get better
+  performance with PHP setup as a module.  Not only will you not have to
+  deal with the CGI performance hit, but you'll be able to use PHP's
+  database connection pooling.  Additionally, this application can use
+  a form/cookie-based authentication or traditional HTTP authentication.
+  For traditional HTTP authentication, PHP must be built as an Apache
+  module.</p>
+ <p>If you are planning on using email reminders, you will need to build
+  PHP as a CGI in order to run the <tt>send_reminders.php</tt> script.  I would
+  strongly recommend building a module-based PHP for your web server
+  and then a second PHP build to create the CGI version.</p>
+ <p><span class="tip">TIP</span> Some Linux distributions come with both a module-based PHP
+  with Apache and a standalone PHP binary.
+  Check for <tt>/usr/bin/php</tt> to see if you already have the
+  PHP standalone executable.  If it's there, you can use
+  the following command to see what version of PHP you have:</p>
+ <pre>/usr/bin/php -v</pre>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="fileunpacking"></a>
 <h2>File Unpacking</h2>
-	<p>Unpack the calendar software in its own directory somewhere where
-		your web server will find it.  (See your web server docs for info.)</p>
-	<p>By default, WebCalendar should create its own directory
-		when you unpack it.  The new directory name will typically
-		contain the version name (such as <tt>WebCalendar-0.9.41</tt>).
-		You can rename this directory after unpacking the files if you
-		prefer a directory name like <tt>calendar</tt> or <tt>webcalendar</tt>.
-		Keep in mind that unless you remap the directory (via your web server's
-		configuration settings), it will be part of the URL for the calendar.</p>
+ <p>Unpack the calendar software in its own directory somewhere where
+  your web server will find it.  (See your web server docs for info.)</p>
+ <p>By default, WebCalendar should create its own directory
+  when you unpack it.  The new directory name will typically
+  contain the version name (such as <tt>WebCalendar-0.9.41</tt>).
+  You can rename this directory after unpacking the files if you
+  prefer a directory name like <tt>calendar</tt> or <tt>webcalendar</tt>.
+  Keep in mind that unless you remap the directory (via your web server's
+  configuration settings), it will be part of the URL for the calendar.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="dbsetup"></a>
-	<h2>Database Setup</h2>
-	<p>There are three steps in setting up the database:</p>
-	<ol>
-		<li>Creating the database</li>
-		<li>Creating the user</li>
-		<li>Creating the required tables</li>
-	</ol>
-	<p>Follow the steps outlined below for the database you are using.
-		When complete, a single user account will be created
-		with the <strong>login "admin" and password "admin"</strong>, which you are encouraged
-		to use to create your own account.</p>
-	<p><span class="note">Note:</span> In the examples below, text in <strong>bold</strong>
-		represents text that you must type in.</p>
-	<h3 class="colorheader">MySQL</h3>
-	<p>The following will create a database named "intranet".</p>
+ <h2>Database Setup</h2>
+ <p>There are three steps in setting up the database:</p>
+ <ol>
+  <li>Creating the database</li>
+  <li>Creating the user</li>
+  <li>Creating the required tables</li>
+ </ol>
+ <p>Follow the steps outlined below for the database you are using.
+  When complete, a single user account will be created
+  with the <strong>login "admin" and password "admin"</strong>, which you are encouraged
+  to use to create your own account.</p>
+ <p><span class="note">Note:</span> In the examples below, text in <strong>bold</strong>
+  represents text that you must type in.</p>
+         <p><span class="note">Security:</span> The default values for database, login, and
+  password (<strong>intranet</strong>, <strong>webcalendar</strong>, and <strong>webcal01</strong>) are for demonstration purposes only
+  and should never be used in a production environment.</p>
+ <h3 class="colorheader">MySQL</h3>
+ <p>The following will create a database named "intranet".</p>
 <pre><strong>mysqladmin create intranet</strong></pre>
-	<p>Next, create the database user account that will be used to access the database.</p>
-	<pre><strong>mysql --user=root mysql</strong>
+ <p>Next, create the database user account that will be used to access the database.</p>
+ <pre><strong>mysql --user=root mysql</strong>
 mysql> <strong>GRANT ALL PRIVILEGES ON *.* TO webcalendar@localhost
 IDENTIFIED BY 'webcal01' WITH GRANT OPTION;</strong>
 mysql> <strong>FLUSH PRIVILEGES;</strong>
 mysql> <strong>QUIT</strong></pre>
-	<p>If you will be accessing MySQL from a different machine than
-		the one running the web server, repeat the command above
-		and replace 'localhost' with the hostname of the other machine.</p>
-	<p>Create the calendar tables using the supplied <tt>tables-mysql.sql</tt> file:</p>
-	<pre><strong>mysql intranet &lt; tables-mysql.sql</strong></pre>
-	<p>In the above example, "intranet" is the name of your database.</p>
+ <p>If you will be accessing MySQL from a different machine than
+  the one running the web server, repeat the command above
+  and replace 'localhost' with the hostname of the other machine.</p>
+ <p>Create the calendar tables using the supplied <tt>tables-mysql.sql</tt> file:</p>
+ <pre><strong>mysql intranet &lt; tables-mysql.sql</strong></pre>
+ <p>In the above example, "intranet" is the name of your database.</p>
 
-	<p><span class="note">Note:</span> If you are using
-	<a href="http://www.phpmyadmin.net">phpMyAdmin</a> to
-	manage your MySQL database, follow the
-	instructions in <a href="#appendixA">Appendix A</a>.
-	</p>
+ <p><span class="note">Note:</span> If you are using
+ <a href="http://www.phpmyadmin.net">phpMyAdmin</a> to
+ manage your MySQL database, follow the
+ instructions in <a href="#appendixA">Appendix A</a>.
+ </p>
 
-	<h3 class="colorheader">Oracle</h3>
-	<p>The following will create a tablespace named "webcalendar".
-		From the command line, startup sqlplus and
-		issue the following command:</p>
-	<pre><strong>sqlplus</strong>
+ <h3 class="colorheader">Oracle</h3>
+ <p>The following will create a tablespace named "webcalendar".
+  From the command line, startup sqlplus and
+  issue the following command:</p>
+ <pre><strong>sqlplus</strong>
 SQL&gt; <strong>CREATE TABLESPACE webcalendar
 DATAFILE 'webcalendar.dat' SIZE 10M
 AUTOEXTEND ON NEXT 10M MAXSIZE 40M;</strong></pre>
-	<p>Next, create the database user account that will be used to access the database.</p>
-	<pre><strong>sqlplus</strong>
+ <p>Next, create the database user account that will be used to access the database.</p>
+ <pre><strong>sqlplus</strong>
 SQL&gt; <strong>CREATE USER webcalendar IDENTIFIED BY webcal01
 DEFAULT TABLESPACE webcalendar;</strong>
 SQL&gt; <strong>GRANT dba TO webcalendar;</strong>
 SQL&gt; <strong>quit</strong></pre>
-	<p>Create the calendar tables using the supplied <tt>tables-oracle.sql</tt> file:</p>
-	<pre><strong>sqlplus webcalendar/webcal01</strong>
+ <p>Create the calendar tables using the supplied <tt>tables-oracle.sql</tt> file:</p>
+ <pre><strong>sqlplus webcalendar/webcal01</strong>
 SQL&gt; <strong>@tables-oracle;</strong>
 SQL&gt; <strong>quit</strong></pre>
 
-	<h3 class="colorheader">PostgreSQL</h3>
-	<p>The following will create a database named "webcalendar".
-		From the command line, startup psql and
-		issue the following command:</p>
-	<pre><strong>create database webcalendar;
+ <h3 class="colorheader">PostgreSQL</h3>
+ <p>The following will create a database named "webcalendar".
+  From the command line, startup psql and
+  issue the following command:</p>
+ <pre><strong>create database webcalendar;
 \c webcalendar
 \i tables-postgres.sql
 \q</strong></pre>
 
-	<h3 class="colorheader">Interbase</h3>
-	<p>The following will create a database named "WEBCAL.gdb".
-		From the command line, startup usql and
-		issue the following command:</p>
-	<pre><strong>CREATE DATABASE 'WEBCAL.gdb';</strong></pre>
+ <h3 class="colorheader">Interbase</h3>
+ <p>The following will create a database named "WEBCAL.gdb".
+  From the command line, startup usql and
+  issue the following command:</p>
+ <pre><strong>CREATE DATABASE 'WEBCAL.gdb';</strong></pre>
 
-	<p>Create the calendar tables using the supplied <tt>tables-ibase.sql</tt> file:</p>
-	<pre><strong>isql
+ <p>Create the calendar tables using the supplied <tt>tables-ibase.sql</tt> file:</p>
+ <pre><strong>isql
 connect /path/WEBCAL.gdb;
 input path/table-ibase.sql;</strong></pre>
 
-	<h3 class="colorheader">ODBC</h3>
-	<p>Setup will depend on which database you are using.
-		When it comes time to create the tables,
-		the <tt>tables-postgres.sql</tt> file should work for most
-		databases.</p>
-<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+ <h3 class="colorheader">ODBC</h3>
+ <p>Setup will depend on which database you are using.
+  When it comes time to create the tables,
+  the <tt>tables-postgres.sql</tt> file should work for most
+  databases.</p>
+   <h3 class="colorheader">MSSQL</h3>
+ <p>Create a database, <strong>intranet,</strong>  and add a user, <strong>webcalendar</strong>, to access this database. The user should be granted public, db_datareader,
+   and db_datawriter privileges. Open SQL Query Analyzer then open
+   the file <tt>tables-postgres.sql</tt>. Make sure you have identified <strong>intranet</strong> as the target database and Execute the contents of the sql file.</p>
+          <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="appsetup"></a>
-	<h2>Application Setup</h2>
-	<p>Next, you will need to run the web-based database setup script
-	(simply direct your browser to your new WebCalendar location).
-	You will need to modify the permissions of the <tt>includes</tt>
-	directory.  On Linux/UNIX, you should change this directory
-	to be read/write for all users (<tt>chmod 777 includes</tt>).
-	On Windows, change this directory to have full access for all users
-	using Windows Explorer.	Changing the write permissions will allow the web-based
-	database configuration tool to create the <tt>settings.php</tt> file.</p>
-	
-	<p><span class="tip">TIP</span> After you have created the
-	<tt>settings.php</tt> file (with the "Save Settings" button),
-	you can change the permissions back to a more restrictive setting.</p>
-	
-	<p>After you test and save your database settings, you
-	will be prompted to enter an installation password.
-	<b>Write this password down somewhere.</b> There is no way to reset 
-	this password. If you forget this password and need to change your database settings, 
-	you will need to manually edit the <tt>settings.php</tt> file with a text editor.</p>
-	
-	<p>If you choose not to use the web-based database configuration
-	tool, you can manually edit the <tt>settings.php</tt> file.
-	There is an example file <tt>settings.php.orig</tt> that you
-	can use as a starting point. Simply rename this file to <tt>settings.php</tt>. 
-	You will need to set the values as follows in <tt>settings.php</tt>:</p>
-	<p>To configure your database access. Set the values for:</p>
-	<table class="distinguish">
-		<tr><td>
-			db_type</td><td>
-			One of "mysql", "oracle", "postgresql", "odbc", or "ibase"
-		</td></tr>
-		<tr><td>
-			db_host</td><td>
-			The hostname that database is running on.
-			(Use localhost if it's the same machine as 
-			the web server.) (This variable is not used with ODBC)
-		</td></tr>
-		<tr><td>
-			db_login</td><td>
-			The database login
-		</td></tr>
-		<tr><td>
-			db_password</td><td>
-			The database password for the above login
-		</td></tr>
-		<tr><td>
-			db_database</td><td>
-			The name of the database that the calendar 
-			tables reside in.  ("intranet" in the <a href="#dbsetup">examples above</a>.) 
-			For ODBC, this should be the DSN.
-		</td></tr>
-		<tr><td>
-			db_persistent</td><td>
-			Enable use of persistent (pooled) database connections. 
-			This should typically be enabled.
-		</td></tr>
-	</table>
+ <h2>Application Setup</h2>
+ <p>Next, you will need to run the web-based database setup script
+ (simply direct your browser to your new WebCalendar location).
+ You will need to modify the permissions of the <tt>includes</tt>
+ directory.  On Linux/UNIX, you should change this directory
+ to be read/write for all users (<tt>chmod 777 includes</tt>).
+ On Windows, change this directory to have full access for all users
+ using Windows Explorer. Changing the write permissions will allow the web-based
+ database configuration tool to create the <tt>settings.php</tt> file.</p>
+ 
+ <p><span class="tip">TIP</span> After you have created the
+ <tt>settings.php</tt> file (with the "Save Settings" button),
+ you can change the permissions back to a more restrictive setting.</p>
+ 
+ <p>After you test and save your database settings, you
+ will be prompted to enter an installation password.
+ <b>Write this password down somewhere.</b> There is no way to reset 
+ this password. If you forget this password and need to change your database settings, 
+ you will need to manually edit the <tt>settings.php</tt> file with a text editor.</p>
+ 
+ <p>If you choose not to use the web-based database configuration
+ tool, you can manually edit the <tt>settings.php</tt> file.
+ There is an example file <tt>settings.php.orig</tt> that you
+ can use as a starting point. Simply rename this file to <tt>settings.php</tt>. 
+ You will need to set the values as follows in <tt>settings.php</tt>:</p>
+ <p>To configure your database access. Set the values for:</p>
+ <table class="distinguish">
+  <tr><td>
+   db_type</td>
+  <td>
+   One of "mysql", "oracle", "postgresql", "odbc",
+   &quot;mssql&quot;,
+   or "ibase"
+  </td>
+  </tr>
+  <tr><td>
+   db_host</td><td>
+   The hostname that database is running on.
+   (Use localhost if it's the same machine as 
+   the web server.) (This variable is not used with ODBC)
+  </td></tr>
+  <tr><td>
+   db_login</td><td>
+   The database login
+  </td></tr>
+  <tr><td>
+   db_password</td><td>
+   The database password for the above login
+  </td></tr>
+  <tr><td>
+   db_database</td><td>
+   The name of the database that the calendar 
+   tables reside in.  ("intranet" in the <a href="#dbsetup">examples above</a>.) 
+   For ODBC, this should be the DSN.
+  </td></tr>
+  <tr><td>
+   db_persistent</td><td>
+   Enable use of persistent (pooled) database connections. 
+   This should typically be enabled.
+  </td></tr>
+ </table>
 
-	<p>You can configure the calendar to run in single-user<a href="#g_singleuser">*</a> mode or 
-	multi-user<a href="#g_multiuser">*</a> mode. If this is your first time using the 
-	calendar, it's easier to try single-user. You can always switch to multi-user 
-	later. Leave <tt>single_user</tt> set to "N" (the default) for multi-user or set 
-	it to "Y" and set the value of <tt>single_user_login</tt> to a login name of your liking 
-	to set the system to single-user mode. (And be sure to set the value of 
-	<tt>single_user_login</tt> to the login that you would choose if you decide to switch 
-	to multi-user mode some day.)</p>
-	<p><span class="note">Note:</span> If you do decide to switch from single-user mode to multi-user mode,
-		make sure you add in a user to the system for the login you set the
-		<tt>single_user_login</tt> variable to.  You will need to do this via the
-		database (mysql, sqlplus, etc.)  Look in the <tt>tables-mysql.sql</tt>
-		(or <tt>tables-oracle.sql</tt>, etc.) to see the example of adding in the "admin" user.</p>
-	<p>If you are setting up a multi-user calendar, you will need to choose
-		how your users are authenticated. You must change the settings of 
-		<tt>use_http_auth</tt> and <tt>user_inc</tt>
-		to setup which authentication method to use.</p>
-	<p>You currently have four choices:</p>
-	<ol>
-		<li>Web-based authentication (login/passwords verified in the WebCalendar database):<br />
-			<tt>use_http_auth = false</tt><br />
-			<tt>user_inc = user.php</tt>
-		</li>
-		<li>HTTP-based authentication (login/passwords verified by the web server):<br />
-			<tt>use_http_auth = true</tt><br />
-			<tt>user_inc = user.php</tt><br />
-			... and don't forget to setup your web server to handle user
-			authentication.<br />
-       			<span class="note">Note:</span> In order to use HTTP-based authentication,
-				PHP must be setup as a module for your server rather than a CGI.
-		</li>
-		<li>NIS-based authentication (login/passwords verified by NIS):<br />
-			<tt>use_http_auth = false</tt><br />
-			<tt>user_inc = user-nis.php</tt><br />
-			Additional configuration settings will need to be set
-			in <tt>includes/user-nis.php</tt>.
-		</li>
-		<li>LDAP-based authentication (login/passwords verified by LDAP server):<br />
-			<tt>use_http_auth = false</tt><br />
-			<tt>user_inc = user-ldap.php</tt><br />
-			Additional configuration settings will need to be set
-			in <tt>includes/user-ldap.php</tt>.
-		</li>
-	</ol>
-   	<p>Keep in mind that if you want to use reminders, you will need to
-		setup the <tt>send_reminders.php</tt> script (see below) and keep your admin
-		setting for "Email enabled" set to "Yes" on the admin settings page.</p>
-   	<p>At this point, your WebCalendar installation should be up and running.
-		To access WebCalendar open up your favorite web browser and
-		type in the URL.  The URL will depend on where you installed
-		WebCalendar.</p>
-   	<p>When you unpacked/unzipped the WebCalendar distribution, it typically
-		creates a directory that includes the version number.
-		For example, if the zip file was named <tt>WebCalendar-0.9.99.zip</tt>
-		(or <tt>WebCalendar-0.9.99.tar.gz</tt>), then there
-		should be a <tt>WebCalendar-0.9.99</tt> directory.  For convenience, you
-		can rename this directory so that the URL does not include the version
-		number.  On Windows, you can do this from the Windows Explorer.
-		On Linux/UNIX, you can use the <tt>mv</tt> command to rename the directory.
-		Supposing you renamed the <tt>WebCalendar-0.9.99</tt> directory to just
-		be <tt>calendar</tt>, and you unpacked/unzipped the files into your toplevel
-		web server directory, the URL would be:</p>
-   	<pre>http://yourserverhere/calendar/index.php</pre>
-	<p>If you have not previously configured your database settings,
-		you will be automatically redirected to a web page for
-		configuring your database settings. After you have configured the database, 
-		use the URL again to access WebCalendar.</p>
-   	<p>If you have configured your web server to use <tt>index.php</tt> as the
-		default index page for a directory, you can omit that from the URL.
-		On a single-user system, your browser should be redirected to week.php
-		initially. On a multi-user system, your browser should be redirected to login.php
-		so that you can login.</p>
-	<p><span class="tip">TIP</span> On a multi-user system, the only user account created
-	during installation has the username of "admin" and a password of "admin". You should create 
-	a new admin account and delete this one for security reasons.</p>
+ <p>You can configure the calendar to run in single-user<a href="#g_singleuser">*</a> mode or 
+ multi-user<a href="#g_multiuser">*</a> mode. If this is your first time using the 
+ calendar, it's easier to try single-user. You can always switch to multi-user 
+ later. Leave <tt>single_user</tt> set to "N" (the default) for multi-user or set 
+ it to "Y" and set the value of <tt>single_user_login</tt> to a login name of your liking 
+ to set the system to single-user mode. (And be sure to set the value of 
+ <tt>single_user_login</tt> to the login that you would choose if you decide to switch 
+ to multi-user mode some day.)</p>
+ <p><span class="note">Note:</span> If you do decide to switch from single-user mode to multi-user mode,
+  make sure you add in a user to the system for the login you set the
+  <tt>single_user_login</tt> variable to.  You will need to do this via the
+  database (mysql, sqlplus, etc.)  Look in the <tt>tables-mysql.sql</tt>
+  (or <tt>tables-oracle.sql</tt>, etc.) to see the example of adding in the "admin" user.</p>
+ <p>If you are setting up a multi-user calendar, you will need to choose
+  how your users are authenticated. You must change the settings of 
+  <tt>use_http_auth</tt> and <tt>user_inc</tt>
+  to setup which authentication method to use.</p>
+ <p>You currently have four choices:</p>
+ <ol>
+  <li>Web-based authentication (login/passwords verified in the WebCalendar database):<br />
+   <tt>use_http_auth = false</tt><br />
+   <tt>user_inc = user.php</tt>
+  </li>
+  <li>HTTP-based authentication (login/passwords verified by the web server):<br />
+   <tt>use_http_auth = true</tt><br />
+   <tt>user_inc = user.php</tt><br />
+   ... and don't forget to setup your web server to handle user
+   authentication.<br />
+          <span class="note">Note:</span> In order to use HTTP-based authentication,
+    PHP must be setup as a module for your server rather than a CGI.
+  </li>
+  <li>NIS-based authentication (login/passwords verified by NIS):<br />
+   <tt>use_http_auth = false</tt><br />
+   <tt>user_inc = user-nis.php</tt><br />
+   Additional configuration settings will need to be set
+   in <tt>includes/user-nis.php</tt>.
+  </li>
+  <li>LDAP-based authentication (login/passwords verified by LDAP server):<br />
+   <tt>use_http_auth = false</tt><br />
+   <tt>user_inc = user-ldap.php</tt><br />
+   Additional configuration settings will need to be set
+   in <tt>includes/user-ldap.php</tt>.
+  </li>
+ </ol>
+    <p>Keep in mind that if you want to use reminders, you will need to
+  setup the <tt>send_reminders.php</tt> script (see below) and keep your admin
+  setting for "Email enabled" set to "Yes" on the admin settings page.</p>
+    <p>At this point, your WebCalendar installation should be up and running.
+  To access WebCalendar open up your favorite web browser and
+  type in the URL.  The URL will depend on where you installed
+  WebCalendar.</p>
+    <p>When you unpacked/unzipped the WebCalendar distribution, it typically
+  creates a directory that includes the version number.
+  For example, if the zip file was named <tt>WebCalendar-0.9.99.zip</tt>
+  (or <tt>WebCalendar-0.9.99.tar.gz</tt>), then there
+  should be a <tt>WebCalendar-0.9.99</tt> directory.  For convenience, you
+  can rename this directory so that the URL does not include the version
+  number.  On Windows, you can do this from the Windows Explorer.
+  On Linux/UNIX, you can use the <tt>mv</tt> command to rename the directory.
+  Supposing you renamed the <tt>WebCalendar-0.9.99</tt> directory to just
+  be <tt>calendar</tt>, and you unpacked/unzipped the files into your toplevel
+  web server directory, the URL would be:</p>
+    <pre>http://yourserverhere/calendar/index.php</pre>
+ <p>If you have not previously configured your database settings,
+  you will be automatically redirected to a web page for
+  configuring your database settings. After you have configured the database, 
+  use the URL again to access WebCalendar.</p>
+    <p>If you have configured your web server to use <tt>index.php</tt> as the
+  default index page for a directory, you can omit that from the URL.
+  On a single-user system, your browser should be redirected to week.php
+  initially. On a multi-user system, your browser should be redirected to login.php
+  so that you can login.</p>
+ <p><span class="tip">TIP</span> On a multi-user system, the only user account created
+ during installation has the username of "admin" and a password of "admin". You should create 
+ a new admin account and delete this one for security reasons.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="users"></a>
-	<h2>Creating Users</h2>
-	<p>After logging in as an admin user (the initial username is "admin" with
-		password "admin"), you will see a common set of links at the bottom
-		of each page.  Follow these steps to create a new user:</p>
-	<ol>
-		<li>Login to WebCalendar as an admin user</li>
-		<li>Click on the "Admin" link at the bottom of any WebCalendar page</li>
-		<li>Click on the "Users" button</li>
-		<li>Click on the "Add New User" link</li>
-		<li>Fill out the form with details for the new user (email address is optional)</li>
-		<li>Click on the "Save" button</li>
-	</ol>
-	<p><span class="tip">TIP</span> On a single-user system, you do not need to create any users.</p>
+ <h2>Creating Users</h2>
+ <p>After logging in as an admin user (the initial username is "admin" with
+  password "admin"), you will see a common set of links at the bottom
+  of each page.  Follow these steps to create a new user:</p>
+ <ol>
+  <li>Login to WebCalendar as an admin user</li>
+  <li>Click on the "Admin" link at the bottom of any WebCalendar page</li>
+  <li>Click on the "Users" button</li>
+  <li>Click on the "Add New User" link</li>
+  <li>Fill out the form with details for the new user (email address is optional)</li>
+  <li>Click on the "Save" button</li>
+ </ol>
+ <p><span class="tip">TIP</span> On a single-user system, you do not need to create any users.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="reminders"></a>
-	<h2>Setting Up Email Reminders</h2>
-	<p>PHP does not come with a utility for executing time-based jobs.
-		So, in order to check periodically for email reminders, a shell
-		script was written in PHP.  You will need two things to get this working:</p>
-	<ol>
-		<li>You should have a version of PHP built as a CGI (so that you can run
-  		php from the command line).  This does not mean you must build all
-  		of PHP as a CGI.  You can still build PHP as a module for your web
-		server and then build the CGI-based PHP later.<br />
-  		<span class="note">Note:</span> Many Linux distributions and some Windows LAMP packages
-  		come with the PHP built for CGI.</li>
-		<li>You must setup cron (on Linux/UNIX) or something like cron for Windows
-		to run the <tt>send_reminders.php</tt> script periodically.</li>
-	</ol>
-	<p>Building PHP as a CGI is outside the scope of these instructions.  But,
-		if you read the PHP instructions, you'll see that the default build
-		settings will build the CGI-based PHP.  If you really can't do this
-		(perhaps you don't have permission to install anything new on the
-		system), skip down a couple of paragraphs to an alternate solution
-		that does not require PHP CGI.</p>
-	<p>For Linux/UNIX users, add the following line to the crontab entry of
-		a user.  (This would be the same user that the web server
-		process runs as.)</p>
-	<pre><tt>1 * * * * cd /some/directory/webcalendar/tools; ./send_reminders.php</tt></pre>
-   	<p>Of course, replace the directory location to wherever the
-		<tt>send_reminders.php</tt> file can be found.  If you moved this out of the
-		tools directory (which is recommended for security reasons),
-		be sure to update <tt>send_reminders.php</tt> since it needs
-		to know where to find other WebCalendar files.</p>
-   	<p>If you cannot setup PHP as a CGI or have no idea how, you can leave
-		<tt>send_reminders.php</tt> in its current location and access it via a URL.
-		IMHO, this is not the best choice, but it still works.  Setup a cron
-		job to access the URL.  For Linux/UNIX users, add the following line to
-		the crontab entry of a user.</p>
-	<pre><tt>1 * * * * wget http://yourserverhere/webcalendardirectoryhere/tools/send_reminders.php &gt; /dev/null</tt></pre>
-		<p>You should test this from the command line first to make sure your setup is 
-		correct. If you do not have <tt>wget</tt> installed on your system, you can use 
-		any tool (lynx, perl script, etc.) that is capable of making an HTTP request for this.</p>
+ <h2>Setting Up Email Reminders</h2>
+ <p>PHP does not come with a utility for executing time-based jobs.
+  So, in order to check periodically for email reminders, a shell
+  script was written in PHP.  You will need two things to get this working:</p>
+ <ol>
+  <li>You should have a version of PHP built as a CGI (so that you can run
+    php from the command line).  This does not mean you must build all
+    of PHP as a CGI.  You can still build PHP as a module for your web
+  server and then build the CGI-based PHP later.<br />
+    <span class="note">Note:</span> Many Linux distributions and some Windows LAMP packages
+    come with the PHP built for CGI.</li>
+  <li>You must setup cron (on Linux/UNIX) or something like cron for Windows
+  to run the <tt>send_reminders.php</tt> script periodically.</li>
+ </ol>
+ <p>Building PHP as a CGI is outside the scope of these instructions.  But,
+  if you read the PHP instructions, you'll see that the default build
+  settings will build the CGI-based PHP.  If you really can't do this
+  (perhaps you don't have permission to install anything new on the
+  system), skip down a couple of paragraphs to an alternate solution
+  that does not require PHP CGI.</p>
+ <p>For Linux/UNIX users, add the following line to the crontab entry of
+  a user.  (This would be the same user that the web server
+  process runs as.)</p>
+ <pre><tt>1 * * * * cd /some/directory/webcalendar/tools; ./send_reminders.php</tt></pre>
+    <p>Of course, replace the directory location to wherever the
+  <tt>send_reminders.php</tt> file can be found.  If you moved this out of the
+  tools directory (which is recommended for security reasons),
+  be sure to update <tt>send_reminders.php</tt> since it needs
+  to know where to find other WebCalendar files.</p>
+    <p>If you cannot setup PHP as a CGI or have no idea how, you can leave
+  <tt>send_reminders.php</tt> in its current location and access it via a URL.
+  IMHO, this is not the best choice, but it still works.  Setup a cron
+  job to access the URL.  For Linux/UNIX users, add the following line to
+  the crontab entry of a user.</p>
+ <pre><tt>1 * * * * wget http://yourserverhere/webcalendardirectoryhere/tools/send_reminders.php &gt; /dev/null</tt></pre>
+  <p>You should test this from the command line first to make sure your setup is 
+  correct. If you do not have <tt>wget</tt> installed on your system, you can use 
+  any tool (lynx, perl script, etc.) that is capable of making an HTTP request for this.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="systemsettings"></a>
-	<h2>System Settings</h2>
-	<p>System Settings allows the administrator to control what features are available to users 
-	as well as default values for certain features.</p>
-	<p>Many of these settings can be overridden by users in their Preferences (such as color).</p>
-	<h3>Settings</h3>
-	<dl>
-		<dt>Application Name</dt>
-		<dd>Specifies the document title (typically displayed in the window title bar 
-		of most browsers)</dd>
-		<dt>Server URL</dt>
-		<dd>Specifies the base URL of the calendar. This information is needed to 
-		accurately include URLs in email messages (Notifications and Reminders).</dd>
-		<dt>Language</dt>
-			<dd>Specifies the default language setting for all users.</dd>
-		<dt>Fonts</dt>
-			<dd>Specifies your preferred font.  Multiple font names should be comma-separated.</dd>
-		<dt>Preferred View</dt>
-			<dd>Specify if users should see the day, week, month, or year after loggin in.</dd>
-		<dt>Display weekends in view</dt>
-		<dd>Specifies default setting for if Saturdays and Sundays should appear in the 
-		calendar when viewing a month or week</dd>
-		<dt>Date format</dt>
-			<dd>Specifies the default format for displaying dates</dd>
-		<dt>Time format</dt>
-			<dd>Specifies the default time format as either 12-hour (3:45pm) or 24-hour (15:14)</dd>
-		<dt>Time interval</dt>
-		<dd>Specify the default number of minutes each time block represents in the day and 
-		week display</dd>
-		<dt>Auto-referesh calendars</dt>
-		<dd>If set to "yes," the day, week, and month pages will automatically 
-		reload after a specified duration</dd>
-		<dt>Auto-refresh time</dt>
-		<dd>Specifies how long to wait before the auto-refresh should force a page 
-		to be reloaded</dd>
-		<dt>Display unapproved</dt>
-		<dd>Specifies whether events that have been added to a calendar but not yet 
-		approved should display on the calendar (in a different color)</dd>
-		<dt>Display week number</dt>
-			<dd>Specifies whether the week number should be displayed in month and week views</dd>
-		<dt>Week starts on</dt>
-			<dd>Specifies if week start on Sunday or Monday</dd>
-		<dt>Work hours</dt>
-			<dd>Specifies the default time range to display in day and week views</dd>
-		<dt>Disable Priority field</dt>
-			<dd>If enabled, the Priority field will not be used</dd>
-		<dt>Disable Access field</dt>
-			<dd>If enabled, the Access field will not be used</dd>
-		<dt>Disable Participants field</dt>
-		<dd>If enabled, the Participants field will not be used, and users will not be 
-		able to add events to any calendar other than their own.</dd>
-		<dt>Disable Repeating field</dt>
-			<dd>If enabled, users will not be able to create repeating events</dd>
-		<dt>Allow viewing other user's calendars</dt>
-			<dd>If enabled, users will be able to view the calendar of another user</dd>
-		<dt>Allow public access</dt>
-		<dd>If enabled, anonymous users will be able to view the public access 
-		calendar without logging in.</dd>
-		<dt>Public access can view other users</dt>
-			<dd>If enabled, anonymous users will be able to view the calendars of other users</dd>
-		<dt>Public access can add events</dt>
-			<dd>If enabled, anonymous users will be able to submit new events.</dd>
-		<dt>Public access new events require approval</dt>
-		<dd>If enabled, events submitted to the public access calendar (by anonymous 
-		users) will require approval by an admin user.  If not enabled, then new events 
-		will appear on the public access calendar as soon as they are submitted.</dd>
-		<dt>Include add event link in views</dt>
-		<dd>If enabled, Views will include a link to quickly add events to the 
-		specified user's calendar.</dd>
-		<dt>Allow external users</dt>
-		<dd>If enabled, the create/edit event page will contain a text area to include 
-		the names (and optional email address) of event participants that are not calendar users.</dd>
-		<dt>External users can receive email notifications</dt>
-		<dd>If enabled, event participants entered into the External Participants 
-		area will receive email notifications at the same time as calendar users (if an email 
-		address was specified for the Exernal Participant).</dd>
-		<dt>External users can receive email reminders</dt>
-		<dd>If enabled, event participants entered into the External Participants 
-		area will receive email reminders at the same time as calendar users (if an email 
-		address was specified for the Exernal Participant).</dd>
-		<dt>Remember last login</dt>
-			<dd>If enabled, when a returning calendar user reaches the login page, their login name will be pre-filled with the last login username that they entered.  (The password field will still be blank.)</dd>
-		<dt>Check for event conflicts</dt>
-			<dd>Specifies if the system should check for scheduling conflicts when a user adds or updates an event.</dd>
-		<dt>Conflict checking months</dt>
-			<dd>If conflict checking is enabled, this specifies how many months past the initial date the system will check for conflicts when a user adds or updates a repeating event.</dd>
-		<dt>Allow users to override conflicts</dt>
-			<dd>If enabled, users will be warned when there is an event conflict and be presented with the option of scheduling	the event anyhow.</dd>
-		<dt>Limit number of timed events per day</dt>
-			<dd>If enabled, users can can be limited to a specific number of timed events per day</dd>
-		<dt>Maximum timed events per day</dt>
-			<dd>Specifies that maximum number of events that can be scheduled in one day of any one user.</dd>
-	</dl>
-	<h3>Groups</h3>
-	<dl>
-		<dt>Groups enabled</dt>
-			<dd>Specifies if group features should be enabled</dd>
-		<dt>User sees only his group</dt>
-			<dd>If enabled, users will be unaware of any users that are not in the same group as the user.</dd>
-	</dl>
-	<h3>Categories</h3>
-	<dl>
-		<dt>Cagtegoies enabled</dt>
-			<dd>Specifies if category features should be enabled</dd>
-	</dl>
-	<h3>Email</h3>
-	<dl>
-		<dt>Email enabled</dt>
-			<dd>Specifies if email functionality should be enabled.  If set to "No," then no email messages will be sent at any time.</dd>
-		<dt>Default sender address</dt>
-			<dd>Specifies the email originator to use when the system sends out email Notifications and Reminders</dd>
-		<dt>Event reminders</dt>
-	  		<dd>Specifies if email reminders for events that include a reminder should be sent</dd>
-		<dt>Events added to my calendar</dt>
-	  		<dd>Specifies if the system should send email when an event is added</dd>
-		<dt>Events updated on my calendar</dt>
-	  		<dd>Specifies if the system should send email when an event is updated</dd>
-		<dt>Events removed from my calendar</dt>
-	  		<dd>Specifies if the system should send email when an event is deleted</dd>
-		<dt>Event rejected by participant</dt>
-	  		<dd>Specifies if the system should send email when a participant to an event rejects the event</dd>
-	</dl>
-	<h3>Colors</h3>
-	<dl>
-		<dt>Allow user to customize colors</dt>
-			<dd>Specifies whether color settings should be available to users in their Preferences</dd>
-		<dt>Document background</dt>
-	  		<dd>Specifies the background color of all pages</dd>
-		<dt>Document title</dt>
-  			<dd>Specifies the color of page title on each page</dd>
-		<dt>Document text</dt>
-  			<dd>Specifies the default text color on each page</dd>
-		<dt>Table grid color</dt>
-  			<dd>Specifies color of the lines that make HTML table grids on each page</dd>
-		<dt>Table header background</dt>
-  			<dd>Specifies the default background for the heading of any HTML table</dd>
-		<dt>Table header text</dt>
-	  		<dd>Specifies the default text color for the heading of any HTML table</dd>
-		<dt>Table cell background</dt>
-	  		<dd>Specifies the background color for table cells</dd>
-		<dt>Table cell background for current day</dt>
-	  		<dd>Specifies the background color for the table cell containing the current date</dd>
-		<dt>Table cell background for weekend</dt>
-			<dd>Specifies the background color for table cells that represent a Saturday or Sunday</dd>
-		<dt>Event popup background</dt>
-			<dd>Specifies the background color of event popup areas</dd>
-		<dt>Event popup text</dt>
-			<dd>Specifies the text color of event popup areas</dd>
-	</dl>
+ <h2>System Settings</h2>
+ <p>System Settings allows the administrator to control what features are available to users 
+ as well as default values for certain features.</p>
+ <p>Many of these settings can be overridden by users in their Preferences (such as color).</p>
+ <h3>Settings</h3>
+ <dl>
+  <dt>Application Name</dt>
+  <dd>Specifies the document title (typically displayed in the window title bar 
+  of most browsers)</dd>
+  <dt>Server URL</dt>
+  <dd>Specifies the base URL of the calendar. This information is needed to 
+  accurately include URLs in email messages (Notifications and Reminders).</dd>
+  <dt>Language</dt>
+   <dd>Specifies the default language setting for all users.</dd>
+  <dt>Fonts</dt>
+   <dd>Specifies your preferred font.  Multiple font names should be comma-separated.</dd>
+  <dt>Preferred View</dt>
+   <dd>Specify if users should see the day, week, month, or year after loggin in.</dd>
+  <dt>Display weekends in view</dt>
+  <dd>Specifies default setting for if Saturdays and Sundays should appear in the 
+  calendar when viewing a month or week</dd>
+  <dt>Date format</dt>
+   <dd>Specifies the default format for displaying dates</dd>
+  <dt>Time format</dt>
+   <dd>Specifies the default time format as either 12-hour (3:45pm) or 24-hour (15:14)</dd>
+  <dt>Time interval</dt>
+  <dd>Specify the default number of minutes each time block represents in the day and 
+  week display</dd>
+  <dt>Auto-referesh calendars</dt>
+  <dd>If set to "yes," the day, week, and month pages will automatically 
+  reload after a specified duration</dd>
+  <dt>Auto-refresh time</dt>
+  <dd>Specifies how long to wait before the auto-refresh should force a page 
+  to be reloaded</dd>
+  <dt>Display unapproved</dt>
+  <dd>Specifies whether events that have been added to a calendar but not yet 
+  approved should display on the calendar (in a different color)</dd>
+  <dt>Display week number</dt>
+   <dd>Specifies whether the week number should be displayed in month and week views</dd>
+  <dt>Week starts on</dt>
+   <dd>Specifies if week start on Sunday or Monday</dd>
+  <dt>Work hours</dt>
+   <dd>Specifies the default time range to display in day and week views</dd>
+  <dt>Disable Priority field</dt>
+   <dd>If enabled, the Priority field will not be used</dd>
+  <dt>Disable Access field</dt>
+   <dd>If enabled, the Access field will not be used</dd>
+  <dt>Disable Participants field</dt>
+  <dd>If enabled, the Participants field will not be used, and users will not be 
+  able to add events to any calendar other than their own.</dd>
+  <dt>Disable Repeating field</dt>
+   <dd>If enabled, users will not be able to create repeating events</dd>
+  <dt>Allow viewing other user's calendars</dt>
+   <dd>If enabled, users will be able to view the calendar of another user</dd>
+  <dt>Allow public access</dt>
+  <dd>If enabled, anonymous users will be able to view the public access 
+  calendar without logging in.</dd>
+  <dt>Public access can view other users</dt>
+   <dd>If enabled, anonymous users will be able to view the calendars of other users</dd>
+  <dt>Public access can add events</dt>
+   <dd>If enabled, anonymous users will be able to submit new events.</dd>
+  <dt>Public access new events require approval</dt>
+  <dd>If enabled, events submitted to the public access calendar (by anonymous 
+  users) will require approval by an admin user.  If not enabled, then new events 
+  will appear on the public access calendar as soon as they are submitted.</dd>
+  <dt>Include add event link in views</dt>
+  <dd>If enabled, Views will include a link to quickly add events to the 
+  specified user's calendar.</dd>
+  <dt>Allow external users</dt>
+  <dd>If enabled, the create/edit event page will contain a text area to include 
+  the names (and optional email address) of event participants that are not calendar users.</dd>
+  <dt>External users can receive email notifications</dt>
+  <dd>If enabled, event participants entered into the External Participants 
+  area will receive email notifications at the same time as calendar users (if an email 
+  address was specified for the Exernal Participant).</dd>
+  <dt>External users can receive email reminders</dt>
+  <dd>If enabled, event participants entered into the External Participants 
+  area will receive email reminders at the same time as calendar users (if an email 
+  address was specified for the Exernal Participant).</dd>
+  <dt>Remember last login</dt>
+   <dd>If enabled, when a returning calendar user reaches the login page, their login name will be pre-filled with the last login username that they entered.  (The password field will still be blank.)</dd>
+  <dt>Check for event conflicts</dt>
+   <dd>Specifies if the system should check for scheduling conflicts when a user adds or updates an event.</dd>
+  <dt>Conflict checking months</dt>
+   <dd>If conflict checking is enabled, this specifies how many months past the initial date the system will check for conflicts when a user adds or updates a repeating event.</dd>
+  <dt>Allow users to override conflicts</dt>
+   <dd>If enabled, users will be warned when there is an event conflict and be presented with the option of scheduling the event anyhow.</dd>
+  <dt>Limit number of timed events per day</dt>
+   <dd>If enabled, users can can be limited to a specific number of timed events per day</dd>
+  <dt>Maximum timed events per day</dt>
+   <dd>Specifies that maximum number of events that can be scheduled in one day of any one user.</dd>
+ </dl>
+ <h3>Groups</h3>
+ <dl>
+  <dt>Groups enabled</dt>
+   <dd>Specifies if group features should be enabled</dd>
+  <dt>User sees only his group</dt>
+   <dd>If enabled, users will be unaware of any users that are not in the same group as the user.</dd>
+ </dl>
+ <h3>Categories</h3>
+ <dl>
+  <dt>Cagtegoies enabled</dt>
+   <dd>Specifies if category features should be enabled</dd>
+ </dl>
+ <h3>Email</h3>
+ <dl>
+  <dt>Email enabled</dt>
+   <dd>Specifies if email functionality should be enabled.  If set to "No," then no email messages will be sent at any time.</dd>
+  <dt>Default sender address</dt>
+   <dd>Specifies the email originator to use when the system sends out email Notifications and Reminders</dd>
+  <dt>Event reminders</dt>
+     <dd>Specifies if email reminders for events that include a reminder should be sent</dd>
+  <dt>Events added to my calendar</dt>
+     <dd>Specifies if the system should send email when an event is added</dd>
+  <dt>Events updated on my calendar</dt>
+     <dd>Specifies if the system should send email when an event is updated</dd>
+  <dt>Events removed from my calendar</dt>
+     <dd>Specifies if the system should send email when an event is deleted</dd>
+  <dt>Event rejected by participant</dt>
+     <dd>Specifies if the system should send email when a participant to an event rejects the event</dd>
+ </dl>
+ <h3>Colors</h3>
+ <dl>
+  <dt>Allow user to customize colors</dt>
+   <dd>Specifies whether color settings should be available to users in their Preferences</dd>
+  <dt>Document background</dt>
+     <dd>Specifies the background color of all pages</dd>
+  <dt>Document title</dt>
+     <dd>Specifies the color of page title on each page</dd>
+  <dt>Document text</dt>
+     <dd>Specifies the default text color on each page</dd>
+  <dt>Table grid color</dt>
+     <dd>Specifies color of the lines that make HTML table grids on each page</dd>
+  <dt>Table header background</dt>
+     <dd>Specifies the default background for the heading of any HTML table</dd>
+  <dt>Table header text</dt>
+     <dd>Specifies the default text color for the heading of any HTML table</dd>
+  <dt>Table cell background</dt>
+     <dd>Specifies the background color for table cells</dd>
+  <dt>Table cell background for current day</dt>
+     <dd>Specifies the background color for the table cell containing the current date</dd>
+  <dt>Table cell background for weekend</dt>
+   <dd>Specifies the background color for table cells that represent a Saturday or Sunday</dd>
+  <dt>Event popup background</dt>
+   <dd>Specifies the background color of event popup areas</dd>
+  <dt>Event popup text</dt>
+   <dd>Specifies the text color of event popup areas</dd>
+ </dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="siteextras"></a>
-	<h2>Custom Event Fields</h2>
-	<p>You may want to customize the event-specific fields found in
-		the <tt>includes/site_extras.php</tt> field.
-		If this is your first time using the calendar, you can skip
-		this step and come back later since this step
-		is <i>optional</i>.</p>
-	<p>You can use this feature to add extra
-		fields to your calendar events.  For example, you can add a URL,
-		a contact email address, or a location.</p>
-	<p>By default, this file is configured with
-		a single reminder field that allows the user to specify how long
-		before the event the reminder should be sent.</p>
-	<p><span class="tip">TIP</span> See <a href="#reminders">instructions</a> on setting
-		up reminders to enable sending of reminders.</p>
-	<p>When defining a new custom field, the following types listed below
-		are available. "Arg 1" and "Arg 2" have different meaning depending on the type
-		of field.  In some cases, "Arg 1" and "Arg 2" are not used.</p>
-	<center>
-		<table style="width: 100%;">
-			<tr><th>
-				Type</th><th>
-				Description</th><th>
-				Arg 1</th><th>
-				Arg 2
-			</th></tr>
-			<tr><td>
-				<tt>EXTRA_TEXT</tt></td><td>
-				Allows the user to enter a single line of text</td><td>
-				Specifies the size of the text form element as it would appear in the 
-				following ("NN" would be replaced with Arg 1):<br />
-				&nbsp;&nbsp; <tt>&lt;input&nbsp;size="NN"&nbsp;...</tt></td><td>
-				N/A
-			</td></tr>
-			<tr><td>
-				<tt>EXTRA_MULTILINETEXT</tt></td><td>
-				Allows the user to enter multiple lines of text</td><td>
-				Specifies how many characters wide the textform element should be as it 
-				would appear in the following ("NN" would be replaced with Arg 1):<br />
-				&nbsp;&nbsp; <tt>&lt;textarea&nbsp;cols="NN"&nbsp;...</tt></td><td>
-				Specifies how many lines long the textform element should be as it would 
-				appear in the following ("NN" would be replaced with Arg 1):<br />
-				&nbsp;&nbsp; <tt>&lt;textarea&nbsp;rows="NN"&nbsp;...</tt>
-			</td></tr>
-			<tr><td>
-				<tt>EXTRA_URL</tt></td><td>
-				Allows the user to enter a single line of text and will be displayed as a 
-				link when viewed</td><td>
-				N/A</td><td>
-				N/A
-			</td></tr>
-			<tr><td>
-				<tt>EXTRA_DATE</tt></td><td>
-				Allows the user to select a date using the standard date selection form 
-				elements</td><td>
-				N/A</td><td>
-				N/A
-			</td></tr>
-			<tr><td>
-				<tt>EXTRA_EMAIL</tt></td><td>
-				Allows the user to enter a single line of text and will be displayed as 
-				a mailto URL link</td><td>
-				N/A</td><td>
-				N/A
-			</td></tr>
-			<tr><td>
-				<tt>EXTRA_REMINDER</tt></td><td>
-				Allows the user to specify if a reminder should be sent out for 
-				the event</td><td>
-				Specifies how many minutes before the event that the reminder 
-				should be sent. </td><td>
-				Specifies other reminder-specific options. The following options are available:
-					<ul>
-						<li><tt>$EXTRA_REMINDER_WITH_DATE</tt></li>
-						<li><tt>$EXTRA_REMINDER_WITH_OFFSET</tt></li>
-						<li><tt>$EXTRA_REMINDER_DEFAULT_YES</tt></li>
-					</ul>
-				If more than one option is needed, they should be or-ed together with 
-				the <tt>|</tt> character.
-			</td></tr>
-			<tr><td>
-				<tt>EXTRA_REMINDER_DATE</tt></td><td>
-				Allows the user to specify if a reminder should be sent out for the event 
-				and and what time it should be sent</td><td>
-				Specifies the default for how many minutes before the event that the 
-				reminder should be sent. The user can override this when they create/edit 
-				the event.</td><td>
-				Specifies other reminder-specific options. The following options are available:
-					<ul>
-						<li><tt>$EXTRA_REMINDER_WITH_DATE</tt></li>
-						<li><tt>$EXTRA_REMINDER_WITH_OFFSET</tt></li>
-						<li><tt>$EXTRA_REMINDER_DEFAULT_YES</tt></li>
-   					</ul>
-				If more than one option is needed, they should be or-ed together with 
-				the <tt>|</tt> character.
-			</td></tr>
-			<tr><td>
-				<tt>EXTRA_SELECTION_LIST</tt></td><td>
-				Presents the user with a selection list (single selection) to choose from</td><td>
-				Specifies the list of available options using the PHP <tt>array</tt> 
-				function</td><td>
-				N/A
-			</td></tr>
-		</table>
-	</center>
+ <h2>Custom Event Fields</h2>
+ <p>You may want to customize the event-specific fields found in
+  the <tt>includes/site_extras.php</tt> field.
+  If this is your first time using the calendar, you can skip
+  this step and come back later since this step
+  is <i>optional</i>.</p>
+ <p>You can use this feature to add extra
+  fields to your calendar events.  For example, you can add a URL,
+  a contact email address, or a location.</p>
+ <p>By default, this file is configured with
+  a single reminder field that allows the user to specify how long
+  before the event the reminder should be sent.</p>
+ <p><span class="tip">TIP</span> See <a href="#reminders">instructions</a> on setting
+  up reminders to enable sending of reminders.</p>
+ <p>When defining a new custom field, the following types listed below
+  are available. "Arg 1" and "Arg 2" have different meaning depending on the type
+  of field.  In some cases, "Arg 1" and "Arg 2" are not used.</p>
+ <center>
+  <table style="width: 100%;">
+   <tr><th>
+    Type</th><th>
+    Description</th><th>
+    Arg 1</th><th>
+    Arg 2
+   </th></tr>
+   <tr><td>
+    <tt>EXTRA_TEXT</tt></td><td>
+    Allows the user to enter a single line of text</td><td>
+    Specifies the size of the text form element as it would appear in the 
+    following ("NN" would be replaced with Arg 1):<br />
+    &nbsp;&nbsp; <tt>&lt;input&nbsp;size="NN"&nbsp;...</tt></td><td>
+    N/A
+   </td></tr>
+   <tr><td>
+    <tt>EXTRA_MULTILINETEXT</tt></td><td>
+    Allows the user to enter multiple lines of text</td><td>
+    Specifies how many characters wide the textform element should be as it 
+    would appear in the following ("NN" would be replaced with Arg 1):<br />
+    &nbsp;&nbsp; <tt>&lt;textarea&nbsp;cols="NN"&nbsp;...</tt></td><td>
+    Specifies how many lines long the textform element should be as it would 
+    appear in the following ("NN" would be replaced with Arg 1):<br />
+    &nbsp;&nbsp; <tt>&lt;textarea&nbsp;rows="NN"&nbsp;...</tt>
+   </td></tr>
+   <tr><td>
+    <tt>EXTRA_URL</tt></td><td>
+    Allows the user to enter a single line of text and will be displayed as a 
+    link when viewed</td><td>
+    N/A</td><td>
+    N/A
+   </td></tr>
+   <tr><td>
+    <tt>EXTRA_DATE</tt></td><td>
+    Allows the user to select a date using the standard date selection form 
+    elements</td><td>
+    N/A</td><td>
+    N/A
+   </td></tr>
+   <tr><td>
+    <tt>EXTRA_EMAIL</tt></td><td>
+    Allows the user to enter a single line of text and will be displayed as 
+    a mailto URL link</td><td>
+    N/A</td><td>
+    N/A
+   </td></tr>
+   <tr><td>
+    <tt>EXTRA_REMINDER</tt></td><td>
+    Allows the user to specify if a reminder should be sent out for 
+    the event</td><td>
+    Specifies how many minutes before the event that the reminder 
+    should be sent. </td><td>
+    Specifies other reminder-specific options. The following options are available:
+     <ul>
+      <li><tt>$EXTRA_REMINDER_WITH_DATE</tt></li>
+      <li><tt>$EXTRA_REMINDER_WITH_OFFSET</tt></li>
+      <li><tt>$EXTRA_REMINDER_DEFAULT_YES</tt></li>
+     </ul>
+    If more than one option is needed, they should be or-ed together with 
+    the <tt>|</tt> character.
+   </td></tr>
+   <tr><td>
+    <tt>EXTRA_REMINDER_DATE</tt></td><td>
+    Allows the user to specify if a reminder should be sent out for the event 
+    and and what time it should be sent</td><td>
+    Specifies the default for how many minutes before the event that the 
+    reminder should be sent. The user can override this when they create/edit 
+    the event.</td><td>
+    Specifies other reminder-specific options. The following options are available:
+     <ul>
+      <li><tt>$EXTRA_REMINDER_WITH_DATE</tt></li>
+      <li><tt>$EXTRA_REMINDER_WITH_OFFSET</tt></li>
+      <li><tt>$EXTRA_REMINDER_DEFAULT_YES</tt></li>
+        </ul>
+    If more than one option is needed, they should be or-ed together with 
+    the <tt>|</tt> character.
+   </td></tr>
+   <tr><td>
+    <tt>EXTRA_SELECTION_LIST</tt></td><td>
+    Presents the user with a selection list (single selection) to choose from</td><td>
+    Specifies the list of available options using the PHP <tt>array</tt> 
+    function</td><td>
+    N/A
+   </td></tr>
+  </table>
+ </center>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="faq"></a>
-	<h2>Frequently Asked Questions</h2>
-	<dl>
+ <h2>Frequently Asked Questions</h2>
+ <dl>
 <!-- cek: leave these comments here... extractfaqs.pl looks for them -->
 <!-- START FAQ: Installation/Setup -->
-		<dt>How do I setup PHP, MySQL and Apache on Windows?</dt>
-			<dd>The easiest way to do this is to try one of the prepackaged	bundles that will install all of these for you:
-  		<ul>
-			<li><a href="http://www.foxserv.net/">FoxServ</a>&nbsp;<a href="http://www.foxserv.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
-			<li><a href="http://www.sokkit.net/">Sokkit</a>&nbsp;<a href="http://www.sokkit.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> (formlery PHPTriad)</li>
-  		</ul>
-		</dd>
-	<dt>How do I setup PHP, MySQL and Apache on UNIX/Linux?</dt>
-		<dd>There are many online instructions on how to do this. Here are a few:
-  		<ul>
-			<li><a href="http://www.onlamp.com/pub/a/php/2000/11/17/php_admin.html">ONLamp.com: Basic Installtion of PHP on a Unix System</a>&nbsp;<a href="http://www.onlamp.com/pub/a/php/2000/11/17/php_admin.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
-			<li><a href="http://www.devshed.com/Server_Side/PHP/SoothinglySeamless/">Developer Shed: The Soothingly Seamless Setup of Apache, SSL, MySQL and PHP</a>&nbsp;<a href="http://www.devshed.com/Server_Side/PHP/SoothinglySeamless/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
-			<li><a href="http://www.linuxhelp.net/guides/lamp/">Linux Help: LAMP Guide</a>&nbsp;<a href="http://www.linuxhelp.net/guides/lamp/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
-			<li><a href="http://www.php.net/manual/en/installation.php">PHP.net</a>&nbsp;<a href="http://www.php.net/manual/en/installation.php" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
-  		</ul>
-		</dd>
-	<dt>I've finished the install.  What is the login to WebCalendar?</dt>
-		<dd>After the initial creation of the database tables, there will
-  		be a single user account created with the username "admin" and
-  		the password set to "admin" as well.
-  		<br /><span class="note">Note:</span> This account is intended to get your started.
-  		You should create a new admin account and delete this one.</dd>
-	<dt><a name="samplepublic">I want to use WebCalendar as an events calendar for
-  		my organization.  How do I set it up to do this?</a></dt>
-		<dd>You will want to setup WebCalendar to use public access.
-  		<ol>
-  		<li>Setup your <tt>settings.php</tt> file as a multi-user
-    		system (see <a href="#appsetup">instructions</a>).</li>
-  		<li>In System Settings, set "Allow public access" to "Yes."</li>
-  		<li>If you want people to be able to submit new events
-    		through public access, set "Public access can add events"
-    		to "Yes."</li>
-  		<li>If you set "Public access can add events" to "Yes",
-    		set the setting for "Public access new events
-    		require approval" to your liking.  If you set this to "Yes,"
-    		an admin user will need to approve any new events before
-    		they will appear on the public access calendar.</li>
-  		<li>Login using one of the accounts you have setup.
-     		Add a new event, and select "Public User" as one of the
-     		participants.</li>
-  		<li>If you have enabled "Require event approvals" in your
-     		System Settings, then you will need to approve the new
-     		event.  Choose the "Unapproved Events" at the bottom
-     		of any page (you must be an admin user to access this).
-     		You will be presented with a list of unapproved events
-     		(for both the current user and for the Public User account).
-     		Approve the new event for the Public User.</li>
-  		<li>Go to the Login page.  You will see a "Access public calendar"
-     		link that will bring you to the calendar for public access.</li>
-  		<li>By default, the index.php page should send users to
-     		the public calendar.</li>
-  		</ol>
-		</dd>
+  <dt>How do I setup PHP, MySQL and Apache on Windows?</dt>
+   <dd>The easiest way to do this is to try one of the prepackaged bundles that will install all of these for you:
+    <ul>
+   <li><a href="http://www.foxserv.net/">FoxServ</a>&nbsp;<a href="http://www.foxserv.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
+   <li><a href="http://www.sokkit.net/">Sokkit</a>&nbsp;<a href="http://www.sokkit.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> (formlery PHPTriad)</li>
+    </ul>
+  </dd>
+ <dt>How do I setup PHP, MySQL and Apache on UNIX/Linux?</dt>
+  <dd>There are many online instructions on how to do this. Here are a few:
+    <ul>
+   <li><a href="http://www.onlamp.com/pub/a/php/2000/11/17/php_admin.html">ONLamp.com: Basic Installtion of PHP on a Unix System</a>&nbsp;<a href="http://www.onlamp.com/pub/a/php/2000/11/17/php_admin.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
+   <li><a href="http://www.devshed.com/Server_Side/PHP/SoothinglySeamless/">Developer Shed: The Soothingly Seamless Setup of Apache, SSL, MySQL and PHP</a>&nbsp;<a href="http://www.devshed.com/Server_Side/PHP/SoothinglySeamless/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
+   <li><a href="http://www.linuxhelp.net/guides/lamp/">Linux Help: LAMP Guide</a>&nbsp;<a href="http://www.linuxhelp.net/guides/lamp/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
+   <li><a href="http://www.php.net/manual/en/installation.php">PHP.net</a>&nbsp;<a href="http://www.php.net/manual/en/installation.php" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
+    </ul>
+  </dd>
+ <dt>I've finished the install.  What is the login to WebCalendar?</dt>
+  <dd>After the initial creation of the database tables, there will
+    be a single user account created with the username "admin" and
+    the password set to "admin" as well.
+    <br /><span class="note">Note:</span> This account is intended to get your started.
+    You should create a new admin account and delete this one.</dd>
+ <dt><a name="samplepublic">I want to use WebCalendar as an events calendar for
+    my organization.  How do I set it up to do this?</a></dt>
+  <dd>You will want to setup WebCalendar to use public access.
+    <ol>
+    <li>Setup your <tt>settings.php</tt> file as a multi-user
+      system (see <a href="#appsetup">instructions</a>).</li>
+    <li>In System Settings, set "Allow public access" to "Yes."</li>
+    <li>If you want people to be able to submit new events
+      through public access, set "Public access can add events"
+      to "Yes."</li>
+    <li>If you set "Public access can add events" to "Yes",
+      set the setting for "Public access new events
+      require approval" to your liking.  If you set this to "Yes,"
+      an admin user will need to approve any new events before
+      they will appear on the public access calendar.</li>
+    <li>Login using one of the accounts you have setup.
+       Add a new event, and select "Public User" as one of the
+       participants.</li>
+    <li>If you have enabled "Require event approvals" in your
+       System Settings, then you will need to approve the new
+       event.  Choose the "Unapproved Events" at the bottom
+       of any page (you must be an admin user to access this).
+       You will be presented with a list of unapproved events
+       (for both the current user and for the Public User account).
+       Approve the new event for the Public User.</li>
+    <li>Go to the Login page.  You will see a "Access public calendar"
+       link that will bring you to the calendar for public access.</li>
+    <li>By default, the index.php page should send users to
+       the public calendar.</li>
+    </ol>
+  </dd>
 
-	<dt>How can I add holidays to the calendar?</dt>
-	<dd>There is no built-in support for holidays because it is
-	not necessary.  You can add holidays into WebCalendar by importing
-	one of the many iCal holiday files that are freely available.
-	A good resource for free iCal files is
-	<a href="http://www.icalshare.com">iCalShare
+ <dt>How can I add holidays to the calendar?</dt>
+ <dd>There is no built-in support for holidays because it is
+ not necessary.  You can add holidays into WebCalendar by importing
+ one of the many iCal holiday files that are freely available.
+ A good resource for free iCal files is
+ <a href="http://www.icalshare.com">iCalShare
         <img src="newwin.gif" alt="new" class="newwin" /></a>.
-	For example, the U.S. holiday ics file can be downloaded from:
-	<blockquote>
-	<a href="http://icalshare.com/article.php?story=20020912105939521">http://icalshare.com/article.php?story=20020912105939521
+ For example, the U.S. holiday ics file can be downloaded from:
+ <blockquote>
+ <a href="http://icalshare.com/article.php?story=20020912105939521">http://icalshare.com/article.php?story=20020912105939521
         <img src="newwin.gif" alt="new" class="newwin" /></a>
-	</blockquote>
-	If you don't want each individual user to have to import
-	the holiday calendar, you can use nonuser calendars.
-	First, make sure nonuser calendars are enabled in your
-	system settings.  Then, from Admin->Users, you can
-	access nonuser calendars.  Create a new nonuser calendar
-	(such as "usholidays").  Then, notify your users that they
-	can add this nonuser calendar as a layer to their own
-	calendar in order to see the holidays.
-	</dd>
+ </blockquote>
+ If you don't want each individual user to have to import
+ the holiday calendar, you can use nonuser calendars.
+ First, make sure nonuser calendars are enabled in your
+ system settings.  Then, from Admin->Users, you can
+ access nonuser calendars.  Create a new nonuser calendar
+ (such as "usholidays").  Then, notify your users that they
+ can add this nonuser calendar as a layer to their own
+ calendar in order to see the holidays.
+ </dd>
 
-	<dt>Why are deleted events still present in the database?</dt>
-		<dd>When you delete an event from your calendar, it is not
-  		deleted from the database.  Instead, it is marked as deleted.
-  		This allows the system administrator access to information
-  		even after it is deleted.</dd>
-	<dt>Can I setup more than one public calendar?</dt>
-		<dd>You cannot directly setup two public calendars. However,
-  		there are two options for emulating this type of functionality:
-  		<ul>
-  		<li>You can <a href="WebCalendar-UserManual.html#categories">create global categories</a> and point users to the calendar with only a certain category displayed.</li>
-  		<li>You can setup multiple NonUser calendars and enable
-      		public access viewing of other users' calendars.
-      		You can then link directly to the calendar of one of
-      		the NonUser calendars, or you can 
-      		<a href="WebCalendar-UserManual.html#views">setup a view</a>
-      		that contains the calendar of one or more of the NonUser calendars.</li>
-  		</ul>
-  		</dd>
-	<dt>How do I change the title "Public Access" at the top of
-	the calendar?</dt>
-		<dd>In the file <tt>translations/English-US.txt</tt>,
-		change the line that says "Public Access" to what you want
-		it to say on the right side.<br/><br/>Example: 
-		<pre>Public Access: Foobar Event Calendar</pre>
-		</dd>
-	<dt>Can I embed WebCalendar as a component on another web page?</dt>
-		<dd>WebCalendar is meant to be run as a standalone web application.
-  		You can customize the appearance of WebCalendar to match your existing
-  		site.
-  		To do this, In System Settings, set both "Custom header" and
+ <dt>Why are deleted events still present in the database?</dt>
+  <dd>When you delete an event from your calendar, it is not
+    deleted from the database.  Instead, it is marked as deleted.
+    This allows the system administrator access to information
+    even after it is deleted.</dd>
+ <dt>Can I setup more than one public calendar?</dt>
+  <dd>You cannot directly setup two public calendars. However,
+    there are two options for emulating this type of functionality:
+    <ul>
+    <li>You can <a href="WebCalendar-UserManual.html#categories">create global categories</a> and point users to the calendar with only a certain category displayed.</li>
+    <li>You can setup multiple NonUser calendars and enable
+        public access viewing of other users' calendars.
+        You can then link directly to the calendar of one of
+        the NonUser calendars, or you can 
+        <a href="WebCalendar-UserManual.html#views">setup a view</a>
+        that contains the calendar of one or more of the NonUser calendars.</li>
+    </ul>
+    </dd>
+ <dt>How do I change the title "Public Access" at the top of
+ the calendar?</dt>
+  <dd>In the file <tt>translations/English-US.txt</tt>,
+  change the line that says "Public Access" to what you want
+  it to say on the right side.<br/><br/>Example: 
+  <pre>Public Access: Foobar Event Calendar</pre>
+  </dd>
+ <dt>Can I embed WebCalendar as a component on another web page?</dt>
+  <dd>WebCalendar is meant to be run as a standalone web application.
+    You can customize the appearance of WebCalendar to match your existing
+    site.
+    To do this, In System Settings, set both "Custom header" and
   "Custom trailer" to "Yes" and press the "Edit" button to enter the
-  		header and trailer content.
-  		<br />
-  		If you are looking to just include a list of upcoming events in one
-  		of your web pages, you can use the <tt>upcoming.php</tt> page in
-  		WebCalendar to do this.  Edit the top of this file to configure options.
-  		(These settings will likely move into System Settings in subsequent release.)
-  		You can then use an <tt>iframe</tt> elsewhere on your web site as
-  		in the example below:
-  		<pre>&lt;iframe height="250" width="300" scrolling="yes" src="upcoming.php">&lt;/iframe></pre>
-  		Include this HTML anywhere on any of your pages.
-  		By default, the events from the public calendar will be loaded (so
-  		you must have "Public Access" enabled in System Settings).
-  		You can override this with another user's calendar.
-  		(See <tt>upcoming.php</tt> for instructions on this.)
-		</dd>
-	<dt>How do I add a new translation?</dt>
-		<dd>
-		It's a fairly simple process.  If you've ever translated a C-based app
-   		that used GNU's gettext tool, then you'll have no problem.  The I18N
-   		support was based on GNU's <a href="http://www.gnu.org/software/gettext/gettext.html">gettext</a>&nbsp;<a href="http://www.gnu.org/software/gettext/gettext.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.  Here's what you need to do.
-   		<ol>
-   		<li>look in the "translations" directory</li>
-   		<li>copy the <tt>English-US.txt</tt> file into what you'd like to call your
-     		language data file.  (e.g. <tt>cp English-US.txt French.txt</tt>)</li>
-   		<li>Now translate all the text to the _right_ of the ":" into the
-     		new language.  Do <i>not</i> alter the text to the left of the ":".</li>
-   		<li>When you're done making changes, move into the "tools" directory.
-     		Run the <tt>check_translation.pl</tt> script on your new data file to make
-     		sure you have all the needed translations.
-     		(e.g. <tt>perl check_translation.pl French</tt>)</li>
-   		<li>Add the new language to both the $languages array and the
-     		$browser_languages arrays defined in <tt>includes/config.php</tt>.</li>
-   		<li>Test it out... </li>
-		<li>Post a copy of your translation (along with your changes to <tt>includes/config.php</tt>) to the <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> for WebCalendar.</li>
-   		</ol>
-		</dd>
-	<dt>How do I update an existing translation?</dt>
-		<dd>Just open up the translation file in the <tt>translations</tt> directory
-   		with your favorite text editor (like vi, vim, emacs, pico, Notepad, etc.).
-   		In particular look for places where missing translations are indicated.
-   		All missing translations should be marked with a
-		"&lt;&lt;&nbsp;MISSING&nbsp;>>" note.
-		and typically the English version of the translation will also be included on the following line (as in the example below):
-  		<pre># &lt;&lt; MISSING >>
+    header and trailer content.
+    <br />
+    If you are looking to just include a list of upcoming events in one
+    of your web pages, you can use the <tt>upcoming.php</tt> page in
+    WebCalendar to do this.  Edit the top of this file to configure options.
+    (These settings will likely move into System Settings in subsequent release.)
+    You can then use an <tt>iframe</tt> elsewhere on your web site as
+    in the example below:
+    <pre>&lt;iframe height="250" width="300" scrolling="yes" src="upcoming.php">&lt;/iframe></pre>
+    Include this HTML anywhere on any of your pages.
+    By default, the events from the public calendar will be loaded (so
+    you must have "Public Access" enabled in System Settings).
+    You can override this with another user's calendar.
+    (See <tt>upcoming.php</tt> for instructions on this.)
+  </dd>
+ <dt>How do I add a new translation?</dt>
+  <dd>
+  It's a fairly simple process.  If you've ever translated a C-based app
+     that used GNU's gettext tool, then you'll have no problem.  The I18N
+     support was based on GNU's <a href="http://www.gnu.org/software/gettext/gettext.html">gettext</a>&nbsp;<a href="http://www.gnu.org/software/gettext/gettext.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.  Here's what you need to do.
+     <ol>
+     <li>look in the "translations" directory</li>
+     <li>copy the <tt>English-US.txt</tt> file into what you'd like to call your
+       language data file.  (e.g. <tt>cp English-US.txt French.txt</tt>)</li>
+     <li>Now translate all the text to the _right_ of the ":" into the
+       new language.  Do <i>not</i> alter the text to the left of the ":".</li>
+     <li>When you're done making changes, move into the "tools" directory.
+       Run the <tt>check_translation.pl</tt> script on your new data file to make
+       sure you have all the needed translations.
+       (e.g. <tt>perl check_translation.pl French</tt>)</li>
+     <li>Add the new language to both the $languages array and the
+       $browser_languages arrays defined in <tt>includes/config.php</tt>.</li>
+     <li>Test it out... </li>
+  <li>Post a copy of your translation (along with your changes to <tt>includes/config.php</tt>) to the <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> for WebCalendar.</li>
+     </ol>
+  </dd>
+ <dt>How do I update an existing translation?</dt>
+  <dd>Just open up the translation file in the <tt>translations</tt> directory
+     with your favorite text editor (like vi, vim, emacs, pico, Notepad, etc.).
+     In particular look for places where missing translations are indicated.
+     All missing translations should be marked with a
+  "&lt;&lt;&nbsp;MISSING&nbsp;>>" note.
+  and typically the English version of the translation will also be included on the following line (as in the example below):
+    <pre># &lt;&lt; MISSING >>
 # Edit:
 #</pre><br />
-		For some text, an abberviation may be used rather than the English text.
-		In those cases, the full text will be noted as in the following example:
-		<pre># &lt;&lt; MISSING >>
+  For some text, an abberviation may be used rather than the English text.
+  In those cases, the full text will be noted as in the following example:
+  <pre># &lt;&lt; MISSING >>
 # custom-script-help:
 # English text: Allows entry of custom Javascript or stylesheet text that
 # will be inserted into the HTML "head" section of every page.
 #</pre><br />
-   		When you're done making changes, move into the <tt>tools</tt> directory.
-     		Run the <tt>check_translation.pl</tt> script on your new data file to make
-     		sure you have all the needed translations:
-		<pre><tt>perl check_translation.pl French</tt></pre>
-   		Post a copy of your translation to the 
-		<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> for WebCalendar.</dd>
+     When you're done making changes, move into the <tt>tools</tt> directory.
+       Run the <tt>check_translation.pl</tt> script on your new data file to make
+       sure you have all the needed translations:
+  <pre><tt>perl check_translation.pl French</tt></pre>
+     Post a copy of your translation to the 
+  <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> for WebCalendar.</dd>
 
 <!-- END FAQ -->
-	</dl>
+ </dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="trouble"></a>
-	<h2>Troubleshooting</h2>
+ <h2>Troubleshooting</h2>
     <dl>
 <!-- cek: leave these comments here... extractfaqs.pl looks for them -->
 <!-- START FAQ: Troubleshooting -->
-	<dt>I get error messages about undefined variables when I try to view any page.</dt>
-		<dd>On newer versions of PHP, the default setting of PHP is to display
-  		messages when an undefined variable is referenced.  To prevent
-  		these messages from being displayed, change the setting of <tt>error_reporting</tt>
-  		in your <tt>php.ini</tt> file to be:
-  		<pre>error_reporting = E_ALL &amp; ~E_NOTICE</pre>
-  		Alternately, you can disable any error messages from being displayed
-  		in the browser and have them logged to a file.  (See the comments
-  		included in the <tt>php.ini</tt> file for instructions on how to do this.)</dd>
-	<dt>I get errors when trying to add an event that contains a single quotation.</dt>
-		<dd>WebCalendar is designed to work with PHP's
-		<tt>magic_quotes_gpc</tt> feature (configured in <tt>php.ini</tt>).
-		If you do not have this enabled (<tt>On</tt> in <tt>php.ini</tt>),
-		you may get errors when adding events.
-		In WebCalendar version 0.9.43 or later, you will always get an error
-		message telling you to update <tt>php.ini</tt> if <tt>magic_quotes_gpc</tt>
-		is set to <tt>Off</tt>.
-		<br/><br/>
-		<span class="tip">TIP</span> If you are using Apache
-		as your web server and if you cannot or do not want to enable
-		<tt>magic_quotes_gpc</tt> for your entire site, you can enable
-		it just for WebCalendar.
-		Create a <tt>.htaccess</tt> file in the toplevel WebCalendar
-		directory that contains a single line:
-		<pre>php_value magic_quotes_gpc 1</pre>
-		<p>(For this to work with Apache, you must have the Apache
-		<tt>AllowOverride All</tt> directive enabled for the directory
-		where WebCalendar is installed.
-		Additionally, PHP must be running as an Apache module, not
-		a CGI.)</p>
-		<br />
-		<span class="note">Note for Oracle and PostgreSQL:</span> You must also change the value of
-		<tt>magic_quotes_sybase</tt> to <tt>On</tt> within the <tt>php.ini</tt>
-		settings.</dd>
-	<dt>I get an error message from PHP saying "Call to undefined function: ..."</dt>
-		<dd>This tells you that your version of PHP is missing something that
-  		WebCalendar needs.  If the function mentioned is a database login
-		function (<em>ociplogin</em>, <em>mysql_pconnect</em>, <em>ibase_connect</em>, <em>pg_pconnect</em>), 
-		then you probably do not have the needed database support for your database 
-		compiled into PHP.
-  		If the function is not a database connect call, then check the
-  		<a href="http://www.php.net/manual/en/">PHP manual</a>&nbsp;<a href="http://www.php.net/manual/en/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> 
-  		to see if the function requires a specific version of PHP.  You
-  		may have an out-dated version of PHP that requires upgrading.</dd>
-	<dt>When I try and view certain pages, nothing happens for 30 seconds, then I get a time-out error.</dt>
-		<dd>On slower or very busy servers, it can take some time for the server
-  		to get all the events.  Most PHP installations have a built-in timeout
-  		out of 30 seconds and will interrupt any request that takes longer than
-  		that.  This is most likely to happen on the year-long custom report or
-  		on the month view when layers are being used.  If you have access,
-  		you can increase the time-out value for PHP in the <tt>php.ini</tt>
-  		file by changing the setting of the <tt>max_execution_time</tt> setting.</dd>
-	<dt>I get an error message that says "Can't connect to local MySQL server through socket '/tmp/mysql.sock'."</dt>
-		<dd>This is a PHP/MySQL configuration issue. The value of <tt>mysql.default_socket</tt>
-		in your <tt>php.ini</tt> file must match the value of <tt>socket</tt> in your 
-		<tt>my.cnf</tt> file. Edit the <tt>php.ini</tt> file to fix this problem.</dd>
-	<dt>I am not receiving any email messages from WebCalendar.</dt>
-		<dd>WebCalendar sends two types of email messages:
-  		Notifications<a href="#g_notification">*</a> and Reminders<a href="#g_reminder">*</a>. 
-		Check the following if you are not receiving any email:
-  		<ol>
-			<li>You have defined a valid SMTP server in your PHP configuration file 
-				<tt>php.ini</tt>.  (The setting is "SMTP" in the "mail_function" section.)</li>
-			<li>In WebCalendar's System Settings, you have set the "Email Enabled" setting to "Yes".</li>
-			<li>In WebCalendar's System Settings, make sure you have the "Default sender address" 
-			to something.
-			<br /><span class="note">Note:</span>
-        		Some mail system will reject mail that has a "From" address
-        		that is a different domain from the originating SMTP server.
-        		So, if your SMTP server is smtp.mydomain.com and your "Default sender address" 
-			is calendar@someotherdomain.com, some mail systems may bounce the mail back.</li>
-    			<li>For a Notification, make sure you have the type of Notification
-        			set to "Yes" in the user's Preferences.</li>
-    			<li>For a Reminder:
-				<ul>
-        				<li>Make sure you have "Event reminders" set to "Yes" in the user's Preferences.</li>
-					<li>Make sure you have <a href="#reminders">setup a cron job</a> to periodically 
-						run the <tt>send_reminders.php</tt> script.</li>
-				</ul>
-			</li>
-  		</ol>
-		</dd>
-	<dt>Some of the pages are displaying text in English rather than &lt;insert your language here></dt>
-		<dd>The translations have been submitted at various points of WebCalendar development. 
-			Some have not been updated to include newer features.</dd>
-	<dt>The text that I entered in the <a href="#siteextras">Custom Event Fields</a> is not being translated 
-		to different languages.</dt>
-		<dd>You will need to add an entry in each of the translation files for any text you add 
-			into the Custom Event Fields.</dd>
-	<dt>How do I get the most recent version of WebCalendar?</dt>
-		<dd>You can download the latest public release from SourceForge's
-		<a href="http://sourceforge.net/project/showfiles.php?group_id=3870">file list for WebCalendar</a>&nbsp;<a href="http://sourceforge.net/project/showfiles.php?group_id=3870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
-  		<br />
-  		You can download the latest development code from the CVS server using
-		the <a href="http://sourceforge.net/cvs/?group_id=3870">instructions provided by SourceForge</a>&nbsp;<a href="http://sourceforge.net/cvs/?group_id=3870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.  (You will need a CVS client to do this.)</dd>
-	<dt>How do I install a patch file listed on SourceForge's
-  		<a href="http://sourceforge.net/tracker?group_id=3870&amp;atid=303870">list of WebCalendar patches</a>&nbsp;<a href="http://sourceforge.net/tracker?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>?</dt>
-		<dd>Most patches are distributed as context diffs.  That means they were produced using the UNIX <tt>diff</tt> command with the <tt>-C</tt> option.  The patches are intended to be used with the <a href="http://www.fsf.org/software/patch/patch.html">GNU patch</a>&nbsp;<a href="http://www.fsf.org/software/patch/patch.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> program. This program is standard on most Linux systems and can be obtained as part of the <a href="http://www.cygwin.com">Cygwin</a>&nbsp;<a href="http://www.cygwin.com" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> package for Windows. Mac OS X will have the patch program installed if they install the developer tools CD.</dd>
-	<dt>I forgot/lost my admin password.  How can I reset it?</dt>
-		<dd>The easiest way is to admin a new admin user and then use that
-  		new user to reset the password for your old admin account.
-  		Assuming you have deleted the original 'admin' login, you can use
-  		the following SQL to insert a new admin user into the database:
-  		<pre>INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname,
+ <dt>I get error messages about undefined variables when I try to view any page.</dt>
+  <dd>On newer versions of PHP, the default setting of PHP is to display
+    messages when an undefined variable is referenced.  To prevent
+    these messages from being displayed, change the setting of <tt>error_reporting</tt>
+    in your <tt>php.ini</tt> file to be:
+    <pre>error_reporting = E_ALL &amp; ~E_NOTICE</pre>
+    Alternately, you can disable any error messages from being displayed
+    in the browser and have them logged to a file.  (See the comments
+    included in the <tt>php.ini</tt> file for instructions on how to do this.)</dd>
+ <dt>I get errors when trying to add an event that contains a single quotation.</dt>
+  <dd>WebCalendar is designed to work with PHP's
+  <tt>magic_quotes_gpc</tt> feature (configured in <tt>php.ini</tt>).
+  If you do not have this enabled (<tt>On</tt> in <tt>php.ini</tt>),
+  you may get errors when adding events.
+  In WebCalendar version 0.9.43 or later, you will always get an error
+  message telling you to update <tt>php.ini</tt> if <tt>magic_quotes_gpc</tt>
+  is set to <tt>Off</tt>.
+  <br/><br/>
+  <span class="tip">TIP</span> If you are using Apache
+  as your web server and if you cannot or do not want to enable
+  <tt>magic_quotes_gpc</tt> for your entire site, you can enable
+  it just for WebCalendar.
+  Create a <tt>.htaccess</tt> file in the toplevel WebCalendar
+  directory that contains a single line:
+  <pre>php_value magic_quotes_gpc 1</pre>
+  <p>(For this to work with Apache, you must have the Apache
+  <tt>AllowOverride All</tt> directive enabled for the directory
+  where WebCalendar is installed.
+  Additionally, PHP must be running as an Apache module, not
+  a CGI.)</p>
+  <br />
+  <span class="note">Note for Oracle and PostgreSQL:</span> You must also change the value of
+  <tt>magic_quotes_sybase</tt> to <tt>On</tt> within the <tt>php.ini</tt>
+  settings.</dd>
+ <dt>I get an error message from PHP saying "Call to undefined function: ..."</dt>
+  <dd>This tells you that your version of PHP is missing something that
+    WebCalendar needs.  If the function mentioned is a database login
+  function (<em>ociplogin</em>, <em>mysql_pconnect</em>, <em>ibase_connect</em>, <em>pg_pconnect</em>), 
+  then you probably do not have the needed database support for your database 
+  compiled into PHP.
+    If the function is not a database connect call, then check the
+    <a href="http://www.php.net/manual/en/">PHP manual</a>&nbsp;<a href="http://www.php.net/manual/en/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> 
+    to see if the function requires a specific version of PHP.  You
+    may have an out-dated version of PHP that requires upgrading.</dd>
+ <dt>When I try and view certain pages, nothing happens for 30 seconds, then I get a time-out error.</dt>
+  <dd>On slower or very busy servers, it can take some time for the server
+    to get all the events.  Most PHP installations have a built-in timeout
+    out of 30 seconds and will interrupt any request that takes longer than
+    that.  This is most likely to happen on the year-long custom report or
+    on the month view when layers are being used.  If you have access,
+    you can increase the time-out value for PHP in the <tt>php.ini</tt>
+    file by changing the setting of the <tt>max_execution_time</tt> setting.</dd>
+ <dt>I get an error message that says "Can't connect to local MySQL server through socket '/tmp/mysql.sock'."</dt>
+  <dd>This is a PHP/MySQL configuration issue. The value of <tt>mysql.default_socket</tt>
+  in your <tt>php.ini</tt> file must match the value of <tt>socket</tt> in your 
+  <tt>my.cnf</tt> file. Edit the <tt>php.ini</tt> file to fix this problem.</dd>
+ <dt>I am not receiving any email messages from WebCalendar.</dt>
+  <dd>WebCalendar sends two types of email messages:
+    Notifications<a href="#g_notification">*</a> and Reminders<a href="#g_reminder">*</a>. 
+  Check the following if you are not receiving any email:
+    <ol>
+   <li>You have defined a valid SMTP server in your PHP configuration file 
+    <tt>php.ini</tt>.  (The setting is "SMTP" in the "mail_function" section.)</li>
+   <li>In WebCalendar's System Settings, you have set the "Email Enabled" setting to "Yes".</li>
+   <li>In WebCalendar's System Settings, make sure you have the "Default sender address" 
+   to something.
+   <br /><span class="note">Note:</span>
+          Some mail system will reject mail that has a "From" address
+          that is a different domain from the originating SMTP server.
+          So, if your SMTP server is smtp.mydomain.com and your "Default sender address" 
+   is calendar@someotherdomain.com, some mail systems may bounce the mail back.</li>
+       <li>For a Notification, make sure you have the type of Notification
+           set to "Yes" in the user's Preferences.</li>
+       <li>For a Reminder:
+    <ul>
+            <li>Make sure you have "Event reminders" set to "Yes" in the user's Preferences.</li>
+     <li>Make sure you have <a href="#reminders">setup a cron job</a> to periodically 
+      run the <tt>send_reminders.php</tt> script.</li>
+    </ul>
+   </li>
+    </ol>
+  </dd>
+ <dt>Some of the pages are displaying text in English rather than &lt;insert your language here></dt>
+  <dd>The translations have been submitted at various points of WebCalendar development. 
+   Some have not been updated to include newer features.</dd>
+ <dt>The text that I entered in the <a href="#siteextras">Custom Event Fields</a> is not being translated 
+  to different languages.</dt>
+  <dd>You will need to add an entry in each of the translation files for any text you add 
+   into the Custom Event Fields.</dd>
+ <dt>How do I get the most recent version of WebCalendar?</dt>
+  <dd>You can download the latest public release from SourceForge's
+  <a href="http://sourceforge.net/project/showfiles.php?group_id=3870">file list for WebCalendar</a>&nbsp;<a href="http://sourceforge.net/project/showfiles.php?group_id=3870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
+    <br />
+    You can download the latest development code from the CVS server using
+  the <a href="http://sourceforge.net/cvs/?group_id=3870">instructions provided by SourceForge</a>&nbsp;<a href="http://sourceforge.net/cvs/?group_id=3870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.  (You will need a CVS client to do this.)</dd>
+ <dt>How do I install a patch file listed on SourceForge's
+    <a href="http://sourceforge.net/tracker?group_id=3870&amp;atid=303870">list of WebCalendar patches</a>&nbsp;<a href="http://sourceforge.net/tracker?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>?</dt>
+  <dd>Most patches are distributed as context diffs.  That means they were produced using the UNIX <tt>diff</tt> command with the <tt>-C</tt> option.  The patches are intended to be used with the <a href="http://www.fsf.org/software/patch/patch.html">GNU patch</a>&nbsp;<a href="http://www.fsf.org/software/patch/patch.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> program. This program is standard on most Linux systems and can be obtained as part of the <a href="http://www.cygwin.com">Cygwin</a>&nbsp;<a href="http://www.cygwin.com" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> package for Windows. Mac OS X will have the patch program installed if they install the developer tools CD.</dd>
+ <dt>I forgot/lost my admin password.  How can I reset it?</dt>
+  <dd>The easiest way is to admin a new admin user and then use that
+    new user to reset the password for your old admin account.
+    Assuming you have deleted the original 'admin' login, you can use
+    the following SQL to insert a new admin user into the database:
+    <pre>INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname,
 cal_firstname, cal_is_admin ) VALUES
 ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator',
 'Default', 'Y' );</pre>
-  		This will add a user with login 'admin' and password 'admin' to the database.
-  		If you still have a user named 'admin', then replace 'admin' in the above
-  		SQL with a different username.
-		</dd>
-	<dt>I get a database error indicating table <tt>webcal_config</tt> does not exist.</dt>
-		<dd>This is the first table that WebCalendar tries to access, so it 
-			typically means one of the following:
-			<ul>
-				<li>You have not created the database tables as described in the instructions</li>
-				<li>You have the wrong database name specified in your 
-				<tt>includes/settings.php</tt> file</li>
-			</ul>
-		</dd>
+    This will add a user with login 'admin' and password 'admin' to the database.
+    If you still have a user named 'admin', then replace 'admin' in the above
+    SQL with a different username.
+  </dd>
+ <dt>I get a database error indicating table <tt>webcal_config</tt> does not exist.</dt>
+  <dd>This is the first table that WebCalendar tries to access, so it 
+   typically means one of the following:
+   <ul>
+    <li>You have not created the database tables as described in the instructions</li>
+    <li>You have the wrong database name specified in your 
+    <tt>includes/settings.php</tt> file</li>
+   </ul>
+  </dd>
 <!-- END FAQ -->
-	</dl>
+</dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="help"></a>
-	<h2>Getting Help</h2>
-	<p>Try the Help/Troubleshooting forum for WebCalendar, hosted at SourceForge.net:</p>
-	<pre><a href="https://sourceforge.net/forum/forum.php?forum_id=11588">https://sourceforge.net/forum/forum.php?forum_id=11588</a>&nbsp;<a href="http://sourceforge.net/forum/forum.php?forum_id=11588" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></pre>
-	<p>If you encounter a bug, please check the 
-		<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870">list of open and pending bugs</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
-		If you do <strong>not</strong> see anything similar, submit a new bug.
-	</p>
+ <h2>Getting Help</h2>
+ <p>Try the Help/Troubleshooting forum for WebCalendar, hosted at SourceForge.net:</p>
+ <pre><a href="https://sourceforge.net/forum/forum.php?forum_id=11588">https://sourceforge.net/forum/forum.php?forum_id=11588</a>&nbsp;<a href="http://sourceforge.net/forum/forum.php?forum_id=11588" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></pre>
+ <p>If you encounter a bug, please check the 
+  <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870">list of open and pending bugs</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
+  If you do <strong>not</strong> see anything similar, submit a new bug.
+ </p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="license"></a>
-	<h2>Licensing</h2>
-	<p>WebCalendar is distributed under the open source
-		<a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
-		If you have questions about this license, please
-		read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl-faq.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
-	</p>
+ <h2>Licensing</h2>
+ <p>WebCalendar is distributed under the open source
+  <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
+  If you have questions about this license, please
+  read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl-faq.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
+ </p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="glossary"></a>
-	<h2>Glossary</h2>
-	<dl>
-		<dt><a name="g_activitylog">Activity Log</a></dt>
-			<dd>A summary of recent updates to calendar data</dd>
-		<dt><a name="g_assistant">Assistant</a></dt>
-			<dd>A calendar user that has been designated by another calendar user
-				(the Boss) to help manage their calendar</dd>
-		<dt><a name="g_boss">Boss</a></dt>
-			<dd>A calendar user that has designated another calendar user
-				(the Assistant) to help manage his calendar</dd>
-		<dt><a name="g_externaluser">External User</a></dt>
-			<dd>A calendar participant that does not have a calendar user account</dd>
-		<dt><a name="g_group">Group</a></dt>
-			<dd>A mechanism of dividing up a large set of users into smaller sets of users</dd>
-		<dt><a name="g_layer">Layer</a></dt>
-			<dd>A function that allows a user to overlay another user's calendar
-				on top of his own calendar so that the standard day, week and month
-				pages show both his own and the layered user's events</dd>
-		<dt><a name="g_ldap">LDAP</a></dt>
-			<dd>LDAP (Lighweight Directory Access Protocol) is an Internet protocol 
-				used to maintain user directories</dd>
-		<dt><a name="g_mulituser">Multi-User Mode</a></dt>
-			<dd>When WebCalendar is configued in Multi-User Mode,
-				there can be multiple user accounts, each with his
-				own calendar.  Unless Public Access is enalbed, all users 
-				will be required to login before they can access the system.</dd>
-		<dt><a name="g_nis">NIS</a></dt>
-			<dd>NIS (Network Information Service) is a UNIX-based user authentication 
-				system for managing user directories in a network</dd>
-		<dt><a name="g_nonuser">NonUser Calendar</a></dt>
-			<dd>A participant to a calendar event that is not a calendar user.  This is typically used either as a resource (conference room,
+ <h2>Glossary</h2>
+ <dl>
+  <dt><a name="g_activitylog">Activity Log</a></dt>
+   <dd>A summary of recent updates to calendar data</dd>
+  <dt><a name="g_assistant">Assistant</a></dt>
+   <dd>A calendar user that has been designated by another calendar user
+    (the Boss) to help manage their calendar</dd>
+  <dt><a name="g_boss">Boss</a></dt>
+   <dd>A calendar user that has designated another calendar user
+    (the Assistant) to help manage his calendar</dd>
+  <dt><a name="g_externaluser">External User</a></dt>
+   <dd>A calendar participant that does not have a calendar user account</dd>
+  <dt><a name="g_group">Group</a></dt>
+   <dd>A mechanism of dividing up a large set of users into smaller sets of users</dd>
+  <dt><a name="g_layer">Layer</a></dt>
+   <dd>A function that allows a user to overlay another user's calendar
+    on top of his own calendar so that the standard day, week and month
+    pages show both his own and the layered user's events</dd>
+  <dt><a name="g_ldap">LDAP</a></dt>
+   <dd>LDAP (Lighweight Directory Access Protocol) is an Internet protocol 
+    used to maintain user directories</dd>
+  <dt><a name="g_mulituser">Multi-User Mode</a></dt>
+   <dd>When WebCalendar is configued in Multi-User Mode,
+    there can be multiple user accounts, each with his
+    own calendar.  Unless Public Access is enalbed, all users 
+    will be required to login before they can access the system.</dd>
+  <dt><a name="g_nis">NIS</a></dt>
+   <dd>NIS (Network Information Service) is a UNIX-based user authentication 
+    system for managing user directories in a network</dd>
+  <dt><a name="g_nonuser">NonUser Calendar</a></dt>
+   <dd>A participant to a calendar event that is not a calendar user.  This is typically used either as a resource (conference room,
   laptop computer) that needs to be shared or as a shared calendar
   that other users overlay onto their own calendar using layers (company-wide calendar,
   holiday calendar, etc.)</dd>
-		<dt><a name="g_notification">Notification</a></dt>
-			<dd>An email message that is sent when an event is added, removed
-  		or updated in the user's calendar by another user</dd>
-		<dt><a name="g_preferredview">Preferred View</a></dt>
-			<dd>The standard page (day, week, month or year) that will
-  		be presented to the user after logging in
-  		(set in user <a href="#pref">Preferences</a>)</dd>
-		<dt><a name="g_preferredview">Public Access</a></dt>
-			<dd>A <a href="#systemsettings">System Setting</a> that will allow anonymous users
-  		to access the calendar.
-  		See the <a href="#samplepublic">simple instructions</a> for
-  		setting this up in the <a href="#faq">FAQ section</a>.
-  		(Requires WebCalendar to be configued in Multi-User Mode).</dd>
-		<dt><a name="g_reminder">Reminder</a></dt>
-			<dd>An email message that is sent before an event to remind
-  		the participant</dd>
-		<dt><a name="g_singleuser">Single-User Mode</a></dt>
-			<dd>When WebCalendar is configued in Single-User Mode,
-  		there is no concept of users.  You will be managing a single
-  		calendar and no login will be required.
-  		Anyone accessing this calendar will have full privileges to
-  		view, add, edit and delete all events.</dd>
-		<dt><a name="g_timeinterval">Time Interval</a></dt>
-			<dd>The amount of time each "block" will represent in
-  		either the day or week view
-  		(set in user <a href="#pref">Preferences</a>)</dd>
-		<dt><a name="g_view">View</a></dt>
-			<dd>A customized page that presents the events of selected users</dd>
-		<dt><a name="g_workhours">Work Hours</a></dt>
-			<dd>The default hours to show in the week and day view where
-  		events are displayed in blocks of time (set in
-  		user <a href="#pref">Preferences</a>)</dd>
-	</dl>
+  <dt><a name="g_notification">Notification</a></dt>
+   <dd>An email message that is sent when an event is added, removed
+    or updated in the user's calendar by another user</dd>
+  <dt><a name="g_preferredview">Preferred View</a></dt>
+   <dd>The standard page (day, week, month or year) that will
+    be presented to the user after logging in
+    (set in user <a href="#pref">Preferences</a>)</dd>
+  <dt><a name="g_preferredview">Public Access</a></dt>
+   <dd>A <a href="#systemsettings">System Setting</a> that will allow anonymous users
+    to access the calendar.
+    See the <a href="#samplepublic">simple instructions</a> for
+    setting this up in the <a href="#faq">FAQ section</a>.
+    (Requires WebCalendar to be configued in Multi-User Mode).</dd>
+  <dt><a name="g_reminder">Reminder</a></dt>
+   <dd>An email message that is sent before an event to remind
+    the participant</dd>
+  <dt><a name="g_singleuser">Single-User Mode</a></dt>
+   <dd>When WebCalendar is configued in Single-User Mode,
+    there is no concept of users.  You will be managing a single
+    calendar and no login will be required.
+    Anyone accessing this calendar will have full privileges to
+    view, add, edit and delete all events.</dd>
+  <dt><a name="g_timeinterval">Time Interval</a></dt>
+   <dd>The amount of time each "block" will represent in
+    either the day or week view
+    (set in user <a href="#pref">Preferences</a>)</dd>
+  <dt><a name="g_view">View</a></dt>
+   <dd>A customized page that presents the events of selected users</dd>
+  <dt><a name="g_workhours">Work Hours</a></dt>
+   <dd>The default hours to show in the week and day view where
+    events are displayed in blocks of time (set in
+    user <a href="#pref">Preferences</a>)</dd>
+ </dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="appendixA"></a>
-	<h2>Appendix A: Using phpMyAdmin</h2>
+ <h2>Appendix A: Using phpMyAdmin</h2>
 <p>
 If you have <a href="http://www.phpmyadmin.net">phpMyAdmin</a>
 installed and configured to manage your MySQL database, use the
@@ -1272,7 +1283,7 @@ following steps to setup WebCalendar.
    reminders on a Windows platform.
    You can either install a cron package for Windows,
    or you can use the Windows Task Scheduler.
-   </p>
+</p>
 
 <h3>Installing a Cron Package</h3>
 <p>
@@ -1344,7 +1355,7 @@ view the UNIX man page for crontab
 <li>Create a new batch file called <tt>sendreminders.bat</tt>.
     The contents of this file should be a single line:
     <pre>C:\your\path\to\php.exe C:\your\path\to\webcalendar\tools\send_reminders.php</pre>
-    </li>
+  </li>
 
 <li>On Windows XP, go to Control Panel</li>
 <li>Double-click on "Scheduled Tasks."
@@ -1357,7 +1368,7 @@ view the UNIX man page for crontab
 <li>Click on "Open" </li>
  
 <li>Change the name of the task. "WebCalendar Reminders" is a good name.
-    </li>
+  </li>
  
 <li>Select how often to perform this task.  Select "Daily." </li>
 <li>Click on "Next" </li>
@@ -1377,7 +1388,7 @@ view the UNIX man page for crontab
      the job should run.
      For example, you can set it to run "every 15 minutes", then
      click on "until" and set that time to 11:30pm.
-     </li>
+  </li>
 </ol>
 
 
@@ -1504,8 +1515,8 @@ If you use LDAP, the group functionailty of WebCalendar does not yet work.
 
 <p>To configure WebCalendar to use LDAP, do the following:</p>
 <ol>
-	<li>Configure <tt>settings.php</tt></li>
-	<li>Configure <tt>includes/user-ldap.php</tt></li>
+ <li>Configure <tt>settings.php</tt></li>
+ <li>Configure <tt>includes/user-ldap.php</tt></li>
 </ol>
 
 <p>The first step is to set WebCalendar to use LDAP authentication in 
@@ -1560,9 +1571,9 @@ to the beginning of <tt>$ldap_server</tt>.  <br />Example: ldaps://ldapserver.co
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 <p>
-	<a href="http://validator.w3.org/check?uri=referer"><img 
-		src="http://www.w3.org/Icons/valid-xhtml10" 
-		alt="Valid XHTML 1.0!" class="valid" /></a>
+ <a href="http://validator.w3.org/check?uri=referer"><img 
+  src="http://www.w3.org/Icons/valid-xhtml10" 
+  alt="Valid XHTML 1.0!" class="valid" /></a>
 </p>
 </body>
 </html>
