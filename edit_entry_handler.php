@@ -495,6 +495,12 @@ if ( empty ( $error ) ) {
         $old_status['__public__'] == 'A' )
         $status = 'A';
       $my_cat_id = ( $participants[$i] != $login ) ? $tmp_cat : $cat_id;
+      // If user is admin and
+      // if it's a global cat, then set it for other users as well.
+      if ( $is_admin && ! empty ( $categories[$cat_id] ) &&
+        empty ( $category_owners[$cat_id] ) )
+        // found categ. and owner set to NULL; it is global
+        $my_cat_id = $cat_id;
     } else {
       $send_user_mail = true;
       $status = ( $participants[$i] != $login && boss_must_approve_event ( $login, $participants[$i] ) && $require_approvals == "Y" && ! $is_nonuser_admin ) ?
