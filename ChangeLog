@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Implemented minicalendar function
   - Consolidated styles
   - Added 'Back' links on pages like groups_edit.php
   - Fixed some php for styling headers & cells in selected views
