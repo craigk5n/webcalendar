@@ -46,6 +46,8 @@ $wkend = $wkstart + ( 3600 * 24 * 6 );
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
 
+$thisdate = $startdate;
+
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
@@ -202,7 +204,7 @@ if ( empty ( $friendly ) )
   echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<A CLASS=\"navlinks\" HREF=\"view_w.php?id=$id&date=$thisdate&friendly=1\" " .
+  echo "<A CLASS=\"navlinks\" HREF=\"view_w.php?id=$id&date=$date&friendly=1\" " .
     "TARGET=\"cal_printer_friendly\" onMouseOver=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</A>\n";
