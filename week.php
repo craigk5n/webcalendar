@@ -212,8 +212,8 @@ if ( empty ( $TIME_SLOTS ) )
   $TIME_SLOTS = 24;
 $interval = ( 24 * 60 ) / $TIME_SLOTS;
 
-$first_slot = (int)( ( $WORK_DAY_START_HOUR * 60 ) / $interval );
-$last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
+$first_slot = (int)( ( ( $WORK_DAY_START_HOUR - $TZ_OFFSET ) * 60 ) / $interval );
+$last_slot = (int)( ( ( $WORK_DAY_END_HOUR - $TZ_OFFSET ) * 60 ) / $interval );
 
 $untimed_found = false;
 $get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
@@ -329,7 +329,6 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   echo "<TR><TH CLASS=\"tableheader\" VALIGN=\"top\" WIDTH=\"13%\" BGCOLOR=\"$THBG\" HEIGHT=\"40\">" .
     "<FONT COLOR=\"$THFG\">" .  $time . "</FONT></TH>\n";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
-        $x = $save_rowspan_arr[$d][$i];
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
     if ( empty ( $WEEKENDBG ) )
