@@ -11,6 +11,8 @@ load_global_settings ();
 if ( ! empty ( $last_login ) )
   $login = "";
 
+if ( empty ( $webcalendar_login ) )
+  $webcalendar_login = "";
 if ( $remember_last_login == "Y" && empty ( $login ) ) {
   $last_login = $login = $webcalendar_login;
 }
