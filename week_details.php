@@ -39,8 +39,8 @@ if ( $DISPLAY_WEEKENDS == "N" ) {
 
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
-  $HeadX = "<META HTTP-EQUIV=\"refresh\" content=\"$refresh; URL=week_details.php?$u_url" .
-    "date=$startdate$caturl\" TARGET=\"_self\">\n";
+  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week_details.php?$u_url" .
+    "date=$startdate$caturl\" target=\"_self\">\n";
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
@@ -60,11 +60,10 @@ for ( $i = 0; $i < 7; $i++ ) {
 ?>
 
 <center>
-
 <table border="0" width="100%">
-<TR>
+<tr>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td align="left"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" width="36" height="32" border=\"0\"></a></td>
+<td align="left"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" width="36" height="32" border=\"0\" /></a></td>
 <?php } ?>
 <td align="middle"><font size="+2" color="<?php echo $H2COLOR;?>"><B CLASS="pagetitle">
 <?php
@@ -75,28 +74,28 @@ for ( $i = 0; $i < 7; $i++ ) {
 </b></font>
 <?php
 if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
-  echo "<br>\n<font size=\"-2\" color=\"$H2COLOR\">(" .
+  echo "<br />\n<font size=\"-2\" color=\"$H2COLOR\">(" .
     translate("Week") . " " . week_number ( $wkstart ) . ")</font>";
 }
 ?>
 <font size="+1" color="<?php echo $H2COLOR;?>">
 <?php
   if ( $single_user == "N" ) {
-    echo "<br>$user_fullname\n";
+    echo "<br />$user_fullname\n";
   }
   if ( $is_nonuser_admin )
-    echo "<b><br>-- " . translate("Admin mode") . " --</b>";
+    echo "<b><br />-- " . translate("Admin mode") . " --</b>";
   if ( $is_assistant )
-    echo "<b><br>-- " . translate("Assistant mode") . " --</b>";
+    echo "<b><br />-- " . translate("Assistant mode") . " --</b>";
   if ( $categories_enabled == "Y" ) {
-    echo "<br>\n<br>\n";
+    echo "<br />\n<br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
   }
 ?>
 </font>
 </td>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td align="right"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" width="36" height="32" border="0"></a></td>
+<td align="right"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" width="36" height="32" border="0" /></a></td>
 <?php } ?>
 </tr>
 </table>
@@ -106,7 +105,6 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 <table border="0" width="100%" cellspacing="1" cellpadding="2" border="0">
 
 <?php
-
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
   $date = date ( "Ymd", $days[$d] );
@@ -131,7 +129,7 @@ for ( $d = 0; $d < 7; $d++ ) {
     echo "<a href=\"edit_entry.php?" . $u_url .
       "date=" . date ( "Ymd", $days[$d] ) . "\">" .
       "<img src=\"new.gif\" width=\"10\" height=\"10\" alt=\"" .
-      translate("New Entry") . "\" border=\"0\" align=\"right\">" .  "</a>";
+      translate("New Entry") . "\" border=\"0\" align=\"right\" />" .  "</a>";
   }
   echo "<a href=\"day.php?" . $u_url .
     "date=" . date("Ymd", $days[$d] ) . "$caturl\" class=\"$hclass\">" .
@@ -148,22 +146,21 @@ for ( $d = 0; $d < 7; $d++ ) {
   echo "</td></tr>\n";
 }
 ?>
-
 </tr>
 </table>
 </td></tr></table></center>
 
 <?php if ( empty ( $friendly ) ) { ?>
 <?php echo $eventinfo; ?>
-<P>
-<A CLASS="navlinks" HREF="week_details.php?<?php
+<br /><br />
+<a class="navlinks" href="week_details.php?<?php
   echo $u_url;
   if ( $thisyear ) {
     echo "year=$thisyear&month=$thismonth&day=$thisday";
   }
   echo $caturl . "&";
-?>friendly=1" TARGET="cal_printer_friendly"
-onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
+?>friendly=1" target="cal_printer_friendly"
+onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 
 <?php }
@@ -174,8 +171,6 @@ print_trailer();
 </html>
 
 <?php
-
-
 // Print the HTML for one day's events in detailed view.
 // params:
 //   $id - event id
@@ -213,9 +208,9 @@ function print_detailed_entry ( $id, $date, $time, $duration,
     echo "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
     if ( strlen ( $user ) > 0 )
       echo "&user=" . $user;
-    echo "\" onMouseOver=\"window.status='" . translate("View this entry") .
-      "'; return true;\" onMouseOut=\"window.status=''; return true;\">";
-    echo "<img src=\"circle.gif\" width=\"5\" height=\"7\" alt=\"view icon\" border=\"0\"> ";
+    echo "\" onmouseover=\"window.status='" . translate("View this entry") .
+      "'; return true;\" onmouseout=\"window.status=''; return true;\">";
+    echo "<img src=\"circle.gif\" width=\"5\" height=\"7\" alt=\"view icon\" border=\"0\" />";
   }
 
 
@@ -278,8 +273,7 @@ function print_detailed_entry ( $id, $date, $time, $duration,
   # Only display description if it is different than the event name.
   if ( $PN != $PD )
     echo " - " . $PD;
-  echo "</font><br><br>";
-
+  echo "</font><br /><br />";
 }
 
 //
