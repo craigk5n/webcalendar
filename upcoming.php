@@ -193,7 +193,7 @@ function print_upcoming_event ( $e )
 
   if ( $display_link && ! empty ( $server_url ) ) {
     print "<a href=\"" . $server_url . "view_entry.php?id=" .
-      $e['cal_id'] . "&date=" . $e['cal_date'] . "\"";
+      $e['cal_id'] . "&amp;date=" . $e['cal_date'] . "\"";
     if ( ! empty ( $link_target ) )
       print " target=\"$link_target\"";
     print ">";
