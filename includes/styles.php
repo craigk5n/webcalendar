@@ -711,7 +711,7 @@ table.viewv {
 	width: 100%;
 	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-.empty {
+.viewv th.empty {
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-top-width: 0px;
 	border-left-width: 0px;
@@ -721,20 +721,69 @@ table.viewv {
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
 	border-bottom-color: <?php echo $GLOBALS['TABLEBG']; ?>;
-	width: 10%;
 }
 .viewv th {
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
-}
-.viewv th.today {
-	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
-	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+	border-top-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .viewv th.weekend {
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-top-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
+.viewv th.today {
+	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
+	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+	border-top-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+.viewv td {
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+}
+.viewv td.weekend {
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
+}
+.viewv td.today {
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+}
+.viewv th.row {
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-top-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+
 
 /* ======================= */
 /* VIEW_W.PHP */

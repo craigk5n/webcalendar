@@ -162,56 +162,53 @@
 
   if ( $single_user != "Y" ) {
     if ( ! empty ( $user ) && $user != $login )
-      echo "<a class=\"navlinks\" style=\"font-weight:bold;\" href=\"$mycal\">" .
+      echo "<a title=\"" . translate("My Calendar") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"$mycal\">" .
         translate("Back to My Calendar") . "</a>";
     else
-      echo "<a class=\"navlinks\" href=\"$mycal\" style=\"font-weight:bold;\">" .
+      echo "<a title=\"" . translate("My Calendar") . "\" class=\"navlinks\" href=\"$mycal\" style=\"font-weight:bold;\">" .
         translate("My Calendar") . "</a>";
     if ( ! empty ( $user ) && $user != $login )
       $todayURL .= '&user=' . $user;
-    echo "| <a class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") .
+    echo "| <a title=\"" . translate("Today") . "\" class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") .
       "</a>";
     if ( $login != '__public__' )
-      echo " | <a class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" .
+      echo " | <a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" .
         translate("Admin") . "</a>";
     if ( ! $use_http_auth ) {
       if ( empty ( $login_return_path ) )
         $login_url = "login.php";
       else
         $login_url = "login.php?return_path=$login_return_path";
-      echo " | <a class=\"navlinks\" href=\"$login_url\">" .
+      echo " | <a title=\"" . translate("Login") . "/" . translate("Logout") . "\" class=\"navlinks\" href=\"$login_url\">" .
         translate("Login") . "/" . translate("Logout") . "</a>";
     }
     if ( $login != "__public__" && $readonly == "N" &&
       ( $require_approvals == "Y" || $public_access == "Y" ) ) {
 	$url = 'list_unapproved.php';
         if ($is_nonuser_admin) $url .= "?user=$user";
-	echo " | <a class=\"navlinks\" href=\"$url\">" .
+	echo " | <a title=\"" . translate("Unapproved Events") . "\" class=\"navlinks\" href=\"$url\">" .
         translate("Unapproved Events") . "</a>";
     }
     if ( $login == "__public__" && $public_access_others != "Y" ) {
       // don't allow them to see other people's calendar
     } else if ( $allow_view_other == "Y" || $is_admin )
-      echo " | <a class=\"navlinks\" href=\"select_user.php\">" .
-        translate("Another User's Calendar") . "</a>";
+      echo " | <a title=\"" . translate("Another User's Calendar") . "\" class=\"navlinks\" href=\"select_user.php\">" . translate("Another User's Calendar") . "</a>";
   } else {
-    echo "<a class=\"navlinks\" href=\"$mycal\" style=\"font-weight:bold;\">" .
-      translate("My Calendar") . "</a>";
-    echo "| <a class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") . "</a>";
-    echo " | <a class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" .
-      translate("Admin") . "</a>";
+    echo "<a title=\"" . translate("My Calendar") . "\" class=\"navlinks\" href=\"$mycal\" style=\"font-weight:bold;\">" . translate("My Calendar") . "</a>";
+    echo "| <a title=\"" . translate("Today") . "\" class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") . "</a>";
+    echo " | <a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" . translate("Admin") . "</a>";
   }
   // only display some links if we're viewing our own calendar.
   if ( empty ( $user ) || $user == $login ) {
-    echo " | <a class=\"navlinks\" href=\"search.php\">" .
+    echo " | <a title=\"" . translate("Search") . "\" class=\"navlinks\" href=\"search.php\">" .
       translate("Search") . "</a>";
-    echo " | <a class=\"navlinks\" href=\"export.php\">" .
+    echo " | <a title=\"" . translate("Export") . "\" class=\"navlinks\" href=\"export.php\">" .
       translate("Export") . "</a>";
     if ( $login != '__public__' )
-      echo " | <a class=\"navlinks\" href=\"import.php\">" .
+      echo " | <a title=\"" . translate("Import") . "\" class=\"navlinks\" href=\"import.php\">" .
       translate("Import") . "</a>";
     if ( $can_add ) {
-      echo " | <a class=\"navlinks\" href=\"edit_entry.php";
+      echo " | <a title=\"" . translate("Add New Entry") . "\" class=\"navlinks\" href=\"edit_entry.php";
       if ( ! empty ( $thisyear ) ) {
         print "?year=$thisyear";
         if ( ! empty ( $thismonth ) )
@@ -225,11 +222,11 @@
   if ( $login != '__public__' && $single_user != 'Y' ) {
     $url = "assistant_edit.php";
     if ($is_nonuser_admin) $url .= "?user=$user";
-    echo " | <a class=\"navlinks\" href=\"$url\">" .
+    echo " | <a title=\"" . translate("Assistants") . "\" class=\"navlinks\" href=\"$url\">" .
       translate ("Assistants") . "</a>\n";
   }
   if ( $login != '__public__' ) {
-    echo " | <a class=\"navlinks\" href=\"#\" onclick=\"window.open ( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );\"" .
+    echo " | <a title=\"" . translate("Help") . "\" class=\"navlinks\" href=\"#\" onclick=\"window.open ( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );\"" .
       " onmouseover=\"window.status='" . translate("Help") . "'\">" .
       translate("Help") . "</a>";
   }
@@ -239,7 +236,7 @@
 <br />
 <?php if ( ( $login != "__public__" ) &&
          ( $allow_view_other != "N" || $is_admin ) ) { ?>
-<span style="font-weight:bold;"><?php etranslate("Views")?>:</span>
+<span style="font-weight:bold;"><?php etranslate("Views")?>: </span>
 <?php
   for ( $i = 0; $i < count ( $views ); $i++ ) {
     if ( $i > 0 )
@@ -252,13 +249,13 @@
     elseif ( $views[$i]['cal_view_type'] == 'V' )
       echo "view_v.php?";
     elseif ( $views[$i]['cal_view_type'] == 'T' )
-      echo "view_t.php?timeb=0&";
+      echo "view_t.php?timeb=0&amp;";
     elseif ( $views[$i]['cal_view_type'] == 'M' )
       echo "view_m.php?";
     elseif ( $views[$i]['cal_view_type'] == 'L' )
       echo "view_l.php?";
     elseif ( $views[$i]['cal_view_type'] == 'S' )
-      echo "view_t.php?timeb=1&";
+      echo "view_t.php?timeb=1&amp;";
     else
       echo "view_m.php?";
     echo "id=" . $views[$i]['cal_view_id'];
@@ -269,7 +266,7 @@
   if ( $readonly != "Y" ) {
     if ( count ( $views ) > 0 )
       echo " | ";
-    echo "<a class=\"navlinks\" href=\"views.php\">" .
+    echo "<a title=\"" . translate("Manage Views") . "\" class=\"navlinks\" href=\"views.php\">" .
       translate("Manage Views") . "</a>";
   }
 ?>
@@ -297,9 +294,9 @@ if ( $res ) {
     if ( $found_report )
       echo " | ";
     else
-      echo "<b>" . translate("Reports") . ":</b> ";
+      echo "<span style=\"font-weight:bold;\">" . translate("Reports") . ":</span> ";
     echo "<a href=\"report.php?report_id=$row[1]$u_url\" class=\"navlinks\">" .
-      htmlentities ( $row[0] ) . "</a>";
+      htmlentities ( $row[0] ) . "</a>\n";
     $found_report = true;
   }
   dbi_free_result ( $res );
@@ -308,8 +305,8 @@ if ( $login != "__public__" ) {
   if ( $found_report )
     echo " | ";
   else
-    echo "<b>" . translate("Reports") . ":</b> ";
-  echo "<a href=\"report.php\" class=\"navlinks\">" .
+    echo "<span style=\"font-weight:bold;\">" . translate("Reports") . ":</span> ";
+  echo "<a title=\"" . translate("Manage Reports") . "\" href=\"report.php\" class=\"navlinks\">" .
     translate("Manage Reports") . "</a>\n";
 }
 ?>
