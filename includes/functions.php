@@ -1703,7 +1703,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   *	This will load all the repeated events into memory.
   *	<br/>Notes:  <ul>
   *	<li> To get which events repeat on a specific date, use the
-  *	     get_repeating_entries function.
+  *	     get_repeating_entries function.</li>
   *	<li> To get all the dates that one specific event repeats on, the
   *	     get_all_dates function should be called.  </li>
   *	</ul>

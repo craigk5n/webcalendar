@@ -179,7 +179,11 @@ while ( <F> ) {
 close ( F );
 
 print<<EOF;
-<html>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <title>$TITLE</title>
 <style type="text/css">
@@ -271,6 +275,15 @@ foreach $name ( sort keys ( %out ) ) {
   print "<br /><br />\n" . $out{$name};
 }
 
-print "</body>\n</html>\n";
+print<<EOF;
+<hr/>
+<p>
+      <a href="http://validator.w3.org/check?uri=referer"><img
+          src="http://www.w3.org/Icons/valid-xhtml10" border="0"
+          alt="Valid XHTML 1.0!" height="31" width="88" /></a>
+</p>
+</body>
+</html>
+EOF
 
 exit 0;

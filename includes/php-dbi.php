@@ -67,7 +67,7 @@ $phpdbiVerbose = false;
   *	the <tt>db_persistent</tt> setting is enabled.
   *	<br/>Notes:<ul>
   *	<li> The database type is determined by the global
-  *	     variable <tt>db_type</tt>
+  *	     variable <tt>db_type</tt></li>
   *	<li> For ODBC, $host is ignored, $database = DSN</li>
   *	<li> For Oracle, $database = tnsnames name</li>
   *	<li> Use the dbi_error function to get error information if
