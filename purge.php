@@ -16,6 +16,13 @@ print_header($INC);
 
 <?php
 $ALL = 0;
+
+$purge_all = getPostValue ( "purge_all" );
+$end_year = getPostValue ( "end_year" );
+$end_month = getPostValue ( "end_month" );
+$end_day = getPostValue ( "end_day" );
+$user = getPostValue ( "user" );
+
 if ( ! empty ( $user ) ) {
   echo "<h2>" .
     translate("Purging events for") . " $user...</h2>\n";
@@ -25,7 +32,7 @@ if ( ! empty ( $user ) ) {
     if ( $user == 'ALL' ) {
       $ids = array ('%');
     } else {
-      $ids = get_ids ( "SELECT cal_id FROM webcal_entry  WHERE cal_create_by = '$user'" );
+      $ids = get_ids ( "SELECT cal_id FROM webcal_entry WHERE cal_create_by = '$user'" );
     }
   } elseif ( $end_date ) {
     if ( $user != 'ALL' ) {
