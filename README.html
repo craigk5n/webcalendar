@@ -62,7 +62,13 @@ tr {
 <td><a href="http://www.k5n.us/webcalendar.php">http://www.k5n.us/webcalendar.php</a></td></tr>
 
 <tr><td style="vertical-align:top; font-weight:bold;">Developers:</td>
-<td valign="top">Craig Knudsen, <a href="mailto:cknudsen@cknudsen.com">cknudsen@cknudsen.com</a>, <a href="http://www.k5n.us/">http://www.k5n.us</a><br />
+<td valign="top">Craig Knudsen,
+<script language="JavaScript">
+document.write ("<a href=\"mailto:cknudsen" );
+document.write ( "@cknudsen.com\">cknudsen@" );
+document.writeln ( "cknudsen.com</a>," );
+</script>
+<a href="http://www.k5n.us/">http://www.k5n.us</a><br />
 Jeff Hoover<br />
 Adam Shantz, <a href="mailto:adamATadamshantzDOTcom">adamATadamshantzDOTcom</a>,
 <a href="http://adamshantz.com">adamshantz.com</a></td></tr>
@@ -88,6 +94,11 @@ Adam Shantz, <a href="mailto:adamATadamshantzDOTcom">adamATadamshantzDOTcom</a>,
 	<a href="https://sourceforge.net/project/showfiles.php?group_id=3870">Latest Version</a>
 </td></tr>
 </table>
+
+<p>
+<b>Note:</b> Installation instructions for WebCalendar
+can be found in the <a href="docs/WebCalendar-SysAdmin.html">WebCalendar
+System Administrator's Guide</a>.</p>
 
 <p>WebCalender is an open source PHP-based multi-user calendar.</p>
 <p><b>Features:</b></p>
@@ -155,7 +166,7 @@ Adam Shantz, <a href="mailto:adamATadamshantzDOTcom">adamATadamshantzDOTcom</a>,
 
 <p><b>System Requirements:</b></p>
 <ul>
-	<li>PHP (3 or 4)</li>
+	<li>PHP 4 (PHP 5 not yet tested)</li>
 	<li>Database: 
 		<ul>
 			<li>MySQL</li>
@@ -164,7 +175,8 @@ Adam Shantz, <a href="mailto:adamATadamshantzDOTcom">adamATadamshantzDOTcom</a>,
 			<li>Interbase or ODBC (PHP ODBC includes support for Adabas D, IBM DB2, Solid and Sybase SQL Anywhere as well as ODBC)</li>
 		</ul>
 	</li>
-	<li>JavaScript-enabled browser</li>
+	<li>JavaScript-enabled browser with CSS support (Netscape 6+,
+            Mozilla 1.0+, Firefox 0.9+, Safari, MS Internet Explorer)</li>
 	<li>Cookie-enabled browser</li>
 </ul>
 
@@ -175,6 +187,11 @@ Adam Shantz, <a href="mailto:adamATadamshantzDOTcom">adamATadamshantzDOTcom</a>,
 	<li>Updated translatations (some are slightly out of date)</li>
 </ul>
 
-<p><b>Possible features for future releases:</b><br />
-See <a href="http://www.k5n.us/webcalendar.php?topic=Plans">Plans</a> on the WebCalendar home page.</p>
+<p><b>Possible features for future releases:</b></p>
+<ul>
+<li>
+See <a href="http://www.k5n.us/webcalendar.php?topic=Plans">Plans</a> on the WebCalendar home page.
+</li>
+</ul>
+
 </body></html>
