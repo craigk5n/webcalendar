@@ -1,5 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1168686: Month display collides with minicals on Safari
       1168682:  RC3 Language Detection Broken for Safari.
       1169403:  Public Access not default selected if Particiapants not shown. 
       1169078: Bad function call in import_handler.php
@@ -9,6 +10,7 @@ Version 1.0RC4-CVS (?? ??? 2005)
       1162486: Path exposure issue with view_entry.php
 
   - Other bugs fixed:
+    + Fixed day.php rendering problem in Safar
     + Applied bug fix 1151442: Overlapping events display error in week.php
 
   - New Features / Enhancements / Changes:
