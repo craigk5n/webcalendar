@@ -10,7 +10,7 @@ te?
 [ ] Either (A) don't use any global variables or (B) rename all the
     global variables with a "webcalendar_" prefix.
     (This includes $login, $user and other variables.)
-[ ] Allow forms in custom header (right now we reference our forms by
+[X] Allow forms in custom header (right now we reference our forms by
     number as in document.forms[0], which will not work if the user
     has a form in the custom header)
 [ ] PHP4 sessions instead of my cookie code
@@ -33,7 +33,7 @@ te?
     (Unfortunately, this will add a lot of text which will require
     translations and would make the WebCalendar download much larger.
     The translations account for about 40% of the size of the current download.)
-[ ] Improve the popup code.
+[X] Improve the popup code.
     (I do like the Knoppix code and it is also GPL, so that would be
     a good place to start)
 [ ] Add email notification for submission of new public events
