@@ -14,6 +14,9 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
   $old_id = $id;
 }
 
+if ( empty ( $TZ_OFFSET ) )
+  $TZ_OFFSET = 0;
+
 // Modify the time to be server time rather than user time.
 if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
   // Convert to 24 hour before subtracting TZ_OFFSET so am/pm isn't confused.
