@@ -42,7 +42,7 @@ if ( $res ) {
 }
 
 if ( $doneBefore ) {
-  echo "Passwords were already converted to md5!\n<br>\n";
+  echo "Passwords were already converted to md5!\n<br />\n";
   exit;
 }
 
@@ -59,7 +59,7 @@ while ( $row = dbi_fetch_row ( $res ) ) {
       $res = dbi_query ( $sql );
       if ($res) {
         echo "Table webcal_user altered to allow 32 character passwords.\n" .
-          "<br>Converting passwords...\n<br><br>\n";
+          "<br />Converting passwords...\n<br /><br />\n";
       }
     }
   }
@@ -75,11 +75,11 @@ if ( $res ) {
       md5($row[1]) . "' WHERE cal_login = '".$row[0]."'";
     $res2 = dbi_query ( $sql2 );
     if ($res2)
-      echo "Password updated for: ".$row[0]."<BR>\n";
+      echo "Password updated for: ".$row[0]."<br />\n";
   }
   dbi_free_result ( $res );
-  echo "Finished converting passwords\n<br>\n";
-  echo "<br><br><h1>\nDO NOT Run this script again!!!\n</h1><br>\n";
+  echo "Finished converting passwords\n<br />\n";
+  echo "<br /><br />\n<h1>DO NOT Run this script again!!!</h1>\n<br />\n";
   echo '<h1>Delete this script if it ran successfully!!!</h1>';
 }
 ?>

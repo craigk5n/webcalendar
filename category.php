@@ -31,7 +31,7 @@ if ( ! empty ( $id ) ) {
 
 print_header();
 ?>
-<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Categories")?></font></h2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Categories")?></h2>
 
 <?php
 
@@ -39,7 +39,7 @@ print_header();
 if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   $button = translate("Add");
   ?>
-  <form action="category_handler.php" method="POST">
+  <form action="category_handler.php" method="post">
   <?php
   if ( ! empty ( $id ) ) {
     echo "<input name=\"id\" type=\"hidden\" value=\"$id\" />";

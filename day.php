@@ -30,7 +30,7 @@ $month_ahead = date ( "Ymd", mktime ( 3, 0, 0, $thismonth + 1, $thisday, $thisye
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=day.php?$u_url" .
-    "date=$nowYmd$caturl\" target=\"_self\">\n";
+    "date=$nowYmd$caturl\" target=\"_self\" />\n";
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
@@ -48,19 +48,19 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 
 ?>
 
-<table border="0" width="100%">
-<tr><td valign="top" width="70%"><tr><td>
-<table border="0" width="100%">
+<table style="border-width:0px; width:100%;">
+<tr><td style="vertical-align:top; width:70%;"><tr><td>
+<table style="border-width:0px; width:100%;">
 <tr>
 <?php if ( empty ( $friendly ) ) { ?>
-<td valign="left"><a href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img align="left" src="leftarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Previous"); ?>" /></a></td>
+<td style="text-align:left;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img align="left" src="leftarrow.gif" width="36" height="32" style="border-width:0px;" alt="<?php etranslate("Previous"); ?>" /></a></td>
 <?php } ?>
-<td align="middle"><font size="+2" color="<?php echo $H2COLOR;?>"><b>
+<td style="text-align:center; color:<?php echo $H2COLOR;?>; font-weight:bold;"><font size="+2">
 <?php
   echo date_to_str ( $nowYmd );
 ?>
-</b></font>
-<font size="+1" color="<?php echo $H2COLOR;?>">
+</font>
+<font size="+1">
 <?php
   // display current calendar's user (if not in single user)
   if ( $single_user == "N" ) {
@@ -68,9 +68,9 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
     echo $user_fullname;
   }
   if ( $is_nonuser_admin )
-    echo "<b><br />-- " . translate("Admin mode") . " --</b>";
+    echo "<br />-- " . translate("Admin mode") . " --";
   if ( $is_assistant )
-    echo "<b><br />-- " . translate("Assistant mode") . " --</b>";
+    echo "<br />-- " . translate("Assistant mode") . " --";
   if ( $categories_enabled == "Y" ) {
     echo "<br />\n<br />\n";
     print_category_menu('day', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly);
@@ -79,17 +79,17 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 </font>
 </td>
 <?php if ( empty ( $friendly ) ) { ?>
-<td valign="right"><a href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img align="right" src="rightarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Next"); ?>" /></a></td>
+<td style="text-align:right;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img align="right" src="rightarrow.gif" width="36" height="32" style="border-width:0px;" alt="<?php etranslate("Next"); ?>" /></a></td>
 <?php } ?>
 </tr>
 </table>
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-<tr><td bgcolor="<?php echo $TABLEBG?>">
-<table border="0" width="100%" cellspacing="1" cellpadding="2">
+<table style="border-width:0px; width:100%;" cellspacing="0" cellpadding="0">
+<tr><td style="background-color:<?php echo $TABLEBG?>;">
+<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
 <?php } else { ?>
-<table border="1" width="100%" cellspacing="0" cellpadding="0">
+<table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
 <?php } ?>
 
 
@@ -111,13 +111,13 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 </td>
 <td valign="top">
 <?php if ( empty ( $friendly ) ) { ?>
-<div align="right">
-<table border="0" cellspacing="0" cellpadding="0">
-<tr><td bgcolor="<?php echo $TABLEBG?>">
-<table border="0" width="100%" cellspacing="1" cellpadding="2">
-<tr><th colspan="7" bgcolor="<?php echo $THBG?>"><font size="+4" color="<?php echo $THFG?>"><?php echo $thisday?></font></th></tr>
+<div style="text-align:right;">
+<table style="border-width:0px;" cellspacing="0" cellpadding="0">
+<tr><td style="background-color:<?php echo $TABLEBG?>;">
+<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
+<tr><th colspan="7" style="background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;"><font size="+4"><?php echo $thisday?></font></th></tr>
 <tr>
-<TD ALIGN="left" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>" CLASS="monthlink"><img src="leftarrowsmall.gif" width="18" height="18" border="0" alt="<?php etranslate("Previous")?>"></a></td>
+<td style="text-align:left; background-color:ALIGN="left" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>" CLASS="monthlink"><img src="leftarrowsmall.gif" width="18" height="18" border="0" alt="<?php etranslate("Previous")?>"></a></td>
 <th colspan="5" bgcolor="<?php echo $THBG?>"><font color="<?php echo $THFG?>"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></font></th>
 <td align="right" bgcolor="<?php echo $THBG?>"><a href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead . $caturl?>" class="monthlink"><img src="rightarrowsmall.gif" width="18" height="18" border="0" alt="<?php etranslate("Next") ?>"></a></td>
 </tr>

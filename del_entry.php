@@ -221,12 +221,12 @@ if ( empty ( $error ) ) {
 print_header();
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></H2></FONT>
-<BLOCKQUOTE>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Error")?></h2>
+<blockquote>
 <?php echo $error; ?>
-</BLOCKQUOTE>
+</blockquote>
 
 <?php print_trailer(); ?>
 
-</BODY>
-</HTML>
+</body>
+</html>

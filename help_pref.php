@@ -3,73 +3,72 @@ include_once 'includes/init.php';
 print_header('','','',true);
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Help")?>: <?php etranslate("Preferences")?></FONT></H2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Help")?>: <?php etranslate("Preferences")?></h2>
 
-<H3><?php etranslate("Settings")?></H3>
-<TABLE BORDER=0>
+<h3><?php etranslate("Settings")?></h3>
+<table style="border-width:0px;">
 
-<TR><TD VALIGN="top"><B><?php etranslate("Language")?>:</B></TD>
-  <TD><?php etranslate("language-help")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Fonts")?>:</B></TD>
-  <TD><?php etranslate("fonts-help")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Preferred view")?>:</B></TD>
-  <TD><?php etranslate("preferred-view-help")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Display weekends in week view")?>:</B></TD>
-  <TD><?php etranslate("display-weekends-help")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Display description in printer day view")?>:</B></TD>
-  <TD><?php etranslate("display-desc-print-day-help")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Date format")?>:</B></TD>
-  <TD><?php etranslate("date-format-help")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Time format")?>:</B></TD>
-  <TD><?php etranslate("time-format-help")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Time interval")?>:</B></TD>
-  <TD><?php etranslate("time-interval-help")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Display unapproved")?>:</B></TD>
-  <TD><?php etranslate("display-unapproved-help")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Display week number")?>:</B></TD>
-  <TD><?php etranslate("display-week-number-help")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Week starts on")?>:</B></TD>
-  <TD><?php etranslate("display-week-starts-on")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Work hours")?>:</B></TD>
-  <TD><?php etranslate("work-hours-help")?>
-<TR><TD VALIGN="top"><B><?php etranslate("Default Category")?>:</B></TD>
-  <TD><?php etranslate("default-category-help")?>
-      </TD></TR>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Language")?>:</td>
+  <td><?php etranslate("language-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Fonts")?>:</td>
+  <td><?php etranslate("fonts-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Preferred view")?>:</td>
+  <td><?php etranslate("preferred-view-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Display weekends in week view")?>:</td>
+  <td><?php etranslate("display-weekends-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Display description in printer day view")?>:</td>
+  <td><?php etranslate("display-desc-print-day-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Date format")?>:</td>
+  <td><?php etranslate("date-format-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Time format")?>:</td>
+  <td><?php etranslate("time-format-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Time interval")?>:</td>
+  <td><?php etranslate("time-interval-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Display unapproved")?>:</td>
+  <td><?php etranslate("display-unapproved-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Display week number")?>:</td>
+  <td><?php etranslate("display-week-number-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Week starts on")?>:</td>
+  <td><?php etranslate("display-week-starts-on")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Work hours")?>:</td>
+  <td><?php etranslate("work-hours-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Default Category")?>:</td>
+  <td><?php etranslate("default-category-help")?></td></tr>
+</table>
 
-</TABLE>
-<P>
+<br /><br />
 
-<H3><?php etranslate("Email")?></H3>
-<TABLE BORDER=0>
-<TR><TD VALIGN="top"><B><?php etranslate("Event reminders")?>:</B></TD>
-  <TD><?php etranslate("email-event-reminders-help")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Events added to my calendar")?>:</B></TD>
-  <TD><?php etranslate("email-event-added")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Events updated on my calendar")?>:</B></TD>
-  <TD><?php etranslate("email-event-updated")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Events removed from my calendar")?>:</B></TD>
-  <TD><?php etranslate("email-event-deleted")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("Event rejected by participant")?>:</B></TD>
-  <TD><?php etranslate("email-event-rejected")?></TD></TR>
-</TABLE>
+<h3><?php etranslate("Email")?></h3>
+<table style="border-width:0px;">
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Event reminders")?>:</td>
+  <td><?php etranslate("email-event-reminders-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Events added to my calendar")?>:</td>
+  <td><?php etranslate("email-event-added")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Events updated on my calendar")?>:</td>
+  <td><?php etranslate("email-event-updated")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Events removed from my calendar")?>:</td>
+  <td><?php etranslate("email-event-deleted")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Event rejected by participant")?>:</td>
+  <td><?php etranslate("email-event-rejected")?></td></tr>
+</table>
 
 <?php if ( $PUBLISH_ENABLED == 'Y' ) { ?>
-<H3><?php etranslate("Subscribe/Publish")?></H3>
-<TABLE BORDER=0>
-<TR><TD VALIGN="top"><B><?php etranslate("Allow remote subscriptions")?>:</B></TD>
-  <TD><?php etranslate("allow-remote-subscriptions-help")?></TD></TR>
-<TR><TD VALIGN="top"><B><?php etranslate("URL")?>:</B></TD>
-  <TD><?php etranslate("remote-subscriptions-url-help")?></TD></TR>
-</TABLE>
+<h3><?php etranslate("Subscribe/Publish")?></h3>
+<table style="border-width:0px;">
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("Allow remote subscriptions")?>:</td>
+  <td><?php etranslate("allow-remote-subscriptions-help")?></td></tr>
+<tr><td valign="top" style="font-weight:bold;"><?php etranslate("URL")?>:</td>
+  <td><?php etranslate("remote-subscriptions-url-help")?></td></tr>
+</table>
 <?php } ?>
 
 <?php if ( $allow_color_customization == 'Y' ) { ?>
-<H3><?php etranslate("Colors")?></H3>
+<h3><?php etranslate("Colors")?></h3>
 <?php etranslate("colors-help")?>
-<P>
+<br /><br />
 <?php } // if $allow_color_customization ?>
 
 <?php include_once "includes/help_trailer.php"; ?>
 
-</BODY>
-</HTML>
+</body>
+</html>

@@ -19,7 +19,6 @@ if ( empty ( $TODAYCELLBG ) )
 
 $COLUMNS = 3;
 
-
 $style = "
 <style type=\"text/css\">
 table.admin {
