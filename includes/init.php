@@ -139,9 +139,10 @@ if ($DMW) {
 //               the Body tag (onload for example)
 //	$disableCustom - do not include custom header (useful for small
 //		popup windows, such as color selection)
+//	$disableStyle - do not include the standard css
 //
 function print_header($includes = '', $HeadX = '', $BodyX = '',
-  $disableCustom=false) {
+  $disableCustom=false, $disableStyle=false) {
   global $application_name;
   global $FONTS,$WEEKENDBG,$THFG,$THBG;
   global $TABLECELLFG,$TODAYCELLBG,$TEXTCOLOR;
@@ -183,7 +184,9 @@ echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html
   if ($HeadX) echo $HeadX."\n";
 
   // Include the styles
-  include_once 'includes/styles.php';
+  if ( ! $disableStyle ) {
+    include_once 'includes/styles.php';
+  }
 
   // Add custom script/stylesheet if enabled
   if ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom ) {
