@@ -279,8 +279,8 @@ if ( empty ( $error ) && ! empty ( $conflicts ) ) {
   $error = translate("The following conflicts with the suggested time") .
     ": <ul>$conflicts</ul>";
 }
-
-
+//Avoid Undefined variable message
+$msg = '';
 if ( empty ( $error ) ) {
   $newevent = true;
   // now add the entries
