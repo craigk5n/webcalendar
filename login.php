@@ -81,10 +81,10 @@ if ( $single_user == "Y" ) {
 }
 
 ?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-<SCRIPT LANGUAGE="JavaScript">
+<html>
+<head>
+<title><?php etranslate($application_name)?></title>
+<script language="JavaScript">
 // error check login/password
 function valid_form ( form ) {
   if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
@@ -105,7 +105,7 @@ function myOnLoad() {
     if ( ! empty ( $login ) ) echo "document.forms[0].login.select();";
   ?>
 }
-</SCRIPT>
+</script>
 <?php include "includes/styles.php"; ?>
 <?php
 // Print custom header (since we do not call print_header function)
@@ -122,8 +122,8 @@ if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
 }
 ?>
 
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>"
+</head>
+<body bgcolor="<?php echo $BGCOLOR;?>"
 ONLOAD="myOnLoad();" CLASS="defaulttext">
 
 <?php
@@ -141,51 +141,51 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 }
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR?>"><?php etranslate($application_name)?></FONT></H2>
+<h2><font color="<?php echo $H2COLOR?>"><?php etranslate($application_name)?></font></h2>
 
 <?php
 if ( ! empty ( $error ) ) {
-  print "<FONT COLOR=\"#FF0000\"><B>" . translate("Error") .
-    ":</B> $error</FONT><P>\n";
+  print "<font color=\"#FF0000\"><b>" . translate("Error") .
+    ":</b> $error</font><br />\n";
 }
 ?>
-<FORM NAME="login_form" ACTION="login.php" METHOD="POST" ONSUBMIT="return valid_form(this)">
+<form name="login_form" action="login.php" method="POST" onsubmit="return valid_form(this)">
 
 <?php
 if ( ! empty ( $return_path ) )
-  echo "<INPUT TYPE=\"hidden\" NAME=\"return_path\" VALUE=\"" .
-    htmlentities ( $return_path ) . "\">\n";
+  echo "<input type=\"hidden\" name=\"return_path\" value=\"" .
+    htmlentities ( $return_path ) . "\" />\n";
 ?>
 
-<TABLE BORDER=0>
-<TR><TD><B><?php etranslate("Username")?>:</B></TD>
-  <TD><INPUT NAME="login" SIZE=10 VALUE="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" TABINDEX="1"></TD></TR>
-<TR><TD><B><?php etranslate("Password")?>:</B></TD>
-  <TD><INPUT NAME="password" TYPE="password" SIZE=10 TABINDEX="2"></TD></TR>
-<TR><TD COLSPAN=2><INPUT TYPE="checkbox" NAME="remember" VALUE="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "CHECKED"; ?>> <?php etranslate("Save login via cookies so I don't have to login next time")?></TD></TR>
-<TR><TD COLSPAN=2><INPUT TYPE="submit" VALUE="<?php etranslate("Login")?>" TABINDEX="3"></TD></TR>
-</TABLE>
+<table border="0">
+<tr><td><b><?php etranslate("Username")?>:</b></td>
+  <td><input name="login" size="10" value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" tabindex="1" /></td></tr>
+<tr><td><b><?php etranslate("Password")?>:</b></td>
+  <td><input name="password" type="password" size="10" tabindex="2" /></td></tr>
+<tr><td colspan="2"><input type="checkbox" name="remember" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked"; ?> /> <?php etranslate("Save login via cookies so I don't have to login next time")?></td></tr>
+<tr><td colspan="2"><input type="submit" value="<?php etranslate("Login")?>" tabindex="3" /></td></tr>
+</table>
 
-</FORM>
+</form>
 
-<P>
+<br /><br />
 <?php if ( $public_access == "Y" ) { ?>
-  <A CLASS="navlinks" HREF="index.php"><?php etranslate("Access public calendar")?></A><P>
+  <a class="navlinks" href="index.php"><?php etranslate("Access public calendar")?></a><br />
 <?php } ?>
 
 <?php
 if ( $demo_mode == "Y" ) {
   // This is used on the sourceforge demo page
-  echo "Demo login: user = \"demo\", password = \"demo\" <P>";
+  echo "Demo login: user = \"demo\", password = \"demo\" <br />";
 }
 ?>
-<BR><BR><BR>
-<FONT SIZE="-1">
+<br /><br /><br />
+<font size="-1">
 <?php etranslate("cookies-note")?>
-<P>
-<HR><P>
-<A HREF="<?php echo $PROGRAM_URL ?>" CLASS="aboutinfo"><?php echo $PROGRAM_NAME?></A>
-</FONT>
+<br />
+<hr /><p>
+<a href="<?php echo $PROGRAM_URL ?>" CLASS="aboutinfo"><?php echo $PROGRAM_NAME?></a>
+</font>
 <?php
 // Print custom trailer (since we do not call print_trailer function)
 if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
@@ -200,5 +200,5 @@ if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
   }
 }
 ?>
-</BODY>
-</HTML>
+</body>
+</html>
