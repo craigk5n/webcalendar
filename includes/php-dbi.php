@@ -31,7 +31,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 //
 // History:
 //	23-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
-/			Added documentation to be used with php2html.pl
+//			Added documentation to be used with php2html.pl
 //	19-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
 //			Add option for verbose error messages.
 //	19-Jan-2004	Craig Knudsen <cknudsen@cknudsen.com>
@@ -66,6 +66,8 @@ $phpdbiVerbose = false;
   *	Use a pooled connection if the db supports it and
   *	the <tt>db_persistent</tt> setting is enabled.
   *	<br/>Notes:<ul>
+  *	<li> The database type is determined by the global
+  *	     variable <tt>db_type</tt>
   *	<li> For ODBC, $host is ignored, $database = DSN</li>
   *	<li> For Oracle, $database = tnsnames name</li>
   *	<li> Use the dbi_error function to get error information if
