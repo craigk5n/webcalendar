@@ -162,14 +162,13 @@ print_header();
 </table>
 </div>
 
-<br /><br />
-
+<br />
 <?php if ( empty ( $friendly ) ) {
 
 display_unapproved_events ( $login );
 
 ?>
-<br /><br />
+<br />
 <a class="navlinks" href="year.php?<?php
   if ( $thisyear )
     echo "year=$thisyear&";
