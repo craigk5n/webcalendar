@@ -40,21 +40,21 @@ INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, ca
  * after midnight.  In that case a secondary event will be created with
  * cal_ext_for_id set to the cal_id of the original entry.
  * The following tables contain additional information about each
- * event: <UL>
- * <LI> <A HREF="#webcal_entry_user">webcal_entry_user</A> -
+ * event: <ul>
+ * <li><a href="#webcal_entry_user">webcal_entry_user</a> -
  *  lists participants in the event and specifies the status (accepted,
- *  rejected) and category of each participant.
- * <LI> <A HREF="#webcal_entry_repeats">webcal_entry_repeats</A> -
- *  contains information if the event repeats.
- * <LI> <A HREF="#webcal_entry_repeats_not">webcal_entry_repeats_not</A> -
+ *  rejected) and category of each participant.</li>
+ * <li><a href="#webcal_entry_repeats">webcal_entry_repeats</a> -
+ *  contains information if the event repeats.</li>
+ * <li><a href="#webcal_entry_repeats_not">webcal_entry_repeats_not</a> -
  *  specifies which dates the repeating event does not repeat (because
- *  they were deleted or modified for just that date by the user)
- * <LI> <A HREF="#webcal_entry_log">webcal_entry_log</A> -
- *  provides a history of changes to this event.
- * <LI> <A HREF="#webcal_site_extras">webcal_site_extras</A> -
+ *  they were deleted or modified for just that date by the user)</li>
+ * <li><a href="#webcal_entry_log">webcal_entry_log</a> -
+ *  provides a history of changes to this event.</li>
+ * <li><a href="#webcal_site_extras">webcal_site_extras</a> -
  *  stores event data as defined in site_extras.php (such as reminders and
- *  other custom event fields).
- * </UL>
+ *  other custom event fields).</li>
+ * </ul>
  */
 CREATE TABLE webcal_entry (
   /* cal_id is unique integer id for event */
@@ -95,19 +95,19 @@ CREATE TABLE webcal_entry (
 
 /*
  * Defines repeating info about an event.
- * The event is defined in <A HREF="#webcal_entry">webcal_entry</A>.
+ * The event is defined in <a href="#webcal_entry">webcal_entry</a>.
  */
 CREATE TABLE webcal_entry_repeats (
   /* event id */
   cal_id INT DEFAULT 0 NOT NULL,
-  /* type of repeating:<UL> */
-  /* <LI>  daily - repeats daily */
-  /* <LI>  monthlyByDate - repeats on same kday of the month */
-  /* <LI>  monthlyByDayR - repeats on same weekday of the month */
-  /*         (counting weeks from the end of the month is in last Monday) */
-  /* <LI>  monthlyByDay - repeats on specified weekday (2nd Monday, for example) */
-  /* <LI>  weekly - repeats every week */
-  /* <LI>  yearly - repeats on same date every year */
+  /* type of repeating:<ul> */
+  /* <li>daily - repeats daily</li> */
+  /* <li>monthlyByDate - repeats on same kday of the month</li> */
+  /* <li>monthlyByDayR - repeats on same weekday of the month */
+  /*         (counting weeks from the end of the month is in last Monday)</li> */
+  /* <li>monthlyByDay - repeats on specified weekday (2nd Monday, for example)</li> */
+  /* <li>weekly - repeats every week</li> */
+  /* <li>yearly - repeats on same date every year</li> */
   cal_type VARCHAR(20),
   /* end date for repeating event (in YYYYMMDD format) */
   cal_end INT,
@@ -123,7 +123,7 @@ CREATE TABLE webcal_entry_repeats (
  * This table specifies which dates in a repeating
  * event have either been deleted or replaced with
  * a replacement event for that day.  When replaced, the cal_group_id
- * (I know... not the best name, but it was n0t being used) column will
+ * (I know... not the best name, but it was not being used) column will
  * be set to the original event.  That way the user can delete the original
  * event and (at the same time) delete any exception events.
  */
@@ -139,17 +139,17 @@ CREATE TABLE webcal_entry_repeats_not (
 /*
  * This table associates one or more users with an event by the event id.
  * The event can be found in
- * <A HREF="#webcal_entry">webcal_entry</A>.
+ * <a href="#webcal_entry">webcal_entry</a>.
  */
 CREATE TABLE webcal_entry_user (
   /* event id */
   cal_id INT DEFAULT 0 NOT NULL,
   /* participant in the event */
   cal_login VARCHAR(25) NOT NULL,
-  /* status of event for this user: <UL> */
-  /* <LI>   A=Accepted */
-  /* <LI>   R=Rejected */
-  /* <LI>   W=Waiting    </UL>*/
+  /* status of event for this user: <ul> */
+  /* <li>A=Accepted</li> */
+  /* <li>R=Rejected</li> */
+  /* <li>W=Waiting</li>    </ul>*/
   cal_status CHAR(1) DEFAULT 'A',
   /* category of the event for this user */
   cal_category INT DEFAULT NULL,
@@ -164,7 +164,7 @@ CREATE TABLE webcal_entry_user (
  * with it.  This table is not used unless external users is enabled
  * in system settings.
  * The event can be found in
- * <A HREF="#webcal_entry">webcal_entry</A>.
+ * <a href="#webcal_entry">webcal_entry</a>.
  */
 CREATE TABLE webcal_entry_ext_user (
   /* event id */
@@ -182,7 +182,7 @@ CREATE TABLE webcal_entry_ext_user (
  * Specify preferences for a user.
  * Most preferences are set via pref.php.
  * Values in this table are loaded after system settings
- * found in <A HREF="#webcal_config">webcal_config</A>.
+ * found in <a href="#webcal_config">webcal_config</a>.
  */
 CREATE TABLE webcal_user_pref (
   /* user login */
@@ -249,7 +249,7 @@ CREATE TABLE webcal_reminder_log (
 
 /*
  * Define a group.  Group members can be found in
- * <A HREF="#webcal_group_user">webcal_group_user</A>.
+ * <a href="#webcal_group_user">webcal_group_user</a>.
  */
 CREATE TABLE webcal_group (
   /* unique group id */
@@ -265,7 +265,7 @@ CREATE TABLE webcal_group (
 
 /*
  * Specify users in a group.  The group is defined in
- * <A HREF="#webcal_group">webcal_group</A>.
+ * <a href="#webcal_group">webcal_group</a>.
  */
 CREATE TABLE webcal_group_user (
   /* group id */
@@ -279,7 +279,7 @@ CREATE TABLE webcal_group_user (
  * A "view" allows a user to put the calendars of multiple users all on
  * one page.  A "view" is valid only for the owner (cal_owner) of the
  * view.  Users for the view are in
- * <A HREF="#webcal_view_user">webcal_view_user</A>.
+ * <a href="#webcal_view_user">webcal_view_user</a>.
  */
 CREATE TABLE webcal_view (
   /* unique view id */
@@ -294,7 +294,7 @@ CREATE TABLE webcal_view (
 );
 
 /*
- * Specify users in a view. See <A HREF="#webcal_view">webcal_view</A>.
+ * Specify users in a view. See <a href="#webcal_view">webcal_view</a>.
  */
 CREATE TABLE webcal_view_user (
   /* view id */
@@ -413,13 +413,13 @@ CREATE TABLE webcal_entry_log (
   cal_login VARCHAR(25) NOT NULL,
   /* user of calendar affected */
   cal_user_cal VARCHAR(25) NULL,
-  /* log types:  <UL> */
-  /* <LI>    C: Created  */
-  /* <LI>    A: Approved/Confirmed by user  */
-  /* <LI>    R: Rejected by user  */
-  /* <LI>    U: Updated by user  */
-  /* <LI>    M: Mail Notification sent  */
-  /* <LI>    E: Reminder sent     </UL>*/
+  /* log types:  <ul> */
+  /* <li>C: Created</li>  */
+  /* <li>A: Approved/Confirmed by user</li>  */
+  /* <li>R: Rejected by user</li>  */
+  /* <li>U: Updated by user</li>  */
+  /* <li>M: Mail Notification sent</li>  */
+  /* <li>E: Reminder sent</li>     </ul>*/
   cal_type CHAR(1) NOT NULL,
   /* date in YYYYMMDD format */
   cal_date INT NOT NULL,
@@ -526,26 +526,26 @@ CREATE TABLE webcal_report (
   /* name of the report */
   cal_report_name VARCHAR(50) NOT NULL,
   /* time range for report:  <ul> */
-  /* <li>  0 = tomorrow */
-  /* <li>  1 = today */
-  /* <li>  2 = yesterday */
-  /* <li>  3 = day before yesterday */
-  /* <li>  10 = next week */
-  /* <li>  11 = current week */
-  /* <li>  12 = last week */
-  /* <li>  13 = week before last */
-  /* <li>  20 = next week and week after */
-  /* <li>  21 = current week and next week */
-  /* <li>  22 = last week and this week */
-  /* <li>  23 = last two weeks */
-  /* <li>  30 = next month */
-  /* <li>  31 = current month */
-  /* <li>  32 = last month */
-  /* <li>  33 = month before last */
-  /* <li>  40 = next year */
-  /* <li>  41 = current year */
-  /* <li>  42 = last year */
-  /* <li>  43 = year before last */
+  /* <li>0 = tomorrow</li> */
+  /* <li>1 = today</li> */
+  /* <li>2 = yesterday</li> */
+  /* <li>3 = day before yesterday</li> */
+  /* <li>10 = next week</li> */
+  /* <li>11 = current week</li> */
+  /* <li>12 = last week</li> */
+  /* <li>13 = week before last</li> */
+  /* <li>20 = next week and week after</li> */
+  /* <li>21 = current week and next week</li> */
+  /* <li>22 = last week and this week</li> */
+  /* <li>23 = last two weeks</li> */
+  /* <li>30 = next month</li> */
+  /* <li>31 = current month</li> */
+  /* <li>32 = last month</li> */
+  /* <li>33 = month before last</li> */
+  /* <li>40 = next year</li> */
+  /* <li>41 = current year</li> */
+  /* <li>42 = last year</li> */
+  /* <li>43 = year before last</li> */
   /* </ul> */
   cal_time_range INT NOT NULL,
   /* user calendar to display (NULL indicates current user) */
@@ -568,35 +568,35 @@ CREATE TABLE webcal_report (
  * Defines one of the templates used for a report.
  * Each report has three templates:
  * <ol>
- * <li> Page template - Defines the entire page (except for header and
+ * <li>Page template - Defines the entire page (except for header and
  *   footer).  The following variables can be defined:
  *   <ul>
- *     <li> ${days}<sup>*</sup> - the HTML of all dates (generated from the Date template)
- *   </ul>
- * <li> Date template - Defines events for one day.  If the report
+ *     <li>${days}<sup>*</sup> - the HTML of all dates (generated from the Date template)</li>
+ *   </ul></li>
+ * <li>Date template - Defines events for one day.  If the report
  *   is for a week or month, then the results of each day will be
  *   concatenated and used as the ${days} variable in the Page template.
  *   The following variables can be defined:
  *   <ul>
- *     <li> ${events}<sup>*</sup> - the HTML of all events
- *          for the data (generated from the Event template)
- *     <li> ${date} - the date
- *     <li> ${fulldate} - date (includes weekday)
- *   </ul>
- * <li> Event template - Defines a single event.
+ *     <li>${events}<sup>*</sup> - the HTML of all events
+ *          for the data (generated from the Event template)</li>
+ *     <li>${date} - the date</li>
+ *     <li>${fulldate} - date (includes weekday)</li>
+ *   </ul></li>
+ * <li>Event template - Defines a single event.
  *      The following variables can be defined:
  *   <ul>
- *     <li> ${name}<sup>*</sup> - Brief Description of event
- *     <li> ${description} - Full Description of event
- *     <li> ${date} - Date of event
- *     <li> ${fulldate} - Date of event (includes weekday)
- *     <li> ${time} - Time of event (4:00pm - 4:30pm)
- *     <li> ${starttime} - Start time of event
- *     <li> ${endtime} - End time of event
- *     <li> ${duration} - Duration of event (in minutes)
- *     <li> ${priority} - Priority of event
- *     <li> ${href} - URL to view event details
- *   </ul>
+ *     <li>${name}<sup>*</sup> - Brief Description of event</li>
+ *     <li>${description} - Full Description of event</li>
+ *     <li>${date} - Date of event</li>
+ *     <li>${fulldate} - Date of event (includes weekday)</li>
+ *     <li>${time} - Time of event (4:00pm - 4:30pm)</li>
+ *     <li>${starttime} - Start time of event</li>
+ *     <li>${endtime} - End time of event</li>
+ *     <li>${duration} - Duration of event (in minutes)</li>
+ *     <li>${priority} - Priority of event</li>
+ *     <li>${href} - URL to view event details</li>
+ *   </ul></li>
  * </ol>
  * <sup>*</sup> denotes a required template variable
  */
@@ -604,15 +604,12 @@ CREATE TABLE webcal_report_template (
   /* report id (in webcal_report table) */
   cal_report_id INT NOT NULL,
   /* type of template: <ul> */
-  /* <li> 'P': page template represents entire document */
-  /* <li> 'D': date template represents a single day of events */
-  /* <li> 'E': event template represents a single event */
+  /* <li>'P': page template represents entire document</li> */
+  /* <li>'D': date template represents a single day of events</li> */
+  /* <li>'E': event template represents a single event</li> */
   /* </ul> */
   cal_template_type CHAR(1) NOT NULL,
   /* text of template */
   cal_template_text TEXT,
   PRIMARY KEY ( cal_report_id, cal_template_type )
 );
-
-
-
