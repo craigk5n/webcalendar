@@ -7,13 +7,14 @@ print_header($INC);
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Export")?></FONT></H2>
 
-<FORM ACTION="export_handler.php/webcalendar-export.txt" METHOD="POST" NAME="exportform">
+<FORM ACTION="export_handler.php" METHOD="POST" NAME="exportform">
 
 <TABLE BORDER=0>
 <TR><TD><B><?php etranslate("Export format")?>:</B></TD><TD><SELECT NAME="format">
+  <OPTION VALUE="ical">iCalendar
+  <OPTION VALUE="vcal">vCalendar
   <OPTION VALUE="pilot-csv">pilot-datebook CSV (<?php etranslate("Palm Pilot")?>)
   <OPTION VALUE="pilot-text">install-datebook (<?php etranslate("Palm Pilot")?>)
-  <OPTION VALUE="ical">iCal
 </SELECT></TD></TR>
 <TR><TD></TD><TD><INPUT TYPE="checkbox" NAME="use_all_dates" VALUE="y"></INPUT>
   <B><?php etranslate("Export all dates")?></B></TD></TR>
@@ -105,7 +106,7 @@ print_header($INC);
   <INPUT TYPE="button" ONCLICK="selectDate('modday','modmonth','modyear')" VALUE="<?php etranslate("Select")?>...">
 </TD></TR>
 
-<TR><TD COLSPAN="2"><INPUT TYPE="submit" VALUE="<?php etranslate("Export")?>"></TD></TR>
+<TR><TD COLSPAN="2"><INPUT TYPE="button" VALUE="<?php etranslate("Export")?>" onClick=form_submit(this.form)></TD></TR>
 
 </TABLE>
 </FORM>
