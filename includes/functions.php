@@ -21,6 +21,31 @@ if ( ! strstr ( $PHP_SELF, "login.php" ) && ! empty ( $GLOBALS["login"] ) ) {
   $GLOBALS["login"] = "";
 }
 
+// List global variables that will not be allowed to be set via HTTP GET/POST
+// This is a security precaution to prevent users from overriding any
+// global variables.
+$noSet = array (
+  "is_admin" => 1,
+  "db_type" => 1,
+  "db_host" => 1,
+  "db_login" => 1,
+  "db_password" => 1,
+  "db_persistent" => 1,
+  "PROGRAM_NAME" => 1,
+  "PROGRAM_URL" => 1,
+  "readonly" => 1,
+  "single_user" => 1,
+  "single_user_login" => 1,
+  "use_http_auth" => 1,
+  "user_inc" => 1,
+  "NONUSER_PREFIX" => 1,
+  "languages" => 1,
+  "browser_languages" => 1,
+  "pub_acc_enabled" => 1,
+  "user_can_update_password" => 1,
+  "admin_can_add_user" => 1,
+  "admin_can_delete_user" => 1,
+);
 
 // This code is a temporary hack to make the application work when
 // register_globals is set to Off in php.ini (the default setting in
@@ -32,8 +57,10 @@ if ( ! empty ( $HTTP_GET_VARS ) ) {
         $GLOBALS[$key] = $val;
       }
     } else {
-      $GLOBALS[$key] = $val;
-      //echo "XXX $key<BR>";
+      if ( empty ( $noSet[$key] ) ) {
+        $GLOBALS[$key] = $val;
+        //echo "XXX $key<BR>";
+      }
     }
     //echo "GET var '$key' = '$val' <BR>";
   }
@@ -41,7 +68,9 @@ if ( ! empty ( $HTTP_GET_VARS ) ) {
 }
 if ( ! empty ( $HTTP_POST_VARS ) ) {
   while (list($key, $val) = @each($HTTP_POST_VARS)) {
-    $GLOBALS[$key] = $val;
+    if ( empty ( $noSet[$key] ) ) {
+      $GLOBALS[$key] = $val;
+    }
   }
   reset ( $HTTP_POST_VARS );
 }
@@ -53,7 +82,9 @@ if ( ! empty ( $HTTP_POST_VARS ) ) {
 //}
 if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
   while (list($key, $val) = @each($HTTP_COOKIE_VARS)) {
-    $GLOBALS[$key] = $val;
+    if ( empty ( $noSet[$key] ) ) {
+      $GLOBALS[$key] = $val;
+    }
     //echo "COOKIE var '$key' = '$val' <BR>";
   }
   reset ( $HTTP_COOKIE_VARS );
