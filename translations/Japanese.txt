@@ -4,7 +4,7 @@
 # Translated by:
 #	your name and email here...
 # Last update: 20 May 2001
-# Translation last updated on 07-21-2003
+# Translation last updated on 02-17-2004
 
 
 ###############################################
@@ -72,6 +72,27 @@ Your browser default language is: Your browser default language is
 #
 # << MISSING >>
 # Fonts:
+#
+# << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: ‚Í‚¢
+No: ‚¢‚¢‚¦
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: Preferred view
 Day: “ú
@@ -86,8 +107,22 @@ Year: ”N
 #
 # << MISSING >>
 # Display weekends in week view:
-Yes: ‚Í‚¢
-No: ‚¢‚¢‚¦
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 #
 # << MISSING >>
 # date-format-help:
@@ -183,6 +218,22 @@ to: ‚Ö
 # Disable Repeating field:
 #
 # << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
+#
+# << MISSING >>
 # allow-view-other-help:
 # English text: Specifies whether one user may view another user's calendar.
 #
@@ -221,6 +272,14 @@ to: ‚Ö
 #
 # << MISSING >>
 # Public access new events require approval:
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -670,27 +729,6 @@ You are not authorized to edit this entry: ‚±‚ÌƒGƒ“ƒgƒŠ[‚Ì•ÒW‚Í‹–‰Â‚³‚ê‚Ä‚¢‚Ü‚
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: ˆÈ‰º‚ª‹L“ü‚µ‚½ŠÔ‚Æd‚È‚Á‚Ä‚¢‚Ü‚·
-Unnamed Event: –¼Ì‚Ì‚È‚¢ƒCƒxƒ“ƒg
-#
-# << MISSING >>
-# The description is:
-Title: Q‰æĞƒJƒŒƒ“ƒ_[
-A new appointment has been made for you by: V‚µ‚¢—\’è‚ªˆÈ‰º‚Ìl‚É‚æ‚Á‚Ä’Ç‰Á‚³‚ê‚Ü‚µ‚½F
-An appointment has been updated by: —\’è‚ªˆÈ‰º‚Ìl‚É‚æ‚Á‚Ä•ÒW‚³‚ê‚Ü‚µ‚½F
-The subject is: ‰Û‘èF
-Please look on: QÆ‚µ‚Ä‚­‚¾‚³‚¢
-to accept or reject this appointment: ‚±‚Ì—\’è‚ğó‚¯“ü‚ê‚é‚©ó‚¯“ü‚ê‚È‚¢‚©‚·‚é
-to view this appointment: —\’è‚ğŒ©‚é
-Scheduling Conflict: ƒXƒPƒWƒ…[ƒ‹‚ªd‚È‚Á‚Ä‚¢‚Ü‚·
-Your suggested time of: —\’èŠÔ
-conflicts with the following existing calendar entries: ˆÈ‰º‚ÌƒGƒ“ƒgƒŠ[‚Æd‚È‚Á‚Ä‚¢‚Ü‚·F
-Cancel: ƒLƒƒƒ“ƒZƒ‹
-
-
-###############################################
 # Page: edit_layer.php
 #
 Edit Layer: ƒŒƒCƒ„[‚ğ•ÒW
@@ -799,7 +837,7 @@ Users: ƒ†[ƒU
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
 
 
@@ -925,12 +963,7 @@ Layers: ƒŒƒCƒ„[
 
 
 ###############################################
-# Page: help_pref.php
-#
-#
-# << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
+# Page: help_admin.php
 #
 
 
@@ -978,109 +1011,6 @@ Unapproved Events: ”F‰Â‚³‚ê‚Ä‚¢‚È‚¢ƒCƒxƒ“ƒg
 #
 # << MISSING >>
 # Public Access:
-
-
-###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: —\’è‚ªˆÈ‰º‚Ìl‚É‚æ‚Á‚Ä‹‘”Û‚³‚ê‚Ü‚µ‚½
-
-
-###############################################
-# Page: search.php
-#
-Search: ŒŸõ
-#
-# << MISSING >>
-# Advanced Search:
-Keywords: ƒL[ƒ[ƒh
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: ƒL[ƒ[ƒh‚ğ‚P‚ÂˆÈã“ü—Í‚µ‚Ä‚­‚¾‚³‚¢
-Search Results: ŒŸõŒ‹‰Ê
-match found: ŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚µ‚½
-matches found: ŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚µ‚½
-No matches found: ŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: ‘¼‚Ìƒ†[ƒU‚ÌƒJƒŒƒ“ƒ_[‚ğŒ©‚é
-Go: ƒS[
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-#
-# << MISSING >>
-# You have not added any categories:
-#
-# << MISSING >>
-# Set Category:
-
-
-###############################################
-# Page: users.php
-#
-denotes administrative user: ƒAƒhƒ~ƒ“^ŠÇ—ƒ†[ƒU‚ğ•\¦
-Add New User: V‚µ‚¢ƒ†[ƒU‚ğ’Ç‰Á
-
-
-###############################################
-# Page: usersel.php
-#
-#
-# << MISSING >>
-# All:
-#
-# << MISSING >>
-# Reset:
-#
-# << MISSING >>
-# Remove:
-#
-# << MISSING >>
-# Ok:
-
-
-###############################################
-# Page: import.php
-#
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
 
 
 ###############################################
@@ -1144,6 +1074,113 @@ Add to My Calendar: ƒ}ƒCEƒJƒŒƒ“ƒ_[‚É’Ç‰Á
 #
 # << MISSING >>
 # Export this entry to:
+
+
+###############################################
+# Page: view_v.php
+#
+
+
+###############################################
+# Page: month.php
+#
+
+
+###############################################
+# Page: pref_handler.php
+#
+
+
+###############################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: —\’è‚ªˆÈ‰º‚Ìl‚É‚æ‚Á‚Ä‹‘”Û‚³‚ê‚Ü‚µ‚½
+#
+# << MISSING >>
+# The description is:
+Title: Q‰æĞƒJƒŒƒ“ƒ_[
+
+
+###############################################
+# Page: search.php
+#
+Search: ŒŸõ
+#
+# << MISSING >>
+# Advanced Search:
+Keywords: ƒL[ƒ[ƒh
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: ƒL[ƒ[ƒh‚ğ‚P‚ÂˆÈã“ü—Í‚µ‚Ä‚­‚¾‚³‚¢
+Search Results: ŒŸõŒ‹‰Ê
+match found: ŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚µ‚½
+matches found: ŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚µ‚½
+No matches found: ŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: ‘¼‚Ìƒ†[ƒU‚ÌƒJƒŒƒ“ƒ_[‚ğŒ©‚é
+Go: ƒS[
+
+
+###############################################
+# Page: publish.php
+#
+
+
+###############################################
+# Page: users.php
+#
+denotes administrative user: ƒAƒhƒ~ƒ“^ŠÇ—ƒ†[ƒU‚ğ•\¦
+Add New User: V‚µ‚¢ƒ†[ƒU‚ğ’Ç‰Á
+
+
+###############################################
+# Page: usersel.php
+#
+#
+# << MISSING >>
+# All:
+#
+# << MISSING >>
+# Reset:
+#
+# << MISSING >>
+# Remove:
+#
+# << MISSING >>
+# Ok:
+Cancel: ƒLƒƒƒ“ƒZƒ‹
+
+
+###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
+# Page: year.php
+#
 
 
 ###############################################
@@ -1234,6 +1271,45 @@ Add to My Calendar: ƒ}ƒCEƒJƒŒƒ“ƒ_[‚É’Ç‰Á
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+#
+# << MISSING >>
+# default-category-help:
+# English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: report.php
+#
+Private: ƒvƒ‰ƒCƒx[ƒg@@Private
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
 # Page: login.php
 #
 You must enter a login and password: ƒƒOƒCƒ“‚ÆƒpƒXƒ[ƒh‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢
@@ -1257,12 +1333,6 @@ cookies-note: <B>Note:</B> This application requires cookies to be enabled.
 # Page: week_details.php
 #
 New Entry: V‚µ‚¢ƒGƒ“ƒgƒŠ[
-Private: ƒvƒ‰ƒCƒx[ƒg@@Private
-
-
-###############################################
-# Page: view_l.php
-#
 
 
 ###############################################
@@ -1281,14 +1351,13 @@ Back to My Calendar: ƒ}ƒCEƒJƒŒƒ“ƒ_[‚É–ß‚é
 #
 # << MISSING >>
 # The import file contained no data:
+The following conflicts with the suggested time: ˆÈ‰º‚ª‹L“ü‚µ‚½ŠÔ‚Æd‚È‚Á‚Ä‚¢‚Ü‚·
+Unnamed Event: –¼Ì‚Ì‚È‚¢ƒCƒxƒ“ƒg
+Scheduling Conflict: ƒXƒPƒWƒ…[ƒ‹‚ªd‚È‚Á‚Ä‚¢‚Ü‚·
+conflicts with the following existing calendar entries: ˆÈ‰º‚ÌƒGƒ“ƒgƒŠ[‚Æd‚È‚Á‚Ä‚¢‚Ü‚·F
 #
 # << MISSING >>
 # Event Imported:
-
-
-###############################################
-# Page: year.php
-#
 
 
 ###############################################
@@ -1356,9 +1425,6 @@ Back to My Calendar: ƒ}ƒCEƒJƒŒƒ“ƒ_[‚É–ß‚é
 # Year before last:
 #
 # << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
 # Unnamed Report:
 #
 # << MISSING >>
@@ -1403,26 +1469,6 @@ Current User: Œ»İ‚Ìƒ†[ƒU
 
 
 ###############################################
-# Page: report.php
-#
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
 # Page: assistant_edit.php
 #
 #
@@ -1440,11 +1486,6 @@ Current User: Œ»İ‚Ìƒ†[ƒU
 
 ###############################################
 # Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: publish.php
 #
 
 
@@ -1503,6 +1544,40 @@ Current User: Œ»İ‚Ìƒ†[ƒU
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: V‚µ‚¢—\’è‚ªˆÈ‰º‚Ìl‚É‚æ‚Á‚Ä’Ç‰Á‚³‚ê‚Ü‚µ‚½F
+An appointment has been updated by: —\’è‚ªˆÈ‰º‚Ìl‚É‚æ‚Á‚Ä•ÒW‚³‚ê‚Ü‚µ‚½F
+The subject is: ‰Û‘èF
+Please look on: QÆ‚µ‚Ä‚­‚¾‚³‚¢
+to accept or reject this appointment: ‚±‚Ì—\’è‚ğó‚¯“ü‚ê‚é‚©ó‚¯“ü‚ê‚È‚¢‚©‚·‚é
+to view this appointment: —\’è‚ğŒ©‚é
+Your suggested time of: —\’èŠÔ
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+#
+# << MISSING >>
+# You have not added any categories:
+#
+# << MISSING >>
+# Set Category:
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: ˆÚ“®
@@ -1523,45 +1598,6 @@ Account: ƒAƒJƒEƒ“ƒg
 ###############################################
 # Page: includes/connect.php
 #
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: ”ñŒöŠJƒCƒxƒ“ƒg
-#
-# << MISSING >>
-# exceeds limit of XXX events per day:
-#
-# << MISSING >>
-# You have XXX unapproved events:
-January: ‚PŒ
-February: ‚QŒ
-March: ‚RŒ
-April: ‚SŒ
-#
-# << MISSING >>
-# May_:
-# English text: May
-#
-June: ‚UŒ
-July: ‚VŒ
-August: ‚WŒ
-September: ‚XŒ
-October: ‚P‚OŒ
-November: ‚P‚PŒ
-Jan: ‚PŒ
-Feb: ‚QŒ
-Mar: ‚RŒ
-Apr: ‚SŒ
-May: ‚TŒ
-Jun: ‚UŒ
-Jul: ‚VŒ
-Aug: ‚WŒ
-Sep: ‚XŒ
-Oct: ‚P‚OŒ
-Nov: ‚P‚PŒ
-Dec: ‚P‚QŒ
 
 
 ###############################################
@@ -1609,6 +1645,45 @@ Invalid login: ƒƒOƒCƒ“‚Í–³Œø‚Å‚·
 ###############################################
 # Page: includes/dbtable.php
 #
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: ”ñŒöŠJƒCƒxƒ“ƒg
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
+#
+# << MISSING >>
+# You have XXX unapproved events:
+January: ‚PŒ
+February: ‚QŒ
+March: ‚RŒ
+April: ‚SŒ
+#
+# << MISSING >>
+# May_:
+# English text: May
+#
+June: ‚UŒ
+July: ‚VŒ
+August: ‚WŒ
+September: ‚XŒ
+October: ‚P‚OŒ
+November: ‚P‚PŒ
+Jan: ‚PŒ
+Feb: ‚QŒ
+Mar: ‚RŒ
+Apr: ‚SŒ
+May: ‚TŒ
+Jun: ‚UŒ
+Jul: ‚VŒ
+Aug: ‚WŒ
+Sep: ‚XŒ
+Oct: ‚P‚OŒ
+Nov: ‚P‚PŒ
+Dec: ‚P‚QŒ
 
 
 ###############################################

@@ -5,9 +5,10 @@
 # Last update: 27 July 2003
 # check out the tools directory which contains two perl scripts:
 # check_translation.pl will tell you if you have successfully translated all re
-# Translation last updated on 07-21-2003
+# Translation last updated on 02-17-2004
 
-# No charset specified
+# No charset specified (not needed for iso-8859-1)
+# "charset" is used in a meta tag, do not translate "charset" here.
 # charset:
 
 
@@ -36,6 +37,27 @@ Language: taal
 Your browser default language is: De browsertaal is
 fonts-help: Specificeert een lijst van systeem-fonts die gebruikt kunnen worden, zoals Verdana, Arial, Helvetica, etc.
 Fonts: fonts
+#
+# << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: ja
+No: nee
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
 preferred-view-help: Specificeert de standaard agendaview - dag, week, maand, jaar.
 Preferred view: standaard-weergave
 Day: dag
@@ -44,8 +66,22 @@ Month: maand
 Year: jaar
 display-weekends-help: toon ook weekenden in week-view.
 Display weekends in week view: toon ook weekenden in week-view.
-Yes: ja
-No: nee
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 date-format-help: Hier geeft u aan hoe de datum wordt weergegeven.
 Date format: datumweergave
 December: december
@@ -83,6 +119,22 @@ disable-participants-field-help: Door [ja] te kiezen wordt het veld Aanwezigenni
 Disable Participants field: de-activeer veld Aanwezigen
 disable-repeating-field-help: Door [ja] te kiezen wordt het veld [herhalingspatroon] niet getoond bij het toevoegen van afspraken; uw agenda kan hierdoor overzichtelijk worden.
 Disable Repeating field: de-activeer veld Herhalingspatroon
+#
+# << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
 allow-view-other-help: Definieert of een gebruiker de agenda van andere gebruikers mag inzien.
 Allow viewing other user's calendars: inzage agenda andere gebruikers toestaan
 allow-public-access-help: Indien ingeschakeld kan de agenda worden gebruikt als read-only publieke agenda; gebruikers hoeven in dit geval niet in te loggen
@@ -93,6 +145,14 @@ public-access-can-add-help: Indien ingeschakeld kunnen gebruikers, die de agenda
 Public access can add events: toevoegen nieuwe afspraken bij publieke toegang toestaan
 public-access-add-requires-approval-help: Deze optie bepaalt of afspraken voor de publieke agenda goedgekeurd moeten worden voordat zij zichtbaar zijn.
 Public access new events require approval: goedkeuring vereisen voor afspraken in publieke agenda
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 allow-view-add-help: in alle views wordt een '+' getoond zodat sneller een afspraak in een andere agenda kan worden gezet.
 Include add event link in views: toon icoon voor maken van afspraken in alle views
 allow-external-users-help: Hiermee kan een extern persoon als aanwezige bij een bepaalde afspraak worden gespecificeerd.
@@ -318,25 +378,6 @@ You are not authorized to edit this entry: u heeft geen toegang tot deze afspraa
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: De voorgestelde tijd conflicteert met de volgende afspraak
-Unnamed Event: naamloze afspraak
-The description is: De omschrijving van de afspraak luidt
-Title: Titel
-A new appointment has been made for you by: Er is een nieuwe afspraak voor u gemaakt door
-An appointment has been updated by: Er is een afspraak voor u bijgewerkt door
-The subject is: Het betreft afspraak
-Please look on: Raadpleegt u
-to accept or reject this appointment: om deze afspraak te bevestigen of te weigeren.
-to view this appointment: om deze afspraak te bekijken.
-Scheduling Conflict: agendaconflict
-Your suggested time of: De door u voorgestelde tijd
-conflicts with the following existing calendar entries: conflicteert met de volgende bestaande afspraken
-Cancel: annuleer
-
-
-###############################################
 # Page: edit_layer.php
 #
 Edit Layer: laag wijzigen
@@ -425,7 +466,7 @@ Add New Group: groep toevoegen
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
 
 
@@ -493,9 +534,8 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
-# Page: help_pref.php
+# Page: help_admin.php
 #
-default-category-help: Hiermee wordt de standaard-categorie voor nieuwe afspraken ingesteld.
 
 
 ###############################################
@@ -537,6 +577,41 @@ Public Access: publieke toegang
 
 
 ###############################################
+# Page: view_entry.php
+#
+every: elke
+2nd: 2e
+3rd: 3e
+4th: 4e
+5th: 5e
+1st: 1e
+last: laatste
+Description: omschrijving
+Status: status
+Waiting for approval: nog niet bevestigd
+Deleted: verwijderd
+Rejected: geweigerd
+External User: externe deelnemers
+Approve/Confirm entry: afspraak bevestigen
+Reject entry: afspraak weigeren
+Set category: bepaal categorie
+Edit repeating entry for all dates: WIJZIG de gehele reeks met afspraken
+Edit entry for this date: WIJZIG alleen de afspraak op deze datum
+This will delete this entry for all users.: De afspraak wordt uit de agenda verwijderd.
+Delete repeating event for all dates: VERWIJDER de gehele reeks met afspraken
+Delete entry only for this date: VERWIJDER alleen de afspraak op deze datum (N.B.: niet mogelijk voor de eerste dag)
+Edit entry: afspraak wijzigen
+This will delete the entry from your calendar.: De afspraak wordt uit de agenda verwijderd.
+Do you want to add this entry to your calendar?: Deze afspraak ook in uw eigen agenda plaatsen?
+This will add the entry to your calendar.: Bevestig om de afspraak in uw eigen agenda te plaatsen.
+Add to My Calendar: zet afspraak ook in mijn eigen agenda
+Email all participants: stuur emailbericht naar alle aanwezigen
+Show activity log: toon logboek
+Hide activity log: verberg logboek
+Export this entry to: exporteer afspraak naar
+
+
+###############################################
 # Page: view_v.php
 #
 
@@ -555,6 +630,8 @@ Public Access: publieke toegang
 # Page: reject_entry.php
 #
 An appointment has been rejected by: Er is een afspraak geweigerd door
+The description is: De omschrijving van de afspraak luidt
+Title: Titel
 
 
 ###############################################
@@ -583,10 +660,8 @@ Go: tonen
 
 
 ###############################################
-# Page: set_entry_cat.php
+# Page: publish.php
 #
-You have not added any categories: u heeft geen categorie toegevoegd
-Set Category: bepaal categorie
 
 
 ###############################################
@@ -603,6 +678,7 @@ All: alle
 Reset: reset
 Remove: verwijderen
 Ok: OK
+Cancel: annuleer
 
 
 ###############################################
@@ -616,39 +692,8 @@ vCal File: selecteer vCal-bestand
 
 
 ###############################################
-# Page: view_entry.php
+# Page: year.php
 #
-every: elke
-2nd: 2e
-3rd: 3e
-4th: 4e
-5th: 5e
-1st: 1e
-#
-last: laatste
-Description: omschrijving
-Status: status
-Waiting for approval: nog niet bevestigd
-Deleted: verwijderd
-Rejected: geweigerd
-External User: externe deelnemers
-Approve/Confirm entry: afspraak bevestigen
-Reject entry: afspraak weigeren
-Set category: bepaal categorie
-Edit repeating entry for all dates: WIJZIG de gehele reeks met afspraken
-Edit entry for this date: WIJZIG alleen de afspraak op deze datum
-This will delete this entry for all users.: De afspraak wordt uit de agenda verwijderd.
-Delete repeating event for all dates: VERWIJDER de gehele reeks met afspraken
-Delete entry only for this date: VERWIJDER alleen de afspraak op deze datum (N.B.: niet mogelijk voor de eerste dag)
-Edit entry: afspraak wijzigen
-This will delete the entry from your calendar.: De afspraak wordt uit de agenda verwijderd.
-Do you want to add this entry to your calendar?: Deze afspraak ook in uw eigen agenda plaatsen?
-This will add the entry to your calendar.: Bevestig om de afspraak in uw eigen agenda te plaatsen.
-Add to My Calendar: zet afspraak ook in mijn eigen agenda
-Email all participants: stuur emailbericht naar alle aanwezigen
-Show activity log: toon logboek
-Hide activity log: verberg logboek
-Export this entry to: exporteer afspraak naar
 
 
 ###############################################
@@ -703,6 +748,29 @@ Add New NonUser Calendar: losse agenda toevoegen
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+default-category-help: Hiermee wordt de standaard-categorie voor nieuwe afspraken ingesteld.
+
+
+###############################################
+# Page: report.php
+#
+Private: prive-afspraak
+Approved: goedgekeurd
+Unknown: onbekend
+to manage reports for the Public Access calendar: om rapportages voor de publieke agenda te beheren
+Add new report: rapportage toevoegen
+Invalid report id: ongeldige rapportage-ID
+Manage Reports: rapportagebeheer
+
+
+###############################################
 # Page: login.php
 #
 You must enter a login and password: U moet een gebruikersnaam en een wachtwoord invullen.
@@ -722,12 +790,6 @@ You must specify a view name: Bepaal de naam voor dit overzicht
 # Page: week_details.php
 #
 New Entry: nieuwe afspraak
-Private: prive-afspraak
-
-
-###############################################
-# Page: view_l.php
-#
 
 
 ###############################################
@@ -738,12 +800,11 @@ Errors: fouten
 Back to My Calendar: EIGEN AGENDA
 There was an error parsing the import file or no events were returned: Er heeft zich een fout voorgedaan bij het verwerken van het importbestand of er zijn geen items aangetroffen
 The import file contained no data: Het importbestand bevat geen gegevens.
+The following conflicts with the suggested time: De voorgestelde tijd conflicteert met de volgende afspraak
+Unnamed Event: naamloze afspraak
+Scheduling Conflict: agendaconflict
+conflicts with the following existing calendar entries: conflicteert met de volgende bestaande afspraken
 Event Imported: geimporteerd item
-
-
-###############################################
-# Page: year.php
-#
 
 
 ###############################################
@@ -769,7 +830,6 @@ Next year: volgend jaar
 This year: dit jaar
 Last year: vorig jaar
 Year before last: jaar voor afgelopen jaar
-Invalid report id: ongeldige rapportage-ID
 Unnamed Report: naamloze rapportage
 Add Report: rapportage toevoegen
 Edit Report: rapportage wijzigen
@@ -788,16 +848,6 @@ Are you sure you want to delete this report?: Weet u zeker dat u deze rapportage
 
 
 ###############################################
-# Page: report.php
-#
-Approved: goedgekeurd
-Unknown: onbekend
-to manage reports for the Public Access calendar: om rapportages voor de publieke agenda te beheren
-Add new report: rapportage toevoegen
-Manage Reports: rapportagebeheer
-
-
-###############################################
 # Page: assistant_edit.php
 #
 Assistants: assistenten
@@ -811,11 +861,6 @@ Yours assistants: uw agenda-assistenten
 
 ###############################################
 # Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: publish.php
 #
 
 
@@ -848,6 +893,36 @@ Variable N not found: Variabele N niet gevonden
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Er is een nieuwe afspraak voor u gemaakt door
+An appointment has been updated by: Er is een afspraak voor u bijgewerkt door
+The subject is: Het betreft afspraak
+Please look on: Raadpleegt u
+to accept or reject this appointment: om deze afspraak te bevestigen of te weigeren.
+to view this appointment: om deze afspraak te bekijken.
+Your suggested time of: De door u voorgestelde tijd
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: u heeft geen categorie toegevoegd
+Set Category: bepaal categorie
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: ga naar
@@ -864,37 +939,6 @@ Manage calendar of: beheer de agenda van
 ###############################################
 # Page: includes/connect.php
 #
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: vertrouwelijk - details niet beschikbaar
-exceeds limit of XXX events per day: de grens van XXX afspraken per dag is bereikt
-You have XXX unapproved events: Er zijn XXX openstaande afspraken
-January: januari
-February: februari
-March: maart
-April: april
-May_: mei
-June: juni
-July: juli
-August: augustus
-September: september
-October: oktober
-November: november
-Jan: jan
-Feb: feb
-Mar: maa
-Apr: apr
-May: mei
-Jun: jun
-Jul: jul
-Aug: aug
-Sep: sep
-Oct: okt
-Nov: nov
-Dec: dec
 
 
 ###############################################
@@ -933,12 +977,45 @@ Send Reminder: herinnering sturen
 ###############################################
 # Page: includes/init.php
 #
-charset: charset (karakterset)
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
 #
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: vertrouwelijk - details niet beschikbaar
+exceeds limit of XXX events per day: de grens van XXX afspraken per dag is bereikt
+You have XXX unapproved events: Er zijn XXX openstaande afspraken
+January: januari
+February: februari
+March: maart
+April: april
+May_: mei
+June: juni
+July: juli
+August: augustus
+September: september
+October: oktober
+November: november
+Jan: jan
+Feb: feb
+Mar: maa
+Apr: apr
+May: mei
+Jun: jun
+Jul: jul
+Aug: aug
+Sep: sep
+Oct: okt
+Nov: nov
+Dec: dec
 
 
 ###############################################

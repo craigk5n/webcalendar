@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 01-29-2004
+# Translation last updated on 02-17-2004
 
 
 ###############################################
@@ -437,6 +437,11 @@ You must specify a group name: You must specify a group name
 # Page: groups.php
 #
 Add New Group: Add New Group
+
+
+###############################################
+# Page: icalfb.php
+#
 
 
 ###############################################

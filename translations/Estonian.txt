@@ -17,7 +17,7 @@
 #
 #
 #
-# Translation last updated on 07-21-2003
+# Translation last updated on 02-17-2004
 
 
 ###############################################
@@ -51,6 +51,27 @@ Language: Keel
 Your browser default language is: Sinu lehitseja kodukeel on
 fonts-help: Määrab ära missuguseid kirjatüüpe kasutada (näiteks "Arial, Helvetica")
 Fonts: Kirjatüübid
+#
+# << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: jah
+No: ei
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
 preferred-view-help: Määrab ära vaikimisi valitud vaate (päev, nädal, kuu, aasta).
 Preferred view: Eelistatud vaade
 Day: päev
@@ -59,8 +80,22 @@ Month: kuu
 Year: aasta
 display-weekends-help: lisa ka nädalavahetused kui vaatad nädalat
 Display weekends in week view: näita nädalavahetusi nädala vaates
-Yes: jah
-No: ei
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 date-format-help: Määrab eelistatud kuupäeva seaded.
 Date format: Kuupäeva seaded
 December: detsember
@@ -98,6 +133,22 @@ disable-participants-field-help: Valides "Jah" kaob "Osalejate" väli sündmuse le
 Disable Participants field: Keela Osalejate väli
 disable-repeating-field-help: Valides "Jah" kaob "Korduv" väli kui lisad sündmusi ja algajatel on lihtsam lehekülg.
 Disable Repeating field: Keela Korduv väli
+#
+# << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
 allow-view-other-help: Määrab kas kasutaja saab näha teiste kalendreid.
 Allow viewing other user's calendars: Luba näha teiste kalendreid
 allow-public-access-help: Kui on lubatud, siis saab kalendrit kasutada kirjutamise keeluga avaliku kalendrina kuhu ei nõuta sisse registreerimist.
@@ -108,6 +159,14 @@ public-access-can-add-help: Kui on lubatud, siis avalik kasutaja saab lisada sün
 Public access can add events: Avalik kasutaja saab lisada sündmusi
 public-access-add-requires-approval-help: Määrab kas avaliku ligipääsu kaudu lisatud sündmused vajavad heakskiitu.
 Public access new events require approval: Avaliku kasutuse uued sündmused vajavad heakskiitu:
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 allow-view-add-help: '+' ikoon on lisatud vaadetesse lubamaks kasutajal kiiresti lisada sündmusi teiste kasutajate kalendritesse.
 Include add event link in views: Kaasa lisa sündmus viide vaadetesse
 allow-external-users-help: Määrab kas kalendri mitte kasutajaid saab kutsuda sündmustele. See lubab kalendri mittekasutajaid loetleda kui sündmusel osalejaid.
@@ -377,25 +436,6 @@ You are not authorized to edit this entry: Sul ei ole lubatud muuta seda kannet
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: Järgmised sündmused on vastuolus soovitud ajaga
-Unnamed Event: Nimetu sündmus
-The description is: Kirjeldus on
-Title: WebCalendar
-A new appointment has been made for you by: Sulle on määratud uus kohtumine
-An appointment has been updated by: An appointment has been updated by
-The subject is: Sisu on
-Please look on: Palun vaata
-to accept or reject this appointment: kohtumise heakskiitmiseks või tagasilükkamiseks
-to view this appointment: kohtumise nägemiseks
-Scheduling Conflict: Kavandame vastuolu
-Your suggested time of: Sinu soovitud aeg
-conflicts with the following existing calendar entries: on vastuolus järgmiste kalendri kannetega
-Cancel: Loobu
-
-
-###############################################
 # Page: edit_layer.php
 #
 Edit Layer: Muuda kihti
@@ -486,7 +526,7 @@ Add New Group: Lisa uus grupp
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
 
 
@@ -572,9 +612,8 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
-# Page: help_pref.php
+# Page: help_admin.php
 #
-default-category-help: Määrab kategooria kuhu uus sündmus väikimisi kuulub.
 
 
 ###############################################
@@ -616,95 +655,6 @@ Public Access: Avalik ligipääs
 
 
 ###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: Kohtumise lükkas tagasi
-
-
-###############################################
-# Page: search.php
-#
-Search: Otsi
-Advanced Search: Keerulisem otsing
-Keywords: Võtmesõnad
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: Pead sisestama ühe või mitu võtmesõna
-Search Results: Otsingu tulemused
-match found: vaste leitud
-matches found: vasteid leitud
-No matches found: Ühtegi vastet ei leitud
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: Vaata teise kasutaja kalendrit
-Go: Mine
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-You have not added any categories: Ssa pole lisanud ühtegi kategooriat
-Set Category: Määra kategooria
-
-
-###############################################
-# Page: users.php
-#
-denotes administrative user: määrab administratiivse kasutaja
-Add New User: Lisa uus kasutaja
-
-
-###############################################
-# Page: usersel.php
-#
-All: Kõik
-Reset: Tühista
-Remove: Eemalda
-Ok: Ok
-
-
-###############################################
-# Page: import.php
-#
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
-
-
-###############################################
 # Page: view_entry.php
 #
 every: iga
@@ -741,6 +691,101 @@ Hide activity log: Peida kasutamise ajalugu
 #
 # << MISSING >>
 # Export this entry to:
+
+
+###############################################
+# Page: view_v.php
+#
+
+
+###############################################
+# Page: month.php
+#
+
+
+###############################################
+# Page: pref_handler.php
+#
+
+
+###############################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: Kohtumise lükkas tagasi
+The description is: Kirjeldus on
+Title: WebCalendar
+
+
+###############################################
+# Page: search.php
+#
+Search: Otsi
+Advanced Search: Keerulisem otsing
+Keywords: Võtmesõnad
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Pead sisestama ühe või mitu võtmesõna
+Search Results: Otsingu tulemused
+match found: vaste leitud
+matches found: vasteid leitud
+No matches found: Ühtegi vastet ei leitud
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: Vaata teise kasutaja kalendrit
+Go: Mine
+
+
+###############################################
+# Page: publish.php
+#
+
+
+###############################################
+# Page: users.php
+#
+denotes administrative user: määrab administratiivse kasutaja
+Add New User: Lisa uus kasutaja
+
+
+###############################################
+# Page: usersel.php
+#
+All: Kõik
+Reset: Tühista
+Remove: Eemalda
+Ok: Ok
+Cancel: Loobu
+
+
+###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
+# Page: year.php
+#
 
 
 ###############################################
@@ -817,6 +862,41 @@ View Type: Vaata tüüpi
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+default-category-help: Määrab kategooria kuhu uus sündmus väikimisi kuulub.
+
+
+###############################################
+# Page: report.php
+#
+Private: Isiklik
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
 # Page: login.php
 #
 You must enter a login and password: Pead sisestama kasutajanime ja salasõna
@@ -836,12 +916,6 @@ You must specify a view name: Pead näitama vaate nime
 # Page: week_details.php
 #
 New Entry: uus kanne
-Private: Isiklik
-
-
-###############################################
-# Page: view_l.php
-#
 
 
 ###############################################
@@ -860,14 +934,13 @@ Back to My Calendar: Tagasi minu kalendrisse
 #
 # << MISSING >>
 # The import file contained no data:
+The following conflicts with the suggested time: Järgmised sündmused on vastuolus soovitud ajaga
+Unnamed Event: Nimetu sündmus
+Scheduling Conflict: Kavandame vastuolu
+conflicts with the following existing calendar entries: on vastuolus järgmiste kalendri kannetega
 #
 # << MISSING >>
 # Event Imported:
-
-
-###############################################
-# Page: year.php
-#
 
 
 ###############################################
@@ -935,9 +1008,6 @@ Back to My Calendar: Tagasi minu kalendrisse
 # Year before last:
 #
 # << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
 # Unnamed Report:
 #
 # << MISSING >>
@@ -982,26 +1052,6 @@ Current User: Käesolev kasutaja
 
 
 ###############################################
-# Page: report.php
-#
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
 # Page: assistant_edit.php
 #
 Assistants: Abilised
@@ -1015,11 +1065,6 @@ Yours assistants: Sinu abiline
 
 ###############################################
 # Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: publish.php
 #
 
 
@@ -1078,6 +1123,36 @@ Yours assistants: Sinu abiline
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Sulle on määratud uus kohtumine
+An appointment has been updated by: An appointment has been updated by
+The subject is: Sisu on
+Please look on: Palun vaata
+to accept or reject this appointment: kohtumise heakskiitmiseks või tagasilükkamiseks
+to view this appointment: kohtumise nägemiseks
+Your suggested time of: Sinu soovitud aeg
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: Ssa pole lisanud ühtegi kategooriat
+Set Category: Määra kategooria
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: Mine
@@ -1094,37 +1169,6 @@ Manage calendar of: Tegele kalendriga
 ###############################################
 # Page: includes/connect.php
 #
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: Sündmus on isiklik
-exceeds limit of XXX events per day: ületab päeva piiri XXX sündmust päevas
-You have XXX unapproved events: Sul on XXX heakskiitmata sündmust
-January: jaanuar
-February: veebruar
-March: märts
-April: aprill
-May_: mai
-June: juuni
-July: juuli
-August: august
-September: september
-October: oktoober
-November: november
-Jan: jaan
-Feb: veeb
-Mar: märts
-Apr: apr
-May: mai
-Jun: juuni
-Jul: juuli
-Aug: aug
-Sep: sept
-Oct: okt
-Nov: nov
-Dec: dets
 
 
 ###############################################
@@ -1168,6 +1212,37 @@ Send Reminder: Saada meeldetuletus
 ###############################################
 # Page: includes/dbtable.php
 #
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: Sündmus on isiklik
+exceeds limit of XXX events per day: ületab päeva piiri XXX sündmust päevas
+You have XXX unapproved events: Sul on XXX heakskiitmata sündmust
+January: jaanuar
+February: veebruar
+March: märts
+April: aprill
+May_: mai
+June: juuni
+July: juuli
+August: august
+September: september
+October: oktoober
+November: november
+Jan: jaan
+Feb: veeb
+Mar: märts
+Apr: apr
+May: mai
+Jun: juuni
+Jul: juuli
+Aug: aug
+Sep: sept
+Oct: okt
+Nov: nov
+Dec: dets
 
 
 ###############################################

@@ -4,7 +4,7 @@
 # Translated by:
 #	Gyorgy Baffia <gyorgy@baffia.hu>
 # Last update: 05 Sep 2001
-# Translation last updated on 07-21-2003
+# Translation last updated on 02-17-2004
 
 
 ###############################################
@@ -72,6 +72,27 @@ Your browser default language is: A böngészõd alapértelmezett nyelve
 #
 # << MISSING >>
 # Fonts:
+#
+# << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: Igen
+No: Nem
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
 preferred-view-help: Az alapértelmezett nézetet adja meg (Napi, Heti, Havi vagy Éves).
 Preferred view: Kedvenc nézet
 Day: Nap
@@ -86,8 +107,22 @@ Year: Év
 #
 # << MISSING >>
 # Display weekends in week view:
-Yes: Igen
-No: Nem
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 #
 # << MISSING >>
 # date-format-help:
@@ -183,6 +218,22 @@ to: vége
 # Disable Repeating field:
 #
 # << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
+#
+# << MISSING >>
 # allow-view-other-help:
 # English text: Specifies whether one user may view another user's calendar.
 #
@@ -221,6 +272,14 @@ to: vége
 #
 # << MISSING >>
 # Public access new events require approval:
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -670,27 +729,6 @@ You are not authorized to edit this entry: Nincs jogod ezt a bejegyzést módosíta
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: A javasolt idõponttal a következõ ütközik
-Unnamed Event: Ismeretlen esemény
-#
-# << MISSING >>
-# The description is:
-Title: WebNaptár
-A new appointment has been made for you by: Egy új tennivalót írt be számodra
-An appointment has been updated by: Egy tennivalót módosított
-The subject is: A tárgy
-Please look on: Légyszives nézd meg
-to accept or reject this appointment: -ban, hogy megfelelõ-e Neked ez az idõpont
-to view this appointment: -ban a tennivaló részleteit
-Scheduling Conflict: Idõpontok ütközése
-Your suggested time of: Az általad javasolt
-conflicts with the following existing calendar entries: -es idõpont ütközik a következõ eseményekkel
-Cancel: Mégsem
-
-
-###############################################
 # Page: edit_layer.php
 #
 Edit Layer: Réteg módosítása
@@ -799,7 +837,7 @@ Users: Felhasználók
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
 
 
@@ -925,12 +963,7 @@ Layers: Rétegek
 
 
 ###############################################
-# Page: help_pref.php
-#
-#
-# << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
+# Page: help_admin.php
 #
 
 
@@ -978,109 +1011,6 @@ Unapproved Events: Jóváhagyás nélküli események
 #
 # << MISSING >>
 # Public Access:
-
-
-###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: Egy teendõt elutasított
-
-
-###############################################
-# Page: search.php
-#
-Search: Keresés
-#
-# << MISSING >>
-# Advanced Search:
-Keywords: Kulcsszavak
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: Legalább egy kulcsszót meg kell adnod
-Search Results: Találatok
-match found: egyezést találtam
-matches found: egyezést találtam
-No matches found: Nincs találat
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: Betekintés más felhasználók naptárába
-Go: Mehet
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-#
-# << MISSING >>
-# You have not added any categories:
-#
-# << MISSING >>
-# Set Category:
-
-
-###############################################
-# Page: users.php
-#
-denotes administrative user: adminisztrátor
-Add New User: Új felhasználó hozzáadása
-
-
-###############################################
-# Page: usersel.php
-#
-#
-# << MISSING >>
-# All:
-#
-# << MISSING >>
-# Reset:
-#
-# << MISSING >>
-# Remove:
-#
-# << MISSING >>
-# Ok:
-
-
-###############################################
-# Page: import.php
-#
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
 
 
 ###############################################
@@ -1144,6 +1074,113 @@ Add to My Calendar: Hozzáadás a Saját Naptáramhoz
 #
 # << MISSING >>
 # Export this entry to:
+
+
+###############################################
+# Page: view_v.php
+#
+
+
+###############################################
+# Page: month.php
+#
+
+
+###############################################
+# Page: pref_handler.php
+#
+
+
+###############################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: Egy teendõt elutasított
+#
+# << MISSING >>
+# The description is:
+Title: WebNaptár
+
+
+###############################################
+# Page: search.php
+#
+Search: Keresés
+#
+# << MISSING >>
+# Advanced Search:
+Keywords: Kulcsszavak
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Legalább egy kulcsszót meg kell adnod
+Search Results: Találatok
+match found: egyezést találtam
+matches found: egyezést találtam
+No matches found: Nincs találat
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: Betekintés más felhasználók naptárába
+Go: Mehet
+
+
+###############################################
+# Page: publish.php
+#
+
+
+###############################################
+# Page: users.php
+#
+denotes administrative user: adminisztrátor
+Add New User: Új felhasználó hozzáadása
+
+
+###############################################
+# Page: usersel.php
+#
+#
+# << MISSING >>
+# All:
+#
+# << MISSING >>
+# Reset:
+#
+# << MISSING >>
+# Remove:
+#
+# << MISSING >>
+# Ok:
+Cancel: Mégsem
+
+
+###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
+# Page: year.php
+#
 
 
 ###############################################
@@ -1234,6 +1271,45 @@ Add to My Calendar: Hozzáadás a Saját Naptáramhoz
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+#
+# << MISSING >>
+# default-category-help:
+# English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: report.php
+#
+Private: Magán
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
 # Page: login.php
 #
 You must enter a login and password: Add meg az azonosítódat és jelszavadat
@@ -1257,12 +1333,6 @@ cookies-note: <B>Megjegyzés:</B> A cookie-k engedélyezése szükséges a naptár has
 # Page: week_details.php
 #
 New Entry: Új bejegyzés
-Private: Magán
-
-
-###############################################
-# Page: view_l.php
-#
 
 
 ###############################################
@@ -1281,14 +1351,13 @@ Back to My Calendar: Vissza a Saját Naptáramhoz
 #
 # << MISSING >>
 # The import file contained no data:
+The following conflicts with the suggested time: A javasolt idõponttal a következõ ütközik
+Unnamed Event: Ismeretlen esemény
+Scheduling Conflict: Idõpontok ütközése
+conflicts with the following existing calendar entries: -es idõpont ütközik a következõ eseményekkel
 #
 # << MISSING >>
 # Event Imported:
-
-
-###############################################
-# Page: year.php
-#
 
 
 ###############################################
@@ -1356,9 +1425,6 @@ Back to My Calendar: Vissza a Saját Naptáramhoz
 # Year before last:
 #
 # << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
 # Unnamed Report:
 #
 # << MISSING >>
@@ -1403,26 +1469,6 @@ Current User: Felhasználó
 
 
 ###############################################
-# Page: report.php
-#
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
 # Page: assistant_edit.php
 #
 #
@@ -1440,11 +1486,6 @@ Current User: Felhasználó
 
 ###############################################
 # Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: publish.php
 #
 
 
@@ -1503,6 +1544,40 @@ Current User: Felhasználó
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Egy új tennivalót írt be számodra
+An appointment has been updated by: Egy tennivalót módosított
+The subject is: A tárgy
+Please look on: Légyszives nézd meg
+to accept or reject this appointment: -ban, hogy megfelelõ-e Neked ez az idõpont
+to view this appointment: -ban a tennivaló részleteit
+Your suggested time of: Az általad javasolt
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+#
+# << MISSING >>
+# You have not added any categories:
+#
+# << MISSING >>
+# Set Category:
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: Ugrás
@@ -1523,41 +1598,6 @@ Account: Adataim
 ###############################################
 # Page: includes/connect.php
 #
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: Ez az esemény bizalmas
-#
-# << MISSING >>
-# exceeds limit of XXX events per day:
-#
-# << MISSING >>
-# You have XXX unapproved events:
-January: Január
-February: Február
-March: Március
-April: Április
-May_: Május
-June: Június
-July: Július
-August: Augusztus
-September: Szeptember
-October: Október
-November: November
-Jan: Jan
-Feb: Feb
-Mar: Márc
-Apr: Ápr
-May: Máj
-Jun: Jún
-Jul: Júl
-Aug: Aug
-Sep: Szept
-Oct: Okt
-Nov: Nov
-Dec: Dec
 
 
 ###############################################
@@ -1603,6 +1643,41 @@ Send Reminder: Emlékeztetõ küldése
 ###############################################
 # Page: includes/dbtable.php
 #
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: Ez az esemény bizalmas
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
+#
+# << MISSING >>
+# You have XXX unapproved events:
+January: Január
+February: Február
+March: Március
+April: Április
+May_: Május
+June: Június
+July: Július
+August: Augusztus
+September: Szeptember
+October: Október
+November: November
+Jan: Jan
+Feb: Feb
+Mar: Márc
+Apr: Ápr
+May: Máj
+Jun: Jún
+Jul: Júl
+Aug: Aug
+Sep: Szept
+Oct: Okt
+Nov: Nov
+Dec: Dec
 
 
 ###############################################

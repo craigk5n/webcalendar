@@ -4,44 +4,14 @@
 # Translated by: liaobin@jite.net shenyi@jite.net
 # Last update: 2003-8-5
 # $Id$
-# Translation last updated on 08-05-2003
+# Translation last updated on 02-17-2004
 
 
 ###############################################
 # Specify a charset (will be sent within meta tag for each page)
 #
-charset: 字符集
+charset: gb2312
 
-
-
-###############################################
-# Page: activity_log.php
-#
-Activity Log: 活动日志
-User: 用户
-Calendar: 日历
-Date: 日期
-Time: 时间
-Event: 事件
-Action: 活动
-Event created: 事件已创建
-Event approved: 事件已到达
-Event rejected: 事件已拒绝
-Event updated: 事件已经更新
-Event deleted: 事件已删除
-Notification sent: 发送通知
-Reminder sent: 发送提醒
-Database error: 数据库错误
-Previous: 前一页
-Next: 下一页
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: 无效的纪录ID
-This is a private event and may not be added to your calendar.: 这是一个私人事件不能添加到您的日历中.
-Error adding event: 添加事件错误
 
 
 ###############################################
@@ -76,6 +46,27 @@ Language: 语言
 Your browser default language is: 您的浏览器预设的语言是
 fonts-help: 字体帮助
 Fonts: 字体
+#
+# << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: 是
+No: 否
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
 preferred-view-help: 描述默认的视图 (天, 周, 月, 或年).
 Preferred view: 查看选择
 Day: 日
@@ -88,8 +79,22 @@ Year: 年
 # English text: Include weekends when viewing a week.
 #
 Display weekends in week view: 显示周末
-Yes: 是
-No: 否
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 date-format-help: 描述合适的日期格式
 Date format: 日期格式
 December: 十二月
@@ -183,6 +188,22 @@ Disable Access field: 关闭访问域
 Disable Repeating field: 关闭重复域
 #
 # << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
+#
+# << MISSING >>
 # allow-view-other-help:
 # English text: Specifies whether one user may view another user's calendar.
 #
@@ -205,6 +226,14 @@ Public access can add events: 公共登录能添加事件
 #
 # << MISSING >>
 # Public access new events require approval:
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -371,6 +400,36 @@ Event popup text: 事件弹出文本颜色
 
 
 ###############################################
+# Page: activity_log.php
+#
+Activity Log: 活动日志
+User: 用户
+Calendar: 日历
+Date: 日期
+Time: 时间
+Event: 事件
+Action: 活动
+Event created: 事件已创建
+Event approved: 事件已到达
+Event rejected: 事件已拒绝
+Event updated: 事件已经更新
+Event deleted: 事件已删除
+Notification sent: 发送通知
+Reminder sent: 发送提醒
+Database error: 数据库错误
+Previous: 前一页
+Next: 下一页
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: 无效的纪录ID
+This is a private event and may not be added to your calendar.: 这是一个私人事件不能添加到您的日历中.
+Error adding event: 添加事件错误
+
+
+###############################################
 # Page: admin_handler.php
 #
 Error: 错误
@@ -381,19 +440,6 @@ The following error occurred: 发生了下面的错误
 # Page: approve_entry.php
 #
 Error approving event: 错误批准的事件
-
-
-###############################################
-# Page: assistant_edit.php
-#
-Assistants: 助理
-Admin mode: 管理员模式
-Yours assistants: 您的助理
-
-
-###############################################
-# Page: assistant_edit_handler.php
-#
 
 
 ###############################################
@@ -420,6 +466,7 @@ Add New Category: 新增分类
 ###############################################
 # Page: day.php
 #
+Admin mode: 管理员模式
 Assistant mode: 辅助模式
 Generate printer-friendly version: 产生打印版本
 Printer Friendly: 打印
@@ -550,25 +597,6 @@ You are not authorized to edit this entry: You are not authorized to edit this e
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: 在指定的时间内有下面的冲突
-Unnamed Event: 未命名的事件
-The description is: 详细说明
-Title: 标题
-A new appointment has been made for you by: 您有一个新事件, 提交者是
-An appointment has been updated by: 一个约会已经更新,更新人:
-The subject is: 主题是
-Please look on: 请查看
-to accept or reject this appointment: 决定接受或拒绝这个事件
-to view this appointment: 察看此约会
-Scheduling Conflict: 日程冲突
-Your suggested time of: 您指定的时间
-conflicts with the following existing calendar entries: 同下面已存在的日历事件冲突
-Cancel: 取消
-
-
-###############################################
 # Page: edit_layer.php
 #
 Edit Layer: 编辑层
@@ -586,53 +614,6 @@ Delete layer: 删除层
 #
 You cannot create a layer for yourself: 您不能您自己创建一个层
 You can only create one layer for each user: 您只能为一个用户来源设置一个层
-
-
-###############################################
-# Page: edit_report.php
-#
-Tomorrow: 明天
-Today: 今天
-Yesterday: 昨天
-Day before yesterday: 前天
-Next week: 下周
-This week: 本周
-Last week: 上周
-Week before last: 上上周
-Next week and week after: 下周和下周以后
-This week and next week: 本周和下周
-Last week and this week: 上周和本周
-Last two weeks: 最后两周
-Next month: 下月
-This month: 本月
-Last month: 上月
-Month before last: 上上月
-Next year: 明年
-This year: 今年
-Last year: 去年
-Year before last: 前年
-Invalid report id: 无效的报告编号
-Unnamed Report: 未命名的报告
-Add Report: 添加报告
-Edit Report: 编辑报告
-Report name: 报告名称
-Current User: 当前用户
-Include link in trailer: 包括尾部的联接
-Include standard header/trailer: 包括标准的头/尾
-Date range: 日期范围
-Include previous/next links: 包括前一个/后一个联接
-Include empty dates: 包括空日期
-Template variables: 临时变量
-Page template: 页面模版
-Day template: 日模版
-Event template: 事件模版
-Are you sure you want to delete this report?: 您确认删除这份报告吗？
-
-
-###############################################
-# Page: edit_report_handler.php
-#
-Variable N not found: 变量N未找到
 
 
 ###############################################
@@ -704,8 +685,52 @@ Add New Group: 新增组
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: 参数设置
+#
+# << MISSING >>
+# to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# tz-help:
+# English text: Specifies how many hours to adjust the time from server time to local time.
+#
+Timezone Offset: 时区设置
+Add N hours to: 添加 N 小时到
+Subtract N hours from: 减去 N 小时从
+same as: 相同与
+server time: 服务时间
+Default Category: 默认分类
+When I am the boss: 当我是老板
+Email me event notification: 给我事件的邮件通知
+I want to approve events: 我想参加这个事件
+#
+# << MISSING >>
+# allow-remote-subscriptions-help:
+# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+#
+#
+# << MISSING >>
+# remote-subscriptions-url-help:
+# English text: Displays the URL remote users should use to subscribe to your calendar.
+#
+#
+# << MISSING >>
+# URL:
+Sun: 周日
+Mon: 周一
+Tue: 周二
+Wed: 周三
+Thu: 周四
+Fri: 周五
+Sat: 周六
+Save Preferences: 保存参数
 
 
 ###############################################
@@ -721,57 +746,11 @@ Adding/Editing Calendar Entries: 新增/编辑 日历項目
 
 
 ###############################################
-# Page: help_import.php
-#
-Import: 输入
-Palm Desktop: Palm 桌面
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
-#
-# << MISSING >>
-# The following entries will not be imported:
-#
-# << MISSING >>
-# Entries older than the current date:
-#
-# << MISSING >>
-# Entries created in the Palm Desktop that have not been HotSync'd:
-#
-# << MISSING >>
-# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
-#
-# << MISSING >>
-# Therefore, updates should be made in the Palm Desktop.:
-#
-# << MISSING >>
-# vCal:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# The following formats have been tested:
-#
-# << MISSING >>
-# Palm Desktop 4:
-#
-# << MISSING >>
-# Lotus Organizer 6:
-#
-# << MISSING >>
-# Microsoft Outlook 2002:
-
-
-###############################################
 # Page: help_index.php
 #
 Help Index: 辅助索引
 Layers: 层次结构
-Preferences: 参数设置
+Import: 输入
 
 
 ###############################################
@@ -794,51 +773,14 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
-# Page: help_pref.php
-#
-Default Category: 默认分类
-#
-# << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
-#
-#
-# << MISSING >>
-# allow-remote-subscriptions-help:
-# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
-#
-# << MISSING >>
-# URL:
-#
-# << MISSING >>
-# remote-subscriptions-url-help:
-# English text: Displays the URL remote users should use to subscribe to your calendar.
+# Page: help_admin.php
 #
 
 
 ###############################################
-# Page: import.php
+# Page: week.php
 #
-Exclude private records: 不含个人纪录
-Datebook File: Datebook 文件
-vCal File: vCal 文件
-
-
-###############################################
-# Page: import_handler.php
-#
-Conflicting events: 冲突事件
-Errors: 错误
-Back to My Calendar: 返回我的日历
-#
-# << MISSING >>
-# There was an error parsing the import file or no events were returned:
-#
-# << MISSING >>
-# The import file contained no data:
-View this entry: 查看这个事件
-Event Imported: 事件已输入
+cont.: 继续
 
 
 ###############################################
@@ -863,6 +805,7 @@ Add layer: 新增层次
 ###############################################
 # Page: list_unapproved.php
 #
+View this entry: 查看这个事件
 Approve this entry?: 核准此事件?
 Approve/Confirm: 核准/确定
 Reject this entry?: 拒绝此事件?
@@ -873,69 +816,48 @@ Public Access: 公共的
 
 
 ###############################################
-# Page: login.php
+# Page: view_entry.php
 #
-You must enter a login and password: 您必须输入用户名称及密码
-Save login via cookies so I don't have to login next time: 将登录资料存储于 cookies 中，下次就不需要再登录系统。
-Login: 登录
-Access public calendar: 进入公共日历
-cookies-note: <B>注意:</B> 本程序需要 cookies 才能使用.
+every: 每
+2nd: 第二
+3rd: 第三
+4th: 第四
+5th: 第五
+1st: 第一
+last: 最后
+Description: 描述
+Status: 状态
+Waiting for approval: 等待核准
+Deleted: 已经删除
+Rejected: 拒绝的
+External User: 其他用户
+Approve/Confirm entry: 核准/确定 事件
+Reject entry: 拒绝事件
+Set category: 设置种类
+Edit repeating entry for all dates: 编辑所有日期的重复条目
+Edit entry for this date: 编辑这个日期的条目
+This will delete this entry for all users.: 对所有的用户也將會删除这个事件.
+Delete repeating event for all dates: 删除所有时间的这个重复事件
+Delete entry only for this date: 只有这个日期删除条目
+Edit entry: 编辑事件
+This will delete the entry from your calendar.: 这將會從您的日历删除这个事件.
+Do you want to add this entry to your calendar?: 您要新增这个事件到您的日历吗?
+This will add the entry to your calendar.: 这將會新增这个事件到您的日历.
+Add to My Calendar: 新增到我的日历
+Email all participants: 邮寄给所有的题者
+Show activity log: 显示活动日志
+Hide activity log: 隐藏活动日志
+Export this entry to: 输出此条目到
+
+
+###############################################
+# Page: view_v.php
+#
 
 
 ###############################################
 # Page: month.php
 #
-Sun: 周日
-Mon: 周一
-Tue: 周二
-Wed: 周三
-Thu: 周四
-Fri: 周五
-Sat: 周六
-
-
-###############################################
-# Page: nonusers.php
-#
-#
-# << MISSING >>
-# NONUSER_PREFIX not set:
-# English text: NONUSER_PREFIX has not been set in config.php.
-#
-#
-# << MISSING >>
-# NonUser:
-# English text: NonUser Calendars
-#
-Calendar ID: 日历编号
-Add New NonUser Calendar: 添加新的非日历用户
-
-
-###############################################
-# Page: nonusers_handler.php
-#
-
-
-###############################################
-# Page: pref.php
-#
-#
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-#
-# << MISSING >>
-# tz-help:
-# English text: Specifies how many hours to adjust the time from server time to local time.
-#
-Timezone Offset: 时区设置
-Add N hours to: 添加 N 小时到
-Subtract N hours from: 减去 N 小时从
-same as: 相同与
-server time: 服务时间
-When I am the boss: 当我是老板
-Email me event notification: 给我事件的邮件通知
-I want to approve events: 我想参加这个事件
-Save Preferences: 保存参数
 
 
 ###############################################
@@ -944,34 +866,11 @@ Save Preferences: 保存参数
 
 
 ###############################################
-# Page: publish.php
-#
-
-
-###############################################
-# Page: purge.php
-#
-
-
-###############################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: 约会已经被拒绝, 拒绝者是
-
-
-###############################################
-# Page: report.php
-#
-Private: 私人的
-Waiting for approval: 等待核准
-Deleted: 已经删除
-Rejected: 拒绝的
-Approved: 有效的
-Unknown: 未知的
-to manage reports for the Public Access calendar: 管理公共日历的报告
-Add new report: 新增报告
-cont.: 继续
-Manage Reports: 管理报告
+The description is: 详细说明
+Title: 标题
 
 
 ###############################################
@@ -1000,10 +899,8 @@ Go: 前往
 
 
 ###############################################
-# Page: set_entry_cat.php
+# Page: publish.php
 #
-You have not added any categories: 您还没有添加任何分类
-Set Category: 设置分类
 
 
 ###############################################
@@ -1020,6 +917,26 @@ All: 全部
 Reset: 更新
 Remove: 删除
 Ok: 确认
+Cancel: 取消
+
+
+###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+Exclude private records: 不含个人纪录
+Datebook File: Datebook 文件
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+vCal File: vCal 文件
+
+
+###############################################
+# Page: year.php
+#
 
 
 ###############################################
@@ -1028,54 +945,7 @@ Ok: 确认
 
 
 ###############################################
-# Page: view_entry.php
-#
-every: 每
-2nd: 第二
-3rd: 第三
-4th: 第四
-5th: 第五
-1st: 第一
-last: 最后
-Description: 描述
-Status: 状态
-External User: 其他用户
-Approve/Confirm entry: 核准/确定 事件
-Reject entry: 拒绝事件
-Set category: 设置种类
-Edit repeating entry for all dates: 编辑所有日期的重复条目
-Edit entry for this date: 编辑这个日期的条目
-This will delete this entry for all users.: 对所有的用户也將會删除这个事件.
-Delete repeating event for all dates: 删除所有时间的这个重复事件
-Delete entry only for this date: 只有这个日期删除条目
-Edit entry: 编辑事件
-This will delete the entry from your calendar.: 这將會從您的日历删除这个事件.
-Do you want to add this entry to your calendar?: 您要新增这个事件到您的日历吗?
-This will add the entry to your calendar.: 这將會新增这个事件到您的日历.
-Add to My Calendar: 新增到我的日历
-Email all participants: 邮寄给所有的题者
-Show activity log: 显示活动日志
-Hide activity log: 隐藏活动日志
-Export this entry to: 输出此条目到
-
-
-###############################################
-# Page: view_l.php
-#
-
-
-###############################################
 # Page: view_m.php
-#
-
-
-###############################################
-# Page: view_t.php
-#
-
-
-###############################################
-# Page: view_v.php
 #
 
 
@@ -1107,14 +977,68 @@ Month (on same calendar): 月(在相同的日历上)
 
 
 ###############################################
-# Page: views_edit_handler.php
+# Page: nonusers.php
 #
-You must specify a view name: 您必须指定一个视图名称
+#
+# << MISSING >>
+# NONUSER_PREFIX not set:
+# English text: NONUSER_PREFIX has not been set in config.php.
+#
+#
+# << MISSING >>
+# NonUser:
+# English text: NonUser Calendars
+#
+Calendar ID: 日历编号
+Add New NonUser Calendar: 添加新的非日历用户
 
 
 ###############################################
-# Page: week.php
+# Page: nonusers_handler.php
 #
+
+
+###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+#
+# << MISSING >>
+# default-category-help:
+# English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: report.php
+#
+Private: 私人的
+Approved: 有效的
+Unknown: 未知的
+to manage reports for the Public Access calendar: 管理公共日历的报告
+Add new report: 新增报告
+Invalid report id: 无效的报告编号
+Manage Reports: 管理报告
+
+
+###############################################
+# Page: login.php
+#
+You must enter a login and password: 您必须输入用户名称及密码
+Save login via cookies so I don't have to login next time: 将登录资料存储于 cookies 中，下次就不需要再登录系统。
+Login: 登录
+Access public calendar: 进入公共日历
+cookies-note: <B>注意:</B> 本程序需要 cookies 才能使用.
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: 您必须指定一个视图名称
 
 
 ###############################################
@@ -1124,12 +1048,217 @@ New Entry: 新事件
 
 
 ###############################################
-# Page: year.php
+# Page: import_handler.php
+#
+Conflicting events: 冲突事件
+Errors: 错误
+Back to My Calendar: 返回我的日历
+#
+# << MISSING >>
+# There was an error parsing the import file or no events were returned:
+#
+# << MISSING >>
+# The import file contained no data:
+The following conflicts with the suggested time: 在指定的时间内有下面的冲突
+Unnamed Event: 未命名的事件
+Scheduling Conflict: 日程冲突
+conflicts with the following existing calendar entries: 同下面已存在的日历事件冲突
+Event Imported: 事件已输入
+
+
+###############################################
+# Page: edit_report.php
+#
+Tomorrow: 明天
+Today: 今天
+Yesterday: 昨天
+Day before yesterday: 前天
+Next week: 下周
+This week: 本周
+Last week: 上周
+Week before last: 上上周
+Next week and week after: 下周和下周以后
+This week and next week: 本周和下周
+Last week and this week: 上周和本周
+Last two weeks: 最后两周
+Next month: 下月
+This month: 本月
+Last month: 上月
+Month before last: 上上月
+Next year: 明年
+This year: 今年
+Last year: 去年
+Year before last: 前年
+Unnamed Report: 未命名的报告
+Add Report: 添加报告
+Edit Report: 编辑报告
+Report name: 报告名称
+Current User: 当前用户
+Include link in trailer: 包括尾部的联接
+Include standard header/trailer: 包括标准的头/尾
+Date range: 日期范围
+Include previous/next links: 包括前一个/后一个联接
+Include empty dates: 包括空日期
+Template variables: 临时变量
+Page template: 页面模版
+Day template: 日模版
+Event template: 事件模版
+Are you sure you want to delete this report?: 您确认删除这份报告吗？
+
+
+###############################################
+# Page: assistant_edit.php
+#
+Assistants: 助理
+Yours assistants: 您的助理
+
+
+###############################################
+# Page: view_t.php
 #
 
 
 ###############################################
+# Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: help_import.php
+#
+Palm Desktop: Palm 桌面
+#
+# << MISSING >>
+# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
+#
+# << MISSING >>
+# The following entries will not be imported:
+#
+# << MISSING >>
+# Entries older than the current date:
+#
+# << MISSING >>
+# Entries created in the Palm Desktop that have not been HotSync'd:
+#
+# << MISSING >>
+# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
+#
+# << MISSING >>
+# Therefore, updates should be made in the Palm Desktop.:
+#
+# << MISSING >>
+# vCal:
+#
+# << MISSING >>
+# The following formats have been tested:
+#
+# << MISSING >>
+# Palm Desktop 4:
+#
+# << MISSING >>
+# Lotus Organizer 6:
+#
+# << MISSING >>
+# Microsoft Outlook 2002:
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+Variable N not found: 变量N未找到
+
+
+###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: 您有一个新事件, 提交者是
+An appointment has been updated by: 一个约会已经更新,更新人:
+The subject is: 主题是
+Please look on: 请查看
+to accept or reject this appointment: 决定接受或拒绝这个事件
+to view this appointment: 察看此约会
+Your suggested time of: 您指定的时间
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: 您还没有添加任何分类
+Set Category: 设置分类
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Go to: 到
+My Calendar: 我的日历
+Logout: 注销
+Another User's Calendar: 其他用户的日历
+Add New Entry: 新增事件
+Manage Views: 管理视图
+Edit Layers: 编辑层
+Account: 个人资料
+#
+# << MISSING >>
+# Manage calendar of:
+
+
+###############################################
 # Page: includes/connect.php
+#
+
+
+###############################################
+# Page: includes/user.php
+#
+Invalid login: 无效的登录
+Invalid user login: 登录用户无效
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: 发送邮件通知
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+
+
+###############################################
+# Page: includes/help_trailer.php
+#
+
+
+###############################################
+# Page: includes/init.php
 #
 
 
@@ -1167,60 +1296,6 @@ Sep: 9月
 Oct: 10月
 Nov: 11月
 Dec: 12月
-
-
-###############################################
-# Page: includes/help_trailer.php
-#
-Go to: 到
-
-
-###############################################
-# Page: includes/init.php
-#
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: 发送邮件通知
-
-
-###############################################
-# Page: includes/trailer.php
-#
-My Calendar: 我的日历
-Logout: 注销
-Another User's Calendar: 其他用户的日历
-Add New Entry: 新增事件
-Manage Views: 管理视图
-Edit Layers: 编辑层
-Account: 个人资料
-#
-# << MISSING >>
-# Manage calendar of:
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: 无效的登录
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-Invalid user login: 登录用户无效
-
-
-###############################################
-# Page: includes/user.php
-#
 
 
 ###############################################

@@ -17,9 +17,10 @@
 #
 #
 #
-# Translation last updated on 07-21-2003
+# Translation last updated on 02-17-2004
 
-# No charset specified
+# No charset specified (not needed for iso-8859-1)
+# "charset" is used in a meta tag, do not translate "charset" here.
 # charset:
 
 
@@ -48,6 +49,27 @@ Language: Iaith
 Your browser default language is: Iaith arferol eich porwr yw
 fonts-help: Mae hwn yn dangos rhestr o ffontiau'r system a ellir eu defnyddio (megis "Arial, Helvetica")
 Fonts: Ffontiau
+#
+# << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: Ie
+No: Na
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
 preferred-view-help: Mae hwn yn dynodi y golwg arferol (Dydd, Wythnos, Mis, neu Blwyddyn).
 Preferred view: Golwg ffafriedig
 Day: Dydd
@@ -56,8 +78,22 @@ Month: Mis
 Year: Blwyddyn
 display-weekends-help: Cynnhwysir penwythnosau yn y golwg wythnosol.
 Display weekends in week view: Dangoser penwythnosau yn y golwg wythnosol
-Yes: Ie
-No: Na
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 date-format-help: Mae hwn yn dynodi y fformat dyddiad arferol.
 Date format: Fformat dyddiad
 December: Rhagfyr
@@ -95,6 +131,22 @@ disable-participants-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn "Cyfrano
 Disable Participants field: Dim Cyfranogwyr
 disable-repeating-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn i "Ailgyflawni" wrth ychwanegu digywddiadau.  Mi fydd hyn yn gwneud pethau'n haws i bobl heb profiad o'r meddalwedd.
 Disable Repeating field: Dim Ailgyflawni
+#
+# << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
 allow-view-other-help: Mae hwn yn penderfynnu a yw un defnyddiwr yn gallu gwylio calendr defnyddiwr arall.
 Allow viewing other user's calendars: Caniatad i wylio calendr rhywun arall
 allow-public-access-help: Pan y dewisir yr optiwn yma gall y calendr yma ond cael ei ddefnyddio fel calendr cyhoeddus a ellir ei ddarllen yn unig, a sydd ddim yn gofyn i ddefnyddwyr i mewngofnodi.
@@ -111,6 +163,14 @@ Public access can add events: Gall rhai gyda Mynediad Cyhoeddus ychwanegu digwyd
 #
 # << MISSING >>
 # Public access new events require approval:
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -450,25 +510,6 @@ You are not authorized to edit this entry: Nid oes ganddo chi yr awdurdod i newi
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: Mae'r canlynol yn gwrthdaro gyda'r amser awgrymiedig
-Unnamed Event: Digwyddiad di-enw
-The description is: Y disgrifiad yw
-Title: Calendar We
-A new appointment has been made for you by: Mae digwyddiad newydd wedi ei greu i chi gan
-An appointment has been updated by: Mae digwyddiad wedi ei newid gan
-The subject is: Y pwnc yw
-Please look on: Edrychwch ar 
-to accept or reject this appointment: i derbyn neu gwrthod y digwyddiad yma
-to view this appointment: i wylio'r digwyddiad yma
-Scheduling Conflict: Gwrthdrawiad Amserlen
-Your suggested time of: Mae eich amser awgrymiedig o
-conflicts with the following existing calendar entries: yn gwrthdaro gyda'r digwyddiadau canlynol sydd yn bodoli eisoes
-Cancel: Dileu 
-
-
-###############################################
 # Page: edit_layer.php
 #
 Edit Layer: Newid Haen
@@ -561,7 +602,7 @@ Add New Group: Ychwanegu Grwp Newydd
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
 
 
@@ -661,9 +702,8 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
-# Page: help_pref.php
+# Page: help_admin.php
 #
-default-category-help: Mae hwn yn dynodi pa dosbarth y bydd digwyddiad newydd yn perthyn i yn arferol.
 
 
 ###############################################
@@ -709,95 +749,6 @@ Public Access: Calendr Cyhoeddus
 
 
 ###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: Gwrthodwyd digwyddiad gan
-
-
-###############################################
-# Page: search.php
-#
-Search: Chwiliad
-Advanced Search: Chwiliad Manwl
-Keywords: Allweddeiriau
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: Rhaid i chi defnyddio un neu fwy allweddeiriau chwilio
-Search Results: Canlyniadau Archwiliad
-match found: Darganfyddwyd ateb cyfatebol
-matches found: Darganfyddwyd atebion cyfatebol
-No matches found: Dim byd yn cyfateb
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: Gwylio Calendr Defnyddiwr arall
-Go: Ewch
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-You have not added any categories: Nid ydych wedi ychwanegu unrhyw dosbarthiadau
-Set Category: Gosod Dosbarth
-
-
-###############################################
-# Page: users.php
-#
-denotes administrative user: Dynoder defnyddiwr gweinyddol
-Add New User: Ychwanegu Defnyddiwr Newydd
-
-
-###############################################
-# Page: usersel.php
-#
-All: Pob
-Reset: Ail-osod
-Remove: Dileu
-Ok: Iawn
-
-
-###############################################
-# Page: import.php
-#
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
-
-
-###############################################
 # Page: view_entry.php
 #
 every: pob
@@ -836,6 +787,101 @@ Hide activity log: Cyddio cofnod gweithgarwch
 #
 # << MISSING >>
 # Export this entry to:
+
+
+###############################################
+# Page: view_v.php
+#
+
+
+###############################################
+# Page: month.php
+#
+
+
+###############################################
+# Page: pref_handler.php
+#
+
+
+###############################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: Gwrthodwyd digwyddiad gan
+The description is: Y disgrifiad yw
+Title: Calendar We
+
+
+###############################################
+# Page: search.php
+#
+Search: Chwiliad
+Advanced Search: Chwiliad Manwl
+Keywords: Allweddeiriau
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Rhaid i chi defnyddio un neu fwy allweddeiriau chwilio
+Search Results: Canlyniadau Archwiliad
+match found: Darganfyddwyd ateb cyfatebol
+matches found: Darganfyddwyd atebion cyfatebol
+No matches found: Dim byd yn cyfateb
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: Gwylio Calendr Defnyddiwr arall
+Go: Ewch
+
+
+###############################################
+# Page: publish.php
+#
+
+
+###############################################
+# Page: users.php
+#
+denotes administrative user: Dynoder defnyddiwr gweinyddol
+Add New User: Ychwanegu Defnyddiwr Newydd
+
+
+###############################################
+# Page: usersel.php
+#
+All: Pob
+Reset: Ail-osod
+Remove: Dileu
+Ok: Iawn
+Cancel: Dileu 
+
+
+###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
+# Page: year.php
+#
 
 
 ###############################################
@@ -912,6 +958,41 @@ View Type: Math Golwg
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+default-category-help: Mae hwn yn dynodi pa dosbarth y bydd digwyddiad newydd yn perthyn i yn arferol.
+
+
+###############################################
+# Page: report.php
+#
+Private: Preifat
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
 # Page: login.php
 #
 You must enter a login and password: Rhaid i chi cynnig mewngofnodiad a gair cydd
@@ -933,12 +1014,6 @@ cookies-note: <B>Note:</B> Mae'n hanfodol bod 'cookies' yn gweithio i'r meddalwe
 # Page: week_details.php
 #
 New Entry: Digwyddiad newydd
-Private: Preifat
-
-
-###############################################
-# Page: view_l.php
-#
 
 
 ###############################################
@@ -957,14 +1032,13 @@ Back to My Calendar: Nol i Fy Nghalendr
 #
 # << MISSING >>
 # The import file contained no data:
+The following conflicts with the suggested time: Mae'r canlynol yn gwrthdaro gyda'r amser awgrymiedig
+Unnamed Event: Digwyddiad di-enw
+Scheduling Conflict: Gwrthdrawiad Amserlen
+conflicts with the following existing calendar entries: yn gwrthdaro gyda'r digwyddiadau canlynol sydd yn bodoli eisoes
 #
 # << MISSING >>
 # Event Imported:
-
-
-###############################################
-# Page: year.php
-#
 
 
 ###############################################
@@ -1032,9 +1106,6 @@ Back to My Calendar: Nol i Fy Nghalendr
 # Year before last:
 #
 # << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
 # Unnamed Report:
 #
 # << MISSING >>
@@ -1079,26 +1150,6 @@ Current User: Defnyddiwr presennol
 
 
 ###############################################
-# Page: report.php
-#
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
 # Page: assistant_edit.php
 #
 #
@@ -1116,11 +1167,6 @@ Current User: Defnyddiwr presennol
 
 ###############################################
 # Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: publish.php
 #
 
 
@@ -1179,6 +1225,36 @@ Current User: Defnyddiwr presennol
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Mae digwyddiad newydd wedi ei greu i chi gan
+An appointment has been updated by: Mae digwyddiad wedi ei newid gan
+The subject is: Y pwnc yw
+Please look on: Edrychwch ar 
+to accept or reject this appointment: i derbyn neu gwrthod y digwyddiad yma
+to view this appointment: i wylio'r digwyddiad yma
+Your suggested time of: Mae eich amser awgrymiedig o
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: Nid ydych wedi ychwanegu unrhyw dosbarthiadau
+Set Category: Gosod Dosbarth
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: Ewch i 
@@ -1197,39 +1273,6 @@ Account: Cyfrif
 ###############################################
 # Page: includes/connect.php
 #
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: Mae'r digwyddiad yma yn gyfrinachol
-#
-# << MISSING >>
-# exceeds limit of XXX events per day:
-You have XXX unapproved events: Mae ganddoch XXX digwyddiad heb cymerawdyaeth
-January: Ionawr
-February: Chwefror
-March: Mawrth
-April: Ebrill
-May_: Mai
-June: Mehefin
-July: Gorffennaf
-August: Awst
-September: Medi
-October: Hydref
-November: Tachwedd
-Jan: Ionawr
-Feb: Chwefror
-Mar: Mawrth
-Apr: Ebrill
-May: Mai
-Jun: Mehefin
-Jul: Gorffennaf
-Aug: Awst
-Sep: Medi
-Oct: Hydref
-Nov: Tachwedd
-Dec: Rha
 
 
 ###############################################
@@ -1276,6 +1319,39 @@ Send Reminder: Anfoner atgofiad
 ###############################################
 # Page: includes/dbtable.php
 #
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: Mae'r digwyddiad yma yn gyfrinachol
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
+You have XXX unapproved events: Mae ganddoch XXX digwyddiad heb cymerawdyaeth
+January: Ionawr
+February: Chwefror
+March: Mawrth
+April: Ebrill
+May_: Mai
+June: Mehefin
+July: Gorffennaf
+August: Awst
+September: Medi
+October: Hydref
+November: Tachwedd
+Jan: Ionawr
+Feb: Chwefror
+Mar: Mawrth
+Apr: Ebrill
+May: Mai
+Jun: Mehefin
+Jul: Gorffennaf
+Aug: Awst
+Sep: Medi
+Oct: Hydref
+Nov: Tachwedd
+Dec: Rha
 
 
 ###############################################

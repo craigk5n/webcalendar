@@ -5,9 +5,10 @@
 #	Simone Cortesi <php@cortesi.com>
 #	Alessandro <a.orlandi@iol.it>
 # Last update: 22 July 2000
-# Translation last updated on 07-21-2003
+# Translation last updated on 02-17-2004
 
-# No charset specified
+# No charset specified (not needed for iso-8859-1)
+# "charset" is used in a meta tag, do not translate "charset" here.
 # charset:
 
 
@@ -70,6 +71,27 @@ Your browser default language is: La lingua di default del tuo browser e':
 # Fonts:
 #
 # << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: Sì
+No: No
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
+#
+# << MISSING >>
 # preferred-view-help:
 # English text: Specifies the default view (Day, Week, Month, or Year).
 #
@@ -84,8 +106,22 @@ Year: Anno
 # English text: Include weekends when viewing a week.
 #
 Display weekends in week view: Mostra i week-end nella vista della settimana
-Yes: Sì
-No: No
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 #
 # << MISSING >>
 # date-format-help:
@@ -163,6 +199,22 @@ Disable Participants field: Disattiva il campo "partecipanti"
 Disable Repeating field: Disattiva il campo "ripetizioni"
 #
 # << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
+#
+# << MISSING >>
 # allow-view-other-help:
 # English text: Specifies whether one user may view another user's calendar.
 #
@@ -191,6 +243,14 @@ Public access can add events: Permetti all'accesso pubblico di aggiungere eventi
 # English text: Specifies whether events added via the public access account require approval before being displayed.
 #
 Public access new events require approval: L'inserimento di un evento da pubblico accesso richiede l'approvazione
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -552,25 +612,6 @@ You are not authorized to edit this entry: Non sei autorizzato a modificare ques
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: Il seguente è in conflitto con l'orario suggerito
-Unnamed Event: Evento Senza Nome
-The description is: La descrizione è
-Title: WebCalendar
-A new appointment has been made for you by: Un nuovo appuntamento è stato fissato per te da
-An appointment has been updated by: Un appuntamento è stato aggiornato da
-The subject is: Il titolo è
-Please look on: Per favore guarda
-to accept or reject this appointment: per accettare o respingere questo appuntamento
-to view this appointment: per visualizzare questo appuntamento
-Scheduling Conflict: Conflitto di appuntamenti
-Your suggested time of: L'ora suggerita
-conflicts with the following existing calendar entries: è in conflitto con il seguente appuntamento già presente nel calendario
-Cancel: Cancella
-
-
-###############################################
 # Page: edit_layer.php
 #
 Edit Layer: Modifica il livello
@@ -661,7 +702,7 @@ Add New Group: Aggiungi un nuovo gruppo
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
 
 
@@ -761,12 +802,7 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
-# Page: help_pref.php
-#
-#
-# << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
+# Page: help_admin.php
 #
 
 
@@ -811,97 +847,6 @@ Public Access: Accesso Pubblico
 
 
 ###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: Un appuntamento è stato rifiutato da
-
-
-###############################################
-# Page: search.php
-#
-Search: Cerca
-Advanced Search: Ricerca Avanzata
-Keywords: Parole Chiave
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: Occorre inserire una o più parole chiave
-Search Results: Risultati della Ricerca
-match found: corrispondenza trovata
-matches found: corrispondenze trovate
-No matches found: Nessuna corrispondenza trovata
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: Visualizza calendario di un altro utente
-Go: Vai
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-You have not added any categories: Tu non hai ancora aggiunto nessuna categoria
-Set Category: Setta la categoria
-
-
-###############################################
-# Page: users.php
-#
-denotes administrative user: denota utente con privilegi amministrativi
-Add New User: Aggiungere Nuovo Utente
-
-
-###############################################
-# Page: usersel.php
-#
-All: Tutte
-Reset: Resetta
-Remove: Rimuovi
-#
-# << MISSING >>
-# Ok:
-
-
-###############################################
-# Page: import.php
-#
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
-
-
-###############################################
 # Page: view_entry.php
 #
 every: sempre
@@ -942,6 +887,103 @@ Hide activity log: Nascondi il log delle attività
 #
 # << MISSING >>
 # Export this entry to:
+
+
+###############################################
+# Page: view_v.php
+#
+
+
+###############################################
+# Page: month.php
+#
+
+
+###############################################
+# Page: pref_handler.php
+#
+
+
+###############################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: Un appuntamento è stato rifiutato da
+The description is: La descrizione è
+Title: WebCalendar
+
+
+###############################################
+# Page: search.php
+#
+Search: Cerca
+Advanced Search: Ricerca Avanzata
+Keywords: Parole Chiave
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Occorre inserire una o più parole chiave
+Search Results: Risultati della Ricerca
+match found: corrispondenza trovata
+matches found: corrispondenze trovate
+No matches found: Nessuna corrispondenza trovata
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: Visualizza calendario di un altro utente
+Go: Vai
+
+
+###############################################
+# Page: publish.php
+#
+
+
+###############################################
+# Page: users.php
+#
+denotes administrative user: denota utente con privilegi amministrativi
+Add New User: Aggiungere Nuovo Utente
+
+
+###############################################
+# Page: usersel.php
+#
+All: Tutte
+Reset: Resetta
+Remove: Rimuovi
+#
+# << MISSING >>
+# Ok:
+Cancel: Cancella
+
+
+###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
+# Page: year.php
+#
 
 
 ###############################################
@@ -1018,6 +1060,45 @@ View Type: Tipo di vista
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+#
+# << MISSING >>
+# default-category-help:
+# English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: report.php
+#
+Private: Privato
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
 # Page: login.php
 #
 You must enter a login and password: Inserire nome utente e password
@@ -1039,12 +1120,6 @@ You must specify a view name: Devi specificare il nome di una vista
 # Page: week_details.php
 #
 New Entry: Nuova Nota
-Private: Privato
-
-
-###############################################
-# Page: view_l.php
-#
 
 
 ###############################################
@@ -1063,14 +1138,13 @@ Back to My Calendar: Torna al mio calendario
 #
 # << MISSING >>
 # The import file contained no data:
+The following conflicts with the suggested time: Il seguente è in conflitto con l'orario suggerito
+Unnamed Event: Evento Senza Nome
+Scheduling Conflict: Conflitto di appuntamenti
+conflicts with the following existing calendar entries: è in conflitto con il seguente appuntamento già presente nel calendario
 #
 # << MISSING >>
 # Event Imported:
-
-
-###############################################
-# Page: year.php
-#
 
 
 ###############################################
@@ -1138,9 +1212,6 @@ Back to My Calendar: Torna al mio calendario
 # Year before last:
 #
 # << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
 # Unnamed Report:
 #
 # << MISSING >>
@@ -1185,26 +1256,6 @@ Current User: Utente Corrente
 
 
 ###############################################
-# Page: report.php
-#
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
 # Page: assistant_edit.php
 #
 Assistants: Assistenti
@@ -1218,11 +1269,6 @@ Yours assistants: Tuoi Assistenti
 
 ###############################################
 # Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: publish.php
 #
 
 
@@ -1281,6 +1327,36 @@ Yours assistants: Tuoi Assistenti
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Un nuovo appuntamento è stato fissato per te da
+An appointment has been updated by: Un appuntamento è stato aggiornato da
+The subject is: Il titolo è
+Please look on: Per favore guarda
+to accept or reject this appointment: per accettare o respingere questo appuntamento
+to view this appointment: per visualizzare questo appuntamento
+Your suggested time of: L'ora suggerita
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: Tu non hai ancora aggiunto nessuna categoria
+Set Category: Setta la categoria
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: Vai a
@@ -1297,37 +1373,6 @@ Manage calendar of: Gestisci il calendario di
 ###############################################
 # Page: includes/connect.php
 #
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: Questo evento è confidenziale
-exceeds limit of XXX events per day: Superato il limite di XXX eventi al giorno
-You have XXX unapproved events: Hai XXX eventi non approvati
-January: Gennaio
-February: Febbraio
-March: Marzo
-April: Aprile
-May_: Maggio
-June: Giugno
-July: Luglio
-August: Agosto
-September: Settembre
-October: Ottobre
-November: Novembre
-Jan: Gen
-Feb: Feb
-Mar: Mar
-Apr: Apr
-May: Mag
-Jun: Giu
-Jul: Lug
-Aug: Ago
-Sep: Set
-Oct: Ott
-Nov: Nov
-Dec: Dic
 
 
 ###############################################
@@ -1374,6 +1419,37 @@ Send Reminder: Avvisa
 ###############################################
 # Page: includes/dbtable.php
 #
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: Questo evento è confidenziale
+exceeds limit of XXX events per day: Superato il limite di XXX eventi al giorno
+You have XXX unapproved events: Hai XXX eventi non approvati
+January: Gennaio
+February: Febbraio
+March: Marzo
+April: Aprile
+May_: Maggio
+June: Giugno
+July: Luglio
+August: Agosto
+September: Settembre
+October: Ottobre
+November: Novembre
+Jan: Gen
+Feb: Feb
+Mar: Mar
+Apr: Apr
+May: Mag
+Jun: Giu
+Jul: Lug
+Aug: Ago
+Sep: Set
+Oct: Ott
+Nov: Nov
+Dec: Dic
 
 
 ###############################################

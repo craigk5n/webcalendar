@@ -1,17 +1,12 @@
 #
 # FitBak ( http://www.fitbak.com ) -ek itzulia
 #
+# Translation last updated on 02-17-2004
 
-# Use this as a starting point to translate this application into
-# another language.  The format is "English text: translated text"
-# There cannot be a ":" in the English text.
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
 #
-# Translator: Igor Blanco González <iblanco@fitbak.com>
-
-# Last update: 4 December 2003
-# Translation last updated on 12-04-2003
-
-# charset:
 charset: iso-8859-1
 
 
@@ -42,6 +37,27 @@ Language: Hizkuntza
 Your browser default language is: Zure nabigatzailearen hizkuntza lehenetsia da
 fonts-help: Erabili beharreko tipografiak adierazten ditu ( Arial, Helvetica ...)
 Fonts: Tipografiak
+#
+# << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: Bai
+No: Ez
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
 preferred-view-help: Lehenetsitako ikus aukera (Eguna, Astea, Hilabetea, Urtea)
 Preferred view: Lehenetsitako ikus aukera
 Day: Eguna
@@ -50,8 +66,22 @@ Month: Hilabetea
 Year: Urtea
 display-weekends-help: Astebukaerak erakusten ditu asteroko ikus aukeran
 Display weekends in week view: Astebukaerak erakusten ditu hilabeteroko ikus aukeran
-Yes: Bai
-No: Ez
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 date-format-help: Dataren formatua adierazten du
 Date format: Data formatua
 December: Abendua
@@ -89,6 +119,22 @@ disable-participants-field-help: Partaide eremua azaldu ala ez
 Disable Participants field: Desgaitu partaide eremua
 disable-repeating-field-help: Gertaera errepikatuak kentzea ekidin ala ez
 Disable Repeating field: Desgaitu errepikapen ezabatzea
+#
+# << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
 allow-view-other-help: Beste erabiltzaileen egutegia ikusi daiteken ala ez adierazten du
 Allow viewing other user's calendars: Beste erabiltzaileen egutegiak ikustea baimendu
 allow-public-access-help: Egutegiak atzipen publikoa izan dezaken edo ez adierazten du.
@@ -105,6 +151,14 @@ Public access can add events: Erabiltzaile publikoak gertaerak gehi ditzazke
 #
 # << MISSING >>
 # Public access new events require approval:
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -452,25 +506,6 @@ You are not authorized to edit this entry: Ez zaude baimenduta gertaera hau edit
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: Hondokoa ez dator bat gomendatutako orduarekin
-Unnamed Event: Izengabeko gertaera
-The description is: Deskribapena da
-Title: WebCalendar
-A new appointment has been made for you by: Bilera bat ezartzen dizu
-An appointment has been updated by: Bilera bat eguneratu du
-The subject is: Gaia da
-Please look on: Mesedez bilatu
-to accept or reject this appointment: bilera hau onartzeko edo uko egiteko
-to view this appointment: bilera hau ikusteko
-Scheduling Conflict: Bilera arteko talka
-Your suggested time of: Zure ordu gomendatua da
-conflicts with the following existing calendar entries: hondoko sarrerekin egiten du talka
-Cancel: Utzi
-
-
-###############################################
 # Page: edit_layer.php
 #
 Edit Layer: Geruza editatu
@@ -563,7 +598,7 @@ Add New Group: Talde berria gehitu
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
 
 
@@ -673,12 +708,7 @@ Enabling: Gaitzen
 
 
 ###############################################
-# Page: help_pref.php
-#
-#
-# << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
+# Page: help_admin.php
 #
 
 
@@ -725,95 +755,6 @@ Public Access: Atzipen publikoa
 
 
 ###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: Gertaera bat gaitzetsia izan da
-
-
-###############################################
-# Page: search.php
-#
-Search: Bilatu
-Advanced Search: Bilaketa aurreratua
-Keywords: Hitz gakoa
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: Hitz gako bat edo gehiago sartu behar duzu
-Search Results: Bilaketaren emaitzak
-match found: asmatze topatua
-matches found: asmatze topatuak
-No matches found: Ez da asmatzerik topatu
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: Beste partaide baten egutegia ikusi
-Go: Joan
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-You have not added any categories: Ez duzu atalik gehitu
-Set Category: Atala ezarri
-
-
-###############################################
-# Page: users.php
-#
-denotes administrative user: erabiltzaile administraria adierazten du
-Add New User: Erabiltzaile berria gehitu
-
-
-###############################################
-# Page: usersel.php
-#
-All: Denak
-Reset: Berhasieratu
-Remove: Kendu
-Ok: Ados
-
-
-###############################################
-# Page: import.php
-#
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
-
-
-###############################################
 # Page: view_entry.php
 #
 every: maiztasuna
@@ -854,6 +795,101 @@ Hide activity log: Jardunaren erregistroa ezkutatu
 #
 # << MISSING >>
 # Export this entry to:
+
+
+###############################################
+# Page: view_v.php
+#
+
+
+###############################################
+# Page: month.php
+#
+
+
+###############################################
+# Page: pref_handler.php
+#
+
+
+###############################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: Gertaera bat gaitzetsia izan da
+The description is: Deskribapena da
+Title: WebCalendar
+
+
+###############################################
+# Page: search.php
+#
+Search: Bilatu
+Advanced Search: Bilaketa aurreratua
+Keywords: Hitz gakoa
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Hitz gako bat edo gehiago sartu behar duzu
+Search Results: Bilaketaren emaitzak
+match found: asmatze topatua
+matches found: asmatze topatuak
+No matches found: Ez da asmatzerik topatu
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: Beste partaide baten egutegia ikusi
+Go: Joan
+
+
+###############################################
+# Page: publish.php
+#
+
+
+###############################################
+# Page: users.php
+#
+denotes administrative user: erabiltzaile administraria adierazten du
+Add New User: Erabiltzaile berria gehitu
+
+
+###############################################
+# Page: usersel.php
+#
+All: Denak
+Reset: Berhasieratu
+Remove: Kendu
+Ok: Ados
+Cancel: Utzi
+
+
+###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
+# Page: year.php
+#
 
 
 ###############################################
@@ -930,6 +966,45 @@ View Type: Mota ikusi
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+#
+# << MISSING >>
+# default-category-help:
+# English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: report.php
+#
+Private: Pribatua
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
 # Page: login.php
 #
 You must enter a login and password: Erabiltzaile eta pasahitz bat sartu behar dituzu
@@ -951,12 +1026,6 @@ cookies-note: <B>Oharra:</B> Aplikazio honek cookiak gaituak egotea behar du.
 # Page: week_details.php
 #
 New Entry: Sarrera berria
-Private: Pribatua
-
-
-###############################################
-# Page: view_l.php
-#
 
 
 ###############################################
@@ -975,14 +1044,13 @@ Back to My Calendar: Nire egutegira itzuli
 #
 # << MISSING >>
 # The import file contained no data:
+The following conflicts with the suggested time: Hondokoa ez dator bat gomendatutako orduarekin
+Unnamed Event: Izengabeko gertaera
+Scheduling Conflict: Bilera arteko talka
+conflicts with the following existing calendar entries: hondoko sarrerekin egiten du talka
 #
 # << MISSING >>
 # Event Imported:
-
-
-###############################################
-# Page: year.php
-#
 
 
 ###############################################
@@ -1050,9 +1118,6 @@ Back to My Calendar: Nire egutegira itzuli
 # Year before last:
 #
 # << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
 # Unnamed Report:
 #
 # << MISSING >>
@@ -1097,26 +1162,6 @@ Current User: Une hontako erabiltzailea
 
 
 ###############################################
-# Page: report.php
-#
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
 # Page: assistant_edit.php
 #
 #
@@ -1134,11 +1179,6 @@ Current User: Une hontako erabiltzailea
 
 ###############################################
 # Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: publish.php
 #
 
 
@@ -1164,7 +1204,7 @@ Current User: Une hontako erabiltzailea
 # Entries older than the current date:
 #
 # << MISSING >>
-# Entries creted in the Palm Desktop that have not been HotSync'd:
+# Entries created in the Palm Desktop that have not been HotSync'd:
 #
 # << MISSING >>
 # Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
@@ -1197,6 +1237,36 @@ Current User: Une hontako erabiltzailea
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Bilera bat ezartzen dizu
+An appointment has been updated by: Bilera bat eguneratu du
+The subject is: Gaia da
+Please look on: Mesedez bilatu
+to accept or reject this appointment: bilera hau onartzeko edo uko egiteko
+to view this appointment: bilera hau ikusteko
+Your suggested time of: Zure ordu gomendatua da
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: Ez duzu atalik gehitu
+Set Category: Atala ezarri
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: Joan
@@ -1215,39 +1285,6 @@ Account: Kontua
 ###############################################
 # Page: includes/connect.php
 #
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: Gertaera hau konfidentziala da
-#
-# << MISSING >>
-# exceeds limit of XXX events per day:
-You have XXX unapproved events: Onetsi gabeko XXX gertaera daude
-January: Urtarrila
-February: Otsaila
-March: Martxoa
-April: Apirila
-May_: Maiatza
-June: Ekaina
-July: Uztaila
-August: Abuztua
-September: Iraila
-October: Urria
-November: Azaroa
-Jan: Urt
-Feb: Ots
-Mar: Mar
-Apr: Api
-May: Mai
-Jun: Eka
-Jul: Uzt
-Aug: Abu
-Sep: Ira
-Oct: Urr
-Nov: Aza
-Dec: Abe
 
 
 ###############################################
@@ -1286,14 +1323,44 @@ Send Reminder: Gogorarazteko abixua bidali
 ###############################################
 # Page: includes/init.php
 #
-#
-# << MISSING >>
-# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
 #
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: Gertaera hau konfidentziala da
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
+You have XXX unapproved events: Onetsi gabeko XXX gertaera daude
+January: Urtarrila
+February: Otsaila
+March: Martxoa
+April: Apirila
+May_: Maiatza
+June: Ekaina
+July: Uztaila
+August: Abuztua
+September: Iraila
+October: Urria
+November: Azaroa
+Jan: Urt
+Feb: Ots
+Mar: Mar
+Apr: Api
+May: Mai
+Jun: Eka
+Jul: Uzt
+Aug: Abu
+Sep: Ira
+Oct: Urr
+Nov: Aza
+Dec: Abe
 
 
 ###############################################
@@ -1307,7 +1374,7 @@ Invalid color for table cell background: Kolore desegokia taulako gelaxken atzer
 Invalid color for table grid: Kolore desegokia taularentzako
 #
 # << MISSING >>
-# Invalid color for table header background: Kolore desegokia taularen burukoaren atzerako
+# Invalid color for table header background:
 Invalid color for table text background: Kolore desegokia taularen textuaren atzerako
 Invalid color for event popup background: Kolore desegokia gertaera popup-aren atzerako
 Invalid color for event popup text: Kolore desegokia gertaera popup-aren texturako

@@ -2,7 +2,7 @@
 # another language.  The format is "English text: translated text"
 # There cannot be a ":" in the English text.
 # Translated by:  Henry H. Tan-Tenn <share2002nov@lomaji.com>
-# Translation last updated on 07-21-2003
+# Translation last updated on 02-17-2004
 
 
 ###############################################
@@ -66,6 +66,27 @@ Your browser default language is: 你 e 瀏覽器預設 e 語系是
 # English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
 #
 Fonts: 字型
+#
+# << MISSING >>
+# custom-header-help:
+# English text: Allows a custom HTML snippet to be included in the top of every page.
+#
+#
+# << MISSING >>
+# Custom header:
+Yes: 好
+No: Mai
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# custom-trailer-help:
+# English text: Allows a custom HTML snippet to be included at the end of every page.
+#
+#
+# << MISSING >>
+# Custom trailer:
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: 檢視選擇
 Day: 日
@@ -80,8 +101,22 @@ Year: 年
 #
 # << MISSING >>
 # Display weekends in week view:
-Yes: 好
-No: Mai
+#
+# << MISSING >>
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+# Display days with events in bold in year view:
+#
+# << MISSING >>
+# display-desc-print-day-help:
+# English text: Include event descriptions in printer-friendly version of day view.
+#
+#
+# << MISSING >>
+# Display description in printer day view:
 #
 # << MISSING >>
 # date-format-help:
@@ -177,6 +212,22 @@ to: 至
 # Disable Repeating field:
 #
 # << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
+#
+# << MISSING >>
 # allow-view-other-help:
 # English text: Specifies whether one user may view another user's calendar.
 #
@@ -213,6 +264,14 @@ Allow public access: 允準公眾 access
 #
 # << MISSING >>
 # Public access new events require approval:
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -636,29 +695,6 @@ You are not authorized to edit this entry: 你無權利編輯這項記事
 
 
 ###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: The following conflicts with the suggested time
-Unnamed Event: Unnamed Event
-#
-# << MISSING >>
-# The description is:
-Title: 網路行事曆
-A new appointment has been made for you by: 你有一個新約會，邀請者是
-#
-# << MISSING >>
-# An appointment has been updated by:
-The subject is: 主題是
-Please look on: 請查看
-to accept or reject this appointment: 決定接受或拒絕這個約會
-to view this appointment: to view this appointment
-Scheduling Conflict: Scheduling Conflict
-Your suggested time of: Your suggested time of
-conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
-Cancel: 取消
-
-
-###############################################
 # Page: edit_layer.php
 #
 Edit Layer: 編輯階層
@@ -757,7 +793,7 @@ Users: 使用者
 
 
 ###############################################
-# Page: help_admin.php
+# Page: icalfb.php
 #
 
 
@@ -881,12 +917,7 @@ Layers: 階層架構
 
 
 ###############################################
-# Page: help_pref.php
-#
-#
-# << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
+# Page: help_admin.php
 #
 
 
@@ -935,103 +966,6 @@ Public Access: 公眾入口
 
 
 ###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: 約會已經被拒絕，拒絕者是
-
-
-###############################################
-# Page: search.php
-#
-Search: 檢索
-Advanced Search: 高等檢索
-Keywords: 關鍵字
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: 你至少著輸入一個檢索關鍵字
-Search Results: 檢索結果
-match found: 筆符合查詢
-matches found: 筆符合查詢
-No matches found: 查無資料
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: 檢視其他人 e 月曆
-Go: 來去
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-#
-# << MISSING >>
-# You have not added any categories:
-Set Category: 設定類別
-
-
-###############################################
-# Page: users.php
-#
-denotes administrative user: 使用者管理員
-Add New User: 新增使用者
-
-
-###############################################
-# Page: usersel.php
-#
-All: 全部
-#
-# << MISSING >>
-# Reset:
-#
-# << MISSING >>
-# Remove:
-#
-# << MISSING >>
-# Ok:
-
-
-###############################################
-# Page: import.php
-#
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
-
-
-###############################################
 # Page: view_entry.php
 #
 every: 每
@@ -1068,6 +1002,109 @@ Hide activity log: 暗蓋使用紀錄
 #
 # << MISSING >>
 # Export this entry to:
+
+
+###############################################
+# Page: view_v.php
+#
+
+
+###############################################
+# Page: month.php
+#
+
+
+###############################################
+# Page: pref_handler.php
+#
+
+
+###############################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: 約會已經被拒絕，拒絕者是
+#
+# << MISSING >>
+# The description is:
+Title: 網路行事曆
+
+
+###############################################
+# Page: search.php
+#
+Search: 檢索
+Advanced Search: 高等檢索
+Keywords: 關鍵字
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: 你至少著輸入一個檢索關鍵字
+Search Results: 檢索結果
+match found: 筆符合查詢
+matches found: 筆符合查詢
+No matches found: 查無資料
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: 檢視其他人 e 月曆
+Go: 來去
+
+
+###############################################
+# Page: publish.php
+#
+
+
+###############################################
+# Page: users.php
+#
+denotes administrative user: 使用者管理員
+Add New User: 新增使用者
+
+
+###############################################
+# Page: usersel.php
+#
+All: 全部
+#
+# << MISSING >>
+# Reset:
+#
+# << MISSING >>
+# Remove:
+#
+# << MISSING >>
+# Ok:
+Cancel: 取消
+
+
+###############################################
+# Page: import.php
+#
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Datebook File:
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
+# vCal File:
+
+
+###############################################
+# Page: year.php
+#
 
 
 ###############################################
@@ -1144,6 +1181,45 @@ View Type: 檢視類
 
 
 ###############################################
+# Page: view_l.php
+#
+
+
+###############################################
+# Page: help_pref.php
+#
+#
+# << MISSING >>
+# default-category-help:
+# English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: report.php
+#
+Private: 私人 e 
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
 # Page: login.php
 #
 You must enter a login and password: 你著輸入用者名稱及密碼
@@ -1163,12 +1239,6 @@ You must specify a view name: 你必須要註明檢視 e 名稱
 # Page: week_details.php
 #
 New Entry: 新 e 記事
-Private: 私人 e 
-
-
-###############################################
-# Page: view_l.php
-#
 
 
 ###############################################
@@ -1187,14 +1257,13 @@ Back to My Calendar: 轉去我 e 行事曆
 #
 # << MISSING >>
 # The import file contained no data:
+The following conflicts with the suggested time: The following conflicts with the suggested time
+Unnamed Event: Unnamed Event
+Scheduling Conflict: Scheduling Conflict
+conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
 #
 # << MISSING >>
 # Event Imported:
-
-
-###############################################
-# Page: year.php
-#
 
 
 ###############################################
@@ -1262,9 +1331,6 @@ Back to My Calendar: 轉去我 e 行事曆
 # Year before last:
 #
 # << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
 # Unnamed Report:
 #
 # << MISSING >>
@@ -1309,26 +1375,6 @@ Current User: 目前使用者
 
 
 ###############################################
-# Page: report.php
-#
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
 # Page: assistant_edit.php
 #
 Assistants: 助理
@@ -1342,11 +1388,6 @@ Yours assistants: 你 e 助理
 
 ###############################################
 # Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: publish.php
 #
 
 
@@ -1405,6 +1446,40 @@ Yours assistants: 你 e 助理
 
 
 ###############################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: 你有一個新約會，邀請者是
+#
+# << MISSING >>
+# An appointment has been updated by:
+The subject is: 主題是
+Please look on: 請查看
+to accept or reject this appointment: 決定接受或拒絕這個約會
+to view this appointment: to view this appointment
+Your suggested time of: Your suggested time of
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+#
+# << MISSING >>
+# You have not added any categories:
+Set Category: 設定類別
+
+
+###############################################
+# Page: edit_template.php
+#
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
+
+
+###############################################
 # Page: includes/trailer.php
 #
 Go to: 功能選擇
@@ -1423,37 +1498,6 @@ Account: 編輯個人資料
 ###############################################
 # Page: includes/connect.php
 #
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: 這個記事是機密 e 
-exceeds limit of XXX events per day: 超出一工 XXX 項活動 e 限制
-You have XXX unapproved events: 你有 XXX 未核准 e 記事
-January: 1月
-February: 2月
-March: 3月
-April: 4月
-May_: 5月
-June: 6月
-July: 7月
-August: 8月
-September: 9月
-October: 10月
-November: 11月
-Jan: 1月
-Feb: 2月
-Mar: 3月
-Apr: 4月
-May: 5月
-Jun: 6月
-Jul: 7月
-Aug: 8月
-Sep: 9月
-Oct: 10月
-Nov: 11月
-Dec: 12月
 
 
 ###############################################
@@ -1503,6 +1547,37 @@ Dec: 12月
 ###############################################
 # Page: includes/dbtable.php
 #
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: 這個記事是機密 e 
+exceeds limit of XXX events per day: 超出一工 XXX 項活動 e 限制
+You have XXX unapproved events: 你有 XXX 未核准 e 記事
+January: 1月
+February: 2月
+March: 3月
+April: 4月
+May_: 5月
+June: 6月
+July: 7月
+August: 8月
+September: 9月
+October: 10月
+November: 11月
+Jan: 1月
+Feb: 2月
+Mar: 3月
+Apr: 4月
+May: 5月
+Jun: 6月
+Jul: 7月
+Aug: 8月
+Sep: 9月
+Oct: 10月
+Nov: 11月
+Dec: 12月
 
 
 ###############################################
