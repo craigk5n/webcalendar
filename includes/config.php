@@ -126,6 +126,7 @@ $NONUSER_PREFIX = '_NUC_';
 $languages = array (
   "Browser-defined" =>"none",
   "English" =>"English-US",
+  "Basque" => "Basque",
   "Chinese (Traditonal/Big5)" => "Chinese-Big5",
   "Chinese (Simplified/GB2312)" => "Chinese-GB2312",
   "Czech" => "Czech",
@@ -162,6 +163,7 @@ $languages = array (
 // Not sure what the abbreviation is?  Check out the following URL:
 // http://www.geocities.com/click2speak/languages.html
 $browser_languages = array (
+  "eu" => "Basque",
   "zh" => "Chinese-GB2312",    // Simplified Chinese
   "zh-cn" => "Chinese-GB2312",
   "zh-tw" => "Chinese-Big5",   // Traditional Chinese
