@@ -225,10 +225,10 @@ function user_load_variables ( $login, $prefix ) {
           $error = translate ("Invalid login");
         } else {
           $GLOBALS[$prefix . "login"] = $login;
-          $GLOBALS[$prefix . "firstname"] = $info[0]["givenname"][0];
-          $GLOBALS[$prefix . "lastname"] = $info[0]["sn"][0];
-          $GLOBALS[$prefix . "email"] = $info[0]["mail"][0];
-          $GLOBALS[$prefix . "fullname"] = $info[0]["cn"][0];
+          $GLOBALS[$prefix . "firstname"] = $info[0][$ldap_user_attr[2]][0];
+          $GLOBALS[$prefix . "lastname"] = $info[0][$ldap_user_attr[1]][0];
+          $GLOBALS[$prefix . "email"] = $info[0][$ldap_user_attr[4]][0];
+          $GLOBALS[$prefix . "fullname"] = $info[0][$ldap_user_attr[3]][0];
           $GLOBALS[$prefix . "is_admin"] = user_is_admin($login,get_admins());
           $ret = true;
         }
@@ -330,18 +330,19 @@ function user_get_users () {
       // search for user
       $sr = @ldap_search ( $ds, $ldap_base_dn, $ldap_user_filter,
         $ldap_user_attr );
-      if ( (float)substr(PHP_VERSION,0,3) >= 4.2 ) ldap_sort ( $ds, $sr, "cn");
+      if ( (float)substr(PHP_VERSION,0,3) >= 4.2 ) ldap_sort ( $ds, $sr, $ldap_user_attr[3]);
       $info = @ldap_get_entries( $ds, $sr );
       for ( $i = 0; $i < $info["count"]; $i++ ) {
         $ret[$count++] = array (
-          "cal_login" => $info[$i]["uid"][0],
-          "cal_lastname" => $info[$i]["sn"][0],
-          "cal_firstname" => $info[$i]["givenname"][0],
-          "cal_email" => $info[$i]["mail"][0],
+          "cal_login" => $info[$i][$ldap_user_attr[0]][0],
+          "cal_lastname" => $info[$i][$ldap_user_attr[1]][0],
+          "cal_firstname" => $info[$i][$ldap_user_attr[2]][0],
+          "cal_email" => $info[$i][$ldap_user_attr[4]][0],
+          
           // Something to do here : is_admin is needed in one page (admin page)
           // as it generate a lot of search, we must do it another way
-          "cal_is_admin" => user_is_admin($info[$i]["uid"][0],$Admins),
-          "cal_fullname" => $info[$i]["cn"][0]
+          "cal_is_admin" => user_is_admin($info[$i][$ldap_user_attr[0]][0],$Admins),
+          "cal_fullname" => $info[$i][$ldap_user_attr[3]][0]
           );
       }
       @ldap_free_result($sr);

@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Added user-ldap patch by David Black to use $ldap_user_attr throughout script
   - Only allow word characters (a-zA-Z_0-9) in nonuser calendar ID's
   - Fixing up styles in views
   - Fixed bug 1048157: user select in managing views
