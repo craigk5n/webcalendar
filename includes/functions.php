@@ -30,7 +30,7 @@ if ( ! empty ( $HTTP_GET_VARS ) ) {
       }
     } else {
       $GLOBALS[$key] = $val;
-        echo "XXX $key<BR>";
+      //echo "XXX $key<BR>";
     }
     //echo "GET var '$key' = '$val' <BR>";
   }
