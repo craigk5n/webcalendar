@@ -1072,7 +1072,7 @@ function overlap($dates,$duration,$hour,$minute,$participants,$login,$id) {
 
 
 
-// Generate the HTML for an event to be viewed in the day-at-glance.
+// Generate the HTML for an event to be viewed in the week-at-glance.
 // The HTML will be stored in an array ($hour_arr) indexed on the event's
 // starting hour.
 function html_for_event_week_at_a_glance ( $id, $date, $time,
@@ -1083,8 +1083,6 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   static $key = 0;
   global $DISPLAY_ICONS;
   global $layers;
-
-  $hour_arr = array ();
 
   $rowspan_arr = array ();
   for ( $i = 0; $i < 24; $i++ )
