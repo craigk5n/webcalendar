@@ -47,13 +47,19 @@ $noSet = array (
   "admin_can_delete_user" => 1,
 );
 
+
 // This code is a temporary hack to make the application work when
 // register_globals is set to Off in php.ini (the default setting in
 // PHP 4.2.0 and after).
 if ( ! empty ( $HTTP_GET_VARS ) ) {
   while (list($key, $val) = @each($HTTP_GET_VARS)) {
+    // don't allow anything to have <script> in it...
+    if ( preg_match ( "/<\s*script/i", $val ) ) {
+      echo "Security violation!"; exit;
+    }
     if ( $key == "login" ) {
       if ( strstr ( $PHP_SELF, "login.php" ) ) {
+        //$GLOBALS[$key] = $val;
         $GLOBALS[$key] = $val;
       }
     } else {
@@ -68,6 +74,10 @@ if ( ! empty ( $HTTP_GET_VARS ) ) {
 }
 if ( ! empty ( $HTTP_POST_VARS ) ) {
   while (list($key, $val) = @each($HTTP_POST_VARS)) {
+    // don't allow anything to have <script> in it...
+    if ( preg_match ( "/<\s*script/i", $val ) ) {
+      echo "Security violation!"; exit;
+    }
     if ( empty ( $noSet[$key] ) ) {
       $GLOBALS[$key] = $val;
     }
@@ -90,6 +100,45 @@ if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
   reset ( $HTTP_COOKIE_VARS );
 }
 
+function getPostValue ( $name )
+{
+  if ( empty ( $HTTP_POST_VARS ) )
+    return "";
+  if ( empty ( $HTTP_POST_VARS[$name] ) )
+    return "";
+  return ( $HTTP_POST_VARS[$name] );
+}
+
+function getGetValue ( $name )
+{
+  if ( empty ( $HTTP_GET_VARS ) )
+    return "";
+  if ( empty ( $HTTP_GET_VARS[$name] ) )
+    return "";
+  return ( $HTTP_GET_VARS[$name] );
+}
+
+// Get value from HTTP GET or POST
+function getValue ( $name, $format="", $fatal=false )
+{
+  $val = getPostValue ( $name );
+  if ( empty ( $val ) )
+    $val = getGetValue ( $name );
+  // for older PHP versions...
+  if ( empty ( $val  ) && get_magic_quotes_gpc () == 1 )
+    $val = $GLOBALS[$name];
+  if ( empty ( $val  ) )
+    return "";
+  if ( ! empty ( $format ) && ! preg_match ( "/^" . $format . "$/", $val ) ) {
+    // does not match
+    if ( $fatal ) {
+      echo "Fatal Error: Invalid data format for $name: $val\n"; exit;
+    }
+    // ignore value
+    return "";
+  }
+  return $val;
+}
 
 
 
