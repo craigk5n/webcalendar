@@ -2,8 +2,6 @@
 /* $Id */
 include_once 'includes/init.php';
 
-$showHeader = getGetValue ( "hdr" );
-
 if ( ! $is_admin )
   $user = $login;
 
@@ -26,7 +24,9 @@ if ( empty ( $user ) ) {
   }
 }
 
-print_header('', '', '', ! empty ( $printHeader ) );
+$showHeader = empty ( $is_admin );
+
+print_header ( '', '', '', ! $showHeader );
 ?>
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top; width:50%;">
