@@ -116,7 +116,7 @@ print_header();
 </td>
 <?php } ?>
 <td class="yearviewtitle">
-	<span class="year"><?php echo $thisyear ?></span>
+	<span class="date"><?php echo $thisyear ?></span>
 <span class="user">
 <?php
   if ( $single_user == "N" ) {
@@ -171,9 +171,9 @@ display_unapproved_events ( $login );
 <br />
 <a class="navlinks" href="year.php?<?php
   if ( $thisyear )
-    echo "year=$thisyear&";
+    echo "year=$thisyear&amp;";
   if ( $user != $login && ! empty ( $user ) )
-    echo "user=$user&";
+    echo "user=$user&amp;";
 ?>friendly=1" target="cal_printer_friendly"
 onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 

@@ -56,12 +56,13 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 <?php if ( empty ( $friendly ) ) { ?>
 <td style="text-align:left;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous"); ?>" /></a></td>
 <?php } ?>
-<td style="text-align:center; color:<?php echo $H2COLOR;?>; font-weight:bold;"><span style="font-size:24px;">
+<td class="dayviewtitle">
+<span class="date">
 <?php
   echo date_to_str ( $nowYmd );
 ?>
 </span>
-<span style="font-size:18px;">
+<span class="user">
 <?php
   // display current calendar's user (if not in single user)
   if ( $single_user == "N" ) {
@@ -188,9 +189,9 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 <a href="day.php?<?php
   echo $u_url;
   if ( $thisyear ) {
-    echo "year=$thisyear&month=$thismonth&day=$thisday&";
+    echo "year=$thisyear&amp;month=$thismonth&amp;day=$thisday&amp;";
   }
-  if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&";
+  if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
 ?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 <?php print_trailer (); ?>
