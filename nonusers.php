@@ -4,16 +4,16 @@ print_header();
 
 if ( ! $is_admin ) {
   echo "<h2>" . translate("Error") .
-    "</h2>" . translate("You are not authorized") . ".\n";
+    "</h2>\n" . translate("You are not authorized") . ".\n";
   print_trailer ();
-  echo "</body></html>\n";
+  echo "</body>\n</html>";
   exit;
 }
 if ( ! $NONUSER_PREFIX ) {
   echo "<h2>" . translate("Error") .
-    "</h2>" . translate("NONUSER_PREFIX not set") . ".\n";
+    "</h2>\n" . translate("NONUSER_PREFIX not set") . ".\n";
   print_trailer ();
-  echo "</body></html>\n";
+  echo "</body>\n</html>";
   exit;
 }
 $add = getValue ( "add" );
@@ -40,11 +40,22 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
     $id_display = "<input name=\"nid\" size=\"20\" maxlength=\"20\" />";
   }
   ?>
-  <table>
-  <tr><td><?php etranslate("Calendar ID")?>:</td><td><?php echo $id_display ?></td></tr>
-  <tr><td><?php etranslate("First Name")?>:</td><td><input type="text" name="nfirstname" size="20" maxlength="25" value="<?php echo htmlspecialchars ( $nonusertemp_firstname ); ?>" /></td></tr>
-  <tr><td><?php etranslate("Last Name")?>:</td><td><input type="text" name="nlastname" size="20" maxlength="25" value="<?php echo htmlspecialchars ( $nonusertemp_lastname ); ?>" /></td></tr>
-  <tr><td><?php etranslate("Admin")?>:</td><td><select name="nadmin">
+<table>
+	<tr><td>
+		<?php etranslate("Calendar ID")?>:</td><td>
+		<?php echo $id_display ?>
+	</td></tr>
+	<tr><td>
+		<?php etranslate("First Name")?>:</td><td>
+		<input type="text" name="nfirstname" size="20" maxlength="25" value="<?php echo htmlspecialchars ( $nonusertemp_firstname ); ?>" />
+	</td></tr>
+	<tr><td>
+		<?php etranslate("Last Name")?>:</td><td>
+		<input type="text" name="nlastname" size="20" maxlength="25" value="<?php echo htmlspecialchars ( $nonusertemp_lastname ); ?>" />
+	</td></tr>
+	<tr><td>
+		<?php etranslate("Admin")?>:</td><td>
+		<select name="nadmin">
   <?php
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
     echo "<option value=\"".$userlist[$i]['cal_login']."\"";
@@ -52,8 +63,9 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
     echo ">".$userlist[$i]['cal_fullname']."</option>\n";
   }
   ?>
-  </select></td></tr>
-  </table>
+		</select>
+	</td></tr>
+</table>
 
   <br /><br />
   <input type="submit" name="action" value="<?php echo $button;?>" />

@@ -3,6 +3,99 @@ if (preg_match("/styles\.php/", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
 ?>
+<?php /* 
+   HOW TO READ THIS DOCUMENT
+	Below are CSS styles used in WebCalendar. There are two main parts to every CSS style: 'selector' & 'declaration'
+		EXAMPLE:
+			body {
+				color: red;
+			}
+		The selector in the example above is 'body', while its declaration is 'color: red;'
+	Each declaration has two parts: 'property' & 'value'
+		In the example above, there is only one declaraion ("color: red;")
+		For that declaration, the PROPERTY is "color" and the VALUE is "red"
+		NOTE: Each property must be followed by a colon (:), 
+			and each value must be followed by a semi-colon (;)
+	Each selector can contain multiple declarations
+		EXAMPLE:
+			body {
+				color: red;
+				font-size: 12px;
+				background-color: black;
+			}
+		In the example above, there are three declarations:
+			color: red;
+			font-size: 12px;
+			background-color: black;
+		NOTE: The declarations for a given style must be contained within curly brackets ({ })
+
+
+   PHP IN THIS DOCUMENT
+	Many of the declarations below include PHP. The following explains how to interpret the PHP.
+		EXAMPLE:
+			color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+		In the declaration above, the property is "color",
+			and the value is "<?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>"
+	We'll tackle this is parts..
+		1: <?php
+			Start tag for PHP. Tells the server to process the contents.
+		2: echo (
+			Tells PHP to print information (as necessary) until it reaches a matching
+				closing parenthesis ()), immediately followed by a semi-colon (;)
+				This can be seen at the end of the line in the example above
+				It reads: );
+			Note: Parenthesis, brackets & curly brackets work just like they do in math.
+		3: $GLOBALS['TEXTCOLOR']
+			Tells PHP to find out what the setting is for 'TEXTCOLOR'
+		4: = "" ?
+			Asks PHP, "Is the value you found for 'TEXTCOLOR' blank?"
+		5: #000000
+			Tells PHP, "If the value you found for 'TEXTCOLOR' is blank, print out '#000000'."
+		6: : $GLOBALS['TEXTCOLOR']
+			Tells PHP, "If the value you found for 'TEXTCOLOR' IS NOT blank, the print out whatever value
+				you found."
+		7: );
+			Tells PHP to stop printing.  See #2 above.
+		8: ?>
+			Tells PHP to stop processing until it finds another '<?php' tag.  See #1 above.
+	Summary:
+		In the example above, the server says to PHP, "Hey, wake up.. I need you to find out if 
+			WebCalendar has a setting for 'TEXTCOLOR'."
+		PHP tries to find the setting for 'TEXTCOLOR'
+			If PHP finds the 'TEXTCOLOR' setting, it says to the server, "Ok, I found a 
+				'TEXTCOLOR' setting. What do you want me to do with it?"
+			If PHP CANNOT find the 'TEXTCOLOR' setting, it says to the server, "Nope, I couldn't
+				find the 'TEXTCOLOR' setting."
+		Then..
+			If PHP found the 'TEXTCOLOR' setting, the server says, "Great! What value did you find?"
+			If PHP did NOT find the 'TEXTCOLOR' setting, the server says, "Ok. Thanks. You can 
+				go back to sleep now."
+		Then..
+			If the server asks for the value, PHP says, "red".
+			Otherwise, PHP just goes back to sleep.
+		Then..
+			If PHP says "red", the server prints it on the page.
+			If PHP didn't find the 'TEXTCOLOR' setting, the server prints out "#000000".
+	...THE END
+
+
+   VARIABLES USED TO STYLE WEBCALENDAR
+	TEXTCOLOR - default text color
+	FONTS - default font-family
+	BGCOLOR - background-color for the page
+	TABLEBG - background-color for tables (typically used when the table also has cellspacing, thereby
+		creating a border effect)
+	TABLECELLFG - text color for normal cells (not weekends, today, or any other types of cells)
+	CELLBG - background-color for normal cells (not weekends, today, or any other types of cells)
+	TODAYCELLBG - background-color for cells that make up today's date
+	WEEKENDBG - background-color for cells that make up the weekend
+	THFG - text color for table headers
+	THBG - background-color for table headers
+	POPUP_FG - text color for event popups
+	POPUP_BG - background-color for event popups
+	H2COLOR - text color for text within h2 tags
+*/
+?>
 
 <style type="text/css">
 <!--
@@ -133,7 +226,7 @@ a:hover {
 	border-bottom: 1px solid #0000FF;
 	padding: 0px 2px 0px 3px;
 }
-<?php // formats the left arrow images
+<?php //formats the left arrow images
 ?>.prev img {
 	border-width: 0px;
 	width: 36px;
@@ -142,7 +235,7 @@ a:hover {
 	margin-top: 7px;
 	float: left;
 }
-<?php // formats the right arrow images
+<?php //formats the right arrow images
 ?>.next img {
 	border-width: 0px;
 	width: 36px;
@@ -151,7 +244,7 @@ a:hover {
 	margin-top: 7px;
 	float: right;
 }
-<?php // formats the left arrow image in day.php
+<?php //formats the left arrow image in day.php
 ?>#day .prev img {
 	border-width: 0px;
 	width: 36px;
@@ -159,7 +252,7 @@ a:hover {
 	margin-top: 37px;
 	float: left;
 }
-<?php // formats the right arrow image in day.php
+<?php //formats the right arrow image in day.php
 ?>#day .next img {
 	border-width: 0px;
 	width: 36px;
@@ -167,8 +260,7 @@ a:hover {
 	margin-top:37px;
 	float: right;
 }
-
-<?php //end stuff that stays 
+<?php //
 ?>.tablecell {
   font-size: 12px;
   width: 14%;
@@ -191,6 +283,7 @@ a:hover {
   font-size: 10px;
   width: 30px;
   height: 30px;
+  background-color: <?php echo $GLOBALS['CELLBG'];?>;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
@@ -222,7 +315,7 @@ a:hover {
 .tableheadertoday {
   font-size: 14px;
   vertical-align: top;
-  color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
+  color: <?php echo ( $GLOBALS['THFG'] == "" ? "#000000" : $GLOBALS['THFG'] ); ?>;
   background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -334,6 +427,11 @@ textarea {
 	vertical-align: top;
 	font-weight: bold;
 }
+<?php //question mark img linking to help sections
+?>img.help {
+	border-width: 0px;
+	cursor: help;
+}
 <?php // standard table appearing mainly in prefs.php & admin.php 
 ?>table.standard {
   border: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -341,6 +439,7 @@ textarea {
   font-size: 12px;
 }
 table.standard th {
+color: <?php echo $GLOBALS['THFG']; ?>;
   background-color: <?php echo $GLOBALS['THBG']; ?>;
   font-size: 18px;
   padding: 0px;
@@ -359,8 +458,7 @@ td.month a:hover {
 	text-decoration: none;
 	text-align: center;
 }
-<?php // ======================== ACTIVITY_LOG.PHP 
-?>#activitylog table {
+#activitylog table {
 	border-width: 0px;
 	width: 100%;
 }
@@ -382,8 +480,6 @@ td.month a:hover {
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 	font-size: 13px;
 }
-<?php // ========================= DAY.PHP 
-?>
 #day .title {
 	margin-top: 3px;
 	text-align: center;
@@ -404,7 +500,8 @@ td.month a:hover {
 	border-style: solid;
 	border-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-#day .minical th.date {
+<?php //the really big number above the minicalendar in day.php
+?>#day .minical th.date {
 	text-align: center;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
@@ -429,15 +526,14 @@ td.month a:hover {
 	background-color: <?php echo $GLOBALS['TODAYCELLBG']; ?>;
 }
 #day .selectedday {
-	border: 1px solid black;
+	border: 1px solid #OOOOOO;
 }
-<?php // ========================= MONTH.PHP 
-?>#month table.main {
+#month .main {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 }
-#month table.main td {
+#month .main td {
 	font-size: 12px;
 	width: 14%;
 	height: 75px;
@@ -446,7 +542,7 @@ td.month a:hover {
 	background-color: <?php echo $GLOBALS['CELLBG'];?>;
 	vertical-align: top;
 }
-#month table.main td.weekend {
+#month .main td.weekend {
 	font-size: 12px;
 	width: 14%;
 	height: 75px;
@@ -455,7 +551,7 @@ td.month a:hover {
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-#month table.main td.today {
+#month .main td.today {
 	font-size: 12px;
 	width: 14%;
 	height: 75px;
@@ -464,8 +560,7 @@ td.month a:hover {
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 	vertical-align: top;
 }
-<?php // ========================= YEAR.PHP
- // contains ALL months 
+<?php // contains ALL months
 ?>#year .main tr {
 	vertical-align: top;
 }
@@ -510,7 +605,7 @@ td.month a:hover {
 	background-color: <?php echo $GLOBALS['TODAYCELLBG']; ?>;
 }
 #year .minical td.hasevents {
-	background-color: #ddddff;
+	background-color: #DDDDFF;
 	font-weight: bold;
 }
 #viewd table {
@@ -582,17 +677,16 @@ td.month a:hover {
 	color: #0000FF;
 	text-decoration: none;
 }
-<?php // ======================= VIEW_M.PHP 
-?>#viewm th,
+#viewm th,
 #viewd th {
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
 }
 #vieww th.today,
 #viewm th.today {
-	font-size: 14px;
+	font-size: 13px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#000000" : $GLOBALS['THFG'] ); ?>;
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
 	width: 10%;
@@ -601,13 +695,12 @@ td.month a:hover {
 	border-collapse: collapse;
 	vertical-align: top;
 }
-<?php // ======================== VIEW_V.PHP 
-?>#viewv table,
+#viewv table,
 #viewm table,
 #viewl table.main,
 .viewt {
-	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>; 
-	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>; 
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 }
 #viewt th.row {
@@ -616,7 +709,7 @@ td.month a:hover {
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
 	vertical-align: top;
 	border-top-width: 0px;
-	border-left-width: 0px;
+	border-left-width: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
@@ -632,12 +725,12 @@ td.month a:hover {
 	font-size:13px;
 }
 #viewt td.reg {
+	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 	border-top-width: 0px;
 	border-left-width: 0px;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 	width: 90%;
 }
 #viewt td.today {
@@ -667,17 +760,6 @@ td.month a:hover {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-collapse: collapse;
 }
-#viewm th.weekend,
-#viewv th.weekend {
-	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
-	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
-	border-top-width: 0px;
-	border-left-width: 0px;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	vertical-align: top;
-	font-size:13px;
-}
 #viewv th.today {
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#000000" : $GLOBALS['THFG'] ); ?>;
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
@@ -696,13 +778,11 @@ td.month a:hover {
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-<?php // ======================= VIEW_W.PHP 
-?>#vieww .title,
+#vieww .title,
 #viewd .title,
 #viewl .title,
 #viewm .title,
 #viewt .title,
-.viewttitle,
 #viewv .title,
 #month .title {
 	text-align: center;
@@ -712,7 +792,6 @@ td.month a:hover {
 #viewl .title .date,
 #viewm .title .date,
 #viewt .title .date,
-.viewttitle .date,
 #viewv .title .date,
 #month .title .date {
 	font-size: 24px;
@@ -724,7 +803,6 @@ td.month a:hover {
 #viewl .title .viewname,
 #viewm .title .viewname,
 #viewt .title .viewname,
-.viewttitle .viewname,
 #viewv .title .viewname,
 #day .title .user,
 td.dayviewtitle .user,
@@ -782,8 +860,7 @@ td.dayviewtitle .user,
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
 }
-<?php // ========================= WEEK.PHP 
-?>#week table {
+#week table {
 	width: 100%;
 	border-width-top: 0px;
 	border-width-left: 0px;
@@ -829,7 +906,7 @@ td.dayviewtitle .user,
 #week th.today a,
 #weekdetails th.today a {
 	font-size: 14px;
-	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#000000" : $GLOBALS['THFG'] ); ?>;
 }
 #week th.today a:hover,
 #weekdetails th.today a:hover {
@@ -898,8 +975,7 @@ td.dayviewtitle .user,
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
-<?php // ===================== WEEK_DETAILS.PHP 
-?>#weekdetails table {
+#weekdetails table {
 	border-width: 0px;
 	width: 90%;
 	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -914,7 +990,7 @@ td.dayviewtitle .user,
 }
 #weekdetails th.today {
 	font-size: 14px;
-	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#000000" : $GLOBALS['THFG'] ); ?>;
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;

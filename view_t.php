@@ -77,7 +77,7 @@ else
 for ( $i = 0; $i < $val_boucle; $i++ ) {
   $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % $val_boucle );
-  $header[$i] = $weekdays[$i] . "<br />" .
+  $header[$i] = $weekdays[$i] . "<br />\n" .
      month_short_name ( date ( "m", $days[$i] ) - 1 ) .
      " " . date ( "d", $days[$i] );
 }
@@ -206,8 +206,7 @@ $user = ""; // reset
 echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_t.php?timeb=$timeb&id=$id&amp;date=$thisdate&amp;friendly=1\" " .
-    "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
+  echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_t.php?timeb=$timeb&amp;id=$id&amp;date=$thisdate&amp;friendly=1\" target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</a>\n";
 
