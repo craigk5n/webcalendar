@@ -109,22 +109,22 @@ print_header();
 <CENTER>
 <TABLE BORDER="0" CELLSPACING="4" CELLPADDING="4">
 <TR>
-<TD VALIGN="top"><? display_small_month(1,$year,False); ?></TD>
-<TD VALIGN="top"><? display_small_month(2,$year,False); ?></TD>
-<TD VALIGN="top"><? display_small_month(3,$year,False); ?></TD>
-<TD VALIGN="top"><? display_small_month(4,$year,False); ?></TD>
+<TD VALIGN="top"><?php display_small_month(1,$year,False); ?></TD>
+<TD VALIGN="top"><?php display_small_month(2,$year,False); ?></TD>
+<TD VALIGN="top"><?php display_small_month(3,$year,False); ?></TD>
+<TD VALIGN="top"><?php display_small_month(4,$year,False); ?></TD>
 </TR>
 <TR>
-<TD VALIGN="top"><? display_small_month(5,$year,False); ?></TD>
-<TD VALIGN="top"><? display_small_month(6,$year,False); ?></TD>
-<TD VALIGN="top"><? display_small_month(7,$year,False); ?></TD>
-<TD VALIGN="top"><? display_small_month(8,$year,False); ?></TD>
+<TD VALIGN="top"><?php display_small_month(5,$year,False); ?></TD>
+<TD VALIGN="top"><?php display_small_month(6,$year,False); ?></TD>
+<TD VALIGN="top"><?php display_small_month(7,$year,False); ?></TD>
+<TD VALIGN="top"><?php display_small_month(8,$year,False); ?></TD>
 </TR>
 <TR>
-<TD VALIGN="top"><? display_small_month(9,$year,False); ?></TD>
-<TD VALIGN="top"><? display_small_month(10,$year,False); ?></TD>
-<TD VALIGN="top"><? display_small_month(11,$year,False); ?></TD>
-<TD VALIGN="top"><? display_small_month(12,$year,False); ?></TD>
+<TD VALIGN="top"><?php display_small_month(9,$year,False); ?></TD>
+<TD VALIGN="top"><?php display_small_month(10,$year,False); ?></TD>
+<TD VALIGN="top"><?php display_small_month(11,$year,False); ?></TD>
+<TD VALIGN="top"><?php display_small_month(12,$year,False); ?></TD>
 </TR>
 </TABLE>
 </CENTER>
