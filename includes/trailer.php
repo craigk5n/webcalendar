@@ -337,5 +337,7 @@ if ( $login != "__public__" ) {
     }
     print $groups;
   }
+  print "<br /><a href=\"$GLOBALS[PROGRAM_URL]\" class=\"navlinks\" " .
+    "style=\"font-size: 10px;\" target=\"_new\">" .
+    $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 ?>
-</font>
