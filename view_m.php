@@ -42,28 +42,25 @@ $thisdate = $startdate;
 
 ?>
 
-<table style="border-width:0px; width:100%;">
-<tr><td style="text-align:left;">
+<div style="border-width:0px; width:99%;">
+<div style="float:left;">
 <?php if ( ! $friendly ) { ?>
 <a title="<?php etranslate("Previous")?>" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
-</td>
-<td class="viewmtitle">
-<span class="date">
-<?php
-  printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
-?>
-</span><br />
-<span class="viewname">
-<?php echo $view_name ?>
-</span>
-</td>
-<td style="text-align:right;">
+</div>
+<div style="float:right;">
 <?php if ( ! $friendly ) { ?>
 <a title="<?php etranslate("Next")?>" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
-</td></tr>
-</table>
+</div>
+<div class="title">
+<span class="date">
+<?php
+  printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
+?></span><br />
+<span class="viewname"><?php echo $view_name ?></span>
+</div>
+</div>
 
 <?php
 // The table has names across the top and dates for rows.  Since we need
@@ -112,10 +109,10 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
   } else {
     $tdw = 5;
   }
-
 ?>
+<br /><br />
 
-<table class="viewm" cellspacing="0" cellpadding="0" style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>;">
+<table cellspacing="0" cellpadding="0">
 <tr><th class="empty">&nbsp;</th>
 <?php
   // $j points to start of this table/row
@@ -176,7 +173,7 @@ if ( empty ( $friendly ) )
   echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<a title=\"" . etranslate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_m.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
+  echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_m.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
     "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</a>\n";
