@@ -73,12 +73,13 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
     echo "<br />-- " . translate("Admin mode") . " --";
   if ( $is_assistant )
     echo "<br />-- " . translate("Assistant mode") . " --";
+?>
+</span>
+<?php
   if ( $categories_enabled == "Y" ) {
     echo "<br />\n<br />\n";
     print_category_menu('day', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly);
   }
-?>
-</span>
 </td>
 <?php if ( empty ( $friendly ) ) { ?>
 <td style="text-align:right;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img class="prevnext" src="rightarrow.gif" alt="<?php etranslate("Next"); ?>" /></a></td>
