@@ -1,4 +1,6 @@
 Version 0.9.40dev (?? ??? 2002)
+  - When editing system preferences for public access, use system settings
+    for default values in pref.php.
   - Updated Portuguese_BR translation
   - Updated Dutch translation
   - Fixed bug 606332: '+' icons appeared in printer-friendly version of week
