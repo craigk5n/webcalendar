@@ -325,7 +325,7 @@ function user_is_admin($values,$Admins) {
 // Do this search only once per request.
 // returns: array of admins
 function get_admins() {
-  global $error, $ds, $ldap_user_attr, $cached_admins;
+  global $error, $ds, $cached_admins;
   global $ldap_admin_group_name,$ldap_admin_group_attr,$ldap_admin_group_type;
 
   if ( ! empty ( $cached_admins ) ) return $cached_admins;
@@ -333,7 +333,7 @@ function get_admins() {
 
   if ($r = connect_and_bind()) {
     $search_filter = "($ldap_admin_group_attr=*)";
-    $sr = @ldap_search ( $ds, $ldap_admin_group_name, $search_filter, $ldap_user_attr );
+    $sr = @ldap_search ( $ds, $ldap_admin_group_name, $search_filter, $ldap_admin_group_attr );
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error();
     } else {
