@@ -21,7 +21,7 @@
   font-size: 12px;
   width: 80px;
   height: 80px;
-  background-color: <?php echo ( $WEEKENDBG == "" ? "#E0E0E0" : $WEEKENDBG );?>;
+  background-color: <?php echo ( $WEEKENDBG == "" ?!T!8X"#E0E0E0" : $WEEKENDBG );?>;
 }
 .tablecellweekenddemo {
   font-family: <?php echo $FONTS ?>;
@@ -118,6 +118,7 @@ a:hover {
 .tooltip {
   cursor: help;
   text-decoration: none;
+  font-weight: bold;
 }
 .defaulttext {
   font-family: <?php echo $FONTS ?>;

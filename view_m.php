@@ -42,28 +42,27 @@ $thisdate = $startdate;
 
 ?>
 
-<TABLE BORDER="0" WIDTH="100%">
-<TR><TD ALIGN="left">
+<table style="border-width:0px; width:100%;">
+<tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<A HREF="view_m.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Previous")?>"></A>
+<a href="view_m.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" style="width:36px; height:32px; border-width:0px;" alt="<?php etranslate("Previous")?>"></a>
 <?php } ?>
-</TD>
-<TD ALIGN="middle">
-<FONT SIZE="+2" COLOR="<?php echo $H2COLOR?>">
-<B>
+</td>
+<td style="text-align:center; color:<?php echo $H2COLOR?>;">
+<font size="+2">
+<span style="font-weight:bold;">
 <?php
   printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
 ?>
-</B></FONT><BR>
-<FONT COLOR="<?php echo $H2COLOR?>"><?php echo $view_name ?></FONT>
-
-</TD>
-<TD ALIGN="right">
+</span></font><br />
+<?php echo $view_name ?>
+</td>
+<td style="text-align:right;">
 <?php if ( ! $friendly ) { ?>
-<A HREF="view_m.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Next")?>"></A>
+<a href="view_m.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" style="width:36px; height:32px; border-width:0px;" alt="<?php etranslate("Next")?>"></a>
 <?php } ?>
-</TD></TR>
-</TABLE>
+</td></tr>
+</table>
 
 <?php
 // The table has names across the top and dates for rows.  Since we need
@@ -116,14 +115,14 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 ?>
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<TABLE BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
-<TR><TD BGCOLOR="<?php echo $TABLEBG?>">
-<TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2">
+<table style="border-width:0px; width:100%;" cellspacing="0" cellpadding="0">
+<tr><td style="background-color:<?php echo $TABLEBG?>;">
+<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
 <?php } else { ?>
-<TABLE BORDER="1" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
+<table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
 <?php } ?>
 
-<TR><TD BGCOLOR="<?php echo $THBG?>">&nbsp;</TD>
+<tr><td style="background-color:<?php echo $THBG?>;">&nbsp;</td>
 
 <?php
   // $j points to start of this table/row
@@ -133,9 +132,9 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
-    echo "<TH CLASS=\"tableheader\" WIDTH=\"tdw%\" BGCOLOR=\"$THBG\">$tempfullname</TD>";
+    echo "<th class=\"tableheader\" style=\"width:tdw%; background-color:$THBG;\">$tempfullname</td>";
   }
-  echo "</TR>\n";
+  echo "</tr>\n";
   
   for ( $date = $monthstart; date ( "Ymd", $date ) <= date ( "Ymd", $monthend );
     $date += ( 24 * 3600 ), $wday++ ) {
@@ -151,30 +150,30 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
         $color = $CELLBG;
       $class = "tableheader";
     }
-    echo "<TR><TH CLASS=\"$class\" WIDTH=\"10%\" BGCOLOR=\"$color\" VALIGN=\"top\">" .
-      "<FONT SIZE=\"-1\" CLASS=\"$class\">" . $weekday . " " .
-      round ( date ( "d", $date ) ) . "</FONT></TH>\n";
+    echo "<tr><th class=\"$class\" style=\"width:10%; background-color:$color; vertical-align:top;\">" .
+      "<font size=\"-1\">" . $weekday . " " .
+      round ( date ( "d", $date ) ) . "</font></th>\n";
     for ( $i = $j, $k = 0;
       $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
-      echo "<TD WIDTH=\"$tdw%\" BGCOLOR=\"$color\">";
-      //echo date ( "D, m-d-Y H:i:s", $date ) . "<BR>";
+      echo "<td style=\"width:$tdw%; background-color:$color;\">";
+      //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
         empty ( $friendly ) )
         echo html_for_add_icon ( date ( "Ymd", $date ), "", "", $user );
       print_date_entries ( date ( "Ymd", $date ),
         $user, $friendly, true );
-      echo "</TD>";
+      echo "</td>";
     }
-    echo "</TR>\n";
+    echo "</tr>\n";
   }
 
   if ( empty ( $friendly ) || ! $friendly )
-    echo "</TD></TR></TABLE>\n</TABLE>\n<P>\n";
+    echo "</td></tr></table>\n</table>\n<br /><br />\n";
   else
-    echo "</TABLE>\n<P>\n";
+    echo "</table>\n<br /><br />\n";
   
 }
 
@@ -185,13 +184,13 @@ if ( empty ( $friendly ) )
   echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<A CLASS=\"navlinks\" HREF=\"view_m.php?id=$id&date=$thisdate&friendly=1\" " .
-    "TARGET=\"cal_printer_friendly\" onMouseOver=\"window.status='" .
+  echo "<a class=\"navlinks\" href=\"view_m.php?id=$id&date=$thisdate&friendly=1\" " .
+    "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
-    "'\">[" . translate("Printer Friendly") . "]</A>\n";
+    "'\">[" . translate("Printer Friendly") . "]</a>\n";
 
 
 print_trailer ();
 ?>
-</BODY>
-</HTML>
+</body>
+</html>

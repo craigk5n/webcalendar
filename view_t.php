@@ -141,7 +141,7 @@ for ( $date = $wkstart, $h = 0;
     $class = "tableheader";
   }
   echo "<tr><th class=\"$class\" style=\"width:$tdw%; background-color:$THBG; vertical-align:top;\">" .
-    "<font size=\"-1\" class=\"$class\">" . $weekday . " " .
+    "<font size=\"-1\">" . $weekday . " " .
     round ( date ( "d", $date ) ) . "</font></th>\n";
   echo "<td style=\"width:$tdw%; background-color:$color;\">";
   if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
@@ -157,9 +157,9 @@ for ( $date = $wkstart, $h = 0;
 }
 
 if ( empty ( $friendly ) || ! $friendly )
-  echo "</td></tr></table>\n</table>\n<P>\n";
+  echo "</td></tr></table>\n</table>\n<br /><br />\n";
 else
-  echo "</table>\n<P>\n";
+  echo "</table>\n<br /><br />\n";
 
 
 $user = ""; // reset
@@ -167,10 +167,10 @@ $user = ""; // reset
 echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<A class=\"navlinks\" HREF=\"view_t.php?id=$id&date=$thisdate&friendly=1\" " .
-    "target=\"cal_printer_friendly\" onMouseOver=\"window.status='" .
+  echo "<a class=\"navlinks\" href=\"view_t.php?id=$id&date=$thisdate&friendly=1\" " .
+    "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
-    "'\">[" . translate("Printer Friendly") . "]</A>\n";
+    "'\">[" . translate("Printer Friendly") . "]</a>\n";
 
 
 print_trailer ();
