@@ -1,4 +1,5 @@
 Version 0.9.32dev (?? ??? 01)
+  - Updated INSTALL and FAQ files.
   - Initial LDAP support.
   - Security improvement: Use $single_user boolean rather than using
     strlen ( $single_user_login )
