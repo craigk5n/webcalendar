@@ -1368,7 +1368,8 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
       $thisyear  = substr($dateYmd, 0, 4);
       $week  = floor(date("d", $date)/7);
       $thismonth+=$freq;
-      $dow1 += date('w',mktime (3,0,0,$thismonth,1,$thisyear));
+      //dow1 is the weekday that the 1st of the month falls on
+      $dow1 = date('w',mktime (3,0,0,$thismonth,1,$thisyear));
       $t = $dow - $dow1;
       if ($t < 0) $t += 7;
       $day = 7*$week + $t + 1;
@@ -1377,7 +1378,9 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
         if ( ! is_exception ( $cdate, $ex_days ) )
           $ret[$n++] = $cdate;
         $thismonth+=$freq;
-        $dow1 += date('w',mktime (3,0,0,$thismonth,1,$thisyear));
+        //dow1 is the weekday that the 1st of the month falls on
+        $dow1time = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
+        $dow1 = date ( 'w', $dow1time );
         $t = $dow - $dow1;
         if ($t < 0) $t += 7;
         $day = 7*$week + $t + 1;
