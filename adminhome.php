@@ -70,7 +70,7 @@ if ( $is_admin ) {
   $links[] = "users.php";
 } else {
   $names[] = translate("Account");
-  $links[] = "users.php";
+  $links[] = "edit_user.php";
 }
 
 if ( $single_user != 'Y' ) {
