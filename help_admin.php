@@ -70,6 +70,18 @@ print_header();
   <TD><?php etranslate("user-sees-his-group-help")?></TD></TR>
 </TABLE>
 
+<H3><?php etranslate("Categories")?></H3>
+<TABLE BORDER=0>
+<TR><TD VALIGN="top"><B><?php etranslate("Categories enabled")?>:</B></TD>
+  <TD><?php etranslate("categories-enabled-help")?></TD></TR>
+</TABLE>
+
+<H3><?php etranslate("Reports")?></H3>
+<TABLE BORDER=0>
+<TR><TD VALIGN="top"><B><?php etranslate("Reports enabled")?>:</B></TD>
+  <TD><?php etranslate("reports-enabled-help")?></TD></TR>
+</TABLE>
+
 
 <H3><?php etranslate("Email")?></H3>
 

@@ -263,3 +263,31 @@ CREATE TABLE webcal_import_data (
   cal_external_id VARCHAR(200) NULL,
   PRIMARY KEY  ( cal_id, cal_login )
 );
+
+CREATE TABLE webcal_report (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_report_id INT NOT NULL,
+  cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
+  cal_report_type VARCHAR(20) NOT NULL,
+  cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
+  cal_report_name VARCHAR(50) NOT NULL,
+  cal_time_range INT NOT NULL,
+  cal_user VARCHAR(25) NULL,
+  cal_allow_nav CHAR(1) DEFAULT 'Y',
+  cal_cat_id INT NULL,
+  cal_include_empty CHAR(1) DEFAULT 'N',
+  cal_show_in_trailer CHAR(1) DEFAULT 'N',
+  cal_update_date INT NOT NULL,
+  PRIMARY KEY ( cal_report_id )
+);
+
+CREATE TABLE webcal_report_template (
+  cal_report_id INT NOT NULL,
+  cal_template_type CHAR(1) NOT NULL,
+  cal_template_text VARCHAR(1024),
+  PRIMARY KEY ( cal_report_id, cal_template_type )
+);
+
+
+
+

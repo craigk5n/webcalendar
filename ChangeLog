@@ -1,4 +1,6 @@
 Verion 0.9.42-devcvs (?? ??? ????)
+  - Added new custom report feature (requires two new database tables, see
+    UPGRADING.html for details)
   - Added previous link to Activity Log page
   - Added patch 618254: new import function (vCal and Palm)
   - Added patch 759643: Added new view type "Month (on same calendar)"
