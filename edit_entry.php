@@ -370,12 +370,12 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     echo "<SELECT NAME=\"" . $extra_name . "\">";
     echo "<OPTION VALUE=\"\"> None";
     $userlist = get_my_users ();
-    for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-      echo "<OPTION VALUE=\"" . $userlist[$i]['cal_login'] . "\"";
+    for ( $j = 0; $j < count ( $userlist ); $j++ ) {
+      echo "<OPTION VALUE=\"" . $userlist[$j]['cal_login'] . "\"";
         if ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
-          $userlist[$i]['cal_login'] == $extras[$extra_name]['cal_data'] )
+          $userlist[$j]['cal_login'] == $extras[$extra_name]['cal_data'] )
           echo " SELECTED";
-        echo "> " . $userlist[$i]['cal_fullname'];
+        echo "> " . $userlist[$j]['cal_fullname'];
     }
     echo "</SELECT>";
   } else if ( $extra_type == $EXTRA_REMINDER ) {
