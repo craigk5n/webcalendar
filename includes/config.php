@@ -18,6 +18,23 @@ $PROGRAM_DATE = "?? ??? 2004";
 $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
 $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
 
+$TROUBLE_URL = "docs/WebCalendar-SysAdmin.html#trouble";
+
+// We don't normally put functions in this file.  But, since this file
+// is included before some of the others, this function either goes here
+// or we repeat this code in multiple files.
+function dieMiserableDeath ( $error )
+{
+  echo "<html><head><title>WebCalendar: Fatal Error</title></head>\n" .
+    "<body><h2>WebCalendar Error</h2>\n" .
+    "<p>$error</p>\n<hr />" .
+    "<p><a href=\"$TROUBLE_URL\" target=\"_blank\">" .
+    "Troubleshooting Help</a></p></body></html>\n";
+  exit;
+}
+
+
+
 // Open settings file to read
 $settings = array ();
 $fd = @fopen ( "settings.php", "rb", true );
@@ -28,12 +45,9 @@ if ( empty ( $fd ) ) {
     Header ( "Location: install/index.php" );
     exit;
   } else {
-    echo "<html>\n<title>Error</title>\n</head>\n<body>\n" .
-      "<p>Error: could not find settings.php file.<br />\n" .
+    dieMiserableDeath ( "Could not find settings.php file.<br />\n" .
       "Please copy settings.php.orig to settings.php and modify for your " .
-      "site. </p>\n" .
-      "</body></html>\n";
-    exit;
+      "site.\n" );
   }
 }
 while ( ! feof ( $fd ) ) {
@@ -45,7 +59,7 @@ while ( ! feof ( $fd ) ) {
     continue;
   if ( preg_match ( "/^\?>/", $buffer ) ) // end php code
     continue;
-  if ( preg_match ( "/(\S+):\s*(.*)/", $buffer, $matches ) ) {
+  if ( preg_match ( "/(\S+):\s*(\S+)/", $buffer, $matches ) ) {
     $settings[$matches[1]] = $matches[2];
     //echo "settings $matches[1] => $matches[2] <br>";
   }
@@ -61,6 +75,13 @@ $db_database = $settings['db_database'];
 $db_persistent = preg_match ( "/(1|yes|true|on)/i",
   $settings['db_persistent'] ) ? '1' : '0';
 
+foreach ( array ( "db_type", "db_host", "db_login", "db_password" ) as $s ) {
+  if ( empty ( $settings[$s] ) ) {
+    dieMiserableDeath ( "Could not find <tt>$s</tt> defined in " .
+      "your <tt>settings.php</tt> file.\n" );
+  }
+}
+
 $readonly = preg_match ( "/(1|yes|true|on)/i",
   $settings['readonly'] ) ? 'Y' : 'N';
 
@@ -69,6 +90,12 @@ $single_user = preg_match ( "/(1|yes|true|on)/i",
   $settings['single_user'] ) ? 'Y' : 'N';
 if ( $single_user == 'Y' )
   $single_user_login = $settings['single_user_login'];
+
+if ( $single_user == 'Y' && empty ( $single_user_login ) ) {
+  dieMiserableDeath ( "You must define <tt>single_user_login</tt> in " .
+    "the settings.php file.\n" );
+}
+
 
 $use_http_auth = preg_match ( "/(1|yes|true|on)/i",
   $settings['use_http_auth'] ) ? true : false;
@@ -213,15 +240,16 @@ if ( get_magic_quotes_gpc () == 0 ) {
   phpinfo ();
   $val = ob_get_contents ();
   ob_end_clean ();
-  echo "<html>\n<title>Error</title>\n</head>\n<body>\n" .
-    "Error: you must reconfigure your <tt>php.ini</tt> file to " .
-    "have <span style=\"font-weight:bold;\">magic_quotes_gpc</span> set to <span style=\"font-weight:bold;\">ON</span>.<br /><br />\n";
+  $loc = '';
   if ( preg_match ( "/>([^<>]*php.ini)</", $val, $matches ) ) {
-    echo "Please edit the following file and restart your server:<br /><br />\n" .
+    $loc = "Please edit the following file and restart your server:" .
+      "<br /><br />\n" .
       "<blockquote>\n<tt>" . $matches[1] . "</tt>\n</blockquote>\n";
   }
-  echo "</body>\n</html>\n";
-  exit;
+  dieMiserableDeath ( "You must reconfigure your <tt>php.ini</tt> file to " .
+    "have <span style=\"font-weight:bold;\">magic_quotes_gpc</span> set " .
+    " to <span style=\"font-weight:bold;\">ON</span>.<br /><br />\n" .
+    $loc );
 }
 
 ?>
