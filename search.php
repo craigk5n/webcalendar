@@ -18,7 +18,7 @@
 	if ( ($login == "__public__" && $public_access_others != "Y") || (! $is_admin) ) {
 		echo "</form>";
 	} else {
-		echo "<div id=\"advlink\"><a href=\"javascript:show('adv'); hide('advlink');\">advanced search</a></div>";
+		echo "<div id=\"advlink\"><a href=\"javascript:show('adv'); hide('advlink');\">" . translate("Advanced Search") . "</a></div>";
 ?>
 <table id="adv" style="display:none;">
 <tr><td style="vertical-align:top; text-align:right; font-weight:bold; width:60px;">

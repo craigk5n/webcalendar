@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixed bug 1063720: advanced search translation
   - Making search page dynamic on the client-side for admins
   - Combining & converting import/export pages to new tabbed GUI
   - Edited import/export link in trailer
