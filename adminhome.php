@@ -70,12 +70,7 @@ if ( $is_admin ) {
   $links[] = "users.php";
 } else {
   $names[] = translate("Account");
-  $links[] = "edit_user.php";
-}
-
-if ( $is_admin && ! empty ( $groups_enabled ) && $groups_enabled == 'Y' ) {
-  $names[] = translate("Groups");
-  $links[] = "groups.php";
+  $links[] = "users.php";
 }
 
 if ( $single_user != 'Y' ) {
@@ -133,8 +128,6 @@ if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' &&
   for ( $i = 0; $i < count ( $names ); $i++ ) {
   if ( $i % $COLUMNS == 0 )
     echo "<tr>\n";
-//  if ( $i % 0 == 1 )
-//      echo "<tr>\n";
     echo "<td>";
     if ( ! empty ( $links[$i] ) )
       echo "<a href=\"$links[$i]\">";

@@ -50,13 +50,9 @@ if ( ! $is_admin ) {
   }
 }
 
-
-if ( $error == "" ) {
-  do_redirect ( "groups.php" );
-}
 print_header();
-?>
 
+if ( $error != "" ) { ?>
 <h2><?php etranslate("Error")?></h2>
 
 <blockquote>
@@ -68,6 +64,9 @@ echo $error;
 ?>
 </blockquote>
 
-<?php print_trailer(); ?>
+<?php } else if ( $error == "" ) {
+	echo "Success! The changes you requested were saved.";
+}
+?>
 </body>
 </html>

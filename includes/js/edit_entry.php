@@ -180,9 +180,9 @@ function showTab (name) {
 	}
 	return false;
 }
-tabs[1] = "details";
-tabs[2] = "sched";
-tabs[3] = "participants";
-tabs[4] = "pete";
+tabs[0] = "details";
+tabs[1] = "sched";
+tabs[2] = "participants";
+tabs[3] = "pete";
 //]]> -->
 </script>

@@ -60,15 +60,9 @@ else if ( $formtype == "edituser" ) {
   }
 }
 
-if ( empty ( $error ) ) {
-  if ( $is_admin )
-    do_redirect ( "users.php" );
-  else
-    do_redirect ( "edit_user.php" );
-}
-
 print_header();
-?>
+
+if ( ! empty ( $error ) ) { ?>
 
 <h2><?php etranslate("Error")?></h2>
 
@@ -80,7 +74,9 @@ echo $error;
 //  echo "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
 //?>
 </blockquote>
+<?php } else if ( empty ( $error ) ) {
+	echo "Success! The changes you made have been saved.";
+} ?>
 
-<?php print_trailer(); ?>
 </body>
 </html>

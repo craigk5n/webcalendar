@@ -139,6 +139,6 @@ if ( $is_admin ) { ?>
 <?php } ?>
 </td></tr></table>
 
-<?php print_trailer(); ?>
+
 </body>
 </html>
