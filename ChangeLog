@@ -1,4 +1,5 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Fixed bug 787788: Can't enter event beginning st midnight
   - Fixed bug 783487: SQL error on saving existing report
   - Fixed bug 760236: Timezone Offset is buggy in edit_entry_handler.php
   - Fixed bug 669434: time zone offset with week_ssi.php problem
