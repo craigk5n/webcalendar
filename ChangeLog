@@ -1,4 +1,5 @@
 Version 1.0RC1/CVS+dev (?? ??? 2004)
+  - Fixed bug 1061746: layout issues with view_d.php
   - If php.ini setting for "file_uploads" is not enabled, then indicate
     this on the import page (import.php).
   - Streamlined layers.php & made layers only be displayed when layers are

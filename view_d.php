@@ -48,9 +48,9 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 ?>
 
 <div style="border-width:0px; width:99%;">
-<a title="<?php etranslate("Previous")?>" class="prev" href="view_d.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate("Previous")?>" class="prev" href="view_d.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 
-<a title="<?php etranslate("Next")?>" class="next" href="view_d.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<a title="<?php etranslate("Next")?>" class="next" href="view_d.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php 
 	printf ( "%s, %s %d, %d", weekday_name ( $wday ), month_name ( $thismonth - 1 ), $thisday, $thisyear ); 
@@ -111,22 +111,21 @@ function TimeMatrix ($date,$participants) {
 
   $increment = 15;
   $interval = 4;
-  $cell_pix = 6;
-  $participant_pix = '170';
-  //$interval = (int)(60 / $increment);
+  $participant_pct = '20%'; //use percentage
+
   $first_hour = $GLOBALS["WORK_DAY_START_HOUR"];
   $last_hour = $GLOBALS["WORK_DAY_END_HOUR"];
   $hours = $last_hour - $first_hour;
   $cols = (($hours * $interval) + 1);
-  $total_pix = (int)((($cell_pix * $interval) * $hours) + $participant_pix);
+  $total_pct = '80%';
+  $cell_pct =  80 /($hours * $interval);
 ?>
 
 <br />
-<table class="matrixd" style="width:<?php echo $total_pix;?>px;" cellspacing="0" cellpadding="0">
-	<tr><td class="matrix" colspan="<?php echo $cols;?>">
-		<img src="pix.gif" alt="spacer" />
-	</td></tr>
-	<tr><th style="width:<?php echo $participant_pix;?>px;">
+<table class="matrixd" style="width:<?php echo $total_pct;?>;" cellspacing="0" cellpadding="0">
+	<tr  ><td class="matrix" colspan="<?php echo $cols;?>"></td>
+	</tr>
+	<tr><th style="width:<?php echo $participant_pct;?>;">
 		<?php etranslate("Participants");?></th>
 <?php
   $str = '';
@@ -134,20 +133,20 @@ function TimeMatrix ($date,$participants) {
   $CC = 1;
   for($i=$first_hour;$i<$last_hour;$i++) {
      for($j=0;$j<$interval;$j++) {
-        $str .= '	<td style="width:'.$cell_pix.'px;" id="C'.$CC.'" class="dailymatrix" ';
+        $str .= '	<td  id="C'.$CC.'" class="dailymatrix" ';
         switch($j) {
-          case 0:
+          case 1:
                   if($interval == 4) { $k = ($i<=9?'0':substr($i,0,1)); }
-		  $str .= 'onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+		  $str .= 'style="width:'.$cell_pct.'%; text-align:right;"  onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
                   $str .= $k."</td>\n";
                   break;
-          case 1:
+          case 2:
                   if($interval == 4) { $k = ($i<=9?substr($i,0,1):substr($i,1,2)); }
-		  $str .= 'onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+		  $str .= 'style="width:'.$cell_pct.'%; text-align:left;" onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
                   $str .= $k."</td>\n";
                   break;
           default:
-		  $str .= 'onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+		  $str .= 'style="width:'.$cell_pct.'%;" onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
                   $str .= "&nbsp;&nbsp;</td>\n";
                   break;
         }
@@ -155,7 +154,7 @@ function TimeMatrix ($date,$participants) {
      }
   }
   echo $str.
-       "</tr>\n<tr><td class=\"matrix\" colspan=\"$cols\">\n<img src=\"pix.gif\" alt=\"spacer\" />\n</td></tr>\n";
+       "</tr>\n<tr><td class=\"matrix\" colspan=\"$cols\"></td></tr>\n";
 
   // Display each participant
 
@@ -194,7 +193,7 @@ function TimeMatrix ($date,$participants) {
       $Tmp['ID'] = $E['cal_id'];
       $all_events[] = $Tmp;
     }
-    echo "<tr>\n<th class=\"row\" style=\"width:{$participant_pix}px;\">".$user_nospace."</th>\n";
+    echo "<tr>\n<th class=\"row\" style=\"width:{$participant_pct};\">".$user_nospace."</th>\n";
     $col = 1;
 
     for($j=$first_hour;$j<$last_hour;$j++) {
@@ -206,14 +205,14 @@ function TimeMatrix ($date,$participants) {
          
          foreach ($all_events as $ET) {
            if (($TIME >= $ET['START']) && ($TIME < $ET['END'])) {
-             $space = "<a class=\"matrix\" href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" alt=\"spacer\" /></a>";
+             $space = "<a class=\"matrix\" href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" title=\"Click to View\" /></a>";
 	   }
 	 }
-	echo "	<td class=\"matrixappts\" style=\"width:{$cell_pix}px;$border\">$space</td>\n";
+	echo "	<td class=\"matrixappts\" style=\"width:{$cell_pct}%;$border\">$space</td>\n";
          $col++;
        }
     }
-    echo "</tr><tr>\n<td class=\"matrix\" colspan=\"$cols\"><img src=\"pix.gif\" alt=\"spacer\" /></td></tr>\n";
+    echo "</tr><tr>\n<td class=\"matrix\" colspan=\"$cols\"><img src=\"pix.gif\" /></td></tr>\n";
   } // End foreach participant
   echo "</table>\n";
 
