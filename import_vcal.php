@@ -90,6 +90,8 @@ function parse_vcal($cal_file) {
               $substate = "none";
               $subsubstate = '';
 	      $vcal_data[] = format_vcal($event);
+              // clear out data for new event
+              $event = '';
 
 	  // TODO: QUOTED-PRINTABLE descriptions
 
