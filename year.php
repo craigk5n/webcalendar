@@ -13,7 +13,8 @@ if ( empty ( $year ) )
 $thisyear = $year;
 if ( $year != date ( "Y") )
   $thismonth = 1;
-
+//set up global $today value for highlighting current date
+set_today($date);
 if ( $year > "1903" )
   $prevYear = $year - 1;
 else
