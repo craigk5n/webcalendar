@@ -61,7 +61,7 @@ if ( $readonly == 'Y' ) {
   }
   $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
     "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-    "cal_name, cal_description FROM webcal_entry WHERE cal_id = " . $id;
+    "cal_name, cal_description, cal_group_id FROM webcal_entry WHERE cal_id = " . $id;
   $res = dbi_query ( $sql );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
@@ -110,6 +110,7 @@ if ( $readonly == 'Y' ) {
     $access = $row[8];
     $name = $row[9];
     $description = $row[10];
+    $parent = $row[11];
     // check for repeating event info...
     // but not if we are overriding a single entry of an already repeating
     // event... confusing, eh?
@@ -284,6 +285,10 @@ if ( ! empty ( $override ) ) {
 // if assistant, need to remember boss = user
 if ( $is_assistant || $is_nonuser_admin || ! empty ( $user ) )
    echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
+
+// if has cal_group_id was set, need to send parent = $parent
+if ( ! empty ( $parent ) )
+   echo "<input type=\"hidden\" name=\"parent\" value=\"$parent\" />\n";
 
 ?>
 

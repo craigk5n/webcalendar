@@ -13,6 +13,8 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
   $do_override = true;
   $old_id = $id;
 }
+// Remember previous cal_goup_id if present
+$old_id = ( ! empty ( $parent ) ? $parent : $old_id );
 
 if ( empty ( $TZ_OFFSET ) ) {
   $TZ_OFFSET = 0;
@@ -362,7 +364,7 @@ if ( empty ( $error ) ) {
     "VALUES ( $id, " .
     ( $old_id > 0 ? " $old_id, " : "" ) .
     "'" . ($is_assistant || $is_nonuser_admin ? $user : $login) . "', ";
-
+    
   $date = mktime ( 3, 0, 0, $month, $day, $year );
   $sql .= date ( "Ymd", $date ) . ", ";
   if ( strlen ( $hour ) > 0 && $timetype != 'U' ) {
