@@ -71,6 +71,7 @@ $languages = array (
   "Portuguese/Brazil" => "Portuguese_BR",
   "Russian" => "Russian",
   "Spanish" =>"Spanish",
+  "Swedish" =>"Swedish",
   "Turkish" =>"Turkish"
   // add new languages here!  (don't forget to add a comma at the end of
   // last line above.)
@@ -108,6 +109,7 @@ $browser_languages = array (
   "pt-br" => "Portuguese_BR", // Portuguese/Brazil
   "ru" =>"Russian",
   "es" =>"Spanish",
+  "sv" =>"Swedish",
   "tr" =>"Turkish"
 );
 
