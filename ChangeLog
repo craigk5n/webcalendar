@@ -1,4 +1,5 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Fixed date_selection_html function to include values for day control
  - Added patch 900968: Add outlook-style availability popup
  - Fixed VCS export function, PRODID was not defined
  - Fixed bug 1123508: RC3 browser language detection always returns none.
