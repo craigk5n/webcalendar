@@ -15,7 +15,7 @@ Polish.txt:          213
 Portuguese.txt:      190
 Portuguese_BR.txt:   186
 Russian.txt:         213
-Spanish.txt:         221
+Spanish.txt:         15
 Turkish.txt:         221
 Hungarian.txt:       154
 Galician.txt:        154
