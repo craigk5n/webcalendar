@@ -712,7 +712,7 @@ if ( empty ( $error ) ) {
     // add repeating info
     if ( ! empty ( $rpt_type ) && strlen ( $rpt_type ) && $rpt_type != 'none' ) {
       $freq = ( $rpt_freq ? $rpt_freq : 1 );
-      if ( $rpt_end_use )
+      if ( ! empty ( $rpt_end_use  ) )
         $end = sprintf ( "%04d%02d%02d", $rpt_year, $rpt_month, $rpt_day );
       else
         $end = 'NULL';
