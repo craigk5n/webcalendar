@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixed Bug 1016135: Time is listed in email for untimed events
   - Fixed Bug 1026762: import handler --circular code
   - Fixed Bug 1020450: upcomming rev1.3 doesn't display layers
   - Added user-ldap patch by David Black to use $ldap_user_attr throughout script
