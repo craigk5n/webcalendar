@@ -36,7 +36,7 @@
     if ( date ( "Ymd", $d ) == $thisdate )
       echo " SELECTED";
     echo ">";
-    printf ( "%s %d", month_short_name ( $m - 1 ), $y );
+    echo date_to_str ( date ( "Ymd", $d ), $DATE_FORMAT_MY, false, true );
   }
 ?>
 </SELECT>
@@ -82,9 +82,9 @@
       date ( "Ymd", $twkend ) >= $thisdate )
       echo " SELECTED";
     echo ">";
-    printf ( "%s %d - %s %d",
-      month_short_name ( date ( "m", $twkstart ) - 1 ), date ( "d", $twkstart ),
-      month_short_name ( date ( "m", $twkend ) - 1 ), date ( "d", $twkend ) );
+    printf ( "%s - %s",
+      date_to_str ( date ( "Ymd", $twkstart ), $DATE_FORMAT_MD, false, true ),
+      date_to_str ( date ( "Ymd", $twkend ), $DATE_FORMAT_MD, false, true ) );
     echo "\n";
   }
 ?>
@@ -163,14 +163,15 @@
       translate("Search") . "</A>";
     echo " | <A CLASS=\"navlinks\" HREF=\"export.php\">" .
       translate("Export") . "</A>";
-    if ( $categories_enabled == "Y" && $login != "__public__" )
+    if ( $categories_enabled == "Y" && $login != "__public__"
+      && $readonly != "Y" )
       echo " | <A CLASS=\"navlinks\" HREF=\"category.php\">" .
       translate ("Categories") . "</A>\n";
     if ( $can_add ) {
       echo " | <A CLASS=\"navlinks\" HREF=\"edit_entry.php";
       if ( ! empty ( $thisyear ) ) {
         print "?year=$thisyear";
-        if ( $thismonth )
+        if ( ! empty ( $thismonth ) )
           print "&month=$thismonth";
         if ( ! empty ( $thisday ) )
           print "&day=$thisday";
@@ -201,14 +202,17 @@
       echo "&date=$thisdate";
     echo "\">" . $views[$i]['cal_name'] . "</A>";
   }
-  if ( count ( $views ) > 0 )
-    echo " | ";
-  ?><A CLASS="navlinks" HREF="views.php"><?php etranslate("Manage Views");?></A><?php
+  if ( $readonly != "Y" ) {
+    if ( count ( $views ) > 0 )
+      echo " | ";
+    echo "<A CLASS=\"navlinks\" HREF=\"views.php\">" .
+      translate("Manage Views") . "</A>";
+  }
 ?>
 <BR>
 <?php } // if ( $login != "__public__" ) ?>
 <?php
-  if ( $single_user != "Y" && $readonly != "Y" ) {
+  if ( $single_user != "Y" && $readonly != "Y" && $login != "__public__" ) {
     echo "<B>" . translate("Admin") . ":</B>\n";
     if ( $is_admin )
       echo "<A CLASS=\"navlinks\" HREF=\"admin.php\">" . translate("System Settings") . "</A> |\n";

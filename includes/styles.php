@@ -10,11 +10,24 @@
   width: 80px;
   height: 80px;
 }
+.tablecelldemo {
+  font-family: <?php echo $FONTS ?>;
+  font-size: 10px;
+  width: 30px;
+  height: 30px;
+}
 .tablecellweekend {
   font-family: <?php echo $FONTS ?>;
   font-size: 12px;
   width: 80px;
   height: 80px;
+  background-color: <?php echo ( $WEEKENDBG == "" ? "#E0E0E0" : $WEEKENDBG ); ?> ;
+}
+.tablecellweekenddemo {
+  font-family: <?php echo $FONTS ?>;
+  font-size: 10px;
+  width: 30px;
+  height: 30px;
   background-color: <?php echo ( $WEEKENDBG == "" ? "#E0E0E0" : $WEEKENDBG ); ?> ;
 }
 .tableheader {
@@ -124,6 +137,10 @@ input {
   font-size: 12px;
 }
 select {
+  font-family: <?php echo $FONTS ?>;
+  font-size: 12px;
+}
+textarea {
   font-family: <?php echo $FONTS ?>;
   font-size: 12px;
 }

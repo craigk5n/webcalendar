@@ -30,6 +30,10 @@ if ( $res ) {
 //echo "login = $login <br>";
 
 
+if ( empty ( $PHP_SELF ) )
+  $PHP_SELF = $_SERVER["PHP_SELF"];
+
+
 if ( $pub_acc_enabled && $session_not_found ) {
   $login = "__public__";
   $is_admin =  false;
@@ -45,7 +49,7 @@ if ( $pub_acc_enabled && $session_not_found ) {
 if ( empty ( $login ) && $use_http_auth ) {
   if ( $public_access == "Y" ) {
   }
-  if ( strstr ( $PHP_SELF, "login.php" ) >= 0 ) {
+  if ( strstr ( $PHP_SELF, "login.php" ) ) {
     // ignore since login.php will redirect to index.php
   } else {
     send_http_login ();
@@ -91,13 +95,12 @@ if ( empty ( $login ) && $use_http_auth ) {
 // certain pages.
 if ( $login == "__public__" ) {
   if ( strstr ( $PHP_SELF, "views.php" ) ||
-    strstr ( $PHP_SELF, "views_w.php" ) ||
-    strstr ( $PHP_SELF, "views_m.php" ) ||
     strstr ( $PHP_SELF, "views_edit_handler.php" ) ||
     strstr ( $PHP_SELF, "category.php" ) ||
     strstr ( $PHP_SELF, "category_handler.php" ) ||
     strstr ( $PHP_SELF, "admin.php" ) ||
     strstr ( $PHP_SELF, "admin_handler.php" ) ||
+    strstr ( $PHP_SELF, "groups.php" ) ||
     strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
     strstr ( $PHP_SELF, "pref.php" ) ||
     strstr ( $PHP_SELF, "pref_handler.php" ) ||
@@ -122,6 +125,20 @@ if ( ! $is_admin ) {
     strstr ( $PHP_SELF, "group_edit.php" ) ||
     strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
     strstr ( $PHP_SELF, "activity_log.php" ) ) {
+    $not_auth = true;
+  }
+}
+
+// restrict access if calendar is read-only
+if ( $readonly == "Y" ) {
+  if ( strstr ( $PHP_SELF, "views.php" ) ||
+    strstr ( $PHP_SELF, "views_edit_handler.php" ) ||
+    strstr ( $PHP_SELF, "category.php" ) ||
+    strstr ( $PHP_SELF, "category_handler.php" ) ||
+    strstr ( $PHP_SELF, "groups.php" ) ||
+    strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
+    strstr ( $PHP_SELF, "pref.php" ) ||
+    strstr ( $PHP_SELF, "pref_handler.php" ) ) {
     $not_auth = true;
   }
 }

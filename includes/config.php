@@ -12,7 +12,7 @@
 //
 /////////////////////////////////////////////////////////////////
 
-$PROGRAM_NAME = "WebCalendar v0.9.38 (12 Jul 2002)";
+$PROGRAM_NAME = "WebCalendar v0.9.38 (12 July 2002)";
 $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
 
 // MySQL example
@@ -96,7 +96,7 @@ $use_http_auth = false;
 
 
 // Which user schema to use.  Currently, you can use the default webcal_user
-// table or LDAP.  These files are found in the includes directory.
+// table, LDAP or NIS.  These files are found in the includes directory.
 // Pick just one of the following:
 
 // webcal_user table: default
@@ -104,6 +104,9 @@ $user_inc = "user.php";
 // LDAP: if you select this, you must also configure some variables
 // in includes/user-ldap.php such as your LDAP server...
 //$user_inc = "user-ldap.php";
+// NIS: if you select this, you must also configure some variables
+// in includes/user-nis.php
+//$user_inc = "user-nis.php";
 
 
 // Language options  The first is the name presented to users while
@@ -177,7 +180,7 @@ $browser_languages = array (
   "tr" =>"Turkish"
 );
 
-// Do not remove the following line (for security reasons)
-unset ( $single_user_login );
+if ( $single_user != "Y" )
+  $single_user_login = "";
 
 ?>
