@@ -16,7 +16,7 @@ if ( ! empty ( $error ) ) {
 } else {
   $userlist = get_my_users ();
   $nonusers = get_nonuser_cals ();
-  $userlist = $nonusers + $userlist;
+  $userlist = array_merge($userlist, $nonusers);
   ?>
   <FORM ACTION="<?php echo $STARTVIEW;?>.php" METHOD="GET" NAME="SelectUser">
   <SELECT NAME="user" ONCHANGE="document.SelectUser.submit()">

@@ -9,22 +9,24 @@ $is_my_event = false;
 if ( $is_admin || $is_nonuser_admin || $is_assistant )
   $can_view = true;
 
-if ( ! $can_view ) {
-  // is this user a participant or the creator of the event?
-  $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
-    "webcal_entry_user WHERE webcal_entry.cal_id = " .
-    "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
-    "AND (webcal_entry.cal_create_by = '$login' " .
-    "OR webcal_entry_user.cal_login = '$login')";
-  $res = dbi_query ( $sql );
-  if ( $res ) {
-    $row = dbi_fetch_row ( $res );
-    if ( $row && $row[0] > 0 ) {
-      $can_view = true;
-      $is_my_event = true;
-    }
-    dbi_free_result ( $res );
+// is this user a participant or the creator of the event?
+$sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
+  "webcal_entry_user WHERE webcal_entry.cal_id = " .
+  "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
+  "AND (webcal_entry.cal_create_by = '$login' " .
+  "OR webcal_entry_user.cal_login = '$login')";
+$res = dbi_query ( $sql );
+if ( $res ) {
+  $row = dbi_fetch_row ( $res );
+  if ( $row && $row[0] > 0 ) {
+    $can_view = true;
+    $is_my_event = true;
   }
+  dbi_free_result ( $res );
+}
+
+if ( ($login != "__public__") && ($public_access_others == "Y") ) {
+  $can_view = true;
 }
 
 if ( ! $can_view ) {
