@@ -37,6 +37,7 @@ if ( $DISPLAY_WEEKENDS == "N" ) {
   $end_ind = 7;
 }
 
+$HeadX = '';
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week_details.php?$u_url" .

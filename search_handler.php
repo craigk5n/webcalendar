@@ -3,6 +3,9 @@ include_once 'includes/init.php';
 
 $error = "";
 
+$keywords = getValue ( "keywords" );
+$advanced = getValue ( "advanced" );
+
 if ( strlen ( $keywords ) == 0 )
   $error = translate("You must enter one or more search keywords") . ".";
 

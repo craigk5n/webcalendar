@@ -57,7 +57,7 @@ if ( $single_user == "Y" ) {
       $salt = chr( rand(ord('A'), ord('z'))) . chr( rand(ord('A'), ord('z')));
       $encoded_login = encode_string ( $login . "|" . crypt($password, $salt) );
 
-      if ( $remember == "yes" )
+      if ( ! empty ( $remember ) && $remember == "yes" )
         SetCookie ( "webcalendar_session", $encoded_login,
           time() + ( 24 * 3600 * 365 ), $cookie_path );
       else
@@ -69,7 +69,7 @@ if ( $single_user == "Y" ) {
       // is not used to allow logins within this app.  It is used to
       // load user preferences on the login page (before anyone has
       // logged in) if $remember_last_login is set to "Y" (in admin.php).
-      if ( $remember == "yes" )
+      if ( ! empty ( $remember ) && $remember == "yes" )
         SetCookie ( "webcalendar_login", $login,
           time() + ( 24 * 3600 * 365 ), $cookie_path );
       else

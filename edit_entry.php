@@ -41,7 +41,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( ! empty ( $override ) ) {
+    if ( ! empty ( $override ) && ! empty ( $cal_date ) ) {
       // Leave $cal_date to what was set in URL with date=YYYYMMDD
     } else {
       $cal_date = $row[1];
@@ -124,7 +124,8 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( ! $is_secretary || $login != $row[0] ) $participants[$row[0]] = 1;
+      if ( ( empty ( $is_secretary ) || ! $is_secretary )
+        || $login != $row[0] ) $participants[$row[0]] = 1;
       if ($login == $row[0]) $cat_id = $row[1];
     }
   }

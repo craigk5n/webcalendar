@@ -42,6 +42,9 @@ $adding_report = false;
 if ( empty ( $report_id ) ) {
   $adding_report = true;
   $report_id = -1;
+  $include_header = 'Y';
+  $report_is_global = 'N';
+  $report_allow_nav = 'Y';
 }
 
 $show_participants = true;

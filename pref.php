@@ -11,6 +11,8 @@ if (!$user || $user == $login) load_user_categories ();
 // Get system settings first.
 $updating_public = false;
 $prefarray = array ();
+$prefarray['EMAIL_ASSISTANT_EVENTS'] =
+  $prefarray['APPROVE_ASSISTANT_EVENT'] = ''; // no undefined vars message
 $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_config " );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
@@ -271,12 +273,13 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   <td><select name="pref_CATEGORY_VIEW">
   <?php
   echo "<option value=\"\"";
-  if ( $prefarray["CATEGORY_VIEW"] == '' ) echo " selected=\"selected\"";
+  if ( empty ( $prefarray["CATEGORY_VIEW"] ) ) echo " selected=\"selected\"";
   echo ">".translate('All')."</option>\n";
   if ( ! empty ( $categories ) ) {
     foreach( $categories as $K => $V ){
       echo "<option value=\"$K\"";
-      if ( $prefarray["CATEGORY_VIEW"] == $K ) echo " selected=\"selected\"";
+      if ( ! empty ( $prefarray["CATEGORY_VIEW"] ) &&
+        $prefarray["CATEGORY_VIEW"] == $K ) echo " selected=\"selected\"";
       echo ">$V</option>\n";
     }
   }
