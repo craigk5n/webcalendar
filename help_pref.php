@@ -31,8 +31,14 @@ include "includes/translate.php";
   <TD><?php etranslate("fonts-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Preferred view")?>:</B></TD>
   <TD><?php etranslate("preferred-view-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Display weekends in week view")?>:</B></TD>
+  <TD><?php etranslate("display-weekends-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Date format")?>:</B></TD>
+  <TD><?php etranslate("date-format-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Time format")?>:</B></TD>
   <TD><?php etranslate("time-format-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Time interval")?>:</B></TD>
+  <TD><?php etranslate("time-interval-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Display unapproved")?>:</B></TD>
   <TD><?php etranslate("display-unapproved-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Display week number")?>:</B></TD>
@@ -41,6 +47,8 @@ include "includes/translate.php";
   <TD><?php etranslate("display-week-starts-on")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Work hours")?>:</B></TD>
   <TD><?php etranslate("work-hours-help")?>
+<TR><TD VALIGN="top"><B><?php etranslate("Default Category")?>:</B></TD>
+  <TD><?php etranslate("default-category-help")?>
       </TD></TR>
 
 </TABLE>

@@ -22,7 +22,10 @@ if ( ! $is_admin ) {
     dbi_query ( "DELETE FROM webcal_group_user WHERE cal_group_id = $id " );
   } else {
     $date = date ( "Ymd" );
-    if ( ! empty ( $id ) ) {
+    if ( empty ( $groupname ) ) {
+      $error = translate("You must specify a group name");
+    }
+    else if ( ! empty ( $id ) ) {
       # update
       if ( ! dbi_query ( "UPDATE webcal_group SET cal_name = " .
         "'$groupname', cal_last_update = $date " .

@@ -168,13 +168,13 @@ if ( $id > 0 && empty ( $error ) ) {
                 $delusers[] = $row[0];
               }
               dbi_free_result ( $res );
-              for ( $i = 0; $i < count ( $delusers ); $i++ ) {
+              for ( $j = 0; $j < count ( $delusers ); $j++ ) {
                 // Log the deletion
-	        activity_log ( $ex_events[$i], $login, $delusers[$i],
+	        activity_log ( $ex_events[$i], $login, $delusers[$j],
                   $LOG_DELETE, "" );
                 dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
 	          "WHERE cal_id = $ex_events[$i] " .
-                  "AND cal_login = '$delusers[$i]'" );
+                  "AND cal_login = '$delusers[$j]'" );
               }
             }
           }

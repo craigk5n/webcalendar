@@ -96,38 +96,23 @@ for ( $i = 0; $i < 7; $i++ ) {
 <TABLE BORDER="0" WIDTH="100%">
 <TR><TD ALIGN="left">
 <?php if ( ! $friendly ) { ?>
-<A HREF="view_w.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="Previous"></A>
+<A HREF="view_w.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Previous")?>"></A>
 <?php } ?>
 </TD>
 <TD ALIGN="middle">
 <FONT SIZE="+2" COLOR="<?php echo $H2COLOR?>">
 <B>
 <?php
-  if ( date ( "m", $wkstart ) == date ( "m", $wkend ) ) {
-    printf ( "%s %d - %d, %d", month_name ( $thismonth - 1 ),
-      date ( "d", $wkstart ), date ( "d", $wkend ), $thisyear );
-  } else {
-    if ( date ( "Y", $wkstart ) == date ( "Y", $wkend ) ) {
-      printf ( "%s %d - %s %d, %d",
-        month_name ( date ( "m", $wkstart ) - 1 ), date ( "d", $wkstart ),
-        month_name ( date ( "m", $wkend ) - 1 ), date ( "d", $wkend ),
-        $thisyear );
-    } else {
-      printf ( "%s %d, %d - %s %d, %d",
-        month_name ( date ( "m", $wkstart ) - 1 ), date ( "d", $wkstart ),
-        date ( "Y", $wkstart ),
-        month_name ( date ( "m", $wkend ) - 1 ), date ( "d", $wkend ),
-        date ( "Y", $wkend ) );
-    }
-  }
-
+  echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
+    "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
+    date_to_str ( date ( "Ymd", $wkend ), false );
 ?>
 </B></FONT><BR>
 <FONT COLOR="<?php echo $H2COLOR?>"><?php echo $view_name ?></FONT>
 </TD>
 <TD ALIGN="right">
 <?php if ( ! $friendly ) { ?>
-<A HREF="view_w.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="Next"></A>
+<A HREF="view_w.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Next")?>"></A>
 <?php } ?>
 </TD></TR>
 </TABLE>
@@ -216,7 +201,10 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
       $color = $TODAYCELLBG;
       $class = "tableheadertoday";
     } else {
-      $color = $CELLBG;
+      if ( $wday == 0 || $wday == 6 )
+        $color = $WEEKENDBG;
+      else
+        $color = $CELLBG;
       $class = "tableheader";
     }
     echo "<TR><TH CLASS=\"$class\" WIDTH=\"10%\" BGCOLOR=\"$color\" VALIGN=\"top\">" .

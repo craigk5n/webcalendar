@@ -10,6 +10,7 @@
 <LI><A HREF="#fileunpacking">File Unpacking</A>
 <LI><A HREF="#databasesetup">Database Setup</A>
 <LI><A HREF="#applicationsetup">Application Setup</A>
+<LI><A HREF="#userauth">User Authentication</A>
 <LI><A HREF="#reminders">Setting up email reminders</A>
 <LI><A HREF="#palmpilot">Palm Pilot users</A>
 <LI><A HREF="#optional">Optional</A>
@@ -35,8 +36,9 @@ You must have PHP and one of the following databases installed:
 </UL>
 For the database you choose, you must have its drivers built into
 PHP.  For example, to use MySQL, PHP must be compiled with MySQL
-support.  See the PHP pages (<A HREF="http://www.php.net">www.php.net</A>)
-for more info on setting up PHP.
+support (which is the default setting when installing PHP).
+See the PHP pages (<A HREF="http://www.php.net">www.php.net</A>)
+for more information on setting up PHP.
 <P>
 
 No optional PHP packages (other than MySQL) are required for this
@@ -48,10 +50,6 @@ on some systems.
 Make sure that <TT>magic_quotes_gpc</TT> in <TT>php.ini</TT>
 is turned on (otherwise, you
 will get database errors when entering quotation marks in HTML forms).
-
-<P>
-If you are running PHP 4.2 or later, you must turn on <TT>register_globals</TT>
-in <TT>php.ini</TT>.
 
 <P>
 You can run PHP either as a CGI or an Apache module.  You'll get better
@@ -208,11 +206,46 @@ database (mysql, sqlplus, etc...)  Look in the <TT>tables-mysql.sql</TT>
 "admin" user.
 <P>
 
-Next, you will want to customize the event-specific fields found in
+If you are setting up a multi-user calendar, you will need to choose
+how your users are authenticated.
+
+You must change the settings of <TT>$use_http_auth</TT> and <TT>$user_inc</TT> within the <TT>config.php</TT> configuration file to setup which authentication method to use.
+
+<P>
+
+You currently have four choices:
+
+<OL>
+<LI> Web-based authentication (login/passwords verified in the WebCalendar database):<BR>
+	<TT>$use_http_auth = false;</TT><BR>
+	<TT>$user_inc = "user.php";</TT>
+<LI> HTTP-based authentication (login/passwords verified by the web server):<BR>
+	<TT>$use_http_auth = true;</TT><BR>
+	<TT>$user_inc = "user.php";</TT><BR>
+	... and don't forget to setup your web server to handle user
+	authentication.  (Note: In order to use HTTP-based authentication,
+	PHP must be setup as a module for your server rather than a CGI.)
+<LI> NIS-based authentication (login/passwords verified by NIS):<BR>
+	<TT>$use_http_auth = false;</TT><BR>
+	<TT>$user_inc = "user-nis.php";</TT><BR>
+	Additional configuration settings will need to be set
+	in <TT>includes/config/user-nis.php</TT>.
+<LI> LDAP-based authentication (login/passwords verified by LDAP server):<BR>
+	<TT>$use_http_auth = false;</TT><BR>
+	<TT>$user_inc = "user-ldap.php";</TT><BR>
+	Additional configuration settings will need to be set
+	in <TT>includes/config/user-ldap.php</TT>.
+</OL>
+
+<P>
+
+Next, you may want to customize the event-specific fields found in
 the <TT>includes/site_extras.php</TT> field.
 If this is your first time using the calendar, you can skip
-this step and come back later if you want since this step
+this step and come back later since this step
 is <I>optional</I>.
+
+<P>
 You can use this feature to add extra
 fields to your calendar events.  For example, you can add a URL or
 a contact email address.  By default, the file is configured with
@@ -316,6 +349,9 @@ Pilot Calendar.
 You might want to configure your web server so that users can not access
 the "includes" directory.  See your web server documentation on how to do
 this.
+<P>
+The <TT>includes</TT> directory has a <TT>index.html</TT> file that should
+prevent users from obtaining a listing files.
 
 
 <HR><H3><A NAME="runwithit">Run with it</A></H3>
@@ -324,15 +360,17 @@ Hey, you're done...  Give it a try by logging in using the default
 if you're setup for single-user mode.
 <P>
 
-FYI, the default password for the "admin" user is "admin".
+The default setup for the web-based authentication includes
+a single user login "demo" with the password set to "admin".
 
 
 <HR><H3><A NAME="problems">Problems</A></H3>
-See <A HREF="FAQ.html">FAQ.html</A> if you run into any problems....
+See <A HREF="FAQ.html">FAQ.html</A> if you run into any problems or
+not sure how to do something...
 <P>
 If your problem is not listed in the FAQ,
 you can check the following resources available
-on Sourceforge:
+on SourceForge:
 <UL>
 <LI><A HREF="http://sourceforge.net/forum/forum.php?forum_id=11588">Help Forum</A>
 <LI><A HREF="http://sourceforge.net/tracker/?group_id=3870&atid=103870">Bug Reports</A>

@@ -223,8 +223,100 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("display-weekends-help");?>"><?php etranslate("Display weekends in week view")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_DISPLAY_WEEKENDS" VALUE="Y" <?php if ( $s["DISPLAY_WEEKENDS"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_DISPLAY_WEEKENDS" VALUE="N" <?php if ( $s["DISPLAY_WEEKENDS"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
+<TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("date-format-help");?>"><?php etranslate("Date format")?>:</B></TD>
+  <TD><SELECT NAME="admin_DATE_FORMAT">
+  <?php
+  // You can add new date formats below if you want.
+  // but also add in pref.php.
+  $datestyles = array (
+    "month dd, yyyy", translate("December") . " 31, 2000",
+    "dd month, yyyy", "31 " . translate("December") . ", 2000",
+    "dd-month-yyyy", "31-" . translate("December") . "-2000",
+    "dd-month-yy", "31-" . translate("December") . "-00",
+    "mm/dd/yyyy", "12/31/2000",
+    "mm/dd/yy", "12/31/00",
+    "mm-dd-yyyy", "12-31-2000",
+    "mm-dd-yy", "12-31-00",
+    "yyyy-mm-dd", "2000-12-31",
+    "yy-mm-dd", "00-12-31",
+    "yyyy/mm/dd", "2000/12/31",
+    "yy/mm/dd", "00/12/31",
+    "dd/mm/yyyy", "31/12/2000",
+    "dd/mm/yy", "31/12/00",
+    "dd-mm-yyyy", "31-12-2000",
+    "dd-mm-yy", "31-12-00"
+  );
+  for ( $i = 0; $i < count ( $datestyles ); $i += 2 ) {
+    echo "<OPTION VALUE=\"" . $datestyles[$i] . "\"";
+    if ( $s["DATE_FORMAT"] == $datestyles[$i] )
+      echo " SELECTED";
+    echo "> " . $datestyles[$i + 1] . "\n";
+  }
+  ?>
+</SELECT>
+<BR>
+  <SELECT NAME="admin_DATE_FORMAT_MY">
+  <?php
+  // Date format for a month and year (with no day of the month)
+  // You can add new date formats below if you want.
+  // but also add in admin.php.
+  $datestyles = array (
+    "month yyyy", translate("December") . " 2000",
+    "month yy", translate("December") . " 00",
+    "month-yyyy", translate("December") . "-2000",
+    "month-yy", translate("December") . "-00",
+    "mm/yyyy", "12/2000",
+    "mm/yy", "12/00",
+    "mm-yyyy", "12-2000",
+    "mm-yy", "12-00",
+    "yyyy-mm", "2000-12",
+    "yy-mm", "00-12",
+    "yyyy/mm", "2000/12",
+    "yy/mm", "00/12"
+  );
+  for ( $i = 0; $i < count ( $datestyles ); $i += 2 ) {
+    echo "<OPTION VALUE=\"" . $datestyles[$i] . "\"";
+    if ( $prefarray["DATE_FORMAT_MY"] == $datestyles[$i] )
+      echo " SELECTED";
+    echo "> " . $datestyles[$i + 1] . "\n";
+  }
+  ?>
+  </SELECT>
+  <BR>
+  <SELECT NAME="admin_DATE_FORMAT_MD">
+  <?php
+  // Date format for a month and day (with no year displayed)
+  // You can add new date formats below if you want.
+  // but also add in admin.php.
+  $datestyles = array (
+    "month dd", translate("December") . " 31",
+    "month-dd", translate("December") . "-31",
+    "mm/dd", "12/31",
+    "mm-dd", "12-31",
+    "dd/mm", "31/12",
+    "dd-mm", "31-12"
+  );
+  for ( $i = 0; $i < count ( $datestyles ); $i += 2 ) {
+    echo "<OPTION VALUE=\"" . $datestyles[$i] . "\"";
+    if ( $prefarray["DATE_FORMAT_MD"] == $datestyles[$i] )
+      echo " SELECTED";
+    echo "> " . $datestyles[$i + 1] . "\n";
+  }
+  ?>
+  </SELECT>
+</TD></TR>
+
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("time-format-help")?>"><?php etranslate("Time format")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_TIME_FORMAT" VALUE="12" <?php if ( $s["TIME_FORMAT"] == "12" ) echo "CHECKED";?>> <?php etranslate("12 hour")?> <INPUT TYPE="radio" NAME="admin_TIME_FORMAT" VALUE="24" <?php if ( $s["TIME_FORMAT"] != "12" ) echo "CHECKED";?>> <?php etranslate("24 hour")?></TD></TR>
+
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("time-interval-help")?>"><?php etranslate("Time interval")?>:</B></TD>
+  <TD><SELECT NAME="admin_TIME_SLOTS">
+  <OPTION VALUE="24" <?php if ( $s["TIME_SLOTS"] == "24" ) echo "SELECTED"?>>1 <?php etranslate("hour")?>
+  <OPTION VALUE="48" <?php if ( $s["TIME_SLOTS"] == "48" ) echo "SELECTED"?>>30 <?php etranslate("minutes")?>
+  <OPTION VALUE="72" <?php if ( $s["TIME_SLOTS"] == "72" ) echo "SELECTED"?>>20 <?php etranslate("minutes")?>
+  <OPTION VALUE="144" <?php if ( $s["TIME_SLOTS"] == "144" ) echo "SELECTED"?>>10 <?php etranslate("minutes")?>
+  </SELECT></TD></TR>
+
 
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("auto-refresh-help");?>"><?php etranslate("Auto-refresh calendars")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_auto_refresh" VALUE="Y" <?php if ( $s["auto_refresh"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_auto_refresh" VALUE="N" <?php if ( $s["auto_refresh"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>

@@ -15,17 +15,25 @@ include "includes/translate.php";
 
 $error = "";
 
+$updating_public = false;;
+if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
+  $updating_public = true;
+  $prefuser = "__public__";
+} else {
+  $prefuser = "$login";
+}
+
 while ( list ( $key, $value ) = each ( $HTTP_POST_VARS ) ) {
   $setting = substr ( $key, 5 );
   if ( strlen ( $setting ) > 0 ) {
     $sql =
-      "DELETE FROM webcal_user_pref WHERE cal_login = '$login' " .
+      "DELETE FROM webcal_user_pref WHERE cal_login = '$prefuser' " .
       "AND cal_setting = '$setting'";
     dbi_query ( $sql );
     if ( strlen ( $value ) > 0 ) {
       $sql = "INSERT INTO webcal_user_pref " .
         "( cal_login, cal_setting, cal_value ) VALUES " .
-        "( '$login', '$setting', '$value' )";
+        "( '$prefuser', '$setting', '$value' )";
       if ( ! dbi_query ( $sql ) ) {
         $error = "Unable to update preference: " . dbi_error () .
           "<P><B>SQL:</B> $sql";
@@ -36,12 +44,10 @@ while ( list ( $key, $value ) = each ( $HTTP_POST_VARS ) ) {
 }
 
 if ( empty ( $error ) ) {
-  if ( strlen ( get_last_view() ) ) {
-    $url = get_last_view();
-  } else {
-    $url = "$STARTVIEW.php";
-  }
-  do_redirect ( $url );
+  if ( $updating_public )
+    do_redirect ( "pref.php?public=1" );
+  else
+    do_redirect ( "pref.php" );
 }
 
 ?>

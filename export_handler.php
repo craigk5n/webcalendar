@@ -36,6 +36,8 @@ if (!$use_all_dates)
 }
 if ( $DISPLAY_UNAPPROVED == "N" || $login == "__public__" )
   $sql .= " AND webcal_entry_user.cal_status = 'A'";
+else
+  $sql .= " AND webcal_entry_user.cal_status IN ('W','A')";
 $sql .= " ORDER BY webcal_entry.cal_date";
 
 $res = dbi_query ( $sql );

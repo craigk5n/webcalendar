@@ -54,12 +54,14 @@ $now = mktime ( 3, 0, 0, $thismonth, $thisday, $thisyear );
 $nowYmd = date ( "Ymd", $now );
 
 $next = mktime ( 3, 0, 0, $thismonth, $thisday + 1, $thisyear );
+$nextYmd = date ( "Ymd", $next );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 $nextday = date ( "d", $next );
 $month_ago = date ( "Ymd", mktime ( 3, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
 
 $prev = mktime ( 3, 0, 0, $thismonth, $thisday - 1, $thisyear );
+$prevYmd = date ( "Ymd", $prev );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );
@@ -114,10 +116,12 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 <TR><TD VALIGN="top" WIDTH="70%"><TR><TD>
 <TABLE BORDER="0" WIDTH="100%">
 <TR>
+<?php if ( empty ( $friendly ) ) { ?>
+<TD VALIGN="left"><A HREF="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img align="left" src="leftarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Previous"); ?>"></A></TD>
+<?php } ?>
 <TD ALIGN="middle"><FONT SIZE="+2" COLOR="<?php echo $H2COLOR;?>"><B>
 <?php
-  printf ( "%s, %s %d, %d", weekday_name ( $wday ),
-    month_name ( $thismonth - 1 ), $thisday, $thisyear );
+  echo date_to_str ( $nowYmd );
 ?>
 </B></FONT>
 <FONT SIZE="+1" COLOR="<?php echo $H2COLOR;?>">
@@ -134,6 +138,9 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 ?>
 </FONT>
 </TD>
+<?php if ( empty ( $friendly ) ) { ?>
+<TD VALIGN="right"><A HREF="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img align="right" src="rightarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Next"); ?>"></A></TD>
+<?php } ?>
 </TR>
 </TABLE>
 
@@ -147,6 +154,9 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 
 
 <?php
+
+if ( empty ( $TIME_SLOTS ) )
+  $TIME_SLOTS = 24;
 
 print_day_at_a_glance ( date ( "Ymd", $now ),
   empty ( $user ) ? $login : $user, ! empty ( $friendly ) );
@@ -169,9 +179,9 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 <TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2">
 <TR><TH COLSPAN="7" BGCOLOR="<?php echo $THBG?>"><FONT SIZE="+4" COLOR="<?php echo $THFG?>"><?php echo $thisday?></FONT></TH></TR>
 <TR>
-<TD ALIGN="left" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>" CLASS="monthlink">&lt;</A></TD>
-<TH COLSPAN="5" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php echo month_name ( $thismonth - 1 ) . " $thisyear"?></FONT></TH>
-<TD ALIGN="right" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead . $caturl?>" CLASS="monthlink">&gt;</A></TD>
+<TD ALIGN="left" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>" CLASS="monthlink"><img src="leftarrowsmall.gif" width="18" height="18" border="0" ALT="<? etranslate("Previous")?>"></A></TD>
+<TH COLSPAN="5" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></FONT></TH>
+<TD ALIGN="right" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead . $caturl?>" CLASS="monthlink"><img src="rightarrowsmall.gif" width="18" height="18" border="0" alt="<?php etranslate("Next") ?>"></A></TD>
 </TR>
 <?php
 echo "<TR>";

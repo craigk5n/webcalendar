@@ -1,3 +1,51 @@
+Version 0.9.39dev0724 (24 Jul 2002)
+  - Fixed bug 585939: Don't allow empty view names or group names.
+  - Fixed bug: Some users encounter an error when logging in because
+    the old session cookie (that contained no path info) was not
+    being deleted properly.
+  - Fixed bug: send_reminders.php was not checking single user status
+    properly.
+  - Fixed bug: Error in mailto URL in view_entry.php.
+  - Fixed bug: Variable $i was being used for both inner and outer for
+    loop in del_entry.php.
+  - Fixed bug: When adding/editing an event, if you put a leading '0'
+    on the start time (like 09), it always warns you that the event
+    starts before your working hours (even if it isn't true).
+  - Fixed bug 584826: Fixed custom views (week and month) to display
+    weekends in different colors.
+  - Fixed bug 583842: categories should not be editable when readonly.
+    categories were not showing up when readonly
+  - Fixed bug 582950: If user has "none" (browser-defined) language
+    set as preference, then send_reminders.php was failing to find
+    a language translation.
+  - Fixed to work when register_globals is set to off.
+  - Fixed two syntax errors in user-ldap.php.
+  - Fixed HTTP redirect/cookie workaround for MS servers.
+  - Added instructions for setting up user authentication (web, http,
+    ldap, nis) in INSTALL.html.
+  - Added date format setting in preferences.
+  - Preferences page now redirects to itself after save rather than
+    going back to the calendar.
+  - Added sample month view in preferences page to test color settings.
+  - Added time interval selection for week view and day allowing
+    the time blocks to be 1 hour, 30 mins, 20 mins or 10 mins.
+  - Added fallback value for $STARTVIEW in index.php  Users can get
+    redirected to "/.php" if they upgrade without inserting all
+    the values into the webcal_config table.
+  - Fixed week display to show weekend colors differently.
+  - Added link in preferences page for admin users to allow them to
+    modify the preferences for the public access user.
+  - Fixed words not being translated ("Private", "Next", "Previous", and
+    lots of ALT image tags.)
+  - Fixed bug 582314: Fixed improper usage of strstr(), mostly in
+    functions.php.
+  - Fixed bug 582351: Don't export deleted events.
+  - Modified all the perl translation tools to accept just the name of
+    the translation (like "French" instead of the full path to the file
+    like "../translations/French.txt").
+  - Updated Chinese-GB2312 translation.
+  - Updated German translation.
+  - Updated French translation.
 Version 0.9.38 (12 Jul 2002)
   - Added event category support (code from Jeff Hoover - thanks).
     Categories can be either user-specific or global (if added by

@@ -180,6 +180,9 @@ function validate_and_submit () {
     alert ( "<?php etranslate("You have not entered a Brief Description")?>." );
     return false;
   }
+  // Leading zeros seem to confuse parseInt()
+  if ( document.forms[0].hour.value.charAt ( 0 ) == '0' )
+    document.forms[0].hour.value = document.forms[0].hour.value.substring ( 1, 2 );
   h = parseInt ( document.forms[0].hour.value );
   m = parseInt ( document.forms[0].minute.value );
 <?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
