@@ -65,7 +65,7 @@ $link_target = '_top';
 
 
 // Default time window of events to load
-// Can override with "upcoming.php?num=60"
+// Can override with "upcoming.php?days=60"
 $numDays = 30;
 
 // Max number of events to display
@@ -180,7 +180,8 @@ if ( ! empty ( $LANGUAGE ) ) {
 }
 echo "<title>".translate($application_name)."</title>\n";
  
-?></head>
+?>
+</head>
 <body>
 <?php
 if ( ! empty ( $error ) ) {
@@ -230,7 +231,7 @@ function print_upcoming_event ( $e ) {
 
   if ( $display_link && ! empty ( $server_url ) ) {
     print "<a title=\"" . 
-      htmlentities ( $e['cal_name'], ENT_COMPAT, $charset ) . "\" href=\"" . 
+      $e['cal_name'] . "\" href=\"" . 
       $server_url . "view_entry.php?id=" . 
       $e['cal_id'] . "&amp;date=" . 
       $e['cal_date'] . "\"";
@@ -239,7 +240,7 @@ function print_upcoming_event ( $e ) {
     }
     print ">";
   }
-  print htmlentities ( $e['cal_name'], ENT_COMPAT, $charset );
+ print $e['cal_name'];
   if ( $display_link && ! empty ( $server_url ) ) {
     print "</a>";
   }
