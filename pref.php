@@ -72,7 +72,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   // DO let them select browser-defined for the public user.
   if ( $key != "Browser-defined" || $updating_public ) {
     echo "<OPTION VALUE=\"" . $val . "\"";
-    if ( $val == $LANGUAGE ) echo " SELECTED";
+    if ( $val == $prefarray["LANGUAGE"] ) echo " SELECTED";
     echo "> " . $key . "\n";
   }
 }
