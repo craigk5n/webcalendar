@@ -195,7 +195,7 @@ if ( empty ( $cal_date ) || ! $cal_date )
   $cal_date = $thisdate;
 
 $BodyX = 'onload="timetype_handler()"';
-$INC = array('js/popups.php','js/edit_entry.php');
+$INC = array('js/edit_entry.php');
 print_header($INC,'',$BodyX);
 ?>
 
@@ -227,7 +227,7 @@ if ( $is_assistant || $is_nonuser_admin )
   <td><input type="text" name="name" id="entry_brief" size="25" value="<?php echo htmlspecialchars ( $name ); ?>" /></td></tr>
 
 <tr><td style="vertical-align:top;" class="tooltip" title="<?php etooltip("full-description-help")?>"><label for="entry_full"><?php etranslate("Full Description")?>:</label></td>
-  <td><textarea name="description" id="entry_full" rows="5" cols="40" wrap="virtual"><?php echo htmlspecialchars ( $description ); ?></textarea></td></tr>
+  <td><textarea name="description" id="entry_full" rows="5" cols="40"><?php echo htmlspecialchars ( $description ); ?></textarea></td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("date-help")?>"><?php etranslate("Date")?>:</td>
   <td>
@@ -637,8 +637,10 @@ echo "<label><input type=\"radio\" name=\"rpt_type\" value=\"yearly\"" .
 
 <table style="border-width:0px;"><tr><td>
 <script type="text/javascript">
+<!-- <![CDATA[
   document.writeln ( '<input type="button" value="<?php etranslate("Save")?>" onclick="validate_and_submit()" />' );
   document.writeln ( '<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( \'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>\', \'cal_help\', \'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420\');" />' );
+//]]> -->
 </script>
 
 <noscript>
