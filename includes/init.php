@@ -40,10 +40,12 @@
  **********************************************************************/
 
 // Security Check
-if ( empty ( $PHP_SELF ) )
+if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
+  ! empty ( $_SERVER['PHP_SELF'] ) ) {
   $PHP_SELF = $_SERVER['PHP_SELF'];
-if (preg_match("/\/includes\//", $PHP_SELF)) {
-    die ("You can't access this file directly!");
+}
+if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
+    die ( "You can't access this file directly!" );
 }
 
 // Make sure another app in the same domain doesn't have a 'user' cookie

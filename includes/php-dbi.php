@@ -1,12 +1,14 @@
 <?php
-if ( empty ( $PHP_SELF ) )
-  $PHP_SELF = $_SERVER["PHP_SELF"];
-if (preg_match("/\/includes\//", $PHP_SELF)) {
-    die ("You can't access this file directly!");
+if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
+  ! empty ( $_SERVER['PHP_SELF'] ) ) {
+  $PHP_SELF = $_SERVER['PHP_SELF'];
+}
+if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
+    die ( "You can't access this file directly!" );
 }
 // php-dbi.php
 //
-// (C) Craig Knudsen, cknudsen@radix.net, http://www.radix.net/~cknudsen/
+// (C) Craig Knudsen, cknudsen@cknudsen.com, http://www.k5n.us/cknudsen
 // License: GNU GPL (see www.gnu.org)
 //
 // The functions defined in this file are meant to provide a single
