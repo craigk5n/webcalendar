@@ -55,7 +55,11 @@ th {
 .tip {
 	font-weight: bold;
 	background-color: #FFFF00;
-	padding: 2px;
+	border: 1px solid #000;
+	padding: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-right: 15px;
 }
 .note {
 	font-weight: bold;
@@ -233,7 +237,7 @@ h2 {
 		PHP as a CGI in order to run the <tt>send_reminders.php</tt> script.  I would
 		strongly recommend building a module-based PHP for your web server
 		and then a second PHP build to create the CGI version.</p>
-	<p><span class="tip">TIP:</span> Some Linux distributions come with both a module-based PHP
+	<p><span class="tip">TIP</span> Some Linux distributions come with both a module-based PHP
 		with Apache and a standalone PHP binary.
 		Check for <tt>/usr/bin/php</tt> to see if you already have the
 		PHP standalone executable.  If it's there, you can use
@@ -335,35 +339,65 @@ input path/table-ibase.sql;</strong></pre>
 
 <a name="appsetup"></a>
 	<h2>Application Setup</h2>
-	<p>Next, you will need to either run the installation script (simply direct your browser to your new WebCalendar), or rename the file <tt>includes/settings.php.orig</tt> to <tt>includes/settings.php</tt>. If manually editing the file, you will need to set the values as follows:</p>
+	<p>Next, you will need to run the web-based
+	database setup script
+	(simply direct your browser to your new WebCalendar location).
+	You will need to modify the permissions of the <tt>includes</tt>
+	directory.  On Linux/UNIX, you should change this directory
+	to be read/write for all users (<tt>chmod 777 includes</tt>).
+	On Windows, change this directory to have full access for all users
+	using Windows Explorer.
+	Changing the write permissions will allow the web-based
+	database configuration tool to create the <tt>settings.php</tt> file.
+	<p>
+	<p><span class="tip">TIP</span> After you have created the
+	<tt>settings.php</tt> file (with the "Save Settings" button),
+	you can change the permissions back
+	to a more restrictive setting.
+	</p>
+	<p>After you test and save your database settings, you
+	will be prompted to enter an installation password.
+	<b>Write this password down somewhere.</b>
+	There is no way to reset this password.  If you forget this
+	password and need to change your database settings, you will need
+	to hand-edit the <tt>settings.php</tt> file with a text editor.
+	</p>
+	<p>
+	If you choose not to use the web-based database configuration
+	tool, you can manually edit the <tt>settings.php</tt> file.
+	There is an example file <tt>settings.php.orig</tt> that you
+	can use as a starting point.   Simply rename this file
+	to <tt>settings.php</tt>.
+	You will need to set the values
+	as follows in <tt>settings.php</tt>:</p>
 	<p>To configure your database access. Set the values for:</p>
 	<table class="distinguish">
 		<tr><td>
-			$db_type</td><td>
+			db_type</td><td>
 			One of "mysql", "oracle", "postgresql", "odbc", or "ibase"
 		</td></tr>
 		<tr><td>
-			$db_host</td><td>
+			db_host</td><td>
 			The hostname that database is running on.
 			(Use localhost if it's the same machine as 
 			the web server.) (This variable is not used with ODBC)
 		</td></tr>
 		<tr><td>
-			$db_login</td><td>
+			db_login</td><td>
 			The database login
 		</td></tr>
 		<tr><td>
-			$db_password</td><td>
+			db_password</td><td>
 			The database password for the above login
 		</td></tr>
 		<tr><td>
-			$db_database</td><td>
+			db_database</td><td>
 			The name of the database that the calendar 
 			tables reside in.  ("intranet" in the <a href="#dbsetup">examples above</a>.) 
 			For ODBC, this should be the DSN.
 		</td></tr>
 		<tr><td>
-			$db_persistent</td><td>
+			db_persistent</td><td>
 			Enable use of persistent (pooled) database
 			connections.  This should typically be enabled.
 		</td></tr>
@@ -373,44 +407,44 @@ input path/table-ibase.sql;</strong></pre>
 		single-user<sup><a href="#g_singleuser">*</a></sup> 
 		mode or multi-user<sup><a href="#g_multiuser">*</a></sup> mode.
 		If this is your first time using the calendar, it's easier to try single-user.
-		You can always switch to multi-user later.  Leave <tt>$single_user</tt> set to 
+		You can always switch to multi-user later.  Leave <tt>single_user</tt> set to 
 		"N" (the default) for multi-user or set it to "Y" and set the
-		value of <tt>$single_user_login</tt> to a login name of your liking
+		value of <tt>single_user_login</tt> to a login name of your liking
 		to set the system to single-user mode.
-		(And be sure to set the value of <tt>$single_user_login</tt> to the login that you
+		(And be sure to set the value of <tt>single_user_login</tt> to the login that you
 		would choose if you decide to switch to multi-user mode some day.)</p>
 	<p><span class="note">Note:</span> If you do decide to switch from single-user mode to multi-user mode,
 		make sure you add in a user to the system for the login you set the
-		<tt>$single_user_login</tt> variable to.  You will need to do this via the
+		<tt>single_user_login</tt> variable to.  You will need to do this via the
 		database (mysql, sqlplus, etc.)  Look in the <tt>tables-mysql.sql</tt>
 		(or <tt>tables-oracle.sql</tt>, etc.) to see the example of adding in the "admin" user.</p>
 	<p>If you are setting up a multi-user calendar, you will need to choose
 		how your users are authenticated. You must change the settings of 
-		<tt>$use_http_auth</tt> and <tt>$user_inc</tt> within the <tt>config.php</tt> 
-		configuration file to setup which authentication method to use.</p>
+		<tt>use_http_auth</tt> and <tt>user_inc</tt>
+		to setup which authentication method to use.</p>
 	<p>You currently have four choices:</p>
 	<ol>
 		<li>Web-based authentication (login/passwords verified in the WebCalendar database):<br />
-			<tt>$use_http_auth = false;</tt><br />
-			<tt>$user_inc = "user.php";</tt>
+			<tt>use_http_auth = false</tt><br />
+			<tt>user_inc = user.php</tt>
 		</li>
 		<li>HTTP-based authentication (login/passwords verified by the web server):<br />
-			<tt>$use_http_auth = true;</tt><br />
-			<tt>$user_inc = "user.php";</tt><br />
+			<tt>use_http_auth = true</tt><br />
+			<tt>user_inc = user.php</tt><br />
 			... and don't forget to setup your web server to handle user
 			authentication.<br />
        			<span class="note">Note:</span> In order to use HTTP-based authentication,
 				PHP must be setup as a module for your server rather than a CGI.
 		</li>
 		<li>NIS-based authentication (login/passwords verified by NIS):<br />
-			<tt>$use_http_auth = false;</tt><br />
-			<tt>$user_inc = "user-nis.php";</tt><br />
+			<tt>use_http_auth = false</tt><br />
+			<tt>user_inc = user-nis.php</tt><br />
 			Additional configuration settings will need to be set
 			in <tt>includes/user-nis.php</tt>.
 		</li>
 		<li>LDAP-based authentication (login/passwords verified by LDAP server):<br />
-			<tt>$use_http_auth = false;</tt><br />
-			<tt>$user_inc = "user-ldap.php";</tt><br />
+			<tt>use_http_auth = false</tt><br />
+			<tt>user_inc = user-ldap.php</tt><br />
 			Additional configuration settings will need to be set
 			in <tt>includes/user-ldap.php</tt>.
 		</li>
@@ -445,7 +479,7 @@ input path/table-ibase.sql;</strong></pre>
 		On a single-user system, your browser should be redirected to week.php
 		initially. On a multi-user system, your browser should be redirected to login.php
 		so that you can login.</p>
-	<p><span class="tip">TIP:</span> On a multi-user system, the only user account created
+	<p><span class="tip">TIP</span> On a multi-user system, the only user account created
 		during installation has the username of "admin" and a password
 		of "admin".   You should create a new admin account and delete this
 		one for security reasons.</p>
@@ -465,7 +499,7 @@ input path/table-ibase.sql;</strong></pre>
 		<li>Fill out the form with details for the new user (email address is optional)</li>
 		<li>Click on the "Save" button</li>
 	</ol>
-	<p><span class="tip">TIP:</span> On a single-user system, you do not need to create any users.</p>
+	<p><span class="tip">TIP</span> On a single-user system, you do not need to create any users.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
@@ -656,7 +690,7 @@ input path/table-ibase.sql;</strong></pre>
 	<p>By default, this file is configured with
 		a single reminder field that allows the user to specify how long
 		before the event the reminder should be sent.</p>
-	<p><span class="tip">TIP:</span> See <a href="#reminders">instructions</a> on setting
+	<p><span class="tip">TIP</span> See <a href="#reminders">instructions</a> on setting
 		up reminders to enable sending of reminders.</p>
 	<p>When defining a new custom field, the following types listed below
 		are available. "Arg 1" and "Arg 2" have different meaning depending on the type
