@@ -396,6 +396,33 @@ table.minical {
 	text-decoration: none;
 }
 
+/* ======================= */
+/* VIEW_M.PHP */
+.viewmtitle {
+	text-align: center;
+}
+.viewmtitle .date {
+	font-size: 24px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+}
+.viewmtitle .viewname {
+	font-size: 18px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	text-align: center;
+}
+table.viewm {
+	border-width: 0px;
+	width: 100%;
+	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+.viewm th {
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+}	
+
+
 /* ======================== */
 /* VIEW_T.PHP */
 .viewttitle {
@@ -564,6 +591,60 @@ td.weekviewtitle .user {
 	color: <?php echo $GLOBALS['H2COLOR'] ?>;
 	text-align: center;
 }
+
+/* ===================== */
+/* WEEK_DETAILS.PHP */
+table.weekdetails {
+	border-width: 0px;
+	width: 90%;
+	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+.weekdetails th.today {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
+	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 100%;
+}
+.weekdetails th.weekend {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 100%;
+}
+.weekdetails th {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 100%;
+}
+,weekdetails td.today {
+	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+	vertical-align: top;
+	height: 75px;
+}
+.weekdetails td.weekend {
+	background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
+	vertical-align: top;
+	height: 75px;
+}
+,weekdetails td {
+	background-color: <?php echo $GLOBALS['CELLBG'] ?>;
+	vertical-align: top;
+	height: 75px;
+}
+
+
+/* ================== */
+/* MISC. */
 
 /* formats the action (i.e. plus) icon that appears in cells */
 .new {
