@@ -332,9 +332,9 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 <a class="navlinks" href="week.php?<?php
   echo $u_url;
   if ( $thisyear ) {
-    echo "year=$thisyear&month=$thismonth&day=$thisday";
+    echo "year=$thisyear&amp;month=$thismonth&amp;day=$thisday";
   }
-  echo $caturl . "&";
+  echo $caturl . "&amp;";
 ?>friendly=1" target="cal_printer_friendly"
 onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
