@@ -865,9 +865,10 @@ function get_pref_setting ( $user, $setting ) {
 function get_browser_language () {
   global $HTTP_ACCEPT_LANGUAGE, $browser_languages;
   $ret = "";
-  if ( empty ( $HTTP_ACCEPT_LANGUAGE ) )
+  if ( empty ( $HTTP_ACCEPT_LANGUAGE ) &&
+    isset ( $_SERVER["HTTP_ACCEPT_LANGUAGE"] ) )
     $HTTP_ACCEPT_LANGUAGE = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
-  if ( strlen ( $HTTP_ACCEPT_LANGUAGE ) == 0 )
+  if ( empty ( $HTTP_ACCEPT_LANGUAGE ) == 0 )
     return "none";
   if ( ! empty ( $HTTP_ACCEPT_LANGUAGE ) ) {
     $langs = explode ( ",", $HTTP_ACCEPT_LANGUAGE );
