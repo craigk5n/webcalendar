@@ -80,7 +80,7 @@ print_header($INC);
 <?php
   $week_ago = mktime ( 0, 0, 0, date ( "m" ), date ( "d" ) - 7, date ( "Y" ) );
   $day = date ( "d", $week_ago );
-  for ( $i = 1; $i <= 31; $i++ ) echo "<option " . ( $i == $day ? " selected=\"selected\"" : "" ) . ">$i</option>\n";
+  for ( $i = 1; $i <= 31; $i++ ) echo "<option" . ( $i == $day ? " selected=\"selected\"" : "" ) . ">$i</option>\n";
 ?>
   </select>
   <select name="modmonth">
