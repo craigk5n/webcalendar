@@ -3,6 +3,7 @@ global $form, $fmonth, $fday, $fyear;
 ?>
 
 <script type="text/javascript">
+<!-- <![CDATA[
 function sendDate ( date ) {
   year = date.substring ( 0, 4 );
   month = date.substring ( 4, 6 );
@@ -16,4 +17,5 @@ function sendDate ( date ) {
   }
   window.close ();
 }
+//]]> -->
 </script>

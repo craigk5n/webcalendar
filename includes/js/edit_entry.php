@@ -3,6 +3,7 @@ global $groups_enabled,$WORK_DAY_START_HOUR;
 ?>
 
 <script type="text/javascript">
+<!-- <![CDATA[
 var oldhour = 0, oldminute = 0, olddh = 0, olddm = 0;
 
 // detect browser
@@ -188,8 +189,5 @@ function timetype_handler () {
     }
   }
 }
-
-
-
-
+//]]> -->
 </script>
