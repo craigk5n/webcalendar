@@ -66,7 +66,7 @@ if ( ! empty ( $user ) ) {
   }
 ?>
 
-<option value="all" selected="selected"><?php etranslate("All")?></option>
+<option value="ALL" selected="selected"><?php etranslate("All")?></option>
 </select></td></tr>
 <tr><td><?php etranslate("Delete all events before");?>:</td><td>
 <?php print_date_selection ( "end_", date ( "Ymd" ) ) ?>
