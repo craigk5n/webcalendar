@@ -28,7 +28,7 @@ while ( list ( $key, $value ) = each ( $HTTP_POST_VARS ) ) {
         "( '$prefuser', '$setting', '$value' )";
       if ( ! dbi_query ( $sql ) ) {
         $error = "Unable to update preference: " . dbi_error () .
-          "<P><B>SQL:</B> $sql";
+	"<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
         break;
       }
     }
@@ -47,14 +47,14 @@ if ( empty ( $error ) ) {
 print_header();
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></FONT></H2>
+<h2><?php etranslate("Error")?></h2>
 
 <?php etranslate("The following error occurred")?>:
-<BLOCKQUOTE>
+<blockquote>
 <?php echo $error; ?>
-</BLOCKQUOTE>
+</blockquote>
 
 <?php print_trailer(); ?>
 
-</BODY>
-</HTML>
+</body>
+</html>
