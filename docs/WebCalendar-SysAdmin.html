@@ -1158,10 +1158,12 @@ settings.
 </dd>
 
 <dt>I get an error message that says
-  "Can't connect to local MySQL server through socket '/tmp/mysql.sock'"</dt>
-<dd>This is a PHP/MySQL issue.  The value of <tt>mysql.default_socket</tt>
+  "Can't connect to local MySQL server through socket '/tmp/mysql.sock'."</dt>
+<dd>This is a PHP/MySQL configuration issue.
+  The value of <tt>mysql.default_socket</tt>
   in your <tt>php.ini</tt> file must match the
   value of <tt>socket</tt> in your <tt>my.cnf</tt> file.
+  Edit the <tt>php.ini</tt> file to fix this problem.
 </dd>
 
 <dt>I am not receiving any email messages from WebCalendar.</dt>
@@ -1172,7 +1174,7 @@ settings.
   <ol>
     <li>You have defined a valid SMTP server in your PHP configuration
         file <tt>php.ini</tt>.  (The setting is "SMTP" in the "mail_function"
-        section.
+        section.)
     <li>In WebCalendar's System Settings, you have set the
         "Email Enabled" setting to "Yes".
     <li>In WebCalendar's System Settings, make sure you have
@@ -1345,6 +1347,9 @@ read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.
 
 <pre>
 $Log$
+Revision 1.15  2004/07/14 00:27:55  cknudsen
+minor changes...
+
 Revision 1.14  2004/07/14 00:19:23  cknudsen
 Added solution in troublehshooting about error that says
 Can't connect to local MySQL server through socket '/tmp/mysql.sock'
