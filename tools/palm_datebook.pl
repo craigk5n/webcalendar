@@ -7,7 +7,7 @@ palm_datebook.pl
 Reads the events from a Palm Desktop DateBook.dat
 
 =head1 COPYRIGHT
-Copyright: (C) January 2002, Jeff Hoover <jhoov@thebusstop.net>.
+Copyright: (C) 2002, 2003  Jeff Hoover <jhoov_AT_thebusstop_DOT_net>.
 You may distribute this file under the terms of the GPL License.
 
 =head1 DESCRIPTION
@@ -63,6 +63,9 @@ $Entry->{Repeat}->{RepeatDays} =  For Weekly: What days to repeat on (7 characte
 $Entry->{Repeat}->{DayNum}     =  For MonthlyByDay: Day of week (1=sun,2=mon,3=tue,4=wed,5=thu,6=fri,7=sat)
 $Entry->{Repeat}->{WeekNum}    =  For MonthlyByDay: Week number (1=first,2=second,3=third,4=fourth,5=last)
 
+=head1 CONTRIBUTERS
+Eduard Martinescu - Provided patch to parse category list.
+
 =cut
 
 use CGI qw (:standard);
@@ -75,7 +78,7 @@ my $DateBookFileName = $ARGV[0];  # The name of the file
 my $exc_private = $ARGV[1];       # Do we want private entries? (1 = skip private)
 my $inc_expired = 0;              # Do we want expired entries? (1 = include expired)
 my $sep = "|";                    # what to separate the output with
-#my $outfile = "C:\\temp\\datebook_dump.txt";  # uncomment to print to file
+#my $outfile = "/tmp/datebook_dump.txt";  # uncomment to print to file
 #---------------------------------------------------------------------------
 
 #=================
@@ -86,6 +89,8 @@ sub ReadDateBook {
   my ($FileName, $Filter) = @_;
   my (@Fields, @Entries, $FieldCount, $NumberOfEntries);
   my ($Entry, $i, $Header, $Tag);
+  my ($NextFree, $CategoryCount, $Category, @Categories, $ResourceID);
+  my ($FieldsPerRow, $RecordIdPos, $RecordStatusPos, $RecordPlacementPos);
 
   open DATEBOOK, "<".$DateBookFileName;
   binmode DATEBOOK;
@@ -101,7 +106,20 @@ sub ReadDateBook {
   # Next, read the header information.
   $FileName = ReadPilotString();
   $Header   = ReadPilotString();
-  SkipBytes (28);
+  $NextFree = ReadLong();
+
+  # Read the category information
+  $CategoryCount = ReadLong();
+  for ($i=0; $i<$CategoryCount; $i++) {
+    $Category = ReadCategory();
+    push (@Categories,$Category) if ($Category ne 0);
+  }
+
+  $ResourceID         = ReadLong();
+  $FieldsPerRow       = ReadLong();
+  $RecordIdPos        = ReadLong();
+  $RecordStatusPos    = ReadLong();
+  $RecordPlacementPos = ReadLong();
 
   # Read the field list.
   $FieldCount = ReadShort();
@@ -130,7 +148,6 @@ sub ReadEntry {
 # hash, and returns a reference to that hash.  The reference can safely
 # be stored in an array for later use.
 
-  my (@START, @END);
   my (%Entry);
 
   $Entry{RecordID}           = ReadPilotField();
@@ -151,6 +168,9 @@ sub ReadEntry {
 
   #Should return as -1 if not set, but is returning as 4294967295
   $Entry{AlarmAdvanceAmount} = "-1" if ($Entry{AlarmAdvanceAmount} eq '4294967295');
+
+  # Remove Crap from the DateBook5 Application
+  $Entry{Note} = '' if ($Entry{Note} =~ /^\#\#[fcdxX\@]/);
 
   # Filter single quotes, \n\r
   $Entry{Description} = &filter_quotes($Entry{Description});
@@ -204,7 +224,7 @@ sub ReadPilotField {
 #===================
 # ReadPilotField returns a single field from the datebook file.
   my ($Type, $N, $sun, $mon, $tue, $wed, $thu, $fri, $sat);
-  my ($i, $DatesToSkip, $Repeat, $Interval, $Frequency, $Duration, $Position, $EndTime, @exceptions, @E);
+  my ($i, $DatesToSkip, $Repeat, $Interval, $Frequency, $Duration, $Position, $EndTime, $exceptions, @E);
   my (%RA);
 
   $Type = ReadLong();
@@ -217,7 +237,8 @@ sub ReadPilotField {
   } elsif ($Type == 8) {
      $DatesToSkip = ReadShort();
      for ($i=1; $i<=$DatesToSkip; $i++)
-        {push @exceptions, ReadLong();}
+        {$exceptions .= ReadLong().":";}
+     chop $exceptions;
      $Repeat = ReadShort();
      if ($Repeat == 0xFFFF) {
        ReadShort();
@@ -250,7 +271,7 @@ sub ReadPilotField {
        $RA{Interval} = $Interval;
        $RA{Frequency} = $Frequency;
        $RA{EndTime}  = $EndTime;
-       if (@exceptions){ $RA{Exceptions} = @exceptions;}
+       if ($exceptions){ $RA{Exceptions} = $exceptions;}
 
        # Pass some addtional EndTime data
 #       if ($EndTime) {
@@ -427,6 +448,22 @@ sub filter_quotes {
   return ($temp);
 }
 
+#=================
+sub ReadCategory {
+#=================
+# ReadCategory reads a single category entry from the datebook,
+# stores it in a local hash, and returns a reference to that hash.
+# The reference can safely be stored in an array for later use.
+
+  my (%Entry);
+
+  $Entry{Index}         = ReadLong();
+  $Entry{CategoryID}    = ReadLong();
+  $Entry{DirtyFlag}     = ReadLong();
+  $Entry{LongName}      = ReadPilotString();
+  $Entry{ShortName}     = ReadPilotString();
+  return \%Entry;
+}
 
 #-----------------------------  Main Program -------------------------------
 
