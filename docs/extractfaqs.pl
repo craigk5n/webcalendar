@@ -61,6 +61,7 @@ for ( $i = 0; $i < @questions; $i++ ) {
 print "</ul>\n<hr/>\n<dl>\n";
 
 for ( $i = 0; $i < @questions; $i++ ) {
+  $q = $questions[$i];
   $anchor = "faq_" . ( $i + 1 );
   print "<dt><a name=\"$anchor\">$q</a></dt>\n";
   print "<dd>$answers[$i]</dd>\n";
