@@ -5,7 +5,6 @@ print_header();
 
 <form action="group_edit_handler.php" method="post">
 <?php
-
 $newgroup = true;
 $groupname = "";
 $groupowner = "";
@@ -41,7 +40,6 @@ if ( $newgroup ) {
 }
 ?>
 
-&laquo; <a href="javascript:history.go(-1);">Back</a>
 <table style="border-width:0px;">
 <tr><td style="font-weight:bold;">
 	<label for="groupname"><?php etranslate("Group name")?>:</label></td><td>
@@ -99,6 +97,5 @@ if ( $newgroup ) {
 </table>
 </form>
 
-<?php print_trailer(); ?>
 </body>
 </html>

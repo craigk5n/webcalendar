@@ -1,38 +1,22 @@
-<?php
-include_once 'includes/init.php';
-
-if ( ! $is_admin )
-  $user = $login;
-
-if ( $groups_enabled == "N" ) {
-  do_redirect ( "$STARTVIEW.php" );
-  exit;
-}
-print_header();
-?>
-
-<h2><?php etranslate("Groups")?></h2>
-<a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
-
-<ul>
-<?php
-$res = dbi_query ( "SELECT cal_group_id, cal_name FROM webcal_group " .
-  "ORDER BY cal_name" );
-if ( $res ) {
-  while ( $row = dbi_fetch_row ( $res ) ) {
-    echo "<li><a href=\"group_edit.php?id=" . $row[0] .
-      "\">" . $row[1] . "</a></li>\n";
-  }
-  dbi_free_result ( $res );
-}
-?>
-</ul>
-<br /><br />
-<?php
-  echo "<a href=\"group_edit.php\">" . translate("Add New Group") .
-    "</a><br />\n";
-?>
-
-<?php print_trailer(); ?>
-</body>
-</html>
+	<a name="tabgroups"></a>
+	<div id="tabscontent_groups">
+		<?php
+			echo "<a title=\"" . 
+				translate("Add New Group") . "\" href=\"group_edit.php\" target=\"grpiframe\" onclick=\"javascript:show('grpiframe');\">" . 
+				translate("Add New Group") . "</a><br />\n";
+		?>
+		<ul>
+			<?php
+				$res = dbi_query ( "SELECT cal_group_id, cal_name FROM webcal_group ORDER BY cal_name" );
+				if ( $res ) {
+					while ( $row = dbi_fetch_row ( $res ) ) {
+					echo "<li><a href=\"group_edit.php?id=" . $row[0] . "\" target=\"grpiframe\" onclick=\"javascript:show('grpiframe');\">" . $row[1] . "</a></li>\n";
+					}
+					dbi_free_result ( $res );
+				}
+			?>
+		</ul>
+		<?php 
+			echo "<iframe src=\"group_edit.php?id=" . $row[0] . "\" name=\"grpiframe\" id=\"grpiframe\" style=\"width:90%;border-width:0px; height:325px;\"></iframe>";
+		?>
+</div>

@@ -1,4 +1,7 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixing bug 1062275: border thickness in various views
+  - Fixing bug 1060781: reenabling print-media stylesheet
+  - Refixing bug 1062276: editing single date of a repeating event
   - Fixed bug 1063720: advanced search translation
   - Making search page dynamic on the client-side for admins
   - Combining & converting import/export pages to new tabbed GUI

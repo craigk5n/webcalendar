@@ -204,18 +204,21 @@ a:hover {
 	font-size: 13px;
 	color: #800000;
 	text-decoration: none;
+	padding-right: 3px;
 }
 <?php //links to entries/events on layers
 ?>.layerentry {
 	font-size: 13px;
 	color: #006060;
 	text-decoration: none;
+	padding-right: 3px;
 }
 <?php //links to entries/events
 ?>.entry {
 	font-size: 13px;
 	color: #006000;
 	text-decoration: none;
+	padding-right: 3px;
 }
 <?php //event (or bullet) icon; NOTE: must appear AFTER the .entry, .layerentry, and .unapprovedentry classes
 ?>.entry img,
@@ -579,6 +582,7 @@ table.glance {
 	background-color: <?php echo $GLOBALS['CELLBG'];?>;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	padding-left: 3px;
 }
 #day .minical td.selectedday {
 	border: 2px solid #000000;
@@ -814,6 +818,7 @@ table.glance {
 	vertical-align: top;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	padding-left: 3px;
 }
 #viewt .weekend {
 	width: 90%;
