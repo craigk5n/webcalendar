@@ -5,6 +5,7 @@
 # Updated by: Jørgen Thomsen (jth@jth.net)
 # Last update: 12-Feb-2001
 # Translation last updated on 07-21-2003
+# Last update: Nov.25-2003 by Jens Th (photo@jens-th.com)
 
 # No charset specified
 # charset:
@@ -15,23 +16,22 @@
 # Page: admin.php
 #
 #
-# << MISSING >>
-# System Settings:
+
+System Settings: System indstillinger
 You are not authorized: Du har ikke tilladelse til dette
 #
-# << MISSING >>
-# Note:
+
+Note: Note
 #
-# << MISSING >>
-# Your user preferences:
+
+Your user preferences: Dine bruger-indstillinger
 #
-# << MISSING >>
-# may be affecting the appearance of this page.:
+
+may be affecting the appearance of this page.: kan påvirke udseendet af denne side
+
+Click here: Klik her
 #
-# << MISSING >>
-# Click here:
-#
-# << MISSING >>
+
 # to not use your user preferences when viewing this page:
 #
 # << MISSING >>
@@ -92,7 +92,7 @@ No: Nej
 #
 #
 # << MISSING >>
-# Date format:
+Date format:Dato format
 December: December
 time-format-help: Skal tiden vises pr 12 eller 24-timer.
 Time format: Tidsformat
@@ -108,7 +108,7 @@ Time format: Tidsformat
 # Time interval:
 #
 # << MISSING >>
-# hour:
+hour:timer
 minutes: minutter
 #
 # << MISSING >>
@@ -116,16 +116,16 @@ minutes: minutter
 # English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
 #
 #
-# << MISSING >>
-# Auto-refresh calendars:
+
+Auto-refresh calendars:Auto refresh kalender
 #
 # << MISSING >>
 # auto-refresh-time-help:
 # English text: If Auto-refresh is enabled, this specifies the time between each refresh.
 #
 #
-# << MISSING >>
-# Auto-refresh time:
+
+Auto-refresh time:Auto refresh tid
 #
 # << MISSING >>
 # require-approvals-help:
@@ -152,120 +152,120 @@ to: til
 # English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
 #
 #
-# << MISSING >>
-# Disable Priority field:
+
+Disable Priority field: Fjern prioritets felt
 #
 # << MISSING >>
 # disable-access-field-help:
 # English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
 #
 #
-# << MISSING >>
-# Disable Access field:
+
+Disable Access field:Fjern adgangs felt
 #
 # << MISSING >>
 # disable-participants-field-help:
 # English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
 #
 #
-# << MISSING >>
-# Disable Participants field:
+
+Disable Participants field:Fjern deltagere felt
 #
 # << MISSING >>
 # disable-repeating-field-help:
 # English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
 #
 #
-# << MISSING >>
-# Disable Repeating field:
+
+Disable Repeating field:Fjern gentagelses felt
 #
 # << MISSING >>
 # allow-view-other-help:
 # English text: Specifies whether one user may view another user's calendar.
 #
 #
-# << MISSING >>
-# Allow viewing other user's calendars:
+
+Allow viewing other user's calendars:Tillad at se andres kalendere
 #
 # << MISSING >>
 # allow-public-access-help:
 # English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
 #
 #
-# << MISSING >>
-# Allow public access:
+
+Allow public access:Tillad public adgang
 #
 # << MISSING >>
 # public-access-view-others-help:
 # English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
 #
 #
-# << MISSING >>
-# Public access can view other users:
+
+Public access can view other users:Public adgang kan se andre brugere
 #
 # << MISSING >>
 # public-access-can-add-help:
 # English text: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
 #
 #
-# << MISSING >>
-# Public access can add events:
+
+Public access can add events:Public brugere kan tilføje aktiviteter
 #
 # << MISSING >>
 # public-access-add-requires-approval-help:
 # English text: Specifies whether events added via the public access account require approval before being displayed.
 #
 #
-# << MISSING >>
-# Public access new events require approval:
+
+Public access new events require approval:Public brugeres ny aktiviteter kræver godkendelse
 #
 # << MISSING >>
 # allow-view-add-help:
 # English text: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
 #
 #
-# << MISSING >>
-# Include add event link in views:
+
+Include add event link in views:Inkluder "Tilføj aktivitet" i views
 #
 # << MISSING >>
 # allow-external-users-help:
 # English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
 #
 #
-# << MISSING >>
-# Allow external users:
+
+Allow external users:Tillad externe brugere
 #
 # << MISSING >>
 # external-can-receive-notification-help:
 # English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
 #
 #
-# << MISSING >>
-# External users can receive email notifications:
+
+External users can receive email notifications:Externe brugere kan modtage e-mail notifications
 #
 # << MISSING >>
 # external-can-receive-reminder-help:
 # English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
 #
 #
-# << MISSING >>
-# External users can receive email reminders:
+
+External users can receive email reminders:Externe brugere kan modtage e-mail påmindelser
 #
 # << MISSING >>
 # remember-last-login-help:
 # English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
 #
 #
-# << MISSING >>
-# Remember last login:
+
+Remember last login:Husk sidste login
 #
 # << MISSING >>
 # conflict-check-help:
 # English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
 #
 #
-# << MISSING >>
-# Check for event conflicts:
+
+Check for event conflicts:Check for aktivitets-konflikter
 #
 # << MISSING >>
 # conflict-months-help:
@@ -280,8 +280,8 @@ to: til
 # English text: Allows users to override event conflicts and schedule two or more events for the same time.
 #
 #
-# << MISSING >>
-# Allow users to override conflicts:
+
+Allow users to override conflicts:Tillad brugere at ignorere aktivitets konflikter
 #
 # << MISSING >>
 # limit-appts-help:
@@ -317,36 +317,30 @@ to: til
 #
 # << MISSING >>
 # Plugin:
-#
-# << MISSING >>
-# Groups:
+Groups:Grupper
 #
 # << MISSING >>
 # groups-enabled-help:
 # English text: Enables group support, allowing users to select users by groups.
 #
 #
-# << MISSING >>
-# Groups enabled:
+Groups enabled:Grupper aktiveret
 #
 # << MISSING >>
 # user-sees-his-group-help:
 # English text: If enabled, users will not see calendar users that are not in at least one of their groups.
 #
 #
-# << MISSING >>
-# User sees only his groups:
+User sees only his groups:Bruger kan kun se sin egen gruppe
 #
-# << MISSING >>
-# Categories:
+Categories:Kategorier
 #
 # << MISSING >>
 # categories-enabled-help:
 # English text: Enables support for event categories.
 #
 #
-# << MISSING >>
-# Categories enabled:
+Categories enabled:Kategorier aktiveret
 #
 # << MISSING >>
 # Nonuser:
@@ -373,11 +367,9 @@ to: til
 # English text: Display in participants list at
 #
 #
-# << MISSING >>
-# Top:
+Top:Top
 #
-# << MISSING >>
-# Bottom:
+Bottom:Bund
 #
 # << MISSING >>
 # Reports:
@@ -387,8 +379,7 @@ to: til
 # English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
 #
 #
-# << MISSING >>
-# Reports enabled:
+Reports enabled:Reports aktiveret
 #
 # << MISSING >>
 # Subscribe/Publish:
@@ -409,70 +400,63 @@ to: til
 # English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
 #
 #
-# << MISSING >>
-# Email enabled:
+
+Email enabled:E-mail aktiveret
 #
-# << MISSING >>
-# email-default-sender:
+email-default-sender:Standard e-mail afsender
 # English text: Specifies the email address to specify as the sender when sending out reminders.
 #
 #
-# << MISSING >>
-# Default sender address:
+
+Default sender address:Standard adresse
 #
-# << MISSING >>
-# Default user settings:
+
+Default user settings:Standard bruger indstillinger
 #
 # << MISSING >>
 # email-event-reminders-help:
 # English text: Specifies whether or not to send event reminders.
 #
 #
-# << MISSING >>
-# Event reminders:
+Event reminders:Aktivitets påmindelser
 #
 # << MISSING >>
 # email-event-added:
 # English text: Specifies whether or not to send email notifications when an event is added to your calendar.
 #
 #
-# << MISSING >>
-# Events added to my calendar:
+Events added to my calendar:Aktiviteter tilføjet til min kalender
 #
-# << MISSING >>
-# email-event-updated:
+email-event-updated:e-mail aktivitet opdateret
 # English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
 #
 #
-# << MISSING >>
-# Events updated on my calendar:
+
+Events updated on my calendar:Aktiviteter opdateret i min kalender
 #
 # << MISSING >>
 # email-event-deleted:
 # English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
 #
 #
-# << MISSING >>
-# Events removed from my calendar:
+Events removed from my calendar:Aktiviteter fjernet fra min kalender
 #
 # << MISSING >>
 # email-event-rejected:
 # English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 #
 #
-# << MISSING >>
-# Event rejected by participant:
+Event rejected by participant:Aktivitet afvist af deltager
 colors-help: Alle farver skal indtastes som #RRGGBB hvor RR er hexkoden for rød, GG er hexkoden for grøn og BB er hexkoden for den blå farve.
 Colors: Farver
 #
-# << MISSING >>
-# Allow user to customize colors:
+
+Allow user to customize colors:Tillad bruger at ændre farver
 Document background: Dokumentbaggrund
 Select: Vælg
 Document title: Dokumenttitel
-#
-# << MISSING >>
-# Document text:
+
+Document text:Dokument tekst
 #
 # << MISSING >>
 # Table grid color:
@@ -485,14 +469,10 @@ Document title: Dokumenttitel
 Table cell background: Tabelcellebaggrund
 Table cell background for current day: Tabelcellebaggrund for nuværende dag
 #
-# << MISSING >>
-# Table cell background for weekends:
+Table cell background for weekends:Tabelcellebaggrund for weekends
 #
-# << MISSING >>
-# Event popup background:
-#
-# << MISSING >>
-# Event popup text:
+Event popup background:Aktivitet popup baggrund
+Event popup text:Aktivitet popup tekst
 
 
 ###############################################
@@ -503,13 +483,12 @@ Table cell background for current day: Tabelcellebaggrund for nuværende dag
 # Activity Log:
 User: Bruger
 #
-# << MISSING >>
-# Calendar:
+
+Calendar:Kalender
 Date: Dato
 Time: Klokken
 #
-# << MISSING >>
-# Event:
+Event:Aktivitet
 #
 # << MISSING >>
 # Action:
@@ -570,25 +549,26 @@ Error approving event: Fejl ved godkendelse af aktivitet
 # Page: category.php
 #
 #
-# << MISSING >>
-# Add:
+
+Add: Tilføj
 #
-# << MISSING >>
-# Category Name:
+
+Category Name:Kategori navn
 #
 # << MISSING >>
 # Global:
 Delete: Slet
 Are you sure you want to delete this entry?: Er du sikker på, at du vil slette denne aktivitet?
 #
-# << MISSING >>
-# Add New Category:
+
+Add New Category: Tilføj ny kategori
 
 
 ###############################################
 # Page: category_handler.php
 #
-
+Category: Kategori
+All:Alle
 
 ###############################################
 # Page: datesel.php
@@ -631,14 +611,14 @@ time-help: Angiver tidspunktet for aktiviteten.<BR><I>Dette felt behøver ikke at
 am: am
 pm: pm
 #
-# << MISSING >>
-# Untimed event:
+
+Untimed event: Ikke tidsbestemt aktivitet
 #
-# << MISSING >>
-# Timed event:
+
+Timed event: Tidsbestemt aktivitet
 #
-# << MISSING >>
-# All day event:
+
+All day event:Aktivitet for hele dagen
 duration-help: I dette felt kan du angive varigheden af aktiviteten <BR><I>Dette felt behøver ikke at være udfyldt.</I>
 Duration: Varighed
 hours: timer
@@ -659,13 +639,13 @@ Confidential: Fortroligt
 #
 # << MISSING >>
 # Category:
-None: Aldrig
+None: Ingen
 #
 # << MISSING >>
-# days:
+days:Dage
 #
 # << MISSING >>
-# before event:
+before event: før aktivitet
 participants-help: Vis deltagerne i denne aktivitet.
 Participants: Deltagere
 #
@@ -684,7 +664,7 @@ Monthly: Månedligt
 by day: efter dag
 #
 # << MISSING >>
-# by day (from end):
+by day (from end): daglig
 by date: efter dato
 Yearly: Årligt
 repeat-end-date-help: Specificer slutdatoen for gentagelser af denne aktivitet.
@@ -711,12 +691,12 @@ The following conflicts with the suggested time: Følgende aktiviteter er i konfl
 Unnamed Event: Aktivitet uden navn
 #
 # << MISSING >>
-# The description is:
+The description is:Beskrivelsen er
 Title: Web-kalenderen
 A new appointment has been made for you by: En ny aftale er blevet aftalt for dig af
 #
 # << MISSING >>
-# An appointment has been updated by:
+An appointment has been updated by:En aktivitet er blevet opdateret af
 The subject is: Emnet er
 Please look on: Se venligst på
 to accept or reject this appointment: for at acceptere eller afvise denne aftale
@@ -725,8 +705,7 @@ Scheduling Conflict: Tidskonflikt
 Your suggested time of: Din foreslåede tid for
 conflicts with the following existing calendar entries: er i konflikt med eksisterende aftaler
 #
-# << MISSING >>
-# Cancel:
+Cancel:Fortryd
 
 
 ###############################################
@@ -847,40 +826,20 @@ Users: Brugere
 #
 Preferences: Indstillinger
 #
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-#
+to modify the preferences for the Public Access calendar:for at ændre indstillinger for "Public Access" kalenderen
+Default Category:Standard kategori
+When I am the boss:Når jeg er "boss"
+Email me event notification:E-mail mig aktivitets notifications
+I want to approve events:jeg ønsker at godkende aktiviteter
 # << MISSING >>
 # tz-help:
 # English text: Specifies how many hours to adjust the time from server time to local time.
-#
-#
-# << MISSING >>
-# Timezone Offset:
-#
-# << MISSING >>
-# Add N hours to:
-#
-# << MISSING >>
-# Subtract N hours from:
-#
-# << MISSING >>
-# same as:
-#
-# << MISSING >>
-# server time:
-#
-# << MISSING >>
-# Default Category:
-#
-# << MISSING >>
-# When I am the boss:
-#
-# << MISSING >>
-# Email me event notification:
-#
-# << MISSING >>
-# I want to approve events:
+Timezone Offset:Tidszone forskydning
+Add N hours to:Tilføj N timer til
+Subtract N hours from:Træk N timer fra
+same as:samme som
+server time:serverens tidsindstilling
+Default Category:Standard kategori
 #
 # << MISSING >>
 # allow-remote-subscriptions-help:
@@ -979,6 +938,8 @@ Layers: Lag
 #
 # << MISSING >>
 # cont.:
+Category:Kategori
+All:Alle
 
 
 ###############################################
@@ -1718,7 +1679,7 @@ Invalid color: Ugyldig farve
 #
 #
 # << MISSING >>
-# This is a reminder for the event detailed below.:
+This is a reminder for the event detailed below.:Dette er en påmindelse for aktiviteten beskrevet nedenunder
 #
 # << MISSING >>
-# Reminder:
+Reminder:Påmindelse
