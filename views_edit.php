@@ -81,9 +81,13 @@ if ( $newview ) {
 <TR><TD><B><?php etranslate("View Type")?>:</B></TD>
   <TD><SELECT NAME="viewtype">
       <OPTION VALUE="W" <?php if ( $viewtype == "W" ) echo "SELECTED";?> >
-        <?php etranslate("Week"); ?>
+        <?php etranslate("Week (Users horizontal)"); ?>
+      <OPTION VALUE="V" <?php if ( $viewtype == "V" ) echo "SELECTED";?> >
+        <?php etranslate("Week (Users vertical)"); ?>
       <OPTION VALUE="M" <?php if ( $viewtype == "M" ) echo "SELECTED";?> >
         <?php etranslate("Month"); ?>
+      <OPTION VALUE="T" <?php if ( $viewtype == "T" ) echo "SELECTED";?> >
+        <?php etranslate("Timebar"); ?>
       </SELECT>
       </TD></TR>
 <TR><TD VALIGN="top">
