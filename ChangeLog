@@ -1,4 +1,5 @@
 Version 1.0RC1/CVS+dev (?? ??? 2004)
+  - Fixed Bug 986774:Editing Category for and event as Assistant
   - Updated several files to replace <? with <?php
     which causes problems on Windows
   - Fixed Bug 931096: Restrict views and view edits to owner of that view. Added some

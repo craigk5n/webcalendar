@@ -3524,22 +3524,23 @@ function my_array_splice(&$input,$offset,$length,$replacement) {
   *	$ex_global - Don't include global categories ('' or '1')
   */
 function load_user_categories ($ex_global = '') {
-  global $login;
+  global $login, $user;
   global $categories, $category_owners;
   global $categories_enabled;
 
+  $cat_owner =  ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login;
   $categories = array ();
   $category_owners = array ();
-
   if ( $categories_enabled == "Y" ) {
     $sql = "SELECT cat_id, cat_name, cat_owner FROM webcal_categories WHERE ";
-    $sql .=  ($ex_global == '') ? " (cat_owner = '$login') OR  (cat_owner IS NULL) ORDER BY cat_owner, cat_name" : " cat_owner = '$login' ORDER BY cat_name";
+    $sql .=  ($ex_global == '') ? " (cat_owner = '$cat_owner') OR  (cat_owner IS NULL) ORDER BY cat_owner, cat_name" : " cat_owner = '$cat_owner' ORDER BY cat_name";
+
     $res = dbi_query ( $sql );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $cat_id = $row[0];
-	$categories[$cat_id] = $row[1];
-	$category_owners[$cat_id] = $row[2];
+	       $categories[$cat_id] = $row[1];
+	       $category_owners[$cat_id] = $row[2];
       }
       dbi_free_result ( $res );
     }
@@ -3558,7 +3559,6 @@ function load_user_categories ($ex_global = '') {
   */
 function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   global $categories, $category_owners, $user, $login;
-
   echo "<form action=\"{$form}.php\" method=\"get\" name=\"SelectCategory\" class=\"categories\">\n";
   if ( ! empty($date) ) echo "<input type=\"hidden\" name=\"date\" value=\"$date\" />\n";
   if ( ! empty ( $user ) && $user != $login )
@@ -3567,9 +3567,10 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   echo "<option value=\"\"";
   if ( $cat_id == '' ) echo " selected=\"selected\"";
   echo ">" . translate("All") . "</option>\n";
-  if ( is_array ( $categories ) ) {
+  $cat_owner =  ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login;
+  if (  is_array ( $categories ) ) {
     foreach ( $categories as $K => $V ){
-      if ( empty ( $user ) || $user == $login ||
+      if ( $cat_owner ||
         empty ( $category_owners[$K] ) ) {
         echo "<option value=\"$K\"";
         if ( $cat_id == $K ) echo " selected=\"selected\"";
