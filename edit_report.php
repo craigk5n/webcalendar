@@ -3,21 +3,21 @@
  * $Id$
  *
  * Page Description:
- *	This page will present the HTML form to add or edit a report.
+ * This page will present the HTML form to add or edit a report.
  *
  * Input Parameters:
- *	report_id (optional) - the report id of the report to edit.
- *	  If blank, user is adding a new report.
- *	public (optional) - If set to '1' and user is an admin user,
- *	  then we are creating a report for the public user.
+ * report_id (optional) - the report id of the report to edit.
+ *   If blank, user is adding a new report.
+ * public (optional) - If set to '1' and user is an admin user,
+ *   then we are creating a report for the public user.
  *
  * Security:
- *	If system setting $reports_enabled is set to anything other than
- *	  'Y', then don't allow access to this page.
- *	If $allow_view_other is 'N', then do not allow selection of
- *	  participants.
- *	If not an admin user, only report creator (cal_login in webcal_report)
- *	  can edit/delete report.
+ * If system setting $reports_enabled is set to anything other than
+ *   'Y', then don't allow access to this page.
+ * If $allow_view_other is 'N', then do not allow selection of
+ *   participants.
+ * If not an admin user, only report creator (cal_login in webcal_report)
+ *   can edit/delete report.
  */
 include_once 'includes/init.php';
 load_user_categories ();
@@ -48,12 +48,15 @@ if ( empty ( $report_id ) ) {
 }
 
 $show_participants = true;
-if ( $single_user == 'Y' || $disable_participants_field == 'Y' )
+if ( $single_user == 'Y' || $disable_participants_field == 'Y' ) {
   $show_participants = false;
+}
 
 if ( $login == "__public__" ) {
   $error = translate ( "You are not authorized" );
 }
+
+$charset = ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" );
 
 // Set date range options
 $ranges = array (
@@ -84,7 +87,8 @@ if ( empty ( $error ) && $show_participants ) {
   $userlist = get_my_users ();
   if ($nonuser_enabled == "Y" ) {
     $nonusers = get_nonuser_cals ();
-    $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+    $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : 
+      array_merge($userlist, $nonusers);
   }
 }
 
@@ -126,8 +130,9 @@ if ( empty ( $error ) && $report_id > 0 ) {
       if ( $show_participants && ! empty ( $report_user ) ) {
         $user_is_in_list = false;
         for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-          if ( $report_user == $userlist[$i]['cal_login'] )
+          if ( $report_user == $userlist[$i]['cal_login'] ) {
             $user_is_in_list = true;
+          }
         }
         if ( ! $user_is_in_list && $report_login != $login && ! $is_admin ) {
           $error = translate ( "You are not authorized" );
@@ -139,7 +144,9 @@ if ( empty ( $error ) && $report_id > 0 ) {
       }
       
       // If we are editing a public user report we need to set $updating_public
-      if ( $is_admin && $report_login == "__public__" ) $updating_public = true;
+      if ( $is_admin && $report_login == "__public__" ) {
+        $updating_public = true;
+       }
         
     } else {
       $error = translate ( "Invalid report id" ) . ": $report_id";
@@ -163,8 +170,7 @@ if ( empty ( $error ) && $report_id > 0 ) {
     }
     dbi_free_result ( $res );
   }
-}
-else {
+} else {
   // default values for new report
   $report_login = $login;
   $report_id = -1;
@@ -188,12 +194,14 @@ print_header();
 ?>
 
 <h2><?php
-if ( $updating_public )
+if ( $updating_public ) {
   echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
-if ( $adding_report )
+}
+if ( $adding_report ) {
   etranslate("Add Report");
-else
+} else {
   etranslate("Edit Report");
+}
 ?></h2>
 
 <?php
@@ -214,21 +222,25 @@ if ( ! empty ( $error ) ) {
 <?php } ?>
 
 <table style="border-width:0px;">
-	<tr><td>
-		<label for="rpt_name"><?php etranslate("Report name")?>:</label></td><td>
-		<input type="text" name="report_name" id="rpt_name" size="40" maxlength="50" value="<?php echo htmlentities ( $report_name ); ?>" />
-	</td></tr>
+ <tr><td>
+  <label for="rpt_name"><?php etranslate("Report name")?>:</label></td><td>
+  <input type="text" name="report_name" id="rpt_name" size="40" maxlength="50"
+    value="<?php echo htmlentities ( $report_name, ENT_COMPAT, $charset );
+    ?>" />
+ </td></tr>
 <?php
 if ( $show_participants ) {
   $users = "<option value=\"\"";
-  if ( empty ( $report_user ) )
+  if ( empty ( $report_user ) ) {
     $users .= " selected=\"selected\"";
+  }
   $users .= ">" . translate ( "Current User" ) . "</option>\n";
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
     $users .= "<option value=\"" . $userlist[$i]['cal_login'] . "\"";
     if ( ! empty ( $report_user ) ) {
-      if ( $report_user == $userlist[$i]['cal_login'] )
+      if ( $report_user == $userlist[$i]['cal_login'] ) {
         $users .= " selected=\"selected\"";
+      }
     } 
     $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
@@ -242,12 +254,13 @@ if ( $show_participants ) {
 
 <?php if ( $is_admin ) { ?>
 <tr><td><label>
-	<?php etranslate("Global")?>:</label></td><td>
-	<label><input type="radio" name="is_global" value="Y"
-  <?php if ( $report_is_global != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
-  &nbsp;&nbsp;&nbsp;
-  	<label><input type="radio" name="is_global" value="N"
-  <?php if ( $report_is_global == 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("No") ?></label>
+ <?php etranslate("Global")?>:</label></td><td>
+ <label><input type="radio" name="is_global" value="Y"
+  <?php if ( $report_is_global != 'N' ) echo " checked=\"checked\""; ?> 
+    />&nbsp;<?php etranslate("Yes") ?></label>&nbsp;&nbsp;&nbsp;
+  <label><input type="radio" name="is_global" value="N"
+    <?php if ( $report_is_global == 'N' ) echo " checked=\"checked\""; ?>
+    />&nbsp;<?php etranslate("No") ?></label>
 </td></tr>
 <?php } ?>
 
@@ -258,105 +271,120 @@ if ( $show_participants ) {
 if ( $is_admin ) {
 ?>
 <tr><td><label>
-	<?php etranslate("Include link in trailer")?>:</label></td><td>
-	<label><input type="radio" name="show_in_trailer" value="Y"
-  <?php if ( $report_show_in_trailer != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
-  &nbsp;&nbsp;&nbsp;
-	<label><input type="radio" name="show_in_trailer" value="N"
-  <?php if ( $report_show_in_trailer == 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("No") ?></label>
+ <?php etranslate("Include link in trailer")?>:</label></td><td>
+ <label><input type="radio" name="show_in_trailer" value="Y"
+  <?php if ( $report_show_in_trailer != 'N' ) echo " checked=\"checked\""; ?> 
+  />&nbsp;<?php etranslate("Yes") ?></label>&nbsp;&nbsp;&nbsp;
+ <label><input type="radio" name="show_in_trailer" value="N"
+  <?php if ( $report_show_in_trailer == 'N' ) echo " checked=\"checked\""; ?> 
+  />&nbsp;<?php etranslate("No") ?></label>
 </td></tr>
 <?php } ?>
 <tr><td><label>
-	<?php etranslate("Include standard header/trailer")?>:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td>
-	<label><input type="radio" name="include_header" value="Y"
-  <?php if ( $report_include_header != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
-  &nbsp;&nbsp;&nbsp;
-	<label><input type="radio" name="include_header" value="N"
-  <?php if ( $report_include_header == 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("No") ?></label>
+ <?php etranslate("Include standard header/trailer")?>:&nbsp;&nbsp;&nbsp;&nbsp;
+   </label></td><td>
+ <label><input type="radio" name="include_header" value="Y"
+   <?php if ( $report_include_header != 'N' ) echo " checked=\"checked\""; ?> 
+   />&nbsp;<?php etranslate("Yes") ?></label>&nbsp;&nbsp;&nbsp;
+ <label><input type="radio" name="include_header" value="N"
+   <?php if ( $report_include_header == 'N' ) echo " checked=\"checked\""; ?> 
+   />&nbsp;<?php etranslate("No") ?></label>
 </td></tr>
 <tr><td>
-	<label for="rpt_time_range"><?php etranslate("Date range")?>:</label></td><td>
-	<select name="time_range" id="rpt_time_range">
+ <label for="rpt_time_range"><?php etranslate("Date range")?>:</label></td><td>
+ <select name="time_range" id="rpt_time_range">
   <?php
     while ( list ( $num, $descr ) = each ( $ranges ) ) {
       echo "<option value=\"$num\"";
-      if ( $report_time_range == $num )
+      if ( $report_time_range == $num ) {
         echo " selected=\"selected\"";
+      }
       echo ">$descr</option>\n";
     }
   ?></select>
 </td></tr>
 <tr><td>
-	<label for="rpt_cat_id"><?php etranslate("Category")?>:</label></td><td>
-	<select name="cat_id" id="rpt_cat_id">
+ <label for="rpt_cat_id"><?php etranslate("Category")?>:</label></td><td>
+ <select name="cat_id" id="rpt_cat_id">
   <option value=""><?php etranslate("None") ?></option>
   <?php
     while ( list ( $cat_id, $descr ) = each ( $categories ) ) {
       echo "<option value=\"$cat_id\"";
-      if ( $report_cat_id == $cat_id )
+      if ( $report_cat_id == $cat_id ) {
         echo " selected=\"selected\"";
+      }
       echo ">$descr</option>\n";
     }
   ?></select>
 </td></tr>
 <tr><td><label>
-	<?php etranslate("Include previous/next links")?>:</label></td><td>
-	<label><input type="radio" name="allow_nav" value="Y"
-  <?php if ( $report_allow_nav != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
-  &nbsp;&nbsp;&nbsp;
-	<label><input type="radio" name="allow_nav" value="N"
-  <?php if ( $report_allow_nav == 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("No") ?></label>
+ <?php etranslate("Include previous/next links")?>:</label></td><td>
+ <label><input type="radio" name="allow_nav" value="Y"
+   <?php if ( $report_allow_nav != 'N' ) echo " checked=\"checked\""; ?> 
+   />&nbsp;<?php etranslate("Yes") ?></label>&nbsp;&nbsp;&nbsp;
+ <label><input type="radio" name="allow_nav" value="N"
+   <?php if ( $report_allow_nav == 'N' ) echo " checked=\"checked\""; ?> 
+   />&nbsp;<?php etranslate("No") ?></label>
 </td></tr>
 <tr><td><label>
-	<?php etranslate("Include empty dates")?>:</label></td><td>
-	<label><input type="radio" name="include_empty" value="Y"
-  <?php if ( $report_include_empty != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
-  &nbsp;&nbsp;&nbsp;
-	<label><input type="radio" name="include_empty" value="N"
-  <?php if ( $report_include_empty == 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("No") ?></label>
+ <?php etranslate("Include empty dates")?>:</label></td><td>
+ <label><input type="radio" name="include_empty" value="Y"
+   <?php if ( $report_include_empty != 'N' ) echo " checked=\"checked\""; ?> 
+   />&nbsp;<?php etranslate("Yes") ?></label>&nbsp;&nbsp;&nbsp;
+ <label><input type="radio" name="include_empty" value="N"
+   <?php if ( $report_include_empty == 'N' ) echo " checked=\"checked\""; ?> 
+   />&nbsp;<?php etranslate("No") ?></label>
 </td></tr>
 </table>
 
 <table style="border-width:0px;">
-	<tr><td>&nbsp;</td><td>&nbsp;</td><td><label>
-		<?php etranslate("Template variables")?></label>
-	</td></tr>
-	<tr><td valign="top"><label>
-		<?php etranslate("Page template")?>:</label></td><td>
-		<textarea rows="12" cols="60" name="page_template"><?php echo htmlentities ( $page_template )?></textarea></td><td style="vertical-align:top;">
-		<tt>${days}</tt><br />
-		<tt>${report_id}</tt><br />
-	</td></tr>
-	<tr><td valign="top"><label>
-		<?php etranslate("Day template")?>:</label></td><td>
-		<textarea rows="12" cols="60" name="day_template"><?php echo htmlentities ( $day_template )?></textarea></td><td style="vertical-align:top;">
-		<tt>${events}</tt><br />
-		<tt>${date}</tt><br />
-		<tt>${fulldate}</tt><br />
-		<tt>${report_id}</tt><br />
-	</td></tr>
-	<tr><td valign="top"><label>
-		<?php etranslate("Event template")?>:</label></td><td>
-		<textarea rows="12" cols="60" name="event_template"><?php echo htmlentities ( $event_template )?></textarea></td><td style="vertical-align:top;">
-		<tt>${name}</tt><br />
-		<tt>${description}</tt><br />
-		<tt>${date}</tt><br />
-		<tt>${fulldate}</tt><br />
-		<tt>${time}</tt><br />
-		<tt>${starttime}</tt><br />
-		<tt>${endtime}</tt><br />
-		<tt>${duration}</tt><br />
-		<tt>${priority}</tt><br />
-		<tt>${href}</tt><br />
-		<tt>${user}</tt><br />
-		<tt>${report_id}</tt> 
-	</td></tr>
-	<tr><td colspan="2">
-		<input type="submit" value="<?php etranslate("Save")?>" />
+ <tr><td>&nbsp;</td><td>&nbsp;</td><td><label>
+  <?php etranslate("Template variables")?></label>
+ </td></tr>
+ <tr><td valign="top"><label>
+  <?php etranslate("Page template")?>:</label></td><td>
+  <textarea rows="12" cols="60" name="page_template">
+    <?php echo htmlentities ( $page_template, ENT_COMPAT, $charset )?>
+  </textarea></td><td style="vertical-align:top;">
+  <tt>${days}</tt><br />
+  <tt>${report_id}</tt><br />
+ </td></tr>
+ <tr><td valign="top"><label>
+  <?php etranslate("Day template")?>:</label></td><td>
+  <textarea rows="12" cols="60" name="day_template">
+    <?php echo htmlentities ( $day_template, ENT_COMPAT, $charset )?>
+  </textarea></td><td style="vertical-align:top;">
+  <tt>${events}</tt><br />
+  <tt>${date}</tt><br />
+  <tt>${fulldate}</tt><br />
+  <tt>${report_id}</tt><br />
+ </td></tr>
+ <tr><td valign="top"><label>
+  <?php etranslate("Event template")?>:</label></td><td>
+  <textarea rows="12" cols="60" name="event_template">
+    <?php echo htmlentities ( $event_template, ENT_COMPAT, $charset )?>
+  </textarea></td><td style="vertical-align:top;">
+  <tt>${name}</tt><br />
+  <tt>${description}</tt><br />
+  <tt>${date}</tt><br />
+  <tt>${fulldate}</tt><br />
+  <tt>${time}</tt><br />
+  <tt>${starttime}</tt><br />
+  <tt>${endtime}</tt><br />
+  <tt>${duration}</tt><br />
+  <tt>${priority}</tt><br />
+  <tt>${href}</tt><br />
+  <tt>${user}</tt><br />
+  <tt>${report_id}</tt> 
+ </td></tr>
+ <tr><td colspan="2">
+  <input type="submit" value="<?php etranslate("Save")?>" />
 <?php if ( ! $adding_report ) { ?>
-		&nbsp;&nbsp;<input type="submit" name="action" value="<?php etranslate("Delete");?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this report?")?>');" />
+  &nbsp;&nbsp;<input type="submit" name="action" value="
+    <?php etranslate("Delete");?>" onclick="return confirm('
+    <?php etranslate("Are you sure you want to delete this report?")?>');" />
 <?php } ?>
-	</td></tr>
+ </td></tr>
 </table>
 </form>
 
