@@ -1,8 +1,12 @@
 <?php
 global $form, $fmonth, $fday, $fyear;
 if (preg_match("/datesel\.php/", $PHP_SELF)) {
-    die ("You can't access this file directly!");
+  die ("You can't access this file directly!");
 }
+$form = clean_word($form);
+$fmonth = clean_word($fmonth);
+$fday = clean_word($fday);
+$fyear = clean_word($fyear);
 ?>
 
 <script type="text/javascript">
