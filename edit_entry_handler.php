@@ -17,6 +17,8 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
 if ( empty ( $TZ_OFFSET ) )
   $TZ_OFFSET = 0;
 
+if ( empty ( $endhour ) )
+  $endhour = 0;
 // Modify the time to be server time rather than user time.
 if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
   // Convert to 24 hour before subtracting TZ_OFFSET so am/pm isn't confused.
@@ -150,7 +152,7 @@ if ( $timetype == "A" ) {
 }
 
 $duration_h = getValue ( "duration_h" );
-$duration_m = getValue ( "duration_h" );
+$duration_m = getValue ( "duration_m" );
 
 $duration = ( $duration_h * 60 ) + $duration_m;
 if ( $hour > 0 && $timetype != 'U' ) {
@@ -342,7 +344,7 @@ if ( empty ( $error ) ) {
   $sql .= sprintf ( "%d, ", $duration );
   $sql .= sprintf ( "%d, ", $priority );
   $sql .= empty ( $access ) ? "'P', " : "'$access', ";
-  if ( $rpt_type != 'none' )
+  if (  ! empty ( $rpt_type ) && $rpt_type != 'none' )
     $sql .= "'M', ";
   else
     $sql .= "'E', ";
@@ -708,7 +710,7 @@ if ( empty ( $error ) ) {
     if ( ! dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id") )
       $error = translate("Database error") . ": " . dbi_error ();
     // add repeating info
-    if ( strlen ( $rpt_type ) && $rpt_type != 'none' ) {
+    if ( ! empty ( $rpt_type ) && strlen ( $rpt_type ) && $rpt_type != 'none' ) {
       $freq = ( $rpt_freq ? $rpt_freq : 1 );
       if ( $rpt_end_use )
         $end = sprintf ( "%04d%02d%02d", $rpt_year, $rpt_month, $rpt_day );
