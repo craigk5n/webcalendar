@@ -309,10 +309,15 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 if ( $untimed_found ) {
   echo "<TR><TD CLASS=\"tableheader\" WIDTH=\"12%\" BGCOLOR=\"$THBG\">&nbsp;</TD>";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
+    $thiswday = date ( "w", $days[$d] );
+    $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
+    if ( empty ( $WEEKENDBG ) )
+      $is_weekend = false;
+    $color = $is_weekend ? $WEEKENDBG : $CELLBG;
     if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) )
       echo $untimed[$d];
     else
-      echo "<TD WIDTH=\"12%\" BGCOLOR=\"$CELLBG\">&nbsp;</TD>";
+      echo "<TD WIDTH=\"12%\" BGCOLOR=\"$color\">&nbsp;</TD>";
   }
   echo "</TR>\n";
 }

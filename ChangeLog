@@ -1,4 +1,6 @@
 Version 0.9.39dev0813 (13 Aug 2002)
+  - Fixed bug: Events with no time on weekends where not being displayed
+    with the weekend background color in the week view.
   - Include a category of "None" when editing an event.
   - Fixed bug 587909: Don't display 12pm for events with no time in
     notifications.
