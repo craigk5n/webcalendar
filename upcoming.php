@@ -156,10 +156,11 @@ $events = read_events ( $username, $date, $endDate, $cat_id );
 </head>
 <body>
 <?php
-
 print "<dl>\n";
 
-print "<!-- \nstartTime: $startTime\nendTime: $endTime\nstartDate: $date\nnumDays: $numDays\nuser: $username\nevents: " . count ( $events ) . "\nrevents: " . count ( $revents ) . " -->\n";
+print "<!-- \nstartTime: $startTime\nendTime: $endTime\nstartDate: $date\nnumDays: $numDays\nuser: $username\nevents: " . 
+	count ( $events ) . "\nrevents: " . 
+	count ( $revents ) . " -->\n";
 
 $numEvents = 0;
 for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
@@ -180,7 +181,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
       print_upcoming_event ( $rentries[$j] );
       $numEvents++;
     }
-    print "</dd>\n\n";
+    print "</dd>\n";
   }
 }
 
@@ -190,15 +191,17 @@ print "</body>\n</html>";
 
 
 // Print the details of an upcoming event
-function print_upcoming_event ( $e )
-{
+function print_upcoming_event ( $e ) {
   global $display_link, $link_target, $server_url;
 
   if ( $display_link && ! empty ( $server_url ) ) {
-    print "<a href=\"" . $server_url . "view_entry.php?id=" .
-      $e['cal_id'] . "&amp;date=" . $e['cal_date'] . "\"";
+    print "<a title\"" . 
+    	htmlentities ( $e['cal_name'] ) . "\" href=\"" . 
+	$server_url . "view_entry.php?id=" . 
+	$e['cal_id'] . "&amp;date=" . 
+	$e['cal_date'] . "\"";
     if ( ! empty ( $link_target ) )
-      print " target=\"$link_target\"";
+	print " target=\"$link_target\"";
     print ">";
   }
   print htmlentities ( $e['cal_name'] );
@@ -212,5 +215,4 @@ function print_upcoming_event ( $e )
   }
   print "<br />\n";
 }
-
 ?>

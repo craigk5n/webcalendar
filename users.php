@@ -3,8 +3,8 @@ include_once 'includes/init.php';
 print_header();
 
 if ( ! $is_admin ) {
-  echo "<h2>" . translate("Error") .
-    "</h2>" . translate("You are not authorized") . ".\n";
+  echo "<h2>" . translate("Error") . "</h2>\n" . 
+  	translate("You are not authorized") . ".\n";
   print_trailer ();
   echo "</body>\n</html>";
   exit;
@@ -19,7 +19,7 @@ if ( ! $is_admin ) {
 $userlist = user_get_users ();
 for ( $i = 0; $i < count ( $userlist ); $i++ ) {
   if ( $userlist[$i]['cal_login'] != '__public__' ) {
-    echo "<li><a href=\"edit_user.php?user=" . $userlist[$i]["cal_login"] .
+    echo "<li><a title=\"" . $userlist[$i]['cal_fullname'] . "\" href=\"edit_user.php?user=" . $userlist[$i]["cal_login"] .
       "\">";
     echo $userlist[$i]['cal_fullname'];
     echo "</a>";
@@ -34,8 +34,8 @@ for ( $i = 0; $i < count ( $userlist ); $i++ ) {
 <br /><br />
 <?php
   if ( $admin_can_add_user )
-    echo "<a href=\"edit_user.php\">" . translate("Add New User") .
-      "</a><br />\n";
+    echo "<a title=\"" . translate("Add New User") . "\" href=\"edit_user.php\">" . 
+    	translate("Add New User") . "</a><br />\n";
 ?>
 
 <?php print_trailer(); ?>

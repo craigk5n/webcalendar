@@ -61,14 +61,12 @@ print_header();
 ?>
 
 <?php if ( ! empty ( $error ) ) { ?>
-
 <h2><?php etranslate("Error")?></h2>
 <blockquote>
 <?php echo $error; ?>
 </blockquote>
 
 <?php } else { ?>
-
 <h2><?php etranslate("Set Category")?></h2>
 
 <form action="set_entry_cat.php" method="post" name="SelectCategory">
@@ -78,12 +76,13 @@ print_header();
 
 <table style="border-width:0px;" cellpadding="5">
 <tr style="vertical-align:top;">
-<td style="font-weight:bold;"><?php etranslate("Brief Description")?>:</td>
-<td><?php echo $event_name; ?></td></tr>
-
+<td style="font-weight:bold;">
+<?php etranslate("Brief Description")?>:</td><td>
+<?php echo $event_name; ?>
+</td></tr>
 <tr style="vertical-align:top;">
 <td style="font-weight:bold;">
-<?php etranslate("Category")?>:&nbsp;&nbsp;</td><td>
+<?php etranslate("Category")?>:&nbsp;</td><td>
 	<select name="cat_id">
   <option value="NULL"><?php etranslate("None")?></option>
   <?php
@@ -96,16 +95,13 @@ print_header();
   ?>
   </select></td>
 </tr>
-
 <tr style="vertical-align:top;"><td colspan="2">
 <input type="submit" value="<?php etranslate("Save");?>" />
 </td></tr>
 </table>
-
 </form>
 
 <?php } ?>
-
 <?php print_trailer(); ?>
 </body>
 </html>

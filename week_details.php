@@ -61,23 +61,20 @@ for ( $i = 0; $i < 7; $i++ ) {
 ?>
 
 <div class="title">
-<div style="float:left;"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" /></a></div>
-<div style="float: right;"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" class="prevnext" /></a></div>
-<span class="date">
-<?php
+<a title="Previous" class="prev" href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" alt="Previous" /></a>
+<a title="Next" class="next" href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" alt="Next" /></a>
+<span class="date"><?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), "", false );
-?>
-</span>
+?></span>
 <?php
 if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
   echo "<br />\n<span class=\"weeknumber\">(" .
     translate("Week") . " " . week_number ( $wkstart ) . ")</span>";
 }
 ?>
-<span class="user">
-<?php
+<span class="user"><?php
   if ( $single_user == "N" ) {
     echo "<br />$user_fullname\n";
   }
@@ -85,11 +82,10 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
     echo "<br />-- " . translate("Admin mode") . " --";
   if ( $is_assistant )
     echo "<br />-- " . translate("Assistant mode") . " --";
-?>
-</span>
+?></span>
 <?php
   if ( $categories_enabled == "Y" ) {
-    echo "<br />\n<br />\n";
+    echo "<br /><br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
   } ?>
 </div>
@@ -103,22 +99,23 @@ for ( $d = 0; $d < 7; $d++ ) {
   $thiswday = date ( "w", $days[$d] );
   $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
   if ( $date == date ( "Ymd", $today ) ) {
-    echo "<tr>\n<th class=\"today\">";
+    echo "<tr><th class=\"today\">";
   } else if ( $is_weekend ) {
-    echo "<tr>\n<th class=\"weekend\">";
+    echo "<tr><th class=\"weekend\">";
   } else {
-    echo "<tr>\n<th>";
+    echo "<tr><th>";
   }
   if ( $can_add ) {
     echo "<a title=\"" .
-      translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
-      "date=" . date ( "Ymd", $days[$d] ) . "\">" .
-      "<img src=\"new.gif\" class=\"new\" alt=\"" .
-      translate("New Entry") . "\" />" .  "</a>\n";
+      translate("New Entry") . "\" href=\"edit_entry.php?" . 
+      $u_url . "date=" . 
+      date ( "Ymd", $days[$d] ) . "\"><img src=\"new.gif\" class=\"new\" alt=\"" .
+      translate("New Entry") . "\" /></a>\n";
   }
   echo "<a title=\"" .
-    $header[$d] . "\" href=\"day.php?" . $u_url .
-    "date=" . date("Ymd", $days[$d] ) . "$caturl\">" .
+    $header[$d] . "\" href=\"day.php?" . 
+    $u_url . "date=" . 
+    date("Ymd", $days[$d] ) . "$caturl\">" .
     $header[$d] . "</a></th>\n</tr>\n";
 
   print "<tr>\n<td";
@@ -129,30 +126,30 @@ for ( $d = 0; $d < 7; $d++ ) {
 
   print_det_date_entries ( $date, $user, true );
   echo "&nbsp;";
-  echo "</td>\n</tr>\n";
+  echo "</td></tr>\n";
 }
 ?>
 </table>
 </center>
 
 <?php echo $eventinfo; ?>
-<br /><br />
+<br />
 <a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="week_details.php?<?php
   echo $u_url;
   if ( $thisyear ) {
     echo "year=$thisyear&amp;month=$thismonth&amp;day=$thisday";
   }
   echo $caturl . "&amp;";
-?>friendly=1" target="cal_printer_friendly"
-onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
-
+?>friendly=1" target="cal_printer_friendly" 
+onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php 
+	etranslate("Printer Friendly")
+?>]</a>
 
 <?php print_trailer(); ?>
-
 </body>
-</html>
+</html><?php
 
-<?php
+
 // Print the HTML for one day's events in detailed view.
 // params:
 //   $id - event id
@@ -182,14 +179,13 @@ function print_detailed_entry ( $id, $date, $time, $duration,
   if ( $pri == 3 ) echo "<b>";
 	$divname = "eventinfo-$id-$key";
 	$key++;
-	echo "<a title=\"" . translate("View this entry") .
-		"\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+	echo "<a title=\"" . 
+		translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
 	if ( strlen ( $user ) > 0 )
 		echo "&amp;user=" . $user;
-	echo "\" onmouseover=\"window.status='" . translate("View this entry") .
-		"'; return true;\" onmouseout=\"window.status=''; return true;\">";
+	echo "\" onmouseover=\"window.status='" . 
+		translate("View this entry") .	"'; return true;\" onmouseout=\"window.status=''; return true;\">";
 	echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"view icon\" />";
-
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     if ($layers) foreach ($layers as $layer) {
@@ -198,7 +194,6 @@ function print_detailed_entry ( $id, $date, $time, $duration,
       }
     }
   }
-
 
   $timestr = "";
   $my_time = $time + ( $TZ_OFFSET * 10000 );
@@ -270,7 +265,6 @@ function print_det_date_entries ( $date, $user, $ssi ) {
   $day = substr ( $date, 6, 2 );
 
   $dateu = mktime ( 2, 0, 0, $month, $day, $year );
-
 
   // get all the repeating events for this date and store in array $rep
   $rep = get_repeating_entries ( $user, $date );
