@@ -8,13 +8,18 @@ Version 1.0RC3 (?? ??? 2005)
       1123508: RC3 browser language detection always returns none.
   - Other bugs fixed:
     + Added javascript that enables visibility of the start/end time or
-      duration on the edit_entry page from availability.php.
+      duration on the edit_entry page from availability.php
+    + Fixed printer friendly view problem. With refresh on, the refresh URL
+      reverted to the regular page
     + Fixed date_selection_html function to include values for day control
     + Purge events was not deleting from webcal_entry_ext_user table
     + Fixed issues with ODBC returning 'invalid db_type'
     + Fixed issue where month.php and mini-calendar today highlight
       based on server time
   - New Features / Enhancements / Changes:
+    + Replaced popups.php code with new knoppix based code. This should eliminate
+      the problems with popups going off screen. Popups also follow the cursor now,
+      but can be disabled in the file.
     + Replaced all instances of forms[0] in javascript with the real form
       names. This will allow WebCalendar to co-exist with other forms on
       the same page.
