@@ -146,28 +146,17 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     echo "<th style=\"width:$tdw%;\">$tempfullname</th>\n";
   }
   echo "</tr>\n";
-  
-  
+
   for ( $xdate = $wkstart, $h = 0;
     date ( "Ymd", $xdate ) <= date ( "Ymd", $wkend );
     $xdate += ( 24 * 3600 ), $h++ ) {
     $wday = strftime ( "%w", $xdate );
     $weekday = weekday_short_name ( $wday );
     if ( date ( "Ymd", $xdate ) == date ( "Ymd", $today ) ) {
-      $color = $TODAYCELLBG;
-//      $class = "tableheadertoday";
       echo "<tr><th class=\"today\">";
     } else {
-      if ( $wday == 0 || $wday == 6 ) {
-        $color = $WEEKENDBG;
-	echo "<tr><th class=\"weekend\">";
-     } else {
-        $color = $CELLBG;
-//      $class = "tableheader";
-        echo "<tr><th>";
-     }
+        echo "<tr><th class=\"row\">";
     }
-//     echo "<tr><th class=\"$class\" style=\"width:10%;\">" .
     echo $weekday . " " .
       round ( date ( "d", $xdate ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
@@ -175,20 +164,14 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
       $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
-//      echo "<td style=\"width:$tdw%; background-color:$color;\">";
     if ( date ( "Ymd", $xdate ) == date ( "Ymd", $today ) ) {
-//      $color = $TODAYCELLBG;
-//      $class = "tableheadertoday";
       echo "<td class=\"today\" style=\"width:$tdw%;\">";
     } else {
       if ( $wday == 0 || $wday == 6 ) {
-//        $color = $WEEKENDBG;
 	echo "<td class=\"weekend\" style=\"width:$tdw%;\">";
-     } else {
-//        $color = $CELLBG;
-//      $class = "tableheader";
+      } else {
         echo "<td style=\"width:$tdw%;\">";
-     }
+      }
     }
       //echo date ( "D, m-d-Y H:i:s", $xdate ) . "<br />";
       if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
@@ -204,7 +187,6 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
   echo "</table>\n<br /><br />\n";
 }
 
-
 $user = ""; // reset
 
 if ( empty ( $friendly ) )
@@ -215,7 +197,6 @@ if ( ! $friendly )
     "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</a>\n";
-
 
 print_trailer ();
 ?>
