@@ -253,7 +253,7 @@ $info
 </blockquote>
 <table style="border-width:0px;">
 <tr><td>Home Page:</td>
-  <td><a href="$url">$url/a></td></tr>
+  <td><a href="$url">$url</a></td></tr>
 <tr><td>WebCalendar Version:</td><td>$version ($date)</td></tr>
 <tr><td>Last updated:</td><td>$now</td></tr>
 </table>
