@@ -92,11 +92,14 @@ if ( $id > 0 && empty ( $error ) ) {
     }
 
     // Get event name
-    $sql = "SELECT cal_name FROM webcal_entry WHERE cal_id = $id";
+    $sql = "SELECT cal_name, cal_date, cal_time " .
+      "FROM webcal_entry WHERE cal_id = $id";
     $res = dbi_query($sql);
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       $name = $row[0];
+      $eventdate = $row[1];
+      $eventtime = $row[2];
       dbi_free_result ( $res );
     }
   
@@ -114,7 +117,9 @@ if ( $id > 0 && empty ( $error ) ) {
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
           translate("An appointment has been canceled for you by") .
           " " . $login_fullname .  ". " .
-          translate("The subject was") . " \"" . $name . "\"\n\n";
+          translate("The subject was") . " \"" . $name . "\"\n" .
+          translate("Date") . ": " . date_to_str ($eventdate) . "\n" .
+          translate("Time") . ": " . display_time ($eventtime) . "\n\n";
         if ( strlen ( $login_email ) )
           $extra_hdrs = "From: $login_email\nX-Mailer: " .
             translate($application_name);
