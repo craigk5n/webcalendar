@@ -636,7 +636,7 @@ if ( $single_user == "N" && $show_participants ) {
 if ( empty ( $friendly ) ) {
   echo "<a title=\"" . 
     translate("Generate printer-friendly version") . "\" class=\"nav\" " .
-    "href=\"view_entry.php?id=$id&friendly=1$rdate\" " .
+    "href=\"view_entry.php?id=$id&amp;friendly=1$rdate\" " .
     "target=\"cal_printer_friendly\">" .
     translate("Printer Friendly") . "</a><br />\n";
 }
