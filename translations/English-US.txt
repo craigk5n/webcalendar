@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 06-26-2004
+# Translation last updated on 07-26-2004
 
 
 ###############################################
@@ -133,6 +133,8 @@ allow-view-other-help: Specifies whether one user may view another user's calend
 Allow viewing other user's calendars: Allow viewing other user's calendars
 allow-public-access-help: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
 Allow public access: Allow public access
+public-access-default-visible: Events from the public calendar will automatically appear on all users' calendars
+Public access visible by default: Public access visible by default
 public-access-view-others-help: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
 Public access can view other users: Public access can view other users
 public-access-can-add-help: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
@@ -310,13 +312,13 @@ Brief Description: Brief Description
 full-description-help: This should complete details of the event.  This information can be seen when a user views the event.
 Full Description: Full Description
 date-help: Specifies the date of the event.
+Untimed event: Untimed event
+Timed event: Timed event
+All day event: All day event
 time-help: Specifies the time of the event.<br />Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
 Start Time: Start Time
 am: am
 pm: pm
-Untimed event: Untimed event
-Timed event: Timed event
-All day event: All day event
 duration-help: Specifies the duration (in hours:minutes) of the event.  <br /><i>This field can be left blank.</i>
 hours: hours
 end-time-help: Specifies the time the event is expected to end.
@@ -582,6 +584,7 @@ This will delete this entry for all users.: This will delete this entry for all 
 Delete repeating event for all dates: Delete repeating event for all dates
 Delete entry only for this date: Delete entry only for this date
 Edit entry: Edit entry
+Copy entry: Copy entry
 This will delete the entry from your calendar.: This will delete the entry from your calendar.
 Do you want to add this entry to your calendar?: Do you want to add this entry to your calendar?
 This will add the entry to your calendar.: This will add the entry to your calendar.
@@ -590,7 +593,6 @@ Email all participants: Email all participants
 Show activity log: Show activity log
 Hide activity log: Hide activity log
 Export this entry to: Export this entry to
-Copy entry: Copy entry
 
 
 ###############################################
@@ -758,6 +760,7 @@ Manage Reports: Manage Reports
 ###############################################
 # Page: login.php
 #
+Invalid login: Invalid login
 You must enter a login and password: You must enter a login and password
 Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
 Login: Login
@@ -946,7 +949,6 @@ Manage calendar of: Manage calendar of
 ###############################################
 # Page: includes/user.php
 #
-Invalid login: Invalid login
 Invalid user login: Invalid user login
 
 
@@ -982,12 +984,14 @@ Send Reminder: Send Reminder
 English: English
 Basque: Basque
 Bulgarian: Bulgarian
+Catalan: Catalan
 Chinese (Traditonal/Big5): Chinese (Traditonal/Big5)
 Chinese (Simplified/GB2312): Chinese (Simplified/GB2312)
 Czech: Czech
 Danish: Danish
 Dutch: Dutch
 Estonian: Estonian
+Finnish: Finnish
 French: French
 Galician: Galician
 German: German
