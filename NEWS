@@ -48,6 +48,7 @@ Version 1.0RC3 (?? ??? 2005)
     + Added option to select all users for a view (rather than having
       to select all users in the list).  If users are added later, they
       will be automatically included in the view.
+    + Converted comments for use with phpDocumentor
   - The following translations were updated:
     + Dutch, Japanese (utf8, euc-jp, shift-jis), Spanish, German
 
