@@ -28,18 +28,18 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
      . $u_url . "\" class=\"monthlink\">";
   echo month_name ( $thismonth - 1 ) .
     "</a></td></tr>";
-  echo "<tr>";
-  if ( $WEEK_START == 0 ) echo "<td style=\"font-size:6px;\">" .
+  echo "<tr class=\"dayname\">";
+  if ( $WEEK_START == 0 ) echo "<td>" .
     weekday_short_name ( 0 ) . "</td>";
   for ( $i = 1; $i < 7; $i++ ) {
-    echo "<td style=\"font-size:6px;\">" .
+    echo "<td>" .
       weekday_short_name ( $i ) . "</td>";
   }
-  if ( $WEEK_START == 1 ) echo "<td style=\"font-size:6px;\">" .
+  if ( $WEEK_START == 1 ) echo "<td>" .
     weekday_short_name ( 0 ) . "</td>";
   for ($i = $wkstart; date("Ymd",$i) <= date ("Ymd",$monthend);
     $i += (24 * 3600 * 7) ) {
-    echo "<tr>";
+    echo "</tr><tr class=\"dayofmonthyearview\">";
     for ($j = 0; $j < 7; $j++) {
       $date = $i + ($j * 24 * 3600);
       $dateYmd = date ( "Ymd", $date );
@@ -56,14 +56,13 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
       }
       if ( $dateYmd >= date ("Ymd",$monthstart) &&
         $dateYmd <= date ("Ymd",$monthend) ) {
-        echo "<td style=\"text-align:right;\"><a href=\"day.php?date=" .
+        echo "<td><a href=\"day.php?date=" .
           $dateYmd . $u_url .
-          "\" class=\"dayofmonthyearview\">";
-        echo "<font size=\"-1\">" .
-          ( $hasEvents ? "<span style=\"font-weight:bold;\">" : "" ) .
+          "\">";
+        echo ( $hasEvents ? "<span style=\"font-weight:bold;\">" : "" ) .
           date ( "j", $date ) .
           ( $hasEvents ? "</span>" : "" ) .
-          "</a></font></td>";
+          "</a></td>";
       } else
         echo "<td>&nbsp;</td>";
     }                 // end for $j
@@ -117,9 +116,7 @@ print_header();
 </td>
 <?php } ?>
 <td style="text-align:center; color:<?php echo $H2COLOR?>;">
-<font size="+2"><b>
-<?php echo $thisyear ?>
-</b></font>
+	<span class="year"><?php echo $thisyear ?></span>
 <font size="+1">
 <?php
   if ( $single_user == "N" ) {
@@ -144,23 +141,23 @@ print_header();
 
 <div style="text-align:center;">
 <table style="border-width:0px;" align="center" cellspacing="4" cellpadding="4">
-<tr>
-<td style="vertical-align:top;"><?php display_small_month(1,$year,False); ?></td>
-<td style="vertical-align:top;"><?php display_small_month(2,$year,False); ?></td>
-<td style="vertical-align:top;"><?php display_small_month(3,$year,False); ?></td>
-<td style="vertical-align:top;"><?php display_small_month(4,$year,False); ?></td>
+<tr style="vertical-align:top;">
+<td><?php display_small_month(1,$year,False); ?></td>
+<td><?php display_small_month(2,$year,False); ?></td>
+<td><?php display_small_month(3,$year,False); ?></td>
+<td><?php display_small_month(4,$year,False); ?></td>
 </tr>
-<tr>
-<td style="vertical-align:top;"><?php display_small_month(5,$year,False); ?></td>
-<td style="vertical-align:top;"><?php display_small_month(6,$year,False); ?></td>
-<td style="vertical-align:top;"><?php display_small_month(7,$year,False); ?></td>
-<td style="vertical-align:top;"><?php display_small_month(8,$year,False); ?></td>
+<tr style="vertical-align:top;">
+<td><?php display_small_month(5,$year,False); ?></td>
+<td><?php display_small_month(6,$year,False); ?></td>
+<td><?php display_small_month(7,$year,False); ?></td>
+<td><?php display_small_month(8,$year,False); ?></td>
 </tr>
-<tr>
-<td style="vertical-align:top;"><?php display_small_month(9,$year,False); ?></td>
-<td style="vertical-align:top;"><?php display_small_month(10,$year,False); ?></td>
-<td style="vertical-align:top;"><?php display_small_month(11,$year,False); ?></td>
-<td style="vertical-align:top;"><?php display_small_month(12,$year,False); ?></td>
+<tr style="vertical-align:top;">
+<td><?php display_small_month(9,$year,False); ?></td>
+<td><?php display_small_month(10,$year,False); ?></td>
+<td><?php display_small_month(11,$year,False); ?></td>
+<td><?php display_small_month(12,$year,False); ?></td>
 </tr>
 </table>
 </div>
