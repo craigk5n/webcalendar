@@ -52,7 +52,8 @@ if ( $id > 0 ) {
 
    // add the event
   if ( ! $readonly && ! $is_my_event && ! $is_private )  {
-    if ( ! dbi_query ( "INSERT INTO webcal_entry_user VALUES ($id, '$login', 'A')") ) {
+    if ( ! dbi_query ( "INSERT INTO webcal_entry_user " .
+      " ( cal_id, cal_login, cal_status ) VALUES ($id, '$login', 'A')" ) ) {
       $error = translate("Error adding event") . ": " . dbi_error ();
     }
   }
