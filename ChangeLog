@@ -1,4 +1,6 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - When admin is editing an approved public event, do not require the
+    event to be approved again.
   - Added support for category icons.  No Admin UI yet.  Icons should
     be in icons subdirectory named by the category id, such as
     "icons/cat-1.gif", etc.  If the category gif file is found, it
