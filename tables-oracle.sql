@@ -286,13 +286,22 @@ CREATE TABLE webcal_entry_log (
 /* user categories */
 CREATE TABLE webcal_categories (
   cat_id INT NOT NULL,
-  cat_owner VARCHAR(25),
-  cat_name VARCHAR(80) NOT NULL,
+  cat_owner VARCHAR2(25),
+  cat_name VARCHAR2(80) NOT NULL,
   PRIMARY KEY ( cat_id )
 );
 
 CREATE TABLE webcal_asst (
-  cal_boss VARCHAR(25) NOT NULL,
-  cal_assistant VARCHAR(25) NOT NULL,
+  cal_boss VARCHAR2(25) NOT NULL,
+  cal_assistant VARCHAR2(25) NOT NULL,
   PRIMARY KEY ( cal_boss, cal_assistant )
 );
+
+CREATE TABLE webcal_nonuser_cals (
+  cal_login VARCHAR2(25) NOT NULL,
+  cal_lastname VARCHAR2(25) NULL,
+  cal_firstname VARCHAR2(25) NULL,
+  cal_admin VARCHAR2(25) NOT NULL,
+  PRIMARY KEY ( cal_login )
+);
+

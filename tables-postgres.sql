@@ -243,3 +243,12 @@ CREATE TABLE webcal_asst (
   cal_assistant VARCHAR(25) NOT NULL,
   PRIMARY KEY ( cal_boss, cal_assistant )
 );
+
+CREATE TABLE webcal_nonuser_cals (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_lastname VARCHAR(25) NULL,
+  cal_firstname VARCHAR(25) NULL,
+  cal_admin VARCHAR(25) NOT NULL,
+  PRIMARY KEY ( cal_login )
+);
+

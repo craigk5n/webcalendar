@@ -241,3 +241,18 @@ CREATE TABLE webcal_categories (
   cat_name VARCHAR(80) NOT NULL,
   PRIMARY KEY ( cat_id )
 );
+
+CREATE TABLE webcal_asst (
+  cal_boss VARCHAR(25) NOT NULL,
+  cal_assistant VARCHAR(25) NOT NULL,
+  PRIMARY KEY ( cal_boss, cal_assistant )
+);
+
+CREATE TABLE webcal_nonuser_cals (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_lastname VARCHAR(25),
+  cal_firstname VARCHAR(25),
+  cal_admin VARCHAR(25) NOT NULL,
+  PRIMARY KEY ( cal_login )
+);
+
