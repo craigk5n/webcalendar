@@ -1,4 +1,5 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Fixed bug 601006: Missing quote in URL notification for rejected event.
   - Fixed bug 597815: After setting preferences for the public user, each
     page had a SQL error at the bottom due to an incorrect entry being added
     to the webcal_user_pref table.
