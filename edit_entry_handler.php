@@ -417,6 +417,7 @@ if ( empty ( $error ) ) {
         $public_access_add_needs_approval == "N" ) {
         $status = "A"; // no approval needed
       } else {
+        // Approval required
         $status = "W"; // approval required
       }
       $my_cat_id = $cat_id;
@@ -433,6 +434,13 @@ if ( empty ( $error ) ) {
       // Allow cat to be changed for public access (if admin user)
       if ( $participants[$i] == "__public__" && $is_admin )
         $tmp_cat = $cat_id;
+      // If user is admin and this event was previously approved for public,
+      // keep it as approved even though date/time may have changed
+      // This goes against stricter security, but it confuses users to have
+      // to re-approve events they already approved.
+      if ( $participants[$i] == "__public__" && $is_admin &&
+        $old_status['__public__'] == 'A' )
+        $status = 'A';
       $my_cat_id = ( $participants[$i] != $login ) ? $tmp_cat : $cat_id;
     } else {
       $send_user_mail = true;
@@ -668,7 +676,11 @@ if ( empty ( $error ) ) {
       $STARTVIEW, $year, $month, $day );
   }
   if ($is_assistant || $is_nonuser_admin)
-     $url = $url . (strpos($url, "?") === false ? "?" : "&amp;") . "user=$user";
+    $url .= (strpos($url, "?") === false ? "?" : "&") . "user=$user";
+  else if ( ! empty ( $user ) )
+    $url .= (strpos($url, "?") === false ? "?" : "&") . "user=$user";
+//echo "last_view: $last_view<br>\n"; exit;
+//echo "URL: $url<br>\n"; exit;
   do_redirect ( $url );
 }
 

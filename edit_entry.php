@@ -253,7 +253,7 @@ if ( ! empty ( $override ) ) {
   echo "<input type=\"hidden\" name=\"override_date\" value=\"$cal_date\" />\n";
 }
 // if assistant, need to remember boss = user
-if ( $is_assistant || $is_nonuser_admin )
+if ( $is_assistant || $is_nonuser_admin || ! empty ( $user ) )
    echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
 
 ?>
