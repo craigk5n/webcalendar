@@ -20,7 +20,11 @@ $error = "";
 if ( ! $is_admin )
   $user = $login;
 
-$INC = array('js/views_edit.php');
+if ( $groups_enabled == "Y" ) {
+  $INC = array('js/assistant_edit.php');
+} else {
+  $INC = '';
+}
 print_header($INC);
 ?>
 
