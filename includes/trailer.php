@@ -309,6 +309,19 @@ if ( ! $use_http_auth ) {
 	else
 		$login_url = "login.php?return_path=$login_return_path";
 
+  // Should we use another application's login/logout pages?
+  if ( substr($GLOBALS[user_inc],0,9) == 'user-app-' ) {  
+    global $app_logout_page,$app_login_page,$app_redir_param;
+    if ( strlen ( $login ) && $login != "__public__" ) {
+      $login_url = $app_logout_page;
+    } else {
+      if ($login_return_path != '' && $app_redir_param != '') {
+        $app_login_page .= '?'.$app_redir_param.'='.$login_return_path;
+      } 
+      $login_url = $app_login_page;
+    }
+  }  
+    
 	if ( strlen ( $login ) && $login != "__public__" ) {
 		echo "<span class=\"prefix\">" .
 			translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 

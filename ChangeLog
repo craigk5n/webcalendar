@@ -1,4 +1,9 @@
 Version 0.9.47/CVS+dev (?? ??? 2004)
+  - Modified validate.php and trailer.php to look for new $user_inc 
+    user-app-*.php files to allow webcalendar to work with other 
+    applications' authentication and user tables.
+  - Added user-app-postnuke.php which allows webcalendar to use postnuke's
+    authentication and user tables.  
   - Fixed Bug 1087604: Vanishing Layers / cookies
   - Fixed Bug 1086357: repeating details display
   - Fixed Bug 1085846: SQL error in get_my_users() function
