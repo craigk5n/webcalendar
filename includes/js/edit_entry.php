@@ -1,5 +1,5 @@
 <?php
-global $GLOBALS,$groups_enabled;
+global $groups_enabled,$WORK_DAY_START_HOUR;
 ?>
 
 <SCRIPT LANGUAGE="JavaScript">
