@@ -1,4 +1,3 @@
-<?php_track_vars?>
 <?php
 
 // This page is intended to be used as a server-side include
