@@ -52,7 +52,7 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
   } else {
     $url = "view_entry.php?id=$id";
     if ( ! empty ( $date ) )
-      $url .= "&date=$date";
+      $url .= "&amp;date=$date";
     do_redirect ( $url );
   }
 }
@@ -77,12 +77,12 @@ print_header();
 <input type="hidden" name="id" value="<?php echo $id?>" />
 
 <table style="border-width:0px;" cellpadding="5">
-<tr>
-<td style="vertical-align:top; font-weight:bold;"><?php etranslate("Brief Description")?>:</td>
-<td style="vertical-align:top;"><?php echo $event_name; ?></td></tr>
+<tr style="vertical-align:top;">
+<td style="font-weight:bold;"><?php etranslate("Brief Description")?>:</td>
+<td><?php echo $event_name; ?></td></tr>
 
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Category")?>:&nbsp;&nbsp;</td>
-<td style="vertical-align:top;"><select name="cat_id">
+<tr style="vertical-align:top;"><td style="font-weight:bold;"><?php etranslate("Category")?>:&nbsp;&nbsp;</td>
+<td><select name="cat_id">
   <option value="NULL"><?php etranslate("None")?></option>
   <?php
     foreach ( $categories as $K => $V ) {
@@ -95,7 +95,7 @@ print_header();
   </select></td>
 </tr>
 
-<tr><td style="vertical-align:top;" colspan="2">
+<tr style="vertical-align:top;"><td colspan="2">
 <input type="submit" value="<?php etranslate("Save");?>" />
 </td></tr>
 </table>
