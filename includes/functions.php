@@ -871,10 +871,12 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   // Now load event exceptions and store as array in 'cal_exceptions' field
   if ( $want_repeated ) {
     for ( $i = 0; $i < count ( $result ); $i++ ) {
-      $res = dbi_query ( "SELECT cal_date FROM webcal_entry_repeats_not " .
-        "WHERE cal_id = " . $result[$i]['cal_id'] );
-      while ( $row = dbi_fetch_row ( $res ) ) {
-        $result[$i]['cal_exceptions'][] = $row[0];
+      if ( ! empty ( $result[$i]['cal_id'] ) ) {
+        $res = dbi_query ( "SELECT cal_date FROM webcal_entry_repeats_not " .
+            "WHERE cal_id = " . $result[$i]['cal_id'] );
+        while ( $row = dbi_fetch_row ( $res ) ) {
+          $result[$i]['cal_exceptions'][] = $row[0];
+        }
       }
     }
   }
