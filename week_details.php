@@ -88,12 +88,13 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
     echo "<br /><span style=\"font-weight:bold;\">-- " . translate("Admin mode") . " --</span>";
   if ( $is_assistant )
     echo "<br /><span style=\"font-weight:bold;\">-- " . translate("Assistant mode") . " --</span>";
+?>
+</span>
+<?php
   if ( $categories_enabled == "Y" ) {
     echo "<br />\n<br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
   }
-?>
-</span>
 </td>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <td style="text-align:right;"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" class="prevnext" /></a></td>
