@@ -973,6 +973,10 @@ you may get errors when adding events.
 In WebCalendar version 0.9.43 or later, you will always get an error
 message telling you to update <tt>php.ini</tt> if <tt>magic_quotes_gpc</tt>
 is set to <tt>Off</tt>.
+<br>
+Note for Oracle and PostgreSQL: You must also change the value of
+<tt>magic_quotes_sybase</tt> to <tt>On</tt> within the <tt>php.ini</tt>
+settings.
 </dd>
 
 <dt>I get an error message from PHP saying "Call to undefined function: ..."
@@ -1181,6 +1185,9 @@ read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.
 
 <pre>
 $Log$
+Revision 1.5  2003/12/15 10:44:30  cknudsen
+updated troubleshooting entry
+
 Revision 1.4  2003/09/03 15:23:51  cknudsen
 Fatal error all pages if magic_quotes_gpc is Off.
 
