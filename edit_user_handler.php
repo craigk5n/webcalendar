@@ -19,22 +19,7 @@ if ( ! $is_admin )
 
 if ( ( $action == "Delete" || $action == translate ("Delete") ) && $is_admin ) {
   if ( $admin_can_delete_user ) {
-    $sql = "SELECT COUNT(cal_id) FROM webcal_entry_user " .
-      "WHERE cal_login = '$user'";
-    $res =  dbi_query ( $sql );
-    if ( $res ) {
-      $row = dbi_fetch_row ( $res );
-      if ( $row[0] > 0 ) {
-        $error = translate("This user has") .  $row[0] . " " .
-          translate("calendar entries") . ".  " .
-          translate("They must all be deleted (or this user removed as a participant) before this user can be deleted") . ".";
-        $sql = "";
-      }
-      dbi_free_result ( $res );
-      if ( empty ( $error ) ) {
-        user_delete_user ( $user );
-      }
-    }
+    user_delete_user ( $user );
   } else {
     $error = "Deleting users not supported.";
   }
