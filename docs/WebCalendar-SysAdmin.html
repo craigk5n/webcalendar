@@ -44,6 +44,9 @@ tr {
   background: #606080;
   foreground: #f0f0f0;
 }
+dt {
+  margin-top: 20px;
+}
 .colorheader {
   font-family: arial;
   background: #6060c0;
@@ -113,8 +116,8 @@ WebCalender is an open source PHP-based multi-user calendar.
 <li> Users can accept or reject events added by another user to their calendar
 <li> Email reminders
 <li> Email notifications for new events
-<li> Support for 28 different languages:
-  Basque, Bulgarian, Traditional Chinese (Big5),
+<li> Support for 29 different languages:
+  Basque, Bulgarian, Catalan, Traditional Chinese (Big5),
   Simplified Chinese (GB2312), Czech, Danish, Dutch,
   English, Estonian, Finnish, French, Galician, German, Holo (Taiwanese),
   Hungarian, Icelandic, Italian,
@@ -1260,6 +1263,23 @@ settings.
   if they install the developer tools CD.
 </dd>
 
+<dt>I forgot/lost my admin password.  How can I reset it?</dt>
+<dd>The easiest way is to admin a new admin user and then use that
+  new user to reset the password for your old admin account.
+  Assuming you have deleted the original 'admin' login, you can use
+  the following SQL to insert a new admin user into the database:
+  <blockquote>
+  INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, <br />
+  cal_firstname, cal_is_admin ) VALUES <br />
+  ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', <br />
+  'Default', 'Y' );
+  </blockquote>
+  This will add a user with login 'admin' and password 'admin' to the
+  database.
+  If you still have a user named 'admin', then replace 'admin' in the above
+  SQL with a different username.
+</dd>
+
 
 </dl>
 
@@ -1372,6 +1392,9 @@ read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.
 
 <pre>
 $Log$
+Revision 1.19  2004/08/04 16:28:40  cknudsen
+Added "how do I reset my admin password" to troubleshooting section.
+
 Revision 1.18  2004/08/01 15:22:56  cknudsen
 Grammer fix
 
