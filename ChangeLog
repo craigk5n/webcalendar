@@ -77,6 +77,7 @@ Verion 0.9.44dev (?? ??? 2004)
   - Fixed bug 862177: invalid '?' in URL
   - Fixed bug: custom script/stylesheet was not being included on login page
   - Added Bulgarian translation
+  - Updated Dutch translation
   - Updated Hungarian translation
   - Updated Japanese translation
   - Updated German translation
