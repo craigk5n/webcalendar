@@ -597,10 +597,19 @@ if ( ! $error ) {
 <!-- BEGIN COLORS -->
 <div id="tabscontent_colors">
 <table cellspacing="0" cellpadding="3">
-<tr><td>
-	<?php etranslate("Allow user to customize colors")?>:</td><td colspan="3">
+<tr><td><label>
+	<?php etranslate("Allow user to customize colors")?>:</label></td><td colspan="3">
 	<label><input type="radio" name="admin_allow_color_customization" value="Y"<?php if ( $s["allow_color_customization"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 	<label><input type="radio" name="admin_allow_color_customization" value="N"<?php if ( $s["allow_color_customization"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+</td></tr>
+<tr><td><label>
+	<?php etranslate("Enable gradient images for background colors")?>:</label></td><td colspan="3">
+<?php if ( function_exists ( "imagepng" ) ) { ?>
+	<label><input type="radio" name="admin_enable_gradients" value="Y"<?php if ( $s["enable_gradients"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+	<label><input type="radio" name="admin_enable_gradients" value="N"<?php if ( $s["enable_gradients"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+<?php } else {
+        etranslate("Not available");
+      } ?>
 </td></tr>
 <tr><td>
 	<label for="docbg"><?php etranslate("Document background")?>:</td><td>
