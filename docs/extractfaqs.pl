@@ -52,7 +52,10 @@ print "<ul>\n";
 for ( $i = 0; $i < @questions; $i++ ) {
   $anchor = "faq_" . ( $i + 1 );
   $q = $questions[$i];
-  $q =~ s/<a href=\"\S+\"[^>]+>.+<\/a>//g;
+  $q =~ s/<a href=\"\S+\"[^>]*>(.+)<\/a>/$1/gi;
+  if ( $q =~ /href/ ) {
+     die "Error removing link: $q\n";
+  }
   print "  <li><a href=\"#$anchor\">$q</a></li>\n";
 }
 print "</ul>\n<hr/>\n<dl>\n";
