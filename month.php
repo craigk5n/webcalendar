@@ -118,8 +118,10 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
       if ( empty ( $WEEKENDBG ) ) $is_weekend = false;
       print "<td";
-	$class = "";
-      if ( date ( "Ymd", $date ) == date ( "Ymd" ) ) $class = "today";
+	     $class = "";
+      if ( date ( "Ymd", $date  ) == date ( "Ymd", $today ) ) {
+        $class = "today";
+      }
 	if ( $is_weekend ) {
 		if ( strlen ( $class ) ) $class .= " ";
 			$class .= "weekend";
@@ -139,7 +141,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 ?></table>
 <br />
 <?php
-	echo $eventinfo;
+	if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
 	display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>

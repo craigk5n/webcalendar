@@ -1,4 +1,7 @@
 Version 1.0RC? (?? ??? ??)
+  - Fixed PHP warnings about undefined variable $enventinfo if empty.
+  - Fixed issue where month.php and mini-calendar today highlight based on
+    server time not user's. This now works just like week.php.
   - Added back usage of different color/class for time slots with events
     in them in day.php and week.php using new 'hasevents' class in
     styles.php.  For now, we use the TODAYBGCELL color for the
