@@ -102,6 +102,7 @@ function purge_events ( $ids ) {
   $tables[6][T] = 'webcal_reminder_log';      $tables[6][C] = 'cal_id';
   $tables[7][T] = 'webcal_entry';             $tables[7][C] = 'cal_id';
   $tables[8][T] = 'webcal_import_data';       $tables[8][C] = 'cal_id';
+  $tables[9][T] = 'webcal_entry_ext_user';    $tables[9][C] = 'cal_id';
   $TT = sizeof($tables);
 
 //var_dump($tables);exit;
