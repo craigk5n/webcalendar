@@ -71,4 +71,5 @@ Here are some other ideas for the next or perhaps later releases:
     create events and publish back to WebCalendar.
     (This has a very high cool factor.)
 [ ] Allow custom header/trailer to be evaluated as PHP or to be an include
+[ ] Don't allow the last admin user to be deleted
 
