@@ -1,4 +1,4 @@
-Verion 0.9.41dev (?? ??? ???)
+Verion 0.9.41dev (16 Jun 2002)
   - Fixed bug 755178: "Public User" not being translated
   - Fixed bug 652871: Don't display assistant link in trailer if read-only
   - Fixed bug 680626: Fix attempt too insert duplicate entries in the
