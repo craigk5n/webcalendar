@@ -1,4 +1,6 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Fixed bug 512114: Daylight saving time + repeating events
+  - Fixed bug 669314: Daylight Savings Time Bug in 0.9.40
   - Security fix: improved session cookie to associate the cookie with
     remote address and local server name to make hijacking a session
     cookie much harder.
