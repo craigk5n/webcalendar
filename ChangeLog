@@ -1,4 +1,5 @@
 Version 0.9.41dev (?? ??? ???)
+  - Added a config option for persistent connections.
   - Fixed bug 727317: Used html_to_8bits(), not html_to_8bits().
   - Fixed bug 727315: Bad SQL in send_reminders.php
   - Fixed bug 704918: functionality (logic) to admin the boss
