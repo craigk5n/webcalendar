@@ -4474,10 +4474,12 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
         $slot = sprintf ("%02.2f",$slot);
         if (strlen($slot) == 4) $slot = '0'.$slot; // add leading zeros
         $slot = $slot.''; // convert to a string
-        if ($master['_all_'][$slot]['stat'] != 'A') {
+        if ( empty ( $master['_all_'][$slot] ) ||
+          $master['_all_'][$slot]['stat'] != 'A') {
           $master['_all_'][$slot]['stat'] = $E['cal_status'];
         }
-        if ($master[$participants[$i]][$slot]['stat'] != 'A') {
+        if ( empty ( $master[$participants[$i]][$slot] ) ||
+          $master[$participants[$i]][$slot]['stat'] != 'A' ) {
           $master[$participants[$i]][$slot]['stat'] = $E['cal_status'];
           $master[$participants[$i]][$slot]['ID'] = $E['cal_id'];
         }
@@ -4555,10 +4557,13 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
          $space = "&nbsp;";
 
          $r = sprintf ("%02d",$j) . '.' . sprintf ("%02d", (25 * $k)).'';
-         if ($master[$participants[$i]][$r]['stat'] == "A")
+         if ( empty ( $master[$participants[$i]][$r] ) ) {
+           // ignore this..
+         } else if ($master[$participants[$i]][$r]['stat'] == "A") {
            $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"pix.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
-         else if ($master[$participants[$i]][$r]['stat'] == "W")
+         } else if ($master[$participants[$i]][$r]['stat'] == "W") {
            $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"pixb.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
+         }
 
          echo "<td class=\"matrixappts\" style=\"width:{$cell_pct}%;$border\" ";
          if ($space == "&nbsp;") echo "$MouseDown $MouseOver $MouseOut";
