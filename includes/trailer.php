@@ -312,13 +312,13 @@ if ( ! $use_http_auth ) {
 		echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
 			translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 
 			translate("Logout") . "\" href=\"$login_url\">" . 
-			translate("logout") . "</a>)<br />\n";
+			translate("Logout") . "</a>)<br />\n";
 	} else {
 		echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
 			translate("Current User") . ":</span>&nbsp;" . 
 			translate("Public Access") . "&nbsp;(<a title=\"" . 
 			translate("Login") . "\" href=\"$login_url\">" . 
-			translate("login") . "</a>)<br />\n";
+			translate("Login") . "</a>)<br />\n";
 	}
 }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);

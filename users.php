@@ -46,7 +46,7 @@
 						echo $userlist[$i]['cal_fullname'];
 						echo "</a>";
 						if (  $userlist[$i]["cal_is_admin"] == 'Y' )
-							echo "&nbsp;<abbr title=\"" . translate("Administrative user") . "\">*</abbr>";
+							echo "&nbsp;<abbr title=\"" . translate("denotes administrative user") . "\">*</abbr>";
 						echo "</li>\n";
 					}
 				}
