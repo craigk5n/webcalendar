@@ -112,10 +112,7 @@ td.month a {
   color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
   text-decoration: none;
 }
-.tableborder {
-  border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-}
+
 a {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
@@ -210,11 +207,6 @@ textarea {
 td.numericdate {
 	font-size: 10px;
 }
-.monthyear {
-	color: <?php echo $GLOBALS['H2COLOR'] ?>;
-	font-weight: bold;
-	font-size: 24px;
-}
 .user {
 	font-size: 18px;
 	color: <?php echo $GLOBALS['H2COLOR'] ?>;
@@ -226,8 +218,34 @@ td.numericdate {
 }
 
 
-
 /* ALL STYLES BELOW THIS LINE ARE NEW as of 8 July 2004 */
+
+/* These styles are intentionally placed above all other styles */
+/* to serve as a default, which can be overridden if customized otherwise below */
+th {
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+}
+
+
+/* ======================== */
+/* ACTIVITY_LOG.PHP */
+table.activitylog {
+	border-width: 0px;
+	width: 100%;
+}
+.activitylog th {
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	width: 10%;
+}
+.activitylog td {
+	vertical-align: top;
+	background-color: <?php echo $GLOBALS['CELLBG'] ?>;
+	font-size: 13px;
+}
+
+
 /* ========================= */
 /* DAY.PHP */
 .dayview { }
@@ -246,6 +264,31 @@ td.dayviewtitle .user {
 	color: <?php echo $GLOBALS['H2COLOR'] ?>;
 	font-weight: bold;
 	text-align: center;
+}
+
+/* ========================= */
+/* MONTH.PHP */
+table.monthview {
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 100%;
+}
+.monthviewtitle {
+	text-align: center;
+}
+td.monthviewtitle .date {
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	font-weight: bold;
+	font-size: 24px;
+}
+.monthview th {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 14%;
 }
 
 /* ========================= */
@@ -394,5 +437,7 @@ td.weekviewtitle .user {
 	width: 10px;
 	height: 10px;
 }
+
+
 -->
 </style>
