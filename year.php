@@ -8,7 +8,7 @@ else
   load_user_layers ();
 
 function display_small_month ( $thismonth, $thisyear, $showyear ) {
-  global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
+  global $WEEK_START, $user, $login, $boldDays, $get_unapproved, $friendly;
 
   if ( $user != $login && ! empty ( $user ) )
     $u_url = "&amp;user=$user";
@@ -23,11 +23,13 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
 
   $monthstart = mktime(2,0,0,$thismonth,1,$thisyear);
   $monthend = mktime(2,0,0,$thismonth + 1,0,$thisyear);
-  echo "<tr><td colspan=\"7\" class=\"month\">"
-     . "<a href=\"month.php?year=$thisyear&amp;month=$thismonth"
-     . $u_url . "\">";
+  echo "<tr><td colspan=\"7\" class=\"month\">";
+  if ( empty ( $friendly ) ) {
+     echo "<a href=\"month.php?year=$thisyear&amp;month=$thismonth"
+       . $u_url . "\">";
+  }
   echo month_name ( $thismonth - 1 ) .
-    "</a></td></tr>\n";
+    ( empty ( $friendly ) ? "</a>" : "" ) . "</td></tr>\n";
   echo "<tr class=\"day\">";
   if ( $WEEK_START == 0 ) echo "<th>" .
     weekday_short_name ( 0 ) . "</th>\n";
@@ -58,12 +60,13 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
       if ( $dateYmd >= date ("Ymd",$monthstart) &&
         $dateYmd <= date ("Ymd",$monthend) ) {
         echo "<td";
-        echo ( $hasEvents ? " class=\"highlight\">" : ">" ) .
-	  "<a href=\"day.php?date=" .
-          $dateYmd . $u_url .
-          "\">" .
-	  date ( "j", $date ) .
-          "</a></td>\n";
+        echo ( $hasEvents ? " class=\"highlight\">" : ">" );
+        if ( empty ( $friendly ) )
+	  echo "<a href=\"day.php?date=" .  $dateYmd . $u_url .  "\">";
+	echo date ( "j", $date );
+        if ( empty ( $friendly ) )
+          echo "</a>";
+        echo "</td>\n";
       } else {
         echo "<td>&nbsp;</td>\n";
       }
