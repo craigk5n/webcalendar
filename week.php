@@ -103,7 +103,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 <table class="weekview" cellspacing="0" cellpadding="0">
 
 <tr>
-<th>&nbsp;</th>
+<th class="empty">&nbsp;</th>
 <?php
 for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   if ( date ( "Ymd", $days[$d] ) == date ( "Ymd", $today ) ) {
