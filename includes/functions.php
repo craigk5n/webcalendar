@@ -687,6 +687,13 @@ function load_user_layers ($user="",$force=0) {
 
 function site_extras_for_popup ( $id ) {
   global $site_extras_in_popup, $site_extras;
+  // These are needed in case the site_extras.php file was already
+  // included.
+  global $EXTRA_TEXT, $EXTRA_MULTILINETEXT, $EXTRA_URL, $EXTRA_DATE,
+    $EXTRA_EMAIL, $EXTRA_USER, $EXTRA_REMINDER, $EXTRA_SELECTLIST;
+  global $EXTRA_REMINDER_WITH_DATE, $EXTRA_REMINDER_WITH_OFFSET,
+    $EXTRA_REMINDER_DEFAULT_YES;
+
   $ret = '';
 
   if ( $site_extras_in_popup != 'Y' )

@@ -1,4 +1,6 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixed bug 1061702: site extras (reminder info) not showing up
+    properly in event popups
   - Reorganizing styles.php to be more logical
   - Adding new help & '+' images
   - A few minor style changes to remedy problems with views
