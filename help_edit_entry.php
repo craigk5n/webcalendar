@@ -49,7 +49,7 @@ include "includes/translate.inc";
 $show_participants = ! $disable_participants_field;
 if ( $is_admin )
   $show_participants = true;
-if ( ! strlen ( $single_user_login ) && $show_participants ) { ?>
+if ( $single_user && $show_participants ) { ?>
 <TD VALIGN="top"><B><?php etranslate("Participants")?>:</B></TD>
   <TD><?php etranslate("participants-help")?></TD></TR>
 <?php } ?>

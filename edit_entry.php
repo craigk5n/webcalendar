@@ -389,7 +389,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
 $show_participants = ! $disable_participants_field;
 if ( $is_admin )
   $show_participants = true;
-if ( ! strlen ( $single_user_login ) && $show_participants ) {
+if ( ! $single_user && $show_participants ) {
   $userlist = user_get_users ();
   $num_users = 0;
   $size = 0;
@@ -494,7 +494,7 @@ echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"yearly\" " .
 
 </FORM>
 
-<?php if ( $id > 0 && ( $login == $create_by || strlen ( $single_user_login ) || $is_admin ) ) { ?>
+<?php if ( $id > 0 && ( $login == $create_by || $single_user || $is_admin ) ) { ?>
 <A HREF="del_entry.php?id=<?php echo $id;?>" onClick="return confirm('<?php etranslate("Are you sure you want to delete this entry?")?>');"><?php etranslate("Delete entry")?></A><BR>
 <?php } ?>
 <?php

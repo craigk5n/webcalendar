@@ -18,7 +18,7 @@ if ( $last_login != "" )
 
 include "includes/translate.inc";
 
-if ( strlen ( $single_user_login ) ) {
+if ( $single_user ) {
   // No login for single-user mode
   do_redirect ( "index.php" );
 } else if ( $use_http_auth ) {

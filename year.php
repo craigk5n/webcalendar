@@ -103,7 +103,7 @@ if ( ! $allow_view_other && ! $is_admin )
 </B></FONT>
 <FONT COLOR="<?php echo $H2COLOR?>" SIZE="+1">
 <?php
-  if ( ! strlen ( $single_user_login ) ) {
+  if ( ! $single_user ) {
     echo "<BR>\n";
     if ( strlen ( $user ) ) {
       user_load_variables ( $user, "user_" );

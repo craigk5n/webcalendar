@@ -917,7 +917,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
 //$id is the current calendar entry being checked if it has been stored before
 //(this keeps overlaps from wrongly checking an event against itself.
 function overlap($dates,$duration,$hour,$minute,$participants,$login,$id) {
-  global $single_user_login;
+  global $single_user_login, $single_user;
   global $repeated_events;
   if (!count($dates)) return False;
   $sql = "SELECT distinct webcal_entry_user.cal_login, webcal_entry.cal_time," .
@@ -935,7 +935,7 @@ function overlap($dates,$duration,$hour,$minute,$participants,$login,$id) {
     "AND ( webcal_entry_user.cal_status = 'A' OR " .
     "webcal_entry_user.cal_status = 'W' ) " .
     "AND ( ";
-  if ( strlen ( $single_user_login ) ) {
+  if ( $single_user ) {
      $participants[0] = $single_user_login;
   } else if ( strlen ( $participants[0] ) == 0 ) {
      // likely called from a form with 1 user
@@ -965,7 +965,7 @@ function overlap($dates,$duration,$hour,$minute,$participants,$login,$id) {
         $duration2 = $row[2];
         if ( times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
           $overlap .= "<LI>";
-          if ( ! strlen ( $single_user_login ) )
+          if ( $single_user )
             $overlap .= "$row[0]: ";
           if ( $row[5] == 'R' && $row[0] != $login )
             $overlap .=  "(PRIVATE)";
@@ -1019,7 +1019,7 @@ function overlap($dates,$duration,$hour,$minute,$participants,$login,$id) {
           $duration2 = $row[cal_duration];
           if ( times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
             $overlap .= "<LI>";
-            if ( ! strlen ( $single_user_login ) )
+            if ( ! $single_user )
               $overlap .= "$row[cal_login]: ";
             if ( $row[cal_access] == 'R' && $row[cal_login] != $login )
               $overlap .=  "(PRIVATE)";

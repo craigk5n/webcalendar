@@ -91,7 +91,7 @@ $events = read_events ( strlen ( $user ) ? $user : $login, $nowYmd, $nowYmd );
 <FONT SIZE="+1" COLOR="<?php echo $H2COLOR;?>">
 <?php
   // display current calendar's user (if not in single user)
-  if ( ! strlen ( $single_user_login ) ) {
+  if ( ! $single_user ) {
     echo "<BR>";
     echo $user_fullname;
   }

@@ -130,7 +130,7 @@ if ( ! $friendly ) {
 </B></FONT>
 <FONT COLOR="<?php echo $H2COLOR?>" SIZE="+1">
 <?php
-  if ( ! strlen ( $single_user_login ) ) {
+  if ( ! $single_user ) {
     echo "<BR>\n";
     echo $user_fullname;
   }

@@ -121,7 +121,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 ?>
 <FONT SIZE="+1" COLOR="<?php echo $H2COLOR;?>">
 <?php
-  if ( ! strlen ( $single_user_login ) ) {
+  if ( ! $single_user ) {
     echo "<BR>$user_fullname\n";
   }
 ?>

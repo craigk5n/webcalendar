@@ -113,7 +113,7 @@
 <BR>
 <B><?php etranslate("Go to")?>:</B> 
 <?php
-  if ( ! strlen ( $single_user_login ) ) {
+  if ( ! $single_user ) {
     if ( ! $use_http_auth )
       echo "<A CLASS=\"navlinks\" HREF=\"login.php\">" .
       translate("Login") . "/" . translate("Logout") . "</A>,\n";
@@ -153,7 +153,7 @@
 <B><?php etranslate("Admin")?>:</B>
 <A CLASS="navlinks" HREF="pref.php"><?php etranslate("Preferences")?></A>
 <?php
-  if ( ! strlen ( $single_user_login ) && ( ! $readonly || $is_admin ) ) {
+  if ( ! $single_user && ( ! $readonly || $is_admin ) ) {
 
     if ( $allow_view_other || $is_admin ) {
       echo ", <A CLASS=\"navlinks\" HREF=\"layers.php\">" .

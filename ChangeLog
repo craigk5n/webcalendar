@@ -1,5 +1,7 @@
 Version 0.9.32dev (?? ??? 01)
   - Initial LDAP support.
+  - Security improvement: Use $single_user boolean rather than using
+    strlen ( $single_user_login )
   - Fixed bug 438980: Oracle SQL syntax error in tables-oracle.sql
   - Fixed bug: When participant list display is disabled, events
     were not being created properly.

@@ -6,7 +6,7 @@
 //
 /////////////////////////////////////////////////////////////////
 
-// Do not remove the following line
+// Do not remove the following line (for security reasons)
 unset ( $single_user_login );
 
 
@@ -70,7 +70,9 @@ $readonly = false;
 // nor will you be asked to select participants for events.
 // NOTE: If you select single-user and then upgrade to multi-user later,
 // you'll have to add in the login name you've set below to the cal_user
-// table.
+// table.  Set $single_user to either true or false.  If true, make sure
+// $single_user_login is defined.
+$single_user = false;
 //$single_user_login = "cknudsen";
 
 // Do you want to use web-based login or use HTTP authorization?
@@ -265,6 +267,12 @@ $LANGUAGE = "Browser-defined";
 if ( $use_http_auth && strlen ( $single_user_login ) ) {
   echo "Error in config.inc: No need to define \$use_http_auth " .
     "and \$single_user_login";
+  exit;
+}
+
+if ( $single_user && ! strlen ( $single_user_login ) ) {
+  echo "Error in config.inc: \$single_user set to true, " .
+    "but \$single_user_login not defined";
   exit;
 }
 

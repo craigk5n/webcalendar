@@ -1,6 +1,6 @@
 <?php
 
-if ( strlen ( $single_user_login ) > 0 ) {
+if ( $single_user ) {
   $login = $single_user_login;
 } else {
   if ( $use_http_auth ) {

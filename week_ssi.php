@@ -10,7 +10,7 @@
 // If no login info is passed, we check for the last login used.
 
 if ( strlen ( $login ) == 0 ) {
-  if ( strlen ( $single_user_login ) > 0 ) {
+  if ( $single_user ) {
     $login = $single_user_login;
   } else if ( strlen ( $webcalendar_login ) > 0 ) {
     $login = $webcalendar_login;
