@@ -869,7 +869,7 @@ function print_entry ( $id, $date, $time, $duration,
       echo "&amp;user=" . $user;
     echo "\" onmouseover=\"window.status='" . translate("View this entry") .
       "'; show(event, '$popupid'); return true;\" onmouseout=\"window.status=''; hide('$popupid'); return true;\">";
-    echo "<img src=\"circle.gif\" style=\"width:5px; height:7px; border-width:0px;\" alt=\"" . translate("View this entry") . "\" />";
+    echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"" . translate("View this entry") . "\" />";
   }
 
 
@@ -940,7 +940,7 @@ function print_entry ( $id, $date, $time, $duration,
 
   if ( $pri == 3 ) echo "</span>\n"; //end font-weight span
 //  echo "</span><br />\n"; //end font-size span
-  echo "<br />\n"; //end font-size span
+  echo "<br />";
   if ( ! $hide_icons ) {
     if ( $login != $user && $access == 'R' && strlen ( $user ) )
       $eventinfo .= build_event_popup ( $popupid, $event_owner,
@@ -1738,7 +1738,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
       echo "(" .
         translate("Week") . " " . week_number ( $dateu ) . ")</a>";
     }
-    print "<br />\n";
+    print "<br />";
     $cnt++;
   }
 
