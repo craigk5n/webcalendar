@@ -1,4 +1,5 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Fixed bug 788873: reminders not working for external users
   - Fixed bug 794749: HTTP_ACCEPT_LANUAGE not found if globals are not on.
   - Fixed bug 820854: missing CR in publish.php (violates iCal)
   - Fixed bug 801850: Don't allow adding of events via public calendar

@@ -144,6 +144,7 @@ function send_reminder ( $id, $event_date ) {
     $server_url, $languages, $tzoffset, $application_name;
   global $EXTRA_TEXT, $EXTRA_MULTILINETEXT, $EXTRA_URL, $EXTRA_DATE,
     $EXTRA_EMAIL, $EXTRA_USER, $EXTRA_REMINDER, $LANGUAGE, $LOG_REMINDER;
+  global $allow_external_users, $external_reminders;
 
   $pri[1] = translate("Low");
   $pri[2] = translate("Medium");
