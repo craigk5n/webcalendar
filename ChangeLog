@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Removing blank lines at the end of js files
   - Updating functions.php to partially implement new styling system for
   viewt.php
   - Updating styles.php with more comments (encapsulated in php tags so
