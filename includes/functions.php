@@ -2656,6 +2656,7 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
 // cookie to the user's machine (or the proxy they connect through).
 // We also use the server name so that cannot use their own server to
 // generate a cookie for a different server.
+/* cek - the following code is buggy... 
 if ( empty ( $REMOTE_ADDR ) )
   $REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
 if ( empty ( $REMOTE_PORT ) )
@@ -2680,6 +2681,11 @@ for ( $i = 0; $i < $len1 || $i < $len2 || $i < $len3; $i++ ) {
 for ( $i = 0; $i < count ( $offsets ); $i++ ) {
   //echo "offset $i: $offsets[$i] <br>";
 }
+cek -- end buggy code
+*/
+
+$offsets = array ( 24, 34, 12, 45, 88, 19, 33 );
+
 
 
 function hextoint ( $val ) {
