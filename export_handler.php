@@ -1006,19 +1006,19 @@ function transmit_header ( $mime, $file ) {
 /*** Let's go ***/
 /*******************************************/
 
-$id = $HTTP_POST_VARS["id"];
-$format = $HTTP_POST_VARS["format"];
-$use_all_dates = $HTTP_POST_VARS["use_all_dates"];
-$include_layers = $HTTP_POST_VARS["include_layers"];
-$fromyear = $HTTP_POST_VARS["fromyear"];
-$frommonth = $HTTP_POST_VARS["frommonth"];
-$fromday = $HTTP_POST_VARS["fromday"];
-$endyear = $HTTP_POST_VARS["endyear"];
-$endmonth = $HTTP_POST_VARS["endmonth"];
-$endday = $HTTP_POST_VARS["endday"];
-$modyear = $HTTP_POST_VARS["modyear"];
-$modmonth = $HTTP_POST_VARS["modmonth"];
-$modday = $HTTP_POST_VARS["modday"];
+$id = getPostValue  ( 'id' );
+$format = getPostValue  ( 'format' );
+$use_all_dates = getPostValue  ( 'use_all_dates' );
+$include_layers = getPostValue  ( 'include_layers' );
+$fromyear = getPostValue  ( 'fromyear' );
+$frommonth = getPostValue  ( 'frommonth' );
+$fromday = getPostValue  ( 'fromday' );
+$endyear = getPostValue  ( 'endyear' );
+$endmonth = getPostValue  ( 'endmonth' );
+$endday = getPostValue  ( 'endday' );
+$modyear = getPostValue  ( 'modyear' );
+$modmonth = getPostValue  ( 'modmonth' );
+$modday = getPostValue  ( 'modday' );
 
 mt_srand((float) microtime()*1000000);
 
