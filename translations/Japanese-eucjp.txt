@@ -5,7 +5,7 @@
 #	Makoto Hamanaka <VYA04230@nifty.com>
 #	Tadashi Jokagi <elf2000@users.sourceforge.net>
 # Last update: 05 Dec 2004
-# Translation last updated on 05-12-2004
+# Translation last updated on 12-17-2004
 
 
 ###############################################
@@ -16,205 +16,226 @@ charset: EUC-JP
 
 
 ###############################################
+# Page: activity_log.php
+#
+Activity Log: ³èÆ°¥í¥°
+Admin: ´ÉÍı
+User: ¥æ¡¼¥¶
+Calendar: ¥«¥ì¥ó¥À¡¼
+Date: ÆüÉÕ
+Time: »ş´Ö
+Event: ¥¤¥Ù¥ó¥È
+Action: Áàºî
+Event created: ¥¤¥Ù¥ó¥È¤òºîÀ®¤·¤Ş¤·¤¿
+Event approved: ¥¤¥Ù¥ó¥È¤ò¾µÇ§¤·¤Ş¤·¤¿
+Event rejected: ¥¤¥Ù¥ó¥È¤òµñÈİ¤·¤Ş¤·¤¿
+Event updated: ¥¤¥Ù¥ó¥È¤ò¹¹¿·¤·¤Ş¤·¤¿
+Event deleted: ¥¤¥Ù¥ó¥È¤òºï½ü¤·¤Ş¤·¤¿
+Notification sent: ÄÌÃÎÁ÷¿®
+Reminder sent: ¥ê¥Ş¥¤¥ó¥À¡¼Á÷¿®
+Database error: ¥Ç¡¼¥¿¥Ù¡¼¥¹¥¨¥é¡¼
+Previous: Á°
+Events: ¥¤¥Ù¥ó¥È
+Next: ¼¡
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: ¥¨¥ó¥È¥ê¡¼£É£Ä¤¬Ìµ¸ú¤Ç¤¹
+This is a private event and may not be added to your calendar.: ¤³¤ì¤Ï¥×¥é¥¤¥Ù¡¼¥È¤Ê¥¤¥Ù¥ó¥È¤Ê¤Î¤Ç¡¢¤¢¤Ê¤¿¤Î¥«¥ì¥ó¥À¡¼¤Ø¤ÎÄÉ²Ã¤¬¤Ç¤­¤Ê¤¤¤³¤È¤¬¤¢¤ê¤Ş¤¹
+Error adding event: ¥¤¥Ù¥ó¥ÈÄÉ²Ã¥¨¥é¡¼
+
+
+###############################################
+# Page: admin_handler.php
+#
+You are not authorized: ¸¢¸Â¤òÍ¿¤¨¤é¤ì¤Æ¤¤¤Ş¤»¤ó
+Error: ¥¨¥é¡¼
+The following error occurred: °Ê²¼¤Î¥¨¥é¡¼¤¬µ¯¤­¤Ş¤·¤¿
+
+
+###############################################
+# Page: adminhome.php
+#
+System Settings: ¥·¥¹¥Æ¥àÀßÄê
+Preferences: ¥×¥ê¥Õ¥¡¥ì¥ó¥¹
+Users: ¥æ¡¼¥¶¡¼
+Account: ¥¢¥«¥¦¥ó¥È
+Assistants: ¥¢¥·¥¹¥¿¥ó¥È
+Categories: ¥«¥Æ¥´¥ê
+Views: ¥Ó¥å¡¼
+Layers: ¥ì¥¤¥ä¡¼
+Reports: ¥ì¥İ¡¼¥È
+Delete Events: ¥¤¥Ù¥ó¥È¤Îºï½ü
+Public Preferences: ¸ø³«ÀßÄê
+Unapproved Public Events: Ì¤¾µÇ§¤Î¸ø³«¥¤¥Ù¥ó¥È
+Administrative Tools: ´ÉÍı¥Ä¡¼¥ë
+
+
+###############################################
 # Page: admin.php
 #
-System Settings: ƒVƒXƒeƒ€İ’è
-You are not authorized: Œ ŒÀ‚ğ—^‚¦‚ç‚ê‚Ä‚¢‚Ü‚¹‚ñ
-Note: ’ˆÓ
-Your user preferences: [ ‚ ‚È‚½‚Ìƒ†[ƒU[İ’è ]
-may be affecting the appearance of this page.: ‚ÍA‚±‚Ì‚Ø[ƒW‚ÌŒ©‚½–Ú‚É‰e‹¿‚ğ—^‚¦‚é‚©‚à‚µ‚ê‚Ü‚¹‚ñB
-Click here: m ‚±‚±‚ğƒNƒŠƒbƒN n
-to not use your user preferences when viewing this page: ‚·‚é‚Æ‚±‚Ìƒy[ƒW‚ğŒ©‚é‚Æ‚«‚É‚ ‚È‚½‚Ìƒ†[ƒU[İ’è‚ğg‚í‚È‚¢‚æ‚¤‚É‚µ‚Ü‚·
-are being ignored while viewing this page.: ‚ÍA‚±‚Ìƒy[ƒW‚Å‚Í–³‹‚³‚ê‚Ä‚¢‚Ü‚·B
-to load your user preferences when viewing this page: ‚·‚é‚Æ‚±‚Ìƒy[ƒW‚ğŒ©‚é‚Æ‚«‚É‚ ‚È‚½‚Ìƒ†[ƒU[İ’è‚ğƒ[ƒh‚·‚é‚æ‚¤‚É‚µ‚Ü‚·B
-Save: •Û‘¶
-Help: ƒwƒ‹ƒv
-Settings: ƒZƒbƒeƒBƒ“ƒO
+Help: ¥Ø¥ë¥×
+Note: Ãí°Õ
+Your user preferences: [ ¤¢¤Ê¤¿¤Î¥æ¡¼¥¶¡¼ÀßÄê ]
+may be affecting the appearance of this page.: ¤Ï¡¢¤³¤Î¤Ú¡¼¥¸¤Î¸«¤¿ÌÜ¤Ë±Æ¶Á¤òÍ¿¤¨¤ë¤«¤â¤·¤ì¤Ş¤»¤ó¡£
+Click here: ¡Î ¤³¤³¤ò¥¯¥ê¥Ã¥¯ ¡Ï
+to not use your user preferences when viewing this page: ¤¹¤ë¤È¤³¤Î¥Ú¡¼¥¸¤ò¸«¤ë¤È¤­¤Ë¤¢¤Ê¤¿¤Î¥æ¡¼¥¶¡¼ÀßÄê¤ò»È¤ï¤Ê¤¤¤è¤¦¤Ë¤·¤Ş¤¹
+are being ignored while viewing this page.: ¤Ï¡¢¤³¤Î¥Ú¡¼¥¸¤Ç¤ÏÌµ»ë¤µ¤ì¤Æ¤¤¤Ş¤¹¡£
+to load your user preferences when viewing this page: ¤¹¤ë¤È¤³¤Î¥Ú¡¼¥¸¤ò¸«¤ë¤È¤­¤Ë¤¢¤Ê¤¿¤Î¥æ¡¼¥¶¡¼ÀßÄê¤ò¥í¡¼¥É¤¹¤ë¤è¤¦¤Ë¤·¤Ş¤¹¡£
+Save: ÊİÂ¸
+Settings: ¥»¥Ã¥Æ¥£¥ó¥°
+Public Access: ¸ø³«¥¢¥¯¥»¥¹
+Groups: ¥°¥ë¡¼¥×
+NonUser Calendars: Â¾¤Î¥æ¡¼¥¶¡¼¤Î¥«¥ì¥ó¥À¡¼
+Other: ¤½¤ÎÂ¾
+Email: ÅÅ»Ò¥á¡¼¥ë
+colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
+Colors: ¿§
 #
 # << MISSING >>
 # app-name-help:
 # English text: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 #
-Application Name: ƒAƒvƒŠƒP[ƒVƒ‡ƒ“–¼
-server-url-help: ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ìƒx[ƒX URL ‚ğw’è‚µ‚Ü‚·B‚±‚ê‚ÍƒŠƒ}ƒCƒ“ƒ_[‚Æ’Ê’m‚Ì“dqƒ[ƒ‹‚Ì‘—M‚É‚àŠÜ‚Ü‚ê‚Ü‚·B
-Server URL: ƒT[ƒo[ URL
-language-help: g—p‚·‚éŒ¾Œê‚ğw’è‚µ‚Ü‚·B
-Language: Œ¾Œê
-Your browser default language is: ‚ ‚È‚½‚Ìƒuƒ‰ƒEƒU‚ÌƒfƒtƒHƒ‹ƒgŒ¾Œê
-fonts-help: g—p‚·‚éƒVƒXƒeƒ€ƒtƒHƒ“ƒg‚Ìˆê——‚ğw’è‚µ‚Ü‚·("Arial, Helvetica"‚Ì‚æ‚¤‚É)
-Fonts: ƒtƒHƒ“ƒg
+Application Name: ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÌ¾
+server-url-help: ¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Î¥Ù¡¼¥¹ URL ¤ò»ØÄê¤·¤Ş¤¹¡£¤³¤ì¤Ï¥ê¥Ş¥¤¥ó¥À¡¼¤ÈÄÌÃÎ¤ÎÅÅ»Ò¥á¡¼¥ë¤ÎÁ÷¿®¤Ë¤â´Ş¤Ş¤ì¤Ş¤¹¡£
+Server URL: ¥µ¡¼¥Ğ¡¼ URL
+language-help: »ÈÍÑ¤¹¤ë¸À¸ì¤ò»ØÄê¤·¤Ş¤¹¡£
+Language: ¸À¸ì
+Your browser default language is: ¤¢¤Ê¤¿¤Î¥Ö¥é¥¦¥¶¤Î¥Ç¥Õ¥©¥ë¥È¸À¸ì
+fonts-help: »ÈÍÑ¤¹¤ë¥·¥¹¥Æ¥à¥Õ¥©¥ó¥È¤Î°ìÍ÷¤ò»ØÄê¤·¤Ş¤¹("Arial, Helvetica"¤Î¤è¤¦¤Ë)
+Fonts: ¥Õ¥©¥ó¥È
 #
 # << MISSING >>
 # custom-script-help:
 # English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
 #
-Custom script/stylesheet: ƒJƒXƒ^ƒ€ƒXƒNƒŠƒvƒg^ƒXƒ^ƒCƒ‹ƒV[ƒg
-Yes: ‚Í‚¢
-No: ‚¢‚¢‚¦
-Edit: •ÒW
+Custom script/stylesheet: ¥«¥¹¥¿¥à¥¹¥¯¥ê¥×¥È¡¿¥¹¥¿¥¤¥ë¥·¡¼¥È
+Yes: ¤Ï¤¤
+No: ¤¤¤¤¤¨
+Edit: ÊÔ½¸
 #
 # << MISSING >>
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
-Custom header: ƒJƒXƒ^ƒ€ƒwƒbƒ_i‘O’uƒeƒLƒXƒgj
+Custom header: ¥«¥¹¥¿¥à¥Ø¥Ã¥À¡ÊÁ°ÃÖ¥Æ¥­¥¹¥È¡Ë
 #
 # << MISSING >>
 # custom-trailer-help:
 # English text: Allows a custom HTML snippet to be included at the end of every page.
 #
-Custom trailer: ƒJƒXƒ^ƒ€ƒtƒbƒ^iŒã’uƒeƒLƒXƒgj
+Custom trailer: ¥«¥¹¥¿¥à¥Õ¥Ã¥¿¡Ê¸åÃÖ¥Æ¥­¥¹¥È¡Ë
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
-Preferred view: —Dæ‚·‚éƒrƒ…[
-Day: “ú
-Week: T
-Month: Œ
-Year: ”N
-display-weekends-help: uTvƒrƒ…[‚ÉT––‚ğŠÜ‚İ‚Ü‚·B
-Display weekends in week view: uTvƒrƒ…[‚ÅT––‚ğ•\¦‚·‚é
+Preferred view: Í¥Àè¤¹¤ë¥Ó¥å¡¼
+Day: Æü
+Week: ½µ
+Month: ·î
+Year: Ç¯
+display-weekends-help: ¡Ö½µ¡×¥Ó¥å¡¼¤Ë½µËö¤ò´Ş¤ß¤Ş¤¹¡£
+Display weekends in week view: ¡Ö½µ¡×¥Ó¥å¡¼¤Ç½µËö¤òÉ½¼¨¤¹¤ë
 #
 # << MISSING >>
 # yearly-shows-events-help:
 # English text: On the yearly view, display days that contain events in a bold font.
 #
-Display days with events in bold in year view: u”Nvƒrƒ…[‚ÅƒCƒxƒ“ƒg‚Ì‚ ‚é“ú‚ğ‘¾š‚Å•\¦‚·‚é
-display-desc-print-day-help: ˆóü—p‚Ìu“úvƒrƒ…[‚ÅƒCƒxƒ“ƒg‚Ìà–¾‚ğŠÜ‚İ‚Ü‚·B
-Display description in printer day view: ˆóü—p‚Ìu“úvƒrƒ…[‚Åà–¾‚ğ•\¦‚·‚é
+#
+# << MISSING >>
+# Display days with events in bold in month and year views:
+display-desc-print-day-help: °õºşÍÑ¤Î¡ÖÆü¡×¥Ó¥å¡¼¤Ç¥¤¥Ù¥ó¥È¤ÎÀâÌÀ¤ò´Ş¤ß¤Ş¤¹¡£
+Display description in printer day view: °õºşÍÑ¤Î¡ÖÆü¡×¥Ó¥å¡¼¤ÇÀâÌÀ¤òÉ½¼¨¤¹¤ë
 #
 # << MISSING >>
 # date-format-help:
 # English text: Specifies the preferred date format.
 #
-Date format: “ú•tƒtƒH[ƒ}ƒbƒg
-December: 12Œ
+Date format: ÆüÉÕ¥Õ¥©¡¼¥Ş¥Ã¥È
+December: 12·î
 time-format-help: Specifies which time format to use: <br /><i>12 hour:</i> Display times as 3am, 8:30pm, etc.  <br /><i>24 hour:</i> Display times as 300, 2030, etc.
-Time format: ŠÔƒtƒH[ƒ}ƒbƒg
-12 hour: 12ŠÔ
-24 hour: 24ŠÔ
+Time format: »ş´Ö¥Õ¥©¡¼¥Ş¥Ã¥È
+12 hour: 12»ş´Ö
+24 hour: 24»ş´Ö
 #
 # << MISSING >>
 # time-interval-help:
 # English text: Specifies how long the time blocks in the week view and day view will be.
 #
-Time interval: ŠÔŠÔŠu
-hour: ŠÔ
-minutes: •ª
+Time interval: »ş´Ö´Ö³Ö
+hour: »ş´Ö
+minutes: Ê¬
 #
 # << MISSING >>
 # auto-refresh-help:
 # English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
 #
-Auto-refresh calendars: ƒJƒŒƒ“ƒ_[‚Ì©“®XV
+Auto-refresh calendars: ¥«¥ì¥ó¥À¡¼¤Î¼«Æ°¹¹¿·
 #
 # << MISSING >>
 # auto-refresh-time-help:
 # English text: If Auto-refresh is enabled, this specifies the time between each refresh.
 #
-Auto-refresh time: ŠÔ‚Ì©“®XV
+Auto-refresh time: »ş´Ö¤Î¼«Æ°¹¹¿·
 #
 # << MISSING >>
 # require-approvals-help:
 # English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
 #
-Require event approvals: ƒCƒxƒ“ƒg‚Ì³”F‚ğ•K—v‚Æ‚·‚é
+Require event approvals: ¥¤¥Ù¥ó¥È¤Î¾µÇ§¤òÉ¬Í×¤È¤¹¤ë
 display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
-Display unapproved: –¢³”FƒCƒxƒ“ƒg‚ğ•\¦‚·‚é
+Display unapproved: Ì¤¾µÇ§¥¤¥Ù¥ó¥È¤òÉ½¼¨¤¹¤ë
 display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month view and the week view.
-Display week number: T”Ô†‚ğ•\¦‚·‚é
+Display week number: ½µÈÖ¹æ¤òÉ½¼¨¤¹¤ë
 display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
-Week starts on: T‚Ìn‚Ü‚è
-Sunday: “ú—j“ú
-Monday: Œ—j“ú
-work-hours-help: u“úvƒrƒ…[‚Ì•\¦‚Å‚ÌŠÔ”ÍˆÍ‚ğw’è‚µ‚Ü‚·B
-Work hours: ‹Î–±ŠÔ
+Week starts on: ½µ¤Î»Ï¤Ş¤ê
+Sunday: ÆüÍËÆü
+Monday: ·îÍËÆü
+work-hours-help: ¡ÖÆü¡×¥Ó¥å¡¼¤ÎÉ½¼¨¤Ç¤Î»ş´ÖÈÏ°Ï¤ò»ØÄê¤·¤Ş¤¹¡£
+Work hours: ¶ĞÌ³»ş´Ö
 From: .
-to: `
+to: ¡Á
 #
 # << MISSING >>
 # disable-priority-field-help:
 # English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
 #
-#
-Disable Priority field: —Dæ“xƒtƒB[ƒ‹ƒh–³Œø
+Disable Priority field: Í¥ÀèÅÙ¥Õ¥£¡¼¥ë¥ÉÌµ¸ú
 #
 # << MISSING >>
 # disable-access-field-help:
 # English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
 #
-#
-Disable Access field: ƒAƒNƒZƒXƒtƒB[ƒ‹ƒh–³Œø
+Disable Access field: ¥¢¥¯¥»¥¹¥Õ¥£¡¼¥ë¥ÉÌµ¸ú
 #
 # << MISSING >>
 # disable-participants-field-help:
 # English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
 #
-#
-Disable Participants field: Q‰ÁÒƒtƒB[ƒ‹ƒh–³Œø
+Disable Participants field: »²²Ã¼Ô¥Õ¥£¡¼¥ë¥ÉÌµ¸ú
 #
 # << MISSING >>
 # disable-repeating-field-help:
 # English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
 #
-#
-Disable Repeating field: ƒŒƒ|[ƒgƒtƒB[ƒ‹ƒh–³Œø
+Disable Repeating field: ¥ì¥İ¡¼¥È¥Õ¥£¡¼¥ë¥ÉÌµ¸ú
 #
 # << MISSING >>
 # popup-includes-siteextras-help:
 # English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
 #
-#
-Display Site Extras in popup: ŠO•”ƒTƒCƒg‚Íƒ|ƒbƒvƒAƒbƒv•\¦
+Display Site Extras in popup: ³°Éô¥µ¥¤¥È¤Ï¥İ¥Ã¥×¥¢¥Ã¥×É½¼¨
 #
 # << MISSING >>
 # allow-html-description-help:
 # English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
 #
-#
-Allow HTML in Description: à–¾‚Å HTML ‚ğ‹–‰Â
+Allow HTML in Description: ÀâÌÀ¤Ç HTML ¤òµö²Ä
 #
 # << MISSING >>
 # allow-view-other-help:
 # English text: Specifies whether one user may view another user's calendar.
 #
-#
-Allow viewing other user's calendars: ‘¼‚Ìƒ†[ƒU[‚ÌƒJƒŒƒ“ƒ_[‚ğŒ©‚é‚±‚Æ‚ğ‹–‰Â
-#
-# << MISSING >>
-# allow-public-access-help:
-# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
-#
-#
-Allow public access: ŒöŠJƒAƒNƒZƒX‹–‰Â
-Public access visible by default: ŒöŠJƒAƒNƒZƒX‚ÍƒfƒtƒHƒ‹ƒg‚ÅŒ©‚¦‚é
-Public access is default participant: ŒöŠJƒAƒNƒZƒX‚ÍƒfƒtƒHƒ‹ƒgQ‰ÁÒ
-#
-# << MISSING >>
-# public-access-view-others-help:
-# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
-#
-#
-Public access can view other users: ŒöŠJƒAƒNƒZƒX‚Í‘¼‚Ìƒ†[ƒU[‚ğŒ©‚é‚±‚Æ‚ª‚Å‚«‚é
-#
-# << MISSING >>
-# public-access-can-add-help:
-# English text: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
-#
-#
-Public access can add events: ŒöŠJƒAƒNƒZƒX‚ÍƒCƒxƒ“ƒg’Ç‰Á‚Å‚«‚é
-#
-# << MISSING >>
-# public-access-add-requires-approval-help:
-# English text: Specifies whether events added via the public access account require approval before being displayed.
-#
-#
-Public access new events require approval: ŒöŠJƒAƒNƒZƒX‚ÌV‹KƒCƒxƒ“ƒg‚Í”FØ‚ğ•K—v‚Æ‚·‚é
-#
-# << MISSING >>
-# public-access-sees-participants-help:
-# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
-#
-#
-Public access can view participants: ŒöŠJƒAƒNƒZƒX‚ÍQ‰ÁÒ‚ğŒ©‚é‚±‚Æ‚ªo—ˆ‚é
+Allow viewing other user's calendars: Â¾¤Î¥æ¡¼¥¶¡¼¤Î¥«¥ì¥ó¥À¡¼¤ò¸«¤ë¤³¤È¤òµö²Ä
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -225,39 +246,16 @@ Public access can view participants: ŒöŠJƒAƒNƒZƒX‚ÍQ‰ÁÒ‚ğŒ©‚é‚±‚Æ‚ªo—ˆ‚é
 # Include add event link in views:
 #
 # << MISSING >>
-# allow-external-users-help:
-# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
-#
-#
-Allow external users: ŠO•”ƒ†[ƒU[‹–‰Â
-#
-# << MISSING >>
-# external-can-receive-notification-help:
-# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
-#
-#
-External users can receive email notifications: ŠO•”ƒ†[ƒU[‚Í“dqƒ[ƒ‹’Ê’m‚ğó‚¯‚é‚±‚Æ‚ªo—ˆ‚é
-#
-# << MISSING >>
-# external-can-receive-reminder-help:
-# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
-#
-#
-External users can receive email reminders: ŠO•”ƒ†[ƒU[‚Í“dqƒ[ƒ‹ƒŠƒ}ƒCƒ“ƒ_[‚ğó‚¯‚é‚±‚Æ‚ªo—ˆ‚é
-#
-# << MISSING >>
 # remember-last-login-help:
 # English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
 #
-#
-Remember last login: ÅIƒƒOƒCƒ“‚ğŠo‚¦‚é
+Remember last login: ºÇ½ª¥í¥°¥¤¥ó¤ò³Ğ¤¨¤ë
 #
 # << MISSING >>
 # conflict-check-help:
 # English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
 #
-#
-Check for event conflicts: ƒCƒxƒ“ƒgÕ“Ë‚ğ’²‚×‚é
+Check for event conflicts: ¥¤¥Ù¥ó¥È¾×ÆÍ¤òÄ´¤Ù¤ë
 #
 # << MISSING >>
 # conflict-months-help:
@@ -271,9 +269,7 @@ Check for event conflicts: ƒCƒxƒ“ƒgÕ“Ë‚ğ’²‚×‚é
 # conflict-check-override-help:
 # English text: Allows users to override event conflicts and schedule two or more events for the same time.
 #
-#
-# << MISSING >>
-Allow users to override conflicts: ƒ†[ƒU[‚ÌÕ“Ë‚Ìã‘‚«‚ğ‹–‰Â
+Allow users to override conflicts: ¥æ¡¼¥¶¡¼¤Î¾×ÆÍ¤Î¾å½ñ¤­¤òµö²Ä
 #
 # << MISSING >>
 # limit-appts-help:
@@ -291,430 +287,524 @@ Allow users to override conflicts: ƒ†[ƒU[‚ÌÕ“Ë‚Ìã‘‚«‚ğ‹–‰Â
 # << MISSING >>
 # Maximum timed events per day:
 #
-Specify timed event length by: ƒCƒxƒ“ƒgŠÔ‚Ì’·‚³‚Ìw’è
-Duration: ŠÔŠu
-End Time: I—¹ŠÔ
-Plugins: ƒvƒ‰ƒOƒCƒ“
-plugins-enabled-help: ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒvƒ‰ƒOƒCƒ“‚ğ—LŒø‚É‚µ‚Ü‚·B
-Enable Plugins: ƒvƒ‰ƒOƒCƒ“—LŒø
+# << MISSING >>
+# timed-evt-len-help:
+# English text: Specifies input method for determining the length of a timed event.
+#
+Specify timed event length by: ¥¤¥Ù¥ó¥È»ş´Ö¤ÎÄ¹¤µ¤Î»ØÄê
+Duration: ´ü´Ö
+End Time: ½ªÎ»»ş´Ö
+Plugins: ¥×¥é¥°¥¤¥ó
+plugins-enabled-help: ¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¥×¥é¥°¥¤¥ó¤òÍ­¸ú¤Ë¤·¤Ş¤¹¡£
+Enable Plugins: ¥×¥é¥°¥¤¥óÍ­¸ú
 #
 # << MISSING >>
 # plugins-sort-key-help:
 # English text: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
 #
+Plugin: ¥×¥é¥°¥¤¥ó
 #
-Plugin: ƒvƒ‰ƒOƒCƒ“
-Groups: ƒOƒ‹[ƒv
-groups-enabled-help: ƒOƒ‹[ƒvƒTƒ|[ƒg‚ğ—LŒø‚É‚µ‚½‚çAƒ†[ƒU[‚ÍƒOƒ‹[ƒv‚Åƒ†[ƒU[‚ğ‘I‘ğ‚·‚é‚±‚Æ‚ğ‹–‰Â‚µ‚Ü‚·B
+# << MISSING >>
+# allow-public-access-help:
+# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
 #
+Allow public access: ¸ø³«¥¢¥¯¥»¥¹µö²Ä
 #
-Groups enabled: ƒOƒ‹[ƒv—LŒø
+# << MISSING >>
+# public-access-default-visible:
+# English text: Events from the public calendar will automatically appear on all users' calendars
+#
+Public access visible by default: ¸ø³«¥¢¥¯¥»¥¹¤Ï¥Ç¥Õ¥©¥ë¥È¤Ç¸«¤¨¤ë
+#
+# << MISSING >>
+# public-access-default-selected:
+# English text: When adding a new event, the public user will be selected by default as a participant.
+#
+Public access is default participant: ¸ø³«¥¢¥¯¥»¥¹¤Ï¥Ç¥Õ¥©¥ë¥È»²²Ã¼Ô
+#
+# << MISSING >>
+# public-access-view-others-help:
+# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
+#
+Public access can view other users: ¸ø³«¥¢¥¯¥»¥¹¤ÏÂ¾¤Î¥æ¡¼¥¶¡¼¤ò¸«¤ë¤³¤È¤¬¤Ç¤­¤ë
+#
+# << MISSING >>
+# public-access-can-add-help:
+# English text: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
+#
+Public access can add events: ¸ø³«¥¢¥¯¥»¥¹¤Ï¥¤¥Ù¥ó¥ÈÄÉ²Ã¤Ç¤­¤ë
+#
+# << MISSING >>
+# public-access-add-requires-approval-help:
+# English text: Specifies whether events added via the public access account require approval before being displayed.
+#
+Public access new events require approval: ¸ø³«¥¢¥¯¥»¥¹¤Î¿·µ¬¥¤¥Ù¥ó¥È¤ÏÇ§¾Ú¤òÉ¬Í×¤È¤¹¤ë
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+Public access can view participants: ¸ø³«¥¢¥¯¥»¥¹¤Ï»²²Ã¼Ô¤ò¸«¤ë¤³¤È¤¬½ĞÍè¤ë
+groups-enabled-help: ¥°¥ë¡¼¥×¥µ¥İ¡¼¥È¤òÍ­¸ú¤Ë¤·¤¿¤é¡¢¥æ¡¼¥¶¡¼¤Ï¥°¥ë¡¼¥×¤Ç¥æ¡¼¥¶¡¼¤òÁªÂò¤¹¤ë¤³¤È¤òµö²Ä¤·¤Ş¤¹¡£
+Groups enabled: ¥°¥ë¡¼¥×Í­¸ú
 #
 # << MISSING >>
 # user-sees-his-group-help:
 # English text: If enabled, users will not see calendar users that are not in at least one of their groups.
 #
-#
-User sees only his groups: ƒ†[ƒU[‚Í©•ª‚ÌƒOƒ‹[ƒv‚Ì‚İ‚ğŒ©‚é
-Categories: ƒJƒeƒSƒŠ
-# categories-enabled-help:ƒCƒxƒ“ƒgƒJƒeƒSƒŠ‚ÌƒTƒ|[ƒg‚ğ—LŒø‚É‚µ‚Ü‚·
-Categories enabled: ƒJƒeƒSƒŠ—LŒø
-Nonuser: ”ñƒ†[ƒU[ƒJƒŒƒ“ƒ_[
-#
+User sees only his groups: ¥æ¡¼¥¶¡¼¤Ï¼«Ê¬¤Î¥°¥ë¡¼¥×¤Î¤ß¤ò¸«¤ë
 #
 # << MISSING >>
 # nonuser-enabled-help:
 # English text: If enabled, admins will have the option to add nonuser calendars
 #
-#
-Nonuser enabled: ”ñƒ†[ƒU[—LŒø
-#
+Nonuser enabled: Èó¥æ¡¼¥¶¡¼Í­¸ú
 #
 # << MISSING >>
 # nonuser-list-help:
 # English text: Where to display the nonuser calendars in the participant list
 #
-#
-Nonuser list: ”ñƒ†[ƒU[ˆê——
-Top: ã
-Bottom: ‰º
-Reports: ƒŒƒ|[ƒg
+Nonuser list: Èó¥æ¡¼¥¶¡¼°ìÍ÷
+Top: ¾å
+Bottom: ²¼
 #
 # << MISSING >>
 # reports-enabled-help:
 # English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
 #
-#
-Reports enabled: ƒŒƒ|[ƒg—LŒø
-#
-# << MISSING >>
-# Subscribe/Publish:
+Reports enabled: ¥ì¥İ¡¼¥ÈÍ­¸ú
 #
 # << MISSING >>
 # subscriptions-enabled-help:
 # English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
 #
+Allow remote subscriptions: ¥ê¥â¡¼¥È¿½¤·¹ş¤ß¤òµö²Ä
+categories-enabled-help: Í­¸ú¤Ë¤¹¤ë¤È¥¤¥Ù¥ó¥È¥«¥Æ¥´¥ê¤ò¥µ¥İ¡¼¥È¤·¤Ş¤¹¡£
+Categories enabled: ¥«¥Æ¥´¥êÍ­¸ú
 #
-Allow remote subscriptions: ƒŠƒ‚[ƒg\‚µ‚İ‚ğ‹–‰Â
-Other: ‚»‚Ì‘¼
-Email: “dqƒ[ƒ‹
+# << MISSING >>
+# allow-external-users-help:
+# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+#
+Allow external users: ³°Éô¥æ¡¼¥¶¡¼µö²Ä
+#
+# << MISSING >>
+# external-can-receive-notification-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+#
+External users can receive email notifications: ³°Éô¥æ¡¼¥¶¡¼¤ÏÅÅ»Ò¥á¡¼¥ëÄÌÃÎ¤ò¼õ¤±¤ë¤³¤È¤¬½ĞÍè¤ë
+#
+# << MISSING >>
+# external-can-receive-reminder-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+#
+External users can receive email reminders: ³°Éô¥æ¡¼¥¶¡¼¤ÏÅÅ»Ò¥á¡¼¥ë¥ê¥Ş¥¤¥ó¥À¡¼¤ò¼õ¤±¤ë¤³¤È¤¬½ĞÍè¤ë
 #
 # << MISSING >>
 # email-enabled-help:
 # English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
 #
-#
-Email enabled: “dqƒ[ƒ‹—LŒø
+Email enabled: ÅÅ»Ò¥á¡¼¥ëÍ­¸ú
 #
 # << MISSING >>
 # email-default-sender:
 # English text: Specifies the email address to specify as the sender when sending out reminders.
 #
-#
-Default sender address: ƒfƒtƒHƒ‹ƒg‘—MƒAƒhƒŒƒX
-Default user settings: ƒfƒtƒHƒ‹ƒgƒ†[ƒU[İ’è
-email-event-reminders-help: ƒCƒxƒ“ƒg‚Ì‚¨’m‚ç‚¹‚ğ‘—‚é‚×‚«‚©‚Ç‚¤‚©w’è‚µ‚Ü‚·B
-Event reminders: ƒCƒxƒ“ƒgƒŠƒ}ƒCƒ“ƒ_[
+Default sender address: ¥Ç¥Õ¥©¥ë¥ÈÁ÷¿®¥¢¥É¥ì¥¹
+Default user settings: ¥Ç¥Õ¥©¥ë¥È¥æ¡¼¥¶¡¼ÀßÄê
+email-event-reminders-help: ¥¤¥Ù¥ó¥È¤Î¤ªÃÎ¤é¤»¤òÁ÷¤ë¤Ù¤­¤«¤É¤¦¤«»ØÄê¤·¤Ş¤¹¡£
+Event reminders: ¥¤¥Ù¥ó¥È¥ê¥Ş¥¤¥ó¥À¡¼
 email-event-added: Specifies whether or not to send email notifications when an event is added to your calendar.
-Events added to my calendar: ©•ª‚ÌƒJƒŒƒ“ƒ_[‚ÉƒCƒxƒ“ƒg‚ğ’Ç‰Á
+Events added to my calendar: ¼«Ê¬¤Î¥«¥ì¥ó¥À¡¼¤Ë¥¤¥Ù¥ó¥È¤òÄÉ²Ã
 email-event-updated: Specifies whether or not to send email notifications when an event is updated on your calendar.
-Events updated on my calendar: ©•ª‚ÌƒJƒŒƒ“ƒ_[‚ÌƒCƒxƒ“ƒg‚ğXV
+Events updated on my calendar: ¼«Ê¬¤Î¥«¥ì¥ó¥À¡¼¤Î¥¤¥Ù¥ó¥È¤ò¹¹¿·
 email-event-deleted: Specifies whether or not to send email notifications when an event is removed from your calendar.
-Events removed from my calendar: ©•ª‚ÌƒJƒŒƒ“ƒ_[‚©‚çƒCƒxƒ“ƒg‚ğíœ
+Events removed from my calendar: ¼«Ê¬¤Î¥«¥ì¥ó¥À¡¼¤«¤é¥¤¥Ù¥ó¥È¤òºï½ü
 email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
-Event rejected by participant: Q‰ÁÒ‚ÌƒCƒxƒ“ƒg‹‘”Û
-colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
-Colors: F
-Allow user to customize colors: ƒ†[ƒU[‚ÌFİ’è‚ğ‹–‰Â‚·‚é
-Document background: ‘—Ş‚Ì”wŒiF
-Select: ‘I‘ğ
-Document title: ƒhƒLƒ…ƒƒ“ƒgƒ^ƒCƒgƒ‹
-Document text: ƒhƒLƒ…ƒƒ“ƒgƒeƒLƒXƒg
-Table grid color: ƒe[ƒuƒ‹‚ÌƒOƒŠƒbƒh
-Table header background: ƒe[ƒuƒ‹ƒwƒbƒ_‚Ì”wŒi
-Table header text: ƒe[ƒuƒ‹ƒwƒbƒ_‚ÌƒeƒLƒXƒg
-Table cell background: ƒe[ƒuƒ‹”wŒi
-Table cell background for current day: ¡“ú‚Ìƒe[ƒuƒ‹ƒZƒ‹”wŒi
-Table cell background for weekends: T––‚Ìƒe[ƒuƒ‹ƒZƒ‹”wŒi
-Event popup background: ƒCƒxƒ“ƒgƒ|ƒbƒvƒAƒbƒv‚Ì”wŒi
-Event popup text: ƒCƒxƒ“ƒgƒ|ƒbƒvƒAƒbƒv‚ÌƒeƒLƒXƒg
-
-
-###############################################
-# Page: activity_log.php
-#
-Activity Log: Šˆ“®ƒƒO
-User: ƒ†[ƒU
-Calendar: ƒJƒŒƒ“ƒ_[
-Date: “ú•t
-Time: ŠÔ
-Event: ƒCƒxƒ“ƒg
-Action: ‘€ì
-Event created: ƒCƒxƒ“ƒg‚ğì¬‚µ‚Ü‚µ‚½
-Event approved: ƒCƒxƒ“ƒg‚ğ³”F‚µ‚Ü‚µ‚½
-Event rejected: ƒCƒxƒ“ƒg‚ğ‹‘”Û‚µ‚Ü‚µ‚½
-Event updated: ƒCƒxƒ“ƒg‚ğXV‚µ‚Ü‚µ‚½
-Event deleted: ƒCƒxƒ“ƒg‚ğíœ‚µ‚Ü‚µ‚½
-Notification sent: ’Ê’m‘—M
-Reminder sent: ƒŠƒ}ƒCƒ“ƒ_[‘—M
-Database error: ƒf[ƒ^ƒx[ƒXƒGƒ‰[
-Previous: ‘O
-Next: Ÿ
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: ƒGƒ“ƒgƒŠ[‚h‚c‚ª–³Œø‚Å‚·
-This is a private event and may not be added to your calendar.: ‚±‚ê‚Íƒvƒ‰ƒCƒx[ƒg‚ÈƒCƒxƒ“ƒg‚È‚Ì‚ÅA‚ ‚È‚½‚ÌƒJƒŒƒ“ƒ_[‚Ö‚Ì’Ç‰Á‚ª‚Å‚«‚È‚¢‚±‚Æ‚ª‚ ‚è‚Ü‚·
-Error adding event: ƒCƒxƒ“ƒg’Ç‰ÁƒGƒ‰[
-
-
-###############################################
-# Page: admin_handler.php
-#
-Error: ƒGƒ‰[
-The following error occurred: ˆÈ‰º‚ÌƒGƒ‰[‚ª‹N‚«‚Ü‚µ‚½
+Event rejected by participant: »²²Ã¼Ô¤Î¥¤¥Ù¥ó¥ÈµñÈİ
+Allow user to customize colors: ¥æ¡¼¥¶¡¼¤Î¿§ÀßÄê¤òµö²Ä¤¹¤ë
+Document background: ½ñÎà¤ÎÇØ·Ê¿§
+Select: ÁªÂò
+Document title: ¥É¥­¥å¥á¥ó¥È¥¿¥¤¥È¥ë
+Document text: ¥É¥­¥å¥á¥ó¥È¥Æ¥­¥¹¥È
+Table grid color: ¥Æ¡¼¥Ö¥ë¤Î¥°¥ê¥Ã¥É
+Table header background: ¥Æ¡¼¥Ö¥ë¥Ø¥Ã¥À¤ÎÇØ·Ê
+Table header text: ¥Æ¡¼¥Ö¥ë¥Ø¥Ã¥À¤Î¥Æ¥­¥¹¥È
+Table cell background: ¥Æ¡¼¥Ö¥ëÇØ·Ê
+Table cell background for current day: º£Æü¤Î¥Æ¡¼¥Ö¥ë¥»¥ëÇØ·Ê
+Table cell background for weekends: ½µËö¤Î¥Æ¡¼¥Ö¥ë¥»¥ëÇØ·Ê
+Event popup background: ¥¤¥Ù¥ó¥È¥İ¥Ã¥×¥¢¥Ã¥×¤ÎÇØ·Ê
+Event popup text: ¥¤¥Ù¥ó¥È¥İ¥Ã¥×¥¢¥Ã¥×¤Î¥Æ¥­¥¹¥È
 
 
 ###############################################
 # Page: approve_entry.php
 #
-Error approving event: ƒCƒxƒ“ƒg³”FƒGƒ‰[
+Error approving event: ¥¤¥Ù¥ó¥È¾µÇ§¥¨¥é¡¼
 
 
 ###############################################
-# Page: category.php
+# Page: assistant_edit.php
 #
-#
-Add: ’Ç‰Á
-Category Name: ƒJƒeƒSƒŠ–¼
-Global: ‘S‘Ì
-Delete: íœ
-Are you sure you want to delete this entry?: ‚±‚ÌƒGƒ“ƒgƒŠ[‚ğíœ‚µ‚Ä‚à—Ç‚¢‚Å‚·‚©?
-Add New Category: V‹KƒJƒeƒSƒŠ’Ç‰Á
+Admin mode: ´ÉÍı¥â¡¼¥É
+Your assistants: ¤¢¤Ê¤¿¤Î¥¢¥·¥¹¥¿¥ó¥È
 
 
 ###############################################
 # Page: category_handler.php
 #
+Delete: ºï½ü
 
 
 ###############################################
-# Page: datesel.php
+# Page: category.php
 #
+Add: ÄÉ²Ã
+Category Name: ¥«¥Æ¥´¥êÌ¾
+Global: Á´ÂÎ
+Are you sure you want to delete this entry?: ¤³¤Î¥¨¥ó¥È¥ê¡¼¤òºï½ü¤·¤Æ¤âÎÉ¤¤¤Ç¤¹¤«?
+Add New Category: ¿·µ¬¥«¥Æ¥´¥êÄÉ²Ã
 
 
 ###############################################
 # Page: day.php
 #
-#
-Admin mode: ŠÇ—ƒ‚[ƒh
-#
-Assistant mode: ƒAƒVƒXƒ^ƒ“ƒgƒ‚[ƒh
-Generate printer-friendly version: ˆóü—pƒo[ƒWƒ‡ƒ“‚ğì¬
-Printer Friendly: ˆóü—p•\¦
+Assistant mode: ¥¢¥·¥¹¥¿¥ó¥È¥â¡¼¥É
+Generate printer-friendly version: °õºşÍÑ¥Ğ¡¼¥¸¥ç¥ó¤òºîÀ®
+Printer Friendly: °õºşÍÑÉ½¼¨
 
 
 ###############################################
 # Page: del_entry.php
 #
-Hello: ‚±‚ñ‚É‚¿‚ÍI
-An appointment has been canceled for you by: ‰Û‘èF
-The subject was: ‰Û‘è
-Notification: ‚¨’m‚ç‚¹
+Hello: ¤³¤ó¤Ë¤Á¤Ï¡ª
+An appointment has been canceled for you by: ²İÂê¡§
+The subject was: ²İÂê
+Notification: ¤ªÃÎ¤é¤»
+
+
+###############################################
+# Page: edit_entry_handler.php
+#
+The following conflicts with the suggested time: °Ê²¼¤¬µ­Æş¤·¤¿»ş´Ö¤È½Å¤Ê¤Ã¤Æ¤¤¤Ş¤¹
+Unnamed Event: Ì¾Ìµ¤·¥¤¥Ù¥ó¥È
+#
+# << MISSING >>
+# The description is:
+Title: ¥¿¥¤¥È¥ë
+A new appointment has been made for you by: ¿·¤·¤¤Í½Äê¤¬°Ê²¼¤Î¿Í¤Ë¤è¤Ã¤ÆÄÉ²Ã¤µ¤ì¤Ş¤·¤¿¡§
+An appointment has been updated by: Í½Äê¤¬°Ê²¼¤Î¿Í¤Ë¤è¤Ã¤ÆÊÔ½¸¤µ¤ì¤Ş¤·¤¿¡§
+The subject is: ²İÂê¡§
+Please look on: »²¾È¤·¤Æ¤¯¤À¤µ¤¤
+to accept or reject this appointment: ¤³¤ÎÍ½Äê¤ò¼õ¤±Æş¤ì¤ë¤«¼õ¤±Æş¤ì¤Ê¤¤¤«¤¹¤ë
+to view this appointment: Í½Äê¤ò¸«¤ë
+Scheduling Conflict: ¥¹¥±¥¸¥å¡¼¥ë¤¬½Å¤Ê¤Ã¤Æ¤¤¤Ş¤¹
+Your suggested time of: Í½Äê»ş´Ö
+All day event: Á´Æü¥¤¥Ù¥ó¥È
+conflicts with the following existing calendar entries: °Ê²¼¤Î¥¨¥ó¥È¥ê¡¼¤È½Å¤Ê¤Ã¤Æ¤¤¤Ş¤¹¡§
+Cancel: ¥­¥ã¥ó¥»¥ë
 
 
 ###############################################
 # Page: edit_entry.php
 #
-Edit Entry: ƒGƒ“ƒgƒŠ[‚ğ•ÒW
-Add Entry: ƒGƒ“ƒgƒŠ[‚ğ’Ç‰Á
-Details: Ú×
-Scheduling: ƒXƒPƒWƒ…[ƒ‹
-Repeat: ŒJ‚è•Ô‚µ
+Edit Entry: ¥¨¥ó¥È¥ê¡¼¤òÊÔ½¸
+Add Entry: ¥¨¥ó¥È¥ê¡¼¤òÄÉ²Ã
+Details: ¾ÜºÙ
+Scheduling: ¥¹¥±¥¸¥å¡¼¥ë
+Participants: »²²Ã¼Ô
+Repeat: ·«¤êÊÖ¤·
 brief-description-help: This should provide a short description (about 20 characters) of the event.  This will represent the event when viewing the calendar.
-Brief Description: ŠÈ’P‚Èà–¾
-full-description-help: ‚±‚ê‚ÍAo—ˆ–‚ÌÚ×‚ğdã‚°‚é‚·‚é‚×‚«‚Å‚·Bƒ†[ƒU[‚ªƒCƒxƒ“ƒg‚ğŒ©‚½‚Æ‚«A‚±‚Ìî•ñ‚ÍŒ©‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
-Full Description: Ú‚µ‚¢à–¾
-date-help: ƒCƒxƒ“ƒg‚Ì“ú•t‚ğw’è‚µ‚Ü‚·B
-time-help: ƒCƒxƒ“ƒg‚ÌŠÔ‚ğw’è‚µ‚Ü‚·B<br /><i>‚±‚ÌƒtƒB[ƒ‹ƒh‚Í‹ó‚Éo—ˆ‚Ü‚·B</i>
+Brief Description: ´ÊÃ±¤ÊÀâÌÀ
+full-description-help: ¤³¤ì¤Ï¡¢½ĞÍè»ö¤Î¾ÜºÙ¤ò»Å¾å¤²¤ë¤¹¤ë¤Ù¤­¤Ç¤¹¡£¥æ¡¼¥¶¡¼¤¬¥¤¥Ù¥ó¥È¤ò¸«¤¿¤È¤­¡¢¤³¤Î¾ğÊó¤Ï¸«¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
+Full Description: ¾Ü¤·¤¤ÀâÌÀ
+access-help: ¥¤¥Ù¥ó¥È¤Î¥¢¥¯¥»¥¹¥ì¥Ù¥ë¤ò»ØÄê¤·¤Ş¤¹¡£<br /> <i>¸ø³«</i>: Ã¯¤Ç¤â¡¢¥¤¥Ù¥ó¥È¤ÎÁ´¾ÜºÙ¤ò¸«¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£<br /><i>µ¡Ì©</i>: Others can see that you have an entry for that date and time, but not the details of what it is.
+Access: ¥¢¥¯¥»¥¹
+Public: ¸ø³«
+Confidential: Èó¸ø³«
+category-help: ¥¤¥Ù¥ó¥È¤Î¥«¥Æ¥´¥ê¤ò»ØÄê¤·¤Ş¤¹¡£
+Category: ¥«¥Æ¥´¥ê
+None: ¤Ê¤·
+priority-help: ¥¤¥Ù¥ó¥È¤ÎÍ¥ÀèÅÙ¤ò»ØÄê¤·¤Ş¤¹¡£¹â¤¤Í¥ÀèÅÙ¤Î¥¤¥Ù¥ó¥È¤Ï¥Ü¡¼¥ë¥É¤ÇÉ½¼¨¤µ¤ì¤ë¤Ç¤·¤ç¤¦¡£
+Priority: Í¥Àè½ç°Ì
+Low: Äã
+Medium: Ãæ
+High: ¹â
+days: Æü
+hours: »ş´Ö
+before event: Á°¤ËÄÌÃÎ¤¹¤ë
+date-help: ¥¤¥Ù¥ó¥È¤ÎÆüÉÕ¤ò»ØÄê¤·¤Ş¤¹¡£
+Untimed event: Èó»ş¸Â¥¤¥Ù¥ó¥È
+Timed event: »ş¸Â¥¤¥Ù¥ó¥È
+time-help: ¥¤¥Ù¥ó¥È¤Î»ş´Ö¤ò»ØÄê¤·¤Ş¤¹¡£<br /><i>¤³¤Î¥Õ¥£¡¼¥ë¥É¤Ï¶õ¤Ë½ĞÍè¤Ş¤¹¡£</i>
 am: AM
 pm: PM
-Untimed event: ”ñŒÀƒCƒxƒ“ƒg
-Timed event: ŒÀƒCƒxƒ“ƒg
-All day event: ‘S“úƒCƒxƒ“ƒg
-duration-help: ƒCƒxƒ“ƒg‚ÌŠÔŠu(:•ª)‚ğw’è‚µ‚Ü‚·)<br /><i>‚±‚ÌƒtƒB[ƒ‹ƒh‚Í‹ó‚Éo—ˆ‚Ü‚·B</i>
-Duration: ŠúŠÔ
-hours: ŠÔ
-priority-help: ƒCƒxƒ“ƒg‚Ì—Dæ“x‚ğw’è‚µ‚Ü‚·B‚‚¢—Dæ“x‚ÌƒCƒxƒ“ƒg‚Íƒ{[ƒ‹ƒh‚Å•\¦‚³‚ê‚é‚Å‚µ‚å‚¤B
-Priority: —Dæ‡ˆÊ
-Low: ’á
-Medium: ’†
-High: ‚
-access-help: ƒCƒxƒ“ƒg‚ÌƒAƒNƒZƒXƒŒƒxƒ‹‚ğw’è‚µ‚Ü‚·B<br /> <i>ŒöŠJ</i>: ’N‚Å‚àAƒCƒxƒ“ƒg‚Ì‘SÚ×‚ğŒ©‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B<br /><i>‹@–§</i>: Others can see that you have an entry for that date and time, but not the details of what it is.
-Access: ƒAƒNƒZƒX
-Public: ŒöŠJ
-Confidential: ”ñŒöŠJ
-category-help: ƒCƒxƒ“ƒg‚ÌƒJƒeƒSƒŠ‚ğw’è‚µ‚Ü‚·B
-Category: ƒJƒeƒSƒŠ
-None: ‚È‚µ
-days: “ú
-before event: ‘O‚É’Ê’m‚·‚é
-participants-help: ‚±‚ÌƒGƒ“ƒgƒŠ‚ÌQ‰ÁÒˆê——
-Participants: Q‰ÁÒ
+duration-help: ¥¤¥Ù¥ó¥È¤Î´Ö³Ö(»ş:Ê¬)¤ò»ØÄê¤·¤Ş¤¹)<br /><i>¤³¤Î¥Õ¥£¡¼¥ë¥É¤Ï¶õ¤Ë½ĞÍè¤Ş¤¹¡£</i>
+#
+# << MISSING >>
+# end-time-help:
+# English text: Specifies the time the event is expected to end.
+#
+participants-help: ¤³¤Î¥¨¥ó¥È¥ê¤Î»²²Ã¼Ô°ìÍ÷
 #
 # << MISSING >>
 # external-participants-help:
 # English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
 #
-#
-External Participants: ŠO•”Q‰ÁÒ
+External Participants: ³°Éô»²²Ã¼Ô
 repeat-type-help: Select how often the event should repeat.<i>Monthly (by day)</i> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <i>Monthly (by date)</i> allows an event to repeat on the same day of the month.
-Repeat Type: ŒJ•Ô‚µƒ^ƒCƒv
-Daily: –ˆ“ú
-Weekly: –ˆT
-Monthly: –ˆŒ
-by day: ‘æ 1 Œ—j‚È‚Ç
-by day (from end): ÅIŒ—j‚È‚ÇiŒ––‚©‚çj
-by date: “úw’è
-Yearly: –ˆ”N
+Repeat Type: ·«ÊÖ¤·¥¿¥¤¥×
+Daily: ËèÆü
+Weekly: Ëè½µ
+Monthly: Ëè·î
+by day: Âè 1 ·îÍË¤Ê¤É
+by day (from end): ºÇ½ª·îÍË¤Ê¤É¡Ê·îËö¤«¤é¡Ë
+by date: Æü»ØÄê
+Yearly: ËèÇ¯
 repeat-end-date-help: Specifies the date the event should repeat until.
-Repeat End Date: ŒJ•Ô‚µI—¹“ú
-Use end date: I—¹“ú‚ğg—p
-repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
-Repeat Day: ŒJ•Ô‚µ“ú
-for weekly: –ˆT‚Ìê‡
-Tuesday: ‰Î—j“ú
-Wednesday: …—j“ú
-Thursday: –Ø—j“ú
-Friday: ‹à—j“ú
-Saturday: “y—j“ú
+Repeat End Date: ·«ÊÖ¤·½ªÎ»Æü
+Use end date: ½ªÎ»Æü¤ò»ÈÍÑ
 repeat-frequency-help: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <i>Repeat Type</i> is set to <i>Weekly</i>), every other month (if <i>Repeat Type</i> is set to <i>Monthly</i>), etc.
-Frequency: •p“x
-Delete entry: ƒGƒ“ƒgƒŠ[‚ğíœ
-You are not authorized to edit this entry: ‚±‚ÌƒGƒ“ƒgƒŠ[‚Ì•ÒW‚Í‹–‰Â‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-
-
-###############################################
-# Page: edit_layer.php
-#
-Edit Layer: ƒŒƒCƒ„[‚ğ•ÒW
-Add Layer: ƒŒƒCƒ„[‚ğ’Ç‰Á
-Source: ƒ\[ƒX
-Color: F
-Duplicates: •¡»
-Show layer events that are the same as your own: ©g‚Æ“¯‚¶ƒŒƒCƒ„[ƒCƒxƒ“ƒg‚ğŒ©‚¹‚é
-Are you sure you want to delete this layer?: ‚±‚ÌƒŒƒCƒ„[‚ğíœ‚µ‚Ä‚à—Ç‚¢‚Å‚·‚©?
-Delete layer: ƒŒƒCƒ„[‚ğíœ
+Frequency: ÉÑÅÙ
+repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
+Repeat Day: ·«ÊÖ¤·Æü
+Tuesday: ²ĞÍËÆü
+Wednesday: ¿åÍËÆü
+Thursday: ÌÚÍËÆü
+Friday: ¶âÍËÆü
+Saturday: ÅÚÍËÆü
+Delete entry: ¥¨¥ó¥È¥ê¡¼¤òºï½ü
+You are not authorized to edit this entry: ¤³¤Î¥¨¥ó¥È¥ê¡¼¤ÎÊÔ½¸¤Ïµö²Ä¤µ¤ì¤Æ¤¤¤Ş¤»¤ó
 
 
 ###############################################
 # Page: edit_layer_handler.php
 #
-#
-# << MISSING >>
-# You cannot create a layer for yourself:
+You cannot create a layer for yourself: ¼«Ê¬¤Î¥ì¥¤¥ä¡¼¤òºîÀ®¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤»¤ó¡£
 #
 # << MISSING >>
 # You can only create one layer for each user:
 
 
 ###############################################
-# Page: edit_user.php
+# Page: edit_layer.php
 #
-Edit User: ƒ†[ƒU[‚ğ•ÒW
-Add User: ƒ†[ƒU[‚ğ’Ç‰Á
-Username: ƒ†[ƒU[–¼
-First Name: –¼
-Last Name: ©
-E-mail address: ƒ[ƒ‹ƒAƒhƒŒƒX
-Password: ƒpƒXƒ[ƒh
-again: Ä“x
-Admin: ŠÇ—
-Disabled for demo: ƒfƒ‚‚Å‚Íg—p‚Å‚«‚Ü‚¹‚ñ
-Change Password: ƒpƒXƒ[ƒh•ÏX
-New Password: V‚µ‚¢ƒpƒXƒ[ƒh
-Set Password: ƒpƒXƒ[ƒh‚ğİ’è
+Edit Layer: ¥ì¥¤¥ä¡¼¤òÊÔ½¸
+Add Layer: ¥ì¥¤¥ä¡¼¤òÄÉ²Ã
+Source: ¥½¡¼¥¹
+Color: ¿§
+Duplicates: Ê£À½
+Show layer events that are the same as your own: ¼«¿È¤ÈÆ±¤¸¥ì¥¤¥ä¡¼¥¤¥Ù¥ó¥È¤ò¸«¤»¤ë
+Are you sure you want to delete this layer?: ¤³¤Î¥ì¥¤¥ä¡¼¤òºï½ü¤·¤Æ¤âÎÉ¤¤¤Ç¤¹¤«?
+Delete layer: ¥ì¥¤¥ä¡¼¤òºï½ü
+
+
+###############################################
+# Page: edit_nonusers_handler.php
+#
+Calendar ID: ¥«¥ì¥ó¥À¡¼ ID
+word characters only: Ê¸»ú¤Ï±Ñ¿ô»ú¤È¥¢¥ó¥À¡¼¥é¥¤¥ó¤Î¤ß¤ò´Ş¤à¤³¤È¤¬½ĞÍè¤Ş¤¹¡£
+Changes successfully saved: ÊÑ¹¹¤ÎÊİÂ¸¤ËÀ®¸ù¤·¤Ş¤·¤¿¡£
+
+
+###############################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: Èó¥æ¡¼¥¶¡¼ÀÜÆ¬¸ì¤ÏÌ¤ÀßÄê
+Edit User: ¥æ¡¼¥¶¡¼¤òÊÔ½¸
+Add User: ¥æ¡¼¥¶¡¼¤òÄÉ²Ã
+First Name: Ì¾
+Last Name: À«
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+Page template: ¥Ú¡¼¥¸¥Æ¥ó¥×¥ì¡¼¥È
+Variable N not found: ÊÑ¿ô N ¤¬¸«¤Ä¤«¤ê¤Ş¤»¤ó
+Day template: Æü¥Æ¥ó¥×¥ì¡¼¥È
+Event template: ¥¤¥Ù¥ó¥È¥Æ¥ó¥×¥ì¡¼¥È
+Unnamed Report: Ì¾¾ÎÌ¤ÀßÄê¥ì¥İ¡¼¥È
+
+
+###############################################
+# Page: edit_report.php
+#
+Tomorrow: ÌÀÆü
+Today: º£Æü
+Yesterday: ºòÆü
+Day before yesterday: °ìºòÆü
+Next week: ¼¡½µ
+This week: º£½µ
+Last week: Àè½µ
+Week before last: Àè¡¹½µ
+Next week and week after: Íè½µ¤ÈºÆÍè½µ
+This week and next week: º£½µ¤ÈÍè½µ
+Last week and this week: Àè½µ¤Èº£½µ
+Last two weeks: ²áµî 2 ½µ
+Next month: Íâ·î
+This month: º£½µ
+Last month: Àè·î
+Month before last: Àè¡¹·î
+Next year: ÍèÇ¯
+This year: º£Ç¯
+Last year: µîÇ¯
+Year before last: °ìºòÇ¯
+Invalid report id: Ìµ¸ú¤Ê¥ì¥İ¡¼¥È ID
+Add Report: ¥ì¥İ¡¼¥ÈÄÉ²Ã
+Edit Report: ¥ì¥İ¡¼¥ÈÊÔ½¸
+Report name: ¥ì¥İ¡¼¥ÈÌ¾
+Current User: ¸½ºß¤Î¥æ¡¼¥¶¡¼
+Include link in trailer: ËöÈø¤Ë¥ê¥ó¥¯¤ò´Ş¤à
+Include standard header/trailer: É¸½à¥Ø¥Ã¥À¡¼/¥Õ¥Ã¥¿¡¼¤ò´Ş¤à
+Date range: ´üÆüÈÏ°Ï
+Include previous/next links: Á°/¼¡¤Ø¤Î¥ê¥ó¥¯¤ò´Ş¤à
+Include empty dates: ¶õ¤ÎÆü¤ò´Ş¤à
+Template variables: ÃÍ¥Æ¥ó¥×¥ì¡¼¥È
+Are you sure you want to delete this report?: ¤³¤Î¥ì¥İ¡¼¥È¤òËÜÅö¤Ëºï½ü¤·¤Ş¤¹¤«?
+
+
+###############################################
+# Page: edit_template.php
+#
+Edit Custom Script/Stylesheet: ¥«¥¹¥¿¥à¥¹¥¯¥ê¥×¥È/¥¹¥¿¥¤¥ë¥·¡¼¥ÈÊÔ½¸
+Edit Custom Header: ¥«¥¹¥¿¥à¥Ø¥Ã¥À¡¼ÊÔ½¸
+Edit Custom Trailer: ¥«¥¹¥¿¥à¥Õ¥Ã¥¿¡¼ÊÔ½¸
 
 
 ###############################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: ƒ†[ƒU[‚Ìíœ‚ÍƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-The passwords were not identical: ƒpƒXƒ[ƒh‚ªˆê’v‚µ‚Ü‚¹‚ñ
-You have not entered a password: ƒpƒXƒ[ƒh‚ğ“ü—Í‚µ‚Ä‚¢‚Ü‚¹‚ñ
+Deleting users not supported: ¥æ¡¼¥¶¡¼¤Îºï½ü¤Ï¥µ¥İ¡¼¥È¤µ¤ì¤Æ¤¤¤Ş¤»¤ó
+The passwords were not identical: ¥Ñ¥¹¥ï¡¼¥É¤¬°ìÃ×¤·¤Ş¤»¤ó
+You have not entered a password: ¥Ñ¥¹¥ï¡¼¥É¤òÆşÎÏ¤·¤Æ¤¤¤Ş¤»¤ó
 
 
 ###############################################
-# Page: export.php
+# Page: edit_user.php
 #
-Export: ƒGƒNƒXƒ|[ƒg
-Export format: ‘®‚ğƒGƒNƒXƒ|[ƒg
-Palm Pilot: ƒp[ƒ€ƒpƒCƒƒbƒg
-Export all dates: ‚·‚×‚Ä‚Ì“ú•t‚ğƒGƒNƒXƒ|[ƒg
-Start date: ŠJn“ú
-End date: I—¹“ú
-Modified since: Modified since
+Username: ¥æ¡¼¥¶¡¼Ì¾
+E-mail address: ¥á¡¼¥ë¥¢¥É¥ì¥¹
+Password: ¥Ñ¥¹¥ï¡¼¥É
+again: ºÆÅÙ
+Disabled for demo: ¥Ç¥â¤Ç¤Ï»ÈÍÑ¤Ç¤­¤Ş¤»¤ó
+Are you sure you want to delete this user?: ¤³¤Î¥æ¡¼¥¶¡¼¤òËÜÅö¤Ëºï½ü¤·¤Ş¤¹¤«?
+Change Password: ¥Ñ¥¹¥ï¡¼¥ÉÊÑ¹¹
+New Password: ¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É
+Set Password: ¥Ñ¥¹¥ï¡¼¥É¤òÀßÄê
 
 
 ###############################################
 # Page: export_handler.php
 #
-#
-export format not defined or incorrect: ƒGƒNƒXƒ|[ƒgŒ`®‚ª–¢’è‹`‚©³‚µ‚­‚ ‚è‚Ü‚¹‚ñ
+Export: ¥¨¥¯¥¹¥İ¡¼¥È
+export format not defined or incorrect: ¥¨¥¯¥¹¥İ¡¼¥È·Á¼°¤¬Ì¤ÄêµÁ¤«Àµ¤·¤¯¤¢¤ê¤Ş¤»¤ó
 
 
 ###############################################
-# Page: group_edit.php
+# Page: export.php
 #
-Unnamed Group: –¼–³‚µƒOƒ‹[ƒv
-Add Group: ƒOƒ‹[ƒv‚Ì’Ç‰Á
-Edit Group: ƒOƒ‹[ƒv‚Ì•ÒW
-Group name: ƒOƒ‹[ƒv–¼
-Updated: XVÏ‚İ
-Created by: ì¬Ò
-Users: ƒ†[ƒU[
+Export format: ¥¨¥¯¥¹¥İ¡¼¥È·Á¼°
+Palm Pilot: ¥Ñ¡¼¥à¥Ñ¥¤¥í¥Ã¥È
+Include all layers: ¤¹¤Ù¤Æ¤Î¥ì¥¤¥ä¡¼¤ò´Ş¤à
+Export all dates: ¤¹¤Ù¤Æ¤ÎÆüÉÕ¤ò¥¨¥¯¥¹¥İ¡¼¥È
+Start date: ³«»ÏÆü
+End date: ½ªÎ»Æü
+Modified since: ½¤ÀµÆü°Ê¹ß
 
 
 ###############################################
 # Page: group_edit_handler.php
 #
+You must specify a group name: ¥°¥ë¡¼¥×Ì¾¤ò»ØÄê¤·¤Ê¤±¤ì¤Ğ¤Ê¤ê¤Ş¤»¤ó
+
+
+###############################################
+# Page: group_edit.php
 #
-You must specify a group name: ƒOƒ‹[ƒv–¼‚ğw’è‚µ‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñ
+Unnamed Group: Ì¾Ìµ¤·¥°¥ë¡¼¥×
+Add Group: ¥°¥ë¡¼¥×¤ÎÄÉ²Ã
+Edit Group: ¥°¥ë¡¼¥×¤ÎÊÔ½¸
+Group name: ¥°¥ë¡¼¥×Ì¾
+Updated: ¹¹¿·ºÑ¤ß
+Created by: ºîÀ®¼Ô
 
 
 ###############################################
 # Page: groups.php
 #
-Add New Group: V‚µ‚¢ƒOƒ‹[ƒv‚Ì’Ç‰Á
+Add New Group: ¿·¤·¤¤¥°¥ë¡¼¥×¤ÎÄÉ²Ã
 
 
 ###############################################
-# Page: icalfb.php
+# Page: help_admin.php
 #
-
-
-###############################################
-# Page: pref.php
-#
-Preferences: ƒvƒŠƒtƒ@ƒŒƒ“ƒX
-to modify the preferences for the Public Access calendar: ‚·‚é‚ÆŒöŠJƒJƒŒƒ“ƒ_[‚Ìİ’è‚ª•ÏX‚Å‚«‚Ü‚·
+Display days with events in bold in year view: ¡ÖÇ¯¡×¥Ó¥å¡¼¤Ç¥¤¥Ù¥ó¥È¤Î¤¢¤ëÆü¤òÂÀ»ú¤ÇÉ½¼¨¤¹¤ë
+Nonuser: Èó¥æ¡¼¥¶¡¼¥«¥ì¥ó¥À¡¼
 #
 # << MISSING >>
-# tz-help:
-# English text: Specifies how many hours to adjust the time from server time to local time.
-#
-Timezone Offset: ƒ^ƒCƒ€ƒ][ƒ“·
-Add N hours to: ƒT[ƒo[ŠÔ{NŠÔ
-Subtract N hours from: ƒT[ƒo[ŠÔ|NŠÔ
-same as: ƒT[ƒo[ŠÔ‚Æ“¯‚¶
-server time:  D
-Default Category: ƒfƒtƒHƒ‹ƒgƒJƒeƒSƒŠ
-When I am the boss: ãi‚Ìê‡
-Email me event notification: ƒCƒxƒ“ƒg’Ê’m‚ğ©•ª‚Éƒ[ƒ‹‚·‚é
-I want to approve events: ƒCƒxƒ“ƒg‚Ì”FØ‚ğ‚µ‚½‚¢
-#
-# << MISSING >>
-# allow-remote-subscriptions-help:
-# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
-#
-# << MISSING >>
-# remote-subscriptions-url-help:
-# English text: Displays the URL remote users should use to subscribe to your calendar.
-#
-#
-# << MISSING >>
-# URL:
-Sun: “ú
-Mon: Œ
-Tue: ‰Î
-Wed: …
-Thu: –Ø
-Fri: ‹à
-Sat: “y
-Save Preferences: İ’è‚ğ•Û‘¶
+# Subscribe/Publish:
 
 
 ###############################################
 # Page: help_bug.php
 #
-Report Bug: ƒoƒO•ñ
+Report Bug: ¥Ğ¥°Êó¹ğ
 
 
 ###############################################
 # Page: help_edit_entry.php
 #
-Adding/Editing Calendar Entries: ƒJƒŒƒ“ƒ_[‚ÌƒGƒ“ƒgƒŠ[‚ğ’Ç‰Á^•ÒW
+Adding/Editing Calendar Entries: ¥«¥ì¥ó¥À¡¼¤Î¥¨¥ó¥È¥ê¡¼¤òÄÉ²Ã¡¿ÊÔ½¸
+
+
+###############################################
+# Page: help_import.php
+#
+Import: ¥¤¥ó¥İ¡¼¥È
+Palm Desktop: Palm ¥Ç¥¹¥¯¥È¥Ã¥×
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
+#
+# << MISSING >>
+# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
+#
+# << MISSING >>
+# The following entries will not be imported:
+#
+# << MISSING >>
+# Entries older than the current date:
+#
+# << MISSING >>
+# Entries created in the Palm Desktop that have not been HotSync'd:
+#
+# << MISSING >>
+# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
+#
+# << MISSING >>
+# Therefore, updates should be made in the Palm Desktop.:
+vCal: vCal
+This form will import vCalendar (.vcs) 1.0 events: ¤³¤Î¥Õ¥©¡¼¥à¤Ï vCalendar (.vcs) 1.0 ¥¤¥Ù¥ó¥È¤È¤·¤Æ¥¤¥ó¥İ¡¼¥È¤¹¤ë¤Ç¤·¤ç¤¦
+#
+# << MISSING >>
+# The following formats have been tested:
+Palm Desktop 4: Palm ¥Ç¥¹¥¯¥È¥Ã¥× 4
+Lotus Organizer 6: Lotus ¥ª¡¼¥¬¥Ê¥¤¥¶¡¼ 6
+Microsoft Outlook 2002: Microsoft Outlook 2002
+iCalendar: iCalendar
+#
+# << MISSING >>
+# This form will import iCalendar (.ics) events:
+#
+# << MISSING >>
+# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
 # Page: help_index.php
 #
-Help Index: ƒwƒ‹ƒvõˆø
-Layers: ƒŒƒCƒ„[
-Import: ƒCƒ“ƒ|[ƒg
+Help Index: ¥Ø¥ë¥×º÷°ú
 
 
 ###############################################
@@ -723,7 +813,7 @@ Import: ƒCƒ“ƒ|[ƒg
 #
 # << MISSING >>
 # Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
-Add/Edit/Delete: ’Ç‰Á^•ÒW^íœ
+Add/Edit/Delete: ÄÉ²Ã¡¿ÊÔ½¸¡¿ºï½ü
 #
 # << MISSING >>
 # Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
@@ -751,464 +841,187 @@ Add/Edit/Delete: ’Ç‰Á^•ÒW^íœ
 
 
 ###############################################
-# Page: help_admin.php
+# Page: help_pref.php
 #
-
-
-###############################################
-# Page: week.php
-#
-#
-cont.: ‘±‚­
-
-
-###############################################
-# Page: layers.php
-#
-to modify the layers settings for the: ‚·‚é‚Æ‰E‚ÌƒŒƒCƒ„[İ’è‚ğ•ÏX‚µ‚Ü‚·F
-Layers are currently: Œ»İ‚ÌƒŒƒCƒ„[
-Enabled: g—p‰Â”\
-Disabled: g—p•s‰Â
-Disable Layers: ƒŒƒCƒ„[‚ğg—p•s‰Â‚É‚·‚é
-Enable Layers: ƒŒƒCƒ„[‚ğg—p‰Â”\‚É‚·‚é
-Layer: ƒŒƒCƒ„[
-Edit layer: ƒŒƒCƒ„[‚ğ•ÒW
-Add layer: ƒŒƒCƒ„[‚ğ’Ç‰Á
-
-
-###############################################
-# Page: layers_toggle.php
-#
-
-
-###############################################
-# Page: list_unapproved.php
-#
-View this entry: ‚±‚ÌƒGƒ“ƒgƒŠ[‚ğŒ©‚é
-Approve this entry?: ƒGƒ“ƒgƒŠ[‚ğ‹–‰Â‚µ‚Ü‚·‚©?
-Approve/Confirm: ‹–‰Â^Šm”F
-Reject this entry?: ƒGƒ“ƒgƒŠ[‚ğ‹‘”Û‚µ‚Ü‚·‚©?
-Reject: ‹‘”Û
-No unapproved events for: –¢³”FƒCƒxƒ“ƒg‚Í‚ ‚è‚Ü‚¹‚ñ
-Unapproved Events: –¢³”FƒCƒxƒ“ƒg
-Public Access: ŒöŠJƒAƒNƒZƒX
-
-
-###############################################
-# Page: view_entry.php
-#
-every: –ˆ
-2nd: ‘æ2
-3rd: ‘æ3
-4th: ‘æ4
-5th: ‘æ5
-1st: ‘æ1
-last: ÅI
-Description: à–¾
-Status: ó‘Ô
-Waiting for approval: ³”F‘Ò‚¿
-Deleted: íœÏ
-Rejected: ‹‘”ÛÏ
-External User: ŠO•”ƒ†[ƒU[
-Approve/Confirm entry: ‹–‰Â^ƒGƒ“ƒgƒŠ[Šm”F
-Reject entry: ƒGƒ“ƒgƒŠ[‚ğ‹‘”Û
-Set category: ƒJƒeƒSƒŠİ’è
-Edit repeating entry for all dates: ŒJ•Ô‚µƒGƒ“ƒgƒŠ[‚ğ‚·‚×‚Ä•ÒW‚·‚é
-Edit entry for this date: ƒGƒ“ƒgƒŠ[‚ğ¡‰ñ•ª‚¾‚¯•ÒW‚·‚é
-This will delete this entry for all users.: ‚±‚ê‚É‚æ‚Á‚Ä‚±‚ÌƒGƒ“ƒgƒŠ[‚ğ‚·‚×‚Ä‚Ìƒ†[ƒU‚©‚çíœ‚µ‚Ü‚·
-Delete repeating event for all dates: ŒJ•Ô‚µƒGƒ“ƒgƒŠ[‚ğ‚·‚×‚Äíœ‚·‚é
-Delete entry only for this date: ƒGƒ“ƒgƒŠ[‚ğ¡‰ñ•ª‚¾‚¯íœ‚·‚é
-Edit entry: ƒGƒ“ƒgƒŠ[‚Ì•ÒW
-This will delete the entry from your calendar.: ‚±‚ÌƒGƒ“ƒgƒŠ[‚ğ‚ ‚È‚½‚ÌƒJƒŒƒ“ƒ_[‚©‚çíœ‚µ‚Ü‚·B
-Do you want to add this entry to your calendar?: ‚±‚ÌƒGƒ“ƒgƒŠ[‚ğ‚ ‚È‚½‚ÌƒJƒŒƒ“ƒ_[‚É’Ç‰Á‚µ‚Ü‚·‚©?
-This will add the entry to your calendar.: ‚±‚ê‚É‚æ‚Á‚Ä‚±‚ÌƒGƒ“ƒgƒŠ[‚ğ‚ ‚È‚½‚ÌƒJƒŒƒ“ƒ_[‚É’Ç‰Á‚µ‚Ü‚·
-Add to My Calendar: ƒ}ƒCƒJƒŒƒ“ƒ_[‚É’Ç‰Á
-Email all participants: Q‰ÁÒ‘Sˆõ‚Éƒ[ƒ‹‘—M
-Show activity log: Šˆ“®ƒƒO‚ğ•\¦
-Hide activity log: Šˆ“®ƒƒO‚ğ‰B‚·
-Export this entry to: ‰E‚ÌŒ`®‚ÉƒGƒNƒXƒ|[ƒg
-
-
-###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: ƒAƒ|ƒCƒ“ƒgƒƒ“ƒg‚ªˆÈ‰º‚Ìl‚É‚æ‚Á‚Ä‹‘”Û‚³‚ê‚Ü‚µ‚½
+Default Category: ¥Ç¥Õ¥©¥ë¥È¥«¥Æ¥´¥ê
+default-category-help: ¿·µ¬¥¤¥Ù¥ó¥È¤¬¥Ç¥Õ¥©¥ë¥È¤Ë¤Ê¤ë¤Ù¤­¥«¥Æ¥´¥ê¤ò»ØÄê¤·¤Ş¤¹¡£
 #
 # << MISSING >>
-# The description is:
-Title: ƒ^ƒCƒgƒ‹
-
-
-###############################################
-# Page: search.php
+# allow-remote-subscriptions-help:
+# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
 #
-Search: ŒŸõ
-Advanced Search: ‚“x‚ÈŒŸõ
-Keywords: ƒL[ƒ[ƒh
-
-
-###############################################
-# Page: search_handler.php
+URL: URL
 #
-You must enter one or more search keywords: ƒL[ƒ[ƒh‚ğ‚P‚ÂˆÈã“ü—Í‚µ‚Ä‚­‚¾‚³‚¢
-Search Results: ŒŸõŒ‹‰Ê
-match found: ŒÂ‚ÌŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚µ‚½
-matches found: ŒÂ‚ÌŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚µ‚½
-No matches found: ŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: ‘¼‚Ìƒ†[ƒU[‚ÌƒJƒŒƒ“ƒ_[‚ğŒ©‚é
-Go: •\¦
-
-
-###############################################
-# Page: publish.php
+# << MISSING >>
+# remote-subscriptions-url-help:
+# English text: Displays the URL remote users should use to subscribe to your calendar.
 #
 
 
 ###############################################
-# Page: users.php
+# Page: import_handler.php
 #
-denotes administrative user: ŠÇ—ƒ†[ƒU[‚ğ•\¦
-Add New User: V‚µ‚¢ƒ†[ƒU[‚ğ’Ç‰Á
-
-
-###############################################
-# Page: usersel.php
+Import Results: ¥¤¥ó¥İ¡¼¥È·ë²Ì
+Events successfully imported: ¥¤¥Ù¥ó¥È¤Î¥¤¥ó¥İ¡¼¥È¤ËÀ®¸ù¤·¤Ş¤·¤¿
 #
-All: ‘S‚Ä
-Reset: ƒŠƒZƒbƒg
-Remove: íœ
-Ok: OK
-Cancel: ƒLƒƒƒ“ƒZƒ‹
+# << MISSING >>
+# Events from prior import marked as deleted:
+Conflicting events: ¥¤¥Ù¥ó¥È¾×ÆÍÃæ
+Errors: ¥¨¥é¡¼
+#
+# << MISSING >>
+# There was an error parsing the import file or no events were returned:
+The import file contained no data: ¥¤¥ó¥İ¡¼¥È¥Õ¥¡¥¤¥ë¤ÎÃæ¿È¤¬¤¢¤ê¤Ş¤»¤ó
+View this entry: ¤³¤Î¥¨¥ó¥È¥ê¡¼¤ò¸«¤ë
+Event Imported: ¥¤¥Ù¥ó¥È¤ò¥¤¥ó¥İ¡¼¥È¤·¤Ş¤·¤¿
 
 
 ###############################################
 # Page: import.php
 #
-Import format: ƒCƒ“ƒ|[ƒg‘
-#
-Exclude private records: œŠO‚·‚éƒvƒ‰ƒCƒx[ƒgƒŒƒR[ƒh
-#
-Datebook File: ƒf[ƒgƒuƒbƒNƒtƒ@ƒCƒ‹
-#
-This form will import vCalendar (.vcs) 1.0 events: ‚±‚ÌƒtƒH[ƒ€‚Í vCalendar (.vcs) 1.0 ƒCƒxƒ“ƒg‚Æ‚µ‚ÄƒCƒ“ƒ|[ƒg‚·‚é‚Å‚µ‚å‚¤
-#
-vCal File: vCal ƒtƒ@ƒCƒ‹
-#
-# << MISSING >>
-# This form will import iCalendar (.ics) events:
-#
-iCal File: iCal ƒtƒ@ƒCƒ‹
+Import format: ¥¤¥ó¥İ¡¼¥È·Á¼°
+Exclude private records: ½ü³°¤¹¤ë¥×¥é¥¤¥Ù¡¼¥È¥ì¥³¡¼¥É
 #
 # << MISSING >>
 # Overwrite Prior Import:
 
 
 ###############################################
-# Page: year.php
+# Page: layers.php
 #
+to modify the layers settings for the: ¤¹¤ë¤È±¦¤Î¥ì¥¤¥ä¡¼ÀßÄê¤òÊÑ¹¹¤·¤Ş¤¹¡§
+Layers are currently: ¸½ºß¤Î¥ì¥¤¥ä¡¼
+Enabled: »ÈÍÑ²ÄÇ½
+Disabled: »ÈÍÑÉÔ²Ä
+Disable Layers: ¥ì¥¤¥ä¡¼¤ò»ÈÍÑÉÔ²Ä¤Ë¤¹¤ë
+Enable Layers: ¥ì¥¤¥ä¡¼¤ò»ÈÍÑ²ÄÇ½¤Ë¤¹¤ë
+Layer: ¥ì¥¤¥ä¡¼
+Edit layer: ¥ì¥¤¥ä¡¼¤òÊÔ½¸
+Add layer: ¥ì¥¤¥ä¡¼¤òÄÉ²Ã
 
 
 ###############################################
-# Page: view_d.php
+# Page: list_unapproved.php
 #
-
-
-###############################################
-# Page: view_m.php
-#
-
-
-###############################################
-# Page: view_w.php
-#
-
-
-###############################################
-# Page: views.php
-#
-Views: ƒrƒ…[
-Add New View: V‹Kƒrƒ…[‚Ì’Ç‰Á
-
-
-###############################################
-# Page: views_edit.php
-#
-Unnamed View: –¼–³‚µƒrƒ…[
-Add View: ƒrƒ…[‚Ì’Ç‰Á
-Edit View: ƒrƒ…[‚Ì•ÒW
-View Name: ƒrƒ…[–¼
-View Type: ƒrƒ…[ƒ^ƒCƒv
-Week (Users horizontal): Tiƒ†[ƒU[…•½j
-Week (Users vertical): Tiƒ†[ƒU[‚’¼j
-Week (Timebar): Tiƒ^ƒCƒ€ƒo[j
-Month (side by side): Œiƒ†[ƒU[‚ğ‰¡‚É•À‚×‚éj
-Month (on same calendar): Œi“¯‚¶ƒJƒŒƒ“ƒ_[ã‚Éƒ†[ƒU[¬İj
-
-
-###############################################
-# Page: nonusers.php
-#
-#
-# << MISSING >>
-NONUSER_PREFIX not set: ”ñƒ†[ƒU[Ú“ªŒê‚Í–¢İ’è
-# English text: NONUSER_PREFIX has not been set in config.php.
-#
-#
-# << MISSING >>
-# NonUser:
-# English text: NonUser Calendars
-#
-#
-Calendar ID: ƒJƒŒƒ“ƒ_[ ID
-# Add New NonUser Calendar: V‹K”ñƒ†[ƒU[ƒJƒŒƒ“ƒ_[’Ç‰Á
-
-
-###############################################
-# Page: nonusers_handler.php
-#
-
-
-###############################################
-# Page: view_l.php
-#
-
-
-###############################################
-# Page: help_pref.php
-#
-#
-# << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
-#
-
-
-###############################################
-# Page: report.php
-#
-Private: ƒvƒ‰ƒCƒx[ƒg
-#
-# << MISSING >>
-# Approved:
-#
-Unknown: –¢’m
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-Add new report: V‹KƒŒƒ|[ƒg’Ç‰Á
-#
-Invalid report id: –³Œø‚ÈƒŒƒ|[ƒg ID
-#
-Manage Reports: ƒŒƒ|[ƒgŠÇ—
+Approve/Confirm: µö²Ä¡¿³ÎÇ§
+Approve this entry?: ¥¨¥ó¥È¥ê¡¼¤òµö²Ä¤·¤Ş¤¹¤«?
+Reject: µñÈİ
+Reject this entry?: ¥¨¥ó¥È¥ê¡¼¤òµñÈİ¤·¤Ş¤¹¤«?
+No unapproved events for: Ì¤¾µÇ§¥¤¥Ù¥ó¥È¤Ï¤¢¤ê¤Ş¤»¤ó
+Unapproved Events: Ì¤¾µÇ§¥¤¥Ù¥ó¥È
 
 
 ###############################################
 # Page: login.php
 #
-You must enter a login and password: ƒ†[ƒU[–¼‚ÆƒpƒXƒ[ƒh‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢
-Save login via cookies so I don't have to login next time: Ÿ‰ñ‚©‚çƒƒOƒCƒ“‚µ‚È‚­‚Ä‚à—Ç‚¢‚æ‚¤‚ÉAƒ†[ƒU[î•ñ‚ğƒNƒbƒL[‚ÉƒZ[ƒu‚·‚é
-Login: ƒƒOƒCƒ“
-Access public calendar: ŒöŠJƒJƒŒƒ“ƒ_[ƒAƒNƒZƒX
-#cookies-note: <b>Note:</b> This application requires cookies to be enabled.
-cookies-note: <b>’ˆÓ:</b> ‚±‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÍƒNƒbƒL[‚ª—LŒø‚Å‚È‚¯‚ê‚Î³í‚É“®ì‚µ‚Ü‚¹‚ñB
+Invalid login: ¥í¥°¥¤¥ó¤ÏÌµ¸ú¤Ç¤¹
+You must enter a login and password: ¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òÆşÎÏ¤·¤Æ¤¯¤À¤µ¤¤
+Save login via cookies so I don't have to login next time: ¼¡²ó¤«¤é¥í¥°¥¤¥ó¤·¤Ê¤¯¤Æ¤âÎÉ¤¤¤è¤¦¤Ë¡¢¥æ¡¼¥¶¡¼¾ğÊó¤ò¥¯¥Ã¥­¡¼¤Ë¥»¡¼¥Ö¤¹¤ë
+Login: ¥í¥°¥¤¥ó
+Access public calendar: ¸ø³«¥«¥ì¥ó¥À¡¼¥¢¥¯¥»¥¹
+cookies-note: <b>Ãí°Õ:</b> ¤³¤Î¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ï¥¯¥Ã¥­¡¼¤¬Í­¸ú¤Ç¤Ê¤±¤ì¤ĞÀµ¾ï¤ËÆ°ºî¤·¤Ş¤»¤ó¡£
 
 
 ###############################################
-# Page: views_edit_handler.php
+# Page: month.php
 #
-#
-You must specify a view name: ƒrƒ…[–¼‚ğw’è‚µ‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñ
+Sun: Æü
+Mon: ·î
+Tue: ²Ğ
+Wed: ¿å
+Thu: ÌÚ
+Fri: ¶â
+Sat: ÅÚ
 
 
 ###############################################
-# Page: week_details.php
+# Page: nonusers.php
 #
-New Entry: V‹KƒGƒ“ƒgƒŠ[
+Add New NonUser Calendar: Èó¥æ¡¼¥¶¡¼¤Î¥«¥ì¥ó¥À¡¼¤Ë¿·µ¬ÄÉ²Ã
 
 
 ###############################################
-# Page: import_handler.php
+# Page: pref.php
 #
-#
-Import Results: ƒCƒ“ƒ|[ƒgŒ‹‰Ê
-Events successfully imported: ƒCƒxƒ“ƒg‚ÌƒCƒ“ƒ|[ƒg‚É¬Œ÷‚µ‚Ü‚µ‚½
+Save Preferences: ÀßÄê¤òÊİÂ¸
+to modify the preferences for the Public Access calendar: ¤¹¤ë¤È¸ø³«¥«¥ì¥ó¥À¡¼¤ÎÀßÄê¤¬ÊÑ¹¹¤Ç¤­¤Ş¤¹
 #
 # << MISSING >>
-# Events from prior import marked as deleted:
+# tz-help:
+# English text: Specifies how many hours to adjust the time from server time to local time.
 #
-Conflicting events: ƒCƒxƒ“ƒgÕ“Ë’†
-Errors: ƒGƒ‰[
-Back to My Calendar: ƒ}ƒCƒJƒŒƒ“ƒ_[‚É–ß‚é
-#
-# << MISSING >>
-# There was an error parsing the import file or no events were returned:
-#
-# << MISSING >>
-# The import file contained no data:
-The following conflicts with the suggested time: ˆÈ‰º‚ª‹L“ü‚µ‚½ŠÔ‚Æd‚È‚Á‚Ä‚¢‚Ü‚·
-Unnamed Event: –¼–³‚µƒCƒxƒ“ƒg
-Scheduling Conflict: ƒXƒPƒWƒ…[ƒ‹‚ªd‚È‚Á‚Ä‚¢‚Ü‚·
-conflicts with the following existing calendar entries: ˆÈ‰º‚ÌƒGƒ“ƒgƒŠ[‚Æd‚È‚Á‚Ä‚¢‚Ü‚·F
-Event Imported: ƒCƒxƒ“ƒg‚ğƒCƒ“ƒ|[ƒg‚µ‚Ü‚µ‚½
-
-
-###############################################
-# Page: edit_report.php
-#
-#
-Tomorrow: –¾“ú
-Today: ¡“ú
-Yesterday: ğ“ú
-Day before yesterday: ˆêğ“ú
-Next week: ŸT
-This week: ¡T
-Last week: æT
-Week before last: æXT
-Next week and week after: —ˆT‚ÆÄ—ˆT
-This week and next week: ¡T‚Æ—ˆT
-Last week and this week: æT‚Æ¡T
-Last two weeks: ‰ß‹ 2 T
-Next month: —‚Œ
-This month: ¡T
-Last month: æŒ
-Month before last: æXŒ
-Next year: —ˆ”N
-This year: ¡”N
-Last year: ‹”N
-Year before last: ˆêğ”N
-Unnamed Report: –¼Ì–¢İ’èƒŒƒ|[ƒg
-Add Report: ƒŒƒ|[ƒg’Ç‰Á
-Edit Report: ƒŒƒ|[ƒg•ÒW
-Report name: ƒŒƒ|[ƒg–¼
-Current User: Œ»İ‚Ìƒ†[ƒU[
-Include link in trailer: ––”ö‚ÉƒŠƒ“ƒN‚ğŠÜ‚Ş
-Include standard header/trailer: •W€ƒwƒbƒ_[/ƒtƒbƒ^[‚ğŠÜ‚Ş
-Date range: Šú“ú”ÍˆÍ
-Include previous/next links: ‘O/Ÿ‚Ö‚ÌƒŠƒ“ƒN‚ğŠÜ‚Ş
-Include empty dates: ‹ó‚Ì“ú‚ğŠÜ‚Ş
-Template variables: ’lƒeƒ“ƒvƒŒ[ƒg
-Page template: ƒy[ƒWƒeƒ“ƒvƒŒ[ƒg
-Day template: “úƒeƒ“ƒvƒŒ[ƒg
-Event template: ƒCƒxƒ“ƒgƒeƒ“ƒvƒŒ[ƒg
-Are you sure you want to delete this report?: ‚±‚ÌƒŒƒ|[ƒg‚ğ–{“–‚Éíœ‚µ‚Ü‚·‚©?
-
-
-###############################################
-# Page: assistant_edit.php
-#
-Assistants: ƒAƒVƒXƒ^ƒ“ƒg
-Yours assistants: ‚ ‚È‚½‚ÌƒAƒVƒXƒ^ƒ“ƒg
-
-
-###############################################
-# Page: view_t.php
-#
-
-
-###############################################
-# Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: adminhome.php
-#
-Account: ƒAƒJƒEƒ“ƒg
-NonUser Calendars: ‘¼‚Ìƒ†[ƒU[‚ÌƒJƒŒƒ“ƒ_[
-Delete Events: ƒCƒxƒ“ƒg‚Ìíœ
-Public Preferences: ŒöŠJİ’è
-Unapproved Public Events: –¢³”F‚ÌŒöŠJƒCƒxƒ“ƒg
-Administrative Tools: ŠÇ—ƒc[ƒ‹
+Timezone Offset: ¥¿¥¤¥à¥¾¡¼¥ó»şº¹
+Add N hours to: ¥µ¡¼¥Ğ¡¼»ş´Ö¡ÜN»ş´Ö
+Subtract N hours from: ¥µ¡¼¥Ğ¡¼»ş´Ö¡İN»ş´Ö
+same as: ¥µ¡¼¥Ğ¡¼»ş´Ö¤ÈÆ±¤¸
+server time: ¡¥
+When I am the boss: ¾å»Ê¤Î¾ì¹ç
+Email me event notification: ¥¤¥Ù¥ó¥ÈÄÌÃÎ¤ò¼«Ê¬¤Ë¥á¡¼¥ë¤¹¤ë
+I want to approve events: ¥¤¥Ù¥ó¥È¤ÎÇ§¾Ú¤ò¤·¤¿¤¤
 
 
 ###############################################
 # Page: purge.php
 #
-Purging events for: ‰Eƒ†[ƒU[‚ÌƒCƒxƒ“ƒg‚ğÁ‹‚µ‚Ä‚¢‚Ü‚·
-Finished: Š®—¹‚µ‚Ü‚µ‚½
-Delete all events before: ‰E‚Ì“ú•tˆÈ‘O‚ÌƒCƒxƒ“ƒg‚ğ‚·‚×‚Äíœ‚·‚é
-Check box to delete <b>ALL</b> events for a user: ‚Pƒ†[ƒU[‚ÌƒCƒxƒ“ƒg‚ğ<b>‚·‚×‚Ä</b>íœ‚·‚éê‡‚Íƒ`ƒFƒbƒN‚µ‚Ä‚­‚¾‚³‚¢
-Are you sure you want to delete events for: ‰Eƒ†[ƒU[‚ÌƒCƒxƒ“ƒg‚ğ‚·‚×‚Äíœ‚µ‚Ä—Ç‚¢‚Å‚·‚©?F
+Purging events for: ±¦¥æ¡¼¥¶¡¼¤Î¥¤¥Ù¥ó¥È¤ò¾Ãµî¤·¤Æ¤¤¤Ş¤¹
+Finished: ´°Î»¤·¤Ş¤·¤¿
+All: Á´¤Æ
+Delete all events before: ±¦¤ÎÆüÉÕ°ÊÁ°¤Î¥¤¥Ù¥ó¥È¤ò¤¹¤Ù¤Æºï½ü¤¹¤ë
+Check box to delete <b>ALL</b> events for a user: £±¥æ¡¼¥¶¡¼¤Î¥¤¥Ù¥ó¥È¤ò<b>¤¹¤Ù¤Æ</b>ºï½ü¤¹¤ë¾ì¹ç¤Ï¥Á¥§¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤
+Are you sure you want to delete events for: ±¦¥æ¡¼¥¶¡¼¤Î¥¤¥Ù¥ó¥È¤ò¤¹¤Ù¤Æºï½ü¤·¤ÆÎÉ¤¤¤Ç¤¹¤«?¡§
+#
+# << MISSING >>
+# Records deleted from:
 
 
 ###############################################
-# Page: help_import.php
+# Page: reject_entry.php
 #
-#
-Palm Desktop: Palm ƒfƒXƒNƒgƒbƒv
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
-#
-# << MISSING >>
-# The following entries will not be imported:
-#
-# << MISSING >>
-# Entries older than the current date:
-#
-# << MISSING >>
-# Entries created in the Palm Desktop that have not been HotSync'd:
-#
-# << MISSING >>
-# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
-#
-# << MISSING >>
-# Therefore, updates should be made in the Palm Desktop.:
-#
-vCal: vCal
-#
-# << MISSING >>
-# The following formats have been tested:
-#
-Palm Desktop 4: Palm ƒfƒXƒNƒgƒbƒv 4
-Lotus Organizer 6: Lotus ƒI[ƒKƒiƒCƒU[ 6
-Microsoft Outlook 2002: Microsoft Outlook 2002
-iCalendar: iCalendar
-#
-# << MISSING >>
-# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
+An appointment has been rejected by: ¥¢¥İ¥¤¥ó¥È¥á¥ó¥È¤¬°Ê²¼¤Î¿Í¤Ë¤è¤Ã¤ÆµñÈİ¤µ¤ì¤Ş¤·¤¿
 
 
 ###############################################
-# Page: edit_report_handler.php
+# Page: report.php
 #
+Private: ¥×¥é¥¤¥Ù¡¼¥È
+Waiting for approval: ¾µÇ§ÂÔ¤Á
+Deleted: ºï½üºÑ
+Rejected: µñÈİºÑ
 #
-Variable N not found: •Ï” N ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ
+# << MISSING >>
+# Approved:
+Unknown: Ì¤ÃÎ
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+Add new report: ¿·µ¬¥ì¥İ¡¼¥ÈÄÉ²Ã
+cont.: Â³¤¯
+Manage Reports: ¥ì¥İ¡¼¥È´ÉÍı
 
 
 ###############################################
-# Page: edit_entry_handler.php
+# Page: search_handler.php
 #
-A new appointment has been made for you by: V‚µ‚¢—\’è‚ªˆÈ‰º‚Ìl‚É‚æ‚Á‚Ä’Ç‰Á‚³‚ê‚Ü‚µ‚½F
-An appointment has been updated by: —\’è‚ªˆÈ‰º‚Ìl‚É‚æ‚Á‚Ä•ÒW‚³‚ê‚Ü‚µ‚½F
-The subject is: ‰Û‘èF
-Please look on: QÆ‚µ‚Ä‚­‚¾‚³‚¢
-to accept or reject this appointment: ‚±‚Ì—\’è‚ğó‚¯“ü‚ê‚é‚©ó‚¯“ü‚ê‚È‚¢‚©‚·‚é
-to view this appointment: —\’è‚ğŒ©‚é
-Your suggested time of: —\’èŠÔ
+You must enter one or more search keywords: ¥­¡¼¥ï¡¼¥É¤ò£±¤Ä°Ê¾åÆşÎÏ¤·¤Æ¤¯¤À¤µ¤¤
+Search Results: ¸¡º÷·ë²Ì
+match found: ¸Ä¤Î³ºÅö¹àÌÜ¤¬¸«¤Ä¤«¤ê¤Ş¤·¤¿
+matches found: ¸Ä¤Î³ºÅö¹àÌÜ¤¬¸«¤Ä¤«¤ê¤Ş¤·¤¿
+No matches found: ³ºÅö¹àÌÜ¤¬¸«¤Ä¤«¤ê¤Ş¤»¤ó¤Ç¤·¤¿
+
+
+###############################################
+# Page: search.php
+#
+Search: ¸¡º÷
+Keywords: ¥­¡¼¥ï¡¼¥É
+Advanced Search: ¹âÅÙ¤Ê¸¡º÷
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: Â¾¤Î¥æ¡¼¥¶¡¼¤Î¥«¥ì¥ó¥À¡¼¤ò¸«¤ë
+Go: É½¼¨
 
 
 ###############################################
@@ -1217,153 +1030,233 @@ Your suggested time of: —\’èŠÔ
 #
 # << MISSING >>
 # You have not added any categories:
-#
-Set Category: ƒJƒeƒSƒŠİ’è
+Set Category: ¥«¥Æ¥´¥êÀßÄê
 
 
 ###############################################
-# Page: edit_template.php
+# Page: usersel.php
 #
+Reset: ¥ê¥»¥Ã¥È
+Remove: ºï½ü
+Ok: OK
+
+
+###############################################
+# Page: users.php
 #
-Edit Custom Script/Stylesheet: ƒJƒXƒ^ƒ€ƒXƒNƒŠƒvƒg/ƒXƒ^ƒCƒ‹ƒV[ƒg•ÒW
-Edit Custom Header: ƒJƒXƒ^ƒ€ƒwƒbƒ_[•ÒW
-Edit Custom Trailer:  ƒJƒXƒ^ƒ€ƒtƒbƒ^[•ÒW
+Add New User: ¿·¤·¤¤¥æ¡¼¥¶¡¼¤òÄÉ²Ã
+denotes administrative user: ´ÉÍı¥æ¡¼¥¶¡¼¤òÉ½¼¨
+
+
+###############################################
+# Page: view_entry.php
+#
+every: Ëè
+2nd: Âè2
+3rd: Âè3
+4th: Âè4
+5th: Âè5
+1st: Âè1
+last: ºÇ½ª
+Description: ÀâÌÀ
+Status: ¾õÂÖ
+#
+# << MISSING >>
+# day:
+#
+# << MISSING >>
+# minute:
+External User: ³°Éô¥æ¡¼¥¶¡¼
+Approve/Confirm entry: µö²Ä¡¿¥¨¥ó¥È¥ê¡¼³ÎÇ§
+Reject entry: ¥¨¥ó¥È¥ê¡¼¤òµñÈİ
+Set category: ¥«¥Æ¥´¥êÀßÄê
+Edit repeating entry for all dates: ·«ÊÖ¤·¥¨¥ó¥È¥ê¡¼¤ò¤¹¤Ù¤ÆÊÔ½¸¤¹¤ë
+Edit entry for this date: ¥¨¥ó¥È¥ê¡¼¤òº£²óÊ¬¤À¤±ÊÔ½¸¤¹¤ë
+Delete repeating event for all dates: ·«ÊÖ¤·¥¨¥ó¥È¥ê¡¼¤ò¤¹¤Ù¤Æºï½ü¤¹¤ë
+This will delete this entry for all users.: ¤³¤ì¤Ë¤è¤Ã¤Æ¤³¤Î¥¨¥ó¥È¥ê¡¼¤ò¤¹¤Ù¤Æ¤Î¥æ¡¼¥¶¤«¤éºï½ü¤·¤Ş¤¹
+Delete entry only for this date: ¥¨¥ó¥È¥ê¡¼¤òº£²óÊ¬¤À¤±ºï½ü¤¹¤ë
+Edit entry: ¥¨¥ó¥È¥ê¡¼¤ÎÊÔ½¸
+Copy entry: ¥¨¥ó¥È¥ê¡¼¤ò¥³¥Ô¡¼
+This will delete the entry from your calendar.: ¤³¤Î¥¨¥ó¥È¥ê¡¼¤ò¤¢¤Ê¤¿¤Î¥«¥ì¥ó¥À¡¼¤«¤éºï½ü¤·¤Ş¤¹¡£
+Add to My Calendar: ¥Ş¥¤¥«¥ì¥ó¥À¡¼¤ËÄÉ²Ã
+Do you want to add this entry to your calendar?: ¤³¤Î¥¨¥ó¥È¥ê¡¼¤ò¤¢¤Ê¤¿¤Î¥«¥ì¥ó¥À¡¼¤ËÄÉ²Ã¤·¤Ş¤¹¤«?
+This will add the entry to your calendar.: ¤³¤ì¤Ë¤è¤Ã¤Æ¤³¤Î¥¨¥ó¥È¥ê¡¼¤ò¤¢¤Ê¤¿¤Î¥«¥ì¥ó¥À¡¼¤ËÄÉ²Ã¤·¤Ş¤¹
+Email all participants: »²²Ã¼ÔÁ´°÷¤Ë¥á¡¼¥ëÁ÷¿®
+Show activity log: ³èÆ°¥í¥°¤òÉ½¼¨
+Hide activity log: ³èÆ°¥í¥°¤ò±£¤¹
+Export this entry to: ±¦¤Î·Á¼°¤Ë¥¨¥¯¥¹¥İ¡¼¥È
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: ¥Ó¥å¡¼Ì¾¤ò»ØÄê¤·¤Ê¤±¤ì¤Ğ¤Ê¤ê¤Ş¤»¤ó
+
+
+###############################################
+# Page: views_edit.php
+#
+Unnamed View: Ì¾Ìµ¤·¥Ó¥å¡¼
+Add View: ¥Ó¥å¡¼¤ÎÄÉ²Ã
+Edit View: ¥Ó¥å¡¼¤ÎÊÔ½¸
+View Name: ¥Ó¥å¡¼Ì¾
+View Type: ¥Ó¥å¡¼¥¿¥¤¥×
+Week (Users horizontal): ½µ¡Ê¥æ¡¼¥¶¡¼¿åÊ¿¡Ë
+Week (Users vertical): ½µ¡Ê¥æ¡¼¥¶¡¼¿âÄ¾¡Ë
+Week (Timebar): ½µ¡Ê¥¿¥¤¥à¥Ğ¡¼¡Ë
+#
+# << MISSING >>
+# Month (Timebar):
+Month (side by side): ·î¡Ê¥æ¡¼¥¶¡¼¤ò²£¤ËÊÂ¤Ù¤ë¡Ë
+Month (on same calendar): ·î¡ÊÆ±¤¸¥«¥ì¥ó¥À¡¼¾å¤Ë¥æ¡¼¥¶¡¼º®ºß¡Ë
+preview: ¥×¥ì¥Ó¥å¡¼
+
+
+###############################################
+# Page: views.php
+#
+Add New View: ¿·µ¬¥Ó¥å¡¼¤ÎÄÉ²Ã
+
+
+###############################################
+# Page: week_details.php
+#
+New Entry: ¿·µ¬¥¨¥ó¥È¥ê¡¼
+
+
+###############################################
+# Page: includes/config.php
+#
+English: ±Ñ¸ì
+Basque: Basque
+Bulgarian: ¥Ö¥é¥¸¥ë¸ì
+Catalan: ¥«¥¿¥í¥Ë¥¢¸ì
+Chinese (Traditonal/Big5): Ãæ¹ñ¸ì (Traditonal/Big5)
+Chinese (Simplified/GB2312): Ãæ¹ñ¸ì (Simplified/GB2312)
+Czech: ¥Á¥§¥³¸ì
+Danish: ¥Ç¥ó¥Ş¡¼¥¯¸ì
+Dutch: ¥ª¥é¥ó¥À¸ì
+Estonian: ¥¨¥¹¥È¥Ë¥¢¸ì
+Finnish: ¥Õ¥£¥ó¥é¥ó¥É¸ì
+French: ¥Õ¥é¥ó¥¹¸ì
+Galician: ¥¬¥ê¥·¥¢¸ì
+German: ¥É¥¤¥Ä¸ì
+Holo (Taiwanese): Holo(ÂæÏÑ¸ì)
+Hungarian: ¥Ï¥ó¥¬¥ê¡¼¸ì
+Icelandic: ¥¢¥¤¥¹¥é¥ó¥É¸ì
+Italian: ¥¤¥¿¥ê¥¢¸ì
+Japanese: ÆüËÜ¸ì
+Korean: ´Ú¹ñ¸ì
+Norwegian: ¥Î¥ë¥¦¥§¡¼¸ì
+Polish: ¥İ¡¼¥é¥ó¥É¸ì
+Portuguese: ¥İ¥ë¥È¥¬¥ë¸ì
+Portuguese/Brazil: ¥İ¥ë¥È¥¬¥ë¸ì/¥Ö¥é¥¸¥ë
+Russian: ¥í¥·¥¢¸ì
+Spanish: ¥¹¥Ú¥¤¥ó¸ì
+Swedish: ¥¹¥¦¥§¡¼¥Ç¥ó¸ì
+Turkish: ¥È¥ë¥³¸ì
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: ¤³¤Î¥¤¥Ù¥ó¥È¤ÏÈó¸ø³«¤Ç¤¹
+exceeds limit of XXX events per day: £±Æü¤Î¥¤¥Ù¥ó¥È¿ô¤ÎÀ©¸ÂXXX¸Ä¤òÄ¶¤¨¤Ş¤·¤¿
+You have XXX unapproved events: XXX¸Ä¤ÎÌ¤¾µÇ§¥¤¥Ù¥ó¥È¤¬¤¢¤ê¤Ş¤¹
+January: 1·î
+February: 2·î
+March: 3·î
+April: 4·î
+May_: 5·î
+June: 6·î
+July: 7·î
+August: 8·î
+September: 9·î
+October: 10·î
+November: 11·î
+Jan: 1·î
+Feb: 2·î
+Mar: 3·î
+Apr: 4·î
+May: 5·î
+Jun: 6·î
+Jul: 7·î
+Aug: 8·î
+Sep: 9·î
+Oct: 10·î
+Nov: 11·î
+Dec: 12·î
+
+
+###############################################
+# Page: includes/help_trailer.php
+#
+Go to: °ÜÆ°
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: ¥ê¥Ş¥¤¥ó¥À¡¼Á÷¿®
 
 
 ###############################################
 # Page: includes/trailer.php
 #
-Go to: ˆÚ“®
-My Calendar: ƒ}ƒCƒJƒŒƒ“ƒ_[
-Logout: ƒƒOƒAƒEƒg
-Another User's Calendar: ‘¼ƒ†[ƒU[‚ÌƒJƒŒƒ“ƒ_[
-Add New Entry: V‹KƒGƒ“ƒgƒŠ[’Ç‰Á
-Manage Views: ƒrƒ…[‚ÌŠÇ—
+My Calendar: ¥Ş¥¤¥«¥ì¥ó¥À¡¼
+Back to My Calendar: ¥Ş¥¤¥«¥ì¥ó¥À¡¼¤ËÌá¤ë
+Another User's Calendar: Â¾¥æ¡¼¥¶¡¼¤Î¥«¥ì¥ó¥À¡¼
+Add New Entry: ¿·µ¬¥¨¥ó¥È¥ê¡¼ÄÉ²Ã
+Logout: ¥í¥°¥¢¥¦¥È
 #
 # << MISSING >>
 # Manage calendar of:
 
 
 ###############################################
-# Page: includes/connect.php
-#
-
-
-###############################################
-# Page: includes/user.php
-#
-Invalid login: ƒƒOƒCƒ“‚Í–³Œø‚Å‚·
-#
-Invalid user login: –³Œø‚Èƒ†[ƒU[‚ÌƒƒOƒCƒ“
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: ƒŠƒ}ƒCƒ“ƒ_[‘—M
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-
-
-###############################################
 # Page: includes/user-nis.php
 #
-
-
-###############################################
-# Page: includes/help_trailer.php
-#
-
-
-###############################################
-# Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/init.php
-#
-
-
-###############################################
-# Page: includes/functions.php
-#
-This event is confidential: ‚±‚ÌƒCƒxƒ“ƒg‚Í”ñŒöŠJ‚Å‚·
-exceeds limit of XXX events per day: ‚P“ú‚ÌƒCƒxƒ“ƒg”‚Ì§ŒÀXXXŒÂ‚ğ’´‚¦‚Ü‚µ‚½
-You have XXX unapproved events: XXXŒÂ‚Ì–¢³”FƒCƒxƒ“ƒg‚ª‚ ‚è‚Ü‚·
-January: 1Œ
-February: 2Œ
-March: 3Œ
-April: 4Œ
-May_: 5Œ
-# English text: May
-#
-June: 6Œ
-July: 7Œ
-August: 8Œ
-September: 9Œ
-October: 10Œ
-November: 11Œ
-Jan: 1Œ
-Feb: 2Œ
-Mar: 3Œ
-Apr: 4Œ
-May: 5Œ
-Jun: 6Œ
-Jul: 7Œ
-Aug: 8Œ
-Sep: 9Œ
-Oct: 10Œ
-Nov: 11Œ
-Dec: 12Œ
+incorrect password: ¥Ñ¥¹¥ï¡¼¥É¤¬Àµ¤·¤¯¤¢¤ê¤Ş¤»¤ó¡£
+no such user: ¥æ¡¼¥¶¡¼¤¬µï¤Ş¤»¤ó¡£
+Invalid user login: Ìµ¸ú¤Ê¥æ¡¼¥¶¡¼¤Î¥í¥°¥¤¥ó
 
 
 ###############################################
 # Page: includes/js/admin.php
 #
-Server URL is required: ƒT[ƒo[ URL ‚ª•K{‚Å‚·B
-Server URL must end with '/': ƒT[ƒo[ URL ‚Íu/v‚ÅI‚í‚ç‚È‚¯‚ê‚Î‚¢‚¯‚Ü‚¹‚ñ
-Invalid color for document background: ‘—Ş‚Ì”wŒiF‚ª–³Œø‚Å‚·
-Invalid color for document title: ‘—Ş‚Ìƒ^ƒCƒgƒ‹F‚ª–³Œø‚Å‚·
-Invalid color for table cell background: ‘—Ş‚Ìƒe[ƒuƒ‹”wŒiF‚ª–³Œø‚Å‚·
-Invalid color for table grid: ƒe[ƒuƒ‹ƒOƒŠƒbƒh‚ÌF‚ª–³Œø‚Å‚·
-Invalid color for table header background: ƒe[ƒuƒ‹ƒwƒbƒ_[‚ÌF‚ª–³Œø‚Å‚·
-Invalid color for table text background: ƒe[ƒuƒ‹ƒeƒLƒXƒg‚Ì”wŒiF‚ª–³Œø‚Å‚·
-Invalid color for event popup background: ƒCƒxƒ“ƒgƒ|ƒbƒvƒAƒbƒv‚Ì”wŒiF‚ª–³Œø‚Å‚·
-Invalid color for event popup text: ƒCƒxƒ“ƒgƒ|ƒbƒvƒAƒbƒv‚ÌF‚ª–³Œø‚Å‚·
-Invalid color for table cell background for today: ¡“ú‚Ìƒe[ƒuƒ‹ƒZƒ‹‚Ì”wŒiF‚ª–³Œø‚Å‚·
-Color format should be '#RRGGBB': F‚Í '#RRGGBB'‚ÌƒtƒH[ƒ}ƒbƒg‚Åİ’è‚µ‚Ä‚­‚¾‚³‚¢
+Server URL is required: ¥µ¡¼¥Ğ¡¼ URL ¤¬É¬¿Ü¤Ç¤¹¡£
+Server URL must end with '/': ¥µ¡¼¥Ğ¡¼ URL ¤Ï¡Ö/¡×¤Ç½ª¤ï¤é¤Ê¤±¤ì¤Ğ¤¤¤±¤Ş¤»¤ó
+#
+# << MISSING >>
+# Invalid work hours:
+Invalid color for document background: ½ñÎà¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹
+Invalid color for document title: ½ñÎà¤Î¥¿¥¤¥È¥ë¿§¤¬Ìµ¸ú¤Ç¤¹
+Invalid color for table cell background: ½ñÎà¤Î¥Æ¡¼¥Ö¥ëÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹
+Invalid color for table grid: ¥Æ¡¼¥Ö¥ë¥°¥ê¥Ã¥É¤Î¿§¤¬Ìµ¸ú¤Ç¤¹
+Invalid color for table header background: ¥Æ¡¼¥Ö¥ë¥Ø¥Ã¥À¡¼¤Î¿§¤¬Ìµ¸ú¤Ç¤¹
+Invalid color for table text background: ¥Æ¡¼¥Ö¥ë¥Æ¥­¥¹¥È¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹
+Invalid color for event popup background: ¥¤¥Ù¥ó¥È¥İ¥Ã¥×¥¢¥Ã¥×¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹
+Invalid color for event popup text: ¥¤¥Ù¥ó¥È¥İ¥Ã¥×¥¢¥Ã¥×¤Î¿§¤¬Ìµ¸ú¤Ç¤¹
+Invalid color for table cell background for today: º£Æü¤Î¥Æ¡¼¥Ö¥ë¥»¥ë¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹
+Color format should be '#RRGGBB': ¿§¤Ï '#RRGGBB'¤Î¥Õ¥©¡¼¥Ş¥Ã¥È¤ÇÀßÄê¤·¤Æ¤¯¤À¤µ¤¤
 
 
 ###############################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: ŠÈ’P‚Èà–¾‚ğ“ü—Í‚µ‚Ä‚¢‚Ü‚¹‚ñ
-You have not entered a valid time of day: —LŒø‚ÈŠÔ‚ğ“ü—Í‚µ‚Ä‚¢‚Ü‚¹‚ñ
-The time you have entered begins before your preferred work hours.  Is this correct?: ‹L“ü‚µ‚½ŠÔ‚Í’Êí‹Î–±ŠÔ‘Ñ‚æ‚è‚à‘‚¢‚Å‚·‚ª—Ç‚¢‚Å‚·‚©?
+You have not entered a Brief Description: ´ÊÃ±¤ÊÀâÌÀ¤òÆşÎÏ¤·¤Æ¤¤¤Ş¤»¤ó
+You have not entered a valid time of day: Í­¸ú¤Ê»ş´Ö¤òÆşÎÏ¤·¤Æ¤¤¤Ş¤»¤ó
+The time you have entered begins before your preferred work hours.  Is this correct?: µ­Æş¤·¤¿»ş´Ö¤ÏÄÌ¾ï¶ĞÌ³»ş´ÖÂÓ¤è¤ê¤âÁá¤¤¤Ç¤¹¤¬ÎÉ¤¤¤Ç¤¹¤«?
 
 
 ###############################################
 # Page: includes/js/edit_layer.php
 #
-Invalid color: –³ŒøF
-
-
-###############################################
-# Page: includes/js/pref.php
-#
+Invalid color: Ìµ¸ú¿§
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the event detailed below.: ‚±‚ê‚ÍˆÈ‰º‚ÌƒCƒxƒ“ƒg‚ÌƒŠƒ}ƒCƒ“ƒ_[‚Å‚·
-Reminder: ƒŠƒ}ƒCƒ“ƒ_[
+This is a reminder for the event detailed below.: ¤³¤ì¤Ï°Ê²¼¤Î¥¤¥Ù¥ó¥È¤Î¥ê¥Ş¥¤¥ó¥À¡¼¤Ç¤¹
+Reminder: ¥ê¥Ş¥¤¥ó¥À¡¼
