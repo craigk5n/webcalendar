@@ -1,453 +1,411 @@
-<html>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta http-equiv="Content-type" content="text/html;charset=iso-8859-1" />
 <title>WebCalendar User Manual</title>
 <style type="text/css">
+body {
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+}
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 p {
-  font-family: arial;
-  margin: 10px;
+	margin: 10px;
 }
+dl,
 ul {
-  font-family: arial;
-  margin-left: 10px;
-}
-h1 {
-  font-family: arial;
+	margin-left: 10px;
 }
 h2 {
-  font-family: arial;
-  background-color: #999;
-  padding: 5px;
+	background-color: #191970;
+	color: #FFFFFF;
+	padding: 5px;
 }
 h3 {
-  font-family: arial;
-  padding: 5px;
-}
-dl{
-  margin-left: 10px;
+	padding: 5px;
 }
 dt {
-  font-family: arial;
-  font-weight: bold;
-  margin-top: 10px;
+	font-weight: bold;
+	margin-top: 10px;
 }
-dd {
-  font-family: arial;
+pre {
+	font-family: courier, monospace;
+	font-size: 14px;
+	border: 1px solid #0000FF;
+	background-color: #EEEEFF;
+	padding: 4px;
+	margin-left: 25px;
+	margin-right: 25px;
 }
-blockquote {
-  font-family: courier;
-  background: #c0c0c0;
-  padding: 10px;
+.tip {
+	font-weight: bold;
+	background-color: #FFFF00;
+	padding: 2px;
 }
-.screenshot {
-  margin: 15px;
+.note {
+	font-weight: bold;
+	background-color: #87CEFA;
+	padding: 2px;
+}
+hr {
+	margin-bottom: 7px;
+}
+.valid {
+	height: 31px;
+	width: 88px;
+	border-width: 0px;
+}
+.top {
+	text-align: right;
 }
 </style>
 </head>
-<body bgcolor="#ffffff">
-
+<body>
 <h1>WebCalendar User Manual</h1>
 
-<p>
-<b>Document Version:</b> $Id$ <br>
-<b>WebCalendar Version:</b> 0.9.42 <br>
-</p>
-
+<p><strong>WebCalendar Version:</strong> 0.9.45</p><br />
 
 <h2>Table of Contents</h2>
-
-<p>
 <ul>
-<li><a href="#intro">Introduction</a>
-<li><a href="#users">Users and Events</a>
-<li><a href="#repeat">Repeating Events</a>
-<li><a href="#publicaccess">Public Access</a>
-<li><a href="#subscriptions">Remote Subscriptions</a>
-<li><a href="#external">External Users</a>
-<li><a href="#nonuser">NonUser Calendars</a>
-<li><a href="#categories">Categories</a>
-<li><a href="#views">Views</a>
-<li><a href="#groups">Groups</a>
-<li><a href="#layers">Layers</a>
-<li><a href="#boss">Assisant/Boss</a>
-<li><a href="#pref">Preferences</a>
-<li><a href="#faq">FAQ</a>
-<li><a href="#licensing">Licensing</a>
-<li><a href="#help">Getting Help</a>
-<li><a href="#glossary">Glossary</a>
-<li><a href="#history">History</a>
+	<li><a href="#intro">Introduction</a></li>
+	<li><a href="#users">Users and Events</a></li>
+	<li><a href="#repeat">Repeating Events</a></li>
+	<li><a href="#publicaccess">Public Access</a></li>
+	<li><a href="#subscriptions">Remote Subscriptions</a></li>
+	<li><a href="#external">External Users</a></li>
+	<li><a href="#nonuser">NonUser Calendars</a></li>
+	<li><a href="#categories">Categories</a></li>
+	<li><a href="#views">Views</a></li>
+	<li><a href="#groups">Groups</a></li>
+	<li><a href="#layers">Layers</a></li>
+	<li><a href="#boss">Assisant/Boss</a></li>
+	<li><a href="#pref">Preferences</a></li>
+	<li><a href="#faq">FAQ</a></li>
+	<li><a href="#licensing">Licensing</a></li>
+	<li><a href="#help">Getting Help</a></li>
+	<li><a href="#glossary">Glossary</a></li>
+	<li><a href="#history">History</a></li>
 </ul>
-</p>
+<hr />
 
-
-</p><hr><h2><a name="intro">Introduction</a></h2><p>
-
-WebCalendar is a multi-user calendar system.  It is intended to be
+<h2><a name="intro">Introduction</a></h2>
+<p>WebCalendar is a multi-user calendar system.  It is intended to be
 simple to setup and use while still providing advanced features and
 flexibility to serve the purposes of a widely varied user base.
 It can be used to as an events calendar for an organization or
-as a scheduling system for an intranet.
-</p><p>
-WebCalendar is an open source application.  What does this
+as a scheduling system for an intranet.</p>
+
+<p>WebCalendar is an open source application.  What does this
 mean for you?  You get to use the application free of charge.
-(See the
-<a href="#license">licensing section</a> for more information
-on licensing.)
-Additionally, you have access to the WebCalendar developer
-community.  You can post questions to various forums and
-have knowledgeable developers respond.
+(See the <a href="#license">licensing section</a> for more information
+on licensing.) Additionally, you have access to the WebCalendar developer
+community.  You can post questions to various forums and have 
+knowledgeable developers respond.</p>
 
+<p>The primary site for WebCalendar development is at SourceForge.net:</p>
+<pre><a href="http://sourceforge.net/projects/webcalendar/">http://sourceforge.net/projects/webcalendar/</a></pre>
 
-</p><p>
-The primary site for WebCalendar development is at SourceForge.net:
-<blockquote>
-  <a href="http://sourceforge.net/projects/webcalendar/">http://sourceforge.net/projects/webcalendar/</a>
-</blockquote>
-<p>
-The first public release of WebCalendar was in December of 1999.
+<p>The first public release of WebCalendar was in December of 1999.</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
+<h2><a name="users">Users and Events</a></h2>
+<p>WebCalendar can be configured to operate in either single-user or
+multi-user mode.<br />
 
-</p><hr><h2><a name="users">Users and Events</a></h2><p>
+<span class="note">Note:</span> If your installation of WebCalendar is a 
+single-user configuration, a large portion of this document will not apply.
+</p>
 
-</p><p>
-WebCalendar can be configured to operate in either single-user or
-multi-user mode.
-
-<b>Note:</b>
-If your installation of WebCalendar is a single-user configuration,
-a large portion of this document will not apply.
-
-</p><p>
-All events entered into the system will be associated with one or
-more users.  There is no limit to the number of users that can use
+<p>All events entered into the system will be associated with one or
+more users. There is no limit to the number of users that can use
 WebCalendar (aside from system resources such as database space).
 
 Each user will have a status for the event: "Waiting for Approval,"
 "Approved" or "Rejected."  (If your system is configured to not require
-approvals, then all events will always be in the "Approved" status).
+approvals, then all events will always be in the "Approved" status).</p>
 
-</p><p>
-If you add an event with yourself as a participant, your status
+<p>If you add an event with yourself as a participant, your status
 will be "Approved" by default. If you include any other users, then
-their status will be "Waiting for Approval".
-If configured to do so, event participants will receive an
-email notification indicating that there is a new event
-waiting for approval.  (The user who creates the event will not
-receive this email notification since their status will automatically
-be set to "Approved.")
-When viewing the full details of an event, the status of
-event participants will be designated as seen below:
+their status will be "Waiting for Approval". If configured to do so, 
+event participants will receive an email notification indicating that 
+there is a new event waiting for approval. (The user who creates the 
+event will not receive this email notification since their status will 
+automatically be set to "Approved.") When viewing the full details of an 
+event, the status of event participants will be designated as seen below:</p>
 
-<div class="screenshot">
-<img style="alignment: center" src="event_status.gif" alt="Event Status Screen Shot">
-</div>
+<img src="event_status.gif" alt="Event Status Screenshot" />
+<br /><br />
 
-
-</p><p>
-Notes:
+<span class="note">Notes:</span>
 <ul>
-<li>If you did not create the event, then you can only
+	<li>If you did not create the event, then you can only
   delete the event from your own calendar.  Other users
-  will still have the event on their calendar.
-<li>If you did not create the event, you will not be
+  will still have the event on their calendar.</li>
+	<li>If you did not create the event, you will not be
   able to edit the event.  Only the user who created the
-  event can edit it.
-<li>If you see an event on another user's calendar that is not
+  event can edit it.</li>
+	<li>If you see an event on another user's calendar that is not
   on your calendar, the event details page will provide a link
-  to add the event to your calendar.
-<li>All changes to an event (accepting/rejecting, updating, deleting)
-  are logged and are viewable to the system administrator.
+  to add the event to your calendar.</li>
+	<li>All changes to an event (accepting/rejecting, updating, deleting)
+	are logged and are viewable to the system administrator.</li>
 </ul>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
-</p><hr><h2><a name="repeat">Repeating Events</a></h2><p>
+<h2><a name="repeat">Repeating Events</a></h2>
 
-Repeating events may be used to create recurring event entries
-on your calendar.
-You may select an end date so that the event stops recurring
-at the specified date.
-The "Frequency" field allows you to specify how often the
-event occurs.  A "0" or "1" in the "Frequency" field will indicate
-the event occurs every time (every day for daily, every month for
-monthly, etc.)
-A "2" in the "Frequency" field will indicate the event should
-happen every other time (every other day for daily, every other
-month for monthly, etc.)
+<p>Repeating events may be used to create recurring event entries
+on your calendar. You may select an end date so that the event stops 
+recurring at the specified date. The "Frequency" field allows you to 
+specify how often the event occurs. A "0" or "1" in the "Frequency" 
+field will indicate the event occurs every time (every day for daily, 
+every month for monthly, etc.) A "2" in the "Frequency" field will 
+indicate the event should happen every other time (every other day for 
+daily, every other month for monthly, etc.)</p>
 
-</p><h3>Daily</h3><p>
-If you select "Daily", the event will repeat at the same time
-every day until the end date (if specified).
+<h3>Daily</h3>
+<p>If you select "Daily", the event will repeat at the same time
+every day until the end date (if specified).</p>
 
-</p><h3>Weekly</h3><p>
-If you select "Weekly", the event will repeat every week
-on the days selected
-until the end date (if specified).
-You <b>must</b> select days in the "Repeat Days" section
-when using repeat "Weekly".
+<h3>Weekly</h3>
+<p>If you select "Weekly", the event will repeat every week
+on the days selected until the end date (if specified). You 
+<strong>must</strong> select days in the "Repeat Days" section
+when using repeat "Weekly".</p>
 
-</p><h3>Monthly (by day)</h3><p>
-If you select "Monthly (by day)", the event will repeat on the same
-weekday of the month every month
-until the end date (if specified).
+<h3>Monthly (by day)</h3>
+<p>If you select "Monthly (by day)", the event will repeat on the same
+weekday of the month every month until the end date (if specified).
 For example, if the initial date is the second Monday of the month,
-the event will repeat on every second Monday of each month.
-</p><p>
-<b>TIP:</b> This feature can be used to handle complicated
-repeating events like Thanksgiving, which is the fourth Thursday
-in November.  You would select the initial date to be the proper
-Thanksgiving date and then enter "12" for the "Frequency".
-This would tell WebCalendar that the event happens on the
-fourth Thursday of the month on every 12th month, starting
-in November.
+the event will repeat on every second Monday of each month.</p>
 
-</p><h3>Monthly (by day (from end))</h3><p>
-If you select "Monthly (by day(from end))", the event will repeat
+<p><span class="tip">TIP:</span> This feature can be used to handle 
+complicated repeating events like Thanksgiving, which is the fourth 
+Thursday in November. You would select the initial date to be the proper 
+Thanksgiving date and then enter "12" for the "Frequency".
+This would tell WebCalendar that the event happens on the fourth 
+Thursday of the month on every 12th month, starting in November.</p>
+
+<h3>Monthly (by day (from end))</h3>
+<p>If you select "Monthly (by day(from end))", the event will repeat
 on the same weekday of the month (counting back from the end of the month).
 For example, if the initial date is the last Friday of the month,
-the event will repeat on every last Friday of each month.
+the event will repeat on every last Friday of each month.</p>
 
-</p><h3>Monthly (by date)</h3><p>
-If you select "Monthly (by date)", the event will repeat on the
-same date of the month every month
-until the end date (if specified).
+<h3>Monthly (by date)</h3>
+<p>If you select "Monthly (by date)", the event will repeat on the
+same date of the month every month until the end date (if specified). 
 For example, if you the initial date is May 12th, then the event
-will repeat on June 12th and so on.
+will repeat on June 12th and so on.</p>
 
-</p><h3>Yearly</h3><p>
-If you select "Yearly", the event will repeat on the
-same date every year
-until the end date (if specified).
+<h3>Yearly</h3>
+<p>If you select "Yearly", the event will repeat on the same date every 
+year until the end date (if specified).</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
-</p><hr><h2><a name="publicaccess">Public Access</a></h2><p>
+<h2><a name="publicaccess">Public Access</a></h2>
+<p>If your system is not configured to allow Public Access, you may skip 
+this section.</p>
 
-If your system is not configured to allow Public Access,
-you may skip this section.
-</p><p>
-Public Access is useful if you want to publish part of the calendar to 
-a larger userbase that isn't allowed to edit it.
-</p><p>
-If Public Access is turned on, an extra user will show up when creating a new event:
-the 'Public Access' user. To make an event visible to users that aren't logged in, 
-simply include the 'Public Access' user to the list of participants. 
-</p><p>
-Note: Setting the 'Access' field to 'Confidential' will still publish the event if 
-you include 'Public Access' in the event.
+<p>Public Access is useful if you want to publish part of the calendar to 
+a larger userbase that isn't allowed to edit it.</p>
 
-</p><hr><h2><a name="subscriptions">Remote Subscriptions</a></h2><p>
+<p>If Public Access is turned on, an extra user will show up when 
+creating a new event: the 'Public Access' user. To make an event visible 
+to users that aren't logged in, simply include the 'Public Access' user 
+to the list of participants.</p>
 
-If your system is not configured to allow Remote Subscriptions,
-you may skip this section.
-</p><p>
-When Remote Subscriptions are enabled for the site, a user can enable it for his account
-by setting 'Admin', 'Preferences', 'Subscribe/Publish' to 'Yes'.
-</p><p>
-If a user has this option turned on, the URL listed there can be used by external 
-iCalendar-aware applications (like Mozilla Calendar or Apple iCal) to view the calendar.
-</p><p>
-The 'Public Access' calendar, if any, can be enabled by the administrator, and accessed
-using that URL with username '__public__'.
+<p>Note: Setting the 'Access' field to 'Confidential' will still publish 
+the event if you include 'Public Access' in the event.</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
-</p><hr><h2><a name="external">External Users</a></h2><p>
+<h2><a name="subscriptions">Remote Subscriptions</a></h2>
+<p>If your system is not configured to allow Remote Subscriptions,
+you may skip this section.</p>
 
-If your system is not configued to allow External Users,
-you may skip this section.
-</p><p>
-External Users<sup><a href="#g_externaluser">*</a></sup>
-allows you to add participants to an event
-that are not WebCalendar users.  When adding or editing
-an event, you will see a free text area titled "External Participants."
-In this area you can enter names of participants.
-If your system is configued to allow it, the External Participants
-will receive email notifications and email reminders if their
-email address was specified.
-</p><p>
-The proper way to specify External Participants is one name per line
-with an option email address.  All of the following would be
-legal entries:
-<blockquote>
-Joe Smith <br>
-Smith, Joe <br>
-Joe Smith &lt;jsmith@xxx.com&gt; <br>
-&lt;jsmith@xxx.com&gt;
-</blockquote>
-When an email address is encountered (within the '&lt;' and '&gt;'),
-that user will receive email notifications and reminders.
+<p>When Remote Subscriptions are enabled for the site, a user can enable 
+it for his account by setting 'Admin', 'Preferences', 'Subscribe/Publish' 
+to 'Yes'.</p>
 
-</p><hr><h2><a name="nonuser">NonUser Calendars</a></h2><p>
+<p>If a user has this option turned on, the URL listed there can be used 
+by external iCalendar-aware applications (like Mozilla Calendar or Apple 
+iCal) to view the calendar.</p>
 
-NonUser Calendars<sup><a href="#g_nonuser">*</a></sup>
-allow you to maintain a calendar that is not
-associated with a user.  Users can then either view the calendar
-of the NonUser Calendar (if the system settings allow it) or add
-the NonCalendar user as a layer to their own calendar.
-(See <a href="#layers">Layers</a> documentation.)
+<p>The 'Public Access' calendar, if any, can be enabled by the administrator, 
+and accessed using that URL with username '__public__'.</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
-</p><p>
+<h2><a name="external">External Users</a></h2>
+<p>If your system is not configued to allow External Users, you may skip this 
+section.</p>
 
-This can be used for resource management such as scheduling usage
+<p>External Users<a href="#g_externaluser">*</a> allows you to 
+add participants to an event that are not WebCalendar users. When adding 
+or editing an event, you will see a free text area titled "External 
+Participants." In this area you can enter names of participants. 
+If your system is configued to allow it, the External Participants 
+will receive email notifications and email reminders if their 
+email address was specified.</p>
+
+<p>The proper way to specify External Participants is one name per line
+with an option email address.  All of the following would be legal entries:</p>
+<pre>Joe Smith
+Smith, Joe
+Joe Smith &lt;jsmith@xxx.com&gt;
+&lt;jsmith@xxx.com&gt;</pre>
+
+<p>When an email address is encountered (within the '&lt;' and '&gt;'),
+that user will receive email notifications and reminders.</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
+
+<h2><a name="nonuser">NonUser Calendars</a></h2>
+<p>NonUser Calendars<a href="#g_nonuser">*</a> allow you to 
+maintain a calendar that is not associated with a user. Users can then 
+either view the calendar of the NonUser Calendar (if the system settings 
+allow it) or add the NonCalendar user as a layer to their own calendar.
+(See <a href="#layers">Layers</a> documentation.)</p>
+
+<p>This can be used for resource management such as scheduling usage
 of a conference room.  If used in combination with <a href="#views">views</a>,
 you could quickly view the availability of multiple conference rooms
-on the same page.
+on the same page.</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
-</p><hr><h2><a name="categories">Categories</a></h2><p>
+<h2><a name="categories">Categories</a></h2>
+<p>If your system is not configured to use categories, you may skip this 
+section.</p>
 
-If your system is not configured to use categories,
-you may skip this section.
-</p><p>
-
-Events may be associated with a category, but it is not required.
+<p>Events may be associated with a category, but it is not required.
 Categories can be user-level or global.  Each user maintains his
 own list of user-level categories and the system administrator
-maintains the list of global categories.
-
-</p><p>
-When creating or editing event, you may specify the category for the event.
+maintains the list of global categories.</p>
+<p>When creating or editing event, you may specify the category for the event.
 If you include participants other than yourself, the category that
 other users will see will be "None" (if you selected one of your
-user-level categories) or the same category you selected
-(if you selected a global category).
+user-level categories) or the same category you selected (if you selected a 
+global category).</p>
 
-
-</p><p>
-When viewing the calendar (month, week or day), you will see
+<p>When viewing the calendar (month, week or day), you will see
 a selection box near the top of the page that allows you to
 filter events based on a category.  When you select a category
 from this menu, only events associated with that category will
-appear in your calendar.
+appear in your calendar.</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
+<h2><a name="views">Views</a></h2>
+<p>Views<a href="#g_view">*</a> allow you to see the calendar of 
+more than one user (or NonCalendar User) at a time. You can create a new 
+view by using the "Manage Views" link at the bottom of each page. There 
+are a handful of different types of views summarized below.</p>
 
-</p><hr><h2><a name="views">Views</a></h2><p>
+<h3>Day</h3>
+<p>The "Day" view shows each users' availablity for the selected day.</p>
+	<img src="day_view.gif" alt="Day View Screenshot" />
 
-Views<sup><a href="#g_view">*</a></sup>
-allow you to see the calendar of more than one user (or NonCalendar
-User) at a time.
-You can create a new view by using the "Manage Views" link at the
-bottom of each page.
-There are a handful of different types of views
-summarized below.
+<h3>Week (Users horizontal)</h3>
+	<img src="week_view_h.gif" alt="Week (Users Horizontal) Screenshot" />
 
-</p><h3>Day</h3><p>
-The "Day" view shows each users' availablity for the selected day.
+<h3>Week (Users vertical)</h3>
+	<img src="week_view_v.gif" alt="Week (Users Vertical) Screenshot" />
 
-<div class="screenshot">
-<img src="day_view.gif" alt="Day View Screen Shot">
-</div>
+<h3>Week (Timebar)</h3>
+	<img src="week_view_t.gif" alt="Week (Timebar) Screenshot" />
 
-</p><h3>Week (Users horizontal)</h3><p>
-<div class="screenshot">
-<img src="week_view_h.gif" alt="Week (Users Horizontal) Screen Shot">
-</div>
+<h3>Month (Side By Side)</h3>
+	<img src="month_view.gif" alt="Month (Side By Side) Screenshot" />
 
-</p><h3>Week (Users vertical)</h3><p>
-<div class="screenshot">
-<img src="week_view_v.gif" alt="Week (Users Vertical) Screen Shot">
-</div>
+<h3>Month (On Same Calendar)</h3>
+	<img src="month_view_2.gif" alt="Month (On Same Calendar) Screenshot" />
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
-</p><h3>Week (Timebar)</h3><p>
-<div class="screenshot">
-<img src="week_view_t.gif" alt="Week (Timebar) Screen Shot">
-</div>
+<h2><a name="groups">Groups</a></h2>
+<p>If you system is not configured to use Groups<a href="#g_group">*</a>, you may skip this section.</p>
 
-</p><h3>Month (Side By Side)</h3><p>
-<div class="screenshot">
-<img src="month_view.gif" alt="Month (Side By Side) Screen Shot">
-</div>
-
-</p><h3>Month (On Same Calendar)</h3><p>
-<div class="screenshot">
-<img src="month_view_2.gif" alt="Month (On Same Calendar) Screen Shot">
-</div>
-
-
-</p><hr><h2><a name="groups">Groups</a></h2><p>
-
-If you system is not configured to use Groups<sup><a href="#g_group">*</a></sup>, you may skip this section.
-
-</p><p>
-Groups allow systems with many users to divide users into smaller
-groups of users.
-Additionally, if configured to do so, users will only be able
+<p>Groups allow systems with many users to divide users into smaller groups of 
+users. Additionally, if configured to do so, users will only be able
 to access other users in the same group(s) either when viewing other
-users' calendars or when selecting participants for an event.
-</p><p>
-When adding or editing events, a "Select..." button will be available.
+users' calendars or when selecting participants for an event.</p>
+
+<p>When adding or editing events, a "Select..." button will be available.
 This button will popup a user selection window that will allow
-event participants to be selected by group.
+event participants to be selected by group.</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
-</p><hr><h2><a name="layers">Layers</a></h2><p>
+<h2><a name="layers">Layers</a></h2>
+<p>Layers<a href="#g_layer">*</a> allow you to overlay another 
+user's calendar on top of your calendar. You can add a new layer to your 
+calendar by selecting the "Edit Layers" link at the bottom of each page.</p>
 
-Layers<sup><a href="#g_layer">*</a></sup>
-allow you to overlay another user's calendar on top of your
-calendar.  You can add a new layer to your calendar
-by selecting the "Edit Layers" link at the bottom of each page.
-</p><p>
-When adding the layer, you can choose a color.  When an event
+<p>When adding the layer, you can choose a color.  When an event
 from the layer specified in the layer is displayed on your calendar,
-the text of the event will appear in this color.
+the text of the event will appear in this color.</p>
 
-</p><p>
-<b>TIP:</b> On slow servers, you may find that layers cause the
-month view to be considerably slower.  Set your default view
-to be "Week" rather than "Month" in your <a href="#pref">Preferences</a>.
+<p><span class="tip">TIP:</span> On slow servers, you may find that layers 
+cause the month view to be considerably slower. Set your default view
+to be "Week" rather than "Month" in your <a href="#pref">Preferences</a>.</p>
 
-</p><p>
-<b>TIP:</b> If you have more than one configuration of users that you would
-like to use with layers, you can create more
-than one "Daily" <a href="#views">View</a> to do this.
+<p><span class="tip">TIP:</span> If you have more than one configuration of 
+users that you would like to use with layers, you can create more than one 
+"Daily" <a href="#views">View</a> to do this.</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
-</p><hr><h2><a name="boss">Assisant/Boss</a></h2><p>
+<h2><a name="boss">Assisant/Boss</a></h2>
+<p>If your system is not configured to allow Assistant Mode, then you may skip 
+this section.</p>
 
-If your system is not configured to allow Assistant Mode, then
-you may skip this section.
-</p><p>
-Assistant Mode allows one user (the Assistant<sup><a href="#g_assistant">*</a></sup>) to help manage the
-calendar of another user (the Boss<sup><a href="#g_boss">*</a></sup>).  The Boss creates the
-relationship in the calendar by selecting the "Assistants" link
-at the bottom of each page.
-</p><p>
-When the Boss has selected one or more assistants, each assitant
+<p>Assistant Mode allows one user (the Assistant<a href="#g_assistant">*</a>) to help manage the calendar of another user (the Boss<a href="#g_boss">*</a>).  The Boss creates the relationship in the calendar by selecting the "Assistants" link at the bottom of each page.</p>
+
+<p>When the Boss has selected one or more assistants, each assitant
 will see a new "Manage Calendar of" link at the bottom of the page.
 This link will quickly bring the Assistant to a view of the Boss' calendar.
 When adding an event from this page, the default participant will
-be only the Boss.
+be only the Boss.</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
-
-</p><hr><h2><a name="pref">Preferences</a></h2><p>
-
-Various components of WebCalendar can be customized
-by modifying your user preferences.
-
-</p>
-<p>
+<h2><a name="pref">Preferences</a></h2>
+<p>Various components of WebCalendar can be customized by modifying your 
+user preferences.</p>
+<h3>Settings</h3>
 <dl>
-
-<dt><h3>Settings</h3></dt>
-
 <dt style="padding-left: 20px;">Language</dt>
- <dd>Specify which language you would like to use in WebCalendar</dd>
+<dd>Specify which language you would like to use in WebCalendar</dd>
 
 <dt style="padding-left: 20px;">Timezone Offset</dt>
- <dd>Specify how your local time differs from the time where the
+<dd>Specify how your local time differs from the time where the
      WebCalendar server is located</dd>
 
 <dt style="padding-left: 20px;">Preferred View</dt>
-  <dd>Specify if you would prefer to see the day, week, month, or year
+<dd>Specify if you would prefer to see the day, week, month, or year
    after loggin in</dd>
 
 <dt style="padding-left: 20px;">Display weekends in view</dt>
-  <dd>Specify if you want Saturdays and Sundays to appear in your
+<dd>Specify if you want Saturdays and Sundays to appear in your
   calendar when viewing a month or week</dd>
 
 <dt style="padding-left: 20px;">Date format</dt>
-  <dd>Specify how you would like dates to be displayed</dd>
+<dd>Specify how you would like dates to be displayed</dd>
 
 <dt style="padding-left: 20px;">Time format</dt>
-  <dd>Specify either 12-hour (3:45pm) or 24-hour (15:14) format</dd>
+<dd>Specify either 12-hour (3:45pm) or 24-hour (15:14) format</dd>
 
-<dt style="padding-left: 20px;">Time interval</td>
-  <dd>Specify how many minutes each time block represents in the
+<dt style="padding-left: 20px;">Time interval</dt>
+<dd>Specify how many minutes each time block represents in the
   day and week display</dd>
 
 <dt style="padding-left: 20px;">Auto-referesh calendars</dt>
@@ -477,9 +435,10 @@ by modifying your user preferences.
 <dt style="padding-left: 20px;">Default Category</dt>
   <dd>Specify the default category that should be selected when
   adding a new event</dd>
+</dl>
 
-<dt style="padding-left: 20px;"><h3>Email</h3></dt>
-
+<h3>Email</h3>
+<dl>
 <dt style="padding-left: 20px;">Event reminders</dt>
   <dd>Specify if you wish to receive email reminders for events
     that specify a reminder should be sent</dd>
@@ -497,22 +456,22 @@ by modifying your user preferences.
   removes an event from your calendar</dd>
 
 <dt style="padding-left: 20px;">Event rejected by participant</dt>
-  <dd>Specify if you with to be notified if a participant to
-  an event on your calendar has rejected the event</dd>
+<dd>Specify if you with to be notified if a participant to an event on your calendar has rejected the event</dd>
+</dl>
 
-<dt><h3>When I am the boss</h3></dt>
-
+<h3>When I am the boss</h3>
+<dl>
 <dt style="padding-left: 20px;">Email me event notification</dt>
-  <dd>Specify if you wish to receive email when your assistant adds
+<dd>Specify if you wish to receive email when your assistant adds
     an event to your calendar</dd>
 
 <dt style="padding-left: 20px;">I want to approve events</dt>
   <dd>Specify if you want to approve events added by any or your
    assistants</dd>
+</dl>
 
-<dt><h3>Colors</h3></dt>
-
-
+<h3>Colors</h3>
+<dl>
 <dt style="padding-left: 20px;">Document background</dt>
   <dd>Specify the background color of all pages</dd>
 
@@ -529,14 +488,13 @@ by modifying your user preferences.
 <dt style="padding-left: 20px;">Table cell background for weekend</dt>
   <dd>Specify the background color for table cells that
    represent a Saturday or Sunday</dd>
-
 </dl>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
-</p><hr><h2><a name="faq">FAQ</a></h2><p>
-
+<h2><a name="faq">FAQ</a></h2>
 <dl>
-
-<dt>Why do weeks start with Sunday instead of Monday?</dt>
+	<dt>Why do weeks start with Sunday instead of Monday?</dt>
 <dd>The default setup of WebCalendar is to start weeks on Sunday.
   Your system administator can change the system default setting.
   You can change the setting just for you in the
@@ -565,34 +523,31 @@ by modifying your user preferences.
   you to be aware of users that are in the same group (or groups)
   that you are in.  Make sure the user is in one of the same groups
   that you are in.</dd>
-
 </dl>
-</p>
 
-<p>
-<b>TIP:</b> WebCalendar setup and configuration issues are documented
-in the "WebCalendar System Administator's Guide".
+<p><span class="tip">TIP:</span> WebCalendar setup and configuration issues are documented in the "WebCalendar System Administator's Guide".</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
-</p><hr><h2><a name="licensing">Licensing</a></h2><p>
-WebCalendar is distributed under the open source
-<a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>.
-If you have questions about this license, please
-read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.
+<h2><a name="licensing">Licensing</a></h2>
+<p>WebCalendar is distributed under the open source 
+<a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>. 
+If you have questions about this license, please read their 
+<a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
-</p><hr><h2><a name="help">Getting Help</a></h2><p>
-Try the Help/Troubleshooting forum for WebCalendar, hosted
-at SourceForge.net:
-</p>
-<blockquote>
-<a href="http://sourceforge.net/forum/?forum_id=11588">http://sourceforge.net/forum/?forum_id=11588</a>
-</blockquote>
-<p>
-If you encounter a bug, please check the 
-<a href="http://sourceforge.net/tracker/?group_id=3870&atid=103870">list of open and pending bugs</a>.
-If you do not see anything similar, submit a new bug.
+<h2><a name="help">Getting Help</a></h2>
+<p>Try the Help/Troubleshooting forum for WebCalendar, hosted at 
+SourceForge.net:</p>
+<pre><a href="http://sourceforge.net/forum/?forum_id=11588">http://sourceforge.net/forum/?forum_id=11588</a></pre>
 
-</p><hr><h2><a name="glossary">Glossary</a></h2><p>
+<p>If you encounter a bug, please check the 
+<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870">list of open and pending bugs</a>. If you do not see anything similar, submit a new bug.</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 
+<h2><a name="glossary">Glossary</a></h2>
 <dl>
 
 <dt><a name="g_activitylog">Activity Log</a></dt>
@@ -648,12 +603,15 @@ If you do not see anything similar, submit a new bug.
   user <a href="#pref">Preferences</a>)</dd>
 
 </dl>
-
-</p><hr><h2><a name="history">History</a></h2><p>
-
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<!--
+<h2><a name="history">History</a></h2>
 <div style="margin: 15px">
 <pre>
 $Log$
+Revision 1.7  2004/11/17 13:30:33  musus
+making code validate & look a bit more snazzy
+
 Revision 1.6  2004/06/26 10:35:04  cknudsen
 Patch 972551: added sections for public access and remote subscriptions
 
@@ -674,7 +632,11 @@ First draft
 
 </pre>
 </div>
+-->
+<p>
+	<a href="http://validator.w3.org/check?uri=referer"><img 
+		src="http://www.w3.org/Icons/valid-xhtml10" 
+		alt="Valid XHTML 1.0!" class="valid" /></a>
 </p>
-
 </body>
 </html>

@@ -18,26 +18,22 @@ dt {
 	margin-left: 25px;
 	margin-top: 20px;
 }
-blockquote {
-	font-family: courier;
-	background: #C0C0C0;
-}
 .valid {
 	height: 31px;
 	width: 88px;
-	border: 0px;
+	border-width: 0px;
 }
 pre {
 	font-family: courier, monospace;
 	font-size: 14px;
-	border: 1px solid blue;
+	border: 1px solid #0000FF;
 	background-color: #EEEEFF;
 	padding: 4px;
 	margin-left: 25px;
 	margin-right: 25px;
 }
 tr {
-	background: #606080;
+	background-color: #606080;
 	color: #F0F0F0;
 }
 td {
@@ -69,6 +65,14 @@ th {
 hr {
 	margin-bottom: 7px;
 }
+h2 {
+	background-color: #191970;
+	color: #FFFFFF;
+	padding: 5px;
+}
+.top {
+	text-align: right;
+}
 </style>
 </head>
 <body>
@@ -93,6 +97,7 @@ hr {
 	<li><a href="#license">Licensing</a></li>
 	<li><a href="#glossary">Glossary</a></li>
 </ul>
+<hr />
 
 <a name="intro"></a>
 <h2>Introduction</h2>
@@ -184,7 +189,7 @@ hr {
 		</ul>
 	</li>
 </ul>
-<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="requirements"></a>
@@ -236,7 +241,7 @@ hr {
 		PHP standalone executable.  If it's there, you can use
 		the following command to see what version of PHP you have:</p>
 	<pre>/usr/bin/php -v</pre>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="fileunpacking"></a>
@@ -250,7 +255,7 @@ hr {
 		prefer a directory name like <tt>calendar</tt> or <tt>webcalendar</tt>.
 		Keep in mind that unless you remap the directory (via your web server's
 		configuration settings), it will be part of the URL for the calendar.</p>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="dbsetup"></a>
@@ -327,7 +332,7 @@ input path/table-ibase.sql;</strong></pre>
 		When it comes time to create the tables,
 		the <tt>tables-postgres.sql</tt> file should work for most
 		databases.</p>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="appsetup"></a>
@@ -439,7 +444,7 @@ input path/table-ibase.sql;</strong></pre>
 		during installation has the username of "admin" and a password
 		of "admin".   You should create a new admin account and delete this
 		one for security reasons.</p>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="users"></a>
@@ -456,7 +461,7 @@ input path/table-ibase.sql;</strong></pre>
 		<li>Click on the "Save" button</li>
 	</ol>
 	<p><span class="tip">TIP:</span> On a single-user system, you do not need to create any users.</p>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="reminders"></a>
@@ -496,7 +501,7 @@ input path/table-ibase.sql;</strong></pre>
 		the crontab entry of a user.</p>
 	<pre><tt>1 * * * * wget http://yourserverhere/webcalendardirectoryhere/tools/send_reminders.php &gt; /dev/null</tt></pre>
    	<p>You should test this from the command line first to make sure your setup is correct. If you do not have <tt>wget</tt> installed on your system, you can use any tool (lynx, perl script, etc.) that is capable of making an HTTP request for this.</p>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="systemsettings"></a>
@@ -630,7 +635,7 @@ input path/table-ibase.sql;</strong></pre>
 		<dt>Event popup text</dt>
 			<dd>Specifies the text color of event popup areas</dd>
 	</dl>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="siteextras"></a>
@@ -738,7 +743,7 @@ input path/table-ibase.sql;</strong></pre>
 			</td></tr>
 		</table>
 	</center>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="faq"></a>
@@ -892,7 +897,7 @@ input path/table-ibase.sql;</strong></pre>
    		as big as WebCalendar itself, so I'm partial to my leaner php-dbi.php
    		solution.</dd>
 	</dl>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="trouble"></a>
@@ -1006,7 +1011,7 @@ cal_firstname, cal_is_admin ) VALUES
 			</ul>
 		</dd>
 	</dl>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="help"></a>
@@ -1017,7 +1022,7 @@ cal_firstname, cal_is_admin ) VALUES
 		<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870">list of open and pending bugs</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
 		If you do <strong>not</strong> see anything similar, submit a new bug.
 	</p>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="license"></a>
@@ -1027,7 +1032,7 @@ cal_firstname, cal_is_admin ) VALUES
 		If you have questions about this license, please
 		read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl-faq.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
 	</p>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="glossary"></a>
@@ -1095,11 +1100,14 @@ cal_firstname, cal_is_admin ) VALUES
   		events are displayed in blocks of time (set in
   		user <a href="#pref">Preferences</a>)</dd>
 	</dl>
-	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 
 <!--
 History of changes to this document.  No need to show users this....
 $Log$
+Revision 1.32  2004/11/17 13:30:33  musus
+making code validate & look a bit more snazzy
+
 Revision 1.31  2004/11/16 22:57:42  musus
 making valid
 
