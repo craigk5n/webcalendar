@@ -1,4 +1,7 @@
 Version 0.9.31dev (???)
+  - Patch 435383 from Franz Sedlmaier for bug 435379:
+    Notification for deleting events was not working.  Don't send
+    the notification to the person deleting the event.
   - Patch 435367 from Franz Sedlmaier:
     Allow user to override warning about conflicting events and save
     event anyway.
