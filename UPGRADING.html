@@ -2,7 +2,9 @@
 
 <H2>WebCalendar Upgrading Notes</H2>
 
-Below are the steps needed to upgrade from a previous version:
+Below are the steps needed to upgrade from a previous version.
+If you are more than one version behind, start from the bottom
+and work towards the top of this page.
 
 <P><HR><P><B>To upgrade to 0.9.43 from 0.9.42 or older:</B>
 <P>
@@ -250,8 +252,9 @@ Below are the steps needed to upgrade from a previous version:
       cal_last_sent INT NOT NULL DEFAULT 0,
       PRIMARY KEY ( cal_id, cal_name, cal_event_date )
     );
-
+  </PRE></BLOCKQUOTE>
   For Oracle, the SQL is:
+  <BLOCKQUOTE><PRE>
     CREATE TABLE webcal_site_extras (
       cal_id INT DEFAULT '0' NOT NULL,
       cal_name VARCHAR(25) NOT NULL,
