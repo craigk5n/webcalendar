@@ -1,10 +1,11 @@
 <?php
 include_once 'includes/init.php';
 
-if (($user != $login) && $is_nonuser_admin)
+if (($user != $login) && $is_nonuser_admin) {
   load_user_layers ($user);
-else
+} else {
   load_user_layers ();
+}
 
 load_user_categories ();
 
@@ -19,20 +20,21 @@ $prevmonth = date ( "m", $prev );
 //$prevdate = date ( "Ymd" );
 
 if ( ! empty ( $bold_days_in_year ) && $bold_days_in_year == 'Y' ) {
-	$boldDays = true;
-	$startdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
-	$enddate = sprintf ( "%04d%02d31", $nextyear, $nextmonth );
+  $boldDays = true;
+  $startdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
+  $enddate = sprintf ( "%04d%02d31", $nextyear, $nextmonth );
 } else {
-	$boldDays = false;
-	$startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
-	$enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
+  $boldDays = false;
+  $startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
+  $enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
 }
 
 $HeadX = '';
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=month.php?$u_url" .
-    "year=$thisyear&amp;month=$thismonth$caturl" . ( ! empty ( $friendly ) ? "&amp;friendly=1" : "") . "\" />\n";
+    "year=$thisyear&amp;month=$thismonth$caturl" . 
+    ( ! empty ( $friendly ) ? "&amp;friendly=1" : "") . "\" />\n";
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
@@ -58,10 +60,12 @@ display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth" );
     echo "<br />\n";
     echo $user_fullname;
   }
-  if ( $is_nonuser_admin )
+  if ( $is_nonuser_admin ) {
     echo "<br />-- " . translate("Admin mode") . " --";
-  if ( $is_assistant )
+  }
+  if ( $is_assistant ) {
     echo "<br />-- " . translate("Assistant mode") . " --";
+  }
 ?></span>
 <?php
   if ( $categories_enabled == "Y" && (!$user || ($user == $login || $is_assistant ))) {
@@ -70,32 +74,32 @@ display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth" );
   }
 ?>
 </div>
-<br /><br /><br />
 
 <table class="main" style="clear:both;" cellspacing="0" cellpadding="0">
 <tr>
-	<?php if ( $WEEK_START == 0 ) { ?>
-		<th><?php etranslate("Sun")?></th>
-	<?php } ?>
-	<th><?php etranslate("Mon")?></th>
-	<th><?php etranslate("Tue")?></th>
-	<th><?php etranslate("Wed")?></th>
-	<th><?php etranslate("Thu")?></th>
-	<th><?php etranslate("Fri")?></th>
-	<th><?php etranslate("Sat")?></th>
-	<?php if ( $WEEK_START == 1 ) { ?>
-		<th><?php etranslate("Sun")?></th>
-	<?php } ?>
+ <?php if ( $WEEK_START == 0 ) { ?>
+  <th><?php etranslate("Sun")?></th>
+ <?php } ?>
+ <th><?php etranslate("Mon")?></th>
+ <th><?php etranslate("Tue")?></th>
+ <th><?php etranslate("Wed")?></th>
+ <th><?php etranslate("Thu")?></th>
+ <th><?php etranslate("Fri")?></th>
+ <th><?php etranslate("Sat")?></th>
+ <?php if ( $WEEK_START == 1 ) { ?>
+  <th><?php etranslate("Sun")?></th>
+ <?php } ?>
 </tr>
 <?php
 
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.
 //$sun = get_sunday_before ( $thisyear, $thismonth, 1 );
-if ( $WEEK_START == 1 )
+if ( $WEEK_START == 1 ) {
   $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
-else
+} else {
   $wkstart = get_sunday_before ( $thisyear, $thismonth, 1 );
+}
 // generate values for first day and last day of month
 $monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
 $monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
@@ -116,22 +120,28 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
       $thiswday = date ( "w", $date );
       $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-      if ( empty ( $WEEKENDBG ) ) $is_weekend = false;
+      if ( empty ( $WEEKENDBG ) ) {
+        $is_weekend = false;
+      }
       print "<td";
-	     $class = "";
+      $class = "";
       if ( date ( "Ymd", $date  ) == date ( "Ymd", $today ) ) {
         $class = "today";
       }
-	if ( $is_weekend ) {
-		if ( strlen ( $class ) ) $class .= " ";
-			$class .= "weekend";
-		}
-		if ( strlen ( $class ) ) echo " class=\"$class\"";
-	echo ">";
-       //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
+      if ( $is_weekend ) {
+        if ( strlen ( $class ) ) {
+          $class .= " ";
+        }
+        $class .= "weekend";
+      }
+      if ( strlen ( $class ) )  {
+      echo " class=\"$class\"";
+      }
+      echo ">";
+      //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       print_date_entries ( date ( "Ymd", $date ),
         ( ! empty ( $user ) ) ? $user : $login, false );
-	print "</td>\n";
+      print "</td>\n";
     } else {
       print "<td>&nbsp;</td>\n";
     }
@@ -141,21 +151,28 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 ?></table>
 <br />
 <?php
-	if ( ! empty ( $eventinfo ) ) echo $eventinfo;
+ if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
-	display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
+ display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
 <br />
-<a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="month.php?<?php
-			if ( $thisyear ) {
-				echo "year=$thisyear&amp;month=$thismonth&amp;";
-			}
-			if ( ! empty ( $user ) ) echo "user=$user&amp;";
-			if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
-		?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
+<a title="<?php etranslate("Generate printer-friendly version")?>" 
+class="printer" href="month.php?<?php
+   if ( $thisyear ) {
+    echo "year=$thisyear&amp;month=$thismonth&amp;";
+   }
+   if ( ! empty ( $user ) ) {
+     echo "user=$user&amp;";
+   }
+   if ( ! empty ( $cat_id ) ) {
+     echo "cat_id=$cat_id&amp;";
+   }
+  ?>friendly=1" target="cal_printer_friendly" 
+onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")
+  ?>'">[<?php etranslate("Printer Friendly")?>]</a>
 <?php
-	print_trailer ();
+ print_trailer ();
 ?>
 </body>
 </html>

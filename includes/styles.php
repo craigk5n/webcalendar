@@ -474,6 +474,7 @@ textarea {
 ?>.minical {
   font-size: 12px;
   border-collapse: collapse;
+  margin: 0px 0px 5px 0px;
 }
 .minical caption a {
   font-weight: bold;
