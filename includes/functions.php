@@ -901,7 +901,7 @@ function print_entry ( $id, $date, $time, $duration,
 
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
-    foreach ($layers as $layer)
+    if ($layers) foreach ($layers as $layer)
     {
         if($layer['cal_layeruser'] == $event_owner)
         {
@@ -955,7 +955,7 @@ function print_entry ( $id, $date, $time, $duration,
   echo "</a>";
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
-    foreach ($layers as $layer)
+    if ($layers) foreach ($layers as $layer)
     {
         if($layer['cal_layeruser'] == $event_owner)
         {
@@ -1208,7 +1208,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
     $sql .= "AND (webcal_entry_user.cal_login = '" . $user . "' ";
 
   if ( $user == $login && strlen ( $user ) > 0 ) {
-    foreach ($layers as $layer) {
+    if ($layers) foreach ($layers as $layer) {
       $layeruser = $layer['cal_layeruser'];
 
       $sql .= "OR webcal_entry_user.cal_login = '" . $layeruser . "' ";
@@ -2184,7 +2184,7 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
-    foreach ($layers as $layer) {
+    if ($layers) foreach ($layers as $layer) {
       if ( $layer['cal_layeruser'] == $event_owner ) {
         $hour_arr[$ind] .= "<span style=\"color:" .
           $layer['cal_color'] . ";\">";
@@ -2343,7 +2343,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
 
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
-    foreach ($layers as $layer) {
+    if ($layers) foreach ($layers as $layer) {
       if ( $layer['cal_layeruser'] == $event_owner) {
         $hour_arr[$ind] .= "<span style=\"color:" .
           $layer['cal_color'] . ";\">";
@@ -3307,7 +3307,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
 
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
-    foreach ($layers as $layer)
+    if ($layers) foreach ($layers as $layer)
     {
         if($layer['cal_layeruser'] == $event_owner)
         {
