@@ -205,9 +205,9 @@ function print_detailed_entry ( $id, $date, $time, $duration,
 
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
-    for($index = 0; $index < sizeof($layers); $index++) {
-      if($layers[$index]['cal_layeruser'] == $event_owner) {
-        echo("<font color=\"" . $layers[$index]['cal_color'] . "\">");
+    foreach ($layers as $layer) {
+      if($layer['cal_layeruser'] == $event_owner) {
+        echo("<font color=\"" . $layer['cal_color'] . "\">");
       }
     }
   }
