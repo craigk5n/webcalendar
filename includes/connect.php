@@ -103,7 +103,7 @@ if ( empty ( $login ) && $use_http_auth ) {
   }
 }
 //else if ( ! $single_user ) {
-//  echo "Error(3)! no login info found: " . dbi_error () . "<br /><b>SQL:</b> $sql";
+//  echo "Error(3)! no login info found: " . dbi_error () . "<br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
 //  exit;
 //}
 
@@ -173,8 +173,8 @@ if ( $readonly == "Y" ) {
 // just redirect to some other page.
 if ( $not_auth ) {
   /*
-  echo "<html><head><title>" . translate($application_name) . " " .
-    translate("Error") .  "</title></head><body>\n";
+  echo "<html>\n<head>\n<title>" . translate($application_name) . " " .
+    translate("Error") .  "</title>\n</head>\n<body>\n";
   echo "<h2>" . translate ( "Error" ) . "</h2>\n" .
     translate ( "You are not authorized" );
   */

@@ -31,9 +31,9 @@
 	
 	<?php etranslate("The following formats have been tested");?>:
 		<ul>
-			<li><?php etranslate("Palm Desktop 4"); ?>
-			<li><?php etranslate("Lotus Organizer 6"); ?>
-			<li><?php etranslate("Microsoft Outlook 2002"); ?>
+			<li><?php etranslate("Palm Desktop 4"); ?></li>
+			<li><?php etranslate("Lotus Organizer 6"); ?></li>
+			<li><?php etranslate("Microsoft Outlook 2002"); ?></li>
 		</ul>
 
 

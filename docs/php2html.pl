@@ -21,26 +21,26 @@
 
 
 sub print_function {
-  $out{$name} = "<H3><A NAME=\"$name\">$name</A></H3>\n";
-  $out{$name} .= "<TT>$ret_type $name ( $args )</TT><P>\n";
-  $out{$name} .= "$description<P>\n"
+  $out{$name} = "<h3><a name=\"$name\">$name</a></h3>\n";
+  $out{$name} .= "<tt>$ret_type $name ( $args )</tt><br /><br />\n";
+  $out{$name} .= "$description<br /><br />\n"
     if ( defined ( $description ) );
-  $out{$name} .= "Returns: <TT>$ret_type</TT><P>\n" .
-    "Input Parameters:<BR>\n<UL>\n";
+  $out{$name} .= "Returns: <tt>$ret_type</tt><br /><br />\n" .
+    "Input Parameters:<br />\n<ul>\n";
   for ( $i = 0; $i < $num_ivars; $i++ ) {
-    $out{$name} .= "<LI><TT>$vars[$i]</TT>";
+    $out{$name} .= "<li><tt>$vars[$i]</tt>";
     $out{$name} .= " - $comments[$i]" if ( defined ( $comments[$i] ) );
-    $out{$name} .= "\n";
+    $out{$name} .= "</li>\n";
   }
-  $out{$name} .= "</UL><P>\n";
+  $out{$name} .= "</ul><br /><br />\n";
   if ( $i < $num_vars ) {
-    $out{$name} .= "Output Parameters:<BR>\n<UL><P>\n";
+    $out{$name} .= "Output Parameters:<br />\n<ul><br /><br />\n";
     for ( ; $i < $num_vars; $i++ ) {
-      $out{$name} .= "<LI><TT>$vars[$i]</TT>";
+      $out{$name} .= "<li><tt>$vars[$i]</tt>";
       $out{$name} .= " - $comments[$i]" if ( defined ( $comments[$i] ) );
-      $out{$name} .= "\n";
+      $out{$name} .= "</li>\n";
     }
-    $out{$name} .= "</UL>\n";
+    $out{$name} .= "</ul>\n";
   }
 }
 
@@ -117,36 +117,36 @@ $now = sprintf "%02d-%s-%04d",
   $mday, $months[$mon], $year + 1900;
 
 print<<EOF;
-<HTML>
-<HEAD>
-<TITLE>ILib API Documentation</TITLE>
-</HEAD>
-<BODY BGCOLOR="#FFFFFF">
-<H2>Ilib Image Library</H2>
-<BLOCKQUOTE>
+<html>
+<head>
+<title>ILib API Documentation</title>
+</head>
+<body style="background-color:#FFFFFF;">
+<h2>Ilib Image Library</h2>
+<blockquote>
 $info
-</BLOCKQUOTE>
-<TABLE BORDER=0>
-<TR><TD>Home Page:</TD>
-  <TD><A HREF="http://www.radix.net/~cknudsen/Ilib/">http://www.radix.net/~cknudsen/Ilib/</A></TD></TR>
-<TR><TD>Author:</TD>
-  <TD><A HREF="http://www.radix.net/~cknudsen/">Craig Knudsen</A>, <A HREF="mailto:cknudsen\@radix.net">cknudsen\@radix.net</A></TD></TR>
-<TR><TD>Last updated:</TD><TD>$now</TD></TR>
-</TABLE>
-<H2>API Documentation</H2>
-<UL>
+</blockquote>
+<table style="border-width:0px;">
+<tr><td>Home Page:</td>
+  <td><a href="http://www.radix.net/~cknudsen/Ilib/">http://www.radix.net/~cknudsen/Ilib/</a></td></tr>
+<tr><td>Author:</td>
+  <td><a href="http://www.radix.net/~cknudsen/">Craig Knudsen</a>, <a href="mailto:cknudsen\@radix.net">cknudsen\@radix.net</a></td></tr>
+<tr><td>Last updated:</td><td>$now</td></tr>
+</table>
+<h2>API Documentation</h2>
+<ul>
 EOF
 
 foreach $name ( sort keys ( %out ) ) {
-  print "<LI><A HREF=\"#$name\">$name</A>\n";
+  print "<li><a href=\"#$name\">$name</a></li>\n";
 }
 
-print "</UL>\n<HR>\n";
+print "</ul>\n<hr />\n";
 
 foreach $name ( sort keys ( %out ) ) {
-  print "<P>\n" . $out{$name};
+  print "<br /><br />\n" . $out{$name};
 }
 
-print "</BODY>\n</HTML>\n";
+print "</body>\n</html>\n";
 
 exit 0;

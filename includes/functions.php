@@ -829,8 +829,8 @@ function print_entry ( $id, $date, $time, $duration,
   
   global $layers;
 
-
-  echo "<font size=\"-1\">";
+//TODO: the following section has 3 nested spans that need to be extracted, and then combined together separately from the PHP code.  Currently the code won't validate. I'm not yet comfortable enough editing PHP to make such a change. Craig, if you're willing to walk me through it, that would be terrific! Thanks.
+  echo "<span style=\"font-size:13px;\">";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $class = "layerentry";
@@ -854,7 +854,7 @@ function print_entry ( $id, $date, $time, $duration,
       echo "&user=" . $user;
     echo "\" onmouseover=\"window.status='" . translate("View this entry") .
       "'; show(event, '$divname'); return true;\" onmouseout=\"window.status=''; hide('$divname'); return true;\">";
-    echo "<img src=\"circle.gif\" width=\"5\" height=\"7\" style=\"border-width:0px;\" alt=\"view\" />";
+    echo "<img src=\"circle.gif\" style=\"width:5px; height:7px; border-width:0px;\" alt=\"view\" />";
   }
 
 
@@ -864,7 +864,7 @@ function print_entry ( $id, $date, $time, $duration,
     {
         if($layers[$index]['cal_layeruser'] == $event_owner)
         {
-            echo("<font color=\"" . $layers[$index]['cal_color'] . "\">");
+            echo("<span style=\"color:" . $layers[$index]['cal_color'] . "\">");
         }
     }
   }
@@ -905,15 +905,15 @@ function print_entry ( $id, $date, $time, $duration,
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
     echo htmlspecialchars ( $name );
-    echo ("</font>");
+    echo ("</span>"); //end color span
   }
 
   else
     echo htmlspecialchars ( $name );
 
   echo "</a>";
-  if ( $pri == 3 ) echo "</span>";
-  echo "</font><br />";
+  if ( $pri == 3 ) echo "</span>"; //end font-weight span
+  echo "</span><br />"; //end font-size span
   if ( ! $hide_icons ) {
     if ( $login != $user && $access == 'R' && strlen ( $user ) )
       $eventinfo .= build_event_popup ( $divname, $event_owner,
@@ -1171,7 +1171,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   // now order the results by time and by entry id.
   $sql .= " ORDER BY webcal_entry.cal_time, webcal_entry.cal_id";
 
-  //echo "<b>SQL:</b> $sql<br />";
+  //echo "<span style=\"font-weight:bold;\">SQL:</span> $sql<br />";
   
   $res = dbi_query ( $sql );
   if ( $res ) {
@@ -1647,14 +1647,12 @@ function icon_text ( $id, $can_edit, $can_delete ) {
   global $readonly, $is_admin;
   $ret = "<a href=\"view_entry.php?id=$id\">" .
     "<img src=\"view.gif\" alt=\"" . translate("View this entry") .
-    "\" style=\"border-width:0px;\"" .
-    " width=\"10\" height=\"10\" />" .
+    "\" style=\"border-width:0px; width:10px; height:10px;\" />" .
     "</a>";
   if ( $can_edit && $readonly == "N" )
     $ret .= "<a href=\"edit_entry.php?id=$id\">" .
       "<img src=\"edit.gif\" alt=\"" . translate("Edit entry") .
-      "\" style=\"border-width:0px;\"" .
-      " width=\"10\" height=\"10\" />" .
+      "\" style=\"border-width:0px; width:10px; height:10px;\" />" .
       "</a>";
   if ( $can_delete && ( $readonly == "N" || $is_admin ) )
     $ret .= "<a href=\"del_entry.php?id=$id\" " .
@@ -1663,8 +1661,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
       "\\n\\n" . translate("This will delete this entry for all users.") .
       "');\">" .
       "<img src=\"delete.gif\" alt=\"" . translate("Delete entry") .
-      "\" style=\"border-width:0px;\"" .
-      " width=\"10\" height=\"10\" />" .
+      "\" style=\"border-width:0px; width:10px; height:10px;\" />" .
       "</a>";
   return $ret;
 }
@@ -1704,24 +1701,24 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
     if ( strcmp ( $user, $GLOBALS["login"] ) )
       print "user=$user&";
     print "date=$date\">" .
-      "<img src=\"new.gif\" width=\"10\" height=\"10\" alt=\"" .
-      translate("New Entry") . "\" style=\"border-width:0px; text-align:right;\" />" .
+      "<img src=\"new.gif\" alt=\"" .
+      translate("New Entry") . "\" style=\"border-width:0px; width:10px; height:10px; text-align:right;\" />" .
       "</a>";
     $cnt++;
   }
   if ( ! $ssi ) {
-    echo "<font size=\"-1\"><a class=\"dayofmonth\" href=\"day.php?";
+    echo "<a style=\"font-size:13px;\" class=\"dayofmonth\" href=\"day.php?";
     if ( strcmp ( $user, $GLOBALS["login"] ) )
       echo "user=$user&";
-    echo "date=$date\">$day</a></font>";
+    echo "date=$date\">$day</a>";
     if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" &&
       date ( "w", $dateu ) == $GLOBALS["WEEK_START"] ) {
       echo "<a href=\"week.php?date=$date";
       if ( strcmp ( $user, $GLOBALS["login"] ) )
         echo "&user=$user";
-       echo "\" class=\"weeknumber\">";
-      echo "<font size=\"-2\" class=\"weeknumber\">(" .
-        translate("Week") . " " . week_number ( $dateu ) . ")</font></a>";
+       echo "\" style=\"font-size:10px;\" class=\"weeknumber\">";
+      echo "(" .
+        translate("Week") . " " . week_number ( $dateu ) . ")</a>";
     }
     print "<br />\n";
     $cnt++;
@@ -2050,8 +2047,8 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
     "date=$date" . ( $hour > 0 ? "&hour=$hour" : "" ) .
     ( $minute > 0 ? "&minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&defusers=$user&user=$user" ) .
-    "\"><img src=\"new.gif\" width=\"10\" height=\"10\" alt=\"" .
-    translate("New Entry") . "\" style=\"border-width:0px; text-align:right;\" />" .  "</a>";
+    "\"><img src=\"new.gif\" alt=\"" .
+    translate("New Entry") . "\" style=\"border-width:0px; width:10px; height:10px; text-align:right;\" />" .  "</a>";
 }
 
 
@@ -2094,6 +2091,8 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
+
+// TODO: The following area (similiar to the one earlier in this document) has several nested spans which need to be extracted & combined separate from the PHP code.
 
   // avoid php warning for undefined array index
   if ( empty ( $hour_arr[$ind] ) )
@@ -2165,12 +2164,12 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= "(" . translate("Private") . ")";
   } else if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-    $hour_arr[$ind] .= "</span>";
+    $hour_arr[$ind] .= "</span>"; //end color span
   } else {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
   }
 
-  if ( $pri == 3 ) $hour_arr[$ind] .= "</span>";
+  if ( $pri == 3 ) $hour_arr[$ind] .= "</span>"; //end font-weight span
     $hour_arr[$ind] .= "</a>";
   //if ( $DISPLAY_ICONS == "Y" ) {
   //  $hour_arr[$ind] .= icon_text ( $id, true, true );
@@ -2252,6 +2251,8 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
     $class = "entry";
 
 
+// TODO: The following section has several nested spans that need to be extracted & then combined separate from the PHP code.
+
   if ( ! $hide_icons ) {
     $hour_arr[$ind] .=
       "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
@@ -2312,13 +2313,13 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-    $hour_arr[$ind] .= "</span>";
+    $hour_arr[$ind] .= "</span>"; //end color span
   }
 
 
   else
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-  if ( $pri == 3 ) $hour_arr[$ind] .= "</span>";
+  if ( $pri == 3 ) $hour_arr[$ind] .= "</span>"; //end font-weight span
 
   if (!($hide_icons)) {
     $hour_arr[$ind] .= "</a>";
@@ -2475,7 +2476,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     }
   }
   if ( ! empty ( $hour_arr[9999] ) ) {
-    echo "<tr><td style=\"height:40px; background-color:$TODAYCELLBG;\">&nbsp;</td><td valign=\"top\" style=\"height:40px; background-color:$TODAYCELLBG;\">$hour_arr[9999]</td></tr>\n";
+    echo "<tr><td style=\"height:40px; background-color:$TODAYCELLBG;\">&nbsp;</td><td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG;\">$hour_arr[9999]</td></tr>\n";
   }
   $rowspan = 0;
   //echo "first_slot = $first_slot <br /> last_slot = $last_slot <br /> interval = $interval <br />";
@@ -2483,13 +2484,13 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     $time_h = (int) ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
     $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-    echo "<tr><th valign=\"top\" style=\"height:40px; width:14%; background-color:$THBG; color:$THFG;\" class=\"tableheader\">" .
+    echo "<tr><th style=\"vertical-align:top; height:40px; width:14%; background-color:$THBG; color:$THFG;\" class=\"tableheader\">" .
       $time . "</th>\n";
     if ( $rowspan > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
       if ( strlen ( $hour_arr[$i] ) ) {
-        echo "<td valign=\"top\" style=\"height:40px; background-color:$TODAYCELLBG;\">";
+        echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG;\">";
         if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );
         echo "$hour_arr[$i]</td>";
@@ -2505,12 +2506,12 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
       } else {
         $rowspan = $rowspan_arr[$i];
         if ( $rowspan > 1 ) {
-          echo "<td valign=\"top\" style=\"background-color:$TODAYCELLBG;\" rowspan=\"$rowspan\">";
+          echo "<td style=\"vertical-align:top; background-color:$TODAYCELLBG;\" rowspan=\"$rowspan\">";
           if ( $can_add && ! $hide_icons )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</td></tr>\n";
         } else {
-          echo "<td valign=\"top\" style=\"height:40px; background-color:$TODAYCELLBG;\">";
+          echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG;\">";
           if ( $can_add && ! $hide_icons )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</td></tr>\n";
@@ -3183,7 +3184,9 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     }
   };
 
-  echo "<font size=\"-1\">";
+//TODO: The following section has several nested spans.  They need to be extracted & then combined separately from the PHP code.
+
+  echo "<span style=\"font-size:13px;\">";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $class = "layerentry";
@@ -3198,7 +3201,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
-  if ( $pri == 3 ) echo "<b>";
+  if ( $pri == 3 ) echo "<span style=\"font-weight:bold;\">";
   if ( ! $hide_icons ) {
     $divname = "eventinfo-$id-$key";
     $key++;
@@ -3216,7 +3219,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     {
         if($layers[$index]['cal_layeruser'] == $event_owner)
         {
-            echo("<font color=\"" . $layers[$index]['cal_color'] . "\">");
+            echo("<span style=\"color:" . $layers[$index]['cal_color'] . ";\">");
         }
     }
   }
@@ -3251,19 +3254,19 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
     echo htmlspecialchars ( $name );
-    echo ("</font>");
+    echo ("</span>"); //end color span
   }
 
   else
     echo htmlspecialchars ( $name );
 
   echo "</a>";
-  if ( $pri == 3 ) echo "</b>";
-  echo "</font>";
+  if ( $pri == 3 ) echo "</span>"; //end font-weight span
+  echo "</span>"; //end font-size span
   echo "</td>";
   if ( $pos < 2 ) {
     if ( $pos < 1 ) {
-      echo "<td width=\"$ev_duration%\"><table style=\"width:100%; border-width:0px; background-color:#000000;\" cellpadding=\"0\" cellspacing=\"1\">
+      echo "<td style=\"width:$ev_duration%;\"><table style=\"width:100%; border-width:0px; background-color:#000000;\" cellpadding=\"0\" cellspacing=\"1\">
       <tr><td style=\"text-align:center; background-color:#F5DEB3;\">&nbsp;</td>";
     }
     echo "</tr></table></td>";
@@ -3302,7 +3305,7 @@ function print_header_timebar($start_hour, $end_hour) {
     $prev_offset = $offset;
     $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
     $width = $offset - $prev_offset;
-    echo "<td style=\"background-color:#FFFFFF; width:$width%; text-align:center; color:#C0C0C0;\"><font size=\"-2\">$i</font></td>\n";
+    echo "<td style=\"background-color:#FFFFFF; width:$width%; text-align:center; color:#C0C0C0; font-size:10px;\">$i</td>\n";
   }
   $width = 100 - $offset;
   echo "<td style=\"width:$width%;\">&nbsp;</td>\n";

@@ -12,7 +12,7 @@ function dbtable_get_field_index ( $tablear, $fieldname ) {
   global $error;
   for ( $j = 0; $j < count ( $tablear ); $j++ ) {
     if ( $tablear[$j]["name"] == $fieldname ) {
-      //echo "found $fieldname $j<BR>";
+      //echo "found $fieldname $j<br />";
       return $j;
     }
   }
@@ -30,23 +30,23 @@ function dbtable_get_field_index ( $tablear, $fieldname ) {
 function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
   $actionlabel="", $hidden="" ) {
   global $CELLBG;
-  $ret = "<TABLE BORDER=\"0\" CELLSPACING=\"0\" CELLPADDING=\"0\">" .
-    "<TR><TD BGCOLOR=\"#000000\">" .
-    "<TABLE BORDER=\"0\" WIDTH=\"100%\" CELLSPACING=\"1\" CELLPADDING=\"2\">" .
-    "<TR><TD WIDTH=\"100%\" BGCOLOR=\"$CELLBG\">" .
-    "<TABLE BORDER=\"0\" WIDTH=\"100%\">\n";
+  $ret = "<table style=\"border-width:0px;\" cellspacing=\"0\" cellpadding=\"0\">" .
+    "<tr><td style=\"background-color:#000000;\">" .
+    "<table style=\"border-width:0px; width:100%;\" cellspacing=\"1\" cellpadding=\"2\">" .
+    "<tr><td style=\"width:100%; background-color:$CELLBG;\">" .
+    "<table style=\"border-width:0px; width:100%;\">\n";
   if ( ! is_array ( $tablear ) ) {
-    return "Error: dbtable_to_html parameter 1 is not an array!\n<BR>\n";
+    return "Error: dbtable_to_html parameter 1 is not an array!\n<br />\n";
   }
   if ( $action != "" ) {
-    $ret .= "<FORM ACTION=\"$action\" METHOD=\"POST\"";
+    $ret .= "<form action=\"$action\" method=\"post\"";
     if ( $formname != "" )
-      $ret .= " NAME=\"$formname\"";
+      $ret .= " name=\"$formname\"";
     $ret .= ">";
     if ( is_array ( $hidden ) ) {
       for ( $i = 0; $i < count ( $hidden ); $i += 2 ) {
-        $ret .= "<INPUT TYPE=\"hidden\" NAME=\"" . $hidden[$i] .
-          "\" VALUE=\"" . $hidden[$i+1] . "\">";
+        $ret .= "<input type=\"hidden\" name=\"" . $hidden[$i] .
+          "\" value=\"" . $hidden[$i+1] . "\" />";
       }
     }
   }
@@ -55,38 +55,38 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
       continue;
     if ( ! empty ( $action ) && ! empty ( $tablear[$i]["calculated"] ) )
       continue;
-    $ret .= "<TR><TD VALIGN=\"top\">";
+    $ret .= "<tr><td style=\"vertical-align:top;\">";
     if ( ! empty ( $tablear[$i]["prompt"] ) ) {
-      $ret .= "<B";
+      $ret .= "<b";
       if ( ! empty ( $tablear[$i]["tooltip"] ) )
-        $ret .= " CLASS=\"tooltip\" TITLE=\"" .  $tablear[$i]["tooltip"] . "\"";
-      $ret .= ">" . $tablear[$i]["prompt"] . ":</B></TD>\n";
+        $ret .= " class=\"tooltip\" title=\"" .  $tablear[$i]["tooltip"] . "\"";
+      $ret .= ">" . $tablear[$i]["prompt"] . ":</b></td>\n";
     } else {
-      $ret .= "&nbsp;</TD>";
+      $ret .= "&nbsp;</td>";
     }
-    $ret .= "<TD VALIGN=\"top\">";
+    $ret .= "<td style=\"vertical-align:top;\">";
     if ( empty ( $tablear[$i]["noneditable"] ) && ! empty ( $action ) ) {
       if ( $tablear[$i]["type"] == "text" || 
         $tablear[$i]["type"] == "int" || $tablear[$i]["type"] == "float" ) {
-        $ret .= "<INPUT TYPE=\"text\" NAME=\"" . $tablear[$i]["name"] .
-          "\" ";
+        $ret .= "<input type=\"text\" name=\"" . $tablear[$i]["name"] .
+          "\"";
         if ( ! empty ( $tablear[$i]["maxlength"] ) )
-          $ret .= "MAXLENGTH=\"" .  $tablear[$i]["maxlength"] . "\" ";
+          $ret .= " maxlength=\"" .  $tablear[$i]["maxlength"] . "\"";
         if ( ! empty ( $tablear[$i]["length"] ) )
-        $ret .= "SIZE=\"" . $tablear[$i]["length"] . "\" ";
+        $ret .= " size=\"" . $tablear[$i]["length"] . "\"";
         if ( ! empty ( $valuesar[$i] ) )
-          $ret .= "VALUE=\"" . htmlspecialchars ( $valuesar[$i] ) . "\" ";
-        $ret .= ">";
+          $ret .= " value=\"" . htmlspecialchars ( $valuesar[$i] ) . "\"";
+        $ret .= " />";
       } else if ( $tablear[$i]["type"] == "boolean" ) {
-        $ret .= "<INPUT TYPE=\"radio\" VALUE=\"Y\" NAME=\"" . $tablear[$i]["name"] .
-          "\" ";
+        $ret .= "<input type=\"radio\" value=\"Y\" name=\"" . $tablear[$i]["name"] .
+          "\"";
         if ( $valuesar[$i] == "Y" )
-          $ret .= "CHECKED";
+          $ret .= " checked=\"checked\"";
         $ret .= "> " . translate("Yes") . "&nbsp;&nbsp;&nbsp;";
-        $ret .= "<INPUT TYPE=\"radio\" VALUE=\"N\" NAME=\"" . $tablear[$i]["name"] .
-          "\" ";
+        $ret .= "<input type=\"radio\" value=\"N\" name=\"" . $tablear[$i]["name"] .
+          "\"";
         if ( $valuesar[$i] != "Y" )
-          $ret .= "CHECKED";
+          $ret .= " checked=\"checked\"";
         $ret .= "> " . translate("No");
       } else if ( $tablear[$i]["type"] == "date" ) {
         $ret .= date_selection_html ( $tablear[$i]["name"], $valuesar[$i] );
@@ -123,13 +123,13 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
         }
       }
     }
-    $ret .= "</TD></TR>\n";
+    $ret .= "</td></tr>\n";
   }
   if ( ! empty ( $actionlabel ) )
-    $ret .= "<TR><TD COLSPAN=\"2\"><CENTER><INPUT TYPE=\"submit\" " .
-      "VALUE=\"" . htmlspecialchars ( $actionlabel ) . "\">" .
-      "</CENTER></TD></TR></FORM>\n";
-  $ret .= "</TABLE>\n</TD></TR></TABLE>\n</TD></TR></TABLE>\n";
+    $ret .= "<tr><td colspan=\"2\" style=\"text-align:center;\"><input type=\"submit\"" .
+      " VALUE=\"" . htmlspecialchars ( $actionlabel ) . "\" />" .
+      "</td></tr></form>\n";
+  $ret .= "</table>\n</td></tr></table>\n</td></tr></table>\n";
 
   return $ret;
 }
@@ -148,18 +148,18 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
   $keys, $order ) {
   global $THBG, $THFG, $CELLBG;
   if ( ! is_array ( $tablear ) )
-    return "Error: dbtable_to_html_list parameter 1 is not an array!\n<BR>\n";
+    return "Error: dbtable_to_html_list parameter 1 is not an array!\n<br />\n";
   if ( ! is_array ( $fields ) )
-    return "Error: dbtable_to_html_list parameter 2 is not an array!\n<BR>\n";
+    return "Error: dbtable_to_html_list parameter 2 is not an array!\n<br />\n";
   if ( ! is_array ( $keys ) )
-    return "Error: dbtable_to_html_list parameter 3 is not an array!\n<BR>\n";
-  $ret = "<TABLE BORDER=\"0\" CELLSPACING=\"0\" CELLPADDING=\"0\">" .
-    "<TR><TD BGCOLOR=\"#000000\">" .
-    "<TABLE BORDER=\"0\" WIDTH=\"100%\" CELLSPACING=\"1\" CELLPADDING=\"2\">" .
-    "<TR><TD WIDTH=\"100%\" BGCOLOR=\"$CELLBG\">" .
-    "<TABLE BORDER=\"0\" WIDTH=\"100%\">\n";
+    return "Error: dbtable_to_html_list parameter 3 is not an array!\n<br />\n";
+  $ret = "<table style=\"border-width:0px;\" cellspacing=\"0\" cellpadding=\"0\">" .
+    "<tr><td style=\"background-color:#000000;\">" .
+    "<table style=\"border-width:0px; width:100%;\" cellspacing=\"1\" cellpadding=\"2\">" .
+    "<tr><td style=\"width:100%; background-color:$CELLBG;\">" .
+    "<table style=\"border-width:0px; width:100%;\">\n";
   // header
-  $ret .= "<TR>";
+  $ret .= "<tr>";
   for ( $i = 0; $i < count ( $fields ); $i++ ) {
     $ind = dbtable_get_field_index ( $tablear, $fields[$i] );
 /*
@@ -167,11 +167,11 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
       echo "Error: dbtable_html_list invalid fieldname \"$fields[$i]\" $i\n"; exit;
 */
     if ( empty ( $tablear[$ind]["hide"] ) )
-      $ret .= "<TH BGCOLOR=\"$THBG\">" .
-        "<FONT COLOR=\"$THFG\">" . $tablear[$ind]["prompt"] .
-        "</FONT></TH>";
+      $ret .= "<th style=\"background-color:$THBG; color:$THFG;\">" .
+        $tablear[$ind]["prompt"] .
+        "</th>";
   }
-  $ret .= "</TR>\n";
+  $ret .= "</tr>\n";
   $sql = "SELECT " . $fields[0];
   for ( $i = 1; $i < count ( $fields ); $i++ ) {
     $sql .= ", " . $fields[$i];
@@ -206,14 +206,14 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $ret .= "<TR>";
+      $ret .= "<tr>";
       $first_href = 1;
       $first = 1;
       for ( $i = 0; $i < count ( $fields ); $i++ ) {
         // check data type (date)
         $ind = dbtable_get_field_index ( $tablear, $fields[$i] );
         if ( empty ( $tablear[$ind]["hide"] ) ) {
-          $ret .= "<TD BGCOLOR=\"$CELLBG\" VALIGN=\"top\">";
+          $ret .= "<td style=\"background-color:$CELLBG; vertical-align:top;\">";
           if ( $tablear[$ind]["type"] == "date" )
             $val = date_to_str ( $row[$i], "", 1, 1 );
           else if ( $tablear[$ind]["type"] == "dbdate" ) {
@@ -230,19 +230,19 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
             for ( $j = count ( $fields ) - 1; $j >= 0; $j-- ) {
               $url = str_replace ( "%$j", $row[$j], $url );
             }
-            $ret .= "<A HREF=\"$url\">" . $val . "</A>";
+            $ret .= "<a href=\"$url\">" . $val . "</a>";
           } else {
             $ret .= $val;
           }
-          $ret .= "</TD>";
+          $ret .= "</td>";
         }
       }
-      $ret .= "</TR>\n";
+      $ret .= "</tr>\n";
     }
   } else {
     echo translate("Database error") . ": " . dbi_error (); exit;
   }
-  $ret .= "</TABLE>\n</TD></TR></TABLE>\n</TD></TR></TABLE>\n";
+  $ret .= "</table>\n</td></tr></table>\n</td></tr></table>\n";
   return $ret;
 }
 
@@ -256,11 +256,11 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
   $ret = false;
   $sql = "SELECT ";
   if ( ! is_array ( $tablear ) ) {
-    echo "Error: dbtable_load parameter 1 is not an array!\n<BR>\n";
+    echo "Error: dbtable_load parameter 1 is not an array!\n<br />\n";
     exit;
   }
   if ( ! is_array ( $keys ) ) {
-    echo "Error: dbtable_load parameter 3 is not an array!\n<BR>\n";
+    echo "Error: dbtable_load parameter 3 is not an array!\n<br />\n";
     exit;
   }
   $first = 1;
@@ -296,7 +296,7 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
       }
     }
   }
-  //echo "SQL: $sql <P>\n";
+  //echo "SQL: $sql <br /><br />\n";
   $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
@@ -324,11 +324,11 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
 function dbtable_delete ( $tablear, $tablename, $keys ) {
   $ret = false;
   if ( ! is_array ( $tablear ) ) {
-    echo "Error: dbtable_delete parameter 1 is not an array!\n<BR>\n";
+    echo "Error: dbtable_delete parameter 1 is not an array!\n<br />\n";
     exit;
   }
   if ( ! is_array ( $keys ) ) {
-    echo "Error: dbtable_delete parameter 3 is not an array!\n<BR>\n";
+    echo "Error: dbtable_delete parameter 3 is not an array!\n<br />\n";
     exit;
   }
   $sql = "DELETE FROM $tablename WHERE ";
@@ -353,7 +353,7 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
       }
     }
   }
-  //echo "SQL: $sql <P>\n";
+  //echo "SQL: $sql <br /><br />\n";
   if ( ! dbi_query ( $sql ) ) {
     echo translate("Database error") . ": " . dbi_error (); exit;
   }
@@ -371,11 +371,11 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
   $ret = false;
   $sql = "INSERT INTO " . $tablename . " (";
   if ( ! is_array ( $tablear ) ) {
-    echo "Error: dbtable_add parameter 1 is not an array!\n<BR>\n";
+    echo "Error: dbtable_add parameter 1 is not an array!\n<br />\n";
     exit;
   }
   if ( ! is_array ( $valuesar ) ) {
-    echo "Error: dbtable_add parameter 3 is not an array!\n<BR>\n";
+    echo "Error: dbtable_add parameter 3 is not an array!\n<br />\n";
     exit;
   }
   $first = 1;
@@ -424,11 +424,11 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
   global $error;
   $sql = "UPDATE " . $tablename . " SET";
   if ( ! is_array ( $tablear ) ) {
-    echo "Error: dbtable_update parameter 1 is not an array!\n<BR>\n";
+    echo "Error: dbtable_update parameter 1 is not an array!\n<br />\n";
     exit;
   }
   if ( ! is_array ( $valuesar ) ) {
-    echo "Error: dbtable_update parameter 3 is not an array!\n<BR>\n";
+    echo "Error: dbtable_update parameter 3 is not an array!\n<br />\n";
     exit;
   }
   $first = 1;
@@ -504,6 +504,4 @@ function dbtable_build_name_index ( $tablear, $valuesar ) {
   }
   return $ret;
 }
-
-
 ?>
