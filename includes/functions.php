@@ -313,12 +313,19 @@ function do_redirect ( $url ) {
     $SERVER_SOFTWARE = $_SERVER["SERVER_SOFTWARE"];
   //echo "SERVER_SOFTWARE = $SERVER_SOFTWARE <br />"; exit;
   if ( substr ( $SERVER_SOFTWARE, 0, 5 ) == "Micro" ) {
-    echo "<html><head><title>Redirect</title>" .
+    echo "<?xml version=\"1.0\" encoding=\"utf8\"?>\n<!DOCTYPE html
+    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+    \"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\"><title>Redirect</title>" .
       "<meta http-equiv=\"refresh\" content=\"0; url=$url\" /></head><body>" .
       "Redirecting to ... <a href=\"" . $url . "\">here</a>.</body></html>.\n";
   } else {
     Header ( "Location: $url" );
-    echo "<html><head><title>Redirect</title></head><body>" .
+    echo "<?xml version=\"1.0\" encoding=\"utf8\"?>\n<!DOCTYPE html
+    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+    \"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
+<head><title>Redirect</title></head><body>" .
       "Redirecting to ... <a href=\"" . $url . "\">here</a>.</body></html>.\n";
   }
   dbi_close ( $c );
@@ -333,14 +340,22 @@ function send_http_login () {
   if ( strlen ( $lang_file ) ) {
     Header ( "WWW-Authenticate: Basic realm=\"" . translate("Title") . "\"");
     Header ( "HTTP/1.0 401 Unauthorized" );
-    echo "<html><head><title>Unauthorized</title></head><body>\n" .
+    echo "<?xml version=\"1.0\" encoding=\"utf8\"?>\n<!DOCTYPE html
+    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+    \"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
+<head><title>Unauthorized</title></head><body>\n" .
       "<h2>" . translate("Title") . "</h2>" .
       translate("You are not authorized") .
       "\n</body></html>\n";
   } else {
     Header ( "WWW-Authenticate: Basic realm=\"WebCalendar\"");
     Header ( "HTTP/1.0 401 Unauthorized" );
-    echo "<html><head><title>Unauthorized</title></head><body>\n" .
+    echo "<?xml version=\"1.0\" encoding=\"utf8\"?>\n<!DOCTYPE html
+    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+    \"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
+<head><title>Unauthorized</title></head><body>\n" .
       "<h2>WebCalendar</h2>" .
       "You are not authorized" .
       "\n</body></html>\n";
