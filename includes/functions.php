@@ -605,6 +605,7 @@ function get_my_users () {
     else {
       $sql .= "IN ( " . implode ( ", ", $groups ) . " )";
     }
++    $sql .= " ORDER BY cal_lastname, cal_firstname, cal_login";
     //echo "SQL: $sql <br />\n";
     $res = dbi_query ( $sql );
     if ( $res ) {
