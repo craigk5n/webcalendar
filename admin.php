@@ -109,13 +109,13 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("custom-header-help");?>"><?php etranslate("Custom header")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_CUSTOM_HEADER" VALUE="Y" <?php if ( $s["CUSTOM_HEADER"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_CUSTOM_HEADER" VALUE="N" <?php if ( $s["CUSTOM_HEADER"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?>
   &nbsp;&nbsp;
-  <input type="button" value="Edit..." onclick="window.open('edit_template.php?type=H','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');">
+  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=H','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');">
   </TD></TR>
 
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("custom-trailer-help");?>"><?php etranslate("Custom trailer")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_CUSTOM_TRAILER" VALUE="Y" <?php if ( $s["CUSTOM_TRAILER"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_CUSTOM_TRAILER" VALUE="N" <?php if ( $s["CUSTOM_TRAILER"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?>
   &nbsp;&nbsp;
-  <input type="button" value="Edit..." onclick="window.open('edit_template.php?type=T','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');">
+  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=T','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');">
   </TD></TR>
 
 
