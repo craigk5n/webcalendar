@@ -138,7 +138,7 @@ for ( $d = 0; $d < 7; $d++ ) {
 </table>
 </center>
 
-<?php echo $eventinfo; ?>
+<?php 	if ( ! empty ( $eventinfo ) ) echo $eventinfo; ?>
 <br />
 <a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="week_details.php?<?php
   echo $u_url;

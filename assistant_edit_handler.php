@@ -7,9 +7,11 @@ if ($user != $login)
 
 # update user list
 dbi_query ( "DELETE FROM webcal_asst WHERE cal_boss = '$user'" );
-for ( $i = 0; $i < count ( $users ); $i++ ) {
-  dbi_query ( "INSERT INTO webcal_asst ( cal_boss, cal_assistant ) " .
-    "VALUES ( '$user', '$users[$i]' )" );
+if ( ! empty ( $users ) ){
+  for ( $i = 0; $i < count ( $users ); $i++ ) {
+    dbi_query ( "INSERT INTO webcal_asst ( cal_boss, cal_assistant ) " .
+      "VALUES ( '$user', '$users[$i]' )" );
+  }
 }
 
 $url = "assistant_edit.php";

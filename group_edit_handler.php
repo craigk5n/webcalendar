@@ -40,7 +40,7 @@ if ( ! $is_admin ) {
     }
   
     # update user list
-    if ( $error == "" ) {
+    if ( $error == "" &&  ! empty ( $users ) ) {
       dbi_query ( "DELETE FROM webcal_group_user WHERE cal_group_id = $id" );
       for ( $i = 0; $i < count ( $users ); $i++ ) {
         dbi_query ( "INSERT INTO webcal_group_user ( cal_group_id, cal_login ) " .

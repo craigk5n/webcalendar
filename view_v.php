@@ -220,7 +220,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 
 $user = ""; // reset
 
-echo $eventinfo;
+if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
 echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_v.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
 	"target=\"cal_printer_friendly\" onmouseover=\"window.status='" .

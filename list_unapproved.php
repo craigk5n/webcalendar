@@ -114,7 +114,7 @@ function list_unapproved ( $user ) {
     echo "<span class=\"nounapproved\">" . 
 	translate("No unapproved events for") . "&nbsp;" . $temp_fullname . ".</span>\n";
   } else {
-    echo $eventinfo;
+    if ( ! empty ( $eventinfo ) ) echo $eventinfo;
   }
 }
 ?>

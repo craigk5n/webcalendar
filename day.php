@@ -101,7 +101,7 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 </td></tr></table>
 <br />
 <?php
-	echo $eventinfo;
+	if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>

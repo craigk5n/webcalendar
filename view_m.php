@@ -197,7 +197,7 @@ for ( $j = 0; $j < count ($viewusers); $j += $USERS_PER_TABLE ) {
 
 $user = ""; // reset
 
-echo $eventinfo;
+if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
 echo "<a title=\"" . 
 	translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_m.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .

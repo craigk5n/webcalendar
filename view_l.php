@@ -221,8 +221,9 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 </table><br />
 
 <?php
-  echo $eventinfo;
-  display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
+if ( ! empty ( $eventinfo ) ) echo $eventinfo;
+
+display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
 <br />
