@@ -84,7 +84,7 @@ print_header();
 
 <TR><TD VALIGN="top"><B><?php etranslate("Category")?>:</B>&nbsp;&nbsp;</TD>
 <TD VALIGN="top"><SELECT NAME="cat_id">
-  <OPTION VALUE="NULL">None</OPTION>
+  <OPTION VALUE="NULL"><?php etranslate("None")?></OPTION>
   <?php
     foreach ( $categories as $K => $V ) {
       if ( $K == $cur_cat )
