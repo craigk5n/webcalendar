@@ -765,7 +765,7 @@ Palm Desktop: Palm Desktop
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner
 The following entries will not be imported: Folgende Einträge werden nicht importiert
 Entries older than the current date: Einträge die älter als das aktuelle Datum sind
-Entries creted in the Palm Desktop that have not been HotSync'd: Erzeugte Einträge die auf ihrem Palm NICHT HotSync`d wurden.
+Entries created in the Palm Desktop that have not been HotSync'd: Erzeugte Einträge die auf ihrem Palm NICHT HotSync`d wurden.
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim nächsten 
 Therefore, updates should be made in the Palm Desktop.: Deshalb sollten ihren Palm/Desktop immer updaten.
 vCal: vCal

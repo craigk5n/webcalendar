@@ -832,7 +832,7 @@ Palm Desktop: Palm Desktop
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Den bør finnes i din Palm katalog i <tt>datebook/datebook.dat</tt> i en underkatalog med ditt brukernavn.
 The following entries will not be imported: Følgende oppføringer vil ikke bli importert
 Entries older than the current date: Oppføringer eldre enn nåværende dato
-Entries creted in the Palm Desktop that have not been HotSync'd: Oppføringer opprettet i Palm Desktop-en som ikke har blitt HotSync'd
+Entries created in the Palm Desktop that have not been HotSync'd: Oppføringer opprettet i Palm Desktop-en som ikke har blitt HotSync'd
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alt som blir importert fra Palm vil bli overskrevet ved neste import (hvis ikke aktivitetsdatoen har passert)
 Therefore, updates should be made in the Palm Desktop.: Derfor bør oppdatering bli gjort i Palm Desktop-en.
 vCal: vCal

@@ -1467,7 +1467,7 @@ Current User: Nuvarande Användare
 # Entries older than the current date:
 #
 # << MISSING >>
-# Entries creted in the Palm Desktop that have not been HotSync'd:
+# Entries created in the Palm Desktop that have not been HotSync'd:
 #
 # << MISSING >>
 # Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
