@@ -1060,9 +1060,6 @@ function print_entry ( $id, $date, $time, $duration,
     $time_short = preg_replace ("/(:00)/", '', $timestr);
     echo $time_short . "&raquo;&nbsp;";
     if ( $duration > 0 ) {
-      if ( $duration == ( 24 * 60 ) ) {
-        $timestr = translate("All day event");
-      } else {
         // calc end time
         $h = (int) ( $time / 10000 );
         $m = ( $time / 100 ) % 100;
@@ -1074,7 +1071,6 @@ function print_entry ( $id, $date, $time, $duration,
         }
         $end_time = sprintf ( "%02d%02d00", $h, $m );
         $timestr .= " - " . display_time ( $end_time );
-      }
     }
   }
   if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
