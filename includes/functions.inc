@@ -527,6 +527,7 @@ function query_events ( $user, $want_repeated, $date_filter ) {
         }
       }
     }
+    dbi_free_result ( $res );
   }
   return $result;
 }

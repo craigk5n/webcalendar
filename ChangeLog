@@ -1,4 +1,6 @@
 Version 0.9.31dev (???)
+  - Fixed bug 436330: Oracle complaining about too many open cursors.
+    Added some missing dbi_free_result() calls to address this.
   - Fixed bug 436404: Error in conflict checking - was always replacing
     first event participant with event creator when checking for
     conflicts.
