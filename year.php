@@ -112,9 +112,9 @@ print_header();
 <table style="width:100%;">
 <tr>
 <?php if ( empty ( $friendly ) ) { ?>
-<td style="text-align:left;"><font size="-1">
-<a href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" class="monthlink"><img src="leftarrow.gif" style="width:36px; height:32px; border:0px;" alt="<?php etranslate("Previous")?>" /></A>
-</font></td>
+<td style="text-align:left;">
+<a href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" class="monthlink"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
+</td>
 <?php } ?>
 <td style="text-align:center; color:<?php echo $H2COLOR?>;">
 <font size="+2"><b>
@@ -136,8 +136,8 @@ print_header();
 </font></td>
 <?php if ( empty ( $friendly ) ) {?>
 <td style="text-align:right;">
-<a href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" class="monthlink"><img src="rightarrow.gif" style="width:36px; height:32px; border:0px;" alt="<?php etranslate("Next")?>" /></a>
-</font></td>
+<a href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&user=$user";?>" class="monthlink"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+</td>
 <?php } ?>
 </tr>
 </table>

@@ -53,7 +53,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 <table style="border-width:0px; width:100%;">
 <tr>
 <?php if ( empty ( $friendly ) ) { ?>
-<td style="text-align:left;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img src="leftarrow.gif" style="border-width:0px; width:36px; height:32px; text-align:left;" alt="<?php etranslate("Previous"); ?>" /></a></td>
+<td style="text-align:left;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous"); ?>" /></a></td>
 <?php } ?>
 <td style="text-align:center; color:<?php echo $H2COLOR;?>; font-weight:bold;"><span style="font-size:24px;">
 <?php
@@ -79,7 +79,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 </span>
 </td>
 <?php if ( empty ( $friendly ) ) { ?>
-<td style="text-align:right;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img style="text-align:right; width:36px; height:32px; border-width:0px;" src="rightarrow.gif" alt="<?php etranslate("Next"); ?>" /></a></td>
+<td style="text-align:right;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img class="prevnext" src="rightarrow.gif" alt="<?php etranslate("Next"); ?>" /></a></td>
 <?php } ?>
 </tr>
 </table>

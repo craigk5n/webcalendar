@@ -87,7 +87,7 @@ else
 if ( empty ( $error ) ) {
   arsort ( $ids );
   for ( reset ( $ids ); $key = key ( $ids ); next ( $ids ) ) {
-    echo "<li><a class=\"navlinks\" href=\"view_entry.php?id=$key\">" . $info[$key] . "</a>\n";
+    echo "<li><a class=\"navlinks\" href=\"view_entry.php?id=$key\">" . $info[$key] . "</a></li>\n";
   }
 }
 

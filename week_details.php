@@ -63,7 +63,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <table style="border-width:0px; width:100%;">
 <tr>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td style="text-align:left;"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" style="width:36px; height:32px; border-width:0px;" /></a></td>
+<td style="text-align:left;"><a href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" /></a></td>
 <?php } ?>
 <td style="text-align:center; color:<?php echo $H2COLOR;?>;"><span style="font-size:24px; font-weight:bold;" class="pagetitle">
 <?php
@@ -95,7 +95,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 </span>
 </td>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td style="text-align:right;"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" style="width:36px; height:32px; border-width:0px;" /></a></td>
+<td style="text-align:right;"><a href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" class="prevnext" /></a></td>
 <?php } ?>
 </tr>
 </table>

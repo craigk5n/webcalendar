@@ -157,7 +157,7 @@ a:hover {
 h2 {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 20px;
-  color: <?php echo $H2COLOR;?>;
+  color: <?php echo $GLOBALS['H2COLOR'] ?>;
 }
 h3 {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
@@ -196,6 +196,16 @@ textarea {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 12px;
   text-decoration: none;
+}
+.prevnext {
+	border-width: 0px;
+	width: 36px;
+	height: 32px;
+}
+.prevnextsmall { }
+.help {
+	vertical-align: top;
+	font-weight: bold;
 }
 -->
 </style>

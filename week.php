@@ -62,7 +62,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <table border="0" width="100%">
 <tr>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td align="left"><a href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Previous")?>" /></a></td>
+<td align="left"><a href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a></td>
 <?php } ?>
 <td style="text-align:center;"><span style="font-size:24px; color:<?php echo $H2COLOR;?>; font-weight:bold;" class="pagetitle">
 <?php
@@ -94,7 +94,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 </span>
 </td>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td align="right"><a href="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" width="36" height="32" border="0" alt="<?php etranslate("Next")?>" /></a></td>
+<td align="right"><a href="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a></td>
 <?php } ?>
 </tr>
 </table>
@@ -102,7 +102,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 <table class="tableborder" border="0" width="100%" cellspacing="0" cellpadding="0" style="border-color: <?php echo $TABLEBG;?>;">
 
 <tr>
-<th width="12%" style="width:12%; background-color:<?php echo $THBG?>;" class="tableheader">&nbsp;</th>
+<th style="width:12%;" class="tableheader">&nbsp;</th>
 <?php
 for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   if ( date ( "Ymd", $days[$d] ) == date ( "Ymd", $today ) ) {
@@ -112,7 +112,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $color = $THBG;
     $class = "tableheader";
   }
-  echo "<th width=\"12%\" style=\"width:12%; background-color:$color;\" class=\"$class\">";
+  echo "<th style=\"width:12%; background-color:$color;\" class=\"$class\">";
   if ( empty ( $friendly ) && $can_add ) {
     echo html_for_add_icon (  date ( "Ymd", $days[$d] ), "", "", $user );
   }
@@ -255,7 +255,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 
 // untimed events first
 if ( $untimed_found ) {
-  echo "<tr><td class=\"tablecellweekview\" class=\"tableheader\" width=\"12%\" style=\"background-color:$THBG;\">&nbsp;</td>";
+  echo "<tr><td class=\"tablecellweekview\" width=\"12%\" style=\"background-color:$THBG;\">&nbsp;</td>";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
@@ -277,7 +277,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = (int) ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-  echo "<tr><th width=\"12%\" class=\"tableheader\" valign=\"top\" style=\"background-color:$THBG; height:40; color:$THFG;\">" .  $time . "</th>\n";
+  echo "<tr><th width=\"12%\" class=\"tableheader\" valign=\"top\" style=\"height:40;\">" .  $time . "</th>\n";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
