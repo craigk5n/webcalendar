@@ -140,6 +140,13 @@ function getValue ( $name, $format="", $fatal=false )
   return $val;
 }
 
+// Get an integer value
+function getIntValue ( $name, $fatal=false )
+{
+  $val = getValue ( $name, "[0-9]+", $fatal );
+  return $val;
+}
+
 
 
 // Load default system settings (which can be updated via admin.php)
