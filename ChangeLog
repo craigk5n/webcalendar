@@ -1,4 +1,6 @@
 Version 0.9.41dev (?? ??? ???)
+  - Fixed bug 753159: bug in site extras with select list.
+    was using $i for inner and outer loop.
   - Fixed bug 753107: Not handling rejected or deleted events properly
   - Fixed bug 739309: "All Day Event" not saved properly
   - Altered webcal_user_pref and webcal_config tables to allow

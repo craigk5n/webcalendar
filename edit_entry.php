@@ -429,12 +429,12 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     // show custom select list.
     echo "<SELECT NAME=\"" . $extra_name . "\">";
     if ( is_array ( $extra_arg1 ) ) {
-      for ( $i = 0; $i < count ( $extra_arg1 ); $i++ ) {
+      for ( $j = 0; $j < count ( $extra_arg1 ); $j++ ) {
         echo "<OPTION";
         if ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
-          $extra_arg1[$i] == $extras[$extra_name]['cal_data'] )
+          $extra_arg1[$j] == $extras[$extra_name]['cal_data'] )
           echo " SELECTED";
-        echo ">" . $extra_arg1[$i] . "</OPTION>\n";
+        echo ">" . $extra_arg1[$j] . "</OPTION>\n";
       }
     }
     echo "</SELECT>";
