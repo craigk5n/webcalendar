@@ -39,7 +39,7 @@ if ( empty ( $ovrd ) && ! $error ) {
   echo "<blockquote>" . translate ( "Note" ) . ": " .
     "<a href=\"pref.php\">" .
     translate ( "Your user preferences" ) . "</a> " .
-    translate ( "may be affecting the appearance of this page.") . ".  " .
+    translate ( "may be affecting the appearance of this page.") . " " .
     "<a href=\"admin.php?ovrd=1\">" .
     translate ( "Click here" ) . "</a> " .
     translate ( "to not use your user preferences when viewing this page" ) .
