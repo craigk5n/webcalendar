@@ -33,11 +33,11 @@ if ( $pub_acc_enabled ) {
 }
 
 // Debugging stuff :-)
-//echo "pub_acc_enabled = " . ( $pub_acc_enabled ? "true" : "false" ) . " <br>";
-//echo "session_not_found = " . ( $session_not_found ? "true" : "false" ) . " <br>";
-//echo "use_http_auth = " . ( $use_http_auth ? "true" : "false" ) . " <br>";
-//echo "PHP_AUTH_USER = $PHP_AUTH_USER <br>";
-//echo "login = $login <br>";
+//echo "pub_acc_enabled = " . ( $pub_acc_enabled ? "true" : "false" ) . " <br />";
+//echo "session_not_found = " . ( $session_not_found ? "true" : "false" ) . " <br />";
+//echo "use_http_auth = " . ( $use_http_auth ? "true" : "false" ) . " <br />";
+//echo "PHP_AUTH_USER = $PHP_AUTH_USER <br />";
+//echo "login = $login <br />";
 
 
 if ( empty ( $PHP_SELF ) )

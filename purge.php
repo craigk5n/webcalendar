@@ -11,8 +11,8 @@ $INC = array('js/purge.php');
 print_header($INC);
 ?>
 
-<TABLE BORDER=0>
-<TR><TD VALIGN="top" WIDTH=50%>
+<TABLE BORDER="0">
+<TR><TD VALIGN="top" WIDTH="50%">
 
 <?php
 $ALL = 0;
@@ -55,18 +55,18 @@ if ( ! empty ( $user ) ) {
     $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-    echo "<OPTION VALUE=\"".$userlist[$i]['cal_login']."\">".$userlist[$i]['cal_fullname']."\n";
+    echo "<OPTION VALUE=\"".$userlist[$i]['cal_login']."\">".$userlist[$i]['cal_fullname']."</option>\n";
   }
 ?>
 
-<OPTION VALUE="ALL" SELECTED><?php etranslate("All")?>
+<OPTION VALUE="ALL" SELECTED="SELECTED"><?php etranslate("All")?></option>
 </SELECT></TD></TR>
 <TR><TD><?php etranslate("Delete all events before");?>:</TD><TD>
 <? print_date_selection ( "end_", date ( "Ymd" ) ) ?>
 </TD></TR>
-<TR><TD><?php etranslate("Check box to delete <b>ALL</b> events for a user")?>:</TD><TD valign="bottom"><INPUT TYPE="checkbox" NAME="purge_all" VALUE="Y"></TD></TR>
-<TR><TD colspan='2'>
-<INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="return confirm('<?php etranslate("Are you sure you want to delete events for");?> ' + document.forms[0].user.value + '?')">
+<TR><TD><?php etranslate("Check box to delete <b>ALL</b> events for a user")?>:</TD><TD valign="bottom"><INPUT TYPE="checkbox" NAME="purge_all" VALUE="Y" /></TD></TR>
+<TR><TD colspan="2">
+<INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="return confirm('<?php etranslate("Are you sure you want to delete events for");?> ' + document.forms[0].user.value + '?')" />
 </TD></TR></TABLE>
 </FORM>
 
@@ -101,7 +101,7 @@ function purge_events ( $ids ) {
   }
   for ( $i = 0; $i < $TT; $i++ ) {
     $table = $tables[$i][T];
-    echo "Records deleted from $table: $num[$table]<BR>\n";
+    echo "Records deleted from $table: $num[$table]<br />\n";
   }
 }
 

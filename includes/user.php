@@ -365,6 +365,4 @@ function user_get_users () {
   return $ret;
 }
 
-
-
 ?>

@@ -53,8 +53,8 @@ function list_unapproved ( $user ) {
       $status = $row[7];
       $divname = "eventinfo-$id-$key";
       echo "<li><a class=\"entry\" href=\"view_entry.php?id=$id&user=$user";
-      echo "\" onMouseOver=\"window.status='" . translate("View this entry") .
-        "'; show(event, '$divname'); return true;\" onMouseOut=\"hide('$divname'); return true;\">";
+      echo "\" onmouseover=\"window.status='" . translate("View this entry") .
+        "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
       $timestr = "";
       if ( $time > 0 ) {
         $timestr = display_time ( $time );
@@ -84,7 +84,7 @@ function list_unapproved ( $user ) {
       echo "<a href=\"reject_entry.php?id=$id&ret=list&user=$user";
       if ( $user == "__public__" )
         echo "&public=1";
-      echo "\" class=\"navlinks\" onClick=\"return confirm('" .
+      echo "\" class=\"navlinks\" onclick=\"return confirm('" .
         translate("Reject this entry?") .
         "');\">" . translate("Reject") . "</a>";
       echo ", <a href=\"del_entry.php?id=$id&ret=list";
@@ -112,7 +112,7 @@ function list_unapproved ( $user ) {
 
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Unapproved Events"); if ( $user == '__public__' ) echo " - " . $PUBLIC_ACCESS_FULLNAME; ?></FONT></H2>
+<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Unapproved Events"); if ( $user == '__public__' ) echo " - " . $PUBLIC_ACCESS_FULLNAME; ?></font></h2>
 
 <?php
 
@@ -122,11 +122,11 @@ list_unapproved ( ( $is_assistant || $is_nonuser_admin || $is_admin ) ? $user : 
 // Admin users can also approve Public Access events
 if ( $is_admin && $public_access == "Y" &&
   ( empty ( $user ) || $user != '__public__' ) ) {
-  echo "<p><h3>" . translate ( "Public Access" ) . "</h3>\n";
+  echo "<br /><br /><h3>" . translate ( "Public Access" ) . "</h3>\n";
   list_unapproved ( "__public__" );
 }
 ?>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

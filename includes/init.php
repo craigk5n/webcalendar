@@ -191,7 +191,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   }
 
   // Finish the header
-  echo "</head>\n<body bgcolor=\"$BGCOLOR\" class=\"defaulttext\" $BodyX>\n";
+  echo "</head>\n<body style=\"background-color:$BGCOLOR;\" class=\"defaulttext\" $BodyX>\n";
 
   // Add custom header if enabled
   if ( $CUSTOM_HEADER == 'Y' && ! $disableCustom ) {

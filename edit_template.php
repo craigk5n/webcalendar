@@ -87,13 +87,13 @@ if ( ! empty ( $error ) ) {
   
 <form action="edit_template.php" method="POST" name="reportform">
 
-<input type="hidden" name="type" value="<?php echo $type;?>">
+<input type="hidden" name="type" value="<?php echo $type;?>" />
 <textarea rows="15" cols="60" name="template"><?php echo htmlentities ( $cur )?></textarea>
 
-<br>
+<br />
 
-<input type="button" value="<?php etranslate("Cancel")?>" onclick="window.close();">
-<input type="submit" value="<?php etranslate("Save")?>">
+<input type="button" value="<?php etranslate("Cancel")?>" onclick="window.close();" />
+<input type="submit" value="<?php etranslate("Save")?>" />
 
 </form>
 

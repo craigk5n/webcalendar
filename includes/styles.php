@@ -96,7 +96,7 @@
   color: <?php echo ( $TEXTCOLOR == "" ? "#000000" : $TEXTCOLOR ); ?> ;
   text-decoration: none;
 }
-A {
+a {
   font-family: <?php echo $FONTS ?>;
   color: <?php echo ( $TEXTCOLOR == "" ? "#000000" : $TEXTCOLOR ); ?> ;
   text-decoration: none;

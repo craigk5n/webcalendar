@@ -122,7 +122,7 @@ function parse_ical ( $cal_file ) {
               if ($substate != "none") {
                   $event[$substate] .= $match[1];
               } else {
-                  $errormsg .= "Error in file $cal_file line $line:<br>$buff\n";
+                  $errormsg .= "Error in file $cal_file line $line:<br />$buff\n";
                   $error = true;
               }
           // For unsupported properties
