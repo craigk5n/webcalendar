@@ -2701,8 +2701,8 @@ function user_get_boss_list ( $assistant ) {
 function user_is_assistant ( $assistant, $boss ) {
   $ret = false;
 
-  $res = dbi_query ( "SELECT * FROM webcal_asst as b " .
-    "WHERE b.cal_assistant = '$assistant' AND b.cal_boss = '$boss'" );
+  $res = dbi_query ( "SELECT * FROM webcal_asst " . 
+     "WHERE cal_assistant = '$assistant' AND cal_boss = '$boss'" );
   if ( $res ) {
     if ( dbi_fetch_row ( $res ) )
       $ret = true;
@@ -2714,8 +2714,8 @@ function user_is_assistant ( $assistant, $boss ) {
 // return true if assistant has boss
 function user_has_boss ( $assistant ) {
   $ret = false;
-  $res = dbi_query ( "SELECT * FROM webcal_asst as b " .
-    "WHERE b.cal_assistant = '$assistant'" );
+  $res = dbi_query ( "SELECT * FROM webcal_asst " .
+    "WHERE cal_assistant = '$assistant'" );
   if ( $res ) {
     if ( dbi_fetch_row ( $res ) )
       $ret = true;
