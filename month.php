@@ -87,8 +87,8 @@ if ( ! $friendly ) {
 
 ?>
 
-<td align="center">
-<span class="monthyear">
+<td class="monthviewtitle">
+<span class="date">
 <?php
   echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
     $DATE_FORMAT_MY, false, false );
@@ -156,21 +156,22 @@ if ( ! $friendly ) {
 ?>
 </tr>
 </table>
+<br />
 
-<table class="tableborder" width="100%" cellspacing="0" cellpadding="0">
+<table class="monthview" cellspacing="0" cellpadding="0">
 
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
-<th width="14%" class="tableheader"><?php etranslate("Sun")?></th>
+<th><?php etranslate("Sun")?></th>
 <?php } ?>
-<th width="14%" class="tableheader"><?php etranslate("Mon")?></th>
-<th width="14%" class="tableheader"><?php etranslate("Tue")?></th>
-<th width="14%" class="tableheader"><?php etranslate("Wed")?></th>
-<th width="14%" class="tableheader"><?php etranslate("Thu")?></th>
-<th width="14%" class="tableheader"><?php etranslate("Fri")?></th>
-<th width="14%" class="tableheader"><?php etranslate("Sat")?></th>
+<th><?php etranslate("Mon")?></th>
+<th><?php etranslate("Tue")?></th>
+<th><?php etranslate("Wed")?></th>
+<th><?php etranslate("Thu")?></th>
+<th><?php etranslate("Fri")?></th>
+<th><?php etranslate("Sat")?></th>
 <?php if ( $WEEK_START == 1 ) { ?>
-<th width="14%" class="tableheader"><?php etranslate("Sun")?></th>
+<th><?php etranslate("Sun")?></th>
 <?php } ?>
 </tr>
 
@@ -208,7 +209,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       //$color = $is_weekend ? $WEEKENDBG : $CELLBG;
       //if ( empty ( $color ) )
       //  $color = "#C0C0C0";
-      print "<td valign=\"top\" ";
+      print "<td valign=\"top\"";
       //print "style=\"height:75px;";
       if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) )
         //echo "background-color:$TODAYCELLBG;\"";

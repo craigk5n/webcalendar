@@ -5,17 +5,17 @@ $PAGE_SIZE = 25;
 print_header();
 
 echo "<h3>" . translate("Activity Log") . "</h3>\n";
-echo "<table style=\"border-width:0px; width:100%;\">\n";
+echo "<table class=\"activitylog\">\n";
 echo "<tr>";
-echo "<th style=\"background-color:$THBG; width:10%; color:$THFG;\">" .
+echo "<th>" .
   translate("User") . "</th>";
-echo "<th style=\"background-color:$THBG; width:10%; color:$THFG;\">" .
+echo "<th>" .
   translate("Calendar") . "</th>";
-echo "<th style=\"background-color:$THBG; width:25%; color:$THFG;\">" .
+echo "<th>" .
   translate("Date") . "/" . translate("Time") . "</th>";
-echo "<th style=\"background-color:$THBG; width:30%; color:$THFG;\">" .
+echo "<th>" .
   translate("Event") . "</th>";
-echo "<th style=\"background-color:$THBG; width:15%; color:$THFG;\">" .
+echo "<th>" .
   translate("Action") . "</th></tr>\n";
 $sql = "SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, " .
   "webcal_entry_log.cal_type, webcal_entry_log.cal_date, " .
@@ -31,7 +31,6 @@ $res = dbi_query ( $sql );
 $nextpage = "";
 
 if ( $res ) {
-  $font = "<span style=\"font-size:13px;\">";
   $num = 0;
   while ( $row = dbi_fetch_row ( $res ) ) {
     $num++;
@@ -40,17 +39,17 @@ if ( $res ) {
       break;
     } else {
       echo "<tr>";
-      echo "<td style=\"vertical-align:top; background-color:$CELLBG;\">" .
-        $font . $row[0] . "</span></td>";
-      echo "<td style=\"vertical-align:top; background-color:$CELLBG;\">" .
-        $font . $row[1] . "</span></td>";
-      echo "<td style=\"vertical-align:top; background-color:$CELLBG;\">" . $font .
+      echo "<td>" .
+        $row[0] . "</td>";
+      echo "<td>" .
+        $row[1] . "</td>";
+      echo "<td>" . 
         date_to_str ( $row[3] ) . " " .
-        display_time ( $row[4] ) . "</span></td>";
-      echo "<td style=\"vertical-align:top; background-color:$CELLBG;\">" . $font .
+        display_time ( $row[4] ) . "</td>";
+      echo "<td>" . 
         "<a href=\"view_entry.php?id=$row[5]\" class=\"navlinks\">" .
-        htmlspecialchars($row[6]) . "</a></span></td>";
-      echo "<td style=\"vertical-align:top; background-color:$CELLBG;\">" . $font;
+        htmlspecialchars($row[6]) . "</a></td>";
+      echo "<td>";
       if ( $row[2] == $LOG_CREATE )
         etranslate("Event created");
       else if ( $row[2] == $LOG_APPROVE )
@@ -67,7 +66,7 @@ if ( $res ) {
         etranslate("Reminder sent");
       else
         echo "???";
-      echo "</span></td></tr>\n";
+      echo "</td></tr>\n";
     }
   }
   dbi_free_result ( $res );
@@ -75,7 +74,6 @@ if ( $res ) {
   echo translate("Database error") . ": " . dbi_error ();
 }
 ?>
-
 </table><br />
 
 <?php
