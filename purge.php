@@ -26,7 +26,7 @@ if ( ! empty ( $user ) ) {
   echo "<h2>" .
     translate("Purging events for") . " $user...</h2>\n";
   $ids = '';
-  $end_date = sprintf ( "%04d%02d%02d, ", $end_year,$end_month,$end_day);
+  $end_date = sprintf ( "%04d%02d%02d", $end_year,$end_month,$end_day);
   if ( $purge_all == "Y" ) {
     if ( $user == 'ALL' ) {
       $ids = array ('%');
@@ -101,8 +101,7 @@ function purge_events ( $ids ) {
   $tables[5][T] = 'webcal_site_extras';       $tables[5][C] = 'cal_id';
   $tables[6][T] = 'webcal_reminder_log';      $tables[6][C] = 'cal_id';
   $tables[7][T] = 'webcal_entry';             $tables[7][C] = 'cal_id';
-  $tables[8][T] = 'webcal_import_data';       $tables[8][C] = 'cal_id';
-  $tables[9][T] = 'webcal_entry_ext_user';    $tables[9][C] = 'cal_id';
+  $tables[8][T] = 'webcal_entry_ext_user';    $tables[8][C] = 'cal_id';
   $TT = sizeof($tables);
 
 //var_dump($tables);exit;
