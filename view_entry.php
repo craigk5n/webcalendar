@@ -36,7 +36,7 @@ if ( ! $can_view ) {
       $check_group = true;
   }
   else {
-    if ( $allow_view_other != "Y" )
+    if ( $allow_view_other == "Y" )
       $check_group = true;
   }
   // If $check_group is true now, it means this user can look at the
