@@ -838,10 +838,12 @@ function get_my_users () {
   *	was found.
   */
 function get_pref_setting ( $user, $setting ) {
+  $ret = '';
   // set default
   if ( ! isset ( $GLOBALS["sys_" .$setting] ) ) {
     // this could happen if the current user has not saved any pref. yet
-    $ret = $GLOBALS[$setting];
+    if ( ! empty ( $GLOBALS[$setting] ) )
+      $ret = $GLOBALS[$setting];
   } else {
     $ret = $GLOBALS["sys_" .$setting];
   }
