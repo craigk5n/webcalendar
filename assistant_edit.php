@@ -6,11 +6,13 @@ if ($user != $login)
 
 if ( $groups_enabled == "Y" ) {
   $INC = array('js/assistant_edit.php');
+} else {
+  $INC = '';
 }
 print_header($INC);
 ?>
 
-<form action="assistant_edit_handler.php" method="post" name="editentryform">
+<form action="assistant_edit_handler.php" method="post" name="assistanteditform">
 <?php
   if ($user) echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   if ( $is_nonuser_admin ) {
