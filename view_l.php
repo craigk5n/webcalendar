@@ -147,15 +147,12 @@ display_small_month ( $prevmonth, $prevyear, true, true, "prevmonth", "view_l.ph
 display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth", "view_l.php?id=$id&amp;" );
 ?>
 
-<br /><br />
-
 <div class="title">
-<span class="date"><?php
+<span class="date"><br /><?php
   echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
     $DATE_FORMAT_MY, false, false );
 ?></span>
-<span class="viewname"><?php
-    echo "<br />\n";
+<span class="viewname"><br /><?php
     echo $view_name;
 ?></span></div>
 <br /><br /><br /><br />

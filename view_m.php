@@ -117,7 +117,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $wday = strftime ( "%w", $date );
     $weekday = weekday_short_name ( $wday );
     if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
-      echo "<tr><th class=\"today\"";
+	echo "<tr><th class=\"today\">";
     } else {
 	echo "<tr><th class=\"row\">";
     }
