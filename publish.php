@@ -506,7 +506,7 @@ function export_ical () {
     export_recurrence_ical($uid, $date);
 
     /* handle alarms */
-    export_alarm_ical($uid);
+    export_alarm_ical($uid,$description);
 
     /* Goodbye event */
     echo "END:VEVENT\n";
