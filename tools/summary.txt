@@ -10,9 +10,9 @@ Dutch.txt:           21 (96.8% complete)
 English-US.txt:      Complete
 Estonian.txt:        190 (70.8% complete)
 Finnish.txt:         191 (70.6% complete)
-French.txt:          99 (84.8% complete)
+French.txt:          70 (89.2% complete)
 Galician.txt:        382 (41.2% complete)
-German.txt:          2 (99.7% complete)
+German.txt:          Complete
 Holo-Big5.txt:       332 (48.9% complete)
 Hungarian.txt:       21 (96.8% complete)
 Icelandic.txt:       440 (32.3% complete)
