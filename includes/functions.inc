@@ -552,17 +552,18 @@ function read_repeated_events ( $user ) {
 //  $days - days events occurs on (for weekly)
 //  $freq - frequency of repetition
 function get_all_dates ( $date, $rpt_type, $end, $days, $freq=1 ) {
+  global $conflict_repeat_months;
   $ONE_DAY = 86400;
   $currentdate = floor($date/$ONE_DAY)*$ONE_DAY;
   $realend = floor($end/$ONE_DAY)*$ONE_DAY;
   $dateYmd = date ( "Ymd", $date );
   if ($end=='NULL') {
     //This needs to be set in a preference I think.
-    //But I'll just check up to 6months from the start date.
+    //But I'll just check up to 6 months from the start date.
     $thismonth = substr($dateYmd, 4, 2);
     $thisyear = substr($dateYmd, 0, 4);
     $thisday = substr($dateYmd, 6, 2);
-    $thismonth += 6;
+    $thismonth += $conflict_repeat_months;
     if ($thismonth > 12) {
       $thisyear++;
       $thismonth -= 12;
@@ -947,7 +948,7 @@ function overlap($dates,$duration,$hour,$minute,$participants,$login,$id) {
   $sql .= " )";
   // make sure we don't get something past the end date of the
   // event we are saving.
-  //echo "SQL: $sql<P>";
+  echo "SQL: $sql<P>";
   $overlap = "";
   $res = dbi_query ( $sql );
   $found = array();
