@@ -1,4 +1,6 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Fixed bug 601013: in week.php, leftarrow.gif had syntax error for border
+    setting.
   - Added ability to set default for sending reminders to be yes when adding
     a new event.
   - Fixed bug 598947: background colors for today in week view were wrong.
