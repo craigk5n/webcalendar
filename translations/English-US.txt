@@ -273,6 +273,13 @@ Error approving event: Error approving event
 
 
 ###############################################
+# Page: availability.php
+#
+Busy: Busy
+Tentative: Tentative
+
+
+###############################################
 # Page: category.php
 #
 Categories: Categories
@@ -729,6 +736,7 @@ Thursday: Thursday
 Friday: Friday
 Saturday: Saturday
 You are not authorized to edit this entry: You are not authorized to edit this entry
+Availability: Availability
 
 
 ###############################################
