@@ -1,5 +1,9 @@
 <?php
 
+if (preg_match("/user\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
 // This file contains all the functions for getting information
 // about users.  So, if you want to use an authentication scheme
 // other than the webcal_user table, you can just create a new

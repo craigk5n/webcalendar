@@ -1,5 +1,9 @@
 <?php
 
+if (preg_match("/user-ldap\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
 // LDAP user functions.
 // This file is intended to be used instead of the standard user.php
 // file.  I have not tested this yet (I do not have an LDAP server
