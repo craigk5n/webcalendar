@@ -138,7 +138,7 @@ if ( ! empty ( $return_path ) )
 
 <P>
 <?php if ( $public_access == "Y" ) { ?>
-  <A CLASS="navlinks" HREF="week.php"><?php etranslate("Access public calendar")?></A><P>
+  <A CLASS="navlinks" HREF="index.php"><?php etranslate("Access public calendar")?></A><P>
 <?php } ?>
 
 <?php

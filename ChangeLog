@@ -1,4 +1,6 @@
 Version 0.9.41dev (?? ??? ???)
+  - Fixed bug 732729: public access link on login.php ignores preference
+    for default view
   - Fixed bug 753159: bug in site extras with select list.
     was using $i for inner and outer loop.
   - Fixed bug 753107: Not handling rejected or deleted events properly
