@@ -48,13 +48,15 @@ $thisdate = $startdate;
 <a href="view_m.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
 </td>
-<td style="text-align:center; color:<?php echo $H2COLOR?>;">
-<span style="font-weight:bold; font-size:24px;">
+<td class="viewmtitle">
+<span class="date">
 <?php
   printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
 ?>
 </span><br />
+<span class="viewname">
 <?php echo $view_name ?>
+</span>
 </td>
 <td style="text-align:right;">
 <?php if ( ! $friendly ) { ?>
@@ -114,14 +116,12 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 ?>
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<table style="border-width:0px; width:100%;" cellspacing="0" cellpadding="0">
-<tr><td style="background-color:<?php echo $TABLEBG?>;">
-<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
-<?php } else { ?>
+<table class="viewm" cellspacing="1" cellpadding="2">
+<?php } else { // if printer-friendly, use table tag below ?>
 <table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
 <?php } ?>
 
-<tr><td style="background-color:<?php echo $THBG?>;">&nbsp;</td>
+<tr><th class="empty">&nbsp;</td>
 
 <?php
   // $j points to start of this table/row
@@ -131,7 +131,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
-    echo "<td class=\"tableheader\" style=\"width:$tdw%;\">$tempfullname</td>";
+    echo "<th style=\"width:$tdw%;\">$tempfullname</td>";
   }
   echo "</tr>\n";
   
@@ -141,7 +141,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $weekday = weekday_short_name ( $wday );
     if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
       $color = $TODAYCELLBG;
-      $class = "tableheadertoday";
+      $class = "today";
     } else {
       if ( $wday == 0 || $wday == 6 )
         $color = $WEEKENDBG;
@@ -149,7 +149,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
         $color = $CELLBG;
       $class = "tableheader";
     }
-    echo "<tr><th class=\"$class\" style=\"width:10%; background-color:$color; vertical-align:top; font-size:13px;\">" .
+    echo "<tr><th class=\"$class\" style=\"width:10%; vertical-align:top; font-size:13px;\">" .
       $weekday . " " .
       round ( date ( "d", $date ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
@@ -170,7 +170,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
   }
 
   if ( empty ( $friendly ) || ! $friendly )
-    echo "</td></tr></table>\n</table>\n<br /><br />\n";
+    echo "</table>\n<br /><br />\n";
   else
     echo "</table>\n<br /><br />\n";
   

@@ -53,18 +53,20 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 <table style="border-width:0px; width:100%;">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<a title="<?php etranslate("Previous")?>" href="view_d.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate("Previous")?>" href="view_d.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
 </td>
-<td style="text-align:center; color:<?php echo $H2COLOR?>;">
-<span style="font-size:24px; font-weight:bold;">
+<td class="viewdtitle">
+<span class="date">
 <?php printf ( "%s, %s %d, %d", weekday_name ( $wday ), month_name ( $thismonth - 1 ), $thisday, $thisyear ); ?>
 </span><br />
+<span class="viewname">
 <?php echo $view_name ?>
+</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 <?php if ( ! $friendly ) { ?>
-<a title="<?php etranslate("Next")?>" href="view_d.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<a title="<?php etranslate("Next")?>" href="view_d.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 </td></tr>
 </table>
@@ -97,10 +99,10 @@ TimeMatrix($date,$participants);
 </center>
 
 <?php if ( empty ( $friendly ) ) {
-  echo "<p><a class=\"navlinks\" href=\"view_d.php?id=$id&";
+  echo "<p><a class=\"navlinks\" href=\"view_d.php?id=$id&amp;";
   echo $u_url . "date=$nowYmd";
   echo $caturl;
-  echo '&friendly=1" target="cal_printer_friendly" onmouseover="window.status=\'' .
+  echo '&amp;friendly=1" target="cal_printer_friendly" onmouseover="window.status=\'' .
     translate("Generate printer-friendly version") .
     '\'">[' . translate("Printer Friendly") . ']</a>';
 }
@@ -137,19 +139,18 @@ function TimeMatrix ($date,$participants) {
 ?>
 
 <br />
-<table style="border-width:0px;" cellspacing="0" cellpadding="0"><tr><td style="background-color:<?php echo $TABLEBG;?>;">
-<table style="width:<?php echo $total_pix;?>; border-width:0px;" cellspacing="0" cellpadding="0" cols="<?php echo $cols;?>">
+<table class="viewd" style="width:<?php echo $total_pix;?>;" cellspacing="0" cellpadding="0" cols="<?php echo $cols;?>">
  <tr><td style="height:1px; background-color:#000000;" colspan="<?php echo $cols;?>"><img src="pix.gif" style="height:1px; width:100%;" /></td></tr>
  <tr>
-   <td style="width:<?php echo $participant_pix;?>; background-color:<?php echo $THBG;?>; color:<?php echo $THFG;?>; font-size:13px;"><?php etranslate("Participants");?></td>
+   <th class="row" style="width:<?php echo $participant_pix;?>;"><?php etranslate("Participants");?></th>
 
 <?php
   $str = '';
-  $MouseOut = "onmouseout=\"window.status=''; this.style.backgroundColor='".$THBG."';\"";
+  $MouseOut = "onmouseout=\"window.status=''; this.style.backgroundColor='".$CELLBG."';\"";
   $CC = 1;
   for($i=$first_hour;$i<$last_hour;$i++) {
      for($j=0;$j<$interval;$j++) {
-        $str .= '   <td style="text-align:right; background-color:'.$THBG.'; width:'.$cell_pix.';" id="C'.$CC.'" class="dailymatrix" ';
+        $str .= '   <td style="text-align:right; background-color:'.$CELLBG.'; width:'.$cell_pix.';" id="C'.$CC.'" class="dailymatrix" ';
         switch($j) {
           case 0:
                   if($interval == 4) { $k = ($i<=9?'0':substr($i,0,1)); }
@@ -170,7 +171,7 @@ function TimeMatrix ($date,$participants) {
      }
   }
   echo $str.
-       " </tr>\n <tr><td style=\"height:1px; background-color:#000000;\" colspan=\"$cols\"><img src=\"pix.gif\" style=\"height:1px; width:100%;\"></td></tr>\n";
+       " </tr>\n <tr><td style=\"height:1px; background-color:#000000;\" colspan=\"$cols\"><img src=\"pix.gif\" style=\"height:1px; width:100%;\" /></td></tr>\n";
 
   // Display each participant
 
@@ -201,12 +202,12 @@ function TimeMatrix ($date,$participants) {
       $Tmp['ID'] = $E['cal_id'];
       $all_events[] = $Tmp;
     }
-    echo "<tr>\n <td style=\"width:$participant_pix; background-color:$CELLBG; color:$THFG; font-size:13px;\">".$user_nospace."</td>\n";
+    echo "<tr>\n <th class=\"row\" style=\"width:$participant_pix;\">".$user_nospace."</th>\n";
     $col = 1;
 
     for($j=$first_hour;$j<$last_hour;$j++) {
        for($k=0;$k<$interval;$k++) {
-         $space = ($k == '0') ? '<img src="pix.gif" style=\"height:12px; width:1px; text-align:middle;\" />' : "&nbsp;";
+         $space = ($k == '0') ? '<img src="pix.gif" style=\"height:12px; width:1px; text-align:center;\" />' : "&nbsp;";
 	 $RC = $CELLBG;
          $TIME = mktime ( sprintf ( "%02d",$j), ($increment * $k), 0, $thismonth, $thisday, $thisyear );
 
@@ -215,7 +216,7 @@ function TimeMatrix ($date,$participants) {
     	    if ($space == "&nbsp;") {
             $space="<a href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" style=\"height:8px; width:100%; text-align:center; border-width:0px;\" /></a>";
             } else {
-            $space="<a href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" style=\"height:12px; width:1px; text-align:center; border-width:0px;\"><img src=\"pix.gif\" style=\"height:8px; width:100%; text-align:center; border-width:0px;\" /></a>";
+            $space="<a href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" style=\"height:12px; width:1px; text-align:center; border-width:0px;\" /><img src=\"pix.gif\" style=\"height:8px; width:100%; text-align:center; border-width:0px;\" /></a>";
             }
 	    break;
 	  }
@@ -226,7 +227,7 @@ function TimeMatrix ($date,$participants) {
     }
     echo " </tr>\n <tr><td style=\"height:1px; background-color:#000000;\" colspan=\"$cols\"><img src=\"pix.gif\" style=\"height:1px; width:100%;\" /></td></tr>\n";
   } // End foreach participant
-  echo "</table></td></tr></table>\n";
+  echo "</table>\n";
 
 } // end TimeMatrix function
 ?>
