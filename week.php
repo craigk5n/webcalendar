@@ -38,7 +38,7 @@ if ( $DISPLAY_WEEKENDS == "N" ) {
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week.php?$u_url" .
-    "date=$startdate$caturl\" target=\"_self\">\n";
+    "date=$startdate$caturl\" target=\"_self\" />\n";
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
@@ -62,7 +62,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <table style="border-width:0px; width:100%;">
 <tr>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<td align="left"><a href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a></td>
+<td align="left"><a title="<?php etranslate("Previous")?>" href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a></td>
 <?php } ?>
 <td style="text-align:center;"><span style="font-size:24px; color:<?php echo $H2COLOR;?>; font-weight:bold;" class="pagetitle">
 <?php

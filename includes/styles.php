@@ -131,6 +131,59 @@
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
+
+
+table.weekview {
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 100%;
+}
+.weekview th {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 12%;
+}
+.weekview th.today {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
+	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 12%;
+}
+.weekview th.row {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 12%;
+	vertical-align: top;
+	height: 40px;
+}
+.weekview td {
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 12%;
+	font-size: 13px;
+	vertical-align: top;
+}
+.weekview td.today {
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 12%;
+	font-size: 13px;
+	vertical-align: top;
+	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+}
+
+
 a {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
@@ -169,7 +222,9 @@ h3 {
 }
 .pagetitle {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
-  font-size: 18px;
+  font-size: 24px;
+  color: <?php echo $GLOBALS['H2COLOR'] ?>;
+  font-weight: bold;
 }
 body {
   color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
@@ -235,7 +290,6 @@ td.numericdate {
 }
 .user {
 	font-size: 18px;
-	font-weight: bold;
 	color: <?php echo $GLOBALS['H2COLOR'] ?>;
 }
 .help {
