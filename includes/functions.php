@@ -845,10 +845,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   // TODO: Make day.php NOT be a special case
 
   if ( $user != $login && ! empty ( $user ) ) {
-    $u_url = "&amp;user=$user";
-  } else {
-    $u_url = '';
-  }
+    $u_url = "user=$user&amp;";
+ 	} else {
+     $u_url = '';
+ 	}
 
   //start the minical table for each month
   echo "\n<table class=\"minical\"";
@@ -886,10 +886,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     //print the month name
     echo "<caption>";
 
-    echo "<a href=\"{$month_link}year=$thisyear&amp;month=$thismonth$u_url\">";
-    echo month_name ( $thismonth - 1 ) .
-      ( $showyear ? " $thisyear" : "" ) .
-      "</a></caption>\n";
+		echo "<a href=\"{$month_link}{$u_url}year=$thisyear&amp;month=$thismonth\">";
+ 		echo month_name ( $thismonth - 1 ) .
+ 			( $showyear ? " $thisyear" : "" ) .
+ 			"</a></caption>\n";
 
     echo "<thead>\n<tr>\n";
   }
@@ -921,9 +921,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     $i += (24 * 3600 * 7) ) {
     echo "<tr>\n";
     if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ) {
-      echo "<td class=\"weeknumber\">" .
-        "<a href=\"week.php?$u_url&amp;date=" .
-        date("Ymd", $i)."\">(" . week_number($i) . ")</a></td>\n";
+			echo "<td class=\"weeknumber\"><a href=\"week.php?{$u_url}date=".date("Ymd", $i)."\">(" . week_number($i) . ")</a></td>\n";
     }
     for ($j = 0; $j < 7; $j++) {
       $date = $i + ($j * 24 * 3600);
