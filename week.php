@@ -166,7 +166,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
           $viewid = $rep[$cur_rep]['cal_id'];
           $viewname = $rep[$cur_rep]['cal_name'];
         }
-        if ( $rep['cal_duration'] == ( 24 * 60 ) )
+        if ( $rep[$cur_rep]['cal_duration'] == ( 24 * 60 ) )
           $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $viewid,
           $date, $rep[$cur_rep]['cal_time'],
@@ -207,7 +207,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
         $viewid = $rep[$cur_rep]['cal_id'];
         $viewname = $rep[$cur_rep]['cal_name'];
       }
-      if ( $rep['cal_duration'] == ( 24 * 60 ) )
+      if ( $rep[$cur_rep]['cal_duration'] == ( 24 * 60 ) )
         $all_day[$d] = 1;
       html_for_event_week_at_a_glance ( $viewid,
         $date, $rep[$cur_rep]['cal_time'],

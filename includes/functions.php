@@ -2386,7 +2386,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
           $viewid = $rep[$cur_rep]['cal_id'];
           $viewname = $rep[$cur_rep]['cal_name'];
         }
-        if ( $rep['cal_duration'] == ( 24 * 60 ) )
+        if ( $rep[$cur_rep]['cal_duration'] == ( 24 * 60 ) )
           $all_day = 1;
         html_for_event_day_at_a_glance ( $viewid,
           $date, $rep[$cur_rep]['cal_time'],
@@ -2427,7 +2427,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
         $viewid = $rep[$cur_rep]['cal_id'];
         $viewname = $rep[$cur_rep]['cal_name'];
       }
-      if ( $rep['cal_duration'] == ( 24 * 60 ) )
+      if ( $rep[$cur_rep]['cal_duration'] == ( 24 * 60 ) )
         $all_day = 1;
       html_for_event_day_at_a_glance ( $viewid,
         $date, $rep[$cur_rep]['cal_time'],
