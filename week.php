@@ -394,7 +394,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 <br />
 
 <?php
-	echo $eventinfo;
+	if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>

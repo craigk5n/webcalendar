@@ -215,7 +215,7 @@ echo "</table>\n<br />\n";
 
 $user = ""; // reset
 
-echo $eventinfo;
+if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
 echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_t.php?timeb=$timeb&amp;id=$id&amp;date=$thisdate&amp;friendly=1\" target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
 	translate("Generate printer-friendly version") .
