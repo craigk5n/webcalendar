@@ -5,14 +5,14 @@
 # Checked by: Romuald Texier <romualdt@free.fr>
 # Mise à jour : Gérard Delafond
 # Update by : Luc Capronnier, Wilfrid Hubert 
-# Last update: 17 juillet 2002 
 # Mise à jour : Mario Dragone <mario.dragone@reims.iufm.fr>
+# Update by : erational <http://www.erational.org> 
 # Title is what will appear in the title bar for pages
 #
-# Translation last updated on 07-21-2003
+# Translation last updated on 03-10-2003
 
 # No charset specified
-# charset:
+charset: iso-8859-1
 
 
 
@@ -131,58 +131,38 @@ Categories: Catégories
 categories-enabled-help: Active le support des catégories, autorisant les utilisateurs à qualifier un événement par une catégorie. 
 Categories enabled: Active/Désactive l'utilisation des catégories
 #
-# << MISSING >>
-# Nonuser:
-# English text: Nonuser Calendars
+Nonuser: Calendrier Non-utilisateur
 #
 #
-# << MISSING >>
-# nonuser-enabled-help:
-# English text: If enabled, admins will have the option to add nonuser calendars
+nonuser-enabled-help: Si activé, les administrteurs auront le choix d'ajouter des calendriers non-utilisateurs
 #
 #
-# << MISSING >>
-# Nonuser enabled:
-# English text: Nonuser Calendars Enabled
+Nonuser enabled: Calendrier des non-utilisateurs activé
 #
 #
-# << MISSING >>
-# nonuser-list-help:
-# English text: Where to display the nonuser calendars in the participant list
+nonuser-list-help: Où afficher le calendrier des non-utilisateurs dans la liste des participants
 #
 #
-# << MISSING >>
-# Nonuser list:
-# English text: Display in participants list at
+Nonuser list: Afficher la list des particants à 
 #
 #
-# << MISSING >>
-# Top:
+Top: En haut
 #
-# << MISSING >>
-# Bottom:
+Bottom: En bas
 #
-# << MISSING >>
-# Reports:
+Reports: Rapports
 #
-# << MISSING >>
-# reports-enabled-help:
-# English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
+# reports-enabled-help: Lorsque activé, les utilisateurs pourront voir un rubrique "rapport" en bas de chaque page et seront autorisés a créer des rapports personnalisés. En plus, les administrateurs peuvent créer des rapports globaux qui apparaitront en bas de la page de tous les utilisateurs
 #
 #
-# << MISSING >>
-# Reports enabled:
+Reports enabled: Rapports activés
 #
-# << MISSING >>
-# Subscribe/Publish:
+Subscribe/Publish: S'abonner/Publier
 #
-# << MISSING >>
-# subscriptions-enabled-help:
-# English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+subscriptions-enabled-help: specifie si l'utilisateur distant peut s'inscrire comme utilisateur de calendier WebCalendar, lui permettant ainsi de voir les événements des utilisateurs des applications de typeiCal (comme iCal d'Apple ou le calendrier Mozilla)
 #
 #
-# << MISSING >>
-# Allow remote subscriptions:
+Allow remote subscriptions: Autoriser les inscriptions distantes
 Email: Courrier électronique
 email-enabled-help: Active/Désactive l'envoi de couriel pour la notification et les rappels. Positionnez-le sur « Non » si votre serveur n'est pas configuré proprement pour envoyer des courriers.
 Email enabled: Courrier électronique activé 
@@ -342,8 +322,7 @@ Weekly: Hebdomadaire
 Monthly: Mensuelle
 by day: par jour
 #
-# << MISSING >>
-# by day (from end):
+by day (from end): par jour (depuis la fin)
 by date: par date
 Yearly: Annuelle
 repeat-end-date-help: Spécifie la date de fin de répétition de l'événement.
@@ -413,7 +392,7 @@ Last Name: Nom
 E-mail address: Adresse de couriel 
 Password: Mot de passe
 again: bis
-Admin: Administrateur
+Admin: Administration
 Disabled for demo: Désactivé pour la démo
 Change Password: Changer de mot de passe
 New Password: Nouveau mot de passe
@@ -491,24 +470,17 @@ server time: heure du serveur
 Default Category: Catégorie par défaut
 When I am the boss: Lorsque je suis le "boss"
 #
-# << MISSING >>
-# Email me event notification:
+Email me event notification: Envoi d'un email de notification d'événement
 #
-# << MISSING >>
-# I want to approve events:
+I want to approve events: Je veux approuver les événements
 #
-# << MISSING >>
-# allow-remote-subscriptions-help:
-# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+# allow-remote-subscriptions-help: Précise si les utilisateurs distants peuvent s'inscrire à votre calendrier, leur permettant de voir les événements dans un application compatible iCal (comme iCal d'Apple ou le calendrier Mozilla)
 #
 #
-# << MISSING >>
-# remote-subscriptions-url-help:
-# English text: Displays the URL remote users should use to subscribe to your calendar.
+# remote-subscriptions-url-help: Affiche l'URL à laquelle les utilisateurs distants doivent s'inscrire à votr calendrier
 #
 #
-# << MISSING >>
-# URL:
+URL: URL
 Sun: Dim
 Mon: Lun
 Tue: Mar
@@ -537,8 +509,7 @@ Adding/Editing Calendar Entries: Ajouter/Modifier un événement
 Help Index: Index de l'aide
 Layers: Calques
 #
-# << MISSING >>
-# Import:
+Import: Importer
 
 
 ###############################################
@@ -673,20 +644,15 @@ Ok: Valider
 # Page: import.php
 #
 #
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
+This form will allow you to import entries from the Palm Desktop Datebook.: Ce formulaire vous permet d'importer les données de votre agenda Palm Desktop
 #
-# << MISSING >>
-# Exclude private records:
+Exclude private records: exclure les enregistrements privés
 #
-# << MISSING >>
-# Datebook File:
+Datebook File: Fichier agenda
 #
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
+This form will import vCalendar (.vcs) 1.0 events: Ce formulaire importe vCalendar (.vcs)
 #
-# << MISSING >>
-# vCal File:
+vCal File: Fichier vCal
 
 
 ###############################################
@@ -699,8 +665,7 @@ every: tous
 5th: 5ème
 1st: 1er
 #
-# << MISSING >>
-# last:
+last: dernier
 Description: Description
 Status: état
 Waiting for approval: En attente de validation
@@ -760,11 +725,9 @@ Week (Users horizontal): Semaine (utilisateurs à l'horizontale)
 Week (Users vertical): Semaine (utilisateurs à la verticale)
 Week (Timebar): Semaine (planning)
 #
-# << MISSING >>
-# Month (side by side):
+Month (side by side): Mois (Côte à côte)
 #
-# << MISSING >>
-# Month (on same calendar):
+Month (on same calendar): Mois (sur le même calendrier)
 
 
 ###############################################
@@ -813,21 +776,16 @@ Private: Privé
 # Page: import_handler.php
 #
 #
-# << MISSING >>
-# Conflicting events:
+Conflicting events: Evénements en conflits
 #
-# << MISSING >>
-# Errors:
+Errors: Erreurs
 Back to My Calendar: Retour à mon Agenda
 #
-# << MISSING >>
-# There was an error parsing the import file or no events were returned:
+There was an error parsing the import file or no events were returned: Erreur lors de l'analyse du fichier d'import ou aucun événément n'a été trouvé
 #
-# << MISSING >>
-# The import file contained no data:
+The import file contained no data: Le fichier importé ne contient aucune donnée
 #
-# << MISSING >>
-# Event Imported:
+Event Imported: Evénement importé
 
 
 ###############################################
@@ -839,131 +797,91 @@ Back to My Calendar: Retour à mon Agenda
 # Page: edit_report.php
 #
 #
-# << MISSING >>
-# Tomorrow:
+Tomorrow: demain
 #
-# << MISSING >>
-# Today:
+Today: Aujourd'hui
 #
-# << MISSING >>
-# Yesterday:
+Yesterday: hier
 #
-# << MISSING >>
-# Day before yesterday:
+Day before yesterday: Avant-hier
 #
-# << MISSING >>
-# Next week:
+Next week: Semaine prochaine
 #
-# << MISSING >>
-# This week:
+This week: Semaine en cours
 #
-# << MISSING >>
-# Last week:
+Last week: Semaine dernière
 #
-# << MISSING >>
-# Week before last:
+Week before last: Semaine précente
 #
-# << MISSING >>
-# Next week and week after:
+Next week and week after: La semaine précédente et la semaine prochaine
 #
-# << MISSING >>
-# This week and next week:
+This week and next week: Cette semaine et la semaine prochaine
 #
-# << MISSING >>
-# Last week and this week:
+Last week and this week: La semaine dernière et cette semaine
 #
-# << MISSING >>
-# Last two weeks:
+Last two weeks: Deux dernières semaines
 #
-# << MISSING >>
-# Next month:
+Next month: Mois prochain
 #
-# << MISSING >>
-# This month:
+This month: Mois en cours
 #
-# << MISSING >>
-# Last month:
+Last month: Mois dernier
 #
-# << MISSING >>
-# Month before last:
+Month before last: Mois précédent
 #
-# << MISSING >>
-# Next year:
+Next year: Année prochaine
 #
-# << MISSING >>
-# This year:
+This year: Année en cours
 #
-# << MISSING >>
-# Last year:
+Last year: Année dernière
 #
-# << MISSING >>
-# Year before last:
+Year before last: Année précécente
 #
-# << MISSING >>
-# Invalid report id:
+Invalid report id: Id de rapport invalide
 #
-# << MISSING >>
-# Unnamed Report:
+Unnamed Report: Rapport anonyme
 #
-# << MISSING >>
-# Add Report:
+Add Report: Ajouter un rapport
 #
-# << MISSING >>
-# Edit Report:
+Edit Report: Editer un rapport
 #
-# << MISSING >>
-# Report name:
+Report name: Nom du rapport
 Current User: Utilisateur actuel
 #
-# << MISSING >>
-# Include link in trailer:
+Include link in trailer: Inclure le lien dans le bas de page
 #
-# << MISSING >>
-# Include standard header/trailer:
+Include standard header/trailer: Inclure les hauts et bas de pages standards
 #
-# << MISSING >>
-# Date range:
+Date range: Entendu des dates
 #
-# << MISSING >>
-# Include previous/next links:
+Include previous/next links: Inclure les liens avant/suivant
 #
-# << MISSING >>
-# Include empty dates:
+Include empty dates: Inclure les dates vides
 #
-# << MISSING >>
-# Template variables:
+Template variables: Variables de squelette
 #
-# << MISSING >>
-# Page template:
+Page template: Squelette de page
 #
-# << MISSING >>
-# Day template:
+Day template: Squelette pour une journée
 #
-# << MISSING >>
-# Event template:
+Event template: Squelette pour un événement
 #
-# << MISSING >>
-# Are you sure you want to delete this report?:
+Are you sure you want to delete this report?: Etes vous sur de vouloir effacer ce rapport ?
 
 
 ###############################################
 # Page: report.php
 #
 #
-# << MISSING >>
-# Approved:
+Approved: Approuvé
 #
-# << MISSING >>
-# Unknown:
+Unknown: Inconnu
 #
-# << MISSING >>
-# to manage reports for the Public Access calendar:
+to manage reports for the Public Access calendar: pour gérer les rapports pour l'accès au calendrier public
 #
-# << MISSING >>
-# Add new report:
+Add new report: Ajouter un nouveau rapport
 #
-# << MISSING >>
-# Manage Reports:
+Manage Reports: Gérer les rapports
 
 
 ###############################################
@@ -997,49 +915,36 @@ Yours assistants: Vos assistants(es)
 # Page: help_import.php
 #
 #
-# << MISSING >>
-# Palm Desktop:
+Palm Desktop: Palm Desktop
 #
-# << MISSING >>
-# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Cela doit être placé dans le répertoire <tt>datebook/datebook.dat</tt> de votre Palm placé dans un sous-répertoire à votre nom
 #
-# << MISSING >>
-# The following entries will not be imported:
+The following entries will not be imported: Les entrées suivantes ne seront pas importés
 #
-# << MISSING >>
-# Entries older than the current date:
+Entries older than the current date: Entrées plus anciennnes que la date courante
 #
-# << MISSING >>
-# Entries creted in the Palm Desktop that have not been HotSync'd:
+Entries creted in the Palm Desktop that have not been HotSync'd: Les entrées crées dans le Palm Desktop qui n'ont pas été synchronisé à chaud 
 #
-# << MISSING >>
-# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Tout élément importé du Palm sera écrasé au prochain import (sauf si la date de l'événement est passé)
 #
-# << MISSING >>
-# Therefore, updates should be made in the Palm Desktop.:
+Therefore, updates should be made in the Palm Desktop.: Auparavant, les mises à jour doivent être effectués sur le Palm Desktop
 #
-# << MISSING >>
-# vCal:
+vCal: vCal
 #
-# << MISSING >>
-# The following formats have been tested:
+The following formats have been tested: Les formats suivants ont été testés
 #
-# << MISSING >>
-# Palm Desktop 4:
+Palm Desktop 4: Palm Desktop 4
 #
-# << MISSING >>
-# Lotus Organizer 6:
+Lotus Organizer 6: Lotus Organizer 6
 #
-# << MISSING >>
-# Microsoft Outlook 2002:
+Microsoft Outlook 2002: Microsoft Outlook 2002
 
 
 ###############################################
 # Page: edit_report_handler.php
 #
 #
-# << MISSING >>
-# Variable N not found:
+Variable N not found: Variable N manquante
 
 
 ###############################################
@@ -1129,8 +1034,7 @@ Send Reminder: Envoyer un rappel
 # Page: includes/init.php
 #
 #
-# << MISSING >>
-# charset:
+charset: jeu de caractères
 
 
 ###############################################
