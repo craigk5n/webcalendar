@@ -198,7 +198,7 @@ function print_upcoming_event ( $e ) {
   global $display_link, $link_target, $server_url;
 
   if ( $display_link && ! empty ( $server_url ) ) {
-    print "<a title\"" . 
+    print "<a title=\"" . 
     	htmlentities ( $e['cal_name'] ) . "\" href=\"" . 
 	$server_url . "view_entry.php?id=" . 
 	$e['cal_id'] . "&amp;date=" . 
