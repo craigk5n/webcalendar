@@ -482,3 +482,114 @@ CREATE TABLE webcal_import_data (
   cal_external_id VARCHAR(200) NULL,
   PRIMARY KEY  ( cal_id, cal_login )
 );
+
+
+/*
+ * Defines a report.
+ */
+CREATE TABLE webcal_report (
+  /* creator of report */
+  cal_login VARCHAR(25) NOT NULL,
+  /* unique id of this report */
+  cal_report_id INT NOT NULL,
+  /* is this a global report (can it be accessed by other users) ('Y' or 'N') */
+  cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
+  /* format of report (html, plain or csv) */
+  cal_report_type VARCHAR(20) NOT NULL,
+  /* if cal_report_type is 'html', should the default HTML header and */
+  /* trailer be included? ('Y' or 'N') */
+  cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
+  /* name of the report */
+  cal_report_name VARCHAR(50) NOT NULL,
+  /* default time range:  <ul> */
+  /* <li>  0 = tomorrow */
+  /* <li>  1 = today */
+  /* <li>  2 = yesterday */
+  /* <li>  3 = day before yesterday */
+  /* <li>  10 = next week */
+  /* <li>  11 = current week */
+  /* <li>  12 = last week */
+  /* <li>  13 = week before last */
+  /* <li>  20 = next week and week after */
+  /* <li>  21 = current week and next week */
+  /* <li>  22 = last week and this week */
+  /* <li>  23 = last two weeks */
+  /* <li>  30 = next month */
+  /* <li>  31 = current month */
+  /* <li>  32 = last month */
+  /* <li>  33 = month before last */
+  /* <li>  40 = next year */
+  /* <li>  41 = current year */
+  /* <li>  42 = last year */
+  /* <li>  43 = year before last */
+  /* </ul> */
+  cal_time_range INT NOT NULL,
+  /* user calendar to display (NULL indicates current user) */
+  cal_user VARCHAR(25) NULL,
+  /* allow user to navigate to different dates with next/previous ('Y' or 'N') */
+  cal_allow_nav CHAR(1) DEFAULT 'Y',
+  /* category to filter on (optional) */
+  cal_cat_id INT NULL,
+  /* include empty dates in report ('Y' or 'N') */
+  cal_include_empty CHAR(1) DEFAULT 'N',
+  /* include a link for this report in the "Go to" section of the navigation */
+  /* in the page trailer ('Y' or 'N') */
+  cal_show_in_trailer CHAR(1) DEFAULT 'N',
+  /* date created or last updated (in YYYYMMDD format) */
+  cal_update_date INT NOT NULL,
+  PRIMARY KEY ( cal_report_id )
+);
+
+/*
+ * Defines one of the templates used for a report.
+ * Each report has three templates:
+ * <ol>
+ * <li> Page template - Defines the entire page (except for header and
+ *   footer).  The following variables can be defined:
+ *   <ul>
+ *     <li> ${days}<sup>*</supt> - the HTML of all dates (generated from the Date template)
+ *   </ul>
+ * <li> Date template - Defines events for one day.  If the report
+ *   is for a week or month, then the results of each day will be
+ *   concatenated and used as the ${days} variable in the Page template.
+ *   The following variables can be defined:
+ *   <ul>
+ *     <li> ${events}<sup>*</supt> - the HTML of all events
+ *          for the data (generated from the Event template)
+ *     <li> ${date} - the date
+ *     <li> ${fulldate} - date (includes weekday)
+ *   </ul>
+ * <li> Event template - Defines a single event.
+ *      The following variables can be defined:
+ *   <ul>
+ *     <li> ${name} - Brief Description of event
+ *     <li> ${description} - Full Description of event
+ *     <li> ${date} - Date of event
+ *     <li> ${fulldate} - Date of event (includes weekday)
+ *     <li> ${time} - Time of event (4:00pm - 4:30pm)
+ *     <li> ${starttime} - Start time of event
+ *     <li> ${endtime} - End time of event
+ *     <li> ${duration} - Duration of event (in minutes)
+ *     <li> ${priority} - Priority of event
+ *     <li> ${href} - URL to view event details
+ *   </ul>
+ * </ol>
+ * <sup>*</sup> denotes a required template variable
+ */
+CREATE TABLE webcal_report_template (
+  /* report id (in webcal_report table) */
+  cal_report_id INT NOT NULL,
+  /* type of template: */
+  /* <ul> */
+  /* <li> 'P': page template represents entire document
+  /* <li> 'D': date template represents a single day of events
+  /* <li> 'E': event template represents a single event
+  /* </ul> */
+  cal_template_type CHAR(1) NOT NULL,
+  /* text of template */
+  cal_template_text TEXT,
+  PRIMARY KEY ( cal_report_id, cal_template_type )
+);
+
+
+

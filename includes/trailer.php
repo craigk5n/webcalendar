@@ -223,6 +223,36 @@
 ?>
 <BR>
 <?php } // if ( $login != "__public__" ) ?>
+
+<?php if ( ! empty ( $reports_enabled ) && $reports_enabled == 'Y' ) { ?>
+<b><?php etranslate("Reports")?>:</b>
+<?php
+$res = dbi_query ( "SELECT cal_report_name, cal_report_id " .
+  "FROM webcal_report " .
+  "WHERE cal_login = '$login' OR " .
+  "( cal_is_global = 'Y' AND cal_show_in_trailer = 'Y' ) " .
+  "ORDER by cal_report_id" );
+$found_report = false;
+if ( $res ) {
+  while ( $row = dbi_fetch_row ( $res ) ) {
+    if ( $found_report )
+      echo " | ";
+    echo "<a href=\"report.php?report_id=$row[1]\" class=\"navlinks\">" .
+      htmlentities ( $row[0] ) . "</a>";
+    $found_report = true;
+  }
+  dbi_free_result ( $res );
+}
+if ( $login != "__public__" ) {
+  if ( $found_report )
+    echo " | ";
+  echo "<a href=\"report.php\" class=\"navlinks\">" .
+    translate("Manage Reports") . "</a>\n";
+}
+?>
+<br>
+<?php } ?>
+
 <?php
   if ( $single_user != "Y" && $readonly != "Y" && $login != "__public__" ) {
     echo "<B>" . translate("Admin") . ":</B>\n";
