@@ -539,10 +539,11 @@ function read_repeated_events ( $user ) {
 //  $days - days events occurs on (for weekly)
 //  $freq - frequency of repetition
 function get_all_dates ( $date, $rpt_type, $end, $days, $freq=1 ) {
-  $currentdate = floor($date/86400)*86400;
-  $realend = floor($end/86400)*86400;
+  $ONE_DAY = 86400;
+  $currentdate = floor($date/$ONE_DAY)*$ONE_DAY;
+  $realend = floor($end/$ONE_DAY)*$ONE_DAY;
   $dateYmd = date ( "Ymd", $date );
-  if ($realend=='NULL') {
+  if ($end=='NULL') {
     //This needs to be set in a preference I think.
     //But I'll just check up to 6months from the start date.
     $thismonth = substr($dateYmd, 4, 2);
@@ -553,7 +554,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $freq=1 ) {
       $thisyear++;
       $thismonth -= 12;
     }
-    $realend = mktime(0,0,0,$thismonth,$thisday,$thisyear);
+    $realend = mktime(3,0,0,$thismonth,$thisday,$thisyear);
   }
   $ret = array();
   $ret[0] = $date;
@@ -565,24 +566,24 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $freq=1 ) {
     $n = 1;
     if ($rpt_type == 'daily') {
       //we do inclusive counting on end dates.
-      $cdate += 86400 * $freq;
-      while ($cdate <= $realend+86400) {
+      $cdate += $ONE_DAY * $freq;
+      while ($cdate <= $realend+$ONE_DAY) {
         $ret[$n++]=$cdate;
-        $cdate += 86400 * $freq;
+        $cdate += $ONE_DAY * $freq;
       }
     } else if ($rpt_type == 'weekly') {
       $daysarray = array();
       $r=0;
       $dow = date("w",$date);
-      $cdate = $date - ($dow * 86400);
+      $cdate = $date - ($dow * $ONE_DAY);
       for ($i = 0; $i < 7; $i++) {
         $isDay = substr($days, $i, 1);
         if (strcmp($isDay,"y")==0) {
-          $daysarray[$r++]=$i * 86400;
+          $daysarray[$r++]=$i * $ONE_DAY;
         }
       }
       //we do inclusive counting on end dates.
-      while ($cdate <= $realend+86400) {
+      while ($cdate <= $realend+$ONE_DAY) {
         //add all of the days of the week.
         for ($j=0; $j<$r;$j++) {
           $td = $cdate + $daysarray[$j];
@@ -591,7 +592,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $freq=1 ) {
           }
         }
         //skip to the next week in question.
-        $cdate += 604800*$freq;
+        $cdate += ( $ONE_DAY * 7 ) * $freq;
       }
     } else if ($rpt_type == 'monthlyByDay') {
       $dow  = date('w', $date);
@@ -603,18 +604,16 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $freq=1 ) {
       $t = $dow - $dow1;
       if ($t < 0) $t += 7;
       $day = 7*$week + $t + 1;
-      $cdate = mktime ($hour,$minute,0,$thismonth,$day,$thisyear);
-      while ($cdate <= $realend+86400) {
+      $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
+      while ($cdate <= $realend+$ONE_DAY) {
         $ret[$n++] = $cdate;
         $thismonth+=$freq;
-        $dow1 += date('w',mktime (0,0,0,$thismonth,1,$thisyear));
+        $dow1 += date('w',mktime (3,0,0,$thismonth,1,$thisyear));
         $t = $dow - $dow1;
         if ($t < 0) $t += 7;
         $day = 7*$week + $t + 1;
-        $cdate = mktime ($hour,$minute,0,$thismonth,$day,$thisyear);
+        $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
       }
-      
-      
     } else if ($rpt_type == 'monthlyByDate') {
       $thismonth = substr($dateYmd, 4, 2);
       $thisyear  = substr($dateYmd, 0, 4);
@@ -623,11 +622,11 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $freq=1 ) {
       $minute    = date('i',$date);
 
       $thismonth += $freq;
-      $cdate = mktime ($hour,$minute,0,$thismonth,$thisday,$thisyear);
-      while ($cdate <= $realend+86400) {
+      $cdate = mktime (3,0,0,$thismonth,$thisday,$thisyear);
+      while ($cdate <= $realend+$ONE_DAY) {
         $ret[$n++] = $cdate;
         $thismonth += $freq;
-        $cdate = mktime ($hour,$minute,0,$thismonth,$thisday,$thisyear);
+        $cdate = mktime (3,0,0,$thismonth,$thisday,$thisyear);
       }
     } else if ($rpt_type == 'yearly') {
       $thismonth = substr($dateYmd, 4, 2);
@@ -637,11 +636,11 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $freq=1 ) {
       $minute    = date('i',$date);
 
       $thisyear += $freq;
-      $cdate = mktime ($hour,$minute,0,$thismonth,$thisday,$thisyear);
-      while ($cdate <= $realend+86400) {
+      $cdate = mktime (3,0,0,$thismonth,$thisday,$thisyear);
+      while ($cdate <= $realend+$ONE_DAY) {
         $ret[$n++] = $cdate;
         $thisyear += $freq;
-        $cdate = mktime ($hour,$minute,0,$thismonth,$thisday,$thisyear);
+        $cdate = mktime (3,0,0,$thismonth,$thisday,$thisyear);
       }
     }
   }
