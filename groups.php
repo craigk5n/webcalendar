@@ -12,7 +12,7 @@ print_header();
 ?>
 
 <h2><?php etranslate("Groups")?></h2>
-<a title="<?php etranslate("Admin") ?>" class="navlinks" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
+<a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 
 <ul>
 <?php

@@ -296,7 +296,7 @@ a.matrix img {
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-.navlinks {
+.nav {
   font-size: 14px;
   color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
   text-decoration: none;

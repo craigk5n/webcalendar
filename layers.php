@@ -33,7 +33,7 @@ print_header();
 if ( $updating_public )
   echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
 etranslate("Layers")?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
-<a title="<?php etranslate("Admin") ?>" class="navlinks" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
+<a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 <?php
 
 if ( $is_admin ) {
@@ -57,10 +57,10 @@ if ( $layers_enabled ) {
 echo "</b>.<br /><br />";
 
 if ( $layers_enabled )
-  echo "<a class=\"navlinks\" href=\"layers_toggle.php?status=off$u_url&amp;$ret\">" .
+  echo "<a class=\"nav\" href=\"layers_toggle.php?status=off$u_url&amp;$ret\">" .
     translate ("Disable Layers") . "</a>\n";
 else
-  echo "<a class=\"navlinks\" href=\"layers_toggle.php?status=on$u_url&amp;$ret\">" .
+  echo "<a class=\"nav\" href=\"layers_toggle.php?status=on$u_url&amp;$ret\">" .
     translate ("Enable Layers") . "</a>\n";
 
 

@@ -2706,7 +2706,7 @@ function display_unapproved_events ( $user ) {
       if ( $row[0] > 0 )
 	$str = translate ("You have XXX unapproved events");
 	$str = str_replace ( "XXX", $row[0], $str );
-        echo "<a class=\"navlinks\" href=\"list_unapproved.php";
+        echo "<a class=\"nav\" href=\"list_unapproved.php";
         if ( $user != $login )
           echo "?user=$user\"";
         echo "\">" . $str .  "</a><br />\n";

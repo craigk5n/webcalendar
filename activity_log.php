@@ -6,7 +6,7 @@ print_header();
 
 echo "<h3>" . translate("Activity Log") . "</h3>\n";
 
-echo "<a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n";
+echo "<a title=\"" . translate("Admin") . "\" class=\"nav\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n";
 
 echo "<table>\n";
 echo "<tr><th class=\"usr\">\n" .
@@ -45,7 +45,7 @@ if ( $res ) {
         $row[1] . "</td><td>\n" . 
         date_to_str ( $row[3] ) . " " .
         display_time ( $row[4] ) . "</td><td>\n" . 
-        "<a href=\"view_entry.php?id=$row[5]\" class=\"navlinks\">" .
+        "<a href=\"view_entry.php?id=$row[5]\" class=\"nav\">" .
         htmlspecialchars($row[6]) . "</a></td><td>\n";
       if ( $row[2] == $LOG_CREATE )
         etranslate("Event created");
@@ -85,14 +85,14 @@ if ( ! empty ( $startid ) ) {
       } else {
         $prevarg = "?startid=$previd";
       }
-      echo "<a href=\"activity_log.php$prevarg\" class=\"navlinks\">" .
+      echo "<a href=\"activity_log.php$prevarg\" class=\"nav\">" .
         translate("Previous") . " $PAGE_SIZE</a><br />\n";
     }
     dbi_free_result ( $res );
   }
 }
 if ( ! empty ( $nextpage ) ) {
-  echo "<a href=\"activity_log.php?startid=$nextpage\" class=\"navlinks\">" .
+  echo "<a href=\"activity_log.php?startid=$nextpage\" class=\"nav\">" .
     translate("Next") . " $PAGE_SIZE</a><br />\n";
 }
 ?>

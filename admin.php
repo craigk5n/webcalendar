@@ -36,7 +36,7 @@ if ( ! $is_admin ) {
   $error = true;
 }
 if ( ! $error ) {
-	echo "<a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n";
+	echo "<a title=\"" . translate("Admin") . "\" class=\"nav\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n";
 }
 
 if ( empty ( $ovrd ) && ! $error ) {
