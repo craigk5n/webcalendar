@@ -13,6 +13,7 @@ Version 0.9.45/CVS+fixes (?? ??? 2004)
   - Updated French translation
   - Updated German translation
   - Updated Italian translation
+  - Updated Norwegian translation
 Version 0.9.45 (12 Dec 2004)
   - Cleaned up user-ldap.php: added connect_and_bind function, config
     section cleanup, check all searches for attr array, etc.
