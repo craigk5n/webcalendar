@@ -5,7 +5,10 @@
 # Translator: Ralph Boßler <vertrieb@sylphen.com>,
 #	Peter Huetmannsberger <huetmann@site38.ping.at>
 # Last update: 28 June 2000
-
+# 
+# updated 11.01.02 for version 0.9.34 
+#	by Rolf Obrecht <obrecht@iem.rwth-aachen.de>
+#
 # Title is what will appear in the title bar for pages
 Title: WebCalendar
 
@@ -57,6 +60,12 @@ Oct: Okt
 Nov: Nov
 Dec: Dez
 
+1st: 1.
+2nd: 2.
+3rd: 3.
+4th: 4.
+5th: 5.
+
 Language: Sprache
 Your browser default language is: Ihre Default-Sprache ist
 Generate printer-friendly version: Erzeuge Version zum Drucken
@@ -77,16 +86,12 @@ View this entry: Eintrag ansehen
 Private: Privat
 This event is confidential: privater Termin 
 You have: Sie haben
-unapproved: unbestätigten
-not approved: unbestätigte
+unapproved: unbestätigte(n)
 event: Eintrag 
 events: Einträge
 Go to: Gehe zu
 Help Index: Hilfe-Index
 Error approving event: Fehler bei Bestätigung des Ereignisses
-This user has: Dieser Benutzer hat
-calendar entries: Kalender-Einträge
-They must all be deleted (or this user removed as a participant) before this user can be deleted: Diese oder die Teilnehmer müssen alle gelöscht werden, bevor der Benutzer gelöscht werden kann.
 The passwords were not identical: Die eingebenen Kennwörter stimmten nicht überein
 You have not entered a password: Sie haben kein Kennwort eingegeben
 You have not entered a Brief Description: Sie haben keine Kurzbeschreibung eingegeben
@@ -128,7 +133,6 @@ This will delete this entry for all users.: Dieser Eintrag wird für alle Benutze
 Delete: Löschen
 Delete entry: Lösche Eintrag
 You are not authorized to edit this entry: Sie haben keine Berechtigung diesen Eintrag zu ändern.
-Unauthorized: Keine Berechtigung
 The following conflicts with the suggested time: Folgende Konflikte mit vorgeschlagenem Termin
 Unnamed Event: unbenanntes Ereignis
 Hello: Guten Tag 
@@ -185,7 +189,7 @@ match found: Treffer gefunden
 matches found: Treffer gefunden
 No matches found: Keine Treffer
 View Another User's Calendar: Kalender anderer Benutzer anzeigen 
-You are not authorized: Sie haben keine Berechtigung hiefür
+You are not authorized: Sie haben keine Berechtigung hierfür
 Add New User: Neue Benutzer hinzufügen
 denotes administrative user: kennzeichnet administrativen Benutzer
 Invalid entry id: ungültiger Eintrag
@@ -194,7 +198,7 @@ Invalid entry id: ungültiger Eintrag
 brief-description-help: Kurzbeschreibung (ca. 20 Zeichen) des Termins. Dies erscheint, wenn der Kalender angezeigt wird.
 full-description-help: Komplette Beschreibung des Termins. Diese Information sieht der Benutzer beim Termin.
 date-help: Gibt das Datum des Termins an.
-time-help: Gibt die Uhrzeit des Termins an.<BR><I>Kann leer gelassen werden.</I>
+time-help: Gibt die Uhrzeit des Termins an.<I>Kann leer gelassen werden.</I> Dann wird der Termin als Ganztages-Memo gespeichert.
 duration-help: Gibt die Dauer des Termin in Minuten an.<BR><I>Kann leer gelassen werden.</I>
 priority-help: Gibt die Priorität des Termins an.  Termine mit hoher Priorität werden fett angezeigt.
 access-help: Gibt den Zugriff auf den Termin an.<BR> <I>Öffentlich</I>: Jeder kann alle Details des Termins sehen.<BR><I>Geheim</I>: Andere können sehen, dass ein Termin existiert, können jedoch keine Details ansehen.
@@ -242,7 +246,6 @@ End date: Enddatum
 Modified since: Änderungen ab
 Export all dates: Alle Einträge exportieren
 Preferred view: Bevorzugte Ansicht
-Things to Do: Aufgabenliste
 Add to My Calendar: Zu meinem Kalender hinzufügen
 
 Layers are currently: Layer
@@ -251,6 +254,62 @@ Disabled: inaktiv
 Edit layer: Layer editieren
 Delete layer: Layer löschen
 Add layer: Layer hinzufügen
+Add Layer: Layer hinzufügen
 Edit Layers: Layer editieren
 Disable Layers: Layer abschalten
+
+An appointment has been canceled for you by: Ein Termin wurde abgesagt von 
+An appointment has been rejected by: Ein Termin wurde abgelehnt von 
+An appointment has been updated by: Ein Termin wurde aktualisiert von 
+Are you sure you want to delete this layer?: Wollen Sie diesen Layer wirklich löschen?
+
+before event: vor dem Termin
+Cancel: Stornieren
+Color: Farbe
+Database error: Datenbankfehler
+days: Tage
+Disabled for demo: Gesperrt im Demo-Modus
+Display icons: Icons anzeigen
+Do you want to add this entry to your calendar?: Wollen Sie diesen Eintrag Ihrem Kalender hinzufügen?
+Duplicates: Doubletten
+Edit Layer: Layer editieren
+Email: E-Mail
+Enable Layers: Layer aktivieren
+Error adding event: Fehler beim Eintragen des Termins
+Event rejected by participant: Termin von Teilnehmer abgelehnt
+Event reminders: Erinnerung an Termin
+Events added to my calendar: Zu meinem Kalender hinzugefügte Termine
+Events removed from my calendar: Aus meinem Kalender entfernte Termine
+Events updated on my calendar: Aktualisierte Termine in meinem Kalender
+every: jeden
+Invalid color: Ungültige Farbe
+Invalid login: Ungültiges Login
+Layers: Layer
+Reminder: Erinnerung
+Show layer events that are the same as your own: Termine anzeigen, die identisch im eigenen Kalender existieren
+Source: Quelle
+The subject was: Der Betreff war
+The time you have entered begins before your preferred work hours.  Is this correct?: Die angegebene Zeit liuegt vor der normalen Arbeitszeit. Ist das OK?
+This is a private event and may not be added to your calendar.: Dies ist ein privater Termin und kann nicht in Ihren Kalender eingetragen werden.
+This is a reminder for the event detailed below.: Dies ist eine Erinnerung an folgenden Termin.
+This will add the entry to your calendar.: Hiermit tragen Sie den Termin in Ihren Kalender ein.
+This will delete the entry from your calendar.: Hiermit löschen Sie den Termin aus Ihrem Kalender.
+User: Benutzer
+
+
+display-icons-help: Wochennummern anzeigen?
+display-week-starts-on: Gibt an, ob die Woche Montags (ISO-konforme Wochennummern) oder Sonntags beginnt.
+email-event-added: Gibt an, ob eine E-mail-Erinnerung versendet wird, wenn Sie zu einem Termin eingeladen wurden.
+email-event-deleted: Gibt an, ob eine E-mail-Erinnerung versendet wird, wenn ein Termin aus Ihrem Kalender gelöscht wurde,
+email-event-rejected: Gibt an, ob eine E-mail-Erinnerung versendet wird, wenn ein Termin von einem Teilnehmer abgelehnt wurde.
+email-event-reminders-help: Gibt an, ob Terminerinnerungen per E-mail versendet werden.
+email-event-updated: Gibt an, ob eine E-mail-Erinnerung versendet wird, wenn ein Termin in Ihrem Kalender ge&auml;ndert  wurde.
+language-help: Wählt die Sprache aus. Wird <i>Browser-abhängig</i> gewählt, so steuert die Browsereinstellung die Sprachauswahl.
+Layer: Layer
+Palm Pilot: Palm Pilot
+preferred-view-help: Hier stellen Sie die Standard-Kalenderansicht ein. Sie können zwischen Jahres-, Monats-, Wochen- und Tagesdarstellung wählen.
+repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden soll. Nur bei <i>wöchentlicher Wiederholung</i>.
+repeat-end-date-help: Das Datum, bis zu dem der Termin wiederholt werden soll.
+repeat-frequency-help: Soll der Termin nur an jedem n-ten (Monat|Tag|Wochentag|...) wiederholt werden, so geben Sie hier die Zahl 'n' ein.
+repeat-type-help: Wiederholungsart: <i>Monatlich / tagesorientiert</i> erlaubt die Wiederholung an z.B. jedem 1. Donnerstag im Monat oder jedem 3. Freitag im Monat, <i>Monatlich / datumsorientiert</i> erlaubt die Wiederholung am jeweils gleichen Tag des Monats.
 
