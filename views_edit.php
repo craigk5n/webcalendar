@@ -22,9 +22,9 @@ if ( ! $is_admin )
 
 $BodyX = 'onload="usermode_handler();"';
 if ( $groups_enabled == "Y" ) {
-  $INC = array('js/assistant_edit.php', 'js/visible.php', 'js/views_edit.php' );
+  $INC = array('js/visible.php', 'js/views_edit.php' );
 } else {
-  $INC = array( 'js/visible.php', 'js/views_edit.php' );
+  $INC = array( 'js/visible.php');
 }
 print_header ( $INC, "", $BodyX );
 ?>
