@@ -190,7 +190,10 @@ if ( ( empty ( $year ) || ! $year ) &&
   if ( empty ( $cal_date ) )
     $cal_date = date ( "Ymd" );
 }
-$thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
+if ( empty ( $thisyear ) )
+  $thisdate = date ( "Ymd" );
+else
+  $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 if ( empty ( $cal_date ) || ! $cal_date )
   $cal_date = $thisdate;
 
