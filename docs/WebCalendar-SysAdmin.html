@@ -99,7 +99,8 @@ h2 {
 	<li><a href="#license">Licensing</a></li>
 	<li><a href="#glossary">Glossary</a></li>
 	<li><a href="#appendixA">Appendix A: Database Setup with phpMyAdmin</a></li>
-	<li><a href="#appendixB">Appendix B: Displaying Upcoming Events on Your Site</a></li>
+	<li><a href="#appendixB">Appendix B: Setting Up Reminders on Windows</a></li>
+	<li><a href="#appendixC">Appendix C: Displaying Upcoming Events on Your Site</a></li>
 </ul>
 <hr />
 
@@ -1264,7 +1265,126 @@ following steps to setup WebCalendar.
 <hr />
 
 <a name="appendixB"></a>
-<h2>Appendix B: Displaying Upcoming Events on Your Site</h2>
+<h2>Appendix B: Setting Up Reminders on Windows</h2>
+
+<p>You have two options to choose from when setting up email
+   reminders on a Windows platform.
+   You can either install a cron package for Windows,
+   or you can use the Windows Task Scheduler.
+   </p>
+
+<h3>Installing a Cron Package</h3>
+<p>
+If you install a cron package for Windows, you will need to setup
+to setup a cron job.
+(UNIX cron is a tool for used to run tasks as specified times anywhere
+from every minute to once a year.)
+</p>
+<p>
+First, you should create a <tt>sendreminders.bat</tt> file
+that contains a single line:
+</p>
+<pre>C:\your\path\to\php.exe C:\your\path\to\webcalendar\tools\send_reminders.php</pre>
+<p>You can place this <tt>sendreminders.bat</tt> file anywhere on your
+file system.
+</p>
+<p>Next, you need to setup the cron job.
+The crontab entry should look like
+the following (replace with the correct path to your
+newly created <tt>sendreminders.bat</tt> file):
+</p>
+
+<pre>1 * * * * C:\your\path\to\sendreminders.bat</pre>
+
+<p>The "1 * * * *" will tell the cron schedule to run this task
+at 1 after the hour all day long (12:01am, 1:01am, 2:01am, etc.)
+If you only want to run it once per day, you could use:
+</p>
+<pre>1 4 * * * C:\your\path\to\sendreminders.bat</pre>
+<p>This would tell the cron scheduler to run the task at 4:01am
+every day.
+For more information about the syntax of cron, check the documentation
+for the package you have installed or
+view the UNIX man page for crontab
+(like <a href="http://www.rt.com/man/crontab.5.html"
+  target="_blank">this one</a>).
+</p>
+
+
+<p>There are many cron packages for Windows available.
+   Below is a list of packages to choose from.
+   (Note: use at your own risk.  These links are provided
+   for information only.)
+</p>
+
+<ul>
+  <li><a href="http://cronw.sourceforge.net/"
+    target="_blank">CRONw</a> (open source) </li>
+  <li><a href="http://www.gold-software.com/VisualCron-review11507.htm"
+    target="_blank">VisualCron</a> (freeware)</li>
+  <li><a href="http://www.nncron.ru"
+    target="_blank">nnCron</a> (freeware and commercial versions)</li>
+  <li><a href="http://surguy.net/articles/icron.xml"
+    target="_blank">iCron</a> </li>
+  <li><a href="http://p.clark.home.mindspring.com/jcron/index.html"
+    target="_blank">jCron</a> (freeware) </li>
+</ul>
+
+<h3>Using the Windows Task Schedule</h3>
+
+<p>Follow the steps listed below to setup a new task
+   in the Windows Task Scheduler.
+   (These instructions were created with Windows XP Professional.
+   Other versions of Windows might be different.)
+</p>
+
+<ol>
+
+<li>Create a new batch file called <tt>sendreminders.bat</tt>.
+    The contents of this file should be a single line:
+    <pre>C:\your\path\to\php.exe C:\your\path\to\webcalendar\tools\send_reminders.php</pre>
+    </li>
+
+<li>On Windows XP, go to Control Panel</li>
+<li>Double-click on "Scheduled Tasks."
+  This brings up a window that says "Scheduled Task Wizard" </li>
+ 
+<li>Click on "Browse..." </li>
+ 
+<li>Select the location of your newly created
+    <tt>sendreminders.bat</tt> file.</li>
+<li>Click on "Open" </li>
+ 
+<li>Change the name of the task. "WebCalendar Reminders" is a good name.
+    </li>
+ 
+<li>Select how often to perform this task.  Select "Daily." </li>
+<li>Click on "Next" </li>
+ 
+<li>Select the start time, then click "Next".
+    If you are planning on sending out reminders throughout the
+    day, pick a time shortly after midnight. </li>
+ 
+<li> Enter your user password as required. Click on "Next." </li>
+ 
+<li> Select the checkbox "Open advanced properites". </li>
+<li> Click on "Finish." </li>
+ 
+<li> Under the "Schedule" tab, click on "Advanced." </li>
+
+<li> Click on "Repeat Task" and fill in the details of how often
+     the job should run.
+     For example, you can set it to run "every 15 minutes", then
+     click on "until" and set that time to 11:30pm.
+     </li>
+</ol>
+
+
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
+
+<a name="appendixC"></a>
+<h2>Appendix C: Displaying Upcoming Events on Your Site</h2>
 
 <p>
 If you would like to list upcoming events somewhere on a page on your site
