@@ -8,6 +8,12 @@
 # Title is what will appear in the title bar for pages
 Title: Webbkalender
 
+1st: 1:a
+2nd: 2:a
+3rd: 3:de
+4th: 4:de
+5th: 5:e
+
 Month: Månad
 Week: Vecka
 Error: Fel
@@ -53,6 +59,26 @@ Sep: Sep
 Oct: Okt
 Nov: Nov
 Dec: Dec
+
+Email: E-post
+email-event-updated: E-post om uppdateringar
+email-event-added: E-post vid tillägg av aktiviter
+email-event-deleted: E-post vid radering av aktiviteter
+email-event-rejected: E-post vid avslag av aktiviteter
+email-event-updated: E-post när aktiviter uppdateras
+email-event-reminders-help: Anger om programmet ska skicka påminnelser via e-post
+
+Event reminders: Aktivitestpåminnelser
+Events added to my calendar: Aktivteter som lagts till i min kalender
+Events removed from my calendar: Aktiviteter som raderats från min kalender
+Events updated on my calendar: Aktiviter som uppdaterats i min kalender
+Event rejected by participant: Aktiviteter som avböjts av deltagare
+
+An appointment has been updated by: En aktivitet har uppdaterats av
+
+May_:Kan_
+
+
 
 Language: Språk
 Generate printer-friendly version: Visa i utskriftsversion
@@ -151,6 +177,10 @@ Add User: Ny användare
 Username: Användarnamn
 Login: Logga in
 Logout: Logga ut
+Invalid login:Felaktig inloggning
+every: varje
+Reminder: Påminnelse
+Database error: Fel i databasen
 First Name: Förnamn
 Last Name: Efternamn
 E-mail address: E-postadress
@@ -158,11 +188,14 @@ Password: Lösenord
 again: igen
 Yes: Ja
 No: Nej
+Cancel: Avbryt
+before event: före händelse
 Change Password: Ändra lösenord
 New Password: Nytt lösenord
 Set Password: Bestäm lösenord
 Adding/Editing Calendar Entries: Lägg till/ändra aktivitet
 Unapproved Events: Aktiviteter som icke är godkända
+This is a reminder for the event detailed below.:Detta är en påminnelse angående följande aktivitet
 No unapproved events: Det finns inga icke-godkända aktiviteter
 You must enter a login and password: Ange användarnamn och lösenord
 Save login via cookies so I don't have to login next time: Kom ihåg användarnamnet tills nästa gång (cookie)
@@ -180,6 +213,7 @@ Select: Välj
 Preferred view: Vald vy
 Week starts on: Veckan börjar på
 Day: Dag
+days: dagar
 Year: År
 Document background: Dokumentbakgrund
 Document title: Dokumenttitel
