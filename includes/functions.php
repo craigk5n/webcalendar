@@ -4637,7 +4637,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
            // ignore this..
          } else if ( empty ( $master[$participants[$i]][$r]['ID'] ) ) {
            // This is the first line for 'all' users.  No event here.
-           $space = "<span class=\"matrix\"><img src=\"pix.gif\" alt=\"\" height=\"8\" /></span>";
+           $space = "<span class=\"matrix\"><img src=\"pix.gif\" alt=\"\" style=\"height: 8px\" /></span>";
          } else if ($master[$participants[$i]][$r]['stat'] == "A") {
            $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"pix.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
          } else if ($master[$participants[$i]][$r]['stat'] == "W") {
