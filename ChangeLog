@@ -1,4 +1,6 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Improved iCal import handling of folded lines (data that spreads
+    over more than one line of text)
   - Reapplied patch 1044285: today & weekend classes got reversed
   - Changed '>' character to be '&raquo;'
   - Added 'bullet' class for event bullets being styled in styles.php
