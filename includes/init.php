@@ -147,8 +147,10 @@ $bodyid = array(
 	"edit_report.php" => "editreport",
 	"edit_template.php" => "edittemplate",
 	"edit_user.php" => "edituser",
+	"edit_user_handler.php" => "edituserhandler",
 	"export.php" => "export",
 	"group_edit.php" => "groupedit",
+	"group_edit_handler.php" => "groupedithandler",
 	"groups.php" => "groups",
 	"help_admin.php" => "helpadmin",
 	"help_bug.php" => "helpbug",
@@ -173,7 +175,6 @@ $bodyid = array(
 	"search.php" => "search",
 	"select_user.php" => "selectuser",
 	"set_entry_cat.php" => "setentrycat",
-	"upcoming.php" => "upcoming",
 	"users.php" => "users",
 	"usersel.php" => "usersel",
 	"view_d.php" => "viewd",
@@ -201,7 +202,6 @@ $bodyid = array(
 //	$disableCustom - do not include custom header (useful for small
 //		popup windows, such as color selection)
 //	$disableStyle - do not include the standard css
-//
 function print_header($includes = '', $HeadX = '', $BodyX = '',
   $disableCustom=false, $disableStyle=false) {
   global $application_name;
@@ -218,22 +218,27 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   if ( empty ( $lang ) )
     $lang = 'en';
 
- // Start the header & Specify the charset
- // The charset is defined in the translation file.
+ // Start the header & specify the charset
+ // The charset is defined in the translation file
  if ( ! empty ( $LANGUAGE ) ) {
    $charset = translate ( "charset" );
    if ( $charset != "charset" ) {
- echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n<!DOCTYPE html
-    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-    \"DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"$lang\" lang=\"$lang\">\n
- <head>\n<title>".translate($application_name)."</title>\n";
-  } else {
-echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html
-    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-    \"DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n
- <head>\n<title>".translate($application_name)."</title>\n";    }
+	echo "<?xml version=\"1.0\" encoding=\"$charset\"?>
+<!DOCTYPE html
+	PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+	\"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"$lang\" lang=\"$lang\">
+<head>
+	<title>".translate($application_name)."</title>\n";
+   } else {
+	echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>
+<!DOCTYPE html
+	PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+	\"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
+<head>
+	<title>".translate($application_name)."</title>\n";
+   }
  }
 
  // Any other includes?
@@ -264,12 +269,12 @@ echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE html
     }
   }
 
-	// Inlucde includes/print_styles.css as a media="print" stylesheet.  If the
-	// user clicked on the "Print Friendly" link, $friendly will be non-empty, so
-	// we should include this as a normal stylesheet so that they may see how it
-	// will look when printed.  This maintains backwards-compatibility with
-	// browsers that don't support media="print" stylsheets
-//	echo "<link rel=\"stylesheet\" type=\"text/css\" " . ( empty ( $friendly ) ? "media=\"print\" " : "" ) . "href=\"includes/print_styles.css\" />\n";
+	// Include includes/print_styles.css as a media="print" stylesheet. When the
+	// user clicks on the "Printer Friendly" link, $friendly will be non-empty,
+	// including this as a normal stylesheet so they can see how it will look 
+	// when printed. This maintains backwards-compatibility for browsers that 
+	// don't support media="print" stylesheets
+	echo "<link rel=\"stylesheet\" type=\"text/css\"" . ( empty ( $friendly ) ? " media=\"print\"" : "" ) . " href=\"includes/print_styles.css\" />\n";
 
   // Link to favicon
   echo "<link rel=\"shortcut icon\" href=\"favicon.ico\" type=\"image/x-icon\" />\n";
@@ -316,7 +321,6 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
     $views, $reports_enabled, $LAYER_STATUS, $nonuser_enabled,
     $groups_enabled, $fullname, $has_boss;
   
-
   if ( $include_nav_links ) {
     include_once "includes/trailer.php";
   }
