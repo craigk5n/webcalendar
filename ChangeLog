@@ -1,4 +1,6 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Fixed bug: in day.php, events displayed at hour_arr[N] instead of
+    the actual event name.
   - Updated Dutch translation
   - Fixed security bug: Don't allow users to put "login=XXX" in the URL
     to read someone else's calendar.
