@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>WebCalendar Styling HOWTO</title>
+	<style type="text/css">
+		body {
+			background-color: #FFFFFF;
+			font-family: arial, sans-serif;
+			padding: 0px 40px;
+		}
+		h1, h2 {
+			margin-left: -20px;
+		}
+		p {
+			text-indent: 3ex;
+		}
+		code {
+			font-weight: bold;
+		}
+		dt {
+			font-family: monospace;
+			font-weight: bold;
+		}
+		div.example {
+			width: 350px;
+			margin: 0px auto;
+		}
+		div.example pre {
+			border: 1px solid blue;
+			background-color: #EEEEFF;
+			padding: 5px;
+			margin: 0px;
+		}
+		div.example p {
+			text-align: center;
+			font-style: italic;
+			font-size: small;
+			margin: 0px;
+		}
+		table {
+			margin: 0px auto;
+			border-collapse: collapse;
+		}
+		td, th {
+			padding: 3px;
+			border: 1px solid gray;
+		}
+		td {
+			font-family: monospace;
+		}
+	</style>
+</head>
+<body>
+	<h1>WebCalendar Styling HOWTO</h1>
+
+	<strong>NOTE:</strong> THIS DOCUMENTATION IS STILL UNDER CONSTRUCTION.<br />
+
+	<h2><a id="toc">Table of Contents</a></h2>
+
+	<ol><li>
+		<a href="#intro">Introduction</a></li><li>
+		<a href="#classes">Classes</a></li><li>
+		<a href="#order">Styling Order of Precedence</a></li><li>
+		<a href="#indiv">Styling for Individual Pages</a>
+	</li></ol>
+
+	<h2><a id="intro" href="#toc">Introduction</a></h2>
+
+	<p>WebCalendar offers an easy-to-use method for customizing colors via the Admin Panel. This document provides a more technical, in depth analysis of WebCalendar's styling system.  Please note: The WebCalendar styling system is still under construction. We plan on continuing to enhance functionality, and available options in the future.</p>
+
+	<p>WebCalendar uses <a title="W3C CSS homepage" href="http://www.w3.org/Style/CSS">CSS</a> to format its content. For an introduction to CSS, you may wish to read 
+	<a title="Starting with HTML + CSS" href="http://www.w3.org/Style/Examples/011/firstcss">Starting with HTML + CSS</a>, and/or 
+	<a title="Dave Raggett's Introduction to CSS" href="http://www.w3.org/MarkUp/Guide/Style">Dave Raggett's Introduction to CSS</a>. The technical specifications are available at the <abbr title="World Wide Web Consortium">W3C</abbr>:</p>
+	<ul><li>
+		<a href="http://www.w3.org/TR/CSS1" title="Cascading Style Sheets, Level 1">CSS 1</a></li><li>
+		<a href="http://www.w3.org/TR/CSS21" title="Cascading Style Sheets, Level 2 Revision 1">CSS 2.1</a>
+	</li></ul>
+
+	<h2><a id="classes" href="#toc">Trinity</a></h2>
+
+	<p>WebCalendar's style system is built to be flexible, standardized, and clear. Understanding how each of these components work in conjunction with one another, as well as individually is key to gaining the full benefit of the ability to customize the look &amp; feel of your WebCalendar without having to modify any PHP, or HTML. The remainder of this document will provide you with the information necessary to fully understand each of these components, and how they work together.</p>
+
+	<h3>Structure</h3>
+
+	<p>WebCalendar can be easily customized site-wide, or page-by-page. In other words, you can easily make every page in WebCalendar look similar to one another, or completely different from one another. WebCalendar achieves this effect by uniquely identifying each page.Each page in WebCalendar (obviously) has a filename. WebCalendar automatically takes each filename, removes any underscores (_), as well as the extension (.php), and assigns the resulting value as an ID attribute on that page's body tag. For example, the page "edit_entry.php" would have the following body tag: &lt;body id="editentry">. If you don't want to customize individual pages, you can disregard this information.</p>
+
+	<p>If you want to customize the look of a single page in WebCalendar, prefix all selectors for that page with its <code>&lt;body&gt;</code>'s <code>id</code>.  For example, to create styles that only apply to <code>month.php</code>, simply prefix all the selectors with <code>#month</code>.  The <code>id</code> for each page is shown below.</p>
+	<a id="bodyids"></a>
+	<table>
+		<tr><th>
+			Page</th><th>
+			Body ID
+		</th></tr>
+		<tr><td>
+			activity_log.php</td><td>
+			activitylog
+		</td></tr>
+		<tr><td>
+			add_entry.php</td><td>
+			addentry
+		</td></tr>
+		<tr><td>
+			admin.php</td><td>
+			admin
+		</td></tr>
+		<tr><td>
+			adminhome.php</td><td>
+			adminhome
+		</td></tr>
+		<tr><td>
+			approve_entry.php</td><td>
+			approveentry
+		</td></tr>
+		<tr><td>
+			assistant_edit.php</td><td>
+			assistantedit
+		</td></tr>
+		<tr><td>
+			category.php</td><td>
+			category
+		</td></tr>
+		<tr><td>
+			day.php</td><td>
+			day
+		</td></tr>
+		<tr><td>
+			del_entry.php</td><td>
+			delentry
+		</td></tr>
+		<tr><td>
+			del_layer.php</td><td>
+			dellayer
+		</td></tr>
+		<tr><td>
+			edit_entry.php</td><td>
+			editentry
+		</td></tr>
+		<tr><td>
+			edit_layer.php</td><td>
+			editlayer
+		</td></tr>
+		<tr><td>
+			edit_report.php</td><td>
+			editreport
+		</td></tr>
+		<tr><td>
+			edit_template.php</td><td>
+			edittemplate
+		</td></tr>
+		<tr><td>
+			edit_user.php</td><td>
+			edituser
+		</td></tr>
+		<tr><td>
+			export.php</td><td>
+			export
+		</td></tr>
+		<tr><td>
+			group_edit.php</td><td>
+			groupedit
+		</td></tr>
+		<tr><td>
+			groups.php</td><td>
+			groups
+		</td></tr>
+		<tr><td>
+			help_admin.php</td><td>
+			helpadmin
+		</td></tr>
+		<tr><td>
+			help_bug.php</td><td>
+			helpbug
+		</td></tr>
+		<tr><td>
+			help_edit_entry.php</td><td>
+			helpeditentry
+		</td></tr>
+		<tr><td>
+			help_import.php</td><td>
+			helpimport
+		</td></tr>
+		<tr><td>
+			help_index.php</td><td>
+			helpindex
+		</td></tr>
+		<tr><td>
+			help_layers.php</td><td>
+			helplayers
+		</td></tr>
+		<tr><td>
+			help_pref.php</td><td>
+			helppref
+		</td></tr>
+		<tr><td>
+			import.php</td><td>
+			import
+		</td></tr>
+		<tr><td>
+			index.php</td><td>
+			index
+		</td></tr>
+		<tr><td>
+			layers.php</td><td>
+			layers
+		</td></tr>
+		<tr><td>
+			layers_toggle.php</td><td>
+			layerstoggle
+		</td></tr>
+		<tr><td>
+			list_unapproved.php</td><td>
+			listunapproved
+		</td></tr>
+		<tr><td>
+			login.php</td><td>
+			login
+		</td></tr>
+		<tr><td>
+			month.php</td><td>
+			month
+		</td></tr>
+		<tr><td>
+			nonusers.php</td><td>
+			nonusers
+		</td></tr>
+		<tr><td>
+			pref.php</td><td>
+			pref
+		</td></tr>
+		<tr><td>
+			publish.php</td><td>
+			publish
+		</td></tr>
+		<tr><td>
+			purge.php</td><td>
+			purge
+		</td></tr>
+		<tr><td>
+			reject_entry.php</td><td>
+			rejectentry
+		</td></tr>
+		<tr><td>
+			report.php</td><td>
+			report
+		</td></tr>
+		<tr><td>
+			search.php</td><td>
+			search
+		</td></tr>
+		<tr><td>
+			select_user.php</td><td>
+			selectuser
+		</td></tr>
+		<tr><td>
+			set_entry_cat.php</td><td>
+			setentrycat
+		</td></tr>
+		<tr><td>
+			upcoming.php</td><td>
+			upcoming
+		</td></tr>
+		<tr><td>
+			users.php</td><td>
+			users
+		</td></tr>
+		<tr><td>
+			usersel.php</td><td>
+			usersel
+		</td></tr>
+		<tr><td>
+			view_d.php</td><td>
+			viewd
+		</td></tr>
+		<tr><td>
+			view_entry.php</td><td>
+			viewentry
+		</td></tr>
+		<tr><td>
+			view_l.php</td><td>
+			viewl
+		</td></tr>
+		<tr><td>
+			view_m.php</td><td>
+			viewm
+		</td></tr>
+		<tr><td>
+			view_t.php</td><td>
+			viewt
+		</td></tr>
+		<tr><td>
+			view_v.php</td><td>
+			viewv
+		</td></tr>
+		<tr><td>
+			view_w.php</td><td>
+			vieww
+		</td></tr>
+		<tr><td>
+			views.php</td><td>
+			views
+		</td></tr>
+		<tr><td>
+			views_edit.php</td><td>
+			viewsedit
+		</td></tr>
+		<tr><td>
+			week.php</td><td>
+			week
+		</td></tr>
+		<tr><td>
+			week_details.php</td><td>
+			weekdetails
+		</td></tr>
+		<tr><td>
+			year.php</td><td>
+			year
+		</td></tr>
+	</table>
+
+	<p>WebCalendar has two basic types of calendars: full-sized calendars, and mini-calendars. Each of these types use a specific structure. Full-sized calendars are organized using the structure outlined below. The header of the page is a div with the "title" class (i.e. <code>&lt;div class="title"&gt;</code>). Within that div, there are several spans each with its own class. These classes include:
+	<ul><li>
+		weeknumber</li><li>
+		view</li><li>
+		date
+	</li></ul>
+	Also within this div are the left &amp; right navigation arrows. The left arrow link has the "prev" class, and the right arrow link has the "next" class. Pages that have mini-calendars in place of the arrows use "prevmonth" and "nextmonth" with the ID attribute.</p>
+	<p>Structurally, the header of pages with a full-sized calendar will look similar to:</p>
+	<div class="example">
+		<a id="ex1"></a>
+		<pre>&lt;div class="title">
+	&lt;span class="weeknumber">&lt;/span>
+	&lt;span class="view">&lt;/span>
+	&lt;span class="date">&lt;/span>
+&lt;/div>
+</pre>
+		<p>Example 1</p>
+	</div>
+	
+	<p>Below the "title" div is a table with the "main" class. This is the full-size calendar itself. There are a variety of options available in styling the calendar. First, there are two types of cells in a table: tableheaders (<code>&lt;th></code> tags), and tablecells (<code>&lt;td></code> tags). WebCalendar distinguishes between <em>column</em> tableheaders &amp; <em>row</em> tableheaders. Headers containing dates, or days of the week utilize the classes <em>today</em>, and <em>weekend</em>. To style tableheaders for Monday through Friday, while today is eDays of the week that are not Saturday or Sunday, and that are also not today's date, can be styled by simply referring to the "th" tag itself. Alternatively, if you don't want to style tableheaders according to the weekend, or today colors, you can simply omit this style from the stylesheet. Row tableheaders (when they don't contain dates) are always styled using the class, "row".</p>
+	<p>Tablecells (td tags) within the "main" calendar table follow the same structure as tableheaders with dates, or days. Therefore, tablecells that fall on the weekend, will have the "weekend" class. If the cell is on today's date, but it's not on Saturday or Sunday, the cell will have the "today" class. If the cell is not on the weekend, nor today's date, it doesn't get a class (in this case, style these cells similar to how you styled tableheaders without a class). If the cell is both on the weekend, and on today's date, it has "weekend today" as the value for the class attribute. Below are some examples to help illustrate.</p>
+	<p>If you're customizing month.php &amp; want tablecells (td tags) on today's date to have a red background, you would use:</p>
+	<div class="example">
+		<a id="ex1"></a>
+		<pre>#month td.today {
+	background-color: red;
+}</pre>
+		<p>Example 1</p>
+	</div>
+
+	<p>Similarly, if customizing month.php &amp; you want tablecells occuring on the weekend to have a thin black border with 10 pixels of padding on each side, you would use:</p>
+	<div class="example">
+		<a id="ex2"></a>
+		<pre>#month td.weekend {
+	border: 1px solid black;
+	padding: 10px;
+}</pre>
+		<p>Example 2</p>
+	</div>
+
+	<p>Clearly there will be times when tablecells will be both on the weekend, as well as on today's date. In such an instance, styles from each of the classes are combined. For example, if today is a Saturday, the HTML for that cell would be <code>&lt;td class="weekend today"&gt;</code>. Using the classes from examples one &amp; two above, this cell would have a red background, with a thin black border, and 10 pixels of padding on each side.</p>
+	
+	<p>Now say the styles had looked like this:</p>
+	<div class="example">
+		<a id="ex2"></a>
+		<pre>.today {
+	background-color: red;
+}
+
+.weekend {
+	border: 1px solid black;
+	padding: 10px;
+	<em>background-color: blue;</em>
+}
+
+.hasevents {
+	font-weight: bold;
+}</pre>
+		<p>Example 2</p>
+	</div>
+
+	<p>Note that both the <code>today</code> class and the <code>weekend</code> class have a <code>background-color</code> definition.  So does our example <code>&lt;td&gt;</code> (which belongs to both the <code>today</code> and <code>weekend</code> classes) end up with a red background or a blue one? This conflict is decided by the <a href="#order">Styling Order of Precedence</a>.</p>
+
+	<h2><a id="order" href="#toc">Styling Order of Precedence</a></h2>
+
+	<p>When conflicts arise between styles (as in <a href="#ex2">Example 2</a> above), the definition from the class with the highest precedence is chosen. The order of precedence is:</p>
+
+	<ol title="Styling Order of Precedence"><li>
+		<code>today</code></li><li>
+		<code>hasevents</code></li><li>
+		<code>weekend</code></li><li>
+		<code>empty</code>
+	</li></ol>
+
+	<p>This says that styles defined for the <code>today</code> class will be chosen styles for the <code>hasevents</code> class when there is a conflict, styles for the <code>hasevents</code> class will be chosen over styles for the <code>weekend</code> class, and so on.</p>
+</body>
+</html>
