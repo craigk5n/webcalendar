@@ -1,8 +1,8 @@
 <?php
 include_once 'includes/init.php';
 
-if ( ! $is_admin )
-  $user = $login;
+if ($user != $login)
+  $user = (($is_admin || $is_nonuser_admin) && $user) ? $user : $login;
 
 if ( $groups_enabled == "Y" ) {
   $INC = array('js/'.$SCRIPT);
@@ -11,9 +11,15 @@ print_header($INC);
 ?>
 
 <FORM ACTION="assistant_edit_handler.php" METHOD="POST" NAME="editentryform">
-
 <?php
-  echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Yours assistants") . "</FONT></H2>\n";
+  if ($user) echo "<input type=\"hidden\" name=\"user\" value=\"$user\">";
+  if ( $is_nonuser_admin ) {
+    nonuser_load_variables ( $user, "nonuser" );
+    echo "<H2><FONT COLOR=\"$H2COLOR\">" . $nonuserfullname . " " . translate("Assistants")
+        ."<BR>\n<B>-- " . translate("Admin mode") . " --</B></FONT></H2>\n";
+  } else {
+    echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Yours assistants") . "</FONT></H2>\n";
+  }
 ?>
 
 <TABLE BORDER="0">
@@ -25,7 +31,7 @@ print_header($INC);
   // get list of all users
   $users = get_my_users ();
   // get list of users for this view
-  $sql = "SELECT cal_boss, cal_assistant FROM webcal_asst WHERE cal_boss = '$login'";
+  $sql = "SELECT cal_boss, cal_assistant FROM webcal_asst WHERE cal_boss = '$user'";
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
