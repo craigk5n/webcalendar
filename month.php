@@ -64,7 +64,7 @@ display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth" );
     echo "<br />-- " . translate("Assistant mode") . " --";
 ?></span>
 <?php
-  if ( $categories_enabled == "Y" && (!$user || $user == $login)) {
+  if ( $categories_enabled == "Y" && (!$user || ($user == $login || $is_assistant ))) {
     echo "<br /><br />\n";
     print_category_menu('month',sprintf ( "%04d%02d01",$thisyear, $thismonth ),$cat_id );
   }
