@@ -305,3 +305,11 @@ CREATE TABLE webcal_nonuser_cals (
   PRIMARY KEY ( cal_login )
 );
 
+
+CREATE TABLE webcal_import_data (
+  cal_id INT NOT NULL,
+  cal_login VARCHAR2(25) NOT NULL,
+  cal_import_type VARCHAR2(15) NOT NULL,
+  cal_external_id VARCHAR2(200) NULL,
+  PRIMARY KEY  ( cal_id, cal_login )
+);

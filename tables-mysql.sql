@@ -467,3 +467,18 @@ CREATE TABLE webcal_nonuser_cals (
   PRIMARY KEY ( cal_login )
 );
 
+
+/*
+ * Used to track importing data.
+ */
+CREATE TABLE webcal_import_data (
+  /* event id in WebCalendar */
+  cal_id int NOT NULL,
+  /* user login */
+  cal_login VARCHAR(25) NOT NULL,
+  /* type of import: 'palm', 'vcal', etc. */
+  cal_import_type VARCHAR(15) NOT NULL,
+  /* external id used in external calendar system */
+  cal_external_id VARCHAR(200) NULL,
+  PRIMARY KEY  ( cal_id, cal_login )
+);
