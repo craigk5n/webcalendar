@@ -1,4 +1,9 @@
 <?php
+
+if (preg_match("/translate\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
 // Functions here are used to support translating this application into
 // multiple languages.  The idea is very much stolen from the GNU translate
 // C library.  I implemneted this before I realized that there was a gettext()

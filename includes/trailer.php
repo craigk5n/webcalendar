@@ -1,4 +1,9 @@
 <?php
+
+if (preg_match("/trailer\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
 // NOTE: This file is included within the print_trailer function found
 // in includes/init.php.  If you add a global variable somewhere in this
 // file, be sure to declare it global in the print_trialer function

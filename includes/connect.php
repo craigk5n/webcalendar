@@ -1,5 +1,9 @@
 <?php
 
+if (preg_match("/connect\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
 // db settings are in config.php
 
 // Establish a database connection.

@@ -1,4 +1,9 @@
 <?php
+
+if (preg_match("/php-dbi\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
 // php-dbi.php
 //
 // (C) Craig Knudsen, cknudsen@radix.net, http://www.radix.net/~cknudsen/

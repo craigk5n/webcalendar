@@ -1,5 +1,9 @@
 <?php
 
+if (preg_match("/config\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
 // Site-specific settings.
 // Configure these for your site.
 // You shouldn't have to modify any files outside of this one.

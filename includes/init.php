@@ -1,4 +1,9 @@
 <?php
+
+if (preg_match("/init\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
 /*--------------------------------------------------------------------
  init.php written by Jeff Hoover
  - simplifies script initialization

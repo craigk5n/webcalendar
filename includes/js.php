@@ -1,3 +1,9 @@
+<?
+if (preg_match("/js\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+?>
+
 <script type="text/javascript">
 <!--
 // The following code is used to support the small popups that

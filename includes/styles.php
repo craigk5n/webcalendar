@@ -1,3 +1,9 @@
+<?
+if (preg_match("/styles\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+?>
+
 <style type="text/css">
 <!--
 <?php //stuff that STAYS 

@@ -1,4 +1,9 @@
 <?php
+
+if (preg_match("/site_extras\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
 // site_extras.php
 //
 // This file can be used to define extra information associated with a

@@ -1,5 +1,9 @@
 <?php
 
+if (preg_match("/functions\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
 // Global variables for activity log
 $LOG_CREATE = "C";
 $LOG_APPROVE = "A";
@@ -3526,7 +3530,11 @@ function clean($value){
     '%3c' => '&#60;',
     '%3C' => '&#60;',
     '%3e' => '&#62;',
-    '%3E' => '&#62;'
+    '%3E' => '&#62;',
+    '%0a' => '&#10;',
+    '%0A' => '&#10;',
+    '%0d' => '&#13;',
+    '%0D' => '&#13;'
   ));
   return $value;
 }

@@ -1,5 +1,9 @@
 <?php
 
+if (preg_match("/validate\.php/", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+}
+
 $validate_redirect = false;
 $session_not_found = false;
 
