@@ -18,7 +18,9 @@ if ( empty ( $c ) ) {
   }
   // Do a sanity check on the database, making sure we can
   // at least access the webcal_config table.
-  doDbSanityCheck ();
+  if ( function_exists ( "doDbSanityCheck" ) ) {
+    doDbSanityCheck ();
+  }
 }
 
 // If we are in single user mode, make sure that the login selected is
