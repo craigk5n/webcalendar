@@ -60,10 +60,11 @@ else if ( $formtype == "edituser" ) {
   }
 }
 
-print_header();
 
-if ( ! empty ( $error ) ) { ?>
+if ( ! empty ( $error ) ) {
+  print_header( '', '', '', true );
 
+?>
 <h2><?php etranslate("Error")?></h2>
 
 <blockquote>
@@ -74,9 +75,9 @@ echo $error;
 //  echo "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
 //?>
 </blockquote>
-<?php } else if ( empty ( $error ) ) {
-	echo "Success! The changes you made have been saved.";
-} ?>
-
 </body>
 </html>
+<?php } else if ( empty ( $error ) ) {
+?><html><head><body onload="alert('<?php etranslate("Changes successfully saved");?>'); window.parent.location.href='users.php';">
+</body></html>
+<?php } ?>
