@@ -1,10 +1,10 @@
 # Makefile for updating documentation automatically
 
 
-all: database.html
+all: WebCalendar-Database.html
 
 
-database.html: ../tables-mysql.sql sql2html.pl
-	perl sql2html.pl < ../tables-mysql.sql > database.html
+WebCalendar-Database.html: ../tables-mysql.sql sql2html.pl
+	perl sql2html.pl < ../tables-mysql.sql > WebCalendar-Database.html
 
 
