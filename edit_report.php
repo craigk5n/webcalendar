@@ -90,10 +90,10 @@ if ( empty ( $error ) && $show_participants ) {
 
 // Default values
 $page_template = "<dl>\${days}</dl>";
-$day_template = "<dt><span style=\"font-weight:bold;\">\${date}</span></dt>\n<dd><dl>\${events}</dl></dd>";
+$day_template = "<dt><b>\${date}</b></dt>\n<dd><dl>\${events}</dl></dd>";
 $event_template = "<dt>\${name}</dt>\n<dd>" .
-  "<span style=\"font-weight:bold;\">" . translate ( "Date" ) . ":</span> \${date}<br />\n" .
-  "<span style=\"font-weight:bold;\">" . translate ( "Time" ) . ":</span> \${time}<br />\n" .
+  "<b>" . translate ( "Date" ) . ":</b> \${date}<br />\n" .
+  "<b>" . translate ( "Time" ) . ":</b> \${time}<br />\n" .
   "\${description}</dd>\n";
 
 if ( empty ( $error ) && $report_id > 0 ) {
@@ -214,7 +214,7 @@ if ( ! empty ( $error ) ) {
 <?php } ?>
 
 <table style="border-width:0px;">
-	<tr><td style="font-weight:bold;">
+	<tr><td>
 		<label for="rpt_name"><?php etranslate("Report name")?>:</label></td><td>
 		<input type="text" name="report_name" id="rpt_name" size="40" maxlength="50" value="<?php echo htmlentities ( $report_name ); ?>" />
 	</td></tr>
@@ -232,7 +232,7 @@ if ( $show_participants ) {
     } 
     $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
-  print "<tr><td style=\"vertical-align:top; font-weight:bold;\"><label for=\"rpt_user\">" .
+  print "<tr><td><label for=\"rpt_user\">" .
     translate("User") . ":</label></td>\n";
   print "<td><select name=\"report_user\" id=\"rpt_user\" size=\"1\">$users\n";
   print "</select>\n";
@@ -241,8 +241,8 @@ if ( $show_participants ) {
 ?>
 
 <?php if ( $is_admin ) { ?>
-<tr><td style="font-weight:bold;">
-	<?php etranslate("Global")?>:</td><td>
+<tr><td><label>
+	<?php etranslate("Global")?>:</label></td><td>
 	<label><input type="radio" name="is_global" value="Y"
   <?php if ( $report_is_global != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
   &nbsp;&nbsp;&nbsp;
@@ -257,8 +257,8 @@ if ( $show_participants ) {
 // allow option of adding to all users trailer.
 if ( $is_admin ) {
 ?>
-<tr><td style="font-weight:bold;">
-	<?php etranslate("Include link in trailer")?>:</td><td>
+<tr><td><label>
+	<?php etranslate("Include link in trailer")?>:</label></td><td>
 	<label><input type="radio" name="show_in_trailer" value="Y"
   <?php if ( $report_show_in_trailer != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
   &nbsp;&nbsp;&nbsp;
@@ -266,15 +266,15 @@ if ( $is_admin ) {
   <?php if ( $report_show_in_trailer == 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("No") ?></label>
 </td></tr>
 <?php } ?>
-<tr><td style="font-weight:bold;">
-	<?php etranslate("Include standard header/trailer")?>:&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+<tr><td><label>
+	<?php etranslate("Include standard header/trailer")?>:&nbsp;&nbsp;&nbsp;&nbsp;</label></td><td>
 	<label><input type="radio" name="include_header" value="Y"
   <?php if ( $include_header != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
   &nbsp;&nbsp;&nbsp;
 	<label><input type="radio" name="include_header" value="N"
   <?php if ( $report_include_header == 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("No") ?></label>
 </td></tr>
-<tr><td style="font-weight:bold;">
+<tr><td>
 	<label for="rpt_time_range"><?php etranslate("Date range")?>:</label></td><td>
 	<select name="time_range" id="rpt_time_range">
   <?php
@@ -286,7 +286,7 @@ if ( $is_admin ) {
     }
   ?></select>
 </td></tr>
-<tr><td style="font-weight:bold;">
+<tr><td>
 	<label for="rpt_cat_id"><?php etranslate("Category")?>:<label></td><td>
 	<select name="cat_id" id="rpt_cat_id">
   <option value=""><?php etranslate("None") ?></option>
@@ -299,16 +299,16 @@ if ( $is_admin ) {
     }
   ?></select>
 </td></tr>
-<tr><td style="font-weight:bold;">
-	<?php etranslate("Include previous/next links")?>:</td><td>
+<tr><td><label>
+	<?php etranslate("Include previous/next links")?>:</label></td><td>
 	<label><input type="radio" name="allow_nav" value="Y"
   <?php if ( $report_allow_nav != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
   &nbsp;&nbsp;&nbsp;
 	<label><input type="radio" name="allow_nav" value="N"
   <?php if ( $report_allow_nav == 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("No") ?></label>
 </td></tr>
-<tr><td style="font-weight:bold;">
-	<?php etranslate("Include empty dates")?>:</td><td>
+<tr><td><label>
+	<?php etranslate("Include empty dates")?>:</label></td><td>
 	<label><input type="radio" name="include_empty" value="Y"
   <?php if ( $report_include_empty != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
   &nbsp;&nbsp;&nbsp;
@@ -318,25 +318,25 @@ if ( $is_admin ) {
 </table>
 
 <table style="border-width:0px;">
-	<tr><td>&nbsp;</td><td>&nbsp;</td><td style="font-weight:bold;">
-		<?php etranslate("Template variables")?>
+	<tr><td>&nbsp;</td><td>&nbsp;</td><td><label>
+		<?php etranslate("Template variables")?></label>
 	</td></tr>
-	<tr><td style="vertical-align:top; font-weight:bold;">
-		<?php etranslate("Page template")?>:</td><td>
+	<tr><td valign="top"><label>
+		<?php etranslate("Page template")?>:</label></td><td>
 		<textarea rows="12" cols="60" name="page_template"><?php echo htmlentities ( $page_template )?></textarea></td><td style="vertical-align:top;">
 		<tt>${days}</tt><br />
 		<tt>${report_id}</tt><br />
 	</td></tr>
-	<tr><td style="vertical-align:top; font-weight:bold;">
-		<?php etranslate("Day template")?>:</td><td>
+	<tr><td valign="top"><label>
+		<?php etranslate("Day template")?>:</label></td><td>
 		<textarea rows="12" cols="60" name="day_template"><?php echo htmlentities ( $day_template )?></textarea></td><td style="vertical-align:top;">
 		<tt>${events}</tt><br />
 		<tt>${date}</tt><br />
 		<tt>${fulldate}</tt><br />
 		<tt>${report_id}</tt><br />
 	</td></tr>
-	<tr><td style="vertical-align:top; font-weight:bold;">
-		<?php etranslate("Event template")?>:</td><td>
+	<tr><td valign="top"><label>
+		<?php etranslate("Event template")?>:</label></td><td>
 		<textarea rows="12" cols="60" name="event_template"><?php echo htmlentities ( $event_template )?></textarea></td><td style="vertical-align:top;">
 		<tt>${name}</tt><br />
 		<tt>${description}</tt><br />
