@@ -781,8 +781,18 @@ function build_event_popup ( $popupid, $user, $description, $time, $site_extras=
   if ( ! empty ( $GLOBALS['allow_html_description'] ) &&
     $GLOBALS['allow_html_description'] == 'Y' ) {
     $str = str_replace ( "&", "&amp;", $description );
-    $ret .= str_replace ( "&amp;amp;", "&amp;", $str );
+    $str = str_replace ( "&amp;amp;", "&amp;", $str );
+    // If there is no html found, then go ahead and replace
+    // the line breaks ("\n") with the html break.
+    if ( strstr ( $str, "<" ) && strstr ( $str, ">" ) ) {
+      // found some html...
+      $ret .= $str;
+    } else {
+      // no html, replace line breaks
+      $ret .= nl2br ( $str );
+    }
   } else {
+    // html not allowed in description, escape everything
     $ret .= nl2br ( htmlspecialchars ( $description ) );
   }
   $ret .= "</dd>\n";
