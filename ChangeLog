@@ -1,4 +1,5 @@
 Version 0.9.31dev (???)
+  - Feature request 432334: Display week number in week view.
   - Updated French translation to use HTML escapes for non-standard
     characters.
   - Patch 435431 from Franz Sedlmaier:

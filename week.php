@@ -110,6 +110,12 @@ for ( $i = 0; $i < 7; $i++ ) {
   }
 ?>
 </B></FONT>
+<?php
+if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
+  echo "<BR>\n<FONT SIZE=\"-2\" COLOR=\"$H2COLOR\">(" .
+    translate("Week") . " " . week_number ( $wkstart ) . ")</FONT>";
+}
+?>
 <FONT SIZE="+1" COLOR="<?php echo $H2COLOR;?>">
 <?php
   if ( ! strlen ( $single_user_login ) ) {
