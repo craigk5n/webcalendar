@@ -1,4 +1,4 @@
-<SCRIPT LANGUAGE="JavaScript">
+<script language="JavaScript">
 function selectDate ( day, month, year ) {
   // get currently selected month/year
   monthobj = eval ( 'document.purgeform.' + month );
@@ -14,4 +14,4 @@ function selectDate ( day, month, year ) {
     "&month=" + month + "&year=" + year + "&date=" + date;
   var colorWindow = window.open(url,"DateSelection","width=300,height=200,resizable=yes,scrollbars=yes");
 }
-</SCRIPT>
+</script>

@@ -2,7 +2,7 @@
 global $groups_enabled,$WORK_DAY_START_HOUR;
 ?>
 
-<SCRIPT LANGUAGE="JavaScript">
+<script language="JavaScript">
 var oldhour = 0, oldminute = 0, olddh = 0, olddm = 0;
 
 // do a little form verifying
@@ -151,4 +151,4 @@ function timetype_handler () {
   }
 }
 
-</SCRIPT>
+</script>

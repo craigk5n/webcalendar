@@ -2,9 +2,9 @@
 global $color;
 ?>
 
-<SCRIPT LANGUAGE="JavaScript">
+<script language="JavaScript">
 function sendColor ( color ) {
   window.opener.document.prefform.<?php echo $color?>.value= color;
   window.close ();
 }
-</SCRIPT>
+</script>

@@ -1,4 +1,4 @@
-<SCRIPT LANGUAGE="JavaScript">
+<script language="JavaScript">
 function selectUsers () {
   url = "usersel.php?form=editviewform&listid=3&users=";
   // add currently selected users
@@ -15,4 +15,4 @@ function selectUsers () {
   window.open ( url, "UserSelection",
     "width=500,height=500,resizable=yes,scrollbars=yes" );
 }
-</SCRIPT>
+</script>
