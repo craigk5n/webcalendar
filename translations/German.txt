@@ -19,7 +19,16 @@
 # Last update: 12 Jun 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
 # Last update: 13 Jun 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
 # Last update: 23 Jun 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
-# Translation last updated on 07-21-2003
+# Last update: 26 Jun 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Last update: 27 Jun 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Last update: 30 Jun 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Last update: 2 Jul 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Last update: 3 Jul 2003 by Markus Egartner & Markus Kornberger <edv@kh-hallein.at>
+# Last update: 4 Jul 2003 by Markus Egartner & Markus Kornberger <edv@kh-hallein.at>
+# Last update: 10 Jul 2003 by Markus Egartner <edv@kh-hallein.at>
+# Last update: 14 Jul 2003 by Markus Egartner <edv@kh-hallein.at>
+# Last update: 21 Jul 2003 by Markus Egartner <edv@kh-hallein.at>
+# Translation last updated on 08-05-2003
 
 
 ###############################################
@@ -143,59 +152,19 @@ User sees only his groups: Teilnehmer können nur Ihre eigene Gruppe sehen
 Categories: Kategorien
 categories-enabled-help: Aktiviert Unterstützung für Terminkategorien.
 Categories enabled: Kategorien aktivieren
-#
-# << MISSING >>
-# Nonuser:
-# English text: Nonuser Calendars
-#
-#
-# << MISSING >>
-# nonuser-enabled-help:
-# English text: If enabled, admins will have the option to add nonuser calendars
-#
-#
-# << MISSING >>
-# Nonuser enabled:
-# English text: Nonuser Calendars Enabled
-#
-#
-# << MISSING >>
-# nonuser-list-help:
-# English text: Where to display the nonuser calendars in the participant list
-#
-#
-# << MISSING >>
-# Nonuser list:
-# English text: Display in participants list at
-#
-#
-# << MISSING >>
-# Top:
-#
-# << MISSING >>
-# Bottom:
-#
-# << MISSING >>
-# Reports:
-#
-# << MISSING >>
-# reports-enabled-help:
-# English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
-#
-#
-# << MISSING >>
-# Reports enabled:
-#
-# << MISSING >>
-# Subscribe/Publish:
-#
-# << MISSING >>
-# subscriptions-enabled-help:
-# English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
-#
-# << MISSING >>
-# Allow remote subscriptions:
+Nonuser: 'NonUser'-Kalender
+nonuser-enabled-help: Falls aktiviert, Administratoren haben die Möglichkeit 'NonUser'-Kalender hinzuzufügen
+Nonuser enabled: 'NonUser'-Kalender aktiviert
+nonuser-list-help: Wo sollen die 'NonUser'-Kalender in der Teilnehmerliste angezeigt werden
+Nonuser list: Soll in der Teilnehmerliste angezeigt werden bei 
+Top: Oben
+Bottom: Unten
+Reports: Auswertungen
+reports-enabled-help: Wenn aktiviert, finden die Benutzer am Ende jeder Seite einen Eintrag "Auswertungen" welches für das Erstellen von Auswertungen verwendet werden kann. Zusätzlich kann der "Administrator" allg. Auswertungen erstellen, die für jeden Benutzer am Ende jeder Seite zur Verfügung stehen.
+Reports enabled: Auswertungen aktivieren
+Subscribe/Publish: unterschreiben/veröffentlichen
+subscriptions-enabled-help: Bestimmt ob 'REMOTE'-Teilnehmer andere WebKalender von Teilnehmern abonnieren, und somit dessen Termine und ihre 'iCal'-aktiven Anwendungen (wie Apple's iCal oder Mozilla-Kalender) sehen können.
+Allow remote subscriptions: Erlaubt 'REMOTE'-Abos
 Email: Email
 email-enabled-help: Die Option Ja verhindert das Versenden von Emails sowie von Erinnerungen über den Kalender. Wenn Sie keinen Mailserver installiert haben setzen Sie diese Option auf Nein.
 Email enabled: Email aktivieren
@@ -354,9 +323,7 @@ Daily: Täglich
 Weekly: Wöchentlich
 Monthly: Monatlich 
 by day: tagesorientiert
-#
-# << MISSING >>
-# by day (from end):
+by day (from end): tagesorientiert (vom Ende)
 by date: datumsorientiert
 Yearly: Jährlich
 repeat-end-date-help: Gibt an bis zu welchem Datum der Termin wiederholt werden soll.
@@ -374,25 +341,6 @@ repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standa
 Frequency: Häufigkeit
 Delete entry: Lösche Eintrag
 You are not authorized to edit this entry: Sie haben keine Berechtigung diesen Eintrag zu ändern.
-
-
-###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: Folgende Konflikte mit vorgeschlagenem Termin
-Unnamed Event: unbenanntes Ereignis
-The description is: Die Beschreibung lautet
-Title: WebCalendar
-A new appointment has been made for you by: Es wurde Ihnen ein neuer Termin eingetragen von -->  
-An appointment has been updated by: Ein Termin wurde geändert von
-The subject is: Die Beschreibung lautet 
-Please look on: Bitte konsultieren Sie Ihren  
-to accept or reject this appointment: um den Termin zu bestätigen/abzulehnen.
-to view this appointment: Termin anschauen
-Scheduling Conflict: Terminüberschneidung
-Your suggested time of: Ihre Eintragung von 
-conflicts with the following existing calendar entries: überschneidet sich mit folgenden Kalender-Einträgen.
-Cancel: Abbrechen
 
 
 ###############################################
@@ -503,26 +451,16 @@ Default Category: Standard Kategorie
 When I am the boss: Wenn ich der Chef bin
 Email me event notification: Benachrichtigen bei Terminbestätigung
 I want to approve events: Ich möchte Termine überprüfen
-#
-# << MISSING >>
-# allow-remote-subscriptions-help:
-# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
-#
-# << MISSING >>
-# remote-subscriptions-url-help:
-# English text: Displays the URL remote users should use to subscribe to your calendar.
-#
-#
-# << MISSING >>
-# URL:
-Sun: So
-Mon: Mo
-Tue: Di
-Wed: Mi
-Thu: Do
-Fri: Fr
-Sat: Sa
+allow-remote-subscriptions-help: Bestimmt ob 'REMOTE'-Teilnehmer IHREN WebKalender abonnieren dürfen, und somit dessen Termine und ihre 'iCal'-aktiven Anwendungen (wie Apple's iCal oder Mozilla-Kalender) sehen können.
+remote-subscriptions-url-help: Zeigt die URL, die ein 'REMOTE'-Teilnehmer zum Abonnieren Ihres Kalenders verwenden soll
+URL: URL
+Sun: Son
+Mon: Mon
+Tue: Die
+Wed: Mit
+Thu: Don
+Fri: Fre
+Sat: Sam
 Save Preferences: Voreinstellungen speichern
 
 
@@ -543,9 +481,7 @@ Adding/Editing Calendar Entries: Hinzufügen/Ändern von Kalender-Einträgen
 #
 Help Index: Hilfe-Index
 Layers: Layers
-#
-# << MISSING >>
-# Import:
+Import: Import
 
 
 ###############################################
@@ -626,6 +562,8 @@ Public Access: Öffentlicher Zugang
 # Page: reject_entry.php
 #
 An appointment has been rejected by: Ein Termin wurde zurückgewiesen von
+The description is: Die Beschreibung lautet
+Title: WebCalendar
 
 
 ###############################################
@@ -674,26 +612,17 @@ All: alle
 Reset: Zurücksetzen
 Remove: Entfernen
 Ok: Ok
+Cancel: Abbrechen
 
 
 ###############################################
 # Page: import.php
 #
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
+This form will allow you to import entries from the Palm Desktop Datebook.: Dieses Formular erlaubt das Importieren der Kalendereinträge ihres Palm Desktop Datebook.
+Exclude private records: Private Einträge ausschliessen
+Datebook File: Datebook Datei
+This form will import vCalendar (.vcs) 1.0 events: Dieses Formular importiert vCalendar (.vcs) 1.0 Einträge
+vCal File: vCal Datei
 
 
 ###############################################
@@ -705,9 +634,7 @@ every: jede(n)
 4th: 4.
 5th: 5.
 1st: 1.
-#
-# << MISSING >>
-# last:
+last: letzte(r),(s)
 Description: Beschreibung
 Status: Status
 Waiting for approval: Warten auf Bestätigung
@@ -766,12 +693,8 @@ View Type: Ansichtstyp
 Week (Users horizontal): Woche (Teilnehmer horizontal)
 Week (Users vertical): Woche (Teilnehmer vertikal)
 Week (Timebar): Woche (Zeitschiene)
-#
-# << MISSING >>
-# Month (side by side):
-#
-# << MISSING >>
-# Month (on same calendar):
+Month (side by side): Monat (seitenweise)
+Month (on same calendar): Monat (am gleichen Kalender)
 
 
 ###############################################
@@ -819,22 +742,16 @@ Private: Privat
 ###############################################
 # Page: import_handler.php
 #
-#
-# << MISSING >>
-# Conflicting events:
-#
-# << MISSING >>
-# Errors:
+Conflicting events: Überschneidende Termine
+Errors: Fehler
 Back to My Calendar: Zurück zu meinem Kalender
-#
-# << MISSING >>
-# There was an error parsing the import file or no events were returned:
-#
-# << MISSING >>
-# The import file contained no data:
-#
-# << MISSING >>
-# Event Imported:
+There was an error parsing the import file or no events were returned: Es trat ein Fehler beim 'Parsen' der Import-Datei auf oder keine Einträge wurden zurückgegeben
+The import file contained no data: Die importierte Datei enthielt keine Daten
+The following conflicts with the suggested time: Folgende Konflikte mit vorgeschlagenem Termin
+Unnamed Event: unbenanntes Ereignis
+Scheduling Conflict: Terminüberschneidung
+conflicts with the following existing calendar entries: überschneidet sich mit folgenden Kalender-Einträgen.
+Event Imported: Termin importiert
 
 
 ###############################################
@@ -845,132 +762,52 @@ Back to My Calendar: Zurück zu meinem Kalender
 ###############################################
 # Page: edit_report.php
 #
-#
-# << MISSING >>
-# Tomorrow:
-#
-# << MISSING >>
-# Today:
-#
-# << MISSING >>
-# Yesterday:
-#
-# << MISSING >>
-# Day before yesterday:
-#
-# << MISSING >>
-# Next week:
-#
-# << MISSING >>
-# This week:
-#
-# << MISSING >>
-# Last week:
-#
-# << MISSING >>
-# Week before last:
-#
-# << MISSING >>
-# Next week and week after:
-#
-# << MISSING >>
-# This week and next week:
-#
-# << MISSING >>
-# Last week and this week:
-#
-# << MISSING >>
-# Last two weeks:
-#
-# << MISSING >>
-# Next month:
-#
-# << MISSING >>
-# This month:
-#
-# << MISSING >>
-# Last month:
-#
-# << MISSING >>
-# Month before last:
-#
-# << MISSING >>
-# Next year:
-#
-# << MISSING >>
-# This year:
-#
-# << MISSING >>
-# Last year:
-#
-# << MISSING >>
-# Year before last:
-#
-# << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
-# Unnamed Report:
-#
-# << MISSING >>
-# Add Report:
-#
-# << MISSING >>
-# Edit Report:
-#
-# << MISSING >>
-# Report name:
+Tomorrow: Morgen
+Today: Heute
+Yesterday: Gestern
+Day before yesterday: Vorgestern
+Next week: Nächste Woche
+This week: Diese Woche
+Last week: Letzte Woche
+Week before last: Vorletzte Woche
+Next week and week after: Nächste Woche und übernächste Woche
+This week and next week: Diese Woche und nächste Woche
+Last week and this week: Letzte Woche und diese Woche
+Last two weeks: Letzten zwei Wochen
+Next month: Nächstes Monat
+This month: Dieser Monat
+Last month: Letztes Monat
+Month before last: Vorletztes Monat
+Next year: Nächstes Jahr
+This year: Dieses Jahr
+Last year: Letztes Jahr
+Year before last: Vorletztes Jahr
+Invalid report id: Ungültige Auswertungs id
+Unnamed Report: <neue Auswertung>
+Add Report: Auswertung hinzufügen
+Edit Report: Auswertung editieren
+Report name: Auswertungsname
 Current User: aktueller Benutzer
-#
-# << MISSING >>
-# Include link in trailer:
-#
-# << MISSING >>
-# Include standard header/trailer:
-#
-# << MISSING >>
-# Date range:
-#
-# << MISSING >>
-# Include previous/next links:
-#
-# << MISSING >>
-# Include empty dates:
-#
-# << MISSING >>
-# Template variables:
-#
-# << MISSING >>
-# Page template:
-#
-# << MISSING >>
-# Day template:
-#
-# << MISSING >>
-# Event template:
-#
-# << MISSING >>
-# Are you sure you want to delete this report?:
+Include link in trailer: inklusive Link im "Trailer"
+Include standard header/trailer: inklusive Standard-Kopf/Trailer
+Date range: Datumsbereich
+Include previous/next links: inlusive vorige(r)/nächste(r) Link(s)
+Include empty dates: inklusive leere Datums
+Template variables: Vorlagen Variablen
+Page template: Seiten Vorlagen
+Day template: Tagesvorlage
+Event template: Terminvorlage
+Are you sure you want to delete this report?: Wollen Sie diese Auswertung wirklich löschen?
 
 
 ###############################################
 # Page: report.php
 #
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Manage Reports:
+Approved: überprüft
+Unknown: unbekannt
+to manage reports for the Public Access calendar: verwalten der Auswertungen für den öffentlichen Kalender
+Add new report: Neue Auswertung hinzufügen
+Manage Reports: Auswertungen verwalten
 
 
 ###############################################
@@ -1003,50 +840,36 @@ Yours assistants: Ihre Assistenten
 ###############################################
 # Page: help_import.php
 #
-#
-# << MISSING >>
-# Palm Desktop:
-#
-# << MISSING >>
-# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
-#
-# << MISSING >>
-# The following entries will not be imported:
-#
-# << MISSING >>
-# Entries older than the current date:
-#
-# << MISSING >>
-# Entries creted in the Palm Desktop that have not been HotSync'd:
-#
-# << MISSING >>
-# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
-#
-# << MISSING >>
-# Therefore, updates should be made in the Palm Desktop.:
-#
-# << MISSING >>
-# vCal:
-#
-# << MISSING >>
-# The following formats have been tested:
-#
-# << MISSING >>
-# Palm Desktop 4:
-#
-# << MISSING >>
-# Lotus Organizer 6:
-#
-# << MISSING >>
-# Microsoft Outlook 2002:
+Palm Desktop: Palm Desktop
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner
+The following entries will not be imported: Folgende Einträge werden nicht importiert
+Entries older than the current date: Einträge die älter als das aktuelle Datum sind
+Entries creted in the Palm Desktop that have not been HotSync'd: Erzeugte Einträge die auf ihrem Palm NICHT HotSync`d wurden.
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim nächsten 
+Therefore, updates should be made in the Palm Desktop.: Deshalb sollten ihren Palm/Desktop immer updaten.
+vCal: vCal
+The following formats have been tested: Folgende Formate wurden getestet
+Palm Desktop 4: Palm Desktop 4
+Lotus Organizer 6: Lotus Organizer 6
+Microsoft Outlook 2002: Microsoft Outlook 2002
 
 
 ###############################################
 # Page: edit_report_handler.php
 #
+Variable N not found: Variable N nicht gefunden
+
+
+###############################################
+# Page: edit_entry_handler.php
 #
-# << MISSING >>
-# Variable N not found:
+A new appointment has been made for you by: Es wurde Ihnen ein neuer Termin eingetragen von -->  
+An appointment has been updated by: Ein Termin wurde geändert von
+The subject is: Die Beschreibung lautet 
+Please look on: Bitte konsultieren Sie Ihren  
+to accept or reject this appointment: um den Termin zu bestätigen/abzulehnen.
+to view this appointment: Termin anschauen
+Your suggested time of: Ihre Eintragung von 
 
 
 ###############################################
