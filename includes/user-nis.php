@@ -293,6 +293,10 @@ function user_delete_user ( $user ) {
   // Delete from groups
   dbi_query ( "DELETE FROM webcal_group_user WHERE cal_login = '$user'" );
 
+  // Delete bosses & assistants
+  dbi_query ( "DELETE FROM webcal_asst WHERE cal_boss = '$user'" );
+  dbi_query ( "DELETE FROM webcal_asst WHERE cal_assistant = '$user'" );
+
   // Delete user's views
   $delete_em = array ();
   $res = dbi_query ( "SELECT cal_view_id FROM webcal_view " .
