@@ -78,22 +78,22 @@ for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   $e_save[$i] = $events;
 }
 
-for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
+for ( $j = 0; $j < count ($viewusers); $j += $USERS_PER_TABLE ) {
   // since print_date_entries is rather stupid, we can swap the event data
   // around for users by changing what $events points to.
 
   // Calculate width of columns in this table.
-  $num_left = count ( $viewusers ) - $j;
-  if ( $num_left > $USERS_PER_TABLE )
-    $num_left = $USERS_PER_TABLE;
-  if ( $num_left > 0 ) {
-    if ( $num_left < $USERS_PER_TABLE ) {
-      $tdw = (int) ( 90 / $num_left );
-    } else {
-      $tdw = (int) ( 90 / $USERS_PER_TABLE );
-    }
+  $num_left = count ($viewusers) - $j;
+  if ($num_left > $USERS_PER_TABLE)
+	$num_left = $USERS_PER_TABLE;
+  if ($num_left > 0) {
+	if ($num_left < $USERS_PER_TABLE) {
+		$tdw = (int) (90 / $num_left);
+	} else {
+		$tdw = (int) (90 / $USERS_PER_TABLE);
+	}
   } else {
-    $tdw = 5;
+	$tdw = 5;
   }
 ?>
 <br /><br />
@@ -105,44 +105,49 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
   // $k is counter starting at 0
   // $i starts at table start and goes until end of this table/row.
   for ( $i = $j, $k = 0;
-    $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
-    $user = $viewusers[$i];
-    user_load_variables ( $user, "temp" );
-    echo "<th style=\"width:$tdw%;\">$tempfullname</th>\n";
-  }
+    $i < count ($viewusers) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
+	$user = $viewusers[$i];
+	user_load_variables ($user, "temp");
+	echo "<th style=\"width:$tdw%;\">$tempfullname</th>\n";
+  } //end for
   echo "</tr>\n";
-  
-  for ( $date = $monthstart; date ( "Ymd", $date ) <= date ( "Ymd", $monthend );
-    $date += ( 24 * 3600 ), $wday++ ) {
-    $wday = strftime ( "%w", $date );
-    $weekday = weekday_short_name ( $wday );
-    if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
-	echo "<tr><th class=\"today\">";
-    } else {
-	echo "<tr><th class=\"row\">";
-    }
-    echo $weekday . "&nbsp;" .
-      round ( date ( "d", $date ) ) . "</th>\n";
+
+  for ( $date = $monthstart; date ("Ymd", $date) <= date ("Ymd", $monthend);
+    $date += (24 * 3600), $wday++ ) {
+	$wday = strftime ("%w", $date);
+	$weekday = weekday_short_name ($wday);
+	echo "<tr><th";
+	if ( date ("Ymd", $date) == date ("Ymd", $today) ) {
+		echo " class=\"today\">";
+	} else {
+		if ($wday == 0 || $wday == 6)
+			echo " class=\"weekend\">";
+		else
+			echo " class=\"row\">";
+	}
+	//non-breaking space below keeps event from wrapping prematurely
+	echo $weekday . "&nbsp;" .
+		round ( date ("d", $date) ) . "</th>\n";
     for ( $i = $j, $k = 0;
-      $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
-      $user = $viewusers[$i];
-      $events = $e_save[$i];
-      $repeated_events = $re_save[$i];
-    if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
-      echo "<td class=\"today\"";
-    } else {
-      if ( $wday == 0 || $wday == 6 )
-          echo "<td class=\"weekend\"";
-      else
-	  echo "<td";
-    }
-    echo " style=\"width:$tdw%;\">";
-      //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
-      if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" )
-        echo html_for_add_icon ( date ( "Ymd", $date ), "", "", $user );
-      print_date_entries ( date ( "Ymd", $date ), $user, true );
+      $i < count ($viewusers) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
+	$user = $viewusers[$i];
+	$events = $e_save[$i];
+	$repeated_events = $re_save[$i];
+	if ( date ("Ymd", $date) == date ("Ymd", $today) ) {
+		echo "<td class=\"today\"";
+	} else {
+		if ($wday == 0 || $wday == 6)
+			echo "<td class=\"weekend\"";
+		else
+			echo "<td";
+	}
+	echo " style=\"width:$tdw%;\">";
+	//echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
+      if ( empty ($add_link_in_views) || $add_link_in_views != "N" )
+	echo html_for_add_icon ( date ("Ymd", $date), "", "", $user );
+      print_date_entries ( date ("Ymd", $date), $user, true );
       echo "</td>";
-    }
+    } //end for
     echo "</tr>\n";
   }
 
@@ -153,10 +158,11 @@ $user = ""; // reset
 
 echo $eventinfo;
 
-echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_m.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
+echo "<a title=\"" . 
+	translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_m.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
 	"target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
-	translate("Generate printer-friendly version") .
-	"'\">[" . translate("Printer Friendly") . "]</a>\n";
+	translate("Generate printer-friendly version") . "'\">[" . 
+	translate("Printer Friendly") . "]</a>\n";
 
 print_trailer ();
 ?>
