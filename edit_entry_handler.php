@@ -391,9 +391,9 @@ if ( empty ( $error ) ) {
           }
 	  # translate("Title")
           if ( strlen ( $login_email ) )
-            $extra_hdrs = "From: $login_email\nX-Mailer: " . translate($application_name);
+            $extra_hdrs = "From: $login_email\r\nX-Mailer: " . translate($application_name);
           else
-            $extra_hdrs = "From: $email_fallback_from\nX-Mailer: " . translate($application_name);
+            $extra_hdrs = "From: $email_fallback_from\r\nX-Mailer: " . translate($application_name);
           mail ( $tempemail,
             translate($application_name) . " " . translate("Notification") . ": " . $name,
             html_to_8bits ($msg), $extra_hdrs );
@@ -499,7 +499,7 @@ if ( empty ( $error ) ) {
             $msg .= "\n\n" . $url;
           }
           if ( strlen ( $from ) )
-            $extra_hdrs = "From: $from\nX-Mailer: " . translate($application_name);
+            $extra_hdrs = "From: $from\r\nX-Mailer: " . translate($application_name);
           else
             $extra_hdrs = "X-Mailer: " . translate($application_name);
           mail ( $tempemail,
@@ -550,7 +550,7 @@ if ( empty ( $error ) ) {
             $msg .= "\n\n" . $url;
           }
           if ( strlen ( $from ) )
-            $extra_hdrs = "From: $from\nX-Mailer: " . translate($application_name);
+            $extra_hdrs = "From: $from\r\nX-Mailer: " . translate($application_name);
           else
             $extra_hdrs = "X-Mailer: " . translate($application_name);
           mail ( $ext_emails[$i],

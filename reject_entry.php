@@ -85,7 +85,7 @@ if ( $id > 0 ) {
       if ( strlen ( $login_email ) )
         $from = $login_email;
 
-      $extra_hdrs = "From: $from\nX-Mailer: " . translate("Title");
+      $extra_hdrs = "From: $from\r\nX-Mailer: " . translate("Title");
 
       mail ( $tempemail,
         translate($application_name) . " " . translate("Notification") . ": " . $name,
