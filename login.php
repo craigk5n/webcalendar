@@ -171,6 +171,19 @@ if ( $demo_mode == "Y" ) {
 <HR><P>
 <A HREF="<?php echo $PROGRAM_URL ?>" CLASS="aboutinfo"><?php echo $PROGRAM_NAME?></A>
 </FONT>
-<?php print_trailer ( false, true, true ); ?>
+<?php
+// Print custom trailer (since we do not call print_trailer function)
+if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
+  $res = dbi_query (
+    "SELECT cal_template_text FROM webcal_report_template " .
+    "WHERE cal_template_type = 'T' and cal_report_id = 0" );
+  if ( $res ) {
+    if ( $row = dbi_fetch_row ( $res ) ) {
+      echo $row[0];
+    }
+    dbi_free_result ( $res );
+  }
+}
+?>
 </BODY>
 </HTML>
