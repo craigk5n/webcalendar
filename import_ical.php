@@ -139,6 +139,11 @@ function parse_ical ( $cal_file ) {
           } else if (preg_match("/^BEGIN:VALARM$/i", $buff)) {
             $state = "VALARM";
           }
+      } elseif ($state == "VTIMEZONE") {
+        // We don't do much with timezone info yet...
+        if (preg_match("/^END:VTIMEZONE$/i", $buff)) {
+          $state = "VCALENDAR";
+        }
       } elseif ($state == "NONE") {
          if (preg_match("/^BEGIN:VCALENDAR$/i", $buff))
            $state = "VCALENDAR";
