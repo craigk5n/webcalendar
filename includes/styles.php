@@ -79,7 +79,7 @@
 }
 .entry {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
-  font-size: 12px;
+  font-size: 13px;
   color: #006000;
   text-decoration: none;
 }
@@ -105,6 +105,13 @@ td.month a {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	font-size: 13px;
 	color: #B04040;
+	text-decoration: none;
+	text-align: center;
+}
+td.month a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 13px;
+	color: #0000FF;
 	text-decoration: none;
 	text-align: center;
 }
@@ -148,13 +155,13 @@ a:hover {
 	vertical-align: top;
 }
 h2 {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
-  font-size: 20px;
-  color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 20px;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
 }
 h3 {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
-  font-size: 18px;
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 18px;
 }
 .pagetitle {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
@@ -162,7 +169,6 @@ h3 {
 	color: <?php echo $GLOBALS['H2COLOR'] ?>;
 	font-weight: bold;
 }
-
 td {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 12px;
@@ -229,7 +235,6 @@ table.standard {
 
 
 /* ALL STYLES BELOW THIS LINE ARE NEW as of 8 July 2004 */
-
 
 /* ======================== */
 /* ACTIVITY_LOG.PHP */
@@ -336,6 +341,12 @@ table.monthviewminical {
 	font-size: 13px;
 	text-decoration: none;
 }
+.monthviewminical td.month a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	color: #0000FF;
+	font-size: 13px;
+	text-decoration: none;
+}
 /* formats the day name (i.e. Sun, Mon, etc) */
 /* used as "tr class="day"" to format the cells WITHIN that row */
 /* NOTE: removing the "th" below will modify the appearance of mini calendars */
@@ -354,6 +365,12 @@ table.monthviewminical {
 .monthviewminical td.numdate a {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	font-size: 13px;
+	text-decoration: none;
+}
+.monthviewminical td.numdate a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 13px;
+	color: #0000FF;
 	text-decoration: none;
 }
 
@@ -407,6 +424,13 @@ table.yearviewminical {
 	font-size: 13px;
 	text-decoration: none;
 }
+.yearviewminical td.month a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	color: #0000FF;
+	font-size: 13px;
+	text-decoration: none;
+}
+
 /* formats the day name (i.e. Sun, Mon, etc) */
 /* used as "tr class="day"" to format the cells WITHIN that row */
 /* NOTE: removing the "th" below will modify the appearance of mini calendars */
@@ -425,6 +449,12 @@ table.yearviewminical {
 .yearviewminical td.numdate a {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	font-size: 13px;
+	text-decoration: none;
+}
+.yearviewminical td.numdate a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 13px;
+	color: #0000FF;
 	text-decoration: none;
 }
 .highlight {
@@ -465,7 +495,6 @@ table.viewd {
 	font-weight: normal;
 	font-size: 13px;
 }
-
 
 /* ======================= */
 /* VIEW_L.PHP */
@@ -655,6 +684,11 @@ table.weekview {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 }
+.weekview th a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: #0000FF;
+}
 .weekview th.empty {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	background-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
@@ -691,6 +725,11 @@ table.weekview {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
+}
+.weekview th.today a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: #0000FF;
 }
 .weekview th.row {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
@@ -777,6 +816,11 @@ table.weekdetails {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 }
+.weekdetails th a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: #0000FF;
+}
 .weekdetails th.today {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	font-size: 14px;
@@ -791,6 +835,11 @@ table.weekdetails {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 }
+.weekdetails th.today a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: #0000FF;
+}
 .weekdetails th.weekend {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	font-size: 14px;
@@ -804,6 +853,11 @@ table.weekdetails {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+}
+.weekdetails th.weekend a:hover {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: #0000FF;
 }
 .weekdetails td {
 	background-color: <?php echo $GLOBALS['CELLBG'] ?>;
