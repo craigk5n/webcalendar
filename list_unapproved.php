@@ -2,6 +2,9 @@
 include_once 'includes/init.php';
 send_no_cache_header ();
 
+if ( empty ( $user ) )
+  $user = $login;
+
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
   $HeadX = "<META HTTP-EQUIV=\"refresh\" content=\"$refresh; URL=list_unapproved.php\" TARGET=\"_self\">\n";
@@ -103,10 +106,11 @@ function list_unapproved ( $user ) {
 <?php
 
 // List unapproved events for this user.
-list_unapproved ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
+list_unapproved ( ( $is_assistant || $is_nonuser_admin || $is_admin ) ? $user : $login );
 
 // Admin users can also approve Public Access events
-if ( $is_admin && $public_access == "Y" ) {
+if ( $is_admin && $public_access == "Y" &&
+  ( empty ( $user ) || $user != '__public__' ) ) {
   echo "<P><H3>" . translate ( "Public Access" ) . "</H3>\n";
   list_unapproved ( "__public__" );
 }
