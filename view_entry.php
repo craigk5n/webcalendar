@@ -691,8 +691,8 @@ if ( $readonly != "Y" && ! $is_my_event && ! $is_private &&
 }
 
 if ( count ( $allmails ) > 0 ) {
-  echo "<a class=\"navlinks\" href=\"mailto:" . implode ( ", ", $allmails ) .
-    "?subject=$subject\">" .
+  echo "<a class=\"navlinks\" href=\"mailto:" . implode ( ",", $allmails ) .
+    "?subject=" . rawurlencode($subject) . "\">" .
     translate("Email all participants") . "</a><br />\n";
 }
 
