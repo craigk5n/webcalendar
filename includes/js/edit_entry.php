@@ -213,7 +213,7 @@ function showSchedule () {
   var cols = <?php echo $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ?>;
   //var w = 140 + ( cols * 31 );
   var w = 760;
-  var h = 100 + (userlist.length * 20);
+  var h = 180;
   for ( i = 0; i < userlist.length; i++ ) {
     if (userlist.options[i].selected) {
       users += delim + userlist.options[i].value;
