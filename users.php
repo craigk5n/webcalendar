@@ -16,10 +16,6 @@
 
 	This structure is mirrored for groups & nonusers
 */
-	include_once 'includes/init.php';
-	$INC = array('js/users.php','js/visible.php');
-	print_header($INC);
-
 
 /* $Id */
 include_once 'includes/init.php';
