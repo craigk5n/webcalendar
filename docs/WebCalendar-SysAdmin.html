@@ -1266,6 +1266,21 @@ th {
   		If you still have a user named 'admin', then replace 'admin' in the above
   		SQL with a different username.
 		</dd>
+
+
+	<dt>I get a database error indicating table <tt>webcal_config</tt>
+            does not exist.</dt>
+	<dd>
+	This is the first table that WebCalendar tries to access, so it
+	typically means one of the following:
+	<ul>
+	<li> You have not created the database tables as described in the
+		instructions </li>
+	<li> You have the wrong database name specified in your
+		<tt>includes/config.php</tt> file </li>
+	</ul>
+	</dd>
+
 	</dl>
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
@@ -1366,6 +1381,9 @@ th {
 	<h2><a name="history">History</a></h2>
     <pre>
 $Log$
+Revision 1.26  2004/10/20 13:42:35  cknudsen
+Added troubleshooting entry.
+
 Revision 1.25  2004/10/16 04:18:04  musus
 streamlining, plus correcting a couple typos
 
