@@ -306,16 +306,17 @@ function do_redirect ( $url ) {
   if ( substr ( $SERVER_SOFTWARE, 0, 5 ) == "Micro" ) {
     echo "<?xml version=\"1.0\" encoding=\"utf8\"?>\n<!DOCTYPE html
     PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-    \"DTD/xhtml1-transitional.dtd\">\n
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<title>Redirect</title>\n" .
+    \"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
+<head>\n<title>Redirect</title>\n" .
       "<meta http-equiv=\"refresh\" content=\"0; url=$url\" />\n</head>\n<body>\n" .
       "Redirecting to.. <a href=\"" . $url . "\">here</a>.</body>\n</html>";
   } else {
     Header ( "Location: $url" );
     echo "<?xml version=\"1.0\" encoding=\"utf8\"?>\n<!DOCTYPE html
     PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-    \"DTD/xhtml1-transitional.dtd\">\n
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n
+    \"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
 <head>\n<title>Redirect</title>\n</head>\n<body>\n" .
       "Redirecting to ... <a href=\"" . $url . "\">here</a>.</body>\n</html>";
   }
@@ -332,8 +333,8 @@ function send_http_login () {
     Header ( "HTTP/1.0 401 Unauthorized" );
     echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html
     PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-    \"DTD/xhtml1-transitional.dtd\">\n
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n
+    \"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
 <head>\n<title>Unauthorized</title>\n</head>\n<body>\n" .
       "<h2>" . translate("Title") . "</h2>\n" .
       translate("You are not authorized") .
@@ -343,8 +344,8 @@ function send_http_login () {
     Header ( "HTTP/1.0 401 Unauthorized" );
     echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html
     PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-    \"DTD/xhtml1-transitional.dtd\">\n
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n
+    \"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
 <head>\n<title>Unauthorized</title>\n</head>\n<body>\n" .
       "<h2>WebCalendar</h2>\n" .
       "You are not authorized" .
@@ -502,7 +503,6 @@ function event_get_external_users ( $event_id, $use_mailto=0 ) {
     echo "<br />\nSQL:<br />\n$sql";
     exit;
   }
-
   return $ret;
 }
 
@@ -1006,7 +1006,7 @@ function print_entry ( $id, $date, $time, $duration,
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
-  if ( $pri == 3 ) echo "<span style=\"font-weight:bold;\">";
+  if ( $pri == 3 ) echo "<strong>";
 	$popupid = "eventinfo-$id-$key";
 	$key++;
 	echo "<a title=\"" . 
@@ -1070,12 +1070,11 @@ function print_entry ( $id, $date, $time, $duration,
     }
   }
 
-  if ( $pri == 3 ) echo "</span>\n"; //end font-weight span
+  if ( $pri == 3 ) echo "</strong>\n"; //end font-weight span
   echo "<br />";
 	if ( $login != $user && $access == 'R' && strlen ( $user ) )
 		$eventinfo .= build_event_popup ( $popupid, $event_owner,
 			translate("This event is confidential"), "" );
-
 	else
 	if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
 		$eventinfo .= build_event_popup ( $popupid, $event_owner,
@@ -2605,24 +2604,26 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
       }
       $rowspan--;
     } else {
-      $color = $all_day ? $TODAYCELLBG : $CELLBG;
       if ( empty ( $hour_arr[$i] ) ) {
-        echo "<td style=\"background-color:$color;\">";
-        if ( $can_add )
-          echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-        echo "&nbsp;</td></tr>\n";
+        echo "<td>";
+        if ( $can_add ) {
+          echo html_for_add_icon ( $date, $time_h, $time_m, $user ) . "</td>";
+	} else {
+	  echo "&nbsp;</td>";
+	}
+        echo "</tr>\n";
       } else {
         if ( empty ( $rowspan_arr[$i] ) )
           $rowspan = '';
         else
           $rowspan = $rowspan_arr[$i];
         if ( $rowspan > 1 ) {
-          echo "<td style=\"background-color:$TODAYCELLBG;\" rowspan=\"$rowspan\">";
+          echo "<td rowspan=\"$rowspan\">";
           if ( $can_add )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</td></tr>\n";
         } else {
-          echo "<td style=\"background-color:$TODAYCELLBG;\">";
+          echo "<td>";
           if ( $can_add )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
           echo "$hour_arr[$i]</td></tr>\n";
