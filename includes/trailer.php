@@ -235,7 +235,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 
 <!-- VIEWS -->
 <?php if ( ( $login != "__public__" ) &&
-         ($allow_view_other != "N") ) { ?>
+         ($allow_view_other != "N") && count ( $views ) > 0 ) { ?>
 <br /><span class="prefix"><?php etranslate("Views")?>:</span>&nbsp;
 <?php
   for ( $i = 0; $i < count ( $views ); $i++ ) {
