@@ -1,4 +1,5 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Added 'Public Access' to Manage Calendar of: list, if Admin. 
  - Removed ODBC host:database option from php-dbi.php. If needed, host can be 
    added to DSN in settings.php.
  - Changed charset in Czech.txt from utf8 to UTF-8

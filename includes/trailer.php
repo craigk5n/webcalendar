@@ -373,12 +373,17 @@ if ( ! $use_http_auth ) {
  }
 }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
-  if ( $has_boss || ! empty ( $admincals[0] ) ) {
+  if ( $has_boss || ! empty ( $admincals[0] ) || ( $is_admin && $public_access ) ) {
     echo "<span class=\"prefix\">";
     etranslate("Manage calendar of");
     echo ":</span>&nbsp;";
     $grouplist = user_get_boss_list ($login);
     $grouplist = array_merge($admincals,$grouplist);
+    if ( $is_admin && $public_access ) {
+      $public = array("cal_login" => "__public__",
+        "cal_fullname" => translate("Public Access") );
+      array_unshift($grouplist, $public);
+    }
     $groups = "";
     for ( $i = 0; $i < count ( $grouplist ); $i++ ) {
       $l = $grouplist[$i]['cal_login'];
