@@ -75,7 +75,7 @@ if ( ! $error ) {
 
 
 <h3><?php etranslate("Settings")?></h3>
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
+<table class="standard" cellspacing="1" cellpadding="2">
 	<tr><td class="tooltip">
 		<label for="admin_application_name" title="<?php etooltip("app-name-help")?>"><?php etranslate("Application Name")?>:</label></td><td>
 		<input type="text" size="40" name="admin_application_name" id="admin_application_name" value="<?php echo htmlspecialchars ( $application_name );?>" />
@@ -201,7 +201,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
     echo ">" . $datestyles[$i + 1] . "</option>\n";
   }
   ?>
-admin_DATE_FORMAT_MD  </select>
+</select>
   <br />
   <select name="admin_DATE_FORMAT_MD">
   <?php
@@ -352,7 +352,7 @@ admin_DATE_FORMAT_MD  </select>
 
 <!--
 // <h3><?php etranslate("Plugins")?></h3>
-// <table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
+// <table class="standard" cellspacing="1" cellpadding="2">
 // <tr><td class="tooltip" title="<?php etooltip("plugins-enabled-help");?>"><?php etranslate("Enable Plugins")?>:</td>
 //   <td><label><input type="radio" name="admin_plugins_enabled" value="Y" <?php if ( $s["plugins_enabled"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="admin_plugins_enabled" value="N" <?php if ( $s["plugins_enabled"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
@@ -381,7 +381,7 @@ admin_DATE_FORMAT_MD  </select>
 
 
 <h3><?php etranslate("Groups")?></h3>
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
+<table class="standard" cellspacing="1" cellpadding="2">
 <tr><td class="tooltip" title="<?php etooltip("groups-enabled-help")?>"><?php etranslate("Groups enabled")?>:</td>
   <td><label><input type="radio" name="admin_groups_enabled" value="Y" <?php if ( $s["groups_enabled"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="admin_groups_enabled" value="N" <?php if ( $s["groups_enabled"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
@@ -391,7 +391,7 @@ admin_DATE_FORMAT_MD  </select>
 
 
 <h3><?php etranslate("Categories")?></h3>
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
+<table class="standard" cellspacing="1" cellpadding="2">
 <tr><td class="tooltip" title="<?php etooltip("categories-enabled-help")?>"><?php etranslate("Categories enabled")?>:</td>
   <td><label><input type="radio" name="admin_categories_enabled" value="Y" <?php if ( $s["categories_enabled"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="admin_categories_enabled" value="N" <?php if ( $s["categories_enabled"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 </table>
@@ -399,7 +399,7 @@ admin_DATE_FORMAT_MD  </select>
 
 
 <h3><?php etranslate("Nonuser")?></h3>
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
+<table class="standard" cellspacing="1" cellpadding="2">
 <tr><td class="tooltip" title="<?php etooltip("nonuser-enabled-help")?>"><?php etranslate("Nonuser enabled")?>:</td>
   <td><label><input type="radio" name="admin_nonuser_enabled" value="Y" <?php if ( $s["nonuser_enabled"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="admin_nonuser_enabled" value="N" <?php if ( $s["nonuser_enabled"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
@@ -409,20 +409,20 @@ admin_DATE_FORMAT_MD  </select>
 
 
 <h3><?php etranslate("Reports")?></h3>
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
+<table class="standard" cellspacing="1" cellpadding="2">
 <tr><td class="tooltip" title="<?php etooltip("reports-enabled-help")?>"><?php etranslate("Reports enabled")?>:</td>
   <td><label><input type="radio" name="admin_reports_enabled" value="Y" <?php if ( $s["reports_enabled"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="admin_reports_enabled" value="N" <?php if ( $s["reports_enabled"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 </table>
 
 <h3><?php etranslate("Subscribe/Publish")?></h3>
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
+<table class="standard" cellspacing="1" cellpadding="2">
 <tr><td class="tooltip" title="<?php etooltip("subscriptions-enabled-help")?>"><?php etranslate("Allow remote subscriptions")?>:</td>
   <td><label><input type="radio" name="admin_PUBLISH_ENABLED" value="Y" <?php if ( $s["PUBLISH_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="admin_PUBLISH_ENABLED" value="N" <?php if ( $s["PUBLISH_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 </table>
 
 
 <h3><?php etranslate("Email")?></h3>
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
+<table class="standard" cellspacing="1" cellpadding="2">
 <tr><td class="tooltip" title="<?php etooltip("email-enabled-help")?>"><?php etranslate("Email enabled")?>:</td>
   <td><label><input type="radio" name="admin_send_email" value="Y" <?php if ( $s["send_email"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="admin_send_email" value="N" <?php if ( $s["send_email"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 <tr><td class="tooltip" title="<?php etooltip("email-default-sender")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Default sender address")?>:</td>
@@ -446,7 +446,7 @@ admin_DATE_FORMAT_MD  </select>
 
 
 <h3 class="tooltip" title="<?php etooltip("colors-help")?>"><?php etranslate("Colors")?></h3>
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
+<table class="standard" cellspacing="1" cellpadding="2">
 <tr><td style="font-weight:bold;"><?php etranslate("Allow user to customize colors")?>:</td>
   <td colspan="3"><label><input type="radio" name="admin_allow_color_customization" value="Y" <?php if ( $s["allow_color_customization"] != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="admin_allow_color_customization" value="N" <?php if ( $s["allow_color_customization"] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
