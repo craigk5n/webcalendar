@@ -1,8 +1,10 @@
 Version 1.0RC3 (?? ??? 2005)
-  - Fixed the following bugs reports on SourceForge:
+  - Fixed the following bug reports on SourceForge:
+      1118121: get_admins in user-ldap has bad search
   - Other bugs fixed:
     + Purge events was not deleting from webcal_entry_ext_user table
   - New Features / Enhancements / Changes:
+    + Added patch to allow TLS with LDAP
   - The following translations were updated:
     + Spanish
 
