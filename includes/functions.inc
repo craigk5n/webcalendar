@@ -39,11 +39,23 @@ function do_redirect ( $url ) {
 
 // send an HTTP login request
 function send_http_login () {
-  Header ( "WWW-Authenticate: Basic realm=\"" . translate("Title") . "\"");
-  Header ( "HTTP/1.0 401 Unauthorized" );
-  echo "<HTML><HEAD><TITLE>Unauthorized</TITLE></HEAD><BODY>\n" .
-    "<H2>" . translate("Title") . "</H2>" . translate("You are not authorized") .
-    "\n</BODY></HTML>\n";
+  global $lang_file;
+
+  if ( strlen ( $lang_file ) ) {
+    Header ( "WWW-Authenticate: Basic realm=\"" . translate("Title") . "\"");
+    Header ( "HTTP/1.0 401 Unauthorized" );
+    echo "<HTML><HEAD><TITLE>Unauthorized</TITLE></HEAD><BODY>\n" .
+      "<H2>" . translate("Title") . "</H2>" .
+      translate("You are not authorized") .
+      "\n</BODY></HTML>\n";
+  } else {
+    Header ( "WWW-Authenticate: Basic realm=\"WebCalendar\"");
+    Header ( "HTTP/1.0 401 Unauthorized" );
+    echo "<HTML><HEAD><TITLE>Unauthorized</TITLE></HEAD><BODY>\n" .
+      "<H2>WebCalendar</H2>" .
+      "You are not authorized" .
+      "\n</BODY></HTML>\n";
+  }
   exit;
 }
 

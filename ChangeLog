@@ -1,6 +1,9 @@
 Version 0.9.31dev (???)
   - Fixed bug 215549: if calendar is read-only, don't show new image,
     and don't allow users to add events.
+  - Fixed bug 214381: don't try and use translate() in http header
+    for sending http authorization request if translations have not
+    yet been loaded.
   - Don't allow user to change password if using http authorization.
   - Added back selectDate javascript function that was mistakenly
     removed from edit_entry.php.
