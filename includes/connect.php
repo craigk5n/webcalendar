@@ -49,6 +49,37 @@ if ( $res ) {
   exit;
 }
 
+// If we are in single user mode, make sure that the login selected is
+// a valid login.
+if ( $single_user == 'Y' ) {
+  if ( empty ( $single_user_login ) ) {
+    echo "<html><head><title>Setup error</title>\n" .
+    "</head>\n<body><h2>Setup error</h2><p>" .
+    "You have not defined <tt>single_user_login</tt> in " .
+    "<tt>includes/settings.php</tt></p></body></html>\n";
+    exit;
+  }
+  $res = dbi_query ( "SELECT COUNT(*) FROM webcal_user " .
+    "WHERE cal_login = '$single_user_login'" );
+  if ( ! $res ) {
+    echo "Database error: " . dbi_error (); exit;
+  }
+  $row = dbi_fetch_row ( $res );
+  if ( $row[0] == 0 ) {
+    // User specified as single_user_login does not exist
+    if ( ! dbi_query ( "INSERT INTO webcal_user ( cal_login, " .
+      "cal_passwd, cal_is_admin ) VALUES ( '$single_user_login', " .
+       "'" . md5($single_user_login) . "', 'Y' )" ) ) {
+      echo "<b>Error:</b> user <tt>$single_user_login</tt> does not " .
+      "exist in webcal_user table and was not able to add it for you:<br />" .
+      dbi_error ();
+      exit;
+    }
+    // User was added... should we tell them?
+  }
+  dbi_free_result ( $res );
+}
+
 
 // global settings have not been loaded yet, so check for public_access now
 $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
