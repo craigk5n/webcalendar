@@ -1,4 +1,8 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Fixed bug 609900: wrong week number
+  - Fixed bug 761793: invalid weeknumber
+  - Fixed bug 607788: Number of week
+  - Week Number now calculated using ISO 8601 specifications
   - Fixed bug 787788: Can't enter event beginning st midnight
   - Fixed bug 783487: SQL error on saving existing report
   - Fixed bug 760236: Timezone Offset is buggy in edit_entry_handler.php
