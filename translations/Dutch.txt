@@ -5,7 +5,7 @@
 # Last update: 28 August 2002
 # check out the tools directory which contains two perl scripts:
 # check_translation.pl will tell you if you have successfully translated all re
-# Translation last updated on 09-10-2002
+# Translation last updated on 09-12-2002
 
 
 ###############################################
@@ -17,7 +17,7 @@ Invalid color for document background: ongeldige kleur voor de achtergrond
 Invalid color for document title: ongeldige kleur voor de agendatitel
 Invalid color for table cell background: ongeldige kleur voor de tabelcel
 Invalid color for table grid: ongeldige kleur voor tabelraster
-Invalid color for table header background: ongeldige kleur voor achtergrond age
+Invalid color for table header background: ongeldige kleur voor achtergrond tab
 Invalid color for table text background: ongeldige kleur voor tekstachtergrond
 Invalid color for event popup background: ongeldige achtergrondkleur voor afspr
 Invalid color for event popup text: ongeldige tekstkleur voor afspraak-popup
@@ -30,14 +30,14 @@ Your user preferences: de gebruikersinstellingen
 may be affecting the appearance of this page.: kunnen de weergave van deze pagi
 Click here: Klik hier
 to not use your user preferences when viewing this page: om de gebruikersinstel
-are being ignored while viewing this page.: worden genegeerd bij het bekijken va
+are being ignored while viewing this page.: worden genegeerd bij het bekijken v
 to load your user preferences when viewing this page: om de gebruikersinstellin
 Save: bewaren
 Help: help
 Settings: instellingen
-app-name-help: Hier wordt de naam van de applicatie gedefinieerd. Deze naam ver
+app-name-help: Hier wordt de naam van de applicatie gedefinieerd.
 Application Name: programmanaam
-server-url-help: Specificeert de basis URL van de applicatie. Deze URL wordt ge
+server-url-help: Specificeert de basis URL van de applicatie.
 Server URL: server URL
 language-help: Specificeert welke taal gebruikt dient te worden.
 Language: taal
@@ -119,15 +119,15 @@ Email enabled: activeer gebruik van email
 email-default-sender: Specificeert het mailadres dat als afzender wordt getoon
 Default sender address: standaard mailadres
 Default user settings: standaard gebruikersinstellingen
-email-event-reminders-help: Specificeert of er per email herinneringen aan afsp
+email-event-reminders-help: Specificeert of er per email herinneringen van van
 Event reminders: stuur mij een email om mij aan een afspraak te herinneren
-email-event-added: Specificeert of er email-notificaties worden verzonden bij h
+email-event-added: Specificeert of er email-notificaties worden verzonden als e
 Events added to my calendar: stuur mij een email als afspraken aan mijn agenda
 email-event-updated: Specificeert of er email-notificaties worden verzonden bij
 Events updated on my calendar: stuur mij een email als afspraken in mijn agenda
 email-event-deleted: Specificeert of er email-notificaties worden verzonden bij
 Events removed from my calendar: stuur mij een email als afspraken uit mijn age
-email-event-rejected: Specificeert of er email-notificaties worden verzonden in
+email-event-rejected: Specificeert of er email-notificaties worden verzonden wa
 Event rejected by participant: stuur mij een email als een afspraak door een ge
 colors-help: Alle kleuren moeten worden aangegeven als #RRGGBB hexadecimaal for
 Colors: kleuren
@@ -251,9 +251,9 @@ Brief Description: korte omschrijving
 full-description-help: Hier ziet u de volledige afspraakomschrijving. <br>N.B.:
 Full Description: volledige omschrijving
 date-help: Dit is de datum waarop de afspraak plaatsvindt.
-time-help: Dit is de aanvangstijd van de afspraak. <BR><I>Dit veld mag leeg bl
-am: am
-pm: pm
+time-help: Dit is de aanvangstijd van de afspraak. <BR><I>Dit veld mag leeg bli
+am: a.m. (ante meridiem), 's morgens
+pm: p.m. (post medidiem), 's avond
 duration-help: Hier geeft u aan hoe lang de afspraak duurt (in minuten). <BR><I
 Duration: duur
 hours: uren
@@ -262,9 +262,9 @@ Priority: prioriteit
 Low: lage prioriteit
 Medium: normale prioriteit
 High: hoge prioriteit
-access-help: Hier bepaalt u de toegankelijkheid van de afspraak voor anderen. I
+access-help: Hier bepaalt u de toegankelijkheid van de afspraak voor anderen. <
 Access: toegankelijkheid
-Public: publiek
+Public: publiekelijk
 Confidential: vertrouwelijk
 category-help: Hier geeft u aan in welke categorie de afspraak thuishoort.
 Category: categorie
@@ -272,7 +272,7 @@ days: dagen
 before event: voor de afspraak
 participants-help: Selecteer hier de personen die bij de afspraak aanwezig zijn
 Participants: aanwezigen
-repeat-type-help: Geef aan hoe vaak de afspraak moet worden herhaald: <I>maande
+repeat-type-help: Geef aan hoe vaak de afspraak moet worden herhaald: voor <I>m
 Repeat Type: herhalingspatroon
 None: geen
 Daily: dagelijks
@@ -396,9 +396,7 @@ Users: gebruikers
 ###############################################
 # Page: group_edit_handler.php
 #
-#
-# << MISSING >>
-# You must specify a group name:
+You must specify a group name: Specificeer een groepsnaam
 
 
 ###############################################
@@ -473,7 +471,7 @@ Enabling: activeer
 ###############################################
 # Page: help_pref.php
 #
-default-category-help: Hiermee wordt de standaard-categorie voor nieuwe afsprak
+default-category-help: Hiermee wordt de standaard-categorie geselecteerd
 
 
 ###############################################
@@ -489,9 +487,7 @@ default-category-help: Hiermee wordt de standaard-categorie voor nieuwe afsprak
 ###############################################
 # Page: layers.php
 #
-#
-# << MISSING >>
-# to modify the layers settings for the:
+to modify the layers settings for the: instellingen aanpassen voor
 Layers are currently: Lagen worden momenteel
 Enabled: wel weergeven
 Disabled: niet weergegeven
@@ -524,9 +520,7 @@ Public Access: publieke toegang
 # Page: login.php
 #
 You must enter a login and password: U moet een gebruikersnaam en een wachtwoor
-#
-# << MISSING >>
-# Save login via cookies so I don't have to login next time:
+Save login via cookies so I don't have to login next time: Bewaar <I>cookies</I
 Login: aanmelden
 Access public calendar: ga naar publieke agenda
 cookies-note: <B>NB:</B> deze applicatie maakt gebruik van cookies.
@@ -615,9 +609,9 @@ Reject entry: afspraak weigeren
 Set category: bepaal categorie
 Edit repeating entry for all dates: WIJZIG de gehele reeks met afspraken
 Edit entry for this date: WIJZIG alleen de afspraak op deze datum
-This will delete this entry for all users.: De afspraak wordt uit de agenda ver
+This will delete this entry for all users.: De afspraak wordt uit de agenda voo
 Delete repeating event for all dates: VERWIJDER de gehele reeks met afspraken
-Delete entry only for this date: VERWIJDER alleen de afspraak op deze datum (N.
+Delete entry only for this date: VERWIJDER alleen de afspraak op deze datum
 Edit entry: afspraak wijzigen
 This will delete the entry from your calendar.: De afspraak wordt uit de agenda
 Do you want to add this entry to your calendar?: Deze afspraak ook in eigen age
@@ -658,9 +652,7 @@ View Type: type
 ###############################################
 # Page: views_edit_handler.php
 #
-#
-# << MISSING >>
-# You must specify a view name:
+You must specify a view name: Er moet een overzichtnaam toegekend worden
 
 
 ###############################################
