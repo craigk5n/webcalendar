@@ -236,14 +236,17 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $thiswday = date ( "w", $date );
       $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
       if ( empty ( $WEEKENDBG ) ) $is_weekend = false;
- print "<td";
- if ( $date == date ( "Ymd", $today ) ) {
-  echo " class=\"today\">";
- } elseif ( $is_weekend ) {
-  echo " class=\"weekend\">";
- } else {
-  echo ">";
- }
+      print "<td";
+      $class = "";
+      if ( date ( "Ymd", $date  ) == date ( "Ymd", $today ) ) {
+        $class = "today";
+      }
+      if ( $is_weekend ) {
+        if ( strlen ( $class ) ) $class .= " ";
+        $class .= "weekend";
+      }
+      if ( strlen ( $class ) ) echo " class=\"$class\"";
+      echo ">";
  //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       print_date_entries ( date ( "Ymd", $date ),
         ( ! empty ( $user ) ) ? $user : $login, false );
