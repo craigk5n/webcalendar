@@ -5,7 +5,11 @@
 #	Simone Cortesi <php@cortesi.com>
 #	Alessandro <a.orlandi@iol.it>
 # Last update: 22 July 2000
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+# No charset specified
+# charset:
+
 
 
 ###############################################
@@ -396,11 +400,6 @@ Add New Category: Aggiungi una nuova categoria
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 Previous: Precedente
@@ -424,11 +423,6 @@ Hello: Ciao
 An appointment has been canceled for you by: Un appuntamento e' stato cancellato per te da
 The subject was: L'oggetto era
 Notification: Notifica
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -713,11 +707,6 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 to modify the layers settings for the: per modificare i settaggi per
@@ -747,18 +736,6 @@ Reject: Rifiuta
 No unapproved events for: Evento rifiutato per
 Unapproved Events: Eventi non approvati
 Public Access: Accesso Pubblico
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Inserire nome utente e password
-Save login via cookies so I don't have to login next time: Salvare le informazioni di login tramite i cookie così da non doversi più registrare la prossima volta
-Login: Entra
-#
-# << MISSING >>
-# Access public calendar:
-cookies-note: <B>Nota:</B> Questo applicativo necessita dei cookie abilitati.
 
 
 ###############################################
@@ -873,6 +850,11 @@ Hide activity log: Nascondi il log delle attività
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -935,6 +917,18 @@ View Type: Tipo di vista
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: Inserire nome utente e password
+Save login via cookies so I don't have to login next time: Salvare le informazioni di login tramite i cookie così da non doversi più registrare la prossima volta
+Login: Entra
+#
+# << MISSING >>
+# Access public calendar:
+cookies-note: <B>Nota:</B> Questo applicativo necessita dei cookie abilitati.
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Devi specificare il nome di una vista
@@ -945,11 +939,6 @@ You must specify a view name: Devi specificare il nome di una vista
 #
 New Entry: Nuova Nota
 Private: Privato
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -1050,11 +1039,6 @@ Send Reminder: Avvisa
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -1070,42 +1054,15 @@ Send Reminder: Avvisa
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -1141,21 +1098,6 @@ Color format should be '#RRGGBB': Il fomrato del colore deve essere '#RRGGBB'
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Non è stata inserita una breve descrizione
@@ -1172,32 +1114,7 @@ Invalid color: Colore non valido
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 

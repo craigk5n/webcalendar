@@ -4,7 +4,11 @@
 # Translated by:
 #	your name and email here...
 # Last update: 20 May 2001
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+# No charset specified
+# charset:
+
 
 
 ###############################################
@@ -497,11 +501,6 @@ Are you sure you want to delete this entry?: ‚±‚ÌƒGƒ“ƒgƒŠ[‚ğíœ‚µ‚Ä‚à—Ç‚¢‚Å‚·‚
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 #
@@ -529,11 +528,6 @@ Hello: ‚±‚ñ‚É‚¿‚ÍI
 An appointment has been canceled for you by: ‰Û‘èF
 The subject was: ‰Û‘èF
 Notification: ‚¨’m‚ç‚¹
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -874,11 +868,6 @@ Layers: ƒŒƒCƒ„[
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 #
@@ -914,18 +903,6 @@ Unapproved Events: ”F‰Â‚³‚ê‚Ä‚¢‚È‚¢ƒCƒxƒ“ƒg
 #
 # << MISSING >>
 # Public Access:
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: ƒƒOƒCƒ“‚ÆƒpƒXƒ[ƒh‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢
-Save login via cookies so I don't have to login next time: Ÿ‰ñ‚©‚çƒƒOƒCƒ“‚µ‚È‚­‚Ä‚à—Ç‚¢‚æ‚¤ƒƒOƒCƒ“‚ğƒNƒbƒL[‚ÉƒZ[ƒu
-Login: ƒƒOƒCƒ“
-#
-# << MISSING >>
-# Access public calendar:
-cookies-note: <B>Note:</B> This application requires cookies to be enabled.
 
 
 ###############################################
@@ -1072,6 +1049,11 @@ Add to My Calendar: ƒ}ƒCEƒJƒŒƒ“ƒ_[‚É’Ç‰Á
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -1148,6 +1130,18 @@ Add to My Calendar: ƒ}ƒCEƒJƒŒƒ“ƒ_[‚É’Ç‰Á
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: ƒƒOƒCƒ“‚ÆƒpƒXƒ[ƒh‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢
+Save login via cookies so I don't have to login next time: Ÿ‰ñ‚©‚çƒƒOƒCƒ“‚µ‚È‚­‚Ä‚à—Ç‚¢‚æ‚¤ƒƒOƒCƒ“‚ğƒNƒbƒL[‚ÉƒZ[ƒu
+Login: ƒƒOƒCƒ“
+#
+# << MISSING >>
+# Access public calendar:
+cookies-note: <B>Note:</B> This application requires cookies to be enabled.
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 #
@@ -1160,11 +1154,6 @@ Add to My Calendar: ƒ}ƒCEƒJƒŒƒ“ƒ_[‚É’Ç‰Á
 #
 New Entry: V‚µ‚¢ƒGƒ“ƒgƒŠ[
 Private: ƒvƒ‰ƒCƒx[ƒg@@Private
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -1285,11 +1274,6 @@ Invalid login: ƒƒOƒCƒ“‚Í–³Œø‚Å‚·
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -1305,42 +1289,15 @@ Invalid login: ƒƒOƒCƒ“‚Í–³Œø‚Å‚·
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -1376,21 +1333,6 @@ Color format should be '#RRGGBB': F‚Í '#RRGGBB'‚Åİ’è‚µ‚Ä‚­‚¾‚³‚¢
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: ŠÈ’P‚Èà–¾‚ğ“ü—Í‚µ‚Ä‚¢‚Ü‚¹‚ñ
@@ -1405,32 +1347,7 @@ Invalid color: –³ŒøF
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 

@@ -1,7 +1,11 @@
 # Translated by:
 #	Nuno Lopes - nml@maxitel.pt
 # Last update: 11 September 2000
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+# No charset specified
+# charset:
+
 
 
 ###############################################
@@ -532,11 +536,6 @@ Are you sure you want to delete this entry?: Tem a certeza que pretende apagar e
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 #
@@ -568,11 +567,6 @@ Hello: Olá
 # << MISSING >>
 # The subject was:
 Notification: Notificação
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -927,11 +921,6 @@ Layers: N&iacute;veis
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 #
@@ -967,18 +956,6 @@ Unapproved Events: Eventos não aprovados
 #
 # << MISSING >>
 # Public Access:
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Tem de introduzir um Utilizador e uma Password
-Save login via cookies so I don't have to login next time: Gravar Utilizador e Password para futuras sessões (não recomendado se este computador é utilizado por mais pessoas)
-Login: Entrar
-#
-# << MISSING >>
-# Access public calendar:
-cookies-note: <B>Nota:</B> Esta opção requer a opção de 'cookies' no seu browser activada.
 
 
 ###############################################
@@ -1147,6 +1124,11 @@ Edit entry: Editar entrada
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -1223,6 +1205,18 @@ Edit entry: Editar entrada
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: Tem de introduzir um Utilizador e uma Password
+Save login via cookies so I don't have to login next time: Gravar Utilizador e Password para futuras sessões (não recomendado se este computador é utilizado por mais pessoas)
+Login: Entrar
+#
+# << MISSING >>
+# Access public calendar:
+cookies-note: <B>Nota:</B> Esta opção requer a opção de 'cookies' no seu browser activada.
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 #
@@ -1235,11 +1229,6 @@ Edit entry: Editar entrada
 #
 New Entry: Nova entrada
 Private: Privado
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -1356,11 +1345,6 @@ Invalid login: Acesso incorrecto
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -1376,42 +1360,15 @@ Invalid login: Acesso incorrecto
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -1447,21 +1404,6 @@ Color format should be '#RRGGBB': O formato do código de cor deve ser '#RRGGBB'
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Não introduziu uma breve descrição
@@ -1478,32 +1420,7 @@ Invalid color: Cor inapropriada
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 

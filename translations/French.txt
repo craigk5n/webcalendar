@@ -9,7 +9,11 @@
 # Mise à jour : Mario Dragone <mario.dragone@reims.iufm.fr>
 # Title is what will appear in the title bar for pages
 #
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+# No charset specified
+# charset:
+
 
 
 ###############################################
@@ -218,11 +222,6 @@ Add New Category: Ajouter une nouvelle catégorie
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 Previous: Précédent
@@ -244,11 +243,6 @@ Hello: Bonjour
 An appointment has been canceled for you by: Un événement été annulé pour vous par
 The subject was: Le sujet était
 Notification: Notification
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -503,11 +497,6 @@ cont.: suite
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 to modify the layers settings for the: pour modifier les paramètres de calque de 
@@ -537,16 +526,6 @@ Reject: Rejeter
 No unapproved events for: Pas d'événement non approuvé pour
 Unapproved Events: Événements en attente
 Public Access: Accès public 
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Vous devez saisir un login et un mot de passe
-Save login via cookies so I don't have to login next time: Sauvegarder le login dans un cookie, pour ne plus taper le login la prochaine fois
-Login: Connexion
-Access public calendar: Agenda à accès public
-cookies-note: <B>Note:</B> Cette application nécessite l'activation des cookies.
 
 
 ###############################################
@@ -653,6 +632,11 @@ Export this entry to: Exporter cet événement au format
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -697,6 +681,16 @@ Add New NonUser Calendar: Ajouter un nouvel utilisateur générique
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: Vous devez saisir un login et un mot de passe
+Save login via cookies so I don't have to login next time: Sauvegarder le login dans un cookie, pour ne plus taper le login la prochaine fois
+Login: Connexion
+Access public calendar: Agenda à accès public
+cookies-note: <B>Note:</B> Cette application nécessite l'activation des cookies.
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Vous devez indiquer une vue
@@ -707,11 +701,6 @@ You must specify a view name: Vous devez indiquer une vue
 #
 New Entry: Nouvel événement
 Private: Privé
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -812,11 +801,6 @@ Send Reminder: Envoyer un rappel
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -832,42 +816,15 @@ Send Reminder: Envoyer un rappel
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -889,21 +846,6 @@ Color format should be '#RRGGBB': Le format de couleur devrait être '#RRGGBB'
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Vous n'avez pas entré de description succinte
@@ -918,32 +860,7 @@ Invalid color: Couleur incorrecte
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 

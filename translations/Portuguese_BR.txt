@@ -4,7 +4,11 @@
 # Based in Portugues version, by Sérgio Oliveira - sloliv@terra.com.br
 #   Based in Portuguese version, by Nuno Lopes - nml@maxitel.pt
 # Last update: 27 December 2000
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+# No charset specified
+# charset:
+
 
 
 ###############################################
@@ -283,11 +287,6 @@ Add New Category: Nova categoria
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 Previous: Anterior
@@ -313,11 +312,6 @@ Hello: Olá
 An appointment has been canceled for you by: Uma evento seu foi cancelando por
 The subject was: O assunto era
 Notification: Notificação
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -618,11 +612,6 @@ default-category-help: Especificar a categoria padrão para novos eventos.
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 #
@@ -654,16 +643,6 @@ Reject: Rejeitar
 No unapproved events for: Eventos não aprovados para
 Unapproved Events: Eventos não aprovados
 Public Access: Acesso Público
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Tem de digitar um usuário e senha
-Save login via cookies so I don't have to login next time: Gravar usuário e sen
-Login: Entrar
-Access public calendar: Acesso publico ao calendario
-cookies-note: <B>Nota:</B> Esta opção requer a opção de 'cookies' no seu browse
 
 
 ###############################################
@@ -774,6 +753,11 @@ Hide activity log: Esconder log de atividade
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -836,6 +820,16 @@ View Type: Tipo da Visualização
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: Tem de digitar um usuário e senha
+Save login via cookies so I don't have to login next time: Gravar usuário e sen
+Login: Entrar
+Access public calendar: Acesso publico ao calendario
+cookies-note: <B>Nota:</B> Esta opção requer a opção de 'cookies' no seu browse
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 #
@@ -848,11 +842,6 @@ View Type: Tipo da Visualização
 #
 New Entry: Nova entrada
 Private: Pessoal
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -1039,11 +1028,6 @@ Private: Pessoal
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -1059,42 +1043,15 @@ Private: Pessoal
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -1140,21 +1097,6 @@ Private: Pessoal
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 #
@@ -1177,32 +1119,7 @@ Private: Pessoal
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 

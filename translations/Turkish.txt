@@ -4,7 +4,11 @@
 #
 # Translator: Atilla Kazanci <support@dig-it-berlin.de>,
 # Last update: 29 March 2001
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+# No charset specified
+# charset:
+
 
 
 ###############################################
@@ -551,11 +555,6 @@ Are you sure you want to delete this entry?: Islemi sahiden silmek istiyormusunu
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 #
@@ -587,11 +586,6 @@ Hello: Iyi günler
 # << MISSING >>
 # The subject was:
 Notification: Not
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -982,11 +976,6 @@ Help Index: Yardim-Endeksi
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 #
@@ -1038,18 +1027,6 @@ Unapproved Events: Onaylanmamis Termin
 #
 # << MISSING >>
 # Public Access:
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Kullanici Adi ve Sifre vermeniz gerekiyor.
-Save login via cookies so I don't have to login next time: Tanimlamayi Cookie'ye kayit et, birdahakinde otamatik olarak girisi gecmek icin.
-Login: Giris
-#
-# << MISSING >>
-# Access public calendar:
-cookies-note: <B>Not:</B> Takvimi kullanmak icin, Browser'inizde Cookie'leri kabul etmeniz gerekiyor.
 
 
 ###############################################
@@ -1218,6 +1195,11 @@ Edit entry: Islem degistir
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -1294,6 +1276,18 @@ Edit entry: Islem degistir
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: Kullanici Adi ve Sifre vermeniz gerekiyor.
+Save login via cookies so I don't have to login next time: Tanimlamayi Cookie'ye kayit et, birdahakinde otamatik olarak girisi gecmek icin.
+Login: Giris
+#
+# << MISSING >>
+# Access public calendar:
+cookies-note: <B>Not:</B> Takvimi kullanmak icin, Browser'inizde Cookie'leri kabul etmeniz gerekiyor.
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 #
@@ -1306,11 +1300,6 @@ Edit entry: Islem degistir
 #
 New Entry: Yeni islem
 Private: özel
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -1431,11 +1420,6 @@ Dec: Ara
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -1451,42 +1435,15 @@ Dec: Ara
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -1522,21 +1479,6 @@ Color format should be '#RRGGBB': Renkler sadece '#RRGGBB' seklinde verilebilir.
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Özet Anlami vermediniz
@@ -1555,32 +1497,7 @@ You have not entered a valid time of day: Gecerli saat vermediniz
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 

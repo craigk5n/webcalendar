@@ -17,7 +17,14 @@
 #
 #
 #
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: iso-8859-1
+
 
 
 ###############################################
@@ -226,11 +233,6 @@ Add New Category: Add New Category
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 Previous: Previous
@@ -252,11 +254,6 @@ Hello: Hello
 An appointment has been canceled for you by: An appointment has been canceled for you by
 The subject was: The subject was
 Notification: Notification
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -505,11 +502,6 @@ cont.: cont.
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 to modify the layers settings for the: to modify the layers settings for the
@@ -539,16 +531,6 @@ Reject: Reject
 No unapproved events for: No unapproved events for
 Unapproved Events: Unapproved Events
 Public Access: Public Access
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: You must enter a login and password
-Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
-Login: Login
-Access public calendar: Access public calendar
-cookies-note: <B>Note:</B> This application requires cookies to be enabled.
 
 
 ###############################################
@@ -655,6 +637,11 @@ Export this entry to: Export this entry to
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -699,6 +686,16 @@ Add New NonUser Calendar: Add New NonUser Calendar
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: You must enter a login and password
+Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
+Login: Login
+Access public calendar: Access public calendar
+cookies-note: <B>Note:</B> This application requires cookies to be enabled.
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: You must specify a view name
@@ -709,11 +706,6 @@ You must specify a view name: You must specify a view name
 #
 New Entry: New Entry
 Private: Private
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -814,11 +806,6 @@ Send Reminder: Send Reminder
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -834,42 +821,12 @@ Send Reminder: Send Reminder
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -891,21 +848,6 @@ Color format should be '#RRGGBB': Color format should be '#RRGGBB'
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: You have not entered a Brief Description
@@ -920,32 +862,7 @@ Invalid color: Invalid color
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 

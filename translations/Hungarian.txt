@@ -4,7 +4,11 @@
 # Translated by:
 #	Gyorgy Baffia <gyorgy@baffia.hu>
 # Last update: 05 Sep 2001
-# Translation last updated on 06-07-2003
+# Translation last updated on 06-20-2003
+
+# No charset specified
+# charset:
+
 
 
 ###############################################
@@ -497,11 +501,6 @@ Are you sure you want to delete this entry?: Biztos, hogy ki akarod törölni ezt 
 
 
 ###############################################
-# Page: colors.php
-#
-
-
-###############################################
 # Page: datesel.php
 #
 #
@@ -529,11 +528,6 @@ Hello: Szia
 An appointment has been canceled for you by: Egy teendõt lemondott számodra
 The subject was: A tárgy
 Notification: Emlékeztetõ
-
-
-###############################################
-# Page: del_layer.php
-#
 
 
 ###############################################
@@ -874,11 +868,6 @@ Layers: Rétegek
 
 
 ###############################################
-# Page: index.php
-#
-
-
-###############################################
 # Page: layers.php
 #
 #
@@ -914,18 +903,6 @@ Unapproved Events: Jóváhagyás nélküli események
 #
 # << MISSING >>
 # Public Access:
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Add meg az azonosítódat és jelszavadat
-Save login via cookies so I don't have to login next time: A bejelentkezési jelszó mentése, így errõl a géprõl legközelebb nem kell megadni
-Login: Bejelentkezés
-#
-# << MISSING >>
-# Access public calendar:
-cookies-note: <B>Megjegyzés:</B> A cookie-k engedélyezése szükséges a naptár használatához.
 
 
 ###############################################
@@ -1072,6 +1049,11 @@ Add to My Calendar: Hozzáadás a Saját Naptáramhoz
 
 
 ###############################################
+# Page: view_d.php
+#
+
+
+###############################################
 # Page: view_m.php
 #
 
@@ -1148,6 +1130,18 @@ Add to My Calendar: Hozzáadás a Saját Naptáramhoz
 
 
 ###############################################
+# Page: login.php
+#
+You must enter a login and password: Add meg az azonosítódat és jelszavadat
+Save login via cookies so I don't have to login next time: A bejelentkezési jelszó mentése, így errõl a géprõl legközelebb nem kell megadni
+Login: Bejelentkezés
+#
+# << MISSING >>
+# Access public calendar:
+cookies-note: <B>Megjegyzés:</B> A cookie-k engedélyezése szükséges a naptár használatához.
+
+
+###############################################
 # Page: views_edit_handler.php
 #
 #
@@ -1160,11 +1154,6 @@ Add to My Calendar: Hozzáadás a Saját Naptáramhoz
 #
 New Entry: Új bejegyzés
 Private: Magán
-
-
-###############################################
-# Page: week_ssi.php
-#
 
 
 ###############################################
@@ -1279,11 +1268,6 @@ Send Reminder: Emlékeztetõ küldése
 
 
 ###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
 # Page: includes/user-ldap.php
 #
 
@@ -1299,42 +1283,15 @@ Send Reminder: Emlékeztetõ küldése
 
 
 ###############################################
-# Page: includes/config.php
-#
-
-
-###############################################
-# Page: includes/index.php
-#
-
-
-###############################################
-# Page: includes/js.php
-#
-
-
-###############################################
-# Page: includes/php-dbi.php
-#
-
-
-###############################################
-# Page: includes/styles.php
-#
-
-
-###############################################
 # Page: includes/init.php
 #
+#
+# << MISSING >>
+# charset:
 
 
 ###############################################
 # Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/js/export.php
 #
 
 
@@ -1370,21 +1327,6 @@ Color format should be '#RRGGBB': A szineket '#RRGGBB' formátumban kell megadni
 
 
 ###############################################
-# Page: includes/js/assistant_edit.php
-#
-
-
-###############################################
-# Page: includes/js/colors.php
-#
-
-
-###############################################
-# Page: includes/js/datesel.php
-#
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Nem írtál rövid leírást
@@ -1399,32 +1341,7 @@ Invalid color: Érvénytelen szín
 
 
 ###############################################
-# Page: includes/js/popups.php
-#
-
-
-###############################################
 # Page: includes/js/pref.php
-#
-
-
-###############################################
-# Page: includes/js/search.php
-#
-
-
-###############################################
-# Page: includes/js/usersel.php
-#
-
-
-###############################################
-# Page: includes/js/views_edit.php
-#
-
-
-###############################################
-# Page: includes/js/view_entry.php
 #
 
 
