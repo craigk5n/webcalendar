@@ -15,7 +15,7 @@
 include_once 'includes/init.php';
 
 if ( empty ( $TODAYCELLBG ) )
-  $TODAYCELLBG = '#c0c0c0';
+  $TODAYCELLBG = '#C0C0C0';
 
 $COLUMNS = 3;
 
@@ -24,8 +24,8 @@ $style = "
 <style>
 table.admintable {
   padding: 5px;
-  border: 1px solid #000;
-  background-color: #ccc;
+  border: 1px solid #000000;
+  background-color: #CCCCCC;
 }
 td.admincell {
   padding: 20px;
@@ -35,21 +35,21 @@ td.admincell a {
   padding: 10px;
   width: 200px;
   text-align: center;
-  background-color: #ccc;
-  border-top: 1px solid #eee;
-  border-left: 1px solid #eee;
-  border-bottom: 1px solid #777;
-  border-right: 1px solid #777;
+  background-color: #CCCCCC;
+  border-top: 1px solid #EEEEEE;
+  border-left: 1px solid #EEEEEE;
+  border-bottom: 1px solid #777777;
+  border-right: 1px solid #777777;
 }
 td.admincell a:hover {
   padding: 10px;
   width: 200px;
   text-align: center;
-  background-color: #aaa;
-  border-top: 1px solid #777;
-  border-left: 1px solid #777;
-  border-bottom: 1px solid #eee;
-  border-right: 1px solid #eee;
+  background-color: #AAAAAA;
+  border-top: 1px solid #777777;
+  border-left: 1px solid #777777;
+  border-bottom: 1px solid #EEEEEE;
+  border-right: 1px solid #EEEEEE;
 }
 </style>
 ";
@@ -129,7 +129,7 @@ if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' &&
 
 ?>
 
-<h2 style="color: <?php echo $H2COLOR;?>;"><?php etranslate("Administrative Tools")?></h2>
+<h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Administrative Tools")?></h2>
 
 <table class="admintable">
 
