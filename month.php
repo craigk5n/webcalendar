@@ -42,7 +42,6 @@ $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
   ? $user : $login, $startdate, $enddate, $cat_id );
 ?>
 
-<div style="clear:both;">
 <div style="float: right;">
 <?php
 if ( ! $friendly ) {
@@ -137,7 +136,6 @@ if ( ! $friendly ) {
   }
   echo "</table>\n";
 }
-
 ?>
 </div>
 
@@ -158,15 +156,13 @@ if ( ! $friendly ) {
     echo "<br />-- " . translate("Admin mode") . " --";
   if ( $is_assistant )
     echo "<br />-- " . translate("Assistant mode") . " --";
-?>
-</span>
+?></span>
 <?php
   if ( $categories_enabled == "Y" && (!$user || $user == $login)) {
     echo "<br />\n<br />\n";
     print_category_menu('month',sprintf ( "%04d%02d01",$thisyear, $thismonth ),$cat_id, $friendly );
   }
 ?>
-</div>
 </div>
 <br /><br /><br />
 
