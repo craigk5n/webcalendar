@@ -33,14 +33,13 @@ CREATE TABLE webcal_user (
 # create a default admin user
 INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin ) VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'Default', 'Y' );
 
-
 /*
  * Defines a calendar event.  Each event in the system has one entry
  * in this table unless the event starts before midnight and ends
- * after midnight.  In that case a secondary event will be created with
+ * after midnight. In that case a secondary event will be created with
  * cal_ext_for_id set to the cal_id of the original entry.
  * The following tables contain additional information about each
- * event: <ul>
+ * event:<ul>
  * <li><a href="#webcal_entry_user">webcal_entry_user</a> -
  *  lists participants in the event and specifies the status (accepted,
  *  rejected) and category of each participant.</li>
@@ -92,7 +91,6 @@ CREATE TABLE webcal_entry (
   PRIMARY KEY ( cal_id )
 );
 
-
 /*
  * Defines repeating info about an event.
  * The event is defined in <a href="#webcal_entry">webcal_entry</a>.
@@ -102,9 +100,9 @@ CREATE TABLE webcal_entry_repeats (
   cal_id INT DEFAULT 0 NOT NULL,
   /* type of repeating:<ul> */
   /* <li>daily - repeats daily</li> */
-  /* <li>monthlyByDate - repeats on same kday of the month</li> */
+  /* <li>monthlyByDate - repeats on same day of the month</li> */
   /* <li>monthlyByDayR - repeats on same weekday of the month */
-  /*         (counting weeks from the end of the month is in last Monday)</li> */
+  /*   (counting weeks from the end of the month is in last Monday)</li> */
   /* <li>monthlyByDay - repeats on specified weekday (2nd Monday, for example)</li> */
   /* <li>weekly - repeats every week</li> */
   /* <li>yearly - repeats on same date every year</li> */
@@ -117,7 +115,6 @@ CREATE TABLE webcal_entry_repeats (
   cal_days CHAR(7),
   PRIMARY KEY (cal_id)
 );
-
 
 /*
  * This table specifies which dates in a repeating
@@ -134,7 +131,6 @@ CREATE TABLE webcal_entry_repeats_not (
   cal_date INT NOT NULL,
   PRIMARY KEY ( cal_id, cal_date )
 );
-
 
 /*
  * This table associates one or more users with an event by the event id.
@@ -156,12 +152,11 @@ CREATE TABLE webcal_entry_user (
   PRIMARY KEY ( cal_id, cal_login )
 );
 
-
 /*
  * This table associates one or more external users (people who do not
  * have a WebCalendar login) with an event by the event id.
  * An event must still have at least one WebCalendar user associated
- * with it.  This table is not used unless external users is enabled
+ * with it.  This table is not used unless external users are enabled
  * in system settings.
  * The event can be found in
  * <a href="#webcal_entry">webcal_entry</a>.
@@ -175,8 +170,6 @@ CREATE TABLE webcal_entry_ext_user (
   cal_email VARCHAR(75) NULL,
   PRIMARY KEY ( cal_id, cal_fullname )
 );
-
-
 
 /*
  * Specify preferences for a user.
@@ -193,7 +186,6 @@ CREATE TABLE webcal_user_pref (
   cal_value VARCHAR(100) NULL,
   PRIMARY KEY ( cal_login, cal_setting )
 );
-
 
 /*
  * Define layers for a user.
@@ -304,7 +296,6 @@ CREATE TABLE webcal_view_user (
   PRIMARY KEY ( cal_view_id, cal_login )
 );
 
-
 /*
  * System settings (set by the admin interface in admin.php)
  */
@@ -400,7 +391,6 @@ INSERT INTO webcal_config ( cal_setting, cal_value )
 INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'EMAIL_EVENT_REJECTED', 'Y' );
 
-
 /*
  * Activity log for an event.
  */
@@ -432,8 +422,8 @@ CREATE TABLE webcal_entry_log (
 
 /*
  * Defines user categories.
- * Categories can be specific to a user or global.  When a cateogry is global,
- * the cat_owner field will be NULL.  (Only an admin user can created
+ * Categories can be specific to a user or global.  When a category is global,
+ * the cat_owner field will be NULL.  (Only an admin user can create
  * a global category.)
  */
 CREATE TABLE webcal_categories (
