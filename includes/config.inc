@@ -80,7 +80,7 @@ $single_user = false;
 // an Apache module.
 // NOTE #2: There's no need to use this if you're running single
 // user mode.
-// (Comment the following line out to use HTTP-based login rather than
+// Set the following to true to use http-based authorization.
 // web-based login.)
 $use_http_auth = false;
 
