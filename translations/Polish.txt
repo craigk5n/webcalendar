@@ -32,7 +32,7 @@ January: Styczeñ
 February: Luty
 March: Marzec
 April: Kwiecieñ
-May: Maj
+May_: Maj
 June: Czerwiec
 July: Lipiec
 August: Sierpieñ

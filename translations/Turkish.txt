@@ -34,7 +34,7 @@ January: Ocak
 February: Subat
 March: Mart
 April: Nisan
-May: Mayis
+May_: Mayis
 June: Haziran
 July: Temmuz
 August: Agustos

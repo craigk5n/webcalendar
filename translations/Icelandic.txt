@@ -32,7 +32,7 @@ January: Janúar
 February: Febrúar
 March: Mars
 April: Apríl
-May: Maí
+May_: Maí
 June: Júní
 July: Júlí
 August: Ágúst

@@ -1433,7 +1433,7 @@ function month_name ( $m ) {
     case 1: return translate("February");
     case 2: return translate("March");
     case 3: return translate("April");
-    case 4: return translate("May");
+    case 4: return translate("May_"); // needs to be different than "May"
     case 5: return translate("June");
     case 6: return translate("July");
     case 7: return translate("August");
