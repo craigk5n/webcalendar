@@ -1,4 +1,5 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Fixed bug 1152863: Japanese strings munged by reports.php and upcoming.php
  - Fixed bug 1124461: Apostrophe in Text Aborts Translation
  - Fixed bug 1154854: Nonuser cals not showing up in views
  - Fixed issues with display_small_month URLs. Extra & if no $user specified.
