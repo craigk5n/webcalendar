@@ -39,8 +39,7 @@ $INC = array('js/pref.php');
 print_header($INC);
 ?>
 
-<h2>
-<?php
+<h2><?php
 if ( $updating_public )
   echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
 etranslate("Preferences");
@@ -48,8 +47,7 @@ if ( $is_nonuser_admin ) {
   nonuser_load_variables ( $user, "nonuser" );
   echo "<br />\n<b>-- " . translate("Admin mode") . ": ".$nonuserfullname." --</b></h2>\n";
 }
-?>
-</h2>
+?></h2>
 
 <form action="pref_handler.php" method="post" onsubmit="return valid_form(this);" name="prefform">
 <?php if ($user) echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />"; ?>
@@ -103,11 +101,11 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
     if ( $prefarray["TZ_OFFSET"] == $i ) echo " selected=\"selected\"";
     echo ">";
     if ( $i < 0 )
-      echo str_replace ( "N", -$i, $text_sub );
+      echo str_replace ( "N", -$i, $text_sub ) . "</option>\n";
     else if ( $i == 0 )
-      etranslate("same as");
+      echo "" . etranslate("same as") . "</option>\n";
     else
-      echo str_replace ( "N", $i, $text_add );
+      echo str_replace ( "N", $i, $text_add ) . "</option>\n";
   }
   ?>
   </select>&nbsp;<?php etranslate("server time");?></td></tr>
@@ -402,15 +400,15 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $color = $is_weekend ? $prefarray["WEEKENDBG"] : $prefarray["CELLBG"];
       if ( empty ( $color ) )
         $color = "#C0C0C0";
-      print "<td style=\"vertical-align:top; height:30px;\" id=\"$class\"";
+      print "<td style=\"vertical-align:top; height:30px;\"";
       if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) )
-        echo "bgcolor=\"$prefarray[TODAYCELLBG]\">";
+        echo " bgcolor=\"$prefarray[TODAYCELLBG]\">";
       else
-        echo "bgcolor=\"$color\">";
+        echo " bgcolor=\"$color\">";
       echo "&nbsp;";
       print "</td>\n";
     } else {
-      print "<td style=\"vertical-align:top; height:30px; background-color:$prefarray[CELLBG];\" id=\"tablecelldemo\">&nbsp;</td>\n";
+      print "<td style=\"vertical-align:top; height:30px; background-color:$prefarray[CELLBG];\">&nbsp;</td>\n";
     }
   }
   print "</tr>\n";
@@ -422,7 +420,6 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 <!-- END EXAMPLE MONTH -->
 <br /><br />
 
-</td></tr></table>
 </td></tr></table>
 
 <?php } // if $allow_color_customization ?>
