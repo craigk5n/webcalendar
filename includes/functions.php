@@ -109,6 +109,38 @@ if ( ! strstr ( $PHP_SELF, "login.php" ) && ! empty ( $GLOBALS["login"] ) ) {
   $GLOBALS["login"] = "";
 }
 
+// Define an array to use to jumble up the key: $offsets
+// We define a unique key to scramble the cookie we generate.
+// We use the admin install password that the user set to make
+// the salt unique for each WebCalendar install.
+if ( ! empty ( $settings ) && ! empty ( $settings['install_password'] ) ) {
+  $salt = $settings['install_password'];
+} else {
+  $salt = md5 ( $db_login );
+}
+$salt_len = strlen ( $salt );
+
+if ( ! empty ( $db_password ) ) {
+  $salt2 = md5 ( $db_password );
+} else {
+  $salt2 = md5 ( "oogabooga" );
+}
+$salt2_len = strlen ( $salt2 );
+
+$offsets = array ();
+for ( $i = 0; $i < $salt_len || $i < $salt2_len; $i++ ) {
+  $offsets[$i] = 0;
+  if ( $i < $salt_len )
+    $offsets[$i] += ord ( substr ( $salt, $i, 1 ) );
+  if ( $i < $salt2_len )
+    $offsets[$i] += ord ( substr ( $salt2, $i, 1 ) );
+  $offsets[$i] %= 128;
+}
+/* debugging code...
+for ( $i = 0; $i < count ( $offsets ); $i++ ) {
+  echo "offset $i: $offsets[$i] <br />\n";
+}
+*/
 
 /*
  * Functions start here.  All non-function code should be above this
@@ -204,7 +236,7 @@ function getValue ( $name, $format="", $fatal=false ) {
   if ( ! empty ( $format ) && ! preg_match ( "/^" . $format . "$/", $val ) ) {
     // does not match
     if ( $fatal ) {
-      dieMiserableDeath ( "Fatal Error: Invalid data format for $name" );
+      die_miserable_death ( "Fatal Error: Invalid data format for $name" );
     }
     // ignore value
     return "";
@@ -3364,44 +3396,7 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
     return $ret;
 }
 
-// Define an array to use to jumble up the key: $offsets
-// We define a unique key to scramble the cookie we generate.
-// We use the remote server address as part of it, which should tie the
-// cookie to the user's machine (or the proxy they connect through).
-// We also use the server name so that cannot use their own server to
-// generate a cookie for a different server.
-/* cek - the following code is buggy...  */
-if ( empty ( $REMOTE_ADDR ) )
-  $REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
-if ( empty ( $REMOTE_PORT ) )
-  $SERVER_PORT = $_SERVER['SERVER_PORT'];
-if ( empty ( $SERVER_NAME ) )
-  $SERVER_NAME = $_SERVER['SERVER_NAME'];
-$unique_id = "";
-$len1 = strlen ( $REMOTE_ADDR );
-$len2 = strlen ( $SERVER_PORT );
-$len3 = strlen ( $SERVER_NAME );
-$offsets = array ();
-for ( $i = 0; $i < $len1 || $i < $len2 || $i < $len3; $i++ ) {
-  $offsets[$i] = 0;
-  if ( $i < $len1 )
-    $offsets[$i] += ord ( substr ( $REMOTE_ADDR, $i, 1 ) );
-  if ( $i < $len2 )
-    $offsets[$i] += ord ( substr ( $SERVER_PORT, $i, 1 ) );
-  if ( $i < $len3 )
-    $offsets[$i] += ord ( substr ( $SERVER_NAME, $i, 1 ) );
-  $offsets[$i] %= 128;
-}
-/* debugging code...
-for ( $i = 0; $i < count ( $offsets ); $i++ ) {
-  echo "offset $i: $offsets[$i] <br />\n";
-}
-echo "REMOTE_ADDR = $REMOTE_ADDR<br />\nSERVER_PORT = $SERVER_PORT<br />\nSERVER_NAME = $SERVER_NAME<br />\n";
-*/
 
-// old code for offsets -- use this if we find bugs in
-// code above.
-//$offsets = array ( 24, 34, 12, 45, 88, 19, 33 );
 
 function hextoint ( $val ) {
   if ( empty ( $val ) )
