@@ -124,7 +124,8 @@ h2 {
       If you are using Windows, make is included as part of the
       <a href="http://www.cygwin.com">cygwin</a> package.
       </li>
-  <li>patch: The "patch" command is used to apply patches posted
+  <li><a href="http://www.gnu.org/software/patch/patch.html">patch</a>:
+      The "patch" command is used to apply patches posted
       on the SourceForge patches area.
       </li>
   <li>diff: The "diff" command is used to create patches posted
@@ -261,6 +262,39 @@ they have not been 100% enforced, so you will see exceptions):
       We are currently evaluating some of the templating options
       and may consider moving to one of the template systems in
       the future.</dd>
+  <dt>How do I install a patch?</dt>
+  <dd>Different patches are applied differently. 
+      Some patches just contain an updated file.
+      In that case, you should be able to use replace the old file
+      with the new (assuming the new file and your install are based
+      on the same version of WebCalendar). <br/><br/>
+      Others are patch files, which usually have a <tt>.diff</tt>
+      or <tt>.patch</tt> file extension.
+      In order to use one of these files, you need the
+      <a href="http://www.gnu.org/software/patch/patch.html">GNU patch</a>
+      program.
+      (This should be installed on all Linux systems and you can get a
+      version for Windows. I use the patch program that comes with
+      <a href="http://www.cygwin.com">cygwin</a> on windows.)
+      I would recommend testing the patch on your install first using the
+      <tt>--dry-run</tt> option. 
+      <br/><br/>
+      For example, if the patch file is called <tt>calmods.diff</tt>,
+      then you would use:
+      <pre>patch --dry-run < calmods.diff</pre>
+      If the program says it cannot determine which file to patch,
+      try adding -p1: 
+      <pre>patch --dry-run -p1 < calmods.diff </pre>
+      <br/><br/>
+      If it goes through all the changes successfully, do the same
+      command without the <tt>--dry-run</tt> option to install the patch.
+      If it says "hunk failed", then the patch cannot be applied without
+      hand-merging files. This essentially means that the patch was
+      based on a version of WebCalendar that is too different than
+      the version that you have installed, so it was unable to determine
+      how to apply some of the changes in the patch file. 
+      </dd>
+ 
 <!-- END FAQ -->
 <dl>
 
