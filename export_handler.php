@@ -263,6 +263,21 @@ function export_time($date, $duration, $time, $texport)
 	  echo "DTEND:$utc_end\r\n";
 	}
     }
+  elseif (strcmp($texport,"vcal") == 0)
+    {
+      if ($time == -1)
+	{
+	  $end_tmstamp = $start_tmstamp + 24*60*60;
+	  $utc_end = date("Ymd", $end_tmstamp);
+	  echo "DTEND:$utc_end\r\n";
+	}
+      else
+	{
+	  $end_tmstamp = $start_tmstamp + $duration;
+	  $utc_end = export_get_utc_date(date("Ymd", $end_tmstamp), date("His", $end_tmstamp));
+	  echo "DTEND:$utc_end\r\n";
+	}
+    }
   else
     {
       echo "DURATION:P$str_duration\r\n";
@@ -294,10 +309,10 @@ function export_recurrence_ical($id, $date)
     . "AND webcal_entry.cal_id = '$id'";
 
   $res = dbi_query($sql);
-    
+
   if ($res)
     $row = dbi_fetch_row($res);
-    
+
   if ($row)
     {
       $type = $row[0];
@@ -355,15 +370,15 @@ function export_recurrence_ical($id, $date)
       elseif ($type == "monthlyByDay")
 	{
 	  echo ";BYDAY=";
-					
+
 	  $year = (int) substr($date,0,-4);
 	  $month = (int) substr($date,-4,2);
 	  $day = (int) substr($date,-2,2);
-					
+
 	  $stamp = mktime(0, 0, 0, $month, $day, $year);
-					
+
 	  $date_array = getdate($stamp);
-					
+
 	  echo $str_day[$date_array['wday']];
 
 	  $next_stamp = $stamp + 7 * 24 * 60 * 60;
@@ -387,12 +402,12 @@ function export_recurrence_ical($id, $date)
       if (!empty($end))
 	{
 	  echo ";UNTIL=";
-					
+
 	  $utc = export_get_utc_date($end, $time);
-					
+
 	  echo $utc;
 	}
-			
+
       echo "\r\n";
 
       if (count($exdate) > 0)
@@ -405,15 +420,144 @@ function export_recurrence_ical($id, $date)
 	      $string .= "$date,";
 	      $i++;
 	    }
-					
+
 	  $string = substr($string, 0, strlen($string)-1); // suppress last ','
-					
+
 	  $string = export_fold_lines($string);
-					
+
 	  while (list($key,$value) = each($string))
 	    echo "$value\r\n";
 	}
     }
+}
+
+
+
+function export_recurrence_vcal($id, $date) {
+
+  $sql = "SELECT cal_date FROM webcal_entry_repeats_not WHERE cal_id = '$id'";
+  $res = dbi_query($sql);
+
+  if ($res) {
+    $exdate = array();
+    while ($row = dbi_fetch_row($res)) {
+      $exdate[] = $row[0];
+    }
+  }
+
+  dbi_free_result($res);
+
+  $sql = "SELECT webcal_entry_repeats.cal_type, webcal_entry_repeats.cal_end, "
+    . "webcal_entry_repeats.cal_frequency, webcal_entry_repeats.cal_days, webcal_entry.cal_time"
+    . " FROM webcal_entry, webcal_entry_repeats WHERE webcal_entry_repeats.cal_id = '$id'"
+    . "AND webcal_entry.cal_id = '$id'";
+
+  $res = dbi_query($sql);
+  $row = dbi_fetch_row($res);
+  
+  //echo $sql;exit;
+
+  if ($row) {
+      $type = $row[0];
+      $end = $row[1];
+      $freq = $row[2];
+      $day = $row[3];
+      $time = $row[4];
+      $str_day = array('SU','MO','TU','WE','TH','FR','SA');
+      $byday = "";
+
+      echo "RRULE:";
+
+      /* recurrence frequency */
+      switch ($type)
+	{
+	case 'daily' :
+	  echo "D";
+	  break;
+	case 'weekly' :
+	  echo "W";
+	  break;
+	case 'monthlyByDay':
+	  echo "MP";
+	  break;
+	case 'monthlyByDayR':
+	  echo "MP";
+	  break;
+	case 'monthlyByDate' :
+	  echo "MD";
+	  break;
+	case 'yearly' :
+	  echo "YM";
+	  break;
+	}
+
+      echo $freq." ";
+
+      if ($type == "weekly") {
+	  if ($day != "nnnnnnn") {
+	    for ($i=0; $i < strlen($day); $i++) {
+	      if ($day[$i] == 'y') {
+		$byday .= $str_day[$i] ." ";
+              }
+	    }
+	    echo $byday;
+          }
+
+      } elseif ($type == "monthlyByDate") {
+	  $day = (int) substr($date,-2,2);
+	  echo "$day ";
+
+      } elseif (($type == "monthlyByDay") || ($type == "monthlyByDayR")){
+	  $year = (int) substr($date,0,-4);
+	  $month = (int) substr($date,-4,2);
+	  $day = (int) substr($date,-2,2);
+
+	  $stamp = mktime(0, 0, 0, $month, $day, $year);
+	  $date_array = getdate($stamp);
+          $day_no = $str_day[$date_array['wday']];
+
+	  $next_stamp = $stamp + 7 * 24 * 60 * 60;
+	  $next_date_array = getdate($next_stamp);
+
+	  if ($date_array['mon'] != $next_date_array['mon']) {
+	    $pos = 5;
+	  } else {
+	    $pos = (int) ($day / 7);
+            if (($day % 7) > 0) {
+              $pos++;
+            }
+	  }
+	  echo $pos."+ $day_no ";
+
+      } elseif ($type == "yearly") {
+        $month = (int) substr($date,-4,2);
+        echo "$month ";
+      }
+
+      // End Date - For all types
+      if (!empty($end)) {
+	//echo export_get_utc_date($end, $time);
+	echo $end;
+      } else {
+        echo "20031231";
+      }
+
+      echo "\r\n";
+
+
+    // Repeating Exceptions
+    $num = count($exdate);
+    if ($num > 0) {
+      $string = "EXDATE:";
+
+      for ($i=0;$i<$num;$i++) {
+        $string .= $exdate[$i]."T000000,";
+      }
+      echo rtrim($string,",")."\r\n";
+    }
+
+
+  }
 }
 
 
@@ -436,16 +580,40 @@ function export_get_utc_date($date, $time=0)
       $min = (int) substr($time,-4,2);
       $sec = (int) substr($time,-2,2);
     }
-	
+
   $tmstamp = mktime($hour, $min, $sec, $month, $day, $year);
-	
+
   $utc_date = gmdate("Ymd", $tmstamp);
   $utc_hour = gmdate("His", $tmstamp);
-	
+
   $utc = sprintf ("%sT%sZ", $utc_date, $utc_hour);
 
   return $utc;
 }
+
+
+function export_alarm_vcal($id,$date,$time=0) {
+  $sql = "SELECT cal_data FROM webcal_site_extras " .
+         "WHERE cal_id = $id AND cal_type = 7 AND cal_remind = 1";
+  $res = dbi_query ( $sql );
+  $row = dbi_fetch_row ( $res );
+  dbi_free_result ( $res );
+
+  if ($row) {
+    echo "DALARM:";
+    $offset = $row[0] * 60; // How many seconds
+    $year = (int) substr($date,0,-4);
+    $month = (int) substr($date,-4,2);
+    $day = (int) substr($date,-2,2);
+    $hour = ($time > 0) ? (int) substr($time,0,-4) : 0;
+    $min  = ($time > 0) ? (int) substr($time,-4,2) : 0;
+    $sec  = ($time > 0) ? (int) substr($time,-2,2) : 0;
+    $stamp = mktime($hour, $min, $sec, $month, $day, $year);
+    $atime = $stamp - $offset;
+    echo gmdate("Ymd\THis\Z", $atime)."\r\n";
+  }
+}
+
 
 function generate_uid() {
   $rand = mt_rand(1000000,9999999);
@@ -480,19 +648,19 @@ function export_vcal ($id) {
     echo "BEGIN:VCALENDAR\r\n";
     echo "PRODID:-//WebCalendar-0.9.40\r\n";
     echo "VERSION:1.0\r\n";
-    
+
     /* Time Zone
 
 	$tzdate = mktime();
 	$gmdate = gmmktime();
 	$tzdiff = ($gmdate - $tzdate) / 60 / 60; //FIXME only hours are represented
-	
+
 	$tz = sprintf("%02d", $tzdiff);
-	
+
 	echo "TZ:";
 	echo ($tzdiff >= 0) ? "+" : "-";
 	echo "$tz\r\n";
-	
+
     */
   }
 
@@ -514,8 +682,8 @@ function export_vcal ($id) {
       echo "BEGIN:VEVENT\r\n";
 
       /* UID of the event (folded to 76 char) */
-      $uid = "UID:$export_uid";
-      $array = export_fold_lines($uid);
+      $export_uid = "UID:$export_uid";
+      $array = export_fold_lines($export_uid);
       while (list($key,$value) = each($array))
 	echo "$value\r\n";
 
@@ -526,7 +694,7 @@ function export_vcal ($id) {
 
       while (list($key,$value) = each($array))
 	echo "$value\r\n";
-		
+
 
       /* DESCRIPTION if any (folded to 76 char) */
       if ($description != "")
@@ -561,9 +729,10 @@ function export_vcal ($id) {
       /* Time - all times are utc */
       export_time($date, $duration, $time, "vcal");
 
+      export_recurrence_vcal($uid, $date);
 
-      // FIXME: handle recurrence
       // FIXME: handle alarms
+      export_alarm_vcal($uid,$date,$time);
 
       /* Goodbye event */
       echo "END:VEVENT\n";
