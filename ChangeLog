@@ -1,4 +1,6 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Fixed bug 877797: edit_user.php would show form for changing password
+    even if user.php was configured to not allow changing of passwords.
   - Allow users to enter HTML for the event description.  Includes
     addition to System Settings to enable this feature.  It is not
     enabled by default.
