@@ -4571,7 +4571,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
     <?php etranslate("Participants");?></th>
 <?php
   $str = '';
-  $MouseOut = "onmouseout=\"window.status=''; this.style.backgroundColor='".$CELLBG."';\"";
+  $MouseOut = "onmouseout=\"window.status=''; this.style.backgroundColor='".$THBG."';\"";
   $CC = 1;
   for($i=$first_hour;$i<$last_hour;$i++) {
      for($j=0;$j<$interval;$j++) {
