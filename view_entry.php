@@ -629,7 +629,18 @@ if ( $single_user == "N" && $show_participants ) {
 
 </table>
 
-<p><?php
+<p>
+<?php
+
+// Show a printer-friendly link
+if ( empty ( $friendly ) ) {
+  echo "<a title=\"" . 
+    translate("Generate printer-friendly version") . "\" class=\"nav\" " .
+    "href=\"view_entry.php?id=$id&friendly=1$rdate\" " .
+    "target=\"cal_printer_friendly\">" .
+    translate("Printer Friendly") . "</a><br />\n";
+}
+
 if ( empty ( $event_status ) ) {
   // this only happens when an admin views a deleted event that he is
   // not a participant for.  Set to $event_status to "D" just to get
@@ -812,6 +823,8 @@ if (! $is_private) {
 }
 ?>
 
-<?php print_trailer(); ?>
+<?php
+  print_trailer ( empty ( $friendly ) );
+?>
 </body>
 </html>

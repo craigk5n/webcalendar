@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Added "printer friendly" link in view event page
   - Updated admin docs to reflect updated info in readme.html & removed
   duplicate info from readme.html
   - Standardized styling for all documentation
