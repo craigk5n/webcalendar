@@ -17,7 +17,7 @@
  */
 include_once 'includes/init.php';
 
-$INC = array('js/export.php');
+$INC = array('js/export.php','js/visible.php');
 print_header($INC);
 
 // Generate the selection list for calendar user selection.
