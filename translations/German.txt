@@ -13,7 +13,8 @@
 # Last update: 3 December 2002 by Markus Egartner <edv@kh-hallein.at>
 # Last update: 13 December 2002 by Markus Egartner <edv@kh-hallein.at>
 # Last update: 27 January 2003 by Markus Egartner <edv@kh-hallein.at>
-# Translation last updated on 12-13-2002
+# Last update: 5 February 2003 by Markus Egartner <edv@kh-hallein.at>
+# Translation last updated on 02-05-2003
 
 
 ###############################################
@@ -129,7 +130,6 @@ Error adding event: Fehler beim Hinzufügen eines Termines
 ###############################################
 # Page: week_details.php
 #
-Title: WebCalendar
 Week: Woche
 New Entry: Neuer Eintrag
 am: am
@@ -254,18 +254,6 @@ Reminder sent: Erinnerung versendet
 ###############################################
 # Page: admin.php
 #
-Server URL is required: Serveradresse wird benötigt
-Server URL must end with '/': Serveradresse muß mit "/" enden
-Invalid color for document background: Ungültige Farbe für Hintergrund
-Invalid color for document title: Ungültige Farbe für Titel
-Invalid color for table cell background: Ungültige Farbe für Tabellen-Hintergrund
-Invalid color for table grid: Ungültige Farbeinstellung für das Tabellengitternetz
-Invalid color for table header background: Ungültige Farbeinstellung für Tabellenkopfhintergrund
-Invalid color for table text background: Ungültige Farbeinstellung für Tabellentext
-Invalid color for event popup background: Ungültige Farbeinstellung für Terminfenster Hintergrund
-Invalid color for event popup text: Ungültige Farbeinstellung für Terminfenstertext Hintergrund
-Invalid color for table cell background for today: Ungültige Farbe für Tabellen-Hintergrund für "Heute"
-Color format should be '#RRGGBB': Farben müssen im "#RRGGBB"-Format sein.
 System Settings: Systemeinstellungen
 Note: Bemerkung
 Your user preferences: <u>Ihre Benutzereinstellungen</u>
@@ -448,6 +436,7 @@ Add New View: Neue Ansicht hinzufügen
 #
 An appointment has been rejected by: Ein Termin wurde zurückgewiesen von
 The description is: Die Beschreibung lautet
+Title: WebCalendar
 
 
 ###############################################
@@ -520,6 +509,12 @@ Subtract N hours from: Abziehen von N Stunden von
 same as: gleich wie
 server time: Serverzeit
 Default Category: Standard Kategorie
+When I am the boss: Wenn ich der Chef bin
+email me event notification: Email senden an mich bei Terminbenachrichtigung
+I want approve events: Ich möchte Termine überprüfen
+When I am the boss: Wenn ich der Chef bin
+email me event notification: Email senden an mich bei Terminbenachrichtigung
+I want approve events: Ich möchte Termine überprüfen
 Save Preferences: Voreinstellungen speichern
 
 
@@ -577,7 +572,6 @@ Set Category: Kategorie zuweisen
 ###############################################
 # Page: edit_layer.php
 #
-Invalid color: Ungültige Farbeinstellung
 Edit Layer: Layer editieren
 Add Layer: Layer hinzufügen
 Show layer events that are the same as your own: Zeige Layer welche die gleichen Termine sind wie die eigenen
@@ -707,9 +701,6 @@ cont.: beinhalt.
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: Sie haben keine Kurzbeschreibung eingegeben
-You have not entered a valid time of day: Sie haben keine gültige Zeit eingegeben
-The time you have entered begins before your preferred work hours.  Is this correct?: Der eingegebene Termin beginnt vor ihrer definierten Arbeitszeit.  Ist das richtig?
 Edit Entry: Eintrag ändern
 Add Entry: Eintrag hinzufügen
 Untimed event: Termin OHNE Zeitangabe
@@ -837,6 +828,11 @@ Invalid user login: Ungültige Anmeldung
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/validate.php
 #
 
@@ -859,5 +855,5 @@ Invalid user login: Ungültige Anmeldung
 ###############################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the event detailed below.: Das ist eine Erinnerung für folgenden Termin.
+This is a reminder for the event detailed below.: Das ist eine Erinnerung für den unten aufgeführten (detailierten) Termin
 Reminder: Erinnerung
