@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Modifying class 'navlinks' to now read just 'nav'
   - Adding patch 1059984: alternating row colors for activity_log.php
   - Removing obsolete styles from styles.php
   - Adding title attributes to various links
