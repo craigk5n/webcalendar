@@ -20,7 +20,7 @@ if ( ! $allow_view_other && ! $is_admin )
 
 $view = "day";
 
-if ( strlen ( $user ) ) {
+if ( ! empty ( $user ) ) {
   $u_url = "user=$user&";
   user_load_variables ( $user, "user_" );
 } else {
@@ -37,20 +37,20 @@ if ( strlen ( $user ) ) {
 <BODY BGCOLOR=<?php echo "\"$BGCOLOR\"";?>>
 
 <?php
-if ( strlen ( $date ) > 0 ) {
+if ( ! empty ( $date ) ) {
   $thisyear = substr ( $date, 0, 4 );
   $thismonth = substr ( $date, 4, 2 );
   $thisday = substr ( $date, 6, 2 );
 } else {
-  if ( $month == 0 )
+  if ( empty ( $month ) || $month == 0 )
     $thismonth = date("m");
   else
     $thismonth = $month;
-  if ( $year == 0 )
+  if ( empty ( $year ) || $year == 0 )
     $thisyear = date("Y");
   else
     $thisyear = $year;
-  if ( $day == 0 )
+  if ( empty ( $day ) || $day == 0 )
     $thisday = date("d");
   else
     $thisday = $day;
@@ -66,17 +66,17 @@ $nextmonth = date ( "m", $next );
 $nextday = date ( "d", $next );
 $month_ago = date ( "Ymd", mktime ( 2, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
 
-$prev = mktime ( 2, 0, 0, $thismonth, $day - 1, $thisyear );
+$prev = mktime ( 2, 0, 0, $thismonth, $thisday - 1, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );
 $month_ahead = date ( "Ymd", mktime ( 2, 0, 0, $thismonth + 1, $thisday, $thisyear ) );
 
 /* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login );
+$repeated_events = read_repeated_events ( empty ( $user ) ? $login : $user );
 
 /* Pre-load the non-repeating events for quicker access */
-$events = read_events ( strlen ( $user ) ? $user : $login, $nowYmd, $nowYmd );
+$events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd );
 
 ?>
 
@@ -110,7 +110,7 @@ $events = read_events ( strlen ( $user ) ? $user : $login, $nowYmd, $nowYmd );
 <?php
 
 print_day_at_a_glance ( date ( "Ymd", $now ),
-  strlen ( $user ) > 0 ? $user : $login, $friendly );
+  empty ( $user ) ? $login : $user, ! empty ( $friendly ) );
 
 ?>
 </TR>
@@ -119,7 +119,7 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 </TD></TR></TABLE>
 </TD>
 <TD VALIGN="top">
-<?php if ( ! $friendly ) { ?>
+<?php if ( empty ( $friendly ) ) { ?>
 <DIV ALIGN="right">
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0">
 <TR><TD BGCOLOR="<?php echo $TABLEBG?>">
@@ -185,9 +185,9 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 
 <P>
 
-<?php echo $eventinfo; ?>
+<?php if ( isset ( $eventinfo ) ) echo $eventinfo; ?>
 
-<?php if ( ! $friendly ) {
+<?php if ( empty ( $friendly ) ) {
 
   display_unapproved_events ( $login );
 

@@ -1233,6 +1233,9 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
     $ind = 99;
 
 
+  if ( empty ( $hour_arr[$ind] ) )
+    $hour_arr[$ind] = "";
+
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $class = "layerentry";
   } else {
@@ -1373,6 +1376,10 @@ function print_day_at_a_glance ( $date, $user, $hide_icons ) {
   // want to show up in the 8:00-9:59 cell.
   $rowspan = 0;
   $last_row = -1;
+  $rowspan_arr = array ();
+  for ( $i = 0; $i < 24; $i++ ) {
+    $rowspan_arr[$i] = 0;
+  }
   for ( $i = 0; $i < 24; $i++ ) {
     if ( $rowspan > 1 ) {
       if ( strlen ( $hour_arr[$i] ) ) {
@@ -1397,7 +1404,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons ) {
       $last_row = $i;
     }
   }
-  if ( strlen ( $hour_arr[99] ) ) {
+  if ( ! empty ( $hour_arr[99] ) ) {
     echo "<TR><TD HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">&nbsp;</TD><TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">$hour_arr[99]</TD></TR>\n";
   }
   $rowspan = 0;
@@ -1413,7 +1420,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons ) {
         echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">$hour_arr[$i]</TD>";
       $rowspan--;
     } else {
-      if ( ! strlen ( $hour_arr[$i] ) )
+      if ( empty ( $hour_arr[$i] ) )
         echo "<TD HEIGHT=\"40\" BGCOLOR=\"$CELLBG\">&nbsp;</TD></TR>\n";
       else {
         $rowspan = $rowspan_arr[$i];
