@@ -55,12 +55,12 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
 <?php if ( empty ( $friendly ) ) { ?>
 <td style="text-align:left;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img src="leftarrow.gif" style="border-width:0px; width:36px; height:32px; text-align:left;" alt="<?php etranslate("Previous"); ?>" /></a></td>
 <?php } ?>
-<td style="text-align:center; color:<?php echo $H2COLOR;?>; font-weight:bold;"><font size="+2">
+<td style="text-align:center; color:<?php echo $H2COLOR;?>; font-weight:bold;"><span style="font-size:24px;">
 <?php
   echo date_to_str ( $nowYmd );
 ?>
-</font>
-<font size="+1">
+</span>
+<span style="font-size:18px;">
 <?php
   // display current calendar's user (if not in single user)
   if ( $single_user == "N" ) {
@@ -76,7 +76,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
     print_category_menu('day', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly);
   }
 ?>
-</font>
+</span>
 </td>
 <?php if ( empty ( $friendly ) ) { ?>
 <td style="text-align:right;"><a href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img style="text-align:right; width:36px; height:32px; border-width:0px;" src="rightarrow.gif" alt="<?php etranslate("Next"); ?>" /></a></td>
@@ -115,7 +115,7 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 <table style="border-width:0px;" cellspacing="0" cellpadding="0">
 <tr><td style="background-color:<?php echo $TABLEBG?>;">
 <table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
-<tr><th colspan="7" style="background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;"><font size="+4"><?php echo $thisday?></font></th></tr>
+<tr><th colspan="7" style="background-color:<?php echo $THBG?>; color:<?php echo $THFG?>; font-size:47px;"><?php echo $thisday?></th></tr>
 <tr>
 <td style="text-align:left; background-color:<?php echo $THBG?>;"><a href="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>" class="monthlink"><img src="leftarrowsmall.gif" style="width:18px; height:18px; border-width:0px;" alt="<?php etranslate("Previous")?>" /></a></td>
 <th colspan="5" style="background-color:<?php echo $THBG?>; color:<?php echo $THFG?>;"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></th>
@@ -153,13 +153,12 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         if ( date ( "Ymd", $date ) == date ( "Ymd", $now ) )
           echo "<td style=\"background-color:$TODAYCELLBG;\">";
         else
-          echo "<td style=\"background-color:$CELLBG;\">";
-        echo "<font size=\"-2\">";
+          echo "<td style=\"background-color:$CELLBG; font-size:10px;\">";
         echo "<a href=\"day.php?";
         echo $u_url;
         echo "date=" . date ( "Ymd", $date ) . "$caturl\" class=\"monthlink\">" .
          date ( "d", $date ) .
-         "</a></font></td>\n";
+         "</a></td>\n";
       } else {
         print "<td style=\"background-color:$CELLBG;\">&nbsp;</td>\n";
       }

@@ -50,14 +50,14 @@ $INC = array('js/usersel.php');
 print_header($INC,'','',true);
 ?>
 
-<CENTER>
-<FORM ACTION="#">
+<center>
+<form action="#">
 
 
-<TABLE BORDER="0" WIDTH="100%">
-<TR><TD VALIGN="top">
-<B><?php etranslate("Users"); ?>:</B><BR>
-<SELECT NAME="users" SIZE="15" MULTIPLE>
+<table style="border-width:0px; width:100%;">
+<tr><td style="vertical-align:top;">
+<b><?php etranslate("Users"); ?>:</b><br />
+<select name="users" size="15" multiple="multiple">
 <?php
 
 $users = get_my_users ();
@@ -68,45 +68,45 @@ if ($nonuser_enabled == "Y" ) {
 
 for ( $i = 0; $i < count ( $users ); $i++ ) {
   $u = $users[$i]['cal_login'];
-  echo "<OPTION VALUE=\"$u\" ";
+  echo "<option value=\"$u\" ";
   if ( ! empty ( $selected[$u] ) )
-    echo "SELECTED";
+    echo "selected=\"selected\"";
   echo "> " . $users[$i]['cal_fullname'];
 }
 ?>
-</SELECT><BR>
-<INPUT TYPE="button" VALUE="<?php etranslate("All");?>"
+</select><br />
+<input type="button" value="<?php etranslate("All");?>"
   ONCLICK="selectAll()">
-<INPUT TYPE="button" VALUE="<?php etranslate("None");?>"
+<input type="button" value="<?php etranslate("None");?>"
   ONCLICK="selectNone()">
-<INPUT TYPE="reset" VALUE="<?php etranslate("Reset");?>">
-</TD>
+<input type="reset" value="<?php etranslate("Reset");?>">
+</td>
 
-<TD VALIGN="top">
-<B><?php etranslate("Groups"); ?>:<B><BR>
-<SELECT NAME="groups" SIZE="15">
+<td VALIGN="top">
+<B><?php etranslate("Groups"); ?>:<B><br />
+<select name="groups" size="15">
 <?php
 for ( $i = 0; $i < count ( $groups ); $i++ ) {
-  echo "<OPTION VALUE=\"" . $groups[$i]['cal_group_id'] .
-      "\">" . $groups[$i]['cal_name'] . "</OPTION>\n";
+  echo "<option value=\"" . $groups[$i]['cal_group_id'] .
+      "\">" . $groups[$i]['cal_name'] . "</option>\n";
 }
 ?>
-</SELECT><BR>
-<INPUT TYPE="button" VALUE="<?php etranslate("Add");?>"
+</select><br />
+<input type="button" value="<?php etranslate("Add");?>"
   ONCLICK="selectGroupMembers();">
-<INPUT TYPE="button" VALUE="<?php etranslate("Remove");?>"
+<input type="button" value="<?php etranslate("Remove");?>"
   ONCLICK="deselectGroupMembers();">
-</TD></TR>
+</td></tr>
 
-<TR><TD COLSPAN="2"><CENTER>
-<BR><BR>
-<INPUT TYPE="button" VALUE="<?php etranslate("Ok");?>"
+<tr><td colspan="2"><center>
+<br /><br />
+<input type="button" value="<?php etranslate("Ok");?>"
   ONCLICK="OkButton()">
-<INPUT TYPE="button" VALUE="<?php etranslate("Cancel");?>"
+<input type="button" value="<?php etranslate("Cancel");?>"
   ONCLICK="window.close()">
-</CENTER></TD></TR>
+</center></td></tr>
 
-</TABLE>
+</table>
 
 <?php print_trailer ( false, true, true ); ?>
 

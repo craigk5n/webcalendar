@@ -50,25 +50,25 @@ $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 ?>
 
-<TABLE BORDER="0" WIDTH="100%">
-<TR><TD ALIGN="left">
+<table style="border-width:0px; width:100%;">
+<tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<A HREF="view_d.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Previous")?>"></A>
+<a href="view_d.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" style="width:36px; height:32px; border-width:0px;" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
-</TD>
-<TD ALIGN="middle">
-<FONT SIZE="+2" COLOR="<?php echo $H2COLOR?>">
-<B>
+</td>
+<td style="text-align:center; color:<?php echo $H2COLOR?>;">
+<font size="+2">
+<span style="font-weight:bold;">
 <?php printf ( "%s, %s %d, %d", weekday_name ( $wday ), month_name ( $thismonth - 1 ), $thisday, $thisyear ); ?>
-</B></FONT><BR>
-<FONT COLOR="<?php echo $H2COLOR?>"><?php echo $view_name ?></FONT>
-</TD>
-<TD ALIGN="right">
+</span></font><br />
+<?php echo $view_name ?>
+</td>
+<td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<A HREF="view_d.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><IMG SRC="rightarrow.gif" WIDTH="36" HEIGHT="32" BORDER="0" ALT="<?php etranslate("Next")?>"></A>
+<a href="view_d.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" style="width:36px; height:32px; border-width:0px;" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
-</TD></TR>
-</TABLE>
+</td></tr>
+</table>
 <CENTER>
 
 <?php
@@ -85,17 +85,17 @@ if ( $res ) {
 TimeMatrix($date,$participants);
 ?>
 
-<BR>
+<br />
 
 <!-- Hidden form for booking events -->
-<FORM ACTION="edit_entry.php" METHOD="POST" NAME="schedule">
-<INPUT TYPE="hidden" NAME="date" VALUE="<?php echo $thisyear.$thismonth.$thisday;?>">
-<INPUT TYPE="hidden" NAME="defusers" VALUE="<?php echo implode ( ",", $participants ); ?>">
-<INPUT TYPE="hidden" NAME="hour" VALUE="">
-<INPUT TYPE="hidden" NAME="minute" VALUE="">
-</FORM>
+<form action="edit_entry.php" method="post" name="schedule">
+<input type="hidden" name="date" value="<?php echo $thisyear.$thismonth.$thisday;?>" />
+<input type="hidden" name="defusers" value="<?php echo implode ( ",", $participants ); ?>" />
+<input type="hidden" name="hour" value="" />
+<input type="hidden" name="minute" value="" />
+</form>
 
-</CENTER>
+</center>
 
 <?php if ( empty ( $friendly ) ) {
   echo "<p><a class=\"navlinks\" href=\"view_d.php?id=$id&";
@@ -116,8 +116,8 @@ print_trailer ();
 //printf ("<p>seconds = %8.2f s</p>", $total);
 ?>
 
-</BODY>
-</HTML>
+</body>
+</html>
 
 <?php
 function TimeMatrix ($date,$participants) {
@@ -137,41 +137,41 @@ function TimeMatrix ($date,$participants) {
   $total_pix = (int)((($cell_pix * $interval) * $hours) + $participant_pix);
 ?>
 
-<BR>
-<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="<?php echo $TABLEBG;?>">
-<TABLE WIDTH="<?php echo $total_pix;?>" BORDER="0" CELLSPACING="0" CELLPADDING="0" COLS="<?php echo $cols;?>">
- <TR><TD HEIGHT="1" COLSPAN="<?php echo $cols;?>" BGCOLOR="black"><img src="pix.gif" HEIGHT="1" WIDTH="100%"></TD></TR>
- <TR>
-   <TD WIDTH="<?php echo $participant_pix;?>" BGCOLOR="<?php echo $THBG;?>"><FONT COLOR="<?php echo $THFG;?>" SIZE="-1"><?php etranslate("Participants");?> </FONT></TD>
+<br />
+<table style="border-width:0px;" cellspacing="0" cellpadding="0"><tr><td style="background-color:<?php echo $TABLEBG;?>;">
+<table style="width:<?php echo $total_pix;?>; border-width:0px;" cellspacing="0" cellpadding="0" cols="<?php echo $cols;?>">
+ <tr><td style="height:1px; background-color:#000000;" colspan="<?php echo $cols;?>"><img src="pix.gif" style="height:1px; width:100%;" /></td></tr>
+ <tr>
+   <td style="width:<?php echo $participant_pix;?>; background-color:<?php echo $THBG;?>; color:<?php echo $THFG;?>;"><font size="-1"><?php etranslate("Participants");?></font></td>
 
 <?php
   $str = '';
-  $MouseOut = "onMouseOut=\"window.status=''; this.style.backgroundColor='".$THBG."';\"";
+  $MouseOut = "onmouseout=\"window.status=''; this.style.backgroundColor='".$THBG."';\"";
   $CC = 1;
   for($i=$first_hour;$i<$last_hour;$i++) {
      for($j=0;$j<$interval;$j++) {
-        $str .= '   <TD ALIGN="right" ID="C'.$CC.'" BGCOLOR="'.$THBG.'" WITDH="'.$cell_pix.'" CLASS="dailymatrix" ';
+        $str .= '   <td style=\"text-align:right; background-color:'.$THBG.'; width:'.$cell_pix.';\" id="C'.$CC.'" class="dailymatrix" ';
         switch($j) {
           case 0:
                   if($interval == 4) { $k = ($i<=9?'0':substr($i,0,1)); }
-		  $str .= 'onMouseDown="schedule_event('.$i.','.($increment * $j).");\" onMouseOver=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut.">";
-                  $str .= $k."</TD>\n";
+		  $str .= 'onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut.">";
+                  $str .= $k."</td>\n";
                   break;
           case 1:
                   if($interval == 4) { $k = ($i<=9?substr($i,0,1):substr($i,1,2)); }
-		  $str .= 'onMouseDown="schedule_event('.$i.','.($increment * $j).");\" onMouseOver=\"window.status='Schedule a ".$i.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut.">";
-                  $str .= $k."</TD>\n";
+		  $str .= 'onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut.">";
+                  $str .= $k."</td>\n";
                   break;
           default:
-		  $str .= 'onMouseDown="schedule_event('.$i.','.($increment * $j).");\" onMouseOver=\"window.status='Schedule a ".$i.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut.">";
-                  $str .= "&nbsp;</TD>\n";
+		  $str .= 'onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut.">";
+                  $str .= "&nbsp;</td>\n";
                   break;
         }
        $CC++;
      }
   }
   echo $str.
-       " </TR>\n <TR><TD HEIGHT=\"1\" COLSPAN=\"$cols\" BGCOLOR=\"black\"><img src=\"pix.gif\" HEIGHT=\"1\" WIDTH=\"100%\"></TD></TR>\n";
+       " </tr>\n <tr><td style=\"height:1px; background-color:#000000;\" colspan=\"$cols\"><img src=\"pix.gif\" style=\"height:1px; width:100%;\"></td></tr>\n";
 
   // Display each participant
 
@@ -202,32 +202,32 @@ function TimeMatrix ($date,$participants) {
       $Tmp['ID'] = $E['cal_id'];
       $all_events[] = $Tmp;
     }
-    echo "<TR>\n <TD WIDTH=\"$participant_pix\" BGCOLOR=\"$CELLBG\"><FONT COLOR=\"$THFG\" SIZE=\"-1\">".$user_nospace."</FONT></TD>\n";
+    echo "<tr>\n <td style=\"width:$participant_pix; background-color:$CELLBG; color:$THFG;\"><font size=\"-1\">".$user_nospace."</font></td>\n";
     $col = 1;
 
     for($j=$first_hour;$j<$last_hour;$j++) {
        for($k=0;$k<$interval;$k++) {
-         $space = ($k == '0') ? '<img src="pix.gif" HEIGHT="12" WIDTH="1" align="middle">' : "&nbsp;";
+         $space = ($k == '0') ? '<img src="pix.gif" style=\"height:12px; width:1px; text-align:middle;\" />' : "&nbsp;";
 	 $RC = $CELLBG;
          $TIME = mktime ( sprintf ( "%02d",$j), ($increment * $k), 0, $thismonth, $thisday, $thisyear );
 
          foreach ($all_events as $ET) {
           if (($TIME >= $ET['START']) && ($TIME < $ET['END'])) {
     	    if ($space == "&nbsp;") {
-            $space="<a href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" HEIGHT=\"8\" WIDTH=\"100%\" ALIGN=\"middle\" BORDER=0></a>";
+            $space="<a href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" style=\"height:8px; width:100%; text-align:center; border-width:0px;\" /></a>";
             } else {
-            $space="<a href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" HEIGHT=\"12\" WIDTH=\"1\" align=\"middle\" BORDER=0><img src=\"pix.gif\" HEIGHT=\"8\" WIDTH=\"100%\" ALIGN=\"middle\" BORDER=0></a>";
+            $space="<a href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" style=\"height:12px; width:1px; text-align:center; border-width:0px;\"><img src=\"pix.gif\" style=\"height:8px; width:100%; text-align:center; border-width:0px;\" /></a>";
             }
 	    break;
 	  }
 	 }
-         echo "   <TD ALIGN=\"left\" BGCOLOR=\"$RC\" VALIGN=\"MIDDLE\" WIDTH=\"$cell_pix\">$space</TD>\n";
+         echo "   <td style=\"text-align:left; background-color:$RC; vertical-align:middle; width:$cell_pix;\">$space</td>\n";
          $col++;
        }
     }
-    echo " </TR>\n <TR><TD HEIGHT=\"1\" COLSPAN=\"$cols\" BGCOLOR=\"black\"><img src=\"pix.gif\" HEIGHT=\"1\" WIDTH=\"100%\"></TD></TR>\n";
+    echo " </tr>\n <tr><td style=\"height:1px; background-color:#000000;\" colspan=\"$cols\"><img src=\"pix.gif\" style=\"height:1px; width:100%;\"></td></tr>\n";
   } // End foreach participant
-  echo "</TABLE></TD></TR></TABLE>\n";
+  echo "</table></td></tr></table>\n";
 
 } // end TimeMatrix function
 ?>
