@@ -1,4 +1,7 @@
 Version 0.9.47/CVS+dev (?? ??? 2004)
+  - Pointing 'account' option for non-admin users to edit_users.php & making indentation of css & php code easier to read by using tabs
+  - Making the trailer not be displayed in edit_user.php (since it's always in an iframe now)
+  - Fixing users.php so it only shows a single user's info when the user isn't an admin
   - Fixing export.php JS so '&amp;' only reads '&'
   - Added 'unapproved' class & removed gradient code from styles.php for empty cells so they blend in with the background of the page
   - Added 'unapproved' class for customizing listing of unapproved events in
