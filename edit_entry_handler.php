@@ -10,7 +10,7 @@ include "includes/validate.inc";
 include "includes/connect.inc";
 
 load_user_preferences ();
-load_user_layers ();
+//load_user_layers ();
 
 include "includes/translate.inc";
 
@@ -117,6 +117,7 @@ if ( strlen ( $error ) == 0 ) {
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       $id = $row[0] + 1;
+      dbi_free_result ( $res );
     } else {
       $id = 1;
     }
