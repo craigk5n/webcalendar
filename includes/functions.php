@@ -2114,6 +2114,7 @@ function get_sunday_before ( $year, $month, $day ) {
   *	$day - day of the month
   * Returns:
   *	The date (in unix time format)
+  */
 function get_monday_before ( $year, $month, $day ) {
   $weekday = date ( "w", mktime ( 3, 0, 0, $month, $day, $year ) );
   if ( $weekday == 0 )
