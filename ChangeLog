@@ -1,4 +1,5 @@
 Version 0.9.45/CVS+fixes (?? ??? 2004)
+  - Fixed Bug 1101823: Problem importing palm desktop datebook.dat file
   - Fixed Bug 1109323: Error in LDAP get_admins function
   - Fixed Bug 824268: emails sent by edit_entry_handler.php in wrong time zone
   - Fixed Bug 1066440: End Time increased by timezone offset
