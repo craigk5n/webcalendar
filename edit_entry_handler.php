@@ -733,6 +733,5 @@ if ( strlen ( $conflicts ) ) {
 <?php } ?>
 
 <?php print_trailer(); ?>
-
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php
-
 if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
@@ -60,5 +59,4 @@ if ( $single_user == "Y" ) {
     }
   }
 }
-
 ?>

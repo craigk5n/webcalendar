@@ -61,7 +61,6 @@ function selectByLogin ( login, state ) {
   }
 }
 
-
 function toggleGroup ( state ) {
   var list = document.forms[0].elements[4];
   var selNum = list.selectedIndex;

@@ -45,18 +45,18 @@ if ( empty ( $ovrd ) && ! $error ) {
     translate ( "Your user preferences" ) . "</a>&nbsp;" .
     translate ( "may be affecting the appearance of this page.") . "&nbsp;" .
     "<a href=\"admin.php?ovrd=1\">" .
-    translate ( "Click here" ) . "</a>&nbsp;" .
+    translate ( "Click here" ) . "&nbsp;" .
     translate ( "to not use your user preferences when viewing this page" ) .
-    ".</blockquote>\n";
+    ".</a></blockquote>\n";
 } else if ( ! $error ) {
   echo "<blockquote>" . translate ( "Note" ) . ":&nbsp;" .
     "<a href=\"pref.php\">" .
     translate ( "Your user preferences" ) . "</a>&nbsp;" .
     translate ( "are being ignored while viewing this page.") . "&nbsp;" .
     "<a href=\"admin.php\">" .
-    translate ( "Click here" ) . "</a>&nbsp;" .
+    translate ( "Click here" ) . "&nbsp;" .
     translate ( "to load your user preferences when viewing this page" ) .
-    ".</blockquote>\n";
+    ".</a></blockquote>\n";
 }
 
 if ( ! $error ) {

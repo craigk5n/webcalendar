@@ -6,37 +6,96 @@
 	    <head>
 <title>WebCalendar System Administrator's Guide</title>
 <script type="text/javascript">
-function show(foo,f,section) {
-	document.getElementById(foo).style.display = "block";
-	if (f) { setCookie(foo, "o", section); }
-}
+    var propgroups = new Array();
+    function showPropGroup (name) {
+        if (! document.getElementById) { return true; }
+        for (var i=0; i<propgroups.length; i++) {
+            var gname = propgroups[i];
+            var tab = document.getElementById("pgroup_tab_" + gname);
+            if (tab && tab.setAttribute) {
+                tab.setAttribute("class", (gname == name) ? "propgrouptabsel" : "propgrouptab");
+            }
+            var div = document.getElementById("pgroup_body_" + gname);
+            if (div) {
+                div.style.display = (gname == name) ? "block" : "none";
+            }
+        }
+        return false;
+    }
 
-function hide(foo,f, section) {
-	if (document.getElementById(foo)) {
-		document.getElementById(foo).style.display = "none";
-		if (f) { deleteCookie(foo, section); }
-	}
-}
+        var def_vals = document.getElementById(name + ':default_value');
+        if (!def_vals) return true;
+        var usr_vals = document.getElementById(name + ':usr');
+        if (!usr_vals) return true;
+
+        var disp_def = ocheck.checked ? 'none'  : 'block';
+        var disp_usr = ocheck.checked ? 'block' : 'none';
+
+        def_vals.style.display = disp_def;
+        usr_vals.style.display = disp_usr;
+    }
+    propgroups[1] = "details";
+    propgroups[2] = "participants";
+    propgroups[3] = "pete";
 </script>
+<style type='text/css'>
+#propgroupstab {
+    font-size: 1.2em;
+}
+#propgroupsbody {
+    margin: 0; padding: 0.5em;
+}
+span.propgrouptabsel, 
+span.propgrouptab {
+   margin: 0 0.2em 0 0.8em;
+   padding: 0.25em;
+   border-top: 1px solid black;
+   border-left: 1px solid black;
+   border-right: 1px solid black;
+}
+span.propgrouptab {
+   background: #ddd;
+   color: black;
+}
+span.propgrouptab a {
+    text-decoration: none;
+    color: black;
+} 
+span.propgrouptabsel {
+   color: #ddd;
+   background: blue;
+}
+span.propgrouptabsel a {
+    text-decoration: none;
+    color: #ddd;
+} 
+div.inset {
+    margin-left: 2em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+#pgroup_body_pete,
+#pgroup_body_participants,
+#pgroup_body_req,
+#pgroup_body_unpacking,
+#pgroup_body_db,
+#pgroup_body_setup,
+#pgroup_body_users,
+#pgroup_body_reminders,
+#pgroup_body_settings,
+#pgroup_body_custom,
+#pgroup_body_faq,
+#pgroup_body_trouble,
+#pgroup_body_help,
+#pgroup_body_license,
+#pgroup_body_glossary,
+#pgroup_body_history {
+display: none;
+}
+</style>
+
 
 <style type="text/css">
-#intro,
-#req,
-#unpacking,
-#db,
-#setup,
-#users,
-#reminders,
-#settings,
-#custom,
-#faq,
-#trouble,
-#help,
-#license,
-#glossary,
-#history {
-	display: none;
-}
 #menu {
 	text-align: center;
 }
@@ -88,263 +147,26 @@ th {
 
 <p><b>WebCalendar Version:</b> 0.9.44<br /></p>
 
-<div id="menu">
-<span class="nav"><a href="javascript:hide('req');
-	hide('unpacking');
-	hide('db');
-	hide('setup');
-	hide('users');
-	hide('reminders');
-	hide('settings');
-	hide('custom');
-	hide('faq');
-	hide('trouble');
-	hide('help');
-	hide('license');
-	hide('glossary');
-	hide('history');
-	show('intro');">Introduction</a></span>
-
-<span class="nav"><a href="javascript:hide('intro');
-	hide('views');
-	hide('unpacking');
-	hide('db');
-	hide('setup');
-	hide('users');
-	hide('reminders');
-	hide('settings');
-	hide('custom');
-	hide('faq');
-	hide('trouble');
-	hide('help');
-	hide('license');
-	hide('glossary');
-	hide('history');
-	show('req');">System&nbsp;Requirements</a></span>
-
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('reports');
-	hide('db');
-	hide('setup');
-	hide('users');
-	hide('reminders');
-	hide('settings');
-	hide('custom');
-	hide('faq');
-	hide('trouble');
-	hide('help');
-	hide('license');
-	hide('glossary');
-	hide('history');
-	show('unpacking');">File&nbsp;Unpacking</a></span>
-
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('unpacking');
-	hide('otherusers');
-	hide('settings');
-	hide('setup');
-	hide('users');
-	hide('reminders');
-	hide('custom');
-	hide('faq');
-	hide('trouble');
-	hide('help');
-	hide('license');
-	hide('glossary');
-	hide('history');
-	show('db');">Database&nbsp;Setup</a></span>
-
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('unpacking');
-	hide('db');
-	hide('users');
-	hide('reminders');
-	hide('settings');
-	hide('custom');
-	hide('faq');
-	hide('trouble');
-	hide('help');
-	hide('license');
-	hide('glossary');
-	hide('history');
-	show('setup');">Application&nbsp;Setup</a></span>
-
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('unpacking');
-	hide('db');
-	hide('reminders');
-	hide('db');
-	hide('setup');
-	hide('settings');
-	hide('custom');
-	hide('faq');
-	hide('trouble');
-	hide('help');
-	hide('license');
-	hide('glossary');
-	hide('history');
-	show('users');">Creating&nbsp;Users</a></span>
-<br />
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('unpacking');
-	hide('db');
-	hide('db');
-	hide('setup');
-	hide('users');
-	hide('settings');
-	hide('custom');
-	hide('faq');
-	hide('trouble');
-	hide('help');
-	hide('license');
-	hide('glossary');
-	hide('history');
-	show('reminders');">Email&nbsp;Reminders</a></span>
-
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('unpacking');
-	hide('db');
-	hide('reminders');
-	hide('setup');
-	hide('users');
-	hide('reminders');
-	hide('custom');
-	hide('faq');
-	hide('trouble');
-	hide('help');
-	hide('license');
-	hide('glossary');
-	hide('history');
-	show('settings');">System&nbsp;Settings</a></span>
-
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('unpacking');
-	hide('db');
-	hide('db');
-	hide('setup');
-	hide('users');
-	hide('reminders');
-	hide('settings');
-	hide('faq');
-	hide('trouble');
-	hide('help');
-	hide('license');
-	hide('glossary');
-	hide('history');
-	show('custom');">Custom&nbsp;Event&nbsp;Fields</a></span>
-
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('unpacking');
-	hide('db');
-	hide('db');
-	hide('setup');
-	hide('users');
-	hide('reminders');
-	hide('settings');
-	hide('custom');
-	hide('trouble');
-	hide('help');
-	hide('license');
-	hide('glossary');
-	hide('history');
-	show('faq');">FAQ</a></span>
-
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('unpacking');
-	hide('db');
-	hide('db');
-	hide('setup');
-	hide('users');
-	hide('reminders');
-	hide('settings');
-	hide('custom');
-	hide('faq');
-	hide('help');
-	hide('license');
-	hide('glossary');
-	hide('history');
-	show('trouble');">Troubleshooting</a></span>
-<br />
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('unpacking');
-	hide('db');
-	hide('db');
-	hide('setup');
-	hide('users');
-	hide('reminders');
-	hide('settings');
-	hide('custom');
-	hide('faq');
-	hide('trouble');
-	hide('license');
-	hide('glossary');
-	hide('history');
-	show('help');">Getting&nbsp;Help</a></span>
-
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('unpacking');
-	hide('db');
-	hide('db');
-	hide('setup');
-	hide('users');
-	hide('reminders');
-	hide('settings');
-	hide('custom');
-	hide('faq');
-	hide('trouble');
-	hide('help');
-	hide('glossary');
-	hide('history');
-	show('license');">Licensing</a></span>
-
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('unpacking');
-	hide('db');
-	hide('db');
-	hide('setup');
-	hide('users');
-	hide('reminders');
-	hide('settings');
-	hide('custom');
-	hide('faq');
-	hide('trouble');
-	hide('help');
-	hide('license');
-	hide('history');
-	show('glossary');">Glossary</a></span>
-
-<span class="nav"><a href="javascript:hide('intro');
-	hide('req');
-	hide('unpacking');
-	hide('db');
-	hide('db');
-	hide('setup');
-	hide('users');
-	hide('reminders');
-	hide('settings');
-	hide('custom');
-	hide('faq');
-	hide('trouble');
-	hide('help');
-	hide('license');
-	hide('glossary');
-	show('history');">History</a></span>
+<div id="propgroupstab">
+	<span class="propgrouptabsel" id="pgroup_tab_intro"><a href="#pgroupintro" onclick="return showPropGroup('intro')">Introduction</a></span>
+	<span class="propgrouptab" id="pgroup_tab_reqs"><a href="#pgroupreqs" onclick="return showPropGroup('reqs')">System&nbsp;Requirements</a></span>
+	<span class="propgrouptab" id="pgroup_tab_db"><a href="#pgroupdb" onclick="return showPropGroup('db')">Database&nbsp;Setup</a></span>
+	<span class="propgrouptab" id="pgroup_tab_pete"><a href="#pgrouppete" onclick="return showPropGroup('pete')">Application&nbsp;Setup</a></span>
+	<span class="propgrouptab" id="pgroup_tab_pete"><a href="#pgrouppete" onclick="return showPropGroup('pete')">Creating&nbsp;Users</a></span>
+	<span class="propgrouptab" id="pgroup_tab_pete"><a href="#pgrouppete" onclick="return showPropGroup('pete')">Email&nbsp;Reminders</a></span>
+	<span class="propgrouptab" id="pgroup_tab_pete"><a href="#pgrouppete" onclick="return showPropGroup('pete')">System&nbsp;Settings</a></span>
+	<span class="propgrouptab" id="pgroup_tab_pete"><a href="#pgrouppete" onclick="return showPropGroup('pete')">Custom&nbsp;Event&nbsp;Fields</a></span>
+	<span class="propgrouptab" id="pgroup_tab_pete"><a href="#pgrouppete" onclick="return showPropGroup('pete')">FAQ</a></span>
+	<span class="propgrouptab" id="pgroup_tab_pete"><a href="#pgrouppete" onclick="return showPropGroup('pete')">Troubleshooting</a></span>
+	<span class="propgrouptab" id="pgroup_tab_pete"><a href="#pgrouppete" onclick="return showPropGroup('pete')">Getting&nbsp;Help</a></span>
+	<span class="propgrouptab" id="pgroup_tab_pete"><a href="#pgrouppete" onclick="return showPropGroup('pete')">Licensing</a></span>
+	<span class="propgrouptab" id="pgroup_tab_pete"><a href="#pgrouppete" onclick="return showPropGroup('pete')">Glossary</a></span>
+	<span class="propgrouptab" id="pgroup_tab_pete"><a href="#pgrouppete" onclick="return showPropGroup('pete')">History</a></span>
 </div>
 
-<div id="intro">
-
+<div id="propgroupsbody">
+	<a name="pgroupintro"></a>
+	<div id="pgroup_body_intro">
 <h2>Introduction</h2>
 
 <p>WebCalender is an open source PHP-based multi-user calendar.</p>
@@ -437,8 +259,10 @@ th {
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="req">
-	<h2><a name="requirements">System Requirements</a></h2>
+
+<a name="pgroupreq"></a>
+	<div id="pgroup_body_req">
+	<h2>System Requirements</h2>
 	<ul>
 		<li>PHP3 or PHP4</li>
 		<li>Database (see <a href="#database">below</a>)</li>
@@ -491,8 +315,9 @@ th {
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="unpacking">
-	<h2><a name="fileunpacking">File Unpacking</a></h2>
+<a name="pgroupunpacking"></a>
+	<div id="pgroup_body_unpacking">
+	<h2>File Unpacking</h2>
 	<p>Unpack the calendar software in its own directory somewhere where
 		your web server will find it.  (See your web server docs for info.)</p>
 	<p>By default, WebCalendar should create its own directory
@@ -505,8 +330,9 @@ th {
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="db">
-	<h2><a name="dbsetup">Database Setup</a></h2>
+<a name="pgroupdb"></a>
+	<div id="pgroup_body_db">
+	<h2>Database Setup</h2>
 	<p>There are three steps in setting up the database:</p>
 	<ol>
 		<li>Creating the database</li>
@@ -597,8 +423,9 @@ th {
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="setup">
-	<h2><a name="appsetup">Application Setup</a></h2>
+<a name="pgroupsetup"></a>
+	<div id="pgroup_body_setup">
+	<h2>Application Setup</h2>
 	<p>Next, you will need to customize the file <tt>includes/config.php</tt>
 		to tell WebCalendar which database you are using and what
 		the database login/password is.
@@ -618,8 +445,7 @@ th {
 		<td valign="top">The database password for the above login</td></tr>
 	<tr><td valign="top">$db_database</td>
 		<td valign="top">The name of the database that the calendar
-		tables reside in.  ("intranet" in the <a href="#dbsetup">examples
-		above</a>.)
+		tables reside in.  ("intranet" in the <a href="#dbsetup">examples above</a>.)
 		For ODBC, this should be the DSN.</td></tr>
     </table>
 	<p>You can configure the calendar to run in 
@@ -701,8 +527,9 @@ th {
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="users">
-	<h2><a name="creatingusers">Creating Users</a></h2>
+<a name="pgroupusers"></a>
+	<div id="pgroup_body_users">
+	<h2>Creating Users</h2>
 	<p>After logging in as an admin user (the initial username is "admin" with
 		password "admin"), you will see a common set of links at the bottom
 		of each page.  Follow these steps to create a new user:</p>
@@ -718,8 +545,9 @@ th {
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="reminders">
-	<h2><a name="reminders">Setting Up Email Reminders</a></h2>
+<a name="pgroupreminders"></a>
+	<div id="pgroup_body_reminders">
+	<h2>Setting Up Email Reminders</h2>
 	<p>PHP does not come with a utility for executing time-based jobs.
 		So, in order to check periodically for email reminders, a shell
 		script was written in PHP.  You will need two things to get this working:</p>
@@ -762,8 +590,9 @@ th {
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="settings">
-	<h2><a name="systemsettings">System Settings</a></h2>
+<a name="pgroupsettings"></a>
+	<div id="pgroup_body_settings">
+	<h2>System Settings</h2>
 	<p>System Settings allows the administrator to control what features are available to users as well as default values for certain features.</p>
 	<p>Many of these settings can be overridden by users in their Preferences (such as color).</p>
 	<h3>Settings</h3>
@@ -896,8 +725,9 @@ th {
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="custom">
-	<h2><a name="siteextras">Custom Event Fields</a></h2>
+<a name="pgroupcustom"></a>
+	<div id="pgroup_body_custom">
+	<h2>Custom Event Fields</h2>
 	<p>You may want to customize the event-specific fields found in
 		the <tt>includes/site_extras.php</tt> field.
 		If this is your first time using the calendar, you can skip
@@ -991,8 +821,9 @@ th {
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="faq">
-	<h2><a name="faq">Frequently Asked Questions</a></h2>
+<a name="pgroupfaq"></a>
+	<div id="pgroup_body_faq">
+	<h2>Frequently Asked Questions</h2>
 	<dl>
 		<dt>How do I setup PHP, MySQL and Apache on Windows?</dt>
 			<dd>The easiest way to do this is to try one of the prepackaged	bundles that will install all of these for you:
@@ -1151,8 +982,9 @@ th {
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="trouble">
-	<h2><a name="trouble">Troubleshooting</a></h2>
+<a name="pgrouptrouble"></a>
+	<div id="pgroup_body_trouble">
+	<h2>Troubleshooting</h2>
     <dl>
 	<dt>I get error messages about undefined variables when I try to view any page.</dt>
 		<dd>On newer versions of PHP, the default setting of PHP is to display
@@ -1180,15 +1012,14 @@ th {
 	<dt>I get an error message from PHP saying "Call to undefined function: ..."</dt>
 		<dd>This tells you that your version of PHP is missing something that
   		WebCalendar needs.  If the function mentioned is a database login
-  		function ("ociplogin", "mysql_pconnect", "ibase_connect", "pg_pconnect"), 
+		function (<em>ociplogin</em>, <em>mysql_pconnect</em>, <em>ibase_connect</em>, <em>pg_pconnect</em>), 
 		then you probably do not have the needed database support for your database 
 		compiled into PHP.
   		If the function is not a database connect call, then check the
   		<a href="http://www.php.net/manual/en/">PHP manual</a>&nbsp;<a href="http://www.php.net/manual/en/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> 
   		to see if the function requires a specific version of PHP.  You
   		may have an out-dated version of PHP that requires upgrading.</dd>
-	<dt>When I try and view certain pages, nothing happens for 30 seconds, then I 
-		get a time-out error.</dt>
+	<dt>When I try and view certain pages, nothing happens for 30 seconds, then I get a time-out error.</dt>
 		<dd>On slower or very busy servers, it can take some time for the server
   		to get all the events.  Most PHP installations have a built-in timeout
   		out of 30 seconds and will interrupt any request that takes longer than
@@ -1196,51 +1027,43 @@ th {
   		on the month view when layers are being used.  If you have access,
   		you can increase the time-out value for PHP in the <tt>php.ini</tt>
   		file by changing the setting of the <tt>max_execution_time</tt> setting.</dd>
-	<dt>I get an error message that says "Can't connect to local MySQL server through 
-		socket '/tmp/mysql.sock'."</dt>
+	<dt>I get an error message that says "Can't connect to local MySQL server through socket '/tmp/mysql.sock'."</dt>
 		<dd>This is a PHP/MySQL configuration issue. The value of <tt>mysql.default_socket</tt>
-  		in your <tt>php.ini</tt> file must match the
-  		value of <tt>socket</tt> in your <tt>my.cnf</tt> file. Edit the <tt>php.ini</tt> file 
-		to fix this problem.</dd>
+		in your <tt>php.ini</tt> file must match the value of <tt>socket</tt> in your 
+		<tt>my.cnf</tt> file. Edit the <tt>php.ini</tt> file to fix this problem.</dd>
 	<dt>I am not receiving any email messages from WebCalendar.</dt>
 		<dd>WebCalendar sends two types of email messages:
-  		Notifications<sup><a href="#g_notification">*</a></sup> and
-  		Reminders<sup><a href="#g_reminder">*</a></sup>.
-  		Check the following if you are not receiving any email:
+  		Notifications<a href="#g_notification">*</a> and Reminders<a href="#g_reminder">*</a>. 
+		Check the following if you are not receiving any email:
   		<ol>
-    		<li>You have defined a valid SMTP server in your PHP configuration
-        		file <tt>php.ini</tt>.  (The setting is "SMTP" in the "mail_function"
-        		section.)</li>
-    		<li>In WebCalendar's System Settings, you have set the
-        "Email Enabled" setting to "Yes".</li>
-    		<li>In WebCalendar's System Settings, make sure you have
-        		the "Default sender address" to something.
+			<li>You have defined a valid SMTP server in your PHP configuration file 
+				<tt>php.ini</tt>.  (The setting is "SMTP" in the "mail_function" section.)</li>
+			<li>In WebCalendar's System Settings, you have set the "Email Enabled" setting to "Yes".</li>
+			<li>In WebCalendar's System Settings, make sure you have the "Default sender address" 
+			to something.
         		<br /><b>Note:</b>
         		Some mail system will reject mail that has a "From" address
         		that is a different domain from the originating SMTP server.
-        		So, if your SMTP server is smtp.mydomain.com and your
-        "Default sender address" is calendar@someotherdomain.com,
-        		some mail systems may bounce the mail back.</li>
-    		<li>For a Notification, make sure you have the type of Notification
-        		set to "Yes" in the user's Preferences.</li>
-    		<li>For a Reminder:
-      		<ul>
-        		<li>Make sure you have "Event reminders" set to "Yes" in the
-            		user's Preferences.</li>
-        		<li>Make sure you have <a href="#reminders">setup a cron job</a>
-            		to periodically	run the <tt>send_reminders.php</tt> script.</li>
-      		</ul>
+        		So, if your SMTP server is smtp.mydomain.com and your "Default sender address" 
+			is calendar@someotherdomain.com, some mail systems may bounce the mail back.</li>
+    			<li>For a Notification, make sure you have the type of Notification
+        			set to "Yes" in the user's Preferences.</li>
+    			<li>For a Reminder:
+				<ul>
+        				<li>Make sure you have "Event reminders" set to "Yes" in the user's Preferences.</li>
+					<li>Make sure you have <a href="#reminders">setup a cron job</a> to periodically 
+						run the <tt>send_reminders.php</tt> script.</li>
+				</ul>
 			</li>
   		</ol>
 		</dd>
-	<dt>Some of the pages are displaying text in English rather
-  		than &lt;insert your language here&gt;</dt>
-		<dd>The translations have been submitted at various points
-  		of WebCalendar development.  Some have not been updated
-  		to include newer features.</dd>
-	<dt>The text that I entered in the <a href="#siteextras">Custom Event Fields</a> is not being translated to different languages.</dt>
-		<dd>You will need to add an entry in each of the translation files
-  		for any text you add into the Custom Event Fields.</dd>
+	<dt>Some of the pages are displaying text in English rather than &lt;insert your language here></dt>
+		<dd>The translations have been submitted at various points of WebCalendar development. 
+			Some have not been updated to include newer features.</dd>
+	<dt>The text that I entered in the <a href="#siteextras">Custom Event Fields</a> is not being translated 
+		to different languages.</dt>
+		<dd>You will need to add an entry in each of the translation files for any text you add 
+			into the Custom Event Fields.</dd>
 	<dt>How do I get the most recent version of WebCalendar?</dt>
 		<dd>You can download the latest public release from SourceForge's
 		<a href="http://sourceforge.net/project/showfiles.php?group_id=3870">file list for WebCalendar</a>&nbsp;<a href="http://sourceforge.net/project/showfiles.php?group_id=3870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
@@ -1261,45 +1084,40 @@ th {
   		( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', <br />
   		'Default', 'Y' );
   		</blockquote>
-  		This will add a user with login 'admin' and password 'admin' to the
-  		database.
+  		This will add a user with login 'admin' and password 'admin' to the database.
   		If you still have a user named 'admin', then replace 'admin' in the above
   		SQL with a different username.
 		</dd>
-
-
-	<dt>I get a database error indicating table <tt>webcal_config</tt>
-            does not exist.</dt>
-	<dd>
-	This is the first table that WebCalendar tries to access, so it
-	typically means one of the following:
-	<ul>
-	<li> You have not created the database tables as described in the
-		instructions </li>
-	<li> You have the wrong database name specified in your
-		<tt>includes/config.php</tt> file </li>
-	</ul>
-	</dd>
-
+	<dt>I get a database error indicating table <tt>webcal_config</tt> does not exist.</dt>
+		<dd>This is the first table that WebCalendar tries to access, so it 
+			typically means one of the following:
+			<ul>
+				<li>You have not created the database tables as described in the instructions</li>
+				<li>You have the wrong database name specified in your 
+				<tt>includes/config.php</tt> file</li>
+			</ul>
+		</dd>
 	</dl>
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="help">
-	<h2><a name="help">Getting Help</a></h2>
+<a name="pgrouphelp"></a>
+	<div id="pgroup_body_help">
+	<h2>Getting Help</h2>
 	<p>Try the Help/Troubleshooting forum for WebCalendar, hosted at SourceForge.net:</p>
 	<blockquote>
 		<a href="https://sourceforge.net/forum/forum.php?forum_id=11588">https://sourceforge.net/forum/forum.php?forum_id=11588</a>&nbsp;<a href="http://sourceforge.net/forum/forum.php?forum_id=11588" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>
 	</blockquote>
 	<p>If you encounter a bug, please check the 
 		<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870">list of open and pending bugs</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
-		If you do not see anything similar, submit a new bug.
+		If you do <strong>not</strong> see anything similar, submit a new bug.
 	</p>
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="license">
-	<h2><a name="licensing">Licensing</a></h2>
+<a name="pgrouplicense"></a>
+	<div id="pgroup_body_license">
+	<h2>Licensing</h2>
 	<p>WebCalendar is distributed under the open source
 		<a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
 		If you have questions about this license, please
@@ -1308,37 +1126,37 @@ th {
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="glossary">
-	<h2><a name="glossary">Glossary</a></h2>
+<a name="pgroupglossary"></a>
+	<div id="pgroup_body_glossary">
+	<h2>Glossary</h2>
 	<dl>
 		<dt><a name="g_activitylog">Activity Log</a></dt>
 			<dd>A summary of recent updates to calendar data</dd>
 		<dt><a name="g_assistant">Assistant</a></dt>
 			<dd>A calendar user that has been designated by another calendar user
- 		(the Boss) to help manage their calendar</dd>
+				(the Boss) to help manage their calendar</dd>
 		<dt><a name="g_boss">Boss</a></dt>
 			<dd>A calendar user that has designated another calendar user
- 		(the Assistant) to help manage his calendar</dd>
+				(the Assistant) to help manage his calendar</dd>
 		<dt><a name="g_externaluser">External User</a></dt>
 			<dd>A calendar participant that does not have a calendar user account</dd>
 		<dt><a name="g_group">Group</a></dt>
-			<dd>A mechanism of dividing up a large set of users into smaller sets of
-  		users</dd>
+			<dd>A mechanism of dividing up a large set of users into smaller sets of users</dd>
 		<dt><a name="g_layer">Layer</a></dt>
 			<dd>A function that allows a user to overlay another user's calendar
-  		on top of his own calendar so that the standard day, week and month
-  		pages show both his own and the layered user's events</dd>
+				on top of his own calendar so that the standard day, week and month
+				pages show both his own and the layered user's events</dd>
 		<dt><a name="g_ldap">LDAP</a></dt>
-			<dd>LDAP (Lighweight Directory Access Protocol) is an Internet
-  		protocol used to maintain user directories</dd>
+			<dd>LDAP (Lighweight Directory Access Protocol) is an Internet protocol 
+				used to maintain user directories</dd>
 		<dt><a name="g_mulituser">Multi-User Mode</a></dt>
 			<dd>When WebCalendar is configued in Multi-User Mode,
-  		there can be multiple user accounts, each with his
-  		own calendar.  Unless Public Access is enalbed, all users
-  		will be required to login before they can access the system.</dd>
+				there can be multiple user accounts, each with his
+				own calendar.  Unless Public Access is enalbed, all users 
+				will be required to login before they can access the system.</dd>
 		<dt><a name="g_nis">NIS</a></dt>
-			<dd>NIS (Network Information Service) is a UNIX-based user authentication
-  		system for managing user directories in a network</dd>
+			<dd>NIS (Network Information Service) is a UNIX-based user authentication 
+				system for managing user directories in a network</dd>
 		<dt><a name="g_nonuser">NonUser Calendar</a></dt>
 			<dd>A participant to a calendar event that is not a calendar user</dd>
 		<dt><a name="g_notification">Notification</a></dt>
@@ -1377,10 +1195,14 @@ th {
 	<div style="text-align:right;"><a href="#" target="_top">↑&nbsp;top</a></div>
 </div>
 
-<div id="history">
-	<h2><a name="history">History</a></h2>
+<a name="pgrouphistory"></a>
+	<div id="pgroup_body_history">
+	<h2>History</h2>
     <pre>
 $Log$
+Revision 1.28  2004/11/06 02:43:38  musus
+removing blank lines from the end of files
+
 Revision 1.27  2004/10/24 01:16:50  musus
 updating admin docs with more efficient CSS & HTML, partially implementing new style system for view_t.php in functions.php, removing blank lines in site_extras.php & js.php, adding more comments & eliminating old classes in styles.php
 
