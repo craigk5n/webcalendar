@@ -35,7 +35,7 @@ if ( $res ) {
   $row = dbi_fetch_row ( $res );
   $owner = $row[0];
   dbi_free_result ( $res );
-  if ( $owner == $login || $is_assistant ) {
+  if ( $owner == $login || $is_assistant || $is_nonuser_admin ) {
     $my_event = true;
     $can_edit = true;
   }
@@ -199,7 +199,7 @@ if ( strlen ( get_last_view() ) ) {
   $url = "$STARTVIEW.php" . $redir;
 }
 if ( empty ( $error ) ) {
-  if ($is_assistant)
+  if ($is_assistant || $is_nonuser_admin)
      $url = $url . (strpos($url, "?") === false ? "?" : "&") . "user=$user";
   do_redirect ( $url );
   exit;
