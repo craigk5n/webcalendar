@@ -402,10 +402,10 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <tr><td class="tooltipselect" title="<?php etooltip("remote-subscriptions-url-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("URL")?>:</td>
   <td>
   <?php
-    echo htmlentities ( $server_url ) .
+    echo htmlspecialchars ( $server_url ) .
       "publish.php/" . ( $updating_public ? "public" : $login ) .  ".ics";
     echo "<br/>\n";
-    echo htmlentities ( $server_url ) .
+    echo htmlspecialchars ( $server_url ) .
       "publish.php?user=" . ( $updating_public ? "public" : $login );
   ?></td></tr>
 <?php } /* $server_url */ ?>
