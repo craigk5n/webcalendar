@@ -55,6 +55,11 @@ print_header('','','',true);
 		<?php etranslate("Work hours")?>:</td><td>
 		<?php etranslate("work-hours-help")?>
 	</td></tr>
+  	<tr><td style="font-weight:bold; vertical-align:top;">
+ 		<?php etranslate("Specify timed event length by")?>:</td><td>
+ 		<?php etranslate("timed-evt-len-help")?>
+ 	</td></tr>
+
 	<tr><td class="help">
 		<?php etranslate("Default Category")?>:</td><td>
 		<?php etranslate("default-category-help")?>

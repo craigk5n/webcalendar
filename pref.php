@@ -263,6 +263,9 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   </select>
   </td></tr>
 
+<tr><td><b class="tooltip" title="<?php etooltip("timed-evt-len-help");?>"><?php etranslate("Specify timed event length by")?>:</b></td>
+  <td><input type="radio" name="pref_TIMED_EVT_LEN" value="D" <?php if ( $prefarray["TIMED_EVT_LEN"] != "E" ) echo "CHECKED";?>> <?php etranslate("Duration")?> <input type="radio" name="pref_TIMED_EVT_LEN" value="E" <?php if ( $prefarray["TIMED_EVT_LEN"] == "E" ) echo "CHECKED";?>> <?php etranslate("End Time")?></td></tr>
+
 <?php if ( ! empty ( $categories ) ) { ?>
 <tr><td><b><?php etranslate("Default Category")?>:</b></td>
   <td><select name="pref_CATEGORY_VIEW">

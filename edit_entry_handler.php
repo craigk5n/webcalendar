@@ -25,6 +25,15 @@ if ( ! empty ( $hour ) || ( $timetype == 'T' ) ) {
   } elseif ($TIME_FORMAT == '12' && $hour == '12' && $ampm == 'am' ) {
     $hour = 0;
   }
+  if ( $GLOBALS['TIMED_EVT_LEN'] == 'E') {
+    if ( !empty ( $endhour ) ) {
+      // Convert end time to a twenty-four hour time scale.
+      if ( $endampm == 'pm' && $endhour < 12 )
+        $endhour += 12;
+      elseif ( $endampm == 'am' && $endhour == 12 )
+        $endhour = 0;
+    }
+  }
   $TIME_FORMAT=24;
   $hour -= $TZ_OFFSET;
   if ( $hour < 0 ) {
@@ -145,6 +154,19 @@ if ( $hour > 0 ) {
   }
 }
 //echo "SERVER HOUR: $hour $ampm";
+
+if ( $GLOBALS['TIMED_EVT_LEN'] == 'E' && $timetype == "T" ) {
+    if ( empty ( $endhour ) )
+        $duration = 0;
+    else {
+      // Calculate duration.
+      $endmins = ( 60 * $endhour ) + $endminute;
+      $startmins = ( 60 * $hour ) + $minute;
+      $duration = $endmins - $startmins;
+    }
+    if ( $duration < 0 )
+        $duration = 0;
+}
 
 // handle external participants
 $ext_names = array ();
