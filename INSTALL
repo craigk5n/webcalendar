@@ -126,7 +126,8 @@ if you decide to switch to multi-user mode some day.)
 
 Note: If you do decide to switch from single-user mode to multi-user mode,
 make sure you add in a user to the system for the login you set the
-$single_user_login variable to.
+$single_user_login variable to.  You will need to do this via the
+database (mysql, sqlplus, etc...)
 
 Next, you will want to customize the event-specific fields found in
 the includes/site_extras.inc field.  You can use this to add extra

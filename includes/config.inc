@@ -10,11 +10,11 @@
 unset ( $single_user_login );
 
 
-$PROGRAM_NAME = "WebCalendar v0.9.31";
+$PROGRAM_NAME = "WebCalendar v0.9.32dev";
 $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
 
 // demo_mode is used on the sourceforge demo.  It disables changing the
-// demo password and adds a note on what the demo login in on the login page.
+// demo password and adds a note on what the demo login is on the login page.
 $demo_mode = false;
 
 // Database settings
@@ -50,73 +50,6 @@ $db_database = "intranet";
 // for oracle, db_database should be the name in tnsnames.ora
 //$db_database = "webcalendar"; // this is the ODBC DSN
 
-// Language options  The first is the name presented to users while
-// the second is the filename (without the ".txt") that must exist
-// in the translations subdirectory.
-$languages = array (
-  "Browser-defined" =>"none",
-  "English" =>"English-US",
-  "Chinese-Big5" => "Chinese-Big5",
-  "Czech" => "Czech",
-  "Danish" => "Danish",
-  "Dutch" =>"Dutch",
-  "French" =>"French",
-  "German" =>"German",
-  "Icelandic" => "Icelandic",
-  "Italian" => "Italian",
-  "Korean" =>"Korean",
-  "Norwegian" => "Norwegian",
-  "Polish" => "Polish",
-  "Portuguese" =>"Portuguese",
-  "Portuguese/Brazil" => "Portuguese_BR",
-  "Russian" => "Russian",
-  "Spanish" =>"Spanish",
-  "Swedish" =>"Swedish",
-  "Turkish" =>"Turkish"
-  // add new languages here!  (don't forget to add a comma at the end of
-  // last line above.)
-);
-
-// If the user sets "Browser-defined" as their language setting, then
-// use the $HTTP_ACCEPT_LANGUAGE settings to determine the language.
-// The array below translates browser language abbreviations into
-// our available language files.
-// NOTE: These should all be lowercase on the left side even though
-// the proper listing is like "en-US"!
-$browser_languages = array (
-  "zh" => "Chinese-Big5",
-  "zh-tw" => "Chinese-Big5",
-  "cs" => "Czech",
-  "en" => "English-US",
-  "en-us" => "English-US",
-  "en-gb" => "English-US",
-  "da" => "Danish",
-  "nl" =>"Dutch",
-  "fr" =>"French",
-  "fr-ch" =>"French", // French/Swiss
-  "fr-ca" =>"French", // French/Canada
-  "de" =>"German",
-  "de-at" =>"German", // German/Austria
-  "de-ch" =>"German", // German/Switzerland
-  "de-de" =>"German", // German/German
-  "is" => "Icelandic",
-  "it" => "Italian",
-  "it-ch" => "Italian", // Italian/Switzerland
-  "ko" =>"Korean",
-  "no" => "Norwegian",
-  "pl" => "Polish",
-  "pt" =>"Portuguese",
-  "pt-br" => "Portuguese_BR", // Portuguese/Brazil
-  "ru" =>"Russian",
-  "es" =>"Spanish",
-  "sv" =>"Swedish",
-  "tr" =>"Turkish"
-);
-
-// Language default setting.
-// Users can override this in the preferences settings for all pages except
-// the login page.
-$LANGUAGE = "Browser-defined";
 
 // Read-only mode: You can set this to true to create a read-only calendar.
 // If you enable $single_user_login (below), no login will be required,
@@ -127,7 +60,7 @@ $LANGUAGE = "Browser-defined";
 // to add/edit/delete events.
 // NOTE: Approvals are not disabled in read-only.  You must also disable
 // approvals if you don't want to use them.
-//$readonly = true;
+$readonly = false;
 
 // Are you setting this up as a multi-user system?
 // You can always start as a single-user system and change to multi-user
@@ -147,8 +80,17 @@ $LANGUAGE = "Browser-defined";
 // user mode.
 // (Comment the following line out to use HTTP-based login rather than
 // web-based login.)
-//$use_http_auth = true;
+$use_http_auth = false;
 
+// Which user schema to use.  Currently, you can use the default webcal_user
+// table or LDAP.  These files are found in the includes directory.
+// Pick just one of the following:
+
+// webcal_user table: default
+$user_inc = "user.inc";
+// LDAP: if you select this, you must also configure some variables
+// in includes/user-ldap.inc such as your LDAP server...
+//$user_inc = "user-ldap.inc";
 
 // Approval: this doesn't apply if you're running single-user.  If you
 // are running multi-user, you can optionally allow users to approve/confirm
@@ -157,11 +99,11 @@ $LANGUAGE = "Browser-defined";
 // to their name when you view the event.
 // NOTE: you will never need to approve an event that you created, only an
 // an event that another user added to your calendar.
-$require_approvals = TRUE; // set to TRUE or FALSE
+$require_approvals = true; // set to true or false
 
 // Allow event conflicts (two events scheduled for the same time for the
 // same person).
-$allow_conflicts = FALSE; // set to TRUE or FALSE
+$allow_conflicts = false; // set to true or false
 
 // How far into the future should we check for conflicts of repeating
 // events?  6 months is probably sufficient.  If you find it's taking
@@ -249,6 +191,75 @@ $EMAIL_EVENT_ADDED = "Y"; // send email when event added to calendar
 $EMAIL_EVENT_UPDATED = "Y"; // send email when event updated on calendar
 $EMAIL_EVENT_DELETED = "Y"; // send email when event deleted on calendar
 $EMAIL_EVENT_REJECTED = "Y"; // send email when a participant rejects an event
+
+// Language options  The first is the name presented to users while
+// the second is the filename (without the ".txt") that must exist
+// in the translations subdirectory.
+$languages = array (
+  "Browser-defined" =>"none",
+  "English" =>"English-US",
+  "Chinese-Big5" => "Chinese-Big5",
+  "Czech" => "Czech",
+  "Danish" => "Danish",
+  "Dutch" =>"Dutch",
+  "French" =>"French",
+  "German" =>"German",
+  "Icelandic" => "Icelandic",
+  "Italian" => "Italian",
+  "Korean" =>"Korean",
+  "Norwegian" => "Norwegian",
+  "Polish" => "Polish",
+  "Portuguese" =>"Portuguese",
+  "Portuguese/Brazil" => "Portuguese_BR",
+  "Russian" => "Russian",
+  "Spanish" =>"Spanish",
+  "Swedish" =>"Swedish",
+  "Turkish" =>"Turkish"
+  // add new languages here!  (don't forget to add a comma at the end of
+  // last line above.)
+);
+
+// If the user sets "Browser-defined" as their language setting, then
+// use the $HTTP_ACCEPT_LANGUAGE settings to determine the language.
+// The array below translates browser language abbreviations into
+// our available language files.
+// NOTE: These should all be lowercase on the left side even though
+// the proper listing is like "en-US"!
+$browser_languages = array (
+  "zh" => "Chinese-Big5",
+  "zh-tw" => "Chinese-Big5",
+  "cs" => "Czech",
+  "en" => "English-US",
+  "en-us" => "English-US",
+  "en-gb" => "English-US",
+  "da" => "Danish",
+  "nl" =>"Dutch",
+  "fr" =>"French",
+  "fr-ch" =>"French", // French/Swiss
+  "fr-ca" =>"French", // French/Canada
+  "de" =>"German",
+  "de-at" =>"German", // German/Austria
+  "de-ch" =>"German", // German/Switzerland
+  "de-de" =>"German", // German/German
+  "is" => "Icelandic",
+  "it" => "Italian",
+  "it-ch" => "Italian", // Italian/Switzerland
+  "ko" =>"Korean",
+  "no" => "Norwegian",
+  "pl" => "Polish",
+  "pt" =>"Portuguese",
+  "pt-br" => "Portuguese_BR", // Portuguese/Brazil
+  "ru" =>"Russian",
+  "es" =>"Spanish",
+  "sv" =>"Swedish",
+  "tr" =>"Turkish"
+);
+
+// Language default setting.
+// Users can override this in the preferences settings for all pages except
+// the login page.  This should be something like "Browser-defined",
+// "Spanish", or "English-US".
+$LANGUAGE = "Browser-defined";
 
 // error check
 if ( $use_http_auth && strlen ( $single_user_login ) ) {
