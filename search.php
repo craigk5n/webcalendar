@@ -11,7 +11,7 @@ print_header($INC);
 
 <?php if ( empty ( $advanced ) ) { ?>
 
-<b><?php etranslate("Keywords")?>:</b>
+<span style="font-weight:bold;"><?php etranslate("Keywords")?>:</span>
 <input name="keywords" size="30" />
 <input type="submit" value="<?php etranslate("Search")?>" />
 
@@ -27,16 +27,16 @@ if ( $login == "__public__" && $public_access_others != "Y" )
 
 ?>
 
-<table border="0">
+<table style="border-width:0px;">
 
 <input type="hidden" name="advanced" value="1" />
 
-<tr><td><b><?php etranslate("Keywords")?>:</b></td>
-<td><input name="keywords" size="30" /></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Keywords")?>:</td>
+<td><input type="text" name="keywords" size="30" /></td>
 <td><input type="submit" value="<?php etranslate("Search")?>" /></td></tr>
 
 <?php if ( $show_participants ) { ?>
-<tr><td valign="top"><b><?php etranslate("Users"); ?></b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Users"); ?></td>
 <?php
   $users = get_my_users ();
   $size = 0;
