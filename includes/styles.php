@@ -379,7 +379,7 @@ table.minical {
 	text-decoration: none;
 }
 /* formats the day name (i.e. Sun, Mon, etc) */
-/* used as "<tr class="day">" to format the cells WITHIN that row */
+/* used as "tr class="day"" to format the cells WITHIN that row */
 /* NOTE: removing the "th" below will modify the appearance of mini calendars */
 .minical tr.day th {
 	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
@@ -396,6 +396,63 @@ table.minical {
 	text-decoration: none;
 }
 
+/* ======================= */
+/* VIEW_D.PHP */
+.viewdtitle {
+	text-align: center;
+}
+.viewdtitle .date {
+	font-size: 24px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+}
+.viewdtitle .viewname {
+	font-size: 18px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	text-align: center;
+}
+table.viewd {
+	border-width: 0px;
+	width: 100%;
+	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+.viewd th {
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+}
+
+/* ======================= */
+/* VIEW_L.PHP */
+.viewltitle {
+	text-align: center;
+}
+.viewltitle .date {
+	font-size: 24px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+}
+.viewltitle .viewname {
+	font-size: 18px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	text-align: center;
+}
+table.viewl {
+	border-width: 0px;
+	width: 100%;
+	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+.viewl th {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 14%;
+}
+  
 /* ======================= */
 /* VIEW_M.PHP */
 .viewmtitle {
@@ -420,8 +477,15 @@ table.viewm {
 .viewm th {
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
-}	
-
+}
+.viewm th.today
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
+	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
+	width: 10%;
+	vertical-align: top;
+}
 
 /* ======================== */
 /* VIEW_T.PHP */
@@ -462,7 +526,33 @@ table.viewt {
 	text-align: center;
 }
 
-
+/* ======================= */
+/* VIEW_W.PHP */
+.viewwtitle {
+	text-align: center;
+}
+.viewwtitle .date {
+	font-size: 24px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+}
+.viewwtitle .viewname {
+	font-size: 18px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	text-align: center;
+}
+table.vieww {
+	border-width: 1px;
+	border-style: solid;
+	border-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 100%;
+	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+.vieww th {
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+}
 
 /* ========================= */
 /* WEEK.PHP */
@@ -671,6 +761,11 @@ body {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	font-size: 12px;
 	background-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
+}
+.bullet {
+	width: 5px;
+	height: 7px;
+	border-width: 0px;
 }
 -->
 </style>
