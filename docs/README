@@ -10,11 +10,15 @@ WebCalendar-UserManual.html
 
 WebCalendar-SysAdmin.html
   Instructions for system administrators on installing and configuring
-  WebCalendar.
+  WebCalendar
+
+WebCalendar-DeveloperGuide.html
+  Guidelines for developers wanting to make changes to WebCalendar
 
 WebCalendar-Functions.html
   Documentation on the internal WebCalendar functions used throughout
-  the application.
+  the application
+  Can be regenerated (if you have perl and make installed) by typing "make".
 
 faqs.html
   This is generated from the FAQs of in WebCalendar-SysAdmin.html and
