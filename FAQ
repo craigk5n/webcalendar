@@ -1,5 +1,28 @@
 FAQs:
 
+Q: How do I get the latest development version of WebCalendar?
+A: The latest code snapshot is always available through CVS on
+   SourceForge.  If you're not comfortable with CVS, then stick to
+   public releases.  In order to get the files from CVS, use the
+   following command to login to CVS for the first time:
+
+     cvs -d:pserver:anonymous@cvs.webcalendar.sourceforge.net:/cvsroot/webcalendar login
+
+   (If you get a connection refused error, make sure you set your
+   CVS_RSH environment variable to ssh.)
+   Then, to get the files for the first time, use the following command:
+
+     cvs -z8 -d:pserver:anonymous@cvs.webcalendar.sourceforge.net:/cvsroot/webcalendar co webcalendar
+
+   This should create a new webcalendar directory in the current directory.
+   After you've done this, you can get the latest code with:
+
+     cvs update
+
+Q: How do I get more info on CVS?
+A: You can start at the SourceForge CVS HOWTO:
+     http://sourceforge.net/docman/display_doc.php?docid=763&group_id=1
+
 Q: When I try to login, I get sent back to the login page with no error.
 A: Make sure that you built PHP with --enable-track-vars during the
    configure step.  Make sure your browser has cookies enabled.  Either
