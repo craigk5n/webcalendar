@@ -854,9 +854,9 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
 
   // TODO: Make day.php NOT be a special case
   if ( $user != $login && ! empty ( $user ) ) {
-    $u_url = "user=$user&amp;";
+    $u_url = "user=$user";
   } else {
-     $u_url = '';
+    $u_url = '';
   }
 
   //start the minical table for each month
@@ -879,10 +879,14 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     echo "<thead>\n";
     echo "<tr class=\"monthnav\"><th colspan=\"7\">\n";
     echo "<a title=\"" . 
-	translate("Previous") . "\" class=\"prev\" href=\"day.php?{$u_url}date=$month_ago$caturl\"><img src=\"leftarrowsmall.gif\" alt=\"" .
+	translate("Previous") . "\" class=\"prev\" href=\"day.php?" .
+	( empty ( $u_url ) ? '' : $u_url . '&amp;' ) .
+	"date=$month_ago$caturl\"><img src=\"leftarrowsmall.gif\" alt=\"" .
 	translate("Previous") . "\" /></a>\n";
     echo "<a title=\"" . 
-	translate("Next") . "\" class=\"next\" href=\"day.php?{$u_url}date=$month_ahead$caturl\"><img src=\"rightarrowsmall.gif\" alt=\"" .
+	translate("Next") . "\" class=\"next\" href=\"day.php?" .
+	( empty ( $u_url ) ? '' : $u_url . '&amp;' ) .
+	"date=$month_ahead$caturl\"><img src=\"rightarrowsmall.gif\" alt=\"" .
 	translate("Next") . "\" /></a>\n";
     echo month_name ( $thismonth - 1 );
     if ( $showyear != '' ) {
@@ -891,7 +895,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     echo "</th></tr>\n";
   } else {
     //print the month name
-    echo "<caption><a href=\"{$month_link}{$u_url}year=$thisyear&amp;month=$thismonth\">";
+    echo "<caption><a href=\"{$month_link}{$u_url}&amp;year=$thisyear&amp;month=$thismonth\">";
 	echo month_name ( $thismonth - 1 ) .
 		( $showyear ? " $thisyear" : "" );
     echo "</a></caption>\n";
@@ -926,7 +930,9 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     $i += (24 * 3600 * 7) ) {
     echo "<tr>\n";
     if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ) {
-			echo "<td class=\"weeknumber\"><a href=\"week.php?{$u_url}date=".date("Ymd", $i)."\">(" . week_number($i) . ")</a></td>\n";
+      echo "<td class=\"weeknumber\"><a href=\"week.php?" .
+        ( empty ( $u_url ) ? '' : $u_url . '&amp;' ) .
+        "date=".date("Ymd", $i)."\">(" . week_number($i) . ")</a></td>\n";
     }
     for ($j = 0; $j < 7; $j++) {
       $date = $i + ($j * 24 * 3600);
@@ -971,7 +977,9 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
         if ( $dateYmd == date ( 'Ymd' ) ) {
           echo " id=\"today\"";
         }
-        echo "><a href=\"day.php?date=" . $dateYmd . $u_url . "\">";
+        echo "><a href=\"day.php?date=" . $dateYmd .
+          ( empty ( $u_url ) ? '' : '&amp;' . $u_url ) .
+          "\">";
         echo date ( "d", $date ) . "</a></td>\n";
         } else {
           echo "<td class=\"empty\">&nbsp;</td>\n";
