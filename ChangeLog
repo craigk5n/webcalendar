@@ -2,10 +2,6 @@ Version 1.0RC1/CVS+dev (?? ??? 2004)
   - Fixed Bug 1101823: Problem importing palm desktop datebook.dat file
   - Security fix: Fixed protential problem if a user attempts to login
     with a username that has charaters that will affect the database.
-    Example, attempt to login with username:
-      "'x' or cal_login in (drop table x) or cal_login='x"
-    For databases that allow subqueries (Oracle, but not MySQL), this
-    would drop the table.
   - Second pass at Bug Fix 1109141: Added empty and "none" testing of
     language pref
   - Changed encode/decode functions used in generating session cookies

@@ -1,4 +1,5 @@
 <?php
+/* $Id */
 
 // There is the potential for a lot of mischief from users trying to
 // access this file in ways the shouldn't.  Users may try to type in
