@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 
 =head1 NAME
 palm_datebook.pl
@@ -75,7 +75,7 @@ sub ReadDateBook {
   my ($NextFree, $CategoryCount, $Category, @Categories, $ResourceID);
   my ($FieldsPerRow, $RecordIdPos, $RecordStatusPos, $RecordPlacementPos);
 
-  open DATEBOOK, "<".$DateBookFileName;
+  open DATEBOOK, "<".$FileName;
   binmode DATEBOOK;
 
   local $/ = undef;
@@ -116,8 +116,7 @@ sub ReadDateBook {
   for ($i=0; $i<$NumberOfEntries; $i++) {
     $Entry = ReadEntry();
     if ($Entry ne 0){
-      if (!$Filter or &$Filter($Entry)){
-	push @Entries, $Entry;}
+      if (!$Filter or &$Filter($Entry)){push @Entries, $Entry;}
     }
   }
 
@@ -209,23 +208,24 @@ sub ReadPilotField {
 #         ReadLong();
      }
      if ($Repeat) {
-        $Interval   = ReadLong();
-        $Frequency  = ReadLong();
-        $EndTime    = ReadLong();
-        if ($EndTime eq 1956542399) {       # No EndTime
-          $EndTime = '';
-        }
+       $Interval   = ReadLong();
+       $Frequency  = ReadLong();
+       $EndTime    = ReadLong();
+       if ($EndTime eq 1956542399) {       # No EndTime
+         $EndTime = '';
+       }
 
-	ReadLong();
-        $DayNum =  ReadLong();
-        if ($Interval == 2)
-           {$Position = ReadByte();}
-        elsif ($Interval == 3)
-           {$Position = ReadLong();}
-        elsif ($Interval == 5)
-           {$Position = ReadLong();}
-        else
-           {$Position == 0;}
+	     ReadLong();
+       $DayNum =  ReadLong();
+       if ($Interval == 2) {
+         $Position = ReadByte();
+       } elsif ($Interval == 3) {
+         $Position = ReadLong();
+       } elsif ($Interval == 5) {
+         $Position = ReadLong();
+       } else {
+         $Position == 0;
+       }
 
        # Build the Repeat array to return
        $RA{Interval} = $Interval;
