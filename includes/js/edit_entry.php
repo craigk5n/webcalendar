@@ -117,7 +117,7 @@ function selectDate ( day, month, year, current ) {
 	// is changed. If the user selectes "untimed event" or "all day event",
 	// the times & duration fields are hidden.
 	// If they change their mind & switch it back, the original 
-	// original values are put back for them
+	// values are restored for them
 ?>function timetype_handler () {
   var i = document.forms[0].timetype.selectedIndex;
   var val = document.forms[0].timetype.options[i].text;
