@@ -92,8 +92,8 @@ if ( empty ( $error ) && $show_participants ) {
 $page_template = '<dl>${days}</dl>';
 $day_template = '<dt><b>${date}</b></dt><dd><dl>${events}</dl></dd>';
 $event_template = '<dt>${name}</dt><dd>' .
-  translate ( "Date" ) . ': ${date}</b><br />' .
-  translate ( "Time" ) . ': ${time}</b><br />' .
+  '<b>' . translate ( "Date" ) . ':</b> ${date}<br />' .
+  '<b>' . translate ( "Time" ) . ':</b> ${time}<br />' .
   '${description}</dd>';
 
 if ( empty ( $error ) && $report_id > 0 ) {
