@@ -69,12 +69,12 @@ if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
 // User settings are stored in webcal_pref.)
 function load_global_settings () {
   global $login, $readonly;
-  global $SERVER_NAME, $SERVER_PORT, $REQUEST_URI, $_SERVER;
+  global $HTTP_HOST, $SERVER_PORT, $REQUEST_URI, $_SERVER;
 
-  if ( empty ( $SERVER_NAME ) )
-    $REQUEST_URI = $_SERVER["SERVER_NAME"];
+  if ( empty ( $HTTP_HOST ) )
+    $HTTP_HOST = $_SERVER["HTTP_HOST"];
   if ( empty ( $SERVER_PORT ) )
-    $REQUEST_URI = $_SERVER["SERVER_PORT"];
+    $SERVER_PORT = $_SERVER["SERVER_PORT"];
   if ( empty ( $REQUEST_URI ) )
     $REQUEST_URI = $_SERVER["REQUEST_URI"];
 
@@ -101,11 +101,11 @@ function load_global_settings () {
   // If $server_url not set, then calculate one for them, then store it
   // in the database.
   if ( empty ( $GLOBALS["server_url"] ) ) {
-    if ( ! empty ( $SERVER_NAME ) && ! empty ( $REQUEST_URI ) ) {
+    if ( ! empty ( $HTTP_HOST ) && ! empty ( $REQUEST_URI ) ) {
       $ptr = strrpos ( $REQUEST_URI, "/" );
       if ( $ptr > 0 ) {
         $uri = substr ( $REQUEST_URI, 0, $ptr + 1 );
-        $server_url = "http://" . $SERVER_NAME;
+        $server_url = "http://" . $HTTP_HOST;
         if ( ! empty ( $SERVER_PORT ) && $SERVER_PORT != 80 )
           $server_url .= ":" . $SERVER_PORT;
         $server_url .= $uri;
