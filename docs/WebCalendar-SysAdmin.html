@@ -297,7 +297,7 @@ to access the database.
 <blockquote>
 <b>sqlplus</b><br />
 SQL&gt; <b>CREATE USER webcalendar IDENTIFIED BY webcal01
-DEFAULT tableSPACE webcalendar;</b><br />
+DEFAULT TABLESPACE webcalendar;</b><br />
 SQL&gt; <b>GRANT dba TO webcalendar;</b><br />
 SQL&gt; <b>quit</b>
 </blockquote>
@@ -1347,6 +1347,9 @@ read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.
 
 <pre>
 $Log$
+Revision 1.16  2004/07/14 16:44:25  cknudsen
+fixed strange lowercase/uppercase problem
+
 Revision 1.15  2004/07/14 00:27:55  cknudsen
 minor changes...
 
