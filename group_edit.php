@@ -44,7 +44,7 @@ if ( $newgroup ) {
 
 <table style="border-width:0px;">
 <tr><td style="font-weight:bold;"><?php etranslate("Group name")?>:</td>
-  <td><input name="groupname" size="20" value="<?php echo htmlspecialchars ( $groupname );?>" /></td></tr>
+  <td><input type="text" name="groupname" size="20" value="<?php echo htmlspecialchars ( $groupname );?>" /></td></tr>
 <?php if ( ! $newgroup ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
 <?php etranslate("Updated"); ?>:</td>
