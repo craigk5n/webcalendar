@@ -662,7 +662,7 @@ if ( $single_user == "N" && $show_participants ) {
 <table>
 <?php if ( $disable_repeating_field != "Y" ) { ?>
 <tr style="vertical-align:top;"><td class="tooltip" title="<?php etooltip("repeat-type-help")?>">
-	<?php etranslate("Repeat Type")?>:</td><td>
+	<label for="rpt_type"><?php etranslate("Repeat Type")?>:</label></td><td>
 	<select name="rpt_type" id="rpttype" onchange="rpttype_handler()">
 	<?php
 		echo "<option value=\"none\"" . 
@@ -717,28 +717,28 @@ if ( $single_user == "N" && $show_participants ) {
 			echo "<label><input type=\"checkbox\" name=\"rpt_sun\" value=\"y\"" 
 				. (!empty($rpt_sun)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Sunday") . 
 			"</label>\n";
-			echo "<label><input type=\"checkbox\" name=\"rpt_mon\" value=\"y\"" 
-				. (!empty($rpt_mon)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Monday") . 
+		echo "<label><input type=\"checkbox\" name=\"rpt_mon\" value=\"y\"" 
+			. (!empty($rpt_mon)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Monday") . 
+		"</label>\n";
+		echo "<label><input type=\"checkbox\" name=\"rpt_tue\" value=\"y\"" 
+			. (!empty($rpt_tue)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Tuesday") . 
+		"</label>\n";
+		echo "<label><input type=\"checkbox\" name=\"rpt_wed\" value=\"y\"" 
+			. (!empty($rpt_wed)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Wednesday") . 
+		"</label>\n";
+		echo "<label><input type=\"checkbox\" name=\"rpt_thu\" value=\"y\"" 
+			. (!empty($rpt_thu)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Thursday") . 
+		"</label>\n";
+		echo "<label><input type=\"checkbox\" name=\"rpt_fri\" value=\"y\"" 
+			. (!empty($rpt_fri)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Friday") . 
+		"</label>\n";
+		echo "<label><input type=\"checkbox\" name=\"rpt_sat\" value=\"y\"" 
+			. (!empty($rpt_sat)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Saturday") . 
+		"</label>\n";
+		if( $WEEK_START == 1)
+			echo "<label><input type=\"checkbox\" name=\"rpt_sun\" value=\"y\"" 
+				. (!empty($rpt_sun)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Sunday") . 
 			"</label>\n";
-			echo "<label><input type=\"checkbox\" name=\"rpt_tue\" value=\"y\"" 
-				. (!empty($rpt_tue)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Tuesday") . 
-			"</label>\n";
-			echo "<label><input type=\"checkbox\" name=\"rpt_wed\" value=\"y\"" 
-				. (!empty($rpt_wed)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Wednesday") . 
-			"</label>\n";
-			echo "<label><input type=\"checkbox\" name=\"rpt_thu\" value=\"y\"" 
-				. (!empty($rpt_thu)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Thursday") . 
-			"</label>\n";
-			echo "<label><input type=\"checkbox\" name=\"rpt_fri\" value=\"y\"" 
-				. (!empty($rpt_fri)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Friday") . 
-			"</label>\n";
-			echo "<label><input type=\"checkbox\" name=\"rpt_sat\" value=\"y\"" 
-				. (!empty($rpt_sat)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Saturday") . 
-			"</label>\n";
-			if( $WEEK_START == 1)
-				echo "<label><input type=\"checkbox\" name=\"rpt_sun\" value=\"y\"" 
-					. (!empty($rpt_sun)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Sunday") . 
-				"</label>\n";
 	?></td></tr>
 </table>
 </div>
