@@ -677,7 +677,7 @@ NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
 NonUser: NonUser Calendars
 Calendar ID: Calendar ID
 Add New NonUser Calendar: Add New NonUser Calendar
-
+word characters only: can only contain word characters (a-zA-Z_0-9)
 
 ###############################################
 # Page: help_pref.php
