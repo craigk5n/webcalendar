@@ -1,4 +1,15 @@
 Version 0.9.46/CVS+dev (?? ??? 2004)
+  - Updated reading of settings.php in config.php to strip off white
+    space.  Added new function, dieMiserableDeath(), that can be called
+    before functions.php is loaded.  We will typlically use this function
+    when there is a fatal error in reading settings.php or a db connect
+    problem.  (It will show a link to the Troubleshooting section of the
+    SysAdmin Guide, which will hopefully cut down on some of the help/support
+    requests.)
+  - Fixed bug: we were opening two db connections (one in validate.php and
+    then another in connect.php) for web-based user authentication.  (Oops)
+  - Added database sanity check (can we access webcal_config table) that
+    was being skipped for web-based user authentication.
   - Updated default color scheme (modified values in tables-*.sql).
     (Will only apply to new installs.)
   - Fixed bug: vCal import was completely broken (looking for type 'VCAL' when
@@ -14,7 +25,7 @@ Version 0.9.46/CVS+dev (?? ??? 2004)
     some circumstances.
   - Updated upgrading docs so they're xhtml valid
   - Updated admin & user docs to reflect new content, correct minor typos, and
-  minor clarification of phrasing/language.
+      minor clarification of phrasing/language.
   - Making edit_entry.php valid xhtml & slightly easier to read
   - Fixed bug 1102167: custom header when non-admin user
   - When html is allowed in event description, still replace newline with

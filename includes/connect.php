@@ -7,57 +7,26 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 // db settings are in config.php
 
 // Establish a database connection.
-$c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
-if ( ! $c ) {
-  echo "Error connecting to database:<blockquote>" .
-    dbi_error () . "</blockquote>\n";
-  exit;
-}
-
-// First, do a sanity check.  Make sure we can access webcal_config table.
-$res = dbi_query ( "SELECT COUNT(cal_value) FROM webcal_config",
-  false, false );
-if ( $res ) {
-  if ( $row = dbi_fetch_row ( $res ) ) {
-    // Found database.  All is peachy.
-    dbi_free_result ( $res );
-  } else {
-    // Error accessing table.
-    // User has wrong db name or has not created tables.
-    // Note: cannot translate this since we have not included translate.php yet.
-    dbi_free_result ( $res );
-    echo "<html><head><title>Database error</title>\n" .
-      "</head>\n<body><h2>Database error</h2><p>" .
-      "Cannot find WebCalendar tables in database '$db_database' " .
-      "using db login '$db_login' on db server '$db_host'.<br/><br/>\n" .
-      "Have you created the database tables as specified in the " .
-      "<a href=\"docs/WebCalendar-SysAdmin.html\" target=\"other\">WebCalendar " .
-      "System Administrator's Guide</a>?</p></body></html>\n";
-    exit;
+// This may have happened in validate.php, depending on settings.
+// If not, do it now.
+if ( empty ( $c ) ) {
+  $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
+  if ( ! $c ) {
+    dieMiserableDeath (
+      "Error connecting to database:<blockquote>" .
+      dbi_error () . "</blockquote>\n" );
   }
-} else {
-  // Error accessing table.
-  // User has wrong db name or has not created tables.
-  // Note: cannot translate this since we have not included translate.php yet.
-  echo "<html><head><title>Database error</title>\n" .
-    "</head>\n<body><h2>Database error</h2><p>" .
-    "Cannot find WebCalendar tables in database '$db_database' " .
-    "using db login '$db_login' on db server '$db_host'.<br/><br/>\n" .
-    "Have you created the database tables as specified in the " .
-    "<a href=\"docs/WebCalendar-SysAdmin.html\" target=\"other\">WebCalendar " .
-    "System Administrator's Guide</a>?</p></body></html>\n";
-  exit;
+  // Do a sanity check on the database, making sure we can
+  // at least access the webcal_config table.
+  doDbSanityCheck ();
 }
 
 // If we are in single user mode, make sure that the login selected is
 // a valid login.
 if ( $single_user == 'Y' ) {
   if ( empty ( $single_user_login ) ) {
-    echo "<html><head><title>Setup error</title>\n" .
-    "</head>\n<body><h2>Setup error</h2><p>" .
-    "You have not defined <tt>single_user_login</tt> in " .
-    "<tt>includes/settings.php</tt></p></body></html>\n";
-    exit;
+    dieMiserableDeath ( "You have not defined <tt>single_user_login</tt> in " .
+      "<tt>includes/settings.php</tt>" );
   }
   $res = dbi_query ( "SELECT COUNT(*) FROM webcal_user " .
     "WHERE cal_login = '$single_user_login'" );
@@ -70,10 +39,10 @@ if ( $single_user == 'Y' ) {
     if ( ! dbi_query ( "INSERT INTO webcal_user ( cal_login, " .
       "cal_passwd, cal_is_admin ) VALUES ( '$single_user_login', " .
        "'" . md5($single_user_login) . "', 'Y' )" ) ) {
-      echo "<b>Error:</b> user <tt>$single_user_login</tt> does not " .
-      "exist in webcal_user table and was not able to add it for you:<br />" .
-      dbi_error ();
-      exit;
+      dieMiserableDeath ( "User <tt>$single_user_login</tt> does not " .
+        "exist in <tt>webcal_user</tt> table and was not able to add " .
+        "it for you:<br /><blockquote>" .
+        dbi_error () . "</blockquote>" );
     }
     // User was added... should we tell them?
   }
