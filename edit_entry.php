@@ -1,4 +1,19 @@
 <?php
+/*
+ * $Id$
+ *
+ * Description:
+ *	Presents page to edit/add an event
+ *
+ * Notes:
+ *	If htmlarea is installed, users can use WYSIWYG editing.
+ *	SysAdmin must enable HTML for event full descriptions.
+ *	The htmlarea files should be installed so that the htmlarea.php
+ *	file is in ../includes/htmlarea/htmlarea.php
+ *	The htmlarea code can be downloaded from:
+ *		http://www.htmlarea.com
+ *
+ */
 include_once 'includes/init.php';
 include_once 'includes/site_extras.php';
 load_user_categories ();
@@ -198,9 +213,26 @@ else
 if ( empty ( $cal_date ) || ! $cal_date )
   $cal_date = $thisdate;
 
-$BodyX = 'onload="timetype_handler()"';
-$INC = array('js/edit_entry.php','js/visible.php');
-print_header($INC,'',$BodyX);
+if ( $allow_html_description == "Y" ){
+  // Allow HTML in description
+  // If they have installed the htmlarea widget, make use of it
+  $textareasize = 'rows="15" cols="50"';
+  if ( file_exists ( "includes/htmlarea/htmlarea.php" ) ) {
+    $BodyX = 'onload="initEditor();timetype_handler()"';
+    $INC = array ( 'htmlarea/htmlarea.php', 'js/edit_entry.php',
+      'js/visible.php', 'htmlarea/core.php' );
+  } else {
+    // No htmlarea files found...
+    $BodyX = 'onload="timetype_handler()"';
+    $INC = array ( 'js/edit_entry.php', 'js/visible.php' );
+  }
+} else {
+  $textareasize = 'rows="5" cols="40"';
+  $BodyX = 'onload="timetype_handler()"';
+  $INC = array('js/edit_entry.php','js/visible.php');
+}
+
+print_header ( $INC, '', $BodyX );
 ?>
 
 <h2><?php if ( $id ) echo translate("Edit Entry"); else echo translate("Add Entry"); ?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
@@ -243,9 +275,22 @@ if ( $is_assistant || $is_nonuser_admin )
 			<tr><td style="width:14%;" class="tooltip" title="<?php etooltip("brief-description-help")?>">
 				<label for="entry_brief"><?php etranslate("Brief Description")?>:</label></td><td>
 				<input type="text" name="name" id="entry_brief" size="25" value="<?php echo htmlspecialchars ( $name ); ?>" /></td><td style="width:35%;">
+			</td></tr>
+			<tr><td style="vertical-align:top;" class="tooltip" title="<?php etooltip("full-description-help")?>">
+				<label for="entry_full"><?php etranslate("Full Description")?>:</label></td><td>
+				<textarea name="description" id="entry_full" <?php echo $textareasize;?>><?php echo htmlspecialchars ( $description ); ?></textarea></td><td style="vertical-align:top;">
+				<?php if ( $disable_access_field != "Y" ) { ?>
+					<div class="tooltip" title="<?php etooltip("access-help")?>">
+						<label for="entry_access"><?php etranslate("Access")?>:</label>
+						<select name="access" id="entry_access">
+							<option value="P"<?php if ( $access == "P" || ! strlen ( $access ) ) echo " selected=\"selected\"";?>><?php etranslate("Public")?></option>
+							<option value="R"<?php if ( $access == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Confidential")?></option>
+						</select>
+					</div><br />
+				<?php } ?>
 				<?php if ( ! empty ( $categories ) ) { ?>
-					<div style="float:right;" class="tooltip" title="<?php etooltip("category-help")?>">
-						<label for="entry_categories"><?php etranslate("Category")?>:&nbsp;</label>
+					<tr><td class="tooltip" title="<?php etooltip("category-help")?>">
+						<label for="entry_categories"><?php etranslate("Category")?>:&nbsp;</label></td><td>
 						<select name="cat_id" id="entry_categories">
 							<option value=""><?php etranslate("None")?></option>
 							<?php
@@ -256,30 +301,17 @@ if ( $is_assistant || $is_nonuser_admin )
 								}
 							?>
 						</select>
-					</div>
+					</td></tr>
 				<?php } //end if (! empty ($categories)) ?>
-			</td></tr>
-			<tr><td style="vertical-align:top;" class="tooltip" title="<?php etooltip("full-description-help")?>">
-				<label for="entry_full"><?php etranslate("Full Description")?>:</label></td><td>
-				<textarea name="description" id="entry_full" rows="5" cols="40"><?php echo htmlspecialchars ( $description ); ?></textarea></td><td style="vertical-align:top;">
-				<?php if ( $disable_access_field != "Y" ) { ?>
-					<div style="float:right; padding-bottom:5px;" class="tooltip" title="<?php etooltip("access-help")?>">
-						<label for="entry_access"><?php etranslate("Access")?>:</label>
-						<select name="access" id="entry_access">
-							<option value="P"<?php if ( $access == "P" || ! strlen ( $access ) ) echo " selected=\"selected\"";?>><?php etranslate("Public")?></option>
-							<option value="R"<?php if ( $access == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Confidential")?></option>
-						</select>
-					</div><br />
-				<?php } ?>
 				<?php if ( $disable_priority_field != "Y" ) { ?>
-					<div style="float:right;" class="tooltip" title="<?php etooltip("priority-help")?>">
-						<label for="entry_prio"><?php etranslate("Priority")?>:&nbsp;</label>
+					<tr><td class="tooltip" title="<?php etooltip("priority-help")?>">
+						<label for="entry_prio"><?php etranslate("Priority")?>:&nbsp;</label></td><td>
 						<select name="priority" id="entry_prio">
 							<option value="1"<?php if ( $priority == 1 ) echo " selected=\"selected\"";?>><?php etranslate("Low")?></option>
 							<option value="2"<?php if ( $priority == 2 || $priority == 0 ) echo " selected=\"selected\"";?>><?php etranslate("Medium")?></option>
 							<option value="3"<?php if ( $priority == 3 ) echo " selected=\"selected\"";?>><?php etranslate("High")?></option>
 						</select>
-					</div>
+					</td></tr>
 				<?php } ?>
 			</td></tr>
 </table>

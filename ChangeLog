@@ -1,4 +1,12 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Added patch 1076313: Added support for HTMLAREA (see www.htmlarea.com)
+    HTMLAREA is a WYSIWYG editor for HTML.
+    This can be enabled in the Full Description by enabling
+    HTML for full descrpitions in system settings and then installing
+    the HTMLAREA files on the server.  There should be a file
+    called .../includes/htmlarea/htmlarea.php when you have unzipped
+    the files.
+    (Thanks, Ray for this patch!)
   - Added "printer friendly" link in view event page
   - Updated admin docs to reflect updated info in readme.html & removed
   duplicate info from readme.html
