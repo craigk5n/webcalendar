@@ -41,8 +41,9 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( ! empty ( $override ) && ! empty ( $cal_date ) ) {
+    if ( ! empty ( $override ) && ! empty ( $date ) ) {
       // Leave $cal_date to what was set in URL with date=YYYYMMDD
+      $cal_date = $date;
     } else {
       $cal_date = $row[1];
     }
