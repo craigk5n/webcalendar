@@ -141,6 +141,13 @@ User sees only his groups: User sees only his groups
 Categories: Categories
 categories-enabled-help: Enables support for event categories.
 Categories enabled: Categories enabled
+Nonuser: Nonuser Calendars
+nonuser-enabled-help: If enabled, admins will have the option to add nonuser calendars
+Nonuser enabled: Nonuser Calendars Enabled
+nonuser-list-help: Where to display the nonuser calendars in the participant list
+Nonuser list: Display in participants list at
+Top: Top
+Bottom: Bottom
 Reports: Reports
 reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
 Reports enabled: Reports enabled

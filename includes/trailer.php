@@ -284,8 +284,9 @@ if ( $login != "__public__" ) {
     if ( $is_admin ) {
       echo " | <A CLASS=\"navlinks\" HREF=\"users.php\">" .
         translate ("Users") . "</A>\n";
-      echo " | <A CLASS=\"navlinks\" HREF=\"nonusers.php\">" .
-        translate ("NonUser") . "</A>\n";
+      if ($nonuser_enabled == "Y" )
+        echo " | <A CLASS=\"navlinks\" HREF=\"nonusers.php\">" .
+          translate ("NonUser") . "</A>\n";
       if ( $groups_enabled == "Y" )
         echo " | <A CLASS=\"navlinks\" HREF=\"groups.php\">" .
           translate ("Groups") . "</A>\n";
@@ -306,7 +307,7 @@ if ( $login != "__public__" ) {
     }
 
   }
-  $admincals = get_nonuser_cals ($login);
+  if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
   if ( $has_boss || $admincals[0] ) {
     echo "<B>";
     etranslate("Manage calendar of");

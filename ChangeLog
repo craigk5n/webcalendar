@@ -1,4 +1,5 @@
 Verion 0.9.42-devcvs (?? ??? 2003)
+  - Added admin options for nonuser calendars
   - Fixed bug 760236: Timezone Offset is buggy in edit_entry_handler.php
   - Added support for repeating events by weekday from end of month
     (as in Memorial Day, which is last Monday in May).

@@ -372,6 +372,19 @@ if ( $plugins_enabled == "Y" ) {
 
 
 
+<H3><?php etranslate("Nonuser")?></H3>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
+
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("nonuser-enabled-help")?>"><?php etranslate("Nonuser enabled")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_nonuser_enabled" VALUE="Y" <?php if ( $s["nonuser_enabled"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_nonuser_enabled" VALUE="N" <?php if ( $s["nonuser_enabled"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("nonuser-list-help")?>"><?php etranslate("Nonuser list")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_nonuser_at_top" VALUE="Y" <?php if ( $s["nonuser_at_top"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Top")?> <INPUT TYPE="radio" NAME="admin_nonuser_at_top" VALUE="N" <?php if ( $s["nonuser_at_top"] != "Y" ) echo "CHECKED";?>> <?php etranslate("Bottom")?></TD></TR>
+
+</TABLE></TD></TR></TABLE></TD></TR></TABLE>
+
+
+
 <H3><?php etranslate("Reports")?></H3>
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
 
