@@ -48,6 +48,8 @@ if ( $single_user == "Y" ) {
       //SetCookie ( "webcalendar_session", $encoded_login, 0, $cookie_path );
       $out .= "  <cookieName>webcalendar_session</cookieName>\n";
       $out .= "  <cookieValue>$encoded_login</cookieValue>\n";
+      if ( $is_admin )
+        $out .= "  <admin>1</admin>\n";
     } else {
       $out .= "  <error>Invalid login</error>\n";
     }
