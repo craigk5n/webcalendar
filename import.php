@@ -84,7 +84,7 @@ function print_user_list () {
 <tr><td>
 	<label for="importtype"><?php etranslate("Import format")?>:</label></td><td>
 		<select name="ImportType">
-			<option value="PALMDESKTOP">Palm Desktop</option>
+			<option value="PALMDESKTOP">Palm Desktop < v4.1.1</option>
 			<option value="vcal">vCal</option>
 			<option value="ICAL">iCal</option>
 		</select>
