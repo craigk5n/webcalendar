@@ -1,6 +1,6 @@
 $Id$
 
-Possible enhancements to add for 0.9.46:
+Possible enhancements to add for 1.1:
 
 Com
 ple     Description
@@ -72,4 +72,9 @@ Here are some other ideas for the next or perhaps later releases:
     (This has a very high cool factor.)
 [ ] Allow custom header/trailer to be evaluated as PHP or to be an include
 [ ] Don't allow the last admin user to be deleted
+[ ] Create an ActiveSync Service Provider that will enable MS Outlook
+    and PocketPC users to sync with WebCalendar.
+    Details on how to developer ActiveSync Service Providers:
+      http://msdn.microsoft.com/library/default.asp?url=/library/en-us/wceactsy/html/ceconunderstandingserviceproviders.asp
+      http://msdn.microsoft.com/library/default.asp?url=/library/en-us/wceactsy/html/cecondesignguidelinesforactivesyncsynchronizationserviceproviders.asp
 
