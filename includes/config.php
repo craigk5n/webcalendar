@@ -38,6 +38,7 @@ if ( empty ( $fd ) ) {
 }
 while ( ! feof ( $fd ) ) {
   $buffer = fgets ( $fd, 4096 );
+  $buffer = trim ( $buffer, "\r\n " );
   if ( preg_match ( "/^#/", $buffer ) )
     continue;
   if ( preg_match ( "/^<\?/", $buffer ) ) // start php code
