@@ -1,4 +1,5 @@
 Version 0.9.41dev (?? ??? ???)
+  - Added "timebar" view that shows users hours in a timebar.
   - Fixed timezone bug 686829: displays pm instead of am for midnight events
   - Fixed timezone bug 686789: TimeZone Error when servertime is midnight
   - Fixed timezone bug 648692: Problem with Timezone Offset
@@ -37,6 +38,7 @@ Version 0.9.41dev (?? ??? ???)
     since MySQL seems to barf on these.
   - Patch: 623394: Updated Italian translation
   - Updated German translation.
+  - Added Estonian translation.
 Version 0.9.40 (30 Nov 2002)
   - Added support for all-day events that will prevent any events from
     being added to that day (good for out-of-the-office/vacation).
