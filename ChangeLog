@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Updated trailer with title attribute for links
   - Added title attributes to time cells in view_d.php
   - Created styles for view_d.php
   - Fixed random border-rendering issues in week.php
