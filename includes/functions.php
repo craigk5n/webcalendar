@@ -170,7 +170,9 @@ for ( $i = 0; $i < count ( $offsets ); $i++ ) {
   *	the value used in the HTML form
   */
 function getPostValue ( $name ) {
-  if ( ! empty ( $_POST[$name] ) )
+  global $HTTP_POST_VARS;
+
+  if ( isset ( $_POST ) && is_array ( $_POST ) && ! empty ( $_POST[$name] ) )
     return $_POST[$name];
   if ( ! isset ( $HTTP_POST_VARS ) )
     return null;
@@ -193,7 +195,9 @@ function getPostValue ( $name ) {
   *	The value used in the HTML form (or URL)
   */
 function getGetValue ( $name ) {
-  if ( ! empty ( $_GET[$name] ) )
+  global $HTTP_GET_VARS;
+
+  if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) )
     return $_GET[$name];
   if ( ! isset ( $HTTP_GET_VARS ) )
     return null;
