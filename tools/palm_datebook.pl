@@ -27,17 +27,7 @@ $Entry->{RecordID}           =  Record ID in the Palm
 $Entry->{Status}             =  Identifies new and deleted records (status in datebook)
 $Entry->{Position}           =  Position in list?....Who Cares?
 $Entry->{StartTime}          =  In seconds since 1970
-$Entry->{StartMinute}        =  Minute event takes place
-$Entry->{StartHour}          =  Hour event takes place
-$Entry->{StartDay}           =  Day event takes place
-$Entry->{StartMonth}         =  Month event takes place
-$Entry->{StartYear}          =  Year event takes place
 $Entry->{EndTime}            =  In seconds since 1970
-$Entry->{EndMinute}          =  Minute event ends
-$Entry->{EndHour}            =  Hour event ends
-$Entry->{EndDay}             =  Day event ends
-$Entry->{EndMonth}           =  Month event ends
-$Entry->{EndYear}            =  Year event ends
 $Entry->{Description}        =  Description of event (string)
 $Entry->{Duration}           =  How long the event lasts (in minutes)
 $Entry->{Note}               =  Note (string)
@@ -51,9 +41,6 @@ $Entry->{Repeat}             =  Array containing repeat information (if repeat)
 $Entry->{Repeat}->{Interval}   =  1=daily,2=weekly,3=MonthlyByDate,4=MonthlyByDay,5=Yearly
 $Entry->{Repeat}->{Frequency}  =  How often event occurs. (1=every, 2=every other,etc.)
 $Entry->{Repeat}->{EndTime}    =  When the repeat ends (In seconds since 1970)
-$Entry->{Repeat}->{EndDay}     =  Day the repeat ends
-$Entry->{Repeat}->{EndMonth}   =  Month the repeat ends
-$Entry->{Repeat}->{EndYear}    =  Year the repeat ends
 $Entry->{Repeat}->{Exceptions} =  An exception to the repeat (In seconds since 1970)
 $Entry->{Repeat}->{RepeatDays} =  For Weekly: What days to repeat on (7 characters...y or n for each day)
 $Entry->{Repeat}->{DayNum}     =  For MonthlyByDay: Day of week (1=sun,2=mon,3=tue,4=wed,5=thu,6=fri,7=sat)
