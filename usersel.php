@@ -51,7 +51,7 @@ print_header($INC,'','',true);
 ?>
 
 <center>
-<form action="#">
+<form action="#" name="userselform">
 <table style="border-width:0px; width:100%;">
 <tr><td style="vertical-align:top;">
 <b><?php etranslate("Users"); ?>:</b><br />
