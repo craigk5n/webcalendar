@@ -39,6 +39,7 @@ Version 0.9.46/CVS+dev (?? ??? 2004)
   - Added support for automatic gradient background images for table cells.
   - Updated Japanese translation with support for 3 character sets
     now (Japanese-utf8, Japanese, Japanese-eucjp)
+  - Added Romanian translation
   - Updated French translation
   - Updated German translation
   - Updated Italian translation
