@@ -42,7 +42,7 @@ if ( $is_admin ) {
     echo "<blockquote><a href=\"layers.php?public=1\">" .
       translate("Click here") . "</a> " . 
       translate("to modify the layers settings for the") . " " .
-      translate($PUBLIC_ACCESS_FULLNAME);
+      translate($PUBLIC_ACCESS_FULLNAME) .
       "</blockquote>\n";
   }
 }
