@@ -254,10 +254,7 @@ function remember_this_view () {
   if ( empty ( $REQUEST_URI ) )
     $REQUEST_URI = $_SERVER["REQUEST_URI"];
 
-  if ( empty ( $server_url ) )
-    SetCookie ( "webcalendar_last_view", $REQUEST_URI );
-  else
-    SetCookie ( "webcalendar_last_view", $REQUEST_URI, 0, $server_url );
+  SetCookie ( "webcalendar_last_view", $REQUEST_URI );
 }
 
 // Get the last page stored using above function.
@@ -1716,7 +1713,8 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
         //okay we've narrowed it down to a day, now I just gotta check the time...
         //I hope this is right...
         $row = $list[$j];
-        if ( $row['cal_id'] != $id && $row['cal_ext_for_id'] != $id ) {
+        if ( $row['cal_id'] != $id && ( empty ( $row['cal_ext_for_id'] ) || 
+          $row['cal_ext_for_id'] != $id ) ) {
           $time2 = $row['cal_time'];
           $duration2 = $row['cal_duration'];
           if ( times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
