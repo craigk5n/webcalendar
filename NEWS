@@ -1,5 +1,7 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1169078: Bad function call in import_handler.php
+      1168092: Overlapping events display problem
       1167281: View_l loses colour for "today"
       1167790: class="selectedday" assignments in other than day.php
       1162486: Path exposure issue with view_entry.php
