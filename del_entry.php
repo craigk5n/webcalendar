@@ -74,6 +74,7 @@ if ( $id > 0 && strlen ( $error ) == 0 ) {
     // Email participants that the event was deleted
   
     $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id";
+    $res = dbi_query ( $sql );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] != $del_login )
@@ -95,7 +96,8 @@ if ( $id > 0 && strlen ( $error ) == 0 ) {
     for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
       $do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
       user_load_variables ( $partlogin[$i], "temp" );
-      if ( $do_send == "Y" && strlen ( $tempemail ) ) {
+      if ( $partlogin[$i] != $login && $do_send == "Y" &&
+        strlen ( $tempemail ) ) {
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
           translate("An appointment has been canceled for you by") .
           " " . $login_fullname .  ". " .
@@ -104,7 +106,7 @@ if ( $id > 0 && strlen ( $error ) == 0 ) {
           $extra_hdrs = "From: $login_email\nX-Mailer: " . translate("Title");
         else
           $extra_hdrs = "From: $email_fallback_from\nX-Mailer: " . translate("Title");
-        mail ( $tempemail[$i],
+        mail ( $tempemail,
           translate("Title") . " " . translate("Notification") . ": " . $name,
           $msg, $extra_hdrs );
       }
