@@ -1,4 +1,6 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Fixed bug 923129: Used "unnamed view" for views without a name
+    so user can edit/delete the view.
   - Updated README.html to not assume user has downloaded user manual.
     Instead link to the download area on SourceForge.
   - Fixed bug 903285: PHP balise problem <? ?>

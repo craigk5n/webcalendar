@@ -25,6 +25,8 @@ if ( empty ( $id ) ) {
     if ( $views[$i]['cal_view_id'] == $id ) {
       $newview = false;
       $viewname = $views[$i]["cal_name"];
+      if ( empty ( $viewname ) )
+        $viewname = translate("Unnamed View");
       $viewtype = $views[$i]["cal_view_type"];
     }
   }
