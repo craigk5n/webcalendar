@@ -4,7 +4,6 @@ if ( empty ( $PHP_SELF ) )
 if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
-
 // php-dbi.php
 //
 // (C) Craig Knudsen, cknudsen@radix.net, http://www.radix.net/~cknudsen/
@@ -31,6 +30,8 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 //	(Some db APIs don't support xxx_fetch_array().)
 //
 // History:
+//	19-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
+//			Add option for verbose error messages.
 //	19-Jan-2004	Craig Knudsen <cknudsen@cknudsen.com>
 //			Added mssql support
 //			Code from raspail@users.sourceforge.net
@@ -48,9 +49,14 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 //	23-Feb-2000	Craig Knudsen <cknudsen@radix.net>
 //			Initial release
 //
-
 // Limitations:
 // Fetched rows are returned in non-associative arrays.
+
+
+// Enable the following to show the actual database error in the browser.
+// It is more secure to not show this info, so this should only be turned
+// on for debugging purposes.
+$phpdbiVerbose = false;
 
 // Open up a database connection
 // Always do a pooled connection if the db supports it
@@ -194,22 +200,22 @@ function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
     $res = mysql_query ( $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query." .
-//         dbi_error() . "\n\n<br />\n" . $sql .
-      "", $fatalOnError, $showError );
+        $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : "" .
+        "", $fatalOnError, $showError );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
     $res = mysqli_query ( $GLOBALS["db_connection"], $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query." .
-//         dbi_error() . "\n\n<br />\n" . $sql .
-      "", $fatalOnError, $showError );
+        $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : "" .
+        "", $fatalOnError, $showError );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "mssql" ) == 0 ) {
     $res = mssql_query ( $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query." .
-//         dbi_error() . "\n\n<br />\n" . $sql .
-      "", $fatalOnError, $showError );
+        $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : "" .
+        "", $fatalOnError, $showError );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     $GLOBALS["oracle_statement"] =
@@ -221,8 +227,8 @@ function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
     $res =  pg_exec ( $GLOBALS["postgresql_connection"], $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query." .
-//         dbi_error() . "\n\n<br />\n" . $sql .
-      "", $fatalOnError, $showError );
+        $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : "" .
+        "", $fatalOnError, $showError );
     $GLOBALS["postgresql_numrows[\"$res\"]"] = pg_numrows ( $res );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
@@ -231,8 +237,8 @@ function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
     $res = ibase_query ( $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query." .
-//         dbi_error() . "\n\n<br />\n" . $sql .
-      "", $fatalOnError, $showError );
+        $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : "" .
+        "", $fatalOnError, $showError );
     return $res;
   } else {
     dbi_fatal_error ( "dbi_query(): db_type not defined." );

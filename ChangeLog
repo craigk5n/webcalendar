@@ -1,4 +1,7 @@
 Version 0.9.46/CVS+dev (?? ??? 2004)
+  - Added variable in includes/php-dbi.php ($phpdbiVerbose).  Default is false.
+    When set to true, the SQL statement will be displayed in the browser
+    when there is a database query error.
   - Added patch 1102478: Add mssql support to php-dbi.php
   - Fix bug: "Import" and "Export" in import.php were not being translated.
   - Fix bug: view_entry.php would not display links to edit/delete under
