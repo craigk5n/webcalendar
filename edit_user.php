@@ -1,4 +1,5 @@
 <?php
+/* $Id */
 include_once 'includes/init.php';
 
 if ( ! $is_admin )
@@ -23,7 +24,7 @@ if ( empty ( $user ) ) {
   }
 }
 
-print_header();
+print_header('', '', '', true);
 ?>
 
 <table style="border-width:0px;">
