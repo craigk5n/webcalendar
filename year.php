@@ -102,10 +102,11 @@ include "includes/translate.inc";
 <?php
   if ( ! strlen ( $single_user_login ) ) {
     echo "<BR>\n";
-    if ( strlen ( $lastname ) && strlen ( $firstname ) )
-      echo "$firstname $lastname";
-    else
-      echo $login;
+    if ( strlen ( $user ) ) {
+      user_load_variables ( $user, "user_" );
+      echo $user_fullname;
+    } else
+      echo $fullname;
   }
 ?>
 </FONT></TD>
