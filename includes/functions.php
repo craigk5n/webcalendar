@@ -1111,7 +1111,7 @@ function date_selection_html ( $prefix, $date ) {
   }
   $ret .= "</select>\n";
   $ret .= "<input type=\"button\" onclick=\"selectDate( '" .
-    $prefix . "day','" . $prefix . "month','" . $prefix . "year',$date)\" value=\"" .
+    $prefix . "day','" . $prefix . "month','" . $prefix . "year',$date, event)\" value=\"" .
     translate("Select") . "...\" />\n";
 
   return $ret;
