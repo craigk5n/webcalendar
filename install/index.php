@@ -372,7 +372,7 @@ li {
 <p>Current Status:</p>
 <ul>
 
-<li>Supported databases:
+<li>Supported databases for your PHP installation:
 <?php
   $dbs = array ();
   if ( function_exists ( "mysql_pconnect" ) )
