@@ -1,5 +1,6 @@
 Version 1.0RC3 (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1124461: Apostrophe in Text Aborts Translation
       1154854: Nonuser cals not showing up in views
       1154007: Highlight today in Year view
       1088772: Nonuser calendar w/ Public as default participant
