@@ -62,7 +62,7 @@ if ( ! empty ( $user ) ) {
 <?php } ?>
 </TD></TR></TABLE>
 
-<?php include_once "includes/trailer.inc"; ?>
+<?php include_once "includes/trailer.php"; ?>
 </BODY>
 </HTML>
 
