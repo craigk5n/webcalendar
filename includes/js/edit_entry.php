@@ -73,7 +73,8 @@ function validate_and_submit () {
   if ( changed ) {
     form.entry_changed.value = "yes";
   }
-
+//Add code to make HTMLArea code stick in TEXTAREA
+ if (typeof editor != "undefined") editor._textArea.value = editor.getHTML();
   // would be nice to also check date to not allow Feb 31, etc...
   document.forms[0].submit ();
   return true;
