@@ -160,6 +160,15 @@ function validate_and_submit () {
   return true;
 }
 
+
+function selectDate ( day, month, year, current ) {
+  url = "datesel.php?form=editentryform&day=" + day +
+    "&month=" + month + "&year=" + year;
+  if ( current > 0 )
+    url += '&date=' + current;
+  window.open( url, "DateSelection",
+    "width=200,height=160,resizable=yes,scrollbars=yes" );
+}
 </SCRIPT>
 <?php include "includes/styles.inc"; ?>
 </HEAD>
