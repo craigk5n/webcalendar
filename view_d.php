@@ -139,7 +139,7 @@ function TimeMatrix ($date,$participants) {
 ?>
 
 <br />
-<table class="viewd" style="width:<?php echo $total_pix;?>px;" cellspacing="0" cellpadding="0">
+<table class="viewd" style="width:<?php echo $total_pix;?>px; border-left: 1px solid <?php echo $TABLEBG;?>; border-right: 1px solid <?php echo $TABLEBG;?>;" cellspacing="0" cellpadding="0">
  <tr><td style="height:1px; background-color:#000000;" colspan="<?php echo $cols;?>"><img src="pix.gif" style="height:1px; width:100%;" alt="spacer" /></td></tr>
  <tr>
    <th class="row" style="width:<?php echo $participant_pix;?>px;"><?php etranslate("Participants");?></th>
