@@ -1,5 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Updated Finnish translation
+  - Added option to set LDAP_OPT_PROTOCOL_VERSION in user-ldap.php
 Version 1.0RC3 (11 Mar 2005)
  - Added 'Public Access' to Manage Calendar of: list, if Admin. 
  - Removed ODBC host:database option from php-dbi.php. If needed, host can be 
