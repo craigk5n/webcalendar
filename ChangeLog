@@ -1,3 +1,5 @@
+Version 1.0RC3 (?? ??? 2005)
+  - Purge events was not deleting from webcal_entry_ext_user table.
 Version 1.0RC2 (09 Feb 2005)
   - Fixed PHP warnings about undefined variable $enventinfo if empty.
   - Fixed issue where month.php and mini-calendar today highlight based on
