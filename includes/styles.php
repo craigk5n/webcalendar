@@ -50,7 +50,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 <style type="text/css">
 <!--
 body {
-	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
 	font-family: <?php echo $GLOBALS['FONTS']; ?>;
 	font-size: 12px;
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
@@ -66,7 +66,7 @@ body {
 //NOTE: these must appear ABOVE the 'printer' & all other 
 //link-related classes for those classes to work 
 ?>a {
-	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
 	text-decoration: none;
 }
 a:hover {
@@ -78,13 +78,14 @@ a:hover {
 	width: 15px;
 	height: 15px;
 }
-#category {
-  display: none; <?php // ^^^ Gets unhidden by includes/print_styles.css for printer-friendly pages ?>
+<?php //display:none; is unhidden by includes/print_styles.css for printer-friendly pages 
+?>#category {
+	display: none;
 	font-size: 18px;
 }
 #trailer {
-  margin: 0;
-  padding: 0;
+	margin: 0px;
+	padding: 0px;
 }
 #trailer form {
 	float: left;
@@ -94,13 +95,10 @@ a:hover {
 	margin-top: 5px;
 	margin-bottom: 25px;
 }
-#trailer form p {
+#trailer label {
 	margin: 0px;
 	padding: 0px;
 	font-weight: bold;
-}
-#trailer form p select {
-	font-weight: normal;
 }
 #monthform {
 	clear: left;
@@ -120,7 +118,7 @@ a:hover {
 <?php //printer-friendly links 
 ?>.printer {
 	font-size: 14px;
-	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
 	text-decoration: none;
 	clear: both;
 	display: block;
@@ -314,7 +312,7 @@ a.matrix img {
 }
 .navlinks {
   font-size: 14px;
-  color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+  color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
   text-decoration: none;
 }
 .aboutinfo {
@@ -335,14 +333,14 @@ a.matrix img {
 	border: 1px solid <?php echo ( $GLOBALS['POPUP_FG'] == "" ? "#000000" : $GLOBALS['POPUP_FG'] ); ?>;
 	padding: 3px;
 }
+.popup dl {
+  margin: 0px;
+  padding: 0px;
+}
 .popup dt {
 	font-weight: bold;
 	margin: 0px;
 	padding: 0px;
-}
-.popup dl {
-  margin: 0px;
-  padding: 0px;
 }
 .popup dd {
   margin-left: 20px;
@@ -532,8 +530,9 @@ td.month a:hover {
 #day .selectedday {
 	border: 1px solid #OOOOOO;
 }
-#day dl.desc {
-	display: none; <?php // This gets unhidden by includes/print_styles.css for printer-friendly pages ?>
+<?php //display: none; is unhidden by includes/print_styles.css for printer-friendly pages
+?>#day dl.desc {
+	display: none;
 	margin: 0px;
 	padding: 0px;
 }
@@ -595,9 +594,10 @@ td.month a:hover {
 	padding: 0px 3px;
 }
 <?php //keep font-size:12px; for IE6 rendering
+      //display: block; keeps the caption vertically close to the day names
 ?>#year .minical {
 	margin: 5px auto;
-	display: block; <?php // Keeps the caption vertically close to the day names ?>
+	display: block;
 }
 #year .minical caption {
 	margin: 0px auto;
@@ -632,28 +632,8 @@ td.month a:hover {
 ?>#viewl .minical tr.day,
 #month .minical tr.day th,
 #day .minical tr.day {
-	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
+	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
 	text-align: center;
-}
-<?php //cells that contain the numeric date 
-?>#viewl .minical td.numdate,
-#viewl .minical tr.numdate td,
-#month .minical td.numdate,
-#month .minical tr.numdate td {
-	text-align: right;
-}
-#viewl .minical td.numdate a,
-#month .minical td.numdate a {
-	font-size: 13px;
-	text-decoration: none;
-}
-#viewl .minical td.numdate a:hover,
-#month .minical td.numdate a:hover,
-#viewl .minical td.month a:hover,
-#month .minical td.month a:hover {
-	color: #0000FF;
-	font-size: 13px;
-	text-decoration: none;
 }
 #viewv table,
 #viewm table,
@@ -666,7 +646,7 @@ td.month a:hover {
 	border-collapse: collapse;
 }
 #viewt td.reg {
-	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
+	color: <?php echo $GLOBALS['TABLECELLFG']; ?>;
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 	border-top-width: 0px;
 	border-left-width: 0px;
@@ -708,10 +688,8 @@ td.month a:hover {
 #viewt td.today {
 	width: 90%;
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
-	border-top-width: 0px;
-	border-left-width: 0px;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
 }
 #viewm td.today,
