@@ -12,7 +12,7 @@ print_header($INC);
 <?php if ( empty ( $advanced ) ) { ?>
 
 <span style="font-weight:bold;"><?php etranslate("Keywords")?>:</span>
-<input name="keywords" size="30" />
+<input type="text" name="keywords" size="30" />
 <input type="submit" value="<?php etranslate("Search")?>" />
 
 <br /><br />
