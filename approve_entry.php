@@ -4,13 +4,17 @@ load_user_categories();
 
 $error = "";
 
+if ( $readonly == 'Y' ) {
+  $error = translate("You are not authorized");
+}
+
 // Allow administrators to approve public events
 if ( $public_access == "Y" && ! empty ( $public ) && $is_admin )
   $app_user = "__public__";
 else
   $app_user = ( $is_assistant || $is_nonuser_admin ? $user : $login );
 
-if ( $id > 0 ) {
+if ( empty ( $error ) && $id > 0 ) {
   if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'A' " .
     "WHERE cal_login = '$app_user' AND cal_id = $id" ) ) {
     $error = translate("Error approving event") . ": " . dbi_error ();
@@ -32,8 +36,15 @@ if ( $id > 0 ) {
   }
 }
 
-if ( $ret == "list" )
-  do_redirect ( "list_unapproved.php?user=$app_user" );
-else
-  do_redirect ( "view_entry.php?id=$id&amp;user=$app_user" );
+if ( empty ( $error ) ) {
+  if ( $ret == "list" )
+    do_redirect ( "list_unapproved.php?user=$app_user" );
+  else
+    do_redirect ( "view_entry.php?id=$id&amp;user=$app_user" );
+  exit;
+}
+print_header ();
+echo "<h2>" . translate("Error") . "</h2>\n";
+echo "<p>" . $error . "</p>\n";
+print_trailer ();
 ?>

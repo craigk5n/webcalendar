@@ -41,6 +41,9 @@ if ( $res ) {
   }
 }
 
+if ( $readonly == 'Y' )
+  $cat_edit = false;
+
 if ( ! $can_edit ) {
   $error = translate ( "You are not authorized" );
 }
