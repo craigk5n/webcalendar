@@ -44,9 +44,9 @@ if ( $newview ) {
 ?>
 
 <table style="border-width:0px;">
-<tr><td style="font-weight:bold;"><?php etranslate("View Name")?>:</td>
+<tr><td><label><?php etranslate("View Name")?>:</label></td>
   <td><input name="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>" /></td></tr>
-<tr><td style="font-weight:bold;"><?php etranslate("View Type")?>:</td>
+<tr><td><label><?php etranslate("View Type")?>:</label></td>
   <td><select name="viewtype">
       <option value="D" <?php if ( $viewtype == "D" ) echo " selected=\"selected\"";?>><?php etranslate("Day"); ?></option>
       <option value="W" <?php if ( $viewtype == "W" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Users horizontal)"); ?></option>
@@ -55,10 +55,10 @@ if ( $newview ) {
       <option value="T" <?php if ( $viewtype == "T" ) echo " selected=\"selected\"";?>><?php etranslate("Month (Timebar)"); ?></option>
       <option value="M" <?php if ( $viewtype == "M" ) echo " selected=\"selected\"";?>><?php etranslate("Month (side by side)"); ?></option>
       <option value="L" <?php if ( $viewtype == "L" ) echo " selected=\"selected\"";?>><?php etranslate("Month (on same calendar)"); ?></option>
-      </select>&nbsp;<a href="docs/preview-views.html" target="_blank">(<?php etranslate("preview"); ?>)</a>
+      </select>&nbsp;<a class="nav" href="docs/preview-views.html" target="_blank">(<?php etranslate("preview"); ?>)</a>
       </td></tr>
-<tr><td style="verical-align:top; font-weight:bold;">
-<?php etranslate("Users"); ?>:</td>
+<tr><td valign="top"><label>
+<?php etranslate("Users"); ?>:</label></td>
 <td>
 <select name="users[]" size="10" multiple="multiple">
 <?php
