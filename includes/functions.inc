@@ -243,7 +243,7 @@ function print_entry ( $id, $date, $time, $duration,
   if ( ! $hide_icons ) {
     $divname = "eventinfo-$id-$key";
     $key++;
-    echo "<A CLASS=\"$class\" HREF=\"view_entry.php?id=$id";
+    echo "<A CLASS=\"$class\" HREF=\"view_entry.php?id=$id&date=$date";
     if ( strlen ( $user ) > 0 )
       echo "&user=" . $user;
     echo "\" onMouseOver=\"window.status='" . translate("View this entry") .
@@ -1065,7 +1065,8 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
 
 
   if ( ! $hide_icons ) {
-    $hour_arr[$ind] .= "<A CLASS=\"$class\" HREF=\"view_entry.php?id=$id";
+    $hour_arr[$ind] .=
+      "<A CLASS=\"$class\" HREF=\"view_entry.php?id=$id&date=$date";
     if ( strlen ( $GLOBALS["user"] ) > 0 )
       $hour_arr[$ind] .= "&user=" . $GLOBALS["user"];
     $hour_arr[$ind] .= "\" onMouseOver=\"window.status='" .
@@ -1189,7 +1190,8 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
 
 
   if ( ! $hide_icons ) {
-    $hour_arr[$ind] .= "<A CLASS=\"$class\" HREF=\"view_entry.php?id=$id";
+    $hour_arr[$ind] .=
+      "<A CLASS=\"$class\" HREF=\"view_entry.php?id=$id&date=$date";
     if ( strlen ( $GLOBALS["user"] ) > 0 )
       $hour_arr[$ind] .= "&user=" . $GLOBALS["user"];
     $hour_arr[$ind] .= "\" onMouseOver=\"window.status='" .
