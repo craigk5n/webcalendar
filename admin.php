@@ -119,8 +119,8 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 		<label><input type="radio" name="admin_CUSTOM_TRAILER" value="N" <?php if ( $s["CUSTOM_TRAILER"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>&nbsp;&nbsp;
 		<input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=T','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
 	</td></tr>
-	<tr><td class="tooltip">
-		<label for="admin_startview" title="<?php etooltip("preferred-view-help");?>"><?php etranslate("Preferred view")?>:</label></td><td>
+	<tr><td class="tooltip" title="<?php etooltip("preferred-view-help");?>">
+		<label for="admin_startview"><?php etranslate("Preferred view")?>:</label></td><td>
 		<select name="admin_STARTVIEW" id="admin_startview">
 			<option value="day" <?php if ( $s["STARTVIEW"] == "day" ) echo " selected=\"selected\"";?>><?php etranslate("Day")?></option>
 			<option value="week" <?php if ( $s["STARTVIEW"] == "week" ) echo " selected=\"selected\"";?>><?php etranslate("Week")?></option>
@@ -233,8 +233,8 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<label><input type="radio" name="admin_TIME_FORMAT" value="24" <?php if ( $s["TIME_FORMAT"] != "12" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("24 hour")?></label>
 </td></tr>
 
-<tr><td class="tooltip">
-	<label for="admin_time_int" title="<?php etooltip("time-interval-help")?>"><?php etranslate("Time interval")?>:</label></td><td>
+<tr><td class="tooltip" title="<?php etooltip("time-interval-help")?>">
+	<label for="admin_time_int"><?php etranslate("Time interval")?>:</label></td><td>
 	<select name="admin_TIME_SLOTS" id="admin_time_int">
 		<option value="24" <?php if ( $s["TIME_SLOTS"] == "24" ) echo " selected=\"selected\""?>>1 <?php etranslate("hour")?></option>
 		<option value="48" <?php if ( $s["TIME_SLOTS"] == "48" ) echo " selected=\"selected\""?>>30 <?php etranslate("minutes")?></option>

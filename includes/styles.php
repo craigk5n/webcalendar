@@ -255,27 +255,11 @@ a.matrix img {
   background-color: <?php echo $GLOBALS['CELLBG'];?>;
   vertical-align: top;
 }
-.tablecelldemo {
-  font-size: 10px;
-  width: 30px;
-  height: 30px;
-  background-color: <?php echo $GLOBALS['CELLBG'];?>;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-}
 .tablecellweekend {
   font-size: 12px;
   width: 14%;
   height: 75px;
   vertical-align: top;
-  background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-}
-.tablecellweekenddemo {
-  font-size: 10px;
-  width: 30px;
-  height: 30px;
   background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -869,6 +853,9 @@ tr.odd {
 	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
 	vertical-align: top;
 	height: 75px;
+}
+#pref #month table.main td {
+	height: 30px;
 }
 -->
 </style>
