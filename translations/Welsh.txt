@@ -17,8 +17,7 @@
 #
 #
 #
-# Translation last updated on 11-30-2002
-# Translation last updated on 02-07-2003
+# Translation last updated on 06-07-2003
 
 
 ###############################################
@@ -108,8 +107,6 @@ Public access can add events: Gall rhai gyda Mynediad Cyhoeddus ychwanegu digwyd
 #
 # << MISSING >>
 # Public access new events require approval:
-# English text: Public access new events require approval:
-#
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -306,6 +303,9 @@ Previous: Blaenorol
 #
 #
 # << MISSING >>
+# Admin mode:
+#
+# << MISSING >>
 # Assistant mode:
 Generate printer-friendly version: Cynhyrchu fersiwn addas i'w brintio
 Printer Friendly: Addas i'w brintio
@@ -361,6 +361,7 @@ Public: Cyhoeddus
 Confidential: Cyfrinachol
 category-help: Mae hwn yn dynodi dosbarth y digwyddiad.
 Category: Dosbarth
+None: Dim 
 days: diwrnod
 before event: cyn y digwyddiad
 participants-help: Rhestrir y defnyddwyr sydd a cofnod o'r digwyddiad.
@@ -375,7 +376,6 @@ Participants: Cyfranogwyr
 # External Participants:
 repeat-type-help: Dewiswch pa more aml y dylsai'r digwyddiad ailgyflawni. Wrth dewis <I>Misol (wrth dydd o'r wythnos)</I> mi all digwyddiad ailgyflawni ar y Llun 1af o'r mis, 3ydd Iau o'r mis, ayyb.  Wrth dewis <I>Misol (wrth dyddiad)</I> mi all digwyddiad ailgyflawni ar yr un diwrnod o'r mis (e.e. y 3ydd) 
 Repeat Type: Amlder Ailgyflawni
-None: Dim 
 Daily: Dyddiol
 Weekly: Wythnosol
 Monthly: Misol
@@ -479,6 +479,9 @@ Modified since: Newidwyd ers
 ###############################################
 # Page: export_handler.php
 #
+#
+# << MISSING >>
+# export format not defined or incorrect:
 
 
 ###############################################
@@ -538,6 +541,15 @@ to modify the preferences for the Public Access calendar: i addasu yr optiynau a
 # << MISSING >>
 # server time:
 Default Category: Dosbarth Arferol
+#
+# << MISSING >>
+# When I am the boss:
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# I want to approve events:
 Sun: Sul
 Mon: Llu
 Tue: Maw
@@ -747,6 +759,9 @@ Add to My Calendar: Ychwanegu i Fy Nghalendr
 Email all participants: E-bost at bob aelod
 Show activity log: Dangos cofnod gweithgarwch
 Hide activity log: Cyddio cofnod gweithgarwch
+#
+# << MISSING >>
+# Export this entry to:
 
 
 ###############################################
@@ -774,6 +789,41 @@ Add View: Ychwanegu Golwg
 Edit View: Newid Golwg
 View Name: Enw Golwg
 View Type: Math Golwg
+#
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# NONUSER_PREFIX not set:
+# English text: NONUSER_PREFIX has not been set in config.php.
+#
+#
+# << MISSING >>
+# NonUser:
+# English text: NonUser Calendars
+#
+#
+# << MISSING >>
+# Calendar ID:
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: nonusers_handler.php
+#
 
 
 ###############################################
@@ -806,10 +856,15 @@ Private: Preifat
 #
 #
 # << MISSING >>
-# Yours assistants:
+# Assistants:
 #
 # << MISSING >>
-# Assistants:
+# Yours assistants:
+
+
+###############################################
+# Page: view_t.php
+#
 
 
 ###############################################
@@ -927,11 +982,6 @@ Send Reminder: Anfoner atgofiad
 
 
 ###############################################
-# Page: includes/init.php
-#
-
-
-###############################################
 # Page: includes/js.php
 #
 
@@ -947,15 +997,18 @@ Send Reminder: Anfoner atgofiad
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: tools/send_reminders.php
+# Page: includes/js/export.php
 #
-This is a reminder for the event detailed below.: Y mae hwn yn eich atgoffa o'r digwydiad gyda'r manylion isod.
-Reminder: Atgofiad
 
 
 ###############################################
@@ -1005,11 +1058,6 @@ Invalid color: Lliw annerbyniol
 
 
 ###############################################
-# Page: includes/js/export.php
-#
-
-
-###############################################
 # Page: includes/js/popups.php
 #
 
@@ -1032,3 +1080,15 @@ Invalid color: Lliw annerbyniol
 ###############################################
 # Page: includes/js/views_edit.php
 #
+
+
+###############################################
+# Page: includes/js/view_entry.php
+#
+
+
+###############################################
+# Page: tools/send_reminders.php
+#
+This is a reminder for the event detailed below.: Y mae hwn yn eich atgoffa o'r digwydiad gyda'r manylion isod.
+Reminder: Atgofiad

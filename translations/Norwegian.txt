@@ -8,52 +8,12 @@
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=576931
 # Last update: 26 February 2003 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=693581
-
-
-###############################################
-# Page: activity_log.php
-#
-Activity Log: Aktivitetslogg
-User: Bruker
-Calendar: Kalender
-Date: Dato
-Time: Klokken
-Event: Aktitivitet
-Action: Handling
-Event created: Aktivitet lagd
-Event approved: Aktivitet godkjent
-Event rejected: Aktivitet avvist
-Event updated: Aktivitet oppdatert
-Event deleted: Aktivitet slettet
-Notification sent: Medling sendt
-Reminder sent: Påminnelse sendt
-Database error: Feil i databasen
-Next: Nest
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Ugyldig avtale-ID
-This is a private event and may not be added to your calendar.: Dette er en privat avtale og kan ikke legges til din kalender.
-Error adding event: Feil ved innlegging av avtale
+# Translation last updated on 06-07-2003
 
 
 ###############################################
 # Page: admin.php
 #
-Server URL is required: URL for server er påkrevd
-Server URL must end with '/': URL for server må slutte på '/'
-Invalid color for document background: Ugyldig bakgrunnsfarge
-Invalid color for document title: Ugyldig tittelfarge
-Invalid color for table cell background: Ugyldig farge for tabellbakgrunn
-Invalid color for table grid: Ugyldig farge for tabellcelle
-Invalid color for table header background: Ugyldig farge for bakgrunnen i tabellheaderen
-Invalid color for table text background: Ugyldig farge for bakgrunnen til tabellteksten
-Invalid color for event popup background: Ugyldig farge for bakgrunnen i aktivitetspopups
-Invalid color for event popup text: Ugyldig farge for teksten i aktivitetspopups
-Invalid color for table cell background for today: Ugyldig farge for dagens tabellbakgrunn
-Color format should be '#RRGGBB': Fargen skal skrives som '#RRGGBB'
 System Settings: Systeminnstillinger
 You are not authorized: Du har ikke tillatelse
 Note: OBS
@@ -199,6 +159,35 @@ Event popup text: Tekst for aktivitetspopup
 
 
 ###############################################
+# Page: activity_log.php
+#
+Activity Log: Aktivitetslogg
+User: Bruker
+Calendar: Kalender
+Date: Dato
+Time: Klokken
+Event: Aktitivitet
+Action: Handling
+Event created: Aktivitet lagd
+Event approved: Aktivitet godkjent
+Event rejected: Aktivitet avvist
+Event updated: Aktivitet oppdatert
+Event deleted: Aktivitet slettet
+Notification sent: Medling sendt
+Reminder sent: Påminnelse sendt
+Database error: Feil i databasen
+Next: Nest
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Ugyldig avtale-ID
+This is a private event and may not be added to your calendar.: Dette er en privat avtale og kan ikke legges til din kalender.
+Error adding event: Feil ved innlegging av avtale
+
+
+###############################################
 # Page: admin_handler.php
 #
 Error: Feil
@@ -209,18 +198,6 @@ The following error occurred: Følgende feil oppstod
 # Page: approve_entry.php
 #
 Error approving event: Feil ved godkjenning av aktivitet
-
-
-###############################################
-# Page: assistant_edit.php
-#
-Yours assistants: Dine assistenter
-Assistants: Assistenter
-
-
-###############################################
-# Page: assistant_edit_handler.php
-#
 
 
 ###############################################
@@ -253,6 +230,9 @@ Previous: Forrige
 ###############################################
 # Page: day.php
 #
+#
+# << MISSING >>
+# Admin mode:
 Assistant mode: Assistent modus
 Generate printer-friendly version: Vis som utskriftsvennlig side
 Printer Friendly: Utskriftsvennlig
@@ -275,9 +255,6 @@ Notification: Påminnelse
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: Du har ikke oppgitt noen kort beskrivelse
-You have not entered a valid time of day: Du har ikke oppgitt noe gyldig tidspunkt
-The time you have entered begins before your preferred work hours.  Is this correct?: Tidspunktet du har angitt er før din foretrukne arbeidstid. Er dette korrekt?
 Edit Entry: Endre aktiviteten
 Add Entry: Legg til aktivitet
 brief-description-help: Her skal det stå en kort beskrivelse av aktiviteten - den blir vist når man står over aktiviteten i oversiktskalenderen.
@@ -305,6 +282,7 @@ Public: Offentlig
 Confidential: Privat
 category-help: Setter kategorien for aktiviteten
 Category: Kategori
+None: Aldri
 days: dager
 before event: før aktivitet
 participants-help: Vis deltagerne i dette innlegget.
@@ -313,7 +291,6 @@ external-participants-help: Angir en liste med deltagere for en aktivitet som
 External Participants: Eksterne deltagere
 repeat-type-help: Hvor ofte skal aktiviteten gjentas.
 Repeat Type: Gjenta type
-None: Aldri
 Daily: Daglig
 Weekly: Ukentlig
 Monthly: Månedlig
@@ -359,7 +336,6 @@ Cancel: Avbryt
 ###############################################
 # Page: edit_layer.php
 #
-Invalid color: Ugyldig farge
 Edit Layer: Editer lag
 Add Layer: Legg til lag
 Source: Kilde
@@ -418,6 +394,9 @@ Modified since: Endret etter
 ###############################################
 # Page: export_handler.php
 #
+#
+# << MISSING >>
+# export format not defined or incorrect:
 
 
 ###############################################
@@ -450,6 +429,37 @@ Add New Group: Legg til ny gruppe
 
 
 ###############################################
+# Page: pref.php
+#
+Preferences: Innstillinger
+to modify the preferences for the Public Access calendar: for å modifisere innstillingene for den offentlige kalenderen
+tz-help: Angir hvor mange timer servertid må justeres i forhold til lokaltid.
+Timezone Offset: Tidssoneavvik
+Add N hours to: Legg til N timer til
+Subtract N hours from: Trekk fra N timer fra
+same as: samme som
+server time: servertid
+Default Category: Standardkategori
+#
+# << MISSING >>
+# When I am the boss:
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# I want to approve events:
+Sun: Søn
+Mon: Man
+Tue: Tir
+Wed: Ons
+Thu: Tor
+Fri: Fre
+Sat: Lør
+Save Preferences: Lagre innstillinger
+
+
+###############################################
 # Page: help_bug.php
 #
 Report Bug: Rapporter feil
@@ -466,7 +476,6 @@ Adding/Editing Calendar Entries: Legg til/endre aktivitet
 #
 Help Index: Oversikt
 Layers: Lag
-Preferences: Innstillinger
 
 
 ###############################################
@@ -487,8 +496,13 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_pref.php
 #
-Default Category: Standardkategori
 default-category-help: Angir den kategorien en ny aktivitet skal ha som standard
+
+
+###############################################
+# Page: week.php
+#
+cont.: forts.
 
 
 ###############################################
@@ -539,37 +553,17 @@ cookies-note: <B>OBS:</B> Programmet krever at "cookies" er slått på
 
 
 ###############################################
-# Page: month.php
+# Page: view_v.php
 #
-Sun: Søn
-Mon: Man
-Tue: Tir
-Wed: Ons
-Thu: Tor
-Fri: Fre
-Sat: Lør
 
 
 ###############################################
-# Page: pref.php
+# Page: month.php
 #
-to modify the preferences for the Public Access calendar: for å modifisere innstillingene for den offentlige kalenderen
-tz-help: Angir hvor mange timer servertid må justeres i forhold til lokaltid.
-Timezone Offset: Tidssoneavvik
-Add N hours to: Legg til N timer til
-Subtract N hours from: Trekk fra N timer fra
-same as: samme som
-server time: servertid
-Save Preferences: Lagre innstillinger
 
 
 ###############################################
 # Page: pref_handler.php
-#
-
-
-###############################################
-# Page: purge.php
 #
 
 
@@ -658,15 +652,13 @@ Add to My Calendar: Legg til kalenderen min
 Email all participants: E-post til alle deltakerne
 Show activity log: Vis aktivitetslogg
 Hide activity log: Skjul aktivitetslogg
+#
+# << MISSING >>
+# Export this entry to:
 
 
 ###############################################
 # Page: view_m.php
-#
-
-
-###############################################
-# Page: view_v.php
 #
 
 
@@ -690,18 +682,47 @@ Add View: Legg til oversikt
 Edit View: Redigere oversikt
 View Name: Navn på oversikt
 View Type: Oversiktstype
+#
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# NONUSER_PREFIX not set:
+# English text: NONUSER_PREFIX has not been set in config.php.
+#
+#
+# << MISSING >>
+# NonUser:
+# English text: NonUser Calendars
+#
+#
+# << MISSING >>
+# Calendar ID:
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: nonusers_handler.php
+#
 
 
 ###############################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Du må angi et oversiktnavn
-
-
-###############################################
-# Page: week.php
-#
-cont.: forts.
 
 
 ###############################################
@@ -722,17 +743,45 @@ Private: Privat
 
 
 ###############################################
-# Page: includes/config.php
+# Page: assistant_edit.php
 #
+Assistants: Assistenter
+Yours assistants: Dine assistenter
+
+
+###############################################
+# Page: view_t.php
+#
+
+
+###############################################
+# Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Go to: Gå til
+Back to My Calendar: Tilbake til min kalender
+My Calendar: Min kalender
+Logout: Logg ut
+Another User's Calendar: Se en annen brukers kalender
+Add New Entry: Legg til aktivitet
+Manage Views: Kontroller oversikter
+Edit Layers: Editer lag
+Account: Konto
+Current User: Nåværende bruker
+Manage calendar of: Kontroller kalenderen til
 
 
 ###############################################
 # Page: includes/connect.php
-#
-
-
-###############################################
-# Page: includes/dbtable.php
 #
 
 
@@ -768,9 +817,46 @@ Dec: Dec
 
 
 ###############################################
+# Page: includes/user.php
+#
+Invalid login: Ugyldig innlogging
+Invalid user login: Ugyldig brukerinnlogging
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Send påminnelse
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+
+
+###############################################
 # Page: includes/help_trailer.php
 #
-Go to: Gå til
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -789,55 +875,98 @@ Go to: Gå til
 
 
 ###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Send påminnelse
-
-
-###############################################
 # Page: includes/styles.php
 #
 
 
 ###############################################
-# Page: includes/trailer.php
-#
-Back to My Calendar: Tilbake til min kalender
-My Calendar: Min kalender
-Logout: Logg ut
-Another User's Calendar: Se en annen brukers kalender
-Add New Entry: Legg til aktivitet
-Manage Views: Kontroller oversikter
-Edit Layers: Editer lag
-Account: Konto
-Current User: Nåværende bruker
-Manage calendar of: Kontroller kalenderen til
-
-
-###############################################
-# Page: includes/translate.php
+# Page: includes/init.php
 #
 
 
 ###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: Ugyldig innlogging
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-Invalid user login: Ugyldig brukerinnlogging
-
-
-###############################################
-# Page: includes/user.php
+# Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: includes/validate.php
+# Page: includes/js/export.php
+#
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+Server URL is required: URL for server er påkrevd
+Server URL must end with '/': URL for server må slutte på '/'
+Invalid color for document background: Ugyldig bakgrunnsfarge
+Invalid color for document title: Ugyldig tittelfarge
+Invalid color for table cell background: Ugyldig farge for tabellbakgrunn
+Invalid color for table grid: Ugyldig farge for tabellcelle
+Invalid color for table header background: Ugyldig farge for bakgrunnen i tabellheaderen
+Invalid color for table text background: Ugyldig farge for bakgrunnen til tabellteksten
+Invalid color for event popup background: Ugyldig farge for bakgrunnen i aktivitetspopups
+Invalid color for event popup text: Ugyldig farge for teksten i aktivitetspopups
+Invalid color for table cell background for today: Ugyldig farge for dagens tabellbakgrunn
+Color format should be '#RRGGBB': Fargen skal skrives som '#RRGGBB'
+
+
+###############################################
+# Page: includes/js/assistant_edit.php
+#
+
+
+###############################################
+# Page: includes/js/colors.php
+#
+
+
+###############################################
+# Page: includes/js/datesel.php
+#
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Du har ikke oppgitt noen kort beskrivelse
+You have not entered a valid time of day: Du har ikke oppgitt noe gyldig tidspunkt
+The time you have entered begins before your preferred work hours.  Is this correct?: Tidspunktet du har angitt er før din foretrukne arbeidstid. Er dette korrekt?
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Ugyldig farge
+
+
+###############################################
+# Page: includes/js/popups.php
+#
+
+
+###############################################
+# Page: includes/js/pref.php
+#
+
+
+###############################################
+# Page: includes/js/search.php
+#
+
+
+###############################################
+# Page: includes/js/usersel.php
+#
+
+
+###############################################
+# Page: includes/js/views_edit.php
+#
+
+
+###############################################
+# Page: includes/js/view_entry.php
 #
 
 

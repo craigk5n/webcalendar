@@ -4,8 +4,7 @@
 # Translated by:
 #	Kristofer Arnar Einarsson kristofer@kristofer.com
 # Last update: 18 August 2000
-# Translation last updated on 11-30-2002
-# Translation last updated on 02-07-2003
+# Translation last updated on 06-07-2003
 
 
 ###############################################
@@ -217,8 +216,6 @@ to: til
 #
 # << MISSING >>
 # Public access new events require approval:
-# English text: Public access new events require approval:
-#
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -559,6 +556,9 @@ Are you sure you want to delete this entry?: Viltu örugglega eyða þessu atriði?
 #
 #
 # << MISSING >>
+# Admin mode:
+#
+# << MISSING >>
 # Assistant mode:
 Generate printer-friendly version: Búa til prentvæna útgáfu
 Printer Friendly: Prentvænt
@@ -626,6 +626,7 @@ Confidential: Trúnaðarmál
 #
 # << MISSING >>
 # Category:
+None: Engin
 #
 # << MISSING >>
 # days:
@@ -644,7 +645,6 @@ Participants: Þátttakendur
 # External Participants:
 repeat-type-help: Velja hversu oft endurtaka á atburðinn.<I>Mánaðarlega (eftir degi)</I> gerir kleift að endurtaka atriði fyrsta mánudag mánaðar, þriðja þriðjudag o.s.frv.  <I>Mánaðarlega (eftir dags)</I> gerir kleift að endurtaka atriði á sama mánaðardegi.
 Repeat Type: Tegund endurtekningar
-None: Engin
 Daily: Daglega
 Weekly: Vikulega
 Monthly: Mánaðarlega
@@ -780,6 +780,9 @@ Modified since: Breytt síðan
 ###############################################
 # Page: export_handler.php
 #
+#
+# << MISSING >>
+# export format not defined or incorrect:
 
 
 ###############################################
@@ -853,6 +856,15 @@ Preferences: Stilla
 #
 # << MISSING >>
 # Default Category:
+#
+# << MISSING >>
+# When I am the boss:
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# I want to approve events:
 Sun: Sun
 Mon: Mán
 Tue: Þri
@@ -1170,6 +1182,9 @@ Edit entry: Breyta atriði
 #
 # << MISSING >>
 # Hide activity log:
+#
+# << MISSING >>
+# Export this entry to:
 
 
 ###############################################
@@ -1211,6 +1226,41 @@ Edit entry: Breyta atriði
 #
 # << MISSING >>
 # View Type:
+#
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# NONUSER_PREFIX not set:
+# English text: NONUSER_PREFIX has not been set in config.php.
+#
+#
+# << MISSING >>
+# NonUser:
+# English text: NonUser Calendars
+#
+#
+# << MISSING >>
+# Calendar ID:
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: nonusers_handler.php
+#
 
 
 ###############################################
@@ -1243,10 +1293,15 @@ Private: Einka
 #
 #
 # << MISSING >>
-# Yours assistants:
+# Assistants:
 #
 # << MISSING >>
-# Assistants:
+# Yours assistants:
+
+
+###############################################
+# Page: view_t.php
+#
 
 
 ###############################################
@@ -1376,11 +1431,6 @@ Dec: Des
 
 
 ###############################################
-# Page: includes/init.php
-#
-
-
-###############################################
 # Page: includes/js.php
 #
 
@@ -1396,19 +1446,18 @@ Dec: Des
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: tools/send_reminders.php
+# Page: includes/js/export.php
 #
-#
-# << MISSING >>
-# This is a reminder for the event detailed below.:
-#
-# << MISSING >>
-# Reminder:
 
 
 ###############################################
@@ -1476,11 +1525,6 @@ You have not entered a valid time of day: Rangur tími sleginn inn
 
 
 ###############################################
-# Page: includes/js/export.php
-#
-
-
-###############################################
 # Page: includes/js/popups.php
 #
 
@@ -1503,3 +1547,19 @@ You have not entered a valid time of day: Rangur tími sleginn inn
 ###############################################
 # Page: includes/js/views_edit.php
 #
+
+
+###############################################
+# Page: includes/js/view_entry.php
+#
+
+
+###############################################
+# Page: tools/send_reminders.php
+#
+#
+# << MISSING >>
+# This is a reminder for the event detailed below.:
+#
+# << MISSING >>
+# Reminder:

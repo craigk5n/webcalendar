@@ -5,8 +5,7 @@
 # Translator: Pedro Del Medico <pdmp@interhoster.com>
 #             Eduardo Dominguez <lalo_notthisplease@teligens.com>
 # Last update: 26 June 2000
-# Translation last updated on 11-30-2002
-# Translation last updated on 02-07-2003
+# Translation last updated on 06-07-2003
 
 
 ###############################################
@@ -98,8 +97,6 @@ Public access can add events: Usuarios anonimos pueden agregar eventos desde el
 #
 # << MISSING >>
 # Public access new events require approval:
-# English text: Public access new events require approval:
-#
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -300,6 +297,9 @@ Previous: Previo
 #
 #
 # << MISSING >>
+# Admin mode:
+#
+# << MISSING >>
 # Assistant mode:
 Generate printer-friendly version: Generar formato imprimible
 Printer Friendly: Imprimir
@@ -359,6 +359,7 @@ Confidential: Confidencial
 # English text: Specifies the category of the event.
 #
 Category: Categoría
+None: Ninguno
 days: días
 before event: antes del evento
 participants-help: Lista de participantes en esta entrada.
@@ -373,7 +374,6 @@ Participants: Participantes
 # External Participants:
 repeat-type-help: Seleccione con que frecuencia un evento debe repetirse.<I>Men
 Repeat Type: Repetir Tipo
-None: Ninguno
 Daily: Diario
 Weekly: Semanalmente
 Monthly: Mensualmente
@@ -477,6 +477,9 @@ Modified since: Ultima Actualización
 ###############################################
 # Page: export_handler.php
 #
+#
+# << MISSING >>
+# export format not defined or incorrect:
 
 
 ###############################################
@@ -538,6 +541,15 @@ to modify the preferences for the Public Access calendar: para modificar las pr
 #
 # << MISSING >>
 # Default Category:
+#
+# << MISSING >>
+# When I am the boss:
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# I want to approve events:
 Sun: Dom
 Mon: Lun
 Tue: Mar
@@ -761,6 +773,9 @@ Add to My Calendar: Agregar a mi calendario
 Email all participants: Enviar email a todos los participantes
 Show activity log: Mostrar bitácora de actividad
 Hide activity log: Esconder bitácora de actividad
+#
+# << MISSING >>
+# Export this entry to:
 
 
 ###############################################
@@ -788,6 +803,41 @@ Add View: Agregar Vista
 Edit View: Editar Vista
 View Name: Ver Nombre
 View Type: Ver Tipo
+#
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# NONUSER_PREFIX not set:
+# English text: NONUSER_PREFIX has not been set in config.php.
+#
+#
+# << MISSING >>
+# NonUser:
+# English text: NonUser Calendars
+#
+#
+# << MISSING >>
+# Calendar ID:
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: nonusers_handler.php
+#
 
 
 ###############################################
@@ -820,10 +870,15 @@ Private: Privado
 #
 #
 # << MISSING >>
-# Yours assistants:
+# Assistants:
 #
 # << MISSING >>
-# Assistants:
+# Yours assistants:
+
+
+###############################################
+# Page: view_t.php
+#
 
 
 ###############################################
@@ -941,11 +996,6 @@ Send Reminder: Enviar Recordatorio
 
 
 ###############################################
-# Page: includes/init.php
-#
-
-
-###############################################
 # Page: includes/js.php
 #
 
@@ -961,15 +1011,18 @@ Send Reminder: Enviar Recordatorio
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: tools/send_reminders.php
+# Page: includes/js/export.php
 #
-This is a reminder for the event detailed below.: Este es un recordatorio para
-Reminder: Recordatorio
 
 
 ###############################################
@@ -1023,11 +1076,6 @@ Invalid color: Color inválido
 
 
 ###############################################
-# Page: includes/js/export.php
-#
-
-
-###############################################
 # Page: includes/js/popups.php
 #
 
@@ -1050,3 +1098,15 @@ Invalid color: Color inválido
 ###############################################
 # Page: includes/js/views_edit.php
 #
+
+
+###############################################
+# Page: includes/js/view_entry.php
+#
+
+
+###############################################
+# Page: tools/send_reminders.php
+#
+This is a reminder for the event detailed below.: Este es un recordatorio para
+Reminder: Recordatorio

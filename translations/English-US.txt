@@ -17,8 +17,7 @@
 #
 #
 #
-# Translation last updated on 11-30-2002
-# Translation last updated on 02-07-2003
+# Translation last updated on 06-07-2003
 
 
 ###############################################
@@ -240,6 +239,7 @@ Previous: Previous
 ###############################################
 # Page: day.php
 #
+Admin mode: Admin mode
 Assistant mode: Assistant mode
 Generate printer-friendly version: Generate printer-friendly version
 Printer Friendly: Printer Friendly
@@ -289,6 +289,7 @@ Public: Public
 Confidential: Confidential
 category-help: Specifies the category of the event.
 Category: Category
+None: None
 days: days
 before event: before event
 participants-help: Lists the participants of this entry.
@@ -297,7 +298,6 @@ external-participants-help: Specifies a list of participants for the event that 
 External Participants: External Participants
 repeat-type-help: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
 Repeat Type: Repeat Type
-None: None
 Daily: Daily
 Weekly: Weekly
 Monthly: Monthly
@@ -401,6 +401,7 @@ Modified since: Modified since
 ###############################################
 # Page: export_handler.php
 #
+export format not defined or incorrect: export format not defined or incorrect
 
 
 ###############################################
@@ -444,6 +445,9 @@ Subtract N hours from: Subtract N hours from
 same as: same as
 server time: server time
 Default Category: Default Category
+When I am the boss: When I am the boss
+Email me event notification: Email me event notification
+I want to approve events: I want to approve events
 Sun: Sun
 Mon: Mon
 Tue: Tue
@@ -558,20 +562,6 @@ cookies-note: <B>Note:</B> This application requires cookies to be enabled.
 
 
 ###############################################
-# Page: nonusers.php
-#
-NonUser: NonUser Calendars
-Add New NonUser Calendar: Add New NonUser Calendar
-Calendar ID: Calendar ID
-NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
-
-
-###############################################
-# Page: nonusers_handler.php
-#
-
-
-###############################################
 # Page: pref_handler.php
 #
 
@@ -663,11 +653,11 @@ Show activity log: Show activity log
 Hide activity log: Hide activity log
 Export this entry to: Export this entry to
 
+
 ###############################################
 # Page: view_m.php
 #
 
-Export this entry to: Export this entry to
 
 ###############################################
 # Page: view_w.php
@@ -689,6 +679,23 @@ Add View: Add View
 Edit View: Edit View
 View Name: View Name
 View Type: View Type
+Week (Users horizontal): Week (Users horizontal)
+Week (Users vertical): Week (Users vertical)
+Week (Timebar): Week (Timebar)
+
+
+###############################################
+# Page: nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
+NonUser: NonUser Calendars
+Calendar ID: Calendar ID
+Add New NonUser Calendar: Add New NonUser Calendar
+
+
+###############################################
+# Page: nonusers_handler.php
+#
 
 
 ###############################################
@@ -717,8 +724,13 @@ Private: Private
 ###############################################
 # Page: assistant_edit.php
 #
-Yours assistants: Yours assistants
 Assistants: Assistants
+Yours assistants: Yours assistants
+
+
+###############################################
+# Page: view_t.php
+#
 
 
 ###############################################
@@ -832,11 +844,6 @@ Send Reminder: Send Reminder
 
 
 ###############################################
-# Page: includes/init.php
-#
-
-
-###############################################
 # Page: includes/js.php
 #
 
@@ -852,15 +859,18 @@ Send Reminder: Send Reminder
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/dbtable.php
 #
 
 
 ###############################################
-# Page: tools/send_reminders.php
+# Page: includes/js/export.php
 #
-This is a reminder for the event detailed below.: This is a reminder for the event detailed below.
-Reminder: Reminder
 
 
 ###############################################
@@ -910,11 +920,6 @@ Invalid color: Invalid color
 
 
 ###############################################
-# Page: includes/js/export.php
-#
-
-
-###############################################
 # Page: includes/js/popups.php
 #
 
@@ -939,3 +944,13 @@ Invalid color: Invalid color
 #
 
 
+###############################################
+# Page: includes/js/view_entry.php
+#
+
+
+###############################################
+# Page: tools/send_reminders.php
+#
+This is a reminder for the event detailed below.: This is a reminder for the event detailed below.
+Reminder: Reminder

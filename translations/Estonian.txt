@@ -17,24 +17,12 @@
 #
 #
 #
-# Translation last updated on 11-30-2002
+# Translation last updated on 06-07-2003
 
 
 ###############################################
 # Page: admin.php
 #
-Server URL is required: Serveri URL on puudu
-Server URL must end with '/': Serveri URL peab lõppema '/' märgiga
-Invalid color for document background: Vigane värv dokumendi tausta jaoks
-Invalid color for document title: Vigane värv dokumendi tiitli jaoks
-Invalid color for table cell background: Vigane värv tabeli ruudu tausta jaoks
-Invalid color for table grid: Vigane värv tabeli piirjoonte jaoks
-Invalid color for table header background: Vigane värv tabeli päise tausta jaoks
-Invalid color for table text background: Vigane värv tabeli teksti tausta jaoks
-Invalid color for event popup background: Vigane värv sündmuse akna tausta jaoks
-Invalid color for event popup text: Vigane värv sündmuse akna teksti jaoks
-Invalid color for table cell background for today: Vigane värv tänase päeva tabeli ruudu tausta jaoks
-Color format should be '#RRGGBB': Värvi esitusviis peab olema kujul '#RRGGBB'
 System Settings: Süsteemi seaded
 You are not authorized: Sa ei ole siis lubatud
 Note: Pane tähele
@@ -251,6 +239,9 @@ Previous: Eelmine
 ###############################################
 # Page: day.php
 #
+#
+# << MISSING >>
+# Admin mode:
 Assistant mode: Abistav olek
 Generate printer-friendly version: Tee trükkalisõbralik leht
 Printer Friendly: Trükkali sõbralik
@@ -273,9 +264,6 @@ Notification: Teadustus
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: Sa ei ole kirjutanud lühikirjeldust
-You have not entered a valid time of day: Sa ei ole kirjutanud õiget kellaaega
-The time you have entered begins before your preferred work hours.  Is this correct?: Sisestatud aeg algab enne tööpäeva. Kas see on õige?
 Edit Entry: Muuda kannet
 Add Entry: Lisa kannet
 brief-description-help: This should provide a short description (about 20 characters) of the event.  This will represent the event when viewing the calendar.
@@ -303,6 +291,7 @@ Public: Avalik
 Confidential: Isiklik
 category-help: Määrab sündmuse kategooria
 Category: Kategooria
+None: pole
 days: päevi
 before event: enne sündmust
 participants-help: Näita selle kande osalejaid.
@@ -311,7 +300,6 @@ external-participants-help: Määrab ära kalendi mittekasutajatest osalejad. Osale
 External Participants: Välised osalejad
 repeat-type-help: Vali kui tihti sündmust korrata.<I>Kuiselt (päeva järgi)</I> lubab korrata sündmust kuu esimesel esmaspäeval jne.  <I>Kuiselt (kuupäeva järgi)</I> lubab sündmusel korduda iga kuu samal kuupäeval.
 Repeat Type: Korduse tüüp
-None: pole
 Daily: päeviti
 Weekly: nädalati
 Monthly: kuiselt
@@ -357,7 +345,6 @@ Cancel: Loobu
 ###############################################
 # Page: edit_layer.php
 #
-Invalid color: Vale värv
 Edit Layer: Muuda kihti
 Add Layer: Lisa kiht
 Source: Allikas
@@ -416,6 +403,9 @@ Modified since: Muudetud alates
 ###############################################
 # Page: export_handler.php
 #
+#
+# << MISSING >>
+# export format not defined or incorrect:
 
 
 ###############################################
@@ -459,6 +449,15 @@ Subtract N hours from: Lahuta N tundi
 same as: sama kui
 server time: serveri aeg
 Default Category: Vaikimisi kategooria
+#
+# << MISSING >>
+# When I am the boss:
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# I want to approve events:
 Sun: P
 Mon: E
 Tue: T
@@ -662,6 +661,9 @@ Add to My Calendar: Lisa minu kalendrisse
 Email all participants: Saada email kõigile osalejaile
 Show activity log: Näita kasutamise ajalugu
 Hide activity log: Peida kasutamise ajalugu
+#
+# << MISSING >>
+# Export this entry to:
 
 
 ###############################################
@@ -689,6 +691,41 @@ Add View: Lisa vaade
 Edit View: Muuda vaadet
 View Name: Vaata vaadet
 View Type: Vaata tüüpi
+#
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# NONUSER_PREFIX not set:
+# English text: NONUSER_PREFIX has not been set in config.php.
+#
+#
+# << MISSING >>
+# NonUser:
+# English text: NonUser Calendars
+#
+#
+# << MISSING >>
+# Calendar ID:
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: nonusers_handler.php
+#
 
 
 ###############################################
@@ -717,8 +754,13 @@ Private: Isiklik
 ###############################################
 # Page: assistant_edit.php
 #
-Yours assistants: Sinu abiline
 Assistants: Abilised
+Yours assistants: Sinu abiline
+
+
+###############################################
+# Page: view_t.php
+#
 
 
 ###############################################
@@ -847,7 +889,93 @@ Send Reminder: Saada meeldetuletus
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/dbtable.php
+#
+
+
+###############################################
+# Page: includes/js/export.php
+#
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+Server URL is required: Serveri URL on puudu
+Server URL must end with '/': Serveri URL peab lõppema '/' märgiga
+Invalid color for document background: Vigane värv dokumendi tausta jaoks
+Invalid color for document title: Vigane värv dokumendi tiitli jaoks
+Invalid color for table cell background: Vigane värv tabeli ruudu tausta jaoks
+Invalid color for table grid: Vigane värv tabeli piirjoonte jaoks
+Invalid color for table header background: Vigane värv tabeli päise tausta jaoks
+Invalid color for table text background: Vigane värv tabeli teksti tausta jaoks
+Invalid color for event popup background: Vigane värv sündmuse akna tausta jaoks
+Invalid color for event popup text: Vigane värv sündmuse akna teksti jaoks
+Invalid color for table cell background for today: Vigane värv tänase päeva tabeli ruudu tausta jaoks
+Color format should be '#RRGGBB': Värvi esitusviis peab olema kujul '#RRGGBB'
+
+
+###############################################
+# Page: includes/js/assistant_edit.php
+#
+
+
+###############################################
+# Page: includes/js/colors.php
+#
+
+
+###############################################
+# Page: includes/js/datesel.php
+#
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Sa ei ole kirjutanud lühikirjeldust
+You have not entered a valid time of day: Sa ei ole kirjutanud õiget kellaaega
+The time you have entered begins before your preferred work hours.  Is this correct?: Sisestatud aeg algab enne tööpäeva. Kas see on õige?
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Vale värv
+
+
+###############################################
+# Page: includes/js/popups.php
+#
+
+
+###############################################
+# Page: includes/js/pref.php
+#
+
+
+###############################################
+# Page: includes/js/search.php
+#
+
+
+###############################################
+# Page: includes/js/usersel.php
+#
+
+
+###############################################
+# Page: includes/js/views_edit.php
+#
+
+
+###############################################
+# Page: includes/js/view_entry.php
 #
 
 
