@@ -46,7 +46,6 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 	H2COLOR - text color for text within h2 tags
 */
 ?>
-
 <style type="text/css">
 <!--
 body {
