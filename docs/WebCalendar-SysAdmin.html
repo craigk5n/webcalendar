@@ -427,12 +427,12 @@ You currently have four choices:
 	<tt>$use_http_auth = false;</tt><br>
 	<tt>$user_inc = "user-nis.php";</tt><br>
 	Additional configuration settings will need to be set
-	in <tt>includes/config/user-nis.php</tt>.
+	in <tt>includes/user-nis.php</tt>.
 <li> LDAP-based authentication (login/passwords verified by LDAP server):<br>
 	<tt>$use_http_auth = false;</tt><br>
 	<tt>$user_inc = "user-ldap.php";</tt><br>
 	Additional configuration settings will need to be set
-	in <tt>includes/config/user-ldap.php</tt>.
+	in <tt>includes/user-ldap.php</tt>.
 </ol>
 
 <p>
@@ -770,7 +770,7 @@ a single reminder field that allows the user to specify how long
 before the event the reminder should be sent.
 </p><p>
 <b>TIP:</b> See <a href="#reminders">instructions</a> on setting
-up reminders to enabled reminders to be sent.
+up reminders to enable sending of reminders.
 
 </p><p>
 
@@ -864,7 +864,8 @@ of field.  In some cases, "Arg 1" and "Arg 2" are not used.
   </tr>
 
 <tr><td valign="top"><tt>EXTRA_SELECTION_LIST</tt></td>
-  <td valign="top">Presents the user with a selection list to choose from</td>
+  <td valign="top">Presents the user with a selection list (single selection)
+    to choose from</td>
   <td valign="top">Specifies the list of available options using
     the PHP <tt>array</tt> function</td>
   <td valign="top">N/A</td>
@@ -943,6 +944,21 @@ of field.  In some cases, "Arg 1" and "Arg 2" are not used.
   deleted from the database.  Instead, it is marked as deleted.
   This allows the system administrator access to information
   even after it is deleted.</dd>
+
+<dt>Can I setup more than one public calendar?</dt>
+<dd>You cannot directly setup two public calendars.  However,
+  there are two options for emulating this type of functionality:
+  <ul>
+  <li>You can <a href="WebCalendar-UserManual.html#categories">create global categories</a> and point users to the
+      calendar with only a certain category displayed. </li>
+  <li>You can setup multiple NonUser calendars and enable
+      public access viewing of other users' calendars.
+      You can then link directly to the calendar of one of
+      the NonUser calendars, or you can 
+      <a href="WebCalendar-UserManual.html#views">setup a view</a>
+      that contains the calendar of one or more of the NonUser calendars. </li>
+  </ul>
+  </dd>
 
 
 </dl>
@@ -1187,6 +1203,9 @@ read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.
 
 <pre>
 $Log$
+Revision 1.8  2004/02/17 18:36:10  cknudsen
+Added new FAQ
+
 Revision 1.7  2004/01/29 16:23:40  cknudsen
 Added missing comma
 
