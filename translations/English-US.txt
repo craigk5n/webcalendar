@@ -17,7 +17,7 @@
 #
 #
 #
-# Translation last updated on 06-27-2003
+# Translation last updated on 07-01-2003
 
 
 ###############################################
@@ -192,6 +192,7 @@ Event deleted: Event deleted
 Notification sent: Notification sent
 Reminder sent: Reminder sent
 Database error: Database error
+Previous: Previous
 Next: Next
 
 
@@ -235,7 +236,6 @@ Add New Category: Add New Category
 ###############################################
 # Page: datesel.php
 #
-Previous: Previous
 
 
 ###############################################
@@ -472,6 +472,7 @@ Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
 #
 Help Index: Help Index
 Layers: Layers
+Import: Import
 
 
 ###############################################
@@ -606,9 +607,11 @@ Ok: Ok
 # Page: import.php
 #
 #
-Select Datebook File: Select Datebook File
-Import: Import
-Select vCal File: Select vCal File
+This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
+Exclude private records: Exclude private records
+Datebook File: Datebook File
+This form will import vCalendar (.cvs) 1.0 events: This form will import vCalendar (.cvs) 1.0 events
+vCal File: vCal File
 
 
 ###############################################
@@ -728,7 +731,6 @@ Private: Private
 # Page: import_handler.php
 #
 Back to My Calendar: Back to My Calendar
-#
 Event Imported: Event Imported
 
 
@@ -757,6 +759,21 @@ Yours assistants: Yours assistants
 ###############################################
 # Page: purge.php
 #
+
+
+###############################################
+# Page: help_import.php
+#
+#
+Palm Desktop: Palm Desktop
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
+The following entries will not be imported: The following entries will not be imported
+Entries older than the current date: Entries older than the current date
+Entries creted in the Palm Desktop that have not been HotSync'd: Entries creted in the Palm Desktop that have not been HotSync'd
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
+Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
+vCal: vCal
+The following formats have been tested: The following formats have been tested
 
 
 ###############################################
