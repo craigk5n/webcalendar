@@ -42,10 +42,9 @@ $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
   ? $user : $login, $startdate, $enddate, $cat_id );
 ?>
 
-<div style="float: right;">
 <?php
 if ( ! $friendly ) {
-  echo "<table class=\"minical\" cellspacing=\"1\" cellpadding=\"2\">";
+  echo "<table class=\"minical\" style=\"float: right;\" cellspacing=\"1\" cellpadding=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $nextyear, $nextmonth, 1 );
   else
@@ -87,13 +86,11 @@ if ( ! $friendly ) {
   }
   echo "</table>\n";
 }
-
 ?>
-</div>
-<div style="float:left;">
+
 <?php
 if ( ! $friendly ) {
-  echo "<table class=\"minical\" cellspacing=\"1\" cellpadding=\"2\">";
+  echo "<table class=\"minical\" style=\"float:left;\" cellspacing=\"1\" cellpadding=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $prevyear, $prevmonth, 1 );
   else
@@ -137,7 +134,6 @@ if ( ! $friendly ) {
   echo "</table>\n";
 }
 ?>
-</div>
 
 <div class="title">
 <span class="date"><br />
