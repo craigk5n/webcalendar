@@ -1,4 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+  - Fixed problem, if non-user calendars are diabled, the most recent change
+    to add Public Access to the 'Manage Calendar of:' list throws a Warning.
   - Updated Finnish translation
   - Added option to set LDAP_OPT_PROTOCOL_VERSION in user-ldap.php
 Version 1.0RC3 (11 Mar 2005)

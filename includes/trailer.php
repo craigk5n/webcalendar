@@ -375,7 +375,9 @@ if ( ! $use_http_auth ) {
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
   if ( $has_boss || ! empty ( $admincals[0] ) || ( $is_admin && $public_access ) ) {
     $grouplist = user_get_boss_list ($login);
-    $grouplist = array_merge($admincals,$grouplist);
+    if ( ! empty ( $admincals[0] ) ) {
+      $grouplist = array_merge($admincals,$grouplist);
+    }
     if ( $is_admin && $public_access == 'Y' ) {
       $public = array("cal_login" => "__public__",
         "cal_fullname" => translate("Public Access") );
