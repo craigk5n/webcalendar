@@ -21,6 +21,16 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
+if ( $pub_acc_enabled ) {
+  $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
+    "WHERE cal_setting = 'public_access_can_add'" );
+  if ( $res ) {
+    if ( $row = dbi_fetch_row ( $res ) ) {
+      $public_access_can_add = $row[0];
+    }
+    dbi_free_result ( $res );
+  }
+}
 
 // Debugging stuff :-)
 //echo "pub_acc_enabled = " . ( $pub_acc_enabled ? "true" : "false" ) . " <br>";
