@@ -22,7 +22,7 @@ if ( $id > 0 ) {
 
   // Email participants to notify that it was rejected.
   // Get list of participants
-  $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id";
+  $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id and cal_status = 'A'";
   //echo $sql."<BR>";
   $res = dbi_query ( $sql );
   if ( $res ) {
@@ -44,20 +44,20 @@ if ( $id > 0 ) {
     // does this user want email for this?
     $sendmail = get_pref_setting ( $partlogin[$i],
       "EMAIL_EVENT_REJECTED" );
-    if ( $sendmail == "Y" ) {
-      user_load_variables ( $partlogin[$i], "temp" );
-      $msg = translate("Hello") . ", " . $temp_fullname . ".\n\n" .
+    user_load_variables ( $partlogin[$i], "temp" );
+    if ( $sendmail == "Y" && strlen ( $tempemail ) ) {
+      $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
         translate("An appointment has been rejected by") .
         " " . $login_fullname .  ". " .
         translate("The subject was") . " \"" . $name . "\"\n\n";
  
       $from = $email_fallback_from;
       if ( strlen ( $login_email ) )
-        $from = login_email;
+        $from = $login_email;
 
       $extra_hdrs = "From: $from\nX-Mailer: " . translate("Title");
 
-      mail ( $partemail[$i],
+      mail ( $tempemail,
         translate("Title") . " " . translate("Notification") . ": " . $name,
         $msg, $extra_hdrs );
     }
