@@ -17,6 +17,10 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
 // Modify the time to be server time rather than user time.
 if ( ! empty ( $hour ) ) {
   $hour -= $TZ_OFFSET;
+  if (($hour == 12 && $ampm == 'pm') && $TZ_OFFSET < 0) {
+    // Server hour should be midnight not noon
+    $hour = 24;
+  }
   if ( $hour < 0 ) {
     $hour += 24;
     // adjust date
@@ -26,7 +30,7 @@ if ( ! empty ( $hour ) ) {
     $day = date ( "d", $date );
     $year = date ( "Y", $date );
   }
-  if ( $hour > 24 ) {
+  if ( $hour >= 24 ) {
     $hour -= 24;
     // adjust date
     $date = mktime ( 3, 0, 0, $month, $day, $year );
@@ -121,7 +125,7 @@ if ( $allday == "Y" ) {
 }
 
 $duration = ( $duration_h * 60 ) + $duration_m;
-if ( strlen ( $hour ) > 0 ) {
+if ( $hour > 0 ) {
   if ( $TIME_FORMAT == '12' ) {
     $ampmt = $ampm;
     //This way, a user can pick am and still
@@ -134,6 +138,7 @@ if ( strlen ( $hour ) > 0 ) {
       $hour += 12;
   }
 }
+//echo "SERVER HOUR: $hour $ampm";
 
 // handle external participants
 $ext_names = array ();
