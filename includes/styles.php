@@ -414,13 +414,20 @@ table.minical {
 }
 table.viewd {
 	border-width: 0px;
-	width: 100%;
 	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 .viewd th {
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
 }
+.viewd th.row {
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	text-align: left;
+	font-weight: normal;
+	font-size: 13px;
+}
+
 
 /* ======================= */
 /* VIEW_L.PHP */
@@ -478,7 +485,7 @@ table.viewm {
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
 }
-.viewm th.today
+.viewm th.today {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
