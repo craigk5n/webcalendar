@@ -10,7 +10,8 @@
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=693581
 # Last update: 30 October 2003 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=832915
-# Translation last updated on 03-10-2004
+# Last update: 22 March 2004 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
+#  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=920957
 
 
 ###############################################
@@ -44,59 +45,27 @@ Language: Språk
 Your browser default language is: Standardspråk i nettleseren din er
 fonts-help: Angir en liste med systemskrifter som skal brukes (som "Arial, Helvetica")
 Fonts: Skrifter
-#
-# << MISSING >>
-# custom-script-help:
-# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
-#
-#
-# << MISSING >>
-# Custom script/stylesheet:
+custom-script-help: Tillat innsetting av egendefinert skript eller stilsett i HTML "head"-seksjonen på hver side.
+Custom script/stylesheet: Egendefinert skript/stilsett
 Yes: Ja
 No: Nei
-#
-# << MISSING >>
-# Edit:
-#
-# << MISSING >>
-# custom-header-help:
-# English text: Allows a custom HTML snippet to be included in the top of every page.
-#
-#
-# << MISSING >>
-# Custom header:
-#
-# << MISSING >>
-# custom-trailer-help:
-# English text: Allows a custom HTML snippet to be included at the end of every page.
-#
-#
-# << MISSING >>
-# Custom trailer:
+Edit: Rediger
+custom-header-help: Tillatt innsetting av egendefinert HTML-kode på toppen av hver side. 
+Custom header: Egendefinert hode
+custom-trailer-help: Tillatt innsetting av egendefinert HTML-kode på slutten av hver side.
+Custom trailer: Egendefinert fot
 preferred-view-help: Angir standardvisning (dag, uke, måned eller år).
-Preferred view: Foretrukket utseende
+Preferred view: Foretrukket visning
 Day: Dag
 Week: Uke
 Month: Måned
 Year: År
 display-weekends-help: Inkluder helg når uker skal vises
 Display weekends in week view: Viser helg i ukevisning
-#
-# << MISSING >>
-# yearly-shows-events-help:
-# English text: On the yearly view, display days that contain events in a bold font.
-#
-#
-# << MISSING >>
-# Display days with events in bold in year view:
-#
-# << MISSING >>
-# display-desc-print-day-help:
-# English text: Include event descriptions in printer-friendly version of day view.
-#
-#
-# << MISSING >>
-# Display description in printer day view:
+yearly-shows-events-help: Vis dager med aktiviteter i fetskrift for årsvisning.
+Display days with events in bold in year view: Viser dager med aktiviteter i fetskrift for årvisning
+display-desc-print-day-help: Inkluder aktivitetsbeskrivelser i utskriftsvennlig versjon av dagvisning.
+Display description in printer day view: Vis aktivitetsbeskrivelser i utskriftsvennlig dagvisning
 date-format-help: Angir datoformatet.
 Date format: Datoformat
 December: Desember
@@ -134,40 +103,22 @@ disable-participants-field-help: Valget "Ja" vil fjerne deltagerfeltet fra sider
 Disable Participants field: Deaktiver deltagerfeltet
 disable-repeating-field-help: Valget "Ja" vil fjerne repetisjonsfeltet når man legger til en aktivitet, og dermed gjøre det enklere for nybegynnere.
 Disable Repeating field: Deaktiver repetisjonsfeltet
-#
-# << MISSING >>
-# popup-includes-siteextras-help:
-# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
-#
-#
-# << MISSING >>
-# Display Site Extras in popup:
-#
-# << MISSING >>
-# allow-html-description-help:
-# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
-#
-#
-# << MISSING >>
-# Allow HTML in Description:
+popup-includes-siteextras-help: Hvis aktivert, vil egendefinert felter i site_extras.php bli vist i aktivitetssprettopp.
+Display Site Extras in popup: Vis nettstedstillegg i sprettopp
+allow-html-description-help: Setter om en bruker kan skrive HTML-kode i aktivitetsbeskrivelsene. Advarsel: Hvis tillat, kan brukere referere til bilder på andre nettsteder.
+Allow HTML in Description: Tillat HTML-kode i beskrivelser
 allow-view-other-help: Setter om en bruker kan se en annen bruker sin kalender.
 Allow viewing other user's calendars: Tillat visning av andre brukere sine kalendere
 allow-public-access-help: Hvis aktivert, vil kalender kunne bli brukt som en kun lesbar offentlig kalender som ikke krever innlogging.
 Allow public access: Tillatt offentlig tilgang
 public-access-view-others-help: Setter om en bruker kan se kalenderen til en annen bruker når han bruker offentlig tilgang.
 Public access can view other users: Offentlig tilgang kan se andre brukere
-public-access-can-add-help: Hvis aktivert kan brukere med offentlig tilgang legge til aktivieter, men de vil ikke vises i kalenderen før administrator har godkjent aktiviteten.
+public-access-can-add-help: Hvis aktivert, kan brukere med offentlig tilgang legge til aktivieter, men de vil ikke vises i kalenderen før administrator har godkjent aktiviteten.
 Public access can add events: Offentlig tilgang kan legge til aktiviteter
 public-access-add-requires-approval-help: Angir om aktiviteter lagt til ved hjelp av konto for offentlig tilgang krever godkjenning før de blir vist. 
 Public access new events require approval: Nye aktitiviteter ved offentlig tilgang krever godkjenning
-#
-# << MISSING >>
-# public-access-sees-participants-help:
-# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
-#
-#
-# << MISSING >>
-# Public access can view participants:
+public-access-sees-participants-help: Hvis aktivert, kan brukere med offentlig tilgang se aktivitetsdeltagerne (ved detaljert visning).
+Public access can view participants: Offentlig tilgang kan se deltagere
 allow-view-add-help: Et '+' ikon vil bli inkludert i oversikter, slik at brukere fort kan legge til aktiviteter i andre brukere sine kalendere.
 Include add event link in views: Inkluder lenke for å legge til aktiviteter i oversikter
 allow-external-users-help: Angir om en ikke-kalender bruker kan bli lagt til en aktivitet. Dette muliggjør ikke-kalender brukere til å bli listed som deltagere på en aktivitet.
@@ -297,7 +248,7 @@ Add: Legg til
 Category Name: Kategorinavn
 Global: Global
 Delete: Slett
-Are you sure you want to delete this entry?: Er du sikker på at du vil slette denne oppføringen?
+Are you sure you want to delete this entry?: Er du sikker på at du vil slette denne aktiviteten?
 Add New Category: Legg til ny kategori
 
 
@@ -388,8 +339,8 @@ Friday: Fredag
 Saturday: Lørdag
 repeat-frequency-help: Hvor ofte skal aktiviteten gjentas? Tallet 1 viser at det skal skje hver gang, 2 hver annen gang...
 Frequency: Hyppighet
-Delete entry: Slett oppføring
-You are not authorized to edit this entry: Du har ikke lov å redigere denne oppføringen
+Delete entry: Slett aktiviteten
+You are not authorized to edit this entry: Du har ikke lov å redigere denne aktiviteten
 
 
 ###############################################
@@ -581,10 +532,10 @@ Add layer: Legg til lag
 ###############################################
 # Page: list_unapproved.php
 #
-View this entry: Vis oppføring
-Approve this entry?: Godkjenn oppføringen?
+View this entry: Vis aktiviteten
+Approve this entry?: Godkjenn aktiviteten?
 Approve/Confirm: Godkjenn/Bekreft
-Reject this entry?: Avvis denne oppføringen?
+Reject this entry?: Avvis denne aktiviteten?
 Reject: Avvis
 No unapproved events for: Ingen ikke-godkjente aktiviteter for
 Unapproved Events: Ikke-godkjente aktiviteter
@@ -607,23 +558,23 @@ Waiting for approval: Venter på godkjenning
 Deleted: Slettet
 Rejected: Avvist
 External User: Ekstern bruker
-Approve/Confirm entry: Godkjenn/Bekreft oppføringen
-Reject entry: Avvis oppføringen
+Approve/Confirm entry: Godkjenn/bekreft aktiviteten
+Reject entry: Avvis aktiviteten
 Set category: Sett kategori
-Edit repeating entry for all dates: Rediger repeterende oppføring for alle datoer
-Edit entry for this date: Rediger oppføringen for denne datoen
-This will delete this entry for all users.: Dette vil slette oppføringen for alle brukerene
-Delete repeating event for all dates: Slett repeterende oppføring for alle datoer
-Delete entry only for this date: Slett oppføringen for denne datoen
+Edit repeating entry for all dates: Rediger repeterende aktivitet for alle datoer
+Edit entry for this date: Rediger aktiviteten for denne datoen
+This will delete this entry for all users.: Dette vil slette aktiviteten for alle brukerene
+Delete repeating event for all dates: Slett repeterende aktiviteter for alle datoer
+Delete entry only for this date: Slett aktiviteten for denne datoen
 Edit entry: Endre aktiviteten
-This will delete the entry from your calendar.: Dette vil slette avtalen fra kalenderen din.
-Do you want to add this entry to your calendar?: Vil du legge inn denne avtalen i kalenderen din?
-This will add the entry to your calendar.: Dette vil legge til avtalen i kalenderen din.
+This will delete the entry from your calendar.: Dette vil slette aktiviteten fra kalenderen din.
+Do you want to add this entry to your calendar?: Vil du legge inn denne aktiviteten i kalenderen din?
+This will add the entry to your calendar.: Dette vil legge til aktiviteten i kalenderen din.
 Add to My Calendar: Legg til kalenderen min
 Email all participants: E-post til alle deltakerne
 Show activity log: Vis aktivitetslogg
 Hide activity log: Skjul aktivitetslogg
-Export this entry to: Eksporter denne oppføringen til
+Export this entry to: Eksporter denne aktiviteten til
 
 
 ###############################################
@@ -704,15 +655,9 @@ Exclude private records: Utelat private oppføringer
 Datebook File: Datebook-fil
 This form will import vCalendar (.vcs) 1.0 events: Dette skjemaet vil importere vCalendar (.vcs) 1.0 aktiviteter
 vCal File: vCal-fil
-#
-# << MISSING >>
-# This form will import iCalendar (.ics) events:
-#
-# << MISSING >>
-# iCal File:
-#
-# << MISSING >>
-# Overwrite Prior Import:
+This form will import iCalendar (.ics) events: Dette skjemaet vil importere iCalendar (.vcs) aktiviteter
+iCal File: iCal-fil
+Overwrite Prior Import: Skriv over tidligere importering
 
 
 ###############################################
@@ -819,15 +764,9 @@ New Entry: Ny aktivitet
 ###############################################
 # Page: import_handler.php
 #
-#
-# << MISSING >>
-# Import Results:
-#
-# << MISSING >>
-# Events successfully imported:
-#
-# << MISSING >>
-# Events from prior import marked as deleted:
+Import Results: Importeringsresultat
+Events successfully imported: Aktiviteter vellykket importert
+Events from prior import marked as deleted: Aktiviteter fra tidligere importering markert som slettede
 Conflicting events: Aktiviteter som kolliderer
 Errors: Feil
 Back to My Calendar: Tilbake til min kalender
@@ -901,42 +840,21 @@ Yours assistants: Dine assistenter
 # Page: adminhome.php
 #
 Account: Konto
-#
-# << MISSING >>
-# NonUser Calendars:
-#
-# << MISSING >>
-# Delete Events:
-#
-# << MISSING >>
-# Public Preferences:
-#
-# << MISSING >>
-# Unapproved Public Events:
-#
-# << MISSING >>
-# Administrative Tools:
+NonUser Calendars: Ikke-bruker kalendere
+Delete Events: Slett aktiviteter
+Public Preferences: Offentlige innstillinger
+Unapproved Public Events: Ikke-godkjente offentlige aktiviteter
+Administrative Tools: Administrasjonsverktøy
 
 
 ###############################################
 # Page: purge.php
 #
-#
-# << MISSING >>
-# Purging events for:
-#
-# << MISSING >>
-# Finished:
-#
-# << MISSING >>
-# Delete all events before:
-#
-# << MISSING >>
-# Check box to delete <b>ALL</b> events for a user:
-#
-# << MISSING >>
-# Are you sure you want to delete events for:
-
+Purging events for: Sletter aktiviteter for
+Finished: Ferdig
+Delete all events before: Slett alle aktiviteter før
+Check box to delete <b>ALL</b> events for a user: Marker i boksen hvis <b>ALLE</b> aktiviteter skal slettes
+Are you sure you want to delete events for: Er du sikker
 
 ###############################################
 # Page: help_import.php
@@ -953,13 +871,8 @@ The following formats have been tested: Følgende formater har blitt testet
 Palm Desktop 4: Palm Desktop 4
 Lotus Organizer 6: Lotus Organizer 6
 Microsoft Outlook 2002: Microsoft Outlook 2002
-#
-# << MISSING >>
-# iCalendar:
-#
-# << MISSING >>
-# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
-
+iCalendar: iCalendar
+Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Aktivering av <b>Skriv over tidligere importering</b> fører til at tidligere importerte aktiviteter som bruker samme UID som en aktivitet fra den nye import-filen, vil bli markert som slettede. Dermed bør en oppdatert iCal-fil kunne bli importert uten at det oppstår duplikater.  
 
 ###############################################
 # Page: edit_report_handler.php
@@ -989,15 +902,9 @@ Set Category: Sett kategori
 ###############################################
 # Page: edit_template.php
 #
-#
-# << MISSING >>
-# Edit Custom Script/Stylesheet:
-#
-# << MISSING >>
-# Edit Custom Header:
-#
-# << MISSING >>
-# Edit Custom Trailer:
+Edit Custom Script/Stylesheet: Rediger egendefinert skript/stilsett
+Edit Custom Header: Rediger egendefinert hode
+Edit Custom Trailer: Rediger egendefinert fot
 
 
 ###############################################
