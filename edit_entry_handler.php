@@ -236,6 +236,7 @@ if ( empty ( $error ) ) {
     $sql = "INSERT INTO webcal_entry_user " .
       "( cal_id, cal_login, cal_status ) VALUES ( $id, '" .
       $participants[$i] . "', '$status' )";
+    $msg .= "<br><B>SQL:</B> $sql\n";
     if ( ! dbi_query ( $sql ) ) {
       $error = "Unable to add to webcal_entry_user: " . dbi_error () .
         "<P><B>SQL:</B> $sql";

@@ -26,6 +26,7 @@ $admin_can_delete_user = true;
 // returns: true or false
 function user_valid_login ( $login, $password ) {
   global $error;
+  $ret = false;
 
   $login_error = "";
 
@@ -47,7 +48,6 @@ function user_valid_login ( $login, $password ) {
     dbi_free_result ( $res );
   } else {
     $error = translate("Database error") . ": " . dbi_error();
-    $ret = false;
   }
 
   return $ret;

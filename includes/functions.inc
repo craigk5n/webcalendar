@@ -824,7 +824,7 @@ function week_number ( $date ) {
 // have to be updated to also get the event owner so we know if the current
 // user has access to edit and delete.
 function icon_text ( $id, $can_edit, $can_delete ) {
-  global $readonly;
+  global $readonly, $is_admin;
   $ret = "<A HREF=\"view_entry.php?id=$id\">" .
     "<IMG SRC=\"view.gif\" ALT=\"View Entry\" BORDER=\"0\" " .
     "WIDTH=\"10\" HEIGHT=\"10\">" .
@@ -834,7 +834,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
       "<IMG SRC=\"edit.gif\" ALT=\"Edit Entry\" BORDER=\"0\" " .
       "WIDTH=\"10\" HEIGHT=\"10\">" .
       "</A>";
-  if ( $can_delete && ! $readonly )
+  if ( $can_delete && ( ! $readonly || $is_admin ) )
     $ret .= "<A HREF=\"del_entry.php?id=$id\" " .
       "onClick=\"return confirm('" .
       translate("Are you sure you want to delete this entry?") .
@@ -857,7 +857,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
 //   $hide_icons - hide icons to make printer-friendly
 //   $is_ssi - is this being called from week_ssi.php?
 function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
-  global $events, $readonly;
+  global $events, $readonly, $is_admin;
 
   $year = substr ( $date, 0, 4 );
   $month = substr ( $date, 4, 2 );
@@ -865,7 +865,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
  
   $dateu = mktime ( 2, 0, 0, $month, $day, $year );
 
-  if ( ! $hide_icons && ! $ssi && ! $readonly ) {
+  if ( ! $hide_icons && ! $ssi && ( ! $readonly || $is_admin ) ) {
     print "<A HREF=\"edit_entry.php?";
     if ( strcmp ( $user, $GLOBALS["login"] ) )
       print "user=$user&";
@@ -1582,7 +1582,7 @@ $offsets = array ( 31, 41, 59, 26, 54 );
 
 
 function hextoint ( $val ) {
-  if ( ! strlen ( $val ) )
+  if ( empty ( $val ) )
     return 0;
   switch ( strtoupper ( $val ) ) {
     case "0": return 0;
@@ -1609,31 +1609,45 @@ function hextoint ( $val ) {
 // This is a lame attempt at security.  Otherwise, users would be
 // able to edit their cookies.txt file and set the username in plain
 // text.
-// $instr is a hex-encoded string. "Hello" would be "48656c6c6f".
+// $instr is a hex-encoded string. "Hello" would be "678ea786a5".
 function decode_string ( $instr ) {
   global $offsets;
+  //echo "<P>DECODE <BR>";
   $orig = "";
   for ( $i = 0; $i < strlen ( $instr ); $i += 2 ) {
+    //echo "<P>";
     $ch1 = substr ( $instr, $i, 1 );
     $ch2 = substr ( $instr, $i + 1, 1 );
     $val = hextoint ( $ch1 ) * 16 + hextoint ( $ch2 );
-    $j = $i % count ( $offsets );
-    $newval = $val + $offsets[$j];
+    //echo "decoding \"" . $ch1 . $ch2 . "\" = $val <br>\n";
+    $j = ( $i / 2 ) % count ( $offsets );
+    //echo "Using offsets $j = " . $offsets[$j] . "<br>";
+    $newval = $val - $offsets[$j] + 256;
     $newval %= 256;
-    $orig .= chr ( $val );
+    //echo " neval \"$newval\" <br>\n";
+    $dec_ch = chr ( $newval );
+    //echo " which is \"$dec_ch\" <br>\n";
+    $orig .= $dec_ch;
   }
   return $orig;
 }
 
+// Take an input string and encoded it into a slightly encoded hexval
+// that we can use as a session cookie.
 function encode_string ( $instr ) {
   global $offsets;
+  //echo "<P>ENCODE<BR>";
   $ret = "";
   for ( $i = 0; $i < strlen ( $instr ); $i++ ) {
+    //echo "<P>";
     $ch1 = substr ( $instr, $i, 1 );
     $val = ord ( $ch1 );
+    //echo "val = $val for \"$ch1\" <br>\n";
     $j = $i % count ( $offsets );
+    //echo "Using offsets $j = $offsets[$j]<br>";
     $newval = $val + $offsets[$j];
     $newval %= 256;
+    //echo "newval = $newval for \"$ch1\" <br>\n";
     $ret .= bin2hex ( chr ( $newval ) );
   }
   return $ret;

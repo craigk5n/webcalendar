@@ -39,6 +39,7 @@ $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name, " .
 $res = dbi_query ( $sql );
 $count = 0;
 $key = 0;
+$eventinfo = "";
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $key++;
