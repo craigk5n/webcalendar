@@ -150,9 +150,12 @@
         translate("Login") . "/" . translate("Logout") . "</A>";
     }
     if ( $login != "__public__" && $readonly == "N" &&
-      ( $require_approvals == "Y" || $public_access == "Y" ) )
-      echo " | <A CLASS=\"navlinks\" HREF=\"list_unapproved.php\">" .
+      ( $require_approvals == "Y" || $public_access == "Y" ) ) {
+	$url = 'list_unapproved.php';
+        if ($is_nonuser_admin) $url .= "?user=$user";
+	echo " | <A CLASS=\"navlinks\" HREF=\"$url\">" .
         translate("Unapproved Events") . "</A>";
+    }
     if ( $login == "__public__" && $public_access_others != "Y" ) {
       // don't allow them to see other people's calendar
     } else if ( $allow_view_other == "Y" || $is_admin )
