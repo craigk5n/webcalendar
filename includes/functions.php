@@ -1579,6 +1579,8 @@ function repeated_event_matches_date($event,$dateYmd) {
 
 
 function date_to_epoch ( $d ) {
+  if ( $d == 0 )
+    return 0;
   $T = mktime ( 3, 0, 0, substr ( $d, 4, 2 ), substr ( $d, 6, 2 ), substr ( $d, 0, 4 ) );
   $lt = localtime($T);
   if ($lt[8]) {
