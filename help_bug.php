@@ -12,7 +12,7 @@
 ?>
 Please include all the information below when reporting a bug.
 <?php if ( $LANGUAGE != "English-US" ) { ?>
-	Also.... when reporting a bug, please use <span style="font-weight:bold;">English</span> rather than <?php echo $LANGUAGE?>.
+	Also.. when reporting a bug, please use <strong>English</strong> rather than <?php echo $LANGUAGE?>.
 <?php } ?>
 
 <form action="http://sourceforge.net/tracker/" target="_new">
@@ -50,11 +50,9 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
-
 echo "</pre>\n";
+
+include_once "includes/help_trailer.php";
 ?>
-
-<?php include_once "includes/help_trailer.php"; ?>
-
 </body>
 </html>
