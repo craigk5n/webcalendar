@@ -80,16 +80,16 @@ $admin_can_delete_user = false;
 // Checks to see if the user is logged into the application
 // returns: login id
 function user_logged_in() {
-  global $pn_sid, $HTTP_COOKIE_VARS;
+  global $pn_sid, $_COOKIE;
   
   // First check to see if the user even has a session cookie
-  if (empty($HTTP_COOKIE_VARS[$pn_sid])) return false;
+  if (empty($_COOKIE[$pn_sid])) return false;
   
   // Check to see if the session is still valid
-  if (! $login = pn_active_session($HTTP_COOKIE_VARS[$pn_sid]) ) return false;
+  if (! $login = pn_active_session($_COOKIE[$pn_sid]) ) return false;
 
   // Update the session last access time
-  pn_update_session($HTTP_COOKIE_VARS[$pn_sid]);
+  pn_update_session($_COOKIE[$pn_sid]);
 
   return $login;
 }
