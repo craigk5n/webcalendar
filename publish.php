@@ -21,10 +21,10 @@
  *	or /xxx/publish.php?user=username
  *
  * Security:
- *	Eventually, we will check various system settings to see if
- *	a user wants their calendar published.  (Coming soon!)
- *
- *	Right now there are NO restrictions on how can access this page.
+ *	If $PUBLISH_ENABLED is not 'Y' (set in Admin System Settings),
+ *	  do not allow.
+ *	If $USER_PUBLISH_ENABLED is not 'Y' (set in each user's
+ *	  Preferences), do not allow.
  */
 include "includes/config.php";
 include "includes/php-dbi.php";
@@ -44,6 +44,12 @@ load_global_settings ();
 
 include "includes/translate.php";
 
+if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
+  header ( "Content-Type: text/plain" );
+  etranslate("You are not authorized");
+  exit;
+}
+
 // Make sure they specified a username
 if ( empty ( $user ) ) {
   echo "<html><head><title>" . translate("Error") . "</title></head>" .
@@ -51,10 +57,16 @@ if ( empty ( $user ) ) {
     "No user specified.\n</body></html>\n";
 }
 
-// Load user preferences (primary to get the DISPLAY_UNAPPROVED setting
-// for this user).
+// Load user preferences (to get the USER_PUBLISH_ENABLED and
+// DISPLAY_UNAPPROVED setting for this user).
 $login = $user;
 load_user_preferences ();
+
+if ( empty ( $USER_PUBLISH_ENABLED ) || $USER_PUBLISH_ENABLED != 'Y' ) {
+  header ( "Content-Type: text/plain" );
+  etranslate("You are not authorized");
+  exit;
+}
 
 // Load user name, etc.
 user_load_variables ( $user, "publish_" );

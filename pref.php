@@ -312,6 +312,21 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 <?php } /* if ( ! $updating_public ) */ ?>
 
+<?php if ( $PUBLISH_ENABLED == 'Y' ) { ?>
+<H3><?php etranslate("Subscribe/Publish")?></H3>
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
+
+<TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("allow-remote-subscriptions-help")?>"><?php etranslate("Allow remote subscriptions")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="pref_USER_PUBLISH_ENABLED" VALUE="Y" <?php if ( $prefarray["USER_PUBLISH_ENABLED"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="pref_USER_PUBLISH_ENABLED" VALUE="N" <?php if ( $prefarray["USER_PUBLISH_ENABLED"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+<?php if ( ! empty ( $server_url ) ) { ?>
+<TR><TD VALIGN="top">&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("remote-subscriptions-url-help")?>"><?php etranslate("URL")?>:</B></TD>
+  <TD><?php echo htmlentities ( $server_url ) . "publish.php/$login.ics";?></TD></TR>
+<?php } /* $server_url */ ?>
+
+</TABLE></TD></TR></TABLE></TD></TR></TABLE>
+<?php } /* $PUBLISH_ENABLED == 'Y' */ ?>
+
 <?php if ( $allow_color_customization ) { ?>
 
 <H3><?php etranslate("Colors")?></H3>

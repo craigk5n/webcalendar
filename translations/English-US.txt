@@ -17,7 +17,7 @@
 #
 #
 #
-# Translation last updated on 07-08-2003
+# Translation last updated on 07-11-2003
 
 
 ###############################################
@@ -144,6 +144,9 @@ Categories enabled: Categories enabled
 Reports: Reports
 reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
 Reports enabled: Reports enabled
+Subscribe/Publish: Subscribe/Publish
+subscriptions-enabled-help: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+Allow remote subscriptions: Allow remote subscriptions
 Email: Email
 email-enabled-help: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
 Email enabled: Email enabled
@@ -302,6 +305,7 @@ Daily: Daily
 Weekly: Weekly
 Monthly: Monthly
 by day: by day
+by day (from end): by day (from end)
 by date: by date
 Yearly: Yearly
 repeat-end-date-help: Specifies the date the event should repeat until.
@@ -448,6 +452,9 @@ Default Category: Default Category
 When I am the boss: When I am the boss
 Email me event notification: Email me event notification
 I want to approve events: I want to approve events
+allow-remote-subscriptions-help: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
+URL: URL
 Sun: Sun
 Mon: Mon
 Tue: Tue
@@ -625,6 +632,7 @@ every: every
 3rd: 3rd
 4th: 4th
 5th: 5th
+last: last
 Description: Description
 Status: Status
 Waiting for approval: Waiting for approval
@@ -810,6 +818,11 @@ Yours assistants: Yours assistants
 
 ###############################################
 # Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: publish.php
 #
 
 

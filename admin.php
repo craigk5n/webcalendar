@@ -314,6 +314,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 </TABLE></TD></TR></TABLE></TD></TR></TABLE>
 
+<!--
 
 <H3><?php etranslate("Plugins")?></H3>
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
@@ -344,7 +345,7 @@ if ( $plugins_enabled == "Y" ) {
 ?>
 
 </TABLE></TD></TR></TABLE></TD></TR></TABLE>
-
+-->
 
 
 <H3><?php etranslate("Groups")?></H3>
@@ -376,6 +377,13 @@ if ( $plugins_enabled == "Y" ) {
 
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("reports-enabled-help")?>"><?php etranslate("Reports enabled")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_reports_enabled" VALUE="Y" <?php if ( $s["reports_enabled"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_reports_enabled" VALUE="N" <?php if ( $s["reports_enabled"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+</TABLE></TD></TR></TABLE></TD></TR></TABLE>
+
+<H3><?php etranslate("Subscribe/Publish")?></H3>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
+
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("subscriptions-enabled-help")?>"><?php etranslate("Allow remote subscriptions")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_PUBLISH_ENABLED" VALUE="Y" <?php if ( $s["PUBLISH_ENABLED"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_PUBLISH_ENABLED" VALUE="N" <?php if ( $s["PUBLISH_ENABLED"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
 </TABLE></TD></TR></TABLE></TD></TR></TABLE>
 
