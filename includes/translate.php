@@ -70,7 +70,7 @@ function load_translation_text () {
     $trans = substr ( $buffer, $pos + 1 );
     $trans = trim ( $trans );
     $translations[$abbrev] = $trans;
-    //echo "Abbrev: $abbrev<BR>Trans: $trans<BR>\n";
+    //echo "Abbrev: $abbrev<br />Trans: $trans<br />\n";
   }
   fclose ( $fp );
 
@@ -97,7 +97,7 @@ function translate ( $str ) {
   else {
     // To help in translating, use the following to help identify text that
     // has not been translated
-    // return "<BLINK>$str</BLINK>";
+    // return "<blink>$str</blink>";
     return $str;
   }
 }

@@ -150,7 +150,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
 
   // Start the header
-  echo "<HTML>\n<HEAD>\n<TITLE>".translate($application_name)."</TITLE>\n";
+  echo "<html>\n<head>\n<title>".translate($application_name)."</title>\n";
 
   // Any other includes?
   if ( is_array ( $includes ) ) {
@@ -191,7 +191,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   }
 
   // Finish the header
-  echo "</HEAD>\n<BODY BGCOLOR=\"$BGCOLOR\" CLASS=\"defaulttext\" $BodyX>\n";
+  echo "</head>\n<body bgcolor=\"$BGCOLOR\" class=\"defaulttext\" $BodyX>\n";
 
   // Add custom header if enabled
   if ( $CUSTOM_HEADER == 'Y' && ! $disableCustom ) {

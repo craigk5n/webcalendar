@@ -67,14 +67,14 @@ $EXTRA_REMINDER_DEFAULT_YES =	0x0004;
 // type: $EXTRA_URL, $EXTRA_TEXT, etc...
 // arg1: for reminders how many minutes before event should reminder
 //       for multi-line text, how many columns to display in the form
-//         as in <TEXTAREA ROWS="XX" COLS="XX"
+//         as in <textarea rows="XX" cols="XX"
 //       for text (single line), how many columns to display
-//         as in <INPUT SIZE="XX"
+//         as in <input size="XX"
 //	for selection list, contains an array of possible values
 // arg2: for reminders, this specifies options such as
 //         $EXTRA_REMINDER_WITH_DATE or $EXTRA_REMINDER_WITH_OFFSET.
 //       for multi-line text, how many rows to display in the form
-//         as in <TEXTAREA ROWS="XX" COLS="XX"
+//         as in <textarea rows="XX" cols="XX"
 
 // Example 1:
 //   You want to add an URL, a reminder, an email address,
