@@ -36,23 +36,18 @@ $enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
 $monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
 $monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 $thisdate = $startdate;
-
 ?>
 
 <div style="border-width:0px; width:99%;">
-<div style="float:left;">
-<a title="<?php etranslate("Previous")?>" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
-</div>
-<div style="float:right;">
-<a title="<?php etranslate("Next")?>" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-</div>
+<a title="<?php etranslate("Previous")?>" class="prev" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate("Next")?>" class="next" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php
   printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
 ?></span><br />
 <span class="viewname"><?php echo $view_name ?></span>
 </div>
-</div>
+</div><br />
 
 <?php
 // The table has names across the top and dates for rows.  Since we need
@@ -82,7 +77,6 @@ for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   $events = read_events ( $viewusers[$i], $startdate, $enddate );
   $e_save[$i] = $events;
 }
-
 
 for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
   // since print_date_entries is rather stupid, we can swap the event data
@@ -154,7 +148,6 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 
   echo "</table>\n<br /><br />\n";
 }
-
 
 $user = ""; // reset
 

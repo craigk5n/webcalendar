@@ -52,19 +52,12 @@ for ( $i = 0; $i < 7; $i++ ) {
      month_short_name ( date ( "m", $days[$i] ) - 1 ) .
      " " . date ( "d", $days[$i] );
 }
-
 ?>
 
 <div style="border-width:0px; width:99%;">
-<div style="float:left;">
-<br />
-<a title="<?php etranslate("Previous")?>" href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
-</div>
+<a title="<?php etranslate("Previous")?>" class="prev" href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
 
-<div style="float:right;">
-<br />
-<a title="<?php etranslate("Next")?>" href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-</div>
+<a title="<?php etranslate("Next")?>" class="next" href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
@@ -78,7 +71,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 // The table has names across the top and dates for rows.  Since we need
 // to spit out an entire row before we can move to the next date, we'll
 // save up all the HTML for each cell and then print it out when we're
-// done....
+// done..
 // Additionally, we only want to put at most 6 users in one table since
 // any more than that doesn't really fit in the page.
 
@@ -103,13 +96,11 @@ for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   $e_save[$i] = $events;
 }
 
-
 for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   // since print_date_entries is rather stupid, we can swap the event data
   // around for users by changing what $events points to.
 
   $tdw = 12; // column width percent
-
 ?>
 
 <table cellspacing="0" cellpadding="0">
@@ -182,7 +173,6 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   echo "</table>\n<br /><br />\n";
 }
 
-
 $user = ""; // reset
 
 echo $eventinfo;
@@ -194,6 +184,5 @@ echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=
 
 print_trailer ();
 ?>
-
 </body>
 </html>
