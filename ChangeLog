@@ -1,4 +1,6 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Fixed bug 765229: Export a repeating event in VCS
+  - Added repeating info and alarm info to vcal export (works in Palm Desk.)
   - Fixed bug 779668: Event colors on nonuser admin page
   - Allow preferences to be set for nonuser cals (only nonuser admin will see)
   - Fixed bug 777524: Fixed preference issues with language.  Also
