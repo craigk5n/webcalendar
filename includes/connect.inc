@@ -33,8 +33,9 @@ if ( empty ( $login ) && $use_http_auth ) {
         send_http_login ();
       } else {
         // This shouldn't happed since login should be validated in validate.inc
-        echo "Error getting user info for login \"$login\".";
-        exit;
+        // If it does happen, it means we received an invalid login cookie.
+        //echo "Error getting user info for login \"$login\".";
+        do_redirect ( "login.php?error=Invalid+session+found." );
       }
     }
   }
