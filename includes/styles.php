@@ -27,6 +27,7 @@
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+  vertical-align: top;
 }
 .tablecelldemo {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
@@ -370,7 +371,7 @@ table.monthview {
 .monthviewtitle {
 	text-align: center;
 }
-td.monthviewtitle .date {
+.monthviewtitle .date {
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	font-weight: bold;
 	font-size: 24px;
@@ -380,12 +381,8 @@ td.monthviewtitle .date {
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
-	border-right-width: 1px;
-	border-right-style: solid;
-	border-right-color: <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 14%;
 }
 table.monthviewminical {
@@ -409,7 +406,6 @@ table.monthviewminical {
 }
 /* formats the day name (i.e. Sun, Mon, etc) */
 /* used as "tr class="day"" to format the cells WITHIN that row */
-/* NOTE: removing the "th" below will modify the appearance of mini calendars */
 .monthviewminical tr.day {
 	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
 	text-align: center;
@@ -433,7 +429,6 @@ table.monthviewminical {
 	color: #0000FF;
 	text-decoration: none;
 }
-
 
 /* ========================= */
 /* YEAR.PHP */
