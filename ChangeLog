@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Added "Today" link in trailer
   - Fixed bug 826651: Modified report of public cal. will stored under admin-user
   - Added "Copy event" option when viewing an event.  This fills in the
     edit_entry.php form with details from the event you want to copy.
