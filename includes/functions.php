@@ -1718,7 +1718,7 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
       print "user=$user&amp;";
     print "date=$date\">" .
       "<img src=\"new.gif\" alt=\"" .
-      translate("New Entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" align=\"right\" />" .
+      translate("New Entry") . "\" class=\"new\" align=\"right\" />" .
       "</a>";
     $cnt++;
   }
