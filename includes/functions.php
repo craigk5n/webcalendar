@@ -178,7 +178,7 @@ function load_global_settings () {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $setting = $row[0];
       $value = $row[1];
-      //echo "Setting '$setting' to '$value' <br>\n";
+      //echo "Setting '$setting' to '$value' <br />\n";
       $GLOBALS[$setting] = $value;
 
     }
@@ -306,7 +306,7 @@ function do_redirect ( $url ) {
   //echo "SERVER_SOFTWARE = $SERVER_SOFTWARE <br />"; exit;
   if ( substr ( $SERVER_SOFTWARE, 0, 5 ) == "Micro" ) {
     echo "<html><head><title>Redirect</title>" .
-      "<meta http-equiv=\"Refresh\" content=\"0; URL=$url\"></head><body>" .
+      "<meta http-equiv=\"refresh\" content=\"0; url=$url\"></head><body>" .
       "Redirecting to ... <a href=\"" . $url . "\">here</a>.</body></html>.\n";
   } else {
     Header ( "Location: $url" );
@@ -727,9 +727,9 @@ function build_event_popup ( $divname, $user, $description, $time,
   $site_extras='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname;
   $ret = "<div id=\"" . $divname .
-    "\" style=\"position: absolute; z-index: 20; visibility: hidden; top: 0px; left: 0px; width: 300px;\">\n" .
-    "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"border: 1px solid $GLOBALS[POPUP_FG];\">\n" .
-    "<tr><td style=\"background-color: $GLOBALS[POPUP_BG]; color: $GLOBAL[POPUP_FG];\" class=\"popup\">";
+    "\" style=\"position:absolute; z-index:20; visibility:hidden; top:0px; left:0px; width:300px;\">\n" .
+    "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"border:1px solid $GLOBALS[POPUP_FG];\">\n" .
+    "<tr><td style=\"background-color:$GLOBALS[POPUP_BG]; color:$GLOBAL[POPUP_FG];\" class=\"popup\">";
 
   if ( empty ( $popup_fullnames ) )
     $popup_fullnames = array ();
@@ -785,18 +785,18 @@ function date_selection_html ( $prefix, $date ) {
     $num_years = $thisyear - date ( "Y" ) + 2;
   $ret .= "<select name=\"" . $prefix . "day\">";
   for ( $i = 1; $i <= 31; $i++ )
-    $ret .= "<option " . ( $i == $thisday ? " selected" : "" ) . ">$i";
+    $ret .= "<option " . ( $i == $thisday ? "SELECTED=\"SELECTED\"" : "" ) . ">$i</option>";
   $ret .= "</select>\n<select name=\"" . $prefix . "month\">";
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
     $ret .= "<option value=\"$i\"" .
-      ( $i == $thismonth ? " selected" : "" ) . ">$m";
+      ( $i == $thismonth ? "SELECTED=\"SELECTED\"" : "" ) . ">$m</option>";
   }
   $ret .= "</select>\n<select name=\"" . $prefix . "year\">";
   for ( $i = -1; $i < $num_years; $i++ ) {
     $y = date ( "Y" ) + $i;
     $ret .= "<option value=\"$y\"" .
-      ( $y == $thisyear ? " selected" : "" ) . ">$y";
+      ( $y == $thisyear ? "SELECTED=\"SELECTED\"" : "" ) . ">$y</option>";
   }
   $ret .= "</select>\n";
   $ret .= "<input type=\"button\" onclick=\"selectDate('" .
@@ -852,8 +852,8 @@ function print_entry ( $id, $date, $time, $duration,
     echo "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
     if ( strlen ( $user ) > 0 )
       echo "&user=" . $user;
-    echo "\" onMouseOver=\"window.status='" . translate("View this entry") .
-      "'; show(event, '$divname'); return true;\" onMouseOut=\"window.status=''; hide('$divname'); return true;\">";
+    echo "\" onmouseover=\"window.status='" . translate("View this entry") .
+      "'; show(event, '$divname'); return true;\" onmouseout=\"window.status=''; hide('$divname'); return true;\">";
     echo "<img src=\"circle.gif\" width=\"5\" height=\"7\" border=\"0\" alt=\"view\" />";
   }
 
@@ -1508,7 +1508,7 @@ function repeated_event_matches_date($event,$dateYmd) {
     $whichWeekS = floor ( ( $dayS - $days_in_first_weekS ) / 7 );
     if ( $dowS >= $dowS1 && $days_in_first_weekS )
       $whichWeekS++;
-    //echo "dayS=$dayS;dowS=$dowS;dowS1=$dowS1;wWS=$whichWeekS<br>";
+    //echo "dayS=$dayS;dowS=$dowS;dowS1=$dowS1;wWS=$whichWeekS<br />";
     $mth  = date("m", $date);
     $yr   = date("Y", $date);
     $day  = date("d", $date);
@@ -1517,7 +1517,7 @@ function repeated_event_matches_date($event,$dateYmd) {
     $whichWeek = floor ( ( $day - $days_in_first_week ) / 7 );
     if ( $dow >= $dow1 && $days_in_first_week )
       $whichWeek++;
-    //echo "day=$day;dow=$dow;dow1=$dow1;wW=$whichWeek<br>";
+    //echo "day=$day;dow=$dow;dow1=$dow1;wW=$whichWeek<br />";
 
     if ((($yr - $yrS)*12 + $mth - $mthS) % $freq)
       return false;
@@ -1596,9 +1596,9 @@ function is_exception ( $date, $ex_days ) {
   $size = count ( $ex_days );
   $count = 0;
   $date = date ( "Ymd", $date );
-  //echo "Exception $date check.. count is $size <br>";
+  //echo "Exception $date check.. count is $size <br />";
   while ( $count < $size ) {
-    //echo "Exception date: $ex_days[$count] <br>";
+    //echo "Exception date: $ex_days[$count] <br />";
     if ( $date == $ex_days[$count++] )
       return true;
   }
@@ -1658,7 +1658,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
       "</a>";
   if ( $can_delete && ( $readonly == "N" || $is_admin ) )
     $ret .= "<a href=\"del_entry.php?id=$id\" " .
-      "onClick=\"return confirm('" .
+      "onclick=\"return confirm('" .
       translate("Are you sure you want to delete this entry?") .
       "\\n\\n" . translate("This will delete this entry for all users.") .
       "');\">" .
@@ -2104,9 +2104,9 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
       "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
     if ( strlen ( $GLOBALS["user"] ) > 0 )
       $hour_arr[$ind] .= "&user=" . $GLOBALS["user"];
-    $hour_arr[$ind] .= "\" onMouseOver=\"window.status='" .
+    $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
       translate("View this entry") .
-      "'; show(event, '$divname'); return true;\" onMouseOut=\"hide('$divname'); return true;\">";
+      "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
   }
   if ( $pri == 3 )
     $hour_arr[$ind] .= "<b>";
@@ -2257,9 +2257,9 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
       "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
     if ( strlen ( $GLOBALS["user"] ) > 0 )
       $hour_arr[$ind] .= "&user=" . $GLOBALS["user"];
-    $hour_arr[$ind] .= "\" onMouseOver=\"window.status='" .
+    $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
       translate("View this entry") .
-      "'; show(event, '$divname'); return true;\" onMouseOut=\"hide('$divname'); return true;\">";
+      "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
   }
   if ( $pri == 3 ) $hour_arr[$ind] .= "<b>";
 
@@ -2921,20 +2921,20 @@ function print_category_menu ( $form, $date = '', $cat_id = '', $friendly = '' )
 
   if ( $friendly == '' ) {
     echo "<form action=\"{$form}.php\" method=\"GET\" name=\"SelectCategory\">\n";
-    if ( ! empty($date) ) echo "<input type=\"hidden\" name=\"date\" value=\"$date\">\n";
+    if ( ! empty($date) ) echo "<input type=\"hidden\" name=\"date\" value=\"$date\" />\n";
     if ( ! empty ( $user ) && $user != $login )
-      echo "<input type=\"hidden\" name=\"user\" value=\"$user\">\n";
+      echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
     echo translate ('Category').": <select name=\"cat_id\" onchange=\"document.SelectCategory.submit()\">\n";
     echo "<option value=\"\"";
-    if ( $cat_id == '' ) echo " selected";
+    if ( $cat_id == '' ) echo "SELECTED=\"SELECTED\"";
     echo ">" . translate("All") . "</option>\n";
     if ( is_array ( $categories ) ) {
       foreach ( $categories as $K => $V ){
         if ( empty ( $user ) || $user == $login ||
           empty ( $category_owners[$K] ) ) {
           echo "<option value=\"$K\"";
-          if ( $cat_id == $K ) echo " selected";
-          echo ">$V\n";
+          if ( $cat_id == $K ) echo "SELECTED=\"SELECTED\"";
+          echo ">$V</option>\n";
         }
       }
     }
@@ -3206,8 +3206,8 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     echo "<a class=\"$class\" href=\"view_entry.php?id=$id&date=$date";
     if ( strlen ( $user ) > 0 )
       echo "&user=" . $user;
-    echo "\" onMouseOver=\"window.status='" . translate("View this entry") .
-      "'; show(event, '$divname'); return true;\" onMouseOut=\"hide('$divname'); return true;\">";
+    echo "\" onmouseover=\"window.status='" . translate("View this entry") .
+      "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
   }
 
 
@@ -3264,13 +3264,13 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   echo "</td>";
   if ( $pos < 2 ) {
     if ( $pos < 1 ) {
-      echo "<td width=\"$ev_duration%\"> <table width=\"100%\"
+      echo "<td width=\"$ev_duration%\"><table width=\"100%\"
       border=\"0\" cellpadding=\"0\" cellspacing=\"1\"
       bgcolor=\"black\"><tr><td align=\"middle\"
       bgcolor=\"#F5DEB3\">&nbsp;</td>";
     }
     echo "</tr></table></td>";
-    echo "<td align=\"left\" width=\"$ev_padding%\" bgcolor=\"white\"> &nbsp;</td>";
+    echo "<td align=\"left\" width=\"$ev_padding%\" bgcolor=\"white\">&nbsp;</td>";
   }
   echo "</tr></table>";
   if ( ! $hide_icons ) {
@@ -3290,7 +3290,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
 }
 
 function print_header_timebar($start_hour, $end_hour) {
-  //      sh+1   ...   eh-1       
+  //      sh+1   ...   eh-1
   // +------+----....----+------+
   // |      |            |      |
 
@@ -3549,4 +3549,3 @@ function clean($value){
 }
 
 ?>
-<?php
