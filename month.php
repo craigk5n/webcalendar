@@ -212,25 +212,21 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $thiswday = date ( "w", $date );
       $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
       if ( empty ( $WEEKENDBG ) ) $is_weekend = false;
-      $class = $is_weekend ? "tablecellweekend" : "tablecell";
-      //$color = $is_weekend ? $WEEKENDBG : $CELLBG;
-      //if ( empty ( $color ) )
-      //  $color = "#C0C0C0";
       print "<td";
-      //print "style=\"height:75px;";
-      if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) )
-        //echo "background-color:$TODAYCELLBG;\"";
-         $class = 'tablecelltoday';
-      //else
-        //echo "background-color:$color;\"";
-      echo " class=\"$class\">";
+      if ( $is_weekend != false ) {
+	echo " class=\"weekend\">";
+      } elseif ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
+	echo " class=\"today\">";
+      } else {
+	echo ">";
+      }
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       print_date_entries ( date ( "Ymd", $date ),
         ( ! empty ( $user ) ) ? $user : $login,
         $friendly, false );
       print "</td>\n";
     } else {
-      print "<td class=\"tablecell\">&nbsp;</td>\n";
+      print "<td>&nbsp;</td>\n";
     }
   }
   print "</tr>\n";
