@@ -3,12 +3,13 @@
 // This file contains all the functions for getting information
 // about users from PostNuke 0.7.2x.
 
+// Reference to the application means the external application (postnuke)
 
-// Application auth files assume the following:
+// user-app-*.php auth files assume the following:
 //   - login ids are unique within the application
 //   - user administration is done through the application
 
-// The following functions were configured to work with the application:
+// The following functions had to be configured to work with the application:
 // - user_logged_in (returns login id if true)
 // - get_admins (returns an array of admin login ids)
 // - user_get_users (returns array of users)
@@ -41,8 +42,9 @@ $pn_admin_gid = '2';
 // What is the full URL to the login page (including http:// or https://)
 $app_login_page = 'http://www.mysite.com/postnuke/html/user.php?op=loginscreen&module=NS-User'; 
 
-// Is there a parameter we can pass to redirect the user back to the calendar?
-$app_redir_param = 'url';
+// Is there a parameter we can pass to tell the application to
+// redirect the user back to the calendar?
+$app_redir_param = 'url';  // postnuke uses 'url'
 
 // What is the full URL to the logout page (including http:// or https://)
 $app_logout_page = 'http://www.mysite.com/postnuke/html/user.php?module=NS-User&op=logout'; 
@@ -52,20 +54,20 @@ $app_same_db = '0';  // 1 = yes, 0 = no
  
 // Only need configure the rest if $app_same_db != 1
 
- // Name of database containing app's tables
+ // Name of database containing the app's tables
 $app_db = 'postnuke';
 
 // Host that the app's db is on
 $app_host = 'localhost';
 
-// Login/Password to access the database
+// Login/Password to access the app's database
 $app_login = 'pnuser';
 $app_pass  = 'pnpassword';
 
 /*************************** End Config *****************************/
 
 
-// User administration should be done through the postnuke interface
+// User administration should be done through the aplication's interface
 $user_can_update_password = false;
 $admin_can_add_user = false;
 $admin_can_delete_user = false;
