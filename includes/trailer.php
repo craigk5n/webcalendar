@@ -165,7 +165,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
       echo "<a title=\"" . translate("My Calendar") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"$mycal\">" .
         translate("My Calendar") . "</a>";
     if ( ! empty ( $user ) && $user != $login )
-      $todayURL .= '&amp;user=' . $user;
+      $todayURL .= '?user=' . $user;
     echo " | <a title=\"" . translate("Today") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"$todayURL\">" . translate("Today") . "</a>";
     if ( $login != '__public__' )
       echo " | <a title=\"" . translate("Admin") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"adminhome.php\">" .
