@@ -4,7 +4,7 @@
 # Based in Portugues version, by Sérgio Oliveira - sloliv@terra.com.br
 #   Based in Portuguese version, by Nuno Lopes - nml@maxitel.pt
 # Last update: 27 December 2000
-# Translation last updated on 09-28-2002
+# Translation last updated on 11-30-2002
 
 
 ###############################################
@@ -90,6 +90,8 @@ disable-participants-field-help: Selecionando "Sim" será removido o campo "Part
 Disable Participants field: Desabilitar campo Participantes
 disable-repeating-field-help: Selecionando "Sim" será removido o campo "Repetiç
 Disable Repeating field: Desabilitar campo Repetição
+allow-view-other-help: Especifica um usuário que poderá visualizar o calendário
+Allow viewing other user's calendars: Permitir visualização do calendário de ou
 #
 # << MISSING >>
 # allow-public-access-help:
@@ -100,8 +102,48 @@ public-access-view-others-help: Quanto o acesso publico estiver ativado, outros
 Public access can view other users: Acesso público para outros usuários
 public-access-can-add-help: Quando ligado, os usuários poderão utilizar a criaç
 Public access can add events: Acesso público pode criar eventos
-allow-view-other-help: Especifica um usuário que poderá visualizar o calendário
-Allow viewing other user's calendars: Permitir visualização do calendário de ou
+#
+# << MISSING >>
+# public-access-add-requires-approval-help:
+# English text: Specifies whether events added via the public access account require approval before being displayed.
+#
+#
+# << MISSING >>
+# Public access new events require approval:
+# English text: Public access new events require approval:
+#
+#
+# << MISSING >>
+# allow-view-add-help:
+# English text: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+#
+#
+# << MISSING >>
+# Include add event link in views:
+#
+# << MISSING >>
+# allow-external-users-help:
+# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+#
+#
+# << MISSING >>
+# Allow external users:
+#
+# << MISSING >>
+# external-can-receive-notification-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email notifications:
+#
+# << MISSING >>
+# external-can-receive-reminder-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email reminders:
 remember-last-login-help: Quando ligado, o logon do usuário poderá ser automati
 Remember last login: Lembrar ultimo acesso
 conflict-check-help: Checar se o evento está em conflito (dois eventos agendado
@@ -112,6 +154,49 @@ Check for event conflicts: Checar eventos em conflito
 # English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
 #
 Conflict checking months: Checar conflitos no mês
+#
+# << MISSING >>
+# conflict-check-override-help:
+# English text: Allows users to override event conflicts and schedule two or more events for the same time.
+#
+#
+# << MISSING >>
+# Allow users to override conflicts:
+#
+# << MISSING >>
+# limit-appts-help:
+# English text: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
+#
+#
+# << MISSING >>
+# Limit number of timed events per day:
+#
+# << MISSING >>
+# limit-appts-number-help:
+# English text: Specifies the maximum number of timed events a user can have in a single day.
+#
+#
+# << MISSING >>
+# Maximum timed events per day:
+#
+# << MISSING >>
+# Plugins:
+#
+# << MISSING >>
+# plugins-enabled-help:
+# English text: Enable plugin applications.
+#
+#
+# << MISSING >>
+# Enable Plugins:
+#
+# << MISSING >>
+# plugins-sort-key-help:
+# English text: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
+#
+#
+# << MISSING >>
+# Plugin:
 Groups: Grupos
 groups-enabled-help: Habilitar suporte a grupos, permintindo a seleção de usuár
 Groups enabled: Grupos habilitado
@@ -225,6 +310,9 @@ Previous: Anterior
 ###############################################
 # Page: day.php
 #
+#
+# << MISSING >>
+# Assistant mode:
 Generate printer-friendly version: Visualizar em formato de impressora
 Printer Friendly: Formato de impressora
 
@@ -261,6 +349,15 @@ date-help: Especifica a data do evento.
 time-help: Especifica a hora do evento<BR><I>Este campo é opcional.</I>
 am: am
 pm: pm
+#
+# << MISSING >>
+# Untimed event:
+#
+# << MISSING >>
+# Timed event:
+#
+# << MISSING >>
+# All day event:
 duration-help: Especifica a duração (em minutos) do evento.  <BR><I>Este campo
 Duration: Duração
 hours: horas
@@ -279,6 +376,14 @@ days: dias
 before event: Evento anterior
 participants-help: Lista os participantes desse evento
 Participants: Participantes
+#
+# << MISSING >>
+# external-participants-help:
+# English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
+#
+#
+# << MISSING >>
+# External Participants:
 repeat-type-help: Seleciona a periodicidade do evento<I>Mensal (por dia)</I> fa
 Repeat Type: Tipo de repetição
 None: Nenhuma
@@ -512,6 +617,9 @@ default-category-help: Especificar a categoria padrão para novos eventos.
 ###############################################
 # Page: week.php
 #
+#
+# << MISSING >>
+# cont.:
 
 
 ###############################################
@@ -561,6 +669,11 @@ Save login via cookies so I don't have to login next time: Gravar usuário e sen
 Login: Entrar
 Access public calendar: Acesso publico ao calendario
 cookies-note: <B>Nota:</B> Esta opção requer a opção de 'cookies' no seu browse
+
+
+###############################################
+# Page: view_v.php
+#
 
 
 ###############################################
@@ -641,6 +754,9 @@ Status: Status
 Waiting for approval: Aguardando por aprovação
 Deleted: Deletado
 Rejected: Rejeitada
+#
+# << MISSING >>
+# External User:
 Approve/Confirm entry: Aprovar/Confirmar entrada
 Reject entry: Rejeitar entrada
 Set category: Selecionar categoria
@@ -712,6 +828,45 @@ Private: Pessoal
 
 
 ###############################################
+# Page: assistant_edit.php
+#
+#
+# << MISSING >>
+# Yours assistants:
+#
+# << MISSING >>
+# Assistants:
+
+
+###############################################
+# Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Go to: Ir para
+Back to My Calendar: Voltar ao meu calendário
+My Calendar: O Meu Calendário
+Logout: Sair
+Another User's Calendar: Calendário de outro usuário
+Add New Entry: Adicionar nova entrada
+Manage Views: Gerenciar visualizações
+Edit Layers: Editar Níveis
+Account: Conta
+Current User: Usuário atual
+#
+# << MISSING >>
+# Manage calendar of:
+
+
+###############################################
 # Page: includes/connect.php
 #
 
@@ -720,6 +875,9 @@ Private: Pessoal
 # Page: includes/functions.php
 #
 This event is confidential: Este evento é confidencial
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
 You have XXX unapproved events: Você possui XXX eventos não aprovados
 January: Janeiro
 February: Fevereiro
@@ -757,7 +915,6 @@ Invalid user login: Usuário inválido
 # Page: includes/site_extras.php
 #
 Send Reminder: Enviar lembrete
-Reminder: Lembrete
 
 
 ###############################################
@@ -783,7 +940,6 @@ Reminder: Lembrete
 ###############################################
 # Page: includes/help_trailer.php
 #
-Go to: Ir para
 
 
 ###############################################
@@ -812,20 +968,12 @@ Go to: Ir para
 
 
 ###############################################
-# Page: includes/trailer.php
+# Page: includes/dbtable.php
 #
-Back to My Calendar: Voltar ao meu calendário
-My Calendar: O Meu Calendário
-Logout: Sair
-Another User's Calendar: Calendário de outro usuário
-Add New Entry: Adicionar nova entrada
-Manage Views: Gerenciar visualizações
-Edit Layers: Editar Níveis
-Account: Conta
-Current User: Usuário atual
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
 This is a reminder for the event detailed below.: Este é um lembrete para o eve
+Reminder: Lembrete

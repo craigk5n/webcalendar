@@ -10,7 +10,7 @@
 # Last update: 22 July 2002 by Markus Egartner & Markus Kronberger <edv@kh-hallein.at>
 # Last update: 26 August 2002 by Markus Egartner & Markus Kornberger <edv@khhallein.at>
 #
-# Translation last updated on 09-28-2002
+# Translation last updated on 11-30-2002
 
 
 ###############################################
@@ -96,20 +96,105 @@ disable-participants-field-help: Wenn sie Ja wählen wird das Teilnehmerfeld von
 Disable Participants field: Benutzerfeld deaktivieren
 disable-repeating-field-help: Wenn sie Ja wählen wird das Wiederholungsfeld bei
 Disable Repeating field: Terminwiederholungsfeld deaktivieren
+allow-view-other-help: Gibt an ob de Benutzer die Kalender anderer Teilnehmer s
+Allow viewing other user's calendars: Ansicht anderer Benutzer-Kalender zulasse
 allow-public-access-help: Wenn diese Option gewählt ist, kann  der Kalender als
 Allow public access: öffentlichen Zugriff erlauben
 public-access-view-others-help: Gibt an ob ein öffentlicher Benutzer die Kalend
 Public access can view other users: Öffentlichkeit kann andere Benutzer ansehen
 public-access-can-add-help: Diese Einstellung ermöglicht es einem öffentlichen
 Public access can add events: Öffentlichkeit kann Termine hinzufügen
-allow-view-other-help: Gibt an ob de Benutzer die Kalender anderer Teilnehmer s
-Allow viewing other user's calendars: Ansicht anderer Benutzer-Kalender zulasse
+#
+# << MISSING >>
+# public-access-add-requires-approval-help:
+# English text: Specifies whether events added via the public access account require approval before being displayed.
+#
+#
+# << MISSING >>
+# Public access new events require approval:
+# English text: Public access new events require approval:
+#
+#
+# << MISSING >>
+# allow-view-add-help:
+# English text: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+#
+#
+# << MISSING >>
+# Include add event link in views:
+#
+# << MISSING >>
+# allow-external-users-help:
+# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+#
+#
+# << MISSING >>
+# Allow external users:
+#
+# << MISSING >>
+# external-can-receive-notification-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email notifications:
+#
+# << MISSING >>
+# external-can-receive-reminder-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email reminders:
 remember-last-login-help: Mit dieser Einstellung merkt sich der kalender den Be
 Remember last login: letzte Anmeldung merken
 conflict-check-help: Prüft Terminüberschneidungen (Zwei Termine die für dieselb
 Check for event conflicts: Terminüberschneidungen prüfen
 conflict-months-help: Gibt an wie viele Monate im voraus auf Zeitüberschneidung
 Conflict checking months: Terminüberschneidungsprüfung (in Monaten)
+#
+# << MISSING >>
+# conflict-check-override-help:
+# English text: Allows users to override event conflicts and schedule two or more events for the same time.
+#
+#
+# << MISSING >>
+# Allow users to override conflicts:
+#
+# << MISSING >>
+# limit-appts-help:
+# English text: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
+#
+#
+# << MISSING >>
+# Limit number of timed events per day:
+#
+# << MISSING >>
+# limit-appts-number-help:
+# English text: Specifies the maximum number of timed events a user can have in a single day.
+#
+#
+# << MISSING >>
+# Maximum timed events per day:
+#
+# << MISSING >>
+# Plugins:
+#
+# << MISSING >>
+# plugins-enabled-help:
+# English text: Enable plugin applications.
+#
+#
+# << MISSING >>
+# Enable Plugins:
+#
+# << MISSING >>
+# plugins-sort-key-help:
+# English text: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
+#
+#
+# << MISSING >>
+# Plugin:
 Groups: Gruppen
 groups-enabled-help: Diese Einsellung erlaubt Benutzern andere Benutzer über Gr
 Groups enabled: Gruppen aktivieren
@@ -223,6 +308,9 @@ Previous: Vorherige
 ###############################################
 # Page: day.php
 #
+#
+# << MISSING >>
+# Assistant mode:
 Generate printer-friendly version: Erzeuge Version zum Drucken
 Printer Friendly: Druckansicht
 
@@ -257,6 +345,15 @@ date-help: Gibt das Datum des Termins an.
 time-help: Gibt die Uhrzeit des Termins an.<BR><I>Kann leer gelassen werden.</I
 am: am
 pm: pm
+#
+# << MISSING >>
+# Untimed event:
+#
+# << MISSING >>
+# Timed event:
+#
+# << MISSING >>
+# All day event:
 duration-help: Gibt die Dauer des Termin in Minuten an.<BR><I>Kann leer gelasse
 Duration: Dauer
 hours: Stunde(n)
@@ -275,6 +372,14 @@ days: Tag(e)
 before event: vor dem Termin
 participants-help: Gibt die Benutzer des Termins an.
 Participants: Benutzer
+#
+# << MISSING >>
+# external-participants-help:
+# English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
+#
+#
+# << MISSING >>
+# External Participants:
 repeat-type-help: Wählen Sie wie oft ein Termin wiederholt werden soll.<I>Monat
 Repeat Type: Art der Wiederholung
 None: keine
@@ -492,6 +597,9 @@ default-category-help: Legt eine Standardkategorie für einen neuen Termin fest.
 ###############################################
 # Page: week.php
 #
+#
+# << MISSING >>
+# cont.:
 
 
 ###############################################
@@ -539,6 +647,11 @@ Save login via cookies so I don't have to login next time: Login in Cookie absp
 Login: Login
 Access public calendar: Zugang öffentlicher Kalender
 cookies-note: <B>Hinweis:</B> Für diese Anwendung müssen Cookies im Browser akz
+
+
+###############################################
+# Page: view_v.php
+#
 
 
 ###############################################
@@ -619,6 +732,9 @@ Status: Status
 Waiting for approval: Warten auf Bestätigung
 Deleted: gelöscht
 Rejected: Eintrag abgelehnt, wird nicht teilnehmen
+#
+# << MISSING >>
+# External User:
 Approve/Confirm entry: Eintrag bestätigen?
 Reject entry: Eintrag ablehnen?
 Set category: Kategorie zuweisen
@@ -688,6 +804,45 @@ Private: Privat
 
 
 ###############################################
+# Page: assistant_edit.php
+#
+#
+# << MISSING >>
+# Yours assistants:
+#
+# << MISSING >>
+# Assistants:
+
+
+###############################################
+# Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Go to: Gehe zu
+Back to My Calendar: Zurück zu meinem Kalender
+My Calendar: Mein Kalender
+Logout: Logout
+Another User's Calendar: Kalender anderer Benutzer
+Add New Entry: Eintrag hinzufügen
+Manage Views: Ansichten einrichten
+Edit Layers: Layer editieren
+Account: Konto
+Current User: aktuelle/r Benutzer
+#
+# << MISSING >>
+# Manage calendar of:
+
+
+###############################################
 # Page: includes/connect.php
 #
 
@@ -696,6 +851,9 @@ Private: Privat
 # Page: includes/functions.php
 #
 This event is confidential: privater Termin
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
 You have XXX unapproved events: Sie haben XXX unbestätigte(n) Termin(e)
 January: Januar
 February: Februar
@@ -733,7 +891,6 @@ Invalid user login: Ungültige Anmeldung
 # Page: includes/site_extras.php
 #
 Send Reminder: Erinnerung senden
-Reminder: Erinnerung
 
 
 ###############################################
@@ -759,7 +916,6 @@ Reminder: Erinnerung
 ###############################################
 # Page: includes/help_trailer.php
 #
-Go to: Gehe zu
 
 
 ###############################################
@@ -788,20 +944,12 @@ Go to: Gehe zu
 
 
 ###############################################
-# Page: includes/trailer.php
+# Page: includes/dbtable.php
 #
-Back to My Calendar: Zurück zu meinem Kalender
-My Calendar: Mein Kalender
-Logout: Logout
-Another User's Calendar: Kalender anderer Benutzer
-Add New Entry: Eintrag hinzufügen
-Manage Views: Ansichten einrichten
-Edit Layers: Layer editieren
-Account: Konto
-Current User: aktuelle/r Benutzer
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
 This is a reminder for the event detailed below.: Das ist eine Erinnerung für f
+Reminder: Erinnerung

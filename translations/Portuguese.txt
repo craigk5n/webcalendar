@@ -1,7 +1,7 @@
 # Translated by:
 #	Nuno Lopes - nml@maxitel.pt
 # Last update: 11 September 2000
-# Translation last updated on 09-28-2002
+# Translation last updated on 11-30-2002
 
 
 ###############################################
@@ -199,6 +199,14 @@ to: para
 # Disable Repeating field:
 #
 # << MISSING >>
+# allow-view-other-help:
+# English text: Specifies whether one user may view another user's calendar.
+#
+#
+# << MISSING >>
+# Allow viewing other user's calendars:
+#
+# << MISSING >>
 # allow-public-access-help:
 # English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
 #
@@ -223,12 +231,46 @@ to: para
 # Public access can add events:
 #
 # << MISSING >>
-# allow-view-other-help:
-# English text: Specifies whether one user may view another user's calendar.
+# public-access-add-requires-approval-help:
+# English text: Specifies whether events added via the public access account require approval before being displayed.
 #
 #
 # << MISSING >>
-# Allow viewing other user's calendars:
+# Public access new events require approval:
+# English text: Public access new events require approval:
+#
+#
+# << MISSING >>
+# allow-view-add-help:
+# English text: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+#
+#
+# << MISSING >>
+# Include add event link in views:
+#
+# << MISSING >>
+# allow-external-users-help:
+# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+#
+#
+# << MISSING >>
+# Allow external users:
+#
+# << MISSING >>
+# external-can-receive-notification-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email notifications:
+#
+# << MISSING >>
+# external-can-receive-reminder-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email reminders:
 #
 # << MISSING >>
 # remember-last-login-help:
@@ -253,6 +295,49 @@ to: para
 #
 # << MISSING >>
 # Conflict checking months:
+#
+# << MISSING >>
+# conflict-check-override-help:
+# English text: Allows users to override event conflicts and schedule two or more events for the same time.
+#
+#
+# << MISSING >>
+# Allow users to override conflicts:
+#
+# << MISSING >>
+# limit-appts-help:
+# English text: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
+#
+#
+# << MISSING >>
+# Limit number of timed events per day:
+#
+# << MISSING >>
+# limit-appts-number-help:
+# English text: Specifies the maximum number of timed events a user can have in a single day.
+#
+#
+# << MISSING >>
+# Maximum timed events per day:
+#
+# << MISSING >>
+# Plugins:
+#
+# << MISSING >>
+# plugins-enabled-help:
+# English text: Enable plugin applications.
+#
+#
+# << MISSING >>
+# Enable Plugins:
+#
+# << MISSING >>
+# plugins-sort-key-help:
+# English text: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
+#
+#
+# << MISSING >>
+# Plugin:
 #
 # << MISSING >>
 # Groups:
@@ -490,6 +575,9 @@ Are you sure you want to delete this entry?: Tem a certeza que pretende apagar e
 ###############################################
 # Page: day.php
 #
+#
+# << MISSING >>
+# Assistant mode:
 Generate printer-friendly version: Visualizar em formato de impressora
 Printer Friendly: Formato de impressora
 
@@ -530,6 +618,15 @@ date-help: Especifica a data do evento.
 time-help: Especifica a hora do evento<BR><I>Este campo é opcional.</I>
 am: am
 pm: pm
+#
+# << MISSING >>
+# Untimed event:
+#
+# << MISSING >>
+# Timed event:
+#
+# << MISSING >>
+# All day event:
 duration-help: Especifica a duração (em minutos) do evento.  <BR><I>Este campo é opcional.</I>
 Duration: Duração
 hours: horas
@@ -562,6 +659,14 @@ Confidential: Confidencial
 # English text: Lists the participants of this entry.
 #
 Participants: Participantes
+#
+# << MISSING >>
+# external-participants-help:
+# English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
+#
+#
+# << MISSING >>
+# External Participants:
 repeat-type-help: Selecciona a periodicidade do evento<I>Mensal (por dia)</I> faz com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <I>Mensal (por data)</I> faz com que um evento se repita todos os meses no mesmo dia.
 Repeat Type: Tipo de repetição
 None: Nenhuma
@@ -835,6 +940,9 @@ Layers: N&iacute;veis
 ###############################################
 # Page: week.php
 #
+#
+# << MISSING >>
+# cont.:
 
 
 ###############################################
@@ -890,6 +998,11 @@ Login: Entrar
 # << MISSING >>
 # Access public calendar:
 cookies-note: <B>Nota:</B> Esta opção requer a opção de 'cookies' no seu browser activada.
+
+
+###############################################
+# Page: view_v.php
+#
 
 
 ###############################################
@@ -1004,6 +1117,9 @@ Description: Descrição
 # << MISSING >>
 # Deleted:
 Rejected: Rejeitada
+#
+# << MISSING >>
+# External User:
 Approve/Confirm entry: Aprovar/Confirmar entrada
 Reject entry: Rejeitar entrada
 #
@@ -1113,6 +1229,47 @@ Private: Privado
 
 
 ###############################################
+# Page: assistant_edit.php
+#
+#
+# << MISSING >>
+# Yours assistants:
+#
+# << MISSING >>
+# Assistants:
+
+
+###############################################
+# Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Go to: Ir para
+Back to My Calendar: Voltar ao meu calendário
+My Calendar: O Meu Calendário
+Logout: Sair
+Another User's Calendar: Calendário de outro utilizador
+Add New Entry: Adicionar nova entrada
+#
+# << MISSING >>
+# Manage Views:
+Edit Layers: Editar N&iacute;veis
+Account: Conta
+Current User: Utilizador actual
+#
+# << MISSING >>
+# Manage calendar of:
+
+
+###############################################
 # Page: includes/connect.php
 #
 
@@ -1121,6 +1278,9 @@ Private: Privado
 # Page: includes/functions.php
 #
 This event is confidential: Este evento é confidencial
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
 #
 # << MISSING >>
 # You have XXX unapproved events:
@@ -1164,9 +1324,6 @@ Invalid login: Acesso incorrecto
 #
 # << MISSING >>
 # Send Reminder:
-#
-# << MISSING >>
-# Reminder:
 
 
 ###############################################
@@ -1192,7 +1349,6 @@ Invalid login: Acesso incorrecto
 ###############################################
 # Page: includes/help_trailer.php
 #
-Go to: Ir para
 
 
 ###############################################
@@ -1221,19 +1377,8 @@ Go to: Ir para
 
 
 ###############################################
-# Page: includes/trailer.php
+# Page: includes/dbtable.php
 #
-Back to My Calendar: Voltar ao meu calendário
-My Calendar: O Meu Calendário
-Logout: Sair
-Another User's Calendar: Calendário de outro utilizador
-Add New Entry: Adicionar nova entrada
-#
-# << MISSING >>
-# Manage Views:
-Edit Layers: Editar N&iacute;veis
-Account: Conta
-Current User: Utilizador actual
 
 
 ###############################################
@@ -1242,3 +1387,6 @@ Current User: Utilizador actual
 #
 # << MISSING >>
 # This is a reminder for the event detailed below.:
+#
+# << MISSING >>
+# Reminder:

@@ -17,36 +17,7 @@
 #
 #
 #
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-Activity Log: Log Actifedd
-User: Defnyddiwr
-Calendar: Calendr
-Date: Dyddiad
-Time: Amser
-Event: Digwyddiad
-Action: Gweithred
-Event created: Ychwanegwyd Digwyddiad
-Event approved: Cymeradwywyd Digwyddiad
-Event rejected: Gwrthodwyd Digwyddiad
-Event updated: Diweddarwyd Digwyddiad
-Event deleted: Diddymwyd Digwyddiad
-Notification sent: Anfonwyd Hysbysiad
-Reminder sent: Anfonwyd Atgofiad
-Database error: Gwall cronfa ddata
-Next: Nesaf
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: ID annilys 
-This is a private event and may not be added to your calendar.: Y mae hwn yn ddigwyddiad preifat a ni chaniateir i chi ei ychwanegu at eich calendr.
-Error adding event: Camgymeriad wrth ychwanegu digwyddiad
+# Translation last updated on 11-30-2002
 
 
 ###############################################
@@ -98,7 +69,6 @@ No: Na
 date-format-help: Mae hwn yn dynodi y fformat dyddiad arferol.
 Date format: Fformat dyddiad
 December: Rhagfyr
-Dec: Rha
 time-format-help: Mae hwn yn dynodi y fformat amser i'w ddefnyddio: <BR><I>12 awr:</I> Dangoser amserau megis 3am, 8:30pm, ac ati.  <BR><I>24 awr:</I> Dangoser amserau megis 300, 2030, ac ati.
 Time format: Fformat amser
 12 hour: 12 awr
@@ -133,20 +103,105 @@ disable-participants-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn "Cyfrano
 Disable Participants field: Dim Cyfranogwyr
 disable-repeating-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn i "Ailgyflawni" wrth ychwanegu digywddiadau.  Mi fydd hyn yn gwneud pethau'n haws i bobl heb profiad o'r meddalwedd.
 Disable Repeating field: Dim Ailgyflawni
+allow-view-other-help: Mae hwn yn penderfynnu a yw un defnyddiwr yn gallu gwylio calendr defnyddiwr arall.
+Allow viewing other user's calendars: Caniatad i wylio calendr rhywun arall
 allow-public-access-help: Pan y dewisir yr optiwn yma gall y calendr yma ond cael ei ddefnyddio fel calendr cyhoeddus a ellir ei ddarllen yn unig, a sydd ddim yn gofyn i ddefnyddwyr i mewngofnodi.
 Allow public access: Caniatewch mynediad i'r cyhoedd 
 public-access-view-others-help: Wrth cael mynediad cyhoeddus i'r system, mae hwn yn dynodi a yw'r defnyddiwr yn gallu gwylio calendrau defnydwyr eraill.
 Public access can view other users: Rhywrai gyda mynediad cyhoeddus yn gallu gwylio calendrau defnyddwyr eraill
 public-access-can-add-help: Pan ymlaen, mi fydd defnyddwyr sydd wedi cael Mynediad Cyhoeddus i'r system yn gallu ychwanegu digwyddiadau newydd, ond ni fyddent yn dangos ar y Calendr Cyhoeddus nes bod gweinyddwr yn cymeradwyo'r digwyddiad newydd.
 Public access can add events: Gall rhai gyda Mynediad Cyhoeddus ychwanegu digwyddiad
-allow-view-other-help: Mae hwn yn penderfynnu a yw un defnyddiwr yn gallu gwylio calendr defnyddiwr arall.
-Allow viewing other user's calendars: Caniatad i wylio calendr rhywun arall
+#
+# << MISSING >>
+# public-access-add-requires-approval-help:
+# English text: Specifies whether events added via the public access account require approval before being displayed.
+#
+#
+# << MISSING >>
+# Public access new events require approval:
+# English text: Public access new events require approval:
+#
+#
+# << MISSING >>
+# allow-view-add-help:
+# English text: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+#
+#
+# << MISSING >>
+# Include add event link in views:
+#
+# << MISSING >>
+# allow-external-users-help:
+# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+#
+#
+# << MISSING >>
+# Allow external users:
+#
+# << MISSING >>
+# external-can-receive-notification-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email notifications:
+#
+# << MISSING >>
+# external-can-receive-reminder-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email reminders:
 remember-last-login-help: Pan y defnyddir hwn mi fydd mewngofnodiad y defnyddiwr yn cael ei lenwi drostynt ar y dudalen mewngofnodi (ond nid y gair cydd), a mi fydd hoff dewisiadau'r defnyddiwr yn cael eu llwytho (gan gynnwys ei hoff lliwiau a dewis o iaith).
 Remember last login: Cofier y mewngofnodiad diwethaf
 conflict-check-help: Mae hwn yn rhybuddio am gwrthdrawiadau rhwng digwyddiadau (dau digwyddiad wedi eu dynodi am yr un amser ar calendr un person).  Os y dewisir "Ie", mi fydd hi dal yn bosib i drefnu dau digwyddiad ar yr un amser os y rhoddir cadarnhad ar ol rhybudd. Os y dewisir "Na", ni fydd yna unrhyw rybudd o gwrthdrawiadau rhwng digwyddiadau.  Mae hi'n arferol yn well i gosod hwn i "Ie", felly bod modd osgoi gwrthdrawiadau.
 Check for event conflicts: Edrycher am gwrthdrawiadau rhwng digwyddiadau
 conflict-months-help: Os yr edrycher am gwrthdrawiadau ("Edrycher am gwrthdrawiadau rhwng digwyddiadau" wedi ei osod i "Na"), mae hwn yn dynodi faint o fisoedd i'r dyfodol yr edrychir am wrthdrawiadau.  Os yw ychwanegu digwyddiadau yn cymryd amser hir, yna gostyngwch y rhif yma.
 Conflict checking months: Nifer y misoedd i edrych am gwrthdrawiadau
+#
+# << MISSING >>
+# conflict-check-override-help:
+# English text: Allows users to override event conflicts and schedule two or more events for the same time.
+#
+#
+# << MISSING >>
+# Allow users to override conflicts:
+#
+# << MISSING >>
+# limit-appts-help:
+# English text: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
+#
+#
+# << MISSING >>
+# Limit number of timed events per day:
+#
+# << MISSING >>
+# limit-appts-number-help:
+# English text: Specifies the maximum number of timed events a user can have in a single day.
+#
+#
+# << MISSING >>
+# Maximum timed events per day:
+#
+# << MISSING >>
+# Plugins:
+#
+# << MISSING >>
+# plugins-enabled-help:
+# English text: Enable plugin applications.
+#
+#
+# << MISSING >>
+# Enable Plugins:
+#
+# << MISSING >>
+# plugins-sort-key-help:
+# English text: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
+#
+#
+# << MISSING >>
+# Plugin:
 Groups: Grwpiau
 groups-enabled-help: Os y dewisir hwn ceir cymorth grwp, gan ganiatau i ddefnyddwyr i ddewis defnyddwyr eraill wrth eu grwpiau.
 Groups enabled: Grwpiau 
@@ -186,6 +241,35 @@ Table cell background for current day: Lliw cefndir celloedd y tabl am y diwrnod
 Table cell background for weekends: Lliw cefndir celloedd y tabl dros y penwythnosau
 Event popup background: Lliw cefndir 'popup'
 Event popup text: Lliw testun 'popup'
+
+
+###############################################
+# Page: activity_log.php
+#
+Activity Log: Log Actifedd
+User: Defnyddiwr
+Calendar: Calendr
+Date: Dyddiad
+Time: Amser
+Event: Digwyddiad
+Action: Gweithred
+Event created: Ychwanegwyd Digwyddiad
+Event approved: Cymeradwywyd Digwyddiad
+Event rejected: Gwrthodwyd Digwyddiad
+Event updated: Diweddarwyd Digwyddiad
+Event deleted: Diddymwyd Digwyddiad
+Notification sent: Anfonwyd Hysbysiad
+Reminder sent: Anfonwyd Atgofiad
+Database error: Gwall cronfa ddata
+Next: Nesaf
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: ID annilys 
+This is a private event and may not be added to your calendar.: Y mae hwn yn ddigwyddiad preifat a ni chaniateir i chi ei ychwanegu at eich calendr.
+Error adding event: Camgymeriad wrth ychwanegu digwyddiad
 
 
 ###############################################
@@ -231,6 +315,9 @@ Previous: Blaenorol
 ###############################################
 # Page: day.php
 #
+#
+# << MISSING >>
+# Assistant mode:
 Generate printer-friendly version: Cynhyrchu fersiwn addas i'w brintio
 Printer Friendly: Addas i'w brintio
 
@@ -265,6 +352,15 @@ date-help: Mae hwn yn dynodi dyddiad y digwyddiad.
 time-help: Mae hwn yn dynodi amser y digwyddiad.<BR><I>Mi ellir gadael hwn yn wag.</I>
 am: am
 pm: pm
+#
+# << MISSING >>
+# Untimed event:
+#
+# << MISSING >>
+# Timed event:
+#
+# << MISSING >>
+# All day event:
 duration-help: Mae hwn yn dynodi (mewn Oriau:Munudau) parhad y digwyddiad. <BR><I>Mi ellir gadael hwn yn wag.</I>
 Duration: Parhad
 hours: awr
@@ -283,6 +379,14 @@ days: diwrnod
 before event: cyn y digwyddiad
 participants-help: Rhestrir y defnyddwyr sydd a cofnod o'r digwyddiad.
 Participants: Cyfranogwyr
+#
+# << MISSING >>
+# external-participants-help:
+# English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
+#
+#
+# << MISSING >>
+# External Participants:
 repeat-type-help: Dewiswch pa more aml y dylsai'r digwyddiad ailgyflawni. Wrth dewis <I>Misol (wrth dydd o'r wythnos)</I> mi all digwyddiad ailgyflawni ar y Llun 1af o'r mis, 3ydd Iau o'r mis, ayyb.  Wrth dewis <I>Misol (wrth dyddiad)</I> mi all digwyddiad ailgyflawni ar yr un diwrnod o'r mis (e.e. y 3ydd) 
 Repeat Type: Amlder Ailgyflawni
 None: Dim 
@@ -393,12 +497,6 @@ Modified since: Newidwyd ers
 
 
 ###############################################
-# Page: groups.php
-#
-Add New Group: Ychwanegu Grwp Newydd
-
-
-###############################################
 # Page: group_edit.php
 #
 Unnamed Group: Grwp Di-enw
@@ -413,11 +511,56 @@ Users: Defnyddwyr
 ###############################################
 # Page: group_edit_handler.php
 #
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+Add New Group: Ychwanegu Grwp Newydd
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: Hoff Dewisiadau
+to modify the preferences for the Public Access calendar: i addasu yr optiynau a ddewisir gogyfer a'r Calendr Cyhoeddus 
+#
+# << MISSING >>
+# tz-help:
+# English text: Specifies how many hours to adjust the time from server time to local time.
+#
+#
+# << MISSING >>
+# Timezone Offset:
+#
+# << MISSING >>
+# Add N hours to:
+#
+# << MISSING >>
+# Subtract N hours from:
+#
+# << MISSING >>
+# same as:
+#
+# << MISSING >>
+# server time:
+Default Category: Dosbarth Arferol
+Sun: Sul
+Mon: Llu
+Tue: Maw
+Wed: Mer
+Thu: Iau
+Fri: Gwe
+Sat: Sad
+Save Preferences: Arbed Dewisiadau
 
 
 ###############################################
@@ -437,7 +580,6 @@ Adding/Editing Calendar Entries: Ychwanegu/Newid Digwyddiadau Calendr
 #
 Help Index: Indecs Cymorth
 Layers: Haenau
-Preferences: Hoff Dewisiadau
 
 
 ###############################################
@@ -458,8 +600,15 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_pref.php
 #
-Default Category: Dosbarth Arferol
 default-category-help: Mae hwn yn dynodi pa dosbarth y bydd digwyddiad newydd yn perthyn i yn arferol.
+
+
+###############################################
+# Page: week.php
+#
+#
+# << MISSING >>
+# cont.:
 
 
 ###############################################
@@ -470,9 +619,14 @@ default-category-help: Mae hwn yn dynodi pa dosbarth y bydd digwyddiad newydd yn
 ###############################################
 # Page: layers.php
 #
+#
+# << MISSING >>
+# to modify the layers settings for the:
 Layers are currently: Mae haenau ar hyn o bryd  
-Disabled: Ymaith
 Enabled: Ymlaen
+Disabled: Ymaith
+Disable Layers: Dim haenau
+Enable Layers: Defnyddio haenau
 Layer: Haen
 Edit layer: Newid haen
 Add layer: Ychwanegu haen
@@ -507,22 +661,13 @@ cookies-note: <B>Note:</B> Mae'n hanfodol bod 'cookies' yn gweithio i'r meddalwe
 
 
 ###############################################
-# Page: month.php
+# Page: view_v.php
 #
-Sun: Sul
-Mon: Llu
-Tue: Maw
-Wed: Mer
-Thu: Iau
-Fri: Gwe
-Sat: Sad
 
 
 ###############################################
-# Page: pref.php
+# Page: month.php
 #
-to modify the preferences for the Public Access calendar: i addasu yr optiynau a ddewisir gogyfer a'r Calendr Cyhoeddus 
-Save Preferences: Arbed Dewisiadau
 
 
 ###############################################
@@ -569,11 +714,6 @@ Set Category: Gosod Dosbarth
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: Dynoder defnyddiwr gweinyddol
@@ -590,28 +730,6 @@ Ok: Iawn
 
 
 ###############################################
-# Page: views.php
-#
-Views: Golygfeydd
-Add New View: Ychwanegu Golwg Newydd
-
-
-###############################################
-# Page: views_edit.php
-#
-Unnamed View: Golwg di-enw
-Add View: Ychwanegu Golwg
-Edit View: Newid Golwg
-View Name: Enw Golwg
-View Type: Math Golwg
-
-
-###############################################
-# Page: views_edit_handler.php
-#
-
-
-###############################################
 # Page: view_entry.php
 #
 every: pob
@@ -625,6 +743,9 @@ Status: Statws
 Waiting for approval: Aros as cymeradwyaeth
 Deleted: Diddymwyd
 Rejected: Gwrthodwyd
+#
+# << MISSING >>
+# External User:
 Approve/Confirm entry: Cymeradwyo digwyddiad
 Reject entry: Gwrthod digwyddiad
 Set category: Gosod dosbarth
@@ -654,14 +775,34 @@ Hide activity log: Cyddio cofnod gweithgarwch
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: Digwyddiad newydd
+Views: Golygfeydd
+Add New View: Ychwanegu Golwg Newydd
+
+
+###############################################
+# Page: views_edit.php
+#
+Unnamed View: Golwg di-enw
+Add View: Ychwanegu Golwg
+Edit View: Newid Golwg
+View Name: Enw Golwg
+View Type: Math Golwg
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: Digwyddiad newydd
 Private: Preifat
 
 
@@ -676,8 +817,42 @@ Private: Preifat
 
 
 ###############################################
-# Page: includes/config.php
+# Page: assistant_edit.php
 #
+#
+# << MISSING >>
+# Yours assistants:
+#
+# << MISSING >>
+# Assistants:
+
+
+###############################################
+# Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Go to: Ewch i 
+Back to My Calendar: Nol i Fy Nghalendr
+My Calendar: Fy Nghalendr
+Logout: Allgofnodiad
+Another User's Calendar: Calendr defnyddiwr arall
+Add New Entry: Ychwanegwch digwyddiad newydd
+Manage Views: Rheolwch golygfeydd
+Edit Layers: Newidiwch haenau
+Account: Cyfrif
+Current User: Defnyddiwr presennol
+#
+# << MISSING >>
+# Manage calendar of:
 
 
 ###############################################
@@ -689,6 +864,9 @@ Private: Preifat
 # Page: includes/functions.php
 #
 This event is confidential: Mae'r digwyddiad yma yn gyfrinachol
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
 You have XXX unapproved events: Mae ganddoch XXX digwyddiad heb cymerawdyaeth
 January: Ionawr
 February: Chwefror
@@ -712,12 +890,50 @@ Aug: Awst
 Sep: Medi
 Oct: Hydref
 Nov: Tachwedd
+Dec: Rha
+
+
+###############################################
+# Page: includes/user.php
+#
+Invalid login: Mewngofnodiad annilys
+Invalid user login: Mewngofnodiad defnyddiwr annilys 
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Anfoner atgofiad
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
-Go to: Ewch i 
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -736,57 +952,12 @@ Go to: Ewch i
 
 
 ###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Anfoner atgofiad
-Reminder: Atgofiad
-
-
-###############################################
 # Page: includes/styles.php
 #
 
 
 ###############################################
-# Page: includes/trailer.php
-#
-Back to My Calendar: Nol i Fy Nghalendr
-My Calendar: Fy Nghalendr
-Logout: Allgofnodiad
-Another User's Calendar: Calendr defnyddiwr arall
-Add New Entry: Ychwanegwch digwyddiad newydd
-Manage Views: Rheolwch golygfeydd
-Edit Layers: Newidiwch haenau
-Enable Layers: Defnyddio haenau
-Disable Layers: Dim haenau
-Account: Cyfrif
-Current User: Defnyddiwr presennol
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: Mewngofnodiad annilys
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-Invalid user login: Mewngofnodiad defnyddiwr annilys 
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
+# Page: includes/dbtable.php
 #
 
 
@@ -794,3 +965,4 @@ Invalid user login: Mewngofnodiad defnyddiwr annilys
 # Page: tools/send_reminders.php
 #
 This is a reminder for the event detailed below.: Y mae hwn yn eich atgoffa o'r digwydiad gyda'r manylion isod.
+Reminder: Atgofiad

@@ -17,36 +17,7 @@
 #
 #
 #
-# Translation last updated on 11-04-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-Activity Log: Activity Log
-User: User
-Calendar: Calendar
-Date: Date
-Time: Time
-Event: Event
-Action: Action
-Event created: Event created
-Event approved: Event approved
-Event rejected: Event rejected
-Event updated: Event updated
-Event deleted: Event deleted
-Notification sent: Notification sent
-Reminder sent: Reminder sent
-Database error: Database error
-Next: Next
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Invalid entry id
-This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
-Error adding event: Error adding event
+# Translation last updated on 11-30-2002
 
 
 ###############################################
@@ -132,14 +103,18 @@ disable-participants-field-help: Selecting "Yes" will remove the "Particpants" f
 Disable Participants field: Disable Participants field
 disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
 Disable Repeating field: Disable Repeating field
+allow-view-other-help: Specifies whether one user may view another user's calendar.
+Allow viewing other user's calendars: Allow viewing other user's calendars
 allow-public-access-help: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
 Allow public access: Allow public access
 public-access-view-others-help: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
 Public access can view other users: Public access can view other users
 public-access-can-add-help: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
 Public access can add events: Public access can add events
-allow-view-other-help: Specifies whether one user may view another user's calendar.
-Allow viewing other user's calendars: Allow viewing other user's calendars
+public-access-add-requires-approval-help: Specifies whether events added via the public access account require approval before being displayed.
+Public access new events require approval: Public access new events require approval:
+allow-view-add-help: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+Include add event link in views: Include add event link in views
 allow-external-users-help: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
 Allow external users: Allow external users
 external-can-receive-notification-help: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
@@ -152,6 +127,12 @@ conflict-check-help: Check for event conflicts (two events scheduled for the sam
 Check for event conflicts: Check for event conflicts
 conflict-months-help: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
 Conflict checking months: Conflict checking months
+conflict-check-override-help: Allows users to override event conflicts and schedule two or more events for the same time.
+Allow users to override conflicts: Allow users to override conflicts
+limit-appts-help: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
+Limit number of timed events per day: Limit number of timed events per day
+limit-appts-number-help: Specifies the maximum number of timed events a user can have in a single day.
+Maximum timed events per day: Maximum timed events per day
 Plugins: Plugins
 plugins-enabled-help: Enable plugin applications.
 Enable Plugins: Enable Plugins
@@ -196,6 +177,35 @@ Table cell background for current day: Table cell background for current day
 Table cell background for weekends: Table cell background for weekends
 Event popup background: Event popup background
 Event popup text: Event popup text
+
+
+###############################################
+# Page: activity_log.php
+#
+Activity Log: Activity Log
+User: User
+Calendar: Calendar
+Date: Date
+Time: Time
+Event: Event
+Action: Action
+Event created: Event created
+Event approved: Event approved
+Event rejected: Event rejected
+Event updated: Event updated
+Event deleted: Event deleted
+Notification sent: Notification sent
+Reminder sent: Reminder sent
+Database error: Database error
+Next: Next
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Invalid entry id
+This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
+Error adding event: Error adding event
 
 
 ###############################################
@@ -273,9 +283,12 @@ Brief Description: Brief Description
 full-description-help: This should complete details of the event.  This information can be seen when a user views the event.
 Full Description: Full Description
 date-help: Specifies the date of the event.
-time-help: Specifies the time of the event.<BR><I>This field can be left blank.</I>
+time-help: Specifies the time of the event.<BR>Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
 am: am
 pm: pm
+Untimed event: Untimed event
+Timed event: Timed event
+All day event: All day event
 duration-help: Specifies the duration (in hours:minutes) of the event.  <BR><I>This field can be left blank.</I>
 Duration: Duration
 hours: hours
@@ -435,6 +448,28 @@ Add New Group: Add New Group
 
 
 ###############################################
+# Page: pref.php
+#
+Preferences: Preferences
+to modify the preferences for the Public Access calendar: to modify the preferences for the Public Access calendar
+tz-help: Specifies how many hours to adjust the time from server time to local time.
+Timezone Offset: Timezone Offset
+Add N hours to: Add N hours to
+Subtract N hours from: Subtract N hours from
+same as: same as
+server time: server time
+Default Category: Default Category
+Sun: Sun
+Mon: Mon
+Tue: Tue
+Wed: Wed
+Thu: Thu
+Fri: Fri
+Sat: Sat
+Save Preferences: Save Preferences
+
+
+###############################################
 # Page: help_bug.php
 #
 Report Bug: Report Bug
@@ -451,7 +486,6 @@ Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
 #
 Help Index: Help Index
 Layers: Layers
-Preferences: Preferences
 
 
 ###############################################
@@ -472,8 +506,13 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_pref.php
 #
-Default Category: Default Category
 default-category-help: Specifies the category a new event should default to.
+
+
+###############################################
+# Page: week.php
+#
+cont.: cont.
 
 
 ###############################################
@@ -524,28 +563,13 @@ cookies-note: <B>Note:</B> This application requires cookies to be enabled.
 
 
 ###############################################
-# Page: month.php
+# Page: view_v.php
 #
-Sun: Sun
-Mon: Mon
-Tue: Tue
-Wed: Wed
-Thu: Thu
-Fri: Fri
-Sat: Sat
 
 
 ###############################################
-# Page: pref.php
+# Page: month.php
 #
-to modify the preferences for the Public Access calendar: to modify the preferences for the Public Access calendar
-tz-help: Specifies how many hours to adjust the time from server time to local time.
-Timezone Offset: Timezone Offset
-Add N hours to: Add N hours to
-Subtract N hours from: Subtract N hours from
-same as: same as
-server time: server time
-Save Preferences: Save Preferences
 
 
 ###############################################
@@ -674,12 +698,6 @@ You must specify a view name: You must specify a view name
 
 
 ###############################################
-# Page: week.php
-#
-cont.: cont.
-
-
-###############################################
 # Page: week_details.php
 #
 New Entry: New Entry
@@ -709,23 +727,24 @@ Assistants: Assistants
 
 
 ###############################################
-# Page: frames.php
-#
-
-
-###############################################
 # Page: purge.php
 #
 
 
 ###############################################
-# Page: topnav.php
+# Page: includes/trailer.php
 #
-
-
-###############################################
-# Page: includes/config.php
-#
+Go to: Go to
+Back to My Calendar: Back to My Calendar
+My Calendar: My Calendar
+Logout: Logout
+Another User's Calendar: Another User's Calendar
+Add New Entry: Add New Entry
+Manage Views: Manage Views
+Edit Layers: Edit Layers
+Account: Account
+Current User: Current User
+Manage calendar of: Manage calendar of
 
 
 ###############################################
@@ -737,6 +756,7 @@ Assistants: Assistants
 # Page: includes/functions.php
 #
 This event is confidential: This event is confidential
+exceeds limit of XXX events per day: exceeds limit of XXX events per day
 You have XXX unapproved events: You have XXX unapproved events
 January: January
 February: February
@@ -764,9 +784,46 @@ Dec: Dec
 
 
 ###############################################
+# Page: includes/user.php
+#
+Invalid login: Invalid login
+Invalid user login: Invalid user login
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Send Reminder
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+
+
+###############################################
 # Page: includes/help_trailer.php
 #
-Go to: Go to
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -785,66 +842,7 @@ Go to: Go to
 
 
 ###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Send Reminder
-Reminder: Reminder
-
-
-###############################################
 # Page: includes/styles.php
-#
-
-
-###############################################
-# Page: includes/trailer.php
-#
-Back to My Calendar: Back to My Calendar
-My Calendar: My Calendar
-Logout: Logout
-Another User's Calendar: Another User's Calendar
-Add New Entry: Add New Entry
-Manage Views: Manage Views
-Edit Layers: Edit Layers
-Account: Account
-Current User: Current User
-Manage calendar of: Manage calendar of
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: Invalid login
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-Invalid user login: Invalid user login
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
-# Page: includes/assistant.php
-#
-
-
-###############################################
-# Page: includes/user-passwd.php
 #
 
 
@@ -857,3 +855,4 @@ Invalid user login: Invalid user login
 # Page: tools/send_reminders.php
 #
 This is a reminder for the event detailed below.: This is a reminder for the event detailed below.
+Reminder: Reminder

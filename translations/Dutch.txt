@@ -5,7 +5,7 @@
 # Last update: 28 August 2002
 # check out the tools directory which contains two perl scripts:
 # check_translation.pl will tell you if you have successfully translated all re
-# Translation last updated on 09-28-2002
+# Translation last updated on 11-30-2002
 
 
 ###############################################
@@ -91,20 +91,105 @@ disable-participants-field-help: Door [ja] te kiezen wordt het veld Aanwezigen
 Disable Participants field: de-activeer veld Aanwezigen
 disable-repeating-field-help: Door [ja] te kiezen wordt het veld [herhalingspat
 Disable Repeating field: de-activeer veld Herhalingspatroon
+allow-view-other-help: Definieert of een gebruiker de agenda van andere gebruik
+Allow viewing other user's calendars: inzage agenda andere gebruikers toegestaa
 allow-public-access-help: Indien ingeschakeld kan de agenda worden gebruikt als
 Allow public access: sta publieke toegang toe
 public-access-view-others-help: Indien publieke toegang is ingeschakeld bepaalt
 Public access can view other users: inzage agenda overige gebruikers bij publie
 public-access-can-add-help: Indien ingeschakeld kunnen gebruikers, die de agend
 Public access can add events: toevoegen nieuwe afspraken bij publieke toegang t
-allow-view-other-help: Definieert of een gebruiker de agenda van andere gebruik
-Allow viewing other user's calendars: inzage agenda andere gebruikers toegestaa
+#
+# << MISSING >>
+# public-access-add-requires-approval-help:
+# English text: Specifies whether events added via the public access account require approval before being displayed.
+#
+#
+# << MISSING >>
+# Public access new events require approval:
+# English text: Public access new events require approval:
+#
+#
+# << MISSING >>
+# allow-view-add-help:
+# English text: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+#
+#
+# << MISSING >>
+# Include add event link in views:
+#
+# << MISSING >>
+# allow-external-users-help:
+# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+#
+#
+# << MISSING >>
+# Allow external users:
+#
+# << MISSING >>
+# external-can-receive-notification-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email notifications:
+#
+# << MISSING >>
+# external-can-receive-reminder-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email reminders:
 remember-last-login-help: Indien ingeschakeld zal, bij een volgend bezoek, de g
 Remember last login: onthoud loginnaam
 conflict-check-help: check op conflicterende afspraken (= afspraken van een per
 Check for event conflicts: check op conflicterende afspraken
 conflict-months-help: Indien u bij optie Check op conflicterende afspraken [ja]
 Conflict checking months: aantal maanden conflictencheck
+#
+# << MISSING >>
+# conflict-check-override-help:
+# English text: Allows users to override event conflicts and schedule two or more events for the same time.
+#
+#
+# << MISSING >>
+# Allow users to override conflicts:
+#
+# << MISSING >>
+# limit-appts-help:
+# English text: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
+#
+#
+# << MISSING >>
+# Limit number of timed events per day:
+#
+# << MISSING >>
+# limit-appts-number-help:
+# English text: Specifies the maximum number of timed events a user can have in a single day.
+#
+#
+# << MISSING >>
+# Maximum timed events per day:
+#
+# << MISSING >>
+# Plugins:
+#
+# << MISSING >>
+# plugins-enabled-help:
+# English text: Enable plugin applications.
+#
+#
+# << MISSING >>
+# Enable Plugins:
+#
+# << MISSING >>
+# plugins-sort-key-help:
+# English text: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
+#
+#
+# << MISSING >>
+# Plugin:
 Groups: groepen
 groups-enabled-help: Maakt groepsondersteuning mogelijk, zodat gebruikers ander
 Groups enabled: activeer groepen
@@ -218,6 +303,9 @@ Previous: vorige
 ###############################################
 # Page: day.php
 #
+#
+# << MISSING >>
+# Assistant mode:
 Generate printer-friendly version: genereer printversie
 Printer Friendly: printversie
 
@@ -254,6 +342,15 @@ date-help: Dit is de datum waarop de afspraak plaatsvindt.
 time-help: Dit is de aanvangstijd van de afspraak. <BR><I>Dit veld mag leeg bli
 am: a.m. (ante meridiem), 's morgens
 pm: p.m. (post medidiem), 's avond
+#
+# << MISSING >>
+# Untimed event:
+#
+# << MISSING >>
+# Timed event:
+#
+# << MISSING >>
+# All day event:
 duration-help: Hier geeft u aan hoe lang de afspraak duurt (in minuten). <BR><I
 Duration: duur
 hours: uren
@@ -272,6 +369,14 @@ days: dagen
 before event: voor de afspraak
 participants-help: Selecteer hier de personen die bij de afspraak aanwezig zijn
 Participants: aanwezigen
+#
+# << MISSING >>
+# external-participants-help:
+# English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
+#
+#
+# << MISSING >>
+# External Participants:
 repeat-type-help: Geef aan hoe vaak de afspraak moet worden herhaald: voor <I>m
 Repeat Type: herhalingspatroon
 None: geen
@@ -497,6 +602,9 @@ default-category-help: Hiermee wordt de standaard-categorie geselecteerd
 ###############################################
 # Page: week.php
 #
+#
+# << MISSING >>
+# cont.:
 
 
 ###############################################
@@ -544,6 +652,11 @@ Save login via cookies so I don't have to login next time: Bewaar <I>cookies</I
 Login: aanmelden
 Access public calendar: ga naar publieke agenda
 cookies-note: <B>NB:</B> deze applicatie maakt gebruik van cookies.
+
+
+###############################################
+# Page: view_v.php
+#
 
 
 ###############################################
@@ -624,6 +737,9 @@ Status: status
 Waiting for approval: nog niet bevestigd
 Deleted: verwijderd
 Rejected: geweigerd
+#
+# << MISSING >>
+# External User:
 Approve/Confirm entry: afspraak bevestigen
 Reject entry: afspraak weigeren
 Set category: bepaal categorie
@@ -693,6 +809,45 @@ Private: prive-afspraak
 
 
 ###############################################
+# Page: assistant_edit.php
+#
+#
+# << MISSING >>
+# Yours assistants:
+#
+# << MISSING >>
+# Assistants:
+
+
+###############################################
+# Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Go to: ga naar
+Back to My Calendar: EIGEN AGENDA
+My Calendar: VANDAAG
+Logout: afmelden
+Another User's Calendar: agenda andere gebruiker
+Add New Entry: afspraak toevoegen
+Manage Views: overzichten instellen
+Edit Layers: lagen wijzigen
+Account: account
+Current User: huidige gebruiker
+#
+# << MISSING >>
+# Manage calendar of:
+
+
+###############################################
 # Page: includes/connect.php
 #
 
@@ -701,6 +856,9 @@ Private: prive-afspraak
 # Page: includes/functions.php
 #
 This event is confidential: vertrouwelijk - details niet beschikbaar
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
 You have XXX unapproved events: Er zijn XXX openstaande afspraken
 January: januari
 February: februari
@@ -738,7 +896,6 @@ Invalid user login: ongeldige gebruikerslogin
 # Page: includes/site_extras.php
 #
 Send Reminder: herinnering sturen
-Reminder: herinnering
 
 
 ###############################################
@@ -764,7 +921,6 @@ Reminder: herinnering
 ###############################################
 # Page: includes/help_trailer.php
 #
-Go to: ga naar
 
 
 ###############################################
@@ -793,20 +949,12 @@ Go to: ga naar
 
 
 ###############################################
-# Page: includes/trailer.php
+# Page: includes/dbtable.php
 #
-Back to My Calendar: EIGEN AGENDA
-My Calendar: VANDAAG
-Logout: afmelden
-Another User's Calendar: agenda andere gebruiker
-Add New Entry: afspraak toevoegen
-Manage Views: overzichten instellen
-Edit Layers: lagen wijzigen
-Account: account
-Current User: huidige gebruiker
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
 This is a reminder for the event detailed below.: Dit is een herinnering voor d
+Reminder: herinnering
