@@ -198,7 +198,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
 function print_trailer ( $include_nav_links=true, $closeDb=true,
   $disableCustom=false )
 {
-  global $CUSTOM_TRAILER, $c, $friendly;
+  global $CUSTOM_TRAILER, $c, $friendly, $STARTVIEW;
   global $login, $user, $cat_id, $categories_enabled, $thisyear,
     $thismonth, $thisday, $DATE_FORMAT_MY, $WEEK_START, $DATE_FORMAT_MD,
     $readonly, $is_admin, $public_access, $public_access_can_add,
