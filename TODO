@@ -1,0 +1,64 @@
+$Id$
+
+Possible enhancements to add for 0.9.46:
+
+Com
+ple     Description
+te?
+--- -------------------------------------
+
+[ ] PHP4 sessions instead of my cookie code
+    (which may be behind some of the login problems)
+[ ] User self-registration with optional email and/or admin validation
+[ ] Better handling of large numbers of users (1000+).
+    We have one user who claims the JS chokes the browser with 1000+
+    users when you press the "Select..." button
+[ ] Web-based MySQL database install/upgrade.
+    I still don't think this is possible with non-mysql databases,
+    but I could be wrong...  This would add on to the existing
+    db config web page.
+[ ] Add UI for adding category icons
+[ ] Add support for category colors
+[ ] Setup wizard (web-based) that would guide the admin through setting
+    up what is now in System Settings and explain why they would want
+    to use any particular option.
+    It could start with primary use (Home Single User, Small Biz,
+    Large Enterprise, Events Calendar, etc...)
+    (Unfortunately, this will add a lot of text which will require
+    translations and would make the WebCalendar download much larger.
+    The translations account for about 40% of the size of the current download.)
+[ ] Improve the popup code.
+    (I do like the Knoppix code and it is also GPL, so that would be
+    a good place to start)
+[ ] Add email notification for submission of new public events
+    (ideally, multiple email recipients will be possible)
+[ ] Better user sorting.  Perhaps create new db fields in webcal_user
+    (lastname, firstname).  Admin could then select sort priority
+    (login or lastname).
+[ ] Theme or color scheme selection.
+    We would pre-populate some good color schemes.
+
+Here are some other ideas for the next or perhaps later releases:
+[ ] Admin diagnostics page that could:
+  + tell user where php.ini is :-)
+  + send a test mail message
+  + help debug login problems
+  + help debug send reminder problem
+[ ] "Real" ACL with new security/access API.
+    Each page would just call a function and pass in the current user
+    and the request, and the API would either grant or deny access.
+[ ] Ability to support a reservation system (for either a single resource
+    or multiple resources) as the primary use
+[ ] Add a mini-cal iframe using the new mini-cal code
+    (but it should include event popups)
+[ ] Java-based tool (web start) for monitoring and approving new
+    public events (would run in background until new event is submitted,
+    then popup for accept/reject)
+[ ] Admin tool for importing a large number of users (CSV, tab-delimeted, etc.)
+[ ] Support for remote calendar subscriptions (ical) for each user.
+    Would need to add a new cron job to periodically update/re-import
+    the remote ics file.
+[ ] Add iCal client publish so Mozilla Calendar (or Apple iCal) can
+    create events and publish back to WebCalendar.
+    (This has a very high cool factor.)
+
