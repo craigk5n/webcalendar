@@ -11,6 +11,7 @@ print_header($INC);
 
 <TABLE BORDER=0>
 <TR><TD><B><?php etranslate("Export format")?>:</B></TD><TD><SELECT NAME="format">
+  <OPTION VALUE="pilot-csv">pilot-datebook CSV (<?php etranslate("Palm Pilot")?>)
   <OPTION VALUE="pilot-text">install-datebook (<?php etranslate("Palm Pilot")?>)
   <OPTION VALUE="ical">iCal
 </SELECT></TD></TR>
