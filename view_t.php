@@ -142,7 +142,8 @@ for ( $date = $wkstart, $h = 0;
     "<FONT SIZE=\"-1\" CLASS=\"$class\">" . $weekday . " " .
     round ( date ( "d", $date ) ) . "</FONT></TH>\n";
   echo "<TD WIDTH=\"100%\" BGCOLOR=\"$color\">";
-  if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" )
+  if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
+    empty ( $friendly ) )
     echo html_for_add_icon ( date ( "Ymd", $date ), "", "", $user );
 
   print_header_timebar($prefarray["WORK_DAY_START_HOUR"],

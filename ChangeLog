@@ -1,4 +1,5 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Fixed bug: add icon appeared in printer friendly view pages (view_m.php...)
   - Fixed bug 792731: NIS login failure
   - Fixed bug 609900: wrong week number
   - Fixed bug 761793: invalid weeknumber
