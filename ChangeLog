@@ -1,3 +1,5 @@
+Verion 0.9.45dev (?? ??? 2004)
+  - Fixed bug: iCal for multiday events was adding extra day at end
 Verion 0.9.44 (02 Aug 2004)
   - Fixed bug 1001054: deleting user was not deleting from webcal_asst table
   - Fixed bug 989443: http login does not work with http on newer PHP version
