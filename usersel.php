@@ -38,11 +38,11 @@ if ( $user_sees_only_his_groups == "Y" ) {
     "FROM webcal_group, webcal_group_user " .
     "WHERE webcal_group.cal_group_id = webcal_group_user.cal_group_id " .
     "AND webcal_group_user.cal_login = '$login' " .
-    "ORDER BY UPPER(webcal_group.cal_name)";
+    "ORDER BY webcal_group.cal_name";
 } else {
   // show all groups
   $sql = "SELECT cal_group_id, cal_name FROM webcal_group " .
-    "ORDER BY UPPER(cal_name)";
+    "ORDER BY cal_name";
 }
 
 $res = dbi_query ( $sql );
