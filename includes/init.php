@@ -16,7 +16,10 @@
 //--------------------------------------------------------------------------
 
 // Get script name
-preg_match("/\/(\w+\.php)/",$_SERVER['PHP_SELF'],$match);
+$self = $_SERVER['PHP_SELF'];
+if ( empty ( $self ) )
+  $self = $PHP_SELF;
+preg_match ( "/\/(\w+\.php)/", $self, $match);
 $SCRIPT = $match[1];
 
 // Several files need a no-cache header and some of the same code
