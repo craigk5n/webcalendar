@@ -103,7 +103,7 @@ if ( strlen ( $user ) ) {
 
 </FORM>
 
-<?php if ( strlen ( $user ) ) { ?>
+<?php if ( strlen ( $user ) && ! $use_http_auth ) { ?>
 
 </TD>
 <TD>&nbsp;&nbsp;</TD>

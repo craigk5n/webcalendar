@@ -1,4 +1,5 @@
 Version 0.9.31dev (???)
+  - Don't allow user to change password if using http authorization.
   - Added back selectDate javascript function that was mistakenly
     removed from edit_entry.php.
 Version 0.9.30 (08 Jun 01)
