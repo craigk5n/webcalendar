@@ -167,42 +167,56 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
 // If so, just test the connection, show the result and exit.
 $action = getGetValue ( "action" );
 if ( ! empty ( $action ) && $action == "dbtest" ) {
-  // TODO: restrict access here also...
-  $db_persistent = false;
-  $db_type = getGetValue ( 'db_type' );
-  $db_host = getGetValue ( 'db_host' );
-  $db_database = getGetValue ( 'db_database' );
-  $db_login = getGetValue ( 'db_login' );
-  $db_password = getGetValue ( 'db_password' );
+  if ( ! empty ( $_SESSION['validuser'] ) ) {
+    $db_persistent = false;
+    $db_type = getGetValue ( 'db_type' );
+    $db_host = getGetValue ( 'db_host' );
+    $db_database = getGetValue ( 'db_database' );
+    $db_login = getGetValue ( 'db_login' );
+    $db_password = getGetValue ( 'db_password' );
 
-  echo "<html><head><title>WebCalendar: Db Connection Test</title>\n" .
-    "</head><body style=\"background-color: #fff;\">\n";
-  echo "<p><b>Connection Result:</b></p><blockquote>";
+    echo "<html><head><title>WebCalendar: Db Connection Test</title>\n" .
+      "</head><body style=\"background-color: #fff;\">\n";
+    echo "<p><b>Connection Result:</b></p><blockquote>";
 
-  $c = dbi_connect ( $db_host, $db_login,
-    $db_password, $db_database );
+    $c = dbi_connect ( $db_host, $db_login,
+      $db_password, $db_database );
 
-  if ( $c ) {
-    echo "<span style=\"color: #0f0;\">Success</span></blockquote>";
-    $_SESSION['db_success'] = true;
-    // TODO: update the text in the main window to indicate success
-  } else {
-    echo "<span style=\"color: #0f0;\">Failure</span</blockquote>";
-    echo "<br/><br/><b>Reason:</b><blockquote>" . dbi_error () .
-      "</blockquote>\n";
+    if ( $c ) {
+      echo "<span style=\"color: #0f0;\">Success</span></blockquote>";
+      $_SESSION['db_success'] = true;
+      // TODO: update the text in the main window to indicate success
+    } else {
+      echo "<span style=\"color: #0f0;\">Failure</span</blockquote>";
+      echo "<br/><br/><b>Reason:</b><blockquote>" . dbi_error () .
+        "</blockquote>\n";
+    }
+    echo "<br/><br/><br/><div align=\"center\"><form><input align=\"middle\" type=\"button\" onclick=\"window.close()\" value=\"Close\" /></form></div>\n";
+    echo "</p>";
+    echo "<script language=\"JavaScript\" type=\"text/javascript\">\n";
+    echo "<!-- <![CDATA[\n";
+    echo "window.opener.show_db_status ( " .
+      ( $c ? "true" : "false" ) . " );\n";
+    echo "//]]> -->\n</script>\n";
+    echo "</body></html>\n";
+  } else { // Not valid user
+    echo "You are not authorized.";
+    // etranslate ( "You are not authorized" );  
   }
-  echo "<br/><br/><br/><div align=\"center\"><form><input align=\"middle\" type=\"button\" onclick=\"window.close()\" value=\"Close\" /></form></div>\n";
-  echo "</p>";
-  echo "<script type=\"text/javascript\">\n";
-  echo "<!-- <![CDATA[\n";
-  echo "window.opener.show_db_status ( " .
-    ( $c ? "true" : "false" ) . " );\n";
-  echo "//]]> -->\n</script>\n";
-  echo "</body></html>\n";
   exit;
 }
 
-
+// Is this a call to phpinfo()?
+$action = getGetValue ( "action" );
+if ( ! empty ( $action ) && $action == "phpinfo" ) {
+  if ( ! empty ( $_SESSION['validuser'] ) ) {
+    phpinfo();
+  } else {
+    echo "You are not authorized.";
+    // etranslate ( "You are not authorized" );
+  }
+  exit;
+}
 
 
 $exists = file_exists ( $file );
@@ -236,6 +250,10 @@ if ( empty ( $x ) ) {
     $settings['readonly'] = 'false';
     $settings['user_inc'] = 'user.php';
     $settings['install_password'] = '';
+    $settings['single_user_login'] = '';
+    $settings['use_http_auth'] = 'false';
+    $settings['single_user'] = 'false';
+    $settings['user_inc'] = 'user.php';
   }
 } else {
   $settings['db_type'] = getPostValue ( 'form_db_type' );
@@ -312,11 +330,15 @@ if ( ! empty ( $fd ) ) {
 }
 
 ?>
-<html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head><title>WebCalendar Database Setup</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <?php include "../includes/js/visible.php"; ?>
-<script language="JavaScript">
-
+<script language="JavaScript" type="text/javascript">
+<!-- <![CDATA[
+<?php   if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
 function testSettings () {
   var url;
   var form = document.dbform;
@@ -329,6 +351,14 @@ function testSettings () {
   //alert ( "URL:\n" + url );
   window.open ( url, "wcDbTest", "width=400,height=350,resizable=yes,scrollbars=yes" );
 }
+function testPHPInfo () {
+  var url;
+  var form = document.phpinfo;
+  url = "index.php?action=phpinfo";
+  //alert ( "URL:\n" + url );
+  window.open ( url, "wcTestPHPInfo", "width=800,height=600,resizable=yes,scrollbars=yes" );
+}
+<?php } ?>
 function validate(form)
 {
   var form = document.dbform;
@@ -363,7 +393,7 @@ function show_db_status ( success ) {
     makeVisible ( "no_db_success" );
   }
 }
-
+ //]]> -->
 </script>
 <style type="text/css">
 body {
@@ -422,7 +452,7 @@ doc.li {
 <div class="main">
 <h2>WebCalendar Database Setup</h2>
 
-<p>Current Status:</p>
+<p><b>Current Status:</b></p>
 <ul>
 
 <li>Supported databases for your PHP installation:
@@ -460,14 +490,9 @@ doc.li {
 <li id="db_success" style="visibility: hidden;"> Your current database settings are able to
   access the database.</li>
 <?php } ?>
-
-
 <?php if ( empty ( $password ) ) { ?>
   <li> You have not set a password for this page. </li>
 <?php } ?>
-
-
-
 <?php if ( $exists && ! $canWrite ) { ?>
 <li><b>Error:</b>
 The file permissions of <tt>settings.php</tt> are set so
@@ -478,9 +503,7 @@ file to use this script:
 <?php echo realpath ( $file ); ?>
 </tt></blockquote>
 </li>
-
 <?php } else if ( ! $exists && ! $canWrite ) { ?>
-
 <li><b>Error:</b>
 The file permissions of the <tt>includes</tt> directory are set so
 that this script does not have permission to create a new file
@@ -491,13 +514,10 @@ to use this script:
 <?php echo realpath ( $fileDir ); ?>
 </tt></blockquote>
 </li>
-
 <?php } else { ?>
-
   <?php if ( ! file_exists ( $file ) ) { ?>
   <li>You have not created a <tt>settings.php</tt> file yet.</li>
   <?php } ?>
-
 <?php if ( empty ( $PHP_AUTH_USER ) ) { ?>
 <li>HTTP-based authentication was not detected.
 You will need to reconfigure your web server if you wish to
@@ -513,13 +533,14 @@ You should select "Web Server" from the list of
 
 </ul>
 
-<table><tr><td>
+<table>  <tr><td valign="top">
 <?php if ( $doLogin ) { ?>
-  <form action="index.php" method="POST" name="dblogin">
+  <form action="index.php" method="post" name="dblogin">
+
   <p>Please enter the password.</p>
     <br /><br />
   </p>
-  <table border="0">
+  <table >
   <tr><th colspan="2" class="header">Enter Password</th></tr>
   <tr><th>Password:</th><td><input name="password" type="password" /></td></tr>
   <tr><td colspan="2" align="center"><input type="submit" value="Login" /></td></tr>
@@ -527,7 +548,7 @@ You should select "Web Server" from the list of
   </form>
   </td></tr></table>
 <?php } else if ( $forcePassword ) { ?>
-  <form action="index.php" method="POST" name="dbpassword">
+  <form action="index.php" method="post" name="dbpassword">
   <p>You have not set a password for access to this page yet.
      Please set the password.
     <br /><br />
@@ -541,7 +562,7 @@ You should select "Web Server" from the list of
   </form>
   </td></tr></table>
 <?php } else { ?>
-<form action="index.php" method="POST" name="dbform">
+<form action="index.php" method="post" name="dbform">
 
 <table>
 <tr><th class="header" colspan="2">Database Settings</th></tr>
@@ -598,28 +619,34 @@ You should select "Web Server" from the list of
 <tr><td class="prompt">Connection Persistence:</td>
 <td><input name="form_db_persistent" value="true" type="radio"
   <?php echo ( $settings['db_persistent'] == 'true' )? " checked=\"checked\"" : "";
-  ?> >Enabled
+  ?> />Enabled
   &nbsp;&nbsp;&nbsp;&nbsp;
   <input name="form_db_persistent" value="false" type="radio"
   <?php echo ( $settings['db_persistent'] != 'true' )? " checked=\"checked\"" : "";
-  ?> >Disabled
+  ?> />Disabled
   </td></tr>
-
+<?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
 <tr><td colspan="2" align="center">
 <input name="action" type="button" value="Test Settings"
   onclick="testSettings()" />
 </td></tr>
-
+<?php } else { ?>
+<tr><th class="header" colspan="2">
+<p>You must save before proceeding.</p>
+</th></tr>
+<?php } ?>
 </table>
 
-</td><td valign="top">
-
-<table>
-<tr><th class="header" colspan="2">Application Settings</th></tr>
-
-<tr><td class="prompt">User Authentication:</td>
-<td>
-<select name="form_user_inc" onchange="auth_handler()">
+</td>
+<td valign="top">
+  <table width="100%">
+    <tr>
+      <th class="header" colspan="2" >Application Settings</th>
+    </tr>
+    <tr>
+      <td class="prompt">User Authentication:</td>
+      <td>
+        <select name="form_user_inc" onchange="auth_handler()">
 <?php
   echo "<option value=\"user.php\" " .
     ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] != 'true' ? " selected=\"selected\"" : "" ) .
@@ -641,26 +668,26 @@ You should select "Web Server" from the list of
 
   echo "<option value=\"none\" " .
     ( $settings['user_inc'] == 'user.php' && $settings['single_user'] == 'true' ? " selected=\"selected\"" : "" ) .
-    "> None (Single-User) </option>\n";
+    "> None (Single-User) </option>\n</select>";
 ?>
-</td></tr>
-
-<tr id="singleuser"><td class="prompt">&nbsp;&nbsp;&nbsp;Single-User Login:</td>
-<td><input name="form_single_user_login" size="20" value="<?php echo $settings['single_user_login'];?>" /></td></tr>
-
-<tr><td class="prompt">Read-Only:</td>
-<td><input name="form_readonly" value="true" type="radio"
-  <?php echo ( $settings['readonly'] == 'true' )? " checked=\"checked\"" : "";
-  ?> >Yes
+        </td>
+      </tr>
+      <tr id="singleuser">
+        <td class="prompt">&nbsp;&nbsp;&nbsp;Single-User Login:</td>
+        <td>
+          <input name="form_single_user_login" size="20" value="<?php echo $settings['single_user_login'];?>" /></td>
+      </tr>
+      <tr>
+        <td class="prompt">Read-Only:</td>
+        <td>
+          <input name="form_readonly" value="true" type="radio"
+  <?php echo ( $settings['readonly'] == 'true' )? " checked=\"checked\"" : "";?> />Yes
   &nbsp;&nbsp;&nbsp;&nbsp;
   <input name="form_readonly" value="false" type="radio"
-  <?php echo ( $settings['readonly'] != 'true' )? " checked=\"checked\"" : "";
-  ?> >No
-  </td></tr>
-
-</table>
-</td></tr>
-
+  <?php echo ( $settings['readonly'] != 'true' )? " checked=\"checked\"" : "";?> />No
+         </td>
+       </tr>
+    </table>
 <?php
 
 $php_settings = array (
@@ -673,9 +700,8 @@ $php_settings = array (
 );
 
 ?>
-
-<tr><td valign="top"><table>
-<tr><th class="header" colspan="2">PHP Settings</th></tr>
+<table width="100%">
+<tr><th class="header"  colspan="2">PHP Settings</th></tr>
 <?php foreach ( $php_settings as $setting ) { ?>
   <tr><td class="prompt"><?php echo $setting[0];?></td>
   <?php
@@ -686,6 +712,13 @@ $php_settings = array (
    ?>
    </td></tr>
 <?php } ?>
+
+<?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
+<tr><td  align="center" colspan="2"><input name="action" type="button" value="Detailed PHP Info"
+  onclick="testPHPInfo()" /></td></tr>
+<?php } ?>
+
+
 </table></td></tr>
 
 <tr><td align="center" colspan="2">
@@ -705,7 +738,7 @@ $php_settings = array (
 
 <?php } ?>
 </div>
-<div style="border-top: 1px solid #000; padding: 10px;">
+<div class="main">
 <p>
 <b>Documentation:</b>
 </p>
