@@ -1,4 +1,5 @@
 Version 0.9.41dev (?? ??? ???)
+  - Fixed bug 705756: conflicts page not showing user name
   - Fixed bug 732729: public access link on login.php ignores preference
     for default view
   - Fixed bugs 753159, 684230: bug in site extras in edit_entry.php -
