@@ -1,7 +1,8 @@
 <?php
 // NOTE: This file is included within the print_trailer function found
 // in includes/init.php.  If you add a global variable somewhere in this
-// file, be sure to declare it global in the print_trialer function.
+// file, be sure to declare it global in the print_trialer function
+// or use $GLOBALS[].
 ?>
 
 <br style="clear:both;" />
@@ -141,10 +142,25 @@
 
   if ( strlen ( get_last_view() ) )
     $mycal = get_last_view ();
-  else if ( ! empty ( $STARTVIEW ) )
-    $mycal = "$STARTVIEW.php";
+  else if ( ! empty ( $GLOBALS[STARTVIEW] ) )
+    $mycal = "$GLOBALS[STARTVIEW].php";
   else
     $mycal = "index.php";
+
+  // calc URL to today
+  $todayURL = 'month.php';
+  $reqURI = 'month.php';
+  if ( ! empty ( $GLOBALS['SCRIPT_NAME'] ) )
+    $reqURI = $GLOBALS['SCRIPT_NAME'];
+  else if ( ! empty ( $_SERVER['SCRIPT_NAME'] ) )
+    $reqURI = $_SERVER['SCRIPT_NAME'];
+  if ( ! strstr ( $reqURI, "month.php" ) &&
+     ! strstr ( $reqURI, "week.php" ) &&
+     ! strstr ( $reqURI, "day.php" ) )
+    $todayURL = 'day.php';
+  else
+    $todayURL = $reqURI;
+
   if ( $single_user != "Y" ) {
     if ( ! empty ( $user ) && $user != $login )
       echo "<a class=\"navlinks\" style=\"font-weight:bold;\" href=\"$mycal\">" .
@@ -152,6 +168,10 @@
     else
       echo "<a class=\"navlinks\" href=\"$mycal\" style=\"font-weight:bold;\">" .
         translate("My Calendar") . "</a>";
+    if ( ! empty ( $user ) && $user != $login )
+      $todayURL .= '&user=' . $user;
+    echo "| <a class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") .
+      "</a>";
     if ( $login != '__public__' )
       echo " | <a class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" .
         translate("Admin") . "</a>";
@@ -178,6 +198,7 @@
   } else {
     echo "<a class=\"navlinks\" href=\"$mycal\" style=\"font-weight:bold;\">" .
       translate("My Calendar") . "</a>";
+    echo "| <a class=\"navlinks\" href=\"$todayURL\" style=\"font-weight:bold;\">" . translate("Today") . "</a>";
     echo " | <a class=\"navlinks\" href=\"adminhome.php\" style=\"font-weight:bold;\">" .
       translate("Admin") . "</a>";
   }
@@ -312,7 +333,7 @@ if ( $login != "__public__" ) {
       $l = $grouplist[$i]['cal_login'];
       $f = $grouplist[$i]['cal_fullname'];
       if ( $i > 0) $groups .= ",&nbsp;";
-      $groups .= "<a class=\"navlinks\" href=\"$STARTVIEW.php?user=$l\">$f</a>";
+      $groups .= "<a class=\"navlinks\" href=\"$GLOBALS[STARTVIEW].php?user=$l\">$f</a>";
     }
     print $groups;
   }
