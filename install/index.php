@@ -533,7 +533,7 @@ You should select "Web Server" from the list of
 
   if ( ! empty ( $supported['mssql'] ) )
     echo "<option value=\"mssql\" " .
-      ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
+      ( $settings['db_type'] == 'mssql' ? " selected=\"selected\"" : "" ) .
       "> MS SQL Server </option>\n";
 ?>
 </select>
@@ -586,7 +586,7 @@ You should select "Web Server" from the list of
   echo "<option value=\"http\" " .
     ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] == 'true' ? " selected=\"selected\"" : "" ) .
     "> Web Server " .
-    ( empty ( $PHP_AUTH_USER ) ? "(not detected)" : "(not detected)" ) .
+    ( empty ( $PHP_AUTH_USER ) ? "(not detected)" : "(detected)" ) .
     "</option>\n";
 
   echo "<option value=\"user-ldap.php\" " .
