@@ -11,6 +11,7 @@
 #######################################################################
 
 $verbose = 0;
+$sql2htmlVersion = '$Id$';
 
 sub th {
   ( $s ) = @_;
@@ -186,7 +187,7 @@ names shown in red are the primary keys for that table.
 If you update the SQL for WebCalendar, use the sql2html.pl script
 to regenerate this file.
 </BLOCKQUOTE>
-<B>Version:</B> $Id$
+<B>Version:</B> $sql2htmlVersion
 <P>
 <H2>List of Tables</H2>
 <UL>
