@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Adjusting iframe height & adding title for editing/adding non-users
   - Enhanced iframe to parent frame refresh behavior for form submittal in new tabbed gui
   - Implemented "main" class in all veiws to hopefully resolve custom header issue
   - Added styles for login.php
