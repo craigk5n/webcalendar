@@ -908,7 +908,7 @@ function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
         "( webcal_entry.cal_date = $enddate_plus1 AND " .
         "webcal_entry.cal_time <= $cutoff ) OR " .
         "( webcal_entry.cal_date > $startdate AND " .
-        "webcal_entry.cal_date < $enddate ) )";
+        "webcal_entry.cal_date < $enddate_plus1 ) )";
     }
   }
 
