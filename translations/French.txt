@@ -8,7 +8,7 @@
 # Last update: 17 juillet 2002 
 # Title is what will appear in the title bar for pages
 #
-# Translation last updated on 09-28-2002
+# Translation last updated on 11-30-2002
 
 
 ###############################################
@@ -94,20 +94,105 @@ disable-participants-field-help: En s&eacute;lectionnant «&nbsp;Oui&nbsp;», vous
 Disable Participants field: D&eacute;sactiver le champ Participants
 disable-repeating-field-help: En s&eacute;lectionnant «&nbsp;Oui&nbsp;», vous enlevez le champ «&nbsp;R&eacute;p&eacute;titions&nbsp;» lors de l'ajout d'&eacute;v&eacute;nements, fournissant une interface plus simple pour les novices.
 Disable Repeating field: D&eacute;sactiver le champ de r&eacute;p&eacute;tition
+allow-view-other-help: Sp&eacute;cifie si un utilisateur peut voir l'agenda d'un autre utilisateur.
+Allow viewing other user's calendars: Autoriser la visualisation des agendas des autres personnes
 allow-public-access-help: Lorsqu'activ&eacute;, l'agenda peut &ecirc;tre utilis&eacute; comme un agenda public en lecture seule qui n'a pas besoin d'une connexion par les utilisateurs.
 Allow public access: Autoriser l'acc&egrave;s public
 public-access-view-others-help: Lors d'un acc&egrave;s en mode «&nbsp;acc&egrave;s public&nbsp;», sp&eacute;cifie si l'utilisateur peut voir les agendas des autres utilisateurs.
 Public access can view other users: L'acc&egrave;s public peut voir les autres utilisateurs
 public-access-can-add-help: Lorsqu'activ&eacute;, les utilisateurs qui acc&eacute;dent au syst&egrave;me à travers l'acc&egrave;s public pourront ajouter de nouveaux &eacute;v&eacute;nements, mais ils ne s'afficheront pas dans l'agenda tant qu'un administrateur ne les aura pas approuv&eacute;s. 
 Public access can add events: L'acc&egrave;s public peut ajouter des &eacute;v&eacute;nements
-allow-view-other-help: Sp&eacute;cifie si un utilisateur peut voir l'agenda d'un autre utilisateur.
-Allow viewing other user's calendars: Autoriser la visualisation des agendas des autres personnes
+#
+# << MISSING >>
+# public-access-add-requires-approval-help:
+# English text: Specifies whether events added via the public access account require approval before being displayed.
+#
+#
+# << MISSING >>
+# Public access new events require approval:
+# English text: Public access new events require approval:
+#
+#
+# << MISSING >>
+# allow-view-add-help:
+# English text: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+#
+#
+# << MISSING >>
+# Include add event link in views:
+#
+# << MISSING >>
+# allow-external-users-help:
+# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+#
+#
+# << MISSING >>
+# Allow external users:
+#
+# << MISSING >>
+# external-can-receive-notification-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email notifications:
+#
+# << MISSING >>
+# external-can-receive-reminder-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email reminders:
 remember-last-login-help: Lorsqu'activ&eacute;, l'identifiant de l'utilisateur sera rempli pour lui sur la page de connexion (sans le mot de passe), et les pr&eacute;f&eacute;rences de l'utilisateur seront charg&eacute;es (y compris les couleurs pr&eacute;f&eacute;r&eacute;es et la s&eacute;lection de la langue). 
 Remember last login: Se souvenir de la derni&egrave;re connexion
 conflict-check-help: V&eacute;rifier les conflits d'&eacute;v&eacute;nements (deux &eacute;v&eacute;nements pr&eacute;vus au m&ecirc;me moment pour la m&ecirc;me personne). Si vous positionnez cette valeur &agrave; «&nbsp;Oui&nbsp;», vous pourrez introduire deux &eacute;v&eacute;nements qui se chevauchent apr&egrave;s confirmation. Si vous choisissez «&nbsp;Non&nbsp;», il ne sera fait aucune v&eacute;rification de conflit. Vous choisirez probablement «&nbsp;Oui&nbsp;» pour actionner la v&eacute;rification des conflits. 
 Check for event conflicts: V&eacute;rifier les conflits d'&eacute;v&eacute;nements
 conflict-months-help: Si la v&eacute;rification des conflits est activ&eacute;e (« V&eacute;rifier les conflits pour les &eacute;v&eacute;nements » est positionn&eacute; sur «&nbsp;Oui&nbsp;»), ceci sp&eacute;cifie sur combien de mois dans le futur les conflits seront v&eacute;rifi&eacute;s. Si vous trouvez que l'ajout d'&eacute;v&eacute;nements prend du temps, r&eacute;duisez ce nombre. 
 Conflict checking months: P&eacute;riode de v&eacute;rification des conflits en mois
+#
+# << MISSING >>
+# conflict-check-override-help:
+# English text: Allows users to override event conflicts and schedule two or more events for the same time.
+#
+#
+# << MISSING >>
+# Allow users to override conflicts:
+#
+# << MISSING >>
+# limit-appts-help:
+# English text: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
+#
+#
+# << MISSING >>
+# Limit number of timed events per day:
+#
+# << MISSING >>
+# limit-appts-number-help:
+# English text: Specifies the maximum number of timed events a user can have in a single day.
+#
+#
+# << MISSING >>
+# Maximum timed events per day:
+#
+# << MISSING >>
+# Plugins:
+#
+# << MISSING >>
+# plugins-enabled-help:
+# English text: Enable plugin applications.
+#
+#
+# << MISSING >>
+# Enable Plugins:
+#
+# << MISSING >>
+# plugins-sort-key-help:
+# English text: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
+#
+#
+# << MISSING >>
+# Plugin:
 Groups: Groupes
 groups-enabled-help: Active le support des groupes, autorisant les utilisateurs à s&eacute;lectionner les utilisateurs par groupe.
 Groups enabled: Groupes activ&eacute;s
@@ -221,6 +306,7 @@ Previous: Précédent
 ###############################################
 # Page: day.php
 #
+Assistant mode: Mode secrétaire
 Generate printer-friendly version: G&eacute;n&eacute;rer une version imprimable
 Printer Friendly: Version imprimable
 
@@ -255,6 +341,15 @@ date-help: Sp&eacute;cification de la date de l'&eacute;v&eacute;nement.
 time-help: Sp&eacute;cification de l'heure de l'&eacute;v&eacute;nement.<BR><I>Ce champ peut &ecirc;tre laiss&eacute; vide.</I>
 am: am
 pm: pm
+#
+# << MISSING >>
+# Untimed event:
+#
+# << MISSING >>
+# Timed event:
+#
+# << MISSING >>
+# All day event:
 duration-help: Sp&eacute;cification de la dur&eacute;e (en minutes) de l'&eacute;v&eacute;nement.  <BR><I>Ce champ peut &ecirc;tre laiss&eacute; vide.</I>
 Duration: Dur&eacute;e
 hours: heures
@@ -273,6 +368,14 @@ days: jours
 before event: avant
 participants-help: Liste des participants pour cet &eacute;v&eacute;nement.
 Participants: Participants
+#
+# << MISSING >>
+# external-participants-help:
+# English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
+#
+#
+# << MISSING >>
+# External Participants:
 repeat-type-help: S&eacute;lectionner la fr&eacute;quence de r&eacute;p&eacute;tition de l'&eacute;v&eacute;nement.<br><I>Mensuel (par jour)</I> autorise un &eacute;v&eacute;nement &agrave; &ecirc;tre r&eacute;p&eacute;t&eacute; tous les premiers Lundi du mois, 3&egrave;me Jeudi du mois, etc. <br><I>Mensuel (par date)</I> autorise un &eacute;v&eacute;nement &agrave; &ecirc;tre r&eacute;p&eacute;t&eacute; le m&ecirc;me jour du mois.
 Repeat Type: Type de r&eacute;p&eacute;tition
 None: Aucune
@@ -492,6 +595,9 @@ default-category-help: Sp&eacute;cifie la cat&eacute;gorie par d&eacute;faut lor
 ###############################################
 # Page: week.php
 #
+#
+# << MISSING >>
+# cont.:
 
 
 ###############################################
@@ -541,6 +647,11 @@ Save login via cookies so I don't have to login next time: Sauvegarder le login 
 Login: Connexion
 Access public calendar: Agenda à acc&egrave;s public
 cookies-note: <B>Note:</B> Cette application n&eacute;cessite l'activation des cookies.
+
+
+###############################################
+# Page: view_v.php
+#
 
 
 ###############################################
@@ -621,6 +732,9 @@ Status: &Eacute;tat
 Waiting for approval: En attente de validation
 Deleted: Supprim&eacute;
 Rejected: Rejet&eacute;
+#
+# << MISSING >>
+# External User:
 Approve/Confirm entry: Approuver/Confirmer cet &eacute;v&eacute;nement
 Reject entry: Rejeter l'&eacute;v&eacute;nement
 Set category: Choisir une cat&eacute;gorie
@@ -692,6 +806,39 @@ Private: Priv&eacute;
 
 
 ###############################################
+# Page: assistant_edit.php
+#
+Yours assistants: Vos secrétaires
+Assistants: Secrétaires
+
+
+###############################################
+# Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Go to: Aller &agrave;
+Back to My Calendar: Retour &agrave; mon Agenda
+My Calendar: Mon agenda
+Logout: D&eacute;connexion
+Another User's Calendar: Agenda d'un autre utilisateur
+Add New Entry: Ajouter un &eacute;v&eacute;nement
+Manage Views: G&eacute;rer les vues
+Edit Layers: Modifier les calques
+Account: Compte
+Current User: Utilisateur actuel
+Manage calendar of: Gérer le calendrier de
+
+
+###############################################
 # Page: includes/connect.php
 #
 
@@ -700,6 +847,9 @@ Private: Priv&eacute;
 # Page: includes/functions.php
 #
 This event is confidential: Cet &eacute;v&eacute;nement est confidentiel 
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
 #
 # << MISSING >>
 # You have XXX unapproved events:
@@ -739,7 +889,6 @@ Invalid user login: Identifiant non valable
 # Page: includes/site_extras.php
 #
 Send Reminder: Envoyer un rappel
-Reminder: Rappel
 
 
 ###############################################
@@ -765,7 +914,6 @@ Reminder: Rappel
 ###############################################
 # Page: includes/help_trailer.php
 #
-Go to: Aller &agrave;
 
 
 ###############################################
@@ -794,27 +942,12 @@ Go to: Aller &agrave;
 
 
 ###############################################
-# Page: includes/trailer.php
+# Page: includes/dbtable.php
 #
-Back to My Calendar: Retour &agrave; mon Agenda
-My Calendar: Mon agenda
-Logout: D&eacute;connexion
-Another User's Calendar: Agenda d'un autre utilisateur
-Add New Entry: Ajouter un &eacute;v&eacute;nement
-Manage Views: G&eacute;rer les vues
-Edit Layers: Modifier les calques
-Account: Compte
-Current User: Utilisateur actuel
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
 This is a reminder for the event detailed below.: Ceci est un rappel avant l'&eacute;v&eacute;nement suivant. 
-
-###############################################
-# Add-on Mario Dragone
-Assistants: Secrétaires
-Yours assistants: Vos secrétaires
-Assistant mode: Mode secrétaire
-Manage calendar of: Gérer le calendrier de
+Reminder: Rappel

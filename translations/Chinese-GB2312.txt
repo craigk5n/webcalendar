@@ -4,7 +4,7 @@
 # Translated by: liao_bin@371.net shenyi@jite.net
 # Last update: 2002-6-26
 # $Id$
-# Translation last updated on 09-28-2002
+# Translation last updated on 11-30-2002
 
 
 ###############################################
@@ -110,20 +110,105 @@ Disable Access field: 关闭访问域
 # Disable Participants field:
 disable-repeating-field-help: 关闭-重复-域-帮助
 Disable Repeating field: 关闭重复域
+allow-view-other-help: 允许-其它-视图-帮助
+Allow viewing other user's calendars: 允许查看其他用户日历
 allow-public-access-help: 允许-公共-进入-帮助
 Allow public access: 允许公共登录
 public-access-view-others-help: 可以为公共日历添加其他视图
 Public access can view other users: 公共登录能查询其他用户
 public-access-can-add-help: 可以设置为公共的
 Public access can add events: 公共登录能添加事件
-allow-view-other-help: 允许-其它-视图-帮助
-Allow viewing other user's calendars: 允许查看其他用户日历
+#
+# << MISSING >>
+# public-access-add-requires-approval-help:
+# English text: Specifies whether events added via the public access account require approval before being displayed.
+#
+#
+# << MISSING >>
+# Public access new events require approval:
+# English text: Public access new events require approval:
+#
+#
+# << MISSING >>
+# allow-view-add-help:
+# English text: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+#
+#
+# << MISSING >>
+# Include add event link in views:
+#
+# << MISSING >>
+# allow-external-users-help:
+# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+#
+#
+# << MISSING >>
+# Allow external users:
+#
+# << MISSING >>
+# external-can-receive-notification-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email notifications:
+#
+# << MISSING >>
+# external-can-receive-reminder-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email reminders:
 remember-last-login-help: 记录最后一次登录
 Remember last login: 记住最后一次登录
 conflict-check-help: 冲突-检查-帮助
 Check for event conflicts: 检查事件冲突
 conflict-months-help: 冲突-月-帮助
 Conflict checking months: 冲突检查月数
+#
+# << MISSING >>
+# conflict-check-override-help:
+# English text: Allows users to override event conflicts and schedule two or more events for the same time.
+#
+#
+# << MISSING >>
+# Allow users to override conflicts:
+#
+# << MISSING >>
+# limit-appts-help:
+# English text: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
+#
+#
+# << MISSING >>
+# Limit number of timed events per day:
+#
+# << MISSING >>
+# limit-appts-number-help:
+# English text: Specifies the maximum number of timed events a user can have in a single day.
+#
+#
+# << MISSING >>
+# Maximum timed events per day:
+#
+# << MISSING >>
+# Plugins:
+#
+# << MISSING >>
+# plugins-enabled-help:
+# English text: Enable plugin applications.
+#
+#
+# << MISSING >>
+# Enable Plugins:
+#
+# << MISSING >>
+# plugins-sort-key-help:
+# English text: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
+#
+#
+# << MISSING >>
+# Plugin:
 Groups: 组
 groups-enabled-help: 组-开放-帮助
 Groups enabled: 使用组
@@ -243,6 +328,9 @@ Add New Category: 添加新分类
 ###############################################
 # Page: day.php
 #
+#
+# << MISSING >>
+# Assistant mode:
 Generate printer-friendly version: 产生友善打印
 Printer Friendly: 友善打印
 
@@ -277,6 +365,15 @@ date-help: Specifies the date of the event.
 time-help: Specifies the time of the event.<BR><I>This field can be left blank.</I>
 am: 上午
 pm: 下午
+#
+# << MISSING >>
+# Untimed event:
+#
+# << MISSING >>
+# Timed event:
+#
+# << MISSING >>
+# All day event:
 duration-help: Specifies the duration (in minutes) of the event.  <BR><I>This field can be left blank.</I>
 Duration: 持续时间
 hours: 时
@@ -295,6 +392,14 @@ days: 天
 before event: (事件之前送出)
 participants-help: Lists the participants of this entry.
 Participants: 參與者
+#
+# << MISSING >>
+# external-participants-help:
+# English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
+#
+#
+# << MISSING >>
+# External Participants:
 repeat-type-help: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
 Repeat Type: 周期性設定
 None: 无
@@ -524,6 +629,9 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: week.php
 #
+#
+# << MISSING >>
+# cont.:
 
 
 ###############################################
@@ -573,6 +681,11 @@ Save login via cookies so I don't have to login next time: 將登录资料存储于 cook
 Login: 登录
 Access public calendar: 进入公共日历
 cookies-note: <B>注意:</B> 本程式須要 cookies 才能使用.
+
+
+###############################################
+# Page: view_v.php
+#
 
 
 ###############################################
@@ -653,6 +766,9 @@ Status: 状态
 Waiting for approval: 等待核准
 Deleted: 已经删除
 Rejected: 拒绝的
+#
+# << MISSING >>
+# External User:
 Approve/Confirm entry: 核准/确定 事件
 Reject entry: 拒绝事件
 Set category: 设置种类
@@ -724,6 +840,45 @@ Private: 私人的
 
 
 ###############################################
+# Page: assistant_edit.php
+#
+#
+# << MISSING >>
+# Yours assistants:
+#
+# << MISSING >>
+# Assistants:
+
+
+###############################################
+# Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Go to: 功能选择
+Back to My Calendar: 返回我的日历
+My Calendar: 我的日历
+Logout: 注销
+Another User's Calendar: 別人的日历
+Add New Entry: 新增事件
+Manage Views: 管理视图
+Edit Layers: 编辑层
+Account: 编辑個人资料
+Current User: 当前用户
+#
+# << MISSING >>
+# Manage calendar of:
+
+
+###############################################
 # Page: includes/connect.php
 #
 
@@ -732,6 +887,9 @@ Private: 私人的
 # Page: includes/functions.php
 #
 This event is confidential: 这个事件是机密的
+#
+# << MISSING >>
+# exceeds limit of XXX events per day:
 You have XXX unapproved events: 您有 XXX 未核准的 事件
 January: 一月
 February: 二月
@@ -769,7 +927,6 @@ Invalid user login: 无效的用户登录
 # Page: includes/site_extras.php
 #
 Send Reminder: 发送邮件通知
-Reminder: 提醒
 
 
 ###############################################
@@ -795,7 +952,6 @@ Reminder: 提醒
 ###############################################
 # Page: includes/help_trailer.php
 #
-Go to: 功能选择
 
 
 ###############################################
@@ -824,20 +980,12 @@ Go to: 功能选择
 
 
 ###############################################
-# Page: includes/trailer.php
+# Page: includes/dbtable.php
 #
-Back to My Calendar: 返回我的日历
-My Calendar: 我的日历
-Logout: 注销
-Another User's Calendar: 別人的日历
-Add New Entry: 新增事件
-Manage Views: 管理视图
-Edit Layers: 编辑层
-Account: 编辑個人资料
-Current User: 当前用户
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
 This is a reminder for the event detailed below.: 提醒有完整描述的事件
+Reminder: 提醒
