@@ -62,15 +62,15 @@ print_header ( '', '', '', $disableCustom );
 	</td></tr>
 	<tr><td>
 		<label for="ufirstname"><?php etranslate("First Name")?>:</label></td><td>
-		<input type="text" name="ufirstname" id="ufirstname" size="20" value="<?php echo htmlspecialchars ( $ufirstname );?>" />
+		<input type="text" name="ufirstname" id="ufirstname" size="20" value="<?php echo empty ( $ufirstname ) ? '' : htmlspecialchars ( $ufirstname );?>" />
 	</td></tr>
 	<tr><td>
 		<label for="ulastname"><?php etranslate("Last Name")?>:</label></td><td>
-		<input type="text" name="ulastname" id="ulastname" size="20" value="<?php echo htmlspecialchars ( $ulastname );?>" />
+		<input type="text" name="ulastname" id="ulastname" size="20" value="<?php echo empty ( $ulastname ) ? '' : htmlspecialchars ( $ulastname );?>" />
 	</td></tr>
 	<tr><td>
 		<label for="uemail"><?php etranslate("E-mail address")?>:</label></td><td>
-		<input type="text" name="uemail" id="uemail" size="20" value="<?php echo htmlspecialchars ( $uemail );?>" />
+		<input type="text" name="uemail" id="uemail" size="20" value="<?php echo empty ( $uemail ) ? '' : htmlspecialchars ( $uemail );?>" />
 	</td></tr>
 <?php if ( empty ( $user ) && ! $use_http_auth && $user_can_update_password ) { ?>
 	<tr><td>
@@ -85,8 +85,8 @@ print_header ( '', '', '', $disableCustom );
 if ( $is_admin ) { ?>
 	<tr><td style="font-weight:bold;">
 		<?php etranslate("Admin")?>:</td><td>
-		<label><input type="radio" name="uis_admin" value="Y"<?php if ( $uis_admin == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
-		<label><input type="radio" name="uis_admin" value="N"<?php if ( $uis_admin != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+		<label><input type="radio" name="uis_admin" value="Y"<?php if ( ! empty ( $uis_admin ) && $uis_admin == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+		<label><input type="radio" name="uis_admin" value="N"<?php if ( empty ( $uis_admin ) || $uis_admin != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 	</td></tr>
 <?php } //end if ($is_admin ) ?>
 	<tr><td colspan="2">

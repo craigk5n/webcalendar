@@ -34,7 +34,6 @@ if ( empty ($error) ) {
   }
 }
 
-echo "<iframe src=\"edit_nonusers.php?nid=" . 
-	$userlist[$i]["cal_login"] . "\" name=\"nonusersiframe\" id=\"nonusersiframe\" style=\"width:90%;border-width:0px; height:250px;\"></iframe>";
+echo "<iframe name=\"nonusersiframe\" id=\"nonusersiframe\" style=\"width:90%;border-width:0px; height:250px;\"></iframe>";
 ?>
 </div>

@@ -830,7 +830,7 @@ function get_my_users () {
   */
 function get_pref_setting ( $user, $setting ) {
   // set default
-  if ( $GLOBALS["sys_" .$setting] == "" ) {
+  if ( ! isset ( $GLOBALS["sys_" .$setting] ) ) {
     // this could happen if the current user has not saved any pref. yet
     $ret = $GLOBALS[$setting];
   } else {
@@ -1122,6 +1122,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
   global $DISPLAY_WEEKNUMBER;
   global $SCRIPT, $thisday; // Needed for day.php
+  global $caturl;
 
   // TODO: Make day.php NOT be a special case
   if ( $user != $login && ! empty ( $user ) ) {
@@ -1525,7 +1526,12 @@ function get_entries ( $user, $date, $get_unapproved=true ) {
 
   //echo "<br />\nChecking " . count ( $events ) . " events.  TZ_OFFSET = $TZ_OFFSET, get_unapproved=" . $get_unapproved . "<br />\n";
 
+  //print_r ( $events );
+
   for ( $i = 0; $i < count ( $events ); $i++ ) {
+    // In case of data corruption (or some other bug...)
+    if ( empty ( $events[$i] ) || empty ( $events[$i]['cal_id'] ) )
+      continue;
     if ( ( ! $get_unapproved ) && $events[$i]['cal_status'] == 'W' ) {
       // ignore this event
     } else if ( empty ( $TZ_OFFSET ) ) {

@@ -346,7 +346,7 @@ else
 
 // get the email adress of the creator of the entry
 user_load_variables ( $create_by, "createby_" );
-$email_addr = $createby_email;
+$email_addr = empty ( $createby_email ) ? '' : $createby_email;
 
 // If confidential and not this user's event, then
 // They cannot seem name or description.
@@ -647,6 +647,11 @@ if ( $single_user == "N" && $show_participants ) {
 </table>
 
 <p><?php
+
+$rdate = "";
+if ( $event_repeats )
+  $rdate = "&amp;date=$event_date";
+
 // Show a printer-friendly link
 if ( empty ( $friendly ) ) {
   echo "<a title=\"" . 
@@ -685,10 +690,6 @@ if ( $public_access == "Y" && $login == "__public__" )
   $can_edit = false;
 if ( $readonly == 'Y' )
   $can_edit = false;
-
-$rdate = "";
-if ( $event_repeats )
-  $rdate = "&amp;date=$event_date";
 
 // If approved, but event category not set (and user does not have permission
 // to edit where they could also set the category), then allow them to

@@ -25,10 +25,9 @@ load_user_preferences ();
 
 include "includes/translate.php";
 
-$return_path = clean_whitespace($return_path);
-
 // see if a return path was set
 if ( ! empty ( $return_path ) ) {
+  $return_path = clean_whitespace ( $return_path );
   $url = $return_path;
 } else {
   $url = "index.php";

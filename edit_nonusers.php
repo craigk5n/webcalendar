@@ -15,6 +15,7 @@ if ( ! $NONUSER_PREFIX ) {
   exit;
 }
 $add = getValue ( "add" );
+$nid = getValue ( "nid" );
 
 // Adding/Editing nonuser calendar
 if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
@@ -49,11 +50,11 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
 	</td></tr>
 	<tr><td>
 		<label for="nfirstname"><?php etranslate("First Name")?>:</label></td><td>
-		<input type="text" name="nfirstname" id="nfirstname" size="20" maxlength="25" value="<?php echo htmlspecialchars ( $nonusertemp_firstname ); ?>" />
+		<input type="text" name="nfirstname" id="nfirstname" size="20" maxlength="25" value="<?php echo empty ( $nonusertemp_firstname ) ? '' : htmlspecialchars ( $nonusertemp_firstname ); ?>" />
 	</td></tr>
 	<tr><td>
 		<label for="nlastname"><?php etranslate("Last Name")?>:</label></td><td>
-		<input type="text" name="nlastname" id="nlastname" size="20" maxlength="25" value="<?php echo htmlspecialchars ( $nonusertemp_lastname ); ?>" />
+		<input type="text" name="nlastname" id="nlastname" size="20" maxlength="25" value="<?php echo empty ( $nonusertemp_lastname ) ? '' : htmlspecialchars ( $nonusertemp_lastname ); ?>" />
 	</td></tr>
 	<tr><td>
 		<label for="nadmin"><?php etranslate("Admin")?>:</label></td><td>
@@ -61,7 +62,8 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
 <?php
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
 	echo "<option value=\"".$userlist[$i]['cal_login']."\"";
-	if ($nonusertemp_admin == $userlist[$i]['cal_login'] ) 
+	if (! empty ( $nonusertemp_admin ) &&
+            $nonusertemp_admin == $userlist[$i]['cal_login'] ) 
 		echo " selected=\"selected\"";
 	echo ">".$userlist[$i]['cal_fullname']."</option>\n";
   }

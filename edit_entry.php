@@ -226,8 +226,12 @@ if ( ( empty ( $year ) || ! $year ) &&
 }
 if ( empty ( $thisyear ) )
   $thisdate = date ( "Ymd" );
-else
-  $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
+else {
+  $thisdate = sprintf ( "%04d%02d%02d",
+    empty ( $thisyear ) ? date ( "Y" ) : $thisyear,
+    empty ( $thismonth ) ? date ( "m" ) : $thismonth,
+    empty ( $thisday ) ? date ( "d" ) : $thisday );
+}
 if ( empty ( $cal_date ) || ! $cal_date )
   $cal_date = $thisdate;
 
@@ -262,7 +266,7 @@ print_header ( $INC, '', $BodyX );
 <form action="edit_entry_handler.php" method="post" name="editentryform">
 
 <?php
-if ( ! empty ( $id ) && ( $copy != '1' ) ) echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
+if ( ! empty ( $id ) && ( empty ( $copy ) || $copy != '1' ) ) echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
 // we need an additional hidden input field
 echo "<input type=\"hidden\" name=\"entry_changed\" value=\"\" />\n";
 
