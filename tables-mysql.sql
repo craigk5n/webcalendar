@@ -485,7 +485,7 @@ CREATE TABLE webcal_import_data (
 
 
 /*
- * Defines a report.
+ * Defines a custom report created by a user.
  */
 CREATE TABLE webcal_report (
   /* creator of report */
@@ -501,7 +501,7 @@ CREATE TABLE webcal_report (
   cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
   /* name of the report */
   cal_report_name VARCHAR(50) NOT NULL,
-  /* default time range:  <ul> */
+  /* time range for report:  <ul> */
   /* <li>  0 = tomorrow */
   /* <li>  1 = today */
   /* <li>  2 = yesterday */
@@ -547,14 +547,14 @@ CREATE TABLE webcal_report (
  * <li> Page template - Defines the entire page (except for header and
  *   footer).  The following variables can be defined:
  *   <ul>
- *     <li> ${days}<sup>*</supt> - the HTML of all dates (generated from the Date template)
+ *     <li> ${days}<sup>*</sup> - the HTML of all dates (generated from the Date template)
  *   </ul>
  * <li> Date template - Defines events for one day.  If the report
  *   is for a week or month, then the results of each day will be
  *   concatenated and used as the ${days} variable in the Page template.
  *   The following variables can be defined:
  *   <ul>
- *     <li> ${events}<sup>*</supt> - the HTML of all events
+ *     <li> ${events}<sup>*</sup> - the HTML of all events
  *          for the data (generated from the Event template)
  *     <li> ${date} - the date
  *     <li> ${fulldate} - date (includes weekday)
@@ -562,7 +562,7 @@ CREATE TABLE webcal_report (
  * <li> Event template - Defines a single event.
  *      The following variables can be defined:
  *   <ul>
- *     <li> ${name} - Brief Description of event
+ *     <li> ${name}<sup>*</sup> - Brief Description of event
  *     <li> ${description} - Full Description of event
  *     <li> ${date} - Date of event
  *     <li> ${fulldate} - Date of event (includes weekday)
@@ -579,11 +579,10 @@ CREATE TABLE webcal_report (
 CREATE TABLE webcal_report_template (
   /* report id (in webcal_report table) */
   cal_report_id INT NOT NULL,
-  /* type of template: */
-  /* <ul> */
-  /* <li> 'P': page template represents entire document
-  /* <li> 'D': date template represents a single day of events
-  /* <li> 'E': event template represents a single event
+  /* type of template: <ul> */
+  /* <li> 'P': page template represents entire document */
+  /* <li> 'D': date template represents a single day of events */
+  /* <li> 'E': event template represents a single event */
   /* </ul> */
   cal_template_type CHAR(1) NOT NULL,
   /* text of template */
