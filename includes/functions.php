@@ -719,7 +719,6 @@ function site_extras_for_popup ( $id )
 
   include_once 'includes/site_extras.php';
 
-  $printed_extra = false;
   $extras = get_site_extra_fields ( $id );
   for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     $extra_name = $site_extras[$i][0];
@@ -727,11 +726,7 @@ function site_extras_for_popup ( $id )
     $extra_arg1 = $site_extras[$i][3];
     $extra_arg2 = $site_extras[$i][4];
     if ( ! empty ( $extras[$extra_name]['cal_name'] ) ) {
-      if ( $printed_extra )
-        $ret .= "<br />";
-      else
-        $printed_extra = true;
-      $ret .= "<span style=\"font-weight:bold;\">" .  translate ( $site_extras[$i][1] ) . ":</span> ";
+      $ret .= "<dt>" .  translate ( $site_extras[$i][1] ) . ":</dt>\n<dd>";
       if ( $extra_type == $EXTRA_DATE ) {
         if ( $extras[$extra_name]['cal_date'] > 0 )
           $ret .= date_to_str ( $extras[$extra_name]['cal_date'] );
@@ -765,6 +760,7 @@ function site_extras_for_popup ( $id )
       } else {
         $ret .= $extras[$extra_name]['cal_data'];
       }
+      $ret .= "</dd>\n";
     }
   }
   return $ret;
@@ -774,13 +770,10 @@ function site_extras_for_popup ( $id )
 
 // Build the HTML for the event popup (but don't print it yet since we
 // don't want this HTML to go inside the table for the month).
-function build_event_popup ( $divname, $user, $description, $time,
+function build_event_popup ( $popupid, $user, $description, $time,
   $site_extras='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname;
-  $ret = "<div id=\"" . $divname .
-    "\" style=\"position:absolute; z-index:20; visibility:hidden; top:0px; left:0px; width:300px;\">\n" .
-    "<table cellpadding=\"0\" cellspacing=\"0\" style=\"border:1px solid $GLOBALS[POPUP_FG];\">\n" .
-    "<tr><td class=\"popup\">";
+  $ret = "<dl id=\"$popupid\" class=\"popup\">\n";
 
   if ( empty ( $popup_fullnames ) )
     $popup_fullnames = array ();
@@ -790,12 +783,12 @@ function build_event_popup ( $divname, $user, $description, $time,
       user_load_variables ( $user, "popuptemp_" );
       $popup_fullnames[$user] = $popuptemp_fullname;
     }
-    $ret .= "<span style=\"font-weight:bold;\">" . translate ("User") .
-      ":</span> $popup_fullnames[$user]<br />\n";
+    $ret .= "<dt>" . translate ("User") .
+      ":</dt>\n<dd>$popup_fullnames[$user]</dd>\n";
   }
   if ( strlen ( $time ) )
-    $ret .= "<span style=\"font-weight:bold;\">" . translate ("Time") . ":</span> $time<br />\n";
-  $ret .= "<span style=\"font-weight:bold;\">" . translate ("Description") . ":</span>\n";
+    $ret .= "<dt>" . translate ("Time") . ":</dt>\n<dd> $time</dd>\n";
+  $ret .= "<dt>" . translate ("Description") . ":</dt>\n<dd>";
   if ( ! empty ( $GLOBALS['allow_html_description'] ) &&
     $GLOBALS['allow_html_description'] == 'Y' ) {
     $str = str_replace ( "&", "&amp;", $description );
@@ -803,10 +796,10 @@ function build_event_popup ( $divname, $user, $description, $time,
   } else {
     $ret .= nl2br ( htmlspecialchars ( $description ) );
   }
+  $ret .= "</dd>\n";
   if ( ! empty ( $site_extras ) )
-    $ret .= "\n<br />" . $site_extras;
-  $ret .= "</td></tr></table>\n" .
-    "</div>\n";
+    $ret .= $site_extras;
+  $ret .= "</dl>\n\n";
   return $ret;
 }
 
@@ -895,13 +888,13 @@ function print_entry ( $id, $date, $time, $duration,
 
   if ( $pri == 3 ) echo "<span style=\"font-weight:bold;\">";
   if ( ! $hide_icons ) {
-    $divname = "eventinfo-$id-$key";
+    $popupid = "eventinfo-$id-$key";
     $key++;
     echo "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
     if ( strlen ( $user ) > 0 )
       echo "&amp;user=" . $user;
     echo "\" onmouseover=\"window.status='" . translate("View this entry") .
-      "'; show(event, '$divname'); return true;\" onmouseout=\"window.status=''; hide('$divname'); return true;\">";
+      "'; show(event, '$popupid'); return true;\" onmouseout=\"window.status=''; hide('$popupid'); return true;\">";
     echo "<img src=\"circle.gif\" style=\"width:5px; height:7px; border-width:0px;\" alt=\"view\" />";
   }
 
@@ -976,16 +969,16 @@ function print_entry ( $id, $date, $time, $duration,
   echo "<br />"; //end font-size span
   if ( ! $hide_icons ) {
     if ( $login != $user && $access == 'R' && strlen ( $user ) )
-      $eventinfo .= build_event_popup ( $divname, $event_owner,
+      $eventinfo .= build_event_popup ( $popupid, $event_owner,
         translate("This event is confidential"), "" );
 
     else
     if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
-      $eventinfo .= build_event_popup ( $divname, $event_owner,
+      $eventinfo .= build_event_popup ( $popupid, $event_owner,
         translate("This event is confidential"), "" );
 
     else
-      $eventinfo .= build_event_popup ( $divname, $event_owner,
+      $eventinfo .= build_event_popup ( $popupid, $event_owner,
         $description, $timestr, site_extras_for_popup ( $id ) );
   }
 }
@@ -2141,7 +2134,7 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   global $DISPLAY_ICONS, $PHP_SELF, $TIME_SLOTS;
   global $layers;
 
-  $divname = "eventinfo-day-$id-$key";
+  $popupid = "eventinfo-day-$id-$key";
   $key++;
   
   // Figure out which time slot it goes in.
@@ -2180,7 +2173,7 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
       $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
     $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
       translate("View this entry") .
-      "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
+      "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
   }
   if ( $pri == 3 )
     $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">";
@@ -2253,14 +2246,14 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   //}
   $hour_arr[$ind] .= "<br />";
   if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
-    $eventinfo .= build_event_popup ( $divname, $event_owner,
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
       translate("This event is confidential"), "" );
   } else if ( $login != $event_owner && $access == 'R' &&
     strlen ( $event_owner ) ) {
-    $eventinfo .= build_event_popup ( $divname, $event_owner,
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
       translate("This event is confidential"), "" );
   } else {
-    $eventinfo .= build_event_popup ( $divname, $event_owner,
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
       $description, $timestr, site_extras_for_popup ( $id ) );
   }
 }
@@ -2277,18 +2270,18 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   static $key = 0;
   global $layers, $PHP_SELF, $TIME_SLOTS, $TZ_OFFSET;
 
-  $divname = "eventinfo-day-$id-$key";
+  $popupid = "eventinfo-day-$id-$key";
   $key++;
 
   if ( $login != $user && $access == 'R' && strlen ( $user ) )
-    $eventinfo .= build_event_popup ( $divname, $event_owner,
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
       translate("This event is confidential"), "" );
   else if ( $login != $event_owner && $access == 'R' &&
     strlen ( $event_owner ) )
-    $eventinfo .= build_event_popup ( $divname, $event_owner,
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
       translate("This event is confidential"), "" );
   else
-    $eventinfo .= build_event_popup ( $divname, $event_owner, $description,
+    $eventinfo .= build_event_popup ( $popupid, $event_owner, $description,
       "", site_extras_for_popup ( $id ) );
 
   // calculate slot length in minutes
@@ -2337,7 +2330,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
       $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
     $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
       translate("View this entry") .
-      "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
+      "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
   }
   if ( $pri == 3 ) $hour_arr[$ind] .= "<span style=\"font-weight:bold;\">";
 
@@ -3295,13 +3288,13 @@ function print_entry_timebar ( $id, $date, $time, $duration,
 
   if ( $pri == 3 ) echo "<span style=\"font-weight:bold;\">";
   if ( ! $hide_icons ) {
-    $divname = "eventinfo-$id-$key";
+    $popupid = "eventinfo-$id-$key";
     $key++;
     echo "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
     if ( strlen ( $user ) > 0 )
       echo "&amp;user=" . $user;
     echo "\" onmouseover=\"window.status='" . translate("View this entry") .
-      "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
+      "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
   }
 
 
@@ -3367,16 +3360,16 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   echo "</tr>\n</table>\n";
   if ( ! $hide_icons ) {
     if ( $login != $user && $access == 'R' && strlen ( $user ) )
-      $eventinfo .= build_event_popup ( $divname, $event_owner,
+      $eventinfo .= build_event_popup ( $popupid, $event_owner,
         translate("This event is confidential"), "" );
 
     else
     if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
-      $eventinfo .= build_event_popup ( $divname, $event_owner,
+      $eventinfo .= build_event_popup ( $popupid, $event_owner,
         translate("This event is confidential"), "" );
 
     else
-      $eventinfo .= build_event_popup ( $divname, $event_owner,
+      $eventinfo .= build_event_popup ( $popupid, $event_owner,
         $description, $timestr, site_extras_for_popup ( $id ) );
   }
 }

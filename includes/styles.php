@@ -146,6 +146,26 @@ a:hover {
   color: <?php echo ( $GLOBALS['POPUP_FG'] == "" ? "#000000" : $GLOBALS['POPUP_FG'] ); ?>;
   background-color: <?php echo $GLOBALS['POPUP_BG']; ?>;
   text-decoration: none;
+  position: absolute;
+  z-index: 20;
+  visibility: hidden;
+  top: 0px;
+  left: 0px;
+  /*width: 300px;*/
+  border: 1px solid <?php echo ( $GLOBALS['POPUP_FG'] == "" ? "#000000" : $GLOBALS['POPUP_FG'] ); ?>;
+  padding: 3px;
+}
+.popup dt {
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+.popup dl {
+  margin: 0;
+  padding: 0;
+}
+.popup dd {
+  margin-left: 20px;
 }
 .tooltip {
 	cursor: help;
