@@ -178,8 +178,8 @@ function showTab (name) {
 	for (var i=0; i<tabs.length; i++) {
 		var tname = tabs[i];
 		var tab = document.getElementById("tab_" + tname);
-		if (tab && tab.setAttribute) {
-			tab.setAttribute("class", (tname == name) ? "tabfor" : "tabbak");
+		if (tab) {
+			tab.className = (tname == name) ? "tabfor" : "tabbak";
 		}
 		var div = document.getElementById("tabscontent_" + tname);
 		if (div) {
