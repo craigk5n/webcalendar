@@ -53,7 +53,7 @@ if ( $single_user == "N" ) {
         if ( $layers[$id]['cal_layeruser'] == $userlist[$i]['cal_login'] )
           $users .= " selected=\"selected\"";
       } 
-      $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>";
+      $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>\n";
     }
   }
   if ( $size > 50 )
@@ -62,7 +62,7 @@ if ( $single_user == "N" ) {
     $size = 5;
   if ( $size >= 1 ) {
     print "<tr><td style=\"vertical-align:top; font-weight:bold;\">" .
-      translate("Source") . ":</td>";
+      translate("Source") . ":</td>\n";
     print "<td><select name=\"layeruser\" size=\"1\">$users\n";
     print "</select>\n";
     print "</td></tr>\n";
