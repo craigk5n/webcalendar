@@ -1372,8 +1372,9 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
         if ( $wday == 0 || $wday == 6 ) {
           $class = "weekend";
         }
-  //if the day being viewed is today's date
-        if ( $dateYmd == $thisyear . $thismonth . $thisday ) {
+  //if the day being viewed is today's date AND script = day.php
+        if ( $dateYmd == $thisyear . $thismonth . $thisday &&
+          $SCRIPT == 'day.php'  ) {
     //if it's also a weekend, add a space between class names to combine styles
     if ( $class != '' ) {
             $class .= ' ';
