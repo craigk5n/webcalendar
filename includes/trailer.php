@@ -8,9 +8,6 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     die ( "You can't access this file directly!" );
 }
 
-// Pass the current charset to avoid errors using Japanese
-$charset = ( ! empty ( $LANGUAGE ) ? translate ( "charset" ) : "iso-8859-1" );
-
 // NOTE: This file is included within the print_trailer function found
 // in includes/init.php.  If you add a global variable somewhere in this
 // file, be sure to declare it global in the print_trialer function
@@ -89,11 +86,9 @@ $charset = ( ! empty ( $LANGUAGE ) ? translate ( "charset" ) : "iso-8859-1" );
   $d_time = mktime ( 3, 0, 0, $m, $d, $y );
   $thisdate = date ( "Ymd", $d_time );
   $wday = date ( "w", $d_time );
-  if ( $WEEK_START == 1 ) {
-    $wkstart = mktime ( 3, 0, 0, $m, $d - ( $wday - 1 ), $y );
-  } else {
-    $wkstart = mktime ( 3, 0, 0, $m, $d - $wday, $y );
-  }
+  // $WEEK_START equals 1 or 0 
+  $wkstart = mktime ( 3, 0, 0, $m, $d - ( $wday - $WEEK_START ), $y );
+
   for ( $i = -7; $i <= 7; $i++ ) {
     $twkstart = $wkstart + ( 3600 * 24 * 7 * $i );
     $twkend = $twkstart + ( 3600 * 24 * 6 );
@@ -103,6 +98,9 @@ $charset = ( ! empty ( $LANGUAGE ) ? translate ( "charset" ) : "iso-8859-1" );
       echo " selected=\"selected\"";
     }
     echo ">";
+    if ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) && $GLOBALS['PULLDOWN_WEEKNUMBER'] = "Y" ) {
+      echo  "(" . week_number ( $twkstart ) . ")&nbsp;&nbsp;";
+    }
     printf ( "%s - %s",
       date_to_str ( date ( "Ymd", $twkstart ), $DATE_FORMAT_MD, false, true ),
       date_to_str ( date ( "Ymd", $twkend ), $DATE_FORMAT_MD, false, true ) );
@@ -289,13 +287,13 @@ if ( count ( $goto_link ) > 0 ) {
 if ( ( $is_admin || $allow_view_other != "N" ) && count ( $views ) > 0 ) {
   for ( $i = 0; $i < count ( $views ); $i++ ) {
     $out = "<a title=\"" .
-      htmlentities ( $views[$i]['cal_name'], ENT_COMPAT, $charset ) .
+      htmlspecialchars ( $views[$i]['cal_name'] ) .
       "\" href=\"";
     $out .= $views[$i]['url'];
     if ( ! empty ( $thisdate ) )
       $out .= "&amp;date=$thisdate";
     $out .= "\">" .
-      htmlentities ( $views[$i]['cal_name'], ENT_COMPAT, $charset  ) . "</a>\n";
+      htmlspecialchars ( $views[$i]['cal_name'] ) . "</a>\n";
     $views_link[] = $out;
   }
 }
@@ -311,6 +309,7 @@ if ( count ( $views_link ) > 0 ) {
 
 <!-- REPORTS -->
 <?php
+$reports_link = array ();
 if ( ! empty ( $reports_enabled ) && $reports_enabled == 'Y' ) {
   if ( ! empty ( $user ) && $user != $login ) {
     $u_url = "&amp;user=$user";
@@ -325,9 +324,9 @@ if ( ! empty ( $reports_enabled ) && $reports_enabled == 'Y' ) {
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $reports_link[] = "<a title=\"" . 
-        htmlentities ( $row[0], ENT_COMPAT, $charset ) . 
+        htmlspecialchars ( $row[0] ) . 
         "\" href=\"report.php?report_id=$row[1]$u_url\">" . 
-        htmlentities ( $row[0], ENT_COMPAT, $charset ) . "</a>";
+        htmlspecialchars ( $row[0] ) . "</a>";
     }
     dbi_free_result ( $res );
   }
