@@ -90,7 +90,7 @@ if ( ! $friendly ) {
 
 <?php
 if ( ! $friendly ) {
-  echo "<table class=\"minical\" style=\"float:left;\" cellspacing=\"1\" cellpadding=\"2\">";
+  echo "<table class=\"minical\" style=\"float:left;\" cellspacing=\"1\" cellpadding=\"2\">\n";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $prevyear, $prevmonth, 1 );
   else
@@ -104,7 +104,7 @@ if ( ! $friendly ) {
     date_to_str ( sprintf ( "%04d%02d01", $prevyear, $prevmonth ),
     $DATE_FORMAT_MY, false, false ) .
     "</a></td></tr>\n";
-  echo "<tr class=\"day\">";
+  echo "<tr class=\"day\">\n";
   if ( $WEEK_START == 0 ) echo "<th>" .
     weekday_short_name ( 0 ) . "</th>\n";
   for ( $i = 1; $i < 7; $i++ ) {
@@ -127,14 +127,13 @@ if ( ! $friendly ) {
       }
     }
     if ( isset ( $DISPLAY_WEEKNUMBER ) && $DISPLAY_WEEKNUMBER == 'Y' ) {
-      print "<td><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\" class=\"weeknumber\">(" . week_number($i) . ")</a></td>\n";
+      print "<td class=\"weeknumber\"><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\">(" . week_number($i) . ")</a></td>\n";
     }
     print "</tr>\n";
   }
   echo "</table>\n";
 }
 ?>
-
 <div class="title">
 <span class="date"><br />
 <?php
@@ -155,7 +154,7 @@ if ( ! $friendly ) {
 ?></span>
 <?php
   if ( $categories_enabled == "Y" && (!$user || $user == $login)) {
-    echo "<br />\n<br />\n";
+    echo "<br /><br />\n";
     print_category_menu('month',sprintf ( "%04d%02d01",$thisyear, $thismonth ),$cat_id, $friendly );
   }
 ?>
@@ -164,18 +163,18 @@ if ( ! $friendly ) {
 
 <table class="main" style="clear:both;" cellspacing="0" cellpadding="0">
 <tr>
-<?php if ( $WEEK_START == 0 ) { ?>
-<th><?php etranslate("Sun")?></th>
-<?php } ?>
-<th><?php etranslate("Mon")?></th>
-<th><?php etranslate("Tue")?></th>
-<th><?php etranslate("Wed")?></th>
-<th><?php etranslate("Thu")?></th>
-<th><?php etranslate("Fri")?></th>
-<th><?php etranslate("Sat")?></th>
-<?php if ( $WEEK_START == 1 ) { ?>
-<th><?php etranslate("Sun")?></th>
-<?php } ?>
+	<?php if ( $WEEK_START == 0 ) { ?>
+		<th><?php etranslate("Sun")?></th>
+	<?php } ?>
+	<th><?php etranslate("Mon")?></th>
+	<th><?php etranslate("Tue")?></th>
+	<th><?php etranslate("Wed")?></th>
+	<th><?php etranslate("Thu")?></th>
+	<th><?php etranslate("Fri")?></th>
+	<th><?php etranslate("Sat")?></th>
+	<?php if ( $WEEK_START == 1 ) { ?>
+		<th><?php etranslate("Sun")?></th>
+	<?php } ?>
 </tr>
 <?php
 
@@ -191,9 +190,9 @@ $monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
 $monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 
 // debugging
-//echo "<p>sun = " . date ( "D, m-d-Y", $sun ) . "</p>";
-//echo "<p>monthstart = " . date ( "D, m-d-Y", $monthstart ) . "</p>";
-//echo "<p>monthend = " . date ( "D, m-d-Y", $monthend ) . "</p>";
+//echo "<p>sun = " . date ( "D, m-d-Y", $sun ) . "</p>\n";
+//echo "<p>monthstart = " . date ( "D, m-d-Y", $monthstart ) . "</p>\n";
+//echo "<p>monthend = " . date ( "D, m-d-Y", $monthend ) . "</p>\n";
 
 // NOTE: if you make HTML changes to this table, make the same changes
 // to the example table in pref.php.
@@ -208,14 +207,15 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
       if ( empty ( $WEEKENDBG ) ) $is_weekend = false;
       print "<td";
-      if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
-	      echo " class=\"weekend\">";
-      } elseif ( $is_weekend != false ) {
-	      echo " class=\"today\">";
-      } else {
-	      echo ">";
-      }
-      //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
+	$class = "";
+      if ( date ( "Ymd", $date ) == date ( "Ymd" ) ) $class = "today";
+	if ( $is_weekend ) {
+		if ( strlen ( $class ) ) $class .= " ";
+			$class .= "weekend";
+		}
+		if ( strlen ( $class ) ) echo " class=\"$class\"";
+	echo ">";
+       //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       print_date_entries ( date ( "Ymd", $date ),
         ( ! empty ( $user ) ) ? $user : $login,
         $friendly, false );
@@ -226,32 +226,25 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   }
   print "</tr>\n";
 }
-
-?>
-</table>
-
-<br /><br />
-
+?></table>
+<br />
 <?php if ( empty ( $friendly ) ) echo $eventinfo; ?>
 
 <?php if ( ! $friendly ) {
-  display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
+	display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
 <br /><br />
 <a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="month.php?<?php
-  if ( $thisyear ) {
-    echo "year=$thisyear&amp;month=$thismonth&amp;";
-  }
-  if ( ! empty ( $user ) ) echo "user=$user&amp;";
-  if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
-?>friendly=1" target="cal_printer_friendly"
-onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
-
-<?php } ?>
+			if ( $thisyear ) {
+				echo "year=$thisyear&amp;month=$thismonth&amp;";
+			}
+			if ( ! empty ( $user ) ) echo "user=$user&amp;";
+			if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
+		?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
+<?php } //end if ( ! $friendly ) ?>
 <?php
-print_trailer ();
+	print_trailer ();
 ?>
-
 </body>
 </html>
