@@ -1880,7 +1880,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
       // ends at 11:15 and another starts at 11:30.
       if ( strlen ( $hour_arr[$i] ) ) {
         echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">";
-        if ( $can_add )
+        if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m );
         echo "$hour_arr[$i]</TD>";
       }
@@ -1888,19 +1888,19 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     } else {
       if ( empty ( $hour_arr[$i] ) ) {
         echo "<TD HEIGHT=\"40\" BGCOLOR=\"$CELLBG\">";
-        if ( $can_add )
+        if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m );
         echo "&nbsp;</TD></TR>\n";
       } else {
         $rowspan = $rowspan_arr[$i];
         if ( $rowspan > 1 ) {
           echo "<TD VALIGN=\"top\" BGCOLOR=\"$TODAYCELLBG\" ROWSPAN=\"$rowspan\">";
-          if ( $can_add )
+          if ( $can_add && ! $hide_icons )
             echo html_for_add_icon ( $date, $time_h, $time_m );
           echo "$hour_arr[$i]</TD></TR>\n";
         } else {
           echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">";
-          if ( $can_add )
+          if ( $can_add && ! $hide_icons )
             echo html_for_add_icon ( $date, $time_h, $time_m );
           echo "$hour_arr[$i]</TD></TR>\n";
         }
