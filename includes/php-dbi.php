@@ -1,4 +1,6 @@
 <?php
+if ( empty ( $PHP_SELF ) )
+  $PHP_SELF = $_SERVER["PHP_SELF"];
 if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
