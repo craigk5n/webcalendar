@@ -59,9 +59,10 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
 } else {
   if ( $action == "Save" || $action == translate ("Save") ) {
   // Updating
-    $sql = "UPDATE webcal_nonuser_cals SET cal_lastname = '$nlastname', " .
-           "cal_firstname = '$nfirstname', cal_admin = '$nadmin' " .
-           "WHERE cal_login = '$id'";
+    $sql = "UPDATE webcal_nonuser_cals SET ";
+    if ($nlastname) $sql .= " cal_lastname = '$nlastname', ";
+    if ($nfirstname) $sql .= " cal_firstname = '$nfirstname', ";
+    $sql .= "cal_admin = '$nadmin' WHERE cal_login = '$id'";
     if ( ! dbi_query ( $sql ) ) {
       $error = translate ("Database error") . ": " . dbi_error();
     }
