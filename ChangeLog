@@ -1,4 +1,5 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Fixed bug 586436: duplicate table in tables-postgres.sql.
   - Updated German translation
   - Updated tables-db2.sql (was out-of-date).
   - Added + icon for adding new events on each hour for week and day views.
