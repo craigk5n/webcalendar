@@ -71,7 +71,7 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 </TABLE>
 <CENTER>
 
-<?php 
+<?php
 // get users in this view
 $res = dbi_query (
   "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
@@ -89,7 +89,7 @@ TimeMatrix($date,$participants);
 
 <!-- Hidden form for booking events -->
 <FORM ACTION="edit_entry.php" METHOD="POST" NAME="schedule">
-<INPUT TYPE="hidden" NAME="date" VALUE="<? echo $thisyear.$thismonth.$thisday;?>">
+<INPUT TYPE="hidden" NAME="date" VALUE="<?php echo $thisyear.$thismonth.$thisday;?>">
 <INPUT TYPE="hidden" NAME="defusers" VALUE="<?php echo implode ( ",", $participants ); ?>">
 <INPUT TYPE="hidden" NAME="hour" VALUE="">
 <INPUT TYPE="hidden" NAME="minute" VALUE="">
@@ -97,7 +97,7 @@ TimeMatrix($date,$participants);
 
 </CENTER>
 
-<?php if ( empty ( $friendly ) ) { 
+<?php if ( empty ( $friendly ) ) {
   echo "<p><a class=\"navlinks\" href=\"view_d.php?id=$id&";
   echo $u_url . "date=$nowYmd";
   echo $caturl;
@@ -108,7 +108,7 @@ TimeMatrix($date,$participants);
 print_trailer ();
 ?>
 
-<?
+<?php
 //$end =  microtime();
 //$start = explode(' ',$start);
 //$end = explode(' ',$end);
@@ -119,7 +119,7 @@ print_trailer ();
 </BODY>
 </HTML>
 
-<?
+<?php
 function TimeMatrix ($date,$participants) {
   global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TABLEBG;
   global $user_fullname,$nowYmd,$repeated_events,$events;
@@ -138,13 +138,13 @@ function TimeMatrix ($date,$participants) {
 ?>
 
 <BR>
-<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="<?= $TABLEBG;?>">
-<TABLE WIDTH="<?= $total_pix;?>" BORDER="0" CELLSPACING="0" CELLPADDING="0" COLS="<?= $cols;?>">
- <TR><TD HEIGHT="1" COLSPAN="<?= $cols;?>" BGCOLOR="black"><img src="pix.gif" HEIGHT="1" WIDTH="100%"></TD></TR>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="<?php echo $TABLEBG;?>">
+<TABLE WIDTH="<?php echo $total_pix;?>" BORDER="0" CELLSPACING="0" CELLPADDING="0" COLS="<?php echo $cols;?>">
+ <TR><TD HEIGHT="1" COLSPAN="<?php echo $cols;?>" BGCOLOR="black"><img src="pix.gif" HEIGHT="1" WIDTH="100%"></TD></TR>
  <TR>
-   <TD WIDTH="<?= $participant_pix;?>" BGCOLOR="<?= $THBG;?>"><FONT COLOR="<?= $THFG;?>" SIZE="-1"><? etranslate("Participants");?> </FONT></TD>
+   <TD WIDTH="<?php echo $participant_pix;?>" BGCOLOR="<?php echo $THBG;?>"><FONT COLOR="<?php echo $THFG;?>" SIZE="-1"><?php etranslate("Participants");?> </FONT></TD>
 
-<?
+<?php
   $str = '';
   $MouseOut = "onMouseOut=\"window.status=''; this.style.backgroundColor='".$THBG."';\"";
   $CC = 1;
