@@ -30,13 +30,15 @@ if ( ( ( $add == '1' ) || ( isset ( $id ) ) ) && empty ( $error ) ) {
   <?php
   if ( isset ( $id ) ) {
     nonuser_load_variables ( $id, 'nonusertemp_' );
-    echo "<INPUT NAME=\"id\" TYPE=\"hidden\" VALUE=\"$id\">";
+    $id_display = "$id <INPUT NAME=\"id\" TYPE=\"hidden\" VALUE=\"$id\">";
     $button = translate("Save");
     $nonusertemp_login = substr($nonusertemp_login, strlen($NONUSER_PREFIX));
+  } else {
+    $id_display = "<INPUT NAME=\"id\" SIZE=\"20\" MAX=\"20\">";
   }
   ?>
   <table>
-  <tr><td><?php etranslate("Calendar ID")?>:</td><td> <INPUT NAME="id" SIZE="20" MAX="20" VALUE="<?php echo htmlspecialchars ( $nonusertemp_login ); ?>"></td></tr>
+  <tr><td><?php etranslate("Calendar ID")?>:</td><td> <?php echo $id_display ?></td></tr>
   <tr><td><?php etranslate("First Name")?>:</td><td> <INPUT NAME="nfirstname" SIZE="20" MAX="25" VALUE="<?php echo htmlspecialchars ( $nonusertemp_firstname ); ?>"></td></tr>
   <tr><td><?php etranslate("Last Name")?>:</td><td> <INPUT NAME="nlastname" SIZE="20" MAX="25" VALUE="<?php echo htmlspecialchars ( $nonusertemp_lastname ); ?>"></td></tr>
   <tr><td><?php etranslate("Admin")?>:</td><td><SELECT NAME="nadmin">

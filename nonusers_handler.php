@@ -11,8 +11,6 @@ if ( ! $is_admin ) {
 }
 $error = "";
 
-$id = $NONUSER_PREFIX.$id;
-
 if ( $action == "Delete" || $action == translate ("Delete") ) {
  // delete this nonuser calendar
     if ( ! dbi_query ( "DELETE FROM webcal_nonuser_cals " .
@@ -30,6 +28,7 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
     }
   } else {
   // Adding
+    $id = $NONUSER_PREFIX.$id;
     $sql = "INSERT INTO webcal_nonuser_cals " .
     "( cal_login, cal_firstname, cal_lastname, cal_admin ) " .
     "VALUES ( '$id', '$nfirstname', '$nlastname', '$nadmin' )";
