@@ -22,7 +22,7 @@ if ( empty ( $user ) ) {
 print_header();
 ?>
 
-<TABLE BORDER="o">
+<TABLE BORDER="0">
 <TR><TD VALIGN="top" WIDTH="50%">
 
 
