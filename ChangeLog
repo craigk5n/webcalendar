@@ -1,4 +1,5 @@
 Version 0.9.46dev (?? ??? 2004)
+  - Fixed Bug 1074403: Day View is not accounting for server offset
   - Added support for automatic gradient background images for table cells.
   - Updated Japanese translation with support for 3 character sets
     now (Japanese-utf8, Japanese, Japanese-eucjp)

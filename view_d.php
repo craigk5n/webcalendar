@@ -107,7 +107,7 @@ print_trailer ();
 function TimeMatrix ($date,$participants) {
   global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TABLEBG;
   global $user_fullname,$nowYmd,$repeated_events,$events;
-  global $thismonth, $thisday, $thisyear;
+  global $thismonth, $thisday, $thisyear, $TZ_OFFSET,$ignore_offset;
 
   $increment = 15;
   $interval = 4;
@@ -181,7 +181,15 @@ function TimeMatrix ($date,$participants) {
 
     foreach ($ALL as $E) {
       $E['cal_time'] = sprintf ( "%06d", $E['cal_time']);
-      $Tmp['START'] = mktime ( substr($E['cal_time'], 0, 2 ), substr($E['cal_time'], 2, 2 ), 0, $thismonth, $thisday, $thisyear );
+      $Tmp['cal_hour'] = substr($E['cal_time'], 0, 2 );
+      $Tmp['cal_min']  = substr($E['cal_time'], 2, 2 );
+
+      // Timezone Offset
+      if ( ! $ignore_offset ) $Tmp['cal_hour'] += $TZ_OFFSET;
+      while ( $Tmp['cal_hour'] < 0 ) $Tmp['cal_hour'] += 24;
+      while ( $Tmp['cal_hour'] > 23 ) $Tmp['cal_hour'] -= 24;
+
+      $Tmp['START'] = mktime ( $Tmp['cal_hour'], $Tmp['cal_min'], 0, $thismonth, $thisday, $thisyear );
       $Tmp['END'] = $Tmp['START'] + ( $E['cal_duration'] * 60 );
       $Tmp['ID'] = $E['cal_id'];
       $all_events[] = $Tmp;
