@@ -210,6 +210,36 @@ a:hover {
 	margin-top:37px;
 	float: right;
 }
+.dailymatrix {
+	cursor: pointer;
+	font-size: 12px;
+	text-decoration: none;
+	text-align: right;
+	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+}
+td.matrixappts {
+	text-align: left;
+	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+	vertical-align: middle;
+}
+td.matrix {
+	height: 1px;
+	background-color: #000000;
+}
+.matrix img {
+	border-width: 0px;
+	width: 100%;
+	height: 1px;
+}
+a.matrix img {
+	border-width: 0px;
+	width: 100%;
+	height: 8px;
+}
+.matrixd {
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+}
 .tablecell {
   font-size: 12px;
   width: 14%;
@@ -344,11 +374,6 @@ select {
 textarea {
   font-size: 12px;
   overflow: auto;
-}
-.dailymatrix {
-  cursor: pointer;
-  font-size: 12px;
-  text-decoration: none;
 }
 <?php //left & right arrow images 
 ?>.prevnext {
@@ -556,10 +581,6 @@ td.month a:hover {
 #year .minical caption {
 	margin: 0px auto;
 }
-#viewd table {
-	border-width: 0px;
-	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
-}
 #viewv th,
 #viewl .main th,
 #month .main th {
@@ -632,30 +653,34 @@ td.month a:hover {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 90%;
 }
-#viewm th,
-#viewd th {
+#viewm th {
 	color: <?php echo $GLOBALS['THFG']; ?>;
 	background-color: <?php echo $GLOBALS['THBG']; ?>;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-left-width: 0px;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	font-size: 13px;
 }
-
+<?php //participants cell
+?>#viewd th {
+	color: <?php echo $GLOBALS['THFG']; ?>;
+	background-color: <?php echo $GLOBALS['THBG']; ?>;
+	font-size: 13px;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	padding: 1px;
+}
 #viewd th.row {
 	color: <?php echo $GLOBALS['THFG']; ?>;
 	background-color: <?php echo $GLOBALS['THBG']; ?>;
+	border-right-width: 0px;
 	text-align: left;
-	font-weight: normal;
 	font-size: 13px;
 }
-
 #viewm td,
 #viewv td {
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	vertical-align: top;
 	font-size: 12px;
 }
