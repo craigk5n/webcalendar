@@ -120,7 +120,7 @@ if ( empty ( $description ) )
 if ( empty ( $priority ) )
   $priority = 0;
 if ( empty ( $access ) )
-  $access = 0;
+  $access = "";
 if ( empty ( $rpt_freq ) )
   $rpt_freq = 0;
 if ( empty ( $rpt_end_date ) )
