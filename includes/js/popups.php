@@ -14,26 +14,26 @@
 
 NS4 = (document.layers) ? 1 : 0;
 IE4 = (document.all) ? 1 : 0;
-W3C = (document.getElementById) ? 1 : 0;	
+W3C = (document.getElementById) ? 1 : 0;  
 // W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
 
 // Function show(evt, name)
-//	evt is a pointer to the Event object passed when the event occurs
-//	name is the ID attribute of the element to show
+//  evt is a pointer to the Event object passed when the event occurs
+//  name is the ID attribute of the element to show
 function show ( evt, name ) {
   if (IE4) {
     evt = window.event;  //is it necessary?
   }
 
-  var currentX,		//mouse position on X axis
-      currentY,		//mouse position on X axis
-      x,		//layer target position on X axis
-      y,		//layer target position on Y axis
-      docWidth,		//width of current frame
-      docHeight,	//height of current frame
-      layerWidth,	//width of popup layer
-      layerHeight,	//height of popup layer
-      ele;		//points to the popup element
+  var currentX,   //mouse position on X axis
+      currentY,   //mouse position on X axis
+      x,    //layer target position on X axis
+      y,    //layer target position on Y axis
+      docWidth,   //width of current frame
+      docHeight,  //height of current frame
+      layerWidth, //width of popup layer
+      layerHeight,  //height of popup layer
+      ele;    //points to the popup element
 
   // First let's initialize our variables
   if ( W3C ) {
@@ -54,7 +54,7 @@ function show ( evt, name ) {
     layerWidth = ele.clip.width;
     layerHeight = ele.clip.height;
 
-  } else {	// meant for IE4
+  } else {  // meant for IE4
     ele = document.all[name];
     currentX = evt.clientX,
     currentY = evt.clientY;
@@ -67,14 +67,16 @@ function show ( evt, name ) {
   }
 
   // Then we calculate the popup element's new position
-  if ( ( currentX + layerWidth ) > docWidth ) {
-    x = ( currentX - layerWidth );
+  //   Make sure we use parseInt so that strings are converted
+  //   to ints before doing math. - joel@joeldare.com
+  if ( ( currentX + parseInt(layerWidth) ) > docWidth ) {
+    x = ( currentX - parseInt(layerWidth) );
   }
   else {
     x = currentX;
   }
-  if ( ( currentY + layerHeight ) >= docHeight ) {
-     y = ( currentY - layerHeight - 20 );
+  if ( ( currentY + parseInt(layerHeight) ) >= docHeight ) {
+     y = ( currentY - parseInt(layerHeight) - 20 );
   }
   else {
     y = currentY + 20;
