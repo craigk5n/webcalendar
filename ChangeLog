@@ -1,4 +1,12 @@
 Verion 0.9.42-devcvs (?? ??? ????)
+  - Added support for repeating events by weekday from end of month
+    (as in Memorial Day, which is last Monday in May).
+  - Fixed bug in repeating events by weekday.  Was incorrectly placing
+    repeating events on wrong week if weekday in question is not
+    contained in first week of month.  (Thanksgiving 2003, 4th Thursday,
+    was showing up on Nov 20, not Nov 27.)
+  - Modified view_entry.php to display better repeating info for
+    monthlyByDay.
   - Added new publishing support.  Users can subscribe using the Calendar
     client from Mozilla or from Apple's iCal.  The URL would be
     http://your-calendar-url-here/publish.php/username.ics

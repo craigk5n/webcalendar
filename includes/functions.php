@@ -11,6 +11,10 @@ $LOG_REMINDER = "R";
 
 $ONE_DAY = 86400;
 
+// how many days in a month (regular and leap year)
+$days_per_month = array ( 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
+$ldays_per_month = array ( 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
+
 // Don't allow a user to put "login=XXX" in the URL if they are not
 // coming from the login.php page.
 if ( ! strstr ( $PHP_SELF, "login.php" ) && ! empty ( $GLOBALS["login"] ) ) {
@@ -1114,8 +1118,9 @@ function read_repeated_events ( $user, $cat_id = ''  ) {
 //  $ex_dates - array of exception dates for this event in YYYYMMDD format
 //  $freq - frequency of repetition
 function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
-  global $conflict_repeat_months;
+  global $conflict_repeat_months, $days_per_month, $ldays_per_month;
   global $ONE_DAY;
+  //echo "get_all_dates ( $date, '$rpt_type', $end, '$days', [array], $freq ) <br>";
   $currentdate = floor($date/$ONE_DAY)*$ONE_DAY;
   $realend = floor($end/$ONE_DAY)*$ONE_DAY;
   $dateYmd = date ( "Ymd", $date );
@@ -1192,6 +1197,57 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
         $day = 7*$week + $t + 1;
         $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
       }
+    } else if ($rpt_type == 'monthlyByDayR') {
+      // by weekday of month reversed (i.e., last Monday of month)
+      $dow  = date('w', $date);
+      $thisday = substr($dateYmd, 6, 2);
+      $thismonth = substr($dateYmd, 4, 2);
+      $thisyear  = substr($dateYmd, 0, 4);
+      // get number of days in this month
+      $daysthismonth = $thisyear % 4 == 0 ? $ldays_per_month[$thismonth] :
+        $days_per_month[$thismonth];
+      // how many weekdays like this one remain in the month?
+      // 0=last one, 1=one more after this one, etc.
+      $whichWeek = floor ( ( $daysthismonth - $thisday ) / 7 );
+      // find first repeat date
+      $thismonth += $freq;
+      if ( $thismonth > 12 ) {
+        $thisyear++;
+        $thismonth -= 12;
+      }
+      // get weekday for last day of month
+      $dowLast += date('w',mktime (3,0,0,$thismonth + 1, -1,$thisyear));
+      if ( $dowLast >= $dow ) {
+        // last weekday is in last week of this month
+        $day = $daysinmonth - ( $dowLast - $dow ) -
+          ( 7 * $whichWeek );
+      } else {
+        // last weekday is NOT in last week of this month
+        $day = $daysinmonth - ( $dowLast - $dow ) -
+          ( 7 * ( $whichWeek + 1 ) );
+      }
+      $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
+      while ($cdate <= $realend+$ONE_DAY) {
+        if ( ! is_exception ( $cdate, $ex_days ) )
+          $ret[$n++] = $cdate;
+        $thismonth += $freq;
+        if ( $thismonth > 12 ) {
+          $thisyear++;
+          $thismonth -= 12;
+        }
+        // get weekday for last day of month
+        $dowLast += date('w',mktime (3,0,0,$thismonth + 1, -1,$thisyear));
+        if ( $dowLast >= $dow ) {
+          // last weekday is in last week of this month
+          $day = $daysinmonth - ( $dowLast - $dow ) -
+            ( 7 * $whichWeek );
+        } else {
+          // last weekday is NOT in last week of this month
+          $day = $daysinmonth - ( $dowLast - $dow ) -
+            ( 7 * ( $whichWeek + 1 ) );
+        }
+        $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
+      }
     } else if ($rpt_type == 'monthlyByDate') {
       $thismonth = substr($dateYmd, 4, 2);
       $thisyear  = substr($dateYmd, 0, 4);
@@ -1249,6 +1305,7 @@ function get_repeating_entries ( $user, $dateYmd ) {
 //Returns a boolean stating whether or not the event passed
 //in will fall on the date passed.
 function repeated_event_matches_date($event,$dateYmd) {
+  global $days_per_month, $ldays_per_month, $ONE_DAY;
   // only repeat after the beginning, and if there is an end
   // before the end
   $date = date_to_epoch ( $dateYmd );
@@ -1264,37 +1321,67 @@ function repeated_event_matches_date($event,$dateYmd) {
   $id = $event['cal_id'];
 
   if ($event['cal_type'] == 'daily') {
-    if ( (floor(($date - $start)/86400)%$freq) )
+    if ( (floor(($date - $start)/$ONE_DAY)%$freq) )
       return false;
     return true;
   } else if ($event['cal_type'] == 'weekly') {
     $dow  = date("w", $date);
     $dow1 = date("w", $start);
     $isDay = substr($event['cal_days'], $dow, 1);
-    $wstart = $start - ($dow1 * 86400);
+    $wstart = $start - ($dow1 * $ONE_DAY);
     if (floor(($date - $wstart)/604800)%$freq)
       return false;
-    if (strcmp($isDay,"y") == 0) {
-      return true;
-    }
+    return (strcmp($isDay,"y") == 0);
   } else if ($event['cal_type'] == 'monthlyByDay') {
     $dowS = date("w", $start);
-    $dayS = ceil(date("d", $start)/7);
+    $dow  = date("w", $date);
+    // do this comparison first in hopes of best performance
+    if ( $dowS != $dow )
+      return false;
     $mthS = date("m", $start);
     $yrS  = date("Y", $start);
-
-    $dow  = date("w", $date);
-    $day  = ceil(date("d", $date)/7);
+    $dayS  = date("d", $start);
+    $dowS1 = ( date ( "w", $start - ( $ONE_DAY * ( $dayS - 1 ) ) ) + 35 ) % 7;
+    $whichWeekS = floor ( $dayS / 7 );
+    if ( $dowS1 >= $dowS && $dowS1 > 0 )
+      $whichWeekS++;
     $mth  = date("m", $date);
     $yr   = date("Y", $date);
+    $day  = date("d", $date);
+    $dow1 = ( date ( "w", $date - ( $ONE_DAY * ( $day - 1 ) ) ) + 35 ) % 7;
+    $whichWeek = floor ( $day / 7 );
+    if ( $dow1 >= $dowS && $dow1 > 0 )
+      $whichWeek++;
 
     if ((($yr - $yrS)*12 + $mth - $mthS) % $freq)
       return false;
 
-    if (($dowS == $dow) && ($day == $dayS)) {
-      return true;
-    }
+    return ( $whichWeek == $whichWeekS );
+  } else if ($event['cal_type'] == 'monthlyByDayR') {
+    $dowS = date("w", $start);
+    $dow  = date("w", $date);
+    // do this comparison first in hopes of best performance
+    if ( $dowS != $dow )
+      return false;
 
+    $dayS = ceil(date("d", $start));
+    $mthS = ceil(date("m", $start));
+    $yrS  = date("Y", $start);
+    $daysthismonthS = $mthS % 4 == 0 ? $ldays_per_month[$mthS] :
+      $days_per_month[$mthS];
+    $whichWeekS = floor ( ( $daysthismonthS - $dayS ) / 7 );
+
+    $day = ceil(date("d", $date));
+    $mth = ceil(date("m", $date));
+    $yr  = date("Y", $date);
+    $daysthismonth = $mth % 4 == 0 ? $ldays_per_month[$mth] :
+      $days_per_month[$mth];
+    $whichWeek = floor ( ( $daysthismonth - $day ) / 7 );
+
+    if ((($yr - $yrS)*12 + $mth - $mthS) % $freq)
+      return false;
+
+    return ( $whichWeekS == $whichWeek );
   } else if ($event['cal_type'] == 'monthlyByDate') {
     $mthS = date("m", $start);
     $yrS  = date("Y", $start);
@@ -1305,9 +1392,7 @@ function repeated_event_matches_date($event,$dateYmd) {
     if ((($yr - $yrS)*12 + $mth - $mthS) % $freq)
       return false;
 
-    if (date("d", $date) == date("d", $start)) {
-      return true;
-    }
+    return (date("d", $date) == date("d", $start));
   }
   else if ($event['cal_type'] == 'yearly') {
     $yrS = date("Y", $start);
@@ -1316,13 +1401,12 @@ function repeated_event_matches_date($event,$dateYmd) {
     if (($yr - $yrS)%$freq)
       return false;
 
-    if (date("dm", $date) == date("dm", $start)) {
-      return true;
-    }
+    return (date("dm", $date) == date("dm", $start));
   } else {
     // unknown repeat type
     return false;
   }
+  return false;
 }
 function date_to_epoch ( $d ) {
   return mktime ( 3, 0, 0, substr ( $d, 4, 2 ), substr ( $d, 6, 2 ),
