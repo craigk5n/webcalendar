@@ -1,7 +1,11 @@
 <?php
 	include_once 'includes/init.php';
 
-	$INC = array('js/search.php');
+if ( $is_admin == "Y" ) {
+  $INC = array('js/search.php');
+} else {
+  $INC = '';
+}
 	print_header($INC);
 ?>
 <h2><?php 
