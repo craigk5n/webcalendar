@@ -113,17 +113,15 @@ if ( $user == "__public__" )
 print_header();
 ?>
 
-<table style="width:100%;">
-<tr>
+<div class="yearviewtitle">
 <?php if ( empty ( $friendly ) ) { ?>
-<td style="text-align:left;">
-<a title="<?php etranslate("Previous")?>" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
-</td>
+<a title="<?php etranslate("Previous")?>" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="leftarrow.gif" class="prevnext" style="float:left; margin-left:3px; margin-top:7px;" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
-<td class="yearviewtitle">
-	<span class="date"><?php echo $thisyear ?></span>
-<span class="user">
-<?php
+<?php if ( empty ( $friendly ) ) {?>
+<a title="<?php etranslate("Next")?>" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="rightarrow.gif" class="prevnext" style="float:right; margin-right:3px; margin-top:7px;" alt="<?php etranslate("Next")?>" /></a>
+<?php } ?>
+<span class="date"><?php echo $thisyear ?></span>
+<span class="user"><?php
   if ( $single_user == "N" ) {
     echo "<br />\n";
     if ( ! empty ( $user ) ) {
@@ -134,15 +132,9 @@ print_header();
     if ( $is_assistant )
       echo "<br /><span style=\"font-weight:bold;\">-- " . translate("Assistant mode") . " --</span>";
   }
-?>
-</span></td>
-<?php if ( empty ( $friendly ) ) {?>
-<td style="text-align:right;">
-<a title="<?php etranslate("Next")?>" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-</td>
-<?php } ?>
-</tr>
-</table>
+?></span>
+</div>
+<br />
 
 <div align="center">
 <table class="yearview" cellspacing="1" cellpadding="2">
