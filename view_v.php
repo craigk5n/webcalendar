@@ -58,7 +58,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 
 ?>
 
-<table style="border-width:0px; width:100%;">
+<table border="0" width="100%">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
 <br />
@@ -123,11 +123,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 
 ?>
 
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<table class="viewv" cellspacing="1" cellpadding="2">
-<?php } else { ?>
-<table class="viewv" cellspacing="0" cellpadding="0">
-<?php } ?>
+<table class="viewv" cellspacing="0" cellpadding="0" style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>;">
 
 <tr><th class="empty">&nbsp;</th>
 
@@ -180,7 +176,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     }
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
-      echo "<td style=\"width:$tdw%; background-color:$color;\">";
+      echo "<td style=\"width:$tdw%; background-color:$color; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\" valign=\"top\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
       if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
         empty ( $friendly ) )
@@ -192,10 +188,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     echo "</tr>\n";
   }
 
-  if ( empty ( $friendly ) || ! $friendly )
-    echo "</table>\n<br /><br />\n";
-  else
-    echo "</table>\n<br /><br />\n";
+  echo "</table>\n<br /><br />\n";
 }
 
 
