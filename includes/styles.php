@@ -168,7 +168,7 @@ label {
 #trailer form {
 	float: left;
 	width: 33%;
-	border-top: 1px solid #000000;
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	padding-top: 5px;
 	margin-top: 5px;
 	margin-bottom: 25px;
@@ -524,7 +524,7 @@ textarea {
 	font-size: 47px;
 }
 #day .minical td.selectedday {
-	border: 2px solid #000000;
+	border: 2px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 #day .monthnav th {
 	text-align: center;
@@ -537,6 +537,11 @@ textarea {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
+}
+.glance th.empty {
+	border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
+	border-left: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
+	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
 .glance th.row {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
