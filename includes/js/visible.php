@@ -4,7 +4,6 @@
  *
  * The functions in this file can be used to make elements visible or
  * hidden on the page.
- *
  */
 ?>
 <script type="text/javascript">
@@ -43,5 +42,20 @@ function makeInvisible ( name ) {
   }
 }
 
+function showTab (name) {
+	if (! document.getElementById) { return true; }
+	for (var i=0; i<tabs.length; i++) {
+		var tname = tabs[i];
+		var tab = document.getElementById("tab_" + tname);
+		if (tab) {
+			tab.className = (tname == name) ? "tabfor" : "tabbak";
+		}
+		var div = document.getElementById("tabscontent_" + tname);
+		if (div) {
+			div.style.display = (tname == name) ? "block" : "none";
+		}
+	}
+	return false;
+}
 //]]> -->
 </script>

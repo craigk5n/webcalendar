@@ -1,4 +1,7 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Moved common tabs js to includes/js/visible.php instead of repeating it
+  for each page with tabs
+  - Removed links in trailer for assistants, and managing views & reports
   - Modified setting of db parameters.  They are now stored in a data
     file "includes/settings.php".
     When someone tries to access WebCalendar for the first time and this

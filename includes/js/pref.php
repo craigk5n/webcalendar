@@ -1,7 +1,6 @@
 <?php
   global $allow_color_customization;
 ?>
-
 <script type="text/javascript">
 <!-- <![CDATA[
 // error check the colors
@@ -39,22 +38,23 @@ function valid_form ( form ) {
   }
   return true;
 }
+
 function validWorkHours ( form ) {
   return ( parseInt ( form.pref_WORK_DAY_START_HOUR.value ) <
     parseInt ( form.pref_WORK_DAY_END_HOUR.value ) );
 }
+
 function selectColor ( color ) {
   url = "colors.php?color=" + color;
   var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
 }
-// function updateColor(input)
+
 // Updates the background-color of a table cell
 // Parameters:
 //    input - <input> element containing the new color value
 // Note: this function relies on the following structure:
 //   <td><input onkeyup="updateColor(this);" /></td>
 //   <td>(this is the cell to be updated)</td>
-//
 function updateColor ( input ) {
 	// The cell to be updated
 	var colorCell = input.parentNode.nextSibling;
@@ -63,7 +63,7 @@ function updateColor ( input ) {
 
 	if (!valid_color ( color ) ) {
 	  // Color specified is invalid; use black instead
-		colorCell.style.backgroundColor = "#000";
+		colorCell.style.backgroundColor = "#000000";
 	} else {
 		colorCell.style.backgroundColor = color;
 	}

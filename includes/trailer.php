@@ -207,10 +207,8 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 	translate("Search") . "</a>\n";
     if ( $login != '__public__' )
       echo " | <a title=\"" . 
-    	translate("Import") . "/" . 
-	translate("Export") . "\" href=\"import.php\">" . 
-	translate("Import") . "/" . 
-	translate("Export") . "</a>\n";
+    	translate("Import") . "/" . translate("Export") . "\" href=\"import.php\">" . 
+	translate("Import") . "/" . translate("Export") . "</a>\n";
     if ( $can_add ) {
       echo " | <a title=\"" . 
 	translate("Add New Entry") . "\" href=\"edit_entry.php";
@@ -224,13 +222,6 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
       echo "\">" . 
 	translate("Add New Entry") . "</a>\n";
     }
-  }
-  if ( $login != '__public__' && $single_user != 'Y' ) {
-    $url = "assistant_edit.php";
-    if ($is_nonuser_admin) $url .= "?user=$user";
-    echo " | <a title=\"" . 
-    	translate("Assistants") . "\" href=\"$url\">" .
-	translate ("Assistants") . "</a>\n";
   }
   if ( $login != '__public__' ) {
     echo " | <a title=\"" . 
@@ -273,19 +264,12 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
     echo "\">" . 
 	$views[$i]['cal_name'] . "</a>\n";
   }
-  if ( $readonly != "Y" ) {
-    if ( count ( $views ) > 0 )
-      echo " | ";
-    echo "<a title=\"" . 
-	translate("Manage Views") . "\" href=\"views.php\">" . 
-	translate("Manage Views") . "</a>\n";
-  }
 ?>
 
 <!-- REPORTS -->
-<br />
 <?php } // if ( $login != "__public__" ) ?>
 <?php if ( ! empty ( $reports_enabled ) && $reports_enabled == 'Y' ) { ?>
+<br />
 <?php
 $res = dbi_query ( "SELECT cal_report_name, cal_report_id " .
   "FROM webcal_report " .
@@ -312,16 +296,6 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
-if ( $login != "__public__" ) {
-  if ( $found_report )
-    echo " | ";
-  else
-    echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
-	translate("Reports") . ":</span> ";
-  echo "<a title=\"" . 
-	translate("Manage Reports") . "\" class=\"nav\" href=\"report.php\">" . 
-	translate("Manage Reports") . "</a>\n";
-}
 ?>
 
 <!-- CURRENT USER -->
@@ -333,18 +307,19 @@ if ( ! $use_http_auth ) {
 		$login_url = "login.php";
 	else
 		$login_url = "login.php?return_path=$login_return_path";
-if ( strlen ( $login ) && $login != "__public__" ) {
-	echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
-		translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a class=\"nav\" title=\"" . 
-		translate("Logout") . "\" href=\"$login_url\">" . 
-		translate("logout") . "</a>)<br />\n";
-  } else {
-	  echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
-		translate("Current User") . ":</span>&nbsp;" . 
-		translate("Public Access") . "&nbsp;(<a title=\"" . 
-		translate("Login") . "\" href=\"$login_url\">" . 
-		translate("login") . "</a>)<br />\n";
-  }
+
+	if ( strlen ( $login ) && $login != "__public__" ) {
+		echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
+			translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 
+			translate("Logout") . "\" href=\"$login_url\">" . 
+			translate("logout") . "</a>)<br />\n";
+	} else {
+		echo "<span style=\"font-weight:bold; font-size: 14px;\">" .
+			translate("Current User") . ":</span>&nbsp;" . 
+			translate("Public Access") . "&nbsp;(<a title=\"" . 
+			translate("Login") . "\" href=\"$login_url\">" . 
+			translate("login") . "</a>)<br />\n";
+	}
 }
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
   if ( $has_boss || ! empty ( $admincals[0] ) ) {
@@ -358,7 +333,7 @@ if ( strlen ( $login ) && $login != "__public__" ) {
       $l = $grouplist[$i]['cal_login'];
       $f = $grouplist[$i]['cal_fullname'];
       if ( $i > 0) $groups .= ",&nbsp;";
-		$groups .= "<a title=\"$f\" class=\"nav\" href=\"$GLOBALS[STARTVIEW].php?user=$l\">$f</a>\n";
+		$groups .= "<a title=\"$f\" href=\"$GLOBALS[STARTVIEW].php?user=$l\">$f</a>\n";
     }
     print $groups;
   }

@@ -16,22 +16,9 @@ function selectDate ( day, month, year ) {
   var colorWindow = window.open(url,"DateSelection","width=300,height=200,resizable=yes,scrollbars=yes");
 }
 
-var tabs = new Array();
-function showTab (name) {
-	if (! document.getElementById) { return true; }
-	for (var i=0; i<tabs.length; i++) {
-		var tname = tabs[i];
-		var tab = document.getElementById("tab_" + tname);
-		if (tab) {
-			tab.className = (tname == name) ? "tabfor" : "tabbak";
-		}
-		var div = document.getElementById("tabscontent_" + tname);
-		if (div) {
-			div.style.display = (tname == name) ? "block" : "none";
-		}
-	}
-	return false;
-}
+<?php //see the showTab function in includes/js.php for common code shared by all pages
+	//using the tabbed GUI.
+?>var tabs = new Array();
 tabs[1] = "import";
 tabs[2] = "export";
 //]]> -->
