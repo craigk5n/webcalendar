@@ -58,32 +58,28 @@ for ( $i = 0; $i < 7; $i++ ) {
 
 ?>
 
-<table style="border-width:0px; width:100%;">
-<tr><td style="text-align:left;">
+<div style="border-width:0px; width:99%;">
+<div style="float:left;">
 <?php if ( ! $friendly ) { ?>
 <br />
 <a href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
-</td>
-<td class="viewwtitle">
-<span class="date">
-<?php
-  echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
-    "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
-    date_to_str ( date ( "Ymd", $wkend ), false );
-?>
-</span><br />
-<span class="viewname">
-<?php echo $view_name ?>
-</span>
-</td>
-<td style="text-align:right;">
+</div>
+<div style="float:right;">
 <?php if ( ! $friendly ) { ?>
 <br />
 <a href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
-</td></tr>
-</table><br />
+</div>
+<div class="title">
+<span class="date"><?php
+  echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
+    "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
+    date_to_str ( date ( "Ymd", $wkend ), false );
+?></span><br />
+<span class="viewname"><?php echo $view_name ?></span>
+</div>
+</div><br />
 
 <?php
 // The table has names across the top and dates for rows.  Since we need
@@ -215,7 +211,7 @@ if ( empty ( $friendly ) )
   echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<a title=\"" . etranslate("Generate printer-friendly version") ."\" class=\"printer\" href=\"view_w.php?id=$id&amp;date=$date&amp;friendly=1\" " .
+  echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_w.php?id=$id&amp;date=$date&amp;friendly=1\" " .
     "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</a>\n";

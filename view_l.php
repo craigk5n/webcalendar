@@ -140,11 +140,9 @@ for ( $i = 0; $i < count ( $re_save ); $i++ ) {
 }
 ?>
 
-<table style="border-width:0px; width:100%;">
-<tr>
 <?php
 if ( ! $friendly ) {
-  echo "<td align=\"left\"><table class=\"viewlminical\" cellpadding=\"1\" cellspacing=\"2\">";
+  echo "<table class=\"minical\" style=\"float:left;\" cellpadding=\"1\" cellspacing=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $prevyear, $prevmonth, 1 );
   else
@@ -183,22 +181,14 @@ if ( ! $friendly ) {
     }
     print "</tr>\n";
   }
-  echo "</table></td>\n";
+  echo "</table>\n";
 }
 
 ?>
-<td class="viewltitle">
-<span class="date"><?php
-  echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
-    $DATE_FORMAT_MY, false, false );
-?></span>
-<span class="viewname"><?php
-    echo "<br />\n";
-    echo $view_name;
-?></span></td>
+
 <?php
 if ( ! $friendly ) {
-  echo "<td align=\"right\"><table class=\"viewlminical\" cellpadding=\"1\" cellspacing=\"2\">";
+  echo "<table class=\"minical\" style=\"float:right;\" cellpadding=\"1\" cellspacing=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $nextyear, $nextmonth, 1 );
   else
@@ -237,14 +227,23 @@ if ( ! $friendly ) {
     }
     print "</tr>\n";
   }
-  echo "</table></td>\n";
+  echo "</table>\n";
 }
 
-?>
-</tr>
-</table><br />
+?><br /><br />
+<div class="title">
+<span class="date"><?php
+  echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
+    $DATE_FORMAT_MY, false, false );
+?></span>
+<span class="viewname"><?php
+    echo "<br />\n";
+    echo $view_name;
+?></span></div>
+<br /><br /><br />
 
-<table class="viewl" cellspacing="0" cellpadding="0" style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>;">
+
+<table class="viewl" cellspacing="0" cellpadding="0" style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>; clear:both;">
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
 <th><?php etranslate("Sun")?></th>
