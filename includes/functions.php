@@ -2061,7 +2061,7 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   $u_url = '';
 
   if ( $user != $login )
-    $u_url = "user=$user&";
+    $u_url = "user=$user&amp;";
   if ( ! empty ( $hour ) )
     $hour += $TZ_OFFSET;
   return "<a href=\"edit_entry.php?" . $u_url .
