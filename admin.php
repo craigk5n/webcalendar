@@ -27,7 +27,7 @@ $INC = array('js/admin.php','js/visible.php');
 print_header ( $INC, '', $BodyX );
 ?>
 
-<h2><?php etranslate("System Settings")?></h2>
+<h2><?php etranslate("System Settings")?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>..." style="border-width:0px;" onclick="window.open ( 'help_admin.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 <?php
 $error = false;
 
@@ -511,11 +511,6 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <br /><br />
 <table style="border-width:0px;"><tr><td>
 <input type="submit" value="<?php etranslate("Save")?>" name="" />
-<script type="text/javascript">
-<!-- <![CDATA[
-  document.writeln ( '<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( \'help_admin.php\', \'cal_help\', \'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420\');" />' );
-//]]> -->
-</script>
 </td></tr></table>
 </form>
 
