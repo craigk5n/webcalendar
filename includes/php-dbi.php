@@ -30,6 +30,8 @@
  * @package WebCalendar
  *
  * History:
+ * 17-Mar-2005	Ray Jones
+ * 		Changed mssql_error to mssql_get_last_message
  * 23-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
  * 		Added documentation to be used with php2html.pl
  * 19-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
@@ -436,7 +438,8 @@ function dbi_error () {
   } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
     $ret = mysqli_error ($GLOBALS["db_connection"]);
   } else if ( strcmp ( $GLOBALS["db_type"], "mssql" ) == 0 ) {
-    $ret = mssql_error ();
+    // no real mssql_error function. this is as good as it gets
+    $ret = mssql_get_last_message ();
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     $ret = OCIError ( $GLOBALS["oracle_connection"] );
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
