@@ -1,4 +1,9 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Replaced popups.php code with new knoppix based code. This should eliminate
+   the problems with popups going off screen. Popups also follow the cursor now,
+   but can be disabled in the file.
+ - Fixed printer friendly view problem. With refresh on, the refresh URL 
+   reverted to the regular page.
  - Fixed bug 1151442: Overlapping events display error in day.php
  - Fixed bug  1146037: Availibility legend size not dynamic and not centered in IE.
  - Added global views (available to all users)
