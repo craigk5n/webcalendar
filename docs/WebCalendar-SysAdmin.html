@@ -200,7 +200,7 @@ h2 {
 <a name="requirements"></a>
 <h2>System Requirements</h2>
 	<ul>
-		<li>PHP 4 (PHP 5 not yet tested)</li>
+		<li>PHP 4 (PHP 5 not yet tested) with <tt>magic_quotes_gpc</tt> enabled</li>
 		<li>Database (see <a href="#database">below</a>)</li>
 		<li>CSS-enabled browser</li>
 		<li>JavaScript-enabled browser</li>
@@ -230,6 +230,14 @@ h2 {
 		on some systems.</p>
 	<p>Make sure that <tt>magic_quotes_gpc</tt> in <tt>php.ini</tt>
 		is turned on (otherwise, you will get an error message when you try to access WebCalendar.)</p>
+	<p><span class="tip">TIP</span> If you are using Apache
+		as your web server and if you cannot or do not want to enable
+		<tt>magic_quotes_gpc</tt> for your entire site, you can enable
+		it just for WebCalendar.
+		Create a <tt>.htaccess</tt> file in the toplevel WebCalendar
+		directory that contains a single line:</p>
+		<pre>php_value magic_quotes_gpc 1</pre>
+
 	<p>You can run PHP either as a CGI or an Apache module.  You'll get better
 		performance with PHP setup as a module.  Not only will you not have to
 		deal with the CGI performance hit, but you'll be able to use PHP's
@@ -968,6 +976,14 @@ input path/table-ibase.sql;</strong></pre>
 		In WebCalendar version 0.9.43 or later, you will always get an error
 		message telling you to update <tt>php.ini</tt> if <tt>magic_quotes_gpc</tt>
 		is set to <tt>Off</tt>.
+		<br/><br/>
+		<span class="tip">TIP</span> If you are using Apache
+		as your web server and if you cannot or do not want to enable
+		<tt>magic_quotes_gpc</tt> for your entire site, you can enable
+		it just for WebCalendar.
+		Create a <tt>.htaccess</tt> file in the toplevel WebCalendar
+		directory that contains a single line:
+		<pre>php_value magic_quotes_gpc 1</pre>
 		<br />
 		<span class="note">Note for Oracle and PostgreSQL:</span> You must also change the value of
 		<tt>magic_quotes_sybase</tt> to <tt>On</tt> within the <tt>php.ini</tt>
