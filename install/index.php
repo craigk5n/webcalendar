@@ -46,30 +46,97 @@ function getGetValue ( $name ) {
 
 
 // First pass at settings.php.
-// We need to read it first in case the install_disabled value is
-// set to true.
+// We need to read it first in order to get the md5 password.
 $fd = @fopen ( $file, "rb", true );
 $settings = array ();
-$installDisabled = false;
+$password = '';
+$forcePassword = false;
 if ( ! empty ( $fd ) ) {
   while ( ! feof ( $fd ) ) {
     $buffer = fgets ( $fd, 4096 );
     if ( preg_match ( "/^(\S+):\s*(.*)/", $buffer, $matches ) ) {
-      if ( $matches[1] == "install_disabled" &&
-        $matches[2] == "true" ) {
-        $installDisabled = true;
+      if ( $matches[1] == "install_password" ) {
+        $password = $matches[2];
+        $settings['install_password'] = $password;
       }
     }
   }
   fclose ( $fd );
+  // File exists, but no password.  Force them to create a password.
+  if ( empty ( $password ) )
+    $forcePassword = true;
 }
 
+session_start ();
+$doLogin = false;
+
+// If password already exists, check for session.
+if ( file_exists ( $file ) && ! empty ( $password ) &&
+  empty ( $_SESSION['validuser'] ) ) {
+  // Make user login
+  $doLogin = true;
+}
+
+
+$pwd = getPostValue ( "password" );
+if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
+  if ( md5($pwd) == $password ) {
+    $_SESSION['validuser'] = $password;
+    ?>
+      <html><head><title>Password Accepted</title>
+      <meta http-equiv="refresh" content="0; index.php" />
+      </head>
+      <body onload="alert('Successful Login');">
+      </body></html>
+    <?php
+    exit;
+  } else {
+    // Invalid password
+    $_SESSION['validuser'] = '';
+    ?>
+      <html><head><title>Password Incorrect</title>
+      <meta http-equiv="refresh" content="0; index.php" />
+      </head>
+      <body onload="alert ('Invalid Login'); document.go(-1)">
+      </body></html>
+    <?php
+    exit;
+  }
+}
+
+
+$pwd1 = getPostValue ( "password1" );
+$pwd2 = getPostValue ( "password2" );
+if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
+  if ( $pwd1 != $pwd2 ) {
+    echo "Passwords do not match!<br/>\n";
+    exit;
+  }
+  $fd = fopen ( $file, "a+", true );
+  if ( empty ( $fd ) ) {
+    echo "<html><body>Unable to write password to settings.php file\n" .
+      "</body></html>";
+    exit;
+  }
+  fwrite ( $fd, "<?php\n" );
+  fwrite ( $fd, "install_password: " . md5($pwd1) . "\n" );
+  fwrite ( $fd, "?>\n" );
+  fclose ( $fd );
+  ?>
+    <html><head><title>Password Updated</title>
+    <meta http-equiv="refresh" content="0; index.php" />
+    </head>
+    <body onload="alert('Password has been set');">
+    </body></html>
+  <?php
+  exit;
+}
 
 
 // Is this a db connection test?
 // If so, just test the connection, show the result and exit.
 $action = getGetValue ( "action" );
-if ( ! empty ( $action ) && $action == "dbtest" && ! $installDisabled ) {
+if ( ! empty ( $action ) && $action == "dbtest" ) {
   // TODO: restrict access here also...
   $db_type = getGetValue ( 'db_type' );
   $db_host = getGetValue ( 'db_host' );
@@ -119,7 +186,7 @@ if ( empty ( $x ) ) {
     $settings['db_persistent'] = 'true';
     $settings['readonly'] = 'false';
     $settings['user_inc'] = 'user.php';
-    $settings['install_disabled'] = 'false';
+    $settings['install_password'] = '';
   }
 } else {
   $settings['db_type'] = getPostValue ( 'form_db_type' );
@@ -130,9 +197,6 @@ if ( empty ( $x ) ) {
   $settings['db_persistent'] = getPostValue ( 'form_db_persistent' );
   $settings['single_user_login'] = getPostValue ( 'form_single_user_login' );
   $settings['readonly'] = getPostValue ( 'form_readonly' );
-  $settings['install_disabled'] = getPostValue ( 'form_install_disabled' );
-  if ( $settings['install_disabled'] == 'true' )
-    $installDisabled = true;
   if ( getPostValue ( "form_user_inc" ) == "http" ) {
     $settings['use_http_auth'] = 'true';
     $settings['single_user'] = 'false';
@@ -147,7 +211,10 @@ if ( empty ( $x ) ) {
     $settings['user_inc'] = getPostValue ( 'form_user_inc' );
   }
   // Save settings to file now.
-  $onload = "alert('Your settings have been saved.\\n\\nPlease be sure to disable this page.\\nOtherwise, any user will be able to\\nobtain your database login and password.\\n');";
+  $onload = "alert('Your settings have been saved.\\n\\n";
+  if ( empty ( $password ) )
+    $onload .= "Please be sure to set a password.\\n";
+  $onload .= "');";
   $fd = @fopen ( $file, "w+t", true );
   if ( empty ( $fd ) ) {
     if ( file_exists ( $fd ) ) {
@@ -172,36 +239,32 @@ if ( empty ( $x ) ) {
 }
 
 
-if ( ! $installDisabled ) {
-  $fd = @fopen ( $file, "rb", true );
-  if ( ! empty ( $fd ) ) {
-    while ( ! feof ( $fd ) ) {
-      $buffer = fgets ( $fd, 4096 );
-      if ( preg_match ( "/^#/", $buffer ) )
-        continue;
-      if ( preg_match ( "/^<\?/", $buffer ) ) // start php code
-        continue;
-      if ( preg_match ( "/^\?>/", $buffer ) ) // end php code
-        continue;
-      if ( preg_match ( "/(\S+):\s*(.*)/", $buffer, $matches ) ) {
-        $settings[$matches[1]] = $matches[2];
-        //echo "settings $matches[1] => $matches[2] <br>";
-      }
+$fd = @fopen ( $file, "rb", true );
+if ( ! empty ( $fd ) ) {
+  while ( ! feof ( $fd ) ) {
+    $buffer = fgets ( $fd, 4096 );
+    if ( preg_match ( "/^#/", $buffer ) )
+      continue;
+    if ( preg_match ( "/^<\?/", $buffer ) ) // start php code
+      continue;
+    if ( preg_match ( "/^\?>/", $buffer ) ) // end php code
+      continue;
+    if ( preg_match ( "/(\S+):\s*(.*)/", $buffer, $matches ) ) {
+      $settings[$matches[1]] = $matches[2];
+      //echo "settings $matches[1] => $matches[2] <br>";
     }
-    fclose ( $fd );
   }
+  fclose ( $fd );
 }
 
 
 // Attempt a db connection
 $connectSuccess = false;
-if ( ! $installDisabled ) {
-  $db_type = $settings['db_type'];
-  $c = @dbi_connect ( $settings['db_host'], $settings['db_login'],
-    $settings['db_password'], $settings['db_database'] );
-  if ( $c ) {
-    $connectSuccess = true;
-  }
+$db_type = $settings['db_type'];
+$c = @dbi_connect ( $settings['db_host'], $settings['db_login'],
+  $settings['db_password'], $settings['db_database'] );
+if ( $c ) {
+  $connectSuccess = true;
 }
 
 
@@ -248,19 +311,6 @@ function auth_handler () {
   }
 }
 
-function disablePage () {
-  if ( confirm ( "Are you sure you want to disable\naccess to this page?\n\n" +
-    "If you need to change database settings\n" +
-    "in the future, you will need\n" +
-    "to edit the settings.php by hand and\n" +
-    "change the value of the install_disabled\n" +
-    "parameter to be 'false'.\n" ) ) {
-    document.dbform.form_install_disabled.value = 'true';
-    document.dbform.submit ();
-    return true;
-  }
-  return false;
-}
 </script>
 <style type="text/css">
 body {
@@ -313,7 +363,7 @@ li {
 <p>Current Status:</p>
 <ul>
 
-<?php if ( ! $installDisabled ) { ?>
+<?php if ( ! $forcePassword ) { ?>
   <?php if ( $connectSuccess ) { ?>
   <li> Your current database settings are able to
   access the database.</li>
@@ -324,9 +374,7 @@ li {
 <?php } ?>
 
 
-<?php if ( $installDisabled ) { ?>
-<li><b>This page has been disabled.</b></li>
-<?php } else if ( $exists && ! $canWrite ) { ?>
+<?php if ( $exists && ! $canWrite ) { ?>
 <li><b>Error:</b>
 The file permissions of <tt>settings.php</tt> are set so
 that this script does not have permission to write changes to it.
@@ -355,6 +403,29 @@ You should select "Web Server" from the list of
 
 </ul>
 
+<?php if ( $doLogin ) { ?>
+  <form action="index.php" method="POST" name="dblogin">
+  <p>Please enter the password.</p>
+    <br /><br />
+  </p>
+  <table border="0">
+  <tr><th>Password:</th><td><input name="password" type="password" /></td></tr>
+  <tr><td colspan="2" align="center"><input type="submit" value="Login" /></td></tr>
+  </table><br />
+  </form>
+<?php } else if ( $forcePassword ) { ?>
+  <form action="index.php" method="POST" name="dbpassword">
+  <p>You have not set a password for access to this page yet.
+     Please set the password.
+    <br /><br />
+  </p>
+  <table border="0">
+  <tr><th>Password:</th><td><input name="password1" type="password" /></td></tr>
+  <tr><th>Password (again):</th><td><input name="password2" type="password" /></td></tr>
+  <tr><td colspan="2" align="center"><input type="submit" value="Set Password" /></td></tr>
+  </table><br />
+  </form>
+<?php } else { ?>
 <form action="index.php" method="POST" name="dbform">
 
 <table>
@@ -473,11 +544,8 @@ You should select "Web Server" from the list of
 
 <input name="action" type="button" value="Save Settings"
   onclick="return validate();" />
-<?php if ( file_exists ( $file ) ) { ?>
-<input type="button" value="Disable This Page" onclick="return disablePage();" />
-<?php } ?>
-<input type="hidden" name="form_install_disabled" value="false" />
 </form>
+<?php } ?>
 
 <?php } ?>
 </div>
