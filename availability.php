@@ -39,7 +39,8 @@ if ( empty ( $users ) ) {
   echo "Program Error: No day specified!"; exit;
 }
 
-print_header('', '', "onload=\"focus();\"");
+$INC = array ( 'js/availability.php' );
+print_header($INC, '', "onload=\"focus();\"");
 
 $span = ($WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR) * 3 + 1;
 if (strlen($month) == 1) $month = '0'.$month;   // add leading zeros
@@ -57,37 +58,6 @@ $next_url = $base_url."&amp;year=".  strftime('%Y', $time + 86400)
 
 $users = explode(",",$users);
 ?>
-
-<script type="text/javascript">
-<!-- <![CDATA[
-
-function schedule_event(hours, minutes) {
-  var year =<?php echo $year ?> ;
-  var month =<?php echo $month ?> ;
-  var day =<?php echo $day ?> ;
-  if (confirm('Change the date and time of this entry?')) {
-    var parentForm = window.opener.document.editentryform;
-    parentForm.timetype.selectedIndex = 1;
-    if ( hours >  12 ) {
-      parentForm.hour.value = hours - 12;
-      parentForm.ampm[1].checked = true;
-    } else {
-      parentForm.hour.value = hours;
-      parentForm.ampm[0].checked = true;
-    }
-    parentForm.minute.value = minutes;
-    parentForm.day.selectedIndex = day - 1;
-    parentForm.month.selectedIndex = month - 1;
-    for ( i = 0; i < parentForm.year.length; i++ ) {
-      if ( parentForm.year.options[i].value == year ) {
-        parentForm.year.selectedIndex = i;
-      }
-    }
-    window.close ();
-  }
-}
-//]]> -->
-</script>
 
 <div style="border-width:0px; width:99%;">
 <a title="<?php etranslate("Previous")?>" class="prev" href="<?php echo $prev_url ?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
