@@ -540,8 +540,9 @@ echo "<input type=\"radio\" name=\"rpt_type\" value=\"yearly\"" .
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip("repeat-day-help")?>"><?php etranslate("Repeat Day")?>: (<?php etranslate("for weekly")?>)</td>
   <td><?php
-  echo "<input type=\"checkbox\" name=\"rpt_sun\" value=\"y\""
-     . (!empty($rpt_sun)?" checked=\"checked\"":"") . ">" . translate("Sunday");
+  if( $WEEK_START != 1)
+    echo "<input type=\"checkbox\" name=\"rpt_sun\" value=\"y\""
+       . (!empty($rpt_sun)?" checked=\"checked\"":"") . ">" . translate("Sunday");
   echo "<input type=\"checkbox\" name=\"rpt_mon\" value=\"y\""
      . (!empty($rpt_mon)?" checked=\"checked\"":"") . ">" . translate("Monday");
   echo "<input type=\"checkbox\" name=\"rpt_tue\" value=\"y\""
@@ -554,6 +555,9 @@ echo "<input type=\"radio\" name=\"rpt_type\" value=\"yearly\"" .
      . (!empty($rpt_fri)?" checked=\"checked\"":"") . ">" . translate("Friday");
   echo "<input type=\"checkbox\" name=\"rpt_sat\" value=\"y\""
      . (!empty($rpt_sat)?" checked=\"checked\"":"") . ">" . translate("Saturday");
+  if( $WEEK_START == 1)
+    echo "<input type=\"checkbox\" name=\"rpt_sun\" value=\"y\""
+       . (!empty($rpt_sun)?" checked=\"checked\"":"") . ">" . translate("Sunday");
   ?></td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("repeat-frequency-help")?>"><label for="entry_freq"><?php etranslate("Frequency")?>:</label></td>
