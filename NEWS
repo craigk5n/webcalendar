@@ -6,6 +6,12 @@ Version 1.0RC2 (?? ??? ??)
   - New Features / Enhancements / Changes:
     + Modified the way settings.php file is read to handle unix/dos/mac
       format and also check main directory and include directory.
+    + In day and week view, time slots with events will now use a different
+      background color than time slots that are empty.  (This restores
+      how this worked a couple of versions ago.)
+    + Many code changes were made to prevent the "undefined variable"
+      warning that users may get if they have the PHP error_reporting
+      setting enabled.
 
 ---------------------------------------------------------------------------
 
