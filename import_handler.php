@@ -19,6 +19,17 @@ else if ( ! empty ( $HTTP_POST_FILES['FileName'] ) )
 if ( empty ( $file ) )
   echo "No file! <br />";
 
+// Handle user
+$calUser = getValue ( "calUser" );
+if ( ! empty ( $calUser ) ) {
+  if ( $single_user == "N" && $is_admin ) {
+    if ( empty ( $calUser ) )
+      $calUser = $login;
+  }
+}
+if ( empty ( $calUser ) )
+  $calUser = $login;
+
 if ($file['size'] > 0) {
   switch ($ImportType) {
 
@@ -106,6 +117,7 @@ function import_data ( $data, $overwrite, $type ) {
   global $login, $count_con, $count_suc, $error_num, $ImportType, $LOG_CREATE;
   global $single_user, $single_user_login, $allow_conflicts;
   global $numDeleted, $errormsg;
+  global $calUser;
 
   $oldUIDs = array ();
   $oldIds = array ();
@@ -131,7 +143,7 @@ function import_data ( $data, $overwrite, $type ) {
   foreach ( $data as $Entry ){
 
     $priority = 2;
-    $participants[0] = $login;
+    $participants[0] = $calUser;
 
     // Some additional date/time info
     $START = $Entry[StartTime] > 0 ? localtime($Entry[StartTime]) : 0;
@@ -309,7 +321,7 @@ function import_data ( $data, $overwrite, $type ) {
         if ($ImportType == "PALMDESKTOP") {
           $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
             "cal_login, cal_import_type, cal_external_id ) VALUES ( " .
-            "$importId, $id, '$login', 'palm', '$Entry[RecordID]' )";
+            "$importId, $id, '$calUser', 'palm', '$Entry[RecordID]' )";
           $sqlLog .= $sql . "<br />\n";
           if ( ! dbi_query ( $sql ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
@@ -322,7 +334,7 @@ function import_data ( $data, $overwrite, $type ) {
             $uid = "NULL";
           $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
             "cal_login, cal_import_type, cal_external_id ) VALUES ( " .
-            "$importId, $id, '$login', 'vcal', $uid )";
+            "$importId, $id, '$calUser', 'vcal', $uid )";
           $sqlLog .= $sql . "<br />\n";
           if ( ! dbi_query ( $sql ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
@@ -335,7 +347,7 @@ function import_data ( $data, $overwrite, $type ) {
             $uid = "NULL";
           $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
             "cal_login, cal_import_type, cal_external_id ) VALUES ( " .
-            "$importId, $id, '$login', 'ical', $uid )";
+            "$importId, $id, '$calUser', 'ical', $uid )";
           $sqlLog .= $sql . "<br />\n";
           if ( ! dbi_query ( $sql ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
@@ -486,6 +498,7 @@ function import_data ( $data, $overwrite, $type ) {
       $sql = "SELECT cal_id FROM webcal_import_data WHERE " .
         "cal_import_type = '$type' AND " .
         "cal_external_id = '$old[$i]' AND " .
+        "cal_login = '$calUser' AND " .
         "cal_id < $firstEventId";
       $res = dbi_query ( $sql );
       if ( $res ) {
