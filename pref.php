@@ -58,6 +58,11 @@ print_header($INC);
   <input type="hidden" name="public" value="1" />
 <?php } /*if ( $updating_public )*/ ?>
 
+<table style="border-width:0px;"><tr><td>
+<input type="submit" value="<?php etranslate("Save Preferences")?>" name="" />
+</td></tr></table>
+<br />
+
 <?php
 
 if ( $is_admin ) {
@@ -495,11 +500,6 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 <br /><br />
 <table style="border-width:0px;"><tr><td>
 <input type="submit" value="<?php etranslate("Save Preferences")?>" name="" />
-<script type="text/javascript">
-<!-- <![CDATA[
-
-//]]> -->
-</script>
 </td></tr></table>
 </form>
 
