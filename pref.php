@@ -431,7 +431,11 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 <br /><br />
 <table style="border-width:0px;"><tr><td>
 <input type="submit" value="<?php etranslate("Save Preferences")?>" name="" />
-<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ('help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" />
+<script type="text/javascript">
+<!-- <![CDATA[
+  document.writeln ( '<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( \'help_pref.php\', \'cal_help\', \'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420\');" />' );
+//]]> -->
+</script>
 </td></tr></table>
 </form>
 
