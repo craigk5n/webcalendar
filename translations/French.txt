@@ -54,6 +54,12 @@ Oct: Oct
 Nov: Nov
 Dec: D&eacute;c
 
+1st: 1er
+2nd: 2&egrave;me
+3rd: 3&egrave;me
+4th: 4&egrave;me
+5th: 5&egrave;me
+
 Generate printer-friendly version: G&eacute;n&eacute;rer une version imprimable
 Printer Friendly: Version imprimable
 Go: Go
@@ -113,10 +119,12 @@ Repeat Day: R&eacute;p&eacute;titon du Jour
 Repeat End Date: Date de fin de r&eacute;p&eacute;tition
 Repeat Type: Type de r&eacute;p&eacute;tition
 Use end date: utiliser une date de fin
+every: tous
 Weekly: Hebdomadaire
 Yearly: Annuel
 Frequency: Fr&eacute;quence
 Save: Sauvegarder
+Cancel: Annuler
 Help: Aide
 Approve this entry?: Accepter cet &eacute;v&eacute;nement?
 Approve/Confirm: Approuver/Confirmer
@@ -138,6 +146,7 @@ The following conflicts with the suggested time: Ce qui suit est en conflit avec
 Unnamed Event: &Eacute;v&eacute;nement sans nom
 Hello: Bonjour
 A new appointment has been made for you by: Un nouveau rendez-vous vous est propos&eacute; par
+An appointment has been updated by: Un rendez-vous a &eacute;t&eacute; mis &agrave; jour par
 The subject is: Le sujet est
 Please look on: Veuillez consulter
 to accept or reject this appointment: pour accepter ou rejeter ce rendez-vous
@@ -164,6 +173,7 @@ Adding/Editing Calendar Entries: Ajouter/&Eacute;diter un &Eacute;v&eacute;nemen
 Unapproved Events: &Eacute;v&eacute;nements en attente
 No unapproved events: Pas d'&eacute;v&eacute;nement en attente
 You must enter a login and password: Vous devez entrer un login et un mot de passe
+Invalid login: Utilisateur incorrect
 Save login via cookies so I don't have to login next time: Sauvegarder le login dans un cookie, pour ne plus taper le login la prochaine fois
 cookies-note: <B>Note:</B> Cette application n&eacute;cessite l'activation des cookies.
 Invalid color for document background: Couleur de fond du document invalide
@@ -190,6 +200,7 @@ Table cell background: Fond de cellule
 Table cell background for current day: Fond de cellule pour aujourd'hui
 Save Preferences: Sauvegarder les pr&eacute;f&eacute;rences
 The following error occurred: L'erreur suivante est apparue
+Database error: Erreur de la base de donn&eacute;es
 Search: Rechercher
 Keywords: Mots cl&eacute;s
 You must enter one or more search keywords: Vous devez entrer un ou plusieurs mot(s) cl&eacute;(s) pour la recherche
@@ -275,5 +286,16 @@ display-week-number-help: Sp&eacute;cifie si le num&eacute;ro de la semaine (1-5
 display-week-starts-on: Sp&eacute;cifie par quel jour commence la semaine.  Si Lundi est choisi, alors les num&eacute;ros des semaines seront &agrave; la norme ISO.
 Work hours: Heures de travail
 work-hours-help: Sp&eacute;cifie les heures de d&eacute;but et de fin de travail.
+Email: Couriel
+Event rejected by participant: Rendez-vous rejeter par un particcipant
+Event reminders: Rappel pour un rendez-vous
+Events added to my calendar: Rendez-vous ajouter dans votre agenda
+Events removed from my calendar: Rendez-vous supprimer dans votre agenda
+Events updated on my calendar: Rendez-vous modifier dans votre agenda
+email-event-reminders-help: Permet de d&eacute;finir si un couriel est envoy&eacute; ou non pour rapel du rendez-vous.
+email-event-added: Notification par couriel lors de l'ajout d'un rendez-vous dans votre agenda.
+email-event-updated: Notification par couriel lors de la modification d'un rendez-vous dans votre agenda.
+email-event-deleted: Notification par couriel lors de la suppression d'un rendez-vous dans votre agenda.
+email-event-rejected: Notification par couriel lors du rejet d'un rendez-vous par l'un des particcipants.
 Colors: Couleurs
 colors-help: Toutes les couleurs doivent &ecirc;tre au format hexd&eacute;cimal "#RRVVBB" ou "RR" est la valeur hexa pour le rouge, "VV" est la valeur hexa pour le vert, et "BB" est la valeur hexa pour le bleu.

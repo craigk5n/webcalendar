@@ -1,3 +1,5 @@
+Version 0.9.34dev (?? ??? ??)
+  - Updated French translation.
 Version 0.9.33 (02 Aug 01)
   - Fixed bug: the "back to my calendar" link would go to another user's
     calendar if you just viewed another user's calendar.
