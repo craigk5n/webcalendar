@@ -1,5 +1,14 @@
 <style type="text/css">
 <!--
+.weekview td {
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
+  font-size: 12px;
+  width: 75px;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  background-color: <?php echo $GLOBALS['CELLBG'];?>;
+  vertical-align: top;
+}
 .tablecell {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
@@ -24,6 +33,15 @@
   font-size: 10px;
   width: 30px;
   height: 30px;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+.weekview td.weekend {
+  font-family: <?php echo $GLOBALS['FONTS']; ?>;
+  font-size: 12px;
+  width: 75px;
+  vertical-align: top;
+  background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
@@ -101,7 +119,6 @@
   color: #B04040;
   text-decoration: none;
 }
-
 .navlinks {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 14px;
@@ -156,10 +173,6 @@ h3 {
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	font-weight: bold;
 }
-td {
-  font-family: <?php echo $GLOBALS['FONTS']; ?>;
-  font-size: 12px;
-}
 p {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
@@ -193,9 +206,6 @@ textarea {
 	width: 18px;
 	height: 18px;
 	border-width: 0px;
-}
-td.numericdate {
-	font-size: 10px;
 }
 .user {
 	font-size: 18px;
