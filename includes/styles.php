@@ -174,6 +174,7 @@ select {
 textarea {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 12px;
+  overflow: auto;
 }
 .dailymatrix {
   cursor: pointer;
