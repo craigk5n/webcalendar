@@ -95,7 +95,8 @@ span.tabfor a {
 #tabscontent_colors,
 #tabscontent_participants,
 #tabscontent_sched,
-#tabscontent_pete {
+#tabscontent_pete,
+#tabscontent_export {
 	display: none;
 }
 <?php //week number in monthview & such 

@@ -15,5 +15,24 @@ function selectDate ( day, month, year ) {
     "&amp;month=" + month + "&amp;year=" + year + "&amp;date=" + date;
   var colorWindow = window.open(url,"DateSelection","width=300,height=200,resizable=yes,scrollbars=yes");
 }
+
+var tabs = new Array();
+function showTab (name) {
+	if (! document.getElementById) { return true; }
+	for (var i=0; i<tabs.length; i++) {
+		var tname = tabs[i];
+		var tab = document.getElementById("tab_" + tname);
+		if (tab && tab.setAttribute) {
+			tab.setAttribute("class", (tname == name) ? "tabfor" : "tabbak");
+		}
+		var div = document.getElementById("tabscontent_" + tname);
+		if (div) {
+			div.style.display = (tname == name) ? "block" : "none";
+		}
+	}
+	return false;
+}
+tabs[1] = "import";
+tabs[2] = "export";
 //]]> -->
 </script>
