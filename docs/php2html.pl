@@ -30,7 +30,7 @@ sub add_links {
 
   $in =~ s/&/&amp;/g;
   $in =~ s/&amp&amp;/&amp;/g;
-  $in =~ s/<br\s*\/>Note:/<br\><span class=\"note\">Note:<\/span>/gi;
+  $in =~ s/<br\s*\/>(Note|Notes):/<br\><span class=\"note\">$1:<\/span>/gi;
 
   return $in;
 }
@@ -118,6 +118,7 @@ foreach $f ( @ARGV ) {
           }
         } elsif ( $state eq 'returns' ) {
           if ( /\*\s+/ ) {
+            $returns .= ' ' if ( $returns ne '' );
             $returns .= $';
           }
         } else {

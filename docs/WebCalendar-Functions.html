@@ -72,7 +72,7 @@ h3 {
 <tr><td>WebCalendar Version:</td><td>v1.0RC1/CVS+dev (?? ??? 2004)</td></tr>
 <tr><td>Last updated:</td><td>24-Jan-2005</td></tr>
 </table>
-<h2>Function Documentation</h2>
+<h2>List of Functions</h2>
 <ul>
 <li><a href="#activity_log">activity_log</a></li>
 <li><a href="#build_event_popup">build_event_popup</a></li>
@@ -188,7 +188,7 @@ Close a database connection. (Not necessary for any database that uses pooled co
 <br /><br />
 <h3><a name="dbi_connect">dbi_connect</a></h3>
 <tt>dbi_connect ( $host, $login, $password, $database )</tt><br /><br />
-Open up a database connection. Use a pooled connection if the db supports it and the <tt>db_persistent</tt> setting is enabled. <br/>Notes:<ul> <li> The database type is determined by the global variable <tt>db_type</tt> <li> For ODBC, $host is ignored, $database = DSN</li> <li> For Oracle, $database = tnsnames name</li> <li> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails </li> </ul><br /><br />
+Open up a database connection. Use a pooled connection if the db supports it and the <tt>db_persistent</tt> setting is enabled. <br><span class="note">Notes:</span><ul> <li> The database type is determined by the global variable <tt>db_type</tt> <li> For ODBC, $host is ignored, $database = DSN</li> <li> For Oracle, $database = tnsnames name</li> <li> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails </li> </ul><br /><br />
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$host</tt> - Name of database</li>
@@ -207,7 +207,7 @@ Get the latest database error message.<br /><br />
 <ul>
 <li>None</li>
 </ul>
-<p><span class="prompt">Returns:</span> The text of the last database error.(The type of information varies depending on the whichtype of database is being used.)<br/>
+<p><span class="prompt">Returns:</span> The text of the last database error. (The type of information varies depending on the which type of database is being used.)<br/>
 <span class="prompt">Location:</span> php-dbi.php, line 425<br/>
 </p><br /><br />
 <br /><br />
@@ -231,7 +231,7 @@ Retrieve a single row from the database and return it as an array. <br><span cla
 <ul>
 <li><tt>$res</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
 </ul>
-<p><span class="prompt">Returns:</span> An array of database columns representing a single row inthe query result or false on an error.<br/>
+<p><span class="prompt">Returns:</span> An array of database columns representing a single row in the query result or false on an error.<br/>
 <span class="prompt">Location:</span> php-dbi.php, line 302<br/>
 </p><br /><br />
 <br /><br />
@@ -255,7 +255,7 @@ Execute a SQL query. <br><span class="note">Note:</span> Use the <a href="#dbi_e
 <li><tt>$fatalOnError</tt> - Display error to use (including possibly the SQL) if there is a database error</li>
 <li><tt>$showError</tt> - Display error to use (including possibly the SQL) if there is a database error</li>
 </ul>
-<p><span class="prompt">Returns:</span> The query result resource on queries (which can then bepassed to the <a href="#dbi_fetch_row"><tt>dbi_fetch_row</tt></a> function to obtain the results),or true/false on insert or delete queries.<br/>
+<p><span class="prompt">Returns:</span> The query result resource on queries (which can then be passed to the <a href="#dbi_fetch_row"><tt>dbi_fetch_row</tt></a> function to obtain the results), or true/false on insert or delete queries.<br/>
 <span class="prompt">Location:</span> php-dbi.php, line 228<br/>
 </p><br /><br />
 <br /><br />
@@ -409,7 +409,7 @@ Get the last page stored using the <a href="#remember_this_view"><tt>remember_th
 <ul>
 <li>None</li>
 </ul>
-<p><span class="prompt">Returns:</span> The URL of the last view or an empty string if it cannot bedetermined.<br/>
+<p><span class="prompt">Returns:</span> The URL of the last view or an empty string if it cannot be determined.<br/>
 <span class="prompt">Location:</span> functions.php, line 476<br/>
 </p><br /><br />
 <br /><br />
@@ -420,7 +420,7 @@ Get a list of users. If groups are enabled, this will restrict the list of users
 <ul>
 <li>None</li>
 </ul>
-<p><span class="prompt">Returns:</span> An array of users, where each element in the array is an arraywith the following keys:<ul><li>cal_login</li><li>cal_lastname</li><li>cal_firstname</li><li>cal_is_admin</li><li>cal_is_admin</li><li>cal_email</li><li>cal_password</li><li>cal_fullname</li></ul><br/>
+<p><span class="prompt">Returns:</span> An array of users, where each element in the array is an array with the following keys:<ul> <li>cal_login</li> <li>cal_lastname</li> <li>cal_firstname</li> <li>cal_is_admin</li> <li>cal_is_admin</li> <li>cal_email</li> <li>cal_password</li> <li>cal_fullname</li> </ul><br/>
 <span class="prompt">Location:</span> functions.php, line 704<br/>
 </p><br /><br />
 <br /><br />
@@ -432,7 +432,7 @@ Get a preference setting for the specified user.  If no value is found in the da
 <li><tt>$user</tt> - the name of the setting</li>
 <li><tt>$setting</tt> - the name of the setting</li>
 </ul>
-<p><span class="prompt">Returns:</span> The value found in the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> for thespecified setting or the sytem default if no user settingswas found.<br/>
+<p><span class="prompt">Returns:</span> The value found in the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> for the specified setting or the sytem default if no user settings was found.<br/>
 <span class="prompt">Location:</span> functions.php, line 779<br/>
 </p><br /><br />
 <br /><br />
@@ -443,7 +443,7 @@ Get any site-specific fields for an entry that are stored in the database in the
 <ul>
 <li><tt>$eventid</tt> - event id</li>
 </ul>
-<p><span class="prompt">Returns:</span> Return an array of array with the keys as follows:  <ul><li> cal_name </li><li> cal_type </li><li> cal_date </li><li> cal_remind </li><li> cal_data </li></ul><br/>
+<p><span class="prompt">Returns:</span> Return an array of array with the keys as follows:  <ul> <li> cal_name </li> <li> cal_type </li> <li> cal_date </li> <li> cal_remind </li> <li> cal_data </li> </ul><br/>
 <span class="prompt">Location:</span> functions.php, line 1351<br/>
 </p><br /><br />
 <br /><br />
@@ -483,7 +483,7 @@ Load current user's layer info and stuff it into layer global variable. If the s
 <br /><br />
 <h3><a name="load_user_preferences">load_user_preferences</a></h3>
 <tt>load_user_preferences ( $ )</tt><br /><br />
-Load the current user's preferences as global variables from the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a>. Also load the list of views for this user (not really a preference, but this is a convenient place to put this...) <br/>Notes:   <ul> <li>If the $allow_color_customization is set to 'N', then we ignore any color preferences.</li> <li>Other default values will also be set if the user has not saved a preference and no global value has been set by the administrator in the system settings.</li> </ul><br /><br />
+Load the current user's preferences as global variables from the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a>. Also load the list of views for this user (not really a preference, but this is a convenient place to put this...) <br><span class="note">Notes:</span>   <ul> <li>If the $allow_color_customization is set to 'N', then we ignore any color preferences.</li> <li>Other default values will also be set if the user has not saved a preference and no global value has been set by the administrator in the system settings.</li> </ul><br /><br />
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
@@ -633,7 +633,7 @@ Generate the HTML used in an event popup for the site_extras fields of an event.
 <ul>
 <li><tt>$id</tt> - event id</li>
 </ul>
-<p><span class="prompt">Returns:</span> The HTML to be used within the event popup for any site_extrafields found for the specified event<br/>
+<p><span class="prompt">Returns:</span> The HTML to be used within the event popup for any site_extra fields found for the specified event<br/>
 <span class="prompt">Location:</span> functions.php, line 884<br/>
 </p><br /><br />
 <br /><br />
@@ -655,7 +655,7 @@ Translate a string from the default English usage to some other language.  The f
 <ul>
 <li><tt>$str</tt> - text to translate</li>
 </ul>
-<p><span class="prompt">Returns:</span> The translated text, if available.  If no translation is avalailable,then the original untranslated text is returned.<br/>
+<p><span class="prompt">Returns:</span> The translated text, if available.  If no translation is avalailable, then the original untranslated text is returned.<br/>
 <span class="prompt">Location:</span> translate.php, line 107<br/>
 </p><br /><br />
 </body>
