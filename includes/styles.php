@@ -316,18 +316,26 @@ td.yearviewtitle .user {
 	color: <?php echo $GLOBALS['H2COLOR'] ?>;
 	text-align: center;
 }
-
+.yearview th {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 14%;
+}
 /* ========================= */
 /* MINI CALENDARS */
 /* contains individual months in year.php */
 table.minical {
 	border-width: 0px;
 }
-td.month {
+.minical td.month {
 	text-align: center;
 }
 /* contains the name of the month (i.e. January, June, December, etc) in year.php */
-td.month a {
+.minical td.month a {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	font-size: 13px;
 	color: #B04040;
@@ -345,11 +353,13 @@ td.month a {
 .minical tr.date td {
 	text-align: right;
 }
-/* links within cells with yearviewdate class */
 .minical tr.date a {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
-	font-size: 13px;
+	font-size: 10px;
 	text-decoration: none;
+}
+td.numericdate {
+	font-size: 10px;
 }
 
 /* ========================= */
