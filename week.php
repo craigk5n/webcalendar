@@ -64,7 +64,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <td align="left"><a title="<?php etranslate("Previous")?>" href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a></td>
 <?php } ?>
-<td style="text-align:center;"><span style="font-size:24px; color:<?php echo $H2COLOR;?>; font-weight:bold;" class="pagetitle">
+<td style="text-align:center;"><span class="pagetitle">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
@@ -99,20 +99,17 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 </tr>
 </table>
 
-<table class="tableborder" width="100%" cellspacing="0" cellpadding="0">
+<table class="weekview" cellspacing="0" cellpadding="0">
 
 <tr>
-<th style="width:12%;" class="tableheader">&nbsp;</th>
+<th>&nbsp;</th>
 <?php
 for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   if ( date ( "Ymd", $days[$d] ) == date ( "Ymd", $today ) ) {
-    $color = $TODAYCELLBG;
-    $class = "tableheadertoday";
+	  echo "<th class=\"today\">";
   } else {
-    $color = $THBG;
-    $class = "tableheader";
+	echo "<th>";
   }
-  echo "<th style=\"width:12%; background-color:$color;\" class=\"$class\">";
   if ( empty ( $friendly ) && $can_add ) {
     echo html_for_add_icon (  date ( "Ymd", $days[$d] ), "", "", $user );
   }
@@ -246,7 +243,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 
   // now save the output...
   if ( ! empty ( $hour_arr[9999] ) && strlen ( $hour_arr[9999] ) ) {
-    $untimed[$d] = "<td class=\"tablecellweekview\" style=\"width:12%; background-color:$TODAYCELLBG; font-size:13px;\">$hour_arr[9999]</td>\n";
+    $untimed[$d] = "<td class=\"today\">$hour_arr[9999]</td>\n";
     $untimed_found = true;
   }
   $save_hour_arr[$d] = $hour_arr;
@@ -255,7 +252,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 
 // untimed events first
 if ( $untimed_found ) {
-  echo "<tr><td class=\"tablecellweekview\" style=\"width:12%; background-color:$THBG;\">&nbsp;</td>";
+  echo "<tr><td style=\"background-color:$THBG;\">&nbsp;</td>";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
@@ -265,7 +262,7 @@ if ( $untimed_found ) {
     if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) )
       echo $untimed[$d];
     else
-      echo "<td class=\"tablecellweekview\" style=\"width:12%; background-color:$color;\">&nbsp;</td>";
+      echo "<td style=\"background-color:$color;\">&nbsp;</td>";
   }
   echo "</tr>\n";
 }
@@ -277,7 +274,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = (int) ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-  echo "<tr><th class=\"tableheader\" style=\"vertical-align:top; width:12%; height:40;\">" .  $time . "</th>\n";
+  echo "<tr><th class=\"row\">" .  $time . "</th>\n";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
@@ -290,24 +287,24 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
       if ( ! empty ( $save_hour_arr[$d][$i] ) )
-        echo "<td class=\"tablecellweekview\" style=\"vertical-align:top; width:12%; background-color:$TODAYCELLBG; font-size:13px;\">" .
+        echo "<td class=\"today\">" .
           $save_hour_arr[$d][$i] . "</td>";
       $rowspan_day[$d]--;
     } else {
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
-        echo "<td class=\"tablecellweekview\" style=\"vertical-align:top; width:12%; background-color:$color;\">";
+        echo "<td style=\"background-color:$color;\">";
         if ( empty ( $friendly ) && $can_add )
           echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
         echo "&nbsp;</td>\n";
       } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         if ( $rowspan_day[$d] > 1 ) {
-          echo "<td class=\"tablecellweekview\" style=\"vertical-align:top; width:12%; background-color:$TODAYCELLBG; font-size:13px;\" rowspan=\"$rowspan_day[$d]\">";
+          echo "<td class=\"today\" rowspan=\"$rowspan_day[$d]\">";
           if ( empty ( $friendly ) && $can_add )
             echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
           echo $save_hour_arr[$d][$i] . "</td>\n";
         } else {
-          echo "<td class=\"tablecellweekview\" style=\"vertical-align:top; width:12%; background-color:$TODAYCELLBG; font-size:13px;\">";
+          echo "<td class=\"today\">";
           if ( empty ( $friendly ) && $can_add )
             echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
           echo $save_hour_arr[$d][$i] . "</td>\n";
