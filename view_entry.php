@@ -258,7 +258,6 @@ if ( $res ) {
 
     if ( $cal_frequency > 1 ) {
       switch ( $cal_frequency ) {
-        case 1: $rep_str .= translate("1st"); break;
         case 2: $rep_str .= translate("2nd"); break;
         case 3: $rep_str .= translate("3rd"); break;
         case 4: $rep_str .= translate("4th"); break;
@@ -292,9 +291,10 @@ if ( $res ) {
           $days_per_month[$thismonth];
         if ( $cal_type == 'monthlyByDay' ) {
           $dow1 = date ( "w", mktime ( 3, 0, 0, $thismonth, 1, $thisyear ) );
-          $whichWeek = floor ( ( $thisday - ( 7 - $dow1 ) ) / 7 );
-          if ( $thisdow > $dow1 )
-            $whichWeek--;
+          $days_in_first_week = ( 7 - $dow1 ) % 7;
+          $whichWeek = floor ( ( $thisday - $days_in_first_week ) / 7 );
+          if ( $thisdow >= $dow1 )
+            $whichWeek++;
         } else {
           $whichWeek = floor ( ( $days_this_month - $thisday ) / 7 );
         }
