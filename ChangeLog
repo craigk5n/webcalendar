@@ -1,4 +1,5 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Use is_array test on categories to avoid error messsage.
   - Fixed bug: removed call by reference in php-dbi.php.
   - Fixed bug: Event description popup were not displayed in Netscape 4 if
     the event appeared near the bottom of the page.

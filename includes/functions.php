@@ -2242,7 +2242,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '', $friendly = '' )
     echo "<option value=\"\"";
     if ( $cat_id == '' ) echo " SELECTED";
     echo ">" . translate("All") . "</option>\n";
-    if ( ! empty ( $categories ) ) {
+    if ( is_array ( $categories ) ) {
       foreach( $categories as $K => $V ){
         echo "<option value=\"$K\"";
         if ( $cat_id == $K ) echo " SELECTED";
