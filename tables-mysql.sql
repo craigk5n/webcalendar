@@ -282,6 +282,8 @@ CREATE TABLE webcal_view (
   cal_name VARCHAR(50) NOT NULL,
   /* "W" for week view, "D" for day view, "M" for month view */
   cal_view_type CHAR(1),
+  /* is this a global view (can it be accessed by other users) ('Y' or 'N') */
+  cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
   PRIMARY KEY ( cal_view_id )
 );
 

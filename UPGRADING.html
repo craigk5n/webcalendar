@@ -440,11 +440,22 @@ to more restrictive permissions.
 <p>After saving your database settings, be sure to setup an install
 password via this same web page so that other users may not change
 your database settings.</p>
+<a href="UPGRADING.html#1dot0RC1">next..</a>
 <hr />
 
 <h4><a id="1dot0RC1">To upgrade from v0.9.45 or 1.0RC1 to v1.0RC2:</a></h4>
 <p>There are no database changes from 0.9.45 to 1.0RC2.
 </p>
+<a href="UPGRADING.html#1dot0RC3">next..</a>
+<hr />
+
+<h4><a id="1dot0RC3">To upgrade from v0.9.44 to v1.0RC3:</a></h4>
+<p>The <tt>webcal_view</tt> table was modified.
+Execute the following SQL to update your database:
+</p>
+<pre>
+ALTER TABLE webcal_view ADD cal_is_global CHAR(1) DEFAULT 'N' NOT NULL;
+</pre>
 <hr />
 
 <p>

@@ -55,13 +55,42 @@ print_header ( $INC );
 $res = dbi_query (
   "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
 $participants = array ();
+$all_users = false;
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $participants[] = $row[0];
+    if ( $row[0] == "__all__" )
+      $all_users = true;
   }
   dbi_free_result ( $res );
 } else {
   $error = translate ( "Database error" ) . ": " . dbi_error ();
+}
+
+if ( $all_users ) {
+  $participants = array ();
+  $users = get_my_users ();
+  for ( $i = 0; $i < count ( $users ); $i++ ) {
+    $participants[] = $users[$i]['cal_login'];
+  }
+} else {
+  // Make sure this user is allowed to see all users in this view
+  // If this is a global view, it may include users that this user
+  // is not allowed to see.
+  if ( ! empty ( $user_sees_only_his_groups ) &&
+    $user_sees_only_his_groups == 'Y' ) {
+    $myusers = get_my_users ();
+    $userlookup = array ();
+    for ( $i = 0; $i < count ( $myusers ); $i++ ) {
+      $userlookup[$myusers[$i]['cal_login']] = 1;
+    }
+    $newlist = array ();
+    for ( $i = 0; $i < count ( $participants ); $i++ ) {
+      if ( ! empty ( $userlookup[$participants[$i]] ) )
+        $newlist[] = $participants[$i];
+    }
+    $participants = $newlist;
+  }
 }
 
 if ( ! empty ( $error ) ) {
