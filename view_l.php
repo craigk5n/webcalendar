@@ -75,6 +75,8 @@ $enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
 $monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
 $monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 
+$thisdate = $startdate;
+
 // get users in this view
 $res = dbi_query (
   "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
