@@ -65,7 +65,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <?php } ?>
 </td>
 <td style="text-align:center; color:<?php echo $H2COLOR?>;">
-<span style="font-size:24px; font-weight:bold;">
+<span class="date">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
@@ -166,7 +166,7 @@ $user = ""; // reset
 echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<a class=\"navlinks\" href=\"view_t.php?id=$id&date=$thisdate&friendly=1\" " .
+  echo "<a class=\"navlinks\" href=\"view_t.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
     "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</a>\n";
