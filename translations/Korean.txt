@@ -3,68 +3,7 @@
 # There cannot be a ":" in the English text.
 # Author: Joonyup Jeon <goodwill@wowbook.com>
 # Last updated: 07 June 2000
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-#
-# << MISSING >>
-# Activity Log:
-#
-# << MISSING >>
-# User:
-#
-# << MISSING >>
-# Calendar:
-Date: 일자
-Time: 시각
-#
-# << MISSING >>
-# Event:
-#
-# << MISSING >>
-# Action:
-#
-# << MISSING >>
-# Event created:
-#
-# << MISSING >>
-# Event approved:
-#
-# << MISSING >>
-# Event rejected:
-#
-# << MISSING >>
-# Event updated:
-#
-# << MISSING >>
-# Event deleted:
-#
-# << MISSING >>
-# Notification sent:
-#
-# << MISSING >>
-# Reminder sent:
-#
-# << MISSING >>
-# Database error:
-#
-# << MISSING >>
-# Next:
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: 틀린 항목 아이디
-#
-# << MISSING >>
-# This is a private event and may not be added to your calendar.:
-#
-# << MISSING >>
-# Error adding event:
+# Translation last updated on 09-10-2002
 
 
 ###############################################
@@ -192,7 +131,6 @@ No: 아니오
 # << MISSING >>
 # Date format:
 December: 12월
-Dec: 12월
 time-format-help: 시간 표시 형식을 명시합니다.<BR><I>12 hour:</I>시간표시가 3am, 8:30pm, 등등으로 표시됨<BR><I>24 hour:</I>시간표시가 300, 2030 등등으로 표시됨
 Time format: 시간 표시 형식
 12 hour: 12 hour
@@ -464,6 +402,67 @@ Table cell background for current day: 오늘 날짜 표시 색상
 #
 # << MISSING >>
 # Event popup text:
+
+
+###############################################
+# Page: activity_log.php
+#
+#
+# << MISSING >>
+# Activity Log:
+#
+# << MISSING >>
+# User:
+#
+# << MISSING >>
+# Calendar:
+Date: 일자
+Time: 시각
+#
+# << MISSING >>
+# Event:
+#
+# << MISSING >>
+# Action:
+#
+# << MISSING >>
+# Event created:
+#
+# << MISSING >>
+# Event approved:
+#
+# << MISSING >>
+# Event rejected:
+#
+# << MISSING >>
+# Event updated:
+#
+# << MISSING >>
+# Event deleted:
+#
+# << MISSING >>
+# Notification sent:
+#
+# << MISSING >>
+# Reminder sent:
+#
+# << MISSING >>
+# Database error:
+#
+# << MISSING >>
+# Next:
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: 틀린 항목 아이디
+#
+# << MISSING >>
+# This is a private event and may not be added to your calendar.:
+#
+# << MISSING >>
+# Error adding event:
 
 
 ###############################################
@@ -791,14 +790,6 @@ You have not entered a password: 암호를 입력하지 않았습니다.
 
 
 ###############################################
-# Page: groups.php
-#
-#
-# << MISSING >>
-# Add New Group:
-
-
-###############################################
 # Page: group_edit.php
 #
 #
@@ -821,11 +812,42 @@ Users: 사용자
 ###############################################
 # Page: group_edit_handler.php
 #
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+#
+# << MISSING >>
+# Add New Group:
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: 환경 설정
+#
+# << MISSING >>
+# to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# Default Category:
+Sun: 일 
+Mon: 월 
+Tue: 화
+Wed: 수
+Thu: 목
+Fri: 금
+Sat: 토
+Save Preferences: 환경설정 저장
 
 
 ###############################################
@@ -849,7 +871,6 @@ Help Index: 도움말 목차
 #
 # << MISSING >>
 # Layers:
-Preferences: 환경 설정
 
 
 ###############################################
@@ -892,11 +913,13 @@ Preferences: 환경 설정
 #
 #
 # << MISSING >>
-# Default Category:
-#
-# << MISSING >>
 # default-category-help:
 # English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: week.php
 #
 
 
@@ -910,13 +933,22 @@ Preferences: 환경 설정
 #
 #
 # << MISSING >>
+# to modify the layers settings for the:
+#
+# << MISSING >>
 # Layers are currently:
+#
+# << MISSING >>
+# Enabled:
 #
 # << MISSING >>
 # Disabled:
 #
 # << MISSING >>
-# Enabled:
+# Disable Layers:
+#
+# << MISSING >>
+# Enable Layers:
 #
 # << MISSING >>
 # Layer:
@@ -971,22 +1003,6 @@ cookies-note: <B>주:</B> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
 ###############################################
 # Page: month.php
 #
-Sun: 일 
-Mon: 월 
-Tue: 화
-Wed: 수
-Thu: 목
-Fri: 금
-Sat: 토
-
-
-###############################################
-# Page: pref.php
-#
-#
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-Save Preferences: 환경설정 저장
 
 
 ###############################################
@@ -1041,11 +1057,6 @@ Go: 시작
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: 관리자를 나타냄
@@ -1067,42 +1078,6 @@ Add New User: 새 사용자 추가
 #
 # << MISSING >>
 # Ok:
-
-
-###############################################
-# Page: views.php
-#
-#
-# << MISSING >>
-# Views:
-#
-# << MISSING >>
-# Add New View:
-
-
-###############################################
-# Page: views_edit.php
-#
-#
-# << MISSING >>
-# Unnamed View:
-#
-# << MISSING >>
-# Add View:
-#
-# << MISSING >>
-# Edit View:
-#
-# << MISSING >>
-# View Name:
-#
-# << MISSING >>
-# View Type:
-
-
-###############################################
-# Page: views_edit_handler.php
-#
 
 
 ###############################################
@@ -1194,14 +1169,48 @@ Edit entry: 항목 편집
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: 새 항목
+#
+# << MISSING >>
+# Views:
+#
+# << MISSING >>
+# Add New View:
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+# << MISSING >>
+# Unnamed View:
+#
+# << MISSING >>
+# Add View:
+#
+# << MISSING >>
+# Edit View:
+#
+# << MISSING >>
+# View Name:
+#
+# << MISSING >>
+# View Type:
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: 새 항목
 Private: 개인용
 
 
@@ -1212,11 +1221,6 @@ Private: 개인용
 
 ###############################################
 # Page: year.php
-#
-
-
-###############################################
-# Page: includes/config.php
 #
 
 
@@ -1254,12 +1258,60 @@ Aug: 8월
 Sep: 9월
 Oct: 10월
 Nov: 11월
+Dec: 12월
+
+
+###############################################
+# Page: includes/user.php
+#
+#
+# << MISSING >>
+# Invalid login:
+#
+# << MISSING >>
+# Invalid user login:
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+#
+# << MISSING >>
+# Send Reminder:
+#
+# << MISSING >>
+# Reminder:
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: 가기
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -1275,17 +1327,6 @@ Go to: 가기
 ###############################################
 # Page: includes/php-dbi.php
 #
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-#
-# << MISSING >>
-# Send Reminder:
-#
-# << MISSING >>
-# Reminder:
 
 
 ###############################################
@@ -1311,45 +1352,8 @@ Add New Entry: 새 항목 추가
 #
 # << MISSING >>
 # Edit Layers:
-#
-# << MISSING >>
-# Enable Layers:
-#
-# << MISSING >>
-# Disable Layers:
 Account: 계정
 Current User: 현 사용자
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-#
-# << MISSING >>
-# Invalid login:
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-#
-# << MISSING >>
-# Invalid user login:
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
 
 
 ###############################################

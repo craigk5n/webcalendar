@@ -4,68 +4,7 @@
 # Translated by:
 #	your name and email here...
 # Last update: 05 December 2000
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-#
-# << MISSING >>
-# Activity Log:
-#
-# << MISSING >>
-# User:
-#
-# << MISSING >>
-# Calendar:
-Date: Data
-Time: Czas
-#
-# << MISSING >>
-# Event:
-#
-# << MISSING >>
-# Action:
-#
-# << MISSING >>
-# Event created:
-#
-# << MISSING >>
-# Event approved:
-#
-# << MISSING >>
-# Event rejected:
-#
-# << MISSING >>
-# Event updated:
-#
-# << MISSING >>
-# Event deleted:
-#
-# << MISSING >>
-# Notification sent:
-#
-# << MISSING >>
-# Reminder sent:
-#
-# << MISSING >>
-# Database error:
-#
-# << MISSING >>
-# Next:
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Niepoprawny id wydarzenia
-#
-# << MISSING >>
-# This is a private event and may not be added to your calendar.:
-#
-# << MISSING >>
-# Error adding event:
+# Translation last updated on 09-10-2002
 
 
 ###############################################
@@ -179,7 +118,6 @@ No: Nie
 # << MISSING >>
 # Date format:
 December: Grudzieñ
-Dec: Gru
 time-format-help: Okre¶la którego formatu czasu u¿ywaæ <BR><I>12 godz.:</I> Wy¶wietla czas jakoo 3am, 8:30pm, itd. <BR><I>24 godz.:</I> Wy¶wietla czas jako 300, 2030 itd. 
 Time format: Format czasu
 12 hour: 12 godzin
@@ -443,6 +381,67 @@ Table cell background for current day: T³o komórki bie¿±cego dnia
 #
 # << MISSING >>
 # Event popup text:
+
+
+###############################################
+# Page: activity_log.php
+#
+#
+# << MISSING >>
+# Activity Log:
+#
+# << MISSING >>
+# User:
+#
+# << MISSING >>
+# Calendar:
+Date: Data
+Time: Czas
+#
+# << MISSING >>
+# Event:
+#
+# << MISSING >>
+# Action:
+#
+# << MISSING >>
+# Event created:
+#
+# << MISSING >>
+# Event approved:
+#
+# << MISSING >>
+# Event rejected:
+#
+# << MISSING >>
+# Event updated:
+#
+# << MISSING >>
+# Event deleted:
+#
+# << MISSING >>
+# Notification sent:
+#
+# << MISSING >>
+# Reminder sent:
+#
+# << MISSING >>
+# Database error:
+#
+# << MISSING >>
+# Next:
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Niepoprawny id wydarzenia
+#
+# << MISSING >>
+# This is a private event and may not be added to your calendar.:
+#
+# << MISSING >>
+# Error adding event:
 
 
 ###############################################
@@ -712,14 +711,6 @@ Modified since: Czas modyfikacji
 
 
 ###############################################
-# Page: groups.php
-#
-#
-# << MISSING >>
-# Add New Group:
-
-
-###############################################
 # Page: group_edit.php
 #
 #
@@ -742,11 +733,42 @@ Users: U¿ytkownicy
 ###############################################
 # Page: group_edit_handler.php
 #
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+#
+# << MISSING >>
+# Add New Group:
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: Preferencje
+#
+# << MISSING >>
+# to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# Default Category:
+Sun: Nie
+Mon: Pon
+Tue: Wto
+Wed: ¦ro
+Thu: Czw
+Fri: Pi±
+Sat: Sob
+Save Preferences: Zapisz ustawienia
 
 
 ###############################################
@@ -770,7 +792,6 @@ Help Index: Indeks pomocy
 #
 # << MISSING >>
 # Layers:
-Preferences: Preferencje
 
 
 ###############################################
@@ -813,11 +834,13 @@ Preferences: Preferencje
 #
 #
 # << MISSING >>
-# Default Category:
-#
-# << MISSING >>
 # default-category-help:
 # English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: week.php
 #
 
 
@@ -831,13 +854,22 @@ Preferences: Preferencje
 #
 #
 # << MISSING >>
+# to modify the layers settings for the:
+#
+# << MISSING >>
 # Layers are currently:
+#
+# << MISSING >>
+# Enabled:
 #
 # << MISSING >>
 # Disabled:
 #
 # << MISSING >>
-# Enabled:
+# Disable Layers:
+#
+# << MISSING >>
+# Enable Layers:
 #
 # << MISSING >>
 # Layer:
@@ -886,22 +918,6 @@ cookies-note: <B>Uwaga:</B> Ta aplikacja wymaga w³±czonych cookies
 ###############################################
 # Page: month.php
 #
-Sun: Nie
-Mon: Pon
-Tue: Wto
-Wed: ¦ro
-Thu: Czw
-Fri: Pi±
-Sat: Sob
-
-
-###############################################
-# Page: pref.php
-#
-#
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-Save Preferences: Zapisz ustawienia
 
 
 ###############################################
@@ -956,11 +972,6 @@ Go: Id¼
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: denotes administrative user
@@ -982,42 +993,6 @@ Add New User: Dodaj nowego u¿ytkownika
 #
 # << MISSING >>
 # Ok:
-
-
-###############################################
-# Page: views.php
-#
-#
-# << MISSING >>
-# Views:
-#
-# << MISSING >>
-# Add New View:
-
-
-###############################################
-# Page: views_edit.php
-#
-#
-# << MISSING >>
-# Unnamed View:
-#
-# << MISSING >>
-# Add View:
-#
-# << MISSING >>
-# Edit View:
-#
-# << MISSING >>
-# View Name:
-#
-# << MISSING >>
-# View Type:
-
-
-###############################################
-# Page: views_edit_handler.php
-#
 
 
 ###############################################
@@ -1105,14 +1080,48 @@ Edit entry: Edytuj wpis
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: Nowy wpis
+#
+# << MISSING >>
+# Views:
+#
+# << MISSING >>
+# Add New View:
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+# << MISSING >>
+# Unnamed View:
+#
+# << MISSING >>
+# Add View:
+#
+# << MISSING >>
+# Edit View:
+#
+# << MISSING >>
+# View Name:
+#
+# << MISSING >>
+# View Type:
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: Nowy wpis
 Private: Prywatne
 
 
@@ -1123,11 +1132,6 @@ Private: Prywatne
 
 ###############################################
 # Page: year.php
-#
-
-
-###############################################
-# Page: includes/config.php
 #
 
 
@@ -1165,12 +1169,60 @@ Aug: Sie
 Sep: Wrz
 Oct: Pa¼
 Nov: Lis
+Dec: Gru
+
+
+###############################################
+# Page: includes/user.php
+#
+#
+# << MISSING >>
+# Invalid login:
+#
+# << MISSING >>
+# Invalid user login:
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+#
+# << MISSING >>
+# Send Reminder:
+#
+# << MISSING >>
+# Reminder:
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Id¼ do
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -1186,17 +1238,6 @@ Go to: Id¼ do
 ###############################################
 # Page: includes/php-dbi.php
 #
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-#
-# << MISSING >>
-# Send Reminder:
-#
-# << MISSING >>
-# Reminder:
 
 
 ###############################################
@@ -1218,45 +1259,8 @@ Add New Entry: Dodaj nowy wpis
 #
 # << MISSING >>
 # Edit Layers:
-#
-# << MISSING >>
-# Enable Layers:
-#
-# << MISSING >>
-# Disable Layers:
 Account: Konto
 Current User: Bie¿±cy u¿ytkownik
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-#
-# << MISSING >>
-# Invalid login:
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-#
-# << MISSING >>
-# Invalid user login:
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
 
 
 ###############################################

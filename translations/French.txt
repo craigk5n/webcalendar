@@ -8,36 +8,7 @@
 # Last update: 17 juillet 2002 
 # Title is what will appear in the title bar for pages
 #
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-Activity Log: Journal de suivi
-User: Utilisateur
-Calendar: Agenda
-Date: Date
-Time: Heure
-Event: &Eacute;v&eacute;nement
-Action: Action
-Event created: &Eacute;v&eacute;nement cr&eacute;&eacute;
-Event approved: &Eacute;v&eacute;nement approuv&eacute;
-Event rejected: &Eacute;v&eacute;nement rejet&eacute;
-Event updated: &Eacute;v&eacute;nement mis &agrave; jour
-Event deleted: &Eacute;v&eacute;nement supprim&eacute; 
-Notification sent: Notification envoy&eacute;e
-Reminder sent: Rappel envoy&eacute;
-Database error: Erreur de la base de donn&eacute;es
-Next: Suivant
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Id non valable
-This is a private event and may not be added to your calendar.: Ceci est un &eacute;v&eacute;nement priv&eacute; et ne peut pas &ecirc;tre ajout&eacute; &agrave; votre agenda.
-Error adding event: Erreur en ajoutant l'&eacute;v&eacute;nement
+# Translation last updated on 09-10-2002
 
 
 ###############################################
@@ -89,7 +60,6 @@ No: Non
 date-format-help: Sp&eacute;cifie le format d'affichage des dates.
 Date format: Format des dates
 December: d&eacute;cembre 
-Dec: D&eacute;c
 time-format-help: Sp&eacute;cifie quel format utiliser pour l'heure&nbsp;: <BR><I>12 heures:</I> Affiche l'heure de cette façon&nbsp;: 3am, 8:30pm, etc.  <BR><I>24 heures:</I> Affiche l'heure de cette fa&ccedil;on 3:00, 20:30, etc.
 Time format: Format de l'heure
 12 hour: 12 heures
@@ -177,6 +147,35 @@ Table cell background for current day: Fond de cellule pour aujourd'hui
 Table cell background for weekends: Couleur de fond pour les week-ends
 Event popup background: Fond des d&eacute;tails d'&eacute;v&eacute;nements
 Event popup text: Texte surgissant des &eacute;v&eacute;nements
+
+
+###############################################
+# Page: activity_log.php
+#
+Activity Log: Journal de suivi
+User: Utilisateur
+Calendar: Agenda
+Date: Date
+Time: Heure
+Event: &Eacute;v&eacute;nement
+Action: Action
+Event created: &Eacute;v&eacute;nement cr&eacute;&eacute;
+Event approved: &Eacute;v&eacute;nement approuv&eacute;
+Event rejected: &Eacute;v&eacute;nement rejet&eacute;
+Event updated: &Eacute;v&eacute;nement mis &agrave; jour
+Event deleted: &Eacute;v&eacute;nement supprim&eacute; 
+Notification sent: Notification envoy&eacute;e
+Reminder sent: Rappel envoy&eacute;
+Database error: Erreur de la base de donn&eacute;es
+Next: Suivant
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Id non valable
+This is a private event and may not be added to your calendar.: Ceci est un &eacute;v&eacute;nement priv&eacute; et ne peut pas &ecirc;tre ajout&eacute; &agrave; votre agenda.
+Error adding event: Erreur en ajoutant l'&eacute;v&eacute;nement
 
 
 ###############################################
@@ -384,12 +383,6 @@ Modified since: Modifi&eacute; depuis
 
 
 ###############################################
-# Page: groups.php
-#
-Add New Group: Ajouter un nouveau groupe
-
-
-###############################################
 # Page: group_edit.php
 #
 Unnamed Group: Groupe sans nom
@@ -404,11 +397,36 @@ Users: Utilisateurs
 ###############################################
 # Page: group_edit_handler.php
 #
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+Add New Group: Ajouter un nouveau groupe
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: Pr&eacute;f&eacute;rences
+to modify the preferences for the Public Access calendar: pour modifier les pr&eacute;f&eacute;rences de l'agenda public
+Default Category: Cat&eacute;gorie par d&eacute;faut
+Sun: Dim
+Mon: Lun
+Tue: Mar
+Wed: Mer
+Thu: Jeu
+Fri: Ven
+Sat: Sam
+Save Preferences: Sauvegarder les pr&eacute;f&eacute;rences
 
 
 ###############################################
@@ -428,7 +446,6 @@ Adding/Editing Calendar Entries: Ajouter/Modifier un &eacute;v&eacute;nement
 #
 Help Index: Index de l'aide
 Layers: Calques
-Preferences: Pr&eacute;f&eacute;rences
 
 
 ###############################################
@@ -449,8 +466,12 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_pref.php
 #
-Default Category: Cat&eacute;gorie par d&eacute;faut
 default-category-help: Sp&eacute;cifie la cat&eacute;gorie par d&eacute;faut lors de la cr&eacute;ation d'&eacute;v&eacute;nement.
+
+
+###############################################
+# Page: week.php
+#
 
 
 ###############################################
@@ -461,9 +482,14 @@ default-category-help: Sp&eacute;cifie la cat&eacute;gorie par d&eacute;faut lor
 ###############################################
 # Page: layers.php
 #
+#
+# << MISSING >>
+# to modify the layers settings for the:
 Layers are currently: Les calques sont actuellement
-Disabled: D&eacute;sactiv&eacute;s
 Enabled: Activ&eacute;s
+Disabled: D&eacute;sactiv&eacute;s
+Disable Layers: D&eacute;sactiver les calques
+Enable Layers: Activer les calques
 Layer: Calque
 Edit layer: Modifier un calque
 Add layer: Ajouter un calque
@@ -500,20 +526,6 @@ cookies-note: <B>Note:</B> Cette application n&eacute;cessite l'activation des c
 ###############################################
 # Page: month.php
 #
-Sun: Dim
-Mon: Lun
-Tue: Mar
-Wed: Mer
-Thu: Jeu
-Fri: Ven
-Sat: Sam
-
-
-###############################################
-# Page: pref.php
-#
-to modify the preferences for the Public Access calendar: pour modifier les pr&eacute;f&eacute;rences de l'agenda public
-Save Preferences: Sauvegarder les pr&eacute;f&eacute;rences
 
 
 ###############################################
@@ -560,11 +572,6 @@ Set Category: Chosir la cat&eacute;gorie
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: appliquer les droits d'administrateur
@@ -578,28 +585,6 @@ All: Tout
 Reset: R&eacute;initialiser
 Remove: Enlever
 Ok: Valider
-
-
-###############################################
-# Page: views.php
-#
-Views: Vues
-Add New View: Ajouter une nouvelle vue
-
-
-###############################################
-# Page: views_edit.php
-#
-Unnamed View: Vue sans nom
-Add View: Ajouter une vue
-Edit View: Modifier la vue
-View Name: Nom de la vue
-View Type: Type de la vue
-
-
-###############################################
-# Page: views_edit_handler.php
-#
 
 
 ###############################################
@@ -645,14 +630,34 @@ Hide activity log: Cacher le journal de suivi
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: Nouvel &eacute;v&eacute;nement
+Views: Vues
+Add New View: Ajouter une nouvelle vue
+
+
+###############################################
+# Page: views_edit.php
+#
+Unnamed View: Vue sans nom
+Add View: Ajouter une vue
+Edit View: Modifier la vue
+View Name: Nom de la vue
+View Type: Type de la vue
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: Nouvel &eacute;v&eacute;nement
 Private: Priv&eacute;
 
 
@@ -663,11 +668,6 @@ Private: Priv&eacute;
 
 ###############################################
 # Page: year.php
-#
-
-
-###############################################
-# Page: includes/config.php
 #
 
 
@@ -705,12 +705,52 @@ Aug: Ao&ucirc;
 Sep: Sep
 Oct: Oct
 Nov: Nov
+Dec: D&eacute;c
+
+
+###############################################
+# Page: includes/user.php
+#
+Invalid login: Utilisateur incorrect
+Invalid user login: Identifiant non valable
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Envoyer un rappel
+Reminder: Rappel
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Aller &agrave;
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -729,13 +769,6 @@ Go to: Aller &agrave;
 
 
 ###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Envoyer un rappel
-Reminder: Rappel
-
-
-###############################################
 # Page: includes/styles.php
 #
 
@@ -750,37 +783,8 @@ Another User's Calendar: Agenda d'un autre utilisateur
 Add New Entry: Ajouter un &eacute;v&eacute;nement
 Manage Views: G&eacute;rer les vues
 Edit Layers: Modifier les calques
-Enable Layers: Activer les calques
-Disable Layers: D&eacute;sactiver les calques
 Account: Compte
 Current User: Utilisateur actuel
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: Utilisateur incorrect
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-Invalid user login: Identifiant non valable
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
 
 
 ###############################################

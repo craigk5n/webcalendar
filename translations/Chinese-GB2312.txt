@@ -4,36 +4,7 @@
 # Translated by: liao_bin@371.net shenyi@jite.net
 # Last update: 2002-6-26
 # $Id$
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-Activity Log: 活动日志
-User: 用户
-Calendar: 日历
-Date: 日期
-Time: 时间
-Event: 事件
-Action: 活动
-Event created: 事件已创建
-Event approved: 事件已到达
-Event rejected: 事件已拒绝
-Event updated: 事件已经更新
-Event deleted: 事件已删除
-Notification sent: 发送通知
-Reminder sent: 发送提醒
-Database error: 数据库错误
-Next: 下一页
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: 无效的纪录ID
-This is a private event and may not be added to your calendar.: 这是一个私人事件不能添加到您的日历中.
-Error adding event: 添加事件错误
+# Translation last updated on 09-10-2002
 
 
 ###############################################
@@ -91,7 +62,6 @@ No: 否
 # << MISSING >>
 # Date format:
 December: 十二月
-Dec: 12月
 time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
 Time format: 时间格式
 12 hour: 12时制
@@ -197,6 +167,35 @@ Table cell background for current day: 当天颜色
 Table cell background for weekends: 设置周末背景色
 Event popup background: 事件弹出背景颜色
 Event popup text: 事件弹出文本颜色
+
+
+###############################################
+# Page: activity_log.php
+#
+Activity Log: 活动日志
+User: 用户
+Calendar: 日历
+Date: 日期
+Time: 时间
+Event: 事件
+Action: 活动
+Event created: 事件已创建
+Event approved: 事件已到达
+Event rejected: 事件已拒绝
+Event updated: 事件已经更新
+Event deleted: 事件已删除
+Notification sent: 发送通知
+Reminder sent: 发送提醒
+Database error: 数据库错误
+Next: 下一页
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: 无效的纪录ID
+This is a private event and may not be added to your calendar.: 这是一个私人事件不能添加到您的日历中.
+Error adding event: 添加事件错误
 
 
 ###############################################
@@ -406,12 +405,6 @@ Modified since: 更改自
 
 
 ###############################################
-# Page: groups.php
-#
-Add New Group: 添加新组
-
-
-###############################################
 # Page: group_edit.php
 #
 Unnamed Group: 未命名的组
@@ -426,11 +419,38 @@ Users: 用户
 ###############################################
 # Page: group_edit_handler.php
 #
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+Add New Group: 添加新组
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: 参数設定
+#
+# << MISSING >>
+# to modify the preferences for the Public Access calendar:
+Default Category: 默认分类
+Sun: 周日
+Mon: 周一
+Tue: 周二
+Wed: 周三
+Thu: 周四
+Fri: 周五
+Sat: 周六
+Save Preferences: 儲存参数
 
 
 ###############################################
@@ -450,7 +470,6 @@ Adding/Editing Calendar Entries: 新增/编辑 日历項目
 #
 Help Index: 輔助索引
 Layers: 阶层架構
-Preferences: 参数設定
 
 
 ###############################################
@@ -475,11 +494,15 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_pref.php
 #
-Default Category: 默认分类
 #
 # << MISSING >>
 # default-category-help:
 # English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: week.php
 #
 
 
@@ -491,9 +514,14 @@ Default Category: 默认分类
 ###############################################
 # Page: layers.php
 #
+#
+# << MISSING >>
+# to modify the layers settings for the:
 Layers are currently: 阶层架構目前是
-Disabled: 停用的
 Enabled: 啟用的
+Disabled: 停用的
+Disable Layers: 停用层
+Enable Layers: 啟用层
 Layer: 阶层
 Edit layer: 编辑阶层
 Add layer: 新增阶层
@@ -530,22 +558,6 @@ cookies-note: <B>注意:</B> 本程式須要 cookies 才能使用.
 ###############################################
 # Page: month.php
 #
-Sun: 周日
-Mon: 周一
-Tue: 周二
-Wed: 周三
-Thu: 周四
-Fri: 周五
-Sat: 周六
-
-
-###############################################
-# Page: pref.php
-#
-#
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-Save Preferences: 儲存参数
 
 
 ###############################################
@@ -592,11 +604,6 @@ Set Category: 设置分类
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: 用户管理員
@@ -610,28 +617,6 @@ All: 全部
 Reset: 更新
 Remove: 删除
 Ok: 确认
-
-
-###############################################
-# Page: views.php
-#
-Views: 视图
-Add New View: 添加新视图
-
-
-###############################################
-# Page: views_edit.php
-#
-Unnamed View: 未命名的视图
-Add View: 添加视图
-Edit View: 编辑视图
-View Name: 视图名称
-View Type: 视图类型
-
-
-###############################################
-# Page: views_edit_handler.php
-#
 
 
 ###############################################
@@ -677,14 +662,34 @@ Hide activity log: 隐藏活动日志
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: 新的事件
+Views: 视图
+Add New View: 添加新视图
+
+
+###############################################
+# Page: views_edit.php
+#
+Unnamed View: 未命名的视图
+Add View: 添加视图
+Edit View: 编辑视图
+View Name: 视图名称
+View Type: 视图类型
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: 新的事件
 Private: 私人的
 
 
@@ -695,11 +700,6 @@ Private: 私人的
 
 ###############################################
 # Page: year.php
-#
-
-
-###############################################
-# Page: includes/config.php
 #
 
 
@@ -735,12 +735,52 @@ Aug: 8月
 Sep: 9月
 Oct: 10月
 Nov: 11月
+Dec: 12月
+
+
+###############################################
+# Page: includes/user.php
+#
+Invalid login: 无效的登录
+Invalid user login: 无效的用户登录
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: 发送邮件通知
+Reminder: 提醒
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: 功能选择
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -759,13 +799,6 @@ Go to: 功能选择
 
 
 ###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: 发送邮件通知
-Reminder: 提醒
-
-
-###############################################
 # Page: includes/styles.php
 #
 
@@ -780,37 +813,8 @@ Another User's Calendar: 別人的日历
 Add New Entry: 新增事件
 Manage Views: 管理视图
 Edit Layers: 编辑层
-Enable Layers: 啟用层
-Disable Layers: 停用层
 Account: 编辑個人资料
 Current User: 当前用户
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: 无效的登录
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-Invalid user login: 无效的用户登录
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
 
 
 ###############################################

@@ -4,62 +4,7 @@
 # Translated by: Allan Thraen (allan@12go.dk)
 # Updated by: Jørgen Thomsen (jth@jth.net)
 # Last update: 12-Feb-2001
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-#
-# << MISSING >>
-# Activity Log:
-User: Bruger
-#
-# << MISSING >>
-# Calendar:
-Date: Dato
-Time: Klokken
-#
-# << MISSING >>
-# Event:
-#
-# << MISSING >>
-# Action:
-#
-# << MISSING >>
-# Event created:
-#
-# << MISSING >>
-# Event approved:
-#
-# << MISSING >>
-# Event rejected:
-#
-# << MISSING >>
-# Event updated:
-#
-# << MISSING >>
-# Event deleted:
-#
-# << MISSING >>
-# Notification sent:
-#
-# << MISSING >>
-# Reminder sent:
-#
-# << MISSING >>
-# Database error:
-#
-# << MISSING >>
-# Next:
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Ugyldigt aktivitetsid
-This is a private event and may not be added to your calendar.: Dette er en privat aktivitet, som ikke må tilføjes til din kalender.
-Error adding event: Fejl ved tilføjelse af aktivitet
+# Translation last updated on 09-10-2002
 
 
 ###############################################
@@ -171,7 +116,6 @@ No: Nej
 # << MISSING >>
 # Date format:
 December: December
-Dec: Dec
 time-format-help: Skal tiden vises pr 12 eller 24-timer.
 Time format: Tidsformat
 12 hour: 12 timer
@@ -438,6 +382,61 @@ Table cell background for current day: Tabelcellebaggrund for nuværende dag
 
 
 ###############################################
+# Page: activity_log.php
+#
+#
+# << MISSING >>
+# Activity Log:
+User: Bruger
+#
+# << MISSING >>
+# Calendar:
+Date: Dato
+Time: Klokken
+#
+# << MISSING >>
+# Event:
+#
+# << MISSING >>
+# Action:
+#
+# << MISSING >>
+# Event created:
+#
+# << MISSING >>
+# Event approved:
+#
+# << MISSING >>
+# Event rejected:
+#
+# << MISSING >>
+# Event updated:
+#
+# << MISSING >>
+# Event deleted:
+#
+# << MISSING >>
+# Notification sent:
+#
+# << MISSING >>
+# Reminder sent:
+#
+# << MISSING >>
+# Database error:
+#
+# << MISSING >>
+# Next:
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Ugyldigt aktivitetsid
+This is a private event and may not be added to your calendar.: Dette er en privat aktivitet, som ikke må tilføjes til din kalender.
+Error adding event: Fejl ved tilføjelse af aktivitet
+
+
+###############################################
 # Page: admin_handler.php
 #
 Error: Fejl
@@ -674,14 +673,6 @@ Modified since: Ændret siden
 
 
 ###############################################
-# Page: groups.php
-#
-#
-# << MISSING >>
-# Add New Group:
-
-
-###############################################
 # Page: group_edit.php
 #
 #
@@ -704,11 +695,42 @@ Users: Brugere
 ###############################################
 # Page: group_edit_handler.php
 #
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+#
+# << MISSING >>
+# Add New Group:
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: Indstillinger
+#
+# << MISSING >>
+# to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# Default Category:
+Sun: Søn
+Mon: Man
+Tue: Tir
+Wed: Ons
+Thu: Tor
+Fri: Fre
+Sat: Lør
+Save Preferences: Gem indstillinger
 
 
 ###############################################
@@ -730,7 +752,6 @@ Adding/Editing Calendar Entries: Tilføj/Redigér aktivitet
 #
 Help Index: Hjælpeindex
 Layers: Lag
-Preferences: Indstillinger
 
 
 ###############################################
@@ -773,11 +794,13 @@ Preferences: Indstillinger
 #
 #
 # << MISSING >>
-# Default Category:
-#
-# << MISSING >>
 # default-category-help:
 # English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: week.php
 #
 
 
@@ -789,9 +812,14 @@ Preferences: Indstillinger
 ###############################################
 # Page: layers.php
 #
+#
+# << MISSING >>
+# to modify the layers settings for the:
 Layers are currently: Lag er aktuelt
-Disabled: Slået fra
 Enabled: Slået til
+Disabled: Slået fra
+Disable Layers: Slå lag fra
+Enable Layers: Slå lag til
 Layer: Lag
 Edit layer: Rediger lag
 Add layer: Tilføj lag
@@ -834,22 +862,6 @@ cookies-note: <B>OBS:</B> Dette program kræver at cookies er slået til i browser
 ###############################################
 # Page: month.php
 #
-Sun: Søn
-Mon: Man
-Tue: Tir
-Wed: Ons
-Thu: Tor
-Fri: Fre
-Sat: Lør
-
-
-###############################################
-# Page: pref.php
-#
-#
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
-Save Preferences: Gem indstillinger
 
 
 ###############################################
@@ -902,11 +914,6 @@ Go: Gå til
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: betyder administrativ bruger
@@ -928,42 +935,6 @@ Add New User: Tilføj ny bruger
 #
 # << MISSING >>
 # Ok:
-
-
-###############################################
-# Page: views.php
-#
-#
-# << MISSING >>
-# Views:
-#
-# << MISSING >>
-# Add New View:
-
-
-###############################################
-# Page: views_edit.php
-#
-#
-# << MISSING >>
-# Unnamed View:
-#
-# << MISSING >>
-# Add View:
-#
-# << MISSING >>
-# Edit View:
-#
-# << MISSING >>
-# View Name:
-#
-# << MISSING >>
-# View Type:
-
-
-###############################################
-# Page: views_edit_handler.php
-#
 
 
 ###############################################
@@ -1043,14 +1014,48 @@ Add to My Calendar: Føj til min kalender
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: Ny aktivitet
+#
+# << MISSING >>
+# Views:
+#
+# << MISSING >>
+# Add New View:
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+# << MISSING >>
+# Unnamed View:
+#
+# << MISSING >>
+# Add View:
+#
+# << MISSING >>
+# Edit View:
+#
+# << MISSING >>
+# View Name:
+#
+# << MISSING >>
+# View Type:
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: Ny aktivitet
 Private: Privat
 
 
@@ -1061,11 +1066,6 @@ Private: Privat
 
 ###############################################
 # Page: year.php
-#
-
-
-###############################################
-# Page: includes/config.php
 #
 
 
@@ -1103,12 +1103,60 @@ Aug: Aug
 Sep: Sep
 Oct: Okt
 Nov: Nov
+Dec: Dec
+
+
+###############################################
+# Page: includes/user.php
+#
+#
+# << MISSING >>
+# Invalid login:
+#
+# << MISSING >>
+# Invalid user login:
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+#
+# << MISSING >>
+# Send Reminder:
+#
+# << MISSING >>
+# Reminder:
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Gå til
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -1124,17 +1172,6 @@ Go to: Gå til
 ###############################################
 # Page: includes/php-dbi.php
 #
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-#
-# << MISSING >>
-# Send Reminder:
-#
-# << MISSING >>
-# Reminder:
 
 
 ###############################################
@@ -1154,41 +1191,8 @@ Add New Entry: Tilføj ny aktivitet
 # << MISSING >>
 # Manage Views:
 Edit Layers: Rediger lag
-Enable Layers: Slå lag til
-Disable Layers: Slå lag fra
 Account: Konto
 Current User: Nuværende bruger
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-#
-# << MISSING >>
-# Invalid login:
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-#
-# << MISSING >>
-# Invalid user login:
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
 
 
 ###############################################

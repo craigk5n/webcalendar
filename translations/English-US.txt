@@ -17,36 +17,7 @@
 #
 #
 #
-# Translation last updated on 07-19-2002
-
-
-###############################################
-# Page: activity_log.php
-#
-Activity Log: Activity Log
-User: User
-Calendar: Calendar
-Date: Date
-Time: Time
-Event: Event
-Action: Action
-Event created: Event created
-Event approved: Event approved
-Event rejected: Event rejected
-Event updated: Event updated
-Event deleted: Event deleted
-Notification sent: Notification sent
-Reminder sent: Reminder sent
-Database error: Database error
-Next: Next
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Invalid entry id
-This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
-Error adding event: Error adding event
+# Translation last updated on 09-10-2002
 
 
 ###############################################
@@ -98,7 +69,6 @@ No: No
 date-format-help: Specifies the preferred date format.
 Date format: Date format
 December: December
-Dec: Dec
 time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
 Time format: Time format
 12 hour: 12 hour
@@ -186,6 +156,35 @@ Table cell background for current day: Table cell background for current day
 Table cell background for weekends: Table cell background for weekends
 Event popup background: Event popup background
 Event popup text: Event popup text
+
+
+###############################################
+# Page: activity_log.php
+#
+Activity Log: Activity Log
+User: User
+Calendar: Calendar
+Date: Date
+Time: Time
+Event: Event
+Action: Action
+Event created: Event created
+Event approved: Event approved
+Event rejected: Event rejected
+Event updated: Event updated
+Event deleted: Event deleted
+Notification sent: Notification sent
+Reminder sent: Reminder sent
+Database error: Database error
+Next: Next
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Invalid entry id
+This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
+Error adding event: Error adding event
 
 
 ###############################################
@@ -393,12 +392,6 @@ Modified since: Modified since
 
 
 ###############################################
-# Page: groups.php
-#
-Add New Group: Add New Group
-
-
-###############################################
 # Page: group_edit.php
 #
 Unnamed Group: Unnamed Group
@@ -413,11 +406,34 @@ Users: Users
 ###############################################
 # Page: group_edit_handler.php
 #
+You must specify a group name: You must specify a group name
+
+
+###############################################
+# Page: groups.php
+#
+Add New Group: Add New Group
 
 
 ###############################################
 # Page: help_admin.php
 #
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: Preferences
+to modify the preferences for the Public Access calendar: to modify the preferences for the Public Access calendar
+Default Category: Default Category
+Sun: Sun
+Mon: Mon
+Tue: Tue
+Wed: Wed
+Thu: Thu
+Fri: Fri
+Sat: Sat
+Save Preferences: Save Preferences
 
 
 ###############################################
@@ -437,7 +453,6 @@ Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
 #
 Help Index: Help Index
 Layers: Layers
-Preferences: Preferences
 
 
 ###############################################
@@ -458,8 +473,12 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_pref.php
 #
-Default Category: Default Category
 default-category-help: Specifies the category a new event should default to.
+
+
+###############################################
+# Page: week.php
+#
 
 
 ###############################################
@@ -470,9 +489,12 @@ default-category-help: Specifies the category a new event should default to.
 ###############################################
 # Page: layers.php
 #
+to modify the layers settings for the: to modify the layers settings for the
 Layers are currently: Layers are currently
-Disabled: Disabled
 Enabled: Enabled
+Disabled: Disabled
+Disable Layers: Disable Layers
+Enable Layers: Enable Layers
 Layer: Layer
 Edit layer: Edit layer
 Add layer: Add layer
@@ -509,20 +531,6 @@ cookies-note: <B>Note:</B> This application requires cookies to be enabled.
 ###############################################
 # Page: month.php
 #
-Sun: Sun
-Mon: Mon
-Tue: Tue
-Wed: Wed
-Thu: Thu
-Fri: Fri
-Sat: Sat
-
-
-###############################################
-# Page: pref.php
-#
-to modify the preferences for the Public Access calendar: to modify the preferences for the Public Access calendar
-Save Preferences: Save Preferences
 
 
 ###############################################
@@ -569,11 +577,6 @@ Set Category: Set Category
 
 
 ###############################################
-# Page: test.php
-#
-
-
-###############################################
 # Page: users.php
 #
 denotes administrative user: denotes administrative user
@@ -587,28 +590,6 @@ All: All
 Reset: Reset
 Remove: Remove
 Ok: Ok
-
-
-###############################################
-# Page: views.php
-#
-Views: Views
-Add New View: Add New View
-
-
-###############################################
-# Page: views_edit.php
-#
-Unnamed View: Unnamed View
-Add View: Add View
-Edit View: Edit View
-View Name: View Name
-View Type: View Type
-
-
-###############################################
-# Page: views_edit_handler.php
-#
 
 
 ###############################################
@@ -654,14 +635,32 @@ Hide activity log: Hide activity log
 
 
 ###############################################
-# Page: week.php
+# Page: views.php
 #
-New Entry: New Entry
+Views: Views
+Add New View: Add New View
+
+
+###############################################
+# Page: views_edit.php
+#
+Unnamed View: Unnamed View
+Add View: Add View
+Edit View: Edit View
+View Name: View Name
+View Type: View Type
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: You must specify a view name
 
 
 ###############################################
 # Page: week_details.php
 #
+New Entry: New Entry
 Private: Private
 
 
@@ -672,11 +671,6 @@ Private: Private
 
 ###############################################
 # Page: year.php
-#
-
-
-###############################################
-# Page: includes/config.php
 #
 
 
@@ -712,12 +706,52 @@ Aug: Aug
 Sep: Sep
 Oct: Oct
 Nov: Nov
+Dec: Dec
+
+
+###############################################
+# Page: includes/user.php
+#
+Invalid login: Invalid login
+Invalid user login: Invalid user login
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Send Reminder
+Reminder: Reminder
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Go to
+
+
+###############################################
+# Page: includes/config.php
+#
 
 
 ###############################################
@@ -736,13 +770,6 @@ Go to: Go to
 
 
 ###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Send Reminder
-Reminder: Reminder
-
-
-###############################################
 # Page: includes/styles.php
 #
 
@@ -757,37 +784,8 @@ Another User's Calendar: Another User's Calendar
 Add New Entry: Add New Entry
 Manage Views: Manage Views
 Edit Layers: Edit Layers
-Enable Layers: Enable Layers
-Disable Layers: Disable Layers
 Account: Account
 Current User: Current User
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-Invalid login: Invalid login
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-Invalid user login: Invalid user login
-
-
-###############################################
-# Page: includes/user.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
 
 
 ###############################################
