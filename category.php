@@ -35,6 +35,9 @@ print_header();
 <a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 <?php
 
+if ( empty ( $add ) )
+  $add = 0;
+
 // Adding/Editing category
 if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   $button = translate("Add");
@@ -46,6 +49,8 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
     $button = translate("Save");
     $catname = $categories[$id];
     $catowner = $category_owners[$id];
+  } else {
+    $catname = '';
   }
   ?>
   <?php etranslate("Category Name")?>: <input type="text" name="catname" size="20" value="<?php echo htmlspecialchars ( $catname ); ?>" />
