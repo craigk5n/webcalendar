@@ -70,6 +70,7 @@ if ( $id > 0 ) {
           $rpt_end = date_to_epoch ( $row[2] );
         else
           $rpt_end = 0;
+        $rpt_end_date = $row[2];
         $rpt_freq = $row[3];
         $rpt_days = $row[4];
         $rpt_sun  = ( substr ( $rpt_days, 0, 1 ) == 'y' );
@@ -106,6 +107,8 @@ if ( ! $year && ! $month && strlen ( $date ) ) {
   $thismonth = $month = substr ( $date, 4, 2 );
   $thisday = $day = substr ( $date, 6, 2 );
   $cal_date = $date;
+} else {
+  $cal_date = date ( "Ymd" );
 }
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 if ( ! $cal_date )
@@ -394,41 +397,9 @@ echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"yearly\" " .
   echo ( $rpt_end ? "CHECKED" : "" ); ?>> <?php etranslate("Use end date")?>
 &nbsp;&nbsp;&nbsp;
 <SPAN CLASS="end_day_selection">
-<SELECT NAME="rpt_day">
-<?php
-  if ($rpt_end) {
-     $rpt_day   = date("d",$rpt_end);
-     $rpt_month = date("m",$rpt_end);
-     $rpt_year  = date("Y",$rpt_end);
-  } else {
-     $rpt_day   = $day+1;
-     $rpt_month = $month;
-     $rpt_year  = $year;
-  }
-
-  for ($i = 1; $i <= 31; $i++) {
-    echo "<OPTION value=\"$i\"" . ($i == $rpt_day ? " SELECTED" : "")
-       . ">$i</OPTION>\n";
-  }
-
-  echo "</SELECT><SELECT NAME=\"rpt_month\">";
-
-  for ($i = 1; $i <= 12; $i++) {
-    $m = month_short_name ( $i - 1 );
-    echo "<OPTION VALUE=\"$i\"" . ($i == $rpt_month ? " SELECTED" : "")
-       . ">$m</OPTION>\n";
-  }
-
-  echo "</SELECT><SELECT NAME=\"rpt_year\">";
-
-  for ($i = -1; $i < 5; $i++) {
-    $y = date("Y") + $i;
-    echo "<OPTION VALUE=\"$y\"" . ($y == $rpt_year ? " SELECTED" : "")
-       . ">$y</OPTION>\n";
-  }
-?>
-  </SELECT>
-  <INPUT TYPE="button" ONCLICK="selectDate('rpt_day','rpt_month','rpt_year')" VALUE="<?php etranslate("Select")?>...">
+  <?php
+    print_date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date )
+  ?>
 </TD></TR>
 <TR><TD><B><?php etranslate("Repeat Day")?>: </b>(<?php etranslate("for weekly")?>)</td>
   <td><?php
