@@ -62,6 +62,8 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
     echo "<BR>";
     echo $user_fullname;
   }
+  if ( $is_nonuser_admin )
+    echo "<B><BR>-- " . translate("Admin mode") . " --</B>";
   if ( $is_assistant )
     echo "<B><BR>-- " . translate("Assistant mode") . " --</B>";
   if ( $categories_enabled == "Y" ) {
@@ -175,7 +177,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 
 <?php if ( empty ( $friendly ) ) {
 
-  display_unapproved_events ( $login );
+  display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 
 ?>
 

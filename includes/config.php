@@ -108,6 +108,11 @@ $user_inc = "user.php";
 // in includes/user-nis.php
 //$user_inc = "user-nis.php";
 
+// We can add extra 'nonuser' calendars such as a corporate calendar,
+// holiday calendar, departmental calendar, etc.  We need a unique prefix
+// for these calendars as not to get mixed up with real logins.  This prefix
+// should be a Maximum of 5 characters and should NOT change once set!
+$NONUSER_PREFIX = '_NUC_';
 
 // Language options  The first is the name presented to users while
 // the second is the filename (without the ".txt") that must exist

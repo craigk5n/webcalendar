@@ -7,7 +7,7 @@ $can_edit = false;
 // First, check to see if this user should be able to delete this event.
 if ( $id > 0 ) {
   // first see who has access to edit this entry
-  if ( $is_admin || $is_assistant ) {
+  if ( $is_admin || $is_assistant || $is_nonuser_admin) {
     $can_edit = true;
   } else if ( $readonly == "Y" ) {
     $can_edit = false;

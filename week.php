@@ -79,6 +79,8 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
   if ( $single_user == "N" ) {
     echo "<BR>$user_fullname\n";
   }
+  if ( $is_nonuser_admin )
+    echo "<B><BR>-- " . translate("Admin mode") . " --</B>";
   if ( $is_assistant )
     echo "<B><BR>-- " . translate("Assistant mode") . " --</B>";
   if ( $categories_enabled == "Y" ) {
@@ -333,7 +335,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 <?php if ( ! empty ( $eventinfo ) && empty ( $friendly ) ) echo $eventinfo; ?>
 
 <?php if ( empty ( $friendly ) ) {
-  display_unapproved_events ( ( $is_assistant ? $user : $login ) );
+  display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
 <P>

@@ -93,7 +93,13 @@ function user_valid_crypt ( $login, $crypt_password ) {
 //   $user - user login
 //   $prefix - variable prefix to use
 function user_load_variables ( $login, $prefix ) {
-  global $PUBLIC_ACCESS_FULLNAME;
+  global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX;
+
+  if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
+    nonuser_load_variables ( $login, $prefix );
+    return true;
+  }
+  
   if ( $login == "__public__" ) {
     $GLOBALS[$prefix . "login"] = $login;
     $GLOBALS[$prefix . "firstname"] = "";

@@ -286,7 +286,7 @@ function send_no_cache_header () {
 // Also load the list of views for this user (not really a preference,
 // but this is a convenient place to put this...)
 function load_user_preferences () {
-  global $login, $browser, $views, $prefarray, $is_assistant, $has_boss, $user;
+  global $login, $browser, $views, $prefarray, $is_assistant, $has_boss, $user, $is_nonuser_admin;
   $lang_found = false;
 
   $browser = get_web_browser ();
@@ -345,7 +345,7 @@ function load_user_preferences () {
     $GLOBALS["DATE_FORMAT_MD"] = "__month__ __dd__";
   $is_assistant = user_is_assistant ( $login, $user );
   $has_boss = user_has_boss ( $login );
-
+  if ($user) $is_nonuser_admin = user_is_nonuser_admin ( $login, $user );
 }
 
 
@@ -3039,6 +3039,74 @@ function print_header_timebar($start_hour, $end_hour) {
     echo "<TD WIDTH\"$width%\" BGCOLOR=\"white\">&nbsp;</TD>\n";
   }
   echo "</TR></TABLE>\n";
+}
+
+// Get a list of nonuser calendars and return info in an array.
+function get_nonuser_cals () {
+  $count = 0;
+  $ret = array ();
+  $res = dbi_query ( "SELECT cal_login, cal_lastname, cal_firstname, " .
+    "cal_admin FROM webcal_nonuser_cals " .
+    "ORDER BY cal_lastname, cal_firstname, cal_login" );
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      if ( strlen ( $row[1] ) || strlen ( $row[2] ) )
+        $fullname = "$row[2] $row[1]";
+      else
+        $fullname = $row[0];
+      $ret[$count++] = array (
+        "cal_login" => $row[0],
+        "cal_lastname" => $row[1],
+        "cal_firstname" => $row[2],
+        "cal_admin" => $row[3],
+        "cal_fullname" => $fullname
+      );
+    }
+    dbi_free_result ( $res );
+  }
+  return $ret;
+}
+
+function nonuser_load_variables ( $login, $prefix ) {
+  global $error,$nuloadtmp_email;
+  $ret =  false;
+  $res = dbi_query ( "SELECT cal_login, cal_lastname, cal_firstname, " .
+    "cal_admin FROM webcal_nonuser_cals WHERE cal_login = '$login'" );
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      if ( strlen ( $row[1] ) || strlen ( $row[2] ) )
+        $fullname = "$row[2] $row[1]";
+      else
+        $fullname = $row[0];
+
+        // We need the email address for the admin
+        user_load_variables ( $row[3], 'nuloadtmp_' );
+
+        $GLOBALS[$prefix . "login"] = $row[0];
+        $GLOBALS[$prefix . "firstname"] = $row[2];
+        $GLOBALS[$prefix . "lastname"] = $row[1];
+        $GLOBALS[$prefix . "fullname"] = $fullname;
+        $GLOBALS[$prefix . "admin"] = $row[3];
+        $GLOBALS[$prefix . "email"] = $nuloadtmp_email;
+        $ret = true;
+    }
+    dbi_free_result ( $res );
+  }
+  return $ret;
+}
+
+// Return true if $login is $nonuser administrator
+function user_is_nonuser_admin ( $login, $nonuser ) {
+  $ret = false;
+
+  $res = dbi_query ( "SELECT * FROM webcal_nonuser_cals " .
+    "WHERE cal_login = '$nonuser' AND cal_admin = '$login'" );
+  if ( $res ) {
+    if ( dbi_fetch_row ( $res ) )
+      $ret = true;
+    dbi_free_result ( $res );
+  }
+  return $ret;
 }
 
 ?>

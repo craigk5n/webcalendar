@@ -558,6 +558,20 @@ cookies-note: <B>Note:</B> This application requires cookies to be enabled.
 
 
 ###############################################
+# Page: nonusers.php
+#
+NonUser: NonUser Calendars
+Add New NonUser Calendar: Add New NonUser Calendar
+Calendar ID: Calendar ID
+NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
+
+
+###############################################
+# Page: nonusers_handler.php
+#
+
+
+###############################################
 # Page: pref_handler.php
 #
 

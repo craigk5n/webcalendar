@@ -6,7 +6,7 @@ include_once 'includes/site_extras.php';
 $can_view = false;
 $is_my_event = false;
 
-if ( $is_admin || $is_assistant )
+if ( $is_admin || $is_nonuser_admin || $is_assistant )
   $can_view = true;
 
 if ( ! $can_view ) {

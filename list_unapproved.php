@@ -103,7 +103,7 @@ function list_unapproved ( $user ) {
 <?php
 
 // List unapproved events for this user.
-list_unapproved ( ( $is_assistant ? $user : $login ) );
+list_unapproved ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 
 // Admin users can also approve Public Access events
 if ( $is_admin && $public_access == "Y" ) {

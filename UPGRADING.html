@@ -4,6 +4,22 @@
 
 Below are the steps needed to upgrade from a previous version:
 
+<P><HR><P><B>To upgrade to 0.9.41 from 0.9.40 or older:</B>
+<P>
+  One new table was added: webcal_nonuser_cals.
+   Use the following SQL
+  for MySQL and PostgreSQL:
+  <BLOCKQUOTE><PRE>
+   CREATE TABLE webcal_nonuser_cals (
+     cal_login VARCHAR(25) NOT NULL,
+     cal_lastname VARCHAR(25),
+     cal_firstname VARCHAR(25),
+     cal_admin VARCHAR(25) NOT NULL,
+     PRIMARY KEY ( cal_login )
+   );
+  </PRE></BLOCKQUOTE>
+  For Oracle, use VARCHAR2 instead of VARCHAR.
+
 <P><HR><P><B>To upgrade to 0.9.40 from 0.9.39 or older:</B>
 <P>
   Two new tables were created: webcal_asst and webcal_entry_ext_user.

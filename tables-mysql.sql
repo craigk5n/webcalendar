@@ -452,4 +452,18 @@ CREATE TABLE webcal_asst (
   PRIMARY KEY ( cal_boss, cal_assistant )
 );
 
+/*
+ * Defines non-user calendars.
+ */
+CREATE TABLE webcal_nonuser_cals (
+  /* the unique id for the calendar */
+  cal_login VARCHAR(25) NOT NULL,
+  /* calendar's last name */
+  cal_lastname VARCHAR(25),
+  /* calendar's first name */
+  cal_firstname VARCHAR(25),
+  /* who is the calendar administrator */
+  cal_admin VARCHAR(25) NOT NULL,
+  PRIMARY KEY ( cal_login )
+);
 
