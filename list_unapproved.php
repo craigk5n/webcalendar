@@ -5,8 +5,8 @@ send_no_cache_header ();
 if ( empty ( $user ) )
   $user = $login;
 
-// Only admin user can specify a username other than his own.
-if ( ! $is_admin && $user != $login )
+// Only admin user or assistant can specify a username other than his own.
+if ( ! $is_admin && $user != $login  && ! $is_assistant)
   $user = $login;
 
 $HeadX = '';
