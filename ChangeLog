@@ -1,4 +1,6 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Fixed bug 1151442: Overlapping events display error in day.php
+ - Fixed bug  1146037: Availibility legend size not dynamic and not centered in IE.
  - Added global views (available to all users)
  - Added option to select all users for a view (rather than having
    to select all users in the list).  If users are added later, they
