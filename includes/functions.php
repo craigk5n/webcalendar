@@ -1118,7 +1118,8 @@ function get_entries ( $user, $date, $get_unapproved=true ) {
 }
 
 
-// Read events visible to a user (including layers); return results
+// Read events visible to a user (including layers and possibly public access
+// if enabled); return results
 // in an array sorted by time of day.
 // params:
 //   $user - username
@@ -1130,7 +1131,7 @@ function get_entries ( $user, $date, $get_unapproved=true ) {
 
 function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   global $login;
-  global $layers;
+  global $layers, $public_access_default_visible;
   $result = array ();
   $layers_byuser = array ();
 
@@ -1168,6 +1169,10 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
       // a new array that will help when we have to check for dups
       $layers_byuser["$layeruser"] = $layers[$index]['cal_dups'];
     }
+  }
+  if ( $user == $login && strlen ( $user ) &&
+    $public_access_default_visible == 'Y' ) {
+    $sql .= "OR webcal_entry_user.cal_login = '__public__' ";
   }
   if ( strlen ( $user ) > 0 )
     $sql .= ") ";
