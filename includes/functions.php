@@ -1110,7 +1110,7 @@ function date_selection_html ( $prefix, $date ) {
       ( $y == $thisyear ? " selected=\"selected\"" : "" ) . ">$y</option>\n";
   }
   $ret .= "</select>\n";
-  $ret .= "<input type=\"button\" onclick=\"selectDate('" .
+  $ret .= "<input type=\"button\" onclick=\"selectDate( '" .
     $prefix . "day','" . $prefix . "month','" . $prefix . "year',$date)\" value=\"" .
     translate("Select") . "...\" />\n";
 
