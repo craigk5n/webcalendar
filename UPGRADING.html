@@ -461,6 +461,10 @@ Execute the following SQL to update your database:
 </p>
 <pre>
 ALTER TABLE webcal_view ADD cal_is_global CHAR(1) DEFAULT 'N' NOT NULL;
+UPDATE webcal_user_pref SET cal_value = 'day.php' WHERE cal_setting = 'day';
+UPDATE webcal_user_pref SET cal_value = 'week.php' WHERE cal_setting = 'week';
+UPDATE webcal_user_pref SET cal_value = 'month.php' WHERE cal_setting = 'month';
+UPDATE webcal_user_pref SET cal_value = 'year.php' WHERE cal_setting = 'year';
 </pre>
 <hr />
 
