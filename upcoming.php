@@ -56,7 +56,7 @@ include "includes/translate.php";
 
 // Change this to false if you still want to access this page even
 // though you do not have public access enabled.
-$public_must_be_enabled = false;
+$public_must_be_enabled = true;
 
 // Do we include a link to view the event?  If so, what target
 // should we use.
@@ -153,10 +153,31 @@ $repeated_events = read_repeated_events ( $username, $cat_id, $date );
 $events = read_events ( $username, $date, $endDate, $cat_id );
 
 // Print header without custom header and no style sheet
-?><html>
-<head>
-<title>Upcoming Events</title>
-</head>
+if ( ! empty ( $LANGUAGE ) ) {
+  $charset = translate ( "charset" );
+  if ( $charset != "charset" ) {
+    echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n" .
+      "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
+      "\"DTD/xhtml1-transitional.dtd\">\n" .
+      "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
+      "xml:lang=\"$lang\" lang=\"$lang\">\n" .
+      "<head>\n" .
+      "<meta http-equiv=\"Content-Type\" content=\"text/html; " .
+      "charset=$charset\" />\n";
+  } else {
+    echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n" .
+      "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
+      "\"DTD/xhtml1-transitional.dtd\">\n" .
+      "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
+      "xml:lang=\"en\" lang=\"en\">\n" .
+      "<head>\n";
+  }
+} else {
+  echo "<html>\n";
+}
+echo "<title>".translate($application_name)."</title>\n";
+ 
+?></head>
 <body>
 <?php
 print "<dl>\n";
