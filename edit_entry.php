@@ -1,20 +1,28 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/site_extras.inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/site_extras.php";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
+load_user_categories ();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 // make sure this is not a read-only calendar
 $can_edit = false;
+
+// Public access can only add events, not edit.
+if ( $login == "__public__" && $id > 0 ) {
+  $id = 0;
+}
+
 
 if ( ! empty ( $id ) && $id > 0 ) {
   // first see who has access to edit this entry
@@ -22,7 +30,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
     $can_edit = true;
   } else {
     $can_edit = false;
-    if ( ! $readonly || $is_admin ) {
+    if ( $readonly == "N" || $is_admin ) {
       $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
         "webcal_entry_user WHERE webcal_entry.cal_id = " .
         "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
@@ -43,8 +51,12 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
+    if ( ! empty ( $override ) ) {
+      // Leave $cal_date to what was set in URL with date=YYYYMMDD
+    } else {
+      $cal_date = $row[1];
+    }
     $create_by = $row[0];
-    $cal_date = $row[1];
     $year = (int) ( $cal_date / 10000 );
     $month = ( $cal_date / 100 ) % 100;
     $day = $cal_date % 100;
@@ -62,41 +74,54 @@ if ( ! empty ( $id ) && $id > 0 ) {
     $name = $row[9];
     $description = $row[10];
     // check for repeating event info...
-    $res = dbi_query ( "SELECT cal_id, cal_type, cal_end, " .
-      "cal_frequency, cal_days FROM webcal_entry_repeats " .
-      "WHERE cal_id = $id" );
-    if ( $res ) {
-      if ( $row = dbi_fetch_row ( $res ) ) {
-        $rpt_type = $row[1];
-        if ( $row[2] > 0 )
-          $rpt_end = date_to_epoch ( $row[2] );
-        else
-          $rpt_end = 0;
-        $rpt_end_date = $row[2];
-        $rpt_freq = $row[3];
-        $rpt_days = $row[4];
-        $rpt_sun  = ( substr ( $rpt_days, 0, 1 ) == 'y' );
-        $rpt_mon  = ( substr ( $rpt_days, 1, 1 ) == 'y' );
-        $rpt_tue  = ( substr ( $rpt_days, 2, 1 ) == 'y' );
-        $rpt_wed  = ( substr ( $rpt_days, 3, 1 ) == 'y' );
-        $rpt_thu  = ( substr ( $rpt_days, 4, 1 ) == 'y' );
-        $rpt_fri  = ( substr ( $rpt_days, 5, 1 ) == 'y' );
-        $rpt_sat  = ( substr ( $rpt_days, 6, 1 ) == 'y' );
+    // but not if we are overriding a single entry of an already repeating
+    // event... confusing, eh?
+    if ( ! empty ( $override ) ) {
+      $rpt_type = "none";
+      $rpt_end = 0;
+      $rpt_end_date = $cal_date;
+      $rpt_freq = 1;
+      $rpt_days = "nnnnnnn";
+      $rpt_sun = $rpt_mon = $rpt_tue = $rpt_wed =
+        $rpt_thu = $rpt_fri = $rpt_sat = false;
+    } else {
+      $res = dbi_query ( "SELECT cal_id, cal_type, cal_end, " .
+        "cal_frequency, cal_days FROM webcal_entry_repeats " .
+        "WHERE cal_id = $id" );
+      if ( $res ) {
+        if ( $row = dbi_fetch_row ( $res ) ) {
+          $rpt_type = $row[1];
+          if ( $row[2] > 0 )
+            $rpt_end = date_to_epoch ( $row[2] );
+          else
+            $rpt_end = 0;
+          $rpt_end_date = $row[2];
+          $rpt_freq = $row[3];
+          $rpt_days = $row[4];
+          $rpt_sun  = ( substr ( $rpt_days, 0, 1 ) == 'y' );
+          $rpt_mon  = ( substr ( $rpt_days, 1, 1 ) == 'y' );
+          $rpt_tue  = ( substr ( $rpt_days, 2, 1 ) == 'y' );
+          $rpt_wed  = ( substr ( $rpt_days, 3, 1 ) == 'y' );
+          $rpt_thu  = ( substr ( $rpt_days, 4, 1 ) == 'y' );
+          $rpt_fri  = ( substr ( $rpt_days, 5, 1 ) == 'y' );
+          $rpt_sat  = ( substr ( $rpt_days, 6, 1 ) == 'y' );
+        }
       }
     }
     
   }
-  $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id";
+  $sql = "SELECT cal_login, cal_category FROM webcal_entry_user WHERE cal_id = $id";
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants[$row[0]] = 1;
+      if ($login == $row[0]) $cat_id = $row[1];
     }
   }
 } else {
   $id = 0; // to avoid warnings below about use of undefined var
   $time = -1;
-  if ( ! $readonly || $is_admin )
+  if ( $readonly == "N" || $is_admin )
     $can_edit = true;
 }
 if ( ! empty ( $year ) && $year )
@@ -145,11 +170,13 @@ if ( empty ( $cal_date ) || ! $cal_date )
 ?>
 <HTML>
 <HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
+<TITLE><?php etranslate($application_name)?></TITLE>
 <SCRIPT LANGUAGE="JavaScript">
 // do a little form verifying
 function validate_and_submit () {
   if ( document.forms[0].name.value == "" ) {
+    document.forms[0].name.select ();
+    document.forms[0].name.focus ();
     alert ( "<?php etranslate("You have not entered a Brief Description")?>." );
     return false;
   }
@@ -166,8 +193,10 @@ function validate_and_submit () {
       h = 0;
   }
 <?php } ?>
-  if ( h > 24 || m > 59 ) {
+  if ( h >= 24 || m > 59 ) {
     alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
+    document.forms[0].hour.select ();
+    document.forms[0].hour.focus ();
     return false;
   }
   // Ask for confirmation for time of day if it is before the user's
@@ -222,12 +251,40 @@ function selectDate ( day, month, year, current ) {
   if ( current > 0 )
     url += '&date=' + current;
   window.open( url, "DateSelection",
-    "width=200,height=160,resizable=yes,scrollbars=yes" );
+    "width=300,height=200,resizable=yes,scrollbars=yes" );
 }
+
+
+<?php if ( $groups_enabled == "Y" ) { ?>
+function selectUsers () {
+  // find id of user selection object
+  var listid = 0;
+  for ( i = 0; i < document.forms[0].elements.length; i++ ) {
+    if ( document.forms[0].elements[i].name == "participants[]" )
+      listid = i;
+  }
+  url = "usersel.php?form=editentryform&listid=" + listid + "&users=";
+  // add currently selected users
+  for ( i = 0, j = 0; i < document.forms[0].elements[listid].length; i++ ) {
+    if ( document.forms[0].elements[listid].options[i].selected ) {
+      if ( j != 0 )
+	url += ",";
+      j++;
+      url += document.forms[0].elements[listid].options[i].value;
+    }
+  }
+  //alert ( "URL: " + url );
+  // open window
+  window.open ( url, "UserSelection",
+    "width=500,height=500,resizable=yes,scrollbars=yes" );
+}
+<?php } ?>
+
+
 </SCRIPT>
-<?php include "includes/styles.inc"; ?>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>">
+<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php if ( $id ) echo translate("Edit Entry"); else echo translate("Add Entry"); ?></FONT></H2>
 
@@ -240,24 +297,31 @@ if ( $can_edit ) {
 if ( ! empty ( $id ) ) echo "<INPUT TYPE=\"hidden\" NAME=\"id\" VALUE=\"$id\">\n";
 // we need an additional hidden input field
 echo "<INPUT TYPE=\"hidden\" NAME=\"entry_changed\" VALUE=\"\">\n";
+
+// are we overriding an entry from a repeating event...
+if ( $override ) {
+  echo "<INPUT TYPE=\"hidden\" NAME=\"override\" VALUE=\"1\">\n";
+  echo "<INPUT TYPE=\"hidden\" NAME=\"override_date\" VALUE=\"$cal_date\">\n";
+}
+
 ?>
 
 <TABLE BORDER=0>
 
-<TR><TD><B><?php etranslate("Brief Description")?>:</B></TD>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("brief-description-help")?>"><?php etranslate("Brief Description")?>:</B></TD>
   <TD><INPUT NAME="name" SIZE=25 VALUE="<?php echo htmlspecialchars ( $name ); ?>"></TD></TR>
 
-<TR><TD VALIGN="top"><B><?php etranslate("Full Description")?>:</B></TD>
+<TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("full-description-help")?>"><?php etranslate("Full Description")?>:</B></TD>
   <TD><TEXTAREA NAME="description" ROWS=5 COLS=40 WRAP="virtual"><?php echo htmlspecialchars ( $description ); ?></TEXTAREA></TD></TR>
 
-<TR><TD><B><?php etranslate("Date")?>:</B></TD>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("date-help")?>"><?php etranslate("Date")?>:</B></TD>
   <TD>
   <?php
   print_date_selection ( "", $cal_date )
   ?>
 </TD></TR>
 
-<TR><TD><B><?php etranslate("Time")?>:</B></TD>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("time-help")?>"><?php etranslate("Time")?>:</B></TD>
 <?php
 
 $h12 = $hour;
@@ -289,11 +353,11 @@ if ( $TIME_FORMAT == "12" ) {
   $dur_h = (int)( $duration / 60 );
   $dur_m = $duration - ( $dur_h * 60 );
 ?>
-<TR><TD><B><?php etranslate("Duration")?>:</B></TD>
-  <TD><INPUT NAME="duration_h" SIZE=2 VALUE="<?php printf ( "%d", $dur_h );?>">:<INPUT NAME="duration_m" SIZE=2 VALUE="<?php printf ( "%02d", $dur_m );?>"> (<?php echo translate("hours") . ":" . translate("minutes")?>)</TD></TR>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("duration-help")?>"><?php etranslate("Duration")?>:</B></TD>
+  <TD><INPUT NAME="duration_h" SIZE="2" MAXLENGTH="2" VALUE="<?php printf ( "%d", $dur_h );?>">:<INPUT NAME="duration_m" SIZE="2" MAXLENGTH="2" VALUE="<?php printf ( "%02d", $dur_m );?>"> (<?php echo translate("hours") . ":" . translate("minutes")?>)</TD></TR>
 
-<?php if ( ! $disable_priority_field ) { ?>
-<TR><TD><B><?php etranslate("Priority")?>:</B></TD>
+<?php if ( $disable_priority_field != "Y" ) { ?>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("priority-help")?>"><?php etranslate("Priority")?>:</B></TD>
   <TD><SELECT NAME="priority">
     <OPTION VALUE="1"<?php if ( $priority == 1 ) echo " SELECTED";?>><?php etranslate("Low")?>
     <OPTION VALUE="2"<?php if ( $priority == 2 || $priority == 0 ) echo " SELECTED";?>><?php etranslate("Medium")?>
@@ -301,16 +365,29 @@ if ( $TIME_FORMAT == "12" ) {
   </SELECT></TD></TR>
 <?php } ?>
 
-<?php if ( ! $disable_access_field ) { ?>
-<TR><TD><B><?php etranslate("Access")?>:</B></TD>
+<?php if ( $disable_access_field != "Y" ) { ?>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("access-help")?>"><?php etranslate("Access")?>:</B></TD>
   <TD><SELECT NAME="access">
     <OPTION VALUE="P"<?php if ( $access == "P" || ! strlen ( $access ) ) echo " SELECTED";?>><?php etranslate("Public")?>
     <OPTION VALUE="R"<?php if ( $access == "R" ) echo " SELECTED";?>><?php etranslate("Confidential")?>
   </SELECT></TD></TR>
 <?php } ?>
 
+<?php if ( ! empty ( $categories ) ) { ?>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("category-help")?>"><?php etranslate("Category")?>:</B></TD>
+  <TD><SELECT NAME="cat_id">
 <?php
-// site-specific extra fields (see site_extras.inc)
+  foreach( $categories as $K => $V ){
+    echo "<OPTION VALUE=\"$K\"";
+    if ( $cat_id == $K ) echo " SELECTED";
+    echo ">$V";
+  }
+?>
+  </SELECT></TD></TR>
+<?php } ?>
+
+<?php
+// site-specific extra fields (see site_extras.php)
 // load any site-specific fields and display them
 if ( $id > 0 )
   $extras = get_site_extra_fields ( $id );
@@ -364,7 +441,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     // show list of calendar users...
     echo "<SELECT NAME=\"" . $extra_name . "\">";
     echo "<OPTION VALUE=\"\"> None";
-    $userlist = user_get_users ();
+    $userlist = get_my_users ();
     for ( $i = 0; $i < count ( $userlist ); $i++ ) {
       echo "<OPTION VALUE=\"" . $userlist[$i]['cal_login'] . "\"";
         if ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
@@ -419,11 +496,14 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
 
 <?php
 // Only ask for participants if we are multi-user.
-$show_participants = ! $disable_participants_field;
+$show_participants = ( $disable_participants_field != "Y" );
 if ( $is_admin )
   $show_participants = true;
-if ( ! $single_user && $show_participants ) {
-  $userlist = user_get_users ();
+if ( $login == "__public__" && $public_access_others != "Y" )
+  $show_participants = false;
+
+if ( $single_user == "N" && $show_participants ) {
+  $userlist = get_my_users ();
   $num_users = 0;
   $size = 0;
   $users = "";
@@ -445,15 +525,21 @@ if ( ! $single_user && $show_participants ) {
     $size = 15;
   else if ( $size > 5 )
     $size = 5;
-  print "<TR><TD VALIGN=\"top\"><B>" .
+  print "<TR><TD VALIGN=\"top\"><B CLASS=\"tooltip\" TITLE=\"" .
+    tooltip("participants-help") . "\">" .
     translate("Participants") . ":</B></TD>";
   print "<TD><SELECT NAME=\"participants[]\" SIZE=$size MULTIPLE>$users\n";
-  print "</SELECT></TD></TR>\n";
+  print "</SELECT>";
+  if ( $groups_enabled == "Y" ) {
+    echo "<INPUT TYPE=\"button\" ONCLICK=\"selectUsers()\" VALUE=\"" .
+      translate("Select") . "...\">";
+  }
+  print "</TD></TR>\n";
 }
 ?>
 
-<?php if ( ! $disable_repeating_field ) { ?>
-<TR><TD VALIGN="top"><B><?php etranslate("Repeat Type")?>:</B></TD>
+<?php if ( $disable_repeating_field != "Y" ) { ?>
+<TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("repeat-type-help")?>"><?php etranslate("Repeat Type")?>:</B></TD>
 <TD VALIGN="top"><?php
 echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"none\" " .
   ( strcmp ( $rpt_type, 'none' ) == 0 ? "CHECKED" : "" ) . "> " .
@@ -475,7 +561,7 @@ echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"yearly\" " .
   translate("Yearly");
 ?>
 </TD></TR>
-<TR><TD><B><?php etranslate("Repeat End Date")?>:</B></TD>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("repeat-end-date-help")?>"><?php etranslate("Repeat End Date")?>:</B></TD>
 <TD><INPUT TYPE="checkbox" NAME="rpt_end_use" VALUE="y" <?php
   echo ( ! empty ( $rpt_end ) ? "CHECKED" : "" ); ?>> <?php etranslate("Use end date")?>
 &nbsp;&nbsp;&nbsp;
@@ -484,7 +570,7 @@ echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"yearly\" " .
     print_date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date )
   ?>
 </TD></TR>
-<TR><TD><B><?php etranslate("Repeat Day")?>: </b>(<?php etranslate("for weekly")?>)</td>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("repeat-day-help")?>"><?php etranslate("Repeat Day")?>: </b>(<?php etranslate("for weekly")?>)</td>
   <td><?php
   echo "<INPUT TYPE=\"checkbox\" NAME=\"rpt_sun\" VALUE=\"y\" "
      . (!empty($rpt_sun)?"CHECKED":"") . "> " . translate("Sunday");
@@ -502,7 +588,7 @@ echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"yearly\" " .
      . (!empty($rpt_sat)?"CHECKED":"") . "> " . translate("Saturday");
   ?></TD></TR>
 
-<TR><TD><B><?php etranslate("Frequency")?>:</B></TD>
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("repeat-frequency-help")?>"><?php etranslate("Frequency")?>:</B></TD>
 <TD>
   <INPUT NAME="rpt_freq" SIZE="4" MAXLENGTH="4" VALUE="<?php echo $rpt_freq; ?>">
  </TD>
@@ -527,7 +613,7 @@ echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"yearly\" " .
 
 </FORM>
 
-<?php if ( $id > 0 && ( $login == $create_by || $single_user || $is_admin ) ) { ?>
+<?php if ( $id > 0 && ( $login == $create_by || $single_user == "Y" || $is_admin ) ) { ?>
 <A HREF="del_entry.php?id=<?php echo $id;?>" onClick="return confirm('<?php etranslate("Are you sure you want to delete this entry?")?>');"><?php etranslate("Delete entry")?></A><BR>
 <?php } ?>
 <?php
@@ -536,6 +622,6 @@ echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"yearly\" " .
 }
 ?>
 
-<?php include "includes/trailer.inc"; ?>
+<?php include "includes/trailer.php"; ?>
 </BODY>
 </HTML>

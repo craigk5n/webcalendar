@@ -1,16 +1,17 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 $sql = "DELETE FROM webcal_user_pref WHERE cal_login = '$login' " .
   "AND cal_setting = 'LAYERS_STATUS'";
@@ -39,10 +40,10 @@ if ( empty ( $error ) ) {
 
 ?>
 <HTML>
-<HEAD><TITLE><?php etranslate("Title")?></TITLE>
-<?php include "includes/styles.inc"; ?>
+<HEAD><TITLE><?php etranslate($application_name)?></TITLE>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>">
+<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></FONT></H2>
 
@@ -51,7 +52,7 @@ if ( empty ( $error ) ) {
 <?php echo $error; ?>
 </BLOCKQUOTE>
 
-<?php include "includes/trailer.inc"; ?>
+<?php include "includes/trailer.php"; ?>
 
 </BODY>
 </HTML>

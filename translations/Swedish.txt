@@ -4,20 +4,1322 @@
 # Translated by: Jesper Thörn <jesper@thorn.as>
 # Updated by: Patrik Grip-Jansson <patrikj@gnulix.org>
 # Last update: 2001-08-02
+# Translation last updated on 07-11-2002
 
-# Title is what will appear in the title bar for pages
-Title: Webbkalender
 
-1st: 1:a
-2nd: 2:a
-3rd: 3:de
-4th: 4:de
-5th: 5:e
+###############################################
+# Page: activity_log.php
+#
+#
+# << MISSING >>
+# Activity Log:
+# English text: Activity Log
+#
+User: Användare
+#
+# << MISSING >>
+# Calendar:
+# English text: Calendar
+#
+Date: Datum
+Time: Klockan
+#
+# << MISSING >>
+# Event:
+# English text: Event
+#
+#
+# << MISSING >>
+# Action:
+# English text: Action
+#
+#
+# << MISSING >>
+# Event created:
+# English text: Event created
+#
+#
+# << MISSING >>
+# Event approved:
+# English text: Event approved
+#
+#
+# << MISSING >>
+# Event rejected:
+# English text: Event rejected
+#
+#
+# << MISSING >>
+# Event updated:
+# English text: Event updated
+#
+#
+# << MISSING >>
+# Event deleted:
+# English text: Event deleted
+#
+#
+# << MISSING >>
+# Notification sent:
+# English text: Notification sent
+#
+#
+# << MISSING >>
+# Reminder sent:
+# English text: Reminder sent
+#
+Database error: Fel i databasen
+#
+# << MISSING >>
+# Next:
+# English text: Next
+#
 
-Month: Månad
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Ogiltigt händelse-ID
+This is a private event and may not be added to your calendar.: Detta är ett privat möte och kan inte läggas till i din kalender.
+Error adding event: Fel vid inläggning av ny händelse
+
+
+###############################################
+# Page: admin.php
+#
+#
+# << MISSING >>
+# Server URL is required:
+# English text: Server URL is required
+#
+#
+# << MISSING >>
+# Server URL must end with '/':
+# English text: Server URL must end with '/'
+#
+Invalid color for document background: Ogiltig bakgrundsfärg
+Invalid color for document title: Ogiltig färg för dokumenttiteln
+Invalid color for table cell background: Ogiltig färg f tabellbakgrunden
+#
+# << MISSING >>
+# Invalid color for table grid:
+# English text: Invalid color for table grid
+#
+#
+# << MISSING >>
+# Invalid color for table header background:
+# English text: Invalid color for table header background
+#
+#
+# << MISSING >>
+# Invalid color for table text background:
+# English text: Invalid color for table text background
+#
+#
+# << MISSING >>
+# Invalid color for event popup background:
+# English text: Invalid color for event popup background
+#
+#
+# << MISSING >>
+# Invalid color for event popup text:
+# English text: Invalid color for event popup text
+#
+Invalid color for table cell background for today: Ogiltig färg för dagens tabellbakgrund
+Color format should be '#RRGGBB': Färgen skall skrivas som '#RRGGBB'
+#
+# << MISSING >>
+# System Settings:
+# English text: System Settings
+#
+You are not authorized: Förbjuden åtgärd 
+#
+# << MISSING >>
+# Note:
+# English text: Note
+#
+#
+# << MISSING >>
+# Your user preferences:
+# English text: Your user preferences
+#
+#
+# << MISSING >>
+# may be affecting the appearance of this page.:
+# English text: may be affecting the appearance of this page.
+#
+#
+# << MISSING >>
+# Click here:
+# English text: Click here
+#
+#
+# << MISSING >>
+# to not use your user preferences when viewing this page:
+# English text: to not use your user preferences when viewing this page
+#
+#
+# << MISSING >>
+# Note:
+# English text: Note
+#
+#
+# << MISSING >>
+# Your user preferences:
+# English text: Your user preferences
+#
+#
+# << MISSING >>
+# are being ignored while viewing this page.:
+# English text: are being ignored while viewing this page.
+#
+#
+# << MISSING >>
+# Click here:
+# English text: Click here
+#
+#
+# << MISSING >>
+# to load your user preferences when viewing this page:
+# English text: to load your user preferences when viewing this page
+#
+Save: Spara
+Help: Hjälp
+Settings: Inställningar 
+#
+# << MISSING >>
+# app-name-help:
+# English text: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
+#
+#
+# << MISSING >>
+# Application Name:
+# English text: Application Name
+#
+#
+# << MISSING >>
+# server-url-help:
+# English text: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
+#
+#
+# << MISSING >>
+# Server URL:
+# English text: Server URL
+#
+language-help: Ange vilket språk du vill använda.
+Language: Språk
+Your browser default language is: Standardspråket i din webläsare är
+#
+# << MISSING >>
+# fonts-help:
+# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+#
+#
+# << MISSING >>
+# Fonts:
+# English text: Fonts
+#
+preferred-view-help: Specificera standardvisning (dag, vecka, månad eller år).
+Preferred view: Vald vy
+Day: Dag
 Week: Vecka
-Error: Fel
+Month: Månad
+Year: År
+#
+# << MISSING >>
+# display-weekends-help:
+# English text: Include weekends when viewing a week.
+#
+#
+# << MISSING >>
+# Display weekends in week view:
+# English text: Display weekends in week view
+#
+Yes: Ja
+No: Nej
+time-format-help: Skall tiden visas i 12 eller 24-timmars format.
+Time format: Tidsformat
+12 hour: 12 timmar
+24 hour: 24 timmar
+#
+# << MISSING >>
+# auto-refresh-help:
+# English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
+#
+#
+# << MISSING >>
+# Auto-refresh calendars:
+# English text: Auto-refresh calendars
+#
+#
+# << MISSING >>
+# auto-refresh-time-help:
+# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
+#
+#
+# << MISSING >>
+# Auto-refresh time:
+# English text: Auto-refresh time
+#
+minutes: minuter
+#
+# << MISSING >>
+# require-approvals-help:
+# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
+#
+#
+# << MISSING >>
+# Require event approvals:
+# English text: Require event approvals
+#
+display-unapproved-help: Specificera om din kalender skall visa icke godkända aktiviteter.
+Display unapproved: Visa icke godkända.
+display-week-number-help: Specificera om veckonummerna skall visas på veckovyn.
+Display week number: Visa veckonummer
+display-week-starts-on: Börjar din vecka på söndagar eller måndagar.
+Week starts on: Veckan börjar på
+Sunday: Söndag
+Monday: Måndag
+work-hours-help: Specificera dagliga arbetstimmar.
+Work hours: Arbetstimmar.
+From: Från
+to: till
+#
+# << MISSING >>
+# disable-priority-field-help:
+# English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Priority field:
+# English text: Disable Priority field
+#
+#
+# << MISSING >>
+# disable-access-field-help:
+# English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Access field:
+# English text: Disable Access field
+#
+#
+# << MISSING >>
+# disable-participants-field-help:
+# English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
+#
+#
+# << MISSING >>
+# Disable Participants field:
+# English text: Disable Participants field
+#
+#
+# << MISSING >>
+# disable-repeating-field-help:
+# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Repeating field:
+# English text: Disable Repeating field
+#
+#
+# << MISSING >>
+# allow-public-access-help:
+# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
+#
+#
+# << MISSING >>
+# Allow public access:
+# English text: Allow public access
+#
+#
+# << MISSING >>
+# public-access-view-others-help:
+# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
+#
+#
+# << MISSING >>
+# Public access can view other users:
+# English text: Public access can view other users
+#
+#
+# << MISSING >>
+# public-access-can-add-help:
+# English text: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
+#
+#
+# << MISSING >>
+# Public access can add events:
+# English text: Public access can add events
+#
+#
+# << MISSING >>
+# allow-view-other-help:
+# English text: Specifies whether one user may view another user's calendar.
+#
+#
+# << MISSING >>
+# Allow viewing other user's calendars:
+# English text: Allow viewing other user's calendars
+#
+#
+# << MISSING >>
+# remember-last-login-help:
+# English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
+#
+#
+# << MISSING >>
+# Remember last login:
+# English text: Remember last login
+#
+#
+# << MISSING >>
+# conflict-check-help:
+# English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
+#
+#
+# << MISSING >>
+# Check for event conflicts:
+# English text: Check for event conflicts
+#
+#
+# << MISSING >>
+# conflict-months-help:
+# English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
+#
+#
+# << MISSING >>
+# Conflict checking months:
+# English text: Conflict checking months
+#
+#
+# << MISSING >>
+# Groups:
+# English text: Groups
+#
+#
+# << MISSING >>
+# groups-enabled-help:
+# English text: Enables group support, allowing users to select users by groups.
+#
+#
+# << MISSING >>
+# Groups enabled:
+# English text: Groups enabled
+#
+#
+# << MISSING >>
+# user-sees-his-group-help:
+# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
+#
+#
+# << MISSING >>
+# User sees only his groups:
+# English text: User sees only his groups
+#
+#
+# << MISSING >>
+# Categories:
+# English text: Categories
+#
+#
+# << MISSING >>
+# categories-enabled-help:
+# English text: Enables support for event categories.
+#
+#
+# << MISSING >>
+# Categories enabled:
+# English text: Categories enabled
+#
+Email: E-post
+#
+# << MISSING >>
+# email-enabled-help:
+# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
+#
+#
+# << MISSING >>
+# Email enabled:
+# English text: Email enabled
+#
+#
+# << MISSING >>
+# email-default-sender:
+# English text: Specifies the email address to specify as the sender when sending out reminders.
+#
+#
+# << MISSING >>
+# Default sender address:
+# English text: Default sender address
+#
+#
+# << MISSING >>
+# Default user settings:
+# English text: Default user settings
+#
+email-event-reminders-help: Anger om programmet ska skicka påminnelser via e-post
+Event reminders: Aktivitestpåminnelser
+email-event-added: E-post vid tillägg av aktiviter
+Events added to my calendar: Aktivteter som lagts till i min kalender
+email-event-updated: E-post när aktiviter uppdateras
+Events updated on my calendar: Aktiviter som uppdaterats i min kalender
+email-event-deleted: E-post vid radering av aktiviteter
+Events removed from my calendar: Aktiviteter som raderats från min kalender
+email-event-rejected: E-post vid avslag av aktiviteter
+Event rejected by participant: Aktiviteter som avböjts av deltagare
+colors-help: Alla färger skall skrivas in som #RRGGBB där RR är hexkoden för rött, GG är hexkoden för grönt och BB är hexkoden för den blå färgen.
+Colors: Färger
+#
+# << MISSING >>
+# Allow user to customize colors:
+# English text: Allow user to customize colors
+#
+Document background: Dokumentbakgrund
+Select: Välj
+Document title: Dokumenttitel
+#
+# << MISSING >>
+# Document text:
+# English text: Document text
+#
+#
+# << MISSING >>
+# Table grid color:
+# English text: Table grid color
+#
+#
+# << MISSING >>
+# Table header background:
+# English text: Table header background
+#
+#
+# << MISSING >>
+# Table header text:
+# English text: Table header text
+#
+Table cell background: Tabellbakgrund
+Table cell background for current day: Tabellbakgrund för nuvarande dag
+#
+# << MISSING >>
+# Table cell background for weekends:
+# English text: Table cell background for weekends
+#
+#
+# << MISSING >>
+# Event popup background:
+# English text: Event popup background
+#
+#
+# << MISSING >>
+# Event popup text:
+# English text: Event popup text
+#
 
+
+###############################################
+# Page: admin_handler.php
+#
+# "You are not authorized" previously defined (in admin.php)
+Error: Fel
+The following error occurred: Följande fel uppstod
+
+
+###############################################
+# Page: approve_entry.php
+#
+Error approving event: Ett fel uppstod när händelsen skulle godkännas
+
+
+###############################################
+# Page: category.php
+#
+# "Invalid entry id" previously defined (in add_entry.php)
+# "You are not authorized" previously defined (in admin.php)
+# "Database error" previously defined (in activity_log.php)
+#
+# << MISSING >>
+# Categories:
+# English text: Categories
+#
+#
+# << MISSING >>
+# Add:
+# English text: Add
+#
+# "Save" previously defined (in admin.php)
+#
+# << MISSING >>
+# Category Name:
+# English text: Category Name
+#
+#
+# << MISSING >>
+# Global:
+# English text: Global
+#
+# "No" previously defined (in admin.php)
+# "Yes" previously defined (in admin.php)
+Delete: Radera
+Are you sure you want to delete this entry?: Är du säker på att du vill radera händelsen?
+#
+# << MISSING >>
+# Global:
+# English text: Global
+#
+#
+# << MISSING >>
+# Add New Category:
+# English text: Add New Category
+#
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: category_handler.php
+#
+# "Database error" previously defined (in activity_log.php)
+# "You are not authorized" previously defined (in admin.php)
+# "Delete" previously defined (in category.php)
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: colors.php
+#
+
+
+###############################################
+# Page: datesel.php
+#
+
+
+###############################################
+# Page: day.php
+#
+Generate printer-friendly version: Visa i utskriftsversion
+Printer Friendly: Utskriftsversion
+
+
+###############################################
+# Page: del_entry.php
+#
+# "You are not authorized" previously defined (in admin.php)
+Hello: Hej
+An appointment has been canceled for you by: Ett möte inställts av
+The subject was: Ämnet var
+Notification: Påminnelse
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: del_layer.php
+#
+
+
+###############################################
+# Page: edit_entry.php
+#
+You have not entered a Brief Description: Da har inte angivit någon kort beskrivning
+You have not entered a valid time of day: Du har inte angivit någon tidpunkt
+The time you have entered begins before your preferred work hours.  Is this correct?: Tidpunkten du har angivit ligger före din önskade arbetstid. Är detta korrekt?
+Edit Entry: Ändra händelse
+Add Entry: Lägg till händelse
+brief-description-help: Här skall det stå en kort beskrivning av aktiviteten/händelsen - den i översiktskalendern.
+Brief Description: Kort beskrivning
+full-description-help: Här kan du skriva en komplett beskrivning av aktiviteten.
+Full Description: Fullständig beskrivning
+date-help: Anger datum för aktiviteten.
+# "Date" previously defined (in activity_log.php)
+time-help: Anger tidpunkt för aktiviteten.<BR><I>Det här fältet behöver inte vara ifyllt.</I>
+# "Time" previously defined (in activity_log.php)
+am: f.m.
+pm: e.m.
+duration-help: I detta fält anger du aktivitetens varaktighet <BR><I>Det här fältet behöver inte vara ifyllt.</I>
+Duration: Varaktighet
+hours: timmar
+# "minutes" previously defined (in admin.php)
+priority-help: Ange aktivitetens prioritet.
+Priority: Prioritet
+Low: Låg
+Medium: Mellan
+High: Hög
+access-help: Ange om händelsen/aktiviteten skall kunna ses av andra eller om den skall vara privat.
+Access: Tillgång
+Public: Offentlig
+Confidential: Privat
+#
+# << MISSING >>
+# category-help:
+# English text: Specifies the category of the event.
+#
+#
+# << MISSING >>
+# Category:
+# English text: Category
+#
+# "Yes" previously defined (in admin.php)
+# "No" previously defined (in admin.php)
+days: dagar
+before event: före händelse
+participants-help: Visa deltagare för denna händelse.
+Participants: Deltagare
+# "Select" previously defined (in admin.php)
+repeat-type-help: Hur ofta skall aktiviteten upprepas.
+Repeat Type: Upprepningstyp
+None: Aldrig
+Daily: Dagligen
+Weekly: Veckovis
+Monthly: Månatlig
+by day: efter bestämd dag
+by date: efter bestämt datum
+Yearly: Årlig
+repeat-end-date-help: Specificera slutdatum och upprepning av denna aktivitet.
+Repeat End Date: Upprepa slutdatum
+Use end date: Använd slutdatum
+repeat-day-help: Vilka veckodagar skall aktiviteten upprepas på
+Repeat Day: Upprepa datum
+for weekly: Veckovis
+# "Sunday" previously defined (in admin.php)
+# "Monday" previously defined (in admin.php)
+Tuesday: Tisdag
+Wednesday: Onsdag
+Thursday: Torsdag
+Friday: Fredag
+Saturday: Lördag
+repeat-frequency-help: Hur ofta skall aktiviteten upprepas? Talet 1 visar att det skall ske varje gång, 2 varannan o.s.v...
+Frequency: Upprepningsfrekvens
+# "Save" previously defined (in admin.php)
+# "Help" previously defined (in admin.php)
+# "Are you sure you want to delete this entry?" previously defined (in category.php)
+Delete entry: Radera händelse
+You are not authorized to edit this entry: Du har inte lov att radera denna händelse
+
+
+###############################################
+# Page: edit_entry_handler.php
+#
+# "Database error" previously defined (in activity_log.php)
+# "You are not authorized" previously defined (in admin.php)
+The following conflicts with the suggested time: Följande händelseer krockar med vald tidpunkt
+Unnamed Event: händelsen är utan namn
+# "Hello" previously defined (in del_entry.php)
+# "An appointment has been canceled for you by" previously defined (in del_entry.php)
+# "The subject was" previously defined (in del_entry.php)
+#
+# << MISSING >>
+# The description is:
+# English text: The description is
+#
+# "Date" previously defined (in activity_log.php)
+# "Time" previously defined (in activity_log.php)
+Title: Webbkalender
+# "Notification" previously defined (in del_entry.php)
+A new appointment has been made for you by: Du har fått en mötesinbjudan från
+An appointment has been updated by: En aktivitet har uppdaterats av
+The subject is: Ämnet är 
+#
+# << MISSING >>
+# The description is:
+# English text: The description is
+#
+Please look on: Var vänlig se på
+to accept or reject this appointment: För att acceptera/avböja mötet
+to view this appointment: För att se detta möte
+Scheduling Conflict: Konflikt i kalendern
+Your suggested time of: Den föreslagna tiden för
+conflicts with the following existing calendar entries: krockar med tidigare möten i din kalender
+# "Save" previously defined (in admin.php)
+Cancel: Avbryt
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: edit_layer.php
+#
+Invalid color: Ogiltig färg
+# "Color format should be '#RRGGBB'" previously defined (in admin.php)
+Edit Layer: Redigera lager
+Add Layer: Lägg till lager
+Source: Källa
+Color: Färg
+# "Select" previously defined (in admin.php)
+Duplicates: Dubbletter
+Show layer events that are the same as your own: Visa lagerhändelser som är samma som dina egna
+# "Save" previously defined (in admin.php)
+# "Help" previously defined (in admin.php)
+Are you sure you want to delete this layer?: Är du säker på att du vill ta bort detta lager?
+Delete layer: Ta bort lager
+
+
+###############################################
+# Page: edit_layer_handler.php
+#
+#
+# << MISSING >>
+# You cannot create a layer for yourself:
+# English text: You cannot create a layer for yourself
+#
+#
+# << MISSING >>
+# You can only create one layer for each user:
+# English text: You can only create one layer for each user
+#
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: edit_user.php
+#
+Edit User: Redigera användare
+Add User: Ny användare
+Username: Användarnamn
+First Name: Förnamn
+Last Name: Efternamn
+E-mail address: E-postadress
+Password: Lösenord
+again: igen
+Admin: Admin
+# "No" previously defined (in admin.php)
+# "Yes" previously defined (in admin.php)
+# "Save" previously defined (in admin.php)
+Disabled for demo: Avslaget i demoversionen
+# "Delete" previously defined (in category.php)
+# "Are you sure you want to delete this entry?" previously defined (in category.php)
+Change Password: Ändra lösenord
+New Password: Nytt lösenord
+Set Password: Bestäm lösenord
+
+
+###############################################
+# Page: edit_user_handler.php
+#
+# "Delete" previously defined (in category.php)
+#
+# << MISSING >>
+# Deleting users not supported:
+# English text: Deleting users not supported
+#
+# "You are not authorized" previously defined (in admin.php)
+The passwords were not identical: Lösenorden stämmer inte överens med varandra
+You have not entered a password: Du har inte angivit något lösenord
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: export.php
+#
+Export: Exportera
+Export format: Exportformat
+Palm Pilot: Palm Pilot
+Export all dates: Exportera allt
+Start date: Startdatum
+# "Select" previously defined (in admin.php)
+End date: Slutdatum
+Modified since: Ändrad efter
+
+
+###############################################
+# Page: export_handler.php
+#
+# "Export" previously defined (in export.php)
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: groups.php
+#
+#
+# << MISSING >>
+# Groups:
+# English text: Groups
+#
+#
+# << MISSING >>
+# Add New Group:
+# English text: Add New Group
+#
+
+
+###############################################
+# Page: group_edit.php
+#
+#
+# << MISSING >>
+# Unnamed Group:
+# English text: Unnamed Group
+#
+#
+# << MISSING >>
+# Add Group:
+# English text: Add Group
+#
+#
+# << MISSING >>
+# Edit Group:
+# English text: Edit Group
+#
+#
+# << MISSING >>
+# Group name:
+# English text: Group name
+#
+Updated: Uppdaterad
+Created by: Skapad av
+Users: Användare
+#
+# << MISSING >>
+# Add:
+# English text: Add
+#
+# "Save" previously defined (in admin.php)
+# "Delete" previously defined (in category.php)
+# "Are you sure you want to delete this entry?" previously defined (in category.php)
+
+
+###############################################
+# Page: group_edit_handler.php
+#
+# "Delete" previously defined (in category.php)
+# "Database error" previously defined (in activity_log.php)
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: help_admin.php
+#
+# "Help" previously defined (in admin.php)
+#
+# << MISSING >>
+# System Settings:
+# English text: System Settings
+#
+# "Settings" previously defined (in admin.php)
+# "Language" previously defined (in admin.php)
+# "language-help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Fonts:
+# English text: Fonts
+#
+#
+# << MISSING >>
+# fonts-help:
+# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+#
+# "Preferred view" previously defined (in admin.php)
+# "preferred-view-help" previously defined (in admin.php)
+# "Time format" previously defined (in admin.php)
+# "time-format-help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Require event approvals:
+# English text: Require event approvals
+#
+#
+# << MISSING >>
+# require-approvals-help:
+# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
+#
+# "Display unapproved" previously defined (in admin.php)
+# "display-unapproved-help" previously defined (in admin.php)
+# "Display week number" previously defined (in admin.php)
+# "display-week-number-help" previously defined (in admin.php)
+# "Week starts on" previously defined (in admin.php)
+# "display-week-starts-on" previously defined (in admin.php)
+# "Work hours" previously defined (in admin.php)
+# "work-hours-help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Disable Priority field:
+# English text: Disable Priority field
+#
+#
+# << MISSING >>
+# disable-priority-field-help:
+# English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Access field:
+# English text: Disable Access field
+#
+#
+# << MISSING >>
+# disable-access-field-help:
+# English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Participants field:
+# English text: Disable Participants field
+#
+#
+# << MISSING >>
+# disable-participants-field-help:
+# English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
+#
+#
+# << MISSING >>
+# Disable Repeating field:
+# English text: Disable Repeating field
+#
+#
+# << MISSING >>
+# disable-repeating-field-help:
+# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Allow public access:
+# English text: Allow public access
+#
+#
+# << MISSING >>
+# allow-public-access-help:
+# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
+#
+#
+# << MISSING >>
+# Public access can view other users:
+# English text: Public access can view other users
+#
+#
+# << MISSING >>
+# public-access-view-others-help:
+# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
+#
+#
+# << MISSING >>
+# Allow viewing other user's calendars:
+# English text: Allow viewing other user's calendars
+#
+#
+# << MISSING >>
+# allow-view-other-help:
+# English text: Specifies whether one user may view another user's calendar.
+#
+#
+# << MISSING >>
+# Remember last login:
+# English text: Remember last login
+#
+#
+# << MISSING >>
+# remember-last-login-help:
+# English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
+#
+#
+# << MISSING >>
+# Check for event conflicts:
+# English text: Check for event conflicts
+#
+#
+# << MISSING >>
+# conflict-check-help:
+# English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
+#
+#
+# << MISSING >>
+# Conflict checking months:
+# English text: Conflict checking months
+#
+#
+# << MISSING >>
+# conflict-months-help:
+# English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
+#
+#
+# << MISSING >>
+# Groups:
+# English text: Groups
+#
+#
+# << MISSING >>
+# Groups enabled:
+# English text: Groups enabled
+#
+#
+# << MISSING >>
+# groups-enabled-help:
+# English text: Enables group support, allowing users to select users by groups.
+#
+#
+# << MISSING >>
+# User sees only his groups:
+# English text: User sees only his groups
+#
+#
+# << MISSING >>
+# user-sees-his-group-help:
+# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
+#
+# "Email" previously defined (in admin.php)
+#
+# << MISSING >>
+# Email enabled:
+# English text: Email enabled
+#
+#
+# << MISSING >>
+# email-enabled-help:
+# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
+#
+#
+# << MISSING >>
+# Default sender address:
+# English text: Default sender address
+#
+#
+# << MISSING >>
+# email-default-sender:
+# English text: Specifies the email address to specify as the sender when sending out reminders.
+#
+# "Event reminders" previously defined (in admin.php)
+# "email-event-reminders-help" previously defined (in admin.php)
+# "Events added to my calendar" previously defined (in admin.php)
+# "email-event-added" previously defined (in admin.php)
+# "Events updated on my calendar" previously defined (in admin.php)
+# "email-event-updated" previously defined (in admin.php)
+# "Events removed from my calendar" previously defined (in admin.php)
+# "email-event-deleted" previously defined (in admin.php)
+# "Event rejected by participant" previously defined (in admin.php)
+# "email-event-rejected" previously defined (in admin.php)
+# "Colors" previously defined (in admin.php)
+# "colors-help" previously defined (in admin.php)
+
+
+###############################################
+# Page: help_edit_entry.php
+#
+# "Help" previously defined (in admin.php)
+Adding/Editing Calendar Entries: Lägg till/ändra aktivitet
+# "Brief Description" previously defined (in edit_entry.php)
+# "brief-description-help" previously defined (in edit_entry.php)
+# "Full Description" previously defined (in edit_entry.php)
+# "full-description-help" previously defined (in edit_entry.php)
+# "Date" previously defined (in activity_log.php)
+# "date-help" previously defined (in edit_entry.php)
+# "Time" previously defined (in activity_log.php)
+# "time-help" previously defined (in edit_entry.php)
+# "Duration" previously defined (in edit_entry.php)
+# "duration-help" previously defined (in edit_entry.php)
+# "Priority" previously defined (in edit_entry.php)
+# "priority-help" previously defined (in edit_entry.php)
+# "Access" previously defined (in edit_entry.php)
+# "access-help" previously defined (in edit_entry.php)
+# "Participants" previously defined (in edit_entry.php)
+# "participants-help" previously defined (in edit_entry.php)
+# "Repeat Type" previously defined (in edit_entry.php)
+# "repeat-type-help" previously defined (in edit_entry.php)
+# "Repeat End Date" previously defined (in edit_entry.php)
+# "repeat-end-date-help" previously defined (in edit_entry.php)
+# "Repeat Day" previously defined (in edit_entry.php)
+# "repeat-day-help" previously defined (in edit_entry.php)
+# "Frequency" previously defined (in edit_entry.php)
+# "repeat-frequency-help" previously defined (in edit_entry.php)
+
+
+###############################################
+# Page: help_index.php
+#
+Help Index: Hjälpöversikt
+# "Adding/Editing Calendar Entries" previously defined (in help_edit_entry.php)
+Layers: Lager
+Preferences: Inställningar
+#
+# << MISSING >>
+# System Settings:
+# English text: System Settings
+#
+#
+# << MISSING >>
+# Report Bug:
+# English text: Report Bug
+#
+
+
+###############################################
+# Page: help_layers.php
+#
+# "Help" previously defined (in admin.php)
+# "Layers" previously defined (in help_index.php)
+#
+# << MISSING >>
+# Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
+# English text: Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.
+#
+#
+# << MISSING >>
+# Add/Edit/Delete:
+# English text: Add/Edit/Delete
+#
+#
+# << MISSING >>
+# Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
+# English text: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
+#
+# "Source" previously defined (in edit_layer.php)
+#
+# << MISSING >>
+# Specifies the user that you would like to see displayed in your calendar.:
+# English text: Specifies the user that you would like to see displayed in your calendar.
+#
+# "Colors" previously defined (in admin.php)
+#
+# << MISSING >>
+# The text color of the new layer that will be displayed in your calendar.:
+# English text: The text color of the new layer that will be displayed in your calendar.
+#
+# "Duplicates" previously defined (in edit_layer.php)
+#
+# << MISSING >>
+# If checked, events that are duplicates of your events will be shown.:
+# English text: If checked, events that are duplicates of your events will be shown.
+#
+#
+# << MISSING >>
+# Disabling:
+# English text: Disabling
+#
+#
+# << MISSING >>
+# Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
+# English text: Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.
+#
+#
+# << MISSING >>
+# Enabling:
+# English text: Enabling
+#
+#
+# << MISSING >>
+# Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
+# English text: Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.
+#
+# "colors-help" previously defined (in admin.php)
+
+
+###############################################
+# Page: help_pref.php
+#
+# "Help" previously defined (in admin.php)
+# "Preferences" previously defined (in help_index.php)
+# "Settings" previously defined (in admin.php)
+# "Language" previously defined (in admin.php)
+# "language-help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Fonts:
+# English text: Fonts
+#
+#
+# << MISSING >>
+# fonts-help:
+# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+#
+# "Preferred view" previously defined (in admin.php)
+# "preferred-view-help" previously defined (in admin.php)
+# "Time format" previously defined (in admin.php)
+# "time-format-help" previously defined (in admin.php)
+# "Display unapproved" previously defined (in admin.php)
+# "display-unapproved-help" previously defined (in admin.php)
+# "Display week number" previously defined (in admin.php)
+# "display-week-number-help" previously defined (in admin.php)
+# "Week starts on" previously defined (in admin.php)
+# "display-week-starts-on" previously defined (in admin.php)
+# "Work hours" previously defined (in admin.php)
+# "work-hours-help" previously defined (in admin.php)
+# "Email" previously defined (in admin.php)
+# "Event reminders" previously defined (in admin.php)
+# "email-event-reminders-help" previously defined (in admin.php)
+# "Events added to my calendar" previously defined (in admin.php)
+# "email-event-added" previously defined (in admin.php)
+# "Events updated on my calendar" previously defined (in admin.php)
+# "email-event-updated" previously defined (in admin.php)
+# "Events removed from my calendar" previously defined (in admin.php)
+# "email-event-deleted" previously defined (in admin.php)
+# "Event rejected by participant" previously defined (in admin.php)
+# "email-event-rejected" previously defined (in admin.php)
+# "Colors" previously defined (in admin.php)
+# "colors-help" previously defined (in admin.php)
+
+
+###############################################
+# Page: index.php
+#
+
+
+###############################################
+# Page: layers.php
+#
+# "Layers" previously defined (in help_index.php)
+Layers are currently: Lager-nr
+Disabled: Inaktiverat
+Enabled: Aktiverat
+Layer: Lager
+# "Source" previously defined (in edit_layer.php)
+# "Color" previously defined (in edit_layer.php)
+# "Duplicates" previously defined (in edit_layer.php)
+# "No" previously defined (in admin.php)
+# "Yes" previously defined (in admin.php)
+Edit layer: Redigera lager
+# "Are you sure you want to delete this layer?" previously defined (in edit_layer.php)
+# "Delete layer" previously defined (in edit_layer.php)
+Add layer: Lägg till lager
+# "Help" previously defined (in admin.php)
+
+
+###############################################
+# Page: layers_toggle.php
+#
+# "Error" previously defined (in admin_handler.php)
+# "The following error occurred" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: list_unapproved.php
+#
+View this entry: Visa aktivitet
+Approve this entry?: Godkänn händelsen?
+Approve/Confirm: Godkänn/bekräfta
+Reject this entry?: Avböj denna händelse?
+Reject: Avböj
+#
+# << MISSING >>
+# No unapproved events for:
+# English text: No unapproved events for
+#
+Unapproved Events: Aktiviteter som icke är godkända
+#
+# << MISSING >>
+# Public Access:
+# English text: Public Access
+#
+
+
+###############################################
+# Page: login.php
+#
+You must enter a login and password: Ange användarnamn och lösenord
+# "Error" previously defined (in admin_handler.php)
+# "Username" previously defined (in edit_user.php)
+# "Password" previously defined (in edit_user.php)
+Save login via cookies so I don't have to login next time: Kom ihåg användarnamnet tills nästa gång (cookie)
+Login: Logga in
+#
+# << MISSING >>
+# Access public calendar:
+# English text: Access public calendar
+#
+cookies-note: <strong>OBS:</strong> Programmet kräver att din webbläsare tillåter cookies, ändra dina inställningar i webbläsaren
+
+
+###############################################
+# Page: month.php
+#
 Sun: Sön
 Mon: Mån
 Tue: Tis
@@ -25,20 +1327,549 @@ Wed: Ons
 Thu: Tor
 Fri: Fre
 Sat: Lör
+# "Generate printer-friendly version" previously defined (in day.php)
+# "Printer Friendly" previously defined (in day.php)
 
-Sunday: Söndag
-Monday: Måndag
-Tuesday: Tisdag
-Wednesday: Onsdag
-Thursday: Torsdag
-Friday: Fredag
-Saturday: Lördag
 
+###############################################
+# Page: pref.php
+#
+# "Invalid color for document background" previously defined (in admin.php)
+# "Invalid color for document title" previously defined (in admin.php)
+# "Invalid color for table cell background" previously defined (in admin.php)
+# "Invalid color for table cell background for today" previously defined (in admin.php)
+# "Color format should be '#RRGGBB'" previously defined (in admin.php)
+# "Preferences" previously defined (in help_index.php)
+# "Settings" previously defined (in admin.php)
+# "Language" previously defined (in admin.php)
+# "Your browser default language is" previously defined (in admin.php)
+#
+# << MISSING >>
+# fonts-help:
+# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+#
+#
+# << MISSING >>
+# Fonts:
+# English text: Fonts
+#
+# "Preferred view" previously defined (in admin.php)
+# "Day" previously defined (in admin.php)
+# "Week" previously defined (in admin.php)
+# "Month" previously defined (in admin.php)
+# "Year" previously defined (in admin.php)
+#
+# << MISSING >>
+# display-weekends-help:
+# English text: Include weekends when viewing a week.
+#
+#
+# << MISSING >>
+# Display weekends in week view:
+# English text: Display weekends in week view
+#
+# "Yes" previously defined (in admin.php)
+# "No" previously defined (in admin.php)
+# "Time format" previously defined (in admin.php)
+# "12 hour" previously defined (in admin.php)
+# "24 hour" previously defined (in admin.php)
+#
+# << MISSING >>
+# auto-refresh-help:
+# English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
+#
+#
+# << MISSING >>
+# Auto-refresh calendars:
+# English text: Auto-refresh calendars
+#
+#
+# << MISSING >>
+# auto-refresh-time-help:
+# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
+#
+#
+# << MISSING >>
+# Auto-refresh time:
+# English text: Auto-refresh time
+#
+# "minutes" previously defined (in admin.php)
+# "Display unapproved" previously defined (in admin.php)
+# "Display week number" previously defined (in admin.php)
+# "Week starts on" previously defined (in admin.php)
+# "Sunday" previously defined (in admin.php)
+# "Monday" previously defined (in admin.php)
+# "Work hours" previously defined (in admin.php)
+# "From" previously defined (in admin.php)
+# "to" previously defined (in admin.php)
+#
+# << MISSING >>
+# Default Category:
+# English text: Default Category
+#
+# "Email" previously defined (in admin.php)
+# "Event reminders" previously defined (in admin.php)
+# "Events added to my calendar" previously defined (in admin.php)
+# "Events updated on my calendar" previously defined (in admin.php)
+# "Events removed from my calendar" previously defined (in admin.php)
+# "Event rejected by participant" previously defined (in admin.php)
+# "Colors" previously defined (in admin.php)
+# "Document background" previously defined (in admin.php)
+# "Select" previously defined (in admin.php)
+# "Document title" previously defined (in admin.php)
+# "Table cell background" previously defined (in admin.php)
+# "Table cell background for current day" previously defined (in admin.php)
+#
+# << MISSING >>
+# Table cell background for weekends:
+# English text: Table cell background for weekends
+#
+Save Preferences: Spara inställningarna
+# "Help" previously defined (in admin.php)
+
+
+###############################################
+# Page: pref_handler.php
+#
+# "Error" previously defined (in admin_handler.php)
+# "The following error occurred" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: reject_entry.php
+#
+# "Error approving event" previously defined (in approve_entry.php)
+# "Hello" previously defined (in del_entry.php)
+An appointment has been rejected by: Ett möte har inte godkänts av
+# "The subject was" previously defined (in del_entry.php)
+#
+# << MISSING >>
+# The description is:
+# English text: The description is
+#
+# "Date" previously defined (in activity_log.php)
+# "Time" previously defined (in activity_log.php)
+# "Notification" previously defined (in del_entry.php)
+
+
+###############################################
+# Page: search.php
+#
+Search: Sök
+#
+# << MISSING >>
+# Advanced Search:
+# English text: Advanced Search
+#
+Keywords: Sökord
+#
+# << MISSING >>
+# Advanced Search:
+# English text: Advanced Search
+#
+# "Users" previously defined (in group_edit.php)
+# "Select" previously defined (in admin.php)
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Du måste ange ett eller flera sökord
+Search Results: Sökresultat
+# "Error" previously defined (in admin_handler.php)
+match found: träff hittad
+matches found: träffar hittade
+No matches found: Inga träffar
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: Titta på en annan användares kalender
+# "You are not authorized" previously defined (in admin.php)
+Go: Gå till
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+# "Invalid entry id" previously defined (in add_entry.php)
+# "You are not authorized" previously defined (in admin.php)
+#
+# << MISSING >>
+# You have not added any categories:
+# English text: You have not added any categories
+#
+# "Database error" previously defined (in activity_log.php)
+# "Error" previously defined (in admin_handler.php)
+#
+# << MISSING >>
+# Set Category:
+# English text: Set Category
+#
+# "Brief Description" previously defined (in edit_entry.php)
+#
+# << MISSING >>
+# Category:
+# English text: Category
+#
+# "Save" previously defined (in admin.php)
+
+
+###############################################
+# Page: users.php
+#
+# "Error" previously defined (in admin_handler.php)
+# "You are not authorized" previously defined (in admin.php)
+# "Users" previously defined (in group_edit.php)
+denotes administrative user: indikerar administratör
+Add New User: Lägg till en ny användare
+
+
+###############################################
+# Page: usersel.php
+#
+# "Users" previously defined (in group_edit.php)
+#
+# << MISSING >>
+# All:
+# English text: All
+#
+# "None" previously defined (in edit_entry.php)
+#
+# << MISSING >>
+# Reset:
+# English text: Reset
+#
+#
+# << MISSING >>
+# Groups:
+# English text: Groups
+#
+#
+# << MISSING >>
+# Add:
+# English text: Add
+#
+#
+# << MISSING >>
+# Remove:
+# English text: Remove
+#
+#
+# << MISSING >>
+# Ok:
+# English text: Ok
+#
+# "Cancel" previously defined (in edit_entry_handler.php)
+
+
+###############################################
+# Page: views.php
+#
+#
+# << MISSING >>
+# Views:
+# English text: Views
+#
+#
+# << MISSING >>
+# Add New View:
+# English text: Add New View
+#
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+# << MISSING >>
+# Unnamed View:
+# English text: Unnamed View
+#
+#
+# << MISSING >>
+# Add View:
+# English text: Add View
+#
+#
+# << MISSING >>
+# Edit View:
+# English text: Edit View
+#
+#
+# << MISSING >>
+# View Name:
+# English text: View Name
+#
+#
+# << MISSING >>
+# View Type:
+# English text: View Type
+#
+# "Week" previously defined (in admin.php)
+# "Month" previously defined (in admin.php)
+# "Users" previously defined (in group_edit.php)
+# "Select" previously defined (in admin.php)
+#
+# << MISSING >>
+# Add:
+# English text: Add
+#
+# "Save" previously defined (in admin.php)
+# "Delete" previously defined (in category.php)
+# "Are you sure you want to delete this entry?" previously defined (in category.php)
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+# "Delete" previously defined (in category.php)
+# "Database error" previously defined (in activity_log.php)
+# "Error" previously defined (in admin_handler.php)
+
+
+###############################################
+# Page: view_entry.php
+#
+# "Low" previously defined (in edit_entry.php)
+# "Medium" previously defined (in edit_entry.php)
+# "High" previously defined (in edit_entry.php)
+# "Invalid entry id" previously defined (in add_entry.php)
+# "Error" previously defined (in admin_handler.php)
+# "You are not authorized" previously defined (in admin.php)
+every: varje
+1st: 1:a
+2nd: 2:a
+3rd: 3:de
+4th: 4:de
+5th: 5:e
+# "Day" previously defined (in admin.php)
+# "Week" previously defined (in admin.php)
+# "Month" previously defined (in admin.php)
+# "by day" previously defined (in edit_entry.php)
+# "by date" previously defined (in edit_entry.php)
+# "Year" previously defined (in admin.php)
+# "Confidential" previously defined (in edit_entry.php)
+Description: Beskrivning
+#
+# << MISSING >>
+# Status:
+# English text: Status
+#
+#
+# << MISSING >>
+# Waiting for approval:
+# English text: Waiting for approval
+#
+#
+# << MISSING >>
+# Deleted:
+# English text: Deleted
+#
+Rejected: Avböjd
+# "Date" previously defined (in activity_log.php)
+# "Repeat Type" previously defined (in edit_entry.php)
+# "Time" previously defined (in activity_log.php)
+# "Duration" previously defined (in edit_entry.php)
+# "minutes" previously defined (in admin.php)
+# "Priority" previously defined (in edit_entry.php)
+# "Access" previously defined (in edit_entry.php)
+# "Public" previously defined (in edit_entry.php)
+#
+# << MISSING >>
+# Category:
+# English text: Category
+#
+# "Created by" previously defined (in group_edit.php)
+# "Updated" previously defined (in group_edit.php)
+# "No" previously defined (in admin.php)
+# "Yes" previously defined (in admin.php)
+# "days" previously defined (in edit_entry.php)
+# "hours" previously defined (in edit_entry.php)
+# "before event" previously defined (in edit_entry.php)
+# "Participants" previously defined (in edit_entry.php)
+# "Database error" previously defined (in activity_log.php)
+# "Approve this entry?" previously defined (in list_unapproved.php)
+Approve/Confirm entry: Godkänn/bekräfta händelsen
+# "Reject this entry?" previously defined (in list_unapproved.php)
+Reject entry: Avböj händelsen
+#
+# << MISSING >>
+# Set category:
+# English text: Set category
+#
+#
+# << MISSING >>
+# Edit repeating entry for all dates:
+# English text: Edit repeating entry for all dates
+#
+#
+# << MISSING >>
+# Edit entry for this date:
+# English text: Edit entry for this date
+#
+# "Are you sure you want to delete this entry?" previously defined (in category.php)
+This will delete this entry for all users.: Det här kommer att radera händelsen för alla deltagare
+#
+# << MISSING >>
+# Delete repeating event for all dates:
+# English text: Delete repeating event for all dates
+#
+#
+# << MISSING >>
+# Delete entry only for this date:
+# English text: Delete entry only for this date
+#
+Edit entry: Ändra händelse
+# "Delete entry" previously defined (in edit_entry.php)
+This will delete the entry from your calendar.: Detta kommer att ta bort mötet från din kalender.
+Do you want to add this entry to your calendar?: Vill du lägga till detta möte i kalendern?
+This will add the entry to your calendar.: Detta kommer att lägga till mötet i din kalender.
+Add to My Calendar: Lägg till i min kalender
+#
+# << MISSING >>
+# Email all participants:
+# English text: Email all participants
+#
+#
+# << MISSING >>
+# Show activity log:
+# English text: Show activity log
+#
+#
+# << MISSING >>
+# Hide activity log:
+# English text: Hide activity log
+#
+#
+# << MISSING >>
+# Activity Log:
+# English text: Activity Log
+#
+# "User" previously defined (in activity_log.php)
+#
+# << MISSING >>
+# Calendar:
+# English text: Calendar
+#
+#
+# << MISSING >>
+# Action:
+# English text: Action
+#
+#
+# << MISSING >>
+# Event created:
+# English text: Event created
+#
+#
+# << MISSING >>
+# Event approved:
+# English text: Event approved
+#
+#
+# << MISSING >>
+# Event rejected:
+# English text: Event rejected
+#
+#
+# << MISSING >>
+# Event updated:
+# English text: Event updated
+#
+#
+# << MISSING >>
+# Event deleted:
+# English text: Event deleted
+#
+#
+# << MISSING >>
+# Notification sent:
+# English text: Notification sent
+#
+#
+# << MISSING >>
+# Reminder sent:
+# English text: Reminder sent
+#
+
+
+###############################################
+# Page: view_m.php
+#
+# "Generate printer-friendly version" previously defined (in day.php)
+# "Printer Friendly" previously defined (in day.php)
+
+
+###############################################
+# Page: view_w.php
+#
+# "Generate printer-friendly version" previously defined (in day.php)
+# "Printer Friendly" previously defined (in day.php)
+
+
+###############################################
+# Page: week.php
+#
+# "Week" previously defined (in admin.php)
+New Entry: Ny händelse
+# "Generate printer-friendly version" previously defined (in day.php)
+# "Printer Friendly" previously defined (in day.php)
+
+
+###############################################
+# Page: week_ssi.php
+#
+
+
+###############################################
+# Page: year.php
+#
+# "Generate printer-friendly version" previously defined (in day.php)
+# "Printer Friendly" previously defined (in day.php)
+
+
+###############################################
+# Page: includes/config.php
+#
+
+
+###############################################
+# Page: includes/connect.php
+#
+# "Error" previously defined (in admin_handler.php)
+# "You are not authorized" previously defined (in admin.php)
+
+
+###############################################
+# Page: includes/functions.php
+#
+# "Title" previously defined (in edit_entry_handler.php)
+# "You are not authorized" previously defined (in admin.php)
+# "User" previously defined (in activity_log.php)
+# "Time" previously defined (in activity_log.php)
+# "Description" previously defined (in view_entry.php)
+# "Select" previously defined (in admin.php)
+# "View this entry" previously defined (in list_unapproved.php)
+# "am" previously defined (in edit_entry.php)
+# "pm" previously defined (in edit_entry.php)
+Private: Privat
+This event is confidential: Privat aktivitet
+# "Are you sure you want to delete this entry?" previously defined (in category.php)
+# "This will delete this entry for all users." previously defined (in view_entry.php)
+# "New Entry" previously defined (in week.php)
+# "Week" previously defined (in admin.php)
+# "Database error" previously defined (in activity_log.php)
+You have: Du har
+unapproved: icke godkända
+events: aktiviteter
+event: aktivitet
 January: Januari
 February: Februari
 March: Mars
 April: April
-May: Maj
+May_: Kan_
 June: Juni
 July: Juli
 August: Augusti
@@ -46,7 +1877,6 @@ September: September
 October: Oktober
 November: November
 December: December
-
 Jan: Jan
 Feb: Feb
 Mar: Mar
@@ -59,249 +1889,197 @@ Sep: Sep
 Oct: Okt
 Nov: Nov
 Dec: Dec
+# "Sunday" previously defined (in admin.php)
+# "Monday" previously defined (in admin.php)
+# "Tuesday" previously defined (in edit_entry.php)
+# "Wednesday" previously defined (in edit_entry.php)
+# "Thursday" previously defined (in edit_entry.php)
+# "Friday" previously defined (in edit_entry.php)
+# "Saturday" previously defined (in edit_entry.php)
+# "Sun" previously defined (in month.php)
+# "Mon" previously defined (in month.php)
+# "Tue" previously defined (in month.php)
+# "Wed" previously defined (in month.php)
+# "Thu" previously defined (in month.php)
+# "Fri" previously defined (in month.php)
+# "Sat" previously defined (in month.php)
+#
+# << MISSING >>
+# All:
+# English text: All
+#
 
-Email: E-post
-email-event-updated: E-post om uppdateringar
-email-event-added: E-post vid tillägg av aktiviter
-email-event-deleted: E-post vid radering av aktiviteter
-email-event-rejected: E-post vid avslag av aktiviteter
-email-event-updated: E-post när aktiviter uppdateras
-email-event-reminders-help: Anger om programmet ska skicka påminnelser via e-post
 
-Event reminders: Aktivitestpåminnelser
-Events added to my calendar: Aktivteter som lagts till i min kalender
-Events removed from my calendar: Aktiviteter som raderats från min kalender
-Events updated on my calendar: Aktiviter som uppdaterats i min kalender
-Event rejected by participant: Aktiviteter som avböjts av deltagare
-
-An appointment has been updated by: En aktivitet har uppdaterats av
-
-May_:Kan_
-
-
-
-Language: Språk
-Generate printer-friendly version: Visa i utskriftsversion
-Printer Friendly: Utskriftsversion
-Go: Gå till
-Back to My Calendar: Tillbaka till kalendern
-Another User's Calendar: Titta på andras kalendrar
-Search: Sök
-Add New Entry: Lägg till ny händelse
-New Entry: Ny händelse
-Admin: Admin
-Preferences: Inställningar
-Users: Användare
-Account: Konto
-Current User: Nuvarande Användare
-View this entry: Visa aktivitet
-Private: Privat
-This event is confidential: Privat aktivitet
-You have: Du har
-unapproved: icke godkända
-event: aktivitet
-events: aktiviteter
+###############################################
+# Page: includes/help_trailer.php
+#
 Go to: Gå till
-Help Index: Hjälpöversikt
-Error approving event: Ett fel uppstod när händelsen skulle godkännas
-This user has: Den här användaren har
-calendar entries: händelser i kalendern
-They must all be deleted (or this user removed as a participant) before this user can be deleted: Innan användaren kan raderas måste alla händelser där denne ingår åtgärdas. Ta antingen bort användaren från deltagarlistan eller radera händelsen.
-The passwords were not identical: Lösenorden stämmer inte överens med varandra
-You have not entered a password: Du har inte angivit något lösenord
-You have not entered a Brief Description: Da har inte angivit någon kort beskrivning
-You have not entered a valid time of day: Du har inte angivit någon tidpunkt
-Brief Description: Kort beskrivning
-Full Description: Fullständig beskrivning
-Description: Beskrivning
-Date: Datum
-Time: Klockan
-am: f.m.
-pm: e.m.
-Duration: Varaktighet
-minutes: minuter
-Priority: Prioritet
-Low: Låg
-Medium: Mellan
-High: Hög
-Access: Tillgång
-Public: Offentlig
-Confidential: Privat
-Participants: Deltagare
-Created by: Skapad av
-Updated: Uppdaterad
-Daily: Dagligen
-for weekly: Veckovis
-by date: efter bestämt datum
-by day: efter bestämd dag
-Monthly: Månatlig
-None: Aldrig
-Repeat Day: Upprepa datum
-Repeat End Date: Upprepa slutdatum
-Repeat Type: Upprepningstyp
-Use end date: Använd slutdatum
-Weekly: Veckovis
-Yearly: Årlig
-Frequency: Upprepningsfrekvens
-Save: Spara
-Help: Hjälp
-Approve this entry?: Godkänn händelsen?
-Approve/Confirm: Godkänn/bekräfta
-Approve/Confirm entry: Godkänn/bekräfta händelsen
-Reject: Avböj
-Reject entry: Avböj händelsen
-Reject this entry?: Avböj denna händelse?
-Rejected: Avböjd
-Edit entry: Ändra händelse
-Edit Entry: Ändra händelse
-Add Entry: Lägg till händelse
-Are you sure you want to delete this entry?: Är du säker på att du vill radera händelsen?
-This will delete this entry for all users.: Det här kommer att radera händelsen för alla deltagare
-Delete: Radera
-Delete entry: Radera händelse
-You are not authorized to edit this entry: Du har inte lov att radera denna händelse
-Scheduling Conflict: Konflikt i kalendern
-The following conflicts with the suggested time: Följande händelseer krockar med vald tidpunkt
-Unnamed Event: händelsen är utan namn
-Hello: Hej
-A new appointment has been made for you by: Du har fått en mötesinbjudan från
-The subject is: Ämnet är 
-Please look on: Var vänlig se på
-to accept or reject this appointment: För att acceptera/avböja mötet
-to view this appointment: För att se detta möte
-Notification: Påminnelse
-Your suggested time of: Den föreslagna tiden för
-conflicts with the following existing calendar entries: krockar med tidigare möten i din kalender
-Edit User: Redigera användare
-Add User: Ny användare
-Username: Användarnamn
-Login: Logga in
-Logout: Logga ut
-Invalid login:Felaktig inloggning
-every: varje
-Reminder: Påminnelse
-Database error: Fel i databasen
-First Name: Förnamn
-Last Name: Efternamn
-E-mail address: E-postadress
-Password: Lösenord
-again: igen
-Yes: Ja
-No: Nej
-Cancel: Avbryt
-before event: före händelse
-Change Password: Ändra lösenord
-New Password: Nytt lösenord
-Set Password: Bestäm lösenord
-Adding/Editing Calendar Entries: Lägg till/ändra aktivitet
-Unapproved Events: Aktiviteter som icke är godkända
-This is a reminder for the event detailed below.:Detta är en påminnelse angående följande aktivitet
-No unapproved events: Det finns inga icke-godkända aktiviteter
-You must enter a login and password: Ange användarnamn och lösenord
-Save login via cookies so I don't have to login next time: Kom ihåg användarnamnet tills nästa gång (cookie)
-cookies-note: <strong>OBS:</strong> Programmet kräver att din webbläsare tillåter cookies, ändra dina inställningar i webbläsaren
-Invalid color for document background: Ogiltig bakgrundsfärg
-Invalid color for document title: Ogiltig färg för dokumenttiteln
-Invalid color for table cell background: Ogiltig färg f tabellbakgrunden
-Invalid color for table cell background for today: Ogiltig färg för dagens tabellbakgrund
-Color format should be '#RRGGBB': Färgen skall skrivas som '#RRGGBB'
-12 hour: 12 timmar
-24 hour: 24 timmar
-From: Från
-to: till
-Select: Välj
-Preferred view: Vald vy
-Week starts on: Veckan börjar på
-Day: Dag
-days: dagar
-Year: År
-Document background: Dokumentbakgrund
-Document title: Dokumenttitel
-Table cell background: Tabellbakgrund
-Table cell background for current day: Tabellbakgrund för nuvarande dag
-Save Preferences: Spara inställningarna
-The following error occurred: Följande fel uppstod
-Search: Sök
-Keywords: Sökord
-You must enter one or more search keywords: Du måste ange ett eller flera sökord
-Search Results: Sökresultat
-Export: Exportera
-Export format: Exportformat
-Modified since: Ändrad efter
-Start date: Startdatum
-End date: Slutdatum
-Palm Pilot: Palm Pilot
-match found: träff hittad
-matches found: träffar hittade
-No matches found: Inga träffar
-View Another User's Calendar: Titta på en annan användares kalender
-You are not authorized: Förbjuden åtgärd 
-Add New User: Lägg till en ny användare
-denotes administrative user: indikerar administratör
-Invalid entry id: Ogiltigt händelse-ID
-My Calendar: Min kalender
+# "Help Index" previously defined (in help_index.php)
 
-# Help text.  The left side is typically abbreviates since this can be long
-brief-description-help: Här skall det stå en kort beskrivning av aktiviteten/händelsen - den i översiktskalendern.
-full-description-help: Här kan du skriva en komplett beskrivning av aktiviteten.
-date-help: Anger datum för aktiviteten.
-time-help: Anger tidpunkt för aktiviteten.<BR><I>Det här fältet behöver inte vara ifyllt.</I>
-duration-help: I detta fält anger du aktivitetens varaktighet <BR><I>Det här fältet behöver inte vara ifyllt.</I>
-priority-help: Ange aktivitetens prioritet.
-access-help: Ange om händelsen/aktiviteten skall kunna ses av andra eller om den skall vara privat.
-participants-help: Visa deltagare för denna händelse.
-repeat-type-help: Hur ofta skall aktiviteten upprepas.
-repeat-end-date-help: Specificera slutdatum och upprepning av denna aktivitet.
-repeat-day-help: Vilka veckodagar skall aktiviteten upprepas på
-repeat-frequency-help: Hur ofta skall aktiviteten upprepas? Talet 1 visar att det skall ske varje gång, 2 varannan o.s.v...
-Preferences: Inställningar
-Settings: Inställningar 
-Time format: Tidsformat
-time-format-help: Skall tiden visas i 12 eller 24-timmars format.
-Display unapproved: Visa icke godkända.
-display-unapproved-help: Specificera om din kalender skall visa icke godkända aktiviteter.
-Display week number: Visa veckonummer
-display-week-number-help: Specificera om veckonummerna skall visas på veckovyn.
-display-week-starts-on: Börjar din vecka på söndagar eller måndagar.
-Work hours: Arbetstimmar.
-work-hours-help: Specificera dagliga arbetstimmar.
-Colors: Färger
-colors-help: Alla färger skall skrivas in som #RRGGBB där RR är hexkoden för rött, GG är hexkoden för grönt och BB är hexkoden för den blå färgen.
-Add layer: Lägg till lager
-Add Layer: Lägg till lager
-Add to My Calendar: Lägg till i min kalender
-An appointment has been canceled for you by: Ett möte inställts av
-An appointment has been rejected by: Ett möte har inte godkänts av
-Are you sure you want to delete this layer?: Är du säker på att du vill ta bort detta lager?
-Color: Färg
-Delete layer: Ta bort lager
-Disable Layers: Inaktivera lager
-Disabled: Inaktiverat
-Disabled for demo: Avslaget i demoversionen
-Display icons: Visa ikoner
-display-icons-help: Visa ikoner för varje händelse som skall visas, ändras eller raderas. Väljer du nej, måste du klicka på händelsen för att komma till visningssidan där du kan ändra dessa funktioner.
-Do you want to add this entry to your calendar?: Vill du lägga till detta möte i kalendern?
-Duplicates: Dubbletter
-Edit Layer: Redigera lager
-Edit layer: Redigera lager
+
+###############################################
+# Page: includes/index.php
+#
+
+
+###############################################
+# Page: includes/js.php
+#
+
+
+###############################################
+# Page: includes/php-dbi.php
+#
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+#
+# << MISSING >>
+# Send Reminder:
+# English text: Send Reminder
+#
+Reminder: Påminnelse
+
+
+###############################################
+# Page: includes/styles.php
+#
+
+
+###############################################
+# Page: includes/trailer.php
+#
+# "Month" previously defined (in admin.php)
+# "Go" previously defined (in select_user.php)
+# "Week" previously defined (in admin.php)
+# "Year" previously defined (in admin.php)
+# "Go to" previously defined (in includes/help_trailer.php)
+Back to My Calendar: Tillbaka till kalendern
+My Calendar: Min kalender
+# "Login" previously defined (in login.php)
+Logout: Logga ut
+# "Unapproved Events" previously defined (in list_unapproved.php)
+Another User's Calendar: Titta på andras kalendrar
+# "Search" previously defined (in search.php)
+# "Export" previously defined (in export.php)
+#
+# << MISSING >>
+# Categories:
+# English text: Categories
+#
+Add New Entry: Lägg till ny händelse
+# "Help" previously defined (in admin.php)
+#
+# << MISSING >>
+# Views:
+# English text: Views
+#
+#
+# << MISSING >>
+# Manage Views:
+# English text: Manage Views
+#
+# "Admin" previously defined (in edit_user.php)
+#
+# << MISSING >>
+# System Settings:
+# English text: System Settings
+#
+# "Preferences" previously defined (in help_index.php)
 Edit Layers: Redigera lager
 Enable Layers: Aktivera lager
-Enabled: Aktiverat
-Error adding event: Fel vid inläggning av ny händelse
-Export all dates: Exportera allt
-hours: timmar
-Invalid color: Ogiltig färg
-language-help: Ange vilket språk du vill använda.
-Layer: Lager
-Layers: Lager
-Layers are currently: Lager-nr
-preferred-view-help: Specificera standardvisning (dag, vecka, månad eller år).
-Show layer events that are the same as your own: Visa lagerhändelser som är samma som dina egna
-Source: Källa
-The subject was: Ämnet var
-The time you have entered begins before your preferred work hours.  Is this correct?: Tidpunkten du har angivit ligger före din önskade arbetstid. Är detta korrekt?
-This is a private event and may not be added to your calendar.: Detta är ett privat möte och kan inte läggas till i din kalender.
-This will add the entry to your calendar.: Detta kommer att lägga till mötet i din kalender.
-This will delete the entry from your calendar.: Detta kommer att ta bort mötet från din kalender.
-User: Användare
-Your browser default language is: Standardspråket i din webläsare är
+Disable Layers: Inaktivera lager
+# "Users" previously defined (in group_edit.php)
+#
+# << MISSING >>
+# Groups:
+# English text: Groups
+#
+#
+# << MISSING >>
+# Activity Log:
+# English text: Activity Log
+#
+Account: Konto
+Current User: Nuvarande Användare
+
+
+###############################################
+# Page: includes/translate.php
+#
+#
+# << MISSING >>
+# Public Access:
+# English text: Public Access
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+Invalid login: Felaktig inloggning
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+# "Invalid login" previously defined (in includes/user-ldap.php)
+# "Database error" previously defined (in activity_log.php)
+#
+# << MISSING >>
+# Invalid user login:
+# English text: Invalid user login
+#
+#
+# << MISSING >>
+# Invalid user login:
+# English text: Invalid user login
+#
+
+
+###############################################
+# Page: includes/user.php
+#
+# "Invalid login" previously defined (in includes/user-ldap.php)
+# "Database error" previously defined (in activity_log.php)
+#
+# << MISSING >>
+# Invalid user login:
+# English text: Invalid user login
+#
+#
+# << MISSING >>
+# Invalid user login:
+# English text: Invalid user login
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: tools/send_reminders.php
+#
+# "Low" previously defined (in edit_entry.php)
+# "Medium" previously defined (in edit_entry.php)
+# "High" previously defined (in edit_entry.php)
+This is a reminder for the event detailed below.: Detta är en påminnelse angående följande aktivitet
+# "Description" previously defined (in view_entry.php)
+# "Date" previously defined (in activity_log.php)
+# "Time" previously defined (in activity_log.php)
+# "Duration" previously defined (in edit_entry.php)
+# "minutes" previously defined (in admin.php)
+# "Priority" previously defined (in edit_entry.php)
+# "Access" previously defined (in edit_entry.php)
+# "Public" previously defined (in edit_entry.php)
+# "Confidential" previously defined (in edit_entry.php)
+# "Created by" previously defined (in group_edit.php)
+# "Updated" previously defined (in group_edit.php)
+# "Yes" previously defined (in admin.php)
+# "No" previously defined (in admin.php)
+# "Participants" previously defined (in edit_entry.php)
+# "Reminder" previously defined (in includes/site_extras.php)

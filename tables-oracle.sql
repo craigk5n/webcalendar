@@ -50,6 +50,19 @@ CREATE TABLE webcal_entry_repeats (
    PRIMARY KEY (cal_id)
 );
 
+/* This table specifies which dates in a repeating */
+/* event have either been deleted or replaced with */
+/* a replacement event for that day.  When replaced, the cal_group_id */
+/* (I know... not the best name, but it wasn't being used) column will */
+/* be set to the original event.  That way the user can delete the original */
+/* event and (at the same time) delete any exception events. */
+/*   cal_id: event id of repeating event */
+/*   cal_date: date event should not repeat in YYYYMMDD format */
+CREATE TABLE webcal_entry_repeats_not (
+  cal_id INT NOT NULL,
+  cal_date INT NOT NULL,
+  PRIMARY KEY ( cal_id, cal_date )
+);
 
 
 /* associates one or more users with an event by its id */
@@ -58,6 +71,7 @@ CREATE TABLE webcal_entry_user (
   cal_id int DEFAULT 0 NOT NULL,
   cal_login varchar(25) NOT NULL,
   cal_status char(1) DEFAULT 'A',
+  cal_category int DEFAULT NULL,
   PRIMARY KEY (cal_id,cal_login)
 );
 
@@ -82,7 +96,7 @@ CREATE TABLE webcal_user_layers (
   PRIMARY KEY ( cal_login, cal_layeruser )
 );
 
-/* site extra fields (customized in site_extra.inc) */
+/* site extra fields (customized in site_extra.php) */
 /* cal_id is event id */
 /* cal_name is the brief name of this type (first field in $site_extra array) */
 /* cal_type is $EXTRA_URL, $EXTRA_DATE, etc. */
@@ -104,7 +118,7 @@ CREATE TABLE webcal_site_extras (
 
 /* Keep a history of when reminders get sent */
 /* cal_id is event id */
-/* cal_name is extra type (see site_extras.inc) */
+/* cal_name is extra type (see site_extras.php) */
 /* cal_event_date is the event date we are sending reminder for */
 /*   (in YYYYMMDD format) */
 /* cal_last_sent is the date/time we last sent a reminder */
@@ -112,8 +126,158 @@ CREATE TABLE webcal_site_extras (
 CREATE TABLE webcal_reminder_log (
   cal_id INT DEFAULT '0' NOT NULL,
   cal_name VARCHAR(25) NOT NULL,
-  cal_event_date INT NOT NULL DEFAULT '0',
-  cal_last_sent INT NOT NULL DEFAULT '0',
+  cal_event_date INT DEFAULT '0' NOT NULL,
+  cal_last_sent INT DEFAULT '0' NOT NULL,
   PRIMARY KEY ( cal_id, cal_name, cal_event_date )
 );
 
+/* Group support */
+/* cal_owner is the login of the creator of the group. */
+CREATE TABLE webcal_group (
+  cal_group_id INT NOT NULL,
+  cal_owner VARCHAR2(25) NULL,
+  cal_name VARCHAR2(50) NOT NULL,
+  cal_last_update INT NOT NULL,
+  PRIMARY KEY ( cal_group_id )
+);
+
+/* Assign users to groups */
+CREATE TABLE webcal_group_user (
+  cal_group_id INT NOT NULL,
+  cal_login VARCHAR2(25) NOT NULL,
+  PRIMARY KEY ( cal_group_id, cal_login )
+);
+
+/* A "view" allows a user to put the calendars of multiple users all on */
+/* one page.  A "view" is valid only for the owner (cal_owner) of the */
+/* view. */
+/* cal_view_type is "W" for week view, "D" for day view, "M" for month view */
+CREATE TABLE webcal_view (
+  cal_view_id INT NOT NULL,
+  cal_owner VARCHAR2(25) NOT NULL,
+  cal_name VARCHAR2(50) NOT NULL,
+  cal_view_type CHAR(1),
+  PRIMARY KEY ( cal_view_id )
+);
+
+CREATE TABLE webcal_view_user (
+  cal_view_id INT NOT NULL,
+  cal_login VARCHAR2(25) NOT NULL,
+  PRIMARY KEY ( cal_view_id, cal_login )
+);
+
+/* System settings (set by the admin interface in admin.php) */
+CREATE TABLE webcal_config (
+  cal_setting VARCHAR2(50) NOT NULL,
+  cal_value VARCHAR2(50) NULL,
+  PRIMARY KEY ( cal_setting )
+);
+
+/* default settings */
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'LANGUAGE', 'Browser-defined' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'demo_mode', 'N' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'require_approvals', 'Y' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'groups_enabled', 'N' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'user_sees_only_his_groups', 'N' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'categories_enabled', 'N' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'allow_conflicts', 'N' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'conflict_repeat_months', '6' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'disable_priority_field', 'N' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'disable_access_field', 'N' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'disable_participants_field', 'N' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'disable_repeating_field', 'N' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'allow_view_other', 'Y' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'email_fallback_from', 'youremailhere' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'remember_last_login', 'Y' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'allow_color_customization', 'Y' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'BGCOLOR', '#C0C0C0' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'H2COLOR', '#000000' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'CELLBG', '#C0C0C0' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'WEEKENDBG', '#D0D0D0' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'TABLEBG', '#000000' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'THBG', '#FFFFFF' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'THFG', '#000000' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'POPUP_FG', '#000000' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'POPUP_BG', '#FFFFFF' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'TODAYCELLBG', '#E0E0E0' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'STARTVIEW', 'week' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'WEEK_START', '0' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'TIME_FORMAT', '12' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'DISPLAY_UNAPPROVED', 'Y' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'DISPLAY_WEEKNUMBER', 'Y' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'WORK_DAY_START_HOUR', '8' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'WORK_DAY_END_HOUR', '17' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'send_email', 'N' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'EMAIL_REMINDER', 'Y' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'EMAIL_EVENT_ADDED', 'Y' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'EMAIL_EVENT_UPDATED', 'Y' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'EMAIL_EVENT_DELETED', 'Y' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'EMAIL_EVENT_REJECTED', 'Y' );
+
+
+/* activity log for an event */
+/* log types (cal_type): */
+/*   C: Created */
+/*   A: Approved/Confirmed by user */
+/*   R: Rejected by user */
+/*   U: Updated by user */
+/*   M: Mail Notification sent */
+/*   E: Reminder sent */
+CREATE TABLE webcal_entry_log (
+  cal_log_id INT NOT NULL,
+  cal_entry_id INT NOT NULL,
+  cal_login VARCHAR2(25) NOT NULL,
+  cal_user_cal VARCHAR2(25) NULL,
+  cal_type CHAR(1) NOT NULL,
+  cal_date INT NOT NULL,
+  cal_time INT NULL,
+  cal_text VARCHAR2(1024),
+  PRIMARY KEY ( cal_log_id )
+);
+
+/* user categories */
+CREATE TABLE webcal_categories (
+  cat_id INT NOT NULL,
+  cat_owner VARCHAR(25),
+  cat_name VARCHAR(80) NOT NULL,
+  PRIMARY KEY ( cat_id )
+);

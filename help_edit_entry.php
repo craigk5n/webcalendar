@@ -1,23 +1,24 @@
 <?php
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 ?>
 <HTML>
 <HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
-<?php include "includes/styles.inc"; ?>
+<TITLE><?php etranslate($application_name)?></TITLE>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>">
+<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Help")?>: <?php etranslate("Adding/Editing Calendar Entries")?></FONT></H2>
 
@@ -34,27 +35,27 @@ include "includes/translate.inc";
 <TD VALIGN="top"><B><?php etranslate("Duration")?>:</B></TD>
   <TD><?php etranslate("duration-help")?></TD></TR>
 
-<?php if ( ! $disable_priority_field ) { ?>
+<?php if ( $disable_priority_field != "Y" ) { ?>
 <TD VALIGN="top"><B><?php etranslate("Priority")?>:</B></TD>
   <TD><?php etranslate("priority-help")?></TD></TR>
 <?php } ?>
 
-<?php if ( ! $disable_access_field ) { ?>
+<?php if ( $disable_access_field != "Y" ) { ?>
 <TD VALIGN="top"><B><?php etranslate("Access")?>:</B></TD>
   <TD><?php etranslate("access-help")?></TD></TR>
 <?php } ?>
 
 <?php
-$show_participants = ! $disable_participants_field;
+$show_participants = ( $disable_participants_field != "Y" );
 if ( $is_admin )
   $show_participants = true;
-if ( $single_user && $show_participants ) { ?>
+if ( $single_user == "N" && $show_participants ) { ?>
 <TD VALIGN="top"><B><?php etranslate("Participants")?>:</B></TD>
   <TD><?php etranslate("participants-help")?></TD></TR>
 <?php } ?>
 
 
-<?php if ( ! $disable_repeating_field ) { ?>
+<?php if ( $disable_repeating_field != "Y" ) { ?>
 <TD VALIGN="top"><B><?php etranslate("Repeat Type")?>:</B></TD>
   <TD><?php etranslate("repeat-type-help")?></TD></TR>
 <TD VALIGN="top"><B><?php etranslate("Repeat End Date")?>:</B></TD>
@@ -67,7 +68,7 @@ if ( $single_user && $show_participants ) { ?>
 
 </TABLE>
 
-<?php include "includes/help_trailer.inc"; ?>
+<?php include "includes/help_trailer.php"; ?>
 
 </BODY>
 </HTML>

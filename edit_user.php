@@ -1,16 +1,17 @@
 <?php
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
 
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 if ( ! $is_admin )
   $user = $login;
@@ -33,15 +34,16 @@ if ( empty ( $user ) ) {
 ?>
 <HTML>
 <HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
-<?php include "includes/styles.inc"; ?>
+<TITLE><?php etranslate($application_name)?></TITLE>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>">
+<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
 
 <TABLE BORDER=0>
 <TR><TD VALIGN="top" WIDTH=50%>
 
 <FORM ACTION="edit_user_handler.php" METHOD="POST">
+<INPUT TYPE="hidden" NAME="formtype" VALUE="edituser">
 
 <?php
 
@@ -84,7 +86,7 @@ if ( ! empty ( $user ) ) {
   <TD><INPUT TYPE="radio" NAME="uis_admin" VALUE="N" <?php if ( $uis_admin != "Y" ) echo "CHECKED";?>><?php etranslate("No")?> <INPUT TYPE="radio" NAME="uis_admin" VALUE="Y" <?php if ( $uis_admin == "Y" ) echo "CHECKED";?>><?php etranslate("Yes")?> </TD></TR>
 <?php } ?>
 <TR><TD COLSPAN=2>
-<?php if ( $demo_mode ) { ?>
+<?php if ( $demo_mode == "Y" ) { ?>
   <INPUT TYPE="button" VALUE="<?php etranslate("Save")?>" ONCLICK="alert('<?php etranslate("Disabled for demo")?>')">
   <?php if ( $is_admin && ! empty ( $user ) ) { ?>
     <INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="alert('<?php etranslate("Disabled for demo")?>')">
@@ -110,6 +112,7 @@ if ( ! empty ( $user ) ) {
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Change Password")?></FONT></H2>
 <FORM ACTION="edit_user_handler.php" METHOD="POST">
+<INPUT TYPE="hidden" NAME="formtype" VALUE="setpassword">
 <?php if ( $is_admin ) { ?>
 <INPUT TYPE="hidden" NAME="user" VALUE="<?php echo $user;?>">
 <?php } ?>
@@ -119,7 +122,7 @@ if ( ! empty ( $user ) ) {
 <TR><TD><B><?php etranslate("New Password")?> (<?php etranslate("again")?>):</B></TD>
   <TD><INPUT NAME="upassword2" TYPE="password" SIZE=15></TD></TR>
 <TR><TD COLSPAN=2>
-  <?php if ( $demo_mode ) { ?>
+  <?php if ( $demo_mode == "Y" ) { ?>
     <INPUT TYPE="button" VALUE="<?php etranslate("Set Password")?>" ONCLICK="alert('<?php etranslate("Disabled for demo")?>')">
   <?php } else { ?>
     <INPUT TYPE="submit" VALUE="<?php etranslate("Set Password")?>">
@@ -131,6 +134,6 @@ if ( ! empty ( $user ) ) {
 <?php } ?>
 </TD></TR></TABLE>
 
-<?php include "includes/trailer.inc"; ?>
+<?php include "includes/trailer.php"; ?>
 </BODY>
 </HTML>

@@ -1,20 +1,23 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+send_no_cache_header ();
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
+load_user_categories ();
 if ( empty ( $friendly ) && empty ( $user ) )
   remember_this_view ();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
-if ( ! $allow_view_other && ! $is_admin )
+if ( $allow_view_other != "Y" && ! $is_admin )
   $user = "";
 
 $view = "day";
@@ -26,16 +29,7 @@ if ( ! empty ( $user ) ) {
   $u_url = "";
   $user_fullname = $fullname;
 }
-?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
-<?php include "includes/styles.inc"; ?>
-<?php include "includes/js.inc"; ?>
-</HEAD>
-<BODY BGCOLOR=<?php echo "\"$BGCOLOR\"";?>>
 
-<?php
 if ( ! empty ( $date ) ) {
   $thisyear = substr ( $date, 0, 4 );
   $thismonth = substr ( $date, 4, 2 );
@@ -54,28 +48,65 @@ if ( ! empty ( $date ) ) {
   else
     $thisday = $day;
 }
-$wday = strftime ( "%w", mktime ( 2, 0, 0, $thismonth, $thisday, $thisyear ) );
+$wday = strftime ( "%w", mktime ( 3, 0, 0, $thismonth, $thisday, $thisyear ) );
 
-$now = mktime ( 2, 0, 0, $thismonth, $thisday, $thisyear );
+$now = mktime ( 3, 0, 0, $thismonth, $thisday, $thisyear );
 $nowYmd = date ( "Ymd", $now );
 
-$next = mktime ( 2, 0, 0, $thismonth, $thisday + 1, $thisyear );
+$next = mktime ( 3, 0, 0, $thismonth, $thisday + 1, $thisyear );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 $nextday = date ( "d", $next );
-$month_ago = date ( "Ymd", mktime ( 2, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
+$month_ago = date ( "Ymd", mktime ( 3, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
 
-$prev = mktime ( 2, 0, 0, $thismonth, $thisday - 1, $thisyear );
+$prev = mktime ( 3, 0, 0, $thismonth, $thisday - 1, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );
-$month_ahead = date ( "Ymd", mktime ( 2, 0, 0, $thismonth + 1, $thisday, $thisyear ) );
+$month_ahead = date ( "Ymd", mktime ( 3, 0, 0, $thismonth + 1, $thisday, $thisyear ) );
+
+if ( $categories_enabled == "Y" && ( !$user || $user == $login ) ) {
+  if ( isset ( $cat_id ) ) {
+    $cat_id = $cat_id;
+  } elseif ( isset ( $CATEGORY_VIEW ) ) {
+    $cat_id = $CATEGORY_VIEW;
+  } else {
+    $cat_id = '';
+  }
+} else {
+  $cat_id = '';
+}
+if ( empty ( $cat_id ) )
+  $caturl = "";
+else
+  $caturl = "&cat_id=$cat_id";
+
+?>
+<HTML>
+<HEAD>
+<TITLE><?php etranslate($application_name)?></TITLE>
+<?php include "includes/styles.php"; ?>
+<?php include "includes/js.php"; ?>
+<?php
+if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
+  $refresh = $auto_refresh_time * 60; // convert to seconds
+  echo "<META HTTP-EQUIV=\"refresh\" content=\"$refresh; URL=day.php?$u_url" .
+    "date=$nowYmd$caturl\" TARGET=\"_self\">\n";
+}
+
+?>
+</HEAD>
+<BODY BGCOLOR=<?php echo "\"$BGCOLOR\"";?> CLASS="defaulttext">
+
+<?php
 
 /* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( empty ( $user ) ? $login : $user );
+$repeated_events = read_repeated_events ( empty ( $user ) ? $login : $user,
+  $cat_id  );
 
 /* Pre-load the non-repeating events for quicker access */
-$events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd );
+$events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd,
+  $cat_id  );
 
 ?>
 
@@ -92,9 +123,13 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd );
 <FONT SIZE="+1" COLOR="<?php echo $H2COLOR;?>">
 <?php
   // display current calendar's user (if not in single user)
-  if ( ! $single_user ) {
+  if ( $single_user == "N" ) {
     echo "<BR>";
     echo $user_fullname;
+  }
+  if ( $categories_enabled == "Y" ) {
+    echo "<BR>\n<BR>\n";
+    print_category_menu('day', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly);
   }
 ?>
 </FONT>
@@ -102,9 +137,14 @@ $events = read_events ( empty ( $user ) ? $login : $user, $nowYmd, $nowYmd );
 </TR>
 </TABLE>
 
+<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <TABLE BORDER="0" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
 <TR><TD BGCOLOR="<?php echo $TABLEBG?>">
 <TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2">
+<?php } else { ?>
+<TABLE BORDER="1" WIDTH="100%" CELLSPACING="0" CELLPADDING="0">
+<?php } ?>
+
 
 <?php
 
@@ -112,10 +152,14 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
   empty ( $user ) ? $login : $user, ! empty ( $friendly ) );
 
 ?>
-</TR>
 
+<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 </TABLE>
 </TD></TR></TABLE>
+<?php } else { ?>
+</TABLE>
+<?php } ?>
+
 </TD>
 <TD VALIGN="top">
 <?php if ( empty ( $friendly ) ) { ?>
@@ -125,9 +169,9 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 <TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2">
 <TR><TH COLSPAN="7" BGCOLOR="<?php echo $THBG?>"><FONT SIZE="+4" COLOR="<?php echo $THFG?>"><?php echo $thisday?></FONT></TH></TR>
 <TR>
-<TD ALIGN="left" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago?>" CLASS="monthlink">&lt;</A></TD>
+<TD ALIGN="left" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>" CLASS="monthlink">&lt;</A></TD>
 <TH COLSPAN="5" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php echo month_name ( $thismonth - 1 ) . " $thisyear"?></FONT></TH>
-<TD ALIGN="right" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead?>" CLASS="monthlink">&gt;</A></TD>
+<TD ALIGN="right" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead . $caturl?>" CLASS="monthlink">&gt;</A></TD>
 </TR>
 <?php
 echo "<TR>";
@@ -141,8 +185,8 @@ if ( $WEEK_START == 1 ) echo "<TD BGCOLOR=\"$CELLBG\"><FONT SIZE=\"-3\">" .
   weekday_short_name ( 0 ) . "</TD>";
 echo "</TR>\n";
 // generate values for first day and last day of month
-$monthstart = mktime ( 2, 0, 0, $thismonth, 1, $thisyear );
-$monthend = mktime ( 2, 0, 0, $thismonth + 1, 0, $thisyear );
+$monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
+$monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 if ( $WEEK_START == "1" )
   $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
 else
@@ -165,7 +209,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         echo "<FONT SIZE=\"-2\">";
         echo "<A HREF=\"day.php?";
         echo $u_url;
-        echo "date=" . date ( "Ymd", $date ) . "\" CLASS=\"monthlink\">" .
+        echo "date=" . date ( "Ymd", $date ) . "$caturl\" CLASS=\"monthlink\">" .
          date ( "d", $date ) .
          "</A></FONT></TD>\n";
       } else {
@@ -198,10 +242,11 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   if ( $thisyear ) {
     echo "year=$thisyear&month=$thismonth&day=$thisday&";
   }
+  if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&";
 ?>friendly=1" TARGET="cal_printer_friendly"
 onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
 
-<?php include "includes/trailer.inc"; ?>
+<?php include "includes/trailer.php"; ?>
 
 <?php } ?>
 

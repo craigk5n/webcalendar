@@ -1,9 +1,10 @@
 #!/usr/local/bin/perl
 #
 # This tool helps with the translation into other languages by verifying that
-# all text specified in translate() and etranslate() within the application
-# has a corresponding entry in the translation data file.  In short, this
-# makes sure all text has a correspoding translation.
+# all text specified in translate(), etranslate() and etooltip()
+# within the application has a corresponding entry in the translation
+# data file.  In short, this makes sure all text has a correspoding
+# translation.
 #
 # Usage:
 #	check_translation.pl languagefile
@@ -40,7 +41,7 @@ opendir ( DIR, ".." ) || die "Error opening ..";
 closedir ( DIR );
 
 opendir ( DIR, "../includes" ) || die "Error opening ../includes";
-@incfiles = grep ( /\.inc$/, readdir ( DIR ) );
+@incfiles = grep ( /\.php$/, readdir ( DIR ) );
 closedir ( DIR );
 foreach $f ( @incfiles ) {
   push ( @files, "includes/$f" );
@@ -54,7 +55,7 @@ foreach $f ( @files ) {
   #print "Checking $f for text.\n";
   while ( <F> ) {
     $data = $_;
-    while ( $data =~ /translate\s*\(\s*"/ ) {
+    while ( $data =~ /(translate|tooltip)\s*\(\s*"/ ) {
       $data = $';
       if ( $data =~ /"\s*\)/ ) {
         $text = $`;

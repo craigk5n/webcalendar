@@ -1,26 +1,27 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 $save_status = $LAYERS_STATUS;
 $LAYERS_STATUS = "Y";
 load_user_layers ();
 $LAYERS_STATUS = $save_status;
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 ?>
 
 
 <HTML>
 <HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
+<TITLE><?php etranslate($application_name)?></TITLE>
 
 <SCRIPT LANGUAGE="JavaScript">
 
@@ -58,18 +59,12 @@ function selectColor ( color ) {
   url = "colors.php?color=" + color;
   var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
 }
+
 </SCRIPT>
 
-<?php include "includes/styles.inc"; ?>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>">
-
-<?php
-echo "Found " . count ( $layers ) . " layers <p>";
-for ( $i = 0; $i < count ( $layers ); $i++ ) {
- echo "Layer " . $i . ": " . $layers[$id]['cal_layeruser'] . "<br>";
-}
-?>
+<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) echo translate("Edit Layer"); else echo translate("Add Layer"); ?></FONT></H2>
 
@@ -77,25 +72,26 @@ for ( $i = 0; $i < count ( $layers ); $i++ ) {
 
 <FORM ACTION="edit_layer_handler.php" METHOD="POST" ONSUBMIT="return valid_form(this);" NAME="prefform">
 
-<?php if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) echo "<INPUT TYPE=\"hidden\" NAME=\"id\" VALUE=\"$id\">\n"; ?>
 
 <TABLE BORDER=0>
 
 
 <?php
-if ( ! $single_user ) {
-  $userlist = user_get_users ();
+if ( $single_user == "N" ) {
+  $userlist = get_my_users ();
   $num_users = 0;
   $size = 0;
   $users = "";
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-    $size++;
-    $users .= "<OPTION VALUE=\"" . $userlist[$i]['cal_login'] . "\"";
-    if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) {
-      if ( $layers[$id]['cal_layeruser'] == $userlist[$i]['cal_login'] )
-        $users .= " SELECTED";
-    } 
-    $users .= "> " . $userlist[$i]['cal_fullname'];
+    if ( $userlist[$i]['cal_login'] != $login ) {
+      $size++;
+      $users .= "<OPTION VALUE=\"" . $userlist[$i]['cal_login'] . "\"";
+      if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) {
+        if ( $layers[$id]['cal_layeruser'] == $userlist[$i]['cal_login'] )
+          $users .= " SELECTED";
+      } 
+      $users .= "> " . $userlist[$i]['cal_fullname'];
+    }
   }
   if ( $size > 50 )
     $size = 15;
@@ -105,7 +101,8 @@ if ( ! $single_user ) {
     print "<TR><TD VALIGN=\"top\"><B>" .
       translate("Source") . ":</B></TD>";
     print "<TD><SELECT NAME=\"layeruser\" SIZE=1>$users\n";
-    print "</SELECT></TD></TR>\n";
+    print "</SELECT>\n";
+    print "</TD></TR>\n";
   }
 }
 ?>
@@ -121,7 +118,10 @@ if ( ! $single_user ) {
     <TD><INPUT TYPE="checkbox" NAME="dups" VALUE="Y" <?php if ( ! empty ( $layers[$id]['cal_dups'] ) && $layers[$id]['cal_dups'] == 'Y') echo "checked"; ?> >&nbsp;&nbsp;<?php etranslate("Show layer events that are the same as your own")?></TD></TR> 
 
 
-<TR><TD><INPUT TYPE="submit" VALUE="<?php etranslate("Save")?>"></TD></TR>
+<TR><TD COLSPAN="2"><INPUT TYPE="submit" VALUE="<?php etranslate("Save")?>">
+<INPUT TYPE="button" VALUE="<?php etranslate("Help")?>..."
+  ONCLICK="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );">
+</TD></TR>
 
 
 <?php
@@ -143,8 +143,10 @@ if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
 
 </TABLE>
 
+<?php if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) echo "<INPUT TYPE=\"hidden\" NAME=\"id\" VALUE=\"$id\">\n"; ?>
+
 </FORM>
 
-<?php include "includes/trailer.inc"; ?>
+<?php include "includes/trailer.php"; ?>
 </BODY>
 </HTML>

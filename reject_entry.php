@@ -1,22 +1,31 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 $error = "";
 
+// Allow administrators to approve public events
+if ( $public_access == "Y" && ! empty ( $public ) && $is_admin )
+  $app_user = "__public__";
+else
+  $app_user = $login;
+
 if ( $id > 0 ) {
   if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'R' " .
-    "WHERE cal_login = '$login' AND cal_id = $id" ) ) {
+    "WHERE cal_login = '$app_user' AND cal_id = $id" ) ) {
     $error = translate("Error approving event") . ": " . dbi_error ();
+  } else {
+    activity_log ( $id, $login, $app_user, $LOG_REJECT, "" );
   }
 
   // Email participants to notify that it was rejected.
@@ -41,14 +50,24 @@ if ( $id > 0 ) {
 
   for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
     // does this user want email for this?
-    $sendmail = get_pref_setting ( $partlogin[$i],
+    $send_user_mail = get_pref_setting ( $partlogin[$i],
       "EMAIL_EVENT_REJECTED" );
     user_load_variables ( $partlogin[$i], "temp" );
-    if ( $sendmail == "Y" && strlen ( $tempemail ) ) {
+    if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
+      $send_email != "N" ) {
+      $fmtdate = sprintf ( "%04d%02d%02d", $year, $month, $day );
       $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
         translate("An appointment has been rejected by") .
         " " . $login_fullname .  ". " .
-        translate("The subject was") . " \"" . $name . "\"\n\n";
+        translate("The subject was") . " \"" . $name . " \"\n" .
+        translate("The description is") . " \"" . $description . "\"\n" .
+        translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
+        translate("Time") . ": " .
+        display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) . "\n\n\n";
+      if ( ! empty ( $server_url ) ) {
+        $url = $server_url .  "view_entry.php?id=" .  $id;
+        $msg .= "\n\n" . $url;
+      }
  
       $from = $email_fallback_from;
       if ( strlen ( $login_email ) )
@@ -57,8 +76,10 @@ if ( $id > 0 ) {
       $extra_hdrs = "From: $from\nX-Mailer: " . translate("Title");
 
       mail ( $tempemail,
-        translate("Title") . " " . translate("Notification") . ": " . $name,
+        translate($application_name) . " " . translate("Notification") . ": " . $name,
         $msg, $extra_hdrs );
+      activity_log ( $id, $login, $partlogin[$i], $LOG_NOTIFICATION,
+        "Event rejected by $app_user" );
     }
   }
   

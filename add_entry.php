@@ -1,16 +1,18 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
+load_user_categories();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 $error = "";
 
@@ -50,10 +52,9 @@ if ( $id > 0 ) {
     $is_private = false;
   }
 
-   // add the event
-  if ( ! $readonly && ! $is_my_event && ! $is_private )  {
-    if ( ! dbi_query ( "INSERT INTO webcal_entry_user " .
-      " ( cal_id, cal_login, cal_status ) VALUES ($id, '$login', 'A')" ) ) {
+  // add the event
+  if ( $readonly == "N" && ! $is_my_event && ! $is_private )  {
+    if ( ! dbi_query ( "INSERT INTO webcal_entry_user ( cal_id, cal_login, cal_status ) VALUES ( $id, '$login', 'A' )") ) {
       $error = translate("Error adding event") . ": " . dbi_error ();
     }
   }

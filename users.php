@@ -1,30 +1,31 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 ?>
 <HTML>
 <HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
-<?php include "includes/styles.inc"; ?>
+<TITLE><?php etranslate($application_name)?></TITLE>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>">
+<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
 <?php
 
 if ( ! $is_admin ) {
   echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Error") .
     "</FONT></H2>" . translate("You are not authorized") . ".\n";
-  include "includes/trailer.inc";
+  include "includes/trailer.php";
   echo "</BODY></HTML>\n";
   exit;
 }
@@ -39,12 +40,7 @@ $userlist = user_get_users ();
 for ( $i = 0; $i < count ( $userlist ); $i++ ) {
   echo "<LI><A HREF=\"edit_user.php?user=" . $userlist[$i]["cal_login"] .
     "\">";
-  if ( strlen ( $userlist[$i]["cal_firstname"] ) &&
-    strlen ( $userlist[$i]["cal_lastname"] ) )
-    echo $userlist[$i]["cal_firstname"] . " " .
-      $userlist[$i]["cal_lastname"];
-  else
-    echo $userlist[$i]["cal_login"];
+  echo $userlist[$i]['cal_fullname'];
   echo "</A>";
   if (  $userlist[$i]["cal_is_admin"] == 'Y' )
     echo "<SUP>*</SUP>";
@@ -59,6 +55,6 @@ for ( $i = 0; $i < count ( $userlist ); $i++ ) {
       "</A><BR>\n";
 ?>
 
-<?php include "includes/trailer.inc"; ?>
+<?php include "includes/trailer.php"; ?>
 </BODY>
 </HTML>

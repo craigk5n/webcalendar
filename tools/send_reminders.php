@@ -38,12 +38,14 @@ $basedir = ".."; // points to the base WebCalendar directory relative to
                  // current working directory
 $includedir = "../includes";
 
-include "$includedir/config.inc";
-include "$includedir/php-dbi.inc";
-include "$includedir/functions.inc";
-include "$includedir/site_extras.inc";
+include "$includedir/config.php";
+include "$includedir/php-dbi.php";
+include "$includedir/functions.php";
+include "$includedir/$user_inc";
+include "$includedir/site_extras.php";
 
 $debug = false; // set to true to print debug info...
+$only_testing = false; // act like we're sending, but don't send -- for debugging
 
 // Establish a database connection.
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
@@ -52,35 +54,49 @@ if ( ! $c ) {
   exit;
 }
 
-include "$includedir/translate.inc";
+load_global_settings ();
 
+include "$includedir/translate.php";
+
+if ( $debug )
+  echo "<br>\n";
+
+// Get a list of people who have asked not to receive email
+$res = dbi_query ( "SELECT cal_login FROM webcal_user_pref " .
+  "WHERE cal_setting = 'EMAIL_REMINDER' " .
+  "AND cal_value = 'N'" );
+$noemail = array ();
+if ( $res ) {
+  while ( $row = dbi_fetch_row ( $res ) ) {
+    $user = $row[0];
+    $noemail[$user] = 1;
+    if ( $debug )
+      echo "User $user does not want email. <br>\n";
+  }
+  dbi_free_result ( $res );
+}
 
 // Get a list of the email users in the system.
 // They must also have an email address.  Otherwise, we can't
 // send them mail, so what's the point?
-$sql = "SELECT cal_login, cal_email, cal_lastname, cal_firstname " .
-  "FROM webcal_user";
-$res = dbi_query ( $sql );
-$i = 0;
+$allusers = user_get_users ();
+for ( $i = 0; $i < count ( $allusers ); $i++ ) {
+  $names[$allusers[$i]['cal_login']] = $allusers[$i]['cal_fullname'];
+  $emails[$allusers[$i]['cal_login']] = $allusers[$i]['cal_email'];
+}
+
+
+// Get all users language settings.
+$res = dbi_query ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
+  "WHERE cal_setting = 'LANGUAGE'" );
+$languages = array ();
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
-    $cal_login = $row[0];
-    $cal_email = $row[1];
-    $cal_lastname = $row[2];
-    $cal_firstname = $row[3];
-    $users[$i++] = $cal_login;
-    $emails[$cal_login] = $cal_email;
-    if ( strlen ( $cal_lastname ) ) {
-      if ( strlen ( $cal_firstname ) )
-        $names[$cal_login] = "$cal_lastname, $cal_firstname";
-      else
-        $names[$cal_login] = $cal_lastname;
-    } else if ( strlen ( $cal_firstname ) ) {
-      $names[$cal_login] = $cal_firstname;
-    } else {
-      $names[$cal_login] = $cal_login;
-    }
-    //echo "Processing $cal_login ($names[$cal_login])\n";
+    $user = $row[0];
+    $user_lang = $row[1];
+    $languages[$user] = $user_lang;
+    if ( $debug )
+      echo "Language for $user is \"$user_lang\" <br>\n";
   }
   dbi_free_result ( $res );
 }
@@ -92,10 +108,10 @@ $repeated_events = read_repeated_events ( "" );
 $startdate = date ( "Ymd" );
 $enddate = date ( "Ymd", time() + ( $DAYS_IN_ADVANCE * 24 * 3600 ) );
 if ( $debug )
-  echo "Checking for events from date $startdate to date $enddate\n";
+  echo "Checking for events from date $startdate to date $enddate <br>\n";
 $events = read_events ( "", $startdate, $enddate );
 if ( $debug )
-  echo "Found " . count ( $events ) . " events in time range.\n";
+  echo "Found " . count ( $events ) . " events in time range. <br>\n";
 
 
 function indent ( $str ) {
@@ -105,15 +121,13 @@ function indent ( $str ) {
 
 // Send a reminder for a single event for a single day to all
 // participants in the event.
-// Send to participants who have accepted and who have not yet
-// approved.
-// TODO: Consider sending out a message to each person that selected
-// a specific language preference.  For now, all recipients get the
-// message in the default language preference set in config.inc.
+// Send to participants who have accepted as well as those who have not yet
+// approved.  But, don't send to users how rejected (cal_status='R').
 function send_reminder ( $id, $event_date ) {
-  global $names, $emails, $site_extras, $debug;
+  global $names, $emails, $site_extras, $debug, $only_testing,
+    $server_url, $languages, $application_name;
   global $EXTRA_TEXT, $EXTRA_MULTILINETEXT, $EXTRA_URL, $EXTRA_DATE,
-    $EXTRA_EMAIL, $EXTRA_USER, $EXTRA_REMINDER;
+    $EXTRA_EMAIL, $EXTRA_USER, $EXTRA_REMINDER, $LANGUAGE, $LOG_REMINDER;
 
   $pri[1] = translate("Low");
   $pri[2] = translate("Medium");
@@ -122,7 +136,7 @@ function send_reminder ( $id, $event_date ) {
   // get participants first...
  
   $sql = "SELECT cal_login FROM webcal_entry_user " .
-    "WHERE cal_id = $id " .
+    "WHERE cal_id = $id AND cal_status IN ('A','W') " .
     "ORDER BY cal_login";
   $res = dbi_query ( $sql );
   $participants = array ();
@@ -133,7 +147,8 @@ function send_reminder ( $id, $event_date ) {
     }
   }
   if ( ! $num_participants ) {
-    echo "Error: no participants found for event id: $id\n";
+    if ( $debug )
+      echo "No participants found for event id: $id <br>\n";
     return;
   }
 
@@ -148,94 +163,118 @@ function send_reminder ( $id, $event_date ) {
     return;
   }
 
-  $body = translate("This is a reminder for the event detailed below.") .
-    "\n\n";
+
   if ( ! ( $row = dbi_fetch_row ( $res ) ) ) {
     echo "Error: could not find event id $id in database.\n";
     return;
   }
-  $create_by = $row[0];
-  $name = $row[9];
-  $description = $row[10];
 
-  $body .= strtoupper ( $name ) . "\n\n";
-  $body .= translate("Description") . ":\n";
-  $body .= indent ( $description ) . "\n";
-  $body .= translate("Date") . ": " . date_to_str ( $row[1] ) . "\n";
-  if ( $row[2] >= 0 )
-    $body .= translate ("Time") . ": " . display_time ( $row[2] ) . "\n";
-  if ( $row[5] > 0 )
-    $body .= translate ("Duration") . ": " . $row[5] .
-      " " . translate("minutes") . "\n";
-  if ( ! $disable_priority_field )
-    $body .= translate("Priority") . ": " . $pri[$row[6]] . "\n";
-  if ( ! $disable_access_field )
-    $body .= translate("Access") . ": " .
-      ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) .
-      "\n";
-  if ( ! strlen ( $single_user_login ) )
-    $body .= translate("Created by") . ": " . $row[0] . "\n";
-  $body .= translate("Updated") . ": " . date_to_str ( $row[3] ) . " " .
-    display_time ( $row[4] ) . "\n";
-
-  // site extra fields
-  $extras = get_site_extra_fields ( $id );
-  for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
-    $extra_name = $site_extras[$i][0];
-    $extra_descr = $site_extras[$i][1];
-    $extra_type = $site_extras[$i][2];
-    if ( $extras[$extra_name]['cal_name'] != "" ) {
-      $body .= translate ( $extra_descr ) . ": ";
-      if ( $extra_type == $EXTRA_DATE ) {
-        $body .= date_to_str ( $extras[$extra_name]['cal_date'] ) . "\n";
-      } else if ( $extra_type == $EXTRA_MULTILINETEXT ) {
-        $body .= "\n" . indent ( $extras[$extra_name]['cal_data'] ) . "\n";
-      } else if ( $extra_type == $EXTRA_REMINDER ) {
-        $body .= ( $extras[$extra_name]['cal_remind'] > 0 ?
-          translate("Yes") : translate("No") ) . "\n";
-      } else {
-        // default method for $EXTRA_URL, $EXTRA_TEXT, etc...
-        $body .= $extras[$extra_name]['cal_data'] . "\n";
-      }
-    }
-  }
-  if ( ! $single_user && ! $disable_participants_field ) {
-    $body .= translate("Participants") . ":\n";
-    for ( $i = 0; $i < count ( $participants ); $i++ ) {
-      $body .= "  " . $participants[$i] .
-        " (" . $names[$participants[$i]] . ")\n";
-    }
-  }
-  
-  $subject = translate("Reminder") . ": " . $name;
-
-  $recip = "";
+  // send mail.  we send one user at a time so that we can switch
+  // languages between users if needed.
+  $mailusers = array ();
+  $recipients = array ();
   if ( $single_user ) {
-    $recip = $emails[$single_user_login];
+    $mailusers[] = $emails[$single_user_login];
+    $recipients[] = $single_user_login;
   } else {
     for ( $i = 0; $i < count ( $participants ); $i++ ) {
       if ( strlen ( $emails[$participants[$i]] ) ) {
-        if ( strlen ( $recip ) )
-          $recip .= ", ";
-        $recip .= $emails[$participants[$i]];
+        $mailusers[] = $emails[$participants[$i]];
+        $recipients[] = $participants[$i];
+      } else {
+        if ( $debug )
+	  echo "No email for user $participants[$i] <br>\n";
       }
     }
   }
-
-  if ( strlen ( $GLOBALS["email_fallback_from"] ) )
-    $extra_hdrs = "From: " . $GLOBALS["email_fallback_from"] . "\n" .
-      "X-Mailer: " . translate("Title");
-  else
-    $extra_hdrs = "X-Mailer: " . translate("Title");
-
-  // send mail
-  if ( strlen ( $recip ) ) {
+  if ( $debug )
+    echo "Found " . count ( $mailusers ) . " with email addresses <br>\n";
+  for ( $j = 0; $j < count ( $mailusers ); $j++ ) {
+    $recip = $mailusers[$j];
+    $user = $participants[$j];
+    if ( ! empty ( $languages[$user] ) )
+      $userlang = $languages[$user];
+    else
+      $userlang = $LANGUAGE; // system default
     if ( $debug )
-      echo "Sending mail...\n";
-    mail ( $recip, $subject, $body, $extra_hdrs );
-  } else {
+      echo "Setting language to \"$userlang\" <br>\n";
+    reset_language ( $userlang );
+
+    $body = translate("This is a reminder for the event detailed below.") .
+      "\n\n";
+
+    $create_by = $row[0];
+    $name = $row[9];
+    $description = $row[10];
+
+    if ( ! empty ( $server_url ) )
+      $body .= $server_url . "view_entry.php?id=" . $id . "\n\n";
+
+    $body .= strtoupper ( $name ) . "\n\n";
+    $body .= translate("Description") . ":\n";
+    $body .= indent ( $description ) . "\n";
+    $body .= translate("Date") . ": " . date_to_str ( $row[1] ) . "\n";
+    if ( $row[2] >= 0 )
+      $body .= translate ("Time") . ": " . display_time ( $row[2] ) . "\n";
+    if ( $row[5] > 0 )
+      $body .= translate ("Duration") . ": " . $row[5] .
+        " " . translate("minutes") . "\n";
+    if ( ! $disable_priority_field )
+      $body .= translate("Priority") . ": " . $pri[$row[6]] . "\n";
+    if ( ! $disable_access_field )
+      $body .= translate("Access") . ": " .
+        ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) .
+        "\n";
+    if ( ! strlen ( $single_user_login ) )
+      $body .= translate("Created by") . ": " . $row[0] . "\n";
+    $body .= translate("Updated") . ": " . date_to_str ( $row[3] ) . " " .
+      display_time ( $row[4] ) . "\n";
+
+    // site extra fields
+    $extras = get_site_extra_fields ( $id );
+    for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
+      $extra_name = $site_extras[$i][0];
+      $extra_descr = $site_extras[$i][1];
+      $extra_type = $site_extras[$i][2];
+      if ( $extras[$extra_name]['cal_name'] != "" ) {
+        $body .= translate ( $extra_descr ) . ": ";
+        if ( $extra_type == $EXTRA_DATE ) {
+          $body .= date_to_str ( $extras[$extra_name]['cal_date'] ) . "\n";
+        } else if ( $extra_type == $EXTRA_MULTILINETEXT ) {
+          $body .= "\n" . indent ( $extras[$extra_name]['cal_data'] ) . "\n";
+        } else if ( $extra_type == $EXTRA_REMINDER ) {
+          $body .= ( $extras[$extra_name]['cal_remind'] > 0 ?
+            translate("Yes") : translate("No") ) . "\n";
+        } else {
+          // default method for $EXTRA_URL, $EXTRA_TEXT, etc...
+          $body .= $extras[$extra_name]['cal_data'] . "\n";
+        }
+      }
+    }
+    if ( ! $single_user && ! $disable_participants_field ) {
+      $body .= translate("Participants") . ":\n";
+      for ( $i = 0; $i < count ( $participants ); $i++ ) {
+        $body .= "  " . $names[$participants[$i]] . "\n";
+      }
+    }
+  
+    $subject = translate("Reminder") . ": " . $name;
+
+    if ( strlen ( $GLOBALS["email_fallback_from"] ) )
+      $extra_hdrs = "From: " . $GLOBALS["email_fallback_from"] . "\n" .
+        "X-Mailer: " . translate($application_name);
+    else
+      $extra_hdrs = "X-Mailer: " . translate($application_name);
+  
     if ( $debug )
-      echo "Not sending mail... no email addresses available.\n";
+      echo "Sending mail to $recip (in $userlang)\n";
+    if ( $only_testing ) {
+      if ( $debug )
+        echo "<HR><PRE>To: $recip\nSubject: $subject\n$extra_hdrs\n\n$body\n\n</PRE>\n";
+    } else {
+      mail ( $recip, $subject, $body, $extra_hdrs );
+      activity_log ( $id, "system", $user, $LOG_REMINDER, "" );
+    }
   }
 }
 
@@ -243,12 +282,16 @@ function send_reminder ( $id, $event_date ) {
 // keep track of the fact that we send the reminder, so we don't
 // do it again.
 function log_reminder ( $id, $name, $event_date ) {
-  dbi_query ( "DELETE FROM webcal_reminder_log " .
-    "WHERE cal_id = $id AND cal_name = '$name' " .
-    "AND cal_event_date = $event_date" );
-  dbi_query ( "INSERT INTO webcal_reminder_log " .
-    "( cal_id, cal_name, cal_event_date, cal_last_sent ) VALUES ( " .
-    "$id, '" . $name . "', $event_date, " . time() . ")" );
+  global $only_testing;
+
+  if ( ! $only_testing ) {
+    dbi_query ( "DELETE FROM webcal_reminder_log " .
+      "WHERE cal_id = $id AND cal_name = '$name' " .
+      "AND cal_event_date = $event_date" );
+    dbi_query ( "INSERT INTO webcal_reminder_log " .
+      "( cal_id, cal_name, cal_event_date, cal_last_sent ) VALUES ( " .
+      "$id, '" . $name . "', $event_date, " . time() . ")" );
+  }
 }
 
 
@@ -256,11 +299,11 @@ function log_reminder ( $id, $name, $event_date ) {
 // a reminder, when it needs to be sent and when the last time it
 // was sent.
 function process_event ( $id, $name, $event_date, $event_time ) {
-  global $site_extras, $debug;
+  global $site_extras, $debug, $only_testing;
   global $EXTRA_REMINDER_WITH_OFFSET, $EXTRA_REMINDER_WITH_DATE;
 
   if ( $debug )
-    printf ( "Event %d: \"%s\" at %s on %s\n",
+    printf ( "Event %d: \"%s\" at %s on %s <br>\n",
       $id, $name, $event_time, $event_date );
 
   // Check to see if this event has any reminders
@@ -275,7 +318,7 @@ function process_event ( $id, $name, $event_date, $event_time ) {
     //  $extra_name, $extra_type, $extra_arg1, $extra_arg2 );
     if ( ! empty ( $extras[$extra_name]['cal_remind'] ) ) {
       if ( $debug )
-        echo "  Reminder set for event.\n";
+        echo "  Reminder set for event. <br>\n";
       // how many minutes before event should we send the reminder?
       $ev_h = (int) ( $event_time / 10000 );
       $ev_m = ( $event_time / 100 ) % 100;
@@ -297,10 +340,10 @@ function process_event ( $id, $name, $event_date, $event_time ) {
         $remind_time = $event_time - ( $minsbefore * 60 );
       }
       if ( $debug )
-        echo "  Mins Before: $minsbefore\n";
+        echo "  Mins Before: $minsbefore <br>\n";
       if ( $debug ) {
-        echo "  Event time is: " . date ( "m/d/Y H:i", $event_time ) . "\n";
-        echo "  Remind time is: " . date ( "m/d/Y H:i", $remind_time ) . "\n";
+        echo "  Event time is: " . date ( "m/d/Y H:i", $event_time ) . "<br>\n";
+        echo "  Remind time is: " . date ( "m/d/Y H:i", $remind_time ) . "<br>\n";
       }
       if ( time() > $remind_time ) {
         // It's later than the remind time.  See if one has already been sent
@@ -316,11 +359,11 @@ function process_event ( $id, $name, $event_date, $event_time ) {
           dbi_free_result ( $res );
         }
         if ( $debug )
-          echo "  Last sent on: " . date ( "m/d/Y H:i", $last_sent ) . "\n";
+          echo "  Last sent on: " . date ( "m/d/Y H:i", $last_sent ) . "<br>\n";
         if ( $last_sent < $remind_time ) {
           // Send a reminder
           if ( $debug )
-            echo "  SENDING REMINDER!\n";
+            echo "  SENDING REMINDER! <br>\n";
           send_reminder ( $id, $event_date );
           // now update the db...
           log_reminder ( $id, $extra_name, $event_date );
@@ -358,6 +401,6 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
 }
 
 if ( $debug )
-  echo "Done.\n";
+  echo "Done.<br>\n";
 
 ?>

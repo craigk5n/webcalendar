@@ -1,43 +1,72 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+// There is the potential for a lot of mischief from users trying to
+// access this file in ways the shouldn't.  Users may try to type in
+// a URL to get around functions that are not being displayed on the
+// web page to them. 
+
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
 
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 $error = "";
 if ( ! $is_admin )
   $user = $login;
 
-if ( ( $action == "Delete" || $action == translate ("Delete") ) && $is_admin ) {
-  if ( $admin_can_delete_user ) {
-    user_delete_user ( $user );
+// Handle delete
+if ( ( $action == "Delete" || $action == translate ("Delete") ) &&
+  $formtype == "edituser" ) {
+  if ( $is_admin ) {
+    if ( $admin_can_delete_user ) {
+      user_delete_user ( $user ); // will also delete user's events
+    } else {
+      $error = translate("Deleting users not supported") . ".";
+    }
   } else {
-    $error = "Deleting users not supported.";
-  }
-} elseif ( ! empty ( $user ) && empty ( $error ) ) {
-  if ( $upassword1 != $upassword2 ) {
-    $error = translate("The passwords were not identical") . ".";
-  } else {
-    if ( strlen ( $add ) && $is_admin )
-      user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
-        $uemail, $uis_admin );
-    else if ( strlen ( $ulastname ) )
-      user_update_user ( $user, $ufirstname, $ulastname, $uemail, $uis_admin );
-    else if ( strlen ( $upassword1 ) && strlen ( $user ) )
-      user_update_user_password ( $user, $upassword1 );
-    else
-      $error = translate("You have not entered a password");
+    $error = translate("You are not authorized") . ".";
   }
 }
+
+// Handle update of password
+else if ( $formtype == "setpassword" && strlen ( $user ) ) {
+  if ( $upassword1 != $upassword2 ) {
+    $error = translate("The passwords were not identical") . ".";
+  } else if ( strlen ( $upassword1 ) ) {
+    if ( $user_can_update_password )
+      user_update_user_password ( $user, $upassword1 );
+    else
+      $error = translate("You are not authorized") . ".";
+  } else
+    $error = translate("You have not entered a password") . ".";
+}
+
+// Handle update of user info
+else if ( $formtype == "edituser" ) {
+  if ( strlen ( $add ) && $is_admin )
+    user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
+      $uemail, $uis_admin );
+  else if ( strlen ( $add ) && ! $is_admin )
+    $error = translate("You are not authorized") . ".";
+  else if ( isset ( $ulastname ) ) {
+    // Don't allow a user to change themself to an admin by setting
+    // uis_admin in the URL by hand.  They must be admin beforehand.
+    if ( ! $is_admin )
+      $uis_admin = "N";
+    user_update_user ( $user, $ufirstname, $ulastname,
+      $uemail, $uis_admin );
+  }
+}
+
 if ( empty ( $error ) ) {
   if ( $is_admin )
     do_redirect ( "users.php" );
@@ -47,10 +76,10 @@ if ( empty ( $error ) ) {
 ?>
 <HTML>
 <HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
-<?php include "includes/styles.inc"; ?>
+<TITLE><?php etranslate($application_name)?></TITLE>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>">
+<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></FONT></H2>
 
@@ -63,6 +92,6 @@ echo $error;
 //?>
 </BLOCKQUOTE>
 
-<?php include "includes/trailer.inc"; ?>
+<?php include "includes/trailer.php"; ?>
 </BODY>
 </HTML>

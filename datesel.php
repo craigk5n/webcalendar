@@ -1,21 +1,22 @@
 <?php
 
-include "includes/config.inc";
-include "includes/php-dbi.inc";
-include "includes/functions.inc";
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
 include "includes/$user_inc";
-include "includes/validate.inc";
-include "includes/connect.inc";
+include "includes/validate.php";
+include "includes/connect.php";
 
+load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
-include "includes/translate.inc";
+include "includes/translate.php";
 
 ?>
 <HTML>
 <HEAD>
-<TITLE><?php etranslate("Title")?></TITLE>
+<TITLE><?php etranslate($application_name)?></TITLE>
 <SCRIPT LANGUAGE="JavaScript">
 function sendDate ( date ) {
   year = date.substring ( 0, 4 );
@@ -31,9 +32,9 @@ function sendDate ( date ) {
   window.close ();
 }
 </SCRIPT>
-<?php include "includes/styles.inc"; ?>
+<?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>">
+<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
 <CENTER>
 
 <?php
@@ -45,12 +46,12 @@ if ( strlen ( $date ) > 0 ) {
   $thisyear = date("Y");
 }
 
-$next = mktime ( 2, 0, 0, $thismonth + 1, 1, $thisyear );
+$next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 $nextdate = date ( "Ym", $next ) . "01";
 
-$prev = mktime ( 2, 0, 0, $thismonth - 1, 1, $thisyear );
+$prev = mktime ( 3, 0, 0, $thismonth - 1, 1, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevdate = date ( "Ym", $prev ) . "01";
@@ -59,9 +60,9 @@ $prevdate = date ( "Ym", $prev ) . "01";
 
 <TABLE BORDER=0>
 <TR>
-<TD><A HREF="datesel.php?form=<?php echo $form?>&day=<?php echo $day?>&month=<?php echo $month?>&year=<?php echo $year?>&date=<?php echo $prevdate?>">&lt;</A></TD>
+<TD><A HREF="datesel.php?form=<?php echo $form?>&day=<?php echo $day?>&month=<?php echo $month?>&year=<?php echo $year?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrowsmall.gif" WIDTH="18" HRIGHT="18" BORDER="0" ALT="Previous"></A></TD>
 <TH COLSPAN="5"><?php echo month_name ( $thismonth - 1 ) . " " . $thisyear;?></TH>
-<TD><A HREF="datesel.php?form=<?php echo $form?>&day=<?php echo $day?>&month=<?php echo $month?>&year=<?php echo $year?>&date=<?php echo $nextdate?>">&gt;</A></TD>
+<TD><A HREF="datesel.php?form=<?php echo $form?>&day=<?php echo $day?>&month=<?php echo $month?>&year=<?php echo $year?>&date=<?php echo $nextdate?>"><IMG SRC="rightarrowsmall.gif" WIDTH="18" HEIGHT="18" BORDER="0" ALT="Next"></A></TD>
 </TR>
 <?php
 echo "<TR>";
@@ -78,8 +79,8 @@ if ( $WEEK_START == "1" )
   $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
 else
   $wkstart = get_sunday_before ( $thisyear, $thismonth, 1 );
-$monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-$monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
+$monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
+$monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( 24 * 3600 * 7 ) ) {
   echo "<TR>\n";
