@@ -134,7 +134,7 @@ if ( empty ( $error ) ) {
   $values[] = date ( "Ymd" );
 
   $names[] = "cal_report_type";
-  $values[] = "html";
+  $values[] = "'html'";
 
   $names[] = "cal_report_name";
   if ( empty ( $report_name ) )
