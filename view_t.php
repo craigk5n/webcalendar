@@ -138,7 +138,7 @@ $repeated_events = $re_save;
 ?>
 
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<table class="viewt" cellspacing="1" cellpadding="1">
+<table class="viewt" cellspacing="0" cellpadding="0">
 <?php } else { ?>
 <table class="viewt" cellspacing="0" cellpadding="0">
 <?php } ?>
@@ -150,19 +150,30 @@ for ( $date = $wkstart, $h = 0;
   $wday = strftime ( "%w", $date );
   $weekday = weekday_short_name ( $wday );
   if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
-    $color = $TODAYCELLBG;
-    $class = "tableheadertoday";
+//    $color = $TODAYCELLBG;
+//    $class = "tableheadertoday";
+	echo "<tr><th class=\"today\">";
   } else {
-    if ( $wday == 0 || $wday == 6 )
-      $color = $WEEKENDBG;
-    else
-      $color = $CELLBG;
-    $class = "tableheader";
+//    if ( $wday == 0 || $wday == 6 )
+//      $color = $WEEKENDBG;
+//    else
+//      $color = $CELLBG;
+//    $class = "tableheader";
+	echo "<tr><th class=\"row\">";
   }
-  echo "<tr><th class=\"$class\" style=\"width:10%;  vertical-align:top;\">" .
-    $weekday . " " .
-    round ( date ( "d", $date ) ) . "</th>\n";
-  echo "<td style=\"width:90%; background-color:$color;\">";
+//  echo "<tr><th class=\"$class\" style=\"width:10%;  vertical-align:top;\">";
+	echo $weekday . "&nbsp;" . round ( date ( "d", $date ) ) . "</th>\n";
+
+  //start the container cell for each day, with its appropriate style
+  if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
+	echo "<td class=\"today\">";
+  } else {
+	if ( $wday == 0 || $wday == 6 )
+		echo "<td class=\"weekend\">";
+	else
+		echo "<td class=\"reg\">";
+  }
+//  echo "<td style=\"width:90%; background-color:$color;\">";
   if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
     empty ( $friendly ) )
     echo html_for_add_icon ( date ( "Ymd", $date ), "", "", $user );
