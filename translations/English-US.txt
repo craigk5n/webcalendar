@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 03-23-2004
+# Translation last updated on 06-17-2004
 
 
 ###############################################
@@ -34,9 +34,11 @@ charset: iso-8859-1
 ###############################################
 # Page: week.php
 #
+Previous: Previous
 Week: Week
 Admin mode: Admin mode
 Assistant mode: Assistant mode
+Next: Next
 cont.: cont.
 Generate printer-friendly version: Generate printer-friendly version
 Printer Friendly: Printer Friendly
@@ -236,8 +238,6 @@ Event deleted: Event deleted
 Notification sent: Notification sent
 Reminder sent: Reminder sent
 Database error: Database error
-Previous: Previous
-Next: Next
 
 
 ###############################################
@@ -779,7 +779,6 @@ Events successfully imported: Events successfully imported
 Events from prior import marked as deleted: Events from prior import marked as deleted
 Conflicting events: Conflicting events
 Errors: Errors
-Back to My Calendar: Back to My Calendar
 There was an error parsing the import file or no events were returned: There was an error parsing the import file or no events were returned
 The import file contained no data: The import file contained no data
 The following conflicts with the suggested time: The following conflicts with the suggested time
@@ -923,6 +922,7 @@ Edit Custom Trailer: Edit Custom Trailer
 # Page: includes/trailer.php
 #
 Go to: Go to
+Back to My Calendar: Back to My Calendar
 My Calendar: My Calendar
 Logout: Logout
 Another User's Calendar: Another User's Calendar
@@ -967,6 +967,37 @@ Send Reminder: Send Reminder
 ###############################################
 # Page: includes/help_trailer.php
 #
+
+
+###############################################
+# Page: includes/config.php
+#
+English: English
+Basque: Basque
+Bulgarian: Bulgarian
+Chinese (Traditonal/Big5): Chinese (Traditonal/Big5)
+Chinese (Simplified/GB2312): Chinese (Simplified/GB2312)
+Czech: Czech
+Danish: Danish
+Dutch: Dutch
+Estonian: Estonian
+French: French
+Galician: Galician
+German: German
+Holo (Taiwanese): Holo (Taiwanese)
+Hungarian: Hungarian
+Icelandic: Icelandic
+Italian: Italian
+Japanese: Japanese
+Korean: Korean
+Norwegian: Norwegian
+Polish: Polish
+Portuguese: Portuguese
+Portuguese/Brazil: Portuguese/Brazil
+Russian: Russian
+Spanish: Spanish
+Swedish: Swedish
+Turkish: Turkish
 
 
 ###############################################
