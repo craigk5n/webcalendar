@@ -43,6 +43,7 @@ for ( $i = 0; $i < @questions; $i++ ) {
   # remove the "new window" icons
   $questions[$i] =~ s/<a href=\"\S+\"[^>]+><img[^>]+><\/a>//g;
   $answers[$i] =~ s/<a href=\"\S+\"[^>]+><img[^>]+><\/a>//g;
+  $answers[$i] =~ s/<img\s+src="newwin.gif"[^>]+>//g;
 
   # remove any href or name tags in question
   $questions[$i] =~ s/<a name=\"[a-z]+\">(.*)<\/a>/$1/ig;
