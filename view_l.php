@@ -300,18 +300,18 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       $color = $is_weekend ? $WEEKENDBG : $CELLBG;
       if ( empty ( $color ) )
         $color = "#C0C0C0";
-      print "<td class=\"$class\" style=\"vertical-align:top; height:75px;"; 
+      print "<td class=\"$class\" style=\""; 
       if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) )
-        echo " background-color:$TODAYCELLBG;\">";
+        echo "background-color:$TODAYCELLBG;\">";
       else
-        echo " background-color:$color;\">";
+        echo "background-color:$color;\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<BR>";
       print_date_entries ( date ( "Ymd", $date ),
         ( ! empty ( $user ) ) ? $user : $login,
         $friendly, false );
       print "</td>\n";
     } else {
-      print "<td style=\"vertical-align:top; height:75px; background-color:$CELLBG;\" class=\"tablecell\">&nbsp;</td>\n";
+      print "<td class=\"tablecell\">&nbsp;</td>\n";
     }
   }
   print "</tr>\n";
