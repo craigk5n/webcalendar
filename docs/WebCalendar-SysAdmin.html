@@ -1529,7 +1529,7 @@ following:</p>
 <tr><td valign="top">$ldap_server</td>
   <td>
       FQDN or IP address of the LDAP server (or localhost).
-      <br />ex. 'ldap://ldapserver.company.com'
+      <br />ex. 'ldapserver.company.com'
   </td></tr>
 
 <tr><td valign="top">$ldap_base_dn</td>
@@ -1546,6 +1546,15 @@ following:</p>
   </td></tr>
 
 </table>
+
+<h3>Using SSL with LDAP</h3>
+<p>If the LDAP server will accept connections over SSL, simply add 'ldaps://'
+to the beginning of <tt>$ldap_server</tt>.  <br />Example: ldaps://ldapserver.company.com
+</p>
+
+<h3>Using TLS with LDAP</h3>
+<p>If the LDAP server is set up to use TLS, just set <tt>$ldap_start_tls = true</tt>.
+</p>
 
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
