@@ -71,8 +71,7 @@ if ( $is_admin ) {
 }
 ?>
 
-<table style="border-width:0px;" cellspacing="0" cellpadding="0"><tr><td style="background-color:#000000;"><table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2"><tr><td style="width:100%; background-color:<?php echo $CELLBG ?>;"><table style="border-width:0px; width:100%;">
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Language")?>:</td>
+<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2"><tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Language")?>:</td>
 <td><select name="pref_LANGUAGE">
 <?php
 reset ( $languages );
@@ -288,12 +287,11 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   </td></tr>
 <?php } ?>
 
-</table></td></tr></table></td></tr></table>
+</table>
 
 <?php if ( ! $updating_public ) { ?>
 <h3><?php etranslate("Email")?></h3>
-<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2">
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Event reminders")?>:</td>
+<table style="border-width:1px; border-color:#000000; border-style:solid; background-color:<?php echo $CELLBG ?>;" cellspacing="1" cellpadding="2"><tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Event reminders")?>:</td>
   <td><label><input type="radio" name="pref_EMAIL_REMINDER" value="Y" <?php if ( $prefarray["EMAIL_REMINDER"] != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_EMAIL_REMINDER" value="N" <?php if ( $prefarray["EMAIL_REMINDER"] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
 <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Events added to my calendar")?>:</td>

@@ -84,7 +84,7 @@ if ( ! $error ) {
 		<label for="admin_server_url" title="<?php etooltip("server-url-help")?>"><?php etranslate("Server URL")?>:</label></td><td>
 		<input type="text" size="40" name="admin_server_url" id="admin_server_url" value="<?php echo htmlspecialchars ( $server_url );?>" />
 	</td></tr>
-	<tr><td style="vertical-align:top;" class="tooltip">
+	<tr><td class="tooltipselect">
 		<label for="admin_language" title="<?php etooltip("language-help");?>"><?php etranslate("Language")?>:</label></td><td>
 		<select name="admin_LANGUAGE" id="admin_language">
 <?php
@@ -142,7 +142,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 		<?php etranslate("Display description in printer day view")?>:</td><td>
 		<label><input type="radio" name="admin_DISPLAY_DESC_PRINT_DAY" value="Y" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="admin_DISPLAY_DESC_PRINT_DAY" value="N" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
 	</td></tr>
-	<tr><td style="vertical-align:top;" class="tooltip" title="<?php etooltip("date-format-help");?>">
+	<tr><td class="tooltipselect" title="<?php etooltip("date-format-help");?>">
 		<?php etranslate("Date format")?>:</td><td>
 		<select name="admin_DATE_FORMAT">
   <?php
