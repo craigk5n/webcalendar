@@ -1930,8 +1930,11 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
       if ( $row[4] != $id && ( empty ( $row[5] ) || $row[5] != $id ) ) {
         $time2 = $row[1];
         $duration2 = $row[2];
-        $cntkey = $user . "-" . $row[8];
-        $evtcnt[$cntkey]++;
+        $cntkey = $row[0] . "-" . $row[8];
+        if ( empty ( $evtcnt[$cntkey] ) )
+          $evtcnt[$cntkey] = 0;
+        else
+          $evtcnt[$cntkey]++;
         $over_limit = 0;
         if ( $limit_appts == "Y" && $limit_appts_number > 0
           && $evtcnt[$cntkey] >= $limit_appts_number ) {
@@ -1946,8 +1949,8 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
             $conflicts .=  "(" . translate("Private") . ")";
           else {
             $conflicts .=  "<a href=\"view_entry.php?id=$row[4]";
-            if ( $user != $login )
-              $conflicts .= "&amp;user=$user";
+            if ( $row[0] != $login )
+              $conflicts .= "&amp;user=$row[0]";
             $conflicts .= "\">$row[3]</a>";
           }
           if ( $duration2 == ( 24 * 60 ) ) {
@@ -2339,6 +2342,8 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
         $rowspan = 0;
       else
         $rowspan = $endind - $ind + 1;
+      if ( ! isset ( $rowspan_arr[$ind] ) )
+        $rowspan_arr[$ind] = 0;
       if ( $rowspan > $rowspan_arr[$ind] && $rowspan > 1 )
         $rowspan_arr[$ind] = $rowspan;
     }
@@ -2530,7 +2535,7 @@ function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
     if ( $rowspan > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
-      if ( strlen ( $hour_arr[$i] ) ) {
+      if ( ! empty ( $hour_arr[$i] ) ) {
         echo "<td style=\"vertical-align:top; height:40px; background-color:$TODAYCELLBG; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG;\">";
         if ( $can_add && ! $hide_icons )
           echo html_for_add_icon ( $date, $time_h, $time_m, $user );

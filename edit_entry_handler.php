@@ -677,7 +677,7 @@ if ( strlen ( $conflicts ) ) {
 
 <?php etranslate("Your suggested time of")?> <span style="font-weight:bold;">
 <?php
-  if ( $allday == "Y" )
+  if ( ! empty ( $allday ) && $allday == "Y" )
     etranslate("All day event");
   else {
     $time = sprintf ( "%d%02d00", $hour, $minute );
