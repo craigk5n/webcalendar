@@ -192,6 +192,13 @@ function user_update_user_password ( $user, $password ) {
 function user_delete_user ( $user ) {
   $sql = "DELETE FROM webcal_user WHERE cal_login = '$user'";
   dbi_query ( $sql );
+  $sql = "DELETE FROM webcal_entry_user WHERE cal_login = '$user'";
+  dbi_query ( $sql );
+  // TODO: delete any events that now have no participants.
+  $sql = "DELETE FROM webcal_user_pref WHERE cal_login = '$user'";
+  dbi_query ( $sql );
+  $sql = "DELETE FROM webcal_user_layers WHERE cal_login = '$user'";
+  dbi_query ( $sql );
 }
 
 
