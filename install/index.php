@@ -363,6 +363,9 @@ div.main {
 li {
   margin-top: 10px;
 }
+doc.li {
+  margin-top: 5px;
+}
 </style>
 </head>
 <body onload="<?php echo $onload;?>">
@@ -623,6 +626,17 @@ You should select "Web Server" from the list of
 <?php } ?>
 
 <?php } ?>
+</div>
+<div style="border-top: 1px solid #000; padding-bottom: 20px;">
+<p>
+<b>Documentation:</b>
+</p>
+<ul>
+<li class="doc"><a href="../docs/WebCalendar-SysAdmin.html" target="_docs">System Administrator's Guide</a> (Installation Instructions) </li>
+<li class="doc"><a href="../docs/WebCalendar-SysAdmin.html#faq" target="_docs">FAQ</a> </li>
+<li class="doc"><a href="../docs/WebCalendar-SysAdmin.html#trouble" target="_docs">Troubleshooting</a> </li>
+<li class="doc"><a href="../docs/WebCalendar-SysAdmin.html#help" target="_docs">Getting Help</a> </li>
+</ul>
 </div>
 </body>
 </html>
