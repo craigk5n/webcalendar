@@ -193,7 +193,7 @@ if ( empty ( $cal_date ) || ! $cal_date )
   $cal_date = $thisdate;
 
 $BodyX = 'xonload="timetype_handler()"';
-$INC = array('js/'.$SCRIPT);
+$INC = array('js/popups.php','js/'.$SCRIPT);
 print_header($INC,'',$BodyX);
 ?>
 
@@ -469,7 +469,7 @@ if ( $single_user == "N" && $show_participants ) {
         if ( ! empty ( $participants[$l] ) )
           $users .= " SELECTED";
       } else {
-        if ( ( $l == $login && ! $is_assistant ) || ( ! empty ( $user ) && $l == $user ) )
+        if ( ( $l == $login && ! $is_assistant  ) || ( ! empty ( $user ) && $l == $user ) )
           $users .= " SELECTED";
       }
     }
