@@ -61,13 +61,13 @@ follows (for the ReminderApp, for SampleApp, just replace "ReminderApp"
 with "SampleApp"):
 
 [for web-based authentication]
-  java -classpath webcalendar.jar com.cknudsen.webcalendar.ui.ReminderApp \
+  java -classpath webcalendar.jar us.k5n.webcalendar.ui.ReminderApp \
     -url=http://yourwebcalurlhere/ \
     -user=UUU -password=PPP
   [where "UUU" is the your username and "PPP" is your password]
 
 [for http-based authentication]
-  java -classpath webcalendar.jar com.cknudsen.webcalendar.ReminderApp \
+  java -classpath webcalendar.jar us.k5n.webcalendar.ReminderApp \
     -url=http://yourwebcalurlhere/ \
     -httpuser=UUU -httppasswd=PPP
   [where "UUU" is the your username and "PPP" is your password]
