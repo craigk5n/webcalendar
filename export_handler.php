@@ -859,10 +859,10 @@ function export_ical ($id) {
       export_recurrence_ical($uid, $date);
 
       // FIXME: handle alarms
-      export_alarm_ical($uid);
+      export_alarm_ical($uid, $description);
 
       /* Goodbye event */
-      echo "END:VEVENT\n";
+      echo "END:VEVENT\r\n";
     }
 
   if ($count > 0)
