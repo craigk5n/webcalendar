@@ -141,7 +141,7 @@
 
   if ( strlen ( get_last_view() ) )
     $mycal = get_last_view ();
-  else if ( ! empty ( $GLOBALS[STARTVIEW] ) )
+  else if ( ! empty ( $GLOBALS['STARTVIEW'] ) )
     $mycal = "$GLOBALS[STARTVIEW].php";
   else
     $mycal = "index.php";
