@@ -162,6 +162,11 @@ if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
   $report_user = "__public__";
 }
 
+$report_id = getIntValue ( "report_id", true );
+$offset = getIntValue ( "offset", true );
+if ( empty ( $offset ) )
+  $offset = 0;
+
 // If no report id is specified, then generate a list of reports for
 // the user to select from.
 if ( empty ( $error ) && empty ( $report_id ) && $login == "__public__" ) {
