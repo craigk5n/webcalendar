@@ -1,4 +1,24 @@
 Version 0.9.41dev (?? ??? ???)
+  - Removed html headers and common include calls from all files.  All files
+    now include init.php and print the header by calling print_header. As a
+    result of this cosmetic change, javascript has been moved out of the
+    files and into its own file.  The file has the same name and is located
+    in includes/js/ directory.
+  - Fixed bug where My Calendar linked to 80/443. There were duplicate
+    bugs reported for this: 657172, 638642, 614080
+  - Fixed bug 677683: day.php (<? to <?php)
+  - Fixed bug 647180: user_get_boss_list not LDAP aware
+  - Fixed bug 575598: LDAP get_admins() group case sensitive
+  - Fixed bug 575600: LDAP stripdn() is destructive
+  - LDAP userlist is now sorted using ldap_sort() if PHP version is >= 4.2
+  - When adding a new event for the boss, the default participant is now
+    the boss, not the assistant
+  - When saving the new event for the boss, the boss calendar should be
+    displayed, not the assistant's one
+  - Assistants can now reject events for a boss
+  - Added pref option for a boss to be notified by email when an assistant
+    adds/edits/deletes an event.
+  - Added pref option for a boss to allow assistant to approve events
   - Added db close call on all redirects (was missing)
   - Fixed bug 651709: Javascript error in login.php
   - Removed apostrophes from C-style comments from tables-mysql.sql
