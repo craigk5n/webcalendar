@@ -130,10 +130,9 @@
 </tr>
 </table>
 
-<font size="-1">
 <!-- GO TO -->
 <br />
-<span style="font-weight:bold;"><?php etranslate("Go to")?>:</span> 
+<span style="font-weight:bold; font-size: 14px;"><?php etranslate("Go to")?>:</span> 
 <?php
   $can_add = ( $readonly == "N" || $is_admin == "Y" );
   if ( $public_access == "Y" && $public_access_can_add != "Y" &&
