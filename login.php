@@ -135,7 +135,7 @@ function valid_form ( form ) {
   return true;
 }
 function myOnLoad() {
-  <?php if ( $plugins_enabled ) { ?>
+  <?php if ( ! empty ( $plugins_enabled ) && ( $plugins_enabled ) ){ ?>
 	  if (self != top)  {
 	    window.open("login.php","_top","");
 	    return;

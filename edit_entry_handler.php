@@ -241,13 +241,13 @@ if ( $allow_conflicts != "Y" && empty ( $confirm_conflicts ) &&
     $endt = 'NULL';
 
   if ($rpt_type == 'weekly') {
-    $dayst = ( $rpt_sun ? 'y' : 'n' )
-      . ( $rpt_mon ? 'y' : 'n' )
-      . ( $rpt_tue ? 'y' : 'n' )
-      . ( $rpt_wed ? 'y' : 'n' )
-      . ( $rpt_thu ? 'y' : 'n' )
-      . ( $rpt_fri ? 'y' : 'n' )
-      . ( $rpt_sat ? 'y' : 'n' );
+        $dayst = ( empty( $rpt_sun )  ? 'n' : 'y' )
+          . (  empty( $rpt_mon )  ? 'n' : 'y' )
+          . (  empty( $rpt_tue )  ? 'n' : 'y' )
+          . (  empty( $rpt_wed )  ? 'n' : 'y' )
+          . (  empty( $rpt_thu )  ? 'n' : 'y' )
+          . (  empty( $rpt_fri )  ? 'n' : 'y' )
+          . (  empty( $rpt_sat )  ? 'n' : 'y' );
   } else {
     $dayst = "nnnnnnn";
   }
@@ -717,13 +717,13 @@ if ( empty ( $error ) ) {
       else
         $end = 'NULL';
       if ($rpt_type == 'weekly') {
-        $days = ( $rpt_sun ? 'y' : 'n' )
-          . ( $rpt_mon ? 'y' : 'n' )
-          . ( $rpt_tue ? 'y' : 'n' )
-          . ( $rpt_wed ? 'y' : 'n' )
-          . ( $rpt_thu ? 'y' : 'n' )
-          . ( $rpt_fri ? 'y' : 'n' )
-          . ( $rpt_sat ? 'y' : 'n' );
+        $days = ( empty( $rpt_sun )  ? 'n' : 'y' )
+          . (  empty( $rpt_mon )  ? 'n' : 'y' )
+          . (  empty( $rpt_tue )  ? 'n' : 'y' )
+          . (  empty( $rpt_wed )  ? 'n' : 'y' )
+          . (  empty( $rpt_thu )  ? 'n' : 'y' )
+          . (  empty( $rpt_fri )  ? 'n' : 'y' )
+          . (  empty( $rpt_sat )  ? 'n' : 'y' );
       } else {
         $days = "nnnnnnn";
       }
