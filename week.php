@@ -293,24 +293,24 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
       if ( ! empty ( $save_hour_arr[$d][$i] ) )
-        echo "<td class=\"today\">" .
+        echo "<td style=\"background-color:$color;\">" .
           $save_hour_arr[$d][$i] . "</td>\n";
       $rowspan_day[$d]--;
     } else {
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
         echo "<td style=\"background-color:$color;\">";
-        if ( empty ( $friendly ) && $can_add )
-          echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
+        if ( empty ( $friendly ) && $can_add ) //if not in printer-friendly view, and user can add events...
+          echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user ); //..then echo the add event icon
         echo "&nbsp;</td>\n";
       } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         if ( $rowspan_day[$d] > 1 ) {
-          echo "<td class=\"today\" rowspan=\"$rowspan_day[$d]\">";
+          echo "<td style=\"background-color:$color;\" rowspan=\"$rowspan_day[$d]\">";
           if ( empty ( $friendly ) && $can_add )
             echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
           echo $save_hour_arr[$d][$i] . "</td>\n";
         } else {
-          echo "<td class=\"today\">";
+          echo "<td style=\"background-color:$color;\">";
           if ( empty ( $friendly ) && $can_add )
             echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
           echo $save_hour_arr[$d][$i] . "</td>\n";
