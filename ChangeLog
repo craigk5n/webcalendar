@@ -1,4 +1,7 @@
 Version 1.0RC3 (?? ??? 2005)
+ - login.php: Added xml encoding back in, it's now dynamic like other pages.
+ - upcoming.php: Fixed problem with "You are not Authorized" error message 
+   being sent without a header.
  - Patch 1158090: convert comments for use with phpDocumentor
  - Updated German translation
  - Fixed bug 1156729:Global-view with no valid user creates a non-translatable message
