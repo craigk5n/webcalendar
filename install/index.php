@@ -3,18 +3,20 @@
  * $Id$
  *
  * Page Description:
- *	Main page for install/config of db settings.
- *	This page is used to create/update includes/settings.php.
+ * Main page for install/config of db settings.
+ * This page is used to create/update includes/settings.php.
  *
  * Input Parameters:
- *	None
+ * None
  *
  * Security:
- *	The first time this page is accessed, there are no security
- *	precautions.   The user is prompted to generate a config password.
- *	From then on, users must know this password to make any changes
- *	to the settings in settings.php./
+ * The first time this page is accessed, there are no security
+ * precautions.   The user is prompted to generate a config password.
+ * From then on, users must know this password to make any changes
+ * to the settings in settings.php./
  *
+ * TODO:
+ * Add translations to this page.
  */
 include_once '../includes/php-dbi.php';
 
@@ -23,26 +25,42 @@ $fileDir = "../includes";
 
 // Get value from POST form
 function getPostValue ( $name ) {
-  if ( ! empty ( $_POST[$name] ) )
+  if ( ! empty ( $_POST[$name] ) ) {
     return $_POST[$name];
-  if ( ! isset ( $HTTP_POST_VARS ) )
+  }
+  if ( ! isset ( $HTTP_POST_VARS ) ) {
     return null;
-  if ( ! isset ( $HTTP_POST_VARS[$name] ) )
+  }
+  if ( ! isset ( $HTTP_POST_VARS[$name] ) ) {
     return null;
+  }
   return ( $HTTP_POST_VARS[$name] );
 }
 
 
 // Get value from GET form
 function getGetValue ( $name ) {
-  if ( ! empty ( $_GET[$name] ) )
+  if ( ! empty ( $_GET[$name] ) ) {
     return $_GET[$name];
-  if ( ! isset ( $HTTP_GET_VARS ) )
+  }
+  if ( ! isset ( $HTTP_GET_VARS ) ) {
     return null;
-  if ( ! isset ( $HTTP_GET_VARS[$name] ) )
+  }
+  if ( ! isset ( $HTTP_GET_VARS[$name] ) ) {
     return null;
+  }
   return ( $HTTP_GET_VARS[$name] );
 }
+
+function get_php_setting ( $val ) {
+  $setting = ini_get ( $val );
+  if ( $setting == '1' || $setting == 'ON' )
+    return 'ON';
+  else
+    return 'OFF';
+}
+
+
 
 
 
@@ -56,7 +74,7 @@ if ( ! empty ( $fd ) ) {
   while ( ! feof ( $fd ) ) {
     $buffer = fgets ( $fd, 4096 );
     $buffer = trim ( $buffer, "\r\n " );
-    if ( preg_match ( "/^(\S+):\s*(.*)/", $buffer, $matches ) ) {
+    if ( preg_match ( "/^(\S+):\s*(.*)/", $buffer,  $matches ) ) {
       if ( $matches[1] == "install_password" ) {
         $password = $matches[2];
         $settings['install_password'] = $password;
@@ -72,6 +90,13 @@ if ( ! empty ( $fd ) ) {
 
 session_start ();
 $doLogin = false;
+
+// Handle "Logout" button
+if ( 'logout' == getGetValue ( 'action' ) ) {
+  session_destroy ();
+  Header ( "Location: index.php" );
+  exit;
+}
 
 // If password already exists, check for session.
 if ( file_exists ( $file ) && ! empty ( $password ) &&
@@ -117,15 +142,15 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
     echo "Passwords do not match!<br/>\n";
     exit;
   }
-  $fd = fopen ( $file, "a+", true );
+  $fd = fopen ( $file, "a+b", true );
   if ( empty ( $fd ) ) {
     echo "<html><body>Unable to write password to settings.php file\n" .
       "</body></html>";
     exit;
   }
-  fwrite ( $fd, "<?php\n" );
-  fwrite ( $fd, "install_password: " . md5($pwd1) . "\n" );
-  fwrite ( $fd, "?>\n" );
+  fwrite ( $fd, "<?php\r\n" );
+  fwrite ( $fd, "install_password: " . md5($pwd1) . "\r\n" );
+  fwrite ( $fd, "?>\r\n" );
   fclose ( $fd );
   ?>
     <html><head><title>Password Updated</title>
@@ -143,7 +168,7 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
 $action = getGetValue ( "action" );
 if ( ! empty ( $action ) && $action == "dbtest" ) {
   // TODO: restrict access here also...
-  $db_persistent = false; ( 'db_type' );
+  $db_persistent = false;
   $db_type = getGetValue ( 'db_type' );
   $db_host = getGetValue ( 'db_host' );
   $db_database = getGetValue ( 'db_database' );
@@ -159,13 +184,21 @@ if ( ! empty ( $action ) && $action == "dbtest" ) {
 
   if ( $c ) {
     echo "<span style=\"color: #0f0;\">Success</span></blockquote>";
+    $_SESSION['db_success'] = true;
+    // TODO: update the text in the main window to indicate success
   } else {
     echo "<span style=\"color: #0f0;\">Failure</span</blockquote>";
     echo "<br/><br/><b>Reason:</b><blockquote>" . dbi_error () .
       "</blockquote>\n";
   }
   echo "<br/><br/><br/><div align=\"center\"><form><input align=\"middle\" type=\"button\" onclick=\"window.close()\" value=\"Close\" /></form></div>\n";
-  echo "</p></body></html>\n";
+  echo "</p>";
+  echo "<script type=\"text/javascript\">\n";
+  echo "<!-- <![CDATA[\n";
+  echo "window.opener.show_db_status ( " .
+    ( $c ? "true" : "false" ) . " );\n";
+  echo "//]]> -->\n</script>\n";
+  echo "</body></html>\n";
   exit;
 }
 
@@ -179,7 +212,7 @@ if ( $exists ) {
 } else {
   // check to see if we can create a new file.
   $testFile = $fileDir . "/installTest.dat";
-  $testFd = @fopen ( $testFile, "w+t", true );
+  $testFd = @fopen ( $testFile, "w+b", true );
   if ( file_exists ( $testFile ) ) {
     $canWrite = true;
   }
@@ -234,20 +267,20 @@ if ( empty ( $x ) ) {
   } else {
     $onload .= "alert('Your settings have been saved.\\n\\n');";
   }
-  $fd = @fopen ( $file, "w+t", true );
+  $fd = @fopen ( $file, "w+b", true );
   if ( empty ( $fd ) ) {
-    if ( file_exists ( $fd ) ) {
+    if ( file_exists ( $file ) ) {
       $onload = "alert('Error: unable to write to file $file\\nPlease change the file permissions of this file.');";
     } else {
       $onload = "alert('Error: unable to write to file $file\\nPlease change the file permissions of your includes directory\\nto allow writing by other users.');";
     }
   } else {
-    fwrite ( $fd, "<?php\n" );
-    fwrite ( $fd, "# updated via install/index.php on " . date("r") . "\n" );
+    fwrite ( $fd, "<?php\r\n" );
+    fwrite ( $fd, "# updated via install/index.php on " . date("r") . "\r\n" );
     foreach ( $settings as $k => $v ) {
-      fwrite ( $fd, $k . ": " . $v . "\n" );
+      fwrite ( $fd, $k . ": " . $v . "\r\n" );
     }
-    fwrite ( $fd, "# end settings.php\n?>\n" );
+    fwrite ( $fd, "# end settings.php\r\n?>\r\n" );
     fclose ( $fd );
     // Change to read/write by us only (only applies if we created file)
     // and read-only by all others.  Would be nice to make it 600, but
@@ -270,24 +303,13 @@ if ( ! empty ( $fd ) ) {
     if ( preg_match ( "/^\?>/", $buffer ) ) // end php code
       continue;
     if ( preg_match ( "/(\S+):\s*(.*)/", $buffer, $matches ) ) {
+// echo $matches[1] . " " .  $matches[2] . "<br>";
       $settings[$matches[1]] = $matches[2];
       //echo "settings $matches[1] => $matches[2] <br>";
     }
   }
   fclose ( $fd );
 }
-
-
-// Attempt a db connection
-$connectSuccess = false;
-$db_type = $settings['db_type'];
-$db_persistent = false;
-$c = @dbi_connect ( $settings['db_host'], $settings['db_login'],
-  $settings['db_password'], $settings['db_database'] );
-if ( $c ) {
-  $connectSuccess = true;
-}
-
 
 ?>
 <html>
@@ -332,6 +354,16 @@ function auth_handler () {
   }
 }
 
+function show_db_status ( success ) {
+  if ( success ) {
+    makeVisible ( "db_success" );
+    makeInvisible ( "no_db_success" );
+  } else {
+    makeInvisible ( "db_success" );
+    makeVisible ( "no_db_success" );
+  }
+}
+
 </script>
 <style type="text/css">
 body {
@@ -365,6 +397,12 @@ li {
 }
 doc.li {
   margin-top: 5px;
+}
+.recommended {
+  color: green;
+}
+.notrecommended {
+  color: red;
 }
 </style>
 </head>
@@ -411,15 +449,18 @@ doc.li {
   }
 ?>
 </li>
-<?php if ( ! $forcePassword ) { ?>
-  <?php if ( $connectSuccess ) { ?>
-  <li> Your current database settings are able to
+<?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  ) { ?>
+<li id="db_success"> Your current database settings are able to
   access the database.</li>
-  <?php } else { ?>
-  <li> Your current database settings are <b>not</b> able to
+<li id="no_db_success" style="visibility: hidden;"> Your current database settings are <b>not</b> able to
+  access the database or have not yet been tested.</li>
+<?php } else { ?>
+<li id="no_db_success"> Your current database settings are <b>not</b> able to
+  access the database or have not yet been tested.</li>
+<li id="db_success" style="visibility: hidden;"> Your current database settings are able to
   access the database.</li>
-  <?php } ?>
 <?php } ?>
+
 
 <?php if ( empty ( $password ) ) { ?>
   <li> You have not set a password for this page. </li>
@@ -472,6 +513,7 @@ You should select "Web Server" from the list of
 
 </ul>
 
+<table><tr><td>
 <?php if ( $doLogin ) { ?>
   <form action="index.php" method="POST" name="dblogin">
   <p>Please enter the password.</p>
@@ -483,6 +525,7 @@ You should select "Web Server" from the list of
   <tr><td colspan="2" align="center"><input type="submit" value="Login" /></td></tr>
   </table><br />
   </form>
+  </td></tr></table>
 <?php } else if ( $forcePassword ) { ?>
   <form action="index.php" method="POST" name="dbpassword">
   <p>You have not set a password for access to this page yet.
@@ -496,6 +539,7 @@ You should select "Web Server" from the list of
   <tr><td colspan="2" align="center"><input type="submit" value="Set Password" /></td></tr>
   </table><br />
   </form>
+  </td></tr></table>
 <?php } else { ?>
 <form action="index.php" method="POST" name="dbform">
 
@@ -528,12 +572,12 @@ You should select "Web Server" from the list of
 
   if ( ! empty ( $supported['ibase'] ) )
     echo "<option value=\"ibase\" " .
-      ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
+      ( $settings['db_type'] == 'mssql' ? " selected=\"selected\"" : "" ) .
       "> Interbase </option>\n";
 
   if ( ! empty ( $supported['mssql'] ) )
     echo "<option value=\"mssql\" " .
-      ( $settings['db_type'] == 'mssql' ? " selected=\"selected\"" : "" ) .
+      ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
       "> MS SQL Server </option>\n";
 ?>
 </select>
@@ -553,13 +597,11 @@ You should select "Web Server" from the list of
 
 <tr><td class="prompt">Connection Persistence:</td>
 <td><input name="form_db_persistent" value="true" type="radio"
-  <?php if ( $settings['db_persistent'] == 'true' )
-          echo " checked=\"checked\"";
+  <?php echo ( $settings['db_persistent'] == 'true' )? " checked=\"checked\"" : "";
   ?> >Enabled
   &nbsp;&nbsp;&nbsp;&nbsp;
   <input name="form_db_persistent" value="false" type="radio"
-  <?php if ( $settings['db_persistent'] != 'true' )
-          echo " checked=\"checked\"";
+  <?php echo ( $settings['db_persistent'] != 'true' )? " checked=\"checked\"" : "";
   ?> >Disabled
   </td></tr>
 
@@ -570,7 +612,7 @@ You should select "Web Server" from the list of
 
 </table>
 
-<br/><br/>
+</td><td valign="top">
 
 <table>
 <tr><th class="header" colspan="2">Application Settings</th></tr>
@@ -608,28 +650,58 @@ You should select "Web Server" from the list of
 
 <tr><td class="prompt">Read-Only:</td>
 <td><input name="form_readonly" value="true" type="radio"
-  <?php if ( $settings['readonly'] == 'true' )
-          echo " checked=\"checked\"";
+  <?php echo ( $settings['readonly'] == 'true' )? " checked=\"checked\"" : "";
   ?> >Yes
   &nbsp;&nbsp;&nbsp;&nbsp;
   <input name="form_readonly" value="false" type="radio"
-  <?php if ( $settings['readonly'] != 'true' )
-          echo " checked=\"checked\"";
+  <?php echo ( $settings['readonly'] != 'true' )? " checked=\"checked\"" : "";
   ?> >No
   </td></tr>
 
 </table>
+</td></tr>
 
-<br />
-<br />
+<?php
 
+$php_settings = array (
+  //array ('Safe Mode','safe_mode','OFF'),
+  array ('Magic Quotes GPC','magic_quotes_gpc','ON'),
+  array ('Register Globals','register_globals','ON'),
+  array ('Display Errors','display_errors','ON'),
+  //array ('Register Globals','register_globals','OFF'),
+  array ('File Uploads','file_uploads','ON'),
+);
+
+?>
+
+<tr><td valign="top"><table>
+<tr><th class="header" colspan="2">PHP Settings</th></tr>
+<?php foreach ( $php_settings as $setting ) { ?>
+  <tr><td class="prompt"><?php echo $setting[0];?></td>
+  <?php
+    $class = ( get_php_setting ( $setting[1] ) == $setting[2] ) ?
+      'recommended' : 'notrecommended';
+    echo "<td class=\"$class\">";
+    echo get_php_setting ( $setting[1] );
+   ?>
+   </td></tr>
+<?php } ?>
+<tr><td colspan="2"><?php echo $phpinfo;?></td></tr>
+</table></td></tr>
+
+<tr><td align="center" colspan="2">
 <input name="action" type="button" value="Save Settings"
   onclick="return validate();" />
-  <?php if ( $connectSuccess ) { ?>
+  <?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  && empty ( $dologin ) ) { ?>
     <input type="button" value="Launch WebCalendar"
       onclick="window.open('../index.php', 'webcalendar');" />
   <?php } ?>
+  <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
+    <input type="button" value="Logout"
+      onclick="document.location.href='index.php?action=logout'" />
+  <?php } ?>
 </form>
+</td></tr></table>
 <?php } ?>
 
 <?php } ?>
