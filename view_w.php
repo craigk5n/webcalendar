@@ -56,14 +56,8 @@ for ( $i = 0; $i < 7; $i++ ) {
 ?>
 
 <div style="border-width:0px; width:99%;">
-<div style="float:left;">
-<br />
-<a href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
-</div>
-<div style="float:right;">
-<br />
-<a href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-</div>
+<a title="<?php etranslate("Previous")?>" class="prev" href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate("Next")?>" class="next" href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
@@ -78,7 +72,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 // The table has names across the top and dates for rows.  Since we need
 // to spit out an entire row before we can move to the next date, we'll
 // save up all the HTML for each cell and then print it out when we're
-// done....
+// done..
 // Additionally, we only want to put at most 6 users in one table since
 // any more than that doesn't really fit in the page.
 
@@ -103,7 +97,6 @@ for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   $e_save[$i] = $events;
 }
 
-
 for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
   // since print_date_entries is rather stupid, we can swap the event data
   // around for users by changing what $events points to.
@@ -121,14 +114,12 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
   } else {
     $tdw = 5;
   }
-
 ?>
 
 <table rules="all" cellspacing="0" cellpadding="2">
 <tr><th class="empty">&nbsp;</th>
 
 <?php
-
   // $j points to start of this table/row
   // $k is counter starting at 0
   // $i starts at table start and goes until end of this table/row.
@@ -174,7 +165,6 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     }
     echo "</tr>\n";
   }
-
   echo "</table>\n<br /><br />\n";
 }
 
@@ -189,6 +179,5 @@ echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=
 
 print_trailer ();
 ?>
-
 </body>
 </html>

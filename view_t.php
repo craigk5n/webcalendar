@@ -46,8 +46,7 @@ $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.
-if ( $timeb == 1 )
-{
+if ( $timeb == 1 ) {
    if ( $WEEK_START == 1 )
       $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
    else
@@ -78,13 +77,12 @@ for ( $i = 0; $i < $val_boucle; $i++ ) {
      month_short_name ( date ( "m", $days[$i] ) - 1 ) .
      " " . date ( "d", $days[$i] );
 }
-
 ?>
 
 <div style="border-width:0px; width:99%;">
-<a title="<?php etranslate("Previous")?>" class="prev" href="view_t.php?timeb=<?php echo $timeb?>&id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate("Previous")?>" class="prev" href="view_t.php?timeb=<?php echo $timeb?>&amp;id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
 
-<a title="<?php etranslate("Next")?>" class="next" href="view_t.php?timeb=<?php echo $timeb?>&id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<a title="<?php etranslate("Next")?>" class="next" href="view_t.php?timeb=<?php echo $timeb?>&amp;id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
@@ -101,7 +99,7 @@ for ( $i = 0; $i < $val_boucle; $i++ ) {
 // The table has names across the top and dates for rows.  Since we need
 // to spit out an entire row before we can move to the next date, we'll
 // save up all the HTML for each cell and then print it out when we're
-// done....
+// done..
 // Additionally, we only want to put at most 6 users in one table since
 // any more than that doesn't really fit in the page.
 
@@ -127,7 +125,6 @@ for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
 }
 $events = $e_save;
 $repeated_events = $re_save;
-
 ?>
 
 <table class="viewt">
@@ -166,8 +163,7 @@ for ( $date = $wkstart, $h = 0;
     echo html_for_add_icon ( date ( "Ymd", $date ), "", "", $user );
 
   // Parametres par defaut
-  if ($prefarray["WORK_DAY_START_HOUR"]==NULL || $prefarray["WORK_DAY_END_HOUR"]==NULL)
-  {
+  if ($prefarray["WORK_DAY_START_HOUR"]==NULL || $prefarray["WORK_DAY_END_HOUR"]==NULL) {
      $val = dbi_fetch_row ( dbi_query ( "SELECT cal_value FROM webcal_config where cal_setting=\"WORK_DAY_START_HOUR\"" ));
      $prefarray["WORK_DAY_START_HOUR"]=$val[0];
      $val = dbi_fetch_row ( dbi_query ( "SELECT cal_value FROM webcal_config where cal_setting=\"WORK_DAY_END_HOUR\"" ));
@@ -192,6 +188,5 @@ echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=
 
 print_trailer ();
 ?>
-
 </body>
 </html>

@@ -25,7 +25,6 @@
  *
  */
 
-
 include_once 'includes/init.php';
 
 $error = "";
@@ -152,14 +151,15 @@ echo "<tr><td colspan=\"7\" class=\"month\">" .
 	"</a></td></tr>\n";
 echo "<tr class=\"day\">";
 if ( $WEEK_START == 0 ) echo "<th>" .
-	weekday_short_name ( 0 ) . "</th>";
+	weekday_short_name ( 0 ) . "</th>\n";
 for ( $i = 1; $i < 7; $i++ ) {
 	echo "<th>" .
-		weekday_short_name ( $i ) . "</th>";
+		weekday_short_name ( $i ) . "</th>\n";
 }
 if ( $WEEK_START == 1 ) echo "<th>" .
-	weekday_short_name ( 0 ) . "</th>";
+	weekday_short_name ( 0 ) . "</th>\n";
 echo "</tr>\n";
+
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 	$i += ( 24 * 3600 * 7 ) ) {
 	print "<tr class=\"numdate\">\n";
@@ -195,13 +195,13 @@ echo "<tr><td colspan=\"7\" class=\"month\">" .
 	"</a></td></tr>\n";
 echo "<tr class=\"day\">";
 if ( $WEEK_START == 0 ) echo "<th>" .
-	weekday_short_name ( 0 ) . "</th>";
+	weekday_short_name ( 0 ) . "</th>\n";
 for ( $i = 1; $i < 7; $i++ ) {
 	echo "<th>" .
-		weekday_short_name ( $i ) . "</th>";
+		weekday_short_name ( $i ) . "</th>\n";
 }
 if ( $WEEK_START == 1 ) echo "<th>" .
-	weekday_short_name ( 0 ) . "</th>";
+	weekday_short_name ( 0 ) . "</th>\n";
 echo "</tr>\n";
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 	$i += ( 24 * 3600 * 7 ) ) {
@@ -222,6 +222,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 }
 echo "</table>\n";
 ?><br /><br />
+
 <div class="title">
 <span class="date"><?php
   echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
@@ -231,7 +232,7 @@ echo "</table>\n";
     echo "<br />\n";
     echo $view_name;
 ?></span></div>
-<br /><br /><br />
+<br /><br /><br /><br />
 
 
 <table class="main" cellspacing="0" cellpadding="0" style="clear:both;">
@@ -249,8 +250,8 @@ echo "</table>\n";
 <th><?php etranslate("Sun")?></th>
 <?php } ?>
 </tr>
-<?php
 
+<?php
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.
 //$sun = get_sunday_before ( $thisyear, $thismonth, 1 );
@@ -298,7 +299,6 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   }
   print "</tr>\n";
 }
-
 ?>
 </table><br />
 
@@ -319,6 +319,5 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 <?php print_trailer ();?>
-
 </body>
 </html>
