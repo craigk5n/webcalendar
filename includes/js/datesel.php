@@ -1,6 +1,6 @@
 <?php
 global $form, $fmonth, $fday, $fyear;
-if (preg_match("/datesel\.php/", $PHP_SELF)) {
+if (preg_match("/\/includes\//", $PHP_SELF)) {
   die ("You can't access this file directly!");
 }
 $form = clean_word($form);

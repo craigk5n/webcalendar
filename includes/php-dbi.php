@@ -1,6 +1,6 @@
 <?php
 
-if (preg_match("/php-dbi\.php/", $PHP_SELF)) {
+if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
 
@@ -174,14 +174,16 @@ function dbi_query ( $sql ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     $res = mysql_query ( $sql );
     if ( ! $res )
-      dbi_fatal_error ( "Error executing query: " . dbi_error() .
-        "\n\n<br />\n" . $sql );
+      dbi_fatal_error ( "Error executing query." .
+//         dbi_error() . "\n\n<br />\n" . $sql .
+      "" );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
     $res = mysqli_query ( $GLOBALS["db_connection"], $sql );
     if ( ! $res )
-      dbi_fatal_error ( "Error executing query: " . dbi_error() .
-        "\n\n<br />\n" . $sql );
+      dbi_fatal_error ( "Error executing query." .
+//         dbi_error() . "\n\n<br />\n" . $sql .
+      "" );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     $GLOBALS["oracle_statement"] =
@@ -192,8 +194,9 @@ function dbi_query ( $sql ) {
     $GLOBALS["postgresql_row[\"$res\"]"] = 0;
     $res =  pg_exec ( $GLOBALS["postgresql_connection"], $sql );
     if ( ! $res )
-      dbi_fatal_error ( "Error executing query: " . dbi_error() .
-        "\n\n<br />\n" . $sql );
+      dbi_fatal_error ( "Error executing query." .
+//         dbi_error() . "\n\n<br />\n" . $sql .
+      "" );
     $GLOBALS["postgresql_numrows[\"$res\"]"] = pg_numrows ( $res );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
@@ -201,8 +204,9 @@ function dbi_query ( $sql ) {
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     $res = ibase_query ( $sql );
     if ( ! $res )
-      dbi_fatal_error ( "Error executing query: " . dbi_error() .
-        "\n\n<br />\n" . $sql );
+      dbi_fatal_error ( "Error executing query." .
+//         dbi_error() . "\n\n<br />\n" . $sql .
+      "" );
     return $res;
   } else {
     dbi_fatal_error ( "dbi_query(): db_type not defined." );
