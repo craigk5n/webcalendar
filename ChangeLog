@@ -1,4 +1,17 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Added new includes/dbtable.php.  It's not used by WebCalendar, but
+    is used by other apps that are add-ons/plug-ins for WebCalendar.
+  - Added support for external participants.  If an email address is
+    provided with the external user name, they can receive notifications
+    and reminders.  There are three new admin settings for this, one
+    that enables external users, one that allows notifications for them,
+    and one that allows email reminders for them.
+  - Added support for selection lists in site extras.  This can be used
+    to provide a list of possible locations, etc.
+  - Fixed bug: Despite setting "public user can view other users' calendars'
+    to yes, still could not do this.
+  - Added sql2html.pl tool for providing documentation about the database
+    tables.  See README in the docs directory.
   - Added Welsh language translation
   - Added call to dbi_close() to pages that do printer-friendly versions
     (which do not include trailer.php, where to normal dbi_close() is.)

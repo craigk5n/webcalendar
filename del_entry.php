@@ -19,7 +19,7 @@ $can_edit = false;
 // First, check to see if this user should be able to delete this event.
 if ( $id > 0 ) {
   // first see who has access to edit this entry
-  if ( $is_admin ) {
+  if ( $is_admin || $is_assistant ) {
     $can_edit = true;
   } else if ( $readonly == "Y" ) {
     $can_edit = false;
@@ -47,7 +47,7 @@ if ( $res ) {
   $row = dbi_fetch_row ( $res );
   $owner = $row[0];
   dbi_free_result ( $res );
-  if ( $owner == $login ) {
+  if ( $owner == $login || $is_assistant ) {
     $my_event = true;
     $can_edit = true;
   }
@@ -136,7 +136,7 @@ if ( $id > 0 && empty ( $error ) ) {
         mail ( $tempemail,
           translate($application_name) . " " .
 	  translate("Notification") . ": " . $name,
-          $msg, $extra_hdrs );
+          html_to_8bits ($msg), $extra_hdrs );
       }
     }
 
@@ -211,6 +211,8 @@ if ( strlen ( get_last_view() ) ) {
   $url = "$STARTVIEW.php" . $redir;
 }
 if ( empty ( $error ) ) {
+  if ($is_assistant)
+     $url = $url . (strpos($url, "?") === false ? "?" : "&") . "user=$user";
   do_redirect ( $url );
   exit;
 }

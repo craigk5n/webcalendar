@@ -16,6 +16,7 @@ INSERT INTO webcal_user
 CREATE TABLE webcal_entry (
   cal_id INT NOT NULL,
   cal_group_id INT,
+  cal_ext_for_id INT NULL,
   cal_create_by VARCHAR(25) NOT NULL,
   cal_date INT NOT NULL,
   cal_time INT,
@@ -55,6 +56,14 @@ CREATE TABLE webcal_entry_user (
   cal_status char(1) DEFAULT 'A' NOT NULL,
   cal_category INT DEFAULT NULL,
   PRIMARY KEY ( cal_id,cal_login )
+);
+
+
+CREATE TABLE webcal_entry_ext_user (
+  cal_id INT DEFAULT 0 NOT NULL,
+  cal_fullname VARCHAR(50) NOT NULL,
+  cal_email VARCHAR(75) NULL,
+  PRIMARY KEY ( cal_id, cal_fullname )
 );
 
 

@@ -110,6 +110,8 @@ if ( $allow_view_other != "Y" && ! $is_admin )
       echo $user_fullname;
     } else
       echo $fullname;
+    if ( $is_assistant )
+      echo "<B><BR>-- " . translate("Assistant mode") . " --</B>";
   }
 ?>
 </FONT></TD>
@@ -162,7 +164,10 @@ onMouseOver="window.status = '<?php etranslate("Generate printer-friendly versio
 
 <?php include "includes/trailer.php"; ?>
 
-<?php } ?>
+<?php } else {
+        dbi_close ( $c );
+      }
+?>
 
 </BODY>
 </HTML>

@@ -16,44 +16,75 @@
 # backup of the translation will be saved with a .bak file extension.
 #
 # Usage:
-#	update_translation.pl languagefile
+#	update_translation.pl [-p plugin] languagefile
 #
-# Example:
+# Example for main WebCalendar translation:
 #	update_translation.pl French.txt
 #	   or
 #	update_translation.pl French
+#
+# Example for plugin "tnn" translation:
+#	update_translation.pl -p tnn French.txt
+#	   or
+#	update_translation.pl -p tnn French
 #
 # Note: this utility should be run from this directory (tools).
 #
 ###########################################################################
 
+$base_dir = "..";
 $trans_dir = "../translations";
 
-$base_trans = "$trans_dir/English-US.txt";
+$base_trans_file = "$trans_dir/English-US.txt";
+$plugin = "";
 
 $show_missing = 1; # set to 0 to minimize translation file.
 $show_dups = 0; # set to 0 to minimize translation file.
+$verbose = 0;
+
+( $this ) = reverse split ( /\//, $0 );
 
 $save_backup = 0;
 
-$infile = $ARGV[0];
-
-if ( ( $infile !~ /txt$/ ) && ( ! -f "$trans_dir/$infile" ) ) {
-  if ( -f $infile . ".txt" ) {
-    $infile = $infile . ".txt";
-  } elsif ( -f "$trans_dir/$infile.txt" ) {
-    $infile = "$trans_dir/$infile.txt";
+for ( $i = 0; $i < @ARGV; $i++ ) {
+  if ( $ARGV[$i] eq "-p" ) {
+    $plugin = $ARGV[++$i];
+  } elsif ( $ARGV[$i] eq "-v" ) {
+    $verbose++;
+  } else {
+    $infile = $ARGV[$i];
   }
 }
-if ( -f "$trans_dir/$infile" ) {
-  $infile = "$trans_dir/$infile";
+
+die "Usage: $this [-p plugin] language\n" if ( $infile eq "" );
+
+if ( $plugin ne "" ) {
+  $p_trans_dir = "$base_dir/$plugin/translations";
+  $p_base_trans_file = "$p_trans_dir/English-US.txt";
+  $p_base_dir = "$base_dir/$plugin";
+} else {
+  $p_trans_dir = $trans_dir;
+  $p_base_trans_file = $base_trans_file;
+  $p_base_dir = $base_dir;
 }
 
-die "Usage: $0 translationfile\n" if ( ! -f $infile );
+if ( $infile !~ /txt$/ ) {
+  $infile .= ".txt";
+}
+if ( -f "$trans_dir/$infile" || -f "$p_trans_dir/$infile" ) {
+  $b_infile = "$trans_dir/$infile";
+  $infile = "$p_trans_dir/$infile";
+}
+#print "infile: $infile\nb_infile: $b_infile\ntrans_dir: $trans_dir\n";
 
-# Now load the base translation file (English), so that we can include
+die "Usage: $this [-p plugin] language\n" if ( ! -f $infile );
+
+print "Translation file: $infile\n" if ( $verbose );
+
+# Now load the base translation(s) file (English), so that we can include
 # the English translation text above a missing translation in a comment.
-open ( F, $base_trans ) || die "Error opening $base_trans";
+open ( F, $base_trans_file ) || die "Error opening $base_trans_file";
+print "Reading base translation file: $base_trans_file\n" if ( $verbose );
 while ( <F> ) {
   chop;
   s/\r*$//g; # remove annoying CR
@@ -63,6 +94,22 @@ while ( <F> ) {
     $base_trans{$abbrev} = $';
   }
 }
+close ( F );
+# read in the plugin base translation file
+if ( $plugin ne "" ) {
+  print "Reading plugin base translation file: $p_base_trans_file\n" if ( $verbose );
+  open ( F, $p_base_trans_file ) || die "Error opening $p_base_trans_file";
+  while ( <F> ) {
+    chop;
+    s/\r*$//g; # remove annoying CR
+    next if ( /^#/ );
+    if ( /\s*:\s*/ ) {
+      $abbrev = $`;
+      $base_trans{$abbrev} = $';
+    }
+  }
+  close ( F );
+}
 
 
 #
@@ -70,6 +117,7 @@ while ( <F> ) {
 #
 $old = "";
 if ( -f $infile ) {
+  print "Reading current translations from $infile\n" if ( $verbose );
   open ( F, $infile ) || die "Error opening $infile";
   $in_header = 1;
   while ( <F> ) {
@@ -88,6 +136,19 @@ if ( -f $infile ) {
     if ( /\s*:\s*/ ) {
       $abbrev = $`;
       $trans{$abbrev} = $';
+    }
+  }
+}
+if ( $plugin ne "" ) {
+  print "Reading current WebCalendar translations from $b_infile\n" if ( $verbose );
+  open ( F, $b_infile ) || die "Error opening $b_infile";
+  $in_header = 1;
+  while ( <F> ) {
+    chop;
+    s/\r*$//g; # remove annoying CR
+    if ( /\s*:\s*/ ) {
+      $abbrev = $`;
+      $webcaltrans{$abbrev} = $';
     }
   }
 }
@@ -110,17 +171,24 @@ if ( $header !~ /Translation last updated/ ) {
 }
 
 # First get the list of .php files
-opendir ( DIR, ".." ) || die "Error opening ..";
+print "Searching for PHP files in $p_base_dir\n" if ( $verbose );
+opendir ( DIR, $p_base_dir ) || die "Error opening $p_base_dir";
 @files = grep ( /\.php$/, readdir ( DIR ) );
 closedir ( DIR );
 
-opendir ( DIR, "../includes" ) || die "Error opening ../includes";
-@incfiles = grep ( /\.php$/, readdir ( DIR ) );
-closedir ( DIR );
-foreach $f ( @incfiles ) {
-  push ( @files, "includes/$f" );
+if ( -d "$p_base_dir/includes" ) {
+  print "Searching for PHP files in $p_base_dir/includes\n" if ( $verbose );
+  opendir ( DIR, "$p_base_dir/includes" ) ||
+    die "Error opening $p_base_dir/includes";
+  @incfiles = grep ( /\.php$/, readdir ( DIR ) );
+  closedir ( DIR );
+  foreach $f ( @incfiles ) {
+    push ( @files, "includes/$f" );
+  }
 }
-push ( @files, "tools/send_reminders.php" );
+if ( $plugin eq "" ) {
+  push ( @files, "tools/send_reminders.php" );
+}
 
 #
 # Write new translation file.
@@ -130,9 +198,9 @@ open ( OUT, ">$infile" ) || die "Error writing $infile: ";
 print OUT $header;
 foreach $f ( @files ) {
   print OUT "\n\n###############################################\n# Page: $f\n#\n";
-  $file = "../$f";
+  $file = "$p_base_dir/$f";
   open ( F, $file ) || die "Error reading $file";
-  #print "Checking $f for text.\n";
+  print "Searching $f\n" if ( $verbose );
   %thispage = ();
   while ( <F> ) {
     $data = $_;
@@ -149,15 +217,19 @@ foreach $f ( @files ) {
 	} else {
           if ( ! length ( $trans{$text} ) ) {
             if ( $show_missing ) {
-              print OUT "#\n# << MISSING >>\n# $text:\n";
-              print OUT "# English text: $base_trans{$text}\n#\n"
-                if ( length ( $base_trans{$text} ) &&
-                  $base_trans{$text} ne $text );
+              if ( length ( $webcaltrans{$text} ) ) {
+                print OUT "# \"$text\" defined in WebCalendar translation\n";
+              } else {
+                print OUT "#\n# << MISSING >>\n# $text:\n";
+                print OUT "# English text: $base_trans{$text}\n#\n"
+                  if ( length ( $base_trans{$text} ) &&
+                    $base_trans{$text} ne $text );
+              }
             }
             $text{$text} = 1;
 	    $thispage{$text} = 1;
 	    $foundin{$text} = $f;
-            $notfound++;
+            $notfound++ if ( ! length ( $webcaltrans{$text} ) );
 	  } else {
             $text{$text} = 1;
 	    $foundin{$text} = $f;

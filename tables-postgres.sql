@@ -14,6 +14,7 @@ INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, ca
 CREATE TABLE webcal_entry (
   cal_id INT NOT NULL,
   cal_group_id INT,
+  cal_ext_for_id INT NULL,
   cal_create_by VARCHAR(25) NOT NULL,
   cal_date INT NOT NULL,
   cal_time INT,
@@ -54,6 +55,13 @@ CREATE TABLE webcal_entry_user (
   PRIMARY KEY ( cal_id,cal_login )
 );
 
+
+CREATE TABLE webcal_entry_ext_user (
+  cal_id INT DEFAULT 0 NOT NULL,
+  cal_fullname VARCHAR(50) NOT NULL,
+  cal_email VARCHAR(75) NULL,
+  PRIMARY KEY ( cal_id, cal_fullname )
+);
 
 
 CREATE TABLE webcal_user_pref (
@@ -228,4 +236,10 @@ CREATE TABLE webcal_categories (
   cat_owner VARCHAR(25),
   cat_name VARCHAR(80) NOT NULL,
   PRIMARY KEY ( cat_id )
+);
+
+CREATE TABLE webcal_asst (
+  cal_boss VARCHAR(25) NOT NULL,
+  cal_assistant VARCHAR(25) NOT NULL,
+  PRIMARY KEY ( cal_boss, cal_assistant )
 );

@@ -208,6 +208,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <?php etranslate("Your browser default language is"); echo " " . get_browser_language () . "."; ?>
 </TD></TR>
 
+
 <TR><TD VALIGN="top"><B CLASS="tooltip" TITLE="<?php etooltip("fonts-help")?>"><?php etranslate("Fonts")?>:</B></TD>
   <TD><INPUT SIZE="40" NAME="admin_FONTS" VALUE="<?php echo htmlspecialchars ( $FONTS );?>" </TD></TR>
 
@@ -382,6 +383,16 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("allow-view-other-help")?>"><?php etranslate("Allow viewing other user's calendars")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_allow_view_other" VALUE="Y" <?php if ( $s["allow_view_other"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_allow_view_other" VALUE="N" <?php if ( $s["allow_view_other"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("allow-external-users-help")?>"><?php etranslate("Allow external users")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_allow_external_users" VALUE="Y" <?php if ( $s["allow_external_users"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_allow_external_users" VALUE="N" <?php if ( $s["allow_external_users"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("external-can-receive-notification-help")?>"><?php etranslate("External users can receive email notifications")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_external_notifications" VALUE="Y" <?php if ( $s["external_notifications"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_external_notifications" VALUE="N" <?php if ( $s["external_notifications"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;<B CLASS="tooltip" TITLE="<?php etooltip("external-can-receive-reminder-help")?>"><?php etranslate("External users can receive email reminders")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_external_reminders" VALUE="Y" <?php if ( $s["external_reminders"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_external_reminders" VALUE="N" <?php if ( $s["external_reminders"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("remember-last-login-help")?>"><?php etranslate("Remember last login")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="admin_remember_last_login" VALUE="Y" <?php if ( $s["remember_last_login"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_remember_last_login" VALUE="N" <?php if ( $s["remember_last_login"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
@@ -395,6 +406,36 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 
 </TABLE></TD></TR></TABLE></TD></TR></TABLE>
 
+
+<H3><?php etranslate("Plugins")?></H3>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
+
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("plugins-enabled-help");?>"><?php etranslate("Enable Plugins")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="admin_plugins_enabled" VALUE="Y" <?php if ( $s["plugins_enabled"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="admin_plugins_enabled" VALUE="N" <?php if ( $s["plugins_enabled"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<?php
+if ( $plugins_enabled == "Y" ) {
+  $plugins = get_plugin_list ( true );
+
+  for ( $i = 0; $i < count ( $plugins ); $i++ ) {
+    $val = $s[$plugins[$i] . ".plugin_status"];
+    echo "<TR><TD>&nbsp;&nbsp;&nbsp;" .
+      "<B CLASS=\"tooltip\" TITLE=\"" .
+      tooltip("plugins-sort-key-help") . "\">" .
+      translate("Plugin") . " " . $plugins[$i] . ":</B></TD>\n";
+    echo "<TD><INPUT TYPE=\"radio\" NAME=\"admin_" .
+       $plugins[$i] . "_plugin_status\" VALUE=\"Y\" ";
+    if ( $val != "N" ) echo "CHECKED";
+    echo "> " . translate("Yes");
+    echo "<INPUT TYPE=\"radio\" NAME=\"admin_" .
+       $plugins[$i] . "_plugin_status\" VALUE=\"N\" ";
+    if ( $val == "N" ) echo "CHECKED";
+    echo "> " . translate("No") . "</TD></TR>\n";
+  }
+}
+?>
+
+</TABLE></TD></TR></TABLE></TD></TR></TABLE>
 
 
 

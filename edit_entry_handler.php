@@ -24,8 +24,32 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
   $old_id = $id;
 }
 
+// Modify the time to be server time rather than user time.
+if ( ! empty ( $hour ) ) {
+  $hour -= $TZ_OFFSET;
+  if ( $hour < 0 ) {
+    $hour += 24;
+    // adjust date
+    $date = mktime ( 3, 0, 0, $month, $day, $year );
+    $date -= $ONE_DAY;
+    $month = date ( "m", $date );
+    $day = date ( "d", $date );
+    $year = date ( "Y", $date );
+  }
+  if ( $hour > 24 ) {
+    $hour -= 24;
+    // adjust date
+    $date = mktime ( 3, 0, 0, $month, $day, $year );
+    $date += $ONE_DAY;
+    $month = date ( "m", $date );
+    $day = date ( "d", $date );
+    $year = date ( "Y", $date );
+  }
+}
 
-// Input time format "235900", duration is minutes
+// Return the time ih HHMMSS format of input time + duration
+// $time - format "235900"
+// $duration - number of minutes
 function add_duration ( $time, $duration ) {
   $hour = (int) ( $time / 10000 );
   $min = ( $time / 100 ) % 100;
@@ -37,45 +61,6 @@ function add_duration ( $time, $duration ) {
   return $ret;
 }
 
-// check to see if two events overlap
-// time1 and time2 should be an integer like 235900
-// duration1 and duration2 are integers in minutes
-function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
-  //echo "times_overlap ( $time1, $duration1, $time2, $duration2 )<BR>";
-  $hour1 = (int) ( $time1 / 10000 );
-  $min1 = ( $time1 / 100 ) % 100;
-  $hour2 = (int) ( $time2 / 10000 );
-  $min2 = ( $time2 / 100 ) % 100;
-  // convert to minutes since midnight
-  // remove 1 minute from duration so 9AM-10AM will not conflict with 10AM-11AM
-  if ( $duration1 > 0 )
-    $duration1 -= 1;
-  if ( $duration2 > 0 )
-    $duration2 -= 1;
-  $tmins1start = $hour1 * 60 + $min1;
-  $tmins1end = $tmins1start + $duration1;
-  $tmins2start = $hour2 * 60 + $min2;
-  $tmins2end = $tmins2start + $duration2;
-  //echo "tmins1start=$tmins1start, tmins1end=$tmins1end, tmins2start=$tmins2start, tmins2end=$tmins2end<BR>";
-
-  /* old code
-  if ( $tmins1start >= $tmins2start && $tmins1start <= $tmins2end )
-    return true;
-  if ( $tmins1end >= $tmins2start && $tmins1end <= $tmins2end )
-    return true;
-  if ( $tmins2start >= $tmins1start && $tmins2start <= $tmins1end )
-    return true;
-  if ( $tmins2end >= $tmins1start && $tmins2end <= $tmins1end )
-    return true;
-  return false;
-  end old code */
-
-  /* new code */
-  if ( ( $tmins1start >= $tmins2end ) || ( $tmins2start >= $tmins1end ) )
-    return false;
-  return true;
-
-}
 
 // Make sure this user is really allowed to edit this event.
 // Otherwise, someone could hand type in the URL to edit someone else's
@@ -89,7 +74,7 @@ $can_edit = false;
 if ( empty ( $id ) ) {
   // New event...
   $can_edit = true;
-} else if ( $is_admin ) {
+} else if ( $is_admin || $is_assistant ) {
   $can_edit = true;
 } else {
   // event owner?
@@ -141,6 +126,43 @@ if ( strlen ( $hour ) > 0 ) {
     $hour %= 12;
     if ( $ampmt == 'pm' )
       $hour += 12;
+  }
+}
+
+// handle external participants
+$ext_names = array ();
+$ext_emails = array ();
+$matches = array ();
+$ext_count = 0;
+if ( $single_user == "N" &&
+  ! empty ( $allow_external_users ) && $allow_external_users == "Y" ) {
+  $lines = explode ( "\n", $externalparticipants );
+  if ( ! is_array ( $lines ) )
+    $lines = array ( $externalparticipants );
+  if ( is_array ( $lines ) ) {
+    for ( $i = 0; $i < count ( $lines ); $i++ ) {
+      $ext_words = explode ( " ", $lines[$i] );
+      if ( ! is_array ( $ext_words ) )
+        $ext_words = array ( $lines[$i] );
+      if ( is_array ( $ext_words ) ) {
+        $ext_names[$ext_count] = "";
+        $ext_emails[$ext_count] = "";
+        for ( $j = 0; $j < count ( $ext_words ); $j++ ) {
+          // use regexp matching to pull email address out
+          if ( preg_match ( "/<?\\S+@\\S+\\.\\S+>?/", $ext_words[$j],
+            $matches ) ) {
+            $ext_emails[$ext_count] = $matches[0];
+            $ext_emails[$ext_count] = preg_replace ( "/[<>]/", "",
+              $ext_emails[$ext_count] );
+          } else {
+            if ( strlen ( $ext_names[$ext_count] ) )
+              $ext_names[$ext_count] .= " ";
+            $ext_names[$ext_count] .= $ext_words[$j];
+          }
+        }
+        $ext_count++;
+      }
+    }
   }
 }
 
@@ -226,6 +248,7 @@ if ( empty ( $error ) ) {
     if ( empty ( $error ) ) {
       dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = $id" );
       dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_id = $id" );
+      dbi_query ( "DELETE FROM webcal_entry_ext_user WHERE cal_id = $id" );
       dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id" );
       dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_id = $id" );
     }
@@ -285,7 +308,7 @@ if ( empty ( $error ) ) {
   }
 
   // check if participants have been removed and send out emails
-  if ( ! $newevent ) {  // nur bei Update!!!
+  if ( ! $newevent && count ( $old_status ) > 0 ) {  // nur bei Update!!!
     while ( list ( $old_participant, $dummy ) = each ( $old_status ) ) {
       $found_flag = false;
       for ( $i = 0; $i < count ( $participants ); $i++ ) {
@@ -323,7 +346,7 @@ if ( empty ( $error ) ) {
             $extra_hdrs = "From: $email_fallback_from\nX-Mailer: " . translate($application_name);
           mail ( $tempemail,
             translate($application_name) . " " . translate("Notification") . ": " . $name,
-            $msg, $extra_hdrs );
+            html_to_8bit ($msg), $extra_hdrs );
           activity_log ( $id, $login, $old_participant, $LOG_NOTIFICATION,
 	    "User removed from participants list" );
         }
@@ -399,8 +422,60 @@ if ( empty ( $error ) ) {
           $extra_hdrs = "X-Mailer: " . translate($application_name);
         mail ( $tempemail,
           translate($application_name) . " " . translate("Notification") . ": " . $name,
-          $msg, $extra_hdrs );
+          html_to_8bits ($msg), $extra_hdrs );
         activity_log ( $id, $login, $participants[$i], $LOG_NOTIFICATION, "" );
+      }
+    }
+  }
+
+  // add external participants
+  // send notification if enabled.
+  if ( is_array ( $ext_names ) && is_array ( $ext_emails ) ) {
+    for ( $i = 0; $i < count ( $ext_names ); $i++ ) {
+      if ( strlen ( $ext_names[$i] ) ) {
+        $sql = "INSERT INTO webcal_entry_ext_user " .
+          "( cal_id, cal_fullname, cal_email ) VALUES ( " .
+          "$id, '$ext_names[$i]', ";
+        if ( strlen ( $ext_emails[$i] ) )
+          $sql .= "'$ext_emails[$i]' )";
+        else
+          $sql .= "NULL )";
+        if ( ! dbi_query ( $sql ) ) {
+          $error = translate("Database error") . ": " . dbi_error ();
+        }
+        // send mail notification if enabled
+        // TODO: move this code into a function...
+        if ( $external_notifications == "Y" && $send_email != "N" &&
+          strlen ( $ext_emails[$i] ) > 0 ) {
+          $fmtdate = sprintf ( "%04d%02d%02d", $year, $month, $day );
+          $msg = translate("Hello") . ", " . $ext_names[$i] . ".\n\n";
+          if ( $newevent )
+            $msg .= translate("A new appointment has been made for you by");
+          else
+            $msg .= translate("An appointment has been updated by");
+          $msg .= " " . $login_fullname .  ". " .
+            translate("The subject is") . " \"" . $name . "\"\n\n" .
+            translate("The description is") . " \"" . $description . "\"\n" .
+            translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
+            translate("Time") . ": " .
+            display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) . "\n\n\n";
+            translate("Please look on") . " " . translate($application_name) .
+            ".";
+          // add URL to event, if we can figure it out
+          if ( ! empty ( $server_url ) ) {
+            $url = $server_url .  "view_entry.php?id=" .  $id;
+            $msg .= "\n\n" . $url;
+          }
+          if ( strlen ( $from ) )
+            $extra_hdrs = "From: $from\nX-Mailer: " . translate($application_name);
+          else
+            $extra_hdrs = "X-Mailer: " . translate($application_name);
+          mail ( $ext_emails[$i],
+            translate($application_name) . " " .
+            translate("Notification") . ": " . $name,
+            html_to_8bits ($msg), $extra_hdrs );
+        
+        }
       }
     }
   }
@@ -418,7 +493,8 @@ if ( empty ( $error ) ) {
     if ( strlen ( $$extra_name ) || $extra_type == $EXTRA_DATE ) {
       if ( $extra_type == $EXTRA_URL || $extra_type == $EXTRA_EMAIL ||
         $extra_type == $EXTRA_TEXT || $extra_type == $EXTRA_USER ||
-        $extra_type == $EXTRA_MULTILINETEXT  ) {
+        $extra_type == $EXTRA_MULTILINETEXT ||
+        $extra_type == $EXTRA_SELECTLIST  ) {
         $sql = "INSERT INTO webcal_site_extras " .
           "( cal_id, cal_name, cal_type, cal_data ) VALUES ( " .
           "$id, '$extra_name', $extra_type, '$value' )";
@@ -507,6 +583,8 @@ if ( empty ( $error ) ) {
     $url = sprintf ( "%s.php?date=%04d%02d%02d",
       $STARTVIEW, $year, $month, $day );
   }
+  if ($is_assistant)
+     $url = $url . (strpos($url, "?") === false ? "?" : "&") . "user=$user";
   do_redirect ( $url );
 }
 

@@ -7,7 +7,6 @@ include "includes/$user_inc";
 include "includes/connect.php";
 
 load_global_settings ();
-load_user_preferences ();
 
 if ( ! empty ( $last_login ) )
   $login = "";
@@ -16,7 +15,16 @@ if ( $remember_last_login == "Y" && empty ( $login ) ) {
   $last_login = $login = $webcalendar_login;
 }
 
+load_user_preferences ();
+
 include "includes/translate.php";
+
+// see if a return path was set
+if ( ! empty ( $return_path ) ) {
+  $url = $return_path;
+} else {
+  $url = "index.php";
+}
 
 // calculate path for cookie
 if ( empty ( $PHP_SELF ) )
@@ -32,6 +40,7 @@ if ( $single_user == "Y" ) {
   do_redirect ( "index.php" );
 } else {
   if ( ! empty ( $login ) && ! empty ( $password ) ) {
+    $login = trim ( $login );
     if ( user_valid_login ( $login, $password ) ) {
       user_load_variables ( $login, "" );
       // set login to expire in 365 days
@@ -56,7 +65,7 @@ if ( $single_user == "Y" ) {
           time() + ( 24 * 3600 * 365 ), $cookie_path );
       else
         SetCookie ( "webcalendar_login", $login, 0, $cookie_path );
-      do_redirect ( "index.php" );
+      do_redirect ( $url );
     }
   }
   // delete current user
@@ -82,11 +91,24 @@ function valid_form ( form ) {
   }
   return true;
 }
+function myOnLoad() {
+  <?php if ( $plugins_enabled ) { ?>
+  if (self != top)  {
+    window.open("login.php","_top","");
+    return;
+  }
+  <?php } ?>
+  document.forms[0].login.focus();
+  <?php
+    if ( ! empty ( $login ) ) echo "document.forms[0].login.select();"
+  ?>
+  }
+}
 </SCRIPT>
 <?php include "includes/styles.php"; ?>
 </HEAD>
 <BODY BGCOLOR="<?php echo $BGCOLOR;?>"
-ONLOAD="document.forms[0].login.focus(); <?php if ( ! empty ( $login ) ) echo "document.forms[0].login.select();" ?>" CLASS="defaulttext">
+ONLOAD="myOnLoad();" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR?>"><?php etranslate($application_name)?></FONT></H2>
 
@@ -97,6 +119,12 @@ if ( ! empty ( $error ) ) {
 }
 ?>
 <FORM NAME="login_form" ACTION="login.php" METHOD="POST" ONSUBMIT="return valid_form(this)">
+
+<?php
+if ( ! empty ( $return_path ) )
+  echo "<INPUT TYPE=\"hidden\" NAME=\"return_path\" VALUE=\"" .
+    htmlentities ( $return_path ) . "\">\n";
+?>
 
 <TABLE BORDER=0>
 <TR><TD><B><?php etranslate("Username")?>:</B></TD>
