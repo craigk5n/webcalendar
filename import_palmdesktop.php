@@ -49,9 +49,11 @@ function ParseLine($line){
     $Entry[Repeat][Interval],
     $Entry[Repeat][Frequency],
     $Entry[Repeat][EndTime],
-    $Entry[Repeat][Exceptions],
+    $Exceptions,
     $Entry[Repeat][RepeatDays],
       ) = explode("|", $line);
+
+  if ($Exceptions) $Entry[Repeat][Exceptions] = explode(":",$Exceptions);
   return $Entry;
 }
 ?>
