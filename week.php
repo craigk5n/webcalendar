@@ -80,7 +80,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 <a title="<?php etranslate("Next")?>" class="next" href="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
 <span class="user"><?php
   if ( $single_user == "N" ) {
-    echo "<br />$user_fullname\n";
+    echo "<br />$user_fullname";
   }
   if ( $is_nonuser_admin )
     echo "<br />-- " . translate("Admin mode") . " --";
@@ -100,17 +100,35 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 <th class="empty">&nbsp;</th>
 <?php
 for ( $d = $start_ind; $d < $end_ind; $d++ ) {
+	$thiswday = date ( 'w', $days[$d] );
+
+	$is_weekend = ( $thiswday == 0 || $thiswday == 6 );
+
+	if ( $is_weekend ) {
+		$class = "weekend";
+	} else {
+		$class = "";
+	}
+
 	if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
-		echo '<th class="today">';
-  } else {
-	echo '<th>';
-  }
+		if ( $class != '' ) {
+			$class .= " ";
+		}
+		$class .= "today";
+	}
+
+	echo "<th";
+
+	if ( $class != '') {
+		echo " class=\"$class\"";
+	}
+	echo ">";
 
   if ( $can_add ) {
     echo html_for_add_icon (  date ( "Ymd", $days[$d] ), "", "", $user );
   }
-	echo '<a href="day.php?' . $u_url .
-		'date=' . date ('Ymd', $days[$d] ) . $caturl . '">' .
+	echo "<a href=\"day.php?" . $u_url .
+		"date=" . date ('Ymd', $days[$d] ) . $caturl . "\">" .
 		$header[$d] . "</a></th>\n";
 }
 ?>
@@ -254,25 +272,30 @@ if ( $untimed_found ) {
     $thiswday = date ( "w", $days[$d] );
 
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-
-		if ($is_weekend) {
-			$class = 'weekend';
+		if ( $is_weekend ) {
+			$class = "weekend";
 		} else {
-			$class = '';
+			$class = "";
 		}
 
-		echo '<td';
+		if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
+			if ($class != "") {
+				$class .= " ";
+			}
+			$class .= "today";
+		}
+		echo "<td";
 
-		if ( $class != '' ) {
+		if ( $class != "" ) {
 			echo " class=\"$class\"";
     }
 
-		echo '>';
+		echo ">";
 
 		if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
 			echo $untimed[$d];
 		} else {
-			echo '&nbsp;';
+			echo "&nbsp;";
 		}
 
 		echo "</td>\n";
@@ -292,77 +315,61 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     $thiswday = date ( "w", $days[$d] );
 
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-
 		if ( $is_weekend ) {
-			$class = 'weekend';
+			$class = "weekend";
 		} else {
-			$class = '';
+			$class = "";
 		}
-
-		if ( ! empty ( $all_day[$d] ) && $all_day[$d] > 0 ) {
-			if (strlen($class)) {
-				$class .= ' ';
+		if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
+			if ( $class != "" ) {
+				$class .= " ";
 			}
-			$class .= 'today';
+			$class .= "today";
 		}
 
     if ( $rowspan_day[$d] > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
-			if ( ! empty ( $save_hour_arr[$d][$i] ) ) {
-				echo '<td';
-
-				if ( $class != '' ) {
-					echo " class=\"$class\"";
-				}
-
-				echo '>' . $save_hour_arr[$d][$i] . "</td>\n";
-			}
+	if ( ! empty ( $save_hour_arr[$d][$i] ) ) {
+		echo "<td";
+		if ( $class != '' ) {
+			echo " class=\"$class\"";
+		}
+		echo ">" . $save_hour_arr[$d][$i] . "</td>\n";
+	}
       $rowspan_day[$d]--;
     } else {
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
-				echo '<td';
-
-				if ( $class != '' ) {
-					echo " class=\"$class\"";
-				}
-
-				echo '>';
-
-				if ( $can_add ) { //if user can add events...
+	echo "<td";
+	if ( $class != "" ) {
+		echo " class=\"$class\"";
+	}
+	echo ">";
+	if ( $can_add ) { //if user can add events...
           echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user ); //..then echo the add event icon
-				}
-
-        echo "&nbsp;</td>\n";
+	}
+       echo "&nbsp;</td>\n";
       } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         if ( $rowspan_day[$d] > 1 ) {
-					echo '<td';
-
-					if ( $class != '' ) {
-						echo " class=\"$class\"";
-					}
-
-					echo " rowspan=\"$rowspan_day[$d]\">";
-
-					if ( $can_add ) {
-            echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
-					}
-
-          echo $save_hour_arr[$d][$i] . "</td>\n";
+		echo "<td";
+		if ( $class != '' ) {
+			echo " class=\"$class\"";
+		}
+		echo " rowspan=\"$rowspan_day[$d]\">";
+		if ( $can_add ) {
+			echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
+		}
+		echo $save_hour_arr[$d][$i] . "</td>\n";
         } else {
-					echo '<td';
-
-					if ( $class != '' ) {
-						echo " class=\"$class\"";
-					}
-
-					echo '>';
-
-					if ( $can_add ) {
-            echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
-					}
-
+		echo "<td";
+		if ( $class != '' ) {
+			echo " class=\"$class\"";
+		}
+		echo ">";
+		if ( $can_add ) {
+			echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
+		}
           echo $save_hour_arr[$d][$i] . "</td>\n";
         }
       }
