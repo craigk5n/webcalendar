@@ -15,7 +15,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
   else
     $u_url = "";
 
-  echo "<table class=\"minical\" cellpadding=\"1\" cellspacing=\"2\">";
+  echo "<table class=\"yearviewminical\" cellpadding=\"1\" cellspacing=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
   else
@@ -39,7 +39,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear ) {
     weekday_short_name ( 0 ) . "</th>";
   for ($i = $wkstart; date("Ymd",$i) <= date ("Ymd",$monthend);
     $i += (24 * 3600 * 7) ) {
-    echo "</tr><tr class=\"date\">";
+    echo "</tr><tr class=\"numdate\">";
     for ($j = 0; $j < 7; $j++) {
       $date = $i + ($j * 24 * 3600);
       $dateYmd = date ( "Ymd", $date );

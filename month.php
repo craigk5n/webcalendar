@@ -44,7 +44,7 @@ $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
 <?php
 
 if ( ! $friendly ) {
-  echo "<td align=\"left\"><table class=\"minical\" cellspacing=\"1\" cellpadding=\"2\">";
+  echo "<td align=\"left\"><table class=\"monthviewminical\" cellspacing=\"1\" cellpadding=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $prevyear, $prevmonth, 1 );
   else
@@ -75,7 +75,7 @@ if ( ! $friendly ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<td class=\"date\"><a href=\"day.php?$u_url&amp;date=".date("Ymd", $date)."\">" . date ( "d", $date ) . "</a></td>\n";
+        print "<td class=\"numdate\"><a href=\"day.php?$u_url&amp;date=".date("Ymd", $date)."\">" . date ( "d", $date ) . "</a></td>\n";
       } else {
         print "<td>&nbsp;</td>\n";
       }
@@ -118,7 +118,7 @@ if ( ! $friendly ) {
 </td>
 <?php
 if ( ! $friendly ) {
-  echo "<td align=\"right\"><table class=\"minical\" cellspacing=\"1\" cellpadding=\"2\">";
+  echo "<td align=\"right\"><table class=\"monthviewminical\" cellspacing=\"1\" cellpadding=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $nextyear, $nextmonth, 1 );
   else
@@ -148,7 +148,7 @@ if ( ! $friendly ) {
       $date = $i + ( $j * 24 * 3600 );
       if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
         date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-        print "<td class=\"date\"><a href=\"day.php?$u_url&amp;date=".date("Ymd", $date)."\">" . date ( "d", $date ) . "</a></td>\n";
+        print "<td class=\"numdate\"><a href=\"day.php?$u_url&amp;date=".date("Ymd", $date)."\">" . date ( "d", $date ) . "</a></td>\n";
       } else {
         print "<td>&nbsp;</td>\n";
       }
@@ -167,7 +167,6 @@ if ( ! $friendly ) {
 <br />
 
 <table class="monthview" cellspacing="0" cellpadding="0">
-
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
 <th><?php etranslate("Sun")?></th>
@@ -182,7 +181,6 @@ if ( ! $friendly ) {
 <th><?php etranslate("Sun")?></th>
 <?php } ?>
 </tr>
-
 <?php
 
 // We add 2 hours on to the time so that the switch to DST doesn't
@@ -238,7 +236,6 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 }
 
 ?>
-
 </table>
 
 <br /><br />
