@@ -78,7 +78,7 @@ if ( $readonly == 'Y' ) {
     $day = $cal_date % 100;
     $time = $row[2];
     if ( $time >= 0 ) { /* -1 = no time specified */
-      $time += $TZ_OFFSET * 10000;
+      $time += ( ! empty ( $TZ_OFFSET )?$TZ_OFFSET : 0)  * 10000;
       if ( $time > 240000 ) {
         $time -= 240000;
         $gmt = mktime ( 3, 0, 0, $month, $day, $year );

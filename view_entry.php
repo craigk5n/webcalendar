@@ -216,7 +216,7 @@ $name = $row[9];
 $description = $row[10];
 
 // Timezone Adjustments
-if ( $event_time >= 0 && $TZ_OFFSET != 0 ) { // -1 = no time specified
+if ( $event_time >= 0 && ! empty ( $TZ_OFFSET )  && $TZ_OFFSET != 0 ) { // -1 = no time specified
   $adjusted_time = $event_time + $TZ_OFFSET * 10000;
   $year = substr($row[1],0,4);
   $month = substr($row[1],4,2);
