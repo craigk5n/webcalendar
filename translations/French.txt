@@ -9,7 +9,7 @@
 # Mise à jour : Mario Dragone <mario.dragone@reims.iufm.fr>
 # Title is what will appear in the title bar for pages
 #
-# Translation last updated on 02-10-2003
+# Translation last updated on 04-23-2003
 
 
 ###############################################
@@ -204,8 +204,9 @@ Error approving event: Erreur en approuvant l'événement
 ###############################################
 # Page: assistant_edit.php
 #
-Yours assistants: Vos assistants(es)
 Assistants: Assistants(es)
+Admin mode: Mode administrateur
+Yours assistants: Vos assistants(es)
 
 
 ###############################################
@@ -292,6 +293,7 @@ Public: Public
 Confidential: Confidentiel
 category-help: Définir la catégorie associée à un événement.
 Category: Catégorie
+None: Aucune
 days: jours
 before event: avant
 participants-help: Liste des participants pour cet événement.
@@ -300,7 +302,6 @@ external-participants-help: Spécifie une liste de participants pour cet événemen
 External Participants: Participants extérieurs
 repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br><I>Mensuel (par jour)</I> autorise un événement à être répété tous les premiers Lundi du mois, 3ème Jeudi du mois, etc. <br><I>Mensuel (par date)</I> autorise un événement à être répété le même jour du mois.
 Repeat Type: Type de répétition
-None: Aucune
 Daily: Quotidienne
 Weekly: Hebdomadaire
 Monthly: Mensuelle
@@ -374,7 +375,7 @@ Last Name: Nom
 E-mail address: Adresse de couriel 
 Password: Mot de passe
 again: bis
-Admin: Administration
+Admin: Administrateur
 Disabled for demo: Désactivé pour la démo
 Change Password: Changer de mot de passe
 New Password: Nouveau mot de passe
@@ -715,6 +716,20 @@ Private: Privé
 
 ###############################################
 # Page: year.php
+#
+
+
+###############################################
+# Page: nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX n'a pas été initialisé
+NonUser: Utilisateur générique
+Calendar ID: ID calendrier
+Add New NonUser Calendar: Ajouter un nouvel utilisateur générique
+
+
+###############################################
+# Page: nonusers_handler.php
 #
 
 
