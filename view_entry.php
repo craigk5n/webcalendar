@@ -644,58 +644,58 @@ if ( $event_repeats )
 if ( empty ( $user ) && $categories_enabled == "Y" &&
   $readonly != "Y" && $is_my_event && $login != "__public__" &&
   $event_status != "D" && ! $can_edit )  {
-  echo "<a class=\"navlinks\" href=\"set_entry_cat.php?id=$id$rdate\">" .
+  echo "<a class=\"nav\" href=\"set_entry_cat.php?id=$id$rdate\">" .
     translate("Set category") . "</a><br />\n";
 }
 
 
 if ( $can_edit && $event_status != "D" ) {
   if ( $event_repeats ) {
-    echo "<a class=\"navlinks\" href=\"edit_entry.php?id=$id$u_url\">" .
+    echo "<a class=\"nav\" href=\"edit_entry.php?id=$id$u_url\">" .
       translate("Edit repeating entry for all dates") . "</a><br />\n";
     // Don't allow override of first event
     if ( ! empty ( $date ) && $date != $orig_date )
-      echo "<a class=\"navlinks\" href=\"edit_entry.php?id=$id$u_url$rdate&amp;override=1\">" .
+      echo "<a class=\"nav\" href=\"edit_entry.php?id=$id$u_url$rdate&amp;override=1\">" .
         translate("Edit entry for this date") . "</a><br />\n";
-    echo "<a class=\"navlinks\" href=\"del_entry.php?id=$id$u_url&amp;override=1\" onclick=\"return confirm('" .
+    echo "<a class=\"nav\" href=\"del_entry.php?id=$id$u_url&amp;override=1\" onclick=\"return confirm('" .
       translate("Are you sure you want to delete this entry?") .
       "\\n\\n" . translate("This will delete this entry for all users.") .
       "');\">" . translate("Delete repeating event for all dates") . "</a><br />\n";
     // Don't allow deletion of first event
     if ( ! empty ( $date ) && $date != $orig_date )
-      echo "<a class=\"navlinks\" href=\"del_entry.php?id=$id$u_url$rdate&amp;override=1\" onclick=\"return confirm('" .
+      echo "<a class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate&amp;override=1\" onclick=\"return confirm('" .
         translate("Are you sure you want to delete this entry?") .
         "\\n\\n" . translate("This will delete this entry for all users.") .
         "');\">" . translate("Delete entry only for this date") . "</a><br />\n";
   } else {
-    echo "<a class=\"navlinks\" href=\"edit_entry.php?id=$id$u_url\">" .
+    echo "<a class=\"nav\" href=\"edit_entry.php?id=$id$u_url\">" .
       translate("Edit entry") . "</a><br />\n";
-    echo "<a class=\"navlinks\" href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" .
+    echo "<a class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" .
       translate("Are you sure you want to delete this entry?") .
       "\\n\\n" . translate("This will delete this entry for all users.") .
       "');\">" . translate("Delete entry") . "</a><br />\n";
   }
-  echo "<a class=\"navlinks\" href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
+  echo "<a class=\"nav\" href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
   translate("Copy entry") . "</a><br />\n";  
 } elseif ( $readonly != "Y" && $is_my_event && $login != "__public__" &&
   $event_status != "D" )  {
-  echo "<a class=\"navlinks\" href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" .
+  echo "<a class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" .
     translate("Are you sure you want to delete this entry?") .
     "\\n\\n" . translate("This will delete the entry from your calendar.") .
     "');\">" . translate("Delete entry") . "</a><br />\n";
-  echo "<a class=\"navlinks\" href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
+  echo "<a class=\"nav\" href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
   translate("Copy entry") . "</a><br />\n";  
 }
 if ( $readonly != "Y" && ! $is_my_event && ! $is_private && 
   $event_status != "D" && $login != "__public__" )  {
-  echo "<a class=\"navlinks\" href=\"add_entry.php?id=$id\" onclick=\"return confirm('" .
+  echo "<a class=\"nav\" href=\"add_entry.php?id=$id\" onclick=\"return confirm('" .
     translate("Do you want to add this entry to your calendar?") .
     "\\n\\n" . translate("This will add the entry to your calendar.") .
     "');\">" . translate("Add to My Calendar") . "</a><br />\n";
 }
 
 if ( count ( $allmails ) > 0 ) {
-  echo "<a class=\"navlinks\" href=\"mailto:" . implode ( ",", $allmails ) .
+  echo "<a class=\"nav\" href=\"mailto:" . implode ( ",", $allmails ) .
     "?subject=" . rawurlencode($subject) . "\">" .
     translate("Email all participants") . "</a><br />\n";
 }
@@ -704,10 +704,10 @@ $show_log = false;
 
 if ( $is_admin ) {
   if ( empty ( $log ) ) {
-    echo "<a class=\"navlinks\" href=\"view_entry.php?id=$id&amp;log=1\">" .
+    echo "<a class=\"nav\" href=\"view_entry.php?id=$id&amp;log=1\">" .
       translate("Show activity log") . "</a><br />\n";
   } else {
-    echo "<a class=\"navlinks\" href=\"view_entry.php?id=$id\">" .
+    echo "<a class=\"nav\" href=\"view_entry.php?id=$id\">" .
       translate("Hide activity log") . "</a><br />\n";
     $show_log = true;
   }

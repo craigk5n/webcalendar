@@ -16,7 +16,7 @@ print_header($INC);
 <input type="submit" value="<?php etranslate("Search")?>" />
 
 <br /><br />
-<a class="navlinks" href="search.php?advanced=1"><?php etranslate("Advanced Search") ?></a>
+<a class="nav" href="search.php?advanced=1"><?php etranslate("Advanced Search") ?></a>
 
 <?php } else {
 $show_participants = ( $disable_participants_field != "Y" );

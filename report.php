@@ -207,13 +207,13 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
   $list .= "<ul>\n";
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ){
-      $list .= "<li><a href=\"edit_report.php?report_id=$row[0]\" class=\"navlinks\">" .
+      $list .= "<li><a href=\"edit_report.php?report_id=$row[0]\" class=\"nav\">" .
         $row[1] . "</a></li>\n";
     }
     $list .= "</ul>\n";
     $addurl = $updating_public ? "edit_report.php?public=1" : "edit_report.php";
     $list .= "<p><a title=\"" .
-      translate("Add new report") . "\" href=\"$addurl\" class=\"navlinks\">" .
+      translate("Add new report") . "\" href=\"$addurl\" class=\"nav\">" .
       translate("Add new report") . "</a></p>\n";
     dbi_free_result ( $res );
   } else {
@@ -482,7 +482,7 @@ if ( ! empty ( $error ) ) {
     echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
   echo translate("Manage Reports");
   echo "</h2>\n" . 
-  "<a title=\"" . translate("Admin") . "\" class=\"navlinks\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n" . $list;
+  "<a title=\"" . translate("Admin") . "\" class=\"nav\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n" . $list;
 } else {
   if ( $report_include_header == 'Y' ) {
     echo "<h2>" . $report_name . "</h2>\n";
@@ -500,15 +500,15 @@ if ( empty ( $error ) && empty ( $list ) ) {
     $prev = $offset - 1;
     echo "<br /><br /><a title=\"" .
       translate ( "Previous" ) . "\" href=\"report.php?report_id=$report_id$u_url" .
-      ( empty ( $prev ) ? "" : "&amp;offset=$prev" ) . "\" class=\"navlinks\">" .
+      ( empty ( $prev ) ? "" : "&amp;offset=$prev" ) . "\" class=\"nav\">" .
       translate ( "Previous" ) . "</a>\n";
     echo "&nbsp;&nbsp;<a title=\"" .
       translate ( "Next" ) . "\" href=\"report.php?report_id=$report_id$u_url" .
-      ( empty ( $next ) ? "" : "&amp;offset=$next" ) . "\" class=\"navlinks\">" .
+      ( empty ( $next ) ? "" : "&amp;offset=$next" ) . "\" class=\"nav\">" .
       translate ( "Next" ) . "</a><br />\n";
   }
   if ( $report_include_header == 'Y' ) {
-    echo '<br /><br /><a title="' . translate("Printer Friendly") . '" class="navlinks" href="report.php?report_id=' . $report_id .
+    echo '<br /><br /><a title="' . translate("Printer Friendly") . '" class="nav" href="report.php?report_id=' . $report_id .
       '&amp;friendly=1' . $u_url . '&amp;offset=' . $offset .
       '" target="cal_printer_friendly" onmouseover="window.status=\'' .
       translate("Generate printer-friendly version") .

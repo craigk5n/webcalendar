@@ -79,19 +79,19 @@ function list_unapproved ( $user ) {
       echo ": <a href=\"approve_entry.php?id=$id&amp;ret=list&amp;user=$user";
       if ( $user == "__public__" )
         echo "&amp;public=1";
-      echo "\" class=\"navlinks\" onclick=\"return confirm('" .
+      echo "\" class=\"nav\" onclick=\"return confirm('" .
         translate("Approve this entry?") .
         "');\">" . translate("Approve/Confirm") . "</a>, ";
       echo "<a href=\"reject_entry.php?id=$id&amp;ret=list&amp;user=$user";
       if ( $user == "__public__" )
         echo "&amp;public=1";
-      echo "\" class=\"navlinks\" onclick=\"return confirm('" .
+      echo "\" class=\"nav\" onclick=\"return confirm('" .
         translate("Reject this entry?") .
         "');\">" . translate("Reject") . "</a>";
       echo ", <a href=\"del_entry.php?id=$id&amp;ret=list";
       if ( $user != $login )
         echo "&amp;user=$user";
-      echo "\" class=\"navlinks\" onclick=\"return confirm('" .
+      echo "\" class=\"nav\" onclick=\"return confirm('" .
         translate("Are you sure you want to delete this entry?") .
         "');\">" . translate("Delete") . "</a>";
       echo "\n</li>\n";

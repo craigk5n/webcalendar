@@ -205,7 +205,7 @@ if ( ! empty ( $return_path ) )
 
 <br /><br />
 <?php if ( $public_access == "Y" ) { ?>
-	<a class="navlinks" href="index.php"><?php etranslate("Access public calendar")?></a><br />
+	<a class="nav" href="index.php"><?php etranslate("Access public calendar")?></a><br />
 <?php } ?>
 
 <?php
