@@ -551,7 +551,7 @@ textarea {
 	color: <?php echo $GLOBALS['THFG']; ?>;
 	font-size: 13px;
 	background-color: <?php echo $GLOBALS['THBG']; ?>;
-	vertical-align:top;
+	vertical-align: top;
 }
 .glance td {
 	vertical-align: top;
@@ -573,20 +573,11 @@ textarea {
 	margin: 0px;
 	padding-left: 20px;
 }
+.viewt,
 #viewv .main,
 #viewm .main,
-.viewt {
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>; 
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	width: 100%;
-	border-collapse: collapse;
-}
 #vieww .main,
-#week .main {
-	width: 100%;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-}
+#week .main,
 #viewl .main,
 #month .main {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -618,8 +609,7 @@ th {
 }
 #viewm .main th {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 <?php //participants cell
 ?>#viewd .main th {
@@ -666,8 +656,6 @@ th {
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-right-width: 0px;
-	border-bottom-width: 0px;
 	width: 12%;
 }
 #week .main th a,
@@ -688,8 +676,6 @@ th {
 	height: 75px;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-right-width: 0px;
-	border-bottom-width: 0px;
 	background-color: <?php echo $GLOBALS['CELLBG'];?>;
 	vertical-align: top;
 }
@@ -704,10 +690,6 @@ th {
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	padding-left: 3px;
 }
-#vieww .main td,
-#week .main td {
-	width: 12%;
-}
 #viewl .main td.weekend,
 #month .main td.weekend,
 #viewm .main td.weekend,
@@ -715,8 +697,6 @@ th {
 #vieww .main td.weekend,
 #week .main td.weekend {
 	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
-	border-bottom-width: 0px;
-	border-right-width: 0px;
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
@@ -902,6 +882,9 @@ th {
 	font-size: 18px;
 	padding: 0px;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+abbr {
+	cursor: help;
 }
 -->
 </style>
