@@ -1,5 +1,11 @@
-<html><head><title>WebCalendar README</title>
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<title>WebCalendar README</title>
 <style type="text/css">
+<!--
 a {
   text-decoration: none;
 }
@@ -45,24 +51,25 @@ tr {
   font-family: arial;
   background: #6060c0;
 }
+-->
 </style>
 </head>
-<body style="background-color: #fff;">
-<H2>WebCalender README</H2>
+<body style="background-color:#FFFFFF;">
+<h2>WebCalendar Readme</h2>
 
-<table border="0" cellpadding="10">
-<tr><td valign="top"><b>URL:</b></td>
+<table style="border-width:0px;" cellpadding="10">
+<tr><td style="vertical-align:top; font-weight:bold;">URL:</td>
 <td><a href="http://www.k5n.us/webcalendar.php">http://www.k5n.us/webcalendar.php</a></td></tr>
 
-<tr><td valign="top"><b>Author:</b></td>
-<td valign="top">Craig Knudsen, <a href="mailto:cknudsen@cknudsen.com">cknudsen@cknudsen.com</a><br /><a href="http://www.k5n.us/">http://www.k5n.us</a></td></tr>
+<tr><td style="vertical-align:top; font-weight:bold;">Developers:</td>
+<td valign="top">Craig Knudsen, <a href="mailto:cknudsen@cknudsen.com">cknudsen@cknudsen.com</a>, <a href="http://www.k5n.us/">http://www.k5n.us</a><br />
+Jeff Hoover<br />
+Adam Shantz, <a href="mailto:adamATadamshantzDOTcom">adamATadamshantzDOTcom</a>,
+<a href="http://adamshantz.com">adamshantz.com</a></td></tr>
 
-<tr><td valign="top"><b>Documentation:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;">Documentation:</td>
 <td valign="top">
 	<a href="docs/WebCalendar-SysAdmin.html">System Administrator's Guide</a> (Installation instructions, FAQ)<br />
-<!--
-	<a href="docs/WebCalendar-UserManual.html">User Manual</a><br />
--->
 	User Manual (<a href="http://sourceforge.net/project/showfiles.php?group_id=3870&package_id=112017">download</a>)<br />
 	<a href="UPGRADING.html">Upgrading Instructions</a>
 	(<b>Required</b> when upgrading from an older version)<br />
@@ -71,7 +78,7 @@ tr {
 	<a href="http://webcalendar.sourceforge.net/demo/">Online Demo</a>
 </td></tr>
 
-<tr><td valign="top"><b>Developer Resources:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;">Developer Resources:</td>
 	<td valign="top"><a href="http://sourceforge.net/projects/webcalendar/">Sourceforge.net Home</a><br />
 	<a href="docs/WebCalendar-Database.html">WebCalendar Database Documentation</a><br />
 	<a href="http://sourceforge.net/forum/forum.php?forum_id=11588">Help/Troubleshooting Forum</a><br />
@@ -82,81 +89,92 @@ tr {
 </td></tr>
 </table>
 
-</p><p>
-
-WebCalender is an open source PHP-based multi-user calendar.
-
-</p><p>
-<b>Features:</b>
-</p>
+<p>WebCalender is an open source PHP-based multi-user calendar.</p>
+<p><b>Features:</b></p>
 <ul>
-<li> Multi-user support </li>
-<li> Group support </li>
-<li> View day-at-glance </li>
-<li> View month-at-glance </li>
-<li> View week-at-glance </li>
-<li> View year-at-glance </li>
-<li> View another user's calendar </li>
-<li> View multiple users' calendars at the same time </li>
-<li> View one or more users' calendar via layers on top of your own calendar </li>
-<li> Public calendar (that requires no login) where anonymous users
-  submit events that are approved by an administrator. </li>
-<li> Add/Edit/Delete users </li>
-<li> Add/Edit/Delete events </li>
-<li> Repeating events </li>
-<li> Custom event fields </li>
-<li> Search interface for calendar entries </li>
-<li> User-configurable preferences for colors, 12/24 time format,
-  Week start on Sun or Mon, default work hours </li>
-<li> Online help </li>
-<li> Checks for scheduling conflicts </li>
-<li> Support for multiple timezones </li>
-<li> Users can accept or reject events added by another user to their calendar </li>
-<li> Email reminders </li>
-<li> Email notifications for new events </li>
-<li> Support for 29 different languages: Basque, Bulgarian, Catalan,
-  Traditional Chinese (Big5),
-  Simplified Chinese (GB2312), Czech, Danish, Dutch,
-  English, Estonian, Finnish, French, Galician, German, Holo (Taiwanese),
-  Hungarian, Icelandic, Italian,
-  Japanese, Korean, Norwegian, Polish, Portuguese, Portuguese/Brazil,
-  Russian, Spanish, Swedish, Turkish, Welsh </li>
-<li> Exporting to Palm Pilot, vCal, and iCal </li>
-<li> Importing from Palm Pilot, vCal, and iCal </li>
-<li> Authentication using LDAP, HTTP authentication, NIS, or web-based. </li>
-<li> Activity log that tracks event creation, update, accept, reject,
-  email notifications, and email reminders </li>
+	<li>Multi-user support</li>
+	<li>Group support</li>
+	<li>View day-at-glance</li>
+	<li>View month-at-glance</li>
+	<li>View week-at-glance</li>
+	<li>View year-at-glance</li>
+	<li>View another user's calendar</li>
+	<li>View multiple users' calendars at the same time</li>
+	<li>View one or more users' calendar via layers on top of your own calendar</li>
+	<li>Public calendar (that requires no login) where anonymous users submit events that are approved by an administrator.</li>
+	<li>Add/Edit/Delete users</li>
+	<li>Add/Edit/Delete events</li>
+	<li>Repeating events</li>
+	<li>Custom event fields</li>
+	<li>Search interface for calendar entries</li>
+	<li>User-configurable preferences for colors, 12/24 time format, Week start on Sun or Mon, default work hours</li>
+	<li>Online help</li>
+	<li>Checks for scheduling conflicts</li>
+	<li>Support for multiple timezones</li>
+	<li>Users can accept or reject events added by another user to their calendar</li>
+	<li>Email reminders</li>
+	<li>Email notifications for new events</li>
+	<li>Support for 29 different languages: 
+		<ul>
+			<li>Basque</li>
+			<li>Bulgarian</li>
+			<li>Catalan</li>
+			<li>繁體中文(Big5)</li>
+			<li>简体中文(GB2312)</li>
+			<li>Czech</li>
+			<li>Danish</li>
+			<li>Deutsch</li>
+			<li>Dutch</li>
+			<li>English</li>
+			<li>Espa&#241;ol</li>
+			<li>Estonian</li>
+			<li>Finnish</li>
+			<li>Fran&#231;ais</li>
+			<li>Galician</li>
+			<li>Holo (Taiwanese)</li>
+			<li>Hungarian</li>
+			<li>Icelandic</li>
+			<li>Italian</li>
+			<li>Japanese</li>
+			<li>Korean</li>
+			<li>Norwegian</li>
+			<li>Polish</li>
+			<li>Portuguese</li>
+			<li>Portuguese/Brazil</li>
+			<li>Русско</li>
+			<li>Swedish</li>
+			<li>Turkish</li>
+			<li>Welsh</li>
+		</ul>
+	</li>
+	<li>Exporting to Palm Pilot, vCal, and iCal</li>
+	<li>Importing from Palm Pilot, vCal, and iCal</li>
+	<li>Authentication using LDAP, HTTP authentication, NIS, or web-based.</li>
+	<li>Activity log that tracks event creation, update, accept, reject, email notifications, and email reminders</li>
 </ul>
 
-<p>
-
-<b>System Requirements:</b>
+<p><b>System Requirements:</b></p>
 <ul>
-<li> PHP (3 or 4) </li>
-<li> Database: MySQL, Oracle, PostgreSQL, Interbase or
-  ODBC (PHP ODBC includes support for Adabas D, IBM DB2, Solid and
-  Sybase SQL Anywhere as well as ODBC) </li>
-<li> JavaScript-enabled browser </li>
-<li> Cookie-enabled browser </li>
-</ul>
-<p>
-See <a href="docs/WebCalendar-SysAdmin.html#requirements">System Administrator's Guide</a> for more
-specific PHP requirements.
-
-</p><p>
-
-<b>Outstanding issues:</b>
-</p>
-<ul>
-<li> Updated translatations (some are slightly out of date) </li>
+	<li>PHP (3 or 4)</li>
+	<li>Database: 
+		<ul>
+			<li>MySQL</li>
+			<li>Oracle</li>
+			<li>PostgreSQL</li>
+			<li>Interbase or ODBC (PHP ODBC includes support for Adabas D, IBM DB2, Solid and Sybase SQL Anywhere as well as ODBC)</li>
+		</ul>
+	</li>
+	<li>JavaScript-enabled browser</li>
+	<li>Cookie-enabled browser</li>
 </ul>
 
-</p><p>
+<p>See <a href="docs/WebCalendar-SysAdmin.html#requirements">System Administrator's Guide</a> for more specific PHP requirements.</p>
 
-<b>Possible features for future releases:</b>
-<p>
-See <a href="http://www.k5n.us/webcalendar.php?topic=Plans">Plans</a>
-  on the WebCalendar home page.
-</p>
+<p><b>Outstanding issues:</b></p>
+<ul>
+	<li>Updated translatations (some are slightly out of date)</li>
+</ul>
 
+<p><b>Possible features for future releases:</b><br />
+See <a href="http://www.k5n.us/webcalendar.php?topic=Plans">Plans</a> on the WebCalendar home page.</p>
 </body></html>
