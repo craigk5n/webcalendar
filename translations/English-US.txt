@@ -17,7 +17,7 @@
 #
 #
 #
-# Translation last updated on 06-23-2003
+# Translation last updated on 06-24-2003
 
 
 ###############################################
@@ -669,6 +669,8 @@ View Type: View Type
 Week (Users horizontal): Week (Users horizontal)
 Week (Users vertical): Week (Users vertical)
 Week (Timebar): Week (Timebar)
+Month (side by side): Month (side by side)
+Month (on same calendar): Month (on same calendar)
 
 
 ###############################################
@@ -706,6 +708,11 @@ You must specify a view name: You must specify a view name
 #
 New Entry: New Entry
 Private: Private
+
+
+###############################################
+# Page: view_l.php
+#
 
 
 ###############################################
