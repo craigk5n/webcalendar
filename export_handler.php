@@ -37,6 +37,9 @@ function export_get_event_entry($id)
       $sql .= "WHERE webcal_entry.cal_id = '$id' AND " .
 	"webcal_entry_user.cal_id = '$id' AND " .
 	"webcal_entry_user.cal_login = '" . $login . "'";
+        // TODO: add support for user in URL so we can export from other
+        // calendars, particularly non-user calendars.
+	//"webcal_entry_user.cal_id = '$id'";
     }
   
   if ( $DISPLAY_UNAPPROVED == "N"  || $login == "__public__" )
