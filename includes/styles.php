@@ -81,11 +81,17 @@ table.yearview {
 .yearview tr {
 	vertical-align: top;
 }
+.yearviewtitle {
+	text-align: center;
+}
 
 /* MINI CALENDARS */
 /* contains individual months in year.php */
 table.minical {
 	border-width: 0px;
+}
+td.month {
+	text-align: center;
 }
 /* contains the name of the month (i.e. January, June, December, etc) in year.php */
 td.month a {
@@ -93,7 +99,6 @@ td.month a {
 	font-size: 13px;
 	color: #B04040;
 	text-decoration: none;
-	text-align:center;
 }
 /* formats the day name (i.e. Sun, Mon, etc) */
 /* used as "<tr class="day">" to format the cells WITHIN that row */
