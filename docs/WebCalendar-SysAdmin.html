@@ -305,6 +305,12 @@ mysql> <strong>QUIT</strong></pre>
 	<pre><strong>mysql intranet &lt; tables-mysql.sql</strong></pre>
 	<p>In the above example, "intranet" is the name of your database.</p>
 
+	<p><span class="note">Note:</span> If you are using
+	<a href="http://www.phpmyadmin.net">phpMyAdmin</a> to
+	manage your MySQL database, follow the
+	instructions in <a href="#appendixA">Appendix A</a>.
+	</p>
+
 	<h3 class="colorheader">Oracle</h3>
 	<p>The following will create a tablespace named "webcalendar".
 		From the command line, startup sqlplus and
@@ -1185,6 +1191,55 @@ cal_firstname, cal_is_admin ) VALUES
   		user <a href="#pref">Preferences</a>)</dd>
 	</dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
+
+<a name="appendixA"></a>
+	<h2>Appendix A: Using phpMyAdmin</h2>
+<p>
+If you have <a href="http://www.phpmyadmin.net">phpMyAdmin</a>
+installed and configured to manage your MySQL database, use the
+following steps to setup WebCalendar.
+(The following information is based on phpMyAdmin version 2.6.1.)
+</p>
+<ol>
+<li>On the initial phpMyAdmin page, under the "MySQL" heading, the first
+  option should be "Create new database."  Enter the name you have
+  chosen for the database and press the "Create" button.
+  (The default database name used by WebCalendar is "intranet".)
+  After pressing the "Create" button, it should say:
+  "Database &lt;your database name here&gt; has been created." </li>
+<li>Click on the home icon (the small house) in the left-side
+   navigation.  This will bring you back to your phpMyAdmin home page.</li>
+<li>(Optional) Create new MySQL user.  If you already have
+    a MySQL login that you would like to use, you can skip this step.</li>
+<li><ul>
+  <li>Click on the "Privileges" link under the "MySQL" heading.</li>
+  <li>Below any existing users listed, click on the link "Add a new User."</li>
+  <li>Fill in the details of your new database user.
+      The default username for WebCalendar is "webcalendar"
+      with a password of "webcal01".
+      Leave the "Host" field set to "Any host".</li>
+  <li>From the list of "Global privileges", be sure to select:
+      SELECT, INSERT, UPDATE, DELETE, FILE, CREATE, ALTER, INDEX, DROP </li>
+  <li>Click on the "Go" button.</li>
+  <li>You should see a page that says "You have added a new user."</li>
+</ul></li>
+<li>Click on the "Databases" tab at the top of the page.</li>
+<li>From the list of databases on the page, click on the name
+    of the database that you created.</li>
+<li>Click on the "SQL" tab at the top of the page.</li>
+<li>At the bottom of the page, there is an area to upload a SQL file.
+    Click on the "Browse" button and select the <tt>tables-mysql.sql</tt>
+    file in the WebCalendar toplevel directory.
+    Then, press the "Go" button.</li>
+<li>The top of the page should say "Your SQL-query has been executed
+    successfully."</li>
+<li>You have now finished creating the WebCalendar database tables.</li>
+
+</ol>
+
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 <p>
 	<a href="http://validator.w3.org/check?uri=referer"><img 
 		src="http://www.w3.org/Icons/valid-xhtml10" 
