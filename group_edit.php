@@ -60,6 +60,11 @@ if ( $newgroup ) {
 <?php
   // get list of all users
   $users = user_get_users ();
+  if ($nonuser_enabled == "Y" ) {
+    $nonusers = get_nonuser_cals ();
+    $users = ($nonuser_at_top == "Y") ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
+  }
+
   // get list of users for this group
   if ( ! $newgroup ) {
     $sql = "SELECT cal_login FROM webcal_group_user WHERE cal_group_id = $id";
