@@ -1024,6 +1024,31 @@ of field.  In some cases, "Arg 1" and "Arg 2" are not used.
   </ul>
   </dd>
 
+<dt>Can I embed WebCalendar as a component on another web page?</dt>
+<dd>WebCalendar is meant to be run as a standalone web application.
+  You can customize the appearance of WebCalendar to match your existing
+  site.
+  To do this, In System Settings, set both "Custom header" and
+  "Custom trailer" to "Yes" and press the "Edit" button to enter the
+  header and trailer content.)
+  <br />
+  If you are looking to just include a list of upcoming events in one
+  of you web pages, you can use the <tt>incoming.php</tt> page in
+  WebCalendar to do this.  Edit the top of this file to configure options.
+  (These settings will likely move into System Settings in subsequent release.)
+  You can then use an <tt>iframe</tt> elsewhere on your web site as
+  in the example below:
+  <blockquote><pre>
+&lt;iframe height="250" width="300" scrolling="yes" src="upcoming.php"&gt;&lt;/iframe&gt;
+</pre></blockquote>
+  Include this HTML anywhere on any of your pages.
+  By default, the events from the public calendar will be loaded (so
+  you must have "Public Access" enabled in System Settings).
+  You can override this with another user's calendar.
+  (See <tt>upcoming.php</tt> for instructions on this.)
+</dd>
+
+
 <dt>How do I add a new translation?</dt>
 <dd>
 It's a fairly simple process.  If you've ever translated a C-based app
@@ -1347,6 +1372,9 @@ read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.
 
 <pre>
 $Log$
+Revision 1.17  2004/07/31 23:35:58  cknudsen
+Added info on upcoming.html
+
 Revision 1.16  2004/07/14 16:44:25  cknudsen
 fixed strange lowercase/uppercase problem
 
