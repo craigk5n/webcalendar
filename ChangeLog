@@ -1,4 +1,5 @@
 Verion 0.9.42-devcvs (?? ??? ????)
+  - Added previous link to Activity Log page
   - Added patch 618254: new import function (vCal and Palm)
   - Added patch 759643: Added new view type "Month (on same calendar)"
     that displays all users' events on the same month view rather than
