@@ -210,12 +210,13 @@ they have not been 100% enforced, so you will see exceptions):
     are lowercase using underscores.
     <br/>Example: webcal_user_pref
     </li>
-<li>PHP function comments: Each function for include files
-    should be documented in a specific way.
-    The <a href="WebCalendar-Functions.html">WebCalendar-Functions.html</a>
-    file is generated from these comments, so they need to
-    use a specific format.
-    See <a href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/includes/functions.php?view=markup"><tt>includes/functions.php</tt></a> as an example.
+<li>PHP function comments: <a href="phpdoc/" title="WebCalendar Function Documenation">Function documentation</a> is generated using
+    <a href="http://www.phpdoc.org/" title="phpDocumentor">phpDocumentor</a>.
+    Each function should be preceded by a DocBlock.  See the phpDocumentor website for
+    <a href="http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_phpDocumentor.howto.pkg.html#basics.docblock"
+      title="DocBlocks">information about DocBlocks and DocBlock syntax</a>, and see
+    <a href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/includes/functions.php?view=markup"><tt>includes/functions.php</tt></a>
+    for examples.
     </li>
 <li>ChangeLog: if you have access to commit your changes to CVS, please
    put an entry at the top of the ChangeLog file that describes the
@@ -379,7 +380,7 @@ The following resources may be helpful:
 <li><a href="http://sourceforge.net/bugs/?group_id=3870">Bug Reports</a>
   on SourceForge.
   </li>
-<li><a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/webcalendar/webcalendar/docs/WebCalendar-Functions.html?rev=HEAD&amp;content-type=text/html">WebCalendar-Functions.html</a> documents internal WebCalendar functions
+<li><a href="phpdoc/">WebCalendar Function Documentation
   </li>
 <li><a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/webcalendar/webcalendar/docs/WebCalendar-Database.html?rev=HEAD&amp;content-type=text/html">WebCalendar-Database.html</a> describes the WebCalendar database schema
   </li>
