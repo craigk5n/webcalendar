@@ -2636,8 +2636,36 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
 
 
 
-// Define an array to use to jumble up the key
-$offsets = array ( 31, 41, 59, 26, 54 );
+// Define an array to use to jumble up the key: $offsets
+// We define a unique key to scramble the cookie we generate.
+// We use the remote server address as part of it, which should tie the
+// cookie to the user's machine (or the proxy they connect through).
+// We also use the server name so that cannot use their own server to
+// generate a cookie for a different server.
+if ( empty ( $REMOTE_ADDR ) )
+  $REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
+if ( empty ( $REMOTE_PORT ) )
+  $REMOTE_PORT = $_SERVER['REMOTE_PORT'];
+if ( empty ( $SERVER_NAME ) )
+  $SERVER_NAME = $_SERVER['SERVER_NAME'];
+$unique_id = "";
+$len1 = strlen ( $REMOTE_ADDR );
+$len2 = strlen ( $REMOTE_PORT );
+$len3 = strlen ( $SERVER_NAME );
+$offsets = array ();
+for ( $i = 0; $i < $len1 || $i < $len2 || $i < $len3; $i++ ) {
+  $offset[$i] = 0;
+  if ( $i < $len1 )
+    $offsets[$i] += ord ( substr ( $REMOTE_ADDR, $i, 1 ) );
+  if ( $i < $len2 )
+    $offsets[$i] += ord ( substr ( $REMOTE_PORT, $i, 1 ) );
+  if ( $i < $len3 )
+    $offsets[$i] += ord ( substr ( $SERVER_NAME, $i, 1 ) );
+  $offsets[$i] %= 128;
+}
+for ( $i = 0; $i < count ( $offsets ); $i++ ) {
+  //echo "offset $i: $offsets[$i] <br>";
+}
 
 
 function hextoint ( $val ) {
