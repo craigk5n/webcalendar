@@ -35,25 +35,25 @@ if ($file['size'] > 0) {
 
 // ADD New modules here:
 
-//    case MODULE:
+//    case 'MODULE':
 //      include "import_module.php";
 //      $data = parse_module($HTTP_POST_FILES['FileName']['tmp_name']);
 //      break;
 //
-    case PALMDESKTOP:
+    case 'PALMDESKTOP':
       include "import_palmdesktop.php";
       if (delete_palm_events($login) != 1) $errormsg = "Error deleting palm events from webcalendar.";
       $data = parse_palmdesktop($file['tmp_name'], $exc_private);
       $type = 'palm';
       break;
 
-    case VCAL:
+    case 'VCAL':
       include "import_vcal.php";
       $data = parse_vcal($file['tmp_name']);
       $type = 'vcal';
       break;
 
-    case ICAL:
+    case 'ICAL':
       include "import_ical.php";
       $data = parse_ical($file['tmp_name']);
       $type = 'ical';
@@ -117,7 +117,7 @@ function import_data ( $data, $overwrite, $type ) {
   global $login, $count_con, $count_suc, $error_num, $ImportType, $LOG_CREATE;
   global $single_user, $single_user_login, $allow_conflicts;
   global $numDeleted, $errormsg;
-  global $calUser;
+  global $calUser, $H2COLOR;
 
   $oldUIDs = array ();
   $oldIds = array ();
@@ -146,45 +146,46 @@ function import_data ( $data, $overwrite, $type ) {
     $participants[0] = $calUser;
 
     // Some additional date/time info
-    $START = $Entry[StartTime] > 0 ? localtime($Entry[StartTime]) : 0;
-    $END   = $Entry[EndTime] > 0 ? localtime($Entry[EndTime]) : 0;
-    $Entry[StartMinute]        = sprintf ("%02d",$START[1]);
-    $Entry[StartHour]          = sprintf ("%02d",$START[2]);
-    $Entry[StartDay]           = sprintf ("%02d",$START[3]);
-    $Entry[StartMonth]         = sprintf ("%02d",$START[4] + 1);
-    $Entry[StartYear]          = sprintf ("%04d",$START[5] + 1900);
-    $Entry[EndMinute]          = sprintf ("%02d",$END[1]);
-    $Entry[EndHour]            = sprintf ("%02d",$END[2]);
-    $Entry[EndDay]             = sprintf ("%02d",$END[3]);
-    $Entry[EndMonth]           = sprintf ("%02d",$END[4] + 1);
-    $Entry[EndYear]            = sprintf ("%04d",$END[5] + 1900);
-    if ( $overwrite && ! empty ( $Entry[UID] ) ) {
-      $oldUIDs[$Entry[UID]]++;
+    $START = $Entry['StartTime'] > 0 ? localtime($Entry['StartTime']) : 0;
+    $END   = $Entry['EndTime'] > 0 ? localtime($Entry['EndTime']) : 0;
+    $Entry['StartMinute']        = sprintf ("%02d",$START[1]);
+    $Entry['StartHour']          = sprintf ("%02d",$START[2]);
+    $Entry['StartDay']           = sprintf ("%02d",$START[3]);
+    $Entry['StartMonth']         = sprintf ("%02d",$START[4] + 1);
+    $Entry['StartYear']          = sprintf ("%04d",$START[5] + 1900);
+    $Entry['EndMinute']          = sprintf ("%02d",$END[1]);
+    $Entry['EndHour']            = sprintf ("%02d",$END[2]);
+    $Entry['EndDay']             = sprintf ("%02d",$END[3]);
+    $Entry['EndMonth']           = sprintf ("%02d",$END[4] + 1);
+    $Entry['EndYear']            = sprintf ("%04d",$END[5] + 1900);
+    if ( $overwrite && ! empty ( $Entry['UID'] ) ) {
+      $oldUIDs[$Entry['UID']]++;
     }
 
     // Check for untimed
-    if ($Entry[Untimed] == 1) {
-      $Entry[StartMinute] = '';
-      $Entry[StartHour] = '';
-      $Entry[EndMinute] = '';
-      $Entry[EndHour] = '';
+    if ($Entry['Untimed'] == 1) {
+      $Entry['StartMinute'] = '';
+      $Entry['StartHour'] = '';
+      $Entry['EndMinute'] = '';
+      $Entry['EndHour'] = '';
     }
 
     // first check for any schedule conflicts
-    if ( empty ( $allow_conflicts )  &&  ( $Entry[Duration] != 0 )) {
-      $date = mktime (0,0,0,$Entry[StartMonth],$Entry[StartDay],$Entry[StartYear]);
-      $endt =  (! empty ( $Entry[Repeat][EndTime] ) ) ? $Entry[Repeat][EndTime] : 'NULL';
-      $dayst =  (! empty ( $Entry[Repeat][RepeatDays] ) ) ? $Entry[Repeat][RepeatDays] : "nnnnnnn";
+    if ( empty ( $allow_conflicts )  &&  ( $Entry['Duration'] != 0 )) {
+      $date = mktime (0,0,0,$Entry['StartMonth'],
+        $Entry['StartDay'],$Entry['StartYear']);
+      $endt =  (! empty ( $Entry['Repeat']['EndTime'] ) ) ? $Entry['Repeat']['EndTime'] : 'NULL';
+      $dayst =  (! empty ( $Entry['Repeat']['RepeatDays'] ) ) ? $Entry['Repeat']['RepeatDays'] : "nnnnnnn";
 
       $ex_days = array ();
-      if ( ! empty ( $Entry[Repeat][Exceptions] ) ) {
-        foreach ($Entry[Repeat][Exceptions] as $ex_date) {
+      if ( ! empty ( $Entry['Repeat']['Exceptions'] ) ) {
+        foreach ($Entry['Repeat']['Exceptions'] as $ex_date) {
           $ex_days[] = date("Ymd",$ex_date);
         }
       }
 
-      $dates = get_all_dates($date, RepeatType($Entry[Repeat][Interval]), $endt, $dayst, $ex_days, $Entry[Repeat][Frequency]);
-      $overlap = overlap ( $dates, $Entry[Duration], $Entry[StartHour], $Entry[StartMinute], $participants, $login, 0 );
+      $dates = get_all_dates($date, RepeatType($Entry['Repeat']['Interval']), $endt, $dayst, $ex_days, $Entry['Repeat']['Frequency']);
+      $overlap = overlap ( $dates, $Entry['Duration'], $Entry['StartHour'], $Entry['StartMinute'], $participants, $login, 0 );
     }
 
     if ( empty ( $error ) && ! empty ( $overlap ) ) {
@@ -204,7 +205,7 @@ function import_data ( $data, $overwrite, $type ) {
   Not sure what to do with this code since I don't know how Palm and vCal
   use the UID stuff yet...
   
-      if ( ! empty ( $Entry[UID] ) ) {
+      if ( ! empty ( $Entry['UID'] ) ) {
         $res = dbi_query ( "SELECT webcal_import_data.cal_id " .
           "FROM webcal_import_data, webcal_entry_user " .
           "WHERE cal_import_type = 'ical' AND " .
@@ -247,44 +248,44 @@ function import_data ( $data, $overwrite, $type ) {
       }
       $names[] = 'cal_date';
       $values[] = sprintf ( "%04d%02d%02d",
-        $Entry[StartYear],$Entry[StartMonth],$Entry[StartDay]);
+        $Entry['StartYear'],$Entry['StartMonth'],$Entry['StartDay']);
       $names[] = 'cal_time';
-      $values[] = ($Entry[Untimed] == 1) ? "-1" :
-        sprintf ( "%02d%02d00", $Entry[StartHour],$Entry[StartMinute]);
+      $values[] = ($Entry['Untimed'] == 1) ? "-1" :
+        sprintf ( "%02d%02d00", $Entry['StartHour'],$Entry['StartMinute']);
       $names[] = 'cal_mod_date';
       $values[] = date("Ymd");
       $names[] = 'cal_mod_time';
       $values[] = date("Gis");
       $names[] = 'cal_duration';
-      $values[] = sprintf ( "%d", $Entry[Duration] );
+      $values[] = sprintf ( "%d", $Entry['Duration'] );
       $names[] = 'cal_priority';
       $values[] = $priority;
       $names[] = 'cal_access';
-      $values[] = ($Entry[Private] == 1) ? "'R'" : "'P'";
+      $values[] = ($Entry['Private'] == 1) ? "'R'" : "'P'";
       $names[] = 'cal_type';
-      $values[] = ($Entry[Repeat]) ? "'M'" : "'E'";
+      $values[] = ($Entry['Repeat']) ? "'M'" : "'E'";
 
-      if ( strlen ( $Entry[Summary] ) == 0 )
-        $Entry[Summary] = translate("Unnamed Event");
-      if ( strlen ( $Entry[Description] ) == 0 )
-        $Entry[Description] = $Entry[Summary];
-      $Entry[Summary] = str_replace ( "\\n", "\n", $Entry[Summary] );
-      $Entry[Summary] = str_replace ( "\\'", "'", $Entry[Summary] );
-      $Entry[Summary] = str_replace ( "\\\"", "\"", $Entry[Summary] );
-      $Entry[Summary] = str_replace ( "'", "\\'", $Entry[Summary] );
+      if ( strlen ( $Entry['Summary'] ) == 0 )
+        $Entry['Summary'] = translate("Unnamed Event");
+      if ( strlen ( $Entry['Description'] ) == 0 )
+        $Entry['Description'] = $Entry['Summary'];
+      $Entry['Summary'] = str_replace ( "\\n", "\n", $Entry['Summary'] );
+      $Entry['Summary'] = str_replace ( "\\'", "'", $Entry['Summary'] );
+      $Entry['Summary'] = str_replace ( "\\\"", "\"", $Entry['Summary'] );
+      $Entry['Summary'] = str_replace ( "'", "\\'", $Entry['Summary'] );
       $names[] = 'cal_name';
-      $values[] = "'" . $Entry[Summary] .  "'";
-      $Entry[Description] = str_replace ( "\\n", "\n", $Entry[Description] );
-      $Entry[Description] = str_replace ( "\\'", "'", $Entry[Description] );
-      $Entry[Description] = str_replace ( "\\\"", "\"", $Entry[Description] );
-      $Entry[Description] = str_replace ( "'", "\\'", $Entry[Description] );
+      $values[] = "'" . $Entry['Summary'] .  "'";
+      $Entry['Description'] = str_replace ( "\\n", "\n", $Entry['Description'] );
+      $Entry['Description'] = str_replace ( "\\'", "'", $Entry['Description'] );
+      $Entry['Description'] = str_replace ( "\\\"", "\"", $Entry['Description'] );
+      $Entry['Description'] = str_replace ( "'", "\\'", $Entry['Description'] );
       // limit length to 1024 chars since we setup tables that way
-      if ( strlen ( $Entry[Description] ) >= 1024 )
-        $Entry[Description] = substr ( $Entry[Description], 0, 1019 ) . "...";
+      if ( strlen ( $Entry['Description'] ) >= 1024 )
+        $Entry['Description'] = substr ( $Entry['Description'], 0, 1019 ) . "...";
       $names[] = 'cal_description';
-      $values[] = "'" . $Entry[Description] .  "'";
-      //echo "Summary:<p>" . nl2br ( htmlspecialchars ( $Entry[Summary] ) ) . "<p>";
-      //echo "Description:<p>" . nl2br ( htmlspecialchars ( $Entry[Description] ) ); exit;
+      $values[] = "'" . $Entry['Description'] .  "'";
+      //echo "Summary:<p>" . nl2br ( htmlspecialchars ( $Entry['Summary'] ) ) . "<p>";
+      //echo "Description:<p>" . nl2br ( htmlspecialchars ( $Entry['Description'] ) ); exit;
       if ( $updateMode ) {
         $sql = "UPDATE webcal_entry SET ";
         for ( $f = 0; $f < count ( $names ); $f++ ) {
@@ -329,7 +330,7 @@ function import_data ( $data, $overwrite, $type ) {
           }
         }
         else if ($ImportType == "VCAL") {
-          $uid = empty ( $Entry[UID] ) ? "null" : "'$Entry[UID]'";
+          $uid = empty ( $Entry['UID'] ) ? "null" : "'$Entry[UID]'";
           if ( strlen ( $uid ) > 200 )
             $uid = "NULL";
           $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
@@ -342,7 +343,7 @@ function import_data ( $data, $overwrite, $type ) {
           }
         }
         else if ($ImportType == "ICAL") {
-          $uid = empty ( $Entry[UID] ) ? "null" : "'$Entry[UID]'";
+          $uid = empty ( $Entry['UID'] ) ? "null" : "'$Entry[UID]'";
           if ( strlen ( $uid ) > 200 )
             $uid = "NULL";
           $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
@@ -376,19 +377,19 @@ function import_data ( $data, $overwrite, $type ) {
         dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id" );
         dbi_query ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = $id" );
       }
-      if (! empty ($Entry[Repeat][Interval])) {
-        //while ( list($k,$v) = each ( $Entry[Repeat] ) ) {
+      if (! empty ($Entry['Repeat']['Interval'])) {
+        //while ( list($k,$v) = each ( $Entry['Repeat'] ) ) {
         //  echo "$k: $v <br />\n";
         //}
-        $rpt_type = RepeatType($Entry[Repeat][Interval]);
-        $freq = ( $Entry[Repeat][Frequency] ? $Entry[Repeat][Frequency] : 1 );
-        if ( strlen ( $Entry[Repeat][EndTime] ) ) {
-          $REND   = localtime($Entry[Repeat][EndTime]);
+        $rpt_type = RepeatType($Entry['Repeat']['Interval']);
+        $freq = ( $Entry['Repeat']['Frequency'] ? $Entry['Repeat']['Frequency'] : 1 );
+        if ( strlen ( $Entry['Repeat']['EndTime'] ) ) {
+          $REND   = localtime($Entry['Repeat']['EndTime']);
 	  $end = sprintf ( "%04d%02d%02d",$REND[5] + 1900,$REND[4] + 1,$REND[3]);
         } else {
           $end = 'NULL';
         }
-        $days = (! empty ($Entry[Repeat][RepeatDays])) ? "'".$Entry[Repeat][RepeatDays]."'" : 'NULL';
+        $days = (! empty ($Entry['Repeat']['RepeatDays'])) ? "'".$Entry['Repeat']['RepeatDays']."'" : 'NULL';
         $sql = "INSERT INTO webcal_entry_repeats ( cal_id, " .
           "cal_type, cal_end, cal_days, cal_frequency ) VALUES " .
           "( $id, '$rpt_type', $end, $days, $freq )";
@@ -399,8 +400,8 @@ function import_data ( $data, $overwrite, $type ) {
         }
 
         // Repeating Exceptions...
-        if ( ! empty ( $Entry[Repeat][Exceptions] ) ) {
-          foreach ($Entry[Repeat][Exceptions] as $ex_date) {
+        if ( ! empty ( $Entry['Repeat']['Exceptions'] ) ) {
+          foreach ($Entry['Repeat']['Exceptions'] as $ex_date) {
             $ex_date = date("Ymd",$ex_date);
             $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date ) VALUES ( $id, $ex_date )";
             $sqlLog .= $sql . "<br />\n";
@@ -416,10 +417,10 @@ function import_data ( $data, $overwrite, $type ) {
       if ( $updateMode ) {
         dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_id = $id" );
       }
-      if ($Entry[AlarmSet] == 1) {
-        $RM = $Entry[AlarmAdvanceAmount];
-        if ($Entry[AlarmAdvanceType] == 1){ $RM = $RM * 60; }
-        if ($Entry[AlarmAdvanceType] == 2){ $RM = $RM * 60 * 24; }
+      if ($Entry['AlarmSet'] == 1) {
+        $RM = $Entry['AlarmAdvanceAmount'];
+        if ($Entry['AlarmAdvanceType'] == 1){ $RM = $RM * 60; }
+        if ($Entry['AlarmAdvanceType'] == 2){ $RM = $RM * 60 * 24; }
         $sql = "INSERT INTO webcal_site_extras ( cal_id, " .
           "cal_name, cal_type, cal_remind, cal_data ) VALUES " .
           "( $id, 'Reminder', 7, 1, $RM )";
@@ -444,16 +445,16 @@ function import_data ( $data, $overwrite, $type ) {
       $count_con++;
       echo "</b></font>";
 
-      if ( $Entry[Duration] > 0 ) {
-        $time = display_time ( $Entry[StartHour].$Entry[StartMinute]."00" ) .
-          " - " . display_time ( $Entry[EndHour].$Entry[EndMinute]."00" );
+      if ( $Entry['Duration'] > 0 ) {
+        $time = display_time ( $Entry['StartHour'].$Entry['StartMinute']."00" ) .
+          " - " . display_time ( $Entry['EndHour'].$Entry['EndMinute']."00" );
       }
-      $dd = $Entry[StartMonth] . "-" .  $Entry[StartDay] . "-" . $Entry[StartYear];
+      $dd = $Entry['StartMonth'] . "-" .  $Entry['StartDay'] . "-" . $Entry['StartYear'];
       echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
       echo "\" onmouseover=\"window.status='" . translate("View this entry") ."'; return true;\" onmouseout=\"window.status=''; return true;\">";
-      $Entry[Summary] = str_replace ( "''", "'", $Entry[Summary] );
-      $Entry[Summary] = str_replace ( "'", "\\'", $Entry[Summary] );
-      echo htmlspecialchars ( $Entry[Summary] );
+      $Entry['Summary'] = str_replace ( "''", "'", $Entry['Summary'] );
+      $Entry['Summary'] = str_replace ( "'", "\\'", $Entry['Summary'] );
+      echo htmlspecialchars ( $Entry['Summary'] );
       echo "</a> (" . $dd;
       $time = trim ( $time );
       if ( ! empty ( $time ) )
@@ -467,18 +468,18 @@ function import_data ( $data, $overwrite, $type ) {
       echo "<b><font color=\"$H2COLOR\">" .
         translate("Event Imported") . ":</b></font>\n";
       $count_suc++;
-      if ( $Entry[Duration] > 0 ) {
-        $time = display_time ( $Entry[StartHour].$Entry[StartMinute]."00" ) .
-          " - " . display_time ( $Entry[EndHour].$Entry[EndMinute]."00" );
+      if ( $Entry['Duration'] > 0 ) {
+        $time = display_time ( $Entry['StartHour'].$Entry['StartMinute']."00" ) .
+          " - " . display_time ( $Entry['EndHour'].$Entry['EndMinute']."00" );
       }
-      $dateYmd = sprintf ( "%04d%02d%02d", $Entry[StartYear],
-        $Entry[StartMonth], $Entry[StartDay] );
+      $dateYmd = sprintf ( "%04d%02d%02d", $Entry['StartYear'],
+        $Entry['StartMonth'], $Entry['StartDay'] );
       $dd = date_to_str ( $dateYmd );
       echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
       echo "\" onmouseover=\"window.status='" . translate("View this entry") ."'; return true;\" onmouseout=\"window.status=''; return true;\">";
-      $Entry[Summary] = str_replace( "''", "'", $Entry[Summary]);
-      $Entry[Summary] = str_replace( "\\", "", $Entry[Summary]);
-      echo htmlspecialchars ( $Entry[Summary] );
+      $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary']);
+      $Entry['Summary'] = str_replace( "\\", "", $Entry['Summary']);
+      echo htmlspecialchars ( $Entry['Summary'] );
       echo "</a> (" . $dd;
       if ( ! empty ( $time ) )
         echo "&nbsp;  " . $time;
