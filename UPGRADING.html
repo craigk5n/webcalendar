@@ -364,7 +364,7 @@ CREATE TABLE webcal_import_data (
 <h4><a id="dot943">To upgrade from v0.9.42 to v0.9.43:</a></h4>
 <p>User passwords are now stored using md5 and require the webcal_user 
 table to be altered to accomodate larger password data. 
-Use the following SQL for MySQL and PostgreSQL:</p>
+Use the following SQL for MySQL:</p>
 <pre>
 ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(32) NULL;
 DROP TABLE webcal_import_data;
@@ -384,6 +384,17 @@ CREATE TABLE webcal_import_data (
 	cal_external_id VARCHAR(200) NULL,
 	PRIMARY KEY  ( cal_id, cal_login )
 );
+</pre>
+
+<p>Postgres does not allow you to modify an existing table column.
+Instead of the initial ALTER command above, issue the following
+commands below.  You <b>will not need to run</b> the convert_passwords
+script below since this will <b>set all user's passwords to 'admin'</b>.</p>
+
+<pre>
+ALTER TABLE webcal_user RENAME COLUMN cal_passwd to cal_oldpass;
+ALTER TABLE webcal_user ADD COLUMN cal_passwd VARCHAR(32) NULL;
+UPDATE webvcal_user SET cal_passwd = '21232f297a57a5a743894a0e4a801fc3';
 </pre>
 
 <p>For Oracle, use VARCHAR2 instead of VARCHAR. 
