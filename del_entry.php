@@ -114,9 +114,13 @@ if ( $id > 0 && empty ( $error ) ) {
       activity_log ( $id, $login, $partlogin[$i], $LOG_DELETE, "" );
 
       $do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
-      user_load_variables ( $partlogin[$i], "temp" );
+      $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
+      user_load_variables ( $partlogin[$i], "temp" );						
       if ( $partlogin[$i] != $login && $do_send == "Y" && boss_must_be_notified ( $login, $partlogin[$i] ) && 
         strlen ( $tempemail ) && $send_email != "N" ) {
+        if ($GLOBALS['LANGUAGE'] != $user_language){
+          reset_language ( $user_language );
+        }
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
           translate("An appointment has been canceled for you by") .
           " " . $login_fullname .  ". " .

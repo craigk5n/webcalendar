@@ -1,4 +1,6 @@
 Version 1.0RC1/CVS+dev (?? ??? 2004)
+  - Fixed Bug 1109141: Notification language is the senders, not the recipients
+    affected files edit_entry.php, del_entry.php, reject_entry.php
   - Fixed Bug 1109323: Error in LDAP get_admins function
   - Patch 1113315: Change maxsize of username from 20 to 25 in
     admin add user form (db was already 25)
