@@ -26,9 +26,9 @@ $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );
 
 if ( ! empty ( $bold_days_in_year ) && $bold_days_in_year == 'Y' ) {
-	$boldDays = true;
+ $boldDays = true;
 } else {
-	$boldDays = false;
+ $boldDays = false;
 }
 
 $startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
@@ -82,7 +82,13 @@ $events = read_events ( empty ( $user ) ? $login : $user, $startdate, $enddate,
 ?>
 </div>
 </div>
-
+</td>
+<td style="vertical-align:top;" rowspan="2">
+<!-- START MINICAL -->
+<div class="minicalcontainer">
+<?php display_small_month ( $thismonth, $thisyear, true ); ?>
+</div>
+</td></tr><tr><td>
 <table class="glance" cellspacing="0" cellpadding="0">
 <?php
 if ( empty ( $TIME_SLOTS ) )
@@ -93,15 +99,10 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 ?>
 </table>
 </td>
-<td style="vertical-align:top;">
-<!-- START MINICAL -->
-<div class="minicalcontainer">
-<?php display_small_month ( $thismonth, $thisyear, true ); ?>
-</div>
-</td></tr></table>
+</tr></table>
 <br />
 <?php
-	if ( ! empty ( $eventinfo ) ) echo $eventinfo;
+ if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
