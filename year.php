@@ -116,8 +116,6 @@ print_header();
 <div class="yearviewtitle">
 <?php if ( empty ( $friendly ) ) { ?>
 <a title="<?php etranslate("Previous")?>" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="leftarrow.gif" class="prevnext" style="float:left; margin-left:3px; margin-top:7px;" alt="<?php etranslate("Previous")?>" /></a>
-<?php } ?>
-<?php if ( empty ( $friendly ) ) {?>
 <a title="<?php etranslate("Next")?>" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="rightarrow.gif" class="prevnext" style="float:right; margin-right:3px; margin-top:7px;" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 <span class="date"><?php echo $thisyear ?></span>
