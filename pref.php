@@ -28,7 +28,7 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-$INC = array('js/'.$SCRIPT);
+$INC = array('js/pref.php');
 print_header($INC);
 ?>
 

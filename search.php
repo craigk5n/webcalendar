@@ -1,7 +1,7 @@
 <?php
 include_once 'includes/init.php';
 
-if ( $groups_enabled == "Y" ) $INC = array('js/'.$SCRIPT);
+if ( $groups_enabled == "Y" ) $INC = array('js/search.php');
 print_header($INC);
 ?>
 

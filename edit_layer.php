@@ -11,7 +11,7 @@ if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
 
 load_user_layers ( $layer_user, 1 );
 
-$INC = array('js/'.$SCRIPT);
+$INC = array('js/edit_layer.php');
 print_header($INC);
 ?>
 

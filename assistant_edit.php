@@ -5,7 +5,7 @@ if ($user != $login)
   $user = (($is_admin || $is_nonuser_admin) && $user) ? $user : $login;
 
 if ( $groups_enabled == "Y" ) {
-  $INC = array('js/'.$SCRIPT);
+  $INC = array('js/assistant_edit.php');
 }
 print_header($INC);
 ?>

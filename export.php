@@ -1,7 +1,7 @@
 <?php
 include_once 'includes/init.php';
 
-$INC = array('js/'.$SCRIPT);
+$INC = array('js/export.php');
 print_header($INC);
 ?>
 
