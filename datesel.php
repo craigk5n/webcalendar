@@ -1,5 +1,5 @@
 <?php
-/* $Id */
+/* $Id$ */
 include_once 'includes/init.php';
 
 // month and year are being overwritten so we will copy vars to fix.
