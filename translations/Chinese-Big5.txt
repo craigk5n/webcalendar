@@ -3,7 +3,7 @@
 # There cannot be a ":" in the English text.
 # Translated by: Liang-Kuan Liu <lianguan@pchome.com.tw>
 # Last update: 15 February 2001
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
 
 ###############################################

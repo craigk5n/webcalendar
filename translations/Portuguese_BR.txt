@@ -4,7 +4,7 @@
 # Based in Portugues version, by Sérgio Oliveira - sloliv@terra.com.br
 #   Based in Portuguese version, by Nuno Lopes - nml@maxitel.pt
 # Last update: 27 December 2000
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
 # No charset specified
 # charset:

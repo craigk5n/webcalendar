@@ -8,7 +8,7 @@
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=576931
 # Last update: 26 February 2003 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=693581
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
 # No charset specified
 # charset:

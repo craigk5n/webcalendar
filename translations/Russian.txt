@@ -4,10 +4,13 @@
 # Translated by:
 #	Andre E. Bar'yudin <baryudin@pob.huji.ac.il>
 # Last update: Wed Oct 25 14:34:05 IST 2000
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
-# No charset specified
-# charset:
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: iso-8859-5
 
 
 
@@ -1407,9 +1410,6 @@ Dec: ‰≈À
 ###############################################
 # Page: includes/init.php
 #
-#
-# << MISSING >>
-# charset:
 
 
 ###############################################

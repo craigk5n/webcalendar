@@ -4,7 +4,7 @@
 # Translated by:
 #	Ari Vaulo and ari.vaulo@tol.oulu.fi
 # Last update: 06 Dec 2001
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
 # No charset specified
 # charset:

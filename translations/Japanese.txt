@@ -4,10 +4,13 @@
 # Translated by:
 #	your name and email here...
 # Last update: 20 May 2001
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
-# No charset specified
-# charset:
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: Shift-JIS
 
 
 
@@ -1291,9 +1294,6 @@ Invalid login: ƒƒOƒCƒ“‚Í–³Œø‚Å‚·
 ###############################################
 # Page: includes/init.php
 #
-#
-# << MISSING >>
-# charset:
 
 
 ###############################################

@@ -4,7 +4,7 @@
 # Translated by:
 #	Kristofer Arnar Einarsson kristofer@kristofer.com
 # Last update: 18 August 2000
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
 # No charset specified
 # charset:

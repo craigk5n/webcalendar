@@ -3,10 +3,13 @@
 # There cannot be a ":" in the English text.
 # Author: Joonyup Jeon <goodwill@wowbook.com>
 # Last updated: 07 June 2000
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
-# No charset specified
-# charset:
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: EUC-KR
 
 
 
@@ -1500,9 +1503,6 @@ Dec: 12¿ù
 ###############################################
 # Page: includes/init.php
 #
-#
-# << MISSING >>
-# charset:
 
 
 ###############################################
