@@ -122,6 +122,13 @@ if ( $login == "__public__" ) {
     strstr ( $PHP_SELF, "layer_toggle.php" ) ) {
     $not_auth = true;
   }
+  if ( $public_access_can_add != 'Y' ) { // do not allow add
+    if ( strstr ( $PHP_SELF, "edit_entry.php" ) ||
+      strstr ( $PHP_SELF, "edit_entry_handler.php" ) ||
+      strstr ( $PHP_SELF, "import.php" ) ) {
+      $not_auth = true;
+    }
+  }
 }
 
 if ( empty ( $is_admin ) || ! $is_admin ) {
