@@ -29,7 +29,9 @@ if ( $login == "__public__" && $id > 0 ) {
 $external_users = "";
 $participants = array ();
 
-if ( ! empty ( $id ) && $id > 0 ) {
+if ( $readonly == 'Y' ) {
+  $can_edit = false;
+} else if ( ! empty ( $id ) && $id > 0 ) {
   // first see who has access to edit this entry
   if ( $is_admin ) {
     $can_edit = true;
@@ -151,17 +153,26 @@ if ( ! empty ( $id ) && $id > 0 ) {
     $external_users = event_get_external_users ( $id );
   }
 } else {
+  // New event.
   $id = 0; // to avoid warnings below about use of undefined var
   if ( empty ( $hour ) )
     $time = -1;
   else
     $time = $hour * 100;
-  if ( $readonly == "N" || $is_admin )
-    $can_edit = true;
   if ( ! empty ( $defusers ) ) {
     $tmp_ar = explode ( ",", $defusers );
     for ( $i = 0; $i < count ( $tmp_ar ); $i++ ) {
       $participants[$tmp_ar[$i]] = 1;
+    }
+  }
+  if ( $readonly == "N" ) {
+    // If public, then make sure we can add events
+    if ( $login == '__public__' ) {
+      if ( $public_access_can_add )
+        $can_edit = true;
+    } else {
+      // not public user
+        $can_edit = true;
     }
   }
 }
@@ -236,6 +247,7 @@ if ( $allow_html_description == "Y" ){
 
 print_header ( $INC, '', $BodyX );
 ?>
+
 
 <h2><?php if ( $id ) echo translate("Edit Entry"); else echo translate("Add Entry"); ?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 

@@ -648,7 +648,7 @@ if ( empty ( $event_status ) ) {
   $event_status = "D";
 }
 
-if ( $unapproved ) {
+if ( $unapproved && $readonly == 'N' ) {
   echo "<a title=\"" . 
 	translate("Approve/Confirm entry") . "\" href=\"approve_entry.php?id=$id\" onclick=\"return confirm('" . 
 	translate("Approve this entry?") . "');\">" . 
@@ -667,6 +667,8 @@ else
 $can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
   ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
 if ( $public_access == "Y" && $login == "__public__" )
+  $can_edit = false;
+if ( $readonly == 'Y' )
   $can_edit = false;
 
 $rdate = "";
