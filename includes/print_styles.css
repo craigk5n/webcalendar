@@ -1,0 +1,41 @@
+#trailer, 
+form,
+.minical, 
+.popup,
+.printer, 
+.navlinks,
+.bullet, 
+.new, 
+.prevnext, 
+.prevnextsmall {
+	display: none !important;
+}
+a {
+	color: #000000 !important;
+}
+#category {
+	display: inline !important;
+}
+.entry, 
+.layerentry, 
+.unapprovedentry, 
+.monthlink {
+	font-size: 12px;
+}
+/* don't hide the minicals in year.php */
+#year .minical {
+	display: block !important;
+}
+#year .minical td, 
+#year .minical th, 
+#year .minical td a {
+	padding: 0px 1px !important;
+}
+#viewt .entry, 
+#viewt .layerentry, 
+#viewt .unapprovedentry {
+	font-size: 13px !important;
+}
+#day dl.desc {
+	display: block !important;
+}
