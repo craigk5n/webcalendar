@@ -198,7 +198,7 @@ if ( empty ( $cal_date ) || ! $cal_date )
   $cal_date = $thisdate;
 
 $BodyX = 'onload="timetype_handler()"';
-$INC = array('js/edit_entry.php');
+$INC = array('js/edit_entry.php','js/visible.php');
 print_header($INC,'',$BodyX);
 ?>
 

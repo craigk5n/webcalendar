@@ -4,42 +4,6 @@ global $groups_enabled,$WORK_DAY_START_HOUR;
 
 <script type="text/javascript">
 <!-- <![CDATA[
-var oldhour = 0, oldminute = 0, olddh = 0, olddm = 0;
-
-// detect browser
-NS4 = (document.layers) ? 1 : 0;
-IE4 = (document.all) ? 1 : 0;
-// W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
-W3C = (document.getElementById) ? 1 : 0;	
-
-function makeVisible ( name ) {
-  var ele;
-
-  if ( W3C ) {
-    ele = document.getElementById(name);
-  } else if ( NS4 ) {
-    ele = document.layers[name];
-  } else { // IE4
-    ele = document.all[name];
-  }
-
-  if ( NS4 ) {
-    ele.visibility = "show";
-  } else {  // IE4 & W3C & Mozilla
-    ele.style.visibility = "visible";
-  }
-}
-
-function makeInvisible ( name ) {
-  if (W3C) {
-    document.getElementById(name).style.visibility = "hidden";
-  } else if (NS4) {
-    document.layers[name].visibility = "hide";
-  } else {
-    document.all[name].style.visibility = "hidden";
-  }
-}
-
 // do a little form verifying
 function validate_and_submit () {
   if ( document.forms[0].name.value == "" ) {
