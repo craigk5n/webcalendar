@@ -2,43 +2,56 @@
 include_once 'includes/init.php';
 $INC = array('js/colors.php');
 print_header($INC,'','',true);
+
+$colors = array("00", "33", "66", "99", "CC", "FF");
+$grayscale = array("FFFFFF","DDDDDD","C0C0C0","969696","808080","646464","4B4B4B","242424","000000");
+$green1 = array("FF", "CC", "99");
+$green2 = array("66", "33", "00");
+
 ?>
 
 <div style="text-align:center;">
 
-<table style="border-width:2px;">
-<tr>
+<table style="border-collapse: separate;border: none;background-color:#000000;border-spacing: 1px;">
 <?php
-$colors = array (
-  "FFFFFF", "C0C0C0", "909090", "404040", "000000",
-  "FF0000", "C00000", "A00000", "800000", "200000",
-  "FF8080", "C08080", "A08080", "808080", "208080",
-  "00FF00", "00C000", "00A000", "008000", "002000",
-  "80FF80", "80C080", "80A080", "808080", "802080",
-  "0000FF", "0000C0", "0000A0", "000080", "000020",
-  "8080FF", "8080C0", "8080A0", "808080", "808020"
-);
-$i = 0;
-for ( $r = 0; $r < 16; $r += 3 ) {
-  for ( $g = 0; $g < 16; $g += 3 ) {
-    for ( $b = 0; $b < 16; $b += 3 ) {
-      if ( $i == 0 )
-        echo "<tr>\n";
-      else if ( $i % 16 == 0 )
-        echo "</tr><tr>\n";
-      $c = sprintf ( "%X0%X0%X0", $r, $g, $b );
+// First green array 
+for ($r=0; $r<count($colors); $r++){     //the red colors loop
+  echo "<tr>\n"; 
+  for ($g=0; $g<count($green1); $g++){   //the green colors loop
+    for ($b=0; $b<count($colors); $b++){ //iterate through the six blue colors
+      $c = $colors[$r].$green1[$g].$colors[$b];
       echo "<td style=\"background-color:#" . $c . ";\"><a href=\"javascript:sendColor('#" . $c .
         "')\"><img src=\"spacer.gif\" style=\"border-width:0px;\" width=\"15\" height=\"15\" /></a></td>\n";
-      $i++;
-    }
-  }
-}
-$c = "FFFFFF";
-  echo "<td style=\"background-color:#" . $c . ";\"><a href=\"javascript:sendColor('#" . $c .
-    "')\"><img src=\"spacer.gif\" style=\"border-width:0px; width:15px; height:15px;\" /></a></td>\n";
-echo "</tr>\n";
+    } //End of b-blue innermost loop
+  } //End of g-green loop
+  echo "</tr>\n"; // close row 
+} //End of r-red outermost loop
+
+// second green array
+for ($r=0; $r<count($colors); $r++){     //the red colors loop
+  echo "<tr>\n"; 
+  for ($g=0; $g<count($green2); $g++){   //the green colors loop
+    for ($b=0; $b<count($colors); $b++){ //iterate through the six blue colors
+      $c = $colors[$r].$green2[$g].$colors[$b];
+      echo "<td style=\"background-color:#" . $c . ";\"><a href=\"javascript:sendColor('#" . $c .
+        "')\"><img src=\"spacer.gif\" style=\"border-width:0px;\" width=\"15\" height=\"15\" /></a></td>\n";
+    } //End of b-blue innermost loop
+  } //End of g-green loop
+  echo "</tr>\n"; // close row 
+} //End of r-red outermost loop
 ?>
 </table>
+<br />
+<table style="border-collapse: separate;border: none;background-color:#000000;border-spacing: 1px;"><tr>
+<?php
+for ($gs=0; $gs<count($grayscale); $gs++){     
+  $c = $grayscale[$gs];
+  echo "<td style=\"background-color:#" . $c . ";\"><a href=\"javascript:sendColor('#" . $c .
+       "')\"><img src=\"spacer.gif\" style=\"border-width:0px;\" width=\"15\" height=\"15\" /></a></td>\n";
+} 
+?>
+</tr></table>
+
 </div>
 
 <?php print_trailer ( false, false, true ); ?>
