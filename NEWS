@@ -3,6 +3,8 @@ Version 1.0RC2 (09 Feb 2005)
       1116008: Got "invalid user" error when clicking on '+' icon
                to add new event
   - Other bugs fixed:
+    + Fixed a problem with the Repeat Tab on edit_entry page, if disabled, 
+      the SAVE button was hidden as well.
   - New Features / Enhancements / Changes:
     + Modified the way settings.php file is read to handle unix/dos/mac
       format and also check main directory and include directory.
