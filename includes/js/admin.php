@@ -2,21 +2,9 @@
 <!-- <![CDATA[
 // error check the colors
 function valid_color ( str ) {
-  var ch, j;
-  var valid = "0123456789abcdefABCDEF";
+	var validColor = /^#[0-9a-fA-F]{3}$|^#[0-9a-fA-F]{6}$/;
 
-  if ( str.length == 0 )
-    return true;
-
-  if ( str.charAt ( 0 ) != '#' || str.length != 7 )
-    return false;
-
-  for ( j = 1; j < str.length; j++ ) {
-   ch = str.charAt ( j );
-   if ( valid.indexOf ( ch ) < 0 )
-     return false;
-  }
-  return true;
+	return validColor.test ( str );
 }
 
 function valid_form ( form ) {
@@ -85,7 +73,7 @@ function valid_form ( form ) {
   }
 
   if ( err.length > 0 ) {
-    alert ( "Error:\n\n" + err + "\n\n<?php etranslate("Color format should be '#RRGGBB'")?>" );
+    alert ( "Error:\n\n" + err + "\n\n<?php etranslate("Color format should be '#RRGGBB' or '#RGB'")?>" );
     return false;
   }
   return true;
@@ -95,6 +83,27 @@ function selectColor ( color ) {
   var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
 }
 
+// function updateColor(input)
+// Updates the background-color of a table cell
+// Parameters:
+//    input - <input> element containing the new color value
+// Note: this function relies on the following structure:
+//   <td><input onkeyup="updateColor(this);" /></td>
+//   <td>(this is the cell to be updated)</td>
+//
+function updateColor ( input ) {
+	// The cell to be updated
+	var colorCell = input.parentNode.nextSibling;
+	// The new color
+	var color = input.value;
+
+	if (!valid_color ( color ) ) {
+	  // Color specified is invalid; use black instead
+		colorCell.style.backgroundColor = "#000";
+	} else {
+		colorCell.style.backgroundColor = color;
+	}
+}
 
 // Gets called on page load and when user changes setting for
 // "Allow public access".
