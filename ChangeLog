@@ -1,3 +1,8 @@
+Version 0.9.29 (05 Jun 01)
+  - Fixed bug: When editing an event, the event date is set to the
+    current date rather than the event's date.
+  - Fixed bug: Adding missing argument to user_load_variables() in
+    login.php that was preventing some people from being able to login.
 Version 0.9.28 (01 Jun 01)
   - Moved all the references to the webcal_user table to be in the
     new includes/user.inc file.  This BREAKS the NIS user authentication,
