@@ -1,4 +1,6 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Check for magic_quotes_gpc.  If not enabled, fatal exit and tell user
+    to modify php.ini.
   - Fixed bug: add icon appeared in printer friendly view pages (view_m.php...)
   - Fixed bug 792731: NIS login failure
   - Fixed bug 609900: wrong week number

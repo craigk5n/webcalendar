@@ -201,4 +201,21 @@ $browser_languages = array (
 if ( $single_user != "Y" )
   $single_user_login = "";
 
+// Make sure magic quotes is enabled, since this app requires it.
+if ( get_magic_quotes_gpc () == 0 ) {
+  ob_start ();
+  phpinfo ();
+  $val = ob_get_contents ();
+  ob_end_clean ();
+  echo "<html><title>Error</title></head><body>\n" .
+    "Error: you must reconfigure your <tt>php.ini</tt> file to " .
+    "have <b>magic_quotes_gpc</b> set to <b>On</b><p>";
+  if ( preg_match ( "/>([^<>]*php.ini)</", $val, $matches ) ) {
+    echo "Please edit the following file and restart your server:<p>\n" .
+      "<blockquote><tt>" . $matches[1] . "</tt></blockquote>\n";
+  }
+  echo "</body></html>\n";
+  exit;
+}
+
 ?>

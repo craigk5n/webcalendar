@@ -171,7 +171,7 @@ on some systems.
 
 Make sure that <tt>magic_quotes_gpc</tt> in <tt>php.ini</tt>
 is turned on (otherwise, you
-will get database errors when entering quotation marks in HTML forms).
+will get an error message when you try to access WebCalendar.)
 
 </p><p>
 
@@ -968,8 +968,12 @@ of field.  In some cases, "Arg 1" and "Arg 2" are not used.
   a single quotation.</dt>
 <dd>WebCalendar is designed to work with PHP's
 <tt>magic_quotes_gpc</tt> feature (configured in <tt>php.ini</tt>).
-If you do not have this enabled, you may get errors when adding
-events.</dd>
+If you do not have this enabled (<tt>On</tt> in <tt>php.ini</tt>),
+you may get errors when adding events.
+In WebCalendar version 0.9.43 or later, you will always get an error
+message telling you to update <tt>php.ini</tt> if <tt>magic_quotes_gpc</tt>
+is set to <tt>Off</tt>.
+</dd>
 
 <dt>I get an error message from PHP saying "Call to undefined function: ..."
 </dt>
@@ -1177,6 +1181,9 @@ read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.
 
 <pre>
 $Log$
+Revision 1.4  2003/09/03 15:23:51  cknudsen
+Fatal error all pages if magic_quotes_gpc is Off.
+
 Revision 1.3  2003/07/17 18:19:50  cknudsen
 Added more to FAQ.
 
