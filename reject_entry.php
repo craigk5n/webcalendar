@@ -34,7 +34,7 @@ if ( $id > 0 ) {
   // Email participants to notify that it was rejected.
   // Get list of participants
   $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id and cal_status = 'A'";
-  //echo $sql."<BR>";
+  //echo $sql."<br />";
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) )
@@ -94,8 +94,6 @@ if ( $id > 0 ) {
         "Event rejected by $app_user" );
     }
   }
-  
-
 }
 
 if ( $ret == "list" )

@@ -125,8 +125,6 @@ if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' &&
   $names[] = translate("Unapproved Public Events");
   $links[] = "list_unapproved.php?user=__public__";
 }
-
-
 ?>
 
 <h2 style="color:<?php echo $H2COLOR;?>;"><?php etranslate("Administrative Tools")?></h2>

@@ -5,112 +5,111 @@ $INC = array('js/export.php');
 print_header($INC);
 ?>
 
-<H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Export")?></FONT></H2>
+<h2><font color="<?php echo $H2COLOR;?>"><?php etranslate("Export")?></font></h2>
 
-<FORM ACTION="export_handler.php" METHOD="POST" NAME="exportform">
+<form action="export_handler.php" method="post" name="exportform">
 
-<TABLE BORDER=0>
-<TR><TD><B><?php etranslate("Export format")?>:</B></TD><TD><SELECT NAME="format">
-  <OPTION VALUE="ical">iCalendar
-  <OPTION VALUE="vcal">vCalendar
-  <OPTION VALUE="pilot-csv">pilot-datebook CSV (<?php etranslate("Palm Pilot")?>)
-  <OPTION VALUE="pilot-text">install-datebook (<?php etranslate("Palm Pilot")?>)
-</SELECT></TD></TR>
-<TR><TD></TD><TD><INPUT TYPE="checkbox" NAME="use_all_dates" VALUE="y"></INPUT>
-  <B><?php etranslate("Export all dates")?></B></TD></TR>
-<TR><TD><B><?php etranslate("Start date")?>:</B></TD>
-  <TD><SELECT NAME="fromday">
+<table border="0">
+<tr><td><b><?php etranslate("Export format")?>:</b></td><td><select name="format">
+  <option value="ical">iCalendar</option>
+  <option value="vcal">vCalendar</option>
+  <option value="pilot-csv">pilot-datebook CSV (<?php etranslate("Palm Pilot")?>)</option>
+  <option value="pilot-text">install-datebook (<?php etranslate("Palm Pilot")?>)</option>
+</select></td></tr>
+<tr><td></td><td><input type="checkbox" name="use_all_dates" value="y"></input>
+  <b><?php etranslate("Export all dates")?></b></td></tr>
+<tr><td><b><?php etranslate("Start date")?>:</b></td>
+  <td><select name="fromday">
 <?php
   $day = date ( "d" );
-  for ( $i = 1; $i <= 31; $i++ ) echo "<OPTION " . ( $i == $day ? " SELECTED" : "" ) . ">$i";
+  for ( $i = 1; $i <= 31; $i++ ) echo "<option" . ( $i == $day ? " SELECTED=\"SELECTED\"" : "" ) . ">$i</option>";
 ?>
-  </SELECT>
-  <SELECT NAME="frommonth">
+  </select>
+  <select name="frommonth">
 <?php
   $month = date ( "m" );
   $year = date ( "Y" );
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    print "<OPTION VALUE=\"$i\"" . ( $i == $month ? " SELECTED" : "" ) . ">$m";
+    print "<option value=\"$i\"" . ( $i == $month ? " SELECTED=\"SELECTED\"" : "" ) . ">$m</option>";
   }
 ?>
-  </SELECT>
-  <SELECT NAME="fromyear">
+  </select>
+  <select name="fromyear">
 <?php
   $year = date ( "Y" ) - 1;
   for ( $i = -1; $i < 5; $i++ ) {
     $y = date ( "Y" ) + $i;
-    print "<OPTION VALUE=\"$y\"" . ( $y == $year ? " SELECTED" : "" ) . ">$y";
+    print "<option value=\"$y\"" . ( $y == $year ? " SELECTED=\"SELECTED\"" : "" ) . ">$y</option>";
   }
 ?>
-  </SELECT>
-  <INPUT TYPE="button" ONCLICK="selectDate('fromday','frommonth','fromyear')" VALUE="<?php etranslate("Select")?>...">
-</TD></TR>
+  </select>
+  <input type="button" onclick="selectDate('fromday','frommonth','fromyear')" value="<?php etranslate("Select")?>..." />
+</td></tr>
 
-<TR><TD><B><?php etranslate("End date")?>:</B></TD>
-  <TD><SELECT NAME="endday">
+<tr><td><b><?php etranslate("End date")?>:</b></td>
+  <td><select name="endday">
 <?php
   $day = date ( "d" );
-  for ( $i = 1; $i <= 31; $i++ ) echo "<OPTION " . ( $i == $day ? " SELECTED" : "" ) . ">$i";
+  for ( $i = 1; $i <= 31; $i++ ) echo "<option" . ( $i == $day ? " SELECTED=\"SELECTED\"" : "" ) . ">$i</option>";
 ?>
-  </SELECT>
-  <SELECT NAME="endmonth">
+  </select>
+  <select name="endmonth">
 <?php
   $month = date ( "m" );
   $year = date ( "Y" );
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    print "<OPTION VALUE=\"$i\"" . ( $i == $month ? " SELECTED" : "" ) . ">$m";
+    print "<option value=\"$i\"" . ( $i == $month ? " SELECTED=\"SELECTED\"" : "" ) . ">$m</option>";
   }
 ?>
-  </SELECT>
-  <SELECT NAME="endyear">
+  </select>
+  <select name="endyear">
 <?php
   $year = date ( "Y" ) + 1;
   for ( $i = -1; $i < 5; $i++ ) {
     $y = date ( "Y" ) + $i;
-    print "<OPTION VALUE=\"$y\"" . ( $y == $year ? " SELECTED" : "" ) . ">$y";
+    print "<option value=\"$y\"" . ( $y == $year ? " SELECTED=\"SELECTED\"" : "" ) . ">$y</option>";
   }
 ?>
-  </SELECT>
-  <INPUT TYPE="button" ONCLICK="selectDate('endday','endmonth','endyear')" VALUE="<?php etranslate("Select")?>...">
-</TD></TR>
+  </select>
+  <input type="button" onclick="selectDate('endday','endmonth','endyear')" value="<?php etranslate("Select")?>..." />
+</td></tr>
 
-<TR><TD><B><?php etranslate("Modified since")?>:</B></TD>
-  <TD><SELECT NAME="modday">
+<tr><td><b><?php etranslate("Modified since")?>:</b></td>
+  <td><select name="modday">
 <?php
   $week_ago = mktime ( 0, 0, 0, date ( "m" ), date ( "d" ) - 7, date ( "Y" ) );
   $day = date ( "d", $week_ago );
-  for ( $i = 1; $i <= 31; $i++ ) echo "<OPTION " . ( $i == $day ? " SELECTED" : "" ) . ">$i";
+  for ( $i = 1; $i <= 31; $i++ ) echo "<option " . ( $i == $day ? " SELECTED=\"SELECTED\"" : "" ) . ">$i</option>";
 ?>
-  </SELECT>
-  <SELECT NAME="modmonth">
+  </select>
+  <select name="modmonth">
 <?php
   $month = date ( "m", $week_ago );
   $year = date ( "Y", $week_ago );
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    print "<OPTION VALUE=\"$i\"" . ( $i == $month ? " SELECTED" : "" ) . ">$m";
+    print "<option value=\"$i\"" . ( $i == $month ? " SELECTED=\"SELECTED\"" : "" ) . ">$m</option>";
   }
 ?>
-  </SELECT>
-  <SELECT NAME="modyear">
+  </select>
+  <select name="modyear">
 <?php
   $year = date ( "Y", $week_ago );
   for ( $i = -1; $i < 5; $i++ ) {
     $y = date ( "Y" ) + $i;
-    print "<OPTION VALUE=\"$y\"" . ( $y == $year ? " SELECTED" : "" ) . ">$y";
+    print "<option value=\"$y\"" . ( $y == $year ? " SELECTED=\"SELECTED\"" : "" ) . ">$y</option>";
   }
 ?>
-  </SELECT>
-  <INPUT TYPE="button" ONCLICK="selectDate('modday','modmonth','modyear')" VALUE="<?php etranslate("Select")?>...">
-</TD></TR>
+  </select>
+  <input type="button" onclick="selectDate('modday','modmonth','modyear')" value="<?php etranslate("Select")?>..." />
+</td></tr>
 
-<TR><TD COLSPAN="2"><INPUT TYPE="submit" VALUE="<?php etranslate("Export");?>"></TD></TR>
-
-</TABLE>
-</FORM>
+<tr><td colspan="2"><input type="submit" value="<?php etranslate("Export");?>" /></td></tr>
+</table>
+</form>
 
 <?php print_trailer(); ?>
-</BODY>
-</HTML>
+</body>
+</html>

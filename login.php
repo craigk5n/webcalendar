@@ -84,7 +84,7 @@ if ( $single_user == "Y" ) {
 <html>
 <head>
 <title><?php etranslate($application_name)?></title>
-<script language="JavaScript">
+<script type="text/javascript">
 // error check login/password
 function valid_form ( form ) {
   if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
@@ -123,8 +123,7 @@ if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
 ?>
 
 </head>
-<body bgcolor="<?php echo $BGCOLOR;?>"
-ONLOAD="myOnLoad();" CLASS="defaulttext">
+<body bgcolor="<?php echo $BGCOLOR;?>" onload="myOnLoad();" class="defaulttext">
 
 <?php
 // Print custom header (since we do not call print_header function)
@@ -145,8 +144,8 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 
 <?php
 if ( ! empty ( $error ) ) {
-  print "<font color=\"#FF0000\"><b>" . translate("Error") .
-    ":</b> $error</font><br />\n";
+  print "<span style=\"color:#FF0000; font-weight: bold;\">" . translate("Error") .
+    ": $error</span><br />\n";
 }
 ?>
 <form name="login_form" action="login.php" method="POST" onsubmit="return valid_form(this)">
@@ -183,8 +182,8 @@ if ( $demo_mode == "Y" ) {
 <font size="-1">
 <?php etranslate("cookies-note")?>
 <br />
-<hr /><p>
-<a href="<?php echo $PROGRAM_URL ?>" CLASS="aboutinfo"><?php echo $PROGRAM_NAME?></a>
+<hr /><br /><br />
+<a href="<?php echo $PROGRAM_URL ?>" class="aboutinfo"><?php echo $PROGRAM_NAME?></a>
 </font>
 <?php
 // Print custom trailer (since we do not call print_trailer function)
