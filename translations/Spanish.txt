@@ -5,7 +5,7 @@
 # Translator: Pedro Del Medico <pdmp@interhoster.com>
 #             Eduardo Dominguez <lalo_notthisplease@teligens.com>
 # Last update: 26 June 2000
-# Translation last updated on 09-10-2002
+# Translation last updated on 09-28-2002
 
 
 ###############################################
@@ -429,6 +429,26 @@ Add New Group: Agregar Nuevo Grupo
 #
 Preferences: Preferencias
 to modify the preferences for the Public Access calendar: para modificar las pr
+#
+# << MISSING >>
+# tz-help:
+# English text: Specifies how many hours to adjust the time from server time to local time.
+#
+#
+# << MISSING >>
+# Timezone Offset:
+#
+# << MISSING >>
+# Add N hours to:
+#
+# << MISSING >>
+# Subtract N hours from:
+#
+# << MISSING >>
+# same as:
+#
+# << MISSING >>
+# server time:
 #
 # << MISSING >>
 # Default Category:

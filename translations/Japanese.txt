@@ -4,7 +4,7 @@
 # Translated by:
 #	your name and email here...
 # Last update: 20 May 2001
-# Translation last updated on 09-10-2002
+# Translation last updated on 09-28-2002
 
 
 ###############################################
@@ -678,6 +678,26 @@ Preferences: Preferences
 #
 # << MISSING >>
 # to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# tz-help:
+# English text: Specifies how many hours to adjust the time from server time to local time.
+#
+#
+# << MISSING >>
+# Timezone Offset:
+#
+# << MISSING >>
+# Add N hours to:
+#
+# << MISSING >>
+# Subtract N hours from:
+#
+# << MISSING >>
+# same as:
+#
+# << MISSING >>
+# server time:
 #
 # << MISSING >>
 # Default Category:

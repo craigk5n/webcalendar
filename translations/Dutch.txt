@@ -5,7 +5,7 @@
 # Last update: 28 August 2002
 # check out the tools directory which contains two perl scripts:
 # check_translation.pl will tell you if you have successfully translated all re
-# Translation last updated on 09-12-2002
+# Translation last updated on 09-28-2002
 
 
 ###############################################
@@ -415,6 +415,26 @@ Add New Group: groep toevoegen
 #
 Preferences: voorkeuren
 to modify the preferences for the Public Access calendar: om de voorkeuren voor
+#
+# << MISSING >>
+# tz-help:
+# English text: Specifies how many hours to adjust the time from server time to local time.
+#
+#
+# << MISSING >>
+# Timezone Offset:
+#
+# << MISSING >>
+# Add N hours to:
+#
+# << MISSING >>
+# Subtract N hours from:
+#
+# << MISSING >>
+# same as:
+#
+# << MISSING >>
+# server time:
 Default Category: toon de volgende categorieen in mijn agenda
 Sun: zo
 Mon: ma

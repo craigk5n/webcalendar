@@ -17,7 +17,36 @@
 #
 #
 #
-# Translation last updated on 09-10-2002
+# Translation last updated on 11-04-2002
+
+
+###############################################
+# Page: activity_log.php
+#
+Activity Log: Activity Log
+User: User
+Calendar: Calendar
+Date: Date
+Time: Time
+Event: Event
+Action: Action
+Event created: Event created
+Event approved: Event approved
+Event rejected: Event rejected
+Event updated: Event updated
+Event deleted: Event deleted
+Notification sent: Notification sent
+Reminder sent: Reminder sent
+Database error: Database error
+Next: Next
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Invalid entry id
+This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
+Error adding event: Error adding event
 
 
 ###############################################
@@ -111,12 +140,23 @@ public-access-can-add-help: When enabled, users that access the system through P
 Public access can add events: Public access can add events
 allow-view-other-help: Specifies whether one user may view another user's calendar.
 Allow viewing other user's calendars: Allow viewing other user's calendars
+allow-external-users-help: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+Allow external users: Allow external users
+external-can-receive-notification-help: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+External users can receive email notifications: External users can receive email notifications
+external-can-receive-reminder-help: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+External users can receive email reminders: External users can receive email reminders
 remember-last-login-help: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
 Remember last login: Remember last login
 conflict-check-help: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
 Check for event conflicts: Check for event conflicts
 conflict-months-help: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
 Conflict checking months: Conflict checking months
+Plugins: Plugins
+plugins-enabled-help: Enable plugin applications.
+Enable Plugins: Enable Plugins
+plugins-sort-key-help: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
+Plugin: Plugin
 Groups: Groups
 groups-enabled-help: Enables group support, allowing users to select users by groups.
 Groups enabled: Groups enabled
@@ -156,35 +196,6 @@ Table cell background for current day: Table cell background for current day
 Table cell background for weekends: Table cell background for weekends
 Event popup background: Event popup background
 Event popup text: Event popup text
-
-
-###############################################
-# Page: activity_log.php
-#
-Activity Log: Activity Log
-User: User
-Calendar: Calendar
-Date: Date
-Time: Time
-Event: Event
-Action: Action
-Event created: Event created
-Event approved: Event approved
-Event rejected: Event rejected
-Event updated: Event updated
-Event deleted: Event deleted
-Notification sent: Notification sent
-Reminder sent: Reminder sent
-Database error: Database error
-Next: Next
-
-
-###############################################
-# Page: add_entry.php
-#
-Invalid entry id: Invalid entry id
-This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
-Error adding event: Error adding event
 
 
 ###############################################
@@ -230,6 +241,7 @@ Previous: Previous
 ###############################################
 # Page: day.php
 #
+Assistant mode: Assistant mode
 Generate printer-friendly version: Generate printer-friendly version
 Printer Friendly: Printer Friendly
 
@@ -282,6 +294,8 @@ days: days
 before event: before event
 participants-help: Lists the participants of this entry.
 Participants: Participants
+external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
+External Participants: External Participants
 repeat-type-help: Select how often the event should repeat.<I>Monthly (by day)</I> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <I>Monthly (by date)</I> allows an event to repeat on the same day of the month.
 Repeat Type: Repeat Type
 None: None
@@ -421,22 +435,6 @@ Add New Group: Add New Group
 
 
 ###############################################
-# Page: pref.php
-#
-Preferences: Preferences
-to modify the preferences for the Public Access calendar: to modify the preferences for the Public Access calendar
-Default Category: Default Category
-Sun: Sun
-Mon: Mon
-Tue: Tue
-Wed: Wed
-Thu: Thu
-Fri: Fri
-Sat: Sat
-Save Preferences: Save Preferences
-
-
-###############################################
 # Page: help_bug.php
 #
 Report Bug: Report Bug
@@ -453,6 +451,7 @@ Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
 #
 Help Index: Help Index
 Layers: Layers
+Preferences: Preferences
 
 
 ###############################################
@@ -473,12 +472,8 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_pref.php
 #
+Default Category: Default Category
 default-category-help: Specifies the category a new event should default to.
-
-
-###############################################
-# Page: week.php
-#
 
 
 ###############################################
@@ -531,6 +526,26 @@ cookies-note: <B>Note:</B> This application requires cookies to be enabled.
 ###############################################
 # Page: month.php
 #
+Sun: Sun
+Mon: Mon
+Tue: Tue
+Wed: Wed
+Thu: Thu
+Fri: Fri
+Sat: Sat
+
+
+###############################################
+# Page: pref.php
+#
+to modify the preferences for the Public Access calendar: to modify the preferences for the Public Access calendar
+tz-help: Specifies how many hours to adjust the time from server time to local time.
+Timezone Offset: Timezone Offset
+Add N hours to: Add N hours to
+Subtract N hours from: Subtract N hours from
+same as: same as
+server time: server time
+Save Preferences: Save Preferences
 
 
 ###############################################
@@ -606,6 +621,7 @@ Status: Status
 Waiting for approval: Waiting for approval
 Deleted: Deleted
 Rejected: Rejected
+External User: External User
 Approve/Confirm entry: Approve/Confirm entry
 Reject entry: Reject entry
 Set category: Set category
@@ -658,6 +674,12 @@ You must specify a view name: You must specify a view name
 
 
 ###############################################
+# Page: week.php
+#
+cont.: cont.
+
+
+###############################################
 # Page: week_details.php
 #
 New Entry: New Entry
@@ -671,6 +693,38 @@ Private: Private
 
 ###############################################
 # Page: year.php
+#
+
+
+###############################################
+# Page: assistant_edit.php
+#
+Yours assistants: Yours assistants
+Assistants: Assistants
+
+
+###############################################
+# Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: frames.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: topnav.php
+#
+
+
+###############################################
+# Page: includes/config.php
 #
 
 
@@ -710,48 +764,9 @@ Dec: Dec
 
 
 ###############################################
-# Page: includes/user.php
-#
-Invalid login: Invalid login
-Invalid user login: Invalid user login
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Send Reminder
-Reminder: Reminder
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/validate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-
-
-###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Go to
-
-
-###############################################
-# Page: includes/config.php
-#
 
 
 ###############################################
@@ -767,6 +782,13 @@ Go to: Go to
 ###############################################
 # Page: includes/php-dbi.php
 #
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Send Reminder
+Reminder: Reminder
 
 
 ###############################################
@@ -786,6 +808,49 @@ Manage Views: Manage Views
 Edit Layers: Edit Layers
 Account: Account
 Current User: Current User
+Manage calendar of: Manage calendar of
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+Invalid login: Invalid login
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+Invalid user login: Invalid user login
+
+
+###############################################
+# Page: includes/user.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/assistant.php
+#
+
+
+###############################################
+# Page: includes/user-passwd.php
+#
+
+
+###############################################
+# Page: includes/dbtable.php
+#
 
 
 ###############################################

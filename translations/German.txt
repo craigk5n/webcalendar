@@ -10,7 +10,7 @@
 # Last update: 22 July 2002 by Markus Egartner & Markus Kronberger <edv@kh-hallein.at>
 # Last update: 26 August 2002 by Markus Egartner & Markus Kornberger <edv@khhallein.at>
 #
-# Translation last updated on 09-12-2002
+# Translation last updated on 09-28-2002
 
 
 ###############################################
@@ -418,6 +418,26 @@ Add New Group: Neue Gruppe hinzufügen
 #
 Preferences: Voreinstellungen
 to modify the preferences for the Public Access calendar: um die Voreinstellung
+#
+# << MISSING >>
+# tz-help:
+# English text: Specifies how many hours to adjust the time from server time to local time.
+#
+#
+# << MISSING >>
+# Timezone Offset:
+#
+# << MISSING >>
+# Add N hours to:
+#
+# << MISSING >>
+# Subtract N hours from:
+#
+# << MISSING >>
+# same as:
+#
+# << MISSING >>
+# server time:
 Default Category: Standard Kategorie
 Sun: So
 Mon: Mo

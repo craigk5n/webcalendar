@@ -3,7 +3,7 @@
 # There cannot be a ":" in the English text.
 # Translated by: Hanu¹ Adler <had@penguin.cz>
 # Last update: 31 July 2000
-# Translation last updated on 09-10-2002
+# Translation last updated on 09-28-2002
 
 
 ###############################################
@@ -785,6 +785,26 @@ Preferences: Mo¾nosti
 #
 # << MISSING >>
 # to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# tz-help:
+# English text: Specifies how many hours to adjust the time from server time to local time.
+#
+#
+# << MISSING >>
+# Timezone Offset:
+#
+# << MISSING >>
+# Add N hours to:
+#
+# << MISSING >>
+# Subtract N hours from:
+#
+# << MISSING >>
+# same as:
+#
+# << MISSING >>
+# server time:
 #
 # << MISSING >>
 # Default Category:
