@@ -437,7 +437,7 @@ function export_ical () {
   if ($count > 0) {
     echo "BEGIN:VCALENDAR\r\n";
     $title = "X-WR-CALNAME;VALUE=TEXT:" .
-      ( empty ( $publish_fullname ) ? $user : $publish_fullname );
+      ( empty ( $publish_fullname ) ? $user : translate($publish_fullname) );
     $title = str_replace ( ",", "\\,", $title );
     echo "$title\r\n";
     if ( preg_match ( "/WebCalendar v(\S+)/", $PROGRAM_NAME, $match ) ) {
