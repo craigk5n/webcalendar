@@ -5,7 +5,7 @@
 #	Simone Cortesi <php@cortesi.com>
 #	Alessandro <a.orlandi@iol.it>
 # Last update: 22 July 2000
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
 # No charset specified
 # charset:

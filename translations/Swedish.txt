@@ -4,7 +4,7 @@
 # Translated by: Jesper Thörn <jesper@thorn.as>
 # Updated by: Patrik Grip-Jansson <patrikj@gnulix.org>
 # Last update: 2001-08-02
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
 # No charset specified
 # charset:

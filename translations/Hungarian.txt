@@ -4,10 +4,13 @@
 # Translated by:
 #	Gyorgy Baffia <gyorgy@baffia.hu>
 # Last update: 05 Sep 2001
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
-# No charset specified
-# charset:
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: iso-8859-2
 
 
 
@@ -1285,9 +1288,6 @@ Send Reminder: Emlékeztetõ küldése
 ###############################################
 # Page: includes/init.php
 #
-#
-# << MISSING >>
-# charset:
 
 
 ###############################################

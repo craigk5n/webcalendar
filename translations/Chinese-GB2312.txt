@@ -4,7 +4,7 @@
 # Translated by: liao_bin@371.net shenyi@jite.net
 # Last update: 2002-6-26
 # $Id$
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
 
 ###############################################

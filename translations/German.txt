@@ -18,10 +18,14 @@
 # Last update: 14 Feb 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
 # Last update: 12 Jun 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
 # Last update: 13 Jun 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
-# Translation last updated on 06-20-2003
+# Last update: 23 Jun 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Translation last updated on 06-23-2003
 
-# No charset specified
-# charset:
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: iso-8859-1
 
 
 
@@ -821,9 +825,6 @@ Send Reminder: Erinnerung senden
 ###############################################
 # Page: includes/init.php
 #
-#
-# << MISSING >>
-# charset:
 
 
 ###############################################

@@ -3,10 +3,13 @@
 # There cannot be a ":" in the English text.
 # Translated by: Hanu¹ Adler <had@penguin.cz>
 # Last update: 31 July 2000
-# Translation last updated on 06-20-2003
+# Translation last updated on 06-23-2003
 
-# No charset specified
-# charset:
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: iso-8859-2
 
 
 
@@ -1444,9 +1447,6 @@ Dec: pro
 ###############################################
 # Page: includes/init.php
 #
-#
-# << MISSING >>
-# charset:
 
 
 ###############################################
