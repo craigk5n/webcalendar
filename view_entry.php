@@ -292,25 +292,24 @@ if ( $res ) {
         if ( $cal_type == 'monthlyByDay' ) {
           $dow1 = date ( "w", mktime ( 3, 0, 0, $thismonth, 1, $thisyear ) );
           $days_in_first_week = ( 7 - $dow1 );
-          $whichWeek = floor ( ( $thisday - $days_in_first_week ) / 7 );
-          if ( $thisdow >= $dow1 )
-            $whichWeek++;
+          $whichWeek = ceil ( $thisday / 7 );
         } else {
           $whichWeek = floor ( ( $days_this_month - $thisday ) / 7 );
+          $whichWeek++;
         }
         $rep_str .= ' ';
         switch ( $whichWeek ) {
-          case 0:
+          case 1:
             if ( $cal_type == 'monthlyByDay' )
               $rep_str .= translate ( "1st" );
             break;
-          case 1:
-            $rep_str .= translate ( "2nd" ); break;
           case 2:
-            $rep_str .= translate ( "3rd" ); break;
+            $rep_str .= translate ( "2nd" ); break;
           case 3:
-            $rep_str .= translate ( "4th" ); break;
+            $rep_str .= translate ( "3rd" ); break;
           case 4:
+            $rep_str .= translate ( "4th" ); break;
+          case 5:
             $rep_str .= translate ( "5th" ); break;
         }
         if ( $cal_type == 'monthlyByDayR' )
