@@ -47,8 +47,10 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 }
 
 // Make sure another app in the same domain doesn't have a 'user' cookie
-if (!$HTTP_GET_VARS['user'] && !$HTTP_POST_VARS['user'] && isset($GLOBALS['user'])) {
-  unset($GLOBALS['user']);
+if ( ( ! empty ( $HTTP_GET_VARS ) && ! $HTTP_GET_VARS['user'] ) &&
+  ( ! empty ( $HTTP_POST_VARS ) && ! $HTTP_POST_VARS['user'] ) &&
+  isset ( $GLOBALS['user'] ) ) {
+  unset ( $GLOBALS['user'] );
 }
 
 // Get script name
