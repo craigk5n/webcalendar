@@ -168,10 +168,14 @@ $thisday = $row[1] % 100;
 <TR><TD VALIGN="top"><B><?php etranslate("Duration")?>:</B></TD>
   <TD><?php echo $row[5]; ?> <?php etranslate("minutes")?></TD></TR>
 <?php } ?>
+<?php if ( ! $disable_priority_field ) { ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Priority")?>:</B></TD>
   <TD><?php echo $pri[$row[6]]; ?></TD></TR>
+<?php } ?>
+<?php if ( ! $disable_access_field ) { ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Access")?>:</B></TD>
   <TD><?php echo ( $row[8] == "P" ) ? translate("Public") : translate("Confidential"); ?></TD></TR>
+<?php } ?>
 <?php
 if ( ! strlen ( $single_user_login ) ) {
   echo "<TR><TD VALIGN=\"top\"><B>" . translate("Created by") . ":</B></TD>\n";
@@ -251,7 +255,11 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
 ?>
 
 <?php // participants
-if ( ! strlen ( $single_user_login ) ) {
+// Only ask for participants if we are multi-user.
+$show_participants = ! $disable_participants_field;
+if ( $is_admin )
+  $show_participants = true;
+if ( ! strlen ( $single_user_login ) && $show_participants ) {
 ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Participants")?>:</B></TD>
   <TD><?php

@@ -34,14 +34,28 @@ include "includes/translate.inc";
   <TD><?php etranslate("time-help")?></TD></TR>
 <TD VALIGN="top"><B><?php etranslate("Duration")?>:</B></TD>
   <TD><?php etranslate("duration-help")?></TD></TR>
+
+<?php if ( ! $disable_priority_field ) { ?>
 <TD VALIGN="top"><B><?php etranslate("Priority")?>:</B></TD>
   <TD><?php etranslate("priority-help")?></TD></TR>
+<?php } ?>
+
+<?php if ( ! $disable_access_field ) { ?>
 <TD VALIGN="top"><B><?php etranslate("Access")?>:</B></TD>
   <TD><?php etranslate("access-help")?></TD></TR>
-<?php if ( ! strlen ( $single_user_login ) ) { ?>
+<?php } ?>
+
+<?php
+$show_participants = ! $disable_participants_field;
+if ( $is_admin )
+  $show_participants = true;
+if ( ! strlen ( $single_user_login ) && $show_participants ) { ?>
 <TD VALIGN="top"><B><?php etranslate("Participants")?>:</B></TD>
   <TD><?php etranslate("participants-help")?></TD></TR>
 <?php } ?>
+
+
+<?php if ( ! $disable_repeating_field ) { ?>
 <TD VALIGN="top"><B><?php etranslate("Repeat Type")?>:</B></TD>
   <TD><?php etranslate("repeat-type-help")?></TD></TR>
 <TD VALIGN="top"><B><?php etranslate("Repeat End Date")?>:</B></TD>
@@ -50,6 +64,8 @@ include "includes/translate.inc";
   <TD><?php etranslate("repeat-day-help")?></TD></TR>
 <TD VALIGN="top"><B><?php etranslate("Frequency")?>:</B></TD>
   <TD><?php etranslate("repeat-frequency-help")?></TD></TR>
+<?php } ?>
+
 </TABLE>
 
 <?php include "includes/help_trailer.inc"; ?>

@@ -15,6 +15,9 @@ $view = "week";
 
 include "includes/translate.inc";
 
+if ( ! $allow_view_other && ! $is_admin )
+  $user = "";
+
 if ( strlen ( $user ) ) {
   $u_url = "user=$user&";
   user_load_variables ( $user, "user_" );

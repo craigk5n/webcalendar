@@ -269,18 +269,22 @@ if ( $TIME_FORMAT == "12" ) {
 <TR><TD><B><?php etranslate("Duration")?>:</B></TD>
   <TD><INPUT NAME="duration_h" SIZE=2 VALUE="<?php printf ( "%d", $dur_h );?>">:<INPUT NAME="duration_m" SIZE=2 VALUE="<?php printf ( "%02d", $dur_m );?>"> (<?php echo translate("hours") . ":" . translate("minutes")?>)</TD></TR>
 
+<?php if ( ! $disable_priority_field ) { ?>
 <TR><TD><B><?php etranslate("Priority")?>:</B></TD>
   <TD><SELECT NAME="priority">
     <OPTION VALUE="1"<?php if ( $priority == 1 ) echo " SELECTED";?>><?php etranslate("Low")?>
     <OPTION VALUE="2"<?php if ( $priority == 2 || $priority == 0 ) echo " SELECTED";?>><?php etranslate("Medium")?>
     <OPTION VALUE="3"<?php if ( $priority == 3 ) echo " SELECTED";?>><?php etranslate("High")?>
   </SELECT></TD></TR>
+<?php } ?>
 
+<?php if ( ! $disable_access_field ) { ?>
 <TR><TD><B><?php etranslate("Access")?>:</B></TD>
   <TD><SELECT NAME="access">
     <OPTION VALUE="P"<?php if ( $access == "P" || ! strlen ( $access ) ) echo " SELECTED";?>><?php etranslate("Public")?>
     <OPTION VALUE="R"<?php if ( $access == "R" ) echo " SELECTED";?>><?php etranslate("Confidential")?>
   </SELECT></TD></TR>
+<?php } ?>
 
 <?php
 // site-specific extra fields (see site_extras.inc)
@@ -382,7 +386,10 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
 
 <?php
 // Only ask for participants if we are multi-user.
-if ( ! strlen ( $single_user_login ) ) {
+$show_participants = ! $disable_participants_field;
+if ( $is_admin )
+  $show_participants = true;
+if ( ! strlen ( $single_user_login ) && $show_participants ) {
   $userlist = user_get_users ();
   $num_users = 0;
   $size = 0;
@@ -411,6 +418,8 @@ if ( ! strlen ( $single_user_login ) ) {
   print "</SELECT></TD></TR>\n";
 }
 ?>
+
+<?php if ( ! $disable_repeating_field ) { ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Repeat Type")?>:</B></TD>
 <TD VALIGN="top"><?php
 echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"none\" " .
@@ -465,6 +474,7 @@ echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"yearly\" " .
   <INPUT NAME="rpt_freq" SIZE="4" MAXLENGTH="4" VALUE="<?php echo $rpt_freq; ?>">
  </TD>
 </TR>
+<?php } ?>
 
 </TABLE>
 

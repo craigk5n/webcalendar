@@ -1,4 +1,20 @@
 Version 0.9.31dev (???)
+  - Added ability to disable some of the standard event fields (access,
+    priority, participants, repeating) to simplify interface for some
+    users.  Set in includes/config.inc with $disable_priority_field,
+    $disable_access_field, $disable_participants_field, and
+    $disable_repeating_field.
+  - Can now specify $allow_view_other to be false in includes/config.inc
+    to prevent users from viewing other users' calendars.  (Admin users
+    will still be able to do this.)  The combination of this and setting
+    $disable_participants_field = true will give non-admin users the
+    feel of a single-user calendar.  (Note: Setting $allow_view_other
+    to false will also disable layers since that is essentially viewing
+    another user's calendar.)
+  - Added $conflict_repeat_months to includes/config.inc.  This defines
+    how many months into the future we should check for conflicts when
+    saving a repeating event.  On a slow server, the default (6 months)
+    may take too long.
   - Fixed bug 436330: Oracle complaining about too many open cursors.
     Added some missing dbi_free_result() calls to address this.
   - Fixed bug 436404: Error in conflict checking - was always replacing
