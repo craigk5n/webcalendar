@@ -79,25 +79,22 @@ else
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo "<h2>" . translate("Error") . "</h2>" .
+  echo "<h2>" . translate("Error") . "</h2>\n" .
     $error . "\n";
 } else {
 ?>
-  
 <form action="edit_template.php" method="post" name="reportform">
 
 <input type="hidden" name="type" value="<?php echo $type;?>" />
 <textarea rows="15" cols="60" name="template"><?php echo htmlentities ( $cur )?></textarea>
 
 <br />
-
 <input type="button" value="<?php etranslate("Cancel")?>" onclick="window.close();" />
 <input type="submit" value="<?php etranslate("Save")?>" />
-
 </form>
 
 <?php }
-print_trailer ( false, true, true );
+	print_trailer ( false, true, true );
 ?>
 </body>
 </html>

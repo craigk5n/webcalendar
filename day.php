@@ -45,7 +45,6 @@ print_header($INC,$HeadX);
 ?>
 
 <?php
-
 /* Pre-Load the repeated events for quckier access */
 $repeated_events = read_repeated_events ( empty ( $user ) ? $login : $user,
   $cat_id, $startdate  );
@@ -53,7 +52,6 @@ $repeated_events = read_repeated_events ( empty ( $user ) ? $login : $user,
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( empty ( $user ) ? $login : $user, $startdate, $enddate,
   $cat_id  );
-
 ?>
 
 <table>
@@ -94,7 +92,6 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
   empty ( $user ) ? $login : $user, $can_add );
 ?>
 </table>
-
 </td>
 <td style="vertical-align:top;">
 <!-- START MINICAL -->
@@ -102,16 +99,13 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 <?php display_small_month ( $thismonth, $thisyear, true ); ?>
 </div>
 </td></tr></table>
-
-<br /><br />
-
+<br />
 <?php
 	echo $eventinfo;
 
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
-
-<br /><br />
+<br />
 <a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="day.php?<?php
   echo $u_url;
   if ( $thisyear ) {
@@ -121,6 +115,5 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 ?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
 
 <?php print_trailer (); ?>
-
 </body>
 </html>

@@ -28,22 +28,21 @@ print_header();
 
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top; width:50%;">
-<?php
-if ( ! empty ( $user ) ) {
-  user_load_variables ( $user, "u" );
-  echo "<h2>" . translate("Edit User") . "</h2>\n";
-} else {
-  echo "<h2>" . translate("Add User") . "</h2>\n";
-}
-?>
+<h2><?php
+	if ( ! empty ( $user ) ) {
+		user_load_variables ( $user, "u" );
+		echo translate("Edit User");
+	} else {
+		echo translate("Add User");
+	}
+?></h2>
 
 <form action="edit_user_handler.php" method="post">
 <input type="hidden" name="formtype" value="edituser" />
-
 <?php
-if ( empty ( $user ) ) {
-  echo "<input type=\"hidden\" name=\"add\" value=\"1\" />\n";
-}
+	if ( empty ( $user ) ) {
+		echo "<input type=\"hidden\" name=\"add\" value=\"1\" />\n";
+	}
 ?>
 
 <table style="border-width:0px;">
@@ -83,19 +82,19 @@ if ( empty ( $user ) ) {
 		<input name="upassword2" id="pass2" size="15" value="" type="password" />
 	</td></tr>
 <?php }
-  if ( $is_admin ) { ?>
+if ( $is_admin ) { ?>
 	<tr><td style="font-weight:bold;">
 		<?php etranslate("Admin")?>:</td><td>
-		<label><input type="radio" name="uis_admin" value="N"<?php if ( $uis_admin != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
-		&nbsp;<label><input type="radio" name="uis_admin" value="Y"<?php if ( $uis_admin == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>
+		<label><input type="radio" name="uis_admin" value="Y"<?php if ( $uis_admin == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>
+		&nbsp;<label><input type="radio" name="uis_admin" value="N"<?php if ( $uis_admin != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 	</td></tr>
-<?php } ?>
+<?php } //end if ($is_admin ) ?>
 	<tr><td colspan="2">
 		<?php if ( $demo_mode == "Y" ) { ?>
 			<input type="button" value="<?php etranslate("Save")?>" onclick="alert('<?php etranslate("Disabled for demo")?>')" />
 			<?php if ( $is_admin && ! empty ( $user ) ) { ?>
 				<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="alert('<?php etranslate("Disabled for demo")?>')" />
-			<?php }?>
+			<?php } //end if ( $demo_mode == "Y" ) ?>
 		<?php } else { ?>
 			<input type="submit" value="<?php etranslate("Save")?>" />
 			<?php if ( $is_admin && ! empty ( $user ) ) {
