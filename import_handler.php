@@ -36,7 +36,10 @@ if ($HTTP_POST_FILES['FileName']['size'] > 0) {
       echo translate("Conflicting events") . ": " . $count_con . "<br>\n";
     }
     echo translate ( "Errors" ) . ": $error_num<br>\n<br>\n";
-    $url = sprintf ( "%s.php?date=%04d%02d%02d",$STARTVIEW, $year, $month, $day );
+    if ( strlen ( get_last_view() ) )
+      $url = get_last_view ();
+    else
+      $url = "$STARTVIEW.php";
     echo "  <A CLASS=\"navlinks\" HREF=\"$url\">" .
       translate("Back to My Calendar") . "</A></p>\n";
   } elseif ($errormsg) {
@@ -54,47 +57,6 @@ if ($HTTP_POST_FILES['FileName']['size'] > 0) {
 include "includes/trailer.php";
 echo "</BODY>\n</HTML>";
 
-
-/* ====== Functions ====== */
-
-/*
-// Input time format "235900", duration is minutes
-function add_duration ( $time, $duration ) {
-  $hour = (int) ( $time / 10000 );
-  $min = ( $time / 100 ) % 100;
-  $minutes = $hour * 60 + $min + $duration;
-  $h = $minutes / 60;
-  $m = $minutes % 60;
-  $ret = sprintf ( "%d%02d00", $h, $m );
-  //echo "add_duration ( $time, $duration ) = $ret <BR>";
-  return $ret;
-}
-
-// check to see if two events overlap
-// time1 and time2 should be an integer like 235900
-// duration1 and duration2 are integers in minutes
-function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
-  //echo "times_overlap ( $time1, $duration1, $time2, $duration2 )<BR>";
-  $hour1 = (int) ( $time1 / 10000 );
-  $min1 = ( $time1 / 100 ) % 100;
-  $hour2 = (int) ( $time2 / 10000 );
-  $min2 = ( $time2 / 100 ) % 100;
-  // convert to minutes since midnight
-  // remove 1 minute from duration so 9AM-10AM will not conflict with 10AM-11AM
-  if ( $duration1 > 0 )
-    $duration1 -= 1;
-  if ( $duration2 > 0 )
-    $duration2 -= 1;
-  $tmins1start = $hour1 * 60 + $min1;
-  $tmins1end = $tmins1start + $duration1;
-  $tmins2start = $hour2 * 60 + $min2;
-  $tmins2end = $tmins2start + $duration2;
-  if ( ( $tmins1start >= $tmins2end ) || ( $tmins2start >= $tmins1end ) )
-    return false;
-  return true;
-
-}
-*/
 
 /* Import the data structure
 $Entry[RecordID]           =  Record ID (in the Palm) ** only required for palm desktop
