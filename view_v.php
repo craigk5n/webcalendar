@@ -114,19 +114,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   // since print_date_entries is rather stupid, we can swap the event data
   // around for users by changing what $events points to.
 
-  // Calculate width of columns in this table.
-  $num_left = count ( $viewusers ) - $j;
-  if ( $num_left > $DAYS_PER_TABLE )
-    $num_left = $DAYS_PER_TABLE;
-  if ( $num_left > 0 ) {
-    if ( $num_left < $DAYS_PER_TABLE ) {
-      $tdw = (int) ( 90 / $num_left );
-    } else {
-      $tdw = (int) ( 90 / $DAYS_PER_TABLE );
-    }
-  } else {
-    $tdw = 5;
-  }
+  $tdw = 12; // column width percent
 
 ?>
 
@@ -157,7 +145,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
         $color = $CELLBG;
       $class = "tableheader";
     }
-    echo "<TH CLASS=\"$class\" WIDTH=\"10%\" BGCOLOR=\"$color\" VALIGN=\"top\">" .
+    echo "<TH CLASS=\"$class\" WIDTH=\"$tdw%\" BGCOLOR=\"$color\" VALIGN=\"top\">" .
       "<FONT SIZE=\"-1\" CLASS=\"$class\">" . $weekday . " " .
       round ( date ( "d", $date ) ) . "</FONT></TH>\n";
   }
@@ -166,6 +154,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   
       // ------
     for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
+    echo "\n<tr>\n";
       // ------
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
