@@ -106,7 +106,7 @@ td.month a {
 	font-size: 13px;
 	color: #B04040;
 	text-decoration: none;
-	align: center;
+	text-align: center;
 }
 .navlinks {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
