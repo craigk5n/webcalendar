@@ -609,7 +609,7 @@ Ok: Ok
 This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
 Exclude private records: Exclude private records
 Datebook File: Datebook File
-This form will import vCalendar (.cvs) 1.0 events: This form will import vCalendar (.cvs) 1.0 events
+This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
 vCal File: vCal File
 
 

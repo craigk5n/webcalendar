@@ -112,7 +112,7 @@ $colspan = 2 * count ( $tabs ) - 1;
 <form action="import_handler.php" method="POST" name="importform" enctype="multipart/form-data">
 <h3><font color="<?= $H2COLOR;?>">vCalendar</font></h3>
 <p>
-<?php etranslate("This form will import vCalendar (.cvs) 1.0 events");?>.
+<?php etranslate("This form will import vCalendar (.vcs) 1.0 events");?>.
 </p>
 <p>
 <input type="hidden" name="ImportType" value="VCAL">
