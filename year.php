@@ -112,7 +112,7 @@ print_header();
 <tr>
 <?php if ( empty ( $friendly ) ) { ?>
 <td style="text-align:left;">
-<a title="<?php etranslate("Previous")?>" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&user=$user";?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate("Previous")?>" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 </td>
 <?php } ?>
 <td class="yearviewtitle">
