@@ -12,7 +12,7 @@ if ( ! $is_admin && $user != $login )
 $HeadX = '';
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
-  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; URL=list_unapproved.php\" target=\"_self\" />\n";
+  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; URL=list_unapproved.php\" />\n";
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
