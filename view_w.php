@@ -131,7 +131,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 
 ?>
 
-<table class="vieww" rules="all" cellspacing="0" cellpadding="2">
+<table rules="all" cellspacing="0" cellpadding="2">
 <tr><th class="empty">&nbsp;</th>
 
 <?php

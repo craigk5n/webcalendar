@@ -243,7 +243,7 @@ if ( ! $friendly ) {
 <br /><br /><br />
 
 
-<table class="viewl" cellspacing="0" cellpadding="0" style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>; clear:both;">
+<table class="main" cellspacing="0" cellpadding="0" style="clear:both;">
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
 <th><?php etranslate("Sun")?></th>

@@ -50,26 +50,26 @@ $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 ?>
 
-<table style="border-width:0px; width:100%;">
-<tr><td style="text-align:left;">
+<div style="border-width:0px; width:99%;">
+<div style="float:left;">
 <?php if ( ! $friendly ) { ?>
 <a title="<?php etranslate("Previous")?>" href="view_d.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
-</td>
-<td class="viewdtitle">
+</div>
+
+<div style="float:right;">
+<?php if ( ! $friendly ) { ?>
+<a title="<?php etranslate("Next")?>" href="view_d.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<?php } ?>
+</div>
+<div class="title">
 <span class="date">
 <?php printf ( "%s, %s %d, %d", weekday_name ( $wday ), month_name ( $thismonth - 1 ), $thisday, $thisyear ); ?>
 </span><br />
 <span class="viewname">
 <?php echo $view_name ?>
 </span>
-</td>
-<td style="text-align:right;">
-<?php if ( ! $friendly ) { ?>
-<a title="<?php etranslate("Next")?>" href="view_d.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-<?php } ?>
-</td></tr>
-</table>
+</div></div>
 <center>
 
 <?php
@@ -139,7 +139,7 @@ function TimeMatrix ($date,$participants) {
 ?>
 
 <br />
-<table class="viewd" style="width:<?php echo $total_pix;?>px; border-left: 1px solid <?php echo $TABLEBG;?>; border-right: 1px solid <?php echo $TABLEBG;?>;" cellspacing="0" cellpadding="0">
+<table style="width:<?php echo $total_pix;?>px; border-left: 1px solid <?php echo $TABLEBG;?>; border-right: 1px solid <?php echo $TABLEBG;?>;" cellspacing="0" cellpadding="0">
  <tr><td style="height:1px; background-color:#000000;" colspan="<?php echo $cols;?>"><img src="pix.gif" style="height:1px; width:100%;" alt="spacer" /></td></tr>
  <tr>
    <th class="row" style="width:<?php echo $participant_pix;?>px;"><?php etranslate("Participants");?></th>

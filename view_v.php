@@ -58,14 +58,21 @@ for ( $i = 0; $i < 7; $i++ ) {
 
 ?>
 
-<table style="border-width:0px; width:100%;">
-<tr><td style="text-align:left;">
+<div style="border-width:0px; width:99%;">
+<div style="float:left;">
 <?php if ( ! $friendly ) { ?>
 <br />
 <a title="<?php etranslate("Previous")?>" href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
-</td>
-<td class="viewvtitle">
+</div>
+
+<div style="float:right;">
+<?php if ( ! $friendly ) { ?>
+<br />
+<a title="<?php etranslate("Next")?>" href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<?php } ?>
+</div>
+<div class="title">
 <span class="date">
 <?php
   echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
@@ -74,14 +81,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 ?>
 </span><br />
 <span class="viewname"><?php echo $view_name ?></span>
-</td>
-<td style="text-align:right;">
-<?php if ( ! $friendly ) { ?>
-<br />
-<a title="<?php etranslate("Next")?>" href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-<?php } ?>
-</td></tr>
-</table><br />
+</div></div><br />
 
 <?php
 // The table has names across the top and dates for rows.  Since we need
@@ -121,9 +121,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 
 ?>
 
-<!-- <table class="viewv" cellspacing="0" cellpadding="0" style="border-left: 1px solid <?php echo $TABLEBG;?>; border-top: 1px solid <?php echo $TABLEBG;?>;"> -->
 <table class="viewv" cellspacing="0" cellpadding="0">
-
 <tr><th class="empty">&nbsp;</th>
 <?php
 
@@ -135,15 +133,15 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
       $color = $TODAYCELLBG;
 //      $class = "tableheadertoday";
-      echo "<th class=\"today\" style=\"width:$tdw%; vertical-align:top; font-size:13px;\">";
+      echo "<th class=\"today\" style=\"width:$tdw%;\">";
     } else {
       if ( $wday == 0 || $wday == 6 ) {
         $color = $WEEKENDBG;
-	echo "<th class=\"weekend\" style=\"width:$tdw%; vertical-align:top; font-size:13px;\">";
+	echo "<th class=\"weekend\" style=\"width:$tdw%;\">";
       } else {
         $color = $CELLBG;
 //       $class = "tableheader";
-	echo "<th style=\"width:$tdw%; vertical-align:top; font-size:13px;\">";
+	echo "<th style=\"width:$tdw%;\">";
       }
     }
 //    echo "<th class=\"$class\" style=\"width:$tdw%; background-color:$color; vertical-align:top; font-size:13px;\">" .
@@ -170,15 +168,15 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
       $color = $TODAYCELLBG;
 //      $class = "tableheadertoday";
-      echo "<td class=\"today\" style=\"width:$tdw%; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG; vertical-align:top;\">";
+      echo "<td class=\"today\" style=\"width:$tdw%;\">";
     } else {
       if ( $wday == 0 || $wday == 6 ) {
         $color = $WEEKENDBG;
-	echo "<td class=\"weekend\" style=\"width:$tdw%; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG; vertical-align:top;\">";
+	echo "<td class=\"weekend\" style=\"width:$tdw%;\">";
       } else {
         $color = $CELLBG;
 //      $class = "tablecell";
-	echo "<td style=\"width:$tdw%; border-bottom: 1px solid $TABLEBG; border-right: 1px solid $TABLEBG; vertical-align:top;\">";
+	echo "<td style=\"width:$tdw%;\">";
       }
     }
       $events = $e_save[$i];

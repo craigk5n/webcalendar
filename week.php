@@ -76,8 +76,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 ?>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <a title="<?php etranslate("Previous")?>" href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" style="float:left;" alt="<?php etranslate("Previous")?>" /></a>
-<?php } ?>
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
+
 <a href="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" class="prevnext" style="float:right;" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 <span class="user"><?php
