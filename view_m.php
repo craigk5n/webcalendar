@@ -204,7 +204,7 @@ for ( $j = 0; $j < count ($viewusers); $j += $USERS_PER_TABLE ) {
  if ( date ("Ymd", $date) == date ("Ymd", $today) ) {
    echo " class=\"today\">";
  } else {
-  if ($wday == 0 || $wday == 6)
+  if ($wday == 0 || $wday == 6) {
     echo " class=\"weekend\">";
   } else {
     echo " class=\"row\">";
