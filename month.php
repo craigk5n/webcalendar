@@ -1,4 +1,7 @@
 <?php
+// CSS NOTES:
+// THE MINICAL CLASS FOR MONTH.PHP _MUST_ APPEAR _AFTER_ THE CLASS FOR
+// THE MAIN TABLE.
 include_once 'includes/init.php';
 
 if (($user != $login) && $is_nonuser_admin)
@@ -43,7 +46,7 @@ $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
 <div style="float: right;">
 <?php
 if ( ! $friendly ) {
-  echo "<table class=\"monthviewminical\" cellspacing=\"1\" cellpadding=\"2\">";
+  echo "<table class=\"minical\" cellspacing=\"1\" cellpadding=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $nextyear, $nextmonth, 1 );
   else
@@ -91,7 +94,7 @@ if ( ! $friendly ) {
 <div style="float:left;">
 <?php
 if ( ! $friendly ) {
-  echo "<table class=\"monthviewminical\" cellspacing=\"1\" cellpadding=\"2\">";
+  echo "<table class=\"minical\" cellspacing=\"1\" cellpadding=\"2\">";
   if ( $WEEK_START == "1" )
     $wkstart = get_monday_before ( $prevyear, $prevmonth, 1 );
   else
@@ -138,7 +141,7 @@ if ( ! $friendly ) {
 ?>
 </div>
 
-<div class="monthviewtitle">
+<div class="title">
 <span class="date"><br />
 <?php
   echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
@@ -167,7 +170,7 @@ if ( ! $friendly ) {
 </div>
 <br /><br /><br />
 
-<table class="monthview" style="clear:both;" cellspacing="0" cellpadding="0">
+<table class="main" style="clear:both;" cellspacing="0" cellpadding="0">
 <tr>
 <?php if ( $WEEK_START == 0 ) { ?>
 <th><?php etranslate("Sun")?></th>
