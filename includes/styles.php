@@ -599,6 +599,20 @@ table.weekdetails {
 	width: 90%;
 	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 }
+.weekdetails th {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	width: 100%;
+}
+.weekdetails th a {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+}
 .weekdetails th.today {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	font-size: 14px;
@@ -607,6 +621,11 @@ table.weekdetails {
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
+}
+.weekdetails th.today a {
+	font-family: <?php echo $GLOBALS['FONTS'] ?>;
+	font-size: 14px;
+	color: <?php echo ( $GLOBALS['TABLECELLFG'] == "" ? "#000000" : $GLOBALS['TABLECELLFG'] ); ?>;
 }
 .weekdetails th.weekend {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
@@ -617,16 +636,17 @@ table.weekdetails {
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 }
-.weekdetails th {
+.weekdetails th.weekend a {
 	font-family: <?php echo $GLOBALS['FONTS'] ?>;
 	font-size: 14px;
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
-	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	width: 100%;
 }
-,weekdetails td.today {
+.weekdetails td {
+	background-color: <?php echo $GLOBALS['CELLBG'] ?>;
+	vertical-align: top;
+	height: 75px;
+}
+.weekdetails td.today {
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
 	vertical-align: top;
 	height: 75px;
@@ -636,12 +656,6 @@ table.weekdetails {
 	vertical-align: top;
 	height: 75px;
 }
-,weekdetails td {
-	background-color: <?php echo $GLOBALS['CELLBG'] ?>;
-	vertical-align: top;
-	height: 75px;
-}
-
 
 /* ================== */
 /* MISC. */
