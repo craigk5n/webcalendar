@@ -118,7 +118,7 @@ if ( $id > 0 && empty ( $error ) ) {
           translate("An appointment has been canceled for you by") .
           " " . $login_fullname .  ". " .
           translate("The subject was") . " \"" . $name . "\"\n" .
-          translate("Date") . ": " . date_to_str ($eventdate) . "\n";
+          translate("Date") . ": " . date_to_str ($thisdate) . "\n";
           if ( $eventtime != '-1' ) $msg .= translate("Time") . ": " . display_time ($eventtime);
           $msg .= "\n\n";
         if ( strlen ( $login_email ) )
