@@ -13,8 +13,8 @@
 # user and go to the System Settings page (admin.php) to change system
 # settings.
 #
-# For ODBC use, set the db_host value set to ignore4odbc
-# unless you specifically need to change it
+# For ODBC use, ignore the db_host value and set 
+# db_database to your full DSN
 ##########################################################
 
 # database settings see notes above
