@@ -948,7 +948,7 @@ function overlap($dates,$duration,$hour,$minute,$participants,$login,$id) {
   $sql .= " )";
   // make sure we don't get something past the end date of the
   // event we are saving.
-  echo "SQL: $sql<P>";
+  //echo "SQL: $sql<P>";
   $overlap = "";
   $res = dbi_query ( $sql );
   $found = array();
