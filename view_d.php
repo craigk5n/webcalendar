@@ -105,7 +105,6 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 <span class="viewname"><?php echo $view_name; ?></span>
 </div></div>
 
-<center>
 <?php
 daily_matrix($date,$participants);
 ?>
@@ -118,7 +117,6 @@ daily_matrix($date,$participants);
 <input type="hidden" name="hour" value="" />
 <input type="hidden" name="minute" value="" />
 </form>
-</center>
 
 <?php
 echo "<br /><a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_d.php?id=$id&amp;";
