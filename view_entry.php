@@ -129,8 +129,7 @@ if ( $ext_id > 0 ) {
   do_redirect ( $url );
 }
 
-$INC = array('js/view_entry.php');
-print_header($INC);
+print_header();
 
 if ( $id < 1 ) {
   echo translate("Invalid entry id") . ".";
@@ -762,7 +761,7 @@ if ( $show_log ) {
 
 if (! $is_private) {
   echo "<br>\n";
-  echo "<form method=\"post\" name=\"exportform\">\n";
+  echo "<form method=\"post\" name=\"exportform\" action=\"export_handler.php\">\n";
   echo "<b>";
   etranslate("Export this entry to");
   echo ":</b>\n";
@@ -777,9 +776,9 @@ if (! $is_private) {
   echo ")\n";
   echo "</select>\n";
   echo "<input type=\"hidden\" name=\"id\" value=\"$id\">\n";
-  echo "<input type=\"button\" value=\"";
+  echo "<input type=\"submit\" value=\"";
   etranslate("Export");
-  echo "\" onClick=form_submit(this.form)>\n";
+  echo "\" >\n";
   echo "</form>\n";
 }
 
