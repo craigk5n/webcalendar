@@ -540,8 +540,7 @@ if ( empty ( $error ) ) {
         $sql = "INSERT INTO webcal_site_extras " .
           "( cal_id, cal_name, cal_type, cal_data ) VALUES ( " .
           "$id, '$extra_name', $extra_type, '$value' )";
-      } else if ( $extra_type == $EXTRA_REMINDER ) {
-        $remind = ( $value == "1" ? 1 : 0 );
+      } else if ( $extra_type == $EXTRA_REMINDER && $value == "1" ) {
         if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
           $yname = $extra_name . "year";
           $mname = $extra_name . "month";
@@ -549,7 +548,7 @@ if ( empty ( $error ) ) {
           $edate = sprintf ( "%04d%02d%02d", $$yname, $$mname, $$dname );
           $sql = "INSERT INTO webcal_site_extras " .
             "( cal_id, cal_name, cal_type, cal_remind, cal_date ) VALUES ( " .
-            "$id, '$extra_name', $extra_type, $remind, $edate )";
+            "$id, '$extra_name', $extra_type, 1, $edate )";
         } else if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
           $dname = $extra_name . "_days";
           $hname = $extra_name . "_hours";
