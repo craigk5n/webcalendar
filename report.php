@@ -1,5 +1,4 @@
 <?php
-
 /*
  * $Id$
  *
@@ -298,10 +297,6 @@ if ( empty ( $error ) && empty ( $list ) ) {
     $error = translate ( "Database error" ) . ": " . dbi_error ();
   }
 }
-
-?>
-
-<?php
 
 if ( ! empty ( $report_include_header ) && $report_include_header == 'Y' ||
   ! empty ( $list ) || ! empty ( $error ) )
