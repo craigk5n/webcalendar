@@ -57,8 +57,10 @@ function print_user_list () {
       $size = 15;
     else if ( $size > 5 )
       $size = 5;
-    print "<tr><td style=\"vertical-align:top;\"><label for=\"caluser\">" . translate("Calendar") . "</label></td>\n";
-    print "<td><select name=\"calUser\" id=\"caluser\" size=\"$size\">$users\n";
+    print "<tr><td style=\"vertical-align:top;\">\n";
+    print "<label for=\"caluser\">" . 
+    	translate("Calendar") . "</label></td><td>\n";
+    print "<select name=\"calUser\" id=\"caluser\" size=\"$size\">$users\n";
     print "</select>\n";
     print "</td></tr>\n";
   }
@@ -79,20 +81,19 @@ function print_user_list () {
 	<a name="tabimport"></a>
 	<div id="tabscontent_import">
 	<form action="import_handler.php" method="post" name="importform" enctype="multipart/form-data">
-<form action="export_handler.php" method="post" name="exportform">
 <table style="border-width:0px;">
 <tr><td>
 	<label for="importtype"><?php etranslate("Import format")?>:</label></td><td>
-		<select name="ImportType">
-			<option value="PALMDESKTOP">Palm Desktop < v4.1.1</option>
+		<select name="ImportType" id="importtype">
+			<option value="PALMDESKTOP">Palm Desktop &lt; v4.1.1</option>
 			<option value="vcal">vCal</option>
 			<option value="ICAL">iCal</option>
 		</select>
 </td></tr>
 <tr id="palm"><td>
 	<label><?php etranslate("Exclude private records")?>:</label></td><td>
-	<label><input type="radio" name="exc_private" value="1" checked="checked" />&nbsp;<?php etranslate("Yes")?></label> 
-	<label><input type="radio" name="exc_private" value="0" />&nbsp;<?php etranslate("No")?></label>
+	<label><input type="radio" name="exc_private" value="1" checked="checked" /><?php etranslate("Yes")?></label> 
+	<label><input type="radio" name="exc_private" value="0" /><?php etranslate("No")?></label>
 </td></tr>
 <!-- /PALM -->
 
@@ -104,8 +105,8 @@ function print_user_list () {
 <!-- /IVCAL -->
 
 <tr class="browse"><td>
-	<label>Upload file:</label></td><td>
-	<input type="file" name="FileName" size="45" maxlength="50" />
+	<label for="fileupload">Upload file:</label></td><td>
+	<input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
 </td></tr>
 
 <?php print_user_list(); ?>
