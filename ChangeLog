@@ -1,4 +1,10 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Updating functions.php to partially implement new styling system for
+  viewt.php
+  - Updating styles.php with more comments (encapsulated in php tags so
+  they're stripped in processing) & removing old classes
+  - Removing blanks lines at the end of js.php & site_extras.php
+  - Updating admin docs with more efficient CSS & HTML
   - Converting year.php to new style system & adding comments for new minicals
   - Converting viewt.php over to new style system & fixing a couple odd
   rendering issues
