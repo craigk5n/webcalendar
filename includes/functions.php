@@ -3032,12 +3032,14 @@ function print_header_timebar($start_hour, $end_hour) {
 }
 
 // Get a list of nonuser calendars and return info in an array.
-function get_nonuser_cals () {
+function get_nonuser_cals ($user = '') {
   $count = 0;
   $ret = array ();
-  $res = dbi_query ( "SELECT cal_login, cal_lastname, cal_firstname, " .
-    "cal_admin FROM webcal_nonuser_cals " .
-    "ORDER BY cal_lastname, cal_firstname, cal_login" );
+  $sql = "SELECT cal_login, cal_lastname, cal_firstname, " .
+    "cal_admin FROM webcal_nonuser_cals ";
+  if ($user != '') $sql .= "WHERE cal_admin = '$user' ";
+  $sql .= "ORDER BY cal_lastname, cal_firstname, cal_login";
+  $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( strlen ( $row[1] ) || strlen ( $row[2] ) )

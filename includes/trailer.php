@@ -254,18 +254,22 @@
       echo " | <A CLASS=\"navlinks\" HREF=\"edit_user.php\">" .
         translate ("Account") . "</A>\n";
     }
-    echo " | <A CLASS=\"navlinks\" HREF=\"assistant_edit.php\">" .
+    $url = "assistant_edit.php";
+    if ($is_nonuser_admin) $url .= "?user=$user";
+    echo " | <A CLASS=\"navlinks\" HREF=\"$url\">" .
       translate ("Assistants") . "</A>\n";
     if ( strlen ( $login ) && $login != "__public__" ) {
       echo "<BR><B>" . translate("Current User") . ":</B>$fullname<BR>\n";
     }
 
   }
-  if ( $has_boss ) {
-    echo "<B>"; 
-    etranslate("Manage calendar of"); 
+  $admincals = get_nonuser_cals ($login);
+  if ( $has_boss || $admincals[0] ) {
+    echo "<B>";
+    etranslate("Manage calendar of");
     echo "</B>: ";
     $grouplist = user_get_boss_list ($login);
+    $grouplist = array_merge($admincals,$grouplist);
     $groups = "";
     for ( $i = 0; $i < count ( $grouplist ); $i++ ) {
       $l = $grouplist[$i]['cal_login'];
