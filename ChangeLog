@@ -31,6 +31,7 @@ Verion 0.9.42-devcvs (?? ??? 2003)
     when viewing non-user calendar in month view.
   - Fixed some of the undefined variable warnings
   - Fixed bug 755709: parse error in search_handler.php
+  - Added Holo (Taiwanese) translation
 Verion 0.9.41 (16 Jun 2003)
   - Fixed bug 755178: "Public User" not being translated
   - Fixed bug 652871: Don't display assistant link in trailer if read-only

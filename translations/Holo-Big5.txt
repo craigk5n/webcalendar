@@ -1,0 +1,1237 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Translated by:  Henry H. Tan-Tenn <share2002nov@lomaji.com>
+# Translation last updated on 06-06-2003
+
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: Big5
+
+###############################################
+# Page: admin.php
+#
+#
+# << MISSING >>
+# Server URL is required:
+#
+# << MISSING >>
+# Server URL must end with '/':
+Invalid color for document background: Invalid color for document background
+Invalid color for document title: Invalid color for document title
+Invalid color for table cell background: Invalid color for table cell background
+#
+# << MISSING >>
+# Invalid color for table grid:
+#
+# << MISSING >>
+# Invalid color for table header background:
+#
+# << MISSING >>
+# Invalid color for table text background:
+#
+# << MISSING >>
+# Invalid color for event popup background:
+#
+# << MISSING >>
+# Invalid color for event popup text:
+Invalid color for table cell background for today: Invalid color for table cell background for today
+Color format should be '#RRGGBB': Color format should be '#RRGGBB'
+#
+System Settings:系統設定
+You are not authorized: 您未經授權
+#
+# << MISSING >>
+# Note:
+#
+# << MISSING >>
+# Your user preferences:
+#
+# << MISSING >>
+# may be affecting the appearance of this page.:
+#
+# << MISSING >>
+# Click here:
+#
+# << MISSING >>
+# to not use your user preferences when viewing this page:
+#
+# << MISSING >>
+# are being ignored while viewing this page.:
+#
+# << MISSING >>
+# to load your user preferences when viewing this page:
+Save: 儲存
+Help: 說明
+Settings: 設定中
+#
+# << MISSING >>
+# app-name-help:
+# English text: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
+#
+#
+# << MISSING >>
+# Application Name:
+#
+# << MISSING >>
+# server-url-help:
+# English text: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
+#
+#
+# << MISSING >>
+# Server URL:
+language-help: Specifies which language to use.
+Language: 語系
+Your browser default language is: 你 e 瀏覽器預設 e 語系是
+#
+# << MISSING >>
+# fonts-help:
+# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+#
+#
+Fonts:字型
+preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
+Preferred view: 檢視選擇
+Day: 日
+Week: 週
+Month: 月
+Year: 年
+#
+# << MISSING >>
+# display-weekends-help:
+# English text: Include weekends when viewing a week.
+#
+#
+# << MISSING >>
+# Display weekends in week view:
+Yes: 好
+No: Mai
+#
+# << MISSING >>
+# date-format-help:
+# English text: Specifies the preferred date format.
+#
+#
+# << MISSING >>
+# Date format:
+December: 12月
+time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
+Time format: 時間格式
+12 hour: 12時制
+24 hour: 24時制
+#
+# << MISSING >>
+# time-interval-help:
+# English text: Specifies how long the time blocks in the week view and day view will be.
+#
+#
+# << MISSING >>
+# Time interval:
+#
+# << MISSING >>
+# hour:
+minutes: 分鐘
+#
+# << MISSING >>
+# auto-refresh-help:
+# English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
+#
+#
+# << MISSING >>
+# Auto-refresh calendars:
+#
+# << MISSING >>
+# auto-refresh-time-help:
+# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
+#
+#
+# << MISSING >>
+# Auto-refresh time:
+#
+# << MISSING >>
+# require-approvals-help:
+# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
+#
+#
+# << MISSING >>
+# Require event approvals:
+display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<BR> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<BR> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
+Display unapproved: 顯示未核准 e 
+display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month view and the week view.
+Display week number: 顯示週數(以年計算)
+display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
+Week starts on: 每週開始於
+Sunday: 禮拜日
+Monday: 拜一
+work-hours-help: Specifies the time range to display for the day view.
+Work hours: 月曆可顯示之工作時間
+From: 自
+to: 至
+#
+# << MISSING >>
+# disable-priority-field-help:
+# English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Priority field:
+#
+# << MISSING >>
+# disable-access-field-help:
+# English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Access field:
+#
+# << MISSING >>
+# disable-participants-field-help:
+# English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
+#
+#
+# << MISSING >>
+# Disable Participants field:
+#
+# << MISSING >>
+# disable-repeating-field-help:
+# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
+#
+#
+# << MISSING >>
+# Disable Repeating field:
+#
+# << MISSING >>
+# allow-view-other-help:
+# English text: Specifies whether one user may view another user's calendar.
+#
+#
+# << MISSING >>
+# Allow viewing other user's calendars:
+#
+# << MISSING >>
+# allow-public-access-help:
+# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
+#
+#
+Allow public access:允準公眾 access
+#
+# << MISSING >>
+# public-access-view-others-help:
+# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
+#
+#
+# << MISSING >>
+# Public access can view other users:
+#
+# << MISSING >>
+# public-access-can-add-help:
+# English text: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
+#
+#
+# << MISSING >>
+# Public access can add events:
+#
+# << MISSING >>
+# public-access-add-requires-approval-help:
+# English text: Specifies whether events added via the public access account require approval before being displayed.
+#
+#
+# << MISSING >>
+# Public access new events require approval:
+# English text: Public access new events require approval:
+#
+#
+# << MISSING >>
+# allow-view-add-help:
+# English text: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+#
+#
+# << MISSING >>
+# Include add event link in views:
+#
+# << MISSING >>
+# allow-external-users-help:
+# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+#
+#
+# << MISSING >>
+# Allow external users:
+#
+# << MISSING >>
+# external-can-receive-notification-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email notifications:
+#
+# << MISSING >>
+# external-can-receive-reminder-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email reminders:
+#
+# << MISSING >>
+# remember-last-login-help:
+# English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
+#
+#
+# << MISSING >>
+# Remember last login:
+#
+# << MISSING >>
+# conflict-check-help:
+# English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
+#
+#
+# << MISSING >>
+# Check for event conflicts:
+#
+# << MISSING >>
+# conflict-months-help:
+# English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
+#
+#
+# << MISSING >>
+# Conflict checking months:
+#
+# << MISSING >>
+# conflict-check-override-help:
+# English text: Allows users to override event conflicts and schedule two or more events for the same time.
+#
+#
+# << MISSING >>
+# Allow users to override conflicts:
+#
+# << MISSING >>
+# limit-appts-help:
+# English text: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
+#
+#
+# << MISSING >>
+# Limit number of timed events per day:
+#
+# << MISSING >>
+# limit-appts-number-help:
+# English text: Specifies the maximum number of timed events a user can have in a single day.
+#
+#
+# << MISSING >>
+# Maximum timed events per day:
+#
+# << MISSING >>
+# Plugins:
+#
+# << MISSING >>
+# plugins-enabled-help:
+# English text: Enable plugin applications.
+#
+#
+# << MISSING >>
+# Enable Plugins:
+#
+# << MISSING >>
+# plugins-sort-key-help:
+# English text: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
+#
+#
+# << MISSING >>
+# Plugin:
+#
+# << MISSING >>
+# Groups:
+#
+# << MISSING >>
+# groups-enabled-help:
+# English text: Enables group support, allowing users to select users by groups.
+#
+#
+# << MISSING >>
+# Groups enabled:
+#
+# << MISSING >>
+# user-sees-his-group-help:
+# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
+#
+#
+# << MISSING >>
+# User sees only his groups:
+#
+Categories:類別
+#
+# << MISSING >>
+# categories-enabled-help:
+# English text: Enables support for event categories.
+#
+#
+Categories enabled:啟用類別
+#
+# << MISSING >>
+# Email:
+#
+# << MISSING >>
+# email-enabled-help:
+# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
+#
+#
+# << MISSING >>
+# Email enabled:
+#
+# << MISSING >>
+# email-default-sender:
+# English text: Specifies the email address to specify as the sender when sending out reminders.
+#
+#
+# << MISSING >>
+# Default sender address:
+#
+# << MISSING >>
+# Default user settings:
+#
+# << MISSING >>
+# email-event-reminders-help:
+# English text: Specifies whether or not to send event reminders.
+#
+#
+# << MISSING >>
+# Event reminders:
+#
+# << MISSING >>
+# email-event-added:
+# English text: Specifies whether or not to send email notifications when an event is added to your calendar.
+#
+#
+# << MISSING >>
+# Events added to my calendar:
+#
+# << MISSING >>
+# email-event-updated:
+# English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
+#
+#
+# << MISSING >>
+# Events updated on my calendar:
+#
+# << MISSING >>
+# email-event-deleted:
+# English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
+#
+#
+# << MISSING >>
+# Events removed from my calendar:
+#
+# << MISSING >>
+# email-event-rejected:
+# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
+#
+#
+# << MISSING >>
+# Event rejected by participant:
+colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
+Colors: 顏色
+#
+# << MISSING >>
+# Allow user to customize colors:
+Document background: 文件背景
+Select: 選擇
+Document title: 文件標題
+#
+# << MISSING >>
+# Document text:
+#
+# << MISSING >>
+# Table grid color:
+#
+# << MISSING >>
+# Table header background:
+#
+# << MISSING >>
+# Table header text:
+Table cell background: 表格背景
+Table cell background for current day: 當日顏色
+#
+# << MISSING >>
+# Table cell background for weekends:
+#
+# << MISSING >>
+# Event popup background:
+#
+# << MISSING >>
+# Event popup text:
+
+
+###############################################
+# Page: activity_log.php
+#
+#
+Activity Log:使用紀錄
+User: 使用者
+Calendar:行事曆
+Date: 日期
+Time: 時間
+Event:活動
+Action:行動
+Event created:活動註冊
+Event approved:活動確認過
+Event rejected:活動被拒絕
+Event updated:活動更新
+Event deleted:活動被刪除
+Notification sent:通知函送出去
+Reminder sent:提醒函送出去
+Database error:資料庫錯誤
+Next:後一個
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: 無效 e 記事 id
+This is a private event and may not be added to your calendar.: 這是私人 e 活動，無通加入你 e 行事曆。
+Error adding event: 記事加入發生錯誤
+
+
+###############################################
+# Page: admin_handler.php
+#
+Error: 錯誤
+The following error occurred: 發生以下 e 錯誤
+
+
+###############################################
+# Page: approve_entry.php
+#
+Error approving event: Error approving event
+
+
+###############################################
+# Page: category.php
+#
+#
+Add:增加
+Category Name:類別名稱
+Global:歸個系統
+Delete: 刪除
+Are you sure you want to delete this entry?: 你敢確定 beh 刪除這個記事？
+Add New Category:增加新類別
+
+
+###############################################
+# Page: category_handler.php
+#
+
+
+###############################################
+# Page: colors.php
+#
+
+
+###############################################
+# Page: datesel.php
+#
+#
+Previous:前一個
+
+
+###############################################
+# Page: day.php
+#
+#
+Assistant mode:助理模式
+Generate printer-friendly version: Generate printer-friendly version
+Printer Friendly: 友善列印
+
+
+###############################################
+# Page: del_entry.php
+#
+Hello: 你好
+An appointment has been canceled for you by: 約會已經被取消，取消者是
+The subject was: 主題是
+Notification: 通告
+
+
+###############################################
+# Page: del_layer.php
+#
+
+
+###############################################
+# Page: edit_entry.php
+#
+You have not entered a Brief Description: 你無輸入概要描述
+You have not entered a valid time of day: 你無輸入正確 e 時間
+The time you have entered begins before your preferred work hours.  Is this correct?: 這個時段無佇你自定 e 工作時間內。 這敢是正確 e ?
+Edit Entry: 編輯記事
+Add Entry: 註冊記事
+brief-description-help: 佇遮簡單描述這個活動（約略二十字以內）。佇行事曆面頂是用這代表這個活動。
+Brief Description: 概要描述
+full-description-help: 活動 e 詳細說明。用者檢視活動內涵 e 時陣，會看著這部分。
+Full Description: 完整描述
+date-help: 活動舉辦 e 日期。
+time-help: 活動舉辦 e 時間。<BR><I>這項會使免添。</I>
+am: 上午
+pm: 下晡
+Untimed event:無定時間 e 活動
+Timed event:有定時間 e 活動
+All day event:歸工 e 活動
+duration-help: 活動前後 e 長度（按分鐘算）。<BR><I>這項會使免添。</I>
+Duration: 持續時間
+hours: 點鐘
+priority-help: 活動 e 優先等級。高等級 e 活動會用粗體字型特別表示。
+Priority: 優先等級
+Low: 低
+Medium: 中
+High: 高
+access-help: 活動 e 顯示設定。<BR> <I>公眾 e </I>: 所有人都看會著活動 e 詳細資料。<BR><I>機密 e </I>: 別人看會著你佇某日某時陣有活動記事，但是看 be 著詳細資料。
+Access: 顯示設定
+Public: 公眾 e 
+Confidential: 機密 e 
+category-help:活動 e 類別。
+Category:類別
+days:工
+before event:（佇活動開始以前）
+participants-help: 列出這項記事 e 參與者。
+Participants: 參與者
+external-participants-help:非行事曆用者 e 本活動參與者名單。一 choa 應該列一位，會使包括電子郵便住址。有列住址 e 參與者通收著通知函及提醒函。
+External Participants:外面參與者
+repeat-type-help: 選擇活動重複 e 週期性。<I>「按月」 (按拜幾算)</I>表示設定活動佇月 e （舉例）第一個拜一重複、第三個拜四重複...等等。<I>「按月」 (按日期算)</I> 表示設定活動佇月 e 共一日重複。
+Repeat Type: 週期性
+None: 無
+Daily: 逐工
+Weekly: 按週
+Monthly: 按月
+by day: 按拜幾算
+by date: 按日期算
+Yearly: 按年
+repeat-end-date-help: 活動週期結束 e 日期。
+Repeat End Date: 週期結束日期
+Use end date: 使用結束日期設定
+repeat-day-help: 活動拜幾重複。這干單<I>週期性</I>設定<I>「按週」</I>才需要。
+Repeat Day: 重複於
+for weekly: 每週 e 
+Tuesday: 拜二
+Wednesday: 拜三
+Thursday: 拜四
+Friday: 拜五
+Saturday: 拜六
+repeat-frequency-help: 活動重複 e 頻率。設定「1」表示按時重複，「2」表示活動每兩禮拜 (假使<I>週期性</I>設定<I>「按週」</I>)、每兩個月 (假使<I>週期性</I> 設定<I>「按月」</I>) ...等等，會重複。
+Frequency: 頻率
+Delete entry: 刪除記事
+You are not authorized to edit this entry: 你無權利編輯這項記事
+
+
+###############################################
+# Page: edit_entry_handler.php
+#
+The following conflicts with the suggested time: The following conflicts with the suggested time
+Unnamed Event: Unnamed Event
+#
+# << MISSING >>
+# The description is:
+Title: 網路行事曆
+A new appointment has been made for you by: 你有一個新約會，邀請者是
+#
+# << MISSING >>
+# An appointment has been updated by:
+The subject is: 主題是
+Please look on: 請查看
+to accept or reject this appointment: 決定接受或拒絕這個約會
+to view this appointment: to view this appointment
+Scheduling Conflict: Scheduling Conflict
+Your suggested time of: Your suggested time of
+conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
+Cancel:取消
+
+
+###############################################
+# Page: edit_layer.php
+#
+Invalid color: 無效 e 色緻
+Edit Layer: 編輯階層
+Add Layer: 新增階層
+Source: 來源
+Color: 色緻
+Duplicates: 副本
+Show layer events that are the same as your own: Show layer events that are the same as your own
+Are you sure you want to delete this layer?: 你敢確定 beh 刪除這個階層？
+Delete layer: 刪除階層
+
+
+###############################################
+# Page: edit_layer_handler.php
+#
+#
+# << MISSING >>
+# You cannot create a layer for yourself:
+#
+# << MISSING >>
+# You can only create one layer for each user:
+
+
+###############################################
+# Page: edit_user.php
+#
+Edit User: 編輯使用者資料
+Add User: 新增使用者
+Username: 使用者名稱
+First Name: 姓
+Last Name: 名
+E-mail address: 電子郵件地址
+Password: 密碼
+again: 閣一擺
+Admin: 管理
+Disabled for demo: Disabled for demo
+Change Password: 變更密碼
+New Password: 新 e 密碼
+Set Password: 設定密碼
+
+
+###############################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported:無支援刪除使用者
+The passwords were not identical: 密碼無對
+You have not entered a password: 你無輸入密碼
+
+
+###############################################
+# Page: export.php
+#
+Export: 輸出
+Export format: 輸出格式
+Palm Pilot: Palm Pilot
+Export all dates: 輸出所有資料
+Start date: 開始日期
+End date: 結束日期
+Modified since: 更改自
+
+
+###############################################
+# Page: export_handler.php
+#
+
+
+###############################################
+# Page: group_edit.php
+#
+Unnamed Group:無號名 e 使用陣
+Add Group:增加使用陣
+Edit Group:編輯使用陣
+Group name:使用陣名稱
+Updated: 更新
+Created by: 公布者
+Users: 使用者
+
+
+###############################################
+# Page: group_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a group name:
+
+
+###############################################
+# Page: groups.php
+#
+#
+# << MISSING >>
+# Add New Group:
+
+
+###############################################
+# Page: help_admin.php
+#
+
+
+###############################################
+# Page: pref.php
+#
+Preferences: 參數設定
+#
+# << MISSING >>
+# to modify the preferences for the Public Access calendar:
+#
+# << MISSING >>
+# tz-help:
+# English text: Specifies how many hours to adjust the time from server time to local time.
+#
+#
+# << MISSING >>
+# Timezone Offset:
+#
+# << MISSING >>
+# Add N hours to:
+#
+# << MISSING >>
+# Subtract N hours from:
+#
+# << MISSING >>
+# same as:
+#
+# << MISSING >>
+# server time:
+#
+# << MISSING >>
+# Default Category:
+Sun: 禮拜
+Mon: 拜一
+Tue: 拜二
+Wed: 拜三
+Thu: 拜四
+Fri: 拜五
+Sat: 拜六
+Save Preferences: 儲存參數
+
+
+###############################################
+# Page: help_bug.php
+#
+Report Bug:提報 bug
+
+
+###############################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: 註冊/編輯 行事曆項目
+
+
+###############################################
+# Page: help_about.html
+#
+About This Calendar: 關係本日月拆
+
+
+
+###############################################
+# Page: help_index.php
+#
+Help Index: 輔助索引
+Layers: 階層架構
+
+
+###############################################
+# Page: help_layers.php
+#
+#
+# << MISSING >>
+# Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
+#
+# << MISSING >>
+# Add/Edit/Delete:
+#
+# << MISSING >>
+# Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
+#
+# << MISSING >>
+# Specifies the user that you would like to see displayed in your calendar.:
+#
+# << MISSING >>
+# The text color of the new layer that will be displayed in your calendar.:
+#
+# << MISSING >>
+# If checked, events that are duplicates of your events will be shown.:
+#
+# << MISSING >>
+# Disabling:
+#
+# << MISSING >>
+# Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
+#
+# << MISSING >>
+# Enabling:
+#
+# << MISSING >>
+# Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
+
+
+###############################################
+# Page: help_pref.php
+#
+#
+# << MISSING >>
+# default-category-help:
+# English text: Specifies the category a new event should default to.
+#
+
+
+###############################################
+# Page: week.php
+#
+#
+# << MISSING >>
+# cont.:
+
+
+###############################################
+# Page: index.php
+#
+
+
+###############################################
+# Page: layers.php
+#
+#
+# << MISSING >>
+# to modify the layers settings for the:
+Layers are currently: 階層架構目前是
+Enabled: 啟用 e 
+Disabled: 停用 e 
+Disable Layers: 停用階層架構
+Enable Layers: 啟用階層架構
+Layer: 階層
+Edit layer: 編輯階層
+Add layer: 新增階層
+
+
+###############################################
+# Page: layers_toggle.php
+#
+
+
+###############################################
+# Page: list_unapproved.php
+#
+View this entry: 檢視這個記事
+Approve this entry?: 核准這個記事?
+Approve/Confirm: 核准/確定
+Reject this entry?: 拒絕這個記事?
+Reject: 拒絕
+#
+# << MISSING >>
+# No unapproved events for:無未核准 e 活動
+Unapproved Events: 未核准 e 活動
+Public Access:公眾入口
+
+
+###############################################
+# Page: login.php
+#
+You must enter a login and password: 你著輸入用者名稱及密碼
+Save login via cookies so I don't have to login next time: 將登入資料儲存佇 cookies 中，後擺就免重登入。
+Login: 登入
+Access public calendar:入去公眾行事曆
+cookies-note: <B>注意:</B> 本程式須要 cookies 才會得使用。
+
+
+###############################################
+# Page: view_v.php
+#
+
+
+###############################################
+# Page: month.php
+#
+
+
+###############################################
+# Page: pref_handler.php
+#
+
+
+###############################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: 約會已經被拒絕，拒絕者是
+
+
+###############################################
+# Page: search.php
+#
+Search: 檢索
+Advanced Search:高等檢索
+Keywords: 關鍵字
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: 你至少著輸入一個檢索關鍵字
+Search Results: 檢索結果
+match found: 筆符合查詢
+matches found: 筆符合查詢
+No matches found: 查無資料
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: 檢視其他人 e 月曆
+Go: 來去
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+ You have not added any categories:你並無加任何類別
+Set Category:設定類別
+
+
+###############################################
+# Page: users.php
+#
+denotes administrative user: 使用者管理員
+Add New User: 新增使用者
+
+
+###############################################
+# Page: usersel.php
+#
+#
+All:全部
+#
+# << MISSING >>
+# Reset:
+#
+# << MISSING >>
+# Remove:
+#
+# << MISSING >>
+# Ok:
+
+
+###############################################
+# Page: view_entry.php
+#
+#
+every:每
+1st:第一
+2nd:第二
+3rd:第三
+4th:第四
+5th:第五
+Description: 描述
+Status:狀態
+Waiting for approval:等待核准
+Deleted:已經刪除
+Rejected: 已經被拒絕
+External User:外面用者
+Approve/Confirm entry: 核准/確定 記事
+Reject entry: 拒絕記事
+Set category:設定類別
+Edit repeating entry for all dates:編輯所有日期 e 重複記事
+Edit entry for this date:編輯這個日期 e 記事
+This will delete this entry for all users.: 這會對所有用者刪除這項記事。
+Delete repeating event for all dates:刪除重複 e 活動（所有日期）
+Delete entry only for this date:干單刪除這個日期 e 記事
+Edit entry: 編輯記事
+This will delete the entry from your calendar.: 這將會從你 e 行事曆刪除這個記事。
+Do you want to add this entry to your calendar?: 你要新增這個記事到你 e 行事曆嗎？
+This will add the entry to your calendar.: 這將會新增這個記事到你 e 行事曆。
+Add to My Calendar: 新增到我 e 行事曆
+Email all participants:Email 所有參與者
+Show activity log:顯示使用紀錄
+Hide activity log:暗蓋使用紀錄
+
+
+###############################################
+# Page: view_m.php
+#
+
+
+###############################################
+# Page: view_w.php
+#
+
+
+###############################################
+# Page: views.php
+#
+#
+Views:檢視
+Add New View:增加新檢視
+
+
+###############################################
+# Page: views_edit.php
+#
+#
+Unnamed View:無名稱 e 檢視
+Add View:增加檢視
+Edit View:編輯檢視
+View Name:檢視名稱
+View Type:檢視類
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+You must specify a view name:你必須要註明檢視 e 名稱
+
+
+###############################################
+# Page: week_details.php
+#
+New Entry: 新 e 記事
+Private: 私人 e 
+
+
+###############################################
+# Page: week_ssi.php
+#
+
+
+###############################################
+# Page: year.php
+#
+
+
+###############################################
+# Page: assistant_edit.php
+#
+#
+Yours assistants:你 e 助理
+Assistants:助理
+
+
+###############################################
+# Page: assistant_edit_handler.php
+#
+
+
+###############################################
+# Page: purge.php
+#
+
+
+###############################################
+# Page: includes/trailer.php
+#
+Go to: 功能選擇
+Back to My Calendar: 轉去我 e 行事曆
+My Calendar: 我 e 行事曆
+Logout: 登出
+Another User's Calendar: 別人 e 行事曆
+Add New Entry: 註冊記事
+Manage Views:管理檢視
+Edit Layers: 編輯階層架構
+Account: 編輯個人資料
+Current User: 目前使用者
+#AKC hack
+Home:頭前門
+#
+# << MISSING >>
+# Manage calendar of:
+
+
+###############################################
+# Page: includes/connect.php
+#
+
+
+###############################################
+# Page: includes/functions.php
+#
+This event is confidential: 這個記事是機密 e 
+exceeds limit of XXX events per day:超出一工 XXX 項活動 e 限制
+You have XXX unapproved events: 你有 XXX 未核准 e 記事
+January: 1月
+February: 2月
+March: 3月
+April: 4月
+May_: 5月
+June: 6月
+July: 7月
+August: 8月
+September: 9月
+October: 10月
+November: 11月
+Jan: 1月
+Feb: 2月
+Mar: 3月
+Apr: 4月
+May: 5月
+Jun: 6月
+Jul: 7月
+Aug: 8月
+Sep: 9月
+Oct: 10月
+Nov: 11月
+Dec: 12月
+
+
+###############################################
+# Page: includes/user.php
+#
+#
+# << MISSING >>
+# Invalid login:
+#
+# Invalid user login:無效 e 用者登入
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+#
+
+
+###############################################
+# Page: includes/translate.php
+#
+
+
+###############################################
+# Page: includes/validate.php
+#
+
+
+###############################################
+# Page: includes/user-ldap.php
+#
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+
+
+###############################################
+# Page: includes/help_trailer.php
+#
+
+
+###############################################
+# Page: includes/config.php
+#
+
+
+###############################################
+# Page: includes/index.php
+#
+
+
+###############################################
+# Page: includes/js.php
+#
+
+
+###############################################
+# Page: includes/php-dbi.php
+#
+
+
+###############################################
+# Page: includes/styles.php
+#
+
+
+###############################################
+# Page: includes/dbtable.php
+#
+
+
+###############################################
+# Page: tools/send_reminders.php
+#
+#
+# << MISSING >>
+# This is a reminder for the event detailed below.:
+#
+# << MISSING >>
+# Reminder:
