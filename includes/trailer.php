@@ -197,9 +197,11 @@
       echo "\">" . translate("Add New Entry") . "</A>";
     }
   }
-  echo " | <A CLASS=\"navlinks\" HREF=\"#\" ONCLICK=\"window.open ( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );\" " .
-    "ONMOUSEOVER=\"window.status='" . translate("Help") . "'\">" .
-    translate("Help") . "</A>";
+  if ( $login != '__public__' ) {
+    echo " | <A CLASS=\"navlinks\" HREF=\"#\" ONCLICK=\"window.open ( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );\" " .
+      "ONMOUSEOVER=\"window.status='" . translate("Help") . "'\">" .
+      translate("Help") . "</A>";
+  }
 ?>
 <BR>
 <?php if ( ( $login != "__public__" ) &&
