@@ -1,4 +1,8 @@
 Version 0.9.32dev (?? ??? 01)
+  - Fixed bug 441688: MySQL does case-insensitive searches, which allows
+    a user named 'cknudsen' to login with 'CKnudsen', which causes
+    problems.  Now, users can only login with correct case-sensitive
+    login.
   - Fixed bug: when view a non-repeating event, some of the
     text for repeating events ("every") would be displayed next
     to the event date.

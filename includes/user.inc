@@ -35,7 +35,12 @@ function user_valid_login ( $login, $password ) {
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row && $row[0] != "" ) {
-      $ret = true; // found login/password
+      // MySQL seems to do case insensitive matching, so double-check
+      // the login.
+      if ( $row[0] == $login )
+        $ret = true; // found login/password
+      else
+        $error = translate ("Invalid login");
     } else {
       $error = translate ("Invalid login");
     }
