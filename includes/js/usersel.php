@@ -10,7 +10,7 @@
 <!-- <![CDATA[
 function OkButton () {
   var parentlist = window.opener.document.<?php echo $form?>.elements[<?php echo $listid?>];
-  var thislist = document.forms[0].elements[0];
+  var thislist = document.userselform.elements[0];
 
   var found = "";
 
@@ -30,7 +30,7 @@ function OkButton () {
 }
 
 function selectAll() {
-  var list = document.forms[0].elements[0];
+  var list = document.userselform.elements[0];
   var i;
   for ( i = 0; i < list.options.length; i++ ) {
     list.options[i].selected = true;
@@ -38,7 +38,7 @@ function selectAll() {
 }
 
 function selectNone() {
-  var list = document.forms[0].elements[0];
+  var list = document.userselform.elements[0];
   var i;
   for ( i = 0; i < list.options.length; i++ ) {
     list.options[i].selected = false;
@@ -49,7 +49,7 @@ function selectNone() {
 // user in the list of users
 function selectByLogin ( login, state ) {
   //alert ( "selectByLogin ( " + login + ", " + state + " )" );
-  var list = document.forms[0].elements[0];
+  var list = document.userselform.elements[0];
   var i;
   for ( i = 0; i < list.options.length; i++ ) {
     //alert ( "text: " + list.options[i].text );
@@ -61,7 +61,7 @@ function selectByLogin ( login, state ) {
 }
 
 function toggleGroup ( state ) {
-  var list = document.forms[0].elements[4];
+  var list = document.userselform.elements[4];
   var selNum = list.selectedIndex;
   <?php
   for ( $i = 0; $i < count ( $groups ); $i++ ) {

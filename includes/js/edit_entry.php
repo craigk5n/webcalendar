@@ -4,20 +4,20 @@
 <!-- <![CDATA[
 // do a little form verifying
 function validate_and_submit () {
-  if ( document.forms[0].name.value == "" ) {
-    document.forms[0].name.select ();
-    document.forms[0].name.focus ();
+  if ( document.editentryform.name.value == "" ) {
+    document.editentryform.name.select ();
+    document.editentryform.name.focus ();
     alert ( "<?php etranslate("You have not entered a Brief Description")?>." );
     return false;
   }
   // Leading zeros seem to confuse parseInt()
-  if ( document.forms[0].hour.value.charAt ( 0 ) == '0' )
-    document.forms[0].hour.value = document.forms[0].hour.value.substring ( 1, 2 );
-  if ( document.forms[0].timetype.selectedIndex == 1 ) {
-    h = parseInt ( document.forms[0].hour.value );
-    m = parseInt ( document.forms[0].minute.value );
+  if ( document.editentryform.hour.value.charAt ( 0 ) == '0' )
+    document.editentryform.hour.value = document.editentryform.hour.value.substring ( 1, 2 );
+  if ( document.editentryform.timetype.selectedIndex == 1 ) {
+    h = parseInt ( document.editentryform.hour.value );
+    m = parseInt ( document.editentryform.minute.value );
 <?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
-    if ( document.forms[0].ampm[1].checked ) {
+    if ( document.editentryform.ampm[1].checked ) {
       // pm
       if ( h < 12 )
         h += 12;
@@ -29,8 +29,8 @@ function validate_and_submit () {
 <?php } ?>
     if ( h >= 24 || m > 59 ) {
       alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
-      document.forms[0].hour.select ();
-      document.forms[0].hour.focus ();
+      document.editentryform.hour.select ();
+      document.editentryform.hour.focus ();
       return false;
     }
     // Ask for confirmation for time of day if it is before the user's
@@ -38,7 +38,7 @@ function validate_and_submit () {
     <?php if ($GLOBALS["TIME_FORMAT"] == "24") {
       echo "if ( h < $WORK_DAY_START_HOUR  ) {";
     }  else {
-      echo "if ( h < $WORK_DAY_START_HOUR && document.forms[0].ampm[0].checked ) {";
+      echo "if ( h < $WORK_DAY_START_HOUR && document.editentryform.ampm[0].checked ) {";
     }
     ?>
     if ( ! confirm ( "<?php etranslate ("The time you have entered begins before your preferred work hours.  Is this correct?")?> "))
@@ -47,7 +47,7 @@ function validate_and_submit () {
   }
   // is there really a change?
   changed = false;
-  form=document.forms[0];
+  form=document.editentryform;
   for ( i = 0; i < form.elements.length; i++ ) {
     field = form.elements[i];
     switch ( field.type ) {
@@ -76,7 +76,7 @@ function validate_and_submit () {
 //Add code to make HTMLArea code stick in TEXTAREA
  if (typeof editor != "undefined") editor._textArea.value = editor.getHTML();
   // would be nice to also check date to not allow Feb 31, etc...
-  document.forms[0].submit ();
+  document.editentryform.submit ();
   return true;
 }
 
@@ -110,18 +110,18 @@ function selectDate (  day, month, year, current, evt ) {
 ?>function selectUsers () {
   // find id of user selection object
   var listid = 0;
-  for ( i = 0; i < document.forms[0].elements.length; i++ ) {
-    if ( document.forms[0].elements[i].name == "participants[]" )
+  for ( i = 0; i < document.editentryform.elements.length; i++ ) {
+    if ( document.editentryform.elements[i].name == "participants[]" )
       listid = i;
   }
   url = "usersel.php?form=editentryform&listid=" + listid + "&users=";
   // add currently selected users
-  for ( i = 0, j = 0; i < document.forms[0].elements[listid].length; i++ ) {
-    if ( document.forms[0].elements[listid].options[i].selected ) {
+  for ( i = 0, j = 0; i < document.editentryform.elements[listid].length; i++ ) {
+    if ( document.editentryform.elements[listid].options[i].selected ) {
       if ( j != 0 )
-	url += ",";
+	       url += ",";
       j++;
-      url += document.forms[0].elements[listid].options[i].value;
+      url += document.editentryform.elements[listid].options[i].value;
     }
   }
   //alert ( "URL: " + url );
@@ -137,14 +137,14 @@ function selectDate (  day, month, year, current, evt ) {
 	// If they change their mind & switch it back, the original 
 	// values are restored for them
 ?>function timetype_handler () {
-  var i = document.forms[0].timetype.selectedIndex;
-  var val = document.forms[0].timetype.options[i].text;
+  var i = document.editentryform.timetype.selectedIndex;
+  var val = document.editentryform.timetype.options[i].text;
   //alert ( "val " + i + " = " + val );
   // i == 1 when set to timed event
   if ( i != 1 ) {
     // Untimed/All Day
     makeInvisible ( "timeentrystart" );
-    if ( document.forms[0].duration_h ) {
+    if ( document.editentryform.duration_h ) {
       makeInvisible ( "timeentryduration" );
     } else {
       makeInvisible ( "timeentryend" );
@@ -152,7 +152,7 @@ function selectDate (  day, month, year, current, evt ) {
   } else {
     // Timed Event
     makeVisible ( "timeentrystart" );
-    if ( document.forms[0].duration_h ) {
+    if ( document.editentryform.duration_h ) {
       makeVisible ( "timeentryduration" );
     } else {
       makeVisible ( "timeentryend" );
@@ -161,8 +161,8 @@ function selectDate (  day, month, year, current, evt ) {
 }
 
 function rpttype_handler () {
-  var i = document.forms[0].rpttype.selectedIndex;
-  var val = document.forms[0].rpttype.options[i].text;
+  var i = document.editentryform.rpttype.selectedIndex;
+  var val = document.editentryform.rpttype.options[i].text;
   //alert ( "val " + i + " = " + val );
   //i == 0 when event does not repeat
   if ( i != 0 ) {
@@ -195,8 +195,8 @@ var sch_win;
 
 function getUserList () {
   var listid = 0;
-  for ( i = 0; i < document.forms[0].elements.length; i++ ) {
-    if ( document.forms[0].elements[i].name == "participants[]" )
+  for ( i = 0; i < document.editentryform.elements.length; i++ ) {
+    if ( document.editentryform.elements[i].name == "participants[]" )
       listid = i;
   }
   return listid;
@@ -206,7 +206,7 @@ function getUserList () {
 function showSchedule () {
   //var agent=navigator.userAgent.toLowerCase();
   //var agent_isIE=(agent.indexOf("msie") > -1);
-  var myForm = document.forms[0];
+  var myForm = document.editentryform;
   var userlist = myForm.elements[getUserList()];
   var delim = '';
   var users = '';
@@ -222,7 +222,7 @@ function showSchedule () {
     }
   }
   if (users == '') {
-    alert('Please add a participant');
+    alert("<?php etranslate("Please add a participant")?>" );
     return false;
   }
   var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=no';
