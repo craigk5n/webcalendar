@@ -298,8 +298,8 @@ if ( $res ) {
 ?>
 
 <!-- CURRENT USER -->
-<br />
 <?php } ?>
+<br />
 <?php
 if ( ! $use_http_auth ) {
 	if ( empty ( $login_return_path ) )
