@@ -2,8 +2,6 @@
 //$start = microtime();
 
 include_once 'includes/init.php';
-load_global_settings ();
-load_user_preferences ();
 
 // Don't allow users to use this feature if "allow view others" is
 // disabled.
