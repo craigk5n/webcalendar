@@ -143,7 +143,7 @@ print_header();
 </table>
 
 <div style="text-align:center;">
-<table style="border-width:0px;" cellspacing="4" cellpadding="4">
+<table style="border-width:0px;" align="center" cellspacing="4" cellpadding="4">
 <tr>
 <td style="vertical-align:top;"><?php display_small_month(1,$year,False); ?></td>
 <td style="vertical-align:top;"><?php display_small_month(2,$year,False); ?></td>
