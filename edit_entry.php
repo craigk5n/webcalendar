@@ -212,7 +212,7 @@ if ( ! empty ( $id ) && ( $copy != '1' ) ) echo "<input type=\"hidden\" name=\"i
 echo "<input type=\"hidden\" name=\"entry_changed\" value=\"\" />\n";
 
 // are we overriding an entry from a repeating event...
-if ( $override ) {
+if ( ! empty ( $override ) ) {
   echo "<input type=\"hidden\" name=\"override\" value=\"1\" />\n";
   echo "<input type=\"hidden\" name=\"override_date\" value=\"$cal_date\" />\n";
 }
