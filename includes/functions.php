@@ -799,7 +799,7 @@ function build_event_popup ( $divname, $user, $description, $time,
   if ( ! empty ( $GLOBALS['allow_html_description'] ) &&
     $GLOBALS['allow_html_description'] == 'Y' ) {
     $str = str_replace ( "&", "&amp;", $description );
-    $ret .= str_replace ( "&amp;amp;", "&amp", $str );
+    $ret .= str_replace ( "&amp;amp;", "&amp;", $str );
   } else {
     $ret .= nl2br ( htmlspecialchars ( $description ) );
   }
