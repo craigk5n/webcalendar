@@ -1,14 +1,14 @@
 /*
  * Description:
- *	This file is used to create all tables used by WebCalendar and
- *	initialize some of those tables with the required data.
+ * This file is used to create all tables used by WebCalendar and
+ * initialize some of those tables with the required data.
  *
- *	The comments in the table definitions will be parsed to
- *	generate a document (in HTML) that describes these tables.
+ * The comments in the table definitions will be parsed to
+ * generate a document (in HTML) that describes these tables.
  *
  * History:
- *	21-Oct-2002	Added this file header and additional comments
- *			below.
+ * 21-Oct-2002 Added this file header and additional comments
+ *   below.
  */
 
 /*
@@ -162,14 +162,16 @@ CREATE TABLE webcal_entry_user (
  * <a href="#webcal_entry">webcal_entry</a>.
  */
 CREATE TABLE webcal_entry_ext_user (
+  /* auto increment filed allows External uers to have same name */
+  cal_ext_id MEDIUMINT(9) NOT NULL AUTO_INCREMENT,
   /* event id */
   cal_id INT DEFAULT 0 NOT NULL,
   /* external user fill name */
   cal_fullname VARCHAR(50) NOT NULL,
   /* external user email (for sending a reminder) */
   cal_email VARCHAR(75) NULL,
-  PRIMARY KEY ( cal_id, cal_fullname )
-);
+  PRIMARY KEY ( cal_ext_id, cal_id, cal_fullname )
+) TYPE=MyISAM AUTO_INCREMENT=1 ;
 
 /*
  * Specify preferences for a user.
@@ -392,6 +394,73 @@ INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'EMAIL_EVENT_DELETED', 'Y' );
 INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'EMAIL_EVENT_REJECTED', 'Y' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('auto_refresh', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('nonuser_enabled', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('allow_html_description', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('reports_enabled', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('DISPLAY_WEEKENDS', 'Y');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('DISPLAY_DESC_PRINT_DAY', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('DATE_FORMAT', '__month__ __dd__, __yyyy__');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('TIME_SLOTS', '12');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('TIMED_EVT_LEN', 'D');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('PUBLISH_ENABLED', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('DATE_FORMAT_MY', '__month__ __yyyy__');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('DATE_FORMAT_MD', '__month__ __dd__');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('CUSTOM_SCRIPT', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('CUSTOM_HEADER', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('CUSTOM_TRAILER', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('bold_days_in_year', 'Y');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('site_extras_in_popup', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('add_link_in_views', 'Y');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('allow_conflict_override', 'Y');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('limit_appts', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('limit_appts_number', '6');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access_default_visible', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access_default_selected', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access_others', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access_can_add', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access_add_needs_approval', 'Y');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('public_access_view_part', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('nonuser_at_top', 'Y');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('allow_external_users', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('external_notifications', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('external_reminders', 'N');
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ('enable_gradients', 'N');
+
 
 /*
  * Activity log for an event.

@@ -1,4 +1,5 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+  - Added new default webcal_config values to all sql table definition files
   - Fixed bug 1167790: class="selectedday" assignments in other than day.php
   - Changed edit_entry_handler to remove requirement for Admins to approve
     Public events that they create.
