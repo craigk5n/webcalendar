@@ -304,6 +304,9 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <tr><td class="tooltip" title="<?php etooltip("public-access-default-visible")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access visible by default")?>:</td>
   <td><label><input type="radio" name="admin_public_access_default_visible" value="Y" <?php if ( $s["public_access_default_visible"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="admin_public_access_default_visible" value="N" <?php if ( $s["public_access_default_visible"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
+<tr><td class="tooltip" title="<?php etooltip("public-access-default-selected")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access is default participant")?>:</td>
+  <td><label><input type="radio" name="admin_public_access_default_selected" value="Y" <?php if ( $s["public_access_default_selected"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="admin_public_access_default_selected" value="N" <?php if ( $s["public_access_default_selected"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
+
 <tr><td class="tooltip" title="<?php etooltip("public-access-view-others-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can view other users")?>:</td>
   <td><label><input type="radio" name="admin_public_access_others" value="Y" <?php if ( $s["public_access_others"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="admin_public_access_others" value="N" <?php if ( $s["public_access_others"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
