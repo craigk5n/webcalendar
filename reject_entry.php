@@ -43,12 +43,20 @@ if ( $id > 0 ) {
   }
 
   // Get the name of the event
-  $sql = "SELECT cal_name FROM webcal_entry WHERE cal_id = $id";
+  $sql = "SELECT cal_name, cal_description, cal_date, cal_time FROM webcal_entry WHERE cal_id = $id";
   $res = dbi_query ( $sql );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     $name = $row[0];
+    $description = $row[1];
+    $fmtdate = $row[2];
+    $time = $row[3];
     dbi_free_result ( $res );
+  }
+
+  if ($time != '-1') {
+    $hour = substr($time,0,2);
+    $minute = substr($time,2,2);
   }
 
   for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
@@ -58,7 +66,6 @@ if ( $id > 0 ) {
     user_load_variables ( $partlogin[$i], "temp" );
     if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
       $send_email != "N" ) {
-      $fmtdate = sprintf ( "%04d%02d%02d", $year, $month, $day );
       $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
         translate("An appointment has been rejected by") .
         " " . $login_fullname .  ". " .
@@ -73,7 +80,7 @@ if ( $id > 0 ) {
         $url = $server_url .  "view_entry.php?id=" .  $id;
         $msg .= "\n\n" . $url;
       }
- 
+
       $from = $email_fallback_from;
       if ( strlen ( $login_email ) )
         $from = $login_email;
