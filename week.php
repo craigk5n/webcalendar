@@ -98,6 +98,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 ?>
 </div>
 </div>
+<br />
 
 <table class="weekview" cellspacing="0" cellpadding="0">
 <tr>
