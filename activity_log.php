@@ -36,7 +36,11 @@ if ( $res ) {
       $nextpage = $row[7];
       break;
     } else {
-      echo "<tr><td>\n" .
+	echo '<tr';
+		if ( $num % 2 ) {
+			echo ' class="odd"';
+		}
+	echo "><td>\n" .
         $row[0] . "</td><td>\n" .
         $row[1] . "</td><td>\n" . 
         date_to_str ( $row[3] ) . " " .

@@ -1,4 +1,6 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Adding patch 1059984: alternating row colors for activity_log.php
+  - Removing obsolete styles from styles.php
   - Adding title attributes to various links
   - Moving & making login/logout link to be inline with current user in
   trailer & dynamic depending on if user is logged in or not

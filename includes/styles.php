@@ -255,15 +255,6 @@ a.matrix img {
   background-color: <?php echo $GLOBALS['CELLBG'];?>;
   vertical-align: top;
 }
-.tablecelltoday {
-  font-size: 12px;
-  width: 14%;
-  height: 75px;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
-  vertical-align: top;
-}
 .tablecelldemo {
   font-size: 10px;
   width: 30px;
@@ -305,20 +296,10 @@ a.matrix img {
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-.monthlink {
-  font-size: 13px;
-  color: #B04040;
-  text-decoration: none;
-}
 .navlinks {
   font-size: 14px;
   color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
   text-decoration: none;
-}
-.aboutinfo {
-  color: #000000;
-  text-decoration: none;
-  font-size: 13px;
 }
 .popup {
 	font-size: 12px;
@@ -334,8 +315,8 @@ a.matrix img {
 	padding: 3px;
 }
 .popup dl {
-  margin: 0px;
-  padding: 0px;
+	margin: 0px;
+	padding: 0px;
 }
 .popup dt {
 	font-weight: bold;
@@ -343,7 +324,7 @@ a.matrix img {
 	padding: 0px;
 }
 .popup dd {
-  margin-left: 20px;
+	margin-left: 20px;
 }
 .tooltip {
 	cursor: help;
@@ -363,23 +344,18 @@ h2 {
 h3 {
 	font-size: 18px;
 }
-.pagetitle {
-	font-size: 24px;
-	color: <?php echo $GLOBALS['H2COLOR']; ?>;
-	font-weight: bold;
-}
 p {
-  font-size: 12px;
+	font-size: 12px;
 }
 input {
-  font-size: 12px;
+	font-size: 12px;
 }
 select {
-  font-size: 12px;
+	font-size: 12px;
 }
 textarea {
-  font-size: 12px;
-  overflow: auto;
+	font-size: 12px;
+	overflow: auto;
 }
 <?php //left & right arrow images 
 ?>.prevnext {
@@ -419,24 +395,11 @@ textarea {
   font-size: 12px;
 }
 table.standard th {
-color: <?php echo $GLOBALS['THFG']; ?>;
+  color: <?php echo $GLOBALS['THFG']; ?>;
   background-color: <?php echo $GLOBALS['THBG']; ?>;
   font-size: 18px;
   padding: 0px;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-}
-<?php //formerly .monthlink 
-?>td.month a {
-	font-size: 13px;
-	color: #B04040;
-	text-decoration: none;
-	text-align: center;
-}
-td.month a:hover {
-	font-size: 13px;
-	color: #0000FF;
-	text-decoration: none;
-	text-align: center;
 }
 <?php //Styles for minicalendars
       //keep font-size:12px for IE6
@@ -481,30 +444,41 @@ td.month a:hover {
 	font-weight: bold;
 }
 #activitylog table {
-	border-width: 0px;
 	width: 100%;
+	border: 1px solid #000000;
+	border-spacing: 0px;
+}
+#activitylog th {
+	color: #000000;
+	background-color: #FFFFFF;
+	border-right: 1px solid #AAAAAA;
+	border-bottom: 1px solid #000000;
+	padding: 1px 3px;
 }
 #activitylog th.usr,
 #activitylog th.cal,
 #activitylog th.action {
-	color: <?php echo $GLOBALS['THFG']; ?>;
-	background-color: <?php echo $GLOBALS['THBG']; ?>;
 	width: 7%;
 }
 #activitylog th.scheduled,
 #activitylog th.dsc {
-	color: <?php echo $GLOBALS['THFG']; ?>;
-	background-color: <?php echo $GLOBALS['THBG']; ?>;
 	width: 14%;
+}
+#activitylog tr {
+	background-color: #FFFFFF;
+}
+tr.odd {
+	background-color: #EEEEEE;
 }
 #activitylog td {
 	vertical-align: top;
-	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+	border-right: 1px solid #AAAAAA;
+	padding: 1px 3px;
 	font-size: 13px;
 }
 #day div.minicalcontainer {
 	text-align: right;
-	border: 1px solid black;
+	border: 1px solid #000000;
 	padding: 3px;
 }
 <?php //the really big number above the minicalendar in day.php
@@ -525,13 +499,13 @@ td.month a:hover {
 	background-color: <?php echo $GLOBALS['THBG']; ?>;
 	border-width: 0px;
 }
-#day .glance {
+.glance {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 }
 #day .minical td.selectedday {
-	border: 2px solid black;
+	border: 2px solid #000000;
 }
 <?php //display: none; is unhidden by includes/print_styles.css for printer-friendly pages
 ?>#day dl.desc {
