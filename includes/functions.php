@@ -3078,7 +3078,9 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
     if ( $rowspan > 1 ) {
       if ( ! empty ( $hour_arr[$i] ) ) {
         if ( $rowspan_arr[$i] > 1 ) {
-          $rowspan_arr[$last_row] += ( $rowspan_arr[$i] - 1 );
+          if ( $rowspan_arr[$i] >=  $rowspan_arr[$last_row] ) {
+            $rowspan_arr[$last_row] += ( $rowspan_arr[$i] -  $rowspan_arr[$last_row]  + 1 );
+										} 
           $rowspan += ( $rowspan_arr[$i] - 1 );
         } else
           $rowspan_arr[$last_row] += $rowspan_arr[$i];
@@ -4496,7 +4498,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   }
 ?>
   <br />
-  <table class="matrixd" style="width:<?php echo $total_pct;?>;" cellspacing="0" cellpadding="0">
+  <table  align="center" class="matrixd" style="width:<?php echo $total_pct;?>;" cellspacing="0" cellpadding="0">
   <tr><td class="matrix" colspan="<?php echo $cols;?>"></td></tr>
   <tr><th style="width:<?php echo $participant_pct;?>;">
     <?php etranslate("Participants");?></th>
@@ -4586,13 +4588,13 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
       "<img src=\"pix.gif\" alt=\"-\" /></td></tr>\n";
   } // End foreach participant
   
-  echo "</table>\n";
+  echo "</table><br />\n";
   $busy = translate ("Busy");
   $tentative = translate ("Tentative");
-  echo "<div class=\"matrixlegend\">\n";
+  echo "<table align=\"center\"><tr><td class=\"matrixlegend\" >\n";
   echo "<img src=\"pix.gif\" title=\"$busy\" alt=\"$busy\" /> $busy &nbsp; &nbsp; &nbsp;\n";
   echo "<img src=\"pixb.gif\" title=\"$tentative\" alt=\"$tentative\" /> $tentative\n";
-  echo "</div>\n";
+  echo "</td></tr></table>\n";
 } 
 
 ?>
