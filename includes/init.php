@@ -126,7 +126,7 @@ if ($DMW) {
   if ( empty ( $cat_id ) )
     $caturl = "";
   else
-    $caturl = "&cat_id=$cat_id";
+    $caturl = "&amp;cat_id=$cat_id";
 
 }
 
@@ -150,7 +150,11 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
 
   // Start the header
-  echo "<html>\n<head>\n<title>".translate($application_name)."</title>\n";
+  echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE html 
+     PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+     \"DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n
+  <head>\n<title>".translate($application_name)."</title>\n";
 
   // Any other includes?
   if ( is_array ( $includes ) ) {
