@@ -105,12 +105,14 @@ if ( ! $friendly ) {
     echo "<br />-- " . translate("Admin mode") . " --";
   if ( $is_assistant )
     echo "<br />-- " . translate("Assistant mode") . " --";
+?>
+</span>
+<?php
   if ( $categories_enabled == "Y" && (!$user || $user == $login)) {
     echo "<br />\n<br />\n";
     print_category_menu('month',sprintf ( "%04d%02d01",$thisyear, $thismonth ),$cat_id, $friendly );
   }
 ?>
-</span>
 </td>
 <?php
 if ( ! $friendly ) {
@@ -123,7 +125,7 @@ if ( ! $friendly ) {
   $monthend = mktime ( 3, 0, 0, $nextmonth + 1, 0, $nextyear );
   echo "<tr><td colspan=\"7\" align=\"center\">" .
     "<a href=\"month.php?$u_url";
-  echo "year=$nextyear&month=$nextmonth$caturl\" class=\"monthlink\">" .
+  echo "year=$nextyear&amp;month=$nextmonth$caturl\" class=\"monthlink\">" .
     date_to_str ( sprintf ( "%04d%02d01", $nextyear, $nextmonth ),
     $DATE_FORMAT_MY, false, false ) .
     "</a></td></tr>\n";
