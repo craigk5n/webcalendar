@@ -22,10 +22,11 @@ WebCalendar-Functions.html
 
 faqs.html
   This is generated from the FAQs of in WebCalendar-SysAdmin.html and
-  WebCalendar-UserManual.html.  If you have perl and make install,
+  WebCalendar-UserManual.html.  If you have perl and make,
   typing "make" should generate this file.  This file is not a complete
   HTML file.  It is intended to be inserted into the body of another
-  HTML page.
+  HTML page.  You can see it in use at:
+    http://www.k5n.us/webcalendar.php?topic=FAQ
 
 
 Tools
