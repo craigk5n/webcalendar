@@ -16,7 +16,9 @@
 # Last update: 5 Feb 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
 # Last update: 10 Feb 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
 # Last update: 14 Feb 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
-# Translation last updated on 06-07-2003
+# Last update: 12 Jun 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Last update: 13 Jun 2003 by Markus Egartner <markus.egartner@kh-hallein.at>
+# Translation last updated on 06-13-2003
 
 
 ###############################################
@@ -400,9 +402,7 @@ Modified since: Änderungen ab
 ###############################################
 # Page: export_handler.php
 #
-#
-# << MISSING >>
-# export format not defined or incorrect:
+export format not defined or incorrect: exportiertes Format nicht definiert oder ungültig
 
 
 ###############################################
@@ -414,7 +414,7 @@ Edit Group: Gruppe editieren
 Group name: Gruppenname
 Updated: geändert
 Created by: erstellt von
-Users: Benützer
+Users: Benutzer
 
 
 ###############################################
@@ -447,12 +447,8 @@ same as: gleich wie
 server time: Serverzeit
 Default Category: Standard Kategorie
 When I am the boss: Wenn ich der Chef bin
-#
-# << MISSING >>
-# Email me event notification:
-#
-# << MISSING >>
-# I want to approve events:
+Email me event notification: Benachrichtigen bei Terminbestätigung
+I want to approve events: Ich möchte Termine überprüfen
 Sun: So
 Mon: Mo
 Tue: Di
@@ -544,16 +540,6 @@ Reject: Ablehnen
 No unapproved events for: Keine unbestätigten Termine für
 Unapproved Events: Unbestätigte Termine
 Public Access: Öffentlicher Zugang
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Sie müssen einen Benutzernamen und ein Kennwort eingeben.
-Save login via cookies so I don't have to login next time: Login in Cookie abspeichern, um Anmeldung beim nächsten Mal automatisch zu überspringen.
-Login: Anmelden
-Access public calendar: Zugang öffentlicher Kalender
-cookies-note: <B>Hinweis:</B> Für diese Anwendung müssen Cookies im Browser akzeptiert werden.
 
 
 ###############################################
@@ -656,9 +642,7 @@ Add to My Calendar: Zu meinem Kalender hinzufügen
 Email all participants: Email an jeden Benutzer
 Show activity log: Aktivitäten Protokoll ansehen
 Hide activity log: Aktivitäten Protokoll ausblenden
-#
-# << MISSING >>
-# Export this entry to:
+Export this entry to: Diesen Eintrag exportieren nach
 
 
 ###############################################
@@ -703,6 +687,16 @@ Add New NonUser Calendar: Neuen 'NonUser' Kalender hinzufügen
 ###############################################
 # Page: nonusers_handler.php
 #
+
+
+###############################################
+# Page: login.php
+#
+You must enter a login and password: Sie müssen einen Benutzernamen und ein Kennwort eingeben.
+Save login via cookies so I don't have to login next time: Login in Cookie abspeichern, um Anmeldung beim nächsten Mal automatisch zu überspringen.
+Login: Anmelden
+Access public calendar: Zugang öffentlicher Kalender
+cookies-note: <B>Hinweis:</B> Für diese Anwendung müssen Cookies im Browser akzeptiert werden.
 
 
 ###############################################
