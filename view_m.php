@@ -45,7 +45,7 @@ $thisdate = $startdate;
 <table style="border-width:0px; width:100%;">
 <tr><td style="text-align:left;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_m.php?id=<?php echo $id?>&date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
+<a href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 <?php } ?>
 </td>
 <td class="viewmtitle">
@@ -60,7 +60,7 @@ $thisdate = $startdate;
 </td>
 <td style="text-align:right;">
 <?php if ( ! $friendly ) { ?>
-<a href="view_m.php?id=<?php echo $id?>&date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<a href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 </td></tr>
 </table>
@@ -121,7 +121,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 <table style="border-width:1px; width:100%;" cellspacing="0" cellpadding="0">
 <?php } ?>
 
-<tr><th class="empty">&nbsp;</td>
+<tr><th class="empty">&nbsp;</th>
 
 <?php
   // $j points to start of this table/row
@@ -131,7 +131,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
-    echo "<th style=\"width:$tdw%;\">$tempfullname</td>";
+    echo "<th style=\"width:$tdw%;\">$tempfullname</th>";
   }
   echo "</tr>\n";
   
@@ -183,7 +183,7 @@ if ( empty ( $friendly ) )
   echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<a class=\"navlinks\" href=\"view_m.php?id=$id&date=$thisdate&friendly=1\" " .
+  echo "<a class=\"navlinks\" href=\"view_m.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
     "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</a>\n";
