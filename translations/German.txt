@@ -820,7 +820,7 @@ Add New Entry: Eintrag hinzufügen
 Manage Views: Ansichten einrichten
 Edit Layers: Layer editieren
 Account: Konto
-Current User: aktuelle/r Benutzer
+Current User: aktueller Benutzer
 Manage calendar of: Kalender verwalten von
 
 
