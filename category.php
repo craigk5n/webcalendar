@@ -52,13 +52,13 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   <br />
   <?php if ( $is_admin && empty ( $id ) ) { ?>
     <?php etranslate("Global")?>:
-      <label><input type="radio" name="isglobal" value="N" <?php if ( ! empty ( $catowner ) || empty ( $id ) ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
-      <label><input type="radio" name="isglobal" value="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>
+      <label><input type="radio" name="isglobal" value="N" <?php if ( ! empty ( $catowner ) || empty ( $id ) ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>&nbsp;&nbsp;
+      <label><input type="radio" name="isglobal" value="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>
   <?php } ?>
   <br /><br />
   <input type="submit" name="action" value="<?php echo $button;?>" />
   <?php if ( ! empty ( $id ) ) {  ?>
-    <input type="submit" name="action" value="<?php etranslate("Delete");?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
+	<input type="submit" name="action" value="<?php etranslate("Delete");?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
   <?php }  ?>
   </form>
   <?php
@@ -82,7 +82,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
     echo "</ul>";
   }
   if ( $global_found )
-    echo "<br /><br /><sup>*</sup> " . translate ( "Global" );
+    echo "<br />\n<br />\n<sup>*</sup> " . translate ( "Global" );
   echo "<p><a href=\"category.php?add=1\">" . translate("Add New Category") . "</a></p><br />\n";
 }
 

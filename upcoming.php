@@ -93,7 +93,7 @@ $cat_id = '';
 
 if ( $public_must_be_enabled && $public_access != 'Y' ) {
   etranslate ( "You are not authorized" ) . ".";
-  print "</body></html>\n";
+  print "</body>\n</html>";
   exit;
 }
 
@@ -150,7 +150,10 @@ $repeated_events = read_repeated_events ( $username, $cat_id, $date );
 $events = read_events ( $username, $date, $endDate, $cat_id );
 
 // Print header without custom header and no style sheet
-?><html><head><title>Upcoming Events</title></head>
+?><html>
+<head>
+<title>Upcoming Events</title>
+</head>
 <body>
 <?php
 
@@ -183,7 +186,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
 
 print "</dl>\n";
 
-print "</body></html>\n";
+print "</body>\n</html>";
 
 
 // Print the details of an upcoming event

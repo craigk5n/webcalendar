@@ -92,13 +92,13 @@ function print_user_list () {
       $size = 5;
     print "<tr><td style=\"vertical-align:top; font-weight:bold;\"><label for=\"caluser\">" . translate("Calendar") . "</label></td>\n";
     print "<td><select name=\"calUser\" id=\"caluser\" size=\"$size\">$users\n";
-    print "</select>";
+    print "</select>\n";
     print "</td></tr>\n";
   }
 }
 ?>
 
-<h2>Import</h2>
+<h2>Import&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" /></h2>
 
 <form action="import_handler.php" method="post" name="importform" enctype="multipart/form-data">
 <?php
@@ -124,7 +124,6 @@ if ( $tab == 0 ) {
 </td></tr>
 <tr><td colspan="2">
 	<input type="submit" value="<?php etranslate("Import")?>" />
-	<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
 </td></tr>
 </table>
 
@@ -143,7 +142,6 @@ if ( $tab == 0 ) {
 </td></tr>
 <tr><td colspan="2">
 	<input type="submit" value="<?php etranslate("Import")?>" />
-	<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
 </td></tr>
 </table>
 
@@ -168,7 +166,6 @@ if ( $tab == 0 ) {
 <?php print_user_list(); ?>
 <tr><td colspan="2">
 	<input type="submit" value="<?php etranslate("Import")?>" />
-	<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
 </td></tr>
 </table>
 

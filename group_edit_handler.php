@@ -61,11 +61,11 @@ print_header();
 
 <blockquote>
 <?php
-
 echo $error;
+
 //if ( $sql != "" )
 //  echo "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
-//?>
+?>
 </blockquote>
 
 <?php print_trailer(); ?>

@@ -66,7 +66,7 @@ function add_duration ( $time, $duration ) {
   $h = $minutes / 60;
   $m = $minutes % 60;
   $ret = sprintf ( "%d%02d00", $h, $m );
-  //echo "add_duration ( $time, $duration ) = $ret <br />";
+  //echo "add_duration ( $time, $duration ) = $ret <br />\n";
   return $ret;
 }
 
@@ -255,14 +255,14 @@ if ( $allow_conflicts != "Y" && empty ( $confirm_conflicts ) &&
   $dates = get_all_dates ( $date, $rpt_type, $endt, $dayst,
     $ex_days, $rpt_freq );
 
-  //echo $id . "<BR>";
+  //echo $id . "<br />";
   $conflicts = check_for_conflicts ( $dates, $duration, $hour, $minute,
     $participants, $login, empty ( $id ) ? 0 : $id );
 
 }
 if ( empty ( $error ) && ! empty ( $conflicts ) ) {
   $error = translate("The following conflicts with the suggested time") .
-    ":<ul>$conflicts</ul>";
+    ": <ul>$conflicts</ul>";
 }
 
 
@@ -647,7 +647,7 @@ if ( empty ( $error ) ) {
         "cal_type, cal_end, cal_days, cal_frequency ) VALUES " .
         "( $id, '$rpt_type', $end, '$days', $freq )";
       dbi_query ( $sql );
-      $msg .= "<span style=\"font-weight:bold;\">SQL:</span> $sql<br /><br />";
+      $msg .= "<span style=\"font-weight:bold;\">SQL:</span> $sql<br />\n<br />";
     }
   }
 }
@@ -666,7 +666,7 @@ if ( empty ( $error ) ) {
       $STARTVIEW, $year, $month, $day );
   }
   if ($is_assistant || $is_nonuser_admin)
-     $url = $url . (strpos($url, "?") === false ? "?" : "&") . "user=$user";
+     $url = $url . (strpos($url, "?") === false ? "?" : "&amp;") . "user=$user";
   do_redirect ( $url );
 }
 
@@ -685,8 +685,7 @@ if ( strlen ( $conflicts ) ) {
     if ( $duration > 0 )
       echo "-" . display_time ( add_duration ( $time, $duration ) );
   }
-?>
-</span> <?php etranslate("conflicts with the following existing calendar entries")?>:
+?></span> <?php etranslate("conflicts with the following existing calendar entries")?>:
 <ul>
 <?php echo $conflicts; ?>
 </ul>
@@ -729,9 +728,7 @@ if ( strlen ( $conflicts ) ) {
 <blockquote>
 <?php echo $error; ?>
 </blockquote>
-
 <?php } ?>
-
 
 <?php print_trailer(); ?>
 

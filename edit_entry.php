@@ -202,7 +202,7 @@ $INC = array('js/edit_entry.php','js/visible.php');
 print_header($INC,'',$BodyX);
 ?>
 
-<h2><?php if ( $id ) echo translate("Edit Entry"); else echo translate("Add Entry"); ?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>..." onclick="window.open ( 'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
+<h2><?php if ( $id ) echo translate("Edit Entry"); else echo translate("Add Entry"); ?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" onclick="window.open ( 'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 
 <?php
 if ( $can_edit ) {
@@ -243,7 +243,7 @@ if ( $is_assistant || $is_nonuser_admin )
   ?>
 </td></tr>
 
-<tr><td></td><td>
+<tr><td>&nbsp;</td><td>
 <select name="timetype" onchange="timetype_handler()">
 <option value="U" <?php if ( $allday != "Y" && $hour == -1 ) echo " selected=\"selected\""?>><?php etranslate("Untimed event"); ?></option>
 <option value="T" <?php if ( $allday != "Y" && $hour >= 0 ) echo " selected=\"selected\""?>><?php etranslate("Timed event"); ?></option>
@@ -279,9 +279,9 @@ if ( $time < 0 )
 <input type="text" name="hour" size="2" value="<?php if ( $time >= 0 && $allday != 'Y' ) echo $h12;?>" maxlength="2" />:<input type="text" name="minute" size="2" value="<?php if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $minute );?>" maxlength="2" />
 <?php
 if ( $TIME_FORMAT == "12" ) {
-  echo "<label><input type=\"radio\" name=\"ampm\" value=\"am\" $amsel />" .
+  echo "<label><input type=\"radio\" name=\"ampm\" value=\"am\" $amsel />&nbsp;" .
     translate("am") . "</label>\n";
-  echo "<label><input type=\"radio\" name=\"ampm\" value=\"pm\" $pmsel />" .
+  echo "<label><input type=\"radio\" name=\"ampm\" value=\"pm\" $pmsel />&nbsp;" .
     translate("pm") . "</label>\n";
 }
 ?>
@@ -295,8 +295,8 @@ if ( $TIME_FORMAT == "12" ) {
 <?php if ($GLOBALS['TIMED_EVT_LEN'] != 'E') { ?>
 
 <tr><td class="tooltip" title="<?php etooltip("duration-help")?>">
-<div id="timeentrydurationprompt"><?php etranslate("Duration")?>:</div></td><td>
-<div id="timeentryduration"><input type="text" name="duration_h" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%d", $dur_h );?>" />:<input type="text" name="duration_m" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%02d", $dur_m );?>" /> (<?php echo translate("hours") . ":" . translate("minutes")?>)</div>
+	<div id="timeentrydurationprompt"><?php etranslate("Duration")?>:</div></td><td>
+	<div id="timeentryduration"><input type="text" name="duration_h" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%d", $dur_h );?>" />:<input type="text" name="duration_m" size="2" maxlength="2" value="<?php if ( $allday != "Y" ) printf ( "%02d", $dur_m );?>" />&nbsp;(<?php echo translate("hours") . ":" . translate("minutes")?>)</div>
 </td></tr>
 
 <?php } else {
@@ -338,13 +338,13 @@ if ( $allday != "Y" && $hour == -1 ) {
 ?>
 
 <tr><td class="tooltip" title="<?php etooltip("end-time-help")?>">
-<div id="timeentryendprompt"><?php etranslate("End Time")?>:</div></td><td>
-<div id="timeentryend"><input type="text" name="endhour" size="2" value="<?php if ( $allday != "Y" ) echo $endhour;?>" maxlength="2" />:<input type="text" name="endminute" size="2" value="<?php if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $endminute );?>" maxlength="2" />
+	<div id="timeentryendprompt"><?php etranslate("End Time")?>:</div></td><td>
+	<div id="timeentryend"><input type="text" name="endhour" size="2" value="<?php if ( $allday != "Y" ) echo $endhour;?>" maxlength="2" />:<input type="text" name="endminute" size="2" value="<?php if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $endminute );?>" maxlength="2" />
 <?php
 if ( $TIME_FORMAT == "12" ) {
-  echo "<label><input type=\"radio\" name=\"endampm\" value=\"am\" $endamsel />" .
+  echo "<label><input type=\"radio\" name=\"endampm\" value=\"am\" $endamsel />&nbsp;" .
     translate("am") . "</label>\n";
-  echo "<label><input type=\"radio\" name=\"endampm\" value=\"pm\" $endpmsel />" .
+  echo "<label><input type=\"radio\" name=\"endampm\" value=\"pm\" $endpmsel />&nbsp;" .
     translate("pm") . "</label>\n";
 }
 ?></div>
@@ -353,7 +353,7 @@ if ( $TIME_FORMAT == "12" ) {
 
 <?php if ( $disable_priority_field != "Y" ) { ?>
 <tr><td class="tooltip">
-<label for="entry_prio" title="<?php etooltip("priority-help")?>"><?php etranslate("Priority")?>:</label></td><td>
+	<label for="entry_prio" title="<?php etooltip("priority-help")?>"><?php etranslate("Priority")?>:</label></td><td>
 <select name="priority" id="entry_prio">
     <option value="1"<?php if ( $priority == 1 ) echo " selected=\"selected\"";?>><?php etranslate("Low")?></option>
     <option value="2"<?php if ( $priority == 2 || $priority == 0 ) echo " selected=\"selected\"";?>><?php etranslate("Medium")?></option>
@@ -363,18 +363,19 @@ if ( $TIME_FORMAT == "12" ) {
 
 <?php if ( $disable_access_field != "Y" ) { ?>
 <tr><td class="tooltip">
-<label for="entry_access" title="<?php etooltip("access-help")?>"><?php etranslate("Access")?>:</label></td><td>
-<select name="access" id="entry_access">
-    <option value="P"<?php if ( $access == "P" || ! strlen ( $access ) ) echo " selected=\"selected\"";?>><?php etranslate("Public")?></option>
-    <option value="R"<?php if ( $access == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Confidential")?></option>
-</select></td></tr>
+	<label for="entry_access" title="<?php etooltip("access-help")?>"><?php etranslate("Access")?>:</label></td><td>
+	<select name="access" id="entry_access">
+		<option value="P"<?php if ( $access == "P" || ! strlen ( $access ) ) echo " selected=\"selected\"";?>><?php etranslate("Public")?></option>
+		<option value="R"<?php if ( $access == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Confidential")?></option>
+	</select>
+</td></tr>
 <?php } ?>
 
 <?php if ( ! empty ( $categories ) ) { ?>
-<tr><td class="tooltip"><label for="entry_categories" title="<?php etooltip("category-help")?>">
-<?php etranslate("Category")?>:</label></td><td>
-<select name="cat_id" id="entry_categories">
-  <option value=""><?php etranslate("None")?></option>
+<tr><td class="tooltip">
+	<label for="entry_categories" title="<?php etooltip("category-help")?>"><?php etranslate("Category")?>:</label></td><td>
+	<select name="cat_id" id="entry_categories">
+		<option value=""><?php etranslate("None")?></option>
 <?php
   foreach( $categories as $K => $V ){
     echo "<option value=\"$K\"";
@@ -382,7 +383,8 @@ if ( $TIME_FORMAT == "12" ) {
     echo ">$V</option>\n";
   }
 ?>
-</select></td></tr>
+	</select>
+</td></tr>
 <?php } ?>
 
 <?php

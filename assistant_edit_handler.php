@@ -14,7 +14,7 @@ for ( $i = 0; $i < count ( $users ); $i++ ) {
 
 $url = "assistant_edit.php";
 if (($is_admin || $is_nonuser_admin) && $login != $user )
-   $url = $url . (strpos($url, "?") === false ? "?" : "&") . "user=$user";
+   $url = $url . (strpos($url, "?") === false ? "?" : "&amp;") . "user=$user";
 do_redirect ( $url );
 
 print_header();

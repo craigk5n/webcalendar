@@ -421,37 +421,44 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <table class="standard" cellspacing="0" cellpadding="3">
 <tr><th colspan="2"><?php etranslate("Public Access")?></th></tr>
 
-<tr><td class="tooltip" title="<?php etooltip("allow-public-access-help")?>"><?php etranslate("Allow public access")?>:</td><td>
+<tr><td class="tooltip" title="<?php etooltip("allow-public-access-help")?>">
+	<?php etranslate("Allow public access")?>:</td><td>
 	<label><input type="radio" name="admin_public_access" value="Y" <?php if ( $s["public_access"] == "Y" ) echo " checked=\"checked\"";?> onclick="public_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 	<label><input type="radio" name="admin_public_access" value="N" <?php if ( $s["public_access"] != "Y" ) echo " checked=\"checked\"";?> onclick="public_handler()" />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 
-<tr id="pa1"><td class="tooltip" title="<?php etooltip("public-access-default-visible")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access visible by default")?>:</td><td>
+<tr id="pa1"><td class="tooltip" title="<?php etooltip("public-access-default-visible")?>">
+	&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access visible by default")?>:</td><td>
 	<label><input type="radio" name="admin_public_access_default_visible" value="Y" <?php if ( $s["public_access_default_visible"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 	<label><input type="radio" name="admin_public_access_default_visible" value="N" <?php if ( $s["public_access_default_visible"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 
-<tr id="pa2"><td class="tooltip" title="<?php etooltip("public-access-default-selected")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access is default participant")?>:</td><td>
+<tr id="pa2"><td class="tooltip" title="<?php etooltip("public-access-default-selected")?>">
+	&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access is default participant")?>:</td><td>
 	<label><input type="radio" name="admin_public_access_default_selected" value="Y" <?php if ( $s["public_access_default_selected"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 	<label><input type="radio" name="admin_public_access_default_selected" value="N" <?php if ( $s["public_access_default_selected"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 
-<tr id="pa3"><td class="tooltip" title="<?php etooltip("public-access-view-others-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can view other users")?>:</td><td>
+<tr id="pa3"><td class="tooltip" title="<?php etooltip("public-access-view-others-help")?>">
+	&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can view other users")?>:</td><td>
 	<label><input type="radio" name="admin_public_access_others" value="Y" <?php if ( $s["public_access_others"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 	<label><input type="radio" name="admin_public_access_others" value="N" <?php if ( $s["public_access_others"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 
-<tr id="pa4"><td class="tooltip" title="<?php etooltip("public-access-can-add-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can add events")?>:</td><td>
+<tr id="pa4"><td class="tooltip" title="<?php etooltip("public-access-can-add-help")?>">
+	&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can add events")?>:</td><td>
 	<label><input type="radio" name="admin_public_access_can_add" value="Y" <?php if ( $s["public_access_can_add"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 	<label><input type="radio" name="admin_public_access_can_add" value="N" <?php if ( $s["public_access_can_add"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 
-<tr id="pa5"><td class="tooltip" title="<?php etooltip("public-access-add-requires-approval-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access new events require approval")?>:</td><td>
+<tr id="pa5"><td class="tooltip" title="<?php etooltip("public-access-add-requires-approval-help")?>">
+	&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access new events require approval")?>:</td><td>
 	<label><input type="radio" name="admin_public_access_add_needs_approval" value="Y" <?php if ( $s["public_access_add_needs_approval"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 	<label><input type="radio" name="admin_public_access_add_needs_approval" value="N" <?php if ( $s["public_access_add_needs_approval"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 
-<tr id="pa6"><td class="tooltip" title="<?php etooltip("public-access-sees-participants-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can view participants")?>:</td><td>
+<tr id="pa6"><td class="tooltip" title="<?php etooltip("public-access-sees-participants-help")?>">
+	&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can view participants")?>:</td><td>
 	<label><input type="radio" name="admin_public_access_view_part" value="Y" <?php if ( $s["public_access_view_part"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
 	<label><input type="radio" name="admin_public_access_view_part" value="N" <?php if ( $s["public_access_view_part"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
@@ -515,7 +522,8 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<label><input type="radio" name="admin_nonuser_enabled" value="N" <?php if ( $s["nonuser_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 
-<tr><td class="tooltip" title="<?php etooltip("nonuser-list-help")?>"><?php etranslate("Nonuser list")?>:</td><td>
+<tr><td class="tooltip" title="<?php etooltip("nonuser-list-help")?>">
+	<?php etranslate("Nonuser list")?>:</td><td>
 	<label><input type="radio" name="admin_nonuser_at_top" value="Y" <?php if ( $s["nonuser_at_top"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Top")?></label>&nbsp;
 	<label><input type="radio" name="admin_nonuser_at_top" value="N" <?php if ( $s["nonuser_at_top"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Bottom")?></label>
 </td></tr>
@@ -615,25 +623,29 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<input type="button" onclick="selectColor('admin_H2COLOR')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
-<tr><td style="font-weight:bold;"><?php etranslate("Document text")?>:</td><td>
+<tr><td style="font-weight:bold;">
+	<?php etranslate("Document text")?>:</td><td>
 	<input type="text" name="admin_TEXTCOLOR" size="8" maxlength="7" value="<?php echo $s["TEXTCOLOR"]; ?>" /></td><td style="background-color:<?php echo $s["TEXTCOLOR"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_TEXTCOLOR')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
-<tr><td style="font-weight:bold;"><?php etranslate("Table grid color")?>:</td><td>
+<tr><td style="font-weight:bold;">
+	<?php etranslate("Table grid color")?>:</td><td>
 	<input type="text" name="admin_TABLEBG" size="8" maxlength="7" value="<?php echo $s["TABLEBG"]; ?>" /></td><td style="background-color:<?php echo $s["TABLEBG"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_TABLEBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
-<tr><td style="font-weight:bold;"><?php etranslate("Table header background")?>:</td><td>
+<tr><td style="font-weight:bold;">
+	<?php etranslate("Table header background")?>:</td><td>
 	<input type="text" name="admin_THBG" size="8" maxlength="7" value="<?php echo $s["THBG"]; ?>" /></td><td style="background-color:<?php echo $s["THBG"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_THBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
-<tr><td style="font-weight:bold;"><?php etranslate("Table header text")?>:</td><td>
+<tr><td style="font-weight:bold;">
+	<?php etranslate("Table header text")?>:</td><td>
 	<input type="text" name="admin_THFG" size="8" maxlength="7" value="<?php echo $s["THFG"]; ?>" /></td><td style="background-color:<?php echo $s["THFG"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_THFG')" value="<?php etranslate("Select")?>..." name="" />
@@ -646,7 +658,8 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 	<input type="button" onclick="selectColor('admin_CELLBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 
-<tr><td style="font-weight:bold;"><?php etranslate("Table cell background for current day")?>:</td><td>
+<tr><td style="font-weight:bold;">
+	<?php etranslate("Table cell background for current day")?>:</td><td>
 	<input type="text" name="admin_TODAYCELLBG" size="8" maxlength="7" value="<?php echo $s["TODAYCELLBG"]; ?>" /></td><td style="background-color:<?php echo $s["TODAYCELLBG"]?>;">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
 	<input type="button" onclick="selectColor('admin_TODAYCELLBG')" value="<?php etranslate("Select")?>..." name="" />
