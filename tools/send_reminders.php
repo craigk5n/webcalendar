@@ -116,12 +116,13 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-// Now read events all the repeating events (for all users)
-$repeated_events = read_repeated_events ( "" );
-
-// Read non-repeating events (for all users)
 $startdate = date ( "Ymd" );
 $enddate = date ( "Ymd", time() + ( $DAYS_IN_ADVANCE * 24 * 3600 ) );
+
+// Now read events all the repeating events (for all users)
+$repeated_events = query_events ( "", true, "AND (webcal_entry_repeats.cal_end > $startdate || webcal_entry_repeats.cal_end IS NULL) " );
+
+// Read non-repeating events (for all users)
 if ( $debug )
   echo "Checking for events from date $startdate to date $enddate <br>\n";
 $events = read_events ( "", $startdate, $enddate );
