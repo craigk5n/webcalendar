@@ -217,6 +217,12 @@ $DISPLAY_WEEKNUMBER = "Y";
 $WORK_DAY_START_HOUR = 8;
 $WORK_DAY_END_HOUR = 17;
 
+// Default email settings (set to "Y" or "N")
+$EMAIL_REMINDER = "Y"; // send user event reminders
+$EMAIL_EVENT_ADDED = "Y"; // send email when event added to calendar
+$EMAIL_EVENT_UPDATED = "Y"; // send email when event updated on calendar
+$EMAIL_EVENT_DELETED = "Y"; // send email when event deleted on calendar
+$EMAIL_EVENT_REJECTED = "Y"; // send email when a participant rejects an event
 
 // error check
 if ( $use_http_auth && strlen ( $single_user_login ) ) {

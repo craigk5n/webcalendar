@@ -234,7 +234,7 @@ if ( ! strlen ( $single_user_login ) ) {
     echo "<BR>" . $waiting[$i] . " (?)\n";
   }
   for ( $i = 0; $i < $num_rej; $i++ ) {
-    echo "<BR>" . $rejected[$i] . " (" . translate("Rejected") . ")\n";
+    echo "<BR><STRIKE>" . $rejected[$i] . "</STRIKE> (" . translate("Rejected") . ")\n";
   }
 ?></TD></TR>
 <?php

@@ -71,21 +71,25 @@ if ( $id > 0 && strlen ( $error ) == 0 ) {
   if ( $is_admin || $my_event == "Y") {
 
     // Email participants that the event was deleted
-    $sql = "SELECT cal_lastname, cal_login , cal_email FROM webcal_user, webcal_entry " .
+    $sql = "SELECT cal_firstname, cal_lastname, cal_login , cal_email " .
+      "FROM webcal_user, webcal_entry " .
       "WHERE cal_login = webcal_entry.cal_create_by " .
       "AND webcal_entry.cal_id = $id ";
     //echo $sql."<BR>";
     $res = dbi_query ( $sql );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
-      $del_lastname = $row[0];
-      $del_login = $row[1];
-      $del_email = $row[2];
+      if ( strlen ( $row[0] ) && strlen ( $row[1] ) )
+        $del_name = "$row[0] $row[1]";
+      else
+        $del_name = $row[2];
+      $del_login = $row[2];
+      $del_email = $row[3];
       dbi_free_result ( $res );
     }
   
-    $sql = "SELECT webcal_entry_user.cal_login, webcal_user.cal_lastname, " .
-      "webcal_user.cal_email " .
+    $sql = "SELECT webcal_entry_user.cal_login, webcal_user.cal_firstname, " .
+      "webcal_user.cal_lastname, webcal_user.cal_email " .
       "FROM webcal_entry_user, webcal_user " .
       "WHERE webcal_entry_user.cal_id = $id AND " .
       "webcal_entry_user.cal_login = webcal_user.cal_login ";
@@ -94,10 +98,12 @@ if ( $id > 0 && strlen ( $error ) == 0 ) {
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] != $del_login ) {
-	  //echo "$row[0], $row[1], $row[2]<BR>";
 	  $partlogin[] = $row[0];
-	  $partname[] = $row[1];
-	  $partemail[] = $row[2];
+          if ( strlen ( $row[1] ) && strlen ( $row[2] ) )
+	    $partname[] = "$row[1] $row[2]";
+          else
+	    $partname[] = $row[0];
+	  $partemail[] = $row[3];
         }
       }
       dbi_free_result($res);
@@ -114,17 +120,20 @@ if ( $id > 0 && strlen ( $error ) == 0 ) {
   
   
     for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
-      $msg = translate("Hello") . ", " . $partname[$i] . ".\n\n" .
-        translate("An appointment has been canceled for you by") .
-        " " . $del_lastname .  ". " .
-        translate("The subject was") . " \"" . $name . "\"\n\n";
-      if ( strlen ( $del_email ) )
-        $extra_hdrs = "From: $del_email\nX-Mailer: " . translate("Title");
-      else
-        $extra_hdrs = "X-Mailer: " . translate("Title");
-      mail ( $partemail[$i],
-        translate("Title") . " " . translate("Notification") . ": " . $name,
-        $msg, $extra_hdrs );
+      $do_send = get_pref_setting ( $participants[$i], "EMAIL_EVENT_DELETED" );
+      if ( $do_send == "Y" ) {
+        $msg = translate("Hello") . ", " . $partname[$i] . ".\n\n" .
+          translate("An appointment has been canceled for you by") .
+          " " . $del_name .  ". " .
+          translate("The subject was") . " \"" . $name . "\"\n\n";
+        if ( strlen ( $del_email ) )
+          $extra_hdrs = "From: $del_email\nX-Mailer: " . translate("Title");
+        else
+          $extra_hdrs = "From: $email_fallback_from\nX-Mailer: " . translate("Title");
+        mail ( $partemail[$i],
+          translate("Title") . " " . translate("Notification") . ": " . $name,
+          $msg, $extra_hdrs );
+      }
     }
 
     dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = $id" );

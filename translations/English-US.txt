@@ -145,6 +145,7 @@ The following conflicts with the suggested time: The following conflicts with th
 Unnamed Event: Unnamed Event
 Hello: Hello
 A new appointment has been made for you by: A new appointment has been made for you by
+An appointment has been updated by: An appointment has been updated by
 The subject is: The subject is
 Please look on: Please look on
 to accept or reject this appointment: to accept or reject this appointment
@@ -275,5 +276,16 @@ display-week-number-help: Specifies whether the week number (1-52) should be dis
 display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
 Work hours: Work hours
 work-hours-help: Specifies the time range to display for the day view.
+Email: Email
+Event rejected by participant: Event rejected by participant
+Event reminders: Event reminders
+Events added to my calendar: Events added to my calendar
+Events removed from my calendar: Events removed from my calendar
+Events updated on my calendar: Events updated on my calendar
+email-event-reminders-help: Specifies whether or not to send event reminders.
+email-event-added: Specifies whether or not to send email notifications when an event is added to your calendar.
+email-event-updated: Specifies whether or not to send email notifications when an event is updated on your calendar.
+email-event-deleted: Specifies whether or not to send email notifications when an event is removed from your calendar.
+email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 Colors: Colors
 colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.

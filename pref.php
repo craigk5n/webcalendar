@@ -65,9 +65,10 @@ function selectColor ( color ) {
 
 <FORM ACTION="pref_handler.php" METHOD="POST" ONSUBMIT="return valid_form(this);" NAME="prefform">
 
-<TABLE BORDER=0>
 
-<TR><TD COLSPAN=2><H2><?php etranslate("Settings")?></H2></TD></TR>
+<H3><?php etranslate("Settings")?></H3>
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
 <TR><TD VALIGN="top"><B><?php etranslate("Language")?>:</B></TD>
 <TD><SELECT NAME="pref_LANGUAGE">
 <?php
@@ -124,8 +125,36 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   </SELECT>
   </TD></TR>
 
+</TABLE></TD></TR></TABLE></TD></TR></TABLE></TD></TR>
+
+<H3><?php etranslate("Email")?></H3>
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
+
+<TR><TD VALIGN="top"><B><?php etranslate("Event reminders")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="pref_EMAIL_REMINDER" VALUE="Y" <?php if ( $EMAIL_REMINDER != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="pref_EMAIL_REMINDER" VALUE="N" <?php if ( $EMAIL_REMINDER == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<TR><TD VALIGN="top"><B><?php etranslate("Events added to my calendar")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="pref_EMAIL_EVENT_ADDED" VALUE="Y" <?php if ( $EMAIL_EVENT_ADDED != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="pref_EMAIL_EVENT_ADDED" VALUE="N" <?php if ( $EMAIL_EVENT_ADDED == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<TR><TD VALIGN="top"><B><?php etranslate("Events updated on my calendar")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="pref_EMAIL_EVENT_UPDATED" VALUE="Y" <?php if ( $EMAIL_EVENT_UPDATED != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="pref_EMAIL_EVENT_UPDATED" VALUE="N" <?php if ( $EMAIL_EVENT_UPDATED == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<TR><TD VALIGN="top"><B><?php etranslate("Events removed from my calendar")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="pref_EMAIL_EVENT_DELETED" VALUE="Y" <?php if ( $EMAIL_EVENT_DELETED != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="pref_EMAIL_EVENT_DELETED" VALUE="N" <?php if ( $EMAIL_EVENT_DELETED == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+<TR><TD VALIGN="top"><B><?php etranslate("Event rejected by participant")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="pref_EMAIL_EVENT_REJECTED" VALUE="Y" <?php if ( $EMAIL_EVENT_REJECTED != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="pref_EMAIL_EVENT_REJECTED" VALUE="N" <?php if ( $EMAIL_EVENT_REJECTED == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
+</TABLE></TD></TR></TABLE></TD></TR></TABLE></TD></TR>
+
 <?php if ( $allow_color_customization ) { ?>
-<TR><TD COLSPAN=2><BR><H2><?php etranslate("Colors")?></H2></TD></TR>
+
+<H3><?php etranslate("Colors")?></H3>
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD BGCOLOR="#000000"><TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2"><TR><TD WIDTH="100%" BGCOLOR="<?php echo $CELLBG ?>"><TABLE BORDER="0" WIDTH="100%">
+
+
 <TR><TD><B><?php etranslate("Document background")?>:</B></TD>
   <TD><INPUT NAME="pref_BGCOLOR" SIZE=7 MAXLENGTH=7 VALUE="<?php echo $BGCOLOR; ?>"> <INPUT TYPE="button" ONCLICK="selectColor('pref_BGCOLOR')" VALUE="<?php etranslate("Select")?>..."></TD></TR>
 <TR><TD><B><?php etranslate("Document title")?>:</B></TD>
@@ -135,9 +164,9 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B><?php etranslate("Table cell background for current day")?>:</B></TD>
   <TD><INPUT NAME="pref_TODAYCELLBG" SIZE=7 MAXLENGTH=7 VALUE="<?php echo $TODAYCELLBG; ?>"> <INPUT TYPE="button" ONCLICK="selectColor('pref_TODAYCELLBG')" VALUE="<?php etranslate("Select")?>..."></TD></TR>
 
-<?php } // if $allow_color_customization ?>
+</TABLE></TD></TR></TABLE></TD></TR></TABLE></TD></TR>
 
-</TABLE>
+<?php } // if $allow_color_customization ?>
 
 <BR><BR>
 <TABLE BORDER=0><TR><TD>
