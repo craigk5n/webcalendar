@@ -156,15 +156,16 @@ if ( empty ( $participants[0] ) ) {
 // Note that if someone actually wants to create an event that starts
 // at midnight and lasts exactly 24 hours, it will be treated in the
 // same manner.
+
+$duration_h = getValue ( "duration_h" );
+$duration_m = getValue ( "duration_m" );
+
 if ( $timetype == "A" ) {
   $duration_h = 24;
   $duration_m = 0;
   $hour = 0;
   $minute = 0;
 }
-
-$duration_h = getValue ( "duration_h" );
-$duration_m = getValue ( "duration_m" );
 
 $duration = ( $duration_h * 60 ) + $duration_m;
 if ( $hour > 0 && $timetype != 'U' ) {
