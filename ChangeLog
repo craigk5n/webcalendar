@@ -1,4 +1,6 @@
 Version 0.9.46/CVS+dev (?? ??? 2004)
+  - Updated default color scheme (modified values in tables-*.sql).
+    (Will only apply to new installs.)
   - Fixed bug: vCal import was completely broken (looking for type 'VCAL' when
     for was using 'vcal')
   - Added patch 1098507: Fixed problem using htmlarea where event description
