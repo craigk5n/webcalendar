@@ -31,6 +31,12 @@ print_header('','','',true);
 <li><?php etranslate("Microsoft Outlook 2002"); ?>
 </ul>
 
+<h3><?php etranslate("iCalendar")?></h3>
+<p>
+<?php etranslate("This form will import iCalendar (.ics) events");?>.
+<?php etranslate("Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates."); ?>
+</p>
+
 <?php include_once "includes/help_trailer.php"; ?>
 
 

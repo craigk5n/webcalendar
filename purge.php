@@ -17,7 +17,8 @@ print_header($INC);
 <?php
 $ALL = 0;
 if ( ! empty ( $user ) ) {
-  echo "<H2><FONT COLOR=\"$H2COLOR\">Purging events for $user...</FONT></H2>\n";
+  echo "<H2><FONT COLOR=\"$H2COLOR\">" .
+    translate("Purging events for") . " $user...</FONT></H2>\n";
   $ids = '';
   $end_date = sprintf ( "%04d%02d%02d, ", $end_year,$end_month,$end_day);
   if ( $purge_all == "Y" ) {
@@ -37,13 +38,14 @@ if ( ! empty ( $user ) ) {
     $ids = array_merge ( $E_ids, $M_ids );
   }
   if ( $ids ) purge_events ( $ids );
-  echo "<H2><FONT COLOR=\"$H2COLOR\">...Finished.</FONT></H2>\n";
+  echo "<H2><FONT COLOR=\"$H2COLOR\">..." .
+    translate("Finished") . ".</FONT></H2>\n";
 } else {
 ?>
-<H2><FONT COLOR="<?=$H2COLOR?>">Delete Events</FONT></H2>
+<H2><FONT COLOR="<?=$H2COLOR?>"><?php etranslate("Delete Events")?></FONT></H2>
 <FORM ACTION="<?=$PHP_SELF;?>" METHOD="POST" NAME="purgeform">
 <TABLE>
- <TR><TD>User:</TD><TD>
+ <TR><TD><?php etranslate("User");?>:</TD><TD>
 <SELECT NAME="user">
 
 <?
@@ -57,14 +59,14 @@ if ( ! empty ( $user ) ) {
   }
 ?>
 
-<OPTION VALUE="ALL" SELECTED>ALL USERS
+<OPTION VALUE="ALL" SELECTED><?php etranslate("All")?>
 </SELECT></TD></TR>
-<TR><TD>Delete all events before:</TD><TD>
+<TR><TD><?php etranslate("Delete all events before");?>:</TD><TD>
 <? print_date_selection ( "end_", date ( "Ymd" ) ) ?>
 </TD></TR>
-<TR><TD>Check box to delete<BR><B>ALL</B> events for a user:</TD><TD valign="bottom"><INPUT TYPE="checkbox" NAME="purge_all" VALUE="Y"></TD></TR>
+<TR><TD><?php etranslate("Check box to delete <b>ALL</b> events for a user")?>:</TD><TD valign="bottom"><INPUT TYPE="checkbox" NAME="purge_all" VALUE="Y"></TD></TR>
 <TR><TD colspan='2'>
-<INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="return confirm('Are you sure you want to delete events for ' + document.forms[0].user.value + '?')">
+<INPUT TYPE="submit" NAME="action" VALUE="<?php etranslate("Delete")?>" ONCLICK="return confirm('<?php etranslate("Are you sure you want to delete events for");?> ' + document.forms[0].user.value + '?')">
 </TD></TR></TABLE>
 </FORM>
 
@@ -86,6 +88,7 @@ function purge_events ( $ids ) {
   $tables[5][T] = 'webcal_site_extras';       $tables[5][C] = 'cal_id';
   $tables[6][T] = 'webcal_reminder_log';      $tables[6][C] = 'cal_id';
   $tables[7][T] = 'webcal_entry';             $tables[7][C] = 'cal_id';
+  $tables[8][T] = 'webcal_import_data';       $tables[8][C] = 'cal_id';
   $TT = sizeof($tables);
 
 //var_dump($tables);exit;

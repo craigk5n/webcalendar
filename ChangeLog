@@ -1,4 +1,6 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Added iCal import
+  - Fixed non-translated text in purge.php
   - Removed "Admin" menu from trailer and replaced with a new admin page
     (adminhome.php) that lists all admin functions.
   - Updated documentation in docs directory.

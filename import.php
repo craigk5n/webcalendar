@@ -22,7 +22,7 @@
 include_once 'includes/init.php';
 print_header('','<link href="includes/tabs.css" rel="stylesheet" type="text/css">');
 
-$tabs = array( "Palm Desktop", "vCalendar" );
+$tabs = array( "Palm Desktop", "vCalendar", "iCalendar" );
 if ( empty ( $tab ) ) $tab = 0;
 
 
@@ -88,12 +88,33 @@ if ( $tab == 0 ) {
 <br>
 <?php etranslate("This form will import vCalendar (.vcs) 1.0 events");?>.
 <br><br>
-<input type="hidden" name="ImportType" value="VCAL">
-<table border=0>
+<input type="hidden" name="ImportType" value="VCAL" />
+<table border="0">
 <tr><td><b><?php etranslate("vCal File")?>:</b></td>
-  <td><input type="file" name="FileName" size="45" maxlength=50"> &nbsp; </td></tr>
-<tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>">
-<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');">
+  <td><input type="file" name="FileName" size="45" maxlength=50" /> &nbsp; </td></tr>
+<tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>" />
+<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
+</td></tr>
+</table>
+
+<?php
+} else if ( $tab == 2 ) {
+?>
+
+<br>
+<?php etranslate("This form will import iCalendar (.ics) events");?>.
+<br><br>
+<input type="hidden" name="ImportType" value="ICAL" />
+<table border="0">
+<tr><td><b><?php etranslate("iCal File")?>:</b></td>
+  <td><input type="file" name="FileName" size="45" maxlength=50" /> &nbsp; </td></tr>
+<tr><td><b><?php etranslate("Overwrite Prior Import")?>:</b></td>
+  <td><input type="radio" name="overwrite" value="Y" CHECKED /> <?php etranslate("Yes");?>
+  &nbsp;&nbsp;
+  <input type="radio" name="overwrite" value="N"/> <?php etranslate("No");?>
+   </td></tr>
+<tr><td colspan="2"><input type="submit" value="<?php etranslate("Import")?>" />
+<input type="button" value="<?php etranslate("Help")?>..." onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" />
 </td></tr>
 </table>
 
