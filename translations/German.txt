@@ -7,7 +7,9 @@
 # Last update: 28 Jul 2004 by Markus Egartner <edv@kh-hallein.at>
 # Last update: 27 Aug 2004 by Markus Egartner <edv@kh-hallein.at>
 # Last update: 29 Oct 2004 by Markus Egartner <edv@kh-hallein.at>
-# Translation last updated on 10-29-2004
+# Last update: 02 Nov 2004 by Markus Egartner <edv@kh-hallein.at>
+# Last update: 03 Nov 2004 by Markus Egartner <edv@kh-hallein.at>
+# Translation last updated on 11-03-2004
 
 
 ###############################################
@@ -390,9 +392,9 @@ Time format: Zeit-Format
 time-interval-help: Legt das Zeitintervall in der Tages,- Wochen,- und Monatsansicht fest.
 Time interval: Zeitintervall
 hour: Stunde
-auto-refresh-help: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
+auto-refresh-help: Falls aktiviert, Tages,- Wochen,- Monatsansicht, und "unbestätigte Termine" werden automatisch aktualisiert.
 Auto-refresh calendars: Kalender aktualisieren
-auto-refresh-time-help: If Auto-refresh is enabled, this specifies the time between each refresh.
+auto-refresh-time-help: Falls die Kalenderaktualisierung aktiviert ist, kann hier das Intervall der Aktualisierung bestimmt werden.
 Auto-refresh time: Aktualisierungsintervall
 require-approvals-help: Wenn diese Option ausgewählt ist, muß der Benutzer den Termin bestätigen um Ihn auf seinen Kalender anzeigen zu lassen (vorausgesetzt "unbestätigte Termine anzeigen" aktiviert ist).  Anmerkung wenn diese Option auf "Nein" gesetzt ist, wirkt sich dies nicht auf etwaige aktiverte "öffentliche Kalender" aus.
 Require event approvals: Termine bestätigen
@@ -704,6 +706,14 @@ Show layer events that are the same as your own: Zeige Layer welche die gleichen
 
 
 ###############################################
+# Page: nonusers_handler.php
+#
+Calendar ID: Kalender ID
+word characters only: können nur Buchstaben und Ziffern sein (a-zA-Z_0-9)
+
+
+
+###############################################
 # Page: help_pref.php
 #
 default-category-help: Legt eine Standardkategorie für einen neuen Termin fest.
@@ -787,7 +797,6 @@ You must specify a view name: Sie müssen einen Ansichtsnamen anlegen
 #
 NONUSER_PREFIX not set: 'NONUSER_PREFIX' nicht definiert
 NonUser: 'Zentrale' - Kalender
-Calendar ID: Kalender ID
 Add New NonUser Calendar: Neuen 'Zentralen' Kalender hinzufügen
 
 

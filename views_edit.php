@@ -55,7 +55,7 @@ if ( $newview ) {
       <option value="T" <?php if ( $viewtype == "T" ) echo " selected=\"selected\"";?>><?php etranslate("Month (Timebar)"); ?></option>
       <option value="M" <?php if ( $viewtype == "M" ) echo " selected=\"selected\"";?>><?php etranslate("Month (side by side)"); ?></option>
       <option value="L" <?php if ( $viewtype == "L" ) echo " selected=\"selected\"";?>><?php etranslate("Month (on same calendar)"); ?></option>
-      </select>&nbsp;<a href="docs/preview-views.html" target="_blank">(preview)</a>
+      </select>&nbsp;<a href="docs/preview-views.html" target="_blank">(<?php etranslate("preview"); ?>)</a>
       </td></tr>
 <tr><td style="verical-align:top; font-weight:bold;">
 <?php etranslate("Users"); ?>:</td>
