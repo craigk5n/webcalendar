@@ -1,4 +1,4 @@
-Verion 0.9.45dev (?? ??? 2004)
+Verion 0.9.45 (12 Dec 2004)
   - Cleaned up user-ldap.php: added connect_and_bind function, config
     section cleanup, check all searches for attr array, etc.
   - Made search js load even when groups aren't enabled.
