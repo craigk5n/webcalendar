@@ -318,6 +318,8 @@ CREATE TABLE webcal_config (
 
 # default settings
 INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'application_name', 'WebCalendar' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'LANGUAGE', 'Browser-defined' );
 INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'demo_mode', 'N' );
@@ -351,6 +353,8 @@ INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'allow_color_customization', 'Y' );
 INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'BGCOLOR', '#C0C0C0' );
+INSERT INTO webcal_config ( cal_setting, cal_value )
+  VALUES ( 'TEXTCOLOR', '#000000' );
 INSERT INTO webcal_config ( cal_setting, cal_value )
   VALUES ( 'H2COLOR', '#000000' );
 INSERT INTO webcal_config ( cal_setting, cal_value )
