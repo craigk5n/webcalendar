@@ -223,6 +223,13 @@ if ( $event_time >= 0 && $TZ_OFFSET != 0 ) { // -1 = no time specified
 // Set alterted date
 $tz_date = ( $gmt ) ? date ( "Ymd", $gmt ) : $row[1];
 
+// save date so the trailer links are for the same time period
+$thisyear = (int) ( $tz_date / 10000 );
+$thismonth = ( $tz_date / 100 ) % 100;
+$thisday = $tz_date % 100;
+$thistime = mktime ( 3, 0, 0, $thismonth, $thisday, $thisyear );
+$thisdow = date ( "w", $thistime );
+
 // $subject is used for mailto URLs
 $subject = translate($application_name) . ": " . $name;
 // Remove the '"' character since it causes some mailers to barf
@@ -233,6 +240,7 @@ $event_repeats = false;
 // build info string for repeating events and end date
 $sql = "SELECT cal_type, cal_end, cal_frequency, cal_days " .
   "FROM webcal_entry_repeats WHERE cal_id = $id";
+
 $res = dbi_query ($sql);
 if ( $res ) {
   if ( $tmprow = dbi_fetch_row ( $res ) ) {
@@ -255,11 +263,17 @@ if ( $res ) {
         case 3: $rep_str .= translate("3rd"); break;
         case 4: $rep_str .= translate("4th"); break;
         case 5: $rep_str .= translate("5th"); break;
+        case 12: if ( $cal_type == 'monthlyByDay' ||
+          $cal_type == 'monthlyByDayR' )
+          break;
         default: $rep_str .= $cal_frequency; break;
       }
     }
+    $rep_str .= ' ';
     switch ($cal_type) {
-      case "daily": $rep_str .= translate("Day"); break;
+      case "daily":
+        $rep_str .= translate("Day");
+        break;
       case "weekly": $rep_str .= translate("Week");
         for ($i=0; $i<=7; $i++) {
           if (substr($cal_days, $i, 1) == "y") {
@@ -268,11 +282,47 @@ if ( $res ) {
         }
         break;
       case "monthlyByDay":
-        $rep_str .= translate("Month") . "/" . translate("by day"); break;
+      case "monthlyByDayR":
+        if ( $cal_frequency == 12 ) {
+          $rep_str .= month_name ( $thismonth - 1 ) . " / ";
+        } else {
+          $rep_str .= translate("Month") . " / ";
+        }
+        $days_this_month = $thisyear % 4 == 0 ? $ldays_per_month[$thismonth] :
+          $days_per_month[$thismonth];
+        if ( $cal_type == 'monthlyByDay' ) {
+          $dow1 = date ( "w", mktime ( 3, 0, 0, $thismonth, 1, $thisyear ) );
+          $whichWeek = floor ( ( $thisday - ( 7 - $dow1 ) ) / 7 );
+          if ( $thisdow > $dow1 )
+            $whichWeek--;
+        } else {
+          $whichWeek = floor ( ( $days_this_month - $thisday ) / 7 );
+        }
+        $rep_str .= ' ';
+        switch ( $whichWeek ) {
+          case 0:
+            if ( $cal_type == 'monthlyByDay' )
+              $rep_str .= translate ( "1st" );
+            break;
+          case 1:
+            $rep_str .= translate ( "2nd" ); break;
+          case 2:
+            $rep_str .= translate ( "3rd" ); break;
+          case 3:
+            $rep_str .= translate ( "4th" ); break;
+          case 4:
+            $rep_str .= translate ( "5th" ); break;
+        }
+        if ( $cal_type == 'monthlyByDayR' )
+          $rep_str .= " " . translate ( "last" );
+        $rep_str .= ' ' . weekday_name ( $thisdow );
+        break;
       case "monthlyByDate":
-        $rep_str .= translate("Month") . "/" . translate("by date"); break;
+        $rep_str .= translate("Month") . "/" . translate("by date");
+        break;
       case "yearly":
-        $rep_str .= translate("Year"); break;
+        $rep_str .= translate("Year");
+        break;
     }
     $rep_str .= ")";
   } else
@@ -352,13 +402,6 @@ if ( $categories_enabled == "Y" ) {
 <TR><TD VALIGN="top"><B><?php etranslate("Repeat Type")?>:</B></TD>
   <TD><?php echo date_to_str ( $row[1], "", true, false, $event_time ) . $rep_str; ?></TD></TR>
 <?php } ?>
-<?php
-// save date so the trailer links are for the same time period
-$list = split ( "-", $tz_date );
-$thisyear = (int) ( $tz_date / 10000 );
-$thismonth = ( $tz_date / 100 ) % 100;
-$thisday = $tz_date % 100;
-?>
 <?php if ( $event_time >= 0 ) { ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Time")?>:</B></TD>
   <TD><?php
