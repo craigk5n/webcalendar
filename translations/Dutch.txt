@@ -2,7 +2,7 @@
 # another language.  The format is "English text: translated text"
 # There cannot be a ":" in the English text.
 # Translated by: Marieke Timmer / marieke.timmer@tijdhof.nl
-# Last update: 29 January 2003
+# Last update: 27 July 2003
 # check out the tools directory which contains two perl scripts:
 # check_translation.pl will tell you if you have successfully translated all re
 # Translation last updated on 07-21-2003
@@ -126,59 +126,19 @@ User sees only his groups: gebruiker heeft enkel inzage in eigen groep(en)
 Categories: categorieen
 categories-enabled-help: Activeert ondersteuning bij afspraak-categorieen
 Categories enabled: activeer gebruik van categorieen
-#
-# << MISSING >>
-# Nonuser:
-# English text: Nonuser Calendars
-#
-#
-# << MISSING >>
-# nonuser-enabled-help:
-# English text: If enabled, admins will have the option to add nonuser calendars
-#
-#
-# << MISSING >>
-# Nonuser enabled:
-# English text: Nonuser Calendars Enabled
-#
-#
-# << MISSING >>
-# nonuser-list-help:
-# English text: Where to display the nonuser calendars in the participant list
-#
-#
-# << MISSING >>
-# Nonuser list:
-# English text: Display in participants list at
-#
-#
-# << MISSING >>
-# Top:
-#
-# << MISSING >>
-# Bottom:
-#
-# << MISSING >>
-# Reports:
-#
-# << MISSING >>
-# reports-enabled-help:
-# English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
-#
-#
-# << MISSING >>
-# Reports enabled:
-#
-# << MISSING >>
-# Subscribe/Publish:
-#
-# << MISSING >>
-# subscriptions-enabled-help:
-# English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
-#
-# << MISSING >>
-# Allow remote subscriptions:
+Nonuser: losse agenda
+nonuser-enabled-help: Indien deze optie is geactiveerd kan een beheerder een of meer losse agenda's (= agenda zonder eigenaar-gebruiker) toevoegen.
+Nonuser enabled: activeer losse agenda
+nonuser-list-help: Deze optie bepaalt waar de losse agenda in het deelnemersoverzicht wordt getoond.
+Nonuser list: positie losse agenda
+Top: bovenaan
+Bottom: onderaan
+Reports: rapportages
+reports-enabled-help: Indien deze optie is geactiveerd wordt een nieuwe rapportage-sectie zichtbaar in het beheerpaneel onderaan de pagina. Hier kan een gebruiker eigen agendarapportages definieren. <br>Beheerders kunnen algemene rapportages toevoegen die in het rapportagemenu van alle gebruikers beschikbaar zijn. 
+Reports enabled: activeer rapportages
+Subscribe/Publish: aanmelden voor agendapublicatie via internet
+subscriptions-enabled-help: Met deze optie bepaalt u of remote gebruikers zich op een WebCalendar-agenda kunnen aanmelden om zo de inhoud van deze agenda in hun iCal-applicatie te bekijken (bijvoorbeeld Apple's iCal of Mozilla Calendar).
+Allow remote subscriptions: agendapublicatie via internet toestaan
 Email: email
 email-enabled-help: Activeer of deactiveer hier het verzenden van email-notificaties en herinneringen bij een afspraak
 Email enabled: activeer gebruik van email
@@ -206,7 +166,7 @@ Table grid color: kleur tabelraster
 Table header background: achtergrondkleur tabelzijden
 Table header text: tekstkleur tabelheaders
 Table cell background: achtergrondkleur tabelcellen
-Table cell background for current day: achtergrondkleur voor afspraken
+Table cell background for current day: achtergrondkleur voor afspraken en huidige dag
 Table cell background for weekends: achtergrondkleur voor weekends
 Event popup background: achtergrondkleur afspraak-popup
 Event popup text: tekstkleur afspraak-popup
@@ -279,10 +239,8 @@ Add New Category: categorie toevoegen
 ###############################################
 # Page: day.php
 #
-#
-# << MISSING >>
-# Admin mode:
-Assistant mode: assistentie-modus
+Admin mode: adminmodus
+Assistant mode: assistentiemodus
 Generate printer-friendly version: genereer printversie
 Printer Friendly: printversie
 
@@ -333,18 +291,16 @@ participants-help: Noteer hier welke externe deelnemers bij de afspraak aanwezig
 Participants: aanwezigen
 external-participants-help: Hier wordt een lijst van externe deelnemers gegeven. Vul per regel een gebruiker en emailadres in. Als een emailadres is ingevoerd kan de externe gebruiker ook notificaties en herinneringen ontvangen.
 External Participants: externe deelnemers
-repeat-type-help: Geef aan hoe vaak de afspraak moet worden herhaald: <I>maandelijks (op dag)</I> zorgt ervoor dat de afspraak wordt herhaald op elke 1e maandag van de maand, 3e donderdag van de maand, etc. <I>Maandelijks (op datum)</I> zorgt ervoor dat de afspraak wordt herhaald op dezelfde dag van de maand.
+repeat-type-help: Deze optie geeft aan hoe vaak de afspraak moet worden herhaald: <br><I>maandelijks (dag)</I> zorgt ervoor dat de afspraak wordt herhaald op elke 1e maandag van de maand, 3e donderdag van de maand, etc. <br><I>maandelijks (dag v.a. maandeinde)</I> zorgt ervoor dat de afspraak wordt herhaald op elke laatste vrijdag van de maand, elke een-na-laatste maandag van de maand, etc. - steeds afhankelijk van de dag waarop u een afspraak definieert <br><I>Maandelijks (datum)</I> zorgt ervoor dat de afspraak wordt herhaald op dezelfde dag van de maand.
 Repeat Type: herhalingspatroon
 Daily: dagelijks
 Weekly: wekelijks
 Monthly: maandelijks
-by day: op dag
-#
-# << MISSING >>
-# by day (from end):
-by date: op datum
+by day: dag
+by day (from end): dag v.a. maandeinde
+by date: datum
 Yearly: jaarlijks
-repeat-end-date-help: Specificeert de datum waarop het herhalingspatroon eindigt.
+repeat-end-date-help: Deze optie specificeert de datum waarop het herhalingspatroon eindigt.
 Repeat End Date: einddatum herhaling
 Use end date: gebruik einddatum
 repeat-day-help: Indien uw afspraak wekelijks wordt herhaald, geeft u hier aan op welke weekdag de afspraak terugkeert. Dit is alleen mogelijk indien u hierboven bij <I>herhalingspatroon</I> de optie [wekelijks] heeft gekozen. <br>N.B.: u kunt meerdere weekdagen aanvinken.
@@ -423,7 +379,7 @@ Set Password: bewaar wachtwoord
 #
 Deleting users not supported: Het verwijderen van gebruikers is niet mogelijk
 The passwords were not identical: De ingevoerde wachtwoorden zijn niet identiek of u heeft het wachtwoord maar een keer ingevuld <br>Probeert u het nog eens
-You have not entered a password: U heeft geen wachtwoord ingevuld
+You have not entered a password: U heeft geen wachtwoord ingevuld.
 
 
 ###############################################
@@ -441,9 +397,7 @@ Modified since: wijzigingen vanaf
 ###############################################
 # Page: export_handler.php
 #
-#
-# << MISSING >>
-# export format not defined or incorrect:
+export format not defined or incorrect: exportformaat niet gedefinieerd of incorrect
 
 
 ###############################################
@@ -487,28 +441,12 @@ Subtract N hours from: trek N uren af van
 same as: net als 
 server time: servertijd
 Default Category: toon de volgende categorieen in mijn agenda
-#
-# << MISSING >>
-# When I am the boss:
-#
-# << MISSING >>
-# Email me event notification:
-#
-# << MISSING >>
-# I want to approve events:
-#
-# << MISSING >>
-# allow-remote-subscriptions-help:
-# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
-#
-# << MISSING >>
-# remote-subscriptions-url-help:
-# English text: Displays the URL remote users should use to subscribe to your calendar.
-#
-#
-# << MISSING >>
-# URL:
+When I am the boss: Als mijn agenda door een assistent wordt beheerd
+Email me event notification: wil ik email-notificaties ontvangen van agendawijzigingen
+I want to approve events: wil ik nieuwe afspraken zelf goedkeuren
+allow-remote-subscriptions-help: Met deze optie bepaalt u of anderen zich op uw agenda kunnen aanmelden om zo de inhoud van uw agenda in hun iCal-applicatie te bekijken (bijvoorbeeld Apple's iCal of Mozilla Calendar).
+remote-subscriptions-url-help: Hier wordt de URL (= internetadres) getoond waar anderen zich op uw agenda kunnen aanmelden.
+URL: URL voor agendapublicatie
 Sun: zo
 Mon: ma
 Tue: di
@@ -536,9 +474,7 @@ Adding/Editing Calendar Entries: afspraken toevoegen/wijzigen
 #
 Help Index: overzicht help-onderwerpen
 Layers: lagen
-#
-# << MISSING >>
-# Import:
+Import: importeren
 
 
 ###############################################
@@ -571,7 +507,7 @@ cont.: cont.
 ###############################################
 # Page: layers.php
 #
-to modify the layers settings for the: instellingen aanpassen voor
+to modify the layers settings for the: om de instellingen aan te passen voor
 Layers are currently: Lagen worden momenteel
 Enabled: wel weergeven
 Disabled: niet weergegeven
@@ -642,7 +578,7 @@ No matches found: Helaas, geen match aangetroffen
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Bekijk de agenda van een andere gebruiker
+View Another User's Calendar: bekijk de agenda van een andere gebruiker
 Go: tonen
 
 
@@ -672,21 +608,11 @@ Ok: OK
 ###############################################
 # Page: import.php
 #
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
+This form will allow you to import entries from the Palm Desktop Datebook.: Hier kunt u de afspraken van uw Palm Desktop Datebook in uw agenda importeren.
+Exclude private records: Negeer privégegevens
+Datebook File: selecteer Palm Datebook-bestand
+This form will import vCalendar (.vcs) 1.0 events: Hier kunt u afspraken uit vCalendar (.vcs) 1.0 in uw agenda importeren
+vCal File: selecteer vCal-bestand
 
 
 ###############################################
@@ -699,8 +625,7 @@ every: elke
 5th: 5e
 1st: 1e
 #
-# << MISSING >>
-# last:
+ last: laatste
 Description: omschrijving
 Status: status
 Waiting for approval: nog niet bevestigd
@@ -723,9 +648,7 @@ Add to My Calendar: zet afspraak ook in mijn eigen agenda
 Email all participants: stuur emailbericht naar alle aanwezigen
 Show activity log: toon logboek
 Hide activity log: verberg logboek
-#
-# << MISSING >>
-# Export this entry to:
+Export this entry to: exporteer afspraak naar
 
 
 ###############################################
@@ -758,42 +681,20 @@ Add View: overzicht toevoegen
 Edit View: overzicht wijzigen
 View Name: naam
 View Type: type
-#
-# << MISSING >>
-# Week (Users horizontal):
-#
-# << MISSING >>
-# Week (Users vertical):
-#
-# << MISSING >>
-# Week (Timebar):
-#
-# << MISSING >>
-# Month (side by side):
-#
-# << MISSING >>
-# Month (on same calendar):
+Week (Users horizontal): weekoverzicht - gebruikers boven
+Week (Users vertical): weekoverzicht - gebruikers links
+Week (Timebar): weekoverzicht - tijdbalkweergave
+Month (side by side): maandoverzicht - gebruikers boven naast elkaar
+Month (on same calendar): maandoverzicht -  gebruikers in één agenda
 
 
 ###############################################
 # Page: nonusers.php
 #
-#
-# << MISSING >>
-# NONUSER_PREFIX not set:
-# English text: NONUSER_PREFIX has not been set in config.php.
-#
-#
-# << MISSING >>
-# NonUser:
-# English text: NonUser Calendars
-#
-#
-# << MISSING >>
-# Calendar ID:
-#
-# << MISSING >>
-# Add New NonUser Calendar:
+NONUSER_PREFIX not set: code voor losse agenda onjuist of niet aanwezig in config.php
+NonUser: losse agenda
+Calendar ID: agenda ID
+Add New NonUser Calendar: losse agenda toevoegen
 
 
 ###############################################
@@ -832,22 +733,12 @@ Private: prive-afspraak
 ###############################################
 # Page: import_handler.php
 #
-#
-# << MISSING >>
-# Conflicting events:
-#
-# << MISSING >>
-# Errors:
+Conflicting events: conflicterende afspraken
+Errors: fouten
 Back to My Calendar: EIGEN AGENDA
-#
-# << MISSING >>
-# There was an error parsing the import file or no events were returned:
-#
-# << MISSING >>
-# The import file contained no data:
-#
-# << MISSING >>
-# Event Imported:
+There was an error parsing the import file or no events were returned: Er heeft zich een fout voorgedaan bij het verwerken van het importbestand of er zijn geen items aangetroffen
+The import file contained no data: Het importbestand bevat geen gegevens.
+Event Imported: geimporteerd item
 
 
 ###############################################
@@ -858,139 +749,59 @@ Back to My Calendar: EIGEN AGENDA
 ###############################################
 # Page: edit_report.php
 #
-#
-# << MISSING >>
-# Tomorrow:
-#
-# << MISSING >>
-# Today:
-#
-# << MISSING >>
-# Yesterday:
-#
-# << MISSING >>
-# Day before yesterday:
-#
-# << MISSING >>
-# Next week:
-#
-# << MISSING >>
-# This week:
-#
-# << MISSING >>
-# Last week:
-#
-# << MISSING >>
-# Week before last:
-#
-# << MISSING >>
-# Next week and week after:
-#
-# << MISSING >>
-# This week and next week:
-#
-# << MISSING >>
-# Last week and this week:
-#
-# << MISSING >>
-# Last two weeks:
-#
-# << MISSING >>
-# Next month:
-#
-# << MISSING >>
-# This month:
-#
-# << MISSING >>
-# Last month:
-#
-# << MISSING >>
-# Month before last:
-#
-# << MISSING >>
-# Next year:
-#
-# << MISSING >>
-# This year:
-#
-# << MISSING >>
-# Last year:
-#
-# << MISSING >>
-# Year before last:
-#
-# << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
-# Unnamed Report:
-#
-# << MISSING >>
-# Add Report:
-#
-# << MISSING >>
-# Edit Report:
-#
-# << MISSING >>
-# Report name:
+Tomorrow: morgen
+Today: vandaag
+Yesterday: gisteren
+Day before yesterday: eergisteren
+Next week: volgende week
+This week: deze week
+Last week: vorige week
+Week before last: twee weken geleden
+Next week and week after: komende twee weken
+This week and next week: deze en volgende week
+Last week and this week: vorige en deze week
+Last two weeks: laatste twee weken
+Next month: volgende maand
+This month: deze maand
+Last month: vorige maand
+Month before last: maand voor afgelopen maand
+Next year: volgend jaar
+This year: dit jaar
+Last year: vorig jaar
+Year before last: jaar voor afgelopen jaar
+Invalid report id: ongeldige rapportage-ID
+Unnamed Report: naamloze rapportage
+Add Report: rapportage toevoegen
+Edit Report: rapportage wijzigen
+Report name: naam rapportage
 Current User: huidige gebruiker
-#
-# << MISSING >>
-# Include link in trailer:
-#
-# << MISSING >>
-# Include standard header/trailer:
-#
-# << MISSING >>
-# Date range:
-#
-# << MISSING >>
-# Include previous/next links:
-#
-# << MISSING >>
-# Include empty dates:
-#
-# << MISSING >>
-# Template variables:
-#
-# << MISSING >>
-# Page template:
-#
-# << MISSING >>
-# Day template:
-#
-# << MISSING >>
-# Event template:
-#
-# << MISSING >>
-# Are you sure you want to delete this report?:
+Include link in trailer: plaats rapportage in menubalk
+Include standard header/trailer: gebruik standaard kop- en voettekst
+Date range: rapportageperiode
+Include previous/next links: gebruik links voor vorige en volgende rapportageperiode
+Include empty dates: toon ook dagen zonder afspraken
+Template variables: sjabloon variabelen
+Page template: sjabloon pagina
+Day template: sjabloon dag
+Event template: sjabloon agendaitems
+Are you sure you want to delete this report?: Weet u zeker dat u deze rapportage wilt verwijderen?
 
 
 ###############################################
 # Page: report.php
 #
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Manage Reports:
+Approved: goedgekeurd
+Unknown: onbekend
+to manage reports for the Public Access calendar: om rapportages voor de publieke agenda te beheren
+Add new report: rapportage toevoegen
+Manage Reports: rapportagebeheer
 
 
 ###############################################
 # Page: assistant_edit.php
 #
 Assistants: assistenten
-Yours assistants: uw agenda-assisten
+Yours assistants: uw agenda-assistenten
 
 
 ###############################################
@@ -1016,50 +827,24 @@ Yours assistants: uw agenda-assisten
 ###############################################
 # Page: help_import.php
 #
-#
-# << MISSING >>
-# Palm Desktop:
-#
-# << MISSING >>
-# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
-#
-# << MISSING >>
-# The following entries will not be imported:
-#
-# << MISSING >>
-# Entries older than the current date:
-#
-# << MISSING >>
-# Entries creted in the Palm Desktop that have not been HotSync'd:
-#
-# << MISSING >>
-# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
-#
-# << MISSING >>
-# Therefore, updates should be made in the Palm Desktop.:
-#
-# << MISSING >>
-# vCal:
-#
-# << MISSING >>
-# The following formats have been tested:
-#
-# << MISSING >>
-# Palm Desktop 4:
-#
-# << MISSING >>
-# Lotus Organizer 6:
-#
-# << MISSING >>
-# Microsoft Outlook 2002:
+Palm Desktop: Palm Desktop
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Al uw Palm Datebook-afspraken zijn opgeslagen in een bestand met de naam datebook.dat. U kunt dit bestand vinden in de Palm-directory op uw computer. In deze directory vindt u een subdirectory met uw gebruikersnaam als naam. Hierin vindt u het bestand <tt>datebook/datebook.dat</tt> - dit bestand heeft u nodig om uw Palm Desktop datebookgegevens in uw WebCalendar agenda te kunnen importeren.
+The following entries will not be imported: De volgende items zullen niet worden geimporteerd
+Entries older than the current date: items ouder dan de huidige datum
+Entries creted in the Palm Desktop that have not been HotSync'd: Items gemaakt in de Palm Desktop agenda die nog niet met HotSync gesynchroniseerd zijn
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Telkens als u uw Palm Datebook in uw WebCalendar agenda importeert zullen de gegevens van een vorige import-activiteit worden overschreven. Dit geldt niet voor afspraken in het verleden - items ouder dan de huidige datum worden immers niet geimporteerd.  
+Therefore, updates should be made in the Palm Desktop.: &nbsp;Derhalve dient u <b>nieuwe afspraken in de Palm Desktop agenda toe te voegen</b> en niet in uw WebCalendar agenda. 
+vCal: vCal
+The following formats have been tested: De volgende bestandsformaten zijn getest 
+Palm Desktop 4: Palm Desktop 4
+Lotus Organizer 6: Lotus Organiser 6
+Microsoft Outlook 2002: Microsoft Outlook 2002
 
 
 ###############################################
 # Page: edit_report_handler.php
 #
-#
-# << MISSING >>
-# Variable N not found:
+Variable N not found: Variabele N niet gevonden
 
 
 ###############################################
@@ -1148,9 +933,7 @@ Send Reminder: herinnering sturen
 ###############################################
 # Page: includes/init.php
 #
-#
-# << MISSING >>
-# charset:
+charset: charset (karakterset)
 
 
 ###############################################
