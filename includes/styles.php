@@ -59,6 +59,8 @@ a#programname {
 	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
 	text-decoration: none;
 	clear: both;
+	display: block;
+	width: 15ex;
 }
 <?php //new event icon ?>
 .new {
@@ -67,8 +69,8 @@ a#programname {
 	height: 10px;
 	float: right;
 }
-<?php //event icon ?>
-.bullet {
+<?php //event icon 
+?>.bullet {
 	width: 5px;
 	height: 7px;
 	border-width: 0px;
@@ -80,11 +82,8 @@ a#programname {
 	color: #006000;
 	text-decoration: none;
 }
-<?php //end stuff that stays ?>
-
-
-
-.tablecell {
+<?php //end stuff that stays 
+?>.tablecell {
   font-size: 12px;
   width: 14%;
   height: 75px;
@@ -109,7 +108,6 @@ a#programname {
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-
 .tablecellweekend {
   font-size: 12px;
   width: 14%;
@@ -241,8 +239,8 @@ textarea {
   font-size: 12px;
   text-decoration: none;
 }
-<?php // formats the left & right arrow images ?>
-.prevnext {
+<?php // formats the left & right arrow images 
+?>.prevnext {
 	border-width: 0px;
 	width: 36px;
 	height: 32px;
@@ -262,13 +260,13 @@ textarea {
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
-<?php // formats the left column in help sections ?>
-.help {
+<?php // formats the left column in help sections 
+?>.help {
 	vertical-align: top;
 	font-weight: bold;
 }
-<?php // standard table appearing mainly in prefs.php & admin.php ?>
-table.standard {
+<?php // standard table appearing mainly in prefs.php & admin.php 
+?>table.standard {
   border: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   background-color: <?php echo $GLOBALS['CELLBG']; ?>;
   font-size: 12px;
@@ -279,12 +277,11 @@ table.standard th {
   padding: 0px;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-
 <?php // 
 // ALL STYLES BELOW THIS LINE ARE NEW as of 8 July 2004
-// ================== MISC. ?>
-<?php // formerly .monthlink ?>
-td.month a {
+// ================== MISC.
+// formerly .monthlink 
+?>td.month a {
 	font-size: 13px;
 	color: #B04040;
 	text-decoration: none;
@@ -296,9 +293,8 @@ td.month a:hover {
 	text-decoration: none;
 	text-align: center;
 }
-
-<?php // ======================== ACTIVITY_LOG.PHP ?>
-#activitylog table,
+<?php // ======================== ACTIVITY_LOG.PHP 
+?>#activitylog table,
 table.activitylog {
 	border-width: 0px;
 	width: 100%;
@@ -315,20 +311,17 @@ table.activitylog {
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 	font-size: 13px;
 }
-
-<?php // ========================= DAY.PHP ?>
-.dayview { }
+<?php // ========================= DAY.PHP 
+?>.dayview { }
 #day .title,
 .dayviewtitle,
-#year .title,
-.yearviewtitle {
+#year .title {
 	text-align: center;
 }
-<?php // contains the date (i.e. Monday, May 3, 2004) ?>
-#day .title .date,
+<?php // contains the date (i.e. Monday, May 3, 2004) 
+?>#day .title .date,
 td.dayviewtitle .date,
-#year .title .date,
-.yearviewtitle .date{
+#year .title .date {
 	font-size: 24px;
 	font-weight: bold;
 	text-align: center;
@@ -371,9 +364,8 @@ table.dayviewminical {
 #day .selectedday {
 	border: 1px solid black;
 }
-
-<?php // ========================= MONTH.PHP ?>
-#month table.main {
+<?php // ========================= MONTH.PHP 
+?>#month table.main {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
@@ -405,32 +397,56 @@ table.dayviewminical {
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 	vertical-align: top;
 }
-
 <?php // ========================= YEAR.PHP
-// contains ALL months ?>
-#year table.main,
-table.yearview {
-	border-width: 0px;
-}
-#year tr,
-.yearview tr {
+ // contains ALL months ?>
+#year table.main tr {
 	vertical-align: top;
 }
-#year th,
-.yearview th {
-	font-size: 13px;
-/*	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>; */
-	width: 14%;
+#year table.main td {
+	text-align: center;
+	padding: 0px 3px;
 }
-.highlight {
+#year table.minical {
 	font-size: 12px;
-	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+<?php // ^^^ Need this for IE for some reason ?>
+	border-collapse: collapse;
+	margin: 5px auto;
+}
+#year table.minical caption {
+	margin: 0px auto;
+}
+#year table.minical caption a {
+	font-weight: bold;
+	color: #B04040;
+}
+#year table.minical caption a:hover {
+	color: #0000FF;
+}
+#year table.minical th, #year table.minical td.empty {
+	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+}
+#year table.minical td {
+	padding: 0px 2px;
+	border: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
+}
+#year table.minical td a {
+	display: block;
+	text-align: center;
+	margin: 0px;
+	padding: 3px;
+}
+#year table.minical td.weekend {
+	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
+}
+#year table.minical td#today {
+	background-color: <?php echo $GLOBALS['TODAYCELLBG']; ?>;
+}
+#year table.minical td.hasevents {
+	background-color: #ddddff;
 	font-weight: bold;
 }
-
-<?php // ======================= VIEW_D.PHP ?>
-#viewd table,
+<?php // ======================= VIEW_D.PHP 
+?>#viewd table,
 table.viewd {
 	border-width: 0px;
 	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -443,11 +459,9 @@ table.viewd {
 	font-weight: normal;
 	font-size: 13px;
 }
-
-<?php // ======================= VIEW_L.PHP ?>
-#viewv th,
+<?php // ======================= VIEW_L.PHP 
+?>#viewv th,
 .viewv th,
-#viewl th,
 .viewl th,
 #month table.main th {
 	font-size: 14px;
@@ -458,87 +472,61 @@ table.viewd {
 	width: 14%;
 }
 #viewl table.minical,
-table.viewlminical,
-#year table.minical,
-table.yearviewminical,
 #month table.minical {
 	border-width: 0px;
 }
 #viewl .minical td.month,
-.viewlminical td.month,
-#year .minical td.month,
-.yearviewminical td.month,
 #month .minical td.month {
 	text-align: center;
 }
-<?php // contains the name of the month (i.e. January, June, December, etc) ?>
-#viewl .minical td.month a,
-.viewlminical td.month a,
-#year .minical td.month a,
-.yearviewminical td.month a,
+<?php // contains the name of the month (i.e. January, June, December, etc) 
+?>#viewl .minical td.month a,
 #month .minical td.month a {
 	color: #B04040;
 	font-size: 13px;
 	text-decoration: none;
 }
 #viewl .minical td.month a:hover,
-.viewlminical td.month a:hover,
-#year .minical td.month a:hover,
-.yearviewminical td.month a:hover,
 #month .minical td.month a:hover {
 	color: #0000FF;
 	font-size: 13px;
 	text-decoration: none;
 }
 <?php // formats the day name (i.e. Sun, Mon, etc)
-      // used as "tr class="day"" to format the cells WITHIN that row ?>
-#viewl .minical tr.day,
-.viewlminical tr.day,
-#year .minical tr.day,
-.yearviewminical tr.day,
+      // used as "tr class="day"" to format the cells WITHIN that row 
+?>#viewl .minical tr.day,
 #month .minical tr.day th,
 #day .minical tr.day,
 .dayviewminical tr.day {
 	color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
 	text-align: center;
 }
-<?php // cells that contain the numeric date ?>
-#viewl .minical td.numdate,
-.viewlminical td.numdate,
-#year .minical td.numdate,
-.yearviewminical td.numdate,
+<?php // cells that contain the numeric date 
+?>#viewl .minical td.numdate,
 #viewl .minical tr.numdate td,
-.viewlminical tr.numdate td,
-#year .minical tr.numdate td,
-.yearviewminical tr.numdate td,
 #month .minical td.numdate,
 #month .minical tr.numdate td {
 	text-align: right;
 }
 #viewl .minical td.numdate a,
-.viewlminical td.numdate a,
-#year .minical td.numdate a,
-.yearviewminical td.numdate a,
 #month .minical td.numdate a {
 	font-size: 13px;
 	text-decoration: none;
 }
 #viewl .minical td.numdate a:hover,
-.viewlminical td.numdate a:hover,
-#year .minical td.numdate a:hover,
-.yearviewminical td.numdate a:hover,
 #month .minical td.numdate a:hover {
 	font-size: 13px;
 	color: #0000FF;
 	text-decoration: none;
 }
-
-<?php // ======================= VIEW_M.PHP ?>
-#viewm th,
+<?php // ======================= VIEW_M.PHP 
+?>#viewm th,
 .viewm th,
 #viewd th,
 .viewd th {
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	background-color: <?php echo ( $GLOBALS['THBG'] == "" ? "#000000" : $GLOBALS['THBG'] );?>;
 }
 #vieww th.today,
@@ -551,28 +539,31 @@ table.yearviewminical,
 	width: 10%;
 	vertical-align: top;
 }
-
-<?php // ======================== VIEW_V.PHP ?>
-#viewv table,
+<?php // ======================== VIEW_V.PHP 
+?>#viewv table,
 table.viewv,
 #viewm table,
 table.viewm,
-#viewl table,
 table.viewl,
 #viewt table,
 table.viewt {
-	border-width: 0px;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>; 
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-collapse: collapse;
 }
+#viewm th.empty,
 #viewv th.empty,
 .viewv th.empty {
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
-	border-top-width: 0px;
-	border-left-width: 0px;
+	border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
+	border-left: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-collapse: collapse;
 }
+#viewm th.weekend,
 #viewv th.weekend,
 .viewv th.weekend {
 	color: <?php echo ( $GLOBALS['THFG'] == "" ? "#FFFFFF" : $GLOBALS['THFG'] );?>;
@@ -600,14 +591,12 @@ table.viewt {
 	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
-
-<?php // ======================= VIEW_W.PHP ?>
-#vieww .title,
+<?php // ======================= VIEW_W.PHP 
+?>#vieww .title,
 .viewwtitle,
 #viewd .title,
 .viewdtitle,
 #viewl .title,
-.viewltitle,
 #viewm .title,
 .viewmtitle,
 #viewt .title,
@@ -622,7 +611,6 @@ table.viewt {
 #viewd .title .date,
 .viewdtitle .date,
 #viewl .title .date,
-.viewltitle .date,
 #viewm .title .date,
 .viewmtitle .date,
 #viewt .title .date,
@@ -639,7 +627,6 @@ table.viewt {
 #viewd .title .viewname,
 .viewdtitle .viewname,
 #viewl .title .viewname,
-.viewltitle .viewname,
 #viewm .title .viewname,
 .viewmtitle .viewname,
 #viewt .title .viewname,
@@ -648,8 +635,7 @@ table.viewt {
 .viewvtitle .viewname,
 #day .title .user,
 td.dayviewtitle .user,
-#year .title .user,
-.yearviewtitle .user {
+#year .title .user {
 	font-size: 18px;
 	font-weight: bold;
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
@@ -702,9 +688,8 @@ table.vieww {
 .viewv td.today {
 	background-color: <?php echo ( $GLOBALS['TODAYCELLBG'] == "" ? "#C0C0C0" : $GLOBALS['TODAYCELLBG'] ); ?>;
 }
-
-<?php // ========================= WEEK.PHP ?>
-#week table {
+<?php // ========================= WEEK.PHP 
+?>#week table {
 	width: 100%;
 	border-width-top: 0px;
 	border-width-left: 0px;
@@ -819,9 +804,8 @@ table.vieww {
 	color: <?php echo $GLOBALS['H2COLOR']; ?>;
 	text-align: center;
 }
-
-<?php // ===================== WEEK_DETAILS.PHP ?>
-#weekdetails table {
+<?php // ===================== WEEK_DETAILS.PHP 
+?>#weekdetails table {
 	border-width: 0px;
 	width: 90%;
 	background-color: <?php echo $GLOBALS['TABLEBG']; ?>;
