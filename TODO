@@ -13,8 +13,6 @@ te?
 [X] Allow forms in custom header (right now we reference our forms by
     number as in document.forms[0], which will not work if the user
     has a form in the custom header)
-[ ] PHP4 sessions instead of my cookie code
-    (which may be behind some of the login problems)
 [ ] User self-registration with optional email and/or admin validation
 [ ] Better handling of large numbers of users (1000+).
     We have one user who claims the JS chokes the browser with 1000+
@@ -38,9 +36,11 @@ te?
     a good place to start)
 [ ] Add email notification for submission of new public events
     (ideally, multiple email recipients will be possible)
-[ ] Better user sorting.  Perhaps create new db fields in webcal_user
-    (lastname, firstname).  Admin could then select sort priority
+[ ] Better user sorting.  Admin could then select sort priority
     (login or lastname).
+[ ] Added cal_fullname (or cal_display_name) column to webcal_user
+    and webcal_nonuser_cals so nonuser cals do not need to specify
+    first and last name (since it does not usually make sense).
 [ ] Theme or color scheme selection.
     We would pre-populate some good color schemes.
 
