@@ -1,4 +1,4 @@
-Verion 0.9.43dev (?? ??? 2003)
+Verion 0.9.43 (10 Mar 2004)
   - Added iCal import
   - Fixed non-translated text in purge.php
   - Removed "Admin" menu from trailer and replaced with a new admin page
@@ -14,7 +14,8 @@ Verion 0.9.43dev (?? ??? 2003)
     enabled by default.
   - Patch 853298: allow event description to appear in day view for
     printer-friendly (enabled by new system setting)
-  - Added ability to use custom header and trailer from System Settings page
+  - Added ability to use custom script, header and trailer from
+    System Settings page
   - Fixed bug 826653,825315: could not add events as public user event when
     system settings were configured to allow it
   - Show date/time of event in email notification for deleted event
