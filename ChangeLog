@@ -45,6 +45,7 @@ Version 0.9.41dev (?? ??? ???)
   - Removed apostrophes from C-style comments from tables-mysql.sql
     since MySQL seems to barf on these.
   - Patch: 623394: Updated Italian translation
+  - Updated Dutch translation
   - Updated German translation.
   - Added Estonian translation.
 Version 0.9.40 (30 Nov 2002)
