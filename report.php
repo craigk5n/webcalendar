@@ -131,7 +131,7 @@ function event_to_text ( $id, $date, $time, $duration,
   $text = str_replace ( '${name}', $name_str, $text );
   $text = str_replace ( '${description}', $description_str, $text );
   $text = str_replace ( '${date}', $date_str, $text );
-  $text = str_replace ( '${date}', $date_str, $text );
+  $text = str_replace ( '${dateYmd}', $date, $text );
   $text = str_replace ( '${fulldate}', $date_full_str, $text );
   $text = str_replace ( '${time}', $time_str, $text );
   $text = str_replace ( '${starttime}', $start_time_str, $text );
@@ -409,7 +409,7 @@ for ( $cur_time = $start_time; $cur_time <= $end_time; $cur_time += $ONE_DAY ) {
           $viewname = $rep[$cur_rep]['cal_name'];
         }
         $event_str .= event_to_text ( $viewid,
-          $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
+          $dateYmd, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
           $viewname, $rep[$cur_rep]['cal_description'],
           $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
           $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
@@ -427,7 +427,7 @@ for ( $cur_time = $start_time; $cur_time <= $end_time; $cur_time += $ONE_DAY ) {
         $viewname = $ev[$i]['cal_name'];
       }
       $event_str .= event_to_text ( $viewid,
-        $date, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
+        $dateYmd, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
         $viewname, $ev[$i]['cal_description'],
         $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
         $ev[$i]['cal_access'], $ev[$i]['cal_login'] );
@@ -446,7 +446,7 @@ for ( $cur_time = $start_time; $cur_time <= $end_time; $cur_time += $ONE_DAY ) {
         $viewname = $rep[$cur_rep]['cal_name'];
       }
       $event_str .= event_to_text ( $viewid,
-        $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
+        $dateYmd, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
         $viewname, $rep[$cur_rep]['cal_description'],
         $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
         $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
