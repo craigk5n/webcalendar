@@ -373,7 +373,6 @@ a.matrix img {
   margin-left: auto; 
   margin-right: auto;
   border: 1px solid #000000;
-  width: 155px;
 }
 .matrixlegend img {
   border-width: 0px;
