@@ -82,10 +82,10 @@ function validate_and_submit () {
 
 
 function selectDate ( day, month, year, current ) {
-  url = "datesel.php?form=editentryform&day=" + day +
-    "&month=" + month + "&year=" + year;
+  url = "datesel.php?form=editentryform&amp;day=" + day +
+    "&amp;month=" + month + "&amp;year=" + year;
   if ( current > 0 )
-    url += '&date=' + current;
+    url += '&amp;date=' + current;
   window.open( url, "DateSelection",
     "width=300,height=200,resizable=yes,scrollbars=yes" );
 }
@@ -99,7 +99,7 @@ function selectUsers () {
     if ( document.forms[0].elements[i].name == "participants[]" )
       listid = i;
   }
-  url = "usersel.php?form=editentryform&listid=" + listid + "&users=";
+  url = "usersel.php?form=editentryform&amp;listid=" + listid + "&amp;users=";
   // add currently selected users
   for ( i = 0, j = 0; i < document.forms[0].elements[listid].length; i++ ) {
     if ( document.forms[0].elements[listid].options[i].selected ) {
