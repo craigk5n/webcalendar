@@ -223,8 +223,8 @@ if ( $show_participants ) {
     } 
     $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
-  print "<tr><td valign=\"top\"><b>" .
-    translate("User") . ":</b></td>";
+  print "<tr><td style=\"vertical-align:top; font-weight:bold;\">" .
+    translate("User") . ":</td>";
   print "<td><select name=\"report_user\" size=\"1\">$users\n";
   print "</select>\n";
   print "</td></tr>\n";
@@ -232,12 +232,12 @@ if ( $show_participants ) {
 ?>
 
 <?php if ( $is_admin ) { ?>
-<tr><td><b><?php etranslate("Global")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Global")?>:</td>
   <td><input type="radio" name="is_global" value="Y"
-  <?php if ( $report_is_global != 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("Yes") ?>
+  <?php if ( $report_is_global != 'N' ) echo " checked=\"checked\""; ?> /> <?php etranslate("Yes") ?>
   &nbsp;&nbsp;&nbsp;
   <input type="radio" name="is_global" value="N"
-  <?php if ( $report_is_global == 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("No") ?>
+  <?php if ( $report_is_global == 'N' ) echo " checked=\"checked\""; ?> /> <?php etranslate("No") ?>
   </td></tr>
 <?php } ?>
 
@@ -247,89 +247,88 @@ if ( $show_participants ) {
 // allow option of adding to all users trailer.
 if ( $is_admin ) {
 ?>
-<tr><td><b><?php etranslate("Include link in trailer")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Include link in trailer")?>:</td>
   <td><input type="radio" name="show_in_trailer" value="Y"
-  <?php if ( $report_show_in_trailer != 'N' ) echo " checked=\"checked\""; ?>
-  > <?php etranslate("Yes") ?>
+  <?php if ( $report_show_in_trailer != 'N' ) echo " checked=\"checked\""; ?> /> <?php etranslate("Yes") ?>
   &nbsp;&nbsp;&nbsp;
   <input type="radio" name="show_in_trailer" value="N"
-  <?php if ( $report_show_in_trailer == 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("No") ?>
+  <?php if ( $report_show_in_trailer == 'N' ) echo " checked=\"checked\""; ?> /> <?php etranslate("No") ?>
   </td></tr>
 <?php } ?>
 
-<tr><td><b><?php etranslate("Include standard header/trailer")?>:</b>
+<tr><td style="font-weight:bold;"><?php etranslate("Include standard header/trailer")?>:
   &nbsp;&nbsp;&nbsp;&nbsp;
   </td>
   <td><input type="radio" name="include_header" value="Y"
-  <?php if ( $include_header != 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("Yes") ?>
+  <?php if ( $include_header != 'N' ) echo " checked=\"checked\""; ?> /> <?php etranslate("Yes") ?>
   &nbsp;&nbsp;&nbsp;
   <input type="radio" name="include_header" value="N"
-  <?php if ( $report_include_header == 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("No") ?>
+  <?php if ( $report_include_header == 'N' ) echo " checked=\"checked\""; ?> /> <?php etranslate("No") ?>
   </td></tr>
 
-<tr><td><b><?php etranslate("Date range")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Date range")?>:</td>
   <td><select name="time_range">
   <?php
     while ( list ( $num, $descr ) = each ( $ranges ) ) {
       echo "<option value=\"$num\"";
       if ( $report_time_range == $num )
         echo " selected=\"selected\"";
-      echo ">$descr\n";
+      echo ">$descr</option>\n";
     }
   ?></select></td></tr>
 
-<tr><td><b><?php etranslate("Category")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Category")?>:</td>
   <td><select name="cat_id">
-  <option value=""> <?php etranslate("None") ?>
+  <option value=""><?php etranslate("None") ?></option>
   <?php
     while ( list ( $cat_id, $descr ) = each ( $categories ) ) {
       echo "<option value=\"$cat_id\"";
       if ( $report_cat_id == $cat_id )
         echo " selected=\"selected\"";
-      echo ">$descr\n";
+      echo ">$descr</option>\n";
     }
   ?></select></td></tr>
 
-<tr><td><b><?php etranslate("Include previous/next links")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Include previous/next links")?>:</td>
   <td><input type="radio" name="allow_nav" value="Y"
-  <?php if ( $report_allow_nav != 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("Yes") ?>
+  <?php if ( $report_allow_nav != 'N' ) echo " checked=\"checked\""; ?> /> <?php etranslate("Yes") ?>
   &nbsp;&nbsp;&nbsp;
   <input type="radio" name="allow_nav" value="N"
-  <?php if ( $report_allow_nav == 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("No") ?>
+  <?php if ( $report_allow_nav == 'N' ) echo " checked=\"checked\""; ?> /> <?php etranslate("No") ?>
   </td></tr>
 
-<tr><td><b><?php etranslate("Include empty dates")?>:</b></td>
+<tr><td style="font-weight:bold;"><?php etranslate("Include empty dates")?>:</td>
   <td><input type="radio" name="include_empty" value="Y"
-  <?php if ( $report_include_empty != 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("Yes") ?>
+  <?php if ( $report_include_empty != 'N' ) echo " checked=\"checked\""; ?> /> <?php etranslate("Yes") ?>
   &nbsp;&nbsp;&nbsp;
   <input type="radio" name="include_empty" value="N"
-  <?php if ( $report_include_empty == 'N' ) echo " checked=\"checked\""; ?>> <?php etranslate("No") ?>
+  <?php if ( $report_include_empty == 'N' ) echo " checked=\"checked\""; ?> /> <?php etranslate("No") ?>
   </td></tr>
 </table>
 
-<table border="0">
+<table style="border-width:0px;">
 <tr><td></td><td></td>
-  <td><b><?php etranslate("Template variables")?></b></td></tr>
+  <td style="font-weight:bold;"><?php etranslate("Template variables")?></td></tr>
 
-<tr><td valign="top"><b><?php etranslate("Page template")?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Page template")?>:</td>
   <td><textarea rows="12" cols="60" wrap="virtual" name="page_template"><?php echo htmlentities ( $page_template )?></textarea></td>
- <td valign="top">
+ <td style="vertical-align:top;">
    <tt>${days}</tt><br />
    <tt>${report_id}</tt><br />
  </td></tr>
 
-<tr><td valign="top"><b><?php etranslate("Day template")?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Day template")?>:</td>
   <td><textarea rows="12" cols="60" wrap="virtual" name="day_template"><?php echo htmlentities ( $day_template )?></textarea></td>
- <td valign="top">
+ <td style="vertical-align:top;">
    <tt>${events}</tt><br />
    <tt>${date}</tt><br />
    <tt>${fulldate}</tt><br />
    <tt>${report_id}</tt><br />
  </td></tr>
 
-<tr><td valign="top"><b><?php etranslate("Event template")?>:</b></td>
+<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Event template")?>:</td>
   <td><textarea rows="12" cols="60" wrap="virtual" name="event_template"><?php echo htmlentities ( $event_template )?></textarea></td>
- <td valign="top">
+ <td style="vertical-align:top;">
    <tt>${name}</tt><br />
    <tt>${description}</tt><br />
    <tt>${date}</tt><br />
