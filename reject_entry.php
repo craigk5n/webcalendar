@@ -67,10 +67,14 @@ if ( empty ( $error ) && $id > 0 ) {
     // does this user want email for this?
     $send_user_mail = get_pref_setting ( $partlogin[$i],
       "EMAIL_EVENT_REJECTED" );
-    user_load_variables ( $partlogin[$i], "temp" );
+     user_load_variables ( $partlogin[$i], "temp" );
+    $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
     if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
       $send_email != "N" ) {
-      $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
+        if ($GLOBALS['LANGUAGE'] != $user_language){
+          reset_language ( $user_language );
+        }
+        $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
         translate("An appointment has been rejected by") .
         " " . $login_fullname .  ". " .
         translate("The subject was") . " \"" . $name . " \"\n" .

@@ -378,6 +378,7 @@ if ( empty ( $error ) ) {
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $old_participant, "EMAIL_EVENT_DELETED" );
         $user_TZ = get_pref_setting ( $old_participant, "TZ_OFFSET" );
+        $user_language = get_pref_setting ( $old_participant, "LANGUAGE" );
         user_load_variables ( $old_participant, "temp" );
         if ( $old_participant != $login && strlen ( $tempemail ) &&
           $do_send == "Y" && $send_email != "N" ) {
@@ -405,7 +406,10 @@ if ( empty ( $error ) ) {
             $user_day = $day;
             $user_year = $year;
           }
-
+          if ($GLOBALS['LANGUAGE'] != $user_language){
+            reset_language ( $user_language );
+          }
+          //do_debug($user_language);				
           $fmtdate = sprintf ( "%04d%02d%02d", $user_year, $user_month, $user_day );
           $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
             translate("An appointment has been canceled for you by") .
@@ -516,6 +520,7 @@ if ( empty ( $error ) ) {
         $do_send = get_pref_setting ( $participants[$i],
            $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
         $user_TZ = get_pref_setting ( $participants[$i], "TZ_OFFSET" );
+        $user_language = get_pref_setting ( $participants[$i], "LANGUAGE" );
         user_load_variables ( $participants[$i], "temp" );
         if ( $participants[$i] != $login && boss_must_be_notified ( $login, $participants[$i] ) && strlen ( $tempemail ) &&
           $do_send == "Y" && $send_user_mail && $send_email != "N" ) {
@@ -543,7 +548,10 @@ if ( empty ( $error ) ) {
             $user_day = $day;
             $user_year = $year;
           }
-
+          if ($GLOBALS['LANGUAGE'] != $user_language){
+             reset_language ( $user_language );
+          }
+          //do_debug($user_language);
           $fmtdate = sprintf ( "%04d%02d%02d", $user_year, $user_month, $user_day );
           $msg = translate("Hello") . ", " . $tempfullname . ".\n\n";
           if ( $newevent || $old_status[$participants[$i]] == '' )
