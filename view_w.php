@@ -136,7 +136,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 ?>
 
 <table class="vieww" rules="all" cellspacing="0" cellpadding="2">
-<tr><th style="width:10%;">&nbsp;</th>
+<tr><th class="empty">&nbsp;</th>
 
 <?php
 
@@ -147,7 +147,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
-    echo "<th style=\"width:$tdw%;\">$tempfullname</th>";
+    echo "<th style=\"width:$tdw%;\">$tempfullname</th>\n";
   }
   echo "</tr>\n";
   
@@ -159,30 +159,48 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     $weekday = weekday_short_name ( $wday );
     if ( date ( "Ymd", $xdate ) == date ( "Ymd", $today ) ) {
       $color = $TODAYCELLBG;
-      $class = "tableheadertoday";
+//      $class = "tableheadertoday";
+      echo "<tr><th class=\"today\">";
     } else {
-      if ( $wday == 0 || $wday == 6 )
+      if ( $wday == 0 || $wday == 6 ) {
         $color = $WEEKENDBG;
-      else
+	echo "<tr><th class=\"weekend\">";
+     } else {
         $color = $CELLBG;
-      $class = "tableheader";
+//      $class = "tableheader";
+        echo "<tr><th>";
+     }
     }
-    echo "<tr><th class=\"$class\" style=\"width:10%;\">" .
-      $weekday . " " .
+//     echo "<tr><th class=\"$class\" style=\"width:10%;\">" .
+    echo $weekday . " " .
       round ( date ( "d", $xdate ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
       $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
-      echo "<td style=\"width:$tdw%; background-color:$color;\">";
-      //echo date ( "D, m-d-Y H:i:s", $xdate ) . "<BR>";
+//      echo "<td style=\"width:$tdw%; background-color:$color;\">";
+    if ( date ( "Ymd", $xdate ) == date ( "Ymd", $today ) ) {
+//      $color = $TODAYCELLBG;
+//      $class = "tableheadertoday";
+      echo "<td class=\"today\" style=\"width:$tdw%;\">";
+    } else {
+      if ( $wday == 0 || $wday == 6 ) {
+//        $color = $WEEKENDBG;
+	echo "<td class=\"weekend\" style=\"width:$tdw%;\">";
+     } else {
+//        $color = $CELLBG;
+//      $class = "tableheader";
+        echo "<td style=\"width:$tdw%;\">";
+     }
+    }
+      //echo date ( "D, m-d-Y H:i:s", $xdate ) . "<br />";
       if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" &&
         empty ( $friendly ) )
         echo html_for_add_icon ( date ( "Ymd", $xdate ), "", "", $user );
       print_date_entries ( date ( "Ymd", $xdate ),
         $user, $friendly, true );
-      echo "</td>";
+      echo "</td>\n";
     }
     echo "</tr>\n";
   }
