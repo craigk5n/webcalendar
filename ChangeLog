@@ -1,4 +1,5 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Fixed bug 599323: categories were not being saved properly.
   - Fixed bug 601013: in week.php, leftarrow.gif had syntax error for border
     setting.
   - Added ability to set default for sending reminders to be yes when adding

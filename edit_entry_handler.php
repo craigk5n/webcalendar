@@ -333,29 +333,32 @@ if ( empty ( $error ) ) {
 
   // now add participants and send out notifications
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
+    $my_cat_id = "";
     // if public access, always require approval
-    if ( $login == "__public__" )
+    if ( $login == "__public__" ) {
       $status = "W";
-    else if ( ! $newevent ) {
+      $my_cat_id = $cat_id;
+    } else if ( ! $newevent ) {
       // keep the old status if no email will be sent
-      $send_user_mail = ( $old_status[$participants[$i]] == '' || $entry_changed ) ?
-        true : false;
+      $send_user_mail = ( $old_status[$participants[$i]] == '' ||
+        $entry_changed ) ?  true : false;
       $tmp_status = ( $old_status[$participants[$i]] && ! $send_user_mail ) ?
         $old_status[$participants[$i]] : "W";
       $status = ( $participants[$i] != $login && $require_approvals == "Y" ) ?
         $tmp_status : "A";
-      $tmp_cat = ( ! empty ( $old_category[$participants[$i]]) ) ? $old_category[$participants[$i]] : 'NULL';
-      $cat_id = ( $participants[$i] != $login ) ? $tmp_cat : $cat_id;
+      $tmp_cat = ( ! empty ( $old_category[$participants[$i]]) ) ?
+        $old_category[$participants[$i]] : 'NULL';
+      $my_cat_id = ( $participants[$i] != $login ) ? $tmp_cat : $cat_id;
     } else {
       $send_user_mail = true;
       $status = ( $participants[$i] != $login && $require_approvals == "Y" ) ?
         "W" : "A";
-      $cat_id = ( $participants[$i] != $login ) ? 'NULL' : $cat_id;
+      $my_cat_id = ( $participants[$i] != $login ) ? 'NULL' : $cat_id;
     }
-    if ( empty ( $cat_id ) ) $cat_id = 'NULL';
+    if ( empty ( $my_cat_id ) ) $my_cat_id = 'NULL';
     $sql = "INSERT INTO webcal_entry_user " .
       "( cal_id, cal_login, cal_status, cal_category ) VALUES ( $id, '" .
-      $participants[$i] . "', '$status', $cat_id )";
+      $participants[$i] . "', '$status', $my_cat_id )";
     if ( ! dbi_query ( $sql ) ) {
       $error = translate("Database error") . ": " . dbi_error ();
       break;
