@@ -4395,4 +4395,175 @@ function background_css ( $color, $height = '', $percent = '' ) {
   return $ret;
 }
 
+/** daily_matrix
+  * Description:
+  *	Draws a daily outlook style availability grid showing events that 
+  * are approved and awaiting approval.
+  * Parameters:
+  *	$date - the date to show the grid for
+  *	$participants - which users should be included in the grid
+  */
+function daily_matrix ( $date, $participants ) {
+  global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TABLEBG;
+  global $user_fullname,$nowYmd,$repeated_events,$events;
+  global $thismonth, $thisday, $thisyear, $TZ_OFFSET,$ignore_offset;
+
+  $increment = 15;
+  $interval = 4;
+  $participant_pct = '20%'; //use percentage
+
+  $first_hour = $GLOBALS["WORK_DAY_START_HOUR"];
+  $last_hour = $GLOBALS["WORK_DAY_END_HOUR"];
+  $hours = $last_hour - $first_hour;
+  $cols = (($hours * $interval) + 1);
+  $total_pct = '80%';
+  $cell_pct =  80 /($hours * $interval);
+  $master = array();
+
+  // Build a master array containing all events for $participants
+  for ( $i = 0; $i < count ( $participants ); $i++ ) {
+
+    /* Pre-Load the repeated events for quckier access */
+    $repeated_events = read_repeated_events ( $participants[$i], "", $nowYmd );
+    /* Pre-load the non-repeating events for quicker access */
+    $events = read_events ( $participants[$i], $nowYmd, $nowYmd );
+
+    // get all the repeating events for this date and store in array $rep
+    $rep = get_repeating_entries ( $participants[$i], $nowYmd );
+    // get all the non-repeating events for this date and store in $ev
+    $ev = get_entries ( $participants[$i], $nowYmd );
+
+    // combine into a single array for easy processing
+    $ALL = array_merge ( $rep, $ev );
+
+    foreach ( $ALL as $E ) {
+      if ($E['cal_time'] == 0) {
+        $E['cal_time'] = $first_hour."0000";
+        $E['cal_duration'] = 60 * ( $last_hour - $first_hour );
+      } else {
+        $E['cal_time'] = sprintf ( "%06d", $E['cal_time']);
+      }
+
+      $hour = substr($E['cal_time'], 0, 2 );
+      $mins = substr($E['cal_time'], 2, 2 );
+       
+      // Timezone Offset
+      if ( ! $ignore_offset ) $hour += $TZ_OFFSET;
+      while ( $hour < 0 ) $hour += 24;
+      while ( $hour > 23 ) $hour -= 24;
+
+      // Make sure hour is 2 digits
+      $hour = sprintf ( "%02d",$hour);
+
+      // convert cal_time to slot
+      if ($mins < 15) {
+        $slot = $hour.'';
+      } elseif ($mins >= 15 && $mins < 30) {
+        $slot = $hour.'.25';
+      } elseif ($mins >= 30 && $mins < 45) {
+        $slot = $hour.'.5';
+      } elseif ($mins >= 45) {
+        $slot = $hour.'.75';
+      }
+
+      // convert cal_duration to bars
+      $bars = $E['cal_duration'] / $increment;
+
+      // never replace 'A' with 'W'
+      for ($q = 0; $bars > $q; $q++) {
+        $slot = sprintf ("%02.2f",$slot);
+        if (strlen($slot) == 4) $slot = '0'.$slot; // add leading zeros
+        $slot = $slot.''; // convert to a string
+        if ($master['_all_'][$slot]['stat'] != 'A') {
+          $master['_all_'][$slot]['stat'] = $E['cal_status'];
+        }
+        if ($master[$participants[$i]][$slot]['stat'] != 'A') {
+          $master[$participants[$i]][$slot]['stat'] = $E['cal_status'];
+          $master[$participants[$i]][$slot]['ID'] = $E['cal_id'];
+        }
+        $slot = $slot + '0.25';
+      }
+
+    }
+  }
+?>
+  <br />
+  <table class="matrixd" style="width:<?php echo $total_pct;?>;" cellspacing="0" cellpadding="0">
+  <tr><td class="matrix" colspan="<?php echo $cols;?>"></td></tr>
+  <tr><th style="width:<?php echo $participant_pct;?>;">
+    <?php etranslate("Participants");?></th>
+<?php
+  $str = '';
+  $MouseOut = "onmouseout=\"window.status=''; this.style.backgroundColor='".$CELLBG."';\"";
+  $CC = 1;
+  for($i=$first_hour;$i<$last_hour;$i++) {
+     for($j=0;$j<$interval;$j++) {
+        $str .= '	<td  id="C'.$CC.'" class="dailymatrix" ';
+        switch($j) {
+          case 1:
+                  if($interval == 4) { $k = ($i<=9?'0':substr($i,0,1)); }
+		  $str .= 'style="width:'.$cell_pct.'%; text-align:right;"  onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+                  $str .= $k."</td>\n";
+                  break;
+          case 2:
+                  if($interval == 4) { $k = ($i<=9?substr($i,0,1):substr($i,1,2)); }
+		  $str .= 'style="width:'.$cell_pct.'%; text-align:left;" onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+                  $str .= $k."</td>\n";
+                  break;
+          default:
+		  $str .= 'style="width:'.$cell_pct.'%;" onmousedown="schedule_event('.$i.','.($increment * $j).");\" onmouseover=\"window.status='Schedule a ".$i.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$i.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+                  $str .= "&nbsp;&nbsp;</td>\n";
+                  break;
+        }
+       $CC++;
+     }
+  }
+  echo $str .
+    "</tr>\n<tr><td class=\"matrix\" colspan=\"$cols\"></td></tr>\n";
+
+  // Add user _all_ to beginning of $participants array
+  array_unshift($participants, '_all_');
+
+  // Display each participant
+  for ( $i = 0; $i < count ( $participants ); $i++ ) {
+    if ($participants[$i] != '_all_') {
+      // Load full name of user
+      user_load_variables ( $participants[$i], "user_" );
+  
+      // exchange space for &nbsp; to keep from breaking
+      $user_nospace = preg_replace ( '/\s/', '&nbsp;', $user_fullname );
+    } else {
+      $user_nospace = "All&nbsp;Attendees";
+    }
+
+    echo "<tr>\n<th class=\"row\" style=\"width:{$participant_pct};\">".$user_nospace."</th>\n";
+    $col = 1;
+    $viewMsg = translate ( "View this entry" );
+
+    // check each timebar
+    for ( $j = $first_hour; $j < $last_hour; $j++ ) {
+       for ( $k = 0; $k < $interval; $k++ ) {
+         $border = ($k == '0') ? ' border-left: 1px solid #000000;' : "";
+	       $RC = $CELLBG;
+         //$space = '';
+         $space = "&nbsp;";
+
+         $r = sprintf ("%02d",$j) . '.' . sprintf ("%02d", (25 * $k)).'';
+         if ($master[$participants[$i]][$r]['stat'] == "A")
+           $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"pix.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
+         else if ($master[$participants[$i]][$r]['stat'] == "W")
+           $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"pixb.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
+
+         echo "<td class=\"matrixappts\" style=\"width:{$cell_pct}%;$border\">$space</td>\n";
+         $col++;
+      }
+    }
+    
+    echo "</tr><tr>\n<td class=\"matrix\" colspan=\"$cols\">" .
+      "<img src=\"pix.gif\" alt=\"-\" /></td></tr>\n";
+  } // End foreach participant
+  
+  echo "</table>\n";
+} 
+
 ?>
