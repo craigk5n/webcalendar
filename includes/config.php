@@ -202,6 +202,36 @@ $browser_languages = array (
   "cy" => "Welsh"
 );
 
+// The following comments will be picked up by update_translation.pl so
+// translators will be aware that they also need to translate language names.
+//
+// translate("English")
+// translate("Basque")
+// translate("Bulgarian")
+// translate("Chinese (Traditonal/Big5)")
+// translate("Chinese (Simplified/GB2312)")
+// translate("Czech")
+// translate("Danish")
+// translate("Dutch")
+// translate("Estonian")
+// translate("French")
+// translate("Galician")
+// translate("German")
+// translate("Holo (Taiwanese)")
+// translate("Hungarian")
+// translate("Icelandic")
+// translate("Italian")
+// translate("Japanese")
+// translate("Korean")
+// translate("Norwegian")
+// translate("Polish")
+// translate("Portuguese")
+// translate("Portuguese/Brazil")
+// translate("Russian")
+// translate("Spanish")
+// translate("Swedish")
+// translate("Turkish")
+
 if ( $single_user != "Y" )
   $single_user_login = "";
 

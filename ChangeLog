@@ -1,4 +1,7 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Added patch 972688: attempt to translate language names ("English")
+    into other languages.  Updated config.php to have comments for
+    perl language tools (update_translation.pl).
   - Changed popup color palette to web safe colors 
   - Fixed bug 885181: If a user adds an event to a nonuser calendar,
     the admin of that nonuser admin calendar must be able to approve

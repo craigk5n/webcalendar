@@ -96,7 +96,7 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 ?>
 </select>
 <br />
-<?php etranslate("Your browser default language is"); echo "" . get_browser_language () . "."; ?>
+<?php etranslate("Your browser default language is"); echo " "; etranslate(get_browser_language()); echo "."; ?>
 </td></tr>
 <tr><td class="tooltip">
 	<label for="admin_fonts" title="<?php etooltip("fonts-help") ?>"><?php etranslate("Fonts")?>:</label></td><td>
