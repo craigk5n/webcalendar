@@ -1,5 +1,4 @@
 <?php
-
 if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
@@ -20,13 +19,11 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 // need these functions and you will still need to add users to
 // webcal_user.
 
-
 // Set some global config variables about your system.
 $user_can_update_password = false;
 $admin_can_add_user = false;
 $admin_can_delete_user = false;
 
-//
 // LDAP Server settings
 //
 // The name of the LDAP server or its address
@@ -34,7 +31,7 @@ $ldap_server = "localhost";
 // The name or the number for the LDAP server port. By default an LDAP server
 // is on port 389
 $ldap_port = "389"; 
-//
+
 // Global LDAP Parameters
 //
 // The base DN to make search in order to find users and informations like a
@@ -52,7 +49,7 @@ $ldap_login_attr = "uid";
 $ldap_admin_dn = "";
 // The user password for search operations
 $ldap_admin_pwd = "";
-//
+
 // LDAP Search parameters
 //
 // A LDAP filter to find a user list.
@@ -68,7 +65,6 @@ $ldap_user_attr = array(
   "mail"         //email
 );
 
-// 
 // Admin parameters
 //
 // A groupe name (complete DN) to find user with admin's rights
@@ -78,14 +74,11 @@ $ldap_admin_group_type = "groupofnames";
 // The LDAP attribute used to store member of a group
 $ldap_admin_group_attr = "member";
 
-
-//
 // Misc Cleanup
 //
 // Convert group name to lower case to prevent problems
 $ldap_admin_group_attr = strtolower($ldap_admin_group_attr);
 $ldap_admin_group_type = strtolower($ldap_admin_group_type);
-
 
 // Function to search the dn of a given user
 // the error message will be placed in $login_error.
@@ -164,7 +157,6 @@ function user_valid_login ( $login, $password ) {
   return $ret;
 }
 
-
 // TODO: implement this function properly for LDAP.
 // Check to see if a given login/crypted password is valid.  If invalid,
 // the error message will be placed in $login_error.
@@ -175,7 +167,6 @@ function user_valid_login ( $login, $password ) {
 function user_valid_crypt ( $login, $crypt_password ) {
   return true; // NOT YET IMPLEMENTED FOR LDAP
 }
-
 
 // Load info about a user (first name, last name, admin) and set
 // globally.
@@ -242,7 +233,6 @@ function user_load_variables ( $login, $prefix ) {
   return $ret;
 }
 
-
 // Add a new user.
 // params:
 //   $user - user login
@@ -259,7 +249,6 @@ function user_add_user ( $user, $password, $firstname, $lastname, $email,
   return false;
 }
 
-
 // Update a user
 // params:
 //   $user - user login
@@ -274,7 +263,6 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
   return false;
 }
 
-
 // Update user password
 // params:
 //   $user - user login
@@ -285,7 +273,6 @@ function user_update_user_password ( $user, $password ) {
   $error = "Not yet supported";
   return false;
 }
-
 
 // Delete a user from the system.
 // Once this does get implemented, be sure to delete the user from
@@ -354,7 +341,6 @@ function user_get_users () {
   return $ret;
 }
 
-
 // Test if a user is an admin, that is: if the user is a member of a special
 // group in the LDAP Server
 // params:
@@ -417,7 +403,6 @@ function get_admins() {
   return $cached_admins;
 }
 
-
 // Strip everything but the username (uid) from a dn.
 //  params:
 //    $dn - the dn you want to strip the uid from.
@@ -428,5 +413,4 @@ function stripdn($dn){
   list ($trash,$user) = split ("=", $uid);
   return($user);
 }
-
 ?>

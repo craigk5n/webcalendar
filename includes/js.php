@@ -6,6 +6,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 
 <script type="text/javascript">
 <!--
+<?php
 // The following code is used to support the small popups that
 // give the full description of an event when the user move the
 // mouse over it.
@@ -17,15 +18,17 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 // I suppose it will be corrected as soon as they release a new version, based on
 // a more recent Mozilla source code.
 // I'm not able to test this javascript code with IE4. It'd be glad to know if it works.
+?>
 
 NS4 = (document.layers) ? 1 : 0;
 IE4 = (document.all) ? 1 : 0;
 W3C = (document.getElementById) ? 1 : 0;	
-// W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
+<?php // W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
 
 // Function show(evt, name)
 //	evt is a pointer to the Event object passed when the event occurs
 //	name is the ID attribute of the element to show
+?>
 function show ( evt, name ) {
   if (IE4) {
     evt = window.event;  //is it necessary?
@@ -50,7 +53,6 @@ function show ( evt, name ) {
     docHeight = document.height;
     layerWidth = ele.style.width;
     layerHeight = ele.style.height;
-
   } else if ( NS4 ) {
     ele = document.layers[name];
     currentX = evt.pageX,
@@ -59,7 +61,6 @@ function show ( evt, name ) {
     docHeight = document.height;
     layerWidth = ele.clip.width;
     layerHeight = ele.clip.height;
-
   } else {	// meant for IE4
     ele = document.all[name];
     currentX = evt.clientX,
@@ -75,20 +76,18 @@ function show ( evt, name ) {
   // Then we calculate the popup element's new position
   if ( ( currentX + layerWidth ) > docWidth ) {
     x = ( currentX - layerWidth );
-  }
-  else {
+  } else {
     x = currentX;
   }
   if ( ( currentY + layerHeight ) >= docHeight ) {
      y = ( currentY - layerHeight - 20 );
-  }
-  else {
+  } else {
     y = currentY + 20;
   }
   if ( IE4 ) {
     x += document.body.scrollLeft;
     y += document.body.scrollTop;
-  } else if ( NS4)  {
+  } else if (NS4) {
   } else {
     x += window.pageXOffset;
     y += window.pageYOffset;
@@ -128,6 +127,5 @@ function unhide ( name ) {
     document.all[name].style.visibility = "visible";
   }
 }
-
 //-->
 </script>

@@ -1,5 +1,4 @@
 <?php
-
 if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
@@ -136,7 +135,6 @@ $EXTRA_REMINDER_DEFAULT_YES =	0x0004;
 
 // END EXAMPLES
 
-
 // Define your stuff here...
 // Below translate calls are here so they get picked up by check_translation.pl.
 // They are never executed in PHP.
@@ -160,5 +158,4 @@ $site_extras = array (
                          // arg 2: specifies reminder options bit-or
   )
 );
-
 ?>

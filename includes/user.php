@@ -1,5 +1,4 @@
 <?php
-
 if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
@@ -14,7 +13,6 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 // Note #2: If you are using HTTP-based authentication, then you still
 // need these functions and you will still need to add users to
 // webcal_user.
-
 
 // Set some global config variables about your system.
 $user_can_update_password = true;
@@ -57,7 +55,6 @@ function user_valid_login ( $login, $password ) {
   return $ret;
 }
 
-
 // Check to see if a given login/crypted password is valid.  If invalid,
 // the error message will be placed in $login_error.
 // params:
@@ -97,7 +94,6 @@ function user_valid_crypt ( $login, $crypt_password ) {
 
   return $ret;
 }
-
 
 // Load info about a user (first name, last name, admin) and set
 // globally.
@@ -147,8 +143,6 @@ function user_load_variables ( $login, $prefix ) {
   return true;
 }
 
-
-
 // Add a new user.
 // params:
 //   $user - user login
@@ -196,7 +190,6 @@ function user_add_user ( $user, $password, $firstname, $lastname, $email,
   return true;
 }
 
-
 // Update a user
 // params:
 //   $user - user login
@@ -236,7 +229,6 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
   return true;
 }
 
-
 // Update user password
 // params:
 //   $user - user login
@@ -253,15 +245,12 @@ function user_update_user_password ( $user, $password ) {
   return true;
 }
 
-
-
 // Delete a user from the system.
 // We assume that we've already checked to make sure this user doesn't
 // have events still in the database.
 // params:
 //   $user - user to delete
 function user_delete_user ( $user ) {
-
   // Get event ids for all events this user is a participant
   $events = array ();
   $res = dbi_query ( "SELECT webcal_entry.cal_id " .
@@ -295,7 +284,6 @@ function user_delete_user ( $user ) {
 
   // Delete user participation from events
   dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_login = '$user'" );
-
 
   // Delete preferences
   dbi_query ( "DELETE FROM webcal_user_pref WHERE cal_login = '$user'" );
@@ -332,7 +320,6 @@ function user_delete_user ( $user ) {
   // Delete user
   dbi_query ( "DELETE FROM webcal_user WHERE cal_login = '$user'" );
 }
-
 
 // Get a list of users and return info in an array.
 function user_get_users () {
@@ -372,5 +359,4 @@ function user_get_users () {
   }
   return $ret;
 }
-
 ?>
