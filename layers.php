@@ -73,21 +73,22 @@ else
 
 <?php
 
-   for($index = 0; $index < sizeof($layers); $index++) {
-      $layeruser = $layers[$index]['cal_layeruser'];
-      user_load_variables ( $layeruser, "layer" );
+     $layer_count = 1;
+     foreach ($layers as $layer) {
+       $layeruser = $layer['cal_layeruser'];
+       user_load_variables ( $layeruser, "layer" );
 ?>
-       <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Layer")?> <?php echo ($index+1) ?></td></tr>
+       <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Layer")?> <?php echo ($layer_count) ?></td></tr>
        <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Source")?>:</td>
            <td><?php echo $layerfullname; ?></td></tr>
 
        <tr><td style="font-weight:bold;"><?php etranslate("Color")?>:</td>
-          <td style="background-color:<?php echo $CELLBG;?>; color:<?php echo ( $layers[$index]['cal_color'] ); ?>;"><?php echo ( $layers[$index]['cal_color'] ); ?></td></tr>
+          <td style="background-color:<?php echo $CELLBG;?>; color:<?php echo ( $layer['cal_color'] ); ?>;"><?php echo ( $layer['cal_color'] ); ?></td></tr>
 
        <tr><td style="font-weight:bold;"><?php etranslate("Duplicates")?>:</td>
           <td>
               <?php
-              if( $layers[$index]['cal_dups'] == 'N')
+              if( $layer['cal_dups'] == 'N')
                 etranslate("No");
               else
                 etranslate("Yes");
@@ -96,13 +97,14 @@ else
 
 
 
-       <tr><td><a href="edit_layer.php?id=<?php echo $index . $u_url; ?>"><?php echo (translate("Edit layer")) ?></a></td></tr>
-       <tr><td><a href="del_layer.php?id=<?php echo $index . $u_url; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></a><br /></td></tr>
+       <tr><td><a href="edit_layer.php?id=<?php echo $layer['cal_layerid'] . $u_url; ?>"><?php echo (translate("Edit layer")) ?></a></td></tr>
+       <tr><td><a href="del_layer.php?id=<?php echo $layer['cal_layerid'] . $u_url; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></a><br /></td></tr>
 
 
        <tr><td><br /></td></tr>
 
 <?php
+     $layer_count++;
    }
 ?>
 
