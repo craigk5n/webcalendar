@@ -1410,7 +1410,7 @@ function display_unapproved_events ( $user ) {
 // params:
 //   $text - input text
 function activate_urls ( $text ) {
-  $str = eregi_replace ( "(http://[[:alnum:].,=?+;-]+)",
+  $str = eregi_replace ( "(http://[[:alnum:].,=?+;-\/]+)",
     "<A HREF=\"\\1\">\\1</A>", $text );
   return $str;
 }
