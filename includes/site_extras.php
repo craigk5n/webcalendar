@@ -2,40 +2,45 @@
 if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
+/*
+ * $Id$
+ *
+ * Page Description:
+ *	This file can be used to define extra information associated with a
+ *	calender entry.
+ *	
+ *	You may define extra fields of the following types:
+ *	  EXTRA_TEXT - will allow user to enter a line of text
+ *	  EXTRA_MULTILINETEXT - will allow user to enter multiple lines of text
+ *	  EXTRA_URL - will be displayed as a link
+ *	  EXTRA_DATE - will be presented with date pulldown menus when entering
+ *	  EXTRA_EMAIL - will be presented as a mailto URL
+ *	  EXTRA_USER - most be a calendar user name; will be presented
+ *	               with a pulldown
+ *	  EXTRA_REMINDER - will allow reminder email messages to be sent
+ *	    out to all event participants
+ *	  EXTRA_REMINDER_DATE - will allow reminder email messages to be sent
+ *	    out to all event participants on the specified date.  Can use
+ *	    extra options to send it out before this date also.
+ *	  EXTRA_SELECTION_LIST - allows a custom selection list.  Can use
+ *	    this to specify a list of possible locations, etc.
+ *	
+ * Comments:
+ *	If you want to fully support using languages other than what
+ *	you define below, you will need to add the 2nd field of the arrays
+ *	below to the translation files.
+ *	
+ * WARNING:
+ *	If you want to use reminders, you will need to do some
+ *	extra steps in setting up WebCalendar.  There is no built-in support
+ *	for executing time-based jobs within PHP, so you need to setup something
+ *	to execute the send_reminders.php script.
+ *	On UNIX/Linux, this will be cron.
+ *	On Windows, you'll need to find a cron-like way to do this.
+ *	See README.html for more info.
+ *
+ */
 
-// site_extras.php
-//
-// This file can be used to define extra information associated with a
-// calender entry.
-//
-// You may define extra fields of the following types:
-//   EXTRA_TEXT - will allow user to enter a line of text
-//   EXTRA_MULTILINETEXT - will allow user to enter multiple lines of text
-//   EXTRA_URL - will be displayed as a link
-//   EXTRA_DATE - will be presented with date pulldown menus when entering
-//   EXTRA_EMAIL - will be presented as a mailto URL
-//   EXTRA_USER - most be a calendar user name; will be presented
-//                with a pulldown
-//   EXTRA_REMINDER - will allow reminder email messages to be sent
-//     out to all event participants
-//   EXTRA_REMINDER_DATE - will allow reminder email messages to be sent
-//     out to all event participants on the specified date.  Can use
-//     extra options to send it out before this date also.
-//   EXTRA_SELECTION_LIST - allows a custom selection list.  Can use
-//     this to specify a list of possible locations, etc.
-//
-// NOTE: If you want to fully support using languages other than what
-// you define below, you will need to add the 2nd field of the arrays
-// below to the translation files.
-//
-// WARNING: If you want to use reminders, you will need to do some
-// extra steps in setting up WebCalendar.  There is no built-in support
-// for executing time-based jobs within PHP, so you need to setup something
-// to execute the send_reminders.php script.
-// On UNIX/Linux, this will be cron.
-// On Windows, you'll need to find a cron-like way to do this.
-// See README.html for more info.
-//
 
 // define types
 $EXTRA_TEXT = 1;
