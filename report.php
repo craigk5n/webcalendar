@@ -154,7 +154,7 @@ if ( ! empty ( $user ) && $user != $login &&
   ( ( ! empty ( $allow_view_other ) && $allow_view_other == 'Y' )
   || $is_admin ) ) {
   $report_user = $user;
-  $u_url = "&user=$user";
+  $u_url = "&amp;user=$user";
 } else {
   $u_url = "";
 }
@@ -183,7 +183,10 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
   $list = "";
   if ( $is_admin ) {
     if ( ! $updating_public ) {
-      $list .= "<p><a href=\"report.php?public=1\">" .
+      $list .= "<p><a title=\"" .
+        translate("Click here") . " " .
+        translate("to manage reports for the Public Access calendar") . "." .
+        "\" href=\"report.php?public=1\">" .
         translate("Click here") . "</a> " .
         translate("to manage reports for the Public Access calendar") . "." .
         "</p>\n";
@@ -209,8 +212,9 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
     }
     $list .= "</ul>\n";
     $addurl = $updating_public ? "edit_report.php?public=1" : "edit_report.php";
-    $list .= "<p><a href=\"$addurl\" class=\"navlinks\">" .
-      translate("Add new report") . "</a></p>";
+    $list .= "<p><a title=\"" .
+      translate("Add new report") . "\" href=\"$addurl\" class=\"navlinks\">" .
+      translate("Add new report") . "</a></p>\n";
     dbi_free_result ( $res );
   } else {
     $error = translate ( "Invalid report id" );
@@ -493,16 +497,18 @@ if ( empty ( $friendly ) && empty ( $error ) && empty ( $list ) ) {
       $offset = 0;
     $next = $offset + 1;
     $prev = $offset - 1;
-    echo "<br /><br /><a href=\"report.php?report_id=$report_id$u_url" .
-      ( empty ( $prev ) ? "" : "&offset=$prev" ) . "\" class=\"navlinks\">" .
+    echo "<br /><br /><a title=\"" .
+      translate ( "Previous" ) . "\" href=\"report.php?report_id=$report_id$u_url" .
+      ( empty ( $prev ) ? "" : "&amp;offset=$prev" ) . "\" class=\"navlinks\">" .
       translate ( "Previous" ) . "</a>\n";
-    echo "&nbsp;&nbsp;<a href=\"report.php?report_id=$report_id$u_url" .
-      ( empty ( $next ) ? "" : "&offset=$next" ) . "\" class=\"navlinks\">" .
+    echo "&nbsp;&nbsp;<a title=\"" .
+      translate ( "Next" ) . "\" href=\"report.php?report_id=$report_id$u_url" .
+      ( empty ( $next ) ? "" : "&amp;offset=$next" ) . "\" class=\"navlinks\">" .
       translate ( "Next" ) . "</a><br />\n";
   }
   if ( $report_include_header == 'Y' ) {
-    echo '<br /><br /><a class="navlinks" href="report.php?report_id=' . $report_id .
-      '&friendly=1' . $u_url . '&offset=' . $offset .
+    echo '<br /><br /><a title="' . translate("Printer Friendly") . '" class="navlinks" href="report.php?report_id=' . $report_id .
+      '&amp;friendly=1' . $u_url . '&amp;offset=' . $offset .
       '" target="cal_printer_friendly" onmouseover="window.status=\'' .
       translate("Generate printer-friendly version") .
       '\'">[' . translate("Printer Friendly") . ']</a>';
@@ -516,7 +522,6 @@ if ( ( empty ( $friendly ) &&
 } else {
   print_trailer ( false );
 }
-
 
 ?>
 </body>
