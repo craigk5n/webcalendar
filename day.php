@@ -112,7 +112,7 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 <TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="2">
 <TR><TH COLSPAN="7" BGCOLOR="<?php echo $THBG?>"><FONT SIZE="+4" COLOR="<?php echo $THFG?>"><?php echo $thisday?></FONT></TH></TR>
 <TR>
-<TD ALIGN="left" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>" CLASS="monthlink"><img src="leftarrowsmall.gif" width="18" height="18" border="0" ALT="<? etranslate("Previous")?>"></A></TD>
+<TD ALIGN="left" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ago . $caturl?>" CLASS="monthlink"><img src="leftarrowsmall.gif" width="18" height="18" border="0" ALT="<?php etranslate("Previous")?>"></A></TD>
 <TH COLSPAN="5" BGCOLOR="<?php echo $THBG?>"><FONT COLOR="<?php echo $THFG?>"><?php echo date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ), $DATE_FORMAT_MY, false ) ?></FONT></TH>
 <TD ALIGN="right" BGCOLOR="<?php echo $THBG?>"><A HREF="day.php?<?php echo $u_url; ?>date=<?php echo $month_ahead . $caturl?>" CLASS="monthlink"><img src="rightarrowsmall.gif" width="18" height="18" border="0" alt="<?php etranslate("Next") ?>"></A></TD>
 </TR>
