@@ -43,6 +43,10 @@ if ( empty ( $lang ) )
 $login = getPostValue ( 'login' );
 $password = getPostValue ( 'password' );
 
+if ( ! empty ( $settings['session'] ) && $settings['session'] = 'php' ) {
+  session_start ();
+}
+
 // calculate path for cookie
 if ( empty ( $PHP_SELF ) )
   $PHP_SELF = $_SERVER["PHP_SELF"];
@@ -62,6 +66,10 @@ if ( $single_user == "Y" ) {
       $login = stripslashes ( $login );
     }
     $login = trim ( $login );
+    if ( $login != addslashes ( $login ) ) {
+      die_miserable_death ( "Illegal characters in login " .
+        "<tt>" . htmlentities ( $login ) . "</tt>" );
+    }
     if ( user_valid_login ( $login, $password ) ) {
       user_load_variables ( $login, "" );
       // set login to expire in 365 days
@@ -69,11 +77,15 @@ if ( $single_user == "Y" ) {
       $salt = chr( rand(ord('A'), ord('z'))) . chr( rand(ord('A'), ord('z')));
       $encoded_login = encode_string ( $login . "|" . crypt($password, $salt) );
 
-      if ( ! empty ( $remember ) && $remember == "yes" )
-        SetCookie ( "webcalendar_session", $encoded_login,
-          time() + ( 24 * 3600 * 365 ), $cookie_path );
-      else
-        SetCookie ( "webcalendar_session", $encoded_login, 0, $cookie_path );
+      if ( ! empty ( $settings['session'] ) && $settings['session'] = 'php' ) {
+        $_SESSION['webcalendar_session'] = $encoded_login;
+      } else {
+        if ( ! empty ( $remember ) && $remember == "yes" )
+          SetCookie ( "webcalendar_session", $encoded_login,
+            time() + ( 24 * 3600 * 365 ), $cookie_path );
+        else
+          SetCookie ( "webcalendar_session", $encoded_login, 0, $cookie_path );
+      }
       // The cookie "webcalendar_login" is provided as a convenience to
       // other apps that may wish to find out what the last calendar
       // login was, so they can use week_ssi.php as a server-side include.
@@ -191,11 +203,11 @@ if ( ! empty ( $return_path ) )
 <tr><td rowspan="2">
 	<img src="login.gif" alt="Login" /></td><td align="right">
 	<label for="user"><?php etranslate("Username")?>:</label></td><td>
-	<input name="login" id="user" size="10" value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" tabindex="1" />
+	<input name="login" id="user" size="15" maxlength="25" value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" tabindex="1" />
 </td></tr>
 <tr><td style="text-align:right;">
 	<label for="password"><?php etranslate("Password")?>:</label></td><td>
-	<input name="password" id="password" type="password" size="10" tabindex="2" />
+	<input name="password" id="password" type="password" size="15" maxlength="30" tabindex="2" />
 </td></tr>
 <tr><td colspan="3" style="font-size: 10px;">
 	<input type="checkbox" name="remember" id="remember" tabindex="3" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked=\"checked\""; ?> /><label for="remember">&nbsp;<?php etranslate("Save login via cookies so I don't have to login next time")?></label>

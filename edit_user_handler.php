@@ -45,8 +45,14 @@ else if ( $formtype == "edituser" ) {
     if ( $upassword1 != $upassword2 ) { 
       $error = translate( "The passwords were not identical" ) . "."; 
     } else {
-      user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
-        $uemail, $uis_admin );
+      if ( addslashes ( $user ) != $user ) {
+        // This error should get caught before here anyhow, so
+        // no need to translate this.  This is just in case :-)
+        $error = "Invalid characters in login.";
+      } else {
+        user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
+          $uemail, $uis_admin );
+      }
     }
   } else if ( strlen ( $add ) && ! $is_admin ) {
     $error = translate("You are not authorized") . ".";

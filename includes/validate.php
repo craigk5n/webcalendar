@@ -116,6 +116,17 @@ if ( $single_user == "Y" ) {
           $login_pw = split('\|', decode_string ($encoded_login));
           $login = $login_pw[0];
           $cryptpw = $login_pw[1];
+          // Security fix.  Don't allow certain types of characters in
+          // the login.  WebCalendar does not escape the login name in
+          // SQL requests.  So, if the user were able to set the login
+          // name to be "x';drop table u;",
+          // they may be able to affect the database.
+          if ( ! empty ( $login ) ) {
+            if ( $login != addslashes ( $login ) ) {
+              die_miserable_death ( "Illegal characters in login " .
+                "<tt>" . htmlentities ( $login ) . "</tt>" );
+            }
+          }
           // make sure we are connected to the database for password check
           $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
           if ( ! $c ) {

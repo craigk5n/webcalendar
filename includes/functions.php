@@ -3452,6 +3452,7 @@ function decode_string ( $instr ) {
     //echo " which is \"$dec_ch\"<br />\n";
     $orig .= $dec_ch;
   }
+  //echo "Decode string: '$orig' <br/>\n";
   return $orig;
 }
 
