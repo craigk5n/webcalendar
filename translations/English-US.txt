@@ -91,7 +91,7 @@ Display description in printer day view: Display description in printer day view
 date-format-help: Specifies the preferred date format.
 Date format: Date format
 December: December
-time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
+time-format-help: Specifies which time format to use: <BR /><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR /><I>24 hour:</I> Display times as 300, 2030, etc.
 Time format: Time format
 12 hour: 12 hour
 24 hour: 24 hour
@@ -105,7 +105,7 @@ auto-refresh-time-help: If Auto-refresh is enabled, this specifies the time betw
 Auto-refresh time: Auto-refresh time
 require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
 Require event approvals: Require event approvals
-display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<BR> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<BR> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
+display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<BR /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<BR /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: Display unapproved
 display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month view and the week view.
 Display week number: Display week number
@@ -310,14 +310,14 @@ Brief Description: Brief Description
 full-description-help: This should complete details of the event.  This information can be seen when a user views the event.
 Full Description: Full Description
 date-help: Specifies the date of the event.
-time-help: Specifies the time of the event.<BR>Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
+time-help: Specifies the time of the event.<BR />Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
 Start Time: Start Time
 am: am
 pm: pm
 Untimed event: Untimed event
 Timed event: Timed event
 All day event: All day event
-duration-help: Specifies the duration (in hours:minutes) of the event.  <BR><I>This field can be left blank.</I>
+duration-help: Specifies the duration (in hours:minutes) of the event.  <BR /><I>This field can be left blank.</I>
 hours: hours
 end-time-help: Specifies the time the event is expected to end.
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
@@ -325,7 +325,7 @@ Priority: Priority
 Low: Low
 Medium: Medium
 High: High
-access-help: Specifies the access level of the event.<BR> <I>Public</I>: Everyone can see the full details of the event.  <BR><I>Confidential</I>: Others can see that you have an entry for that date and time, but not the details of what it is.
+access-help: Specifies the access level of the event.<BR /> <I>Public</I>: Everyone can see the full details of the event.  <BR /><I>Confidential</I>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: Access
 Public: Public
 Confidential: Confidential
