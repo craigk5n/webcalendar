@@ -337,7 +337,7 @@ label {
   font-size: 12px;
   text-decoration: none;
   text-align: right;
-  background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+  background-color: <?php echo $GLOBALS['THBG']; ?>;
 }
 td.matrixappts {
   cursor: pointer;
