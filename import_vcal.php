@@ -167,7 +167,7 @@ function format_vcal($event) {
 
   $fevent[Summary] = $event['summary'];
   $fevent[Description] = $event['description'];
-  $fevent[Private] = preg_match("/private|confidential/i", $event['class']) ? '1' : '0';
+  $fevent['Private'] = preg_match("/private|confidential/i", $event['class']) ? '1' : '0';
   $fevent[UID] = $event['uid'];
 
   // Repeats
