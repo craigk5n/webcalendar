@@ -1,5 +1,8 @@
 <?php
-global $form,$day,$month,$year;
+$form = $_GET['form'];
+$month = $_GET['month'];
+$day = $_GET['day'];
+$year = $_GET['year'];
 ?>
 
 <SCRIPT LANGUAGE="JavaScript">
