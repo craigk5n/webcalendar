@@ -135,7 +135,7 @@ Year: Ano
 # << MISSING >>
 # Date format:
 December: Dezembro
-time-format-help: Especifica o formato da hora a utilizar: <BR><I>12 horas:</I> Mostra no formato 3am, 8:30pm, etc.  <BR><I>24 horas:</I> Mostra no formato 300, 2030, etc.
+time-format-help: Especifica o formato da hora a utilizar: <br /><i>12 horas:</i> Mostra no formato 3am, 8:30pm, etc.  <br /><i>24 horas:</i> Mostra no formato 300, 2030, etc.
 Time format: Formato da Hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -700,7 +700,7 @@ Brief Description: Descrição breve
 full-description-help: Descrição completa do evento. Esta informação é apresentada quando o utilizador verifica o evento isoladamente.
 Full Description: Descrição completa
 date-help: Especifica a data do evento.
-time-help: Especifica a hora do evento<BR><I>Este campo é opcional.</I>
+time-help: Especifica a hora do evento<br /><i>Este campo é opcional.</i>
 am: am
 pm: pm
 #
@@ -712,7 +712,7 @@ pm: pm
 #
 # << MISSING >>
 # All day event:
-duration-help: Especifica a duração (em minutos) do evento.  <BR><I>Este campo é opcional.</I>
+duration-help: Especifica a duração (em minutos) do evento.  <br /><i>Este campo é opcional.</i>
 Duration: Duração
 hours: horas
 priority-help: Especifica a prioridade do evento.  Prioridade Alta é apresentada num tipo de letra mais escura.
@@ -720,7 +720,7 @@ Priority: Prioridade
 Low: Baixa
 Medium: Média
 High: Alta
-access-help: Especifica o nível de acesso do evento.<BR> <I>Publico</I> Todos os intervenientes podem ver todos os detalhes do evento. <BR><I>Confidencial</I> Outros utilizadores poderão ver que tem um evento marcado, mas não podem visualizar os detalhes. participants-help: Lists the participants of this entry.
+access-help: Especifica o nível de acesso do evento.<br /> <i>Publico</i> Todos os intervenientes podem ver todos os detalhes do evento. <br /><i>Confidencial</i> Outros utilizadores poderão ver que tem um evento marcado, mas não podem visualizar os detalhes. participants-help: Lists the participants of this entry.
 Access: Accesso
 Public: Publico
 Confidential: Confidencial
@@ -753,7 +753,7 @@ Participants: Participantes
 #
 # << MISSING >>
 # External Participants:
-repeat-type-help: Selecciona a periodicidade do evento<I>Mensal (por dia)</I> faz com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <I>Mensal (por data)</I> faz com que um evento se repita todos os meses no mesmo dia.
+repeat-type-help: Selecciona a periodicidade do evento<i>Mensal (por dia)</i> faz com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <i>Mensal (por data)</i> faz com que um evento se repita todos os meses no mesmo dia.
 Repeat Type: Tipo de repetição
 Daily: Diário
 Weekly: Semanal
@@ -767,7 +767,7 @@ Yearly: Anual
 repeat-end-date-help: Especifica a data até à qual o evento se deve repetir.
 Repeat End Date: Data para fim de repetição
 Use end date: Utilizar data de fim de repetição
-repeat-day-help: Especifica em que dias da semana o evento se deve repetir.  Isto é apenas utilizado quando o <I>Tipo de repetição</I> tem o valor de <I>Semanal</I>.
+repeat-day-help: Especifica em que dias da semana o evento se deve repetir.  Isto é apenas utilizado quando o <i>Tipo de repetição</i> tem o valor de <i>Semanal</i>.
 Repeat Day: Dia a repetir
 for weekly: semanal
 Tuesday: Terça
@@ -775,7 +775,7 @@ Wednesday: Quarta
 Thursday: Quinta
 Friday: Sexta
 Saturday: Sábado
-repeat-frequency-help: Especifica quantas vezes o evento se deve repetir.  O valor padrão (1) indica que o evento acontece todos os dias.  Especificar 2 faz com que o evento se repita em outra semana (se <I>Tipo de repetição</I> tem o valor de <I>Semanal</I>), todos os meses (se <I>Tipo de repetição</I> tem o valor de <I>Mensal</I>), etc.
+repeat-frequency-help: Especifica quantas vezes o evento se deve repetir.  O valor padrão (1) indica que o evento acontece todos os dias.  Especificar 2 faz com que o evento se repita em outra semana (se <i>Tipo de repetição</i> tem o valor de <i>Semanal</i>), todos os meses (se <i>Tipo de repetição</i> tem o valor de <i>Mensal</i>), etc.
 Frequency: Frequencia
 Delete entry: Apagar entrada
 You are not authorized to edit this entry: Não está autorizado a editar esta entrada
@@ -1406,7 +1406,7 @@ Login: Entrar
 #
 # << MISSING >>
 # Access public calendar:
-cookies-note: <B>Nota:</B> Esta opção requer a opção de 'cookies' no seu browser activada.
+cookies-note: <b>Nota:</b> Esta opção requer a opção de 'cookies' no seu browser activada.
 
 
 ###############################################

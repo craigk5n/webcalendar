@@ -107,7 +107,7 @@ Display weekends in week view: näita nädalavahetusi nädala vaates
 date-format-help: Määrab eelistatud kuupäeva seaded.
 Date format: Kuupäeva seaded
 December: detsember
-time-format-help: Määrab kasutatava aja eelistused : <BR><I>12 tundi:</I> Näita aega nii: 3am, 8:30pm, etc.  <BR><I>24 tundi:</I> Näita aega nii: 300, 2030, jne.
+time-format-help: Määrab kasutatava aja eelistused : <br /><i>12 tundi:</i> Näita aega nii: 3am, 8:30pm, etc.  <br /><i>24 tundi:</i> Näita aega nii: 300, 2030, jne.
 Time format: Aja eelistused
 12 hour: 12 tundi
 24 hour: 24 tundi
@@ -121,7 +121,7 @@ auto-refresh-time-help: Kui automaatne värskendus on lubatud, siis määrame värsk
 Auto-refresh time: Automaatse värskenduse aeg
 require-approvals-help: Kui on lubatud siis peab kasutaja sündmuse heaks kiitma enne kui seda näidatakse kalendris (kehtib, kui 'Näita heakskiitmatuid' on keelatud). Märkus - seade 'Ei' ei keela näitamist Avalikult Ligipääsetavas kalendris kui see on lubatud.
 Require event approvals: Nõua sündmuse heakskiitu
-display-unapproved-help: Määrab kas heakskiitmata sündmused näidatakse kalendris.<BR> Kui on 'Jah', siis näidatakse heakskiitmata sündmusi kalendris (erineva teksti värviga).<BR> Kui on 'Ei', siis peab heakskiitmata sündmused enne kalendris näitamist lubama.
+display-unapproved-help: Määrab kas heakskiitmata sündmused näidatakse kalendris.<br /> Kui on 'Jah', siis näidatakse heakskiitmata sündmusi kalendris (erineva teksti värviga).<br /> Kui on 'Ei', siis peab heakskiitmata sündmused enne kalendris näitamist lubama.
 Display unapproved: Näita heakskiitmatuid
 display-week-number-help: Määrab kas nädala number (1-52) tuleb näidata kuu- ja nädala vaates.
 Display week number: Näita nädala numbrit
@@ -388,13 +388,13 @@ Brief Description: Lühikirjeldus
 full-description-help: See lõpetab sündmuse kirjelduse. Neid andmeid näeb kui kasutaja vaatab sündmust.
 Full Description: Täiskirjeldus
 date-help: Määrab sündmuse kuupäeva.
-time-help: Määrab sündmuse aja.<BR>Vali kas "Ajastatud sündmus" (sündmuse jaoks mis on määratud kindlale ajale), "Ajastamata sündmus" (sündmuse jaoks millel pole kindlat kellaaega (nägu pühad) või "Kogu päeva sündmus" (sündmusele mis kestab kogu päeva (olen kontorist väljas).
+time-help: Määrab sündmuse aja.<br />Vali kas "Ajastatud sündmus" (sündmuse jaoks mis on määratud kindlale ajale), "Ajastamata sündmus" (sündmuse jaoks millel pole kindlat kellaaega (nägu pühad) või "Kogu päeva sündmus" (sündmusele mis kestab kogu päeva (olen kontorist väljas).
 am: am
 pm: pm
 Untimed event: Ajastamata sündmus
 Timed event: Ajastatud sündmus
 All day event: Kogu päeva sündmus
-duration-help: Määrab sündmuse kestvuse (tunnid:minutid).  <BR><I>Selle välja võib jätta tühjaks.</I>
+duration-help: Määrab sündmuse kestvuse (tunnid:minutid).  <br /><i>Selle välja võib jätta tühjaks.</i>
 Duration: Kestvus
 hours: tunnid
 priority-help: Määrab sündmuse tähtsuse. Suure tähtsusega sündmused näidatakse esile tõstetult.
@@ -402,7 +402,7 @@ Priority: Tähtsus
 Low: Madal
 Medium: Keskmine
 High: Suur
-access-help: Määrab sündmuse ligipääsetavuse.<BR> <I>Avalik</I>: Kõik võivad sündmust täielikult näha.  <BR><I>Isiklik</I>: Teised näevad et see aeg on kinni kuid ei näe detaile.
+access-help: Määrab sündmuse ligipääsetavuse.<br /> <i>Avalik</i>: Kõik võivad sündmust täielikult näha.  <br /><i>Isiklik</i>: Teised näevad et see aeg on kinni kuid ei näe detaile.
 Access: Ligipääsetavus
 Public: Avalik
 Confidential: Isiklik
@@ -415,7 +415,7 @@ participants-help: Näita selle kande osalejaid.
 Participants: Osalejad
 external-participants-help: Määrab ära kalendi mittekasutajatest osalejad. Osalejad tuleb loetleda üks rea kohta ja lisada võib emaili aadressi. Kui email on määratud, siis võib inimene saada teadustusi ja meeldetuletusi.
 External Participants: Välised osalejad
-repeat-type-help: Vali kui tihti sündmust korrata.<I>Kuiselt (päeva järgi)</I> lubab korrata sündmust kuu esimesel esmaspäeval jne.  <I>Kuiselt (kuupäeva järgi)</I> lubab sündmusel korduda iga kuu samal kuupäeval.
+repeat-type-help: Vali kui tihti sündmust korrata.<i>Kuiselt (päeva järgi)</i> lubab korrata sündmust kuu esimesel esmaspäeval jne.  <i>Kuiselt (kuupäeva järgi)</i> lubab sündmusel korduda iga kuu samal kuupäeval.
 Repeat Type: Korduse tüüp
 Daily: päeviti
 Weekly: nädalati
@@ -429,7 +429,7 @@ Yearly: aastati
 repeat-end-date-help: Määrab kuupäeva milleni sündmust korrata.
 Repeat End Date: Korduse lõppkuupäev
 Use end date: Kasutuse lõppkuupäev
-repeat-day-help: Määrab missugustel nädalapäevadel sündmust korrata. Kehtib vaid siis kui <I>Korduse tüüp</I> on <I>nädalati</I>.
+repeat-day-help: Määrab missugustel nädalapäevadel sündmust korrata. Kehtib vaid siis kui <i>Korduse tüüp</i> on <i>nädalati</i>.
 Repeat Day: Korduse päev
 for weekly: nädal
 Tuesday: teisipäev
@@ -437,7 +437,7 @@ Wednesday: kolmapäev
 Thursday: neljapäev
 Friday: reede
 Saturday: laupäev
-repeat-frequency-help: Määrab kui tihti sündmust korrata. 1 näitab et peab korduma igas ajaühikus, 2 näitab et peab korduma igal teisel nädalal (kui <I>Korduse tüüp</I> on <I>nädalati</I>), igal teisel kuul (kui <I>Korduse tüüp</I> on <I>kuiselt</I>), jne.
+repeat-frequency-help: Määrab kui tihti sündmust korrata. 1 näitab et peab korduma igas ajaühikus, 2 näitab et peab korduma igal teisel nädalal (kui <i>Korduse tüüp</i> on <i>nädalati</i>), igal teisel kuul (kui <i>Korduse tüüp</i> on <i>kuiselt</i>), jne.
 Frequency: Sagedus
 Delete entry: Kustuta kanne
 You are not authorized to edit this entry: Sul ei ole lubatud muuta seda kannet
@@ -920,7 +920,7 @@ You must enter a login and password: Pead sisestama kasutajanime ja salasõna
 Save login via cookies so I don't have to login next time: Salvesta kasutajatunnused küpsisesse et ma ei peaks enam neid sisestama
 Login: Sisenemine
 Access public calendar: Kasuta avalikku kalendrit
-cookies-note: <B>Märkus:</B> See rakendus nõuab küpsiste kasutamise lubamist.
+cookies-note: <b>Märkus:</b> See rakendus nõuab küpsiste kasutamise lubamist.
 
 
 ###############################################

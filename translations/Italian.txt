@@ -137,7 +137,7 @@ Display weekends in week view: Mostra i week-end nella vista della settimana
 #
 Date format: Formato della data
 December: Dicembre
-time-format-help: Specifica quale formato orario usare: <BR><I>12 ore:</I> Mostra le ore come 3am, 8:30pm, ecc.  <BR><I>24 ore:</I> Mostra le ore come 3:00, 20:30, ecc.
+time-format-help: Specifica quale formato orario usare: <br /><i>12 ore:</i> Mostra le ore come 3am, 8:30pm, ecc.  <br /><i>24 ore:</i> Mostra le ore come 3:00, 20:30, ecc.
 Time format: Formato ora
 12 hour: 12 ore
 24 hour: 24 ore
@@ -169,7 +169,7 @@ Auto-refresh time: Frequenza di aggiornamento
 # English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
 #
 Require event approvals: Richiedi che gli eventi siano approvati
-display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<BR> Se settato su "Sì", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<BR> Se settato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
+display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br /> Se settato su "Sì", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br /> Se settato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
 Display unapproved: Mostrare eventi non approvati
 display-week-number-help: Specifica se mostrare o meno il numero della settimana (1-52) quando il calendario viene visualizzato per mese o per settimana.
 Display week number: Mostrare numero settimana
@@ -556,13 +556,13 @@ Brief Description: Descrizione Breve
 full-description-help: Questo dovrebbe dare dettagli completi dell'evento. Questa informazione sarà mostrata quando l'utente visualizza l'evento.
 Full Description: Descrizione Completa
 date-help: Specifica la data di un evento.
-time-help: Specifica l'ora di un evento.<BR><I>Questo campo può essere lasciato in bianco.</I>
+time-help: Specifica l'ora di un evento.<br /><i>Questo campo può essere lasciato in bianco.</i>
 am: am
 pm: pm
 Untimed event: Evento senza tempo
 Timed event: Evento temporizzato
 All day event: Evento giornaliero
-duration-help: Specifica la durata (in minuti) dell'evento. <BR><I>Questo campo può essere lasciato in bianco.</I>
+duration-help: Specifica la durata (in minuti) dell'evento. <br /><i>Questo campo può essere lasciato in bianco.</i>
 Duration: Durata
 hours: ore
 priority-help: Specifica la priorità dell'evento. Eventi con un alta priorità saranno mostrati in grassetto.
@@ -570,7 +570,7 @@ Priority: Priorità
 Low: Bassa
 Medium: Media
 High: Alta
-access-help: Specifica il livello di accesso dell'evento.<BR> <I>Pubblico</I>: Chiunque può vedere tutti i dettagli dell'evento.  <BR><I>Confidenziale</I>: Gli altri possono vedere che è presente una nota per quella data e ora, ma non i dettagli relativi.
+access-help: Specifica il livello di accesso dell'evento.<br /> <i>Pubblico</i>: Chiunque può vedere tutti i dettagli dell'evento.  <br /><i>Confidenziale</i>: Gli altri possono vedere che è presente una nota per quella data e ora, ma non i dettagli relativi.
 Access: Accesso
 Public: Pubblico
 Confidential: Confidenziale
@@ -591,7 +591,7 @@ Participants: Partecipanti
 # English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
 #
 External Participants: Partecipanti Esterni
-repeat-type-help: Seleziona quanto spesso l'evento si deve ripetere.<I>Mensile (per giorno)</I> permette ad un evento di ripetersi il 1° Lunedì del mese, 3° Giovedì del mese, ecc.  <I>Mensile (per data)</I> permette ad un evento di ripetersi nello stesso giorno del mese.
+repeat-type-help: Seleziona quanto spesso l'evento si deve ripetere.<i>Mensile (per giorno)</i> permette ad un evento di ripetersi il 1° Lunedì del mese, 3° Giovedì del mese, ecc.  <i>Mensile (per data)</i> permette ad un evento di ripetersi nello stesso giorno del mese.
 Repeat Type: Tipo di ripetizione
 Daily: Giornaliera
 Weekly: Settimanale
@@ -605,7 +605,7 @@ Yearly: Annuale
 repeat-end-date-help: Specifica fino a quale data l'evento dovrà ripetersi.
 Repeat End Date: Data ultima ripetizione
 Use end date: Data termine
-repeat-day-help: Specifica in quali giorni della settimana l'evento può ripetersi. Questo può essere usato solo quando <I>Tipo di ripetizione</I> è impostato su <I>Settimanale</I>.
+repeat-day-help: Specifica in quali giorni della settimana l'evento può ripetersi. Questo può essere usato solo quando <i>Tipo di ripetizione</i> è impostato su <i>Settimanale</i>.
 Repeat Day: Giorno Ripetizione
 for weekly: ogni settimana
 Tuesday: Martedì
@@ -613,7 +613,7 @@ Wednesday: Mercoledì
 Thursday: Giovedì
 Friday: Venerdì
 Saturday: Sabato
-repeat-frequency-help: Specifica quanto spesso l'evento si deve ripetere. Il valore di default 1 indica che deve avvenire ogni volta. Specificando 2 l'evento avverrà una volta sì e una no (se <I>Tipo di ripetizione</I> è impostato su <I>Settimanale</I>), un mese sì e uno no (se <I>Tipo di ripetizione</I> è impostato su <I>Mensile</I>), ecc.
+repeat-frequency-help: Specifica quanto spesso l'evento si deve ripetere. Il valore di default 1 indica che deve avvenire ogni volta. Specificando 2 l'evento avverrà una volta sì e una no (se <i>Tipo di ripetizione</i> è impostato su <i>Settimanale</i>), un mese sì e uno no (se <i>Tipo di ripetizione</i> è impostato su <i>Mensile</i>), ecc.
 Frequency: Frequenza
 Delete entry: Cancella nota
 You are not authorized to edit this entry: Non sei autorizzato a modificare questa nota
@@ -1124,7 +1124,7 @@ Login: Entra
 #
 # << MISSING >>
 # Access public calendar:
-cookies-note: <B>Nota:</B> Questo applicativo necessita dei cookie abilitati.
+cookies-note: <b>Nota:</b> Questo applicativo necessita dei cookie abilitati.
 
 
 ###############################################

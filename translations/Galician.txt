@@ -138,7 +138,7 @@ Year: Ano
 # << MISSING >>
 # Date format:
 December: Decembro
-time-format-help: Especifica qué formato horario empregar: <BR><I>12 horas:</I> Amosa-las horas co formato 3am, 8:30pm, etc.  <BR><I>24 horas:</I> Amosa-las horas co formato 300, 2030, etc.
+time-format-help: Especifica qué formato horario empregar: <br /><i>12 horas:</i> Amosa-las horas co formato 3am, 8:30pm, etc.  <br /><i>24 horas:</i> Amosa-las horas co formato 300, 2030, etc.
 Time format: Formato da hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -178,7 +178,7 @@ minutes: minutos
 #
 # << MISSING >>
 # Require event approvals:
-display-unapproved-help: Especifica se amosar ou non os eventos non aprobados no seu calendario.<BR> Se selecciona "Si", entón amosaranse os eventos non aprobados no seu calendario (cunha cor de texto diferente).<BR> Se selecciona "Non", entón deberanse aproba-los eventos antes de que poidan ser amosados no seu calendario.
+display-unapproved-help: Especifica se amosar ou non os eventos non aprobados no seu calendario.<br /> Se selecciona "Si", entón amosaranse os eventos non aprobados no seu calendario (cunha cor de texto diferente).<br /> Se selecciona "Non", entón deberanse aproba-los eventos antes de que poidan ser amosados no seu calendario.
 Display unapproved: Amosar non aprobados
 display-week-number-help: Especifica se o número da semana (1-52) debería amosarse na vista do mes e na vista da semana.
 Display week number: Amosa-lo número da semana
@@ -661,7 +661,7 @@ Brief Description: Descrición breve
 full-description-help: Esto debería completa-la descrición do evento. Esta información amósase cando o usuario ve o evento.
 Full Description: Descrición completa
 date-help: Especifica a data do evento.
-time-help: Especifica a hora do evento.<BR><I>Este campo pode deixarse en branco.</I>
+time-help: Especifica a hora do evento.<br /><i>Este campo pode deixarse en branco.</i>
 am: am
 pm: pm
 #
@@ -673,7 +673,7 @@ pm: pm
 #
 # << MISSING >>
 # All day event:
-duration-help: Especifica a duración (en horas:minutos) do evento.<BR><I>Este campo pode deixarse en branco.</I>
+duration-help: Especifica a duración (en horas:minutos) do evento.<br /><i>Este campo pode deixarse en branco.</i>
 Duration: Duración
 hours: horas
 priority-help: Especifica a prioridade do evento. As prioridades altas amosaránse en negriña.
@@ -681,7 +681,7 @@ Priority: Prioridade
 Low: Baixa
 Medium: Media
 High: Alta
-access-help: Especifica o nivel de acceso do evento.<BR> <I>Público</I>: Todos poden ve-la descrición completa do evento.<BR><I>Confidencial</I>: Os demais poden ver que ten unha entrada para ese día e hora, pero non os detalles sobre a entrada.
+access-help: Especifica o nivel de acceso do evento.<br /> <i>Público</i>: Todos poden ve-la descrición completa do evento.<br /><i>Confidencial</i>: Os demais poden ver que ten unha entrada para ese día e hora, pero non os detalles sobre a entrada.
 Access: Acceso
 Public: Público
 Confidential: Confidencial
@@ -706,7 +706,7 @@ Participants: Participantes
 #
 # << MISSING >>
 # External Participants:
-repeat-type-help: Seleccione con qué frecuencia se repetirá o evento.<I>Mensualmente (por días)</I> permite que o evento se repita o primeiro luns do mes, o terceiro xoves do mes, etc.<I>Mensualmente (por data)</I> permite que o evento se repita o mesmo día de cada mes.
+repeat-type-help: Seleccione con qué frecuencia se repetirá o evento.<i>Mensualmente (por días)</i> permite que o evento se repita o primeiro luns do mes, o terceiro xoves do mes, etc.<i>Mensualmente (por data)</i> permite que o evento se repita o mesmo día de cada mes.
 Repeat Type: Tipo de repetición
 Daily: Diariamente
 Weekly: Semanalmente
@@ -720,7 +720,7 @@ Yearly: Anualmente
 repeat-end-date-help: Especifica a data ata a qeu se debe repeti-lo evento.
 Repeat End Date: Data final de repetición
 Use end date: Data final de uso
-repeat-day-help: Especifica qué días da semana se repetirá o evento. Esta opción só se pode usar cando en <I>Tipo de Repetición</I> se selecciona <I>Semanalmente</I>.
+repeat-day-help: Especifica qué días da semana se repetirá o evento. Esta opción só se pode usar cando en <i>Tipo de Repetición</i> se selecciona <i>Semanalmente</i>.
 Repeat Day: Día de repetición
 for weekly: da semana
 Tuesday: Martes
@@ -728,7 +728,7 @@ Wednesday: Mércores
 Thursday: Xoves
 Friday: Venres
 Saturday: Sábado
-repeat-frequency-help: Especifica con qué frecuencia se repetirá o evento.  O 1 por defecto indica que debería ter lugar cada vez.  Se se especifica 2, o evento terá lugar nas outras semanas (se en <I>Tipo de Repetición</I> se selecciona <I>Semanalmente</I>), terá lugar nos outros meses (se en <I>Tipo de Repetición</I> se selecciona <I>Mensualmente</I>), etc.
+repeat-frequency-help: Especifica con qué frecuencia se repetirá o evento.  O 1 por defecto indica que debería ter lugar cada vez.  Se se especifica 2, o evento terá lugar nas outras semanas (se en <i>Tipo de Repetición</i> se selecciona <i>Semanalmente</i>), terá lugar nos outros meses (se en <i>Tipo de Repetición</i> se selecciona <i>Mensualmente</i>), etc.
 Frequency: Frecuencia
 Delete entry: Borrar entrada
 You are not authorized to edit this entry: Non está autorizado para modificar esta entrada
@@ -1333,7 +1333,7 @@ Login: Entrar
 #
 # << MISSING >>
 # Access public calendar:
-cookies-note: <B>Nota:</B> Este programa necesita que as cookies estean activadas.
+cookies-note: <b>Nota:</b> Este programa necesita que as cookies estean activadas.
 
 
 ###############################################

@@ -661,7 +661,7 @@ Brief Description: Kort beskrivning
 full-description-help: Här kan du skriva en komplett beskrivning av aktiviteten.
 Full Description: Fullständig beskrivning
 date-help: Anger datum för aktiviteten.
-time-help: Anger tidpunkt för aktiviteten.<BR><I>Det här fältet behöver inte vara ifyllt.</I>
+time-help: Anger tidpunkt för aktiviteten.<br /><i>Det här fältet behöver inte vara ifyllt.</i>
 am: f.m.
 pm: e.m.
 #
@@ -673,7 +673,7 @@ pm: e.m.
 #
 # << MISSING >>
 # All day event:
-duration-help: I detta fält anger du aktivitetens varaktighet <BR><I>Det här fältet behöver inte vara ifyllt.</I>
+duration-help: I detta fält anger du aktivitetens varaktighet <br /><i>Det här fältet behöver inte vara ifyllt.</i>
 Duration: Varaktighet
 hours: timmar
 priority-help: Ange aktivitetens prioritet.

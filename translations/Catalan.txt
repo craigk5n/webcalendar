@@ -61,7 +61,7 @@ Display description in printer day view: Descripció a la versió per imprimir de 
 date-format-help: Especifica el format preferit de la data.
 Date format: Format de la data
 December: Desembre
-time-format-help: Especifica el format d'hora que s'utilitza: <BR><I>12 hores:</I> Mostra les hores com a 3am, 8:30pm, etc.  <BR><I>24 hores:</I> Mostra les hores com a 300, 2030, etc.
+time-format-help: Especifica el format d'hora que s'utilitza: <br /><i>12 hores:</i> Mostra les hores com a 3am, 8:30pm, etc.  <br /><i>24 hores:</i> Mostra les hores com a 300, 2030, etc.
 Time format: Format d'hora
 12 hour: 12 hores
 24 hour: 24 hores
@@ -75,7 +75,7 @@ auto-refresh-time-help: Si l'auto Auto-refrescament està habilitat, aquí s'espec
 Auto-refresh time: Interval d'auto-refrescament
 require-approvals-help: Si està activat, l'usuari ha d'aprovar l'esdeveniment abans que es mostri en el seu ( llevat que s'hagi activat Mostrar pendents d'aprovar).  Fixeu-vos que configurar-ho a "No", no ocultarà les aprovacions per al calendari d'Accés Públic (si el calendari d'Accés Públic està habilitat).
 Require event approvals: Requereix aprovació d'esdeveniments
-display-unapproved-help: Especifica si els esdeveniments pendents d'aprovació es mostren al calendari.<BR> Si s'ajusta a "Sí", els esdeveniments pendents d'aprovació es mostraran al calendari (amb el text en un color diferent). <BR> Si s'ajusta a  "No", aleshores cal aprovar abans els esdeveniments pendents abans que no es mostrin al calendari.
+display-unapproved-help: Especifica si els esdeveniments pendents d'aprovació es mostren al calendari.<br /> Si s'ajusta a "Sí", els esdeveniments pendents d'aprovació es mostraran al calendari (amb el text en un color diferent). <br /> Si s'ajusta a  "No", aleshores cal aprovar abans els esdeveniments pendents abans que no es mostrin al calendari.
 Display unapproved: Mostra pendents d'aprovar 
 display-week-number-help: Especifica si el número de setmana (1-52) es mostra a la visualització de mes i a la de setmana.
 Display week number: Mostra número de setmana
@@ -282,13 +282,13 @@ Brief Description: Descripció breu
 full-description-help: Aquí cal completar els detalls de l'esdeveniment.  Es pot veure aquesta informació quan un usuari visualitza l'esdeveniment.
 Full Description: Descripció completa
 date-help: Especifica la data de l'esdeveniment.
-time-help: Especifica l'hora de l'esdeveniment.<BR>Seleccioneu "Esdeveniment amb hora" (per a un esdeveniment programat per a una hora determinada del dia), o bé "Esdeveniment sense hora" (per a un esdeveniment sense hora determinada (com ara un festiu), o bé "Esdeveniment dia complet" (per a un esdeveniment que ocupa tot el dia, com ara haver de sortir fora de l'oficina).
+time-help: Especifica l'hora de l'esdeveniment.<br />Seleccioneu "Esdeveniment amb hora" (per a un esdeveniment programat per a una hora determinada del dia), o bé "Esdeveniment sense hora" (per a un esdeveniment sense hora determinada (com ara un festiu), o bé "Esdeveniment dia complet" (per a un esdeveniment que ocupa tot el dia, com ara haver de sortir fora de l'oficina).
 am: am
 pm: pm
 Untimed event: Esdeveniment sense hora
 Timed event: Esdeveniment amb hora
 All day event: Esdeveniment de dia complet
-duration-help: Especifica la durada (en hores:minuts) de l'esdeveniment.  <BR><I>Aquest camp es pot deixar en blanc.</I>
+duration-help: Especifica la durada (en hores:minuts) de l'esdeveniment.  <br /><i>Aquest camp es pot deixar en blanc.</i>
 Duration: Durada
 hours: hores
 priority-help: Especifica la prioritat de l'esdeveniment.  Els esdeveniments de prioritat alta es mostraran en negreta.
@@ -296,7 +296,7 @@ Priority: Prioritat
 Low: Baixa
 Medium: Mitjana
 High: Alta
-access-help: Especifica el nivell d'accés de l'esdeveniment.<BR> <I>Públic</I>: Tothom pot veure tots els detalls de l'esdeveniment.  <BR><I>Confidencial</I>: Els altres poden veure la teva entrada per a aquella data i hora, però no poden veure'n els detalls.
+access-help: Especifica el nivell d'accés de l'esdeveniment.<br /> <i>Públic</i>: Tothom pot veure tots els detalls de l'esdeveniment.  <br /><i>Confidencial</i>: Els altres poden veure la teva entrada per a aquella data i hora, però no poden veure'n els detalls.
 Access: Accés
 Public: Públic
 Confidential: Confidencial
@@ -309,7 +309,7 @@ participants-help: Mostra la llista de participants en aquesta entrada.
 Participants: Participants
 external-participants-help: Especifica una llista de participants per a l'esdeveniment que no són usuaris de calendari.   S'indicaran un usuari per línia i s'en pot incloure una adreça de correu electrònic.   Si s'especifica una adreça electrònica, l'usuari podrà rebre notificacions i recordatoris
 External Participants: Participants externs
-repeat-type-help: Seleccioneu amb quina assiduïtat caldria repetir l'esdeveniment. <I>Mensualment (per dia)</I> permet repetir un esdeveniment cada primer dilluns de mes, 3r dijous de mes, etc.  <I>Mensualment (per data)</I> permet repetir un esdeveniment el mateix dia de cada mes.
+repeat-type-help: Seleccioneu amb quina assiduïtat caldria repetir l'esdeveniment. <i>Mensualment (per dia)</i> permet repetir un esdeveniment cada primer dilluns de mes, 3r dijous de mes, etc.  <i>Mensualment (per data)</i> permet repetir un esdeveniment el mateix dia de cada mes.
 Repeat Type: Tipus de repetició
 Daily: Diàriament
 Weekly: Setmanalment
@@ -321,7 +321,7 @@ Yearly: Anualment
 repeat-end-date-help: Especifica la data fins a la qual cal repetir l'esdeveniment.
 Repeat End Date: Data final de repetició
 Use end date: Utilitza data final
-repeat-day-help: Especifica quins dies de la setmana cal repetir l'esdeveniment  Aquest camp només s'ha de fer servir quan <I>Tipus de repetició</I> està configurat com a <I>Setmanalment</I>.
+repeat-day-help: Especifica quins dies de la setmana cal repetir l'esdeveniment  Aquest camp només s'ha de fer servir quan <i>Tipus de repetició</i> està configurat com a <i>Setmanalment</i>.
 Repeat Day: Dia de repetició
 for weekly: per a setmanalment
 Tuesday: Dimarts
@@ -329,7 +329,7 @@ Wednesday: Dimecres
 Thursday: Dijous
 Friday: Divendres
 Saturday: Dissabte
-repeat-frequency-help: Especifica amb quina assiduïtat cal repetir l'esdeveniment.   El valor per defecte 1 indica que es repetirà cada vegada.   Si s'especifica 2, l'esdeveniment es repetirà cada dues setmanes (si el <I>Tipus de repetició</I> està configurat com a <I>Setmanalment</I>), cada dos mesos (si el <I>Tipus de repetició</I> està configurat com a <I>Mensualment</I>), etc.
+repeat-frequency-help: Especifica amb quina assiduïtat cal repetir l'esdeveniment.   El valor per defecte 1 indica que es repetirà cada vegada.   Si s'especifica 2, l'esdeveniment es repetirà cada dues setmanes (si el <i>Tipus de repetició</i> està configurat com a <i>Setmanalment</i>), cada dos mesos (si el <i>Tipus de repetició</i> està configurat com a <i>Mensualment</i>), etc.
 Frequency: Freqüència
 Delete entry: Suprimeix l'entrada
 You are not authorized to edit this entry: No tens autorització per editar aquesta entrada
@@ -440,7 +440,7 @@ Subtract N hours from: Restar N hores de
 same as: igual que
 server time: hora del servidor 
 Default Category: Categoria per defecte
-When I am the boss: Quan sóc <I>qui talla el bacallà</I>
+When I am the boss: Quan sóc <i>qui talla el bacallà</i>
 Email me event notification: Notificació per correu electrònic
 I want to approve events: Vull aprovar els esdeveniments
 allow-remote-subscriptions-help: Especifica si els usuaris remots es poden subscriure al teu calendari, permetent-los de veure el teu calendari amb una aplicació habilitada per a iCal (com ara l'Ical d'Apple o el Mozilla Calendar).
@@ -738,7 +738,7 @@ You must enter a login and password: Cal introduir un usuari i contrasenya
 Save login via cookies so I don't have to login next time: Desa la identificació mitjançant galetes per no haver d'introduir-ho la propera vegada
 Login: Entrada
 Access public calendar: Calendari d'accés públic
-cookies-note: <B>Nota:</B>: Aquesta aplicació requereix tenir les galetes habilitades.
+cookies-note: <b>Nota:</b>: Aquesta aplicació requereix tenir les galetes habilitades.
 
 
 ###############################################

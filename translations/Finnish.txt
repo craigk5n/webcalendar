@@ -88,7 +88,7 @@ Display weekends in week view: N‰yt‰ viikonloput viikkoa katseltaessa
 date-format-help: M‰‰ritt‰‰ p‰iv‰n esitysmuodon.
 Date format: P‰iv‰yksen muoto
 December: Joulukuu
-time-format-help: M‰‰rittelee ajan esitysmuodon, <BR><I>12 tuntia</I> <BR><I>24 tuntia</I>
+time-format-help: M‰‰rittelee ajan esitysmuodon, <br /><i>12 tuntia</i> <br /><i>24 tuntia</i>
 Time format: Ajan esitystapa
 12 hour: 12 tuntia
 24 hour: 24 tuntia
@@ -102,7 +102,7 @@ auto-refresh-time-help: Tauko p‰ivitysten v‰lill‰.
 Auto-refresh time: Tauko p‰ivitysten v‰lill‰
 require-approvals-help: Jos p‰‰ll‰, k‰ytt‰j‰n on vahvistettava tapahtuma ennenkuin se n‰kyy kalenterissa.
 Require event approvals: Vaadi tapahtumien vahvistus
-display-unapproved-help: M‰‰rittelee n‰ytet‰‰nkˆ hyv‰ksym‰ttˆm‰t tapahtumat kalenterissa. <BR>Jos valittu "Kyll‰", niin hyv‰ksym‰ttˆm‰t tapahtumat n‰ytet‰‰n (eri v‰rill‰).<BR>Jos valittu "Ei", niin tapahtumat tulee hyv‰ksy‰ ennenkuin ne n‰kyv‰t kalenterissa. 
+display-unapproved-help: M‰‰rittelee n‰ytet‰‰nkˆ hyv‰ksym‰ttˆm‰t tapahtumat kalenterissa. <br />Jos valittu "Kyll‰", niin hyv‰ksym‰ttˆm‰t tapahtumat n‰ytet‰‰n (eri v‰rill‰).<br />Jos valittu "Ei", niin tapahtumat tulee hyv‰ksy‰ ennenkuin ne n‰kyv‰t kalenterissa. 
 Display unapproved: N‰yt‰ hyv‰ksym‰ttˆm‰t tapahtumat
 display-week-number-help: M‰‰rittelee n‰ytet‰‰nkˆ viikonnumero (1-52) kuukausi- ja viikkon‰kym‰ss‰. 
 Display week number: N‰yt‰ viikonnumero
@@ -369,13 +369,13 @@ Brief Description: Selite
 full-description-help: Sis‰lt‰‰ tapahtuman tiedot. N‰m‰ n‰ytet‰‰n kun k‰ytt‰j‰ katsoo kalenterimerkinn‰n tietoja.
 Full Description: Selitys
 date-help: M‰‰rittelee tapahtuman p‰iv‰m‰‰r‰n.
-time-help: M‰‰rittelee tapahtuman ajan. <BR><I>(Voidaan j‰tt‰‰ tyhj‰ksi)</I>
+time-help: M‰‰rittelee tapahtuman ajan. <br /><i>(Voidaan j‰tt‰‰ tyhj‰ksi)</i>
 am: am
 pm: pm
 Untimed event: Ajoittamaton tapahtuma
 Timed event: Ajoitettu tapahtuma
 All day event: Koko p‰iv‰n kest‰v‰ tapahtuma
-duration-help: M‰‰rittelee tapahtuman keston (tunteina ja minuutteina). <BR><I>(Voidaan j‰tt‰‰ tyhj‰ksi)</I>
+duration-help: M‰‰rittelee tapahtuman keston (tunteina ja minuutteina). <br /><i>(Voidaan j‰tt‰‰ tyhj‰ksi)</i>
 Duration: Kesto
 hours: tuntia
 priority-help: M‰‰rittelee tapahtuman prioriteetin. T‰rkeimm‰t n‰ytet‰‰n lihavoituna.
@@ -383,7 +383,7 @@ Priority: Prioriteetti
 Low: Pieni
 Medium: Keskinkertainen
 High: Suuri
-access-help: M‰‰rittelee tapahtuman n‰kyvyyden.<BR> <I>Julkinen</I>: Kaikki n‰kev‰t kaikki tapahtuman tiedot.  <BR><I>Luottamuksellinen</I>: Muut n‰kev‰t vain tapahtuman p‰iv‰m‰‰r‰n ja ajan, mutta ei muita tietoja.
+access-help: M‰‰rittelee tapahtuman n‰kyvyyden.<br /> <i>Julkinen</i>: Kaikki n‰kev‰t kaikki tapahtuman tiedot.  <br /><i>Luottamuksellinen</i>: Muut n‰kev‰t vain tapahtuman p‰iv‰m‰‰r‰n ja ajan, mutta ei muita tietoja.
 Access: Saantioikeus
 Public: Julkinen
 Confidential: Luottamuksellinen
@@ -396,7 +396,7 @@ participants-help: Luetteloi tapahtuman osanottajat.
 Participants: Ryhm‰n j‰senet
 external-participants-help: M‰‰ritt‰‰ listan ulkoisista tapahtuman osallistujista.
 External Participants: Ulkoisia osallistujia
-repeat-type-help: Valitaan kuinka usein tapahtuma toistetaan.<I>Kuukausittain (viikonp‰iv‰n mukaan)</I> mahdollistaa merkinn‰n toistamisen
+repeat-type-help: Valitaan kuinka usein tapahtuma toistetaan.<i>Kuukausittain (viikonp‰iv‰n mukaan)</i> mahdollistaa merkinn‰n toistamisen
 Repeat Type: Toiston tyyppi
 Daily: P‰ivitt‰in
 Weekly: Viikottain
@@ -410,7 +410,7 @@ Yearly: Vuosittain
 repeat-end-date-help: M‰‰rittelee p‰iv‰m‰‰r‰n mihin asti tapahtumaa toistetaan.
 Repeat End Date: Toiston lopetusp‰iv‰
 Use end date: K‰yt‰ lopetusp‰iv‰‰
-repeat-day-help: M‰‰rittelee viikonp‰iv‰, joina tapahtumaa toistetaan. K‰ytett‰viss‰ vain kun <I>Toistotyypiksi</I> on asetettu <I>Viikottain</I>.
+repeat-day-help: M‰‰rittelee viikonp‰iv‰, joina tapahtumaa toistetaan. K‰ytett‰viss‰ vain kun <i>Toistotyypiksi</i> on asetettu <i>Viikottain</i>.
 Repeat Day: Toista viikonp‰ivitt‰in
 for weekly: viikottain
 Tuesday: Tiistai
@@ -897,7 +897,7 @@ You must enter a login and password: Syˆt‰ k‰ytt‰j‰tunnus ja salasana
 Save login via cookies so I don't have to login next time: Kirjaa minut automaattisesti sis‰‰n
 Login: Kirjoittaudu
 Access public calendar: Salli yleinen kalenteri
-cookies-note: <B>Huom:</B> T‰t‰ sovellusta k‰ytett‰ess‰ (joulu)piparien pit‰‰ olla k‰ytˆss‰.
+cookies-note: <b>Huom:</b> T‰t‰ sovellusta k‰ytett‰ess‰ (joulu)piparien pit‰‰ olla k‰ytˆss‰.
 
 
 ###############################################

@@ -134,7 +134,7 @@ Year: 年
 # << MISSING >>
 # Date format:
 December: 12月
-time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
+time-format-help: Specifies which time format to use: <br /><i>12 hour:</i> Display times as 3am, 8:30pm, etc.  <br /><i>24 hour:</i> Display times as 300, 2030, etc.
 Time format: 時間格式
 12 hour: 12時制
 24 hour: 24時制
@@ -174,7 +174,7 @@ minutes: 分鐘
 #
 # << MISSING >>
 # Require event approvals:
-display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<BR> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<BR> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
+display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: 顯示未核准 e 
 display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month view and the week view.
 Display week number: 顯示週數(以年計算)
@@ -647,13 +647,13 @@ Brief Description: 概要描述
 full-description-help: 活動 e 詳細說明。用者檢視活動內涵 e 時陣，會看著這部分。
 Full Description: 完整描述
 date-help: 活動舉辦 e 日期。
-time-help: 活動舉辦 e 時間。<BR><I>這項會使免添。</I>
+time-help: 活動舉辦 e 時間。<br /><i>這項會使免添。</i>
 am: 上午
 pm: 下晡
 Untimed event: 無定時間 e 活動
 Timed event: 有定時間 e 活動
 All day event: 歸工 e 活動
-duration-help: 活動前後 e 長度（按分鐘算）。<BR><I>這項會使免添。</I>
+duration-help: 活動前後 e 長度（按分鐘算）。<br /><i>這項會使免添。</i>
 Duration: 持續時間
 hours: 點鐘
 priority-help: 活動 e 優先等級。高等級 e 活動會用粗體字型特別表示。
@@ -661,7 +661,7 @@ Priority: 優先等級
 Low: 低
 Medium: 中
 High: 高
-access-help: 活動 e 顯示設定。<BR> <I>公眾 e </I>: 所有人都看會著活動 e 詳細資料。<BR><I>機密 e </I>: 別人看會著你佇某日某時陣有活動記事，但是看 be 著詳細資料。
+access-help: 活動 e 顯示設定。<br /> <i>公眾 e </i>: 所有人都看會著活動 e 詳細資料。<br /><i>機密 e </i>: 別人看會著你佇某日某時陣有活動記事，但是看 be 著詳細資料。
 Access: 顯示設定
 Public: 公眾 e 
 Confidential: 機密 e 
@@ -674,7 +674,7 @@ participants-help: 列出這項記事 e 參與者。
 Participants: 參與者
 external-participants-help: 非行事曆用者 e 本活動參與者名單。一 choa 應該列一位，會使包括電子郵便住址。有列住址 e 參與者通收著通知函及提醒函。
 External Participants: 外面參與者
-repeat-type-help: 選擇活動重複 e 週期性。<I>「按月」 (按拜幾算)</I>表示設定活動佇月 e （舉例）第一個拜一重複、第三個拜四重複...等等。<I>「按月」 (按日期算)</I> 表示設定活動佇月 e 共一日重複。
+repeat-type-help: 選擇活動重複 e 週期性。<i>「按月」 (按拜幾算)</i>表示設定活動佇月 e （舉例）第一個拜一重複、第三個拜四重複...等等。<i>「按月」 (按日期算)</i> 表示設定活動佇月 e 共一日重複。
 Repeat Type: 週期性
 Daily: 逐工
 Weekly: 按週
@@ -688,7 +688,7 @@ Yearly: 按年
 repeat-end-date-help: 活動週期結束 e 日期。
 Repeat End Date: 週期結束日期
 Use end date: 使用結束日期設定
-repeat-day-help: 活動拜幾重複。這干單<I>週期性</I>設定<I>「按週」</I>才需要。
+repeat-day-help: 活動拜幾重複。這干單<i>週期性</i>設定<i>「按週」</i>才需要。
 Repeat Day: 重複於
 for weekly: 每週 e 
 Tuesday: 拜二
@@ -696,7 +696,7 @@ Wednesday: 拜三
 Thursday: 拜四
 Friday: 拜五
 Saturday: 拜六
-repeat-frequency-help: 活動重複 e 頻率。設定「1」表示按時重複，「2」表示活動每兩禮拜 (假使<I>週期性</I>設定<I>「按週」</I>)、每兩個月 (假使<I>週期性</I> 設定<I>「按月」</I>) ...等等，會重複。
+repeat-frequency-help: 活動重複 e 頻率。設定「1」表示按時重複，「2」表示活動每兩禮拜 (假使<i>週期性</i>設定<i>「按週」</i>)、每兩個月 (假使<i>週期性</i> 設定<i>「按月」</i>) ...等等，會重複。
 Frequency: 頻率
 Delete entry: 刪除記事
 You are not authorized to edit this entry: 你無權利編輯這項記事
@@ -1243,7 +1243,7 @@ You must enter a login and password: 你著輸入用者名稱及密碼
 Save login via cookies so I don't have to login next time: 將登入資料儲存佇 cookies 中，後擺就免重登入。
 Login: 登入
 Access public calendar: 入去公眾行事曆
-cookies-note: <B>注意:</B> 本程式須要 cookies 才會得使用。
+cookies-note: <b>注意:</b> 本程式須要 cookies 才會得使用。
 
 
 ###############################################
