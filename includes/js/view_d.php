@@ -1,4 +1,4 @@
-<script type="text/Javascript">
+<script type="text/javascript">
 <!--
 function schedule_event (h,m) {
   document.forms[0].hour.value = h;

@@ -1,4 +1,4 @@
-<script language="JavaScript">
+<script type="text/javascript">
 function selectDate ( day, month, year ) {
   // get currently selected month/year
   monthobj = eval ( 'document.purgeform.' + month );

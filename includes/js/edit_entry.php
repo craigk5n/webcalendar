@@ -2,7 +2,7 @@
 global $groups_enabled,$WORK_DAY_START_HOUR;
 ?>
 
-<script language="JavaScript">
+<script type="text/javascript">
 var oldhour = 0, oldminute = 0, olddh = 0, olddm = 0;
 
 // do a little form verifying

@@ -2,7 +2,7 @@
 global $form,$listid,$groups;
 ?>
 
-<script language="JavaScript">
+<script type="text/javascript">
 function OkButton () {
   var parentlist = window.opener.document.<?php echo $form?>.elements[<?php echo $listid?>];
   var thislist = document.forms[0].elements[0];

@@ -1,4 +1,4 @@
-<script language="JavaScript">
+<script type="text/javascript">
 
 function valid_color ( str ) {
   var ch, j;

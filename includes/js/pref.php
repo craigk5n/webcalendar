@@ -2,7 +2,7 @@
   global $allow_color_customization;
 ?>
 
-<script language="JavaScript">
+<script type="text/javascript">
 // error check the colors
 function valid_color ( str ) {
   var ch, j;

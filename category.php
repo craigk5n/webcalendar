@@ -42,7 +42,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   <form action="category_handler.php" method="POST">
   <?php
   if ( ! empty ( $id ) ) {
-    echo "<input name=\"id\" type=\"hidden\" value=\"$id\">";
+    echo "<input name=\"id\" type=\"hidden\" value=\"$id\" />";
     $button = translate("Save");
     $catname = $categories[$id];
     $catowner = $category_owners[$id];
@@ -52,8 +52,8 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   <br />
   <?php if ( $is_admin && empty ( $id ) ) { ?>
     <?php etranslate("Global")?>:
-      <input type="radio" name="isglobal" value="N" <?php if ( ! empty ( $catowner ) || empty ( $id ) ) echo "CHECKED=\"CHECKED\"";?>> <?php etranslate("No")?>
-      <input type="radio" name="isglobal" value="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo "CHECKED=\"CHECKED\"";?>> <?php etranslate("Yes")?>
+      <input type="radio" name="isglobal" value="N" <?php if ( ! empty ( $catowner ) || empty ( $id ) ) echo "checked=\"checked\"";?>> <?php etranslate("No")?>
+      <input type="radio" name="isglobal" value="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo "checked=\"checked\"";?>> <?php etranslate("Yes")?>
   <?php } ?>
   <br /><br />
   <input type="submit" name="action" value="<?php echo $button;?>" />
@@ -87,7 +87,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
 }
 
 if ( ! empty ( $error ) ) {
-  echo "<b>" . translate ( "Error" ) . ":</b>" . $error;
+  echo "<span style=\"font-weight:bold;\">" . translate ( "Error" ) . ":</span>" . $error;
 }
 ?>
 
