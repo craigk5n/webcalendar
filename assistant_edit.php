@@ -42,6 +42,7 @@ print_header($INC);
   for ( $i = 0; $i < count ( $users ); $i++ ) {
     $u = $users[$i]['cal_login'];
     if ($u == $login ) continue;
+    if ($u == '__public__' ) continue;
     echo "<OPTION VALUE=\"$u\" ";
     if ( ! empty ( $assistantuser[$u] ) ) {
       echo "SELECTED";
