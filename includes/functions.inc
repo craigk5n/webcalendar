@@ -860,32 +860,37 @@ function print_date_entries ( $date, $user, $hide_icons, $ssi ) {
   $ev = get_entries ( $user, $date );
 
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    if ( $GLOBALS["DISPLAY_UNAPPROVED"] == "N" &&
-      $ev[$i]['cal_status'] == 'W' )
-      continue; // ignore this unapproved event
     // print out any repeating events that are before this one...
     while ( $cur_rep < count ( $rep ) &&
       $rep[$cur_rep]['cal_time'] < $ev[$i]['cal_time'] ) {
+      if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
+        $rep[$cur_rep]['cal_status'] == 'A' )
+        print_entry ( $rep[$cur_rep]['cal_id'],
+          $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
+          $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
+          $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
+          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
+          $hide_icons );
+      $cur_rep++;
+    }
+    if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
+      $ev[$i]['cal_status'] == 'A' )
+      print_entry ( $ev[$i]['cal_id'],
+        $date, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
+        $ev[$i]['cal_name'], $ev[$i]['cal_description'],
+        $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
+        $ev[$i]['cal_access'], $ev[$i]['cal_login'], $hide_icons );
+  }
+  // print out any remaining repeating events
+  while ( $cur_rep < count ( $rep ) ) {
+    if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
+      $rep[$cur_rep]['cal_status'] == 'A' )
       print_entry ( $rep[$cur_rep]['cal_id'],
         $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
         $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
         $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'], $hide_icons );
-      $cur_rep++;
-    }
-    print_entry ( $ev[$i]['cal_id'],
-      $date, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
-      $ev[$i]['cal_name'], $ev[$i]['cal_description'],
-      $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
-      $ev[$i]['cal_access'], $ev[$i]['cal_login'], $hide_icons );
-  }
-  // print out any remaining repeating events
-  while ( $cur_rep < count ( $rep ) ) {
-    print_entry ( $rep[$cur_rep]['cal_id'],
-      $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
-      $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
-      $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-      $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'], $hide_icons );
+        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'],
+        $hide_icons );
     $cur_rep++;
   }
 }
@@ -1277,29 +1282,35 @@ function print_day_at_a_glance ( $date, $user, $hide_icons ) {
     // print out any repeating events that are before this one...
     while ( $cur_rep < count ( $rep ) &&
       $rep[$cur_rep]['cal_time'] < $ev[$i]['cal_time'] ) {
+      if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
+        $rep[$cur_rep]['cal_status'] == 'A' )
+        html_for_event_day_at_a_glance ( $rep[$cur_rep]['cal_id'],
+          $date, $rep[$cur_rep]['cal_time'],
+          $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
+          $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
+          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
+          $rep[$cur_rep]['cal_login'], $hide_icons );
+      $cur_rep++;
+    }
+    if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
+      $ev[$i]['cal_status'] == 'A' )
+      html_for_event_day_at_a_glance ( $ev[$i]['cal_id'],
+        $date, $ev[$i]['cal_time'],
+        $ev[$i]['cal_name'], $ev[$i]['cal_description'],
+        $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
+        $ev[$i]['cal_access'], $ev[$i]['cal_duration'],
+        $ev[$i]['cal_login'], $hide_icons );
+  }
+  // print out any remaining repeating events
+  while ( $cur_rep < count ( $rep ) ) {
+    if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
+      $rep[$cur_rep]['cal_status'] == 'A' )
       html_for_event_day_at_a_glance ( $rep[$cur_rep]['cal_id'],
         $date, $rep[$cur_rep]['cal_time'],
         $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
         $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
         $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
         $rep[$cur_rep]['cal_login'], $hide_icons );
-      $cur_rep++;
-    }
-    html_for_event_day_at_a_glance ( $ev[$i]['cal_id'],
-      $date, $ev[$i]['cal_time'],
-      $ev[$i]['cal_name'], $ev[$i]['cal_description'],
-      $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
-      $ev[$i]['cal_access'], $ev[$i]['cal_duration'],
-      $ev[$i]['cal_login'], $hide_icons );
-  }
-  // print out any remaining repeating events
-  while ( $cur_rep < count ( $rep ) ) {
-    html_for_event_day_at_a_glance ( $rep[$cur_rep]['cal_id'],
-      $date, $rep[$cur_rep]['cal_time'],
-      $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
-      $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-      $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
-      $rep[$cur_rep]['cal_login'], $hide_icons );
     $cur_rep++;
   }
 
