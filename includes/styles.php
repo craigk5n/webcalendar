@@ -212,6 +212,11 @@ td.numericdate {
 	color: <?php echo $GLOBALS['H2COLOR'] ?>;
 	text-align: center;
 }
+.categories {
+	font-size: 18px;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	text-align: center;
+}
 .help {
 	vertical-align: top;
 	font-weight: bold;
