@@ -1,4 +1,6 @@
 Verion 0.9.43dev (?? ??? 2003)
+  - Fixed bug 794749: HTTP_ACCEPT_LANUAGE not found if globals are not on.
+  - Fixed bug 820854: missing CR in publish.php (violates iCal)
   - Fixed bug 801850: Don't allow adding of events via public calendar
     if user enters URL by hand.
   - Modified to use md5 hashes for passwords in webcal_user rather than
