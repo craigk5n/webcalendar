@@ -57,12 +57,12 @@ if ( $timeb == 1 )
       $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
 }
 else
-   $wkstart = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );    // Debut
+   $wkstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );    // Debut
 
 if ( $timeb == 1 )
    $wkend = $wkstart + ( 3600 * 24 * 6 );
 else
-   $wkend = $wkstart + ( 3600 * 24 * (date("t", $wkstart)-1) );    // Fin (1 mois plus tard)
+   $wkend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );    // Fin (1 mois plus tard)
 
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
