@@ -139,7 +139,7 @@ function TimeMatrix ($date,$participants) {
 ?>
 
 <br />
-<table class="viewd" style="width:<?php echo $total_pix;?>;" cellspacing="0" cellpadding="0" cols="<?php echo $cols;?>">
+<table class="viewd" style="width:<?php echo $total_pix;?>px;" cellspacing="0" cellpadding="0" cols="<?php echo $cols;?>">
  <tr><td style="height:1px; background-color:#000000;" colspan="<?php echo $cols;?>"><img src="pix.gif" style="height:1px; width:100%;" /></td></tr>
  <tr>
    <th class="row" style="width:<?php echo $participant_pix;?>;"><?php etranslate("Participants");?></th>
@@ -207,7 +207,7 @@ function TimeMatrix ($date,$participants) {
 
     for($j=$first_hour;$j<$last_hour;$j++) {
        for($k=0;$k<$interval;$k++) {
-         $space = ($k == '0') ? '<img src="pix.gif" style=\"height:12px; width:1px; text-align:center;\" />' : "&nbsp;";
+         $space = ($k == '0') ? '<img src="pix.gif" style="height:12px; width:1px; text-align:center;" />' : "&nbsp;";
 	 $RC = $CELLBG;
          $TIME = mktime ( sprintf ( "%02d",$j), ($increment * $k), 0, $thismonth, $thisday, $thisyear );
 
