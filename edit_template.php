@@ -64,8 +64,8 @@ if ( $REQUEST_METHOD == 'POST' ) {
 
 print_header( '', '', '', true );
 //echo "report_id: $report_id <br>\n";
-//echo "report_name: $report_name <br>\n";
-//echo "report_user: $report_user <br>\n";
+//echo "report_name: $report_name <br />\n";
+//echo "report_user: $report_user <br />\n";
 ?>
 
 <h2><font color="<?php echo $H2COLOR;?>">
@@ -80,12 +80,12 @@ else
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo "<h2><font color=\"$h2color\">" . translate("Error") . "</font></h2>" .
+  echo "<h2 style=\"color:$h2color;\">" . translate("Error") . "</h2>" .
     $error . "\n";
 } else {
 ?>
   
-<form action="edit_template.php" method="POST" name="reportform">
+<form action="edit_template.php" method="post" name="reportform">
 
 <input type="hidden" name="type" value="<?php echo $type;?>" />
 <textarea rows="15" cols="60" name="template"><?php echo htmlentities ( $cur )?></textarea>

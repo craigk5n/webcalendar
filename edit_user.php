@@ -34,13 +34,13 @@ print_header();
 
 if ( ! empty ( $user ) ) {
   user_load_variables ( $user, "u" );
-  echo "<h2><font color=\"$H2COLOR\">" . translate("Edit User") . "</font></h2>\n";
+  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Edit User") . "</h2>\n";
 } else {
-  echo "<h2><font color=\"$H2COLOR\">" . translate("Add User") . "</font></h2>\n";
+  echo "<h2 style=\"color:$H2COLOR;\">" . translate("Add User") . "</h2>\n";
 }
 ?>
 
-<form action="edit_user_handler.php" method="POST">
+<form action="edit_user_handler.php" method="post">
 <input type="hidden" name="formtype" value="edituser" />
 
 <?php
@@ -76,7 +76,7 @@ if ( empty ( $user ) ) {
 <?php }
   if ( $is_admin ) { ?>
 <tr><td><b><?php etranslate("Admin")?>:</b></td>
-  <td><input type="radio" name="uis_admin" value="N" <?php if ( $uis_admin != "Y" ) echo "CHECKED=\"CHECKED\"";?>><?php etranslate("No")?> <input type="radio" name="uis_admin" value="Y" <?php if ( $uis_admin == "Y" ) echo "CHECKED=\"CHECKED\"";?>><?php etranslate("Yes")?></td></tr>
+  <td><input type="radio" name="uis_admin" value="N" <?php if ( $uis_admin != "Y" ) echo "checked=\"checked\"";?>><?php etranslate("No")?> <input type="radio" name="uis_admin" value="Y" <?php if ( $uis_admin == "Y" ) echo "checked=\"checked\"";?>><?php etranslate("Yes")?></td></tr>
 <?php } ?>
 <tr><td colspan="2">
 <?php if ( $demo_mode == "Y" ) { ?>
