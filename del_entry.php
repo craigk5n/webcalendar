@@ -146,16 +146,21 @@ if ( $id > 0 && strlen ( $error ) == 0 ) {
   }
 }
 
-$redir = "";
-if ( $thisdate != "" )
-  $redir = "?date=$thisdate";
-if ( $user != "" ) {
-  if ( $redir != "" )
-    $redir .= "&";
-  $redir .= "user=$user";
+if ( strlen ( get_last_view() ) ) {
+  $url = get_last_view();
+} else {
+  $redir = "";
+  if ( $thisdate != "" )
+    $redir = "?date=$thisdate";
+  if ( $user != "" ) {
+    if ( $redir != "" )
+      $redir .= "&";
+    $redir .= "user=$user";
+  }
+  $url = "$STARTVIEW.php" . $redir;
 }
 if ( strlen ( $error ) == 0 ) {
-  do_redirect ( "$STARTVIEW.php" . $redir );
+  do_redirect ( $url );
   exit;
 }
 ?>

@@ -10,6 +10,7 @@ include "includes/connect.inc";
 
 load_user_preferences ();
 load_user_layers ();
+remember_this_view ();
 
 include "includes/translate.inc";
 

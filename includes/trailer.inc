@@ -113,21 +113,25 @@
 <BR>
 <B><?php etranslate("Go to")?>:</B> 
 <?php
+  if ( strlen ( get_last_view() ) )
+    $mycal = get_last_view ();
+  else
+    $mycal = "$STARTVIEW.php";
   if ( ! $single_user ) {
     if ( ! $use_http_auth )
       echo "<A CLASS=\"navlinks\" HREF=\"login.php\">" .
       translate("Login") . "/" . translate("Logout") . "</A>,\n";
     if ( strlen ( $user ) && $user != $login )
-      echo "<A CLASS=\"navlinks\" HREF=\"$STARTVIEW.php\"><B>" .
+      echo "<A CLASS=\"navlinks\" HREF=\"$mycal\"><B>" .
         translate("Back to My Calendar") . "</B></A>\n";
     else
-      echo "<A CLASS=\"navlinks\" HREF=\"$STARTVIEW.php\"><B>" .
+      echo "<A CLASS=\"navlinks\" HREF=\"$mycal\"><B>" .
         translate("My Calendar") . "</B></A>\n";
     if ( $allow_view_other || $is_admin )
       echo ", <A CLASS=\"navlinks\" HREF=\"select_user.php\">" .
         translate("Another User's Calendar") . "</A>\n";
   } else {
-    echo "<A CLASS=\"navlinks\" HREF=\"$STARTVIEW.php\"><B>" .
+    echo "<A CLASS=\"navlinks\" HREF=\"$mycal\"><B>" .
       translate("My Calendar") . "</B></A>\n";
   }
   // only display some links if we're viewing are own calendar.

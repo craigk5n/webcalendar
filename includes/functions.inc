@@ -60,6 +60,22 @@ function send_http_login () {
 }
 
 
+// Generate a cookie that saves the last calendar view (month, week, day)
+// so we can return to this same page after a user edits/deletes/etc an
+// event
+function remember_this_view () {
+  global $SCRIPT_FILENAME, $REQUEST_URI;
+  SetCookie ( "webcalendar_last_view", $REQUEST_URI );
+}
+
+// Get the last page stored using above function.
+// Return empty string if we don't know.
+function get_last_view () {
+  global $webcalendar_last_view;
+  return $webcalendar_last_view;
+}
+
+
 
 // Load the current user's preferences as global variables.
 function load_user_preferences () {

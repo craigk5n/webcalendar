@@ -349,9 +349,17 @@ if ( strlen ( $error ) == 0 ) {
 
 #print $msg; exit;
 
+// If we were editing this event, then go back to the last view (week, day,
+// month).  If this is a new event, then go to the preferred view for
+// the date range that this event was added to.
 if ( strlen ( $error ) == 0 ) {
-  $date = sprintf ( "%04d%02d%02d", $year, $month, $day );
-  do_redirect ( "$STARTVIEW.php?date=$date" );
+  if ( strlen ( get_last_view() ) && ! $newevent ) {
+    $url = get_last_view();
+  } else {
+    $url = sprintf ( "%s.php?date=%04d%02d%02d",
+      $STARTVIEW, $year, $month, $day );
+  }
+  do_redirect ( $url );
 }
 
 ?>
