@@ -521,6 +521,9 @@ echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"weekly\" " .
 echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"monthlyByDay\" " .
   ( strcmp ( $rpt_type, 'monthlyByDay' ) == 0 ? "CHECKED" : "" ) . "> " .
   translate("Monthly") . " (" . translate("by day") . ")";
+echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"monthlyByDayR\" " .
+  ( strcmp ( $rpt_type, 'monthlyByDayR' ) == 0 ? "CHECKED" : "" ) . "> " .
+  translate("Monthly") . " (" . translate("by day (from end)") . ")";
 echo "<INPUT TYPE=\"radio\" NAME=\"rpt_type\" VALUE=\"monthlyByDate\" " .
   ( strcmp ( $rpt_type, 'monthlyByDate' ) == 0 ? "CHECKED" : "" ) . "> " .
   translate("Monthly") . " (" . translate("by date") . ")";
