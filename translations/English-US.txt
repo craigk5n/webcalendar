@@ -119,10 +119,13 @@ Repeat Day: Repeat Day
 Repeat End Date: Repeat End Date
 Repeat Type: Repeat Type
 Use end date: Use end date
+every: every
 Weekly: Weekly
 Yearly: Yearly
 Frequency: Frequency
+# use "every" as in "repeats every 2 weeks"
 Save: Save
+Cancel: Cancel
 Help: Help
 Approve this entry?: Approve this entry?
 Approve/Confirm: Approve/Confirm
@@ -182,6 +185,7 @@ Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
 Unapproved Events: Unapproved Events
 No unapproved events: No unapproved events
 You must enter a login and password: You must enter a login and password
+Invalid login: Invalid login
 Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
 cookies-note: <B>Note:</B> This application requires cookies to be enabled.
 Invalid color for document background: Invalid color for document background
@@ -208,6 +212,7 @@ Table cell background: Table cell background
 Table cell background for current day: Table cell background for current day
 Save Preferences: Save Preferences
 The following error occurred: The following error occurred
+Database error: Database error
 Search: Search
 Keywords: Keywords
 You must enter one or more search keywords: You must enter one or more search keywords
