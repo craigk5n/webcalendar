@@ -5,9 +5,8 @@
 # Translator: Ralph Boßler <vertrieb@sylphen.com>,
 #	Peter Huetmannsberger <huetmann@site38.ping.at>
 # Last update: 28 June 2000
-# Last update: 3 July 2002 by Markus Egartner & Markus Kronberger <edv@kh-hallein.at>
-# Last update: 9 July 2002 by Markus Egartner & Markus Kronberger <edv@kh-hallein.at>
-# Translation last updated on 07-11-2002
+# Last update: 15 July 2002 by Markus Egartner & Markus Kronberger <edv@kh-hallein.at>
+# Translation last updated on 07-19-2002
 
 
 ###############################################
@@ -36,11 +35,7 @@ Next: Nächsten
 #
 Invalid entry id: ungültiger Eintrag
 This is a private event and may not be added to your calendar.: Das ist ein PRIVATER Termin und kann Ihrem Kalender nicht hinzugefügt werden.
-#
-# << MISSING >>
-# Error adding event:
-# English text: Error adding event
-#
+Error adding event: Fehler beim Hinzufügen eines Termines
 
 
 ###############################################
@@ -85,27 +80,40 @@ Day: Tag
 Week: Woche
 Month: Monat
 Year: Jahr
-#
-# << MISSING >>
-# display-weekends-help:
-# English text: Include weekends when viewing a week.
-#
-#
-# << MISSING >>
-# Display weekends in week view:
-# English text: Display weekends in week view
-#
+display-weekends-help: Zeigt die Wochenenden in der Wochenansicht an.
+Display weekends in week view: Wochenenden in der Wochenansicht anzeigen
 Yes: Ja
 No: Nein
+#
+# << MISSING >>
+# date-format-help:
+# English text: Specifies the preferred date format.
+#
+#
+# << MISSING >>
+# Date format:
+December: Dezember
+Dec: Dez
 time-format-help: Gibt an welches Zeit-Format benutzt wird: <BR><I>12-stündiges:</I> Zeigt Zeiten als 3am, 8:30pm, etc.  <BR><I>24-stündiges:</I> Zeigt Zeiten als 3.00, 20.30, etc.
 Time format: Zeit-Format
 12 hour: 12-stündig
 24 hour: 24-stündig
+#
+# << MISSING >>
+# time-interval-help:
+# English text: Specifies how long the time blocks in the week view and day view will be.
+#
+#
+# << MISSING >>
+# Time interval:
+#
+# << MISSING >>
+# hour:
+minutes: Minute(n)
 auto-refresh-help: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
 Auto-refresh calendars: Kalender aktualisieren
 auto-refresh-time-help: If Auto-refresh is enabled, this specifies the time between each refresh.
 Auto-refresh time: Aktualisierungsintervall
-minutes: Minute(n)
 require-approvals-help: Wenn diese Option ausgewähltist, muß der Benutzerden Termin bestätigen um Ihn auf seinen Kalender anzeigen zu lassen (vorausgesetzt 'unbestätigte Termine anzeigen aktiviert ist).  Anmerkung wenn diese Option auf "Nein" gesetzt ist, wirkt sich dies nicht auf etwaige aktiverte "öffentliche Kalender" aus.
 Require event approvals: Termine bestätigen
 display-unapproved-help: Gibt an, ob unbestätigte Termine in Ihrem Kalender angezeigt werden sollen.<BR> Wenn "Ja", werden unbestätigte Termine in einer anderen Farbe angezeigt.<BR> Wenn "Nein", müssen unbestätigte Termine erst bestätigt werden, um angezeigt zu werden. 
@@ -178,11 +186,7 @@ Table header background: Tabellenkopfzeile-Hintergrund
 Table header text: Tabellenkopfzeile Textfarbe
 Table cell background: Tabellen-Hintergrund
 Table cell background for current day: Tabellen-Hintergrund für 'Heute'
-#
-# << MISSING >>
-# Table cell background for weekends:
-# English text: Table cell background for weekends
-#
+Table cell background for weekends: Hintergrundfarbe für Wochenenden
 Event popup background: Terminerinnerung-Hintergrund
 Event popup text: Terminerinnerung-Text
 
@@ -190,7 +194,6 @@ Event popup text: Terminerinnerung-Text
 ###############################################
 # Page: admin_handler.php
 #
-# "You are not authorized" previously defined (in admin.php)
 Error: Fehler
 The following error occurred: Folgender Fehler trat auf
 
@@ -204,29 +207,17 @@ Error approving event: Fehler bei Bestätigung des Ereignisses
 ###############################################
 # Page: category.php
 #
-# "Invalid entry id" previously defined (in add_entry.php)
-# "You are not authorized" previously defined (in admin.php)
-# "Database error" previously defined (in activity_log.php)
-# "Categories" previously defined (in admin.php)
 Add: Hinzufügen
-# "Save" previously defined (in admin.php)
 Category Name: Kategorie Name
 Global: Global
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
 Delete: Löschen
 Are you sure you want to delete this entry?: Wollen Sie den Eintrag wirklich löschen?
 Add New Category: Neue Kategorie hinzufügen
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: category_handler.php
 #
-# "Database error" previously defined (in activity_log.php)
-# "You are not authorized" previously defined (in admin.php)
-# "Delete" previously defined (in category.php)
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -237,6 +228,9 @@ Add New Category: Neue Kategorie hinzufügen
 ###############################################
 # Page: datesel.php
 #
+#
+# << MISSING >>
+# Previous:
 
 
 ###############################################
@@ -249,12 +243,10 @@ Printer Friendly: Druckansicht
 ###############################################
 # Page: del_entry.php
 #
-# "You are not authorized" previously defined (in admin.php)
 Hello: Guten Tag 
 An appointment has been canceled for you by: Einer ihrer Termine wurde storniert von 
 The subject was: Der Betreff lautete
 Notification: Benachrichtigung
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -275,15 +267,12 @@ Brief Description: Kurzbeschreibung
 full-description-help: Komplette Beschreibung des Termins. Diese Information sieht der Benutzer beim Termin.
 Full Description: ausführliche Beschreibung
 date-help: Gibt das Datum des Termins an.
-# "Date" previously defined (in activity_log.php)
 time-help: Gibt die Uhrzeit des Termins an.<BR><I>Kann leer gelassen werden.</I>
-# "Time" previously defined (in activity_log.php)
 am: am
 pm: pm
 duration-help: Gibt die Dauer des Termin in Minuten an.<BR><I>Kann leer gelassen werden.</I>
 Duration: Dauer
 hours: Stunde(n)
-# "minutes" previously defined (in admin.php)
 priority-help: Gibt die Priorität des Termins an.  Termine mit hoher Priorität werden fett angezeigt.
 Priority: Priorität
 Low: gering
@@ -295,13 +284,10 @@ Public: öffentlich
 Confidential: privat 
 category-help: Definiert die Kategorie eines Termines.
 Category: Kategorie
-# "Yes" previously defined (in admin.php)
-# "No" previously defined (in admin.php)
 days: Tag(e)
 before event: vor dem Termin
 participants-help: Gibt die Benutzer des Termins an.
 Participants: Benutzer
-# "Select" previously defined (in admin.php)
 repeat-type-help: Wählen Sie wie oft ein Termin wiederholt werden soll.<I>Monatlich (tagesorientiert)</I> wiederholt einen Termin jeden 1. Montag des Monats, jeden 3. Donnerstag des Monats, etc.  
 Repeat Type: Art der Wiederholung
 None: keine
@@ -317,8 +303,6 @@ Use end date: Ende an diesem Tag
 repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden soll. Dies gilt nur wenn <I>Art der Wiederholung</I> auf <I>Wöchentlich</I> gesetzt ist.
 Repeat Day: Tag der Wiederholung
 for weekly: bei wöchentlichen Terminen
-# "Sunday" previously defined (in admin.php)
-# "Monday" previously defined (in admin.php)
 Tuesday: Dienstag
 Wednesday: Mittwoch
 Thursday: Donnerstag
@@ -326,9 +310,6 @@ Friday: Freitag
 Saturday: Samstag
 repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll.  Standard ist 1 das der Termin immer wiederholt werden soll.  Wenn sie 2 auswählen wird der Termin jede 2. Woche wiederholt (wenn <I>Art der Wiederholung</I> auf <I>Wöchentlich</I> gesetzt ist), jeden 2. Monat (wenn <I>Art der Wiederholung</I> auf <I>Monatlich</I> gesetzt ist), etc.
 Frequency: Häufigkeit
-# "Save" previously defined (in admin.php)
-# "Help" previously defined (in admin.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 Delete entry: Lösche Eintrag
 You are not authorized to edit this entry: Sie haben keine Berechtigung diesen Eintrag zu ändern.
 
@@ -336,18 +317,10 @@ You are not authorized to edit this entry: Sie haben keine Berechtigung diesen E
 ###############################################
 # Page: edit_entry_handler.php
 #
-# "Database error" previously defined (in activity_log.php)
-# "You are not authorized" previously defined (in admin.php)
 The following conflicts with the suggested time: Folgende Konflikte mit vorgeschlagenem Termin
 Unnamed Event: unbenanntes Ereignis
-# "Hello" previously defined (in del_entry.php)
-# "An appointment has been canceled for you by" previously defined (in del_entry.php)
-# "The subject was" previously defined (in del_entry.php)
 The description is: Die Beschreibung lautet
-# "Date" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
 Title: WebCalendar
-# "Notification" previously defined (in del_entry.php)
 A new appointment has been made for you by: Es wurde Ihnen ein neuer Termin eingetragen von -->  
 An appointment has been updated by: Ein Termin wurde geändert von
 The subject is: Die Beschreibung lautet 
@@ -357,25 +330,19 @@ to view this appointment: Termin anschauen
 Scheduling Conflict: Terminüberschneidung
 Your suggested time of: Ihre Eintragung von 
 conflicts with the following existing calendar entries: überschneidet sich mit folgenden Kalender-Einträgen.
-# "Save" previously defined (in admin.php)
 Cancel: Abbrechen
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: edit_layer.php
 #
 Invalid color: Ungültige Farbeinstellung
-# "Color format should be '#RRGGBB'" previously defined (in admin.php)
 Edit Layer: Layer editieren
 Add Layer: Layer hinzufügen
 Source: Quelle
 Color: Farbe
-# "Select" previously defined (in admin.php)
 Duplicates: Duplikate
 Show layer events that are the same as your own: Zeige Layer welche die gleichen Termine sind wie die eigenen
-# "Save" previously defined (in admin.php)
-# "Help" previously defined (in admin.php)
 Are you sure you want to delete this layer?: Wollen Sie den Layer wirklich löschen?
 Delete layer: Layer löschen
 
@@ -385,7 +352,6 @@ Delete layer: Layer löschen
 #
 You cannot create a layer for yourself: Sie können sich selber als Layer NICHT hinzufügen
 You can only create one layer for each user: Sie können nur jeweils EINEN Benutzer pro Layer hinzufügen
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -400,12 +366,7 @@ E-mail address: E-Mail-Adresse
 Password: Kennwort
 again: Wiederholung
 Admin: Admin
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
-# "Save" previously defined (in admin.php)
 Disabled for demo: für DEMO deaktiviert
-# "Delete" previously defined (in category.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 Change Password: Kennwort ändern
 New Password: Neues Kennwort
 Set Password: Setze Kennwort
@@ -414,23 +375,19 @@ Set Password: Setze Kennwort
 ###############################################
 # Page: edit_user_handler.php
 #
-# "Delete" previously defined (in category.php)
 Deleting users not supported: Gelöschte Benutzer nicht unterstützt
-# "You are not authorized" previously defined (in admin.php)
 The passwords were not identical: Die eingebenen Kennwörter stimmten nicht überein
 You have not entered a password: Sie haben kein Kennwort eingegeben
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: export.php
 #
-Export: Daten exportieren
+Export: Export
 Export format: Exportformat
 Palm Pilot: Palm Pilot
 Export all dates: Alle Einträge exportieren
 Start date: Anfangsdatum
-# "Select" previously defined (in admin.php)
 End date: Enddatum
 Modified since: Änderungen ab
 
@@ -438,14 +395,11 @@ Modified since: Änderungen ab
 ###############################################
 # Page: export_handler.php
 #
-# "Export" previously defined (in export.php)
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: groups.php
 #
-# "Groups" previously defined (in admin.php)
 Add New Group: Neue Gruppe hinzufügen
 
 
@@ -459,188 +413,62 @@ Group name: Gruppenname
 Updated: geändert
 Created by: erstellt von
 Users: Benutzer
-# "Add" previously defined (in category.php)
-# "Save" previously defined (in admin.php)
-# "Delete" previously defined (in category.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 
 
 ###############################################
 # Page: group_edit_handler.php
 #
-# "Delete" previously defined (in category.php)
-# "Database error" previously defined (in activity_log.php)
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: help_admin.php
 #
-# "Help" previously defined (in admin.php)
-# "System Settings" previously defined (in admin.php)
-# "Settings" previously defined (in admin.php)
-# "Language" previously defined (in admin.php)
-# "language-help" previously defined (in admin.php)
-# "Fonts" previously defined (in admin.php)
-# "fonts-help" previously defined (in admin.php)
-# "Preferred view" previously defined (in admin.php)
-# "preferred-view-help" previously defined (in admin.php)
-# "Time format" previously defined (in admin.php)
-# "time-format-help" previously defined (in admin.php)
-# "Require event approvals" previously defined (in admin.php)
-# "require-approvals-help" previously defined (in admin.php)
-# "Display unapproved" previously defined (in admin.php)
-# "display-unapproved-help" previously defined (in admin.php)
-# "Display week number" previously defined (in admin.php)
-# "display-week-number-help" previously defined (in admin.php)
-# "Week starts on" previously defined (in admin.php)
-# "display-week-starts-on" previously defined (in admin.php)
-# "Work hours" previously defined (in admin.php)
-# "work-hours-help" previously defined (in admin.php)
-# "Disable Priority field" previously defined (in admin.php)
-# "disable-priority-field-help" previously defined (in admin.php)
-# "Disable Access field" previously defined (in admin.php)
-# "disable-access-field-help" previously defined (in admin.php)
-# "Disable Participants field" previously defined (in admin.php)
-# "disable-participants-field-help" previously defined (in admin.php)
-# "Disable Repeating field" previously defined (in admin.php)
-# "disable-repeating-field-help" previously defined (in admin.php)
-# "Allow public access" previously defined (in admin.php)
-# "allow-public-access-help" previously defined (in admin.php)
-# "Public access can view other users" previously defined (in admin.php)
-# "public-access-view-others-help" previously defined (in admin.php)
-# "Allow viewing other user's calendars" previously defined (in admin.php)
-# "allow-view-other-help" previously defined (in admin.php)
-# "Remember last login" previously defined (in admin.php)
-# "remember-last-login-help" previously defined (in admin.php)
-# "Check for event conflicts" previously defined (in admin.php)
-# "conflict-check-help" previously defined (in admin.php)
-# "Conflict checking months" previously defined (in admin.php)
-# "conflict-months-help" previously defined (in admin.php)
-# "Groups" previously defined (in admin.php)
-# "Groups enabled" previously defined (in admin.php)
-# "groups-enabled-help" previously defined (in admin.php)
-# "User sees only his groups" previously defined (in admin.php)
-# "user-sees-his-group-help" previously defined (in admin.php)
-# "Email" previously defined (in admin.php)
-# "Email enabled" previously defined (in admin.php)
-# "email-enabled-help" previously defined (in admin.php)
-# "Default sender address" previously defined (in admin.php)
-# "email-default-sender" previously defined (in admin.php)
-# "Event reminders" previously defined (in admin.php)
-# "email-event-reminders-help" previously defined (in admin.php)
-# "Events added to my calendar" previously defined (in admin.php)
-# "email-event-added" previously defined (in admin.php)
-# "Events updated on my calendar" previously defined (in admin.php)
-# "email-event-updated" previously defined (in admin.php)
-# "Events removed from my calendar" previously defined (in admin.php)
-# "email-event-deleted" previously defined (in admin.php)
-# "Event rejected by participant" previously defined (in admin.php)
-# "email-event-rejected" previously defined (in admin.php)
-# "Colors" previously defined (in admin.php)
-# "colors-help" previously defined (in admin.php)
+
+
+###############################################
+# Page: help_bug.php
+#
+Report Bug: Fehlermeldung
 
 
 ###############################################
 # Page: help_edit_entry.php
 #
-# "Help" previously defined (in admin.php)
 Adding/Editing Calendar Entries: Hinzufügen/Ändern von Kalender-Einträgen
-# "Brief Description" previously defined (in edit_entry.php)
-# "brief-description-help" previously defined (in edit_entry.php)
-# "Full Description" previously defined (in edit_entry.php)
-# "full-description-help" previously defined (in edit_entry.php)
-# "Date" previously defined (in activity_log.php)
-# "date-help" previously defined (in edit_entry.php)
-# "Time" previously defined (in activity_log.php)
-# "time-help" previously defined (in edit_entry.php)
-# "Duration" previously defined (in edit_entry.php)
-# "duration-help" previously defined (in edit_entry.php)
-# "Priority" previously defined (in edit_entry.php)
-# "priority-help" previously defined (in edit_entry.php)
-# "Access" previously defined (in edit_entry.php)
-# "access-help" previously defined (in edit_entry.php)
-# "Participants" previously defined (in edit_entry.php)
-# "participants-help" previously defined (in edit_entry.php)
-# "Repeat Type" previously defined (in edit_entry.php)
-# "repeat-type-help" previously defined (in edit_entry.php)
-# "Repeat End Date" previously defined (in edit_entry.php)
-# "repeat-end-date-help" previously defined (in edit_entry.php)
-# "Repeat Day" previously defined (in edit_entry.php)
-# "repeat-day-help" previously defined (in edit_entry.php)
-# "Frequency" previously defined (in edit_entry.php)
-# "repeat-frequency-help" previously defined (in edit_entry.php)
 
 
 ###############################################
 # Page: help_index.php
 #
 Help Index: Hilfe-Index
-# "Adding/Editing Calendar Entries" previously defined (in help_edit_entry.php)
 Layers: Layers
 Preferences: Voreinstellungen
-# "System Settings" previously defined (in admin.php)
-#
-# << MISSING >>
-# Report Bug:
 
 
 ###############################################
 # Page: help_layers.php
 #
-# "Help" previously defined (in admin.php)
-# "Layers" previously defined (in help_index.php)
 Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Layers sind sinnvoll um andere Termine von anderen Benutzern im eigenen Kalender anzuzeigen.  Sie können den Benutzer und die Farbe des Termines selber spezifizieren.
 Add/Edit/Delete: Hinzufügen/Editieren/Löschen
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Drücken Sie den 'Layer editieren' im Admin-User um die Layers HINZUFÜGEN/EDITIEREN/LÖSCHEN (am Ende der Seite).
-# "Source" previously defined (in edit_layer.php)
 Specifies the user that you would like to see displayed in your calendar.: Definieren Sie Ihren gewünschten Benutzer den Sie in Ihren Kalender sehen möchten.
-# "Colors" previously defined (in admin.php)
 The text color of the new layer that will be displayed in your calendar.: Die Farbe Ihres neuen Layers wird in Ihrem Kalender angezeigt.
-# "Duplicates" previously defined (in edit_layer.php)
 If checked, events that are duplicates of your events will be shown.: Wenn aktiviert, werden Ihre Termin-Duplikate angezeigt. 
 Disabling: Deaktivieren
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Drücken Sie den 'Layer abschalten' im Admin-User um die Layers ABZUSCHALTEN (am Ende der Seite).
 Enabling: Aktivieren
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Drücken Sie den 'Layer aktivieren' im Admin-User um die Layers zu AKTIVIEREN (am Ende der Seite).
-# "colors-help" previously defined (in admin.php)
 
 
 ###############################################
 # Page: help_pref.php
 #
-# "Help" previously defined (in admin.php)
-# "Preferences" previously defined (in help_index.php)
-# "Settings" previously defined (in admin.php)
-# "Language" previously defined (in admin.php)
-# "language-help" previously defined (in admin.php)
-# "Fonts" previously defined (in admin.php)
-# "fonts-help" previously defined (in admin.php)
-# "Preferred view" previously defined (in admin.php)
-# "preferred-view-help" previously defined (in admin.php)
-# "Time format" previously defined (in admin.php)
-# "time-format-help" previously defined (in admin.php)
-# "Display unapproved" previously defined (in admin.php)
-# "display-unapproved-help" previously defined (in admin.php)
-# "Display week number" previously defined (in admin.php)
-# "display-week-number-help" previously defined (in admin.php)
-# "Week starts on" previously defined (in admin.php)
-# "display-week-starts-on" previously defined (in admin.php)
-# "Work hours" previously defined (in admin.php)
-# "work-hours-help" previously defined (in admin.php)
-# "Email" previously defined (in admin.php)
-# "Event reminders" previously defined (in admin.php)
-# "email-event-reminders-help" previously defined (in admin.php)
-# "Events added to my calendar" previously defined (in admin.php)
-# "email-event-added" previously defined (in admin.php)
-# "Events updated on my calendar" previously defined (in admin.php)
-# "email-event-updated" previously defined (in admin.php)
-# "Events removed from my calendar" previously defined (in admin.php)
-# "email-event-deleted" previously defined (in admin.php)
-# "Event rejected by participant" previously defined (in admin.php)
-# "email-event-rejected" previously defined (in admin.php)
-# "Colors" previously defined (in admin.php)
-# "colors-help" previously defined (in admin.php)
+Default Category: Standard Kategorie
+#
+# << MISSING >>
+# default-category-help:
+# English text: Specifies the category a new event should default to.
+#
 
 
 ###############################################
@@ -651,28 +479,17 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: layers.php
 #
-# "Layers" previously defined (in help_index.php)
 Layers are currently: Layer
 Disabled: inaktiv
 Enabled: aktiv
 Layer: Layer
-# "Source" previously defined (in edit_layer.php)
-# "Color" previously defined (in edit_layer.php)
-# "Duplicates" previously defined (in edit_layer.php)
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
 Edit layer: Layer editieren
-# "Are you sure you want to delete this layer?" previously defined (in edit_layer.php)
-# "Delete layer" previously defined (in edit_layer.php)
 Add layer: Layer hinzufügen
-# "Help" previously defined (in admin.php)
 
 
 ###############################################
 # Page: layers_toggle.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "The following error occurred" previously defined (in admin_handler.php)
 
 
 ###############################################
@@ -692,9 +509,6 @@ Public Access: Öffentlicher Zugang
 # Page: login.php
 #
 You must enter a login and password: Sie müssen einen Benutzernamen und ein Kennwort eingeben.
-# "Error" previously defined (in admin_handler.php)
-# "Username" previously defined (in edit_user.php)
-# "Password" previously defined (in edit_user.php)
 Save login via cookies so I don't have to login next time: Login in Cookie abspeichern, um Anmeldung beim nächsten Mal automatisch zu überspringen.
 Login: Login
 Access public calendar: Zugang öffentlicher Kalender
@@ -711,97 +525,26 @@ Wed: Mi
 Thu: Do
 Fri: Fr
 Sat: Sa
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
 # Page: pref.php
 #
-# "Invalid color for document background" previously defined (in admin.php)
-# "Invalid color for document title" previously defined (in admin.php)
-# "Invalid color for table cell background" previously defined (in admin.php)
-# "Invalid color for table cell background for today" previously defined (in admin.php)
-# "Color format should be '#RRGGBB'" previously defined (in admin.php)
-# "Preferences" previously defined (in help_index.php)
-# "Settings" previously defined (in admin.php)
-# "Language" previously defined (in admin.php)
-# "Your browser default language is" previously defined (in admin.php)
-# "fonts-help" previously defined (in admin.php)
-# "Fonts" previously defined (in admin.php)
-# "Preferred view" previously defined (in admin.php)
-# "Day" previously defined (in admin.php)
-# "Week" previously defined (in admin.php)
-# "Month" previously defined (in admin.php)
-# "Year" previously defined (in admin.php)
 #
 # << MISSING >>
-# display-weekends-help:
-# English text: Include weekends when viewing a week.
-#
-#
-# << MISSING >>
-# Display weekends in week view:
-# English text: Display weekends in week view
-#
-# "Yes" previously defined (in admin.php)
-# "No" previously defined (in admin.php)
-# "Time format" previously defined (in admin.php)
-# "12 hour" previously defined (in admin.php)
-# "24 hour" previously defined (in admin.php)
-# "auto-refresh-help" previously defined (in admin.php)
-# "Auto-refresh calendars" previously defined (in admin.php)
-# "auto-refresh-time-help" previously defined (in admin.php)
-# "Auto-refresh time" previously defined (in admin.php)
-# "minutes" previously defined (in admin.php)
-# "Display unapproved" previously defined (in admin.php)
-# "Display week number" previously defined (in admin.php)
-# "Week starts on" previously defined (in admin.php)
-# "Sunday" previously defined (in admin.php)
-# "Monday" previously defined (in admin.php)
-# "Work hours" previously defined (in admin.php)
-# "From" previously defined (in admin.php)
-# "to" previously defined (in admin.php)
-Default Category: Standard Kategorie
-# "Email" previously defined (in admin.php)
-# "Event reminders" previously defined (in admin.php)
-# "Events added to my calendar" previously defined (in admin.php)
-# "Events updated on my calendar" previously defined (in admin.php)
-# "Events removed from my calendar" previously defined (in admin.php)
-# "Event rejected by participant" previously defined (in admin.php)
-# "Colors" previously defined (in admin.php)
-# "Document background" previously defined (in admin.php)
-# "Select" previously defined (in admin.php)
-# "Document title" previously defined (in admin.php)
-# "Table cell background" previously defined (in admin.php)
-# "Table cell background for current day" previously defined (in admin.php)
-#
-# << MISSING >>
-# Table cell background for weekends:
-# English text: Table cell background for weekends
-#
+# to modify the preferences for the Public Access calendar:
 Save Preferences: Voreinstellungen speichern
-# "Help" previously defined (in admin.php)
 
 
 ###############################################
 # Page: pref_handler.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "The following error occurred" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: reject_entry.php
 #
-# "Error approving event" previously defined (in approve_entry.php)
-# "Hello" previously defined (in del_entry.php)
 An appointment has been rejected by: Ein Termin wurde zurückgewiesen von
-# "The subject was" previously defined (in del_entry.php)
-# "The description is" previously defined (in edit_entry_handler.php)
-# "Date" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
-# "Notification" previously defined (in del_entry.php)
 
 
 ###############################################
@@ -810,8 +553,6 @@ An appointment has been rejected by: Ein Termin wurde zurückgewiesen von
 Search: Suche
 Advanced Search: Erweiterte Suche
 Keywords: Stichwörter
-# "Users" previously defined (in group_edit.php)
-# "Select" previously defined (in admin.php)
 
 
 ###############################################
@@ -819,7 +560,6 @@ Keywords: Stichwörter
 #
 You must enter one or more search keywords: Sie müssen ein oder mehrere Stichwörter eingeben
 Search Results: Suchergebnis
-# "Error" previously defined (in admin_handler.php)
 match found: Eintrag gefunden
 matches found: Einträge gefunden
 No matches found: Keine Einträge gefunden
@@ -829,30 +569,24 @@ No matches found: Keine Einträge gefunden
 # Page: select_user.php
 #
 View Another User's Calendar: Kalender anderer Benutzer anzeigen 
-# "You are not authorized" previously defined (in admin.php)
 Go: Zeigen 
 
 
 ###############################################
 # Page: set_entry_cat.php
 #
-# "Invalid entry id" previously defined (in add_entry.php)
-# "You are not authorized" previously defined (in admin.php)
 You have not added any categories: Sie haben noch keine Kategorien angelegt
-# "Database error" previously defined (in activity_log.php)
-# "Error" previously defined (in admin_handler.php)
 Set Category: Kategorie zuweisen
-# "Brief Description" previously defined (in edit_entry.php)
-# "Category" previously defined (in edit_entry.php)
-# "Save" previously defined (in admin.php)
+
+
+###############################################
+# Page: test.php
+#
 
 
 ###############################################
 # Page: users.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "You are not authorized" previously defined (in admin.php)
-# "Users" previously defined (in group_edit.php)
 denotes administrative user: kennzeichnet administrativen Benutzer
 Add New User: Neue Benutzer hinzufügen
 
@@ -860,15 +594,10 @@ Add New User: Neue Benutzer hinzufügen
 ###############################################
 # Page: usersel.php
 #
-# "Users" previously defined (in group_edit.php)
 All: alle
-# "None" previously defined (in edit_entry.php)
 Reset: Zurücksetzen
-# "Groups" previously defined (in admin.php)
-# "Add" previously defined (in category.php)
 Remove: Entfernen
 Ok: Ok
-# "Cancel" previously defined (in edit_entry_handler.php)
 
 
 ###############################################
@@ -886,127 +615,65 @@ Add View: Ansichten hinzufügen
 Edit View: Ansicht editieren
 View Name: Ansichtsname
 View Type: Ansichtstyp
-# "Week" previously defined (in admin.php)
-# "Month" previously defined (in admin.php)
-# "Users" previously defined (in group_edit.php)
-# "Select" previously defined (in admin.php)
-# "Add" previously defined (in category.php)
-# "Save" previously defined (in admin.php)
-# "Delete" previously defined (in category.php)
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 
 
 ###############################################
 # Page: views_edit_handler.php
 #
-# "Delete" previously defined (in category.php)
-# "Database error" previously defined (in activity_log.php)
-# "Error" previously defined (in admin_handler.php)
 
 
 ###############################################
 # Page: view_entry.php
 #
-# "Low" previously defined (in edit_entry.php)
-# "Medium" previously defined (in edit_entry.php)
-# "High" previously defined (in edit_entry.php)
-# "Invalid entry id" previously defined (in add_entry.php)
-# "Error" previously defined (in admin_handler.php)
-# "You are not authorized" previously defined (in admin.php)
 every: jede(n)
 1st: 1.
 2nd: 2.
 3rd: 3.
 4th: 4.
 5th: 5.
-# "Day" previously defined (in admin.php)
-# "Week" previously defined (in admin.php)
-# "Month" previously defined (in admin.php)
-# "by day" previously defined (in edit_entry.php)
-# "by date" previously defined (in edit_entry.php)
-# "Year" previously defined (in admin.php)
-# "Confidential" previously defined (in edit_entry.php)
 Description: Beschreibung
 Status: Status
 Waiting for approval: Warten auf Bestätigung
 Deleted: gelöscht
 Rejected: Eintrag abgelehnt, wird nicht teilnehmen  
-# "Date" previously defined (in activity_log.php)
-# "Repeat Type" previously defined (in edit_entry.php)
-# "Time" previously defined (in activity_log.php)
-# "Duration" previously defined (in edit_entry.php)
-# "minutes" previously defined (in admin.php)
-# "Priority" previously defined (in edit_entry.php)
-# "Access" previously defined (in edit_entry.php)
-# "Public" previously defined (in edit_entry.php)
-# "Category" previously defined (in edit_entry.php)
-# "Created by" previously defined (in group_edit.php)
-# "Updated" previously defined (in group_edit.php)
-# "No" previously defined (in admin.php)
-# "Yes" previously defined (in admin.php)
-# "days" previously defined (in edit_entry.php)
-# "hours" previously defined (in edit_entry.php)
-# "before event" previously defined (in edit_entry.php)
-# "Participants" previously defined (in edit_entry.php)
-# "Database error" previously defined (in activity_log.php)
-# "Approve this entry?" previously defined (in list_unapproved.php)
 Approve/Confirm entry: Eintrag bestätigen?
-# "Reject this entry?" previously defined (in list_unapproved.php)
 Reject entry: Eintrag ablehnen?
 Set category: Kategorie zuweisen
 Edit repeating entry for all dates: Ändern ALLER wiederkehrenden Termine des Eintrags
 Edit entry for this date: Ändern des Termines für DIESES Datum
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
 This will delete this entry for all users.: Dieser Eintrag wird für alle Benutzer gelöscht.
 Delete repeating event for all dates: Löschen ALLER wiederkehrenden Termine des Eintrags 
 Delete entry only for this date: Löschen des Termins für DIESES Datum
 Edit entry: Eintrag ändern
-# "Delete entry" previously defined (in edit_entry.php)
-#
-# << MISSING >>
-# This will delete the entry from your calendar.:
-# English text: This will delete the entry from your calendar.
-#
+This will delete the entry from your calendar.: Dies löscht den Eintrag von Ihrem Kalender
 Do you want to add this entry to your calendar?: Wollen Sie diesen Eintrag zu Ihrem Kalender hinzufügen?
 This will add the entry to your calendar.: Bitte bestätigen um den Eintrag hinzuzufügen.
 Add to My Calendar: Zu meinem Kalender hinzufügen
 Email all participants: Email an jeden Benutzer
 Show activity log: Aktivitäten Protokoll ansehen
 Hide activity log: Aktivitäten Protokoll ausblenden
-# "Activity Log" previously defined (in activity_log.php)
-# "User" previously defined (in activity_log.php)
-# "Calendar" previously defined (in activity_log.php)
-# "Action" previously defined (in activity_log.php)
-# "Event created" previously defined (in activity_log.php)
-# "Event approved" previously defined (in activity_log.php)
-# "Event rejected" previously defined (in activity_log.php)
-# "Event updated" previously defined (in activity_log.php)
-# "Event deleted" previously defined (in activity_log.php)
-# "Notification sent" previously defined (in activity_log.php)
-# "Reminder sent" previously defined (in activity_log.php)
 
 
 ###############################################
 # Page: view_m.php
 #
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
 # Page: view_w.php
 #
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
 # Page: week.php
 #
-# "Week" previously defined (in admin.php)
 New Entry: Neuer Eintrag
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
+
+
+###############################################
+# Page: week_details.php
+#
+Private: Privat
 
 
 ###############################################
@@ -1017,8 +684,6 @@ New Entry: Neuer Eintrag
 ###############################################
 # Page: year.php
 #
-# "Generate printer-friendly version" previously defined (in day.php)
-# "Printer Friendly" previously defined (in day.php)
 
 
 ###############################################
@@ -1029,33 +694,15 @@ New Entry: Neuer Eintrag
 ###############################################
 # Page: includes/connect.php
 #
-# "Error" previously defined (in admin_handler.php)
-# "You are not authorized" previously defined (in admin.php)
 
 
 ###############################################
 # Page: includes/functions.php
 #
-# "Title" previously defined (in edit_entry_handler.php)
-# "You are not authorized" previously defined (in admin.php)
-# "User" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
-# "Description" previously defined (in view_entry.php)
-# "Select" previously defined (in admin.php)
-# "View this entry" previously defined (in list_unapproved.php)
-# "am" previously defined (in edit_entry.php)
-# "pm" previously defined (in edit_entry.php)
-Private: Privat
 This event is confidential: privater Termin 
-# "Are you sure you want to delete this entry?" previously defined (in category.php)
-# "This will delete this entry for all users." previously defined (in view_entry.php)
-# "New Entry" previously defined (in week.php)
-# "Week" previously defined (in admin.php)
-# "Database error" previously defined (in activity_log.php)
-You have: Sie haben
-unapproved: unbestätigten
-events: Einträge
-event: Eintrag 
+#
+# << MISSING >>
+# You have XXX unapproved events:
 January: Januar
 February: Februar
 March: März
@@ -1067,7 +714,6 @@ August: August
 September: September
 October: Oktober
 November: November
-December: Dezember
 Jan: Jan
 Feb: Feb
 Mar: Mär
@@ -1079,29 +725,12 @@ Aug: Aug
 Sep: Sep
 Oct: Okt
 Nov: Nov
-Dec: Dez
-# "Sunday" previously defined (in admin.php)
-# "Monday" previously defined (in admin.php)
-# "Tuesday" previously defined (in edit_entry.php)
-# "Wednesday" previously defined (in edit_entry.php)
-# "Thursday" previously defined (in edit_entry.php)
-# "Friday" previously defined (in edit_entry.php)
-# "Saturday" previously defined (in edit_entry.php)
-# "Sun" previously defined (in month.php)
-# "Mon" previously defined (in month.php)
-# "Tue" previously defined (in month.php)
-# "Wed" previously defined (in month.php)
-# "Thu" previously defined (in month.php)
-# "Fri" previously defined (in month.php)
-# "Sat" previously defined (in month.php)
-# "All" previously defined (in usersel.php)
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Gehe zu
-# "Help Index" previously defined (in help_index.php)
 
 
 ###############################################
@@ -1134,33 +763,15 @@ Reminder: Erinnerung
 ###############################################
 # Page: includes/trailer.php
 #
-# "Month" previously defined (in admin.php)
-# "Go" previously defined (in select_user.php)
-# "Week" previously defined (in admin.php)
-# "Year" previously defined (in admin.php)
-# "Go to" previously defined (in includes/help_trailer.php)
 Back to My Calendar: Zurück zu meinem Kalender
 My Calendar: Mein Kalender
-# "Login" previously defined (in login.php)
 Logout: Logout
-# "Unapproved Events" previously defined (in list_unapproved.php)
 Another User's Calendar: Kalender anderer Benutzer 
-# "Search" previously defined (in search.php)
-# "Export" previously defined (in export.php)
-# "Categories" previously defined (in admin.php)
 Add New Entry: Eintrag hinzufügen
-# "Help" previously defined (in admin.php)
-# "Views" previously defined (in views.php)
 Manage Views: Ansichten einrichten
-# "Admin" previously defined (in edit_user.php)
-# "System Settings" previously defined (in admin.php)
-# "Preferences" previously defined (in help_index.php)
 Edit Layers: Layer editieren
 Enable Layers: Layer aktivieren
 Disable Layers: Layer abschalten
-# "Users" previously defined (in group_edit.php)
-# "Groups" previously defined (in admin.php)
-# "Activity Log" previously defined (in activity_log.php)
 Account: Konto
 Current User: aktuelle/r Benutzer
 
@@ -1168,7 +779,6 @@ Current User: aktuelle/r Benutzer
 ###############################################
 # Page: includes/translate.php
 #
-# "Public Access" previously defined (in list_unapproved.php)
 
 
 ###############################################
@@ -1180,17 +790,12 @@ Invalid login: Benutzername oder Passwort falsch
 ###############################################
 # Page: includes/user-nis.php
 #
-# "Invalid login" previously defined (in includes/user-ldap.php)
-# "Database error" previously defined (in activity_log.php)
 Invalid user login: Ungültige Anmeldung
 
 
 ###############################################
 # Page: includes/user.php
 #
-# "Invalid login" previously defined (in includes/user-ldap.php)
-# "Database error" previously defined (in activity_log.php)
-# "Invalid user login" previously defined (in includes/user-nis.php)
 
 
 ###############################################
@@ -1201,22 +806,4 @@ Invalid user login: Ungültige Anmeldung
 ###############################################
 # Page: tools/send_reminders.php
 #
-# "Low" previously defined (in edit_entry.php)
-# "Medium" previously defined (in edit_entry.php)
-# "High" previously defined (in edit_entry.php)
 This is a reminder for the event detailed below.: Das ist eine Erinnerung für folgenden Termin.
-# "Description" previously defined (in view_entry.php)
-# "Date" previously defined (in activity_log.php)
-# "Time" previously defined (in activity_log.php)
-# "Duration" previously defined (in edit_entry.php)
-# "minutes" previously defined (in admin.php)
-# "Priority" previously defined (in edit_entry.php)
-# "Access" previously defined (in edit_entry.php)
-# "Public" previously defined (in edit_entry.php)
-# "Confidential" previously defined (in edit_entry.php)
-# "Created by" previously defined (in group_edit.php)
-# "Updated" previously defined (in group_edit.php)
-# "Yes" previously defined (in admin.php)
-# "No" previously defined (in admin.php)
-# "Participants" previously defined (in edit_entry.php)
-# "Reminder" previously defined (in includes/site_extras.php)
