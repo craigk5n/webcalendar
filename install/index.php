@@ -615,6 +615,10 @@ You should select "Web Server" from the list of
 
 <input name="action" type="button" value="Save Settings"
   onclick="return validate();" />
+  <?php if ( $connectSuccess ) { ?>
+    <input type="button" value="Launch WebCalendar"
+      onclick="window.open('../index.php', 'webcalendar');" />
+  <?php } ?>
 </form>
 <?php } ?>
 
