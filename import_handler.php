@@ -61,13 +61,12 @@ if ($file['size'] > 0) {
   if (! empty ($data) && empty ($errormsg) ) {
     import_data ( $data, $doOverwrite, $type );
     echo "<p>" . translate("Import Results") . "</p>\n<br /><br />\n" .
-      translate("Events successfully imported") . " : $count_suc<br />\n";
-    echo translate("Events from prior import marked as deleted") .
-      ": $numDeleted <br />\n";
+      translate("Events successfully imported") . ": $count_suc<br />\n";
+    echo translate("Events from prior import marked as deleted") . ": $numDeleted<br />\n";
     if ( empty ( $allow_conflicts ) ) {
       echo translate("Conflicting events") . ": " . $count_con . "<br />\n";
     }
-    echo translate ( "Errors" ) . ": $error_num<br>\n<br>\n";
+    echo translate ( "Errors" ) . ": $error_num<br><br>\n";
   } elseif ($errormsg) {
     echo "<br /><br />\n<b>" . translate("Error") . ":</b> $errormsg<br />\n";
   } else {
