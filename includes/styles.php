@@ -434,7 +434,12 @@ textarea {
 }
 .standard th {
   color: <?php echo $GLOBALS['THFG']; ?>;
-  background-color: <?php echo $GLOBALS['THBG']; ?>;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+  background: <?php echo $GLOBALS['THBG']; ?> url("gradient.php?height=30&base=<?php echo substr ( $GLOBALS['THBG'], 1 ); ?>") repeat-x;
+<?php } else { ?>
+  background-color: <?php echo $GLOBALS['THBG'];?>;
+<?php } ?>
   font-size: 18px;
   padding: 0px;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -611,6 +616,12 @@ th {
 #month .main th {
 	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+<?php if ( function_exists ( "imagepng" ) &&
+  ( empty ( $GLOBALS['enable_gradients'] ) || $GLOBALS['enable_gradients'] == 'Y' ) ) { ?>
+  background: <?php echo $GLOBALS['THBG']; ?> url("gradient.php?height=15&base=<?php echo substr ( $GLOBALS['THBG'], 1 ); ?>") repeat-x;
+<?php } else { ?>
+  background-color: <?php echo $GLOBALS['THBG'];?>;
+<?php } ?>
 	width: 14%;
 }
 #vieww .main th,
