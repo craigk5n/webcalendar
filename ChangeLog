@@ -11,6 +11,7 @@ Version 0.9.33dev (?? July 01)
   - Fixed bug: don't display access, priority and participants in email
     reminders if they've been disabled in config.inc
   - Added missing user-ldap.inc to the distribution.
+  - Updated Swedish translation
 Version 0.9.32 (26 July 01)
   - Fixed some of the login/session code.  After examining the code, I'm
     surprised it worked at all! :-)  And, it suddenly stopped working on
