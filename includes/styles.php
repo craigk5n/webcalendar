@@ -65,14 +65,21 @@
 }
 .dayofmonth {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
-  font-size: 12px;
+  font-size: 13px;
   color: #000000;
   text-decoration: none;
   background-color: #E7E7E7;
 }
-.dayofmonthyearview {
+/* cells in year.php that contain the numeric date */
+/* used as "<tr class="dayofmonthyearview">" to format the cells WITHIN that row */
+/* NOTE: removing the "td" below will modify the appearance of mini calendars */
+.dayofmonthyearview td {
+	text-align: right;
+}
+/* links within cells with dayofmonthyearview class */
+.dayofmonthyearview a {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
-  font-size: 12px;
+  font-size: 13px;
   text-decoration: none;
 }
 .dayofmonthweekview {
@@ -110,7 +117,7 @@
 }
 .monthlink {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
-  font-size: 14px;
+  font-size: 13px;
   color: #B04040;
   text-decoration: none;
 }
@@ -137,6 +144,7 @@ a:hover {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   color: #000000;
   text-decoration: none;
+  font-size: 13px;
 }
 .popup {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
@@ -149,11 +157,6 @@ a:hover {
   cursor: help;
   text-decoration: none;
   font-weight: bold;
-}
-.defaulttext {
-  font-family: <?php echo $GLOBALS['FONTS'] ?>;
-  font-size: 12px;
-  color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
 }
 h2 {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
@@ -169,8 +172,10 @@ h3 {
   font-size: 18px;
 }
 body {
+  color: <?php echo ( $GLOBALS['TEXTCOLOR'] == "" ? "#000000" : $GLOBALS['TEXTCOLOR'] ); ?>;
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 12px;
+  background-color: <?php echo $GLOBALS['BGCOLOR'] ?>;
 }
 td {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
@@ -198,12 +203,41 @@ textarea {
   font-size: 12px;
   text-decoration: none;
 }
+/* formats the left & right arrow images */
 .prevnext {
 	border-width: 0px;
 	width: 36px;
 	height: 32px;
 }
-.prevnextsmall { }
+.prevnextsmall {
+	width: 18px;
+	height: 18px;
+	border-width: 0px;
+}
+/* contains the year (i.e. 2004) in year.php */
+.year {
+	font-size: 24px;
+	font-weight: bold;
+}
+/* formats the day name (i.e. Sun, Mon, etc) */
+/* used as "<tr class="dayname">" to format the cells WITHIN that row */
+/* NOTE: removing the "td" below will modify the appearance of mini calendars */
+.dayname td {
+	font-size: 10px;
+}
+td.numericdate {
+	font-size: 10px;
+}
+.monthyear {
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+	font-weight: bold;
+	font-size: 24px;
+}
+.user {
+	font-size: 18px;
+	font-weight: bold;
+	color: <?php echo $GLOBALS['H2COLOR'] ?>;
+}
 .help {
 	vertical-align: top;
 	font-weight: bold;
