@@ -50,6 +50,7 @@ Version 1.0RC3 (?? ??? 2005)
  - Fixed Selectdate popups to work with new getGetvalue function and
    make popup follow cursor.
  - Purge events was not deleting from webcal_entry_ext_user table
+ - Updated Dutch translation
  - Updated Spanish translation
  - Updated all 3 Japanese translations
 Version 1.0RC2 (09 Feb 2005)
