@@ -82,13 +82,13 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   if ( $key != "Browser-defined" || $updating_public ) {
     echo "<option value=\"" . $val . "\"";
     if ( $val == $prefarray["LANGUAGE"] ) echo " selected=\"selected\"";
-    echo ">" . $key . "</option>\n";
+    echo ">" . translate( $key ) . "</option>\n";
   }
 }
 ?>
 </select>
 <br />
-<?php etranslate("Your browser default language is"); echo " " . get_browser_language () . "."; ?>
+<?php echo translate("Your browser default language is") . " " . translate ( get_browser_language () ) . "."; ?>
 </td></tr>
 <tr><td valign="top"><span  style="font-weight:bold;" class="tooltip" title="<?php etooltip("tz-help")?>"><?php etranslate("Timezone Offset")?>:</span></td>
   <td><select name="pref_TZ_OFFSET">

@@ -1,4 +1,5 @@
 Verion 0.9.44dev (?? ??? 2004)
+  - Patch 972602: Missing translation in pref.php for language
   - Patch 972687: Fixed untranslated text in purge.php
   - Added patch 972688: attempt to translate language names ("English")
     into other languages.  Updated config.php to have comments for
