@@ -1,0 +1,241 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Translated by:
+#	your name and email here...
+# Last update: 05 December 2000
+
+# Title is what will appear in the title bar for pages
+Title: Kalendarz
+
+Month: Miesi±c
+Week: Tydzieñ
+Error: Error
+
+Sun: Nie
+Mon: Pon
+Tue: Wto
+Wed: ¦ro
+Thu: Czw
+Fri: Pi±
+Sat: Sob
+
+Sunday: Niedziela
+Monday: Poniedzia³ek
+Tuesday: Wtorek
+Wednesday: ¦roda
+Thursday: Czwartek
+Friday: Pi±tek
+Saturday: Sobota
+
+January: Styczeñ
+February: Luty
+March: Marzec
+April: Kwiecieñ
+May: Maj
+June: Czerwiec
+July: Lipiec
+August: Sierpieñ
+September: Wrzesieñ
+October: Pa¼dziernik
+November: Listopad
+December: Grudzieñ
+
+Jan: Sty
+Feb: Lut
+Mar: Mar
+Apr: Kwi
+May: Maj
+Jun: Cze
+Jul: Lip
+Aug: Sie
+Sep: Wrz
+Oct: Pa¼
+Nov: Lis
+Dec: Gru
+
+Generate printer-friendly version: Generuj wersjê do druku
+Printer Friendly: Wersja do druku
+Go: Id¼
+Back to My Calendar: Powrót do mojego kalendarza
+Another User's Calendar: Kalendarze innych u¿ytkowników
+Search: Szukaj
+Add New Entry: Dodaj nowy wpis
+New Entry: Nowy wpis
+Admin: Administrator
+Preferences: Preferencje
+Users: U¿ytkownicy
+Account: Konto
+Current User: Bie¿±cy u¿ytkownik
+View this entry: Ogl±daj ten wpis
+Private: Prywatne
+This event is confidential: Ten wpis jest poufny
+You have: Masz
+unapproved: niezatwierdzone
+event: zdarzenie
+events: zdarzenia
+Go to: Id¼ do
+Help Index: Indeks pomocy
+Error approving event: B³±d w zatwierdzaniu zdarzenia
+This user has: U¿ytkownik ma
+calendar entries: wpisów w kalendarzu
+They must all be deleted (or this user removed as a participant) before this user can be deleted: Wszystkie musz± zostaæ usuniête (albo u¿ytkownik zostanie jako uczestnik) nim ten u¿ytkownik zostanie usuniêty
+The passwords were not identical: Has³a nie s± takie same
+You have not entered a password: Nie wprowadzi³e¶ has³a
+You have not entered a Brief Description: Nie wprowadzi³e¶ krótkiego opisu
+You have not entered a valid time of day: Nie wprowadzi³e¶ poprawnego czasu
+Brief Description: Krótki opis
+Full Description: Pe³ny opis
+Description: Opis
+Date: Data
+Time: Czas
+am: Przed po³udniem
+pm: Po po³udniu
+Duration: Czas trwania
+minutes: minut
+Priority: Priorytet
+Low: Niski
+Medium: ¦redni
+High: Wysoki
+Access: Dostêp
+Public: Dla wszystkich
+Confidential: Poufny
+Participants: Wspó³uczestnicy
+Created by: Stworzony przez
+Updated: Zaktualizowany
+Daily: Codziennie
+for weekly: co tydzieñ
+by date: wed³ug daty
+by day: wed³ug dnia
+Monthly: co miesi±c
+None: ¯aden
+Repeat Day: Powtórz dzieñ
+Repeat End Date: Powtórz datê zakoñczenia
+Repeat Type: Typ powtarzania
+Use end date: U¿yj daty zakoñczenia
+Weekly: co tydzieñ
+Yearly: co rok
+Frequency: Czêstotliwo¶æ
+Save: Zapisz
+Help: Pomoc
+Approve this entry?: Zatwierdzic tn wpis ?
+Approve/Confirm: Zatwierd¼/Potwierd¼
+Approve/Confirm entry: Zatwierd¼/Potwierd¼ wpis
+Reject: Odrzuæ
+Reject entry: Odrzuæ wpis
+Reject this entry?: Odrzuciæ wpis?
+Rejected: Odrzucony
+Edit entry: Edytuj wpis
+Edit Entry: Eytuj wpis
+Add Entry: Dodaj wpis
+Are you sure you want to delete this entry?: Czy jeste¶ pewny ¿e chcesz skasowaæ ten wpis ?
+This will delete this entry for all users.: Skasujesz ten wpis WSZYSTKIM u¿ytkownikom.
+Delete: Skasuj
+Delete entry: Skasuj wpis
+You are not authorized to edit this entry: Nie masz autoryzacji by skasowaæ ten wpis
+Scheduling Conflict: Konflikt 
+The following conflicts with the suggested time: Nastêpuj±ce wydarzenia koliduj± z sugerowanym czasem
+Unnamed Event: Nienazwane wydzrzenie
+Hello: Witaj
+A new appointment has been made for you by: Zosta³o ustalone nowe spotkanie
+The subject is: Temat
+Please look on: Proszê spójrz na
+to accept or reject this appointment: aby zatwierdziæ b±d¼ odrzuciæ to spotkanie
+to view this appointment: aby obejrzeæ to spotkanie
+Notification: Powiadomienie
+Your suggested time of: Twój sugerowany czas 
+conflicts with the following existing calendar entries: koliduje z nastêpuj±cymi wpisami kalendarza
+Edit User: Edytuj u¿ytkownika
+Add User: Dodaj u¿ytkownika
+Username: U¿ytkownik
+Login: Login
+Logout: Logout
+First Name: Imiê
+Last Name: Nazwisko
+E-mail address: Adres e-mail
+Password: Has³o
+again: ponów
+Yes: Tak
+No: Nie
+Change Password: Zmieñ has³o
+New Password: Nowe has³o
+Set Password: Zmieñ has³o
+Adding/Editing Calendar Entries: Dodawanie/edycja wpisów kalendarza
+Unapproved Events: Niezatwierdzone wydarzenia
+No unapproved events: Brak niezatwierdzonych wydarzeñ
+You must enter a login and password: Musisz wprowadziæ nazwê u¿ytkownika i has³o
+Save login via cookies so I don't have to login next time: Zapisz nazwê u¿ytkownika przec cookies
+cookies-note: <B>Uwaga:</B> Ta aplikacja wymaga w³±czonych cookies
+Invalid color for document background: Nieprawid³owy kolor t³a dokumentu
+Invalid color for document title: Nieprawid³owy kolor tytu³u dokumentu
+Invalid color for table cell background: Nieprawid³owy kolor t³a komórki tabeli
+Invalid color for table cell background for today: Nieprawid³owy kolor t³a komórki dla bie¿±cego dnia
+Color format should be '#RRGGBB': Format koloru powinien byæ '#RRGGBB'
+12 hour: 12 godzin
+24 hour: 24 godziny
+From: Od
+to: Do
+Select: Wybierz
+Preferred view: Preferowany widok
+Week starts on: Tydzieñ zaczyna siê w 
+Day: Dzieñ
+Year: Rok
+Document background: T³o dokumentu
+Document title: Tytu³ dokumentu
+Table cell background: T³o komórki tabeli
+Table cell background for current day: T³o komórki bie¿±cego dnia
+Save Preferences: Zapisz ustawienia
+The following error occurred: Wyst±pi³ nastêpuj±cy b³±d
+Search: Szukaj
+Keywords: S³owa kluczowe
+You must enter one or more search keywords: Musisz wprowadziæ jedno lub wiêcej s³ów kluczowych
+Search Results: Rezultaty wyszukiwania
+Export: Eksportuj
+Export format: Format eksportu
+Modified since: Czas modyfikacji
+Start date: Zaczyna siê
+End date: Koñczy
+Palm Pilot: Palm Pilot
+match found: znaleziono
+matches found: znaleziono
+No matches found: Nie znaleziono
+View Another User's Calendar: Poka¿ kalendarz innego u¿ytkownika
+You are not authorized: Nie masz autoryzacji
+Add New User: Dodaj nowego u¿ytkownika
+denotes administrative user: denotes administrative user
+Invalid entry id: Niepoprawny id wydarzenia
+My Calendar: Mój kalendarz
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help: Powinien to byæ krótki opis (oko³o 20 znaków) wydarzenia. Bêdzie wy¶wietlany w kalendarzu.
+full-description-help: Powinien to byæ pe³ny opis wydarzenia. Bêdzie wy¶wietlany podczas ogl±dania wydarznia.
+date-help: Okre¶la datê wydarzenia.
+time-help: Specifies the time of the event.<BR><I>This field can be left blank.</I>
+time-help: Okre¶la czas wydarzenia.<BR><I>Mo¿e zostaæ puste.</I>
+duration-help: Okre¶la (w minutach) czas trwania wydarzenia.<BR><I>Mo¿e zostaæ puste.</I>
+priority-help: Okre¶la priorytet wydarzenia. Wysoki priorytet bedzie wy¶wietlany pogrubion± czcionk±.
+access-help: Okre¶la poziom dostêpu do wydarzenia.<BR><I>Publiczny</I>: Ka¿dy mo¿e ogl±daæ wszystkie szczegó³y wydarzenia.<BR><I>Poufny</I>: Inni u¿ytkownicy i widz± ¿e masz taki wpis ale nie mog± ogl±daæ jego szczegó³ów.
+participants-help: Lists the participants of this entry.
+repeat-type-help: Wybierz z jak± czêstotliwo¶ci± wydarzenie ma byæ powtarzane.<I>Co miesi±c (wg dnia)</I> pozwala powtarzaæ wydarzenie w pierwszy poniedzia³ek ka¿dego miesi±ca, trzeci wtorek .. itd. <I>Co miesi±c (po dacie)</I> pozwala powtarzaæ wydarzenie tego samego dnia ka¿dego miesi±ca.
+repeat-end-date-help: Okre¶la datê do której dane wydarzenie ma byc ponawiane.
+repeat-day-help: Okre¶la w które dni tygodnia wydarzenie ma byæ powtarzane.  U¿ywane jest tylko gdy <I>Typ powtarzania</I> jest ustawiony na <I>Co tydzieñ</I>.
+repeat-frequency-help: Okre¶la jak czêsto wydarzenia ba byæ powtarzane. Domy¶lnie 1 oznacza ¿e bêdzie powtarzany za ka¿dym razem. Ustawiaj±c 2 bêdzie powtarzany co drugi tydzieñ (je¶li <I>Typ powtarzania</I> jest ustawiony na <I>Co tydzieñ</I>), co drugi miesi±c (je¶li <I>Typ powtarzania</I> jest ustawiony na <I>Co miesi±c</I>), itd.
+Preferences: Preferencje
+Settings: Ustawienia
+Language: Jêzyk
+language-help:  Okre¶la którego jêzyka u¿ywaæ.
+Preferred view: Preferowany widok
+preferred-view-help: Okre¶la widok (Dzieñ. Tydzieñ Miesi±c lub Rok).
+Time format: Format czasu
+time-format-help: Okre¶la którego formatu czasu u¿ywaæ <BR><I>12 godz.:</I> Wy¶wietla czas jakoo 3am, 8:30pm, itd. <BR><I>24 godz.:</I> Wy¶wietla czas jako 300, 2030 itd. 
+Display unapproved: Wy¶wietlaj niezatwierdzone
+display-unapproved-help: Okre¶la czy niezatwierdzone wydarzenia bêd± wy¶wietlane w twoim kalendarzu.<BR> Je¶li "tak" wtedy niezatwierdzone wydarzenia bêd± wy¶wietlane (innym kolorem).<BR> Je¶li "Nie" wtedy najpierw bêd± musia³y zostaæ zatwierdzone nim pojawi± siê w Twoim kalendarzu.
+Display icons: Wy¶wietl ikony
+display-icons-help: Wy¶wietla przy ka¿dym wydarzeniuikony pozwalaj±ce edytowaæ, ogl±daæ b±d¼ kasowaæ to wydarzenie.
+Display week number: Wy¶wietl numery tygodni
+display-week-number-help: Okre¶la czy numer tygodnia (1-52) powinien byæ wy¶wietlany w widoku miesi±ca i tygodnia.
+display-week-starts-on: Okre¶la czy pierwszym dniem tygodnia jest niedziela czy poniedzia³ek.  Je¶li jest to poniedzia³ek, to numer tgodnia bêdzie numerem ISO.
+Work hours: Godziny pracy
+work-hours-help: Okre¶la czas wy¶wietlany w widoku dziennym. 
+Colors: Kolory
+colors-help: Wszystkie kolory powinny byæ okre¶lone w heksagonalnym formacie "#RRGGBB" gdzie "RR" jestt warto¶ci± czerwieni, "GG" jest warto¶ci± zielonego i "BB" jest warto¶ci± niebieskiego.

@@ -1,0 +1,78 @@
+FAQs:
+
+Q: When I try to login, I get sent back to the login page with no error.
+A: Make sure that you built PHP with --enable-track-vars during the
+   configure step.  Make sure your browser has cookies enabled.  Either
+   of these can cause this problem.
+
+Q: Does WebCalendar work under Windows?
+A: I've received confirmation of someone using WebCalendar using
+   MS Access with ODBC and another using Oracle.  It should be
+   simple to setup under Windows.  You will, however, need to find
+   a cron-like application to run your send_reminders.php script
+   periodically.
+
+Q: Does it work with PHP 4?
+A: Yep.
+
+Q: Does it work with PHP 3?
+A: Yep.
+
+Q: How do I install Apache with PHP and MySQL?
+A: There are many online guides to doing this, including the following
+   page at Linux Journal:
+     http://www2.linuxjournal.com/articles/linux_review/0024.html
+
+Q: Why do quotations not enter into the database properly?
+A: The system is designed to work with PHP's magic quotes feature
+   that automatically adds backslashes for you.  (This is configurable
+   in php.ini.)
+
+Q: I'd like to translate WebCalendar into another language.  What do I do?
+A: It's a fairly simple process.  If you've ever translated a C-based app
+   that used GNU's gettext tool, then you'll have no problem.  The I18N
+   support was based on GNU's gettext.  Here's what you need to do.
+   - look in the "translations" directory
+   - copy the "English-US.txt" file into what you'd like to call your
+     language data file.  (e.g. "cp English-US.txt French.txt")
+   - Now translate all the text to the _right_ of the ":" into the
+     new language.  Do _not_ alter the text to the left of the ":".
+   - When you're done making changes, move into the "tools" directory.
+     Run the check_translation.pl script on your new data file to make
+     sure you have all the needed translations.
+     (e.g. "./check_translation.pl ../translations/French.txt")
+   - Add the new language to both the $languages array and the
+     $browser_languages arrays defined in includes/config.inc.
+   - Test it out...
+   - Email a copy of the new .txt data file to cknudsen@radix.net.
+
+Q: I get an error about binhex() being an unsupported function.  What
+   does that mean?
+A: The binhex() function was not in the early PHP 3.0.X releases.  You
+   need to upgrade to a more recent PHP3 (or use PHP4).
+
+Q: Why aren't you using PHP4 sessions or PHPLIB sessions?
+A: It would really be overkill for what the application needs.  It also
+   simplifies installation by not requiring PHPLIB or PHP4.  A future
+   version might switch to PHP4 sessions as PHP4 becomes more common.
+
+Q: Why aren't you using ADODB for database access?
+   Again, this would be overkill for what we need.  ADODB is almost
+   as big as WebCalendar itself, so I'm partial to my leaner php-dbi.inc
+   solution.
+
+Q: Is there an online demo?
+A: Yes, there is.  User "demo" for login and "demo" for password at:
+   http://webcalendar.sourceforge.net/demo/
+   Don't be surprised if it appears in a language other than English.
+   Changing the language setting seems to be a favorite.
+
+Q: Where do I report bugs? 
+   You can report bugs on SourceForge at:
+   http://sourceforge.net/bugs/?group_id=3870
+
+Q: Where do I get help?
+A: Try the Forums on SourceForge:
+   http://sourceforge.net/forum/?group_id=3870
+   Someone has even posted some links for problems setting up PHP and MySQL.
+

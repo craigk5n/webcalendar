@@ -1,0 +1,204 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Translated by: Marcel van der Broom <marcel@hsdev.com>
+# Last updated: 09 June 2000
+
+# Title is what will appear in the title bar for pages
+Title: Web Kalender
+
+Year:Jaar
+Month: Maand
+Week: Week
+Day:Dag
+Error: Fout
+
+Sun: Zo
+Mon: Ma
+Tue: Di
+Wed: Wo
+Thu: Do
+Fri: Vrij
+Sat: Za
+
+Sunday: Zondag
+Monday: Maandag
+Tuesday: Dinsdag
+Wednesday: Woensdag
+Thursday: Donderdag
+Friday: Vrijdag
+Saturday: Zaterdag
+
+January: Januari
+February: Februari
+March: Maart
+April: April
+May: Mei
+June: Juni
+July: Juli
+August: Augustus
+September: September
+October: Oktober
+November: November
+December: December
+
+Jan: Jan
+Feb: Feb
+Mar: Mar
+Apr: Apr
+May: Mei
+Jun: Jun
+Jul: Jul
+Aug: Aug
+Sep: Sep
+Oct: Okt
+Nov: Nov
+Dec: Dec
+
+Language: Taal
+Generate printer-friendly version: Maak printer-vriendelijke versie
+Printer Friendly: Printer Vriendelijk
+Go: Go
+Back to My Calendar: Terug naar mijn agenda
+Another User's Calendar: Agenda andere gebruiker
+Search: Zoeken
+Add New Entry: Nieuw item toevoegen
+New Entry: Nieuw item
+Admin: Admin
+Preferences: Voorkeuren
+Users: Gebruikers
+Account: Account
+Current User: Huidige gebruiker
+View this entry: Bekijk dit item
+Private: Prive
+This event is confidential: Dit item is vertrouwelijk
+You have: U heeft
+unapproved: openstaand
+event: item
+events: items
+Go to: Ga naar
+Help Index: Help Index
+Error approving event: Fout bij goedkeuring item
+This user has: Deze gebruiker heeft
+calendar entries: agenda items
+They must all be deleted (or this user removed as a participant) before this user can be deleted:Deze moet allen worden verwijder (of deze gebruiker als deelnemer verwijderen) voordat deze gebruiker kan worden verwijderd
+The passwords were not identical: De wachtwoorden zijn niet identiek
+You have not entered a password: U heeft geen wachtwoord ingegeven
+You have not entered a Brief Description: U heeft geen korte omschrijving ingegeven
+You have not entered a valid time of day: U heeft geen geldige tijd opgegeven
+Brief Description: Korte omschrijving
+Full Description: Volledige omschrijving
+Description: Omschrijving
+Date: Datum
+Time: Tijd
+am: am
+pm: pm
+Duration: Duur
+minutes: minuten
+Priority: Prioriteit
+Low: Laag
+Medium: Middel
+High: Hoog
+Access: Toegang
+Public: Publiek
+Confidential: Vertrouwelijk
+Participants: Deelnemers
+Created by: Aangemaakt door
+Updated: Gewijzigd
+Save: Bewaar
+Help: Help
+Approve this entry?: Dit item goedkeuren?
+Approve/Confirm entry: Goedkeuren/Bevestigen
+Edit entry: Wijzig item
+Edit Entry: Wijzig item
+Add Entry: Toevoegen item
+Are you sure you want to delete this entry?: Weet u zeker dat dit item verwijderd dient te worden?
+This will delete this entry for all users.: Dit item wordt voor alle gebruikers verwijderd.
+Delete: Verwijderen
+Delete entry: Verwijder entry
+You are not authorized to edit this entry: U heeft geen toegang tot dit item.
+#Unauthorized: Geen toegang
+The following conflicts with the suggested time: Het volgende conflicteert met de voorgestelde tijd
+Unnamed Event: Naamloos item
+Hello: Hallo
+A new appointment has been made for you by: Een nieuwe afspraak is voor u gemaakt door:
+The subject is: Het betreft
+Please look on: Kijkt u aub op
+to accept or reject this appointment: om deze afspraak te bevestigen of af te keuren
+to view this appointment: om deze afspraak te bekijken
+Notification: Notificatie
+Your suggested time of: Uw voorgestelde tijd
+conflicts with the following existing calendar entries: conflicteert met de volgende bestaande items
+Edit User: Wijzig gebruiker
+Add User: Toevoegen gebruiker
+Username: Gebruikersnaam
+Login: Aanmelden
+Logout: Afmelden
+First Name: Voornaam
+Last Name: Achternaam
+E-mail address: E-mail- adres
+Password: Wachtwoord
+again: nogmaals
+Yes: Ja
+No: Nee
+Change Password: Wachtwoord veranderen
+New Password: Nieuw wachtwoord
+Set Password: Wachtwoord zetten
+Adding/Editing Calendar Entries: Toevoegen/Wijzigen agenda items
+Unapproved Events: Openstaande items
+No unapproved events: Geen openstaande items
+You must enter a login and password: U moet een gebruikersnaam en een wachtwoord opgeven.
+Save login via cookies so I don't have to login next time: Bewaar aanmeldinformatie met een cookie zodat ik volgende keer automatisch wordt aangemeld.
+cookies-note: <B>Opmerking:</B> Dit programma heeft "cookies" nodig om goed te werken.
+Invalid color for document background: Ongeldige kleur voor de document achtergrond
+Invalid color for document title: Ongeldige kleur voor de document-titel
+Invalid color for table cell background: Ongeldige kleur voor de tabel-cel achtergrond
+Invalid color for table cell background for today: Ongeldige kleur voor de tabel-cel achtergrond voor vandaag
+Color format should be '#RRGGBB': Kleurspecificatie moet zijn '#RRGGBB'
+12 hour: 12 uur
+24 hour: 24 uur
+From: Van
+to: naar
+Document background: Document achtergrond
+Document title: Document titel
+Table cell background: Tabel-cel achtergrond
+Table cell background for current day: Tabel-cel achtergrond voor vandaag
+Save Preferences: Bewaar voorkeuren
+The following error occurred: De volgende fout is opgetreden
+Search: Zoeken
+Keywords: Trefwoorden
+You must enter one or more search keywords: U moet een of meer trefwoorden ingeven
+Search Results: Zoekresultaten
+match found: match gevonden
+matches found: matches gevonden
+No matches found: Geen match gevonden
+View Another User's Calendar: Bekijk de agenda van een andere gebruiker
+You are not authorized: U heeft geen toegang
+Add New User: Toevoegen nieuwe gebruiker
+denotes administrative user: Geeft beheerder aan
+Invalid entry id: Ongeldig item id
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help: Dit veld is een korte omschrijving (ongeveer 20 karakters) van het item. Dit geeft het item weer in de agenda.
+full-description-help: Dit veld bevat de complete gegevens van het item. Deze informatie is zichtbaar wanneer de gebruiker het item bekijkt.
+date-help: Geeft de datum van het item aan.
+time-help: Geeft de tijd aan van het item.<BR><I>Dit veld kan leeg worden gelaten.</I>
+duration-help: Geeft de duur aan van het item (in minuten). <BR><I>Dit veld kan leeg worden gelaten.</I>
+priority-help: Geeft de prioriteit aan van het item.  Hoge prioriteit item worden vet weergegeven.
+access-help: Geeft het toegansnivo aan van het item.<BR> <I>Publiek</I>: Iedereen kan het item inzien.  <BR><I>Vertrouwelijk</I>: Anderen kunnen zien dat u een afspraak heeft, maar zien geen details.
+participants-help: De deelnemers voor het betreffende item.
+Preferences: Voorkeuren
+Settings: Instellingen
+Time format: Tijdweergave
+time-format-help: Geeft het tijdformaat aan om te gebruiken: <BR><I>12 uurs klok:</I> Geef tijd weer als 3am, 8:30pm, enz.  <BR><I>24 uurs klok:</I> Geeft tijd weer als: 3:00, 20:30, enz.
+Display unapproved: Geef openstaande afspraken weer
+display-unapproved-help: Geeft aan of onbevestigde/ niet goedgekeurde afspraken moeten worden weergegeven in uw agenda.<BR>
+Display week number: Geef weeknummer aan
+display-week-number-help: Geeft aan of het weeknummer (1-52) moet worden weergegeven.
+Work hours: Werktijden
+work-hours-help: Geeft de tijds-range aan om in de dagweergave te gebruiken.
+Week starts on: Week begint op
+Preferred view: Weergave per
+Colors: Kleuren
+colors-help: Alle kleuren moeten worden aangegeven als  "#RRGGBB" hexadecimaal formaat waarin "RR" de hexadecimale waarde is voor rood, "GG" voor groen en "BB" voor blauw.
+

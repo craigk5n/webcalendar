@@ -1,0 +1,196 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Author: Joonyup Jeon <goodwill@wowbook.com>
+# Last updated: 07 June 2000
+
+# Title is what will appear in the title bar for pages
+Title: 웹 캘린더
+
+Month: 월
+Week: 주
+Error: 오류
+Sun: 일 
+Mon: 월 
+Tue: 화
+Wed: 수
+Thu: 목
+Fri: 금
+Sat: 토
+
+Sunday: 일요일 
+Monday: 월요일 
+Tuesday: 화요일
+Wednesday: 수요일
+Thursday: 목요일
+Friday: 금요일
+Saturday: 토요일
+
+January: 1월
+February: 2월
+March: 3월
+April: 4월
+May: 5월
+June: 6월
+July: 7월
+August: 8월
+September: 9월
+October: 10월
+November: 11월
+December: 12월
+
+Jan: 1월
+Feb: 2월
+Mar: 3월
+Apr: 4월
+May: 5월
+Jun: 6월
+Jul: 7월
+Aug: 8월
+Sep: 9월
+Oct: 10월
+Nov: 11월
+Dec: 12월
+
+Language: 언어
+Generate printer-friendly version: 인쇄용 화면 생성
+Printer Friendly: 인쇄용 화면
+Go: 시작
+Back to My Calendar: 내 달력으로 돌아가기
+Another User's Calendar: 다른 사용자 달력
+Search: 검색
+Add New Entry: 새 항목 추가
+New Entry: 새 항목
+Admin: 관리
+Preferences: 사용자 정의
+Users: 사용자
+Account: 계정
+Current User: 현 사용자
+View this entry: 항목 보기
+Private: 개인용
+This event is confidential: 이 행사는 비밀항목입니다.
+You have: You have
+unapproved: 미승인
+event: 행사
+events: 행사들
+Go to: 가기
+Help Index: 도움말 목차
+Error approving event: 행사 승인 중 에러
+This user has: 이 사용자는 다음을 갖고 있음:
+calendar entries: 달력 항목
+They must all be deleted (or this user removed as a participant) before this user can be deleted:They must all be deleted (or this user removed as a participant) before this user can be deleted
+The passwords were not identical: The passwords were not identical
+You have not entered a password: 암호를 입력하지 않았습니다.
+You have not entered a Brief Description: 요약 설명을 입력하지 않았습니다.
+You have not entered a valid time of day: 유효한 일자/시각이 아닙니다.
+Brief Description: 요약 설명
+Full Description: 상세 설명
+Description: 설명
+Date: 일자
+Time: 시각
+am: am
+pm: pm
+Duration: 기간
+minutes: 분
+Priority: 우선 순위
+Low: 낮음
+Medium: 중간
+High: 높음
+Access: 접근
+Public: 공용
+Confidential: 비밀
+Participants: 참가자
+Created by: 작성자:
+Updated: 갱신된
+Save: 저장
+Help: 도움말
+Approve this entry?: 이 항목을 승인함.
+Approve/Confirm entry: 이 항목을 승인/확인함
+Edit entry: 항목 편집
+Edit Entry: 항목 편집
+Add Entry: 항목 추가
+Are you sure you want to delete this entry?: 정말로 이 항목을 지우시겠습니까?
+This will delete this entry for all users.: 모든 사용자들에서도 이 항목이 지워집니다.
+Delete: 지우기
+Delete entry: 항목 지우기
+You are not authorized to edit this entry: 이 항목을 편집할 권한이 없습니다.
+#Unauthorized: 권한 없음
+The following conflicts with the suggested time: 다음 사항은 제시된 시간과 겹칩니다.
+Unnamed Event: 이름없는 행사
+Hello: 안녕!
+A new appointment has been made for you by: 새 약속이 생성되었습니다. 생성자:
+The subject is: 주제는
+Please look on: 다음을 살펴볼 것-
+to accept or reject this appointment: 이 약속을 수락하거나 거절
+to view this appointment: 이 약속을 보기
+Notification: 통보
+Your suggested time of: 제안한 시간
+conflicts with the following existing calendar entries: 다음과 같은 항목과 겹칩니다.
+Edit User: 사용자 편집
+Add User: 사용자 추가
+Login: 로그인
+First Name: 이름
+Last Name: 성
+E-mail address: E-mail 주소
+Password: 비밀번호
+again: again
+Yes: 예
+No: 아니오
+Change Password: 비밀번호 변경
+New Password: 새 비밀번호
+Set Password: 비밀번호 설정
+Adding/Editing Calendar Entries: 달력 항목의 추가/편집
+Unapproved Events: 미승인 행사
+No unapproved events: 미승인 행사 없음.
+You must enter a login and password: 아이디와 비밀번호를 입력해야 합니다.
+Save login via cookies so I don't have to login next time: 다음번에 로그인 할 필요가 없도록 로그인 정보 저장.
+cookies-note: <B>주:</B> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
+Invalid color for document background: 배경 색상 틀림
+Invalid color for document title: 제목 색상 틀림
+Invalid color for table cell background: 테이블 셀 배경색 틀림
+Invalid color for table cell background for today: 오늘 날짜 표시 색상 틀림
+Color format should be '#RRGGBB': 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF0000" (빨강)
+12 hour: 12 hour
+24 hour: 24 hour
+From: 시작
+to: 종료
+Document background: 배경 색상
+Document title: 제목 색상
+Table cell background: 테이블 셀 배경 색상
+Table cell background for current day: 오늘 날짜 표시 색상
+Save Preferences: 환경설정 저장
+The following error occurred: 다음과 같은 오류 발생:
+Search: 검색
+Keywords: 검색어
+You must enter one or more search keywords: 검색어를 입력하셔야 합니다.
+Search Results: 검색 결과
+match found: 항목 발견
+matches found: 항목 발견
+No matches found: 찾은 항목 없음
+View Another User's Calendar: 다른 사용자의 달력 보기
+You are not authorized: 권한이 없습니다:
+Add New User: 새 사용자 추가
+denotes administrative user: 관리자를 나타냄
+Invalid entry id: 틀린 항목 아이디
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help: 행사의 간략한 설명(약 20자)입니다. 달력상의 행사를  나타냅니다.
+full-description-help: 행사의 자세한 설명입니다. 
+date-help: 행사일을 나타냅니다. 
+time-help: 행사 시각입니다.<BR><I>이 항목은 비워둘 수 있습니다.</I>
+duration-help: 행사기간 명시(분단위)<BR><I>이 항목은 비워둘 수 있습니다.</I>
+priority-help: 행사 우선순위 명시. 높은 우선순위의 행사는 굵은 글씨로 표시됩니다.
+access-help: 행사의 접근 수준을 명시.<BR> <I>공용</I>: 모든 사람이 행사의 세부 내용까지 볼 수 있음.  <BR><I>비밀</I>: 타 사용자는 일자와 시각을 볼 수 있으나 세부 사항은 볼 수 없음.
+participants-help: 참가자의 목록 표시.
+Preferences: 환경 설정
+Settings: 설정
+Time format: 시간 표시 형식
+time-format-help: 시간 표시 형식을 명시합니다.<BR><I>12 hour:</I>시간표시가 3am, 8:30pm, 등등으로 표시됨<BR><I>24 hour:</I>시간표시가 300, 2030 등등으로 표시됨
+Display unapproved: 승인안된 행사 표시
+display-unapproved-help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다. <BR> "Yes"로 설정시 미승인된 행사도 표시됩니다.(다른 색깔로).<BR>"No"로 설정하면 미승인 행사는 승인 후에만 달력에 표시됩니다.
+Display week number: 몇주차인가 표시
+display-week-number-help: 월별 화면과 주별 화면에 몇주차인가(1~52) 표시여부를 명시.
+Work hours: 근무 시간
+work-hours-help: 일별 화면에서 표시대상시간을 명시
+Colors: 색상
+colors-help: 모든 색상은 "#RRGGBB" 같은 16진수 형식으로 표시해야 합니다. "RR" 은 적색, "GG"는 녹색, "BB"는 청색의 16진수 값입니다. 

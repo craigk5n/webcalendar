@@ -1,0 +1,275 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+# Translated by: Allan Thraen (allan@12go.dk)
+# Updated by: Jørgen Thomsen (jth@jth.net)
+# Last update: 12-Feb-2001
+
+# Title is what will appear in the title bar for pages
+Title: Web-kalenderen
+
+Month: Måned
+Week: Uge
+Error: Fejl
+
+Sun: Søn
+Mon: Man
+Tue: Tir
+Wed: Ons
+Thu: Tor
+Fri: Fre
+Sat: Lør
+
+Sunday: Søndag
+Monday: Mandag
+Tuesday: Tirsdag
+Wednesday: Onsdag
+Thursday: Torsdag
+Friday: Fredag
+Saturday: Lørdag
+
+January: Januar
+February: Februar
+March: Marts
+April: April
+May: Maj
+June: Juni
+July: Juli
+August: August
+September: September
+October: Oktober
+November: November
+December: December
+
+Jan: Jan
+Feb: Feb
+Mar: Mar
+Apr: Apr
+May: Maj
+Jun: Jun
+Jul: Jul
+Aug: Aug
+Sep: Sep
+Oct: Okt
+Nov: Nov
+Dec: Dec
+
+Generate printer-friendly version: Vis som printervenlig side
+Printer Friendly: Printervenlig
+Go: Gå til
+Back to My Calendar: Tilbage til min kalender
+Another User's Calendar: Se en anden brugers kalender
+Search: Søg
+Add New Entry: Tilføj ny aktivitet
+New Entry: Ny aktivitet
+Admin: Admin
+Preferences: Indstillinger
+Users: Brugere
+Account: Konto
+Current User: Nuværende bruger
+View this entry: Se denne aktivitet
+Private: Privat
+This event is confidential: Denne aktivitet er fortrolig
+You have: Du har
+unapproved: ikke godkendt
+event: aktivitet
+events: aktiviteter
+Go to: Gå til
+Help Index: Hjælpeindex
+Error approving event: Fejl ved godkendelse af aktivitet
+This user has: Denne bruger har
+calendar entries: aktiviteter
+They must all be deleted (or this user removed as a participant) before this user can be deleted:De må alle slettes (eller denne bruger skal fjernes som deltager) før brugeren kan slettes
+The passwords were not identical: Kodeordene er ikke identiske
+You have not entered a password: Du har ikke indtastet et kodeord
+You have not entered a Brief Description: Du har ikke indtastet en kort beskrivelse
+You have not entered a valid time of day: Du har ikke indtastet et gyldigt tidspunkt
+Brief Description: Kort beskrivelse
+Full Description: Komplet beskrivelse
+Description: Beskrivelse
+Date: Dato
+Time: Klokken
+am: am
+pm: pm
+Duration: Varighed
+minutes: minutter
+Priority: Prioritet
+Low: Lav
+Medium: Medium
+High: Høj
+Access: Adgang
+Public: Offentlig
+Confidential: Fortroligt
+Participants: Deltagere
+Created by: Lavet af
+Updated: Opdateret
+Daily: Dagligt
+for weekly: for ugentlig
+by date: efter dato
+by day: efter dag
+Monthly: Månedligt
+None: Aldrig
+Repeat Day: Gentag dato
+Repeat End Date: Gentag slutdato
+Repeat Type: Gentag type
+Use end date: Benyt slutdato
+Weekly: Ugentligt
+Yearly: Årligt
+Frequency: Hyppighed
+Save: Gem
+Help: Hjælp
+Approve this entry?: Godkend denne aktivitet ?
+Approve/Confirm: Godkend/bekræft
+Approve/Confirm entry: Godkend/bekræft aktivitet
+Reject: Afvis
+Reject entry: Afvis aktivitet
+Reject this entry?: Afvis denne aktivitet?
+Rejected: Afvist
+Edit entry: Redigér aktivitet
+Edit Entry: Redigér aktivitet
+Add Entry: Tilføj aktivitet
+Add to My Calendar: Føj til min kalender
+Do you want to add this entry to your calendar?: Vil du tilføje denne aktivitet til din kalender?
+Error adding event: Fejl ved tilføjelse af aktivitet
+The time you have entered begins before your preferred work hours.  Is this correct?: Tidspunktet er før din foretrukne arbejdstid. Er dette korrekt?
+Are you sure you want to delete this entry?: Er du sikker på, at du vil slette denne aktivitet?
+This will delete this entry for all users.: Dette vil slette denne aktivitet for alle brugere.
+Delete: Slet
+Delete entry: Slet aktivitet
+You are not authorized to edit this entry: Du har ikke ret til at slette denne aktivitet
+This is a private event and may not be added to your calendar.: Dette er en privat aktivitet, som ikke må tilføjes til din kalender.
+This will add the entry to your calendar.: Dette vil tilføje aktiviteten til din kalender.
+This will delete the entry from your calendar.: Dette vil slette aktiviteten fra din kalender.
+Scheduling Conflict: Tidskonflikt
+The following conflicts with the suggested time: Følgende aktiviteter er i konflikt med det foreslåede tidspunkt
+Unnamed Event: Aktivitet uden navn
+Hello: Hej
+A new appointment has been made for you by: En ny aftale er blevet aftalt for dig af
+The subject is: Emnet er
+Please look on: Se venligst på
+to accept or reject this appointment: for at acceptere eller afvise denne aftale
+to view this appointment: for at se denne aftale
+An appointment has been canceled for you by:En aftale er blevet aflyst for dig af
+An appointment has been rejected by: En aftale er blevet afslået af
+Export all dates: Eksporter alle dage
+The subject was: Emnet var
+Notification: Påmindelse
+Your suggested time of: Din foreslåede tid for
+conflicts with the following existing calendar entries: er i konflikt med eksisterende aftaler
+Edit User: Redigér bruger
+Add User: Tilføj bruger
+Username: Brugernavn
+Login: Login
+Logout: Log ud
+First Name: Fornavn
+Last Name: Efternavn
+E-mail address: Email-adresse
+Password: Kodeord
+again: igen
+Yes: Ja
+No: Nej
+Change Password: Skift kodeord
+New Password: Nyt kodeord
+Set Password: Ændr kodeord
+Adding/Editing Calendar Entries: Tilføj/Redigér aktivitet
+Unapproved Events: Ikke-godkendte aktiviteter
+No unapproved events: Ingen ikke-godkendte aktiviteter
+You must enter a login and password: Du skal indtaste et brugernavn og kodeord
+Save login via cookies so I don't have to login next time: Gem login i en cookie, så jeg ikke skal logge ind næste gang
+cookies-note: <B>OBS:</B> Dette program kræver at cookies er slået til i browseren
+Invalid color for document background: Ugyldig baggrundsfarve
+Invalid color for document title: Ugyldig titelfarve
+Invalid color for table cell background: Ugyldig farve for tabelbaggrund
+Invalid color for table cell background for today: Ugyldig farve for dagens tabelbaggrund
+Color format should be '#RRGGBB': Farven skal skrives som '#RRGGBB'
+12 hour: 12 timer
+24 hour: 24 timer
+From: Fra
+to: til
+Select: Vælg
+Preferred view: Foretrukkent valg
+Week starts on: Ugen starter på
+Day: Dag
+Year: År
+Document background: Dokumentbaggrund
+Document title: Dokumenttitel
+Table cell background: Tabelcellebaggrund
+Table cell background for current day: Tabelcellebaggrund for nuværende dag
+Save Preferences: Gem indstillinger
+The following error occurred: Følgende fejl forekom
+Search: Søg
+Keywords: Nøgleord
+You must enter one or more search keywords: Du skal indtaste et eller flere søgeord
+Search Results: Søgeresultater
+Export: Eksportér
+Export format: Eksport format
+Modified since: Ændret siden
+Start date: Startdato
+End date: Slutdato
+Palm Pilot: Palm Pilot
+match found: emne fundet
+matches found: emner fundet
+No matches found: Ingen emner fundet
+View Another User's Calendar: Se en anden brugers kalender
+You are not authorized: Du har ikke tilladelse til dette
+Add New User: Tilføj ny bruger
+denotes administrative user: betyder administrativ bruger
+Invalid entry id: Ugyldigt aktivitetsid
+My Calendar: Min kalender
+Add Layer: Tilføj lag
+Add layer: Tilføj lag
+Disable Layers: Slå lag fra
+Disabled: Slået fra
+Edit Layers: Rediger lag
+Enable Layers: Slå lag til
+Enabled: Slået til
+hours: timer
+Layers are currently: Lag er aktuelt
+User: Bruger
+Color: Farve
+Delete layer: Slet lag
+Edit layer: Rediger lag
+Edit Layer: Rediger lag
+Invalid color: Ugyldig farve
+Layer: Lag
+Layers: Lag
+Source: Kilde
+Show layer events that are the same as your own: Vis lagaktiviteter, der er de samme som dine egne
+Are you sure you want to delete this layer?: Er du sikker på, at du vil slette dette lag?
+Duplicates: Gentagelser
+Disabled for demo: Slået fra i demo
+
+
+# Help text.  The left side is typically abbreviated since this can be long
+brief-description-help: Her skal der stå en kort beskrivelse af aktiviteten - det bliver vist når man står over aktiviteten i oversigtskalenderen.
+full-description-help: Her kan der stå en komplet beskrivelse af aktiviteten.
+date-help: Angiver datoen for aktiviteten.
+time-help: Angiver tidspunktet for aktiviteten.<BR><I>Dette felt behøver ikke at være udfyldt.</I>
+duration-help: I dette felt kan du angive varigheden af aktiviteten <BR><I>Dette felt behøver ikke at være udfyldt.</I>
+priority-help: Angiv her aktivitetens prioritet.
+access-help: Angiv hvorvidt aktiviteten skal kunne ses af alle - eller om den er fortrolig.
+participants-help: Vis deltagerne i denne aktivitet.
+repeat-type-help: Hvor ofte skal aktiviteten gentages.
+repeat-end-date-help: Specificer slutdatoen for gentagelser af denne aktivitet.
+repeat-day-help: Hvilke ugedage skal aktivteten gentages på.
+repeat-frequency-help: Hvor ofte skal aktiviteten gentages ? Tallet 1 viser at det skal ske hver gang, 2 så er det hver anden gang...
+Preferences: Indstillinger
+Settings: Indstillinger
+Language: Sprog
+Your browser default language is: Din browsers standardsprog er
+language-help: Angiver hvilket sprog, der skal bruges.
+Preferred view: Foretrukken opstilling
+preferred-view-help: Angiver den foretrukne opstilling (dag, uge, måned eller år).
+Time format: Tidsformat
+time-format-help: Skal tiden vises pr 12 eller 24-timer.
+Display unapproved: Vis ikke-godkendte
+display-unapproved-help: Specificér her hvorvidt din kalender skal vise ikke-godkendte aktiviteter.
+Display icons: Vis ikoner
+display-icons-help: Vis ikoner ved aktivitet til visning, redigering og sletning. Hvis sat til Nej, må du klikke på aktiviteten for at komme til den side, hvor du kan bruge disse funktioner.
+Display week number: Vis ugenummer
+display-week-number-help: Specificér her hvorvidt ugenumre skal være påklistret ugevisningerne.
+display-week-starts-on: Hvorvidt ugen starter mandag eller søndag.
+Work hours: Arbejdstid
+work-hours-help: Specificer den daglige arbejdstid.
+Colors: Farver
+colors-help: Alle farver skal indtastes som #RRGGBB hvor RR er hexkoden for rød, GG er hexkoden for grøn og BB er hexkoden for den blå farve.

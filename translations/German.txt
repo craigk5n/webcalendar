@@ -1,0 +1,256 @@
+# Use this as a starting point to translate this application into
+# another language.  The format is "English text: translated text"
+# There cannot be a ":" in the English text.
+#
+# Translator: Ralph Boßler <vertrieb@sylphen.com>,
+#	Peter Huetmannsberger <huetmann@site38.ping.at>
+# Last update: 28 June 2000
+
+# Title is what will appear in the title bar for pages
+Title: WebCalendar
+
+Year: Jahr
+Month: Monat
+Week: Woche
+Day: Tag
+Error: Fehler
+
+Sun: So
+Mon: Mo
+Tue: Di
+Wed: Mi
+Thu: Do
+Fri: Fr
+Sat: Sa
+
+Sunday: Sonntag
+Monday: Montag
+Tuesday: Dienstag
+Wednesday: Mittwoch
+Thursday: Donnerstag
+Friday: Freitag
+Saturday: Samstag
+
+January: Januar
+February: Februar
+March: März
+April: April
+May: Mai
+June: Juni
+July: Juli
+August: August
+September: September
+October: Oktober
+November: November
+December: Dezember
+
+Jan: Jan
+Feb: Feb
+Mar: Mär
+Apr: Apr
+May: Mai
+Jun: Jun
+Jul: Jul
+Aug: Aug
+Sep: Sep
+Oct: Okt
+Nov: Nov
+Dec: Dez
+
+Language: Sprache
+Your browser default language is: Ihre Default-Sprache ist
+Generate printer-friendly version: Erzeuge Version zum Drucken
+Printer Friendly: Druckerfreundlich
+Go: Zeigen 
+Back to My Calendar: Zurück zu meinem Kalender
+My Calendar: Mein Kalender
+Another User's Calendar: Kalender anderer Benutzer 
+Search: Suche
+Add New Entry: Eintrag hinzufügen
+New Entry: Neuer Eintrag
+Admin: Admin
+Preferences: Voreinstellungen
+Users: Benutzer
+Account: Account
+Current User: aktuelle/r Benutzer
+View this entry: Eintrag ansehen
+Private: Privat
+This event is confidential: privater Termin 
+You have: Sie haben
+unapproved: unbestätigten
+not approved: unbestätigte
+event: Eintrag 
+events: Einträge
+Go to: Gehe zu
+Help Index: Hilfe-Index
+Error approving event: Fehler bei Bestätigung des Ereignisses
+This user has: Dieser Benutzer hat
+calendar entries: Kalender-Einträge
+They must all be deleted (or this user removed as a participant) before this user can be deleted: Diese oder die Teilnehmer müssen alle gelöscht werden, bevor der Benutzer gelöscht werden kann.
+The passwords were not identical: Die eingebenen Kennwörter stimmten nicht überein
+You have not entered a password: Sie haben kein Kennwort eingegeben
+You have not entered a Brief Description: Sie haben keine Kurzbeschreibung eingegeben
+You have not entered a valid time of day: Sie haben keine gültige Zeit eingegeben
+Brief Description: Kurzbeschreibung
+Full Description: ausführliche Beschreibung
+Description: Beschreibung
+Date: Datum
+Time: Zeit
+am: am
+pm: pm
+Duration: Dauer
+minutes: Minuten
+hours: Stunden
+Priority: Priorität
+Low: gering
+Medium: mittel
+High: hoch
+Access: Zugriff
+Public: öffentlich
+Confidential: privat 
+Participants: Teilnehmer
+Created by: erstellt von
+Updated: geändert
+Save: Speichern
+Help: Hilfe
+Approve this entry?: Eintrag bestätigen?
+Approve/Confirm entry: Eintrag bestätigen?
+Approve/Confirm: Eintrag bestätigen
+Edit entry: Eintrag ändern
+Edit Entry: Eintrag ändern
+Add Entry: Eintrag hinzufügen
+Reject: Ablehnen
+Reject entry: Eintrag ablehnen?
+Reject this entry?: Eintrag ablehnen?
+Rejected: Eintrag abgelehnt, wird nicht teilnehmen  
+Are you sure you want to delete this entry?: Wollen Sie den Eintrag wirklich löschen?
+This will delete this entry for all users.: Dieser Eintrag wird für alle Benutzer gelöscht.
+Delete: Löschen
+Delete entry: Lösche Eintrag
+You are not authorized to edit this entry: Sie haben keine Berechtigung diesen Eintrag zu ändern.
+Unauthorized: Keine Berechtigung
+The following conflicts with the suggested time: Folgende Konflikte mit vorgeschlagenem Termin
+Unnamed Event: unbenanntes Ereignis
+Hello: Guten Tag 
+A new appointment has been made for you by: Es wurde Ihnen ein neuer Termin eingetragen von -->  
+The subject is: Die Beschreibung lautet 
+Please look on: Bitte konsultieren Sie Ihren  
+to accept or reject this appointment: um den Termin zu bestätigen/abzulehnen.
+to view this appointment: Termin anschauen
+Notification: Benachrichtigung
+Scheduling Conflict: Terminüberschneidung
+Your suggested time of: Ihre Eintragung von 
+conflicts with the following existing calendar entries: überschneidet sich mit folgenden Kalender-Einträgen.
+Edit User: Benutzer ändern
+Add User: Benutzer hinzufügen
+Login: Login
+Logout: Logout
+Username: Benutzername
+First Name: Vorname
+Last Name: Nachname
+E-mail address: E-Mail-Adresse
+Password: Kennwort
+again: Wiederholung
+Yes: Ja
+No: Nein
+Change Password: Kennwort ändern
+New Password: Neues Kennwort
+Set Password: Setze Kennwort
+Adding/Editing Calendar Entries: Hinzufügen/Ändern von Kalender-Einträgen
+Unapproved Events: Unbestätigte Termine
+No unapproved events: Keine unbestätigten Termine
+You must enter a login and password: Sie müssen einen Benutzernamen und ein Kennwort eingeben.
+Save login via cookies so I don't have to login next time: Login in Cookie abspeichern, um Anmeldung beim nächsten Mal automatisch zu überspringen.
+cookies-note: <B>Hinweis:</B> Für diese Anwendung müssen Cookies im Browser akzeptiert werden.
+Invalid color for document background: Ungültige Farbe für Hintergrund
+Invalid color for document title: Ungültige Farbe für Titel
+Invalid color for table cell background: Ungültige Farbe für Tabellen-Hintergrund
+Invalid color for table cell background for today: Ungültige Farbe für Tabellen-Hintergrund für 'Heute'
+Color format should be '#RRGGBB': Farben müssen im '#RRGGBB'-Format sein.
+12 hour: 12-stündig
+24 hour: 24-stündig
+From: Von
+to: bis
+Document background: Hintergrund
+Document title: Titel
+Table cell background: Tabellen-Hintergrund
+Table cell background for current day: Tabellen-Hintergrund für 'Heute'
+Save Preferences: Voreinstellungen speichern
+The following error occurred: Folgender Fehler trat auf
+Search: Suche
+Keywords: Stichwörter
+You must enter one or more search keywords: Sie müssen ein oder mehrere Stichwörter eingeben
+Search Results: Suchergebnis
+match found: Treffer gefunden
+matches found: Treffer gefunden
+No matches found: Keine Treffer
+View Another User's Calendar: Kalender anderer Benutzer anzeigen 
+You are not authorized: Sie haben keine Berechtigung hiefür
+Add New User: Neue Benutzer hinzufügen
+denotes administrative user: kennzeichnet administrativen Benutzer
+Invalid entry id: ungültiger Eintrag
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help: Kurzbeschreibung (ca. 20 Zeichen) des Termins. Dies erscheint, wenn der Kalender angezeigt wird.
+full-description-help: Komplette Beschreibung des Termins. Diese Information sieht der Benutzer beim Termin.
+date-help: Gibt das Datum des Termins an.
+time-help: Gibt die Uhrzeit des Termins an.<BR><I>Kann leer gelassen werden.</I>
+duration-help: Gibt die Dauer des Termin in Minuten an.<BR><I>Kann leer gelassen werden.</I>
+priority-help: Gibt die Priorität des Termins an.  Termine mit hoher Priorität werden fett angezeigt.
+access-help: Gibt den Zugriff auf den Termin an.<BR> <I>Öffentlich</I>: Jeder kann alle Details des Termins sehen.<BR><I>Geheim</I>: Andere können sehen, dass ein Termin existiert, können jedoch keine Details ansehen.
+participants-help: Gibt die Teilnehmer des Termins an.
+Preferences: Voreinstellungen
+Settings: Einstellungen
+Time format: Zeit-Format
+time-format-help: Gibt an welches Zeit-Format benutzt wird: <BR><I>12-stündiges:</I> Zeigt Zeiten als 3am, 8:30pm, etc.  <BR><I>24-stündiges:</I> Zeigt Zeiten als 3.00, 20.30, etc.
+Display unapproved: Unbestätigte Termine anzeigen
+display-unapproved-help: Gibt an, ob unbestätigte Termine in Ihrem Kalender angezeigt werden sollen.<BR> Wenn "Ja", werden unbestätigte Termine in einer anderen Farbe angezeigt.<BR> Wenn "Nein", müssen unbestätigte Termine erst bestätigt werden, um angezeigt zu werden. 
+Display week number: Wochennummer anzeigen
+Week starts on: Wochenbeginn am
+display-week-number-help: Gibt an, ob die Wochennummer (1-52) in der Monats- und Wochenansicht angezeigt werden soll.
+Work hours: Arbeitszeit
+work-hours-help: Zeitabschnitt für die Anzeige der Tagessicht.
+Colors: Farben
+colors-help: Alle Farben können im Format "#RRGGBB" eingegeben werden. Hierbei steht "RR" für den hexadezimalen Wert von Rot, "GG" für Grün und "BB" für Blau.
+
+### Repeat translations ##############
+Repeat Type: Art der Wiederholung
+None:	Keine
+Daily:	Täglich
+Weekly: Wöchentlich
+Monthly: Monatlich 
+by day: tagesorientiert
+by date: datumsorientiert
+Yearly: Jährlich
+
+Repeat End Date: Ende der wiederkehrenden Termine
+Use end date: Ende an diesem Tag
+
+Repeat Day: Tag der Wiederholung
+for weekly: bei wöchentlichen Terminen
+
+Frequency: Häufigkeit
+
+Select: Auswählen 
+
+### Export translations #############
+
+Export: Daten exportieren
+Export format: Exportformat
+Start date: Anfangsdatum
+End date: Enddatum
+Modified since: Änderungen ab
+Export all dates: Alle Einträge exportieren
+Preferred view: Bevorzugte Ansicht
+Things to Do: Aufgabenliste
+Add to My Calendar: Zu meinem Kalender hinzufügen
+
+Layers are currently: Layer
+Enabled: aktiv
+Disabled: inaktiv
+Edit layer: Layer editieren
+Delete layer: Layer löschen
+Add layer: Layer hinzufügen
+Edit Layers: Layer editieren
+Disable Layers: Layer abschalten
+

@@ -1,0 +1,266 @@
+# Translated by:
+#	Nuno Lopes - nml@maxitel.pt
+# Last update: 11 September 2000
+
+# Title is what will appear in the title bar for pages
+Title: Calendário Pessoal
+
+Month: Mês
+Week: Semana
+Day: Dia
+Error: Erro
+
+Sun: Dom
+Mon: Seg
+Tue: Ter
+Wed: Qua
+Thu: Qui
+Fri: Sex
+Sat: Sáb
+
+Sunday: Domingo
+Monday: Segunda
+Tuesday: Terça
+Wednesday: Quarta
+Thursday: Quinta
+Friday: Sexta
+Saturday: Sábado
+
+January: Janeiro
+February: Fevereiro
+March: Março
+April: Abril
+May: Maio
+June: Junho
+July: Julho
+August: Agosto
+September: Setembro
+October: Outubro
+November: Novembro
+December: Dezembro
+
+Jan: Jan
+Feb: Fev
+Mar: Mar
+Apr: Abr
+May: Mai
+Jun: Jun
+Jul: Jul
+Aug: Ago
+Sep: Set
+Oct: Out
+Nov: Nov
+Dec: Dez
+
+Generate printer-friendly version: Visualizar em formato de impressora
+Printer Friendly: Formato de impressora
+Go: Ver
+Back to My Calendar: Voltar ao meu calendário
+Another User's Calendar: Calendário de outro utilizador
+Search: Pesquisar
+Add New Entry: Adicionar nova entrada
+New Entry: Nova entrada
+Admin: Admin
+Preferences: Configurações
+Users: Utilizadores
+Account: Conta
+Current User: Utilizador actual
+View this entry: Visualizar esta entrada
+Private: Privado
+This event is confidential: Este evento é confidencial
+You have: Tem
+unapproved: não aprovado
+event: evento
+events: eventos
+Go to: Ir para
+Help Index: Ajuda
+Error approving event: Erro a aprovar o evento
+This user has: Este utilizador tem
+calendar entries: entradas no calendário
+They must all be deleted (or this user removed as a participant) before this user can be deleted: Têm de ser todas apagadas (ou este utilizador removido como participante) antes deste utilizador poder ser removido
+The passwords were not identical: As passwords não são iguais
+You have not entered a password: Não introduziu uma password
+You have not entered a Brief Description: Não introduziu uma breve descrição
+You have not entered a valid time of day: Não introduziu uma hora do dia válida
+Brief Description: Descrição breve
+Full Description: Descrição completa
+Description: Descrição
+Date: Data
+Time: Hora
+am: am
+pm: pm
+Duration: Duração
+minutes: minutos
+Priority: Prioridade
+Low: Baixa
+Medium: Média
+High: Alta
+Access: Accesso
+Public: Publico
+Confidential: Confidencial
+Participants: Participantes
+Created by: Criado por
+Updated: Actualizado
+Daily: Diário
+for weekly: semanal
+by date: por data
+by day: por dia
+Monthly: Mensal
+None: Nenhuma
+Repeat Day: Dia a repetir
+Repeat End Date: Data para fim de repetição
+Repeat Type: Tipo de repetição
+Use end date: Utilizar data de fim de repetição
+Weekly: Semanal
+Yearly: Anual
+Frequency: Frequencia
+Save: Gravar
+Help: Ajuda
+Approve this entry?: Aprovar esta entrada?
+Approve/Confirm: Aprovar/Confirmar
+Approve/Confirm entry: Aprovar/Confirmar entrada
+Reject: Rejeitar
+Reject entry: Rejeitar entrada
+Reject this entry?: Rejeitar esta entrada?
+Rejected: Rejeitada
+Edit entry: Editar entrada
+Edit Entry: Editar Entrada
+Add Entry: Adicionar Entrada
+Are you sure you want to delete this entry?: Tem a certeza que pretende apagar esta entrada?
+This will delete this entry for all users.:Isto vai apagar esta entrada para todos os utilizadores.
+Delete: Apagar
+Delete entry: Apagar entrada
+You are not authorized to edit this entry: Não está autorizado a editar esta entrada
+Scheduling Conflict: Conflito na Marcação
+The following conflicts with the suggested time: O seguinte está em conflito com a hora sugerida
+Unnamed Event: Evento sem Nome
+Hello: Olá
+A new appointment has been made for you by: Um novo evento foi feito para sí por
+The subject is: O assunto é
+Please look on: Por favor veja em
+to accept or reject this appointment: para aceitar ou rejeitar este evento
+to view this appointment: para ver este evento
+Notification: Notificação
+Your suggested time of: A sua hora sugerida de
+conflicts with the following existing calendar entries: está em conflito com os seguintes eventos
+Edit User: Editar Utilizador
+Add User: Adicionar Utilizador
+Username: Utilizador
+Login: Entrar
+Logout: Sair
+First Name: Primeiro Nome
+Last Name: Ultimo Nome
+E-mail address: Endereço de e-mail
+Password: Password
+again: novamente
+Yes: Sim
+No: Não
+Change Password: Alterar Password
+New Password: Nova Password
+Set Password: Gravar Password
+Adding/Editing Calendar Entries: Adicionar/Editar Entradas
+Unapproved Events: Eventos não aprovados
+No unapproved events: Sem eventos não aprovados
+You must enter a login and password: Tem de introduzir um Utilizador e uma Password
+Save login via cookies so I don't have to login next time: Gravar Utilizador e Password para futuras sessões (não recomendado se este computador é utilizado por mais pessoas)
+cookies-note: <B>Nota:</B> Esta opção requer a opção de 'cookies' no seu browser activada.
+Invalid color for document background: Cor inválida para o fundo do documento
+Invalid color for document title: Cor inválida para o título do documento
+Invalid color for table cell background: Cor inválida para o fundo da célula da tabela
+Invalid color for table cell background for today: Cor inválida para o fundo da célula da tabela (para o dia actual)
+Color format should be '#RRGGBB': O formato do código de cor deve ser '#RRGGBB'
+12 hour: 12 horas
+24 hour: 24 horas
+From: De
+to: para
+Select: Seleccionar
+Preferred view: Vista preferida
+Week starts on: Semana começa em
+Day: Dia
+Year: Ano
+Document background: Fundo do documento
+Document title: Título do documento
+Table cell background: Fundo da célula da tabela
+Table cell background for current day: Fundo da célula da tabela (para o dia actual)
+Save Preferences: Gravar
+The following error occurred: Ocorreu o seguinte erro
+Search: Pesquisar
+Keywords: Palavras
+You must enter one or more search keywords: Tem de introduzir uma ou mais palavras
+Search Results: Resultados da pesquisa
+Export: Exportar
+Export format: Formato da exportação
+Modified since: Modificado desde
+Start date: Data de início
+End date: Data final
+Palm Pilot: Palm Pilot
+match found: Ocorrencia encontrada
+matches found: Ocorrencias encontradas
+No matches found: Ocorrencias não encontradas
+View Another User's Calendar: Ver o calendário de outro utilizador
+You are not authorized: Não está autorizado
+Add New User: Adicionar Novo Utilizador
+denotes administrative user: administrador
+Invalid entry id: Entrada com ID inválido
+My Calendar: O Meu Calendário
+Layer: N&iacute;vel
+Layers: N&iacute;veis
+Add layer: Adicionar n&iacute;vel
+Add Layer: Adicionar N&iacute;vel
+Source: Origem
+Color: Cor
+Duplicates: Duplicados
+Show layer events that are the same as your own: Mostrar eventos semelhantes doutros n&iacute;veis
+Edit layer: Editar n&iacute;vel
+Edit Layer: Editar N&iacute;vel
+Delete layer: Remover n&iacute;vel
+Are you sure you want to delete this layer?: Quer mesmo apagar este n&iacute;vel?
+Display icons: Mostrar &iacute;cones
+display-icons-help: Mostrar ajuda sobre &iacute;cones
+Invalid color: Cor inapropriada
+Reject this entry?: Rejeitar esta entrada?
+Rejected: Rejeitada
+Invalid login: Acesso incorrecto
+Disabled for demo: Desactivado em modo demo
+Your browser default language is: A linguagem do browser &eacute;
+Disable Layers: Desactivar N&iacute;veis
+Disabled: Desactivados
+Edit Layers: Editar N&iacute;veis
+Enable Layers: Activar N&iacute;veis
+Enabled: Activados
+hours: horas
+Layers are currently: Os n&iacute;veis est&atilde;o
+User: Utilizador
+
+
+# Help text.  The left side is typically abbreviates since this can be long
+brief-description-help: Breve descrição (cerca de 20 caracteres) do evento. Esta descrição representa o evento na visualização global do calendário
+full-description-help: Descrição completa do evento. Esta informação é apresentada quando o utilizador verifica o evento isoladamente.
+date-help: Especifica a data do evento.
+time-help: Especifica a hora do evento<BR><I>Este campo é opcional.</I>
+duration-help: Especifica a duração (em minutos) do evento.  <BR><I>Este campo é opcional.</I>
+priority-help: Especifica a prioridade do evento.  Prioridade Alta é apresentada num tipo de letra mais escura.
+access-help: Especifica o nível de acesso do evento.<BR> <I>Publico</I> Todos os intervenientes podem ver todos os detalhes do evento. <BR><I>Confidencial</I> Outros utilizadores poderão ver que tem um evento marcado, mas não podem visualizar os detalhes. participants-help: Lists the participants of this entry.
+repeat-type-help: Selecciona a periodicidade do evento<I>Mensal (por dia)</I> faz com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <I>Mensal (por data)</I> faz com que um evento se repita todos os meses no mesmo dia.
+repeat-end-date-help: Especifica a data até à qual o evento se deve repetir.
+repeat-day-help: Especifica em que dias da semana o evento se deve repetir.  Isto é apenas utilizado quando o <I>Tipo de repetição</I> tem o valor de <I>Semanal</I>.
+repeat-frequency-help: Especifica quantas vezes o evento se deve repetir.  O valor padrão (1) indica que o evento acontece todos os dias.  Especificar 2 faz com que o evento se repita em outra semana (se <I>Tipo de repetição</I> tem o valor de <I>Semanal</I>), todos os meses (se <I>Tipo de repetição</I> tem o valor de <I>Mensal</I>), etc.
+Preferences: Configurações
+Settings: Parametros
+Language: Linguagem
+language-help: Especifica a língua a ser utilizada.
+Preferred view: Visualização preferida
+preferred-view-help: Especifica a visualização padrão (Dia, Semana, Mês, ou Ano).
+Time format: Formato da Hora
+time-format-help: Especifica o formato da hora a utilizar: <BR><I>12 horas:</I> Mostra no formato 3am, 8:30pm, etc.  <BR><I>24 horas:</I> Mostra no formato 300, 2030, etc.
+Display unapproved: Visualizar Não Aprovados
+display-unapproved-help: Especifica se eventos não aprovados são mostrados no calendário.
+Display icons: Visualizar ícones
+display-icons-help: Mostra ícones junto de cada evento para visualizar, editar e apagar.
+Display week number: Visualizar numero da semana
+display-week-number-help: Especifica se o número da semana (1-52) deve ser mostrado na vista semanal e mensal.
+display-week-starts-on: Especifica se a semana começa ao Domingo ou à Segunda-Feira. 
+Work hours: Horário de trabalho
+work-hours-help: Especifica as horas apresentadas para marcação de eventos.
+Colors: Cores
+colors-help: Todas as cores devem ser especificadas da forma "#RRGGBB" hexadecimal onde "RR" é o valor hexadecimal para o encarnado, "GG" é o valor hexadecimal para o verde, e "BB" o valor hexadecimal para o azul.
