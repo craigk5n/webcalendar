@@ -1,4 +1,6 @@
 Version 0.9.40dev (?? ??? 2002)
+  - Updated FAQ.html with simpler instructions for configuring public access
+    and http-based authentication.
   - Fixed bug: in day.php, events displayed at hour_arr[N] instead of
     the actual event name.
   - Updated Dutch translation

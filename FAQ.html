@@ -150,24 +150,27 @@ pages first.
 
    <B>For HTTP-based auth:</B>
    This is more complicated and will depend on what web server you are using.
-   Below are instructions for Apache.  You will need to setup a directory
+   Below are instructions for Apache.  Use the following in your
+   <TT>.htaccess</TT> file in your WebCalendar directory.
    alias to the WebCalendar installation for public access and one for
    restricted access (requires login).  In Apache's conf directory, edit
    <TT>httpd.conf</TT> and add the following:
 
-<PRE>Alias /publiccalendar	"/opt/calendar"
-Alias /admincalendar		"/opt/calandar"
+<PRE>
+   AuthUserFile "users.txt"
+   AuthName "WebCalendar"
+   AuthType  "Basic"
+   &lt;Limit GET&gt;
+   Satisfy any
+   &lt;/Limit&gt;
+   &lt;Files login.php&gt;
+   &lt;Limit GET&gt;
+   require valid-user
+   Satisfy all
+   &lt;/Limit&gt;
+   &lt;/Files&gt;</PRE>
 
-&lt;Location /admincalendar&gt;</A>
-  AuthName      "WebCalendar"
-  AuthType      "Basic"
-  AuthUserFile  "users.txt"
-&lt;/Location&gt;</PRE>
-
-   You should be able to add this just about anywhere in <TT>httpd.conf</TT>.
-
-   This assumes you have installed WebCalendar into the <TT>/opt/calendar</TT>
-   directory.  The file <TT>users.txt</TT> is managed by Apache's htpasswd
+   The file <TT>users.txt</TT> is managed by Apache's htpasswd
    program and is simply a listing of users and encrypted passwords.
    You should place this is in Apache's server root directory and NOT
    in the WebCalendar directory.  To create <TT>users.txt</TT>, you would do
@@ -179,10 +182,6 @@ Alias /admincalendar		"/opt/calandar"
    the Apache installation instructions for more on using htpasswd.
    <P>
 
-   It's important that you name your directories for public and
-   private access so that one is not a subdirectory of the other.
-
-   <P>
    Also, don't forget to go to the WebCalendar "System Settings" page
    and enable "Public Access".
 </BLOCKQUOTE>
