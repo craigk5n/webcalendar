@@ -13,7 +13,7 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
 // editing the settings.php file instead.)
 /////////////////////////////////////////////////////////////////
 
-$PROGRAM_VERSION = "v0.9.47/CVS+dev";
+$PROGRAM_VERSION = "v0.9.46/CVS+dev";
 $PROGRAM_DATE = "?? ??? 2004";
 $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
 $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
@@ -163,6 +163,7 @@ $browser_languages = array (
   "pl" => "Polish",
   "pt" =>"Portuguese",
   "pt-br" => "Portuguese_BR", // Portuguese/Brazil
+  "ro" =>"Romanian",
   "ru" =>"Russian",
   "es" =>"Spanish",
   "sv" =>"Swedish",
@@ -197,6 +198,7 @@ $browser_languages = array (
 // translate("Polish")
 // translate("Portuguese")
 // translate("Portuguese/Brazil")
+// translate("Romanian")
 // translate("Russian")
 // translate("Spanish")
 // translate("Swedish")
