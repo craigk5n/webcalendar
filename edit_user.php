@@ -61,11 +61,11 @@ if ( empty ( $user ) ) {
     }
 ?></td></tr>
 <tr><td style="font-weight:bold;"><?php etranslate("First Name")?>:</td>
-  <td><input name="ufirstname" size="20" value="<?php echo htmlspecialchars ( $ufirstname );?>" /></td></tr>
+  <td><input type="text" name="ufirstname" size="20" value="<?php echo htmlspecialchars ( $ufirstname );?>" /></td></tr>
 <tr><td style="font-weight:bold;"><?php etranslate("Last Name")?>:</td>
-  <td><input name="ulastname" size="20" value="<?php echo htmlspecialchars ( $ulastname );?>" /></td></tr>
+  <td><input type="text" name="ulastname" size="20" value="<?php echo htmlspecialchars ( $ulastname );?>" /></td></tr>
 <tr><td style="font-weight:bold;"><?php etranslate("E-mail address")?>:</td>
-  <td><input name="uemail" size="20" value="<?php echo htmlspecialchars ( $uemail );?>" /></td></tr>
+  <td><input type="text" name="uemail" size="20" value="<?php echo htmlspecialchars ( $uemail );?>" /></td></tr>
 <?php if ( empty ( $user ) && ! $use_http_auth && $user_can_update_password ) { ?>
 <tr><td style="font-weight:bold;"><?php etranslate("Password")?>:</td>
   <td><input name="upassword1" size="15" value="" type="password" /></td></tr>

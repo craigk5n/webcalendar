@@ -48,7 +48,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
     $catowner = $category_owners[$id];
   }
   ?>
-  <?php etranslate("Category Name")?>: <input name="catname" size="20" value="<?php echo htmlspecialchars ( $catname ); ?>" />
+  <?php etranslate("Category Name")?>: <input type="text" name="catname" size="20" value="<?php echo htmlspecialchars ( $catname ); ?>" />
   <br />
   <?php if ( $is_admin && empty ( $id ) ) { ?>
     <?php etranslate("Global")?>:
