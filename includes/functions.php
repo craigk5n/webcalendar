@@ -1883,7 +1883,7 @@ function print_date_entries ( $date, $user, $ssi ) {
     if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" &&
       date ( "w", $dateu ) == $GLOBALS["WEEK_START"] ) {
       echo "&nbsp;<a title=\"" .
-        translate("Week") . " " . week_number ( $dateu ) . "\" href=\"week.php?date=$date";
+        translate("Week") . "&nbsp;" . week_number ( $dateu ) . "\" href=\"week.php?date=$date";
       if ( strcmp ( $user, $GLOBALS["login"] ) )
         echo "&amp;user=$user";
        echo "\" class=\"weeknumber\">";
@@ -3290,11 +3290,12 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   if ( $day_end <= $day_start ) $day_end = $day_start + 60; //avoid exceptions
 
   if ($time >= 0) {
-    $ev_start=$time/10000 * 60 + (($time/100)%100);
-    $ev_start = round(100 * (($ev_start - $day_start) / ($day_end - $day_start)));
-  } else {
+	$bar_units= 100/(($day_end - $day_start)/60) ; // Percentage each hour occupies
+	$ev_start = round((floor(($time/10000) - ($day_start/60)) + (($time/100)%100)/60) * $bar_units);
+  }else{
     $ev_start= 0;
   }
+  if ($ev_start < 0) $ev_start = 0;
   if ($duration > 0) {
     $ev_duration = round(100 * $duration / ($day_end - $day_start)) ;
     if ($ev_start + $ev_duration > 100 ) {
@@ -3313,15 +3314,15 @@ function print_entry_timebar ( $id, $date, $time, $duration,
    elseif ($ev_padding > 20) 	{ $pos = 2; }
    else				{ $pos = 0; }
  
-  echo "\n<!-- ENTRY BAR -->\n<table class=\"entrycont\">\n";
+  echo "\n<!-- ENTRY BAR -->\n<table class=\"entrycont\" cellpadding=\"0\" cellspacing=\"0\">\n";
    echo "<tr>\n";
-   echo "<td style=\"text-align:right; width:$ev_start%;\">";
+   echo ($ev_start > 0 ?  "<td style=\"text-align:right;  width:$ev_start%;\">" : "" );
    if ( $pos > 0 ) {
-     echo "&nbsp;</td>\n";
+     echo ($ev_start > 0 ?  "&nbsp;</td>\n": "" ) ;
     echo "<td style=\"width:$ev_duration%;\">\n<table class=\"entrybar\">\n<tr>\n<td class=\"entry\">";
      if ( $pos > 1 ) {
-       echo "&nbsp;</td>\n</tr>\n</table></td>\n";
-       echo "<td style=\"text-align:left; width:$ev_padding%;\">";
+       echo ($ev_padding > 0 ?  "&nbsp;</td>\n": "" ) . "</tr>\n</table></td>\n";
+       echo ($ev_padding > 0 ?  "<td style=\"text-align:left; width:$ev_padding%;\">" : "");
     }
   };
 
@@ -3393,10 +3394,10 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   echo "</td>\n";
   if ( $pos < 2 ) {
     if ( $pos < 1 ) {
-      echo "<td style=\"width:$ev_duration%;\"><table style=\"width:100%; border-width:0px; background-color:#000000;\" cellpadding=\"0\" cellspacing=\"1\">\n<tr>\n<td style=\"text-align:center; background-color:#F5DEB3;\">&nbsp;</td>\n";
+      echo "<td style=\"width:n%;\"><table  class=\"entrybar\">\n<tr>\n<td class=\"entry\">&nbsp;</td>\n";
     }
     echo "</tr>\n</table></td>\n";
-    echo "<td style=\"text-align:left; width:$ev_padding%;\">&nbsp;</td>\n";
+    echo ($ev_padding > 0 ? "<td style=\"text-align:left; width:$ev_padding%;\">&nbsp;</td>\n" : "" );
   }
   echo "</tr>\n</table>\n";
 	if ( $login != $user && $access == 'R' && strlen ( $user ) )
