@@ -1,4 +1,4 @@
-Version 1.0RC2 (?? ??? ??)
+Version 1.0RC2 (09 Feb 2005)
   - Fixed the following bugs reports on SourceForge:
       1116008: Got "invalid user" error when clicking on '+' icon
                to add new event
@@ -12,6 +12,8 @@ Version 1.0RC2 (?? ??? ??)
     + Many code changes were made to prevent the "undefined variable"
       warning that users may get if they have the PHP error_reporting
       setting enabled.
+    + Documentation updated to System Administrator Guide including
+      new instructions for setting up reminders on Windows.
 
 ---------------------------------------------------------------------------
 
