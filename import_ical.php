@@ -317,7 +317,7 @@ function format_ical($event) {
       $fevent['Repeat']['Exceptions'] = array();
       $EX = explode(",", $event['exdate']);
       foreach ( $EX as $exdate ){
-        $fevent['Repeat']['Exceptions'][] = vcaldate_to_timestamp($exdate);
+        $fevent['Repeat']['Exceptions'][] = icaldate_to_timestamp($exdate);
       }
     }
   } // end if rrule
