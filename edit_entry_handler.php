@@ -307,8 +307,10 @@ if ( empty ( $error ) ) {
             translate("The subject was") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
+            ( ( empty ( $hour ) && empty ( $minute ) ) ? "" :
             translate("Time") . ": " .
-              display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) . "\n\n\n";
+              display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) ) .
+            "\n\n\n";
           // add URL to event, if we can figure it out
           if ( ! empty ( $server_url ) ) {
             $url = $server_url .  "view_entry.php?id=" .  $id;

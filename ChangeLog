@@ -1,4 +1,6 @@
 Version 0.9.39dev0724 (24 Jul 2002)
+  - Fixed bug 587909: Don't display 12pm for events with no time in
+    notifications.
   - Fixed bug 585939: Don't allow empty view names or group names.
   - Fixed bug: Some users encounter an error when logging in because
     the old session cookie (that contained no path info) was not
