@@ -133,8 +133,10 @@ if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' &&
 
 <?php
   for ( $i = 0; $i < count ( $names ); $i++ ) {
-    if ( $i % 0 == 1 )
-      echo "<tr>\n";
+  if ( $i % $COLUMNS == 0 )
+    echo "<tr>\n";
+//  if ( $i % 0 == 1 )
+//      echo "<tr>\n";
     echo "<td class=\"admincell\">";
     if ( ! empty ( $links[$i] ) )
       echo "<a href=\"$links[$i]\" class=\"admincell\">";
@@ -148,7 +150,6 @@ if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' &&
   if ( $i % $COLUMNS != 0 )
     echo "</tr>\n";
 ?>
-
 </table>
 
 <?php print_trailer(); ?>
