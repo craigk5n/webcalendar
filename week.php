@@ -61,13 +61,11 @@ for ( $i = 0; $i < 7; $i++ ) {
 ?>
 
 <div class="title">
-<span class="date">
-<?php
+<span class="date"><?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), "", false );
-?>
-</span>
+?></span>
 <?php
 if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
   echo "<br />\n<span class=\"weeknumber\">(" .
@@ -75,9 +73,9 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 }
 ?>
 <?php if ( empty ( $friendly ) || ! $friendly ) { ?>
-<a title="<?php etranslate("Previous")?>" href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" class="prevnext" style="float:left;" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate("Previous")?>" class="prev" href="week.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
 
-<a href="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" class="prevnext" style="float:right;" alt="<?php etranslate("Next")?>" /></a>
+<a title="<?php etranslate("Next")?>" class="next" href="week.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 <span class="user"><?php
   if ( $single_user == "N" ) {
@@ -90,11 +88,10 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
 ?></span>
 <?php
   if ( $categories_enabled == "Y" ) {
-    echo "<br />\n<br />\n";
+    echo "<br /><br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id, $friendly );
   }
-?>
-</div>
+?></div>
 <br />
 
 <table cellspacing="0" cellpadding="0">
@@ -318,7 +315,6 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 
 ?>
 </table>
-
 <br />
 
 <?php if ( ! empty ( $eventinfo ) && empty ( $friendly ) ) echo $eventinfo; ?>
@@ -327,7 +323,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
-<br /><br />
+<br />
 <a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="week.php?<?php
   echo $u_url;
   if ( $thisyear ) {
@@ -340,6 +336,5 @@ onmouseover="window.status = '<?php etranslate("Generate printer-friendly versio
 <?php }
 print_trailer ();
 ?>
-
 </body>
 </html>

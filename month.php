@@ -149,7 +149,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 	display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 
-<br /><br />
+<br />
 <a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="month.php?<?php
 			if ( $thisyear ) {
 				echo "year=$thisyear&amp;month=$thismonth&amp;";

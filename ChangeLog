@@ -1,4 +1,7 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Added title attributes to time cells in view_d.php
+  - Created styles for view_d.php
+  - Fixed random border-rendering issues in week.php
   - Fixed Bug 1016135: Time is listed in email for untimed events
   - Fixed Bug 1026762: import handler --circular code
   - Fixed Bug 1020450: upcomming rev1.3 doesn't display layers

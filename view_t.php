@@ -86,13 +86,9 @@ for ( $i = 0; $i < $val_boucle; $i++ ) {
 
 <div style="border-width:0px; width:99%;">
 <?php if ( ! $friendly ) { ?>
-<div style="float:left;">
-<br /><a title="<?php etranslate("Previous")?>" href="view_t.php?timeb=<?php echo $timeb?>&id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
-</div>
+<a title="<?php etranslate("Previous")?>" class="prev" href="view_t.php?timeb=<?php echo $timeb?>&id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 
-<div style="float:right;">
-<br /><a title="<?php etranslate("Next")?>" href="view_t.php?timeb=<?php echo $timeb?>&id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
-</div>
+<a title="<?php etranslate("Next")?>" class="next" href="view_t.php?timeb=<?php echo $timeb?>&id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <?php } ?>
 <div class="title">
 <span class="date"><?php
@@ -100,7 +96,9 @@ for ( $i = 0; $i < $val_boucle; $i++ ) {
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), false );
 ?></span><br />
-<span class="viewname"><?php echo $view_name ?></span>
+<span class="viewname"><?php 
+	echo $view_name 
+?></span>
 </div>
 </div><br /><br />
 
@@ -137,12 +135,7 @@ $repeated_events = $re_save;
 
 ?>
 
-<?php if ( empty ( $friendly ) || ! $friendly ) { ?>
 <table class="viewt" cellspacing="0" cellpadding="0">
-<?php } else { ?>
-<table class="viewt" cellspacing="0" cellpadding="0">
-<?php } ?>
-
 <?php
 for ( $date = $wkstart, $h = 0;
   date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
@@ -195,11 +188,7 @@ for ( $date = $wkstart, $h = 0;
   echo "</tr>\n";
 }
 
-//if ( empty ( $friendly ) || ! $friendly )
-  echo "</table>\n<br />\n<br />\n";
-//else
-//  echo "</table>\n<br />\n<br />\n";
-
+  echo "</table>\n<br />\n";
 
 $user = ""; // reset
 
