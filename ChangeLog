@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Patch 1002156: improved html for event popups
   - Added javascript to admin page to remove options that are not relavant
     (such as all the options for public access when public access is disabled)
   - Added login icon to login page
