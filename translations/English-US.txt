@@ -590,6 +590,7 @@ Email all participants: Email all participants
 Show activity log: Show activity log
 Hide activity log: Hide activity log
 Export this entry to: Export this entry to
+Copy entry: Copy entry
 
 
 ###############################################
