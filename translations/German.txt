@@ -3,11 +3,13 @@
 # There cannot be a ':' in the English text.
 #
 # Translator: Ralph Boßler <vertrieb@sylphen.com>,
-#	Peter Huetmannsberger <huetmann@site38.ping.at>
+# Peter Huetmannsberger <huetmann@site38.ping.at>
 # Last update: 1 Dec 2004 by Markus Egartner <edv@kh-hallein.at>
-# Last update: 20 Jan 2004 by Markus Egartner <edv@kh-hallein.at>
-# Last update: 25 Jan 2004 by Markus Egartner <edv@kh-hallein.at>
-# Translation last updated on 01-25-2005
+# Last update: 20 Jan 2005 by Markus Egartner <edv@kh-hallein.at>
+# Last update: 25 Jan 2005 by Markus Egartner <edv@kh-hallein.at>
+# Last update: 22 Feb 2005 by Markus Egartner <edv@kh-hallein.at>
+# Last update: 07 Mär 2005 by Markus Egartner <edv@kh-hallein.at>
+# Translation last updated on 03-07-2005
 
 
 ###############################################
@@ -164,6 +166,8 @@ Month (side by side): Monat (seitenweise) (Teilnehmer horizontal)
 Month (on same calendar): Monat (am gleichen Kalender)
 preview: Vorschau (Ansicht)
 Users: Benutzer
+Selected: Ausgewählte(r)
+All: alle
 Select: Auswählen 
 Add: Hinzufügen
 
@@ -256,10 +260,10 @@ Invalid login: Benutzername oder Passwort falsch
 You must enter a login and password: Sie müssen einen Benutzernamen und ein Kennwort eingeben.
 Username: Benutzername
 Password: Kennwort
-Save login via cookies so I don't have to login next time: Login in Cookie abspeichern, um Anmeldung beim n&auml;chsten Mal automatisch zu &uuml;berspringen.
+Save login via cookies so I don't have to login next time: Login in Cookie abspeichern, um Anmeldung beim nächsten Mal automatisch zu überspringen.
 Login: Anmelden
-Access public calendar: Zugang &ouml;ffentlicher Kalender
-cookies-note: <B>Hinweis:</B> F&uuml;r diese Anwendung m&uuml;ssen Cookies im Browser akzeptiert werden.
+Access public calendar: Zugang öffentlicher Kalender
+cookies-note: <b>Hinweis:</b> Für diese Anwendung müssen Cookies im Browser akzeptiert werden.
 
 
 ###############################################
@@ -393,7 +397,7 @@ Display description in printer day view: Beschreibungsanzeige von Terminen in de
 date-format-help: Legt ein spezielles Datumsformat fest.
 Date format: Datumsformat
 December: Dezember
-time-format-help: Gibt an welches Zeit-Format benutzt wird: <BR><I>12-stündiges:</I> Zeigt Zeiten als 3am, 8:30pm, etc.  <BR><I>24-stündiges:</I> Zeigt Zeiten als 3.00, 20.30, etc.
+time-format-help: Gibt an welches Zeit-Format benutzt wird: <br /><i>12-stündiges:<i> Zeigt Zeiten als 3am, 8:30pm, etc.  <br /><i>24-stündiges:<i> Zeigt Zeiten als 3.00, 20.30, etc.
 Time format: Zeit-Format
 12 hour: 12-stündig
 24 hour: 24-stündig
@@ -405,7 +409,7 @@ auto-refresh-time-help: Falls die Kalenderaktualisierung aktiviert ist, kann hie
 Auto-refresh time: Aktualisierungsintervall
 require-approvals-help: Wenn diese Option ausgewählt ist, muß der Benutzer den Termin bestätigen um Ihn auf seinen Kalender anzeigen zu lassen (vorausgesetzt "unbestätigte Termine anzeigen" aktiviert ist).  Anmerkung wenn diese Option auf "Nein" gesetzt ist, wirkt sich dies nicht auf etwaige aktiverte "öffentliche Kalender" aus.
 Require event approvals: Termine bestätigen
-display-unapproved-help: Gibt an, ob unbestätigte Termine in Ihrem Kalender angezeigt werden sollen.<BR> Wenn "Ja", werden unbestätigte Termine in einer anderen Farbe angezeigt.<BR> Wenn "Nein", müssen unbestätigte Termine erst bestätigt werden, um angezeigt zu werden. 
+display-unapproved-help: Gibt an, ob unbestätigte Termine in Ihrem Kalender angezeigt werden sollen.<br /> Wenn "Ja", werden unbestätigte Termine in einer anderen Farbe angezeigt.<br /> Wenn "Nein", müssen unbestätigte Termine erst bestätigt werden, um angezeigt zu werden. 
 Display unapproved: Unbestätigte Termine anzeigen
 display-week-number-help: Gibt an, ob die Wochennummer (1-52) in der Monats- und Wochenansicht angezeigt werden soll.
 Display week number: Wochennummer anzeigen
@@ -538,7 +542,6 @@ Events: Termine
 ###############################################
 # Page: usersel.php
 #
-All: alle
 Reset: Zurücksetzen
 Remove: Entfernen
 Ok: Ok
@@ -588,7 +591,7 @@ Title: WebCalendar
 Help Index: Hilfe-Index
 Adding/Editing Calendar Entries: Hinzufügen/Ändern von Kalender-Einträgen
 Report Bug: Fehlermeldung
-Report Bug local: <B><U>Fehlerbericht an den Administrator senden</U></B> (lokal)
+Report Bug local: <b><u>Fehlerbericht an den Administrator senden</u></b> (lokal)
 
 
 ###############################################
@@ -606,19 +609,19 @@ brief-description-help: Kurzbeschreibung (ca. 20 Zeichen) des Termines. Dies ers
 Full Description: ausführliche Beschreibung
 full-description-help: Komplette Beschreibung des Termines. Diese Information sieht der Benutzer beim Termin.
 date-help: Gibt das Datum des Termines an.
-time-help: Gibt die Uhrzeit des Termines an. <BR><I>Kann leer gelassen werden.</I>
-duration-help: Gibt die Dauer des Termin in Minuten an. <BR><I>Kann leer gelassen werden.</I>
-end-time-help: Definiert die Zeit des Termins als <B>Endzeitpunkt</B>.
+time-help: Gibt die Uhrzeit des Termines an. <br /><i>Kann leer gelassen werden.<i>
+duration-help: Gibt die Dauer des Termin in Minuten an. <br /><i>Kann leer gelassen werden.<i>
+end-time-help: Definiert die Zeit des Termins als <b>Endzeitpunkt</b>.
 priority-help: Gibt die Priorität des Termines an. Termine mit hoher Priorität werden fett angezeigt.
-access-help: Gibt den Zugriff auf den Termin an.<BR> <I>Öffentlich</I>: Jeder kann alle Details des Termines sehen.<BR><I>Geheim</I>: Andere können sehen, dass ein Termin existiert, können jedoch keine Details ansehen.
+access-help: Gibt den Zugriff auf den Termin an.<br /> <i>Öffentlich<i>: Jeder kann alle Details des Termines sehen.<br /><i>Geheim<i>: Andere können sehen, dass ein Termin existiert, können jedoch keine Details ansehen.
 participants-help: Gibt die Benutzer des Termines an.
-repeat-type-help: Wählen Sie wie oft ein Termin wiederholt werden soll.<I>Monatlich (tagesorientiert)</I> wiederholt einen Termin jeden 1. Montag des Monats, jeden 3. Donnerstag des Monats, etc.  
+repeat-type-help: Wählen Sie wie oft ein Termin wiederholt werden soll.<i>Monatlich (tagesorientiert)<i> wiederholt einen Termin jeden 1. Montag des Monats, jeden 3. Donnerstag des Monats, etc.  
 Repeat End Date: Ende der wiederkehrenden Termine
 repeat-end-date-help: Gibt an bis zu welchem Datum der Termin wiederholt werden soll.
 Repeat Day: Tag der Wiederholung
-repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden soll. Dies gilt nur wenn <I>Art der Wiederholung</I> auf <I>Wöchentlich</I> gesetzt ist.
+repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden soll. Dies gilt nur wenn <i>Art der Wiederholung<i> auf <i>Wöchentlich<i> gesetzt ist.
 Frequency: Häufigkeit
-repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist 1 das der Termin immer wiederholt werden soll. Wenn sie 2 auswählen wird der Termin jede 2. Woche wiederholt (wenn <I>Art der Wiederholung</I> auf <I>Wöchentlich</I> gesetzt ist), jeden 2. Monat (wenn <I>Art der Wiederholung</I> auf <I>Monatlich</I> gesetzt ist), etc.
+repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist 1 das der Termin immer wiederholt werden soll. Wenn sie 2 auswählen wird der Termin jede 2. Woche wiederholt (wenn <i>Art der Wiederholung<i> auf <i>Wöchentlich<i> gesetzt ist), jeden 2. Monat (wenn <i>Art der Wiederholung<i> auf <i>Monatlich<i> gesetzt ist), etc.
 
 
 ###############################################
@@ -730,6 +733,12 @@ default-category-help: Legt eine Standardkategorie für einen neuen Termin fest.
 
 
 ###############################################
+# Page: view_d.php
+#
+No users for this view: Keine gültigen Benutzer für diese Ansicht
+
+
+###############################################
 # Page: export_handler.php
 #
 export format not defined or incorrect: exportiertes Format nicht definiert oder ungültig
@@ -826,6 +835,7 @@ Scheduling: Termin
 Repeat: Wiederholung
 category-help: Definiert die Kategorie eines Termines.
 Timed event: Termin MIT Zeitangabe
+Availability: Verfügbarkeit
 external-participants-help: Externe Benutzer (optional mit einer "jsmith@xxx.com" Emailadresse) pro Zeile.
 External Participants: Externe Benutzer
 Daily: Täglich
@@ -846,10 +856,12 @@ You are not authorized to edit this entry: Sie haben keine Berechtigung diesen E
 ###############################################
 # Page: purge.php
 #
+Preview: Vorschau
 Purging events for: Lösche Termine für
 Finished: Abgeschlossen
+Check box to delete <b>ALL</b> events for a user: Aktivieren zum Löschen<br /><b>ALLER</b> Termine für einen Teilnehmer
 Delete all events before: Lösche alle Termine vor dem
-Check box to delete <b>ALL</b> events for a user: Aktivieren zum Löschen<BR><b>ALLER</b> Termine für einen Teilnehmer
+Preview delete: Keine Vorschau der zu löschenden Termine
 Are you sure you want to delete events for: Wollen Sie wirklich die Termine löschen für
 Records deleted from: Einträge werden gelöscht für
 
@@ -889,6 +901,9 @@ Sep: Sep
 Oct: Okt
 Nov: Nov
 Dec: Dez
+All Attendees: Alle Teilnehmer
+Busy: Beschäftigt
+Tentative: Vorläufig
 
 
 ###############################################
@@ -969,6 +984,12 @@ Color format should be '#RRGGBB': Farbenformat sollte '#RRGGBB' sein
 
 
 ###############################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Datum und Uhrzeit für diesen Eintrag ändern?
+
+
+###############################################
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Ungültige Farbe
@@ -980,6 +1001,7 @@ Invalid color: Ungültige Farbe
 You have not entered a Brief Description: Sie haben keine Kurzbeschreibung eingegeben.
 You have not entered a valid time of day: Sie haben keine gültige Zeit für diesen Tag eingetragen
 The time you have entered begins before your preferred work hours.  Is this correct?: Die eingetragene Zeit beginnt vor der normalen Arbeitszeit. Ist das korrekt?
+Please add a participant: Bitte einen Teilnehmer hinzufügen
 
 
 ###############################################
