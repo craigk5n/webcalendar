@@ -134,6 +134,7 @@ $languages = array (
   "Danish" => "Danish",
   "Dutch" =>"Dutch",
   "Estonian" => "Estonian",
+  "Finnish" =>"Finnish",
   "French" =>"French",
   "Galician" => "Galician",
   "German" =>"German",
@@ -176,6 +177,7 @@ $browser_languages = array (
   "da" => "Danish",
   "nl" =>"Dutch",
   "ee" => "Estonian",
+  "fi" =>"Finnish",
   "fr" =>"French",
   "fr-ch" =>"French", // French/Swiss
   "fr-ca" =>"French", // French/Canada
@@ -214,6 +216,7 @@ $browser_languages = array (
 // translate("Danish")
 // translate("Dutch")
 // translate("Estonian")
+// translate("Finnish")
 // translate("French")
 // translate("Galician")
 // translate("German")
