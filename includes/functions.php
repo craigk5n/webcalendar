@@ -1096,7 +1096,8 @@ function date_selection_html ( $prefix, $date ) {
     $num_years = $thisyear - date ( "Y" ) + 2;
   $ret .= "<select name=\"" . $prefix . "day\">\n";
   for ( $i = 1; $i <= 31; $i++ )
-    $ret .= "<option" . ( $i == $thisday ? " selected=\"selected\"" : "" ) . ">$i</option>\n";
+    $ret .= "<option value=\"$i\"" .
+      ( $i == $thisday ? " selected=\"selected\"" : "" ) . ">$i</option>\n";
   $ret .= "</select>\n<select name=\"" . $prefix . "month\">\n";
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
