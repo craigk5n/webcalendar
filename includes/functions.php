@@ -2302,7 +2302,16 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   else
     $hour_arr[$ind] .= htmlspecialchars ( $name );
   if ( $pri == 3 ) $hour_arr[$ind] .= "</B>";
-  $hour_arr[$ind] .= "</A><BR>";
+
+  if (!($hide_icons)) {
+    $hour_arr[$ind] .= "</A>";
+  } else if ( $GLOBALS["DISPLAY_DESC_PRINT_DAY"] == "Y" ) {
+    $hour_arr[$ind] .= "<BR>";
+    $hour_arr[$ind] .= "<B>Description:</B> ";
+    $hour_arr[$ind] .= htmlspecialchars ( $description );
+  }
+
+  $hour_arr[$ind] .= "<BR>";
 }
 
 //

@@ -14,6 +14,10 @@ print_header('', '', '', true);
   <TD><?php etranslate("fonts-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Preferred view")?>:</B></TD>
   <TD><?php etranslate("preferred-view-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Display weekends in week view")?>:</B></TD>
+  <TD><?php etranslate("display-weekends-help")?></TD></TR>
+<TR><TD VALIGN="top"><B><?php etranslate("Display description in printer day view")?>:</B></TD>
+  <TD><?php etranslate("display-desc-print-day-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Date format")?>:</B></TD>
   <TD><?php etranslate("date-format-help")?></TD></TR>
 <TR><TD VALIGN="top"><B><?php etranslate("Time format")?>:</B></TD>

@@ -126,6 +126,9 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("display-weekends-help");?>"><?php etranslate("Display weekends in week view")?>:</B></TD>
   <TD><INPUT TYPE="radio" NAME="pref_DISPLAY_WEEKENDS" VALUE="Y" <?php if ( $prefarray["DISPLAY_WEEKENDS"] != "N" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="pref_DISPLAY_WEEKENDS" VALUE="N" <?php if ( $prefarray["DISPLAY_WEEKENDS"] == "N" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
 
+<TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("display-desc-print-day-help");?>"><?php etranslate("Display description in printer day view")?>:</B></TD>
+  <TD><INPUT TYPE="radio" NAME="pref_DISPLAY_DESC_PRINT_DAY" VALUE="Y" <?php if ( $prefarray["DISPLAY_DESC_PRINT_DAY"] == "Y" ) echo "CHECKED";?>> <?php etranslate("Yes")?> <INPUT TYPE="radio" NAME="pref_DISPLAY_DESC_PRINT_DAY" VALUE="N" <?php if ( $prefarray["DISPLAY_DESC_PRINT_DAY"] != "Y" ) echo "CHECKED";?>> <?php etranslate("No")?></TD></TR>
+
 <TR><TD VALIGN="top"><B><?php etranslate("Date format")?>:</B></TD>
   <TD>
   <SELECT NAME="pref_DATE_FORMAT">
