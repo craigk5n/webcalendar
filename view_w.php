@@ -116,7 +116,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
   }
 ?>
 
-<table rules="all" cellspacing="0" cellpadding="2">
+<table cellspacing="0" cellpadding="1">
 <tr><th class="empty">&nbsp;</th>
 
 <?php
