@@ -14,6 +14,10 @@ load_user_layers ();
 
 include "includes/translate.inc";
 
+// make sure this is not a read-only calendar
+if ( $readonly )
+  $can_edit = false;
+
 if ( $id > 0 ) {
   // first see who has access to edit this entry
   if ( $is_admin ) {
@@ -93,7 +97,8 @@ if ( $id > 0 ) {
   }
 } else {
   $time = -1;
-  $can_edit = true;
+  if ( ! $readonly )
+    $can_edit = true;
 }
 if ( $year )
   $thisyear = $year;
