@@ -154,10 +154,10 @@
   }
 ?>
 <BR>
-<B><?php etranslate("Admin")?>:</B>
-<A CLASS="navlinks" HREF="pref.php"><?php etranslate("Preferences")?></A>
 <?php
   if ( ! $single_user && ( ! $readonly || $is_admin ) ) {
+    echo "<B>" . translate("Admin") . ":</B>\n";
+    echo "<A CLASS=\"navlinks\" HREF=\"pref.php\">" . translate("Preferences") . "</A>\n";
 
     if ( $allow_view_other || $is_admin ) {
       echo ", <A CLASS=\"navlinks\" HREF=\"layers.php\">" .

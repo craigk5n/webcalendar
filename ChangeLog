@@ -1,4 +1,6 @@
 Version 0.9.34dev (?? ??? ??)
+  - Patch 469755: Do not allow users to change preferences in a read-only
+    setup
   - Fixed bug: layers would not work until a user turns them off and then
     back on.
   - Display users in a table on page to select other user's calendar for
