@@ -686,6 +686,7 @@ function site_extras_for_popup ( $id )
 
   include_once 'includes/site_extras.php';
 
+  $printed_extra = false;
   $extras = get_site_extra_fields ( $id );
   for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     $extra_name = $site_extras[$i][0];
@@ -693,6 +694,10 @@ function site_extras_for_popup ( $id )
     $extra_arg1 = $site_extras[$i][3];
     $extra_arg2 = $site_extras[$i][4];
     if ( ! empty ( $extras[$extra_name]['cal_name'] ) ) {
+      if ( $printed_extra )
+        $ret .= "<br />";
+      else
+        $printed_extra = true;
       $ret .= "<span style=\"font-weight:bold;\">" .  translate ( $site_extras[$i][1] ) . ":</span> ";
       if ( $extra_type == $EXTRA_DATE ) {
         if ( $extras[$extra_name]['cal_date'] > 0 )
