@@ -139,7 +139,7 @@ if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
 ?>
 
 </head>
-<body style="background-color:<?php echo $BGCOLOR;?>;" onload="myOnLoad();" class="defaulttext">
+<body onload="myOnLoad();">
 
 <?php
 // Print custom header (since we do not call print_header function)
@@ -179,7 +179,7 @@ if ( ! empty ( $return_path ) )
 	</td></tr>
 	<tr><td style="font-weight:bold;">
 		<label for="password"><?php etranslate("Password")?>:</label></td><td>
-		<input name="password" id="password"type="password" size="10" tabindex="2" />
+		<input name="password" id="password" type="password" size="10" tabindex="2" />
 	</td></tr>
 	<tr><td colspan="2">
 		<input type="checkbox" name="remember" id="remember" value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) echo "checked=\"checked\""; ?> /><label for="remember">&nbsp;<?php etranslate("Save login via cookies so I don't have to login next time")?></label>
@@ -203,11 +203,11 @@ if ( $demo_mode == "Y" ) {
 ?>
 <br /><br /><br />
 <span style="font-size:13px;">
-<?php etranslate("cookies-note")?>
+<?php etranslate("cookies-note")?></span>
 <br />
 <hr /><br /><br />
 <a href="<?php echo $PROGRAM_URL ?>" class="aboutinfo"><?php echo $PROGRAM_NAME?></a>
-</span>
+
 <?php
 // Print custom trailer (since we do not call print_trailer function)
 if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
