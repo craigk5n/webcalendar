@@ -1,4 +1,4 @@
-Version 0.9.39dev0813 (13 Aug 2002)
+Version 0.9.39 (21 Aug 2002)
   - Fixed bug 597815: Fixed autoset of 'server_url' config setting to
     work when admin.php isn't the first page accessed.
   - Fixed bug 586525: Don't allow users to access views when view other

@@ -12,7 +12,7 @@
 //
 /////////////////////////////////////////////////////////////////
 
-$PROGRAM_NAME = "WebCalendar v0.9.38 (12 July 2002)";
+$PROGRAM_NAME = "WebCalendar v0.9.39 (21 Aug 2002)";
 $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
 
 // MySQL example
