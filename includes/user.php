@@ -31,7 +31,7 @@ function user_valid_login ( $login, $password ) {
   $login_error = "";
 
   $sql = "SELECT cal_login FROM webcal_user WHERE " .
-    "cal_login = '" . $login . "' AND cal_passwd = '" . $password . "'";
+    "cal_login = '" . $login . "' AND cal_passwd = '" . md5($password) . "'";
   $res = dbi_query ( $sql );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
@@ -175,7 +175,7 @@ function user_add_user ( $user, $password, $firstname, $lastname, $email,
   else
     $ulastname = "NULL";
   if ( strlen ( $password ) )
-    $upassword = "'" . $password . "'";
+    $upassword = "'" . md5($password) . "'";
   else
     $upassword = "NULL";
   if ( $admin != "Y" )
@@ -240,7 +240,7 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
 function user_update_user_password ( $user, $password ) {
   global $error;
 
-  $sql = "UPDATE webcal_user SET cal_passwd = '$password' " .
+  $sql = "UPDATE webcal_user SET cal_passwd = '".md5($password)."' " .
     "WHERE cal_login = '$user'";
   if ( ! dbi_query ( $sql ) ) {
     $error = translate ("Database error") . ": " . dbi_error ();

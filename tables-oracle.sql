@@ -1,7 +1,7 @@
 
 CREATE TABLE webcal_user (
   cal_login VARCHAR(25) NOT NULL,
-  cal_passwd VARCHAR(25),
+  cal_passwd VARCHAR(32),
   cal_lastname VARCHAR(25),
   cal_firstname VARCHAR(25),
   cal_is_admin CHAR(1) DEFAULT 'N',
