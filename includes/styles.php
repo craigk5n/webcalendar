@@ -54,6 +54,15 @@ body {
 	font-size: 12px;
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
+#edituser,
+#groupedit,
+#groupedithandler,
+#edituserhandler {
+	background-color: #f8f8ff;
+	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	font-size: 12px;
+}
 #tabs {
 	font-size: 1.2em;
 }
@@ -62,22 +71,21 @@ body {
 	padding: 0.5em;
 	border: 2px groove #C0C0C0;
 	width: 70%;
-	background-color: #4169E1;
+	background-color: #f8f8ff;
 }
 span.tabfor {
-	color: #DDDDDD;
-	padding: 0.15em 0.2em 0.2em 0.2em;
-	margin: 0 0.2em 0 0.8em;
-	border-top: 2px ridge #000000;
-	border-left: 2px ridge #000000;
-	border-right: 2px ridge #000000;
-	background-color: #4169E1;
+	padding: 0.2em 0.2em 0.07em 0.2em;
+	margin: 0px 0.2em 0px 0.5em;
+	border-top: 2px ridge #C0C0C0;
+	border-left: 2px ridge #C0C0C0;
+	border-right: 2px ridge #C0C0C0;
+	border-bottom: 2px solid #f8f8ff;
+	background-color: #f8f8ff;
 }
 span.tabbak {
-	padding: 0.15em 0.2em 0px 0.2em;
+	padding: 0.2em 0.2em 0px 0.2em;
 	margin: 0 0.2em 0 0.8em;
 	background-color: #DDDDDD;
-	color: #000000;
 }
 span.tabbak a {
 	text-decoration: none;
@@ -85,7 +93,7 @@ span.tabbak a {
 } 
 span.tabfor a {
 	text-decoration: none;
-	color: #DDDDDD;
+	color: #000000;
 }
 #tabscontent_public,
 #tabscontent_categories,
@@ -98,7 +106,9 @@ span.tabfor a {
 #tabscontent_participants,
 #tabscontent_sched,
 #tabscontent_pete,
-#tabscontent_export {
+#tabscontent_export,
+#useriframe,
+#grpiframe {
 	display: none;
 }
 <?php //week number in monthview & such 
@@ -588,34 +598,32 @@ table.glance {
 }
 #viewl .main,
 #month .main {
-	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 }
+#viewl .main td,
 #month .main td {
 	font-size: 12px;
 	width: 14%;
 	height: 75px;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
 	background-color: <?php echo $GLOBALS['CELLBG'];?>;
 	vertical-align: top;
 }
+#viewl .main td.weekend,
 #month .main td.weekend {
-	font-size: 12px;
-	width: 14%;
-	height: 75px;
-	vertical-align: top;
 	background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
+#viewl .main td.today,
 #month .main td.today {
-	font-size: 12px;
-	width: 14%;
-	height: 75px;
-	border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-	border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 	vertical-align: top;
 }
