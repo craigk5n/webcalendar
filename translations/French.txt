@@ -7,9 +7,10 @@
 # Update by : Luc Capronnier, Wilfrid Hubert 
 # Mise à jour : Mario Dragone <mario.dragone@reims.iufm.fr>
 # Update by : erational <http://www.erational.org> 
+# Mise à jour : Ivan Machetto
 # Title is what will appear in the title bar for pages
 #
-# Translation last updated on 03-10-2004
+# Translation last updated on 16-12-2004
 
 
 ###############################################
@@ -29,7 +30,7 @@ Your user preferences: Vos préférences utilisateur
 may be affecting the appearance of this page.: peuvent modifier l'apparence de cette page. 
 Click here: Cliquez ici
 to not use your user preferences when viewing this page: pour ne pas utiliser vos préférences utilisateur lors de l'affichage de cette page
-are being ignored while viewing this page.: sont ignorés lors de l'affichage de cette page
+are being ignored while viewing this page.: sont ignorés lors de l'affichage de cette page.
 to load your user preferences when viewing this page: pour charger vos préférences utilisateur lors de l'affichage de cette page
 Save: Sauvegarder
 Help: Aide
@@ -43,35 +44,23 @@ Language: Langue
 Your browser default language is: La langue utilisée par votre navigateur est
 fonts-help: Permet de définir une liste de polices pour l'affichage (par exemple "Arial, Helvetica").
 Fonts: Polices
-#
-# << MISSING >>
-# custom-script-help:
-# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
-#
-#
-# << MISSING >>
-# Custom script/stylesheet:
+custom-script-help: Autoriser l'utilisation de codes javascript personnalisés ou de feuilles de style qui seront insérés dans la section HTML "head" de chaque page.
+Custom script/stylesheet: Script/Feuille de style personnalisé
 Yes: Oui
 No: Non
-#
-# << MISSING >>
-# Edit:
+Edit: Editer
 #
 # << MISSING >>
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
-#
-# << MISSING >>
-# Custom header:
+Custom header: Entête personnalisé
 #
 # << MISSING >>
 # custom-trailer-help:
 # English text: Allows a custom HTML snippet to be included at the end of every page.
 #
-#
-# << MISSING >>
-# Custom trailer:
+Custom trailer: Bas de page personnalisé
 preferred-view-help: Spécifie la vue par défaut (par Jour, Semaine, Mois, ou Année).
 Preferred view: Vue préférée
 Day: Jour
@@ -85,17 +74,9 @@ Display weekends in week view: Afficher les week-ends dans la représentation de 
 # yearly-shows-events-help:
 # English text: On the yearly view, display days that contain events in a bold font.
 #
-#
-# << MISSING >>
-# Display days with events in bold in year view:
-#
-# << MISSING >>
-# display-desc-print-day-help:
-# English text: Include event descriptions in printer-friendly version of day view.
-#
-#
-# << MISSING >>
-# Display description in printer day view:
+Display days with events in bold in year view: Afficher les jours avec événements en gras dans la vue annuelle
+display-desc-print-day-help: Inclure les descriptions d'événements dans la version imprimable de la vue journalière.
+Display description in printer day view: Descriptions dans la version imprimable de la vue journalière.
 date-format-help: Spécifie le format d'affichage des dates.
 Date format: Format des dates
 December: décembre 
@@ -146,9 +127,7 @@ Disable Repeating field: Désactiver le champ de répétition
 # allow-html-description-help:
 # English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
 #
-#
-# << MISSING >>
-# Allow HTML in Description:
+Allow HTML in Description: Autoriser l'utilisation de code HTML dans les descriptions
 allow-view-other-help: Spécifie si un utilisateur peut voir l'agenda d'un autre utilisateur.
 Allow viewing other user's calendars: Autoriser la visualisation des agendas des autres personnes
 allow-public-access-help: Lorsqu'activé, l'agenda peut être utilisé comme un agenda public en lecture seule qui n'a pas besoin d'une connexion par les utilisateurs.
@@ -164,9 +143,7 @@ Public access new events require approval: Les nouveaux événements publiques doi
 # public-access-sees-participants-help:
 # English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
 #
-#
-# << MISSING >>
-# Public access can view participants:
+Public access can view participants: Les utilisateurs publiques peuvent voir les participants
 allow-view-add-help: L'icone '+' apparaitra dans les vues permettant aux utilisateurs d'ajouter rapidement des événements dans ceux d'autres utilisateurs
 Include add event link in views: Inclure le lien d'ajout d'événement dans les vues
 allow-external-users-help: Indique si un utilisateur extérieur à l'agenda peut être ajouté à un événement. Cela permet aux utilisateurs extérieurs à l'agenda de figurer comme participants.
@@ -226,13 +203,13 @@ Default user settings: Réglages par défaut de l'utilisateur
 email-event-reminders-help: Permet de définir si un couriel est envoyé ou non pour le rappel d'un événement. 
 Event reminders: Rappel pour un événement
 email-event-added: Notification par couriel lors de l'ajout d'un événement dans votre agenda.
-Events added to my calendar: Événement ajouté dans votre agenda
+Events added to my calendar: événement ajouté dans votre agenda
 email-event-updated: Notification par couriel lors de la modification d'un événement dans votre agenda.
-Events updated on my calendar: Événement modifié dans votre agenda
+Events updated on my calendar: événement modifié dans votre agenda
 email-event-deleted: Notification par couriel lors de la suppression d'un événement dans votre agenda.
-Events removed from my calendar: Événement supprimé dans votre agenda
+Events removed from my calendar: événement supprimé dans votre agenda
 email-event-rejected: Notification par couriel lors du rejet d'un événement par l'un des participants.
-Event rejected by participant: Événement rejeté par un participant
+Event rejected by participant: événement rejeté par un participant
 colors-help: Toutes les couleurs doivent être au format hexdécimal « #RRVVBB » ou « RR » est la valeur hexa pour le rouge, « VV » est la valeur hexa pour le vert, et « BB » est la valeur hexa pour le bleu.
 Colors: Couleurs
 Allow user to customize colors: Autoriser les utilisateurs à personnaliser leurs couleurs 
@@ -258,13 +235,13 @@ User: Utilisateur
 Calendar: Agenda
 Date: Date
 Time: Heure
-Event: Événement
+Event: événement
 Action: Action
-Event created: Événement créé
-Event approved: Événement approuvé
-Event rejected: Événement rejeté
-Event updated: Événement mis à jour
-Event deleted: Événement supprimé 
+Event created: événement créé
+Event approved: événement approuvé
+Event rejected: événement rejeté
+Event updated: événement mis à jour
+Event deleted: événement supprimé 
 Notification sent: Notification envoyée
 Reminder sent: Rappel envoyé
 Database error: Erreur de la base de données
@@ -345,9 +322,9 @@ date-help: Spécification de la date de l'événement.
 time-help: Spécification de l'heure de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
 am: am
 pm: pm
-Untimed event: Événement intemporel
-Timed event: Événement temporel
-All day event: Événement permanent
+Untimed event: événement intemporel
+Timed event: événement temporel
+All day event: événement permanent
 duration-help: Spécification de la durée (en minutes) de l'événement.  <br /><i>Ce champ peut être laissé vide.</i>
 Duration: Durée
 hours: heures
@@ -393,7 +370,8 @@ repeat-frequency-help: Spécifie combien l'événement doit être répété. La valeur 
 Frequency: Fréquence
 Delete entry: Supprimer l'événement
 You are not authorized to edit this entry: Vous n'êtes pas autorisé à modifier cet événement
-
+Repeat: Répétition
+Scheduling: Planification
 
 ###############################################
 # Page: edit_layer.php
@@ -600,7 +578,7 @@ Approve/Confirm: Approuver/Confirmer
 Reject this entry?: Rejeter cet événement ?
 Reject: Rejeter
 No unapproved events for: Pas d'événement non approuvé pour
-Unapproved Events: Événements en attente
+Unapproved Events: événements en attente
 Public Access: Accès public 
 
 
@@ -637,7 +615,7 @@ Email all participants: Envoyer un courriel à tous les participants
 Show activity log: Montrer le journal de suivi
 Hide activity log: Cacher le journal de suivi
 Export this entry to: Exporter cet événement au format
-
+Copy entry: Copier l'événement
 
 ###############################################
 # Page: view_v.php
@@ -717,15 +695,9 @@ Exclude private records: exclure les enregistrements privés
 Datebook File: Fichier agenda
 This form will import vCalendar (.vcs) 1.0 events: Ce formulaire importe vCalendar (.vcs)
 vCal File: Fichier vCal
-#
-# << MISSING >>
-# This form will import iCalendar (.ics) events:
-#
-# << MISSING >>
-# iCal File:
-#
-# << MISSING >>
-# Overwrite Prior Import:
+This form will import iCalendar (.ics) events: Ce formulaire importera des événements cd iCalendar (.ics)
+iCal File: Fichier iCal
+Overwrite Prior Import: Remplacer l'importation précédente
 
 
 ###############################################
@@ -848,7 +820,7 @@ Back to My Calendar: Retour à mon Agenda
 There was an error parsing the import file or no events were returned: Erreur lors de l'analyse du fichier d'import ou aucun événément n'a été trouvé
 The import file contained no data: Le fichier importé ne contient aucune donnée
 The following conflicts with the suggested time: Ce qui suit est en conflit avec l'heure suggérée.
-Unnamed Event: Événement sans nom
+Unnamed Event: événement sans nom
 Scheduling Conflict: Conflit entre agendas
 conflicts with the following existing calendar entries: est en conflit avec les événements suivants
 Event Imported: Evénement importé
@@ -915,41 +887,21 @@ Yours assistants: Vos assistants(es)
 # Page: adminhome.php
 #
 Account: Compte
-#
-# << MISSING >>
-# NonUser Calendars:
-#
-# << MISSING >>
-# Delete Events:
-#
-# << MISSING >>
-# Public Preferences:
-#
-# << MISSING >>
-# Unapproved Public Events:
-#
-# << MISSING >>
-# Administrative Tools:
+NonUser Calendars: Calendriers Non-Utilisateurs
+Delete Events: Effacer les événements
+Public Preferences: Paramètres publique
+Unapproved Public Events: Evènements publique non approuvés
+Administrative Tools: Outils d'administration
 
 
 ###############################################
 # Page: purge.php
 #
-#
-# << MISSING >>
-# Purging events for:
-#
-# << MISSING >>
-# Finished:
-#
-# << MISSING >>
-# Delete all events before:
-#
-# << MISSING >>
-# Check box to delete <b>ALL</b> events for a user:
-#
-# << MISSING >>
-# Are you sure you want to delete events for:
+Purging events for: Effacer les événements de
+Finished: Terminé
+Delete all events before: Effacer les événements avant
+Check box to delete <b>ALL</b> events for a user: Cocher la case pour effacer <b>TOUS</b> les événements d'un utilisateur
+Are you sure you want to delete events for: Etes-vous sur de vouloir effacer les événements de
 
 
 ###############################################
@@ -967,9 +919,7 @@ The following formats have been tested: Les formats suivants ont été testés
 Palm Desktop 4: Palm Desktop 4
 Lotus Organizer 6: Lotus Organizer 6
 Microsoft Outlook 2002: Microsoft Outlook 2002
-#
-# << MISSING >>
-# iCalendar:
+iCalendar: iCalendar
 #
 # << MISSING >>
 # Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
@@ -1003,15 +953,9 @@ Set Category: Chosir la catégorie
 ###############################################
 # Page: edit_template.php
 #
-#
-# << MISSING >>
-# Edit Custom Script/Stylesheet:
-#
-# << MISSING >>
-# Edit Custom Header:
-#
-# << MISSING >>
-# Edit Custom Trailer:
+Edit Custom Script/Stylesheet: Editer les scripts/Feuilles de style personnalisés
+Edit Custom Header: Editer les entêtes personnalisées
+Edit Custom Trailer: Editer les fin de pages personnalisés
 
 
 ###############################################

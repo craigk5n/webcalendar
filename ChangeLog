@@ -4,6 +4,7 @@ Version 0.9.46dev (?? ??? 2004)
   - Added support for automatic gradient background images for table cells.
   - Updated Japanese translation with support for 3 character sets
     now (Japanese-utf8, Japanese, Japanese-eucjp)
+  - Updated French translation
 Version 0.9.45 (12 Dec 2004)
   - Cleaned up user-ldap.php: added connect_and_bind function, config
     section cleanup, check all searches for attr array, etc.
