@@ -1,17 +1,6 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
+include_once 'includes/init.php';
 load_user_layers ();
-
-include "includes/translate.php";
 
 // echo "ret: $ret\n"; exit;
 
@@ -52,12 +41,8 @@ if ( empty ( $error ) ) {
     do_redirect ( "$STARTVIEW.php" );
 }
 
+print_header();
 ?>
-<HTML>
-<HEAD><TITLE><?php etranslate($application_name)?></TITLE>
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></FONT></H2>
 
@@ -66,7 +51,7 @@ if ( empty ( $error ) ) {
 <?php echo $error; ?>
 </BLOCKQUOTE>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 
 </BODY>
 </HTML>

@@ -1,16 +1,5 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-
-include "includes/translate.php";
+include_once 'includes/init.php';
 
 $USERS_PER_TABLE = 6;
 
@@ -30,15 +19,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   }
 }
 
-?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate ( $application_name) ?></TITLE>
-<?php include "includes/styles.php"; ?>
-<?php include "includes/js.php"; ?>
-</HEAD>
-<BODY BGCOLOR=<?php echo "\"$BGCOLOR\"";?> CLASS="defaulttext">
-<?php
+$INC = array('js/popups.php');
+print_header($INC);
 
 if ( ! empty ( $date ) && ! empty ( $date ) ) {
   $thisyear = substr ( $date, 0, 4 );
@@ -248,7 +230,7 @@ if ( ! $friendly )
 
 
 if ( ! $friendly ) {
-  include "includes/trailer.php";
+  include_once "includes/trailer.php";
 } else {
   dbi_close ( $c );
 }

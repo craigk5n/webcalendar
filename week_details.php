@@ -1,78 +1,9 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
+include_once 'includes/init.php';
 send_no_cache_header ();
-load_global_settings ();
-load_user_preferences ();
 load_user_layers ();
 load_user_categories ();
-if ( empty ( $friendly ) && empty ( $user ) )
-  remember_this_view ();
 
-$view = "week_details";
-
-include "includes/translate.php";
-
-if ( ( $allow_view_other != "Y" && ! $is_admin ) || empty ( $user ) ) $user = "";
-
-if ( ! empty ( $friendly ) )
-  $hide_icons = true;
-else
-  $hide_icons = false;
-
-if ( strlen ( $user ) ) {
-  $u_url = "user=$user&";
-  user_load_variables ( $user, "user_" );
-} else {
-  $u_url = "";
-  $user_fullname = $fullname;
-}
-
-$can_add = ( $readonly == "N" || $is_admin == "Y" );
-if ( $public_access == "Y" && $public_access_can_add != "Y" &&
-  $login == "__public__" )
-  $can_add = false;
-
-if ( $categories_enabled == "Y" && (!$user || $user == $login)) {
-  if (isset ($cat_id)) {
-    $cat_id = $cat_id;
-  } elseif (isset ($CATEGORY_VIEW)) {
-    $cat_id = $CATEGORY_VIEW;
-  } else {
-    $cat_id = '';
-  }
-} else {
-  $cat_id = '';
-}
-if ( empty ( $cat_id ) )
-  $caturl = "";
-else
-  $caturl = "&cat_id=$cat_id";
-
-if ( strlen ( $date ) > 0 ) {
-  $thisyear = $year = substr ( $date, 0, 4 );
-  $thismonth = $month = substr ( $date, 4, 2 );
-  $thisday = $day = substr ( $date, 6, 2 );
-} else {
-  if ( $month == 0 )
-    $thismonth = date("m");
-  else
-    $thismonth = $month;
-  if ( $year == 0 )
-    $thisyear = date("Y");
-  else
-    $thisyear = $year;
-  if ( $day == 0 )
-    $thisday = date("d");
-  else
-    $thisday = $day;
-}
 
 $next = mktime ( 2, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 2, 0, 0, $thismonth, $thisday - 7, $thisyear );
@@ -89,21 +20,15 @@ $wkend = $wkstart + ( 3600 * 24 * 6 );
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
 
-?>
-<html>
-<head>
-<title><?php etranslate("Title")?></title>
-<?php include "includes/styles.php"; ?>
-<?php include "includes/js.php"; ?>
-<?php
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
-  echo "<META HTTP-EQUIV=\"refresh\" content=\"$refresh; URL=week_details.php?$u_url" .
+  $HeadX = "<META HTTP-EQUIV=\"refresh\" content=\"$refresh; URL=week_details.php?$u_url" .
     "date=$startdate$caturl\" TARGET=\"_self\">\n";
 }
+$INC = array('js/popups.php');
+print_header($INC,$HeadX);
 ?>
-</head>
-<body bgcolor=<?php echo "\"$BGCOLOR\"";?> class="defaulttext">
+
 <center>
 
 <table border="0" width="100%">
@@ -243,7 +168,7 @@ for ( $d = 0; $d < 7; $d++ ) {
 onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
 
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 
 <?php } else {
         dbi_close ( $c );

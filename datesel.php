@@ -1,43 +1,8 @@
 <?php
+include_once 'includes/init.php';
+$INC = array('js/'.$SCRIPT);
+print_header($INC);
 
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
-
-include "includes/translate.php";
-
-?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-<SCRIPT LANGUAGE="JavaScript">
-function sendDate ( date ) {
-  year = date.substring ( 0, 4 );
-  month = date.substring ( 4, 6 );
-  day = date.substring ( 6, 8 );
-  window.opener.document.<?php echo $form?>.<?php echo $day?>.selectedIndex = day - 1;
-  window.opener.document.<?php echo $form?>.<?php echo $month?>.selectedIndex = month - 1;
-  for ( i = 0; i < window.opener.document.<?php echo $form?>.<?php echo $year?>.length; i++ ) {
-    if ( window.opener.document.<?php echo $form?>.<?php echo $year?>.options[i].value == year ) {
-      window.opener.document.<?php echo $form?>.<?php echo $year?>.selectedIndex = i;
-    }
-  }
-  window.close ();
-}
-</SCRIPT>
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
-<CENTER>
-
-<?php
 if ( strlen ( $date ) > 0 ) {
   $thisyear = substr ( $date, 0, 4 );
   $thismonth = substr ( $date, 4, 2 );
@@ -57,7 +22,7 @@ $prevmonth = date ( "m", $prev );
 $prevdate = date ( "Ym", $prev ) . "01";
 
 ?>
-
+<CENTER>
 <TABLE BORDER=0>
 <TR>
 <TD><A HREF="datesel.php?form=<?php echo $form?>&day=<?php echo $day?>&month=<?php echo $month?>&year=<?php echo $year?>&date=<?php echo $prevdate?>"><IMG SRC="leftarrowsmall.gif" WIDTH="18" HRIGHT="18" BORDER="0" ALT="<?php etranslate("Previous")?>"></A></TD>
@@ -99,7 +64,6 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 }
 ?>
 </TABLE>
-
 </CENTER>
 
 </BODY>

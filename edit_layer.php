@@ -1,16 +1,5 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-
-include "includes/translate.php";
+include_once 'includes/init.php';
 
 $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
@@ -22,55 +11,9 @@ if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
 
 load_user_layers ( $layer_user, 1 );
 
+$INC = array('js/'.$SCRIPT);
+print_header($INC);
 ?>
-
-
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-
-<SCRIPT LANGUAGE="JavaScript">
-
-function valid_color ( str ) {
-  var ch, j;
-  var valid = "0123456789abcdefABCDEF";
-
-  if ( str.length == 0 )
-    return true;
-
-  if ( str.charAt ( 0 ) != '#' || str.length != 7 )
-    return false;
-
-  for ( j = 1; j < str.length; j++ ) {
-   ch = str.charAt ( j );
-   if ( valid.indexOf ( ch ) < 0 )
-     return false;
-  }
-  return true;
-}
-
-function valid_form ( form ) {
-  var err = "";
-  if ( ! valid_color ( form.layercolor.value ) )
-    err += "<?php etranslate("Invalid color")?>.\n";
-
-  if ( err.length > 0 ) {
-    alert ( "Error:\n\n" + err + "\n\n<?php etranslate("Color format should be '#RRGGBB'")?>" );
-    return false;
-  }
-  return true;
-}
-
-function selectColor ( color ) {
-  url = "colors.php?color=" + color;
-  var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
-}
-
-</SCRIPT>
-
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>">
 <?php
@@ -165,6 +108,6 @@ if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
 
 </FORM>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 </BODY>
 </HTML>

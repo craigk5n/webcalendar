@@ -1,4 +1,7 @@
 <?php
+include_once 'includes/init.php';
+send_no_cache_header ();
+load_user_layers ();
 
 function display_small_month ( $thismonth, $thisyear, $showyear ) {
   global $WEEK_START, $user, $login;
@@ -64,32 +67,12 @@ else
 
 $nextYear= $year + 1;
 
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
-
-include "includes/translate.php";
-
 if ( $allow_view_other != "Y" && ! $is_admin )
   $user = "";
 
+print_header();
 ?>
 
-<HTML>
-
-<HEAD>
-
-<TITLE><?php etranslate ( $application_name) ?></TITLE>
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR=<?php echo "\"$BGCOLOR\"";?> CLASS="defaulttext">
 <TABLE WIDTH="100%">
 <TR>
 <?php if ( empty ( $friendly ) ) { ?>
@@ -162,7 +145,7 @@ display_unapproved_events ( $login );
 ?>friendly=1" TARGET="cal_printer_friendly"
 onMouseOver="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</A>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 
 <?php } else {
         dbi_close ( $c );
@@ -171,5 +154,3 @@ onMouseOver="window.status = '<?php etranslate("Generate printer-friendly versio
 
 </BODY>
 </HTML>
-
-

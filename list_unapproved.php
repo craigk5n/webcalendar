@@ -1,35 +1,13 @@
 <?php
-
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
+include_once 'includes/init.php';
 send_no_cache_header ();
-load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
 
-include "includes/translate.php";
-
-?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-<?php include "includes/styles.php"; ?>
-<?php include "includes/js.php"; ?>
-<?php
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
-  echo "<META HTTP-EQUIV=\"refresh\" content=\"$refresh; URL=list_unapproved.php\" TARGET=\"_self\">\n";
+  $HeadX = "<META HTTP-EQUIV=\"refresh\" content=\"$refresh; URL=list_unapproved.php\" TARGET=\"_self\">\n";
 }
-?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
-
-<?php
+$INC = array('js/popups.php');
+print_header($INC,$HeadX);
 
 $key = 0;
 
@@ -134,6 +112,6 @@ if ( $is_admin && $public_access == "Y" ) {
 }
 ?>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 </BODY>
 </HTML>

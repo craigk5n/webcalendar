@@ -1,43 +1,9 @@
 <?php
+include_once 'includes/init.php';
 
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
-include "includes/$user_inc";
-include "includes/validate.php";
-include "includes/connect.php";
-
-load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
-
-include "includes/translate.php";
-
+$INC = array('js/'.$SCRIPT);
+print_header($INC);
 ?>
-<HTML>
-<HEAD>
-<TITLE><?php etranslate($application_name)?></TITLE>
-<SCRIPT LANGUAGE="JavaScript">
-function selectDate ( day, month, year ) {
-  // get currently selected month/year
-  monthobj = eval ( 'document.exportform.' + month );
-  curmonth = monthobj.options[monthobj.selectedIndex].value;
-  yearobj = eval ( 'document.exportform.' + year );
-  curyear = yearobj.options[yearobj.selectedIndex].value;
-  date = curyear;
-  if ( curmonth < 10 )
-    date += "0";
-  date += curmonth;
-  date += "01";
-  url = "datesel.php?form=exportform&day=" + day +
-    "&month=" + month + "&year=" + year + "&date=" + date;
-  var colorWindow = window.open(url,"DateSelection","width=300,height=200,resizable=yes,scrollbars=yes");
-}
-</SCRIPT>
-
-<?php include "includes/styles.php"; ?>
-</HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR;?>" CLASS="defaulttext">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Export")?></FONT></H2>
 
@@ -143,6 +109,6 @@ function selectDate ( day, month, year ) {
 </TABLE>
 </FORM>
 
-<?php include "includes/trailer.php"; ?>
+<?php include_once "includes/trailer.php"; ?>
 </BODY>
 </HTML>
