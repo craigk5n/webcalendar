@@ -1475,6 +1475,19 @@ function calc_time_slot ( $time, $round_down = false ) {
 }
 
 
+
+// Generate the HTML for the add icon.
+// date = date in YYYYMMDD format
+// hour = hour of day (eg. 1,13,23)
+function html_for_add_icon ( $date=0,$hour="" ) {
+  return "<A HREF=\"edit_entry.php?" . $u_url .
+    "date=$date" . ( $hour > 0 ? "&hour=$hour" : "" ) .
+    "\">" .
+    "<IMG SRC=\"new.gif\" WIDTH=\"10\" HEIGHT=\"10\" ALT=\"" .
+    translate("New Entry") . "\" BORDER=\"0\" ALIGN=\"right\">" .  "</A>";
+}
+
+
 // Generate the HTML for an event to be viewed in the week-at-glance.
 // The HTML will be stored in an array ($hour_arr) indexed on the event's
 // starting hour.
@@ -1738,7 +1751,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
 //   $date - date in YYYYMMDD format
 //   $user - username
 //   $hide_icons - should we hide the icons to make it printer-friendly
-function print_day_at_a_glance ( $date, $user, $hide_icons ) {
+function print_day_at_a_glance ( $date, $user, $hide_icons, $can_add=0 ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan;
   global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TIME_SLOTS;
   global $repeated_events;
@@ -1847,18 +1860,32 @@ function print_day_at_a_glance ( $date, $user, $hide_icons ) {
     if ( $rowspan > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
-      if ( strlen ( $hour_arr[$i] ) )
-        echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">$hour_arr[$i]</TD>";
+      if ( strlen ( $hour_arr[$i] ) ) {
+        echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">";
+        if ( $can_add )
+          echo html_for_add_icon ( $date, $time_h );
+        echo "$hour_arr[$i]</TD>";
+      }
       $rowspan--;
     } else {
-      if ( empty ( $hour_arr[$i] ) )
-        echo "<TD HEIGHT=\"40\" BGCOLOR=\"$CELLBG\">&nbsp;</TD></TR>\n";
-      else {
+      if ( empty ( $hour_arr[$i] ) ) {
+        echo "<TD HEIGHT=\"40\" BGCOLOR=\"$CELLBG\">";
+        if ( $can_add )
+          echo html_for_add_icon ( $date, $time_h );
+        echo "&nbsp;</TD></TR>\n";
+      } else {
         $rowspan = $rowspan_arr[$i];
-        if ( $rowspan > 1 )
-          echo "<TD VALIGN=\"top\" BGCOLOR=\"$TODAYCELLBG\" ROWSPAN=\"$rowspan\">$hour_arr[$i]</TD></TR>\n";
-        else
-          echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">$hour_arr[$i]</TD></TR>\n";
+        if ( $rowspan > 1 ) {
+          echo "<TD VALIGN=\"top\" BGCOLOR=\"$TODAYCELLBG\" ROWSPAN=\"$rowspan\">";
+          if ( $can_add )
+            echo html_for_add_icon ( $date, $time_h );
+          echo "hour_arr[$i]</TD></TR>\n";
+        } else {
+          echo "<TD VALIGN=\"top\" HEIGHT=\"40\" BGCOLOR=\"$TODAYCELLBG\">";
+          if ( $can_add )
+            echo html_for_add_icon ( $date, $time_h );
+          echo "$hour_arr[$i]</TD></TR>\n";
+        }
       }
     }
   }

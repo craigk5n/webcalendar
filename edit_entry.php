@@ -120,7 +120,10 @@ if ( ! empty ( $id ) && $id > 0 ) {
   }
 } else {
   $id = 0; // to avoid warnings below about use of undefined var
-  $time = -1;
+  if ( empty ( $hour ) )
+    $time = -1;
+  else
+    $time = $hour * 100;
   if ( $readonly == "N" || $is_admin )
     $can_edit = true;
 }

@@ -197,10 +197,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   }
   echo "<TH WIDTH=\"13%\" CLASS=\"$class\" BGCOLOR=\"$color\">";
   if ( empty ( $friendly ) && $can_add ) {
-    echo "<A HREF=\"edit_entry.php?" . $u_url .
-      "date=" . date ( "Ymd", $days[$d] ) . "\">" .
-      "<IMG SRC=\"new.gif\" WIDTH=\"10\" HEIGHT=\"10\" ALT=\"" .
-      translate("New Entry") . "\" BORDER=\"0\" ALIGN=\"right\">" .  "</A>";
+    echo html_for_add_icon (  date ( "Ymd", $days[$d] ) );
   }
   echo "<A HREF=\"day.php?" . $u_url .
     "date=" . date ("Ymd", $days[$d] ) . "$caturl\" CLASS=\"$class\">" .
@@ -346,16 +343,24 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
           $save_hour_arr[$d][$i] . "</FONT></TD>";
       $rowspan_day[$d]--;
     } else {
-      if ( empty ( $save_hour_arr[$d][$i] ) )
-        echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$color\">&nbsp;</TD>\n";
-      else {
+      if ( empty ( $save_hour_arr[$d][$i] ) ) {
+        echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$color\">";
+        if ( $can_add )
+          echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $i );
+        echo "&nbsp;</TD>\n";
+      } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
-        if ( $rowspan_day[$d] > 1 )
-          echo "<TD VALIGN=\"top\" WIDTH=\"12%\" VALIGN=\"top\" BGCOLOR=\"$TODAYCELLBG\" ROWSPAN=\"$rowspan_day[$d]\">" .
-            "<FONT SIZE=\"-1\">" . $save_hour_arr[$d][$i] . "</FONT></TD>\n";
-        else
-          echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$TODAYCELLBG\"><FONT SIZE=\"-1\">" .
-            $save_hour_arr[$d][$i] . "</FONT></TD>\n";
+        if ( $rowspan_day[$d] > 1 ) {
+          echo "<TD VALIGN=\"top\" WIDTH=\"12%\" VALIGN=\"top\" BGCOLOR=\"$TODAYCELLBG\" ROWSPAN=\"$rowspan_day[$d]\">";
+          if ( $can_add )
+            echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $i );
+          echo "<FONT SIZE=\"-1\">" . $save_hour_arr[$d][$i] . "</FONT></TD>\n";
+        } else {
+          echo "<TD VALIGN=\"top\" WIDTH=\"12%\" BGCOLOR=\"$TODAYCELLBG\"><FONT SIZE=\"-1\">";
+          if ( $can_add )
+            echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $i );
+          echo $save_hour_arr[$d][$i] . "</FONT></TD>\n";
+        }
       }
     }
   }
