@@ -99,7 +99,7 @@ TimeMatrix($date,$participants);
 </center>
 
 <?php if ( empty ( $friendly ) ) {
-  echo "<p><a class=\"navlinks\" href=\"view_d.php?id=$id&amp;";
+  echo "<br /><a class=\"navlinks\" href=\"view_d.php?id=$id&amp;";
   echo $u_url . "date=$nowYmd";
   echo $caturl;
   echo '&amp;friendly=1" target="cal_printer_friendly" onmouseover="window.status=\'' .
@@ -140,7 +140,7 @@ function TimeMatrix ($date,$participants) {
 
 <br />
 <table class="viewd" style="width:<?php echo $total_pix;?>px;" cellspacing="0" cellpadding="0" cols="<?php echo $cols;?>">
- <tr><td style="height:1px; background-color:#000000;" colspan="<?php echo $cols;?>"><img src="pix.gif" style="height:1px; width:100%;" /></td></tr>
+ <tr><td style="height:1px; background-color:#000000;" colspan="<?php echo $cols;?>"><img src="pix.gif" style="height:1px; width:100%;" alt="spacer" /></td></tr>
  <tr>
    <th class="row" style="width:<?php echo $participant_pix;?>px;"><?php etranslate("Participants");?></th>
 
@@ -171,7 +171,7 @@ function TimeMatrix ($date,$participants) {
      }
   }
   echo $str.
-       " </tr>\n <tr><td style=\"height:1px; background-color:#000000;\" colspan=\"$cols\"><img src=\"pix.gif\" style=\"height:1px; width:100%;\" /></td></tr>\n";
+       " </tr>\n <tr><td style=\"height:1px; background-color:#000000;\" colspan=\"$cols\"><img src=\"pix.gif\" style=\"height:1px; width:100%;\" alt=\"spacer\" /></td></tr>\n";
 
   // Display each participant
 
@@ -213,7 +213,7 @@ function TimeMatrix ($date,$participants) {
 
          foreach ($all_events as $ET) {
            if (($TIME >= $ET['START']) && ($TIME < $ET['END'])) {
-             $space = "<a href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" style=\"height:8px; width:100%; border-width:0px;\" /></a>";
+             $space = "<a href=\"view_entry.php?id={$ET['ID']}\"><img src=\"pix.gif\" style=\"height:8px; width:100%; border-width:0px;\" alt=\"spacer\" /></a>";
            } else {
              $space = "&nbsp;";
            }  
@@ -222,7 +222,7 @@ function TimeMatrix ($date,$participants) {
          $col++;
        }
     }
-    echo " </tr>\n <tr><td style=\"height:1px; background-color:#000000;\" colspan=\"$cols\"><img src=\"pix.gif\" style=\"height:1px; width:100%;\" /></td></tr>\n";
+    echo " </tr>\n <tr><td style=\"height:1px; background-color:#000000;\" colspan=\"$cols\"><img src=\"pix.gif\" style=\"height:1px; width:100%;\" alt=\"spacer\" /></td></tr>\n";
   } // End foreach participant
   echo "</table>\n";
 
