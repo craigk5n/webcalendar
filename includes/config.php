@@ -21,6 +21,7 @@ $db_host = "localhost";
 $db_login = "webcalendar";
 $db_password = "webcal01";
 $db_database = "intranet";
+$db_persistent = 1;
 
 // Oracle example
 //$db_type = "oracle";
@@ -36,6 +37,7 @@ $db_database = "intranet";
 //$db_login = "webcalendar";
 //$db_password = "webcalendar";
 //$db_database = "webcalendar";
+//$db_persistent = 0;
 
 // ODBC example
 //$db_type = "odbc";
@@ -44,6 +46,7 @@ $db_database = "intranet";
 //$db_password = "webcal01";
 // for oracle, db_database should be the name in tnsnames.ora
 //$db_database = "webcalendar"; // this is the ODBC DSN
+//$db_persistent = 1;
 
 // Interbase example
 //$db_type = "ibase";
@@ -51,6 +54,7 @@ $db_database = "intranet";
 //$db_login = "sysdba";
 //$db_password = "masterkey";
 //$db_database = "WEBCAL.gdb";
+//$db_persistent = 0;
 
 
 // Read-only mode: You can set this to true to create a read-only calendar.

@@ -44,7 +44,11 @@
 // For Oracle, $database = tnsnames name
 function dbi_connect ( $host, $login, $password, $database ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
-    $c = mysql_pconnect ( $host, $login, $password );
+    if ($GLOBALS["db_persistent"]) {
+      $c = mysql_pconnect ( $host, $login, $password );
+    } else {
+      $c = mysql_connect ( $host, $login, $password );
+    }
     if ( $c ) {
       if ( ! mysql_select_db ( $database ) )
         return false;
@@ -60,10 +64,16 @@ function dbi_connect ( $host, $login, $password, $database ) {
     $GLOBALS["oracle_connection"] = $c;
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
-    if ( strlen ( $password ) )
-      $c = pg_connect ( "host=$host dbname=$database user=$login password=$password" );
-    else
-      $c = pg_connect ( "host=$host dbname=$database user=$login" );
+    if ( strlen ( $password ) ) {
+      $dbargs = "host=$host dbname=$database user=$login password=$password";
+    } else {
+      $dbargs = "host=$host dbname=$database user=$login";
+    }
+    if ($GLOBALS["db_persistent"]) {
+      $c = pg_pconnect ( $dbargs );
+    } else {
+      $c = pg_connect ( $dbargs );
+    }
     $GLOBALS["postgresql_connection"] = $c;
     if ( ! $c ) {
         echo "Error connecting to database\n";
@@ -71,14 +81,20 @@ function dbi_connect ( $host, $login, $password, $database ) {
     }
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
-    if ( strlen ( $host ) )
-      $c = odbc_pconnect ( "$host:$database", $login, $password );
-    else
+    $database = ( strlen ( $host ) ) ? "$host:$database" : $database;
+    if ($GLOBALS["db_persistent"]) {
       $c = odbc_pconnect ( $database, $login, $password );
+    } else {
+      $c = odbc_connect ( $database, $login, $password );
+    }
     $GLOBALS["odbc_connection"] = $c;
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
-    $c = ibase_connect ( $host, $login, $password );
+    if ($GLOBALS["db_persistent"]) {
+      $c = ibase_pconnect ( $host, $login, $password );
+    } else {
+      $c = ibase_connect ( $host, $login, $password );
+    }
     return $c;
   } else {
     dbi_fatal_error ( "dbi_connect(): db_type not defined." );
