@@ -18,24 +18,13 @@
 #
 #
 # Translation last updated on 11-30-2002
+# Translation last updated on 02-07-2003
 
 
 ###############################################
 # Page: admin.php
 #
-Server URL is required: Mae angen URL y gweinydd
-Server URL must end with '/': Rhaid i URL y gweinydd orffen gyda '/'
-Invalid color for document background: Lliw annerbyniol fel cefndir i'r ddogfen
-Invalid color for document title: Lliw annerbyniol fel teitl y ddogfen
-Invalid color for table cell background: Lliw annerbyniol fel cefndir y gell tabl
-Invalid color for table grid: Lliw annerbyniol fel grid y tabl
-Invalid color for table header background: Lliw annerbyniol fel cefndir pennawd y tabl
-Invalid color for table text background: Lliw annerbyniol fel cefndir testun y table
-Invalid color for event popup background: Lliw annerbyniol fel cefndir digwyddiad ar ffurf popup
-Invalid color for event popup text: Lliw annerbyniol fel testun digwyddiad ar ffurf popup
-Invalid color for table cell background for today: Lliw annerbyniol fel cefndir cell tabl heddiw
-Color format should be '#RRGGBB': Mae angen fformat lliw megis '#RRGGBB'
-System Settings: Gosodiad System 
+System Settings: Gosodiad System
 You are not authorized: Dim awdurdod
 Note: Noder
 Your user preferences: Efallai bod eich hoff dewisiadau
@@ -339,9 +328,6 @@ Notification: Rhybydd
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: Mae angen Disgrifiad Byr
-You have not entered a valid time of day: Nid yw'r amser yr ydych wedi dynodi yn gywir
-The time you have entered begins before your preferred work hours.  Is this correct?: Mae'r amser yr ydych wedi dynodi yn cychwyn cyn yr oriau gwaith yr ydych wedi dewis. A yw hyn yn gywir?
 Edit Entry: Newid Digwyddiad
 Add Entry: Ychwanegu Digwyddiad
 brief-description-help: Defnyddir hwn i roi disgrifiad byr (tua 20 llythyren) o'r digwyddiad.  Dangosir y wybodaeth yn uniongyrchol ar y calendr.
@@ -435,7 +421,6 @@ Cancel: Dileu
 ###############################################
 # Page: edit_layer.php
 #
-Invalid color: Lliw annerbyniol
 Edit Layer: Newid Haen
 Add Layer: Ychwanegu Haen
 Source: Ffynhonell
@@ -942,6 +927,11 @@ Send Reminder: Anfoner atgofiad
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/js.php
 #
 
@@ -966,3 +956,79 @@ Send Reminder: Anfoner atgofiad
 #
 This is a reminder for the event detailed below.: Y mae hwn yn eich atgoffa o'r digwydiad gyda'r manylion isod.
 Reminder: Atgofiad
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+Server URL is required: Mae angen URL y gweinydd
+Server URL must end with '/': Rhaid i URL y gweinydd orffen gyda '/'
+Invalid color for document background: Lliw annerbyniol fel cefndir i'r ddogfen
+Invalid color for document title: Lliw annerbyniol fel teitl y ddogfen
+Invalid color for table cell background: Lliw annerbyniol fel cefndir y gell tabl
+Invalid color for table grid: Lliw annerbyniol fel grid y tabl
+Invalid color for table header background: Lliw annerbyniol fel cefndir pennawd y tabl
+Invalid color for table text background: Lliw annerbyniol fel cefndir testun y table
+Invalid color for event popup background: Lliw annerbyniol fel cefndir digwyddiad ar ffurf popup
+Invalid color for event popup text: Lliw annerbyniol fel testun digwyddiad ar ffurf popup
+Invalid color for table cell background for today: Lliw annerbyniol fel cefndir cell tabl heddiw
+Color format should be '#RRGGBB': Mae angen fformat lliw megis '#RRGGBB'
+
+
+###############################################
+# Page: includes/js/assistant_edit.php
+#
+
+
+###############################################
+# Page: includes/js/colors.php
+#
+
+
+###############################################
+# Page: includes/js/datesel.php
+#
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Mae angen Disgrifiad Byr
+You have not entered a valid time of day: Nid yw'r amser yr ydych wedi dynodi yn gywir
+The time you have entered begins before your preferred work hours.  Is this correct?: Mae'r amser yr ydych wedi dynodi yn cychwyn cyn yr oriau gwaith yr ydych wedi dewis. A yw hyn yn gywir?
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Lliw annerbyniol
+
+
+###############################################
+# Page: includes/js/export.php
+#
+
+
+###############################################
+# Page: includes/js/popups.php
+#
+
+
+###############################################
+# Page: includes/js/pref.php
+#
+
+
+###############################################
+# Page: includes/js/search.php
+#
+
+
+###############################################
+# Page: includes/js/usersel.php
+#
+
+
+###############################################
+# Page: includes/js/views_edit.php
+#

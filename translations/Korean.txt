@@ -4,37 +4,12 @@
 # Author: Joonyup Jeon <goodwill@wowbook.com>
 # Last updated: 07 June 2000
 # Translation last updated on 11-30-2002
+# Translation last updated on 02-07-2003
 
 
 ###############################################
 # Page: admin.php
 #
-#
-# << MISSING >>
-# Server URL is required:
-#
-# << MISSING >>
-# Server URL must end with '/':
-Invalid color for document background: 배경 색상 틀림
-Invalid color for document title: 제목 색상 틀림
-Invalid color for table cell background: 테이블 셀 배경색 틀림
-#
-# << MISSING >>
-# Invalid color for table grid:
-#
-# << MISSING >>
-# Invalid color for table header background:
-#
-# << MISSING >>
-# Invalid color for table text background:
-#
-# << MISSING >>
-# Invalid color for event popup background:
-#
-# << MISSING >>
-# Invalid color for event popup text:
-Invalid color for table cell background for today: 오늘 날짜 표시 색상 틀림
-Color format should be '#RRGGBB': 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF0000" (빨강)
 #
 # << MISSING >>
 # System Settings:
@@ -631,11 +606,6 @@ Notification: 통보
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: 요약 설명을 입력하지 않았습니다.
-You have not entered a valid time of day: 유효한 일자/시각이 아닙니다.
-#
-# << MISSING >>
-# The time you have entered begins before your preferred work hours.  Is this correct?:
 Edit Entry: 항목 편집
 Add Entry: 항목 추가
 brief-description-help: 행사의 간략한 설명(약 20자)입니다. 달력상의 행사를  나타냅니다.
@@ -791,9 +761,6 @@ conflicts with the following existing calendar entries: 다음과 같은 항목과 겹칩�
 ###############################################
 # Page: edit_layer.php
 #
-#
-# << MISSING >>
-# Invalid color:
 #
 # << MISSING >>
 # Edit Layer:
@@ -1502,6 +1469,11 @@ Dec: 12월
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/js.php
 #
 
@@ -1530,3 +1502,97 @@ Dec: 12월
 #
 # << MISSING >>
 # Reminder:
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+#
+# << MISSING >>
+# Server URL is required:
+#
+# << MISSING >>
+# Server URL must end with '/':
+Invalid color for document background: 배경 색상 틀림
+Invalid color for document title: 제목 색상 틀림
+Invalid color for table cell background: 테이블 셀 배경색 틀림
+#
+# << MISSING >>
+# Invalid color for table grid:
+#
+# << MISSING >>
+# Invalid color for table header background:
+#
+# << MISSING >>
+# Invalid color for table text background:
+#
+# << MISSING >>
+# Invalid color for event popup background:
+#
+# << MISSING >>
+# Invalid color for event popup text:
+Invalid color for table cell background for today: 오늘 날짜 표시 색상 틀림
+Color format should be '#RRGGBB': 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF0000" (빨강)
+
+
+###############################################
+# Page: includes/js/assistant_edit.php
+#
+
+
+###############################################
+# Page: includes/js/colors.php
+#
+
+
+###############################################
+# Page: includes/js/datesel.php
+#
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: 요약 설명을 입력하지 않았습니다.
+You have not entered a valid time of day: 유효한 일자/시각이 아닙니다.
+#
+# << MISSING >>
+# The time you have entered begins before your preferred work hours.  Is this correct?:
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+#
+# << MISSING >>
+# Invalid color:
+
+
+###############################################
+# Page: includes/js/export.php
+#
+
+
+###############################################
+# Page: includes/js/popups.php
+#
+
+
+###############################################
+# Page: includes/js/pref.php
+#
+
+
+###############################################
+# Page: includes/js/search.php
+#
+
+
+###############################################
+# Page: includes/js/usersel.php
+#
+
+
+###############################################
+# Page: includes/js/views_edit.php
+#

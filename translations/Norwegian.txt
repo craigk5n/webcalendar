@@ -4,37 +4,12 @@
 # Translated by: Pål Løberg/Magni Onsøien <initio@initio.no>
 # Last update: 2002-06-28
 # Translation last updated on 11-30-2002
+# Translation last updated on 02-07-2003
 
 
 ###############################################
 # Page: admin.php
 #
-#
-# << MISSING >>
-# Server URL is required:
-#
-# << MISSING >>
-# Server URL must end with '/':
-Invalid color for document background: Ugyldig bakgrunnsfarge
-Invalid color for document title: Ugyldig tittelfarge
-Invalid color for table cell background: Ugyldig farge for tabellbakgrunn
-#
-# << MISSING >>
-# Invalid color for table grid:
-#
-# << MISSING >>
-# Invalid color for table header background:
-#
-# << MISSING >>
-# Invalid color for table text background:
-#
-# << MISSING >>
-# Invalid color for event popup background:
-#
-# << MISSING >>
-# Invalid color for event popup text:
-Invalid color for table cell background for today: Ugyldig farge for dagens tabellbakgrunn
-Color format should be '#RRGGBB': Fargen skal skrives som '#RRGGBB'
 #
 # << MISSING >>
 # System Settings:
@@ -563,9 +538,6 @@ Notification: Påminnelse
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: Du har ikke oppgitt noen kort beskrivelse
-You have not entered a valid time of day: Du har ikke oppgitt noe gyldig tidspunkt
-The time you have entered begins before your preferred work hours.  Is this correct?: Tidspunktet du har angitt er før din foretrukne arbeidstid. Er dette korrekt?
 Edit Entry: Endre aktiviteten
 Add Entry: Legg til aktivitet
 brief-description-help: Her skal det stå en kort beskrivelse av aktiviteten - den blir vist når man står over aktiviteten i oversiktskalenderen.
@@ -667,7 +639,6 @@ Cancel: Avbryt
 ###############################################
 # Page: edit_layer.php
 #
-Invalid color: Ugyldig farge
 Edit Layer: Editer lag
 Add Layer: Legg til lag
 Source: Kilde
@@ -1284,6 +1255,11 @@ Invalid login: Ugyldig innlogging
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/js.php
 #
 
@@ -1308,3 +1284,93 @@ Invalid login: Ugyldig innlogging
 #
 This is a reminder for the event detailed below.: Dette er en påminnelse for aktiviteten beskrevet nedenfor. 
 Reminder: Påminnelse
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+#
+# << MISSING >>
+# Server URL is required:
+#
+# << MISSING >>
+# Server URL must end with '/':
+Invalid color for document background: Ugyldig bakgrunnsfarge
+Invalid color for document title: Ugyldig tittelfarge
+Invalid color for table cell background: Ugyldig farge for tabellbakgrunn
+#
+# << MISSING >>
+# Invalid color for table grid:
+#
+# << MISSING >>
+# Invalid color for table header background:
+#
+# << MISSING >>
+# Invalid color for table text background:
+#
+# << MISSING >>
+# Invalid color for event popup background:
+#
+# << MISSING >>
+# Invalid color for event popup text:
+Invalid color for table cell background for today: Ugyldig farge for dagens tabellbakgrunn
+Color format should be '#RRGGBB': Fargen skal skrives som '#RRGGBB'
+
+
+###############################################
+# Page: includes/js/assistant_edit.php
+#
+
+
+###############################################
+# Page: includes/js/colors.php
+#
+
+
+###############################################
+# Page: includes/js/datesel.php
+#
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Du har ikke oppgitt noen kort beskrivelse
+You have not entered a valid time of day: Du har ikke oppgitt noe gyldig tidspunkt
+The time you have entered begins before your preferred work hours.  Is this correct?: Tidspunktet du har angitt er før din foretrukne arbeidstid. Er dette korrekt?
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Ugyldig farge
+
+
+###############################################
+# Page: includes/js/export.php
+#
+
+
+###############################################
+# Page: includes/js/popups.php
+#
+
+
+###############################################
+# Page: includes/js/pref.php
+#
+
+
+###############################################
+# Page: includes/js/search.php
+#
+
+
+###############################################
+# Page: includes/js/usersel.php
+#
+
+
+###############################################
+# Page: includes/js/views_edit.php
+#

@@ -5,37 +5,12 @@
 # Translator: Atilla Kazanci <support@dig-it-berlin.de>,
 # Last update: 29 March 2001
 # Translation last updated on 11-30-2002
+# Translation last updated on 02-07-2003
 
 
 ###############################################
 # Page: admin.php
 #
-#
-# << MISSING >>
-# Server URL is required:
-#
-# << MISSING >>
-# Server URL must end with '/':
-Invalid color for document background: Renk Sayfa-arkasi icin gecerli degil
-Invalid color for document title: Renk Baslik icin gecerli degil
-Invalid color for table cell background: Renk Tabela-arkasi icin gecerli degil
-#
-# << MISSING >>
-# Invalid color for table grid:
-#
-# << MISSING >>
-# Invalid color for table header background:
-#
-# << MISSING >>
-# Invalid color for table text background:
-#
-# << MISSING >>
-# Invalid color for event popup background:
-#
-# << MISSING >>
-# Invalid color for event popup text:
-Invalid color for table cell background for today: Renk Tabela-arkasi 'Bugün' icin gecerli degil
-Color format should be '#RRGGBB': Renkler sadece '#RRGGBB' seklinde verilebilir.
 #
 # << MISSING >>
 # System Settings:
@@ -622,11 +597,6 @@ Notification: Not
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: Özet Anlami vermediniz
-You have not entered a valid time of day: Gecerli saat vermediniz
-#
-# << MISSING >>
-# The time you have entered begins before your preferred work hours.  Is this correct?:
 Edit Entry: Islem degistir
 Add Entry: Islem ekle
 brief-description-help: Termin icin kisa Özet (20 Isaret). Takvimde bu görünür.
@@ -754,9 +724,6 @@ conflicts with the following existing calendar entries: takiben Takvimde baska b
 ###############################################
 # Page: edit_layer.php
 #
-#
-# << MISSING >>
-# Invalid color:
 #
 # << MISSING >>
 # Edit Layer:
@@ -1439,6 +1406,11 @@ Dec: Ara
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/js.php
 #
 
@@ -1467,3 +1439,97 @@ Dec: Ara
 #
 # << MISSING >>
 # Reminder:
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+#
+# << MISSING >>
+# Server URL is required:
+#
+# << MISSING >>
+# Server URL must end with '/':
+Invalid color for document background: Renk Sayfa-arkasi icin gecerli degil
+Invalid color for document title: Renk Baslik icin gecerli degil
+Invalid color for table cell background: Renk Tabela-arkasi icin gecerli degil
+#
+# << MISSING >>
+# Invalid color for table grid:
+#
+# << MISSING >>
+# Invalid color for table header background:
+#
+# << MISSING >>
+# Invalid color for table text background:
+#
+# << MISSING >>
+# Invalid color for event popup background:
+#
+# << MISSING >>
+# Invalid color for event popup text:
+Invalid color for table cell background for today: Renk Tabela-arkasi 'Bugün' icin gecerli degil
+Color format should be '#RRGGBB': Renkler sadece '#RRGGBB' seklinde verilebilir.
+
+
+###############################################
+# Page: includes/js/assistant_edit.php
+#
+
+
+###############################################
+# Page: includes/js/colors.php
+#
+
+
+###############################################
+# Page: includes/js/datesel.php
+#
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Özet Anlami vermediniz
+You have not entered a valid time of day: Gecerli saat vermediniz
+#
+# << MISSING >>
+# The time you have entered begins before your preferred work hours.  Is this correct?:
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+#
+# << MISSING >>
+# Invalid color:
+
+
+###############################################
+# Page: includes/js/export.php
+#
+
+
+###############################################
+# Page: includes/js/popups.php
+#
+
+
+###############################################
+# Page: includes/js/pref.php
+#
+
+
+###############################################
+# Page: includes/js/search.php
+#
+
+
+###############################################
+# Page: includes/js/usersel.php
+#
+
+
+###############################################
+# Page: includes/js/views_edit.php
+#

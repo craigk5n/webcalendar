@@ -5,37 +5,12 @@
 #	Raúl Araya Tauler, nubeiro@nubeiro.com
 # Last update: 20 May 2001
 # Translation last updated on 11-30-2002
+# Translation last updated on 02-07-2003
 
 
 ###############################################
 # Page: admin.php
 #
-#
-# << MISSING >>
-# Server URL is required:
-#
-# << MISSING >>
-# Server URL must end with '/':
-Invalid color for document background: Color non válido para o fondo do documento
-Invalid color for document title: Color non válido para o título do documento
-Invalid color for table cell background: Color non válido para o fondo da cela
-#
-# << MISSING >>
-# Invalid color for table grid:
-#
-# << MISSING >>
-# Invalid color for table header background:
-#
-# << MISSING >>
-# Invalid color for table text background:
-#
-# << MISSING >>
-# Invalid color for event popup background:
-#
-# << MISSING >>
-# Invalid color for event popup text:
-Invalid color for table cell background for today: Color non válido para o fondo da cela de hoxe
-Color format should be '#RRGGBB': O formato da cor debería ser '#RRGGBB'
 #
 # << MISSING >>
 # System Settings:
@@ -564,9 +539,6 @@ Notification: Notificación
 ###############################################
 # Page: edit_entry.php
 #
-You have not entered a Brief Description: Non introduciu ningunha descrición breve
-You have not entered a valid time of day: Non introduciu unha hora válida do día
-The time you have entered begins before your preferred work hours.  Is this correct?: A hora que introduciu comeza antes das súas horas de traballo indicadas. ¿Está ben?
 Edit Entry: Modificar Entrada
 Add Entry: Engadir Entrada
 brief-description-help: Debería proporcionar unha descrición breve (arredor de 20 caracteres) do evento. Esta descrición representará o evento cando se amose no calendario.
@@ -668,7 +640,6 @@ Cancel: Cancelar
 ###############################################
 # Page: edit_layer.php
 #
-Invalid color: Color non válido
 Edit Layer: Modificar Capa
 Add Layer: Engadir Capa
 Source: Fonte
@@ -1285,6 +1256,11 @@ Invalid login: Login inválido
 
 
 ###############################################
+# Page: includes/init.php
+#
+
+
+###############################################
 # Page: includes/js.php
 #
 
@@ -1309,3 +1285,93 @@ Invalid login: Login inválido
 #
 This is a reminder for the event detailed below.: Esto é un recordatorio para o evento descrito máis abaixo.
 Reminder: Recordatorio
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+#
+# << MISSING >>
+# Server URL is required:
+#
+# << MISSING >>
+# Server URL must end with '/':
+Invalid color for document background: Color non válido para o fondo do documento
+Invalid color for document title: Color non válido para o título do documento
+Invalid color for table cell background: Color non válido para o fondo da cela
+#
+# << MISSING >>
+# Invalid color for table grid:
+#
+# << MISSING >>
+# Invalid color for table header background:
+#
+# << MISSING >>
+# Invalid color for table text background:
+#
+# << MISSING >>
+# Invalid color for event popup background:
+#
+# << MISSING >>
+# Invalid color for event popup text:
+Invalid color for table cell background for today: Color non válido para o fondo da cela de hoxe
+Color format should be '#RRGGBB': O formato da cor debería ser '#RRGGBB'
+
+
+###############################################
+# Page: includes/js/assistant_edit.php
+#
+
+
+###############################################
+# Page: includes/js/colors.php
+#
+
+
+###############################################
+# Page: includes/js/datesel.php
+#
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Non introduciu ningunha descrición breve
+You have not entered a valid time of day: Non introduciu unha hora válida do día
+The time you have entered begins before your preferred work hours.  Is this correct?: A hora que introduciu comeza antes das súas horas de traballo indicadas. ¿Está ben?
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Color non válido
+
+
+###############################################
+# Page: includes/js/export.php
+#
+
+
+###############################################
+# Page: includes/js/popups.php
+#
+
+
+###############################################
+# Page: includes/js/pref.php
+#
+
+
+###############################################
+# Page: includes/js/search.php
+#
+
+
+###############################################
+# Page: includes/js/usersel.php
+#
+
+
+###############################################
+# Page: includes/js/views_edit.php
+#
