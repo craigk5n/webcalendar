@@ -1,4 +1,9 @@
 Version 0.9.32dev (?? ??? 01)
+  - Remember the last view (week, day or month) and return to it
+    instead of returning to the preferred view.  For example, if
+    you were viewing March 2002, then viewed an event in that
+    month, and then deleted it, you would be returned to the
+    March 2002 view after the delete. (Uses cookies to do this.)
   - Fixes to php-dbi.inc for postgres and odbc issues.  May break
     compatibility with early versions of PHP 3.0 and PHP 4.0
   - Updated INSTALL and FAQ files.

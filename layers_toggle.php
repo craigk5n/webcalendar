@@ -32,6 +32,8 @@ if ( strlen ( $error ) == 0 ) {
   // Go back to where we where if we can figure it out.
   if ( strlen ( $HTTP_REFERER ) )
     do_redirect ( $HTTP_REFERER );
+  else if ( strlen ( get_last_view() )  )
+    do_redirect ( get_last_view() );
   else
     do_redirect ( "$STARTVIEW.php" );
 }

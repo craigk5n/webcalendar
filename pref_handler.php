@@ -36,7 +36,12 @@ while ( list ( $key, $value ) = each ( $HTTP_POST_VARS ) ) {
 }
 
 if ( strlen ( $error ) == 0 ) {
-  do_redirect ( "$STARTVIEW.php" );
+  if ( strlen ( get_last_view() ) ) {
+    $url = get_last_view();
+  } else {
+    $url = "$STARTVIEW.php";
+  }
+  do_redirect ( $url );
 }
 
 ?>
