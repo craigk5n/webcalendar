@@ -237,6 +237,11 @@ h2 {
 		Create a <tt>.htaccess</tt> file in the toplevel WebCalendar
 		directory that contains a single line:</p>
 		<pre>php_value magic_quotes_gpc 1</pre>
+		<p>(For this to work with Apache, you must have the Apache
+		<tt>AllowOverride All</tt> directive enabled for the directory
+		where WebCalendar is installed.
+		Additionally, PHP must be running as an Apache module, not
+		a CGI.)</p>
 
 	<p>You can run PHP either as a CGI or an Apache module.  You'll get better
 		performance with PHP setup as a module.  Not only will you not have to
@@ -984,6 +989,11 @@ input path/table-ibase.sql;</strong></pre>
 		Create a <tt>.htaccess</tt> file in the toplevel WebCalendar
 		directory that contains a single line:
 		<pre>php_value magic_quotes_gpc 1</pre>
+		<p>(For this to work with Apache, you must have the Apache
+		<tt>AllowOverride All</tt> directive enabled for the directory
+		where WebCalendar is installed.
+		Additionally, PHP must be running as an Apache module, not
+		a CGI.)</p>
 		<br />
 		<span class="note">Note for Oracle and PostgreSQL:</span> You must also change the value of
 		<tt>magic_quotes_sybase</tt> to <tt>On</tt> within the <tt>php.ini</tt>
