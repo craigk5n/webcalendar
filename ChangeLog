@@ -1,4 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed bug 1169078: Bad function call in import_handler.php
+ - Fixed bug 1168092: Overlapping events display problem
  - Fixed bug 1167281: View_l loses colour for "today"
  - Added new default webcal_config values to all sql table definition files
  - Fixed bug 1167790: class="selectedday" assignments in other than day.php
