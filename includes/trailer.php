@@ -233,11 +233,16 @@ $res = dbi_query ( "SELECT cal_report_name, cal_report_id " .
   "( cal_is_global = 'Y' AND cal_show_in_trailer = 'Y' ) " .
   "ORDER by cal_report_id" );
 $found_report = false;
+if ( ! empty ( $user ) && $user != $login ) {
+  $u_url = "&user=$user";
+} else {
+  $u_url = "";
+}
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     if ( $found_report )
       echo " | ";
-    echo "<a href=\"report.php?report_id=$row[1]\" class=\"navlinks\">" .
+    echo "<a href=\"report.php?report_id=$row[1]$u_url\" class=\"navlinks\">" .
       htmlentities ( $row[0] ) . "</a>";
     $found_report = true;
   }
