@@ -79,7 +79,7 @@ if ( strlen ( $hour ) > 0 ) {
 }
 
 // first check for any schedule conflicts
-if ( $allow_conflicts == '0' && strlen ( $hour ) > 0 ) {
+if ( $allow_conflicts == 0 && !$confirm_conflicts && strlen ( $hour ) > 0 ) {
   $date = mktime ( 0, 0, 0, $month, $day, $year );
   if ( $rpt_end_use )
     $endt = mktime (0,0,0, $rpt_month, $rpt_day,$rpt_year );
@@ -319,6 +319,28 @@ if ( strlen ( $error ) == 0 ) {
 <UL>
 <?php echo $overlap; ?>
 </UL>
+
+<?php
+// user can confirm conflicts
+  echo "<form name=\"confirm\" method=\"post\">\n";
+  while (list($xkey, $xval)=each($HTTP_POST_VARS)) {
+    if (is_array($xval)) {
+      $xkey.="[]";
+      while (list($ykey, $yval)=each($xval)) {
+        echo "<input type=\"hidden\" name=\"$xkey\" value=\"$yval\">\n";
+      }
+    } else {
+      echo "<input type=\"hidden\" name=\"$xkey\" value=\"$xval\">\n";
+    }
+  }
+?>
+<table>
+ <tr>
+   <td><input type="submit" name="confirm_conflicts" value="&nbsp;<?php etranslate("Save")?>&nbsp;"></td>
+   <td><input type="button" value="<?php etranslate("Cancel")?>" onClick="history.back()"><td>
+ </tr>
+</table>
+</form>
 
 <?php } else { ?>
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php etranslate("Error")?></H2></FONT>
