@@ -830,33 +830,64 @@ function date_selection_html ( $prefix, $date ) {
 //   $thismonth - number of the month to print
 //   $thisyear - number of the year
 //   $showyear - boolean whether to show the year in the calendar's title
-//   $show_weeknums - boolean whether to show week numbers to the left of each
+//   $show_weeknums - boolean whether to show week numbers to the left of each row
 //   $minical_id - id attribute for the minical table
-//                    row
-function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=false, $minical_id="" ) {
+//   $month_link - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;)
+//                 defaults to 'month.php?'
+//
+function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=false, $minical_id='', $month_link='month.php?' ) {
   global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
 	global $DISPLAY_WEEKNUMBER;
+	global $SCRIPT, $thisday; // Needed for day.php
 
-  if ( $user != $login && ! empty ( $user ) )
+	// TODO: Make day.php NOT be a special case
+
+  if ( $user != $login && ! empty ( $user ) ) {
     $u_url = "&amp;user=$user";
-  else
-    $u_url = "";
+	} else {
+    $u_url = '';
+	}
 
   //start the minical table for each month
   echo "\n<table class=\"minical\"";
-	if ( strlen ( $minical_id ) ) {
+	if ( $minical_id != '' ) {
 		echo " id=\"$minical_id\"";
 	}
 	echo ">\n";
+
 	$monthstart = mktime(2,0,0,$thismonth,1,$thisyear);
 	$monthend = mktime(2,0,0,$thismonth + 1,0,$thisyear);
 
-	//print the month name
-	echo "<caption>";
-	echo "<a href=\"month.php?year=$thisyear&amp;month=$thismonth$u_url\">";
-	echo month_name ( $thismonth - 1 ) .
-		( $showyear ? " $thisyear" : "" ) .
-		"</a></caption>\n";
+	if ( $SCRIPT == 'day.php' ) {
+		$month_ago = date ( "Ymd", mktime ( 3, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
+		$month_ahead = date ( "Ymd", mktime ( 3, 0, 0, $thismonth + 1, $thisday, $thisyear ) );
+
+		echo "<caption>$thisday</caption>\n";
+		echo "<thead>\n";
+		echo "<tr class=\"monthnav\">\n";
+		echo '<td style="text-align:left;"><a title="' . translate("Previous") . "\" href=\"day.php?{$u_url}date=$month_ago$caturl\">";
+		echo '<img src="leftarrowsmall.gif" class="prevnextsmall" alt="' . translate("Previous") . "\" /></a></td>\n";
+		echo '<th colspan="5">';
+		echo month_name ( $thismonth - 1 );
+		if ( $showyear != '' ) {
+			echo " $thisyear";
+		}
+		echo "</th>\n";
+		echo '<td style="text-align:right;"><a title="' . translate("Next") . "\" href=\"day.php?{$u_url}date=$month_ahead$caturl\">";
+		echo '<img src="rightarrowsmall.gif" class="prevnextsmall" alt="' . translate("Next") . "\" /></a></td>\n";
+		echo "</tr>\n";
+	} else {
+		//print the month name
+		echo "<caption>";
+
+		echo "<a href=\"{$month_link}year=$thisyear&amp;month=$thismonth$u_url\">";
+		echo month_name ( $thismonth - 1 ) .
+			( $showyear ? " $thisyear" : "" ) .
+			"</a></caption>\n";
+
+		echo "<thead>\n<tr>\n";
+	}
+
 	//determine if the week starts on sunday or monday
 	if ( $WEEK_START == "1" ) {
 		$wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
@@ -865,7 +896,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=
 	}
 
 	//print the headers to display the day of the week (sun, mon, tues, etc.)
-	echo "<tr class=\"day\">\n";
+
 	// if we're showing week numbers we need an extra column
 	if ( $show_weeknums ) echo "<td class=\"empty\"></td>\n";
 	//if the week doesn't start on monday, print the day
@@ -882,10 +913,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=
 		weekday_short_name ( 0 ) . 
 	"</th>\n";
 	//end the header row
-	echo "</tr>\n";
+	echo "</tr>\n</thead>\n<tbody>\n";
 	for ($i = $wkstart; date("Ymd",$i) <= date ("Ymd",$monthend);
 			 $i += (24 * 3600 * 7) ) {
-		echo "<tr class=\"numdate\">\n";
+		echo "<tr>\n";
 		if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ) {
 			echo "<td class=\"weeknumber\"><a href=\"week.php?$u_url&amp;date=".date("Ymd", $i)."\">(" . week_number($i) . ")</a></td>\n";
 		}
@@ -905,26 +936,38 @@ function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=
 			}
 			if ( $dateYmd >= date ("Ymd",$monthstart) &&
 					 $dateYmd <= date ("Ymd",$monthend) ) {
-				echo "<td";
-				$wday = date ( "w", $date );
-				$class = "";
+				echo '<td';
+				$wday = date ( 'w', $date );
+				$class = '';
+
 				if ( $wday == 0 || $wday == 6 ) {
-					$class = "weekend";
+					$class = 'weekend';
 				}
+
+				if ( $dateYmd == $thisyear . $thismonth . $thisday ) {
+					if ( $class != '' ) {
+						$class .= ' ';
+					}
+					$class .= 'selectedday';
+				}
+
 				if ( $hasEvents ) {
-					if ( strlen ( $class ) ) {
-						$class .= " ";
+					if ( $class != '' ) {
+						$class .= ' ';
 					}
 					$class .= "hasevents";
 				}
-				if ( strlen ( $class ) ) {
+
+				if ( $class != '' ) {
 					echo " class=\"$class\"";
 				}
-				if ( $dateYmd == date ( "Ymd" ) ) {
-					echo " id=\"today\"";
+
+				if ( $dateYmd == date ( 'Ymd' ) ) {
+					echo ' id="today"';
 				}
-				echo ">";
-				echo "<a href=\"day.php?date=" .  $dateYmd . $u_url .  "\">";
+
+				echo '>';
+				echo '<a href="day.php?date=' .  $dateYmd . $u_url .  '">';
 				echo date ( "d", $date );
 				echo "</a>";
 				echo "</td>\n";
@@ -934,7 +977,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=
 			}                 // end for $j
 			echo "</tr>\n";
 		}                         // end for $i
-	echo "</table>\n";
+	echo "</tbody>\n</table>\n";
 }
 
 // Print the HTML for one day's events in the month view.

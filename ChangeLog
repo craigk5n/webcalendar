@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Added patch 1059130: minical function implementation
   - Added patch 1016648: datesel.php when global vars=off
   - Added patch 1045008: Weekly (Users vertical) view colors
   - Cleaning up styles.php

@@ -451,6 +451,11 @@ td.month a:hover {
 .minical caption a:hover {
 	color: #0000FF;
 }
+<?php //formats the day name (i.e. Sun, Mon, etc) in minicals
+?>.minical thead th {
+	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+	text-align: center;
+}
 .minical th, 
 .minical td.empty {
 	background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
@@ -497,14 +502,15 @@ td.month a:hover {
 	background-color: <?php echo $GLOBALS['CELLBG']; ?>;
 	font-size: 13px;
 }
-#day .minical {
-	border-width: 1px;
-	border-style: solid;
-	border-color: <?php echo $GLOBALS['TABLEBG']; ?>;
+#day div.minicalcontainer {
+	text-align: right;
+	border: 1px solid black;
+	padding: 3px;
 }
 <?php //the really big number above the minicalendar in day.php
-?>#day .minical th.date {
+?>#day .minical caption {
 	text-align: center;
+	font-weight: bold;
 	color: <?php echo $GLOBALS['THFG']; ?>;
 	background-color: <?php echo $GLOBALS['THBG']; ?>;
 	font-size: 47px;
@@ -524,11 +530,8 @@ td.month a:hover {
 	border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 100%;
 }
-#day #today {
-	background-color: <?php echo $GLOBALS['TODAYCELLBG']; ?>;
-}
-#day .selectedday {
-	border: 1px solid #OOOOOO;
+#day .minical td.selectedday {
+	border: 2px solid black;
 }
 <?php //display: none; is unhidden by includes/print_styles.css for printer-friendly pages
 ?>#day dl.desc {
@@ -576,13 +579,16 @@ td.month a:hover {
 	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
 	vertical-align: top;
 }
-#month #prevmonth {
+#month #prevmonth,
+#viewl #prevmonth {
 	float: left;
 }
-#month #nextmonth {
+#month #nextmonth,
+#viewl #nextmonth {
 	float: right;
 }
-#month .minical caption {
+#month .minical caption,
+#viewl .minical caption {
 	margin-left: 4ex;
 }
 <?php //contains ALL months
@@ -626,14 +632,6 @@ td.month a:hover {
 	color: #B04040;
 	font-size: 13px;
 	text-decoration: none;
-}
-<?php //formats the day name (i.e. Sun, Mon, etc)
-      //used as "tr class="day"" to format the cells WITHIN that row 
-?>#viewl .minical tr.day,
-#month .minical tr.day th,
-#day .minical tr.day {
-	color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
-	text-align: center;
 }
 #viewv table,
 #viewm table,
