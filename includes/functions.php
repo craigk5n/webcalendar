@@ -582,14 +582,15 @@ function get_my_users () {
       return $ret;
     }
     // get list of users in the same groups as current user
-    $sql = "SELECT DISTINCT(cal_login) from webcal_group_user " .
+    $sql = "SELECT DISTINCT(webcal_group_user.cal_login) from webcal_group_user " .
+      "LEFT JOIN webcal_user ON webcal_group_user.cal_login = webcal_user.cal_login " .
       "WHERE cal_group_id ";
     if ( count ( $groups ) == 1 )
       $sql .= "= " . $groups[0];
     else {
       $sql .= "IN ( " . implode ( ", ", $groups ) . " )";
     }
-+    $sql .= " ORDER BY cal_lastname, cal_firstname, cal_login";
+    $sql .= " ORDER BY cal_lastname, cal_firstname, webcal_group_user.cal_login";
     //echo "SQL: $sql <br />\n";
     $res = dbi_query ( $sql );
     if ( $res ) {
