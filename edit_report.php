@@ -89,12 +89,12 @@ if ( empty ( $error ) && $show_participants ) {
 }
 
 // Default values
-$page_template = "<dl>${days}</dl>";
-$day_template = "<dt><span style=\"font-weight:bold;\">${date}</span></dt>\n<dd><dl>${events}</dl></dd>";
-$event_template = "<dt>${name}</dt>\n<dd>" .
-  "<span style=\"font-weight:bold;\">" . translate ( "Date" ) . ":</span> ${date}<br />\n" .
-  "<span style=\"font-weight:bold;\">" . translate ( "Time" ) . ":</span> ${time}<br />\n" .
-  "${description}</dd>\n";
+$page_template = "<dl>\${days}</dl>";
+$day_template = "<dt><span style=\"font-weight:bold;\">\${date}</span></dt>\n<dd><dl>\${events}</dl></dd>";
+$event_template = "<dt>\${name}</dt>\n<dd>" .
+  "<span style=\"font-weight:bold;\">" . translate ( "Date" ) . ":</span> \${date}<br />\n" .
+  "<span style=\"font-weight:bold;\">" . translate ( "Time" ) . ":</span> \${time}<br />\n" .
+  "\${description}</dd>\n";
 
 if ( empty ( $error ) && $report_id > 0 ) {
   $sql = "SELECT cal_login, cal_report_id, cal_is_global, " .
@@ -216,8 +216,8 @@ if ( ! empty ( $error ) ) {
 
 <table style="border-width:0px;">
 	<tr><td style="font-weight:bold;">
-		<?php etranslate("Report name")?>:</td><td>
-		<input type="text" name="report_name" size="40" maxlength="50" value="<?php echo htmlentities ( $report_name ); ?>" />
+		<label for="rpt_name"><?php etranslate("Report name")?>:</label></td><td>
+		<input type="text" name="report_name" id="rpt_name" size="40" maxlength="50" value="<?php echo htmlentities ( $report_name ); ?>" />
 	</td></tr>
 <?php
 if ( $show_participants ) {
@@ -233,9 +233,9 @@ if ( $show_participants ) {
     } 
     $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
-  print "<tr><td style=\"vertical-align:top; font-weight:bold;\">" .
-    translate("User") . ":</td>\n";
-  print "<td><select name=\"report_user\" size=\"1\">$users\n";
+  print "<tr><td style=\"vertical-align:top; font-weight:bold;\"><label for=\"rpt_user\">" .
+    translate("User") . ":</label></td>\n";
+  print "<td><select name=\"report_user\" id=\"rpt_user\" size=\"1\">$users\n";
   print "</select>\n";
   print "</td></tr>\n";
 }
@@ -276,8 +276,8 @@ if ( $is_admin ) {
   <?php if ( $report_include_header == 'N' ) echo " checked=\"checked\""; ?> /> <?php etranslate("No") ?></label>
 </td></tr>
 <tr><td style="font-weight:bold;">
-	<?php etranslate("Date range")?>:</td><td>
-	<select name="time_range">
+	<label for="rpt_time_range"><?php etranslate("Date range")?>:</label></td><td>
+	<select name="time_range" id="rpt_time_range">
   <?php
     while ( list ( $num, $descr ) = each ( $ranges ) ) {
       echo "<option value=\"$num\"";
@@ -288,8 +288,8 @@ if ( $is_admin ) {
   ?></select>
 </td></tr>
 <tr><td style="font-weight:bold;">
-	<?php etranslate("Category")?>:</td><td>
-	<select name="cat_id">
+	<label for="rpt_cat_id"><?php etranslate("Category")?>:<label></td><td>
+	<select name="cat_id" id="rpt_cat_id">
   <option value=""><?php etranslate("None") ?></option>
   <?php
     while ( list ( $cat_id, $descr ) = each ( $categories ) ) {
