@@ -227,10 +227,10 @@ if ( $is_assistant || $is_nonuser_admin )
 
 <!-- TABS -->
 <div id="tabs">
-	<span class="tabfor" id="tab_details"><a href="#tabdetails" onclick="return showTab('details')">Details</a></span>
-	<span class="tabbak" id="tab_sched"><a href="#tabsched" onclick="return showTab('sched')">Scheduling</a></span>
-	<span class="tabbak" id="tab_participants"><a href="#tabparticipants" onclick="return showTab('participants')">Participants</a></span>
-	<span class="tabbak" id="tab_pete"><a href="#tabpete" onclick="return showTab('pete')">Repeat</a></span>
+	<span class="tabfor" id="tab_details"><a href="#tabdetails" onclick="return showTab('details')"><?php etranslate("Details") ?></a></span>
+	<span class="tabbak" id="tab_sched"><a href="#tabsched" onclick="return showTab('sched')"><?php etranslate("Scheduling") ?></a></span>
+	<span class="tabbak" id="tab_participants"><a href="#tabparticipants" onclick="return showTab('participants')"><?php etranslate("Participants") ?></a></span>
+	<span class="tabbak" id="tab_pete"><a href="#tabpete" onclick="return showTab('pete')"><?php etranslate("Repeat") ?></a></span>
 </div>
 
 <!-- TABS BODY -->
