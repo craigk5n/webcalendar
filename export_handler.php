@@ -1,4 +1,16 @@
 <?php
+/*
+ * $Id$
+ *
+ * Description:
+ *	Handler for exporting webcalendar events to various formats.
+ *
+ * Comments:
+ *	All-day events and untimed events are treated differently.  An
+ *	all-day event is a 12am event with duration 24 hours.  We store
+ *	untimed events with a start time of -1 in the webcalendar database.
+ *
+ *********************************************************************/
 include_once 'includes/init.php';
 
 if ( ! empty ( $PROGRAM_VERSION ) ) {
@@ -227,7 +239,7 @@ function export_time($date, $duration, $time, $texport) {
   $day = (int) substr($date,-2,2);
 
   if ( $time == -1 ) {
-      // all day event
+      // untimed event
       $hour = 0;
       $min = 0;
       $sec = 0;
@@ -239,6 +251,7 @@ function export_time($date, $duration, $time, $texport) {
       $start_date = date("Ymd", $start_tmstamp);
       echo "DTSTART;VALUE=DATE:$start_date\r\n";
   } else {
+      // timed event or all-day event
       $hour = (int) substr($time,0,-4);
       $min = (int) substr($time,-4,2);
       $sec = (int) substr($time,-2,2);
@@ -252,10 +265,12 @@ function export_time($date, $duration, $time, $texport) {
   }
 
   if (strcmp($texport,"ical") == 0) {
-      $utc_dtstamp = export_get_utc_date(date("Ymd", mktime()), date("His", mktime()));
+      $utc_dtstamp = export_get_utc_date(date("Ymd", mktime()),
+        date("His", mktime()));
       echo "DTSTAMP:$utc_dtstamp\r\n";
 
 	if ($time == -1) {
+          // untimed event
 	  $end_tmstamp = $start_tmstamp + 24*60*60;
 	  $utc_end = date("Ymd", $end_tmstamp);
 	  echo "DTEND;VALUE=DATE:$utc_end\r\n";
@@ -528,6 +543,11 @@ function export_recurrence_vcal($id, $date) {
   }
 }
 
+
+/*
+ * Create a date-time format (e.g. "20041130T123000Z") that is
+ * converted from local timezone to GMT.
+ */
 function export_get_utc_date($date, $time=0) {
   $year = (int) substr($date,0,-4);
   $month = (int) substr($date,-4,2);
