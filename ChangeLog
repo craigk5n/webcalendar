@@ -55,6 +55,7 @@ Verion 0.9.43dev (?? ??? 2003)
   - Updated German translation
   - Updated Dutch translation
   - Updated Chinese-GB2312 translation
+  - Added Basque translation
 Verion 0.9.42 (21 Jul 2003)
   - Added admin options for nonuser calendars
   - Fixed bug 760236: Timezone Offset is buggy in edit_entry_handler.php
