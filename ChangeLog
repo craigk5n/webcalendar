@@ -1,4 +1,6 @@
 Verion 0.9.42-devcvs (?? ??? ????)
+  - Fixed bug: In tables-postgres.sql, table webcal_entry column cal_ext_for_id
+    was NOT NULL when it should have been NULL.
   - Fixed bug 759231: URLs where not being converted to HTML links in
     event description.
   - Fixed bug 750044: add charset specification to translations which
