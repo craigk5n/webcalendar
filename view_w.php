@@ -219,6 +219,8 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
       $repeated_events = $re_save[$i];
       echo "<TD WIDTH=\"$tdw%\" BGCOLOR=\"$color\">";
       //echo date ( "D, m-d-Y H:i:s", $date ) . "<BR>";
+      if ( empty ( $add_link_in_views ) || $add_link_in_views != "N" )
+        echo html_for_add_icon ( date ( "Ymd", $date ), "", "", $user );
       print_date_entries ( date ( "Ymd", $date ),
         $user, $friendly, true );
       echo "</TD>";

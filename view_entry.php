@@ -14,6 +14,83 @@ load_user_layers ();
 
 include "includes/translate.php";
 
+// make sure this user is allowed to look at this calendar.
+$can_view = false;
+$is_my_event = false;
+
+if ( $is_admin )
+  $can_view = true;
+
+if ( ! $can_view ) {
+  // is this user a participant or the creator of the event?
+  $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
+    "webcal_entry_user WHERE webcal_entry.cal_id = " .
+    "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
+    "AND (webcal_entry.cal_create_by = '$login' " .
+    "OR webcal_entry_user.cal_login = '$login')";
+  $res = dbi_query ( $sql );
+  if ( $res ) {
+    $row = dbi_fetch_row ( $res );
+    if ( $row && $row[0] > 0 ) {
+      $can_view = true;
+      $is_my_event = true;
+    }
+    dbi_free_result ( $res );
+  }
+}
+
+if ( ! $can_view ) {
+  $check_group = false;
+  // if not a participant in the event, must be allowed to look at
+  // other user's calendar.
+  if ( $login == "__public__" ) {
+    if ( $public_access_others == "Y" )
+      $check_group = true;
+  }
+  else {
+    if ( $allow_view_other != "Y" )
+      $check_group = true;
+  }
+  // If $check_group is true now, it means this user can look at the
+  // event only if they are in the same group as some of the people in
+  // the event.
+  // This gets kind of tricky.  If there is a participant from a different
+  // group, do we still show it?  For now, the answer is no.
+  // This could be configurable somehow, but how many lines of text would
+  // it need in the admin page to describe this scenario?  Would confuse
+  // 99.9% of users.
+  // In summary, make sure at least one event participant is in one of
+  // this user's groups.
+  $my_users = get_my_users ();
+  if ( is_array ( $my_users ) ) {
+    $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
+      "webcal_entry_user WHERE webcal_entry.cal_id = " .
+      "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
+      "AND webcal_entry_user.cal_login IN ( ";
+    for ( $i = 0; $i < count ( $my_users ); $i++ ) {
+      if ( $i > 0 )
+        $sql .= ", ";
+      $sql .= "'" . $my_users[$i]['cal_login'] . "'";
+    }
+    $sql .= " )";
+    $res = dbi_query ( $sql );
+    if ( $res ) {
+      $row = dbi_fetch_row ( $res );
+      if ( $row && $row[0] > 0 )
+        $can_view = true;
+      dbi_free_result ( $res );
+    }
+  }
+  // If we didn't indicate we need to check groups, then this user
+  // can't view this event.
+  if ( ! $check_group )
+    $can_view = false;
+}
+
+if ( ! $can_view ) {
+  $error = translate ( "You are not authorized" );
+}
+
 // copied from edit_entry_handler (functions.php?)
 function add_duration ( $time, $duration ) {
   $hour = (int) ( $time / 10000 );
@@ -77,29 +154,27 @@ if ( $id < 1 ) {
   exit;
 }
 
-// first see who has access to view this entry
-$is_my_event = false;
+// Try to determine the event status.
 $event_status = "";
-$sql = "SELECT cal_id, cal_status FROM webcal_entry_user " .
-  "WHERE cal_login = '$login' AND cal_id = $id";
-$res = dbi_query ( $sql );
-if ( $res ) {
-  $row = dbi_fetch_row ( $res );
-  if ( $row[0] == $id )
-    $is_my_event = true;
-  $event_status = $row[1];
-  dbi_free_result ( $res );
-}
 
-// If viewing another user's calendar, check the status of the
-// event on their calendar (to see if it's deleted).
 if ( $login != $user ) {
+  // If viewing another user's calendar, check the status of the
+  // event on their calendar (to see if it's deleted).
   $sql = "SELECT cal_status FROM webcal_entry_user " .
     "WHERE cal_login = '$user' AND cal_id = $id";
   $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) )
       $event_status = $row[0];
+    dbi_free_result ( $res );
+  }
+} else {
+  $sql = "SELECT cal_id, cal_status FROM webcal_entry_user " .
+    "WHERE cal_login = '$login' AND cal_id = $id";
+  $res = dbi_query ( $sql );
+  if ( $res ) {
+    $row = dbi_fetch_row ( $res );
+    $event_status = $row[1];
     dbi_free_result ( $res );
   }
 }
@@ -123,7 +198,7 @@ if ( empty ( $event_status ) ) {
 }
 
 // If we have no event status yet, it must have been deleted.
-if ( empty ( $event_status ) && ! $is_admin ) {
+if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
   echo "<H2><FONT COLOR=\"$H2COLOR\">" . translate("Error") .
     "</FONT></H2>" . translate("You are not authorized") . ".\n";
   include "includes/trailer.php";
@@ -284,9 +359,14 @@ $thisday = $row[1] % 100;
 ?>
 <?php if ( $event_time >= 0 ) { ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Time")?>:</B></TD>
-  <TD><?php echo display_time ( $row[2] ) . $end_str; ?></TD></TR>
+  <TD><?php
+    if ( $row[5] == ( 24 * 60 ) )
+      etranslate("All day event");
+    else
+      echo display_time ( $row[2] ) . $end_str;
+  ?></TD></TR>
 <?php } ?>
-<?php if ( $row[5] > 0 ) { ?>
+<?php if ( $row[5] > 0 && $row[5] != ( 24 * 60 ) ) { ?>
 <TR><TD VALIGN="top"><B><?php etranslate("Duration")?>:</B></TD>
   <TD><?php echo $row[5]; ?> <?php etranslate("minutes")?></TD></TR>
 <?php } ?>
@@ -440,7 +520,8 @@ if ( $single_user == "N" && $show_participants ) {
     $ext_users = explode ( "\n", $external_users );
     if ( is_array ( $ext_users ) ) {
       for ( $i = 0; $i < count( $ext_users ); $i++ ) {
-        echo $ext_users[$i] . " (" . translate("External User") . ")<BR>\n";
+        if ( ! empty ( $ext_users[$i] ) )
+          echo $ext_users[$i] . " (" . translate("External User") . ")<BR>\n";
       }
     }
   }
@@ -546,7 +627,7 @@ if ( $can_edit && $event_status != "D" ) {
     "');\">" . translate("Delete entry") . "</A><BR>\n";
 }
 if ( $readonly != "Y" && ! $is_my_event && ! $is_private && 
-  $event_status != "D" )  {
+  $event_status != "D" && $login != "__public__" )  {
   echo "<A CLASS=\"navlinks\" HREF=\"add_entry.php?id=$id\" onClick=\"return confirm('" .
     translate("Do you want to add this entry to your calendar?") .
     "\\n\\n" . translate("This will add the entry to your calendar.") .
@@ -554,7 +635,7 @@ if ( $readonly != "Y" && ! $is_my_event && ! $is_private &&
 }
 
 if ( count ( $allmails ) > 0 ) {
-  echo "<A CLASS=\"navlinks\" HREF=\"mailto:" . implode ( ",", $allmails ) .
+  echo "<A CLASS=\"navlinks\" HREF=\"mailto:" . implode ( ", ", $allmails ) .
     "?subject=$subject\">" .
     translate("Email all participants") . "</A><BR>\n";
 }

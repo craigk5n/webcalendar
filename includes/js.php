@@ -113,6 +113,16 @@ function hide ( name ) {
   }
 }
 
+function unhide ( name ) {
+  if (W3C) {
+    document.getElementById(name).style.visibility = "visible";
+  } else if (NS4) {
+    document.layers[name].visibility = "show";
+  } else {
+    document.all[name].style.visibility = "visible";
+  }
+}
+
 //-->
 
 </SCRIPT>

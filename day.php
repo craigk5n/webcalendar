@@ -23,9 +23,12 @@ if ( $allow_view_other != "Y" && ! $is_admin )
 $view = "day";
 
 $can_add = ( $readonly == "N" || $is_admin == "Y" );
-if ( $public_access == "Y" && $public_access_can_add != "Y" &&
-  $login == "__public__" )
-  $can_add = false;
+if ( $public_access == "Y" && $login == "__public__" ) {
+  if ( $public_access_can_add != "Y" )
+    $can_add = false;
+  if ( $public_access_others != "Y" )
+    $user = ""; // security precaution
+}
 
 if ( ! empty ( $user ) ) {
   $u_url = "user=$user&";

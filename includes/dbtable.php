@@ -90,6 +90,13 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
         $ret .= "> " . translate("No");
       } else if ( $tablear[$i]["type"] == "date" ) {
         $ret .= date_selection_html ( $tablear[$i]["name"], $valuesar[$i] );
+      } else if ( $tablear[$i]["type"] == "dbdate" ) {
+        // '2002-12-31'
+        $y = substr ( $valuesar[$i], 0, 4 );
+        $m = substr ( $valuesar[$i], 5, 2 );
+        $d = substr ( $valuesar[$i], 8, 2 );
+        $date = sprintf ( "%04d%02d%02d", $y, $m, $d );
+        $ret .= date_selection_html ( $tablear[$i]["name"], $date );
       } else {
         $ret .= "(type " . $tablear[$i]["type"] . " not supported)";
       }
@@ -105,6 +112,12 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
             $ret .= translate("No");
         } else if ( $tablear[$i]["type"] == "date" ) {
           $ret .= date_to_str ( $valuesar[$i] );
+        } else if ( $tablear[$i]["type"] == "dbdate" ) {
+          $y = substr ( $valuesar[$i], 0, 4 );
+          $m = substr ( $valuesar[$i], 5, 2 );
+          $d = substr ( $valuesar[$i], 8, 2 );
+          $date = sprintf ( "%04d%02d%02d", $y, $m, $d );
+          $ret .= date_to_str ( $date );
         } else {
           $ret .= "(type " . $tablear[$i]["type"] . " not supported)";
         }
@@ -163,24 +176,27 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
   for ( $i = 1; $i < count ( $fields ); $i++ ) {
     $sql .= ", " . $fields[$i];
   }
-  $sql .= " FROM " . $tablename . " WHERE ";
-  $first = 1;
-  for ( $i = 0; $i < count ( $tablear ); $i++ ) {
-    if ( ! empty ( $tablear[$i]["iskey"] ) ) {
-      if ( empty ( $keys[$tablear[$i]["name"]] ) ) {
-        //echo "Error: key value for " . $tablear[$i]["name"] . " not set.\n";
-        //exit;
-      } else {
-        if ( $first )
-          $first = 0;
-        else
-          $sql .= " AND ";
-        $sql .= $tablear[$i]["name"] . " = " ;
-        if ( $tablear[$i]["type"] == "int" ||
-          $tablear[$i]["type"] == "float" || $tablear[$i]["type"] == "date" )
-          $sql .= $keys[$tablear[$i]["name"]];
-        else
-          $sql .= "'" . $keys[$tablear[$i]["name"]] . "'";
+  $sql .= " FROM " . $tablename . " ";
+  if ( is_array ( $keys ) && count ( $keys ) > 0 ) {
+    $sql .= "WHERE ";
+    $first = 1;
+    for ( $i = 0; $i < count ( $tablear ); $i++ ) {
+      if ( ! empty ( $tablear[$i]["iskey"] ) ) {
+        if ( empty ( $keys[$tablear[$i]["name"]] ) ) {
+          //echo "Error: key value for " . $tablear[$i]["name"] . " not set.\n";
+          //exit;
+        } else {
+          if ( $first )
+            $first = 0;
+          else
+            $sql .= " AND ";
+          $sql .= $tablear[$i]["name"] . " = " ;
+          if ( $tablear[$i]["type"] == "int" ||
+            $tablear[$i]["type"] == "float" || $tablear[$i]["type"] == "date" )
+            $sql .= $keys[$tablear[$i]["name"]];
+          else
+            $sql .= "'" . $keys[$tablear[$i]["name"]] . "'";
+        }
       }
     }
   }
@@ -200,7 +216,13 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
           $ret .= "<TD BGCOLOR=\"$CELLBG\" VALIGN=\"top\">";
           if ( $tablear[$ind]["type"] == "date" )
             $val = date_to_str ( $row[$i], "", 1, 1 );
-          else
+          else if ( $tablear[$ind]["type"] == "dbdate" ) {
+            $y = substr ( $row[$i], 0, 4 );
+            $m = substr ( $row[$i], 5, 2 );
+            $d = substr ( $row[$i], 8, 2 );
+            $date = sprintf ( "%04d%02d%02d", $y, $m, $d );
+            $val = date_to_str ( $date, "", 1, 1 );
+          } else
             $val = htmlentities ( $row[$i] );
           if ( $first_href && ! empty ( $href ) ) {
             $first_href = 0;
@@ -313,15 +335,16 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
   $first = 1;
   for ( $i = 0; $i < count ( $tablear ); $i++ ) {
     if ( ! empty ( $tablear[$i]["iskey"] ) ) {
-      if ( $first )
-        $first = 0;
-      else
-        $sql .= " AND ";
-      $sql .= $tablear[$i]["name"] . " = " ;
       if ( empty ( $keys[$tablear[$i]["name"]] ) ) {
         //echo "Error: key value for " . $tablear[$i]["name"] . " not set.\n";
         //exit;
+        continue;
       } else {
+        if ( $first )
+          $first = 0;
+        else
+          $sql .= " AND ";
+        $sql .= $tablear[$i]["name"] . " = " ;
         if ( $tablear[$i]["type"] == "int" ||
           $tablear[$i]["type"] == "float" || $tablear[$i]["type"] == "date" )
           $sql .= $keys[$tablear[$i]["name"]];
@@ -421,9 +444,12 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
       exit;
     }
     $sql .= " " . $tablear[$i]["name"] . " = ";
-    if ( empty ( $valuesar[$i] ) )
+    if ( empty ( $valuesar[$i] ) ) {
       $sql .= "NULL";
-     else
+    } else if ( $tablear[$i]["type"] == "int" || 
+      $tablear[$i]["type"] == "date" ) {
+      $sql .= $valuesar[$i];
+    } else
       $sql .= "'" . $valuesar[$i] . "'";
   }
   $sql .= " WHERE";

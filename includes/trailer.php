@@ -146,7 +146,7 @@
         $login_url = "login.php";
       else
         $login_url = "login.php?return_path=$login_return_path";
-      echo " | <A TARGET=\"top\" CLASS=\"navlinks\" TARGET=\"_top\" HREF=\"$login_url\">" .
+      echo " | <A CLASS=\"navlinks\" HREF=\"$login_url\">" .
         translate("Login") . "/" . translate("Logout") . "</A>";
     }
     if ( $login != "__public__" && $readonly == "N" &&
@@ -195,7 +195,11 @@
     echo "<A CLASS=\"navlinks\" HREF=\"";
     if ( $views[$i]['cal_view_type'] == 'W' )
       echo "view_w.php";
-    else if ( $views[$i]['cal_view_type'] == 'M' )
+    elseif ( $views[$i]['cal_view_type'] == 'V' )
+      echo "view_v.php";
+    elseif ( $views[$i]['cal_view_type'] == 'T' )
+      echo "view_t.php";
+    elseif ( $views[$i]['cal_view_type'] == 'M' )
       echo "view_m.php";
     else
       echo "view_m.php"; // add day view here when it's implemented

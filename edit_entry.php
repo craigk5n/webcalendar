@@ -24,6 +24,7 @@ if ( $login == "__public__" && $id > 0 ) {
 }
 
 $external_users = "";
+$participants = array ();
 
 if ( ! empty ( $id ) && $id > 0 ) {
   // first see who has access to edit this entry
@@ -148,6 +149,12 @@ if ( ! empty ( $id ) && $id > 0 ) {
     $time = $hour * 100;
   if ( $readonly == "N" || $is_admin )
     $can_edit = true;
+  if ( ! empty ( $defusers ) ) {
+    $tmp_ar = explode ( ",", $defusers );
+    for ( $i = 0; $i < count ( $tmp_ar ); $i++ ) {
+      $participants[$tmp_ar[$i]] = 1;
+    }
+  }
 }
 if ( ! empty ( $year ) && $year )
   $thisyear = $year;
@@ -160,9 +167,14 @@ if ( empty ( $rpt_type ) || ! $rpt_type )
 
 // avoid error for using undefined vars
 if ( empty ( $hour ) )
-  $hour = 0;
+  $hour = -1;
 if ( empty ( $duration ) )
   $duration = 0;
+if ( $duration == ( 24 * 60 ) ) {
+  $hour = $minute = $duration = "";
+  $allday = "Y";
+} else
+  $allday = "N";
 if ( empty ( $name ) )
   $name = "";
 if ( empty ( $description ) )
@@ -196,7 +208,10 @@ if ( empty ( $cal_date ) || ! $cal_date )
 <HTML>
 <HEAD>
 <TITLE><?php etranslate($application_name)?></TITLE>
+<?php include "includes/js.php"; ?>
 <SCRIPT LANGUAGE="JavaScript">
+var oldhour = 0, oldminute = 0, olddh = 0, olddm = 0;
+
 // do a little form verifying
 function validate_and_submit () {
   if ( document.forms[0].name.value == "" ) {
@@ -309,10 +324,44 @@ function selectUsers () {
 <?php } ?>
 
 
+// This function is called wheneve someone clicks on the "All day event"
+// checkbox.  When the enabled all day, it clears all the time of day
+// and duration fields.  If they change their mind and turn it off, we
+// put the original values back for them.
+// This isn't necessary, but it helps show what the meaning of "all-day" is.
+function timetype_handler () {
+  var i = document.forms[0].timetype.selectedIndex;
+  var val = document.forms[0].timetype.options[i].text;
+  //alert ( "val " + i + "  = " + val );
+  // i == 1 when set to timed event
+  if ( i != 1 ) {
+    //alert("clear");
+    // switching to allday event... save values
+    if ( document.forms[0].hour.value != "" ) {
+      oldhour = document.forms[0].hour.value;
+      oldminute = document.forms[0].minute.value;
+      olddh = document.forms[0].duration_h.value;
+      olddm = document.forms[0].duration_m.value;
+    }
+    document.forms[0].hour.value = "";
+    document.forms[0].minute.value = "";
+    document.forms[0].duration_h.value = "";
+    document.forms[0].duration_m.value = "";
+    //hide ( "timeentry" );
+  } else {
+    //alert("set");
+    document.forms[0].hour.value = oldhour;
+    document.forms[0].minute.value = oldminute;
+    document.forms[0].duration_h.value = olddh;
+    document.forms[0].duration_m.value = olddm;
+    //unhide ( "timeentry" );
+  }
+}
+
 </SCRIPT>
 <?php include "includes/styles.php"; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext">
+<BODY BGCOLOR="<?php echo $BGCOLOR; ?>" CLASS="defaulttext" xonload="timetype_handler()">
 
 <H2><FONT COLOR="<?php echo $H2COLOR;?>"><?php if ( $id ) echo translate("Edit Entry"); else echo translate("Add Entry"); ?></FONT></H2>
 
@@ -369,7 +418,9 @@ if ( $TIME_FORMAT == "12" ) {
 if ( $time < 0 )
   $h12 = "";
 ?>
-  <TD><INPUT NAME="hour" SIZE=2 VALUE="<?php echo $h12;?>" MAXLENGTH=2>:<INPUT NAME="minute" SIZE=2 VALUE="<?php if ( $time >= 0 ) printf ( "%02d", $minute );?>" MAXLENGTH=2>
+  <TD>
+<SPAN ID="timeentry">
+<INPUT NAME="hour" SIZE=2 VALUE="<?php if ( $allday != "Y" ) echo $h12;?>" MAXLENGTH=2>:<INPUT NAME="minute" SIZE=2 VALUE="<?php if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $minute );?>" MAXLENGTH=2>
 <?php
 if ( $TIME_FORMAT == "12" ) {
   echo "<INPUT TYPE=radio NAME=ampm VALUE=\"am\" $amsel>" .
@@ -378,6 +429,16 @@ if ( $TIME_FORMAT == "12" ) {
     translate("pm") . "\n";
 }
 ?>
+</SPAN>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<SELECT NAME="timetype" ONCHANGE="timetype_handler()">
+<OPTION VALUE="U" <?php if ( $allday != "Y" && $hour == -1 ) echo SELECTED?>>
+  <?php etranslate("Untimed event"); ?>
+<OPTION VALUE="T" <?php if ( $allday != "Y" && $hour >= 0 ) echo SELECTED?>>
+  <?php etranslate("Timed event"); ?>
+<OPTION VALUE="A" <?php if ( $allday == "Y" ) echo SELECTED?>>
+  <?php etranslate("All day event"); ?>
+</SELECT>
 </TD></TR>
 
 <?php
@@ -385,7 +446,7 @@ if ( $TIME_FORMAT == "12" ) {
   $dur_m = $duration - ( $dur_h * 60 );
 ?>
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("duration-help")?>"><?php etranslate("Duration")?>:</B></TD>
-  <TD><INPUT NAME="duration_h" SIZE="2" MAXLENGTH="2" VALUE="<?php printf ( "%d", $dur_h );?>">:<INPUT NAME="duration_m" SIZE="2" MAXLENGTH="2" VALUE="<?php printf ( "%02d", $dur_m );?>"> (<?php echo translate("hours") . ":" . translate("minutes")?>)</TD></TR>
+  <TD><INPUT NAME="duration_h" SIZE="2" MAXLENGTH="2" VALUE="<?php if ( $allday != "Y" ) printf ( "%d", $dur_h );?>">:<INPUT NAME="duration_m" SIZE="2" MAXLENGTH="2" VALUE="<?php if ( $allday != "Y" ) printf ( "%02d", $dur_m );?>"> (<?php echo translate("hours") . ":" . translate("minutes")?>)</TD></TR>
 
 <?php if ( $disable_priority_field != "Y" ) { ?>
 <TR><TD><B CLASS="tooltip" TITLE="<?php etooltip("priority-help")?>"><?php etranslate("Priority")?>:</B></TD>
@@ -562,15 +623,21 @@ if ( $single_user == "N" && $show_participants ) {
   $size = 0;
   $users = "";
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-     $l = $userlist[$i]['cal_login'];
+    $l = $userlist[$i]['cal_login'];
     $size++;
     $users .= "<OPTION VALUE=\"" . $l . "\"";
     if ( $id > 0 ) {
       if ( ! empty ( $participants[$l] ) )
         $users .= " SELECTED";
     } else {
-      if ( ( $l == $login && ! $is_assistant ) || ( ! empty ( $user ) && $l == $user ) )
-        $users .= " SELECTED";
+      if ( ! empty ( $defusers ) ) {
+        // default selection of participants was in the URL
+        if ( ! empty ( $participants[$l] ) )
+          $users .= " SELECTED";
+      } else {
+        if ( ( $l == $login && ! $is_assistant ) || ( ! empty ( $user ) && $l == $user ) )
+          $users .= " SELECTED";
+      }
     }
     $users .= "> " . $userlist[$i]['cal_fullname'];
   }
