@@ -3,18 +3,18 @@
 function selectUsers () {
   // find id of user selection object
   var listid = 0;
-  for ( i = 0; i < document.forms[0].elements.length; i++ ) {
-    if ( document.forms[0].elements[i].name == "users[]" )
+  for ( i = 0; i < document.searchformentry.elements.length; i++ ) {
+    if ( document.searchformentry.elements[i].name == "users[]" )
       listid = i;
   }
-  url = "usersel.php?form=searchformentry&amp;listid=" + listid + "&amp;users=";
+  url = "usersel.php?form=searchformentry&listid=" + listid + "&users=";
   // add currently selected users
-  for ( i = 0, j = 0; i < document.forms[0].elements[listid].length; i++ ) {
-    if ( document.forms[0].elements[listid].options[i].selected ) {
+  for ( i = 0, j = 0; i < document.searchformentry.elements[listid].length; i++ ) {
+    if ( document.searchformentry.elements[listid].options[i].selected ) {
       if ( j != 0 )
 	url += ",";
       j++;
-      url += document.forms[0].elements[listid].options[i].value;
+      url += document.searchformentry.elements[listid].options[i].value;
     }
   }
   //alert ( "URL: " + url );
