@@ -1,10 +1,19 @@
 <?php
 include_once 'includes/init.php';
 
+if ( preg_match ( "/v(\d\S+) /", $GLOBALS['PROGRAM_NAME'], $matches ) ) {
+  $prodid = "PRODID:-//WebCalendar-$matches[1]";
+} else {
+  $prodid = "PRODID:-//WebCalendar-UnknownVersion";
+}
+
+if ( empty ( $user ) || $user == $login )
+  load_user_layers ();
+
 function export_get_event_entry($id) {
-  global $use_all_dates, $fromyear,$frommonth,$fromday,
+  global $use_all_dates, $include_layers, $fromyear,$frommonth,$fromday,
     $endyear,$endmonth,$endday,$modyear,$modmonth,$modday,$login;
-  global $DISPLAY_UNAPPROVED;
+  global $DISPLAY_UNAPPROVED, $layers;
 
   // We exporting repeating events only with the pilot-datebook CSV format
   $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name " .
@@ -18,7 +27,16 @@ function export_get_event_entry($id) {
 
   if ($id == "all") {
       $sql .= "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id AND " .
-	"webcal_entry_user.cal_login = '" . $login . "'";
+	" ( webcal_entry_user.cal_login = '" . $login . "'";
+      if ( $user && $user != $login ) {
+        $sql .= " OR webcal_entry_user.cal_login = '$user'";
+      } else if ( $include_layers && $layers ) {
+        foreach ( $layers as $layer ) {
+          $sql .= " OR webcal_entry_user.cal_login = '" .
+            $layer['cal_layeruser'] . "'";
+        }
+      }
+      $sql .= " ) ";
 
 	if (!$use_all_dates) {
 	  $startdate = sprintf ( "%04d%02d%02d", $fromyear, $frommonth, $fromday );
@@ -31,10 +49,19 @@ function export_get_event_entry($id) {
   } else {
       $sql .= "WHERE webcal_entry.cal_id = '$id' AND " .
 	"webcal_entry_user.cal_id = '$id' AND " .
-	"webcal_entry_user.cal_login = '" . $login . "'";
+	"( webcal_entry_user.cal_login = '" . $login . "'";
         // TODO: add support for user in URL so we can export from other
         // calendars, particularly non-user calendars.
 	//"webcal_entry_user.cal_id = '$id'";
+      if ( $user && $user != $login ) {
+        $sql .= " OR webcal_entry_user.cal_login = '$user'";
+      } else if ( $layers ) {
+        foreach ( $layers as $layer ) {
+          $sql .= " OR webcal_entry_user.cal_login = '" .
+             $layer['cal_layeruser'] . "'";
+        }
+      }
+      $sql .= " ) ";
   } //end if $id=all
 
   if ( $DISPLAY_UNAPPROVED == "N"  || $login == "__public__" )
@@ -44,6 +71,7 @@ function export_get_event_entry($id) {
 
   $sql .= " ORDER BY webcal_entry.cal_date";
 
+  //echo "SQL: $sql <p>";
   $res = dbi_query ( $sql );
 
   return $res;
@@ -597,7 +625,7 @@ function export_vcal ($id) {
 
   if (count($entry_array) > 0) {
     echo "BEGIN:VCALENDAR\r\n";
-    echo "PRODID:-//WebCalendar-0.9.40\r\n";
+    echo "$prodid\r\n";
     echo "VERSION:1.0\r\n";
 
     /* Time Zone
@@ -686,6 +714,8 @@ function export_vcal ($id) {
 } //end function
 
 function export_ical ($id) {
+  global $prodid;
+
   header ( "Content-Type: text/calendar" );
   //header ( "Content-Type: text/plain" );
 
@@ -700,7 +730,7 @@ function export_ical ($id) {
 
   if ($count > 0) {
     echo "BEGIN:VCALENDAR\r\n";
-    echo "PRODID:-//WebCalendar-0.9.40\r\n";
+    echo "$prodid\r\n";
     echo "VERSION:2.0\r\n";
     echo "METHOD:PUBLISH\r\n";
   }
@@ -957,6 +987,7 @@ function transmit_header ( $mime, $file ) {
 $id = $HTTP_POST_VARS["id"];
 $format = $HTTP_POST_VARS["format"];
 $use_all_dates = $HTTP_POST_VARS["use_all_dates"];
+$include_layers = $HTTP_POST_VARS["include_layers"];
 $fromyear = $HTTP_POST_VARS["fromyear"];
 $frommonth = $HTTP_POST_VARS["frommonth"];
 $fromday = $HTTP_POST_VARS["fromday"];

@@ -1,4 +1,8 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Fixed bug 1009183: exporting event from another user's calendar or
+    from a layer generated an empty ics file.  Added "Include all layers"
+    option on main export page also.  Include WebCalendar version number
+    in ics file.
   - Removing blank lines from the end of files
   - Temporarily disabling the print-media stylesheet
   - Fixing a TON of bugs in almost all of the views NOTE: view_m, day, and
