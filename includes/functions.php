@@ -716,21 +716,9 @@ function print_entry ( $id, $date, $time, $duration,
   if ( $duration == ( 24 * 60 ) ) {
     $timestr = translate("All day event");
   } else if ( $time != -1 ) {
-    $my_time = $time + ( $TZ_OFFSET * 10000 );
-    if ( $GLOBALS["TIME_FORMAT"] == "24" ) {
-      printf ( "%02d:%02d", ( $my_time / 10000 ) % 24,
-        ( $my_time / 100 ) % 100 );
-    } else {
-      $h = ( (int) ( $my_time / 10000 ) ) % 12;
-      if ( $h == 0 ) $h = 12;
-      echo $h;
-      $m = ( $my_time / 100 ) % 100;
-      if ( $m > 0 )
-        printf ( ":%02d", $m );
-      echo ( (int) ( $my_time / 10000 ) ) < 12 ? translate("am") : translate("pm");
-      echo "&gt;";
-    }
     $timestr = display_time ( $time );
+    $time_short = preg_replace ("/(:00)/", '', $timestr);
+    echo $time_short . "&gt;";
     if ( $duration > 0 ) {
       if ( $duration == ( 24 * 60 ) ) {
         $timestr = translate("All day event");
@@ -924,14 +912,14 @@ function get_entries ( $user, $date ) {
         $events[$i]['cal_time'] == -1 ) {
         $ret[$n++] = $events[$i];
         //echo "added event $events[$i][cal_id] <BR>";
-      } if ( $events[$i]['cal_date'] == $date &&
+      } else if ( $events[$i]['cal_date'] == $date &&
         $events[$i]['cal_time'] < $cutoff ) {
         $ret[$n++] = $events[$i];
-        //echo "added event $events[$i][cal_id] <BR>";
-      } else if ( $events[$i]['cal_date'] == $prev_date &&
+        //echo "added event {$events[$i][cal_id]} <BR>";
+      } else if ( $events[$i]['cal_date'] == $prev_day &&
         $events[$i]['cal_time'] >= $cutoff ) {
         $ret[$n++] = $events[$i];
-        //echo "added event $events[$i][cal_id] <BR>";
+        //echo "added event {$events[$i][cal_id]} <BR>";
       }
     } else {
       //TZ < 0
@@ -942,18 +930,21 @@ function get_entries ( $user, $date ) {
       $sd = substr ( $date, 6, 2 );
       $next_day = date ( ( "Ymd" ), mktime ( 3, 0, 0, $sm, $sd + 1, $sy ) );
       //echo "next_date = $next_day <P>";
-      if ( $events[$i]['cal_date'] == $date &&
-        $events[$i]['cal_time'] == -1 ) {
-        $ret[$n++] = $events[$i];
-        //echo "added event $events[$i][cal_id] <BR>";
-      } if ( $events[$i]['cal_date'] == $date &&
-        $events[$i]['cal_time'] > $cutoff ) {
-        $ret[$n++] = $events[$i];
-        //echo "added event $events[$i][cal_id] <BR>";
-      } else if ( $events[$i]['cal_date'] == $next_date &&
-        $events[$i]['cal_time'] <= $cutoff ) {
-        $ret[$n++] = $events[$i];
-        //echo "added event $events[$i][cal_id] <BR>";
+      if ( $events[$i]['cal_time'] == -1 ) {
+	if ( $events[$i]['cal_date'] == $date ) {
+          $ret[$n++] = $events[$i];
+          //echo "added event $events[$i][cal_id] <BR>";
+        }
+      } else {
+	if ( $events[$i]['cal_date'] == $date &&
+          $events[$i]['cal_time'] > $cutoff ) {
+          $ret[$n++] = $events[$i];
+          //echo "added event $events[$i][cal_id] <BR>";
+        } else if ( $events[$i]['cal_date'] == $next_day &&
+          $events[$i]['cal_time'] <= $cutoff ) {
+          $ret[$n++] = $events[$i];
+          //echo "added event $events[$i][cal_id] <BR>";
+        }
       }
     }
   }
@@ -2331,7 +2322,7 @@ function display_time ( $time, $ignore_offset=0 ) {
     $hour -= 24;
   $min = ( $time / 100 ) % 100;
   if ( $GLOBALS["TIME_FORMAT"] == "12" ) {
-    $ampm = $hour >= 12 && $hour != 24 ? translate("pm") : translate("am");
+    $ampm = ( $hour >= 12 ) ? translate("pm") : translate("am");
     $hour %= 12;
     if ( $hour == 0 )
       $hour = 12;
@@ -2430,7 +2421,7 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
   }
 
   $newdate = $indate;
-  if ( ! empty ( $server_time ) && $server_time > 0 ) {
+  if ( $server_time != "" && $server_time >= 0 ) {
     $y = substr ( $indate, 0, 4 );
     $m = substr ( $indate, 4, 2 );
     $d = substr ( $indate, 6, 2 );
