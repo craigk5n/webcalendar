@@ -117,7 +117,7 @@ if ( ! strlen ( $participants[0] ) )
 // Note that if someone actually wants to create an event that starts
 // at midnight and lasts exactly 24 hours, it will be treated in the
 // same manner.
-if ( $allday == "Y" ) {
+if ( $timetype == "A" ) {
   $duration_h = 24;
   $duration_m = 0;
   $hour = 0;
