@@ -79,9 +79,26 @@ if ( $res ) {
 </TABLE><BR>
 
 <?php
+if ( ! empty ( $startid ) ) {
+  $previd = $startid + $PAGE_SIZE;
+  $res = dbi_query ( "SELECT MAX(cal_log_id) FROM " .
+    "webcal_entry_log" );
+  if ( $res ) {
+    if ( $row = dbi_fetch_row ( $res ) ) {
+      if ( $row[0] <= $previd ) {
+        $prevarg = '';
+      } else {
+        $prevarg = "?startid=$previd";
+      }
+      echo "<a href=\"activity_log.php$prevarg\" class=\"navlinks\">" .
+        translate("Previous") . " $PAGE_SIZE</a><br>\n";
+    }
+    dbi_free_result ( $res );
+  }
+}
 if ( ! empty ( $nextpage ) ) {
-  echo "<A HREF=\"activity_log.php?startid=$nextpage\" CLASS=\"navlinks\">" .
-    translate("Next") . " $PAGE_SIZE</A><BR>\n";
+  echo "<a href=\"activity_log.php?startid=$nextpage\" class=\"navlinks\">" .
+    translate("Next") . " $PAGE_SIZE</a><br>\n";
 }
 ?>
 
