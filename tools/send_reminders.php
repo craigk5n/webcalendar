@@ -167,9 +167,12 @@ function send_reminder ( $id, $event_date ) {
   if ( $row[5] > 0 )
     $body .= translate ("Duration") . ": " . $row[5] .
       " " . translate("minutes") . "\n";
-  $body .= translate("Priority") . ": " . $pri[$row[6]] . "\n";
-  $body .= translate("Access") . ": " .
-    ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) . "\n";
+  if ( ! $disable_priority_field )
+    $body .= translate("Priority") . ": " . $pri[$row[6]] . "\n";
+  if ( ! $disable_access_field )
+    $body .= translate("Access") . ": " .
+      ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) .
+      "\n";
   if ( ! strlen ( $single_user_login ) )
     $body .= translate("Created by") . ": " . $row[0] . "\n";
   $body .= translate("Updated") . ": " . date_to_str ( $row[3] ) . " " .
@@ -196,7 +199,7 @@ function send_reminder ( $id, $event_date ) {
       }
     }
   }
-  if ( ! strlen ( $single_user_login ) ) {
+  if ( ! $single_user && ! $disable_participants_field ) {
     $body .= translate("Participants") . ":\n";
     for ( $i = 0; $i < count ( $participants ); $i++ ) {
       $body .= "  " . $participants[$i] .
@@ -207,7 +210,7 @@ function send_reminder ( $id, $event_date ) {
   $subject = translate("Reminder") . ": " . $name;
 
   $recip = "";
-  if ( strlen ( $single_user_login ) ) {
+  if ( $single_user ) {
     $recip = $emails[$single_user_login];
   } else {
     for ( $i = 0; $i < count ( $participants ); $i++ ) {
