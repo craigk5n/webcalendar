@@ -405,7 +405,7 @@ admin_DATE_FORMAT_MD  </select>
 <table style="border-width:0px;" cellspacing="0" cellpadding="0"><tr><td style="background-color:#000000;"><table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2"><tr><td style="width:100%; background-color:<?php echo $CELLBG ?>;"><table style="border-width:0px; width:100%;">
 
 <tr><td class="tooltip" title="<?php etooltip("subscriptions-enabled-help")?>"><?php etranslate("Allow remote subscriptions")?>:</td>
-  <td><input type="radio" name="admin_publish_enabled" value="Y" <?php if ( $s["PUBLISH_ENABLED"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_publish_enabled" value="N" <?php if ( $s["PUBLISH_ENABLED"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
+  <td><input type="radio" name="admin_PUBLISH_ENABLED" value="Y" <?php if ( $s["PUBLISH_ENABLED"] == "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("Yes")?> <input type="radio" name="admin_PUBLISH_ENABLED" value="N" <?php if ( $s["PUBLISH_ENABLED"] != "Y" ) echo " checked=\"checked\"";?>> <?php etranslate("No")?></td></tr>
 </table></td></tr></table></td></tr></table>
 
 
