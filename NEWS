@@ -1,5 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1169403:  Public Access not default selected if Particiapants not shown. 
       1169078: Bad function call in import_handler.php
       1168092: Overlapping events display problem
       1167281: View_l loses colour for "today"
