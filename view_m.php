@@ -14,8 +14,10 @@ include "includes/translate.php";
 
 $USERS_PER_TABLE = 6;
 
-if ( $allow_view_other != "Y" && ! $is_admin )
-  $user = "";
+if ( $allow_view_other == "N" && ! $is_admin ) {
+  // not allowed...
+  do_redirect ( "$STARTVIEW.php" );
+}
 
 if ( empty ( $friendly ) )
   $friendly = 0;

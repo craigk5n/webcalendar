@@ -184,7 +184,8 @@
     translate("Help") . "</A>";
 ?>
 <BR>
-<?php if ( $login != "__public__" ) { ?>
+<?php if ( ( $login != "__public__" ) &&
+         ( $allow_view_other != "N" || $is_admin ) ) { ?>
 <B><?php etranslate("Views")?>:</B>
 <?php
   for ( $i = 0; $i < count ( $views ); $i++ ) {
