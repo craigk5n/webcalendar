@@ -142,6 +142,7 @@ a:hover {
   font-family: <?php echo $GLOBALS['FONTS'] ?>;
   font-size: 12px;
   color: <?php echo ( $GLOBALS['POPUP_FG'] == "" ? "#000000" : $GLOBALS['POPUP_FG'] ); ?>;
+  background-color: <?php echo $GLOBALS[POPUP_BG] ?>;
   text-decoration: none;
 }
 .tooltip {
