@@ -244,7 +244,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 ?>
 
 <br /><br />
-<a class="navlinks" href="month.php?<?php
+<a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="month.php?<?php
   if ( $thisyear ) {
     echo "year=$thisyear&amp;month=$thismonth&amp;";
   }

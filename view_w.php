@@ -215,7 +215,7 @@ if ( empty ( $friendly ) )
   echo $eventinfo;
 
 if ( ! $friendly )
-  echo "<a class=\"navlinks\" href=\"view_w.php?id=$id&amp;date=$date&amp;friendly=1\" " .
+  echo "<a title=\"<?php etranslate("Generate printer-friendly version")?>\" class=\"printer\" href=\"view_w.php?id=$id&amp;date=$date&amp;friendly=1\" " .
     "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
     translate("Generate printer-friendly version") .
     "'\">[" . translate("Printer Friendly") . "]</a>\n";
