@@ -1,4 +1,8 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Replaced all instances of forms[0] in javascript with the real form names. This
+   will allow WebCalendar to co-exist with other forms on the same page.
+ - Added javascript that enables visibility of the start/end time or duration
+   on the edit_entry page from availability.php.
  - Fixed bug 1148603: Assistants can't view Bosses Unapproved Events
  - Fixed bug 1145342: Category selected when adding event is not transferred
    to edit_entry page.
