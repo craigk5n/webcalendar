@@ -130,6 +130,7 @@ function event_to_text ( $id, $date, $time, $duration,
   $text = str_replace ( '${duration}', $duration_str, $text );
   $text = str_replace ( '${priority}', $pri_str, $text );
   $text = str_replace ( '${href}', $href_str, $text );
+  $text = str_replace ( '${id}', $id, $text );
   $text = str_replace ( '${user}', $event_owner, $text );
   $text = str_replace ( '${report_id}', $report_id, $text );
 
@@ -138,6 +139,15 @@ function event_to_text ( $id, $date, $time, $duration,
 
 $error = "";
 $list = ""; // list of reports when no id specified
+
+if ( ! empty ( $user ) && $user != $login &&
+  ( ( ! empty ( $allow_view_other ) && $allow_view_other == 'Y' )
+  || $is_admin ) ) {
+  $report_user = $user;
+  $u_url = "&user=$user";
+} else {
+  $u_url = "";
+}
 
 if ( empty ( $reports_enabled ) || $reports_enabled != 'Y' ) {
   $error = translate ( "You are not authorized" ) . ".";
@@ -212,7 +222,11 @@ if ( empty ( $error ) && empty ( $list ) ) {
         $report_include_header = $row[$i++];
         $report_name = $row[$i++];
         $report_time_range = $row[$i++];
-        $report_user = $row[$i++];
+        $test_report_user = $row[$i++];
+        // If this report type specifies a specific user, then we will
+        // use that user rather even if a user was passed in via URL.
+        if ( ! empty ( $test_report_user ) )
+          $report_user = $test_report_user;
         $report_allow_nav = $row[$i++];
         $report_cat_id = $row[$i++];
         $report_include_empty = $row[$i++];
@@ -341,6 +355,7 @@ $get_unapproved = $DISPLAY_UNAPPROVED == 'Y';
 if ( $report_user == "__public__" )
   $get_unapproved = false;
 
+//echo "User: $report_user <br>\n";
 //echo "Date Range: $start_date - $end_date <p>\n";
 
 $start_year = substr ( $start_date, 0, 4 );
@@ -462,16 +477,16 @@ if ( empty ( $friendly ) && empty ( $error ) && empty ( $list ) ) {
       $offset = 0;
     $next = $offset + 1;
     $prev = $offset - 1;
-    echo "<p><a href=\"report.php?report_id=$report_id" .
+    echo "<p><a href=\"report.php?report_id=$report_id$u_url" .
       ( empty ( $prev ) ? "" : "&offset=$prev" ) . "\" class=\"navlinks\">" .
       translate ( "Previous" ) . "</a>\n";
-    echo "&nbsp;&nbsp;<a href=\"report.php?report_id=$report_id" .
+    echo "&nbsp;&nbsp;<a href=\"report.php?report_id=$report_id$u_url" .
       ( empty ( $next ) ? "" : "&offset=$next" ) . "\" class=\"navlinks\">" .
       translate ( "Next" ) . "</a><br>\n";
   }
   if ( $report_include_header == 'Y' ) {
     echo '<p><a class="navlinks" href="report.php?report_id=' . $report_id .
-      '&friendly=1" target="cal_printer_friendly" onmouseover="window.status=\'' .
+      '&friendly=1$u_url" target="cal_printer_friendly" onmouseover="window.status=\'' .
       translate("Generate printer-friendly version") .
       '\'">[' . translate("Printer Friendly") . ']</a>';
   }
