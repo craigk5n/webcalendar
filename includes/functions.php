@@ -106,19 +106,19 @@ if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
 
 function getPostValue ( $name )
 {
-  if ( empty ( $HTTP_POST_VARS ) )
-    return "";
-  if ( empty ( $HTTP_POST_VARS[$name] ) )
-    return "";
+  if ( ! isset ( $HTTP_POST_VARS ) )
+    return null;
+  if ( ! isset ( $HTTP_POST_VARS[$name] ) )
+    return null;
   return ( $HTTP_POST_VARS[$name] );
 }
 
 function getGetValue ( $name )
 {
-  if ( empty ( $HTTP_GET_VARS ) )
-    return "";
-  if ( empty ( $HTTP_GET_VARS[$name] ) )
-    return "";
+  if ( ! isset ( $HTTP_GET_VARS ) )
+    return null;
+  if ( ! isset ( $HTTP_GET_VARS[$name] ) )
+    return null;
   return ( $HTTP_GET_VARS[$name] );
 }
 
@@ -126,12 +126,12 @@ function getGetValue ( $name )
 function getValue ( $name, $format="", $fatal=false )
 {
   $val = getPostValue ( $name );
-  if ( empty ( $val ) )
+  if ( ! isset ( $val ) )
     $val = getGetValue ( $name );
   // for older PHP versions...
-  if ( empty ( $val  ) && get_magic_quotes_gpc () == 1 )
+  if ( ! isset ( $val  ) && get_magic_quotes_gpc () == 1 )
     $val = $GLOBALS[$name];
-  if ( empty ( $val  ) )
+  if ( ! isset ( $val  ) )
     return "";
   if ( ! empty ( $format ) && ! preg_match ( "/^" . $format . "$/", $val ) ) {
     // does not match
