@@ -101,7 +101,8 @@ function purge_events ( $ids ) {
   }
   for ( $i = 0; $i < $TT; $i++ ) {
     $table = $tables[$i][T];
-    echo "Records deleted from $table: $num[$table]<br />\n";
+    echo translate("Records deleted from") .
+      " $table: $num[$table]<br />\n";
   }
 }
 
