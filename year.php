@@ -68,6 +68,7 @@ $nextYear= $year + 1;
 include "includes/config.inc";
 include "includes/php-dbi.inc";
 include "includes/functions.inc";
+include "includes/user.inc";
 include "includes/validate.inc";
 include "includes/connect.inc";
 
@@ -100,21 +101,11 @@ include "includes/translate.inc";
 <FONT COLOR="<?php echo $H2COLOR?>" SIZE="+1">
 <?php
   if ( ! strlen ( $single_user_login ) ) {
-    $res = dbi_query ( "SELECT cal_lastname, cal_firstname FROM webcal_user " .
-      "WHERE cal_login = '" . ( strlen ( $user ) ? $user : $login ) . "'" );
-    if ( $res ) {
-      echo "<BR>\n";
-      if ( $row = dbi_fetch_row ( $res ) ) {
-        if ( strlen ( $row[0] ) || strlen ( $row[1] ) ) {
-          if ( strlen ( $row[1] ) )
-            echo "$row[1] ";
-          if ( strlen ( $row[0] ) )
-            echo "$row[0] ";
-        } else
-          echo $user;
-      }
-      dbi_free_result ( $res );
-    }
+    echo "<BR>\n";
+    if ( strlen ( $lastname ) && strlen ( $firstname ) )
+      echo "$firstname $lastname";
+    else
+      echo $login;
   }
 ?>
 </FONT></TD>

@@ -4,6 +4,7 @@
 include "includes/config.inc";
 include "includes/php-dbi.inc";
 include "includes/functions.inc";
+include "includes/user.inc";
 include "includes/site_extras.inc";
 include "includes/validate.inc";
 include "includes/connect.inc";
@@ -48,18 +49,6 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-// get the email adress of the creator of the entry
-$sql = "SELECT cal_email FROM webcal_user, webcal_entry " .
-  "WHERE cal_login = webcal_entry.cal_create_by " .
-  "AND webcal_entry.cal_id = $id ";
-$res = dbi_query ( $sql );
-if ( $res ) {
-  $row = dbi_fetch_row( $res );
-  $email_addr = $row[0];
-  dbi_free_result ( $res );
-}
-
-
 $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
   "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
   "cal_name, cal_description FROM webcal_entry WHERE cal_id = " . $id;
@@ -72,6 +61,10 @@ $row = dbi_fetch_row ( $res );
 $create_by = $row[0];
 $name = $row[9];
 $description = $row[10];
+
+// get the email adress of the creator of the entry
+user_load_variables ( $create_by, "createby_" );
+$email_addr = $createby_email;
 
 // If confidential and not this user's event, then
 // They cannot seem name or description.
@@ -200,41 +193,40 @@ if ( ! strlen ( $single_user_login ) ) {
   if ( $is_private ) {
     echo "[" . translate("Confidential") . "]";
   } else {
-    $sql = "SELECT webcal_entry_user.cal_login, webcal_user.cal_lastname, " .
-      "webcal_user.cal_firstname, webcal_entry_user.cal_status " .
-      "FROM webcal_entry_user, webcal_user " .
-      "WHERE webcal_entry_user.cal_id = $id AND " .
-      "webcal_entry_user.cal_login = webcal_user.cal_login";
-      "webcal_entry_user.cal_status == 'A' " .
-      "OR webcal_entry_user.cal_status == 'W' )";
+    $sql = "SELECT cal_login, cal_status FROM webcal_entry_user " .
+      "WHERE cal_id = $id";
     //echo "$sql<P>\n";
     $res = dbi_query ( $sql );
     $first = 1;
     $num_app = $num_wait = $num_rej = 0;
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( strlen ( $row[1] ) > 0 )
-        $pname = "$row[1], $row[2]";
-      else
-        $pname = "$row[0]";
-      if ( $login == $row[0] && $row[3] == 'W' )
-        $unapproved = TRUE;
-      if ( $row[3] == 'A' )
-        $approved[$num_app++] = $pname;
-      else if ( $row[3] == 'W' )
-        $waiting[$num_wait++] = $pname;
-      else if ( $row[3] == 'R' )
-        $rejected[$num_rej++] = $pname;
+    if ( $res ) {
+      while ( $row = dbi_fetch_row ( $res ) ) {
+        $pname = $row[0];
+        if ( $login == $row[0] && $row[1] == 'W' )
+          $unapproved = TRUE;
+        if ( $row[1] == 'A' )
+          $approved[$num_app++] = $pname;
+        else if ( $row[1] == 'W' )
+          $waiting[$num_wait++] = $pname;
+        else if ( $row[1] == 'R' )
+          $rejected[$num_rej++] = $pname;
+      }
+      dbi_free_result ( $res );
+    } else {
+      echo translate ("Database error") . ": " . dbi_error() . "<BR>";
     }
-    dbi_free_result ( $res );
   }
   for ( $i = 0; $i < $num_app; $i++ ) {
-    echo $approved[$i] . "<BR>\n";
+    user_load_variables ( $approved[$i], "temp" );
+    echo $tempfullname . "<BR>\n";
   }
   for ( $i = 0; $i < $num_wait; $i++ ) {
-    echo "<BR>" . $waiting[$i] . " (?)\n";
+    user_load_variables ( $waiting[$i], "temp" );
+    echo "<BR>" . $tempfullname . " (?)\n";
   }
   for ( $i = 0; $i < $num_rej; $i++ ) {
-    echo "<BR><STRIKE>" . $rejected[$i] . "</STRIKE> (" . translate("Rejected") . ")\n";
+    user_load_variables ( $rejected[$i], "temp" );
+    echo "<BR><STRIKE>" . $tempfullname . "</STRIKE> (" . translate("Rejected") . ")\n";
   }
 ?></TD></TR>
 <?php

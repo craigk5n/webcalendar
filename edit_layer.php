@@ -4,6 +4,7 @@
 include "includes/config.inc";
 include "includes/php-dbi.inc";
 include "includes/functions.inc";
+include "includes/user.inc";
 include "includes/validate.inc";
 include "includes/connect.inc";
 
@@ -74,42 +75,28 @@ function selectColor ( color ) {
 
 <?php
 if ( ! strlen ( $single_user_login ) ) {
-  $sql = "SELECT cal_login, cal_lastname, cal_firstname " .
-    "FROM webcal_user ORDER BY cal_lastname, cal_firstname, cal_login";
-  $res = dbi_query ( $sql );
-  if ( $res ) {
-    $num_users = 0;
-    $size = 0;
-    $users = "";
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $size++;
-      $users .= "<OPTION VALUE=\"$row[0]\"";
-      if ( strlen ($layers[$id]['cal_layeruser']) > 0 ) {
-        if ( $layers[$id]['cal_layeruser'] == $row[0] )
-          $users .= " SELECTED";
-      } 
-
-      $users .= ">";
-
-      if ( strlen ( $row[1] ) ) {
-        $users .= $row[1];
-        if ( strlen ( $row[2] ) )
-          $users .= ", $row[2]";
-      } else {
-        $users .= $row[0]; 
-      }
-
-    }
-    if ( $size > 50 )
-      $size = 15;
-    else if ( $size > 5 )
-      $size = 5;
-    if ( $size > 1 ) {
-      print "<TR><TD VALIGN=\"top\"><B>" .
-        translate("Source") . ":</B></TD>";
-      print "<TD><SELECT NAME=\"layeruser\" SIZE=1>$users\n";
-      print "</SELECT></TD></TR>\n";
-    }
+  $userlist = user_get_users ();
+  $num_users = 0;
+  $size = 0;
+  $users = "";
+  for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+    $size++;
+    $users .= "<OPTION VALUE=\"" . $userlist[$i]['cal_login'] . "\"";
+    if ( strlen ($layers[$id]['cal_layeruser']) > 0 ) {
+      if ( $layers[$id]['cal_layeruser'] == $userlist[$i]['cal_login'] )
+        $users .= " SELECTED";
+    } 
+    $users .= "> " . $userlist[$i]['cal_fullname'];
+  }
+  if ( $size > 50 )
+    $size = 15;
+  else if ( $size > 5 )
+    $size = 5;
+  if ( $size > 1 ) {
+    print "<TR><TD VALIGN=\"top\"><B>" .
+      translate("Source") . ":</B></TD>";
+    print "<TD><SELECT NAME=\"layeruser\" SIZE=1>$users\n";
+    print "</SELECT></TD></TR>\n";
   }
 }
 ?>

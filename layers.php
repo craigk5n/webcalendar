@@ -4,6 +4,7 @@
 include "includes/config.inc";
 include "includes/php-dbi.inc";
 include "includes/functions.inc";
+include "includes/user.inc";
 include "includes/validate.inc";
 include "includes/connect.inc";
 
@@ -56,36 +57,12 @@ echo "</B>.";
 
    for($index = 0; $index < sizeof($layers); $index++)
    {
-      $sql = "SELECT cal_lastname, cal_firstname " .
-         "FROM webcal_user WHERE cal_login = '" . $layers[$index]['cal_layeruser'] . "' " .
-         "ORDER BY cal_lastname, cal_firstname";
-
-      $res = dbi_query ( $sql );
-
-      if ( $res ) {
-         if ( $row = dbi_fetch_row ( $res ) ) {
-
+      $layeruser = $layers[$index]['cal_layeruser'];
+      user_load_variables ( $layeruser, "layer" );
 ?>
        <TR><TD VALIGN="top"><B><?php etranslate("Layer")?> <?php echo ($index+1) ?></B></TD></TR>
        <TR><TD VALIGN="top"><B><?php etranslate("Source")?>:</B></TD>
-
-           <TD>
-
-<?php
-
-    $layeruser = $layers[$index]['cal_layeruser'];
-
-    if ( strlen ( $row[0] ) ) {
-      echo "$row[0]";
-      if ( strlen ( $row[1] ) )
-        echo ", $row[1]";
-      echo " ($layeruser)"; 
-    } else {
-      echo "$layeruser"; 
-    }
-
-?>
-           </TD></TR>
+           <TD> <?php echo $layerfullname; ?> </TD></TR>
 
        <TR><TD><B><?php etranslate("Color")?>:</B></TD>
           <TD><?php echo ( $layers[$index]['cal_color'] ); ?></TD></TR>
@@ -109,8 +86,6 @@ echo "</B>.";
        <TR><TD><BR></TD></TR>
 
 <?php
-         }
-      }
    }
 ?>
 
