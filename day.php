@@ -9,7 +9,7 @@ include "includes/connect.inc";
 
 load_user_preferences ();
 load_user_layers ();
-if ( empty ( $friendly ) )
+if ( empty ( $friendly ) && empty ( $user ) )
   remember_this_view ();
 
 include "includes/translate.inc";
