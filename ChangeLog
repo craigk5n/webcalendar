@@ -1,4 +1,5 @@
 Version 0.9.47/CVS+dev (?? ??? 2004)
+  - Fixed bug 1102167: custom header when non-admin user
   - When html is allowed in event description, still replace newline with
     html break in view page and event popup if the user did not use any html.
   - Update do_redirect to use meta-refresh work-around for WN web server.
