@@ -1,7 +1,7 @@
 <?php
 // month and year are being overwritten so we will copy vars to fix.
 // this will make datesel.php still work where ever it is called from.
-$fday = $day;$fmonth = $month;$fyear = $year;
+$fday = $_REQUEST["day"];$fmonth = $_REQUEST["month"];$fyear = $_REQUEST["year"];
 
 include_once 'includes/init.php';
 $INC = array('js/datesel.php');
@@ -24,6 +24,12 @@ $prev = mktime ( 3, 0, 0, $thismonth - 1, 1, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevdate = date ( "Ym", $prev ) . "01";
+
+// Sanitize get variables
+$fday = clean_word($fday);
+$fmonth = clean_word($fmonth);
+$fyear = clean_word($fyear);
+
 ?>
 
 <div style="text-align:center;">
