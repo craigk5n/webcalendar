@@ -864,18 +864,16 @@ function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=
 
 		echo "<caption>$thisday</caption>\n";
 		echo "<thead>\n";
-		echo "<tr class=\"monthnav\">\n";
-		echo '<td style="text-align:left;"><a title="' . translate("Previous") . "\" href=\"day.php?{$u_url}date=$month_ago$caturl\">";
-		echo '<img src="leftarrowsmall.gif" class="prevnextsmall" alt="' . translate("Previous") . "\" /></a></td>\n";
-		echo '<th colspan="5">';
+		echo "<tr class=\"monthnav\"><th colspan=\"7\">\n";
+		echo "<a title=\"" . translate("Previous") . "\" class=\"prev\" href=\"day.php?{$u_url}date=$month_ago$caturl\">";
+		echo "<img src=\"leftarrowsmall.gif\" alt=\"" . translate("Previous") . "\" /></a>\n";
+		echo "<a title=\"" . translate("Next") . "\" class=\"next\" href=\"day.php?{$u_url}date=$month_ahead$caturl\">";
+		echo "<img src=\"rightarrowsmall.gif\" alt=\"" . translate("Next") . "\" /></a>\n";
 		echo month_name ( $thismonth - 1 );
 		if ( $showyear != '' ) {
 			echo " $thisyear";
 		}
-		echo "</th>\n";
-		echo '<td style="text-align:right;"><a title="' . translate("Next") . "\" href=\"day.php?{$u_url}date=$month_ahead$caturl\">";
-		echo '<img src="rightarrowsmall.gif" class="prevnextsmall" alt="' . translate("Next") . "\" /></a></td>\n";
-		echo "</tr>\n";
+		echo "</th></tr>\n";
 	} else {
 		//print the month name
 		echo "<caption>";
@@ -894,11 +892,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=
 	} else {
 		$wkstart = get_sunday_before ( $thisyear, $thismonth, 1 );
 	}
-
 	//print the headers to display the day of the week (sun, mon, tues, etc.)
 
 	// if we're showing week numbers we need an extra column
-	if ( $show_weeknums ) echo "<td class=\"empty\"></td>\n";
+	if ( $show_weeknums ) echo "<th class=\"empty\">&nbsp;</th>\n";
 	//if the week doesn't start on monday, print the day
 	if ( $WEEK_START == 0 ) echo "<th>" .
 		weekday_short_name ( 0 ) . "</th>\n";
@@ -963,11 +960,11 @@ function display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums=
 				}
 
 				if ( $dateYmd == date ( 'Ymd' ) ) {
-					echo ' id="today"';
+					echo " id=\"today\"";
 				}
 
 				echo '>';
-				echo '<a href="day.php?date=' .  $dateYmd . $u_url .  '">';
+				echo "<a href=\"day.php?date=" . $dateYmd . $u_url . "\">";
 				echo date ( "d", $date );
 				echo "</a>";
 				echo "</td>\n";
@@ -1068,22 +1065,18 @@ function print_entry ( $id, $date, $time, $duration,
   if ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) )
     echo "(" . translate("Private") . ")";
   else
-  if ( $login != $event_owner && strlen ( $event_owner ) )
-  {
+  if ( $login != $event_owner && strlen ( $event_owner ) ) {
     echo htmlspecialchars ( $name );
 //    echo ("</span>"); //end color span
   }
 
   else
     echo htmlspecialchars ( $name );
-    
+
   echo "</a>";
-  if ( $login != $event_owner && strlen ( $event_owner ) )
-  {
-    if ($layers) foreach ($layers as $layer)
-    {
-        if($layer['cal_layeruser'] == $event_owner)
-        {
+  if ( $login != $event_owner && strlen ( $event_owner ) ) {
+    if ($layers) foreach ($layers as $layer) {
+        if($layer['cal_layeruser'] == $event_owner) {
             echo "</span>\n";
         }
     }
