@@ -42,13 +42,13 @@ if ( ! empty ( $user ) ) {
     translate("Finished") . ".</h2>\n";
 } else {
 ?>
-<h2 style="color:<?=$H2COLOR?>;"><?php etranslate("Delete Events")?></h2>
-<form action="<?=$PHP_SELF;?>" method="post" name="purgeform">
+<h2 style="color:<?php echo $H2COLOR; ?>;"><?php etranslate("Delete Events")?></h2>
+<form action="<?php echo $PHP_SELF; ?>" method="post" name="purgeform">
 <table>
  <tr><td><?php etranslate("User");?>:</td><td>
 <select name="user">
 
-<?
+<?php
   $userlist = get_my_users ();
   if ($nonuser_enabled == "Y" ) {
     $nonusers = get_nonuser_cals ();
@@ -62,7 +62,7 @@ if ( ! empty ( $user ) ) {
 <option value="all" selected="selected"><?php etranslate("All")?></option>
 </select></td></tr>
 <tr><td><?php etranslate("Delete all events before");?>:</td><td>
-<? print_date_selection ( "end_", date ( "Ymd" ) ) ?>
+<?php print_date_selection ( "end_", date ( "Ymd" ) ) ?>
 </td></tr>
 <tr><td><?php etranslate("Check box to delete <b>ALL</b> events for a user")?>:</td><td valign="bottom"><input type="checkbox" name="purge_all" value="Y" /></td></tr>
 <tr><td colspan="2">
@@ -77,7 +77,7 @@ if ( ! empty ( $user ) ) {
 </body>
 </html>
 
-<?
+<?php
 function purge_events ( $ids ) {
   $tables = array ();
   $tables[0][T] = 'webcal_entry_user';        $tables[0][C] = 'cal_id';
