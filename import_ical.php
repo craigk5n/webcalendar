@@ -206,16 +206,22 @@ function format_ical($event) {
     $pmatch2 ) && $event['dtstart'] != $event['dtend'] ) {
     $startTime = icaldate_to_timestamp($event['dtstart']);
     $endTime = icaldate_to_timestamp($event['dtend']);
+    // Not sure... should this be untimed or allday?
     if ( $endTime - $startTime == ( 3600 * 24 ) ) {
       // They used a DTEND set to the next day to say this is an all day
       // event.  We will call this an untimed event.
       $fevent['Duration'] = '0';
       $fevent['Untimed'] = 1;
     } else {
-      // Event spans multiple days
+      // Event spans multiple days.  The EndTime actually represents
+      // the first day the event does _not_ take place.  So,
+      // we need to back up one day since WebCalendar end date is the
+      // last day the event takes place.
       $fevent['Repeat']['Interval'] = '1'; // 1 = daily
       $fevent['Repeat']['Frequency'] = '1'; // 1 = every day
-      $fevent['Repeat']['EndTime'] = $endTime;
+      $fevent['Duration'] = '0';
+      $fevent['Untimed'] = 1;
+      $fevent['Repeat']['EndTime'] = $endTime - ( 24 * 3600 );
     }
   }
 
