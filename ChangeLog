@@ -1,4 +1,4 @@
-Verion 0.9.42-devcvs (?? ??? ????)
+Verion 0.9.42-devcvs (?? ??? 2003)
   - Added support for repeating events by weekday from end of month
     (as in Memorial Day, which is last Monday in May).
   - Fixed bug in repeating events by weekday.  Was incorrectly placing
@@ -29,7 +29,7 @@ Verion 0.9.42-devcvs (?? ??? ????)
     when viewing non-user calendar in month view.
   - Fixed some of the undefined variable warnings
   - Fixed bug 755709: parse error in search_handler.php
-Verion 0.9.41 (16 Jun 2002)
+Verion 0.9.41 (16 Jun 2003)
   - Fixed bug 755178: "Public User" not being translated
   - Fixed bug 652871: Don't display assistant link in trailer if read-only
   - Fixed bug 680626: Fix attempt too insert duplicate entries in the
