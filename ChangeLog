@@ -1,4 +1,5 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed bug 1140453: Time zone offset in email notifications
  - Fixed problem with second edit of a single event in a repeating series 
    losing linkage with the original event.
  - Updated install/index.php. Added link to phpinfo if valid user. 

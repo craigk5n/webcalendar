@@ -1,5 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1140453: Time zone offset in email notifications
       1148602: External Recipients with same name fails
       1160167: 12AM Events cause display problems in edit_entry.php
       1158769: Category lost when modifing event by Admin

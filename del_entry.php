@@ -89,7 +89,7 @@ if ( $id > 0 && empty ( $error ) ) {
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] != $login )
-	  $partlogin[] = $row[0];
+   $partlogin[] = $row[0];
       }
       dbi_free_result($res);
     }
@@ -105,17 +105,24 @@ if ( $id > 0 && empty ( $error ) ) {
       $eventtime = $row[2];
       dbi_free_result ( $res );
     }
-  
-  
-    // TODO: switch transation language based on user so each user
-    // gets message in their selected language.
+    $TIME_FORMAT=24;
     for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
       // Log the deletion
       activity_log ( $id, $login, $partlogin[$i], $LOG_DELETE, "" );
 
       $do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
+      $user_TZ = get_pref_setting ( $partlogin[$i], "TZ_OFFSET" );
       $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
-      user_load_variables ( $partlogin[$i], "temp" );						
+      user_load_variables ( $partlogin[$i], "temp" );
+      // Want date/time in user's timezone
+      if ( $eventtime != '-1' ) { 
+        $eventtime += ( $user_TZ * 10000 );
+        if ( $eventtime < 0 ) {
+          $eventtime += 240000;
+        } else if ( $eventtime >= 240000 ) {
+          $eventtime -= 240000;
+        }
+      }            
       if ( $partlogin[$i] != $login && $do_send == "Y" && boss_must_be_notified ( $login, $partlogin[$i] ) && 
         strlen ( $tempemail ) && $send_email != "N" ) {
          if (($GLOBALS['LANGUAGE'] != $user_language) && ! empty ( $user_language ) && ( $user_language != 'none' )){
@@ -123,10 +130,10 @@ if ( $id > 0 && empty ( $error ) ) {
         }
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
           translate("An appointment has been canceled for you by") .
-          " " . $login_fullname .  ". " .
+          " " . $login_fullname .  ".\n" .
           translate("The subject was") . " \"" . $name . "\"\n" .
           translate("Date") . ": " . date_to_str ($thisdate) . "\n";
-          if ( $eventtime != '-1' ) $msg .= translate("Time") . ": " . display_time ($eventtime);
+          if ( $eventtime != '-1' ) $msg .= translate("Time") . ": " . display_time ($eventtime, true);
           $msg .= "\n\n";
         if ( strlen ( $login_email ) )
           $extra_hdrs = "From: $login_email\r\nX-Mailer: " .
@@ -136,7 +143,7 @@ if ( $id > 0 && empty ( $error ) ) {
             translate($application_name);
         mail ( $tempemail,
           translate($application_name) . " " .
-	  translate("Notification") . ": " . $name,
+   translate("Notification") . ": " . $name,
           html_to_8bits ($msg), $extra_hdrs );
       }
     }
@@ -152,16 +159,16 @@ if ( $id > 0 && empty ( $error ) ) {
       // If it's a repeating event, delete any event exceptions
       // that were entered.
       if ( $event_repeats ) {
-	$res = dbi_query ( "SELECT cal_id FROM webcal_entry " .
-	  "WHERE cal_group_id = $id" );
+ $res = dbi_query ( "SELECT cal_id FROM webcal_entry " .
+   "WHERE cal_group_id = $id" );
         if ( $res ) {
-	  $ex_events = array ();
+   $ex_events = array ();
           while ( $row = dbi_fetch_row ( $res ) ) {
-	    $ex_events[] = $row[0];
-	  }
+     $ex_events[] = $row[0];
+   }
           dbi_free_result ( $res );
           for ( $i = 0; $i < count ( $ex_events ); $i++ ) {
-	    $res = dbi_query ( "SELECT cal_login FROM " .
+     $res = dbi_query ( "SELECT cal_login FROM " .
               "webcal_entry_user WHERE cal_id = $ex_events[$i]" );
             if ( $res ) {
               $delusers = array ();
@@ -171,15 +178,15 @@ if ( $id > 0 && empty ( $error ) ) {
               dbi_free_result ( $res );
               for ( $j = 0; $j < count ( $delusers ); $j++ ) {
                 // Log the deletion
-	        activity_log ( $ex_events[$i], $login, $delusers[$j],
+         activity_log ( $ex_events[$i], $login, $delusers[$j],
                   $LOG_DELETE, "" );
                 dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
-	          "WHERE cal_id = $ex_events[$i] " .
+           "WHERE cal_id = $ex_events[$i] " .
                   "AND cal_login = '$delusers[$j]'" );
               }
             }
           }
-	}
+ }
       }
 
       // Now, mark event as deleted for all users.

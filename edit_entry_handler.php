@@ -464,7 +464,7 @@ if ( empty ( $error ) ) {
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
             ( ( empty ( $user_hour ) && empty ( $minute ) ) ? "" :
             translate("Time") . ": " .
-              display_time ( ( $user_hour * 10000 ) + ( $minute * 100 ) ) ) .
+              display_time ( ( $user_hour * 10000 ) + ( $minute * 100 ), true ) ) .
             "\n\n\n";
           // add URL to event, if we can figure it out
           if ( ! empty ( $server_url ) ) {
@@ -631,7 +631,7 @@ if ( empty ( $error ) ) {
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
             ( ( empty ( $user_hour ) && empty ( $minute ) ) ? "" :
             translate("Time") . ": " .
-            display_time ( ( $user_hour * 10000 ) + ( $minute * 100 ) ) . "\n" ) .
+            display_time ( ( $user_hour * 10000 ) + ( $minute * 100 ), true ) . "\n" ) .
             translate("Please look on") . " " . translate($application_name) . " " .
             ( $require_approvals == "Y" ?
             translate("to accept or reject this appointment") :
