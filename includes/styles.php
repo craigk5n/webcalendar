@@ -11,6 +11,7 @@
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   background-color: <?php echo $GLOBALS['CELLBG'];?>;
+  vertical-align: top;
 }
 .tablecelltoday {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
@@ -32,8 +33,9 @@
 .tablecellweekend {
   font-family: <?php echo $GLOBALS['FONTS']; ?>;
   font-size: 12px;
-  width: 80px;
-  height: 80px;
+  width: 75px;
+  height: 75px;
+  vertical-align: top;
   background-color: <?php echo ( $GLOBALS['WEEKENDBG'] == "" ? "#E0E0E0" : $GLOBALS['WEEKENDBG'] );?>;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
