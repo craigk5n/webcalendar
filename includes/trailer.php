@@ -258,10 +258,10 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
   }
   if ( $login != '__public__' ) {
     echo " | <a title=\"" . 
-      translate("Help") . "\" href=\"#\" onclick=\"window.open 
-      ( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars,
-      height=400,width=400,innerHeight=420,outerWidth=420' );\" 
-      onmouseover=\"window.status='" . 
+      translate("Help") . "\" href=\"#\" onclick=\"window.open " .
+      "( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars, " .
+      "height=400,width=400,innerHeight=420,outerWidth=420' );\"  " .
+      "onmouseover=\"window.status='" . 
       translate("Help") . "'\">" . 
       translate("Help") . "</a>\n";
   }
