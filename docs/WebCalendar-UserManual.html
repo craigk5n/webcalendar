@@ -8,22 +8,31 @@ a {
 }
 p {
   font-family: arial;
+  margin: 10px;
 }
 ul {
   font-family: arial;
+  margin-left: 10px;
 }
 h1 {
   font-family: arial;
 }
 h2 {
   font-family: arial;
+  background-color: #999;
+  padding: 5px;
 }
 h3 {
   font-family: arial;
+  padding: 5px;
+}
+dl{
+  margin-left: 10px;
 }
 dt {
   font-family: arial;
   font-weight: bold;
+  margin-top: 10px;
 }
 dd {
   font-family: arial;
@@ -31,6 +40,10 @@ dd {
 blockquote {
   font-family: courier;
   background: #c0c0c0;
+  padding: 10px;
+}
+.screenshot {
+  margin: 15px;
 }
 </style>
 </head>
@@ -46,6 +59,7 @@ blockquote {
 
 <h2>Table of Contents</h2>
 
+<p>
 <ul>
 <li><a href="#intro">Introduction</a>
 <li><a href="#users">Users and Events</a>
@@ -64,6 +78,7 @@ blockquote {
 <li><a href="#glossary">Glossary</a>
 <li><a href="#history">History</a>
 </ul>
+</p>
 
 
 </p><hr><h2><a name="intro">Introduction</a></h2><p>
@@ -124,9 +139,9 @@ be set to "Approved.")
 When viewing the full details of an event, the status of
 event participants will be designated as seen below:
 
-<center>
-<h1>[SCREEN SHOT]</h1>
-</center>
+<div class="screenshot">
+<img style="alignment: center" src="event_status.gif" alt="Event Status Screen Shot">
+</div>
 
 
 </p><p>
@@ -284,34 +299,35 @@ summarized below.
 
 </p><h3>Day</h3><p>
 The "Day" view shows each users' availablity for the selected day.
-<center>
-<h1>[SCREEN SHOT]</h1>
-</center>
+
+<div class="screenshot">
+<img src="day_view.gif" alt="Day View Screen Shot">
+</div>
 
 </p><h3>Week (Users horizontal)</h3><p>
-<center>
-<h1>[SCREEN SHOT]</h1>
-</center>
+<div class="screenshot">
+<img src="week_view_h.gif" alt="Week (Users Horizontal) Screen Shot">
+</div>
 
 </p><h3>Week (Users vertical)</h3><p>
-<center>
-<h1>[SCREEN SHOT]</h1>
-</center>
+<div class="screenshot">
+<img src="week_view_v.gif" alt="Week (Users Vertical) Screen Shot">
+</div>
 
 </p><h3>Week (Timebar)</h3><p>
-<center>
-<h1>[SCREEN SHOT]</h1>
-</center>
+<div class="screenshot">
+<img src="week_view_t.gif" alt="Week (Timebar) Screen Shot">
+</div>
 
-</p><h3>Month (side by side)</h3><p>
-<center>
-<h1>[SCREEN SHOT]</h1>
-</center>
+</p><h3>Month (Side By Side)</h3><p>
+<div class="screenshot">
+<img src="month_view.gif" alt="Month (Side By Side) Screen Shot">
+</div>
 
-</p><h3>Month (on same calendar)</h3><p>
-<center>
-<h1>[SCREEN SHOT]</h1>
-</center>
+</p><h3>Month (On Same Calendar)</h3><p>
+<div class="screenshot">
+<img src="month_view_2.gif" alt="Month (On Same Calendar) Screen Shot">
+</div>
 
 
 </p><hr><h2><a name="groups">Groups</a></h2><p>
@@ -373,112 +389,113 @@ Various components of WebCalendar can be customized
 by modifying your user preferences.
 
 </p>
+<p>
 <dl>
 
 <dt><h3>Settings</h3></dt>
 
-<dt>Language</dt>
+<dt style="padding-left: 20px;">Language</dt>
  <dd>Specify which language you would like to use in WebCalendar</dd>
 
-<dt>Timezone Offset</dt>
+<dt style="padding-left: 20px;">Timezone Offset</dt>
  <dd>Specify how your local time differs from the time where the
      WebCalendar server is located</dd>
 
-<dt>Preferred View</dt>
+<dt style="padding-left: 20px;">Preferred View</dt>
   <dd>Specify if you would prefer to see the day, week, month, or year
    after loggin in</dd>
 
-<dt>Display weekends in view</dt>
+<dt style="padding-left: 20px;">Display weekends in view</dt>
   <dd>Specify if you want Saturdays and Sundays to appear in your
   calendar when viewing a month or week</dd>
 
-<dt>Date format</dt>
+<dt style="padding-left: 20px;">Date format</dt>
   <dd>Specify how you would like dates to be displayed</dd>
 
-<dt>Time format</dt>
+<dt style="padding-left: 20px;">Time format</dt>
   <dd>Specify either 12-hour (3:45pm) or 24-hour (15:14) format</dd>
 
-<dt>Time interval</td>
+<dt style="padding-left: 20px;">Time interval</td>
   <dd>Specify how many minutes each time block represents in the
   day and week display</dd>
 
-<dt>Auto-referesh calendars</dt>
+<dt style="padding-left: 20px;">Auto-referesh calendars</dt>
   <dd>If set to "yes," the day, week, and month pages will automatically
    reload after a specified duration</dd>
 
-<dt>Auto-refresh time</dt>
+<dt style="padding-left: 20px;">Auto-refresh time</dt>
   <dd>Specify how long to wait before the auto-refresh should force a
    page to be reloaded</dd>
 
-<dt>Display unapproved</dt>
+<dt style="padding-left: 20px;">Display unapproved</dt>
   <dd>Specify whether events that have been added to your calendar
    but not yet approved should display on your calendar (in a different
    color)</dd>
 
-<dt>Display week number</dt>
+<dt style="padding-left: 20px;">Display week number</dt>
   <dd>Specify whether the week number should be displayed in month
    and week views</dd>
 
-<dt>Week starts on</dt>
+<dt style="padding-left: 20px;">Week starts on</dt>
   <dd>Specify if you want the week to start on Sunday or Monday</dd>
 
-<dt>Work hours</dt>
+<dt style="padding-left: 20px;">Work hours</dt>
   <dd>Specify the default time range to display in day and week
    views</dd>
 
-<dt>Default Category</dt>
+<dt style="padding-left: 20px;">Default Category</dt>
   <dd>Specify the default category that should be selected when
   adding a new event</dd>
 
-<dt><h3>Email</h3></dt>
+<dt style="padding-left: 20px;"><h3>Email</h3></dt>
 
-<dt>Event reminders</dt>
+<dt style="padding-left: 20px;">Event reminders</dt>
   <dd>Specify if you wish to receive email reminders for events
     that specify a reminder should be sent</dd>
 
-<dt>Events added to my calendar</dt>
+<dt style="padding-left: 20px;">Events added to my calendar</dt>
   <dd>Specify if you wish to receive email when another user
    adds an event to your calendar</dd>
 
-<dt>Events updated on my calendar</dt>
+<dt style="padding-left: 20px;">Events updated on my calendar</dt>
   <dd>Specify if you wish to receive an email when another user
   updates an event on your calendar</dd>
 
-<dt>Events removed from my calendar</dt>
+<dt style="padding-left: 20px;">Events removed from my calendar</dt>
   <dd>Specify ifyou wish to receive an email when another user
   removes an event from your calendar</dd>
 
-<dt>Event rejected by participant</dt>
+<dt style="padding-left: 20px;">Event rejected by participant</dt>
   <dd>Specify if you with to be notified if a participant to
   an event on your calendar has rejected the event</dd>
 
 <dt><h3>When I am the boss</h3></dt>
 
-<dt>Email me event notification</dt>
+<dt style="padding-left: 20px;">Email me event notification</dt>
   <dd>Specify if you wish to receive email when your assistant adds
     an event to your calendar</dd>
 
-<dt>I want to approve events</dt>
+<dt style="padding-left: 20px;">I want to approve events</dt>
   <dd>Specify if you want to approve events added by any or your
    assistants</dd>
 
 <dt><h3>Colors</h3></dt>
 
 
-<dt>Document background<dt>
+<dt style="padding-left: 20px;">Document background</dt>
   <dd>Specify the background color of all pages</dd>
 
-<dt>Document title</dt>
+<dt style="padding-left: 20px;">Document title</dt>
   <dd>Specify the color of page title on each page</dd>
 
-<dt>Table cell background</dt>
+<dt style="padding-left: 20px;">Table cell background</dt>
   <dd>Specify the default background color for table cells</dd>
 
-<dt>Table cell background for current day</dt>
+<dt style="padding-left: 20px;">Table cell background for current day</dt>
   <dd>Specify the background color for the table cell containing the
    current date</dd>
 
-<dt>Table cell background for weekend</dt>
+<dt style="padding-left: 20px;">Table cell background for weekend</dt>
   <dd>Specify the background color for table cells that
    represent a Saturday or Sunday</dd>
 
@@ -519,6 +536,7 @@ by modifying your user preferences.
   that you are in.</dd>
 
 </dl>
+</p>
 
 <p>
 <b>TIP:</b> WebCalendar setup and configuration issues are documented
@@ -602,8 +620,12 @@ If you do not see anything similar, submit a new bug.
 
 </p><hr><h2><a name="history">History</a></h2><p>
 
+<div style="margin: 15px">
 <pre>
 $Log$
+Revision 1.4  2004/02/25 17:34:35  cknudsen
+updated documentation (added missing screen shots).
+
 Revision 1.3  2004/02/17 18:42:20  cknudsen
 Updated for repeating events Monthly (by day (from end))
 
@@ -614,6 +636,8 @@ Revision 1.1  2003/06/26 17:52:44  cknudsen
 First draft
 
 </pre>
+</div>
+</p>
 
 </body>
 </html>
