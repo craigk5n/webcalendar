@@ -55,7 +55,7 @@ $events = read_events ( strlen ( $user ) ? $user : $login,
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
-  $header[$i] = $weekdays[$i] . "<br />" .
+  $header[$i] = $weekdays[$i] . "<br />\n" .
      date_to_str ( date ( "Ymd", $days[$i] ), $DATE_FORMAT_MD, false );
 }
 ?>
@@ -232,7 +232,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
         $start_time = $i;
         $diff_start_time = $start_time - $last_row;
         for ( $u = $diff_start_time ; $u > 0 ; $u-- ) 
-          $hour_arr[$last_row] .= "<br />"; 
+          $hour_arr[$last_row] .= "<br />\n"; 
         $hour_arr[$last_row] .= $hour_arr[$i];
         $hour_arr[$i] = "";
         $rowspan_arr[$i] = 0;
@@ -255,17 +255,23 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 
 // untimed events first
 if ( $untimed_found ) {
-  echo "<tr><th class=\"row\">&nbsp;</th>";
+  echo "<tr>\n<th class=\"row\">&nbsp;</th>\n";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
     if ( empty ( $WEEKENDBG ) )
       $is_weekend = false;
-    $color = $is_weekend ? $WEEKENDBG : $CELLBG;
-    if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) )
+//    $color = $is_weekend ? $WEEKENDBG : $CELLBG;
+    if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
       echo $untimed[$d];
-    else
-      echo "<td style=\"background-color:$color;\">&nbsp;</td>";
+    } else {
+    	if ($is_weekend) {
+		echo "<td class=\"weekend\">&nbsp;</td>\n";
+	} else {
+		echo "<td>&nbsp;</td>\n";
+	}
+//      echo "<td style=\"background-color:$color;\">&nbsp;</td>";
+    }
   }
   echo "</tr>\n";
 }
@@ -277,7 +283,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = (int) ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-  echo "<tr><th class=\"row\">" .  $time . "</th>\n";
+  echo "<tr>\n<th class=\"row\">" .  $time . "</th>\n";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
@@ -291,7 +297,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       // ends at 11:15 and another starts at 11:30.
       if ( ! empty ( $save_hour_arr[$d][$i] ) )
         echo "<td class=\"today\">" .
-          $save_hour_arr[$d][$i] . "</td>";
+          $save_hour_arr[$d][$i] . "</td>\n";
       $rowspan_day[$d]--;
     } else {
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
