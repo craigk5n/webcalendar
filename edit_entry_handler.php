@@ -258,6 +258,7 @@ if ( strlen ( $error ) == 0 ) {
     $sql = "";
     $extra_name = $site_extras[$i][0];
     $extra_type = $site_extras[$i][2];
+    $extra_arg1 = $site_extras[$i][3];
     $extra_arg2 = $site_extras[$i][4];
     $value = $$extra_name;
     //echo "Looking for $extra_name... value = " . $value . " ... type = " .
