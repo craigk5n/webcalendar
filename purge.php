@@ -77,25 +77,27 @@ if ( ! empty ( $user ) ) {
 
 <?
 function purge_events ( $ids ) {
-  $tables = array (
-    'webcal_entry_user',
-    'webcal_entry_repeats',
-    'webcal_entry_repeats_not',
-    'webcal_entry_log',
-    'webcal_import_data',
-    'webcal_site_extras',
-    'webcal_reminder_log',
-    'webcal_entry');
+  $tables = array ();
+  $tables[0][T] = 'webcal_entry_user';        $tables[0][C] = 'cal_id';
+  $tables[1][T] = 'webcal_entry_repeats';     $tables[1][C] = 'cal_id';
+  $tables[2][T] = 'webcal_entry_repeats_not'; $tables[2][C] = 'cal_id';
+  $tables[3][T] = 'webcal_entry_log';         $tables[3][C] = 'cal_entry_id';
+  $tables[4][T] = 'webcal_import_data';       $tables[4][C] = 'cal_id';
+  $tables[5][T] = 'webcal_site_extras';       $tables[5][C] = 'cal_id';
+  $tables[6][T] = 'webcal_reminder_log';      $tables[6][C] = 'cal_id';
+  $tables[7][T] = 'webcal_entry';             $tables[7][C] = 'cal_id';
   $TT = sizeof($tables);
+
+//var_dump($tables);exit;
 
   foreach ( $ids as $cal_id ) {
     for ( $i = 0; $i < $TT; $i++ ) {
-      dbi_query ( "DELETE FROM $tables[$i] WHERE cal_id like '$cal_id'" );
-      $num[$tables[$i]] += mysql_affected_rows();
+      dbi_query ( "DELETE FROM {$tables[$i][T]} WHERE {$tables[$i][C]} like '$cal_id'" );
+      $num[$tables[$i][T]] += mysql_affected_rows();
     }
   }
   for ( $i = 0; $i < $TT; $i++ ) {
-    $table = $tables[$i];
+    $table = $tables[$i][T];
     echo "Records deleted from $table: $num[$table]<BR>\n";
   }
 }
