@@ -1,4 +1,5 @@
 Verion 0.9.45dev (?? ??? 2004)
+  - Temporarily disabling the print-media stylesheet
   - Fixing a TON of bugs in almost all of the views NOTE: view_m, day, and
   week.php are in need of a major php code overhaul to fix some of the
   remaining bugs
