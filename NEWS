@@ -1,3 +1,10 @@
+Version 1.0RC2 (?? ??? ??)
+  - Fixed the following bugs reports on SourceForge:
+      1116008: Got "invalid user" error when clicking on '+' icon
+               to add new event
+
+---------------------------------------------------------------------------
+
 Version 1.0RC1 (04 Feb 2005)
   - Fixed the following bugs reports on SourceForge:
        824268: Emails notifications used wront timezone

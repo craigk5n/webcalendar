@@ -2609,7 +2609,7 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   if ( $readonly == 'Y' )
     return '';
 
-  if ( $user != $login )
+  if ( ! empty ( $user ) && $user != $login )
     $u_url = "user=$user&amp;";
   if ( ! empty ( $hour ) )
     $hour += $TZ_OFFSET;
