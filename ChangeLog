@@ -1,4 +1,6 @@
 Version 1.0RC? (?? ??? ??)
+  - Fixed PHP warnings about undefined variable PHP_SELF in all the
+    include files.
   - Rewrote reading of config.php to manually split lines rather than
     relying on fgets() which does not seem to be reliable.
     Also try opening "includes/settings.php" if "settings.php" fails.

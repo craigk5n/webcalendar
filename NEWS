@@ -2,6 +2,10 @@ Version 1.0RC2 (?? ??? ??)
   - Fixed the following bugs reports on SourceForge:
       1116008: Got "invalid user" error when clicking on '+' icon
                to add new event
+  - Other bugs fixed:
+  - New Features / Enhancements / Changes:
+    + Modified the way settings.php file is read to handle unix/dos/mac
+      format and also check main directory and include directory.
 
 ---------------------------------------------------------------------------
 
