@@ -31,7 +31,7 @@ $participants = array ();
 
 if ( ! empty ( $id ) && $id > 0 ) {
   // first see who has access to edit this entry
-  if ( $is_admin || $is_assistant || $is_nonuser_admin) {
+  if ( $is_admin ) {
     $can_edit = true;
   } else {
     $can_edit = false;
@@ -63,6 +63,8 @@ if ( ! empty ( $id ) && $id > 0 ) {
       $cal_date = $row[1];
     }
     $create_by = $row[0];
+    if (( $user == $create_by ) && ( $is_assistant || $is_nonuser_admin )) $can_edit = true;
+    
     $year = (int) ( $cal_date / 10000 );
     $month = ( $cal_date / 100 ) % 100;
     $day = $cal_date % 100;

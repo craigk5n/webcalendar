@@ -83,7 +83,7 @@ $can_edit = false;
 if ( empty ( $id ) ) {
   // New event...
   $can_edit = true;
-} else if ( $is_admin || $is_assistant || $is_nonuser_admin ) {
+} else if ( $is_admin ) {
   $can_edit = true;
 } else {
   // event owner or assistant event ?
@@ -91,7 +91,7 @@ if ( empty ( $id ) ) {
   $res = dbi_query($sql);
   if ($res) {
     $row = dbi_fetch_row ( $res );
-    if ( $row[0] == $login )
+    if ( $row[0] == $login ) || (( $user == $row[0] ) && ( $is_assistant || $is_nonuser_admin ))
       $can_edit = true;
     dbi_free_result ( $res );
   } else
