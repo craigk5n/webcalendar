@@ -237,21 +237,21 @@ foreach $f ( @files ) {
 	if ( defined ( $thispage{$text} ) ) {
           # text already found within this page...
 	} elsif ( defined ( $text{$text} ) ) {
-          if ( $pageHeader ne '' ) {
-            print OUT $pageHeader; $pageHeader = '';
+          if ( ! show_dups ) {
+            if ( $pageHeader ne '' ) {
+              print OUT $pageHeader; $pageHeader = '';
+            }
+            print OUT "# \"$text\" previously defined (in $foundin{$text})\n"
           }
-          print OUT "# \"$text\" previously defined (in $foundin{$text})\n"
-            if ( ! show_dups );
 	  $thispage{$text} = 1;
 	} else {
           if ( ! length ( $trans{$text} ) ) {
             if ( $show_missing ) {
-              if ( $pageHeader ne '' ) {
-                print OUT $pageHeader; $pageHeader = '';
-              }
               if ( length ( $webcaltrans{$text} ) ) {
+                if ( $pageHeader ne '' ) { print OUT $pageHeader; $pageHeader = ''; }
                 print OUT "# \"$text\" defined in WebCalendar translation\n";
               } else {
+                if ( $pageHeader ne '' ) { print OUT $pageHeader; $pageHeader = ''; }
                 print OUT "#\n# << MISSING >>\n# $text:\n";
                 print OUT "# English text: $base_trans{$text}\n#\n"
                   if ( length ( $base_trans{$text} ) &&
