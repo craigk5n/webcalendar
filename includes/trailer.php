@@ -168,14 +168,6 @@ if (preg_match("/\/includes\//", $PHP_SELF)) {
     if ( $login != '__public__' )
       echo " | <a title=\"" . translate("Admin") . "\" class=\"navlinks\" style=\"font-weight:bold;\" href=\"adminhome.php\">" .
         translate("Admin") . "</a>";
-    if ( ! $use_http_auth ) {
-      if ( empty ( $login_return_path ) )
-        $login_url = "login.php";
-      else
-        $login_url = "login.php?return_path=$login_return_path";
-      echo " | <a title=\"" . translate("Login") . "/" . translate("Logout") . "\" class=\"navlinks\" href=\"$login_url\">" .
-        translate("Login") . "/" . translate("Logout") . "</a>";
-    }
     if ( $login != "__public__" && $readonly == "N" &&
       ( $require_approvals == "Y" || $public_access == "Y" ) ) {
 	$url = 'list_unapproved.php';
@@ -305,9 +297,17 @@ if ( $login != "__public__" ) {
 <br />
 <?php } ?>
 <?php
-  if ( strlen ( $login ) && $login != "__public__" ) {
-    echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>&nbsp;$fullname<br />\n";
+if ( ! $use_http_auth ) {
+	if ( empty ( $login_return_path ) )
+		$login_url = "login.php";
+	else
+		$login_url = "login.php?return_path=$login_return_path";
+if ( strlen ( $login ) && $login != "__public__" ) {
+	echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . translate("Logout") . "\" href=\"$login_url\">" . translate("logout") . "</a>)<br />\n";
+  } else {
+	echo "<span style=\"font-weight:bold;\">" . translate("Current User") . ":</span>&nbsp;Public Access&nbsp;(<a title=\"" . translate("Login") . "\" href=\"$login_url\">" . translate("login") . "</a>)<br />\n";
   }
+}
   if ($nonuser_enabled == "Y" ) $admincals = get_nonuser_cals ($login);
   if ( $has_boss || ! empty ( $admincals[0] ) ) {
     echo "<span style=\"font-weight:bold;\">";
