@@ -362,6 +362,13 @@ td.yearviewtitle .user {
 	border-bottom-color: <?php echo $GLOBALS['TABLEBG']; ?>;
 	width: 14%;
 }
+.highlight {
+	font-family: <?php echo $GLOBALS['FONTS']; ?>;
+	font-size: 12px;
+	background-color: <?php echo $GLOBALS['TODAYCELLBG'];?>;
+	font-weight: bold;
+}
+
 /* ========================= */
 /* MINI CALENDARS */
 /* contains individual months in year.php */
@@ -388,6 +395,9 @@ table.minical {
 /* cells in year.php that contain the numeric date */
 /* NOTE: removing the "td" below will modify the appearance of mini calendars */
 .minical td.date {
+	text-align: right;
+}
+.minical tr.date td {
 	text-align: right;
 }
 .minical td.date a {
