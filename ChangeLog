@@ -1,4 +1,5 @@
 Version 1.0RC3 (?? ??? 2005)
+ - Patch 1158090: convert comments for use with phpDocumentor
  - Updated German translation
  - Fixed bug 1156729:Global-view with no valid user creates a non-translatable message
  - Fixed problem with popups.php with long text strings going off screen.
