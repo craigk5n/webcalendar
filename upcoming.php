@@ -34,7 +34,15 @@
  *	TBD
  */
 
-include_once 'includes/init.php';
+include "includes/config.php";
+include "includes/php-dbi.php";
+include "includes/functions.php";
+include "includes/$user_inc";
+include "includes/connect.php";
+
+load_user_preferences ();
+
+include "includes/translate.php";
 
 
 /********************************************************************
@@ -141,7 +149,9 @@ $repeated_events = read_repeated_events ( $username, $cat_id );
 $events = read_events ( $username, $date, $endDate, $cat_id );
 
 // Print header without custom header and no style sheet
-print_header ( '', '', '', true, true );
+?><html><head><title>Upcoming Events</title></head>
+<body>
+<?php
 
 print "<dl>\n";
 
@@ -172,8 +182,6 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
 
 print "</dl>\n";
 
-print_trailer ( false, true, true );
-
 print "</body></html>\n";
 
 
@@ -198,6 +206,7 @@ function print_upcoming_event ( $e )
   } else if ( $e['cal_time'] != -1 ) {
     print " (" . display_time ( $e['cal_time'] ) . ")\n";
   }
+  print "<br />\n";
 }
 
 ?>
