@@ -13,9 +13,11 @@
 # user and go to the System Settings page (admin.php) to change system
 # settings.
 #
+# For ODBC use, set the db_host value set to ignore4odbc
+# unless you specifically need to change it
 ##########################################################
 
-# database settings
+# database settings see notes above
 db_type: mysql
 db_host: localhost
 db_login: webcalendar
