@@ -1,17 +1,73 @@
-<HTML><HEAD><TITLE>WebCalendar Upgrading Notes</TITLE></HEAD><BODY BGCOLOR="#FFFFFF">
+<html><head>
+<title>WebCalendar Upgrading Notes</title>
+<style type="text/css">
+a {
+  text-decoration: none;
+}
+p {
+  font-family: arial;
+}
+ul {
+  font-family: arial;
+}
+ol {
+  font-family: arial;
+}
+h1 {
+  font-family: arial;
+}
+h2 {
+  font-family: arial;
+}
+h3 {
+  font-family: arial;
+}
+dt {
+  font-family: arial;
+  font-weight: bold;
+}
+dd {
+  font-family: arial;
+}
+blockquote {
+  font-family: courier;
+  background: #c0c0c0;
+}
+td {
+  font-family: arial;
+  background: #c0c0c0;
+}
+tr {
+  font-family: arial;
+  background: #606080;
+  foreground: #f0f0f0;
+}
+.colorheader {
+  font-family: arial;
+  background: #6060c0;
+}
+</style>
+</head>
+<body style="background-color:#fff;">
 
-<H2>WebCalendar Upgrading Notes</H2>
+<h2>WebCalendar Upgrading Notes</h2>
 
+<p>
 Below are the steps needed to upgrade from a previous version.
 If you are more than one version behind, start from the bottom
 and work towards the top of this page.
 
-<P><HR><P><B>To upgrade to 0.9.43 from 0.9.42 or older:</B>
-<P>
+</p><hr /><p><b>To upgrade to 0.9.44 from 0.9.43 or older:</b>
+</p><p>
+No manual changes required for upgrading from 0.9.43 to 0.9.44.
+
+</p><hr /><p><b>To upgrade to 0.9.43 from 0.9.42 or older:</b>
+</p><p>
   User passwords are now stored using md5 and require the webcal_user
   table to be altered to accomodate larger password data.
   Use the following SQL for MySQL and PostgreSQL:
-  <BLOCKQUOTE><PRE>
+</p>
+  <blockquote><pre>
    ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(32) NULL;
    DROP TABLE webcal_import_data;
    CREATE TABLE webcal_import (
@@ -30,33 +86,33 @@ and work towards the top of this page.
      cal_external_id VARCHAR(200) NULL,
      PRIMARY KEY  ( cal_id, cal_login )
    );
-  </PRE></BLOCKQUOTE>
+  </pre></blockquote>
+  <p>
   For Oracle, use VARCHAR2 instead of VARCHAR.
   On very old MySQL installations (not sure which version), if you get
   a parse error, you can try the following instead:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
    ALTER TABLE webcal_user CHANGE cal_passwd cal_passwd VARCHAR(32) NULL;
-  </PRE></BLOCKQUOTE>
-  </p><p>
+  </pre></blockquote><p>
   Next, you will need to run the script found in the <tt>tools</tt>
   subdirectory.  This will convert all your passwords from plain text
   to md5.  You can either run this from the command line (if you have
   a standalone version of PHP compiled):
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
     cd tools
     php convert_passwords.php
-  </PRE></BLOCKQUOTE>
+  </pre></blockquote><p>
   If you do not have a standalone version of PHP, you can just type in
-  the URL to access the script in your browser: <br>
-  <tt>http://yourcalendarurl/tools/convert_passwords.php</tt><br>
+  the URL to access the script in your browser: <br />
+  <tt>http://yourcalendarurl/tools/convert_passwords.php</tt><br />
 
-<P><HR><P><B>To upgrade to 0.9.42 from 0.9.41 or older:</B>
-<P>
+</p><hr /><p><b>To upgrade to 0.9.42 from 0.9.41 or older:</b>
+</p><p>
   Three new tables were added: webcal_report,
    webcal_report_template, and webcal_import_data.
    Use the following SQL
   for MySQL and PostgreSQL:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
    CREATE TABLE webcal_report (
      cal_login VARCHAR(25) NOT NULL,
      cal_report_id INT NOT NULL,
@@ -86,15 +142,15 @@ and work towards the top of this page.
      cal_external_id VARCHAR(200) NULL,
      PRIMARY KEY  ( cal_id, cal_login )
    );
-  </PRE></BLOCKQUOTE>
+  </pre></blockquote><p>
   For Oracle, use VARCHAR2 instead of VARCHAR.
 
-<P><HR><P><B>To upgrade to 0.9.41 from 0.9.40 or older:</B>
-<P>
+</p><hr /><p><b>To upgrade to 0.9.41 from 0.9.40 or older:</b>
+</p><p>
   One new table was added: webcal_nonuser_cals.
    Use the following SQL
   for MySQL and PostgreSQL:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
    CREATE TABLE webcal_nonuser_cals (
      cal_login VARCHAR(25) NOT NULL,
      cal_lastname VARCHAR(25),
@@ -102,16 +158,16 @@ and work towards the top of this page.
      cal_admin VARCHAR(25) NOT NULL,
      PRIMARY KEY ( cal_login )
    );
-  </PRE></BLOCKQUOTE>
+  </pre></blockquote><p>
   For Oracle, use VARCHAR2 instead of VARCHAR and LONG instead of TEXT.
 
-<P><HR><P><B>To upgrade to 0.9.40 from 0.9.39 or older:</B>
-<P>
+</p><hr /><p><b>To upgrade to 0.9.40 from 0.9.39 or older:</b>
+</p><p>
   Two new tables were created: webcal_asst and webcal_entry_ext_user.
   And the column cal_ext_for_id was added to the webcal_entry table.
   Use the following SQL
   for MySQL and PostgreSQL:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
     CREATE TABLE webcal_asst (
       cal_boss VARCHAR(25) NOT NULL,
       cal_assistant VARCHAR(25) NOT NULL,
@@ -124,24 +180,24 @@ and work towards the top of this page.
       PRIMARY KEY ( cal_id, cal_fullname )
     );
   ALTER TABLE webcal_entry ADD cal_ext_for_id INT NULL;
-  </PRE></BLOCKQUOTE>
+  </pre></blockquote><p>
   For Oracle, use VARCHAR2 instead of VARCHAR.
 
-<P><HR><P><B>To upgrade to 0.9.39 from 0.9.38 or older:</B>
-<P>
+</p><hr /><p><b>To upgrade to 0.9.39 from 0.9.38 or older:</b>
+</p><p>
   The names of the date settings in the database were modified.
   All old data settings need to be removed from the database.
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
     DELETE FROM webcal_config WHERE cal_setting LIKE 'DATE_FORMAT%';
     DELETE FROM webcal_user_pref WHERE cal_setting LIKE 'DATE_FORMAT%';
-  </PRE></BLOCKQUOTE>
+  </pre></blockquote><p>
 
-<P><HR><P><B>To upgrade to 0.9.38 from 0.9.37 or older:</B>
-<P>
+</p><hr /><p><b>To upgrade to 0.9.38 from 0.9.37 or older:</b>
+</p><p>
   The webcal_entry_user table was modified, and a new table
   webcal_categories was created.  Use the following SQL
   to modify your table for MySQL and PostgreSQL:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
     ALTER TABLE webcal_entry_user ADD cal_category INT DEFAULT NULL;
 
     CREATE TABLE webcal_categories (
@@ -150,14 +206,14 @@ and work towards the top of this page.
       cat_name VARCHAR(80) NOT NULL,
       PRIMARY KEY ( cat_id )
     );
-  </PRE></BLOCKQUOTE>
+  </pre></blockquote><p>
 
-<P><HR><P><B>To upgrade to 0.9.37 from 0.9.36 or older:</B>
-<P>
+</p><hr /><p><b>To upgrade to 0.9.37 from 0.9.36 or older:</b>
+</p><p>
   The webcal_entry_log table was modified, and a new table
   webcal_entry_repeats_not was created.  Use the following SQL
   to modify your table for MySQL and PostgreSQL:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
     ALTER TABLE webcal_entry_log ADD cal_user_cal VARCHAR(25);
 
     CREATE TABLE webcal_entry_repeats_not (
@@ -165,11 +221,11 @@ and work towards the top of this page.
       cal_date INT NOT NULL,
       PRIMARY KEY ( cal_id, cal_date )
     );
-  </PRE></BLOCKQUOTE>
+  </pre></blockquote><p><p>
 
 
-<P><HR><P><B>To upgrade to 0.9.35 from 0.9.34 or older:</B>
-<P>
+</p><hr /><p><b>To upgrade to 0.9.35 from 0.9.34 or older:</b>
+</p><p>
   Six new tables were added for group support, views, system
   settings and activity logs.
   Look at tables-mysql.sql, tables-oracle.sql, or tables-postgres.sql
@@ -179,7 +235,7 @@ and work towards the top of this page.
   (admin.php) since you will be missing some config stuff in your
   database that you can add from the System Settings page.
   For MySQL and PostgreSQL, the SQL is:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
 
     CREATE TABLE webcal_group (
       cal_group_id INT NOT NULL,
@@ -225,15 +281,15 @@ and work towards the top of this page.
       cal_text TEXT,
       PRIMARY KEY ( cal_log_id )
     );
-    </PRE></BLOCKQUOTE>
+    </pre></blockquote><p>
 
-    <P><HR><P><B>To upgrade to 0.9.27:</B><P>
+    </p><hr /><p><b>To upgrade to 0.9.27:</b><p>
 
   Two new tables were added for custom event fields and reminders.
   Look at tables-mysql.sql, tables-oracle.sql, or tables-postgres.sql.
   Execute the SQL for creating webcal_site_extras and webcal_reminder_log.
   For MySQL and PostgreSQL, the SQL is:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
 
     CREATE TABLE webcal_site_extras (
       cal_id INT DEFAULT '0' NOT NULL,
@@ -252,9 +308,9 @@ and work towards the top of this page.
       cal_last_sent INT NOT NULL DEFAULT 0,
       PRIMARY KEY ( cal_id, cal_name, cal_event_date )
     );
-  </PRE></BLOCKQUOTE>
+  </pre></blockquote><p>
   For Oracle, the SQL is:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
     CREATE TABLE webcal_site_extras (
       cal_id INT DEFAULT '0' NOT NULL,
       cal_name VARCHAR(25) NOT NULL,
@@ -272,30 +328,30 @@ and work towards the top of this page.
       cal_last_sent INT NOT NULL DEFAULT 0,
       PRIMARY KEY ( cal_id, cal_name, cal_event_date )
     );
-    </PRE></BLOCKQUOTE>
+    </pre></blockquote><p>
 
-    <P>
+    <p>
   You will also need to setup the tools/send_reminders.php script
   to be run periodically.  I would recommend once an hour.  For
   Linux/UNIX, this is simple.  Just use cron and add a line to
   your crontab file that looks like:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
     1 * * * * cd /some/directory/webcalendar/tools; ./send_reminders.php
-    </PRE></BLOCKQUOTE>
+    </pre></blockquote><p>
 
-    <P>
+    <p>
   This will tell cron to run the script at one minute after the hour.
   Windows users will have to find another way to run the script.
   There are ports/look-a-likes of cron for Windows, so look around.
 
 
-  <P><HR><P><B>To upgrade to 0.9.22:</B><P>
+  </p><hr /><p><b>To upgrade to 0.9.22:</b><p>
 
   A new table was added to support layering.  Look at
   tables-mysql.sql, tables-oracle.sql, or tables-postgres.sql.
   Execute the SQL for creating the webcal_entry_repeats.  For MySQL,
   the SQL is:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
 
     CREATE TABLE webcal_user_layers (
       cal_layerid INT DEFAULT '0' NOT NULL,
@@ -305,16 +361,16 @@ and work towards the top of this page.
       cal_dups CHAR(1) DEFAULT 'N',
       PRIMARY KEY ( cal_login, cal_layeruser )
     );
-    </PRE></BLOCKQUOTE>
+    </pre></blockquote><p>
 
 
-    <P><HR><P><B>To upgrade to 0.9.14:</B><P>
+    </p><hr /><p><b>To upgrade to 0.9.14:</b><p>
 
   A new table was added to support repeating events.  Look at
   tables-mysql.sql, tables-oracle.sql, or tables-postgres.sql.
   Execute the SQL for creating the webcal_entry_repeats.  For MySQL,
   the SQL is:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
     CREATE TABLE webcal_entry_repeats (
       cal_id INT DEFAULT '0' NOT NULL,
       cal_type VARCHAR(20),
@@ -323,38 +379,39 @@ and work towards the top of this page.
       cal_days CHAR(7),
       PRIMARY KEY (cal_id)
    );
-    </PRE></BLOCKQUOTE>
+    </pre></blockquote><p>
 
-    <P><HR><P><B>To upgrade from 0.9.7-0.9.11 to 0.9.12:</B><P>
+    </p><hr /><p><b>To upgrade from 0.9.7-0.9.11 to 0.9.12:</b><p>
 
   To fix a bug in the handing of events at midnight, all the
   entries with NULL for cal_time are changed to -1.  Use the
   following SQL command:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
     update webcal_entry set cal_time = -1 where cal_time is null;
-    </PRE></BLOCKQUOTE>
+    </pre></blockquote><p>
 
-    <P><HR><P><B>To upgrade from 0.9.[23456] to 0.9.7:</B><P>
+    </p><hr /><p><b>To upgrade from 0.9.[23456] to 0.9.7:</b><p>
 
   Entirely new tables are used.  Use the following commands to
   convery your existing MySQL tables to the new tables:
-  <BLOCKQUOTE><PRE>
+  </p><blockquote><pre>
     cd tools
     ./upgrade_to_0.9.7.pl
     mysql intranet < commands.sql
-    </PRE></BLOCKQUOTE>
+    </pre></blockquote><p>
   where "intranet" is the name of the MySQL database that contains
   your WebCalendar tables.
 
-  <P><HR><P><B>To upgrade from 0.9.[23]:</B><P>
+  </p><hr /><p><b>To upgrade from 0.9.[23]:</b><p>
   Not a thing....
 
-  <P><HR><P><B>To upgrade from 0.9.1:</B><P>
+  </p><hr /><p><b>To upgrade from 0.9.1:</b><p>
   You only need to create the table cal_user_pref in tables.sql
 
-  <P><HR><P><B>To upgrade from 0.9:</B><P>
+  </p><hr /><p><b>To upgrade from 0.9:</b><p>
   You need to create the table cal_user_pref in tables.sql
   You need to create the table cal_entry_user in tables.sql that
-    was mistakenly created as "cal_event_user" in the 0.9 release
+    was mistakenly created as "cal_event_user" in the 0.9 release.
+  </p>
 
-</BODY></HTML>
+</body></html>
