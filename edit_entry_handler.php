@@ -160,6 +160,7 @@ if ( $single_user == "N" &&
         $ext_emails[$ext_count] = "";
         for ( $j = 0; $j < count ( $ext_words ); $j++ ) {
           // use regexp matching to pull email address out
+          $ext_words[$j] = chop ( $ext_words[$j] ); // remove \r if there is one
           if ( preg_match ( "/<?\\S+@\\S+\\.\\S+>?/", $ext_words[$j],
             $matches ) ) {
             $ext_emails[$ext_count] = $matches[0];
