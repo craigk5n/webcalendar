@@ -52,6 +52,9 @@ if ( $single_user == 'Y' || $disable_participants_field == 'Y' ) {
   $report_user = '';
 }
 
+if ( ! $is_admin )
+  $is_global = 'N';
+
 $adding_report = ( empty ( $report_id ) || $report_id <= 0 );
 
 // Check permissions
@@ -130,6 +133,9 @@ if ( empty ( $error ) ) {
   $names[] .= "cal_update_date";
   $values[] = date ( "Ymd" );
 
+  $names[] = "cal_report_type";
+  $values[] = "html";
+
   $names[] = "cal_report_name";
   if ( empty ( $report_name ) )
     $report_name = translate ( "Unnamed Report" );
@@ -160,6 +166,9 @@ if ( empty ( $error ) ) {
 
   $names[] = "cal_include_empty";
   $values[] = ( empty ( $include_empty ) || $include_empty != 'Y' ) ? "'N'" : "'Y'";
+
+  $names[] = "cal_is_global";
+  $values[] = ( empty ( $is_global ) || $is_global != 'Y' ) ? "'N'" : "'Y'";
 
   $names[] = "cal_show_in_trailer";
   $values[] = ( empty ( $show_in_trailer ) || $show_in_trailer != 'Y' ) ? "'N'" : "'Y'";
