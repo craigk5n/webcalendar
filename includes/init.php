@@ -206,7 +206,7 @@ $bodyid = array(
 function print_header($includes = '', $HeadX = '', $BodyX = '',
   $disableCustom=false, $disableStyle=false) {
   global $application_name;
-  global $FONTS,$WEEKENDBG,$THFG,$THBG;
+  global $FONTS,$WEEKENDBG,$THFG,$THBG,$PHP_SELF;
   global $TABLECELLFG,$TODAYCELLBG,$TEXTCOLOR;
   global $POPUP_FG,$BGCOLOR;
   global $LANGUAGE;
