@@ -212,6 +212,7 @@ $browser_languages = array (
 // translate("English")
 // translate("Basque")
 // translate("Bulgarian")
+// translate("Catalan")
 // translate("Chinese (Traditonal/Big5)")
 // translate("Chinese (Simplified/GB2312)")
 // translate("Czech")
