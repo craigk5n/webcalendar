@@ -1,4 +1,5 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed bug 1179403: Availability selection fails when Time Format =24
  - Added sql to set webcal_config STARTVIEW default to week.php for 
    upgrade from v1.0RC2 to v1.0RC3.
  - Fixed problem with missing $cat_id in week and day URLs in month.php

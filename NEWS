@@ -1,5 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1179403: Availability selection fails when Time Format =24
       1065461: timezone offset & all-day events
       1107253: time zone offset
       1140453: Time zone offset in email notifications
