@@ -187,9 +187,8 @@ function rpttype_handler () {
 ?>
 var tabs = new Array();
 tabs[0] = "details";
-tabs[1] = "sched";
-tabs[2] = "participants";
-tabs[3] = "pete";
+tabs[1] = "participants";
+tabs[2] = "pete";
 
 var sch_win;
 
