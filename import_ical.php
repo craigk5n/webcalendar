@@ -127,7 +127,7 @@ function parse_ical ( $cal_file ) {
               $state = "VCALENDAR";
               $substate = "none";
               $subsubstate = '';
-	      $ical_data[] = format_ical($event);
+	      if ($tmp_data = format_ical($event)) $ical_data[] = $tmp_data;
               // clear out data for new event
               $event = '';
 
@@ -201,6 +201,7 @@ function format_ical($event) {
 
   // Start and end time
   $fevent['StartTime'] = icaldate_to_timestamp($event['dtstart']);
+  if ($fevent['StartTime'] == '-1') return false;
   if ( isset ( $event['dtend'] ) ) {
     $fevent['EndTime'] = icaldate_to_timestamp($event['dtend']);
   } else {
