@@ -138,7 +138,7 @@ if ( empty ( $error ) ) {
   $values[] = "'html'";
 
   $names[] = "cal_report_name";
-  if ( empty ( $report_name ) )
+  if ( empty ( $report_name ) || trim ( $report_name ) == '' )
     $report_name = translate ( "Unnamed Report" );
   $values[] = "'$report_name'";
 

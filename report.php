@@ -211,8 +211,11 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
   $list .= "<ul>\n";
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ){
+      $rep_name = trim ( $row[1] );
+      if ( empty ( $rep_name ) )
+        $rep_name = translate ( "Unnamed Report" );
       $list .= "<li><a href=\"edit_report.php?report_id=$row[0]\" class=\"nav\">" .
-        $row[1] . "</a></li>\n";
+        $rep_name . "</a></li>\n";
     }
     $list .= "</ul>\n";
     $addurl = $updating_public ? "edit_report.php?public=1" : "edit_report.php";
