@@ -1,4 +1,7 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - When viewing a report, if allow_html_description is enabled but no HTML
+   is found in an event description, use nl2br to preserve plain text
+   formatting.
  - Fixed bug 1181682: Reports with just spaces for a name cannot be edited.
  - Fixed bug 1179403: Availability selection fails when Time Format =24
  - Added sql to set webcal_config STARTVIEW default to week.php for 

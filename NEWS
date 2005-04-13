@@ -34,6 +34,9 @@ Version 1.0RC4-CVS (?? ??? 2005)
     + Added option to set LDAP_OPT_PROTOCOL_VERSION in user-ldap.php
     + Updated install web page to work better on Windows systems.
       Added display of current PHP settings.
+    + When viewing a report, if allow_html_description is enabled but no HTML
+      is found in an event description, use nl2br to preserve plain text
+      formatting.
 
   - The following translations were updated:
     + Danish, Finnish
