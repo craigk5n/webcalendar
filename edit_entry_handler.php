@@ -35,7 +35,7 @@ if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
     $hour = 0;
   }
   if ( $GLOBALS['TIMED_EVT_LEN'] == 'E') {
-    if ( isset ( $endhour ) ) {
+    if ( isset ( $endhour ) && $TIME_FORMAT == '12' ) {
       // Convert end time to a twenty-four hour time scale.
       if ( $endampm == 'pm' && $endhour < 12 ) {
         $endhour += 12;
@@ -356,7 +356,6 @@ if ( empty ( $error ) ) {
       $error = translate("Database error") . ": " . dbi_error ();
     }
   }
-
   $sql = "INSERT INTO webcal_entry ( cal_id, " .
     ( $old_id > 0 ? " cal_group_id, " : "" ) .
     "cal_create_by, cal_date, " .
@@ -364,7 +363,9 @@ if ( empty ( $error ) ) {
     "cal_access, cal_type, cal_name, cal_description ) " .
     "VALUES ( $id, " .
     ( $old_id > 0 ? " $old_id, " : "" ) .
-    "'" . ($is_assistant || $is_nonuser_admin ? $user : $login) . "', ";
+    "'" . ( ! empty ( $user ) && 
+      ( ( $is_admin && ! $newevent ) || $is_assistant || 
+      $is_nonuser_admin ) ? $user : $login ) . "', ";
     
   $date = mktime ( 3, 0, 0, $month, $day, $year );
   $sql .= date ( "Ymd", $date ) . ", ";
