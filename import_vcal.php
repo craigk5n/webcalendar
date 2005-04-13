@@ -91,7 +91,7 @@ function parse_vcal($cal_file) {
               $state = "VCALENDAR";
               $substate = "none";
               $subsubstate = '';
-	      $vcal_data[] = format_vcal($event);
+	      if ($tmp_data = format_vcal($event)) $vcal_data[] = $tmp_data;
               // clear out data for new event
               $event = '';
 
@@ -156,17 +156,18 @@ function vcaldate_to_timestamp($vdate,$plus_d = '0',$plus_m = '0', $plus_y = '0'
 // Put all vcal data into import hash structure
 function format_vcal($event) {
   // Start and end time
-  $fevent[StartTime] = vcaldate_to_timestamp($event[dtstart]);
-  $fevent[EndTime] = vcaldate_to_timestamp($event[dtend]);
+  $fevent['StartTime'] = vcaldate_to_timestamp($event['dtstart']);
+  if ($fevent['StartTime'] == '-1') return false;
+  $fevent['EndTime'] = vcaldate_to_timestamp($event['dtend']);
 
   // Calculate duration in minutes
-  $fevent[Duration]           = ($fevent[EndTime] - $fevent[StartTime]) / 60;
-  if ($fevent[Duration] == '1440') { $fevent[Duration] = '0'; $fevent[Untimed] = 1; } //All day (untimed)
+  $fevent['Duration']           = ($fevent['EndTime'] - $fevent['StartTime']) / 60;
+  if ($fevent['Duration'] == '1440') { $fevent['Duration'] = '0'; $fevent['Untimed'] = 1; } //All day (untimed)
 
-  $fevent[Summary] = $event['summary'];
-  $fevent[Description] = $event['description'];
+  if (! empty($event['summary'])) $fevent['Summary'] = $event['summary'];
+  if (! empty($fevent['Description'])) $fevent['Description'] = $event['description'];
   $fevent['Private'] = preg_match("/private|confidential/i", $event['class']) ? '1' : '0';
-  $fevent[UID] = $event['uid'];
+  if (! empty($fevent['UID'])) $fevent['UID'] = $event['uid'];
 
   // Repeats
   //
@@ -174,47 +175,47 @@ function format_vcal($event) {
   // actually support all of the ways repeats can be specified.  We will
   // focus on vcals dumped from Palm Desktop and Lotus Notes, which are simple
   // and the ones webcalendar should fully support.
-  if ($event[rrule]) {
+  if (! empty($event['rrule'])) {
     //split into pieces
-    $RR = explode(" ", $event[rrule]);
+    $RR = explode(" ", $event['rrule']);
 
     if (preg_match("/^D(.+)$/i", $RR[0], $match)) {
-      $fevent[Repeat][Interval] = '1';
-      $fevent[Repeat][Frequency] = $match[1];
+      $fevent['Repeat']['Interval'] = '1';
+      $fevent['Repeat']['Frequency'] = $match[1];
     } elseif (preg_match("/^W(.+)$/i", $RR[0], $match)) {
-      $fevent[Repeat][Interval] = '2';
-      $fevent[Repeat][Frequency] = $match[1];
-      $fevent[Repeat][RepeatDays] = rrule_repeat_days($RR);
+      $fevent['Repeat']['Interval'] = '2';
+      $fevent['Repeat']['Frequency'] = $match[1];
+      $fevent['Repeat']['RepeatDays'] = rrule_repeat_days($RR);
     } elseif (preg_match("/^MP(.+)$/i", $RR[0], $match)) {
-      $fevent[Repeat][Interval] = '3';
-      $fevent[Repeat][Frequency] = $match[1];
+      $fevent['Repeat']['Interval'] = '3';
+      $fevent['Repeat']['Frequency'] = $match[1];
       if ($RR[1] == '5+') {
-        $fevent[Repeat][Interval] = '6'; // Last week (monthlyByDayR)
+        $fevent['Repeat']['Interval'] = '6'; // Last week (monthlyByDayR)
       }
     } elseif (preg_match("/^MD(.+)$/i", $RR[0], $match)) {
-      $fevent[Repeat][Interval] = '4';
-      $fevent[Repeat][Frequency] = $match[1];
+      $fevent['Repeat']['Interval'] = '4';
+      $fevent['Repeat']['Frequency'] = $match[1];
     } elseif (preg_match("/^YM(.+)$/i", $RR[0], $match)) {
-      $fevent[Repeat][Interval] = '5';
-      $fevent[Repeat][Frequency] = $match[1];
+      $fevent['Repeat']['Interval'] = '5';
+      $fevent['Repeat']['Frequency'] = $match[1];
     } elseif (preg_match("/^YD(.+)$/i", $RR[0], $match)) {
-      $fevent[Repeat][Interval] = '5';
-      $fevent[Repeat][Frequency] = $match[1];
+      $fevent['Repeat']['Interval'] = '5';
+      $fevent['Repeat']['Frequency'] = $match[1];
     }
 
     $end = end($RR);
 
     // No end in Palm is 12-31-2031
     if (($end != '20311231') && ($end != '#0')) {
-      $fevent[Repeat][EndTime] = rrule_endtime($fevent[Repeat][Interval],$fevent[Repeat][Frequency],$event[dtstart],$end);
+      $fevent['Repeat']['EndTime'] = rrule_endtime($fevent['Repeat']['Interval'],$fevent['Repeat']['Frequency'],$event['dtstart'],$end);
     }
 
     // Repeating exceptions?
-    if ($event[exdate]) {
-      $fevent[Repeat][Exceptions] = array();
-      $EX = explode(",", $event[exdate]);
+    if ($event['exdate']) {
+      $fevent['Repeat']['Exceptions'] = array();
+      $EX = explode(",", $event['exdate']);
       foreach ( $EX as $exdate ){
-        $fevent[Repeat][Exceptions][] = vcaldate_to_timestamp($exdate);
+        $fevent['Repeat']['Exceptions'][] = vcaldate_to_timestamp($exdate);
       }
     }
   } // end if rrule
