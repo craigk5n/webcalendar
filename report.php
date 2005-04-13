@@ -123,6 +123,13 @@ function event_to_text ( $id, $date, $time, $duration,
     $allow_html_description == 'Y' ) {
     $str = str_replace ( '&', '&amp;', $description );
     $description_str = str_replace ( '&amp;amp;', '&amp', $str );
+    if ( strstr ( $description_str, "<" ) &&
+      strstr ( $description_str, ">" ) ) {
+      // found some HTML
+    } else {
+      // No HTML found.  Add line breaks.
+      $description_str = nl2br ( $description_str );
+    }
   } else {
     $description_str = nl2br (
       activate_urls ( htmlspecialchars ( $description ) ) );
