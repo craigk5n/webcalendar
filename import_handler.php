@@ -302,7 +302,7 @@ function import_data ( $data, $overwrite, $type ) {
 
       if ( strlen ( $Entry['Summary'] ) == 0 )
         $Entry['Summary'] = translate("Unnamed Event");
-      if ( strlen ( $Entry['Description'] ) == 0 )
+      if ( empty ( $Entry['Description'] ) )
         $Entry['Description'] = $Entry['Summary'];
       $Entry['Summary'] = str_replace ( "\\n", "\n", $Entry['Summary'] );
       $Entry['Summary'] = str_replace ( "\\'", "'", $Entry['Summary'] );
