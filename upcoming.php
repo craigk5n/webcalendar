@@ -42,9 +42,6 @@ include "includes/connect.php";
 
 load_global_settings ();
 
-include "includes/translate.php";
-
-
 /*
  *
  * Configurable settings for this file.  You may change the settings
@@ -92,6 +89,8 @@ $cat_id = '';
 // Set for use elsewhere as a global
 $login = $username;
 load_user_preferences ();
+
+include "includes/translate.php";
 
 
 if ( $public_must_be_enabled && $public_access != 'Y' ) {

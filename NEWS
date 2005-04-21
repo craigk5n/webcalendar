@@ -1,5 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1183714: Translation error
       1154432: vCal import from Mozilla fails to translate quoted-printable
       1176164: iCalendar import fatally corrupts database
       1181682: Reports with just spaces for a name cannot be edited
