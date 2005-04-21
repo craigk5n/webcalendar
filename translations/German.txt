@@ -98,7 +98,7 @@ This year: Dieses Jahr
 Last year: Letztes Jahr
 Year before last: Vorletztes Jahr
 Invalid report id: Ungültige Bericht ID
-Unnamed Report: <neuer Bericht>
+Unnamed Report: neuer Bericht
 Add Report: Bericht hinzufügen
 Edit Report: Bericht editieren
 Report name: Berichtsname
@@ -152,7 +152,7 @@ Public Access: Öffentlicher Zugang
 ###############################################
 # Page: views_edit.php
 #
-Unnamed View: <neue Ansicht>
+Unnamed View: neue Ansicht
 Add View: Ansichten hinzufügen
 Edit View: Ansicht editieren
 View Name: Ansichtsname
@@ -245,7 +245,7 @@ pm: Nachmittag
 ###############################################
 # Page: group_edit.php
 #
-Unnamed Group: <neue Benutzergruppe>
+Unnamed Group: neue Benutzergruppe
 Add Group: Benutzergruppe hinzufügen
 Edit Group: Benutzergruppe editieren
 Group name: Benutzergruppenname
