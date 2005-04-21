@@ -1,4 +1,5 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed bug 1179423: private events displayed on reports
  - Fixed bug 1183714: Translation error
  - Fixed bug 1154432: vCal import from Mozilla fails to translate quoted-printable
  - Don't import events if they have in invalid start time (Fixed bug 1176164)

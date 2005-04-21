@@ -1,5 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1179423: private events displayed on reports
       1183714: Translation error
       1154432: vCal import from Mozilla fails to translate quoted-printable
       1176164: iCalendar import fatally corrupts database
