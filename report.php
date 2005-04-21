@@ -81,13 +81,28 @@ function event_to_text ( $id, $date, $time, $duration,
   }
   if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
     $name_str = "(" . translate("Private") . ")";
+    $description_str = translate("This event is confidential");
   } else if ( $login != $event_owner && $access == 'R' &&
     strlen ( $event_owner ) ) {
     $name_str = "(" . translate("Private") . ")";
-  } else if ( $login != $event_owner && strlen ( $event_owner ) ) {
-    $name_str = htmlspecialchars ( $name );
+    $description_str = translate("This event is confidential");
   } else {
     $name_str = htmlspecialchars ( $name );
+    if ( ! empty ( $allow_html_description ) &&
+      $allow_html_description == 'Y' ) {
+      $str = str_replace ( '&', '&amp;', $description );
+      $description_str = str_replace ( '&amp;amp;', '&amp', $str );
+      if ( strstr ( $description_str, "<" ) &&
+        strstr ( $description_str, ">" ) ) {
+        // found some HTML
+      } else {
+        // No HTML found.  Add line breaks.
+        $description_str = nl2br ( $description_str );
+      }
+    } else {
+      $description_str = nl2br (
+        activate_urls ( htmlspecialchars ( $description ) ) );
+    }
   }
 
   $date_str = date_to_str ( $date, "", false );
@@ -117,22 +132,6 @@ function event_to_text ( $id, $date, $time, $duration,
     $status_str = translate ( "Approved" );
   } else {
     $status_str = translate ( "Unknown" );
-  }
-
-  if ( ! empty ( $allow_html_description ) &&
-    $allow_html_description == 'Y' ) {
-    $str = str_replace ( '&', '&amp;', $description );
-    $description_str = str_replace ( '&amp;amp;', '&amp', $str );
-    if ( strstr ( $description_str, "<" ) &&
-      strstr ( $description_str, ">" ) ) {
-      // found some HTML
-    } else {
-      // No HTML found.  Add line breaks.
-      $description_str = nl2br ( $description_str );
-    }
-  } else {
-    $description_str = nl2br (
-      activate_urls ( htmlspecialchars ( $description ) ) );
   }
 
   $href_str = "view_entry.php?id=$id";
