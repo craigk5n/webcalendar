@@ -54,19 +54,18 @@ function parse_vcal($cal_file) {
           } elseif (preg_match("/^DESCRIPTION:(.+)$/i", $buff, $match)) {
               $substate = "description";
               $event[$substate] = $match[1];
-          } elseif (preg_match("/^DESCRIPTION\S*:(.+)$/i", $buff, $match)) {
-              $substate = "description";
+          } elseif (preg_match("/^DESCRIPTION;ENCODING=QUOTED-PRINTABLE:(.+)$/i", $buff, $match)) {
+//              $substate = "description";
+//              $event[$substate] = quoted_printable_decode ( $match[1] );
+              $substate = "descriptionqp";
               $event[$substate] = $match[1];
-              if ( preg_match ( "/encoding=quoted-printable/i", $buff ) ) {
-                $event[$substate] = quoted_printable_decode ( $match[1] );
-              }
           } elseif (preg_match("/^CLASS.*:(.+)$/i", $buff, $match)) {
               $substate = "class";
               $event[$substate] = $match[1];
           } elseif (preg_match("/^PRIORITY.*:(.+)$/i", $buff, $match)) {
               $substate = "priority";
               $event[$substate] = $match[1];
-	  } elseif (preg_match("/^DTSTART.*:(.+)$/i", $buff, $match)) {
+	        } elseif (preg_match("/^DTSTART.*:(.+)$/i", $buff, $match)) {
               $substate = "dtstart";
               $event[$substate] = $match[1];
           } elseif (preg_match("/^DTEND.*:(.+)$/i", $buff, $match)) {
@@ -165,8 +164,19 @@ function format_vcal($event) {
   if ($fevent['Duration'] == '1440') { $fevent['Duration'] = '0'; $fevent['Untimed'] = 1; } //All day (untimed)
 
   if (! empty($event['summary'])) $fevent['Summary'] = $event['summary'];
-  if (! empty($fevent['Description'])) $fevent['Description'] = $event['description'];
-  $fevent['Private'] = preg_match("/private|confidential/i", $event['class']) ? '1' : '0';
+  if (! empty($event['description'])) $fevent['Description'] = $event['description'];
+  if (! empty($event['descriptionqp'])) {
+    $fevent['Description'] = quoted_printable_decode ( $event['descriptionqp'] );
+    
+    // hack for mozilla sunbird's extra = signs
+    $fevent['Description'] = preg_replace('/^=/', '', $fevent['Description']);
+    $fevent['Description'] = str_replace("\n=", "\n", $fevent['Description']);
+  }
+  if (! empty($event['class'])) {
+    $fevent['Private'] = preg_match("/private|confidential/i", $event['class']) ? '1' : '0';
+  } else {
+    $fevent['Private'] = '0';
+  }
   if (! empty($fevent['UID'])) $fevent['UID'] = $event['uid'];
 
   // Repeats
@@ -211,7 +221,7 @@ function format_vcal($event) {
     }
 
     // Repeating exceptions?
-    if ($event['exdate']) {
+    if (!empty($event['exdate'])) {
       $fevent['Repeat']['Exceptions'] = array();
       $EX = explode(",", $event['exdate']);
       foreach ( $EX as $exdate ){
