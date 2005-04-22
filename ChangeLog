@@ -1,4 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Split import/export back to two separate links & pages
+ - Moved contents of scheduling tab to details tab
  - Fixed bug 1187734: Timezone offset problem
  - Fixed bug 1120897: Conflict with exceptions
  - Moved function add_duration() to functions.php
