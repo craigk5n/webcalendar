@@ -1,6 +1,21 @@
-	<!-- EXPORT -->
-	<a name="tabexport"></a>
-	<div id="tabscontent_export">
+<?php
+/*
+ * Page Description:
+ *	This page will present the user with forms for exporting calendar
+ *  events.
+ *
+ * Input Parameters:
+ *	None
+ *
+ */
+include_once 'includes/init.php';
+
+$INC = array('js/export.php');
+print_header($INC);
+?>
+
+<h2><?php etranslate("Export")?></h2>
+
 <form action="export_handler.php" method="post" name="exportform">
 <table style="border-width:0px;">
 <tr><td>
@@ -123,4 +138,6 @@
 </td></tr>
 </table>
 </form>
-</div> <!-- /EXPORT -->
+<?php print_trailer (); ?>
+</body>
+</html>

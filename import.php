@@ -17,8 +17,7 @@
  */
 include_once 'includes/init.php';
 
-$INC = array('js/export.php','js/visible.php');
-print_header($INC);
+print_header();
 
 // Generate the selection list for calendar user selection.
 // Only ask for calendar user if user is an administrator.
@@ -67,18 +66,8 @@ function print_user_list () {
 }
 ?>
 
-<h2><?php etranslate("Import")?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" /> / <?php etranslate("Export")?></h2>
+<h2><?php etranslate("Import")?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" /></h2>
 
-<!-- TABS -->
-<div id="tabs">
-	<span class="tabfor" id="tab_import"><a href="#tabimport" onclick="return showTab('import')"><?php etranslate("Import")?></a></span>
-	<span class="tabbak" id="tab_export"><a href="#tabexport" onclick="return showTab('export')"><?php etranslate("Export")?></a></span>
-</div>
-
-<!-- TABS BODY -->
-<div id="tabscontent">
-	<!-- DETAILS -->
-	<a name="tabimport"></a>
 <?php
 $upload = ini_get ( "file_uploads" );
 $upload_enabled = ! empty ( $upload ) &&
@@ -92,8 +81,7 @@ if ( ! $upload_enabled ) {
 } else {
   // file uploads enabled
 ?>
-	<div id="tabscontent_import">
-	<form action="import_handler.php" method="post" name="importform" enctype="multipart/form-data">
+<form action="import_handler.php" method="post" name="importform" enctype="multipart/form-data">
 <table style="border-width:0px;">
 <tr><td>
 	<label for="importtype"><?php etranslate("Import format")?>:</label></td><td>
@@ -121,17 +109,10 @@ if ( ! $upload_enabled ) {
 	<label for="fileupload">Upload file:</label></td><td>
 	<input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
 </td></tr>
-
 <?php print_user_list(); ?>
 </table>
 <br /><input type="submit" value="<?php etranslate("Import")?>" />
 </form>
-</div> <!-- /IMPORT -->
-<?php } // end if $file_upload_enabled
-?>
-
-<?php include_once 'export.php'; ?>
-</div>
-<?php print_trailer (); ?>
+<?php } print_trailer (); ?>
 </body>
 </html>

@@ -242,9 +242,11 @@ if ( empty ( $user ) || $user == $login ) {
     translate("Search") . "</a>";
   if ( $login != '__public__' ) {
     $goto_link[] = "<a title=\"" . 
-      translate("Import") . "/" . translate("Export") . "\"  ".
-      "href=\"import.php\">" . 
-      translate("Import") . "/" . translate("Export") . "</a>";
+      translate("Import") . "\" href=\"import.php\">" . 
+      translate("Import") . "</a>";
+    $goto_link[] = "<a title=\"" . 
+      translate("Export") . "\" href=\"export.php\">" . 
+      translate("Export") . "</a>";
   }
   if ( $can_add ) {
     $url = "<a title=\"" . 
