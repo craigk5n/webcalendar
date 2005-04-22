@@ -35,6 +35,8 @@ Version 1.0RC4-CVS (?? ??? 2005)
     + Applied bug fix 1151442: Overlapping events display error in week.php
 
   - New Features / Enhancements / Changes:
+    + Split import/export back to two separate links & pages
+    + Moved contents of scheduling tab to details tab
     + Updated install/index.php to improve security and display advanced php info
     + Added new default webcal_config values to all sql table definition files
     + Removed most instances of htmlentities as unneeded
