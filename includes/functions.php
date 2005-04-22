@@ -3408,7 +3408,7 @@ function display_time ( $time, $ignore_offset=0 ) {
     $hour += 24;
   while ( $hour > 23 )
     $hour -= 24;
-  $min = ( $time / 100 ) % 100;
+  $min = abs( ( $time / 100 ) % 100 );
   if ( $GLOBALS["TIME_FORMAT"] == "12" ) {
     $ampm = ( $hour >= 12 ) ? translate("pm") : translate("am");
     $hour %= 12;
