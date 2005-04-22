@@ -1973,7 +1973,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
       $daysarray = array();
       $r=0;
       $dow = date("w",$date);
-      $cdate = $date - ($dow * $ONE_DAY);
+      $cdate = $date;
       for ($i = 0; $i < 7; $i++) {
         $isDay = substr($days, $i, 1);
         if (strcmp($isDay,"y")==0) {
@@ -2714,7 +2714,7 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
               $conflicts .=  "(" . translate("Private") . ")";
             else {
               $conflicts .=  "<a href=\"view_entry.php?id=" . $row['cal_id'];
-              if ( $user != $login )
+              if ( ! empty ( $user ) && $user != $login )
                 $conflicts .= "&amp;user=$user";
               $conflicts .= "\">" . $row['cal_name'] . "</a>";
             }
@@ -4792,4 +4792,27 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   echo "</td></tr></table>\n";
 } 
 
+/**
+ * Return the time in HHMMSS format of input time + duration
+ *
+ *
+ * <b>Note:</b> The gd library module needs to be available to use gradient
+ * images.  If it is not available, a single background color will be used
+ * instead.
+ *
+ * @param string $time   format "235900"
+ * @param int $duration  number of minutes
+ *
+ * @return string The time in HHMMSS format
+ */
+function add_duration ( $time, $duration ) {
+  $hour = (int) ( $time / 10000 );
+  $min = ( $time / 100 ) % 100;
+  $minutes = $hour * 60 + $min + $duration;
+  $h = $minutes / 60;
+  $m = $minutes % 60;
+  $ret = sprintf ( "%d%02d00", $h, $m );
+  //echo "add_duration ( $time, $duration ) = $ret <br />\n";
+  return $ret;
+}
 ?>
