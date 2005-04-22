@@ -138,18 +138,6 @@ if ( empty ( $error ) && ! $can_view ) {
   $error = translate ( "You are not authorized" );
 }
 
-// copied from edit_entry_handler (functions.php?)
-function add_duration ( $time, $duration ) {
-  $hour = (int) ( $time / 10000 );
-  $min = ( $time / 100 ) % 100;
-  $minutes = $hour * 60 + $min + $duration;
-  $h = $minutes / 60;
-  $m = $minutes % 60;
-  $ret = sprintf ( "%d%02d00", $h, $m );
-  //echo "add_duration ( $time, $duration ) = $ret <br />";
-  return $ret;
-}
-
 if ( ! empty ( $year ) ) {
   $thisyear = $year;
 }

@@ -73,21 +73,6 @@ if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
   }
 }
 
-// Return the time in HHMMSS format of input time + duration
-// $time - format "235900"
-// $duration - number of minutes
-function add_duration ( $time, $duration ) {
-  $hour = (int) ( $time / 10000 );
-  $min = ( $time / 100 ) % 100;
-  $minutes = $hour * 60 + $min + $duration;
-  $h = $minutes / 60;
-  $m = $minutes % 60;
-  $ret = sprintf ( "%d%02d00", $h, $m );
-  //echo "add_duration ( $time, $duration ) = $ret <br />\n";
-  return $ret;
-}
-
-
 // Make sure this user is really allowed to edit this event.
 // Otherwise, someone could hand type in the URL to edit someone else's
 // event.
