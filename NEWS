@@ -1,5 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1120897: Conflict with exceptions
       1181682: Report with no name entered -> phantom report!
       1179423: private events displayed on reports
       1183714: Translation error
@@ -14,8 +15,8 @@ Version 1.0RC4-CVS (?? ??? 2005)
       1160167: 12AM Events cause display problems in edit_entry.php
       1158769: Category lost when modifing event by Admin
       1168686: Month display collides with minicals on Safari
-      1168682:  RC3 Language Detection Broken for Safari.
-      1169403:  Public Access not default selected if Particiapants not shown. 
+      1168682: RC3 Language Detection Broken for Safari.
+      1169403: Public Access not default selected if Particiapants not shown. 
       1169078: Bad function call in import_handler.php
       1168092: Overlapping events display problem
       1167281: View_l loses colour for "today"
@@ -23,6 +24,7 @@ Version 1.0RC4-CVS (?? ??? 2005)
       1162486: Path exposure issue with view_entry.php
 
   - Other bugs fixed:
+    + Fixed problem with ical import weekly BYDAY parsing in import_ical.php
     + Fixed problem with missing $cat_id in week and day URLs in month.php
     + Fixed problem with second edit of a single event in a repeating series 
       losing linkage with the original event.
