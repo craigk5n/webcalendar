@@ -3,13 +3,13 @@
  * $Id$
  *
  * File Description:
- *	This file incudes functions for parsing iCal data files during
- *	an import.
+ * This file incudes functions for parsing iCal data files during
+ * an import.
  *
- *	It will be included by import_handler.php.
+ * It will be included by import_handler.php.
  *
  * The iCal specification is available online at:
- *	http://www.ietf.org/rfc/rfc2445.txt
+ * http://www.ietf.org/rfc/rfc2445.txt
  *
  */
 
@@ -79,7 +79,7 @@ function parse_ical ( $cal_file ) {
             $subsubstate = $match[1];
           }
            // we suppose ":" is on the same line as property name, this can perhaps cause problems
-	  else if (preg_match("/^SUMMARY.*:(.+)$/i", $buff, $match)) {
+          else if (preg_match("/^SUMMARY.*:(.+)$/i", $buff, $match)) {
               $substate = "summary";
               $event[$substate] = $match[1];
           } elseif (preg_match("/^DESCRIPTION:(.+)$/i", $buff, $match)) {
@@ -94,10 +94,10 @@ function parse_ical ( $cal_file ) {
           } elseif (preg_match("/^PRIORITY.*:(.*)$/i", $buff, $match)) {
               $substate = "priority";
               $event[$substate] = $match[1];
-	  } elseif (preg_match("/^DTSTART.*:\s*(\d+T\d+Z?)\s*$/i", $buff, $match)) {
+          } elseif (preg_match("/^DTSTART.*:\s*(\d+T\d+Z?)\s*$/i", $buff, $match)) {
               $substate = "dtstart";
               $event[$substate] = $match[1];
-	  } elseif (preg_match("/^DTSTART.*:\s*(\d+)\s*$/i", $buff, $match)) {
+          } elseif (preg_match("/^DTSTART.*:\s*(\d+)\s*$/i", $buff, $match)) {
               $substate = "dtstart";
               $event[$substate] = $match[1];
           } elseif (preg_match("/^DTEND.*:\s*(.*)\s*$/i", $buff, $match)) {
@@ -127,13 +127,13 @@ function parse_ical ( $cal_file ) {
               $state = "VCALENDAR";
               $substate = "none";
               $subsubstate = '';
-	      if ($tmp_data = format_ical($event)) $ical_data[] = $tmp_data;
+              if ($tmp_data = format_ical($event)) $ical_data[] = $tmp_data;
               // clear out data for new event
               $event = '';
 
-	  // TODO: QUOTED-PRINTABLE descriptions
+   // TODO: QUOTED-PRINTABLE descriptions
 
-	  // folded lines
+   // folded lines
           // TODO: This is not the best way to handle folded lines.
           // We should fix the folding before we parse...
           } elseif (preg_match("/^\s(\S.*)$/", $buff, $match)) {
@@ -144,7 +144,7 @@ function parse_ical ( $cal_file ) {
                   $error = true;
               }
           // For unsupported properties
-	  } else {
+   } else {
             $substate = "none";
           }
       } elseif ($state == "VCALENDAR") {
@@ -251,7 +251,11 @@ function format_ical($event) {
   }
 
   $fevent['Summary'] = $event['summary'];
-  $fevent['Description'] = $event['description'];
+  if ( ! empty ( $event['description'] ) ) {
+    $fevent['Description'] = $event['description'];
+  } else {
+    $fevent['Description'] = $event['summary'];
+  }
   if ( ! empty ( $event['class'] ) ) {
     $fevent['Private'] = preg_match("/private|confidential/i", 
       $event['class']) ? '1' : '0';
@@ -354,10 +358,10 @@ function format_ical($event) {
 
 // Figure out days of week for weekly repeats
 function rrule_repeat_days($RA) {
-  $T = count($RA);
-  $j = $T - 1;
+  $RA =  explode(",",  $RA );
+  $T = count( $RA ) ;
   $sun = $mon = $tue = $wed = $thu = $fri = $sat = 'n';
-  for ($i = 1; $i < $j; $i++) {
+  for ($i = 0; $i < $T; $i++) {
     if ($RA[$i] == 'SU') {
       $sun = 'y';
     } elseif ($RA[$i] == 'MO') {
