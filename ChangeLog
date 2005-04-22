@@ -1,4 +1,7 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed bug 1120897: Conflict with exceptions
+ - Moved function add_duration() to functions.php
+ - Fixed problem with ical import weekly BYDAY parsing in import_ical.php
  - Fixed bug 1181682: Report with no name entered -> phantom report!
  - Fixed bug 1179423: private events displayed on reports
  - Fixed bug 1183714: Translation error
