@@ -146,7 +146,6 @@ function import_data ( $data, $overwrite, $type ) {
   $oldIds = array ();
   $firstEventId = 0;
   $importId = 1;
-
   // Generate a unique import id
   $res = dbi_query ( "SELECT MAX(cal_import_id) FROM webcal_import" );
   if ( $res ) {
@@ -198,7 +197,8 @@ function import_data ( $data, $overwrite, $type ) {
     }
 
     // first check for any schedule conflicts
-    if ( empty ( $allow_conflicts )  &&  ( $Entry['Duration'] != 0 )) {
+    if ( ( empty ( $allow_conflicts )  || $allow_conflicts == "N" ) &&
+      ( $Entry['Duration'] != 0 )) {
       $date = mktime (0,0,0,$Entry['StartMonth'],
         $Entry['StartDay'],$Entry['StartYear']);
       $endt =  (! empty ( $Entry['Repeat']['EndTime'] ) ) ? 
@@ -317,9 +317,19 @@ function import_data ( $data, $overwrite, $type ) {
       // Mozilla will send this goofy string, so replace it with real html
       $Entry['Description'] = str_replace ( "=0D=0A=", "<br />", 
         $Entry['Description'] );
-      // limit length to 1024 chars since we setup tables that way
-      if ( strlen ( $Entry['Description'] ) >= 1024 )
-        $Entry['Description'] = substr ( $Entry['Description'], 0, 1019 ) . "...";
+      $Entry['Description'] = str_replace ( "=0D=0A", "", 
+        $Entry['Description'] );
+      // Allow option to not limit description size
+      // This will only be practical for mysql and MSSQL/Postgres as 
+      //these do not have limits on the table definition
+      //TODO Add this option to preferences
+      if ( empty ( $LIMIT_DESCRIPTION_SIZE ) || 
+         $LIMIT_DESCRIPTION_SIZE == "Y" ) {
+        // limit length to 1024 chars since we setup tables that way
+        if ( strlen ( $Entry['Description'] ) >= 1024 ) {
+          $Entry['Description'] = substr ( $Entry['Description'], 0, 1019 ) . "...";
+        }
+      }
       $names[] = 'cal_description';
       $values[] = "'" . $Entry['Description'] .  "'";
       if ( $updateMode ) {
@@ -491,13 +501,10 @@ function import_data ( $data, $overwrite, $type ) {
           " - " . display_time ( $Entry['EndHour'].$Entry['EndMinute']."00" );
       }
       $dd = $Entry['StartMonth'] . "-" .  $Entry['StartDay'] . "-" . $Entry['StartYear'];
-      echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
-      echo "\" onmouseover=\"window.status='" . translate("View this entry") .
-        "'; return true;\" onmouseout=\"window.status=''; return true;\">";
       $Entry['Summary'] = str_replace ( "''", "'", $Entry['Summary'] );
       $Entry['Summary'] = str_replace ( "'", "\\'", $Entry['Summary'] );
       echo htmlspecialchars ( $Entry['Summary'] );
-      echo "</a> (" . $dd;
+      echo " (" . $dd;
       $time = trim ( $time );
       if ( ! empty ( $time ) )
         echo "&nbsp; " . $time;
