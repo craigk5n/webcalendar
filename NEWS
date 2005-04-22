@@ -1,5 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1103215: Invalid work hours
       1187734: Timezone offset problem
       1120897: Conflict with exceptions
       1181682: Report with no name entered -> phantom report!
