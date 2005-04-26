@@ -297,7 +297,7 @@ Add New Category: Ajouter une nouvelle catégorie
 Admin mode: Mode administrateur
 Assistant mode: Mode assistant
 Generate printer-friendly version: Générer une version imprimable
-Printer Friendly: Version imprimable
+Printer Friendly: Version&nbsp;imprimable
 
 
 ###############################################
@@ -434,9 +434,7 @@ Modified since: Modifié depuis
 ###############################################
 # Page: export_handler.php
 #
-#
-# << MISSING >>
-# export format not defined or incorrect:
+export format not defined or incorrect: Le format d'exportation n'est pas défini ou n'est pas correct
 
 
 ###############################################
@@ -578,7 +576,7 @@ Approve/Confirm: Approuver/Confirmer
 Reject this entry?: Rejeter cet événement ?
 Reject: Rejeter
 No unapproved events for: Pas d'événement non approuvé pour
-Unapproved Events: événements en attente
+Unapproved Events: Evénements en attente
 Public Access: Accès public 
 
 
@@ -593,7 +591,7 @@ every: tous
 1st: 1er
 last: dernier
 Description: Description
-Status: état
+Status: Etat
 Waiting for approval: En attente de validation
 Deleted: Supprimé
 Rejected: Rejeté
@@ -805,15 +803,10 @@ New Entry: Nouvel événement
 ###############################################
 # Page: import_handler.php
 #
-#
-# << MISSING >>
-# Import Results:
-#
-# << MISSING >>
-# Events successfully imported:
-#
-# << MISSING >>
-# Events from prior import marked as deleted:
+
+Import Results: Résultat de l'importation
+Events successfully imported: Evènements importés avec succès
+Events from prior import marked as deleted: Les évènements importés précédemment sont marqués effacés
 Conflicting events: Evénements en conflits
 Errors: Erreurs
 Back to My Calendar: Retour à mon Agenda
@@ -920,9 +913,7 @@ Palm Desktop 4: Palm Desktop 4
 Lotus Organizer 6: Lotus Organizer 6
 Microsoft Outlook 2002: Microsoft Outlook 2002
 iCalendar: iCalendar
-#
-# << MISSING >>
-# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
+Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Activer <b>Remplacer l'importation précédente</b> marquera comme effacé les événements précédemment importés qui ont le même UID. Cela permet de faire une mise à jour à partir d'un fichier iCalendar sans doublons.
 
 
 ###############################################

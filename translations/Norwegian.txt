@@ -16,6 +16,10 @@
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=1002588
 # Last update: 8 January 2005 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=1098423
+# Last update: 25 April 2005 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
+#  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=1189754
+# 
+
 
 ###############################################
 # Specify a charset (will be sent within meta tag for each page)
@@ -250,6 +254,8 @@ Events removed from my calendar: Aktiviteter fjernet fra min kalender
 email-event-rejected: Angir om e-postmelding skal sendes når en deltager avviser en aktivitet som er i din kalender.
 Event rejected by participant: Aktivitet avvist av deltager 
 Allow user to customize colors: Tillat bruker å tilpasse farger
+Enable gradient images for background colors: Aktiver bilder med fargeovergang for bakgrunnsfarger
+Not available: Ikke tilgjengelig
 Document background: Dokumentbakgrunn
 Select: Velg
 Document title: Dokumenttittel
@@ -367,6 +373,7 @@ pm: pm
 duration-help: I dette feltet kan du angi varigheten på aktiviteten <br /><i>Dette feltet trenger ikke være utfylt.</i>
 end-time-help: Angir tidspunktet aktiviteten forventes avsluttet.
 participants-help: Vis deltagerne i dette innlegget.
+Availability: Tilgjengelighet
 external-participants-help: Angir en liste med deltagere for en aktivitet som
 External Participants: Eksterne deltagere
 repeat-type-help: Hvor ofte skal aktiviteten gjentas.
@@ -410,8 +417,8 @@ Source: Kilde
 Color: Farge
 Duplicates: Duplikater
 Show layer events that are the same as your own: Vis lag som er lik dine egne
-Are you sure you want to delete this layer?: Er du sikker på du vil slette dette laget?
 Delete layer: Slett lag
+Are you sure you want to delete this layer?: Er du sikker på du vil slette dette laget?
 
 
 ###############################################
@@ -642,6 +649,7 @@ Event Imported: Aktivitet importert
 ###############################################
 # Page: import.php
 #
+Disabled: Deaktivert
 Import format: Importeringsformat
 Exclude private records: Utelat private oppføringer
 Overwrite Prior Import: Skriv over tidligere importering
@@ -650,15 +658,15 @@ Overwrite Prior Import: Skriv over tidligere importering
 ###############################################
 # Page: layers.php
 #
-to modify the layers settings for the: for å modifisere laginnstilling for
 Layers are currently: Lagene er nå
 Enabled: Aktivert
-Disabled: Deaktivert
 Disable Layers: Deaktiver lag
 Enable Layers: Aktiver lag
+to modify the layers settings for the: for å modifisere laginnstilling for
+calendar: kalender
+Add layer: Legg til lag
 Layer: Lag
 Edit layer: Editer lag
-Add layer: Legg til lag
 
 
 ###############################################
@@ -712,6 +720,7 @@ Add N hours to: Legg til N timer til
 Subtract N hours from: Trekk fra N timer fra
 same as: samme som
 server time: servertid
+All: Alle
 When I am the boss: Når jeg er sjefen
 Email me event notification: Send meg aktivitetspåminnelser på e-post
 I want to approve events: Jeg vil godkjenne aktiviteter
@@ -720,11 +729,12 @@ I want to approve events: Jeg vil godkjenne aktiviteter
 ###############################################
 # Page: purge.php
 #
+Preview: Forhåndsvisning
 Purging events for: Sletter aktiviteter for
 Finished: Ferdig
-All: Alle
-Delete all events before: Slett alle aktiviteter før
 Check box to delete <b>ALL</b> events for a user: Marker i boksen hvis <b>ALLE</b> aktiviteter skal slettes
+Delete all events before: Slett alle aktiviteter før
+Preview delete: Forhåndsvisning for sletting
 Are you sure you want to delete events for: Er du sikker
 Records deleted from: Oppføringer slettet fra:
 
@@ -798,6 +808,12 @@ denotes administrative user: indikerer administrator
 
 
 ###############################################
+# Page: view_d.php
+#
+No users for this view: Ingen brukere for denne visningen
+
+
+###############################################
 # Page: view_entry.php
 #
 every: hver
@@ -853,6 +869,7 @@ Month (Timebar): Måned (tidsbar)
 Month (side by side): Måned (side ved side)
 Month (on same calendar): Måned (i samme kalender)
 preview: forhåndsvisning
+Selected: Valgt
 
 
 ###############################################
@@ -894,6 +911,7 @@ Norwegian: Norsk
 Polish: Polsk
 Portuguese: Portugisisk
 Portuguese/Brazil: Portugisisk/Brasiliansk
+Romanian: Rumensk
 Russian: Russisk
 Spanish: Spansk
 Swedish: Svensk
@@ -929,6 +947,9 @@ Sep: Sep
 Oct: Okt
 Nov: Nov
 Dec: Des
+All Attendees: Alle deltagere
+Busy: Opptatt
+Tentative: Tentativ
 
 
 ###############################################
@@ -981,11 +1002,18 @@ Color format should be '#RRGGBB': Fargen skal skrives som '#RRGGBB'
 
 
 ###############################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Endre datoen og tiden for denne aktiviteten?
+
+
+###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Du har ikke oppgitt noen kort beskrivelse
 You have not entered a valid time of day: Du har ikke oppgitt noe gyldig tidspunkt
 The time you have entered begins before your preferred work hours.  Is this correct?: Tidspunktet du har angitt er før din foretrukne arbeidstid. Er dette korrekt?
+Please add a participant: Legg til en deltager
 
 
 ###############################################
