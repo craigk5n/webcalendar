@@ -2,8 +2,8 @@
 # another language.  The format is "English text: translated text"
 # There cannot be a ":" in the English text.
 # Translated by:
-#	Makoto Hamanaka <VYA04230@nifty.com>
-#	Tadashi Jokagi <elf2000@users.sourceforge.net>
+# Makoto Hamanaka <VYA04230@nifty.com>
+# Tadashi Jokagi <elf2000@users.sourceforge.net>
 # Last update: 05 Dec 2004
 # Translation last updated on 02-14-2005
 
@@ -55,11 +55,11 @@ Help: ヘルプ
 You are not authorized: 権限を与えられていません
 Note: 注意
 Your user preferences: [ あなたのユーザー設定 ]
-may be affecting the appearance of this page.: は、このぺージの見た目に影響を与えるかもしれません。
-Click here: ［ ここをクリック ］
+may be affecting the appearance of this page.: は、このぺージの見た目に影響を与えるかもしれません
+Click here: [ ここをクリック ]
 to not use your user preferences when viewing this page: するとこのページを見るときにあなたのユーザー設定を使わないようにします
-are being ignored while viewing this page.: は、このページでは無視されています。
-to load your user preferences when viewing this page: するとこのページを見るときにあなたのユーザー設定をロードするようにします。
+are being ignored while viewing this page.: は、このページでは無視されています
+to load your user preferences when viewing this page: するとこのページを見るときにあなたのユーザー設定を読み込むようにします
 Save: 保存
 Settings: 設定
 Public Access: 公開アクセス
@@ -96,13 +96,13 @@ Edit: 編集
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
-Custom header: カスタムヘッダ（前置テキスト）
+Custom header: カスタムヘッダ(前置テキスト)
 #
 # << MISSING >>
 # custom-trailer-help:
 # English text: Allows a custom HTML snippet to be included at the end of every page.
 #
-Custom trailer: カスタムフッタ（後置テキスト）
+Custom trailer: カスタムフッタ(後置テキスト)
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: 優先するビュー
 Day: 日
@@ -136,11 +136,7 @@ minutes: 分
 # English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
 #
 Auto-refresh calendars: カレンダーの自動更新
-#
-# << MISSING >>
-# auto-refresh-time-help:
-# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
-#
+auto-refresh-time-help: 自動更新を有効にした場合、これは自動更新の時間を指定します。
 Auto-refresh time: 時間の自動更新
 #
 # << MISSING >>
@@ -178,12 +174,8 @@ Disable Access field: アクセスフィールド無効
 # English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
 #
 Disable Participants field: 参加者フィールド無効
-#
-# << MISSING >>
-# disable-repeating-field-help:
-# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
-#
-Disable Repeating field: レポートフィールド無効
+disable-repeating-field-help:「はい」を選択した場合、イベントの追加時に「繰り返し」フィールドを削除するでしょう。
+Disable Repeating field: 繰り返しフィールド無効
 #
 # << MISSING >>
 # popup-includes-siteextras-help:
@@ -196,11 +188,7 @@ Display Site Extras in popup: 外部サイトはポップアップ表示
 # English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
 #
 Allow HTML in Description: 説明で HTML を許可
-#
-# << MISSING >>
-# allow-view-other-help:
-# English text: Specifies whether one user may view another user's calendar.
-#
+ allow-view-other-help: あるユーザーが他のユーザーのカレンダーを見てもよいかどうか指定します。
 Allow viewing other user's calendars: 他のユーザーのカレンダーを見ることを許可
 #
 # << MISSING >>
@@ -238,17 +226,9 @@ Check for event conflicts: イベント衝突を調べる
 Allow users to override conflicts: ユーザーの衝突の上書きを許可
 limit-appts-help: ひとりのユーザーが任意の 1 日するができる予約数をシステム管理者がシステム全体に渡る制限を設定することを可能にします。
 Limit number of timed events per day: 1 日あたりの設定できるイベント数の制限
-#
-# << MISSING >>
-# limit-appts-number-help:
-# English text: Specifies the maximum number of timed events a user can have in a single day.
-#
+limit-appts-number-help: ユーザーが 1 日で指定できる、時限イベントの最大数を指定します。
 Maximum timed events per day: 1 日あたりの設定できる最大イベント
-#
-# << MISSING >>
-# timed-evt-len-help:
-# English text: Specifies input method for determining the length of a timed event.
-#
+timed-evt-len-help: 時限イベントを決定するための入力方法を指定します。
 Specify timed event length by: イベント時間の長さの指定
 Duration: 期間
 End Time: 終了時間
@@ -302,7 +282,7 @@ Public access new events require approval: 公開アクセスの新規イベン�
 # public-access-sees-participants-help:
 # English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
 #
-Public access can view participants: 公開アクセスは参加者を見ることが出来る
+Public access can view participants: 公開アクセスは参加者を見ることができる
 groups-enabled-help: グループサポートを有効にしたら、ユーザーはグループでユーザーを選択することを許可します。
 Groups enabled: グループ有効
 #
@@ -350,24 +330,16 @@ Allow external users: 外部ユーザー許可
 # external-can-receive-notification-help:
 # English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
 #
-External users can receive email notifications: 外部ユーザーは電子メール通知を受けることが出来る
+External users can receive email notifications: 外部ユーザーは電子メール通知を受けることができる
 #
 # << MISSING >>
 # external-can-receive-reminder-help:
 # English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
 #
-External users can receive email reminders: 外部ユーザーは電子メールリマインダーを受けることが出来る
-#
-# << MISSING >>
-# email-enabled-help:
-# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
-#
+External users can receive email reminders: 外部ユーザーは電子メールリマインダーを受けることができる
+email-enabled-help: すべてのリマインダーと通知の電子メールを送信を切り替えます。サーバーが適切にメールの送信設定がされていない場合「いいえ」に設定します。
 Email enabled: 電子メール有効
-#
-# << MISSING >>
-# email-default-sender:
-# English text: Specifies the email address to specify as the sender when sending out reminders.
-#
+email-default-sender: リマインダーを送信する場合に送信者として指定するべき電子メールアドレスを指定します。
 Default sender address: デフォルト送信アドレス
 Default user settings: デフォルトユーザー設定
 email-event-reminders-help: イベントのお知らせを送るべきかどうか指定します。
@@ -381,9 +353,7 @@ Events removed from my calendar: 自分のカレンダーからイベントを�
 email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 Event rejected by participant: 参加者のイベント拒否
 Allow user to customize colors: ユーザーの色設定を許可する
-#
-# << MISSING >>
-# Enable gradient images for background colors:
+Enable gradient images for background colors: 背景色にグラデーション画像を有効にする
 #
 # << MISSING >>
 # Not available:
@@ -470,7 +440,7 @@ Notification: お知らせ
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: 以下が記入した時間と重なっています
-Unnamed Event: 名無しイベント
+Unnamed Event: 名称未設定イベント
 The description is: 詳細:
 Title: WebCalendar
 A new appointment has been made for you by: 新しい予定が以下の人によって追加されました：
@@ -614,7 +584,7 @@ export format not defined or incorrect: エクスポート形式が未定義か�
 ###############################################
 # Page: group_edit.php
 #
-Unnamed Group: 名無しグループ
+Unnamed Group: 名称未設定グループ
 Add Group: グループの追加
 Edit Group: グループの編集
 Group name: グループ名
@@ -639,9 +609,7 @@ Add New Group: 新しいグループの追加
 #
 Display days with events in bold in year view: 「年」ビューでイベントのある日を太字で表示する
 Nonuser: 非ユーザーカレンダー
-#
-# << MISSING >>
-# Subscribe/Publish:
+Subscribe/Publish: 購読/公開
 
 
 ###############################################
@@ -661,10 +629,7 @@ full-description-help: これは、出来事の詳細を仕上げるするべき
 date-help: イベントの日付を指定します。
 time-help: イベントの時間を指定します。<br /><i>このフィールドは空に出来ます。</i>
 duration-help: イベントの間隔(時:分)を指定します)<br /><i>このフィールドは空に出来ます。</i>
-#
-# << MISSING >>
-# end-time-help:
-# English text: Specifies the time the event is expected to end.
+end-time-help: イベントが終了すると予想される時間(期間)を指定します。
 #
 Priority: 優先順位
 priority-help: イベントの優先度を指定します。高い優先度のイベントはボールドで表示されるでしょう。
@@ -675,7 +640,7 @@ participants-help: このエントリの参加者一覧
 Repeat Type: 繰返しタイプ
 repeat-type-help: Select how often the event should repeat.<i>Monthly (by day)</i> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <i>Monthly (by date)</i> allows an event to repeat on the same day of the month.
 Repeat End Date: 繰返し終了日
-repeat-end-date-help: Specifies the date the event should repeat until.
+repeat-end-date-help: イベントの繰り返し終了日を指定します。
 Repeat Day: 繰返し日
 repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
 Frequency: 頻度
@@ -729,7 +694,7 @@ Help Index: ヘルプ索引
 #
 # << MISSING >>
 # Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
-Add/Edit/Delete: 追加／編集／削除
+Add/Edit/Delete: 追加/編集/削除
 #
 # << MISSING >>
 # Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
@@ -743,14 +708,12 @@ Add/Edit/Delete: 追加／編集／削除
 # << MISSING >>
 # If checked, events that are duplicates of your events will be shown.:
 #
-# << MISSING >>
-# Disabling:
+Disabling: 無効にする
 #
 # << MISSING >>
 # Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
 #
-# << MISSING >>
-# Enabling:
+Enabling: 有効にする
 #
 # << MISSING >>
 # Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
@@ -798,9 +761,9 @@ Errors: エラー
 #
 # << MISSING >>
 # There was an error parsing the import file or no events were returned:
-The import file contained no data: インポートファイルの中身がありません
+The import file contained no data: インポートファイルの中身がありません。
 View this entry: このエントリーを見る
-Event Imported: イベントをインポートしました
+Event Imported: イベントをインポートしました。
 
 
 ###############################################
@@ -810,7 +773,7 @@ Layers are currently: 現在のレイヤー
 Enabled: 使用可能
 Disable Layers: レイヤーを使用不可にする
 Enable Layers: レイヤーを使用可能にする
-to modify the layers settings for the: すると右のレイヤー設定を変更します：
+to modify the layers settings for the: で右のレイヤー設定を変更する:
 #
 # << MISSING >>
 # calendar:
@@ -872,16 +835,12 @@ word characters only: 文字は英数字とアンダーラインのみを含む�
 #
 Save Preferences: 設定を保存
 to modify the preferences for the Public Access calendar: すると公開カレンダーの設定が変更できます
-#
-# << MISSING >>
-# tz-help:
-# English text: Specifies how many hours to adjust the time from server time to local time.
-#
+tz-help: サーバーの時間から現地の時間までの時間を調節すべきかどうかを指定します。
 Timezone Offset: タイムゾーン時差
-Add N hours to: サーバー時間 +N時間
-Subtract N hours from: サーバー時間 -N時間
-same as: サーバー時間と同じ
-server time: ．
+Add N hours to: +N 時間
+Subtract N hours from: -N 時間
+same as: 同じ
+server time: サーバーとの時差
 When I am the boss: 上司の場合
 Email me event notification: イベント通知を自分にメールする
 I want to approve events: イベントの認証をしたい
@@ -894,17 +853,15 @@ Purging events for: 右ユーザーのイベントを消去しています
 Finished: 完了しました
 All: 全て
 Delete all events before: 右の日付以前のイベントをすべて削除する
-Check box to delete <b>ALL</b> events for a user: １ユーザーのイベントを<b>すべて</b>削除する場合はチェックしてください
+Check box to delete <b>ALL</b> events for a user: 1 ユーザーのイベントを<b>すべて</b>削除する場合はチェックしてください
 Are you sure you want to delete events for: 右ユーザーのイベントをすべて削除して良いですか?：
-#
-# << MISSING >>
-# Records deleted from:
+Records deleted from: レコードを削除しました 対象:
 
 
 ###############################################
 # Page: reject_entry.php
 #
-An appointment has been rejected by: アポイントメントが以下の人によって拒否されました
+An appointment has been rejected by: 予定が以下の人によって拒否されました。
 
 
 ###############################################
@@ -920,9 +877,7 @@ Deleted: 削除済
 Rejected: 拒否済
 Approved: 承認済み
 Unknown: 未知
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
+to manage reports for the Public Access calendar: すると公開アクセスカレンダー用レポートを管理します
 Add new report: 新規レポート追加
 cont.: 続く
 Manage Reports: レポート管理
@@ -939,11 +894,11 @@ Advanced Search: 高度な検索
 ###############################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: キーワードを１つ以上入力してください
+You must enter one or more search keywords: キーワードを 1 つ以上入力してください。
 Search Results: 検索結果
-match found: 個の該当項目が見つかりました
-matches found: 個の該当項目が見つかりました
-No matches found: 該当項目が見つかりませんでした
+match found: 個の該当項目が見つかりました。
+matches found: 個の該当項目が見つかりました。
+No matches found: 該当項目が見つかりませんでした。
 
 
 ###############################################
@@ -1028,26 +983,24 @@ Add New View: 新規ビューの追加
 ###############################################
 # Page: views_edit.php
 #
-Unnamed View: 名無しビュー
+Unnamed View: 名称未設定ビュー
 Add View: ビューの追加
 Edit View: ビューの編集
 View Name: ビュー名
 View Type: ビュータイプ
-Week (Users horizontal): 週（ユーザー水平）
-Week (Users vertical): 週（ユーザー垂直）
-Week (Timebar): 週（タイムバー）
-#
-# << MISSING >>
-# Month (Timebar):
-Month (side by side): 月（ユーザーを横に並べる）
-Month (on same calendar): 月（同じカレンダー上にユーザー混在）
+Week (Users horizontal): 週(ユーザー水平)
+Week (Users vertical): 週(ユーザー垂直)
+Week (Timebar): 週(タイムバー)
+Month (Timebar): 月(タイムバー)
+Month (side by side): 月(ユーザーを横に並べる)
+Month (on same calendar): 月(同じカレンダー上にユーザー混在)
 preview: プレビュー
 
 
 ###############################################
 # Page: views_edit_handler.php
 #
-You must specify a view name: ビュー名を指定しなければなりません
+You must specify a view name: ビュー名を指定しなければなりません。
 
 
 ###############################################
@@ -1078,7 +1031,7 @@ Daily: 毎日
 Weekly: 毎週
 Monthly: 毎月
 by day: 第 1 月曜など
-by day (from end): 最終月曜など（月末から）
+by day (from end): 最終月曜など(月末から)
 Yearly: 毎年
 Use end date: 終了日を使用
 Tuesday: 火曜日
@@ -1086,15 +1039,15 @@ Wednesday: 水曜日
 Thursday: 木曜日
 Friday: 金曜日
 Saturday: 土曜日
-You are not authorized to edit this entry: このエントリーの編集は許可されていません
+You are not authorized to edit this entry: このエントリーの編集は許可されていません。
 
 
 ###############################################
 # Page: includes/functions.php
 #
 This event is confidential: このイベントは非公開です
-exceeds limit of XXX events per day: １日のイベント数の制限XXX個を超えました
-You have XXX unapproved events: XXX個の未承認イベントがあります
+exceeds limit of XXX events per day: 1 日のイベント数の制限である XXX 個を超えました。
+You have XXX unapproved events: XXX 個の未承認イベントがあります。
 January: 1月
 February: 2月
 March: 3月
@@ -1140,9 +1093,7 @@ Back to My Calendar: マイカレンダーに戻る
 Another User's Calendar: 他ユーザーのカレンダー
 Add New Entry: 新規エントリー追加
 Logout: ログアウト
-#
-# << MISSING >>
-# Manage calendar of:
+Manage calendar of: カレンダー管理:
 
 
 ###############################################
@@ -1180,9 +1131,7 @@ Norwegian: ノルウェー語
 Polish: ポーランド語
 Portuguese: ポルトガル語
 Portuguese/Brazil: ポルトガル語/ブラジル
-#
-# << MISSING >>
-# Romanian:
+Romanian: ルーマニア語
 Russian: ロシア語
 Spanish: スペイン語
 Swedish: スウェーデン語
@@ -1193,27 +1142,25 @@ Turkish: トルコ語
 # Page: includes/js/admin.php
 #
 Server URL is required: サーバー URL が必須です。
-Server URL must end with '/': サーバー URL は「/」で終わらなければいけません
-#
-# << MISSING >>
-# Invalid work hours:
-Invalid color for document background: 書類の背景色が無効です
-Invalid color for document title: 書類のタイトル色が無効です
-Invalid color for table cell background: 書類のテーブル背景色が無効です
-Invalid color for table grid: テーブルグリッドの色が無効です
-Invalid color for table header background: テーブルヘッダーの色が無効です
-Invalid color for table text background: テーブルテキストの背景色が無効です
-Invalid color for event popup background: イベントポップアップの背景色が無効です
-Invalid color for event popup text: イベントポップアップの色が無効です
-Invalid color for table cell background for today: 今日のテーブルセルの背景色が無効です
-Color format should be '#RRGGBB': 色は '#RRGGBB'のフォーマットで設定してください
+Server URL must end with '/': サーバー URL は「/」で終わらなければいけません。
+Invalid work hours: 無効な勤務時間です。
+Invalid color for document background: 書類の背景色が無効です。
+Invalid color for document title: 書類のタイトル色が無効です。
+Invalid color for table cell background: 書類のテーブル背景色が無効です。
+Invalid color for table grid: テーブルグリッドの色が無効です。
+Invalid color for table header background: テーブルヘッダーの色が無効です。
+Invalid color for table text background: テーブルテキストの背景色が無効です。
+Invalid color for event popup background: イベントポップアップの背景色が無効です。
+Invalid color for event popup text: イベントポップアップの色が無効です。
+Invalid color for table cell background for today: 今日のテーブルセルの背景色が無効です。
+Color format should be '#RRGGBB': 色は '#RRGGBB'のフォーマットで設定してください。
 
 
 ###############################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: 簡単な説明を入力していません
-You have not entered a valid time of day: 有効な時間を入力していません
+You have not entered a Brief Description: 簡単な説明を入力していません。
+You have not entered a valid time of day: 有効な時間を入力していません。
 The time you have entered begins before your preferred work hours.  Is this correct?: 記入した時間は通常勤務時間帯よりも早いですが良いですか?
 
 

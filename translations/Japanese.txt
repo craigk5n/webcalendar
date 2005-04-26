@@ -2,8 +2,8 @@
 # another language.  The format is "English text: translated text"
 # There cannot be a ":" in the English text.
 # Translated by:
-#	Makoto Hamanaka <VYA04230@nifty.com>
-#	Tadashi Jokagi <elf2000@users.sourceforge.net>
+# Makoto Hamanaka <VYA04230@nifty.com>
+# Tadashi Jokagi <elf2000@users.sourceforge.net>
 # Last update: 05 Dec 2004
 # Translation last updated on 02-14-2005
 
@@ -12,7 +12,6 @@
 # Specify a charset (will be sent within meta tag for each page)
 #
 charset: SHIFT_JIS
-
 
 
 ###############################################
@@ -55,11 +54,11 @@ Help: ƒwƒ‹ƒv
 You are not authorized: Œ ŒÀ‚ğ—^‚¦‚ç‚ê‚Ä‚¢‚Ü‚¹‚ñ
 Note: ’ˆÓ
 Your user preferences: [ ‚ ‚È‚½‚Ìƒ†[ƒU[İ’è ]
-may be affecting the appearance of this page.: ‚ÍA‚±‚Ì‚Ø[ƒW‚ÌŒ©‚½–Ú‚É‰e‹¿‚ğ—^‚¦‚é‚©‚à‚µ‚ê‚Ü‚¹‚ñB
-Click here: m ‚±‚±‚ğƒNƒŠƒbƒN n
+may be affecting the appearance of this page.: ‚ÍA‚±‚Ì‚Ø[ƒW‚ÌŒ©‚½–Ú‚É‰e‹¿‚ğ—^‚¦‚é‚©‚à‚µ‚ê‚Ü‚¹‚ñ
+Click here: [ ‚±‚±‚ğƒNƒŠƒbƒN ]
 to not use your user preferences when viewing this page: ‚·‚é‚Æ‚±‚Ìƒy[ƒW‚ğŒ©‚é‚Æ‚«‚É‚ ‚È‚½‚Ìƒ†[ƒU[İ’è‚ğg‚í‚È‚¢‚æ‚¤‚É‚µ‚Ü‚·
-are being ignored while viewing this page.: ‚ÍA‚±‚Ìƒy[ƒW‚Å‚Í–³‹‚³‚ê‚Ä‚¢‚Ü‚·B
-to load your user preferences when viewing this page: ‚·‚é‚Æ‚±‚Ìƒy[ƒW‚ğŒ©‚é‚Æ‚«‚É‚ ‚È‚½‚Ìƒ†[ƒU[İ’è‚ğƒ[ƒh‚·‚é‚æ‚¤‚É‚µ‚Ü‚·B
+are being ignored while viewing this page.: ‚ÍA‚±‚Ìƒy[ƒW‚Å‚Í–³‹‚³‚ê‚Ä‚¢‚Ü‚·
+to load your user preferences when viewing this page: ‚·‚é‚Æ‚±‚Ìƒy[ƒW‚ğŒ©‚é‚Æ‚«‚É‚ ‚È‚½‚Ìƒ†[ƒU[İ’è‚ğ“Ç‚İ‚Ş‚æ‚¤‚É‚µ‚Ü‚·
 Save: •Û‘¶
 Settings: İ’è
 Public Access: ŒöŠJƒAƒNƒZƒX
@@ -96,13 +95,13 @@ Edit: •ÒW
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
-Custom header: ƒJƒXƒ^ƒ€ƒwƒbƒ_i‘O’uƒeƒLƒXƒgj
+Custom header: ƒJƒXƒ^ƒ€ƒwƒbƒ_(‘O’uƒeƒLƒXƒg)
 #
 # << MISSING >>
 # custom-trailer-help:
 # English text: Allows a custom HTML snippet to be included at the end of every page.
 #
-Custom trailer: ƒJƒXƒ^ƒ€ƒtƒbƒ^iŒã’uƒeƒLƒXƒgj
+Custom trailer: ƒJƒXƒ^ƒ€ƒtƒbƒ^(Œã’uƒeƒLƒXƒg)
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: —Dæ‚·‚éƒrƒ…[
 Day: “ú
@@ -136,11 +135,7 @@ minutes: •ª
 # English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
 #
 Auto-refresh calendars: ƒJƒŒƒ“ƒ_[‚Ì©“®XV
-#
-# << MISSING >>
-# auto-refresh-time-help:
-# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
-#
+auto-refresh-time-help: ©“®XV‚ğ—LŒø‚É‚µ‚½ê‡A‚±‚ê‚Í©“®XV‚ÌŠÔ‚ğw’è‚µ‚Ü‚·B
 Auto-refresh time: ŠÔ‚Ì©“®XV
 #
 # << MISSING >>
@@ -178,12 +173,8 @@ Disable Access field: ƒAƒNƒZƒXƒtƒB[ƒ‹ƒh–³Œø
 # English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
 #
 Disable Participants field: Q‰ÁÒƒtƒB[ƒ‹ƒh–³Œø
-#
-# << MISSING >>
-# disable-repeating-field-help:
-# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
-#
-Disable Repeating field: ƒŒƒ|[ƒgƒtƒB[ƒ‹ƒh–³Œø
+disable-repeating-field-help:u‚Í‚¢v‚ğ‘I‘ğ‚µ‚½ê‡AƒCƒxƒ“ƒg‚Ì’Ç‰Á‚ÉuŒJ‚è•Ô‚µvƒtƒB[ƒ‹ƒh‚ğíœ‚·‚é‚Å‚µ‚å‚¤B
+Disable Repeating field: ŒJ‚è•Ô‚µƒtƒB[ƒ‹ƒh–³Œø
 #
 # << MISSING >>
 # popup-includes-siteextras-help:
@@ -196,11 +187,7 @@ Display Site Extras in popup: ŠO•”ƒTƒCƒg‚Íƒ|ƒbƒvƒAƒbƒv•\¦
 # English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
 #
 Allow HTML in Description: à–¾‚Å HTML ‚ğ‹–‰Â
-#
-# << MISSING >>
-# allow-view-other-help:
-# English text: Specifies whether one user may view another user's calendar.
-#
+ allow-view-other-help: ‚ ‚éƒ†[ƒU[‚ª‘¼‚Ìƒ†[ƒU[‚ÌƒJƒŒƒ“ƒ_[‚ğŒ©‚Ä‚à‚æ‚¢‚©‚Ç‚¤‚©w’è‚µ‚Ü‚·B
 Allow viewing other user's calendars: ‘¼‚Ìƒ†[ƒU[‚ÌƒJƒŒƒ“ƒ_[‚ğŒ©‚é‚±‚Æ‚ğ‹–‰Â
 #
 # << MISSING >>
@@ -238,17 +225,9 @@ Check for event conflicts: ƒCƒxƒ“ƒgÕ“Ë‚ğ’²‚×‚é
 Allow users to override conflicts: ƒ†[ƒU[‚ÌÕ“Ë‚Ìã‘‚«‚ğ‹–‰Â
 limit-appts-help: ‚Ğ‚Æ‚è‚Ìƒ†[ƒU[‚ª”CˆÓ‚Ì 1 “ú‚·‚é‚ª‚Å‚«‚é—\–ñ”‚ğƒVƒXƒeƒ€ŠÇ—Ò‚ªƒVƒXƒeƒ€‘S‘Ì‚É“n‚é§ŒÀ‚ğİ’è‚·‚é‚±‚Æ‚ğ‰Â”\‚É‚µ‚Ü‚·B
 Limit number of timed events per day: 1 “ú‚ ‚½‚è‚Ìİ’è‚Å‚«‚éƒCƒxƒ“ƒg”‚Ì§ŒÀ
-#
-# << MISSING >>
-# limit-appts-number-help:
-# English text: Specifies the maximum number of timed events a user can have in a single day.
-#
+limit-appts-number-help: ƒ†[ƒU[‚ª 1 “ú‚Åw’è‚Å‚«‚éAŒÀƒCƒxƒ“ƒg‚ÌÅ‘å”‚ğw’è‚µ‚Ü‚·B
 Maximum timed events per day: 1 “ú‚ ‚½‚è‚Ìİ’è‚Å‚«‚éÅ‘åƒCƒxƒ“ƒg
-#
-# << MISSING >>
-# timed-evt-len-help:
-# English text: Specifies input method for determining the length of a timed event.
-#
+timed-evt-len-help: ŒÀƒCƒxƒ“ƒg‚ğŒˆ’è‚·‚é‚½‚ß‚Ì“ü—Í•û–@‚ğw’è‚µ‚Ü‚·B
 Specify timed event length by: ƒCƒxƒ“ƒgŠÔ‚Ì’·‚³‚Ìw’è
 Duration: ŠúŠÔ
 End Time: I—¹ŠÔ
@@ -302,7 +281,7 @@ Public access new events require approval: ŒöŠJƒAƒNƒZƒX‚ÌV‹KƒCƒxƒ“ƒg‚Í”FØ‚ğ•K—
 # public-access-sees-participants-help:
 # English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
 #
-Public access can view participants: ŒöŠJƒAƒNƒZƒX‚ÍQ‰ÁÒ‚ğŒ©‚é‚±‚Æ‚ªo—ˆ‚é
+Public access can view participants: ŒöŠJƒAƒNƒZƒX‚ÍQ‰ÁÒ‚ğŒ©‚é‚±‚Æ‚ª‚Å‚«‚é
 groups-enabled-help: ƒOƒ‹[ƒvƒTƒ|[ƒg‚ğ—LŒø‚É‚µ‚½‚çAƒ†[ƒU[‚ÍƒOƒ‹[ƒv‚Åƒ†[ƒU[‚ğ‘I‘ğ‚·‚é‚±‚Æ‚ğ‹–‰Â‚µ‚Ü‚·B
 Groups enabled: ƒOƒ‹[ƒv—LŒø
 #
@@ -350,24 +329,16 @@ Allow external users: ŠO•”ƒ†[ƒU[‹–‰Â
 # external-can-receive-notification-help:
 # English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
 #
-External users can receive email notifications: ŠO•”ƒ†[ƒU[‚Í“dqƒ[ƒ‹’Ê’m‚ğó‚¯‚é‚±‚Æ‚ªo—ˆ‚é
+External users can receive email notifications: ŠO•”ƒ†[ƒU[‚Í“dqƒ[ƒ‹’Ê’m‚ğó‚¯‚é‚±‚Æ‚ª‚Å‚«‚é
 #
 # << MISSING >>
 # external-can-receive-reminder-help:
 # English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
 #
-External users can receive email reminders: ŠO•”ƒ†[ƒU[‚Í“dqƒ[ƒ‹ƒŠƒ}ƒCƒ“ƒ_[‚ğó‚¯‚é‚±‚Æ‚ªo—ˆ‚é
-#
-# << MISSING >>
-# email-enabled-help:
-# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
-#
+External users can receive email reminders: ŠO•”ƒ†[ƒU[‚Í“dqƒ[ƒ‹ƒŠƒ}ƒCƒ“ƒ_[‚ğó‚¯‚é‚±‚Æ‚ª‚Å‚«‚é
+email-enabled-help: ‚·‚×‚Ä‚ÌƒŠƒ}ƒCƒ“ƒ_[‚Æ’Ê’m‚Ì“dqƒ[ƒ‹‚ğ‘—M‚ğØ‚è‘Ö‚¦‚Ü‚·BƒT[ƒo[‚ª“KØ‚Éƒ[ƒ‹‚Ì‘—Mİ’è‚ª‚³‚ê‚Ä‚¢‚È‚¢ê‡u‚¢‚¢‚¦v‚Éİ’è‚µ‚Ü‚·B
 Email enabled: “dqƒ[ƒ‹—LŒø
-#
-# << MISSING >>
-# email-default-sender:
-# English text: Specifies the email address to specify as the sender when sending out reminders.
-#
+email-default-sender: ƒŠƒ}ƒCƒ“ƒ_[‚ğ‘—M‚·‚éê‡‚É‘—MÒ‚Æ‚µ‚Äw’è‚·‚é‚×‚«“dqƒ[ƒ‹ƒAƒhƒŒƒX‚ğw’è‚µ‚Ü‚·B
 Default sender address: ƒfƒtƒHƒ‹ƒg‘—MƒAƒhƒŒƒX
 Default user settings: ƒfƒtƒHƒ‹ƒgƒ†[ƒU[İ’è
 email-event-reminders-help: ƒCƒxƒ“ƒg‚Ì‚¨’m‚ç‚¹‚ğ‘—‚é‚×‚«‚©‚Ç‚¤‚©w’è‚µ‚Ü‚·B
@@ -381,9 +352,7 @@ Events removed from my calendar: ©•ª‚ÌƒJƒŒƒ“ƒ_[‚©‚çƒCƒxƒ“ƒg‚ğíœ
 email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 Event rejected by participant: Q‰ÁÒ‚ÌƒCƒxƒ“ƒg‹‘”Û
 Allow user to customize colors: ƒ†[ƒU[‚ÌFİ’è‚ğ‹–‰Â‚·‚é
-#
-# << MISSING >>
-# Enable gradient images for background colors:
+Enable gradient images for background colors: ”wŒiF‚ÉƒOƒ‰ƒf[ƒVƒ‡ƒ“‰æ‘œ‚ğ—LŒø‚É‚·‚é
 #
 # << MISSING >>
 # Not available:
@@ -470,7 +439,7 @@ Notification: ‚¨’m‚ç‚¹
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: ˆÈ‰º‚ª‹L“ü‚µ‚½ŠÔ‚Æd‚È‚Á‚Ä‚¢‚Ü‚·
-Unnamed Event: –¼–³‚µƒCƒxƒ“ƒg
+Unnamed Event: –¼Ì–¢İ’èƒCƒxƒ“ƒg
 The description is: Ú×:
 Title: WebCalendar
 A new appointment has been made for you by: V‚µ‚¢—\’è‚ªˆÈ‰º‚Ìl‚É‚æ‚Á‚Ä’Ç‰Á‚³‚ê‚Ü‚µ‚½F
@@ -614,7 +583,7 @@ export format not defined or incorrect: ƒGƒNƒXƒ|[ƒgŒ`®‚ª–¢’è‹`‚©³‚µ‚­‚ ‚è‚Ü‚¹
 ###############################################
 # Page: group_edit.php
 #
-Unnamed Group: –¼–³‚µƒOƒ‹[ƒv
+Unnamed Group: –¼Ì–¢İ’èƒOƒ‹[ƒv
 Add Group: ƒOƒ‹[ƒv‚Ì’Ç‰Á
 Edit Group: ƒOƒ‹[ƒv‚Ì•ÒW
 Group name: ƒOƒ‹[ƒv–¼
@@ -639,9 +608,7 @@ Add New Group: V‚µ‚¢ƒOƒ‹[ƒv‚Ì’Ç‰Á
 #
 Display days with events in bold in year view: u”Nvƒrƒ…[‚ÅƒCƒxƒ“ƒg‚Ì‚ ‚é“ú‚ğ‘¾š‚Å•\¦‚·‚é
 Nonuser: ”ñƒ†[ƒU[ƒJƒŒƒ“ƒ_[
-#
-# << MISSING >>
-# Subscribe/Publish:
+Subscribe/Publish: w“Ç/ŒöŠJ
 
 
 ###############################################
@@ -661,10 +628,7 @@ full-description-help: ‚±‚ê‚ÍAo—ˆ–‚ÌÚ×‚ğdã‚°‚é‚·‚é‚×‚«‚Å‚·Bƒ†[ƒU[‚ªƒCƒ
 date-help: ƒCƒxƒ“ƒg‚Ì“ú•t‚ğw’è‚µ‚Ü‚·B
 time-help: ƒCƒxƒ“ƒg‚ÌŠÔ‚ğw’è‚µ‚Ü‚·B<br /><i>‚±‚ÌƒtƒB[ƒ‹ƒh‚Í‹ó‚Éo—ˆ‚Ü‚·B</i>
 duration-help: ƒCƒxƒ“ƒg‚ÌŠÔŠu(:•ª)‚ğw’è‚µ‚Ü‚·)<br /><i>‚±‚ÌƒtƒB[ƒ‹ƒh‚Í‹ó‚Éo—ˆ‚Ü‚·B</i>
-#
-# << MISSING >>
-# end-time-help:
-# English text: Specifies the time the event is expected to end.
+end-time-help: ƒCƒxƒ“ƒg‚ªI—¹‚·‚é‚Æ—\‘z‚³‚ê‚éŠÔ(ŠúŠÔ)‚ğw’è‚µ‚Ü‚·B
 #
 Priority: —Dæ‡ˆÊ
 priority-help: ƒCƒxƒ“ƒg‚Ì—Dæ“x‚ğw’è‚µ‚Ü‚·B‚‚¢—Dæ“x‚ÌƒCƒxƒ“ƒg‚Íƒ{[ƒ‹ƒh‚Å•\¦‚³‚ê‚é‚Å‚µ‚å‚¤B
@@ -675,7 +639,7 @@ participants-help: ‚±‚ÌƒGƒ“ƒgƒŠ‚ÌQ‰ÁÒˆê——
 Repeat Type: ŒJ•Ô‚µƒ^ƒCƒv
 repeat-type-help: Select how often the event should repeat.<i>Monthly (by day)</i> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <i>Monthly (by date)</i> allows an event to repeat on the same day of the month.
 Repeat End Date: ŒJ•Ô‚µI—¹“ú
-repeat-end-date-help: Specifies the date the event should repeat until.
+repeat-end-date-help: ƒCƒxƒ“ƒg‚ÌŒJ‚è•Ô‚µI—¹“ú‚ğw’è‚µ‚Ü‚·B
 Repeat Day: ŒJ•Ô‚µ“ú
 repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
 Frequency: •p“x
@@ -729,7 +693,7 @@ Help Index: ƒwƒ‹ƒvõˆø
 #
 # << MISSING >>
 # Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
-Add/Edit/Delete: ’Ç‰Á^•ÒW^íœ
+Add/Edit/Delete: ’Ç‰Á/•ÒW/íœ
 #
 # << MISSING >>
 # Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
@@ -743,14 +707,12 @@ Add/Edit/Delete: ’Ç‰Á^•ÒW^íœ
 # << MISSING >>
 # If checked, events that are duplicates of your events will be shown.:
 #
-# << MISSING >>
-# Disabling:
+Disabling: –³Œø‚É‚·‚é
 #
 # << MISSING >>
 # Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
 #
-# << MISSING >>
-# Enabling:
+Enabling: —LŒø‚É‚·‚é
 #
 # << MISSING >>
 # Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
@@ -798,9 +760,9 @@ Errors: ƒGƒ‰[
 #
 # << MISSING >>
 # There was an error parsing the import file or no events were returned:
-The import file contained no data: ƒCƒ“ƒ|[ƒgƒtƒ@ƒCƒ‹‚Ì’†g‚ª‚ ‚è‚Ü‚¹‚ñ
+The import file contained no data: ƒCƒ“ƒ|[ƒgƒtƒ@ƒCƒ‹‚Ì’†g‚ª‚ ‚è‚Ü‚¹‚ñB
 View this entry: ‚±‚ÌƒGƒ“ƒgƒŠ[‚ğŒ©‚é
-Event Imported: ƒCƒxƒ“ƒg‚ğƒCƒ“ƒ|[ƒg‚µ‚Ü‚µ‚½
+Event Imported: ƒCƒxƒ“ƒg‚ğƒCƒ“ƒ|[ƒg‚µ‚Ü‚µ‚½B
 
 
 ###############################################
@@ -810,7 +772,7 @@ Layers are currently: Œ»İ‚ÌƒŒƒCƒ„[
 Enabled: g—p‰Â”\
 Disable Layers: ƒŒƒCƒ„[‚ğg—p•s‰Â‚É‚·‚é
 Enable Layers: ƒŒƒCƒ„[‚ğg—p‰Â”\‚É‚·‚é
-to modify the layers settings for the: ‚·‚é‚Æ‰E‚ÌƒŒƒCƒ„[İ’è‚ğ•ÏX‚µ‚Ü‚·F
+to modify the layers settings for the: ‚Å‰E‚ÌƒŒƒCƒ„[İ’è‚ğ•ÏX‚·‚é:
 #
 # << MISSING >>
 # calendar:
@@ -872,16 +834,12 @@ word characters only: •¶š‚Í‰p”š‚ÆƒAƒ“ƒ_[ƒ‰ƒCƒ“‚Ì‚İ‚ğŠÜ‚Ş‚±‚Æ‚ªo—ˆ‚Ü‚·B
 #
 Save Preferences: İ’è‚ğ•Û‘¶
 to modify the preferences for the Public Access calendar: ‚·‚é‚ÆŒöŠJƒJƒŒƒ“ƒ_[‚Ìİ’è‚ª•ÏX‚Å‚«‚Ü‚·
-#
-# << MISSING >>
-# tz-help:
-# English text: Specifies how many hours to adjust the time from server time to local time.
-#
+tz-help: ƒT[ƒo[‚ÌŠÔ‚©‚çŒ»’n‚ÌŠÔ‚Ü‚Å‚ÌŠÔ‚ğ’²ß‚·‚×‚«‚©‚Ç‚¤‚©‚ğw’è‚µ‚Ü‚·B
 Timezone Offset: ƒ^ƒCƒ€ƒ][ƒ“·
-Add N hours to: ƒT[ƒo[ŠÔ +NŠÔ
-Subtract N hours from: ƒT[ƒo[ŠÔ -NŠÔ
-same as: ƒT[ƒo[ŠÔ‚Æ“¯‚¶
-server time: D
+Add N hours to: +N ŠÔ
+Subtract N hours from: -N ŠÔ
+same as: “¯‚¶
+server time: ƒT[ƒo[‚Æ‚Ì·
 When I am the boss: ãi‚Ìê‡
 Email me event notification: ƒCƒxƒ“ƒg’Ê’m‚ğ©•ª‚Éƒ[ƒ‹‚·‚é
 I want to approve events: ƒCƒxƒ“ƒg‚Ì”FØ‚ğ‚µ‚½‚¢
@@ -894,17 +852,15 @@ Purging events for: ‰Eƒ†[ƒU[‚ÌƒCƒxƒ“ƒg‚ğÁ‹‚µ‚Ä‚¢‚Ü‚·
 Finished: Š®—¹‚µ‚Ü‚µ‚½
 All: ‘S‚Ä
 Delete all events before: ‰E‚Ì“ú•tˆÈ‘O‚ÌƒCƒxƒ“ƒg‚ğ‚·‚×‚Äíœ‚·‚é
-Check box to delete <b>ALL</b> events for a user: ‚Pƒ†[ƒU[‚ÌƒCƒxƒ“ƒg‚ğ<b>‚·‚×‚Ä</b>íœ‚·‚éê‡‚Íƒ`ƒFƒbƒN‚µ‚Ä‚­‚¾‚³‚¢
+Check box to delete <b>ALL</b> events for a user: 1 ƒ†[ƒU[‚ÌƒCƒxƒ“ƒg‚ğ<b>‚·‚×‚Ä</b>íœ‚·‚éê‡‚Íƒ`ƒFƒbƒN‚µ‚Ä‚­‚¾‚³‚¢
 Are you sure you want to delete events for: ‰Eƒ†[ƒU[‚ÌƒCƒxƒ“ƒg‚ğ‚·‚×‚Äíœ‚µ‚Ä—Ç‚¢‚Å‚·‚©?F
-#
-# << MISSING >>
-# Records deleted from:
+Records deleted from: ƒŒƒR[ƒh‚ğíœ‚µ‚Ü‚µ‚½ ‘ÎÛ:
 
 
 ###############################################
 # Page: reject_entry.php
 #
-An appointment has been rejected by: ƒAƒ|ƒCƒ“ƒgƒƒ“ƒg‚ªˆÈ‰º‚Ìl‚É‚æ‚Á‚Ä‹‘”Û‚³‚ê‚Ü‚µ‚½
+An appointment has been rejected by: —\’è‚ªˆÈ‰º‚Ìl‚É‚æ‚Á‚Ä‹‘”Û‚³‚ê‚Ü‚µ‚½B
 
 
 ###############################################
@@ -920,9 +876,7 @@ Deleted: íœÏ
 Rejected: ‹‘”ÛÏ
 Approved: ³”FÏ‚İ
 Unknown: –¢’m
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
+to manage reports for the Public Access calendar: ‚·‚é‚ÆŒöŠJƒAƒNƒZƒXƒJƒŒƒ“ƒ_[—pƒŒƒ|[ƒg‚ğŠÇ—‚µ‚Ü‚·
 Add new report: V‹KƒŒƒ|[ƒg’Ç‰Á
 cont.: ‘±‚­
 Manage Reports: ƒŒƒ|[ƒgŠÇ—
@@ -939,11 +893,11 @@ Advanced Search: ‚“x‚ÈŒŸõ
 ###############################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: ƒL[ƒ[ƒh‚ğ‚P‚ÂˆÈã“ü—Í‚µ‚Ä‚­‚¾‚³‚¢
+You must enter one or more search keywords: ƒL[ƒ[ƒh‚ğ 1 ‚ÂˆÈã“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B
 Search Results: ŒŸõŒ‹‰Ê
-match found: ŒÂ‚ÌŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚µ‚½
-matches found: ŒÂ‚ÌŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚µ‚½
-No matches found: ŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½
+match found: ŒÂ‚ÌŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚µ‚½B
+matches found: ŒÂ‚ÌŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚µ‚½B
+No matches found: ŠY“–€–Ú‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B
 
 
 ###############################################
@@ -1028,26 +982,24 @@ Add New View: V‹Kƒrƒ…[‚Ì’Ç‰Á
 ###############################################
 # Page: views_edit.php
 #
-Unnamed View: –¼–³‚µƒrƒ…[
+Unnamed View: –¼Ì–¢İ’èƒrƒ…[
 Add View: ƒrƒ…[‚Ì’Ç‰Á
 Edit View: ƒrƒ…[‚Ì•ÒW
 View Name: ƒrƒ…[–¼
 View Type: ƒrƒ…[ƒ^ƒCƒv
-Week (Users horizontal): Tiƒ†[ƒU[…•½j
-Week (Users vertical): Tiƒ†[ƒU[‚’¼j
-Week (Timebar): Tiƒ^ƒCƒ€ƒo[j
-#
-# << MISSING >>
-# Month (Timebar):
-Month (side by side): Œiƒ†[ƒU[‚ğ‰¡‚É•À‚×‚éj
-Month (on same calendar): Œi“¯‚¶ƒJƒŒƒ“ƒ_[ã‚Éƒ†[ƒU[¬İj
+Week (Users horizontal): T(ƒ†[ƒU[…•½)
+Week (Users vertical): T(ƒ†[ƒU[‚’¼)
+Week (Timebar): T(ƒ^ƒCƒ€ƒo[)
+Month (Timebar): Œ(ƒ^ƒCƒ€ƒo[)
+Month (side by side): Œ(ƒ†[ƒU[‚ğ‰¡‚É•À‚×‚é)
+Month (on same calendar): Œ(“¯‚¶ƒJƒŒƒ“ƒ_[ã‚Éƒ†[ƒU[¬İ)
 preview: ƒvƒŒƒrƒ…[
 
 
 ###############################################
 # Page: views_edit_handler.php
 #
-You must specify a view name: ƒrƒ…[–¼‚ğw’è‚µ‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñ
+You must specify a view name: ƒrƒ…[–¼‚ğw’è‚µ‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB
 
 
 ###############################################
@@ -1078,7 +1030,7 @@ Daily: –ˆ“ú
 Weekly: –ˆT
 Monthly: –ˆŒ
 by day: ‘æ 1 Œ—j‚È‚Ç
-by day (from end): ÅIŒ—j‚È‚ÇiŒ––‚©‚çj
+by day (from end): ÅIŒ—j‚È‚Ç(Œ––‚©‚ç)
 Yearly: –ˆ”N
 Use end date: I—¹“ú‚ğg—p
 Tuesday: ‰Î—j“ú
@@ -1086,15 +1038,15 @@ Wednesday: …—j“ú
 Thursday: –Ø—j“ú
 Friday: ‹à—j“ú
 Saturday: “y—j“ú
-You are not authorized to edit this entry: ‚±‚ÌƒGƒ“ƒgƒŠ[‚Ì•ÒW‚Í‹–‰Â‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
+You are not authorized to edit this entry: ‚±‚ÌƒGƒ“ƒgƒŠ[‚Ì•ÒW‚Í‹–‰Â‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB
 
 
 ###############################################
 # Page: includes/functions.php
 #
 This event is confidential: ‚±‚ÌƒCƒxƒ“ƒg‚Í”ñŒöŠJ‚Å‚·
-exceeds limit of XXX events per day: ‚P“ú‚ÌƒCƒxƒ“ƒg”‚Ì§ŒÀXXXŒÂ‚ğ’´‚¦‚Ü‚µ‚½
-You have XXX unapproved events: XXXŒÂ‚Ì–¢³”FƒCƒxƒ“ƒg‚ª‚ ‚è‚Ü‚·
+exceeds limit of XXX events per day: 1 “ú‚ÌƒCƒxƒ“ƒg”‚Ì§ŒÀ‚Å‚ ‚é XXX ŒÂ‚ğ’´‚¦‚Ü‚µ‚½B
+You have XXX unapproved events: XXX ŒÂ‚Ì–¢³”FƒCƒxƒ“ƒg‚ª‚ ‚è‚Ü‚·B
 January: 1Œ
 February: 2Œ
 March: 3Œ
@@ -1140,9 +1092,7 @@ Back to My Calendar: ƒ}ƒCƒJƒŒƒ“ƒ_[‚É–ß‚é
 Another User's Calendar: ‘¼ƒ†[ƒU[‚ÌƒJƒŒƒ“ƒ_[
 Add New Entry: V‹KƒGƒ“ƒgƒŠ[’Ç‰Á
 Logout: ƒƒOƒAƒEƒg
-#
-# << MISSING >>
-# Manage calendar of:
+Manage calendar of: ƒJƒŒƒ“ƒ_[ŠÇ—:
 
 
 ###############################################
@@ -1180,9 +1130,7 @@ Norwegian: ƒmƒ‹ƒEƒF[Œê
 Polish: ƒ|[ƒ‰ƒ“ƒhŒê
 Portuguese: ƒ|ƒ‹ƒgƒKƒ‹Œê
 Portuguese/Brazil: ƒ|ƒ‹ƒgƒKƒ‹Œê/ƒuƒ‰ƒWƒ‹
-#
-# << MISSING >>
-# Romanian:
+Romanian: ƒ‹[ƒ}ƒjƒAŒê
 Russian: ƒƒVƒAŒê
 Spanish: ƒXƒyƒCƒ“Œê
 Swedish: ƒXƒEƒF[ƒfƒ“Œê
@@ -1193,27 +1141,25 @@ Turkish: ƒgƒ‹ƒRŒê
 # Page: includes/js/admin.php
 #
 Server URL is required: ƒT[ƒo[ URL ‚ª•K{‚Å‚·B
-Server URL must end with '/': ƒT[ƒo[ URL ‚Íu/v‚ÅI‚í‚ç‚È‚¯‚ê‚Î‚¢‚¯‚Ü‚¹‚ñ
-#
-# << MISSING >>
-# Invalid work hours:
-Invalid color for document background: ‘—Ş‚Ì”wŒiF‚ª–³Œø‚Å‚·
-Invalid color for document title: ‘—Ş‚Ìƒ^ƒCƒgƒ‹F‚ª–³Œø‚Å‚·
-Invalid color for table cell background: ‘—Ş‚Ìƒe[ƒuƒ‹”wŒiF‚ª–³Œø‚Å‚·
-Invalid color for table grid: ƒe[ƒuƒ‹ƒOƒŠƒbƒh‚ÌF‚ª–³Œø‚Å‚·
-Invalid color for table header background: ƒe[ƒuƒ‹ƒwƒbƒ_[‚ÌF‚ª–³Œø‚Å‚·
-Invalid color for table text background: ƒe[ƒuƒ‹ƒeƒLƒXƒg‚Ì”wŒiF‚ª–³Œø‚Å‚·
-Invalid color for event popup background: ƒCƒxƒ“ƒgƒ|ƒbƒvƒAƒbƒv‚Ì”wŒiF‚ª–³Œø‚Å‚·
-Invalid color for event popup text: ƒCƒxƒ“ƒgƒ|ƒbƒvƒAƒbƒv‚ÌF‚ª–³Œø‚Å‚·
-Invalid color for table cell background for today: ¡“ú‚Ìƒe[ƒuƒ‹ƒZƒ‹‚Ì”wŒiF‚ª–³Œø‚Å‚·
-Color format should be '#RRGGBB': F‚Í '#RRGGBB'‚ÌƒtƒH[ƒ}ƒbƒg‚Åİ’è‚µ‚Ä‚­‚¾‚³‚¢
+Server URL must end with '/': ƒT[ƒo[ URL ‚Íu/v‚ÅI‚í‚ç‚È‚¯‚ê‚Î‚¢‚¯‚Ü‚¹‚ñB
+Invalid work hours: –³Œø‚È‹Î–±ŠÔ‚Å‚·B
+Invalid color for document background: ‘—Ş‚Ì”wŒiF‚ª–³Œø‚Å‚·B
+Invalid color for document title: ‘—Ş‚Ìƒ^ƒCƒgƒ‹F‚ª–³Œø‚Å‚·B
+Invalid color for table cell background: ‘—Ş‚Ìƒe[ƒuƒ‹”wŒiF‚ª–³Œø‚Å‚·B
+Invalid color for table grid: ƒe[ƒuƒ‹ƒOƒŠƒbƒh‚ÌF‚ª–³Œø‚Å‚·B
+Invalid color for table header background: ƒe[ƒuƒ‹ƒwƒbƒ_[‚ÌF‚ª–³Œø‚Å‚·B
+Invalid color for table text background: ƒe[ƒuƒ‹ƒeƒLƒXƒg‚Ì”wŒiF‚ª–³Œø‚Å‚·B
+Invalid color for event popup background: ƒCƒxƒ“ƒgƒ|ƒbƒvƒAƒbƒv‚Ì”wŒiF‚ª–³Œø‚Å‚·B
+Invalid color for event popup text: ƒCƒxƒ“ƒgƒ|ƒbƒvƒAƒbƒv‚ÌF‚ª–³Œø‚Å‚·B
+Invalid color for table cell background for today: ¡“ú‚Ìƒe[ƒuƒ‹ƒZƒ‹‚Ì”wŒiF‚ª–³Œø‚Å‚·B
+Color format should be '#RRGGBB': F‚Í '#RRGGBB'‚ÌƒtƒH[ƒ}ƒbƒg‚Åİ’è‚µ‚Ä‚­‚¾‚³‚¢B
 
 
 ###############################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: ŠÈ’P‚Èà–¾‚ğ“ü—Í‚µ‚Ä‚¢‚Ü‚¹‚ñ
-You have not entered a valid time of day: —LŒø‚ÈŠÔ‚ğ“ü—Í‚µ‚Ä‚¢‚Ü‚¹‚ñ
+You have not entered a Brief Description: ŠÈ’P‚Èà–¾‚ğ“ü—Í‚µ‚Ä‚¢‚Ü‚¹‚ñB
+You have not entered a valid time of day: —LŒø‚ÈŠÔ‚ğ“ü—Í‚µ‚Ä‚¢‚Ü‚¹‚ñB
 The time you have entered begins before your preferred work hours.  Is this correct?: ‹L“ü‚µ‚½ŠÔ‚Í’Êí‹Î–±ŠÔ‘Ñ‚æ‚è‚à‘‚¢‚Å‚·‚ª—Ç‚¢‚Å‚·‚©?
 
 
