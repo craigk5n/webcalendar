@@ -1,4 +1,5 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed bug 1189515: Possible to create blank usernames
  - Fixed bug 1190687: users.php called as public
  - Fixed bug 1190699: export.php available to public
  - Fixed bug 1190704: public can access assistant_edit.php
