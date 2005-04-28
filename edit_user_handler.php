@@ -51,6 +51,10 @@ else if ( $formtype == "edituser" ) {
         // This error should get caught before here anyhow, so
         // no need to translate this.  This is just in case :-)
         $error = "Invalid characters in login.";
+      } else if ( empty ( $user ) || $user == "" ) {
+        // Username can not be blank. This is currently the only place that 
+        // calls user_add_user that is located in $user_inc
+        $error = translate( "Username can not be blank" ) . ".";
       } else {
         user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
           $uemail, $uis_admin );
