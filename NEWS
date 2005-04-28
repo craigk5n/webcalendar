@@ -1,5 +1,8 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1190687: users.php called as public
+      1190699: export.php available to public
+      1190704: public can access assistant_edit.php
       1103215: Invalid work hours
       1187734: Timezone offset problem
       1120897: Conflict with exceptions
