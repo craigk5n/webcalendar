@@ -320,7 +320,7 @@ Deleting users not supported: Deleting users not supported
 The passwords were not identical: The passwords were not identical
 You have not entered a password: You have not entered a password
 Changes successfully saved: Changes successfully saved
-
+Username can not be blank: Username can not be blank
 
 ###############################################
 # Page: subscription.php
