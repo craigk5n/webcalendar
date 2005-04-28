@@ -1,4 +1,7 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed bug 1190687: users.php called as public
+ - Fixed bug 1190699: export.php available to public
+ - Fixed bug 1190704: public can access assistant_edit.php
  - Fixed bug 1103215: Invalid work hours
  - Split import/export back to two separate links & pages
  - Moved contents of scheduling tab to details tab
