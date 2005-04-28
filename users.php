@@ -18,7 +18,15 @@
 */
 
 /* $Id $ */
+
 include_once 'includes/init.php';
+
+if ( empty ( $login) || $login == "__public__" ) {
+  // do not allow public access
+  do_redirect ( empty ( $STARTVIEW ) ? "month.php" : "$STARTVIEW" );
+  exit;
+}
+
 $INC = array('js/users.php','js/visible.php');
 print_header($INC);
 
