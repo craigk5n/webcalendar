@@ -17,7 +17,7 @@ function parse_palmdesktop ($file, $exc_private = 1) {
 // Return 1 if success
 function delete_palm_events($login) {
   $res = dbi_query ( "SELECT cal_id FROM webcal_import_data " .
-    "WHERE cal_login = '$login'" );
+    "WHERE cal_login = '$login' AND cal_import_type = 'palm'" );
   if ( $res ) {
      while ( $row = dbi_fetch_row ( $res ) ) {
        dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_id = $row[0]" );
@@ -56,8 +56,8 @@ function ParseLine($line){
     $WeekNum,
       ) = explode("|", $line);
 
-  if ($Exceptions) $Entry[Repeat][Exceptions] = explode(":",$Exceptions);
-  if (($WeekNum == '5') && ($Entry[Repeat][Interval] == '3')) $Entry[Repeat][Interval] = '6';
+  if ($Exceptions) $Entry['Repeat']['Exceptions'] = explode(":",$Exceptions);
+  if (($WeekNum == '5') && ($Entry['Repeat']['Interval'] == '3')) $Entry['Repeat']['Interval'] = '6';
   return $Entry;
 }
 ?>
