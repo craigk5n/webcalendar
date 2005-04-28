@@ -94,7 +94,7 @@ if ($file['size'] > 0) {
       echo translate("Conflicting events") . ": " . $count_con . "<br />\n";
     }
     echo translate ( "Errors" ) . ": $error_num<br><br>\n";
-  } elseif ($errormsg) {
+  } elseif (! empty ( $errormsg ) ) {
     echo "<br /><br />\n<b>" . translate("Error") . ":</b> $errormsg<br />\n";
   } else {
     echo "<br /><br />\n<b>" . translate("Error") . ":</b> " .
