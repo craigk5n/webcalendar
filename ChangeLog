@@ -1,4 +1,7 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed several undefined variable messages with Repeat events in
+   import_palmdesktop.php. Limited delete_palm_events() to only palm type imports
+ - Fixed undefined variable notice in import_handler.php
  - Fixed bug 1189515: Possible to create blank usernames
  - Fixed bug 1190687: users.php called as public
  - Fixed bug 1190699: export.php available to public
