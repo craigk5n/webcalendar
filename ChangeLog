@@ -1,4 +1,5 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Fixed bug 1193579: Untimed shows up wrong in edit page
  - Fixed several undefined variable messages with Repeat events in
    import_palmdesktop.php. Limited delete_palm_events() to only palm type imports
  - Fixed undefined variable notice in import_handler.php

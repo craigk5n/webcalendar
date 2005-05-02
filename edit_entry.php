@@ -79,7 +79,7 @@ if ( $readonly == 'Y' ) {
     $day = $cal_date % 100;
     $time = $row[2];
     // test for AllDay event, if so, don't adjust time
-    if ( $time > 0  || ( $time = 0 &&  $row[5] != 1440 ) ) { /* -1 = no time specified */
+    if ( $time > 0  || ( $time == 0 &&  $row[5] != 1440 ) ) { /* -1 = no time specified */
       $time += ( ! empty ( $TZ_OFFSET )?$TZ_OFFSET : 0)  * 10000;
       if ( $time > 240000 ) {
         $time -= 240000;
@@ -105,6 +105,7 @@ if ( $readonly == 'Y' ) {
       $duration = $row[5];
     } else {
       $duration = "";
+      $hour = -1;
     }
     $priority = $row[6];
     $type = $row[7];
@@ -375,7 +376,7 @@ if ( ! empty ( $parent ) )
   <tr><td class="tooltip" title="<?php etooltip("date-help")?>">
    <?php etranslate("Date")?>:</td><td colspan="2">
    <?php
-    print_date_selection ( "", $cal_date )
+    print_date_selection ( "", $cal_date );
    ?>
   </td></tr>
   <tr><td>&nbsp;</td><td colspan="2">
