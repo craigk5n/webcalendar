@@ -4,13 +4,15 @@
 #
 # Translator: Ralph Boßler <vertrieb@sylphen.com>,
 # Peter Huetmannsberger <huetmann@site38.ping.at>
-# Last update: 1 Dec 2004 by Markus Egartner <edv@kh-hallein.at>
-# Last update: 20 Jan 2005 by Markus Egartner <edv@kh-hallein.at>
-# Last update: 25 Jan 2005 by Markus Egartner <edv@kh-hallein.at>
-# Last update: 22 Feb 2005 by Markus Egartner <edv@kh-hallein.at>
-# Last update: 07 Mär 2005 by Markus Egartner <edv@kh-hallein.at>
-# Last update: 26 Apr 2005 by Markus Egartner <edv@kh-hallein.at> with Martin
-# Translation last updated on 04-26-2005
+# Last update: 1 Dec 2004 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 20 Jan 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 25 Jan 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 22 Feb 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 07 Mär 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 26 Apr 2005 by Markus Egartner <edv'at'kh-hallein.at> with Martin
+# Last update: 4 May 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 05-04-2005
+
 
 ###############################################
 # Specify a charset (will be sent within meta tag for each page)
@@ -45,9 +47,9 @@ Database error: Datenbank Fehler
 The following conflicts with the suggested time: Folgende Konflikte mit dem vorgeschlagenen Termin
 Unnamed Event: unbenanntes Ereignis
 Scheduling Conflict: Terminüberschneidung
-View this entry: Eintrag ansehen
 conflicts with the following existing calendar entries: überschneidet sich mit folgenden Kalender-Einträgen
 Event Imported: Termin importiert
+View this entry: Eintrag ansehen
 
 
 ###############################################
@@ -98,7 +100,7 @@ This year: Dieses Jahr
 Last year: Letztes Jahr
 Year before last: Vorletztes Jahr
 Invalid report id: Ungültige Bericht ID
-Unnamed Report: (neuer Bericht)
+Unnamed Report: neuer Bericht
 Add Report: Bericht hinzufügen
 Edit Report: Bericht editieren
 Report name: Berichtsname
@@ -152,7 +154,7 @@ Public Access: Öffentlicher Zugang
 ###############################################
 # Page: views_edit.php
 #
-Unnamed View: (neue Ansicht)
+Unnamed View: neue Ansicht
 Add View: Ansicht hinzufügen
 Edit View: Ansicht editieren
 View Name: Ansichtsname
@@ -208,6 +210,7 @@ Error approving event: Fehler bei Überprüfung des Ereignisses
 All day event: Termin für den GANZEN Tag
 Untimed event: Termin OHNE Zeitangabe
 Private: Privat
+This event is confidential: Dies ist ein privater Termin 
 minutes: Minute(n)
 Low: tief
 Medium: mittel
@@ -217,7 +220,7 @@ Deleted: gelöscht
 Rejected: Eintrag abgelehnt, wird nicht teilnehmen
 Approved: bestätigt
 Unknown: unbekannt
-Click here: <u>Klicken Sie hier</u>
+Click here: Klicken Sie hier
 to manage reports for the Public Access calendar: zum verwalten der Berichte für den öffentlichen Kalender
 Add new report: Neuen Bericht hinzufügen
 cont.: beinhalt.
@@ -245,7 +248,7 @@ pm: Nachmittag
 ###############################################
 # Page: group_edit.php
 #
-Unnamed Group: (neue Benutzergruppe)
+Unnamed Group: neue Benutzergruppe
 Add Group: Benutzergruppe hinzufügen
 Edit Group: Benutzergruppe editieren
 Group name: Benutzergruppenname
@@ -263,7 +266,7 @@ Password: Kennwort
 Save login via cookies so I don't have to login next time: Login in Cookie abspeichern, um die Anmeldung beim nächsten Mal automatisch zu überspringen.
 Login: Anmelden
 Access public calendar: Zugang öffentlicher Kalender
-cookies-note: <b>Hinweis:</b> Für diese Anwendung müssen Cookies im Browser akzeptiert werden.
+cookies-note: Hinweis: Für diese Anwendung müssen Cookies im Browser akzeptiert werden.
 
 
 ###############################################
@@ -359,7 +362,7 @@ Variable N not found: Variable N nicht gefunden
 # Page: admin.php
 #
 Note: Bemerkung
-Your user preferences: <u>Ihre Benutzereinstellungen</u>
+Your user preferences: Ihre Benutzereinstellungen
 may be affecting the appearance of this page.: übertragen sich auf das Erscheingsbild dieser Seite.
 to not use your user preferences when viewing this page: um Ihre Benutzereinstellungen auf dieser Seite NICHT anzuzeigen.
 are being ignored while viewing this page.: werden ignoriert während der Anzeige dieser Seite.
@@ -397,7 +400,7 @@ Display description in printer day view: Beschreibungsanzeige von Terminen in de
 date-format-help: Legt ein spezielles Datumsformat fest.
 Date format: Datumsformat
 December: Dezember
-time-format-help: Gibt an welches Zeit-Format benutzt wird: <br /><i>12-stündiges:<i> Zeigt Zeiten als 3am, 8:30pm, etc. <br /><i>24-stündiges:<i> Zeigt Zeiten als 3.00, 20.30, etc.
+time-format-help: Gibt an welches Zeit-Format benutzt wird: 12-stündiges: Zeigt Zeiten als 3am, 8:30pm, etc. 24-stündiges: Zeigt Zeiten als 3.00, 20.30, etc.
 Time format: Zeit-Format
 12 hour: 12-stündig
 24 hour: 24-stündig
@@ -409,7 +412,7 @@ auto-refresh-time-help: Falls die Kalenderaktualisierung aktiviert ist, kann hie
 Auto-refresh time: Aktualisierungsintervall
 require-approvals-help: Wenn diese Option ausgewählt ist, muß der Benutzer den Termin bestätigen, um auf seinem Kalender anzeigen zu lassen (vorausgesetzt "unbestätigte Termine anzeigen"). Anmerkung: Wenn diese Option auf "Nein" gesetzt ist, wirkt sich dies nicht auf etwaige aktiverte "öffentliche Kalender" aus.
 Require event approvals: Terminbestätigung verlangen
-display-unapproved-help: Gibt an, ob unbestätigte Termine in Ihrem Kalender angezeigt werden sollen.<br /> Wenn "Ja", werden unbestätigte Termine in einer anderen Farbe angezeigt.<br /> Wenn "Nein", müssen unbestätigte Termine erst bestätigt werden, um angezeigt zu werden. 
+display-unapproved-help: Gibt an, ob unbestätigte Termine in Ihrem Kalender angezeigt werden sollen. Wenn "Ja", werden unbestätigte Termine in einer anderen Farbe angezeigt. Wenn "Nein", müssen unbestätigte Termine erst bestätigt werden, um angezeigt zu werden. 
 Display unapproved: Unbestätigte Termine anzeigen
 display-week-number-help: Gibt an, ob die Wochennummer (1-52) in der Monats- und Wochenansicht angezeigt werden soll.
 Display week number: Wochennummer anzeigen
@@ -574,7 +577,7 @@ Overwrite Prior Import: Vorigen Import überschreiben
 #
 Edit Custom Script/Stylesheet: Ändern der benutzerdefinierten Scripte/Stylesheets
 Edit Custom Header: Ändern der benutzerdefinierten KOPFZEILE
-Edit Custom trailer: Ändern der benutzerdefinierten FUßZEILE
+Edit Custom Trailer: Ändern der benutzerdefinierten FUßZEILE
 
 
 ###############################################
@@ -591,7 +594,7 @@ Title: Titel
 Help Index: Hilfe-Index
 Adding/Editing Calendar Entries: Hinzufügen/Ändern von Kalender-Einträgen
 Report Bug: Fehlermeldung
-Report Bug local: <b><u>Fehlerbericht an den Administrator senden</u></b> (lokal)
+Report Bug local: Fehlerbericht an den Administrator senden (lokal)
 
 
 ###############################################
@@ -609,19 +612,19 @@ brief-description-help: Kurzbeschreibung (ca. 20 Zeichen) des Termines. Diese er
 Full Description: ausführliche Beschreibung
 full-description-help: Komplette Beschreibung des Termines. Diese Information sieht der Benutzer beim Termin.
 date-help: Gibt das Datum des Termines an.
-time-help: Gibt die Uhrzeit des Termines an. <br /><i>Kann leer gelassen werden.<i>
-duration-help: Gibt die Dauer des Termines in Minuten an. <br /><i>Kann leer gelassen werden.<i>
-end-time-help: Definiert die Zeit des Termines als <b>Endzeitpunkt</b>.
+time-help: Gibt die Uhrzeit des Termines an. Kann leer gelassen werden.
+duration-help: Gibt die Dauer des Termines in Minuten an. Kann leer gelassen werden.
+end-time-help: Definiert die Zeit des Termines als Endzeitpunkt.
 priority-help: Gibt die Priorität des Termines an. Termine mit hoher Priorität werden fett angezeigt.
-access-help: Gibt den Zugriff auf den Termin an.<br /> <i>Öffentlich<i>: Jeder kann alle Details des Termines sehen.<br /><i>Geheim<i>: Andere können sehen, dass ein Termin existiert, können jedoch keine Details ansehen.
+access-help: Gibt den Zugriff auf den Termin an. Öffentlich: Jeder kann alle Details des Termines sehen. Privat: Andere können sehen, dass ein Termin existiert, können jedoch keine Details ansehen.
 participants-help: Gibt die Benutzer des Termines an.
-repeat-type-help: Wählen Sie wie oft ein Termin wiederholt werden soll.<i>Monatlich (tagesorientiert)<i> wiederholt einen Termin jeden 1. Montag des Monats, jeden 3. Donnerstag des Monats, etc.
+repeat-type-help: Wählen Sie wie oft ein Termin wiederholt werden soll. Monatlich (tagesorientiert) wiederholt einen Termin jeden 1. Montag des Monats, jeden 3. Donnerstag des Monats, etc.
 Repeat End Date: Ende der wiederkehrenden Termine
 repeat-end-date-help: Gibt an bis zu welchem Datum der Termin wiederholt werden soll.
 Repeat Day: Tag der Wiederholung
-repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden soll. Dies gilt nur wenn <i>Art der Wiederholung<i> auf <i>Wöchentlich<i> gesetzt ist.
+repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden soll. Dies gilt nur wenn Art der Wiederholung auf Wöchentlich gesetzt ist.
 Frequency: Häufigkeit
-repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist "1",  der Termin wird <u>immer</u> wiederholt. Wenn sie "2" auswählen wird der Termin jede 2. Woche wiederholt (wenn <i>Art der Wiederholung<i> auf <i>Wöchentlich<i> gesetzt ist), jeden 2. Monat (wenn <i>Art der Wiederholung<i> auf <i>Monatlich<i> gesetzt ist), etc.
+repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist "1",  der Termin wird immer wiederholt. Wenn sie "2" auswählen wird der Termin jede 2. Woche wiederholt (wenn Art der Wiederholung auf Wöchentlich gesetzt ist), jeden 2. Monat (wenn Art der Wiederholung auf Monatlich gesetzt ist), etc.
 
 
 ###############################################
@@ -630,6 +633,7 @@ repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standa
 Deleting users not supported: Gelöschte Benutzer werden nicht unterstützt
 The passwords were not identical: Die eingebenen Kennwörter stimmten nicht überein
 You have not entered a password: Sie haben kein Kennwort eingegeben
+Username can not be blank: Benutzername darf nicht LEER sein
 
 
 ###############################################
@@ -669,7 +673,7 @@ URL: URL
 ###############################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar. You can specifiy the user and the color the events will be displayed in.: Layers sind sinnvoll um andere Termine von anderen Benutzern im eigenen Kalender anzuzeigen. Sie können den Benutzer und die Farbe des Termines selber spezifizieren.
+Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Layers sind sinnvoll um andere Termine von anderen Benutzern im eigenen Kalender anzuzeigen. Sie können den Benutzer und die Farbe des Termines selber spezifizieren.
 Add/Edit/Delete: Hinzufügen/Ändern/Löschen
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Drücken Sie "Layer editieren" im Admin-User um Layers HINZUFÜGEN/ÄNDERN/LÖSCHEN zu können (am Ende der Seite).
 Specifies the user that you would like to see displayed in your calendar.: Definieren Sie Ihren gewünschten Benutzer den Sie in Ihren Kalender sehen möchten.
@@ -775,7 +779,7 @@ Lotus Organizer 6: Lotus Organizer 6
 Microsoft Outlook 2002: Microsoft Outlook 2002
 iCalendar: iCalendar
 This form will import iCalendar (.ics) events: Dieses Formular importiert iCalendar (.ics) Einträge
-Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates. : Aktiviertes <b>"Vorigen Import überschreiben"</b> bewirkt, daß vorige importierte Termine, welche die selbe UID verwenden, wie ein Termin von der neuen Import-Datei, als "löschen" markiert sind. Das erlaubt ein Importieren einer aktuellen iCalendar Datei <b>ohne</b> Duplikate zu erzeugen.
+Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Aktiviertes <b>Vorigen Import überschreiben</b> bewirkt, daß vorige importierte Termine, welche die selbe UID verwenden, wie ein Termin von der neuen Import-Datei, als "löschen" markiert sind. Das erlaubt ein Importieren einer aktuellen iCalendar Datei ohne Duplikate zu erzeugen.
 
 
 ###############################################
@@ -858,7 +862,7 @@ You are not authorized to edit this entry: Sie haben keine Berechtigung diesen E
 Preview: Vorschau
 Purging events for: Lösche Termine für
 Finished: Abgeschlossen
-Check box to delete <b>ALL</b> events for a user: Aktivieren zum Löschen<br /><b>ALLER</b> Termine für einen Teilnehmer
+Check box to delete <b>ALL</b> events for a user: Aktivieren zum Löschen <b>ALLER</b> Termine für einen Teilnehmer
 Delete all events before: Lösche alle Termine vor dem
 Preview delete: Keine Vorschau der zu löschenden Termine
 Are you sure you want to delete events for: Wollen Sie wirklich die Termine löschen für
@@ -874,7 +878,6 @@ Go to: Gehe zu
 ###############################################
 # Page: includes/functions.php
 #
-This event is confidential: Dies ist ein privater Termin 
 exceeds limit of XXX events per day: überschrittenes Limit von XXX Termin(e) pro Tag
 You have XXX unapproved events: Sie haben XXX unbestätigte(n) Termin(e)
 January: Januar
