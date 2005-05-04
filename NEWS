@@ -1,5 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1193835: Creator cannot "edit" a nonuser-event after Admin changes it.
       1193579: Untimed shows up wrong in edit page
       1189515: Possible to create blank usernames
       1190687: users.php called as public
