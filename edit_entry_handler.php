@@ -82,10 +82,10 @@ if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
 //   - user created event
 //   - user is participant
 $can_edit = false;
+// value may be needed later for recreating event
+$old_create_by = ( ! empty ( $user )? $user : '');
 if ( empty ( $id ) ) {
   // New event...
-  $can_edit = true;
-} else if ( $is_admin ) {
   $can_edit = true;
 } else {
   // event owner or assistant event ?
@@ -93,11 +93,16 @@ if ( empty ( $id ) ) {
   $res = dbi_query($sql);
   if ($res) {
     $row = dbi_fetch_row ( $res );
+    // value may be needed later for recreating event
+    $old_create_by = $row[0];
     if (( $row[0] == $login ) || (( $user == $row[0] ) && ( $is_assistant || $is_nonuser_admin )))
       $can_edit = true;
     dbi_free_result ( $res );
   } else
     $error = translate("Database error") . ": " . dbi_error ();
+}
+if ( $is_admin ) {
+  $can_edit = true;
 }
 if ( empty ( $error ) && ! $can_edit ) {
   // is user a participant of that event ?
@@ -282,14 +287,12 @@ if ( $allow_conflicts != "Y" && empty ( $confirm_conflicts ) &&
       $error = translate("Database error") . ": " . dbi_error ();
     }
   }
-  
+
   $dates = get_all_dates ( $date, $rpt_type, $endt, $dayst,
     $ex_days, $rpt_freq );
-
-  //echo $id . "<br />";
+    
   $conflicts = check_for_conflicts ( $dates, $duration, $hour, $minute,
     $participants, $login, empty ( $id ) ? 0 : $id );
-
 }
 if ( empty ( $error ) && ! empty ( $conflicts ) ) {
   $error = translate("The following conflicts with the suggested time") .
@@ -348,9 +351,9 @@ if ( empty ( $error ) ) {
     "cal_access, cal_type, cal_name, cal_description ) " .
     "VALUES ( $id, " .
     ( $old_id > 0 ? " $old_id, " : "" ) .
-    "'" . ( ! empty ( $user ) && 
+    "'" . ( ! empty ( $old_create_by ) && 
       ( ( $is_admin && ! $newevent ) || $is_assistant || 
-      $is_nonuser_admin ) ? $user : $login ) . "', ";
+      $is_nonuser_admin ) ? $old_create_by : $login ) . "', ";
     
   $date = mktime ( 3, 0, 0, $month, $day, $year );
   $sql .= date ( "Ymd", $date ) . ", ";
@@ -824,7 +827,7 @@ if ( strlen ( $conflicts ) ) {
 <?php
 // user can confirm conflicts
   echo "<form name=\"confirm\" method=\"post\">\n";
-  while (list($xkey, $xval)=each($HTTP_POST_VARS)) {
+  while (list($xkey, $xval)=each($_POST)) {
     if (is_array($xval)) {
       $xkey.="[]";
       while (list($ykey, $yval)=each($xval)) {
