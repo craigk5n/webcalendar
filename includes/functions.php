@@ -1299,13 +1299,13 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     echo "<thead>\n";
     echo "<tr class=\"monthnav\"><th colspan=\"7\">\n";
     echo "<a title=\"" . 
-	translate("Previous") . "\" class=\"prev\" href=\"day.php?" . $u_url  .
-	"date=$month_ago$caturl\"><img src=\"leftarrowsmall.gif\" alt=\"" .
-	translate("Previous") . "\" /></a>\n";
+ translate("Previous") . "\" class=\"prev\" href=\"day.php?" . $u_url  .
+ "date=$month_ago$caturl\"><img src=\"leftarrowsmall.gif\" alt=\"" .
+ translate("Previous") . "\" /></a>\n";
     echo "<a title=\"" . 
-	translate("Next") . "\" class=\"next\" href=\"day.php?" . $u_url .
-	"date=$month_ahead$caturl\"><img src=\"rightarrowsmall.gif\" alt=\"" .
-	translate("Next") . "\" /></a>\n";
+ translate("Next") . "\" class=\"next\" href=\"day.php?" . $u_url .
+ "date=$month_ahead$caturl\"><img src=\"rightarrowsmall.gif\" alt=\"" .
+ translate("Next") . "\" /></a>\n";
     echo month_name ( $thismonth - 1 );
     if ( $showyear != '' ) {
       echo " $thisyear";
@@ -1314,8 +1314,8 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   } else {  //not day script
     //print the month name
     echo "<caption><a href=\"{$month_link}{$u_url}year=$thisyear&amp;month=$thismonth\">";
-	echo month_name ( $thismonth - 1 ) .
-		( $showyear ? " $thisyear" : "" );
+ echo month_name ( $thismonth - 1 ) .
+  ( $showyear ? " $thisyear" : "" );
     echo "</a></caption>\n";
 
     echo "<thead>\n<tr>\n";
@@ -1973,7 +1973,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
       $daysarray = array();
       $r=0;
       $dow = date("w",$date);
-      $cdate = $date;
+      $cdate = $date - ($dow * $ONE_DAY);
       for ($i = 0; $i < 7; $i++) {
         $isDay = substr($days, $i, 1);
         if (strcmp($isDay,"y")==0) {
@@ -2807,13 +2807,13 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   if ( ! empty ( $hour ) )
     $hour += $TZ_OFFSET;
   return "<a title=\"" . 
-	translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
+ translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
     "date=$date" . ( $hour >= 0 ? "&amp;hour=$hour" : "" ) .
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&amp;defusers=$user" ) .
     ( empty ( $cat_id ) ? "" :  "&amp;cat_id=$cat_id" ) .
     "\"><img src=\"new.gif\" class=\"new\" alt=\"" . 
-	translate("New Entry") . "\" /></a>\n";
+ translate("New Entry") . "\" /></a>\n";
 }
 
 /**
@@ -3356,8 +3356,8 @@ function display_unapproved_events ( $user ) {
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] > 0 ) {
-	$str = translate ("You have XXX unapproved events");
-	$str = str_replace ( "XXX", $row[0], $str );
+ $str = translate ("You have XXX unapproved events");
+ $str = str_replace ( "XXX", $row[0], $str );
         echo "<a class=\"nav\" href=\"list_unapproved.php";
         if ( $user != $login )
           echo "?user=$user\"";
@@ -3759,8 +3759,8 @@ function load_user_categories ($ex_global = '') {
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $cat_id = $row[0];
-	       $categories[$cat_id] = $row[1];
-	       $category_owners[$cat_id] = $row[2];
+        $categories[$cat_id] = $row[1];
+        $category_owners[$cat_id] = $row[2];
       }
       dbi_free_result ( $res );
     }
@@ -4703,21 +4703,21 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
     }
 
      for($j=0;$j<$interval;$j++) {
-        $str .= '	<td  id="C'.$CC.'" class="dailymatrix" ';
+        $str .= ' <td  id="C'.$CC.'" class="dailymatrix" ';
         $MouseDown = 'onmousedown="schedule_event('.$i.','.sprintf ("%02d",($increment * $j)).');"';
         switch($j) {
           case 1:
                   if($interval == 4) { $k = ($hour<=9?'0':substr($hour,0,1)); }
-		  $str .= 'style="width:'.$cell_pct.'%; text-align:right;"  '.$MouseDown." onmouseover=\"window.status='Schedule a ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+    $str .= 'style="width:'.$cell_pct.'%; text-align:right;"  '.$MouseDown." onmouseover=\"window.status='Schedule a ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
                   $str .= $k."</td>\n";
                   break;
           case 2:
                   if($interval == 4) { $k = ($hour<=9?substr($hour,0,1):substr($hour,1,2)); }
-		  $str .= 'style="width:'.$cell_pct.'%; text-align:left;" '.$MouseDown." onmouseover=\"window.status='Schedule a ".$hour.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+    $str .= 'style="width:'.$cell_pct.'%; text-align:left;" '.$MouseDown." onmouseover=\"window.status='Schedule a ".$hour.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
                   $str .= $k."</td>\n";
                   break;
           default:
-		  $str .= 'style="width:'.$cell_pct.'%;" '.$MouseDown." onmouseover=\"window.status='Schedule a ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
+    $str .= 'style="width:'.$cell_pct.'%;" '.$MouseDown." onmouseover=\"window.status='Schedule a ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
                   $str .= "&nbsp;&nbsp;</td>\n";
                   break;
         }
@@ -4756,7 +4756,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
        for ( $k = 0; $k < $interval; $k++ ) {
          $border = ($k == '0') ? ' border-left: 1px solid #000000;' : "";
          $MouseDown = 'onmousedown="schedule_event('.$j.','.sprintf ("%02d",($increment * $k)).');"';
-	       $RC = $CELLBG;
+        $RC = $CELLBG;
          //$space = '';
          $space = "&nbsp;";
 
