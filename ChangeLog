@@ -1,4 +1,6 @@
 Version 1.0RC4-CVS (?? ??? 2005)
+ - Undo bug fix 1120897: Conflict with exceptions. This patch caused conflicts 
+   on other days which turns out to be a more severe problem.
  - Fixed bug 1193835: Creator cannot "edit" a nonuser-event after Admin changes it.
  - Fixed bug 1193579: Untimed shows up wrong in edit page
  - Fixed several undefined variable messages with Repeat events in
