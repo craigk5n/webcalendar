@@ -45,7 +45,7 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
   $PHP_SELF = $_SERVER['PHP_SELF'];
 }
 if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
-    die ( "You can't access this file directly!" );
+  die ( "You can't access this file directly!" );
 }
 
 // Make sure another app in the same domain doesn't have a 'user' cookie
@@ -63,7 +63,7 @@ preg_match ( "/\/(\w+\.php)/", $self, $match);
 $SCRIPT = $match[1];
 
 // Several files need a no-cache header and some of the same code
-$special = array('month.php', 'day.php', 'week.php', 'week_details.php');
+$special = array('month.php', 'day.php', 'week.php', 'week_details.php', 'year.php');
 $DMW = in_array($SCRIPT, $special);
 
 // Unset some variables that shouldn't be set
@@ -79,7 +79,7 @@ include_once 'includes/connect.php';
 load_global_settings ();
 
 if ( empty ( $ovrd ) )
-   load_user_preferences ();
+  load_user_preferences ();
 
 include_once 'includes/translate.php';
 
@@ -113,6 +113,22 @@ if ($DMW) {
       $user = ""; // security precaution
   }
 
+  if ( $groups_enabled == "Y" && $user_sees_only_his_groups == "Y" &&
+    ! $is_admin ) {
+    $valid_user = false;
+    $userlist = get_my_users();
+    if ($nonuser_enabled == "Y" ) {
+      $nonusers = get_nonuser_cals ();
+      $userlist =  array_merge($nonusers, $userlist);
+    }
+    for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+      if ( $user == $userlist[$i]['cal_login'] ) $valid_user = true;
+    } 
+    if ($valid_user == false) { 
+      $user = ""; // security precaution
+    }
+  }
+
   if ( ! empty ( $user ) ) {
     $u_url = "user=$user&amp;";
     user_load_variables ( $user, "user_" );
@@ -127,7 +143,6 @@ if ($DMW) {
 
   set_today($date);
 
-  //if ( $categories_enabled == "Y" && ( !$user || $user == $login ) ) {
   if ( $categories_enabled == "Y" ) {
     if ( ! empty ( $cat_id ) ) {
       $cat_id = $cat_id;
@@ -150,66 +165,66 @@ if ($DMW) {
  * @global array $bodyid
  */
 $bodyid = array(
-	"activity_log.php" => "activitylog",
-	"add_entry.php" => "addentry",
-	"admin.php" => "admin",
-	"adminhome.php" => "adminhome",
-	"approve_entry.php" => "approveentry",
-	"assistant_edit.php" => "assistantedit",
-	"category.php" => "category",
-	"day.php" => "day",
-	"del_entry.php" => "delentry",
-	"del_layer.php" => "dellayer",
-	"edit_entry.php" => "editentry",
-	"edit_layer.php" => "editlayer",
-	"edit_nonusers.php" => "editnonusers",
-	"edit_nonusers_handler.php" => "editnonusershandler",
-	"edit_report.php" => "editreport",
-	"edit_template.php" => "edittemplate",
-	"edit_user.php" => "edituser",
-	"edit_user_handler.php" => "edituserhandler",
-	"export.php" => "export",
-	"group_edit.php" => "groupedit",
-	"group_edit_handler.php" => "groupedithandler",
-	"groups.php" => "groups",
-	"help_admin.php" => "helpadmin",
-	"help_bug.php" => "helpbug",
-	"help_edit_entry.php" => "helpeditentry",
-	"help_import.php" => "helpimport",
-	"help_index.php" => "helpindex",
-	"help_layers.php" => "helplayers",
-	"help_pref.php" => "helppref",
-	"import.php" => "import",
-	"index.php" => "index",
-	"layers.php" => "layers",
-	"layers_toggle.php" => "layerstoggle",
-	"list_unapproved.php" => "listunapproved",
-	"login.php" => "login",
-	"month.php" => "month",
-	"nonusers.php" => "nonusers",
-	"pref.php" => "pref",
-	"publish.php" => "publish",
-	"purge.php" => "purge",
-	"reject_entry.php" => "rejectentry",
-	"report.php" => "report",
-	"search.php" => "search",
-	"select_user.php" => "selectuser",
-	"set_entry_cat.php" => "setentrycat",
-	"users.php" => "users",
-	"usersel.php" => "usersel",
-	"view_d.php" => "viewd",
-	"view_entry.php" => "viewentry",
-	"view_l.php" => "viewl",
-	"view_m.php" => "viewm",
-	"view_t.php" => "viewt",
-	"view_v.php" => "viewv",
-	"view_w.php" => "vieww",
-	"views.php" => "views",
-	"views_edit.php" => "viewsedit",
-	"week.php" => "week",
-	"week_details.php" => "weekdetails",
-	"week_ssi.php" => "weekssi",
-	"year.php" => "year"
+ "activity_log.php" => "activitylog",
+ "add_entry.php" => "addentry",
+ "admin.php" => "admin",
+ "adminhome.php" => "adminhome",
+ "approve_entry.php" => "approveentry",
+ "assistant_edit.php" => "assistantedit",
+ "category.php" => "category",
+ "day.php" => "day",
+ "del_entry.php" => "delentry",
+ "del_layer.php" => "dellayer",
+ "edit_entry.php" => "editentry",
+ "edit_layer.php" => "editlayer",
+ "edit_nonusers.php" => "editnonusers",
+ "edit_nonusers_handler.php" => "editnonusershandler",
+ "edit_report.php" => "editreport",
+ "edit_template.php" => "edittemplate",
+ "edit_user.php" => "edituser",
+ "edit_user_handler.php" => "edituserhandler",
+ "export.php" => "export",
+ "group_edit.php" => "groupedit",
+ "group_edit_handler.php" => "groupedithandler",
+ "groups.php" => "groups",
+ "help_admin.php" => "helpadmin",
+ "help_bug.php" => "helpbug",
+ "help_edit_entry.php" => "helpeditentry",
+ "help_import.php" => "helpimport",
+ "help_index.php" => "helpindex",
+ "help_layers.php" => "helplayers",
+ "help_pref.php" => "helppref",
+ "import.php" => "import",
+ "index.php" => "index",
+ "layers.php" => "layers",
+ "layers_toggle.php" => "layerstoggle",
+ "list_unapproved.php" => "listunapproved",
+ "login.php" => "login",
+ "month.php" => "month",
+ "nonusers.php" => "nonusers",
+ "pref.php" => "pref",
+ "publish.php" => "publish",
+ "purge.php" => "purge",
+ "reject_entry.php" => "rejectentry",
+ "report.php" => "report",
+ "search.php" => "search",
+ "select_user.php" => "selectuser",
+ "set_entry_cat.php" => "setentrycat",
+ "users.php" => "users",
+ "usersel.php" => "usersel",
+ "view_d.php" => "viewd",
+ "view_entry.php" => "viewentry",
+ "view_l.php" => "viewl",
+ "view_m.php" => "viewm",
+ "view_t.php" => "viewt",
+ "view_v.php" => "viewv",
+ "view_w.php" => "vieww",
+ "views.php" => "views",
+ "views_edit.php" => "viewsedit",
+ "week.php" => "week",
+ "week_details.php" => "weekdetails",
+ "week_ssi.php" => "weekssi",
+ "year.php" => "year"
 );
 
 /**
@@ -233,7 +248,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $POPUP_FG,$BGCOLOR;
   global $LANGUAGE;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
-	global $friendly;
+  global $friendly;
   global $bodyid, $self;
   $lang = '';
   if ( ! empty ( $LANGUAGE ) )
@@ -336,7 +351,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
  * Prints the common trailer.
  *
  * @param bool $include_nav_links Should the standard navigation links be
- *	                              included in the trailer?
+ *                               included in the trailer?
  * @param bool $closeDb           Close the database connection when finished?
  * @param bool $disableCustom     Disable the custom trailer the administrator
  *                                has setup?  (This is useful for small popup
