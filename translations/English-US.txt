@@ -214,7 +214,9 @@ Events removed from my calendar: Events removed from my calendar
 email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 Event rejected by participant: Event rejected by participant
 Allow user to customize colors: Allow user to customize colors
+user-customize-color: Specifies whether users are allowed to modify their own color scheme.
 Enable gradient images for background colors: Enable gradient images for background colors
+enable-gradient-help: Use gradient colors for cell backgrounds.
 Not available: Not available
 Document background: Document background
 Select: Select
@@ -389,7 +391,9 @@ Default Category: Default Category
 All: All
 When I am the boss: When I am the boss
 Email me event notification: Email me event notification
+email-boss-notifications-help: Specifies if bosses receive emails as event notifications.
 I want to approve events: I want to approve events
+boss-approve-event-help: Specifies whether the boss will be required to approve events added by assistants.
 Subscribe/Publish: Subscribe/Publish
 allow-remote-subscriptions-help: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
 remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
