@@ -2802,9 +2802,13 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   if ( $readonly == 'Y' )
     return '';
 
+  if ( $minute < 0 ) {
+   $minute = abs($minute);
+   $hour = $hour -1;
+  }
   if ( ! empty ( $user ) && $user != $login )
     $u_url = "user=$user&amp;";
-  if ( ! empty ( $hour ) )
+  if ( isset ( $hour ) )
     $hour += $TZ_OFFSET;
   return "<a title=\"" . 
  translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
@@ -3404,11 +3408,13 @@ function display_time ( $time, $ignore_offset=0 ) {
   $hour = (int) ( $time / 10000 );
   if ( ! $ignore_offset )
     $hour += $TZ_OFFSET;
+  $min = abs( ( $time / 100 ) % 100 );
+  //Prevent goofy times like 8:00 9:30 9:00 10:30 10:00 
+  if ( $time < 0 && $min > 0 ) $hour = $hour - 1;
   while ( $hour < 0 )
     $hour += 24;
   while ( $hour > 23 )
     $hour -= 24;
-  $min = abs( ( $time / 100 ) % 100 );
   if ( $GLOBALS["TIME_FORMAT"] == "12" ) {
     $ampm = ( $hour >= 12 ) ? translate("pm") : translate("am");
     $hour %= 12;
