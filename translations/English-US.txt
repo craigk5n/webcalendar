@@ -470,7 +470,7 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 Display days with events in bold in year view: Display days with events in bold in year view
 Nonuser: Nonuser Calendars
 Reports: Reports
-Manually Entering Color Values: Manually Entering Color Values
+Manually entering color values: Manually entering color values
 
 
 ###############################################
