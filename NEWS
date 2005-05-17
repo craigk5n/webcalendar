@@ -1,4 +1,4 @@
-Version 1.0.0 (17 May 2005)
+Version 1.0.0 (17 May 2005) aka "Buster"
   - Fixed the following bug reports on SourceForge:
       1202127: [ 1187734 ] Timezone offset problems still exist
       1201821: Bypass user_sees_only_his_groups
@@ -42,6 +42,8 @@ Version 1.0.0 (17 May 2005)
     + Fixed problem with 12AM event not adding hour=0 to URL in week.php
     + Fixed day.php rendering problem in Safar
     + Applied bug fix 1151442: Overlapping events display error in week.php
+    + Applied patch 1171807: reminder sent late if cron run at exact
+      second of reminder
 
   - New Features / Enhancements / Changes:
     + Split import/export back to two separate links & pages
