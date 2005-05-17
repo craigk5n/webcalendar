@@ -280,7 +280,7 @@ print_header('', '', '', true);
  <?php etranslate("enable-gradient-help")?>
 </td></tr>
 <tr><td class="help">
- <?php etranslate("Manually Entering Color Values")?>:</td><td>
+ <?php etranslate("Manually entering color values")?>:</td><td>
  <?php etranslate("colors-help")?>
 </td></tr>
 </table>
