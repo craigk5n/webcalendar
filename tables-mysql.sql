@@ -162,16 +162,14 @@ CREATE TABLE webcal_entry_user (
  * <a href="#webcal_entry">webcal_entry</a>.
  */
 CREATE TABLE webcal_entry_ext_user (
-  /* auto increment filed allows External uers to have same name */
-  cal_ext_id MEDIUMINT(9) NOT NULL AUTO_INCREMENT,
   /* event id */
   cal_id INT DEFAULT 0 NOT NULL,
   /* external user fill name */
   cal_fullname VARCHAR(50) NOT NULL,
   /* external user email (for sending a reminder) */
   cal_email VARCHAR(75) NULL,
-  PRIMARY KEY ( cal_ext_id, cal_id, cal_fullname )
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+  PRIMARY KEY ( cal_id, cal_fullname )
+);
 
 /*
  * Specify preferences for a user.
