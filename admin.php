@@ -22,6 +22,11 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
+// Set defaults so we don't get undefined errors
+if ( empty ( $s['RSS_ENABLED'] ) )
+  $s['RSS_ENABLED'] = 'N';
+
+
 $BodyX = 'onload="public_handler(); eu_handler(); email_handler();"';
 $INC = array('js/admin.php','js/visible.php');
 print_header ( $INC, '', $BodyX );
@@ -519,6 +524,11 @@ if ( ! $error ) {
  <?php etranslate("Allow remote subscriptions")?>:</td><td>
  <label><input type="radio" name="admin_PUBLISH_ENABLED" value="Y" <?php if ( $s["PUBLISH_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="admin_PUBLISH_ENABLED" value="N" <?php if ( $s["PUBLISH_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+</td></tr>
+<tr><td class="tooltip" title="<?php etooltip("rss-enabled-help")?>">
+ <?php etranslate("Enable RSS feed")?>:</td><td>
+ <label><input type="radio" name="admin_RSS_ENABLED" value="Y" <?php if ( $s["RSS_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="admin_RSS_ENABLED" value="N" <?php if ( $s["RSS_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 </table>
 

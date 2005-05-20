@@ -2,6 +2,8 @@ Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
   - Other bugs fixed:
   - New Features / Enhancements / Changes:
+    + Applied patch 1163497: added RSS feed if admin and user preference
+      are enabled for it
     + Applied patch 1171807: reminder sent late if cron run at exact
       second of reminder (was accidentally not included in 1.0.0)
 
