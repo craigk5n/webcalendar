@@ -421,8 +421,8 @@ function process_event ( $id, $name, $event_date, $event_time ) {
         echo "  Event time is: " . date ( "m/d/Y H:i", $event_time ) . "<br />\n";
         echo "  Remind time is: " . date ( "m/d/Y H:i", $remind_time ) . "<br />\n";
       }
-      if ( time() > $remind_time ) {
-        // It's later than the remind time.  See if one has already been sent
+      if ( time() >= $remind_time ) {
+        // It's remind time or later. See if one has already been sent
         $last_sent = 0;
         $res = dbi_query ( "SELECT MAX(cal_last_sent) FROM " .
           "webcal_reminder_log WHERE cal_id = " . $id .
