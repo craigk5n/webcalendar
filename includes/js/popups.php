@@ -49,11 +49,13 @@ function infoinit(){
 }
 
 function hide(name){
-  idiv.visibility=ns4?"hide":"hidden";
+  idiv.style.visibility=ns4?"hide":"hidden";
   idiv=null;
 }
 
-function gettip(name){return (document.layers&&document.layers[name])?document.layers[name]:(document.all&&document.all[name]&&document.all[name].style)?document.all[name].style:document[name]?document[name]:(document.getElementById(name)?document.getElementById(name).style:0);}
+function gettip(name) {
+  return (document.layers&&document.layers[name])?document.layers[name]:(document.all && document.all[name])?document.all[name]:document[name]?document[name]:(document.getElementById(name)?document.getElementById(name):0);
+}
 
 function show(evt, name){
   if(idiv) hide(name);
@@ -64,10 +66,30 @@ function show(evt, name){
    winH=(window.innerHeight)?window.innerHeight+window.pageYOffset  :document.body.offsetHeight;
    scrollX=(typeof window.pageXOffset == "number")? window.pageXOffset:(document.documentElement && document.documentElement.scrollLeft)?document.documentElement.scrollLeft:(document.body && document.body.scrollLeft)?document.body.scrollLeft:window.scrollX;
    scrollY=(typeof window.pageYOffset == "number")? window.pageYOffset:(document.documentElement && document.documentElement.scrollTop)?document.documentElement.scrollTop:(document.body && document.body.scrollTop)?document.body.scrollTop:window.scrollY;
-   popupW = document.getElementById(name).offsetWidth;
-   popupH = document.getElementById(name).offsetHeight;   
+   popupW = idiv.offsetWidth;
+   popupH = idiv.offsetHeight;   
 
    showtip(evt);
+  }
+}
+
+function recursive_resize(ele, width, height) {
+  if (ele.nodeType != 1) {
+    return;
+  }
+
+  if (width != null && ele.offsetWidth > width) {
+    ele.style.width = width + px;
+  }
+
+  if (height != null && ele.offsetHeight > height) {
+    ele.style.height = height + px;
+  }
+
+  for (var i = 0; i < ele.childNodes.length; i++) {
+    recursive_resize(ele.childNodes[i],
+                     width - ele.childNodes[i].offsetLeft,
+                     height - ele.childNodes[i].offsetTop);
   }
 }
 
@@ -77,23 +99,33 @@ function showtip(e){
     if(e)   {
       x=e.pageX?e.pageX:e.clientX?e.clientX + scrollX:0; 
       y=e.pageY?e.pageY:e.clientY?e.clientY + scrollY:0;
-    }
-    else {
+    } else {
       x=0; y=0;
     }
-    // MAke sure we don't go off screen
-    if ( popupW > maxwidth ) { 
-      popupW = maxwidth;
-      idiv.width = maxwidth + px;
-    }  
-    idiv.left=(((x + popupW + xoffset)>winW)?x - popupW - xoffset:x + xoffset)+px;
-    if ((popupH + yoffset)>winH) {
-      idiv.top= yoffset + px;
+
+    // Make sure we don't go off screen
+    recursive_resize(idiv, maxwidth);
+    popupW = idiv.offsetWidth;
+    popupH = idiv.offsetHeight;
+
+    if (x + popupW + xoffset > winW - xoffset) {
+      idiv.style.left = (winW - popupW - xoffset) + px;
     } else {
-      idiv.top=(((y + popupH + yoffset)>winH)?winH - popupH - yoffset:y + yoffset)+px;
+      idiv.style.left = (x + xoffset) + px;
     }
-    idiv.visibility=ns4?"show":"visible";
+
+    if (y + popupH + yoffset > winH - yoffset) {
+      if (winH - popupH - yoffset < 0) {
+        idiv.style.top = 0 + px;
+      } else {
+        idiv.style.top = (winH - popupH - yoffset) + px;
+      }
+    } else {
+      idiv.style.top = (y + yoffset) + px;
     }
+
+    idiv.style.visibility=ns4?"show":"visible";
+  }
 }
 
 function mousemove(e){
