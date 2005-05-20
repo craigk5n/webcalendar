@@ -18,6 +18,8 @@
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=1098423
 # Last update: 25 April 2005 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=1189754
+# Last update: 18 May 2005 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
+#  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=1204204
 # 
 
 
@@ -322,7 +324,6 @@ Notification: Påminnelse
 The following conflicts with the suggested time: Følgende aktiviteter er i konflikt med det foreslåtte tidspunktet
 Unnamed Event: Aktivitet uten navn
 The description is: Beskrivelsen er
-Title: Webkalenderen
 A new appointment has been made for you by: En ny avtale er gjort for deg av
 An appointment has been updated by: En avtale har blitt oppdatert av
 The subject is: Emnet er 
@@ -342,7 +343,6 @@ Cancel: Avbryt
 Edit Entry: Endre aktiviteten
 Add Entry: Legg til aktivitet
 Details: Detaljer
-Scheduling: Tidsangivelse
 Participants: Deltakere
 Repeat: Gjentagelse
 brief-description-help: Her skal det stå en kort beskrivelse av aktiviteten - den blir vist når man står over aktiviteten i oversiktskalenderen.
@@ -353,17 +353,14 @@ access-help: Angi om aktiviteten skal kunne sees av alle eller om den er fortrol
 Access: Tilgang
 Public: Offentlig
 Confidential: Privat
-category-help: Setter kategorien for aktiviteten
-Category: Kategori
-None: Aldri
 priority-help: Angi aktivitetens prioritet.
 Priority: Prioritet
 Low: Lav
 Medium: Medium
 High: Høy
-days: dager
-hours: timer
-before event: før aktivitet
+category-help: Setter kategorien for aktiviteten
+Category: Kategori
+None: Aldri
 date-help: Angir dato for aktiviteten.
 Untimed event: Aktivitet uten tidsangivelse
 Timed event: Aktivitet med tidsangivelse
@@ -371,7 +368,10 @@ time-help: Angir tidspunkt for aktiviteten.<br /><i>Dette feltet trenger ikke væ
 am: am
 pm: pm
 duration-help: I dette feltet kan du angi varigheten på aktiviteten <br /><i>Dette feltet trenger ikke være utfylt.</i>
+hours: timer
 end-time-help: Angir tidspunktet aktiviteten forventes avsluttet.
+days: dager
+before event: før aktivitet
 participants-help: Vis deltagerne i dette innlegget.
 Availability: Tilgjengelighet
 external-participants-help: Angir en liste med deltagere for en aktivitet som
@@ -500,6 +500,7 @@ Edit Custom Trailer: Rediger egendefinert fot
 Deleting users not supported: Sletting av brukere er ikke støttet
 The passwords were not identical: Passordene var ikke identiske
 You have not entered a password: Du har ikke oppgitt passord
+Username can not be blank: Brukernavn må fylles ut 
 
 
 ###############################################
@@ -563,7 +564,9 @@ Add New Group: Legg til ny gruppe
 #
 Display days with events in bold in year view: Viser dager med aktiviteter i fetskrift for årvisning
 Nonuser: Ikke-bruker kalendere
-Subscribe/Publish: Abonnere/publisere
+user-customize-color: Angir om brukere har lov å endre deres eget fargeskjema.
+enable-gradient-help: Bruk gradert fargeovergang for tabellbakgrunn.
+Manually entering color values: Skriv inn fargeverdier manuelt
 
 
 ###############################################
@@ -625,8 +628,16 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_pref.php
 #
+Timezone Offset: Tidssoneavvik
+tz-help: Angir hvor mange timer servertid må justeres i forhold til lokaltid.
 Default Category: Standardkategori
 default-category-help: Angir den kategorien en ny aktivitet skal ha som standard
+When I am the boss: Når jeg er sjefen
+Email me event notification: Send meg aktivitetspåminnelser på e-post
+email-boss-notifications-help: Angir om sjefer mottar aktivitetspåminnelser som e-post
+I want to approve events: Jeg vil godkjenne aktiviteter
+boss-approve-event-help: Angir om sjefen må godkjenne aktiviteter lagt til av assistenter.
+Subscribe/Publish: Abonnere/publisere
 allow-remote-subscriptions-help: Angir om eksterne brukere kan abonnere på din kalender og dermed tillate dem å se dine aktiviteter i en applikasjon som støtter iCal (som Apple sin iCal eller Mozilla Calendar).
 URL: Adresse
 remote-subscriptions-url-help: Viser adressen som eksterne brukere skal bruke for å abonnere på din kalender.
@@ -642,8 +653,8 @@ Conflicting events: Aktiviteter som kolliderer
 Errors: Feil
 There was an error parsing the import file or no events were returned: Det oppstod en feil ved behandling av den importerte filen eller ingen aktiviteter ble returnert
 The import file contained no data: Den importerte filen inneholdt ikke noen data
-View this entry: Vis aktiviteten
 Event Imported: Aktivitet importert
+View this entry: Vis aktiviteten
 
 
 ###############################################
@@ -714,16 +725,11 @@ Add New NonUser Calendar: Legg til ny ikke-bruker kalender
 #
 Save Preferences: Lagre innstillinger
 to modify the preferences for the Public Access calendar: for å modifisere innstillingene for kalenderen med offentlig tilgang
-tz-help: Angir hvor mange timer servertid må justeres i forhold til lokaltid.
-Timezone Offset: Tidssoneavvik
 Add N hours to: Legg til N timer til
 Subtract N hours from: Trekk fra N timer fra
 same as: samme som
 server time: servertid
 All: Alle
-When I am the boss: Når jeg er sjefen
-Email me event notification: Send meg aktivitetspåminnelser på e-post
-I want to approve events: Jeg vil godkjenne aktiviteter
 
 
 ###############################################
@@ -743,12 +749,14 @@ Records deleted from: Oppføringer slettet fra:
 # Page: reject_entry.php
 #
 An appointment has been rejected by: En avtale har blitt avvist av
+Title: Webkalenderen
 
 
 ###############################################
 # Page: report.php
 #
 Private: Privat
+This event is confidential: Denne aktiviteten er privat
 Waiting for approval: Venter på godkjenning
 Deleted: Slettet
 Rejected: Avvist
@@ -921,7 +929,6 @@ Turkish: Tyrkisk
 ###############################################
 # Page: includes/functions.php
 #
-This event is confidential: Denne aktiviteten er privat
 exceeds limit of XXX events per day: overgår grense på XXX aktiviteter per dag
 You have XXX unapproved events: Du har XXX ikke-godkjente aktiviteter
 January: Januar
@@ -992,7 +999,7 @@ Invalid work hours: Ugyldige arbeidstid
 Invalid color for document background: Ugyldig bakgrunnsfarge
 Invalid color for document title: Ugyldig tittelfarge
 Invalid color for table cell background: Ugyldig farge for tabellbakgrunn
-Invalid color for table grid: Ugyldig farge for tabellcelle
+Invalid color for table grid: Ugyldig farge for tabellrutenett
 Invalid color for table header background: Ugyldig farge for bakgrunnen i tabellheaderen
 Invalid color for table text background: Ugyldig farge for bakgrunnen til tabellteksten
 Invalid color for event popup background: Ugyldig farge for bakgrunnen i aktivitetspopups
