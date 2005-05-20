@@ -35,6 +35,11 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
+// Set some defaults so we don't need to test for empty to avoid
+// php warnings
+if ( empty ( $prefarray['FREEBUSY_ENABLED'] ) )
+  $prefarray['FREEBUSY_ENABLED'] = 'N';
+
 $INC = array('js/pref.php');
 print_header($INC);
 ?>
@@ -393,8 +398,6 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 
 <br /><br />
 
-<?php if ( $PUBLISH_ENABLED == 'Y' ||
-  $RSS_ENABLED == 'Y' ) { ?>
 <table class="standard" cellspacing="1" cellpadding="2">
 <tr><th colspan="2"><?php etranslate("Subscribe/Publish")?></th></tr>
 
@@ -427,8 +430,21 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <?php } /* $server_url */ ?>
 <?php } /* $RSS_ENABLED */ ?>
 
+<tr><td class="tooltipselect" title="<?php etooltip("freebusy-enabled-help")?>"><?php etranslate("Enable FreeBusy publishing")?>:</td>
+  <td><label><input type="radio" name="pref_FREEBUSY_ENABLED" value="Y" <?php if ( $prefarray["FREEBUSY_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_FREEBUSY_ENABLED" value="N" <?php if ( $prefarray["FREEBUSY_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
+<?php if ( ! empty ( $server_url ) ) { ?>
+<tr><td class="tooltipselect" title="<?php etooltip("freebusy-url-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("URL")?>:</td>
+  <td>
+  <?php
+    echo htmlspecialchars ( $server_url ) .
+      "freebusy.php/" . ( $updating_public ? "public" : $login ) . ".ifb";
+    echo "<br/>\n";
+    echo htmlspecialchars ( $server_url ) .
+      "freebusy.php?user=" . ( $updating_public ? "public" : $login );
+  ?></td></tr>
+<?php } /* $server_url */ ?>
+
 </table>
-<?php } /* $PUBLISH_ENABLED == 'Y' */ ?>
 
 <?php if ( $allow_color_customization == 'Y' ) { ?>
 
