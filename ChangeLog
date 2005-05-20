@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Patch 1111582: Add iCal FreeBusy support
  - Patch 1163497: Add RSS feed
  - Patch 1171807: reminder sent late if cron run at exact second of reminder
 Version 1.0.0 (17 May 2005) aka "Buster"
