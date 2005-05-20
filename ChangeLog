@@ -1,5 +1,6 @@
-Version 1.0.0 (17 May 2005) aka "Buster"
+Version 1.0.1-CVS (?? ??? 2005)
  - Patch 1171807: reminder sent late if cron run at exact second of reminder
+Version 1.0.0 (17 May 2005) aka "Buster"
  - Fixed bug 1202127: [ 1187734 ] Timezone offset problems still exist.
  - Fixed bug 1201821: Bypass user_sees_only_his_groups
  - Undo bug fix 1120897: Conflict with exceptions. This patch caused conflicts 
