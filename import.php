@@ -106,7 +106,7 @@ if ( ! $upload_enabled ) {
 <!-- /IVCAL -->
 
 <tr class="browse"><td>
-	<label for="fileupload">Upload file:</label></td><td>
+	<label for="fileupload"><?php etranslate("Upload file");?>:</label></td><td>
 	<input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
 </td></tr>
 <?php print_user_list(); ?>
