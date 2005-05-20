@@ -1,3 +1,10 @@
+Version 1.1.0-CVS (?? ??? 2005)
+  - Fixed the following bug reports on SourceForge:
+  - Other bugs fixed:
+  - New Features / Enhancements / Changes:
+    + Applied patch 1171807: reminder sent late if cron run at exact
+      second of reminder (was accidentally not included in 1.0.0)
+
 Version 1.0.0 (17 May 2005) aka "Buster"
   - Fixed the following bug reports on SourceForge:
       1202127: [ 1187734 ] Timezone offset problems still exist
@@ -42,8 +49,6 @@ Version 1.0.0 (17 May 2005) aka "Buster"
     + Fixed problem with 12AM event not adding hour=0 to URL in week.php
     + Fixed day.php rendering problem in Safar
     + Applied bug fix 1151442: Overlapping events display error in week.php
-    + Applied patch 1171807: reminder sent late if cron run at exact
-      second of reminder
 
   - New Features / Enhancements / Changes:
     + Split import/export back to two separate links & pages
