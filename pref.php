@@ -393,9 +393,12 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 
 <br /><br />
 
-<?php if ( $PUBLISH_ENABLED == 'Y' ) { ?>
+<?php if ( $PUBLISH_ENABLED == 'Y' ||
+  $RSS_ENABLED == 'Y' ) { ?>
 <table class="standard" cellspacing="1" cellpadding="2">
 <tr><th colspan="2"><?php etranslate("Subscribe/Publish")?></th></tr>
+
+<?php if ( $PUBLISH_ENABLED == 'Y' ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip("allow-remote-subscriptions-help")?>"><?php etranslate("Allow remote subscriptions")?>:</td>
   <td><label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="Y" <?php if ( isset ( $prefarray["USER_PUBLISH_ENABLED"] ) && $prefarray["USER_PUBLISH_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="N" <?php if ( empty ( $prefarray["USER_PUBLISH_ENABLED"] ) || $prefarray["USER_PUBLISH_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 <?php if ( ! empty ( $server_url ) ) { ?>
@@ -409,6 +412,21 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
       "publish.php?user=" . ( $updating_public ? "public" : $login );
   ?></td></tr>
 <?php } /* $server_url */ ?>
+<?php } /* $PUBLISH_ENABLED */ ?>
+
+<?php if ( $RSS_ENABLED == 'Y' ) { ?>
+<tr><td class="tooltipselect" title="<?php etooltip("rss-enabled-help")?>"><?php etranslate("Enable RSS feed")?>:</td>
+  <td><label><input type="radio" name="pref_USER_RSS_ENABLED" value="Y" <?php if ( isset ( $prefarray["USER_RSS_ENABLED"] ) && $prefarray["USER_RSS_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_USER_RSS_ENABLED" value="N" <?php if ( empty ( $prefarray["USER_RSS_ENABLED"] ) || $prefarray["USER_RSS_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
+<?php if ( ! empty ( $server_url ) ) { ?>
+<tr><td class="tooltipselect" title="<?php etooltip("rss-feed-url-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("URL")?>:</td>
+  <td>
+  <?php
+    echo htmlspecialchars ( $server_url ) .
+      "rss.php?user=" . ( $updating_public ? "public" : $login );
+  ?></td></tr>
+<?php } /* $server_url */ ?>
+<?php } /* $RSS_ENABLED */ ?>
+
 </table>
 <?php } /* $PUBLISH_ENABLED == 'Y' */ ?>
 

@@ -249,7 +249,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $LANGUAGE;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
   global $friendly;
-  global $bodyid, $self;
+  global $bodyid, $self, $login;
   $lang = '';
   if ( ! empty ( $LANGUAGE ) )
     $lang = languageToAbbrev ( $LANGUAGE );
@@ -315,6 +315,20 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   // when printed. This maintains backwards-compatibility for browsers that 
   // don't support media="print" stylesheets
   echo "<link rel=\"stylesheet\" type=\"text/css\"" . ( empty ( $friendly ) ? " media=\"print\"" : "" ) . " href=\"includes/print_styles.css\" />\n";
+
+  // Add RSS feed if publishing is enabled
+  if ( ! empty ( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y' &&
+    $login == '__public__' ||
+    ( ! empty ( $GLOBALS['USER_RSS_ENABLED'] ) &&
+    $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) ) {
+    echo "<link rel=\"alternate\" type=\"application/rss+xml\" " .
+      "title=\"" . htmlentities ( $application_name ) .
+      " [RSS 1.0]\" href=\"rss.php";
+    // TODO: single-user mode, etc.
+    if ( $login != '__public__' )
+      echo "?user=" . $login;
+    echo "\" />\n";
+  }
 
   // Link to favicon
   echo "<link rel=\"shortcut icon\" href=\"favicon.ico\" type=\"image/x-icon\" />\n";
