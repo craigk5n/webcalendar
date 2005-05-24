@@ -10,7 +10,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Applied patch 1171807: reminder sent late if cron run at exact
       second of reminder (was accidentally not included in 1.0.0)
   - The following translations were updated:
-    + French, German, Norwegian
+    + French, German, Norwegian, Polish
 
 Version 1.0.0 (17 May 2005) aka "Buster"
   - Fixed the following bug reports on SourceForge:
