@@ -1,23 +1,77 @@
 <?php
+/**
+ * This page produces search results.
+ *
+ * "Advanced Search" adds the ability to search other users' calendars.
+ * We do a number of security checks to make sure this is allowed.
+ *
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @package WebCalendar
+ * @version $Id$
+ */
 include_once 'includes/init.php';
 
 $error = "";
 
 $keywords = getValue ( "keywords" );
-$advanced = getValue ( "advanced" );
 
 if ( strlen ( $keywords ) == 0 )
   $error = translate("You must enter one or more search keywords") . ".";
 
 $matches = 0;
 
-$search_others = true;
+// Determine if this user is allowed to search the calendar of other users
+$search_others = false; // show "Advanced Search"
+if ( $single_user == 'Y' )
+  $search_others = false;
+if ( $is_admin )
+  $search_others = true;
+else if ( access_is_enabled () )
+  $search_others = access_can_access_function ( ACCESS_ADVANCED_SEARCH );
+else if ( $login != '__public__' && ! empty ( $allow_view_other ) &&
+  $allow_view_other == 'Y' )
+  $search_others = true;
+else if ( $login == '__public__' && ! empty ( $public_access_others ) &&
+  $public_access_others == 'Y' )
+  $search_others = true;
 
 if ( empty ( $users ) || empty ( $users[0] ) )
   $search_others = false;
-if ( $login == "__public__" && $public_access_others != "Y" )
-  $search_others = false;
-if ( $readonly == "Y" || $single_user == "Y" )
+
+// Security precaution -- make sure users listed in participants list
+// was not hacked up to include users that they don't really have access to.
+if ( $search_others ) {
+  // If user can only see users in his group, then remove users not
+  // in his group.
+  if ( ! empty ( $user_sees_only_his_groups ) && 
+    user_sees_only_his_groups == 'Y'
+    && ! empty ( $groups_enabled ) && $groups_enabled == 'Y' ) {
+    $myusers = get_my_users ();
+    $userlookup = array ();
+    for ( $i = 0; $i < count ( $myusers ); $i++ ) {
+      $userlookup[$myusers[$i]['cal_login']] = 1;
+    }
+    $newlist = array ();
+    for ( $i = 0; $i < count ( $users ); $i++ ) {
+      if ( ! empty ( $userlookup[$users[$i]] ) )
+        $newlist[] = $users[$i];
+    }
+    $users = $newlist;
+  }
+  // Now, use access control to remove more users :-)
+  if ( access_is_enabled () && ! $is_admin ) {
+    $newlist = array ( );
+    for ( $i = 0; $i < count ( $users ); $i++ ) {
+      if ( access_can_view_user_calendar ( $users[$i] ) )
+        $newlist[] = $users[$i];
+    }
+    $users = $newlist;
+  }
+}
+
+if ( empty ( $users ) || empty ( $users[0] ) )
   $search_others = false;
 
 print_header();
@@ -32,7 +86,7 @@ if ( ! empty ( $error ) ) {
   $ids = array ();
   $words = split ( " ", $keywords );
   for ( $i = 0; $i < count ( $words ); $i++ ) {
-    // Note: we only search approved events
+    // Note: we only search approved/waiting events (not deleted)
     $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name, " .
       "webcal_entry.cal_date " .
       "FROM webcal_entry, webcal_entry_user " .

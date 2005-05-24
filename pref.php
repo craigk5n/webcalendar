@@ -139,19 +139,39 @@ print_header($INC);
 if ( $prefarray['STARTVIEW'] == 'month' || $prefarray['STARTVIEW'] == 'day' ||
   $prefarray['STARTVIEW'] == 'week' || $prefarray['STARTVIEW'] == 'year' )
   $prefarray['STARTVIEW'] .= '.php';
-?>
-<option value="day.php" <?php if ( $prefarray["STARTVIEW"] == "day.php" ) echo " selected=\"selected\"";?>><?php etranslate("Day")?></option>
-<option value="week.php" <?php if ( $prefarray["STARTVIEW"] == "week.php" ) echo " selected=\"selected\"";?>><?php etranslate("Week")?></option>
-<option value="month.php" <?php if ( $prefarray["STARTVIEW"] == "month.php" ) echo " selected=\"selected\"";?>><?php etranslate("Month")?></option>
-<option value="year.php" <?php if ( $prefarray["STARTVIEW"] == "year.php" ) echo " selected=\"selected\"";?>><?php etranslate("Year")?></option>
-<?php
+$choices = array ();
+$choices_text = array ();
+if ( access_can_access_function ( ACCESS_DAY ) ) {
+  $choices[] = "day.php";
+  $choices_text[] = translate ( "Day" );
+}
+if ( access_can_access_function ( ACCESS_WEEK ) ) {
+  $choices[] = "week.php";
+  $choices_text[] = translate ( "Week" );
+}
+if ( access_can_access_function ( ACCESS_MONTH ) ) {
+  $choices[] = "month.php";
+  $choices_text[] = translate ( "Month" );
+}
+if ( access_can_access_function ( ACCESS_YEAR ) ) {
+  $choices[] = "year.php";
+  $choices_text[] = translate ( "Year" );
+}
+for ( $i = 0; $i < count ( $choices ); $i++ ) {
+  echo "<option value=\"" . $choices[$i] . "\" ";
+  if ( $prefarray['STARTVIEW'] == $choices[$i] )
+    echo " selected=\"selected\"";
+  echo " >" . $choices_text[$i] . "</option>\n";
+}
 // Allow user to select a view also
 for ( $i = 0; $i < count ( $views ); $i++ ) {
+  if ( $updating_public && $views[$i]['cal_is_global'] != 'Y' )
+    continue;
   $xurl = $views[$i]['url'];
   echo "<option value=\"";
   echo $xurl . "\" ";
   $xurl_strip = str_replace ( "&amp;", "&", $xurl );
-  if ( $STARTVIEW == $xurl_strip )
+  if ( $prefarray['STARTVIEW'] == $xurl_strip )
     echo "selected=\"selected\" ";
   echo ">" . $views[$i]['cal_name'] . "</option>\n";
 }

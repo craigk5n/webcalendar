@@ -81,6 +81,7 @@ if ( ! $error ) {
 <div id="tabs">
  <span class="tabfor" id="tab_settings"><a href="#tabsettings" onclick="return showTab('settings')"><?php etranslate("Settings")?></a></span>
  <span class="tabbak" id="tab_public"><a href="#tabpublic" onclick="return showTab('public')"><?php etranslate("Public Access")?></a></span>
+ <span class="tabbak" id="tab_uac"><a href="#tabuac" onclick="return showTab('uac')"><?php etranslate("User Access Control")?></a></span>
  <span class="tabbak" id="tab_groups"><a href="#tabgroups" onclick="return showTab('groups')"><?php etranslate("Groups")?></a></span>
  <span class="tabbak" id="tab_nonuser"><a href="#tabnonuser" onclick="return showTab('nonuser')"><?php etranslate("NonUser Calendars")?></a></span>
  <span class="tabbak" id="tab_other"><a href="#tabother" onclick="return showTab('other')"><?php etranslate("Other")?></a></span>
@@ -146,20 +147,33 @@ if ( ! $error ) {
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("preferred-view-help");?>">
   <label for="admin_startview"><?php etranslate("Preferred view")?>:</label></td><td>
-  <select name="admin_STARTVIEW" id="admin_startview">
-   <option value="day.php"<?php 
-      if ( $s["STARTVIEW"] == "day.php" ) echo " selected=\"selected\"";
-     ?>><?php etranslate("Day")?></option>
-   <option value="week.php"<?php 
-      if ( $s["STARTVIEW"] == "week.php" ) echo " selected=\"selected\"";
-     ?>><?php etranslate("Week")?></option>
-   <option value="month.php" <?php 
-      if ( $s["STARTVIEW"] == "month.php" ) echo " selected=\"selected\"";
-     ?>><?php etranslate("Month")?></option>
-   <option value="year.php" <?php 
-      if ( $s["STARTVIEW"] == "year.php" ) echo " selected=\"selected\"";
-     ?>><?php etranslate("Year")?></option>
-  </select>
+<select name="admin_STARTVIEW" id="admin_startview">
+<?php
+$choices = array ( "day.php", "week.php", "month.php", "year.php" );
+$choices_text = array ( translate ( "Day" ), translate ( "Week" ),
+  translate ( "Month" ), translate ( "Year" ) );
+
+for ( $i = 0; $i < count ( $choices ); $i++ ) {
+  echo "<option value=\"" . $choices[$i] . "\" ";
+  if ( $s['STARTVIEW'] == $choices[$i] )
+    echo " selected=\"selected\"";
+  echo " >" . $choices_text[$i] . "</option>\n";
+}
+
+// Allow user to select a view also
+for ( $i = 0; $i < count ( $views ); $i++ ) {
+  if ( $views[$i]['cal_is_global'] != 'Y' )
+    continue;
+  $xurl = $views[$i]['url'];
+  echo "<option value=\"";
+  echo $xurl . "\" ";
+  $xurl_strip = str_replace ( "&amp;", "&", $xurl );
+  if ( $s['STARTVIEW'] == $xurl_strip )
+    echo "selected=\"selected\" ";
+  echo ">" . $views[$i]['cal_name'] . "</option>\n";
+}
+?>
+</select>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("display-weekends-help");?>">
   <?php etranslate("Display weekends in week view")?>:</td><td>
@@ -455,8 +469,8 @@ if ( ! $error ) {
   </td></tr>
   <tr id="pa3"><td class="tooltip" title="<?php etooltip("public-access-view-others-help")?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can view other users")?>:</td><td>
-   <label><input type="radio" name="admin_public_access_others" value="Y" <?php if ( $s["public_access_others"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-   <label><input type="radio" name="admin_public_access_others" value="N" <?php if ( $s["public_access_others"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+   <label><input type="radio" name="admin_public_access_others" value="Y" <?php if ( $s["public_access_others"] == "Y" ) echo " checked=\"checked\"";?> onclick="public_ao_handler();" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_public_access_others" value="N" <?php if ( $s["public_access_others"] != "Y" ) echo " checked=\"checked\"";?> onclick="public_ao_handler();" />&nbsp;<?php etranslate("No")?></label>
   </td></tr>
   <tr id="pa4"><td class="tooltip" title="<?php etooltip("public-access-can-add-help")?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can add events")?>:</td><td>
@@ -475,6 +489,18 @@ if ( ! $error ) {
   </td></tr>
 </table>
 </div>
+
+<!-- BEGIN USER ACCESS CONTROL -->
+<div id="tabscontent_uac">
+<table cellspacing="0" cellpadding="3">
+<tr><td class="tooltip" title="<?php etooltip("uac-enabled-help")?>">
+   <?php etranslate("User Access Control enabled")?>:</td><td>
+   <label><input type="radio" name="admin_uac_enabled" value="Y" <?php if ( ! empty ( $s["uac_enabled"] ) && $s["uac_enabled"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_uac_enabled" value="N" <?php if ( empty ( $s["uac_enabled"] ) || $s["uac_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+</td></tr>
+</table>
+</div>
+
 
 <!-- BEGIN GROUPS -->
 <div id="tabscontent_groups">

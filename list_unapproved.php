@@ -1,4 +1,20 @@
 <?php
+/**
+ * This file lists unapproved events for one or more users.
+ *
+ * Optional parameters in URL:
+ *	url=user	specifies that we should only display unapproved
+ *			events for that one user
+ *
+ * The user will be allowed to approve/reject the event if:
+ * it is on their own calendar
+ *
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @package WebCalendar
+ * @version $Id$
+ */
 include_once 'includes/init.php';
 send_no_cache_header ();
 
@@ -6,23 +22,40 @@ if ( empty ( $user ) )
   $user = $login;
 
 // Only admin user or assistant can specify a username other than his own.
-if ( ! $is_admin && $user != $login  && ! $is_assistant)
+if ( ! $is_admin && $user != $login  && ! $is_assistant &&
+  ! access_is_enabled () )
   $user = $login;
 
 $HeadX = '';
 if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
   $refresh = $auto_refresh_time * 60; // convert to seconds
-  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; URL=list_unapproved.php\" />\n";
+  $returl = "list_unapproved.php";
+  if ( ! empty ( $user ) && $user != $login )
+    $returl .= "?user=" . $user;
+  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; URL=" .
+    $returl . "\" />\n";
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
 
 $key = 0;
 
-// List all unapproved events for the user
+if ( ! empty ( $user ) && $user != $login ) {
+  $retarg = 'list';
+} else {
+  $retarg = 'listall';
+}
+
+// List all unapproved events for the specified user.
 // Exclude "extension" events (used when an event goes past midnight)
+// TODO: only include delete link if they have permission to delete
+// when user access control is enabled.
 function list_unapproved ( $user ) {
-  global $temp_fullname, $key, $login;
+  global $temp_fullname, $key, $login, $retarg;
+
+  user_load_variables ( $user, "temp_" );
+  echo "<h3>" . $temp_fullname . "</h3>\n";
+
   //echo "Listing events for $user <br>";
 
   $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name, " .
@@ -54,7 +87,8 @@ function list_unapproved ( $user ) {
       $status = $row[7];
       $divname = "eventinfo-$id-$key";
       echo "<li><a title=\"" . 
-      		translate("View this entry") . "\" class=\"entry\" href=\"view_entry.php?id=$id&amp;user=$user";
+      	translate("View this entry") .
+        "\" class=\"entry\" href=\"view_entry.php?id=$id&amp;user=$user";
       echo "\" onmouseover=\"window.status='" . translate("View this entry") .
         "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
       $timestr = "";
@@ -79,7 +113,7 @@ function list_unapproved ( $user ) {
       echo " (" . date_to_str ($date) . ")\n";
 //approve
       echo ": <a title=\"" . 
-	translate("Approve/Confirm") . "\"  href=\"approve_entry.php?id=$id&amp;ret=list&amp;user=$user";
+	translate("Approve/Confirm") . "\"  href=\"approve_entry.php?id=$id&amp;ret=$retarg&amp;user=$user";
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
@@ -87,20 +121,23 @@ function list_unapproved ( $user ) {
 	translate("Approve/Confirm") . "</a>, ";
 //reject
       echo "<a title=\"" . 
-	translate("Reject") . "\" href=\"reject_entry.php?id=$id&amp;ret=list&amp;user=$user";
+	translate("Reject") . "\" href=\"reject_entry.php?id=$id&amp;ret=$retarg&amp;user=$user";
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
         translate("Reject this entry?") . "');\">" . 
 	translate("Reject") . "</a>";
 //delete
-      echo ", <a title=\"" . 
-	translate("Delete") . "\" href=\"del_entry.php?id=$id&amp;ret=list";
-      if ( $user != $login )
-        echo "&amp;user=$user";
-      echo "\" class=\"nav\" onclick=\"return confirm('" .
-        translate("Are you sure you want to delete this entry?") . "');\">" . 
-	translate("Delete") . "</a>";
+      if ( ! access_is_enabled () ||
+        access_can_delete_user_calendar ( $user ) ) {
+        echo ", <a title=\"" . 
+	  translate("Delete") . "\" href=\"del_entry.php?id=$id&amp;ret=$retarg";
+        if ( $user != $login )
+          echo "&amp;user=$user";
+        echo "\" class=\"nav\" onclick=\"return confirm('" .
+          translate("Are you sure you want to delete this entry?") . "');\">" . 
+	  translate("Delete") . "</a>";
+      }
       echo "\n</li>\n";
       $eventinfo .= build_event_popup ( $divname, $user, $description,
         $timestr, site_extras_for_popup ( $id ));
@@ -110,9 +147,8 @@ function list_unapproved ( $user ) {
     if ($count > 0 ) { echo "</ul>\n"; }
   }
   if ( $count == 0 ) {
-    user_load_variables ( $user, "temp_" );
-    echo "<span class=\"nounapproved\">" . 
-	translate("No unapproved events for") . "&nbsp;" . $temp_fullname . ".</span>\n";
+    echo "<p class=\"nounapproved\">" . 
+	translate("No unapproved events for") . "&nbsp;" . $temp_fullname . ".</p>\n";
   } else {
     if ( ! empty ( $eventinfo ) ) echo $eventinfo;
   }
@@ -121,28 +157,59 @@ function list_unapproved ( $user ) {
 
 <h2><?php 
 	etranslate("Unapproved Events"); 
-	if ( $user == '__public__' ) echo " - " . $PUBLIC_ACCESS_FULLNAME; 
+	//if ( $user == '__public__' ) echo " - " . $PUBLIC_ACCESS_FULLNAME; 
 ?></h2>
 <?php
-// List unapproved events for this user.
-list_unapproved ( ( $is_assistant || $is_nonuser_admin || $is_admin ) ? $user : $login );
+$app_users = array ();
+$app_user_hash = array ( );
 
-// Admin users can also approve Public Access events
-if ( $is_admin && $public_access == "Y" &&
-  ( empty ( $user ) || $user != '__public__' ) ) {
-  echo "\n<h3>" . translate ( "Public Access" ) . "</h3>\n";
-  list_unapproved ( "__public__" );
-}
 
-// NonUser calendar admins cal approve events on that specific NonUser
-// calendar.
-if ( $nonuser_enabled == 'Y' ) {
-  $admincals = get_nonuser_cals ( $login );
-  for ( $i = 0; $i < count ( $admincals ); $i++ ) {
-    echo "\n<h3>" . $admincals[$i]['cal_fullname'] . "</h3>\n";
-    list_unapproved ( $admincals[$i]['cal_login'] );
+// If a user is specified, we list just that user.
+if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
+  access_is_enabled () ) &&
+  ! empty ( $user ) && $user != $login ) {
+  if ( ! access_is_enabled () || 
+    access_can_approve_user_calendar ( $user ) ) {
+    $app_users[] = $user;
+    $app_user_hash[$user] = 1;
+  } else {
+    // not authorized to approve for specified user
+    echo translate ( "Not authorized" );
+  }
+} else {
+  // First, we list ourself
+  $app_users[] = $login;
+  $app_user_hash[$login] = 1;
+  if ( access_is_enabled () ) {
+    if ( $nonuser_enabled == 'Y' ) {
+      $all = array_merge ( get_my_users ( ), get_nonuser_cals ( ) );
+    } else {
+      $all = get_my_users ( );
+    }
+    for ( $j = 0; $j < count ( $all ); $j++ ) {
+      $x = $all[$j]['cal_login'];
+      if ( access_can_approve_user_calendar ( $x ) ) {
+        if ( empty ( $app_user_hash[$x] ) ) {
+          $app_users[] = $x;
+          $app_user_hash[$x] = 1;
+        }
+      }
+    }
+  } else {
+    if ( $is_admin && $public_access == "Y" &&
+      ( empty ( $user ) || $user != '__public__' ) ) {
+      $app_users[] = '__public__';
+      $app_users_hash['__public__'] = 1;
+    }
   }
 }
+
+
+for ( $i = 0; $i < count ( $app_users ); $i++ ) {
+  // List unapproved events for this user.
+  list_unapproved ( $app_users[$i] );
+}
+
 ?>
 
 <?php print_trailer(); ?>

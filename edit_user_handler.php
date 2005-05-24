@@ -14,10 +14,31 @@ if ( ! $is_admin )
   $user = $login;
 $action = getValue ( "action" );
 
+// don't allow them to edit users if it's not allowed
+if ( empty ( $user ) ) {
+  // asking to create a new user
+  if ( ! $is_admin ) {
+    // must be admin...
+    if ( ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
+      send_to_preferred_view ();
+    }
+  }
+  if ( ! $admin_can_add_user ) {
+    // if adding users is not allowed...
+    send_to_preferred_view ();
+    exit;
+  }
+} else {
+  // User is editing their account info
+  if ( ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) )
+    send_to_preferred_view ();
+}
+
+
 // Handle delete
 if ( ( $action == "Delete" || $action == translate ("Delete") ) &&
   $formtype == "edituser" ) {
-  if ( $is_admin ) {
+  if ( access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
     if ( $admin_can_delete_user ) {
       user_delete_user ( $user ); // will also delete user's events
     } else {
@@ -30,7 +51,10 @@ if ( ( $action == "Delete" || $action == translate ("Delete") ) &&
 
 // Handle update of password
 else if ( $formtype == "setpassword" && strlen ( $user ) ) {
-  if ( $upassword1 != $upassword2 ) {
+  if ( ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) &&
+    ! access_can_access_function ( ACCESS_ACCOUNT ) ) {
+    $error = translate("You are not authorized") . ".";
+  } else if ( $upassword1 != $upassword2 ) {
     $error = translate("The passwords were not identical") . ".";
   } else if ( strlen ( $upassword1 ) ) {
     if ( $user_can_update_password )
@@ -60,7 +84,8 @@ else if ( $formtype == "edituser" ) {
           $uemail, $uis_admin );
       }
     }
-  } else if ( strlen ( $add ) && ! $is_admin ) {
+  } else if ( strlen ( $add ) &&
+    ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
     $error = translate("You are not authorized") . ".";
   } else {
     // Don't allow a user to change themself to an admin by setting
