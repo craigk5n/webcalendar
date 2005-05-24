@@ -69,12 +69,14 @@ $DMW = in_array($SCRIPT, $special);
 // Unset some variables that shouldn't be set
 unset($user_inc);
  
+include_once 'includes/assert.php';
 include_once 'includes/config.php';
 include_once 'includes/php-dbi.php';
 include_once 'includes/functions.php';
 include_once "includes/$user_inc";
 include_once 'includes/validate.php';
 include_once 'includes/connect.php';
+include_once 'includes/access.php';
 
 load_global_settings ();
 
@@ -95,6 +97,17 @@ $cat_id = getValue ( "cat_id", "[0-9]+" );
 $friendly = getValue ( "friendly", "[01]" );
 if ( empty ( $public_access ) )
   $public_access = 'N';
+
+// Initialize access settings ($user_access string) and make sure user
+// is allowed to view the current page.
+access_init ( );
+if ( ! access_can_view_page ( ) ) {
+  echo "<html>\n<head>\n<title>" . translate ( $application_name ) . " " .
+    translate("Error") .  "</title></head>\n" .
+    "<body>\n<h2>" . translate ( "Error" ) . "</h2>\n" .
+    translate ( "You are not authorized" );
+  exit;
+}
 
 // Load if $SCRIPT is in $special array:
 if ($DMW) {
@@ -165,66 +178,67 @@ if ($DMW) {
  * @global array $bodyid
  */
 $bodyid = array(
- "activity_log.php" => "activitylog",
- "add_entry.php" => "addentry",
- "admin.php" => "admin",
- "adminhome.php" => "adminhome",
- "approve_entry.php" => "approveentry",
- "assistant_edit.php" => "assistantedit",
- "category.php" => "category",
- "day.php" => "day",
- "del_entry.php" => "delentry",
- "del_layer.php" => "dellayer",
- "edit_entry.php" => "editentry",
- "edit_layer.php" => "editlayer",
- "edit_nonusers.php" => "editnonusers",
- "edit_nonusers_handler.php" => "editnonusershandler",
- "edit_report.php" => "editreport",
- "edit_template.php" => "edittemplate",
- "edit_user.php" => "edituser",
- "edit_user_handler.php" => "edituserhandler",
- "export.php" => "export",
- "group_edit.php" => "groupedit",
- "group_edit_handler.php" => "groupedithandler",
- "groups.php" => "groups",
- "help_admin.php" => "helpadmin",
- "help_bug.php" => "helpbug",
- "help_edit_entry.php" => "helpeditentry",
- "help_import.php" => "helpimport",
- "help_index.php" => "helpindex",
- "help_layers.php" => "helplayers",
- "help_pref.php" => "helppref",
- "import.php" => "import",
- "index.php" => "index",
- "layers.php" => "layers",
- "layers_toggle.php" => "layerstoggle",
- "list_unapproved.php" => "listunapproved",
- "login.php" => "login",
- "month.php" => "month",
- "nonusers.php" => "nonusers",
- "pref.php" => "pref",
- "publish.php" => "publish",
- "purge.php" => "purge",
- "reject_entry.php" => "rejectentry",
- "report.php" => "report",
- "search.php" => "search",
- "select_user.php" => "selectuser",
- "set_entry_cat.php" => "setentrycat",
- "users.php" => "users",
- "usersel.php" => "usersel",
- "view_d.php" => "viewd",
- "view_entry.php" => "viewentry",
- "view_l.php" => "viewl",
- "view_m.php" => "viewm",
- "view_t.php" => "viewt",
- "view_v.php" => "viewv",
- "view_w.php" => "vieww",
- "views.php" => "views",
- "views_edit.php" => "viewsedit",
- "week.php" => "week",
- "week_details.php" => "weekdetails",
- "week_ssi.php" => "weekssi",
- "year.php" => "year"
+  "activity_log.php" => "activitylog",
+  "add_entry.php" => "addentry",
+  "adminhome.php" => "adminhome",
+  "admin.php" => "admin",
+  "approve_entry.php" => "approveentry",
+  "assistant_edit.php" => "assistantedit",
+  "category.php" => "category",
+  "day.php" => "day",
+  "del_entry.php" => "delentry",
+  "del_layer.php" => "dellayer",
+  "edit_entry.php" => "editentry",
+  "edit_layer.php" => "editlayer",
+  "edit_nonusers_handler.php" => "editnonusershandler",
+  "edit_nonusers.php" => "editnonusers",
+  "edit_report.php" => "editreport",
+  "edit_template.php" => "edittemplate",
+  "edit_user_handler.php" => "edituserhandler",
+  "edit_user.php" => "edituser",
+  "export.php" => "export",
+  "group_edit_handler.php" => "groupedithandler",
+  "group_edit.php" => "groupedit",
+  "groups.php" => "groups",
+  "help_admin.php" => "helpadmin",
+  "help_bug.php" => "helpbug",
+  "help_edit_entry.php" => "helpeditentry",
+  "help_import.php" => "helpimport",
+  "help_index.php" => "helpindex",
+  "help_layers.php" => "helplayers",
+  "help_pref.php" => "helppref",
+  "import.php" => "import",
+  "index.php" => "index",
+  "layers.php" => "layers",
+  "layers_toggle.php" => "layerstoggle",
+  "list_unapproved.php" => "listunapproved",
+  "login.php" => "login",
+  "month.php" => "month",
+  "nonusers.php" => "nonusers",
+  "pref.php" => "pref",
+  "publish.php" => "publish",
+  "purge.php" => "purge",
+  "reject_entry.php" => "rejectentry",
+  "report.php" => "report",
+  "search.php" => "search",
+  "select_user.php" => "selectuser",
+  "set_entry_cat.php" => "setentrycat",
+  "usersel.php" => "usersel",
+  "users.php" => "users",
+  "view_d.php" => "viewd",
+  "view_entry.php" => "viewentry",
+  "view_l.php" => "viewl",
+  "view_m.php" => "viewm",
+  "view_r.php" => "viewr",
+  "views_edit.php" => "viewsedit",
+  "views.php" => "views",
+  "view_t.php" => "viewt",
+  "view_v.php" => "viewv",
+  "view_w.php" => "vieww",
+  "week_details.php" => "weekdetails",
+  "week.php" => "week",
+  "week_ssi.php" => "weekssi",
+  "year.php" => "year"
 );
 
 /**

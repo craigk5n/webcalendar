@@ -14,9 +14,24 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 // or use $GLOBALS[].
 ?>
 
+<?php if ( access_can_access_function ( ACCESS_TRAILER ) ) { ?>
+
 <div id="trailer">
-<form action="month.php" method="get" name="SelectMonth" id="monthform">
 <?php
+  if ( access_can_view_page ( "month.php" ) ) {
+    $monthUrl = 'month.php';
+    $urlArgs = '';
+  } else {
+    $monthUrl = $GLOBALS['STARTVIEW'];
+    if ( preg_match ( "/[?&](\S+)=(\S+)/", $monthUrl, $match ) ) {
+      $monthUrl = $match[0];
+      $urlArgs = "<input type=\"hidden\" name=\"$match[1]\" value=\"$match[2]\" />\n";
+    }
+  }
+?>
+<form action="<?php echo $monthUrl;?>" method="get" name="SelectMonth" id="monthform">
+<?php
+  echo $urlArgs;
   if ( ! empty ( $user ) && $user != $login ) {
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   }
@@ -58,8 +73,21 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 <input type="submit" value="<?php etranslate("Go")?>" />
 </form>
 
-<form action="week.php" method="get" name="SelectWeek" id="weekform">
 <?php
+  if ( access_can_view_page ( "week.php" ) ) {
+    $weekUrl = 'week.php';
+    $urlArgs = '';
+  } else {
+    $weekUrl = $GLOBALS['STARTVIEW'];
+    if ( preg_match ( "/[?&](\S+)=(\S+)/", $weekUrl, $match ) ) {
+      $weekUrl = $match[0];
+      $urlArgs = "<input type=\"hidden\" name=\"$match[1]\" value=\"$match[2]\" />\n";
+    }
+  }
+?>
+<form action="<?php echo $weekUrl;?>" method="get" name="SelectWeek" id="weekform">
+<?php
+  echo $urlArgs;
   if ( ! empty ( $user ) && $user != $login ) {
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   }
@@ -111,8 +139,21 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 <input type="submit" value="<?php etranslate("Go")?>" />
 </form>
 
-<form action="year.php" method="get" name="SelectYear" id="yearform">
 <?php
+  if ( access_can_view_page ( "year.php" ) ) {
+    $yearUrl = 'year.php';
+    $urlArgs = '';
+  } else {
+    $yearUrl = $GLOBALS['STARTVIEW'];
+    if ( preg_match ( "/[?&](\S+)=(\S+)/", $yearUrl, $match ) ) {
+      $yearUrl = $match[0];
+      $urlArgs = "<input type=\"hidden\" name=\"$match[1]\" value=\"$match[2]\" />\n";
+    }
+  }
+?>
+<form action="<?php echo $yearUrl;?>" method="get" name="SelectYear" id="yearform">
+<?php
+  echo $urlArgs;
   if ( ! empty ( $user ) && $user != $login ) {
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   }
@@ -149,11 +190,10 @@ $reports_link = array ( );
 $manage_calendar_link = array ( );
 
 // Go To links
-$can_add = ( $readonly == "N" );
-if ( $public_access == "Y" && $public_access_can_add != "Y" &&
-  $login == "__public__" ) {
+if ( $readonly == 'Y' )
   $can_add = false;
-}
+else
+  $can_add = access_can_access_function ( ACCESS_EVENT_EDIT );
 
 if ( ! empty ( $GLOBALS['STARTVIEW'] ) ) {
   $mycal = $GLOBALS['STARTVIEW'];
@@ -176,6 +216,9 @@ if ( ! strstr ( $reqURI, "month.php" ) &&
 } else {
   $todayURL = $reqURI;
 }
+if ( ! access_can_view_page ( $todayURL ) ) {
+  $todayURL = '';
+}
 
 if ( $single_user != "Y" ) {
   if ( ! empty ( $user ) && $user != $login ) {
@@ -189,24 +232,28 @@ if ( $single_user != "Y" ) {
       "href=\"$mycal\">" . 
       translate("My Calendar") . "</a>";
   }
-  if ( ! empty ( $user ) && $user != $login ) {
+  if ( ! empty ( $user ) && $user != $login && ! empty ( $todayURL ) ) {
     $todayURL .= '?user=' . $user;
   }
-  $goto_link[] = "<a title=\"" . 
-    translate("Today") . "\" style=\"font-weight:bold;\" " .
-    "href=\"$todayURL\">" . 
-    translate("Today") . "</a>";
-  if ( $login != '__public__' && $readonly == 'N' ) {
+  if ( ! empty ( $todayURL ) ) {
     $goto_link[] = "<a title=\"" . 
-      translate("Admin") . "\" style=\"font-weight:bold;\" " .
-      "href=\"adminhome.php\">" . 
-      translate("Admin") . "</a>";
+      translate("Today") . "\" style=\"font-weight:bold;\" " .
+      "href=\"$todayURL\">" . 
+      translate("Today") . "</a>";
+  }
+  if ( $login != '__public__' && $readonly == 'N' ) {
+    if ( ! access_is_enabled () ||
+      access_can_access_function ( ACCESS_ADMIN_HOME ) )
+      $goto_link[] = "<a title=\"" . 
+        translate("Admin") . "\" style=\"font-weight:bold;\" " .
+        "href=\"adminhome.php\">" . 
+        translate("Admin") . "</a>";
   }
   if ( $login != "__public__" && $readonly == "N" &&
     ( $require_approvals == "Y" || $public_access == "Y" ) ) {
     $url = 'list_unapproved.php';
-    if ($is_nonuser_admin) {
-      $url .= "?user=$user";
+    if ( $is_nonuser_admin ) {
+      $url .= "?user=" . getValue ( 'user' );
     }
     $goto_link[] = "<a title=\"" . 
       translate("Unapproved Events") . "\" href=\"$url\">" . 
@@ -215,9 +262,18 @@ if ( $single_user != "Y" ) {
   if ( $login == "__public__" && $public_access_others != "Y" ) {
     // don't allow them to see other people's calendar
   } else if ( $allow_view_other == "Y" || $is_admin ) {
-    $goto_link[] = "<a title=\"" . 
-      translate("Another User's Calendar") . "\" href=\"select_user.php\">" . 
-      translate("Another User's Calendar") . "</a>";
+    // Also, make sure they able to access either day/week/month/year view
+    // If not, then there is no way to view another user's calendar except
+    // a custom view.
+    if ( ! access_is_enabled () ||
+      access_can_access_function ( ACCESS_DAY ) ||
+      access_can_access_function ( ACCESS_WEEK ) ||
+      access_can_access_function ( ACCESS_MONTH ) ||
+      access_can_access_function ( ACCESS_YEAR ) ) {
+      $goto_link[] = "<a title=\"" . 
+        translate("Another User's Calendar") . "\" href=\"select_user.php\">" . 
+        translate("Another User's Calendar") . "</a>";
+    }
   }
 } else {
   $goto_link[] = "<a title=\"" . 
@@ -237,16 +293,22 @@ if ( $single_user != "Y" ) {
 }
 // only display some links if we're viewing our own calendar.
 if ( empty ( $user ) || $user == $login ) {
-  $goto_link[] = "<a title=\"" . 
-    translate("Search") . "\" href=\"search.php\">" .
-    translate("Search") . "</a>";
+  if ( access_can_access_function ( ACCESS_SEARCH ) ) {
+    $goto_link[] = "<a title=\"" . 
+      translate("Search") . "\" href=\"search.php\">" .
+      translate("Search") . "</a>";
+  }
   if ( $login != '__public__' ) {
-    $goto_link[] = "<a title=\"" . 
-      translate("Import") . "\" href=\"import.php\">" . 
-      translate("Import") . "</a>";
-    $goto_link[] = "<a title=\"" . 
-      translate("Export") . "\" href=\"export.php\">" . 
-      translate("Export") . "</a>";
+    if ( access_can_access_function ( ACCESS_IMPORT ) ) {
+      $goto_link[] = "<a title=\"" . 
+        translate("Import") . "\" href=\"import.php\">" . 
+        translate("Import") . "</a>";
+    }
+    if ( access_can_access_function ( ACCESS_EXPORT ) ) {
+      $goto_link[] = "<a title=\"" . 
+        translate("Export") . "\" href=\"export.php\">" . 
+        translate("Export") . "</a>";
+    }
   }
   if ( $can_add ) {
     $url = "<a title=\"" . 
@@ -264,7 +326,12 @@ if ( empty ( $user ) || $user == $login ) {
     $goto_link[] = $url;
   }
 }
-if ( $login != '__public__' ) {
+if ( access_is_enabled () ) {
+  $showHelp = access_can_access_function ( ACCESS_HELP );
+} else {
+  $showHelp = ( $login != '__public__' );
+}
+if ( $showHelp ) {
   $goto_link[] = "<a title=\"" . 
     translate("Help") . "\" href=\"#\" onclick=\"window.open " .
     "( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars, " .
@@ -286,7 +353,8 @@ if ( count ( $goto_link ) > 0 ) {
 
 <!-- VIEWS -->
 <?php
-if ( ( $is_admin || $allow_view_other != "N" ) && count ( $views ) > 0 ) {
+if ( ( access_can_access_function ( ACCESS_VIEW ) && $allow_view_other != "N" )
+  && count ( $views ) > 0 ) {
   for ( $i = 0; $i < count ( $views ); $i++ ) {
     $out = "<a title=\"" .
       htmlspecialchars ( $views[$i]['cal_name'] ) .
@@ -311,8 +379,9 @@ if ( count ( $views_link ) > 0 ) {
 
 <!-- REPORTS -->
 <?php
+if ( ! empty ( $reports_enabled ) && $reports_enabled == 'Y' &&
+  access_can_access_function ( ACCESS_REPORT ) ) {
 $reports_link = array ();
-if ( ! empty ( $reports_enabled ) && $reports_enabled == 'Y' ) {
   if ( ! empty ( $user ) && $user != $login ) {
     $u_url = "&amp;user=$user";
   } else {
@@ -383,8 +452,17 @@ if ( ! $use_http_auth ) {
 // Manage Calendar links
 if ( ! empty ( $nonuser_enabled ) && $nonuser_enabled == "Y" )
   $admincals = get_nonuser_cals ( $login );
-if ( $has_boss || ! empty ( $admincals[0] ) ||
-  ( $is_admin && $public_access ) ) {
+// Make sure they have access to either month/week/day view.
+// If they do not, then we cannot create a URL that shows just
+// the boss' events.  So, we would not include any of the
+// "manage calendar of" links.
+$have_boss_url = true;
+if ( ! access_can_access_function ( ACCESS_MONTH ) &&
+  ! access_can_access_function ( ACCESS_WEEK ) &&
+  ! access_can_access_function ( ACCESS_DAY ) )
+  $have_boss_url = false;
+if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
+  ( $is_admin && $public_access ) ) ) {
   $grouplist = user_get_boss_list ( $login );
   if ( ! empty ( $admincals[0] ) ) {
     $grouplist = array_merge ( $admincals, $grouplist );
@@ -400,12 +478,20 @@ if ( $has_boss || ! empty ( $admincals[0] ) ||
   for ( $i = 0; $i < count ( $grouplist ); $i++ ) {
     $l = $grouplist[$i]['cal_login'];
     $f = $grouplist[$i]['cal_fullname'];
-    // Use the preferred view if it is day/week/month/year.php.  Do
-    // not use a user-created view because it might not display the
+    // Use the preferred view if it is day/week/month/year.php.  Try
+    // not to use a user-created view because it might not display the
     // proper user's events.  (Fallback to month.php if this is true.)
+    // Of course, if this user cannot view any of the standard D/W/M/Y
+    // pages, that will force us to use the view.
     $xurl = get_preferred_view ( "", "user=$l" );
     if ( strstr ( $xurl, "view_" ) ) {
-      $xurl = "month.php?user=$l";
+      if ( access_can_access_function ( ACCESS_MONTH ) )
+        $xurl = "month.php?user=$l";
+      else if ( access_can_access_function ( ACCESS_WEEK ) )
+        $xurl = "week.php?user=$l";
+      else if ( access_can_access_function ( ACCESS_DAY ) )
+        $xurl = "day.php?user=$l";
+      // year does not show events, so you cannot manage someone's cal
     }
     if ( $i > 0 )
       $groups .= ", ";
@@ -426,3 +512,4 @@ print "<br/><br/><a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" " .
 </div>
 </div>
 <!-- /TRAILER -->
+<?php } ?>

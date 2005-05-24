@@ -1,3 +1,4 @@
+<?php /* $Id$ */ ?>
 <script type="text/javascript">
 <!-- <![CDATA[
 function selectDate ( day, month, year, current, evt ) {
@@ -25,10 +26,5 @@ function selectDate ( day, month, year, current, evt ) {
   var colorWindow = window.open(url,"DateSelection","width=300,height=200," + MyPosition);
 }
 
-<?php //see the showTab function in includes/js/visible.php for common code shared by all pages
-	//using the tabbed GUI.
-?>var tabs = new Array();
-tabs[0] = "import";
-tabs[1] = "export";
 //]]> -->
 </script>

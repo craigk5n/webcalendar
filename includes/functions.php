@@ -484,6 +484,9 @@ function get_web_browser () {
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
   //error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
+  //$fd = fopen ( "/tmp/webcaldebug.log", "a+", true );
+  //fwrite ( $fd, date ( "Y-m-d H:i:s" ) .  "> $msg\n" );
+  //fclose ( $fd );
   //  3, "/tmp/webcal-debug.log" );
   //error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
   //  2, "sockieman:2000" );
@@ -510,6 +513,22 @@ function get_preferred_view ( $indate="", $args="" ) {
   // they have not updated their preferences.
   if ( $url == "month" || $url == "day" || $url == "week" || $url == "year" )
     $url .= ".php";
+
+  if ( ! access_can_view_page ( $url ) ) {
+    if ( access_can_access_function ( ACCESS_WEEK ) )
+      $url = "week.php";
+    else if ( access_can_access_function ( ACCESS_MONTH ) )
+      $url = "month.php";
+    else if ( access_can_access_function ( ACCESS_DAY ) )
+      $url = "day.php";
+    // At this point, this user cannot view the preferred view in their
+    // preferences (and they cannot update their preferences), and they
+    // cannot view any of the standard day/week/month/year pages.
+    // All that's left is a custom view that is either created by them
+    // or a global view.
+    if ( count ( $views ) > 0 )
+      $url = $views[0]['url'];
+  }
 
   $url = str_replace ( '&amp;', '&', $url );
   $url = str_replace ( '&', '&amp;', $url );
@@ -758,6 +777,8 @@ function load_user_preferences () {
         $url = "view_t.php?timeb=1&amp;id=$row[0]";
       else if ( $row[2] == 'T' )
         $url = "view_t.php?timeb=0&amp;id=$row[0]";
+      else if ( $row[2] == 'E' )
+        $url = "view_r.php?id=$row[0]";
       else
         $url = "view_" . strtolower ( $row[2] ) . ".php?id=$row[0]";
       $v = array (
@@ -895,6 +916,10 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
  * someone else's events (so they may need access to users who are not in the
  * same groups that they are in).
  *
+ * If user access control is enabled, then we also check to see if this
+ * user is allowed to view each user's calendar.  If not, then that use
+ * is not included in the list.
+ *
  * @return array Array of users, where each element in the array is an array
  *               with the following keys:
  *    - cal_login
@@ -908,6 +933,11 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
  */
 function get_my_users () {
   global $login, $is_admin, $groups_enabled, $user_sees_only_his_groups;
+  global $my_user_array;
+
+  // Return the global variable (cached)
+  if ( ! empty ( $my_user_array ) && is_array ( $my_user_array ) )
+    return $my_user_array;
 
   if ( $groups_enabled == "Y" && $user_sees_only_his_groups == "Y" &&
     ! $is_admin ) {
@@ -931,6 +961,7 @@ function get_my_users () {
     if ( count ( $groups ) == 0 ) {
       // Eek.  User is in no groups... Return only themselves
       $ret[] = $u_byname[$login];
+      $my_user_array = $ret;
       return $ret;
     }
     // get list of users in the same groups as current user
@@ -951,12 +982,26 @@ function get_my_users () {
       }
       dbi_free_result ( $res );
     }
-    return $ret;
   } else {
     // groups not enabled... return all users
     //echo "No groups. ";
-    return user_get_users ();
+    $ret = user_get_users ();
   }
+
+  // If user access control enabled, remove any users that this user
+  // does not have 'view' access to.
+  if ( access_is_enabled () && ! $is_admin ) {
+    $newlist = array ();
+    for ( $i = 0; $i < count ( $ret ); $i++ ) {
+      if ( access_can_view_user_calendar ( $ret[$i]['cal_login'] ) )
+        $newlist[] = $ret[$i];
+    }
+    $ret = $newlist;
+    //echo "<pre>"; print_r ( $ret ); echo "</pre>";
+  }
+
+  $my_user_array = $ret;
+  return $ret;
 }
 
 /**
@@ -2837,14 +2882,17 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
  * @param int    $duration       Duration of event in minutes
  * @param string $event_owner    User who created event
  * @param int    $event_category Category id for event
+ * @param string $override_class	if set, then this is the class to use
+ * @param bool   $show_time      if enabled, then event time is displayed
  */
 function html_for_event_week_at_a_glance ( $id, $date, $time,
   $name, $description, $status, $pri, $access, $duration, $event_owner,
-  $event_category=-1 ) {
+  $event_category=-1, $override_class='', $show_time=true ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user;
   static $key = 0;
-  global $DISPLAY_ICONS, $PHP_SELF, $TIME_SLOTS;
+  global $DISPLAY_ICONS, $PHP_SELF, $TIME_SLOTS, $WORK_DAY_START_HOUR,
+    $WORK_DAY_END_HOUR, $TZ_OFFSET;
   global $layers;
 
   $popupid = "eventinfo-day-$id-$key";
@@ -2857,8 +2905,13 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
       $first_slot = $ind;
     if ( $ind > $last_slot )
       $last_slot = $ind;
-  } else
+  } else if ( $duration == 24 * 60 ) {
+    // all-day event
+    $ind = $first_slot;
+  } else {
+    // untimed event
     $ind = 9999;
+  }
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $class = "layerentry";
@@ -2866,12 +2919,17 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     $class = "entry";
     if ( $status == "W" ) $class = "unapprovedentry";
   }
+
   // if we are looking at a view, then always use "entry"
   if ( strstr ( $PHP_SELF, "view_m.php" ) ||
     strstr ( $PHP_SELF, "view_w.php" ) ||
     strstr ( $PHP_SELF, "view_v.php" ) ||
+    strstr ( $PHP_SELF, "view_r.php" ) ||
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
+
+  if ( ! empty ( $override_class ) )
+    $class .= " " . $override_class;
 
   // avoid php warning for undefined array index
   if ( empty ( $hour_arr[$ind] ) )
@@ -2900,8 +2958,17 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   }
   if ( $duration == ( 24 * 60 ) ) {
     $timestr = translate("All day event");
+    // Set start cell of all-day event to beginning of work hours
+    if ( empty ( $rowspan_arr[$first_slot] ) )
+      $rowspan_arr[$first_slot] = 0; // avoid warning below
+    // which slot is end time in? take one off so we don't
+    // show 11:00-12:00 as taking up both 11 and 12 slots.
+    $rowspan = $last_slot - $first_slot + 1;
+    if ( $rowspan > $rowspan_arr[$first_slot] && $rowspan > 1 )
+      $rowspan_arr[$first_slot] = $rowspan;
   } else if ( $time >= 0 ) {
-    $hour_arr[$ind] .= display_time ( $time ) . "&raquo;&nbsp;";
+    if ( $show_time )
+      $hour_arr[$ind] .= display_time ( $time ) . "&raquo;&nbsp;";
     $timestr = display_time ( $time );
     if ( $duration > 0 ) {
       // calc end time
@@ -3026,6 +3093,8 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   } else
     $ind = 9999;
   //echo "time = $time <br />\nind = $ind <br />\nfirst_slot = $first_slot<br />\n";
+
+  //echo "Using slot $ind<br/>";
 
   if ( empty ( $hour_arr[$ind] ) )
     $hour_arr[$ind] = "";
@@ -4224,6 +4293,35 @@ function print_header_timebar($start_hour, $end_hour) {
    }
    echo "</tr>\n</table>\n<!-- /YARDSTICK -->\n";
  }
+
+
+/**
+ * Determine if the specified user is a participant in the event.
+ * User must have status 'A' or 'W'.
+ *
+ * @param int $id	event id
+ * @param string $user	user login
+ */
+function user_is_participant ( $id, $user )
+{
+  $ret = false;
+
+  $sql = "SELECT COUNT(cal_id) FROM webcal_entry_user " .
+    "WHERE cal_id = $id AND cal_login = '$user' AND " .
+    "cal_status IN ('A','W')";
+  $res = dbi_query ( $sql );
+  if ( ! $res )
+    die_miserable_death ( translate ( "Database error") . ": " .
+      dbi_error () );
+
+  if ( $row = dbi_fetch_row ( $res ) )
+    $ret = ( $row[0] > 0 );
+
+  dbi_free_result ( $res );
+
+  return $ret;
+}
+
 
 /**
  * Gets a list of nonuser calendars and return info in an array.

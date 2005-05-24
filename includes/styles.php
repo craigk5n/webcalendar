@@ -147,7 +147,6 @@ a:hover {
 #tabscontent_participants,
 #tabscontent_sched,
 #tabscontent_pete,
-#tabscontent_export,
 #tabscontent_nonusers,
 #useriframe,
 #grpiframe,
@@ -617,11 +616,15 @@ textarea {
 #vieww .main,
 #week .main,
 #viewl .main,
+#viewr .main,
 #month .main {
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   width: 100%;
   clear: both;
+}
+#viewr .small {
+  font-size: 8px;
 }
 <?php //contains ALL months
 ?>#year .main tr {
@@ -646,6 +649,7 @@ th {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   width: 12%;
 }
+#viewr .main th,
 #viewm .main th {
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -658,6 +662,7 @@ th {
 #viewv .main th.empty,
 #viewm .main th.empty,
 #vieww .main th.empty,
+#viewr .main th.empty,
 #week .main th.empty {
   background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
   border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
@@ -681,6 +686,10 @@ th {
   border-right-width: 0px;
   text-align: left;
 }
+#viewr th.row {
+  height: 40px;
+  vertical-align: top;
+}
 #vieww .main th.today,
 #viewm .main th.today,
 #viewv .main th.today,
@@ -691,20 +700,27 @@ th {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   vertical-align: top;
 }
+#viewr .main th.today,
 #week .main th.today {
   <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 ); ?>
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   width: 12%;
 }
+#viewr .main td.hasevents {
+  font-size: 8px;
+  <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 ); ?>
+}
 #week .main td.hasevents,
 #day .glance td.hasevents {
   <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 ); ?>
 }
+#viewr .main th a,
 #week .main th a,
 #weekdetails .main th a {
   color: <?php echo $GLOBALS['THFG']; ?>;
 }
+#viewr .main th a:hover,
 #week .main th a:hover,
 #weekdetails .main th a:hover {
   color: #0000FF;
@@ -724,6 +740,7 @@ th {
 }
 #vieww .main td,
 #week .main td,
+#viewr .main td,
 #viewm .main td,
 #viewv .main td {
   font-size: 12px;
@@ -738,6 +755,7 @@ th {
 #viewm .main td.weekend,
 #viewv .main td.weekend,
 #vieww .main td.weekend,
+#viewr .main td.weekend,
 #week .main td.weekend {
   <?php echo background_css ( $GLOBALS['WEEKENDBG'], 100 ); ?>
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
