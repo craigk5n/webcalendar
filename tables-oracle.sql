@@ -419,6 +419,19 @@ CREATE TABLE webcal_report_template (
   PRIMARY KEY ( cal_report_id, cal_template_type )
 );
 
+CREATE TABLE webcal_access_user (
+  cal_login VARCHAR(50) NOT NULL,
+  cal_other_user VARCHAR(50) NOT NULL,
+  cal_can_view CHAR(1) NOT NULL DEFAULT 'N',
+  cal_can_edit CHAR(1) NOT NULL DEFAULT 'N',
+  cal_can_delete CHAR(1) NOT NULL DEFAULT 'N',
+  cal_can_approve CHAR(1) NOT NULL DEFAULT 'N',
+  PRIMARY KEY ( cal_login, cal_other_user )
+);
 
-
+CREATE TABLE webcal_access_function (
+  cal_login VARCHAR(50) NOT NULL,
+  cal_permissions VARCHAR(64) NOT NULL,
+  PRIMARY KEY ( cal_login )
+);
 
