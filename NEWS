@@ -2,6 +2,9 @@ Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
   - Other bugs fixed:
   - New Features / Enhancements / Changes:
+    + Added Development/Production environment setting on install page.
+      This will toggle assertion stacktraces and SQL errors being displayed
+      on the web browser.
     + Applied patch 1175032: add advanced user access control
     + Applied patch 1205023: fixed missing translation in import.php
     + Applied patch 1156386: improved placement and sizing of event popups
