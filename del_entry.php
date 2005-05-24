@@ -42,7 +42,14 @@ if ( $res ) {
 }
 
 if ( $readonly == 'Y' )
-  $cat_edit = false;
+  $can_edit = false;
+
+// If User Access Control is enabled, check to see if the current
+// user is allowed to delete events from the other user's calendar.
+if ( ! $can_edit && access_is_enabled () ) {
+  if ( access_can_delete_user_calendar ( $user ) )
+    $can_edit = true;
+}
 
 if ( ! $can_edit ) {
   $error = translate ( "You are not authorized" );
@@ -77,7 +84,10 @@ if ( $id > 0 && empty ( $error ) ) {
 
   // Only allow delete of webcal_entry & webcal_entry_repeats
   // if owner or admin, not participant.
-  if ( $is_admin || $my_event ) {
+  // If a user was specified, then only delete that user even if we
+  // are the owner or an admin.
+  if ( ( $is_admin || $my_event ) &&
+    ( empty ( $user ) || $user == $login ) ) {
 
     // Email participants that the event was deleted
     // First, get list of participants (with status Approved or
@@ -199,14 +209,24 @@ if ( $id > 0 && empty ( $error ) ) {
     // We could just set the status to 'D' instead of deleting.
     // (but we would need to make some changes to edit_entry_handler.php
     // to accomodate this).
+    $del_user = $login;
+    if ( ! empty ( $user ) && $user != $login ) {
+      if ( $is_admin ||
+        ( access_is_enabled () &&
+        access_can_delete_user_calendar ( $user ) ) ) {
+        $del_user = $user;
+      }
+    }
     dbi_query ( "DELETE FROM webcal_entry_user " .
-      "WHERE cal_id = $id AND cal_login = '$login'" );
+      "WHERE cal_id = $id AND cal_login = '$del_user'" );
     activity_log ( $id, $login, $login, $LOG_REJECT, "" );
   }
 }
 
 $ret = getValue ( "ret" );
-if ( ! empty ( $ret ) && $ret == "list" ) {
+if ( ! empty ( $ret ) && $ret == "listall" ) {
+  $url = "list_unapproved.php";
+} else if ( ! empty ( $ret ) && $ret == "list" ) {
   $url = "list_unapproved.php";
   if ( ! empty ( $user ) )
     $url .= "?user=$user";

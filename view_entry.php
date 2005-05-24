@@ -84,7 +84,7 @@ if ( empty ( $error ) ) {
           $sql .= ", ";
         }
         $sql .= "'" . $my_users[$i]['cal_login'] . "'";
-        }
+      }
       $sql .= " )";
       $res = dbi_query ( $sql );
       if ( $res ) {

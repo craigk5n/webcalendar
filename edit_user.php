@@ -2,6 +2,8 @@
 /* $Id$ */
 include_once 'includes/init.php';
 
+$error = '';
+
 if ( ! $is_admin )
   $user = $login;
 
@@ -14,19 +16,27 @@ if ( empty ( $user ) ) {
   // asking to create a new user
   if ( ! $is_admin ) {
     // must be admin...
-    do_redirect ( empty ( $STARTVIEW ) ? "month.php" : "$STARTVIEW" );
-    exit;
+    if ( ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
+      $error = translate ( "You are not authorized" );
+    }
   }
   if ( ! $admin_can_add_user ) {
     // if adding users is not allowed...
-    do_redirect ( empty ( $STARTVIEW ) ? "month.php" : "$STARTVIEW" );
-    exit;
+    $error = translate ( "You are not authorized" );
   }
+} else {
+  // User is editing their account info
+  if ( ! access_can_access_function ( ACCESS_ACCOUNT_INFO ) )
+    $error = translate ( "You are not authorized" );
 }
 
 $disableCustom = true;
 
 print_header ( '', '', '', $disableCustom );
+
+if ( ! empty ( $error ) ) {
+  echo "<h2>" . translate ( "Error" ) . "</h2>\n<p>" . $error . "</p>\n";
+} else {
 ?>
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top; width:50%;">
@@ -137,6 +147,7 @@ if ( $is_admin ) { ?>
 </form>
 <?php } ?>
 </td></tr></table>
+<?php } ?>
 
 <?php print_trailer ( false, true, true ); ?>
 </body>

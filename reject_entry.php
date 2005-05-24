@@ -13,6 +13,14 @@ if ( $public_access == "Y" && ! empty ( $public ) && $is_admin )
 else
   $app_user = ( $is_assistant || $is_nonuser_admin ? $user : $login );
 
+// If User Access Control is enabled, we check to see if they are
+// allowed to approve for the specified user.
+if ( access_is_enabled () && ! empty ( $user ) &&
+  $user != $login ) {
+  if ( access_can_approve_user_calendar ( $user ) )
+    $app_user = $user;
+}
+
 if ( empty ( $error ) && $id > 0 ) {
   if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'R' " .
     "WHERE cal_login = '$app_user' AND cal_id = $id" ) ) {
@@ -105,7 +113,9 @@ if ( empty ( $error ) && $id > 0 ) {
 }
 
 if ( empty ( $error ) ) {
-  if ( $ret == "list" )
+  if ( ! empty ( $ret ) && $ret == "listall" )
+    do_redirect ( "list_unapproved.php" );
+  else if ( $ret == "list" )
     do_redirect ( "list_unapproved.php?user=$app_user" );
   else
     do_redirect ( "view_entry.php?id=$id&amp;user=$app_user" );

@@ -544,6 +544,9 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     echo "<option value=\"\">None</option>\n";
     $userlist = get_my_users ();
     for ( $j = 0; $j < count ( $userlist ); $j++ ) {
+      if ( access_is_enabled () &&
+        ! access_can_view_user_calendar ( $userlist[$j]['cal_login'] ) )
+        continue; // cannot view calendar so cannot add to their cal
       echo "<option value=\"" . $userlist[$j]['cal_login'] . "\"";
         if ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
           $userlist[$j]['cal_login'] == $extras[$extra_name]['cal_data'] )

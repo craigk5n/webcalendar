@@ -21,8 +21,11 @@ if ( ! empty ( $error ) ) {
   }
   if ( strstr ( $STARTVIEW, "view" ) )
     $url = "month.php";
-  else
+  else {
     $url = $STARTVIEW;
+    if ( $url == "month" || $url == "day" || $url == "week" || $url == "year" )
+      $url .= ".php";
+  }
   ?>
   <form action="<?php echo $url;?>" method="get" name="SelectUser">
   <select name="user" onchange="document.SelectUser.submit()">
