@@ -1,5 +1,6 @@
 Version 1.0.1-CVS (?? ??? 2005)
  - Patch 1171807: reminder sent late if cron run at exact second of reminder
+ - Updated Polish translation
  - Updated German translation
  - Updated French translation
  - Updated Norwegian translation
