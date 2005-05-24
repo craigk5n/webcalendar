@@ -106,9 +106,7 @@ time-interval-help: Okresla jak d³ugie bêd± bloki czasowe w widoku tygodniowym i
 Time interval: Odstêpy czasowe
 hour: godziny
 minutes: minut
-#
-# << MISSING >>
-# auto-refresh-help:
+auto-refresh-help: auto-od?wierzanie pomocy
 # English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
 #
 Auto-refresh calendars: Kalendarze automatycznie od¶wie¿ane
@@ -254,9 +252,7 @@ Plugin: Wtyczka
 # public-access-default-visible:
 # English text: Events from the public calendar will automatically appear on all users' calendars
 #
-#
-# << MISSING >>
-# Public access visible by default:
+Public access visible by default: Publiczny dost?p widoczny jako domyslny
 #
 # << MISSING >>
 # public-access-default-selected:
@@ -324,9 +320,7 @@ Bottom: Dó³
 # reports-enabled-help:
 # English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
 #
-#
-# << MISSING >>
-# Reports enabled:
+Reports enabled: Raporty wy??czone
 #
 # << MISSING >>
 # subscriptions-enabled-help:
@@ -511,9 +505,7 @@ You have not entered a password: Nie wprowadzi³e¶ has³a
 #
 # << MISSING >>
 # Username can not be blank:
-#
-# << MISSING >>
-# Changes successfully saved:
+Changes successfully saved: Zmiany pomy?lnie zapisane
 
 
 ###############################################
@@ -534,9 +526,7 @@ Unnamed Event: Nienazwane wydzrzenie
 Export: Eksportuj
 Export format: Format eksportu
 Palm Pilot: Palm Pilot
-#
-# << MISSING >>
-# Include all layers:
+Include all layers: Zawiera wszystkie wartswy
 Export all dates: Eksportuj wszystkie daty
 Start date: Zaczyna siê
 End date: Koñczy siê
@@ -624,9 +614,7 @@ Preferences: W³a¶ciwo¶ci
 # Page: help_layers.php
 #
 Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Warswy s± u¿yteczne dla wy¶wietlania zdarzeñ innych u¿ytkowników w twoim kalendarzu. Mo¿esz zdefiniowaæ u¿ytkownika i kolor w którym bêd± wy¶wietlane jego zdarzenia.
-#
-# << MISSING >>
-# Add/Edit/Delete:
+Add/Edit/Delete: Dodaj/Edytuj/Usu?
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Klikaj±c na ³±cze Edytuj Warstwy w sekcji administracyjnej na dole strony pozwoli ci na dodanie/edycjê/kasowanie warstw.
 Specifies the user that you would like to see displayed in your calendar.: Okre¶la u¿ytkownika ktrego chcia³by¶ widzieæ w swoim kalendarzu
 The text color of the new layer that will be displayed in your calendar.: Kolor tekstu nowej warstwy która bêdzie wy¶wietlona w twoim kalendarzu
@@ -700,9 +688,7 @@ Disable Layers: Wy³±czenie warstw
 Disabled: Wy³±czone
 Enable Layers: W³±czenie warstw
 to modify the layers settings for the: aby zmodyfikowaæ ustawienia warstw dla
-#
-# << MISSING >>
-# calendar:
+calendar: Kalendarz
 Add layer: Dodaj warstwê
 Layer: Warstwa
 Edit layer: Edytuj warstwê
@@ -712,7 +698,7 @@ Edit layer: Edytuj warstwê
 # Page: list_unapproved.php
 #
 View this entry: Ogl±daj ten wpis
-Approve/Confirm: Zatwierd¼/Potwierd¼
+Approve/Confirm: Zatwierd1/4/Potwierd1/4
 Approve this entry?: Zatwierdzic ten wpis ?
 Reject: Odrzuæ
 Reject this entry?: Odrzuciæ wpis?
@@ -744,16 +730,12 @@ All day event: Zdarzenie ca³odniowe
 Public: Dla wszystkich
 Category: Kategoria
 days: dni
-#
-# << MISSING >>
-# day:
+day: dzie?
 hours: godziny
-#
-# << MISSING >>
-# minute:
+minute: minuta
 before event: przed zdarzeniem
 External User: Zewnêtrzny u¿ytkownik
-Approve/Confirm entry: Zatwierd¼/Potwierd¼ wpis
+Approve/Confirm entry: Zatwierd1/4/Potwierd1/4 wpis
 Reject entry: Odrzuæ wpis
 Set category: Ustaw kategoriê
 Edit repeating entry for all dates: Edytuj powtarzaj¹ce wpisy dla wszystkich dat
@@ -779,9 +761,7 @@ Export this entry to: Eksportuj ten wpis do
 ###############################################
 # Page: view_v.php
 #
-#
-# << MISSING >>
-# No users for this view:
+No users for this view: Brak u?ytkowników dla tego widoku
 
 
 ###############################################
@@ -814,7 +794,7 @@ No matches found: Nie znaleziono
 # Page: select_user.php
 #
 View Another User's Calendar: Poka¿ kalendarz innego u¿ytkownika
-Go: Id¼
+Go: Id1/4
 
 
 ###############################################
@@ -879,12 +859,8 @@ Week (Timebar): Tydzieñ (Pasek czasu)
 # Month (Timebar):
 Month (side by side): Miesi±c (obok siebie)
 Month (on same calendar): Miesi±c (na tym samym kalendarzu)
-#
-# << MISSING >>
-# preview:
-#
-# << MISSING >>
-# Selected:
+preview: podgl?d
+Selected: Wybrane
 
 
 ###############################################
@@ -998,28 +974,20 @@ Are you sure you want to delete this report?: Jeste¶ pewny, ¿e chcesz usun±æ ten
 ###############################################
 # Page: assistant_edit.php
 #
-#
-# << MISSING >>
-# Your assistants:
+Your assistants: Twoi asystenci
 
 
 ###############################################
 # Page: purge.php
 #
-#
-# << MISSING >>
-# Preview:
+Preview: podgl?d
 Purging events for: Wyczy¶æ zdarzenia dla
 Finished: Zakoñczone
 Check box to delete <b>ALL</b> events for a user: Zaznacz aby skasowa <b>WSZYSTKIE</b> zdarzenia dla u¿ytkownika
 Delete all events before: Kasuj wszystkie zdarzenia przed
-#
-# << MISSING >>
-# Preview delete:
+Preview delete: Usuni?cie podgl?du
 Are you sure you want to delete events for: Jeste¶ pewny ¿e chcesz skasowaæ wszystkie zdarzenia dla
-#
-# << MISSING >>
-# Records deleted from:
+Records deleted from: Pola usuni?te z
 
 
 ###############################################
@@ -1066,7 +1034,7 @@ A new appointment has been made for you by: Zosta³o ustalone nowe spotkanie
 An appointment has been updated by: Spotkanie zosta³o zaktualizowane przez
 The subject is: Tematem jest
 Please look on: Proszê spójrz na
-to accept or reject this appointment: aby zatwierdziæ b±d¼ odrzuciæ to spotkanie
+to accept or reject this appointment: aby zatwierdzia b±d1/4 odrzuciæ to spotkanie
 to view this appointment: aby obejrzeæ to spotkanie
 Your suggested time of: Twój sugerowany czas 
 
@@ -1081,9 +1049,8 @@ Last Name: Nazwisko
 E-mail address: Adres e-mail
 again: ponów
 Disabled for demo: Wy³aczony dla wersji demo
-#
-# << MISSING >>
-# Are you sure you want to delete this user?:
+
+Are you sure you want to delete this user?:Czy jeste? pewien ?e chcesz usun?? tego u?ytkownika?
 Change Password: Zmieñ has³o
 New Password: Nowe has³o
 Set Password: Zmieñ has³o
@@ -1102,9 +1069,7 @@ Edit Custom Trailer: Edytuj definiowany zwastun
 #
 Edit Entry: Eytuj wpis
 Add Entry: Dodaj wpis
-#
-# << MISSING >>
-# Details:
+Details: Szczegó?y
 #
 # << MISSING >>
 # Repeat:
@@ -1137,7 +1102,7 @@ My Calendar: Mój kalendarz
 Back to My Calendar: Powrót do mojego kalendarza
 Another User's Calendar: Kalendarze innych u¿ytkowników
 Add New Entry: Dodaj nowy wpis
-Go to: Id¼ do
+Go to: Id1/4 do
 Logout: Logout
 Manage calendar of: Zarz±dzaj kalendarzem od
 
@@ -1145,9 +1110,7 @@ Manage calendar of: Zarz±dzaj kalendarzem od
 ###############################################
 # Page: includes/user.php
 #
-#
-# << MISSING >>
-# incorrect password:
+incorrect password: nieprawid?owe has?o
 #
 # << MISSING >>
 # no such user:
@@ -1163,93 +1126,41 @@ Send Reminder: Wyœlij przypomnienie
 ###############################################
 # Page: includes/config.php
 #
+English: Angielski
+Basque: Baskijski
+Bulgarian: Bu?garski
+Catalan: Katalo?ski
 #
-# << MISSING >>
-# English:
-#
-# << MISSING >>
-# Basque:
-#
-# << MISSING >>
-# Bulgarian:
-#
-# << MISSING >>
-# Catalan:
-#
-# << MISSING >>
-# Chinese (Traditonal/Big5):
+Chinese (Traditonal/Big5): Chi?ski (Tradycyjny/Big5)
 #
 # << MISSING >>
 # Chinese (Simplified/GB2312):
-#
-# << MISSING >>
-# Czech:
-#
-# << MISSING >>
-# Danish:
-#
+Czech: Czeski
+Danish: Du?ski
 # << MISSING >>
 # Dutch:
-#
-# << MISSING >>
-# Estonian:
-#
-# << MISSING >>
-# Finnish:
-#
-# << MISSING >>
-# French:
-#
-# << MISSING >>
-# Galician:
-#
-# << MISSING >>
-# German:
+Estonian: Esto?ski
+Finnish: Fi?ski
+French: Francuski
+Galician: Galicyjski
+German: Niemiecki
 #
 # << MISSING >>
 # Holo (Taiwanese):
-#
-# << MISSING >>
-# Hungarian:
-#
-# << MISSING >>
-# Icelandic:
-#
-# << MISSING >>
-# Italian:
-#
-# << MISSING >>
-# Japanese:
-#
-# << MISSING >>
-# Korean:
-#
-# << MISSING >>
-# Norwegian:
-#
-# << MISSING >>
-# Polish:
-#
-# << MISSING >>
-# Portuguese:
-#
-# << MISSING >>
-# Portuguese/Brazil:
-#
-# << MISSING >>
-# Romanian:
-#
-# << MISSING >>
-# Russian:
-#
-# << MISSING >>
-# Spanish:
-#
-# << MISSING >>
-# Swedish:
-#
-# << MISSING >>
-# Turkish:
+Hungarian: W?gierski
+Icelandic: Islandzki
+Italian: W?oski
+Japanese: Japo?ski
+Korean: Korea?ski
+Norwegian: Norweski
+Polish: Polski
+Portuguese: Portugalski
+Portuguese/Brazil: Portugalski/Brazylijski
+Romanian: Rumu?ski
+Russian: Rosyjski
+Spanish: Hiszpa?ski
+Swedish: Szwedzki
+Turkish: Turecki
 
 
 ###############################################
@@ -1266,7 +1177,7 @@ June: Czerwiec
 July: Lipiec
 August: Sierpieñ
 September: Wrzesieñ
-October: Pa¼dziernik
+October: Pa1/4dziernik
 November: Listopad
 Jan: Sty
 Feb: Lut
@@ -1277,18 +1188,16 @@ Jun: Cze
 Jul: Lip
 Aug: Sie
 Sep: Wrz
-Oct: Pa¼
+Oct: Pa1/4
 Nov: Lis
 Dec: Gru
 #
 # << MISSING >>
 # All Attendees:
 #
-# << MISSING >>
-# Busy:
+Busy: Zaj?ty
 #
-# << MISSING >>
-# Tentative:
+Tentative: Próbny
 
 
 ###############################################
@@ -1341,3 +1250,4 @@ Invalid color: Nieprawid³owy kolor
 #
 This is a reminder for the event detailed below.: To jest przypomnienie dla zdarzenia o podanych w³a¶ciwo¶ciach poni¿ej
 Reminder: Przypomnienie
+
