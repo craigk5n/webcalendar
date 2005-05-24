@@ -25,7 +25,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
   */
 function view_init ( $view_id )
 {
-  global $views, $error, $login, $public_access_ohd, $hide_details;
+  global $views, $error, $login;
   global $allow_view_other, $is_admin;
   global $view_name, $view_type;
 
@@ -37,12 +37,6 @@ function view_init ( $view_id )
   if ( empty ( $view_id ) ) {
     do_redirect ( "views.php" );
   }
-
-  // If public user, can they see event info rather than just "unavailable"?
-  $hide_details = false;
-  if ( $login == '__public__' && ! empty ( $public_access_ohd )
-    && $public_access_ohd == 'Y' )
-    $hide_details = true;
 
   // Find view name in $views[]
   $view_name = "";
