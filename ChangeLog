@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Patch 1175032: advanced user access control
  - Patch 1205023: fixed missing translation in import.php
  - Patch 1156386: improved placement and sizing of event popups
  - Patch 1111582: Add iCal FreeBusy support

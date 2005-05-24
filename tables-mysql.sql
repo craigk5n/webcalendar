@@ -672,3 +672,40 @@ CREATE TABLE webcal_report_template (
   cal_template_text TEXT,
   PRIMARY KEY ( cal_report_id, cal_template_type )
 );
+
+/*
+ * Specifies which users can access another user's calendar.
+ */
+CREATE TABLE webcal_access_user (
+  /* the current user who is attempting to look at another user's calendar */
+  cal_login VARCHAR(50) NOT NULL,
+  /* the login of the other user whose calendar the current user */
+  /* wants to access */
+  cal_other_user VARCHAR(50) NOT NULL,
+  /* can current user view events on the other user's calendar? ('Y'/'N') */
+  cal_can_view CHAR(1) NOT NULL DEFAULT 'N',
+  /* can current user edit events on the other user's calendar? ('Y'/'N') */
+  cal_can_edit CHAR(1) NOT NULL DEFAULT 'N',
+  /* can current user delete events on the other user's calendar? ('Y'/'N') */
+  cal_can_delete CHAR(1) NOT NULL DEFAULT 'N',
+  /* can current user approve events on the other user's calendar? ('Y'/'N') */
+  cal_can_approve CHAR(1) NOT NULL DEFAULT 'N',
+  PRIMARY KEY ( cal_login, cal_other_user )
+);
+
+
+/*
+ * Specifies what WebCalendar functions a user can access.
+ * Each function has a corresponding numeric value (specified in
+ * the file includes/access.php).  For example, view event is 0, so the
+ * very first character in the cal_permissions column will be either a
+ * 'Y' if this user can view events or a 'N' if they cannot.
+ */
+CREATE TABLE webcal_access_function (
+  /* user login */
+  cal_login VARCHAR(50) NOT NULL,
+  /* a string of 'Y' or 'N' for the various functions */
+  cal_permissions VARCHAR(64) NOT NULL,
+  PRIMARY KEY ( cal_login )
+);
+

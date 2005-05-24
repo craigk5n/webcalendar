@@ -2,6 +2,7 @@ Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
   - Other bugs fixed:
   - New Features / Enhancements / Changes:
+    + Applied patch 1175032: add advanced user access control
     + Applied patch 1205023: fixed missing translation in import.php
     + Applied patch 1156386: improved placement and sizing of event popups
     + Applied patch 1111582: Add iCal FreeBusy support

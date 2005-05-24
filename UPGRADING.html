@@ -43,17 +43,19 @@
 <h2>WebCalendar Upgrading Notes</h2>
 
 <p>Below are the steps needed to upgrade from a previous version.
-Select your current version from the list below. If you are more 
-than one version behind (i.e. the current version is v0.9.45, 
-and you're using 0.9.39), click the "next.." link at the end of 
+Select the version of your existing instal from the list below.
+If you are more 
+than one version behind (i.e. the new version is v0.9.45, 
+and you're using 0.9.39), click the "next..." link at the end of 
 each section to move to the next version. Always follow the versions 
 in sequence.</p>
 <hr />
 
-<h4>I'm using..</h4>
+<h4>My previous install was...</h4>
 <ul>
 	<li>
-		<a href="UPGRADING.html#1dot0RC1">0.9.45 or 1.0RC1</a></li><li>
+		<a href="UPGRADING.html#1_1_0">1.0RC3 or 1.0.0</a></li><li>
+		<a href="UPGRADING.html#to_1_0RC3">0.9.45, 1.0RC1 or 1.0RC2</a></li><li>
 		<a href="UPGRADING.html#dot945">0.9.44</a></li><li>
 		<a href="UPGRADING.html#dot944">0.9.43</a></li><li>
 		<a href="UPGRADING.html#dot943">0.9.42</a></li><li>
@@ -78,7 +80,7 @@ in sequence.</p>
 <p>You need to create the table cal_user_pref in tables.sql. 
 You need to create the table cal_entry_user in tables.sql that 
 was mistakenly created as "cal_event_user" in the 0.9 release.</p>
-<a href="UPGRADING.html#dot907">next..</a>
+<a href="UPGRADING.html#dot907">next...</a>
 <hr />
 
 <h4><a id="dot907">To upgrade from v0.9.01 to v0.9.07:</a></h4>
@@ -91,7 +93,7 @@ mysql intranet &lt; commands.sql
 </pre>
 <p>where "intranet" is the name of the MySQL database that contains 
 your WebCalendar tables.</p>
-<a href="UPGRADING.html#dot912">next..</a>
+<a href="UPGRADING.html#dot912">next...</a>
 <hr />
 
 <h4><a id="dot912">To upgrade from v0.9.07 - v0.9.11 to v0.9.12:</a></h4>
@@ -99,7 +101,7 @@ your WebCalendar tables.</p>
 entries with NULL for cal_time are changed to -1. Use the 
 following SQL command:</p>
 	<pre>update webcal_entry set cal_time = -1 where cal_time is null;</pre>
-<a href="UPGRADING.html#dot914">next..</a>
+<a href="UPGRADING.html#dot914">next...</a>
 <hr />
 
 <h4><a id="dot914">To upgrade from v0.9.12 or v0.9.13 to v0.9.14:</a></h4>
@@ -117,7 +119,7 @@ CREATE TABLE webcal_entry_repeats (
 	PRIMARY KEY (cal_id)
 );
 </pre>
-<a href="UPGRADING.html#dot922">next..</a>
+<a href="UPGRADING.html#dot922">next...</a>
 <hr />
 
 <h4><a id="dot922">To upgrade from v0.9.14 - v0.9.21 to v0.9.22:</a></h4>
@@ -135,7 +137,7 @@ CREATE TABLE webcal_user_layers (
 	PRIMARY KEY ( cal_login, cal_layeruser )
 );
 </pre>
-<a href="UPGRADING.html#dot927">next..</a>
+<a href="UPGRADING.html#dot927">next...</a>
 <hr />
 
 <h4><a id="dot927">To upgrade from v0.9.22 - v0.9.26 to v0.9.27:</a></h4>
@@ -188,7 +190,7 @@ your crontab file that looks like:</p>
 <p>This will tell cron to run the script at one minute after the hour. 
 Windows users will have to find another way to run the script. 
 There are ports/look-a-likes of cron for Windows, so look around.</p>
-<a href="UPGRADING.html#dot935">next..</a>
+<a href="UPGRADING.html#dot935">next...</a>
 <hr />
 
 <h4><a id="dot935">To upgrade from v0.9.27 - v0.9.34 to v0.9.35:</a></h4>
@@ -242,7 +244,7 @@ CREATE TABLE webcal_entry_log (
 	PRIMARY KEY ( cal_log_id )
 );
 </pre>
-<a href="UPGRADING.html#dot937">next..</a>
+<a href="UPGRADING.html#dot937">next...</a>
 <hr />
 
 <h4><a id="dot937">To upgrade from v0.9.35 or v0.9.36 to v0.9.37:</a></h4>
@@ -257,7 +259,7 @@ CREATE TABLE webcal_entry_repeats_not (
 	PRIMARY KEY ( cal_id, cal_date )
 );
 </pre>
-<a href="UPGRADING.html#dot938">next..</a>
+<a href="UPGRADING.html#dot938">next...</a>
 <hr />
 
 <h4><a id="dot938">To upgrade from v0.9.37 to v0.9.38:</a></h4>
@@ -273,7 +275,7 @@ CREATE TABLE webcal_categories (
 	PRIMARY KEY ( cat_id )
 );
 </pre>
-<a href="UPGRADING.html#dot939">next..</a>
+<a href="UPGRADING.html#dot939">next...</a>
 <hr />
 
 <h4><a id="dot939">To upgrade from v0.9.38 to v0.9.39:</a></h4>
@@ -283,7 +285,7 @@ All old data settings need to be removed from the database.</p>
 DELETE FROM webcal_config WHERE cal_setting LIKE 'DATE_FORMAT%';
 DELETE FROM webcal_user_pref WHERE cal_setting LIKE 'DATE_FORMAT%';
 </pre>
-<a href="UPGRADING.html#dot940">next..</a>
+<a href="UPGRADING.html#dot940">next...</a>
 <hr />
 
 <h4><a id="dot940">To upgrade from v0.9.39 to v0.9.40:</a></h4>
@@ -305,7 +307,7 @@ CREATE TABLE webcal_entry_ext_user (
 ALTER TABLE webcal_entry ADD cal_ext_for_id INT NULL;
 </pre>
 <p>For Oracle, use VARCHAR2 instead of VARCHAR.</p>
-<a href="UPGRADING.html#dot941">next..</a>
+<a href="UPGRADING.html#dot941">next...</a>
 <hr />
 
 <h4><a id="dot941">To upgrade from v0.9.40 to v0.9.41:</a></h4>
@@ -321,7 +323,7 @@ CREATE TABLE webcal_nonuser_cals (
 );
 </pre>
 <p>For Oracle, use VARCHAR2 instead of VARCHAR and LONG instead of TEXT.</p>
-<a href="UPGRADING.html#dot942">next..</a>
+<a href="UPGRADING.html#dot942">next...</a>
 <hr />
 
 <h4><a id="dot942">To upgrade from v0.9.41 to v0.9.42:</a></h4>
@@ -360,7 +362,7 @@ CREATE TABLE webcal_import_data (
 );
 </pre>
 <p>For Oracle, use VARCHAR2 instead of VARCHAR.</p>
-<a href="UPGRADING.html#dot943">next..</a>
+<a href="UPGRADING.html#dot943">next...</a>
 <hr />
 
 <h4><a id="dot943">To upgrade from v0.9.42 to v0.9.43:</a></h4>
@@ -422,12 +424,12 @@ the URL to access the script in your browser:
 your local browser help section.
 </p>
 
-<a href="UPGRADING.html#dot944">next..</a>
+<a href="UPGRADING.html#dot944">next...</a>
 <hr />
 
 <h4><a id="dot944">To upgrade from v0.9.43 to v0.9.44:</a></h4>
 <p>No manual changes required for upgrading from 0.9.43 to 0.9.44.</p>
-<a href="UPGRADING.html#dot945">next..</a>
+<a href="UPGRADING.html#dot945">next...</a>
 <hr />
 
 <h4><a id="dot945">To upgrade from v0.9.44 to v0.9.45:</a></h4>
@@ -446,27 +448,51 @@ to more restrictive permissions.
 <p>After saving your database settings, be sure to setup an install
 password via this same web page so that other users may not change
 your database settings.</p>
-<a href="UPGRADING.html#1dot0RC1">next..</a>
+<a href="UPGRADING.html#to_1_0RC1">next...</a>
 <hr />
 
-<h4><a id="1dot0RC1">To upgrade from v0.9.45 or 1.0RC1 to v1.0RC2:</a></h4>
-<p>There are no database changes from 0.9.45 to 1.0RC2.
-</p>
-<a href="UPGRADING.html#1dot0RC3">next..</a>
-<hr />
-
-<h4><a id="1dot0RC3">To upgrade from v1.0RC2 to v1.0RC3 or 1.0.0:</a></h4>
+<h4><a id="to_1_0RC3">To upgrade from v0.9.45, 1.0RC1 or v1.0RC2 to v1.0RC3:</a></h4>
 <p>The <tt>webcal_view</tt> table was modified.
 Execute the following SQL to update your database:
 </p>
 <pre>
 ALTER TABLE webcal_view ADD cal_is_global CHAR(1) DEFAULT 'N' NOT NULL;
-UPDATE webcal_user_pref SET cal_value = 'day.php' WHERE cal_value = 'day' AND cal_setting = 'STARTVIEW';
-UPDATE webcal_user_pref SET cal_value = 'week.php' WHERE cal_value = 'week' AND cal_setting = 'STARTVIEW';
-UPDATE webcal_user_pref SET cal_value = 'month.php' WHERE cal_value = 'month' AND cal_setting = 'STARTVIEW';
-UPDATE webcal_user_pref SET cal_value = 'year.php' WHERE cal_value = 'year' AND cal_setting = 'STARTVIEW';
-UPDATE webcal_config SET cal_value = 'week.php' WHERE cal_setting = 'STARTVIEW';
+UPDATE webcal_user_pref SET cal_value = 'day.php'
+  WHERE cal_value = 'day' AND cal_setting = 'STARTVIEW';
+UPDATE webcal_user_pref SET cal_value = 'week.php'
+  WHERE cal_value = 'week' AND cal_setting = 'STARTVIEW';
+UPDATE webcal_user_pref SET cal_value = 'month.php'
+  WHERE cal_value = 'month' AND cal_setting = 'STARTVIEW';
+UPDATE webcal_user_pref SET cal_value = 'year.php'
+  WHERE cal_value = 'year' AND cal_setting = 'STARTVIEW';
+UPDATE webcal_config SET cal_value = 'week.php'
+  WHERE cal_setting = 'STARTVIEW';
 </pre>
+<a href="UPGRADING.html#1_1_0">next...</a>
+<hr />
+
+<h4><a id="1_1_0">To upgrade from v1.0RC3 or v1.0.0 to v1.1.0:</a></h4>
+<p>Two new tables need to be created to support advanced user access control.
+Execute the following SQL to update your database:
+</p>
+<pre>
+CREATE TABLE webcal_access_user (
+  cal_login VARCHAR(50) NOT NULL,
+  cal_other_user VARCHAR(50) NOT NULL,
+  cal_can_view CHAR(1) NOT NULL DEFAULT 'N',
+  cal_can_edit CHAR(1) NOT NULL DEFAULT 'N',
+  cal_can_delete CHAR(1) NOT NULL DEFAULT 'N',
+  cal_can_approve CHAR(1) NOT NULL DEFAULT 'N',
+  PRIMARY KEY ( cal_login, cal_other_user )
+);
+
+CREATE TABLE webcal_access_function (
+  cal_login VARCHAR(50) NOT NULL,
+  cal_permissions VARCHAR(64) NOT NULL,
+  PRIMARY KEY ( cal_login )
+);
+</pre>
+
 <hr />
 
 <p>
