@@ -26,6 +26,7 @@
  * - include_once "includes/$user_inc";
  * - include_once 'includes/validate.php';
  * - include_once 'includes/connect.php';
+ * - include_once 'includes/site_extras.php';
  * - {@link load_global_settings()};
  * - {@link load_user_preferences()};
  * - include_once 'includes/translate.php';
@@ -76,6 +77,7 @@ include_once 'includes/functions.php';
 include_once "includes/$user_inc";
 include_once 'includes/validate.php';
 include_once 'includes/connect.php';
+include_once 'includes/site_extras.php';
 include_once 'includes/access.php';
 
 load_global_settings ();

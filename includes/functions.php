@@ -5,6 +5,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
  * @package WebCalendar
  */
 
@@ -1120,6 +1121,98 @@ function load_user_layers ($user="",$force=0) {
 }
 
 /**
+ * Formats site_extras for display according to their type.
+ *
+ * This will return an array containing formatted extras indexed on their
+ * unique names. Each formatted extra is another array containing two
+ * indices: 'name' and 'data', which hold the name of the site_extra and the
+ * formatted data, respectively. So, to access the name and data of an extra
+ * uniquely name 'Reminder', you would access
+ * <var>$array['Reminder']['name']</var> and
+ * <var>$array['Reminder']['data']</var>
+ *
+ * @param array $extras Array of site_extras for an event as returned by
+ *                      {@link get_site_extra_fields()}
+ *
+ * @return array Array of formatted extras.
+ */
+function format_site_extras ( $extras ) {
+  global $site_extras;
+  global $EXTRA_TEXT, $EXTRA_MULTILINETEXT, $EXTRA_URL, $EXTRA_DATE,
+    $EXTRA_EMAIL, $EXTRA_USER, $EXTRA_REMINDER, $EXTRA_SELECTLIST;
+  global $EXTRA_REMINDER_WITH_DATE, $EXTRA_REMINDER_WITH_OFFSET,
+    $EXTRA_REMINDER_DEFAULT_YES;
+
+  $ret = array();
+
+  foreach ( $site_extras as $site_extra ) {
+    $extra_name = $site_extra[0];
+    $extra_type = $site_extra[2];
+    $extra_arg1 = $site_extra[3];
+    $extra_arg2 = $site_extra[4];
+
+    if ( ! empty ( $extras[$extra_name] )
+         && ! empty ( $extras[$extra_name]['cal_name'] ) ) {
+
+      $name = translate ( $site_extra[1] );
+
+      if ( $extra_type == $EXTRA_DATE ) {
+
+        if ( $extras[$extra_name]['cal_date'] > 0 ) {
+          $data = date_to_str ( $extras[$extra_name]['cal_date'] );
+        }
+
+      } else if ( $extra_type == $EXTRA_TEXT
+                  || $extra_type == $EXTRA_MULTILINETEXT ) {
+
+        $data = nl2br ( $extras[$extra_name]['cal_data'] );
+
+      } else if ( $extra_type == $EXTRA_REMINDER ) {
+
+        if ( $extras[$extra_name]['cal_remind'] <= 0 ) {
+          $data = translate ( 'No' );
+        } else {
+          $data = translate ( 'Yes' );
+
+          if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
+            $data .= '&nbsp;&nbsp;-&nbsp;&nbsp;';
+            $data .= date_to_str ( $extras[$extra_name]['cal_date'] );
+          } else if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
+            $data .= '&nbsp;&nbsp;-&nbsp;&nbsp;';
+
+            $minutes = $extras[$extra_name]['cal_data'];
+            $d = (int) ( $minutes / ( 24 * 60 ) );
+            $minutes -= ( $d * 24 * 60 );
+            $h = (int) ( $minutes / 60 );
+            $minutes -= ( $h * 60 );
+
+            if ( $d > 0 ) {
+              $data .= $d . '&nbsp;' . translate ( 'days' ) . '&nbsp;';
+            }
+
+            if ( $h > 0 ) {
+              $data .= $h . '&nbsp;' . translate ( 'hours' ) . '&nbsp;';
+            }
+
+            if ( $minutes > 0 ) {
+              $data .= $minutes . '&nbsp;' . translate ( 'minutes' );
+            }
+
+            $data .= '&nbsp;' . translate ( 'before event' );
+          }
+        }
+      } else {
+        $data .= $extras[$extra_name]['cal_data'];
+      }
+
+      $ret[$extra_name] = array ( 'name' => $name, 'data' => $data );
+    }
+  }
+
+  return $ret;
+}
+
+/**
  * Generates the HTML used in an event popup for the site_extras fields of an event.
  *
  * @param int $id Event ID
@@ -1128,65 +1221,20 @@ function load_user_layers ($user="",$force=0) {
  *                fields found for the specified event
  */
 function site_extras_for_popup ( $id ) {
-  global $site_extras_in_popup, $site_extras;
-  // These are needed in case the site_extras.php file was already
-  // included.
-  global $EXTRA_TEXT, $EXTRA_MULTILINETEXT, $EXTRA_URL, $EXTRA_DATE,
-    $EXTRA_EMAIL, $EXTRA_USER, $EXTRA_REMINDER, $EXTRA_SELECTLIST;
-  global $EXTRA_REMINDER_WITH_DATE, $EXTRA_REMINDER_WITH_OFFSET,
-    $EXTRA_REMINDER_DEFAULT_YES;
+  global $site_extras_in_popup;
+
+  if ( $site_extras_in_popup != 'Y' ) {
+    return '';
+  }
+
+  $extras = format_site_extras ( get_site_extra_fields ( $id ) );
 
   $ret = '';
 
-  if ( $site_extras_in_popup != 'Y' )
-    return '';
-
-  include_once 'includes/site_extras.php';
-
-  $extras = get_site_extra_fields ( $id );
-  for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
-    $extra_name = $site_extras[$i][0];
-    $extra_type = $site_extras[$i][2];
-    $extra_arg1 = $site_extras[$i][3];
-    $extra_arg2 = $site_extras[$i][4];
-    if ( ! empty ( $extras[$extra_name]['cal_name'] ) ) {
-      $ret .= "<dt>" .  translate ( $site_extras[$i][1] ) . ":</dt>\n<dd>";
-      if ( $extra_type == $EXTRA_DATE ) {
-        if ( $extras[$extra_name]['cal_date'] > 0 )
-          $ret .= date_to_str ( $extras[$extra_name]['cal_date'] );
-      } else if ( $extra_type == $EXTRA_TEXT ||
-        $extra_type == $EXTRA_MULTILINETEXT ) {
-        $ret .= nl2br ( $extras[$extra_name]['cal_data'] );
-      } else if ( $extra_type == $EXTRA_REMINDER ) {
-        if ( $extras[$extra_name]['cal_remind'] <= 0 )
-          $ret .= translate ( "No" );
-        else {
-          $ret .= translate ( "Yes" );
-          if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
-            $ret .= "&nbsp;&nbsp;-&nbsp;&nbsp;";
-            $ret .= date_to_str ( $extras[$extra_name]['cal_date'] );
-          } else if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
-            $ret .= "&nbsp;&nbsp;-&nbsp;&nbsp;";
-            $minutes = $extras[$extra_name]['cal_data'];
-            $d = (int) ( $minutes / ( 24 * 60 ) );
-            $minutes -= ( $d * 24 * 60 );
-            $h = (int) ( $minutes / 60 );
-            $minutes -= ( $h * 60 );
-            if ( $d > 0 )
-              $ret .= $d . "&nbsp;" . translate("days") . "&nbsp;";
-            if ( $h > 0 )
-              $ret .= $h . "&nbsp;" . translate("hours") . "&nbsp;";
-            if ( $minutes > 0 )
-              $ret .= $minutes . "&nbsp;" . translate("minutes");
-            $ret .= "&nbsp;" . translate("before event" );
-          }
-        }
-      } else {
-        $ret .= $extras[$extra_name]['cal_data'];
-      }
-      $ret .= "</dd>\n";
-    }
+  foreach ( $extras as $extra ) {
+    $ret .= '<dt>' . $extra['name'] . ":</dt>\n<dd>" . $extra['data'] . "</dd>\n";
   }
+
   return $ret;
 }
 
@@ -4917,6 +4965,23 @@ function add_duration ( $time, $duration ) {
   $m = $minutes % 60;
   $ret = sprintf ( "%d%02d00", $h, $m );
   //echo "add_duration ( $time, $duration ) = $ret <br />\n";
+  return $ret;
+}
+
+/**
+ * Extract the names of all site_extras
+ *
+ * @return array Array of site_extras names
+ */
+function get_site_extras_names () {
+  global $site_extras;
+
+  $ret = array();
+
+  foreach ( $site_extras as $extra ) {
+    $ret[] = $extra[0];
+  }
+
   return $ret;
 }
 ?>
