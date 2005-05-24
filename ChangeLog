@@ -1,4 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added Development/Production environment setting on install page.
+   This will toggle assertion stacktraces and SQL errors being displayed
+   on the web browser.
  - Patch 1175032: advanced user access control
  - Patch 1205023: fixed missing translation in import.php
  - Patch 1156386: improved placement and sizing of event popups

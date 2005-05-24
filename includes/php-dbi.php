@@ -66,7 +66,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 // Enable the following to show the actual database error in the browser.
 // It is more secure to not show this info, so this should only be turned
 // on for debugging purposes.
-$phpdbiVerbose = false;
+if ( ! isset ( $phpdbiVerbose ) )
+  $phpdbiVerbose = false;
 
 /**
  * Opens up a database connection.

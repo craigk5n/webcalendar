@@ -264,6 +264,7 @@ if ( empty ( $x ) ) {
   $settings['db_persistent'] = getPostValue ( 'form_db_persistent' );
   $settings['single_user_login'] = getPostValue ( 'form_single_user_login' );
   $settings['readonly'] = getPostValue ( 'form_readonly' );
+  $settings['mode'] = getPostValue ( 'form_mode' );
   if ( getPostValue ( "form_user_inc" ) == "http" ) {
     $settings['use_http_auth'] = 'true';
     $settings['single_user'] = 'false';
@@ -685,6 +686,19 @@ You should select "Web Server" from the list of
   &nbsp;&nbsp;&nbsp;&nbsp;
   <input name="form_readonly" value="false" type="radio"
   <?php echo ( $settings['readonly'] != 'true' )? " checked=\"checked\"" : "";?> />No
+         </td>
+       </tr>
+      <tr>
+        <td class="prompt">Environment:</td>
+        <td>
+          <select name="form_mode">
+          <?php if ( preg_match ( "/dev/", $settings['mode'] ) )
+                  $mode = 'dev'; // development
+                else
+                  $mode = 'prod'; //producation
+         ?>
+         <option value="prod" <?php if ( $mode == 'prod' ) echo 'selected="selected"';?>> Production</option>
+         <option value="dev" <?php if ( $mode == 'dev' ) echo 'selected="selected"';?>> Development</option>
          </td>
        </tr>
     </table>
