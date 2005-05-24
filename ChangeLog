@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Patch 1206560: allow site extras in reports
  - Added Development/Production environment setting on install page.
    This will toggle assertion stacktraces and SQL errors being displayed
    on the web browser.

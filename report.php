@@ -1,23 +1,29 @@
 <?php
-/*
- * $Id$
- *
- * Page Description:
- * This page will either list all reports available to the current
- * user (if report id not specified) or display a report (if the
- * report id is specified).
+/**
+ * Lists a user's reports or displays a specific report.
  *
  * Input Parameters:
- * report_id (optional) - specified report id in webcal_report table
- * offset (optional) - specifies how many days/weeks/months +/- to display.
- *   For example, if the report type is 1 (today) with offset=5, then
- *   the report will display 5 days from now.  Should only be specified
- *   if report_id is specified.  Will be ignored if specified report
- *   does not have the webcal_report.cal_allow_nav field set to 'Y'.
- * user (optional) - specifies which user's calendar to use for the
- *   report.  This will be ignored if the chosen report is tied to
- *   a specific user.
+ * - <var>report_id</var> (optional) - specified report id in webcal_report
+ *   table
+ * - <var>offset</var> (optional) - specifies how many days/weeks/months +/- to
+ *   display.  For example, if the report type is 1 (today) with offset=5, then
+ *   the report will display 5 days from now.  Should only be specified if
+ *   report_id is specified.  Will be ignored if specified report does not have
+ *   the webcal_report.cal_allow_nav field set to 'Y'.
+ * - <var>user</var> (optional) - specifies which user's calendar to use for
+ *   the report.  This will be ignored if the chosen report is tied to a
+ *   specific user.
  *
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ * @subpackage Reports
+ *
+ */
+
+/*
  * Security:
  * If system setting $reports_enabled is set to anything other than
  *   'Y', then don't allow access to this page.
@@ -33,18 +39,52 @@
 
 include_once 'includes/init.php';
 
-// Generate the HTML for one event
-// params:
-//   $id - event id
-//   $date - date
-//   $time - time (in HHMMSS format)
-//   $duration - event duration (in minutes)
-//   $name - event name
-//   $description - long description of event
-//   $status - event status
-//   $pri - event priority
-//   $access - event access
-//   $event_owner - user associated with this event
+/**
+ * Replaces all site_extras placeholders in a template with the actual data
+ *
+ * All occurences of '${extra:ExtraName}' (where 'ExtraName' is the unique name
+ * of a site_extra) will be replaced with that extra's data.
+ *
+ * @param string $template The template
+ * @param array  $extras   The formatted site_extras as returned by
+ *                         {@link format_site_extras()}
+ *
+ * @return string The template with site_extras replaced
+ */
+function replace_site_extras_in_template ( $template, $extras ) {
+  $extra_names = get_site_extras_names();
+
+  $ret = $template;
+
+  foreach ( $extra_names as $extra_name ) {
+    $replace_text = '${extra:' . $extra_name . '}';
+
+    if ( empty ( $extras[$extra_name] ) ) {
+      $ret = str_replace ( $replace_text, '', $ret );
+    } else {
+      $ret = str_replace ( $replace_text, $extras[$extra_name]['data'], $ret );
+    }
+  }
+
+  return $ret;
+}
+
+/**
+ * Generates the HTML for one event
+ *
+ * @param int    $id          Event id
+ * @param int    $date        Date (YYYYMMDD)
+ * @param int    $time        Time (in HHMMSS format)
+ * @param int    $duration    Event duration (in minutes)
+ * @param string $name        Event name
+ * @param string $description Long description of event
+ * @param string $status      Event status
+ * @param string $pri         Event priority
+ * @param string $access      Event access
+ * @param string $event_owner User associated with this event
+ *
+ * @return string HTML for this event based on report template.
+ */
 function event_to_text ( $id, $date, $time, $duration,
   $name, $description, $status,
   $pri, $access, $event_owner ) {
@@ -152,6 +192,10 @@ function event_to_text ( $id, $date, $time, $duration,
   $text = str_replace ( '${id}', $id, $text );
   $text = str_replace ( '${user}', $event_owner, $text );
   $text = str_replace ( '${report_id}', $report_id, $text );
+
+  $text = replace_site_extras_in_template ( $text,
+                                            format_site_extras (
+                                              get_site_extra_fields ( $id ) ) );
 
   return $text;
 }

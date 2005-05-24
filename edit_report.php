@@ -1,16 +1,23 @@
 <?php
-/*
- * $Id$
- *
- * Page Description:
- * This page will present the HTML form to add or edit a report.
- *
+/**
+ * Presents a HTML form to add or edit a report.
+ * 
  * Input Parameters:
- * report_id (optional) - the report id of the report to edit.
- *   If blank, user is adding a new report.
- * public (optional) - If set to '1' and user is an admin user,
+ * - <var>report_id</var> (optional) - the report id of the report to edit.  If
+ *   blank, user is adding a new report.
+ * - <var>public</var> (optional) - If set to '1' and user is an admin user,
  *   then we are creating a report for the public user.
  *
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ * @subpackage Reports
+ *
+ */
+
+/*
  * Security:
  * If system setting $reports_enabled is set to anything other than
  *   'Y', then don't allow access to this page.
@@ -19,6 +26,7 @@
  * If not an admin user, only report creator (cal_login in webcal_report)
  *   can edit/delete report.
  */
+
 include_once 'includes/init.php';
 load_user_categories ();
 
@@ -342,17 +350,15 @@ if ( $is_admin ) {
  </td></tr>
  <tr><td valign="top"><label>
   <?php etranslate("Page template")?>:</label></td><td>
-  <textarea rows="12" cols="60" name="page_template">
-    <?php echo htmlentities ( $page_template, ENT_COMPAT, $charset )?>
-  </textarea></td><td style="vertical-align:top;">
+  <textarea rows="12" cols="60" name="page_template"><?php echo htmlentities ( $page_template, ENT_COMPAT, $charset )?></textarea>
+  </td><td style="vertical-align:top;">
   <tt>${days}</tt><br />
   <tt>${report_id}</tt><br />
  </td></tr>
  <tr><td valign="top"><label>
   <?php etranslate("Day template")?>:</label></td><td>
-  <textarea rows="12" cols="60" name="day_template">
-    <?php echo htmlentities ( $day_template, ENT_COMPAT, $charset )?>
-  </textarea></td><td style="vertical-align:top;">
+  <textarea rows="12" cols="60" name="day_template"><?php echo htmlentities ( $day_template, ENT_COMPAT, $charset )?></textarea>
+  </td><td style="vertical-align:top;">
   <tt>${events}</tt><br />
   <tt>${date}</tt><br />
   <tt>${fulldate}</tt><br />
@@ -360,9 +366,8 @@ if ( $is_admin ) {
  </td></tr>
  <tr><td valign="top"><label>
   <?php etranslate("Event template")?>:</label></td><td>
-  <textarea rows="12" cols="60" name="event_template">
-    <?php echo htmlentities ( $event_template, ENT_COMPAT, $charset )?>
-  </textarea></td><td style="vertical-align:top;">
+  <textarea rows="12" cols="60" name="event_template"><?php echo htmlentities ( $event_template, ENT_COMPAT, $charset )?></textarea>
+  </td><td style="vertical-align:top;">
   <tt>${name}</tt><br />
   <tt>${description}</tt><br />
   <tt>${date}</tt><br />
@@ -374,7 +379,12 @@ if ( $is_admin ) {
   <tt>${priority}</tt><br />
   <tt>${href}</tt><br />
   <tt>${user}</tt><br />
-  <tt>${report_id}</tt> 
+  <tt>${report_id}</tt>
+<?php
+  $extra_names = get_site_extras_names();
+  foreach ( $extra_names as $name ) { ?>
+  <br /><tt>${extra:<?php echo $name; ?>}</tt>
+<?php } ?>
  </td></tr>
  <tr><td colspan="2">
   <input type="submit" value="<?php etranslate("Save")?>" />
