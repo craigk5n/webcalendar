@@ -61,6 +61,13 @@ function assert_get_cvs_file_version ( $file )
   */
 function assert_backtrace ()
 {
+  global $settings;
+
+  if ( empty ( $settings ) || empty ( $settings['mode'] ) ||
+    $settings['mode'] == 'prod' ) {
+    return "No stack trace [production mode]";
+  }
+
   if ( ! function_exists ( "debug_backtrace" ) )
     return "[stacktrack requires PHP 4.3/5.0.  " .
       "Not available in PHP " . phpversion() . "]";
