@@ -107,12 +107,17 @@ function updateColor ( input ) {
 // "Allow public access".
 function public_handler () {
   var enabled = document.prefform.admin_public_access[0].checked;
+  var ohd = document.prefform.admin_public_access_others[0].checked;
   //alert ( "public enabled =  " + enabled );
   if ( enabled ) {
     // Public Access enabled
     makeVisible ( "pa1" );
     makeVisible ( "pa2" );
     makeVisible ( "pa3" );
+    if ( ohd )
+      makeVisible ( "pa3b" );
+    else
+      makeInvisible ( "pa3b" );
     makeVisible ( "pa4" );
     makeVisible ( "pa5" );
     makeVisible ( "pa6" );
@@ -121,10 +126,22 @@ function public_handler () {
     makeInvisible ( "pa1" );
     makeInvisible ( "pa2" );
     makeInvisible ( "pa3" );
+    makeInvisible ( "pa3b" );
     makeInvisible ( "pa4" );
     makeInvisible ( "pa5" );
     makeInvisible ( "pa6" );
   }
+}
+
+// Gets called on page load and when user changes setting for
+// "Public access can view others"
+function public_ao_handler () {
+  var enabled = document.prefform.admin_public_access_others[0].checked;
+  //alert ( "public enabled =  " + enabled );
+  if ( enabled )
+    makeVisible ( "pa3b" );
+  else
+    makeInvisible ( "pa3b" );
 }
 
 // Gets called on page load and when user changes setting for
@@ -176,7 +193,8 @@ function email_handler () {
 ?>var tabs = new Array();
 tabs[1] = "settings";
 tabs[2] = "public";
-tabs[3] = "groups";
+tabs[3] = "uac";
+tabs[4] = "groups";
 tabs[5] = "nonuser";
 tabs[6] = "other";
 tabs[8] = "email";
