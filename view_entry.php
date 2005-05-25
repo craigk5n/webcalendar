@@ -281,10 +281,10 @@ if ( $event_time >= 0 && ! empty ( $TZ_OFFSET )  && $TZ_OFFSET != 0 ) {
   $day = substr($row[1],-2);
   if ( $adjusted_time > 240000 ) {
     $gmt = mktime ( 3, 0, 0, $month, $day, $year );
-    $gmt += $ONE_DAY;
+    $gmt += ONE_DAY;
   } else if ( $adjusted_time < 0 ) {
     $gmt = mktime ( 3, 0, 0, $month, $day, $year );
-    $gmt -= $ONE_DAY;
+    $gmt -= ONE_DAY;
   }
 }
 // Set alterted date
@@ -581,35 +581,35 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n" .
       translate ( $site_extras[$i][1] ) .
       ":</td><td>\n";
-    if ( $extra_type == $EXTRA_URL ) {
+    if ( $extra_type == EXTRA_URL ) {
       if ( strlen ( $extras[$extra_name]['cal_data'] ) ) {
         echo "<a href=\"" . $extras[$extra_name]['cal_data'] . "\">" .
           $extras[$extra_name]['cal_data'] . "</a>\n";
       }
-    } else if ( $extra_type == $EXTRA_EMAIL ) {
+    } else if ( $extra_type == EXTRA_EMAIL ) {
       if ( strlen ( $extras[$extra_name]['cal_data'] ) ) {
         echo "<a href=\"mailto:" . $extras[$extra_name]['cal_data'] .
           "?subject=$subject\">" .
           $extras[$extra_name]['cal_data'] . "</a>\n";
       }
-    } else if ( $extra_type == $EXTRA_DATE ) {
+    } else if ( $extra_type == EXTRA_DATE ) {
       if ( $extras[$extra_name]['cal_date'] > 0 ) {
         echo date_to_str ( $extras[$extra_name]['cal_date'] );
       }
-    } else if ( $extra_type == $EXTRA_TEXT ||
-      $extra_type == $EXTRA_MULTILINETEXT ) {
+    } else if ( $extra_type == EXTRA_TEXT ||
+      $extra_type == EXTRA_MULTILINETEXT ) {
       echo nl2br ( $extras[$extra_name]['cal_data'] );
-    } else if ( $extra_type == $EXTRA_USER ) {
+    } else if ( $extra_type == EXTRA_USER ) {
       echo $extras[$extra_name]['cal_data'];
-    } else if ( $extra_type == $EXTRA_REMINDER ) {
+    } else if ( $extra_type == EXTRA_REMINDER ) {
       if ( $extras[$extra_name]['cal_remind'] <= 0 ) {
         etranslate ( "No" );
       } else {
         etranslate ( "Yes" );
-        if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
+        if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
           echo "&nbsp;&nbsp;-&nbsp;&nbsp;";
           echo date_to_str ( $extras[$extra_name]['cal_date'] );
-        } else if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
+        } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
           echo "&nbsp;&nbsp;-&nbsp;&nbsp;";
           $minutes = $extras[$extra_name]['cal_data'];
           $d = (int) ( $minutes / ( 24 * 60 ) );
@@ -634,7 +634,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
           echo " " . translate("before event" );
         }
       }
-    } else if ( $extra_type == $EXTRA_SELECTLIST ) {
+    } else if ( $extra_type == EXTRA_SELECTLIST ) {
       echo $extras[$extra_name]['cal_data'];
     }
     echo "\n</td></tr>\n";
@@ -917,19 +917,19 @@ if ( $show_log ) {
       echo $row[1] . "</td><td>\n" . 
         date_to_str ( $row[3] ) . "&nbsp;" .
         display_time ( $row[4] ) . "</td><td>\n";
-      if ( $row[2] == $LOG_CREATE ) {
+      if ( $row[2] == LOG_CREATE ) {
         etranslate("Event created");
-      } else if ( $row[2] == $LOG_APPROVE ) {
+      } else if ( $row[2] == LOG_APPROVE ) {
         etranslate("Event approved");
-      } else if ( $row[2] == $LOG_REJECT ) {
+      } else if ( $row[2] == LOG_REJECT ) {
         etranslate("Event rejected");
-      } else if ( $row[2] == $LOG_UPDATE ) {
+      } else if ( $row[2] == LOG_UPDATE ) {
         etranslate("Event updated");
-      } else if ( $row[2] == $LOG_DELETE ) {
+      } else if ( $row[2] == LOG_DELETE ) {
         etranslate("Event deleted");
-      } else if ( $row[2] == $LOG_NOTIFICATION ) {
+      } else if ( $row[2] == LOG_NOTIFICATION ) {
         etranslate("Notification sent");
-      } else if ( $row[2] == $LOG_REMINDER ) {
+      } else if ( $row[2] == LOG_REMINDER ) {
         etranslate("Reminder sent");
       }
       echo "</td></tr>\n";

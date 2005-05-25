@@ -53,7 +53,7 @@ load_global_settings ();
 
 // Change this to false if you still want to access this page even
 // though you do not have public access enabled.
-$public_must_be_enabled = true;
+$public_must_be_enabled = false;
 
 // Do we include a link to view the event?  If so, what target
 // should we use.

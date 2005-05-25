@@ -108,8 +108,8 @@ CREATE TABLE webcal_user_layers (
 /* site extra fields (customized in site_extra.php) */
 /* cal_id is event id */
 /* cal_name is the brief name of this type (first field in $site_extra array) */
-/* cal_type is $EXTRA_URL, $EXTRA_DATE, etc. */
-/* cal_date is only used for $EXTRA_DATE type fields */
+/* cal_type is EXTRA_URL, EXTRA_DATE, etc. */
+/* cal_date is only used for EXTRA_DATE type fields */
 /* cal_remind is many minutes before event should a reminder be sent */
 /* cal_last_remind_date is the last event date (YYYYMMMDD) that a reminder */
 /* was sent.  This is not necessarily the date the msg was sent.  It is the */

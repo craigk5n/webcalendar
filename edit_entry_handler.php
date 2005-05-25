@@ -50,7 +50,7 @@ if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
     $hour += 24;
     // adjust date
     $date = mktime ( 3, 0, 0, $month, $day, $year );
-    $date -= $ONE_DAY;
+    $date -= ONE_DAY;
     $month = date ( "m", $date );
     $day = date ( "d", $date );
     $year = date ( "Y", $date );
@@ -59,7 +59,7 @@ if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
     $hour -= 24;
     // adjust date
     $date = mktime ( 3, 0, 0, $month, $day, $year );
-    $date += $ONE_DAY;
+    $date += ONE_DAY;
     $month = date ( "m", $date );
     $day = date ( "d", $date );
     $year = date ( "Y", $date );
@@ -389,7 +389,7 @@ if ( empty ( $error ) ) {
 
   // log add/update
   activity_log ( $id, $login, ($is_assistant || $is_nonuser_admin ? $user : $login),
-    $newevent ? $LOG_CREATE : $LOG_UPDATE, "" );
+    $newevent ? LOG_CREATE : LOG_UPDATE, "" );
   
   if ( $single_user == "Y" ) {
     $participants[0] = $single_user_login;
@@ -423,7 +423,7 @@ if ( empty ( $error ) ) {
             $user_hour += 24;
             // adjust date
             $user_date = mktime ( 3, 0, 0, $month, $day, $year );
-            $user_date -= $ONE_DAY;
+            $user_date -= ONE_DAY;
             $user_month = date ( "m", $date );
             $user_day = date ( "d", $date );
             $user_year = date ( "Y", $date );
@@ -431,7 +431,7 @@ if ( empty ( $error ) ) {
             $user_hour -= 24;
             // adjust date
             $user_date = mktime ( 3, 0, 0, $month, $day, $year );
-            $user_date += $ONE_DAY;
+            $user_date += ONE_DAY;
             $user_month = date ( "m", $date );
             $user_day = date ( "d", $date );
             $user_year = date ( "Y", $date );
@@ -470,7 +470,7 @@ if ( empty ( $error ) ) {
           mail ( $tempemail,
             translate($application_name) . " " . translate("Notification") . ": " . $name,
             html_to_8bits ($msg), $extra_hdrs );
-          activity_log ( $id, $login, $old_participant, $LOG_NOTIFICATION,
+          activity_log ( $id, $login, $old_participant, LOG_NOTIFICATION,
      "User removed from participants list" );
         }
       }
@@ -586,7 +586,7 @@ if ( empty ( $error ) ) {
             $user_hour += 24;
             // adjust date
             $user_date = mktime ( 3, 0, 0, $month, $day, $year );
-            $user_date -= $ONE_DAY;
+            $user_date -= ONE_DAY;
             $user_month = date ( "m", $date );
             $user_day = date ( "d", $date );
             $user_year = date ( "Y", $date );
@@ -594,7 +594,7 @@ if ( empty ( $error ) ) {
             $user_hour -= 24;
             // adjust date
             $user_date = mktime ( 3, 0, 0, $month, $day, $year );
-            $user_date += $ONE_DAY;
+            $user_date += ONE_DAY;
             $user_month = date ( "m", $date );
             $user_day = date ( "d", $date );
             $user_year = date ( "Y", $date );
@@ -639,7 +639,7 @@ if ( empty ( $error ) ) {
           mail ( $tempemail,
             translate($application_name) . " " . translate("Notification") . ": " . $name,
             html_to_8bits ($msg), $extra_hdrs );
-          activity_log ( $id, $login, $participants[$i], $LOG_NOTIFICATION, "" );
+          activity_log ( $id, $login, $participants[$i], LOG_NOTIFICATION, "" );
         }
       }
     }
@@ -713,16 +713,16 @@ if ( empty ( $error ) ) {
     $value = $$extra_name;
     //echo "Looking for $extra_name... value = " . $value . " ... type = " .
     // $extra_type . "<br />\n";
-    if ( strlen ( $$extra_name ) || $extra_type == $EXTRA_DATE ) {
-      if ( $extra_type == $EXTRA_URL || $extra_type == $EXTRA_EMAIL ||
-        $extra_type == $EXTRA_TEXT || $extra_type == $EXTRA_USER ||
-        $extra_type == $EXTRA_MULTILINETEXT ||
-        $extra_type == $EXTRA_SELECTLIST  ) {
+    if ( strlen ( $$extra_name ) || $extra_type == EXTRA_DATE ) {
+      if ( $extra_type == EXTRA_URL || $extra_type == EXTRA_EMAIL ||
+        $extra_type == EXTRA_TEXT || $extra_type == EXTRA_USER ||
+        $extra_type == EXTRA_MULTILINETEXT ||
+        $extra_type == EXTRA_SELECTLIST  ) {
         $sql = "INSERT INTO webcal_site_extras " .
           "( cal_id, cal_name, cal_type, cal_data ) VALUES ( " .
           "$id, '$extra_name', $extra_type, '$value' )";
-      } else if ( $extra_type == $EXTRA_REMINDER && $value == "1" ) {
-        if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
+      } else if ( $extra_type == EXTRA_REMINDER && $value == "1" ) {
+        if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
           $yname = $extra_name . "year";
           $mname = $extra_name . "month";
           $dname = $extra_name . "day";
@@ -730,7 +730,7 @@ if ( empty ( $error ) ) {
           $sql = "INSERT INTO webcal_site_extras " .
             "( cal_id, cal_name, cal_type, cal_remind, cal_date ) VALUES ( " .
             "$id, '$extra_name', $extra_type, 1, $edate )";
-        } else if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
+        } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
           $dname = $extra_name . "_days";
           $hname = $extra_name . "_hours";
           $mname = $extra_name . "_minutes";
@@ -743,7 +743,7 @@ if ( empty ( $error ) ) {
           "( cal_id, cal_name, cal_type, cal_remind ) VALUES ( " .
           "$id, '$extra_name', $extra_type, 1 )";
         }
-      } else if ( $extra_type == $EXTRA_DATE )  {
+      } else if ( $extra_type == EXTRA_DATE )  {
         $yname = $extra_name . "year";
         $mname = $extra_name . "month";
         $dname = $extra_name . "day";

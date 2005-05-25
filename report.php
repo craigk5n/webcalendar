@@ -374,7 +374,7 @@ if ( empty ( $report_time_range ) ) {
 } else if ( $report_time_range >= 0 && $report_time_range < 10 ) {
   $today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
   $days_offset = 1 - $report_time_range + $offset;
-  $start_date = date ( "Ymd", $today + ( $days_offset * $ONE_DAY ) );
+  $start_date = date ( "Ymd", $today + ( $days_offset * ONE_DAY ) );
   $end_date = $start_date;
 } else if ( $report_time_range >= 10 && $report_time_range < 20 ) {
   if ( $WEEK_START == 1 ) {
@@ -387,9 +387,9 @@ if ( empty ( $report_time_range ) ) {
   //echo "wkstart = " . date("Ymd",$wkstart) . "<br />";
   $week_offset = 11 - $report_time_range + $offset;
   //echo "week_offset=$week_offset <br />";
-  $start_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * $ONE_DAY ) );
-  $end_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * $ONE_DAY ) + 
-    ( $ONE_DAY * 6 ) );
+  $start_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * ONE_DAY ) );
+  $end_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * ONE_DAY ) + 
+    ( ONE_DAY * 6 ) );
 } else if ( $report_time_range >= 20 && $report_time_range < 30 ) {
   if ( $WEEK_START == 1 ) {
     $wkstart = get_monday_before ( date ( "Y" ), date ( "m" ),
@@ -401,9 +401,9 @@ if ( empty ( $report_time_range ) ) {
   //echo "wkstart = " . date("Ymd",$wkstart) . "<br />";
   $week_offset = 21 - $report_time_range + $offset;
   //echo "week_offset=$week_offset <br />";
-  $start_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * $ONE_DAY ) );
-  $end_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * $ONE_DAY ) + 
-    ( $ONE_DAY * 13 ) );
+  $start_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * ONE_DAY ) );
+  $end_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * ONE_DAY ) + 
+    ( ONE_DAY * 13 ) );
 } else if ( $report_time_range >= 30 && $report_time_range < 40 ) {
   $thismonth = date ( "m" );
   $month_offset = 31 - $report_time_range + $offset;
@@ -456,7 +456,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
   // Loop through each day
   // Get events for each day (both normal and repeating).
   // (Most of this code was copied from week.php)
-  for ( $cur_time = $start_time; $cur_time <= $end_time; $cur_time += $ONE_DAY ) {
+  for ( $cur_time = $start_time; $cur_time <= $end_time; $cur_time += ONE_DAY ) {
     $event_str = '';
     $dateYmd = date ( "Ymd", $cur_time );
     $rep = get_repeating_entries ( empty ( $user ) ? $login : $user, $dateYmd );

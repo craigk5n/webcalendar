@@ -11,7 +11,7 @@
  */
 include_once 'includes/init.php';
 
-$COLUMNS = 3;
+define ( 'COLUMNS', 3 );
 
 $style = "<style type=\"text/css\">
 table.admin {
@@ -143,7 +143,7 @@ if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' &&
 <table class="admin">
 <?php
 	for ( $i = 0; $i < count ($names); $i++ ) {
-		if ( $i % $COLUMNS == 0 )
+		if ( $i % COLUMNS == 0 )
 			echo "<tr>\n";
 			echo "<td>";
 		if ( ! empty ($links[$i]) )
@@ -152,10 +152,10 @@ if ( $is_admin && ! empty ( $public_access ) && $public_access == 'Y' &&
 		if ( ! empty ($links[$i]) )
 			echo "</a>";
 		echo "</td>\n";
-		if ($i % $COLUMNS == $COLUMNS - 1)
+		if ($i % COLUMNS == COLUMNS - 1)
 			echo "</tr>\n";
 	}
-	if ( $i % $COLUMNS != 0 )
+	if ( $i % COLUMNS != 0 )
 		echo "</tr>\n";
 ?>
 </table>

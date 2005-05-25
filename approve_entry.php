@@ -27,7 +27,7 @@ if ( empty ( $error ) && $id > 0 ) {
     "WHERE cal_login = '$app_user' AND cal_id = $id" ) ) {
     $error = translate("Error approving event") . ": " . dbi_error ();
   } else {
-    activity_log ( $id, $login, $app_user, $LOG_APPROVE, "" );
+    activity_log ( $id, $login, $app_user, LOG_APPROVE, "" );
   }
   // Update any extension events related to this one.
   $res = dbi_query ( "SELECT cal_id FROM webcal_entry " .

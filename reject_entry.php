@@ -26,7 +26,7 @@ if ( empty ( $error ) && $id > 0 ) {
     "WHERE cal_login = '$app_user' AND cal_id = $id" ) ) {
     $error = translate("Error approving event") . ": " . dbi_error ();
   } else {
-    activity_log ( $id, $login, $app_user, $LOG_REJECT, "" );
+    activity_log ( $id, $login, $app_user, LOG_REJECT, "" );
   }
 
   // Update any extension events related to this one.
@@ -106,7 +106,7 @@ if ( empty ( $error ) && $id > 0 ) {
       mail ( $tempemail,
         translate($application_name) . " " . translate("Notification") . ": " . $name,
         html_to_8bits ($msg), $extra_hdrs );
-      activity_log ( $id, $login, $partlogin[$i], $LOG_NOTIFICATION,
+      activity_log ( $id, $login, $partlogin[$i], LOG_NOTIFICATION,
         "Event rejected by $app_user" );
     }
   }

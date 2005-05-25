@@ -84,14 +84,14 @@ if ( $readonly == 'Y' ) {
       if ( $time > 240000 ) {
         $time -= 240000;
         $gmt = mktime ( 3, 0, 0, $month, $day, $year );
-        $gmt += $ONE_DAY;
+        $gmt += ONE_DAY;
         $month = date ( "m", $gmt );
         $day = date ( "d", $gmt );
         $year = date ( "Y", $gmt );
       } else if ( $time < 0 ) {
         $time += 240000;
         $gmt = mktime ( 3, 0, 0, $month, $day, $year );
-        $gmt -= $ONE_DAY;
+        $gmt -= ONE_DAY;
         $month = date ( "m", $gmt );
         $day = date ( "d", $gmt );
         $year = date ( "Y", $gmt );
@@ -511,34 +511,34 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   //echo "<tr><td>Extra " . $extra_name . " - " . $site_extras[$i][2] . 
   //  " - " . $extras[$extra_name]['cal_name'] .
   //  "arg1: $extra_arg1, arg2: $extra_arg2 </td></tr>\n";
-  if ( $extra_type == $EXTRA_MULTILINETEXT )
+  if ( $extra_type == EXTRA_MULTILINETEXT )
     echo "<tr><td style=\"vertical-align:top; font-weight:bold;\"><br />\n";
   else
     echo "<tr><td style=\"font-weight:bold;\">";
   echo translate ( $extra_descr ) .  ":</td><td>\n";
-  if ( $extra_type == $EXTRA_URL ) {
+  if ( $extra_type == EXTRA_URL ) {
     echo "<input type=\"text\" size=\"50\" name=\"" . $extra_name .
       "\" value=\"" . ( empty ( $extras[$extra_name]['cal_data'] ) ?
       "" : htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) . "\" />";
-  } else if ( $extra_type == $EXTRA_EMAIL ) {
+  } else if ( $extra_type == EXTRA_EMAIL ) {
     echo "<input type=\"text\" size=\"30\" name=\"" . $extra_name . "\" value=\"" . ( empty ( $extras[$extra_name]['cal_data'] ) ?
       "" : htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) . "\" />";
-  } else if ( $extra_type == $EXTRA_DATE ) {
+  } else if ( $extra_type == EXTRA_DATE ) {
     if ( ! empty ( $extras[$extra_name]['cal_date'] ) )
       print_date_selection ( $extra_name, $extras[$extra_name]['cal_date'] );
     else
       print_date_selection ( $extra_name, $cal_date );
-  } else if ( $extra_type == $EXTRA_TEXT ) {
+  } else if ( $extra_type == EXTRA_TEXT ) {
     $size = ( $extra_arg1 > 0 ? $extra_arg1 : 50 );
     echo "<input type=\"text\" size=\"" . $size . "\" name=\"" . $extra_name .
       "\" value=\"" . ( empty ( $extras[$extra_name]['cal_data'] ) ?
       "" : htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) . "\" />";
-  } else if ( $extra_type == $EXTRA_MULTILINETEXT ) {
+  } else if ( $extra_type == EXTRA_MULTILINETEXT ) {
     $cols = ( $extra_arg1 > 0 ? $extra_arg1 : 50 );
     $rows = ( $extra_arg2 > 0 ? $extra_arg2 : 5 );
     echo "<textarea rows=\"" . $rows . "\" cols=\"" . $cols . "\" name=\"" . $extra_name . "\">" . ( empty ( $extras[$extra_name]['cal_data'] ) ?
       "" : htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) . "</textarea>";
-  } else if ( $extra_type == $EXTRA_USER ) {
+  } else if ( $extra_type == EXTRA_USER ) {
     // show list of calendar users...
     echo "<select name=\"" . $extra_name . "\">\n";
     echo "<option value=\"\">None</option>\n";
@@ -554,12 +554,12 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
         echo ">" . $userlist[$j]['cal_fullname'] . "</option>\n";
     }
     echo "</select>\n";
-  } else if ( $extra_type == $EXTRA_REMINDER ) {
+  } else if ( $extra_type == EXTRA_REMINDER ) {
     $rem_status = 0; // don't send
     echo "<label><input type=\"radio\" name=\"" . $extra_name . "\" value=\"1\"";
     if ( empty ( $id ) ) {
       // adding event... check default
-      if ( ( $extra_arg2 & $EXTRA_REMINDER_DEFAULT_YES ) > 0 )
+      if ( ( $extra_arg2 & EXTRA_REMINDER_DEFAULT_YES ) > 0 )
         $rem_status = 1;
     } else {
       // editing event... check status
@@ -576,13 +576,13 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     echo " />";
     etranslate ( "No" );
     echo "</label>&nbsp;&nbsp;";
-    if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
+    if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
       if ( ! empty ( $extras[$extra_name]['cal_date'] ) &&
         $extras[$extra_name]['cal_date'] > 0 )
         print_date_selection ( $extra_name, $extras[$extra_name]['cal_date'] );
       else
         print_date_selection ( $extra_name, $cal_date );
-    } else if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
+    } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
       if ( ! empty ( $extras[$extra_name]['cal_data'] ) )
         $minutes = $extras[$extra_name]['cal_data'];
       else
@@ -599,7 +599,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
       echo "<label><input type=\"text\" size=\"2\" name=\"" . $extra_name .
         "_minutes\" value=\"$minutes\" /> " .  translate("minutes") . "&nbsp;" . translate("before event") . "</label>";
     }
-  } else if ( $extra_type == $EXTRA_SELECTLIST ) {
+  } else if ( $extra_type == EXTRA_SELECTLIST ) {
     // show custom select list.
     echo "<select name=\"" . $extra_name . "\">\n";
     if ( is_array ( $extra_arg1 ) ) {
