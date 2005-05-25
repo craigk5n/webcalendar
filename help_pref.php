@@ -6,7 +6,7 @@ print_header('','','',true);
 <h2><?php etranslate("Help")?>: <?php etranslate("Preferences")?></h2>
 
 <h3><?php etranslate("Settings")?></h3>
-<table style="border-width:0px;">
+<table class="standard">
  <tr><td class="help">
   <?php etranslate("Language")?>:</td><td>
   <?php etranslate("language-help")?>
@@ -79,7 +79,7 @@ print_header('','','',true);
 <br /><br />
 
 <h3><?php etranslate("Email")?></h3>
-<table style="border-width:0px;">
+<table class="standard">
  <tr><td class="help">
   <?php etranslate("Event reminders")?>:</td><td>
   <?php etranslate("email-event-reminders-help")?>
@@ -103,26 +103,51 @@ print_header('','','',true);
 </table>
 
 <h3><?php etranslate("When I am the boss")?></h3>
-<table style="border-width:0px;">
- <tr><td class="help">
+<table class="standard">
+ <tr class="even"><td class="help">
   <?php etranslate("Email me event notification")?>:</td><td>
   <?php etranslate("email-boss-notifications-help")?>
  </td></tr>
- <tr><td class="help">
+ <tr class="odd"><td class="help">
   <?php etranslate("I want to approve events")?>:</td><td>
   <?php etranslate("boss-approve-event-help")?>
  </td></tr>
 </table>
+
 <?php if ( $PUBLISH_ENABLED == 'Y' ) { ?>
  <h3><?php etranslate("Subscribe/Publish")?></h3>
- <table style="border-width:0px;">
+ <table class="standard">
   <tr><td class="help">
    <?php etranslate("Allow remote subscriptions")?>:</td><td>
    <?php etranslate("allow-remote-subscriptions-help")?>
   </td></tr>
-  <tr><td class="help">
+  <tr><td class="help">&nbsp;&nbsp;
    <?php etranslate("URL")?>:</td><td>
    <?php etranslate("remote-subscriptions-url-help")?>
+  </td></tr>
+  <tr><td class="help">
+   <?php etranslate("Allow remote publishing")?>:</td><td>
+   <?php etranslate("allow-remote-publishing-help")?>
+  </td></tr>
+  <tr><td class="help">&nbsp;&nbsp;
+   <?php etranslate("URL")?>:</td><td>
+   <?php etranslate("remote-publishing-url-help")?>
+  </td></tr>
+  <tr><td class="help">
+   <?php etranslate("Enable RSS feed")?>:</td><td>
+   <?php etranslate("rss-enabled-help")?>
+  </td></tr>
+  <tr><td class="help">&nbsp;&nbsp;
+   <?php etranslate("URL")?>:</td><td>
+   <?php etranslate("rss-feed-url-help")?>
+  </td></tr>
+  <tr><td class="help">
+   <?php etranslate("Enable FreeBusy publishing")?>:</td><td>
+   <?php etranslate("freebusy-enabled-help")?>
+  </td></tr>
+  <tr><td class="help">&nbsp;&nbsp;
+   <?php etranslate("URL")?>:</td><td>
+   <?php etranslate("freebusy-url-help")?>
   </td></tr>
  </table>
 <?php } ?>
