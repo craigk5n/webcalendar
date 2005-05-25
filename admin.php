@@ -469,8 +469,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   </td></tr>
   <tr id="pa3"><td class="tooltip" title="<?php etooltip("public-access-view-others-help")?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can view other users")?>:</td><td>
-   <label><input type="radio" name="admin_public_access_others" value="Y" <?php if ( $s["public_access_others"] == "Y" ) echo " checked=\"checked\"";?> onclick="public_ao_handler();" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-   <label><input type="radio" name="admin_public_access_others" value="N" <?php if ( $s["public_access_others"] != "Y" ) echo " checked=\"checked\"";?> onclick="public_ao_handler();" />&nbsp;<?php etranslate("No")?></label>
+   <label><input type="radio" name="admin_public_access_others" value="Y" <?php if ( $s["public_access_others"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_public_access_others" value="N" <?php if ( $s["public_access_others"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
   </td></tr>
   <tr id="pa4"><td class="tooltip" title="<?php etooltip("public-access-can-add-help")?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can add events")?>:</td><td>
