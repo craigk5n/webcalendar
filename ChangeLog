@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added new view (view_r.php) that will display similar to day.php and week.php
+   do now except for multiple users.
  - Patch 1090615: read/write remote ical subscription (icalclient.php)
  - Don't allow LDAP or NIS as option in install/index.php if modules are
    not available.
