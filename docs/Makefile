@@ -10,7 +10,8 @@ INCLUDES = \
  ../includes/php-dbi.php \
  ../includes/init.php \
  ../includes/config.php \
- ../includes/translate.php
+ ../includes/translate.php \
+ ../report.php
 
 WebCalendar-Database.html: ../tables-mysql.sql sql2html.pl
 	perl sql2html.pl < ../tables-mysql.sql > WebCalendar-Database.html
