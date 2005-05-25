@@ -114,10 +114,6 @@ function public_handler () {
     makeVisible ( "pa1" );
     makeVisible ( "pa2" );
     makeVisible ( "pa3" );
-    if ( ohd )
-      makeVisible ( "pa3b" );
-    else
-      makeInvisible ( "pa3b" );
     makeVisible ( "pa4" );
     makeVisible ( "pa5" );
     makeVisible ( "pa6" );
@@ -126,23 +122,12 @@ function public_handler () {
     makeInvisible ( "pa1" );
     makeInvisible ( "pa2" );
     makeInvisible ( "pa3" );
-    makeInvisible ( "pa3b" );
     makeInvisible ( "pa4" );
     makeInvisible ( "pa5" );
     makeInvisible ( "pa6" );
   }
 }
 
-// Gets called on page load and when user changes setting for
-// "Public access can view others"
-function public_ao_handler () {
-  var enabled = document.prefform.admin_public_access_others[0].checked;
-  //alert ( "public enabled =  " + enabled );
-  if ( enabled )
-    makeVisible ( "pa3b" );
-  else
-    makeInvisible ( "pa3b" );
-}
 
 // Gets called on page load and when user changes setting for
 // "Allow external users".
