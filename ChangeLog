@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Don't allow LDAP or NIS as option in install/index.php if modules are
+   not available.
  - Patch 1206167: use define for constant variables
  - Patch 1206560: allow site extras in reports
  - Added Development/Production environment setting on install page.
