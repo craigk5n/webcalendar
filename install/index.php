@@ -714,6 +714,7 @@ $php_settings = array (
   array ('Register Globals','register_globals','ON'),
   array ('Display Errors','display_errors','ON'),
   //array ('Register Globals','register_globals','OFF'),
+  array ('Register Long Arrays','register_long_arrays','ON'),
   array ('File Uploads','file_uploads','ON'),
 );
 
@@ -730,6 +731,29 @@ $php_settings = array (
    ?>
    </td></tr>
 <?php } ?>
+
+<tr><th class="header"  colspan="2">Available Modules</th></tr>
+<td><ul><?php
+if ( function_exists ( "mysql_connect" ) )
+  echo "<li>MySQL</li>\n";
+if ( function_exists ( "mysqli_connect" ) )
+  echo "<li>MySQL (Improved)</li>\n";
+if ( function_exists ( "mssql_connect" ) )
+  echo "<li>MS SQL Server</li>\n";
+if ( function_exists ( "OCIPLogon" ) )
+  echo "<li>Oracle</li>\n";
+if ( function_exists ( "pg_connect" ) )
+  echo "<li>PostgreSQL</li>\n";
+if ( function_exists ( "odbc_connect" ) )
+  echo "<li>ODBC</li>\n";
+if ( function_exists ( "ibase_connect" ) )
+  echo "<li>Interbase</li>\n";
+if ( function_exists ( "yp_match" ) )
+  echo "<li>NIS</li>\n";
+if ( function_exists ( "imagepng" ) )
+  echo "<li>GD</li>\n";
+?>
+</ul></td></tr>
 
 <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
 <tr><td  align="center" colspan="2"><input name="action" type="button" value="Detailed PHP Info"
