@@ -6,7 +6,7 @@ print_header('', '', '', true);
 <h2><?php etranslate("Help")?>: <?php etranslate("System Settings")?></h2>
 
 <h3><?php etranslate("Settings")?></h3>
-<table style="border-width:0px;">
+<table class="standard">
 <tr><td class="help">
  <?php etranslate("Application Name")?>:</td><td>
  <?php etranslate("app-name-help")?>
@@ -153,7 +153,7 @@ print_header('', '', '', true);
 </td></tr>
 </table>
 <h3><?php etranslate("Public Access")?></h3>
-<table style="border-width:0px;">
+<table class="standard">
 <tr><td class="help">
  <?php etranslate("Allow public access")?>:</td><td>
  <?php etranslate("allow-public-access-help")?>
@@ -184,7 +184,7 @@ print_header('', '', '', true);
 </td></tr>
 </table>
 <h3><?php etranslate("Groups")?></h3>
-<table style="border-width:0px;">
+<table class="standard">
 <tr><td class="help">
  <?php etranslate("Groups enabled")?>:</td><td>
  <?php etranslate("groups-enabled-help")?>
@@ -197,7 +197,7 @@ print_header('', '', '', true);
 
 
 <h3><?php etranslate("Nonuser")?></h3>
-<table style="border-width:0px;">
+<table class="standard">
 <tr><td class="help">
  <?php etranslate("Nonuser enabled")?>:</td><td>
  <?php etranslate("nonuser-enabled-help")?>
@@ -209,7 +209,7 @@ print_header('', '', '', true);
 </table>
 
 <h3><?php etranslate("Other")?></h3>
-<table style="border-width:0px;">
+<table class="standard">
 <tr><td class="help">
  <?php etranslate("Reports enabled")?>:</td><td>
  <?php etranslate("reports-enabled-help")?>
@@ -238,7 +238,7 @@ print_header('', '', '', true);
 
 
 <h3><?php etranslate("Email")?></h3>
-<table style="border-width:0px;">
+<table class="standard">
 <tr><td class="help">
  <?php etranslate("Email enabled")?>:</td><td>
  <?php etranslate("email-enabled-help")?>
@@ -270,7 +270,7 @@ print_header('', '', '', true);
 </table>
 
 <h3><?php etranslate("Colors")?></h3>
-<table style="border-width:0px;">
+<table class="standard">
 <tr><td class="help">
  <?php etranslate("Allow user to customize colors")?>:</td><td>
  <?php etranslate("user-customize-color")?>

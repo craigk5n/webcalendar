@@ -39,6 +39,8 @@ if ( $res ) {
 // php warnings
 if ( empty ( $prefarray['FREEBUSY_ENABLED'] ) )
   $prefarray['FREEBUSY_ENABLED'] = 'N';
+if ( empty ( $prefarray['USER_PUBLISH_RW_ENABLED'] ) )
+  $prefarray['USER_PUBLISH_RW_ENABLED'] = 'N';
 
 $INC = array('js/pref.php');
 print_header($INC);
@@ -422,6 +424,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <tr><th colspan="2"><?php etranslate("Subscribe/Publish")?></th></tr>
 
 <?php if ( $PUBLISH_ENABLED == 'Y' ) { ?>
+
 <tr><td class="tooltipselect" title="<?php etooltip("allow-remote-subscriptions-help")?>"><?php etranslate("Allow remote subscriptions")?>:</td>
   <td><label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="Y" <?php if ( isset ( $prefarray["USER_PUBLISH_ENABLED"] ) && $prefarray["USER_PUBLISH_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="N" <?php if ( empty ( $prefarray["USER_PUBLISH_ENABLED"] ) || $prefarray["USER_PUBLISH_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 <?php if ( ! empty ( $server_url ) ) { ?>
@@ -435,6 +438,18 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
       "publish.php?user=" . ( $updating_public ? "public" : $login );
   ?></td></tr>
 <?php } /* $server_url */ ?>
+
+<tr><td class="tooltipselect" title="<?php etooltip("allow-remote-publishing-help")?>"><?php etranslate("Allow remote publishing")?>:</td>
+  <td><label><input type="radio" name="pref_USER_PUBLISH_RW_ENABLED" value="Y" <?php if ( isset ( $prefarray["USER_PUBLISH_RW_ENABLED"] ) && $prefarray["USER_PUBLISH_RW_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_USER_PUBLISH_RW_ENABLED" value="N" <?php if ( empty ( $prefarray["USER_PUBLISH_RW_ENABLED"] ) || $prefarray["USER_PUBLISH_RW_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
+<?php if ( ! empty ( $server_url ) ) { ?>
+<tr><td class="tooltipselect" title="<?php etooltip("remote-publishing-url-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("URL")?>:</td>
+  <td>
+  <?php
+    echo htmlspecialchars ( $server_url ) .
+      "icalclient.php";
+  ?></td></tr>
+<?php } /* $server_url */ ?>
+
 <?php } /* $PUBLISH_ENABLED */ ?>
 
 <?php if ( $RSS_ENABLED == 'Y' ) { ?>

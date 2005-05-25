@@ -2,6 +2,9 @@ Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
   - Other bugs fixed:
   - New Features / Enhancements / Changes:
+    + Applied Patch 1090615: read/write remote ical subscriptions
+      with new icalclient.php file.  Can be enabled in user preferences
+      in the Subscripe/Publish area.
     + Don't allow LDAP or NIS as option in install/index.php if modules are
       not available.
     + Applied patch 1206167: use define for constant variables
