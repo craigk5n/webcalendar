@@ -48,19 +48,19 @@ if ( $res ) {
         "<a title=\"" .
         htmlspecialchars($row[6]) . "\" href=\"view_entry.php?id=$row[5]\">" .
         htmlspecialchars($row[6]) . "</a></td><td>\n";
-      if ( $row[2] == $LOG_CREATE )
+      if ( $row[2] == LOG_CREATE )
         etranslate("Event created");
-      else if ( $row[2] == $LOG_APPROVE )
+      else if ( $row[2] == LOG_APPROVE )
         etranslate("Event approved");
-      else if ( $row[2] == $LOG_REJECT )
+      else if ( $row[2] == LOG_REJECT )
         etranslate("Event rejected");
-      else if ( $row[2] == $LOG_UPDATE )
+      else if ( $row[2] == LOG_UPDATE )
         etranslate("Event updated");
-      else if ( $row[2] == $LOG_DELETE )
+      else if ( $row[2] == LOG_DELETE )
         etranslate("Event deleted");
-      else if ( $row[2] == $LOG_NOTIFICATION )
+      else if ( $row[2] == LOG_NOTIFICATION )
         etranslate("Notification sent");
-      else if ( $row[2] == $LOG_REMINDER )
+      else if ( $row[2] == LOG_REMINDER )
         etranslate("Reminder sent");
       else
         echo "???";

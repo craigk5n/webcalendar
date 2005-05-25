@@ -123,8 +123,6 @@ function escapeXml ( $str )
 function list_reminder ( $id, $event_date, $remind_time ) {
   global $site_extras, $debug,
     $server_url, $application_name;
-  global $EXTRA_TEXT, $EXTRA_MULTILINETEXT, $EXTRA_URL, $EXTRA_DATE,
-    $EXTRA_EMAIL, $EXTRA_USER, $EXTRA_REMINDER, $LANGUAGE, $LOG_REMINDER;
 
   $pri[1] = translate("Low");
   $pri[2] = translate("Medium");
@@ -239,16 +237,16 @@ function list_reminder ( $id, $event_date, $remind_time ) {
       echo "      <description>" . escapeXml ( $extra_descr ) . "</description>\n";
       echo "      <type>" . $extra_type . "</type>\n";
       echo "      <value>";
-      if ( $extra_type == $EXTRA_DATE ) {
+      if ( $extra_type == EXTRA_DATE ) {
         //echo date_to_str ( $extras[$extra_name]['cal_date'] );
         echo $extras[$extra_name]['cal_date'];
-      } else if ( $extra_type == $EXTRA_MULTILINETEXT ) {
+      } else if ( $extra_type == EXTRA_MULTILINETEXT ) {
         echo escapeXml ( $extras[$extra_name]['cal_data'] );
-      } else if ( $extra_type == $EXTRA_REMINDER ) {
+      } else if ( $extra_type == EXTRA_REMINDER ) {
         echo ( $extras[$extra_name]['cal_remind'] > 0 ?
           translate("Yes") : translate("No") );
       } else {
-        // default method for $EXTRA_URL, $EXTRA_TEXT, etc...
+        // default method for EXTRA_URL, EXTRA_TEXT, etc...
         echo escapeXml ( $extras[$extra_name]['cal_data'] );
       }
       echo "</value>\n    </siteExtra>\n";
@@ -279,7 +277,7 @@ function list_reminder ( $id, $event_date, $remind_time ) {
 // was sent.
 function process_event ( $id, $name, $event_date, $event_time ) {
   global $site_extras, $debug;
-  global $EXTRA_REMINDER_WITH_OFFSET, $EXTRA_REMINDER_WITH_DATE, $CUTOFF;
+  global $CUTOFF;
 
   if ( $debug )
     printf ( "Event %d: \"%s\" at %s on %s \n",
@@ -305,10 +303,10 @@ function process_event ( $id, $name, $event_date, $event_time ) {
       $ev_month = substr ( $event_date, 4, 2 );
       $ev_day = substr ( $event_date, 6, 2 );
       $event_time = mktime ( $ev_h, $ev_m, 0, $ev_month, $ev_day, $ev_year );
-      if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
+      if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
         $minsbefore = $extras[$extra_name]['cal_data'];
         $remind_time = $event_time - ( $minsbefore * 60 );
-      } else if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
+      } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
         $rd = $extras[$extra_name]['cal_date'];
         $r_year = substr ( $rd, 0, 4 );
         $r_month = substr ( $rd, 4, 2 );

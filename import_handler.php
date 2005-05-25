@@ -137,7 +137,7 @@ $Entry[Repeat][RepeatDays] =  For Weekly: What days to repeat on (7 characters..
 //       category to import into.
 //
 function import_data ( $data, $overwrite, $type ) {
-  global $login, $count_con, $count_suc, $error_num, $ImportType, $LOG_CREATE;
+  global $login, $count_con, $count_suc, $error_num, $ImportType;
   global $single_user, $single_user_login, $allow_conflicts;
   global $numDeleted, $errormsg;
   global $calUser, $H2COLOR, $sqlLog;
@@ -357,7 +357,7 @@ function import_data ( $data, $overwrite, $type ) {
 
       // log add/update
       activity_log ( $id, $login, $login,
-        $updateMode ? $LOG_UPDATE : $LOG_CREATE, "Import from $ImportType" );
+        $updateMode ? LOG_UPDATE : LOG_CREATE, "Import from $ImportType" );
 
       if ( $single_user == "Y" ) {
         $participants[0] = $single_user_login;

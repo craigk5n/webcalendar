@@ -118,7 +118,7 @@ if ( $id > 0 && empty ( $error ) ) {
     $TIME_FORMAT=24;
     for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
       // Log the deletion
-      activity_log ( $id, $login, $partlogin[$i], $LOG_DELETE, "" );
+      activity_log ( $id, $login, $partlogin[$i], LOG_DELETE, "" );
 
       $do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
       $user_TZ = get_pref_setting ( $partlogin[$i], "TZ_OFFSET" );
@@ -189,7 +189,7 @@ if ( $id > 0 && empty ( $error ) ) {
               for ( $j = 0; $j < count ( $delusers ); $j++ ) {
                 // Log the deletion
          activity_log ( $ex_events[$i], $login, $delusers[$j],
-                  $LOG_DELETE, "" );
+                  LOG_DELETE, "" );
                 dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
            "WHERE cal_id = $ex_events[$i] " .
                   "AND cal_login = '$delusers[$j]'" );
@@ -219,7 +219,7 @@ if ( $id > 0 && empty ( $error ) ) {
     }
     dbi_query ( "DELETE FROM webcal_entry_user " .
       "WHERE cal_id = $id AND cal_login = '$del_user'" );
-    activity_log ( $id, $login, $login, $LOG_REJECT, "" );
+    activity_log ( $id, $login, $login, LOG_REJECT, "" );
   }
 }
 

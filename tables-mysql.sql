@@ -213,9 +213,9 @@ CREATE TABLE webcal_site_extras (
   cal_id INT DEFAULT 0 NOT NULL,
   /* the brief name of this type (first field in $site_extra array) */
   cal_name VARCHAR(25) NOT NULL,
-  /* $EXTRA_URL, $EXTRA_DATE, etc. */
+  /* EXTRA_URL, EXTRA_DATE, etc. */
   cal_type INT NOT NULL,
-  /* only used for $EXTRA_DATE type fields (in YYYYMMDD format) */
+  /* only used for EXTRA_DATE type fields (in YYYYMMDD format) */
   cal_date INT DEFAULT 0,
   /* how many minutes before event should a reminder be sent */
   cal_remind INT DEFAULT 0,

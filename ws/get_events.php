@@ -91,8 +91,6 @@ function escapeXml ( $str )
 function print_event_xml ( $id, $event_date ) {
   global $site_extras, $debug,
     $server_url, $application_name;
-  global $EXTRA_TEXT, $EXTRA_MULTILINETEXT, $EXTRA_URL, $EXTRA_DATE,
-    $EXTRA_EMAIL, $EXTRA_USER, $EXTRA_REMINDER, $LANGUAGE;
 
   $pri[1] = translate("Low");
   $pri[2] = translate("Medium");
@@ -203,16 +201,16 @@ function print_event_xml ( $id, $event_date ) {
       echo "      <description>" . escapeXml ( $extra_descr ) . "</description>\n";
       echo "      <type>" . $extra_type . "</type>\n";
       echo "      <value>";
-      if ( $extra_type == $EXTRA_DATE ) {
+      if ( $extra_type == EXTRA_DATE ) {
         //echo date_to_str ( $extras[$extra_name]['cal_date'] );
         echo $extras[$extra_name]['cal_date'];
-      } else if ( $extra_type == $EXTRA_MULTILINETEXT ) {
+      } else if ( $extra_type == EXTRA_MULTILINETEXT ) {
         echo escapeXml ( $extras[$extra_name]['cal_data'] );
-      } else if ( $extra_type == $EXTRA_REMINDER ) {
+      } else if ( $extra_type == EXTRA_REMINDER ) {
         echo ( $extras[$extra_name]['cal_remind'] > 0 ?
           translate("Yes") : translate("No") );
       } else {
-        // default method for $EXTRA_URL, $EXTRA_TEXT, etc...
+        // default method for EXTRA_URL, EXTRA_TEXT, etc...
         echo escapeXml ( $extras[$extra_name]['cal_data'] );
       }
       echo "</value>\n    </siteExtra>\n";
@@ -263,7 +261,7 @@ $endday = substr ( $enddate, 6, 2 );
 $starttime = mktime ( 3, 0, 0, $startmonth, $startday, $startyear );
 $endtime = mktime ( 3, 0, 0, $endmonth, $endday, $endyear );
 
-for ( $d = $starttime; $d <= $endtime; $d += $ONE_DAY ) {
+for ( $d = $starttime; $d <= $endtime; $d += ONE_DAY ) {
   $completed_ids = array ();
   $date = date ( "Ymd", $d );
   //echo "Date: $date\n";

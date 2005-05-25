@@ -19,23 +19,20 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 
 /**#@+
  * Used for activity log
- * @global string
  */
-$LOG_CREATE = "C";
-$LOG_APPROVE = "A";
-$LOG_REJECT = "X";
-$LOG_UPDATE = "U";
-$LOG_DELETE = "D";
-$LOG_NOTIFICATION = "N";
-$LOG_REMINDER = "R";
+define ( 'LOG_CREATE',       'C' );
+define ( 'LOG_APPROVE',      'A' );
+define ( 'LOG_REJECT',       'X' );
+define ( 'LOG_UPDATE',       'U' );
+define ( 'LOG_DELETE',       'D' );
+define ( 'LOG_NOTIFICATION', 'N' );
+define ( 'LOG_REMINDER',     'R' );
 /**#@-*/
 
 /**
  * Number of seconds in a day
- *
- * @global int $ONE_DAY
  */
-$ONE_DAY = 86400;
+define ( 'ONE_DAY', 86400 );
 
 /**
  * Array containing the number of days in each month in a non-leap year
@@ -866,13 +863,13 @@ function event_get_external_users ( $event_id, $use_mailto=0 ) {
  * @param string $user     Username of user doing this
  * @param string $user_cal Username of user whose calendar is affected
  * @param string $type     Type of activity we are logging:
- *   - $LOG_CREATE
- *   - $LOG_APPROVE
- *   - $LOG_REJECT
- *   - $LOG_UPDATE
- *   - $LOG_DELETE
- *   - $LOG_NOTIFICATION
- *   - $LOG_REMINDER
+ *   - LOG_CREATE
+ *   - LOG_APPROVE
+ *   - LOG_REJECT
+ *   - LOG_UPDATE
+ *   - LOG_DELETE
+ *   - LOG_NOTIFICATION
+ *   - LOG_REMINDER
  * @param string $text     Text comment to add with activity log entry
  */
 function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
@@ -1137,11 +1134,7 @@ function load_user_layers ($user="",$force=0) {
  * @return array Array of formatted extras.
  */
 function format_site_extras ( $extras ) {
-  global $site_extras;
-  global $EXTRA_TEXT, $EXTRA_MULTILINETEXT, $EXTRA_URL, $EXTRA_DATE,
-    $EXTRA_EMAIL, $EXTRA_USER, $EXTRA_REMINDER, $EXTRA_SELECTLIST;
-  global $EXTRA_REMINDER_WITH_DATE, $EXTRA_REMINDER_WITH_OFFSET,
-    $EXTRA_REMINDER_DEFAULT_YES;
+  global $site_extras_in_popup, $site_extras;
 
   $ret = array();
 
@@ -1156,28 +1149,28 @@ function format_site_extras ( $extras ) {
 
       $name = translate ( $site_extra[1] );
 
-      if ( $extra_type == $EXTRA_DATE ) {
+      if ( $extra_type == EXTRA_DATE ) {
 
         if ( $extras[$extra_name]['cal_date'] > 0 ) {
           $data = date_to_str ( $extras[$extra_name]['cal_date'] );
         }
 
-      } else if ( $extra_type == $EXTRA_TEXT
-                  || $extra_type == $EXTRA_MULTILINETEXT ) {
+      } else if ( $extra_type == EXTRA_TEXT
+                  || $extra_type == EXTRA_MULTILINETEXT ) {
 
         $data = nl2br ( $extras[$extra_name]['cal_data'] );
 
-      } else if ( $extra_type == $EXTRA_REMINDER ) {
+      } else if ( $extra_type == EXTRA_REMINDER ) {
 
         if ( $extras[$extra_name]['cal_remind'] <= 0 ) {
           $data = translate ( 'No' );
         } else {
           $data = translate ( 'Yes' );
 
-          if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
+          if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
             $data .= '&nbsp;&nbsp;-&nbsp;&nbsp;';
             $data .= date_to_str ( $extras[$extra_name]['cal_date'] );
-          } else if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
+          } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
             $data .= '&nbsp;&nbsp;-&nbsp;&nbsp;';
 
             $minutes = $extras[$extra_name]['cal_data'];
@@ -2029,10 +2022,9 @@ function read_repeated_events ( $user, $cat_id = '', $date = ''  ) {
  */
 function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
   global $conflict_repeat_months, $days_per_month, $ldays_per_month;
-  global $ONE_DAY;
   //echo "get_all_dates ( $date, '$rpt_type', $end, '$days', [array], $freq ) <br>\n";
-  $currentdate = floor($date/$ONE_DAY)*$ONE_DAY;
-  $realend = floor($end/$ONE_DAY)*$ONE_DAY;
+  $currentdate = floor($date/ONE_DAY)*ONE_DAY;
+  $realend = floor($end/ONE_DAY)*ONE_DAY;
   $dateYmd = date ( "Ymd", $date );
   if ($end=='NULL') {
     // Check for $conflict_repeat_months months into future for conflicts
@@ -2056,25 +2048,25 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
     $n = 1;
     if ($rpt_type == 'daily') {
       //we do inclusive counting on end dates.
-      $cdate += $ONE_DAY * $freq;
-      while ($cdate <= $realend+$ONE_DAY) {
+      $cdate += ONE_DAY * $freq;
+      while ($cdate <= $realend+ONE_DAY) {
         if ( ! is_exception ( $cdate, $ex_days ) )
           $ret[$n++]=$cdate;
-        $cdate += $ONE_DAY * $freq;
+        $cdate += ONE_DAY * $freq;
       }
     } else if ($rpt_type == 'weekly') {
       $daysarray = array();
       $r=0;
       $dow = date("w",$date);
-      $cdate = $date - ($dow * $ONE_DAY);
+      $cdate = $date - ($dow * ONE_DAY);
       for ($i = 0; $i < 7; $i++) {
         $isDay = substr($days, $i, 1);
         if (strcmp($isDay,"y")==0) {
-          $daysarray[$r++]=$i * $ONE_DAY;
+          $daysarray[$r++]=$i * ONE_DAY;
         }
       }
       //we do inclusive counting on end dates.
-      while ($cdate <= $realend+$ONE_DAY) {
+      while ($cdate <= $realend+ONE_DAY) {
         //add all of the days of the week.
         for ($j=0; $j<$r;$j++) {
           $td = $cdate + $daysarray[$j];
@@ -2084,7 +2076,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
           }
         }
         //skip to the next week in question.
-        $cdate += ( $ONE_DAY * 7 ) * $freq;
+        $cdate += ( ONE_DAY * 7 ) * $freq;
       }
     } else if ($rpt_type == 'monthlyByDay') {
       $dow  = date('w', $date);
@@ -2098,7 +2090,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
       if ($t < 0) $t += 7;
       $day = 7*$week + $t + 1;
       $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
-      while ($cdate <= $realend+$ONE_DAY) {
+      while ($cdate <= $realend+ONE_DAY) {
         if ( ! is_exception ( $cdate, $ex_days ) )
           $ret[$n++] = $cdate;
         $thismonth+=$freq;
@@ -2140,7 +2132,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
           ( 7 * ( $whichWeek + 1 ) );
       }
       $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
-      while ($cdate <= $realend+$ONE_DAY) {
+      while ($cdate <= $realend+ONE_DAY) {
         if ( ! is_exception ( $cdate, $ex_days ) )
           $ret[$n++] = $cdate;
         $thismonth += $freq;
@@ -2170,7 +2162,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
 
       $thismonth += $freq;
       $cdate = mktime (3,0,0,$thismonth,$thisday,$thisyear);
-      while ($cdate <= $realend+$ONE_DAY) {
+      while ($cdate <= $realend+ONE_DAY) {
         if ( ! is_exception ( $cdate, $ex_days ) )
           $ret[$n++] = $cdate;
         $thismonth += $freq;
@@ -2185,7 +2177,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
 
       $thisyear += $freq;
       $cdate = mktime (3,0,0,$thismonth,$thisday,$thisyear);
-      while ($cdate <= $realend+$ONE_DAY) {
+      while ($cdate <= $realend+ONE_DAY) {
         if ( ! is_exception ( $cdate, $ex_days ) )
           $ret[$n++] = $cdate;
         $thisyear += $freq;
@@ -2240,7 +2232,7 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved=true ) {
  * @return bool Does <var>$event</var> occur on <var>$dateYmd</var>?
  */
 function repeated_event_matches_date($event,$dateYmd) {
-  global $days_per_month, $ldays_per_month, $ONE_DAY;
+  global $days_per_month, $ldays_per_month;
   // only repeat after the beginning, and if there is an end
   // before the end
   $date = date_to_epoch ( $dateYmd );
@@ -2256,14 +2248,14 @@ function repeated_event_matches_date($event,$dateYmd) {
   $id = $event['cal_id'];
 
   if ($event['cal_type'] == 'daily') {
-    if ( (floor(($date - $start)/$ONE_DAY)%$freq) )
+    if ( (floor(($date - $start)/ONE_DAY)%$freq) )
       return false;
     return true;
   } else if ($event['cal_type'] == 'weekly') {
     $dow  = date("w", $date);
     $dow1 = date("w", $start);
     $isDay = substr($event['cal_days'], $dow, 1);
-    $wstart = $start - ($dow1 * $ONE_DAY);
+    $wstart = $start - ($dow1 * ONE_DAY);
     if (floor(($date - $wstart)/604800)%$freq)
       return false;
     return (strcmp($isDay,"y") == 0);
@@ -2276,7 +2268,7 @@ function repeated_event_matches_date($event,$dateYmd) {
     $mthS = date("m", $start);
     $yrS  = date("Y", $start);
     $dayS  = floor(date("d", $start));
-    $dowS1 = ( date ( "w", $start - ( $ONE_DAY * ( $dayS - 1 ) ) ) + 35 ) % 7;
+    $dowS1 = ( date ( "w", $start - ( ONE_DAY * ( $dayS - 1 ) ) ) + 35 ) % 7;
     $days_in_first_weekS = ( 7 - $dowS1 ) % 7;
     $whichWeekS = floor ( ( $dayS - $days_in_first_weekS ) / 7 );
     if ( $dowS >= $dowS1 && $days_in_first_weekS )
@@ -2285,7 +2277,7 @@ function repeated_event_matches_date($event,$dateYmd) {
     $mth  = date("m", $date);
     $yr   = date("Y", $date);
     $day  = date("d", $date);
-    $dow1 = ( date ( "w", $date - ( $ONE_DAY * ( $day - 1 ) ) ) + 35 ) % 7;
+    $dow1 = ( date ( "w", $date - ( ONE_DAY * ( $day - 1 ) ) ) + 35 ) % 7;
     $days_in_first_week = ( 7 - $dow1 ) % 7;
     $whichWeek = floor ( ( $day - $days_in_first_week ) / 7 );
     if ( $dow >= $dow1 && $days_in_first_week )

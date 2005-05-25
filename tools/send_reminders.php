@@ -161,8 +161,6 @@ function indent ( $str ) {
 function send_reminder ( $id, $event_date ) {
   global $names, $emails, $site_extras, $debug, $only_testing,
     $server_url, $languages, $tzoffset, $application_name;
-  global $EXTRA_TEXT, $EXTRA_MULTILINETEXT, $EXTRA_URL, $EXTRA_DATE,
-    $EXTRA_EMAIL, $EXTRA_USER, $EXTRA_REMINDER, $LANGUAGE, $LOG_REMINDER;
   global $allow_external_users, $external_reminders;
 
   $pri[1] = translate("Low");
@@ -309,15 +307,15 @@ function send_reminder ( $id, $event_date ) {
       $extra_type = $site_extras[$i][2];
       if ( $extras[$extra_name]['cal_name'] != "" ) {
         $body .= translate ( $extra_descr ) . ": ";
-        if ( $extra_type == $EXTRA_DATE ) {
+        if ( $extra_type == EXTRA_DATE ) {
           $body .= date_to_str ( $extras[$extra_name]['cal_date'] ) . "\n";
-        } else if ( $extra_type == $EXTRA_MULTILINETEXT ) {
+        } else if ( $extra_type == EXTRA_MULTILINETEXT ) {
           $body .= "\n" . indent ( $extras[$extra_name]['cal_data'] ) . "\n";
-        } else if ( $extra_type == $EXTRA_REMINDER ) {
+        } else if ( $extra_type == EXTRA_REMINDER ) {
           $body .= ( $extras[$extra_name]['cal_remind'] > 0 ?
             translate("Yes") : translate("No") ) . "\n";
         } else {
-          // default method for $EXTRA_URL, $EXTRA_TEXT, etc...
+          // default method for EXTRA_URL, EXTRA_TEXT, etc...
           $body .= $extras[$extra_name]['cal_data'] . "\n";
         }
       }
@@ -349,7 +347,7 @@ function send_reminder ( $id, $event_date ) {
         echo "<hr /><pre>To: $recip\nSubject: $subject\n$extra_hdrs\n\n$body\n\n</pre>\n";
     } else {
       mail ( $recip, $subject, $body, $extra_hdrs );
-      activity_log ( $id, "system", $user, $LOG_REMINDER, "" );
+      activity_log ( $id, "system", $user, LOG_REMINDER, "" );
     }
   }
 }
@@ -376,7 +374,6 @@ function log_reminder ( $id, $name, $event_date ) {
 // was sent.
 function process_event ( $id, $name, $event_date, $event_time ) {
   global $site_extras, $debug, $only_testing;
-  global $EXTRA_REMINDER_WITH_OFFSET, $EXTRA_REMINDER_WITH_DATE;
 
   if ( $debug )
     printf ( "Event %d: \"%s\" at %s on %s <br />\n",
@@ -402,10 +399,10 @@ function process_event ( $id, $name, $event_date, $event_time ) {
       $ev_month = substr ( $event_date, 4, 2 );
       $ev_day = substr ( $event_date, 6, 2 );
       $event_time = mktime ( $ev_h, $ev_m, 0, $ev_month, $ev_day, $ev_year );
-      if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
+      if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
         $minsbefore = $extras[$extra_name]['cal_data'];
         $remind_time = $event_time - ( $minsbefore * 60 );
-      } else if ( ( $extra_arg2 & $EXTRA_REMINDER_WITH_DATE ) > 0 ) {
+      } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
         $rd = $extras[$extra_name]['cal_date'];
         $r_year = substr ( $rd, 0, 4 );
         $r_month = substr ( $rd, 4, 2 );

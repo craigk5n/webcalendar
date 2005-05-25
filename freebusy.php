@@ -101,8 +101,8 @@ $events = read_events ( $user, date ( "Ymd", $startdate ),
 
 // Loop from start date until we reach end date...
 $event_text = '';
-$ONE_DAY = ( 3600 * 24 );
-for ( $d = $startdate; $d <= $enddate; $d += $ONE_DAY ) {
+define ( 'ONE_DAY', ( 3600 * 24 ) );
+for ( $d = $startdate; $d <= $enddate; $d += ONE_DAY ) {
   $dYmd = date ( "Ymd", $d );
   $ev = get_entries ( $user, $dYmd, $get_unapproved );
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
