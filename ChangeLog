@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Patch 1021410: Unobtrusive JS for event popups
  - Fixed bug 1205151: use of undefined variable in edit_entry.php
  - Fixed bug 1205680: upcoming.php was including unapproved.  will now use
    user preferences for displaying unapproved.

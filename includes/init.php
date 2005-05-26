@@ -297,6 +297,8 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
    }
  }
 
+ echo "<script type=\"text/javascript\" src=\"includes/js/util.js\"></script>\n";
+
  // Any other includes?
  if ( is_array ( $includes ) ) {
    foreach( $includes as $inc ){
