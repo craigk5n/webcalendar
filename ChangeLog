@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Patch 810460: fix length of salt in call to crypt for NIS authentication
  - Added new view (view_r.php) that will display similar to day.php and week.php
    do now except for multiple users.
  - Patch 1090615: read/write remote ical subscription (icalclient.php)

@@ -2,6 +2,8 @@ Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
   - Other bugs fixed:
   - New Features / Enhancements / Changes:
+    + Applied patch 810460: fix length of salt in call to crypt for
+      NIS authentication
     + Added new view that will display similar to day.php and week.php do now
       except for multiple users (each in their own column)
     + Applied Patch 1090615: read/write remote ical subscriptions

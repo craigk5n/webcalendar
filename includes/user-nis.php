@@ -18,6 +18,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 // need these functions and you will still need to add users to
 // webcal_user.
 
+define ( 'CRYPT_SALT_LENGTH', 12 );
+
 // Set some global config variables about your system.
 // For NIS (which is maintained external to WebCalendar), don't let them
 // add/delete users or change passwords.
@@ -45,7 +47,8 @@ function user_valid_login ( $login, $password ) {
       $error = translate ("Invalid login");
       return $ret;
     }
-    if ( $data[1] == crypt ( $password, substr ( $data[1], 0, 2 ) ) ) {
+    if ( $data[1] == crypt ( $password, substr ( $data[1], 0,
+      CRYPT_SALT_LENGTH ) ) ) {
       if ( count ( $data ) >= 4 ) {
         $ret = true;
 	// Check for user in webcal_user.
