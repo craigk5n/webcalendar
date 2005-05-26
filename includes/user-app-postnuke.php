@@ -23,6 +23,16 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 // - user_get_users (returns array of users)
 // - user_load_variables (loads info about a user)
 
+// JGH - May 2005
+// I realized that I had hacked modules/NS-User/user.php to get postnuke
+// to redirect back to webcal directly after logging in and didn't mention this.
+// in function user_user_loginscreen() I added:
+//    $URL = ($_REQUEST['url']) ? $_REQUEST['url'] : getenv("HTTP_REFERER");
+// at the top after OpenTable() and changed the line that prints the hidden
+// url parameter to:
+//   "<input type=\"hidden\" name=\"url\" value=\"$URL\">""
+
+
 /************************* Config ***********************************/
 
 //------ Postnuke Specific Settings ------//
@@ -290,7 +300,7 @@ function user_load_variables ( $login, $prefix ) {
 
 // Redirect the user to the application's login screen
 function app_login_screen($return_path = 'index.php') {
-  global $app_login_page, $app_redirect_param;
+  global $app_login_page, $app_redir_param;
   
   if ($return_path != '' && $app_redir_param != '') {
     if (strstr($app_login_page, '?')) {
