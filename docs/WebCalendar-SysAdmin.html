@@ -220,8 +220,10 @@ h2 {
   <li>PostgreSQL</li>
   <li>Interbase</li>
   <li>MS SQL Server</li>
-  <li>ODBC (PHP ODBC includes support for Adabas D, IBM DB2, Solid and Sybase SQL Anywhere as well as ODBC)</li>
+  <li>ODBC</li>
  </ul>
+ <p><span class="tip">TIP</span>PHP ODBC includes support for Adabas D,
+    IBM DB2, Solid and Sybase SQL Anywhere as well as ODBC.  </p>
  <p>For the database you choose, you must have its drivers built into
   PHP.  For example, to use MySQL, PHP must be compiled with MySQL
   support (which is the default setting when installing PHP).
@@ -339,12 +341,14 @@ SQL&gt; <strong>quit</strong></pre>
 
  <h3 class="colorheader">PostgreSQL</h3>
  <p>The following will create a database named "webcalendar".
-  From the command line, startup psql and
-  issue the following command:</p>
- <pre><strong>create database webcalendar;
-\c webcalendar
-\i tables-postgres.sql
-\q</strong></pre>
+  From the command line as the psql user: issue the following commands:
+ </p>
+  <pre>$ <strong>su postgres</strong>
+# <strong>createdb webcalendar</strong>
+# <strong>createuser --no-createdb --no-adduser -P webcalendar</strong>
+# <strong>psql webcalendar webcalendar</strong>
+<strong>\i tables-postgres.sql</strong>
+<strong>\q</strong></pre>
 
  <h3 class="colorheader">Interbase</h3>
  <p>The following will create a database named "WEBCAL.gdb".
