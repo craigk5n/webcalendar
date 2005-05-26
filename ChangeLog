@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1205680: upcoming.php was including unapproved.  will now use
+   user preferences for displaying unapproved.
  - Patch 810460: fix length of salt in call to crypt for NIS authentication
  - Added new view (view_r.php) that will display similar to day.php and week.php
    do now except for multiple users.
