@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1205680: upcoming.php was including unapproved.  will now use
+        user preferences for displaying unapproved.
   - Other bugs fixed:
   - New Features / Enhancements / Changes:
     + Applied patch 810460: fix length of salt in call to crypt for
