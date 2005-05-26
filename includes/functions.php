@@ -1535,15 +1535,17 @@ function print_entry ( $id, $date, $time, $duration,
     $class = "entry";
 
   if ( $pri == 3 ) echo "<strong>";
+
   $popupid = "eventinfo-$id-$key";
+  $linkid  = "$id-$key";
   $key++;
+
   echo "<a title=\"" . 
-    translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+    translate("View this entry") . "\" class=\"$class\" id=\"$linkid\" href=\"view_entry.php?id=$id&amp;date=$date";
   if ( strlen ( $user ) > 0 )
     echo "&amp;user=" . $user;
-  echo "\" onmouseover=\"window.status='" . 
-    translate("View this entry") .
-    "'; show(event, '$popupid'); return true;\" onmouseout=\"window.status=''; hide('$popupid'); return true;\">";
+  echo "\">";
+
   $icon = "circle.gif";
   $catIcon = '';
   if ( $event_cat > 0 ) {
@@ -2930,14 +2932,11 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   $event_category=-1, $override_class='', $show_time=true ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user;
-  static $key = 0;
   global $DISPLAY_ICONS, $PHP_SELF, $TIME_SLOTS, $WORK_DAY_START_HOUR,
     $WORK_DAY_END_HOUR, $TZ_OFFSET;
   global $layers;
+  static $key = 0;
 
-  $popupid = "eventinfo-day-$id-$key";
-  $key++;
-  
   // Figure out which time slot it goes in.
   if ( $time >= 0 && $duration != ( 24 * 60 ) ) {
     $ind = calc_time_slot ( $time );
@@ -2980,12 +2979,15 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catIcon\" />";
   }
 
+  $popupid = "eventinfo-$id-$key";
+  $linkid  = "$id-$key";
+  $key++;
+
   $hour_arr[$ind] .= "<a title=\"" . 
-  translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+  translate("View this entry") . "\" class=\"$class\" id=\"$linkid\" href=\"view_entry.php?id=$id&amp;date=$date";
   if ( strlen ( $GLOBALS["user"] ) > 0 )
     $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
-  $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
-    translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
+  $hour_arr[$ind] .= "\">";
   if ( $pri == 3 )
     $hour_arr[$ind] .= "<strong>";
 
@@ -3101,9 +3103,6 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   static $key = 0;
   global $layers, $PHP_SELF, $TIME_SLOTS, $TZ_OFFSET;
 
-  $popupid = "eventinfo-day-$id-$key";
-  $key++;
-
   if ( $login != $user && $access == 'R' && strlen ( $user ) )
     $eventinfo .= build_event_popup ( $popupid, $event_owner,
       translate("This event is confidential"), "" );
@@ -3158,12 +3157,14 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catIcon\" />";
   }
 
+  $linkid  = "$id-$key";
+  $key++;
+
   $hour_arr[$ind] .= "<a title=\"" .
-    translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+    translate("View this entry") . "\" class=\"$class\" id=\"$linkid\" href=\"view_entry.php?id=$id&amp;date=$date";
   if ( strlen ( $GLOBALS["user"] ) > 0 )
     $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
-  $hour_arr[$ind] .= "\" onmouseover=\"window.status='" .
-    translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
+  $hour_arr[$ind] .= "\">";
   if ( $pri == 3 ) $hour_arr[$ind] .= "<strong>";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
@@ -4224,13 +4225,15 @@ function print_entry_timebar ( $id, $date, $time, $duration,
     $class = "entry";
 
   if ( $pri == 3 ) echo "<strong>";
+
   $popupid = "eventinfo-$id-$key";
+  $linkid  = "$id-$key";
   $key++;
-  echo "<a class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+
+  echo "<a class=\"$class\" id=\"$linkid\" href=\"view_entry.php?id=$id&amp;date=$date";
   if ( strlen ( $user ) > 0 )
     echo "&amp;user=" . $user;
-  echo "\" onmouseover=\"window.status='" . 
-    translate("View this entry") . "'; show(event, '$popupid'); return true;\" onmouseout=\"hide('$popupid'); return true;\">";
+  echo "\">";
 
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     if ($layers) foreach ($layers as $layer) {

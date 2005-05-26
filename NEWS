@@ -5,6 +5,7 @@ Version 1.1.0-CVS (?? ??? 2005)
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
   - New Features / Enhancements / Changes:
+    + Applied patch 1021410: Unobtrusive JS for event popups
     + Applied patch 810460: fix length of salt in call to crypt for
       NIS authentication
     + Added new view that will display similar to day.php and week.php do now
