@@ -74,7 +74,7 @@ $username = '__public__';
 
 // Allow the URL to override the user setting such as
 // "upcoming.php?user=craig"
-$allow_user_override = true;
+$allow_user_override = false;
 
 // Load layers
 $load_layers = true;
@@ -88,7 +88,9 @@ $cat_id = '';
 
 // Set for use elsewhere as a global
 $login = $username;
+// Load user preferences for DISPLAY_UNAPPROVED
 load_user_preferences ();
+$get_unapproved = ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y';
 
 include "includes/translate.php";
 
@@ -200,8 +202,8 @@ $numEvents = 0;
 for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
   $numEvents < $maxEvents; $i += ( 24 * 3600 ) ) {
   $d = date ( "Ymd", $i );
-  $entries = get_entries ( $username, $d );
-  $rentries = get_repeating_entries ( $username, $d );
+  $entries = get_entries ( $username, $d, $get_unapproved );
+  $rentries = get_repeating_entries ( $username, $d, $get_unapproved );
   print "<!-- $d " . count ( $entries ) . "/" . count ( $rentries ) . " -->\n";
 
   if ( count ( $entries ) > 0 || count ( $rentries ) > 0 ) {
