@@ -6,6 +6,7 @@ Version 1.1.0-CVS (?? ??? 2005)
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
   - New Features / Enhancements / Changes:
+    + Added ability to delete user info from webcal tables for ldap and postnuke auth
     + Applied patch 1021410: Unobtrusive JS for event popups
     + Applied patch 810460: fix length of salt in call to crypt for
       NIS authentication
