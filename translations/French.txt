@@ -10,7 +10,7 @@
 # Mise à jour : Ivan Machetto
 # Title is what will appear in the title bar for pages
 #
-# Translation last updated on 05-20-2005
+# Translation last updated on 05-26-2005
 
 
 ###############################################
@@ -41,8 +41,7 @@ Reminder sent: Rappel envoyé
 Database error: Erreur de la base de données
 Previous: Précédent
 #
-# << MISSING >>
-# Events:
+Events: Événements
 Next: Suivant
 
 
@@ -55,11 +54,35 @@ Error adding event: Erreur en ajoutant l'événement
 
 
 ###############################################
-# Page: admin.php
+# Page: admin_handler.php
+#
+You are not authorized: Vous n'êtes pas autorisé(e)
+Error: Erreur
+The following error occurred: L'erreur suivante est survenue
+
+
+###############################################
+# Page: adminhome.php
 #
 System Settings: Réglages du système
+Preferences: Préférences
+Users: Utilisateurs
+Account: Compte
+Assistants: Assistants(es)
+Categories: Catégories
+Views: Vues
+Layers: Calques
+Reports: Rapports
+Delete Events: Effacer les événements
+Public Preferences: Paramètres publique
+Unapproved Public Events: Evènements publique non approuvés
+Administrative Tools: Outils d'administration
+
+
+###############################################
+# Page: admin.php
+#
 Help: Aide
-You are not authorized: Vous n'êtes pas autorisé(e)
 Note: Note
 Your user preferences: Vos préférences utilisateur
 may be affecting the appearance of this page.: peuvent modifier l'apparence de cette page. 
@@ -73,8 +96,7 @@ Public Access: Accès public
 Groups: Groupes
 NonUser Calendars: Calendriers Non-Utilisateurs
 #
-# << MISSING >>
-# Other:
+Other: Autre
 Email: Courrier électronique
 colors-help: Toutes les couleurs doivent être au format hexdécimal « #RRVVBB » ou « RR » est la valeur hexa pour le rouge, « VV » est la valeur hexa pour le vert, et « BB » est la valeur hexa pour le bleu.
 Colors: Couleurs
@@ -94,13 +116,14 @@ No: Non
 Edit: Editer
 #
 # << MISSING >>
-# custom-header-help:
+custom-header-help: Permet d'ajouter un bout de HTML au haut de chaque page
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
-Custom header: Entête personnalisé
+Custom header: Entête personnalisée
 #
 # << MISSING >>
 # custom-trailer-help:
+custom-trailer-help: Permet d'ajouter un bout de HTML au bas de chaque page
 # English text: Allows a custom HTML snippet to be included at the end of every page.
 #
 Custom trailer: Bas de page personnalisé
@@ -112,10 +135,14 @@ Month: Mois
 Year: Année
 display-weekends-help: Inclure les week-ends lors de la visualisation de la semaine. 
 Display weekends in week view: Afficher les week-ends dans la représentation de la semaine
-yearly-shows-events-help: En vue annuelle, affiche en gras les jours contenant des événements.
 #
 # << MISSING >>
-# Display days with events in bold in month and year views:
+yearly-shows-events-help: Sur la vue par année, affiche les jours contenant des événements en caractères gras
+# English text: On the yearly view, display days that contain events in a bold font.
+#
+#
+# << MISSING >>
+Display days with events in bold in month and year views: Sur les vues par mois et par année, affiche les jours contenant des événements en caractères gras
 display-desc-print-day-help: Inclure les descriptions d'événements dans la version imprimable de la vue journalière.
 Display description in printer day view: Descriptions dans la version imprimable de la vue journalière.
 date-format-help: Spécifie le format d'affichage des dates.
@@ -125,8 +152,8 @@ time-format-help: Spécifie quel format utiliser pour l'heure : <br /><i>12 heure
 Time format: Format de l'heure
 12 hour: 12 heures
 24 hour: 24 heures
-time-interval-help: Spécifie l'intervalle de temps pour l'affichage des vues par semaine et par jour.
-Time interval: Intervalle de temps (vues semaine et jour)
+time-interval-help: Spécifie l'interval de temps pour l'affichage des vues par semaine et par jour.
+Time interval: Interval de temps (vues semaine et jour)
 hour: heure
 minutes: minutes
 auto-refresh-help: Quand activé, les pages de visualisation par jour, semaine, mois et la liste des événements en attente seront automatiquement rafraichies périodiquement.
@@ -157,15 +184,15 @@ disable-repeating-field-help: En sélectionnant « Oui », vous enlevez le champ « 
 Disable Repeating field: Désactiver le champ de répétition
 #
 # << MISSING >>
-# popup-includes-siteextras-help:
+popup-includes-siteextras-help: Si coché, permet aux champs ajoutés dans site_extras.php de s'afficher dans les fenêtres d'alerte d'événements
 # English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
 #
 #
 # << MISSING >>
-# Display Site Extras in popup:
+Display Site Extras in popup: Afficher les extras au site dans les fenêtres d'alerte
 #
 # << MISSING >>
-# allow-html-description-help:
+allow-html-description-help: Si coché, les utilisateurs pourront ajouter du code HTML dans le champ descriptif d'événement.  Sinon, le HTML sera affiché textuellement.  Attention: Allumer cette option permet aux utilisateurs d'inclure des images hébergées sur d'autres site web.
 # English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
 #
 Allow HTML in Description: Autoriser l'utilisation de code HTML dans les descriptions
@@ -187,12 +214,16 @@ limit-appts-number-help: Fixe le nombre maximum d'événements temporels qu'un uti
 Maximum timed events per day: Nombre maximum d'événements temporels par jour
 #
 # << MISSING >>
-# timed-evt-len-help:
+timed-evt-len-help: Spécifie la méthode d'entrée pour la durée d'un événement
 # English text: Specifies input method for determining the length of a timed event.
 #
-Specify timed event length by: Spécifier les événements délimités en durée par
+#
+# << MISSING >>
+Specify timed event length by: Déterminer la fin d'un événenement par
 Duration: Durée
-End Time: Heure de fin
+#
+# << MISSING >>
+End Time: Fin
 Plugins: Greffons
 plugins-enabled-help: Autoriser les applications greffons
 Enable Plugins: Autoriser les greffons
@@ -202,20 +233,20 @@ allow-public-access-help: Lorsqu'activé, l'agenda peut être utilisé comme un age
 Allow public access: Autoriser l'accès public
 #
 # << MISSING >>
-# public-access-default-visible:
+public-access-default-visible: Les événements du calendrier public s'afficheront automatiquement sur les calendriers de tous les autres usagers.
 # English text: Events from the public calendar will automatically appear on all users' calendars
 #
 #
 # << MISSING >>
-# Public access visible by default:
+Public access visible by default: Accès public visible par défaut
 #
 # << MISSING >>
-# public-access-default-selected:
+public-access-default-selected: À l'ajout d'un événement, l'utilisateur public sera sélectionné par défaut comme participant.
 # English text: When adding a new event, the public user will be selected by default as a participant.
 #
 #
 # << MISSING >>
-# Public access is default participant:
+Public access is default participant: L'accès public est le participant par défaut
 public-access-view-others-help: Lors d'un accès en mode « accès public », spécifie si l'utilisateur peut voir les agendas des autres utilisateurs.
 Public access can view other users: L'accès public peut voir les autres utilisateurs
 public-access-can-add-help: Lorsqu'activé, les utilisateurs qui accédent au système à travers l'accès public pourront ajouter de nouveaux événements, mais ils ne s'afficheront pas dans l'agenda tant qu'un administrateur ne les aura pas approuvés. 
@@ -224,7 +255,7 @@ public-access-add-requires-approval-help: Indique si les événements ajoutés par 
 Public access new events require approval: Les nouveaux événements publiques doivent être approuvés
 #
 # << MISSING >>
-# public-access-sees-participants-help:
+public-access-sees-participants-help: Si coché, les utilisateurs consultant le calendrier à partir du compte public pourront voir la liste des participants en regardant les détails d'un événement
 # English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
 #
 Public access can view participants: Les utilisateurs publiques peuvent voir les participants
@@ -240,7 +271,8 @@ Top: En haut
 Bottom: En bas
 #
 # << MISSING >>
-# reports-enabled-help:
+reports-enabled-help: Si coché, les utilisateurs verront une section « Rapports » au bas de chaque page et pourront créer des rapports personnalisés.  En plus, les administrateurs peuvent créer des rapports globaux s'affichant au bas de chaque page d'usager.
+
 # English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
 #
 Reports enabled: Rapports activés
@@ -250,32 +282,32 @@ categories-enabled-help: Active le support des catégories, autorisant les utilis
 Categories enabled: Active/Désactive l'utilisation des catégories
 allow-external-users-help: Indique si un utilisateur extérieur à l'agenda peut être ajouté à un événement. Cela permet aux utilisateurs extérieurs à l'agenda de figurer comme participants.
 Allow external users: Autoriser les utilisateurs extérieurs
-external-can-receive-notification-help: Lorsque des utilisateurs extérieurs sont permis ainsi que l'usage du courriel, les utilisateurs extérieurs peuvent recevoir une notification par courriel lors de l'ajout, de la modification ou de la suppression d'un événement (Ã condition que l'adresse de courriel de l'utilisateur extérieur soit fournie)
-External users can receive email notifications: Les utilisateurs extérieurs peuvent recevoir une notification par courriel
-external-can-receive-reminder-help: Lorsque des utilisateurs extérieurs sont permis ainsi que l'usage du courriel, les utilisateurs extérieurs peuvent recevoir un rappel (Ã condition que l'adresse de courriel de l'utilisateur extérieur soit fournie)
-External users can receive email reminders: Les utilisateurs extérieurs peuvent recevoir des rappels par courriel
-email-enabled-help: Active/Désactive l'envoi de courriel pour la notification et les rappels. Positionnez-le sur « Non » si votre serveur n'est pas configuré proprement pour envoyer des courriers.
+external-can-receive-notification-help: Lorsque des utilisateurs extérieurs sont permis ainsi que l'usage du couriel, les utilisateurs extérieurs peuvent recevoir une notification par couriel lors de l'ajout, de la modification ou de la suppression d'un événement (Ã condition que l'adresse de couriel de l'utilisateur extérieur soit fournie)
+External users can receive email notifications: Les utilisateurs extérieurs peuvent recevoir une notification par couriel
+external-can-receive-reminder-help: Lorsque des utilisateurs extérieurs sont permis ainsi que l'usage du couriel, les utilisateurs extérieurs peuvent recevoir un rappel (Ã condition que l'adresse de couriel de l'utilisateur extérieur soit fournie)
+External users can receive email reminders: Les utilisateurs extérieurs peuvent recevoir des rappels par couriel
+email-enabled-help: Active/Désactive l'envoi de couriel pour la notification et les rappels. Positionnez-le sur « Non » si votre serveur n'est pas configuré proprement pour envoyer des courriers.
 Email enabled: Courrier électronique activé 
 email-default-sender: Spécifie l'adresse électronique à mettre comme expéditeur lors de l'envoi de rappels.
 Default sender address: Adresse par défaut de l'expéditeur
 Default user settings: Réglages par défaut de l'utilisateur
-email-event-reminders-help: Permet de définir si un courriel est envoyé ou non pour le rappel d'un événement. 
+email-event-reminders-help: Permet de définir si un couriel est envoyé ou non pour le rappel d'un événement. 
 Event reminders: Rappel pour un événement
-email-event-added: Notification par courriel lors de l'ajout d'un événement dans votre agenda.
+email-event-added: Notification par couriel lors de l'ajout d'un événement dans votre agenda.
 Events added to my calendar: événement ajouté dans votre agenda
-email-event-updated: Notification par courriel lors de la modification d'un événement dans votre agenda.
+email-event-updated: Notification par couriel lors de la modification d'un événement dans votre agenda.
 Events updated on my calendar: événement modifié dans votre agenda
-email-event-deleted: Notification par courriel lors de la suppression d'un événement dans votre agenda.
+email-event-deleted: Notification par couriel lors de la suppression d'un événement dans votre agenda.
 Events removed from my calendar: événement supprimé dans votre agenda
-email-event-rejected: Notification par courriel lors du rejet d'un événement par l'un des participants.
+email-event-rejected: Notification par couriel lors du rejet d'un événement par l'un des participants.
 Event rejected by participant: événement rejeté par un participant
 Allow user to customize colors: Autoriser les utilisateurs à personnaliser leurs couleurs 
 #
 # << MISSING >>
-# Enable gradient images for background colors:
+Enable gradient images for background colors: Permettre les images en dégradés comme images de fond
 #
 # << MISSING >>
-# Not available:
+Not available: Non disponible
 Document background: Fond
 Select: Sélectionner
 Document title: Titre du document 
@@ -291,30 +323,6 @@ Event popup text: Texte surgissant des événements
 
 
 ###############################################
-# Page: admin_handler.php
-#
-Error: Erreur
-The following error occurred: L'erreur suivante est survenue
-
-
-###############################################
-# Page: adminhome.php
-#
-Preferences: Préférences
-Users: Utilisateurs
-Account: Compte
-Assistants: Assistants(es)
-Categories: Catégories
-Views: Vues
-Layers: Calques
-Reports: Rapports
-Delete Events: Effacer les événements
-Public Preferences: Paramètres publique
-Unapproved Public Events: Evènements publique non approuvés
-Administrative Tools: Outils d'administration
-
-
-###############################################
 # Page: approve_entry.php
 #
 Error approving event: Erreur en approuvant l'événement
@@ -324,7 +332,15 @@ Error approving event: Erreur en approuvant l'événement
 # Page: assistant_edit.php
 #
 Admin mode: Mode administrateur
-Your assistants: Vos assistants(es)
+#
+# << MISSING >>
+Your assistants: Vos assistants
+
+
+###############################################
+# Page: category_handler.php
+#
+Delete: Supprimer
 
 
 ###############################################
@@ -333,7 +349,6 @@ Your assistants: Vos assistants(es)
 Add: Ajouter
 Category Name: Nom de la catégorie
 Global: Globale
-Delete: Supprimer
 Are you sure you want to delete this entry?: Voulez-vous vraiment supprimer cet événement ?
 Add New Category: Ajouter une nouvelle catégorie
 
@@ -343,7 +358,7 @@ Add New Category: Ajouter une nouvelle catégorie
 #
 Assistant mode: Mode assistant
 Generate printer-friendly version: Générer une version imprimable
-Printer Friendly: Version imprimable
+Printer Friendly: Version&nbsp;imprimable
 
 
 ###############################################
@@ -353,73 +368,6 @@ Hello: Bonjour
 An appointment has been canceled for you by: Un événement été annulé pour vous par
 The subject was: Le sujet était
 Notification: Notification
-
-
-###############################################
-# Page: edit_entry.php
-#
-Edit Entry: Modification de l'événement
-Add Entry: Ajouter un événement
-Details: Description
-Participants: Participants
-Repeat: Répétition
-brief-description-help: Courte description (environ 20 car.) de l'événement. Elle décrira l'événement quand vous regarderez le calendrier.
-Brief Description: Description courte
-full-description-help: Description complète de l'événement ; cette information sera vue par l'utilisateur quand il cliquera sur l'événement.
-Full Description: Description complète
-access-help: Spécification du niveau d'accès de l'événement.<br /> <i>Public</i>: Tous les utilisateurs peuvent voir les détails de l'événement.<br /><i>Confidentiel</i>: Les utilisateurs peuvent voir que vous avez un événement pour ces date et heure, mais ils ne peuvent pas en consulter les détails.
-Access: Accès
-Public: Public
-Confidential: Confidentiel
-priority-help: Spécification de la priorité de l'événement. Une priorité haute sera affichée en gras.
-Priority: Priorité
-Low: Basse
-Medium: Moyenne
-High: Haute
-category-help: Définir la catégorie associée à un événement.
-Category: Catégorie
-None: Aucune
-date-help: Spécification de la date de l'événement.
-Untimed event: événement intemporel
-Timed event: événement délimité
-All day event: toute la journée
-time-help: Spécification de l'heure de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
-am: matin
-pm: après-midi
-duration-help: Spécification de la durée (en minutes) de l'événement.  <br /><i>Ce champ peut être laissé vide.</i>
-hours: heures
-end-time-help: Spécifier l'heure de fin d'événement
-days: jours
-before event: avant
-participants-help: Liste des participants pour cet événement.
-#
-# << MISSING >>
-# Availability:
-external-participants-help: Spécifie une liste de participants pour cet événement qui ne font pas partie des utilisateurs de l'agenda. Ces utilisateurs devraient figurer un par ligne evec éventuellement leur adresse de courriel. Si une adresse de courriel figure, l'utilisateur peut recevoir par courriel les notifications et rappels.
-External Participants: Participants extérieurs
-repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br /><i>Mensuel (par jour)</i> répétition tous les premiers Lundi du mois, 3ème Jeudi du mois, etc. <br /><i>Mensuel (par quantième)</i> répétition le même quantième de chaque mois.<br /><i>Mensuel (par jour, depuis la fin du mois)</i> répétition tous les derniers Lundi du mois, avant-dernier Jeudi du mois, etc.
-Repeat Type: Type de répétition
-Daily: Quotidienne
-Weekly: Hebdomadaire
-Monthly: Mensuelle
-by day: par jour(Lun->Dim)
-by day (from end): par jour (Lun->Dim, depuis la fin du mois)
-by date: par quantième
-Yearly: Annuelle
-repeat-end-date-help: Spécifie la date de fin de répétition de l'événement.
-Repeat End Date: Date de fin de répétition
-Use end date: Utiliser une date de fin ?
-repeat-frequency-help: Spécifie la fréquence de répétition sur la base choisie. La valeur par défaut 0 ou 1 indique que cela arrive pour chaque période choisie (semaine, mois). Si vous choisissez 2, cela indique que l'événement sera activé toutes les 2 périodes (si <i>Type de répétition</i> est sur <i>Hebdomadaire</i> : toutes les 2 semaines), (si <i>Type de répétition</i> est sur <i>Mensuel</i> : tous les 2 mois ), etc.
-Frequency: Fréquence
-repeat-day-help: Spécifie quels jours de la semaine l'événement doit être répété. Vous devez l'utiliser seulement si <i>Type de répétition</i> est sur <i>Hebdomadaire</i>.
-Repeat Day: Jour(s) de répétition
-Tuesday: Mardi
-Wednesday: Mercredi
-Thursday: Jeudi
-Friday: Vendredi
-Saturday: Samedi
-Delete entry: Supprimer l'événement
-You are not authorized to edit this entry: Vous n'êtes pas autorisé à modifier cet événement
 
 
 ###############################################
@@ -436,8 +384,88 @@ to accept or reject this appointment: pour accepter ou rejeter cet événement
 to view this appointment: pour voir cet événement
 Scheduling Conflict: Conflit entre agendas
 Your suggested time of: Votre suggestion de
+All day event: événement permanent
 conflicts with the following existing calendar entries: est en conflit avec les événements suivants
 Cancel: Annuler
+
+
+###############################################
+# Page: edit_entry.php
+#
+Edit Entry: Modification de l'événement
+Add Entry: Ajouter un événement
+#
+# << MISSING >>
+Details: Détails
+Participants: Participants
+Repeat: Répétition
+brief-description-help: Ceci doit être une courte description (environ 20 caractères) de l'événement. Elle représentera l'événement quand vous regarderez le calendrier.
+Brief Description: Description courte
+full-description-help: Ceci doit être une description complète de l'événement. Cette information sera vue par l'utilisateur quand celui-ci cliquera sur l'événement.
+Full Description: Description complète
+access-help: Spécification du niveau d'accès de l'événement.<br /> <i>Public</i>: Tous les utilisateurs peuvent voir les détails de l'événement.<br /><i>Confidentiel</i>: Les utilisateurs peuvent voir que vous avez un événement pour ces date et heure, mais ils ne peuvent pas en consulter les détails.
+Access: Accès
+Public: Public
+Confidential: Confidentiel
+priority-help: Spécification de la priorité de l'événement. Une haute priorité sera affichée en gras.
+Priority: Priorité
+Low: Basse
+Medium: Moyenne
+High: Haute
+category-help: Définir la catégorie associée à un événement.
+Category: Catégorie
+None: Aucune
+date-help: Spécification de la date de l'événement.
+Untimed event: événement intemporel
+Timed event: événement temporel
+time-help: Spécification de l'heure de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
+am: am
+pm: pm
+duration-help: Spécification de la durée (en minutes) de l'événement.  <br /><i>Ce champ peut être laissé vide.</i>
+hours: heures
+#
+# << MISSING >>
+end-time-help: Spécifie l'heure à laquelle l'événement est prévu se terminer
+# English text: Specifies the time the event is expected to end.
+#
+days: jours
+before event: avant
+participants-help: Liste des participants pour cet événement.
+#
+# << MISSING >>
+Availability: Disponibilité
+external-participants-help: Spécifie une liste de participants pour cet événement qui ne font pas partie des utilisateurs de l'agenda. Ces utilisateurs devraient figurer un par ligne evec éventuellement leur adresse de couriel. Si une adresse de couriel figure, l'utilisateur peut recevoir par couriel les notifications et rappels.
+External Participants: Participants extérieurs
+repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br /><i>Mensuel (par jour)</i> autorise un événement à être répété tous les premiers Lundi du mois, 3ème Jeudi du mois, etc. <br /><i>Mensuel (par date)</i> autorise un événement à être répété le même jour du mois.
+Repeat Type: Type de répétition
+Daily: Quotidienne
+Weekly: Hebdomadaire
+Monthly: Mensuelle
+by day: par jour
+by day (from end): par jour (depuis la fin)
+by date: par date
+Yearly: Annuelle
+repeat-end-date-help: Spécifie la date de fin de répétition de l'événement.
+Repeat End Date: Date de fin de répétition
+Use end date: Utiliser une date de fin
+repeat-frequency-help: Spécifie combien l'événement doit être répété. La valeur par défaut 1 indique que cela doit arriver à chaque fois.  Si vous choisissez 2, cela indique que l'événement doit arriver toutes les autres semaines (si <i>Type de répétition</i> est sur <i>Hebdomadaire</i>), tous les autres Mois (si <i>Type de répétition</i> est sur <i>Mensuel</i>), etc.
+Frequency: Fréquence
+repeat-day-help: Spécifie quels jours de la semaine l'événement doit être répété. Vous devez l'utiliser seulement si <i>Type de répétition</i> est sur <i>Hebdomadaire</i>.
+Repeat Day: Répétiton du Jour
+Tuesday: Mardi
+Wednesday: Mercredi
+Thursday: Jeudi
+Friday: Vendredi
+Saturday: Samedi
+Delete entry: Supprimer l'événement
+You are not authorized to edit this entry: Vous n'êtes pas autorisé à modifier cet événement
+
+
+###############################################
+# Page: edit_layer_handler.php
+#
+You cannot create a layer for yourself: Vous ne pouvez pas créer un calque pour vous-même
+You can only create one layer for each user: Vous ne pouvez créer qu'un calque par utilisateur
 
 
 ###############################################
@@ -450,38 +478,41 @@ Color: Couleur
 Duplicates: Duplication
 Show layer events that are the same as your own: Afficher les évenements du calque correspondants aux vôtres
 Delete layer: Détruire un calque
-Are you sure you want to delete this layer?: êtes vous sûr de vouloir détruire ce calque ? 
+Are you sure you want to delete this layer?: êtes vous sûr de détruire ce calque ? 
 
 
 ###############################################
-# Page: edit_layer_handler.php
+# Page: edit_nonusers_handler.php
 #
-You cannot create a layer for yourself: Vous ne pouvez pas créer un calque pour vous-même
-You can only create one layer for each user: Vous ne pouvez créer qu'un calque par utilisateur
+Calendar ID: ID calendrier
+#
+# << MISSING >>
+word characters only: peut continr seulement des caractères alphanumériques (a-zA-Z_0-9)
+# English text: can only contain word characters (a-zA-Z_0-9)
+#
+#
+# << MISSING >>
+Changes successfully saved: Changements sauvegardés avec succès
 
 
 ###############################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX n'a pas été initialisé
-#
-# << MISSING >>
-# word characters only:
-# English text: can only contain word characters (a-zA-Z_0-9)
-#
 Edit User: Modifier un utilisateur
 Add User: Ajouter un utilisateur
-Calendar ID: ID calendrier
 First Name: Prénom
 Last Name: Nom
 
 
 ###############################################
-# Page: edit_nonusers_handler.php
+# Page: edit_report_handler.php
 #
-#
-# << MISSING >>
-# Changes successfully saved:
+Page template: Squelette de page
+Variable N not found: Variable N manquante
+Day template: Squelette pour une journée
+Event template: Squelette pour un événement
+Unnamed Report: Rapport anonyme
 
 
 ###############################################
@@ -508,7 +539,6 @@ This year: Année en cours
 Last year: Année dernière
 Year before last: Année précécente
 Invalid report id: Id de rapport invalide
-Unnamed Report: Rapport anonyme
 Add Report: Ajouter un rapport
 Edit Report: Editer un rapport
 Report name: Nom du rapport
@@ -519,16 +549,7 @@ Date range: Entendu des dates
 Include previous/next links: Inclure les liens avant/suivant
 Include empty dates: Inclure les dates vides
 Template variables: Variables de squelette
-Page template: Squelette de page
-Day template: Squelette pour une journée
-Event template: Squelette pour un événement
 Are you sure you want to delete this report?: Etes vous sur de vouloir effacer ce rapport ?
-
-
-###############################################
-# Page: edit_report_handler.php
-#
-Variable N not found: Variable N manquante
 
 
 ###############################################
@@ -540,22 +561,6 @@ Edit Custom Trailer: Editer les fin de pages personnalisés
 
 
 ###############################################
-# Page: edit_user.php
-#
-Username: Identifiant
-E-mail address: Adresse de courriel 
-Password: Mot de passe
-again: de nouveau
-Disabled for demo: Désactivé pour la démo
-#
-# << MISSING >>
-# Are you sure you want to delete this user?:
-Change Password: Changer de mot de passe
-New Password: Nouveau mot de passe
-Set Password: Déterminer le mot de passe
-
-
-###############################################
 # Page: edit_user_handler.php
 #
 Deleting users not supported: La suppression des utilisateurs n'est pas supportée
@@ -563,15 +568,39 @@ The passwords were not identical: Les mots de passe ne sont pas identiques
 You have not entered a password: Vous n'avez pas saisi de mot de passe
 #
 # << MISSING >>
-# Username can not be blank:
+Username can not be blank: Le nom d'utilisateur ne peut être laissé en blanc
+
+
+###############################################
+# Page: edit_user.php
+#
+Username: Identifiant
+E-mail address: Adresse de couriel 
+Password: Mot de passe
+again: bis
+Disabled for demo: Désactivé pour la démo
+#
+# << MISSING >>
+Are you sure you want to delete this user?: Êtes-vous certain de vouloir effacer cet usager?
+Change Password: Changer de mot de passe
+New Password: Nouveau mot de passe
+Set Password: Déterminer le mot de passe
+
+
+###############################################
+# Page: export_handler.php
+#
+Export: Exporter
+export format not defined or incorrect: Le format d'exportation n'est pas défini ou n'est pas correct
 
 
 ###############################################
 # Page: export.php
 #
-Export: Exporter
 Export format: Format d'exportation
 Palm Pilot: Palm Pilot
+#
+# << MISSING >>
 Include all layers: Inclure tous les calques
 Export all dates: Exporter toutes les dates
 Start date: Date de début
@@ -580,9 +609,9 @@ Modified since: Modifié depuis
 
 
 ###############################################
-# Page: export_handler.php
+# Page: group_edit_handler.php
 #
-export format not defined or incorrect: format d'exportatin non défini ou incorrect
+You must specify a group name: Vous devez préciser un nom de groupe
 
 
 ###############################################
@@ -594,12 +623,6 @@ Edit Group: Modifier un groupe
 Group name: Nom du groupe
 Updated: Mise à jour
 Created by: Créé par
-
-
-###############################################
-# Page: group_edit_handler.php
-#
-You must specify a group name: Vous devez préciser un nom de groupe
 
 
 ###############################################
@@ -615,17 +638,17 @@ Display days with events in bold in year view: Afficher les jours avec événement
 Nonuser: Calendrier Non-utilisateur
 #
 # << MISSING >>
-# user-customize-color:
+user-customize-color: Détermine si les usagers peuvent modifier leurs couleurs d'affichage
 # English text: Specifies whether users are allowed to modify their own color scheme.
 #
 #
 # << MISSING >>
-# enable-gradient-help:
+enable-gradient-help: Utiliser des dégradés comme couleurs de fond des cellules
 # English text: Use gradient colors for cell backgrounds.
 #
 #
 # << MISSING >>
-# Manually entering color values:
+Manually entering color values: Entrée manuelle des couleurs
 
 
 ###############################################
@@ -647,11 +670,11 @@ Import: Importer
 Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Ce formulaire vous permet d'importer les données de votre agenda Palm Desktop
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Cela doit être placé dans le répertoire <tt>datebook/datebook.dat</tt> de votre Palm placé dans un sous-répertoire à votre nom
-The following entries will not be imported: Les entrées suivantes ne seront pas importées
+The following entries will not be imported: Les entrées suivantes ne seront pas importés
 Entries older than the current date: Entrées plus anciennnes que la date courante
-Entries created in the Palm Desktop that have not been HotSync'd: Les entrées crées dans le Palm Desktop qui n'ont pas été synchronisées à chaud
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Tout élément importé du Palm sera écrasé au prochain import (sauf si la date de l'événement est dépassée).
-Therefore, updates should be made in the Palm Desktop.: Par conséquent, les mises à jour doivent être effectuées au préalable sur le Palm Desktop
+Entries created in the Palm Desktop that have not been HotSync'd: Les entrées crées dans le Palm Desktop qui n'ont pas été synchronisé à chaud
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Tout élément importé du Palm sera écrasé au prochain import (sauf si la date de l'événement est passé)
+Therefore, updates should be made in the Palm Desktop.: Auparavant, les mises à jour doivent être effectués sur le Palm Desktop
 vCal: vCal
 This form will import vCalendar (.vcs) 1.0 events: Ce formulaire importe vCalendar (.vcs)
 The following formats have been tested: Les formats suivants ont été testés
@@ -660,7 +683,7 @@ Lotus Organizer 6: Lotus Organizer 6
 Microsoft Outlook 2002: Microsoft Outlook 2002
 iCalendar: iCalendar
 This form will import iCalendar (.ics) events: Ce formulaire importera des événements cd iCalendar (.ics)
-Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Si <b>Remplacer l'importation précédente</b> est cochée, les événements précédemment importés et ayant le même identificateur (UID) seront considérés comme supprimés. Ceci devrait permettre d'importer un fichier iCalendar sans créer de doublons.
+Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Activer <b>Remplacer l'importation précédente</b> marquera comme effacé les événements précédemment importés qui ont le même UID. Cela permet de faire une mise à jour à partir d'un fichier iCalendar sans doublons.
 
 
 ###############################################
@@ -695,36 +718,27 @@ When I am the boss: Lorsque je suis le "boss"
 Email me event notification: Envoi d'un email de notification d'événement
 #
 # << MISSING >>
-# email-boss-notifications-help:
+email-boss-notifications-help: Détermine si les "boss" reçoivent des courriels comme notification 
 # English text: Specifies if bosses receive emails as event notifications.
 #
 I want to approve events: Je veux approuver les événements
 #
 # << MISSING >>
-# boss-approve-event-help:
+boss-approve-event-help: Détermine si le "boss" doit approuver les événements ajoutés par des assistants
 # English text: Specifies whether the boss will be required to approve events added by assistants.
 #
 Subscribe/Publish: S'abonner/Publier
 #
 # << MISSING >>
-# allow-remote-subscriptions-help:
+allow-remote-subscriptions-help: Détermine si les usagers distants peuvent s'abonner à votre calendrier, leur permettant de consulter vos événements à même une application compatible iCal (tel que Mozilla Calendar ou Apple iCal)
 # English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
 #
 URL: URL
 #
 # << MISSING >>
-# remote-subscriptions-url-help:
+remote-subscriptions-url-help: Affiche l'URL avec lequel les usagers distants peuvent s'abonner à votre calendrier
 # English text: Displays the URL remote users should use to subscribe to your calendar.
 #
-
-
-###############################################
-# Page: import.php
-#
-Disabled: Désactivés
-Import format: Format d'importation
-Exclude private records: exclure les enregistrements privés
-Overwrite Prior Import: Remplacer l'importation précédente
 
 
 ###############################################
@@ -742,6 +756,17 @@ View this entry: Voir cet événement
 
 
 ###############################################
+# Page: import.php
+#
+Disabled: Désactivés
+#
+# << MISSING >>
+Import format: Format d'import
+Exclude private records: exclure les enregistrements privés
+Overwrite Prior Import: Remplacer l'importation précédente
+
+
+###############################################
 # Page: layers.php
 #
 Layers are currently: Les calques sont actuellement
@@ -751,7 +776,7 @@ Enable Layers: Activer les calques
 to modify the layers settings for the: pour modifier les paramètres de calque de 
 #
 # << MISSING >>
-# calendar:
+calendar: calendrier
 Add layer: Ajouter un calque
 Layer: Calque
 Edit layer: Modifier un calque
@@ -765,7 +790,7 @@ Approve this entry?: Accepter cet événement ?
 Reject: Rejeter
 Reject this entry?: Rejeter cet événement ?
 No unapproved events for: Pas d'événement non approuvé pour
-Unapproved Events: événements en attente
+Unapproved Events: Evénements en attente
 
 
 ###############################################
@@ -814,18 +839,18 @@ All: Tout
 #
 #
 # << MISSING >>
-# Preview:
+Preview: Aperçu
 Purging events for: Effacer les événements de
 Finished: Terminé
 Check box to delete <b>ALL</b> events for a user: Cocher la case pour effacer <b>TOUS</b> les événements d'un utilisateur
 Delete all events before: Effacer les événements avant
 #
 # << MISSING >>
-# Preview delete:
+Preview delete: Aperçu de l'effacement
 Are you sure you want to delete events for: Etes-vous sur de vouloir effacer les événements de
 #
 # << MISSING >>
-# Records deleted from:
+Records deleted from: Enregistrements effacés de
 
 
 ###############################################
@@ -852,14 +877,6 @@ Manage Reports: Gérer les rapports
 
 
 ###############################################
-# Page: search.php
-#
-Search: Rechercher
-Keywords: Mots clés
-Advanced Search: Recherche avancée
-
-
-###############################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: Vous devez donner un ou plusieurs mot(s) clé(s) pour la recherche
@@ -867,6 +884,14 @@ Search Results: Résultats de la recherche
 match found: élément trouvé
 matches found: éléments trouvés
 No matches found: Pas de résultat
+
+
+###############################################
+# Page: search.php
+#
+Search: Rechercher
+Keywords: Mots clés
+Advanced Search: Recherche avancée
 
 
 ###############################################
@@ -884,13 +909,6 @@ Set Category: Chosir la catégorie
 
 
 ###############################################
-# Page: users.php
-#
-Add New User: Ajouter un nouvel utilisateur
-denotes administrative user: appliquer les droits d'administrateur
-
-
-###############################################
 # Page: usersel.php
 #
 Reset: Réinitialiser
@@ -899,11 +917,18 @@ Ok: Valider
 
 
 ###############################################
+# Page: users.php
+#
+Add New User: Ajouter un nouvel utilisateur
+denotes administrative user: appliquer les droits d'administrateur
+
+
+###############################################
 # Page: view_d.php
 #
 #
 # << MISSING >>
-# No users for this view:
+No users for this view: Aucun utilisateur pour cette vue
 
 
 ###############################################
@@ -917,13 +942,13 @@ every: tous
 1st: 1er
 last: dernier
 Description: Description
-Status: état
+Status: Etat
 #
 # << MISSING >>
-# day:
+day: jour
 #
 # << MISSING >>
-# minute:
+minute: minute
 External User: Utilisateur extérieur
 Approve/Confirm entry: Approuver/Confirmer cet événement
 Reject entry: Rejeter l'événement
@@ -946,9 +971,9 @@ Export this entry to: Exporter cet événement au format
 
 
 ###############################################
-# Page: views.php
+# Page: views_edit_handler.php
 #
-Add New View: Ajouter une nouvelle vue
+You must specify a view name: Vous devez indiquer une vue
 
 
 ###############################################
@@ -967,16 +992,16 @@ Month (side by side): Mois (Côte à côte)
 Month (on same calendar): Mois (sur le même calendrier)
 #
 # << MISSING >>
-# preview:
+preview: aperçu
 #
 # << MISSING >>
-# Selected:
+Selected: Sélectionné
 
 
 ###############################################
-# Page: views_edit_handler.php
+# Page: views.php
 #
-You must specify a view name: Vous devez indiquer une vue
+Add New View: Ajouter une nouvelle vue
 
 
 ###############################################
@@ -1107,25 +1132,19 @@ Nov: Nov
 Dec: Déc
 #
 # << MISSING >>
-# All Attendees:
+All Attendees: Tous les participants
 #
 # << MISSING >>
-# Busy:
+Busy: Occupé
 #
 # << MISSING >>
-# Tentative:
+Tentative: Exploratoire
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Aller à
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Envoyer un rappel
 
 
 ###############################################
@@ -1144,11 +1163,17 @@ Manage calendar of: Gérer le calendrier de
 #
 #
 # << MISSING >>
-# incorrect password:
+incorrect password: mot de passe incorrect
 #
 # << MISSING >>
-# no such user:
+no such user: usager non-existant
 Invalid user login: Identifiant non valable
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Envoyer un rappel
 
 
 ###############################################
@@ -1158,7 +1183,7 @@ Server URL is required: L'URL du serveur est manquante
 Server URL must end with '/': L'URL du serveur doit débuter par '/'
 #
 # << MISSING >>
-# Invalid work hours:
+Invalid work hours: Heures de travail invalides
 Invalid color for document background: Couleur de fond incorrecte
 Invalid color for document title: Couleur de titre de document incorrecte
 Invalid color for table cell background: Couleur de fond de cellule incorrecte
@@ -1176,7 +1201,7 @@ Color format should be '#RRGGBB': Le format de couleur devrait être '#RRGGBB'
 #
 #
 # << MISSING >>
-# Change the date and time of this entry?:
+Change the date and time of this entry?: Modifier la date et l'heure de cette entrée?
 
 
 ###############################################
@@ -1187,7 +1212,7 @@ You have not entered a valid time of day: Vous n'avez pas entré d'heure correcte
 The time you have entered begins before your preferred work hours.  Is this correct?: L'heure que vous avez spécifiée commence avant l'heure de début de vos journées. Est-ce correct ?
 #
 # << MISSING >>
-# Please add a participant:
+Please add a participant: Veuillez ajouter un participant
 
 
 ###############################################
