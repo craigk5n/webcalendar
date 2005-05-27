@@ -3103,17 +3103,6 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   static $key = 0;
   global $layers, $PHP_SELF, $TIME_SLOTS, $TZ_OFFSET;
 
-  if ( $login != $user && $access == 'R' && strlen ( $user ) )
-    $eventinfo .= build_event_popup ( $popupid, $event_owner,
-      translate("This event is confidential"), "" );
-  else if ( $login != $event_owner && $access == 'R' &&
-    strlen ( $event_owner ) )
-    $eventinfo .= build_event_popup ( $popupid, $event_owner,
-      translate("This event is confidential"), "" );
-  else
-    $eventinfo .= build_event_popup ( $popupid, $event_owner, $description,
-      "", site_extras_for_popup ( $id ) );
-
   // calculate slot length in minutes
   $interval = ( 60 * 24 ) / $TIME_SLOTS;
 
@@ -3157,6 +3146,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catIcon\" />";
   }
 
+  $popupid = "eventinfo-$id-$key";
   $linkid  = "$id-$key";
   $key++;
 
@@ -3230,6 +3220,17 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   }
 
   $hour_arr[$ind] .= "<br />\n";
+
+  if ( $login != $user && $access == 'R' && strlen ( $user ) )
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
+      translate("This event is confidential"), "" );
+  else if ( $login != $event_owner && $access == 'R' &&
+    strlen ( $event_owner ) )
+    $eventinfo .= build_event_popup ( $popupid, $event_owner,
+      translate("This event is confidential"), "" );
+  else
+    $eventinfo .= build_event_popup ( $popupid, $event_owner, $description,
+      "", site_extras_for_popup ( $id ) );
 }
 
 /**
