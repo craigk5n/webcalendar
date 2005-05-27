@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added ability to delete user info from webcal tables for ldap and postnuke auth
  - Fixed bug 1209649: Undefined variable in html_for_event_day_at_a_glance
  - Patch 1021410: Unobtrusive JS for event popups
  - Fixed bug 1205151: use of undefined variable in edit_entry.php
