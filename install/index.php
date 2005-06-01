@@ -168,7 +168,7 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
 $action = getGetValue ( "action" );
 if ( ! empty ( $action ) && $action == "dbtest" ) {
   if ( ! empty ( $_SESSION['validuser'] ) ) {
-    $db_persistent = false;
+    $db_persistent = getGetValue ( 'db_persistent' );
     $db_type = getGetValue ( 'db_type' );
     $db_host = getGetValue ( 'db_host' );
     $db_database = getGetValue ( 'db_database' );
@@ -246,7 +246,7 @@ if ( empty ( $x ) ) {
     $settings['db_database'] = 'intranet';
     $settings['db_login'] = 'webcalendar';
     $settings['db_password'] = 'webcal01';
-    $settings['db_persistent'] = 'true';
+    $settings['db_persistent'] = 'false';
     $settings['readonly'] = 'false';
     $settings['user_inc'] = 'user.php';
     $settings['install_password'] = '';
@@ -365,7 +365,13 @@ function validate(form)
   var form = document.dbform;
   // only check is to make sure single-user login is specified if
   // in single-user mode
-  if ( form.form_user_inc.options[4].selected ) {
+  // find id of single user object
+  var listid = 0;
+  for ( i = 0; i < form.form_user_inc.length; i++ ) {
+    if ( form.form_user_inc.options[i].value == "none" )
+      listid = i;
+  }
+  if ( form.form_user_inc.options[listid].selected ) {
     if ( form.form_single_user_login.value.length == 0 ) {
       // No single user login specified
       alert ( "Error: you must specify a\nSingle-User Login" );
@@ -378,7 +384,13 @@ function validate(form)
 }
 function auth_handler () {
   var form = document.dbform;
-  if ( form.form_user_inc.options[4].selected ) {
+  // find id of single user object
+  var listid = 0;
+  for ( i = 0; i < form.form_user_inc.length; i++ ) {
+    if ( form.form_user_inc.options[i].value == "none" )
+      listid = i;
+  }
+  if ( form.form_user_inc.options[listid].selected ) {
     makeVisible ( "singleuser" );
   } else {
     makeInvisible ( "singleuser" );
@@ -473,6 +485,9 @@ doc.li {
     $dbs[] = "ibase";
   if ( function_exists ( "mssql_pconnect" ) )
     $dbs[] = "mssql";
+  // TODO complete testing SQLite
+  //if ( function_exists ( "sqlite_open" ) )
+  //  $dbs[] = "sqlite";
   for ( $i = 0; $i < count ( $dbs ); $i++ ) {
     if ( $i ) echo ", ";
     echo $dbs[$i];
@@ -576,6 +591,11 @@ You should select "Web Server" from the list of
     echo "<option value=\"mysql\" " .
       ( $settings['db_type'] == 'mysql' ? " selected=\"selected\"" : "" ) .
       "> MySQL </option>\n";
+      
+  if ( ! empty ( $supported['mysqli'] ) )
+    echo "<option value=\"mysqli\" " .
+      ( $settings['db_type'] == 'mysqli' ? " selected=\"selected\"" : "" ) .
+      "> MySQL (Improved)</option>\n";
 
   if ( ! empty ( $supported['oracle'] ) )
     echo "<option value=\"oracle\" " .
@@ -594,13 +614,18 @@ You should select "Web Server" from the list of
 
   if ( ! empty ( $supported['ibase'] ) )
     echo "<option value=\"ibase\" " .
-      ( $settings['db_type'] == 'mssql' ? " selected=\"selected\"" : "" ) .
+      ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
       "> Interbase </option>\n";
 
   if ( ! empty ( $supported['mssql'] ) )
     echo "<option value=\"mssql\" " .
-      ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
+      ( $settings['db_type'] == 'mssql' ? " selected=\"selected\"" : "" ) .
       "> MS SQL Server </option>\n";
+      
+  if ( ! empty ( $supported['sqlite'] ) )
+    echo "<option value=\"sqlite\" " .
+      ( $settings['db_type'] == 'sqlite' ? " selected=\"selected\"" : "" ) .
+      "> SQLite </option>\n";
 ?>
 </select>
 </td></tr>
@@ -617,6 +642,8 @@ You should select "Web Server" from the list of
 <tr><td class="prompt">Password:</td>
 <td><input name="form_db_password" size="20" value="<?php echo $settings['db_password'];?>" /></td></tr>
 
+<?php  if ( substr( php_sapi_name(), 0, 3) <> "cgi" && 
+        ini_get( $settings['db_type'] . ".allow_persistent" ) ){ ?>
 <tr><td class="prompt">Connection Persistence:</td>
 <td><input name="form_db_persistent" value="true" type="radio"
   <?php echo ( $settings['db_persistent'] == 'true' )? " checked=\"checked\"" : "";
@@ -626,6 +653,9 @@ You should select "Web Server" from the list of
   <?php echo ( $settings['db_persistent'] != 'true' )? " checked=\"checked\"" : "";
   ?> />Disabled
   </td></tr>
+<?php } else{ // Need to set a default value ?>
+  <input name="form_db_persistent" value="false" type="hidden" />
+<?php } ?>
 <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
 <tr><td colspan="2" align="center">
 <input name="action" type="button" value="Test Settings"
@@ -636,6 +666,8 @@ You should select "Web Server" from the list of
 <p>You must save before proceeding.</p>
 </th></tr>
 <?php } ?>
+
+
 </table>
 
 </td>
@@ -738,6 +770,9 @@ if ( function_exists ( "mysql_connect" ) )
   echo "<li>MySQL</li>\n";
 if ( function_exists ( "mysqli_connect" ) )
   echo "<li>MySQL (Improved)</li>\n";
+// Uncomment when fully implemented
+//if ( function_exists ( "sqlite_open" ) )
+//  echo "<li>SQLite</li>\n";
 if ( function_exists ( "mssql_connect" ) )
   echo "<li>MS SQL Server</li>\n";
 if ( function_exists ( "OCIPLogon" ) )
