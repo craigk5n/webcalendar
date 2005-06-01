@@ -1,11 +1,15 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1212672: Install script - javascript errors
+      1212667: Install script - Database Type Problem
       1209649: Undefined variable in html_for_event_day_at_a_glance
       1205680: upcoming.php was including unapproved.  will now use
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
   - New Features / Enhancements / Changes:
+    + Added logic to only permit setting persistent connections if 
+      allowed and not CGI
     + Added ability to delete user info from webcal tables for ldap and postnuke auth
     + Applied patch 1021410: Unobtrusive JS for event popups
     + Applied patch 810460: fix length of salt in call to crypt for
