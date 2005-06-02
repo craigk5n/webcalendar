@@ -112,7 +112,7 @@ a:hover {
   margin: 0px;
   padding: 0.5em;
   border: 2px groove #C0C0C0;
-  width: 70%;
+  width: 80%;
   background-color: #F8F8FF;
 }
 .tabfor {
@@ -139,6 +139,7 @@ a:hover {
   color: #000000;
 }
 #tabscontent_public,
+#tabscontent_uac,
 #tabscontent_groups,
 #tabscontent_nonuser,
 #tabscontent_other,
