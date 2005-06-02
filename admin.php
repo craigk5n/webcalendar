@@ -648,13 +648,13 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
       } ?>
 </td></tr>
 <tr><td>
- <label for="docbg"><?php etranslate("Document background")?>:</td><td>
+ <label for="docbg"><?php etranslate("Document background")?>:</label></td><td>
  <input type="text" name="admin_BGCOLOR" id="docbg" size="8" maxlength="7" value="<?php echo $s["BGCOLOR"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["BGCOLOR"]?>;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
  <input type="button" onclick="selectColor('admin_BGCOLOR')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
- <label for="doctitle"><?php etranslate("Document title")?>:</td><td>
+ <label for="doctitle"><?php etranslate("Document title")?>:</label></td><td>
  <input type="text" name="admin_H2COLOR" id="doctitle" size="8" maxlength="7" value="<?php echo $s["H2COLOR"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["H2COLOR"]?>;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
  <input type="button" onclick="selectColor('admin_H2COLOR')" value="<?php etranslate("Select")?>..." name="" />
@@ -684,7 +684,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <input type="button" onclick="selectColor('admin_THFG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
- <label for="tdbg"><?php etranslate("Table cell background")?>:<label></td><td>
+ <label for="tdbg"><?php etranslate("Table cell background")?>:</label></td><td>
  <input type="text" name="admin_CELLBG" id="tdbg" size="8" maxlength="7" value="<?php echo $s["CELLBG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["CELLBG"]?>;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
  <input type="button" onclick="selectColor('admin_CELLBG')" value="<?php etranslate("Select")?>..." name="" />
