@@ -575,6 +575,11 @@ You should select "Web Server" from the list of
     echo "<option value=\"mysql\" " .
       ( $settings['db_type'] == 'mysql' ? " selected=\"selected\"" : "" ) .
       "> MySQL </option>\n";
+      
+  if ( ! empty ( $supported['mysqli'] ) )
+    echo "<option value=\"mysqli\" " .
+      ( $settings['db_type'] == 'mysqli' ? " selected=\"selected\"" : "" ) .
+      "> MySQL (Improved)</option>\n";
 
   if ( ! empty ( $supported['oracle'] ) )
     echo "<option value=\"oracle\" " .
@@ -593,12 +598,12 @@ You should select "Web Server" from the list of
 
   if ( ! empty ( $supported['ibase'] ) )
     echo "<option value=\"ibase\" " .
-      ( $settings['db_type'] == 'mssql' ? " selected=\"selected\"" : "" ) .
+      ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
       "> Interbase </option>\n";
 
   if ( ! empty ( $supported['mssql'] ) )
     echo "<option value=\"mssql\" " .
-      ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
+      ( $settings['db_type'] == 'mssql' ? " selected=\"selected\"" : "" ) .
       "> MS SQL Server </option>\n";
 ?>
 </select>
