@@ -47,8 +47,14 @@ $repeated_events = read_repeated_events (
 $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
   ? $user : $login, $startdate, $enddate, $cat_id );
 
-display_small_month ( $prevmonth, $prevyear, true, true, "prevmonth" );
-display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth" );
+if ( ! empty ( $cat_id ) )
+  $monthURL = "month.php?cat_id=$cat_id&amp;";
+else
+  $monthURL = 'month.php';
+display_small_month ( $prevmonth, $prevyear, true, true, "prevmonth",
+  $monthURL );
+display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth",
+  $monthURL );
 ?>
 <div class="title">
 <span class="date"><br /><?php
