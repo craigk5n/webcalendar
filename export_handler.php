@@ -29,7 +29,7 @@ function export_get_event_entry($id) {
     $endyear,$endmonth,$endday,$modyear,$modmonth,$modday,$login;
   global $DISPLAY_UNAPPROVED, $layers;
 
-  // We exporting repeating events only with the pilot-datebook CSV format
+  // We export repeating events only with the pilot-datebook CSV format
   $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name " .
     ", webcal_entry.cal_priority, webcal_entry.cal_date " .
     ", webcal_entry.cal_time " .
@@ -176,7 +176,11 @@ function export_fold_lines($string, $encoding="none", $limit=76) {
 function export_get_attendee($id, $export) {
   global $login;
 
-  $request = "SELECT cal_login, cal_status FROM webcal_entry_user WHERE cal_id = '$id'";
+  $request = "SELECT webcal_entry_user.cal_login, webcal_entry_user.cal_status, " .
+    " webcal_entry.cal_create_by " . 
+    "FROM webcal_entry_user LEFT JOIN  webcal_entry " .
+    " ON webcal_entry_user.cal_id = webcal_entry.cal_id " .
+    " WHERE webcal_entry_user.cal_id = '$id' AND webcal_entry_user.cal_status <> 'D'";
 
   $att_res =  dbi_query($request);
 
@@ -194,7 +198,8 @@ function export_get_attendee($id, $export) {
   $count = 0;
 
   while (list($key,$row) = each($entry_array)) {
-      $request = "SELECT cal_firstname, cal_lastname, cal_email FROM webcal_user where cal_login = '". $row[0] . "'";
+      $request = "SELECT cal_firstname, cal_lastname, cal_email, cal_login " .
+        " FROM webcal_user where cal_login = '". $row[0] . "'";
 
       $user_res = dbi_query($request);
 
@@ -204,7 +209,7 @@ function export_get_attendee($id, $export) {
 
 	if (count($user) > 0) {
 	  $attendee[$count] = "ATTENDEE;ROLE=";
-	  $attendee[$count] .=	($row[0] == $login) ? "OWNER;" : "ATTENDEE;";
+	  $attendee[$count] .=	($row[2] == $user[3]) ? "OWNER;" : "ATTENDEE;";
 	  $attendee[$count] .= "STATUS=";
 
 	  switch ($row[1]) {
