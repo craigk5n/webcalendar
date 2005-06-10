@@ -347,7 +347,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $untimed = array (  );
     $user = $viewusers[$u];
     $events = $e_save[$u];
-    $repeating_events = $re_save[$u];
+    $repeated_events = $re_save[$u];
     // get all the repeating events for this date and store in array $rep
     $adate = date ( "Ymd", $days[$d] );
     $rep = get_repeating_entries ( $user, $adate );
@@ -390,7 +390,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $untimed = array (  );
     $user = $viewusers[$u];
     $events = $e_save[$u];
-    $repeating_events = $re_save[$u];
+    $repeated_events = $re_save[$u];
     // get all the repeating events for this date and store in array $rep
     $adate = date ( "Ymd", $days[$d] );
     $rep = get_repeating_entries ( $user, $adate );
