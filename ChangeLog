@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
- = Fixed bug 1211406: User Access Control enabled: has been displayed in 2 tabs
+ - Fixed bug: category was lost wan clicking on prev/next month in month.php
+ - Fixed bug 1211406: User Access Control enabled: has been displayed in 2 tabs
  - Fixed bug 1212672: Install script - javascript errors
  - Fixed bug 1212667: Install script - Database Type Problem
  - Added logic to only spermit etting persistent connections if allowed and not CGI

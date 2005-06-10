@@ -8,6 +8,7 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
+      Category was lost wan clicking on prev/next month in month.php
   - New Features / Enhancements / Changes:
     + Added logic to only permit setting persistent connections if 
       allowed and not CGI
