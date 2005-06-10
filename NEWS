@@ -3,6 +3,7 @@ Version 1.0.1-CVS (?? ??? 2005)
       1205680: upcoming.php was including unapproved.  will now use
         user preferences for displaying unapproved.
       1212667: Install script - Database Type Problem
+      1218113: iCal ATTENDEE error if event is deleted
   - Other bugs fixed:
         Category was lost wan clicking on prev/next month in month.php
   - New Features / Enhancements / Changes:
