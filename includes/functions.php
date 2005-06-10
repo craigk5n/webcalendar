@@ -1969,6 +1969,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
         while ( $row = dbi_fetch_row ( $res ) ) {
           $result[$i]['cal_exceptions'][] = $row[0];
         }
+        dbi_free_result ( $res );
       }
     }
   }
@@ -2211,8 +2212,9 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved=true ) {
   global $repeated_events;
   $n = 0;
   $ret = array ();
-  //echo count($repeated_events)."<br />\n";
+  //echo count($repeated_events)." - checking date $dateYmd <br />\n";
   for ( $i = 0; $i < count ( $repeated_events ); $i++ ) {
+    //echo "  ($i) " . $repeated_events[$i]['cal_name'] . " <br/>";
     if ( $repeated_events[$i]['cal_status'] == 'A' || $get_unapproved ) {
       if ( repeated_event_matches_date ( $repeated_events[$i], $dateYmd ) ) {
         // make sure this is not an exception date...
