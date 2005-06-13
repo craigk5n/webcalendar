@@ -33,10 +33,11 @@ $Entry->{Duration}           =  How long the event lasts (in minutes)
 $Entry->{Note}               =  Note (string)
 $Entry->{Untimed}            =  1 = true  0 = false
 $Entry->{Private}            =  1 = true  0 = false
-$Entry->{Category}           =  useless for Palm
+$Entry->{Category}           =  Short description of category (PD Version > 4.1.1)
 $Entry->{AlarmSet}           =  1 = true  0 = false
 $Entry->{AlarmAdvanceAmount} =  How many units in AlarmAdvanceType (-1 means not set)
 $Entry->{AlarmAdvanceType}   =  Units: (0=minutes, 1=hours, 2=days)
+$Entry->{Location}           =  Location field (PD Version > 4.1.1)
 $Entry->{Repeat}             =  Array containing repeat information (if repeat)
 $Entry->{Repeat}->{Interval}   =  1=daily,2=weekly,3=MonthlyByDay,4=MonthlyByDate,5=Yearly
 $Entry->{Repeat}->{Frequency}  =  How often event occurs. (1=every, 2=every other,etc.)
@@ -46,15 +47,23 @@ $Entry->{Repeat}->{RepeatDays} =  For Weekly: What days to repeat on (7 characte
 $Entry->{Repeat}->{DayNum}     =  For MonthlyByDay: Day of week (1=sun,2=mon,3=tue,4=wed,5=thu,6=fri,7=sat)
 $Entry->{Repeat}->{WeekNum}    =  For MonthlyByDay: Week number (1=first,2=second,3=third,4=fourth,5=last)
 
+=head1 AUTHOR
+Jeff Hoover
+
 =head1 CONTRIBUTERS
 Eduard Martinescu - Provided patch to parse category list.
+
+=head1 NOTE
+Palm changed the format of the datebook.dat file in Palm Desktop 4.1.1.
+I _finally_ reversed engineered the file format using a hex editor.
+I don't know what all the new fields are for, but the script works so who cares.
 
 =cut
 
 use CGI qw (:standard);
 my $q = new CGI;
 my ($Year, $Month, $Day);
-my $DATA;
+my ($DATA, @Categories);
 
 # -----------------------  Config if necessary  ----------------------------
 my $DateBookFileName = $ARGV[0];  # The name of the file
@@ -72,8 +81,9 @@ sub ReadDateBook {
   my ($FileName, $Filter) = @_;
   my (@Fields, @Entries, $FieldCount, $NumberOfEntries);
   my ($Entry, $i, $Header, $Tag);
-  my ($NextFree, $CategoryCount, $Category, @Categories, $ResourceID);
+  my ($NextFree, $CategoryCount, $Category, $ResourceID);
   my ($FieldsPerRow, $RecordIdPos, $RecordStatusPos, $RecordPlacementPos);
+  my ($TestField, $NewFormat, $Trash);
 
   open DATEBOOK, "<".$FileName;
   binmode DATEBOOK;
@@ -86,16 +96,33 @@ sub ReadDateBook {
   # First, check the initial 4 byte "tag" field.
   $Tag = ReadByteString(4);
 
-  # Next, read the header information.
-  $FileName = ReadPilotString();
-  $Header   = ReadPilotString();
-  $NextFree = ReadLong();
+  # Next, figure out what version of datebook.dat we are using.
+  #  - prior to 4.1.1 the next field was the FileName
+  #  - after 4.1.1 it is a header that says "PalmSG Database"
+  $TestField = ReadPilotString();
+  $NewFormat = ($TestField eq 'PalmSG Database') ? 1 : 0;
+
+  if ($NewFormat eq 1) {
+    $Header = $TestField;
+    $Trash = ReadLong();          
+    $Trash = ReadLong();          
+    $Trash = ReadByteString(12);  
+    $Trash = ReadByte();          # Number of entries ?
+    $Trash = ReadByte();          
+    $Trash = ReadByteString(10);  
+    $FileName = ReadPilotString();
+    $Trash = ReadByteString(47); 
+  } else {
+    $FileName = $TestField;
+    $Header   = ReadPilotString();
+    $NextFree = ReadLong();
+  } 
 
   # Read the category information
   $CategoryCount = ReadLong();
   for ($i=0; $i<$CategoryCount; $i++) {
     $Category = ReadCategory();
-    push (@Categories,$Category) if ($Category ne 0);
+    $Categories[$Category->{Index}] = $Category->{ShortName} if ($Category ne 0);
   }
 
   $ResourceID         = ReadLong();
@@ -114,7 +141,7 @@ sub ReadDateBook {
 
   # Read the entries.
   for ($i=0; $i<$NumberOfEntries; $i++) {
-    $Entry = ReadEntry();
+    $Entry = ReadEntry($NewFormat);
     if ($Entry ne 0){
       if (!$Filter or &$Filter($Entry)){push @Entries, $Entry;}
     }
@@ -130,23 +157,54 @@ sub ReadEntry {
 # hash, and returns a reference to that hash.  The reference can safely
 # be stored in an array for later use.
 
-  my (%Entry);
+  my ($NewFormat) = @_;
+  my (%Entry, $Trash);
 
-  $Entry{RecordID}           = ReadPilotField();
-  $Entry{Status}             = ReadPilotField();
-  $Entry{Position}           = ReadPilotField();
-  $Entry{StartTime}          = ReadPilotField();
-  $Entry{EndTime}            = ReadPilotField();
-  $Entry{Description}        = ReadPilotField();
-  $Entry{Duration}           = ReadPilotField();
-  $Entry{Note}               = ReadPilotField();
-  $Entry{Untimed}            = ReadPilotField();
-  $Entry{Private}            = ReadPilotField();
-  $Entry{Category}           = ReadPilotField();
-  $Entry{AlarmSet}           = ReadPilotField();
-  $Entry{AlarmAdvanceAmount} = ReadPilotField();
-  $Entry{AlarmAdvanceType}   = ReadPilotField();
-  $Entry{Repeat}             = ReadPilotField();
+  if ($NewFormat eq 1) {
+    $Entry{RecordID}           = ReadPilotField();
+    $Entry{Position}           = ReadPilotField();
+    $Entry{Status}             = ReadPilotField();
+    $Trash                     = ReadPilotField(); # field counter
+    $Trash                     = ReadPilotField();
+    $Entry{Category}           = ReadPilotField();
+    $Entry{Private}            = ReadPilotField();
+    $Trash                     = ReadPilotField();
+    $Trash                     = ReadPilotField();
+    $Trash                     = ReadPilotField();
+    $Trash                     = ReadPilotField();
+    $Trash                     = ReadPilotField();
+    $Trash                     = ReadPilotField();
+    $Entry{StartTime}          = ReadPilotField();
+    $Entry{EndTime}            = ReadPilotField();
+    $Entry{Description}        = ReadPilotField();
+    $Trash                     = ReadPilotField();
+    $Entry{Note}               = ReadPilotField();
+    $Entry{Untimed}            = ReadPilotField();
+    $Entry{AlarmSet}           = ReadPilotField();
+    $Entry{AlarmAdvanceAmount} = ReadPilotField();
+    $Entry{AlarmAdvanceType}   = ReadPilotField();
+    $Entry{Repeat}             = ReadPilotField();
+    $Entry{Location}           = ReadPilotField(); # new location field
+    $Trash                     = ReadPilotField();
+    $Trash                     = ReadPilotField();
+    $Trash                     = ReadPilotField();
+  } else {
+    $Entry{RecordID}           = ReadPilotField();
+    $Entry{Status}             = ReadPilotField();
+    $Entry{Position}           = ReadPilotField();
+    $Entry{StartTime}          = ReadPilotField();
+    $Entry{EndTime}            = ReadPilotField();
+    $Entry{Description}        = ReadPilotField();
+    $Entry{Duration}           = ReadPilotField();
+    $Entry{Note}               = ReadPilotField();
+    $Entry{Untimed}            = ReadPilotField();
+    $Entry{Private}            = ReadPilotField();
+    $Entry{Category}           = ReadPilotField();
+    $Entry{AlarmSet}           = ReadPilotField();
+    $Entry{AlarmAdvanceAmount} = ReadPilotField();
+    $Entry{AlarmAdvanceType}   = ReadPilotField();
+    $Entry{Repeat}             = ReadPilotField();
+  }
 
   #Should return as -1 if not set, but is returning as 4294967295
   $Entry{AlarmAdvanceAmount} = "-1" if ($Entry{AlarmAdvanceAmount} eq '4294967295');
@@ -161,6 +219,9 @@ sub ReadEntry {
   # Calculate duration in minutes
   $Entry{Duration} = ($Entry{EndTime} - $Entry{StartTime}) / 60;
 
+  # Get category text
+  $Entry{Category} = $Categories[$Entry{Category}] if ($Entry{Category} > 0);
+
   # Skip private records if $exc_private
   if (($exc_private) && ($Entry{Private} == 1)) {
     return 0;
@@ -173,7 +234,7 @@ sub ReadEntry {
   } elsif (($Entry{Repeat}) && ($Entry{Repeat}{EndTime} < time())&& ($Entry{Repeat}{EndTime} != 0) && (!$inc_expired)){
     return 0;
   } else {
-#print $Entry{RecordID} . "\n";
+    #print $Entry{RecordID} . "\n";
     return \%Entry;
   }
 }
@@ -304,9 +365,12 @@ sub ReadPilotField {
      } else {
        return 0;  # No repeat
      }
+  } elsif ($Type == 64 or $Type == 65 or $Type == 66) { # 0x4000 0x4100 0x4200
+    return ReadLong();
   } else {
-#      print STDERR "There's a problem with this pilot field of type $Type\n";
-   return undef;
+    print STDERR "There's a problem with this pilot field of type $Type\n";
+    exit;
+    #return undef;
   }
 }
 
@@ -413,7 +477,7 @@ sub ReadCategory {
   $Entry{CategoryID}    = ReadLong();
   $Entry{DirtyFlag}     = ReadLong();
   $Entry{LongName}      = ReadPilotString();
-  $Entry{ShortName}     = ReadPilotString();
+  $Entry{ShortName}     = filter_quotes(ReadPilotString());
   return \%Entry;
 }
 
