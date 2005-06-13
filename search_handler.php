@@ -46,7 +46,7 @@ if ( $search_others ) {
   // If user can only see users in his group, then remove users not
   // in his group.
   if ( ! empty ( $user_sees_only_his_groups ) && 
-    user_sees_only_his_groups == 'Y'
+    $user_sees_only_his_groups == 'Y'
     && ! empty ( $groups_enabled ) && $groups_enabled == 'Y' ) {
     $myusers = get_my_users ();
     $userlookup = array ();

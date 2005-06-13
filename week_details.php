@@ -155,35 +155,39 @@ onmouseover="window.status = '<?php etranslate("Generate printer-friendly versio
 </body>
 </html><?php
 
-// Print the HTML for one day's events in detailed view.
-// params:
-//   $id - event id
-//   $date - date (not used)
-//   $time - time (in HHMMSS format)
-//   $name - event name
-//   $description - long description of event
-//   $status - event status
-//   $pri - event priority
-//   $access - event access
-//   $event_owner - user associated with this event
-function print_detailed_entry ( $id, $date, $time, $duration,
-  $name, $description, $status,
-  $pri, $access, $event_owner ) {
+/**
+ * Prints the HTML for one event in detailed view.
+ *
+ * @param Event $event The event
+ * @param string $date The date for which we're printing (in YYYYMMDD format)
+ *
+ */
+function print_detailed_entry ( $event, $date ) {
   global $eventinfo, $login, $user, $TZ_OFFSET;
   static $key = 0;
 
   global $layers;
 
-  if ( $login != $event_owner && strlen ( $event_owner ) ) {
+  if ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
     $class = "layerentry";
   } else {
     $class = "entry";
-    if ( $status == "W" ) $class = "unapprovedentry";
+    if ( $event->get_status() == "W" ) $class = "unapprovedentry";
   }
 
-  if ( $pri == 3 ) echo "<strong>";
+  if ( $event->get_priority() == 3 ) echo "<strong>";
+
+  if ( $event->get_ext_for_id() != '' ) {
+    $id = $event->get_ext_for_id();
+    $name = $event->get_name() . ' (' . translate ( 'cont.' ) . ')';
+  } else {
+    $id = $event->get_id();
+    $name = $event->get_name();
+  }
+
 	$divname = "eventinfo-$id-$key";
 	$key++;
+
 	echo "<a title=\"" . 
 		translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
 	if ( strlen ( $user ) > 0 )
@@ -192,17 +196,17 @@ function print_detailed_entry ( $id, $date, $time, $duration,
 		translate("View this entry") .	"'; return true;\" onmouseout=\"window.status=''; return true;\">";
 	echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"view icon\" />";
 
-  if ( $login != $event_owner && strlen ( $event_owner ) ) {
+  if ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
     if ($layers) foreach ($layers as $layer) {
-      if($layer['cal_layeruser'] == $event_owner) {
+      if($layer['cal_layeruser'] == $event->get_login()) {
         echo("<span style=\"color:#" . $layer['cal_color'] . ";\">");
       }
     }
   }
 
   $timestr = "";
-  $my_time = $time + ( $TZ_OFFSET * 10000 );
-  if ( $time >= 0 ) {
+  $my_time = $event->get_time() + ( $TZ_OFFSET * 10000 );
+  if ( $event->get_time() >= 0 ) {
     if ( $GLOBALS["TIME_FORMAT"] == "24" ) {
       printf ( "%02d:%02d", $my_time / 10000, ( $my_time / 100 ) % 100 );
     } else {
@@ -216,13 +220,13 @@ function print_detailed_entry ( $id, $date, $time, $duration,
         print (":00");
       echo ( (int) ( $my_time / 10000 ) ) < 12 ? translate("am") : translate("pm");
     }
-    $timestr = display_time ( $time );
-    if ( $duration > 0 ) {
+    $timestr = display_time ( $event->get_time() );
+    if ( $event->get_duration() > 0 ) {
       // calc end time
-      $h = (int) ( $time / 10000 );
-      $m = ( $time / 100 ) % 100;
-      $m += $duration;
-      $d = $duration;
+      $h = (int) ( $event->get_time() / 10000 );
+      $m = ( $event->get_time() / 100 ) % 100;
+      $m += $event->get_duration();
+      $d = $event->get_duration();
       while ( $m >= 60 ) {
         $h++;
         $m -= 60;
@@ -235,20 +239,20 @@ function print_detailed_entry ( $id, $date, $time, $duration,
 	echo "&raquo;&nbsp;";
     }
   }
-  if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
+  if ( $login != $user && $event->get_access() == 'R' && strlen ( $user ) ) {
     $PN = "(" . translate("Private") . ")"; $PD = "(" . translate("Private") . ")";
-  } elseif ( $login != $event_owner && $access == 'R' && strlen ( $event_owner ) ) {
+  } elseif ( $login != $event->get_login() && $event->get_access() == 'R' && strlen ( $event->get_login() ) ) {
     $PN = "(" . translate("Private") . ")";$PD ="(" . translate("Private") . ")";
-  } elseif ( $login != $event_owner && strlen ( $event_owner ) ) {
+  } elseif ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
     $PN = htmlspecialchars ( $name ) ."</span>";
-    $PD = activate_urls ( htmlspecialchars ( $description ) );
+    $PD = activate_urls ( htmlspecialchars ( $event->get_description() ) );
   } else {
     $PN = htmlspecialchars ( $name );
-    $PD = activate_urls ( htmlspecialchars ( $description ) );
+    $PD = activate_urls ( htmlspecialchars ( $event->get_description() ) );
   }
   echo $PN;
   echo "</a>";
-  if ( $pri == 3 ) echo "</strong>";
+  if ( $event->get_priority() == 3 ) echo "</strong>";
   # Only display description if it is different than the event name.
   if ( $PN != $PD )
     echo " - " . $PD;
@@ -282,33 +286,21 @@ function print_det_date_entries ( $date, $user, $ssi ) {
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     // print out any repeating events that are before this one...
     while ( $cur_rep < count ( $rep ) &&
-      $rep[$cur_rep]['cal_time'] < $ev[$i]['cal_time'] ) {
+      $rep[$cur_rep]->get_time() < $ev[$i]->get_time() ) {
       if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
-        $rep[$cur_rep]['cal_status'] == 'A' )
-        print_detailed_entry ( $rep[$cur_rep]['cal_id'],
-          $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
-          $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
-          $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
+        $rep[$cur_rep]->get_status() == 'A' )
+        print_detailed_entry ( $rep[$cur_rep] );
       $cur_rep++;
     }
     if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
-      $ev[$i]['cal_status'] == 'A' )
-      print_detailed_entry ( $ev[$i]['cal_id'],
-        $date, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
-        $ev[$i]['cal_name'], $ev[$i]['cal_description'],
-        $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
-        $ev[$i]['cal_access'], $ev[$i]['cal_login'] );
+      $ev[$i]->get_status() == 'A' )
+      print_detailed_entry ( $ev[$i] );
   }
   // print out any remaining repeating events
   while ( $cur_rep < count ( $rep ) ) {
     if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
-      $rep[$cur_rep]['cal_status'] == 'A' )
-      print_detailed_entry ( $rep[$cur_rep]['cal_id'],
-        $date, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
-        $rep[$cur_rep]['cal_name'], $rep[$cur_rep]['cal_description'],
-        $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
+      $rep[$cur_rep]->get_status() == 'A' )
+      print_detailed_entry ( $rep[$cur_rep] );
     $cur_rep++;
   }
 }

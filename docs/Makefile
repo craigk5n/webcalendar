@@ -11,7 +11,10 @@ INCLUDES = \
  ../includes/init.php \
  ../includes/config.php \
  ../includes/translate.php \
- ../report.php
+ ../report.php \
+ ../includes/translate.php \
+ ../includes/classes/Event.class \
+ ../includes/classes/RptEvent.class
 
 WebCalendar-Database.html: ../tables-mysql.sql sql2html.pl
 	perl sql2html.pl < ../tables-mysql.sql > WebCalendar-Database.html

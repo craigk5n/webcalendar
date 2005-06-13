@@ -70,45 +70,35 @@ function replace_site_extras_in_template ( $template, $extras ) {
 }
 
 /**
- * Generates the HTML for one event
+ * Generates the HTML for one event for a report.
  *
- * @param int    $id          Event id
- * @param int    $date        Date (YYYYMMDD)
- * @param int    $time        Time (in HHMMSS format)
- * @param int    $duration    Event duration (in minutes)
- * @param string $name        Event name
- * @param string $description Long description of event
- * @param string $status      Event status
- * @param string $pri         Event priority
- * @param string $access      Event access
- * @param string $event_owner User associated with this event
+ * @param Event  $event The event
+ * @param string $date  The date for which we're printing (in YYYYMMDD format)
  *
  * @return string HTML for this event based on report template.
  */
-function event_to_text ( $id, $date, $time, $duration,
-  $name, $description, $status,
-  $pri, $access, $event_owner ) {
+function event_to_text ( $event, $date ) {
   global $login, $user, $event_template, $report_id, $allow_html_description;
 
   $time_str = $start_time_str = $end_time_str = '';
 
-  if ( $duration == ( 24 * 60 ) ) {
+  if ( $event->get_duration() == ( 24 * 60 ) ) {
     $time_str = translate("All day event");
-  } else if ( $time == -1 ) {
+  } else if ( $event->get_time() == -1 ) {
     $time_str = translate("Untimed event");
   } else {
-    $time_str = display_time ( $time );
+    $time_str = display_time ( $event->get_time() );
     $start_time_str = $time_str;
     $time_short = preg_replace ("/(:00)/", '', $time_str);
-    if ( $duration > 0 ) {
-      if ( $duration == ( 24 * 60 ) ) {
+    if ( $event->get_duration() > 0 ) {
+      if ( $event->get_duration() == ( 24 * 60 ) ) {
         $time_str = translate("All day event");
       } else {
         // calc end time
-        $h = (int) ( $time / 10000 );
-        $m = ( $time / 100 ) % 100;
-        $m += $duration;
-        $d = $duration;
+        $h = (int) ( $event->get_time() / 10000 );
+        $m = ( $event->get_time() / 100 ) % 100;
+        $m += $event->get_duration();
+        $d = $event->get_duration();
         while ( $m >= 60 ) {
           $h++;
           $m -= 60;
@@ -119,18 +109,27 @@ function event_to_text ( $id, $date, $time, $duration,
       }
     }
   }
-  if ( $login != $user && $access == 'R' && strlen ( $user ) ) {
+
+  if ( $event->get_ext_for_id() != '' ) {
+    $id = $event->get_ext_for_id();
+    $name = $event->get_name() . ' (' . translate ( 'cont.' ) . ')';
+  } else {
+    $id = $event->get_id();
+    $name = $event->get_name();
+  }
+
+  if ( $login != $user && $event->get_access() == 'R' && strlen ( $user ) ) {
     $name_str = "(" . translate("Private") . ")";
     $description_str = translate("This event is confidential");
-  } else if ( $login != $event_owner && $access == 'R' &&
-    strlen ( $event_owner ) ) {
+  } else if ( $login != $event->get_login() && $event->get_access() == 'R' &&
+    strlen ( $event->get_login() ) ) {
     $name_str = "(" . translate("Private") . ")";
     $description_str = translate("This event is confidential");
   } else {
     $name_str = htmlspecialchars ( $name );
     if ( ! empty ( $allow_html_description ) &&
       $allow_html_description == 'Y' ) {
-      $str = str_replace ( '&', '&amp;', $description );
+      $str = str_replace ( '&', '&amp;', $event->get_description() );
       $description_str = str_replace ( '&amp;amp;', '&amp', $str );
       if ( strstr ( $description_str, "<" ) &&
         strstr ( $description_str, ">" ) ) {
@@ -148,27 +147,27 @@ function event_to_text ( $id, $date, $time, $duration,
   $date_str = date_to_str ( $date, "", false );
   $date_full_str = date_to_str ( $date, "", true, false );
 
-  if ( $duration > 0 ) {
-    $duration_str = $duration . ' ' . translate ( "minutes" );
+  if ( $event->get_duration() > 0 ) {
+    $duration_str = $event->get_duration() . ' ' . translate ( "minutes" );
   } else {
     $duration_str = '';
   }
 
-  if ( $pri == 1 ) {
+  if ( $event->get_priority() == 1 ) {
     $pri_str = translate ( "Low" );
-  } else if ( $pri == 2 ) {
+  } else if ( $event->get_priority() == 2 ) {
     $pri_str = translate ( "Medium" );
-  } else if ( $pri == 3 ) {
+  } else if ( $event->get_priority() == 3 ) {
     $pri_str = translate ( "High" );
   }
 
-  if ( $status == 'W' ) {
+  if ( $event->get_status() == 'W' ) {
     $status_str = translate ( "Waiting for approval" );
-  } else if ( $status == 'D' ) {
+  } else if ( $event->get_status() == 'D' ) {
     $status_str = translate ( "Deleted" );
-  } else if ( $status == 'R' ) {
+  } else if ( $event->get_status() == 'R' ) {
     $status_str = translate ( "Rejected" );
-  } else if ( $status == 'A' ) {
+  } else if ( $event->get_status() == 'A' ) {
     $status_str = translate ( "Approved" );
   } else {
     $status_str = translate ( "Unknown" );
@@ -190,7 +189,7 @@ function event_to_text ( $id, $date, $time, $duration,
   $text = str_replace ( '${priority}', $pri_str, $text );
   $text = str_replace ( '${href}', $href_str, $text );
   $text = str_replace ( '${id}', $id, $text );
-  $text = str_replace ( '${user}', $event_owner, $text );
+  $text = str_replace ( '${user}', $event->get_login(), $text );
   $text = str_replace ( '${report_id}', $report_id, $text );
 
   $text = replace_site_extras_in_template ( $text,
@@ -467,56 +466,20 @@ if ( empty ( $error ) && empty ( $list ) ) {
     for ( $i = 0; $i < count ( $ev ); $i++ ) {
       // print out any repeating events that are before this one...
       while ( $cur_rep < count ( $rep ) &&
-        $rep[$cur_rep]['cal_time'] < $ev[$i]['cal_time'] ) {
-        if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' ) {
-          if ( ! empty ( $rep[$cur_rep]['cal_ext_for_id'] ) ) {
-            $viewid = $rep[$cur_rep]['cal_ext_for_id'];
-            $viewname = $rep[$cur_rep]['cal_name'] . " (" .
-              translate("cont.") . ")";
-          } else {
-            $viewid = $rep[$cur_rep]['cal_id'];
-            $viewname = $rep[$cur_rep]['cal_name'];
-          }
-          $event_str .= event_to_text ( $viewid,
-            $dateYmd, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
-            $viewname, $rep[$cur_rep]['cal_description'],
-            $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-            $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
+        $rep[$cur_rep]->get_time() < $ev[$i]->get_time() ) {
+        if ( $get_unapproved || $rep[$cur_rep]->get_status() == 'A' ) {
+          $event_str .= event_to_text ( $rep[$cur_rep], $dateYmd );
         }
         $cur_rep++;
       }
-      if ( $get_unapproved || $ev[$i]['cal_status'] == 'A' ) {
-        if ( ! empty ( $ev[$i]['cal_ext_for_id'] ) ) {
-          $viewid = $ev[$i]['cal_ext_for_id'];
-          $viewname = $ev[$i]['cal_name'] . " (" .
-            translate("cont.") . ")";
-        } else {
-          $viewid = $ev[$i]['cal_id'];
-          $viewname = $ev[$i]['cal_name'];
-        }
-        $event_str .= event_to_text ( $viewid,
-          $dateYmd, $ev[$i]['cal_time'], $ev[$i]['cal_duration'],
-          $viewname, $ev[$i]['cal_description'],
-          $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
-          $ev[$i]['cal_access'], $ev[$i]['cal_login'] );
+      if ( $get_unapproved || $ev[$i]->get_status() == 'A' ) {
+        $event_str .= event_to_text ( $ev[$i], $dateYmd );
       }
     }
     // print out any remaining repeating events
     while ( $cur_rep < count ( $rep ) ) {
-      if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' ) {
-        if ( ! empty ( $rep[$cur_rep]['cal_ext_for_id'] ) ) {
-          $viewid = $rep[$cur_rep]['cal_ext_for_id'];
-          $viewname = $rep[$cur_rep]['cal_name'] . " (" .
-            translate("cont.") . ")";
-        } else {
-          $viewid = $rep[$cur_rep]['cal_id'];
-          $viewname = $rep[$cur_rep]['cal_name'];
-        }
-        $event_str .= event_to_text ( $viewid,
-          $dateYmd, $rep[$cur_rep]['cal_time'], $rep[$cur_rep]['cal_duration'],
-          $viewname, $rep[$cur_rep]['cal_description'],
-          $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_login'] );
+      if ( $get_unapproved || $rep[$cur_rep]->get_status() == 'A' ) {
+        $event_str .= event_to_text ( $rep[$cur_rep], $dateYmd );
       }
       $cur_rep++;
     }
