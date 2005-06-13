@@ -437,7 +437,7 @@ function export_alarm_ical ( $id, $date, $description ) {
     return;
 
   $sql = "SELECT cal_data FROM webcal_site_extras " .
-    "WHERE cal_id = $id AND cal_type = EXTRA_REMINDER AND " .
+    "WHERE cal_id = $id AND cal_type = " . EXTRA_REMINDER .  " AND " .
     "cal_remind = 1";
   $res = dbi_query ( $sql );
   $row = dbi_fetch_row ( $res );
