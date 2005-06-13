@@ -176,68 +176,29 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     // print out any repeating events that are before this one...
     while ( $cur_rep < count ( $rep ) &&
-      $rep[$cur_rep]['cal_time'] < $ev[$i]['cal_time'] ) {
-      if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' ) {
-        if ( ! empty ( $rep[$cur_rep]['cal_ext_for_id'] ) ) {
-          $viewid = $rep[$cur_rep]['cal_ext_for_id'];
-          $viewname = $rep[$cur_rep]['cal_name'] . " (" .
-            translate("cont.") . ")";
-        } else {
-          $viewid = $rep[$cur_rep]['cal_id'];
-          $viewname = $rep[$cur_rep]['cal_name'];
-        }
-        if ( $rep[$cur_rep]['cal_duration'] == ( 24 * 60 ) ) {
+      $rep[$cur_rep]->get_time() < $ev[$i]->get_time() ) {
+      if ( $get_unapproved || $rep[$cur_rep]->get_status() == 'A' ) {
+        if ( $rep[$cur_rep]->get_duration() == ( 24 * 60 ) ) {
           $all_day[$d] = 1;
         }
-        html_for_event_week_at_a_glance ( $viewid,
-          $date, $rep[$cur_rep]['cal_time'],
-          $viewname, $rep[$cur_rep]['cal_description'],
-          $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-          $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
-          $rep[$cur_rep]['cal_login'], $rep[$cur_rep]['cal_category'] );
+        html_for_event_week_at_a_glance ( $rep[$cur_rep], $date );
       }
       $cur_rep++;
     }
-    if ( $get_unapproved || $ev[$i]['cal_status'] == 'A' ) {
-      if ( ! empty ( $ev[$i]['cal_ext_for_id'] ) ) {
-        $viewid = $ev[$i]['cal_ext_for_id'];
-        $viewname = $ev[$i]['cal_name'] . " (" .
-          translate("cont.") . ")";
-      } else {
-        $viewid = $ev[$i]['cal_id'];
-        $viewname = $ev[$i]['cal_name'];
-      }
-      if ( $ev[$i]['cal_duration'] == ( 24 * 60 ) ) {
+    if ( $get_unapproved || $ev[$i]->get_status() == 'A' ) {
+      if ( $ev[$i]->get_duration() == ( 24 * 60 ) ) {
         $all_day[$d] = 1;
       }
-      html_for_event_week_at_a_glance ( $viewid,
-        $date, $ev[$i]['cal_time'],
-        $viewname, $ev[$i]['cal_description'],
-        $ev[$i]['cal_status'], $ev[$i]['cal_priority'],
-        $ev[$i]['cal_access'], $ev[$i]['cal_duration'],
-        $ev[$i]['cal_login'], $ev[$i]['cal_category'] );
+      html_for_event_week_at_a_glance ( $ev[$i], $date );
     }
   }
   // print out any remaining repeating events
   while ( $cur_rep < count ( $rep ) ) {
-    if ( $get_unapproved || $rep[$cur_rep]['cal_status'] == 'A' ) {
-      if ( ! empty ( $rep[$cur_rep]['cal_ext_for_id'] ) ) {
-        $viewid = $rep[$cur_rep]['cal_ext_for_id'];
-        $viewname = $rep[$cur_rep]['cal_name'] . " (" .
-          translate("cont.") . ")";
-      } else {
-        $viewid = $rep[$cur_rep]['cal_id'];
-        $viewname = $rep[$cur_rep]['cal_name'];
-      }
-      if ( $rep[$cur_rep]['cal_duration'] == ( 24 * 60 ) ) {
+    if ( $get_unapproved || $rep[$cur_rep]->get_status() == 'A' ) {
+      if ( $rep[$cur_rep]->get_duration() == ( 24 * 60 ) ) {
         $all_day[$d] = 1;
       }
-      html_for_event_week_at_a_glance ( $viewid,
-        $date, $rep[$cur_rep]['cal_time'],
-        $viewname, $rep[$cur_rep]['cal_description'],
-        $rep[$cur_rep]['cal_status'], $rep[$cur_rep]['cal_priority'],
-        $rep[$cur_rep]['cal_access'], $rep[$cur_rep]['cal_duration'],
-        $rep[$cur_rep]['cal_login'], $rep[$cur_rep]['cal_category'] );
+      html_for_event_week_at_a_glance ( $rep[$cur_rep], $date );
     }
     $cur_rep++;
   }

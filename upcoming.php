@@ -53,7 +53,7 @@ load_global_settings ();
 
 // Change this to false if you still want to access this page even
 // though you do not have public access enabled.
-$public_must_be_enabled = true;
+$public_must_be_enabled = false;
 
 // Do we include a link to view the event?  If so, what target
 // should we use.
@@ -74,7 +74,7 @@ $username = '__public__';
 
 // Allow the URL to override the user setting such as
 // "upcoming.php?user=craig"
-$allow_user_override = false;
+$allow_user_override = true;
 
 // Load layers
 $load_layers = true;
@@ -232,23 +232,23 @@ function print_upcoming_event ( $e ) {
 
   if ( $display_link && ! empty ( $server_url ) ) {
     print "<a title=\"" . 
-      $e['cal_name'] . "\" href=\"" . 
+      $e->get_name() . "\" href=\"" . 
       $server_url . "view_entry.php?id=" . 
-      $e['cal_id'] . "&amp;date=" . 
-      $e['cal_date'] . "\"";
+      $e->get_id() . "&amp;date=" . 
+      $e->get_date() . "\"";
     if ( ! empty ( $link_target ) ) {
       print " target=\"$link_target\"";
     }
     print ">";
   }
- print $e['cal_name'];
+  print $e->get_name();
   if ( $display_link && ! empty ( $server_url ) ) {
     print "</a>";
   }
-  if ( $e['cal_duration'] == 24 * 60 ) {
+  if ( $e->get_duration() == 24 * 60 ) {
     print " (" . translate("All day event") . ")\n";
-  } else if ( $e['cal_time'] != -1 ) {
-    print " (" . display_time ( $e['cal_time'] ) . ")\n";
+  } else if ( $e->get_time() != -1 ) {
+    print " (" . display_time ( $e->get_time() ) . ")\n";
   }
   print "<br />\n";
 }

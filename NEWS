@@ -12,6 +12,7 @@ Version 1.1.0-CVS (?? ??? 2005)
   - Other bugs fixed:
       Category was lost wan clicking on prev/next month in month.php
   - New Features / Enhancements / Changes:
+    + Added patch 1208257: use event object for parameters
     + Palm Desktop datebook import works for versions 4.1.1 and newer
     + Added logic to only permit setting persistent connections if 
       allowed and not CGI
