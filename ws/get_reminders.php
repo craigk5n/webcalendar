@@ -345,19 +345,19 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   // Keep track of duplicates
   $completed_ids = array ( );
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    $id = $ev[$i]['cal_id'];
+    $id = $ev[$i]->get_id();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    process_event ( $id, $ev[$i]['cal_name'], $date, $ev[$i]['cal_time'] );
+    process_event ( $id, $ev[$i]->get_name(), $date, $ev[$i]->get_time() );
   }
   $rep = get_repeating_entries ( $user, $date );
   for ( $i = 0; $i < count ( $rep ); $i++ ) {
-    $id = $rep[$i]['cal_id'];
+    $id = $rep[$i]->get_id();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    process_event ( $id, $rep[$i]['cal_name'], $date, $rep[$i]['cal_time'] );
+    process_event ( $id, $rep[$i]->get_name(), $date, $rep[$i]->get_time() );
   }
 }
 

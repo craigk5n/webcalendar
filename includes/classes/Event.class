@@ -1,0 +1,264 @@
+<?php
+/**
+ * Declares the Event class.
+ *
+ * @author Adam Roben <adam.roben@gmail.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ * @subpackage Events
+ */
+
+/**
+ * An event parameter object.
+ *
+ * This is a parameter object. It only has simple accessors.
+ */
+class Event {
+  /**
+   * The event's name.
+   * @var string
+   * @access private
+   */
+  var $_name;
+  /**
+   * The event's description.
+   * @var string
+   * @access private
+   */
+  var $_description;
+  /**
+   * The event's date (in YYYYMMDD format).
+   * @var string
+   * @access private
+   */
+  var $_date;
+  /**
+   * The event's time (in HHMMSS format).
+   * @var string
+   * @access private
+   */
+  var $_time;
+  /**
+   * The event's ID.
+   * @var int
+   * @access private
+   */
+  var $_id;
+  /**
+   * Extension ID.
+   *
+   * If this event is an extension of an event that carried over into the
+   * current date, <var>$_ext_for_id</var> will hold the original event's date.
+   *
+   * @var mixed
+   * @access private
+   */
+  var $_ext_for_id;
+  /**
+   * The event's priority.
+   * @var int
+   * @access private
+   */
+  var $_priority;
+  /**
+   * The event's access level.
+   * @var string
+   * @access private
+   */
+  var $_access;
+  /**
+   * The event's duration in minutes.
+   * @var int
+   * @access private
+   */
+  var $_duration;
+  /**
+   * The event's status.
+   * @var string
+   * @access private
+   */
+  var $_status;
+  /**
+   * The event's category ID.
+   * @var int
+   * @access private
+   */
+  var $_category;
+  /**
+   * The event's owner.
+   * @var mixed
+   * @access private
+   */
+  var $_login;
+
+  /**
+   * Creates a new Event.
+   *
+   * @param string $name        Name of the event
+   * @param string $description Event's description
+   * @param string $date        Event's date (in YYYYMMDD format)
+   * @param string $time        Event's time (in HHMMSS format)
+   * @param int    $id          Event's ID
+   * @param mixed  $ext_for_id  Event's extension ID (or '' for none)
+   * @param int    $priority    Event's priority
+   * @param string $access      Event's access level
+   * @param int    $duration    Event's duration (in minutes)
+   * @param string $status      Event's status
+   * @param mixed  $category    Event's category ID
+   * @param string $login       Event's owner
+   *
+   * @return Event The new Event
+   *
+   * @access public
+   */
+  function Event ( $name, $description, $date, $time, $id, $ext_for_id,
+                   $priority, $access, $duration, $status, $category, $login ) {
+    $this->_name = $name;
+    $this->_description = $description;
+    $this->_date = $date;
+    $this->_time = $time;
+    $this->_id = $id;
+    $this->_ext_for_id = $ext_for_id;
+    $this->_priority = $priority;
+    $this->_access = $access;
+    $this->_duration = $duration;
+    $this->_status = $status;
+    $this->_category = $category;
+    $this->_login = $login;
+  }
+
+  /**
+   * Gets the event's name
+   *
+   * @return string The event's name
+   *
+   * @access public
+   */
+  function get_name () {
+    return $this->_name;
+  }
+
+  /**
+   * Gets the event's description
+   *
+   * @return string The event's description
+   *
+   * @access public
+   */
+  function get_description () {
+    return $this->_description;
+  }
+
+  /**
+   * Gets the event's date
+   *
+   * @return string The event's date (in YYYYMMDD format)
+   *
+   * @access public
+   */
+  function get_date () {
+    return $this->_date;
+  }
+
+  /**
+   * Gets the event's time
+   *
+   * @return string The event's time (in HHMMSS format)
+   *
+   * @access public
+   */
+  function get_time () {
+    return $this->_time;
+  }
+
+  /**
+   * Gets the event's ID
+   *
+   * @return int The event's ID
+   *
+   * @access public
+   */
+  function get_id () {
+    return $this->_id;
+  }
+
+  /**
+   * Gets the event's extension ID
+   *
+   * @return mixed The event's extension ID (or '' for none)
+   *
+   * @access public
+   */
+  function get_ext_for_id () {
+    return $this->_ext_for_id;
+  }
+
+  /**
+   * Gets the event's priority
+   *
+   * @return int The event's priority
+   *
+   * @access public
+   */
+  function get_priority () {
+    return $this->_priority;
+  }
+
+  /**
+   * Gets the event's access level
+   *
+   * @return string The event's access level
+   *
+   * @access public
+   */
+  function get_access () {
+    return $this->_access;
+  }
+
+  /**
+   * Gets the event's duration
+   *
+   * @return int The event's duration (in minutes)
+   *
+   * @access public
+   */
+  function get_duration () {
+    return $this->_duration;
+  }
+
+  /**
+   * Gets the event's status
+   *
+   * @return string The event's status
+   *
+   * @access public
+   */
+  function get_status () {
+    return $this->_status;
+  }
+
+  /**
+   * Gets the event's category ID
+   *
+   * @return mixed The event's category ID (or '' for none)
+   *
+   * @access public
+   */
+  function get_category () {
+    return $this->_category;
+  }
+
+  /**
+   * Gets the event's owner
+   *
+   * @return string The event's owner
+   *
+   * @access public
+   */
+  function get_login () {
+    return $this->_login;
+  }
+}
+?>
