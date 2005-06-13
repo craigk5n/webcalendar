@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1219427: icalclient fails to publish alarms
  - Fixed bug 1218113: iCal ATTENDEE error if event is deleted
  - Fixed bug: category was lost wan clicking on prev/next month in month.php
  - Fixed bug 1211406: User Access Control enabled: has been displayed in 2 tabs
