@@ -50,7 +50,7 @@ $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
 if ( ! empty ( $cat_id ) )
   $monthURL = "month.php?cat_id=$cat_id&amp;";
 else
-  $monthURL = 'month.php';
+  $monthURL = 'month.php?';
 display_small_month ( $prevmonth, $prevyear, true, true, "prevmonth",
   $monthURL );
 display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth",
