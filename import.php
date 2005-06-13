@@ -86,7 +86,7 @@ if ( ! $upload_enabled ) {
 <tr><td>
 	<label for="importtype"><?php etranslate("Import format")?>:</label></td><td>
 		<select name="ImportType" id="importtype">
-			<option value="PALMDESKTOP">Palm Desktop &lt; v4.1.1</option>
+			<option value="PALMDESKTOP">Palm Desktop</option>
 			<option value="VCAL">vCal</option>
 			<option value="ICAL">iCal</option>
 		</select>
