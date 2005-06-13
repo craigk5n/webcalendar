@@ -1,0 +1,168 @@
+<?php
+/**
+ * Declares the RptEvent class.
+ *
+ * @author Adam Roben <adam.roben@gmail.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ * @subpackage Events
+ */
+
+/**
+ * An repeating event parameter object.
+ *
+ * This is a parameter object. It only has simple accessors.
+ */
+class RptEvent extends Event {
+  /**
+   * The type of repeat.
+   * @var string
+   * @access private
+   */
+  var $_rpt_type;
+  /**
+   * The end date of the repetition.
+   * @var string
+   * @access private
+   */
+  var $_rpt_end;
+  /**
+   * The frequency of the repetition.
+   * @var int
+   * @access private
+   */
+  var $_rpt_frequency;
+  /**
+   * The days each week the event occurs (for weekly events)
+   * @var string
+   * @access private
+   */
+  var $_rpt_days;
+  /**
+   * Dates on which the event should not fall
+   * @var array
+   * @access private
+   */
+  var $_rpt_exceptions;
+
+  /**
+   * Creates a new RptEvent.
+   *
+   * @param string $name        Name of the event
+   * @param string $description Event's description
+   * @param string $date        Event's date (in YYYYMMDD format)
+   * @param string $time        Event's time (in HHMMSS format)
+   * @param int    $id          Event's ID
+   * @param mixed  $ext_for_id  Event's extension ID (or '' for none)
+   * @param int    $priority    Event's priority
+   * @param string $access      Event's access level
+   * @param int    $duration    Event's duration (in minutes)
+   * @param string $status      Event's status
+   * @param mixed  $category    Event's category ID
+   * @param string $login       Event's owner
+   * @param string $type        Event's repeat type
+   * @param string $end         End date for repetition
+   * @param int    $frequency   Frequency of repetition
+   * @param string $days        Days on which the event falls (for weekly events)
+   * @param array  $exceptions  Dates on which the event should not occur
+   *
+   * @return Event The new Event
+   *
+   * @access public
+   */
+  function RptEvent ( $name, $description, $date, $time, $id, $ext_for_id,
+                      $priority, $access, $duration, $status, $category, $login,
+                      $type, $end, $frequency, $days, $exceptions ) {
+
+    /* Silly PHP4 hack */
+    $parent = get_parent_class ( $this );
+
+    parent::$parent ( $name, $description, $date, $time, $id, $ext_for_id,
+                      $priority, $access, $duration, $status, $category, $login );
+
+    $this->_rpt_type = $type;
+    $this->_rpt_end = $end;
+    $this->_rpt_frequency = $frequency;
+    $this->_rpt_days = $days;
+    $this->_rpt_exceptions = $exceptions;
+  }
+
+  /**
+   * Gets the event's name
+   *
+   * @return string The event's name
+   *
+   * @access public
+   */
+  function get_rpt_type () {
+    return $this->_rpt_type;
+  }
+
+  /**
+   * Gets the event's repeat type
+   *
+   * Can be one of:
+   * - daily
+   * - weekly
+   * - monthlyByDay
+   * - monthlyByDayR
+   * - monthlyByDate
+   * - yearly
+   *
+   * @return string The event's repeat type
+   *
+   * @access public
+   */
+  function get_rpt_end () {
+    return $this->_rpt_end;
+  }
+
+  /**
+   * Gets the event's repeat frequency
+   *
+   * @return int The event's repeat frequency
+   *
+   * @access public
+   */
+  function get_rpt_frequency () {
+    return $this->_rpt_frequency;
+  }
+
+  /**
+   * Gets the days on which the event falls.
+   *
+   * This is only for weekly events
+   *
+   * @return string The days on which the event falls
+   *
+   * @access public
+   */
+  function get_rpt_days () {
+    return $this->_rpt_days;
+  }
+
+  /**
+   * Gets the event's exception dates
+   *
+   * @return array The event's exception dates
+   *
+   * @access public
+   */
+  function get_rpt_exceptions () {
+    return $this->_rpt_exceptions;
+  }
+
+  /**
+   * Adds an exception to this event
+   *
+   * @param string $exception Date of exception (in YYYYMMDD format)
+   *
+   * @access public
+   */
+  function add_rpt_exception ( $exception ) {
+    $this->_rpt_exceptions[] = $exception;
+  }
+}
+?>

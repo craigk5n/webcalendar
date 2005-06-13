@@ -20,6 +20,9 @@
  *
  * What gets called:
  *
+ * - require_once 'includes/classes/Event.class';
+ * - require_once 'includes/classes/RptEvent.class';
+ * - include_once 'includes/assert.php';
  * - include_once 'includes/config.php';
  * - include_once 'includes/php-dbi.php';
  * - include_once 'includes/functions.php';
@@ -70,6 +73,9 @@ $DMW = in_array($SCRIPT, $special);
 // Unset some variables that shouldn't be set
 unset($user_inc);
  
+require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
+
 include_once 'includes/assert.php';
 include_once 'includes/config.php';
 include_once 'includes/php-dbi.php';
