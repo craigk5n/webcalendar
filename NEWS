@@ -12,6 +12,7 @@ Version 1.1.0-CVS (?? ??? 2005)
   - Other bugs fixed:
       Category was lost wan clicking on prev/next month in month.php
   - New Features / Enhancements / Changes:
+    + Palm Desktop datebook import works for versions 4.1.1 and newer
     + Added logic to only permit setting persistent connections if 
       allowed and not CGI
     + Added ability to delete user info from webcal tables for ldap and postnuke auth
