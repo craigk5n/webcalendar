@@ -39,6 +39,8 @@ include "includes/php-dbi.php";
 include "includes/functions.php";
 include "includes/$user_inc";
 include "includes/connect.php";
+include "includes/classes/Event.class";
+include "includes/classes/RptEvent.class";
 
 load_global_settings ();
 
