@@ -94,7 +94,7 @@ sub ReadDateBook {
   close DATEBOOK;
 
   # First, check the initial 4 byte "tag" field.
-  $Tag = ReadByteString(4);
+  $Tag = ReadLong();
 
   # Next, figure out what version of datebook.dat we are using.
   #  - prior to 4.1.1 the next field was the FileName
@@ -225,8 +225,11 @@ sub ReadEntry {
   # Skip private records if $exc_private
   if (($exc_private) && ($Entry{Private} == 1)) {
     return 0;
-  # Skip Record if not in Palm (no RecordID) or marked for deletion
-  } elsif (($Entry{RecordID} == 0) || ($Entry{Status} == 129) || ($Entry{Status} == 4)){
+  # Skip Record if not in Palm (no RecordID)
+  } elsif ($Entry{RecordID} == 0){
+    return 0;
+  # Skip Record if marked for deletion (4=delete, 128=sync'd:delete+archive, 129=Not sync'd:delete+archive)
+  } elsif (($Entry{Status} == 128) || ($Entry{Status} == 129) || ($Entry{Status} == 4)){
     return 0;
   # Skip events that are past endtime (except repeats that aren't expired) unless $inc_expired
   } elsif (($Entry{EndTime} < time()) && (!$Entry{Repeat}) && (!$inc_expired)){
