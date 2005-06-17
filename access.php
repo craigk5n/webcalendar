@@ -150,7 +150,7 @@ if ( ! empty ( $user ) ) {
     $res = dbi_query ( "SELECT cal_other_user, cal_can_view, " .
       "cal_can_edit, cal_can_delete, cal_can_approve " .
       "FROM webcal_access_user WHERE cal_login = '$user'" );
-    assert ( $res );
+    assert ( '$res' );
     $otherperm = array ();
     while ( $row = dbi_fetch_row ( $res ) ) {
       $otherperm[$row[0]] = array (

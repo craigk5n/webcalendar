@@ -225,7 +225,7 @@ function access_load_user_permissions ( $user )
 {
   global $access_other_cals;
 
-  assert ( ! empty ( $user ) );
+  assert ( '! empty ( $user )' );
 
   // Don't run this query twice
   if ( ! empty ( $access_other_cals[$user] ) )
@@ -235,7 +235,7 @@ function access_load_user_permissions ( $user )
     "cal_can_view, cal_can_edit, cal_can_delete, cal_can_approve " .
     "FROM webcal_access_user WHERE cal_login = '$user'";
   $res = dbi_query ( $sql );
-  assert ( $res );
+  assert ( '$res' );
   while ( $row = dbi_fetch_row ( $res ) ) {
     $key = $row[0] . "." . $row[1];
     $access_other_cals[$key] = array (
@@ -300,7 +300,7 @@ function access_load_user_functions ( $user )
   for ( $i = 0; $i < count ( $user ) && empty ( $ret ); $i++ )  {
     $res = dbi_query ( "SELECT cal_permissions FROM webcal_access_function " .
       "WHERE cal_login = '" . $users[$i] . "'" );
-    assert ( $res );
+    assert ( '$res' );
     if ( $row = dbi_fetch_row ( $res ) ) {
       $ret = $row[0];
     }
@@ -332,7 +332,7 @@ function access_init ( $user="" )
   if ( empty ( $user ) && ! empty ( $login ) )
     $user = $login;
 
-  assert ( ! empty ( $user ) );
+  assert ( '! empty ( $user )' );
 
   $access_user = access_load_user_functions ( $user );
 
@@ -356,8 +356,8 @@ function access_can_access_function ( $function, $user="" )
   if ( empty ( $user ) && ! empty ( $login ) )
     $user = $login;
 
-  assert ( ! empty ( $user ) );
-  assert ( isset ( $function ) );
+  assert ( '! empty ( $user )' );
+  assert ( 'isset ( $function )' );
 
   $access = access_load_user_functions ( $user );
 
@@ -365,7 +365,7 @@ function access_can_access_function ( $function, $user="" )
   if ( empty ( $yesno ) )
     $yesno = get_default_function_access ( $function );
   //echo "yesno = $yesno <br/>\n";
-  assert ( ! empty ( $yesno ) );
+  assert ( '! empty ( $yesno )' );
   
   return ( $yesno == 'Y' );
 }
@@ -384,8 +384,8 @@ function access_can_view_user_calendar ( $other_user, $cur_user='' )
   if ( empty ( $cur_user ) && ! empty ( $login ) )
     $cur_user = $login;
 
-  assert ( ! empty ( $other_user ) );
-  assert ( ! empty ( $cur_user ) );
+  assert ( '! empty ( $other_user )' );
+  assert ( '! empty ( $cur_user )' );
 
   // User can always access their own calendar, and we don't store
   // that in the database.
@@ -421,8 +421,8 @@ function access_can_approve_user_calendar ( $other_user, $cur_user='' )
   if ( empty ( $cur_user ) && ! empty ( $login ) )
     $cur_user = $login;
 
-  assert ( ! empty ( $other_user ) );
-  assert ( ! empty ( $cur_user ) );
+  assert ( '! empty ( $other_user )' );
+  assert ( '! empty ( $cur_user )' );
 
   // User can always access their own calendar, and we don't store
   // that in the database.
@@ -458,8 +458,8 @@ function access_can_delete_user_calendar ( $other_user, $cur_user='' )
   if ( empty ( $cur_user ) && ! empty ( $login ) )
     $cur_user = $login;
 
-  assert ( ! empty ( $other_user ) );
-  assert ( ! empty ( $cur_user ) );
+  assert ( '! empty ( $other_user )' );
+  assert ( '! empty ( $cur_user )' );
 
   // User can always access their own calendar, and we don't store
   // that in the database.
@@ -502,12 +502,12 @@ function access_can_view_page ( $page="", $user="" )
   if ( empty ( $user ) && ! empty ( $login ) )
     $user = $login;
 
-  assert ( ! empty ( $user ) );
+  assert ( '! empty ( $user )' );
 
   if ( empty ( $page ) && ! empty ( $PHP_SELF ) )
     $page = $PHP_SELF;
 
-  assert ( ! empty ( $page ) );
+  assert ( '! empty ( $page )' );
 
   $page = basename ( $page );
   // First, check list of exceptions to our rules
@@ -536,11 +536,11 @@ function access_can_view_page ( $page="", $user="" )
     $access = access_load_user_functions ( $user );
   }
 
-  assert ( ! empty ( $access ) );
+  assert ( '! empty ( $access )' );
 
   // If we did not find a page id, then this is also a WebCalendar bug.
   // (Someone needs to add another entry in the $page_lookup[] array.)
-  assert ( $page_id >= 0 );
+  assert ( '$page_id >= 0' );
 
   // Now that we know which function (page_id), see if the user can
   // access it.
@@ -554,7 +554,7 @@ function access_can_view_page ( $page="", $user="" )
   }
 
   //echo "yesno = $yesno <br/>\n";
-  assert ( ! empty ( $yesno ) );
+  assert ( '! empty ( $yesno )' );
   
   return ( $yesno == 'Y' );
 }
