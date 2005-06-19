@@ -42,6 +42,10 @@
  *	If $FREEBUSY_ENABLED is not 'Y' (set in each user's
  *	  Preferences), do not allow.
  */
+
+require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
+
 include "includes/config.php";
 include "includes/php-dbi.php";
 include "includes/functions.php";

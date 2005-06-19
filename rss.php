@@ -38,6 +38,9 @@
  *	We do not include unapproved events in the RSS feed.
  */
 
+require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
+
 include "includes/config.php";
 include "includes/php-dbi.php";
 include "includes/functions.php";
