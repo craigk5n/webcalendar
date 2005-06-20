@@ -126,6 +126,8 @@ foreach ( array ( "db_type", "db_host", "db_login", "db_password" ) as $s ) {
 $readonly = preg_match ( "/(1|yes|true|on)/i",
   $settings['readonly'] ) ? 'Y' : 'N';
 
+if ( empty ( $settings['mode'] ) )
+  $settings['mode'] = 'prod';
 $run_mode = preg_match ( "/(dev)/i",
   $settings['mode'] ) ? 'dev' : 'prod';
 
