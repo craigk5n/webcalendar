@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added new naming conventions to Developer's Guide, fixed spelling mistakes,
+   XHTML validation, and formatting consistency
  - Patch 1220042: Make arguments to assert() strings so we get error messages
  - Patch 1208257: use event object for parameters
  - Palm Desktop datebook import works for versions 4.1.1 and newer
