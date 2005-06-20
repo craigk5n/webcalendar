@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -87,8 +86,9 @@ h2 {
   <li><a href="#intro">Introduction</a></li>
   <li><a href="#requirements">System Requirements</a></li>
   <li><a href="#getcode">Getting The Code</a></li>
-  <li><a href="#conventions">Conventions</a></li>
-		<li><a href="#standards">Coding Standards</a></li>
+  <li><a href="#conventions">Naming Conventions</a></li>
+  <li><a href="#standards">Coding Standards</a></li>
+  <li><a href="#changelog">ChangeLog/NEWS</a></li>
   <li><a href="#patch">Creating a Patch</a></li>
   <li><a href="#translations">Translations and Languages</a></li>
   <li><a href="#faq">FAQ</a></li>
@@ -104,7 +104,7 @@ h2 {
   work on PHP5, but testing has not been completed yet.)
 </p>
 
-<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">top</a></div>
 <hr />
 
 <a name="Tools"></a>
@@ -112,38 +112,34 @@ h2 {
 <p>The following tools will be helpful in WebCalendar development:
 </p>
 
-<ul>
-  <li><a href="http://www.perl.org">perl</a>:
-      Perl is used to check translation files to see what translations
-      are missing.
-      If you are using Windows, perl is included as part of the
-      <a href="http://www.cygwin.com">cygwin</a> package.
-      </li>
-  <li>make: The "make" command is used when generating WebCalendar
-      documentation in the <tt>docs</tt> directory.
-      The "make" command is standard on Linux if you install
-      certain development packages.
-      If you are using Windows, make is included as part of the
-      <a href="http://www.cygwin.com">cygwin</a> package.
-      </li>
-  <li><a href="http://www.gnu.org/software/patch/patch.html">patch</a>:
-      The "patch" command is used to apply patches posted
-      on the SourceForge patches area.
-      </li>
-  <li>diff: The "diff" command is used to create patches posted
-      on the SourceForge patches area.
-      </li>
-  <li><a href="https://www.cvshome.org/">CVS</a>:
-      Configuration management is managed using CVS.
-      </li>
-  <li>Access to Internet Explorer, Mozilla/Firefox, 
-      and Apple Safari.  We try to test on all three of these
-      platforms whenever we make any HTML or JavaScript changes.
-      If you do not have access to all these, please test your changes
-      on as many of these browsers as you have access to.
-      </li>
+<dl>
+  <dt><a href="http://www.perl.org">perl</a></dt>
+  <dd>Perl is used to check translation files to see what translations are
+  missing.  If you are using Windows, perl is included as part of the <a
+    href="http://www.cygwin.com">cygwin</a> package.</dd>
 
-</ul>
+  <dt>make</dt>
+  <dd>The "make" command is used when generating WebCalendar documentation in
+  the <tt>docs</tt> directory.  The "make" command is standard on Linux if you
+  install certain development packages.  If you are using Windows, make is
+  included as part of the <a href="http://www.cygwin.com">cygwin</a> package.</dd>
+
+  <dt><a href="http://www.gnu.org/software/patch/patch.html">patch</a></dt>
+  <dd>The "patch" command is used to apply patches posted on the SourceForge
+  patches area.</dd>
+
+  <dt>diff</dt>
+  <dd>The "diff" command is used to create patches posted on the SourceForge
+  patches area.</dd>
+
+  <dt><a href="https://www.cvshome.org/">CVS</a></dt>
+  <dd>Configuration management is managed using CVS.</dd>
+
+  <dt>Internet Explorer, Mozilla/Firefox, and Apple Safari</dt>
+  <dd>We try to test on all three of these platforms whenever we make any HTML
+  or JavaScript changes.  If you do not have access to all these, please test
+  your changes on as many of these browsers as you have access to.</dd>
+</dl>
 
 <p><span class="tip">TIP</span> If you are developing on a
 Windows system, the <a href="http://www.cygwin.com">Cygwin package</a>
@@ -151,251 +147,298 @@ will provide command line tools that
 include perl, make, patch, diff and cvs.
 </p>
 
-<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">top</a></div>
 <hr />
 
 <a name="getcode"></a>
 <h2>Getting The Code</h2>
 
-<p>You should always be using the latest code in CVS.
-You can obtain the latest code using anonymous CVS.
-(You do not
-need to be an authorized WebCalendar developer).
-Use the following commands to checkout the latest code from
-CVS:
-</p>
-<pre>
-cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/webcalendar login 
-cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/webcalendar co webcalendar
-</pre>
-<p>This will create a <tt>webcalendar</tt> directory.
-You should run these commands from one of the directories that
-your web server is configured to use.
-For example, on some Linux systems, the Apache document root is
-configured to be <tt>/var/www/html</tt>.  So,
-you would change directories to that directories before
-checking the code out of CVS.
-</p>
+<p>You should always be using the latest code in CVS.  You can obtain the
+latest code using anonymous CVS.  (You do not need to be an authorized
+WebCalendar developer).  Use the following commands to checkout the latest code
+from CVS:</p>
 
-<p>You only need to perform this checkout once.
-After the initial checkout, you can update your code with the following
-command (run this command from inside the toplevel WebCalendar directory):
-</p>
-<pre>cvs update -d
-</pre>
-<p>If you have modified any of the WebCalendar files,
-CVS will attempt to merge your changes with any changes to the
-same file in the new code from CVS.
-</p>
-<p>
-For example, if you modified the <tt>includes/functions.php</tt> file
-on your system and a WebCalendar developer also modified this file
-in CVS, then when you perform the CVS update, the changes will be
-merged.  If the merge fails, you will see a file with a <tt>.rej</tt>
-extension and another with <tt>.orig</tt>.
-</p>
+<pre>cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/webcalendar login 
+cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/webcalendar co webcalendar</pre>
 
-<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<p>This will create a <tt>webcalendar</tt> directory.  You should run these
+commands from one of the directories that your web server is configured to use.
+For example, on some Linux systems, the Apache document root is configured to
+be <tt>/var/www/html</tt>.  So, you would change directories to that
+directories before checking the code out of CVS.</p>
+
+<p>You only need to perform this checkout once.  After the initial checkout,
+you can update your code with the following command (run this command from
+inside the toplevel WebCalendar directory):</p>
+
+<pre>cvs update -d</pre>
+
+<p>If you have modified any of the WebCalendar files, CVS will attempt to merge
+your changes with any changes to the same file in the new code from CVS.</p>
+
+<p>For example, if you modified the <tt>includes/functions.php</tt> file on
+your system and a WebCalendar developer also modified this file in CVS, then
+when you perform the CVS update, the changes will be merged.  If the merge
+fails, you will see a file with a <tt>.rej</tt> extension and another with
+<tt>.orig</tt>.</p>
+
+<div class="top"><a href="#" target="_top">top</a></div>
 <a name="conventions"></a>
-<h2>Conventions</h2>
-<p>
-The following conventions have been adopted by WebCalendar (although
-they have not been 100% enforced, so you will see exceptions):
-</p>
-<ul>
-<li>Function names: Use lowercase with an underscore '_' when naming
-  functions.<br/>Example: dbi_query
-  </li>
-<li>Database table names: All db tables are prefixed with "webcal_" and
-    are lowercase using underscores.
-    <br/>Example: webcal_user_pref
-    </li>
-<li>PHP function comments: <a href="phpdoc/" title="WebCalendar Function Documenation">Function documentation</a> is generated using
-    <a href="http://www.phpdoc.org/" title="phpDocumentor">phpDocumentor</a>.
-    Each function should be preceded by a DocBlock.  See the phpDocumentor website for
-    <a href="http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_phpDocumentor.howto.pkg.html#basics.docblock"
-      title="DocBlocks">information about DocBlocks and DocBlock syntax</a>, and see
-    <a href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/includes/functions.php?view=markup"><tt>includes/functions.php</tt></a>
-    for examples.
-    </li>
-<li>ChangeLog: if you have access to commit your changes to CVS, please
-   put an entry at the top of the ChangeLog file that describes the
-   change.  If the change fixes a specific SourceForge bug, then
-   include the bug id in the description.
-   </li>
-</ul>
+<h2>Naming Conventions</h2>
 
-<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<p>The following conventions have been adopted by WebCalendar (although they
+have not been 100% enforced, so you will see exceptions):</p>
+
+<dl>
+  <dt>Class Names</dt>
+  <dd>Classes should be named using descriptive, full words. Abbreviations
+  should be avoided except in cases of standard acronyms such as HTML, HTTP,
+  etc. Names should be in UpperCamelCaps. Examples:
+    <ul class="example">
+      <li>RepeatingEvent</li>
+      <li>WebCalendarSettings</li>
+    </ul>
+
+    Classes should be defined in files contained in <tt>includes/classes/</tt>.
+    Filenames should be of the form ClassName.class. There should only be one
+    class defined per file.
+  </dd>
+
+  <dt>Method/Function Names</dt>
+  <dd>Methods and functions should be named with short verb phrases.
+  Methods/functions which return a boolean should begin with a verb which
+  implies a yes/no answer (e.g. 'is' or 'has'). Names should be in
+  lowerCamelCaps. Examples:
+    <ul class="example">
+      <li>getPostValue()</li>
+      <li>saveEvent()</li>
+      <li>isAllDay()</li>
+    </ul>
+  </dd>
+
+  <dt>Variable Names</dt>
+  <dd>Variable names should be descriptive noun phrases. Counter variables
+  should be single letters (commonly 'i', 'j', or 'k'). Names should be in
+  lowerCamelCaps. Examples:
+    <ul class="example">
+      <li>$passwordHash</li>
+      <li>$monthName</li>
+      <li>$i</li>
+    </ul>
+  </dd>
+
+  <dt>Database Table Names</dt>
+  <dd>Database table names should be prefixed with 'webcal_'. Names should be
+  in lowercase with words_separated_by_underscores. Examples:
+    <ul class="example">
+      <li>webcal_user_pref</li>
+      <li>webcal_entry</li>
+    </ul>
+  </dd>
+</dl>
+
+<div class="top"><a href="#" target="_top">top</a></div>
 <a name="standards"></a>
 <h2>Coding Standards</h2>
-<p>
-The following coding standards have been adopted by WebCalendar (although
-they have not been 100% implemented).
-</p>
-<ul>
-<li>Indenting: Two spaces (ASCII 0x20) for each level. Wrapped lines should also be
-    indented 2 spaces if these spaces will not affect output.  
-    </li>
-<li>Tabs (ASCII 0x09): This character will not be used. Replace all
-     occurrences with ASCII 0x20. This may affect indenting, so please
-					double check before committing to CVS or posting.  
-    </li>
-<li>File Format: Unix format only (LF ASCII 0x0A), no Windows or Mac format files.
-    </li>
-<li>PHP file comments: Each file should have a file header.
+
+<p>The following coding standards have been adopted by WebCalendar (although
+they have not been 100% implemented).</p>
+
+<dl>
+  <dt>Indenting</dt>
+  <dd>Two spaces (ASCII 0x20) for each level. Wrapped lines should also be
+  indented 2 spaces if these spaces will not affect output. Tabs (ASCII 0x09)
+  will not be used. Replace all occurrences with ASCII 0x20. This may affect
+  indenting, so please double check before committing to CVS or posting.</dd>
+
+  <dt>File Format</dt>
+  <dd>Unix format only (LF ASCII 0x0A), no Windows or Mac format files.</dd>
+
+  <dt>PHP file comments</dt>
+  <dd>Each file should have a file header.
     <br/>
-    See <a href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/report.php?view=markup"><tt>report.php</tt></a> as an example.
-    </li>
-<li>Use double quotes around html attributes
-    </li>
-<li>If/Else: Always us {} when not using inline format. Either of the following
-    is acceptable based on logic complexity.
-  <pre>				
-if ( foo == 1 ) {
+    See <a
+      href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/report.php?view=markup"><tt>report.php</tt></a>
+    as an example.</dd>
+
+  <dt>PHP function comments</dt>
+  <dd><a href="phpdoc/" title="WebCalendar Function Documenation">Function
+    documentation</a> is generated using <a href="http://www.phpdoc.org/"
+    title="phpDocumentor">phpDocumentor</a>.  Each function should be preceded
+  by a DocBlock.  See the phpDocumentor website for <a
+    href="http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_phpDocumentor.howto.pkg.html#basics.docblock"
+    title="DocBlocks">information about DocBlocks and DocBlock syntax</a>, and
+  see <a
+    href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/includes/functions.php?view=markup"><tt>includes/functions.php</tt></a>
+  for examples.</dd>
+
+  <dt>XHTML</dt>
+  <dd>All XHTML should conform to XHTML 1.0 Transitional. Use double quotes around HTML attributes.</dd>
+
+  <dt>If/Else</dt>
+  <dd>Always use {} when not using the ternary operator (?:). Either of the
+  following is acceptable based on logic complexity:
+
+<pre>if ( foo == 1 ) {
   bar = true;
 } else {
   bar = false;
 }
 or  
-bar = ( foo == 1 )? true : false ;
-			</pre>
-    </li>
-<li>Function Calls/Declarations: Use spaces inside and around  parenthesis ()
-  <pre>
-Declaration: function getGetValue ( $name ) {
-Call: bar = getGetValue ( $name );
-</pre>
-    </li>
-</ul>
+bar = ( foo == 1 )? true : false ;</pre>
+  </dd>
 
-<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+  <dt>Function Calls/Declarations</dt>
+  <dd>Use spaces inside and around  parenthesis ()
+
+<pre>Declaration: function getGetValue ( $name ) {
+Call: bar = getGetValue ( $name );</pre>
+
+  </dd>
+</dl>
+
+<div class="top"><a href="#" target="_top">top</a></div>
+<a name="changelog"></a>
+<h2>ChangeLog/NEWS</h2>
+
+<dl>
+  <dt>ChangeLog</dt>
+  <dd>If you have access to commit your changes to CVS, please
+  put an entry at the top of the ChangeLog file that describes the
+  change.  If the change fixes a specific SourceForge bug, then
+  include the bug id in the description.</dd>
+
+  <dt>NEWS</dt>
+  <dd>The NEWS file should document user-visible changes between each
+  WebCalendar release. This includes new features and significant bug
+  fixes.</dd>
+ </dl>
+
+<div class="top"><a href="#" target="_top">top</a></div>
 <a name="patch"></a>
 <h2>Creating a Patch File</h2>
 
 <p>TODO</p>
 
 
-<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">top</a></div>
 <a name="translations"></a>
 <h2>Translations and Languages</h2>
 
-<p>
-When adding or modifying WebCalendar code, all displayed text should be translatable.
-The following tips will ensure new text can be translated quickly and efficiently.</p>
-<ul>
-<li>Translate: All displayable text should be sent to the <em>translate
-    ()</em> function, which returns the text translated in the user's language of choice. 
-    A variation of this function is <em>etranslate ()</em>, which includes and echo command.
-    </li>
-<li>Htmlentities: 	When used, this function tag should include the current charset when displaying database
-    results. This will be most important when dealing with languages such as Japanese that
-				tend to contain charactes that would otherwise be non-displayable. Although this is not the perfect
-				solution, it seems to suffice for our purposes. Possibly, a  better technique would be to 
-				use the charset of the original creator of the data, but this is beyond current capabilities.	<br />
-				For reference see:
-	<pre><a href="http://us3.php.net/manual/en/function.htmlentities.php">
-http://us3.php.net/manual/en/function.htmlentities.php</a>
-	</pre>
-				</li>	
-<li>TODO: Add procedures for updating Language.txt files
-    </li>	
-</ul>
+<p>When adding or modifying WebCalendar code, all displayed text should be
+translatable.  The following tips will ensure new text can be translated
+quickly and efficiently.</p>
 
-<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<dl>
+  <dt>Translate</dt>
+  <dd>All displayable text should be sent to the <em>translate ()</em>
+  function, which returns the text translated in the user's language of choice.
+  A variation of this function is <em>etranslate ()</em>, which includes and
+  echo command.</dd>
+
+  <dt>Htmlentities</dt>
+  <dd>When used, this function tag should include the current charset when
+  displaying database results. This will be most important when dealing with
+  languages such as Japanese that tend to contain charactes that would
+  otherwise be non-displayable. Although this is not the perfect solution, it
+  seems to suffice for our purposes. Possibly, a  better technique would be to
+  use the charset of the original creator of the data, but this is beyond
+  current capabilities.
+  <br />
+  For reference see: <a
+    href="http://us3.php.net/manual/en/function.htmlentities.php">
+  http://us3.php.net/manual/en/function.htmlentities.php</a></dd>
+
+  <dt>TODO</dt>
+  <dd>Add procedures for updating Language.txt files.</dd>	
+</dl>
+
+<div class="top"><a href="#" target="_top">top</a></div>
 <a name="faq"></a>
 <h2>Frequently Asked Questions</h2>
 <dl>
 <!-- START FAQ: Developing -->
   <dt>Why aren't you using PHP sessions?</dt>
-  <dd>We are still considering using PHP4 sessions.
-      In fact, the <tt>install/index.php</tt> page <i>does</i>
-      use PHP sessions.
-      The cookie-based solution that WebCalendar uses is simple,
-      and it will work with all versions of PHP.
-      </dd>
+  <dd>We are still considering using PHP4 sessions.  In fact, the
+  <tt>install/index.php</tt> page <i>does</i> use PHP sessions.  The
+  cookie-based solution that WebCalendar uses is simple, and it will work with
+  all versions of PHP.</dd>
+
   <dt>Why aren't you using ADODB for database access?</dt>
-  <dd>Again, this would be overkill for what we need.  ADODB is a fairly
-      large project,
-      so I'm partial to my leaner php-dbi.php solution.</dd>
+  <dd>Again, this would be overkill for what we need.  ADODB is a fairly large
+  project, so I'm partial to my leaner php-dbi.php solution.</dd>
+
   <dt>Why aren't you using the PEAR database functions?</dt>
-  <dd>WebCalendar pre-dates the PEAR database functions.
-      There does not seem to be sufficient reason to switch
-      from our existing code at this point.</dd>
+  <dd>WebCalendar pre-dates the PEAR database functions.  There does not seem
+  to be sufficient reason to switch from our existing code at this point.</dd>
+
   <dt>Why aren't you using a template engine like smarty?</dt>
-  <dd>WebCalendar pre-dates most of the template engines out there.
-      We are currently evaluating some of the templating options
-      and may consider moving to one of the template systems in
-      the future.</dd>
+  <dd>WebCalendar pre-dates most of the template engines out there.  We are
+  currently evaluating some of the templating options and may consider moving
+  to one of the template systems in the future.</dd>
+
   <dt>How do I install a patch?</dt>
-  <dd>Different patches are applied differently. 
-      Some patches just contain an updated file.
-      In that case, you should be able to use replace the old file
-      with the new (assuming the new file and your install are based
-      on the same version of WebCalendar). <br/><br/>
-      Others are patch files, which usually have a <tt>.diff</tt>
-      or <tt>.patch</tt> file extension.
-      In order to use one of these files, you need the
-      <a href="http://www.gnu.org/software/patch/patch.html">GNU patch</a>
-      program.
-      (This should be installed on all Linux systems and you can get a
-      version for Windows. I use the patch program that comes with
-      <a href="http://www.cygwin.com">cygwin</a> on windows.)
-      I would recommend testing the patch on your install first using the
-      <tt>--dry-run</tt> option. 
-      <br/><br/>
-      For example, if the patch file is called <tt>calmods.diff</tt>,
-      then you would use:
-      <pre>patch --dry-run < calmods.diff</pre>
-      If the program says it cannot determine which file to patch,
-      try adding -p1: 
-      <pre>patch --dry-run -p1 < calmods.diff </pre>
-      <br/><br/>
-      If it goes through all the changes successfully, do the same
-      command without the <tt>--dry-run</tt> option to install the patch.
-      If it says "hunk failed", then the patch cannot be applied without
-      hand-merging files. This essentially means that the patch was
-      based on a version of WebCalendar that is too different than
-      the version that you have installed, so it was unable to determine
-      how to apply some of the changes in the patch file. 
-      </dd>
+  <dd>Different patches are applied differently.  Some patches just contain an
+  updated file.  In that case, you should be able to use replace the old file
+  with the new (assuming the new file and your install are based on the same
+  version of WebCalendar).
+  <br/><br/>
+  Others are patch files, which usually have a <tt>.diff</tt> or
+  <tt>.patch</tt> file extension.  In order to use one of these files, you need
+  the <a href="http://www.gnu.org/software/patch/patch.html">GNU patch</a>
+  program.  (This should be installed on all Linux systems and you can get a
+  version for Windows. I use the patch program that comes with <a
+    href="http://www.cygwin.com">cygwin</a> on windows.) I would recommend
+  testing the patch on your install first using the <tt>--dry-run</tt> option. 
+  <br/><br/>
+  For example, if the patch file is called <tt>calmods.diff</tt>, then you
+  would use:
+  <pre>patch --dry-run &lt; calmods.diff</pre>
+  If the program says it cannot determine which file to patch, try adding -p1:
+  <pre>patch --dry-run -p1 &lt; calmods.diff</pre>
+  <br/><br/>
+  If it goes through all the changes successfully, do the same command without
+  the <tt>--dry-run</tt> option to install the patch.  If it says "hunk
+  failed", then the patch cannot be applied without hand-merging files. This
+  essentially means that the patch was based on a version of WebCalendar that
+  is too different than the version that you have installed, so it was unable
+  to determine how to apply some of the changes in the patch file.</dd>
  
 <!-- END FAQ -->
 </dl>
 
-<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">top</a></div>
 <a name="resources"></a>
 <h2>Resources</h2>
-<p>
-The following resources may be helpful:
-</p>
+
+<p>The following resources may be helpful:</p>
 
 <ul>
-<li>The <a href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/TODO?view=markup">TODO</a> file in CVS contains
-  ideas for future enhancements.
-   </li>
-<li>The <a href="http://sourceforge.net/forum/forum.php?forum_id=11587">Open
-  Discussion</a> forum on SourceForge is a good place to ask
-  questions about WebCalendar development.
-  </li>
-<li><a href="http://sourceforge.net/bugs/?group_id=3870">Bug Reports</a>
-  on SourceForge.
-  </li>
-<li><a href="phpdoc/">WebCalendar Function Documentation
-  </li>
-<li><a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/webcalendar/webcalendar/docs/WebCalendar-Database.html?rev=HEAD&amp;content-type=text/html">WebCalendar-Database.html</a> describes the WebCalendar database schema
-  </li>
-<li><a href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/webcalendar/webcalendar/docs/WebCalendar-Styling.html?rev=HEAD&amp;content-type=text/html">WebCalendar-Styling.html</a> describes how WebCalendar uses CSS
-  </li>
+  <li>The <a
+    href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/TODO?view=markup">TODO</a>
+  file in CVS contains ideas for future enhancements.</li>
+  <li>The <a href="http://sourceforge.net/forum/forum.php?forum_id=11587">Open
+    Discussion</a> forum on SourceForge is a good place to ask questions about
+  WebCalendar development.</li>
+  <li><a href="http://sourceforge.net/bugs/?group_id=3870">Bug Reports</a> on
+  SourceForge.</li>
+  <li><a href="phpdoc/">WebCalendar Function Documentation</a></li>
+  <li><a
+    href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/webcalendar/webcalendar/docs/WebCalendar-Database.html?rev=HEAD&amp;content-type=text/html">WebCalendar-Database.html</a>
+  describes the WebCalendar database schema</li>
+  <li><a
+    href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/webcalendar/webcalendar/docs/WebCalendar-Styling.html?rev=HEAD&amp;content-type=text/html">WebCalendar-Styling.html</a>
+  describes how WebCalendar uses CSS</li>
 </ul>
 
-<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<div class="top"><a href="#" target="_top">top</a></div>
 <hr />
 <p>
-<b>Last Update:</b> $Id$
-<br/>
-  <a href="http://validator.w3.org/check?uri=referer"><img 
-    src="http://www.w3.org/Icons/valid-xhtml10" 
-    alt="Valid XHTML 1.0!" class="valid" /></a>
+  <b>Last Update:</b> $Id$
+  <br/>
+  <a href="http://validator.w3.org/check?uri=referer"><img
+    src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!"
+    class="valid" /></a>
 </p>
 </body>
 </html>
