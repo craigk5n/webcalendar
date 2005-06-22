@@ -7,6 +7,7 @@
 # Last update: Nov.25-2003 by Jens Th (photo@jens-th.com)
 # Last updated: 15-Feb-2004 (Nicolaj Rasmussen, drlandau <at> msn <dot> com)
 # Last updated: 21-Mar-2005 (Morten Nielsen, mni <at> it <dot> dk)
+# Last updated: 18-Jun-2005 (Leo Todaro, leotodaro <at> hotmail.com)
 # Translation last updated on 21-March-2005
 #
 #
@@ -55,7 +56,7 @@ Note: Note
 Your user preferences: Dine bruger-indstillinger
 may be affecting the appearance of this page.: kan påvirke udseendet af denne side
 Click here: Tryk her
-to not use your user preferences when viewing this page: ikke at benytte dine bruger-indstillinger når denne side vises
+to not use your user preferences when viewing this page: for ikke at benytte dine bruger-indstillinger når denne side vises
 are being ignored while viewing this page.: ignoreres når denne side vises.
 to load your user preferences when viewing this page: for at hente dine bruger-indstillinger når denne side vises
 Save: Gem
@@ -125,31 +126,31 @@ work-hours-help: Specificer den daglige arbejdstid.
 Work hours: Arbejdstid
 From: Fra
 to: til
-disable-priority-field-help: Hvis der vælges "ja" fjernes feltet "Priotet" fra sider med aftale-informationer. Dette giver en mere simpelt brugerflade for begyndere.
+disable-priority-field-help: Hvis der vælges "ja" fjernes feltet "Prioritet" fra sider med aftale-informationer. Dette giver en mere simpel brugerflade for begyndere.
 Disable Priority field: Fjern Prioritets-felt
-disable-access-field-help: Hvis der vælges "ja" fjernes feltet "Adgang" fra sider med aftale-informationer. Dette giver en mere simpelt brugerflade for begyndere.
+disable-access-field-help: Hvis der vælges "ja" fjernes feltet "Adgang" fra sider med aftale-informationer. Dette giver en mere simpel brugerflade for begyndere.
 Disable Access field: Fjern Adgangs-felt
-disable-participants-field-help: Hvis der vælges "ja" fjernes feltet "Deltagere" fra sider med aftale-informationer. Dette giver en mere simpelt brugerflade for begyndere.
+disable-participants-field-help: Hvis der vælges "ja" fjernes feltet "Deltagere" fra sider med aftale-informationer. Dette giver en mere simpel brugerflade for begyndere.
 Disable Participants field: Fjern Deltagere-felt
-disable-repeating-field-help: Hvis der vælges "ja" fjernes feltet "Gentagelse" fra sider med aftale-informationer. Dette giver en mere simpelt brugerflade for begyndere.
+disable-repeating-field-help: Hvis der vælges "ja" fjernes feltet "Gentagelse" fra sider med aftale-informationer. Dette giver en mere simpel brugerflade for begyndere.
 Disable Repeating field: Fjern Gentagelses-felt
 popup-includes-siteextras-help: Hvis slået til, vis brugertilpasset aftale opsætning fra site_extras.php i aftale popup-besked.
 Display Site Extras in popup: Vis Site Extras i popup-besked
-allow-html-description-help: Vis slået til, kan brugere indtaste HTML i aftaebeskrivelsen. Hvis ikke slået til, vil HTML-kode vises som alm. tekst. Advarsel: Hvis dette slåes til kan bruger linke til billeder på andre websider
+allow-html-description-help: Vis slået til, kan brugere indtaste HTML i aftalebeskrivelsen. Hvis ikke slået til, vil HTML-kode vises som alm. tekst. Advarsel: Hvis dette slåes til kan bruger linke til billeder på andre websider
 Allow HTML in Description: Tillad HTML i beskrivelsen
 allow-view-other-help: Angiver om en bruger må se i andre brugeres kalendere
-Allow viewing other user's calendars: Tillad gennemsyn af andres kalendere
+Allow viewing other user's calendars: Tillad visning af andres kalendere
 allow-view-add-help: A '+' ikon bliver inkluderet i visninger. Dette gøre brugere i stand til hurtigt at tilføje nye aftaler til andre brugeres kalendere.
 Include add event link in views: Inkluder "Tilføj aftale" i visninger
 remember-last-login-help: Når slået til bliver brugerens sidste login automatisk udfyldt på login-siden (ikke password) og brugerens indstillinger bliver automatisk hentet (inkl. deres foretrukne farver og sprogvalg).
 Remember last login: Husk sidste login
-conflict-check-help: Kontroller aftale konflikter (2 aftaler der er oprettet til samme tid for den samme person). Hvis denne sættes til "ja" kan du stadig oprettet flere aftaler påm samme tid hvis du godkender advarslen. HVis denne sættes til "nej" bliver der ikke kontrolleret efter aftale konflikter. Du bør sætte denne til "ja" så der bliver tjekket efter konflikter.
+conflict-check-help: Kontroller aftale-konflikter (2 aftaler der er oprettet til samme tid for den samme person). Hvis denne sættes til "ja" kan du stadig oprettet flere aftaler på samme tid hvis du godkender advarslen. HVis denne sættes til "nej" bliver der ikke kontrolleret efter aftale konflikter. Du bør sætte denne til "ja" så der bliver tjekket efter konflikter.
 Check for event conflicts: Check for aftale-konflikter
-conflict-months-help: Hvis konflikt-kontrollering er slået til ("Kontroller aftale konflikter"), angiver dette hvor mange måneder frem der skal tjekkes for konflikter. Hvis det tager lang tid at tilføje nye aftaler, så sæt denne værdi ned.
+conflict-months-help: Hvis konflikt-kontrol er slået til ("Kontroller aftale konflikter"), angiver dette hvor mange måneder frem der skal tjekkes for konflikter. Hvis det tager lang tid at tilføje nye aftaler, så sæt denne værdi ned.
 Conflict checking months: Kontroller månedskonflikter
 conflict-check-override-help: Gør det muligt for brugere at ignorere konflikter og oprette flere aftaler på samme tidspunkt.
-Allow users to override conflicts: Tillad brugere at ignorere aftale konflikter
-limit-appts-help: Gør det muligt for en administrator at sætte begræsning på antallet af aftaler en bruger må have pr. dag.
+Allow users to override conflicts: Tillad brugere at ignorere aftale-konflikter
+limit-appts-help: Gør det muligt for en administrator at sætte begrænsning på antallet af aftaler en bruger må have pr. dag.
 Limit number of timed events per day: Begræns antal aftaler pr. dag
 limit-appts-number-help: Angiver det maksimale antal aftaler en bruger kan have pr. dag.
 Maximum timed events per day: Maximum antal aftaler pr. dag
@@ -164,13 +165,13 @@ plugins-sort-key-help: Angiver en sorteringsnøgle for den valgte plugin. Dette g
 Plugin: Plugin	
 allow-public-access-help: Når slået til kan kalenderen bruges som en offentlig kalender der ikke kræver login.
 Allow public access: Tillad offentlig adgang
-public-access-default-visible: Aftaler i den offentlige kalender vil automtisk optræde i alle brugeres kalendere
+public-access-default-visible: Aftaler i den offentlige kalender vil automatisk optræde i alle brugeres kalendere
 Public access visible by default: Offentlig adgang vises altid
 public-access-default-selected: Når nye aftaler oprettes er brugen "Offentlig adgang" altid valgt som deltager.
 Public access is default participant: Offentlig adgang deltager altid
 public-access-view-others-help: Når kalenderen tilgåes med offentlig adgang, angiver dette om brugeren må se andre brugeres kalendere.
 Public access can view other users: Offentlig adgang kan se andre brugere
-public-access-can-add-help: Når slået til kan brugere, der tilgår kalenderen med offentlig adgang oprette nye aftaler, men disse vil ikke optræde i kalenderen for en administrator accepterer den nye aftale.
+public-access-can-add-help: Når slået til kan brugere, der tilgår kalenderen med offentlig adgang oprette nye aftaler, men disse vil ikke optræde i kalenderen før en administrator accepterer den nye aftale.
 Public access can add events: Offentlig adgang kan tilføje aftaler
 public-access-add-requires-approval-help: Angiver om aftaler tilføjet via en konto med offentlig adgang kræver godkendelse før den bliver vist.
 Public access new events require approval: Nye offentlige aftaler kræver accept
@@ -178,48 +179,48 @@ public-access-sees-participants-help: Hvis slået til, kan brugere som tilgår kal
 Public access can view participants: Offentlig adgang må se andre aftale-deltagere
 groups-enabled-help: Slår understøttelse af grupper til, hvilket gør brugere i stand til at vælge brugere via gruppemedlemsskab.
 Groups enabled: Grupper slået til
-user-sees-his-group-help: Hvis slået til kan brugere ikke se kalender-brugere der ikke er medlem af mindst én af sine egne grupper.
-User sees only his groups: Bruger kan kun se sine egne grupper
-nonuser-enabled-help: Hvis slået til, har administrator brugere mulighed for at tilføje ikke brugertilknyttede kalendere.
+user-sees-his-group-help: Hvis slået til kan brugeren ikke se kalender-brugere der ikke er medlem af mindst én af sine egne grupper.
+User sees only his groups: Bruger kan kun se sine egne grupper.
+nonuser-enabled-help: Hvis slået til, har administrator-brugere mulighed for at tilføje ikke brugertilknyttede kalendere.
 Nonuser enabled: Ikke brugertilknyttede kalendere slået til
 nonuser-list-help: Hvor skal ikke brugertilknyttede kalendere vises i deltagerlisten
 Nonuser list: Vis i deltagerliste i
 Top: Top
 Bottom: Bund
-reports-enabled-help: Hvis slået til kan brugere vælge "Rapporter" i bunden af hver side og ar mulighed for at oprettet bruger-definerede rapporter. Derudover kan administrator-brugere oprettet globale rapporter som vises i bunden af alle sider på alle brugere.
+reports-enabled-help: Hvis slået til kan brugere vælge "Rapporter" i bunden af hver side og har mulighed for at oprettet brugerdefinerede rapporter. Derudover kan administrator-brugere oprettet globale rapporter som vises i bunden af alle sider på alle brugere.
 Reports enabled: Rapporter slået til
-subscriptions-enabled-help: Angiver om eksterne brugere kan abonnere på en WebCalendar-bruger's kalender. Dette sæter dem i stand til at se brugerens aftaler i en Ical-applikation (fx. Apple's iCal eller Mozilla Calendar).
+subscriptions-enabled-help: Angiver om eksterne brugere kan abonnere på en WebCalendar-bruger's kalender. Dette sætter dem i stand til at se brugerens aftaler i en Ical-applikation (fx. Apple's iCal eller Mozilla Calendar).
 Allow remote subscriptions: Tillad eksterne abonnementer
-categories-enabled-help: Slår understøttelse af aftale-katagorier til.
+categories-enabled-help: Slår understøttelse af aftale-kategorier til.
 Categories enabled: Kategorier slået til
 allow-external-users-help: Angiver om en ekstern bruger kan tilføjes til en aftale. Dette gør det muligt for brugere (uden for systemet) at blive angivet som deltagere til en aftale.
 Allow external users: Tillad eksterne brugere
-external-can-receive-notification-help: Når eksterne brugere er slået til samtidig med email udsendelse, så kan eksterne brugere modtage notofikationer når en aftale er tilføjet, opdateret eler slettet (hvis der er angivet en emailadresse for den eksterne bruger)
-External users can receive email notifications: Eksterne brugere kan modtage email notifikationer
-external-can-receive-reminder-help: Når eksterne brugere er slået til samtidig med email udsendelse, så kan eksterne brugere modtage påmindelser når en aftale er tilføjet, opdateret eler slettet (hvis der er angivet en emailadresse for den eksterne bruger)
-External users can receive email reminders: Eksterne brugere kan modtage email påmindelser
+external-can-receive-notification-help: Når eksterne brugere er slået til samtidig med email udsendelse, så kan eksterne brugere modtage notifikationer når en aftale er tilføjet, opdateret eler slettet (hvis der er angivet en emailadresse for den eksterne bruger).
+External users can receive email notifications: Eksterne brugere kan modtage email-notifikationer
+external-can-receive-reminder-help: Når eksterne brugere er slået til samtidig med emailpåmindelser, så kan eksterne brugere modtage påmindelser når en aftale er tilføjet, opdateret eler slettet (hvis der er angivet en emailadresse for den eksterne bruger)
+External users can receive email reminders: Eksterne brugere kan modtage emailpåmindelser
 email-enabled-help: Slår email-afsendelse for notifikationer og påmindelser til/fra. Sæt til "nej" hvis din server ikke er konfigureret til at kunne sende email.
 Email enabled: Email aktiveret
 email-default-sender: Angiver email-adressen der skal benyttes når der afsendes påmindelser.
 Default sender address: Standard afsender-adresse
-Default user settings: Standard bruger indstillinger
+Default user settings: Standard brugerindstillinger
 email-event-reminders-help: Angiver om der skal sendes påmindelser
-Event reminders: Aftale påmindelser
+Event reminders: Aftale-påmindelser
 email-event-added: Angiver om der skal sendes en email notofikation når en aftale tilføjes din kalender.
 Events added to my calendar: Aftaler tilføjet til min kalender
-email-event-updated: Angiver om der skal sendes en email notofikation når en aftale opdateres i din kalender.
+email-event-updated: Angiver om der skal sendes en email notifikation når en aftale opdateres i din kalender.
 Events updated on my calendar: Aftaler opdateret i min kalender
-email-event-deleted: Angiver om der skal sendes en email notofikation når en aftale fjernes fra din kalender.
+email-event-deleted: Angiver om der skal sendes en email notifikation når en aftale fjernes fra din kalender.
 Events removed from my calendar: Aftaler fjernet fra min kalender
 email-event-rejected: Angiver om der skal sendes en email notifikation når en deltager afviser en aftale der findes i din kalender.
-Event rejected by participant: Aftal afvist af deltager
+Event rejected by participant: Aftale afvist af deltager
 Allow user to customize colors: Tillad bruger at ændre farver
 Enable gradient images for background colors: Slå farvegraduering til på baggrundsfarver
 Not available: Ikke tilgængelig
 Document background: Dokumentbaggrund
 Select: Vælg
 Document title: Dokumenttitel
-Document text: Dokument tekst
+Document text: Dokumenttekst
 Table grid color: Farve for tabelrammer
 Table header background: Baggrund for tabeloverskrift
 Table header text: Tabeloverskrift
@@ -319,7 +320,7 @@ You can only create one layer for each user: Du kan kun oprettet ét lag pr. brug
 ###############################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Sletning af brugere er ikke undersøttet
+Deleting users not supported: Sletning af brugere er ikke understøttet
 The passwords were not identical: Kodeordene er ikke identiske
 You have not entered a password: Du har ikke indtastet et kodeord
 Changes successfully saved: Ændringer gemt
@@ -409,7 +410,7 @@ Sat: Lør
 ###############################################
 # Page: help_bug.php
 #
-Report Bug: Rappoter fejl
+Report Bug: Rapportér fejl
 
 
 ###############################################
@@ -418,7 +419,7 @@ Report Bug: Rappoter fejl
 Adding/Editing Calendar Entries: Tilføj/Redigér aftale
 Brief Description: Kort beskrivelse
 brief-description-help: Her skal der stå en kort beskrivelse af aftalen - det bliver vist når man står over aftalen i oversigtskalenderen.
-Full Description: Komplet beskrivelse
+Full Description: Komplet beskrivelse.
 full-description-help: Her kan der stå en komplet beskrivelse af aftalen.
 date-help: Angiver datoen for aftalen.
 time-help: Angiver tidspunktet for aftalen.<br /><i>Dette felt behøver ikke at være udfyldt.</i>
@@ -451,7 +452,7 @@ Import: Importér
 ###############################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Lag er nyttige til at vise andre brugere's aftaler i din egen kalender. Du kan angive brugeren samt den farve du ønsker aftalerne vist i.
+Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Lag er nyttige til at vise andre brugeres aftaler i din egen kalender. Du kan angive brugeren samt den farve du ønsker aftalerne vist i.
 Add/Edit/Delete: Tilføj/Rediger/Slet
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Hvis du vælger "Rediger lag" i Admin-delen i bunden af siden har du mulighed for at slå lag til/fra samt redigere dem.
 Specifies the user that you would like to see displayed in your calendar.: Angiver den bruger du ønsker at vise i din egen kalender.
@@ -515,7 +516,7 @@ by date: efter dato
 Confidential: Fortrolig
 Description: Beskrivelse
 Status: Status
-Waiting for approval: Afvender acceptering
+Waiting for approval: Afventer acceptering
 Deleted: Slettet
 Rejected: Afvist 
 All day event: Aftale for hele dagen 
@@ -529,7 +530,7 @@ before event: før aftale
 External User: Eksterne brugere
 Approve/Confirm entry: Godkend/bekræft aftale
 Reject entry: Afvis aftale
-Set category: Vælg katagori
+Set category: Vælg kategori
 Edit repeating entry for all dates: Rediger gentagne aftaler for alle datoer
 Edit entry for this date: Rediger aftale for denne dag
 Delete repeating event for all dates: Slet gentagne aftaler for alle datoer
@@ -604,7 +605,7 @@ Cancel: Annullér
 #
 Import format: Import format
 Exclude private records: Undlad import af private aftaler
-Overwrite Prior Import: Overskriv tilligere import
+Overwrite Prior Import: Overskriv tidligere import
 
 
 ###############################################
@@ -614,9 +615,9 @@ Invalid login: Ugyldig login
 You must enter a login and password: Du skal indtaste et brugernavn og kodeord
 Username: Brugernavn
 Password: Kodeord
-Save login via cookies so I don't have to login next time: Gem login-informationer i en cookie, så jeg ikke skal logge ind næste gang
+Save login via cookies so I don't have to login next time: Gem login-informationer i en cookie, så jeg ikke behøver indtaste dem næste gang
 Login: Log ind
-Access public calendar: Tilgå offentlig kalender
+Access public calendar: Til offentlig kalender
 cookies-note: <b>OBS:</b> Dette program kræver at cookies er slået til i browseren
 
 
@@ -663,7 +664,7 @@ word characters only: må kun indeholde bogstaver og tal (a-zA-Z_0-9)
 ###############################################
 # Page: help_pref.php
 #
-default-category-help: Angiver den katagori som nye aftaler får som standard.
+default-category-help: Angiver den kategori som nye aftaler får som standard.
 
 
 ###############################################
@@ -726,7 +727,7 @@ Repeat: Gentagelse
 category-help: Angiver aftalens kategori.
 Timed event: Tidsbestemt aftale
 Availability: Tlgængelighed
-external-participants-help: Angiver en liste over deltagere som ikke er kalender-brugere. Disse brugere skal listes én pr. linie og kan godt inkludere email-adresser. Hvis en email-adresse specificeres kan brugeren modtage notofikationer og påmindelser.
+external-participants-help: Angiver en liste over deltagere som ikke er kalender-brugere. Disse brugere skal listes én pr. linie og kan godt inkludere email-adresser. Hvis en email-adresse specificeres kan brugeren modtage notifikationer og påmindelser.
 External Participants: Eksterne deltagere
 Daily: Dagligt
 Weekly: Ugentligt
@@ -774,8 +775,8 @@ Current User: Nuværende bruger
 Include link in trailer: Inkluder link i sidefod
 Include standard header/trailer: Inkluder standard sidehoved/fod
 Date range: Dato område
-Include previous/next links: Inkluder links til forrige/næste
-Include empty dates: Inkluder tomme datoer
+Include previous/next links: Medtag links til forrige/næste
+Include empty dates: Medtag tomme datoer
 Template variables: Skabelon variabler
 Page template: Side skabelon
 Day template: Dags skabelon
@@ -815,8 +816,8 @@ Records deleted from: Poster slettet fra
 ###############################################
 # Page: set_entry_cat.php
 #
-You have not added any categories: Du har ikke tilføjet nogen katagorier
-Set Category: Vælg katagori
+You have not added any categories: Du har ikke tilføjet nogen kategorier
+Set Category: Vælg kategori
 
 
 ###############################################
@@ -825,7 +826,7 @@ Set Category: Vælg katagori
 Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Denne formular gør det muligt at importere aftaler fra Palm Desktop adressebog.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Den bør ligge i din Palm mappe i <tt>datebook/datebook.dat</tt>  i en undermappe med dit brugernavn.
-The following entries will not be imported: Følgende aftaler impoteres ikke
+The following entries will not be imported: Følgende aftaler importeres ikke
 Entries older than the current date: Aftaler ældre end dags dato
 Entries created in the Palm Desktop that have not been HotSync'd: Aftaler oprettet på Palm Desktoppen som ikke er blevet HotSync'd
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alle data importeret fra Palm bliver overskrevet ved den næste import (hvis ikke datoen for aftalen er passeret).
@@ -838,7 +839,7 @@ Lotus Organizer 6: Lotus Organizer 6
 Microsoft Outlook 2002: Microsoft Outlook 2002
 iCalendar: iCalendar
 This form will import iCalendar (.ics) events: Denne formular importerer iCalendar (.ics) aftaler
-Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Ved af anvende <b>Overskriv tidligere import</b> markeres aftaler med sammenfalende UID som slettet. Dette skulle sikre mod at der oprettes dubbletter ved import af en opdateret iCalendar (.ics) fil
+Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Ved af anvende <b>Overskriv tidligere import</b> markeres aftaler med sammenfalende UID som slettet. Dette skulle sikre mod at der oprettes dubletter ved import af en opdateret iCalendar (.ics) fil
 
 
 ###############################################
@@ -893,7 +894,7 @@ Back to My Calendar: Tilbage til min kalender
 Another User's Calendar: Anden brugers kalender
 Add New Entry: Tilføj ny aftale
 Logout: Log ud
-Manage calendar of: Administrer kalender for
+Manage calendar of: Administrér kalender for
 
 
 ###############################################
@@ -973,7 +974,7 @@ Sep: Sep
 Oct: Okt
 Nov: Nov
 Dec: Dec
-All Attendees: All deltagere
+All Attendees: Alle deltagere
 Busy: Optaget
 Tentative: Afventende
 
@@ -987,9 +988,9 @@ Invalid work hours: Ugyldig arbejdstid
 Invalid color for document background: Ugyldig baggrundsfarve
 Invalid color for document title: Ugyldig titelfarve
 Invalid color for table cell background: Ugyldig farve for tabelbaggrund
-Invalid color for table grid: Ugyldig farve for tabel-rammen.
-Invalid color for table header background: Ugyldig farve for baggrunden for tabel-overskrifter.
-Invalid color for table text background: Ugyldig farve for baggrunden for tabel teksten.
+Invalid color for table grid: Ugyldig farve for tabelrammen.
+Invalid color for table header background: Ugyldig farve for baggrunden for tabeloverskrifter.
+Invalid color for table text background: Ugyldig farve for baggrunden for tabelteksten.
 Invalid color for event popup background: Ugyldig farve for baggrunden for aftale-popup.
 Invalid color for event popup text: Ugyldig farve for aftale-popup tekst.
 Invalid color for table cell background for today: Ugyldig farve for dagens tabelbaggrund
@@ -1001,8 +1002,8 @@ Color format should be '#RRGGBB': Farven skal skrives som '#RRGGBB'
 #
 You have not entered a Brief Description: Du har ikke indtastet en kort beskrivelse
 You have not entered a valid time of day: Du har ikke indtastet et gyldigt tidspunkt
-The time you have entered begins before your preferred work hours.  Is this correct?: Tidspunktet er før din foretrukne arbejdstid. Er dette korrekt?
-Please add a participant: Vent venligst
+The time you have entered begins before your preferred work hours.  Is this correct?: Det valgte tidspunkt er før end din foretrukne arbejdstid. Er dette korrekt?
+Please add a participant: Tilføj venligst en deltager:
 
 
 ###############################################
