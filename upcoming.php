@@ -34,13 +34,22 @@
  * TBD
  */
 
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
+require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/php-dbi.php';
+include 'includes/functions.php';
+
+$WebCalendar->InitializeFirstPhase();
+
 include "includes/$user_inc";
-include "includes/connect.php";
-include "includes/classes/Event.class";
-include "includes/classes/RptEvent.class";
+include 'includes/translate.php';
+
+$WebCalendar->InitializeSecondPhase();
 
 load_global_settings ();
 
@@ -94,7 +103,6 @@ $login = $username;
 load_user_preferences ();
 $get_unapproved = ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y';
 
-include "includes/translate.php";
 
 
 if ( $public_must_be_enabled && $public_access != 'Y' ) {

@@ -20,6 +20,7 @@
  *
  * What gets called:
  *
+ * - require_once 'includes/classes/WebCalendar.class';
  * - require_once 'includes/classes/Event.class';
  * - require_once 'includes/classes/RptEvent.class';
  * - include_once 'includes/assert.php';
@@ -28,12 +29,10 @@
  * - include_once 'includes/functions.php';
  * - include_once "includes/$user_inc";
  * - include_once 'includes/validate.php';
- * - include_once 'includes/connect.php';
  * - include_once 'includes/site_extras.php';
  * - {@link load_global_settings()};
  * - {@link load_user_preferences()};
  * - include_once 'includes/translate.php';
- * - include_once 'includes/styles.php';
  *
  * Also, for month.php, day.php, week.php, week_details.php:
  * - {@link send_no_cache_header()};
@@ -43,211 +42,28 @@
  *
  */
 
-// Security Check
-if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
-  ! empty ( $_SERVER['PHP_SELF'] ) ) {
-  $PHP_SELF = $_SERVER['PHP_SELF'];
-}
-if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
-  die ( "You can't access this file directly!" );
-}
-
-// Make sure another app in the same domain doesn't have a 'user' cookie
-if ( ( ! empty ( $HTTP_GET_VARS ) && empty ( $HTTP_GET_VARS['user'] ) ) &&
-  ( ! empty ( $HTTP_POST_VARS ) && empty ( $HTTP_POST_VARS['user'] ) ) &&
-  isset ( $GLOBALS['user'] ) ) {
-  unset ( $GLOBALS['user'] );
-}
-
-// Get script name
-$self = $_SERVER['PHP_SELF'];
-if ( empty ( $self ) )
-  $self = $PHP_SELF;
-preg_match ( "/\/(\w+\.php)/", $self, $match);
-$SCRIPT = $match[1];
-
-// Several files need a no-cache header and some of the same code
-$special = array('month.php', 'day.php', 'week.php', 'week_details.php', 'year.php');
-$DMW = in_array($SCRIPT, $special);
-
-// Unset some variables that shouldn't be set
-unset($user_inc);
  
+require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
 
 include_once 'includes/assert.php';
 include_once 'includes/config.php';
 include_once 'includes/php-dbi.php';
 include_once 'includes/functions.php';
+
+$WebCalendar->InitializeFirstPhase();
+
 include_once "includes/$user_inc";
 include_once 'includes/validate.php';
-include_once 'includes/connect.php';
 include_once 'includes/site_extras.php';
 include_once 'includes/access.php';
-
-load_global_settings ();
-
-if ( empty ( $ovrd ) )
-  load_user_preferences ();
-
 include_once 'includes/translate.php';
 
-// error-check some commonly used form variable names
-$id = getValue ( "id", "[0-9]+", true );
-$user = getValue ( "user", "[A-Za-z0-9_\.=@,\-]*", true );
-$date = getValue ( "date", "[0-9]+" );
-$year = getValue ( "year", "[0-9]+" );
-$month = getValue ( "month", "[0-9]+" );
-$hour = getValue ( "hour", "[0-9]+" );
-$minute = getValue ( "minute", "[0-9]+" );
-$cat_id = getValue ( "cat_id", "[0-9]+" );
-$friendly = getValue ( "friendly", "[01]" );
-if ( empty ( $public_access ) )
-  $public_access = 'N';
+$WebCalendar->InitializeSecondPhase();
 
-// Initialize access settings ($user_access string) and make sure user
-// is allowed to view the current page.
-access_init ( );
-if ( ! access_can_view_page ( ) ) {
-  echo "<html>\n<head>\n<title>" . translate ( $application_name ) . " " .
-    translate("Error") .  "</title></head>\n" .
-    "<body>\n<h2>" . translate ( "Error" ) . "</h2>\n" .
-    translate ( "You are not authorized" );
-  exit;
-}
-
-// Load if $SCRIPT is in $special array:
-if ($DMW) {
-  
-  // Tell the browser not to cache
-  send_no_cache_header ();
-
-  if ( $allow_view_other != 'Y' && ! $is_admin )
-    $user = "";
-
-  $can_add = ( $readonly == "N" || $is_admin == "Y" );
-  if ( $public_access == "Y" && $login == "__public__" ) {
-    if ( $public_access_can_add != "Y" )
-      $can_add = false;
-    if ( $public_access_others != "Y" )
-      $user = ""; // security precaution
-  }
-
-  if ( $groups_enabled == "Y" && $user_sees_only_his_groups == "Y" &&
-    ! $is_admin ) {
-    $valid_user = false;
-    $userlist = get_my_users();
-    if ($nonuser_enabled == "Y" ) {
-      $nonusers = get_nonuser_cals ();
-      $userlist =  array_merge($nonusers, $userlist);
-    }
-    for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-      if ( $user == $userlist[$i]['cal_login'] ) $valid_user = true;
-    } 
-    if ($valid_user == false) { 
-      $user = ""; // security precaution
-    }
-  }
-
-  if ( ! empty ( $user ) ) {
-    $u_url = "user=$user&amp;";
-    user_load_variables ( $user, "user_" );
-    if ( $user == "__public__" )
-      $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
-  } else {
-    $u_url = "";
-    $user_fullname = $fullname;
-    if ( $login == "__public__" )
-      $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
-  }
-
-  set_today($date);
-
-  if ( $categories_enabled == "Y" ) {
-    if ( ! empty ( $cat_id ) ) {
-      $cat_id = $cat_id;
-    } elseif ( ! empty ( $CATEGORY_VIEW ) ) {
-      $cat_id = $CATEGORY_VIEW;
-    } else {
-      $cat_id = '';
-    }
-  } else {
-    $cat_id = '';
-  }
-  if ( empty ( $cat_id ) )
-    $caturl = "";
-  else
-    $caturl = "&amp;cat_id=$cat_id";
-}
-
-/** Maps page filenames to the id that page's <body> tag will have
- *
- * @global array $bodyid
- */
-$bodyid = array(
-  "activity_log.php" => "activitylog",
-  "add_entry.php" => "addentry",
-  "adminhome.php" => "adminhome",
-  "admin.php" => "admin",
-  "approve_entry.php" => "approveentry",
-  "assistant_edit.php" => "assistantedit",
-  "category.php" => "category",
-  "day.php" => "day",
-  "del_entry.php" => "delentry",
-  "del_layer.php" => "dellayer",
-  "edit_entry.php" => "editentry",
-  "edit_layer.php" => "editlayer",
-  "edit_nonusers_handler.php" => "editnonusershandler",
-  "edit_nonusers.php" => "editnonusers",
-  "edit_report.php" => "editreport",
-  "edit_template.php" => "edittemplate",
-  "edit_user_handler.php" => "edituserhandler",
-  "edit_user.php" => "edituser",
-  "export.php" => "export",
-  "group_edit_handler.php" => "groupedithandler",
-  "group_edit.php" => "groupedit",
-  "groups.php" => "groups",
-  "help_admin.php" => "helpadmin",
-  "help_bug.php" => "helpbug",
-  "help_edit_entry.php" => "helpeditentry",
-  "help_import.php" => "helpimport",
-  "help_index.php" => "helpindex",
-  "help_layers.php" => "helplayers",
-  "help_pref.php" => "helppref",
-  "import.php" => "import",
-  "index.php" => "index",
-  "layers.php" => "layers",
-  "layers_toggle.php" => "layerstoggle",
-  "list_unapproved.php" => "listunapproved",
-  "login.php" => "login",
-  "month.php" => "month",
-  "nonusers.php" => "nonusers",
-  "pref.php" => "pref",
-  "publish.php" => "publish",
-  "purge.php" => "purge",
-  "reject_entry.php" => "rejectentry",
-  "report.php" => "report",
-  "search.php" => "search",
-  "select_user.php" => "selectuser",
-  "set_entry_cat.php" => "setentrycat",
-  "usersel.php" => "usersel",
-  "users.php" => "users",
-  "view_d.php" => "viewd",
-  "view_entry.php" => "viewentry",
-  "view_l.php" => "viewl",
-  "view_m.php" => "viewm",
-  "view_r.php" => "viewr",
-  "views_edit.php" => "viewsedit",
-  "views.php" => "views",
-  "view_t.php" => "viewt",
-  "view_v.php" => "viewv",
-  "view_w.php" => "vieww",
-  "week_details.php" => "weekdetails",
-  "week.php" => "week",
-  "week_ssi.php" => "weekssi",
-  "year.php" => "year"
-);
 
 /**
  * Prints the HTML header and opening HTML body tag.

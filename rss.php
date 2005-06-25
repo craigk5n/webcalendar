@@ -38,18 +38,25 @@
  *	We do not include unapproved events in the RSS feed.
  */
 
+require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
 
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/php-dbi.php';
+include 'includes/functions.php';
+
+$WebCalendar->InitializeFirstPhase();
+
 include "includes/$user_inc";
-include "includes/connect.php";
+include 'includes/translate.php';
+
+$WebCalendar->InitializeSecondPhase();
 
 load_global_settings ();
 
-include "includes/translate.php";
 
 if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
   header ( "Content-Type: text/plain" );

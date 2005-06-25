@@ -92,20 +92,22 @@
  *  
  */
 
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
+require_once 'includes/classes/WebCalendar.class';
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/php-dbi.php';
+include 'includes/functions.php';
+
+$WebCalendar->InitializeFirstPhase();
+
 include "includes/$user_inc";
-// If WebCalendar is configured to use http authentication, then
-// we can use validate.php.  If we are not using http auth, we will
-// create our own http auth just for this page since an iCal client cannot
-// login via a web-based login.
-if ( ! empty ( $use_http_auth ) && $use_http_auth ) {
-  include_once "includes/validate.php";
-}
-include "includes/connect.php";
-include "includes/translate.php";
+include_once 'includes/validate.php';
+include 'includes/translate.php';
 include 'includes/site_extras.php';
+
+$WebCalendar->InitializeSecondPhase();
 
 // Require an authenticated user HTTP Auth
 // TODO: make this work for CGI installations

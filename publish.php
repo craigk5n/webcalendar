@@ -26,11 +26,21 @@
  *	If $USER_PUBLISH_ENABLED is not 'Y' (set in each user's
  *	  Preferences), do not allow.
  */
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
+
+require_once 'includes/classes/WebCalendar.class';
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/php-dbi.php';
+include 'includes/functions.php';
+
+$WebCalendar->InitializeFirstPhase();
+
 include "includes/$user_inc";
-include "includes/connect.php";
+include 'includes/translate.php';
+
+$WebCalendar->InitializeSecondPhase();
 
 // Calculate username.
 if ( empty ( $user ) ) {
@@ -43,8 +53,6 @@ if ( empty ( $user ) ) {
 }
 
 load_global_settings ();
-
-include "includes/translate.php";
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( "Content-Type: text/plain" );

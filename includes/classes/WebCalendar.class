@@ -1,0 +1,1381 @@
+<?php
+/**
+ * Declares the WebCalendar class.
+ *
+ * @author Adam Roben <adam.roben@gmail.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ */
+
+/**
+ * The WebCalendar.
+ *
+ * Right now this class's functionality is limited to initialization routines.
+ *
+ * @todo Get rid of all the global variables.
+ * @todo Organize initialization steps more logically.
+ */
+class WebCalendar {
+  /**
+   * Filename of the page the user is viewing.
+   *
+   * @var string
+   *
+   * @access private
+   */
+  var $_filename;
+
+  /**
+   * A map from filenames to initialization phases.
+   *
+   * This array holds the initialization steps for each page. Steps are
+   * separated into phases, and listed in the order they should be executed,
+   * and are the names of the WebCalendar:: methods that should be called,
+   * without the `_Init' prefix.
+   *
+   * @var array
+   *
+   * @access private
+   *
+   * @todo Make it possible to distinguish between files in different directories (e.g. login.php and ws/login.php).
+   */
+  var $_filePhaseMap = array(
+    '/^(login|freebusy|publish|rss|upcoming|week_ssi)\.php$/' =>
+      array(array('Config', 'PHPDBI', 'Functions'),
+            array('User', 'Connect', 'Translate')),
+    '/^(icalclient|get_reminders|get_events)\.php$/' =>
+      array(array('Config', 'PHPDBI', 'Functions'),
+            array('User', 'Validate', 'Connect', 'Translate', 'SiteExtras')),
+    /* Catch-all -- this is for files which have called include('includes/init.php') */
+    '/^.*$/' => array(array('InitFirstPhase', 'Config', 'PHPDBI', 'Functions'),
+                      array('User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'Translate', 'InitSecondPhase'))
+  );
+
+  /**
+   * WebCalendar constructor.
+   *
+   * @param string $path Full path of file being viewed.
+   *
+   * @return WebCalendar New WebCalendar object.
+   *
+   * @access public
+   */
+  function WebCalendar ( $path ) {
+    $this->_filename = basename ( $path );
+  }
+
+  /**
+   * First part of initializations from includes/init.php.
+   *
+   * @access private
+   */
+  function _InitInitFirstPhase() {
+    global $HTTP_GET_VARS, $HTTP_POST_VARS, $self, $PHP_SELF, $SCRIPT,
+      $special, $DMW, $user_inc;
+
+    // Make sure another app in the same domain doesn't have a 'user' cookie
+    if ( ( ! empty ( $HTTP_GET_VARS ) && empty ( $HTTP_GET_VARS['user'] ) ) &&
+      ( ! empty ( $HTTP_POST_VARS ) && empty ( $HTTP_POST_VARS['user'] ) ) &&
+      isset ( $GLOBALS['user'] ) ) {
+      unset ( $GLOBALS['user'] );
+    }
+
+    // Get script name
+    $self = $_SERVER['PHP_SELF'];
+    if ( empty ( $self ) )
+      $self = $PHP_SELF;
+    preg_match ( "/\/(\w+\.php)/", $self, $match);
+    $SCRIPT = $match[1];
+
+    // Several files need a no-cache header and some of the same code
+    $special = array('month.php', 'day.php', 'week.php', 'week_details.php', 'year.php');
+    $DMW = in_array($SCRIPT, $special);
+
+    // Unset some variables that shouldn't be set
+    unset($user_inc);
+  }
+
+  /**
+   * Second part of initializations from includes/init.php.
+   *
+   * @access private
+   */
+  function _InitInitSecondPhase() {
+    global $ovrd, $id, $user, $date, $year, $month, $hour, $minute,
+      $cat_id, $friendly, $public_access, $application_name, $DMW,
+      $allow_view_other, $is_admin, $can_add, $readonly, $login,
+      $public_access_can_add, $public_access_others, $can_add, $groups_enabled,
+      $user_sees_only_his_groups, $valid_user, $userlist, $nonuser_enabled,
+      $nonusers, $u_url, $user_fullname, $fullname, $PUBLIC_ACCESS_FULLNAME,
+      $categories_enabled, $CATEGORY_VIEW, $caturl, $bodyid;
+
+    load_global_settings ();
+
+    if ( empty ( $ovrd ) )
+      load_user_preferences ();
+
+    // error-check some commonly used form variable names
+    $id = getValue ( "id", "[0-9]+", true );
+    $user = getValue ( "user", "[A-Za-z0-9_\.=@,\-]*", true );
+    $date = getValue ( "date", "[0-9]+" );
+    $year = getValue ( "year", "[0-9]+" );
+    $month = getValue ( "month", "[0-9]+" );
+    $hour = getValue ( "hour", "[0-9]+" );
+    $minute = getValue ( "minute", "[0-9]+" );
+    $cat_id = getValue ( "cat_id", "[0-9]+" );
+    $friendly = getValue ( "friendly", "[01]" );
+    if ( empty ( $public_access ) )
+      $public_access = 'N';
+
+    // Initialize access settings ($user_access string) and make sure user
+    // is allowed to view the current page.
+    access_init ( );
+    if ( ! access_can_view_page ( ) ) {
+      echo "<html>\n<head>\n<title>" . translate ( $application_name ) . " " .
+        translate("Error") .  "</title></head>\n" .
+        "<body>\n<h2>" . translate ( "Error" ) . "</h2>\n" .
+        translate ( "You are not authorized" );
+      exit;
+    }
+
+    // Load if $SCRIPT is in $special array:
+    if ($DMW) {
+      
+      // Tell the browser not to cache
+      send_no_cache_header ();
+
+      if ( $allow_view_other != 'Y' && ! $is_admin )
+        $user = "";
+
+      $can_add = ( $readonly == "N" || $is_admin == "Y" );
+      if ( $public_access == "Y" && $login == "__public__" ) {
+        if ( $public_access_can_add != "Y" )
+          $can_add = false;
+        if ( $public_access_others != "Y" )
+          $user = ""; // security precaution
+      }
+
+      if ( $groups_enabled == "Y" && $user_sees_only_his_groups == "Y" &&
+        ! $is_admin ) {
+        $valid_user = false;
+        $userlist = get_my_users();
+        if ($nonuser_enabled == "Y" ) {
+          $nonusers = get_nonuser_cals ();
+          $userlist =  array_merge($nonusers, $userlist);
+        }
+        for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+          if ( $user == $userlist[$i]['cal_login'] ) $valid_user = true;
+        } 
+        if ($valid_user == false) { 
+          $user = ""; // security precaution
+        }
+      }
+
+      if ( ! empty ( $user ) ) {
+        $u_url = "user=$user&amp;";
+        user_load_variables ( $user, "user_" );
+        if ( $user == "__public__" )
+          $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
+      } else {
+        $u_url = "";
+        $user_fullname = $fullname;
+        if ( $login == "__public__" )
+          $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
+      }
+
+      set_today($date);
+
+      if ( $categories_enabled == "Y" ) {
+        if ( ! empty ( $cat_id ) ) {
+          $cat_id = $cat_id;
+        } elseif ( ! empty ( $CATEGORY_VIEW ) ) {
+          $cat_id = $CATEGORY_VIEW;
+        } else {
+          $cat_id = '';
+        }
+      } else {
+        $cat_id = '';
+      }
+      if ( empty ( $cat_id ) )
+        $caturl = "";
+      else
+        $caturl = "&amp;cat_id=$cat_id";
+    }
+
+    /** Maps page filenames to the id that page's <body> tag will have
+     *
+     * @global array $bodyid
+     */
+    $bodyid = array(
+      "activity_log.php" => "activitylog",
+      "add_entry.php" => "addentry",
+      "adminhome.php" => "adminhome",
+      "admin.php" => "admin",
+      "approve_entry.php" => "approveentry",
+      "assistant_edit.php" => "assistantedit",
+      "category.php" => "category",
+      "day.php" => "day",
+      "del_entry.php" => "delentry",
+      "del_layer.php" => "dellayer",
+      "edit_entry.php" => "editentry",
+      "edit_layer.php" => "editlayer",
+      "edit_nonusers_handler.php" => "editnonusershandler",
+      "edit_nonusers.php" => "editnonusers",
+      "edit_report.php" => "editreport",
+      "edit_template.php" => "edittemplate",
+      "edit_user_handler.php" => "edituserhandler",
+      "edit_user.php" => "edituser",
+      "export.php" => "export",
+      "group_edit_handler.php" => "groupedithandler",
+      "group_edit.php" => "groupedit",
+      "groups.php" => "groups",
+      "help_admin.php" => "helpadmin",
+      "help_bug.php" => "helpbug",
+      "help_edit_entry.php" => "helpeditentry",
+      "help_import.php" => "helpimport",
+      "help_index.php" => "helpindex",
+      "help_layers.php" => "helplayers",
+      "help_pref.php" => "helppref",
+      "import.php" => "import",
+      "index.php" => "index",
+      "layers.php" => "layers",
+      "layers_toggle.php" => "layerstoggle",
+      "list_unapproved.php" => "listunapproved",
+      "login.php" => "login",
+      "month.php" => "month",
+      "nonusers.php" => "nonusers",
+      "pref.php" => "pref",
+      "publish.php" => "publish",
+      "purge.php" => "purge",
+      "reject_entry.php" => "rejectentry",
+      "report.php" => "report",
+      "search.php" => "search",
+      "select_user.php" => "selectuser",
+      "set_entry_cat.php" => "setentrycat",
+      "usersel.php" => "usersel",
+      "users.php" => "users",
+      "view_d.php" => "viewd",
+      "view_entry.php" => "viewentry",
+      "view_l.php" => "viewl",
+      "view_m.php" => "viewm",
+      "view_r.php" => "viewr",
+      "views_edit.php" => "viewsedit",
+      "views.php" => "views",
+      "view_t.php" => "viewt",
+      "view_v.php" => "viewv",
+      "view_w.php" => "vieww",
+      "week_details.php" => "weekdetails",
+      "week.php" => "week",
+      "week_ssi.php" => "weekssi",
+      "year.php" => "year"
+    );
+  }
+
+  /**
+   * Initializations from includes/assert.php.
+   *
+   * @access private
+   */
+  function _InitAssert() {
+    // Initialize assert options
+    assert_options ( ASSERT_CALLBACK, 'assert_handler' );
+    assert_options ( ASSERT_ACTIVE, 1 );
+  }
+
+  /**
+   * Initializations from includes/config.php.
+   *
+   * @access private
+   */
+  function _InitConfig() {
+    global $PROGRAM_VERSION, $PROGRAM_DATE, $PROGRAM_NAME,
+      $PROGRAM_URL, $TROUBLE_URL, $settings, $db_type, $db_host,
+      $db_login, $db_password, $db_database, $db_persistent,
+      $readonly, $run_mode, $phpdbiVerbose, $single_user,
+      $single_user_login, $use_http_auth, $user_inc, $NONUSER_PREFIX,
+      $languages, $browser_languages;
+
+    $PROGRAM_VERSION = "v1.1.0-CVS";
+    $PROGRAM_DATE = "?? ??? 2005";
+    $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
+    $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
+
+    $TROUBLE_URL = "docs/WebCalendar-SysAdmin.html#trouble";
+
+    // Open settings file to read
+    $settings = array ();
+    $fd = @fopen ( "settings.php", "rb", true );
+    if ( ! $fd )
+      $fd = @fopen ( "includes/settings.php", "rb", true );
+    if ( empty ( $fd ) ) {
+      // There is no settings.php file.
+      // Redirect user to install page if it exists.
+      if ( file_exists ( "install/index.php" ) ) {
+        Header ( "Location: install/index.php" );
+        exit;
+      } else {
+        die_miserable_death ( "Could not find settings.php file.<br />\n" .
+          "Please copy settings.php.orig to settings.php and modify for your " .
+          "site.\n" );
+      }
+    }
+
+    // We don't use fgets() since it seems to have problems with Mac-formatted
+    // text files.  Instead, we read in the entire file, then split the lines
+    // manually.
+    $data = '';
+    while ( ! feof ( $fd ) ) {
+      $data .= fgets ( $fd, 4096 );
+    }
+    fclose ( $fd );
+
+    // Replace any combination of carriage return (\r) and new line (\n)
+    // with a single new line.
+    $data = preg_replace ( "/[\r\n]+/", "\n", $data );
+
+    // Split the data into lines.
+    $configLines = explode ( "\n", $data );
+
+    for ( $n = 0; $n < count ( $configLines ); $n++ ) {
+      $buffer = $configLines[$n];
+      $buffer = trim ( $buffer, "\r\n " );
+      if ( preg_match ( "/^#/", $buffer ) )
+        continue;
+      if ( preg_match ( "/^<\?/", $buffer ) ) // start php code
+        continue;
+      if ( preg_match ( "/^\?>/", $buffer ) ) // end php code
+        continue;
+      if ( preg_match ( "/(\S+):\s*(\S+)/", $buffer, $matches ) ) {
+        $settings[$matches[1]] = $matches[2];
+        //echo "settings $matches[1] => $matches[2] <br>";
+      }
+    }
+    $configLines = $data = '';
+
+    // Extract db settings into global vars
+    $db_type = $settings['db_type'];
+    $db_host = $settings['db_host'];
+    $db_login = $settings['db_login'];
+    $db_password = $settings['db_password'];
+    $db_database = $settings['db_database'];
+    $db_persistent = preg_match ( "/(1|yes|true|on)/i",
+      $settings['db_persistent'] ) ? '1' : '0';
+
+    foreach ( array ( "db_type", "db_host", "db_login", "db_password" ) as $s ) {
+      if ( empty ( $settings[$s] ) ) {
+        die_miserable_death ( "Could not find <tt>$s</tt> defined in " .
+          "your <tt>settings.php</tt> file.\n" );
+      }
+    }
+
+    $readonly = preg_match ( "/(1|yes|true|on)/i",
+      $settings['readonly'] ) ? 'Y' : 'N';
+
+    if ( empty ( $settings['mode'] ) )
+      $settings['mode'] = 'prod';
+    $run_mode = preg_match ( "/(dev)/i",
+      $settings['mode'] ) ? 'dev' : 'prod';
+
+    if ( $run_mode == 'dev' ) {
+      $phpdbiVerbose = true;
+    }
+
+    $single_user = "N";
+    $single_user = preg_match ( "/(1|yes|true|on)/i",
+      $settings['single_user'] ) ? 'Y' : 'N';
+    if ( $single_user == 'Y' )
+      $single_user_login = $settings['single_user_login'];
+
+    if ( $single_user == 'Y' && empty ( $single_user_login ) ) {
+      die_miserable_death ( "You must define <tt>single_user_login</tt> in " .
+        "the settings.php file.\n" );
+    }
+
+
+    $use_http_auth = preg_match ( "/(1|yes|true|on)/i",
+      $settings['use_http_auth'] ) ? true : false;
+
+    // Type of user authentication
+    $user_inc = $settings['user_inc'];
+
+    // We can add extra 'nonuser' calendars such as a corporate calendar,
+    // holiday calendar, departmental calendar, etc.  We need a unique prefix
+    // for these calendars as not to get mixed up with real logins.  This prefix
+    // should be a Maximum of 5 characters and should NOT change once set!
+    $NONUSER_PREFIX = '_NUC_';
+
+    // Language options  The first is the name presented to users while
+    // the second is the filename (without the ".txt") that must exist
+    // in the translations subdirectory.
+    $languages = array (
+      "Browser-defined" =>"none",
+      "English" =>"English-US",
+      "Basque" => "Basque",
+      "Bulgarian" => "Bulgarian",
+      "Catalan" => "Catalan",
+      "Chinese (Traditonal/Big5)" => "Chinese-Big5",
+      "Chinese (Simplified/GB2312)" => "Chinese-GB2312",
+      "Czech" => "Czech",
+      "Danish" => "Danish",
+      "Dutch" =>"Dutch",
+      "Estonian" => "Estonian",
+      "Finnish" =>"Finnish",
+      "French" =>"French",
+      "Galician" => "Galician",
+      "German" =>"German",
+      "Holo (Taiwanese)" => "Holo-Big5",
+      "Hungarian" =>"Hungarian",
+      "Icelandic" => "Icelandic",
+      "Italian" => "Italian",
+      "Japanese(SHIFT JIS)" => "Japanese",
+      "Japanese(EUC-JP)" => "Japanese-eucjp",
+      "Japanese(UTF-8)" => "Japanese-utf8",
+      "Korean" =>"Korean",
+      "Norwegian" => "Norwegian",
+      "Polish" => "Polish",
+      "Portuguese" =>"Portuguese",
+      "Portuguese/Brazil" => "Portuguese_BR",
+      "Russian" => "Russian",
+      "Spanish" =>"Spanish",
+      "Swedish" =>"Swedish",
+      "Turkish" =>"Turkish"
+      // add new languages here!  (don't forget to add a comma at the end of
+      // last line above.)
+    );
+
+    // If the user sets "Browser-defined" as their language setting, then
+    // use the $HTTP_ACCEPT_LANGUAGE settings to determine the language.
+    // The array below translates browser language abbreviations into
+    // our available language files.
+    // NOTE: These should all be lowercase on the left side even though
+    // the proper listing is like "en-US"!
+    // Not sure what the abbreviation is?  Check out the following URL:
+    // http://www.geocities.com/click2speak/languages.html
+    $browser_languages = array (
+      "eu" => "Basque",
+      "bg" => "Bulgarian",
+      "ca" => "Catalan",
+      "zh" => "Chinese-GB2312",    // Simplified Chinese
+      "zh-cn" => "Chinese-GB2312",
+      "zh-tw" => "Chinese-Big5",   // Traditional Chinese
+      "cs" => "Czech",
+      "en" => "English-US",
+      "en-us" => "English-US",
+      "en-gb" => "English-US",
+      "da" => "Danish",
+      "nl" =>"Dutch",
+      "ee" => "Estonian",
+      "fi" =>"Finnish",
+      "fr" =>"French",
+      "fr-ch" =>"French", // French/Swiss
+      "fr-ca" =>"French", // French/Canada
+      "gl" => "Galician",
+      "de" =>"German",
+      "de-at" =>"German", // German/Austria
+      "de-ch" =>"German", // German/Switzerland
+      "de-de" =>"German", // German/German
+      "hu" => "Hungarian",
+      "zh-min-nan-tw" => "Holo-Big5",
+      "is" => "Icelandic",
+      "it" => "Italian",
+      "it-ch" => "Italian", // Italian/Switzerland
+      "ja" => "Japanese",
+      "ko" =>"Korean",
+      "no" => "Norwegian",
+      "pl" => "Polish",
+      "pt" =>"Portuguese",
+      "pt-br" => "Portuguese_BR", // Portuguese/Brazil
+      "ro" =>"Romanian",
+      "ru" =>"Russian",
+      "es" =>"Spanish",
+      "sv" =>"Swedish",
+      "tr" =>"Turkish",
+      "cy" => "Welsh"
+    );
+
+    // The following comments will be picked up by update_translation.pl so
+    // translators will be aware that they also need to translate language names.
+    //
+    // translate("English")
+    // translate("Basque")
+    // translate("Bulgarian")
+    // translate("Catalan")
+    // translate("Chinese (Traditonal/Big5)")
+    // translate("Chinese (Simplified/GB2312)")
+    // translate("Czech")
+    // translate("Danish")
+    // translate("Dutch")
+    // translate("Estonian")
+    // translate("Finnish")
+    // translate("French")
+    // translate("Galician")
+    // translate("German")
+    // translate("Holo (Taiwanese)")
+    // translate("Hungarian")
+    // translate("Icelandic")
+    // translate("Italian")
+    // translate("Japanese")
+    // translate("Korean")
+    // translate("Norwegian")
+    // translate("Polish")
+    // translate("Portuguese")
+    // translate("Portuguese/Brazil")
+    // translate("Romanian")
+    // translate("Russian")
+    // translate("Spanish")
+    // translate("Swedish")
+    // translate("Turkish")
+
+    if ( $single_user != "Y" )
+      $single_user_login = "";
+
+    // Make sure magic quotes is enabled, since this app requires it.
+    if ( get_magic_quotes_gpc () == 0 ) {
+      ob_start ();
+      phpinfo ();
+      $val = ob_get_contents ();
+      ob_end_clean ();
+      $loc = '';
+      if ( preg_match ( "/>([^<>]*php.ini)</", $val, $matches ) ) {
+        $loc = "Please edit the following file and restart your server:" .
+          "<br /><br />\n" .
+          "<blockquote>\n<tt>" . $matches[1] . "</tt>\n</blockquote>\n";
+      }
+      die_miserable_death ( "You must reconfigure your <tt>php.ini</tt> file to " .
+        "have <span style=\"font-weight:bold;\">magic_quotes_gpc</span> set " .
+        " to <span style=\"font-weight:bold;\">ON</span>.<br /><br />\n" .
+        $loc );
+    }
+  }
+
+  /**
+   * Initializations from includes/php-dbi.php.
+   *
+   * @access private
+   */
+  function _InitPHPDBI() {
+    global $phpdbiVerbose;
+
+    // Enable the following to show the actual database error in the browser.
+    // It is more secure to not show this info, so this should only be turned
+    // on for debugging purposes.
+    if ( ! isset ( $phpdbiVerbose ) ) {
+      $phpdbiVerbose = false;
+    }
+  }
+
+  /**
+   * Initializations from includes/functions.php.
+   *
+   * @access private
+   */
+  function _InitFunctions() {
+    global $days_per_month, $ldays_per_month, $noSet, $HTTP_GET_VARS, $PHP_SELF, $HTTP_POST_VARS, $HTTP_COOKIE_VARS, $settings, $db_password, $offsets;
+
+    /**#@+
+     * Used for activity log
+     */
+    define ( 'LOG_CREATE',       'C' );
+    define ( 'LOG_APPROVE',      'A' );
+    define ( 'LOG_REJECT',       'X' );
+    define ( 'LOG_UPDATE',       'U' );
+    define ( 'LOG_DELETE',       'D' );
+    define ( 'LOG_NOTIFICATION', 'N' );
+    define ( 'LOG_REMINDER',     'R' );
+    /**#@-*/
+
+    /**
+     * Number of seconds in a day
+     */
+    define ( 'ONE_DAY', 86400 );
+
+    /**
+     * Array containing the number of days in each month in a non-leap year
+     *
+     * @global array $days_per_month
+     */
+    $days_per_month = array ( 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
+
+    /**
+     * Array containing the number of days in each month in a leap year
+     *
+     * @global array $ldays_per_month
+     */
+    $ldays_per_month = array ( 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
+
+    /**
+     * Array of global variables which are not allowed to by set via HTTP GET/POST
+     *
+     * This is a security precaution to prevent users from overriding any global
+     * variables
+     *
+     * @global array $noSet
+     */
+    $noSet = array (
+      "is_admin" => 1,
+      "db_type" => 1,
+      "db_host" => 1,
+      "db_login" => 1,
+      "db_password" => 1,
+      "db_persistent" => 1,
+      "PROGRAM_NAME" => 1,
+      "PROGRAM_URL" => 1,
+      "readonly" => 1,
+      "single_user" => 1,
+      "single_user_login" => 1,
+      "use_http_auth" => 1,
+      "user_inc" => 1,
+      "NONUSER_PREFIX" => 1,
+      "languages" => 1,
+      "browser_languages" => 1,
+      "pub_acc_enabled" => 1,
+      "user_can_update_password" => 1,
+      "admin_can_add_user" => 1,
+      "admin_can_delete_user" => 1,
+    );
+
+    // This code is a temporary hack to make the application work when
+    // register_globals is set to Off in php.ini (the default setting in
+    // PHP 4.2.0 and after).
+    if ( ! empty ( $HTTP_GET_VARS ) ) {
+      while (list($key, $val) = @each($HTTP_GET_VARS)) {
+        // don't allow anything to have <script> in it...
+        if ( ! is_array ( $val ) ) {
+          if ( preg_match ( "/<\s*script/i", $val ) ) {
+            echo "Security violation!"; exit;
+          }
+        }
+        if ( $key == "login" ) {
+          if ( strstr ( $PHP_SELF, "login.php" ) ) {
+            //$GLOBALS[$key] = $val;
+            $GLOBALS[$key] = $val;
+          }
+        } else {
+          if ( empty ( $noSet[$key] ) ) {
+            $GLOBALS[$key] = $val;
+            //echo "XXX $key<br />\n";
+          }
+        }
+        //echo "GET var '$key' = '$val' <br />\n";
+      }
+      reset ( $HTTP_GET_VARS );
+    }
+    if ( ! empty ( $HTTP_POST_VARS ) ) {
+      while (list($key, $val) = @each($HTTP_POST_VARS)) {
+        // don't allow anything to have <script> in it... except 'template'
+        if ( ! is_array ( $val ) && $key != 'template' ) {
+          if ( preg_match ( "/<\s*script/i", $val ) ) {
+            echo "Security violation!"; exit;
+          }
+        }
+        if ( empty ( $noSet[$key] ) ) {
+          $GLOBALS[$key] = $val;
+        }
+      }
+      reset ( $HTTP_POST_VARS );
+    }
+    //while (list($key, $val) = @each($HTTP_POST_FILES)) {
+    //       $GLOBALS[$key] = $val;
+    //}
+    //while (list($key, $val) = @each($HTTP_SESSION_VARS)) {
+    //       $GLOBALS[$key] = $val;
+    //}
+    if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
+      while (list($key, $val) = @each($HTTP_COOKIE_VARS)) {
+        if ( empty ( $noSet[$key] ) && substr($key,0,12) == "webcalendar_" ) {
+          $GLOBALS[$key] = $val;
+        }
+        //echo "COOKIE var '$key' = '$val' <br />\n";
+      }
+      reset ( $HTTP_COOKIE_VARS );
+    }
+
+    // Don't allow a user to put "login=XXX" in the URL if they are not
+    // coming from the login.php page.
+    if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER['PHP_SELF'] ) )
+      $PHP_SELF = $_SERVER['PHP_SELF']; // backward compatibility
+    if ( empty ( $PHP_SELF ) )
+      $PHP_SELF = ''; // this happens when running send_reminders.php from CL
+    if ( ! strstr ( $PHP_SELF, "login.php" ) && ! empty ( $GLOBALS["login"] ) ) {
+      $GLOBALS["login"] = "";
+    }
+
+    // Define an array to use to jumble up the key: $offsets
+    // We define a unique key to scramble the cookie we generate.
+    // We use the admin install password that the user set to make
+    // the salt unique for each WebCalendar install.
+    if ( ! empty ( $settings ) && ! empty ( $settings['install_password'] ) ) {
+      $salt = $settings['install_password'];
+    } else {
+      $salt = md5 ( $db_login );
+    }
+    $salt_len = strlen ( $salt );
+
+    if ( ! empty ( $db_password ) ) {
+      $salt2 = md5 ( $db_password );
+    } else {
+      $salt2 = md5 ( "oogabooga" );
+    }
+    $salt2_len = strlen ( $salt2 );
+
+    $offsets = array ();
+    for ( $i = 0; $i < $salt_len || $i < $salt2_len; $i++ ) {
+      $offsets[$i] = 0;
+      if ( $i < $salt_len )
+        $offsets[$i] += ord ( substr ( $salt, $i, 1 ) );
+      if ( $i < $salt2_len )
+        $offsets[$i] += ord ( substr ( $salt2, $i, 1 ) );
+      $offsets[$i] %= 128;
+    }
+    /* debugging code...
+    for ( $i = 0; $i < count ( $offsets ); $i++ ) {
+      echo "offset $i: $offsets[$i] <br />\n";
+    }
+    */
+  }
+
+  /**
+   * Initializations from includes/user*.php.
+   *
+   * This is a placeholder for now. We are letting includes/user*.php handle
+   * its own initialization.
+   *
+   * @access private
+   *
+   * @todo Make an Authentication interface class and create a subclass for
+   *       each user*.php page.
+   */
+  function _InitUser() {
+  }
+
+  /**
+   * Initializations from includes/validate.php.
+   *
+   * @access private
+   */
+  function _InitValidate() {
+    global $validate_redirect, $session_not_found, $use_http_auth,
+      $PHP_AUTH_USER, $HTTP_SERVER_VARS, $REMOTE_USER, $HTTP_ENV_VARS,
+      $single_user, $login, $single_user_login, $user_inc, $settings,
+      $webcalendar_session, $encoded_login, $cryptpw, $db_host,
+      $db_login, $db_password, $db_database, $login_return_path;
+
+    /* If WebCalendar is configured to use http authentication, then we can
+     * use _InitValidate().  If we are not using http auth, icalclient.php will
+     * create its own http auth since an iCal client cannot login via a
+     * web-based login.
+     */
+    if ( $this->_filename == 'icalclient.php' && !$use_http_auth ) {
+      return;
+    }
+
+    $validate_redirect = false;
+    $session_not_found = false;
+
+    // Catch-all for getting the username when using HTTP-authentication
+    if ( $use_http_auth ) {
+      if ( empty ( $PHP_AUTH_USER ) ) {
+        if ( !empty ( $_SERVER ) && isset ( $_SERVER['PHP_AUTH_USER'] ) ) {
+          $PHP_AUTH_USER = $_SERVER['PHP_AUTH_USER'];
+        } else if ( !empty ( $HTTP_SERVER_VARS ) &&
+          isset ( $HTTP_SERVER_VARS['PHP_AUTH_USER'] ) ) {
+          $PHP_AUTH_USER = $HTTP_SERVER_VARS['PHP_AUTH_USER'];
+        } else if ( isset ( $REMOTE_USER ) ) {
+          $PHP_AUTH_USER = $REMOTE_USER;
+        } else if ( !empty ( $_ENV ) && isset ( $_ENV['REMOTE_USER'] ) ) {
+          $PHP_AUTH_USER = $_ENV['REMOTE_USER'];
+        } else if ( !empty ( $HTTP_ENV_VARS ) &&
+          isset ( $HTTP_ENV_VARS['REMOTE_USER'] ) ) {
+          $PHP_AUTH_USER = $HTTP_ENV_VARS['REMOTE_USER'];
+        } else if ( @getenv ( 'REMOTE_USER' ) ) {
+          $PHP_AUTH_USER = getenv ( 'REMOTE_USER' );
+        } else if ( isset ( $AUTH_USER ) ) {
+          $PHP_AUTH_USER = $AUTH_USER;
+        } else if ( !empty ( $_ENV ) && isset ( $_ENV['AUTH_USER'] ) ) {
+          $PHP_AUTH_USER = $_ENV['AUTH_USER'];
+        } else if ( !empty ( $HTTP_ENV_VARS ) &&
+          isset ( $HTTP_ENV_VARS['AUTH_USER'] ) ) {
+          $PHP_AUTH_USER = $HTTP_ENV_VARS['AUTH_USER'];
+        } else if ( @getenv ( 'AUTH_USER' ) ) {
+          $PHP_AUTH_USER = getenv ( 'AUTH_USER' );
+        }
+      }
+    }
+
+    if ( $single_user == "Y" ) {
+      $login = $single_user_login;
+    } else {
+      if ( $use_http_auth ) {
+        // HTTP server did validation for us....
+        if ( empty ( $PHP_AUTH_USER ) )
+          $session_not_found = true;
+        else
+          $login = $PHP_AUTH_USER;
+
+      } elseif ( substr($user_inc,0,9) == 'user-app-' ) {
+        // Use another application's authentication
+        if (! $login = user_logged_in()) app_login_screen(clean_whitespace($_SERVER['SCRIPT_URI']));
+      
+      } else {
+        if ( ! empty ( $settings['session'] ) && $settings['session'] == 'php' ) {
+          session_start ();
+          if ( ! empty ( $_SESSION['webcalendar_session'] ) ) {
+            $webcalendar_session = $_SESSION['webcalendar_session'];
+          }
+        }
+        // We can't actually check the database yet since we haven't connected
+        // to the database.  That happens in connect.php.
+
+        // Check for session.  If not found, then note it for later
+        // handling in connect.php.
+        else if ( empty ( $webcalendar_session ) && empty ( $login ) ) {
+          $session_not_found = true;
+        }
+
+        else {
+          // Check for cookie...
+          if ( ! empty ( $webcalendar_session ) ) {
+            $encoded_login = $webcalendar_session;
+            if ( empty ( $encoded_login ) ) {
+              // invalid session cookie
+              $session_not_found = true;
+            } else {
+              $login_pw = split('\|', decode_string ($encoded_login));
+              $login = $login_pw[0];
+              $cryptpw = $login_pw[1];
+              // Security fix.  Don't allow certain types of characters in
+              // the login.  WebCalendar does not escape the login name in
+              // SQL requests.  So, if the user were able to set the login
+              // name to be "x';drop table u;",
+              // they may be able to affect the database.
+              if ( ! empty ( $login ) ) {
+                if ( $login != addslashes ( $login ) ) {
+                  die_miserable_death ( "Illegal characters in login " .
+                    "<tt>" . htmlentities ( $login ) . "</tt>" );
+                }
+              }
+              // make sure we are connected to the database for password check
+              $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
+              if ( ! $c ) {
+                die_miserable_death (
+                  "Error connecting to database:<blockquote>" .
+                  dbi_error () . "</blockquote>\n" );
+              }
+              doDbSanityCheck ();
+
+              if (!user_valid_crypt($login, $cryptpw)) {
+                do_debug ( "User not logged in; redirecting to login page" );
+                if ( empty ( $login_return_path ) )
+                  do_redirect ( "login.php" );
+                else
+                  do_redirect ( "login.php?return_path=$login_return_path" );
+              }
+
+              do_debug ( "Decoded login from cookie: $login" );
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Initializations from includes/connect.php.
+   *
+   * @access private
+   */
+  function _InitConnect() {
+    global $c, $db_host, $db_login, $db_password, $db_database,
+      $single_user, $single_user_login, $pub_acc_enabled,
+      $public_access_can_add, $session_not_found, $PHP_AUTH_USER,
+      $login, $PHP_SELF, $login_url, $login, $is_admin, $lastname,
+      $firstname, $fullname, $user_email, $use_http_auth,
+      $login_login, $login_is_admin, $login_lastname,
+      $login_firstname, $login_fullname, $login_email, $single_user,
+      $not_auth, $readonly;
+
+    // db settings are in config.php
+
+    // Establish a database connection.
+    // This may have happened in validate.php, depending on settings.
+    // If not, do it now.
+    if ( empty ( $c ) ) {
+      $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
+      if ( ! $c ) {
+        die_miserable_death (
+          "Error connecting to database:<blockquote>" .
+          dbi_error () . "</blockquote>\n" );
+      }
+      // Do a sanity check on the database, making sure we can
+      // at least access the webcal_config table.
+      if ( function_exists ( "doDbSanityCheck" ) ) {
+        doDbSanityCheck ();
+      }
+    }
+
+    // If we are in single user mode, make sure that the login selected is
+    // a valid login.
+    if ( $single_user == 'Y' ) {
+      if ( empty ( $single_user_login ) ) {
+        die_miserable_death ( "You have not defined <tt>single_user_login</tt> in " .
+          "<tt>includes/settings.php</tt>" );
+      }
+      $res = dbi_query ( "SELECT COUNT(*) FROM webcal_user " .
+        "WHERE cal_login = '$single_user_login'" );
+      if ( ! $res ) {
+        echo "Database error: " . dbi_error (); exit;
+      }
+      $row = dbi_fetch_row ( $res );
+      if ( $row[0] == 0 ) {
+        // User specified as single_user_login does not exist
+        if ( ! dbi_query ( "INSERT INTO webcal_user ( cal_login, " .
+          "cal_passwd, cal_is_admin ) VALUES ( '$single_user_login', " .
+           "'" . md5($single_user_login) . "', 'Y' )" ) ) {
+          die_miserable_death ( "User <tt>$single_user_login</tt> does not " .
+            "exist in <tt>webcal_user</tt> table and was not able to add " .
+            "it for you:<br /><blockquote>" .
+            dbi_error () . "</blockquote>" );
+        }
+        // User was added... should we tell them?
+      }
+      dbi_free_result ( $res );
+    }
+
+
+    // global settings have not been loaded yet, so check for public_access now
+    $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
+      "WHERE cal_setting = 'public_access'" );
+    $pub_acc_enabled = false;
+    if ( $res ) {
+      if ( $row = dbi_fetch_row ( $res ) ) {
+        if ( $row[0] == "Y" )
+          $pub_acc_enabled = true;
+      }
+      dbi_free_result ( $res );
+    }
+    if ( $pub_acc_enabled ) {
+      $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
+        "WHERE cal_setting = 'public_access_can_add'" );
+      if ( $res ) {
+        if ( $row = dbi_fetch_row ( $res ) ) {
+          $public_access_can_add = $row[0];
+        }
+        dbi_free_result ( $res );
+      }
+    }
+
+    // Debugging stuff :-)
+    //echo "pub_acc_enabled = " . ( $pub_acc_enabled ? "true" : "false" ) . " <br />";
+    //echo "session_not_found = " . ( $session_not_found ? "true" : "false" ) . " <br />";
+    //echo "use_http_auth = " . ( $use_http_auth ? "true" : "false" ) . " <br />";
+    //echo "PHP_AUTH_USER = $PHP_AUTH_USER <br />";
+    //echo "login = $login <br />";
+
+
+    if ( empty ( $PHP_SELF ) )
+      $PHP_SELF = $_SERVER["PHP_SELF"];
+
+    if ( empty ( $login_url ) )
+      $login_url = "login.php";
+    if ( strstr ( $login_url, "?" ) )
+      $login_url .= "&amp;";
+    else
+      $login_url .= "?";
+    if ( ! empty ( $login_return_path ) )
+      $login_url .= "return_path=$login_return_path";
+     
+
+    if ( empty ( $session_not_found ) )
+      $session_not_found = false;
+
+    if ( $pub_acc_enabled && ! empty ( $session_not_found ) ) {
+      $login = "__public__";
+      $is_admin =  false;
+      $lastname = "";
+      $firstname = "";
+      $fullname = "Public Access"; // Will be translated after translation is loaded
+      $user_email = "";
+    } else if ( ! $pub_acc_enabled && $session_not_found && ! $use_http_auth ) {
+      do_redirect ( $login_url );
+      exit;
+    }
+
+    if ( empty ( $login ) && $use_http_auth ) {
+      if ( strstr ( $PHP_SELF, "login.php" ) ) {
+        // ignore since login.php will redirect to index.php
+      } else {
+        send_http_login ();
+      }
+    } else if ( ! empty ( $login ) ) {
+      // they are already logged in ($login is set in validate.php)
+      if ( strstr ( $PHP_SELF, "login.php" ) ) {
+        // ignore since login.php will redirect to index.php
+      } else if ( $login == "__public__" ) {
+        $is_admin =  false;
+        $lastname = "";
+        $firstname = "";
+        $fullname = "Public Access";
+        $user_email = "";
+      } else {
+        user_load_variables ( $login, "login_" );
+        if ( ! empty ( $login_login ) ) {
+          $is_admin =  ( $login_is_admin == "Y" ? true : false );
+          $lastname = $login_lastname;
+          $firstname = $login_firstname;
+          $fullname = $login_fullname;
+          $user_email = $login_email;
+        } else {
+          // Invalid login
+          if ( $use_http_auth ) {
+            send_http_login ();
+          } else {
+            // This shouldn't happen since login should be validated in validate.php
+            // If it does happen, it means we received an invalid login cookie.
+            //echo "Error getting user info for login \"$login\".";
+            do_redirect ( $login_url . "&amp;error=Invalid+session+found." );
+          }
+        }
+      }
+    }
+    //else if ( ! $single_user ) {
+    //  echo "Error(3)! no login info found: " . dbi_error () . "<br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
+    //  exit;
+    //}
+
+    // If they are accessing using the public login, restrict them from using
+    // certain pages.
+    $not_auth = false;
+    if ( ! empty ( $login ) && $login == "__public__" ) {
+      if ( strstr ( $PHP_SELF, "views.php" ) ||
+        strstr ( $PHP_SELF, "views_edit_handler.php" ) ||
+        strstr ( $PHP_SELF, "category.php" ) ||
+        strstr ( $PHP_SELF, "category_handler.php" ) ||
+        strstr ( $PHP_SELF, "activity_log.php" ) ||
+        strstr ( $PHP_SELF, "admin.php" ) ||
+        strstr ( $PHP_SELF, "adminhome.php" ) ||
+        strstr ( $PHP_SELF, "admin_handler.php" ) ||
+        strstr ( $PHP_SELF, "groups.php" ) ||
+        strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
+        strstr ( $PHP_SELF, "pref.php" ) ||
+        strstr ( $PHP_SELF, "pref_handler.php" ) ||
+        strstr ( $PHP_SELF, "edit_user.php" ) ||
+        strstr ( $PHP_SELF, "edit_user_handler.php" ) ||
+        strstr ( $PHP_SELF, "approve_entry.php" ) ||
+        strstr ( $PHP_SELF, "reject_entry.php" ) ||
+        strstr ( $PHP_SELF, "del_entry.php" ) ||
+        strstr ( $PHP_SELF, "set_entry_cat.php" ) ||
+        strstr ( $PHP_SELF, "list_unapproved.php" ) ||
+        strstr ( $PHP_SELF, "layers.php" ) ||
+        strstr ( $PHP_SELF, "layer_toggle.php" ) ||
+        strstr ( $PHP_SELF, "import.php" ) ||
+        strstr ( $PHP_SELF, "import_handler.php" ) ||
+        strstr ( $PHP_SELF, "edit_template.php" ) ) {
+        $not_auth = true;
+      }
+      if ( $public_access_can_add != 'Y' ) { // do not allow add
+        if ( strstr ( $PHP_SELF, "edit_entry.php" ) ||
+          strstr ( $PHP_SELF, "edit_entry_handler.php" ) ) {
+          $not_auth = true;
+        }
+      }
+    }
+
+    if ( empty ( $is_admin ) || ! $is_admin ) {
+      if ( strstr ( $PHP_SELF, "admin.php" ) ||
+        strstr ( $PHP_SELF, "admin_handler.php" ) ||
+        strstr ( $PHP_SELF, "groups.php" ) ||
+        strstr ( $PHP_SELF, "group_edit.php" ) ||
+        strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
+        strstr ( $PHP_SELF, "edit_template.php" ) ||
+        strstr ( $PHP_SELF, "activity_log.php" ) ) {
+        $not_auth = true;
+      }
+    }
+
+    // restrict access if calendar is read-only
+    if ( $readonly == "Y" ) {
+      if ( strstr ( $PHP_SELF, "activity_log.php" ) ||
+        strstr ( $PHP_SELF, "adminhome.php" ) ||
+        strstr ( $PHP_SELF, "admin.php" ) ||
+        strstr ( $PHP_SELF, "approve_entry.php" ) ||
+        strstr ( $PHP_SELF, "category_handler.php" ) ||
+        strstr ( $PHP_SELF, "category.php" ) ||
+        strstr ( $PHP_SELF, "del_entry.php" ) ||
+        strstr ( $PHP_SELF, "edit_report_handler.php" ) ||
+        strstr ( $PHP_SELF, "edit_report.php" ) ||
+        strstr ( $PHP_SELF, "edit_template.php" ) ||
+        strstr ( $PHP_SELF, "edit_user_handler.php" ) ||
+        strstr ( $PHP_SELF, "edit_user.php" ) ||
+        strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
+        strstr ( $PHP_SELF, "groups.php" ) ||
+        strstr ( $PHP_SELF, "import_handler.php" ) ||
+        strstr ( $PHP_SELF, "import_handler.php" ) ||
+        strstr ( $PHP_SELF, "import.php" ) ||
+        strstr ( $PHP_SELF, "layers.php" ) ||
+        strstr ( $PHP_SELF, "layer_toggle.php" ) ||
+        strstr ( $PHP_SELF, "list_unapproved.php" ) ||
+        strstr ( $PHP_SELF, "pref_handler.php" ) ||
+        strstr ( $PHP_SELF, "pref.php" ) ||
+        strstr ( $PHP_SELF, "pref_handler.php" ) ||
+        strstr ( $PHP_SELF, "purge.php" ) ||
+        strstr ( $PHP_SELF, "reject_entry.php" ) ||
+        strstr ( $PHP_SELF, "set_entry_cat.php" ) ||
+        strstr ( $PHP_SELF, "users.php" ) ||
+        strstr ( $PHP_SELF, "views_edit_handler.php" ) ||
+        strstr ( $PHP_SELF, "views.php" ) ) {
+        $not_auth = true;
+      }
+    }
+
+    // We can't call translate() here because translate.php gets loaded
+    // after this include file :-(
+    // So, instead of an error message that may be in the wrong language,
+    // just redirect to some other page.
+    if ( $not_auth ) {
+      /*
+      echo "<html>\n<head>\n<title>" . translate($application_name) . " " .
+        translate("Error") .  "</title>\n</head>\n<body>\n";
+      echo "<h2>" . translate ( "Error" ) . "</h2>\n" .
+        translate ( "You are not authorized" );
+      */
+      do_redirect ( "week.php" );
+    }
+  }
+
+  /**
+   * Initializations from includes/site-extras.php.
+   *
+   * This is a placeholder for now.
+   *
+   * @access private
+   *
+   * @todo Figure out what should go here.
+   */
+  function _InitSiteExtras() {
+  }
+
+  /**
+   * Initializations from includes/access.php.
+   *
+   * @access private
+   */
+  function _InitAccess() {
+    global $access_other_cals;
+
+    /**#@+
+     * Constants for use with cal_permissions column in
+     * webcal_access_function table.
+     */
+    define ( 'ACCESS_EVENT_VIEW', 0 );
+    define ( 'ACCESS_EVENT_EDIT', 1 );
+    define ( 'ACCESS_DAY', 2 );
+    define ( 'ACCESS_WEEK', 3 );
+    define ( 'ACCESS_MONTH', 4 );
+    define ( 'ACCESS_YEAR', 5 );
+    define ( 'ACCESS_ADMIN_HOME', 6 );
+    define ( 'ACCESS_REPORT', 7 );
+    define ( 'ACCESS_VIEW', 8 );
+    define ( 'ACCESS_VIEW_MANAGEMENT', 9 );
+    define ( 'ACCESS_CATEGORY_MANAGEMENT', 10 );
+    define ( 'ACCESS_LAYERS', 11 );
+    define ( 'ACCESS_SEARCH', 12 );
+    define ( 'ACCESS_ADVANCED_SEARCH', 13 );
+    define ( 'ACCESS_ACTIVITY_LOG', 14 );
+    define ( 'ACCESS_USER_MANAGEMENT', 15 );
+    define ( 'ACCESS_ACCOUNT_INFO', 16 );
+    define ( 'ACCESS_ACCESS_MANAGEMENT', 17);
+    define ( 'ACCESS_PREFERENCES', 18 );
+    define ( 'ACCESS_SYSTEM_SETTINGS', 19 );
+    define ( 'ACCESS_IMPORT', 20 );
+    define ( 'ACCESS_EXPORT', 21 );
+    define ( 'ACCESS_PUBLISH', 22 );
+    define ( 'ACCESS_ASSISTANTS', 23 );
+    define ( 'ACCESS_TRAILER', 24 );
+    define ( 'ACCESS_HELP', 25 );
+    define ( 'ACCESS_NUMBER_FUNCTIONS', 26 ); // how many function did we define?
+    /**#@-*/
+
+    // The following pages will be handled differently than the others
+    // since they have different uses.  For example, edit_user.php
+    // adds a user when the user is an admin.  If the user is not an
+    // admin, it updates account info.
+    // Most of the pages have dual uses, so we will have access checks within
+    // these files.
+    $GLOBALS['page_lookup_ex'] = array (
+      "colors.php" => 1,
+      "index.php" => 1,
+      "edit_template.php" => 1,
+      "edit_user.php" => 1,
+      "edit_user_handler.php" => 1,
+    );
+
+    /**
+     * The following array provides a way to convert a page filename into
+     * a numeric $ACCESS_XXX number.
+     * The array key is a regular expression.  If the page matches the
+     * regular expression, then it will use the corresponding access id.
+     * There are some pages that have more than one use (edit_template.php
+     * is used for editing a report and editing the custom header).  These
+     * pages will be handled differently and are listed in
+     * the $page_lookup_ex[] array.
+     * @global array $GLOBAL['page_lookup']
+     * @name $page_lookup
+     */
+    $GLOBALS['page_lookup'] = array (
+      ACCESS_EVENT_VIEW =>
+        "(view_entry.php|select_user.php|purge.php|category*php)",
+      ACCESS_EVENT_EDIT => "(entry|list_unapproved)",
+      ACCESS_DAY => "day.php",
+      ACCESS_WEEK => "week.php",
+      ACCESS_MONTH => "month.php",
+      ACCESS_YEAR => "year.php",
+      ACCESS_ADMIN_HOME => "(adminhome.php|users.php)",
+      ACCESS_REPORT => "report",
+      ACCESS_VIEW => "view_..php",
+      ACCESS_VIEW_MANAGEMENT => "(views.php|views_edit)",
+      ACCESS_CATEGORY_MANAGEMENT => "category*php",
+      ACCESS_LAYERS => "layer",
+      ACCESS_SEARCH => "search",
+      ACCESS_ACTIVITY_LOG => "activity_log.php",
+      ACCESS_USER_MANAGEMENT => "(edit.*user.*.php|nonusers.*php|group.*php)",
+      ACCESS_ACCOUNT_INFO => "XYZXYZ_special_case",
+      ACCESS_ACCESS_MANAGEMENT => "(access.*php)",
+      ACCESS_PREFERENCES => "pref.*php",
+      ACCESS_SYSTEM_SETTINGS => "(admin.php|admin_handler.php)",
+      ACCESS_IMPORT => "import.*php",
+      ACCESS_EXPORT => "export.*php",
+      ACCESS_PUBLISH => "(publish.php|freebusy.php|rss.php)",
+      ACCESS_ASSISTANTS => "assist.*php",
+      ACCESS_HELP => "help_.*php",
+    );
+
+
+    //CREATE TABLE webcal_access_user (
+    //  cal_login VARCHAR(50) NOT NULL,
+    //  cal_other_user VARCHAR(50) NOT NULL,
+    //  cal_can_view CHAR(1) NOT NULL DEFAULT 'N',
+    //  cal_can_edit CHAR(1) NOT NULL DEFAULT 'N',
+    //  cal_can_delete CHAR(1) NOT NULL DEFAULT 'N',
+    //  cal_can_approve CHAR(1) NOT NULL DEFAULT 'N',
+    //  PRIMARY KEY ( cal_login, cal_other_user )
+    //);
+    //
+    //CREATE TABLE webcal_access_function (
+    //  cal_login VARCHAR(50) NOT NULL,
+    //  /* a string of 'Y' or 'N' for the various functions */
+    //  cal_permissions VARCHAR(64) NOT NULL,
+    //  PRIMARY KEY ( cal_login )
+    //);
+
+
+
+    // Global variable used to cache permissions
+    $access_other_cals = array ( );
+  }
+
+  /**
+   * Initializations from includes/translate.php.
+   *
+   * @access private
+   */
+  function _InitTranslate() {
+    global $LANGUAGE, $lang, $lang_file, $translation_loaded,
+      $PUBLIC_ACCESS_FULLNAME;
+
+    if ( empty ( $LANGUAGE ) ) {
+      $LANGUAGE = '';
+    }
+
+    // If set to use browser settings, use the user's language preferences
+    // from their browser.
+    $lang = $LANGUAGE;
+    if ( $LANGUAGE == "Browser-defined" || $LANGUAGE == "none" ) {
+      $lang = get_browser_language ();
+      if ( $lang == "none" )
+        $lang = "";
+    }
+    if ( strlen ( $lang ) == 0 || $lang == 'none' ) {
+      $lang = "English-US"; // Default
+    }
+
+    $lang_file = "translations/" . $lang . ".txt";
+
+    $translation_loaded = false;
+
+    $PUBLIC_ACCESS_FULLNAME = "Public Access"; // default
+  }
+
+  /**
+   * Gets the initialization phases for the page being viewed.
+   *
+   * @return array Array of initialization phases.
+   *
+   * @access private
+   */
+  function _getPhases() {
+    global $user_inc;
+
+    foreach ( $this->_filePhaseMap as $pattern => $phases ) {
+      if ( preg_match ( $pattern, $this->_filename ) !== 0 ) {
+        return $phases;
+      }
+    }
+  }
+
+  /**
+   * Gets the initialization steps for the current page and phase.
+   *
+   * @param int $phase Initialization phase number
+   *
+   * @return array Array of initialization steps.
+   *
+   * @access private
+   */
+  function _getSteps ( $phase ) {
+    $phases = $this->_getPhases();
+
+    return $phases[$phase - 1];
+  }
+
+  /**
+   * Performs initialization steps.
+   *
+   * @param int $phase Which step of initialization should we perform?
+   *
+   * @access private
+   */
+  function _doInit ( $phase ) {
+    $steps = $this->_GetSteps ( $phase );
+
+    foreach ( $steps as $step ) {
+      $function = "_Init$step";
+
+      $this->$function();
+    }
+  }
+
+  /**
+   * Begins initialization of WebCalendar.
+   *
+   * @param string $path Full path of page being viewed
+   *
+   * @access public
+   */
+  function InitializeFirstPhase() {
+    $this->_doInit ( 1 );
+  }
+
+  /**
+   * Continues initialization of WebCalendar.
+   *
+   * @param string $path Full path of page being viewed
+   *
+   * @access public
+   */
+  function InitializeSecondPhase() {
+    $this->_doInit ( 2 );
+  }
+}
+?>

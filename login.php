@@ -1,9 +1,18 @@
 <?php
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
+require_once 'includes/classes/WebCalendar.class';
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/php-dbi.php';
+include 'includes/functions.php';
+
+$WebCalendar->InitializeFirstPhase();
+
 include "includes/$user_inc";
-include "includes/connect.php";
+include 'includes/translate.php';
+
+$WebCalendar->InitializeSecondPhase();
 
 // Change this to true to show "no such user" or "invalid password" on
 // login failures.
@@ -25,7 +34,6 @@ if ( $remember_last_login == "Y" && empty ( $login ) ) {
 
 load_user_preferences ();
 
-include "includes/translate.php";
 
 // see if a return path was set
 if ( ! empty ( $return_path ) ) {
