@@ -54,7 +54,7 @@ include_once 'includes/config.php';
 include_once 'includes/php-dbi.php';
 include_once 'includes/functions.php';
 
-$WebCalendar->InitializeFirstPhase();
+$WebCalendar->initializeFirstPhase();
 
 include_once "includes/$user_inc";
 include_once 'includes/validate.php';
@@ -62,7 +62,7 @@ include_once 'includes/site_extras.php';
 include_once 'includes/access.php';
 include_once 'includes/translate.php';
 
-$WebCalendar->InitializeSecondPhase();
+$WebCalendar->initializeSecondPhase();
 
 
 /**

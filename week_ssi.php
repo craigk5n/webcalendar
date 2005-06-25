@@ -29,12 +29,12 @@ include 'includes/config.php';
 include 'includes/php-dbi.php';
 include 'includes/functions.php';
 
-$WebCalendar->InitializeFirstPhase();
+$WebCalendar->initializeFirstPhase();
 
 include "includes/$user_inc";
 include 'includes/translate.php';
 
-$WebCalendar->InitializeSecondPhase();
+$WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
 load_user_preferences ();

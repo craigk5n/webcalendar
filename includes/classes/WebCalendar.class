@@ -71,7 +71,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _InitInitFirstPhase() {
+  function _initInitFirstPhase() {
     global $HTTP_GET_VARS, $HTTP_POST_VARS, $self, $PHP_SELF, $SCRIPT,
       $special, $DMW, $user_inc;
 
@@ -102,7 +102,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _InitInitSecondPhase() {
+  function _initInitSecondPhase() {
     global $ovrd, $id, $user, $date, $year, $month, $hour, $minute,
       $cat_id, $friendly, $public_access, $application_name, $DMW,
       $allow_view_other, $is_admin, $can_add, $readonly, $login,
@@ -278,7 +278,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _InitAssert() {
+  function _initAssert() {
     // Initialize assert options
     assert_options ( ASSERT_CALLBACK, 'assert_handler' );
     assert_options ( ASSERT_ACTIVE, 1 );
@@ -289,7 +289,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _InitConfig() {
+  function _initConfig() {
     global $PROGRAM_VERSION, $PROGRAM_DATE, $PROGRAM_NAME,
       $PROGRAM_URL, $TROUBLE_URL, $settings, $db_type, $db_host,
       $db_login, $db_password, $db_database, $db_persistent,
@@ -555,7 +555,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _InitPHPDBI() {
+  function _initPHPDBI() {
     global $phpdbiVerbose;
 
     // Enable the following to show the actual database error in the browser.
@@ -571,7 +571,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _InitFunctions() {
+  function _initFunctions() {
     global $days_per_month, $ldays_per_month, $noSet, $HTTP_GET_VARS, $PHP_SELF, $HTTP_POST_VARS, $HTTP_COOKIE_VARS, $settings, $db_password, $offsets;
 
     /**#@+
@@ -747,7 +747,7 @@ class WebCalendar {
    * @todo Make an Authentication interface class and create a subclass for
    *       each user*.php page.
    */
-  function _InitUser() {
+  function _initUser() {
   }
 
   /**
@@ -755,7 +755,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _InitValidate() {
+  function _initValidate() {
     global $validate_redirect, $session_not_found, $use_http_auth,
       $PHP_AUTH_USER, $HTTP_SERVER_VARS, $REMOTE_USER, $HTTP_ENV_VARS,
       $single_user, $login, $single_user_login, $user_inc, $settings,
@@ -886,7 +886,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _InitConnect() {
+  function _initConnect() {
     global $c, $db_host, $db_login, $db_password, $db_database,
       $single_user, $single_user_login, $pub_acc_enabled,
       $public_access_can_add, $session_not_found, $PHP_AUTH_USER,
@@ -1153,7 +1153,7 @@ class WebCalendar {
    *
    * @todo Figure out what should go here.
    */
-  function _InitSiteExtras() {
+  function _initSiteExtras() {
   }
 
   /**
@@ -1161,7 +1161,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _InitAccess() {
+  function _initAccess() {
     global $access_other_cals;
 
     /**#@+
@@ -1280,7 +1280,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _InitTranslate() {
+  function _initTranslate() {
     global $LANGUAGE, $lang, $lang_file, $translation_loaded,
       $PUBLIC_ACCESS_FULLNAME;
 
@@ -1350,7 +1350,7 @@ class WebCalendar {
     $steps = $this->_GetSteps ( $phase );
 
     foreach ( $steps as $step ) {
-      $function = "_Init$step";
+      $function = "_init$step";
 
       $this->$function();
     }
@@ -1363,7 +1363,7 @@ class WebCalendar {
    *
    * @access public
    */
-  function InitializeFirstPhase() {
+  function initializeFirstPhase() {
     $this->_doInit ( 1 );
   }
 
@@ -1374,7 +1374,7 @@ class WebCalendar {
    *
    * @access public
    */
-  function InitializeSecondPhase() {
+  function initializeSecondPhase() {
     $this->_doInit ( 2 );
   }
 }

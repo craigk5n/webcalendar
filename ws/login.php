@@ -17,12 +17,12 @@ include "$includedir/config.php";
 include "$includedir/php-dbi.php";
 include "$includedir/functions.php";
 
-$WebCalendar->InitializeFirstPhase();
+$WebCalendar->initializeFirstPhase();
 
 include "$includedir/$user_inc";
 include "$includedir/translate.php";
 
-$WebCalendar->InitializeSecondPhase();
+$WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
 

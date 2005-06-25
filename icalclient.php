@@ -100,14 +100,14 @@ include 'includes/config.php';
 include 'includes/php-dbi.php';
 include 'includes/functions.php';
 
-$WebCalendar->InitializeFirstPhase();
+$WebCalendar->initializeFirstPhase();
 
 include "includes/$user_inc";
 include_once 'includes/validate.php';
 include 'includes/translate.php';
 include 'includes/site_extras.php';
 
-$WebCalendar->InitializeSecondPhase();
+$WebCalendar->initializeSecondPhase();
 
 // Require an authenticated user HTTP Auth
 // TODO: make this work for CGI installations
