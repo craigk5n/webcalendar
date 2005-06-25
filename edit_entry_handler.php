@@ -1,6 +1,5 @@
 <?php
 include_once 'includes/init.php';
-include_once 'includes/site_extras.php';
 load_user_categories ();
 
 $error = "";

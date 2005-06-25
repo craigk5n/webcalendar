@@ -21,11 +21,20 @@ if ( strlen ( $login ) == 0 ) {
   }
 }
 
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
+require_once 'includes/classes/WebCalendar.class';
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/php-dbi.php';
+include 'includes/functions.php';
+
+$WebCalendar->InitializeFirstPhase();
+
 include "includes/$user_inc";
-include "includes/connect.php";
+include 'includes/translate.php';
+
+$WebCalendar->InitializeSecondPhase();
 
 load_global_settings ();
 load_user_preferences ();
@@ -33,7 +42,6 @@ load_user_layers ();
 
 $view = "week";
 
-include "includes/translate.php";
 
 
 $today = time() + ($TZ_OFFSET * 60 * 60);

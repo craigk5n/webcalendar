@@ -43,14 +43,22 @@
  *	  Preferences), do not allow.
  */
 
+require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
 
-include "includes/config.php";
-include "includes/php-dbi.php";
-include "includes/functions.php";
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/php-dbi.php';
+include 'includes/functions.php';
+
+$WebCalendar->InitializeFirstPhase();
+
 include "includes/$user_inc";
-include "includes/connect.php";
+include 'includes/translate.php';
+
+$WebCalendar->InitializeSecondPhase();
 
 // Calculate username.
 if ( empty ( $user ) ) {
@@ -63,8 +71,6 @@ if ( empty ( $user ) ) {
 }
 
 load_global_settings ();
-
-include "includes/translate.php";
 
 // Load user preferences (to get the DISPLAY_UNAPPROVED and
 // FREEBUSY_ENABLED pref for this user).

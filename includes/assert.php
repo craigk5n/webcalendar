@@ -15,20 +15,6 @@
  */
 
 
-if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
-  ! empty ( $_SERVER['PHP_SELF'] ) ) {
-  $PHP_SELF = $_SERVER['PHP_SELF'];
-}
-if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
-  die ( "You can't access this file directly!" );
-}
-
-
-// Initialize assert options
-assert_options ( ASSERT_CALLBACK, 'assert_handler' );
-assert_options ( ASSERT_ACTIVE, 1 );
-
-
 // Attempt to find the CVS file version for a specific file
 // by searching through the file and looking for the CVS Id tag.
 function assert_get_cvs_file_version ( $file )

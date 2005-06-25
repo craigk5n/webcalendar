@@ -2,7 +2,7 @@
 include_once 'includes/init.php';
 
 // If not yet logged in, you will be redirected to login.php before
-// we get to this point (by connect.php included above)
+// we get to this point (by init.php included above)
 
 if ( ! empty ( $STARTVIEW ) ) {
   $page = get_preferred_view ();

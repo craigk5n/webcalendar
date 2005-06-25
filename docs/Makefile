@@ -13,6 +13,7 @@ INCLUDES = \
  ../includes/translate.php \
  ../report.php \
  ../includes/translate.php \
+ ../includes/classes/WebCalendar.class \
  ../includes/classes/Event.class \
  ../includes/classes/RptEvent.class
 

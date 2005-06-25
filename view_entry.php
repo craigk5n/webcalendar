@@ -13,7 +13,6 @@
  * (*) required field
  */
 include_once 'includes/init.php';
-include_once 'includes/site_extras.php';
 
 // make sure this user is allowed to look at this calendar.
 $can_view = false;

@@ -20,17 +20,25 @@ $basedir = ".."; // points to the base WebCalendar directory relative to
                  // current working directory
 $includedir = "../includes";
 
+require_once "$includedir/classes/WebCalendar.class";
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
 include "$includedir/config.php";
 include "$includedir/php-dbi.php";
 include "$includedir/functions.php";
+
+$WebCalendar->InitializeFirstPhase();
+
 include "$includedir/$user_inc";
 include "$includedir/validate.php";
-include "$includedir/connect.php";
+include "$includedir/site_extras.php";
+include "$includedir/translate.php";
+
+$WebCalendar->InitializeSecondPhase();
+
 load_global_settings ();
 load_user_preferences ();
-include "$includedir/site_extras.php";
-
-include "$includedir/translate.php";
 
 $debug = false; // set to true to print debug info...
 

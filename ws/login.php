@@ -9,18 +9,26 @@
 $basedir = "..";
 $includedir = "../includes";
 
+require_once "$includedir/classes/WebCalendar.class";
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
 include "$includedir/config.php";
 include "$includedir/php-dbi.php";
 include "$includedir/functions.php";
+
+$WebCalendar->InitializeFirstPhase();
+
 include "$includedir/$user_inc";
-include "$includedir/connect.php";
+include "$includedir/translate.php";
+
+$WebCalendar->InitializeSecondPhase();
 
 load_global_settings ();
 
 if ( ! empty ( $last_login ) )
   $login = "";
 
-include "$includedir/translate.php";
 
 // calculate path for cookie
 if ( empty ( $PHP_SELF ) )

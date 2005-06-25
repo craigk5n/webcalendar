@@ -13,7 +13,7 @@
  *	type - "header" or "trailer"
  *
  * Security:
- *	Admin permissions are checked in connect.php.
+ *	Admin permissions are checked by the WebCalendar class.
  */
 include_once 'includes/init.php';
 
