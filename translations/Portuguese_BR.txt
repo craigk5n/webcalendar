@@ -1,4 +1,4 @@
-<div class="moz-text-flowed" style="font-family: -moz-fixed"># Brazilian Portuguese Translation
+# Brazilian Portuguese Translation
 # Revision 1.0
 # Translated by: Mauricio Piza - mpiza@formare.com.br
 # 
