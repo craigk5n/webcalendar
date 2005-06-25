@@ -7,12 +7,12 @@ include 'includes/config.php';
 include 'includes/php-dbi.php';
 include 'includes/functions.php';
 
-$WebCalendar->InitializeFirstPhase();
+$WebCalendar->initializeFirstPhase();
 
 include "includes/$user_inc";
 include 'includes/translate.php';
 
-$WebCalendar->InitializeSecondPhase();
+$WebCalendar->initializeSecondPhase();
 
 // Change this to true to show "no such user" or "invalid password" on
 // login failures.
