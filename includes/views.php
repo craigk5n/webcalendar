@@ -5,18 +5,9 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @package WebCalendar
  * @version $Id$
+ * @package WebCalendar
  */
-
-
-if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
-  ! empty ( $_SERVER['PHP_SELF'] ) ) {
-  $PHP_SELF = $_SERVER['PHP_SELF'];
-}
-if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
-    die ( "You can't access this file directly!" );
-}
 
 
 /**

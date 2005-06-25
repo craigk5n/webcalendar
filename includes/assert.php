@@ -3,20 +3,26 @@
  * This file implements the assertion handler this is called anytime
  * a WebCalendar call to assert() fails.
  *
- * TODO:
- *   Create a link that will pass all the bug details to a form hosted
- *   on k5n.us so that it can be easily submitted.
+ * @todo Create a link that will pass all the bug details to a form hosted on
+ *       k5n.us so that it can be easily submitted.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @package WebCalendar
  * @version $Id$
+ * @package WebCalendar
  */
 
 
-// Attempt to find the CVS file version for a specific file
-// by searching through the file and looking for the CVS Id tag.
+/**
+ * Gets the CVS file version for a specific file.
+ *
+ * Searches through the file and looks for the CVS Id tag.
+ *
+ * @param string $file Filename
+ *
+ * @return string File's CVS version string
+ */
 function assert_get_cvs_file_version ( $file )
 {
   $version = "v?.?";
@@ -42,9 +48,13 @@ function assert_get_cvs_file_version ( $file )
   return $version;
 }
 
-/** Return a stack trace.  Each entry is separated by a newline.
-  * This function requires PHP 4.3/5.0.
-  */
+/**
+ * Return a backtrace.
+ *
+ * Each entry is separated by a newline. This function requires PHP 4.3/5.0.
+ *
+ * @return string Backtrace
+ */
 function assert_backtrace ()
 {
   global $settings;
@@ -98,12 +108,15 @@ function assert_backtrace ()
 }
   
 
-/** Verify that the specified expression is true.  If it is not,
-  * than abort execution, print the specified error message along
-  * with a stack trace.
-  * @param bool $expr
-  * @param string $msg
-  */
+/**
+ * Report an assertion failure.
+ *
+ * Abort execution, print the specified error message along with a stack trace.
+ *
+ * @param string $script Pathname where assertion failed
+ * @param int    $line   Line number where assertion failed
+ * @param string $msg    Failed assertion expression
+ */
 function assert_handler ( $script, $line, $msg )
 {
   if ( empty ( $msg ) )
