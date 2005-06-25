@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1221727: error in documentation for using iframe with upcoming.php
  - Added new naming conventions to Developer's Guide, fixed spelling mistakes,
    XHTML validation, and formatting consistency
  - Patch 1220042: Make arguments to assert() strings so we get error messages
