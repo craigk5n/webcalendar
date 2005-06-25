@@ -26,7 +26,6 @@
  * TBD
  */
 include_once 'includes/init.php';
-include_once 'includes/site_extras.php';
 $error = '';
 print_header();
 
