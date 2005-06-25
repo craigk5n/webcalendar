@@ -57,13 +57,23 @@ $basedir = ".."; // points to the base WebCalendar directory relative to
                  // current working directory
 $includedir = "../includes";
 
+require_once "$includedir/classes/WebCalendar.class";
+require_once "$includedir/classes/Event.class";
+require_once "$includedir/classes/RptEvent.class";
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
 include "$includedir/config.php";
 include "$includedir/php-dbi.php";
 include "$includedir/functions.php";
+
+$WebCalendar->initFirstPhase();
+
 include "$includedir/$user_inc";
 include "$includedir/site_extras.php";
-include "$includedir/classes/Event.class";
-include "$includedir/classes/RptEvent.class";
+include "$includedir/translate.php";
+
+$WebCalendar->initSecondPhase();
 
 $debug = false; // set to true to print debug info...
 $only_testing = false; // act like we're sending, but don't send -- for debugging
@@ -76,8 +86,6 @@ if ( ! $c ) {
 }
 
 load_global_settings ();
-
-include "$includedir/translate.php";
 
 if ( $debug )
   echo "<br />\n";

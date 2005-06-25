@@ -48,6 +48,10 @@ class WebCalendar {
     '/^(icalclient|get_reminders|get_events)\.php$/' =>
       array(array('Config', 'PHPDBI', 'Functions'),
             array('User', 'Validate', 'Connect', 'Translate', 'SiteExtras')),
+    '/^convert_passwords\.php$/' => array(array('Config', 'PHPDBI'),
+                                          array()),
+    '/^send_reminders\.php$/' => array(array('Config', 'PHPDBI', 'Functions'),
+                                       array('User', 'SiteExtras', 'Translate')),
     /* Catch-all -- this is for files which have called include('includes/init.php') */
     '/^.*$/' => array(array('InitFirstPhase', 'Config', 'PHPDBI', 'Functions'),
                       array('User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'Translate', 'InitSecondPhase'))
