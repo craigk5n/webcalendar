@@ -1,4 +1,24 @@
 <?php
+/**
+ * Authentication functions.
+ *
+ * This file contains all the functions for getting information about users.
+ * So, if you want to use an authentication scheme other than the webcal_user
+ * table, you can just create a new version of each function found below.
+ *
+ * <b>Note:</b> this application assumes that usernames (logins) are unique.
+ *
+ * <b>Note #2:</b> If you are using HTTP-based authentication, then you still
+ * need these functions and you will still need to add users to webcal_user.
+ *
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ * @subpackage Authentication
+ */
+
 if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
   ! empty ( $_SERVER['PHP_SELF'] ) ) {
   $PHP_SELF = $_SERVER['PHP_SELF'];
@@ -7,16 +27,6 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     die ( "You can't access this file directly!" );
 }
 
-// This file contains all the functions for getting information
-// about users.  So, if you want to use an authentication scheme
-// other than the webcal_user table, you can just create a new
-// version of each function found below.
-//
-// Note: this application assumes that usernames (logins) are unique.
-//
-// Note #2: If you are using HTTP-based authentication, then you still
-// need these functions and you will still need to add users to
-// webcal_user.
 
 // Set some global config variables about your system.
 $user_can_update_password = true;
@@ -24,12 +34,18 @@ $admin_can_add_user = true;
 $admin_can_delete_user = true;
 
 
-// Check to see if a given login/password is valid.  If invalid,
-// the error message will be placed in $error.
-// params:
-//   $login - user login
-//   $password - user password
-// returns: true or false
+/**
+ * Check to see if a given login/password is valid.
+ *
+ * If invalid, the error message will be placed in $error.
+ *
+ * @param string $login    User login
+ * @param string $password User password
+ *
+ * @return bool True on success
+ *
+ * @global string Error message
+ */
 function user_valid_login ( $login, $password ) {
   global $error;
   $ret = false;
@@ -75,12 +91,18 @@ function user_valid_login ( $login, $password ) {
   return $ret;
 }
 
-// Check to see if a given login/crypted password is valid.  If invalid,
-// the error message will be placed in $error.
-// params:
-//   $login - user login
-//   $crypt_password - crypted user password
-// returns: true or false
+/**
+ * Check to see if a given login/crypted password is valid.
+ *
+ * If invalid, the error message will be placed in $error.
+ *
+ * @param string $login          User login
+ * @param string $crypt_password Encrypted user password
+ *
+ * @return bool True on success
+ *
+ * @global string Error message
+ */
 function user_valid_crypt ( $login, $crypt_password ) {
   global $error;
   $ret = false;
@@ -114,11 +136,14 @@ function user_valid_crypt ( $login, $crypt_password ) {
   return $ret;
 }
 
-// Load info about a user (first name, last name, admin) and set
-// globally.
-// params:
-//   $user - user login
-//   $prefix - variable prefix to use
+/**
+ * Load info about a user (first name, last name, admin) and set globally.
+ * 
+ * @param string $user User login
+ * @param string $prefix Variable prefix to use
+ *
+ * @return bool True on success
+ */
 function user_load_variables ( $login, $prefix ) {
   global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX;
 
@@ -162,14 +187,20 @@ function user_load_variables ( $login, $prefix ) {
   return true;
 }
 
-// Add a new user.
-// params:
-//   $user - user login
-//   $password - user password
-//   $firstname - first name
-//   $lastname - last name
-//   $email - email address
-//   $admin - is admin? ("Y" or "N")
+/**
+ * Add a new user.
+ *
+ * @param string $user      User login
+ * @param string $password  User password
+ * @param string $firstname User first name
+ * @param string $lastname  User last name
+ * @param string $email     User email address
+ * @param string $admin     Is the user an administrator? ('Y' or 'N')
+ *
+ * @return bool True on success
+ *
+ * @global string Error message
+ */
 function user_add_user ( $user, $password, $firstname, $lastname, $email,
   $admin ) {
   global $error;
@@ -209,13 +240,19 @@ function user_add_user ( $user, $password, $firstname, $lastname, $email,
   return true;
 }
 
-// Update a user
-// params:
-//   $user - user login
-//   $firstname - first name
-//   $lastname - last name
-//   $email - email address
-//   $admin - is admin?
+/**
+ * Update a user.
+ *
+ * @param string $user      User login
+ * @param string $firstname User first name
+ * @param string $lastname  User last name
+ * @param string $mail      User email address
+ * @param string $admin     Is the user an administrator? ('Y' or 'N')
+ *
+ * @return bool True on success
+ *
+ * @global string Error message
+ */
 function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
   global $error;
 
@@ -248,10 +285,16 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
   return true;
 }
 
-// Update user password
-// params:
-//   $user - user login
-//   $password - last name
+/**
+ * Update user password.
+ *
+ * @param string $user     User login
+ * @param string $password User password
+ *
+ * @return bool True on success
+ *
+ * @global string Error message
+ */
 function user_update_user_password ( $user, $password ) {
   global $error;
 
@@ -264,11 +307,14 @@ function user_update_user_password ( $user, $password ) {
   return true;
 }
 
-// Delete a user from the system.
-// We assume that we've already checked to make sure this user doesn't
-// have events still in the database.
-// params:
-//   $user - user to delete
+/**
+ * Delete a user from the system.
+ *
+ * We assume that we've already checked to make sure this user doesn't have
+ * events still in the database.
+ *
+ * @param string $user User to delete
+ */
 function user_delete_user ( $user ) {
   // Get event ids for all events this user is a participant
   $events = array ();
@@ -340,7 +386,11 @@ function user_delete_user ( $user ) {
   dbi_query ( "DELETE FROM webcal_user WHERE cal_login = '$user'" );
 }
 
-// Get a list of users and return info in an array.
+/**
+ * Get a list of users and return info in an array.
+ *
+ * @return array Array of user info
+ */
 function user_get_users () {
   global $public_access, $PUBLIC_ACCESS_FULLNAME;
 

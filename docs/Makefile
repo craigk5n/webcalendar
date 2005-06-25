@@ -6,16 +6,20 @@ all: WebCalendar-Database.html phpdoc/index.html faqs.html
 
 # List include files that will be searched for function documentation
 INCLUDES = \
- ../includes/functions.php \
- ../includes/php-dbi.php \
- ../includes/init.php \
+ ../includes/access.php \
+ ../includes/assert.php \
  ../includes/config.php \
+ ../includes/functions.php \
+ ../includes/init.php \
+ ../includes/php-dbi.php \
  ../includes/translate.php \
- ../report.php \
+ ../includes/user.php \
+ ../includes/views.php \
  ../includes/translate.php \
  ../includes/classes/WebCalendar.class \
  ../includes/classes/Event.class \
- ../includes/classes/RptEvent.class
+ ../includes/classes/RptEvent.class \
+ ../report.php
 
 WebCalendar-Database.html: ../tables-mysql.sql sql2html.pl
 	perl sql2html.pl < ../tables-mysql.sql > WebCalendar-Database.html

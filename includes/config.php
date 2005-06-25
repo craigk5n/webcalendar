@@ -13,9 +13,13 @@
  * WebCalendar.  Version 0.9.45 and later requires editing the settings.php
  * file instead.)
  *
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @version $Id$
  * @package WebCalendar
  */
+
 
 /**
  * Prints a fatal error message to the user along with a link to the
@@ -39,7 +43,6 @@ global $TROUBLE_URL;
     "Troubleshooting Help</a></p></body></html>\n";
   exit;
 }
-
 
 
 

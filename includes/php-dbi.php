@@ -27,7 +27,9 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
  * @package WebCalendar
+ * @subpackage Database
  *
  * History:
  * 17-Mar-2005	Ray Jones

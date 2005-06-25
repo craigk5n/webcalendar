@@ -1,7 +1,6 @@
 <?php
 /**
- * This file includes all functions related to user/role
- * access privileges.
+ * All functions related to user/role access privileges.
  *
  * Access is restricted in two ways: by function and by a user's calendar.
  *
@@ -14,12 +13,15 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @package WebCalendar
  * @version $Id$
+ * @package WebCalendar
  */
 
-/** Is user access control enabled?
-  */
+/**
+ * Is user access control enabled?
+ *
+ * @return bool True if user access control is enabled
+ */
 function access_is_enabled ()
 {
   global $uac_enabled;
@@ -28,10 +30,11 @@ function access_is_enabled ()
 }
 
 
-/** Return the name of a specific function.
-  * @param int function the function (ACCESS_DAY, etc.)
-  * @return the text description of the function
-  */
+/**
+ * Return the name of a specific function.
+ * @param int $function the function (ACCESS_DAY, etc.)
+ * @return string The text description of the function
+ */
 function access_get_function_description ( $function )
 {
   switch ( $function ) {
@@ -93,11 +96,17 @@ function access_get_function_description ( $function )
 }
 
 
-/** Load the permissions for a specific user.
-  * Settings will be stored in the global array $access_other_cals[].
-  * @param string $user user login
-  * @global array $access_other_cals stores permissions for viewing calendars
-  */
+/**
+ * Load the permissions for a specific user.
+ *
+ * Settings will be stored in the global array $access_other_cals[].
+ *
+ * @param string $user user login
+ *
+ * @return array Array of permissions for viewing other calendars.
+ *
+ * @global array Stores permissions for viewing calendars
+ */
 function access_load_user_permissions ( $user )
 {
   global $access_other_cals;
@@ -131,13 +140,13 @@ function access_load_user_permissions ( $user )
 }
 
 
-/** Return a list of calendar logins that the specified user
-  * is able to view the calendar of.
-  *
-  * @param string $user user login
-  * @global bool $is_admin
-  * @return an array of logins
-  */
+/**
+ * Returns a list of calendar logins that the specified user is able to view the calendar of.
+ *
+ * @param string $user User login
+ *
+ * @return array An array of logins
+ */
 function access_get_viewable_users ( $user )
 {
   global $access_other_cals, $login;
@@ -159,14 +168,19 @@ function access_get_viewable_users ( $user )
   return $ret;
 }
 
-/** Return the row of the webcal_access_function table for the
-  * the specified user.  If no entry is found for the specified user,
-  * the the user '__default__' will be looked up.  If still no
-  * info found, then some default values will be returned.
-  * @param string $user user login
-  * @global bool $is_admin
-  * @return true if successful
-  */
+/**
+ * Returns the row of the webcal_access_function table for the the specified user.
+ *
+ * If no entry is found for the specified user, the the user '__default__' will
+ * be looked up.  If still no info found, then some default values will be
+ * returned.
+ *
+ * @param string $user User login
+ *
+ * @return bool True if successful
+ *
+ * @global bool Is the current user an administrator?
+ */
 function access_load_user_functions ( $user )
 {
   global $is_admin;
@@ -196,12 +210,16 @@ function access_load_user_functions ( $user )
 }
 
 
-/** Load permissions for the specified user.
-  * @param string $user user login
-  * @global string $access_user
-  * @global bool $is_admin
-  * @return true if successful
-  */
+/**
+ * Load permissions for the specified user.
+ *
+ * @param string $user User login
+ *
+ * @return bool True if successful
+ *
+ * @global string 
+ * @global bool   Is the current user an administrator?
+ */
 function access_init ( $user="" )
 {
   global $login, $access_user, $is_admin;
@@ -216,13 +234,16 @@ function access_init ( $user="" )
   return true;
 }
 
-/** Check to see if a user can access the specified page
-  * (or the current page if no page is specified).
-  * @param int $function functionality to check access to
-  * @param string $user user login
-  * @global string $login
-  * @return true if user can access the function
-  */
+/**
+ * Check to see if a user can access the specified page (or the current page if no page is specified).
+ *
+ * @param int    $function Functionality to check access to
+ * @param string $user     User login
+ *
+ * @return bool True if user can access the function
+ *
+ * @global string Username of the currently logged-in user
+ */
 function access_can_access_function ( $function, $user="" )
 {
   global $login;
@@ -247,12 +268,17 @@ function access_can_access_function ( $function, $user="" )
   return ( $yesno == 'Y' );
 }
 
-/** Check to see if a user can view the calendar of another user.
-  * @param string $other_user user login of calendar to view
-  * @param string $cur_user user login of current user
-  * @global array $access_users
-  * @return true if user can access the other user's calendar
-  */
+/**
+ * Check to see if a user can view the calendar of another user.
+ *
+ * @param string $other_user User login of calendar to view
+ * @param string $cur_user   User login of current user
+ *
+ * @return bool True if user can access the other user's calendar
+ *
+ * @global string Username of currently logged-in user
+ * @global array
+ */
 function access_can_view_user_calendar ( $other_user, $cur_user='' )
 {
   global $login, $access_users;
@@ -284,12 +310,17 @@ function access_can_view_user_calendar ( $other_user, $cur_user='' )
 }
 
 
-/** Check to see if a user can approve an event on another user's calendar.
-  * @param string $other_user user login of calendar to view
-  * @param string $cur_user user login of current user
-  * @global array $access_users
-  * @return true if user can access the other user's calendar
-  */
+/**
+ * Check to see if a user can approve an event on another user's calendar.
+ *
+ * @param string $other_user User login of calendar to view
+ * @param string $cur_user   User login of current user
+ *
+ * @return bool True if user can access the other user's calendar
+ *
+ * @global string Username of currently logged-in user
+ * @global array
+ */
 function access_can_approve_user_calendar ( $other_user, $cur_user='' )
 {
   global $login, $access_users;
@@ -321,12 +352,17 @@ function access_can_approve_user_calendar ( $other_user, $cur_user='' )
 }
 
 
-/** Check to see if a user can delete an event on another user's calendar.
-  * @param string $other_user user login of calendar to delete from
-  * @param string $cur_user user login of current user
-  * @global array $access_users
-  * @return true if user can delete from the other user's calendar
-  */
+/**
+ * Check to see if a user can delete an event on another user's calendar.
+ *
+ * @param string $other_user User login of calendar to delete from
+ * @param string $cur_user   User login of current user
+ *
+ * @return bool True if user can delete from the other user's calendar
+ *
+ * @global string Username of currently logged-in user
+ * @global array
+ */
 function access_can_delete_user_calendar ( $other_user, $cur_user='' )
 {
   global $login, $access_users;
@@ -358,16 +394,20 @@ function access_can_delete_user_calendar ( $other_user, $cur_user='' )
 }
 
 
-/** Check to see if a user can access the specified page
-  * (or the current page if no page is specified).
-  * @param string $page page to check access to
-  * @param string $user user login
-  * @global string $page_lookup
-  * @global string $page_lookup_ex
-  * @global string $PHP_SELF
-  * @global string $login
-  * @return true if user can access the page
-  */
+/**
+ * Check to see if a user can access the specified page (or the current page if no page is specified).
+ *
+ * @param string $page Page to check access to
+ * @param string $user User login
+ *
+ * @return bool True if user can access the page
+ *
+ * @global string The page currently being viewed by the user.
+ * @global string The username of the currently logged-in user.
+ * @global string
+ * @global string
+ * @global bool   Is the currently logged-in user an administrator?
+ */
 function access_can_view_page ( $page="", $user="" )
 {
   global $PHP_SELF, $login, $page_lookup, $page_lookup_ex, $is_admin;

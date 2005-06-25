@@ -30,16 +30,17 @@
  * - include_once "includes/$user_inc";
  * - include_once 'includes/validate.php';
  * - include_once 'includes/site_extras.php';
- * - {@link load_global_settings()};
- * - {@link load_user_preferences()};
+ * - include_once 'includes/access.php';
  * - include_once 'includes/translate.php';
  *
  * Also, for month.php, day.php, week.php, week_details.php:
  * - {@link send_no_cache_header()};
  *
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @version $Id$
  * @package WebCalendar
- *
  */
 
  

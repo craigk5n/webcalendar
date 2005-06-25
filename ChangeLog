@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Updated phpDoc documentation
  - Added our first unit test (add_duration_test.php)
  - Moved initialization code into new WebCalendar class. Removed
    includes/connect.php because all its code is in
