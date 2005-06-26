@@ -763,7 +763,7 @@ class WebCalendar {
     global $validate_redirect, $session_not_found, $use_http_auth,
       $PHP_AUTH_USER, $HTTP_SERVER_VARS, $REMOTE_USER, $HTTP_ENV_VARS,
       $single_user, $login, $single_user_login, $user_inc, $settings,
-      $webcalendar_session, $encoded_login, $cryptpw, $db_host,
+      $webcalendar_session, $encoded_login, $cryptpw, $c, $db_host,
       $db_login, $db_password, $db_database, $login_return_path;
 
     /* If WebCalendar is configured to use http authentication, then we can
