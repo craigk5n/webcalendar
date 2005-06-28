@@ -44,17 +44,17 @@ class WebCalendar {
   var $_filePhaseMap = array(
     '/^(login|freebusy|publish|rss|upcoming|week_ssi)\.php$/' =>
       array(array('Config', 'PHPDBI', 'Functions'),
-            array('User', 'Connect', 'Translate')),
+            array('User', 'Connect')),
     '/^(icalclient|get_reminders|get_events)\.php$/' =>
       array(array('Config', 'PHPDBI', 'Functions'),
-            array('User', 'Validate', 'Connect', 'Translate', 'SiteExtras')),
+            array('User', 'Validate', 'Connect', 'SiteExtras')),
     '/^convert_passwords\.php$/' => array(array('Config', 'PHPDBI'),
                                           array()),
     '/^send_reminders\.php$/' => array(array('Config', 'PHPDBI', 'Functions'),
-                                       array('User', 'SiteExtras', 'Translate')),
-    /* Catch-all -- this is for files which have called include('includes/init.php') */
-    '/^.*$/' => array(array('InitFirstPhase', 'Config', 'PHPDBI', 'Functions'),
-                      array('User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'Translate', 'InitSecondPhase'))
+                                       array('User', 'SiteExtras')),
+    /* This is for files which have called include('includes/init.php') */
+    '/^init\.php$/' => array(array('InitFirstPhase', 'Config', 'PHPDBI', 'Functions'),
+                             array('User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'InitSecondPhase'))
   );
 
   /**
@@ -119,6 +119,8 @@ class WebCalendar {
 
     if ( empty ( $ovrd ) )
       load_user_preferences ();
+
+    $this->setLanguage();
 
     // error-check some commonly used form variable names
     $id = getValue ( "id", "[0-9]+", true );
@@ -1380,6 +1382,15 @@ class WebCalendar {
    */
   function initializeSecondPhase() {
     $this->_doInit ( 2 );
+  }
+
+  /**
+   * Sets the translation language.
+   *
+   * @access public
+   */
+  function setLanguage() {
+    $this->_initTranslate();
   }
 }
 ?>

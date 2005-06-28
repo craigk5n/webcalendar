@@ -57,6 +57,7 @@ $WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
 
+$WebCalendar->setLanguage();
 
 if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
   header ( "Content-Type: text/plain" );

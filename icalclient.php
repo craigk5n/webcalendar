@@ -145,6 +145,7 @@ if ( empty ( $login ) ) {
 load_global_settings ($login);
 load_user_preferences ($login);
 
+$WebCalendar->setLanguage();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( "Content-Type: text/plain" );

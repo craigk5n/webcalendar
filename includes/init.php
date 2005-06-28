@@ -65,7 +65,6 @@ include_once 'includes/translate.php';
 
 $WebCalendar->initializeSecondPhase();
 
-
 /**
  * Prints the HTML header and opening HTML body tag.
  *

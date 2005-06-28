@@ -40,9 +40,9 @@ load_global_settings ();
 load_user_preferences ();
 load_user_layers ();
 
+$WebCalendar->setLanguage();
+
 $view = "week";
-
-
 
 $today = time() + ($TZ_OFFSET * 60 * 60);
 

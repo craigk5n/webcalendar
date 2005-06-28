@@ -53,6 +53,8 @@ $WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
 
+$WebCalendar->setLanguage();
+
 /*
  *
  * Configurable settings for this file.  You may change the settings

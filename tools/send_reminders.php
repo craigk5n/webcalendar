@@ -87,6 +87,8 @@ if ( ! $c ) {
 
 load_global_settings ();
 
+$WebCalendar->setLanguage();
+
 if ( $debug )
   echo "<br />\n";
 
