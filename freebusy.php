@@ -77,6 +77,8 @@ load_global_settings ();
 $login = $user;
 load_user_preferences ();
 
+$WebCalendar->setLanguage();
+
 // Load user name, etc.
 user_load_variables ( $user, "publish_" );
 

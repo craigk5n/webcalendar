@@ -34,6 +34,7 @@ if ( $remember_last_login == "Y" && empty ( $login ) ) {
 
 load_user_preferences ();
 
+$WebCalendar->setLanguage();
 
 // see if a return path was set
 if ( ! empty ( $return_path ) ) {

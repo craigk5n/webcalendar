@@ -40,6 +40,8 @@ $WebCalendar->initializeSecondPhase();
 load_global_settings ();
 load_user_preferences ();
 
+$WebCalendar->setLanguage();
+
 $debug = false; // set to true to print debug info...
 
 //Header ( "Content-type: text/xml" );

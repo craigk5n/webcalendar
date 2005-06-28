@@ -54,6 +54,8 @@ if ( empty ( $user ) ) {
 
 load_global_settings ();
 
+$WebCalendar->setLanguage();
+
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( "Content-Type: text/plain" );
   etranslate("You are not authorized");
