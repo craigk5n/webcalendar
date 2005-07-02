@@ -28,6 +28,15 @@ class WebCalendar {
   var $_filename;
 
   /**
+   * WebCalendar install directory.
+   *
+   * @var string
+   *
+   * @access private
+   */
+  var $_directory;
+
+  /**
    * A map from filenames to initialization phases.
    *
    * This array holds the initialization steps for each page. Steps are
@@ -68,6 +77,8 @@ class WebCalendar {
    */
   function WebCalendar ( $path ) {
     $this->_filename = basename ( $path );
+
+    $this->_directory = dirname ( __FILE__ ) . '/../../';
   }
 
   /**
@@ -312,9 +323,7 @@ class WebCalendar {
 
     // Open settings file to read
     $settings = array ();
-    $fd = @fopen ( "settings.php", "rb", true );
-    if ( ! $fd )
-      $fd = @fopen ( "includes/settings.php", "rb", true );
+    $fd = @fopen ( $this->absolutePath ( 'includes/settings.php' ), "rb", true );
     if ( empty ( $fd ) ) {
       // There is no settings.php file.
       // Redirect user to install page if it exists.
@@ -769,7 +778,7 @@ class WebCalendar {
       $db_login, $db_password, $db_database, $login_return_path;
 
     /* If WebCalendar is configured to use http authentication, then we can
-     * use _InitValidate().  If we are not using http auth, icalclient.php will
+     * use _initValidate().  If we are not using http auth, icalclient.php will
      * create its own http auth since an iCal client cannot login via a
      * web-based login.
      */
@@ -1391,6 +1400,17 @@ class WebCalendar {
    */
   function setLanguage() {
     $this->_initTranslate();
+  }
+
+  /**
+   * Construct an absolute path.
+   *
+   * @param string $path The path relative to the WebCalendar install directory
+   *
+   * @return string The absolute path
+   */
+  function absolutePath ( $path ) {
+    return $this->_directory . $path;
   }
 }
 ?>
