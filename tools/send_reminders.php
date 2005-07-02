@@ -67,13 +67,13 @@ include "$includedir/config.php";
 include "$includedir/php-dbi.php";
 include "$includedir/functions.php";
 
-$WebCalendar->initFirstPhase();
+$WebCalendar->initializeFirstPhase();
 
 include "$includedir/$user_inc";
 include "$includedir/site_extras.php";
 include "$includedir/translate.php";
 
-$WebCalendar->initSecondPhase();
+$WebCalendar->initializeSecondPhase();
 
 $debug = false; // set to true to print debug info...
 $only_testing = false; // act like we're sending, but don't send -- for debugging
