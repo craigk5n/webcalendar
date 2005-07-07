@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1233739: Palm Datebook Import - conflicting events
       1221727: error in documentation for using iframe with upcoming.php
       1219427: icalclient fails to publish alarms
       1218113: iCal ATTENDEE error if event is deleted

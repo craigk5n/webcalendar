@@ -137,7 +137,7 @@ $Entry[Repeat][RepeatDays] =  For Weekly: What days to repeat on (7 characters..
 //
 function import_data ( $data, $overwrite, $type ) {
   global $login, $count_con, $count_suc, $error_num, $ImportType;
-  global $single_user, $single_user_login, $allow_conflicts;
+  global $single_user, $single_user_login, $allow_conflicts, $allow_conflict_override;
   global $numDeleted, $errormsg;
   global $calUser, $H2COLOR, $sqlLog;
 
@@ -196,7 +196,7 @@ function import_data ( $data, $overwrite, $type ) {
     }
 
     // first check for any schedule conflicts
-    if ( ( empty ( $allow_conflicts )  || $allow_conflicts == "N" ) &&
+    if ( ( $allow_conflict_override == "N" && $allow_conflicts == "N" ) &&
       ( $Entry['Duration'] != 0 )) {
       $date = mktime (0,0,0,$Entry['StartMonth'],
         $Entry['StartDay'],$Entry['StartYear']);
