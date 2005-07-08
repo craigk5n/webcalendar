@@ -85,36 +85,36 @@ $webcalConfig = array (
 function db_load_config () {
 global $webcalConfig;
    while ( list ( $key, $val ) = each ( $webcalConfig ) ) {
-	   $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-	   	"WHERE cal_setting  = '$key'", false, false );
-		 $sql = "INSERT INTO webcal_config ( cal_setting, cal_value ) " .
+    $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
+     "WHERE cal_setting  = '$key'", false, false );
+   $sql = "INSERT INTO webcal_config ( cal_setting, cal_value ) " .
        "VALUES ('". $key . "', '" . $val . "')";
-	    if ( ! $res ) {
+     if ( ! $res ) {
        dbi_query ( $sql );
-		 } else { //Sqlite returns $res always
-		   $row = dbi_fetch_row ( $res );
-		   if ( ! isset ( $row[0] ) ){
-         dbi_query ( $sql );		
-		   }
-		   dbi_free_result ( $res );
-	   }	 
-	}
+   } else { //Sqlite returns $res always
+     $row = dbi_fetch_row ( $res );
+     if ( ! isset ( $row[0] ) ){
+         dbi_query ( $sql );  
+     }
+     dbi_free_result ( $res );
+    }  
+ }
 }
 
 function db_load_admin () {
-	$res = dbi_query ( "SELECT cal_login FROM webcal_user " .
-	"WHERE cal_login  = 'admin'", false, false );
-	$sql = "INSERT INTO WEBCAL_USER ( CAL_LOGIN, CAL_PASSWD, CAL_LASTNAME, CAL_FIRSTNAME, CAL_IS_ADMIN ) 
+ $res = dbi_query ( "SELECT cal_login FROM webcal_user " .
+ "WHERE cal_login  = 'admin'", false, false );
+ $sql = "INSERT INTO WEBCAL_USER ( CAL_LOGIN, CAL_PASSWD, CAL_LASTNAME, CAL_FIRSTNAME, CAL_IS_ADMIN ) 
 VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ADMINISTRATOR', 'DEFAULT', 'Y' );";
-	if ( ! $res ) {
-	 dbi_query ( $sql );
-	} else { //Sqlite returns $res always
-	 $row = dbi_fetch_row ( $res );
-	 if ( ! isset ( $row[0] ) ){
-		 dbi_query ( $sql );		
-	 }
-	 dbi_free_result ( $res );
-	}	 
+ if ( ! $res ) {
+  dbi_query ( $sql );
+ } else { //Sqlite returns $res always
+  $row = dbi_fetch_row ( $res );
+  if ( ! isset ( $row[0] ) ){
+   dbi_query ( $sql );  
+  }
+  dbi_free_result ( $res );
+ }  
 
 }
 ?>
