@@ -70,8 +70,8 @@ CREATE TABLE webcal_entry_repeats_not (
 /* cal_status: A=Accepted, R=Rejected, W=Waiting */
 CREATE TABLE webcal_entry_user (
   cal_id int DEFAULT 0 NOT NULL,
-  cal_login varchar(25) NOT NULL,
-  cal_status char(1) DEFAULT 'A',
+  cal_login VARCHAR(25) NOT NULL,
+  cal_status CHAR(1) DEFAULT 'A',
   cal_category int DEFAULT NULL,
   PRIMARY KEY (cal_id,cal_login)
 );
@@ -88,9 +88,9 @@ CREATE TABLE webcal_entry_ext_user (
 
 /* preferences for a user */
 CREATE TABLE webcal_user_pref (
-  cal_login varchar(25) NOT NULL,
-  cal_setting varchar(25) NOT NULL,
-  cal_value varchar(100) NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_setting VARCHAR(25) NOT NULL,
+  cal_value VARCHAR(100) NULL,
   PRIMARY KEY ( cal_login, cal_setting )
 );
 
@@ -182,157 +182,6 @@ CREATE TABLE webcal_config (
   cal_value VARCHAR2(100) NULL,
   PRIMARY KEY ( cal_setting )
 );
-
-/* default settings */
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'application_name', 'WebCalendar' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'LANGUAGE', 'Browser-defined' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'demo_mode', 'N' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'require_approvals', 'Y' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'groups_enabled', 'N' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'user_sees_only_his_groups', 'N' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'categories_enabled', 'N' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'allow_conflicts', 'N' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'conflict_repeat_months', '6' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'disable_priority_field', 'N' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'disable_access_field', 'N' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'disable_participants_field', 'N' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'disable_repeating_field', 'N' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'allow_view_other', 'Y' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'email_fallback_from', 'youremailhere' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'remember_last_login', 'Y' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'allow_color_customization', 'Y' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('BGCOLOR','#FFFFFF');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('TEXTCOLOR','#000000');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('H2COLOR','#000000');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('CELLBG','#C0C0C0');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('WEEKENDBG','#D0D0D0');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('TABLEBG','#000000');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('THBG','#FFFFFF');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('THFG','#000000');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('POPUP_FG','#000000');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('POPUP_BG','#FFFFFF');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('TODAYCELLBG','#FFFF33');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'STARTVIEW', 'week.php' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'WEEK_START', '0' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'TIME_FORMAT', '12' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'DISPLAY_UNAPPROVED', 'Y' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'DISPLAY_WEEKNUMBER', 'Y' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'WORK_DAY_START_HOUR', '8' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'WORK_DAY_END_HOUR', '17' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'send_email', 'N' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'EMAIL_REMINDER', 'Y' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'EMAIL_EVENT_ADDED', 'Y' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'EMAIL_EVENT_UPDATED', 'Y' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'EMAIL_EVENT_DELETED', 'Y' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ( 'EMAIL_EVENT_REJECTED', 'Y' );
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('auto_refresh', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('nonuser_enabled', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('allow_html_description', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('reports_enabled', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('DISPLAY_WEEKENDS', 'Y');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('DISPLAY_DESC_PRINT_DAY', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('DATE_FORMAT', '__month__ __dd__, __yyyy__');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('TIME_SLOTS', '12');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('TIMED_EVT_LEN', 'D');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('PUBLISH_ENABLED', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('DATE_FORMAT_MY', '__month__ __yyyy__');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('DATE_FORMAT_MD', '__month__ __dd__');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('CUSTOM_SCRIPT', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('CUSTOM_HEADER', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('CUSTOM_TRAILER', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('bold_days_in_year', 'Y');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('site_extras_in_popup', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('add_link_in_views', 'Y');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('allow_conflict_override', 'Y');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('limit_appts', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('limit_appts_number', '6');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('public_access', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('public_access_default_visible', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('public_access_default_selected', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('public_access_others', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('public_access_can_add', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('public_access_add_needs_approval', 'Y');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('public_access_view_part', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('nonuser_at_top', 'Y');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('allow_external_users', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('external_notifications', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('external_reminders', 'N');
-INSERT INTO webcal_config ( cal_setting, cal_value )
-  VALUES ('enable_gradients', 'N');
-
 
 
 /* activity log for an event */
@@ -435,3 +284,27 @@ CREATE TABLE webcal_access_function (
   PRIMARY KEY ( cal_login )
 );
 
+CREATE TABLE webcal_tz_zones (
+  zone_name VARCHAR(50) NOT NULL default '',
+  zone_gmtoff INT  NOT NULL default '0',
+  zone_rules VARCHAR(50) NOT NULL default '',
+  zone_format VARCHAR(20) NOT NULL default '',
+  zone_from bigint NOT NULL default '0',
+  zone_until bigint NOT NULL default '0',
+  zone_cc CHAR(2) NOT NULL default '',
+  zone_coord VARCHAR(20) NOT NULL default '',
+  zone_country VARCHAR(50) NOT NULL default ''
+);
+
+CREATE TABLE webcal_tz_rules (
+  rule_name VARCHAR(50) NOT NULL default '',
+  rule_from INT NOT NULL default '0',
+  rule_to INT NOT NULL default '0',
+  rule_type VARCHAR(20) NOT NULL default '',
+  rule_in INT NOT NULL default '0',
+  rule_on VARCHAR(20) NOT NULL default '',
+  rule_at INT NOT NULL default '0',
+  rule_at_suffix CHAR(1) NOT NULL default '',
+  rule_save INT NOT NULL default '0',
+  rule_letter VARCHAR(5) NOT NULL default ''
+);

@@ -12,7 +12,7 @@
 NS4 = (document.layers) ? 1 : 0;
 IE4 = (document.all) ? 1 : 0;
 // W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
-W3C = (document.getElementById) ? 1 : 0;	
+W3C = (document.getElementById) ? 1 : 0; 
 
 function makeVisible ( name ) {
   var ele;
@@ -43,19 +43,19 @@ function makeInvisible ( name ) {
 }
 
 function showTab (name) {
-	if (! document.getElementById) { return true; }
-	for (var i=0; i<tabs.length; i++) {
-		var tname = tabs[i];
-		var tab = document.getElementById("tab_" + tname);
-		if (tab) {
-			tab.className = (tname == name) ? "tabfor" : "tabbak";
-		}
-		var div = document.getElementById("tabscontent_" + tname);
-		if (div) {
-			div.style.display = (tname == name) ? "block" : "none";
-		}
-	}
-	return false;
+ if (! document.getElementById) { return true; }
+ for (var i=0; i<tabs.length; i++) {
+  var tname = tabs[i];
+  var tab = document.getElementById("tab_" + tname);
+  if (tab) {
+   tab.className = (tname == name) ? "tabfor" : "tabbak";
+  }
+  var div = document.getElementById("tabscontent_" + tname);
+  if (div) {
+   div.style.display = (tname == name) ? "block" : "none";
+  }
+ }
+ return false;
 }
 //]]> -->
 </script>

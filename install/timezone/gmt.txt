@@ -1,0 +1,73 @@
+1	Pacific/Kwajalein	(GMT-12:00)	 International Date Line West
+2	Pacific/Midway	(GMT-11:00)	Midway Island, Samoa
+3	Pacific/Honolulu	(GMT-10:00)	 Hawaii
+4	America/Juneau	(GMT-09:00)	 Alaska
+5	America/Los_Angeles	(GMT-08:00)	 Pacific Time (US & Canada) ; Tijuana
+6	America/Chihuahua	(GMT-07:00)	Chihuahua, La Paz, Mazatlan
+7	America/Denver	(GMT-07:00)	 Mountain Time (US & Canada)
+8	America/Phoenix	(GMT-07:00)	 Arizona
+9	America/Regina	(GMT-06:00)	 Saskatchewan
+10	America/Mexico_City	(GMT-06:00)	 Central America
+11	America/Chicago	(GMT-06:00)	 Central Time (US & Canada)
+12	America/Mexico_City	(GMT-06:00)	Guadalajara, Mexico City, Monterrey
+13	America/New_York	(GMT-05:00)	 Eastern Time (US & Canada)
+14	America/Bogota	(GMT-05:00)	Bogota, Lima, Quito
+15	America/Indianapolis	(GMT-05:00)	 Indiana (East)
+16	America/Halifax	(GMT-04:00)	 Atlantic Time (Canada)
+17	America/Santiago	(GMT-04:00)	 Santiago
+18	America/Caracas	(GMT-04:00)	Caracas, La Paz
+19	America/St_Johns	(GMT-03:30)	 Newfoundland
+20	America/Araguaina	(GMT-03:00)	 Brasilia
+21	America/Godthab	(GMT-03:00)	 Greenland
+22	America/Argentina/Buenos_Aires	(GMT-03:00)	Buenos Aires, Georgetown
+23	America/Noronha	(GMT-02:00)	 Mid-Atlantic
+24	Atlantic/Azores	(GMT-01:00)	 Azores
+25	Europe/London	(GMT)	Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London
+26	Africa/Monrovia	(GMT)	Casablanca, Monrovia
+27	Europe/Belgrade	(GMT+01:00)	Belgrade, Bratislava, Budapest, Ljubljana, Prague
+28	Europe/Warsaw	(GMT+01:00)	Sarajevo, Skopje, Warsaw, Zagreb
+29	Europe/Brussels	(GMT+01:00)	Brussels, Copenhagen, Madrid, Paris
+30	Africa/Ceuta	(GMT+01:00)	 West Central Africa
+31	Europe/Amsterdam	(GMT+01:00)	Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna
+32	Europe/Bucharest	(GMT+02:00)	 Bucharest
+33	Africa/Cairo	(GMT+02:00)	 Cairo
+34	Europe/Helsinki	(GMT+02:00)	Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius
+35	Europe/Athens	(GMT+02:00)	Athens, Beirut, Istanbul, Minsk
+36	Asia/Jerusalem	(GMT+02:00)	 Jerusalem
+37	Africa/Harare	(GMT+02:00)	Harare, Pretoria
+38	Asia/Kuwait	(GMT+03:00)	Kuwait, Riyadh
+39	Asia/Baghdad	(GMT+03:00)	 Baghdad
+40	Africa/Nairobi	(GMT+03:00)	 Nairobi
+41	Europe/Moscow	(GMT+03:00)	Moscow, St. Petersburg, Volgograd
+42	Asia/Tehran	(GMT+03:30)	 Tehran
+43	Asia/Muscat	(GMT+04:00)	Abu Dhabi, Muscat
+44	Asia/Baku	(GMT+04:00)	Baku, Tbilisi, Yerevan
+45	Asia/Kabul	(GMT+04:30)	 Kabul
+46	Asia/Yekaterinburg	(GMT+05:00)	 Ekaterinburg
+47	Asia/Karachi	(GMT+05:00)	Islamabad, Karachi, Tashkent
+48	Asia/Calcutta	(GMT+05:30)	Chennai, Kolkata, Mumbai, New Delhi
+49	Asia/Katmandu	(GMT+05:45)	 Kathmandu
+50	Asia/Dhaka	(GMT+06:00)	Astana, Dhaka
+51	Asia/Almaty	(GMT+06:00)	Almaty, Novosibirsk
+52	Asia/Colombo	(GMT+06:00)	 Sri Jayawardenepura
+53	Asia/Rangoon	(GMT+06:30)	 Rangoon
+54	Asia/Krasnoyarsk	(GMT+07:00)	 Krasnoyarsk
+55	Asia/Bangkok	(GMT+07:00)	Bangkok, Hanoi, Jakarta
+56	Asia/Hong_Kong	(GMT+08:00)	Beijing, Chongqing, Hong Kong, Urumqi
+57	Asia/Irkutsk	(GMT+08:00)	Irkutsk, Ulaan Bataar
+58	Asia/Kuala_Lumpur	(GMT+08:00)	Kuala Lumpur, Singapore
+59	Asia/Taipei	(GMT+08:00)	 Taipei
+60	Australia/Perth	(GMT+08:00)	 Perth
+61	Asia/Seoul	(GMT+09:00)	 Seoul
+62	Asia/Tokyo	(GMT+09:00)	Osaka, Sapporo, Tokyo
+63	Asia/Yakutsk	(GMT+09:00)	 Yakutsk
+64	Australia/Darwin	(GMT+09:30)	 Darwin
+65	Australia/Adelaide	(GMT+09:30)	 Adelaide
+66	Australia/Brisbane	(GMT+10:00)	 Brisbane
+67	Australia/Hobart	(GMT+10:00)	 Hobart
+68	Asia/Vladivostok	(GMT+10:00)	 Vladivostok
+69	Pacific/Guam	(GMT+10:00)	Guam, Port Moresby
+70	Asia/Magadan	(GMT+11:00)	Magadan, Solomon Is., New Caledonia
+71	Pacific/Fiji	(GMT+12:00)	Fiji, Kamchatka, Marshall Is.
+72	Pacific/Auckland	(GMT+12:00)	Auckland, Wellington
+73	Pacific/Tongatapu	(GMT+13:00)	 Nuku'alofa

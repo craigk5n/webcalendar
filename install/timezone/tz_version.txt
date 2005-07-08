@@ -1,0 +1,7 @@
+# This file simply contains the current Timezone version based on
+# the effective year. For example tzdata2005i.tar.gz
+# The most recent timezone data can be downloaded from
+# ftp://elsie.nci.nih.gov/pub/
+# extract the data files to this directory and run the /install/index.php 
+# script to update your timezone definitions.
+2005i

@@ -909,7 +909,7 @@ class WebCalendar {
       $firstname, $fullname, $user_email, $use_http_auth,
       $login_login, $login_is_admin, $login_lastname,
       $login_firstname, $login_fullname, $login_email, $single_user,
-      $not_auth, $readonly;
+      $not_auth, $readonly, $PROGRAM_VERSION;
 
     // db settings are in config.php
 
@@ -928,6 +928,24 @@ class WebCalendar {
       if ( function_exists ( "doDbSanityCheck" ) ) {
         doDbSanityCheck ();
       }
+			
+			// Check the current installtion version
+			// Redirect user to install page if it is different from stored value
+			// This will prevent running WebCalendar until UPGRADING.html has been
+			// read and required upgrade actions completed
+			$res = dbi_query ( "SELECT  cal_value FROM webcal_config ".
+				"WHERE cal_setting = 'webcal_program_version'" );
+				if ( $res ) {
+					if ( $row = dbi_fetch_row ( $res ) ) {
+							if ( $row[0] != $PROGRAM_VERSION ) {
+						// &amp; does not work here...leave it as &
+						Header ( "Location: install/index.php?action=mismatch&version=$row[0]" );
+								exit;
+						 }
+					}
+					dbi_free_result ( $res );
+				}
+			
     }
 
     // If we are in single user mode, make sure that the login selected is
