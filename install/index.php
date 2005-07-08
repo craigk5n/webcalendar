@@ -209,11 +209,18 @@ function get_installed_version () {
   dbi_free_result ( $res );
  }
 
+ // v1.1.0-CVS added table webcal_access_user
+ $res = dbi_query ( "SELECT * FROM webcal_access_user", false, false );
+ if ( $res ) {
+  $_SESSION['old_program_version'] = 'v1.1.0-CVS';
+  $_SESSION['install_file'] = "upgrade_v1.1.0-CVS";
+  dbi_free_result ( $res );
+ } 
  // v1.1.0-CVS added table webcal_tz_list
  $res = dbi_query ( "SELECT * FROM webcal_tz_list", false, false );
  if ( $res ) {
   $_SESSION['old_program_version'] = 'v1.1.0-CVS';
-  $_SESSION['install_file'] = "upgrade_v1.1.0-CVS";
+  $_SESSION['install_file'] = "upgrade_v1.1.0a-CVS";
   dbi_free_result ( $res );
  }   
  // v1.1 and after will have an entry in webcal_config to make this easier
@@ -747,7 +754,7 @@ if ( ! empty ( $action ) && $action == "tz_convert" && ! empty ( $_SESSION['vali
     if ( $c ) {
         $ret = convert_server_to_GMT ( $gmt_offset );
     if ( substr ( $ret, 3, 21 ) == "Conversion Successful" ) {
-      $_SESSION['tz_conversion']  = 'Y';
+      $_SESSION['tz_conversion']  = 'Success';
      $response_msg = "Timezone Conversion Successful";
     } else {
        $response_msg = "Error Converting Timezone";
@@ -1342,15 +1349,21 @@ configure your database.
 
 <table border="0" width="90%" align="center">
 <tr>
-<td align="right">
+<td align="right" width="40%">
   <form action="index.php?action=switch&amp;page=1" method="post">
     <input type="submit" value="<- Prev Page" />
   </form>
-</td><td align="left">
+</td><td align="center" width="20%">
   <form action="index.php?action=switch&amp;page=3" method="post">
     <input type="submit" value="Next Page -&gt;"  <?php echo ( ! empty ($_SESSION['db_success'] )? "" : "disabled" ); ?> />
   </form>
 </td>
+  <td align="left" width="40%">
+  <form action="" method="post">
+  <input type="button" value="Logout"  <?php echo ( ! empty ($_SESSION['validuser'] )? "" : "disabled" ); ?>
+   onclick="document.location.href='index.php?action=logout'" />
+	</form>
+  </td>
 </tr></table>
 
 <?php } else if ( $_SESSION['step'] == 3 ) { ?>
@@ -1450,14 +1463,20 @@ to cut &amp; paste it into your database server query window.
 </table>
 <table border="0" width="90%" align="center">
 <tr>
-<td align="right">
+<td align="right" width="40%">
   <form action="index.php?action=switch&amp;page=2" method="post">
     <input type="submit" value="<- Prev Page" />
   </form>
-</td><td align="left">
+</td><td align="center" width="20%">
   <form action="index.php?action=switch&amp;page=4" method="post">
     <input type="submit" value="Next Page ->"  <?php echo ( empty ($_SESSION['db_updated'] )? "disabled" : "" ); ?>/>
   </form>
+</td>
+<td align="left" width="40%">
+  <form action="" method="post">
+  <input type="button" value="Logout"  <?php echo ( ! empty ($_SESSION['validuser'] )? "" : "disabled" ); ?>
+   onclick="document.location.href='index.php?action=logout'" />
+	</form>
 </td>
 </tr></table>
 <?php } else if ( $_SESSION['step'] == 4 ) { ?>
@@ -1468,11 +1487,14 @@ to cut &amp; paste it into your database server query window.
    </td></tr>
   <th class="header"  colspan="2">Timezone Conversion</th></tr>
  <tr><td  colspan="2">
-  <?php if ( empty ( $_SESSION['tz_conversion'] ) ) { ?>
+ <?php if ( empty ( $_SESSION['tz_conversion'] ) || $_SESSION['tz_conversion'] == "Y" ) {?>
    <form action="index.php?action=tz_convert" method="post">
-   It appears that you have not converted your existing WebCalendar event data to GMT.
-   If you have, you may ignore this notice and not proceed with the conversion. If 
-   this is a new installation, you may also ignore this notice.
+	 <ul><li>
+   It appears that you have <?php echo( empty ( $_SESSION['tz_conversion'] )? "NOT" : "" ); ?> 
+	 converted your existing WebCalendar event data to GMT.
+   If you have, you may ignore this notice and not proceed with the conversion.
+	 If this is a new installation, you may also ignore this notice. You can also reverse this
+	 procedure by entering a value with the opposite sign ( i.e. 4 vs. -4 ).</li></ul>
    <div align="center">
    Your current Server GMT offset is: <?php echo ( date ( "Z", time()) / 3600 ); ?> hours.</div>
    <div align="center">
@@ -1481,10 +1503,9 @@ to cut &amp; paste it into your database server query window.
    <div align="center">
    <input  type="submit" value="Convert Data to GMT"  /></div>
    </form>
-  <?php } else { ?>
-  <ul><li>
-  <?php echo ( ! empty ( $response_msg )?$response_msg : "Conversion Not Needed");  } ?>
-  </li></ul>
+ <?php } else { ?>
+    <ul><li>Conversion Successful</li></ul>
+ <?php } ?>
  </td></tr>
  <th class="header" colspan="2" >Application Settings</th>
  <tr><td colspan="2"><ul>
