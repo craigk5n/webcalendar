@@ -9,20 +9,6 @@
  * @package WebCalendar
  */
 
-/**
- * Array containing the number of days in each month in a non-leap year
- *
- * @global array $days_per_week
- */
-$days_of_week =  array (
-  "Sun" => 0,
-  "Mon" => 1,
-  "Tue" => 2,
-  "Wed" => 3,
-  "Thu" => 4,
-  "Fri" => 5,
-  "Sat" => 6
-);
 
 /*
  * Functions start here.  All non-function code should be above this
@@ -1625,7 +1611,7 @@ function get_entries ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_t
     $user_TIMEZONE = get_pref_setting ( $this_user, "TIMEZONE" );
     $tz_offset = get_tz_offset ( $user_TIMEZONE, '', $date );
   }
-//	echo "count events" . count ( $events );
+// echo "count events" . count ( $events );
   for ( $i = 0; $i < count ( $events ); $i++ ) {
     // In case of data corruption (or some other bug...)
     if ( empty ( $events[$i] ) || $events[$i]->get_id() == '' )
@@ -4157,8 +4143,8 @@ function print_header_timebar($start_hour, $end_hour) {
  * Determine if the specified user is a participant in the event.
  * User must have status 'A' or 'W'.
  *
- * @param int $id	event id
- * @param string $user	user login
+ * @param int $id event id
+ * @param string $user user login
  */
 function user_is_participant ( $id, $user )
 {
@@ -4915,32 +4901,32 @@ function get_tz_time ( $timestamp, $tz_name, $is_gmt = 1, $use_dst = 1 ) {
         if ( count ( $dst_rules ) >= 2) {
             if ( $timestamp < $dst_rules[0]["rule_date"] ) {
               $dst_results['name'] = str_replace ( "%s", $dst_rules['lastletter'], $row[2] );
-	    if ( $is_gmt == true ) {  
+     if ( $is_gmt == true ) {  
                 $dst_results['timestamp'] = $dst_results['timestamp'] + $dst_rules['lastyear'];
-	    } else {
-	      $dst_results['timestamp'] = $dst_results['timestamp'] - $dst_rules['lastyear'];
-	    }
-	    dbi_free_result ( $res );
-	    return $dst_results;
-	  } else if ( $timestamp >= $dst_rules[0]["rule_date"] && $timestamp < $dst_rules[1]["rule_date"] ) {
-	    $dst_results['name'] = str_replace ( "%s", $dst_rules[0]['rule_letter'], $row[2] );
-	    if ( $is_gmt == true ) {  
+     } else {
+       $dst_results['timestamp'] = $dst_results['timestamp'] - $dst_rules['lastyear'];
+     }
+     dbi_free_result ( $res );
+     return $dst_results;
+   } else if ( $timestamp >= $dst_rules[0]["rule_date"] && $timestamp < $dst_rules[1]["rule_date"] ) {
+     $dst_results['name'] = str_replace ( "%s", $dst_rules[0]['rule_letter'], $row[2] );
+     if ( $is_gmt == true ) {  
                 $dst_results['timestamp'] = $dst_results['timestamp'] + $dst_rules[0]['rule_save'];
-	    } else {
-                $dst_results['timestamp'] = $dst_results['timestamp'] - $dst_rules[0]['rule_save'];	    
-	    }
-	    dbi_free_result ( $res );
-	    return $dst_results;
-	  } else {
-	    $dst_results['name'] = str_replace ( "%s", $dst_rules[1]['rule_letter'], $row[2] );  
-	    if ( $is_gmt == true ) {  
+     } else {
+                $dst_results['timestamp'] = $dst_results['timestamp'] - $dst_rules[0]['rule_save'];     
+     }
+     dbi_free_result ( $res );
+     return $dst_results;
+   } else {
+     $dst_results['name'] = str_replace ( "%s", $dst_rules[1]['rule_letter'], $row[2] );  
+     if ( $is_gmt == true ) {  
                 $dst_results['timestamp'] = $dst_results['timestamp'] + $dst_rules[1]['rule_save'];
-	    } else {
-                $dst_results['timestamp'] = $dst_results['timestamp'] - $dst_rules[1]['rule_save'];	    
-	    }
-	    dbi_free_result ( $res );
-	    return $dst_results;
-	  }
+     } else {
+                $dst_results['timestamp'] = $dst_results['timestamp'] - $dst_rules[1]['rule_save'];     
+     }
+     dbi_free_result ( $res );
+     return $dst_results;
+   }
         }
       }
     }
@@ -5029,27 +5015,27 @@ function get_tz_offset ( $tz, $timestamp = '', $dateYmd = '' ) {
 function print_timezone_select_html ( $prefix, $tz ) {
 global $TZ_COMPLETE_LIST;
   
-	if ( ! empty ( $TZ_COMPLETE_LIST ) && $TZ_COMPLETE_LIST == "Y" ) {
+ if ( ! empty ( $TZ_COMPLETE_LIST ) && $TZ_COMPLETE_LIST == "Y" ) {
     $res = dbi_query ( "SELECT  DISTINCT zone_name, zone_country " .
                        "FROM webcal_tz_zones ORDER BY zone_country" );
   } else {
-	  $res = dbi_query ( "SELECT  tz_list_name, tz_list_text " .
+   $res = dbi_query ( "SELECT  tz_list_name, tz_list_text " .
                        "FROM webcal_tz_list ORDER BY tz_list_id" );
-	}
+ }
   
-	  if ( $res ) {
+   if ( $res ) {
     $ret =  "<select name=\"" . $prefix . "TIMEZONE\">\n";
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( ! empty ( $TZ_COMPLETE_LIST ) && $TZ_COMPLETE_LIST == "Y" ) {
-			  if  ( strpos ( $row[0], "/", 1) ){
+     if  ( strpos ( $row[0], "/", 1) ){
           $tz_label = substr ( $row[0], strpos ( $row[0], "/", 1) +1);
           $tz_label = $row[1] . " - " . $tz_label;
         } else {
           $tz_label = $row[0];
         }
-			} else { // We're using the short list
-        $tz_label = $row[1];			
-			} 
+   } else { // We're using the short list
+        $tz_label = $row[1];   
+   } 
       $ret .= "<option value=\"$row[0]\"" . ( $row[0] == $tz ? " selected=\"selected\"" : "" ) .  "\">" . $tz_label . "</option>\n";
     }
     $ret .= "</select><br />\n";

@@ -620,6 +620,22 @@ class WebCalendar {
      */
     $ldays_per_month = array ( 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
 
+  /**
+   * Array containing the number value of the days of the week
+   *
+   * @global array $days_per_week
+   */
+  $days_of_week =  array (
+   "Sun" => 0,
+   "Mon" => 1,
+   "Tue" => 2,
+   "Wed" => 3,
+   "Thu" => 4,
+   "Fri" => 5,
+   "Sat" => 6
+  );
+
+
     /**
      * Array of global variables which are not allowed to by set via HTTP GET/POST
      *
@@ -928,24 +944,24 @@ class WebCalendar {
       if ( function_exists ( "doDbSanityCheck" ) ) {
         doDbSanityCheck ();
       }
-			
-			// Check the current installtion version
-			// Redirect user to install page if it is different from stored value
-			// This will prevent running WebCalendar until UPGRADING.html has been
-			// read and required upgrade actions completed
-			$res = dbi_query ( "SELECT  cal_value FROM webcal_config ".
-				"WHERE cal_setting = 'webcal_program_version'" );
-				if ( $res ) {
-					if ( $row = dbi_fetch_row ( $res ) ) {
-							if ( $row[0] != $PROGRAM_VERSION ) {
-						// &amp; does not work here...leave it as &
-						Header ( "Location: install/index.php?action=mismatch&version=$row[0]" );
-								exit;
-						 }
-					}
-					dbi_free_result ( $res );
-				}
-			
+   
+   // Check the current installtion version
+   // Redirect user to install page if it is different from stored value
+   // This will prevent running WebCalendar until UPGRADING.html has been
+   // read and required upgrade actions completed
+   $res = dbi_query ( "SELECT  cal_value FROM webcal_config ".
+    "WHERE cal_setting = 'webcal_program_version'" );
+    if ( $res ) {
+     if ( $row = dbi_fetch_row ( $res ) ) {
+       if ( $row[0] != $PROGRAM_VERSION ) {
+      // &amp; does not work here...leave it as &
+      Header ( "Location: install/index.php?action=mismatch&version=$row[0]" );
+        exit;
+       }
+     }
+     dbi_free_result ( $res );
+    }
+   
     }
 
     // If we are in single user mode, make sure that the login selected is
