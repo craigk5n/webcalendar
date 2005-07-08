@@ -8,7 +8,7 @@
 // architecture on 02/25/2005
 //
 // 03/05/2005 Prevent popup from going off screen by setting
-// maximum width, which is cnfigurable
+// maximum width, which is configurable
 //
 // Bubblehelp infoboxes, (C) 2002 Klaus Knopper <infobox@knopper.net>
 // You can copy/modify and distribute this code under the conditions

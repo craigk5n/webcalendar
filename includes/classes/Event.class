@@ -119,6 +119,7 @@ class Event {
     $this->_description = $description;
     $this->_date = $date;
     $this->_time = $time;
+    $this->_date_time = $date . sprintf ( "%06d", $time );
     $this->_id = $id;
     $this->_ext_for_id = $ext_for_id;
     $this->_priority = $priority;
@@ -172,6 +173,18 @@ class Event {
   function get_time () {
     return $this->_time;
   }
+  
+    /**
+   * Gets the event's date/time
+   *
+   * @return string The event's date/time (in YYYYMMDDHHMMSS format)
+   *
+   * @access public
+   */
+  function get_datetime () {
+    return $this->_date_time;
+  }
+
 
   /**
    * Gets the event's ID

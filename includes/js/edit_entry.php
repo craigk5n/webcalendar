@@ -27,10 +27,16 @@ function validate_and_submit () {
         h = 0;
     }
 <?php } ?>
-    if ( h >= 24 || m > 59 ) {
+    if ( h >= 24 || h < 0 ) {
       alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
       document.editentryform.hour.select ();
       document.editentryform.hour.focus ();
+      return false;
+    }
+    if ( m >= 59 || m < 0 ) {
+      alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
+      document.editentryform.minute.select ();
+      document.editentryform.minute.focus ();
       return false;
     }
     // Ask for confirmation for time of day if it is before the user's
