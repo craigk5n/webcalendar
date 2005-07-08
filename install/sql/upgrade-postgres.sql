@@ -223,6 +223,7 @@ CREATE TABLE webcal_access_function (
   PRIMARY KEY ( cal_login )
 );
 
+/*upgrade_v1.1.0-CVS*/
 CREATE TABLE webcal_tz_zones (
   zone_name VARCHAR(50) NOT NULL default '',
   zone_gmtoff INT NOT NULL default '0',

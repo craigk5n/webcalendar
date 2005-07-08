@@ -207,6 +207,7 @@ UPDATE webcal_config SET cal_value = 'week.php'
   WHERE cal_setting = 'STARTVIEW';
 
 /*upgrade_v1.1.0*/
+
 CREATE TABLE webcal_access_user (
   cal_login VARCHAR(50) NOT NULL,
   cal_other_user VARCHAR(50) NOT NULL,
@@ -222,6 +223,8 @@ CREATE TABLE webcal_access_function (
   cal_permissions VARCHAR(64) NOT NULL,
   PRIMARY KEY ( cal_login )
 );
+
+/*upgrade_v1.1.0-CVS*/
 
 CREATE TABLE webcal_tz_zones (
   zone_name VARCHAR(50) NOT NULL default '',
