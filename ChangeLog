@@ -1,4 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added full timezone support including accurate DST calculations
+ - Added Auto-install functionality including upgrading from previous
+      versions
  - Fixed bug 1233739: Palm Datebook Import - conflicting events
  - Fixed bug 1231076: Send_reminder.php Errors
  - Fixed bug 1228129: WebCalendar ignores "Language" setting
