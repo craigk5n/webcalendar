@@ -76,6 +76,8 @@ if ( empty ( $error ) && $id > 0 ) {
     $send_user_mail = get_pref_setting ( $partlogin[$i],
       "EMAIL_EVENT_REJECTED" );
      user_load_variables ( $partlogin[$i], "temp" );
+    $user_TIMEZONE = get_pref_setting ( $participants[$i], "TIMEZONE" );
+    $user_TZ = get_tz_offset ( $user_TIMEZONE, $eventstart );
     $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
     if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
       $send_email != "N" ) {
@@ -90,7 +92,9 @@ if ( empty ( $error ) && $id > 0 ) {
         translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
         ( ( empty ( $hour ) && empty ( $minute ) ) ? "" :
         translate("Time") . ": " .
-        display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) ) .
+        // Display using user's GMT offset and display TZID
+        display_time ( $fmtdate .  ( "%06d", ( $hour * 10000 ) + ( $minute * 100 ), 
+	2, '' , $user_TIMEZONE ) ) .
         "\n\n\n";
       if ( ! empty ( $server_url ) ) {
         $url = $server_url .  "view_entry.php?id=" .  $id;

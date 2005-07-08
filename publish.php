@@ -325,7 +325,7 @@ function export_recurrence_ical($id, $date) {
         $day = (int) substr($date,-2,2);
         $stamp = mktime(0, 0, 0, $month, $day, $year);
         $dow = date ( "w", $stamp );
-        $dow1 = date ( "w", mktime ( 3, 0, 0, $month, 1, $year ) );
+        $dow1 = date ( "w", mktime ( 0, 0, 0, $month, 1, $year ) );
         $partWeek = ( 7 - $dow1 ) % 7;
         $whichWeek = ceil ( ( $day - $partWeek ) / 7 );
         if ( $partWeek && $dow >= $dow1 )
@@ -374,7 +374,7 @@ function export_recurrence_ical($id, $date) {
 
 function export_alarm_ical($id, $description) {
   $sql = "SELECT cal_data FROM webcal_site_extras " .
-         "WHERE cal_id = $id AND cal_type = 7 AND cal_remind = 1";
+         "WHERE cal_id = $id AND cal_type = ". EXTRA_REMINDER . " AND cal_remind = 1";
   $res = dbi_query ( $sql );
   $row = dbi_fetch_row ( $res );
   dbi_free_result ( $res );
@@ -410,8 +410,8 @@ function export_get_utc_date($date, $time=0) {
 
   $tmstamp = mktime($hour, $min, $sec, $month, $day, $year);
 
-  $utc_date = gmdate("Ymd", $tmstamp);
-  $utc_hour = gmdate("His", $tmstamp);
+  $utc_date = date("Ymd", $tmstamp);
+  $utc_hour = date("His", $tmstamp);
 
   $utc = sprintf ("%sT%sZ", $utc_date, $utc_hour);
 

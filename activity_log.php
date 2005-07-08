@@ -43,7 +43,8 @@ if ( $res ) {
         $row[0] . "</td><td>\n" .
         $row[1] . "</td><td>\n" . 
         date_to_str ( $row[3] ) . "&nbsp;" .
-        display_time ( $row[4] ) . "</td><td>\n" . 
+        // No TZ conversion & show TZID which will be GMT
+        display_time ( $row[4], 3 ) . "</td><td>\n" . 
         "<a title=\"" .
         htmlspecialchars($row[6]) . "\" href=\"view_entry.php?id=$row[5]\">" .
         htmlspecialchars($row[6]) . "</a></td><td>\n";

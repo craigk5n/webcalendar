@@ -268,8 +268,8 @@ $endyear = substr ( $enddate, 0, 4 );
 $endmonth = substr ( $enddate, 4, 2 );
 $endday = substr ( $enddate, 6, 2 );
 
-$starttime = mktime ( 3, 0, 0, $startmonth, $startday, $startyear );
-$endtime = mktime ( 3, 0, 0, $endmonth, $endday, $endyear );
+$starttime = mktime ( 0, 0, 0, $startmonth, $startday, $startyear );
+$endtime = mktime ( 0, 0, 0, $endmonth, $endday, $endyear );
 
 for ( $d = $starttime; $d <= $endtime; $d += ONE_DAY ) {
   $completed_ids = array ();

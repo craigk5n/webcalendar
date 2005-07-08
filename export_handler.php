@@ -550,8 +550,8 @@ function export_recurrence_vcal($id, $date) {
 
 
 /*
- * Create a date-time format (e.g. "20041130T123000Z") that is
- * converted from local timezone to GMT.
+ * Create a date-time format (e.g. "20041130T123000Z") 
+ * Times are now stored as GMT, so no conversion is needed
  */
 function export_get_utc_date($date, $time=0) {
   $year = (int) substr($date,0,-4);
@@ -570,8 +570,8 @@ function export_get_utc_date($date, $time=0) {
 
   $tmstamp = mktime($hour, $min, $sec, $month, $day, $year);
 
-  $utc_date = gmdate("Ymd", $tmstamp);
-  $utc_hour = gmdate("His", $tmstamp);
+  $utc_date = date("Ymd", $tmstamp);
+  $utc_hour = date("His", $tmstamp);
 
   $utc = sprintf ("%sT%sZ", $utc_date, $utc_hour);
 
@@ -596,7 +596,7 @@ function export_alarm_vcal($id,$date,$time=0) {
     $sec  = ($time > 0) ? (int) substr($time,-2,2) : 0;
     $stamp = mktime($hour, $min, $sec, $month, $day, $year);
     $atime = $stamp - $offset;
-    echo gmdate("Ymd\THis\Z", $atime)."\r\n";
+    echo date("Ymd\THis\Z", $atime)."\r\n";
   }
 }
 
@@ -656,18 +656,6 @@ function export_vcal ($id) {
     echo "$prodid\r\n";
     echo "VERSION:1.0\r\n";
 
-    /* Time Zone
-	$tzdate = mktime();
-	$gmdate = gmmktime();
-	$tzdiff = ($gmdate - $tzdate) / 60 / 60; //FIXME only hours are represented
-
-	$tz = sprintf("%02d", $tzdiff);
-
-	echo "TZ:";
-	echo ($tzdiff >= 0) ? "+" : "-";
-	echo "$tz\r\n";
-
-    */
   }
 
   while (list($key,$row) = each($entry_array)) {
@@ -860,7 +848,8 @@ function pilot_date_time ( $date, $time, $duration, $csv=false ) {
   $mday = $date % 100;
   get_end_time ( $time, $duration, $hour, $min );
 
-  // Assume that the user is in the same timezone as server
+  // All times are now stored as GMT
+  //TODO Palm uses local time, so convert to users' time
   $tz_offset = date ( "Z" ); // in seconds
   $tzh = (int) ( $tz_offset / 3600 );
   $tzm = (int) ( $tz_offset / 60 ) % 60;

@@ -134,15 +134,15 @@ if ( $res ) {
 
 // Get all users timezone settings.
 $res = dbi_query ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
-  "WHERE cal_setting = 'TZ_OFFSET'" );
-$tzoffset = array ();
+  "WHERE cal_setting = 'TIMEZONE'" );
+
+$timezone = array (); 
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $user = $row[0];
-    $user_tzoffset = $row[1];
-    $tzoffset[$user] = $user_tzoffset;
+    $timezone[$user] = $row[1];
     if ( $debug )
-      echo "TZ OFFSET for $user is \"$user_tzoffset\" <br />\n";
+      echo "TIMEZONE for $user is \"$timezone[$user]\"<br />\n";
   }
   dbi_free_result ( $res );
 }
@@ -160,7 +160,6 @@ $events = read_events ( "", $startdate, $enddate );
 if ( $debug )
   echo "Found " . count ( $events ) . " events in time range. <br />\n";
 
-
 function indent ( $str ) {
   return "  " . str_replace ( "\n", "\n  ", $str );
 }
@@ -172,8 +171,8 @@ function indent ( $str ) {
 // approved.  But, don't send to users how rejected (cal_status='R').
 function send_reminder ( $id, $event_date ) {
   global $names, $emails, $site_extras, $debug, $only_testing,
-    $server_url, $languages, $tzoffset, $application_name;
-  global $allow_external_users, $external_reminders;
+    $server_url, $languages,  $timezone, $application_name;
+  global $allow_external_users, $external_reminders, $LANGUAGE;
 
   $pri[1] = translate("Low");
   $pri[2] = translate("Medium");
@@ -270,10 +269,14 @@ function send_reminder ( $id, $event_date ) {
       echo "Setting language to \"$userlang\" <br />\n";
     reset_language ( $userlang );
     // reset timezone setting for current user
-    if ( empty ( $tzoffset[$user] ) )
-      $GLOBALS["TZ_OFFSET"] = 0;
-    else
-      $GLOBALS["TZ_OFFSET"] = $tzoffset[$user];
+    if ( ! empty ( $timezone[$user] ) ) {
+      $display_tzid = 2; 
+      $user_timezone = $timezone[$user];
+    } else {
+      $display_tzid = 3;
+      $user_timezone = "";
+    }
+
 
     $body = translate("This is a reminder for the event detailed below.") .
       "\n\n";
@@ -296,7 +299,8 @@ function send_reminder ( $id, $event_date ) {
     $body .= indent ( $description ) . "\n";
     $body .= translate("Date") . ": " . date_to_str ( $event_date ) . "\n";
     if ( $row[2] >= 0 )
-      $body .= translate ("Time") . ": " . display_time ( $row[2] ) . "\n";
+      $body .= translate ("Time") . ": " . display_time ( $row[1] . 
+        $row[2], $display_tzid, '' , $user_timezone ) . "\n";
     if ( $row[5] > 0 )
       $body .= translate ("Duration") . ": " . $row[5] .
         " " . translate("minutes") . "\n";
@@ -308,7 +312,7 @@ function send_reminder ( $id, $event_date ) {
         "\n";
     if ( ! empty ( $single_user_login ) && $single_user_login == false )
       $body .= translate("Created by") . ": " . $row[0] . "\n";
-    $body .= translate("Updated") . ": " . date_to_str ( $row[3] ) . " " .
+    $body .= translate("Updated") . ": " . date_to_str ( $row[3], 3 ) . " " .
       display_time ( $row[4] ) . "\n";
 
     // site extra fields

@@ -55,20 +55,20 @@ print_header($INC);
 
 set_today($date);
 
-$next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
+$next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 $nextdate = sprintf ( "%04d%02d01", $nextyear, $nextmonth );
 
-$prev = mktime ( 3, 0, 0, $thismonth - 1, 1, $thisyear );
+$prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
 
 $startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
 $enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
-$monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
-$monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
+$monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
+$monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 $thisdate = $startdate;
 ?>
 

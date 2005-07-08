@@ -35,6 +35,7 @@ function delete_palm_events($login) {
 }
 
 function ParseLine($line){
+  global $SERVER_TIMEZONE, $calUser;
   list(
     $Entry['RecordID'],
     $Entry['StartTime'],
@@ -55,6 +56,16 @@ function ParseLine($line){
     $Entry['Repeat']['RepeatDays'],
     $WeekNum,
       ) = explode("|", $line);
+
+  // Adjust times to users Timezone if not Untimed
+  if ( isset ( $Entry['Untimed'] ) && $Entry['Untimed'] == 0) {
+    $user_TIMEZONE = get_pref_setting ( $calUser, "TIMEZONE" );
+    $user_TIMEZONE = ( ! empty ( $user_TIMEZONE ) ? $user_TIMEZONE : $SERVER_TIMEZONE );
+  
+    $tz_offset = get_tz_offset ( $user_TIMEZONE, $Entry['StartTime'] );
+    $Entry['StartTime'] = $Entry['StartTime'] - ( $tz_offset[0] * 3600 );
+    $Entry['EndTime'] = $Entry['EndTime'] - ( $tz_offset[0] * 3600 );
+  }
 
   if ($Exceptions) $Entry['Repeat']['Exceptions'] = explode(":",$Exceptions);
   if (($WeekNum == '5') && ($Entry['Repeat']['Interval'] == '3')) $Entry['Repeat']['Interval'] = '6';

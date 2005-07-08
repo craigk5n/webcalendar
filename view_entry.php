@@ -272,17 +272,18 @@ if ( $row ) {
 }
 
 // Timezone Adjustments
-if ( $event_time >= 0 && ! empty ( $TZ_OFFSET )  && $TZ_OFFSET != 0 ) { 
-  // -1 = no time specified
-  $adjusted_time = $event_time + $TZ_OFFSET * 10000;
   $year = substr($row[1],0,4);
   $month = substr($row[1],4,2);
   $day = substr($row[1],-2);
+$tz_offset = get_tz_offset ( $TIMEZONE, mktime ( 0, 0, 0, $month, $day, $year ) );
+if ( $event_time >= 0 && ! empty ( $tz_offset[0] )  && $tz_offset[0] != 0 ) { 
+  // -1 = no time specified
+  $adjusted_time = $event_time + $tz_offset[0] * 10000;
   if ( $adjusted_time > 240000 ) {
-    $gmt = mktime ( 3, 0, 0, $month, $day, $year );
+    $gmt = mktime ( 0, 0, 0, $month, $day, $year );
     $gmt += ONE_DAY;
   } else if ( $adjusted_time < 0 ) {
-    $gmt = mktime ( 3, 0, 0, $month, $day, $year );
+    $gmt = mktime ( 0, 0, 0, $month, $day, $year );
     $gmt -= ONE_DAY;
   }
 }
@@ -293,7 +294,7 @@ $tz_date = ( ! empty ( $gmt ) ) ? date ( "Ymd", $gmt ) : $row[1];
 $thisyear = (int) ( $tz_date / 10000 );
 $thismonth = ( $tz_date / 100 ) % 100;
 $thisday = $tz_date % 100;
-$thistime = mktime ( 3, 0, 0, $thismonth, $thisday, $thisyear );
+$thistime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 $thisdow = date ( "w", $thistime );
 
 // $subject is used for mailto URLs
@@ -358,7 +359,7 @@ if ( $res ) {
         $days_this_month = $thisyear % 4 == 0 ? $ldays_per_month[$thismonth] :
           $days_per_month[$thismonth];
         if ( $cal_type == 'monthlyByDay' ) {
-          $dow1 = date ( "w", mktime ( 3, 0, 0, $thismonth, 1, $thisyear ) );
+          $dow1 = date ( "w", mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
           $days_in_first_week = ( 7 - $dow1 );
           $whichWeek = ceil ( $thisday / 7 );
         } else {
@@ -398,7 +399,7 @@ if ( $res ) {
 }
 /* calculate end time */
 if ( $event_time >= 0 && $row[5] > 0 )
-  $end_str = "-" . display_time ( add_duration ( $row[2], $row[5] ) );
+  $end_str = "-" . display_time ( $tz_date . add_duration ( $row[2], $row[5] ), 2 );
 else
   $end_str = "";
 
@@ -497,7 +498,9 @@ if ( $categories_enabled == "Y" ) {
     if ( $row[5] == ( 24 * 60 ) ) {
       etranslate("All day event");
     } else {
-      echo display_time ( $row[2] ) . $end_str;
+      // Display TZID if no end time
+      $display_tzid = empty ( $end_str ) ? 2 : 0;
+      echo display_time ( $tz_date . $row[2], $display_tzid ) . $end_str;
     }
   ?>
 </td></tr>
@@ -565,7 +568,7 @@ if ( $single_user == "N" ) {
  <?php
     echo date_to_str ( $row[3] );
     echo " ";
-    echo display_time ( $row[4] );
+    echo display_time ( $row[4], 3 );
    ?>
 </td></tr>
 <?php
@@ -915,7 +918,7 @@ if ( $show_log ) {
       echo $row[0] . "</td><td>\n";
       echo $row[1] . "</td><td>\n" . 
         date_to_str ( $row[3] ) . "&nbsp;" .
-        display_time ( $row[4] ) . "</td><td>\n";
+        display_time ( $row[4], 3 ) . "</td><td>\n";
       if ( $row[2] == LOG_CREATE ) {
         etranslate("Event created");
       } else if ( $row[2] == LOG_APPROVE ) {

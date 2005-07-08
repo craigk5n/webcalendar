@@ -57,13 +57,13 @@ print_header($INC);
 
 set_today($date);
 
-$next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
+$next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 $nextday = date ( "d", $next );
 $nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
 
-$prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
+$prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );

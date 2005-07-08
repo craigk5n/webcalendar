@@ -116,17 +116,17 @@ if (!$date) {
   $date = $thisdate;
 }
 
-$wday = strftime ( "%w", mktime ( 2, 0, 0, $thismonth, $thisday, $thisyear ) );
-$now = mktime ( 2, 0, 0, $thismonth, $thisday, $thisyear );
+$wday = strftime ( "%w", mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
+$now = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 $nowYmd = date ( "Ymd", $now );
 
-$next = mktime ( 2, 0, 0, $thismonth, $thisday + 1, $thisyear );
+$next = mktime ( 0, 0, 0, $thismonth, $thisday + 1, $thisyear );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 $nextday = date ( "d", $next );
 $nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
 
-$prev = mktime ( 2, 0, 0, $thismonth, $thisday - 1, $thisyear );
+$prev = mktime ( 0, 0, 0, $thismonth, $thisday - 1, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );

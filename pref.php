@@ -108,26 +108,13 @@ print_header($INC);
 	<?php echo translate("Your browser default language is") . " " . translate ( get_browser_language () ) . "."; ?>
 </td></tr>
 <tr><td class="tooltipselect" title="<?php etooltip("tz-help")?>">
-	<label for="pref_tz"><?php etranslate("Timezone Offset")?>:</label></td><td>
-	<select name="pref_TZ_OFFSET" id="pref_tz">
+  <label for="pref_TIMEZONE"><?php etranslate("Timezone Selection")?>:</label></td><td>
   <?php
-  $text_add = translate("Add N hours to");
-  $text_sub = translate("Subtract N hours from");
-  if ( empty ( $prefarray["TZ_OFFSET"] ) )
-    $prefarray["TZ_OFFSET"] = 0;
-  for ( $i = -12; $i <= 12; $i++ ) {
-    echo "<option value=\"$i\"";
-    if ( $prefarray["TZ_OFFSET"] == $i ) echo " selected=\"selected\"";
-    echo ">";
-    if ( $i < 0 )
-      echo str_replace ( "N", -$i, $text_sub ) . "</option>\n";
-    else if ( $i == 0 )
-      echo "" . etranslate("same as") . "</option>\n";
-    else
-      echo str_replace ( "N", $i, $text_add ) . "</option>\n";
-  }
+   $tz_offset = get_tz_offset ( $prefarray['TIMEZONE'], time() );
+   echo print_timezone_select_html ( "pref_", $prefarray['TIMEZONE']); 
+   echo  translate("Your current GMT offset is")  . " " . $tz_offset[0] . 
+     " " . translate("hours") . ". ($tz_offset[1])";
   ?>
-	</select>&nbsp;<?php etranslate("server time");?>
 </td></tr>
 <tr><td class="tooltipselect" title="<?php etooltip("fonts-help")?>">
 	<label for="pref_font"><?php etranslate("Fonts")?>:</label></td><td>
@@ -528,12 +515,12 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <!-- BEGIN EXAMPLE MONTH -->
 <table style="border:0px; width:100%;"><tr>
 <td style="text-align:center; color:<?php echo $H2COLOR?>; font-weight:bold;"><?php
-$today = mktime ( 3, 0, 0, 12, 13, 2000 );
+$today = mktime ( 0, 0, 0, 12, 13, 2004 );
 if ( $prefarray["WEEK_START"] == 1 )
-  $wkstart = get_monday_before ( 2000, 12, 1 );
+  $wkstart = get_monday_before ( 2004, 12, 1 );
 else
-  $wkstart = get_sunday_before ( 2000, 12, 1 );
-echo date_to_str ( "20001201", $DATE_FORMAT_MY, false, false );?></td></tr>
+  $wkstart = get_sunday_before ( 2004, 12, 1 );
+echo date_to_str ( "20041201", $DATE_FORMAT_MY, false, false );?></td></tr>
 </table>
 
 <table style="border-width:0px; width:90%;" cellspacing="0" cellpadding="0">
@@ -555,8 +542,8 @@ echo date_to_str ( "20001201", $DATE_FORMAT_MY, false, false );?></td></tr>
 </tr>
 <?php
 // generate values for first day and last day of month
-$monthstart = mktime ( 3, 0, 0, 12, 1, 2000 );
-$monthend = mktime ( 3, 0, 0, 13, 0, 2000 );
+$monthstart = mktime ( 0, 0, 0, 12, 1, 2004 );
+$monthend = mktime ( 0, 0, 0, 13, 0, 2004 );
 
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( 24 * 3600 * 7 ) ) {
