@@ -97,6 +97,12 @@ $load_layers = true;
 // Can override in URL with "upcoming.php?cat_id=4"
 $cat_id = '';
 
+// Display timezone abbrev name
+// 1 = Display all times as GMT wo/TZID
+// 2 = Adjust times by user's GMT offset Show TZID 
+// 3 = Display all times as GMT w/TZID
+$display_tzid = 3;
+
 // End configurable settings...
 
 // Set for use elsewhere as a global
@@ -116,6 +122,7 @@ if ( $allow_user_override ) {
   if ( ! empty ( $u ) ) {
     $username = $u;
     $login = $u;
+    $TIMEZONE = get_pref_setting ( $username, "TIMEZONE" );
     // We also set $login since some functions assume that it is set.
   }
 }
@@ -144,7 +151,7 @@ $thisyear = substr ( $date, 0, 4 );
 $thismonth = substr ( $date, 4, 2 );
 $thisday = substr ( $date, 6, 2 );
 
-$startTime = mktime ( 3, 0, 0, $thismonth, $thisday, $thisyear );
+$startTime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 
 $x = getIntValue ( "days", true );
 if ( ! empty ( $x ) ) {
@@ -154,7 +161,7 @@ if ( ! empty ( $x ) ) {
 if ( $numDays > 365 ) {
   $numDays = 365;
 }
-$endTime = mktime ( 3, 0, 0, $thismonth, $thisday + $numDays,
+$endTime = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays,
   $thisyear );
 $endDate = date ( "Ymd", $endTime );
 
@@ -240,7 +247,7 @@ print "</body>\n</html>";
 
 // Print the details of an upcoming event
 function print_upcoming_event ( $e ) {
-  global $display_link, $link_target, $server_url, $charset;
+  global $display_link, $link_target, $server_url, $charset, $display_tzid;
 
   if ( $display_link && ! empty ( $server_url ) ) {
     print "<a title=\"" . 
@@ -260,7 +267,7 @@ function print_upcoming_event ( $e ) {
   if ( $e->get_duration() == 24 * 60 ) {
     print " (" . translate("All day event") . ")\n";
   } else if ( $e->get_time() != -1 ) {
-    print " (" . display_time ( $e->get_time() ) . ")\n";
+    print " (" . display_time ( $e->get_datetime(), $display_tzid ) . ")\n";
   }
   print "<br />\n";
 }

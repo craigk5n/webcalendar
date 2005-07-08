@@ -9,8 +9,10 @@ if (($user != $login) && $is_nonuser_admin) {
 
 load_user_categories ();
 
-$next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
-$prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
+
+
+$next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
+$prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.
@@ -153,8 +155,8 @@ if ( empty ( $TIME_SLOTS ) ) {
 
 $interval = ( 24 * 60 ) / $TIME_SLOTS;
 
-$first_slot = (int)( ( ( $WORK_DAY_START_HOUR - $TZ_OFFSET ) * 60 ) / $interval );
-$last_slot = (int)( ( ( $WORK_DAY_END_HOUR - $TZ_OFFSET ) * 60 ) / $interval );
+$first_slot = (int)( ( ( $WORK_DAY_START_HOUR ) * 60 ) / $interval );
+$last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) / $interval );
 
 $untimed_found = false;
 $get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
@@ -289,7 +291,8 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = (int) ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;
-  $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
+  // Do not apply TZ offset
+  $time = display_time ( ( $time_h * 100 + $time_m ) * 100, 1 );
   echo "<tr>\n<th class=\"row\">" .  $time . "</th>\n";
   for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );

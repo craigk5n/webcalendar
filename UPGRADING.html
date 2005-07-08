@@ -43,7 +43,7 @@
 <h2>WebCalendar Upgrading Notes</h2>
 
 <p>Below are the steps needed to upgrade from a previous version.
-Select the version of your existing instal from the list below.
+Select the version of your existing install from the list below.
 If you are more 
 than one version behind (i.e. the new version is v0.9.45, 
 and you're using 0.9.39), click the "next..." link at the end of 
@@ -473,6 +473,7 @@ UPDATE webcal_config SET cal_value = 'week.php'
 
 <h4><a id="1_1_0">To upgrade from v1.0RC3 or v1.0.0 to v1.1.0:</a></h4>
 <p>Two new tables need to be created to support advanced user access control.
+In addition, three new tables need to be created to support full timezone implementation.
 Execute the following SQL to update your database:
 </p>
 <pre>
@@ -491,8 +492,52 @@ CREATE TABLE webcal_access_function (
   cal_permissions VARCHAR(64) NOT NULL,
   PRIMARY KEY ( cal_login )
 );
-</pre>
 
+CREATE TABLE webcal_tz_zones (
+  zone_name VARCHAR(50) NOT NULL default '',
+  zone_gmtoff INT NOT NULL default '0',
+  zone_rules VARCHAR(50) NOT NULL default '',
+  zone_format VARCHAR(20) NOT NULL default '',
+  zone_from BIGINT NOT NULL default '0',
+  zone_until BIGINT NOT NULL default '0',
+  zone_cc CHAR(2) NOT NULL default '',
+  zone_coord VARCHAR(20) NOT NULL default '',
+  zone_country VARCHAR(50) NOT NULL default ''
+);
+
+CREATE TABLE webcal_tz_rules (
+  rule_name VARCHAR(50) NOT NULL default '',
+  rule_from INT NOT NULL default '0',
+  rule_to INT NOT NULL default '0',
+  rule_type VARCHAR(20) NOT NULL default '',
+  rule_in INT NOT NULL default '0',
+  rule_on VARCHAR(20) NOT NULL default '',
+  rule_at INT NOT NULL default '0',
+  rule_at_suffix CHAR(1) NOT NULL default '',
+  rule_save INT NOT NULL default '0',
+  rule_letter VARCHAR(5) NOT NULL default ''
+);
+CREATE TABLE webcal_tz_list (
+  tz_list_id int(11) NOT NULL default '0',
+	 tz_list_name varchar(50) NOT NULL default '',
+	 tz_list_text varchar(75) NOT NULL default ''
+);
+
+ 
+
+</pre>
+<p>For Oracle, use VARCHAR2 instead of VARCHAR.</p>
+<p>A major upgrade to WebCalendar for v1.1.0 is the implementation of full
+timezone support. In previous versions, all date/time data was stored based on server time and users 
+set their 'time offset' relative to server time. Now, all date/time data will be stored in the database
+as Greenwich Mean Time (GMT) and users will be able to select a timezone based on their geographical 
+location.</p>
+<p>Having true timezone information available within WebCalendar enables the system to correct for 
+Daylight Savings Time (DST) even if users are in different timezones. The database houses timezone
+information from 1970 to 2038 and can calculate the appropriate GMT offset required to allow users to
+see events in their true 'local time'.</p>
+<p>The installation script should guide you through the initial import of the timezone data and the
+one-time conversion required to get your data converted to GMT. 
 <hr />
 
 <p>

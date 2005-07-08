@@ -496,8 +496,8 @@ function import_data ( $data, $overwrite, $type ) {
       echo "</h2></b>";
 
       if ( $Entry['Duration'] > 0 ) {
-        $time = display_time ( $Entry['StartHour'].$Entry['StartMinute']."00" ) .
-          " - " . display_time ( $Entry['EndHour'].$Entry['EndMinute']."00" );
+        $time = display_time ( $Entry['StartHour'].$Entry['StartMinute']."00", 1 ) .
+          " - " . display_time ( $Entry['EndHour'].$Entry['EndMinute']."00", 3 );
       }
       $dd = $Entry['StartMonth'] . "-" .  $Entry['StartDay'] . "-" . $Entry['StartYear'];
       $Entry['Summary'] = str_replace ( "''", "'", $Entry['Summary'] );
@@ -517,8 +517,8 @@ function import_data ( $data, $overwrite, $type ) {
         translate("Event Imported") . ":</h2></b>\n";
       $count_suc++;
       if ( $Entry['Duration'] > 0 ) {
-        $time = display_time ( $Entry['StartHour'].$Entry['StartMinute']."00" ) .
-          " - " . display_time ( $Entry['EndHour'].$Entry['EndMinute']."00" );
+        $time = display_time ( $Entry['StartHour'].$Entry['StartMinute']."00", 1 ) .
+          " - " . display_time ( $Entry['EndHour'].$Entry['EndMinute']."00", 3 );
       }
       $dateYmd = sprintf ( "%04d%02d%02d", $Entry['StartYear'],
         $Entry['StartMonth'], $Entry['StartDay'] );
@@ -575,6 +575,10 @@ function import_data ( $data, $overwrite, $type ) {
 // Convert interval to webcal repeat type
 function RepeatType ($type) {
   $Repeat = array (0,'daily','weekly','monthlyByDay','monthlyByDate','yearly','monthlyByDayR');
+  if ( empty ( $type ) ){
+    return 0;
+  } else {
   return $Repeat[$type];
+  }
 }
 ?>

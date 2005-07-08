@@ -78,19 +78,21 @@ if ( $readonly == 'Y' ) {
     $month = ( $cal_date / 100 ) % 100;
     $day = $cal_date % 100;
     $time = $row[2];
+    
+    $tz_offset = get_tz_offset ( $TIMEZONE, mktime ( 0, 0, 0, $month, $day, $year ) );
     // test for AllDay event, if so, don't adjust time
     if ( $time > 0  || ( $time == 0 &&  $row[5] != 1440 ) ) { /* -1 = no time specified */
-      $time += ( ! empty ( $TZ_OFFSET )?$TZ_OFFSET : 0)  * 10000;
+      $time += ( ! empty ( $tz_offset[0] )? $tz_offset[0] : 0 )  * 10000;
       if ( $time > 240000 ) {
         $time -= 240000;
-        $gmt = mktime ( 3, 0, 0, $month, $day, $year );
+        $gmt = mktime ( 0, 0, 0, $month, $day, $year );
         $gmt += ONE_DAY;
         $month = date ( "m", $gmt );
         $day = date ( "d", $gmt );
         $year = date ( "Y", $gmt );
       } else if ( $time < 0 ) {
         $time += 240000;
-        $gmt = mktime ( 3, 0, 0, $month, $day, $year );
+        $gmt = mktime ( 0, 0, 0, $month, $day, $year );
         $gmt -= ONE_DAY;
         $month = date ( "m", $gmt );
         $day = date ( "d", $gmt );

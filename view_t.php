@@ -63,9 +63,9 @@ set_today($date);
 
 // Week timebar
 if ( $timeb == 1 ) {
-  $next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
+  $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 } else {
-  $next = mktime ( 3, 0, 0, $thismonth + 1, $thisday, $thisyear );
+  $next = mktime ( 0, 0, 0, $thismonth + 1, $thisday, $thisyear );
 }
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
@@ -73,9 +73,9 @@ $nextday = date ( "d", $next );
 $nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
 
 if ( $timeb == 1 ) {
-  $prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
+  $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 } else {
-  $prev = mktime ( 3, 0, 0, $thismonth - 1, $thisday, $thisyear );
+  $prev = mktime ( 0, 0, 0, $thismonth - 1, $thisday, $thisyear );
 }
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
@@ -91,13 +91,13 @@ if ( $timeb == 1 ) {
     $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
   }
 } else {
-  $wkstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
+  $wkstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
 }
 
 if ( $timeb == 1 ) {
   $wkend = $wkstart + ( 3600 * 24 * 6 );
 } else {
-  $wkend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
+  $wkend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 }
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );

@@ -8,18 +8,18 @@ else
 
 load_user_categories ();
 
-$wday = strftime ( "%w", mktime ( 3, 0, 0, $thismonth, $thisday, $thisyear ) );
+$wday = strftime ( "%w", mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
 
-$now = mktime ( 3, 0, 0, $thismonth, $thisday, $thisyear );
+$now = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 $nowYmd = date ( "Ymd", $now );
 
-$next = mktime ( 3, 0, 0, $thismonth, $thisday + 1, $thisyear );
+$next = mktime ( 0, 0, 0, $thismonth, $thisday + 1, $thisyear );
 $nextYmd = date ( "Ymd", $next );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 $nextday = date ( "d", $next );
 
-$prev = mktime ( 3, 0, 0, $thismonth, $thisday - 1, $thisyear );
+$prev = mktime ( 0, 0, 0, $thismonth, $thisday - 1, $thisyear );
 $prevYmd = date ( "Ymd", $prev );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );

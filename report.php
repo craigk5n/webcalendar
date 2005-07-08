@@ -87,7 +87,7 @@ function event_to_text ( $event, $date ) {
   } else if ( $event->get_time() == -1 ) {
     $time_str = translate("Untimed event");
   } else {
-    $time_str = display_time ( $event->get_time() );
+    $time_str = display_time ( $event->get_datetime() );
     $start_time_str = $time_str;
     $time_short = preg_replace ("/(:00)/", '', $time_str);
     if ( $event->get_duration() > 0 ) {
@@ -371,7 +371,7 @@ if ( empty ( $offset ) || empty ( $report_allow_nav ) ||
 if ( empty ( $report_time_range ) ) {
   // manage reports
 } else if ( $report_time_range >= 0 && $report_time_range < 10 ) {
-  $today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
+  $today = mktime ( 0, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
   $days_offset = 1 - $report_time_range + $offset;
   $start_date = date ( "Ymd", $today + ( $days_offset * ONE_DAY ) );
   $end_date = $start_date;
@@ -407,17 +407,17 @@ if ( empty ( $report_time_range ) ) {
   $thismonth = date ( "m" );
   $month_offset = 31 - $report_time_range + $offset;
   //echo "month_offset=$month_offset <br />";
-  $start_date = date ( "Ymd", mktime ( 3, 0, 0, $thismonth + $month_offset,
+  $start_date = date ( "Ymd", mktime ( 0, 0, 0, $thismonth + $month_offset,
     1, date ( "Y" ) ) );
-  $end_date = date ( "Ymd", mktime ( 3, 0, 0, $thismonth + $month_offset + 1,
+  $end_date = date ( "Ymd", mktime ( 0, 0, 0, $thismonth + $month_offset + 1,
     0, date ( "Y" ) ) );
 } else if ( $report_time_range >= 40 && $report_time_range < 50 ) {
   $thisyear = date ( "Y" );
   $year_offset = 41 - $report_time_range + $offset;
   //echo "year_offset=$year_offset <br />";
-  $start_date = date ( "Ymd", mktime ( 3, 0, 0, 1, 1,
+  $start_date = date ( "Ymd", mktime ( 0, 0, 0, 1, 1,
     $thisyear + $year_offset ) );
-  $end_date = date ( "Ymd", mktime ( 3, 0, 0, 12, 31,
+  $end_date = date ( "Ymd", mktime ( 0, 0, 0, 12, 31,
     $thisyear + $year_offset ) );
 } else {
   // Programmer's bug (no translation needed)
@@ -443,12 +443,12 @@ if ( empty ( $error ) && empty ( $list ) ) {
   $start_year = substr ( $start_date, 0, 4 );
   $start_month = substr ( $start_date, 4, 2 );
   $start_day = substr ( $start_date, 6, 2 );
-  $start_time = mktime ( 3, 0, 0, $start_month, $start_day, $start_year );
+  $start_time = mktime ( 0, 0, 0, $start_month, $start_day, $start_year );
 
   $end_year = substr ( $end_date, 0, 4 );
   $end_month = substr ( $end_date, 4, 2 );
   $end_day = substr ( $end_date, 6, 2 );
-  $end_time = mktime ( 3, 0, 0, $end_month, $end_day, $end_year );
+  $end_time = mktime ( 0, 0, 0, $end_month, $end_day, $end_year );
 
   $day_str = '';
 

@@ -190,6 +190,14 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <label><input type="radio" name="admin_DISPLAY_DESC_PRINT_DAY" value="Y" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
   <label><input type="radio" name="admin_DISPLAY_DESC_PRINT_DAY" value="N" <?php if ( $s["DISPLAY_DESC_PRINT_DAY"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
+ <tr><td class="tooltipselect" title="<?php etooltip("tz-help")?>">
+  <label for="admin_TIMEZONE"><?php etranslate("Server Timezone Selection")?>:</label></td><td>
+  <?php
+   $tz_offset = get_tz_offset ( $s['TIMEZONE'], time() );
+   echo print_timezone_select_html ( "admin_", $s['TIMEZONE']);
+   echo  translate("Your current GMT offset is")  . " " . $tz_offset[0] . " " . translate("hours") . ".";
+  ?>
+</td></tr>
  <tr><td class="tooltipselect" title="<?php etooltip("date-format-help");?>">
   <?php etranslate("Date format")?>:</td><td>
   <select name="admin_DATE_FORMAT">

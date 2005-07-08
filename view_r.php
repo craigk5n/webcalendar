@@ -70,6 +70,9 @@ $col_pixels_day = 150; // if above is true, how large is each column in table
 $show_time_day = true;
 $show_time_week = false;
 
+// Display abbreviated Timezone name in popup
+$DISPLAY_TZ = 2;
+
 // Should there always be a row for untimed/all-day events?
 // Normally we only show this if there are some of these events, but
 // if you want to be able to add an all-day event quickly, you can
@@ -95,25 +98,24 @@ set_today ( $date );
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 
 if ( $is_day_view )
-  $next = mktime ( 3, 0, 0, $thismonth, $thisday + 1, $thisyear );
+  $next = mktime ( 0, 0, 0, $thismonth, $thisday + 1, $thisyear );
 else
-  $next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
+  $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 $nextday = date ( "d", $next );
 $nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
 
 if ( $is_day_view )
-  $prev = mktime ( 3, 0, 0, $thismonth, $thisday - 1, $thisyear );
+  $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 1, $thisyear );
 else
-  $prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
+  $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
-// We add 2 hours on to the time so that the switch to DST doesn't
-// throw us off.  So, all our dates are 2AM for that day.
+
 if ( $WEEK_START == 1 ) {
    $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
 } else {
@@ -133,7 +135,7 @@ else
 // $enddate = YYYYMMDD format of last day to display
 if ( $is_day_view ) {
   $startdate = $enddate = $thisdate;
-  $thistime = mktime ( 3, 0, 0, $thismonth, $thisday, $thisyear );
+  $thistime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
   $start_ind = $end_ind = date ( "w", $thistime );
 } else {
   $startdate = date ( "Ymd", $wkstart );
@@ -247,9 +249,9 @@ $num_users = count ( $viewusers );
 if ( empty ( $TIME_SLOTS ) )
   $TIME_SLOTS = 24;
 $interval = ( 24 * 60 ) / $TIME_SLOTS;
-$first_slot = (int)( ( ( $WORK_DAY_START_HOUR - $TZ_OFFSET ) * 60 ) /
+$first_slot = (int)( ( ( $WORK_DAY_START_HOUR  ) * 60 ) /
   $interval );
-$last_slot = (int)( ( ( $WORK_DAY_END_HOUR - $TZ_OFFSET ) * 60 ) /
+$last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
   $interval );
 
 ?>
@@ -366,7 +368,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         }
       }
     }
-    $ev = get_entries ( $user, $adate, $get_unapproved );
+    $ev = get_entries ( $user, $adate, $get_unapproved , 1, 1);
     for ( $j = 0; $j < count ( $ev ); $j++ ) {
       if ( ! isset ( $am_part[$ev[$j]->get_id()] ) ) {
         $am_part[$ev[$j]->get_id()] =
@@ -383,8 +385,6 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   }
 }
 
-//print_r ( $am_part );
-
 for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   for ( $u = 0; $u < count ( $viewusers ); $u++ ) {
     $untimed = array (  );
@@ -397,7 +397,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $cur_rep = 0;
 
     // Get static non-repeating events
-    $ev = get_entries ( $user, $adate, $get_unapproved );
+    $ev = get_entries ( $user, $adate, $get_unapproved, 1, 1 );
     $hour_arr = array (  );
     $rowspan_arr = array (  );
     for ( $i = 0; $i < count ( $ev ); $i++ ) {
@@ -529,7 +529,7 @@ for ( $u = 0; $u < count ( $viewusers ); $u++ ) {
 for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = ( int ) ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;
-  $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
+  $time = display_time ( ( $time_h * 100 + $time_m ) * 100, 1 );
   echo "<tr>\n<th valign=\"top\" class=\"row\" width=\"$time_w" .
     "\">" . $time . "</th>\n";
   //echo "<tr>\n<th valign=\"top\">" .  $time . "</th>\n";
@@ -570,12 +570,8 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
           echo ( empty ( $class ) ) ? "" : " class=\"$class\"";
           if ( $can_add ) {
             $add_url = "edit_entry.php?date=" . date ( "Ymd", $days[$d] ) .
-              "&amp;defusers=" . $viewusers[$u];
-            $newhour = $time_h;
-            if ( ! empty ( $newhour ) )
-              $newhour += $TZ_OFFSET;
-            if ( ! empty ( $newhour ) )
-              $add_url .= "&amp;hour=$newhour&amp;minute=$time_m";
+              "&amp;defusers=" . $viewusers[$u] .
+              "&amp;hour=$time_h&amp;minute=$time_m";
             echo " ondblclick='document.location.href=\"$add_url\"' ";
           }
           echo ">";
@@ -592,12 +588,8 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
             echo " rowspan=\"" . $rowspan_day[$u][$d] . "\"";
             if ( $can_add ) {
               $add_url = "edit_entry.php?date=" . date ( "Ymd", $days[$d] ) .
-                "&amp;defusers=$user";
-              $newhour = $time_h;
-              if ( ! empty ( $newhour ) )
-                $newhour += $TZ_OFFSET;
-              if ( ! empty ( $newhour ) )
-                $add_url .= "&amp;hour=$newhour&amp;minute=$time_m";
+                "&amp;defusers=$user" .
+                "&amp;hour=$time_h&amp;minute=$time_m";
               echo " ondblclick='document.location.href=\"$add_url\"' ";
             }
             echo ">";
@@ -611,12 +603,8 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
             echo ( empty ( $class ) ) ? "" : " class=\"$class\"";
             if ( $can_add ) {
               $add_url = "edit_entry.php?date=" . date ( "Ymd", $days[$d] ) .
-                "&amp;defusers=$user";
-              $newhour = $time_h;
-              if ( ! empty ( $newhour ) )
-                $newhour += $TZ_OFFSET;
-              if ( ! empty ( $newhour ) )
-                $add_url .= "&amp;hour=$newhour&amp;minute=$time_m";
+                "&amp;defusers=$user" .
+                "&amp;hour=$time_h&amp;minute=$time_m";
               echo " ondblclick='document.location.href=\"$add_url\"' ";
             }
             echo ">";

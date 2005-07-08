@@ -10,11 +10,9 @@ else
 load_user_categories ();
 
 
-$next = mktime ( 2, 0, 0, $thismonth, $thisday + 7, $thisyear );
-$prev = mktime ( 2, 0, 0, $thismonth, $thisday - 7, $thisyear );
+$next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
+$prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
-// We add 2 hours on to the time so that the switch to DST doesn't
-// throw us off.  So, all our dates are 2AM for that day.
 if ( $WEEK_START == 1 )
   $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
 else
@@ -163,11 +161,20 @@ onmouseover="window.status = '<?php etranslate("Generate printer-friendly versio
  *
  */
 function print_detailed_entry ( $event, $date ) {
-  global $eventinfo, $login, $user, $TZ_OFFSET;
-  static $key = 0;
+  global $eventinfo, $login, $user;
+  static $key = 0, $user_TIMEZONE;
 
   global $layers;
 
+    //Get TZ_offset of start day
+  if ( empty ( $user_TIMEZONE ) ){
+    $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
+  } 
+  $sy = substr ( $date, 0, 4 );
+  $sm = substr ( $date, 4, 2 );
+  $sd = substr ( $date, 6, 2 );
+  $tz_offset = get_tz_offset ( $user_TIMEZONE, mktime ( 0, 0, 0, $sm, $sd, $sy ) );
+  
   if ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
     $class = "layerentry";
   } else {
@@ -185,11 +192,13 @@ function print_detailed_entry ( $event, $date ) {
     $name = $event->get_name();
   }
 
-	$divname = "eventinfo-$id-$key";
+	$popupid = "eventinfo-$id-$key";
+          $linkid  = "$id-$key";
+
 	$key++;
 
 	echo "<a title=\"" . 
-		translate("View this entry") . "\" class=\"$class\" href=\"view_entry.php?id=$id&amp;date=$date";
+		translate("View this entry") . "\" class=\"$class\" id=\"$linkid\"  href=\"view_entry.php?id=$id&amp;date=$date";
 	if ( strlen ( $user ) > 0 )
 		echo "&amp;user=" . $user;
 	echo "\" onmouseover=\"window.status='" . 
@@ -205,7 +214,8 @@ function print_detailed_entry ( $event, $date ) {
   }
 
   $timestr = "";
-  $my_time = $event->get_time() + ( $TZ_OFFSET * 10000 );
+
+  $my_time = $event->get_time() + ( $tz_offset[0] * 10000 );
   if ( $event->get_time() >= 0 ) {
     if ( $GLOBALS["TIME_FORMAT"] == "24" ) {
       printf ( "%02d:%02d", $my_time / 10000, ( $my_time / 100 ) % 100 );
@@ -220,7 +230,7 @@ function print_detailed_entry ( $event, $date ) {
         print (":00");
       echo ( (int) ( $my_time / 10000 ) ) < 12 ? translate("am") : translate("pm");
     }
-    $timestr = display_time ( $event->get_time() );
+    $timestr = display_time ( $event->get_time(),1 );
     if ( $event->get_duration() > 0 ) {
       // calc end time
       $h = (int) ( $event->get_time() / 10000 );
@@ -232,8 +242,8 @@ function print_detailed_entry ( $event, $date ) {
         $m -= 60;
       }
       $end_time = sprintf ( "%02d%02d00", $h, $m );
-      $timestr .= " - " . display_time ( $end_time );
-      echo " - " .display_time ( $end_time ). "";
+      $timestr .= " - " . display_time ( $end_time, 1 );
+      echo " - " .display_time ( $end_time, 1 ). "";
       echo "&raquo;&nbsp;";
     } else {
 	echo "&raquo;&nbsp;";
@@ -257,6 +267,8 @@ function print_detailed_entry ( $event, $date ) {
   if ( $PN != $PD )
     echo " - " . $PD;
   echo "<br />\n";
+  $eventinfo .= build_event_popup ( $popupid, $event->get_login(),
+    $event->get_description(), $timestr, site_extras_for_popup ( $id ) );
 }
 
 //
@@ -274,7 +286,7 @@ function print_det_date_entries ( $date, $user, $ssi ) {
   $month = substr ( $date, 4, 2 );
   $day = substr ( $date, 6, 2 );
 
-  $dateu = mktime ( 2, 0, 0, $month, $day, $year );
+  $dateu = mktime ( 0, 0, 0, $month, $day, $year );
 
   // get all the repeating events for this date and store in array $rep
   $rep = get_repeating_entries ( $user, $date );
@@ -289,18 +301,18 @@ function print_det_date_entries ( $date, $user, $ssi ) {
       $rep[$cur_rep]->get_time() < $ev[$i]->get_time() ) {
       if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
         $rep[$cur_rep]->get_status() == 'A' )
-        print_detailed_entry ( $rep[$cur_rep] );
+        print_detailed_entry ( $rep[$cur_rep], $date );
       $cur_rep++;
     }
     if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
       $ev[$i]->get_status() == 'A' )
-      print_detailed_entry ( $ev[$i] );
+      print_detailed_entry ( $ev[$i], $date );
   }
   // print out any remaining repeating events
   while ( $cur_rep < count ( $rep ) ) {
     if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
       $rep[$cur_rep]->get_status() == 'A' )
-      print_detailed_entry ( $rep[$cur_rep] );
+      print_detailed_entry ( $rep[$cur_rep], $date );
     $cur_rep++;
   }
 }

@@ -97,11 +97,11 @@ if ( empty ( $user ) ) {
 $get_unapproved = false;
 
 // Start date is beginning of this month
-$startdate = mktime ( 3, 0, 0, date("m"), 1, date("Y") );
+$startdate = mktime ( 0, 0, 0, date("m"), 1, date("Y") );
 
 // End date is one year from now
 // Seems kind of arbitrary, eh?
-$enddate = mktime ( 3, 0, 0, date("m"), 1, date("Y") + 1 );
+$enddate = mktime ( 0, 0, 0, date("m"), 1, date("Y") + 1 );
 
 /* Pre-Load the repeated events for quicker access */
 $repeated_events = read_repeated_events ( $user, '',
@@ -113,7 +113,7 @@ $events = read_events ( $user, date ( "Ymd", $startdate ),
 
 // Loop from start date until we reach end date...
 $event_text = '';
-define ( 'ONE_DAY', ( 3600 * 24 ) );
+//define ( 'ONE_DAY', ( 3600 * 24 ) );
 for ( $d = $startdate; $d <= $enddate; $d += ONE_DAY ) {
   $dYmd = date ( "Ymd", $d );
   $ev = get_entries ( $user, $dYmd, $get_unapproved );
@@ -203,8 +203,8 @@ function date_to_utc($date, $time=0) {
 
   $tmstamp = mktime($hour, $min, $sec, $month, $day, $year);
 
-  $utc_date = gmdate("Ymd", $tmstamp);
-  $utc_hour = gmdate("His", $tmstamp);
+  $utc_date = date("Ymd", $tmstamp);
+  $utc_hour = date("His", $tmstamp);
 
   $utc = sprintf ("%sT%sZ", $utc_date, $utc_hour);
 

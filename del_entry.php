@@ -121,18 +121,10 @@ if ( $id > 0 && empty ( $error ) ) {
       activity_log ( $id, $login, $partlogin[$i], LOG_DELETE, "" );
 
       $do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
-      $user_TZ = get_pref_setting ( $partlogin[$i], "TZ_OFFSET" );
+      $user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
       $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
       user_load_variables ( $partlogin[$i], "temp" );
-      // Want date/time in user's timezone
-      if ( $eventtime != '-1' ) { 
-        $eventtime += ( $user_TZ * 10000 );
-        if ( $eventtime < 0 ) {
-          $eventtime += 240000;
-        } else if ( $eventtime >= 240000 ) {
-          $eventtime -= 240000;
-        }
-      }            
+            
       if ( $partlogin[$i] != $login && $do_send == "Y" && boss_must_be_notified ( $login, $partlogin[$i] ) && 
         strlen ( $tempemail ) && $send_email != "N" ) {
          if (($GLOBALS['LANGUAGE'] != $user_language) && ! empty ( $user_language ) && ( $user_language != 'none' )){
@@ -143,7 +135,9 @@ if ( $id > 0 && empty ( $error ) ) {
           " " . $login_fullname .  ".\n" .
           translate("The subject was") . " \"" . $name . "\"\n" .
           translate("Date") . ": " . date_to_str ($thisdate) . "\n";
-          if ( $eventtime != '-1' ) $msg .= translate("Time") . ": " . display_time ($eventtime, true);
+          if ( $eventtime != '-1' ) $msg .= translate("Time") . ": " . 
+	  // Apply user's GMT offset and display their TZID
+	  display_time ( $eventdate . $eventtime, 2, '', $user_TIMEZONE );
           $msg .= "\n\n";
         if ( strlen ( $login_email ) )
           $extra_hdrs = "From: $login_email\r\nX-Mailer: " .

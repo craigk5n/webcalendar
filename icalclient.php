@@ -377,7 +377,7 @@ function export_recurrence_ical($id, $date) {
         $day = (int) substr($date,-2,2);
         $stamp = mktime(0, 0, 0, $month, $day, $year);
         $dow = date ( "w", $stamp );
-        $dow1 = date ( "w", mktime ( 3, 0, 0, $month, 1, $year ) );
+        $dow1 = date ( "w", mktime ( 0, 0, 0, $month, 1, $year ) );
         $partWeek = ( 7 - $dow1 ) % 7;
         $whichWeek = ceil ( ( $day - $partWeek ) / 7 );
         if ( $partWeek && $dow >= $dow1 )
@@ -479,8 +479,8 @@ function export_get_utc_date($date, $time=0) {
 
   $tmstamp = mktime($hour, $min, $sec, $month, $day, $year);
 
-  $utc_date = gmdate("Ymd", $tmstamp);
-  $utc_hour = gmdate("His", $tmstamp);
+  $utc_date = date("Ymd", $tmstamp);
+  $utc_hour = date("His", $tmstamp);
 
   $utc = sprintf ("%sT%sZ", $utc_date, $utc_hour);
 

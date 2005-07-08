@@ -43,7 +43,7 @@ load_user_layers ();
 $WebCalendar->setLanguage();
 
 $view = "week";
-
+ //TODO This is suspect 
 $today = time() + ($TZ_OFFSET * 60 * 60);
 
 if ( ! empty ( $date ) && ! empty ( $date ) ) {
@@ -65,8 +65,8 @@ if ( ! empty ( $date ) && ! empty ( $date ) ) {
     $thisday = $day;
 }
 
-$next = mktime ( 3, 0, 0, $thismonth, $thisday + 7, $thisyear );
-$prev = mktime ( 3, 0, 0, $thismonth, $thisday - 7, $thisyear );
+$next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
+$prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.
@@ -113,8 +113,8 @@ for ( $d = 0; $d < 7; $d++ ) {
 
 <tr>
 <?php
-$first_hour = $WORK_DAY_START_HOUR - $TZ_OFFSET;
-$last_hour = $WORK_DAY_END_HOUR + $TZ_OFFSET;
+$first_hour = $WORK_DAY_START_HOUR - $tz_offset;
+$last_hour = $WORK_DAY_END_HOUR + $tz_offset;
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
   $date = date ( "Ymd", $days[$d] );

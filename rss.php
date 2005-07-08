@@ -152,7 +152,7 @@ $thisyear = substr ( $date, 0, 4 );
 $thismonth = substr ( $date, 4, 2 );
 $thisday = substr ( $date, 6, 2 );
 
-$startTime = mktime ( 3, 0, 0, $thismonth, $thisday, $thisyear );
+$startTime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 
 $x = getIntValue ( "days", true );
 if ( ! empty ( $x ) ) {
@@ -171,7 +171,7 @@ if ( $maxEvents > 100 ) {
   $maxEvents = 100;
 }
 
-$endTime = mktime ( 3, 0, 0, $thismonth, $thisday + $numDays,
+$endTime = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays,
   $thisyear );
 $endDate = date ( "Ymd", $endTime );
 
@@ -200,7 +200,7 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>';
   xmlns:cc="http://web.resource.org/cc/"
   xmlns="http://purl.org/rss/1.0/">
   
-<channel rdf:about="<?php echo $server_url . $PHP_SELF; ?>">
+<channel rdf:about="<?php echo $server_url . "rss.php"; ?>">
 <title><![CDATA[<?php etranslate ( $application_name ); ?>]]></title>
 <link><?php echo $server_url; ?></link>
 <description></description>

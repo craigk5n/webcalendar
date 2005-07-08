@@ -175,7 +175,7 @@ function parse_ical ( $cal_file ) {
 // Convert ical format (yyyymmddThhmmssZ) to epoch time
 function icaldate_to_timestamp ($vdate, $plus_d = '0', $plus_m = '0',
   $plus_y = '0') {
-  global $TZoffset;
+  global $SERVER_TIMEZONE, $calUser;;
 
   $y = substr($vdate, 0, 4) + $plus_y;
   $m = substr($vdate, 4, 2) + $plus_m;
@@ -186,10 +186,17 @@ function icaldate_to_timestamp ($vdate, $plus_d = '0', $plus_m = '0',
   $Z = substr($vdate, 15, 1);
 
   if ($Z == 'Z') {
-    $TS = gmmktime($H,$M,$S,$m,$d,$y);
-  } else {
-    // Problem here if server in different timezone
     $TS = mktime($H,$M,$S,$m,$d,$y);
+  } else {
+    // Convert time to user's timezone
+    // TODO try to parse VTIMEZONE stuff
+    $user_TIMEZONE = get_pref_setting ( $calUser, "TIMEZONE" );
+    $user_TIMEZONE = ( ! empty ( $user_TIMEZONE ) ? $user_TIMEZONE : $SERVER_TIMEZONE );
+
+    $TS = mktime($H,$M,$S,$m,$d,$y);
+    $tz_offset = get_tz_offset ( $user_TIMEZONE, $TS );
+    $TS = $TS - ( $tz_offset[0] * 3600 );
+ 
   }
 
   return $TS;

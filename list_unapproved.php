@@ -86,14 +86,16 @@ function list_unapproved ( $user ) {
       $duration = $row[6];
       $status = $row[7];
       $divname = "eventinfo-$id-$key";
+      $linkid  = "$id-$key";
       echo "<li><a title=\"" . 
       	translate("View this entry") .
-        "\" class=\"entry\" href=\"view_entry.php?id=$id&amp;user=$user";
+        "\" class=\"entry\" id=\"$linkid\" href=\"view_entry.php?id=$id&amp;user=$user";
       echo "\" onmouseover=\"window.status='" . translate("View this entry") .
         "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
       $timestr = "";
       if ( $time > 0 ) {
-        $timestr = display_time ( $time );
+        $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
+        $timestr = display_time ( $date . $time, 0, '', $user_TIMEZONE );
         if ( $duration > 0 ) {
           // calc end time
           $h = (int) ( $time / 10000 );
@@ -105,7 +107,7 @@ function list_unapproved ( $user ) {
             $m -= 60;
           }
           $end_time = sprintf ( "%02d%02d00", $h, $m );
-          $timestr .= " - " . display_time ( $end_time );
+          $timestr .= " - " . display_time ( $date . $end_time, 0 ,'', $user_TIMEZONE );
         }
       }
       echo htmlspecialchars ( $name );

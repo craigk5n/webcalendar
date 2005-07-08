@@ -22,12 +22,12 @@ if ( strlen ( $date ) > 0 ) {
   $thisyear = date("Y");
 }
 
-$next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
+$next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 $nextdate = date ( "Ym", $next ) . "01";
 
-$prev = mktime ( 3, 0, 0, $thismonth - 1, 1, $thisyear );
+$prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevdate = date ( "Ym", $prev ) . "01";
@@ -56,8 +56,8 @@ if ( $WEEK_START == "1" )
   $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
 else
   $wkstart = get_sunday_before ( $thisyear, $thismonth, 1 );
-$monthstart = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
-$monthend = mktime ( 3, 0, 0, $thismonth + 1, 0, $thisyear );
+$monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
+$monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( 24 * 3600 * 7 ) ) {
   echo "<tr>\n";

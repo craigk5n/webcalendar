@@ -15,16 +15,20 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
 // Remember previous cal_goup_id if present
 $old_id = ( ! empty ( $parent ) ? $parent : $old_id );
 
-if ( empty ( $TZ_OFFSET ) ) {
-  $TZ_OFFSET = 0;
-}
+// Ensure all time variables are not empty
+if ( empty ( $hour ) ) $hour = 0;
+if ( empty ( $minute ) ) $minute = 0;
+if ( empty ( $endhour ) || $endhour < 0 ) $endhour = $hour;
+if ( empty ( $endminute ) || $endminute < 0 ) $endminute = $minute;
 
-if ( empty ( $endhour ) ) {
-  $endhour = 0;
-}
-// Modify the time to be server time rather than user time.
-if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
-  // Convert to 24 hour before subtracting TZ_OFFSET so am/pm isn't confused.
+$duration_h = getValue ( "duration_h" );
+$duration_m = getValue ( "duration_m" );
+if ( empty ( $duration_h ) || $duration_h < 0 ) $duration_h = 0;
+if ( empty ( $duration_m ) || $duration_m < 0 ) $duration_m = 0;
+
+// Timed event.
+if ( $timetype == 'T' )  {
+  // Convert to 24 hour before subtracting tz_offset so am/pm isn't confused.
   // Note this obsoltes any code in the file below that deals with am/pm
   // so the code can be deleted
   if ( $TIME_FORMAT == '12' && $hour < 12 ) {
@@ -33,6 +37,20 @@ if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
   } elseif ($TIME_FORMAT == '12' && $hour == '12' && $ampm == 'am' ) {
     $hour = 0;
   }
+  if ( $hour > 0  &&  $TIME_FORMAT == '12' ) {
+    $ampmt = $ampm;
+    //This way, a user can pick am and still
+    //enter a 24 hour clock time.
+    if ($hour > 12 && $ampm == 'am') {
+      $ampmt = 'pm';
+    }
+    $hour %= 12;
+    if ( $ampmt == 'pm' ) {
+      $hour += 12;
+    }
+  }
+
+  // Use end times
   if ( $GLOBALS['TIMED_EVT_LEN'] == 'E') {
     if ( isset ( $endhour ) && $TIME_FORMAT == '12' ) {
       // Convert end time to a twenty-four hour time scale.
@@ -42,35 +60,71 @@ if ( ! empty ( $hour ) && ( $timetype == 'T' ) ) {
         $endhour = 0;
       }
     }
+  } else {
+    $endhour = 0;
+    $endminute = 0;
   }
   $TIME_FORMAT=24;
-  $hour -= $TZ_OFFSET;
-  if ( $hour < 0 ) {
-    $hour += 24;
-    // adjust date
-    $date = mktime ( 3, 0, 0, $month, $day, $year );
-    $date -= ONE_DAY;
-    $month = date ( "m", $date );
-    $day = date ( "d", $date );
-    $year = date ( "Y", $date );
-  }
-  if ( $hour >= 24 ) {
-    $hour -= 24;
-    // adjust date
-    $date = mktime ( 3, 0, 0, $month, $day, $year );
-    $date += ONE_DAY;
-    $month = date ( "m", $date );
-    $day = date ( "d", $date );
-    $year = date ( "Y", $date );
-  }
-
-  // Must adjust $endhour too
-  if ($TZ_OFFSET) {
-    $endhour -= $TZ_OFFSET;
-    if ( $endhour < 0 )   $endhour += 24;
-    if ( $endhour >= 24 ) $endhour -= 24;
-  }
 }
+
+
+// If "all day event" was selected, then we set the event time
+// to be 12AM with a duration of 24 hours.
+// We don't actually store the "all day event" flag per se.  This method
+// makes conflict checking much simpler.  We just need to make sure
+// that we don't screw up the day view (which normally starts the
+// view with the first timed event).
+// Note that if someone actually wants to create an event that starts
+// at midnight and lasts exactly 24 hours, it will be treated in the
+// same manner.
+
+// All Day Event
+if ( $timetype == "A" ) {
+  $duration_h = 24;
+  $duration_m = 0;
+  $hour = 0;
+  $minute = 0;
+  $endhour = 0;
+  $endminute = 0;  
+}
+
+// Untimed Event
+if ( $timetype == "U" ) {
+  $duration_h = 0;
+  $duration_m = 0;
+  $hour = 0;
+  $minute = 0;
+  $endhour = 0;
+  $endminute = 0;
+}
+
+
+
+// Combine all values to create event start date/time - User Time
+$eventstart = mktime ( $hour, $minute, 0, $month, $day, $year );
+
+
+//Create event stop from event  duration/end values
+// Note: for any given event, either end times or durations are 0
+$eventstop = mktime ( $hour + $endhour + $duration_h, $minute + $endminute + $duration_m, 
+  0, $month, $day, $year );
+ 
+if ( $timetype == "T" ) { // All other types are time independent
+  // Get this user's Timezone offset for this date/time  
+  $tz_offset = get_tz_offset ( $TIMEZONE, $eventstart );
+  // Adjust eventstart  by Timezone offset to get GMT
+  $eventstart -= ( $tz_offset[0] * 3600 );
+  
+  // Adjust eventstop  by Timezone offset to get GMT
+  $eventstop -= ( $tz_offset[0] * 3600 );
+}
+
+ 
+// Calculate event duration
+$duration = ( $eventstop - $eventstart ) / 60;
+
+
+
 
 // Make sure this user is really allowed to edit this event.
 // Otherwise, someone could hand type in the URL to edit someone else's
@@ -136,56 +190,7 @@ if ( empty ( $participants[0] ) ) {
     $participants[1] = "__public__";     
   }
 }
-// If "all day event" was selected, then we set the event time
-// to be 12AM with a duration of 24 hours.
-// We don't actually store the "all day event" flag per se.  This method
-// makes conflict checking much simpler.  We just need to make sure
-// that we don't screw up the day view (which normally starts the
-// view with the first timed event).
-// Note that if someone actually wants to create an event that starts
-// at midnight and lasts exactly 24 hours, it will be treated in the
-// same manner.
 
-$duration_h = getValue ( "duration_h" );
-$duration_m = getValue ( "duration_m" );
-
-if ( $timetype == "A" ) {
-  $duration_h = 24;
-  $duration_m = 0;
-  $hour = 0;
-  $minute = 0;
-}
-
-$duration = ( $duration_h * 60 ) + $duration_m;
-if ( $hour > 0 && $timetype != 'U' ) {
-  if ( $TIME_FORMAT == '12' ) {
-    $ampmt = $ampm;
-    //This way, a user can pick am and still
-    //enter a 24 hour clock time.
-    if ($hour > 12 && $ampm == 'am') {
-      $ampmt = 'pm';
-    }
-    $hour %= 12;
-    if ( $ampmt == 'pm' ) {
-      $hour += 12;
-    }
-  }
-}
-//echo "SERVER HOUR: $hour $ampm";
-
-if ( $GLOBALS['TIMED_EVT_LEN'] == 'E' && $timetype == "T" ) {
-    if ( ! isset ( $endhour ) ) {
-        $duration = 0;
-    } else {
-      // Calculate duration.
-      $endmins = ( 60 * $endhour ) + $endminute;
-      $startmins = ( 60 * $hour ) + $minute;
-      $duration = $endmins - $startmins;
-    }
-    if ( $duration < 0 ) {
-        $duration = 0;
-    }
-}
 
 // handle external participants
 $ext_names = array ();
@@ -248,13 +253,13 @@ if ( empty ( $allow_conflict_override ) || $allow_conflict_override != "Y" ) {
 }
 if ( $allow_conflicts != "Y" && empty ( $confirm_conflicts ) &&
   strlen ( $hour ) > 0 && $timetype != 'U' ) {
-  $date = mktime ( 3, 0, 0, $month, $day, $year );
-  $str_cal_date = date ( "Ymd", $date );
-  if ( strlen ( $hour ) > 0 ) {
-    $str_cal_time = sprintf ( "%02d%02d00", $hour, $minute );
-  }
+  $date = mktime ( 0, 0, 0, $month, $day, $year );
+//  $str_cal_date = date ( "Ymd", $date );
+//  if ( strlen ( $hour ) > 0 ) {
+//    $str_cal_time = sprintf ( "%02d%02d00", $hour, $minute );
+//  }
   if ( ! empty ( $rpt_end_use ) ) {
-    $endt = mktime ( 3, 0, 0, $rpt_month, $rpt_day,$rpt_year );
+    $endt = mktime ( 0, 0, 0, $rpt_month, $rpt_day,$rpt_year );
   } else {
     $endt = 'NULL';
   }
@@ -354,10 +359,9 @@ if ( empty ( $error ) ) {
       ( ( $is_admin && ! $newevent ) || $is_assistant || 
       $is_nonuser_admin ) ? $old_create_by : $login ) . "', ";
     
-  $date = mktime ( 3, 0, 0, $month, $day, $year );
-  $sql .= date ( "Ymd", $date ) . ", ";
+  $sql .= date ( "Ymd", $eventstart ) . ", ";
   if ( strlen ( $hour ) > 0 && $timetype != 'U' ) {
-    $sql .= sprintf ( "%02d%02d00, ", $hour, $minute );
+    $sql .= date ( "His", $eventstart ) . ", ";
   } else {
     $sql .= "-1, ";
   }
@@ -375,7 +379,7 @@ if ( empty ( $error ) ) {
     $name = translate("Unnamed Event");
   }
   $sql .= "'" . $name .  "', ";
-  if ( strlen ( $description ) == 0 ) {
+  if ( strlen ( $description ) == 0  || $description = "<br />" ) {
     $description = $name;
   }
   $sql .= "'" . $description . "' )";
@@ -410,51 +414,36 @@ if ( empty ( $error ) ) {
       if ( !$found_flag && !$is_nonuser_admin) {
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $old_participant, "EMAIL_EVENT_DELETED" );
-        $user_TZ = get_pref_setting ( $old_participant, "TZ_OFFSET" );
+        $user_TIMEZONE = get_pref_setting ( $old_participant, "TIMEZONE" );
+        $user_TZ = get_tz_offset ( $user_TIMEZONE, $eventstart );
         $user_language = get_pref_setting ( $old_participant, "LANGUAGE" );
         user_load_variables ( $old_participant, "temp" );
+        
+        
         if ( $old_participant != $login && strlen ( $tempemail ) &&
           $do_send == "Y" && $send_email != "N" ) {
 
           // Want date/time in user's timezone
-          $user_hour = $hour + $user_TZ;
-          if ( $user_hour < 0 ) {
-            $user_hour += 24;
-            // adjust date
-            $user_date = mktime ( 3, 0, 0, $month, $day, $year );
-            $user_date -= ONE_DAY;
-            $user_month = date ( "m", $date );
-            $user_day = date ( "d", $date );
-            $user_year = date ( "Y", $date );
-          } elseif ( $user_hour >= 24 ) {
-            $user_hour -= 24;
-            // adjust date
-            $user_date = mktime ( 3, 0, 0, $month, $day, $year );
-            $user_date += ONE_DAY;
-            $user_month = date ( "m", $date );
-            $user_day = date ( "d", $date );
-            $user_year = date ( "Y", $date );
-          } else {
-            $user_month = $month;
-            $user_day = $day;
-            $user_year = $year;
-          }
+          $user_eventstart = $eventstart  + ( $user_TZ[0] * 3600 );
+       
+       
           if (($GLOBALS['LANGUAGE'] != $user_language) && 
             ! empty ( $user_language ) && ( $user_language != 'none' )){
             reset_language ( $user_language );
           }
-          //do_debug($user_language);    
-          $fmtdate = sprintf ( "%04d%02d%02d", $user_year, $user_month, $user_day );
+   
+          $fmtdate = date ( "Ymd", $user_eventstart ); 
           $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
             translate("An appointment has been canceled for you by") .
             " " . $login_fullname .  ". " .
             translate("The subject was") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-            ( ( empty ( $user_hour ) && empty ( $minute ) ) ? "" :
+             ( $timetype != 'T'  ? "" :
             translate("Time") . ": " .
-              display_time ( ( $user_hour * 10000 ) + ( $minute * 100 ), true ) ) .
-            "\n\n\n";
+            // Apply user's GMT offset and display their TZID
+            display_time ( date ( "YmdHis", $eventstart ), 2, '', $user_TIMEZONE ) .
+              "\n\n\n");
           // add URL to event, if we can figure it out
           if ( ! empty ( $server_url ) ) {
             $url = $server_url .  "view_entry.php?id=" .  $id;
@@ -571,7 +560,8 @@ if ( empty ( $error ) ) {
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $participants[$i],
            $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
-        $user_TZ = get_pref_setting ( $participants[$i], "TZ_OFFSET" );
+        $user_TIMEZONE = get_pref_setting ( $participants[$i], "TIMEZONE" );
+        $user_TZ = get_tz_offset ( $user_TIMEZONE, $eventstart );
         $user_language = get_pref_setting ( $participants[$i], "LANGUAGE" );
         user_load_variables ( $participants[$i], "temp" );
         if ( $participants[$i] != $login && 
@@ -580,34 +570,14 @@ if ( empty ( $error ) ) {
           $do_send == "Y" && $send_user_mail && $send_email != "N" ) {
 
           // Want date/time in user's timezone
-          $user_hour = $hour + $user_TZ;
-          if ( $user_hour < 0 ) {
-            $user_hour += 24;
-            // adjust date
-            $user_date = mktime ( 3, 0, 0, $month, $day, $year );
-            $user_date -= ONE_DAY;
-            $user_month = date ( "m", $date );
-            $user_day = date ( "d", $date );
-            $user_year = date ( "Y", $date );
-          } elseif ( $user_hour >= 24 ) {
-            $user_hour -= 24;
-            // adjust date
-            $user_date = mktime ( 3, 0, 0, $month, $day, $year );
-            $user_date += ONE_DAY;
-            $user_month = date ( "m", $date );
-            $user_day = date ( "d", $date );
-            $user_year = date ( "Y", $date );
-          } else {
-            $user_month = $month;
-            $user_day = $day;
-            $user_year = $year;
-          }
+          $user_eventstart = $eventstart  + ( $user_TZ[0] * 3600 );
+         
           if (($GLOBALS['LANGUAGE'] != $user_language) && 
             ! empty ( $user_language ) && ( $user_language != 'none' )) {
              reset_language ( $user_language );
           }
-          //do_debug($user_language);
-          $fmtdate = sprintf ( "%04d%02d%02d", $user_year, $user_month, $user_day );
+
+          $fmtdate = date ( "Ymd", $user_eventstart ); 
           $msg = translate("Hello") . ", " . $tempfullname . ".\n\n";
           if ( $newevent || ( empty ( $old_status[$participants[$i]] ) ) ) {
             $msg .= translate("A new appointment has been made for you by");
@@ -618,9 +588,10 @@ if ( empty ( $error ) ) {
             translate("The subject is") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-            ( ( empty ( $user_hour ) && empty ( $minute ) ) ? "" :
+            ( $timetype != 'T' ? "" :
             translate("Time") . ": " .
-            display_time ( ( $user_hour * 10000 ) + ( $minute * 100 ), true ) . "\n" ) .
+            // Apply user's GMT offset and display their TZID
+            display_time ( date ( "YmdHis", $eventstart ), 2, '', $user_TIMEZONE ) . "\n" ) .
             translate("Please look on") . " " . translate($application_name) . " " .
             ( $require_approvals == "Y" ?
             translate("to accept or reject this appointment") :
@@ -664,7 +635,7 @@ if ( empty ( $error ) ) {
         // TODO: move this code into a function...
         if ( $external_notifications == "Y" && $send_email != "N" &&
           strlen ( $ext_emails[$i] ) > 0 ) {
-          $fmtdate = sprintf ( "%04d%02d%02d", $year, $month, $day );
+          $fmtdate = date ( "Ymd", $eventstart ); 
           // Strip [\d] from duplicate Names before emailing
           $ext_names[$i] = trim(preg_replace( '/\[[\d]]/', "", $ext_names[$i]) );
           $msg = translate("Hello") . ", " . $ext_names[$i] . ".\n\n";
@@ -677,9 +648,10 @@ if ( empty ( $error ) ) {
             translate("The subject is") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-            ( ( empty ( $hour ) && empty ( $minute ) ) ? "" :
+            ( $timetype != 'T' ? "" :
             translate("Time") . ": " .
-            display_time ( ( $hour * 10000 ) + ( $minute * 100 ) ) . "\n" ) .
+	  // Do not apply TZ offset & display TZID, which is GMT
+            display_time ( date ("YmdHis", $eventstart ), 3 ) . "\n" ) .
             translate("Please look on") . " " . translate($application_name) .
             ".";
           // add URL to event, if we can figure it out
@@ -814,9 +786,11 @@ if ( strlen ( $conflicts ) ) {
     etranslate("All day event");
   } else {
     $time = sprintf ( "%d%02d00", $hour, $minute );
-    echo display_time ( $time );
-    if ( $duration > 0 )
-      echo "-" . display_time ( add_duration ( $time, $duration ) );
+    // Pass the adjusted timestamp in case the date changed due to GMT offset 
+    echo display_time ( $time, 0, $eventstart );
+    if ( $duration > 0 ) {
+      echo "-" . display_time ( add_duration ( $time, $duration ), 0, $eventstart );
+    }
   }
 ?></span> <?php etranslate("conflicts with the following existing calendar entries")?>:
 <ul>
