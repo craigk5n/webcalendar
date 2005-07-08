@@ -472,6 +472,11 @@ UPDATE webcal_config SET cal_value = 'week.php'
 <hr />
 
 <h4><a id="1_1_0">To upgrade from v1.0RC3 or v1.0.0 to v1.1.0:</a></h4>
+<p><font color="#FF0000">*** A new Install script has been implemented that should run automatically when
+  WebCalendar is launched. It will perform a series of database tests and perform
+  any required database changes for you automatically. There is also a 'Display
+  SQL' mode for databases that are not fully implemented so assist you in doing
+  the required upgrades to your system. ***</font></p>
 <p>Two new tables need to be created to support advanced user access control.
 In addition, three new tables need to be created to support full timezone implementation.
 Execute the following SQL to update your database:
