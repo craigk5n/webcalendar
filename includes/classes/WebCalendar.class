@@ -415,6 +415,34 @@ class WebCalendar {
     // Type of user authentication
     $user_inc = $settings['user_inc'];
 
+   // Check the current installation version
+   // Redirect user to install page if it is different from stored value
+   // This will prevent running WebCalendar until UPGRADING.html has been
+   // read and required upgrade actions completed
+	 $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
+   if ( $c ) {
+     $res = dbi_query ( "SELECT  cal_value FROM webcal_config ".
+       "WHERE cal_setting = 'webcal_program_version'" );
+       if ( ! $res ) {
+           // & does not work here...leave it as &
+           Header ( "Location: install/index.php?action=mismatch&version=UNKNOWN" );
+           exit;
+       } else {
+			   $row = dbi_fetch_row ( $res );
+         if (  empty ( $row) || $row[0] != $PROGRAM_VERSION ) {
+           // & does not work here...leave it as &
+					 $version = ( empty ($row )? "UNKNOWN" : $row[0] );
+           Header ( "Location: install/index.php?action=mismatch&version=$version" );
+           exit;
+				 }
+       }
+       dbi_free_result ( $res );
+			dbi_close ( $c );
+    }
+
+
+
+
     // We can add extra 'nonuser' calendars such as a corporate calendar,
     // holiday calendar, departmental calendar, etc.  We need a unique prefix
     // for these calendars as not to get mixed up with real logins.  This prefix
@@ -944,23 +972,6 @@ class WebCalendar {
       if ( function_exists ( "doDbSanityCheck" ) ) {
         doDbSanityCheck ();
       }
-   
-   // Check the current installtion version
-   // Redirect user to install page if it is different from stored value
-   // This will prevent running WebCalendar until UPGRADING.html has been
-   // read and required upgrade actions completed
-   $res = dbi_query ( "SELECT  cal_value FROM webcal_config ".
-    "WHERE cal_setting = 'webcal_program_version'" );
-    if ( $res ) {
-     if ( $row = dbi_fetch_row ( $res ) ) {
-       if ( $row[0] != $PROGRAM_VERSION ) {
-      // &amp; does not work here...leave it as &
-      Header ( "Location: install/index.php?action=mismatch&version=$row[0]" );
-        exit;
-       }
-     }
-     dbi_free_result ( $res );
-    }
    
     }
 
