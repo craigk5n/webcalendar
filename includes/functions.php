@@ -9,6 +9,20 @@
  * @package WebCalendar
  */
 
+/**
+ * Array containing the number of days in each month in a non-leap year
+ *
+ * @global array $days_per_week
+ */
+$days_of_week =  array (
+  "Sun" => 0,
+  "Mon" => 1,
+  "Tue" => 2,
+  "Wed" => 3,
+  "Thu" => 4,
+  "Fri" => 5,
+  "Sat" => 6
+);
 
 /*
  * Functions start here.  All non-function code should be above this
@@ -159,7 +173,7 @@ function getIntValue ( $name, $fatal=false ) {
  */
 function load_global_settings () {
   global $login, $readonly, $HTTP_HOST, $SERVER_PORT, $REQUEST_URI, $_SERVER;
-
+  global $SERVER_TIMEZONE;
   // Note: when running from the command line (send_reminders.php),
   // these variables are (obviously) not set.
   // TODO: This type of checking should be moved to a central locationm
@@ -184,6 +198,10 @@ function load_global_settings () {
     dbi_free_result ( $res );
   }
 
+  // Set SERVER TIMEZONE 
+  if ( empty ( $GLOBALS["SERVER_TIMEZONE"] ) )
+    $GLOBALS["SERVER_TIMEZONE"] = $GLOBALS["TIMEZONE"];  
+  
   // If app name not set.... default to "Title".  This gets translated
   // later since this function is typically called before translate.php
   // is included.
@@ -1204,14 +1222,14 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   }
   echo ">\n";
 
-  $monthstart = mktime(2,0,0,$thismonth,1,$thisyear);
-  $monthend = mktime(2,0,0,$thismonth + 1,0,$thisyear);
+  $monthstart = mktime( 0,0,0,$thismonth,1,$thisyear);
+  $monthend = mktime( 0,0,0,$thismonth + 1,0,$thisyear);
 
   if ( $SCRIPT == 'day.php' ) {
     $month_ago = date ( "Ymd",
-      mktime ( 3, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
+      mktime ( 0, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
     $month_ahead = date ( "Ymd",
-      mktime ( 3, 0, 0, $thismonth + 1, $thisday, $thisyear ) );
+      mktime ( 0, 0, 0, $thismonth + 1, $thisday, $thisyear ) );
 
     echo "<caption>$thisday</caption>\n";
     echo "<thead>\n";
@@ -1274,7 +1292,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       $dateYmd = date ( "Ymd", $date );
       $hasEvents = false;
       if ( $boldDays ) {
-        $ev = get_entries ( $user, $dateYmd, $get_unapproved );
+        $ev = get_entries ( $user, $dateYmd, $get_unapproved, 0 );
         if ( count ( $ev ) > 0 ) {
           $hasEvents = true;
         } else {
@@ -1336,7 +1354,8 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
  * @uses build_event_popup
  */
 function print_entry ( $event, $date ) {
-  global $eventinfo, $login, $user, $PHP_SELF, $TZ_OFFSET;
+  global $eventinfo, $login, $user, $PHP_SELF;
+
   static $key = 0;
   
   global $layers;
@@ -1404,7 +1423,7 @@ function print_entry ( $event, $date ) {
   if ( $event->get_duration() == ( 24 * 60 ) ) {
     $timestr = translate("All day event");
   } else if ( $event->get_time() != -1 ) {
-    $timestr = display_time ( $event->get_time() );
+    $timestr = display_time ( $event->get_datetime() );
     $time_short = preg_replace ("/(:00)/", '', $timestr);
     echo $time_short . "&raquo;&nbsp;";
     if ( $event->get_duration() > 0 ) {
@@ -1418,7 +1437,7 @@ function print_entry ( $event, $date ) {
           $m -= 60;
         }
         $end_time = sprintf ( "%02d%02d00", $h, $m );
-        $timestr .= " - " . display_time ( $end_time );
+        $timestr .= " - " . display_time ( $date . $end_time );
     }
   }
   if ( $login != $user && $event->get_access() == 'R' && strlen ( $user ) ) {
@@ -1505,7 +1524,7 @@ function get_site_extra_fields ( $eventid ) {
 function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
   global $login;
   global $layers;
-  global $TZ_OFFSET;
+  static $user_TIMEZONE;
 
   $sy = substr ( $startdate, 0, 4 );
   $sm = substr ( $startdate, 4, 2 );
@@ -1513,20 +1532,33 @@ function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
   $ey = substr ( $enddate, 0, 4 );
   $em = substr ( $enddate, 4, 2 );
   $ed = substr ( $enddate, 6, 2 );
+  
+  //if called from send_reminders, $user will be empty
+  if ( ! empty ($user ) ) {
+    //Get TZ_offset of start day
+    if ( empty ( $user_TIMEZONE ) ){
+      $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
+    } 
+    $tz_offset = get_tz_offset ( $user_TIMEZONE, mktime ( 0, 0, 0, $sm, $sd, $sy ) );
+  } else {
+    // We will just use GMT time
+    $tz_offset[0] = 0;
+  }
+  
   if ( $startdate == $enddate ) {
-    if ( $TZ_OFFSET == 0 ) {
+    if ( $tz_offset[0] == 0 ) {
       $date_filter = " AND webcal_entry.cal_date = $startdate";
-    } else if ( $TZ_OFFSET > 0 ) {
+    } else if ( $tz_offset[0] > 0 ) {
       $prev_day = mktime ( 3, 0, 0, $sm, $sd - 1, $sy );
-      $cutoff = 24 - $TZ_OFFSET .  "0000";
+      $cutoff = get_time_add_tz ( 240000,  - $tz_offset[0] );
       $date_filter = " AND ( ( webcal_entry.cal_date = $startdate AND " .
         "( webcal_entry.cal_time <= $cutoff OR " .
         "webcal_entry.cal_time = -1 ) ) OR " .
         "( webcal_entry.cal_date = " . date("Ymd", $prev_day ) .
         " AND webcal_entry.cal_time >= $cutoff ) )";
     } else {
-      $next_day = mktime ( 3, 0, 0, $sm, $sd + 1, $sy );
-      $cutoff = ( 0 - $TZ_OFFSET ) * 10000;
+      $next_day = mktime ( 0, 0, 0, $sm, $sd + 1, $sy );
+      $cutoff = get_time_add_tz ( 000000,  -$tz_offset[0] );
       $date_filter = " AND ( ( webcal_entry.cal_date = $startdate AND " .
         "( webcal_entry.cal_time > $cutoff OR " .
         "webcal_entry.cal_time = -1 ) ) OR " .
@@ -1534,13 +1566,13 @@ function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
         " AND webcal_entry.cal_time <= $cutoff ) )";
     }
   } else {
-    if ( $TZ_OFFSET == 0 ) {
+    if ( $tz_offset[0] == 0 ) {
       $date_filter = " AND webcal_entry.cal_date >= $startdate " .
         "AND webcal_entry.cal_date <= $enddate";
-    } else if ( $TZ_OFFSET > 0 ) {
-      $prev_day = date ( ( "Ymd" ), mktime ( 3, 0, 0, $sm, $sd - 1, $sy ) );
-      $enddate_minus1 = date ( ( "Ymd" ), mktime ( 3, 0, 0, $em, $ed - 1, $ey ) );
-      $cutoff = 24 - $TZ_OFFSET . "0000";
+    } else if ( $tz_offset[0] > 0 ) {
+      $prev_day = date ( ( "Ymd" ), mktime ( 0, 0, 0, $sm, $sd - 1, $sy ) );
+      $enddate_minus1 = date ( ( "Ymd" ), mktime ( 0, 0, 0, $em, $ed - 1, $ey ) );
+      $cutoff = get_time_add_tz ( 240000, - $tz_offset[0] );
       $date_filter = " AND ( ( webcal_entry.cal_date >= $startdate " .
         "AND webcal_entry.cal_date <= $enddate AND " .
         "webcal_entry.cal_time = -1 ) OR " .
@@ -1552,10 +1584,10 @@ function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
         "webcal_entry.cal_date <= $enddate_minus1 ) )";
     } else {
       // TZ_OFFSET < 0
-      $next_day = date ( ( "Ymd" ), mktime ( 3, 0, 0, $sm, $sd + 1, $sy ) );
+      $next_day = date ( ( "Ymd" ), mktime ( 0, 0, 0, $sm, $sd + 1, $sy ) );
       $enddate_plus1 =
-        date ( ( "Ymd" ), mktime ( 3, 0, 0, $em, $ed + 1, $ey ) );
-      $cutoff = ( 0 - $TZ_OFFSET ) * 10000;
+        date ( ( "Ymd" ), mktime ( 0, 0, 0, $em, $ed + 1, $ey ) );
+      $cutoff = get_time_add_tz ( 000000,  -$tz_offset[0] );
       $date_filter = " AND ( ( webcal_entry.cal_date >= $startdate " .
         "AND webcal_entry.cal_date <= $enddate AND " .
         "webcal_entry.cal_time = -1 ) OR " .
@@ -1584,15 +1616,16 @@ function read_events ( $user, $startdate, $enddate, $cat_id = ''  ) {
  *
  * @return array Array of Events
  */
-function get_entries ( $user, $date, $get_unapproved=true ) {
-  global $events, $TZ_OFFSET;
+function get_entries ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_tz=0 ) {
+  global $events, $login;
   $n = 0;
   $ret = array ();
-
-  //echo "<br />\nChecking " . count ( $events ) . " events.  TZ_OFFSET = $TZ_OFFSET, get_unapproved=" . $get_unapproved . "<br />\n";
-
-  //print_r ( $events );
-
+  if ( $use_dst ) {
+    $this_user =  ( $use_my_tz == 1 ? $login : $user );
+    $user_TIMEZONE = get_pref_setting ( $this_user, "TIMEZONE" );
+    $tz_offset = get_tz_offset ( $user_TIMEZONE, '', $date );
+  }
+//	echo "count events" . count ( $events );
   for ( $i = 0; $i < count ( $events ); $i++ ) {
     // In case of data corruption (or some other bug...)
     if ( empty ( $events[$i] ) || $events[$i]->get_id() == '' )
@@ -1600,16 +1633,18 @@ function get_entries ( $user, $date, $get_unapproved=true ) {
     if ( ( ! $get_unapproved ) && $events[$i]->get_status() == 'W' ) {
       // ignore this event
     //don't adjust anything  if  no TZ offset or ALL Day Event or Untimed
-    } else if ( empty ( $TZ_OFFSET) ||  ( $events[$i]->get_time() <= 0 ) ) {
+    } else if ( empty (  $tz_offset[0]) ||  ( $events[$i]->get_time() <= 0 ) ) {
       if ( $events[$i]->get_date() == $date )
         $ret[$n++] = $events[$i];
-    } else if ( $TZ_OFFSET > 0 ) {
-      $cutoff = ( 24 - $TZ_OFFSET ) * 10000;
-      //echo "<br /> cal_time " . $events[$i]->get_time() . "<br />\n";
+
+    } else if ( $tz_offset[0] > 0 ) {
+      $cutoff =  get_time_add_tz ( 240000, - $tz_offset[0] );
+      //echo "<br /> cal_time " . $events[$i]['cal_time'] . "<br />\n";
+
       $sy = substr ( $date, 0, 4 );
       $sm = substr ( $date, 4, 2 );
       $sd = substr ( $date, 6, 2 );
-      $prev_day = date ( ( "Ymd" ), mktime ( 3, 0, 0, $sm, $sd - 1, $sy ) );
+      $prev_day = date ( ( "Ymd" ), mktime ( 0, 0, 0, $sm, $sd - 1, $sy ) );
         //echo "prev_date = $prev_day <br />\n";
       if ( $events[$i]->get_date() == $date &&
         $events[$i]->get_time() == -1 ) {
@@ -1626,12 +1661,12 @@ function get_entries ( $user, $date, $get_unapproved=true ) {
       }
     } else {
       //TZ < 0
-      $cutoff = ( 0 - $TZ_OFFSET ) * 10000;
-      //echo "<br />\ncal_time " . $events[$i]->get_time() . "<br />\n";
+      $cutoff = get_time_add_tz ( 000000, -$tz_offset[0] );
+
       $sy = substr ( $date, 0, 4 );
       $sm = substr ( $date, 4, 2 );
       $sd = substr ( $date, 6, 2 );
-      $next_day = date ( ( "Ymd" ), mktime ( 3, 0, 0, $sm, $sd + 1, $sy ) );
+      $next_day = date ( ( "Ymd" ), mktime ( 0, 0, 0, $sm, $sd + 1, $sy ) );
       //echo "next_date = $next_day <br />\n";
       if ( $events[$i]->get_time() == -1 ) {
   if ( $events[$i]->get_date() == $date ) {
@@ -1855,7 +1890,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
       $thisyear++;
       $thismonth -= 12;
     }
-    $realend = mktime(3,0,0,$thismonth,$thisday,$thisyear);
+    $realend = mktime( 0, 0, 0, $thismonth, $thisday, $thisyear );
   }
   $ret = array();
   $ret[0] = $date;
@@ -1904,22 +1939,22 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
       $week  = floor(date("d", $date)/7);
       $thismonth+=$freq;
       //dow1 is the weekday that the 1st of the month falls on
-      $dow1 = date('w',mktime (3,0,0,$thismonth,1,$thisyear));
+      $dow1 = date('w',mktime ( 0, 0, 0, $thismonth, 1, $thisyear ));
       $t = $dow - $dow1;
       if ($t < 0) $t += 7;
       $day = 7*$week + $t + 1;
-      $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
+      $cdate = mktime ( 0, 0, 0, $thismonth, $day, $thisyear );
       while ($cdate <= $realend+ONE_DAY) {
         if ( ! is_exception ( $cdate, $ex_days ) )
           $ret[$n++] = $cdate;
         $thismonth+=$freq;
         //dow1 is the weekday that the 1st of the month falls on
-        $dow1time = mktime ( 3, 0, 0, $thismonth, 1, $thisyear );
+        $dow1time = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
         $dow1 = date ( 'w', $dow1time );
         $t = $dow - $dow1;
         if ($t < 0) $t += 7;
         $day = 7*$week + $t + 1;
-        $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
+        $cdate = mktime ( 0, 0, 0, $thismonth, $day, $thisyear );
       }
     } else if ($rpt_type == 'monthlyByDayR') {
       // by weekday of month reversed (i.e., last Monday of month)
@@ -1940,7 +1975,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
         $thismonth -= 12;
       }
       // get weekday for last day of month
-      $dowLast += date('w',mktime (3,0,0,$thismonth + 1, -1,$thisyear));
+      $dowLast += date('w',mktime ( 0, 0, 0, $thismonth + 1, -1, $thisyear ));
       if ( $dowLast >= $dow ) {
         // last weekday is in last week of this month
         $day = $daysinmonth - ( $dowLast - $dow ) -
@@ -1950,7 +1985,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
         $day = $daysinmonth - ( $dowLast - $dow ) -
           ( 7 * ( $whichWeek + 1 ) );
       }
-      $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
+      $cdate = mktime ( 0, 0, 0, $thismonth, $day, $thisyear );
       while ($cdate <= $realend+ONE_DAY) {
         if ( ! is_exception ( $cdate, $ex_days ) )
           $ret[$n++] = $cdate;
@@ -1960,7 +1995,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
           $thismonth -= 12;
         }
         // get weekday for last day of month
-        $dowLast += date('w',mktime (3,0,0,$thismonth + 1, -1,$thisyear));
+        $dowLast += date('w',mktime ( 0, 0, 0, $thismonth + 1, -1 ,$thisyear ));
         if ( $dowLast >= $dow ) {
           // last weekday is in last week of this month
           $day = $daysinmonth - ( $dowLast - $dow ) -
@@ -1970,7 +2005,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
           $day = $daysinmonth - ( $dowLast - $dow ) -
             ( 7 * ( $whichWeek + 1 ) );
         }
-        $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
+        $cdate = mktime ( 0, 0, 0, $thismonth, $day, $thisyear );
       }
     } else if ($rpt_type == 'monthlyByDate') {
       $thismonth = substr($dateYmd, 4, 2);
@@ -1980,12 +2015,12 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
       $minute    = date('i',$date);
 
       $thismonth += $freq;
-      $cdate = mktime (3,0,0,$thismonth,$thisday,$thisyear);
+      $cdate = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
       while ($cdate <= $realend+ONE_DAY) {
         if ( ! is_exception ( $cdate, $ex_days ) )
           $ret[$n++] = $cdate;
         $thismonth += $freq;
-        $cdate = mktime (3,0,0,$thismonth,$thisday,$thisyear);
+        $cdate = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
       }
     } else if ($rpt_type == 'yearly') {
       $thismonth = substr($dateYmd, 4, 2);
@@ -1995,12 +2030,12 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
       $minute    = date('i',$date);
 
       $thisyear += $freq;
-      $cdate = mktime (3,0,0,$thismonth,$thisday,$thisyear);
+      $cdate = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
       while ($cdate <= $realend+ONE_DAY) {
         if ( ! is_exception ( $cdate, $ex_days ) )
           $ret[$n++] = $cdate;
         $thisyear += $freq;
-        $cdate = mktime (3,0,0,$thismonth,$thisday,$thisyear);
+        $cdate = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
       }
     }
   }
@@ -2215,8 +2250,8 @@ function is_exception ( $date, $ex_days ) {
  * @see get_monday_before
  */
 function get_sunday_before ( $year, $month, $day ) {
-  $weekday = date ( "w", mktime ( 3, 0, 0, $month, $day, $year ) );
-  $newdate = mktime ( 3, 0, 0, $month, $day - $weekday, $year );
+  $weekday = date ( "w", mktime ( 0, 0, 0, $month, $day, $year ) );
+  $newdate = mktime ( 0, 0, 0, $month, $day - $weekday, $year );
   return $newdate;
 }
 
@@ -2234,17 +2269,17 @@ function get_sunday_before ( $year, $month, $day ) {
  * @see get_sunday_before
  */
 function get_monday_before ( $year, $month, $day ) {
-  $weekday = date ( "w", mktime ( 3, 0, 0, $month, $day, $year ) );
+  $weekday = date ( "w", mktime ( 0, 0, 0, $month, $day, $year ) );
   if ( $weekday == 0 )
-    return mktime ( 3, 0, 0, $month, $day - 6, $year );
+    return mktime ( 0, 0, 0, $month, $day - 6, $year );
   if ( $weekday == 1 )
-    return mktime ( 3, 0, 0, $month, $day, $year );
-  return mktime ( 3, 0, 0, $month, $day - ( $weekday - 1 ), $year );
+    return mktime ( 0, 0, 0, $month, $day, $year );
+  return mktime ( 0, 0, 0, $month, $day - ( $weekday - 1 ), $year );
 }
 
 /**
  * Returns the week number for specified date.
- * 
+ *   date ("W") is not available in PHP < 4.1.0
  * Depends on week numbering settings.
  *
  * @param int $date Date in UNIX timestamp format
@@ -2314,7 +2349,7 @@ function print_date_entries ( $date, $user, $ssi ) {
   $year = substr ( $date, 0, 4 );
   $month = substr ( $date, 4, 2 );
   $day = substr ( $date, 6, 2 );
-  $dateu = mktime ( 3, 0, 0, $month, $day, $year );
+  $dateu = mktime ( 0, 0, 0, $month, $day, $year );
   $can_add = ( $readonly == "N" || $is_admin );
   if ( $public_access == "Y" && $public_access_can_add != "Y" &&
     $login == "__public__" )
@@ -2494,7 +2529,7 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
       $found[$count++] = $row[4];
       // see if either event overlaps one another
       if ( $row[4] != $id && ( empty ( $row[5] ) || $row[5] != $id ) ) {
-        $time2 = $row[1];
+        $time2 = sprintf ( "%06d", $row[1] );
         $duration2 = $row[2];
         $cntkey = $row[0] . "-" . $row[8];
         if ( empty ( $evtcnt[$cntkey] ) )
@@ -2522,10 +2557,10 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
           if ( $duration2 == ( 24 * 60 ) ) {
             $conflicts .= " (" . translate("All day event") . ")";
           } else {
-            $conflicts .= " (" . display_time ( $time2 );
+            $conflicts .= " (" . display_time ( $row[8] . $time2 );
             if ( $duration2 > 0 )
               $conflicts .= "-" .
-                display_time ( add_duration ( $time2, $duration2 ) );
+                display_time ( $row[8] . add_duration ( $time2, $duration2 ) );
             $conflicts .= ")";
           }
           $conflicts .= " on " . date_to_str( $row[8] );
@@ -2584,10 +2619,10 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
                 $conflicts .= "&amp;user=$user";
               $conflicts .= "\">" . $row->get_name() . "</a>";
             }
-            $conflicts .= " (" . display_time ( $time2 );
+            $conflicts .= " (" . display_time ( $dateYmd . $time2 );
             if ( $duration2 > 0 )
               $conflicts .= "-" .
-                display_time ( add_duration ( $time2, $duration2 ) );
+                display_time ( $dateYmd . add_duration ( $time2, $duration2 ) );
             $conflicts .= ")";
             $conflicts .= " on " . date("l, F j, Y", $dates[$i]);
             $conflicts .= "</li>\n";
@@ -2632,11 +2667,13 @@ function time_to_minutes ( $time ) {
  *
  * @return int The time slot index
  */
-function calc_time_slot ( $time, $round_down = false ) {
-  global $TIME_SLOTS, $TZ_OFFSET;
+function calc_time_slot ( $time, $round_down = false, $date = '' ) {
+  global $TIME_SLOTS, $TIMEZONE;
 
+  $timestamp = ( ! empty ($date )? '' : time() );
+  $tz_offset = get_tz_offset ( $TIMEZONE, $timestamp, $date );
   $interval = ( 24 * 60 ) / $TIME_SLOTS;
-  $mins_since_midnight = time_to_minutes ( $time );
+  $mins_since_midnight = time_to_minutes ( $time ) + ( $tz_offset[0] * 60 );
   $ret = (int) ( $mins_since_midnight / $interval );
   if ( $round_down ) {
     if ( $ret * $interval == $mins_since_midnight )
@@ -2661,7 +2698,6 @@ function calc_time_slot ( $time, $round_down = false ) {
  * @return string The HTML for the add event icon
  */
 function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
-  global $TZ_OFFSET;
   global $login, $readonly, $cat_id;
   $u_url = '';
 
@@ -2674,11 +2710,9 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   }
   if ( ! empty ( $user ) && $user != $login )
     $u_url = "user=$user&amp;";
-  if ( isset ( $hour ) )
-    $hour += $TZ_OFFSET;
   return "<a title=\"" . 
  translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
-    "date=$date" . ( $hour >= 0 ? "&amp;hour=$hour" : "" ) .
+    "date=$date" . ( isset ( $hour ) && $hour != NULL && $hour >= 0 ? "&amp;hour=$hour" : "" ) .
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&amp;defusers=$user" ) .
     ( empty ( $cat_id ) ? "" :  "&amp;cat_id=$cat_id" ) .
@@ -2701,9 +2735,13 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user;
   global $DISPLAY_ICONS, $PHP_SELF, $TIME_SLOTS, $WORK_DAY_START_HOUR,
-    $WORK_DAY_END_HOUR, $TZ_OFFSET;
-  global $layers;
+    $WORK_DAY_END_HOUR;
+  global $layers, $TIMEZONE, $DISPLAY_TZ;
   static $key = 0;
+
+
+  $tz_offset = get_tz_offset ( $TIMEZONE, '', $date );
+  
 
   if ( $event->get_ext_for_id() != '' ) {
     $id = $event->get_ext_for_id();
@@ -2786,9 +2824,10 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
       $rowspan_arr[$first_slot] = $rowspan;
   } else if ( $event->get_time() >= 0 ) {
     if ( $show_time )
-      $hour_arr[$ind] .= display_time ( $event->get_time() ) . "&raquo;&nbsp;";
-    $timestr = display_time ( $event->get_time() );
+      $hour_arr[$ind] .= display_time ( $event->get_datetime() ) . "&raquo;&nbsp;";
+    $timestr = display_time ( $event->get_datetime() );
     if ( $event->get_duration() > 0 ) {
+
       // calc end time
       $h = (int) ( $event->get_time() / 10000 );
       $m = ( $event->get_time() / 100 ) % 100;
@@ -2799,7 +2838,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
         $m -= 60;
       }
       $end_time = sprintf ( "%02d%02d00", $h, $m );
-      $timestr .= "-" . display_time ( $end_time );
+      $timestr .= "-" . display_time ( $date . $end_time , $DISPLAY_TZ );
     } else {
       $end_time = 0;
     }
@@ -2866,7 +2905,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user;
   static $key = 0;
-  global $layers, $PHP_SELF, $TIME_SLOTS, $TZ_OFFSET;
+  global $layers, $PHP_SELF, $TIME_SLOTS, $TIMEZONE;
 
   if ( $event->get_ext_for_id() != '' ) {
     $id = $event->get_ext_for_id();
@@ -2883,10 +2922,13 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
 
   // If TZ_OFFSET make this event before the start of the day or
   // after the end of the day, adjust the time slot accordingly.
+
+  $tz_offset = get_tz_offset ( $TIMEZONE, '', $date );
   if ( $event->get_time() >= 0 && $event->get_duration() != ( 24 * 60 ) ) {
-    if ( $event->get_time() + ( $TZ_OFFSET * 10000 ) > 240000 )
+    if ( $event->get_time() + ( $tz_offset[0] * 3600 ) > 240000 )
       $time -= 240000;
-    else if ( $event->get_time() + ( $TZ_OFFSET * 10000 ) < 0 )
+    else if ( $event->get_time() + (  $tz_offset[0] * 3600 ) < 0 )
+
       $time += 240000;
     $ind = calc_time_slot ( $time );
     if ( $ind < $first_slot )
@@ -2943,8 +2985,9 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   if ( $event->get_duration() == ( 24 * 60 ) ) {
     $hour_arr[$ind] .= "[" . translate("All day event") . "] ";
   } else if ( $time >= 0 ) {
-    $hour_arr[$ind] .= "[" . display_time ( $time );
+    $hour_arr[$ind] .= "[" . display_time ( $date . $time );
     if ( $event->get_duration() > 0 ) {
+
       // calc end time
       $h = (int) ( $time / 10000 );
       $m = ( $time / 100 ) % 100;
@@ -2955,7 +2998,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
         $m -= 60;
       }
       $end_time = sprintf ( "%02d%02d00", $h, $m );
-      $hour_arr[$ind] .= "-" . display_time ( $end_time );
+      $hour_arr[$ind] .= "-" . display_time ( $date . $end_time );
       // which slot is end time in? take one off so we don't
       // show 11:00-12:00 as taking up both 11 and 12 slots.
       $endind = calc_time_slot ( $end_time, true );
@@ -3019,7 +3062,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
  */
 function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan;
-  global $TABLEBG, $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TIME_SLOTS, $TZ_OFFSET;
+  global $TABLEBG, $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TIME_SLOTS, $TIMEZONE;
   global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR;
   global $repeated_events;
   $get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
@@ -3038,6 +3081,8 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
     $rowspan_arr[$i] = 0;
   }
 
+  $tz_offset = get_tz_offset ( $TIMEZONE, '', $date );
+
   // get all the repeating events for this date and store in array $rep
   $rep = get_repeating_entries ( $user, $date );
   $cur_rep = 0;
@@ -3046,8 +3091,8 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   $ev = get_entries ( $user, $date, $get_unapproved );
   $hour_arr = array ();
   $interval = ( 24 * 60 ) / $TIME_SLOTS;
-  $first_slot = (int) ( ( ( $WORK_DAY_START_HOUR - $TZ_OFFSET ) * 60 ) / $interval );
-  $last_slot = (int) ( ( ( $WORK_DAY_END_HOUR - $TZ_OFFSET ) * 60 ) / $interval);
+  $first_slot = (int) ( ( ( $WORK_DAY_START_HOUR ) * 60 ) / $interval );
+  $last_slot = (int) ( ( ( $WORK_DAY_END_HOUR  ) * 60 ) / $interval);
   //echo "first_slot = $first_slot<br />\nlast_slot = $last_slot<br />\ninterval = $interval<br />\nTIME_SLOTS = $TIME_SLOTS<br />\n";
   $rowspan_arr = array ();
   $all_day = 0;
@@ -3239,23 +3284,53 @@ function activate_urls ( $text ) {
 /**
  * Displays a time in either 12 or 24 hour format.
  *
- * The global variable $TZ_OFFSET is used to adjust the time.  Note that this
- * is somewhat of a kludge for timezone support.  If an event is set for 11PM
- * server time and the user is 2 hours ahead, it will show up as 1AM, but the
- * date will not be adjusted to the next day.
+ * Timezones can be used to adjust the time.  Note that this
+ * date adjustment, if needed, will have to be done external to this function
  *
  * @param string $time          Input time in HHMMSS format
- * @param bool   $ignore_offset If true, then do not use the timezone offset
+ *   Optionally, the format can be YYYYMMDDHHMMSS and the date will be
+ *   extracted for use in timezone offset calculations
+ * @param int   $control bitwise command value 
+ *   0 default 
+ *   1 ignore_offset Do not use the timezone offset
+ *   2 show_tzid Show abbrev TZ id ie EST after time
+ * @param timestamp $timestamp  Allows for proper DST calculation
+ * @param user_timezone $user_timezone  user's timezone for non-logged in user
  *
  * @return string The time in the user's timezone and preferred format
  *
- * @global int The user's timezone offset from the server
+ * @global string $TIMEZONE The logged in user's timezone
  */
-function display_time ( $time, $ignore_offset=0 ) {
-  global $TZ_OFFSET;
+function display_time ( $time, $control=0, $timestamp = '', $user_timezone='' ) {
+  global $TIMEZONE; 
+  
+  $tz = ( empty ( $user_timezone )? $TIMEZONE : $user_timezone );
+
+  // if $time < 100000, it is sometimes passed as 5 digits
+  // so the length could be 13 or 14 when appended to YYYYMMDD 
+  if (  strlen ( $time ) == 13 || strlen ( $time ) == 14 ) {
+    //date was passed also as YYYYMMDDHHMMSS
+    //just a hack way to avoid another variable
+    $sy = substr ( $time, 0, 4 );
+    $sm = substr ( $time, 4, 2 );
+    $sd = substr ( $time, 6, 2 );
+    $timestamp = mktime ( 0, 0, 0, $sm, $sd, $sy );
+    $time = substr ( $time, 8, 6 );
+  }  
+ // $control & 1 = do not do timezone calculations
+  if ( ! empty ( $timestamp ) && ! ( $control & 1 ) ) {
+    $tz_offset = get_tz_offset ( $tz, $timestamp );
+    $tzid = " " . $tz_offset[1];
+  } else {
+    $tz_offset[0] = 0;
+    $tzid = ' GMT';
+  }
+  if ( ! ( $control & 1 ) ) {
+    $time = get_time_add_tz ( $time, $tz_offset[0] );
+  } else {
+    $tzid = ' GMT'; 
+  }
   $hour = (int) ( $time / 10000 );
-  if ( ! $ignore_offset )
-    $hour += $TZ_OFFSET;
   $min = abs( ( $time / 100 ) % 100 );
   //Prevent goofy times like 8:00 9:30 9:00 10:30 10:00 
   if ( $time < 0 && $min > 0 ) $hour = $hour - 1;
@@ -3272,6 +3347,7 @@ function display_time ( $time, $ignore_offset=0 ) {
   } else {
     $ret = sprintf ( "%d:%02d", $hour, $min );
   }
+  if ( $control & 2 ) $ret .= $tzid;
   return $ret;
 }
 
@@ -3397,21 +3473,21 @@ function weekday_short_name ( $w ) {
  * @global int    User's timezone offset from the server
  */
 function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=false, $server_time="" ) {
-  global $DATE_FORMAT, $TZ_OFFSET;
+  global $DATE_FORMAT, $TIMEZONE;
 
   if ( strlen ( $indate ) == 0 ) {
     $indate = date ( "Ymd" );
   }
-
   $newdate = $indate;
   if ( $server_time != "" && $server_time >= 0 ) {
+    $tz_offset = get_tz_offset ( $TIMEZONE, '', $indate );
     $y = substr ( $indate, 0, 4 );
     $m = substr ( $indate, 4, 2 );
     $d = substr ( $indate, 6, 2 );
-    if ( $server_time + $TZ_OFFSET * 10000 > 240000 ) {
-       $newdate = date ( "Ymd", mktime ( 3, 0, 0, $m, $d + 1, $y ) );
-    } else if ( $server_time + $TZ_OFFSET * 10000 < 0 ) {
-       $newdate = date ( "Ymd", mktime ( 3, 0, 0, $m, $d - 1, $y ) );
+    if ( $server_time + $tz_offset[0] * 10000 > 240000 ) {
+       $newdate = date ( "Ymd", mktime ( 0, 0, 0, $m, $d + 1, $y ) );
+    } else if ( $server_time + $tz_offset[0] * 10000 < 0 ) {
+       $newdate = date ( "Ymd", mktime ( 0, 0, 0, $m, $d - 1, $y ) );
     }
   }
 
@@ -3425,7 +3501,7 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
   $y = (int) ( $newdate / 10000 );
   $m = (int) ( $newdate / 100 ) % 100;
   $d = $newdate % 100;
-  $date = mktime ( 3, 0, 0, $m, $d, $y );
+  $date = mktime ( 0, 0, 0, $m, $d, $y );
   $wday = strftime ( "%w", $date );
 
   if ( $short_months ) {
@@ -3824,7 +3900,7 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   $month = substr ( $date, 4, 2 );
   $day = substr ( $date, 6, 2 );
  
-  $dateu = mktime ( 3, 0, 0, $month, $day, $year );
+  $dateu = mktime ( 0, 0, 0, $month, $day, $year );
 
   $can_add = ( $readonly == "N" || $is_admin );
   if ( $public_access == "Y" && $public_access_can_add != "Y" &&
@@ -3877,13 +3953,22 @@ function print_entry_timebar ( $event, $date ) {
   global $eventinfo, $login, $user, $PHP_SELF, $prefarray;
   static $key = 0;
   $insidespan = false;
-  global $layers;
+  global $layers, $TIMEZONE;
+
+  // Adjust for TimeZone
+  $tz_offset = get_tz_offset ( $TIMEZONE, '', $date );
+  $hours = substr ( $time , 0, 2 );
+  $mins = substr ( $time , 2, 2 );
+//  $hours += (int) $tz_offset[0];
+//  $mins  += ( ( $tz_offset[0] - (int) $tz_offset[0] ) * 60 );
+  $time = $hours . $mins . "00"; 
+  $time = get_time_add_tz ( $time, $tz_offset[0] );
 
   // compute time offsets in % of total table width
   $day_start=$prefarray["WORK_DAY_START_HOUR"] * 60;
-  if ( $day_start == 0 ) $day_start = 9*60;
+  if ( $day_start == 0 ) $day_start = 1*60;
   $day_end=$prefarray["WORK_DAY_END_HOUR"] * 60;
-  if ( $day_end == 0 ) $day_end = 19*60;
+  if ( $day_end == 0 ) $day_end = 23*60;
   if ( $day_end <= $day_start ) $day_end = $day_start + 60; //avoid exceptions
 
   if ($event->get_time() >= 0) {
@@ -3893,7 +3978,11 @@ function print_entry_timebar ( $event, $date ) {
     $ev_start= 0;
   }
   if ($ev_start < 0) $ev_start = 0;
-  if ($event->get_duration() > 0) {
+  if ( $event->get_duration() == 1440 ) {
+  // All day event
+   $ev_start = 0;
+   $ev_duration = 100;
+  } else  if ($event->get_duration() > 0) {
     $ev_duration = round(100 * $event->get_duration() / ($day_end - $day_start)) ;
     if ($ev_start + $ev_duration > 100 ) {
       $ev_duration = 100 - $ev_start;
@@ -3969,7 +4058,7 @@ function print_entry_timebar ( $event, $date ) {
   if ( $event->get_duration() == ( 24 * 60 ) ) {
     $timestr = translate("All day event");
   } else if ( $event->get_time() >= 0 ) {
-    $timestr = display_time ( $event->get_time() );
+    $timestr = display_time ( $event->get_datetime() );
     if ( $event->get_duration() > 0 ) {
       // calc end time
       $h = (int) ( $event->get_time() / 10000 );
@@ -3981,9 +4070,10 @@ function print_entry_timebar ( $event, $date ) {
         $m -= 60;
       }
       $end_time = sprintf ( "%02d%02d00", $h, $m );
-      $timestr .= " - " . display_time ( $end_time );
+      $timestr .= " - " . display_time ( $end_time, 1 ) . " " .  $tz_offset[1];
     }
   }
+
   if ( $login != $user && $event->get_access() == 'R' && strlen ( $user ) )
     echo "(" . translate("Private") . ")";
   else
@@ -4035,24 +4125,29 @@ function print_header_timebar($start_hour, $end_hour) {
   if ( ($end_hour - $start_hour) == 0 )
     $offset = 0;
   else
-    $offset = round(100/($end_hour - $start_hour));
+    $offset = (100/($end_hour - $start_hour)/2);
+  //  if ( $offset < 3 ) $offset = 0;
     echo "\n<!-- TIMEBAR -->\n<table class=\"timebar\">\n<tr><td style=\"width:$offset%;\">&nbsp;</td>\n";
    for ($i = $start_hour+1; $i < $end_hour; $i++) {
-//     $prev_offset = $offset;
-//     $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
-     $offset = round(100/($end_hour - $start_hour));
-     $width = $offset;
-    echo "<td style=\"width:$width%;text-align:left;\">$i</td>\n";
+    $prev_offset = $offset;
+    $offset = round(100/($end_hour - $start_hour)*($i - $start_hour + .5));
+    $width = $offset - $prev_offset;
+    if ( $i > 10 ) $width += .1;
+    echo "<td style=\"width:$width%;text-align:center;\">$i</td>\n";
    }
-//   $width = 100 - $offset;
-//   echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
-   echo "</tr>\n</table>\n<!-- /TIMEBAR -->\n";
+   $width = 100 - ( $offset * 2 );
+   echo "<td width=\"$width%\">&nbsp;</td>\n";
+   echo "</tr></tablen";
  
    // print yardstick
   echo "\n<!-- YARDSTICK -->\n<table class=\"yardstick\">\n<tr>\n";
-  $width = round(100/($end_hour - $start_hour));
+  $offset = 0;
   for ($i = $start_hour; $i < $end_hour; $i++) {
+    $prev_offset = $offset;
+
+    $width = $offset - $prev_offset;
     echo "<td style=\"width:$width%;\">&nbsp;</td>\n";
+    $offset = round(100/($end_hour - $start_hour)*($i - $start_hour));
    }
    echo "</tr>\n</table>\n<!-- /YARDSTICK -->\n";
  }
@@ -4220,7 +4315,7 @@ function load_nonuser_preferences ($nonuser) {
 }
 
 /**
- * Determines what the day is after the <var>$TZ_OFFSET</var> and sets it globally.
+ * Determines what the day is  and sets it globally.
  *
  * The following global variables will be set:
  * - <var>$thisyear</var>
@@ -4233,11 +4328,9 @@ function load_nonuser_preferences ($nonuser) {
  */
 function set_today($date) {
   global $thisyear, $thisday, $thismonth, $thisdate, $today;
-  global $TZ_OFFSET, $month, $day, $year, $thisday;
+  global $month, $day, $year, $thisday;
 
-  // Adjust for TimeZone
-  $today = time() + ($TZ_OFFSET * 60 * 60);
-
+  $today = time() ;
   if ( ! empty ( $date ) && ! empty ( $date ) ) {
     $thisyear = substr ( $date, 0, 4 );
     $thismonth = substr ( $date, 4, 2 );
@@ -4470,7 +4563,9 @@ function background_css ( $color, $height = '', $percent = '' ) {
 function daily_matrix ( $date, $participants, $popup = '' ) {
   global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TABLEBG;
   global $user_fullname, $repeated_events, $events;
-  global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR, $TZ_OFFSET,$ignore_offset;
+  global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR, $TIMEZONE,$ignore_offset;
+
+  $tz_offset = get_tz_offset ( $TIMEZONE, '', $date );
 
   $increment = 15;
   $interval = 4;
@@ -4513,13 +4608,15 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
       $mins = substr($time, 2, 2 );
        
       // Timezone Offset
-      if ( ! $ignore_offset ) $hour += $TZ_OFFSET;
+      if ( ! $ignore_offset ) {
+        $hour += (int) $tz_offset[0];
+        $mins  += ( ( $tz_offset[0] - (int) $tz_offset[0] ) * 60 );
+      }
       while ( $hour < 0 ) $hour += 24;
       while ( $hour > 23 ) $hour -= 24;
 
       // Make sure hour is 2 digits
       $hour = sprintf ( "%02d",$hour);
-
       // convert cal_time to slot
       if ($mins < 15) {
         $slot = $hour.'';
@@ -4698,6 +4795,266 @@ function get_site_extras_names () {
     $ret[] = $extra[0];
   }
 
+  return $ret;
+}
+
+/**
+ * Return the timezone rules for a given zone rule
+ * Called only from function get_tz_time()
+ *
+ * @param string $zone_rule   
+ * @param int $timestamp  UNIX timestamp of requested rule
+ *
+ * $global array $days_of_week Sun => 0...Sat => 6
+ * @return array   
+ *   dst_rules[0]['rule_date']   = first time change timestamp
+ *   dst_rules[0]['rule_save']   = first time savings in seconds
+ *   dst_rules[0]['rule_letter'] = first letter to apply to TZ abbreviation
+ *   dst_rules[1]['rule_date']   = second time change timestamp
+ *   dst_rules[1]['rule_save']   = second time savings in seconds
+ *   dst_rules[1]['rule_letter'] = second letter to apply to TZ abbreviation
+ *   dst_rules['lastyear']       = last year time savings in seconds
+ *   dst_rules['lastletter']     - last year letter to apply to TZ abbreviation 
+ */
+function get_rules ( $zone_rule, $timestamp  ) {
+ global $days_of_week;
+
+ $year = date ("Y", $timestamp );
+
+ $sql = "SELECT rule_from, rule_to, rule_in, rule_on, rule_at, rule_save, rule_letter, rule_at_suffix  " . 
+   "FROM webcal_tz_rules WHERE rule_name  = '" . $zone_rule  ."'"  . 
+   " AND rule_from <= $year  AND rule_to >= $year  ORDER BY rule_in";
+  
+  $res = dbi_query ( $sql );
+
+  $dst_rules = array();
+  $i = 0;
+  if ( $res ) {
+
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      if ( substr ( $row[3], 0, 4 ) == "last" ) {
+          $lastday = date ( "w", mktime ( 0, 0, 0, $row[2] + 1 , 0, $year ) );
+          $offset = -( ( $lastday +7 - $days_of_week[substr($row[3], 4, 3)]) % 7);
+          $changeday = mktime ( 0, 0, 0, $row[2] + 1, $offset, $year ) + $row[4];
+      } else if ( substr ( $row[3], 3, 2 ) == "<="  OR substr ( $row[3], 3, 2 ) == ">=") {
+          $rule_day = substr( $row[3], 5, strlen( $row[3]) -5);
+          $givenday = date ( "w", mktime ( 0, 0, 0, $row[2] , $rule_day, $year ) );
+          if ( substr ( $row[3], 3, 2) == "<=" ) {
+            $offset = -( ( $givenday  + 7  - $days_of_week[ substr( $row[3], 0, 3)]) % 7);
+          } else {
+            $offset = ( ( $days_of_week[ substr( $row[3], 0, 3)] + 7 - $givenday   ) % 7);
+          }
+          $changeday = mktime (  0, 0, 0, $row[2] , $rule_day + $offset, $year ) + $row[4];
+      } else {
+        $changeday = mktime (  0, 0, 0, $row[2] , $row[3], $year ) + $row[4];
+      }
+      
+      $dst_rules[$i] = array (
+       "rule_date" => $changeday,
+       "rule_save" => $row[5],
+       "rule_letter" => $row[6]
+      );
+      $i++;
+    }
+    dbi_free_result ( $res );
+  }
+  // Need data from previous year in case requested date is prior to 
+  // first change date in the current year
+  if ( isset (  $dst_rules[0] ) && $timestamp < $dst_rules[0]['rule_date'] ) {
+    $year = $year -1 ; 
+    //We may get more than one row back. We want the first row
+    $sql = "SELECT rule_save, rule_letter  " . 
+      "FROM webcal_tz_rules WHERE rule_name  = '" . $zone_rule  ."'"  . 
+      " AND rule_to >= $year ORDER BY rule_in DESC";
+    $res = dbi_query ( $sql );
+    $i = 0;
+    if ( $res ) {
+      $row = dbi_fetch_row ( $res );
+      
+      $dst_rules['lastyear'] = $row[0];
+      $dst_rules['lastletter'] = ( isset ( $row[1] )? $row[1]: "");
+      dbi_free_result ( $res );
+    }
+  }
+  return $dst_rules;
+}
+
+/**
+ * Return UNIX timestamp adjusted for timezone and DST
+ *
+ * @param timestamp  $timestamp   UNIX format
+ * @param string $tz_name  name of requested Time Zone
+ *  based on Olsen TZ data
+ * @param bool is_gmt 1 if input time is GMT value 
+ * @param bool use_dst 1 if DST calculations required
+ *
+ * @return array
+ *  dst_results['name']      = abbreviated name of TZ
+ *  dst_results['timestamp'] = UNIX timestamp of converted time/date
+ */ 
+function get_tz_time ( $timestamp, $tz_name, $is_gmt = 1, $use_dst = 1 ) {
+
+  $sql = "SELECT  zone_rules, zone_gmtoff, zone_format " . 
+    " FROM webcal_tz_zones WHERE zone_name  = '" . trim( $tz_name ) . "' " .
+    " AND zone_from <= $timestamp AND zone_until >= $timestamp";
+  $res = dbi_query (  $sql );
+  $dst_rules = array ();
+  $dst_results = array ();
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+     //Assign default value for TZ abbrev.
+     $dst_results['name'] = str_replace ( "%s", "", $row[2] );
+     // adjust by gmtoff value
+     if ( $is_gmt == true ) {
+       $dst_results['timestamp'] = $timestamp + $row[1];
+     } else {
+       $dst_results['timestamp'] = $timestamp - $row[1];
+     }
+      if ( ! empty ($row[0] )  && $use_dst == 1 ) { // Zone rules apply
+        $dst_rules = get_rules ( $row[0], $timestamp );
+        if ( count ( $dst_rules ) >= 2) {
+            if ( $timestamp < $dst_rules[0]["rule_date"] ) {
+              $dst_results['name'] = str_replace ( "%s", $dst_rules['lastletter'], $row[2] );
+	    if ( $is_gmt == true ) {  
+                $dst_results['timestamp'] = $dst_results['timestamp'] + $dst_rules['lastyear'];
+	    } else {
+	      $dst_results['timestamp'] = $dst_results['timestamp'] - $dst_rules['lastyear'];
+	    }
+	    dbi_free_result ( $res );
+	    return $dst_results;
+	  } else if ( $timestamp >= $dst_rules[0]["rule_date"] && $timestamp < $dst_rules[1]["rule_date"] ) {
+	    $dst_results['name'] = str_replace ( "%s", $dst_rules[0]['rule_letter'], $row[2] );
+	    if ( $is_gmt == true ) {  
+                $dst_results['timestamp'] = $dst_results['timestamp'] + $dst_rules[0]['rule_save'];
+	    } else {
+                $dst_results['timestamp'] = $dst_results['timestamp'] - $dst_rules[0]['rule_save'];	    
+	    }
+	    dbi_free_result ( $res );
+	    return $dst_results;
+	  } else {
+	    $dst_results['name'] = str_replace ( "%s", $dst_rules[1]['rule_letter'], $row[2] );  
+	    if ( $is_gmt == true ) {  
+                $dst_results['timestamp'] = $dst_results['timestamp'] + $dst_rules[1]['rule_save'];
+	    } else {
+                $dst_results['timestamp'] = $dst_results['timestamp'] - $dst_rules[1]['rule_save'];	    
+	    }
+	    dbi_free_result ( $res );
+	    return $dst_results;
+	  }
+        }
+      }
+    }
+    dbi_free_result ( $res );
+    //No Rules requested or returned
+    return $dst_results;
+  }
+}
+
+/*
+ * Return cal_time type value adjusted by GMT offset
+ *
+ * @param string $time HHMMSS format
+ * @param float $tz_offset GMT offset to be applied to $time
+ *
+ * @return string $ret_time TZ adjusted time HHMMSS
+*/
+function get_time_add_tz ( $time, $tz_offset ) {
+  
+  $hour = (int) ( $time / 10000 );
+  $min = abs( ( $time / 100 ) % 100 );
+  $min_offset = ($tz_offset - floor ( $tz_offset )) * 60;
+  if ( $tz_offset < 0 ) $min_offset = - $min_offset;
+  $ret_time = date ( "His", mktime ( $hour + (int) $tz_offset , 
+    $min + $min_offset , 0 ) );
+    
+  return $ret_time;
+}
+
+/*
+ * Return the GMT offset for the given day and timezone
+ *
+ * @param string  $tz  name of timezone requested
+ * @param timestamp  $timestamp   UNIX format
+ * @param string  $dateYmd   Format YYYYMMDD Alternative to timestamp
+ *
+ * @staticvar array $tz_array Used to avoid duplicate lookups
+ *
+ * @global string $SERVER_TIMEZONE Server's timezone as set by admin
+ *
+ * @return array $tz_data
+ *   $tz_data[0]    =  GMT offset in hours ( can be a float )
+ *   $tz_data[1]    =  Name of this time ( i.e. EST, EDT, GMT )
+ *
+*/
+function get_tz_offset ( $tz, $timestamp = '', $dateYmd = '' ) {
+  global $SERVER_TIMEZONE;
+  static $tz_array = array();
+  
+  $tz = ( empty ( $tz )? $SERVER_TIMEZONE : $tz );
+  if ( empty ( $timestamp ) && ! empty ( $dateYmd ) ){
+    //May need to expand dateYmd to dateYmdHis for accuracy
+   // echo $dateYmd;
+    $sy = substr ( $dateYmd, 0, 4 );
+    $sm = substr ( $dateYmd, 4, 2 );
+    $sd = substr ( $dateYmd, 6, 2 );
+    $timestamp = mktime ( 0, 0, 0, $sm, $sd, $sy );
+  }
+
+  //Check if this lookup has already been done
+  if ( ! empty ( $tz_array[$tz][$timestamp] ) ){
+      $tz_data[0] = $tz_array[$tz][$timestamp];
+      $tz_data[1] = $tz_array[$tz]['name'];
+      
+      return $tz_data;
+  }
+
+  $temp_time = array(); 
+  $tz_data = array(); 
+  $temp_time =  get_tz_time ( $timestamp, $tz, false, true ) ;
+  $tz_array[$tz][$timestamp] = $tz_data[0] = ( $timestamp - $temp_time['timestamp'] ) / 3600 ;
+  $tz_array[$tz]['name'] = $tz_data[1] = $temp_time['name']; 
+
+  return $tz_data;
+}
+
+/*
+ * Prints Timezone select for use on forms
+ *
+ * @param string  $prefix   Prefix for select control's name
+ * @param string  $tz  Current timezone of logged in user
+ *
+ * @return string  $ret
+ *    html for select control
+*/
+function print_timezone_select_html ( $prefix, $tz ) {
+global $TZ_COMPLETE_LIST;
+  
+	if ( ! empty ( $TZ_COMPLETE_LIST ) && $TZ_COMPLETE_LIST == "Y" ) {
+    $res = dbi_query ( "SELECT  DISTINCT zone_name, zone_country " .
+                       "FROM webcal_tz_zones ORDER BY zone_country" );
+  } else {
+	  $res = dbi_query ( "SELECT  tz_list_name, tz_list_text " .
+                       "FROM webcal_tz_list ORDER BY tz_list_id" );
+	}
+  
+	  if ( $res ) {
+    $ret =  "<select name=\"" . $prefix . "TIMEZONE\">\n";
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      if ( ! empty ( $TZ_COMPLETE_LIST ) && $TZ_COMPLETE_LIST == "Y" ) {
+			  if  ( strpos ( $row[0], "/", 1) ){
+          $tz_label = substr ( $row[0], strpos ( $row[0], "/", 1) +1);
+          $tz_label = $row[1] . " - " . $tz_label;
+        } else {
+          $tz_label = $row[0];
+        }
+			} else { // We're using the short list
+        $tz_label = $row[1];			
+			} 
+      $ret .= "<option value=\"$row[0]\"" . ( $row[0] == $tz ? " selected=\"selected\"" : "" ) .  "\">" . $tz_label . "</option>\n";
+    }
+    $ret .= "</select><br />\n";
+    dbi_free_result ( $res );
+  }
   return $ret;
 }
 ?>

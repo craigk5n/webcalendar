@@ -61,6 +61,7 @@ include_once "includes/$user_inc";
 include_once 'includes/validate.php';
 include_once 'includes/site_extras.php';
 include_once 'includes/access.php';
+
 include_once 'includes/translate.php';
 
 $WebCalendar->initializeSecondPhase();

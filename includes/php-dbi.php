@@ -13,7 +13,7 @@
  * - postgresl
  * - odbc
  * - ibase (Interbase)
- *
+ * - SQLite
  * <b>Limitations:</b>
  *
  * - This assumes a single connection to a single database for the sake of
@@ -32,6 +32,13 @@
  * @subpackage Database
  *
  * History:
+ * 5-Jul-2005 Ray Jones
+ *    Removed references to Postgresql rows in dbi_query
+ *    and dbi_fetch_row. This parameter became optional 
+ *    in PHP 4.1.0 and was simply causing to many problems
+ *    see http://us3.php.net/manual/en/function.pg-fetch-array.php
+ * 5-Jul-2005 Ray Jones
+ *    Added SQLite support
  * 17-Mar-2005	Ray Jones
  * 		Changed mssql_error to mssql_get_last_message
  * 23-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
@@ -148,8 +155,7 @@ function dbi_connect ( $host, $login, $password, $database ) {
     }
     $GLOBALS["postgresql_connection"] = $c;
     if ( ! $c ) {
-        echo "Error connecting to database\n";
-        exit;
+        return false;    
     }
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
@@ -161,11 +167,24 @@ function dbi_connect ( $host, $login, $password, $database ) {
     $GLOBALS["odbc_connection"] = $c;
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
+	  $host = $host . ":" . $database;
     if ($GLOBALS["db_persistent"]) {
       $c = ibase_pconnect ( $host, $login, $password );
     } else {
       $c = ibase_connect ( $host, $login, $password );
     }
+    return $c;
+  } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
+    if ($GLOBALS["db_persistent"]) {
+      $c = sqlite_popen ( $database, 0666, $sqliteerror);
+  } else {
+      $c = sqlite_open ( $database, 0666, $sqliteerror);
+    }
+    if ( ! $c ) {
+        echo "Error connecting to database\n";
+        exit;
+    }
+     $GLOBALS["sqlite_c"]  = $c;
     return $c;
   } else {
     if ( empty ( $GLOBALS["db_type"] ) )
@@ -201,23 +220,12 @@ function dbi_close ( $conn ) {
     return odbc_close ( $GLOBALS["odbc_connection"] );
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     return ibase_close ( $conn );
+  } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
+    return sqlite_close ( $conn );
   } else {
     dbi_fatal_error ( "dbi_close(): db_type not defined." );
   }
 }
-
-// Select the database that all queries should use
-//function dbi_select_db ( $database ) {
-//  if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
-//    return mysql_select_db ( $database );
-//  } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
-//    // Not supported.  Must sent up a tnsname and user that uses
-//    // the correct tablesapce.
-//    return true;
-//  } else {
-//    dbi_fatal_error ( "dbi_select_db(): db_type not defined." );
-//  }
-//}
 
 /**
  * Executes a SQL query.
@@ -263,13 +271,11 @@ function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
     return OCIExecute ( $GLOBALS["oracle_statement"],
       OCI_COMMIT_ON_SUCCESS );
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
-    $GLOBALS["postgresql_row[\"$res\"]"] = 0;
     $res =  pg_exec ( $GLOBALS["postgresql_connection"], $sql );
     if ( ! $res )
       dbi_fatal_error ( "Error executing query." .
         $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : "" .
         "", $fatalOnError, $showError );
-    $GLOBALS["postgresql_numrows[\"$res\"]"] = pg_numrows ( $res );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     return odbc_exec ( $GLOBALS["odbc_connection"], $sql );
@@ -280,19 +286,17 @@ function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
         $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : "" .
         "", $fatalOnError, $showError );
     return $res;
+  } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
+    $res = sqlite_query ( $GLOBALS["sqlite_c"], $sql, SQLITE_NUM );
+    if ( ! $res )
+      dbi_fatal_error ( "Error executing query." .
+        $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : "" .
+        "", $fatalOnError, $showError );
+    return $res;
   } else {
     dbi_fatal_error ( "dbi_query(): db_type not defined." );
   }
 }
-
-// Determine the number of rows from a result
-//function dbi_num_rows ( $res ) {
-//  if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
-//    return mysql_num_rows ( $res );
-//  } else {
-//    dbi_fatal_error ( "dbi_num_rows(): db_type not defined." );
-//  }
-//}
 
 /**
  * Retrieves a single row from the database and returns it as an array.
@@ -311,9 +315,9 @@ function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
  */
 function dbi_fetch_row ( $res ) {
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
-    return mysql_fetch_array ( $res );
+    return mysql_fetch_array ( $res, MYSQL_NUM );
   } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
-    return mysqli_fetch_array ( $res );
+    return mysqli_fetch_array ( $res, MYSQL_NUM  );
   } else if ( strcmp ( $GLOBALS["db_type"], "mssql" ) == 0 ) {
     return mssql_fetch_array ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
@@ -322,16 +326,10 @@ function dbi_fetch_row ( $res ) {
       return $row;
     return 0;
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
-    if ( $GLOBALS["postgresql_numrows[\"$res\"]"]  > $GLOBALS["postgresql_row[\"$res\"]"] ) {
-        $r =  pg_fetch_array ( $res, $GLOBALS["postgresql_row[\"$res\"]"] );
-        $GLOBALS["postgresql_row[\"$res\"]"]++;
+	  //Note:  row became optional in PHP 4.1.0.
+    $r =  pg_fetch_array ( $res, NULL, PGSQL_NUM );
         if ( ! $r ) {
-            echo "Unable to fetch row\n";
-            return '';
-        }
-    }
-    else {
-        $r = '';
+        return false;
     }
     return $r;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
@@ -340,6 +338,8 @@ function dbi_fetch_row ( $res ) {
     return $ret;
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     return ibase_fetch_row ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
+    return sqlite_fetch_array ( $res );
   } else {
     dbi_fatal_error ( "dbi_fetch_row(): db_type not defined." );
   }
@@ -376,6 +376,8 @@ function dbi_affected_rows ( $conn, $res ) {
     return odbc_num_rows ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     return ibase_affected_rows ( $conn );
+  } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
+    return sqlite_changes ( $conn );
   } else {
     dbi_fatal_error ( "dbi_free_result(): db_type not defined." );
   }
@@ -408,6 +410,8 @@ function dbi_free_result ( $res ) {
     return odbc_free_result ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     return ibase_free_result ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
+    // Not supported
   } else {
     dbi_fatal_error ( "dbi_free_result(): db_type not defined." );
   }
@@ -437,6 +441,8 @@ function dbi_error () {
     $ret = "Unknown ODBC error";
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     $ret = ibase_errmsg ();
+  } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
+    $ret = sqlite_last_error ($GLOBALS["sqlite_c"]);
   } else {
     $ret = "dbi_error(): db_type not defined.";
   }

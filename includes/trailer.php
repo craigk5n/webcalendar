@@ -50,7 +50,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     $m = date ( "m" );
     $y = date ( "Y" );
   }
-  $d_time = mktime ( 3, 0, 0, $m, 1, $y );
+  $d_time = mktime ( 0, 0, 0, $m, 1, $y );
   $thisdate = date ( "Ymd", $d_time );
   $y--;
   for ( $i = 0; $i < 25; $i++ ) {
@@ -59,13 +59,13 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
       $m = 1;
       $y++;
     }
-    $d = mktime ( 3, 0, 0, $m, 1, $y );
+    $d = mktime ( 0, 0, 0, $m, 1, $y );
     echo "<option value=\"" . date ( "Ymd", $d ) . "\"";
     if ( date ( "Ymd", $d ) == $thisdate ) {
       echo " selected=\"selected\"";
     }
     echo ">";
-    echo date_to_str ( date ( "Ymd", $d ), $DATE_FORMAT_MY, false, true );
+    echo date_to_str ( date ( "Ymd", $d ), $DATE_FORMAT_MY, false, true, 0 );
     echo "</option>\n";
   }
 ?>
@@ -111,11 +111,11 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
   } else {
     $d = date ( "d" );
   }
-  $d_time = mktime ( 3, 0, 0, $m, $d, $y );
+  $d_time = mktime ( 0, 0, 0, $m, $d, $y );
   $thisdate = date ( "Ymd", $d_time );
   $wday = date ( "w", $d_time );
   // $WEEK_START equals 1 or 0 
-  $wkstart = mktime ( 3, 0, 0, $m, $d - ( $wday - $WEEK_START ), $y );
+  $wkstart = mktime ( 0, 0, 0, $m, $d - ( $wday - $WEEK_START ), $y );
 
   for ( $i = -7; $i <= 7; $i++ ) {
     $twkstart = $wkstart + ( 3600 * 24 * 7 * $i );
@@ -130,8 +130,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
       echo  "(" . week_number ( $twkstart ) . ")&nbsp;&nbsp;";
     }
     printf ( "%s - %s",
-      date_to_str ( date ( "Ymd", $twkstart ), $DATE_FORMAT_MD, false, true ),
-      date_to_str ( date ( "Ymd", $twkend ), $DATE_FORMAT_MD, false, true ) );
+      date_to_str ( date ( "Ymd", $twkstart ), $DATE_FORMAT_MD, false, true, 0 ),
+      date_to_str ( date ( "Ymd", $twkend ), $DATE_FORMAT_MD, false, true, 0 ) );
     echo "</option>\n";
   }
 ?>
