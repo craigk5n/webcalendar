@@ -379,6 +379,8 @@ CREATE TABLE webcal_nonuser_cals (
   cal_firstname VARCHAR(25) NULL,
   /* who is the calendar administrator */
   cal_admin VARCHAR(25) NOT NULL,
+  /* can this nonuser calendar be a public calendar (no login required) */
+  cal_is_public CHAR(1) NOT NULL DEFAULT 'N',
   PRIMARY KEY ( cal_login )
 );
 
@@ -590,3 +592,20 @@ CREATE TABLE webcal_tz_list (
   tz_list_name varchar(50) NOT NULL default '',
   tz_list_text varchar(75) NOT NULL default ''
 );
+
+/*
+ * This table stores the custom header/stylesheet/trailer.
+ * If configured properly, each user (or nonuser cal) can have
+ * their own custom header/trailer.
+ */
+CREATE TABLE webcal_user_template (
+  /* user login (or nonuser cal name), the default for all users is stored */
+  /* with the username '__system__' */
+  cal_login VARCHAR(25) NOT NULL,
+  /* type ('H' = header, 'S' = stylesheet/script, 'T' = trailer) */
+  cal_type CHAR(1) NOT NULL,
+  /* text of template */
+  cal_template_text TEXT,
+  PRIMARY KEY ( cal_login, cal_type )
+);
+

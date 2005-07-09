@@ -263,6 +263,19 @@ if ( ! empty ( $return_path ) ) {
    <?php etranslate("Access public calendar")?></a><br />
 <?php } ?>
 
+<?php
+  $nulist = get_nonuser_cals ();
+  for ( $i = 0; $i < count ( $nulist ); $i++ ) {
+    if ( $nulist[$i]['cal_is_public'] == 'Y' ) {
+      ?><a class="nav" href="nulogin.php?login=<?php
+        echo $nulist[$i]['cal_login'] . "\">" .
+          translate("Access") . ' ' . $nulist[$i]['cal_fullname'] . ' ' .
+          translate("calendar");
+      ?></a><br /><?php
+    }
+  }
+?>
+
 <?php if ( $demo_mode == "Y" ) {
  // This is used on the sourceforge demo page
  echo "Demo login: user = \"demo\", password = \"demo\"<br />";

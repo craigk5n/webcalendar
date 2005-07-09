@@ -69,21 +69,42 @@ print_header($INC);
 	<input type="hidden" name="public" value="1" />
 <?php } /*if ( $updating_public )*/ ?>
 
+
+<?php
+if ( $is_admin && ! $updating_public  ) {
+  if ( empty ( $public ) && ! empty ( $public_access ) &&
+    $public_access == 'Y' ) {
+    echo "<blockquote><a href=\"pref.php?public=1\">" .
+      translate("Click here") . "</a> " .
+      translate("to modify the preferences for the Public Access calendar") .
+      "</blockquote>\n";
+  }
+}
+
+// If user is admin of a non-user cal, and non-user cal is "public"
+// (meaning it is a public calendar that requires no login), then allow
+// the current user to modify prefs for that nonuser cal
+if ( empty ( $user ) || $user == $login ) {
+  $nulist = get_nonuser_cals ( $login );
+  for ( $i = 0; $i < count ( $nulist ); $i++ ) {
+    if ( $nulist[$i]['cal_is_public'] == 'Y' ) {
+      echo "<blockquote><a href=\"pref.php?user=" .
+        $nulist[$i]['cal_login'] . '">' .
+        translate("Click here") . "</a> " .
+        translate("to modify the preferences for the") . ' ' .
+        $nulist[$i]['cal_fullname'] . ' ' . translate("calendar") .
+	        "</blockquote>\n";
+    }
+  }
+}
+
+?>
+
 <table style="border-width:0px;"><tr><td>
 <input type="submit" value="<?php etranslate("Save Preferences")?>" name="" />
 </td></tr></table>
 <br />
 
-<?php
-	if ( $is_admin ) {
-	  if ( empty ( $public ) ) {
-	    echo "<blockquote><a href=\"pref.php?public=1\">" .
-	      translate("Click here") . " " .
-	      translate("to modify the preferences for the Public Access calendar") .
-	      "</a></blockquote>\n";
-	  }
-	}
-?>
 <table class="standard" cellspacing="1" cellpadding="2">
 <tr><th colspan="2"><?php etranslate("Settings");?></th></tr>
 <tr><td class="tooltipselect" title="<?php etooltip("language-help");?>">
@@ -96,7 +117,8 @@ print_header($INC);
 	  // a language so that when we send reminders (done without the benefit
 	  // of a browser-preferred language), we'll know which language to use.
 	  // DO let them select browser-defined for the public user.
-	  if ( $key != "Browser-defined" || $updating_public ) {
+	  if ( $key != "Browser-defined" || $updating_public ||
+              $is_nonuser_admin ) {
 	    echo "<option value=\"" . $val . "\"";
 	    if ( $val == $prefarray["LANGUAGE"] ) echo " selected=\"selected\"";
 	    echo ">" . translate( $key ) . "</option>\n";
@@ -419,10 +441,10 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <td>
   <?php
     echo htmlspecialchars ( $server_url ) .
-      "publish.php/" . ( $updating_public ? "public" : $login ) .  ".ics";
+      "publish.php/" . ( $updating_public ? "public" : $user ) .  ".ics";
     echo "<br/>\n";
     echo htmlspecialchars ( $server_url ) .
-      "publish.php?user=" . ( $updating_public ? "public" : $login );
+      "publish.php?user=" . ( $updating_public ? "public" : $user );
   ?></td></tr>
 <?php } /* $server_url */ ?>
 
@@ -447,7 +469,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <td>
   <?php
     echo htmlspecialchars ( $server_url ) .
-      "rss.php?user=" . ( $updating_public ? "public" : $login );
+      "rss.php?user=" . ( $updating_public ? "public" : $user );
   ?></td></tr>
 <?php } /* $server_url */ ?>
 <?php } /* $RSS_ENABLED */ ?>
@@ -459,10 +481,10 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <td>
   <?php
     echo htmlspecialchars ( $server_url ) .
-      "freebusy.php/" . ( $updating_public ? "public" : $login ) . ".ifb";
+      "freebusy.php/" . ( $updating_public ? "public" : $user ) . ".ifb";
     echo "<br/>\n";
     echo htmlspecialchars ( $server_url ) .
-      "freebusy.php?user=" . ( $updating_public ? "public" : $login );
+      "freebusy.php?user=" . ( $updating_public ? "public" : $user );
   ?></td></tr>
 <?php } /* $server_url */ ?>
 
@@ -477,6 +499,31 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 
 <table class="standard" cellspacing="1" cellpadding="2">
 	<tr><th colspan="4"><?php etranslate("Colors")?></th></tr>
+
+<?php if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' &&
+  ! empty ( $allow_user_header ) && $allow_user_header == 'Y' ) { ?>
+ <tr><td class="tooltip" title="<?php etooltip("custom-script-help");?>">
+  <?php etranslate("Custom script/stylesheet")?>:</td><td>
+  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=S&user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
+ </td></tr>
+<?php } ?>
+
+<?php if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' &&
+  ! empty ( $allow_user_header ) && $allow_user_header == 'Y' ) { ?>
+ <tr><td class="tooltip" title="<?php etooltip("custom-header-help");?>">
+  <?php etranslate("Custom header")?>:</td><td>
+  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=H&user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
+ </td></tr>
+<?php } ?>
+
+<?php if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' &&
+  ! empty ( $allow_user_header ) && $allow_user_header == 'Y' ) { ?>
+ <tr><td class="tooltip" title="<?php etooltip("custom-trailer-help");?>">
+  <?php etranslate("Custom trailer")?>:</td><td>
+  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=T&user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
+ </td></tr>
+<?php } ?>
+
 	<tr><td style="font-weight:bold;">
 		<label for="pref_bg"><?php etranslate("Document background")?>:</label></td><td>
 		<input type="text" name="pref_BGCOLOR" id="pref_bg" size="8" maxlength="7" value="<?php echo $prefarray["BGCOLOR"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray["BGCOLOR"]?>; border-style: groove;">

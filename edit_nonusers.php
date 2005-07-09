@@ -70,6 +70,25 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
 ?>
 		</select>
 	</td></tr>
+
+<?php if ( ! $use_http_auth ) { ?>
+	<tr><td valign="top"><label for="ispublic"><?php
+	  etranslate("Is public calendar");?>:</td>
+	<td><input type="radio" name="ispublic" value="Y" <?php
+	  if ( ! empty ( $nonusertemp_is_public ) &&
+	    $nonusertemp_is_public == 'Y' ) echo ' checked="checked"';
+	  echo "> " . translate ( "Yes" ) . "&nbsp;&nbsp;\n";?>
+	<input type="radio" name="ispublic" value="N" <?php
+	  if ( empty ( $nonusertemp_is_public ) ||
+	    $nonusertemp_is_public != 'Y' ) echo ' checked="checked"';
+	  echo "> " . translate ( "No" );?><br/>
+	<?php if ( ! empty ( $nonusertemp_login ) ) {
+                $nu_url = $server_url . "nulogin.php?login=$nonusertemp_login";
+                echo "<a href=\"$nu_url\">$nu_url</a>\n";
+              }
+        ?>
+	</td></tr>
+<?php } ?>
 </table>
   <br />
   <input type="submit" name="action" value="<?php echo $button;?>" />

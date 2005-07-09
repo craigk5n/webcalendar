@@ -255,3 +255,15 @@ CREATE TABLE webcal_tz_list (
   tz_list_name VARCHAR(50) NOT NULL default '',
   tz_list_text VARCHAR(75) NOT NULL default ''
 );
+
+ALTER TABLE webcal_nonuser_cals
+  ADD cal_is_global CHAR(1) DEFAULT 'N' NOT NULL;
+
+CREATE TABLE webcal_user_template (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_type CHAR(1) NOT NULL,
+  cal_template_text TEXT,
+  PRIMARY KEY ( cal_login, cal_type )
+);
+
+

@@ -252,6 +252,14 @@ for ( $i = 0; $i < count ( $userlist ); $i++ ) {
     "\">" . $userlist[$i]['cal_fullname'] . "</a></li>\n";
 }
 
+$userlist = get_nonuser_cals ();
+for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+  if ( $userlist[$i]['cal_is_public'] == 'Y' ) {
+    echo "<li><a href=\"access.php?user=" . $userlist[$i]['cal_login'] .
+      "\">" . $userlist[$i]['cal_fullname'] . "</a></li>\n";
+  }
+}
+
 ?>
 </ul>
 

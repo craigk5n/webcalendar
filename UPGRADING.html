@@ -498,6 +498,16 @@ CREATE TABLE webcal_access_function (
   PRIMARY KEY ( cal_login )
 );
 
+ALTER TABLE webcal_nonuser_cals
+  ADD cal_is_global CHAR(1) DEFAULT 'N' NOT NULL;
+
+CREATE TABLE webcal_user_template (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_type CHAR(1) NOT NULL,
+  cal_template_text TEXT,
+  PRIMARY KEY ( cal_login, cal_type )
+);
+
 CREATE TABLE webcal_tz_zones (
   zone_name VARCHAR(50) NOT NULL default '',
   zone_gmtoff INT NOT NULL default '0',
@@ -527,8 +537,6 @@ CREATE TABLE webcal_tz_list (
 	 tz_list_name varchar(50) NOT NULL default '',
 	 tz_list_text varchar(75) NOT NULL default ''
 );
-
- 
 
 </pre>
 <p>For Oracle, use VARCHAR2 instead of VARCHAR.</p>

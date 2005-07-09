@@ -1,4 +1,9 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added support for multiple public calendars by enabling nonuser calendars
+   to act as public calendar.
+ - Added ability to use custom header/stylesheet/trailer on a per-user
+   basis via user preferences.
+ - Added ability to change text "Public Access" in system settings.
  - Added full timezone support including accurate DST calculations
  - Added Auto-install functionality including upgrading from previous
       versions

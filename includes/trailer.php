@@ -190,10 +190,15 @@ $reports_link = array ( );
 $manage_calendar_link = array ( );
 
 // Go To links
+$can_add = true;
 if ( $readonly == 'Y' )
   $can_add = false;
-else
+else if ( access_is_enabled () )
   $can_add = access_can_access_function ( ACCESS_EVENT_EDIT );
+else {
+  if ( $login == '__public__' )
+    $can_add = $GLOBALS['public_access_can_add'] == 'Y';
+}
 
 if ( ! empty ( $GLOBALS['STARTVIEW'] ) ) {
   $mycal = $GLOBALS['STARTVIEW'];
@@ -241,7 +246,7 @@ if ( $single_user != "Y" ) {
       "href=\"$todayURL\">" . 
       translate("Today") . "</a>";
   }
-  if ( $login != '__public__' && $readonly == 'N' ) {
+  if ( $login != '__public__' && ! $is_nonuser && $readonly == 'N' ) {
     if ( ! access_is_enabled () ||
       access_can_access_function ( ACCESS_ADMIN_HOME ) )
       $goto_link[] = "<a title=\"" . 
@@ -249,7 +254,7 @@ if ( $single_user != "Y" ) {
         "href=\"adminhome.php\">" . 
         translate("Admin") . "</a>";
   }
-  if ( $login != "__public__" && $readonly == "N" &&
+  if ( $login != "__public__" && ! $is_nonuser &&  $readonly == "N" &&
     ( $require_approvals == "Y" || $public_access == "Y" ) ) {
     $url = 'list_unapproved.php';
     if ( $is_nonuser_admin ) {
@@ -259,7 +264,8 @@ if ( $single_user != "Y" ) {
       translate("Unapproved Events") . "\" href=\"$url\">" . 
       translate("Unapproved Events") . "</a>";
   }
-  if ( $login == "__public__" && $public_access_others != "Y" ) {
+  if ( ( $login == "__public__" && $public_access_others != "Y" ) ||
+    ( $is_nonuser && ! access_is_enabled () ) ) {
     // don't allow them to see other people's calendar
   } else if ( $allow_view_other == "Y" || $is_admin ) {
     // Also, make sure they able to access either day/week/month/year view
@@ -270,9 +276,14 @@ if ( $single_user != "Y" ) {
       access_can_access_function ( ACCESS_WEEK ) ||
       access_can_access_function ( ACCESS_MONTH ) ||
       access_can_access_function ( ACCESS_YEAR ) ) {
-      $goto_link[] = "<a title=\"" . 
-        translate("Another User's Calendar") . "\" href=\"select_user.php\">" . 
-        translate("Another User's Calendar") . "</a>";
+      // get count of users this user can see.  if > 1, then...
+      $ulist = array_merge ( get_my_users(), get_nonuser_cals () );
+      if ( count ( $ulist ) > 1 ) {
+        $goto_link[] = "<a title=\"" . 
+          translate("Another User's Calendar") .
+          "\" href=\"select_user.php\">" . 
+          translate("Another User's Calendar") . "</a>";
+      }
     }
   }
 } else {
@@ -298,7 +309,7 @@ if ( empty ( $user ) || $user == $login ) {
       translate("Search") . "\" href=\"search.php\">" .
       translate("Search") . "</a>";
   }
-  if ( $login != '__public__' ) {
+  if ( $login != '__public__' && ! $is_nonuser ) {
     if ( access_can_access_function ( ACCESS_IMPORT ) ) {
       $goto_link[] = "<a title=\"" . 
         translate("Import") . "\" href=\"import.php\">" . 
@@ -329,7 +340,7 @@ if ( empty ( $user ) || $user == $login ) {
 if ( access_is_enabled () ) {
   $showHelp = access_can_access_function ( ACCESS_HELP );
 } else {
-  $showHelp = ( $login != '__public__' );
+  $showHelp = ( $login != '__public__' && ! $is_nonuser );
 }
 if ( $showHelp ) {
   $goto_link[] = "<a title=\"" . 

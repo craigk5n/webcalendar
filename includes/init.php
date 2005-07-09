@@ -66,6 +66,83 @@ include_once 'includes/translate.php';
 
 $WebCalendar->initializeSecondPhase();
 
+
+/**
+ * Returns a custom header, stylesheet or tailer.
+ * The data will be loaded from the webcal_user_template table.
+ * If the global variable $allow_external_header is set to 'Y', then
+ * we load an external file using include.
+ * This can have serious security issues since a
+ * malicous user could open up /etc/passwd.
+ *
+ * @param string  $login	Current user login
+ * @Param string  $type		type of template ('H' = header,
+ *				'S' = stylesheet, 'T' = trailer)
+ */
+function load_template ( $login, $type )
+{
+  global $allow_user_header;
+  $found = false;
+  $ret = '';
+
+  // First, check for a user-specific template
+  if ( ! empty ( $allow_user_header ) && $allow_user_header == 'Y' ) {
+    $res = dbi_query (
+      "SELECT cal_template_text FROM webcal_user_template " .
+      "WHERE cal_type = '$type' and cal_login = '$login'" );
+    if ( $res ) {
+      if ( $row = dbi_fetch_row ( $res ) ) {
+        $ret = $row[0];
+        $found = true;
+      }
+      dbi_free_result ( $res );
+    }
+  }
+
+  // If no user-specific template, check for the system template
+  if ( ! $found ) {
+    $res = dbi_query (
+      "SELECT cal_template_text FROM webcal_user_template " .
+      "WHERE cal_type = '$type' and cal_login = '__system__'" );
+    if ( $res ) {
+      if ( $row = dbi_fetch_row ( $res ) ) {
+        $ret = $row[0];
+        $found = true;
+      }
+      dbi_free_result ( $res );
+    }
+  }
+
+  // If still not found, the check the old location (WebCalendar 1.0 and
+  // before)
+  if ( ! $found ) {
+    $res = dbi_query (
+      "SELECT cal_template_text FROM webcal_report_template " .
+      "WHERE cal_template_type = '$type' and cal_report_id = 0" );
+    if ( $res ) {
+      if ( $row = dbi_fetch_row ( $res ) ) {
+        echo $row[0];
+        $found = true;
+      }
+      dbi_free_result ( $res );
+    }
+  }
+
+  if ( $found ) {
+    if ( ! empty ( $GLOBALS['allow_external_header'] ) &&
+      $GLOBALS['allow_external_header'] == 'Y' ) {
+      if ( file_exists ( $ret ) ) {
+        ob_start ();
+        include "$ret";
+        $ret = ob_get_contents ();
+        ob_end_clean ();
+      }
+    }
+  }
+  
+  return $ret;
+}
+
 /**
  * Prints the HTML header and opening HTML body tag.
  *
@@ -139,15 +216,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
 
   // Add custom script/stylesheet if enabled
   if ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom ) {
-    $res = dbi_query (
-      "SELECT cal_template_text FROM webcal_report_template " .
-      "WHERE cal_template_type = 'S' and cal_report_id = 0" );
-    if ( $res ) {
-      if ( $row = dbi_fetch_row ( $res ) ) {
-        echo $row[0];
-      }
-      dbi_free_result ( $res );
-    }
+    echo load_template ( $login, 'S' );
   }
 
   // Include includes/print_styles.css as a media="print" stylesheet. When the
@@ -189,15 +258,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
 
   // Add custom header if enabled
   if ( $CUSTOM_HEADER == 'Y' && ! $disableCustom ) {
-    $res = dbi_query (
-      "SELECT cal_template_text FROM webcal_report_template " .
-      "WHERE cal_template_type = 'H' and cal_report_id = 0" );
-    if ( $res ) {
-      if ( $row = dbi_fetch_row ( $res ) ) {
-        echo $row[0];
-      }
-      dbi_free_result ( $res );
-    }
+    echo load_template ( $login, 'H' );
   }
 }
 
@@ -222,7 +283,7 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
     $single_user, $use_http_auth, $login_return_path, $require_approvals,
     $is_nonuser_admin, $public_access_others, $allow_view_other,
     $views, $reports_enabled, $LAYER_STATUS, $nonuser_enabled,
-    $groups_enabled, $fullname, $has_boss;
+    $groups_enabled, $fullname, $has_boss, $is_nonuser;
   
   if ( $include_nav_links ) {
     include_once "includes/trailer.php";
@@ -230,15 +291,7 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
 
   // Add custom trailer if enabled
   if ( $CUSTOM_TRAILER == 'Y' && ! $disableCustom && isset ( $c ) ) {
-    $res = dbi_query (
-      "SELECT cal_template_text FROM webcal_report_template " .
-      "WHERE cal_template_type = 'T' and cal_report_id = 0" );
-    if ( $res ) {
-      if ( $row = dbi_fetch_row ( $res ) ) {
-        echo $row[0];
-      }
-      dbi_free_result ( $res );
-    }
+    echo load_template ( $login, 'T' );
   }
 
   if ( $closeDb ) {
