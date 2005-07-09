@@ -25,6 +25,14 @@ if ( $res ) {
 // Set defaults so we don't get undefined errors
 if ( empty ( $s['RSS_ENABLED'] ) )
   $s['RSS_ENABLED'] = 'N';
+if ( empty ( $s['allow_user_header'] ) )
+  $s['allow_user_header'] = 'N';
+if ( empty ( $s['allow_external_header'] ) )
+  $s['allow_external_header'] = 'N';
+if ( empty ( $s['override_public'] ) )
+  $s['override_public'] = 'N';
+if ( empty ( $s['override_public_text'] ) )
+  $s['override_public_text'] = translate("Unavailable");
 
 
 $BodyX = 'onload="public_handler(); eu_handler(); email_handler();"';
@@ -127,6 +135,7 @@ if ( ! $error ) {
             echo htmlspecialchars ( $FONTS );
            ?>" />
  </td></tr>
+
  <tr><td class="tooltip" title="<?php etooltip("custom-script-help");?>">
   <?php etranslate("Custom script/stylesheet")?>:</td><td>
   <label><input type="radio" name="admin_CUSTOM_SCRIPT" value="Y"<?php if ( $s["CUSTOM_SCRIPT"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
@@ -145,6 +154,19 @@ if ( ! $error ) {
   <label><input type="radio" name="admin_CUSTOM_TRAILER" value="N"<?php if ( $s["CUSTOM_TRAILER"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>&nbsp;&nbsp;
   <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=T','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
  </td></tr>
+
+ <tr><td class="tooltip" title="<?php etooltip("enable-external-header-help");?>">
+  <?php etranslate("Allow external file for header/script/trailer")?>:</td><td>
+  <label><input type="radio" name="admin_allow_external_header" value="Y"<?php if ( $s["allow_external_header"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_allow_external_header" value="N"<?php if ( $s["allow_external_header"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>
+
+<tr><td><label>
+ <?php etranslate("Allow user to override header/trailer")?>:</label></td><td colspan="3">
+ <label><input type="radio" name="admin_allow_user_header" value="Y"<?php if ( $s["allow_user_header"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="admin_allow_user_header" value="N"<?php if ( $s["allow_user_header"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+</td></tr>
+
  <tr><td class="tooltip" title="<?php etooltip("preferred-view-help");?>">
   <label for="admin_startview"><?php etranslate("Preferred view")?>:</label></td><td>
 <select name="admin_STARTVIEW" id="admin_startview">
@@ -494,6 +516,16 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can view participants")?>:</td><td>
    <label><input type="radio" name="admin_public_access_view_part" value="Y" <?php if ( $s["public_access_view_part"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
    <label><input type="radio" name="admin_public_access_view_part" value="N" <?php if ( $s["public_access_view_part"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  </td></tr>
+  <tr id="pa7" valign="top"><td class="tooltip" title="<?php etooltip("public-access-override-help")?>">
+   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Override event name/description for public access")?>:</td><td>
+   <label><input type="radio" name="admin_override_public" value="Y" <?php if ( $s["override_public"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_override_public" value="N" <?php if ( $s["override_public"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  </td></tr>
+  <tr id="pa7a" valign="top"><td class="tooltip" title="<?php etooltip("public-access-override-text-help")?>">
+   &nbsp;&nbsp;&nbsp;&nbsp;
+   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Text to display to public access")?>:</td><td>
+   <label><input name="admin_override_public_text" value="<?php echo $s["override_public_text"];?>" size="25" /></label>
   </td></tr>
 </table>
 </div>

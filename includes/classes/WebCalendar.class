@@ -51,7 +51,7 @@ class WebCalendar {
    * @todo Make it possible to distinguish between files in different directories (e.g. login.php and ws/login.php).
    */
   var $_filePhaseMap = array(
-    '/^(login|freebusy|publish|rss|upcoming|week_ssi)\.php$/' =>
+    '/^(nulogin|login|freebusy|publish|rss|upcoming|week_ssi)\.php$/' =>
       array(array('Config', 'PHPDBI', 'Functions'),
             array('User', 'Connect')),
     '/^(icalclient|get_reminders|get_events)\.php$/' =>
@@ -79,6 +79,13 @@ class WebCalendar {
     $this->_filename = basename ( $path );
 
     $this->_directory = dirname ( __FILE__ ) . '/../../';
+  }
+
+  // cek: This function is used by some other apps that I have developed
+  // but have not been released.
+  function addExternalPage ( $pattern, $initArray )
+  {
+    $this->_filePhaseMap[$pattern] = $initArray;
   }
 
   /**
@@ -124,7 +131,7 @@ class WebCalendar {
       $public_access_can_add, $public_access_others, $can_add, $groups_enabled,
       $user_sees_only_his_groups, $valid_user, $userlist, $nonuser_enabled,
       $nonusers, $u_url, $user_fullname, $fullname, $PUBLIC_ACCESS_FULLNAME,
-      $categories_enabled, $CATEGORY_VIEW, $caturl, $bodyid;
+      $categories_enabled, $CATEGORY_VIEW, $caturl, $bodyid, $is_nonuser;
 
     load_global_settings ();
 
@@ -157,6 +164,8 @@ class WebCalendar {
       exit;
     }
 
+    $can_add = false;
+
     // Load if $SCRIPT is in $special array:
     if ($DMW) {
       
@@ -173,6 +182,8 @@ class WebCalendar {
         if ( $public_access_others != "Y" )
           $user = ""; // security precaution
       }
+      if ( $is_nonuser )
+        $can_add = false;
 
       if ( $groups_enabled == "Y" && $user_sees_only_his_groups == "Y" &&
         ! $is_admin ) {
@@ -819,7 +830,7 @@ class WebCalendar {
       $PHP_AUTH_USER, $HTTP_SERVER_VARS, $REMOTE_USER, $HTTP_ENV_VARS,
       $single_user, $login, $single_user_login, $user_inc, $settings,
       $webcalendar_session, $encoded_login, $cryptpw, $c, $db_host,
-      $db_login, $db_password, $db_database, $login_return_path;
+      $db_login, $db_password, $db_database, $login_return_path, $is_nonuser;
 
     /* If WebCalendar is configured to use http authentication, then we can
      * use _initValidate().  If we are not using http auth, icalclient.php will
@@ -832,6 +843,8 @@ class WebCalendar {
 
     $validate_redirect = false;
     $session_not_found = false;
+
+    $is_nonuser = false;
 
     // Catch-all for getting the username when using HTTP-authentication
     if ( $use_http_auth ) {
@@ -924,7 +937,18 @@ class WebCalendar {
               }
               doDbSanityCheck ();
 
-              if (!user_valid_crypt($login, $cryptpw)) {
+              if ( $cryptpw == 'nonuser' ) {
+                if ( ! nonuser_load_variables ( $login, 'nutemp_' ) ) {
+                  // no such nonuser cal
+                  die_miserable_death ( "Invalid nonuser calendar" );
+                }
+                if ( empty ( $GLOBALS['nutemp_is_public'] ) ||
+                  $GLOBALS['nutemp_is_public'] != 'Y' ) {
+                  die_miserable_death ( "Nonuser calendar is not public" );
+                }
+                $is_nonuser = true;
+              }
+              else if (!user_valid_crypt($login, $cryptpw)) {
                 do_debug ( "User not logged in; redirecting to login page" );
                 if ( empty ( $login_return_path ) )
                   do_redirect ( "login.php" );
@@ -953,7 +977,7 @@ class WebCalendar {
       $firstname, $fullname, $user_email, $use_http_auth,
       $login_login, $login_is_admin, $login_lastname,
       $login_firstname, $login_fullname, $login_email, $single_user,
-      $not_auth, $readonly, $PROGRAM_VERSION;
+      $not_auth, $readonly, $is_nonuser, $PROGRAM_VERSION;
 
     // db settings are in config.php
 
@@ -973,6 +997,22 @@ class WebCalendar {
         doDbSanityCheck ();
       }
    
+      // Check the current installtion version
+      // Redirect user to install page if it is different from stored value
+      // This will prevent running WebCalendar until UPGRADING.html has been
+      // read and required upgrade actions completed
+      $res = dbi_query ( "SELECT  cal_value FROM webcal_config ".
+        "WHERE cal_setting = 'webcal_program_version'" );
+      if ( $res ) {
+        if ( $row = dbi_fetch_row ( $res ) ) {
+          if ( $row[0] != $PROGRAM_VERSION ) {
+            // &amp; does not work here...leave it as &
+            Header ( "Location: install/index.php?action=mismatch&version=$row[0]" );
+            exit;
+          }
+        }
+        dbi_free_result ( $res );
+      }
     }
 
     // If we are in single user mode, make sure that the login selected is
@@ -1062,6 +1102,8 @@ class WebCalendar {
       exit;
     }
 
+    $is_nonuser = false;
+
     if ( empty ( $login ) && $use_http_auth ) {
       if ( strstr ( $PHP_SELF, "login.php" ) ) {
         // ignore since login.php will redirect to index.php
@@ -1086,6 +1128,8 @@ class WebCalendar {
           $firstname = $login_firstname;
           $fullname = $login_fullname;
           $user_email = $login_email;
+          $is_nonuser = ! empty ( $GLOBALS['login_is_nonuser'] ) &&
+            $GLOBALS['login_is_nonuser'] = true;
         } else {
           // Invalid login
           if ( $use_http_auth ) {
@@ -1382,6 +1426,8 @@ class WebCalendar {
         return $phases;
       }
     }
+    die_miserable_death ( "_getPhases: cound not find '" .
+      $this->_filename . "' in _filePhaseMap" );
   }
 
   /**
@@ -1407,7 +1453,7 @@ class WebCalendar {
    * @access private
    */
   function _doInit ( $phase ) {
-    $steps = $this->_GetSteps ( $phase );
+    $steps = $this->_getSteps ( $phase );
 
     foreach ( $steps as $step ) {
       $function = "_init$step";

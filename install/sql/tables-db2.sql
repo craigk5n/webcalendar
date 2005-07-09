@@ -170,6 +170,7 @@ CREATE TABLE webcal_nonuser_cals (
   cal_lastname VARCHAR(25),
   cal_firstname VARCHAR(25),
   cal_admin VARCHAR(25) NOT NULL,
+  cal_is_public CHAR(1) NOT NULL DEFAULT 'N',
   PRIMARY KEY ( cal_login )
 );
 
@@ -265,3 +266,11 @@ CREATE TABLE webcal_tz_list (
   tz_list_name VARCHAR(50) NOT NULL default '',
   tz_list_text VARCHAR(75) NOT NULL default ''
 );
+
+CREATE TABLE webcal_user_template (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_type CHAR(1) NOT NULL,
+  cal_template_text varchar(1024),
+  PRIMARY KEY ( cal_login, cal_type )
+);
+

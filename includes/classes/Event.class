@@ -128,6 +128,15 @@ class Event {
     $this->_status = $status;
     $this->_category = $category;
     $this->_login = $login;
+
+    // If public access override event name/description is enabled, then
+    // hide the event name and description
+    if ( $GLOBALS['login'] == '__public__' &&
+      ! empty ( $GLOBALS['override_public'] ) &&
+      $GLOBALS['override_public'] == 'Y' ) {
+      $this->_name = $GLOBALS['override_public_text'];
+      $this->_description = $GLOBALS['override_public_text'];
+    }
   }
 
   /**

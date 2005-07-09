@@ -767,7 +767,7 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
  */
 function get_my_users () {
   global $login, $is_admin, $groups_enabled, $user_sees_only_his_groups;
-  global $my_user_array;
+  global $my_user_array, $is_nonuser;
 
   // Return the global variable (cached)
   if ( ! empty ( $my_user_array ) && is_array ( $my_user_array ) )
@@ -784,6 +784,10 @@ function get_my_users () {
         $groups[] = $row[0];
       }
       dbi_fetch_row ( $res );
+    }
+    // Nonuser (public) can only see themself (unless access control is on)
+    if ( $is_nonuser && ! access_is_enabled () ) {
+      return array ( $login );
     }
     $u = user_get_users ();
     $u_byname = array ();
@@ -2325,7 +2329,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
  */
 function print_date_entries ( $date, $user, $ssi ) {
   global $events, $readonly, $is_admin, $login,
-    $public_access, $public_access_can_add, $cat_id;
+    $public_access, $public_access_can_add, $cat_id, $is_nonuser;
   $cnt = 0;
   $get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
   // public access events always must be approved before being displayed
@@ -2341,6 +2345,9 @@ function print_date_entries ( $date, $user, $ssi ) {
     $login == "__public__" )
     $can_add = false;
   if ( $readonly == 'Y' )
+    $can_add = false;
+  if ( $is_nonuser )
+  if ( $is_nonuser )
     $can_add = false;
   if ( ! $ssi && $can_add ) {
     print "<a title=\"" .
@@ -4179,12 +4186,13 @@ function user_is_participant ( $id, $user )
  * - <var>cal_firstname</var>
  * - <var>cal_admin</var>
  * - <var>cal_fullname</var>
+ * - <var>cal_is_public</var>
  */
 function get_nonuser_cals ($user = '') {
   $count = 0;
   $ret = array ();
   $sql = "SELECT cal_login, cal_lastname, cal_firstname, " .
-    "cal_admin FROM webcal_nonuser_cals ";
+    "cal_admin, cal_is_public FROM webcal_nonuser_cals ";
   if ($user != '') $sql .= "WHERE cal_admin = '$user' ";
   $sql .= "ORDER BY cal_lastname, cal_firstname, cal_login";
   $res = dbi_query ( $sql );
@@ -4199,6 +4207,7 @@ function get_nonuser_cals ($user = '') {
         "cal_lastname" => $row[1],
         "cal_firstname" => $row[2],
         "cal_admin" => $row[3],
+        "cal_is_public" => $row[4],
         "cal_fullname" => $fullname
       );
     }
@@ -4227,7 +4236,8 @@ function nonuser_load_variables ( $login, $prefix ) {
   global $error,$nuloadtmp_email;
   $ret =  false;
   $res = dbi_query ( "SELECT cal_login, cal_lastname, cal_firstname, " .
-    "cal_admin FROM webcal_nonuser_cals WHERE cal_login = '$login'" );
+    "cal_admin, cal_is_public FROM " .
+    "webcal_nonuser_cals WHERE cal_login = '$login'" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( strlen ( $row[1] ) || strlen ( $row[2] ) )
@@ -4235,14 +4245,16 @@ function nonuser_load_variables ( $login, $prefix ) {
       else
         $fullname = $row[0];
 
-        // We need the email address for the admin
-        user_load_variables ( $row[3], 'nuloadtmp_' );
-
         $GLOBALS[$prefix . "login"] = $row[0];
         $GLOBALS[$prefix . "firstname"] = $row[2];
         $GLOBALS[$prefix . "lastname"] = $row[1];
         $GLOBALS[$prefix . "fullname"] = $fullname;
         $GLOBALS[$prefix . "admin"] = $row[3];
+        $GLOBALS[$prefix . "is_public"] = $row[4];
+        $GLOBALS[$prefix . "is_admin"] = false;
+        $GLOBALS[$prefix . "is_nonuser"] = true;
+        // We need the email address for the admin
+        user_load_variables ( $row[3], 'nuloadtmp_' );
         $GLOBALS[$prefix . "email"] = $nuloadtmp_email;
         $ret = true;
     }

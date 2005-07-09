@@ -102,6 +102,14 @@ if ( empty ( $error ) ) {
   }
 }
 
+if ( $login == '__public__' &&
+  ! empty ( $GLOBALS['override_public'] ) &&
+  $GLOBALS['override_public'] == 'Y' ) {
+  $hide_details = true;
+} else {
+  $hide_details = false;
+}
+
 // If they still cannot view, make sure they are not looking at a nonuser
 // calendar event where the nonuser is the _only_ participant.
 if ( empty ( $error ) && ! $can_view && ! empty ( $nonuser_enabled ) &&
@@ -260,8 +268,13 @@ if ( $row ) {
   $create_by = $row[0];
   $orig_date = $row[1];
   $event_time = $row[2];
-  $name = $row[9];
-  $description = $row[10];
+  if ( $hide_details ) {
+    $name = $GLOBALS['override_public_text'];
+    $description = $GLOBALS['override_public_text'];
+  } else {
+    $name = $row[9];
+    $description = $row[10];
+  }
 } else {
   echo "<h2>" . 
     translate("Error") . "</h2>" . 
@@ -546,7 +559,7 @@ if ( !empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == "Y" ) {
   }
 }
 
-if ( $single_user == "N" ) {
+if ( $single_user == "N" && ! empty ( $createby_fullname )  ) {
   echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n" . 
  translate("Created by") . ":</td><td>\n";
   if ( $is_private ) {
@@ -791,20 +804,22 @@ if ( $public_access == "Y" && $login == "__public__" ) {
 if ( $readonly == 'Y' ) {
   $can_edit = false;
 }
+if ( $is_nonuser )
+  $can_edit = false;
 
 // If approved, but event category not set (and user does not have permission
 // to edit where they could also set the category), then allow them to
 // set it through set_cat.php.
 if ( empty ( $user ) && $categories_enabled == "Y" &&
   $readonly != "Y" && $is_my_event && $login != "__public__" &&
-  $event_status != "D" && ! $can_edit )  {
+  ! $is_nonuser && $event_status != "D" && ! $can_edit )  {
   echo "<a title=\"" . 
     translate("Set category") . "\" class=\"nav\" " .
     "href=\"set_entry_cat.php?id=$id$rdate\">" .
     translate("Set category") . "</a><br />\n";
 }
 
-if ( $can_edit && $event_status != "D" ) {
+if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
   if ( $event_repeats ) {
     echo "<a title=\"" .
       translate("Edit repeating entry for all dates") . 
@@ -851,7 +866,7 @@ if ( $can_edit && $event_status != "D" ) {
     "href=\"edit_entry.php?id=$id$u_url&amp;copy=1\">" . 
     translate("Copy entry") . "</a><br />\n";  
 } elseif ( $readonly != "Y" && $is_my_event && $login != "__public__" &&
-  $event_status != "D" )  {
+  ! $is_nonuser && $event_status != "D" )  {
   echo "<a title=\"" . 
     translate("Delete entry") . "\" class=\"nav\" " .
     "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
@@ -864,7 +879,7 @@ if ( $can_edit && $event_status != "D" ) {
     translate("Copy entry") . "</a><br />\n";
 }
 if ( $readonly != "Y" && ! $is_my_event && ! $is_private && 
-  $event_status != "D" && $login != "__public__" )  {
+  $event_status != "D" && $login != "__public__" && ! $is_nonuser )  {
   echo "<a title=\"" . 
     translate("Add to My Calendar") . "\" class=\"nav\" " .
     "href=\"add_entry.php?id=$id\" onclick=\"return confirm('" . 
@@ -941,7 +956,7 @@ if ( $show_log ) {
   echo "</table>\n";
 }
 
-if (! $is_private) {
+if (! $is_private && ! $hide_details ) {
   echo "<br /><form method=\"post\" name=\"exportform\" " .
     "action=\"export_handler.php\">\n";
   echo "<label for=\"exformat\">" . 
