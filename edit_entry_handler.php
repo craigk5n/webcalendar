@@ -379,7 +379,7 @@ if ( empty ( $error ) ) {
     $name = translate("Unnamed Event");
   }
   $sql .= "'" . $name .  "', ";
-  if ( strlen ( $description ) == 0  || $description = "<br />" ) {
+  if ( strlen ( $description ) == 0  || $description == "<br />" ) {
     $description = $name;
   }
   $sql .= "'" . $description . "' )";
