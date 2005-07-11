@@ -257,8 +257,9 @@ CREATE TABLE webcal_tz_list (
   tz_list_text VARCHAR(75) NOT NULL default ''
 );
 
-ALTER TABLE webcal_nonuser_cals
-  ADD cal_is_global CHAR(1) DEFAULT 'N' NOT NULL;
+/*upgrade_v1.1.0a-CVS*/
+
+ALTER TABLE webcal_nonuser_cals ADD cal_is_public CHAR(1) DEFAULT 'N' NOT NULL;
 
 CREATE TABLE webcal_user_template (
   cal_login VARCHAR(25) NOT NULL,
@@ -266,4 +267,6 @@ CREATE TABLE webcal_user_template (
   cal_template_text TEXT,
   PRIMARY KEY ( cal_login, cal_type )
 );
+
+/*upgrade_v1.1.0b-CVS*/
 

@@ -23,6 +23,7 @@
 include_once '../includes/php-dbi.php';
 include_once 'tz_import.php';
 include_once 'default_config.php';
+include_once 'sql/upgrade_matrix.php';
 $file = "../includes/settings.php";
 $fileDir = "../includes";
 
@@ -30,9 +31,7 @@ $fileDir = "../includes";
 set_time_limit(240);
 
 // If we're using SQLite, it sems that magic_quotes_sybase must be on
-ini_set('magic_quotes_sybase', 'On');
-
-$PROGRAM_VERSION = "v1.1.0-CVS"; 
+ini_set('magic_quotes_sybase', 'On'); 
 
 // Check for proper auth settings
 if ( ! empty (  $_SERVER['PHP_AUTH_USER'] ) )
@@ -92,148 +91,49 @@ function show_errors ( $error_val=0 ) {
 }
 
 function get_installed_version () {
+ global $database_upgrade_matrix;
+ 
   //disable warnings
  show_errors ();
-  // Set this as the default value
-  $_SESSION['old_program_version'] = "new_install";
+ // Set this as the default value
+ $_SESSION['old_program_version'] = "new_install";
  $_SESSION['blank_database'] = "";
  
  //We will append the db_type to come up te proper filename
   $_SESSION['install_file'] = "tables";
  
-  // Do some queries to try to determine the previous version
-  // v0.9.01 added a table cal_user_pref
- $res = dbi_query ( "SELECT * FROM cal_user_pref", false, false);
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'pre-v0.9.07';
-  $response_msg = "Your previous version of WebCalendar requires running a PERL script " .
+ //This data is read from file upgrade_matrix.php
+ for ( $i=0; $i < count( $database_upgrade_matrix); $i++ ) {
+   $sql = $database_upgrade_matrix[$i][0];
+	 $res = dbi_query ( $sql, false, false );
+	 if ( $res ) {
+		$_SESSION['old_program_version'] = $database_upgrade_matrix[$i][1];
+		$_SESSION['install_file'] = $database_upgrade_matrix[$i][2];
+		dbi_free_result ( $res );
+	 }
+ }
+ if ( $_SESSION['old_program_version'] == "pre-v0.9.07" ) {
+   $response_msg = "Your previous version of WebCalendar requires running a PERL script " .
     "to convert your data. Please run /tool/upgrade_to_0.9.7.pl then return to this page " .
    "to continue.";
-  $_SESSION['install_file'] = "upgrade_v0.9.13";
-  dbi_free_result ( $res );
+ } else {
+   $response_msg = "Your previous version of WebCalendar requires updating several " .
+    "database tables."; 
  }
-   // v0.9.7 - v0.9.13 used tables with webcal prefix 
-  $res = dbi_query ( "SELECT * FROM webcal_user_pref", false, false);
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'v0.9.07 - v0.9.13';
-  $response_msg = "Your previous version of WebCalendar requires updating several " .
-    "database tables.";
-  $_SESSION['install_file'] = "upgrade_v0.9.13";
-  dbi_free_result ( $res );
- }  
-  // v0.9.14 added table webcal_entry_repeats
-  $res = dbi_query ( "SELECT * FROM webcal_entry_repeats", false, false);
-  if ( $res ) {
-    $_SESSION['old_program_version'] = 'v0.9.14 - v0.9.21';
-  $_SESSION['install_file'] = "upgrade_v0.9.22";
-    dbi_free_result ( $res );
-  }
-   
-  // v0.9.22 added table webcal_user_layers
-  $res = dbi_query ( "SELECT * FROM webcal_user_layers", false, false);
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'v0.9.22 - v0.9.26';
-  $_SESSION['install_file'] = "upgrade_v0.9.27";
-  dbi_free_result ( $res );
-  }
-   
-  // v0.9.27 added table webcal_site_extras
-  $res = dbi_query ( "SELECT * FROM webcal_site_extras", false, false);
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'v0.9.27 - v0.9.34';
-  $_SESSION['install_file'] = "upgrade_v0.9.35";   
-  dbi_free_result ( $res );
-  }
-   
-  // v0.9.35 added table webcal_group
-  $res = dbi_query ( "SELECT * FROM webcal_group", false, false);
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'v0.9.35 - v0.9.36';
-   $_SESSION['install_file'] = "upgrade_v0.9.37";    
-  dbi_free_result ( $res );
- }
-   
-  // v0.9.37 added table webcal_entry_repeats_not
-  $res = dbi_query ( "SELECT * FROM webcal_entry_repeats_not", false, false);
-  if ( $res ) {
-  $_SESSION['old_program_version'] = 'v0.9.37';
-  $_SESSION['install_file'] = "upgrade_v0.9.38";     
-  dbi_free_result ( $res );
- }
-   
- // v0.9.38 added table webcal_categories
- $res = dbi_query ( "SELECT * FROM webcal_categories", false, false);
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'v0.9.38';
-  $_SESSION['install_file'] = "upgrade_v0.9.40";   
-  dbi_free_result ( $res );
- }
-   
- // v0.9.40 added table webcal_asst
- $res = dbi_query ( "SELECT * FROM webcal_asst", false, false);
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'v0.9.40';
-  $_SESSION['install_file'] = "upgrade_v0.9.41"; 
-  dbi_free_result ( $res );
- }
-   
- // v0.9.41 added table webcal_nonuser_cals
- $res = dbi_query ( "SELECT * FROM webcal_nonuser_cals", false, false);
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'v0.9.41';
-  $_SESSION['install_file'] = "upgrade_v0.9.42";   
-  dbi_free_result ( $res );
- }
- 
- // v0.9.42 added table webcal_report
- $res = dbi_query ( "SELECT * FROM webcal_report", false, false);
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'v0.9.42';
-  $_SESSION['install_file'] = "upgrade_v0.9.43";   
-  dbi_free_result ( $res );
- }
-   
- // v0.9.43 added table webcal_import
- $res = dbi_query ( "SELECT * FROM webcal_import", false, false);
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'v0.9.43 - v1.0RC2';
-  $_SESSION['install_file'] = "upgrade_v1.0RC3";   
-  dbi_free_result ( $res );
- }
- 
- // v1.0RC3 added a column to webcal_view
- $res = dbi_query ( "SELECT cal_is_global FROM webcal_view", false, false );
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'v1.0RC3 - v1.0.0';
-  $_SESSION['install_file'] = "upgrade_v1.1.0";
-  dbi_free_result ( $res );
- }
-
- // v1.1.0-CVS added table webcal_access_user
- $res = dbi_query ( "SELECT * FROM webcal_access_user", false, false );
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'v1.1.0-CVS';
-  $_SESSION['install_file'] = "upgrade_v1.1.0-CVS";
-  dbi_free_result ( $res );
- } 
- // v1.1.0-CVS added table webcal_tz_list
- $res = dbi_query ( "SELECT * FROM webcal_tz_list", false, false );
- if ( $res ) {
-  $_SESSION['old_program_version'] = 'v1.1.0-CVS';
-  $_SESSION['install_file'] = "upgrade_v1.1.0a-CVS";
-  dbi_free_result ( $res );
- }   
  // v1.1 and after will have an entry in webcal_config to make this easier
- $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-  "WHERE cal_setting  = 'webcal_program_version'", false, false );
- if ( $res ) {
-   $row = dbi_fetch_row ( $res );
-  if ( ! empty ( $row[0] ) ) {  
-    $_SESSION['old_program_version'] = $row[0];
-    $_SESSION['install_file']  = "upgrade_" . $row[0];
-  }
-  dbi_free_result ( $res );
- }
+ //Not sure if this will work well for CVS code
+ //We'll bypas this for now
+// $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
+//  "WHERE cal_setting  = 'webcal_program_version'", false, false );
+// if ( $res ) {
+//   $row = dbi_fetch_row ( $res );
+//  if ( ! empty ( $row[0] ) ) {  
+//    $_SESSION['old_program_version'] = $row[0];
+//    $_SESSION['install_file']  = "upgrade_" . $row[0];
+//  }
+//  dbi_free_result ( $res );
+// }
+
  //We need to determine this is a blank database
  // This may be due to a manual table setup
  $res = dbi_query ( "SELECT count(cal_value) FROM webcal_config", false, false );
