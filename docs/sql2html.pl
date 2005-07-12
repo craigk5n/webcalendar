@@ -51,9 +51,9 @@ sub print_table {
 }
 
 # first, get WebCalendar version
-open ( F, "../includes/config.php" ) || die "Error reading config.php: $!\n";
+open ( F, "../includes/classes/WebCalendar.class" ) || die "Error reading WebCalendar.class: $!\n";
 while ( <F> ) {
-  if ( /PROGRAM_VERSION/ ) {
+  if ( /PROGRAM_VERSION =/ ) {
     if ( /"/ ) {
       $v = $';
       if ( $v =~ /"/ ) { $v = $`; }
@@ -109,7 +109,7 @@ while ( <> ) {
         push ( @column_size, $1 );
         push ( @column_type, $` );
       } else {
-        push ( @column_size, "&nbsp;" );
+        push ( @column_size, " " );
         push ( @column_type, $t );
       }
       if ( /not null/i ) {
@@ -124,7 +124,7 @@ while ( <> ) {
         $def =~ s/,//;
         push ( @column_default, $def );
       } else {
-        push ( @column_default, "&nbsp;" );
+        push ( @column_default, " " );
       }
       $descr =~ s/[\r\n \t]+/ /g;
       push ( @column_descr, $descr );
