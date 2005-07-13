@@ -40,12 +40,14 @@
 function getPostValue ( $name ) {
   global $HTTP_POST_VARS;
 
-  if ( isset ( $_POST ) && is_array ( $_POST ) && ! empty ( $_POST[$name] ) )
+  if ( isset ( $_POST ) && is_array ( $_POST ) && ! empty ( $_POST[$name] ) ) {
+   $HTTP_POST_VARS[$name] = $_POST[$name];
     return $_POST[$name];
-  if ( ! isset ( $HTTP_POST_VARS ) )
+  } else if ( ! isset ( $HTTP_POST_VARS ) ) {
     return null;
-  if ( ! isset ( $HTTP_POST_VARS[$name] ) )
+  } else if ( ! isset ( $HTTP_POST_VARS[$name] ) ) {
     return null;
+ }
   return ( $HTTP_POST_VARS[$name] );
 }
 
@@ -67,12 +69,14 @@ function getPostValue ( $name ) {
 function getGetValue ( $name ) {
   global $HTTP_GET_VARS;
 
-  if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) )
-    return $_GET[$name];
-  if ( ! isset ( $HTTP_GET_VARS ) )
+  if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) ) {
+    $HTTP_GET_VARS[$name] = $_GET[$name];
+  return $_GET[$name];
+  } else if ( ! isset ( $HTTP_GET_VARS ) ) {
     return null;
-  if ( ! isset ( $HTTP_GET_VARS[$name] ) )
+  } else if ( ! isset ( $HTTP_GET_VARS[$name] ) ){
     return null;
+ }
   return ( $HTTP_GET_VARS[$name] );
 }
 
@@ -517,10 +521,12 @@ function get_last_view () {
   global $HTTP_COOKIE_VARS;
   $val = '';
 
-  if ( isset ( $HTTP_COOKIE_VARS["webcalendar_last_view"] ) )
+ if ( isset ( $_COOKIE["webcalendar_last_view"] ) ) {
+   $HTTP_COOKIE_VARS["webcalendar_last_view"] = $_COOKIE["webcalendar_last_view"];
+    $val = $_COOKIE["webcalendar_last_view"]; 
+  } else if ( isset ( $HTTP_COOKIE_VARS["webcalendar_last_view"] ) ) {
     $val = $HTTP_COOKIE_VARS["webcalendar_last_view"];
-  else if ( isset ( $_COOKIE["webcalendar_last_view"] ) )
-    $val = $_COOKIE["webcalendar_last_view"];
+ }
   $val =   str_replace ( "&", "&amp;", $val );
   return $val;
 }
