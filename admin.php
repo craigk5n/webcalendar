@@ -218,7 +218,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
    $tz_offset = get_tz_offset ( $s['TIMEZONE'], time() );
    echo print_timezone_select_html ( "admin_", $s['TIMEZONE']);
    echo  translate("Your current GMT offset is")  . " " . $tz_offset[0] . " " . translate("hours") . ".";
-  ?>
+  ?>&nbsp;&nbsp;
+	<input type="button" value="<?php etranslate("Load Timezone Data");?>" onclick="window.open('load_tz_data.php','Loading Timezone Data','dependent,height=200,width=400,outerHeight=220,outerWidth=420');" name="" />
 </td></tr>
  <tr><td class="tooltipselect" title="<?php etooltip("date-format-help");?>">
   <?php etranslate("Date format")?>:</td><td>
@@ -582,10 +583,10 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <label><input type="radio" name="admin_reports_enabled" value="Y" <?php if ( $s["reports_enabled"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="admin_reports_enabled" value="N" <?php if ( $s["reports_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
-</table>
+
 
 <!-- BEGIN PUBLISHING -->
-<table cellspacing="0" cellpadding="3">
+
 <tr><td class="tooltip" title="<?php etooltip("subscriptions-enabled-help")?>">
  <?php etranslate("Allow remote subscriptions")?>:</td><td>
  <label><input type="radio" name="admin_PUBLISH_ENABLED" value="Y" <?php if ( $s["PUBLISH_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
@@ -596,19 +597,19 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <label><input type="radio" name="admin_RSS_ENABLED" value="Y" <?php if ( $s["RSS_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="admin_RSS_ENABLED" value="N" <?php if ( $s["RSS_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
-</table>
+
 
 <!-- BEGIN CATEGORIES -->
-<table cellspacing="0" cellpadding="3">
+
  <tr><td class="tooltip" title="<?php etooltip("categories-enabled-help")?>">
   <?php etranslate("Categories enabled")?>:</td><td>
   <label><input type="radio" name="admin_categories_enabled" value="Y" <?php if ( $s["categories_enabled"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
   <label><input type="radio" name="admin_categories_enabled" value="N" <?php if ( $s["categories_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
-</table>
+
 
 <!-- BEGIN EXT PARTICIPANTS -->
-<table cellspacing="0" cellpadding="3">
+
  <tr><td class="tooltip" title="<?php etooltip("allow-external-users-help")?>">
   <?php etranslate("Allow external users")?>:</td><td>
   <label><input type="radio" name="admin_allow_external_users" value="Y" <?php if ( $s["allow_external_users"] == "Y" ) echo " checked=\"checked\"";?> onclick="eu_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
