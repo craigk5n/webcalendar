@@ -561,36 +561,69 @@ CREATE TABLE webcal_access_function (
   PRIMARY KEY ( cal_login )
 );
 
-
+/*
+ * Detailed information for over 830 timezones around the world.
+ * Some of these are very obscure, and never used. They are created with data
+ * from <a href="ftp://elsie.nci.nih.gov/pub/">ftp://elsie.nci.nih.gov/pub/</a>
+ */
 CREATE TABLE webcal_tz_zones (
-  zone_name VARCHAR(50) NOT NULL default '',
-  zone_gmtoff INT NOT NULL default '0',
-  zone_rules VARCHAR(50) NOT NULL default '',
-  zone_format VARCHAR(20) NOT NULL default '',
-  zone_from BIGINT NOT NULL default '0',
-  zone_until BIGINT NOT NULL default '0',
-  zone_cc CHAR(2) NOT NULL default '',
-  zone_coord VARCHAR(20) NOT NULL default '',
-  zone_country VARCHAR(50) NOT NULL default ''
+  /*Name of timezone*/
+  zone_name VARCHAR(50) NOT NULL,
+ /*Greenwich Mean Time (GMT) Offset in minutes*/
+  zone_gmtoff INT NOT NULL default 0,
+  /*Name of timezone DST rule that applies to this timezone name*/
+  zone_rules VARCHAR(50) NOT NULL,
+  /*The template for short timezone name (i.e. E%sT will become EST or EDT)*/
+  zone_format VARCHAR(20) NOT NULL,
+  /*UNIX timestamp for effective start date of this timezone (inclusive)*/
+  zone_from BIGINT NOT NULL default 0,
+  /*UNIX timestamp for effective stop date for this timezone (inclusive)*/
+  zone_until BIGINT NOT NULL default 0,
+  /*Two letter country code that this timezone applies*/
+  zone_cc CHAR(2) NOT NULL,
+  /*Latitude and Longitude of this timezone, we may use this for sunrise and sunset somethime.*/
+  zone_coord VARCHAR(20) NOT NULL,
+  /*Full name of country that this timezone applies*/
+  zone_country VARCHAR(50) NOT NULL 
 );
 
+/* This table contains the rules used to apply
+ * Daylight Savings Time (DST) to any timezone for any given year
+ */
 CREATE TABLE webcal_tz_rules (
-  rule_name VARCHAR(50) NOT NULL default '',
-  rule_from INT NOT NULL default '0',
-  rule_to INT NOT NULL default '0',
-  rule_type VARCHAR(20) NOT NULL default '',
-  rule_in INT NOT NULL default '0',
-  rule_on VARCHAR(20) NOT NULL default '',
-  rule_at INT NOT NULL default '0',
-  rule_at_suffix CHAR(1) NOT NULL default '',
-  rule_save INT NOT NULL default '0',
-  rule_letter VARCHAR(5) NOT NULL default ''
+  /*Name of this timezone rule*/
+  rule_name VARCHAR(50) NOT NULL,
+  /*First effective year of this rule (inclusive)*/
+  rule_from INT NOT NULL default 0,
+  /*Last effective year of this rule (inclusive)*/
+  rule_to INT NOT NULL default 0,
+  /*Not currently used*/
+  rule_type VARCHAR(20) NOT NULL,
+  /*Month that this rule goes into effect*/
+  rule_in INT NOT NULL default 0,
+  /*Date that this rule goes into effect (can be numeric or notation like Sun>=14)*/
+  rule_on VARCHAR(20) NOT NULL,
+  /*Time of day that this rule take effect*/
+  rule_at INT NOT NULL default 0,
+  /*s, u, g, z specifies whether rule_at is local time, UTC, GMT, Zulu. This is not currently used.*/
+  rule_at_suffix CHAR(1) NOT NULL,
+  /*Number of minutes to add to zone_gmtoff to get DST time adjustment*/
+  rule_save INT NOT NULL default 0,
+  /*Letter(s) to replace '%s' in zone_format*/
+  rule_letter VARCHAR(5) NOT NULL 
 );
 
+/* This is shortened list of timezones borrowed from
+ * a typical windows box. It is nowhere near the complete list 
+ * but is much easier to work with that the complete list
+ */
 CREATE TABLE webcal_tz_list (
-  tz_list_id int(11) NOT NULL default '0',
-  tz_list_name varchar(50) NOT NULL default '',
-  tz_list_text varchar(75) NOT NULL default ''
+  /*Numeric order of list for display purposes*/
+  tz_list_id int(11) NOT NULL default 0,
+  /*Name that matches a valid webcal_tz_zones.zone_name*/
+  tz_list_name varchar(50) NOT NULL,
+  /*Display text used in select control*/
+  tz_list_text varchar(75) NOT NULL 
 );
 
 /*
