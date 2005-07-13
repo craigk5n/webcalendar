@@ -67,7 +67,7 @@ else if ( $formtype == "setpassword" && strlen ( $user ) ) {
 
 // Handle update of user info
 else if ( $formtype == "edituser" ) {
-  if ( strlen ( $add ) && $is_admin ) {
+  if ( ! empty ( $add ) && $is_admin ) {
     if ( $upassword1 != $upassword2 ) { 
       $error = translate( "The passwords were not identical" ) . "."; 
     } else {
@@ -84,7 +84,7 @@ else if ( $formtype == "edituser" ) {
           $uemail, $uis_admin );
       }
     }
-  } else if ( strlen ( $add ) &&
+  } else if ( ! empty ( $add ) &&
     ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
     $error = translate("You are not authorized") . ".";
   } else {
