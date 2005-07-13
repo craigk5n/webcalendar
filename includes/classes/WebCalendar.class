@@ -430,7 +430,7 @@ class WebCalendar {
    // Redirect user to install page if it is different from stored value
    // This will prevent running WebCalendar until UPGRADING.html has been
    // read and required upgrade actions completed
-	 $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
+  $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
    if ( $c ) {
      $res = dbi_query ( "SELECT  cal_value FROM webcal_config ".
        "WHERE cal_setting = 'webcal_program_version'" );
@@ -439,16 +439,16 @@ class WebCalendar {
            Header ( "Location: install/index.php?action=mismatch&version=UNKNOWN" );
            exit;
        } else {
-			   $row = dbi_fetch_row ( $res );
+      $row = dbi_fetch_row ( $res );
          if (  empty ( $row) || $row[0] != $PROGRAM_VERSION ) {
            // & does not work here...leave it as &
-					 $version = ( empty ($row )? "UNKNOWN" : $row[0] );
+      $version = ( empty ($row )? "UNKNOWN" : $row[0] );
            Header ( "Location: install/index.php?action=mismatch&version=$version" );
            exit;
-				 }
+     }
        }
        dbi_free_result ( $res );
-			dbi_close ( $c );
+   dbi_close ( $c );
     }
 
 
@@ -1175,6 +1175,7 @@ class WebCalendar {
         strstr ( $PHP_SELF, "layer_toggle.php" ) ||
         strstr ( $PHP_SELF, "import.php" ) ||
         strstr ( $PHP_SELF, "import_handler.php" ) ||
+        strstr ( $PHP_SELF, "load_tz_data.php" ) ||
         strstr ( $PHP_SELF, "edit_template.php" ) ) {
         $not_auth = true;
       }
@@ -1297,7 +1298,7 @@ class WebCalendar {
     define ( 'ACCESS_PUBLISH', 22 );
     define ( 'ACCESS_ASSISTANTS', 23 );
     define ( 'ACCESS_TRAILER', 24 );
-    define ( 'ACCESS_HELP', 25 );
+    define ( 'ACCESS_HELP', 25 );  
     define ( 'ACCESS_NUMBER_FUNCTIONS', 26 ); // how many function did we define?
     /**#@-*/
 
@@ -1330,16 +1331,16 @@ class WebCalendar {
     $GLOBALS['page_lookup'] = array (
       ACCESS_EVENT_VIEW =>
         "(view_entry.php|select_user.php|purge.php|category*php)",
-      ACCESS_EVENT_EDIT => "(entry|list_unapproved)",
+      ACCESS_EVENT_EDIT => "(entry|list_unapproved|usersel|availability|datesel)",
       ACCESS_DAY => "day.php",
       ACCESS_WEEK => "week.php",
       ACCESS_MONTH => "month.php",
       ACCESS_YEAR => "year.php",
-      ACCESS_ADMIN_HOME => "(adminhome.php|users.php)",
+      ACCESS_ADMIN_HOME => "(adminhome.php|users.php|load_tz_data.php)",
       ACCESS_REPORT => "report",
       ACCESS_VIEW => "view_..php",
       ACCESS_VIEW_MANAGEMENT => "(views.php|views_edit)",
-      ACCESS_CATEGORY_MANAGEMENT => "category*php",
+      ACCESS_CATEGORY_MANAGEMENT => "category.*php",
       ACCESS_LAYERS => "layer",
       ACCESS_SEARCH => "search",
       ACCESS_ACTIVITY_LOG => "activity_log.php",
@@ -1352,7 +1353,7 @@ class WebCalendar {
       ACCESS_EXPORT => "export.*php",
       ACCESS_PUBLISH => "(publish.php|freebusy.php|rss.php)",
       ACCESS_ASSISTANTS => "assist.*php",
-      ACCESS_HELP => "help_.*php",
+      ACCESS_HELP => "help_.*php"
     );
 
 
