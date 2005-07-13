@@ -59,14 +59,16 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
       $m = 1;
       $y++;
     }
-    $d = mktime ( 0, 0, 0, $m, 1, $y );
-    echo "<option value=\"" . date ( "Ymd", $d ) . "\"";
-    if ( date ( "Ymd", $d ) == $thisdate ) {
-      echo " selected=\"selected\"";
-    }
-    echo ">";
-    echo date_to_str ( date ( "Ymd", $d ), $DATE_FORMAT_MY, false, true, 0 );
-    echo "</option>\n";
+  if ( $y >= 1970 && $y < 2038 ) {
+      $d = mktime ( 0, 0, 0, $m, 1, $y );
+      echo "<option value=\"" . date ( "Ymd", $d ) . "\"";
+      if ( date ( "Ymd", $d ) == $thisdate ) {
+        echo " selected=\"selected\"";
+      }
+      echo ">";
+      echo date_to_str ( date ( "Ymd", $d ), $DATE_FORMAT_MY, false, true, 0 );
+      echo "</option>\n";
+  }
   }
 ?>
 </select>
@@ -120,19 +122,22 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
   for ( $i = -7; $i <= 7; $i++ ) {
     $twkstart = $wkstart + ( 3600 * 24 * 7 * $i );
     $twkend = $twkstart + ( 3600 * 24 * 6 );
-    echo "<option value=\"" . date ( "Ymd", $twkstart ) . "\"";
-    if ( date ( "Ymd", $twkstart ) <= $thisdate &&
-      date ( "Ymd", $twkend ) >= $thisdate ) {
-      echo " selected=\"selected\"";
-    }
-    echo ">";
-    if ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) && $GLOBALS['PULLDOWN_WEEKNUMBER'] = "Y" ) {
-      echo  "(" . week_number ( $twkstart ) . ")&nbsp;&nbsp;";
-    }
-    printf ( "%s - %s",
-      date_to_str ( date ( "Ymd", $twkstart ), $DATE_FORMAT_MD, false, true, 0 ),
-      date_to_str ( date ( "Ymd", $twkend ), $DATE_FORMAT_MD, false, true, 0 ) );
-    echo "</option>\n";
+//  echo $twkstart . " " . $twkend;
+  if ( $twkstart > 0 && $twkend < 2146021200 ) { 
+      echo "<option value=\"" . date ( "Ymd", $twkstart ) . "\"";
+      if ( date ( "Ymd", $twkstart ) <= $thisdate &&
+        date ( "Ymd", $twkend ) >= $thisdate ) {
+        echo " selected=\"selected\"";
+      }
+      echo ">";
+      if ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) && $GLOBALS['PULLDOWN_WEEKNUMBER'] = "Y" ) {
+        echo  "(" . week_number ( $twkstart ) . ")&nbsp;&nbsp;";
+      }
+      printf ( "%s - %s",
+        date_to_str ( date ( "Ymd", $twkstart ), $DATE_FORMAT_MD, false, true, 0 ),
+        date_to_str ( date ( "Ymd", $twkend ), $DATE_FORMAT_MD, false, true, 0 ) );
+      echo "</option>\n";
+  }
   }
 ?>
 </select>
@@ -171,11 +176,13 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     $y = date ( "Y" );
   }
   for ( $i = $y - 4; $i < $y + 4; $i++ ) {
-    echo "<option value=\"$i\"";
-    if ( $i == $y ) {
-      echo " selected=\"selected\"";
-    }
-    echo ">$i</option>\n";
+   if ( $i >= 1970 && $i < 2038 ) {
+      echo "<option value=\"$i\"";
+      if ( $i == $y ) {
+        echo " selected=\"selected\"";
+      }
+      echo ">$i</option>\n";
+  }
   }
 ?>
 </select>
