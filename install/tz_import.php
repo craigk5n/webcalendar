@@ -179,7 +179,7 @@ global $min_date, $max_date;
   return $ret;
 }
 
-function do_tz_import () {
+function do_tz_import ( $file_path= "timezone/") {
  global $months, $min_date, $max_date;
  $error = "<b>Import Successful</b>";
  // You could delete any of these that you are sure your users will not need.
@@ -210,8 +210,8 @@ function do_tz_import () {
  }         
  $valid_tags = array( "Link", "Rule", "Zone" );
  for ($i = 0 ; $i < count ( $tz_file_array ); $i++ ) {
-  if (!$fd=@fopen( "timezone/" . $tz_file_array[$i],"r")) {
-  $error = "Can't read temporary file: $tz_file\n";
+  if (!$fd=@fopen( $file_path . $tz_file_array[$i],"r")) {
+  $error = "Can't read temporary file: $tz_file_array[$i]\n";
   return $error;
   } else {
    $line = 0;
@@ -297,7 +297,7 @@ function do_tz_import () {
    
  //Import Country Code and Coordinate Data
  $tz_file = "zone.tab";
- if (!$fd=@fopen(  "timezone/" . $tz_file,"r" )) {
+ if (!$fd=@fopen(  $file_path . $tz_file,"r" )) {
   $error = "Can't read temporary file: $tz_file\n";
   return $error;
  } else {
@@ -322,7 +322,7 @@ function do_tz_import () {
  
  //Import Country Name
  $tz_file = "iso3166.tab";
- if (!$fd=@fopen( "timezone/" .  $tz_file,"r" )) {
+ if (!$fd=@fopen( $file_path .  $tz_file,"r" )) {
   $error = "Can't read temporary file: $tz_file\n";
   return $error;
  } else {
@@ -347,7 +347,7 @@ function do_tz_import () {
 
  //Import Country Name
  $tz_file = "gmt.txt";
- if (!$fd=@fopen( "timezone/" .  $tz_file,"r" )) {
+ if (!$fd=@fopen( $file_path .  $tz_file,"r" )) {
   $error = "Can't read temporary file: $tz_file\n";
   return $error;
  } else {
@@ -371,7 +371,7 @@ function do_tz_import () {
  
   //Update version info
  $tz_file = "tz_version.txt";
- if (!$fd=@fopen( "timezone/" .  $tz_file,"r" )) {
+ if (!$fd=@fopen( $file_path .  $tz_file,"r" )) {
   $error = "Can't read temporary file: $tz_file\n";
   return $error;
  } else {
