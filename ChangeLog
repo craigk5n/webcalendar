@@ -1,4 +1,9 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Modified trailer.php to prevent invalid dates (<1970 && > 2037) from 
+   being created in the pulldowm menus.
+ - Added 'Load Timezone Data' button to admin.php
+ - Fixed bug 1220248: Get an Error using the 'Availability'
+ - Fixed bug  1220256: Get Error using the 'Select' button for assistents
  - Added support for multiple public calendars by enabling nonuser calendars
    to act as public calendar.
  - Added ability to use custom header/stylesheet/trailer on a per-user

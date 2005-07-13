@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1220248: Get an Error using the 'Availability'
+      1220256: Get Error using the 'Select' button for assistents
       1233739: Palm Datebook Import - conflicting events
       1221727: error in documentation for using iframe with upcoming.php
       1219427: icalclient fails to publish alarms
@@ -14,6 +16,9 @@ Version 1.1.0-CVS (?? ??? 2005)
   - Other bugs fixed:
       Category was lost wan clicking on prev/next month in month.php
   - New Features / Enhancements / Changes:
+    + Modified trailer.php to prevent invalid dates (<1970 && > 2037) from 
+      being created in the pulldowm menus.
+    + Added 'Load Timezone Data' button to admin.php
     + Added support for multiple public calendars by enabling nonuser calendars
       to act as public calendar.
     + Added ability to use custom header/stylesheet/trailer on a per-user
