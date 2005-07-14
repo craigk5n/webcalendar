@@ -84,6 +84,7 @@ $noSet = array (
 // This code is a temporary hack to make the application work when
 // register_globals is set to Off in php.ini (the default setting in
 // PHP 4.2.0 and after).
+if ( empty ( $HTTP_GET_VARS ) ) $HTTP_GET_VARS = $_GET;
 if ( ! empty ( $HTTP_GET_VARS ) ) {
   while (list($key, $val) = @each($HTTP_GET_VARS)) {
     // don't allow anything to have <script> in it...
@@ -107,6 +108,8 @@ if ( ! empty ( $HTTP_GET_VARS ) ) {
   }
   reset ( $HTTP_GET_VARS );
 }
+
+if ( empty ( $HTTP_POST_VARS ) ) $HTTP_POST_VARS = $_POST;
 if ( ! empty ( $HTTP_POST_VARS ) ) {
   while (list($key, $val) = @each($HTTP_POST_VARS)) {
     // don't allow anything to have <script> in it... except 'template'
@@ -127,6 +130,7 @@ if ( ! empty ( $HTTP_POST_VARS ) ) {
 //while (list($key, $val) = @each($HTTP_SESSION_VARS)) {
 //       $GLOBALS[$key] = $val;
 //}
+if ( empty ( $HTTP_COOKIE_VARS ) ) $HTTP_COOKIE_VARS = $_COOKIE;
 if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
   while (list($key, $val) = @each($HTTP_COOKIE_VARS)) {
     if ( empty ( $noSet[$key] ) && substr($key,0,12) == "webcalendar_" ) {
@@ -210,12 +214,14 @@ for ( $i = 0; $i < count ( $offsets ); $i++ ) {
 function getPostValue ( $name ) {
   global $HTTP_POST_VARS;
 
-  if ( isset ( $_POST ) && is_array ( $_POST ) && ! empty ( $_POST[$name] ) )
+  if ( isset ( $_POST ) && is_array ( $_POST ) && ! empty ( $_POST[$name] ) ) {
+	  $HTTP_POST_VARS[$name] = $_POST[$name];
     return $_POST[$name];
-  if ( ! isset ( $HTTP_POST_VARS ) )
+   } else if ( ! isset ( $HTTP_POST_VARS ) ) {
     return null;
-  if ( ! isset ( $HTTP_POST_VARS[$name] ) )
+  } else if ( ! isset ( $HTTP_POST_VARS[$name] ) ) {
     return null;
+	}
   return ( $HTTP_POST_VARS[$name] );
 }
 
@@ -237,12 +243,14 @@ function getPostValue ( $name ) {
 function getGetValue ( $name ) {
   global $HTTP_GET_VARS;
 
-  if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) )
+  if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) ) {
+	  $HTTP_GET_VARS[$name] = $_GET[$name];
     return $_GET[$name];
-  if ( ! isset ( $HTTP_GET_VARS ) )
+  } else if ( ! isset ( $HTTP_GET_VARS ) )  {
     return null;
-  if ( ! isset ( $HTTP_GET_VARS[$name] ) )
+   } else if ( ! isset ( $HTTP_GET_VARS[$name] ) ) {
     return null;
+	}
   return ( $HTTP_GET_VARS[$name] );
 }
 
@@ -664,10 +672,12 @@ function get_last_view () {
   global $HTTP_COOKIE_VARS;
   $val = '';
 
-  if ( isset ( $HTTP_COOKIE_VARS["webcalendar_last_view"] ) )
-    $val = $HTTP_COOKIE_VARS["webcalendar_last_view"];
-  else if ( isset ( $_COOKIE["webcalendar_last_view"] ) )
+  if ( isset ( $_COOKIE["webcalendar_last_view"] ) ) {
+	  $HTTP_COOKIE_VARS["webcalendar_last_view"] = $_COOKIE["webcalendar_last_view"];
     $val = $_COOKIE["webcalendar_last_view"];
+  } else if ( isset ( $HTTP_COOKIE_VARS["webcalendar_last_view"] ) ) {
+    $val = $HTTP_COOKIE_VARS["webcalendar_last_view"];
+	}
   $val =   str_replace ( "&", "&amp;", $val );
   return $val;
 }

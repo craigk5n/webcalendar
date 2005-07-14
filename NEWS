@@ -5,7 +5,8 @@ Version 1.0.1-CVS (?? ??? 2005)
       1212667: Install script - Database Type Problem
       1218113: iCal ATTENDEE error if event is deleted
   - Other bugs fixed:
-        Category was lost wan clicking on prev/next month in month.php
+    + Category was lost wan clicking on prev/next month in month.php
+    + Fixed login looping related to register_long_arrays
   - New Features / Enhancements / Changes:
     + Applied patch 1171807: reminder sent late if cron run at exact
       second of reminder (was accidentally not included in 1.0.0)
