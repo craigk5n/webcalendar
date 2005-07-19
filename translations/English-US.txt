@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 05-25-2005
+# Translation last updated on 07-19-2005
 
 
 ###############################################
@@ -39,7 +39,6 @@ Previous: Previous
 Next: Next
 Admin mode: Admin mode
 Assistant mode: Assistant mode
-cont.: cont.
 Generate printer-friendly version: Generate printer-friendly version
 Printer Friendly: Printer Friendly
 
@@ -47,6 +46,7 @@ Printer Friendly: Printer Friendly
 ###############################################
 # Page: admin.php
 #
+Unavailable: Unavailable
 System Settings: System Settings
 Help: Help
 You are not authorized: You are not authorized
@@ -86,6 +86,9 @@ custom-header-help: Allows a custom HTML snippet to be included in the top of ev
 Custom header: Custom header
 custom-trailer-help: Allows a custom HTML snippet to be included at the end of every page.
 Custom trailer: Custom trailer
+enable-external-header-help: Allows the custom trailer to be loaded from an external file
+Allow external file for header/script/trailer: Allow external file for header/script/trailer
+Allow user to override header/trailer: Allow user to override header/trailer
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: Preferred view
 Day: Day
@@ -97,6 +100,11 @@ yearly-shows-events-help: On the yearly view, display days that contain events i
 Display days with events in bold in month and year views: Display days with events in bold in month and year views
 display-desc-print-day-help: Include event descriptions in printer-friendly version of day view.
 Display description in printer day view: Display description in printer day view
+tz-help: Specifies how many hours to adjust the time from server time to local time.
+Server Timezone Selection: Server Timezone Selection
+Your current GMT offset is: Your current GMT offset is
+hours: hours
+Load Timezone Data: Load Timezone Data
 date-format-help: Specifies the preferred date format.
 Date format: Date format
 December: December
@@ -177,6 +185,10 @@ public-access-add-requires-approval-help: Specifies whether events added via the
 Public access new events require approval: Public access new events require approval
 public-access-sees-participants-help: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
 Public access can view participants: Public access can view participants
+public-access-override-help: Allows event names and descriptions to be hidden on the public calendar
+Override event name/description for public access: Override event name/description for public access
+public-access-override-text-help: The text to display if the above option is enabled.
+Text to display to public access: Text to display to public access
 uac-enabled-help: Enables user-level access control
 User Access Control enabled: User Access Control enabled
 groups-enabled-help: Enables group support, allowing users to select users by groups.
@@ -467,19 +479,20 @@ Sat: Sat
 ###############################################
 # Page: pref.php
 #
-Save Preferences: Save Preferences
 to modify the preferences for the Public Access calendar: to modify the preferences for the Public Access calendar
-tz-help: Specifies how many hours to adjust the time from server time to local time.
-Timezone Offset: Timezone Offset
-Add N hours to: Add N hours to
-Subtract N hours from: Subtract N hours from
-same as: same as
-server time: server time
+to modify the preferences for the: to modify the preferences for the
+calendar: calendar
+Save Preferences: Save Preferences
+Timezone Selection: Timezone Selection
 Default Category: Default Category
 All: All
 When I am the boss: When I am the boss
 Email me event notification: Email me event notification
 I want to approve events: I want to approve events
+#
+# << MISSING >>
+# display_byproxy-help:
+Display if created by Assistant: Display if created by Assistant
 Subscribe/Publish: Subscribe/Publish
 allow-remote-subscriptions-help: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
 remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
@@ -502,7 +515,6 @@ Disable Layers: Disable Layers
 Disabled: Disabled
 Enable Layers: Enable Layers
 to modify the layers settings for the: to modify the layers settings for the
-calendar: calendar
 Add layer: Add layer
 Layer: Layer
 Edit layer: Edit layer
@@ -546,7 +558,6 @@ Public: Public
 Category: Category
 days: days
 day: day
-hours: hours
 minute: minute
 before event: before event
 External User: External User
@@ -560,6 +571,7 @@ This will delete this entry for all users.: This will delete this entry for all 
 Delete entry only for this date: Delete entry only for this date
 Edit entry: Edit entry
 Delete entry: Delete entry
+from calendar of: from calendar of
 Copy entry: Copy entry
 This will delete the entry from your calendar.: This will delete the entry from your calendar.
 Add to My Calendar: Add to My Calendar
@@ -692,6 +704,7 @@ word characters only: can only contain word characters (a-zA-Z_0-9)
 ###############################################
 # Page: help_pref.php
 #
+Timezone Offset: Timezone Offset
 default-category-help: Specifies the category a new event should default to.
 email-boss-notifications-help: Specifies if bosses receive emails as event notifications.
 boss-approve-event-help: Specifies whether the boss will be required to approve events added by assistants.
@@ -741,6 +754,15 @@ Unnamed Event: Unnamed Event
 Scheduling Conflict: Scheduling Conflict
 conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
 Event Imported: Event Imported
+
+
+###############################################
+# Page: load_tz_data.php
+#
+Loading Timezone Data into Database: Loading Timezone Data into Database
+This could take several minutes to complete: This could take several minutes to complete
+Load: Load
+Close: Close
 
 
 ###############################################
@@ -892,6 +914,12 @@ Set Password: Set Password
 
 
 ###############################################
+# Page: edit_nonusers.php
+#
+Is public calendar: Is public calendar
+
+
+###############################################
 # Page: edit_template.php
 #
 Edit Custom Script/Stylesheet: Edit Custom Script/Stylesheet
@@ -912,6 +940,12 @@ Approve/Reject Event: Approve/Reject Event
 # Page: view_r.php
 #
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
+
+
+###############################################
+# Page: nulogin.php
+#
+No such nonuser calendar: No such nonuser calendar
 
 
 ###############################################
@@ -972,40 +1006,6 @@ Dec: Dec
 All Attendees: All Attendees
 Busy: Busy
 Tentative: Tentative
-
-
-###############################################
-# Page: includes/config.php
-#
-English: English
-Basque: Basque
-Bulgarian: Bulgarian
-Catalan: Catalan
-Chinese (Traditonal/Big5): Chinese (Traditonal/Big5)
-Chinese (Simplified/GB2312): Chinese (Simplified/GB2312)
-Czech: Czech
-Danish: Danish
-Dutch: Dutch
-Estonian: Estonian
-Finnish: Finnish
-French: French
-Galician: Galician
-German: German
-Holo (Taiwanese): Holo (Taiwanese)
-Hungarian: Hungarian
-Icelandic: Icelandic
-Italian: Italian
-Japanese: Japanese
-Korean: Korean
-Norwegian: Norwegian
-Polish: Polish
-Portuguese: Portuguese
-Portuguese/Brazil: Portuguese/Brazil
-Romanian: Romanian
-Russian: Russian
-Spanish: Spanish
-Swedish: Swedish
-Turkish: Turkish
 
 
 ###############################################
