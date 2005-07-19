@@ -857,9 +857,15 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
     echo "<a title=\"" . 
       translate("Delete entry") . "\" class=\"nav\" " .
       "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
-       translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
-       translate("This will delete this entry for all users.") . "');\">" . 
-       translate("Delete entry") . "</a><br />\n";
+       translate("Are you sure you want to delete this entry?") . "\\n\\n";
+    if ( empty ( $user ) || $user == $login )
+      echo translate("This will delete this entry for all users.");
+    echo "');\">" .  translate("Delete entry");
+    if ( ! empty ( $user ) && $user != $login ) {
+      user_load_variables ( $user, "temp_" );
+      echo " " . translate ( "from calendar of" ) . " " . $temp_fullname . "";
+    }
+    echo "</a><br />\n";
   }
   echo "<a title=\"" . 
     translate("Copy entry") . "\" class=\"nav\" " .
