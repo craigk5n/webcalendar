@@ -101,7 +101,7 @@ $cat_id = '';
 // 1 = Display all times as GMT wo/TZID
 // 2 = Adjust times by user's GMT offset Show TZID 
 // 3 = Display all times as GMT w/TZID
-$display_tzid = 3;
+$display_tzid = 2;
 
 // End configurable settings...
 
