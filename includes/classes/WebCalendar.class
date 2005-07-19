@@ -1192,7 +1192,6 @@ class WebCalendar {
         strstr ( $PHP_SELF, "groups.php" ) ||
         strstr ( $PHP_SELF, "group_edit.php" ) ||
         strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
-        strstr ( $PHP_SELF, "edit_template.php" ) ||
         strstr ( $PHP_SELF, "activity_log.php" ) ) {
         $not_auth = true;
       }
@@ -1238,13 +1237,8 @@ class WebCalendar {
     // So, instead of an error message that may be in the wrong language,
     // just redirect to some other page.
     if ( $not_auth ) {
-      /*
-      echo "<html>\n<head>\n<title>" . translate($application_name) . " " .
-        translate("Error") .  "</title>\n</head>\n<body>\n";
-      echo "<h2>" . translate ( "Error" ) . "</h2>\n" .
-        translate ( "You are not authorized" );
-      */
-      do_redirect ( "week.php" );
+      die_miserable_death ( "You are not authorized" );
+      /* do_redirect ( "week.php" );*/
     }
   }
 
