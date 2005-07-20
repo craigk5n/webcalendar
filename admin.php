@@ -219,7 +219,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
    echo print_timezone_select_html ( "admin_", $s['TIMEZONE']);
    echo  translate("Your current GMT offset is")  . " " . $tz_offset[0] . " " . translate("hours") . ".";
   ?>&nbsp;&nbsp;
-	<input type="button" value="<?php etranslate("Load Timezone Data");?>" onclick="window.open('load_tz_data.php','Loading Timezone Data','dependent,height=200,width=400,outerHeight=220,outerWidth=420');" name="" />
+ <input type="button" value="<?php etranslate("Load Timezone Data");?>" onclick="window.open('load_tz_data.php','Loading Timezone Data','dependent,height=200,width=400,outerHeight=220,outerWidth=420');" name="" />
 </td></tr>
  <tr><td class="tooltipselect" title="<?php etooltip("date-format-help");?>">
   <?php etranslate("Date format")?>:</td><td>
@@ -231,7 +231,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
      "__month__ __dd__, __yyyy__", translate("December") . " 31, 2000",
      "__dd__ __month__, __yyyy__", "31 " . translate("December") . ", 2000",
      "__dd__-__month__-__yyyy__", "31-" . translate("December") . "-2000",
-    "__dd__.__month__ __yy__", "31." . translate("December") . " 2000",
+    "__dd__.__month__ __yy__", "31. " . translate("December") . " 2000",
      "__dd__-__month__-__yy__", "31-" . translate("December") . "-00",
      "__mm__/__dd__/__yyyy__", "12/31/2000",
      "__mm__/__dd__/__yy__", "12/31/00",
