@@ -4,8 +4,6 @@ include_once 'includes/init.php';
 function print_color_sample ( $color ) {
   echo "<table style=\"border-width:0px;\"><tr><td style=\"background-color:$color;\">&nbsp;&nbsp;</td></tr></table>";
 }
-
-
 // I know we've already loaded the global settings above, but read them
 // in again and store them in a different place because they may have
 // been superceded by local user preferences.
@@ -35,7 +33,7 @@ if ( empty ( $s['override_public_text'] ) )
   $s['override_public_text'] = translate("Unavailable");
 
 
-$BodyX = 'onload="public_handler(); eu_handler(); email_handler();"';
+$BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); email_handler();"';
 $INC = array('js/admin.php','js/visible.php');
 print_header ( $INC, '', $BodyX );
 ?>
@@ -627,6 +625,25 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <label><input type="radio" name="admin_external_reminders" value="Y" <?php if ( $s["external_reminders"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
   <label><input type="radio" name="admin_external_reminders" value="N" <?php if ( $s["external_reminders"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
+ 
+ <!-- BEGIN SELF REGISTRATION -->
+
+ <tr><td class="tooltip" title="<?php etooltip("allow-self-registration-help")?>">
+  <?php etranslate("Allow self-registration")?>:</td><td>
+  <label><input type="radio" name="admin_allow_self_registration" value="Y" <?php if ( ! empty ( $s["allow_self_registration"] ) && $s["allow_self_registration"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_allow_self_registration" value="N" <?php if ( ! empty ( $s["allow_self_registration"] ) && $s["allow_self_registration"] != "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>
+ <tr id="sr1"><td class="tooltip" title="<?php etooltip("use-blacklist-help")?>">
+  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Restrict self-registration to blacklist" )?>:</td><td>
+  <label><input type="radio" name="admin_self_registration_blacklist" value="Y" <?php if ( ! empty ( $s["self_registration_blacklist"] ) && $s["self_registration_blacklist"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_self_registration_blacklist" value="N" <?php if ( ! empty ( $s["self_registration_blacklist"] ) && $s["self_registration_blacklist"] != "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>
+ <tr id="sr2"><td class="tooltip" title="<?php etooltip("allow-self-registration-full-help")?>">
+  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Use self-registration email notifications" )?>:</td><td>
+  <label><input type="radio" name="admin_self_registration_full" value="Y" <?php if ( ! empty ( $s["self_registration_full"] ) && $s["self_registration_full"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_self_registration_full" value="N" <?php if ( ! empty ( $s["self_registration_full"] ) && $s["self_registration_full"] != "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>
+<!-- TODO add account aging feature -->
 </table>
 </div>
 

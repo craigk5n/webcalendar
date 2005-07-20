@@ -245,7 +245,9 @@ Table cell background for current day: Table cell background for current day
 Table cell background for weekends: Table cell background for weekends
 Event popup background: Event popup background
 Event popup text: Event popup text
-
+Allow self-registration: Allow self-registration
+Restrict self-registration to blacklist: Restrict self-registration to blacklist
+Use self-registration email notifications
 
 ###############################################
 # Page: activity_log.php
@@ -504,7 +506,7 @@ rss-feed-url-help: The URL to access the RSS feed
 freebusy-enabled-help: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
 Enable FreeBusy publishing: Enable FreeBusy publishing
 freebusy-url-help: The URL for accessing the user's FreeBusy list
-
+display_byproxy-help: Display the real creator on view_entry page
 
 ###############################################
 # Page: layers.php
@@ -659,7 +661,26 @@ Save login via cookies so I don't have to login next time: Save login via cookie
 Login: Login
 Access public calendar: Access public calendar
 cookies-note: <b>Note:</b> This application requires cookies to be enabled.
+Not yet registered? Register here!: Not yet registered? Register here!
 
+###############################################
+# Page: register.php
+#
+Registration: Registration
+Welcome to WebCalendar: Welcome to WebCalendar
+Return to Login screen: Return to Login screen
+Username already exists: Username already exists
+Email address can not be blank: Email address can not be blank
+Email address already exists: Email address already exists
+Illegal characters in login: Illegal characters in login
+Your account information will be emailed to you: Your account information will be emailed to you
+A new WebCalendar account has been set up for you: A new WebCalendar account has been set up for you
+Your username is: Your username is
+Your password is: Your password is
+Your email should arrive shortly: Your email should arrive shortly
+to log in and start using your account; to log in and start using your account
+You may change your password after logging in the first time: You may change your password after logging in the first time
+If you received this email in error: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note 
 
 ###############################################
 # Page: views.php
