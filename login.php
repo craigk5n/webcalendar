@@ -41,7 +41,7 @@ if ( ! empty ( $return_path ) ) {
   $return_path = clean_whitespace ( $return_path );
   $url = $return_path;
 } else {
-  $url = "index.php";
+  $url = "month.php";
 }
 
 $lang = '';
@@ -117,6 +117,7 @@ if ( $single_user == "Y" ) {
       } else {
         SetCookie ( "webcalendar_login", $login, 0, $cookie_path );
       }
+      if ( ! empty ( $GLOBALS["url"] ) ) $url = $GLOBALS["url"];
       do_redirect ( $url );
     } else {
       // Invalid login
@@ -280,7 +281,19 @@ if ( ! empty ( $return_path ) ) {
  // This is used on the sourceforge demo page
  echo "Demo login: user = \"demo\", password = \"demo\"<br />";
 } ?>
-<br /><br /><br />
+<br /><br />
+<?php if ( $allow_self_registration == "Y" ) { 
+  // We can limit what domain is allowed to self register
+  // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
+  if ( ! empty ( $self_registration_domain ) ) {
+    $valid_ip = validate_domain ( $self_registration_domain );
+ }
+ if ( ! empty ( $valid_ip ) || empty ( $self_registration_domain ) ) {
+    echo "<b><a href='register.php'>" . translate ( "Not yet registered? Register here!" ) . 
+     "</a></b><br /><br />";
+  }
+}
+?>
 <span class="cookies"><?php etranslate("cookies-note")?></span><br />
 <hr />
 <br /><br />

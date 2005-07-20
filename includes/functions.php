@@ -3489,7 +3489,6 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
        $newdate = date ( "Ymd", mktime ( 0, 0, 0, $m, $d - 1, $y ) );
     }
   }
-
   // if they have not set a preference yet...
   if ( $DATE_FORMAT == "" )
     $DATE_FORMAT = "__month__ __dd__, __yyyy__";
@@ -5061,4 +5060,84 @@ global $TZ_COMPLETE_LIST;
   }
   return $ret;
 }
+
+/*
+* Checks to see if user's IP in in the IP Domain
+* specified by the /icludes/blacklist.php file
+*
+* @return bool <b>Is user's IP in required domain?</b>
+*/
+function validate_domain ( ) {
+
+  $ip_authorized = false;
+  $deny_found = array();
+  $deny_true = false;
+  $allow_found = array();
+  $allow_true = false;
+  $rmt_ip = explode( ".",  $_SERVER['REMOTE_ADDR'] );
+  $fd = @fopen ( 'includes/blacklist.php', "rb", true );
+  if ( ! empty ( $fd ) ) {
+    // We don't use fgets() since it seems to have problems with Mac-formatted
+    // text files.  Instead, we read in the entire file, then split the lines
+    // manually.
+    $data = '';
+    while ( ! feof ( $fd ) ) {
+      $data .= fgets ( $fd, 4096 );
+    }
+    fclose ( $fd );
+
+    // Replace any combination of carriage return (\r) and new line (\n)
+    // with a single new line.
+    $data = preg_replace ( "/[\r\n]+/", "\n", $data );
+
+    // Split the data into lines.
+    $blacklistLines = explode ( "\n", $data );
+
+    for ( $n = 0; $n < count ( $blacklistLines ); $n++ ) {
+      $buffer = $blacklistLines[$n];
+      $buffer = trim ( $buffer, "\r\n " );
+      if ( preg_match ( "/^#/", $buffer ) )
+        continue; 
+      if ( preg_match ( "/(\S+):\s*(\S+):\s*(\S+)/", $buffer, $matches ) ) {
+        $permission = $matches[1];
+        $blacklist_ip = explode( ".",  $matches[2] );
+        $blacklist_nm = explode( ".",  $matches[3] );
+        if ( $permission == "deny" ) {
+          for ( $i = 0; $i < 4; $i++ ) {
+            // Do bitwise AND on IP and Netmask
+            if ( (abs($rmt_ip[$i]) & abs($blacklist_nm[$i])) == 
+              (abs($blacklist_ip[$i]) & abs($blacklist_nm[$i])) ) {
+              $deny_found[$i] = 1;          
+            } else {
+              $deny_found[$i] = 0;      
+            }    
+          }
+          //This value will be true if rmt_ip is any deny network
+          // Once set, it can not be reset be other deny statements 
+          if ( ! array_search ( 0, $deny_found ) ) {
+            $deny_true = true;   
+          } 
+        } else if ( $permission == "allow" ) {
+          for ( $i = 0; $i < 4; $i++ ) {
+            // Do bitwise AND on IP and Netmask
+            if ( (abs($rmt_ip[$i]) & abs($blacklist_nm[$i])) == 
+              (abs($blacklist_ip[$i]) & abs($blacklist_nm[$i])) ) {
+              $allow_found[$i] = 1;           
+            } else {
+              $allow_found[$i] = 0;     
+            }    
+          }
+          //This value will be true if rmt_ip is any allow network
+          // Once set, it can not be reset be other allow statements 
+          if ( ! array_search ( 0, $allow_found ) ) {
+            $allow_true = true;    
+          }
+        }
+      }
+    } //end for loop
+    $ip_authorized = ( $deny_true == true && $allow_true == false? false : true ); 
+  } // if fd not empty
+  return $ip_authorized;
+}
+
 ?>

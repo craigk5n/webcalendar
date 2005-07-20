@@ -2,9 +2,9 @@
 <!-- <![CDATA[
 // error check the colors
 function valid_color ( str ) {
-	var validColor = /^#[0-9a-fA-F]{3}$|^#[0-9a-fA-F]{6}$/;
+ var validColor = /^#[0-9a-fA-F]{3}$|^#[0-9a-fA-F]{6}$/;
 
-	return validColor.test ( str );
+ return validColor.test ( str );
 }
 
 function valid_form ( form ) {
@@ -90,17 +90,17 @@ function selectColor ( color ) {
 //   <td><input onkeyup="updateColor(this);" /></td>
 //   <td>(this is the cell to be updated)</td>
 function updateColor ( input ) {
-	// The cell to be updated
-	var colorCell = input.parentNode.nextSibling;
-	// The new color
-	var color = input.value;
+ // The cell to be updated
+ var colorCell = input.parentNode.nextSibling;
+ // The new color
+ var color = input.value;
 
-	if (!valid_color ( color ) ) {
-	  // Color specified is invalid; use black instead
-		colorCell.style.backgroundColor = "#000000";
-	} else {
-		colorCell.style.backgroundColor = color;
-	}
+ if (!valid_color ( color ) ) {
+   // Color specified is invalid; use black instead
+  colorCell.style.backgroundColor = "#000000";
+ } else {
+  colorCell.style.backgroundColor = color;
+ }
 }
 
 // Gets called on page load and when user changes setting for
@@ -153,6 +153,20 @@ function eu_handler () {
 }
 
 // Gets called on page load and when user changes setting for
+// "Allow self registration".
+function sr_handler () {
+  var enabled = document.prefform.admin_allow_self_registration[0].checked;
+  if ( enabled ) {
+    // Self Registration enabled
+    makeVisible ( "sr1" );
+    makeVisible ( "sr2" );
+  } else {
+    makeInvisible ( "sr1" );
+    makeInvisible ( "sr2" );
+  }
+}
+
+// Gets called on page load and when user changes setting for
 // "Email enabled".
 function email_handler () {
   var enabled = document.prefform.admin_send_email[0].checked;
@@ -178,7 +192,7 @@ function email_handler () {
 }
 
 <?php //see the showTab function in includes/js.php for common code shared by all pages
-	//using the tabbed GUI.
+ //using the tabbed GUI.
 ?>var tabs = new Array();
 tabs[1] = "settings";
 tabs[2] = "public";

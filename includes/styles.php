@@ -934,6 +934,7 @@ th {
   margin-bottom: 50px;
   text-align: center;
 }
+#register table,
 #login table {
   border: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   <?php echo background_css ( $GLOBALS['CELLBG'], 200 ); ?>
@@ -951,6 +952,9 @@ th {
 }
 abbr {
   cursor: help;
+}
+.strikethrough {
+  text-decoration : line-through;
 }
 -->
 </style>

@@ -51,7 +51,7 @@ class WebCalendar {
    * @todo Make it possible to distinguish between files in different directories (e.g. login.php and ws/login.php).
    */
   var $_filePhaseMap = array(
-    '/^(nulogin|login|freebusy|publish|rss|upcoming|week_ssi)\.php$/' =>
+    '/^(nulogin|login|freebusy|publish|register|rss|upcoming|week_ssi)\.php$/' =>
       array(array('Config', 'PHPDBI', 'Functions'),
             array('User', 'Connect')),
     '/^(icalclient|get_reminders|get_events)\.php$/' =>
@@ -276,6 +276,7 @@ class WebCalendar {
       "pref.php" => "pref",
       "publish.php" => "publish",
       "purge.php" => "purge",
+      "register.php" => "register",
       "reject_entry.php" => "rejectentry",
       "report.php" => "report",
       "search.php" => "search",
@@ -628,13 +629,15 @@ class WebCalendar {
     /**#@+
      * Used for activity log
      */
-    define ( 'LOG_CREATE',       'C' );
-    define ( 'LOG_APPROVE',      'A' );
-    define ( 'LOG_REJECT',       'X' );
-    define ( 'LOG_UPDATE',       'U' );
-    define ( 'LOG_DELETE',       'D' );
-    define ( 'LOG_NOTIFICATION', 'N' );
-    define ( 'LOG_REMINDER',     'R' );
+    define ( 'LOG_CREATE',        'C' );
+    define ( 'LOG_APPROVE',       'A' );
+    define ( 'LOG_REJECT',        'X' );
+    define ( 'LOG_UPDATE',        'U' );
+    define ( 'LOG_DELETE',        'D' );
+    define ( 'LOG_NOTIFICATION',  'N' );
+    define ( 'LOG_REMINDER',      'R' );
+    define ( 'LOG_NEWUSER_FULL',  'F' );
+    define ( 'LOG_NEWUSER_EMAIL', 'E' );
     /**#@-*/
 
     /**
@@ -701,6 +704,7 @@ class WebCalendar {
       "user_can_update_password" => 1,
       "admin_can_add_user" => 1,
       "admin_can_delete_user" => 1,
+   "allow_selfreg" => 1
     );
 
     // This code is a temporary hack to make the application work when
@@ -1223,6 +1227,7 @@ class WebCalendar {
         strstr ( $PHP_SELF, "pref.php" ) ||
         strstr ( $PHP_SELF, "pref_handler.php" ) ||
         strstr ( $PHP_SELF, "purge.php" ) ||
+        strstr ( $PHP_SELF, "register.php" ) ||
         strstr ( $PHP_SELF, "reject_entry.php" ) ||
         strstr ( $PHP_SELF, "set_entry_cat.php" ) ||
         strstr ( $PHP_SELF, "users.php" ) ||
@@ -1298,7 +1303,7 @@ class WebCalendar {
     // The following pages will be handled differently than the others
     // since they have different uses.  For example, edit_user.php
     // adds a user when the user is an admin.  If the user is not an
-    // admin, it updates account info.
+    // admin, it updates account info. Register is just for new users.
     // Most of the pages have dual uses, so we will have access checks within
     // these files.
     $GLOBALS['page_lookup_ex'] = array (
@@ -1307,6 +1312,7 @@ class WebCalendar {
       "edit_template.php" => 1,
       "edit_user.php" => 1,
       "edit_user_handler.php" => 1,
+      "register.php" => 1,
     );
 
     /**
