@@ -561,7 +561,7 @@ function send_no_cache_header () {
  *   preference and no global value has been set by the administrator in the
  *   system settings.
  */
-function load_user_preferences () {
+function load_user_preferences ( $guest='') {
   global $login, $browser, $views, $prefarray, $is_assistant,
     $has_boss, $user, $is_nonuser_admin, $allow_color_customization;
   $lang_found = false;
@@ -576,7 +576,10 @@ function load_user_preferences () {
     "POPUP_BG" => 1,
     "POPUP_FG" => 1,
   );
-
+ 
+ //allow __public__ pref to be used if logging in or user not validated
+  $tmp_login = ( ! empty ( $guest )? "__public__" : $login );
+ 
   $browser = get_web_browser ();
   $browser_lang = get_browser_language ();
   $prefarray = array ();
@@ -584,7 +587,7 @@ function load_user_preferences () {
   // Note: default values are set in config.php
   $res = dbi_query (
     "SELECT cal_setting, cal_value FROM webcal_user_pref " .
-    "WHERE cal_login = '$login'" );
+    "WHERE cal_login = '$tmp_login'" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $setting = $row[0];
@@ -608,7 +611,7 @@ function load_user_preferences () {
   $res = dbi_query (
     "SELECT cal_view_id, cal_name, cal_view_type, cal_is_global " .
     "FROM webcal_view " .
-    "WHERE cal_owner = '$login' OR cal_is_global = 'Y' " .
+    "WHERE cal_owner = '$tmp_login' OR cal_is_global = 'Y' " .
     "ORDER BY cal_name" );
   if ( $res ) {
     $views = array ();
@@ -636,11 +639,11 @@ function load_user_preferences () {
   // If user has not set a language preference, then use their browser
   // settings to figure it out, and save it in the database for future
   // use (email reminders).
-  if ( ! $lang_found && strlen ( $login ) && $login != "__public__" ) {
+  if ( ! $lang_found && strlen ( $tmp_login ) && $tmp_login != "__public__" ) {
     $LANGUAGE = $browser_lang;
     dbi_query ( "INSERT INTO webcal_user_pref " .
       "( cal_login, cal_setting, cal_value ) VALUES " .
-      "( '$login', 'LANGUAGE', '$LANGUAGE' )" );
+      "( '$tmp_login', 'LANGUAGE', '$LANGUAGE' )" );
   }
 
   if ( empty ( $GLOBALS["DATE_FORMAT_MY"] ) )
@@ -648,9 +651,9 @@ function load_user_preferences () {
   if ( empty ( $GLOBALS["DATE_FORMAT_MD"] ) )
     $GLOBALS["DATE_FORMAT_MD"] = "__month__ __dd__";
   $is_assistant = empty ( $user ) ? false :
-    user_is_assistant ( $login, $user );
-  $has_boss = user_has_boss ( $login );
-  $is_nonuser_admin = ($user) ? user_is_nonuser_admin ( $login, $user ) : false;
+    user_is_assistant ( $tmp_login, $user );
+  $has_boss = user_has_boss ( $tmp_login );
+  $is_nonuser_admin = ($user) ? user_is_nonuser_admin ( $tmp_login, $user ) : false;
   if ( $is_nonuser_admin ) load_nonuser_preferences ($user);
 }
 
