@@ -751,7 +751,7 @@ if ( $single_user == "N" && $show_participants ) {
  ?> />&nbsp;<?php etranslate("Use end date")?></label>
  &nbsp;&nbsp;&nbsp;
  <span class="end_day_selection"><?php
-  print_date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date )
+  print_date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date, true )
  ?></span>
 </td></tr>
 <tr id="rptfreq" style="visibility:hidden;" title="<?php etooltip("repeat-frequency-help")?>"><td class="tooltip">
