@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Implemented PATCH [ 587965 ] Entry &quot;use end date&quot; auto-selection
  - Added self-registration based on PATCH [1067168] User self registration
  - Modified trailer.php to prevent invalid dates (<1970 && > 2037) from 
    being created in the pulldowm menus.
