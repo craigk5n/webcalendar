@@ -1,5 +1,5 @@
 <?php
-	global $groups_enabled,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
+ global $groups_enabled,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
 ?><script type="text/javascript">
 <!-- <![CDATA[
 // do a little form verifying
@@ -94,7 +94,7 @@ function selectDate (  day, month, year, current, evt ) {
   curyear = yearobj.options[yearobj.selectedIndex].value;
   date = curyear;
 
-		if (document.getElementById) {
+  if (document.getElementById) {
     mX = evt.clientX   + 40;
     mY = evt.clientY  + 120;
   }
@@ -102,7 +102,7 @@ function selectDate (  day, month, year, current, evt ) {
     mX = evt.pageX + 40;
     mY = evt.pageY +130;
   }
-	var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY ;
+ var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY ;
   if ( curmonth < 10 )
     date += "0";
   date += curmonth;
@@ -125,7 +125,7 @@ function selectDate (  day, month, year, current, evt ) {
   for ( i = 0, j = 0; i < document.editentryform.elements[listid].length; i++ ) {
     if ( document.editentryform.elements[listid].options[i].selected ) {
       if ( j != 0 )
-	       url += ",";
+        url += ",";
       j++;
       url += document.editentryform.elements[listid].options[i].value;
     }
@@ -137,11 +137,11 @@ function selectDate (  day, month, year, current, evt ) {
 }
 <?php } ?>
 
-<?php	// This function is called when the event type combo box 
-	// is changed. If the user selectes "untimed event" or "all day event",
-	// the times & duration fields are hidden.
-	// If they change their mind & switch it back, the original 
-	// values are restored for them
+<?php // This function is called when the event type combo box 
+ // is changed. If the user selectes "untimed event" or "all day event",
+ // the times & duration fields are hidden.
+ // If they change their mind & switch it back, the original 
+ // values are restored for them
 ?>function timetype_handler () {
   var i = document.editentryform.timetype.selectedIndex;
   var val = document.editentryform.timetype.options[i].text;
@@ -189,7 +189,7 @@ function rpttype_handler () {
 }
 
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
-	//using the tabbed GUI.
+ //using the tabbed GUI.
 ?>
 var tabs = new Array();
 tabs[0] = "details";
@@ -244,6 +244,8 @@ function showSchedule () {
      sch_win = window.open( url, "showSchedule", features );
   }
 }
-
+function rpt_datechanged () {
+  document.editentryform.rpt_end_use.checked = true;
+}
 //]]> -->
 </script>

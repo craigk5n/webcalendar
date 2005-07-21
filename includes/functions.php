@@ -1135,11 +1135,13 @@ function build_event_popup ( $popupid, $user, $description, $time, $site_extras=
  *
  * @param string $prefix Prefix to use in front of form element names
  * @param string $date   Currently selected date (in YYYYMMDD format)
- *
+ * @param bool $trigger   Add onchange event trigger that
+ *  calls javascript function $prefix_datechanged()
+  *
  * @uses date_selection_html
  */
-function print_date_selection ( $prefix, $date ) {
-  print date_selection_html ( $prefix, $date );
+function print_date_selection ( $prefix, $date, $trigger=false ) {
+  print date_selection_html ( $prefix, $date, $trigger );
 }
 
 /**
@@ -1147,12 +1149,15 @@ function print_date_selection ( $prefix, $date ) {
  *
  * @param string $prefix Prefix to use in front of form element names
  * @param string $date   Currently selected date (in YYYYMMDD format)
+ * @param bool $trigger   Add onchange event trigger that
+ *  calls javascript function $prefix_datechanged()
  *
  * @return string HTML for the selection box
  */
-function date_selection_html ( $prefix, $date ) {
+function date_selection_html ( $prefix, $date, $trigger=false ) {
   $ret = "";
   $num_years = 20;
+ $trigger_str = ( ! empty ( $trigger )? $prefix . "datechanged()" : "");
   if ( strlen ( $date ) != 8 )
     $date = date ( "Ymd" );
   $thisyear = $year = substr ( $date, 0, 4 );
@@ -1160,24 +1165,24 @@ function date_selection_html ( $prefix, $date ) {
   $thisday = $day = substr ( $date, 6, 2 );
   if ( $thisyear - date ( "Y" ) >= ( $num_years - 1 ) )
     $num_years = $thisyear - date ( "Y" ) + 2;
-  $ret .= "<select name=\"" . $prefix . "day\">\n";
+  $ret .= "<select name=\"" . $prefix . "day\" onchange=\"$trigger_str\">\n";
   for ( $i = 1; $i <= 31; $i++ )
     $ret .= "<option value=\"$i\"" .
       ( $i == $thisday ? " selected=\"selected\"" : "" ) . ">$i</option>\n";
-  $ret .= "</select>\n<select name=\"" . $prefix . "month\">\n";
+  $ret .= "</select>\n<select name=\"" . $prefix . "month\" onchange=\"$trigger_str\">\n";
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
     $ret .= "<option value=\"$i\"" .
       ( $i == $thismonth ? " selected=\"selected\"" : "" ) . ">$m</option>\n";
   }
-  $ret .= "</select>\n<select name=\"" . $prefix . "year\">\n";
+  $ret .= "</select>\n<select name=\"" . $prefix . "year\" onchange=\"$trigger_str\">\n";
   for ( $i = -10; $i < $num_years; $i++ ) {
     $y = $thisyear + $i;
     $ret .= "<option value=\"$y\"" .
       ( $y == $thisyear ? " selected=\"selected\"" : "" ) . ">$y</option>\n";
   }
   $ret .= "</select>\n";
-  $ret .= "<input type=\"button\" onclick=\"selectDate( '" .
+  $ret .= "<input type=\"button\" onclick=\"$trigger_str;selectDate( '" .
     $prefix . "day','" . $prefix . "month','" . $prefix . "year',$date, event)\" value=\"" .
     translate("Select") . "...\" />\n";
 
