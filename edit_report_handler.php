@@ -3,36 +3,36 @@
  * $Id$
  *
  * Page Description:
- *	This page will handle the form submission from edit_report.php
- *	and either add, update or delete a report.
+ * This page will handle the form submission from edit_report.php
+ * and either add, update or delete a report.
  *
  * Input Parameters:
- *	report_id (optional) - the report id of the report to edit.
- *	  If blank, user is adding a new report.
- *	public (optional) - If set to '1' and user is an admin user,
- *	  then we are creating a report for the public user.
- *	report_name
- *	report_user
- *	is_global (Y or N)
- *	include_header (Y or N)
- *	time_range
- *	cat_id
- *	allow_nav
- *	include_empty
- *	show_in_trailer
- *	action (if 'delete' button pressed)
- *	page_template
- *	day_template
- *	event_template
+ * report_id (optional) - the report id of the report to edit.
+ *   If blank, user is adding a new report.
+ * public (optional) - If set to '1' and user is an admin user,
+ *   then we are creating a report for the public user.
+ * report_name
+ * report_user
+ * is_global (Y or N)
+ * include_header (Y or N)
+ * time_range
+ * cat_id
+ * allow_nav
+ * include_empty
+ * show_in_trailer
+ * action (if 'delete' button pressed)
+ * page_template
+ * day_template
+ * event_template
  *
  * Security:
- *	Same as in edit_report.php...
- *	If system setting $reports_enabled is set to anything other than
- *	  'Y', then don't allow access to this page.
- *	If $allow_view_other is 'N', then do not allow selection of
- *	  participants.
- *	Can only delete/edit an event if you are the creator of the event
- *	  or you are an admin user.
+ * Same as in edit_report.php...
+ * If system setting $reports_enabled is set to anything other than
+ *   'Y', then don't allow access to this page.
+ * If $allow_view_other is 'N', then do not allow selection of
+ *   participants.
+ * Can only delete/edit an event if you are the creator of the event
+ *   or you are an admin user.
  */
 include_once 'includes/init.php';
 load_user_categories ();
@@ -111,7 +111,7 @@ if ( empty ( $error ) ) {
 }
 
 if ( empty ( $error ) && ! empty ( $report_id ) && ! empty ( $action )
-     && ( $action == "Delete" || $action == translate ( "Delete" ) ) ) {
+     && ( $action == "Delete" || $action == html_entity_decode ( translate ("Delete") ) ) ) {
   if ( ! dbi_query ( "DELETE FROM webcal_report_template " .
     "WHERE cal_report_id = $report_id" ) )
     $error = translate("Database error") . ": " . dbi_error ();

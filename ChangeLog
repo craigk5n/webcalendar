@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug  1242309: New created user cannot be deleted
+ - Fixed bug  1232617: Views cannot be deleted
  - Fixed bug 1242843: prefered view will not be properly displayed after Log in
  - Implemented RFE 1095248: Error check weekly repeating events
  - Fixed small bug if using 59 minutes for event time.
