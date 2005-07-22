@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Implemented RFE 1095248: Error check weekly repeating events
+ - Fixed small bug if using 59 minutes for event time.
  - FIxed bug 1225818: Invalid login adds entry to webcal_user_pref
  - Implemented PATCH [ 587965 ] Entry &quot;use end date&quot; auto-selection
  - Added self-registration based on PATCH [1067168] User self registration

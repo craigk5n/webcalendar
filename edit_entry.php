@@ -711,7 +711,7 @@ if ( $single_user == "N" && $show_participants ) {
 <table>
 <tr style="vertical-align:top;"><td class="tooltip" title="<?php etooltip("repeat-type-help")?>">
  <label for="rpttype"><?php etranslate("Repeat Type")?>:</label></td><td>
- <select name="rpt_type" id="rpttype" onchange="rpttype_handler()">
+ <select name="rpt_type" id="rpttype" onchange="rpttype_handler();rpttype_weekly()">
 <?php
  echo "  <option value=\"none\"" . 
   ( strcmp ( $rpt_type, 'none' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
