@@ -10,7 +10,7 @@ if ( ! $is_admin ) {
 }
 $error = "";
 
-if ( $action == "Delete" || $action == translate ("Delete") ) {
+if ( $action == "Delete" || $action == html_entity_decode ( translate ("Delete") ) ) {
   // delete this nonuser calendar
   $user = $nid;
 
@@ -56,7 +56,7 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
      $error = translate ("Database error") . ": " . dbi_error();
 
 } else {
-  if ( $action == "Save" || $action == translate ("Save") ) {
+  if ( $action == "Save" || $action == html_entity_decode ( translate ("Save") ) ) {
   // Updating
     $sql = "UPDATE webcal_nonuser_cals SET ";
     if ($nlastname) $sql .= " cal_lastname = '$nlastname', ";

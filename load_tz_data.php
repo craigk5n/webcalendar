@@ -8,7 +8,7 @@
  *
  *
  * Security:
- *	Admin permissions are checked by the WebCalendar class.
+ * Admin permissions are checked by the WebCalendar class.
  */
 include_once 'includes/init.php';
 include_once 'install/tz_import.php';
@@ -21,7 +21,7 @@ if ( ! $is_admin ) {
 //  access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) );
 
 $action = getPostValue ( 'action' );
-if ( ! empty ( $action ) && $action == translate('Load')  ) {
+if ( ! empty ( $action ) && $action == html_entity_decode ( translate('Load') ) ) {
   $ret = do_tz_import ( "install/timezone/" );
 }
 
@@ -67,7 +67,7 @@ if ( ! empty ( $error ) ) {
   </form>   
 <?php }  ?>
 <?php }
-	print_trailer ( false, true, true );
+ print_trailer ( false, true, true );
 ?>
 </body>
 </html>

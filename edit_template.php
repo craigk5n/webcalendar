@@ -3,17 +3,17 @@
  * $Id$
  *
  * Page Description:
- *	This page will present the HTML form to edit an entry
- *	in the cal_report table, and this page will also process the
- *	form.
- *	This is only used for editing the custom header/trailer.
- *	The report_id is always 0.
+ * This page will present the HTML form to edit an entry
+ * in the cal_report table, and this page will also process the
+ * form.
+ * This is only used for editing the custom header/trailer.
+ * The report_id is always 0.
  *
  * Input Parameters:
- *	type - "header" or "trailer"
+ * type - "header" or "trailer"
  *
  * Security:
- *	Admin permissions are checked by the WebCalendar class.
+ * Admin permissions are checked by the WebCalendar class.
  */
 include_once 'includes/init.php';
 
@@ -72,7 +72,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   // Was this a delete request?
   $action = getPostValue ( 'action' );
   if ( $user != '__system__' && ! empty ( $action ) &&
-    ( $action == 'Delete' || $action == translate ( 'Delete' ) ) ) {
+    ( $action == 'Delete' || $action == html_entity_decode ( translate ("Delete") ) ) ) {
     dbi_query ( "DELETE FROM webcal_user_template " .
       "WHERE cal_type = '$type' " .
       "AND cal_login = '$user'" );
@@ -158,7 +158,7 @@ if ( ! empty ( $error ) ) {
 </form>
 
 <?php }
-	print_trailer ( false, true, true );
+ print_trailer ( false, true, true );
 ?>
 </body>
 </html>
