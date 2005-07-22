@@ -41,7 +41,7 @@ if ( ! empty ( $return_path ) ) {
   $return_path = clean_whitespace ( $return_path );
   $url = $return_path;
 } else {
-  $url = "month.php";
+  $url = "index.php";
 }
 
 $lang = '';
@@ -117,7 +117,6 @@ if ( $single_user == "Y" ) {
       } else {
         SetCookie ( "webcalendar_login", $login, 0, $cookie_path );
       }
-      if ( ! empty ( $GLOBALS["url"] ) ) $url = $GLOBALS["url"];
       do_redirect ( $url );
     } else {
       // Invalid login
