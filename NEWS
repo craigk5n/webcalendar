@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1242843: prefered view will not be properly displayed after Log in
       1225818: Invalid login adds entry to webcal_user_pref
       1220248: Get an Error using the 'Availability'
       1220256: Get Error using the 'Select' button for assistents
