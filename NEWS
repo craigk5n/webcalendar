@@ -1,5 +1,6 @@
 Version 1.0.1-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1204229: "Untimed event" default broken since bug 1202127 fix
       1205680: upcoming.php was including unapproved.  will now use
         user preferences for displaying unapproved.
       1212667: Install script - Database Type Problem

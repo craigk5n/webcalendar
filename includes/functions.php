@@ -2818,11 +2818,11 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   }
   if ( ! empty ( $user ) && $user != $login )
     $u_url = "user=$user&amp;";
-  if ( isset ( $hour ) )
+  if ( isset ( $hour ) && $hour != NULL )
     $hour += $TZ_OFFSET;
   return "<a title=\"" . 
  translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
-    "date=$date" . ( $hour >= 0 ? "&amp;hour=$hour" : "" ) .
+    "date=$date" . ( isset ( $hour ) && $hour != NULL && $hour >= 0 ? "&amp;hour=$hour" : ""  ) .
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&amp;defusers=$user" ) .
     ( empty ( $cat_id ) ? "" :  "&amp;cat_id=$cat_id" ) .
