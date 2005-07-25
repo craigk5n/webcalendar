@@ -4,7 +4,7 @@ include_once 'includes/init.php';
 if ( ! $is_admin )
   $user = $login;
 
-$INC = array('js/users.php','js/visible.php');
+$INC = array('js/views.php','js/visible.php');
 print_header($INC);
 ?>
 
