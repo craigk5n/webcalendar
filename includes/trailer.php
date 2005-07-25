@@ -256,9 +256,13 @@ if ( $single_user != "Y" ) {
   if ( $login != '__public__' && ! $is_nonuser && $readonly == 'N' ) {
     if ( ! access_is_enabled () ||
       access_can_access_function ( ACCESS_ADMIN_HOME ) )
+        $url = 'adminhome.php';
+        if ($is_nonuser_admin) {
+          $url .= "?user=$user";
+        }
       $goto_link[] = "<a title=\"" . 
         translate("Admin") . "\" style=\"font-weight:bold;\" " .
-        "href=\"adminhome.php\">" . 
+        "href=\"$url\">" . 
         translate("Admin") . "</a>";
   }
   if ( $login != "__public__" && ! $is_nonuser &&  $readonly == "N" &&
