@@ -25,7 +25,7 @@ if ( ! $is_my_event )
 
 
 if ( empty ( $error ) &&
-  ( $action == "Delete" || $action ==  html_entity_decode ( translate ("Delete") ) ) ) {
+  ( $action == "Delete" || $action ==  translate ("Delete") ) ) {
   // delete this category
   if ( $is_admin ) {
     if ( ! dbi_query ( "DELETE FROM webcal_categories " .

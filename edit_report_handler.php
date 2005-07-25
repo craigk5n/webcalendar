@@ -111,7 +111,7 @@ if ( empty ( $error ) ) {
 }
 
 if ( empty ( $error ) && ! empty ( $report_id ) && ! empty ( $action )
-     && ( $action == "Delete" || $action == html_entity_decode ( translate ("Delete") ) ) ) {
+     && ( $action == "Delete" || $action == translate ("Delete") ) ) {
   if ( ! dbi_query ( "DELETE FROM webcal_report_template " .
     "WHERE cal_report_id = $report_id" ) )
     $error = translate("Database error") . ": " . dbi_error ();

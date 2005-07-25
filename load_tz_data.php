@@ -21,7 +21,7 @@ if ( ! $is_admin ) {
 //  access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) );
 
 $action = getPostValue ( 'action' );
-if ( ! empty ( $action ) && $action == html_entity_decode ( translate('Load') ) ) {
+if ( ! empty ( $action ) && $action == translate('Load') ) {
   $ret = do_tz_import ( "install/timezone/" );
 }
 

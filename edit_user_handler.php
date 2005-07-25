@@ -35,7 +35,7 @@ if ( empty ( $user ) ) {
 }
 
 // Handle delete
-if ( ( $action == "Delete" || $action == html_entity_decode ( translate ("Delete") ) ) &&
+if ( ( $action == "Delete" || $action == translate ("Delete") ) &&
   $formtype == "edituser" ) {
   if ( access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
     if ( $admin_can_delete_user ) {

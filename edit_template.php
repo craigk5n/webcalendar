@@ -72,7 +72,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   // Was this a delete request?
   $action = getPostValue ( 'action' );
   if ( $user != '__system__' && ! empty ( $action ) &&
-    ( $action == 'Delete' || $action == html_entity_decode ( translate ("Delete") ) ) ) {
+    ( $action == 'Delete' || $action == translate ("Delete") ) ) {
     dbi_query ( "DELETE FROM webcal_user_template " .
       "WHERE cal_type = '$type' " .
       "AND cal_login = '$user'" );
