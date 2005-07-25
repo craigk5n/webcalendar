@@ -988,7 +988,7 @@ function format_site_extras ( $extras ) {
   $ret = array();
 
   foreach ( $site_extras as $site_extra ) {
-    $date = '';
+    $data = '';
     $extra_name = $site_extra[0];
     $extra_type = $site_extra[2];
     $extra_arg1 = $site_extra[3];
