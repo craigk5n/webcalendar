@@ -427,9 +427,10 @@ if ( empty ( $error ) ) {
           $user_eventstart = $eventstart  + ( $user_TZ[0] * 3600 );
        
        
-          if (($GLOBALS['LANGUAGE'] != $user_language) && 
-            ! empty ( $user_language ) && ( $user_language != 'none' )){
-            reset_language ( $user_language );
+          if ( empty ( $user_language ) || ( $user_language == 'none' )) {
+             reset_language ( $GLOBALS['LANGUAGE'] );
+          } else {
+             reset_language ( $user_language );
           }
    
           $fmtdate = date ( "Ymd", $user_eventstart ); 
@@ -572,8 +573,9 @@ if ( empty ( $error ) ) {
           // Want date/time in user's timezone
           $user_eventstart = $eventstart  + ( $user_TZ[0] * 3600 );
          
-          if (($GLOBALS['LANGUAGE'] != $user_language) && 
-            ! empty ( $user_language ) && ( $user_language != 'none' )) {
+          if ( empty ( $user_language ) || ( $user_language == 'none' )) {
+             reset_language ( $GLOBALS['LANGUAGE'] );
+          } else {
              reset_language ( $user_language );
           }
 
@@ -650,7 +652,7 @@ if ( empty ( $error ) ) {
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
             ( $timetype != 'T' ? "" :
             translate("Time") . ": " .
-	  // Do not apply TZ offset & display TZID, which is GMT
+   // Do not apply TZ offset & display TZID, which is GMT
             display_time ( date ("YmdHis", $eventstart ), 3 ) . "\n" ) .
             translate("Please look on") . " " . translate($application_name) .
             ".";
