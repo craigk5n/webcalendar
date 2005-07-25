@@ -100,6 +100,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 a:hover {
   color: #0000FF;
 }
+#viewsedit,
 #edituser,
 #edituserhandler,
 #groupedit,
@@ -151,7 +152,8 @@ a:hover {
 #tabscontent_nonusers,
 #useriframe,
 #grpiframe,
-#nonusersiframe {
+#nonusersiframe,
+#viewiframe {
   display: none;
 }
 label {
