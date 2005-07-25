@@ -4,7 +4,7 @@ include_once 'includes/init.php';
 if ( ! $is_admin ) {
   $error = "You are not authorized";
 } else  {
-  if ( $action == "Delete" || $action == html_entity_decode ( translate ("Delete") ) ) {
+  if ( $action == "Delete" || $action == translate ("Delete") ) {
     // delete this group
     dbi_query ( "DELETE FROM webcal_group WHERE cal_group_id = $id " );
     dbi_query ( "DELETE FROM webcal_group_user WHERE cal_group_id = $id " );
