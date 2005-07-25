@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1244652: nonuser admins can't set prefs & assistants
       1242309: New created user cannot be deleted
       1232617: Views cannot be deleted
       1242843: prefered view will not be properly displayed after Log in
