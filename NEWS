@@ -22,6 +22,7 @@ Version 1.1.0-CVS (?? ??? 2005)
       Category was lost wan clicking on prev/next month in month.php
       Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added circle.gif in week view to untimed or all day events
     + Implemented RFE 1095248: Error check weekly repeating events
     + Implemented PATCH [ 587965 ] Entry &quot;use end date&quot; auto-selection
     + Added self-registration based on PATCH [1067168] User self registration,
