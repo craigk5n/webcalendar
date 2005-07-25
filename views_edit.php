@@ -26,7 +26,9 @@ if ( $groups_enabled == "Y" ) {
 } else {
   $INC = array( 'js/visible.php');
 }
-print_header ( $INC, "", $BodyX );
+$disableCustom = true;
+
+print_header ( $INC, '', $BodyX, $disableCustom );
 ?>
 
 <form action="views_edit_handler.php" method="post" name="editviewform">
@@ -134,19 +136,18 @@ if ( $newview ) {
 <label><input type="radio" name="viewuserall" value="N" onclick="usermode_handler()"
 <?php
   if ( ! $all_users ) {
-    echo "checked=\"checked\"";
+    echo " checked=\"checked\"";
   }
-?>/>
+?> />
 <?php etranslate("Selected");?></label>
 &nbsp;&nbsp;
 <label><input type="radio" name="viewuserall" value="Y" onclick="usermode_handler()"
 <?php
   if ( $all_users ) {
-    echo "checked=\"checked\"";
+    echo " checked=\"checked\"";
   }
-?>/>
-<?php etranslate("All");?></label>
-<br/>
+?> /><?php etranslate("All");?></label>
+<br />
 <div id="viewuserlist">
 &nbsp;&nbsp;
 	<select name="users[]" id="viewusers" size="10" multiple="multiple">
@@ -183,6 +184,6 @@ if ( $newview ) {
 
 </form>
 
-<?php print_trailer(); ?>
+<?php print_trailer ( false, true, true ); ?>
 </body>
 </html>
