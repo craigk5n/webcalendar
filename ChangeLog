@@ -1,4 +1,5 @@
 Version 1.0.1-CVS (?? ??? 2005)
+ - Fixed bug: URLs in month.php did not include '?'
  - Fixed bug 1211309: Notification message language incorrect
  - Fixed bug 1204229: "Untimed event" default broken since bug 1202127 fix
  - Fixed login looping related to register_long_arrays
