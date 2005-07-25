@@ -1,6 +1,5 @@
 <?php
 include_once 'includes/init.php';
-include_once 'includes/classes/class.phpmailer.php';
 load_user_categories ();
 
 $error = "";
@@ -456,33 +455,12 @@ if ( empty ( $error ) ) {
           } else {
             $extra_hdrs = "From: $email_fallback_from\r\nX-Mailer: " . translate($application_name);
           }
-  //        mail ( $tempemail,
-  //          translate($application_name) . " " . translate("Notification") . ": " . $name,
-  //          html_to_8bits ($msg), $extra_hdrs );
+          mail ( $tempemail,
+            translate($application_name) . " " . translate("Notification") . ": " . $name,
+            html_to_8bits ($msg), $extra_hdrs );
           activity_log ( $id, $login, $old_participant, LOG_NOTIFICATION,
      "User removed from participants list" );
-	
-		      $mail = new PHPMailer();
-
-				//	$mail->IsSMTP();                                      // set mailer to use SMTP
-					$mail->Host = "131.118.223.1";  // specify main and backup server
-					$mail->SMTPAuth = false;     // turn on SMTP authentication
-					
-					$mail->From =  "webmaster@umces.edu";
-					$mail->FromName = "Mailer";
-					$mail->AddAddress($tempemail, $tempfullname );
-					$mail->AddReplyTo($extra_hdrs);
-					
-					$mail->WordWrap = 50;                                 // set word wrap to 50 characters
-				//	$mail->AddAttachment("/var/tmp/file.tar.gz");         // add attachments
-				//	$mail->AddAttachment("/tmp/image.jpg", "new.jpg");    // optional name
-					$mail->IsHTML(false);                                  // set email format to HTML
-					
-					$mail->Subject = translate($application_name) . " " . translate("Notification") . ": " . $name;
-					$mail->Body    = $msg;
-			//		$mail->AltBody = $msg;
-          $mail->Send();
-       }
+        }
       }
     }
   }
@@ -711,6 +689,7 @@ if ( empty ( $error ) ) {
         $extra_type == EXTRA_TEXT || $extra_type == EXTRA_USER ||
         $extra_type == EXTRA_MULTILINETEXT ||
         $extra_type == EXTRA_SELECTLIST  ) {
+
         $sql = "INSERT INTO webcal_site_extras " .
           "( cal_id, cal_name, cal_type, cal_data ) VALUES ( " .
           "$id, '$extra_name', $extra_type, '$value' )";
