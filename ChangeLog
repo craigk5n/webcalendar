@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added circle.gif in week view to untimed or all day events
  - Fixed bug 1244652: nonuser admins can't set prefs & assistants
  - Fixed bug  1242309: New created user cannot be deleted
  - Fixed bug  1232617: Views cannot be deleted

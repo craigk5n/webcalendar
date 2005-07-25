@@ -2805,6 +2805,10 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
   $linkid  = "$id-$key";
   $key++;
 
+  if ( $duration == 0 || $duration == ( 24 * 60 ) ) {
+    $hour_arr[$ind] .= "<img src=\"circle.gif\" class=\"bullet\" alt=\"*\" /> ";
+  }
+
   $hour_arr[$ind] .= "<a title=\"" . 
   translate("View this entry") . "\" class=\"$class\" id=\"$linkid\" href=\"view_entry.php?id=$id&amp;date=$date";
   if ( strlen ( $GLOBALS["user"] ) > 0 )
