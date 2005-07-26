@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1204920: Default language is not set correctly to new users
       1245228: Error in db_load_admin() cannot open table
       1245112: Entry will not be displayed properly for "public access"
       1238066: Site Extras in popup problem v1.1.0-CVS

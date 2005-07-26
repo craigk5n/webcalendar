@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1204920: Default language is not set correctly to new users
  - Added end time calculation functions to Event.class
  - Fixed bug 1245228: Error in db_load_admin() cannot open table
  - Fixed bug 1245112: Entry will not be displayed properly for "public access"

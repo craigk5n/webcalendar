@@ -187,7 +187,7 @@ function load_global_settings () {
     }
     dbi_free_result ( $res );
   }
-
+ 
   // Set SERVER TIMEZONE 
   if ( empty ( $GLOBALS["SERVER_TIMEZONE"] ) )
     $GLOBALS["SERVER_TIMEZONE"] = $GLOBALS["TIMEZONE"];  
@@ -636,11 +636,16 @@ function load_user_preferences ( $guest='') {
     dbi_free_result ( $res );
   }
 
-  // If user has not set a language preference, then use their browser
+  // If user has not set a language preference or admin has not specified a
+ // langiuage, then use their browser
   // settings to figure it out, and save it in the database for future
   // use (email reminders).
   if ( ! $lang_found && strlen ( $tmp_login ) && $tmp_login != "__public__" ) {
-    $LANGUAGE = $browser_lang;
+   if ( $GLOBALS["LANGUAGE"] == "none" ) {
+      $LANGUAGE = $browser_lang;
+  } else {
+      $LANGUAGE = $GLOBALS["LANGUAGE"];  
+  }
     dbi_query ( "INSERT INTO webcal_user_pref " .
       "( cal_login, cal_setting, cal_value ) VALUES " .
       "( '$tmp_login', 'LANGUAGE', '$LANGUAGE' )" );
