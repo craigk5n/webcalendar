@@ -92,6 +92,30 @@ class Event {
    * @access private
    */
   var $_login;
+  /**
+   * The event's end time .
+   * @var mixed
+   * @access private
+   */
+  var $_endtime;
+ /**
+   * The event's end datetime .
+   * @var mixed
+   * @access private
+   */
+  var $_enddatetime;
+ /**
+   * Is this an All Day event?
+   * @var bool
+   * @access private
+   */
+  var $_allday;
+ /**
+   * Is this an Untimes event?
+   * @var bool
+   * @access private
+   */
+  var $_untimed;
 
   /**
    * Creates a new Event.
@@ -282,5 +306,66 @@ class Event {
   function get_login () {
     return $this->_login;
   }
+ 
+   /**
+   * Gets the event's end time
+   *
+   * @return string The event's end time HHMMSS Format
+   *
+   * @access public
+   */
+  function get_endtime () {
+   $year = substr ( $this->_date, 0, 4 );
+  $month = substr ( $this->_date, 4, 2 ); 
+    $day = substr ( $this->_date, 6, 2 );
+   $h = (int) ( $this->_time / 10000 );
+    $m = ( $this->_time / 100 ) % 100;
+    $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
+    $this->_endtime = date ( "His", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
+    return $this->_endtime;
+  }
+ 
+ /**
+   * Gets the event's end datetime
+   *
+   * @return string The event's end datetime YYYYMMSSHHMMSS Format
+   *
+   * @access public
+   */
+  function get_enddatetime () {
+   $year = substr ( $this->_date, 0, 4 );
+  $month = substr ( $this->_date, 4, 2 ); 
+    $day = substr ( $this->_date, 6, 2 );
+   $h = (int) ( $this->_time / 10000 );
+    $m = ( $this->_time / 100 ) % 100;
+    $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
+    $this->_enddatetime = date ( "YmdHis", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
+    return $this->_enddatetime;
+  }
+
+ /**
+   * Determine if event is All Day 
+   *
+   * @return bool True if event is All Day
+   *
+   * @access public
+   */
+  function is_allday () {
+   $this->_allday = ( $this->_time == 0 && $this->_duration == 1440? true : false); 
+    return $this->_allday;
+  }
+ 
+ /**
+   * Determine if event is Untimed 
+   *
+   * @return bool True if event is Untimed
+   *
+   * @access public
+   */
+  function is_untimed () {
+   $this->_untimed = ( $this->_time == -1 && $this->_duration == 0? true : false); 
+    return $this->_untimed;
+  }
+
 }
 ?>

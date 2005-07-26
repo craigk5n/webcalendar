@@ -1425,24 +1425,14 @@ function print_entry ( $event, $date ) {
 
 
   $timestr = "";
-  if ( $event->get_duration() == ( 24 * 60 ) ) {
+  if ( $event->is_allday() ) {
     $timestr = translate("All day event");
-  } else if ( $event->get_time() != -1 ) {
+  } else if ( ! $event->is_untimed() ) {
     $timestr = display_time ( $event->get_datetime() );
     $time_short = preg_replace ("/(:00)/", '', $timestr);
     echo $time_short . "&raquo;&nbsp;";
     if ( $event->get_duration() > 0 ) {
-        // calc end time
-        $h = (int) ( $event->get_time() / 10000 );
-        $m = ( $event->get_time() / 100 ) % 100;
-        $m += $event->get_duration();
-        $d = $event->get_duration();
-        while ( $m >= 60 ) {
-          $h++;
-          $m -= 60;
-        }
-        $end_time = sprintf ( "%02d%02d00", $h, $m );
-        $timestr .= " - " . display_time ( $date . $end_time );
+      $timestr .= " - " . display_time ( $event->get_enddatetime() );
     }
   }
   if ( $login != $user && $event->get_access() == 'R' && strlen ( $user ) ) {
@@ -2255,8 +2245,8 @@ function is_exception ( $date, $ex_days ) {
  * @see get_monday_before
  */
 function get_sunday_before ( $year, $month, $day ) {
-  $weekday = date ( "w", mktime ( 0, 0, 0, $month, $day, $year ) );
-  $newdate = mktime ( 0, 0, 0, $month, $day - $weekday, $year );
+  $weekday = date ( "w", mktime ( 12, 0, 0, $month, $day, $year ) );
+  $newdate = mktime ( 12, 0, 0, $month, $day - $weekday, $year );
   return $newdate;
 }
 
@@ -2274,12 +2264,12 @@ function get_sunday_before ( $year, $month, $day ) {
  * @see get_sunday_before
  */
 function get_monday_before ( $year, $month, $day ) {
-  $weekday = date ( "w", mktime ( 0, 0, 0, $month, $day, $year ) );
+  $weekday = date ( "w", mktime ( 12, 0, 0, $month, $day, $year ) );
   if ( $weekday == 0 )
-    return mktime ( 0, 0, 0, $month, $day - 6, $year );
+    return mktime ( 12, 0, 0, $month, $day - 6, $year );
   if ( $weekday == 1 )
-    return mktime ( 0, 0, 0, $month, $day, $year );
-  return mktime ( 0, 0, 0, $month, $day - ( $weekday - 1 ), $year );
+    return mktime ( 12, 0, 0, $month, $day, $year );
+  return mktime ( 12, 0, 0, $month, $day - ( $weekday - 1 ), $year );
 }
 
 /**
@@ -2748,7 +2738,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
   static $key = 0;
 
 
-  $tz_offset = get_tz_offset ( $TIMEZONE, '', $date );
+
   
 
   if ( $event->get_ext_for_id() != '' ) {
@@ -2805,7 +2795,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
   $linkid  = "$id-$key";
   $key++;
 
-  if ( $duration == 0 || $duration == ( 24 * 60 ) ) {
+  if ( $event->is_allday()  || $event->is_untimed()) {
     $hour_arr[$ind] .= "<img src=\"circle.gif\" class=\"bullet\" alt=\"*\" /> ";
   }
 
@@ -2824,7 +2814,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
       }
     }
   }
-  if ( $event->get_duration() == ( 24 * 60 ) ) {
+  if ( $event->is_allday() ) {
     $timestr = translate("All day event");
     // Set start cell of all-day event to beginning of work hours
     if ( empty ( $rowspan_arr[$first_slot] ) )
@@ -2839,18 +2829,8 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
       $hour_arr[$ind] .= display_time ( $event->get_datetime() ) . "&raquo;&nbsp;";
     $timestr = display_time ( $event->get_datetime() );
     if ( $event->get_duration() > 0 ) {
-
-      // calc end time
-      $h = (int) ( $event->get_time() / 10000 );
-      $m = ( $event->get_time() / 100 ) % 100;
-      $m += $event->get_duration();
-      $d = $event->get_duration();
-      while ( $m >= 60 ) {
-        $h++;
-        $m -= 60;
-      }
-      $end_time = sprintf ( "%02d%02d00", $h, $m );
-      $timestr .= "-" . display_time ( $date . $end_time , $DISPLAY_TZ );
+      $timestr .= "-" . display_time ( $event->get_enddatetime() , $DISPLAY_TZ );
+   $end_time = $event->get_endtime();
     } else {
       $end_time = 0;
     }
@@ -2994,26 +2974,15 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     }
   }
 
-  if ( $event->get_duration() == ( 24 * 60 ) ) {
+  if ( $event->is_allday() ) {
     $hour_arr[$ind] .= "[" . translate("All day event") . "] ";
   } else if ( $time >= 0 ) {
-    $hour_arr[$ind] .= "[" . display_time ( $date . $time );
+    $hour_arr[$ind] .= "[" . display_time ( $event->get_datetime() );
     if ( $event->get_duration() > 0 ) {
-
-      // calc end time
-      $h = (int) ( $time / 10000 );
-      $m = ( $time / 100 ) % 100;
-      $m += $event->get_duration();
-      $d = $event->get_duration();
-      while ( $m >= 60 ) {
-        $h++;
-        $m -= 60;
-      }
-      $end_time = sprintf ( "%02d%02d00", $h, $m );
-      $hour_arr[$ind] .= "-" . display_time ( $date . $end_time );
+      $hour_arr[$ind] .= "-" . display_time ( $event->get_enddatetime() );
       // which slot is end time in? take one off so we don't
       // show 11:00-12:00 as taking up both 11 and 12 slots.
-      $endind = calc_time_slot ( $end_time, true );
+      $endind = calc_time_slot ( $event->get_endtime(), true );
       if ( $endind == $ind )
         $rowspan = 0;
       else
@@ -3093,7 +3062,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
     $rowspan_arr[$i] = 0;
   }
 
-  $tz_offset = get_tz_offset ( $TIMEZONE, '', $date );
+
 
   // get all the repeating events for this date and store in array $rep
   $rep = get_repeating_entries ( $user, $date );
@@ -3968,6 +3937,7 @@ function print_entry_timebar ( $event, $date ) {
 
   // Adjust for TimeZone
   $tz_offset = get_tz_offset ( $TIMEZONE, '', $date );
+ $time = $event->get_time();
   $hours = substr ( $time , 0, 2 );
   $mins = substr ( $time , 2, 2 );
 //  $hours += (int) $tz_offset[0];
@@ -3984,12 +3954,12 @@ function print_entry_timebar ( $event, $date ) {
 
   if ($event->get_time() >= 0) {
   $bar_units= 100/(($day_end - $day_start)/60) ; // Percentage each hour occupies
-  $ev_start = round((floor(($event->get_time()/10000) - ($day_start/60)) + (($event->get_time()/100)%100)/60) * $bar_units);
+  $ev_start = round((floor(($time/10000) - ($day_start/60)) + (($time/100)%100)/60) * $bar_units);
   }else{
     $ev_start= 0;
   }
   if ($ev_start < 0) $ev_start = 0;
-  if ( $event->get_duration() == 1440 ) {
+  if ( $event->is_allday() ) {
   // All day event
    $ev_start = 0;
    $ev_duration = 100;
@@ -4066,22 +4036,12 @@ function print_entry_timebar ( $event, $date ) {
 
   echo "[" . $event->get_login() . "]&nbsp;";
   $timestr = "";
-  if ( $event->get_duration() == ( 24 * 60 ) ) {
+  if ( $event->is_allday() ) {
     $timestr = translate("All day event");
   } else if ( $event->get_time() >= 0 ) {
     $timestr = display_time ( $event->get_datetime() );
     if ( $event->get_duration() > 0 ) {
-      // calc end time
-      $h = (int) ( $event->get_time() / 10000 );
-      $m = ( $event->get_time() / 100 ) % 100;
-      $m += $event->get_duration();
-      $d = $event->get_duration();
-      while ( $m >= 60 ) {
-        $h++;
-        $m -= 60;
-      }
-      $end_time = sprintf ( "%02d%02d00", $h, $m );
-      $timestr .= " - " . display_time ( $end_time, 1 ) . " " .  $tz_offset[1];
+      $timestr .= " - " . display_time ( $event->get_enddatetime() ) . " " .  $tz_offset[1];
     }
   }
 
