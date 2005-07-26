@@ -81,7 +81,9 @@ if ( empty ( $error ) && $id > 0 ) {
     $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
     if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
       $send_email != "N" ) {
-        if (($GLOBALS['LANGUAGE'] != $user_language) && ! empty ( $user_language ) && ( $user_language != 'none' )){
+        if ( empty ( $user_language ) || ( $user_language == 'none' )) {
+          reset_language ( $GLOBALS['LANGUAGE'] );
+        } else {
           reset_language ( $user_language );
         }
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
@@ -94,7 +96,7 @@ if ( empty ( $error ) && $id > 0 ) {
         translate("Time") . ": " .
         // Display using user's GMT offset and display TZID
         display_time ( $fmtdate .  ( "%06d", ( $hour * 10000 ) + ( $minute * 100 ), 
-	2, '' , $user_TIMEZONE ) ) .
+         2, '' , $user_TIMEZONE ) ) .
         "\n\n\n";
       if ( ! empty ( $server_url ) ) {
         $url = $server_url .  "view_entry.php?id=" .  $id;

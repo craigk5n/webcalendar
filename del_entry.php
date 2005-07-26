@@ -138,18 +138,19 @@ if ( $id > 0 && empty ( $error ) ) {
       if ( $partlogin[$i] != $login && $do_send == "Y" &&
         boss_must_be_notified ( $login, $partlogin[$i] ) && 
         strlen ( $tempemail ) && $send_email != "N" ) {
-        if ( ( $GLOBALS['LANGUAGE'] != $user_language)  &&
-          ! empty ( $user_language ) && ( $user_language != 'none' ) ) {
-          reset_language ( $user_language );
-        }
+          if ( empty ( $user_language ) || ( $user_language == 'none' )) {
+             reset_language ( $GLOBALS['LANGUAGE'] );
+          } else {
+             reset_language ( $user_language );
+          }
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
           translate("An appointment has been canceled for you by") .
           " " . $login_fullname .  ".\n" .
           translate("The subject was") . " \"" . $name . "\"\n" .
           translate("Date") . ": " . date_to_str ($thisdate) . "\n";
           if ( $eventtime != '-1' ) $msg .= translate("Time") . ": " . 
-	  // Apply user's GMT offset and display their TZID
-	  display_time ( $eventdate . $eventtime, 2, '', $user_TIMEZONE );
+           // Apply user's GMT offset and display their TZID
+           display_time ( $eventdate . $eventtime, 2, '', $user_TIMEZONE );
           $msg .= "\n\n";
         if ( strlen ( $login_email ) )
           $extra_hdrs = "From: $login_email\r\nX-Mailer: " .
