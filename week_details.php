@@ -136,7 +136,7 @@ for ( $d = 0; $d < 7; $d++ ) {
 </table>
 </center>
 
-<?php 	if ( ! empty ( $eventinfo ) ) echo $eventinfo; ?>
+<?php  if ( ! empty ( $eventinfo ) ) echo $eventinfo; ?>
 <br />
 <a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="week_details.php?<?php
   echo $u_url;
@@ -146,7 +146,7 @@ for ( $d = 0; $d < 7; $d++ ) {
   echo $caturl . "&amp;";
 ?>friendly=1" target="cal_printer_friendly" 
 onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php 
-	etranslate("Printer Friendly")
+ etranslate("Printer Friendly")
 ?>]</a>
 
 <?php print_trailer(); ?>
@@ -162,19 +162,10 @@ onmouseover="window.status = '<?php etranslate("Generate printer-friendly versio
  */
 function print_detailed_entry ( $event, $date ) {
   global $eventinfo, $login, $user;
-  static $key = 0, $user_TIMEZONE;
+  static $key = 0;
 
   global $layers;
 
-    //Get TZ_offset of start day
-  if ( empty ( $user_TIMEZONE ) ){
-    $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
-  } 
-  $sy = substr ( $date, 0, 4 );
-  $sm = substr ( $date, 4, 2 );
-  $sd = substr ( $date, 6, 2 );
-  $tz_offset = get_tz_offset ( $user_TIMEZONE, mktime ( 0, 0, 0, $sm, $sd, $sy ) );
-  
   if ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
     $class = "layerentry";
   } else {
@@ -192,18 +183,18 @@ function print_detailed_entry ( $event, $date ) {
     $name = $event->get_name();
   }
 
-	$popupid = "eventinfo-$id-$key";
+ $popupid = "eventinfo-$id-$key";
           $linkid  = "$id-$key";
 
-	$key++;
+ $key++;
 
-	echo "<a title=\"" . 
-		translate("View this entry") . "\" class=\"$class\" id=\"$linkid\"  href=\"view_entry.php?id=$id&amp;date=$date";
-	if ( strlen ( $user ) > 0 )
-		echo "&amp;user=" . $user;
-	echo "\" onmouseover=\"window.status='" . 
-		translate("View this entry") .	"'; return true;\" onmouseout=\"window.status=''; return true;\">";
-	echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"view icon\" />";
+ echo "<a title=\"" . 
+  translate("View this entry") . "\" class=\"$class\" id=\"$linkid\"  href=\"view_entry.php?id=$id&amp;date=$date";
+ if ( strlen ( $user ) > 0 )
+  echo "&amp;user=" . $user;
+ echo "\" onmouseover=\"window.status='" . 
+  translate("View this entry") . "'; return true;\" onmouseout=\"window.status=''; return true;\">";
+ echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"view icon\" />";
 
   if ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
     if ($layers) foreach ($layers as $layer) {
@@ -215,40 +206,14 @@ function print_detailed_entry ( $event, $date ) {
 
   $timestr = "";
 
-  $my_time = $event->get_time() + ( $tz_offset[0] * 10000 );
-  if ( $event->get_time() >= 0 ) {
-    if ( $GLOBALS["TIME_FORMAT"] == "24" ) {
-      printf ( "%02d:%02d", $my_time / 10000, ( $my_time / 100 ) % 100 );
-    } else {
-      $h = ( (int) ( $my_time / 10000 ) ) % 12;
-      if ( $h == 0 ) $h = 12;
-      echo $h;
-      $m = ( $my_time / 100 ) % 100;
-      if ( $m > 0 )
-        printf ( ":%02d", $m );
-      else
-        print (":00");
-      echo ( (int) ( $my_time / 10000 ) ) < 12 ? translate("am") : translate("pm");
-    }
-    $timestr = display_time ( $event->get_time(),1 );
-    if ( $event->get_duration() > 0 ) {
-      // calc end time
-      $h = (int) ( $event->get_time() / 10000 );
-      $m = ( $event->get_time() / 100 ) % 100;
-      $m += $event->get_duration();
-      $d = $event->get_duration();
-      while ( $m >= 60 ) {
-        $h++;
-        $m -= 60;
-      }
-      $end_time = sprintf ( "%02d%02d00", $h, $m );
-      $timestr .= " - " . display_time ( $end_time, 1 );
-      echo " - " .display_time ( $end_time, 1 ). "";
-      echo "&raquo;&nbsp;";
-    } else {
-	echo "&raquo;&nbsp;";
-    }
-  }
+ if ( $event->is_allday() ) {
+  $timestr = translate("All day event");
+ } else if ( $event->get_duration() > 0 ) {
+  $timestr = display_time ( $event->get_datetime() ) .
+   " - " . display_time ( $event->get_enddatetime() );
+  echo $timestr . "&raquo;&nbsp;";
+ }
+
   if ( $login != $user && $event->get_access() == 'R' && strlen ( $user ) ) {
     $PN = "(" . translate("Private") . ")"; $PD = "(" . translate("Private") . ")";
   } elseif ( $login != $event->get_login() && $event->get_access() == 'R' && strlen ( $event->get_login() ) ) {

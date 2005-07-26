@@ -82,30 +82,20 @@ function event_to_text ( $event, $date ) {
 
   $time_str = $start_time_str = $end_time_str = '';
 
-  if ( $event->get_duration() == ( 24 * 60 ) ) {
+  if ( $event->is_allday() ) {
     $time_str = translate("All day event");
-  } else if ( $event->get_time() == -1 ) {
+  } else if ( $event->is_untimed() ) {
     $time_str = translate("Untimed event");
   } else {
     $time_str = display_time ( $event->get_datetime() );
     $start_time_str = $time_str;
     $time_short = preg_replace ("/(:00)/", '', $time_str);
     if ( $event->get_duration() > 0 ) {
-      if ( $event->get_duration() == ( 24 * 60 ) ) {
+      if (  $event->is_allday() ) {
         $time_str = translate("All day event");
       } else {
-        // calc end time
-        $h = (int) ( $event->get_time() / 10000 );
-        $m = ( $event->get_time() / 100 ) % 100;
-        $m += $event->get_duration();
-        $d = $event->get_duration();
-        while ( $m >= 60 ) {
-          $h++;
-          $m -= 60;
-        }
-        $end_time = sprintf ( "%02d%02d00", $h, $m );
-        $time_str .= " - " . display_time ( $end_time );
-        $end_time_str = display_time ( $end_time );
+        $time_str .= " - " . display_time (  $event->get_enddatetime() );
+        $end_time_str = display_time ( $event->get_enddatetime() );
       }
     }
   }
