@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added end time calculation functions to Event.class
+ - Fixed bug 1245228: Error in db_load_admin() cannot open table
  - Fixed bug 1245112: Entry will not be displayed properly for "public access"
  - Fixed bug 1238066: Site Extras in popup problem v1.1.0-CVS
  - Added circle.gif in week view to untimed or all day events

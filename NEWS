@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1245228: Error in db_load_admin() cannot open table
       1245112: Entry will not be displayed properly for "public access"
       1238066: Site Extras in popup problem v1.1.0-CVS
       1244652: nonuser admins can't set prefs & assistants
@@ -24,6 +25,7 @@ Version 1.1.0-CVS (?? ??? 2005)
       Category was lost wan clicking on prev/next month in month.php
       Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added end time calculation functions to Event.class
     + Added circle.gif in week view to untimed or all day events
     + Implemented RFE 1095248: Error check weekly repeating events
     + Implemented PATCH [ 587965 ] Entry &quot;use end date&quot; auto-selection
