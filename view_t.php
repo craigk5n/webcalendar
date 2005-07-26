@@ -24,7 +24,6 @@
  * (except for nonuser calendars... which we allow regardless of group).
  */
 include_once 'includes/init.php';
-
 $error = "";
 $USERS_PER_TABLE = 6;
 
@@ -55,14 +54,14 @@ $INC = array('js/popups.php');
 print_header($INC);
 
 // Initialize date to first of current month
-if ( $timeb == 0 ) {
+if ( empty ( $timeb ) || $timeb == 0 ) {
   $date = substr($date,0,6)."01";
 }
 
 set_today($date);
 
 // Week timebar
-if ( $timeb == 1 ) {
+if ( ! empty ( $timeb) && $timeb == 1 ) {
   $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 } else {
   $next = mktime ( 0, 0, 0, $thismonth + 1, $thisday, $thisyear );
@@ -72,7 +71,7 @@ $nextmonth = date ( "m", $next );
 $nextday = date ( "d", $next );
 $nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
 
-if ( $timeb == 1 ) {
+if ( ! empty ( $timeb) && $timeb == 1 ) {
   $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 } else {
   $prev = mktime ( 0, 0, 0, $thismonth - 1, $thisday, $thisyear );
@@ -82,9 +81,7 @@ $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
-// We add 2 hours on to the time so that the switch to DST doesn't
-// throw us off.  So, all our dates are 2AM for that day.
-if ( $timeb == 1 ) {
+if ( ! empty ( $timeb) && $timeb == 1 ) {
   if ( $WEEK_START == 1 ) {
     $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
   } else {
@@ -94,7 +91,7 @@ if ( $timeb == 1 ) {
   $wkstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
 }
 
-if ( $timeb == 1 ) {
+if ( ! empty ( $timeb) && $timeb == 1 ) {
   $wkend = $wkstart + ( 3600 * 24 * 6 );
 } else {
   $wkend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
@@ -104,7 +101,7 @@ $enddate = date ( "Ymd", $wkend );
 
 $thisdate = $startdate;
 
-if ( $timeb == 1 ) {
+if ( ! empty ( $timeb) && $timeb == 1 ) {
   $val_boucle = 7;
 } else {
   $val_boucle = date("t", $wkstart);
