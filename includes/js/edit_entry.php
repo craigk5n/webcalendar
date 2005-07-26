@@ -33,7 +33,7 @@ function validate_and_submit () {
       document.editentryform.hour.focus ();
       return false;
     }
-    if ( m >= 59 || m < 0 ) {
+    if ( m > 59 || m < 0 ) {
       alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
       document.editentryform.minute.select ();
       document.editentryform.minute.focus ();
@@ -188,6 +188,24 @@ function rpttype_handler () {
   }
 }
 
+function rpttype_weekly () {
+  var i = document.editentryform.rpttype.selectedIndex;
+  var val = document.editentryform.rpttype.options[i].text;
+ if ( val == "Weekly" ) {
+   var rpt_days = new Array("rpt_sun","rpt_mon","rpt_tue","rpt_wed","rpt_thu","rpt_fri","rpt_sat");
+   //Get Event Date values
+    var d = document.editentryform.day.selectedIndex;
+    var vald = document.editentryform.day.options[d].value;
+   var m = document.editentryform.month.selectedIndex;
+    var valm = document.editentryform.month.options[m].value -1;
+   var y = document.editentryform.year.selectedIndex;
+    var valy = document.editentryform.year.options[y].value;
+    var c = new Date(valy,valm,vald);
+    var dayOfWeek = c.getDay();
+  var rpt_day = rpt_days[dayOfWeek];
+    document.editentryform.elements[rpt_day].checked = true; 
+ }
+}
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
  //using the tabbed GUI.
 ?>
