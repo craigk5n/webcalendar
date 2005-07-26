@@ -104,7 +104,7 @@ global $webcalConfig;
 function db_load_admin () {
  $res = dbi_query ( "SELECT cal_login FROM webcal_user " .
  "WHERE cal_login  = 'admin'", false, false );
- $sql = "INSERT INTO WEBCAL_USER ( CAL_LOGIN, CAL_PASSWD, CAL_LASTNAME, CAL_FIRSTNAME, CAL_IS_ADMIN ) 
+ $sql = "INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin ) 
 VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ADMINISTRATOR', 'DEFAULT', 'Y' );";
  if ( ! $res ) {
   dbi_query ( $sql );
