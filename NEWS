@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1245112: Entry will not be displayed properly for "public access"
+      1238066: Site Extras in popup problem v1.1.0-CVS
       1244652: nonuser admins can't set prefs & assistants
       1242309: New created user cannot be deleted
       1232617: Views cannot be deleted

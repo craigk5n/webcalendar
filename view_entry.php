@@ -513,7 +513,7 @@ if ( $categories_enabled == "Y" ) {
     } else {
       // Display TZID if no end time
       $display_tzid = empty ( $end_str ) ? 2 : 0;
-      echo display_time ( $tz_date . $row[2], $display_tzid ) . $end_str;
+      echo display_time ( $tz_date . sprintf ( "%06d", $row[2] ), $display_tzid ) . $end_str;
     }
   ?>
 </td></tr>
@@ -567,10 +567,10 @@ if ( $single_user == "N" && ! empty ( $createby_fullname )  ) {
   } else {
     if ( strlen ( $email_addr ) ) {
       echo "<a href=\"mailto:$email_addr?subject=$subject\">" .
-        ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
+        ( $row[0] == "__public__" ? translate( "Public Access" ): $createby_fullname ) .
         "</a>$proxy_fullname\n</td></tr>";
     } else {
-      echo ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
+      echo ( $row[0] == "__public__" ? translate( "Public Access" ) : $createby_fullname ) .
         "$proxy_fullname\n</td></tr>";
     }
   }
@@ -962,7 +962,7 @@ if ( $show_log ) {
   echo "</table>\n";
 }
 
-if (! $is_private && ! $hide_details ) {
+if (! $is_private  && ! $hide_details ) {
   echo "<br /><form method=\"post\" name=\"exportform\" " .
     "action=\"export_handler.php\">\n";
   echo "<label for=\"exformat\">" . 
