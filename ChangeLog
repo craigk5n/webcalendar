@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1245112: Entry will not be displayed properly for "public access"
+ - Fixed bug 1238066: Site Extras in popup problem v1.1.0-CVS
  - Added circle.gif in week view to untimed or all day events
  - Fixed bug 1244652: nonuser admins can't set prefs & assistants
  - Fixed bug  1242309: New created user cannot be deleted
