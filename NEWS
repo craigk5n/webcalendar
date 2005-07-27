@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1245755: Unbalanced span tags
       1204920: Default language is not set correctly to new users
       1245228: Error in db_load_admin() cannot open table
       1245112: Entry will not be displayed properly for "public access"
@@ -23,6 +24,8 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
+      Fixed XHTML troubles with pop id starting with numbers
+      Adjusted sending time in send_reminders to Server Time vs GMT
       Category was lost wan clicking on prev/next month in month.php
       Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
