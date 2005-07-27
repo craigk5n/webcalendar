@@ -3,8 +3,8 @@
  * This file lists unapproved events for one or more users.
  *
  * Optional parameters in URL:
- *	url=user	specifies that we should only display unapproved
- *			events for that one user
+ * url=user specifies that we should only display unapproved
+ *   events for that one user
  *
  * The user will be allowed to approve/reject the event if:
  * it is on their own calendar
@@ -85,13 +85,10 @@ function list_unapproved ( $user ) {
       $time = $row[5];
       $duration = $row[6];
       $status = $row[7];
-      $divname = "eventinfo-$id-$key";
-      $linkid  = "$id-$key";
-      echo "<li><a title=\"" . 
-      	translate("View this entry") .
-        "\" class=\"entry\" id=\"$linkid\" href=\"view_entry.php?id=$id&amp;user=$user";
-      echo "\" onmouseover=\"window.status='" . translate("View this entry") .
-        "'; show(event, '$divname'); return true;\" onmouseout=\"hide('$divname'); return true;\">";
+      $divname = "eventinfo-pop$id-$key";
+      $linkid  = "pop$id-$key";
+      echo "<li><a  title=\"" . translate("View this entry") .
+        "\" class=\"entry\" id=\"$linkid\" href=\"view_entry.php?id=$id&amp;user=$user\">";
       $timestr = "";
       if ( $time > 0 ) {
         $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
@@ -113,32 +110,33 @@ function list_unapproved ( $user ) {
       echo htmlspecialchars ( $name );
       echo "</a>";
       echo " (" . date_to_str ($date) . ")\n";
-//approve
+      //approve
       echo ": <a title=\"" . 
-	translate("Approve/Confirm") . "\"  href=\"approve_entry.php?id=$id&amp;ret=$retarg&amp;user=$user";
+        translate("Approve/Confirm") . 
+     "\"  href=\"approve_entry.php?id=$id&amp;ret=$retarg&amp;user=$user";
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
         translate("Approve this entry?") . "');\">" . 
-	translate("Approve/Confirm") . "</a>, ";
-//reject
+          translate("Approve/Confirm") . "</a>, ";
+      //reject
       echo "<a title=\"" . 
-	translate("Reject") . "\" href=\"reject_entry.php?id=$id&amp;ret=$retarg&amp;user=$user";
+        translate("Reject") . "\" href=\"reject_entry.php?id=$id&amp;ret=$retarg&amp;user=$user";
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
         translate("Reject this entry?") . "');\">" . 
-	translate("Reject") . "</a>";
-//delete
+          translate("Reject") . "</a>";
+      //delete
       if ( ! access_is_enabled () ||
         access_can_delete_user_calendar ( $user ) ) {
         echo ", <a title=\"" . 
-	  translate("Delete") . "\" href=\"del_entry.php?id=$id&amp;ret=$retarg";
+          translate("Delete") . "\" href=\"del_entry.php?id=$id&amp;ret=$retarg";
         if ( $user != $login )
           echo "&amp;user=$user";
         echo "\" class=\"nav\" onclick=\"return confirm('" .
           translate("Are you sure you want to delete this entry?") . "');\">" . 
-	  translate("Delete") . "</a>";
+        translate("Delete") . "</a>";
       }
       echo "\n</li>\n";
       $eventinfo .= build_event_popup ( $divname, $user, $description,
@@ -150,7 +148,7 @@ function list_unapproved ( $user ) {
   }
   if ( $count == 0 ) {
     echo "<p class=\"nounapproved\">" . 
-	translate("No unapproved events for") . "&nbsp;" . $temp_fullname . ".</p>\n";
+      translate("No unapproved events for") . "&nbsp;" . $temp_fullname . ".</p>\n";
   } else {
     if ( ! empty ( $eventinfo ) ) echo $eventinfo;
   }
@@ -158,8 +156,8 @@ function list_unapproved ( $user ) {
 ?>
 
 <h2><?php 
-	etranslate("Unapproved Events"); 
-	//if ( $user == '__public__' ) echo " - " . $PUBLIC_ACCESS_FULLNAME; 
+ etranslate("Unapproved Events"); 
+ //if ( $user == '__public__' ) echo " - " . $PUBLIC_ACCESS_FULLNAME; 
 ?></h2>
 <?php
 $app_users = array ();

@@ -53,12 +53,14 @@ function infoinit(){
 
   for (var i = 0; i < entries.length; i++) {
     entries[i].onmouseover = function(event) {
-			show(event, "eventinfo-" + this.id);
-			window.status = "<?php etranslate("View this entry"); ?>";
-		}
+   show(event, "eventinfo-" + this.id);
+   window.status = "<?php etranslate("View this entry"); ?>";
+   return true;
+  }
     entries[i].onmouseout = function() {
       hide("eventinfo-" + this.id);
-			window.status = "";
+   window.status = "";
+   return true;
     }
   }
 

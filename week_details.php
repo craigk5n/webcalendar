@@ -183,22 +183,20 @@ function print_detailed_entry ( $event, $date ) {
     $name = $event->get_name();
   }
 
- $popupid = "eventinfo-$id-$key";
-          $linkid  = "$id-$key";
+  $popupid = "eventinfo-pop$id-$key";
+  $linkid  = "pop$id-$key";
 
- $key++;
+  $key++;
 
- echo "<a title=\"" . 
-  translate("View this entry") . "\" class=\"$class\" id=\"$linkid\"  href=\"view_entry.php?id=$id&amp;date=$date";
- if ( strlen ( $user ) > 0 )
-  echo "&amp;user=" . $user;
- echo "\" onmouseover=\"window.status='" . 
-  translate("View this entry") . "'; return true;\" onmouseout=\"window.status=''; return true;\">";
- echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"view icon\" />";
-
+  echo "<a title=\"" . translate("View this entry") . 
+    "\" class=\"$class\" id=\"$linkid\"  href=\"view_entry.php?id=$id&amp;date=$date";
+  if ( strlen ( $user ) > 0 )
+    echo "&amp;user=" . $user;
+  echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"view icon\" />";
   if ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
     if ($layers) foreach ($layers as $layer) {
       if($layer['cal_layeruser'] == $event->get_login()) {
+        $in_span = true;
         echo("<span style=\"color:#" . $layer['cal_color'] . ";\">");
       }
     }
@@ -219,12 +217,12 @@ function print_detailed_entry ( $event, $date ) {
   } elseif ( $login != $event->get_login() && $event->get_access() == 'R' && strlen ( $event->get_login() ) ) {
     $PN = "(" . translate("Private") . ")";$PD ="(" . translate("Private") . ")";
   } elseif ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
-    $PN = htmlspecialchars ( $name ) ."</span>";
-    $PD = activate_urls ( htmlspecialchars ( $event->get_description() ) );
-  } else {
     $PN = htmlspecialchars ( $name );
     $PD = activate_urls ( htmlspecialchars ( $event->get_description() ) );
   }
+  if ( ! empty ( $in_span ) ) 
+   $PN .= "</span>";
+
   echo $PN;
   echo "</a>";
   if ( $event->get_priority() == 3 ) echo "</strong>";
