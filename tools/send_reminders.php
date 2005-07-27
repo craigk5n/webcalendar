@@ -321,7 +321,8 @@ function send_reminder ( $id, $event_date ) {
       $extra_name = $site_extras[$i][0];
       $extra_descr = $site_extras[$i][1];
       $extra_type = $site_extras[$i][2];
-      if ( $extras[$extra_name]['cal_name'] != "" ) {
+      if ( ! empty (  $extras[$extra_name]['cal_name'] ) && 
+     $extras[$extra_name]['cal_name'] != "" ) {
         $body .= translate ( $extra_descr ) . ": ";
         if ( $extra_type == EXTRA_DATE ) {
           $body .= date_to_str ( $extras[$extra_name]['cal_date'] ) . "\n";
@@ -431,9 +432,15 @@ function process_event ( $id, $name, $event_date, $event_time ) {
       if ( $debug )
         echo "  Mins Before: $minsbefore <br />\n";
       if ( $debug ) {
-        echo "  Event time is: " . date ( "m/d/Y H:i", $event_time ) . "<br />\n";
-        echo "  Remind time is: " . date ( "m/d/Y H:i", $remind_time ) . "<br />\n";
+        echo "  Event time is: " . date ( "m/d/Y H:i", $event_time ) . " GMT<br />\n";
+        echo "  Remind time is: " . date ( "m/d/Y H:i", $remind_time ) . " GMT<br />\n";
+     echo "Server Timezone: " . $GLOBALS['SERVER_TIMEZONE'] . 
+     "<br />Server Difference from GMT (minutes) : " . date ("Z"). "<br />";    
+    echo "Effective delivery time is: " . 
+      date ( "m/d/Y H:i", $remind_time += date ("Z") ) . " " . date ("T"). "<br />\n";
       }
+   //We need to adjust GMT $remind_time to server time
+   $remind_time +=date ("Z");
       if ( time() >= $remind_time ) {
         // It's remind time or later. See if one has already been sent
         $last_sent = 0;
@@ -448,7 +455,8 @@ function process_event ( $id, $name, $event_date, $event_time ) {
           dbi_free_result ( $res );
         }
         if ( $debug )
-          echo "  Last sent on: " . date ( "m/d/Y H:i", $last_sent ) . "<br />\n";
+          echo "  Last sent on: " .  
+       ($last_sent == 0 ? "NEVER" : date ( "m/d/Y H:i", $last_sent ) ). "<br />\n";
         if ( $last_sent < $remind_time ) {
           // Send a reminder
           if ( $debug )
