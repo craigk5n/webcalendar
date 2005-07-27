@@ -1393,8 +1393,8 @@ function print_entry ( $event, $date ) {
     $name = $event->get_name();
   }
 
-  $popupid = "eventinfo-$id-$key";
-  $linkid  = "$id-$key";
+  $popupid = "eventinfo-pop$id-$key";
+  $linkid  = "pop$id-$key";
   $key++;
 
   echo "<a title=\"" . 
@@ -2796,8 +2796,8 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catIcon\" />";
   }
 
-  $popupid = "eventinfo-$id-$key";
-  $linkid  = "$id-$key";
+  $popupid = "eventinfo-pop$id-$key";
+  $linkid  = "pop$id-$key";
   $key++;
 
   if ( $event->is_allday()  || $event->is_untimed()) {
@@ -2815,6 +2815,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
   if ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
     if ($layers) foreach ($layers as $layer) {
       if ( $layer['cal_layeruser'] == $event->get_login() ) {
+       $in_span = true;
         $hour_arr[$ind] .= "<span style=\"color:" . $layer['cal_color'] . ";\">";
       }
     }
@@ -2865,7 +2866,8 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     $hour_arr[$ind] .= "(" . translate("Private") . ")";
   } else if ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-    $hour_arr[$ind] .= "</span>"; //end color span
+    if ( ! empty ( $in_span ) )
+      $hour_arr[$ind] .= "</span>"; //end color span
   } else {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
   }
@@ -2960,8 +2962,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catIcon\" />";
   }
 
-  $popupid = "eventinfo-$id-$key";
-  $linkid  = "$id-$key";
+  $popupid = "eventinfo-pop$id-$key";
+  $linkid  = "pop$id-$key";
   $key++;
 
   $hour_arr[$ind] .= "<a title=\"" .
@@ -2974,6 +2976,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   if ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
     if ($layers) foreach ($layers as $layer) {
       if ( $layer['cal_layeruser'] == $event->get_login() ) {
+     $in_span = true;
         $hour_arr[$ind] .= "<span style=\"color:" . $layer['cal_color'] . ";\">";
       }
     }
@@ -3008,7 +3011,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   if ( $login != $event->get_login() && strlen ( $event->get_login() ) )
   {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-    $hour_arr[$ind] .= "</span>"; //end color span
+  if ( ! empty ( $in_span ) )
+      $hour_arr[$ind] .= "</span>"; //end color span
   }
 
   else
@@ -4021,8 +4025,8 @@ function print_entry_timebar ( $event, $date ) {
     $name = $event->get_name();
   }
 
-  $popupid = "eventinfo-$id-$key";
-  $linkid  = "$id-$key";
+  $popupid = "eventinfo-pop$id-$key";
+  $linkid  = "pop$id-$key";
   $key++;
 
   echo "<a class=\"$class\" id=\"$linkid\" href=\"view_entry.php?id=$id&amp;date=$date";
