@@ -1633,7 +1633,8 @@ function get_entries ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_t
     if ( ( ! $get_unapproved ) && $events[$i]->get_status() == 'W' ) {
       // ignore this event
     //don't adjust anything  if  no TZ offset or ALL Day Event or Untimed
-    } else if ( empty (  $tz_offset[0]) ||  ( $events[$i]->get_time() <= 0 ) ) {
+    } else if ( empty (  $tz_offset[0]) ||  
+    $events[$i]->is_allday() || $events[$i]->is_untimed() ) {
       if ( $events[$i]->get_date() == $date )
         $ret[$n++] = $events[$i];
 
@@ -1647,7 +1648,7 @@ function get_entries ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_t
       $prev_day = date ( ( "Ymd" ), mktime ( 0, 0, 0, $sm, $sd - 1, $sy ) );
         //echo "prev_date = $prev_day <br />\n";
       if ( $events[$i]->get_date() == $date &&
-        $events[$i]->get_time() == -1 ) {
+        $events[$i]->is_untimed() ) {
         $ret[$n++] = $events[$i];
         //echo "added event " . $events[$i]->get_id() . "<br />\n";
       } else if ( $events[$i]->get_date() == $date &&
@@ -1662,19 +1663,19 @@ function get_entries ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_t
     } else {
       //TZ < 0
       $cutoff = get_time_add_tz ( 000000, -$tz_offset[0] );
-
+      //echo $events[$i]->get_date() .$events[$i]->get_time() . " "  .$date . $cutoff . "<br>";;
       $sy = substr ( $date, 0, 4 );
       $sm = substr ( $date, 4, 2 );
       $sd = substr ( $date, 6, 2 );
       $next_day = date ( ( "Ymd" ), mktime ( 0, 0, 0, $sm, $sd + 1, $sy ) );
       //echo "next_date = $next_day <br />\n";
-      if ( $events[$i]->get_time() == -1 ) {
-  if ( $events[$i]->get_date() == $date ) {
+      if ( $events[$i]->is_untimed() ) {
+        if ( $events[$i]->get_date() == $date ) {
           $ret[$n++] = $events[$i];
           //echo "added event " . $events[$i]->get_id() . "<br />\n";
         }
       } else {
-  if ( $events[$i]->get_date() == $date &&
+   if ( $events[$i]->get_date() == $date &&
           $events[$i]->get_time() > $cutoff ) {
           $ret[$n++] = $events[$i];
           //echo "added event $events[$i][cal_id] <br />\n";
@@ -2399,7 +2400,8 @@ function print_date_entries ( $date, $user, $ssi ) {
 
   // get all the non-repeating events for this date and store in $ev
   $ev = get_entries ( $user, $date, $get_unapproved );
-
+//echo $date . "<br>";
+//print_r ($ev);
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     // print out any repeating events that are before this one...
     while ( $cur_rep < count ( $rep ) &&
@@ -4998,7 +5000,6 @@ function get_tz_offset ( $tz, $timestamp = '', $dateYmd = '' ) {
   $temp_time =  get_tz_time ( $timestamp, $tz, false, true ) ;
   $tz_array[$tz][$timestamp] = $tz_data[0] = ( $timestamp - $temp_time['timestamp'] ) / 3600 ;
   $tz_array[$tz]['name'] = $tz_data[1] = $temp_time['name']; 
-
   return $tz_data;
 }
 
