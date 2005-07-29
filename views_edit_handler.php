@@ -46,7 +46,7 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
   # update user list
   if ( $error == "" ) {
     dbi_query ( "DELETE FROM webcal_view_user WHERE cal_view_id = $id" );
-    // If selected "All", then just put "__all__" in for usernamne.
+    // If selected "All", then just put "__all__" in for username.
     if ( getPostValue ( "viewuserall" ) == "Y" )
       $users = array ( "__all__" );
     for ( $i = 0; ! empty ( $users ) && $i < count ( $users ); $i++ ) {
@@ -59,7 +59,7 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
 
 
 if ( $error == "" ) {
-  do_redirect ( "views.php" );
+  do_redirect ( "views_edit.php" );
 }
 print_header();
 ?>

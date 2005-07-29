@@ -83,7 +83,7 @@ if ( ! empty ( $error ) ) {
   print_trailer ();
   exit;
 }
-	
+
 if ( $newview ) {
   $v = array ();
   echo "<h2>" . translate("Add View") . "</h2>\n";
@@ -133,16 +133,12 @@ if ( $newview ) {
 
 <tr><td valign="top">
 	<label for="viewusers"><?php etranslate("Users"); ?>:</label></td><td>
-<label><input type="radio" name="viewuserall" value="N" onclick="usermode_handler()"
-<?php
+	<label><input type="radio" name="viewuserall" value="N" onclick="usermode_handler()"<?php
   if ( ! $all_users ) {
     echo " checked=\"checked\"";
   }
-?> />
-<?php etranslate("Selected");?></label>
-&nbsp;&nbsp;
-<label><input type="radio" name="viewuserall" value="Y" onclick="usermode_handler()"
-<?php
+?> /><?php etranslate("Selected");?></label>&nbsp;&nbsp;
+	<label><input type="radio" name="viewuserall" value="Y" onclick="usermode_handler()"<?php
   if ( $all_users ) {
     echo " checked=\"checked\"";
   }
