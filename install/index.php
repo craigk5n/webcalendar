@@ -122,7 +122,7 @@ function get_installed_version () {
  }
  // v1.1 and after will have an entry in webcal_config to make this easier
  //Not sure if this will work well for CVS code
- //We'll bypas this for now
+ //We'll bypass this for now
 // $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
 //  "WHERE cal_setting  = 'webcal_program_version'", false, false );
 // if ( $res ) {
@@ -294,13 +294,12 @@ $pwd1 = getPostValue ( "password1" );
 $pwd2 = getPostValue ( "password2" );
 if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
   if ( $pwd1 != $pwd2 ) {
-    echo "Passwords do not match!<br/>\n";
+    echo "Passwords do not match!<br />\n";
     exit;
   }
   $fd = fopen ( $file, "a+b", true );
   if ( empty ( $fd ) ) {
-    echo "<html><body>Unable to write password to settings.php file\n" .
-      "</body></html>";
+    echo "<html><body>Unable to write password to settings.php file.</body></html>";
     exit;
   }
   fwrite ( $fd, "<?php\r\n" );
@@ -395,7 +394,7 @@ function db_populate ( $install_file, $display_sql ) {
   if ( $install_file == "" ) return;
  $full_sql = "";
  $magic = @get_magic_quotes_runtime();
- @set_magic_quotes_runtime(0);   
+ @set_magic_quotes_runtime(0);
  $fd = fopen ( "sql/" . $install_file, "r");
   //discard everything up to the required point in the upgrade file 
  while (!feof($fd) && empty ( $current_pointer ) ) {
@@ -557,7 +556,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
    // Do some queries to try to determine the previous version
    get_installed_version();
    
-     $response_msg = "<b>Connection Successful:</b>Please go to next page to continue installation.";
+     $response_msg = "<b>Connection Successful:</b> Please go to next page to continue installation.";
    
     } else {
       $response_msg =  "<b>Failure Reason:</b><blockquote>" . dbi_error () . "</blockquote>\n";
@@ -573,7 +572,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
      $c = dbi_connect ( $db_host, $db_login, $db_password , 'c:/progra~1/firebird/firebird_1_5/examples/employee.fdb');
       } //TODO Code remaining database types
    if ( $c ) { // credentials are valid, but database doesn't exist
-      $response_msg = "Correct your entries or Click <b>Create New</b> button to continue installation";
+      $response_msg = "Correct your entries or click the <b>Create New</b> button to continue installation";
      $_SESSION['db_noexist'] = true;
    } else {
       $response_msg = "<b>Failure Reason:</b><blockquote>" . dbi_error () . "</blockquote>\n" .
@@ -642,7 +641,7 @@ if ( ! empty ( $action ) && $action == "tz_convert" && ! empty ( $_SESSION['vali
     $gmt_offset = getPostValue ( "gmt_offset" );
     $db_persistent = false;
     $db_type = $settings['db_type'];
-    $db_host = $settings['db_host'];
+$db_host = $settings['db_host'];
     $db_database = $settings['db_database'];
     $db_login = $settings['db_login'];
     $db_password = $settings['db_password'];
@@ -778,9 +777,9 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
   $fd = @fopen ( $file, "w+b", true );
   if ( empty ( $fd ) ) {
     if ( file_exists ( $file ) ) {
-      $onload = "alert('Error: unable to write to file $file\\nPlease change the file permissions of this file.');";
+      $onload = "alert('Error: Unable to write to file $file\\nPlease change the file permissions of this file.');";
     } else {
-      $onload = "alert('Error: unable to write to file $file\\nPlease change the file permissions of your includes directory\\nto allow writing by other users.');";
+      $onload = "alert('Error: Unable to write to file $file\\nPlease change the file permissions of your includes directory\\nto allow writing by other users.');";
     }
   } else {
     fwrite ( $fd, "<?php\r\n" );
@@ -985,16 +984,31 @@ Check to see if PHP 4.1.0 or greater is installed.
     $class = ( version_compare(phpversion(), "4.1.0", ">=") ) ?
       'recommended' : 'notrecommended';
     echo "<td class=\"$class\">";
+    if ($class='recommended') {
+    	echo "<img src=\"recommended.gif\" />&nbsp;";
+    } else {
+	echo "<img src=\"not_recommended.jpg\" />&nbsp;";
+    }
     echo "PHP version " . phpversion();
    ?>
 </td></tr>
-<tr><th class="header"  colspan="2">PHP Settings</th></tr>
+<tr><th class="header" colspan="2">
+	PHP Settings
+<?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
+		&nbsp;<input name="action" type="button" value="Detailed PHP Info" onclick="testPHPInfo()" />
+<?php } ?>
+</th></tr>
 <?php foreach ( $php_settings as $setting ) { ?>
   <tr><td class="prompt"><?php echo $setting[0];?></td>
   <?php
     $class = ( get_php_setting ( $setting[1] ) == $setting[2] ) ?
       'recommended' : 'notrecommended';
     echo "<td class=\"$class\">";
+    if ($class='recommended') {
+    	echo "<img src=\"recommended.gif\" />&nbsp;";
+    } else {
+	echo "<img src=\"not_recommended.jpg\" />&nbsp;";
+    }
     echo get_php_setting ( $setting[1] );
    ?>
    </td></tr>
@@ -1005,102 +1019,131 @@ Check to see if PHP 4.1.0 or greater is installed.
     $class = ( get_php_modules ( $module[1] ) == $module[2] ) ?
       'recommended' : 'notrecommended';
     echo "<td class=\"$class\">";
+    if ($class='recommended') {
+    	echo "<img src=\"recommended.gif\" />&nbsp;";
+    } else {
+	echo "<img src=\"not_recommended.jpg\" />&nbsp;";
+    }
     echo get_php_modules ( $module[1] );
    ?>
    </td></tr>
 <?php } ?>  
-<?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
-<tr><td  align="center" colspan="2"><input name="action" type="button" value="Detailed PHP Info"
-  onclick="testPHPInfo()" /></td></tr>
-<?php } ?>
-<tr><th class="header"  colspan="2">Session Check</th></tr>
-<tr><td>
-To test the proper operation of sessions, reload this page.<br />
-You should see the session counter increment each time.
-</td>
-  <?php
+
+	<tr><th class="header" colspan="2">Session Check</th></tr>
+	<tr><td>
+		To test the proper operation of sessions, reload this page.<br />
+		You should see the session counter increment each time.</td>
+<?php
     $class = ( $_SESSION['check'] > 0 ) ?
       'recommended' : 'notrecommended';
     echo "<td class=\"$class\">";
+    if ($_SESSION['check'] > 0) {
+    	echo "<img src=\"recommended.gif\" />&nbsp;";
+    } else {
+	echo "<img src=\"not_recommended.jpg\" />&nbsp;";
+    }
     echo "SESSION COUNTER: " . $_SESSION['check'];
-   ?>
+?>
+	</td></tr>
+<?php //if the settings file doesn't exist or we can't write to it, echo an error header..
+if ( ! $exists || ! $canWrite ) { ?>
+	<tr><th class="redheader" colspan="2">Settings.php Status: Error</th></tr>
+<?php //..otherwise, edit a regular header
+} else { ?>
+	<tr><th class="header" colspan="2">Settings.php Status</th></tr>
+<?php } ?>
+<?php //if the settings file exists, but we can't write to it..
+	if ( $exists && ! $canWrite ) { ?>
+		<tr><td>
+			<img src="not_recommended.jpg" />&nbsp;The file permissions of <b>settings.php</b> are set so 
+			that the installer does not have permission to modify it. Please change the file permissions of 
+			the following file to continue:</td><td>
+			<blockquote><b>
+				<?php echo realpath ( $file ); ?>
+			</b></blockquote>
+		</td></tr>
+<?php //or, if the settings file doesn't exist & we can't write to the includes directory..
+	} else if ( ! $exists && ! $canWrite ) { ?>
+		<tr><td>
+			<img src="not_recommended.jpg" />&nbsp;The file permissions of the <b>includes</b> directory are 
+			set so that the installer does not have permission to create a new file. Please change the 
+			permissions of the following directory to continue:
+			<blockquote><b>
+				<?php echo realpath ( $fileDir ); ?>
+			</b></blockquote>
+		</td></tr>
+<?php //if settings.php DOES exist & we CAN write to it..
+	} else { ?>
+		<tr><td>
+			Your <b>settings.php</b> file appears to be valid.</td><td class="recommended">
+			<img src="recommended.gif" />&nbsp;OK
+		</td></tr>
 
-</td></tr>
-<?php if ( $exists && ! $canWrite ) { ?>
-<tr><th class="redheader"  colspan="2">Settings.php Status: Error</th></tr>
-<tr><td>
-The file permissions of <b>settings.php</b> are set so
-that this script does not have permission to write changes to it.
-You must change the file permissions of the following
-file to use this script:
-</td><td>
-<blockquote><b>
-<?php echo realpath ( $file ); ?>
-</b></blockquote>
-</td></tr>
-<?php } else if ( ! $exists && ! $canWrite ) { ?>
-<tr><th class="redheader"  colspan="2">Settings.php Status: Error</th></tr>
-<tr><td>
-The file permissions of the <b>includes</b> directory are set so
-that this script does not have permission to create a new file
-in that directory.
-You must change the permissions of the following directory
-to use this script:
-<blockquote><b>
-<?php echo realpath ( $fileDir ); ?>
-</b></blockquote>
-</td></tr>
-<?php } else {?> 
-<tr><th class="header"  colspan="2">Settings.php Status:</th></tr>
-<tr><td>
-Your <b>settings.php</b> file appears to be valid.
-</td><td class="recommended">OK
-</td></tr>
 <?php if (  empty ( $_SESSION['validuser'] ) ) { ?>
-<tr><th colspan="2" class="header">Configuration Wizard Password</th></tr>
-<tr><td colspan="2" align="center">
-  <?php if ( $doLogin ) { ?>
-  <form action="index.php" method="post" name="dblogin">
-  <table >
-  <tr><th>Password:</th><td><input name="password" type="password" />
-  <input type="submit" value="Login" /></td></tr>
-  </table>
-  </form>
-  <?php } else if ( $forcePassword ) { ?>  
-  <form action="index.php" method="post" name="dbpassword">
-  <table border="0">
-  <tr><th colspan="2" class="header">Create Settings File Password</th></tr>
-  <tr><th>Password:</th><td><input name="password1" type="password" /></td></tr>
-  <tr><th>Password (again):</th><td><input name="password2" type="password" /></td></tr>
-  <tr><td colspan="2" align="center"><input type="submit" value="Set Password" /></td></tr>
-  </table>
-  </form>
-  <?php } ?>
+	<tr><th colspan="2" class="header">Configuration Wizard Password</th></tr>
+	<tr><td colspan="2" align="center">
+	<?php if ( $doLogin ) { ?>
+		<form action="index.php" method="post" name="dblogin">
+			<table>
+				<tr><th>
+					Password:</th><td>
+					<input name="password" type="password" />
+					<input type="submit" value="Login" />
+				</td></tr>
+			</table>
+		</form>
+	<?php } else if ( $forcePassword ) { ?>
+		<form action="index.php" method="post" name="dbpassword">
+			<table border="0">
+				<tr><th colspan="2" class="header">
+					Create Settings File Password
+				</th></tr>
+				<tr><th>
+					Password:</th><td>
+					<input name="password1" type="password" />
+				</td></tr>
+				<tr><th>
+					Password (again):</th><td>
+					<input name="password2" type="password" />
+				</td></tr>
+				<tr><td colspan="2" align="center">
+					<input type="submit" value="Set Password" />
+				</td></tr>
+			</table>
+		</form>
+	<?php } ?>
 <?php } ?>
 <?php } ?> 
 </td></tr>
 </td></tr></table>
 <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
 <table border="0" width="90%" align="center">
-<tr><td align="center">
-  <form action="index.php?action=switch&amp;page=2" method="post">
-    <input type="submit" value="Next Page ->" />
-  </form>
-</td></tr></table>
+	<tr><td align="center">
+		<form action="index.php?action=switch&amp;page=2" method="post">
+			<input type="submit" value="Next ->" />
+		</form>
+	</td></tr>
+</table>
 <?php } ?>
-<?php } else if ( $_SESSION['step'] == 2 ) { ?>
+
+<?php //BEGIN STEP 2 
+} else if ( $_SESSION['step'] == 2 ) { ?>
+
 <table border="1" width="90%" align="center">
-<tr><th class="pageheader"  colspan="2">WebCalendar Installation Wizard: Step 2</th></tr>
-<tr><td colspan="2" width="50%">
-In this section you will set up and test a connection to your database server. The account
-information supplied should have FULL permissions to create databases. tables and users.
-If this is not possible, or your database access is limited, you will have to manually
-configure your database.
-</td></tr>
-<tr><th colspan="2" class="header">Database Status</th></tr>
-<tr><td>
- <ul>
- <li>Supported databases for your PHP installation:
+	<tr><th class="pageheader" colspan="2">
+		WebCalendar Installation Wizard: Step 2
+	</th></tr>
+	<tr><td colspan="2" width="50%">
+		In this section you will set up and test a connection to your database server. The account information 
+		supplied should have FULL permissions to create databases. tables and users. If this is not possible, or 
+		your database access is limited, you will have to manually configure your database.
+	</td></tr>
+	<tr><th colspan="2" class="header">
+		Database Status
+	</th></tr>
+	<tr><td>
+		<ul>
+			<li>Supported databases for your PHP installation:
 <?php
   $dbs = array ();
   if ( function_exists ( "mysql_pconnect" ) )
@@ -1125,91 +1168,92 @@ configure your database.
   echo  $dbs[$i] ;
     $supported[$dbs[$i]] = true;
   }
-?>
-  </li>
+?></li>
+
 <?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  ) { ?>
-<li class="recommended">Your current database settings are able to access the database.</li>
+		<li class="recommended"><img src="recommended.gif" />&nbsp;Your current database settings are able to access the database.</li>
   <?php if ( ! empty ( $response_msg ) ) { ?>
-    <li class="recommended"><?php echo $response_msg; ?></li>
+		<li class="recommended"><img src="recommended.gif" />&nbsp;<?php echo $response_msg; ?></li>
    <?php } else {?>
-    <li class="notrecommended"><b>Please Test Settings</b></li>  
+		<li class="notrecommended"><img src="not_recommended.jpg" />&nbsp;<b>Please Test Settings</b></li>  
   <?php } ?>
 <?php } else { ?>
-<li class="notrecommended">Your current database settings are <b>not</b> able to
- access the database or have not yet been tested.</li>
+		<li class="notrecommended"><img src="not_recommended.jpg" />&nbsp;Your current database settings are <b>not</b> able to access the database or have not yet been tested.</li>
   <?php if ( ! empty ( $response_msg ) ) { ?>
-    <li class="notrecommended"><?php echo $response_msg; ?></li>
+		<li class="notrecommended"><img src="not_recommended.jpg" />&nbsp;<?php echo $response_msg; ?></li>
    <?php } ?>
 <?php } ?>
 </ul>
 </td></tr>
-<tr><th class="header" colspan="2">Database Settings</th></tr>
+<tr><th class="header" colspan="2">
+	Database Settings
+</th></tr>
 <tr><td>
-<form action="index.php" method="post" name="dbform">
-<table  align="right" width="100%" border="0">
-
-<tr>
-<td rowspan="6" width="20%"></td>
-<td class="prompt" width="25%" valign="bottom">Database Type:</td>
-<td valign="bottom">
-<select name="form_db_type" onchange="db_type_handler();">
+	<form action="index.php" method="post" name="dbform">
+	<table align="right" width="100%" border="0">
+		<tr><td rowspan="6" width="20%">
+			&nbsp;</td><td class="prompt" width="25%" valign="bottom">
+			<label for="db_type">Database Type:</label></td><td valign="bottom">
+			<select name="form_db_type" id="db_type" onchange="db_type_handler();">
 <?php
   if ( ! empty ( $supported['mysql'] ) )
-    echo "<option value=\"mysql\" " .
+    echo "		<option value=\"mysql\" " .
       ( $settings['db_type'] == 'mysql' ? " selected=\"selected\"" : "" ) .
-      "> MySQL </option>\n";
+      ">MySQL</option>\n";
       
   if ( ! empty ( $supported['mysqli'] ) )
-    echo "<option value=\"mysqli\" " .
+    echo "		<option value=\"mysqli\" " .
       ( $settings['db_type'] == 'mysqli' ? " selected=\"selected\"" : "" ) .
-      "> MySQL (Improved)</option>\n";
+      ">MySQL (Improved)</option>\n";
 
   if ( ! empty ( $supported['oracle'] ) )
-    echo "<option value=\"oracle\" " .
+    echo "		<option value=\"oracle\" " .
       ( $settings['db_type'] == 'oracle' ? " selected=\"selected\"" : "" ) .
-      "> Oracle (OCI) </option>\n";
+      ">Oracle (OCI)</option>\n";
 
   if ( ! empty ( $supported['postgresql'] ) )
-    echo "<option value=\"postgresql\" " .
+    echo "		<option value=\"postgresql\" " .
       ( $settings['db_type'] == 'postgresql' ? " selected=\"selected\"" : "" ) .
-      "> PostgreSQL </option>\n";
+      ">PostgreSQL</option>\n";
 
   if ( ! empty ( $supported['odbc'] ) )
-    echo "<option value=\"odbc\" " .
+    echo "		<option value=\"odbc\" " .
       ( $settings['db_type'] == 'odbc' ? " selected=\"selected\"" : "" ) .
-      "> ODBC </option>\n";
+      ">ODBC</option>\n";
 
   if ( ! empty ( $supported['ibase'] ) )
-    echo "<option value=\"ibase\" " .
+    echo "		<option value=\"ibase\" " .
       ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
-      "> Interbase </option>\n";
+      ">Interbase</option>\n";
 
   if ( ! empty ( $supported['mssql'] ) )
-    echo "<option value=\"mssql\" " .
+    echo "		<option value=\"mssql\" " .
       ( $settings['db_type'] == 'mssql' ? " selected=\"selected\"" : "" ) .
-      "> MS SQL Server </option>\n";
+      ">MS SQL Server</option>\n";
       
   if ( ! empty ( $supported['sqlite'] ) )
-    echo "<option value=\"sqlite\" " .
+    echo "		<option value=\"sqlite\" " .
       ( $settings['db_type'] == 'sqlite' ? " selected=\"selected\"" : "" ) .
-      "> SQLite </option>\n";
+      ">SQLite</option>\n";
 ?>
-</select>
-</td></tr>
-
-<tr><td class="prompt">Server:</td>
-<td colspan="2"><input name="form_db_host" size="20" value="<?php echo $settings['db_host'];?>" /></td></tr>
-
-<tr><td class="prompt">Login:</td>
-<td colspan="2"><input name="form_db_login" size="20" value="<?php echo $settings['db_login'];?>" /></td></tr>
-
-<tr><td class="prompt">Password:</td>
-<td colspan="2"><input name="form_db_password" size="20" value="<?php echo $settings['db_password'];?>" /></td></tr>
-
-
-<tr><td class="prompt" id="db_name">Database Name:</td>
-<td colspan="2"><input name="form_db_database" size="20" value="<?php echo $settings['db_database'];?>" /></td></tr>
-
+			</select>
+		</td></tr>
+		<tr><td class="prompt">
+			<label for="server">Server:</label></td><td colspan="2">
+			<input name="form_db_host" id="server" size="20" value="<?php echo $settings['db_host'];?>" />
+		</td></tr>
+		<tr><td class="prompt">
+			<label for="login">Login:</label></td><td colspan="2">
+			<input name="form_db_login" id="login" size="20" value="<?php echo $settings['db_login'];?>" />
+		</td></tr>
+		<tr><td class="prompt">
+			<label for="pass">Password:</label></td><td colspan="2">
+			<input name="form_db_password" id="pass" size="20" value="<?php echo $settings['db_password'];?>" />
+		</td></tr>
+		<tr><td class="prompt" id="db_name">
+			<label for="database">Database Name:</label></td><td colspan="2">
+			<input name="form_db_database" id="database" size="20" value="<?php echo $settings['db_database'];?>" />
+		</td></tr>
 
 <?php
   // This a workaround for postgresql. The db_type should be 'pgsql' but 'postgresql' is used
@@ -1217,18 +1261,22 @@ configure your database.
   $real_db_type = ( $settings['db_type'] == "postgresql" ? "pgsql" : $settings['db_type'] );
   if ( substr( php_sapi_name(), 0, 3) <> "cgi" && 
         ini_get( $real_db_type . ".allow_persistent" ) ){ ?>
-<tr><td class="prompt">Connection Persistence:</td>
-<td colspan="2"><input name="form_db_persistent" value="true" type="radio"
-  <?php echo ( $settings['db_persistent'] == 'true' )? " checked=\"checked\"" : ""; ?> />Enabled
+		<tr><td class="prompt">
+			<label for="conn_pers">Connection Persistence:</label></td><td colspan="2">
+			<label><input name="form_db_persistent" value="true" type="radio"<?php 
+				echo ( $settings['db_persistent'] == 'true' ) ? " checked=\"checked\"" : ""; ?> />Enabled</label>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <input name="form_db_persistent" value="false" type="radio"
-  <?php echo ( $settings['db_persistent'] != 'true' )? " checked=\"checked\"" : ""; ?> />Disabled
-<?php } else{ // Need to set a default value ?>
-  <input name="form_db_persistent" value="false" type="hidden" />
+			<label><input name="form_db_persistent" value="false" type="radio"<?php 
+				echo ( $settings['db_persistent'] != 'true' )? " checked=\"checked\"" : ""; ?> />Disabled</label>
+<?php } else { // Need to set a default value ?>
+			<input name="form_db_persistent" value="false" type="hidden" />
 <?php } ?>
-</td></tr></table>
+		</td></tr>
+	</table>
+
 <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
-<table  align="right" width="100%" border="0"><tr><td align="center">
+<table  align="right" width="100%" border="0">
+	<tr><td align="center">
   <?php 
     $class = ( ! empty ( $_SESSION['db_success'] ) ) ?
       'recommended' : 'notrecommended';
@@ -1239,7 +1287,6 @@ configure your database.
        echo "<input name=\"action2\" type=\"submit\" value=\"Create New\" class=\"recommended\" />\n";
    } 
   ?>
-
 </td></tr>
 </table>
 </form> 
@@ -1248,23 +1295,21 @@ configure your database.
 <?php } ?>
 
 <table border="0" width="90%" align="center">
-<tr>
-<td align="right" width="40%">
+<tr><td align="right" width="40%">
   <form action="index.php?action=switch&amp;page=1" method="post">
-    <input type="submit" value="<- Prev Page" />
+    <input type="submit" value="<- Back" />
   </form>
 </td><td align="center" width="20%">
   <form action="index.php?action=switch&amp;page=3" method="post">
-    <input type="submit" value="Next Page -&gt;"  <?php echo ( ! empty ($_SESSION['db_success'] )? "" : "disabled" ); ?> />
+    <input type="submit" value="Next ->" <?php echo ( ! empty ($_SESSION['db_success'] )? "" : "disabled" ); ?> />
   </form>
-</td>
-  <td align="left" width="40%">
+</td><td align="left" width="40%">
   <form action="" method="post">
-  <input type="button" value="Logout"  <?php echo ( ! empty ($_SESSION['validuser'] )? "" : "disabled" ); ?>
-   onclick="document.location.href='index.php?action=logout'" />
-	</form>
-  </td>
-</tr></table>
+	<input type="button" value="Logout" <?php echo ( ! empty ($_SESSION['validuser'] )? "" : "disabled" ); ?> 
+		onclick="document.location.href='index.php?action=logout'" />
+  </form>
+</td></tr>
+</table>
 
 <?php } else if ( $_SESSION['step'] == 3 ) { ?>
 <?php  
@@ -1286,7 +1331,7 @@ configure your database.
   }
 ?>
 <table border="1" width="90%" align="center">
-<tr><th class="pageheader"  colspan="2">WebCalendar Installation Wizard: Step 3</th></tr>
+<tr><th class="pageheader" colspan="2">WebCalendar Installation Wizard: Step 3</th></tr>
 <tr><td colspan="2" width="50%">
 In this section we will perform the required database changes to bring your database up to
 the required level. If you are using a fully supported database, this step will be performed 
@@ -1322,7 +1367,7 @@ to cut &amp; paste it into your database server query window.
 </td></tr>
   <?php } ?>
 <tr>
-  <td  class="recommended" align="center">
+  <td class="recommended" align="center">
  <?php if ( ! empty ( $settings['db_type'] ) && empty ( $_SESSION['blank_database'] ) &&
    ( $settings['db_type'] == "ibase" || $settings['db_type'] == "oracle" ) ) { ?>
  Automatic installation has not been fully implemented for your database type. You will
@@ -1362,31 +1407,29 @@ to cut &amp; paste it into your database server query window.
 <?php } ?>
 </table>
 <table border="0" width="90%" align="center">
-<tr>
-<td align="right" width="40%">
+<tr><td align="right" width="40%">
   <form action="index.php?action=switch&amp;page=2" method="post">
-    <input type="submit" value="<- Prev Page" />
+    <input type="submit" value="<- Back" />
   </form>
 </td><td align="center" width="20%">
   <form action="index.php?action=switch&amp;page=4" method="post">
-    <input type="submit" value="Next Page ->"  <?php echo ( empty ($_SESSION['db_updated'] )? "disabled" : "" ); ?>/>
+    <input type="submit" value="Next ->" <?php echo ( empty ($_SESSION['db_updated'] )? "disabled" : "" ); ?> />
   </form>
-</td>
-<td align="left" width="40%">
+</td><td align="left" width="40%">
   <form action="" method="post">
-  <input type="button" value="Logout"  <?php echo ( ! empty ($_SESSION['validuser'] )? "" : "disabled" ); ?>
+  <input type="button" value="Logout" <?php echo ( ! empty ($_SESSION['validuser'] )? "" : "disabled" ); ?>
    onclick="document.location.href='index.php?action=logout'" />
 	</form>
-</td>
-</tr></table>
+</td></tr>
+</table>
 <?php } else if ( $_SESSION['step'] == 4 ) { ?>
  <table border="1" width="90%" align="center">
-   <th class="pageheader"  colspan="2">WebCalendar Installation Wizard: Step 4</th>
+   <th class="pageheader" colspan="2">WebCalendar Installation Wizard: Step 4</th>
    <tr><td colspan="2" width="50%">
      This is the final step in setting up your WebCalendar Installation.
    </td></tr>
-  <th class="header"  colspan="2">Timezone Conversion</th></tr>
- <tr><td  colspan="2">
+  <th class="header" colspan="2">Timezone Conversion</th></tr>
+ <tr><td colspan="2">
  <?php if ( empty ( $_SESSION['tz_conversion'] ) || $_SESSION['tz_conversion'] == "Y" ) {?>
    <form action="index.php?action=tz_convert" method="post">
 	 <ul><li>
@@ -1407,7 +1450,7 @@ to cut &amp; paste it into your database server query window.
     <ul><li>Conversion Successful</li></ul>
  <?php } ?>
  </td></tr>
- <th class="header" colspan="2" >Application Settings</th>
+ <th class="header" colspan="2">Application Settings</th>
  <tr><td colspan="2"><ul>
   <?php if ( empty ( $PHP_AUTH_USER ) ) { ?>
    <li>HTTP-based authentication was not detected.
@@ -1442,29 +1485,29 @@ to cut &amp; paste it into your database server query window.
   <?php
    echo "<option value=\"user.php\" " .
     ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] != 'true' ? " selected=\"selected\"" : "" ) .
-    "> Web-based via WebCalendar (default) </option>\n";
+    ">Web-based via WebCalendar (default)</option>\n";
   
    echo "<option value=\"http\" " .
     ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] == 'true' ? " selected=\"selected\"" : "" ) .
-    "> Web Server " .
+    ">Web Server " .
     ( empty ( $PHP_AUTH_USER ) ? "(not detected)" : "(detected)" ) .
     "</option>\n";
   
    if ( function_exists ( "ldap_connect" ) ) {
     echo "<option value=\"user-ldap.php\" " .
      ( $settings['user_inc'] == 'user-ldap.php' ? " selected=\"selected\"" : "" ) .
-     "> LDAP </option>\n";
+     ">LDAP</option>\n";
    }
   
    if ( function_exists ( "yp_match" ) ) {
     echo "<option value=\"user-nis.php\" " .
      ( $settings['user_inc'] == 'user-nis.php' ? " selected=\"selected\"" : "" ) .
-     "> NIS </option>\n";
+     ">NIS</option>\n";
    }
   
    echo "<option value=\"none\" " .
     ( $settings['user_inc'] == 'user.php' && $settings['single_user'] == 'true' ? " selected=\"selected\"" : "" ) .
-    "> None (Single-User) </option>\n</select>";
+    ">None (Single-User)</option>\n</select>";
   ?>
     </td>
    </tr>
@@ -1492,8 +1535,8 @@ to cut &amp; paste it into your database server query window.
         else
          $mode = 'prod'; //producation
      ?>
-     <option value="prod" <?php if ( $mode == 'prod' ) echo 'selected="selected"';?>> Production</option>
-     <option value="dev" <?php if ( $mode == 'dev' ) echo 'selected="selected"';?>> Development</option>
+     <option value="prod" <?php if ( $mode == 'prod' ) echo 'selected="selected"';?>>Production</option>
+     <option value="dev" <?php if ( $mode == 'dev' ) echo 'selected="selected"';?>>Development</option>
      </select>
      </td>
     </tr>
@@ -1502,12 +1545,10 @@ to cut &amp; paste it into your database server query window.
  <table width="80%"  align="center">
  <tr><td align="center">
   <?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  && empty ( $dologin ) ) { ?>
-  <input name="action" type="button" value="Save Settings"
-   onclick="return validate();" />
+  <input name="action" type="button" value="Save Settings" onclick="return validate();" />
    <?php if ( ! empty ( $_SESSION['old_program_version'] ) && 
     $_SESSION['old_program_version'] == $PROGRAM_VERSION  && ! empty ( $setup_complete )) { ?>
-    <input type="button"  name="action2" value="Launch WebCalendar"
-     onclick="window.open('../index.php', 'webcalendar');" />
+    <input type="button"  name="action2" value="Launch WebCalendar" onclick="window.open('../index.php', 'webcalendar');" />
    <?php } ?>
   <?php } ?>
   <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
