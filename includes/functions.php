@@ -2904,6 +2904,7 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     if ($layers) foreach ($layers as $layer) {
       if ( $layer['cal_layeruser'] == $event_owner ) {
+        $in_span = true;
         $hour_arr[$ind] .= "<span style=\"color:" . $layer['cal_color'] . ";\">";
       }
     }
@@ -2954,7 +2955,8 @@ function html_for_event_week_at_a_glance ( $id, $date, $time,
     $hour_arr[$ind] .= "(" . translate("Private") . ")";
   } else if ( $login != $event_owner && strlen ( $event_owner ) ) {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-    $hour_arr[$ind] .= "</span>"; //end color span
+    if ( ! empty ( $in_span ) )
+      $hour_arr[$ind] .= "</span>"; //end color span
   } else {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
   }
@@ -3070,6 +3072,7 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   if ( $login != $event_owner && strlen ( $event_owner ) ) {
     if ($layers) foreach ($layers as $layer) {
       if ( $layer['cal_layeruser'] == $event_owner) {
+        $in_span = true;
         $hour_arr[$ind] .= "<span style=\"color:" . $layer['cal_color'] . ";\">";
       }
     }
@@ -3114,7 +3117,8 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   if ( $login != $event_owner && strlen ( $event_owner ) )
   {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-    $hour_arr[$ind] .= "</span>"; //end color span
+    if ( ! empty ( $in_span ) )
+      $hour_arr[$ind] .= "</span>"; //end color span
   }
 
   else
