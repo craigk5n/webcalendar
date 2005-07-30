@@ -118,13 +118,13 @@ for ( $d = $startdate; $d <= $enddate; $d += ONE_DAY ) {
   $dYmd = date ( "Ymd", $d );
   $ev = get_entries ( $user, $dYmd, $get_unapproved );
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    $event_text .= fb_export_time ( $dYmd, $ev[$i]->get_duration(),
-      $ev[$i]->get_time(), "ical");
+    $event_text .= fb_export_time ( $dYmd, $ev[$i]->getDuration(),
+      $ev[$i]->getTime(), "ical");
   }
   $revents = get_repeating_entries ( $user, $dYmd, $get_unapproved );
   for ( $i = 0; $i < count ( $revents ); $i++ ) {
-    $event_text .= fb_export_time ( $dYmd, $revents[$i]->get_duration(),
-      $revents[$i]->get_time(), "ical");
+    $event_text .= fb_export_time ( $dYmd, $revents[$i]->getDuration(),
+      $revents[$i]->getTime(), "ical");
   }
 }
 

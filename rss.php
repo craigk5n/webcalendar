@@ -220,17 +220,17 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
   if ( count ( $entries ) > 0 || count ( $rentries ) > 0 ) {
     for ( $j = 0; $j < count ( $entries ) && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
-      if ( $entries[$j]->get_access() == "P" || $allow_all_access == "Y" ) {
+      if ( $entries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) {
         echo "<rdf:li rdf:resource=\"" . $server_url . "view_entry.php?id=" . 
-          $entries[$j]->get_id() . "&amp;date=" . $d . "&amp;friendly=1\" />\n";
+          $entries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1\" />\n";
         $numEvents++;
       }
     }
     for ( $j = 0; $j < count ( $rentries ) && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
-      if ( $rentries[$j]->get_access() == "P" || $allow_all_access == "Y" ) {
+      if ( $rentries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) {
         echo "<rdf:li rdf:resource=\"" . $server_url . "view_entry.php?id=" . 
-          $rentries[$j]->get_id() . "&amp;date=" . $d . "&amp;friendly=1\" />\n";
+          $rentries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1\" />\n";
         $numEvents++;
       }
     }
@@ -255,20 +255,20 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
   if ( count ( $entries ) > 0 || count ( $rentries ) > 0 ) {
     for ( $j = 0; $j < count ( $entries ) && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
-      if ( $username == '__public__' || $entries[$j]->get_access() == "P" ||
+      if ( $username == '__public__' || $entries[$j]->getAccess() == "P" ||
         $allow_all_access == "Y" ) {
-        $unixtime = unixtime ( $d, $entries[$j]->get_time() );
+        $unixtime = unixtime ( $d, $entries[$j]->getTime() );
         echo "\n<item rdf:about=\"" . $server_url . "view_entry.php?id=" . 
-          $entries[$j]->get_id() . "&amp;date=" . $d . "&amp;friendly=1\">\n";
-        echo "<title xml:lang=\"$lang\"><![CDATA[" . $entries[$j]->get_name() . "]]></title>\n";
+          $entries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1\">\n";
+        echo "<title xml:lang=\"$lang\"><![CDATA[" . $entries[$j]->getName() . "]]></title>\n";
         echo "<link>" . $server_url . "view_entry.php?id=" . 
-          $entries[$j]->get_id() . "&amp;date=" . $d . "&amp;friendly=1</link>\n";
+          $entries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1</link>\n";
         echo "<description xml:lang=\"$lang\"><![CDATA[" .
-          $entries[$j]->get_description() . "]]></description>\n";
-        echo "<category xml:lang=\"$lang\"><![CDATA[" . $entries[$j]->get_name() .
+          $entries[$j]->getDescription() . "]]></description>\n";
+        echo "<category xml:lang=\"$lang\"><![CDATA[" . $entries[$j]->getName() .
           "]]></category>\n";
         echo "<content:encoded xml:lang=\"$lang\"><![CDATA[" .
-          $entries[$j]->get_description() . "]]></content:encoded>\n";
+          $entries[$j]->getDescription() . "]]></content:encoded>\n";
         echo "<dc:creator><![CDATA[" . $creator . "]]></dc:creator>\n";
         echo "<dc:date>" . date ( 'm/d/Y H:i A', $unixtime ) .
           "</dc:date>\n";
@@ -278,20 +278,20 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
     }
     for ( $j = 0; $j < count ( $rentries ) && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
-      if ( $username == '__public__' || $rentries[$j]->get_access() == "P" ||
+      if ( $username == '__public__' || $rentries[$j]->getAccess() == "P" ||
         $allow_all_access == "Y" ) {
         echo "\n<item rdf:about=\"" . $server_url . "view_entry.php?id=" . 
-          $rentries[$j]->get_id() . "&amp;date=" . $d . "&amp;friendly=1\">\n";
-        $unixtime = unixtime ( $d, $rentries[$j]->get_time() );
-        echo "<title xml:lang=\"$lang\"><![CDATA[" . $rentries[$j]->get_name() . "]]></title>\n";
+          $rentries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1\">\n";
+        $unixtime = unixtime ( $d, $rentries[$j]->getTime() );
+        echo "<title xml:lang=\"$lang\"><![CDATA[" . $rentries[$j]->getName() . "]]></title>\n";
         echo "<link>" . $server_url . "view_entry.php?id=" . 
-          $rentries[$j]->get_id() . "&amp;date=" . $d . "&amp;friendly=1</link>\n";
+          $rentries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1</link>\n";
         echo "<description xml:lang=\"$lang\"><![CDATA[" .
-          $rentries[$j]->get_description() . "]]></description>\n";
-        echo "<category><![CDATA[" .  $rentries[$j]->get_name()  .
+          $rentries[$j]->getDescription() . "]]></description>\n";
+        echo "<category><![CDATA[" .  $rentries[$j]->getName()  .
           "]]></category>\n";
         echo "<content:encoded xml:lang=\"$lang\"><![CDATA[" .
-          $rentries[$j]->get_description() . "]]></content:encoded>\n";
+          $rentries[$j]->getDescription() . "]]></content:encoded>\n";
         echo "<dc:creator><![CDATA[" . $creator . "]]></dc:creator>\n";
         echo "<dc:date>" . date ( 'm/d/Y H:i A', $unixtime ) .
           "</dc:date>\n";

@@ -166,21 +166,21 @@ function print_detailed_entry ( $event, $date ) {
 
   global $layers;
 
-  if ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
+  if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     $class = "layerentry";
   } else {
     $class = "entry";
-    if ( $event->get_status() == "W" ) $class = "unapprovedentry";
+    if ( $event->getStatus() == "W" ) $class = "unapprovedentry";
   }
 
-  if ( $event->get_priority() == 3 ) echo "<strong>";
+  if ( $event->getPriority() == 3 ) echo "<strong>";
 
-  if ( $event->get_ext_for_id() != '' ) {
-    $id = $event->get_ext_for_id();
-    $name = $event->get_name() . ' (' . translate ( 'cont.' ) . ')';
+  if ( $event->getExtForID() != '' ) {
+    $id = $event->getExtForID();
+    $name = $event->getName() . ' (' . translate ( 'cont.' ) . ')';
   } else {
-    $id = $event->get_id();
-    $name = $event->get_name();
+    $id = $event->getID();
+    $name = $event->getName();
   }
 
   $popupid = "eventinfo-pop$id-$key";
@@ -193,9 +193,9 @@ function print_detailed_entry ( $event, $date ) {
   if ( strlen ( $user ) > 0 )
     echo "&amp;user=" . $user;
   echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"view icon\" />";
-  if ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
+  if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     if ($layers) foreach ($layers as $layer) {
-      if($layer['cal_layeruser'] == $event->get_login()) {
+      if($layer['cal_layeruser'] == $event->getLogin()) {
         $in_span = true;
         echo("<span style=\"color:#" . $layer['cal_color'] . ";\">");
       }
@@ -204,34 +204,34 @@ function print_detailed_entry ( $event, $date ) {
 
   $timestr = "";
 
- if ( $event->is_allday() ) {
+ if ( $event->isAllDay() ) {
   $timestr = translate("All day event");
- } else if ( $event->get_duration() > 0 ) {
-  $timestr = display_time ( $event->get_datetime() ) .
+ } else if ( $event->getDuration() > 0 ) {
+  $timestr = display_time ( $event->get_DateTime() ) .
    " - " . display_time ( $event->get_enddatetime() );
   echo $timestr . "&raquo;&nbsp;";
  }
 
-  if ( $login != $user && $event->get_access() == 'R' && strlen ( $user ) ) {
+  if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
     $PN = "(" . translate("Private") . ")"; $PD = "(" . translate("Private") . ")";
-  } elseif ( $login != $event->get_login() && $event->get_access() == 'R' && strlen ( $event->get_login() ) ) {
+  } elseif ( $login != $event->getLogin() && $event->getAccess() == 'R' && strlen ( $event->getLogin() ) ) {
     $PN = "(" . translate("Private") . ")";$PD ="(" . translate("Private") . ")";
-  } elseif ( $login != $event->get_login() && strlen ( $event->get_login() ) ) {
+  } elseif ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     $PN = htmlspecialchars ( $name );
-    $PD = activate_urls ( htmlspecialchars ( $event->get_description() ) );
+    $PD = activate_urls ( htmlspecialchars ( $event->getDescription() ) );
   }
   if ( ! empty ( $in_span ) ) 
    $PN .= "</span>";
 
   echo $PN;
   echo "</a>";
-  if ( $event->get_priority() == 3 ) echo "</strong>";
+  if ( $event->getPriority() == 3 ) echo "</strong>";
   # Only display description if it is different than the event name.
   if ( $PN != $PD )
     echo " - " . $PD;
   echo "<br />\n";
-  $eventinfo .= build_event_popup ( $popupid, $event->get_login(),
-    $event->get_description(), $timestr, site_extras_for_popup ( $id ) );
+  $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
+    $event->getDescription(), $timestr, site_extras_for_popup ( $id ) );
 }
 
 //
@@ -261,20 +261,20 @@ function print_det_date_entries ( $date, $user, $ssi ) {
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     // print out any repeating events that are before this one...
     while ( $cur_rep < count ( $rep ) &&
-      $rep[$cur_rep]->get_time() < $ev[$i]->get_time() ) {
+      $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
       if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
-        $rep[$cur_rep]->get_status() == 'A' )
+        $rep[$cur_rep]->getStatus() == 'A' )
         print_detailed_entry ( $rep[$cur_rep], $date );
       $cur_rep++;
     }
     if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
-      $ev[$i]->get_status() == 'A' )
+      $ev[$i]->getStatus() == 'A' )
       print_detailed_entry ( $ev[$i], $date );
   }
   // print out any remaining repeating events
   while ( $cur_rep < count ( $rep ) ) {
     if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
-      $rep[$cur_rep]->get_status() == 'A' )
+      $rep[$cur_rep]->getStatus() == 'A' )
       print_detailed_entry ( $rep[$cur_rep], $date );
     $cur_rep++;
   }

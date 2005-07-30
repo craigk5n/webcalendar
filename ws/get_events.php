@@ -281,19 +281,19 @@ for ( $d = $starttime; $d <= $endtime; $d += ONE_DAY ) {
   // Keep track of duplicates
   $completed_ids = array ( );
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    $id = $ev[$i]->get_id();
+    $id = $ev[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    process_event ( $id, $ev[$i]->get_name(), $date, $ev[$i]->get_time() );
+    process_event ( $id, $ev[$i]->getName(), $date, $ev[$i]->getTime() );
   }
   $rep = get_repeating_entries ( $user, $date );
   for ( $i = 0; $i < count ( $rep ); $i++ ) {
-    $id = $rep[$i]->get_id();
+    $id = $rep[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    process_event ( $id, $rep[$i]->get_name(), $date, $rep[$i]->get_time() );
+    process_event ( $id, $rep[$i]->getName(), $date, $rep[$i]->getTime() );
   }
 }
 

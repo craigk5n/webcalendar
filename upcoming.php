@@ -251,23 +251,23 @@ function print_upcoming_event ( $e ) {
 
   if ( $display_link && ! empty ( $server_url ) ) {
     print "<a title=\"" . 
-      $e->get_name() . "\" href=\"" . 
+      $e->getName() . "\" href=\"" . 
       $server_url . "view_entry.php?id=" . 
-      $e->get_id() . "&amp;date=" . 
-      $e->get_date() . "\"";
+      $e->getID() . "&amp;date=" . 
+      $e->getDate() . "\"";
     if ( ! empty ( $link_target ) ) {
       print " target=\"$link_target\"";
     }
     print ">";
   }
-  print $e->get_name();
+  print $e->getName();
   if ( $display_link && ! empty ( $server_url ) ) {
     print "</a>";
   }
-  if ( $e->get_duration() == 24 * 60 ) {
+  if ( $e->getDuration() == 24 * 60 ) {
     print " (" . translate("All day event") . ")\n";
-  } else if ( $e->get_time() != -1 ) {
-    print " (" . display_time ( $e->get_datetime(), $display_tzid ) . ")\n";
+  } else if ( $e->getTime() != -1 ) {
+    print " (" . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
   }
   print "<br />\n";
 }
