@@ -178,17 +178,17 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     // print out any repeating events that are before this one...
     while ( $cur_rep < count ( $rep ) &&
-      $rep[$cur_rep]->get_time() < $ev[$i]->get_time() ) {
-      if ( $get_unapproved || $rep[$cur_rep]->get_status() == 'A' ) {
-        if ( $rep[$cur_rep]->get_duration() == ( 24 * 60 ) ) {
+      $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
+      if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
+        if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) ) {
           $all_day[$d] = 1;
         }
         html_for_event_week_at_a_glance ( $rep[$cur_rep], $date );
       }
       $cur_rep++;
     }
-    if ( $get_unapproved || $ev[$i]->get_status() == 'A' ) {
-      if ( $ev[$i]->get_duration() == ( 24 * 60 ) ) {
+    if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
+      if ( $ev[$i]->getDuration() == ( 24 * 60 ) ) {
         $all_day[$d] = 1;
       }
       html_for_event_week_at_a_glance ( $ev[$i], $date );
@@ -196,8 +196,8 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   }
   // print out any remaining repeating events
   while ( $cur_rep < count ( $rep ) ) {
-    if ( $get_unapproved || $rep[$cur_rep]->get_status() == 'A' ) {
-      if ( $rep[$cur_rep]->get_duration() == ( 24 * 60 ) ) {
+    if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
+      if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) ) {
         $all_day[$d] = 1;
       }
       html_for_event_week_at_a_glance ( $rep[$cur_rep], $date );

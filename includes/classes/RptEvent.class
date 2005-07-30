@@ -1,6 +1,6 @@
 <?php
 /**
- * Declares the RptEvent class.
+ * Declares the RepeatingEvent class.
  *
  * @author Adam Roben <adam.roben@gmail.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
@@ -11,51 +11,51 @@
  */
 
 /**
- * An repeating event parameter object.
+ * A repeating event parameter object.
  *
  * This is a parameter object. It only has simple accessors.
  */
-class RptEvent extends Event {
+class RepeatingEvent extends Event {
   /**
    * The type of repeat.
    * @var string
    * @access private
    */
-  var $_rpt_type;
+  var $_repeatType;
   /**
    * The end date of the repetition.
    * @var string
    * @access private
    */
-  var $_rpt_end;
+  var $_repeatEnd;
   /**
    * The frequency of the repetition.
    * @var int
    * @access private
    */
-  var $_rpt_frequency;
+  var $_repeatFrequency;
   /**
    * The days each week the event occurs (for weekly events)
    * @var string
    * @access private
    */
-  var $_rpt_days;
+  var $_repeatDays;
   /**
    * Dates on which the event should not fall
    * @var array
    * @access private
    */
-  var $_rpt_exceptions;
+  var $_repeatExceptions;
 
   /**
-   * Creates a new RptEvent.
+   * Creates a new RepeatingEvent.
    *
    * @param string $name        Name of the event
    * @param string $description Event's description
    * @param string $date        Event's date (in YYYYMMDD format)
    * @param string $time        Event's time (in HHMMSS format)
    * @param int    $id          Event's ID
-   * @param mixed  $ext_for_id  Event's extension ID (or '' for none)
+   * @param mixed  $extForID    Event's extension ID (or '' for none)
    * @param int    $priority    Event's priority
    * @param string $access      Event's access level
    * @param int    $duration    Event's duration (in minutes)
@@ -72,21 +72,21 @@ class RptEvent extends Event {
    *
    * @access public
    */
-  function RptEvent ( $name, $description, $date, $time, $id, $ext_for_id,
+  function RepeatingEvent ( $name, $description, $date, $time, $id, $extForID,
                       $priority, $access, $duration, $status, $category, $login,
                       $type, $end, $frequency, $days, $exceptions ) {
 
     /* Silly PHP4 hack */
     $parent = get_parent_class ( $this );
 
-    parent::$parent ( $name, $description, $date, $time, $id, $ext_for_id,
+    parent::$parent ( $name, $description, $date, $time, $id, $extForID,
                       $priority, $access, $duration, $status, $category, $login );
 
-    $this->_rpt_type = $type;
-    $this->_rpt_end = $end;
-    $this->_rpt_frequency = $frequency;
-    $this->_rpt_days = $days;
-    $this->_rpt_exceptions = $exceptions;
+    $this->_repeatType = $type;
+    $this->_repeatEnd = $end;
+    $this->_repeatFrequency = $frequency;
+    $this->_repeatDays = $days;
+    $this->_repeatExceptions = $exceptions;
   }
 
   /**
@@ -96,8 +96,8 @@ class RptEvent extends Event {
    *
    * @access public
    */
-  function get_rpt_type () {
-    return $this->_rpt_type;
+  function getRepeatType () {
+    return $this->_repeatType;
   }
 
   /**
@@ -115,8 +115,8 @@ class RptEvent extends Event {
    *
    * @access public
    */
-  function get_rpt_end () {
-    return $this->_rpt_end;
+  function getRepeatEnd () {
+    return $this->_repeatEnd;
   }
 
   /**
@@ -126,8 +126,8 @@ class RptEvent extends Event {
    *
    * @access public
    */
-  function get_rpt_frequency () {
-    return $this->_rpt_frequency;
+  function getRepeatFrequency () {
+    return $this->_repeatFrequency;
   }
 
   /**
@@ -139,8 +139,8 @@ class RptEvent extends Event {
    *
    * @access public
    */
-  function get_rpt_days () {
-    return $this->_rpt_days;
+  function getRepeatDays () {
+    return $this->_repeatDays;
   }
 
   /**
@@ -150,8 +150,8 @@ class RptEvent extends Event {
    *
    * @access public
    */
-  function get_rpt_exceptions () {
-    return $this->_rpt_exceptions;
+  function getRepeatExceptions () {
+    return $this->_repeatExceptions;
   }
 
   /**
@@ -161,8 +161,8 @@ class RptEvent extends Event {
    *
    * @access public
    */
-  function add_rpt_exception ( $exception ) {
-    $this->_rpt_exceptions[] = $exception;
+  function addRepeatException ( $exception ) {
+    $this->_repeatExceptions[] = $exception;
   }
 }
 ?>

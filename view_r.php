@@ -354,14 +354,14 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $adate = date ( "Ymd", $days[$d] );
     $rep = get_repeating_entries ( $user, $adate );
     for ( $j = 0; $j < count ( $rep ); $j++ ) {
-      if ( ! isset ( $am_part[$rep[$j]->get_id()] ) ) {
-        $am_part[$rep[$j]->get_id()] =
-          user_is_participant ( $rep[$j]->get_id(), $login );
+      if ( ! isset ( $am_part[$rep[$j]->getID()] ) ) {
+        $am_part[$rep[$j]->getID()] =
+          user_is_participant ( $rep[$j]->getID(), $login );
       }
-      if ( $get_unapproved || $rep[$j]->get_status() == 'A' ) {
-        if ( $rep[$j]->get_duration() > 0 &&
-          $rep[$j]->get_duration() != 24 * 60 ) {
-          $slot = calc_time_slot ( $rep[$j]->get_time(), false );
+      if ( $get_unapproved || $rep[$j]->getStatus() == 'A' ) {
+        if ( $rep[$j]->getDuration() > 0 &&
+          $rep[$j]->getDuration() != 24 * 60 ) {
+          $slot = calc_time_slot ( $rep[$j]->getTime(), false );
           if ( $slot < $first_slot ) {
             $first_slot = $slot;
           }
@@ -370,13 +370,13 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     }
     $ev = get_entries ( $user, $adate, $get_unapproved , 1, 1);
     for ( $j = 0; $j < count ( $ev ); $j++ ) {
-      if ( ! isset ( $am_part[$ev[$j]->get_id()] ) ) {
-        $am_part[$ev[$j]->get_id()] =
-          user_is_participant ( $ev[$j]->get_id(), $login );
+      if ( ! isset ( $am_part[$ev[$j]->getID()] ) ) {
+        $am_part[$ev[$j]->getID()] =
+          user_is_participant ( $ev[$j]->getID(), $login );
       }
-      if ( $ev[$j]->get_duration() > 0 &&
-        $ev[$j]->get_duration() != 24 * 60 ) {
-        $slot = calc_time_slot ( $ev[$j]->get_time(), false );
+      if ( $ev[$j]->getDuration() > 0 &&
+        $ev[$j]->getDuration() != 24 * 60 ) {
+        $slot = calc_time_slot ( $ev[$j]->getTime(), false );
         if ( $slot < $first_slot ) {
           $first_slot = $slot;
         }
@@ -403,16 +403,16 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     for ( $i = 0; $i < count ( $ev ); $i++ ) {
       // print out any repeating events that are before this one...
       while ( $cur_rep < count ( $rep ) &&
-        $rep[$cur_rep]->get_time() < $ev[$i]->get_time() ) {
-        if ( $get_unapproved || $rep[$cur_rep]->get_status() == 'A' ) {
-          if ( $rep[$cur_rep]->get_duration() == ( 24 * 60 ) )
+        $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
+        if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
+          if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) )
             $all_day[$d] = 1;
           html_for_event_week_at_a_glance ( $rep[$cur_rep], $adate, "small", $show_time );
         }
         $cur_rep++;
       }
-      if ( $get_unapproved || $ev[$i]->get_status() == 'A' ) {
-        if ( $ev[$i]->get_duration() == ( 24 * 60 ) )
+      if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
+        if ( $ev[$i]->getDuration() == ( 24 * 60 ) )
           $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $ev[$i], $adate, "small", $show_time );
         //echo "Found event date=$adate name='$viewname'<br>\n";
@@ -421,8 +421,8 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     }
     // print out any remaining repeating events
     while ( $cur_rep < count ( $rep ) ) {
-      if ( $get_unapproved || $rep[$cur_rep]->get_status() == 'A' ) {
-        if ( $rep[$cur_rep]->get_duration() == ( 24 * 60 ) )
+      if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
+        if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) )
           $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $rep[$cur_rep], $adate, "small", $show_time );
       }

@@ -50,12 +50,12 @@ class Event {
    * Extension ID.
    *
    * If this event is an extension of an event that carried over into the
-   * current date, <var>$_ext_for_id</var> will hold the original event's date.
+   * current date, <var>$_extForID</var> will hold the original event's date.
    *
    * @var mixed
    * @access private
    */
-  var $_ext_for_id;
+  var $_extForID;
   /**
    * The event's priority.
    * @var int
@@ -97,19 +97,19 @@ class Event {
    * @var mixed
    * @access private
    */
-  var $_endtime;
+  var $_endTime;
  /**
    * The event's end datetime .
    * @var mixed
    * @access private
    */
-  var $_enddatetime;
+  var $_endDateTime;
  /**
    * Is this an All Day event?
    * @var bool
    * @access private
    */
-  var $_allday;
+  var $_allDay;
  /**
    * Is this an Untimes event?
    * @var bool
@@ -125,7 +125,7 @@ class Event {
    * @param string $date        Event's date (in YYYYMMDD format)
    * @param string $time        Event's time (in HHMMSS format)
    * @param int    $id          Event's ID
-   * @param mixed  $ext_for_id  Event's extension ID (or '' for none)
+   * @param mixed  $extForID    Event's extension ID (or '' for none)
    * @param int    $priority    Event's priority
    * @param string $access      Event's access level
    * @param int    $duration    Event's duration (in minutes)
@@ -137,15 +137,15 @@ class Event {
    *
    * @access public
    */
-  function Event ( $name, $description, $date, $time, $id, $ext_for_id,
+  function Event ( $name, $description, $date, $time, $id, $extForID,
                    $priority, $access, $duration, $status, $category, $login ) {
     $this->_name = $name;
     $this->_description = $description;
     $this->_date = $date;
     $this->_time = $time;
-    $this->_date_time = $date . sprintf ( "%06d", $time );
+    $this->_DateTime = $date . sprintf ( "%06d", $time );
     $this->_id = $id;
-    $this->_ext_for_id = $ext_for_id;
+    $this->_extForID = $extForID;
     $this->_priority = $priority;
     $this->_access = $access;
     $this->_duration = $duration;
@@ -170,7 +170,7 @@ class Event {
    *
    * @access public
    */
-  function get_name () {
+  function getName () {
     return $this->_name;
   }
 
@@ -181,7 +181,7 @@ class Event {
    *
    * @access public
    */
-  function get_description () {
+  function getDescription () {
     return $this->_description;
   }
 
@@ -192,7 +192,7 @@ class Event {
    *
    * @access public
    */
-  function get_date () {
+  function getDate () {
     return $this->_date;
   }
 
@@ -203,7 +203,7 @@ class Event {
    *
    * @access public
    */
-  function get_time () {
+  function getTime () {
     return $this->_time;
   }
   
@@ -214,8 +214,8 @@ class Event {
    *
    * @access public
    */
-  function get_datetime () {
-    return $this->_date_time;
+  function getDateTime () {
+    return $this->_DateTime;
   }
 
 
@@ -226,7 +226,7 @@ class Event {
    *
    * @access public
    */
-  function get_id () {
+  function getID () {
     return $this->_id;
   }
 
@@ -237,8 +237,8 @@ class Event {
    *
    * @access public
    */
-  function get_ext_for_id () {
-    return $this->_ext_for_id;
+  function getExtForID () {
+    return $this->_extForID;
   }
 
   /**
@@ -248,7 +248,7 @@ class Event {
    *
    * @access public
    */
-  function get_priority () {
+  function getPriority () {
     return $this->_priority;
   }
 
@@ -259,7 +259,7 @@ class Event {
    *
    * @access public
    */
-  function get_access () {
+  function getAccess () {
     return $this->_access;
   }
 
@@ -270,7 +270,7 @@ class Event {
    *
    * @access public
    */
-  function get_duration () {
+  function getDuration () {
     return $this->_duration;
   }
 
@@ -281,7 +281,7 @@ class Event {
    *
    * @access public
    */
-  function get_status () {
+  function getStatus () {
     return $this->_status;
   }
 
@@ -292,7 +292,7 @@ class Event {
    *
    * @access public
    */
-  function get_category () {
+  function getCategory () {
     return $this->_category;
   }
 
@@ -303,7 +303,7 @@ class Event {
    *
    * @access public
    */
-  function get_login () {
+  function getLogin () {
     return $this->_login;
   }
  
@@ -314,15 +314,15 @@ class Event {
    *
    * @access public
    */
-  function get_endtime () {
-   $year = substr ( $this->_date, 0, 4 );
-  $month = substr ( $this->_date, 4, 2 ); 
+  function getEndTime () {
+    $year = substr ( $this->_date, 0, 4 );
+    $month = substr ( $this->_date, 4, 2 ); 
     $day = substr ( $this->_date, 6, 2 );
-   $h = (int) ( $this->_time / 10000 );
+    $h = (int) ( $this->_time / 10000 );
     $m = ( $this->_time / 100 ) % 100;
     $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
-    $this->_endtime = date ( "His", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
-    return $this->_endtime;
+    $this->_endTime = date ( "His", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
+    return $this->_endTime;
   }
  
  /**
@@ -332,15 +332,15 @@ class Event {
    *
    * @access public
    */
-  function get_enddatetime () {
-   $year = substr ( $this->_date, 0, 4 );
-  $month = substr ( $this->_date, 4, 2 ); 
+  function getEndDateTime () {
+    $year = substr ( $this->_date, 0, 4 );
+    $month = substr ( $this->_date, 4, 2 ); 
     $day = substr ( $this->_date, 6, 2 );
-   $h = (int) ( $this->_time / 10000 );
+    $h = (int) ( $this->_time / 10000 );
     $m = ( $this->_time / 100 ) % 100;
     $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
-    $this->_enddatetime = date ( "YmdHis", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
-    return $this->_enddatetime;
+    $this->_endDateTime = date ( "YmdHis", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
+    return $this->_endDateTime;
   }
 
  /**
@@ -350,9 +350,9 @@ class Event {
    *
    * @access public
    */
-  function is_allday () {
-   $this->_allday = ( $this->_time == 0 && $this->_duration == 1440? true : false); 
-    return $this->_allday;
+  function isAllDay () {
+   $this->_allDay = ( $this->_time == 0 && $this->_duration == 1440? true : false); 
+    return $this->_allDay;
   }
  
  /**
@@ -362,7 +362,7 @@ class Event {
    *
    * @access public
    */
-  function is_untimed () {
+  function isUntimed () {
    $this->_untimed = ( $this->_time == -1 && $this->_duration == 0? true : false); 
     return $this->_untimed;
   }
