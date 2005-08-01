@@ -121,8 +121,8 @@ load_user_preferences ();
 user_load_variables ( $login, "rss_" );
 $creator = ( $username == '__public__' ) ? 'Public' : $rss_fullname;
 
-if ( $username != '__public__' && ( empty ( $USER_PUBLISH_ENABLED ) || 
-  $USER_PUBLISH_ENABLED != 'Y' ) ) {
+if ( $username != '__public__' && ( empty ( $USER_RSS_ENABLED ) || 
+  $USER_RSS_ENABLED != 'Y' ) ) {
   header ( "Content-Type: text/plain" );
   etranslate("You are not authorized");
   exit;
