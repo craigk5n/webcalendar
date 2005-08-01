@@ -94,8 +94,8 @@ function event_to_text ( $event, $date ) {
       if (  $event->isAllDay() ) {
         $time_str = translate("All day event");
       } else {
-        $time_str .= " - " . display_time (  $event->get_enddatetime() );
-        $end_time_str = display_time ( $event->get_enddatetime() );
+        $time_str .= " - " . display_time (  $event->getEndDateTime() );
+        $end_time_str = display_time ( $event->getEndDateTime() );
       }
     }
   }
