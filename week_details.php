@@ -207,8 +207,8 @@ function print_detailed_entry ( $event, $date ) {
  if ( $event->isAllDay() ) {
   $timestr = translate("All day event");
  } else if ( $event->getDuration() > 0 ) {
-  $timestr = display_time ( $event->get_DateTime() ) .
-   " - " . display_time ( $event->get_enddatetime() );
+  $timestr = display_time ( $event->getDateTime() ) .
+   " - " . display_time ( $event->getEndDateTime() );
   echo $timestr . "&raquo;&nbsp;";
  }
 
