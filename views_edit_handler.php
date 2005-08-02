@@ -56,25 +56,5 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
   }
 }
 
-
-
-if ( $error == "" ) {
-  do_redirect ( "views_edit.php" );
-}
-print_header();
+error_check('views.php');
 ?>
-
-<h2><?php etranslate("Error")?></h2>
-
-<blockquote>
-<?php
-
-echo $error;
-//if ( $sql != "" )
-//  echo "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
-//?>
-</blockquote>
-
-<?php print_trailer(); ?>
-</body>
-</html>
