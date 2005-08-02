@@ -5024,7 +5024,7 @@ global $TZ_COMPLETE_LIST;
  }
   
    if ( $res ) {
-    $ret =  "<select name=\"" . $prefix . "TIMEZONE\">\n";
+    $ret =  "<select name=\"" . $prefix . "TIMEZONE\" id=\"" . $prefix . "TIMEZONE\">\n";
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( ! empty ( $TZ_COMPLETE_LIST ) && $TZ_COMPLETE_LIST == "Y" ) {
      if  ( strpos ( $row[0], "/", 1) ){
@@ -5123,4 +5123,18 @@ function validate_domain ( ) {
   return $ip_authorized;
 }
 
+
+function error_check ($nextURL) {
+	if ( ! empty ($error) ) {
+		print_header( '', '', '', true );
+		echo "<h2>" . etranslate("Error") . "</h2>";
+		echo "<blockquote>";
+			echo $error;
+			//if ( $sql != "" )
+			//  echo \"<br /><br /><strong>SQL:</strong> $sql\";
+		echo "</blockquote>\n</body></html>";
+	} else if ( empty ($error) ) {
+		print "<html><head></head><body onload=\"alert('" . translate("Changes successfully saved") . "'); window.parent.location.href='$nextURL';\"></body></html>";
+	}
+}
 ?>
