@@ -97,8 +97,8 @@ if ( $id > 0 && empty ( $error ) ) {
   // If a user was specified, then only delete that user (not here) even if we
   // are the owner or an admin.
   if ( ( $is_admin || $my_event ) &&
-    ( empty ( $user ) || $user == $login ) ) {
-
+    ( empty ( $user ) || $user == $login || $can_edit ) ) {
+		
     // Email participants that the event was deleted
     // First, get list of participants (with status Approved or
     // Waiting on approval).
@@ -133,9 +133,8 @@ if ( $id > 0 && empty ( $error ) ) {
       $do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
       $user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
       $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
-      user_load_variables ( $partlogin[$i], "temp" );
-            
-      if ( $partlogin[$i] != $login && $do_send == "Y" &&
+      user_load_variables ( $partlogin[$i], "temp" );         
+      if ( ! $is_nonuser_admin && $partlogin[$i] != $login && $do_send == "Y" &&
         boss_must_be_notified ( $login, $partlogin[$i] ) && 
         strlen ( $tempemail ) && $send_email != "N" ) {
           if ( empty ( $user_language ) || ( $user_language == 'none' )) {
@@ -213,10 +212,7 @@ if ( $id > 0 && empty ( $error ) ) {
   } else {
     // Not the owner of the event and are not the admin or a user
     // was specified.
-    // Just delete the event from this user's calendar.
-    // We could just set the status to 'D' instead of deleting.
-    // (but we would need to make some changes to edit_entry_handler.php
-    // to accomodate this).
+    // Just  set the status to 'D' instead of deleting.
     $del_user = $login;
     if ( ! empty ( $user ) && $user != $login ) {
       if ( $is_admin || $my_event ||
@@ -229,7 +225,7 @@ if ( $id > 0 && empty ( $error ) ) {
       }
     }
     if ( empty ( $error ) ) {
-      dbi_query ( "DELETE FROM webcal_entry_user " .
+      dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
         "WHERE cal_id = $id AND cal_login = '$del_user'" );
       activity_log ( $id, $login, $login, LOG_REJECT, "" );
     }

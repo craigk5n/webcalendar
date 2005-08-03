@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1250870: repeatly entries for NUCs cannot be deleted correctly
       1245755: Unbalanced span tags
       1204920: Default language is not set correctly to new users
       1245228: Error in db_load_admin() cannot open table
