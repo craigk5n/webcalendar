@@ -5124,17 +5124,17 @@ function validate_domain ( ) {
 }
 
 
-function error_check ($nextURL) {
-	if ( ! empty ($error) ) {
-		print_header( '', '', '', true );
-		echo "<h2>" . etranslate("Error") . "</h2>";
-		echo "<blockquote>";
-			echo $error;
-			//if ( $sql != "" )
-			//  echo \"<br /><br /><strong>SQL:</strong> $sql\";
-		echo "</blockquote>\n</body></html>";
-	} else if ( empty ($error) ) {
-		print "<html><head></head><body onload=\"alert('" . translate("Changes successfully saved") . "'); window.parent.location.href='$nextURL';\"></body></html>";
-	}
+function error_check ( $nextURL ) {
+  if ( ! empty ($error) ) {
+    print_header( '', '', '', true );
+    echo "<h2>" . translate("Error") . "</h2>";
+    echo "<blockquote>";
+    echo $error;
+    //if ( $sql != "" )
+      //  echo \"<br /><br /><strong>SQL:</strong> $sql\";
+    echo "</blockquote>\n</body></html>";
+  } else if ( empty ($error) ) {
+    print "<html><head></head><body onload=\"alert('" . translate("Changes successfully saved") . "'); window.parent.location.href='$nextURL';\"></body></html>";
+  }
 }
 ?>
