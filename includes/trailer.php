@@ -439,30 +439,34 @@ $reports_link = array ();
 <br />
 <?php
 if ( ! $use_http_auth ) {
- if ( empty ( $login_return_path ) )
+ if ( empty ( $login_return_path ) ) {
+  $logout_url = "login.php?action=logout";
   $login_url = "login.php";
- else
+ } else {
+  $logout_url = "login.php?return_path=$login_return_path&action=logout";
   $login_url = "login.php?return_path=$login_return_path";
+ }
 
   // Should we use another application's login/logout pages?
   if ( substr ( $GLOBALS['user_inc'], 0, 9 ) == 'user-app-' ) {  
     if ( strlen ( $login ) && $login != "__public__" ) {
-      $login_url = $GLOBALS['app_logout_page'];
+      $logout_url = $login_url = $GLOBALS['app_logout_page'];
     } else {
       if ($login_return_path != '' && $GLOBALS['app_redir_param'] != '') {
         $GLOBALS['app_login_page'] .= '?'. $GLOBALS['app_redir_param'] .
           '=' . $login_return_path;
       } 
-      $login_url = $GLOBALS['app_login_page'];
+      $logout_url = $login_url = $GLOBALS['app_login_page'];
     }
   }  
     
  if ( strlen ( $login ) && $login != "__public__" ) {
   echo "<span class=\"prefix\">" .
    translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 
-   translate("Logout") . "\" href=\"$login_url\">" . 
+   translate("Logout") . "\" href=\"$logout_url\">" . 
    translate("Logout") . "</a>)\n";
  } else {
+  // For public user (who did not actually login)
   echo "<span class=\"prefix\">" .
    translate("Current User") . ":</span>&nbsp;" . 
    translate("Public Access") . "&nbsp;(<a title=\"" . 
