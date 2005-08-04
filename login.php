@@ -283,7 +283,8 @@ if ( ! empty ( $return_path ) ) {
  echo "Demo login: user = \"demo\", password = \"demo\"<br />";
 } ?>
 <br /><br />
-<?php if ( $allow_self_registration == "Y" ) { 
+<?php if ( ! empty ( $allow_self_registration ) &&
+  $allow_self_registration == "Y" ) { 
   // We can limit what domain is allowed to self register
   // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
   if ( ! empty ( $self_registration_domain ) ) {
