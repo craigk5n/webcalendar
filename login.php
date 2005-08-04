@@ -68,10 +68,6 @@ if ( ! empty ( $action ) && $action == 'logout' ) {
 $login = getPostValue ( 'login' );
 $password = getPostValue ( 'password' );
 
-if ( ! empty ( $settings['session'] ) && $settings['session'] = 'php' ) {
-  session_start ();
-}
-
 // calculate path for cookie
 if ( empty ( $PHP_SELF ) ) {
   $PHP_SELF = $_SERVER["PHP_SELF"];
@@ -103,15 +99,11 @@ if ( $single_user == "Y" ) {
       $salt = chr( rand(ord('A'), ord('z'))) . chr( rand(ord('A'), ord('z')));
       $encoded_login = encode_string ( $login . "|" . crypt($password, $salt) );
 
-      if ( ! empty ( $settings['session'] ) && $settings['session'] = 'php' ) {
-        $_SESSION['webcalendar_session'] = $encoded_login;
+      if ( ! empty ( $remember ) && $remember == "yes" ) {
+        SetCookie ( "webcalendar_session", $encoded_login,
+          time() + ( 24 * 3600 * 365 ), $cookie_path );
       } else {
-        if ( ! empty ( $remember ) && $remember == "yes" ) {
-          SetCookie ( "webcalendar_session", $encoded_login,
-            time() + ( 24 * 3600 * 365 ), $cookie_path );
-        } else {
-          SetCookie ( "webcalendar_session", $encoded_login, 0, $cookie_path );
-        }
+        SetCookie ( "webcalendar_session", $encoded_login, 0, $cookie_path );
       }
       // The cookie "webcalendar_login" is provided as a convenience to
       // other apps that may wish to find out what the last calendar
