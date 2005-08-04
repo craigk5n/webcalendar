@@ -76,15 +76,11 @@ if ( $login != addslashes ( $login ) ) {
 // set login to expire in 365 days
 $encoded_login = encode_string ( $login . "|nonuser" );
 
-if ( ! empty ( $settings['session'] ) && $settings['session'] = 'php' ) {
-  $_SESSION['webcalendar_session'] = $encoded_login;
+if ( ! empty ( $remember ) && $remember == "yes" ) {
+  SetCookie ( "webcalendar_session", $encoded_login,
+    time() + ( 24 * 3600 * 365 ), $cookie_path );
 } else {
-  if ( ! empty ( $remember ) && $remember == "yes" ) {
-    SetCookie ( "webcalendar_session", $encoded_login,
-      time() + ( 24 * 3600 * 365 ), $cookie_path );
-  } else {
-    SetCookie ( "webcalendar_session", $encoded_login, 0, $cookie_path );
-  }
+  SetCookie ( "webcalendar_session", $encoded_login, 0, $cookie_path );
 }
 
 
