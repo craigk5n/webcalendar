@@ -14,11 +14,11 @@ include 'includes/translate.php';
 
 $WebCalendar->initializeSecondPhase();
 
+load_global_settings ();
+
 // Change this to true to show "no such user" or "invalid password" on
 // login failures.
 $showLoginFailureReason = false;
-
-load_global_settings ();
 
 if ( ! empty ( $last_login ) ) {
   $login = "";
@@ -34,8 +34,8 @@ if ( $remember_last_login == "Y" && empty ( $login ) ) {
 
 $WebCalendar->setLanguage();
 
+load_global_settings ();
 load_user_preferences ( "guest" );
-
 
 
 // see if a return path was set
@@ -56,6 +56,13 @@ if ( ! empty ( $LANGUAGE ) &&  $LANGUAGE != "Browser-defined" && $LANGUAGE != "n
 
 if ( empty ( $lang ) ) {
   $lang = 'en';
+}
+
+// Look for action=logout
+$logout = false;
+$action = getGetValue ( 'action' );
+if ( ! empty ( $action ) && $action == 'logout' ) {
+  $logout = true;
 }
 
 $login = getPostValue ( 'login' );
@@ -79,7 +86,7 @@ if ( $single_user == "Y" ) {
   // There is no login page when using HTTP authorization
   do_redirect ( "index.php" );
 } else {
-  if ( ! empty ( $login ) && ! empty ( $password ) ) {
+  if ( ! empty ( $login ) && ! empty ( $password ) && ! $logout ) {
     if ( get_magic_quotes_gpc() ) {
       $password = stripslashes ( $password );
       $login = stripslashes ( $login );
@@ -149,6 +156,7 @@ echo "<?xml version=\"1.0\" encoding=\"$charset\"?>" . "\n";
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
 <title><?php etranslate($application_name)?></title>
+<?php if ( ! $logout ) { ?>
 <script type="text/javascript">
 // error check login/password
 function valid_form ( form ) {
@@ -175,35 +183,20 @@ function myOnLoad() {
 }
 </script>
 <?php 
+}
  include "includes/styles.php";
 
  // Print custom header (since we do not call print_header function)
  if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
-   $res = dbi_query (
-     "SELECT cal_template_text FROM webcal_report_template " .
-     "WHERE cal_template_type = 'S' and cal_report_id = 0" );
-   if ( $res ) {
-     if ( $row = dbi_fetch_row ( $res ) ) {
-       echo $row[0];
-     }
-     dbi_free_result ( $res );
-   }
+   echo load_template ( $login, 'S' );
  }
 ?>
 </head>
-<body onload="myOnLoad();">
+<body <?php if ( ! $logout ) { ?>onload="myOnLoad();"<?php } ?>>
 <?php
 // Print custom header (since we do not call print_header function)
 if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
-  $res = dbi_query (
-    "SELECT cal_template_text FROM webcal_report_template " .
-    "WHERE cal_template_type = 'H' and cal_report_id = 0" );
-  if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) ) {
-      echo $row[0];
-    }
-    dbi_free_result ( $res );
-  }
+  echo load_template ( $login, 'H' );
 }
 ?>
 
@@ -224,6 +217,18 @@ if ( ! empty ( $error ) ) {
 } else {
   print "<br />\n";
 }
+
+if ( $logout ) {
+  echo '<p>' . translate ( "You have been logged out" ) . ".</p>\n";
+  echo "<br/><br/>\n";
+  echo '<a href="login.php' .
+    ( ! empty ( $return_path ) ?
+      "?return_path=" . htmlentities ( $return_path ) : '' ) .
+    '" class="nav">' . translate("Login") .
+    "</a><br/><br/><br/>\n";
+}
+
+if ( ! $logout ) {
 ?>
 <form name="login_form" id="login" action="login.php" method="post" 
   onsubmit="return valid_form(this)">
@@ -258,6 +263,8 @@ if ( ! empty ( $return_path ) ) {
 </td></tr>
 </table>
 </form>
+
+<?php } ?>
 
 <?php if ( ! empty ( $public_access ) && $public_access == "Y" ) { ?>
  <br /><br />
@@ -303,15 +310,8 @@ if ( ! empty ( $return_path ) ) {
 
 <?php // Print custom trailer (since we do not call print_trailer function)
 if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
-  $res = dbi_query (
-    "SELECT cal_template_text FROM webcal_report_template " .
-    "WHERE cal_template_type = 'T' and cal_report_id = 0" );
-  if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) ) {
-      echo $row[0];
-    }
-    dbi_free_result ( $res );
-  }
-} ?>
+  echo load_template ( $login, 'T' );
+}
+?>
 </body>
 </html>
