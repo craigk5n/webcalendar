@@ -72,6 +72,7 @@ $noSet = array (
   "single_user_login" => 1,
   "use_http_auth" => 1,
   "user_inc" => 1,
+  "includedir" => 1,
   "NONUSER_PREFIX" => 1,
   "languages" => 1,
   "browser_languages" => 1,
