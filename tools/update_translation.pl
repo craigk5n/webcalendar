@@ -16,17 +16,17 @@
 # backup of the translation will be saved with a .bak file extension.
 #
 # Usage:
-#	update_translation.pl [-p plugin] languagefile
+# update_translation.pl [-p plugin] languagefile
 #
 # Example for main WebCalendar translation:
-#	update_translation.pl French.txt
-#	   or
-#	update_translation.pl French
+# update_translation.pl French.txt
+#    or
+# update_translation.pl French
 #
 # Example for plugin "tnn" translation:
-#	update_translation.pl -p tnn French.txt
-#	   or
-#	update_translation.pl -p tnn French
+# update_translation.pl -p tnn French.txt
+#    or
+# update_translation.pl -p tnn French
 #
 # Note: this utility should be run from this directory (tools).
 #
@@ -126,7 +126,7 @@ if ( -f $infile ) {
     s/\r*$//g; # remove annoying CR
     if ( $in_header && /^#/ ) {
       if ( /Translation last (pagified|updated)/ ) {
-	# ignore since we will replace this with current date below
+ # ignore since we will replace this with current date below
       } else {
         $header .= $_ . "\n";
       }
@@ -198,6 +198,7 @@ if ( -d "$p_base_dir/includes/js" ) {
 }
 if ( $plugin eq "" ) {
   push ( @files, "tools/send_reminders.php" );
+  push ( @files, "install/index.php" );
 }
 
 #
@@ -234,19 +235,19 @@ foreach $f ( @files ) {
       $data = $';
       if ( $data =~ /"\s*\)/ ) {
         $text = $`;
-	if ( defined ( $thispage{$text} ) ) {
+ if ( defined ( $thispage{$text} ) ) {
           # text already found within this page...
-	} elsif ( $text eq 'charset' ) {
+ } elsif ( $text eq 'charset' ) {
           # ignore...
-	} elsif ( defined ( $text{$text} ) ) {
+ } elsif ( defined ( $text{$text} ) ) {
           if ( ! show_dups ) {
             if ( $pageHeader ne '' ) {
               print OUT $pageHeader; $pageHeader = '';
             }
             print OUT "# \"$text\" previously defined (in $foundin{$text})\n"
           }
-	  $thispage{$text} = 1;
-	} else {
+   $thispage{$text} = 1;
+ } else {
           if ( ! length ( $trans{$text} ) ) {
             if ( $show_missing ) {
               if ( length ( $webcaltrans{$text} ) ) {
@@ -261,18 +262,18 @@ foreach $f ( @files ) {
               }
             }
             $text{$text} = 1;
-	    $thispage{$text} = 1;
-	    $foundin{$text} = $f;
+     $thispage{$text} = 1;
+     $foundin{$text} = $f;
             $notfound++ if ( ! length ( $webcaltrans{$text} ) );
-	  } else {
+   } else {
             $text{$text} = 1;
-	    $foundin{$text} = $f;
-	    $thispage{$text} = 1;
+     $foundin{$text} = $f;
+     $thispage{$text} = 1;
             if ( $pageHeader ne '' ) {
               print OUT $pageHeader; $pageHeader = '';
             }
             printf OUT ( "%s: %s\n", $text, $trans{$text} );
-	  }
+   }
         }
         $data = $';
       }

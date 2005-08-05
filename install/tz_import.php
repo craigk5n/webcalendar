@@ -210,7 +210,7 @@ function do_tz_import ( $file_path= "timezone/") {
  }         
  $valid_tags = array( "Link", "Rule", "Zone" );
  for ($i = 0 ; $i < count ( $tz_file_array ); $i++ ) {
-  if (!$fd=@fopen( $file_path . $tz_file_array[$i],"r")) {
+  if (!$fd=@fopen( $file_path . $tz_file_array[$i],"r", false)) {
   $error = "Can't read temporary file: $tz_file_array[$i]\n";
   return $error;
   } else {
@@ -297,7 +297,7 @@ function do_tz_import ( $file_path= "timezone/") {
    
  //Import Country Code and Coordinate Data
  $tz_file = "zone.tab";
- if (!$fd=@fopen(  $file_path . $tz_file,"r" )) {
+ if (!$fd=@fopen(  $file_path . $tz_file,"r", false )) {
   $error = "Can't read temporary file: $tz_file\n";
   return $error;
  } else {
@@ -322,7 +322,7 @@ function do_tz_import ( $file_path= "timezone/") {
  
  //Import Country Name
  $tz_file = "iso3166.tab";
- if (!$fd=@fopen( $file_path .  $tz_file,"r" )) {
+ if (!$fd=@fopen( $file_path .  $tz_file,"r", false )) {
   $error = "Can't read temporary file: $tz_file\n";
   return $error;
  } else {
@@ -347,7 +347,7 @@ function do_tz_import ( $file_path= "timezone/") {
 
  //Import Country Name
  $tz_file = "gmt.txt";
- if (!$fd=@fopen( $file_path .  $tz_file,"r" )) {
+ if (!$fd=@fopen( $file_path .  $tz_file,"r", false )) {
   $error = "Can't read temporary file: $tz_file\n";
   return $error;
  } else {
@@ -371,7 +371,7 @@ function do_tz_import ( $file_path= "timezone/") {
  
   //Update version info
  $tz_file = "tz_version.txt";
- if (!$fd=@fopen( $file_path .  $tz_file,"r" )) {
+ if (!$fd=@fopen( $file_path .  $tz_file,"r", false )) {
   $error = "Can't read temporary file: $tz_file\n";
   return $error;
  } else {

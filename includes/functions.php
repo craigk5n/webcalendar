@@ -893,36 +893,7 @@ function get_pref_setting ( $user, $setting ) {
   return $ret;
 }
 
-/**
- * Gets browser-specified language preference.
- *
- * @return string Preferred language
- *
- * @ignore
- */
-function get_browser_language () {
-  global $HTTP_ACCEPT_LANGUAGE, $browser_languages;
-  $ret = "";
-  if ( empty ( $HTTP_ACCEPT_LANGUAGE ) &&
-    isset ( $_SERVER["HTTP_ACCEPT_LANGUAGE"] ) )
-    $HTTP_ACCEPT_LANGUAGE = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
-  if (  empty ( $HTTP_ACCEPT_LANGUAGE ) ) {
-    return "none";
-  } else {
-    $langs = explode ( ",", $HTTP_ACCEPT_LANGUAGE );
-    for ( $i = 0; $i < count ( $langs ); $i++ ) {
-     $l = strtolower ( trim ( ereg_replace(';.*', '', $langs[$i] ) ) );
-      $ret .= "\"$l\" ";
-      if ( ! empty ( $browser_languages[$l] ) ) {
-        return $browser_languages[$l];
-      }
-    }
-  }
-  //if ( strlen ( $HTTP_ACCEPT_LANGUAGE ) )
-  //  return "none ($HTTP_ACCEPT_LANGUAGE not supported)";
-  //else
-    return "none";
-}
+
 
 /**
  * Loads current user's layer info into layer global variable.
@@ -5058,7 +5029,7 @@ function validate_domain ( ) {
   $allow_found = array();
   $allow_true = false;
   $rmt_ip = explode( ".",  $_SERVER['REMOTE_ADDR'] );
-  $fd = @fopen ( 'includes/blacklist.php', "rb", true );
+  $fd = @fopen ( 'includes/blacklist.php', "rb", false );
   if ( ! empty ( $fd ) ) {
     // We don't use fgets() since it seems to have problems with Mac-formatted
     // text files.  Instead, we read in the entire file, then split the lines
