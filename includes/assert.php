@@ -31,7 +31,7 @@ function assert_get_cvs_file_version ( $file )
   for ( $i = 0; $i < count ( $path ); $i++ ) {
     $newfile = $path[$i] . $file;
     if ( file_exists ( $newfile ) ) {
-      $fd = @fopen ( $newfile, "rb", true );
+      $fd = @fopen ( $newfile, "rb", false );
       if ( $fd ) {
         while ( ! feof ( $fd ) ) {
           $data = fgets ( $fd, 1024 );

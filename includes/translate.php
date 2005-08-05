@@ -56,7 +56,7 @@ function load_translation_text () {
   if ( ! file_exists ( $lang_file ) ) {
     die_miserable_death ( "Cannot find language file: $lang_file" );
   }
-  $fp = fopen ( $lang_file, "r" );
+  $fp = fopen ( $lang_file, "r", false );
   if ( ! $fp ) {
     die_miserable_death ( "Could not open language file: $lang_file" );
   }
@@ -86,6 +86,36 @@ function load_translation_text () {
 }
 
 
+/**
+ * Gets browser-specified language preference.
+ *
+ * @return string Preferred language
+ *
+ * @ignore
+ */
+function get_browser_language () {
+  global $HTTP_ACCEPT_LANGUAGE, $browser_languages;
+  $ret = "";
+  if ( empty ( $HTTP_ACCEPT_LANGUAGE ) &&
+    isset ( $_SERVER["HTTP_ACCEPT_LANGUAGE"] ) )
+    $HTTP_ACCEPT_LANGUAGE = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
+  if (  empty ( $HTTP_ACCEPT_LANGUAGE ) ) {
+    return "none";
+  } else {
+    $langs = explode ( ",", $HTTP_ACCEPT_LANGUAGE );
+    for ( $i = 0; $i < count ( $langs ); $i++ ) {
+     $l = strtolower ( trim ( ereg_replace(';.*', '', $langs[$i] ) ) );
+      $ret .= "\"$l\" ";
+      if ( ! empty ( $browser_languages[$l] ) ) {
+        return $browser_languages[$l];
+      }
+    }
+  }
+  //if ( strlen ( $HTTP_ACCEPT_LANGUAGE ) )
+  //  return "none ($HTTP_ACCEPT_LANGUAGE not supported)";
+  //else
+    return "none";
+} 
 
 /**
  * Translates a string from the default English usage to some other language.
@@ -112,7 +142,7 @@ function translate ( $str ) {
   else {
     // To help in translating, use the following to help identify text that
     // has not been translated
-    // return "<blink>$str</blink>";
+    //return "<blink>$str</blink>";
     return $str;
   }
 }
@@ -169,4 +199,92 @@ function etooltip ( $str ) {
   echo tooltip ( $str );
 }
 
+   // Language options  The first is the name presented to users while
+    // the second is the filename (without the ".txt") that must exist
+    // in the translations subdirectory.
+    $languages = array (
+      "Browser-defined" =>"none",
+      "English" =>"English-US",
+      "Basque" => "Basque",
+      "Bulgarian" => "Bulgarian",
+      "Catalan" => "Catalan",
+      "Chinese (Traditonal/Big5)" => "Chinese-Big5",
+      "Chinese (Simplified/GB2312)" => "Chinese-GB2312",
+      "Czech" => "Czech",
+      "Danish" => "Danish",
+      "Dutch" =>"Dutch",
+      "Estonian" => "Estonian",
+      "Finnish" =>"Finnish",
+      "French" =>"French",
+      "Galician" => "Galician",
+      "German" =>"German",
+      "Holo (Taiwanese)" => "Holo-Big5",
+      "Hungarian" =>"Hungarian",
+      "Icelandic" => "Icelandic",
+      "Italian" => "Italian",
+      "Japanese(SHIFT JIS)" => "Japanese",
+      "Japanese(EUC-JP)" => "Japanese-eucjp",
+      "Japanese(UTF-8)" => "Japanese-utf8",
+      "Korean" =>"Korean",
+      "Norwegian" => "Norwegian",
+      "Polish" => "Polish",
+      "Portuguese" =>"Portuguese",
+      "Portuguese/Brazil" => "Portuguese_BR",
+      "Russian" => "Russian",
+      "Spanish" =>"Spanish",
+      "Swedish" =>"Swedish",
+      "Turkish" =>"Turkish"
+      // add new languages here!  (don't forget to add a comma at the end of
+      // last line above.)
+    );
+
+    // If the user sets "Browser-defined" as their language setting, then
+    // use the $HTTP_ACCEPT_LANGUAGE settings to determine the language.
+    // The array below translates browser language abbreviations into
+    // our available language files.
+    // NOTE: These should all be lowercase on the left side even though
+    // the proper listing is like "en-US"!
+    // Not sure what the abbreviation is?  Check out the following URL:
+    // http://www.geocities.com/click2speak/languages.html
+    $browser_languages = array (
+      "eu" => "Basque",
+      "bg" => "Bulgarian",
+      "ca" => "Catalan",
+      "zh" => "Chinese-GB2312",    // Simplified Chinese
+      "zh-cn" => "Chinese-GB2312",
+      "zh-tw" => "Chinese-Big5",   // Traditional Chinese
+      "cs" => "Czech",
+      "en" => "English-US",
+      "en-us" => "English-US",
+      "en-gb" => "English-US",
+      "da" => "Danish",
+      "nl" =>"Dutch",
+      "ee" => "Estonian",
+      "fi" =>"Finnish",
+      "fr" =>"French",
+      "fr-ch" =>"French", // French/Swiss
+      "fr-ca" =>"French", // French/Canada
+      "gl" => "Galician",
+      "de" =>"German",
+      "de-at" =>"German", // German/Austria
+      "de-ch" =>"German", // German/Switzerland
+      "de-de" =>"German", // German/German
+      "hu" => "Hungarian",
+      "zh-min-nan-tw" => "Holo-Big5",
+      "is" => "Icelandic",
+      "it" => "Italian",
+      "it-ch" => "Italian", // Italian/Switzerland
+      "ja" => "Japanese",
+      "ko" =>"Korean",
+      "no" => "Norwegian",
+      "pl" => "Polish",
+      "pt" =>"Portuguese",
+      "pt-br" => "Portuguese_BR", // Portuguese/Brazil
+      "ro" =>"Romanian",
+      "ru" =>"Russian",
+      "es" =>"Spanish",
+      "sv" =>"Swedish",
+      "tr" =>"Turkish",
+      "cy" => "Welsh"
+    );
 ?>
