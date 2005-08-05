@@ -25,10 +25,12 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
-      Fixed XHTML troubles with pop id starting with numbers
-      Adjusted sending time in send_reminders to Server Time vs GMT
-      Category was lost wan clicking on prev/next month in month.php
-      Fixed small bug if using 59 minutes for event time
+    + Fixed security: exploit allows execution of code downloaded from
+      remote server
+    + Fixed XHTML troubles with pop id starting with numbers
+    + Adjusted sending time in send_reminders to Server Time vs GMT
+    + Category was lost wan clicking on prev/next month in month.php
+    + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
     + Added end time calculation functions to Event.class
     + Added circle.gif in week view to untimed or all day events
