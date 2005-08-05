@@ -36,7 +36,7 @@ if ( $login == "__public__" && $id > 0 ) {
 $external_users = "";
 $participants = array ();
 
-if ( $readonly == 'Y' ) {
+if ( $readonly == 'Y' || $is_nonuser ) {
   $can_edit = false;
 } else if ( ! empty ( $id ) && $id > 0 ) {
   // first see who has access to edit this entry
