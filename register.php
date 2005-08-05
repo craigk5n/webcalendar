@@ -183,7 +183,7 @@ function valid_form () {
     return false;
   }
   if ( document.selfreg.upassword1.value != document.selfreg.upassword2.value ) {
-    alert ( "<?php etranslate("Your password do not match")?>." );
+    alert ( "<?php etranslate("Your passwords do not match")?>." );
     return false;
   }
  
