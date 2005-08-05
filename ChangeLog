@@ -1,4 +1,6 @@
 Version 1.0.1-CVS (?? ??? 2005)
+ - Fixed security: exploit allows execution of code downloaded from
+   remote server
  - Fixed bug 1245755: Unbalanced span tags
  - Fixed bug: URLs in month.php did not include '?'
  - Fixed bug 1211309: Notification message language incorrect

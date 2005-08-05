@@ -8,6 +8,8 @@ Version 1.0.1-CVS (?? ??? 2005)
       1212667: Install script - Database Type Problem
       1218113: iCal ATTENDEE error if event is deleted
   - Other bugs fixed:
+    + Fixed security: exploit allows execution of code downloaded from
+      remote server
     + URLs in month.php did not include '?'
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed login looping related to register_long_arrays
