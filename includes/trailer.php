@@ -205,6 +205,8 @@ else if ( access_is_enabled () )
 else {
   if ( $login == '__public__' )
     $can_add = $GLOBALS['public_access_can_add'] == 'Y';
+  if ( $is_nonuser )
+    $can_add = false;
 }
 
 if ( ! empty ( $GLOBALS['STARTVIEW'] ) ) {
