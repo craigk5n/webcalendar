@@ -154,10 +154,9 @@ if ( $readonly == 'Y' ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( ( empty ( $is_secretary ) || ! $is_secretary )
-        || $login != $row[0] ) $participants[$row[0]] = 1;
+      $participants[$row[0]] = 1;
       if ($login == $row[0]) $cat_id = $row[1];
-      if ( $is_admin && $user == $row[0]) $cat_id = $row[1];
+      if ( ( $is_assistant  || $is_admin ) && $user == $row[0]) $cat_id = $row[1];
     }
   }
   if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" ) {
