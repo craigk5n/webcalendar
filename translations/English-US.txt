@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 08-05-2005
+# Translation last updated on 08-08-2005
 
 
 ###############################################
@@ -351,6 +351,10 @@ Notification: Notification
 ###############################################
 # Page: edit_entry.php
 #
+hours ahead of you: hours ahead of you
+hours behind you: hours behind you
+is in a different timezone than you are. Currently: is in a different timezone than you are. Currently
+Time entered here is based on your Timezone: Time entered here is based on your Timezone
 Edit Entry: Edit Entry
 Add Entry: Add Entry
 Details: Details
@@ -376,6 +380,7 @@ date-help: Specifies the date of the event.
 Untimed event: Untimed event
 Timed event: Timed event
 All day event: All day event
+Timezone Offset: Timezone Offset
 time-help: Specifies the time of the event.<br />Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
 am: am
 pm: pm
@@ -657,7 +662,6 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_pref.php
 #
-Timezone Offset: Timezone Offset
 Default Category: Default Category
 default-category-help: Specifies the category a new event should default to.
 When I am the boss: When I am the boss
@@ -749,8 +753,9 @@ Close: Close
 #
 Invalid login: Invalid login
 You must enter a login and password: You must enter a login and password
-Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
+You have been logged out: You have been logged out
 Login: Login
+Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
 Access public calendar: Access public calendar
 Not yet registered? Register here!: Not yet registered? Register here!
 cookies-note: <b>Note:</b> This application requires cookies to be enabled.
@@ -1051,6 +1056,40 @@ Another User's Calendar: Another User's Calendar
 Add New Entry: Add New Entry
 Logout: Logout
 Manage calendar of: Manage calendar of
+
+
+###############################################
+# Page: includes/translate.php
+#
+English: English
+Basque: Basque
+Bulgarian: Bulgarian
+Catalan: Catalan
+Chinese (Traditonal/Big5): Chinese (Traditonal/Big5)
+Chinese (Simplified/GB2312): Chinese (Simplified/GB2312)
+Czech: Czech
+Danish: Danish
+Dutch: Dutch
+Estonian: Estonian
+Finnish: Finnish
+French: French
+Galician: Galician
+German: German
+Holo (Taiwanese): Holo (Taiwanese)
+Hungarian: Hungarian
+Icelandic: Icelandic
+Italian: Italian
+Japanese: Japanese
+Korean: Korean
+Norwegian: Norwegian
+Polish: Polish
+Portuguese: Portuguese
+Portuguese/Brazil: Portuguese/Brazil
+Romanian: Romanian
+Russian: Russian
+Spanish: Spanish
+Swedish: Swedish
+Turkish: Turkish
 
 
 ###############################################
