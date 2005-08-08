@@ -428,8 +428,10 @@ else
 
 // Get category Info
 if ( $categories_enabled == "Y" ) {
+  $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
+    $is_admin ) ) ? $user : $login;  
   $sql = "SELECT cat_name FROM webcal_categories, webcal_entry_user " .
-    "WHERE webcal_entry_user.cal_login = '$login' AND webcal_entry_user.cal_id = $id " .
+    "WHERE webcal_entry_user.cal_login = '$cat_owner' AND webcal_entry_user.cal_id = $id " .
     "AND webcal_entry_user.cal_category = webcal_categories.cat_id";
   $res2 = dbi_query ( $sql );
   if ( $res2 ) {
@@ -552,10 +554,10 @@ if ( $single_user == "N" ) {
   } else {
     if ( strlen ( $email_addr ) ) {
       echo "<a href=\"mailto:$email_addr?subject=$subject\">" .
-        ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
+        ( $row[0] == "__public__" ? translate( "Public Access" ): $createby_fullname ) .
         "</a>$proxy_fullname\n</td></tr>";
     } else {
-      echo ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
+      echo ( $row[0] == "__public__" ? translate( "Public Access" ) : $createby_fullname ) .
         "$proxy_fullname\n</td></tr>";
     }
   }

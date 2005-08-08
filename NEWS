@@ -1,5 +1,6 @@
 Version 1.0.1-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1233798: Catagory settings for Boss/Assistant not working
       1245755: Unbalanced span tags
       1211309: Notification message language incorrect
       1204229: "Untimed event" default broken since bug 1202127 fix
