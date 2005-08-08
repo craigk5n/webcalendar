@@ -18,8 +18,15 @@ $old_id = ( ! empty ( $parent ) ? $parent : $old_id );
 // Ensure all time variables are not empty
 if ( empty ( $hour ) ) $hour = 0;
 if ( empty ( $minute ) ) $minute = 0;
+if  ( empty ( $endminute ) && !empty ( $endhour ) ||
+  ( ! empty ( $endminute ) && $endminute < 0 ) ) {
+  $endminute = 0;
+} else if ( empty ( $endminute ) && empty ( $endhour ) ) {
+  $endminute = $minute;
+ $endampm = $ampm;
+}
 if ( empty ( $endhour ) || $endhour < 0 ) $endhour = $hour;
-if ( empty ( $endminute ) || $endminute < 0 ) $endminute = $minute;
+
 
 $duration_h = getValue ( "duration_h" );
 $duration_m = getValue ( "duration_m" );
@@ -106,8 +113,14 @@ $eventstart = mktime ( $hour, $minute, 0, $month, $day, $year );
 
 //Create event stop from event  duration/end values
 // Note: for any given event, either end times or durations are 0
-$eventstop = mktime ( $hour + $endhour + $duration_h, $minute + $endminute + $duration_m, 
-  0, $month, $day, $year );
+if ( $GLOBALS['TIMED_EVT_LEN'] == 'E') {
+ $eventstophour= $endhour + $duration_h;
+ $eventstopmin= $endminute + $duration_m;
+} else {
+ $eventstophour= $hour + $duration_h;
+ $eventstopmin= $minute + $duration_m;
+}
+$eventstop = mktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year );
  
 if ( $timetype == "T" ) { // All other types are time independent
   // Get this user's Timezone offset for this date/time  
@@ -122,6 +135,9 @@ if ( $timetype == "T" ) { // All other types are time independent
  
 // Calculate event duration
 $duration = ( $eventstop - $eventstart ) / 60;
+if ( $timetype == "T" && $duration < 0 ) {
+ $duration = 0;
+}
 
 
 
@@ -493,7 +509,7 @@ if ( empty ( $error ) ) {
         $tmp_status : "A";
       $tmp_cat = ( ! empty ( $old_category[$participants[$i]]) ) ?
         $old_category[$participants[$i]] : 'NULL';
-
+      $tmp_cat = ( $participants[$i] == $user ) ? $cat_id : $tmp_cat;
       // Allow cat to be changed for public access (if admin user)
       if ( $participants[$i] == "__public__" && $is_admin ) {
         $tmp_cat = $cat_id;
