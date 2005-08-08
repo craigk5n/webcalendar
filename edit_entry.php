@@ -158,7 +158,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants[$row[0]] = 1;
       if ($login == $row[0]) $cat_id = $row[1];
-      if ( $is_admin && $user == $row[0]) $cat_id = $row[1];
+      if ( ( $is_assistant  || $is_admin ) && $user == $row[0]) $cat_id = $row[1];
     }
   }
   if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" ) {
@@ -245,6 +245,23 @@ else {
 if ( empty ( $cal_date ) || ! $cal_date )
   $cal_date = $thisdate;
 
+//Setup to display user's timezone difference if Admin or Assistane
+//Even thought event is stored in GTM, an Assistant may need to know that
+//the boss is in a different Timezone
+if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
+  $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
+  $user_TZ = get_tz_offset ( $user_TIMEZONE, mktime ( 0, 0, 0, $month, $day, $year ) );
+  if ( $tz_offset[0] != $user_TZ[0] ) {  //Different TZ_Offset
+   user_load_variables ( $user, "temp" );
+   $tz_diff = $user_TZ[0] - $tz_offset[0];
+  $tz_value = ( $tz_diff > 0? translate ("hours ahead of you") : translate ("hours behind you") );
+   $TZ_notice = "(" . $tempfullname . " " . 
+    translate ("is in a different timezone than you are. Currently") . " ";
+    //TODO show hh:mm instead of abs 
+   $TZ_notice .= abs ( $tz_diff ) . " " . $tz_value . ".<br />&nbsp;"; 
+   $TZ_notice .= translate ("Time entered here is based on your Timezone") . ".)"; 
+ }
+}
 if ( $allow_html_description == "Y" ){
   // Allow HTML in description
   // If they have installed the htmlarea widget, make use of it
@@ -387,6 +404,11 @@ if ( ! empty ( $parent ) )
     <option value="A" <?php if ( $allday == "Y" ) echo " selected=\"selected\""?>><?php etranslate("All day event"); ?></option>
    </select>
   </td></tr>
+ <?php if ( ! empty ( $TZ_notice ) ) { ?>
+   <tr id="timezonenotice"><td class="tooltip" title="<?php etooltip("Time entered here is based on your Timezone")?>">
+   <?php etranslate ("Timezone Offset")?>:</td><td colspan="2">
+   <?php echo $TZ_notice ?></td></tr>
+ <?php } ?>
   <tr id="timeentrystart"><td class="tooltip" title="<?php etooltip("time-help")?>">
    <?php echo translate("Time") . ":"; ?></td><td colspan="2">
 <?php
