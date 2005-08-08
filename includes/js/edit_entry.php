@@ -150,6 +150,7 @@ function selectDate (  day, month, year, current, evt ) {
   if ( i != 1 ) {
     // Untimed/All Day
     makeInvisible ( "timeentrystart" );
+    makeInvisible ( "timezonenotice" );
     if ( document.editentryform.duration_h ) {
       makeInvisible ( "timeentryduration" );
     } else {
@@ -158,6 +159,7 @@ function selectDate (  day, month, year, current, evt ) {
   } else {
     // Timed Event
     makeVisible ( "timeentrystart" );
+    makeVisible ( "timezonenotice" );
     if ( document.editentryform.duration_h ) {
       makeVisible ( "timeentryduration" );
     } else {
