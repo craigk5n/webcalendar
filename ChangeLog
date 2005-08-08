@@ -1,4 +1,9 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added install/index and classes/*.class files to update_translation.pl files list
+ - Moved translation related functions to translate.php
+ - Added 'Timezone Notice' if Assistant and Boss are in defferent timezones
+ - Fixed bug 1249012: can't change timed to untimed events
+ - Fixed bug 1233798: Catagory settings don't work quite right for Boss/Assistant
  - Fixed security: exploit allows execution of code downloaded from
    remote server
  - Fixed bug 1250870: repeatly entries for NUCs cannot be deleted correctly
