@@ -287,4 +287,37 @@ function etooltip ( $str ) {
       "tr" =>"Turkish",
       "cy" => "Welsh"
     );
+  
+    // The following comments will be picked up by update_translation.pl so
+    // translators will be aware that they also need to translate language names.
+    //
+    // translate("English")
+    // translate("Basque")
+    // translate("Bulgarian")
+    // translate("Catalan")
+    // translate("Chinese (Traditonal/Big5)")
+    // translate("Chinese (Simplified/GB2312)")
+    // translate("Czech")
+    // translate("Danish")
+    // translate("Dutch")
+    // translate("Estonian")
+    // translate("Finnish")
+    // translate("French")
+    // translate("Galician")
+    // translate("German")
+    // translate("Holo (Taiwanese)")
+    // translate("Hungarian")
+    // translate("Icelandic")
+    // translate("Italian")
+    // translate("Japanese")
+    // translate("Korean")
+    // translate("Norwegian")
+    // translate("Polish")
+    // translate("Portuguese")
+    // translate("Portuguese/Brazil")
+    // translate("Romanian")
+    // translate("Russian")
+    // translate("Spanish")
+    // translate("Swedish")
+    // translate("Turkish")
 ?>
