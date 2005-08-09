@@ -61,7 +61,14 @@ closedir ( DIR );
 foreach $f ( @incfiles ) {
   push ( @files, "includes/js/$f" );
 }
+opendir ( DIR, "../includes/classes" ) || die "Error opening ../includes/classes";
+@incfiles = grep ( /\.class$/, readdir ( DIR ) );
+closedir ( DIR );
+foreach $f ( @incfiles ) {
+  push ( @files, "includes/classes/$f" );
+}
 push ( @files, "tools/send_reminders.php" );
+push ( @files, "install/index.php" );
 
 
 foreach $f ( @files ) {
