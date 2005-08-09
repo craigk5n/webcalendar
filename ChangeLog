@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1254983: nulogin.php throws language errors
  - Added install/index and classes/*.class files to update_translation.pl files list
  - Moved translation related functions to translate.php
  - Added 'Timezone Notice' if Assistant and Boss are in defferent timezones

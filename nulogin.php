@@ -19,6 +19,7 @@ include "includes/$user_inc";
 include 'includes/translate.php';
 
 $WebCalendar->initializeSecondPhase();
+$WebCalendar->setLanguage();
 
 load_global_settings ();
 

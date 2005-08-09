@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1254983: nulogin.php throws language errors
       1249012: can't change timed to untimed events
       1233798: Catagory settings don't work quite right for Boss/Assistant
       1250870: repeatly entries for NUCs cannot be deleted correctly
