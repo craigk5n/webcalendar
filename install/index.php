@@ -66,7 +66,7 @@ function get_php_setting ( $val ) {
 
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
-$fd = @fopen ( $file, "rb", true );
+$fd = @fopen ( $file, "rb", false );
 $settings = array ();
 $password = '';
 $forcePassword = false;
@@ -142,7 +142,7 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
     echo "Passwords do not match!<br/>\n";
     exit;
   }
-  $fd = fopen ( $file, "a+b", true );
+  $fd = fopen ( $file, "a+b", false );
   if ( empty ( $fd ) ) {
     echo "<html><body>Unable to write password to settings.php file\n" .
       "</body></html>";
@@ -226,7 +226,7 @@ if ( $exists ) {
 } else {
   // check to see if we can create a new file.
   $testFile = $fileDir . "/installTest.dat";
-  $testFd = @fopen ( $testFile, "w+b", true );
+  $testFd = @fopen ( $testFile, "w+b", false );
   if ( file_exists ( $testFile ) ) {
     $canWrite = true;
   }
@@ -285,7 +285,7 @@ if ( empty ( $x ) ) {
   } else {
     $onload .= "alert('Your settings have been saved.\\n\\n');";
   }
-  $fd = @fopen ( $file, "w+b", true );
+  $fd = @fopen ( $file, "w+b", false );
   if ( empty ( $fd ) ) {
     if ( file_exists ( $file ) ) {
       $onload = "alert('Error: unable to write to file $file\\nPlease change the file permissions of this file.');";
@@ -309,7 +309,7 @@ if ( empty ( $x ) ) {
 }
 
 
-$fd = @fopen ( $file, "rb", true );
+$fd = @fopen ( $file, "rb", false );
 if ( ! empty ( $fd ) ) {
   while ( ! feof ( $fd ) ) {
     $buffer = fgets ( $fd, 4096 );
