@@ -248,9 +248,10 @@ if ( empty ( $cal_date ) || ! $cal_date )
 //Setup to display user's timezone difference if Admin or Assistane
 //Even thought event is stored in GTM, an Assistant may need to know that
 //the boss is in a different Timezone
-if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
+if ( $is_assistant || $is_admin && ! empty ( $user ) ) { 
+  $tz_offset = get_tz_offset ( $TIMEZONE, '', $cal_date );
   $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
-  $user_TZ = get_tz_offset ( $user_TIMEZONE, mktime ( 0, 0, 0, $month, $day, $year ) );
+  $user_TZ = get_tz_offset ( $user_TIMEZONE, '', $cal_date );
   if ( $tz_offset[0] != $user_TZ[0] ) {  //Different TZ_Offset
    user_load_variables ( $user, "temp" );
    $tz_diff = $user_TZ[0] - $tz_offset[0];
