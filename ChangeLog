@@ -1,4 +1,5 @@
 Version 1.0.1-CVS (?? ??? 2005)
+ - Fixed bug: include path problems for opening settings.php file
  - Fixed bug 1233798: Catagory settings for Boss/Assistant not working
  - Fixed security: exploit allows execution of code downloaded from
    remote server

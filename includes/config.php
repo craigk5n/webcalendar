@@ -59,9 +59,9 @@ global $TROUBLE_URL;
 
 // Open settings file to read
 $settings = array ();
-$fd = @fopen ( "settings.php", "rb", true );
+$fd = @fopen ( "settings.php", "rb", false );
 if ( ! $fd )
-  $fd = @fopen ( "includes/settings.php", "rb", true );
+  $fd = @fopen ( "includes/settings.php", "rb", false );
 if ( empty ( $fd ) ) {
   // There is no settings.php file.
   // Redirect user to install page if it exists.
