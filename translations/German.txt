@@ -15,7 +15,9 @@
 # Last update: 27 May 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 14 Jun 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 25 Jul 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 07-25-2005
+# Last update: 8 Aug 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 9 Aug 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 08-09-2005
 
 
 ###############################################
@@ -199,11 +201,11 @@ The following error occurred: Folgender Fehler trat auf
 ###############################################
 # Page: adminhome.php
 #
-System Settings: Systemeinstellungen
 Preferences: Voreinstellungen
+Assistants: Assistenten
+System Settings: Systemeinstellungen
 User Access Control: Zugriffskontrolle
 Account: Konto
-Assistants: Assistenten
 Categories: Kategorien
 Views: Ansichten
 Layers: Layers
@@ -257,8 +259,6 @@ Error adding event: Fehler beim Hinzuf&uuml;gen eines Termines
 #
 Week: Woche
 New Entry: Neuer Eintrag
-am: Vormittag
-pm: Nachmittag
 
 
 ###############################################
@@ -283,10 +283,11 @@ No such nonuser calendar: Kein(e) 'Zentrale(r)'-Kalender
 #
 Invalid login: Benutzername oder Passwort falsch
 You must enter a login and password: Sie m&uuml;ssen einen Benutzernamen und ein Kennwort eingeben.
+You have been logged out: Sie sind nun abgemeldet
+Login: Anmelden
 Username: Benutzername
 Password: Kennwort
 Save login via cookies so I don't have to login next time: Login in Cookie abspeichern, um die Anmeldung beim n&auml;chsten Mal automatisch zu &uuml;berspringen.
-Login: Anmelden
 Access public calendar: Zugang &ouml;ffentlicher Kalender
 Access: Zugriff
 calendar: Kalender
@@ -335,6 +336,7 @@ Repeat Type: Art der Wiederholung
 Duration: Dauer
 Priority: Priorit&auml;t
 Public: &ouml;ffentlich
+Public Access: &ouml;ffentlicher Zugang
 days: Tage
 day: Tag
 hours: Stunden
@@ -393,7 +395,6 @@ to not use your user preferences when viewing this page: um Ihre Benutzereinstel
 are being ignored while viewing this page.: werden ignoriert w&auml;hrend der Anzeige dieser Seite.
 to load your user preferences when viewing this page: laden Ihrer Systemeinstellungen wenn diese Seite angezeigt wird.
 Settings: Einstellungen
-Public Access: &ouml;ffentlicher Zugang
 Groups: Benutzergruppen
 NonUser Calendars: 'Zentrale' - Kalender
 Other: Sonstiges
@@ -837,7 +838,7 @@ to log in and start using your account: und loggen Sie sich mit Ihren Zugangskon
 You may change your password after logging in the first time: Sie müssen nach Ihrem ersten Einloggen Ihr Passwort &auml;ndern
 If you received this email in error: Wenn Sie diese Email erhalten aber keinen Webkalenderzugang beantragt haben, ignorieren Sie diese oder benachrichtigen Sie uns kurz
 Welcome: Willkommen
-Your password do not match: Ihre Passwort stimmt nicht &uuml;berein
+Your passwords do not match: Ihr Passwort stimmt nicht &uuml;berein
 Registration: Registrierung
 Welcome to WebCalendar: Willkommen beim Webkalender
 Your email should arrive shortly: Ihre Email wird in K&uuml;rze zugestellt
@@ -937,12 +938,18 @@ Add New Category: Neue Kategorie hinzuf&uuml;gen
 ###############################################
 # Page: edit_entry.php
 #
+hours ahead of you: Stunden vor Ihnen
+hours behind you: Stunden nach Ihnen
+is in a different timezone than you are. Currently: ist in einem anderen Zeitzone, als Sie sind. Derzeit
+Time entered here is based on your Timezone: Die eingegebene Zeit entspricht Ihrer Zeitzone
 Edit Entry: Eintrag &auml;ndern
 Add Entry: Eintrag hinzuf&uuml;gen
 Details: Details
 Repeat: Wiederholung
 category-help: Definiert die Kategorie eines Termines.
 Timed event: Termin MIT Zeitangabe
+am: Vormittag
+pm: Nachmittag
 Availability: Verf&uuml;gbarkeit
 external-participants-help: Externe Benutzer (optional mit einer "name@domain.de" Emailadresse) pro Zeile.
 External Participants: Externe Benutzer
@@ -1033,6 +1040,40 @@ Common Trailer: Allgemeine Navigationsleiste
 
 
 ###############################################
+# Page: includes/translate.php
+#
+English: Englisch
+Basque: Baskisch
+Bulgarian: Bulgarisch
+Catalan: Katalanisch
+Chinese (Traditonal/Big5): Chinesisch (Traditionell/Big5)
+Chinese (Simplified/GB2312): Chinesisch (Einfach/GB2312)
+Czech: Tschechisch
+Danish: D&auml;nisch
+Dutch: Holl&auml;ndisch
+Estonian: Estnisch
+Finnish: Finnisch
+French: Franz&ouml;sisch
+Galician: G&auml;lisch
+German: Deutsch
+Holo (Taiwanese): Taiwanesisch
+Hungarian: Ungarisch
+Icelandic: Isl&auml;ndisch
+Italian: Italienisch
+Japanese: Japanisch
+Korean: Koreanisch
+Norwegian: Norwegisch
+Polish: Polnisch
+Portuguese: Portugiesisch
+Portuguese/Brazil: Portugiesisch/Brasilianisch
+Romanian: Rum&auml;nisch
+Russian: Russisch
+Spanish: Spanisch
+Swedish: Schwedisch
+Turkish: Turkisch
+
+
+###############################################
 # Page: includes/trailer.php
 #
 My Calendar: Mein Kalender
@@ -1095,3 +1136,106 @@ Please add a participant: Bitte einen Teilnehmer hinzuf&uuml;gen
 #
 This is a reminder for the event detailed below.: Das ist eine Erinnerung für den unten aufgeführten (detailierten) Termin
 Reminder: Erinnerung
+
+
+###############################################
+# Page: install/index.php
+#
+Invalid Login: Ung&uuml;ltiges Login
+needed for Gradient Image Backgrounds: f&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig
+Passwords do not match: Passw&oouml;rter stimmen nicht &uuml;berein
+Unable to write password to settings.php file: Passwort kann nicht in die 'settings.php'-Datei geschrieben werden
+Connection Successful: Verbindung erfolgreich
+Please go to next page to continue installation: Bitte gehen Sie auf die n&auml;chste Seite um mit der Installation fortzufahren
+Failure Reason: Fehlerbegr&uuml;ndung
+Correct your entries or click the <b>Create New</b> button to continue installation: Korrigieren Sie Ihre Eintr&auml;ge oder klicken Sie auf <b>Create New</b> Button um die Installation fortzufahren
+Correct your entries and try again: Korrigieren Sie Ihre Eintr&auml;ge und versichen Sie es erneut
+Timezone Conversion Successful: Konvertierung der Zeitzone erfolgreich abgeschlossen
+Error Converting Timezone: Fehler bei der Zeitzonenkonvertierung
+Error Unable to write to file: Fehler beim Schreiben auf Datei
+Please change the file permissions of this file: Bitte &auml;ndern Sie die Rechte dieser Datei
+Please change the file permissions of your includes directory to allow writing by other users: Bitte &auml;ndern Sie die Dateirechte Ihres Includeverzeichnisses damit andere Benutzer auch Schreibrechte haben
+Your settings have been saved: Ihre Einstellungen wurden gespeichert.
+Error you must specify a\\nSingle-User Login: Fehler, Sie m&uuml;ssen ein Single-User Login definieren
+Server URL must end with: Server URL muss enden mit
+Database Name: Datenbankname
+Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
+WebCalendar Installation Wizard: Webkalender Installationsassistent
+Step: Schritt
+This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see: Dieser Installationsassistent unterst&uuml;zt Sie beim erstellen eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und Fehlersuche schauen Sie
+WebCalendar Version Check: Webkalendar Versions&uuml;berpr&uuml;fung
+This is version: Diese Version ist
+The most recent version available is: Die k&uuml;rzlichst verf&uuml;gbare Version ist
+PHP Version Check: PHP Versions&uuml;berpr&uuml;fung
+Check to see if PHP 4.1.0 or greater is installed: &Uuml;berpr&uuml;fung ob PHP 4.1.0 oder h&ouml;her installiert ist
+PHP version: PHP Version
+Detailed PHP Info: Detailierte PHP Information
+Session Check: Session &Uuml;berpr&uuml;fung
+To test the proper operation of sessions, reload this page: Zum Testen, ob die Funktionen der Sessions richtig funktionieren, laden Sie dies Seite neu
+You should see the session counter increment each time: Sie sollten sehen ob der Sessionz&auml;hler jedesmal weiterz&auml;hlt
+SESSION COUNTER: Sessionz&auml;hler
+Settings.php Status: Settings.php Status
+Your <b>settings.php</b> file appears to be valid: Ihre <b>settings.php</b> Datei scheint, g&uuml;ltig zu sein
+Configuration Wizard Password: Assitenten - Konfigurationspasswort
+Create Settings File Password: Erzeuge Passwort für die Settings Datei
+Password (again): Passwort (wiederholen)
+In this section you will set up and test a connection to your database server: In diesem Abschnitt stellen und testen Sie Ihre Verbindung zum Datenbank Server ein
+The account information supplied should have FULL permissions to create databases, tables and users: Die gelieferten Kontoinformationen sollten VOLLE Rechte zum Erstellen von Datenbanken, Tabellen und Benutzer haben
+If this is not possible, or your database access is limited, you will have to manually configure your database: Wenn das nicht m&ouml;glich ist, oder Ihre Datenbank begrenzten Zugriff hat, m&uuml;ssen Sie Ihre Datenbank manuell konfigurieren
+Database Status: Datenbank Status
+Supported databases for your PHP installation: Unterst&uuml;zte Datenbanken f&uuml;r Ihre PHP Installation
+Your current database settings are able to access the database: Ihre derzeitigen Datenbankeinstellungen sind in der Lage auf Ihre Datenbank zuzugreifen
+Please Test Settings: Bitte testen Sie Ihre Einstellungen
+Your current database settings are <b>not</b> able to access the database or have not yet been tested: Ihre derzeitigen Datenbankeinstellungen sind <b>nicht</b> in der Lage auf die Datenbank zuzugreifen, oder sind noch nicht getestet worden
+Database Settings: Datenbankeinstellungen
+Database Type: Art der Datenbank
+Server: Server
+Connection Persistence: Permanente Verbindung
+Create New: Neu erstellen
+Back: Zur&uuml;ck
+All your database tables appear to be up to date. You may proceed to the: Alle Ihre Datenbanktabellen scheinen upgedated zu sein. Sie k&ouml;nnen mit der n&auml;chsten Seite weiter fortfahren um
+next page and complete your WebCalendar setup: Ihre Webkalendereinstellungen zu vervollst&auml;ndigen
+This appears to be a new installation. If this is not correct, please: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte
+go back to the previous page and correct your settings: gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen
+The database requires some data input: Die Datenbank erfodert einige Dateneingaben
+Click <b>Update Database</b> to complete the upgrade: Klick auf <b>Update Database</b> um das Upgrade zu vervollständigen
+This appears to be an upgrade from version: Dieses scheint ein Upgrade zu sein von der Version
+In this section we will perform the required database changes to bring your database up to the required level: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch, um Ihre Datenbank auf das angeforderte Niveau zu bringen
+If you are using a fully supported database, this step will be performed automatically for you: Wenn Sie eine v&ouml;llig unterst&uuml;tzte Datenbank benutzen, wird dieser Schritt automatisch f&uuml;r Sie durchgef&uuml;hrt
+If not, the required SQL can be displayed and you should be able: Wenn nicht, kann der angeforderte SQL angezeigt werden und Sie sollten in der Lage sein
+to cut &amp; paste it into your database server query window: diese zu kopieren &amp; f&uuml;gen diese in Ihr Datenbankabfragefenster ein
+No database actions are required: Keine Datenbankt&auml;tigkeiten erforderlich
+The following database actions are required: Folgende Datenbankt&auml;tigkeiten sind erforderlich
+ODBC Underlying Database: ODBC Underlying Datenbank
+This may take several minutes to complete: Die Fertigstellung kann einige Minuten dauern
+Install Database: Datenbank installieren
+Update Database: Datenbank updaten
+Display Required SQL: Ben&ouml;tigte SQL anzeigen
+This is the final step in setting up your WebCalendar Installation: Dieses ist der letzte Schritt um Ihre Webkalenderinstallation abzuschliessen
+Timezone Conversion: Zeitzonenkonvertierung
+It appears that you have: Es scheint Sie haben noch
+NOT: NICHT
+converted your existing WebCalendar event data to GMT: Ihre existierenden Webkalendertermine nach GMT umgewandelt zu haben
+If you have, you may ignore this notice and not proceed with the conversion: Wenn Sie dies bereits haben, k&ouml;nnen Sie diese Nachricht ignorieren und ohne der Umwandlung fortfahren.
+If this is a new installation, you may also ignore this notice. You can also reverse this: Wenn dieses eine neue Installation ist, k&ouml;nnen Sie diese Nachricht auch ignorieren. Sie k&ouml;nnen dies aber auch wieder r&uuml;ckg&auml;ngig machen.
+procedure by entering a value with the opposite sign ( i.e. 4 vs. -4 ): Verfahren Sie durch das Eintragen eines Wertes mit dem gegenteiligen Zeichen ( z.B. 4 gegen -4 )
+Your current Server GMT offset is: Ihr derzeitige Server GMT Stundenversatz ist
+Enter the offset you wish to make: Eingabe des gew&uuml;nschten Stundenversatzes
+Conversion Successful: Umwandlung erfolgreich
+Application Settings: Anwendungseinstellung
+HTTP-based authentication was not detected: HTTP-basierende Authentisierung wurde nicht erkannt
+You will need to reconfigure your web server if you wish to: Sie m&uuml;ssen Ihren Webserver nochmals konfigurieren.
+select 'Web Server' from the 'User Authentication' choices below: W&auml;hlen Sie den 'Web Server' von 'Benutzer Authentisierung' unten aus
+HTTP-based authentication was detected: HTTP-basierende Authentisierung wurde erkannt
+User authentication is being handled by your web server: Benutzer Authentisierung wird durch Ihren Web Server abgehandelt
+You should select 'Web Server' from the list of'User Authentication' choices below: Sie sollten 'Web Server' von der Liste 'Benutzer Authentisierung' von unten ausw&auml;hlen
+User Authentication: Benutzer Authentisierung
+Web-based via WebCalendar (default): Webbasierend via Webkalender (Grundeinstellung)
+Web Server: Web Server
+None (Single-User): Keine (Single-User)
+Read-Only: Nur Lesen
+Environment: Umgebung
+Production: Produktion
+Development: Entwicklung
+Save Settings: Einstellung speichern
+Launch WebCalendar: Webkalender starten
