@@ -28,6 +28,7 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
+    - view_entry.php was displaying '&amp' instead of '&amp;'
     + Fixed security: exploit allows execution of code downloaded from
       remote server
     + Fixed XHTML troubles with pop id starting with numbers
