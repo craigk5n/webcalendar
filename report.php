@@ -120,7 +120,7 @@ function event_to_text ( $event, $date ) {
     if ( ! empty ( $allow_html_description ) &&
       $allow_html_description == 'Y' ) {
       $str = str_replace ( '&', '&amp;', $event->getDescription() );
-      $description_str = str_replace ( '&amp;amp;', '&amp', $str );
+      $description_str = str_replace ( '&amp;amp;', '&amp;', $str );
       if ( strstr ( $description_str, "<" ) &&
         strstr ( $description_str, ">" ) ) {
         // found some HTML
