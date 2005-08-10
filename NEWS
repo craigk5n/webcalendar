@@ -9,6 +9,7 @@ Version 1.0.1-CVS (?? ??? 2005)
       1212667: Install script - Database Type Problem
       1218113: iCal ATTENDEE error if event is deleted
   - Other bugs fixed:
+    - Fixed bug: use of & in report.php and view_entry.php
     + Fixed bug: include path problems for opening settings.php file
     + Fixed security: exploit allows execution of code downloaded from
       remote server
