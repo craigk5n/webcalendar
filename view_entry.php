@@ -449,7 +449,7 @@ if ( $categories_enabled == "Y" ) {
   if ( ! empty ( $allow_html_description ) &&
     $allow_html_description == 'Y' ) {
     $str = str_replace ( '&', '&amp;', $description );
-    $str = str_replace ( '&amp;amp;', '&amp', $str );
+    $str = str_replace ( '&amp;amp;', '&amp;', $str );
     // If there is no html found, then go ahead and replace
     // the line breaks ("\n") with the html break.
     if ( strstr ( $str, "<" ) && strstr ( $str, ">" ) ) {
