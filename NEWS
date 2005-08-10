@@ -36,6 +36,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added patch 1237485: FCKEditor for editing HTML event descriptions
     + Added install/index and classes/*.class files to update_translation.pl files list
     + Moved translation related functions to translate.php
     + Added 'Timezone Notice' if Assistant and Boss are in defferent timezones

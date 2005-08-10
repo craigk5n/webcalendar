@@ -33,6 +33,19 @@ if ( $login == "__public__" && $id > 0 ) {
   $id = 0;
 }
 
+// Do we use HTMLArea of FCKEditor?
+// Note: HTMLArea has been discontinued, so it is preferred
+$use_htmlarea = false;
+$use_fckeditor = false;
+if ( $allow_html_description == "Y" ){
+  if ( file_exists ( "includes/FCKeditor-2.0/fckeditor.js" ) &&
+    file_exists ( "includes/FCKeditor-2.0/fckconfig.js" ) ) {
+    $use_fckeditor = true;
+  } else if ( file_exists ( "includes/htmlarea/htmlarea.php" ) ) {
+    $use_htmlarea = true;
+  }
+}
+
 $external_users = "";
 $participants = array ();
 
@@ -267,7 +280,11 @@ if ( $allow_html_description == "Y" ){
   // Allow HTML in description
   // If they have installed the htmlarea widget, make use of it
   $textareasize = 'rows="15" cols="50"';
-  if ( file_exists ( "includes/htmlarea/htmlarea.php" ) ) {
+  if ( $use_fckeditor ) {
+    $textareasize = 'rows="20" cols="50"';
+    $BodyX = 'onload="timetype_handler();rpttype_handler()"';
+    $INC = array ( 'js/edit_entry.php', 'js/visible.php' );
+  } else if ( $use_htmlarea ) {
     $BodyX = 'onload="initEditor();timetype_handler();rpttype_handler()"';
     $INC = array ( 'htmlarea/htmlarea.php', 'js/edit_entry.php',
       'js/visible.php', 'htmlarea/core.php' );
@@ -831,6 +848,18 @@ if ( $single_user == "N" && $show_participants ) {
 </td></tr>
 </table>
 <input type="hidden" name="participant_list" value="" />
+
+<?php if ( $use_fckeditor ) { ?>
+<script type="text/javascript" src="includes/FCKeditor-2.0/fckeditor.js"></script>
+<script type="text/javascript">
+   var myFCKeditor = new FCKeditor( 'description' ) ;
+   myFCKeditor.BasePath = 'includes/FCKeditor-2.0/' ;
+   myFCKeditor.ToolbarSet = 'Medium' ;
+   myFCKeditor.Config['SkinPath'] = './skins/office2003/' ;
+   myFCKeditor.ReplaceTextarea() ;
+</script>
+<?php /* $use_fckeditor */ } ?>
+
 </form>
 
 <?php if ( $id > 0 && ( $login == $create_by || $single_user == "Y" || $is_admin ) ) { ?>
