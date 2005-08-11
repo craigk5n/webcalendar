@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1256250: reject_entry.php error
+      1254880: the fill in of languages in system settings wrong
       1246969: Clicking on "Add New Entry" was defaulting to
         current date rather than what was passed in via URL
       1254983: nulogin.php throws language errors
