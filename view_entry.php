@@ -10,6 +10,7 @@
  * id (*) - cal_id of requested event
  * date  - yyyymmdd format of requested event
  * user  - user to display
+ * log - show activity log (any non-empty value)
  * (*) required field
  */
 include_once 'includes/init.php';
@@ -17,6 +18,8 @@ include_once 'includes/init.php';
 // make sure this user is allowed to look at this calendar.
 $can_view = false;
 $is_my_event = false;
+$log = getGetValue ( 'log' );
+$show_log = ! empty ( $log );
 
 if ( $is_admin || $is_nonuser_admin || $is_assistant ) {
   $can_view = true;
@@ -904,10 +907,13 @@ if ( count ( $allmails ) > 0 ) {
     translate("Email all participants") . "</a><br />\n";
 }
 
-$show_log = false;
+$can_show_log = $is_admin; // default if access control is not enabled
+if ( access_is_enabled () ) {
+  $can_show_log = access_can_access_function ( ACCESS_ACTIVITY_LOG );
+}
 
-if ( $is_admin ) {
-  if ( empty ( $log ) ) {
+if ( $can_show_log ) {
+  if ( ! $show_log ) {
     echo "<a title=\"" . 
       translate("Show activity log") . "\" class=\"nav\" " .
       "href=\"view_entry.php?id=$id&amp;log=1\">" . 
@@ -917,11 +923,10 @@ if ( $is_admin ) {
       translate("Hide activity log") . "\" class=\"nav\" " .
       "href=\"view_entry.php?id=$id\">" . 
        translate("Hide activity log") . "</a><br />\n";
-    $show_log = true;
   }
 }
 
-if ( $show_log ) {
+if ( $can_show_log && $show_log ) {
   echo "<h3>" . translate("Activity Log") . "</h3>\n";
   echo "<table class=\"embactlog\">\n";
   echo "<tr><th class=\"usr\">\n";
