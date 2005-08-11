@@ -69,15 +69,17 @@ if ( empty ( $error ) && $id > 0 ) {
   if ($time != '-1') {
     $hour = substr($time,0,2);
     $minute = substr($time,2,2);
-  }
-
+  } else {
+   $hour =  $minute = 0;
+ }
+  $eventstart = $fmtdate .  sprintf( "%06d", ( $hour * 10000 ) + ( $minute * 100 ) );
   for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
     // does this user want email for this?
     $send_user_mail = get_pref_setting ( $partlogin[$i],
       "EMAIL_EVENT_REJECTED" );
-     user_load_variables ( $partlogin[$i], "temp" );
-    $user_TIMEZONE = get_pref_setting ( $participants[$i], "TIMEZONE" );
-    $user_TZ = get_tz_offset ( $user_TIMEZONE, $eventstart );
+    user_load_variables ( $partlogin[$i], "temp" );
+    $user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
+    $user_TZ = get_tz_offset ( $user_TIMEZONE, '', $eventstart );
     $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
     if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
       $send_email != "N" ) {
@@ -88,16 +90,13 @@ if ( empty ( $error ) && $id > 0 ) {
         }
         $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
         translate("An appointment has been rejected by") .
-        " " . $login_fullname .  ". " .
+        " " . $login_fullname .  ".\n\n" .
         translate("The subject was") . " \"" . $name . " \"\n" .
         translate("The description is") . " \"" . $description . "\"\n" .
         translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-        ( ( empty ( $hour ) && empty ( $minute ) ) ? "" :
-        translate("Time") . ": " .
+        ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate("Time") . ": " .
         // Display using user's GMT offset and display TZID
-        display_time ( $fmtdate .  ( "%06d", ( $hour * 10000 ) + ( $minute * 100 ), 
-         2, '' , $user_TIMEZONE ) ) .
-        "\n\n\n";
+        display_time ( $fmtdate .  $eventstart, 2, '' , $user_TIMEZONE ) ) ). "\n\n\n";
       if ( ! empty ( $server_url ) ) {
         $url = $server_url .  "view_entry.php?id=" .  $id;
         $msg .= "\n\n" . $url;
@@ -121,7 +120,7 @@ if ( empty ( $error ) && $id > 0 ) {
 if ( empty ( $error ) ) {
   if ( ! empty ( $ret ) && $ret == "listall" )
     do_redirect ( "list_unapproved.php" );
-  else if ( $ret == "list" )
+  else if (  ! empty ( $ret ) &&  $ret == "list" )
     do_redirect ( "list_unapproved.php?user=$app_user" );
   else
     do_redirect ( "view_entry.php?id=$id&amp;user=$app_user" );
