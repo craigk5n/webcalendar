@@ -3,17 +3,17 @@
  * $Id$
  *
  * Description:
- * Presents page to edit/add an event
+ *	Presents page to edit/add an event
  *
  * Notes:
- * If htmlarea is installed, users can use WYSIWYG editing.
- * SysAdmin must enable HTML for event full descriptions.
- * The htmlarea files should be installed so that the htmlarea.php
- * file is in ../includes/htmlarea/htmlarea.php
- * The htmlarea code can be downloaded from:
- *  http://www.htmlarea.com
- * TODO
- * This file will not pass XHTML validation with HTMLArea enabled
+ *	If htmlarea is installed, users can use WYSIWYG editing.
+ *	SysAdmin must enable HTML for event full descriptions.
+ *	This can be done by installing HTMLArea (which has been
+ *	discontinued) or FCKEditor.  See the WebCalendar home page
+ *	for download and install instructions for these packages.
+ *
+ *	This file will not pass XHTML validation with HTMLArea enabled
+ *	(Not sure about FCKEditor...)
  */
 include_once 'includes/init.php';
 include_once 'includes/site_extras.php';
@@ -31,6 +31,17 @@ $can_edit = false;
 // Public access can only add events, not edit.
 if ( $login == "__public__" && $id > 0 ) {
   $id = 0;
+}
+
+$month = getIntValue ( 'month' );
+$day = getIntValue ( 'day' );
+$year = getIntValue ( 'year' );
+$date = getIntValue ( 'date' );
+if ( empty ( $date ) && ! empty ( $month ) ) {
+  if ( empty ( $year ) ) $year = date ( "Y" );
+  if ( empty ( $month ) ) $month = date ( "M" );
+  if ( empty ( $day ) ) $day = date ( "d" );
+  $date = sprintf ( "%04d%02d%02d", $year, $month, $day );
 }
 
 // Do we use HTMLArea of FCKEditor?
@@ -204,12 +215,9 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     }
   }
 }
-if ( ! empty ( $year ) && $year )
-  $thisyear = $year;
-if ( ! empty ( $month ) && $month )
-  $thismonth = $month;
-if ( ! empty ( $day ) && $day )
-  $thisday = $day;
+$thisyear = $year;
+$thismonth = $month;
+$thisday = $day;
 if ( empty ( $rpt_type ) || ! $rpt_type )
   $rpt_type = "none";
 
@@ -236,17 +244,13 @@ if ( empty ( $rpt_freq ) )
 if ( empty ( $rpt_end_date ) )
   $rpt_end_date = 0;
 
-if ( ( empty ( $year ) || ! $year ) &&
-  ( empty ( $month ) || ! $month ) &&
-  ( ! empty ( $date ) && strlen ( $date ) ) ) {
-  $thisyear = $year = substr ( $date, 0, 4 );
-  $thismonth = $month = substr ( $date, 4, 2 );
-  $thisday = $day = substr ( $date, 6, 2 );
-  $cal_date = $date;
-} else {
-  if ( empty ( $cal_date ) )
+if ( empty ( $cal_date ) ) {
+  if ( ! empty ( $date ) )
+    $cal_date = $date;
+  else
     $cal_date = date ( "Ymd" );
 }
+
 if ( empty ( $thisyear ) )
   $thisdate = date ( "Ymd" );
 else {
@@ -255,8 +259,9 @@ else {
     empty ( $thismonth ) ? date ( "m" ) : $thismonth,
     empty ( $thisday ) ? date ( "d" ) : $thisday );
 }
-if ( empty ( $cal_date ) || ! $cal_date )
+if ( empty ( $cal_date ) || ! $cal_date ) {
   $cal_date = $thisdate;
+}
 
 //Setup to display user's timezone difference if Admin or Assistane
 //Even thought event is stored in GTM, an Assistant may need to know that
@@ -266,15 +271,16 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
   $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
   $user_TZ = get_tz_offset ( $user_TIMEZONE, '', $cal_date );
   if ( $tz_offset[0] != $user_TZ[0] ) {  //Different TZ_Offset
-   user_load_variables ( $user, "temp" );
-   $tz_diff = $user_TZ[0] - $tz_offset[0];
-  $tz_value = ( $tz_diff > 0? translate ("hours ahead of you") : translate ("hours behind you") );
-   $TZ_notice = "(" . $tempfullname . " " . 
-    translate ("is in a different timezone than you are. Currently") . " ";
-    //TODO show hh:mm instead of abs 
-   $TZ_notice .= abs ( $tz_diff ) . " " . $tz_value . ".<br />&nbsp;"; 
-   $TZ_notice .= translate ("Time entered here is based on your Timezone") . ".)"; 
- }
+    user_load_variables ( $user, "temp" );
+    $tz_diff = $user_TZ[0] - $tz_offset[0];
+    $tz_value = ( $tz_diff > 0? translate ("hours ahead of you") :
+      translate ("hours behind you") );
+    $TZ_notice = "(" . $tempfullname . " " . 
+      translate ("is in a different timezone than you are. Currently") . " ";
+      //TODO show hh:mm instead of abs 
+    $TZ_notice .= abs ( $tz_diff ) . " " . $tz_value . ".<br />&nbsp;"; 
+    $TZ_notice .= translate ("Time entered here is based on your Timezone") . ".)"; 
+  }
 }
 if ( $allow_html_description == "Y" ){
   // Allow HTML in description

@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1246969: Clicking on "Add New Entry" was defaulting to
+   current date rather than what was passed in via URL
  - Fixed bugs 1214060, 1214046: activity log not working properly with
    user access control
  - Added patch 1237485: FCKEditor for editing HTML event descriptions
