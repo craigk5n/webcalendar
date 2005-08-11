@@ -136,8 +136,12 @@ if ($is_nonuser_admin) {
   	$links[] = "purge.php";
   }
   
-  if ( ( $is_admin && ! access_is_enabled () ) || 
-    access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) {
+  // This Activity Log link shows ALL activity for ALL events, so you
+  // really need to be an admin user for this.  Enabling "Activity Log"
+  // in UAC just gives you access to the log for your _own_ events or
+  // other events you have access to.
+  if ( $is_admin && ( ! access_is_enabled () || 
+    access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) ) {
     $names[] = translate("Activity Log");
     $links[] = "activity_log.php";
   }

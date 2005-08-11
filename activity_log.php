@@ -1,11 +1,35 @@
 <?php
+/*
+ * $Id$
+ *
+ * Description:
+ *	Display the system activity log.
+ *
+ * Input Parameters:
+ *	startid - specified the id of the first log entry to display
+ *
+ * Security:
+ *	User must be an admin user
+ *	AND, if user access control is enabled, they must have access to
+ *	activity logs.  (This is because users may see event details
+ *	for other groups that they are not supposed to have access to.)
+ */
 include_once 'includes/init.php';
-$PAGE_SIZE = 25;
+
+$PAGE_SIZE = 25; // number of entries to show at once
+
+if ( ! $is_admin || ( access_is_enabled () &&
+  ! access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) ) {
+  die_miserable_death ( translate ( "You are not authorized" ) );
+}
+
 print_header();
 
-echo "<h3>" . translate("Activity Log") . "</h3>\n";
+$startid = getIntValue ( 'startid' );
 
-echo "<a title=\"" . translate("Admin") . "\" class=\"nav\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n";
+echo '<h3>' . translate("Activity Log") . "</h3>\n";
+
+echo '<a title="' . translate("Admin") . '" class="nav" href="adminhome.php">&laquo;&nbsp;' . translate("Admin") . '</a><br/><br/>' . "\n";
 
 echo "<table>\n";
 echo "<tr><th class=\"usr\">\n" .
@@ -35,11 +59,11 @@ if ( $res ) {
       $nextpage = $row[7];
       break;
     } else {
-	echo "<tr";
-		if ( $num % 2 ) {
-			echo " class=\"odd\"";
-		}
-	echo "><td>\n" .
+      echo "<tr";
+      if ( $num % 2 ) {
+        echo " class=\"odd\"";
+      }
+      echo "><td>\n" .
         $row[0] . "</td><td>\n" .
         $row[1] . "</td><td>\n" . 
         date_to_str ( $row[3] ) . "&nbsp;" .
@@ -78,10 +102,11 @@ if ( $res ) {
 //go BACK in time
 if ( ! empty ( $nextpage ) ) {
   echo "<a title=\"" . 
-  	translate("Previous") . "&nbsp;$PAGE_SIZE&nbsp;" . 
-	translate("Events") . "\" class=\"prev\" href=\"activity_log.php?startid=$nextpage\">" . 
-  	translate("Previous") . "&nbsp;$PAGE_SIZE&nbsp;" . 
-	translate("Events") . "</a>\n";
+    translate("Previous") . "&nbsp;$PAGE_SIZE&nbsp;" . 
+    translate("Events") .
+    "\" class=\"prev\" href=\"activity_log.php?startid=$nextpage\">" . 
+    translate("Previous") . "&nbsp;$PAGE_SIZE&nbsp;" . 
+    translate("Events") . "</a>\n";
 }
 
 if ( ! empty ( $startid ) ) {
@@ -96,11 +121,11 @@ if ( ! empty ( $startid ) ) {
         $prevarg = "?startid=$previd";
       }
       //go FORWARD in time
-      echo "<a title=\"" . 
-  	translate("Next") . "&nbsp;$PAGE_SIZE&nbsp;" . 
-	translate("Events") . "\" class=\"next\" href=\"activity_log.php$prevarg\">" . 
-  	translate("Next") . "&nbsp;$PAGE_SIZE&nbsp;" . 
-	translate("Events") . "</a><br />\n";
+      echo "<a title=\"" .  translate("Next") . "&nbsp;$PAGE_SIZE&nbsp;" . 
+        translate("Events") .
+        "\" class=\"next\" href=\"activity_log.php$prevarg\">" . 
+        translate("Next") . "&nbsp;$PAGE_SIZE&nbsp;" . 
+        translate("Events") . "</a><br />\n";
     }
     dbi_free_result ( $res );
   }
