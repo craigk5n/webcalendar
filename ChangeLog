@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
- - Fixed bug 1214060: activity log not working properly with user access control
+ - Fixed bugs 1214060, 1214046: activity log not working properly with
+   user access control
  - Added patch 1237485: FCKEditor for editing HTML event descriptions
  - Fixed bug: view_entry.php was displaying '&amp' instead of '&amp;'
  - Fixed bug 1254983: nulogin.php throws language errors
