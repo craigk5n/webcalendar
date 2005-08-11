@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1246969: Clicking on "Add New Entry" was defaulting to
+        current date rather than what was passed in via URL
       1254983: nulogin.php throws language errors
       1249012: can't change timed to untimed events
       1233798: Catagory settings don't work quite right for Boss/Assistant
