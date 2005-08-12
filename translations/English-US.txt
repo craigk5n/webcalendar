@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 08-08-2005
+# Translation last updated on 08-12-2005
 
 
 ###############################################
@@ -49,6 +49,7 @@ Save: Save
 ###############################################
 # Page: activity_log.php
 #
+You are not authorized: You are not authorized
 Activity Log: Activity Log
 User: User
 Date: Date
@@ -81,7 +82,6 @@ Error adding event: Error adding event
 Unavailable: Unavailable
 System Settings: System Settings
 Help: Help
-You are not authorized: You are not authorized
 Note: Note
 Your user preferences: Your user preferences
 may be affecting the appearance of this page.: may be affecting the appearance of this page.
@@ -168,7 +168,7 @@ disable-priority-field-help: Selecting "Yes" will remove the "Priority" field fr
 Disable Priority field: Disable Priority field
 disable-access-field-help: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
 Disable Access field: Disable Access field
-disable-participants-field-help: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
+disable-participants-field-help: Selecting "Yes" will remove the "Participants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
 Disable Participants field: Disable Participants field
 disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
 Disable Repeating field: Disable Repeating field
@@ -247,7 +247,7 @@ external-can-receive-reminder-help: When external users are enabled and email us
 External users can receive email reminders: External users can receive email reminders
 allow-self-registration-help: Permit new users to register themselves
 Allow self-registration: Allow self-registration
-use-blacklist-help: Limit access to WebCalendar funcions based on IP address
+use-blacklist-help: Limit access to WebCalendar functions based on IP address
 Restrict self-registration to blacklist: Restrict self-registration to blacklist
 allow-self-registration-full-help: Allow new users to complete the self-registration process on-line
 Use self-registration email notifications: Generate passwords and send to new users. This should help eliminate spammers.
@@ -390,7 +390,7 @@ days: days
 before event: before event
 participants-help: Lists the participants of this entry.
 Availability: Availability
-external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
+external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: External Participants
 repeat-type-help: Select how often the event should repeat.<i>Monthly (by day)</i> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <i>Monthly (by date)</i> allows an event to repeat on the same day of the month.
 Repeat Type: Repeat Type
@@ -647,7 +647,7 @@ Help Index: Help Index
 ###############################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.
+Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.: Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.
 Add/Edit/Delete: Add/Edit/Delete
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
 Specifies the user that you would like to see displayed in your calendar.: Specifies the user that you would like to see displayed in your calendar.
@@ -1226,9 +1226,10 @@ NOT: NOT
 converted your existing WebCalendar event data to GMT: converted your existing WebCalendar event data to GMT
 If you have, you may ignore this notice and not proceed with the conversion: If you have, you may ignore this notice and not proceed with the conversion
 If this is a new installation, you may also ignore this notice. You can also reverse this: If this is a new installation, you may also ignore this notice. You can also reverse this
-procedure by entering a value with the opposite sign ( i.e. 4 vs. -4 ): procedure by entering a value with the opposite sign ( i.e. 4 vs. -4 )
+procedure by entering a value with the opposite sign (i.e. 4 vs. -4): procedure by entering a value with the opposite sign (i.e. 4 vs. -4
 Your current Server GMT offset is: Your current Server GMT offset is
 Enter the offset you wish to make: Enter the offset you wish to make
+Convert Data to GMT: Convert Data to GMT
 Conversion Successful: Conversion Successful
 Application Settings: Application Settings
 HTTP-based authentication was not detected: HTTP-based authentication was not detected
@@ -1236,7 +1237,7 @@ You will need to reconfigure your web server if you wish to: You will need to re
 select 'Web Server' from the 'User Authentication' choices below: select 'Web Server' from the 'User Authentication' choices below
 HTTP-based authentication was detected: HTTP-based authentication was detected
 User authentication is being handled by your web server: User authentication is being handled by your web server
-You should select 'Web Server' from the list of'User Authentication' choices below: You should select 'Web Server' from the list of'User Authentication' choices below
+You should select 'Web Server' from the list of 'User Authentication' choices below: You should select 'Web Server' from the list of 'User Authentication' choices below
 User Authentication: User Authentication
 Web-based via WebCalendar (default): Web-based via WebCalendar (default)
 Web Server: Web Server
