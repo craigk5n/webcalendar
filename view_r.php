@@ -136,7 +136,7 @@ else
 if ( $is_day_view ) {
   $startdate = $enddate = $thisdate;
   $thistime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
-  $start_ind = $end_ind = date ( "w", $thistime );
+  $start_ind = $end_ind = date ( "w", $thistime ) - $WEEK_START;
 } else {
   $startdate = date ( "Ymd", $wkstart );
   $enddate = date ( "Ymd", $wkend );
