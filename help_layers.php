@@ -7,7 +7,7 @@ print_header('','','',true);
 
 <table style="border-width:0px;">
 	<tr><td colspan="2">
-		<?php etranslate("Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.")?>
+		<?php etranslate("Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.")?>
 	</td></tr>
 	<tr><td colspan="2">&nbsp;</td></tr>
 	<tr><td class="help">
