@@ -1478,14 +1478,14 @@ if ( ! $exists || ! $canWrite ) { ?>
   <?php etranslate ( "converted your existing WebCalendar event data to GMT" ) ?>.
    <?php echo translate ( "If you have, you may ignore this notice and not proceed with the conversion" ) . " " .
     translate ( "If this is a new installation, you may also ignore this notice. You can also reverse this" ) .
-    translate ( "procedure by entering a value with the opposite sign ( i.e. 4 vs. -4 )" ) ?>.</li></ul>
+    translate ( "procedure by entering a value with the opposite sign (i.e. 4 vs. -4)" ) ?>.</li></ul>
    <div align="center">
-   <?php etranslate ( "Your current Server GMT offset is" ) ?>: <?php echo ( date ( "Z", time()) / 3600 ); ?> hours.</div>
+   <?php etranslate ( "Your current Server GMT offset is" ) ?>: <?php echo ( date ( "Z", time()) / 3600 ) . " " . translate("hours");?>.</div>
    <div align="center">
    <?php etranslate ( "Enter the offset you wish to make" ) ?>:<input type="text" name="gmt_offset"  
    value="<?php echo ( date ( "Z", time()) / 3600 ); ?>"size="3"></div>
    <div align="center">
-   <input  type="submit" value="Convert Data to GMT"  /></div>
+   <input  type="submit" value="<?php etranslate ( "Convert Data to GMT") ?>:"  /></div>
    </form>
  <?php } else { ?>
     <ul><li><?php etranslate ( "Conversion Successful" ) ?></li></ul>
@@ -1501,7 +1501,7 @@ if ( ! $exists || ! $canWrite ) { ?>
   <?php } else { ?>
    <li><?php echo translate ( "HTTP-based authentication was detected" ) . ". " .
      translate ( "User authentication is being handled by your web server" ) . ". " .
-     translate ( "You should select 'Web Server' from the list of'User Authentication' choices below" ) ?>.
+     translate ( "You should select 'Web Server' from the list of 'User Authentication' choices below" ) ?>.
    </li>
   <?php } ?>
  </ul></td></tr>
