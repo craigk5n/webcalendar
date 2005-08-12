@@ -133,7 +133,8 @@ class WebCalendar {
       $public_access_can_add, $public_access_others, $can_add, $groups_enabled,
       $user_sees_only_his_groups, $valid_user, $userlist, $nonuser_enabled,
       $nonusers, $u_url, $user_fullname, $fullname, $PUBLIC_ACCESS_FULLNAME,
-      $categories_enabled, $CATEGORY_VIEW, $caturl, $bodyid, $is_nonuser;
+      $categories_enabled, $CATEGORY_VIEW, $caturl, $bodyid, $is_nonuser,
+      $is_assistant;
     load_global_settings ();
 
     if ( empty ( $ovrd ) )
@@ -171,7 +172,7 @@ class WebCalendar {
       
       // Tell the browser not to cache
       send_no_cache_header ();
-      if ( $allow_view_other != 'Y' && ! $is_admin )
+      if ( $allow_view_other != 'Y' && ! $is_admin && ! $is_assistant )
         $user = "";
 
       $can_add = ( $readonly == "N" || $is_admin == "Y" );
