@@ -312,8 +312,8 @@ function send_reminder ( $id, $event_date ) {
         "\n";
     if ( ! empty ( $single_user_login ) && $single_user_login == false )
       $body .= translate("Created by") . ": " . $row[0] . "\n";
-    $body .= translate("Updated") . ": " . date_to_str ( $row[3], 3 ) . " " .
-      display_time ( $row[4] ) . "\n";
+    $body .= translate("Updated") . ": " . date_to_str ( $row[3] ) . " " .
+      display_time ( $row[4], 3 ) . "\n";
 
     // site extra fields
     $extras = get_site_extra_fields ( $id );
