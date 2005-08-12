@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1257544: Changing event end date
  = Fixed bug 1256250: reject_entry.php error
  - Fixed bug 1254880: the fill in of languages in system settings wrong
  - Fixed bug 1214060: activity log not working properly with user access control
