@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1214768: assistants can't see calendar if allow_view_other is N
       1257544: Changing event end date
       1256250: reject_entry.php error
       1254880: the fill in of languages in system settings wrong
