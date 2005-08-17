@@ -724,6 +724,9 @@ if ( $single_user == "N" && $show_participants ) { ?>
         if ( ! empty ( $ext_users[$i] ) ) {
           echo $ext_users[$i] . " (" . translate("External User") . 
             ")<br />\n";
+          if ( preg_match ( '/mailto:(\S+)"/', $ext_users[$i], $match ) ) {
+            $allmails[] = $match[1];
+          }
         }
       }
     }

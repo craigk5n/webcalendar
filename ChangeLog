@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1261920: "Email all participants" link did not include
+   external users
  - Fixed bug 1261571: Overriding a conflict when name has double quotes
  - Fixed bug 1214768: assistants can't see calendar if allow_view_other is N
  - Fixed bug 1205806: send_reminders.php did not check some settings properly
