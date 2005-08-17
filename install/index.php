@@ -1084,7 +1084,7 @@ doc.li {
 <?php //if the settings file doesn't exist or we can't write to it, echo an error header..
 if ( ! $exists || ! $canWrite ) { ?>
  <tr><th class="redheader" colspan="2"><?php echo translate ( "Settings.php Status" ) . 
-   ":" . translte ( "Error" ) ?></th></tr>
+   ":" . translate ( "Error" ) ?></th></tr>
 <?php //..otherwise, edit a regular header
 } else { ?>
  <tr><th class="header" colspan="2">Settings.php Status</th></tr>
