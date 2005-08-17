@@ -1,4 +1,5 @@
 Version 1.0.1-CVS (?? ??? 2005)
+ - Fixed bug 1261571: Overriding a conflict when name has double quotes
  - Fixed bug: use of & in report.php and view_entry.php
  - Fixed bug: include path problems for opening settings.php file
  - Fixed bug 1233798: Catagory settings for Boss/Assistant not working
