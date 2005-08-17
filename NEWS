@@ -1,5 +1,6 @@
 Version 1.0.1-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1261571: Overriding a conflict when name has double quotes
       1233798: Catagory settings for Boss/Assistant not working
       1245755: Unbalanced span tags
       1211309: Notification message language incorrect
