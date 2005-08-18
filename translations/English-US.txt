@@ -1062,6 +1062,7 @@ Manage calendar of: Manage calendar of
 # Page: includes/translate.php
 #
 English: English
+English-US: English-US
 Basque: Basque
 Bulgarian: Bulgarian
 Catalan: Catalan
