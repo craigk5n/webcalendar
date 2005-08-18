@@ -264,7 +264,7 @@ function print_upcoming_event ( $e ) {
   if ( $display_link && ! empty ( $server_url ) ) {
     print "</a>";
   }
-  if ( $e->getDuration() == 24 * 60 ) {
+  if ( $e->isAllDay() ) {
     print " (" . translate("All day event") . ")\n";
   } else if ( $e->getTime() != -1 ) {
     print " (" . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
