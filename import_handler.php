@@ -63,6 +63,7 @@ if ($file['size'] > 0) {
 //      $data = parse_module($HTTP_POST_FILES['FileName']['tmp_name']);
 //      break;
 //
+
     case 'PALMDESKTOP':
       include "import_palmdesktop.php";
       if (delete_palm_events($login) != 1) $errormsg = "Error deleting palm events from webcalendar.";
@@ -211,11 +212,11 @@ function import_data ( $data, $overwrite, $type ) {
           $ex_days[] = date("Ymd",$ex_date);
         }
       }
-
+      $startstamp = mktime($Entry['StartHour'],$Entry['StartMinute']);
       $dates = get_all_dates($date, RepeatType($Entry['Repeat']['Interval']), 
         $endt, $dayst, $ex_days, $Entry['Repeat']['Frequency']);
       $overlap = check_for_conflicts ( $dates, $Entry['Duration'], 
-        $Entry['StartHour'], $Entry['StartMinute'], $participants, $login, 0 );
+        $startstamp, $participants, $login, 0 );
     }
 
     if ( empty ( $error ) && ! empty ( $overlap ) ) {

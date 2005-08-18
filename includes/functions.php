@@ -41,6 +41,7 @@ function getPostValue ( $name ) {
   global $HTTP_POST_VARS;
 
   if ( isset ( $_POST ) && is_array ( $_POST ) && ! empty ( $_POST[$name] ) ) {
+  $_POST[$name] = ( get_magic_quotes_gpc () != 0? $_POST[$name]: addslashes ( $_POST[$name]) );
    $HTTP_POST_VARS[$name] = $_POST[$name];
     return $_POST[$name];
   } else if ( ! isset ( $HTTP_POST_VARS ) ) {
@@ -70,6 +71,7 @@ function getGetValue ( $name ) {
   global $HTTP_GET_VARS;
 
   if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) ) {
+  $_GET[$name] = ( get_magic_quotes_gpc () != 0? $_GET[$name]: addslashes ( $_GET[$name]) );
     $HTTP_GET_VARS[$name] = $_GET[$name];
   return $_GET[$name];
   } else if ( ! isset ( $HTTP_GET_VARS ) ) {
@@ -738,12 +740,11 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
     }
     dbi_free_result ( $res );
   }
-
   $date = date ( "Ymd" );
   $time = date ( "Gis" );
   $sql_text = empty ( $text ) ? "NULL" : "'$text'";
+  
   $sql_user_cal = empty ( $user_cal ) ? "NULL" : "'$user_cal'";
-
   $sql = "INSERT INTO webcal_entry_log ( " .
     "cal_log_id, cal_entry_id, cal_login, cal_user_cal, cal_type, " .
     "cal_date, cal_time, cal_text ) VALUES ( $next_id, $event_id, " .
@@ -1611,8 +1612,7 @@ function get_entries ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_t
 
     } else if ( $tz_offset[0] > 0 ) {
       $cutoff =  get_time_add_tz ( 240000, - $tz_offset[0] );
-      //echo "<br /> cal_time " . $events[$i]['cal_time'] . "<br />\n";
-
+//      echo "<br /> cal_time " . $events[$i]['cal_time'] .  " " . $cutoff . "<br />\n";
       $sy = substr ( $date, 0, 4 );
       $sm = substr ( $date, 4, 2 );
       $sd = substr ( $date, 6, 2 );
@@ -2032,7 +2032,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
  * @global array Array of {@link RepeatingEvent}s retreived using {@link read_repeated_events()}
  */
 function get_repeating_entries ( $user, $dateYmd, $get_unapproved=true ) {
-  global $repeated_events;
+  global $repeated_events, $tz_offset;
   $n = 0;
   $ret = array ();
   //echo count($repeated_events)." - checking date $dateYmd <br />\n";
@@ -2446,8 +2446,7 @@ function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
  * @param array  $dates        Array of dates in YYYYMMDD format that is
  *                             checked for overlaps.
  * @param int    $duration     Event duration in minutes
- * @param int    $hour         Hour of event (0-23)
- * @param int    $minute       Minute of the event (0-59)
+ * @param int    $eventstart   GMT starttime timestamp
  * @param array  $participants Array of users whose calendars are to be checked
  * @param string $login        The current user name
  * @param int    $id           Current event id (this keeps overlaps from
@@ -2456,12 +2455,13 @@ function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
  * @return Empty string for no conflicts or return the HTML of the
  *         conflicts when one or more are found.
  */
-function check_for_conflicts ( $dates, $duration, $hour, $minute,
+function check_for_conflicts ( $dates, $duration, $eventstart,
   $participants, $login, $id ) {
   global $single_user_login, $single_user;
   global $repeated_events, $limit_appts, $limit_appts_number;
   if (!count($dates)) return false;
-
+  $hour = date ( "H", $eventstart );
+  $minute = date ( "i", $eventstart ); 
   $evtcnt = array ();
 
   $sql = "SELECT distinct webcal_entry_user.cal_login, webcal_entry.cal_time," .
@@ -2498,6 +2498,7 @@ function check_for_conflicts ( $dates, $duration, $hour, $minute,
   $found = array();
   $count = 0;
   if ( $res ) {
+    //Need to add user's timezone offset
     $time1 = sprintf ( "%d%02d00", $hour, $minute );
     $duration1 = sprintf ( "%d", $duration );
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -2644,22 +2645,18 @@ function time_to_minutes ( $time ) {
  * @return int The time slot index
  */
 function calc_time_slot ( $time, $round_down = false, $date = '' ) {
-  global $TIME_SLOTS, $TIMEZONE;
+  global $TIME_SLOTS, $tz_offset;
 
-  $timestamp = ( ! empty ($date )? '' : time() );
-  $tz_offset = get_tz_offset ( $TIMEZONE, $timestamp, $date );
   $interval = ( 24 * 60 ) / $TIME_SLOTS;
-  $mins_since_midnight = time_to_minutes ( $time ) + ( $tz_offset[0] * 60 );
+  $mins_since_midnight = time_to_minutes ( $time ); 
   $ret = (int) ( $mins_since_midnight / $interval );
   if ( $round_down ) {
     if ( $ret * $interval == $mins_since_midnight )
       $ret--;
   }
-  //echo "$mins_since_midnight / $interval = $ret <br />\n";
   if ( $ret > $TIME_SLOTS )
     $ret = $TIME_SLOTS;
 
-  //echo "<br />\ncalc_time_slot($time) = $ret <br />\nTIME_SLOTS = $TIME_SLOTS<br />\n";
   return $ret;
 }
 
@@ -2688,7 +2685,7 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
     $u_url = "user=$user&amp;";
   return "<a title=\"" . 
  translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
-    "date=$date" . ( isset ( $hour ) && $hour != NULL && $hour >= 0 ? "&amp;hour=$hour" : "" ) .
+    "date=$date" . ( strlen ( $hour ) > 0 ? "&amp;hour=$hour" : "" ) .
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&amp;defusers=$user" ) .
     ( empty ( $cat_id ) ? "" :  "&amp;cat_id=$cat_id" ) .
@@ -2712,12 +2709,8 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     $eventinfo, $login, $user;
   global $DISPLAY_ICONS, $PHP_SELF, $TIME_SLOTS, $WORK_DAY_START_HOUR,
     $WORK_DAY_END_HOUR;
-  global $layers, $TIMEZONE, $DISPLAY_TZ;
+  global $layers, $DISPLAY_TZ, $tz_offset;
   static $key = 0;
-
-
-
-  
 
   if ( $event->getExtForID() != '' ) {
     $id = $event->getExtForID();
@@ -2726,15 +2719,15 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     $id = $event->getID();
     $name = $event->getName();
   }
-
   // Figure out which time slot it goes in.
-  if ( $event->getTime() >= 0 && $event->getDuration() != ( 24 * 60 ) ) {
-    $ind = calc_time_slot ( $event->getTime() );
+  if ( ! $event->isUntimed() ) {
+    $tz_time = get_time_add_tz( $event->getTime(), $tz_offset[0] );
+    $ind = calc_time_slot ( $tz_time );
     if ( $ind < $first_slot )
       $first_slot = $ind;
     if ( $ind > $last_slot )
       $last_slot = $ind;
-    } else if ( $event->getDuration() == 24 * 60 ) {
+    } else if ( $event->isAllDay() ) {
     // all-day event
     $ind = $first_slot;
   } else {
@@ -2809,7 +2802,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     $timestr = display_time ( $event->getDatetime() );
     if ( $event->getDuration() > 0 ) {
       $timestr .= "-" . display_time ( $event->getEndDateTime() , $DISPLAY_TZ );
-   $end_time = $event->getEndTime();
+      $end_time = get_time_add_tz($event->getEndTime(), $tz_offset[0]);
     } else {
       $end_time = 0;
     }
@@ -2875,9 +2868,9 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
  */
 function html_for_event_day_at_a_glance ( $event, $date ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
-    $eventinfo, $login, $user;
+    $eventinfo, $login, $user, $tz_offset;
   static $key = 0;
-  global $layers, $PHP_SELF, $TIME_SLOTS, $TIMEZONE;
+  global $layers, $PHP_SELF, $TIME_SLOTS;
 
   if ( $event->getExtForID() != '' ) {
     $id = $event->getExtForID();
@@ -2894,15 +2887,9 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
 
   // If TZ_OFFSET make this event before the start of the day or
   // after the end of the day, adjust the time slot accordingly.
-
-  $tz_offset = get_tz_offset ( $TIMEZONE, '', $date );
-  if ( $event->getTime() >= 0 && $event->getDuration() != ( 24 * 60 ) ) {
-    if ( $event->getTime() + ( $tz_offset[0] * 3600 ) > 240000 )
-      $time -= 240000;
-    else if ( $event->getTime() + (  $tz_offset[0] * 3600 ) < 0 )
-
-      $time += 240000;
-    $ind = calc_time_slot ( $time );
+  if ( ! $event->isUntimed() ) {
+ $tz_time = get_time_add_tz( $event->getTime(), $tz_offset[0] );
+    $ind = calc_time_slot ( $tz_time );
     if ( $ind < $first_slot )
       $first_slot = $ind;
     if ( $ind > $last_slot )
@@ -2963,7 +2950,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
       $hour_arr[$ind] .= "-" . display_time ( $event->getEndDateTime() );
       // which slot is end time in? take one off so we don't
       // show 11:00-12:00 as taking up both 11 and 12 slots.
-      $endind = calc_time_slot ( $event->getEndTime(), true );
+      $end_time = get_time_add_tz($event->getEndTime(), $tz_offset[0]);
+      $endind = calc_time_slot ( $end_time, true );
       if ( $endind == $ind )
         $rowspan = 0;
       else
@@ -3051,7 +3039,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   $cur_rep = 0;
 
   // Get static non-repeating events
-  $ev = get_entries ( $user, $date, $get_unapproved );
+  $ev = get_entries ( $user, $date, $get_unapproved, true, true );
   $hour_arr = array ();
   $interval = ( 24 * 60 ) / $TIME_SLOTS;
   $first_slot = (int) ( ( ( $WORK_DAY_START_HOUR ) * 60 ) / $interval );
@@ -3064,14 +3052,14 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
     while ( $cur_rep < count ( $rep ) &&
       $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
       if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-        if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) )
+        if ( $rep[$cur_rep]->isAllDay() )
           $all_day = 1;
         html_for_event_day_at_a_glance ( $rep[$cur_rep], $date );
       }
       $cur_rep++;
     }
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
-      if ( $ev[$i]->getDuration() == ( 24 * 60 ) )
+      if ( $ev[$i]->isAllDay() )
         $all_day = 1;
       html_for_event_day_at_a_glance ( $ev[$i], $date );
     }
@@ -3079,7 +3067,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   // print out any remaining repeating events
   while ( $cur_rep < count ( $rep ) ) {
     if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-      if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) )
+      if ( $rep[$cur_rep]->isAllDay() )
         $all_day = 1;
       html_for_event_day_at_a_glance ( $rep[$cur_rep], $date );
     }
@@ -4281,15 +4269,21 @@ function load_nonuser_preferences ($nonuser) {
  * - <var>$thisday</var>
  * - <var>$thisdate</var>
  * - <var>$today</var>
+ * - <var>$tz_offset</var>
  *
  * @param string $date The date in YYYYMMDD format
  */
 function set_today($date) {
   global $thisyear, $thisday, $thismonth, $thisdate, $today;
-  global $month, $day, $year, $thisday;
+  global $month, $day, $year, $thisday, $TIMEZONE, $tz_offset;
 
   $today = time() ;
-  if ( ! empty ( $date ) && ! empty ( $date ) ) {
+  //Get  Timezone info used to highlight today
+  $tz_offset = get_tz_offset ( $TIMEZONE, $today );
+  $today_offset = $tz_offset[0] * 3600;
+  $today += $today_offset;
+
+  if ( ! empty ( $date ) ) {
     $thisyear = substr ( $date, 0, 4 );
     $thismonth = substr ( $date, 4, 2 );
     $thisday = substr ( $date, 6, 2 );
@@ -4918,14 +4912,46 @@ function get_tz_time ( $timestamp, $tz_name, $is_gmt = 1, $use_dst = 1 ) {
 */
 function get_time_add_tz ( $time, $tz_offset ) {
   
-  $hour = (int) ( $time / 10000 );
-  $min = abs( ( $time / 100 ) % 100 );
+  if ( $time > 0 ) {
+      $hour = (int) ( $time / 10000 );
+      $min = abs ( ( $time / 100 ) % 100 );
+  } else {
+   $hour = $min = 0;
+  }
   $min_offset = ($tz_offset - floor ( $tz_offset )) * 60;
   if ( $tz_offset < 0 ) $min_offset = - $min_offset;
   $ret_time = date ( "His", mktime ( $hour + (int) $tz_offset , 
     $min + $min_offset , 0 ) );
     
   return $ret_time;
+}
+
+/*
+ * Return cal_date+cal_time type value adjusted by GMT offset
+ *
+ * @param string $date YYYYMMDD format
+ * @param string $time HHMMSS format
+ * @param float $tz_offset GMT offset to be applied to $time
+ *
+ * @return string $ret_datetime TZ adjusted time YYYYMMDDHHMMSS
+*/
+function get_datetime_add_tz ( $date, $time, $tz_offset ) {
+ 
+  $sy = substr ( $date, 0, 4 );
+  $sm = substr ( $date, 4, 2 );
+  $sd = substr ( $date, 6, 2 ); 
+  if ( $time > 0 ) {
+      $hour = (int) ( $time / 10000 );
+      $min = abs ( ( $time / 100 ) % 100 );
+  } else {
+   $hour = $min = 0;
+  }
+  $min_offset = ($tz_offset - floor ( $tz_offset )) * 60;
+  if ( $tz_offset < 0 ) $min_offset = - $min_offset;
+  $ret_datetime = date ( "YmdHis", mktime ( $hour + (int) $tz_offset , 
+    $min + $min_offset , 0, $sm, $sd, $sy ) );
+    
+  return $ret_datetime;
 }
 
 /*
@@ -5103,9 +5129,9 @@ function validate_domain ( ) {
  * This can have serious security issues since a
  * malicous user could open up /etc/passwd.
  *
- * @param string  $login	Current user login
- * @param string  $type		type of template ('H' = header,
- *				'S' = stylesheet, 'T' = trailer)
+ * @param string  $login Current user login
+ * @param string  $type  type of template ('H' = header,
+ *    'S' = stylesheet, 'T' = trailer)
  */
 function load_template ( $login, $type )
 {

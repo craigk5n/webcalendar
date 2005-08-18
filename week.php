@@ -9,8 +9,6 @@ if (($user != $login) && $is_nonuser_admin) {
 
 load_user_categories ();
 
-
-
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
@@ -172,7 +170,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   $cur_rep = 0;
 
   // Get static non-repeating events
-  $ev = get_entries ( $user, $date, $get_unapproved );
+  $ev = get_entries ( $user, $date, $get_unapproved, true, true );
   $hour_arr = array ();
   $rowspan_arr = array ();
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
@@ -180,7 +178,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
     while ( $cur_rep < count ( $rep ) &&
       $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
       if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-        if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) ) {
+        if ( $rep[$cur_rep]->isAllDay() ) {
           $all_day[$d] = 1;
         }
         html_for_event_week_at_a_glance ( $rep[$cur_rep], $date );
@@ -188,7 +186,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
       $cur_rep++;
     }
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
-      if ( $ev[$i]->getDuration() == ( 24 * 60 ) ) {
+      if ( $ev[$i]->isAllDay() ) {
         $all_day[$d] = 1;
       }
       html_for_event_week_at_a_glance ( $ev[$i], $date );
@@ -197,7 +195,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   // print out any remaining repeating events
   while ( $cur_rep < count ( $rep ) ) {
     if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-      if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) ) {
+      if ( $rep[$cur_rep]->isAllDay() ) {
         $all_day[$d] = 1;
       }
       html_for_event_week_at_a_glance ( $rep[$cur_rep], $date );

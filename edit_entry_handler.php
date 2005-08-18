@@ -15,6 +15,9 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
 // Remember previous cal_goup_id if present
 $old_id = ( ! empty ( $parent ) ? $parent : $old_id );
 
+//Pass all string values through getPostValue
+$name = getPostValue ( 'name' );
+$description = getPostValue ( 'description' );
 // Ensure all time variables are not empty
 if ( empty ( $hour ) ) $hour = 0;
 if ( empty ( $minute ) ) $minute = 0;
@@ -122,9 +125,9 @@ if ( $GLOBALS['TIMED_EVT_LEN'] == 'E') {
 }
 $eventstop = mktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year );
  
-if ( $timetype == "T" ) { // All other types are time independent
   // Get this user's Timezone offset for this date/time  
   $tz_offset = get_tz_offset ( $TIMEZONE, $eventstart );
+if ( $timetype == "T" ) { // All other types are time independent
   // Adjust eventstart  by Timezone offset to get GMT
   $eventstart -= ( $tz_offset[0] * 3600 );
   
@@ -269,11 +272,7 @@ if ( empty ( $allow_conflict_override ) || $allow_conflict_override != "Y" ) {
 }
 if ( $allow_conflicts != "Y" && empty ( $confirm_conflicts ) &&
   strlen ( $hour ) > 0 && $timetype != 'U' ) {
-  $date = mktime ( 0, 0, 0, $month, $day, $year );
-//  $str_cal_date = date ( "Ymd", $date );
-//  if ( strlen ( $hour ) > 0 ) {
-//    $str_cal_time = sprintf ( "%02d%02d00", $hour, $minute );
-//  }
+
   if ( ! empty ( $rpt_end_use ) ) {
     $endt = mktime ( 0, 0, 0, $rpt_month, $rpt_day,$rpt_year );
   } else {
@@ -308,10 +307,10 @@ if ( $allow_conflicts != "Y" && empty ( $confirm_conflicts ) &&
     }
   }
 
-  $dates = get_all_dates ( $date, $rpt_type, $endt, $dayst,
+  $dates = get_all_dates ( $eventstart, $rpt_type, $endt, $dayst,
     $ex_days, $rpt_freq );
     
-  $conflicts = check_for_conflicts ( $dates, $duration, $hour, $minute,
+  $conflicts = check_for_conflicts ( $dates, $duration, $eventstart,
     $participants, $login, empty ( $id ) ? 0 : $id );
 }
 if ( empty ( $error ) && ! empty ( $conflicts ) ) {
@@ -806,9 +805,9 @@ if ( strlen ( $conflicts ) ) {
   } else {
     $time = sprintf ( "%d%02d00", $hour, $minute );
     // Pass the adjusted timestamp in case the date changed due to GMT offset 
-    echo display_time ( $time, 0, $eventstart );
+    echo display_time ( $time, 1, $eventstart );
     if ( $duration > 0 ) {
-      echo "-" . display_time ( add_duration ( $time, $duration ), 0, $eventstart );
+      echo "-" . display_time ( add_duration ( $time, $duration ), 1, $eventstart );
     }
   }
 ?></span> <?php etranslate("conflicts with the following existing calendar entries")?>:

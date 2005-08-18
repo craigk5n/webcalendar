@@ -111,7 +111,7 @@ class Event {
    */
   var $_allDay;
  /**
-   * Is this an Untimes event?
+   * Is this an Untimed event?
    * @var bool
    * @access private
    */
@@ -143,7 +143,6 @@ class Event {
     $this->_description = $description;
     $this->_date = $date;
     $this->_time = $time;
-    $this->_DateTime = $date . sprintf ( "%06d", $time );
     $this->_id = $id;
     $this->_extForID = $extForID;
     $this->_priority = $priority;
@@ -215,6 +214,8 @@ class Event {
    * @access public
    */
   function getDateTime () {
+    $time = ($this->_time > 0? $this->_time: 0);
+    $this->_DateTime = $this->_date . sprintf ( "%06d", $time );
     return $this->_DateTime;
   }
 
@@ -318,8 +319,12 @@ class Event {
     $year = substr ( $this->_date, 0, 4 );
     $month = substr ( $this->_date, 4, 2 ); 
     $day = substr ( $this->_date, 6, 2 );
-    $h = (int) ( $this->_time / 10000 );
-    $m = ( $this->_time / 100 ) % 100;
+ if ( $this->_time > 0 ) {
+      $h = (int) ( $this->_time / 10000 );
+      $m = ( $this->_time / 100 ) % 100;
+ } else {
+   $h = $m = 0;
+ }
     $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
     $this->_endTime = date ( "His", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
     return $this->_endTime;
@@ -336,8 +341,12 @@ class Event {
     $year = substr ( $this->_date, 0, 4 );
     $month = substr ( $this->_date, 4, 2 ); 
     $day = substr ( $this->_date, 6, 2 );
-    $h = (int) ( $this->_time / 10000 );
-    $m = ( $this->_time / 100 ) % 100;
+ if ( $this->_time > 0 ) {
+      $h = (int) ( $this->_time / 10000 );
+      $m = ( $this->_time / 100 ) % 100;
+ } else {
+   $h = $m = 0;
+ }
     $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
     $this->_endDateTime = date ( "YmdHis", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
     return $this->_endDateTime;
