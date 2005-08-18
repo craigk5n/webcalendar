@@ -17,7 +17,9 @@
 # Last update: 25 Jul 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 8 Aug 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 9 Aug 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 08-09-2005
+# Last update: 12 Aug 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 16 Aug 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 08-16-2005
 
 
 ###############################################
@@ -738,7 +740,7 @@ freebusy-url-help: Die URL f&uuml;r den Benutzerzugang zur FreeBusy - Liste
 ###############################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Layers sind sinnvoll um andere Termine von anderen Benutzern im eigenen Kalender anzuzeigen. Sie k&ouml;nnen den Benutzer und die Farbe des Termines selber spezifizieren.
+Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.: Layers sind sinnvoll um andere Termine von anderen Benutzern im eigenen Kalender anzuzeigen. Sie k&ouml;nnen den Benutzer und die Farbe des Termines selber spezifizieren.
 Add/Edit/Delete: Hinzuf&uuml;gen/&auml;ndern/L&ouml;schen
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Dr&uuml;cken Sie "Layer editieren" im Admin-User um Layers HINZUF&uuml;GEN/&auml;NDERN/L&ouml;SCHEN zu k&ouml;nnen (am Ende der Seite).
 Specifies the user that you would like to see displayed in your calendar.: Definieren Sie Ihren gew&uuml;nschten Benutzer den Sie in Ihren Kalender sehen m&ouml;chten.
@@ -1043,6 +1045,7 @@ Common Trailer: Allgemeine Navigationsleiste
 # Page: includes/translate.php
 #
 English: Englisch
+English-US: Englisch-US
 Basque: Baskisch
 Bulgarian: Bulgarisch
 Catalan: Katalanisch
@@ -1145,8 +1148,8 @@ Invalid Login: Ung&uuml;ltiges Login
 needed for Gradient Image Backgrounds: f&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig
 Passwords do not match: Passw&oouml;rter stimmen nicht &uuml;berein
 Unable to write password to settings.php file: Passwort kann nicht in die 'settings.php'-Datei geschrieben werden
-Connection Successful: Verbindung erfolgreich
-Please go to next page to continue installation: Bitte gehen Sie auf die n&auml;chste Seite um mit der Installation fortzufahren
+Connection Successful: Verbindung erfolgreich.
+Please go to next page to continue installation: Bitte f&uuml;hren Sie den n&auml;chsten Schritt aus um mit der Installation fortzufahren
 Failure Reason: Fehlerbegr&uuml;ndung
 Correct your entries or click the <b>Create New</b> button to continue installation: Korrigieren Sie Ihre Eintr&auml;ge oder klicken Sie auf <b>Create New</b> Button um die Installation fortzufahren
 Correct your entries and try again: Korrigieren Sie Ihre Eintr&auml;ge und versichen Sie es erneut
@@ -1162,7 +1165,7 @@ Database Name: Datenbankname
 Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
 WebCalendar Installation Wizard: Webkalender Installationsassistent
 Step: Schritt
-This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see: Dieser Installationsassistent unterst&uuml;zt Sie beim erstellen eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und Fehlersuche schauen Sie
+This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see: Dieser Installationsassistent unterst&uuml;zt Sie beim Erstellen eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und Fehlersuche schauen Sie
 WebCalendar Version Check: Webkalendar Versions&uuml;berpr&uuml;fung
 This is version: Diese Version ist
 The most recent version available is: Die k&uuml;rzlichst verf&uuml;gbare Version ist
@@ -1171,7 +1174,7 @@ Check to see if PHP 4.1.0 or greater is installed: &Uuml;berpr&uuml;fung ob PHP 
 PHP version: PHP Version
 Detailed PHP Info: Detailierte PHP Information
 Session Check: Session &Uuml;berpr&uuml;fung
-To test the proper operation of sessions, reload this page: Zum Testen, ob die Funktionen der Sessions richtig funktionieren, laden Sie dies Seite neu
+To test the proper operation of sessions, reload this page: Zum Testen, ob die Funktionen der Sessions richtig funktionieren, laden Sie dies Seite neu.
 You should see the session counter increment each time: Sie sollten sehen ob der Sessionz&auml;hler jedesmal weiterz&auml;hlt
 SESSION COUNTER: Sessionz&auml;hler
 Settings.php Status: Settings.php Status
@@ -1179,30 +1182,30 @@ Your <b>settings.php</b> file appears to be valid: Ihre <b>settings.php</b> Date
 Configuration Wizard Password: Assitenten - Konfigurationspasswort
 Create Settings File Password: Erzeuge Passwort für die Settings Datei
 Password (again): Passwort (wiederholen)
-In this section you will set up and test a connection to your database server: In diesem Abschnitt stellen und testen Sie Ihre Verbindung zum Datenbank Server ein
+In this section you will set up and test a connection to your database server: In diesem Abschnitt erstellen und testen Sie Ihre Verbindung zum Datenbankserver.
 The account information supplied should have FULL permissions to create databases, tables and users: Die gelieferten Kontoinformationen sollten VOLLE Rechte zum Erstellen von Datenbanken, Tabellen und Benutzer haben
 If this is not possible, or your database access is limited, you will have to manually configure your database: Wenn das nicht m&ouml;glich ist, oder Ihre Datenbank begrenzten Zugriff hat, m&uuml;ssen Sie Ihre Datenbank manuell konfigurieren
 Database Status: Datenbank Status
 Supported databases for your PHP installation: Unterst&uuml;zte Datenbanken f&uuml;r Ihre PHP Installation
-Your current database settings are able to access the database: Ihre derzeitigen Datenbankeinstellungen sind in der Lage auf Ihre Datenbank zuzugreifen
+Your current database settings are able to access the database: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie in der Lage auf Ihre Datenbank zuzugreifen.
 Please Test Settings: Bitte testen Sie Ihre Einstellungen
-Your current database settings are <b>not</b> able to access the database or have not yet been tested: Ihre derzeitigen Datenbankeinstellungen sind <b>nicht</b> in der Lage auf die Datenbank zuzugreifen, oder sind noch nicht getestet worden
+Your current database settings are <b>not</b> able to access the database or have not yet been tested: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie <b>nicht</b> in der Lage auf die Datenbank zuzugreifen, oder sind noch nicht getestet worden
 Database Settings: Datenbankeinstellungen
 Database Type: Art der Datenbank
 Server: Server
 Connection Persistence: Permanente Verbindung
 Create New: Neu erstellen
 Back: Zur&uuml;ck
-All your database tables appear to be up to date. You may proceed to the: Alle Ihre Datenbanktabellen scheinen upgedated zu sein. Sie k&ouml;nnen mit der n&auml;chsten Seite weiter fortfahren um
+All your database tables appear to be up to date. You may proceed to the: Alle Ihre Datenbanktabellen scheinen upgedated zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
 next page and complete your WebCalendar setup: Ihre Webkalendereinstellungen zu vervollst&auml;ndigen
 This appears to be a new installation. If this is not correct, please: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte
 go back to the previous page and correct your settings: gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen
 The database requires some data input: Die Datenbank erfodert einige Dateneingaben
 Click <b>Update Database</b> to complete the upgrade: Klick auf <b>Update Database</b> um das Upgrade zu vervollständigen
 This appears to be an upgrade from version: Dieses scheint ein Upgrade zu sein von der Version
-In this section we will perform the required database changes to bring your database up to the required level: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch, um Ihre Datenbank auf das angeforderte Niveau zu bringen
-If you are using a fully supported database, this step will be performed automatically for you: Wenn Sie eine v&ouml;llig unterst&uuml;tzte Datenbank benutzen, wird dieser Schritt automatisch f&uuml;r Sie durchgef&uuml;hrt
-If not, the required SQL can be displayed and you should be able: Wenn nicht, kann der angeforderte SQL angezeigt werden und Sie sollten in der Lage sein
+In this section we will perform the required database changes to bring your database up to the required level: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch, um Ihre Datenbank auf das notwendige Niveau zu bringen.
+If you are using a fully supported database, this step will be performed automatically for you: Wenn Sie eine v&ouml;llig unterst&uuml;tzte Datenbank benutzen, wird dieser Schritt automatisch f&uuml;r Sie durchgef&uuml;hrt.
+If not, the required SQL can be displayed and you should be able: Wenn nicht, kann der angeforderte SQL angezeigt werden und Sie sollten in der Lage sein,
 to cut &amp; paste it into your database server query window: diese zu kopieren &amp; f&uuml;gen diese in Ihr Datenbankabfragefenster ein
 No database actions are required: Keine Datenbankt&auml;tigkeiten erforderlich
 The following database actions are required: Folgende Datenbankt&auml;tigkeiten sind erforderlich
@@ -1213,14 +1216,15 @@ Update Database: Datenbank updaten
 Display Required SQL: Ben&ouml;tigte SQL anzeigen
 This is the final step in setting up your WebCalendar Installation: Dieses ist der letzte Schritt um Ihre Webkalenderinstallation abzuschliessen
 Timezone Conversion: Zeitzonenkonvertierung
-It appears that you have: Es scheint Sie haben noch
+It appears that you have: Es scheint Sie haben Ihre Webkalendereintr&auml;ge noch
 NOT: NICHT
-converted your existing WebCalendar event data to GMT: Ihre existierenden Webkalendertermine nach GMT umgewandelt zu haben
-If you have, you may ignore this notice and not proceed with the conversion: Wenn Sie dies bereits haben, k&ouml;nnen Sie diese Nachricht ignorieren und ohne der Umwandlung fortfahren.
-If this is a new installation, you may also ignore this notice. You can also reverse this: Wenn dieses eine neue Installation ist, k&ouml;nnen Sie diese Nachricht auch ignorieren. Sie k&ouml;nnen dies aber auch wieder r&uuml;ckg&auml;ngig machen.
-procedure by entering a value with the opposite sign ( i.e. 4 vs. -4 ): Verfahren Sie durch das Eintragen eines Wertes mit dem gegenteiligen Zeichen ( z.B. 4 gegen -4 )
+converted your existing WebCalendar event data to GMT: in GMT (Greenwich Mean Time) umgewandelt zu haben
+If you have, you may ignore this notice and not proceed with the conversion: Wenn Sie dies bereits getan haben, k&ouml;nnen Sie diese Nachricht ignorieren und ohne der Umwandlung fortfahren.
+If this is a new installation, you may also ignore this notice. You can also reverse this: Wenn dies eine neue Installation ist, k&ouml;nnen Sie diese Nachricht auch ignorieren. Sie k&ouml;nnen dies aber auch wieder r&uuml;ckg&auml;ngig machen.
+procedure by entering a value with the opposite sign (i.e. 4 vs. -4): Verfahren Sie durch das Eintragen eines Wertes mit dem gegenteiligen Zeichen ( z.B. 4 gegen -4 )
 Your current Server GMT offset is: Ihr derzeitige Server GMT Stundenversatz ist
 Enter the offset you wish to make: Eingabe des gew&uuml;nschten Stundenversatzes
+Convert Data to GMT: Konvertieren nach GMT
 Conversion Successful: Umwandlung erfolgreich
 Application Settings: Anwendungseinstellung
 HTTP-based authentication was not detected: HTTP-basierende Authentisierung wurde nicht erkannt
@@ -1228,7 +1232,7 @@ You will need to reconfigure your web server if you wish to: Sie m&uuml;ssen Ihr
 select 'Web Server' from the 'User Authentication' choices below: W&auml;hlen Sie den 'Web Server' von 'Benutzer Authentisierung' unten aus
 HTTP-based authentication was detected: HTTP-basierende Authentisierung wurde erkannt
 User authentication is being handled by your web server: Benutzer Authentisierung wird durch Ihren Web Server abgehandelt
-You should select 'Web Server' from the list of'User Authentication' choices below: Sie sollten 'Web Server' von der Liste 'Benutzer Authentisierung' von unten ausw&auml;hlen
+You should select 'Web Server' from the list of 'User Authentication' choices below: Sie sollten 'Web Server' von der Liste 'Benutzer Authentisierung' von unten ausw&auml;hlen
 User Authentication: Benutzer Authentisierung
 Web-based via WebCalendar (default): Webbasierend via Webkalender (Grundeinstellung)
 Web Server: Web Server
