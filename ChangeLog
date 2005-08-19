@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added patch 1257167: Delete should select the user by default
  - Fixed bug 1259413: "Check for event conflicts" not working in latest CVS
  - Fixed bug 1262236: Conflict checking broken in new TZ code
  - Fixed bug 1261920: "Email all participants" link did not include
