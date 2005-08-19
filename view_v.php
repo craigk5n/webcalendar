@@ -219,7 +219,10 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
       date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
       $date += ( 24 * 3600 ), $h++ ) {
       $wday = strftime ( "%w", $date );
-      if ( $wday == 0 || $wday == 6 ) {
+   // JCJ Correction for today class
+   if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
+    echo "<td class=\"today\" style=\"width:$tdw%;\">";
+   } else if ( $wday == 0 || $wday == 6 ) {
         echo "<td class=\"weekend\" style=\"width:$tdw%;\">";
       } else {
         echo "<td style=\"width:$tdw%;\">";
