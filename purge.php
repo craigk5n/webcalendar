@@ -29,6 +29,12 @@ if ( ! $is_admin ) {
 
 $ALL = 0;
 
+$action = getPostValue ( "action" );
+$do_purge = false;
+if ( $action == translate("Delete") ) {
+	$do_purge = true;
+}
+
 $purge_all = getPostValue ( "purge_all" );
 $end_year = getPostValue ( "end_year" );
 $end_month = getPostValue ( "end_month" );
@@ -38,7 +44,8 @@ $preview = getPostValue ( "preview" );
 $preview = ( empty ( $preview ) ? false : true );
 
 $INC = array('js/purge.php','js/visible.php');
-if ( ! empty ( $user ) ) {
+
+if ( $do_purge ) {
   $BodyX = '';
 } else {
   $BodyX = 'onload="all_handler();"';
@@ -59,7 +66,8 @@ echo "</h2>\n";
 <a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 <?php
 
-if ( ! empty ( $user ) ) {
+
+if ( $do_purge ) {
   if ( $preview ) {
     echo "<h2> [" .  translate("Preview") . "] " .
       translate("Purging events for") . " $user...</h2>\n";
@@ -118,10 +126,14 @@ if ( ! empty ( $user ) ) {
     $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-    echo "<option value=\"".$userlist[$i]['cal_login']."\">".$userlist[$i]['cal_fullname']."</option>\n";
+    echo '<option value="' . $userlist[$i]['cal_login'] . '"';
+	if ( $login == $userlist[$i]['cal_login'] ) {
+		echo ' selected="selected"';
+	} 
+	echo '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
-<option value="ALL" selected="selected"><?php etranslate("All")?></option>
+<option value="ALL"><?php etranslate("All")?></option>
 		</select>
 	</td></tr>
 	<tr><td><label for="purge_all">
