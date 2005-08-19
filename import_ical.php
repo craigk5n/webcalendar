@@ -335,8 +335,8 @@ function format_ical($event) {
       } else if ( preg_match ( "/^BYDAY=(.+)$/i", $RR[$i], $match ) ) {
         $fevent['Repeat']['RepeatDays'] = rrule_repeat_days( $match[1] );
       } else if ( preg_match ( "/^BYMONTHDAY=(.+)$/i", $RR[$i], $match ) ) {
-        // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal BYMONTHDAY value \"$RR[$i]\"<br />\n";
+        $fevent['Repeat']['Frequency'] = 4; //monthlyByDate
+  //echo "Partially Supported iCal BYSETPOS value \"$RR[$i]\"<br />\n";
       } else if ( preg_match ( "/^BYSETPOS=(.+)$/i", $RR[$i], $match ) ) {
         // NOT YET SUPPORTED -- TODO
         echo "Unsupported iCal BYSETPOS value \"$RR[$i]\"<br />\n";
