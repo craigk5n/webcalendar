@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1259997: repeating events don't send reminder on last day
       1259413: "Check for event conflicts" not working in latest CVS
       1262236: Conflict checking broken in new TZ code
       1261920: "Email all participants" link did not include external users
