@@ -53,8 +53,9 @@ this app is not running.
 ------------------------------------------------------------------------------
 				INSTALLATION
 
-The .php files whould be installed in a "ws" subdirectory of your
-main WebCalendar directory on the server.
+The .php files should be installed in a "ws" subdirectory of your
+main WebCalendar directory on the server.  If you obtained your WebCalendar
+code from CVS, then it is already there.
 
 Users should install the webcalendar.jar file locally and run it as
 follows (for the ReminderApp, for SampleApp, just replace "ReminderApp"
@@ -67,7 +68,7 @@ with "SampleApp"):
   [where "UUU" is the your username and "PPP" is your password]
 
 [for http-based authentication]
-  java -classpath webcalendar.jar us.k5n.webcalendar.ReminderApp \
+  java -classpath webcalendar.jar us.k5n.webcalendar.ui.ReminderApp \
     -url=http://yourwebcalurlhere/ \
     -httpuser=UUU -httppasswd=PPP
   [where "UUU" is the your username and "PPP" is your password]
