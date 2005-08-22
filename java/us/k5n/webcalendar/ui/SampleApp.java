@@ -308,7 +308,8 @@ public class SampleApp
       try {
         label.setText ( "Logging in to server..." );
         if ( ! client.login () ) {
-          System.err.println ( "Invalid WebCalendar login" );
+          System.err.println ( "Invalid WebCalendar login '" +
+            wcUsername + "'"  );
           System.exit ( 1 );
         }
       } catch ( Exception e ) {
