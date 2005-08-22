@@ -1,6 +1,6 @@
 $Id$
 
-Possible enhancements to add for 1.1:
+Things to do as part of WebCalendar 1.1
 
 Com
 ple     Description
@@ -13,11 +13,11 @@ te?
 [X] Allow forms in custom header (right now we reference our forms by
     number as in document.forms[0], which will not work if the user
     has a form in the custom header)
-[ ] User self-registration with optional email and/or admin validation
+[X] User self-registration with optional email and/or admin validation
 [ ] Better handling of large numbers of users (1000+).
     We have one user who claims the JS chokes the browser with 1000+
     users when you press the "Select..." button
-[ ] Web-based MySQL database install/upgrade.
+[X] Web-based MySQL database install/upgrade.
     I still don't think this is possible with non-mysql databases,
     but I could be wrong...  This would add on to the existing
     db config web page.
@@ -28,9 +28,6 @@ te?
     to use any particular option.
     It could start with primary use (Home Single User, Small Biz,
     Large Enterprise, Events Calendar, etc...)
-    (Unfortunately, this will add a lot of text which will require
-    translations and would make the WebCalendar download much larger.
-    The translations account for about 40% of the size of the current download.)
 [X] Improve the popup code.
     (I do like the Knoppix code and it is also GPL, so that would be
     a good place to start)
@@ -52,7 +49,7 @@ Here are some other ideas for the next or perhaps later releases:
   + send a test mail message
   + help debug login problems
   + help debug send reminder problem
-[ ] "Real" ACL with new security/access API.
+[X] "Real" ACL with new security/access API.
     Each page would just call a function and pass in the current user
     and the request, and the API would either grant or deny access.
 [ ] Ability to support a reservation system (for either a single resource
@@ -67,10 +64,15 @@ Here are some other ideas for the next or perhaps later releases:
 [ ] Support for remote calendar subscriptions (ical) for each user.
     Would need to add a new cron job to periodically update/re-import
     the remote ics file.
-[ ] Add iCal client publish so Mozilla Calendar (or Apple iCal) can
+[X] Add iCal client publish so Mozilla Calendar (or Apple iCal) can
     create events and publish back to WebCalendar.
     (This has a very high cool factor.)
-[ ] Allow custom header/trailer to be evaluated as PHP or to be an include
+[X] Allow custom header/trailer to be evaluated as PHP or to be an include
+[ ] Use SyncML to sync WebCalendar with SyncML-supported devices (PocketPC)
+[ ] Create Google Desktop plug-in that will allow WebCalendar events to
+    be indexed so that they show up in Google Desktop search results.
+[ ] Create AJAX-based interface.  The existing web service functions could
+    be re-used for this.
 [ ] Don't allow the last admin user to be deleted
 [ ] Create an ActiveSync Service Provider that will enable MS Outlook
     and PocketPC users to sync with WebCalendar.
