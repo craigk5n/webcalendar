@@ -25,6 +25,7 @@ public class WebCalendarClient implements MessageDisplayer {
   private MessageDisplayer messageDisplayer = null;
   private String loginCookieName = null;
   private String loginCookieValue = null;
+  private boolean isAdmin = false;
   private boolean debugEnabled = true;
   private final static String LOGIN_REQUEST = "ws/login.php";
   private final static String EVENTS_REQUEST = "ws/get_events.php";
@@ -180,6 +181,10 @@ public class WebCalendarClient implements MessageDisplayer {
           loginCookieName = Utils.xmlNodeGetValue ( n );
         } else if ( "cookieValue".equals ( n.getNodeName() ) ) {
           loginCookieValue = Utils.xmlNodeGetValue ( n );
+        } else if ( "admin".equals ( n.getNodeName() ) ) {
+          String val = Utils.xmlNodeGetValue ( n );
+          if ( val != null && val.equals ( "1" ) )
+            isAdmin = true;
         } else {
           System.err.println ( "Not sure what to do with <" +
             n.getNodeName() + "> tag (expecting <cookieName>... ignoring)" );
@@ -215,7 +220,7 @@ public class WebCalendarClient implements MessageDisplayer {
       urlc.setRequestProperty ( "Cookie",
         loginCookieName + "=" + loginCookieValue );
     } else {
-      debug ( "no web authentication" );
+      debug ( "no web authentication (yet)" );
     }
     return urlc;
   }
