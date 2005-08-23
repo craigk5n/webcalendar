@@ -13,7 +13,13 @@
  *	the login.php found in this directory should be used to obtain
  *	a session cookie.
  *
+ * Developer Notes:
+ *	If you enable the WS_DEBUG option below, all data will be written
+ *	to a debug file in /tmp also.
+ *
  */
+
+$WS_DEBUG = false;
 
 // Load include files.
 $basedir = ".."; // points to the base WebCalendar directory relative to
@@ -21,6 +27,8 @@ $basedir = ".."; // points to the base WebCalendar directory relative to
 $includedir = "../includes";
 
 require_once "$includedir/classes/WebCalendar.class";
+require_once "$includedir/classes/Event.class";
+require_once "$includedir/classes/RptEvent.class";
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
@@ -42,22 +50,21 @@ load_user_preferences ();
 
 $WebCalendar->setLanguage();
 
-$debug = false; // set to true to print debug info...
-
 //Header ( "Content-type: text/xml" );
 Header ( "Content-type: text/plain" );
 
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-echo "<events>\n";
+
+$out = "<events>\n";
 
 // If login is public user, make sure public can view others...
 if ( $login == "__public__" && $login != $user ) {
   if ( $public_access_others != 'Y' ) {
-    echo "<error>" . translate("Not authorized") . "</error>\n";
-    echo "</events>\n";
+    $out .= "<error>" . translate("Not authorized") . "</error>\n";
+    $out .= "</events>\n";
     exit;
   }
-  echo "<!-- Allowing public user to view other user's calendar -->\n";
+  //$out .= "<!-- Allowing public user to view other user's calendar -->\n";
 }
 
 if ( empty ( $user ) )
@@ -66,12 +73,15 @@ if ( empty ( $user ) )
 // If viewing different user then yourself...
 if ( $login != $user ) {
   if ( $allow_view_other != 'Y' ) {
-    echo "<error>" . translate("Not authorized") . "</error>\n";
-    echo "</events>\n";
+    $out .= "<error>" . translate("Not authorized") . "</error>\n";
+    $out .= "</events>\n";
     exit;
   }
-  echo "<!-- Allowing user to view other user's calendar -->\n";
+  //$out .= "<!-- Allowing user to view other user's calendar -->\n";
 }
+
+$startdate = getValue ( 'startdate' );
+$enddate = getValue ( 'enddate' );
 
 if ( empty ( $startdate ) )
   $startdate = date ( "Ymd" );
@@ -84,23 +94,30 @@ $repeated_events = query_events ( $user, true,
   "webcal_entry_repeats.cal_end IS NULL) " );
 
 // Read non-repeating events (for all users)
-if ( $debug )
-  echo "Checking for events for $user from date $startdate to date $enddate\n";
+if ( $WS_DEBUG )
+  $out .= "<!-- Checking for events for $user from date $startdate to date $enddate -->\n";
 $events = read_events ( $user, $startdate, $enddate );
-if ( $debug )
-  echo "Found " . count ( $events ) . " events in time range.\n";
+if ( $WS_DEBUG )
+  $out .= "<!-- Found " . count ( $events ) . " events in time range. -->\n";
 
 
 
 function escapeXml ( $str )
 {
+  $str = str_replace ( "\r\n", "\\n", $str );
+  $str = str_replace ( "\n", "\\n", $str );
+  $str = str_replace ( '<br/>', "\\n", $str );
+  $str = str_replace ( '<br />', "\\n", $str );
+  $str = str_replace ( '&amp;', '&', $str );
+  $str = str_replace ( '&', '&amp;', $str );
   return ( str_replace ( "<", "&lt;", str_replace ( ">", "&gt;", $str ) ) );
 }
 
 // Send a single event
 function print_event_xml ( $id, $event_date ) {
-  global $site_extras, $debug,
-    $server_url, $application_name;
+  global $site_extras, $WS_DEBUG, $out,
+    $server_url, $application_name, $single_user, $single_user_login,
+    $disable_priority_field, $disable_participants_field ;
 
   $pri[1] = translate("Low");
   $pri[2] = translate("Medium");
@@ -138,8 +155,8 @@ function print_event_xml ( $id, $event_date ) {
   }
 
   if ( ! $num_participants && ! $num_ext_participants ) {
-    if ( $debug )
-      echo "No participants found for event id: $id\n";
+    if ( $WS_DEBUG )
+      $out .= "<!-- No participants found for event id: $id -->\n";
     return;
   }
 
@@ -150,13 +167,13 @@ function print_event_xml ( $id, $event_date ) {
     "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
     "cal_name, cal_description FROM webcal_entry WHERE cal_id = $id" );
   if ( ! $res ) {
-    echo "Db error: could not find event id $id.\n";
+    $out .= "Db error: could not find event id $id.\n";
     return;
   }
 
 
   if ( ! ( $row = dbi_fetch_row ( $res ) ) ) {
-    echo "Error: could not find event id $id in database.\n";
+    $out .= "Error: could not find event id $id in database.\n";
     return;
   }
 
@@ -164,82 +181,83 @@ function print_event_xml ( $id, $event_date ) {
   $name = $row[9];
   $description = $row[10];
 
-  echo "<event>\n";
-  echo "  <id>$id</id>\n";
-  echo "  <name>" . escapeXml ( $name ) . "</name>\n";
+  $out .= "<event>\n";
+  $out .= "  <id>$id</id>\n";
+  $out .= "  <name>" . escapeXml ( $name ) . "</name>\n";
   if ( ! empty ( $server_url ) ) {
     if ( substr ( $server_url, -1, 1 ) == "/" ) {
-      echo "  <url>" .  $server_url . "view_entry.php?id=" . $id . "</url>\n";
+      $out .= "  <url>" .  $server_url . "view_entry.php?id=" . $id . "</url>\n";
     } else {
-      echo "  <url>" .  $server_url . "/view_entry.php?id=" . $id . "</url>\n";
+      $out .= "  <url>" .  $server_url . "/view_entry.php?id=" . $id . "</url>\n";
     }
   }
-  echo "  <description>" . escapeXml ( $description ) . "</description>\n";
-  echo "  <dateFormatted>" . date_to_str ( $event_date ) . "</dateFormatted>\n";
-  echo "  <date>" . $event_date . "</date>\n";
+  $out .= "  <description>" . escapeXml ( $description ) . "</description>\n";
+  $out .= "  <dateFormatted>" . date_to_str ( $event_date ) . "</dateFormatted>\n";
+  $out .= "  <date>" . $event_date . "</date>\n";
   if ( $row[2] >= 0 ) {
-    echo "  <time>" . sprintf ( "%04d", $row[2] / 100 ) . "</time>\n";
-    echo "  <timeFormatted>" . display_time ( $row[2] ) . "</timeFormatted>\n";
+    $out .= "  <time>" . sprintf ( "%04d", $row[2] / 100 ) . "</time>\n";
+    $out .= "  <timeFormatted>" . display_time ( $row[2] ) . "</timeFormatted>\n";
   }
   if ( $row[5] > 0 )
-    echo "  <duration>" . $row[5] . "</duration>\n";
-  if ( ! $disable_priority_field )
-    echo "  <priority>" . $pri[$row[6]] . "</priority>\n";
-  if ( ! $disable_access_field )
-    echo "  <access>" . 
+    $out .= "  <duration>" . $row[5] . "</duration>\n";
+  if ( ! empty ( $disable_priority_field ) && $disable_priority_field == 'Y' )
+    $out .= "  <priority>" . $pri[$row[6]] . "</priority>\n";
+  if ( ! empty ( $disable_access_field ) && $disable_access_field == 'Y' )
+    $out .= "  <access>" . 
       ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) .
       "</access>\n";
   if ( ! strlen ( $single_user_login ) )
-    echo "  <createdBy>" . $row[0] . "</createdBy>\n";
-  echo "  <updateDate>" . date_to_str ( $row[3] ) . "</updateDate>\n";
-  echo "  <updateTime>" . display_time ( $row[4] ) . "</updateTime>\n";
+    $out .= "  <createdBy>" . $row[0] . "</createdBy>\n";
+  $out .= "  <updateDate>" . date_to_str ( $row[3] ) . "</updateDate>\n";
+  $out .= "  <updateTime>" . display_time ( $row[4] ) . "</updateTime>\n";
 
   // site extra fields
   $extras = get_site_extra_fields ( $id );
-  echo "  <siteExtras>\n";
+  $se = '';
   for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     $extra_name = $site_extras[$i][0];
     $extra_descr = $site_extras[$i][1];
     $extra_type = $site_extras[$i][2];
-    if ( $extras[$extra_name]['cal_name'] != "" ) {
+    if ( ! empty ( $extras[$extra_name]['cal_name'] ) ) {
       $tag = preg_replace ( "/[^A-Za-z0-9]+/", "", translate ( $extra_descr ) );
       $tag = strtolower ( $tag );
       $tagname = str_replace ( '"', '', $extra_name );
-      echo "    <siteExtra>\n";
-      echo "      <number>$i</number>\n";
-      echo "      <name>" . escapeXml ( $extra_name ) . "</name>\n";
-      echo "      <description>" . escapeXml ( $extra_descr ) . "</description>\n";
-      echo "      <type>" . $extra_type . "</type>\n";
-      echo "      <value>";
+      $se .= "    <siteExtra>\n";
+      $se .= "      <number>$i</number>\n";
+      $se .= "      <name>" . escapeXml ( $extra_name ) . "</name>\n";
+      $se .= "      <description>" . escapeXml ( $extra_descr ) . "</description>\n";
+      $se .= "      <type>" . $extra_type . "</type>\n";
+      $se .= "      <value>";
       if ( $extra_type == EXTRA_DATE ) {
-        //echo date_to_str ( $extras[$extra_name]['cal_date'] );
-        echo $extras[$extra_name]['cal_date'];
+        //$se .= date_to_str ( $extras[$extra_name]['cal_date'] );
+        $se .= $extras[$extra_name]['cal_date'];
       } else if ( $extra_type == EXTRA_MULTILINETEXT ) {
-        echo escapeXml ( $extras[$extra_name]['cal_data'] );
+        $se .= escapeXml ( $extras[$extra_name]['cal_data'] );
       } else if ( $extra_type == EXTRA_REMINDER ) {
-        echo ( $extras[$extra_name]['cal_remind'] > 0 ?
+        $se .= ( $extras[$extra_name]['cal_remind'] > 0 ?
           translate("Yes") : translate("No") );
       } else {
         // default method for EXTRA_URL, EXTRA_TEXT, etc...
-        echo escapeXml ( $extras[$extra_name]['cal_data'] );
+        $se .= escapeXml ( $extras[$extra_name]['cal_data'] );
       }
-      echo "</value>\n    </siteExtra>\n";
+      $se .= "</value>\n    </siteExtra>\n";
     }
   }
-  echo "  </siteExtras>\n";
+  if ( $se != '' )
+    $out .= "  <siteExtras>\n" . $se . "  </siteExtras>\n";
   if ( $single_user != "Y" && ! $disable_participants_field ) {
-    echo "  <participants>\n";
+    $out .= "  <participants>\n";
     for ( $i = 0; $i < count ( $participants ); $i++ ) {
-      echo "    <participant>" .  $participants[$i] .
+      $out .= "    <participant>" .  $participants[$i] .
         "</participant>\n";
     }
     for ( $i = 0; $i < count ( $ext_participants ); $i++ ) {
-      echo "    <participant>" . $ext_participants[$i] .
+      $out .= "    <participant>" . $ext_participants[$i] .
         "</participant>\n";
     }
-    echo "  </participants>\n";
+    $out .= "  </participants>\n";
   }
-  echo "</event>\n";
+  $out .= "</event>\n";
 }
 
 
@@ -248,18 +266,18 @@ function print_event_xml ( $id, $event_date ) {
 // a reminder, when it needs to be sent and when the last time it
 // was sent.
 function process_event ( $id, $name, $event_date, $event_time ) {
-  global $debug;
+  global $WS_DEBUG;
 
-  if ( $debug )
-    printf ( "Event %d: \"%s\" at %s on %s \n",
+  if ( $WS_DEBUG )
+    printf ( "<!-- Event %d: \"%s\" at %s on %s --> \n",
       $id, $name, $event_time, $event_date );
 
   print_event_xml ( $id, $event_date );
 }
 
 
-echo "<!-- events for user \"$user\", login \"$login\" -->\n";
-echo "<!-- date range: $startdate - $enddate -->\n";
+//$out .= "<!-- events for user \"$user\", login \"$login\" -->\n";
+//$out .= "<!-- date range: $startdate - $enddate -->\n";
 
 $startyear = substr ( $startdate, 0, 4 );
 $startmonth = substr ( $startdate, 4, 2 );
@@ -274,7 +292,7 @@ $endtime = mktime ( 0, 0, 0, $endmonth, $endday, $endyear );
 for ( $d = $starttime; $d <= $endtime; $d += ONE_DAY ) {
   $completed_ids = array ();
   $date = date ( "Ymd", $d );
-  //echo "Date: $date\n";
+  //$out .= "Date: $date\n";
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.
   $ev = get_entries ( $user, $date );
@@ -297,9 +315,18 @@ for ( $d = $starttime; $d <= $endtime; $d += ONE_DAY ) {
   }
 }
 
-echo "</events>\n";
+$out .= "</events>";
 
-if ( $debug )
-  echo "Done.\n";
+// If web servic debugging is on...
+if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG ) {
+  $fd = fopen ( "/tmp/webcal-ws.log", "a+", true );
+  fwrite ( $fd, "\n*****************************************\n" );
+  fwrite ( $fd, date ( "Y-m-d H:i:s" )  );
+  fwrite ( $fd, "\n" . $out . "\n\n" );
+  fclose ( $fd );
+}
+
+// Send output now...
+echo $out;
 
 ?>
