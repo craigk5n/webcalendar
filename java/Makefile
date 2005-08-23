@@ -14,8 +14,7 @@ PACKAGEDIR = us/k5n/webcalendar
 	$(JCC) -classpath . $*.java
 
 # START CLASSLIST
-CLASSLIST = \
-$(PACKAGEDIR)/Event.class $(PACKAGEDIR)/EventDisplayer.class $(PACKAGEDIR)/EventList.class $(PACKAGEDIR)/EventLoader.class $(PACKAGEDIR)/Login.class $(PACKAGEDIR)/LoginSession.class $(PACKAGEDIR)/MessageDisplayer.class $(PACKAGEDIR)/Reminder.class $(PACKAGEDIR)/ReminderDisplayer.class $(PACKAGEDIR)/ReminderList.class $(PACKAGEDIR)/ReminderLoader.class $(PACKAGEDIR)/ShowReminder.class $(PACKAGEDIR)/ui/ReminderApp.class $(PACKAGEDIR)/ui/SampleApp.class $(PACKAGEDIR)/Utils.class $(PACKAGEDIR)/WebCalendarClient.class $(PACKAGEDIR)/WebCalendarErrorException.class $(PACKAGEDIR)/WebCalendarParseException.class 
+CLASSLIST = $(PACKAGEDIR)/Event.class $(PACKAGEDIR)/EventDisplayer.class $(PACKAGEDIR)/EventList.class $(PACKAGEDIR)/EventLoader.class $(PACKAGEDIR)/Login.class $(PACKAGEDIR)/LoginSession.class $(PACKAGEDIR)/MessageDisplayer.class $(PACKAGEDIR)/Reminder.class $(PACKAGEDIR)/ReminderDisplayer.class $(PACKAGEDIR)/ReminderList.class $(PACKAGEDIR)/ReminderLoader.class $(PACKAGEDIR)/ShowReminder.class $(PACKAGEDIR)/Utils.class $(PACKAGEDIR)/WebCalendarClient.class $(PACKAGEDIR)/WebCalendarErrorException.class $(PACKAGEDIR)/WebCalendarParseException.class $(PACKAGEDIR)/ui/ReminderApp.class $(PACKAGEDIR)/ui/SampleApp.class $(PACKAGEDIR)/ui/ControlPanel.class 
 # END CLASSLIST
 
 all: webcalendar.jar
