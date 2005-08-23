@@ -44,6 +44,8 @@ $basedir = ".."; // points to the base WebCalendar directory relative to
 $includedir = "../includes";
 
 require_once "$includedir/classes/WebCalendar.class";
+require_once "$includedir/classes/Event.class";
+require_once "$includedir/classes/RptEvent.class";
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
@@ -119,20 +121,23 @@ if ( $debug )
   echo "Found " . count ( $events ) . " events in time range.\n";
 
 
-function indent ( $str ) {
-  return "  " . str_replace ( "\n", "\n  ", $str );
-}
-
-
 function escapeXml ( $str )
 {
+  $str = str_replace ( "\r\n", "\\n", $str );
+  $str = str_replace ( "\n", "\\n", $str );
+  $str = str_replace ( '<br/>', "\\n", $str );
+  $str = str_replace ( '<br />', "\\n", $str );
+  $str = str_replace ( '&amp;', '&', $str );
+  $str = str_replace ( '&', '&amp;', $str );
   return ( str_replace ( "<", "&lt;", str_replace ( ">", "&gt;", $str ) ) );
 }
 
 // Send a reminder for a single event for a single day.
 function list_reminder ( $id, $event_date, $remind_time ) {
   global $site_extras, $debug,
-    $server_url, $application_name;
+    $server_url, $application_name, $single_user, $single_user_login,
+    $disable_priority_field, $disable_access_field,
+    $disable_participants_field;
 
   $pri[1] = translate("Low");
   $pri[2] = translate("Medium");
@@ -219,13 +224,13 @@ function list_reminder ( $id, $event_date, $remind_time ) {
   }
   if ( $row[5] > 0 )
     echo "  <duration>" . $row[5] . "</duration>\n";
-  if ( ! $disable_priority_field )
+  if ( ! empty ( $disable_priority_field ) && $disable_priority_field == 'Y' )
     echo "  <priority>" . $pri[$row[6]] . "</priority>\n";
-  if ( ! $disable_access_field )
+  if ( ! empty ( $disable_access_field ) && $disable_access_field == 'Y' )
     echo "  <access>" . 
       ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) .
       "</access>\n";
-  if ( ! strlen ( $single_user_login ) )
+  if ( empty ( $single_user_login ) )
     echo "  <createdBy>" . $row[0] . "</createdBy>\n";
   echo "  <updateDate>" . date_to_str ( $row[3] ) . "</updateDate>\n";
   echo "  <updateTime>" . display_time ( $row[4] ) . "</updateTime>\n";
@@ -263,7 +268,8 @@ function list_reminder ( $id, $event_date, $remind_time ) {
     }
   }
   echo "  </siteExtras>\n";
-  if ( $single_user != "Y" && ! $disable_participants_field ) {
+  if ( $single_user != "Y" && ( empty ( $disable_participants_field ) ||
+    $disable_participants_field != 'Y' ) ) {
     echo "  <participants>\n";
     for ( $i = 0; $i < count ( $participants ); $i++ ) {
       echo "    <participant>" .  $participants[$i] .
