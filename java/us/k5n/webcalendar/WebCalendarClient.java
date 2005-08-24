@@ -25,7 +25,11 @@ public class WebCalendarClient implements MessageDisplayer {
   private MessageDisplayer messageDisplayer = null;
   private String loginCookieName = null;
   private String loginCookieValue = null;
-  private boolean isAdmin = false;
+  private String calendarName = "WebCalendar";
+  private String appName = "WebCalendar (Unknown Version)";
+  private String appVersion = "Unknown Version";
+  private String appDate = "Unknown Date";
+  private boolean isAdmin = false; // is admin user?
   private boolean debugEnabled = true;
   private final static String LOGIN_REQUEST = "ws/login.php";
   private final static String EVENTS_REQUEST = "ws/get_events.php";
@@ -182,9 +186,18 @@ public class WebCalendarClient implements MessageDisplayer {
         } else if ( "cookieValue".equals ( n.getNodeName() ) ) {
           loginCookieValue = Utils.xmlNodeGetValue ( n );
         } else if ( "admin".equals ( n.getNodeName() ) ) {
-          String val = Utils.xmlNodeGetValue ( n );
-          if ( val != null && val.equals ( "1" ) )
+          String adminStr = Utils.xmlNodeGetValue ( n );
+          if ( adminStr.equals ( "1" ) || adminStr.startsWith ( "Y" ) ||
+            adminStr.startsWith ( "y" ) )
             isAdmin = true;
+        } else if ( "calendarName".equals ( n.getNodeName() ) ) {
+          calendarName = Utils.xmlNodeGetValue ( n );
+        } else if ( "appName".equals ( n.getNodeName() ) ) {
+          appName = Utils.xmlNodeGetValue ( n );
+        } else if ( "appVersion".equals ( n.getNodeName() ) ) {
+          appVersion = Utils.xmlNodeGetValue ( n );
+        } else if ( "appDate".equals ( n.getNodeName() ) ) {
+          appDate = Utils.xmlNodeGetValue ( n );
         } else {
           System.err.println ( "Not sure what to do with <" +
             n.getNodeName() + "> tag (expecting <cookieName>... ignoring)" );
@@ -223,6 +236,46 @@ public class WebCalendarClient implements MessageDisplayer {
       debug ( "no web authentication (yet)" );
     }
     return urlc;
+  }
+
+  /**
+    * Is the current user an admin user?
+    *
+  public boolean isAdmin ()
+  {
+    return admin;
+  }
+
+  /**
+    * Return the server's calendar name.
+    */
+  public String getCalendarName ()
+  {
+    return calendarName;
+  }
+
+  /**
+    * Return the server's WebCalendar name.
+    */
+  public String getServerName ()
+  {
+    return appName;
+  }
+
+  /**
+    * Return the server's WebCalendar version.
+    */
+  public String getServerVersion ()
+  {
+    return appVersion;
+  }
+
+  /**
+    * Return the server's WebCalendar version date.
+    */
+  public String getServerVersionDate ()
+  {
+    return appDate;
   }
 
   /**
