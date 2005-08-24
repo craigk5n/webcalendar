@@ -22,6 +22,7 @@ import org.w3c.dom.*;
 public class LoginSession extends Vector {
   String cookieName = null;
   String cookieValue = null;
+  boolean admin = false;
   Document document; // XML DOM object
 
   /**
@@ -77,6 +78,11 @@ public class LoginSession extends Vector {
           cookieName = Utils.xmlNodeGetValue ( n );
         } else if ( "cookieValue".equals ( n.getNodeName() ) ) {
           cookieValue = Utils.xmlNodeGetValue ( n );
+        } else if ( "admin".equals ( n.getNodeName() ) ) {
+          String adminStr = Utils.xmlNodeGetValue ( n );
+          if ( adminStr.startsWith ( "1" ) || adminStr.startsWith ( "Y" ) ||
+            adminStr.startsWith ( "y" ) )
+            admin = true;
         } else {
           System.err.println ( "Not sure what to do with <" +
             n.getNodeName() + "> tag (expecting <cookieName>... ignoring)" );
