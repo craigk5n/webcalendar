@@ -54,7 +54,7 @@ class WebCalendar {
     '/^(nulogin|login|freebusy|publish|register|rss|upcoming|week_ssi)\.php$/' =>
       array(array('Config', 'PHPDBI', 'Functions'),
             array('User', 'Connect')),
-    '/^(icalclient|get_reminders|get_events)\.php$/' =>
+    '/^(icalclient|get_reminders|get_events|ws)\.php$/' =>
       array(array('Config', 'PHPDBI', 'Functions'),
             array('User', 'Validate', 'Connect', 'SiteExtras')),
     '/^convert_passwords\.php$/' => array(array('Config', 'PHPDBI'),
