@@ -47,6 +47,7 @@ public class EventList extends Vector {
       if ( sxe.getException() != null )
         x = sxe.getException ();
       x.printStackTrace ();
+      System.err.println ( "XML:\n" + xmlContent + "\n[end xml]" );
       throw new WebCalendarParseException (
         "Error parsing XML from WebCalendar server: " + x.toString() );
     } catch ( IOException ioe ) {
