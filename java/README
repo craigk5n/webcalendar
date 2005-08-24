@@ -1,7 +1,12 @@
-WebCalendar Web Services - version 0.1
+README - WebCalendar Web Services & Java Client - version 0.2
+$Id$
+
 ------------------------------------------------------------------------------
 
-What this package contains:
+Note: The web services files are not a standard part of WebCalendar
+  and can be found in the "ws" directory or your WebCalendar install.
+
+WebCalendar Web Services:
 - Propietary Web Services written in PHP (that are not SOAP or
   XML-RPC)
   + login.php
@@ -17,6 +22,7 @@ What this package contains:
   + SampleApp: displays events (read-only) for a week or day, allows user to
     navigate next/previous.
   + ReminderApp: displays reminders in a popup at the appropriate time
+  + ControlPanel: under development... not much there yet.
   + more to come soon.... ?
 
 Java 1.4 is required since the org.w3c.dom package is used to parse
@@ -53,9 +59,9 @@ this app is not running.
 ------------------------------------------------------------------------------
 				INSTALLATION
 
-The .php files should be installed in a "ws" subdirectory of your
-main WebCalendar directory on the server.  If you obtained your WebCalendar
-code from CVS, then it is already there.
+First, make sure you version of WebCalendar has the "ws" subdirectory.
+Version 1.0 or later should include these.  If you don't have these, you
+will need to upgrade your WebCalendar installation.
 
 Users should install the webcalendar.jar file locally and run it as
 follows (for the ReminderApp, for SampleApp, just replace "ReminderApp"
