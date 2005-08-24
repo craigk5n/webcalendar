@@ -139,6 +139,7 @@ public class Event {
   /**
     * Create a multiline String representation of this event.
     * This will include the event name, date and time.
+    * The description will convert HTML breaks into new lines.
     */
   public String toString()
   {
@@ -150,7 +151,9 @@ public class Event {
     if ( description != null && 
       ( name == null || ! name.equals ( description ) ) ) {
       sb.append ( "Description: " );
-      sb.append ( description );
+      String s = description.replaceAll ( "<br/>", "\n    " );
+      s = s.replaceAll ( "\\n", "\n    " );
+      sb.append ( s );
       sb.append ( "\n" );
     }
     if ( dateFormatted != null ) {
