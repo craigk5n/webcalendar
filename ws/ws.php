@@ -31,6 +31,7 @@ function ws_init ( )
 
   include_once "$includedir/config.php";
   include_once "$includedir/php-dbi.php";
+  include_once "$includedir/access.php";
   include_once "$includedir/functions.php";
 
   $WebCalendar->initializeFirstPhase();
