@@ -89,5 +89,15 @@ based on the -user argument.)
 The license for this code is the same GPL license used by WebCalendar.
 
 ------------------------------------------------------------------------------
+				COMPILING
+
+You don't need to compile the java source code unless you want to make
+some changes.  The code is already compiled into the webcalendar.jar file.
+
+If you do want to compile, a makefile is provided.  If you have Windows,
+you can use cygwin to get a copy of make, or you can just invoke javac
+from the command line to build all the source.
+
+------------------------------------------------------------------------------
 Craig Knudsen
 cknudsen@cknudsen.com
