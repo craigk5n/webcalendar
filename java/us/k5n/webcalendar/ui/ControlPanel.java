@@ -35,6 +35,9 @@ public class ControlPanel
   JLabel dateRange = null;
   JLabel statusMessage = null;
   Calendar startDate = null, endDate = null;
+  // User tab
+  JPanel userTab = null;
+  JList userTabUserList = null;
 
   /**
     * Show a reminder on the screen.
@@ -146,8 +149,10 @@ public class ControlPanel
 
     JTabbedPane tabs = new JTabbedPane ();
     mainPanel.add ( tabs, BorderLayout.CENTER );
+    userTab = createUserTab ();
+    tabs.addTab ( "Users", userTab );
+    tabs.addTab ( "Groups", new JPanel () );
     tabs.addTab ( "Settings", new JPanel () );
-    tabs.addTab ( "Users/Groups", new JPanel () );
     //tabs.addTab ( "Assistants", new JPanel () );
     tabs.addTab ( "NonUser Calendars", new JPanel () );
     tabs.addTab ( "Categories", new JPanel () );
@@ -168,6 +173,45 @@ public class ControlPanel
 
     toplevel.setSize ( width, height );
     toplevel.setVisible ( true );
+  }
+
+  // TODO - load users in another thread
+  JPanel createUserTab ()
+  {
+    JPanel ret;
+
+    ret = new JPanel ();
+
+    ret.setLayout ( new BorderLayout () );
+    JPanel cmdPanel = new JPanel ();
+    cmdPanel.setLayout ( new FlowLayout () );
+
+    JButton b = new JButton ( "Add..." );
+    b.setEnabled ( false );
+    cmdPanel.add ( b ); // TODO
+
+    b = new JButton ( "Edit" );
+    b.setEnabled ( false );
+    cmdPanel.add ( b ); // TODO
+
+    b = new JButton ( "Delete" );
+    b.setEnabled ( false );
+    cmdPanel.add ( b ); // TODO
+
+    ret.add ( cmdPanel, BorderLayout.SOUTH );
+
+    UserList list = null;
+    try {
+      String userText = client.query ( "ws/get_users.php" );
+      list = new UserList ( userText, "users" );
+    } catch ( Exception e ) {
+      System.err.println ( "Exception getting users: " + e );
+      e.printStackTrace ();
+    }
+    JList userTabUserList = new JList ( list );
+    ret.add ( userTabUserList, BorderLayout.CENTER );
+
+    return ret;
   }
 
   private void reloadEvents ()
