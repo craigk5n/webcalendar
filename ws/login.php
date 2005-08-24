@@ -45,6 +45,8 @@ if ( $single_user == "Y" ) {
   // There is no login page when using HTTP authorization
   $out .= "<error>No login required for HTTP authentication</error>\n";
 } else {
+  $login = getValue ( 'login' );
+  $password = getValue ( 'password' );
   if ( ! empty ( $login ) && ! empty ( $password ) ) {
     $login = trim ( $login );
     if ( user_valid_login ( $login, $password ) ) {
@@ -58,6 +60,16 @@ if ( $single_user == "Y" ) {
       $out .= "  <cookieValue>$encoded_login</cookieValue>\n";
       if ( $is_admin )
         $out .= "  <admin>1</admin>\n";
+      if ( empty ( $application_name ) )
+        $application_name = "WebCalendar";
+      $out .= "  <calendarName>" . htmlspecialchars ( $application_name ) .
+        "</calendarName>\n";
+      $out .= "  <appName>" .  htmlspecialchars ( $PROGRAM_NAME ) .
+        "</appName>\n";
+      $out .= "  <appVersion>" .  htmlspecialchars ( $PROGRAM_VERSION ) .
+        "</appVersion>\n";
+      $out .= "  <appDate>" .  htmlspecialchars ( $PROGRAM_DATE ) .
+        "</appDate>\n";
     } else {
       $out .= "  <error>Invalid login</error>\n";
     }
