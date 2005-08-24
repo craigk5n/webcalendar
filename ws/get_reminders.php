@@ -37,52 +37,29 @@ $DAYS_IN_ADVANCE = 30;
 // Show reminders for the next N days
 $CUTOFF = 7;
 
+$WS_DEBUG = false;
 
-// Load include files.
-$basedir = ".."; // points to the base WebCalendar directory relative to
-                 // current working directory
-$includedir = "../includes";
+require_once "ws.php";
 
-require_once "$includedir/classes/WebCalendar.class";
-require_once "$includedir/classes/Event.class";
-require_once "$includedir/classes/RptEvent.class";
-
-$WebCalendar =& new WebCalendar ( __FILE__ );
-
-include "$includedir/config.php";
-include "$includedir/php-dbi.php";
-include "$includedir/functions.php";
-
-$WebCalendar->initializeFirstPhase();
-
-include "$includedir/$user_inc";
-include "$includedir/validate.php";
-include "$includedir/site_extras.php";
-include "$includedir/translate.php";
-
-$WebCalendar->initializeSecondPhase();
-
-load_global_settings ();
-load_user_preferences ();
-
-$WebCalendar->setLanguage();
-
-$debug = false; // set to true to print debug info...
+// Initialize...
+ws_init ();
 
 Header ( "Content-type: text/xml" );
 //Header ( "Content-type: text/plain" );
 
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-echo "<reminders>\n";
+
+$out = "<reminders>\n";
 
 // If login is public user, make sure public can view others...
 if ( $login == "__public__" && $login != $user ) {
   if ( $public_access_others != 'Y' ) {
-    echo "<error>" . translate("Not authorized") . "</error>\n";
-    echo "</reminders>\n";
+    $out .= "<error>" . translate("Not authorized") . "</error>\n";
+    $out .= "</reminders>\n";
+    echo $out;
     exit;
   }
-  echo "<!-- Allowing public user to view other user's calendar -->\n";
+  $out .= "<!-- Allowing public user to view other user's calendar -->\n";
 }
 
 if ( empty ( $user ) )
@@ -91,16 +68,17 @@ if ( empty ( $user ) )
 // If viewing different user then yourself...
 if ( $login != $user ) {
   if ( $allow_view_other != 'Y' ) {
-    echo "<error>" . translate("Not authorized") . "</error>\n";
-    echo "</reminders>\n";
+    $out .= "<error>" . translate("Not authorized") . "</error>\n";
+    $out .= "</reminders>\n";
+    echo $out;
     exit;
   }
-  echo "<!-- Allowing user to view other user's calendar -->\n";
+  $out .= "<!-- Allowing user to view other user's calendar -->\n";
 }
 
 // Make sure this user has enabled email reminders.
 //if ( $EMAIL_REMINDER == 'N' ) {
-//  echo "Error: email reminders disabled for user \"$user\"\n";
+//  $out .= "Error: email reminders disabled for user \"$user\"\n";
 //  dbi_close ( $c );
 //  exit;
 //}
@@ -114,176 +92,28 @@ $repeated_events = query_events ( $user, true,
   "webcal_entry_repeats.cal_end IS NULL) " );
 
 // Read non-repeating events
-if ( $debug )
-  echo "Checking for events for $user from date $startdate to date $enddate\n";
 $events = read_events ( $user, $startdate, $enddate );
-if ( $debug )
-  echo "Found " . count ( $events ) . " events in time range.\n";
+if ( $WS_DEBUG )
+  ws_log_message ( "Found " . count ( $events ) . " events in time range." );
 
 
-function escapeXml ( $str )
-{
-  $str = str_replace ( "\r\n", "\\n", $str );
-  $str = str_replace ( "\n", "\\n", $str );
-  $str = str_replace ( '<br/>', "\\n", $str );
-  $str = str_replace ( '<br />', "\\n", $str );
-  $str = str_replace ( '&amp;', '&', $str );
-  $str = str_replace ( '&', '&amp;', $str );
-  return ( str_replace ( "<", "&lt;", str_replace ( ">", "&gt;", $str ) ) );
-}
 
 // Send a reminder for a single event for a single day.
-function list_reminder ( $id, $event_date, $remind_time ) {
-  global $site_extras, $debug,
+function process_reminder ( $id, $event_date, $remind_time ) {
+  global $site_extras, $WS_DEBUG,
     $server_url, $application_name, $single_user, $single_user_login,
     $disable_priority_field, $disable_access_field,
     $disable_participants_field;
 
-  $pri[1] = translate("Low");
-  $pri[2] = translate("Medium");
-  $pri[3] = translate("High");
+  $out = "<reminder>\n";
 
-  // get participants first...
- 
-  $sql = "SELECT cal_login FROM webcal_entry_user " .
-    "WHERE cal_id = $id AND cal_status IN ('A','W') " .
-    "ORDER BY cal_login";
-  $res = dbi_query ( $sql );
-  $participants = array ();
-  $num_participants = 0;
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $participants[$num_participants++] = $row[0];
-    }
-  }
+  $out .= "  <remindDate>" . date ( "Ymd", $remind_time ) . "</remindDate>\n";
+  $out .= "  <remindTime>" . date ( "Hi", $remind_time ) . "</remindTime>\n";
+  $out .= "  <untilRemind>" . ( $remind_time - time() ) . "</untilRemind>\n";
+  $out .= ws_print_event_xml ( $id, $event_date );
 
-  // get external participants
-  $ext_participants = array ();
-  $num_ext_participants = 0;
-  if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" &&
-    ! empty ( $external_reminders ) && $external_reminders == "Y" ) {
-    $sql = "SELECT cal_fullname, cal_email FROM webcal_entry_ext_user " .
-      "WHERE cal_id = $id AND cal_email IS NOT NULL " .
-      "ORDER BY cal_fullname";
-    $res = dbi_query ( $sql );
-    if ( $res ) {
-      while ( $row = dbi_fetch_row ( $res ) ) {
-        $ext_participants[$num_ext_participants] = $row[0];
-        $ext_participants_email[$num_ext_participants++] = $row[1];
-      }
-    }
-  }
-
-  if ( ! $num_participants && ! $num_ext_participants ) {
-    if ( $debug )
-      echo "No participants found for event id: $id\n";
-    return;
-  }
-
-
-  // get event details
-  $res = dbi_query (
-    "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
-    "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-    "cal_name, cal_description FROM webcal_entry WHERE cal_id = $id" );
-  if ( ! $res ) {
-    echo "Db error: could not find event id $id.\n";
-    return;
-  }
-
-
-  if ( ! ( $row = dbi_fetch_row ( $res ) ) ) {
-    echo "Error: could not find event id $id in database.\n";
-    return;
-  }
-
-  $create_by = $row[0];
-  $name = $row[9];
-  $description = $row[10];
-
-  echo "<reminder>\n";
-  echo "  <remindDate>" . date ( "Ymd", $remind_time ) . "</remindDate>\n";
-  echo "  <remindTime>" . date ( "Hi", $remind_time ) . "</remindTime>\n";
-  echo "  <untilRemind>" . ( $remind_time - time() ) . "</untilRemind>\n";
-  echo "  <event>\n";
-  echo "  <id>$id</id>\n";
-  echo "  <name>" . escapeXml ( $name ) . "</name>\n";
-  if ( ! empty ( $server_url ) ) {
-    if ( substr ( $server_url, -1, 1 ) == "/" ) {
-      echo "  <url>" .  $server_url . "view_entry.php?id=" . $id . "</url>\n";
-    } else {
-      echo "  <url>" .  $server_url . "/view_entry.php?id=" . $id . "</url>\n";
-    }
-  }
-  echo "  <description>" . escapeXml ( $description ) . "</description>\n";
-  echo "  <dateFormatted>" . date_to_str ( $event_date ) . "</dateFormatted>\n";
-  echo "  <date>" . $event_date . "</date>\n";
-  if ( $row[2] >= 0 ) {
-    echo "  <time>" . sprintf ( "%04d", $row[2] / 100 ) . "</time>\n";
-    echo "  <timeFormatted>" . display_time ( $row[2] ) . "</timeFormatted>\n";
-  }
-  if ( $row[5] > 0 )
-    echo "  <duration>" . $row[5] . "</duration>\n";
-  if ( ! empty ( $disable_priority_field ) && $disable_priority_field == 'Y' )
-    echo "  <priority>" . $pri[$row[6]] . "</priority>\n";
-  if ( ! empty ( $disable_access_field ) && $disable_access_field == 'Y' )
-    echo "  <access>" . 
-      ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) .
-      "</access>\n";
-  if ( empty ( $single_user_login ) )
-    echo "  <createdBy>" . $row[0] . "</createdBy>\n";
-  echo "  <updateDate>" . date_to_str ( $row[3] ) . "</updateDate>\n";
-  echo "  <updateTime>" . display_time ( $row[4] ) . "</updateTime>\n";
-
-  // site extra fields
-  $extras = get_site_extra_fields ( $id );
-  echo "  <siteExtras>\n";
-  for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
-    $extra_name = $site_extras[$i][0];
-    $extra_descr = $site_extras[$i][1];
-    $extra_type = $site_extras[$i][2];
-    if ( $extras[$extra_name]['cal_name'] != "" ) {
-      $tag = preg_replace ( "/[^A-Za-z0-9]+/", "", translate ( $extra_descr ) );
-      $tag = strtolower ( $tag );
-      $tagname = str_replace ( '"', '', $extra_name );
-      echo "    <siteExtra>\n";
-      echo "      <number>$i</number>\n";
-      echo "      <name>" . escapeXml ( $extra_name ) . "</name>\n";
-      echo "      <description>" . escapeXml ( $extra_descr ) . "</description>\n";
-      echo "      <type>" . $extra_type . "</type>\n";
-      echo "      <value>";
-      if ( $extra_type == EXTRA_DATE ) {
-        //echo date_to_str ( $extras[$extra_name]['cal_date'] );
-        echo $extras[$extra_name]['cal_date'];
-      } else if ( $extra_type == EXTRA_MULTILINETEXT ) {
-        echo escapeXml ( $extras[$extra_name]['cal_data'] );
-      } else if ( $extra_type == EXTRA_REMINDER ) {
-        echo ( $extras[$extra_name]['cal_remind'] > 0 ?
-          translate("Yes") : translate("No") );
-      } else {
-        // default method for EXTRA_URL, EXTRA_TEXT, etc...
-        echo escapeXml ( $extras[$extra_name]['cal_data'] );
-      }
-      echo "</value>\n    </siteExtra>\n";
-    }
-  }
-  echo "  </siteExtras>\n";
-  if ( $single_user != "Y" && ( empty ( $disable_participants_field ) ||
-    $disable_participants_field != 'Y' ) ) {
-    echo "  <participants>\n";
-    for ( $i = 0; $i < count ( $participants ); $i++ ) {
-      echo "    <participant>" .  $participants[$i] .
-        "</participant>\n";
-    }
-    for ( $i = 0; $i < count ( $ext_participants ); $i++ ) {
-      echo "    <participant>" . $ext_participants[$i] .
-        "</participant>\n";
-    }
-    echo "  </participants>\n";
-  }
-  echo "  </event>\n";
-  echo "</reminder>\n";
-
+  $out .= "</reminder>\n";
+  return $out;
 }
 
 
@@ -292,12 +122,13 @@ function list_reminder ( $id, $event_date, $remind_time ) {
 // a reminder, when it needs to be sent and when the last time it
 // was sent.
 function process_event ( $id, $name, $event_date, $event_time ) {
-  global $site_extras, $debug;
-  global $CUTOFF;
+  global $site_extras;
+  global $CUTOFF, $WS_DEBUG;
+  $out = '';
+  $debug = '';
 
-  if ( $debug )
-    printf ( "Event %d: \"%s\" at %s on %s \n",
-      $id, $name, $event_time, $event_date );
+  $debug .= "Event id=$id \"$name\" at $event_time on $event_date\n";
+  $debug .= "No site_extras: " . count ( $site_extras ) . "\n";
 
   // Check to see if this event has any reminders
   $extras = get_site_extra_fields ( $id );
@@ -306,12 +137,8 @@ function process_event ( $id, $name, $event_date, $event_time ) {
     $extra_type = $site_extras[$j][2];
     $extra_arg1 = $site_extras[$j][3];
     $extra_arg2 = $site_extras[$j][4];
-    //if ( $debug )
-    //  printf ( "  name: %s\n  type: %d\n  arg1: %s\n  arg2: %s\n",
-    //  $extra_name, $extra_type, $extra_arg1, $extra_arg2 );
     if ( ! empty ( $extras[$extra_name]['cal_remind'] ) ) {
-      if ( $debug )
-        echo "  Reminder set for event. \n";
+      $debug .= "  Reminder set for event.\n";
       // how many minutes before event should we send the reminder?
       $ev_h = (int) ( $event_time / 10000 );
       $ev_m = ( $event_time / 100 ) % 100;
@@ -332,24 +159,25 @@ function process_event ( $id, $name, $event_date, $event_time ) {
         $minsbefore = $extra_arg1;
         $remind_time = $event_time - ( $minsbefore * 60 );
       }
-      if ( $debug )
-        echo "  Mins Before: $minsbefore \n";
-      if ( $debug ) {
-        echo "  Event time is: " . date ( "m/d/Y H:i", $event_time ) . "\n";
-        echo "  Remind time is: " . date ( "m/d/Y H:i", $remind_time ) . "\n";
-      }
+      $debug .= "  Mins Before: $minsbefore\n";
+      $debug .= "  Event time is: " . date ( "m/d/Y H:i", $event_time ) . "\n";
+      $debug .= "  Remind time is: " . date ( "m/d/Y H:i", $remind_time ) . "\n";
       // Send a reminder
       if ( time() >= $remind_time - ( $CUTOFF * 24 * 3600 ) ) {
         if ( $debug )
-          echo "  SENDING REMINDER! \n";
-        list_reminder ( $id, $event_date, $remind_time );
+          $debug .= "  SENDING REMINDER! \n";
+        $out .= process_reminder ( $id, $event_date, $remind_time );
       }
     }
   }
+  if ( $WS_DEBUG )
+    ws_log_message ( $debug );
+
+  return $out;
 }
 
 
-echo "<!-- reminders for user \"$user\", login \"$login\" -->\n";
+$out .= "<!-- reminders for user \"$user\", login \"$login\" -->\n";
 
 $startdate = time(); // today
 for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
@@ -365,7 +193,8 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    process_event ( $id, $ev[$i]->getName(), $date, $ev[$i]->getTime() );
+    $out .= process_event ( $id, $ev[$i]->getName(), $date,
+      $ev[$i]->getTime() );
   }
   $rep = get_repeating_entries ( $user, $date );
   for ( $i = 0; $i < count ( $rep ); $i++ ) {
@@ -373,13 +202,19 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    process_event ( $id, $rep[$i]->getName(), $date, $rep[$i]->getTime() );
+    $out .= process_event ( $id, $rep[$i]->getName(), $date,
+      $rep[$i]->getTime() );
   }
 }
 
-echo "</reminders>\n";
+$out .= "</reminders>\n";
 
-if ( $debug )
-  echo "Done.\n";
+// If web service debugging is on...
+if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG ) {
+  ws_log_message ( $out );
+}
+
+// Send output now...
+echo $out;
 
 ?>
