@@ -39,6 +39,7 @@ $WebCalendar->initializeFirstPhase();
 
 include "includes/$user_inc";
 include 'includes/translate.php';
+include 'includes/site_extras.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -432,7 +433,7 @@ function generate_uid($id) {
 }
 
 function export_ical () {
-  global $publish_fullname, $user;
+  global $publish_fullname, $user, $PROGRAM_NAME;
   $res = get_events_for_publish ();
 
   $entry_array = array();
