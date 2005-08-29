@@ -2404,30 +2404,18 @@ function print_date_entries ( $date, $user, $ssi ) {
 
   // get all the non-repeating events for this date and store in $ev
   $ev = get_entries ( $user, $date, $get_unapproved );
+
+  // combine and sort the event arrays
+  $ev = array_merge($ev, $rep);
+  usort($ev, 'sort_events');
+
 //echo $date . "<br>";
 //print_r ($rep);
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    // print out any repeating events that are before this one...
-    while ( $cur_rep < count ( $rep ) &&
-      $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
-      if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-        print_entry ( $rep[$cur_rep], $date );
-        $cnt++;
-      }
-      $cur_rep++;
-    }
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
       print_entry ( $ev[$i], $date );
       $cnt++;
     }
-  }
-  // print out any remaining repeating events
-  while ( $cur_rep < count ( $rep ) ) {
-    if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-      print_entry ( $rep[$cur_rep], $date );
-      $cnt++;
-    }
-    $cur_rep++;
   }
   if ( $cnt == 0 )
     echo "&nbsp;"; // so the table cell has at least something
@@ -3074,6 +3062,11 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
 
   // Get static non-repeating events
   $ev = get_entries ( $user, $date, $get_unapproved, true, true );
+
+  // combine and sort the event arrays
+  $ev = array_merge($ev, $rep);
+  usort($ev, 'sort_events');
+
   $hour_arr = array ();
   $interval = ( 24 * 60 ) / $TIME_SLOTS;
   $first_slot = (int) ( ( ( $WORK_DAY_START_HOUR ) * 60 ) / $interval );
@@ -3082,30 +3075,11 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   $rowspan_arr = array ();
   $all_day = 0;
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    // print out any repeating events that are before this one...
-    while ( $cur_rep < count ( $rep ) &&
-      $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
-      if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-        if ( $rep[$cur_rep]->isAllDay() )
-          $all_day = 1;
-        html_for_event_day_at_a_glance ( $rep[$cur_rep], $date );
-      }
-      $cur_rep++;
-    }
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
       if ( $ev[$i]->isAllDay() )
         $all_day = 1;
       html_for_event_day_at_a_glance ( $ev[$i], $date );
     }
-  }
-  // print out any remaining repeating events
-  while ( $cur_rep < count ( $rep ) ) {
-    if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-      if ( $rep[$cur_rep]->isAllDay() )
-        $all_day = 1;
-      html_for_event_day_at_a_glance ( $rep[$cur_rep], $date );
-    }
-    $cur_rep++;
   }
 
   // squish events that use the same cell into the same cell.
@@ -3898,28 +3872,15 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   // get all the non-repeating events for this date and store in $ev
   $ev = get_entries ( $user, $date, $get_unapproved );
 
+  // combine and sort the event arrays
+  $ev = array_merge($ev, $rep);
+  usort($ev, 'sort_events');
+
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    // print out any repeating events that are before this one...
-    while ( $cur_rep < count ( $rep ) &&
-      $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
-      if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-        print_entry_timebar ( $rep[$cur_rep], $date );
-        $cnt++;
-      }
-      $cur_rep++;
-    }
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
       print_entry_timebar ( $ev[$i], $date );
       $cnt++;
     }
-  }
-  // print out any remaining repeating events
-  while ( $cur_rep < count ( $rep ) ) {
-    if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-      print_entry_timebar ( $rep[$cur_rep], $date );
-      $cnt++;
-    }
-    $cur_rep++;
   }
   if ( $cnt == 0 )
     echo "&nbsp;"; // so the table cell has at least something
@@ -5245,4 +5206,31 @@ function error_check ( $nextURL ) {
     print "<html><head></head><body onload=\"alert('" . translate("Changes successfully saved") . "'); window.parent.location.href='$nextURL';\"></body></html>";
   }
 }
+
+/**
+ * Sorts the combined event arrays by time then name
+ *
+ * <b>Note:</b> This is a user-defined comparison function for usort()
+ *
+ * @params passed automatically by usort, don't pass them in your call
+ */
+function sort_events ( $a, $b ) { 
+  $retval = strnatcmp( $a->getTime(), $b->getTime() ); 
+  if( ! $retval ) return strnatcmp( $a->getName(), $b->getName() );
+  return $retval; 
+} 
+
+/**
+ * Sorts the combined event arrays by time then name (case insensitive)
+ *
+ * <b>Note:</b> This is a user-defined comparison function for usort()
+ *
+ * @params passed automatically by usort, don't pass them in your call
+ */
+function sort_events_insensitive ( $a, $b ) { 
+  $retval = strnatcmp( $a->getTime(), $b->getTime() ); 
+  if( ! $retval ) return strnatcmp( strtolower($a->getName()), strtolower($b->getName()) ); 
+  return $retval; 
+} 
+
 ?>
