@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1265575: Bug in get_all_dates()
+      1275972: First day of daily repeat missing
       1272390: publish.php broken in v1.1-CVS
       1259997: repeating events don't send reminder on last day
       1259413: "Check for event conflicts" not working in latest CVS
