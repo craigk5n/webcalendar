@@ -785,10 +785,10 @@ function export_ical ($id) {
 	echo "$value\r\n";
 
       $name = preg_replace("/\r/", "", $name);
-      $name = preg_replace("/\n/", "\\n", $name);
+      //$name = preg_replace("/\n/", "\\n", $name); //PER RFC2445
       $name = preg_replace("/\\\\/", "\\\\\\", $name); // ??
       $description = preg_replace("/\r/", "", $description);
-      $description = preg_replace("/\n/", "\\n", $description);
+      //$description = preg_replace("/\n/", "\\n", $description); //PER RFC2445
       $description = preg_replace("/\\\\/", "\\\\\\", $description); // ??
 
       /* SUMMARY of the event (folded to 76 char) */
