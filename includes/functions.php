@@ -2406,8 +2406,7 @@ function print_date_entries ( $date, $user, $ssi ) {
   $ev = get_entries ( $user, $date, $get_unapproved );
 
   // combine and sort the event arrays
-  $ev = array_merge($ev, $rep);
-  usort($ev, 'sort_events');
+  $ev = combine_and_sort_events($ev, $rep);
 
 //echo $date . "<br>";
 //print_r ($rep);
@@ -3064,8 +3063,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   $ev = get_entries ( $user, $date, $get_unapproved, true, true );
 
   // combine and sort the event arrays
-  $ev = array_merge($ev, $rep);
-  usort($ev, 'sort_events');
+  $ev = combine_and_sort_events($ev, $rep);
 
   $hour_arr = array ();
   $interval = ( 24 * 60 ) / $TIME_SLOTS;
@@ -3873,8 +3871,7 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   $ev = get_entries ( $user, $date, $get_unapproved );
 
   // combine and sort the event arrays
-  $ev = array_merge($ev, $rep);
-  usort($ev, 'sort_events');
+  $ev = combine_and_sort_events($ev, $rep);
 
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
@@ -5231,6 +5228,22 @@ function sort_events_insensitive ( $a, $b ) {
   $retval = strnatcmp( $a->getTime(), $b->getTime() ); 
   if( ! $retval ) return strnatcmp( strtolower($a->getName()), strtolower($b->getName()) ); 
   return $retval; 
+} 
+
+/**
+ * Combines the repeating and nonrepeating event arrays and sorts them
+ *
+ * The returned events will be sorted by time of day.
+ *
+ * @param array $array1          Array of events
+ * @param array $array2          Array of events
+ *
+ * @return array Array of Events
+ */
+function combine_and_sort_events ( $array1, $array2 ) { 
+  $ev = array_merge($array1, $array2);
+  usort($ev, 'sort_events');
+  return $ev;
 } 
 
 ?>
