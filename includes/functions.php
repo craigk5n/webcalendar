@@ -1179,12 +1179,13 @@ function date_selection_html ( $prefix, $date, $trigger=false ) {
  * @param int    $thisyear      Number of the year
  * @param bool   $showyear      Show the year in the calendar's title?
  * @param bool   $show_weeknums Show week numbers to the left of each row?
+ * @param string $minical_id    id attribute for the minical table
  * @param string $month_link    URL and query string for month link that should
  *                              come before the date specification (e.g.
  *                              month.php?  or  view_l.php?id=7&amp;)
  */
 function display_small_month ( $thismonth, $thisyear, $showyear,
-  $show_weeknums=false, $month_link='month.php?' ) {
+  $show_weeknums=false, $minical_id='', $month_link='month.php?' ) {
   global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
   global $DISPLAY_WEEKNUMBER;
   global $SCRIPT, $thisday; // Needed for day.php
@@ -1198,7 +1199,11 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   }
 
   //start the minical table for each month
-  echo "\n<table class=\"minical\">\n";
+  echo "\n<table class=\"minical\"";
+  if ( $minical_id != '' ) {
+    echo " id=\"$minical_id\"";
+  }
+  echo ">\n";
 
   $monthstart = mktime( 0,0,0,$thismonth,1,$thisyear);
   $monthend = mktime( 0,0,0,$thismonth + 1,0,$thisyear);
