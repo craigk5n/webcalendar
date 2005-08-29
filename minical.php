@@ -65,7 +65,7 @@ $user = ( empty ( $user )?'__public__' : $user);
 // Allow the URL to override the user setting such as
 // "minical.php?user=_NUC_training"
 //If false, __public_ will always be used
-$allow_user_override = true;
+$allow_user_override = false;
 
 // Load just a specified category (by its id)
 // Leave blank to not filter on category (unless specified in URL)
