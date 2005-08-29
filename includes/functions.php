@@ -1758,7 +1758,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   $sql .= $date_filter;
 
   // now order the results by time and by entry id.
-  $sql .= " ORDER BY webcal_entry.cal_time, webcal_entry.cal_id";
+  $sql .= " ORDER BY webcal_entry.cal_time, webcal_entry.cal_description";
 
  //echo "<strong>SQL:</strong> $sql<br />\n";
   
@@ -2406,7 +2406,7 @@ function print_date_entries ( $date, $user, $ssi ) {
   $ev = get_entries ( $user, $date, $get_unapproved );
 
   // combine and sort the event arrays
-  $ev = combine_and_sort_events($ev, $rep);
+  //$ev = combine_and_sort_events($ev, $rep);
 
 //echo $date . "<br>";
 //print_r ($rep);
@@ -3063,7 +3063,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   $ev = get_entries ( $user, $date, $get_unapproved, true, true );
 
   // combine and sort the event arrays
-  $ev = combine_and_sort_events($ev, $rep);
+  //$ev = combine_and_sort_events($ev, $rep);
 
   $hour_arr = array ();
   $interval = ( 24 * 60 ) / $TIME_SLOTS;
@@ -3871,7 +3871,7 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   $ev = get_entries ( $user, $date, $get_unapproved );
 
   // combine and sort the event arrays
-  $ev = combine_and_sort_events($ev, $rep);
+  //$ev = combine_and_sort_events($ev, $rep);
 
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
