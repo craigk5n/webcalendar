@@ -1255,7 +1255,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     //print the month name
     echo "<caption><a href=\"{$month_link}{$u_url}year=$thisyear&amp;month=$thismonth\">";
     echo month_name ( $thismonth - 1 ) .
-      ( $showyear ? " $thisyear" : "" );
+  ( $showyear ? " $thisyear" : "" );
     echo "</a></caption>\n";
 
     echo "<thead>\n<tr>\n";
@@ -1314,15 +1314,15 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
         echo "<td";
         $wday = date ( 'w', $date );
         $class = '';
-        //add class="weekend" if it's saturday or sunday
+       //add class="weekend" if it's saturday or sunday
         if ( $wday == 0 || $wday == 6 ) {
           $class = "weekend";
         }
-       //if the day being viewed is today's date AND script = day.php
+        //if the day being viewed is today's date AND script = day.php
         if ( $dateYmd == $thisyear . $thismonth . $thisday &&
           $SCRIPT == 'day.php'  ) {
-          //if it's also a weekend, add a space between class names to combine styles
-          if ( $class != '' ) {
+        //if it's also a weekend, add a space between class names to combine styles
+        if ( $class != '' ) {
             $class .= ' ';
           }
           $class .= "selectedday";
@@ -1760,7 +1760,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   // now order the results by time and by entry id.
   $sql .= " ORDER BY webcal_entry.cal_time, webcal_entry.cal_id";
 
-  //echo "<strong>SQL:</strong> $sql<br />\n";
+ //echo "<strong>SQL:</strong> $sql<br />\n";
   
   $res = dbi_query ( $sql );
   if ( $res ) {
@@ -1930,7 +1930,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
         for ($j=0; $j<$r;$j++) {
           $td = $cdate + $daysarray[$j];
           if ($td >= $date) {
-            if ( ! is_exception ( $cdate, $ex_days ) )
+            if ( ! is_exception ( $td, $ex_days ) )
               $ret[$n++] = $td;
           }
         }
@@ -1983,11 +1983,11 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
       $dowLast += date('w',mktime ( 0, 0, 0, $thismonth + 1, -1, $thisyear ));
       if ( $dowLast >= $dow ) {
         // last weekday is in last week of this month
-        $day = $daysinmonth - ( $dowLast - $dow ) -
+        $day = $daysthismonth - ( $dowLast - $dow ) -
           ( 7 * $whichWeek );
       } else {
         // last weekday is NOT in last week of this month
-        $day = $daysinmonth - ( $dowLast - $dow ) -
+        $day = $daysthismonth - ( $dowLast - $dow ) -
           ( 7 * ( $whichWeek + 1 ) );
       }
       $cdate = mktime ( 0, 0, 0, $thismonth, $day, $thisyear );
@@ -2003,11 +2003,11 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
         $dowLast += date('w',mktime ( 0, 0, 0, $thismonth + 1, -1 ,$thisyear ));
         if ( $dowLast >= $dow ) {
           // last weekday is in last week of this month
-          $day = $daysinmonth - ( $dowLast - $dow ) -
+          $day = $daysthismonth - ( $dowLast - $dow ) -
             ( 7 * $whichWeek );
         } else {
           // last weekday is NOT in last week of this month
-          $day = $daysinmonth - ( $dowLast - $dow ) -
+          $day = $daysthismonth - ( $dowLast - $dow ) -
             ( 7 * ( $whichWeek + 1 ) );
         }
         $cdate = mktime ( 0, 0, 0, $thismonth, $day, $thisyear );
@@ -2092,12 +2092,12 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved=true ) {
  * @return bool Does <var>$event</var> occur on <var>$dateYmd</var>?
  */
 function repeated_event_matches_date($event,$dateYmd) {
-  global $days_per_month, $ldays_per_month;
+  global $days_per_month, $ldays_per_month, $tz_offset;
   // only repeat after the beginning, and if there is an end
   // before the end
   $date = date_to_epoch ( $dateYmd );
   $thisyear = substr($dateYmd, 0, 4);
-  $start = date_to_epoch ( $event->getDate() );
+  $start = get_datetime_add_tz ( $event->getDate(), $event->getTime(), $tz_offset[0] ); 
   $end   = date_to_epoch ( $event->getRepeatEnd() );
   $freq = $event->getRepeatFrequency();
   $thismonth = substr($dateYmd, 4, 2);
@@ -2405,7 +2405,7 @@ function print_date_entries ( $date, $user, $ssi ) {
   // get all the non-repeating events for this date and store in $ev
   $ev = get_entries ( $user, $date, $get_unapproved );
 //echo $date . "<br>";
-//print_r ($ev);
+//print_r ($rep);
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     // print out any repeating events that are before this one...
     while ( $cur_rep < count ( $rep ) &&
@@ -2638,6 +2638,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
             $conflicts .= "</li>\n";
           }
         }
+
       }
     }
   }
@@ -4341,6 +4342,7 @@ function set_today($date) {
  * Converts from Gregorian Year-Month-Day to ISO YearNumber-WeekNumber-WeekDay.
  *
  * @internal JGH borrowed gregorianToISO from PEAR Date_Calc Class and added
+
  * $GLOBALS["WEEK_START"] (change noted)
  *
  * @param int $day   Day of month
@@ -4981,9 +4983,8 @@ function get_datetime_add_tz ( $date, $time, $tz_offset ) {
   }
   $min_offset = ($tz_offset - floor ( $tz_offset )) * 60;
   if ( $tz_offset < 0 ) $min_offset = - $min_offset;
-  $ret_datetime = date ( "YmdHis", mktime ( $hour + (int) $tz_offset , 
-    $min + $min_offset , 0, $sm, $sd, $sy ) );
-    
+  $ret_datetime = mktime ( $hour + (int) $tz_offset , 
+    $min + $min_offset , 0, $sm, $sd, $sy );    
   return $ret_datetime;
 }
 

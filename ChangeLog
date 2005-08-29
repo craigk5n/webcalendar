@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug  1265575: Bug in get_all_dates()
+ - Fixed bug  1275972: First day of daily repeat missing
  - Added minical.php for using in iframe in external site
  - Fixed bug 1272390: publish.php broken in v1.1-CVS
  - Fixed bug 1259997: repeating events don't send reminder on last day
