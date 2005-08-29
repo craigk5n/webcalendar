@@ -1997,7 +1997,7 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
         for ($j=0; $j<$r;$j++) {
           $td = $cdate + $daysarray[$j];
           if ($td >= $date) {
-            if ( ! is_exception ( $cdate, $ex_days ) )
+            if ( ! is_exception ( $td, $ex_days ) )
               $ret[$n++] = $td;
           }
         }
@@ -2050,11 +2050,11 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
       $dowLast += date('w',mktime (3,0,0,$thismonth + 1, -1,$thisyear));
       if ( $dowLast >= $dow ) {
         // last weekday is in last week of this month
-        $day = $daysinmonth - ( $dowLast - $dow ) -
+        $day = $daysthismonth - ( $dowLast - $dow ) -
           ( 7 * $whichWeek );
       } else {
         // last weekday is NOT in last week of this month
-        $day = $daysinmonth - ( $dowLast - $dow ) -
+        $day = $daysthismonth - ( $dowLast - $dow ) -
           ( 7 * ( $whichWeek + 1 ) );
       }
       $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
@@ -2070,11 +2070,11 @@ function get_all_dates ( $date, $rpt_type, $end, $days, $ex_days, $freq=1 ) {
         $dowLast += date('w',mktime (3,0,0,$thismonth + 1, -1,$thisyear));
         if ( $dowLast >= $dow ) {
           // last weekday is in last week of this month
-          $day = $daysinmonth - ( $dowLast - $dow ) -
+          $day = $daysthismonth - ( $dowLast - $dow ) -
             ( 7 * $whichWeek );
         } else {
           // last weekday is NOT in last week of this month
-          $day = $daysinmonth - ( $dowLast - $dow ) -
+          $day = $daysthismonth - ( $dowLast - $dow ) -
             ( 7 * ( $whichWeek + 1 ) );
         }
         $cdate = mktime (3,0,0,$thismonth,$day,$thisyear);
