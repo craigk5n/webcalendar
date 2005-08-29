@@ -1,3 +1,9 @@
+Version 1.0.2 (?? ??? 2005)
+  - Fixed the following bug reports on SourceForge:
+    1265575: Bug in get_all_dates()
+  - Other bugs fixed:
+  - New Features / Enhancements / Changes:
+  - The following translations were updated:
 Version 1.0.1 (19 Aug 2005)
   - Fixed the following bug reports on SourceForge:
       1221434: Improved iCal import support for BYMONTHDAY in ics
