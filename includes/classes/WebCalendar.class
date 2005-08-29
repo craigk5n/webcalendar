@@ -51,7 +51,7 @@ class WebCalendar {
    * @todo Make it possible to distinguish between files in different directories (e.g. login.php and ws/login.php).
    */
   var $_filePhaseMap = array(
-    '/^(nulogin|login|freebusy|publish|register|rss|upcoming|week_ssi)\.php$/' =>
+    '/^(nulogin|login|freebusy|publish|register|rss|upcoming|week_ssi|minical)\.php$/' =>
       array(array('Config', 'PHPDBI', 'Functions'),
             array('User', 'Connect')),
     '/^(icalclient|get_reminders|get_events|ws)\.php$/' =>
@@ -114,7 +114,7 @@ class WebCalendar {
     $SCRIPT = $match[1];
 
     // Several files need a no-cache header and some of the same code
-    $special = array('month.php', 'day.php', 'week.php', 'week_details.php', 'year.php');
+    $special = array('month.php', 'day.php', 'week.php', 'week_details.php', 'year.php', 'minical.php');
     $DMW = in_array($SCRIPT, $special);
 
     // Unset some variables that shouldn't be set
@@ -272,6 +272,7 @@ class WebCalendar {
       "layers_toggle.php" => "layerstoggle",
       "list_unapproved.php" => "listunapproved",
       "login.php" => "login",
+      "minical.php" => "minicalendar",
       "month.php" => "month",
       "nonusers.php" => "nonusers",
       "pref.php" => "pref",
@@ -1231,7 +1232,7 @@ class WebCalendar {
       ACCESS_SYSTEM_SETTINGS => "(admin.php|admin_handler.php)",
       ACCESS_IMPORT => "import.*php",
       ACCESS_EXPORT => "export.*php",
-      ACCESS_PUBLISH => "(publish.php|freebusy.php|rss.php)",
+      ACCESS_PUBLISH => "(publish.php|freebusy.php|rss.php|minical.php)",
       ACCESS_ASSISTANTS => "assist.*php",
       ACCESS_HELP => "help_.*php"
     );

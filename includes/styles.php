@@ -512,6 +512,15 @@ textarea {
   background-color: #DDDDFF;
   font-weight: bold;
 }
+#minicalendar table {
+  width: <?php echo ( ! empty ( $GLOBALS['MINICALWIDTH'])?$GLOBALS['MINICALWIDTH']: '160px'); ?>;
+}
+#minicalendar th{
+  font-size: <?php echo ( ! empty ( $GLOBALS['MINICALFONT'])?$GLOBALS['MINICALFONT']: '11px'); ?>;
+}
+#minicalendar td {
+  font-size: <?php echo ( ! empty ( $GLOBALS['MINICALFONT'])?$GLOBALS['MINICALFONT']: '11px'); ?>;
+}
 #activitylog table,
 .embactlog {
   width: 100%;

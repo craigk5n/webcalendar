@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 08-12-2005
+# Translation last updated on 08-29-2005
 
 
 ###############################################
@@ -762,6 +762,13 @@ cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 
 
 ###############################################
+# Page: minical.php
+#
+No such nonuser calendar: No such nonuser calendar
+This Calendar is not Public: This Calendar is not Public
+
+
+###############################################
 # Page: month.php
 #
 Sun: Sun
@@ -777,12 +784,6 @@ Sat: Sat
 # Page: nonusers.php
 #
 Add New NonUser Calendar: Add New NonUser Calendar
-
-
-###############################################
-# Page: nulogin.php
-#
-No such nonuser calendar: No such nonuser calendar
 
 
 ###############################################

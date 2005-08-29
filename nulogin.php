@@ -50,6 +50,10 @@ if ( ! empty ( $return_path ) ) {
   $url = "index.php";
 }
 
+if ( $login == '__public__' ) {
+  do_redirect ( $url );
+}
+
 if ( ! nonuser_load_variables ( $login, 'temp_' ) ) {
   die_miserable_death ( translate ( "No such nonuser calendar" ) .
     ': ' . $login );

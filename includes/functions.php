@@ -1179,17 +1179,17 @@ function date_selection_html ( $prefix, $date, $trigger=false ) {
  * @param int    $thisyear      Number of the year
  * @param bool   $showyear      Show the year in the calendar's title?
  * @param bool   $show_weeknums Show week numbers to the left of each row?
- * @param string $minical_id    id attribute for the minical table
  * @param string $month_link    URL and query string for month link that should
  *                              come before the date specification (e.g.
  *                              month.php?  or  view_l.php?id=7&amp;)
  */
 function display_small_month ( $thismonth, $thisyear, $showyear,
-  $show_weeknums=false, $minical_id='', $month_link='month.php?' ) {
+  $show_weeknums=false, $month_link='month.php?' ) {
   global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
   global $DISPLAY_WEEKNUMBER;
   global $SCRIPT, $thisday; // Needed for day.php
   global $caturl, $today;
+  global $MINI_TARGET; // Used by minical.php
 
   if ( $user != $login && ! empty ( $user ) ) {
     $u_url = "user=$user" . "&amp;";
@@ -1198,11 +1198,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   }
 
   //start the minical table for each month
-  echo "\n<table class=\"minical\"";
-  if ( $minical_id != '' ) {
-    echo " id=\"$minical_id\"";
-  }
-  echo ">\n";
+  echo "\n<table class=\"minical\">\n";
 
   $monthstart = mktime( 0,0,0,$thismonth,1,$thisyear);
   $monthend = mktime( 0,0,0,$thismonth + 1,0,$thisyear);
@@ -1217,23 +1213,44 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     echo "<thead>\n";
     echo "<tr class=\"monthnav\"><th colspan=\"7\">\n";
     echo "<a title=\"" . 
- translate("Previous") . "\" class=\"prev\" href=\"day.php?" . $u_url  .
- "date=$month_ago$caturl\"><img src=\"leftarrowsmall.gif\" alt=\"" .
- translate("Previous") . "\" /></a>\n";
+      translate("Previous") . "\" class=\"prev\" href=\"day.php?" . $u_url  .
+      "date=$month_ago$caturl\"><img src=\"leftarrowsmall.gif\" alt=\"" .
+      translate("Previous") . "\" /></a>\n";
     echo "<a title=\"" . 
- translate("Next") . "\" class=\"next\" href=\"day.php?" . $u_url .
- "date=$month_ahead$caturl\"><img src=\"rightarrowsmall.gif\" alt=\"" .
- translate("Next") . "\" /></a>\n";
+      translate("Next") . "\" class=\"next\" href=\"day.php?" . $u_url .
+      "date=$month_ahead$caturl\"><img src=\"rightarrowsmall.gif\" alt=\"" .
+      translate("Next") . "\" /></a>\n";
     echo month_name ( $thismonth - 1 );
     if ( $showyear != '' ) {
       echo " $thisyear";
     }
     echo "</th></tr>\n<tr>\n";
-  } else {  //not day script
+  } else   if ( $SCRIPT == 'minical.php' ) {
+    $month_ago = date ( "Ymd",
+      mktime ( 3, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
+    $month_ahead = date ( "Ymd",
+      mktime ( 3, 0, 0, $thismonth + 1, $thisday, $thisyear ) );
+
+    echo "<thead>\n";
+    echo "<tr class=\"monthnav\"><th colspan=\"7\">\n";
+    echo "<a title=\"" . 
+      translate("Previous") . "\" class=\"prev\" href=\"minical.php?" . $u_url  .
+      "date=$month_ago\"><img src=\"leftarrowsmall.gif\" alt=\"" .
+      translate("Previous") . "\" /></a>\n";
+    echo "<a title=\"" . 
+      translate("Next") . "\" class=\"next\" href=\"minical.php?" . $u_url .
+      "date=$month_ahead\"><img src=\"rightarrowsmall.gif\" alt=\"" .
+      translate("Next") . "\" /></a>\n";
+    echo month_name ( $thismonth - 1);
+    if ( $showyear != '' ) {
+      echo " $thisyear";
+    }
+    echo "</th></tr>\n<tr>\n";
+    } else {  //not day or minical script
     //print the month name
     echo "<caption><a href=\"{$month_link}{$u_url}year=$thisyear&amp;month=$thismonth\">";
- echo month_name ( $thismonth - 1 ) .
-  ( $showyear ? " $thisyear" : "" );
+    echo month_name ( $thismonth - 1 ) .
+      ( $showyear ? " $thisyear" : "" );
     echo "</a></caption>\n";
 
     echo "<thead>\n<tr>\n";
@@ -1273,14 +1290,18 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       $date = $i + ($j * 24 * 3600);
       $dateYmd = date ( "Ymd", $date );
       $hasEvents = false;
+      $title = '';
       if ( $boldDays ) {
         $ev = get_entries ( $user, $dateYmd, $get_unapproved, 0 );
         if ( count ( $ev ) > 0 ) {
           $hasEvents = true;
+        $title = $ev[0]->getName();
         } else {
           $rep = get_repeating_entries ( $user, $dateYmd, $get_unapproved );
-          if ( count ( $rep ) > 0 )
+          if ( count ( $rep ) > 0 ) {
             $hasEvents = true;
+       $title = $rep[0]->getName();
+     }
         }
       }
       if ( $dateYmd >= date ("Ymd",$monthstart) &&
@@ -1288,15 +1309,15 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
         echo "<td";
         $wday = date ( 'w', $date );
         $class = '';
-  //add class="weekend" if it's saturday or sunday
+        //add class="weekend" if it's saturday or sunday
         if ( $wday == 0 || $wday == 6 ) {
           $class = "weekend";
         }
-  //if the day being viewed is today's date AND script = day.php
+       //if the day being viewed is today's date AND script = day.php
         if ( $dateYmd == $thisyear . $thismonth . $thisday &&
           $SCRIPT == 'day.php'  ) {
-    //if it's also a weekend, add a space between class names to combine styles
-    if ( $class != '' ) {
+          //if it's also a weekend, add a space between class names to combine styles
+          if ( $class != '' ) {
             $class .= ' ';
           }
           $class .= "selectedday";
@@ -1313,9 +1334,16 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
         if ( date ( "Ymd", $date  ) == date ( "Ymd", $today ) ){
           echo " id=\"today\"";
         }
-        echo "><a href=\"day.php?" .$u_url  . "date=" .  $dateYmd . 
-          "\">";
-        echo date ( "d", $date ) . "</a></td>\n";
+        if ( $SCRIPT == 'minical.php' ) {
+          echo "><a href=\"nulogin.php?login=" .  $user . 
+            "&amp;return_path=day.php?date=" .  $dateYmd. "\"" . 
+            ( ! empty ( $MINI_TARGET )? " target=\"$MINI_TARGET\"" : "") . 
+            ( ! empty ( $title )? " title=\"$title\"" : "") .
+            ">";    
+        } else {
+            echo "><a href=\"day.php?" .$u_url  . "date=" .  $dateYmd . "\">";
+        }
+        echo date ( "j", $date ) . "</a></td>\n";
         } else {
           echo "<td class=\"empty\">&nbsp;</td>\n";
         }
