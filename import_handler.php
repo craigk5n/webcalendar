@@ -287,9 +287,9 @@ function import_data ( $data, $overwrite, $type ) {
         $Entry['Untimed'] == 1) ? "-1" :
         sprintf ( "%02d%02d00", $Entry['StartHour'],$Entry['StartMinute']);
       $names[] = 'cal_mod_date';
-      $values[] = date("Ymd");
+      $values[] = gmdate("Ymd");
       $names[] = 'cal_mod_time';
-      $values[] = date("Gis");
+      $values[] = gmdate("Gis");
       $names[] = 'cal_duration';
       $values[] = sprintf ( "%d", $Entry['Duration'] );
       $names[] = 'cal_priority';

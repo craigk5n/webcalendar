@@ -380,7 +380,7 @@ if ( empty ( $error ) ) {
   } else {
     $sql .= "-1, ";
   }
-  $sql .= date ( "Ymd" ) . ", " . date ( "Gis" ) . ", ";
+  $sql .= gmdate ( "Ymd" ) . ", " . gmdate ( "Gis" ) . ", ";
   $sql .= sprintf ( "%d, ", $duration );
   $sql .= sprintf ( "%d, ", $priority );
   $sql .= empty ( $access ) ? "'P', " : "'$access', ";
@@ -519,7 +519,7 @@ if ( empty ( $error ) ) {
       // This goes against stricter security, but it confuses users to have
       // to re-approve events they already approved.
       if ( $participants[$i] == "__public__" && $is_admin &&
-        $old_status['__public__'] == 'A' ) {
+        ( empty ( $old_status['__public__'] ) || $old_status['__public__'] == 'A' ) ) {
         $status = 'A';
       }
       $my_cat_id = ( $participants[$i] != $login ) ? $tmp_cat : $cat_id;
