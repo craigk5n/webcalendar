@@ -219,6 +219,9 @@ function print_detailed_entry ( $event, $date ) {
   } elseif ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     $PN = htmlspecialchars ( $name );
     $PD = activate_urls ( htmlspecialchars ( $event->getDescription() ) );
+  } else {
+    $PN = htmlspecialchars ( $name );
+    $PD = activate_urls ( htmlspecialchars ( $event->getDescription() ) );
   }
   if ( ! empty ( $in_span ) ) 
    $PN .= "</span>";
