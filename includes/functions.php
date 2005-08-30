@@ -2406,7 +2406,7 @@ function print_date_entries ( $date, $user, $ssi ) {
   $ev = get_entries ( $user, $date, $get_unapproved );
 
   // combine and sort the event arrays
-  //$ev = combine_and_sort_events($ev, $rep);
+  $ev = combine_and_sort_events($ev, $rep);
 
 //echo $date . "<br>";
 //print_r ($rep);
@@ -3063,7 +3063,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   $ev = get_entries ( $user, $date, $get_unapproved, true, true );
 
   // combine and sort the event arrays
-  //$ev = combine_and_sort_events($ev, $rep);
+  $ev = combine_and_sort_events($ev, $rep);
 
   $hour_arr = array ();
   $interval = ( 24 * 60 ) / $TIME_SLOTS;
@@ -3871,7 +3871,7 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   $ev = get_entries ( $user, $date, $get_unapproved );
 
   // combine and sort the event arrays
-  //$ev = combine_and_sort_events($ev, $rep);
+  $ev = combine_and_sort_events($ev, $rep);
 
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
@@ -5235,15 +5235,23 @@ function sort_events_insensitive ( $a, $b ) {
  *
  * The returned events will be sorted by time of day.
  *
- * @param array $array1          Array of events
- * @param array $array2          Array of events
+ * @param array $ev          Array of events
+ * @param array $rep         Array of repeating events
  *
  * @return array Array of Events
  */
-function combine_and_sort_events ( $array1, $array2 ) { 
-  $ev = array_merge($array1, $array2);
-  usort($ev, 'sort_events');
-  return $ev;
+function combine_and_sort_events ( $ev, $rep ) { 
+
+  // repeating events show up in $ev and $rep
+  // record their ids and don't add them to the combined array
+  foreach ( $rep as $obj ) {
+    $ids[] = $obj->getID();
+  }
+  foreach ( $ev as $obj ) {
+    if ( ! in_array( $obj->getID(), $ids ) ) $rep[] = $obj;
+  }
+  usort( $rep, 'sort_events' );
+  return $rep;
 } 
 
 ?>
