@@ -3,12 +3,12 @@
  * $Id$
  *
  * Description:
- *	Handler for exporting webcalendar events to various formats.
+ * Handler for exporting webcalendar events to various formats.
  *
  * Comments:
- *	All-day events and untimed events are treated differently.  An
- *	all-day event is a 12am event with duration 24 hours.  We store
- *	untimed events with a start time of -1 in the webcalendar database.
+ * All-day events and untimed events are treated differently.  An
+ * all-day event is a 12am event with duration 24 hours.  We store
+ * untimed events with a start time of -1 in the webcalendar database.
  *
  *********************************************************************/
 include_once 'includes/init.php';
@@ -41,7 +41,7 @@ function export_get_event_entry($id) {
 
   if ($id == "all") {
       $sql .= "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id AND " .
-	" ( webcal_entry_user.cal_login = '" . $login . "'";
+        " ( webcal_entry_user.cal_login = '" . $login . "'";
       if ( $user && $user != $login ) {
         $sql .= " OR webcal_entry_user.cal_login = '$user'";
       } else if ( $include_layers && $layers ) {
@@ -52,21 +52,21 @@ function export_get_event_entry($id) {
       }
       $sql .= " ) ";
 
-	if (!$use_all_dates) {
-	  $startdate = sprintf ( "%04d%02d%02d", $fromyear, $frommonth, $fromday );
-	  $enddate = sprintf ( "%04d%02d%02d", $endyear, $endmonth, $endday );
-	  $sql .= " AND webcal_entry.cal_date >= $startdate " .
-	    "AND webcal_entry.cal_date <= $enddate";
-	  $moddate = sprintf ( "%04d%02d%02d", $modyear, $modmonth, $modday );
-	  $sql .= " AND webcal_entry.cal_mod_date >= $moddate";
-	}
+ if (!$use_all_dates) {
+   $startdate = sprintf ( "%04d%02d%02d", $fromyear, $frommonth, $fromday );
+   $enddate = sprintf ( "%04d%02d%02d", $endyear, $endmonth, $endday );
+   $sql .= " AND webcal_entry.cal_date >= $startdate " .
+     "AND webcal_entry.cal_date <= $enddate";
+   $moddate = sprintf ( "%04d%02d%02d", $modyear, $modmonth, $modday );
+   $sql .= " AND webcal_entry.cal_mod_date >= $moddate";
+ }
   } else {
       $sql .= "WHERE webcal_entry.cal_id = '$id' AND " .
-	"webcal_entry_user.cal_id = '$id' AND " .
-	"( webcal_entry_user.cal_login = '" . $login . "'";
+        "webcal_entry_user.cal_id = '$id' AND " .
+        "( webcal_entry_user.cal_login = '" . $login . "'";
         // TODO: add support for user in URL so we can export from other
         // calendars, particularly non-user calendars.
-	//"webcal_entry_user.cal_id = '$id'";
+        //"webcal_entry_user.cal_id = '$id'";
       if ( ! empty ( $user )  && $user != $login ) {
         $sql .= " OR webcal_entry_user.cal_login = '$user'";
       } else if ( $layers ) {
@@ -95,10 +95,10 @@ function export_quoted_printable_encode($car) {
   $res = "";
 
   if ((ord($car) >= 33 && ord($car) <= 60) || (ord($car) >= 62 && ord($car) <= 126) || 
-      ord($car) == 9 || ord($car) == 32) {
-      $res = $car;
+    ord($car) == 9 || ord($car) == 32) {
+    $res = $car;
   } else {
-      $res = sprintf("=%02X", ord($car));
+    $res = sprintf("=%02X", ord($car));
   } //end if
 
   return $res;
@@ -120,57 +120,57 @@ function export_fold_lines($string, $encoding="none", $limit=76) {
   for ($i = 0; $i < $len; $i++) {
       $enc = $string[$i];
 
-	if ($start_encode) {
-	  if (strcmp($encoding,"quotedprintable") == 0)
-	    $enc = export_quoted_printable_encode($string[$i]);
-	  else if (strcmp($encoding,"utf8") == 0)
-	    $enc = utf8_encode($string[$i]);
-	}
+ if ($start_encode) {
+   if (strcmp($encoding,"quotedprintable") == 0)
+     $enc = export_quoted_printable_encode($string[$i]);
+   else if (strcmp($encoding,"utf8") == 0)
+     $enc = utf8_encode($string[$i]);
+ }
 
-	if ($string[$i] == ":")
-	  $start_encode = 1;
+ if ($string[$i] == ":")
+   $start_encode = 1;
 
-	if ((strlen($row) + strlen($enc)) > $fold) {
-	  $delta = 0;
+ if ((strlen($row) + strlen($enc)) > $fold) {
+   $delta = 0;
 
-	  if ($lwsp == 0)
-	    $lwsp = $fold - 1; // the folding will occur in the middle of a word
+   if ($lwsp == 0)
+     $lwsp = $fold - 1; // the folding will occur in the middle of a word
 
-	  if ($row[$lwsp] == " " || $row[$lwsp] == "\t")
-	    $delta = -1;
+   if ($row[$lwsp] == " " || $row[$lwsp] == "\t")
+     $delta = -1;
 
-	  $res[$res_ind] = substr($row, 0, $lwsp+1+$delta);
+   $res[$res_ind] = substr($row, 0, $lwsp+1+$delta);
 
-	  if (strcmp($encoding,"quotedprintable") == 0)
-	    $res[$res_ind] .= "="; // soft line break;
+   if (strcmp($encoding,"quotedprintable") == 0)
+     $res[$res_ind] .= "="; // soft line break;
 
-	  $row = substr($row, $lwsp+1);
+   $row = substr($row, $lwsp+1);
 
-	  $row = " " . $row;
+   $row = " " . $row;
 
-	  if ($delta == -1 && strcmp($encoding,"utf8") == 0)
-	    $row = " " . $row;
+   if ($delta == -1 && strcmp($encoding,"utf8") == 0)
+     $row = " " . $row;
 
-	  if ($res_ind == 0)
-	    $fold--; //reduce row length of 1 to take into account the whitespace at the beginning of lines
+   if ($res_ind == 0)
+     $fold--; //reduce row length of 1 to take into account the whitespace at the beginning of lines
 
-	  $res_ind++; // next line
+   $res_ind++; // next line
 
-	  $lwsp = 0;
-	} //end if ((strlen($row) + strlen($enc)) > $fold)
+   $lwsp = 0;
+ } //end if ((strlen($row) + strlen($enc)) > $fold)
 
-      $row .= $enc;
+   $row .= $enc;
 
-      if ($string[$i] == " " || $string[$i] == "\t" || $string[$i] == ";" || $string[$i] == ",")
-	$lwsp = strlen($row) - 1;
+   if ($string[$i] == " " || $string[$i] == "\t" || $string[$i] == ";" || $string[$i] == ",")
+     $lwsp = strlen($row) - 1;
 
-      if ($string[$i] == ":" && (strcmp($encoding,"quotedprintable") == 0))
-	$lwsp = strlen($row) - 1; // we cut at ':' only for quoted printable
-    } //end for ($i = 0; $i < $len; $i++)
+   if ($string[$i] == ":" && (strcmp($encoding,"quotedprintable") == 0))
+     $lwsp = strlen($row) - 1; // we cut at ':' only for quoted printable
+   } //end for ($i = 0; $i < $len; $i++)
 
-  $res[$res_ind] = $row; // Add last row (or first if no folding is necessary)
+   $res[$res_ind] = $row; // Add last row (or first if no folding is necessary)
 
-  return $res;
+   return $res;
 } //end function export_fold_lines($string, $encoding="none", $limit=76)
 
 function export_get_attendee($id, $export) {
@@ -207,32 +207,32 @@ function export_get_attendee($id, $export) {
 
       dbi_free_result($user_res);
 
-	if (count($user) > 0) {
-	  $attendee[$count] = "ATTENDEE;ROLE=";
-	  $attendee[$count] .=	($row[2] == $user[3]) ? "OWNER;" : "ATTENDEE;";
-	  $attendee[$count] .= "STATUS=";
+ if (count($user) > 0) {
+   $attendee[$count] = "ATTENDEE;ROLE=";
+   $attendee[$count] .= ($row[2] == $user[3]) ? "OWNER;" : "ATTENDEE;";
+   $attendee[$count] .= "STATUS=";
 
-	  switch ($row[1]) {
-	    case 'A':
-	      $attendee[$count] .= "CONFIRMED";
-	      break;
-	    case 'R':
-	      $attendee[$count] .= "DECLINED";
-	      break;
-	    case 'W':
-	      $attendee[$count] .= "SENT";
-	      break;
-	    default:
-	      continue;
-	  } //end switch
+   switch ($row[1]) {
+     case 'A':
+       $attendee[$count] .= "CONFIRMED";
+       break;
+     case 'R':
+       $attendee[$count] .= "DECLINED";
+       break;
+     case 'W':
+       $attendee[$count] .= "SENT";
+       break;
+     default:
+       continue;
+   } //end switch
 
-	  if (strcmp($export,"vcal") == 0)
-	    $attendee[$count] .= ";ENCODING=QUOTED-PRINTABLE";
+   if (strcmp($export,"vcal") == 0)
+     $attendee[$count] .= ";ENCODING=QUOTED-PRINTABLE";
 
-	  $attendee[$count] .= ":$user[0] $user[1] <$user[2]>";
+   $attendee[$count] .= ":$user[0] $user[1] <$user[2]>";
 
-	  $count++;
-	} //end if (count($user) > 0)
+   $count++;
+ } //end if (count($user) > 0)
   } //end while
 
   return $attendee;
@@ -270,30 +270,30 @@ function export_time($date, $duration, $time, $texport) {
   }
 
   if (strcmp($texport,"ical") == 0) {
-      $utc_dtstamp = export_get_utc_date(date("Ymd", mktime()),
-        date("His", mktime()));
-      echo "DTSTAMP:$utc_dtstamp\r\n";
+    $utc_dtstamp = export_get_utc_date(date("Ymd", mktime()),
+      date("His", mktime()));
+    echo "DTSTAMP:$utc_dtstamp\r\n";
 
-	if ($time == -1) {
-          // untimed event
-	  $end_tmstamp = $start_tmstamp + 24*60*60;
-	  $utc_end = date("Ymd", $end_tmstamp);
-	  echo "DTEND;VALUE=DATE:$utc_end\r\n";
-	} else {
-	  $end_tmstamp = $start_tmstamp + $duration;
-	  $utc_end = export_get_utc_date(date("Ymd", $end_tmstamp), date("His", $end_tmstamp));
-	  echo "DTEND:$utc_end\r\n";
-	}
+   if ($time == -1) {
+     // untimed event
+     $end_tmstamp = $start_tmstamp + 24*60*60;
+     $utc_end = date("Ymd", $end_tmstamp);
+     echo "DTEND;VALUE=DATE:$utc_end\r\n";
+   } else {
+     $end_tmstamp = $start_tmstamp + $duration;
+     $utc_end = export_get_utc_date(date("Ymd", $end_tmstamp), date("His", $end_tmstamp));
+     echo "DTEND:$utc_end\r\n";
+   }
   } elseif (strcmp($texport,"vcal") == 0) {
-	if ($time == -1) {
-	  $end_tmstamp = $start_tmstamp + 24*60*60;
-	  $utc_end = date("Ymd", $end_tmstamp);
-	  echo "DTEND:$utc_end\r\n";
-	} else {
-	  $end_tmstamp = $start_tmstamp + $duration;
-	  $utc_end = export_get_utc_date(date("Ymd", $end_tmstamp), date("His", $end_tmstamp));
-	  echo "DTEND:$utc_end\r\n";
-	}
+    if ($time == -1) {
+      $end_tmstamp = $start_tmstamp + 24*60*60;
+      $utc_end = date("Ymd", $end_tmstamp);
+      echo "DTEND:$utc_end\r\n";
+    } else {
+      $end_tmstamp = $start_tmstamp + $duration;
+      $utc_end = export_get_utc_date(date("Ymd", $end_tmstamp), date("His", $end_tmstamp));
+      echo "DTEND:$utc_end\r\n";
+    }
   } else {
       echo "DURATION:P$str_duration\r\n";
   }
@@ -305,12 +305,12 @@ function export_recurrence_ical($id, $date) {
   $res = dbi_query($sql);
 
   if ($res) {
-      $exdate = array();
-      $i = 0;
-	while ($row = dbi_fetch_row($res)) {
-	  $exdate[$i] = $row[0];
-	  $i++;
-	}
+    $exdate = array();
+    $i = 0;
+    while ($row = dbi_fetch_row($res)) {
+      $exdate[$i] = $row[0];
+      $i++;
+    }
   }
 
   dbi_free_result($res);
@@ -338,92 +338,92 @@ function export_recurrence_ical($id, $date) {
 
       /* recurrence frequency */
       switch ($type) {
-	case 'daily' :
-	  echo "FREQ=DAILY";
-	  break;
-	case 'weekly' :
-	  echo "FREQ=WEEKLY";
-	  break;
-	case 'monthlyByDay':
-	case 'monthlyByDate' :
-	  echo "FREQ=MONTHLY";
-	  break;
-	case 'yearly' :
-	  echo "FREQ=YEARLY";
-	  break;
+ case 'daily' :
+   echo "FREQ=DAILY";
+   break;
+ case 'weekly' :
+   echo "FREQ=WEEKLY";
+   break;
+ case 'monthlyByDay':
+ case 'monthlyByDate' :
+   echo "FREQ=MONTHLY";
+   break;
+ case 'yearly' :
+   echo "FREQ=YEARLY";
+   break;
       }
 
       echo ";INTERVAL=$freq";
 
       if ($type == "weekly") {
-	  if ($day != "nnnnnnn") {
-	      echo ";BYDAY=";
-		for ($i = 0; $i < strlen($day); $i++) {
-		  if ($day[$i] == 'y') {
-		      $byday .= $str_day[$i] .",";
-		  }
-		}
-	      $byday = substr($byday, 0, strlen($byday)-1); // suppress last ','
-	      echo $byday;
-	  }
+   if ($day != "nnnnnnn") {
+       echo ";BYDAY=";
+  for ($i = 0; $i < strlen($day); $i++) {
+    if ($day[$i] == 'y') {
+        $byday .= $str_day[$i] .",";
+    }
+  }
+       $byday = substr($byday, 0, strlen($byday)-1); // suppress last ','
+       echo $byday;
+   }
       } elseif ($type == "monthlyByDate") {
-	  $day = (int) substr($date,-2,2);
+   $day = (int) substr($date,-2,2);
 
-	  echo ";BYMONTHDAY=$day";
+   echo ";BYMONTHDAY=$day";
       } elseif ($type == "monthlyByDay") {
-	  echo ";BYDAY=";
+   echo ";BYDAY=";
 
-	  $year = (int) substr($date,0,-4);
-	  $month = (int) substr($date,-4,2);
-	  $day = (int) substr($date,-2,2);
+   $year = (int) substr($date,0,-4);
+   $month = (int) substr($date,-4,2);
+   $day = (int) substr($date,-2,2);
 
-	  $stamp = mktime(0, 0, 0, $month, $day, $year);
+   $stamp = mktime(0, 0, 0, $month, $day, $year);
 
-	  $date_array = getdate($stamp);
+   $date_array = getdate($stamp);
 
-	  echo $str_day[$date_array['wday']];
+   echo $str_day[$date_array['wday']];
 
-	  $next_stamp = $stamp + 7 * 24 * 60 * 60;
+   $next_stamp = $stamp + 7 * 24 * 60 * 60;
 
-	  $next_date_array = getdate($next_stamp);
+   $next_date_array = getdate($next_stamp);
 
-	  if ($date_array['mon'] != $next_date_array['mon'])
-	    $pos = -1;
-	  else {
-	      $pos = (int) ($day / 7);
+   if ($date_array['mon'] != $next_date_array['mon'])
+     $pos = -1;
+   else {
+       $pos = (int) ($day / 7);
 
-	      if (($day % 7) > 0) {
-		  $pos++;
-	      }
-	   }
-	  echo ";BYSETPOS=$pos";
+       if (($day % 7) > 0) {
+    $pos++;
+       }
+    }
+   echo ";BYSETPOS=$pos";
       }
 
-      if (!empty($end))	{
-	  echo ";UNTIL=";
+      if (!empty($end)) {
+   echo ";UNTIL=";
 
-	  $utc = export_get_utc_date($end, $time);
+   $utc = export_get_utc_date($end, $time);
 
-	  echo $utc;
+   echo $utc;
       }
 
       echo "\r\n";
 
       if (count($exdate) > 0) {
-	  $string = "EXDATE:";
-	  $i = 0;
-	  while ($i < count($exdate)) {
-	      $date = export_get_utc_date($exdate[$i],$time);
-	      $string .= "$date,";
-	      $i++;
-	  }
+   $string = "EXDATE:";
+   $i = 0;
+   while ($i < count($exdate)) {
+       $date = export_get_utc_date($exdate[$i],$time);
+       $string .= "$date,";
+       $i++;
+   }
 
-	  $string = substr($string, 0, strlen($string)-1); // suppress last ','
+   $string = substr($string, 0, strlen($string)-1); // suppress last ','
 
-	  $string = export_fold_lines($string);
+   $string = export_fold_lines($string);
 
-	  while (list($key,$value) = each($string))
-	    echo "$value\r\n";
+   while (list($key,$value) = each($string))
+     echo "$value\r\n";
       }
     }
 }
@@ -464,73 +464,73 @@ function export_recurrence_vcal($id, $date) {
 
       /* recurrence frequency */
       switch ($type) {
-	case 'daily' :
-	  echo "D";
-	  break;
-	case 'weekly' :
-	  echo "W";
-	  break;
-	case 'monthlyByDay':
-	  echo "MP";
-	  break;
-	case 'monthlyByDayR':
-	  echo "MP";
-	  break;
-	case 'monthlyByDate' :
-	  echo "MD";
-	  break;
-	case 'yearly' :
-	  echo "YM";
-	  break;
+ case 'daily' :
+   echo "D";
+   break;
+ case 'weekly' :
+   echo "W";
+   break;
+ case 'monthlyByDay':
+   echo "MP";
+   break;
+ case 'monthlyByDayR':
+   echo "MP";
+   break;
+ case 'monthlyByDate' :
+   echo "MD";
+   break;
+ case 'yearly' :
+   echo "YM";
+   break;
       }
 
       echo $freq." ";
 
-	if ($type == "weekly") {
-	  if ($day != "nnnnnnn") {
-	    for ($i=0; $i < strlen($day); $i++) {
-	      if ($day[$i] == 'y') {
-		$byday .= $str_day[$i] ." ";
+ if ($type == "weekly") {
+   if ($day != "nnnnnnn") {
+     for ($i=0; $i < strlen($day); $i++) {
+       if ($day[$i] == 'y') {
+  $byday .= $str_day[$i] ." ";
               }
-	    }
-	    echo $byday;
+     }
+     echo $byday;
           }
-	} elseif ($type == "monthlyByDate") {
-	  $day = (int) substr($date,-2,2);
-	  echo "$day ";
-	} elseif (($type == "monthlyByDay") || ($type == "monthlyByDayR")) {
-	  $year = (int) substr($date,0,-4);
-	  $month = (int) substr($date,-4,2);
-	  $day = (int) substr($date,-2,2);
+ } elseif ($type == "monthlyByDate") {
+   $day = (int) substr($date,-2,2);
+   echo "$day ";
+ } elseif (($type == "monthlyByDay") || ($type == "monthlyByDayR")) {
+   $year = (int) substr($date,0,-4);
+   $month = (int) substr($date,-4,2);
+   $day = (int) substr($date,-2,2);
 
-	  $stamp = mktime(0, 0, 0, $month, $day, $year);
-	  $date_array = getdate($stamp);
+   $stamp = mktime(0, 0, 0, $month, $day, $year);
+   $date_array = getdate($stamp);
           $day_no = $str_day[$date_array['wday']];
 
-	  $next_stamp = $stamp + 7 * 24 * 60 * 60;
-	  $next_date_array = getdate($next_stamp);
+   $next_stamp = $stamp + 7 * 24 * 60 * 60;
+   $next_date_array = getdate($next_stamp);
 
-	  if ($date_array['mon'] != $next_date_array['mon']) {
-	    $pos = 5;
-	  } else {
-	    $pos = (int) ($day / 7);
+   if ($date_array['mon'] != $next_date_array['mon']) {
+     $pos = 5;
+   } else {
+     $pos = (int) ($day / 7);
             if (($day % 7) > 0) {
               $pos++;
             }
-	   }
-	  echo $pos."+ $day_no ";
-	} elseif ($type == "yearly") {
+    }
+   echo $pos."+ $day_no ";
+ } elseif ($type == "yearly") {
           $month = (int) substr($date,-4,2);
           echo "$month ";
-	}
+ }
 
-	// End Date - For all types
-	if (!empty($end)) {
-	  //echo export_get_utc_date($end, $time);
-	  echo $end;
-	} else {
-	  echo "20031231";
-	}
+ // End Date - For all types
+ if (!empty($end)) {
+   //echo export_get_utc_date($end, $time);
+   echo $end;
+ } else {
+   echo "20031231";
+ }
 
       echo "\r\n";
 
@@ -678,7 +678,7 @@ function export_vcal ($id) {
       $export_uid = "UID:$export_uid";
       $array = export_fold_lines($export_uid);
       while (list($key,$value) = each($array))
-	echo "$value\r\n";
+ echo "$value\r\n";
 
       /* SUMMARY of the event (folded to 76 char) */
       $name = preg_replace("/\\\\/", "\\\\\\", $name); // ??
@@ -686,31 +686,31 @@ function export_vcal ($id) {
       $array = export_fold_lines($name,"quotedprintable");
 
       while (list($key,$value) = each($array))
-	echo "$value\r\n";
+ echo "$value\r\n";
 
       /* DESCRIPTION if any (folded to 76 char) */
       if ($description != "") {
-	  $description = preg_replace("/\\\\/", "\\\\\\", $description); // ??
-	  $description = "DESCRIPTION;ENCODING=QUOTED-PRINTABLE:" . $description;
-	  $array = export_fold_lines($description,"quotedprintable");
-	  while (list($key,$value) = each($array))
-	    echo "$value\r\n";
+   $description = preg_replace("/\\\\/", "\\\\\\", $description); // ??
+   $description = "DESCRIPTION;ENCODING=QUOTED-PRINTABLE:" . $description;
+   $array = export_fold_lines($description,"quotedprintable");
+   while (list($key,$value) = each($array))
+     echo "$value\r\n";
       } //end if ($description != "")
 
       /* CLASS either "PRIVATE" or "PUBLIC" (the default) */
       if ($access == "R") {
-	  echo "CLASS:PRIVATE\r\n";
+   echo "CLASS:PRIVATE\r\n";
       } else {
-	  echo "CLASS:PUBLIC\r\n";
+   echo "CLASS:PUBLIC\r\n";
       }
 
       // ATTENDEE of the event
       $attendee = export_get_attendee($row[0], "vcal");
 
       for ($i = 0; $i < count($attendee); $i++) {
-	  $attendee[$i] = export_fold_lines($attendee[$i],"quotedprintable");
-	  while (list($key,$value) = each($attendee[$i]))
-	    echo "$value\r\n";
+   $attendee[$i] = export_fold_lines($attendee[$i],"quotedprintable");
+   while (list($key,$value) = each($attendee[$i]))
+     echo "$value\r\n";
       }
 
       /* Time - all times are utc */
@@ -770,44 +770,44 @@ function export_ical ($id) {
       /* UID of the event (folded to 76 char) */
       $array = export_fold_lines("UID:$export_uid");
       while (list($key,$value) = each($array))
-	echo "$value\r\n";
+       echo "$value\r\n";
 
       $name = preg_replace("/\r/", "", $name);
-      $name = preg_replace("/\n/", "\\n", $name);
-      $name = preg_replace("/\\\\/", "\\\\\\", $name); // ??
+      //$name = preg_replace("/\n/", "\\n", $name); // Per RFC2445
+      $name = preg_replace("/\\\\/", "\\\\\\", $name); 
       $description = preg_replace("/\r/", "", $description);
-      $description = preg_replace("/\n/", "\\n", $description);
-      $description = preg_replace("/\\\\/", "\\\\\\", $description); // ??
+      //$description = preg_replace("/\n/", "\\n", $description); // Per RFC2445
+      $description = preg_replace("/\\\\/", "\\\\\\", $description); 
 
       /* SUMMARY of the event (folded to 76 char) */
       $name = "SUMMARY:" . $name;
       $array = export_fold_lines($name,"utf8");
 
       while (list($key,$value) = each($array))
-	echo "$value\r\n";
+       echo "$value\r\n";
 
       /* DESCRIPTION if any (folded to 76 char) */
       if ($description != "") {
-	  $description = "DESCRIPTION:" . $description;
-	  $array = export_fold_lines($description,"utf8");
-	  while (list($key,$value) = each($array))
-	    echo "$value\r\n";
+   $description = "DESCRIPTION:" . $description;
+   $array = export_fold_lines($description,"utf8");
+   while (list($key,$value) = each($array))
+     echo "$value\r\n";
       }
 
       /* CLASS either "PRIVATE" or "PUBLIC" (the default) */
       if ($access == "R") {
-	  echo "CLASS:PRIVATE\r\n";
+   echo "CLASS:PRIVATE\r\n";
       } else {
-	  echo "CLASS:PUBLIC\r\n";
+   echo "CLASS:PUBLIC\r\n";
       }
 
       // ATTENDEE of the event
       $attendee = export_get_attendee($row[0], "ical");
 
       for ($i = 0; $i < count($attendee); $i++) {
-	  $attendee[$i] = export_fold_lines($attendee[$i],"utf8");
-	  while (list($key,$value) = each($attendee[$i]))
-	    echo "$value\r\n";
+   $attendee[$i] = export_fold_lines($attendee[$i],"utf8");
+   while (list($key,$value) = each($attendee[$i]))
+     echo "$value\r\n";
       }
 
       /* Time - all times are utc */
@@ -861,10 +861,10 @@ function pilot_date_time ( $date, $time, $duration, $csv=false ) {
 
   if ( $csv )
     return sprintf ( "%04d-%02d-%02d%s%02d:%02d:00",
-		     $year, $month, $mday, $csv, $hour, $min );
+       $year, $month, $mday, $csv, $hour, $min );
   else
     return sprintf ( "%04d/%02d/%02d %02d%02d  GMT%s%d%02d",
-		     $year, $month, $mday, $hour, $min, $tzsign, $tzh, $tzm );
+       $year, $month, $mday, $hour, $min, $tzsign, $tzh, $tzm );
 } //end function
 
 function export_install_datebook ($id) {
@@ -874,7 +874,7 @@ function export_install_datebook ($id) {
     $start_time = pilot_date_time ( $row[3], $row[4], 0 );
     $end_time = pilot_date_time ( $row[3], $row[4], $row[8] );
     printf ( "%s\t%s\t\t%s\n",
-	     $start_time, $end_time, $row[1] );
+      $start_time, $end_time, $row[1] );
     echo "Start time: $start_time\n";
     echo "End time: $end_time\n";
     echo "Duration: $row[8]\n";
@@ -883,7 +883,7 @@ function export_install_datebook ($id) {
 } //end function
 
 function get_cal_ent_extras($id, $from, $where = false) {
-  $res = dbi_query( "SELECT * FROM $from WHERE cal_id='$id'".	( $where?"AND ( $where );":';') );
+  $res = dbi_query( "SELECT * FROM $from WHERE cal_id='$id'". ( $where?"AND ( $where );":';') );
   if ( $res )
     return ( dbi_fetch_row($res) );
   else
@@ -892,7 +892,7 @@ function get_cal_ent_extras($id, $from, $where = false) {
 
 function export_pilot_csv ($id) {
   /* to be imported to a Palm with:
-   *		pilot-datebook -r csv -f webcalendar-export.txt -w hotsync
+   *  pilot-datebook -r csv -f webcalendar-export.txt -w hotsync
    */
 
   $res = export_get_event_entry($id);
@@ -913,17 +913,17 @@ function export_pilot_csv ($id) {
     // note: Palm "Untimed" is WebCalendar "AllDay"
     if ( $row[4] < 0 ) {
       echo
-	'1,',				// untimed
-	substr($row[3],0,4), '-',	// beginDate (str: YYYY-MM-DD) + beginTime
-	substr($row[3],4,2), '-',
-	substr($row[3],6,2), ',00:00:00,',
-	substr($row[3],0,4), '-',	// endDate + endTime
-	substr($row[3],4,2), '-',
-	substr($row[3],6,2), ',00:00:00,';
+ '1,',    // untimed
+ substr($row[3],0,4), '-', // beginDate (str: YYYY-MM-DD) + beginTime
+ substr($row[3],4,2), '-',
+ substr($row[3],6,2), ',00:00:00,',
+ substr($row[3],0,4), '-', // endDate + endTime
+ substr($row[3],4,2), '-',
+ substr($row[3],6,2), ',00:00:00,';
     } else {
       echo '0,', // untimed
-	pilot_date_time($row[3], $row[4], 0, ','), ',',	// beginDate,beginTime
-	pilot_date_time($row[3], $row[4], $row[8], ','), ',';	//endDate,endTime
+ pilot_date_time($row[3], $row[4], 0, ','), ',', // beginDate,beginTime
+ pilot_date_time($row[3], $row[4], $row[8], ','), ','; //endDate,endTime
     } //end if ( $row[4] < 0 )
     // description (str)
     echo '"', preg_replace("/\x0D?\n/", "\\n", $row[1]), '",';
@@ -945,44 +945,44 @@ function export_pilot_csv ($id) {
     // repeatEnd (time)
     // repeatFrequency (int)
     // repeatDay (int: day# or 0..6=Sun..Sat 1st, 7..13 2nd, 14..20 3rd,
-    //					21..27 4th,  28-34 last week)
+    //     21..27 4th,  28-34 last week)
     // repeatWeekdays (int: add - 1=Sun,2=Mon,4=Tue,8=Wed,16=Thu,32=Fri,64=Sat)
     // repeatWeekstart (int)
     $ext = get_cal_ent_extras($row[0], 'webcal_entry_repeats');
     if ( $ext ) {
       switch ( $ext[1] ) {
-	case 'daily':		$repType = 1; break;
-	case 'weekly':		$repType = 2; break;
-	case 'monthlyByDate':	$repType = 3; break;
-	case 'monthlyByDay':	$repType = 4; break;
-	case 'yearly':		$repType = 5; break;
-	default:			$repType = 0;
+ case 'daily':  $repType = 1; break;
+ case 'weekly':  $repType = 2; break;
+ case 'monthlyByDate': $repType = 3; break;
+ case 'monthlyByDay': $repType = 4; break;
+ case 'yearly':  $repType = 5; break;
+ default:   $repType = 0;
       }
     } else $repType = 0;
     if ( $repType ) {
-      echo $repType, ',';		// repeatType
+      echo $repType, ',';  // repeatType
       if ( $ext[2] ) {
-	echo '0,', 			// repeatForever
-	  substr($ext[2],0,4), '-',	// repeatEnd
-	  substr($ext[2],4,2), '-',
-	  substr($ext[2],6,2), ' 00:00:00,';
+ echo '0,',    // repeatForever
+   substr($ext[2],0,4), '-', // repeatEnd
+   substr($ext[2],4,2), '-',
+   substr($ext[2],6,2), ' 00:00:00,';
       } else
-	echo '1,,';	// repeatForever,repeatEnd
+ echo '1,,'; // repeatForever,repeatEnd
       echo $ext[3], ',';// repeatFrequency
       switch ( $repType ) {
-	case 2:	// weekly
-	  echo '0,', bindec(strtr(strrev($ext[4]),'yn','10')) ,",1\n";
-	  break;
-	case 3:	// monthly/weekday
-		// repeatDay (0..6=Sun..Sat 1st, 7..13 2nd, 14..20 3rd,
-		// 21..27 4th,  28-34 last week)
-		echo floor( substr($row[3], 6, 2) / 7) *7
-		  + date( 'w', date_to_epoch($row[3]) ), ",0,0\n";
-		break;
-	case 1:	// daily
-	case 4:	// monthly
-	case 5:	// yearly
-		echo "0,0,0\n";
+ case 2: // weekly
+   echo '0,', bindec(strtr(strrev($ext[4]),'yn','10')) ,",1\n";
+   break;
+ case 3: // monthly/weekday
+  // repeatDay (0..6=Sun..Sat 1st, 7..13 2nd, 14..20 3rd,
+  // 21..27 4th,  28-34 last week)
+  echo floor( substr($row[3], 6, 2) / 7) *7
+    + date( 'w', date_to_epoch($row[3]) ), ",0,0\n";
+  break;
+ case 1: // daily
+ case 4: // monthly
+ case 5: // yearly
+  echo "0,0,0\n";
       } //end switch
     } else
       echo "0,0,,0,0,0,0\n";

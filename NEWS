@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1265900:  exportation to iCal. Newlines should not be escaped per RFC2445
       1265575: Bug in get_all_dates()
       1275972: First day of daily repeat missing
       1272390: publish.php broken in v1.1-CVS
