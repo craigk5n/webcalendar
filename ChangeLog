@@ -1,12 +1,13 @@
 Version 1.1.0-CVS (?? ??? 2005)
- - Fixed bug 1276729:  v1.1 cal_mod_date/time not stored in GMT
- - Fixed bug 1276782:  icalclient defaults to __public__ permissions
- - Fixed bug 1246913:  cal_status incorrect when publish from iCal
+ - Fixed bug 1276005: Events ending at midnight do not display properly
+ - Fixed bug 1276729: v1.1 cal_mod_date/time not stored in GMT
+ - Fixed bug 1276782: icalclient defaults to __public__ permissions
+ - Fixed bug 1246913: cal_status incorrect when publish from iCal
  - Fixed bug 1276709: week_details.php broke in revision 1.31 and up
  - Implemented RFE 1209445: single-day untimed events appear before multi-day
- - Fixed bug 1265900:  exportation to iCal. Newlines should not be escaped per RFC2445
- - Fixed bug  1265575: Bug in get_all_dates()
- - Fixed bug  1275972: First day of daily repeat missing
+ - Fixed bug 1265900: exportation to iCal. Newlines should not be escaped per RFC2445
+ - Fixed bug 1265575: Bug in get_all_dates()
+ - Fixed bug 1275972: First day of daily repeat missing
  - Added minical.php for using in iframe in external site
  - Fixed bug 1272390: publish.php broken in v1.1-CVS
  - Fixed bug 1259997: repeating events don't send reminder on last day
