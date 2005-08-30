@@ -5242,6 +5242,8 @@ function sort_events_insensitive ( $a, $b ) {
  */
 function combine_and_sort_events ( $ev, $rep ) { 
 
+   $ids = array();
+
   // repeating events show up in $ev and $rep
   // record their ids and don't add them to the combined array
   foreach ( $rep as $obj ) {
