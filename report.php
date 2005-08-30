@@ -450,28 +450,13 @@ if ( empty ( $error ) && empty ( $list ) ) {
     $dateYmd = date ( "Ymd", $cur_time );
     $rep = get_repeating_entries ( empty ( $user ) ? $login : $user, $dateYmd );
     $ev = get_entries ( empty ( $user ) ? $login : $user, $dateYmd );
-    $cur_rep = 0;
+    $ev = combine_and_sort_events($ev, $rep);
     //echo "DATE: $dateYmd <br />\n";
   
     for ( $i = 0; $i < count ( $ev ); $i++ ) {
-      // print out any repeating events that are before this one...
-      while ( $cur_rep < count ( $rep ) &&
-        $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
-        if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-          $event_str .= event_to_text ( $rep[$cur_rep], $dateYmd );
-        }
-        $cur_rep++;
-      }
       if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
         $event_str .= event_to_text ( $ev[$i], $dateYmd );
       }
-    }
-    // print out any remaining repeating events
-    while ( $cur_rep < count ( $rep ) ) {
-      if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-        $event_str .= event_to_text ( $rep[$cur_rep], $dateYmd );
-      }
-      $cur_rep++;
     }
   
     if ( ! empty ( $event_str ) || $report_include_empty == 'Y' ||
