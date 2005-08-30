@@ -292,6 +292,7 @@ function etooltip ( $str ) {
     // translators will be aware that they also need to translate language names.
     //
     // translate("English")
+    // translate("English-US")
     // translate("Basque")
     // translate("Bulgarian")
     // translate("Catalan")
