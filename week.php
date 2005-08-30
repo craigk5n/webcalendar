@@ -167,40 +167,22 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
   // get all the repeating events for this date and store in array $rep
   $date = date ( "Ymd", $days[$d] );
   $rep = get_repeating_entries ( $user, $date );
-  $cur_rep = 0;
 
   // Get static non-repeating events
   $ev = get_entries ( $user, $date, $get_unapproved, true, true );
+
+  // combine and sort the event arrays
+  $ev = combine_and_sort_events($ev, $rep);
+
   $hour_arr = array ();
   $rowspan_arr = array ();
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    // print out any repeating events that are before this one...
-    while ( $cur_rep < count ( $rep ) &&
-      $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
-      if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-        if ( $rep[$cur_rep]->isAllDay() ) {
-          $all_day[$d] = 1;
-        }
-        html_for_event_week_at_a_glance ( $rep[$cur_rep], $date );
-      }
-      $cur_rep++;
-    }
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
       if ( $ev[$i]->isAllDay() ) {
         $all_day[$d] = 1;
       }
       html_for_event_week_at_a_glance ( $ev[$i], $date );
     }
-  }
-  // print out any remaining repeating events
-  while ( $cur_rep < count ( $rep ) ) {
-    if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-      if ( $rep[$cur_rep]->isAllDay() ) {
-        $all_day[$d] = 1;
-      }
-      html_for_event_week_at_a_glance ( $rep[$cur_rep], $date );
-    }
-    $cur_rep++;
   }
 
   // squish events that use the same cell into the same cell.

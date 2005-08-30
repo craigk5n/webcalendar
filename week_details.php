@@ -253,30 +253,17 @@ function print_det_date_entries ( $date, $user, $ssi ) {
 
   // get all the repeating events for this date and store in array $rep
   $rep = get_repeating_entries ( $user, $date );
-  $cur_rep = 0;
 
   // get all the non-repeating events for this date and store in $ev
   $ev = get_entries ( $user, $date );
 
+  // combine and sort the event arrays
+  $ev = combine_and_sort_events($ev, $rep);
+
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    // print out any repeating events that are before this one...
-    while ( $cur_rep < count ( $rep ) &&
-      $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
-      if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
-        $rep[$cur_rep]->getStatus() == 'A' )
-        print_detailed_entry ( $rep[$cur_rep], $date );
-      $cur_rep++;
-    }
     if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
       $ev[$i]->getStatus() == 'A' )
       print_detailed_entry ( $ev[$i], $date );
-  }
-  // print out any remaining repeating events
-  while ( $cur_rep < count ( $rep ) ) {
-    if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
-      $rep[$cur_rep]->getStatus() == 'A' )
-      print_detailed_entry ( $rep[$cur_rep], $date );
-    $cur_rep++;
   }
 }
 ?>
