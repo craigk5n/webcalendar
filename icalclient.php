@@ -142,8 +142,8 @@ if ( empty ( $login ) ) {
   }  
 }
  
-load_global_settings ($login);
-load_user_preferences ($login);
+load_global_settings ();
+load_user_preferences ();
 
 $WebCalendar->setLanguage();
 
@@ -783,9 +783,9 @@ foreach ( $data as $Entry ){
       $values[] = ($Entry['Untimed'] == 1) ? "-1" :
         sprintf ( "%02d%02d00", $Entry['StartHour'],$Entry['StartMinute']);
       $names[] = 'cal_mod_date';
-      $values[] = date("Ymd");
+      $values[] = gmdate("Ymd");
       $names[] = 'cal_mod_time';
-      $values[] = date("Gis");
+      $values[] = gmdate("Gis");
       $names[] = 'cal_duration';
       $values[] = sprintf ( "%d", $Entry['Duration'] );
       $names[] = 'cal_priority';
@@ -1330,12 +1330,18 @@ global $login;
   		$fevent['Class'] = "P";
   }
   
+ if ( ! empty ( $event['status'] ) ) {
   if ($event['status'] == "TENTATIVE") {
   		$fevent['Status'] = "W";
   } else if ($event['status'] == "CONFIRMED") {
  		$fevent['Status'] = "A";
   } else if ($event['status'] == "CANCELLED"){
   		$fevent['Status'] = "D";
+    } else {
+    $fevent['Status'] = "A"; 
+   }
+ } else {
+   $fevent['Status'] = "A"; 
   }
 
   // Repeats
