@@ -230,10 +230,12 @@ function etooltip ( $str ) {
       "Polish" => "Polish",
       "Portuguese" =>"Portuguese",
       "Portuguese/Brazil" => "Portuguese_BR",
+      "Romanian" =>"Romanian",
       "Russian" => "Russian",
       "Spanish" =>"Spanish",
       "Swedish" =>"Swedish",
-      "Turkish" =>"Turkish"
+      "Turkish" =>"Turkish",
+      "Welsh" => "Welsh"
       // add new languages here!  (don't forget to add a comma at the end of
       // last line above.)
     );
