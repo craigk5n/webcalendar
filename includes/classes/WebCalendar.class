@@ -773,6 +773,13 @@ class WebCalendar {
           $login = $PHP_AUTH_USER;
 
       } elseif ( substr($user_inc,0,9) == 'user-app-' ) {
+        // Make sure we are connected to the database for session check
+        $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
+        if ( ! $c ) {
+          die_miserable_death (
+            "Error connecting to database:<blockquote>" .
+            dbi_error () . "</blockquote>\n" );
+        }
         // Use another application's authentication
         if (! $login = user_logged_in()) app_login_screen(clean_whitespace($_SERVER['SCRIPT_URI']));
       
