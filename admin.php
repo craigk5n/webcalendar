@@ -228,8 +228,9 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
     $datestyles = array (
      "__month__ __dd__, __yyyy__", translate("December") . " 31, 2000",
      "__dd__ __month__, __yyyy__", "31 " . translate("December") . ", 2000",
+     "__dd__ __month__ __yyyy__", "31 " . translate("December") . " 2000",
      "__dd__-__month__-__yyyy__", "31-" . translate("December") . "-2000",
-    "__dd__.__month__ __yy__", "31. " . translate("December") . " 2000",
+     "__dd__ __month__ __yy__", "31 " . translate("December") . " 2000",
      "__dd__-__month__-__yy__", "31-" . translate("December") . "-00",
      "__mm__/__dd__/__yyyy__", "12/31/2000",
      "__mm__/__dd__/__yy__", "12/31/00",
@@ -289,7 +290,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
     $datestyles = array (
      "__month__ __dd__", translate("December") . " 31",
      "__month__-__dd__", translate("December") . "-31",
-    "__month__-__dd__", "31. " . translate("December"),
+     "__dd__ __month__", "31 " . translate("December"),
      "__mm__/__dd__", "12/31",
      "__mm__-__dd__", "12-31",
      "__dd__/__mm__", "31/12",

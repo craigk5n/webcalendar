@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Patch 1275638: minor typos in date formats
  - Patch 1275857: Added missing Romanian and Welsh from array in translate.php
  - Fixed bug 1276005: Events ending at midnight do not display properly
  - Fixed bug 1276729: v1.1 cal_mod_date/time not stored in GMT
