@@ -110,6 +110,7 @@ public class ControlPanel
   /** Create the main window */
   public void createWindow ( int width, int height, WebCalendarClient client )
   {
+    JMenuItem item;
     this.client = client;
     toplevel = new JFrame ( appName );
     JPanel mainPanel = new JPanel ();
@@ -122,7 +123,8 @@ public class ControlPanel
     menu.setMnemonic ( KeyEvent.VK_F );
     menubar.add ( menu );
 
-    JMenuItem item = new JMenuItem ( "Open WebCalendar URL..." );
+    /*
+    item = new JMenuItem ( "Open WebCalendar URL..." );
     item.setAccelerator ( KeyStroke.getKeyStroke (
       KeyEvent.VK_O, ActionEvent.ALT_MASK ) );
     item.addActionListener (
@@ -134,6 +136,7 @@ public class ControlPanel
     );
     menu.add ( item );
     menu.addSeparator ();
+    */
 
     item = new JMenuItem ( "Exit" );
     item.setAccelerator ( KeyStroke.getKeyStroke (
@@ -187,6 +190,10 @@ public class ControlPanel
     cmdPanel.setLayout ( new FlowLayout () );
 
     JButton b = new JButton ( "Add..." );
+    b.setEnabled ( false );
+    cmdPanel.add ( b ); // TODO
+
+    b = new JButton ( "Import..." );
     b.setEnabled ( false );
     cmdPanel.add ( b ); // TODO
 
