@@ -57,6 +57,12 @@ print_header('', $style);
 $names = array ();
 $links = array ();
 
+if ( $is_admin && ! empty ( $server_url )
+  && access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) ) {
+  $names[] = translate ( "Control Panel" );
+  $links[] = "controlpanel.php";
+}
+
 if ($is_nonuser_admin) {
   if ( ! access_is_enabled () ||
     access_can_access_function ( ACCESS_PREFERENCES ) ) {
