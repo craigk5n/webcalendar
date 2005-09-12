@@ -10,6 +10,9 @@
  * all-day event is a 12am event with duration 24 hours.  We store
  * untimed events with a start time of -1 in the webcalendar database.
  *
+ * TODO:
+ *	Add support for categories
+ *
  *********************************************************************/
 include_once 'includes/init.php';
 
@@ -722,7 +725,7 @@ function export_vcal ($id) {
       export_alarm_vcal($uid,$date,$time);
 
       /* Goodbye event */
-      echo "END:VEVENT\n";
+      echo "END:VEVENT\r\n";
     } //end while (list($key,$row) = each($entry_array))
 
   if (count($entry_array) > 0)
