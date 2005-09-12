@@ -2,7 +2,7 @@
  * $Id$
  *
  * Description:
- *	WebCalendar Admin Control Panel - used to administer WebCalendar
+ *	WebCalendar Admin ControlPanel - used to administer WebCalendar
  *
  * THIS IS STILL UNDER CONSTRUCTION...
  *
@@ -233,6 +233,34 @@ public class ControlPanel
     }
   }
 
+
+  /**
+    * Show an error on the screen.
+    * @param message	The error message to display
+    */
+  public static void fatalError ( String message )
+  {
+    System.err.println ( message );
+    JOptionPane.showMessageDialog ( null, message,
+      "WebCalendar ControlPanel Error",
+      JOptionPane.WARNING_MESSAGE );
+    System.exit ( 1 );
+  }
+
+  /**
+    * Prompt the user for a text response.
+    * @param message	The prompt to provide the user
+    * @return		The text the user provided
+    */
+  public static String promptUser ( String message )
+  {
+    String s = (String)JOptionPane.showInputDialog (
+      null, message, "WebCalendar ControlPanel",
+      JOptionPane.PLAIN_MESSAGE, null, null, "");
+    return s;
+  }
+
+
   public static void main(String[] args) {
     String urlStr = null;
     URL loginURL = null, reminderURL = null;
@@ -241,6 +269,9 @@ public class ControlPanel
     String username = null; // HTTP username
     String password = null; // HTTP password
     WebCalendarClient client = null; // WebCalendar client connection
+
+    System.out.println ( "WebCalendar ControlPanel version: " +
+      "$Id$" );
 
     for ( int i = 0; i < args.length; i++ ) {
       if ( args[i].startsWith ( "-url=" ) ) {
@@ -262,35 +293,67 @@ public class ControlPanel
       } else if ( args[i].startsWith ( "-httppassword=" ) ) {
         password = args[i].substring ( 14 );
       } else {
-        System.err.println ( "Invalid argument '" + args[i] + "'" );
-        System.err.println (
-          "Usage: java ControlPanel [options]" );
-        System.err.println ( "  options:" );
-        System.err.println ( "    -url=XXX" );
-        System.err.println ( "    -username=XXX" );
-        System.err.println ( "    -passwd=XXX" );
-        System.err.println ( "    -httpusername=XXX" );
-        System.err.println ( "    -httppasswd=XXX" );
-        System.exit ( 1 );
+        StringBuffer sb = new StringBuffer ( 128 );
+        sb.append ( "Invalid argument '" + args[i] + "'\n" );
+        sb.append (
+          "Usage: java ControlPanel [options]\n" );
+        sb.append ( "  options:\n" );
+        sb.append ( "    -url=XXX\n" );
+        sb.append ( "    -username=XXX\n" );
+        sb.append ( "    -passwd=XXX\n" );
+        sb.append ( "    -httpusername=XXX\n" );
+        sb.append ( "    -httppasswd=XXX\n" );
+        String msg = sb.toString ();
+        fatalError ( msg );
       }
     }
     if ( urlStr == null ) {
-      System.err.println ( "No URL specified." );
-      System.exit ( 1 );
+      fatalError ( "No URL specified." );
     }
     if ( ! urlStr.endsWith ( "/" ) ) {
-      System.err.println ( "Invalid WebCalendar URL." );
-      System.err.println ( "Should be base URL (ends with '/')" );
-      System.exit ( 1 );
+      fatalError ( "Invalid WebCalendar URL.\n" +
+        "Should be base URL (ends with '/')" );
     }
 
+    URL url = null;
     try {
-      URL url = new URL ( urlStr );
-      client = new WebCalendarClient ( url );
+      url = new URL ( urlStr );
     } catch ( Exception e ) {
-      System.err.println ( "Invalid URL: " + urlStr );
-      System.exit ( 1 );
+      fatalError ( "Invalid URL: " + urlStr );
     }
+
+System.out.println ( "username: " + username );
+System.out.println ( "wcUsername: " + wcUsername );
+
+    // TODO: don't display password as users type them
+    // If no http password but we have a http username,
+    // prompt for them now...
+    while ( username != null &&
+      ( password == null || password.length() == 0 ) ) {
+      password = promptUser ( "Your server requires HTTP authentication.\n\n" +
+        "Please enter the password\nfor user \"" +
+        username + "\".\n\nPassword:" );
+    }
+
+    // If no http username or webcal username, let's assume they are using
+    // web-based auth and ask for a webcal username.
+    if ( ( wcUsername == null || wcUsername.length() == 0 ) &&
+     ( username == null || username.length() == 0 ) ) {
+      while ( wcUsername == null || wcUsername.length() == 0 ) {
+        wcUsername = promptUser (
+          "Please enter your\nWebCalendar username.\n\nLogin:" );
+      }
+    }
+
+    // If no webcal password but we have a webcal username,
+    // prompt for them now...
+    while ( wcUsername != null &&
+      ( wcPassword == null || wcPassword.length() == 0 ) ) {
+      wcPassword = promptUser ( "Please enter the password\nfor user \"" +
+        wcUsername + "\".\n\nPassword:" );
+    }
+
+    client = new WebCalendarClient ( url );
 
     ControlPanel app = new ControlPanel ();
     client.setMessageDisplayer ( (MessageDisplayer)app );
@@ -314,12 +377,11 @@ public class ControlPanel
       try {
         label.setText ( "Logging in to server..." );
         if ( ! client.login () ) {
-          System.err.println ( "Invalid WebCalendar login" );
-          System.exit ( 1 );
+          fatalError ( "Invalid WebCalendar login" );
         }
       } catch ( Exception e ) {
-        System.err.println ( "Error on WebCalendar login: " + e.toString() );
-        System.exit ( 1 );
+        e.printStackTrace ();
+        fatalError ( "Error on WebCalendar login: " + e.toString() );
       }
     }
 
