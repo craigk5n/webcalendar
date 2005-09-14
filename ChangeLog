@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Applied patch 1290583: No more crash in tz_import.php on install and fixed
+   quoted int values in sql
  - Patch 1275638: minor typos in date formats
  - Patch 1275857: Added missing Romanian and Welsh from array in translate.php
  - Fixed bug 1276005: Events ending at midnight do not display properly
