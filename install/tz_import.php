@@ -37,7 +37,9 @@ $max_date = mktime ( 0, 0, 0, 1, 1, 2038, 0 );
 // webcal_entry, webcal_entry_logs
 // cal_date and cal_time values
 // We could get this from PHP date( "Z")
-function convert_server_to_GMT ( $offset=0 ) {
+// Also, if the user specifies, we will use the server's
+// Timezone and determine if DST is in effect for each date
+function convert_server_to_GMT ( $offset=0, $server_tz='' ) {
   // Current max values in tz database are -12 to 15
  // but we add 1 to account for possible DST
  // Note this is not scientific
@@ -54,7 +56,7 @@ function convert_server_to_GMT ( $offset=0 ) {
       $cal_time = sprintf ( "%06d", $row[1] );
    $cal_id = $row[2];
    $cal_duration = $row[3];
-   //  Skip Untimed ot All Day events
+   //  Skip Untimed or All Day events
    if ( ( $cal_time == -1 ) || ( $cal_time == 0 && $cal_duration == 1440 ) ){
      continue;
    } else {
@@ -128,7 +130,7 @@ function get_lastDay ( $year, $month = 'Jan',  $which, $time = '' ) {
  global $days_of_week, $months;
  if ( $time <> '' ) {
   $hours = substr ( $time, 0, strpos( $time, ":"));
-  $minutes = substr ( $time, strpos( $time, ":"), 2);
+  $minutes = substr ( $time, strpos( $time, ":") +1, 2);
  } else {
   $hours = $minutes = 0;
  }
@@ -143,7 +145,7 @@ function get_ltgtDay (  $year, $month = 'Jan',  $which, $time = '' ) {
  global $days_of_week, $months;
   if ( $time <> '' ) {
   $hours = substr ( $time, 0, strpos( $time, ":"));
-  $minutes = substr ( $time, strpos( $time, ":"), 2);
+  $minutes = substr ( $time, strpos( $time, ":") +1, 2);
  } else {
   $hours = $minutes = 0;
  }
@@ -254,8 +256,8 @@ function do_tz_import ( $file_path= "timezone/") {
      $rule_save = get_seconds ( $data[8] );
      $sql = "INSERT INTO webcal_tz_rules ( rule_name, rule_from, rule_to, rule_type, " .
       "rule_in, rule_on, rule_at, rule_at_suffix, rule_save, rule_letter ) " .
-      "VALUES ( '$data[1]', '$data[2]', '$data[3]', '$data[4]', '" . $months[$data[5]] . 
-      "', '$data[6]', '$rule_at', '$rule_at_suffix','$rule_save','" .
+      "VALUES ( '$data[1]', $data[2], $data[3], '$data[4]', " . $months[$data[5]] . 
+      ", '$data[6]', $rule_at, '$rule_at_suffix',$rule_save,'" .
       ( $data[9] == "-" ?"":$data[9]) . "' )";
      if ( ! dbi_query ( $sql ) ) {
       $error = "Database error: " . dbi_error ();
@@ -284,7 +286,7 @@ function do_tz_import ( $file_path= "timezone/") {
      }
      $sql = "INSERT INTO webcal_tz_zones ( zone_name, zone_gmtoff, zone_rules, " .
       "zone_format, zone_from, zone_until ) " .
-       "VALUES ( '$data[1]', '$zone_gmtoff', '$data[3]', '$data[4]', $zone_from, $zone_until )";
+       "VALUES ( '$data[1]', $zone_gmtoff, '$data[3]', '$data[4]', $zone_from, $zone_until )";
      if ( ! dbi_query ( $sql ) ) {
       $error = "Database error: " . dbi_error ();
      }  
