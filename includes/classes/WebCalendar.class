@@ -51,7 +51,7 @@ class WebCalendar {
    * @todo Make it possible to distinguish between files in different directories (e.g. login.php and ws/login.php).
    */
   var $_filePhaseMap = array(
-    '/^(nulogin|login|freebusy|publish|register|rss|upcoming|week_ssi|minical)\.php$/' =>
+    '/^(nulogin|login|freebusy|publish|register|rss|upcoming|week_ssi|minical|controlpanel)\.php$/' =>
       array(array('Config', 'PHPDBI', 'Functions'),
             array('User', 'Connect')),
     '/^(icalclient|get_reminders|get_events|ws)\.php$/' =>
@@ -1236,7 +1236,7 @@ class WebCalendar {
       ACCESS_ACCOUNT_INFO => "XYZXYZ_special_case",
       ACCESS_ACCESS_MANAGEMENT => "(access.*php)",
       ACCESS_PREFERENCES => "pref.*php",
-      ACCESS_SYSTEM_SETTINGS => "(admin.php|admin_handler.php)",
+      ACCESS_SYSTEM_SETTINGS => "(admin.php|admin_handler.php|controlpanel.php)",
       ACCESS_IMPORT => "import.*php",
       ACCESS_EXPORT => "export.*php",
       ACCESS_PUBLISH => "(publish.php|freebusy.php|rss.php|minical.php)",
