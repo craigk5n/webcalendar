@@ -59,8 +59,8 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 $out = '<result>';
 
 // If not an admin user, they cannot do this...
-if ( ! $admin ) {
-  $error = translate("Not authorized");
+if ( ! $is_admin ) {
+  $error = translate("Not authorized") . ' ' . "(not admin)";
 }
 
 // Some installs do not allow
@@ -70,11 +70,12 @@ if ( empty ( $error ) && ! $admin_can_add_user ) {
 
 $user_login = getGetValue ( 'username' );
 $user_firstname = getGetValue ( 'firstname' );
-$lastname = getGetValue ( 'lastname' );
-$password = getGetValue ( 'password' );
+$user_lastname = getGetValue ( 'lastname' );
+$user_password = getGetValue ( 'password' );
 $admin = getGetValue ( 'admin' );
-$email = getGetValue ( 'email' );
-$add = getGetValue ( 'add' );
+$user_email = getGetValue ( 'email' );
+$addIn = getGetValue ( 'add' );
+$add = ( ! empty ( $addIn ) && $addIn == '1' );
 
 // This error should not happen in a properly written client, so no need to
 // translate it.
@@ -87,12 +88,6 @@ if ( empty ( $error ) && addslashes ( $user_login ) != $user_login ) {
   $error = "Invalid characters in login.";
 }
 
-if ( empty ( $add ) || $add != '1' ) {
-  $add = false;
-} else {
-  $add = true;
-}
-
 // Check to see if username exists
 if ( empty ( $error ) ) {
   if ( user_load_variables ( $user_login, 'old_' ) ) {
@@ -103,7 +98,7 @@ if ( empty ( $error ) ) {
     }
   } else {
     // username does not already exist
-    if ( $add ) {
+    if ( ! $add ) {
       $error = "User " . ws_escape_xml ( $user_login ) .
         " does not exist";
     }
