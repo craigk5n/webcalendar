@@ -1,6 +1,6 @@
 #!/usr/local/bin/php -q
 <?php
-/* $Id
+/* $Id$
  *
  * Description:
  * This is a command-line script that will send out any email
