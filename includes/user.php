@@ -146,6 +146,7 @@ function user_valid_crypt ( $login, $crypt_password ) {
  */
 function user_load_variables ( $login, $prefix ) {
   global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX;
+  $ret = false;
 
   if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
@@ -178,13 +179,14 @@ function user_load_variables ( $login, $prefix ) {
       else
         $GLOBALS[$prefix . "fullname"] = $login;
       $GLOBALS[$prefix . "password"] = $row[4];
+      $ret = true;
     }
     dbi_free_result ( $res );
   } else {
     $error = translate ("Database error") . ": " . dbi_error ();
     return false;
   }
-  return true;
+  return $ret;
 }
 
 /**
