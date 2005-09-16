@@ -37,7 +37,19 @@ public class User {
   /** Full name */
   public String fullName = null;
   /** Email address */
-  String email = null;
+  public String email = null;
+  /** Is admin user? */
+  public boolean isAdmin = false;
+  /** password */
+  public String password = null;
+
+  /**
+    * Simple constructor
+    */
+  public User ( String login )
+  {
+    this.login = login;
+  }
   
   /**
     * Construct the specified XML DOM node

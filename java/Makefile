@@ -1,10 +1,23 @@
 # WebCalendar java Makefile
-# $Id#
+# $Id$
 #
+# Notes:
+# If you add/remove/change the java files that need to be compiled, just
+# do 'make update' to update this Makefile.
+#
+# This has only been tested on Linux and Windoze/Cygwin, but should work
+# with any OS.
+#
+# And, yes, I know java people like to use Ant, but I just don't see the
+# advantage in this case...
+#
+##############################################################################
 
 JCC =	javac
 JAR =	jar
 JAVADOC = javadoc
+# script to sign the JAR file
+SIGNJAR = signjar.sh
 
 PACKAGEDIR = us/k5n/webcalendar
 
@@ -14,14 +27,19 @@ PACKAGEDIR = us/k5n/webcalendar
 	$(JCC) -classpath . $*.java
 
 # START CLASSLIST
-CLASSLIST = $(PACKAGEDIR)/Event.class $(PACKAGEDIR)/EventDisplayer.class $(PACKAGEDIR)/EventList.class $(PACKAGEDIR)/EventLoader.class $(PACKAGEDIR)/Login.class $(PACKAGEDIR)/LoginSession.class $(PACKAGEDIR)/MessageDisplayer.class $(PACKAGEDIR)/Reminder.class $(PACKAGEDIR)/ReminderDisplayer.class $(PACKAGEDIR)/ReminderList.class $(PACKAGEDIR)/ReminderLoader.class $(PACKAGEDIR)/ShowReminder.class $(PACKAGEDIR)/Utils.class $(PACKAGEDIR)/WebCalendarClient.class $(PACKAGEDIR)/WebCalendarErrorException.class $(PACKAGEDIR)/WebCalendarParseException.class $(PACKAGEDIR)/ui/ReminderApp.class $(PACKAGEDIR)/ui/SampleApp.class $(PACKAGEDIR)/ui/ControlPanel.class $(PACKAGEDIR)/User.class $(PACKAGEDIR)/UserList.class 
+CLASSLIST = $(PACKAGEDIR)/Event.class $(PACKAGEDIR)/EventDisplayer.class $(PACKAGEDIR)/EventList.class $(PACKAGEDIR)/EventLoader.class $(PACKAGEDIR)/Login.class $(PACKAGEDIR)/LoginSession.class $(PACKAGEDIR)/MessageDisplayer.class $(PACKAGEDIR)/Reminder.class $(PACKAGEDIR)/ReminderDisplayer.class $(PACKAGEDIR)/ReminderList.class $(PACKAGEDIR)/ReminderLoader.class $(PACKAGEDIR)/ShowReminder.class $(PACKAGEDIR)/Utils.class $(PACKAGEDIR)/WebCalendarClient.class $(PACKAGEDIR)/WebCalendarErrorException.class $(PACKAGEDIR)/WebCalendarParseException.class $(PACKAGEDIR)/ui/ReminderApp.class $(PACKAGEDIR)/ui/SampleApp.class $(PACKAGEDIR)/ui/ControlPanel/UserListener.class $(PACKAGEDIR)/ui/ControlPanel/UserDialog.class $(PACKAGEDIR)/ui/ControlPanel/Main.class $(PACKAGEDIR)/User.class $(PACKAGEDIR)/UserList.class 
 # END CLASSLIST
 
 all: webcalendar.jar
 
 webcalendar.jar: $(CLASSLIST) manifest-mod
 	$(JAR) cmf manifest-mod webcalendar.jar \
-	us/k5n/webcalendar/*class us/k5n/webcalendar/ui/*class
+	us/k5n/webcalendar/*class us/k5n/webcalendar/ui/*class \
+	us/k5n/webcalendar/ui/ControlPanel/*class
+	@if [ -f $(SIGNJAR) ]; then \
+		$(SIGNJAR) webcalendar.jar; \
+	fi
+	cp -p webcalendar.jar ../ws
 
 clean:
 	rm -f $(CLASSLIST) webcalendar.jar
