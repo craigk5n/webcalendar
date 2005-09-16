@@ -9,7 +9,7 @@
  *	For more info on Java Web Start:
  *		http://www.java.com/en/download/faq/5000070700.xml
  *
- *	This starts up the us.k5n.webcalendar.ui.ControlPanel application.
+ *	This starts up the us.k5n.webcalendar.ui.ControlPanel.Main application.
  *	The ControlPanel application may eventually take over as the
  *	primary way of administering parts of WebCalendar.
  *
@@ -70,7 +70,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
     <j2se version="1.4"/>
     <jar href="ws/webcalendar.jar"/>
   </resources>
-  <application-desc main-class="us.k5n.webcalendar.ui.ControlPanel"
+  <application-desc main-class="us.k5n.webcalendar.ui.ControlPanel.Main"
    width="600" height="500">
     <argument>-url=<?php echo $server_url;?></argument>
 <?php if ( $use_http_auth ) { ?>
