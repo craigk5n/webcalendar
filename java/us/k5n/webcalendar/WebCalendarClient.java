@@ -10,6 +10,7 @@ import java.io.*;
 import javax.xml.parsers.*;
 import org.xml.sax.*;
 import org.w3c.dom.*;
+import java.net.URLEncoder;
 
 
 /**
@@ -332,6 +333,62 @@ public class WebCalendarClient implements MessageDisplayer {
     return data.toString ();
   }
 
+  /**
+    * Add a user
+    * @param user	User to add
+    * @return		true on success, false on error
+    */
+  public boolean addUser ( User user )
+  {
+    try {
+      StringBuffer sb = new StringBuffer ( 50 );
+      sb.append ( "ws/user_mod.php?add=1&username=" );
+      sb.append ( user.login );
+      if ( user.firstName != null && user.firstName.length() > 0 ) {
+        sb.append ( "&firstname=" );
+        sb.append ( URLEncoder.encode ( user.firstName ) );
+      }
+      if ( user.lastName != null && user.lastName.length() > 0 ) {
+        sb.append ( "&lastname=" );
+        sb.append ( URLEncoder.encode ( user.lastName ) );
+      }
+      if ( user.fullName != null && user.fullName.length() > 0 ) {
+        sb.append ( "&fullname=" );
+        sb.append ( URLEncoder.encode ( user.fullName ) );
+      }
+      if ( user.password != null && user.password.length() > 0 ) {
+        sb.append ( "&password=" );
+        sb.append ( URLEncoder.encode ( user.password ) );
+      }
+      if ( user.email != null && user.email.length() > 0 ) {
+        sb.append ( "&email=" );
+        sb.append ( URLEncoder.encode ( user.email ) );
+      }
+      if ( user.isAdmin ) {
+        sb.append ( "&admin=1" );
+      }
+      debug ( "Request: " + sb.toString () );
+      String result = query ( sb.toString () );
+      debug ( "Result:\n" + result );
+      if ( result.indexOf ( "success" ) >= 0 ) {
+        return true;
+      } else {
+        // Error!
+        int pos = result.indexOf ( "<error>" );
+        int pos2 = result.indexOf ( "</error>" );
+        String msg = "Error adding user: " + result;
+        if ( pos > 0 && pos2 > 0 ) {
+          msg = result.substring ( pos + 7, pos2 );
+        }
+        messageDisplayer.showError ( msg );
+      }
+    } catch ( Exception e ) {
+      showError ( "Error adding user:\n\n" + e.toString () );
+      e.printStackTrace ( );
+    }
+    return false;
+  }
+
   private void debug ( String message )
   {
     if ( debugEnabled )
@@ -342,17 +399,26 @@ public class WebCalendarClient implements MessageDisplayer {
 
   public void showReminder ( Reminder reminder )
   {
-    System.err.println ( "Reminder: " + reminder.toString() );
+    if ( messageDisplayer != null )
+      messageDisplayer.showReminder ( reminder );
+    else
+      System.err.println ( "Reminder: " + reminder.toString() );
   }
 
   public void showMessage ( String message )
   {
-    System.err.println ( message );
+    if ( messageDisplayer != null )
+      messageDisplayer.showMessage ( message );
+    else
+      System.err.println ( message );
   }
 
   public void showError ( String message )
   {
-    System.err.println ( "Error: " + message );
+    if ( messageDisplayer != null )
+      messageDisplayer.showError ( message );
+    else
+      System.err.println ( "Error: " + message );
   }
 
 

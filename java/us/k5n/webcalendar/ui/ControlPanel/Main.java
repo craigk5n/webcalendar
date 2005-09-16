@@ -11,7 +11,7 @@
  *			Created
  */
 
-package us.k5n.webcalendar.ui;
+package us.k5n.webcalendar.ui.ControlPanel;
 
 import java.util.Calendar;
 import java.net.*;
@@ -24,8 +24,9 @@ import us.k5n.webcalendar.*;
 /**
   * WebCalendar Control Panel using Web Services client
   */
-public class ControlPanel
-  implements MessageDisplayer, EventDisplayer, ActionListener {
+public class Main
+  implements MessageDisplayer, EventDisplayer, UserListener,
+  ActionListener {
   WebCalendarClient client = null;
   String appName = "WebCalendar ControlPanel";
   EventLoader eloader = null;
@@ -45,7 +46,7 @@ public class ControlPanel
     */
   public void showReminder ( Reminder reminder )
   {
-    JOptionPane.showMessageDialog ( null, reminder.toString() );
+    JOptionPane.showMessageDialog ( toplevel, reminder.toString() );
   }
 
   /**
@@ -54,7 +55,7 @@ public class ControlPanel
     */
   public void showMessage ( String message )
   {
-    JOptionPane.showMessageDialog ( null, message );
+    JOptionPane.showMessageDialog ( toplevel, message );
   }
 
   /**
@@ -63,7 +64,7 @@ public class ControlPanel
     */
   public void showError ( String message )
   {
-    JOptionPane.showMessageDialog ( null, message, appName + " Error",
+    JOptionPane.showMessageDialog ( toplevel, message, appName + " Error",
       JOptionPane.WARNING_MESSAGE );
   }
 
@@ -189,9 +190,28 @@ public class ControlPanel
     JPanel cmdPanel = new JPanel ();
     cmdPanel.setLayout ( new FlowLayout () );
 
-    JButton b = new JButton ( "Add..." );
-    b.setEnabled ( false );
-    cmdPanel.add ( b ); // TODO
+    JButton b = new JButton ( "Refresh" );
+    cmdPanel.add ( b );
+    b.addActionListener ( // Anonymous class as a listener.
+      new ActionListener () {
+        public void actionPerformed ( ActionEvent e ) {
+          updateUserList ();
+        }
+      }
+    );
+
+    b = new JButton ( "Add..." );
+    cmdPanel.add ( b );
+    final UserListener ul = (UserListener) this;
+    b.addActionListener ( // Anonymous class as a listener.
+      new ActionListener () {
+        public void actionPerformed ( ActionEvent e ) {
+          UserDialog d = new UserDialog ( client, toplevel,
+            UserDialog.ADD_MODE, ul );
+        }
+      }
+    );
+
 
     b = new JButton ( "Import..." );
     b.setEnabled ( false );
@@ -215,10 +235,33 @@ public class ControlPanel
       System.err.println ( "Exception getting users: " + e );
       e.printStackTrace ();
     }
-    JList userTabUserList = new JList ( list );
+    userTabUserList = new JList ( list );
     ret.add ( userTabUserList, BorderLayout.CENTER );
 
     return ret;
+  }
+
+  /**
+    * This implements the UserListener interface.  This method will
+    * be called when the list of users has been changed.
+    */
+  public void updateUserList ()
+  {
+    UserList list = null;
+    try {
+      String userText = client.query ( "ws/get_users.php" );
+      list = new UserList ( userText, "users" );
+    } catch ( Exception e ) {
+      System.err.println ( "Exception getting users: " + e );
+      e.printStackTrace ();
+    }
+    userTabUserList.setListData ( list );
+  }
+
+  public JDialog createUserModDialog ( JFrame appFrame )
+  {
+    return new UserDialog ( client, appFrame,
+      UserDialog.ADD_MODE, (UserListener) this );
   }
 
   private void reloadEvents ()
@@ -303,7 +346,7 @@ public class ControlPanel
         StringBuffer sb = new StringBuffer ( 128 );
         sb.append ( "Invalid argument '" + args[i] + "'\n" );
         sb.append (
-          "Usage: java ControlPanel [options]\n" );
+          "Usage: java Main [options]\n" );
         sb.append ( "  options:\n" );
         sb.append ( "    -url=XXX\n" );
         sb.append ( "    -username=XXX\n" );
@@ -362,7 +405,7 @@ System.out.println ( "wcUsername: " + wcUsername );
 
     client = new WebCalendarClient ( url );
 
-    ControlPanel app = new ControlPanel ();
+    Main app = new Main ();
     client.setMessageDisplayer ( (MessageDisplayer)app );
 
     // Display a message indicating we are connecting...
