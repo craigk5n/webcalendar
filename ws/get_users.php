@@ -45,6 +45,8 @@ if ( $login == "__public__" && $login != $user ) {
 $userlist = get_my_users ( );
 
 for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+  $admin_xml = ( $userlist[$i]['cal_is_admin'] == 'Y' ) ?
+    "    <admin>1</admin>\n" : "";
   $out .=
     "  <user>\n" .
     "    <login>" . $userlist[$i]['cal_login'] . "</login>\n" .
@@ -56,6 +58,7 @@ for ( $i = 0; $i < count ( $userlist ); $i++ ) {
     "</fullname>\n" .
     "    <email>" . ws_escape_xml ( $userlist[$i]['cal_email'] ) .
     "</email>\n" .
+    $admin_xml .
     "  </user>\n";
 }
 
