@@ -7,6 +7,9 @@
  *
  * History:
  *	$Log$
+ *	Revision 1.2  2005/09/17 12:46:46  cknudsen
+ *	Added support for deleting users.
+ *	
  *	Revision 1.1  2005/09/16 13:27:03  cknudsen
  *	Moved ControlPanel to its own directory:
  *	  us/k5n/webcalendar/ui/ControlPanel
@@ -123,6 +126,9 @@ public class UserDialog extends JDialog {
     subP.add ( lastname );
     topPanel.add ( subP );
 
+    // WebCalendar uses firstname & lastname to derive
+    // the display/full name
+    /*
     subP = new JPanel ();
     subP.setLayout ( new FlowLayout () );
     subP.add ( new JLabel ( "Full name: " ) );
@@ -130,6 +136,7 @@ public class UserDialog extends JDialog {
     fullname.setName ( "fullname" );
     subP.add ( fullname );
     topPanel.add ( subP );
+    */
 
     subP = new JPanel ();
     subP.setLayout ( new FlowLayout () );
@@ -176,10 +183,12 @@ public class UserDialog extends JDialog {
     User u = new User ( username.getText () );
     u.firstName = firstname.getText ();
     u.lastName = lastname.getText ();
-    u.fullName = fullname.getText ();
+    //u.fullName = fullname.getText ();
     u.password = password1.getText ();
     u.email = email.getText ();
-    u.isAdmin = false; // TODO
+    Object o = userType.getSelectedItem ();
+    u.isAdmin = ( o != null &&
+      o.toString().toLowerCase().startsWith ( "admin" ) );
 
     return u;
   }

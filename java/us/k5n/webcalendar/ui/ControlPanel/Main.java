@@ -222,8 +222,39 @@ public class Main
     cmdPanel.add ( b ); // TODO
 
     b = new JButton ( "Delete" );
-    b.setEnabled ( false );
-    cmdPanel.add ( b ); // TODO
+    cmdPanel.add ( b );
+    b.addActionListener ( // Anonymous class as a listener.
+      new ActionListener () {
+        public void actionPerformed ( ActionEvent e ) {
+          // Is a user selected?
+          Object []sel = userTabUserList.getSelectedValues ();
+          if ( sel.length == 0 ) {
+            client.showError ( "You must select at\nleast one user." );
+          } else if ( sel.length > 1 ) {
+            client.showError ( "You must select\nonly one user." );
+          } else {
+            // one user selected... now confirm
+            User u = (User) sel[0];
+            String []options = { "Delete", "Cancel" };
+            int n = JOptionPane.showOptionDialog ( toplevel,
+              "Are you sure you want to\ndelete the following user?\n\n" +
+              u.toString () +
+              "\n\nThis will delete this user's\ndata also (events, etc.)",
+              "Confirm", JOptionPane.YES_NO_OPTION,
+              JOptionPane.QUESTION_MESSAGE, null,
+              options, options[1] );
+            if ( n == 0 ) {
+              System.out.println ( "Delete" );
+              client.deleteUser ( u );
+              client.showMessage ( "The following user was deleted:\n\n" +
+                u.toString () );
+              updateUserList ();
+            }
+          }
+        }
+      }
+    );
+
 
     ret.add ( cmdPanel, BorderLayout.SOUTH );
 
@@ -236,6 +267,8 @@ public class Main
       e.printStackTrace ();
     }
     userTabUserList = new JList ( list );
+    userTabUserList.setCellRenderer ( new UserListCellRenderer () );
+    userTabUserList.setSelectionMode ( ListSelectionModel.SINGLE_SELECTION );
     ret.add ( userTabUserList, BorderLayout.CENTER );
 
     return ret;

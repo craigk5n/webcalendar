@@ -75,6 +75,11 @@ public class User {
           fullName = Utils.xmlNodeGetValue ( n );
         } else if ( "email".equals ( nodeName ) ) {
           email = Utils.xmlNodeGetValue ( n );
+        } else if ( "admin".equals ( nodeName ) ) {
+          String x = Utils.xmlNodeGetValue ( n );
+          x = x.toLowerCase ();
+          if ( x.startsWith ( "1" ) || x.startsWith ( "y" ) )
+            isAdmin = true;
         } else {
           System.err.println ( "[" + this.toString() +
             "]Not sure what to do with <" + nodeName +
