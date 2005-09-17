@@ -75,7 +75,7 @@ $user_login = getGetValue ( 'username' );
 $user_firstname = getGetValue ( 'firstname' );
 $user_lastname = getGetValue ( 'lastname' );
 $user_password = getGetValue ( 'password' );
-$admin = getGetValue ( 'admin' );
+$user_admin = getGetValue ( 'admin' );
 $user_email = getGetValue ( 'email' );
 $addIn = getGetValue ( 'add' );
 $add = ( ! empty ( $addIn ) && $addIn == '1' );
