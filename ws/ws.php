@@ -16,7 +16,8 @@
   */
 function ws_init ( )
 {
-  global $user_inc, $basedir, $includedir, $site_extras, $admin_can_add_user;
+  global $user_inc, $basedir, $includedir, $site_extras,
+    $admin_can_add_user, $admin_can_delete_user;
 
   // Load include files.
   $basedir = ".."; // points to the base WebCalendar directory relative to

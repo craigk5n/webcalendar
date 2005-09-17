@@ -13,6 +13,7 @@
  *	admin* - is admin (1 or 0)
  *	email* - email address
  *	add* - 1=adding user
+ *	del* - 1=deleting user
  *	(*) optional
  *
  * Result:
@@ -34,8 +35,9 @@
  * Security:
  *	- Remote user must be an admin user
  *	- User include file (user.php, user-ldap.php, etc.) must have the
- *	  following global variable set:
- *	    $admin_can_add_user
+ *	  $admin_can_add_user global variable set to add a user.
+ *	- User include file (user.php, user-ldap.php, etc.) must have the
+ *	  $admin_can_delete_user global variable set to delete a user.
  *
  */
 
@@ -44,6 +46,7 @@ $WS_DEBUG = false;
 // Security precaution.  In case, register_globals is on, unset anything
 // a malicious user may set in the URL.
 $admin_can_add_user = false;
+$admin_can_delete_user = false;
 $error = '';
 
 require_once "ws.php";
@@ -76,6 +79,10 @@ $admin = getGetValue ( 'admin' );
 $user_email = getGetValue ( 'email' );
 $addIn = getGetValue ( 'add' );
 $add = ( ! empty ( $addIn ) && $addIn == '1' );
+$deleteIn = getGetValue ( 'delete' );
+if ( empty ( $deleteIn ) )
+  $deleteIn = getGetValue ( 'del' );
+$delete = ( ! empty ( $deleteIn ) && $deleteIn == '1' );
 
 // This error should not happen in a properly written client, so no need to
 // translate it.
@@ -101,6 +108,9 @@ if ( empty ( $error ) ) {
     if ( ! $add ) {
       $error = "User " . ws_escape_xml ( $user_login ) .
         " does not exist";
+    } else if ( $delete ) {
+      $error = "User " . ws_escape_xml ( $user_login ) .
+        " does not exist";
     }
   }
 }
@@ -110,7 +120,7 @@ if ( empty ( $error ) && $add && empty ( $user_password ) ) {
   $error = translate("You have not entered a password");
 }
 
-if ( empty ( $error ) && ! $add ) {
+if ( empty ( $error ) && ! $add && ! $delete ) {
   if ( empty ( $user_password ) )
     $user_password = $old_password;
 }
@@ -129,7 +139,10 @@ if ( empty ( $error ) && $user_login == $login && $user_admin == 'N' ) {
 }
 
 
-if ( empty ( $error ) ) {
+if ( empty ( $error ) && $delete ) {
+  user_delete_user ( $user_login );
+  // we don't check return status... hope it worked
+} else if ( empty ( $error ) && $add ) {
   if ( user_add_user ( $user_login, $user_password, $user_firstname,
     $user_lastname, $user_email, $user_admin ) ) {
     // success    :-)
@@ -142,6 +155,9 @@ if ( empty ( $error ) ) {
       $error = ws_escape_xml ( $error );
     }
   }
+} else if ( empty ( $error ) ) {
+  // Update
+  $error = 'Update not yet implemented';
 }
 
 if ( empty ( $error ) ) {
