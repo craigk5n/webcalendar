@@ -389,6 +389,40 @@ public class WebCalendarClient implements MessageDisplayer {
     return false;
   }
 
+  /**
+    * Delete a user
+    * @param user	User to delete
+    * @return		true on success, false on error
+    */
+  public boolean deleteUser ( User user )
+  {
+    try {
+      StringBuffer sb = new StringBuffer ( 50 );
+      sb.append ( "ws/user_mod.php?del=1&username=" );
+      sb.append ( user.login );
+      debug ( "Request: " + sb.toString () );
+      String result = query ( sb.toString () );
+      debug ( "Result:\n" + result );
+      if ( result.indexOf ( "success" ) >= 0 ) {
+        return true;
+      } else {
+        // Error!
+        int pos = result.indexOf ( "<error>" );
+        int pos2 = result.indexOf ( "</error>" );
+        String msg = "Error adding user: " + result;
+        if ( pos > 0 && pos2 > 0 ) {
+          msg = result.substring ( pos + 7, pos2 );
+        }
+        messageDisplayer.showError ( msg );
+      }
+    } catch ( Exception e ) {
+      showError ( "Error adding user:\n\n" + e.toString () );
+      e.printStackTrace ( );
+    }
+    return false;
+  }
+
+
   private void debug ( String message )
   {
     if ( debugEnabled )
