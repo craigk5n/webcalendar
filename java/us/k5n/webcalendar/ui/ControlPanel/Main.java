@@ -14,6 +14,7 @@
 package us.k5n.webcalendar.ui.ControlPanel;
 
 import java.util.Calendar;
+import java.util.Vector;
 import java.net.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -39,6 +40,7 @@ public class Main
   // User tab
   JPanel userTab = null;
   JList userTabUserList = null;
+  ReadOnlyTable logTable = null;
 
   /**
     * Show a reminder on the screen.
@@ -155,18 +157,18 @@ public class Main
     mainPanel.add ( tabs, BorderLayout.CENTER );
     userTab = createUserTab ();
     tabs.addTab ( "Users", userTab );
-    tabs.addTab ( "Groups", new JPanel () );
-    tabs.addTab ( "Settings", new JPanel () );
+    //tabs.addTab ( "Groups", new JPanel () );
+    //tabs.addTab ( "Settings", new JPanel () );
     //tabs.addTab ( "Assistants", new JPanel () );
-    tabs.addTab ( "NonUser Calendars", new JPanel () );
-    tabs.addTab ( "Categories", new JPanel () );
+    //tabs.addTab ( "NonUser Calendars", new JPanel () );
+    //tabs.addTab ( "Categories", new JPanel () );
     //tabs.addTab ( "Views", new JPanel () );
     //tabs.addTab ( "Layers", new JPanel () );
     //tabs.addTab ( "Reports", new JPanel () );
     //tabs.addTab ( "Delete Events", new JPanel () );
-    tabs.addTab ( "Activity Log", new JPanel () );
+    tabs.addTab ( "Activity Log", createActivityLogTab () );
     //tabs.addTab ( "Appearance", new JPanel () );
-    tabs.addTab ( "Unapproved Events", new JPanel () );
+    //tabs.addTab ( "Unapproved Events", new JPanel () );
 
     Container contentPane = toplevel.getContentPane();
     contentPane.setLayout ( new GridLayout ( 1, 1 ) );
@@ -274,6 +276,7 @@ public class Main
     return ret;
   }
 
+
   /**
     * This implements the UserListener interface.  This method will
     * be called when the list of users has been changed.
@@ -296,6 +299,81 @@ public class Main
     return new UserDialog ( client, appFrame,
       UserDialog.ADD_MODE, (UserListener) this );
   }
+
+
+  JPanel createActivityLogTab ()
+  {
+    JPanel ret;
+
+    ret = new JPanel ();
+
+    ret.setLayout ( new BorderLayout () );
+    JPanel cmdPanel = new JPanel ();
+    cmdPanel.setLayout ( new FlowLayout () );
+
+    JButton b = new JButton ( "Refresh" );
+    cmdPanel.add ( b );
+    b.addActionListener ( // Anonymous class as a listener.
+      new ActionListener () {
+        public void actionPerformed ( ActionEvent e ) {
+          //updateActivityLog ();
+        }
+      }
+    );
+
+    b = new JButton ( "Next Page" );
+    b.setEnabled ( false );
+    cmdPanel.add ( b );
+    b.addActionListener ( // Anonymous class as a listener.
+      new ActionListener () {
+        public void actionPerformed ( ActionEvent e ) {
+          // TODO...
+        }
+      }
+    );
+
+    b = new JButton ( "Previous Page" );
+    b.setEnabled ( false );
+    cmdPanel.add ( b );
+    b.addActionListener ( // Anonymous class as a listener.
+      new ActionListener () {
+        public void actionPerformed ( ActionEvent e ) {
+          // TODO...
+        }
+      }
+    );
+
+    ret.add ( cmdPanel, BorderLayout.SOUTH );
+
+    ActivityLogList list = null;
+    try {
+      String logList = client.query ( "ws/activity_log.php?num=500" );
+      if ( logList.indexOf ( "<activitylog>" ) < 0 ) {
+        System.err.println ( "Invalid activity log XML:\n" + logList );
+      } else {
+        list = new ActivityLogList ( logList, "activitylog" );
+      }
+    } catch ( Exception e ) {
+      System.err.println ( "Exception getting activity log: " + e );
+      e.printStackTrace ();
+    }
+    if ( list != null ) {
+      Vector colHeader = new Vector ();
+      colHeader.add ( "User" );
+      colHeader.add ( "Calendar" );
+      colHeader.add ( "Date" );
+      colHeader.add ( "Action" );
+      colHeader.add ( "Event" );
+      logTable = new ReadOnlyTable ( list, colHeader );
+    } else {
+      logTable = new ReadOnlyTable ( 5, 1 );
+    }
+    JScrollPane scrollPane = new JScrollPane ( logTable );
+    ret.add ( scrollPane, BorderLayout.CENTER );
+
+    return ret;
+  }
+
 
   private void reloadEvents ()
   {
