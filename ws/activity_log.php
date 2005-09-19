@@ -25,6 +25,8 @@
 
 $WS_DEBUG = false;
 
+$MAX_ENTRIES = 1000; // do not allow a client to ask for more than this.
+
 require_once "ws.php";
 
 // Initialize...
@@ -34,6 +36,9 @@ $startid = getGetValue ( 'startid' );
 $num = getGetValue ( 'num' );
 if ( empty ( $num ) || $num < 0 || $num > 500 )
   $num = 500;
+
+if ( $num < $MAX_ENTRIES )
+  $num = $MAX_ENTRIES;
 
 Header ( "Content-type: text/xml" );
 //Header ( "Content-type: text/plain" );
