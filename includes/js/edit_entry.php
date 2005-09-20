@@ -6,6 +6,11 @@
 function validate_and_submit () {
   if ( document.editentryform.name.value == "" ) {
     document.editentryform.name.select ();
+<?php
+    if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
+      $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
+    showTab ( "details" );
+<?php } ?>
     document.editentryform.name.focus ();
     alert ( "<?php etranslate("You have not entered a Brief Description")?>." );
     return false;
@@ -28,12 +33,22 @@ function validate_and_submit () {
     }
 <?php } ?>
     if ( h >= 24 || h < 0 ) {
+<?php
+      if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
+        $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
+        showTab ( "details" );
+<?php } ?>
       alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
       document.editentryform.hour.select ();
       document.editentryform.hour.focus ();
       return false;
     }
     if ( m > 59 || m < 0 ) {
+<?php
+      if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
+        $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
+        showTab ( "details" );
+<?php } ?>
       alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
       document.editentryform.minute.select ();
       document.editentryform.minute.focus ();

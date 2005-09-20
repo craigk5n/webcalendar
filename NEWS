@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1296294: Javascript error when saving with empty description on IE
       1276005: Events ending at midnight do not display properly
       1276729: cal_mod_date/time not stored in GMT
       1276782: icalclient defaults to __public__ permissions
