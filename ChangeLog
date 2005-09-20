@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1296294: Javascript error when saving with empty description on IE
  - Applied patch 1290583: No more crash in tz_import.php on install and fixed
    quoted int values in sql
  - Patch 1275638: minor typos in date formats
