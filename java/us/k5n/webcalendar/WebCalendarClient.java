@@ -422,6 +422,58 @@ public class WebCalendarClient implements MessageDisplayer {
     return false;
   }
 
+  /**
+    * Update a user
+    * @param user	User to update
+    * @return		true on success, false on error
+    */
+  public boolean updateUser ( User user )
+  {
+    try {
+      StringBuffer sb = new StringBuffer ( 50 );
+      sb.append ( "ws/user_mod.php?username=" );
+      sb.append ( user.login );
+      if ( user.firstName != null && user.firstName.length() > 0 ) {
+        sb.append ( "&firstname=" );
+        sb.append ( URLEncoder.encode ( user.firstName ) );
+      }
+      if ( user.lastName != null && user.lastName.length() > 0 ) {
+        sb.append ( "&lastname=" );
+        sb.append ( URLEncoder.encode ( user.lastName ) );
+      }
+      if ( user.fullName != null && user.fullName.length() > 0 ) {
+        sb.append ( "&fullname=" );
+        sb.append ( URLEncoder.encode ( user.fullName ) );
+      }
+      if ( user.email != null && user.email.length() > 0 ) {
+        sb.append ( "&email=" );
+        sb.append ( URLEncoder.encode ( user.email ) );
+      }
+      if ( user.isAdmin ) {
+        sb.append ( "&admin=1" );
+      }
+      debug ( "Request: " + sb.toString () );
+      String result = query ( sb.toString () );
+      debug ( "Result:\n" + result );
+      if ( result.indexOf ( "success" ) >= 0 ) {
+        return true;
+      } else {
+        // Error!
+        int pos = result.indexOf ( "<error>" );
+        int pos2 = result.indexOf ( "</error>" );
+        String msg = "Error adding user: " + result;
+        if ( pos > 0 && pos2 > 0 ) {
+          msg = result.substring ( pos + 7, pos2 );
+        }
+        messageDisplayer.showError ( msg );
+      }
+    } catch ( Exception e ) {
+      showError ( "Error updating user:\n\n" + e.toString () );
+      e.printStackTrace ( );
+    }
+    return false;
+  }
+
 
   private void debug ( String message )
   {
