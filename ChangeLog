@@ -1,4 +1,5 @@
 Version 1.0.2 (?? ??? 2005)
+ - Fixed bug 1296294: Javascript error when saving with empty description on IE
  - Fixed bug 1265575: Bug in get_all_dates()
  - Updated Polish translation
 Version 1.0.1 (19 Aug 2005)
