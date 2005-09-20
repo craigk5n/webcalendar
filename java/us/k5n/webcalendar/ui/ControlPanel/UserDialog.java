@@ -7,6 +7,9 @@
  *
  * History:
  *	$Log$
+ *	Revision 1.3  2005/09/20 02:31:41  cknudsen
+ *	Added support for user update.
+ *	
  *	Revision 1.2  2005/09/17 12:46:46  cknudsen
  *	Added support for deleting users.
  *	
@@ -49,10 +52,17 @@ public class UserDialog extends JDialog {
   public UserDialog ( WebCalendarClient clientIn, JFrame parent, int mode,
     UserListener userListenerIn )
   {
-    super ( parent, mode == EDIT_MODE ? "Edit User" : "Add User",
+    this ( clientIn, parent, mode, userListenerIn, null );
+  }
+
+  public UserDialog ( WebCalendarClient clientIn, JFrame parent, int modeIn,
+    UserListener userListenerIn, User user )
+  {
+    super ( parent, modeIn == EDIT_MODE ? "Edit User" : "Add User",
       true );
     this.client = clientIn;
     this.userListener = userListenerIn;
+    mode = modeIn;
     //setSize ( 400, 400 );
     JPanel buttonPanel, topPanel;
 
@@ -65,20 +75,28 @@ public class UserDialog extends JDialog {
     okButton.addActionListener ( // Anonymous class as a listener.
       new ActionListener () {
         public void actionPerformed ( ActionEvent e ) {
-          if ( ! password1.getText().equals ( password2.getText() ) ) {
+          if ( mode == ADD_MODE &&
+            ! password1.getText().equals ( password2.getText() ) ) {
             client.showError ( "Passwords do not match" );
           }
           else if ( username.getText().length() == 0 ) {
             client.showError ( "You must enter a username" );
           }
-          else if ( password1.getText().length() == 0 ) {
+          else if ( mode == ADD_MODE && password1.getText().length() == 0 ) {
             client.showError ( "You must enter a password" );
           }
-          else if ( client.addUser ( getUser() ) ) {
-            // success...
-            userListener.updateUserList ();
-            hide ();
-            dispose ();
+          else {
+            if ( mode == ADD_MODE && client.addUser ( getUser() ) ) {
+              // success...
+              userListener.updateUserList ();
+              hide ();
+              dispose ();
+            } else if ( mode == EDIT_MODE && client.updateUser ( getUser() ) ) {
+              // success...
+              userListener.updateUserList ();
+              hide ();
+              dispose ();
+            }
           }
         }
       }
@@ -105,8 +123,11 @@ public class UserDialog extends JDialog {
     subP.add ( new JLabel ( "User login: " )  );
     username = new JTextField ( 25 );
     username.setName ( "username" );
-    // if editing...
-    //username.setEditable ( false );
+    if ( mode == EDIT_MODE ) {
+      if ( user != null && user.login != null )
+        username.setText ( user.login );
+      username.setEditable ( false );
+    }
     subP.add ( username );
     topPanel.add ( subP );
 
@@ -115,6 +136,8 @@ public class UserDialog extends JDialog {
     subP.add ( new JLabel ( "First name: " ) );
     firstname = new JTextField ( 15 );
     firstname.setName ( "firstname" );
+    if ( mode == EDIT_MODE && user.firstName != null )
+      firstname.setText ( user.firstName );
     subP.add ( firstname );
     topPanel.add ( subP );
 
@@ -123,6 +146,8 @@ public class UserDialog extends JDialog {
     subP.add ( new JLabel ( "Last name: " ) );
     lastname = new JTextField ( 15 );
     lastname.setName ( "lastname" );
+    if ( mode == EDIT_MODE && user.lastName != null )
+      lastname.setText ( user.lastName );
     subP.add ( lastname );
     topPanel.add ( subP );
 
@@ -142,24 +167,28 @@ public class UserDialog extends JDialog {
     subP.setLayout ( new FlowLayout () );
     subP.add ( new JLabel ( "Email: " ) );
     email = new JTextField ( 25 );
+    if ( mode == EDIT_MODE && user.email != null )
+      email.setText ( user.email );
     subP.add ( email );
     topPanel.add ( subP );
 
-    subP = new JPanel ();
-    subP.setLayout ( new FlowLayout () );
-    subP.add ( new JLabel ( "Password: " ) );
-    password1 = new JPasswordField ( 25 );
-    password1.setEchoChar ( '*' );
-    subP.add ( password1 );
-    topPanel.add ( subP );
+    if ( mode == ADD_MODE ) {
+      subP = new JPanel ();
+      subP.setLayout ( new FlowLayout () );
+      subP.add ( new JLabel ( "Password: " ) );
+      password1 = new JPasswordField ( 25 );
+      password1.setEchoChar ( '*' );
+      subP.add ( password1 );
+      topPanel.add ( subP );
 
-    subP = new JPanel ();
-    subP.setLayout ( new FlowLayout () );
-    subP.add ( new JLabel ( "Password (confirm): " ) );
-    password2 = new JPasswordField ( 25 );
-    password2.setEchoChar ( '*' );
-    subP.add ( password2 );
-    topPanel.add ( subP );
+      subP = new JPanel ();
+      subP.setLayout ( new FlowLayout () );
+      subP.add ( new JLabel ( "Password (confirm): " ) );
+      password2 = new JPasswordField ( 25 );
+      password2.setEchoChar ( '*' );
+      subP.add ( password2 );
+      topPanel.add ( subP );
+    }
 
     java.util.Vector userTypeOptions = new java.util.Vector ();
     userTypeOptions.addElement ( "User" );
@@ -184,7 +213,10 @@ public class UserDialog extends JDialog {
     u.firstName = firstname.getText ();
     u.lastName = lastname.getText ();
     //u.fullName = fullname.getText ();
-    u.password = password1.getText ();
+    if ( password1 != null )
+      u.password = password1.getText ();
+    else
+      u.password = null;
     u.email = email.getText ();
     Object o = userType.getSelectedItem ();
     u.isAdmin = ( o != null &&

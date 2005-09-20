@@ -185,6 +185,7 @@ public class Main
   JPanel createUserTab ()
   {
     JPanel ret;
+    final UserListener ul = (UserListener) this;
 
     ret = new JPanel ();
 
@@ -204,7 +205,6 @@ public class Main
 
     b = new JButton ( "Add..." );
     cmdPanel.add ( b );
-    final UserListener ul = (UserListener) this;
     b.addActionListener ( // Anonymous class as a listener.
       new ActionListener () {
         public void actionPerformed ( ActionEvent e ) {
@@ -219,9 +219,21 @@ public class Main
     b.setEnabled ( false );
     cmdPanel.add ( b ); // TODO
 
-    b = new JButton ( "Edit" );
-    b.setEnabled ( false );
-    cmdPanel.add ( b ); // TODO
+    b = new JButton ( "Edit..." );
+    cmdPanel.add ( b );
+    b.addActionListener ( // Anonymous class as a listener.
+      new ActionListener () {
+        public void actionPerformed ( ActionEvent e ) {
+          User user = (User) userTabUserList.getSelectedValue ();
+          if ( user == null ) {
+            showError ( "You must select a user to edit." );
+          } else {
+            UserDialog d = new UserDialog ( client, toplevel,
+              UserDialog.EDIT_MODE, ul, user );
+          }
+        }
+      }
+    );
 
     b = new JButton ( "Delete" );
     cmdPanel.add ( b );
@@ -312,6 +324,7 @@ public class Main
     cmdPanel.setLayout ( new FlowLayout () );
 
     JButton b = new JButton ( "Refresh" );
+    b.setEnabled ( false );
     cmdPanel.add ( b );
     b.addActionListener ( // Anonymous class as a listener.
       new ActionListener () {

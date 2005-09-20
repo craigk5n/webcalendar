@@ -3,7 +3,7 @@
  * $Id$
  *
  * Description:
- *	Web Service functionality to update or add a user.
+ *	Web Service functionality to update, delete or add a user.
  *
  * Input Parameters:
  *	username - user login of user to add/edit
@@ -157,7 +157,18 @@ if ( empty ( $error ) && $delete ) {
   }
 } else if ( empty ( $error ) ) {
   // Update
-  $error = 'Update not yet implemented';
+  if ( user_update_user ( $user_login, $user_firstname,
+    $user_lastname, $user_email, $user_admin ) ) {
+    // success    :-)
+  } else {
+    // error
+    if ( empty ( $error ) ) {
+      $error = 'Unknown error saving user';
+    } else {
+      // In case there are any strange chars in a db error message
+      $error = ws_escape_xml ( $error );
+    }
+  }
 }
 
 if ( empty ( $error ) ) {
