@@ -6,6 +6,11 @@
 function validate_and_submit () {
   if ( document.editentryform.name.value == "" ) {
     document.editentryform.name.select ();
+<?php
+    if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
+      $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
+    showTab ( "details" );
+<?php } ?>
     document.editentryform.name.focus ();
     alert ( "<?php etranslate("You have not entered a Brief Description")?>." );
     return false;
@@ -28,12 +33,22 @@ function validate_and_submit () {
     }
 <?php } ?>
     if ( h >= 24 || m > 59 ) {
+<?php
+      if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
+        $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
+        showTab ( "details" );
+<?php } ?>
       alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
       document.editentryform.hour.select ();
       document.editentryform.hour.focus ();
       return false;
     }
     // Ask for confirmation for time of day if it is before the user's
+<?php
+      if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
+        $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
+        showTab ( "details" );
+<?php } ?>
     // preference for work hours.
     <?php if ($GLOBALS["TIME_FORMAT"] == "24") {
       echo "if ( h < $WORK_DAY_START_HOUR  ) {";
