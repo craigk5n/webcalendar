@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug: "Call to member function on a non-object" intermittent error
+   when layers are in use (result from my_array_splice)
  - Fixed bug 1296294: Javascript error when saving with empty description on IE
  - Applied patch 1290583: No more crash in tz_import.php on install and fixed
    quoted int values in sql

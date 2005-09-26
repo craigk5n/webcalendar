@@ -1760,7 +1760,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
   // now order the results by time and by entry id.
   $sql .= " ORDER BY webcal_entry.cal_time, webcal_entry.cal_description";
 
- //echo "<strong>SQL:</strong> $sql<br />\n";
+  //echo "<strong>SQL:</strong> $sql<br />\n";
   
   $res = dbi_query ( $sql );
   if ( $res ) {
@@ -1790,7 +1790,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
 
       if ( $item->getLogin() == $user ) {
         // Insert this one before all other ones with this ID.
-        my_array_splice ( $result, $first_i_this_id, 0, array($item) );
+        array_splice ( $result, $first_i_this_id, 0, array($item) );
         $i++;
 
         if ($first_i_this_id + 1 < $i) {
@@ -1799,7 +1799,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '' ) {
           $other_item = $result[$first_i_this_id + 1];
           if ($layers_byuser[$other_item->getLogin()] == 'N') {
             // NOTE: array_splice requires PHP4
-            my_array_splice ( $result, $first_i_this_id + 1, 1, "" );
+            array_splice ( $result, $first_i_this_id + 1, 1 );
             $i--;
           }
         }
