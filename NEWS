@@ -49,6 +49,8 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
+    - Fixed bug: "Call to member function on a non-object" intermittent error
+      when layers are in use
     - Applied PATCH 1290583: No more crash in tz_import.php on install, and fixed quoted
       int values in sql
     - view_entry.php was displaying '&amp' instead of '&amp;'
