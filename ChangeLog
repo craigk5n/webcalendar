@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Patch 1302296: Updated Japanese translations and changes to charset
+   settings for the updates.
  - Fixed bug: edit_entry.php use of default date was not being invoked
    when no date is passed in
  - Fixed bug: "Call to member function on a non-object" intermittent error
