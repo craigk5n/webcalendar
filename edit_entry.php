@@ -37,7 +37,7 @@ $month = getIntValue ( 'month' );
 $day = getIntValue ( 'day' );
 $year = getIntValue ( 'year' );
 $date = getIntValue ( 'date' );
-if ( empty ( $date ) && ! empty ( $month ) ) {
+if ( empty ( $date ) && empty ( $month ) ) {
   if ( empty ( $year ) ) $year = date ( "Y" );
   if ( empty ( $month ) ) $month = date ( "M" );
   if ( empty ( $day ) ) $day = date ( "d" );
@@ -45,7 +45,7 @@ if ( empty ( $date ) && ! empty ( $month ) ) {
 }
 
 // Do we use HTMLArea of FCKEditor?
-// Note: HTMLArea has been discontinued, so it is preferred
+// Note: HTMLArea has been discontinued, so FCKEditor is preferred.
 $use_htmlarea = false;
 $use_fckeditor = false;
 if ( $allow_html_description == "Y" ){
