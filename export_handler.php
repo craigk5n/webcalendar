@@ -42,7 +42,7 @@ function export_get_event_entry($id) {
   if ($id == "all") {
       $sql .= "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id AND " .
 	" ( webcal_entry_user.cal_login = '" . $login . "'";
-      if ( $user && $user != $login ) {
+      if ( ! empty ( $user ) && $user != $login ) {
         $sql .= " OR webcal_entry_user.cal_login = '$user'";
       } else if ( $include_layers && $layers ) {
         foreach ( $layers as $layer ) {
