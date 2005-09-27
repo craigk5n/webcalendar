@@ -3594,41 +3594,6 @@ function encode_string ( $instr ) {
   return $ret;
 }
 
-/**
- * An implementatin of array_splice() for PHP3.
- *
- * @param array $input       Array to be spliced into
- * @param int   $offset      Where to begin the splice
- * @param int   $length      How long the splice should be
- * @param array $replacement What to splice in
- *
- * @ignore
- */
-function my_array_splice(&$input,$offset,$length,$replacement) {
-  if ( floor(phpversion()) < 4 ) {
-    // if offset is negative, then it starts at the end of array
-    if ( $offset < 0 )
-      $offset = count($input) + $offset;
-
-    for ($i=0;$i<$offset;$i++) {
-      $new_array[] = $input[$i];
-    }
-
-    // if we have a replacement, insert it
-    for ($i=0;$i<count($replacement);$i++) {
-      $new_array[] = $replacement[$i];
-    }
-
-    // now tack on the rest of the original array
-    for ($i=$offset+$length;$i<count($input);$i++) {
-      $new_array[] = $input[$i];
-    }
-
-    $input = $new_array;
-  } else {
-    array_splice($input,$offset,$length,$replacement);
-  }
-}
 
 /**
  * Loads current user's category info and stuff it into category global
