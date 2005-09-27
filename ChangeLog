@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug: edit_entry.php use of default date was not being invoked
+   when no date is passed in
  - Fixed bug: "Call to member function on a non-object" intermittent error
    when layers are in use (result from my_array_splice)
  - Fixed bug 1296294: Javascript error when saving with empty description on IE
