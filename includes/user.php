@@ -312,8 +312,9 @@ function user_update_user_password ( $user, $password ) {
 /**
  * Delete a user from the system.
  *
- * We assume that we've already checked to make sure this user doesn't have
- * events still in the database.
+ * This will also delete any of the user's events in the system that have
+ * no other participants.  Any layers that point to this user
+ * will be deleted.  Any views that include this user will be updated.
  *
  * @param string $user User to delete
  */
@@ -346,7 +347,22 @@ function user_delete_user ( $user ) {
   }
   // Now delete events that were just for this user
   for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
-    dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = " . $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_entry_log WHERE cal_entry_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_import_data WHERE cal_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_entry_ext_user WHERE cal_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_reminder_log WHERE cal_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = " .
+      $delete_em[$i] );
   }
 
   // Delete user participation from events
