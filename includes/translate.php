@@ -323,4 +323,5 @@ function etooltip ( $str ) {
     // translate("Spanish")
     // translate("Swedish")
     // translate("Turkish")
+    // translate("Welsh")
 ?>
