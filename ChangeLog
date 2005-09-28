@@ -1,4 +1,5 @@
 Version 1.0.2 (?? ??? 2005)
+ - Patch 1288923: Fix for bar width in print_entry_timebar
  - Added Romanian, Turkish, Welsh to config.php in places where they were
    missing.
  - Fixed bug 1296294: Javascript error when saving with empty description on IE

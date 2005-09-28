@@ -4185,7 +4185,7 @@ function print_entry_timebar ( $id, $date, $time, $duration,
   echo "</td>\n";
   if ( $pos < 2 ) {
     if ( $pos < 1 ) {
-      echo "<td style=\"width:n%;\"><table  class=\"entrybar\">\n<tr>\n<td class=\"entry\">&nbsp;</td>\n";
+      echo "<td style=\"width:$ev_duration%;\"><table  class=\"entrybar\">\n<tr>\n<td class=\"entry\">&nbsp;</td>\n";
     }
     echo "</tr>\n</table></td>\n";
     echo ($ev_padding > 0 ? "<td style=\"text-align:left; width:$ev_padding%;\">&nbsp;</td>\n" : "" );
