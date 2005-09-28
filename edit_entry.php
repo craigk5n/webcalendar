@@ -66,29 +66,17 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   // first see who has access to edit this entry
   if ( $is_admin ) {
     $can_edit = true;
-  } else {
-    $can_edit = false;
-    if ( $readonly == "N" || $is_admin ) {
-      $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
-        "webcal_entry_user WHERE webcal_entry.cal_id = " .
-        "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
-        "AND (webcal_entry.cal_create_by = '$login' " .
-        "OR webcal_entry_user.cal_login = '$login')";
-      $res = dbi_query ( $sql );
-      if ( $res ) {
-        $row = dbi_fetch_row ( $res );
-        if ( $row && $row[0] > 0 )
-          $can_edit = true;
-        dbi_free_result ( $res );
-      }
-    }
   }
   $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
     "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-    "cal_name, cal_description, cal_group_id FROM webcal_entry WHERE cal_id = " . $id;
+    "cal_name, cal_description, cal_group_id " .
+    "FROM webcal_entry WHERE cal_id = " . $id;
   $res = dbi_query ( $sql );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
+    // If current user is creator of event, then they can edit
+    if ( $row[0] == $login )
+      $can_edit = true;
     if ( ! empty ( $override ) && ! empty ( $date ) ) {
       // Leave $cal_date to what was set in URL with date=YYYYMMDD
       $cal_date = $date;

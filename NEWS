@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1283449: Participants able to edit entries they do not own
       1249018: orphaned rows after deleting a user
       1288923: Fix for bar width in print_entry_timebar
       1296294: Javascript error when saving with empty description on IE
