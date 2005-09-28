@@ -64,8 +64,10 @@ $WebCalendar->setLanguage();
  *
  */
 
-// Change this to false if you still want to access this page even
+// Set this to false if you still want to access this page even
 // though you do not have public access enabled.
+// Set this to true to require public access enabled for this page to
+// function at all.
 $public_must_be_enabled = false;
 
 // Do we include a link to view the event?  If so, what target
