@@ -4,6 +4,8 @@ Version 1.0.2 (?? ??? 2005)
     1296294: Javascript error when saving with empty description on IE
     1265575: Bug in get_all_dates()
   - Other bugs fixed:
+    + Added Romanian, Turkish, Welsh to config.php in places where they were
+      missing.
   - New Features / Enhancements / Changes:
   - The following translations were updated:
     Polish
