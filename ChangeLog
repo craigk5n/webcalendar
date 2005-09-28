@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1288923: Fix for bar width in print_entry_timebar
  - Patch 1302296: Updated Japanese translations and changes to charset
    settings for the updates.
  - Fixed bug: edit_entry.php use of default date was not being invoked
