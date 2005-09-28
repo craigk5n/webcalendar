@@ -133,6 +133,7 @@ Version 1.1.0-CVS (?? ??? 2005)
  - Updated German translation
  - Updated French translation
  - Updated Norwegian translation
+ - Updated French translation
 Version 1.0.0 (17 May 2005) aka "Buster"
  - Fixed bug 1202127: [ 1187734 ] Timezone offset problems still exist.
  - Fixed bug 1201821: Bypass user_sees_only_his_groups
