@@ -82,6 +82,13 @@ if ($file['size'] > 0) {
       $data = parse_ical($file['tmp_name']);
       $type = 'ical';
       break;
+
+    case 'OUTLOOKCSV':
+      include "import_outlookcsv.php";
+      $data = parse_outlookcsv($file['tmp_name']);
+      $type = 'outlookcsv';
+      break;
+
   }
 
   $count_con = $count_suc = $error_num = 0;
