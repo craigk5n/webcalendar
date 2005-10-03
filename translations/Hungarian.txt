@@ -979,7 +979,7 @@ English: angol
 Basque: baszk
 Bulgarian: bolgár
 Catalan: katalán
-Chinese (Traditonal/Big5): kínai (tradicionális/Big5)
+Chinese (Traditional/Big5): kínai (tradicionális/Big5)
 Chinese (Simplified/GB2312): kínai (GB2312)
 Czech: cseh
 Danish: dán

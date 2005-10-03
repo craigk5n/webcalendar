@@ -1199,7 +1199,7 @@ English-US: 英語(米国)
 Basque: バスク語
 Bulgarian: ブルガリア語
 Catalan: カタロニア語
-Chinese (Traditonal/Big5): 中国語 (Traditonal/Big5)
+Chinese (Traditional/Big5): 中国語 (Traditional/Big5)
 Chinese (Simplified/GB2312): 中国語 (Simplified/GB2312)
 Czech: チェコ語
 Danish: デンマーク語

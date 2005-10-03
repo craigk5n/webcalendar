@@ -260,7 +260,7 @@ h3 {
 <br /><br />
 <h3><a name="calc_time_slot">calc_time_slot</a></h3>
 <tt>calc_time_slot ( $time, $round_down, $10AM )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Calculate which row/slot this time represents. This is used in day and week views where hours of the time are separeted into different cells in a table.</blockquote>
+<span class="prompt">Description:</span><blockquote>Calculate which row/slot this time represents. This is used in day and week views where hours of the time are separated into different cells in a table.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$time</tt> - input time in YYYYMMDD format</li>
@@ -519,7 +519,7 @@ h3 {
 <br /><br />
 <h3><a name="display_unapproved_events">display_unapproved_events</a></h3>
 <tt>display_unapproved_events ( $user )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Check for any unnaproved events.  If any are found, display a link to the unapproved events (where they can be approved). If the user is an admin user, also count up any public events. If the user is a nonuser admin, count up events on the nonuser calendar.</blockquote>
+<span class="prompt">Description:</span><blockquote>Check for any unaproved events.  If any are found, display a link to the unapproved events (where they can be approved). If the user is an admin user, also count up any public events. If the user is a nonuser admin, count up events on the nonuser calendar.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - current user login</li>
@@ -591,7 +591,7 @@ h3 {
 <li><tt>$event_id</tt> - event id</li>
 <li><tt>$use_mailto</tt> - when set to 1, email address will contain an href link with a mailto URL.</li>
 </ul>
-<span class="prompt">Returns:</span><blockquote>The list of external users for an event formatte in HTML.</blockquote>
+<span class="prompt">Returns:</span><blockquote>The list of external users for an event formatted in HTML.</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 729</blockquote>
 <br /><br />
 <br /><br />
@@ -631,7 +631,7 @@ h3 {
 <br /><br />
 <h3><a name="getValue">getValue</a></h3>
 <tt>getValue ( $name, $format, $fatal )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get the value resulting from either HTTP GET method or HTTP POST method.  <br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.  <br /> Note: If you need to get an integer value, yuou can use the <a href="#getIntValue"><tt>getIntValue</tt></a> function.</blockquote>
+<span class="prompt">Description:</span><blockquote>Get the value resulting from either HTTP GET method or HTTP POST method.  <br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.  <br /> Note: If you need to get an integer value, you can use the <a href="#getIntValue"><tt>getIntValue</tt></a> function.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name used in the HTML form or found in the URL</li>
@@ -725,13 +725,13 @@ h3 {
 <li><tt>$user</tt> - user login we are getting preference for</li>
 <li><tt>$setting</tt> - the name of the setting</li>
 </ul>
-<span class="prompt">Returns:</span><blockquote>The value found in the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table for the specified setting or the sytem default if no user settings was found.</blockquote>
+<span class="prompt">Returns:</span><blockquote>The value found in the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table for the specified setting or the system default if no user settings was found.</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 901</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="get_preferred_view">get_preferred_view</a></h3>
 <tt>get_preferred_view ( $date, $args )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get user's preferred view. The user's preferred view is stored in the $STARTVIEW global variable.  This is loaded from the user preferences (or system settings if there are no user prefererences.)</blockquote>
+<span class="prompt">Description:</span><blockquote>Get user's preferred view. The user's preferred view is stored in the $STARTVIEW global variable.  This is loaded from the user preferences (or system settings if there are no user preferences.)</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - (optional) date to pass to preferred view in YYYYMMDD format</li>
@@ -1023,7 +1023,7 @@ h3 {
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$id</tt> - event id</li>
-<li><tt>$date</tt> - date of event (relavant in repeating events) in YYYYMMDD format</li>
+<li><tt>$date</tt> - date of event (relevant in repeating events) in YYYYMMDD format</li>
 <li><tt>$time</tt> - time (in HHMMSS format)</li>
 <li><tt>$duration</tt> - event duration (in minutes)</li>
 <li><tt>$name</tt> - event name</li>
@@ -1199,7 +1199,7 @@ h3 {
 <br /><br />
 <h3><a name="send_to_preferred_view">send_to_preferred_view</a></h3>
 <tt>send_to_preferred_view ( $date, $args )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Send a redirect to the user's preferred view. The user's preferred view is stored in the $STARTVIEW global variable.  This is loaded from the user preferences (or system settings if there are no user prefererences.)</blockquote>
+<span class="prompt">Description:</span><blockquote>Send a redirect to the user's preferred view. The user's preferred view is stored in the $STARTVIEW global variable.  This is loaded from the user preferences (or system settings if there are no user preferences.)</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - (optional) date to pass to preferred view in YYYYMMDD format</li>
@@ -1274,7 +1274,7 @@ h3 {
 <ul>
 <li><tt>$str</tt> - text to translate</li>
 </ul>
-<span class="prompt">Returns:</span><blockquote>The translated text, if available.  If no translation is avalailable, then the original untranslated text is returned.</blockquote>
+<span class="prompt">Returns:</span><blockquote>The translated text, if available.  If no translation is available, then the original untranslated text is returned.</blockquote>
 <span class="prompt">Location:</span><blockquote>translate.php, line 115</blockquote>
 <br /><br />
 <br /><br />

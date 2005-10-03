@@ -10,7 +10,7 @@
 #   update_translation.pl will take an old translation file and move the
 #        translations around so they age grouped by the page they appear in.
 #        It will also identify any missing translations and tag them
-#        with a comment.  If it is a non-english translation, the english
+#        with a comment.  If it is a non-English translation, the English
 #        translation will be included in the comment to simplify completing
 #        the translation.
 #
@@ -146,7 +146,7 @@ time-interval-help: Specifies how long the time blocks in the week view and day 
 Time interval: Time interval
 hour: hour
 minutes: minutes
-auto-refresh-help: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
+auto-refresh-help: When enabled, the day view, week view, month view, and list unapproved pages will all automatically refresh themselves periodically.
 Auto-refresh calendars: Auto-refresh calendars
 auto-refresh-time-help: If Auto-refresh is enabled, this specifies the time between each refresh.
 Auto-refresh time: Auto-refresh time
@@ -1067,7 +1067,7 @@ English-US: English-US
 Basque: Basque
 Bulgarian: Bulgarian
 Catalan: Catalan
-Chinese (Traditonal/Big5): Chinese (Traditonal/Big5)
+Chinese (Traditional/Big5): Chinese (Traditional/Big5)
 Chinese (Simplified/GB2312): Chinese (Simplified/GB2312)
 Czech: Czech
 Danish: Danish

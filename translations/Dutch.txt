@@ -892,7 +892,7 @@ English: Engels
 Basque: Baskisch
 Bulgarian: Bulgaars
 Catalan: Catalaans
-Chinese (Traditonal/Big5): Chinees (Traditioneel/Big5)
+Chinese (Traditional/Big5): Chinees (Traditioneel/Big5)
 Chinese (Simplified/GB2312): Chinees (Vereenvoudigd/GB2312)
 Czech: Tsjechisch
 Danish: Deens

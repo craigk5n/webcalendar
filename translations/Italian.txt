@@ -579,7 +579,7 @@ Basque: Basco
 Bulgarian: Bulgaro
 Catalan: Catalano
 Chinese (Simplified/GB2312): Cinese (Semplificato/GB2312)
-Chinese (Traditonal/Big5): Cinese (Tradizionale/Big5)
+Chinese (Traditional/Big5): Cinese (Tradizionale/Big5)
 no such user: utente non trovato
 An appointment has been updated by: Un appuntamento &egrave; stato aggiornato da
 The subject is: Il titolo &egrave;

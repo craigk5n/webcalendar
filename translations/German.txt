@@ -1049,7 +1049,7 @@ English-US: Englisch-US
 Basque: Baskisch
 Bulgarian: Bulgarisch
 Catalan: Katalanisch
-Chinese (Traditonal/Big5): Chinesisch (Traditionell/Big5)
+Chinese (Traditional/Big5): Chinesisch (Traditionell/Big5)
 Chinese (Simplified/GB2312): Chinesisch (Einfach/GB2312)
 Czech: Tschechisch
 Danish: D&auml;nisch

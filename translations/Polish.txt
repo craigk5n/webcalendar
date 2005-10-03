@@ -1054,7 +1054,7 @@ English-US: Angielski (USA)
 Basque: Baskijski
 Bulgarian: Bu³garski
 Catalan: Katalonski
-Chinese (Traditonal/Big5): Chinski (Tradycyjny/Big5)
+Chinese (Traditional/Big5): Chinski (Tradycyjny/Big5)
 Chinese (Simplified/GB2³12): Chinski (Uproszczony/Big5)
 Czech: Czeski
 Danish: Dunski

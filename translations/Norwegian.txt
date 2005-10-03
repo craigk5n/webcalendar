@@ -899,7 +899,7 @@ English: Engelsk
 Basque: Baskisk
 Bulgarian: Bulgarsk
 Catalan: Katalansk 
-Chinese (Traditonal/Big5): Kinesisk
+Chinese (Traditional/Big5): Kinesisk
 Chinese (Simplified/GB2312): Kinesisk med enkle tegn
 Czech: Tsjekkisk
 Danish: Dansk

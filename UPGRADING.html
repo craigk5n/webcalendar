@@ -367,7 +367,7 @@ CREATE TABLE webcal_import_data (
 
 <h4><a id="dot943">To upgrade from v0.9.42 to v0.9.43:</a></h4>
 <p>User passwords are now stored using md5 and require the webcal_user 
-table to be altered to accomodate larger password data. 
+table to be altered to accommodate larger password data. 
 Use the following SQL for MySQL:</p>
 <pre>
 ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(32) NULL;
@@ -440,8 +440,8 @@ This new file does not exist until you create it.</p>
 <p>The first time you attempt to access WebCalendar with the new 0.9.45 files,
 your browser will be redirected to a web-based admin page for configuring
 the database settings.  You will need to make sure the <tt>includes</tt>
-directory is writable by the web server user.
-The simplest solution is to make it writable by all users until you
+directory is writeable by the web server user.
+The simplest solution is to make it writeable by all users until you
 have correctly setup your database connection.  Then, you can change it
 to more restrictive permissions.
 </p>

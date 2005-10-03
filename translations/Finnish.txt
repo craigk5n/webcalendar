@@ -982,7 +982,7 @@ Send Reminder: Lähetä muistutus
 # Catalan:
 #
 # << MISSING >>
-# Chinese (Traditonal/Big5):
+# Chinese (Traditional/Big5):
 #
 # << MISSING >>
 # Chinese (Simplified/GB2312):
