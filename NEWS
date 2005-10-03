@@ -64,6 +64,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added patch 1307029: Various mispellings in app and documentation
     + Implemented RFE 1209445: single-day untimed events appear before multi-day
     + Added minical.php for using in iframe in external site
     + Added patch 1204988: view_v.php : vertical week, bg correction for "today"

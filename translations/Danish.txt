@@ -918,7 +918,7 @@ English: Engelsk
 Basque: Bastisk
 Bulgarian: Bulgarsk
 Catalan: Katalansk
-Chinese (Traditonal/Big5): Kinesisk (Traditonal/Big5)
+Chinese (Traditional/Big5): Kinesisk (Traditional/Big5)
 Chinese (Simplified/GB2312): Kinesisk (Simplified/GB2312)
 Czech: Tjekkisk
 Danish: Dansk
