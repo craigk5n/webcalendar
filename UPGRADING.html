@@ -538,14 +538,6 @@ CREATE TABLE webcal_tz_list (
 	 tz_list_text varchar(75) NOT NULL default ''
 );
 
-ALTER TABLE webcal_nonuser_cals ADD cal_is_public CHAR(1) DEFAULT 'N' NOT NULL;
-
-CREATE TABLE webcal_user_template (
-  cal_login VARCHAR(25) NOT NULL,
-  cal_type CHAR(1) NOT NULL,
-  cal_template_text TEXT,
-  PRIMARY KEY ( cal_login, cal_type )
-);
 </pre>
 <p>For Oracle, use VARCHAR2 instead of VARCHAR.</p>
 <p>A major upgrade to WebCalendar for v1.1.0 is the implementation of full
