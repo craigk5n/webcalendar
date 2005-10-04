@@ -204,6 +204,36 @@ echo "<title>".translate($application_name)."</title>\n";
  
 ?>
 </head>
+<!-- This style sheet is here mostly to make it easier for others
+     to customize the appearance of the page.
+     In the not to distant future, the admin UI will allow configuration
+     of the stylesheet elements on this page.
+-->
+<style type="text/css">
+body {
+  background-color: #fff;
+}
+dt {
+  font-family: arial,helvetica;
+  font-weight: bold;
+  font-size: 12px;
+  color: #000;
+}
+dd {
+  font-family: arial,helvetica;
+  color: #33a;
+  font-size: 12px;
+}
+a {
+  font-family: arial,helvetica;
+  color: #33a;
+}
+a:hover {
+  font-family: arial,helvetica;
+  color: #fff;
+  background-color: #33a;
+}
+</style>
 <body>
 <?php
 if ( ! empty ( $error ) ) {

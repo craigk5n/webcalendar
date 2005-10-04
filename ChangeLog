@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added a simple stylesheet to upcoming.php
  - Patch 1306191: Allow users to import from Outlook 2003/XP CSV file
  - Patch 1307029: Various mispellings in app and documentation
  - Fixed bug 1283449: Participants able to edit entries they do not own

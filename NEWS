@@ -64,6 +64,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added a simple stylesheet to upcoming.php
     + Added patch 1306191: Allow users to import from Outlook 2003/XP CSV file
     + Added patch 1307029: Various mispellings in app and documentation
     + Implemented RFE 1209445: single-day untimed events appear before multi-day
