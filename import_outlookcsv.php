@@ -3,20 +3,24 @@
  * $Id$
  *
  * File Description:
- *  This file incudes functions for parsing CSV files generated from
- *  MS Outlook 2003.
+ *	This file incudes functions for parsing CSV files generated from
+ *	MS Outlook.
  *
- * It will be included by import_handler.php.
+ *	It will be included by import_handler.php.
+ *
+ * Limitations:
+ *	This only works when the user does not "Map Custom Fields" during
+ *	the export from Outlook.
  *
  */
 
 
 
-// Parse the ical file and return the data hash.
+// Parse the Outlook CSV file and return the data hash.
 function parse_outlookcsv ( $cal_file ) {
   global $tz, $errormsg;
 
-  $ical_data = array();
+  $outlookcsv_data = array();
 
   if (!$fd=@fopen($cal_file,"r")) {
     $errormsg .= "Can't read temporary file: $cal_file\n";
@@ -76,7 +80,7 @@ function parse_outlookcsv ( $cal_file ) {
       $tmp_data['Repeat']['RepeatDays'] =  For Weekly: What days to repeat on (7 characters...y or n for each day)
        */
     
-      $ical_data[] = $tmp_data;
+      $outlookcsv_data[] = $tmp_data;
       
       //print_r($tmp_data);
   
@@ -84,9 +88,9 @@ function parse_outlookcsv ( $cal_file ) {
     fclose($fd);
   }
 
-  //print_r($ical_data); exit;
+  //print_r($outlookcsv_data); exit;
   
-  return $ical_data;
+  return $outlookcsv_data;
 }
 
 
