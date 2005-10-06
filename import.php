@@ -89,7 +89,7 @@ if ( ! $upload_enabled ) {
 			<option value="ICAL">iCal</option>
 			<option value="PALMDESKTOP">Palm Desktop</option>
 			<option value="VCAL">vCal</option>
-                        <option value="OUTLOOKCSV">Outlook XP/2003 (CSV)</option>
+                        <option value="OUTLOOKCSV">Outlook (CSV)</option>
 		</select>
 </td></tr>
 <tr id="palm"><td>
