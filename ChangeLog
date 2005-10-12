@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1324156: reminders have GMT time
  - Fixed bug 1324282: Import iCal US Holidays, wrong dates...
  - Added a simple stylesheet to upcoming.php
  - Patch 1306191: Allow users to import from Outlook 2003/XP CSV file

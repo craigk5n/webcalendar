@@ -171,7 +171,7 @@ function indent ( $str ) {
 // approved.  But, don't send to users how rejected (cal_status='R').
 function send_reminder ( $id, $event_date ) {
   global $names, $emails, $site_extras, $debug, $only_testing,
-    $server_url, $languages,  $timezone, $application_name;
+    $server_url, $languages, $timezone, $application_name;
   global $allow_external_users, $external_reminders, $LANGUAGE;
 
   $pri[1] = translate("Low");
@@ -270,10 +270,10 @@ function send_reminder ( $id, $event_date ) {
     reset_language ( $userlang );
     // reset timezone setting for current user
     if ( ! empty ( $timezone[$user] ) ) {
-      $display_tzid = 2; 
+      $display_tzid = 2;  // display TZ
       $user_timezone = $timezone[$user];
     } else {
-      $display_tzid = 3;
+      $display_tzid = 3; // Do not use offset & display TZ
       $user_timezone = "";
     }
 
@@ -313,7 +313,8 @@ function send_reminder ( $id, $event_date ) {
     if ( ! empty ( $single_user_login ) && $single_user_login == false )
       $body .= translate("Created by") . ": " . $row[0] . "\n";
     $body .= translate("Updated") . ": " . date_to_str ( $row[3] ) . " " .
-      display_time ( $row[4], 3 ) . "\n";
+      display_time ( $row[3] . $row[4],
+      $display_tzid, '', $user_timezone ) . "\n";
 
     // site extra fields
     $extras = get_site_extra_fields ( $id );
@@ -354,9 +355,9 @@ function send_reminder ( $id, $event_date ) {
 
     if ( strlen ( $GLOBALS["email_fallback_from"] ) )
       $extra_hdrs = "From: " . $GLOBALS["email_fallback_from"] . "\r\n" .
-        "X-Mailer: " . translate($application_name);
+        "X-Mailer: " . $GLOBALS['PROGRAM_NAME'];
     else
-      $extra_hdrs = "X-Mailer: " . translate($application_name);
+      $extra_hdrs = "X-Mailer: " . $GLOBALS['PROGRAM_NAME'];
   
     if ( $debug )
       echo "Sending mail to $recip (in $userlang)\n";
@@ -391,7 +392,7 @@ function log_reminder ( $id, $name, $event_date ) {
 // a reminder, when it needs to be sent and when the last time it
 // was sent.
 function process_event ( $id, $name, $event_date, $event_time ) {
-  global $site_extras, $debug, $only_testing;
+  global $site_extras, $debug, $only_testing, $timezone;
 
   if ( $debug )
     printf ( "Event %d: \"%s\" at %s on %s <br />\n",
@@ -416,10 +417,10 @@ function process_event ( $id, $name, $event_date, $event_time ) {
       $ev_year = substr ( $event_date, 0, 4 );
       $ev_month = substr ( $event_date, 4, 2 );
       $ev_day = substr ( $event_date, 6, 2 );
-      $event_time = mktime ( $ev_h, $ev_m, 0, $ev_month, $ev_day, $ev_year );
+      $event_time_gmt = mktime ( $ev_h, $ev_m, 0, $ev_month, $ev_day, $ev_year );
       if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
         $minsbefore = $extras[$extra_name]['cal_data'];
-        $remind_time = $event_time - ( $minsbefore * 60 );
+        $remind_time = $event_time_gmt - ( $minsbefore * 60 );
       } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
         $rd = $extras[$extra_name]['cal_date'];
         $r_year = substr ( $rd, 0, 4 );
@@ -428,20 +429,23 @@ function process_event ( $id, $name, $event_date, $event_time ) {
         $remind_time = mktime ( 0, 0, 0, $r_month, $r_day, $r_year );
       } else {
         $minsbefore = $extra_arg1;
-        $remind_time = $event_time - ( $minsbefore * 60 );
+        $remind_time = $event_time_gmt - ( $minsbefore * 60 );
       }
       if ( $debug )
         echo "  Mins Before: $minsbefore <br />\n";
       if ( $debug ) {
-        echo "  Event time is: " . date ( "m/d/Y H:i", $event_time ) . " GMT<br />\n";
+        echo "  Event time is: " . date ( "m/d/Y H:i", $event_time_gmt ) . " GMT<br />\n";
         echo "  Remind time is: " . date ( "m/d/Y H:i", $remind_time ) . " GMT<br />\n";
-     echo "Server Timezone: " . $GLOBALS['SERVER_TIMEZONE'] . 
-     "<br />Server Difference from GMT (minutes) : " . date ("Z"). "<br />";    
-    echo "Effective delivery time is: " . 
-      date ( "m/d/Y H:i", $remind_time += date ("Z") ) . " " . date ("T"). "<br />\n";
+        echo "Server Timezone: " . $GLOBALS['SERVER_TIMEZONE'] . 
+          "<br />\nServer Difference from GMT (minutes) : " .
+          date ("Z"). "<br />\n";    
+        echo "Effective delivery time is: " . 
+          date ( "m/d/Y H:i", $remind_time += date ("Z") ) . " " .
+            date ("T"). "<br />\n";
       }
-   //We need to adjust GMT $remind_time to server time
-   $remind_time +=date ("Z");
+
+      // We need to adjust GMT $remind_time to server time
+      $remind_time += date ("Z");
       if ( time() >= $remind_time ) {
         // It's remind time or later. See if one has already been sent
         $last_sent = 0;
