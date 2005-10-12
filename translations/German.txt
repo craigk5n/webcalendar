@@ -8,18 +8,18 @@
 # Last update: 20 Jan 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 25 Jan 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 22 Feb 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 07 M&auml;r 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 07 Mär 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 26 Apr 2005 by Markus Egartner <edv'at'kh-hallein.at> with Martin
 # Last update: 4 May 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 17 May 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 05-17-2005
+# Last update: 25 July 2005 by Markus Egartner <edv'at'kh-hallein.at> refering correction of the "delete" function
+# Translation last updated on 07-25-2005
 
 
 ###############################################
 # Specify a charset (will be sent within meta tag for each page)
 #
 charset: iso-8859-1
-
 
 
 ###############################################
@@ -122,7 +122,7 @@ Page template: Seiten Vorlagen
 Day template: Tagesvorlage
 Event template: Terminvorlage
 Save: Speichern
-Delete: L&ouml;schen
+Delete: Löschen
 Are you sure you want to delete this report?: Wollen Sie diese Bericht wirklich l&ouml;schen?
 
 
@@ -136,7 +136,7 @@ Add New Group: Benutzergruppe hinzuf&uuml;gen
 # Page: group_edit_handler.php
 #
 You must specify a group name: Sie m&uuml;ssen einen Gruppennamen anlegen
-Changes successfully saved: &auml;nderungen erfolgreich gespeichert
+Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
 
 
 ###############################################
@@ -213,9 +213,9 @@ Untimed event: Termin OHNE Zeitangabe
 Private: Privat
 This event is confidential: Dies ist ein privater Termin 
 minutes: Minute(n)
-Low: tief
-Medium: mittel
-High: hoch
+Low: Niedrig
+Medium: Normal
+High: Hoch
 Waiting for approval: Warten auf &uuml;berpr&uuml;fung
 Deleted: gel&ouml;scht
 Rejected: Eintrag abgelehnt, wird nicht teilnehmen
@@ -253,7 +253,7 @@ Unnamed Group: neue Benutzergruppe
 Add Group: Benutzergruppe hinzuf&uuml;gen
 Edit Group: Benutzergruppe editieren
 Group name: Benutzergruppenname
-Updated: ge&auml;ndert
+Updated: geändert
 Created by: erstellt von
 
 
@@ -535,7 +535,7 @@ Display days with events in bold in year view: Zeigt Tage MIT Terminen in der Ja
 Nonuser: 'Zentrale'-Kalender
 user-customize-color: Spezifiziert, ob Benutzern erlaubt wird, ihre eigenen Farbeneinstellungen zu &auml;ndern
 enable-gradient-help: verwendet die stufenweise Farb&auml;nderungen f&uuml;r Zellenhintergr&uuml;nde
-Manually entering color values: Eigene farbwerte eingeben
+Manually Entering Color Values: Eigene Farbwerte eingeben
 
 
 ###############################################
@@ -1015,5 +1015,5 @@ Please add a participant: Bitte einen Teilnehmer hinzuf&uuml;gen
 ###############################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the event detailed below.: Das ist eine Erinnerung f&uuml;r den unten aufgef&uuml;hrten (detaillierten) Termin
+This is a reminder for the event detailed below.: Das ist eine Erinnerung für den unten aufgeführten (detailierten) Termin
 Reminder: Erinnerung
