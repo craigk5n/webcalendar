@@ -19,7 +19,8 @@
 # Last update: 9 Aug 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 12 Aug 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 16 Aug 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 08-16-2005
+# Last update: 13 Sept 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 09-13-2005
 
 
 ###############################################
@@ -203,6 +204,7 @@ The following error occurred: Folgender Fehler trat auf
 ###############################################
 # Page: adminhome.php
 #
+Control Panel: Systemsteuerung
 Preferences: Voreinstellungen
 Assistants: Assistenten
 System Settings: Systemeinstellungen
@@ -316,6 +318,12 @@ Are you sure you want to delete this layer?: Wollen Sie diesen Layer wirklich l&
 Source: Quelle
 Color: Farbe
 Duplicates: Duplikate
+
+
+###############################################
+# Page: minical.php
+#
+This Calendar is not Public: Dieser Kalender ist nicht &oouml;ffentlich
 
 
 ###############################################
@@ -1222,8 +1230,8 @@ converted your existing WebCalendar event data to GMT: in GMT (Greenwich Mean Ti
 If you have, you may ignore this notice and not proceed with the conversion: Wenn Sie dies bereits getan haben, k&ouml;nnen Sie diese Nachricht ignorieren und ohne der Umwandlung fortfahren.
 If this is a new installation, you may also ignore this notice. You can also reverse this: Wenn dies eine neue Installation ist, k&ouml;nnen Sie diese Nachricht auch ignorieren. Sie k&ouml;nnen dies aber auch wieder r&uuml;ckg&auml;ngig machen.
 procedure by entering a value with the opposite sign (i.e. 4 vs. -4): Verfahren Sie durch das Eintragen eines Wertes mit dem gegenteiligen Zeichen ( z.B. 4 gegen -4 )
-Your current Server GMT offset is: Ihr derzeitige Server GMT Stundenversatz ist
-Enter the offset you wish to make: Eingabe des gew&uuml;nschten Stundenversatzes
+Your current Server GMT offset is: Ihr derzeitige Server GMT Zeitverschiebung ist
+Enter the offset you wish to make: Eingabe des gew&uuml;nschten Stunden der Zeitverschiebung
 Convert Data to GMT: Konvertieren nach GMT
 Conversion Successful: Umwandlung erfolgreich
 Application Settings: Anwendungseinstellung
