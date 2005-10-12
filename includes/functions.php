@@ -4829,45 +4829,55 @@ function get_tz_time ( $timestamp, $tz_name, $is_gmt = 1, $use_dst = 1 ) {
   $dst_results = array ();
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-     //Assign default value for TZ abbrev.
-     $dst_results['name'] = str_replace ( "%s", "", $row[2] );
-     // adjust by gmtoff value
-     if ( $is_gmt == true ) {
-       $dst_results['timestamp'] = $timestamp + $row[1];
-     } else {
-       $dst_results['timestamp'] = $timestamp - $row[1];
-     }
+      //Assign default value for TZ abbrev.
+      $dst_results['name'] = str_replace ( "%s", "", $row[2] );
+      // adjust by gmtoff value
+      if ( $is_gmt == true ) {
+        $dst_results['timestamp'] = $timestamp + $row[1];
+      } else {
+        $dst_results['timestamp'] = $timestamp - $row[1];
+      }
       if ( ! empty ($row[0] )  && $use_dst == 1 ) { // Zone rules apply
         $dst_rules = get_rules ( $row[0], $timestamp );
         if ( count ( $dst_rules ) >= 2) {
-            if ( $timestamp < $dst_rules[0]["rule_date"] ) {
-              $dst_results['name'] = str_replace ( "%s", $dst_rules['lastletter'], $row[2] );
-     if ( $is_gmt == true ) {  
-                $dst_results['timestamp'] = $dst_results['timestamp'] + $dst_rules['lastyear'];
-     } else {
-       $dst_results['timestamp'] = $dst_results['timestamp'] - $dst_rules['lastyear'];
-     }
-     dbi_free_result ( $res );
-     return $dst_results;
-   } else if ( $timestamp >= $dst_rules[0]["rule_date"] && $timestamp < $dst_rules[1]["rule_date"] ) {
-     $dst_results['name'] = str_replace ( "%s", $dst_rules[0]['rule_letter'], $row[2] );
-     if ( $is_gmt == true ) {  
-                $dst_results['timestamp'] = $dst_results['timestamp'] + $dst_rules[0]['rule_save'];
-     } else {
-                $dst_results['timestamp'] = $dst_results['timestamp'] - $dst_rules[0]['rule_save'];     
-     }
-     dbi_free_result ( $res );
-     return $dst_results;
-   } else {
-     $dst_results['name'] = str_replace ( "%s", $dst_rules[1]['rule_letter'], $row[2] );  
-     if ( $is_gmt == true ) {  
-                $dst_results['timestamp'] = $dst_results['timestamp'] + $dst_rules[1]['rule_save'];
-     } else {
-                $dst_results['timestamp'] = $dst_results['timestamp'] - $dst_rules[1]['rule_save'];     
-     }
-     dbi_free_result ( $res );
-     return $dst_results;
-   }
+          if ( $timestamp < $dst_rules[0]["rule_date"] ) {
+            $dst_results['name'] =
+              str_replace ( "%s", $dst_rules['lastletter'], $row[2] );
+            if ( $is_gmt == true ) {  
+              $dst_results['timestamp'] =
+                $dst_results['timestamp'] + $dst_rules['lastyear'];
+            } else {
+              $dst_results['timestamp'] =
+                $dst_results['timestamp'] - $dst_rules['lastyear'];
+            }
+            dbi_free_result ( $res );
+            return $dst_results;
+          } else if ( $timestamp >= $dst_rules[0]["rule_date"] &&
+            $timestamp < $dst_rules[1]["rule_date"] ) {
+            $dst_results['name'] =
+              str_replace ( "%s", $dst_rules[0]['rule_letter'], $row[2] );
+            if ( $is_gmt == true ) {  
+              $dst_results['timestamp'] =
+                $dst_results['timestamp'] + $dst_rules[0]['rule_save'];
+            } else {
+              $dst_results['timestamp'] =
+                $dst_results['timestamp'] - $dst_rules[0]['rule_save'];     
+            }
+            dbi_free_result ( $res );
+            return $dst_results;
+          } else {
+            $dst_results['name'] =
+              str_replace ( "%s", $dst_rules[1]['rule_letter'], $row[2] );  
+            if ( $is_gmt == true ) {  
+              $dst_results['timestamp'] =
+                $dst_results['timestamp'] + $dst_rules[1]['rule_save'];
+            } else {
+              $dst_results['timestamp'] =
+                $dst_results['timestamp'] - $dst_rules[1]['rule_save'];     
+            }
+            dbi_free_result ( $res );
+            return $dst_results;
+          }
         }
       }
     }
