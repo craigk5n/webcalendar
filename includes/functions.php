@@ -2070,7 +2070,7 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved=true ) {
   $ret = array ();
   //echo count($repeated_events)." - checking date $dateYmd <br />\n";
   for ( $i = 0; $i < count ( $repeated_events ); $i++ ) {
-    //echo "  ($i) " . $repeated_events[$i]['cal_name'] . " <br/>";
+    //echo "  ($i) " . $repeated_events[$i]->getName() . " <br/>";
     if ( $repeated_events[$i]->getStatus() == 'A' || $get_unapproved ) {
       if ( repeated_event_matches_date ( $repeated_events[$i], $dateYmd ) ) {
         // make sure this is not an exception date...
@@ -2097,7 +2097,14 @@ function repeated_event_matches_date($event,$dateYmd) {
   // before the end
   $date = date_to_epoch ( $dateYmd );
   $thisyear = substr($dateYmd, 0, 4);
-  $start = get_datetime_add_tz ( $event->getDate(), $event->getTime(), $tz_offset[0] ); 
+  if ( $event->getTime() == -1 ) {
+    // Don't adjust with timezone for untimed event
+    // For all-day event, we don't do this.
+    $start = date_to_epoch ( $event->getDate() );
+  } else {
+    $start = get_datetime_add_tz ( $event->getDate(), $event->getTime(),
+      $tz_offset[0] ); 
+  }
   $end   = date_to_epoch ( $event->getRepeatEnd() );
   $freq = $event->getRepeatFrequency();
   $thismonth = substr($dateYmd, 4, 2);
@@ -3066,6 +3073,8 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   // get all the repeating events for this date and store in array $rep
   $rep = get_repeating_entries ( $user, $date );
   $cur_rep = 0;
+
+echo "found " . count($rep) . " events for $date<br>";
 
   // Get static non-repeating events
   $ev = get_entries ( $user, $date, $get_unapproved, true, true );
