@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added new time range options for reports: next 14/30/60/90/180/365 days
+   This allows reports to show events starting with current date
  - Fixed bug 1324156: reminders have GMT time
  - Fixed bug 1324282: Import iCal US Holidays, wrong dates...
  - Added a simple stylesheet to upcoming.php
