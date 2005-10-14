@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added sending of HTML mail (for reminders only now)
  - Added new time range options for reports: next 14/30/60/90/180/365 days
    This allows reports to show events starting with current date
  - Fixed bug 1324156: reminders have GMT time

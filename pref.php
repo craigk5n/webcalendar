@@ -41,6 +41,8 @@ if ( empty ( $prefarray['FREEBUSY_ENABLED'] ) )
   $prefarray['FREEBUSY_ENABLED'] = 'N';
 if ( empty ( $prefarray['USER_PUBLISH_RW_ENABLED'] ) )
   $prefarray['USER_PUBLISH_RW_ENABLED'] = 'N';
+if ( empty ( $prefarray['EMAIL_HTML'] ) )
+  $prefarray['EMAIL_HTML'] = 'N';
 
 $INC = array('js/pref.php');
 print_header($INC);
@@ -392,6 +394,13 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <br /><br />
 <table class="standard" cellspacing="1" cellpadding="2">
 <tr><th colspan="2"><?php etranslate("Email")?></th></tr>
+
+<tr><td style="vertical-align:top; font-weight:bold;">
+ <?php etranslate("Email format preference")?>:</td><td>
+ <label><input type="radio" name="pref_EMAIL_HTML" value="Y" <?php if ( $prefarray["EMAIL_HTML"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("HTML")?></label>&nbsp;
+ <label><input type="radio" name="pref_EMAIL_HTML" value="N" <?php if ( $prefarray["EMAIL_HTML"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Plain Text")?></label>
+</td></tr>
+
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Event reminders")?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_REMINDER" value="Y" <?php if ( $prefarray["EMAIL_REMINDER"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
