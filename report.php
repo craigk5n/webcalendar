@@ -409,6 +409,23 @@ if ( empty ( $report_time_range ) ) {
     $thisyear + $year_offset ) );
   $end_date = date ( "Ymd", mktime ( 0, 0, 0, 12, 31,
     $thisyear + $year_offset ) );
+} else if ( $report_time_range >= 50 && $report_time_range < 60 ) {
+  // This series of reports is today + N days
+  switch ( $report_time_range ) {
+    case 50: $x = 14; break;
+    case 51: $x = 30; break;
+    case 52: $x = 60; break;
+    case 53: $x = 90; break;
+    case 54: $x = 180; break;
+    case 55: $x = 365; break;
+    default: echo "Invalid cal_time_range setting for report id $report_id";
+      exit;
+  }
+  $today = mktime ( 0, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
+  $start = $today + ( ONE_DAY * $offset * $x );
+  $end = $start + ( ONE_DAY * $x );
+  $start_date = date ( "Ymd", $start );
+  $end_date = date ( "Ymd", $end );
 } else {
   // Programmer's bug (no translation needed)
   echo "Invalid cal_time_range setting for report id $report_id";
