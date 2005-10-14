@@ -389,8 +389,8 @@ if ( empty ( $report_time_range ) ) {
       exit;
   }
   $today = mktime ( 0, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
-  $start = $today + ( ONE_DAY * $offset * $x );
-  $end = $start + ( ONE_DAY * $x );
+  $start = $today + ( $ONE_DAY * $offset * $x );
+  $end = $start + ( $ONE_DAY * $x );
   $start_date = date ( "Ymd", $start );
   $end_date = date ( "Ymd", $end );
 } else {
