@@ -1,4 +1,6 @@
 Version 1.0.2 (?? ??? 2005)
+  - Added new time range options for reports: next 14/30/60/90/180/365 days
+    This allows reports to show events starting with current date
   - Fixed bug: undefined variable warning in export_handler.php
   - Fixed the following bug reports on SourceForge:
     1296294: Javascript error when saving with empty description on IE

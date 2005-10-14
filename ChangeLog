@@ -1,4 +1,6 @@
 Version 1.0.2 (?? ??? 2005)
+ - Added new time range options for reports: next 14/30/60/90/180/365 days
+   This allows reports to show events starting with current date
  - Patch 1288923: Fix for bar width in print_entry_timebar
  - Added Romanian, Turkish, Welsh to config.php in places where they were
    missing.
