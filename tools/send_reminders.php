@@ -131,6 +131,19 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
+// Just get list of users who have asked for HTML (default is plain text)
+$res = dbi_query ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
+  "WHERE cal_setting = 'EMAIL_HTML' AND cal_value = 'Y'" );
+$languages = array ();
+if ( $res ) {
+  while ( $row = dbi_fetch_row ( $res ) ) {
+    $user = $row[0];
+    $htmlmail[$user] = true;
+    if ( $debug )
+      echo "User $user wants HTML mail <br />\n";
+  }
+  dbi_free_result ( $res );
+}
 
 // Get all users timezone settings.
 $res = dbi_query ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
@@ -165,13 +178,46 @@ function indent ( $str ) {
 }
 
 
+// A convenience to avoid all the if/else associated with html vs text
+// output.
+function gen_output ( $useHtml, $prompt, $data )
+{
+  $ret = '';
+
+  if ( $useHtml ) {
+    $ret = '<tr><td valign="top">' . $prompt . ':</td><td valign="top">';
+    if ( ! empty ( $GLOBALS['allow_html_description'] ) &&
+      $GLOBALS['allow_html_description'] == 'Y' ) {
+      $str = str_replace ( '&', '&amp;', $data );
+      $str = str_replace ( '&amp;amp;', '&amp;', $str );
+      // If there is no html found, then go ahead and replace
+      // the line breaks ("\n") with the html break.
+      if ( strstr ( $str, "<" ) && strstr ( $str, ">" ) ) {
+        // found some html...
+        $ret .= $str;
+      } else {
+        $ret .= nl2br ( activate_urls ( $str ) );
+      }
+    } else {
+      // HTML not allowed...
+      $ret .= nl2br ( activate_urls ( htmlspecialchars ( $data ) ) );
+    }
+    $ret .= "</td></tr>\n";
+  } else {
+    // Use plain text
+    $ret = $prompt . ": " . $data . "\n";
+  }
+
+  return $ret;
+}
+
 // Send a reminder for a single event for a single day to all
 // participants in the event.
 // Send to participants who have accepted as well as those who have not yet
 // approved.  But, don't send to users how rejected (cal_status='R').
 function send_reminder ( $id, $event_date ) {
   global $names, $emails, $site_extras, $debug, $only_testing,
-    $server_url, $languages, $timezone, $application_name;
+    $server_url, $languages, $htmlmail, $timezone, $application_name;
   global $allow_external_users, $external_reminders, $LANGUAGE;
 
   $pri[1] = translate("Low");
@@ -233,7 +279,7 @@ function send_reminder ( $id, $event_date ) {
   }
 
   // send mail.  we send one user at a time so that we can switch
-  // languages between users if needed.
+  // languages between users if needed (as well as html vs plain text).
   $mailusers = array ();
   $recipients = array ();
   if ( isset ( $single_user ) && $single_user == "Y" ) {
@@ -246,7 +292,7 @@ function send_reminder ( $id, $event_date ) {
         $recipients[] = $participants[$i];
       } else {
         if ( $debug )
-   echo "No email for user $participants[$i] <br />\n";
+          echo "No email for user $participants[$i] <br />\n";
       }
     }
     for ( $i = 0; $i < count ( $ext_participants ); $i++ ) {
@@ -276,10 +322,17 @@ function send_reminder ( $id, $event_date ) {
       $display_tzid = 3; // Do not use offset & display TZ
       $user_timezone = "";
     }
+    $useHtml = ( ! empty ( $htmlmail[$user] ) );
 
-
-    $body = translate("This is a reminder for the event detailed below.") .
-      "\n\n";
+    if ( $useHtml ) {
+      $body = "<html><head><title>" .
+        $application_name . "</title></head><body>\n<p>" .
+        translate("This is a reminder for the event detailed below.") .
+        "\n</p>\n";
+    } else {
+      $body = translate("This is a reminder for the event detailed below.") .
+        "\n\n";
+    }
 
     $create_by = $row[0];
     $name = $row[9];
@@ -288,33 +341,60 @@ function send_reminder ( $id, $event_date ) {
     // add trailing '/' if not found in server_url
     if ( ! empty ( $server_url ) ) {
       if ( substr ( $server_url, -1, 1 ) == "/" ) {
-        $body .= $server_url . "view_entry.php?id=" . $id . "\n\n";
+        $eventURL = $server_url . "view_entry.php?id=" . $id;
       } else {
-        $body .= $server_url . "/view_entry.php?id=" . $id . "\n\n";
+        $eventURL = $server_url . "/view_entry.php?id=" . $id;
+      }
+      if ( $useHtml ) {
+        $body .= "<p><a href=\"" . $eventURL . "\">" . $eventURL . "</a></p>\n";
+      } else {
+        $body .= $server_url . "view_entry.php?id=" . $id . "\n\n";
       }
     }
 
-    $body .= strtoupper ( $name ) . "\n\n";
-    $body .= translate("Description") . ":\n";
-    $body .= indent ( $description ) . "\n";
-    $body .= translate("Date") . ": " . date_to_str ( $event_date ) . "\n";
-    if ( $row[2] >= 0 )
-      $body .= translate ("Time") . ": " . display_time ( $row[1] . 
-        $row[2], $display_tzid, '' , $user_timezone ) . "\n";
-    if ( $row[5] > 0 )
-      $body .= translate ("Duration") . ": " . $row[5] .
-        " " . translate("minutes") . "\n";
-    if ( empty ( $disable_priority_field ) || $disable_priority_field != 'Y' )
-      $body .= translate("Priority") . ": " . $pri[$row[6]] . "\n";
-    if ( empty ( $disable_access_field ) || $disable_access_field != 'Y' )
-      $body .= translate("Access") . ": " .
-        ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) .
-        "\n";
-    if ( ! empty ( $single_user_login ) && $single_user_login == false )
-      $body .= translate("Created by") . ": " . $row[0] . "\n";
-    $body .= translate("Updated") . ": " . date_to_str ( $row[3] ) . " " .
-      display_time ( $row[3] . $row[4],
-      $display_tzid, '', $user_timezone ) . "\n";
+    if ( $useHtml ) {
+      $body .= "<h2>" . strtoupper ( $name ) . "</h2>\n" .
+        "<table><tr><td valign=\"top\">" .
+        translate("Description") . ":</td><td valign=\"top\">" .
+        $description . "</td></tr>\n" .
+        "<tr><td>" . translate("Date") . ":</td><td>" .
+        date_to_str ( $event_date ) . "</td></tr>\n";
+    } else {
+      $body .= strtoupper ( $name ) . "\n\n" .
+        translate("Description") . ":\n" .
+        indent ( $description ) . "\n" .
+        translate("Date") . ": " . date_to_str ( $event_date ) . "\n";
+    }
+
+    if ( $row[2] >= 0 ) {
+      $body .= gen_output ( $useHtml, translate ( "Time" ),
+        display_time ( $row[1] .  $row[2], $display_tzid, '' ,
+          $user_timezone ) );
+    }
+
+    if ( $row[5] > 0 ) {
+      $body .= gen_output ( $useHtml, translate ( "Duration" ),
+        $row[5] .  " " . translate("minutes") );
+    }
+
+    if ( empty ( $disable_priority_field ) || $disable_priority_field != 'Y' ) {
+      $body .= gen_output ( $useHtml, translate ( "Priority" ),
+        $pri[$row[6]] );
+    }
+
+    if ( empty ( $disable_access_field ) || $disable_access_field != 'Y' ) {
+      $body .= gen_output ( $useHtml, translate ( "Access" ),
+        ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) );
+    }
+
+    if ( ! empty ( $single_user_login ) && $single_user_login == false ) {
+      $body .= gen_output ( $useHtml, translate ( "Created by" ),
+        $row[0] );
+    }
+
+    $body .= gen_output ( $useHtml, translate ( "Updated" ),
+      date_to_str ( $row[3] ) . " " .  display_time ( $row[3] . $row[4],
+        $display_tzid, '', $user_timezone ) );
 
     // site extra fields
     $extras = get_site_extra_fields ( $id );
@@ -323,32 +403,56 @@ function send_reminder ( $id, $event_date ) {
       $extra_descr = $site_extras[$i][1];
       $extra_type = $site_extras[$i][2];
       if ( ! empty (  $extras[$extra_name]['cal_name'] ) && 
-     $extras[$extra_name]['cal_name'] != "" ) {
-        $body .= translate ( $extra_descr ) . ": ";
+      $extras[$extra_name]['cal_name'] != "" ) {
+        $val = '';
+        $prompt = $extra_descr;
         if ( $extra_type == EXTRA_DATE ) {
-          $body .= date_to_str ( $extras[$extra_name]['cal_date'] ) . "\n";
+          $body .= gen_output ( $useHtml, $prompt,
+            $extras[$extra_name]['cal_date'] );
         } else if ( $extra_type == EXTRA_MULTILINETEXT ) {
-          $body .= "\n" . indent ( $extras[$extra_name]['cal_data'] ) . "\n";
+          $body .= gen_output ( $useHtml, $prompt,
+            "\n" . indent ( $extras[$extra_name]['cal_data'] ) );
         } else if ( $extra_type == EXTRA_REMINDER ) {
-          $body .= ( $extras[$extra_name]['cal_remind'] > 0 ?
-            translate("Yes") : translate("No") ) . "\n";
+          $body .= gen_output ( $useHtml, $prompt,
+            ( $extras[$extra_name]['cal_remind'] > 0 ?
+            translate("Yes") : translate("No") ) );
         } else {
           // default method for EXTRA_URL, EXTRA_TEXT, etc...
-          $body .= $extras[$extra_name]['cal_data'] . "\n";
+          $body .= gen_output ( $useHtml, $prompt,
+            $extras[$extra_name]['cal_data'] );
         }
       }
     }
     if ( ( empty ( $single_user ) || $single_user != 'Y' ) &&
       ( empty ( $disable_participants_field ) ||
       $disable_participants_field != 'N' ) ) {
-      $body .= translate("Participants") . ":\n";
+      if ( $useHtml ) {
+        $body .= "<tr><td valign=\"top\">" .
+          translate("Participants") .  ":</td><td>";
+      } else {
+        $body .= translate("Participants") . ":\n";
+      }
       for ( $i = 0; $i < count ( $participants ); $i++ ) {
-        $body .= "  " . $names[$participants[$i]] . "\n";
+        if ( $useHtml ) {
+          $body .= $names[$participants[$i]] . "<br/>\n";
+        } else {
+          $body .= "  " . $names[$participants[$i]] . "\n";
+        }
       }
       for ( $i = 0; $i < count ( $ext_participants ); $i++ ) {
-        $body .= "  " . $ext_participants[$i] . " (" .
-          translate("External User") . ")\n";
+        if ( $useHtml ) {
+          $body .= $ext_participants[$i] . " (" .
+            translate("External User") . ")<br/>\n";
+        } else {
+          $body .= "  " . $ext_participants[$i] . " (" .
+            translate("External User") . ")\n";
+        }
       }
+    }
+
+    if ( $useHtml ) {
+      $body .= "</table>\n" .
+        "</body></html>\n";
     }
   
     $subject = translate("Reminder") . ": " . $name;
@@ -358,6 +462,9 @@ function send_reminder ( $id, $event_date ) {
         "X-Mailer: " . $GLOBALS['PROGRAM_NAME'];
     else
       $extra_hdrs = "X-Mailer: " . $GLOBALS['PROGRAM_NAME'];
+
+    $extra_hdrs .= "\r\nContent-Type: " .
+      ( $useHtml ? "text/html" : "text/plain" );
   
     if ( $debug )
       echo "Sending mail to $recip (in $userlang)\n";
