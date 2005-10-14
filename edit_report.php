@@ -79,7 +79,13 @@ $ranges = array (
   "40" => translate ( "Next year" ),
   "41" => translate ( "This year" ),
   "42" => translate ( "Last year" ),
-  "43" => translate ( "Year before last" )
+  "43" => translate ( "Year before last" ),
+  "50" => translate ( "Next 14 days" ),
+  "51" => translate ( "Next 30 days" ),
+  "52" => translate ( "Next 60 days" ),
+  "53" => translate ( "Next 90 days" ),
+  "54" => translate ( "Next 180 days" ),
+  "55" => translate ( "Next 365 days" ),
 );
 
 // Get list of users that the current user can see
