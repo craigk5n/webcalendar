@@ -3074,7 +3074,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   $rep = get_repeating_entries ( $user, $date );
   $cur_rep = 0;
 
-echo "found " . count($rep) . " events for $date<br>";
+  //echo "found " . count($rep) . " events for $date<br>";
 
   // Get static non-repeating events
   $ev = get_entries ( $user, $date, $get_unapproved, true, true );
