@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 10-20-2005
+# Translation last updated on 10-23-2005
 
 
 ###############################################
@@ -1328,6 +1328,7 @@ This may take several minutes to complete: This may take several minutes to comp
 Install Database: Install Database
 Update Database: Update Database
 Display Required SQL: Display Required SQL
+After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes
 This is the final step in setting up your WebCalendar Installation: This is the final step in setting up your WebCalendar Installation
 Timezone Conversion: Timezone Conversion
 It appears that you have: It appears that you have
