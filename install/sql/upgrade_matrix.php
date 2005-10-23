@@ -1,7 +1,7 @@
 <?php
 //array element[0] = sql to test for
 //array element[1] = old program version **The last entry will be the 
-//  $PORGRAM_VERSION
+//  $PROGRAM_VERSION
 //array element[2] = install point in upgrade-mysql.php
 $database_upgrade_matrix = array (
 array ( "SELECT * FROM cal_user_pref", "pre-v0.9.07", "upgrade_v0.9.13"),
@@ -19,12 +19,13 @@ array ( "SELECT * FROM webcal_import", "v0.9.43 - v1.0RC2", "upgrade_v1.0RC3"),
 array ( "SELECT cal_is_global FROM webcal_view", "v1.0RC3 - v1.0.0", "upgrade_v1.1.0"),
 array ( "SELECT * FROM webcal_access_user", "v1.1.0", "upgrade_v1.1.0-CVS"),
 array ( "SELECT * FROM webcal_tz_list", "v1.1.0-CVS", "upgrade_v1.1.0a-CVS"),
-array ( "SELECT * FROM webcal_user_template ", "v1.1.0a-CVS", "upgrade_v1.1.0b-CVS")
+array ( "SELECT * FROM webcal_user_template ", "v1.1.0a-CVS", "upgrade_v1.1.0b-CVS"),
+array ( "SELECT * FROM webcal_entry_categories ", "v1.1.0b-CVS", "upgrade_v1.1.0c-CVS")
 );
 
 //Program Version for this release
 //Update this to reflect array element[1] in the database_upgrade_matrix array
-//This probably not the proper number scheme, but we can change as needed
-$PROGRAM_VERSION = "v1.1.0a-CVS";
+//This is probably not the proper number scheme, but we can change as needed
+$PROGRAM_VERSION = "v1.1.0b-CVS";
 
 ?>

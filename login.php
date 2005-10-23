@@ -28,7 +28,7 @@ if ( empty ( $webcalendar_login ) ) {
   $webcalendar_login = "";
 }
 
-if ( $remember_last_login == "Y" && empty ( $login ) ) {
+if ( $REMEMBER_LAST_LOGIN == "Y" && empty ( $login ) ) {
   $last_login = $login = $webcalendar_login;
 }
 
@@ -111,7 +111,7 @@ if ( $single_user == "Y" ) {
       // As such, it's not a security risk to have it un-encoded since it
       // is not used to allow logins within this app.  It is used to
       // load user preferences on the login page (before anyone has
-      // logged in) if $remember_last_login is set to "Y" (in admin.php).
+      // logged in) if $REMEMBER_LAST_LOGIN is set to "Y" (in admin.php).
       if ( ! empty ( $remember ) && $remember == "yes" ) {
         SetCookie ( "webcalendar_login", $login,
           time() + ( 24 * 3600 * 365 ), $cookie_path );
@@ -147,7 +147,7 @@ echo "<?xml version=\"1.0\" encoding=\"$charset\"?>" . "\n";
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" lang="<?php echo $lang; ?>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
-<title><?php etranslate($application_name)?></title>
+<title><?php etranslate($APPLICATION_NAME)?></title>
 <?php if ( ! $logout ) { ?>
 <script type="text/javascript">
 // error check login/password
@@ -195,10 +195,10 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 <h2><?php 
 // If Application Name is set to Title then get translation
 // If not, use the Admin defined Application Name
-if ( ! empty ( $application_name ) &&  $application_name =="Title") {
-  etranslate($application_name);
+if ( ! empty ( $APPLICATION_NAME ) &&  $APPLICATION_NAME =="Title") {
+  etranslate($APPLICATION_NAME);
 } else {
-  echo htmlspecialchars ( $application_name );
+  echo htmlspecialchars ( $APPLICATION_NAME );
 }  
 ?></h2>
 
@@ -258,7 +258,7 @@ if ( ! empty ( $return_path ) ) {
 
 <?php } ?>
 
-<?php if ( ! empty ( $public_access ) && $public_access == "Y" ) { ?>
+<?php if ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == "Y" ) { ?>
  <br /><br />
  <a class="nav" href="index.php">
    <?php etranslate("Access public calendar")?></a><br />
@@ -277,7 +277,7 @@ if ( ! empty ( $return_path ) ) {
   }
 ?>
 
-<?php if ( $demo_mode == "Y" ) {
+<?php if ( $DEMO_MODE == "Y" ) {
  // This is used on the sourceforge demo page
  echo "Demo login: user = \"demo\", password = \"demo\"<br />";
 } ?>

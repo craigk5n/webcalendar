@@ -204,14 +204,14 @@ function get_admins() {
 /// Get a list of users and return info in an array.
 // returns: array of users
 function user_get_users () {
-  global $public_access, $PUBLIC_ACCESS_FULLNAME, $pn_user_table;
+  global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $pn_user_table;
   global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
   global $c, $db_host, $db_login, $db_password, $db_database;
 
   $Admins = get_admins();
   $count = 0;
   $ret = array ();
-  if ( $public_access == "Y" )
+  if ( $PUBLIC_ACCESS == "Y" )
     $ret[$count++] = array (
        "cal_login" => "__public__",
        "cal_lastname" => "",
@@ -358,7 +358,7 @@ function user_delete_user ( $user ) {
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
-	  $delete_em[] = $events[$i];
+   $delete_em[] = $events[$i];
       }
       dbi_free_result ( $res );
     }

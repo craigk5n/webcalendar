@@ -3,14 +3,14 @@
  * $Id$
  *
  * File Description:
- *	This file incudes functions for parsing CSV files generated from
- *	MS Outlook.
+ * This file incudes functions for parsing CSV files generated from
+ * MS Outlook.
  *
- *	It will be included by import_handler.php.
+ * It will be included by import_handler.php.
  *
  * Limitations:
- *	This only works when the user does not "Map Custom Fields" during
- *	the export from Outlook.
+ * This only works when the user does not "Map Custom Fields" during
+ * the export from Outlook.
  *
  */
 
@@ -43,12 +43,12 @@ function parse_outlookcsv ( $cal_file ) {
       $optional_attendies = $data[11];
       $meeting_resources = $data[12];
       $billing_information = $data[13];
-      $categories = $data[14];
+      $categories = addslashes($data[14]);
       $description = addslashes($data[15]); 
       $location = addslashes($data[16]); 
       $mileage = $data[17]; 
       $priority = $data[18]; 
-      $private = (int)toBoolean($data[19]); 
+      $class = (int)toBoolean($data[19]); 
       $sensitivity = $data[20]; 
       $show_time_as = $data[21];
     
@@ -63,17 +63,18 @@ function parse_outlookcsv ( $cal_file ) {
       $tmp_data['EndTime']            =  strtotime($end);//In seconds since 1970 (Unix Epoch)
       $tmp_data['Summary']            =  $subject; //Summary of event (string)
       $tmp_data['Duration']           =  dateDifference(strtotime($start),strtotime($end),1); //How long the event lasts (in minutes)
-      $tmp_data['Description']        =  (!empty($location) ? "Location: " . $location . "<br>" : "" ). $description; //Full Description (string)
-      $tmp_data['Untimed']            =  $all_day_event; //1 = true  0 = false
-      $tmp_data['Private']            =  $private; //1 = true  0 = false
-      $tmp_data['Category']           =  $categories; //useless for Palm (not supported yet)
+      $tmp_data['Description']        =  $description; //Full Description (string)
+      $tmp_data['Location']           =  $location; //Location (string)
+      $tmp_data['AllDay']             =  $all_day_event; //1 = true  0 = false
+      $tmp_data['Class']              =  ( $class == 1 ? "Private":"Public" );
+      $tmp_data['Category']           =  $categories; //comma seperated string of categories
       $tmp_data['AlarmSet']           =  0; //1 = true  0 = false
       $tmp_data['AlarmAdvanceAmount'] =  -1; //How many units in AlarmAdvanceType (-1 means not set)
       $tmp_data['AlarmAdvanceType']   =  -1; //Units: (0=minutes, 1=hours, 2=days)
       
       /*
       $tmp_data['Repeat']             =  Array containing repeat information (if repeat)
-      $tmp_data['Repeat']['Interval']   =  1=daily,2=weekly,3=MonthlyByDay,4=MonthlyByDate,5=Yearly,6=monthlyByDayR
+      $tmp_data['Repeat']['Interval']   =  1=daily,2=weekly,3=MonthlyByDay,4=MonthlyByDate,5=Yearly,6=monthlyBySetPos
       $tmp_data['Repeat']['Frequency']  =  How often event occurs. (1=every, 2=every other,etc.)
       $tmp_data['Repeat']['EndTime']    =  When the repeat ends (In seconds since 1970 (Unix Epoch))
       $tmp_data['Repeat']['Exceptions'] =  Exceptions to the repeat (In seconds since 1970 (Unix Epoch))

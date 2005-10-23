@@ -1404,7 +1404,7 @@ Current User: 目前使用者
 # Page: assistant_edit.php
 #
 Assistants: 助理
-Yours assistants: 你 e 助理
+Your assistants: 你 e 助理
 
 
 ###############################################

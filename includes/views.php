@@ -12,15 +12,15 @@
 
 /**
   * Initialize view variables and check permissions.
-  * @param int $view_id	id for the view
+  * @param int $view_id id for the view
   */
 function view_init ( $view_id )
 {
   global $views, $error, $login;
-  global $allow_view_other, $is_admin;
+  global $ALLOW_VIEW_OTHER, $is_admin;
   global $view_name, $view_type;
 
-  if ( ( empty ( $allow_view_other ) || $allow_view_other == "N" )
+  if ( ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == "N" )
     && ! $is_admin ) {
     // not allowed...
     send_to_preferred_view ();
@@ -82,10 +82,10 @@ function view_get_user_list ( $view_id )
     // Make sure this user is allowed to see all users in this view
     // If this is a global view, it may include users that this user
     // is not allowed to see.
-    if ( ! empty ( $user_sees_only_his_groups ) &&
-      $user_sees_only_his_groups == 'Y' ) {
+    if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
+      $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
       $myusers = get_my_users ();
-      if ( ! empty ( $nonuser_enabled ) && $nonuser_enabled == "Y" ) {
+      if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" ) {
         $myusers = array_merge ( $myusers, get_nonuser_cals () );
       }
       $userlookup = array();

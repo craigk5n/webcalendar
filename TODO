@@ -55,7 +55,7 @@ Here are some other ideas for the next or perhaps later releases:
 [ ] Ability to support a reservation system (for either a single resource
     or multiple resources) as the primary use.  Most likely, this would
     involve reserving an entire day rather than a time period.
-[ ] Add a mini-cal iframe using the new mini-cal code
+[X] Add a mini-cal iframe using the new mini-cal code
     (but it should include event popups)
 [ ] Java-based tool (web start) for monitoring and approving new
     public events (would run in background until new event is submitted,

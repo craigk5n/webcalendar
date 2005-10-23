@@ -152,11 +152,11 @@ print_header('','','',true);
  </table>
 <?php } ?>
 
-<?php if ( $allow_color_customization == 'Y' ) { ?>
+<?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
  <h3><?php etranslate("Colors")?></h3>
  <?php etranslate("colors-help")?>
  <br /><br />
-<?php } // if $allow_color_customization ?>
+<?php } // if $ALLOW_COLOR_CUSTOMIZATION ?>
 <?php include_once "includes/help_trailer.php"; ?>
 </body>
 </html>

@@ -3,21 +3,21 @@
  * $Id$
  *
  * Description:
- *	This page generates the JNLP contents that Java Web Start using to
- *	start the application.
+ * This page generates the JNLP contents that Java Web Start using to
+ * start the application.
  *
- *	For more info on Java Web Start:
- *		http://www.java.com/en/download/faq/5000070700.xml
+ * For more info on Java Web Start:
+ *  http://www.java.com/en/download/faq/5000070700.xml
  *
- *	This starts up the us.k5n.webcalendar.ui.ControlPanel.Main application.
- *	The ControlPanel application may eventually take over as the
- *	primary way of administering parts of WebCalendar.
+ * This starts up the us.k5n.webcalendar.ui.ControlPanel.Main application.
+ * The ControlPanel application may eventually take over as the
+ * primary way of administering parts of WebCalendar.
  *
  * Security:
- *	This page doesn't really need securing since it really just passes
- *	info to the web start app.  The web start app then does its own
- *	authenticating since the web services require authentication to
- *	do anything.
+ * This page doesn't really need securing since it really just passes
+ * info to the web start app.  The web start app then does its own
+ * authenticating since the web services require authentication to
+ * do anything.
  *
  **************************************************************************/
 
@@ -47,18 +47,18 @@ Header ( "Content-type: application/x-java-jnlp-file" );
 //Header ( "Content-type: text/plain" );
 
 // Make sure app name is set
-if ( empty ( $application_name ) )
-  $application_name = 'WebCalendar';
+if ( empty ( $APPLICATION_NAME ) )
+  $APPLICATION_NAME = 'WebCalendar';
 
 echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
 ?>
 <jnlp
   spec="1.0+"
-  codebase="<?php echo $server_url;?>"
+  codebase="<?php echo $SERVER_URL;?>"
   href="controlpanel.php">
   <information>
     <title><?php echo translate ( "Control Panel" ) .
-      ': ' . htmlentities ( $application_name );?></title>
+      ': ' . htmlentities ( $APPLICATION_NAME );?></title>
     <vendor>k5n.us</vendor>
     <homepage href="http://www.k5n.us"/>
     <description>WebCalendar Control Panel</description>
@@ -72,7 +72,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
   </resources>
   <application-desc main-class="us.k5n.webcalendar.ui.ControlPanel.Main"
    width="600" height="500">
-    <argument>-url=<?php echo $server_url;?></argument>
+    <argument>-url=<?php echo $SERVER_URL;?></argument>
 <?php if ( $use_http_auth ) { ?>
     <argument>-httpusername=<?php echo $login;?></argument>
 <?php } else { ?>

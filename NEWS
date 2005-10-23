@@ -1,5 +1,9 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1275705: Typos in language files
+      1278023: Carriage returns break I-cal files in v1.1.0-CVS
+      1324505: Last hour of day (23:00 - 00:00) missing!
+      1334863: Week number in week dropdown does not show
       1324156: reminders have GMT time
       1324282: Import iCal US Holidays, wrong dates...
       1283449: Participants able to edit entries they do not own
@@ -16,24 +20,24 @@ Version 1.1.0-CVS (?? ??? 2005)
       1275972: First day of daily repeat missing
       1272390: publish.php broken in v1.1-CVS
       1259997: repeating events don't send reminder on last day
-      1259413: "Check for event conflicts" not working in latest CVS
+      1259413: Check for event conflicts not working in latest CVS
       1262236: Conflict checking broken in new TZ code
-      1261920: "Email all participants" link did not include external users
+      1261920: Email all participants link did not include external users
       1261571: Overriding a conflict when name has double quotes
       1214768: assistants can't see calendar if allow_view_other is N
       1257544: Changing event end date
       1256250: reject_entry.php error
       1254880: the fill in of languages in system settings wrong
-      1246969: Clicking on "Add New Entry" was defaulting to
+      1246969: Clicking on Add New Entry was defaulting to
         current date rather than what was passed in via URL
       1254983: nulogin.php throws language errors
       1249012: can't change timed to untimed events
       1233798: Catagory settings don't work quite right for Boss/Assistant
       1250870: repeatly entries for NUCs cannot be deleted correctly
       1245755: Unbalanced span tags
-      1204920: Default language is not set correctly to new users
+      1204920: DEFAULT language is not set correctly to new users
       1245228: Error in db_load_admin() cannot open table
-      1245112: Entry will not be displayed properly for "public access"
+      1245112: Entry will not be displayed properly for public access
       1238066: Site Extras in popup problem v1.1.0-CVS
       1244652: nonuser admins can't set prefs & assistants
       1242309: New created user cannot be deleted
@@ -54,7 +58,7 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
-    - Fixed bug: "Call to member function on a non-object" intermittent error
+    - Fixed bug: Call to member function on a non-object intermittent error
       when layers are in use
     - Applied PATCH 1290583: No more crash in tz_import.php on install, and fixed quoted
       int values in sql
@@ -66,6 +70,11 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Implemented a new repeating event system that incorporates most requirements
+      of RFC2445. All the ByXXX values are now supported except ByHour, ByMinute and
+      BySecond. Multiple Categories, multiple Alarms and RDATE are now supported,
+      along with the abiity to export VTIMEZONE elements if desired.
+    + Implemented VTODO support with floating display of due date per RFC2445 
     + Added sending of HTML mail (for reminders only now)
     + Added new time range options for reports: next 14/30/60/90/180/365 days
       This allows reports to show events starting with current date
@@ -74,7 +83,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Added patch 1307029: Various mispellings in app and documentation
     + Implemented RFE 1209445: single-day untimed events appear before multi-day
     + Added minical.php for using in iframe in external site
-    + Added patch 1204988: view_v.php : vertical week, bg correction for "today"
+    + Added patch 1204988: view_v.php : vertical week, bg correction for today
     + Added patch 1257167: Delete should select the user by default
     + Added patch 1237485: FCKEditor for editing HTML event descriptions
     + Added install/index and classes/*.class files to update_translation.pl files list
@@ -93,7 +102,7 @@ Version 1.1.0-CVS (?? ??? 2005)
       to act as public calendar.
     + Added ability to use custom header/stylesheet/trailer on a per-user
       basis via user preferences.
-    + Added ability to change text "Public Access" in system settings.
+    + Added ability to change text Public Access in system settings.
     + Added full timezone support including accurate DST calculations
     + Added Auto-install functionality including upgrading from previous
       versions
@@ -130,11 +139,11 @@ Version 1.1.0-CVS (?? ??? 2005)
       Japanese (switched to UTF-8), Japanese-sjis (new),
       Japanese-eucjp
 
-Version 1.0.0 (17 May 2005) aka "Buster"
+Version 1.0.0 (17 May 2005) aka Buster
   - Fixed the following bug reports on SourceForge:
       1202127: [ 1187734 ] Timezone offset problems still exist
       1201821: Bypass user_sees_only_his_groups
-      1193835: Creator cannot "edit" a nonuser-event after Admin changes it.
+      1193835: Creator cannot edit a nonuser-event after Admin changes it.
       1193579: Untimed shows up wrong in edit page
       1189515: Possible to create blank usernames
       1190687: users.php called as public
@@ -158,11 +167,11 @@ Version 1.0.0 (17 May 2005) aka "Buster"
       1158769: Category lost when modifing event by Admin
       1168686: Month display collides with minicals on Safari
       1168682: RC3 Language Detection Broken for Safari.
-      1169403: Public Access not default selected if Particiapants not shown. 
+      1169403: Public Access not DEFAULT selected if Particiapants not shown. 
       1169078: Bad function call in import_handler.php
       1168092: Overlapping events display problem
-      1167281: View_l loses colour for "today"
-      1167790: class="selectedday" assignments in other than day.php
+      1167281: View_l loses colour for today
+      1167790: class=selectedday assignments in other than day.php
       1162486: Path exposure issue with view_entry.php
 
   - Other bugs fixed:
@@ -179,7 +188,7 @@ Version 1.0.0 (17 May 2005) aka "Buster"
     + Split import/export back to two separate links & pages
     + Moved contents of scheduling tab to details tab
     + Updated install/index.php to improve security and display advanced php info
-    + Added new default webcal_config values to all sql table definition files
+    + Added new DEFAULT webcal_config values to all sql table definition files
     + Removed most instances of htmlentities as unneeded
     + Admin no longer needs to approve Public events that they create
     + Added option to set LDAP_OPT_PROTOCOL_VERSION in user-ldap.php
@@ -201,7 +210,7 @@ Version 1.0RC3 (11 Mar 2005)
       1124461: Apostrophe in Text Aborts Translation
       1154854: Nonuser cals not showing up in views
       1154007: Highlight today in Year view
-      1088772: Nonuser calendar w/ Public as default participant
+      1088772: Nonuser calendar w/ Public as DEFAULT participant
       1145390: Merge arrays with array_merge vs + in view_t.php
       1151442: Overlapping events display error in day.php
       1146037: Availibility legend size not dynamic and not centered in IE.
@@ -213,12 +222,12 @@ Version 1.0RC3 (11 Mar 2005)
   - Other bugs fixed:
     + Fixed problem with upcoming.php header. xml:lang and lang were set to full 
       LANGUAGE value, not abbreviation.
-    + Fixed problem with upcoming.php with "You are not Authorized" error message
+    + Fixed problem with upcoming.php with You are not Authorized error message
       being sent without a header. 
     + Fixed problem with popups.php with long text strings going off screen.
       Maximum width is now configurable.
     + Fixed issue with Application Name containing ? characters in logon.php.
-      If Application Name = "Title" then translate, else use Admin defined 
+      If Application Name = Title then translate, else use Admin defined 
       name and run through htmlspecialchars
     + Fixed issues with display_small_month URLs. Extra & if no $user specified.
     - Add meta tag for charset since MSIE requires it.
@@ -235,7 +244,7 @@ Version 1.0RC3 (11 Mar 2005)
       based on server time
   - New Features / Enhancements / Changes:
     + Added 'Public Access' to Manage Calendar of: list, if Admin. 
-    + Allow user-created views to be the default view set in user preferences.
+    + Allow user-created views to be the DEFAULT view set in user preferences.
       After saving or deleting an event, the user will return to this page.
     + Replaced popups.php code with new knoppix based code. This should eliminate
       the problems with popups going off screen. Popups also follow the cursor now,
@@ -257,7 +266,7 @@ Version 1.0RC3 (11 Mar 2005)
 
 Version 1.0RC2 (09 Feb 2005)
   - Fixed the following bugs reports on SourceForge:
-      1116008: Got "invalid user" error when clicking on '+' icon
+      1116008: Got invalid user error when clicking on '+' icon
                to add new event
   - Other bugs fixed:
     + Fixed a problem with the Repeat Tab on edit_entry page, if disabled, 
@@ -268,7 +277,7 @@ Version 1.0RC2 (09 Feb 2005)
     + In day and week view, time slots with events will now use a different
       background color than time slots that are empty.  (This restores
       how this worked a couple of versions ago.)
-    + Many code changes were made to prevent the "undefined variable"
+    + Many code changes were made to prevent the undefined variable
       warning that users may get if they have the PHP error_reporting
       setting enabled.
     + Documentation updated to System Administrator Guide including
@@ -311,7 +320,7 @@ Version 1.0RC1 (04 Feb 2005)
       trailer)
   - New Features / Enhancements:
     + MS SQL Server is now suppported
-    + If php.ini setting for "file_uploads" is not enabled, then indicate
+    + If php.ini setting for file_uploads is not enabled, then indicate
       this on the import page
     + Streamlined layers.php & made layers only be displayed when layers
       are enabled
@@ -324,7 +333,7 @@ Version 1.0RC1 (04 Feb 2005)
     + Updated reading of settings file to better handle when file
       is not in exact format we are expecting.
     + Added database sanity check
-    + Updated default color scheme (Will only apply to new installs)
+    + Updated DEFAULT color scheme (Will only apply to new installs)
     + When html is allowed in event description, still replace newline with
       html break in view page and event popup if the user did not use any html.
     + Fixing users.php so it only shows a single user's info when the user

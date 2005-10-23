@@ -83,11 +83,11 @@ $WebCalendar->initializeSecondPhase();
  */
 function print_header($includes = '', $HeadX = '', $BodyX = '',
   $disableCustom=false, $disableStyle=false) {
-  global $application_name;
+  global $APPLICATION_NAME;
   global $FONTS,$WEEKENDBG,$THFG,$THBG,$PHP_SELF;
   global $TABLECELLFG,$TODAYCELLBG,$TEXTCOLOR;
   global $POPUP_FG,$BGCOLOR;
-  global $LANGUAGE;
+  global $LANGUAGE, $DISABLE_POPUPS;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
   global $friendly;
   global $bodyid, $self, $login;
@@ -110,7 +110,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
        "<head>\n" .
        "<meta http-equiv=\"Content-Type\" content=\"text/html; " .
        "charset=$charset\" />\n";
-     echo "<title>".translate($application_name)."</title>\n";
+     echo "<title>".translate($APPLICATION_NAME)."</title>\n";
    } else {
      echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n" .
        "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
@@ -118,7 +118,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
        "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
        "xml:lang=\"en\" lang=\"en\">\n" .
        "<head>\n" .
-       "<title>".translate($application_name)."</title>\n";
+       "<title>".translate($APPLICATION_NAME)."</title>\n";
    }
  }
 
@@ -127,7 +127,12 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
  // Any other includes?
  if ( is_array ( $includes ) ) {
    foreach( $includes as $inc ){
-     include_once 'includes/'.$inc;
+     if ( $inc == 'js/popups.php' && ! empty ( $DISABLE_POPUPS ) && 
+     $DISABLE_POPUPS == "Y" ) {
+       //don't load popups.php javascript if DISABLE_POPUPS
+   } else {
+       include_once 'includes/'.$inc;
+   }
    }
  }
 
@@ -157,7 +162,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
     ( ! empty ( $GLOBALS['USER_RSS_ENABLED'] ) &&
     $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) ) {
     echo "<link rel=\"alternate\" type=\"application/rss+xml\" " .
-      "title=\"" . htmlentities ( $application_name ) .
+      "title=\"" . htmlentities ( $APPLICATION_NAME ) .
       " [RSS 1.0]\" href=\"rss.php";
     // TODO: single-user mode, etc.
     if ( $login != '__public__' )
@@ -201,14 +206,14 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
 function print_trailer ( $include_nav_links=true, $closeDb=true,
   $disableCustom=false )
 {
-  global $CUSTOM_TRAILER, $c, $STARTVIEW;
-  global $login, $user, $cat_id, $categories_enabled, $thisyear,
+  global $CUSTOM_TRAILER, $c, $STARTVIEW, $DEMO_MODE;
+  global $login, $user, $cat_id, $CATEGORIES_ENABLED, $thisyear,
     $thismonth, $thisday, $DATE_FORMAT_MY, $WEEK_START, $DATE_FORMAT_MD,
-    $readonly, $is_admin, $public_access, $public_access_can_add,
-    $single_user, $use_http_auth, $login_return_path, $require_approvals,
-    $is_nonuser_admin, $public_access_others, $allow_view_other,
-    $views, $reports_enabled, $LAYER_STATUS, $nonuser_enabled,
-    $groups_enabled, $fullname, $has_boss, $is_nonuser;
+    $readonly, $is_admin, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD,
+    $single_user, $use_http_auth, $login_return_path, $REQUIRE_APPROVALS,
+    $is_nonuser_admin, $PUBLIC_ACCESS_OTHERS, $ALLOW_VIEW_OTHER,
+    $views, $REPORTS_ENABLED, $LAYER_STATUS, $NONUSER_ENABLED,
+    $GROUPS_ENABLED, $fullname, $has_boss, $is_nonuser, $DISPLAY_TASKS;
   
   if ( $include_nav_links ) {
     include_once "includes/trailer.php";
@@ -224,5 +229,11 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
       dbi_close ( $c );
     unset ( $c );
   }
+	// adds an easy link to validate the pages
+	if ( $DEMO_MODE == "Y" ) {
+     echo "<p><a href=\"http://validator.w3.org/check?uri=referer\"><img " .
+       "src=\"http://www.w3.org/Icons/valid-xhtml10\" " .
+       "alt=\"Valid XHTML 1.0!\" class=\"valid\"  /></a></p>";
+	}		
 }
 ?>

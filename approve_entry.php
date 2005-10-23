@@ -9,7 +9,7 @@ if ( $readonly == 'Y' ) {
 }
 
 // Allow administrators to approve public events
-if ( $public_access == "Y" && ! empty ( $public ) && $is_admin )
+if ( $PUBLIC_ACCESS == "Y" && ! empty ( $public ) && $is_admin )
   $app_user = "__public__";
 else
   $app_user = ( $is_assistant || $is_nonuser_admin ? $user : $login );

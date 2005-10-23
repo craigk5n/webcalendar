@@ -49,7 +49,7 @@ $out = '';
 
 // If login is public user, make sure public can view others...
 if ( $login == "__public__" && $login != $user ) {
-  if ( $public_access_others != 'Y' ) {
+  if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
     $out .= "<error>" . translate("Not authorized") . "</error>\n";
     $out .= "</events>\n";
     exit;

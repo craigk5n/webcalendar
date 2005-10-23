@@ -115,7 +115,7 @@ $get_unapproved = ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y';
 
 
 
-if ( $public_must_be_enabled && $public_access != 'Y' ) {
+if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' ) {
   $error = translate ( "You are not authorized" ) . ".";
 }
 
@@ -130,7 +130,7 @@ if ( $allow_user_override ) {
 }
 
 $cat_id = '';
-if ( $categories_enabled == 'Y' ) {
+if ( $CATEGORIES_ENABLED == 'Y' ) {
   $x = getIntValue ( "cat_id", true );
   if ( ! empty ( $x ) ) {
     $cat_id = $x;
@@ -200,7 +200,7 @@ if ( ! empty ( $LANGUAGE ) ) {
   echo "<html>\n";
   $charset = "iso-8859-1";
 }
-echo "<title>".translate($application_name)."</title>\n";
+echo "<title>".translate($APPLICATION_NAME)."</title>\n";
  
 ?>
 </head>
@@ -279,12 +279,12 @@ print "</body>\n</html>";
 
 // Print the details of an upcoming event
 function print_upcoming_event ( $e ) {
-  global $display_link, $link_target, $server_url, $charset, $display_tzid;
+  global $display_link, $link_target, $SERVER_URL, $charset, $display_tzid;
 
-  if ( $display_link && ! empty ( $server_url ) ) {
+  if ( $display_link && ! empty ( $SERVER_URL ) ) {
     print "<a title=\"" . 
       $e->getName() . "\" href=\"" . 
-      $server_url . "view_entry.php?id=" . 
+      $SERVER_URL . "view_entry.php?id=" . 
       $e->getID() . "&amp;date=" . 
       $e->getDate() . "\"";
     if ( ! empty ( $link_target ) ) {
@@ -293,7 +293,7 @@ function print_upcoming_event ( $e ) {
     print ">";
   }
   print $e->getName();
-  if ( $display_link && ! empty ( $server_url ) ) {
+  if ( $display_link && ! empty ( $SERVER_URL ) ) {
     print "</a>";
   }
   if ( $e->isAllDay() ) {

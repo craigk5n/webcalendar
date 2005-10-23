@@ -66,6 +66,7 @@ define ( 'EXTRA_REMINDER_WITH_OFFSET', 0x0002 );
 // when creating a new event.
 define ( 'EXTRA_REMINDER_DEFAULT_YES', 0x0004 );
 
+
 // Format of an entry is an array with the following elements:
 // name: unique name of this extra field (used in db)
 // description: how this field will be described to users

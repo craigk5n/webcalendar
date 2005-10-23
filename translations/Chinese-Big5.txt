@@ -1553,7 +1553,7 @@ Current User: 目前使用者
 # Assistants:
 #
 # << MISSING >>
-# Yours assistants:
+# Your assistants:
 
 
 ###############################################

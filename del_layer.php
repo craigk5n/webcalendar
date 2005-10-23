@@ -1,7 +1,7 @@
 <?php
 include_once 'includes/init.php';
 
-if ( $allow_view_other != 'Y' ) {
+if ( $ALLOW_VIEW_OTHER != 'Y' ) {
   print_header ();
   etranslate("You are not authorized");
   print_trailer ();
@@ -9,7 +9,7 @@ if ( $allow_view_other != 'Y' ) {
 }
 
 $updating_public = false;
-if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
   $updating_public = true;
   $layer_user = "__public__";
 } else {

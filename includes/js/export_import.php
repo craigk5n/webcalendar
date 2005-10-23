@@ -16,8 +16,8 @@ function selectDate ( day, month, year, current, evt ) {
     mX = evt.pageX + 40;
     mY = evt.pageY +130;
   }
-	var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY ;	
-		if ( curmonth < 10 )
+ var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY ; 
+  if ( curmonth < 10 )
     date += "0";
   date += curmonth;
   date += "01";
@@ -26,5 +26,20 @@ function selectDate ( day, month, year, current, evt ) {
   var colorWindow = window.open(url,"DateSelection","width=300,height=200," + MyPosition);
 }
 
+function toggle_import() {
+    var i = document.importform.ImportType.selectedIndex;
+  if ( i == 1 ) { //Palm
+      makeVisible ( "palm" );
+   } else {
+      makeInvisible ( "palm" ); 
+   }
+  if ( i == 3 ) {// Outlook CSV
+      makeInvisible ( "ivcal" );
+      makeVisible ( "outlookcsv" ); 
+   } else {
+      makeVisible ( "ivcal" ); 
+      makeInvisible ( "outlookcsv" );
+   }
+}
 //]]> -->
 </script>

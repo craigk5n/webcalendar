@@ -39,9 +39,9 @@ if ( ! empty ( $DISPLAY_WEEKENDS ) && $DISPLAY_WEEKENDS == "N" ) {
 }
 
 $HeadX = '';
-if ( ! empty ( $auto_refresh ) && $auto_refresh == "Y" &&
-  ! empty ( $auto_refresh_time ) ) {
-  $refresh = $auto_refresh_time * 60; // convert to seconds
+if ( ! empty ( $AUTO_REFRESH ) && $AUTO_REFRESH == "Y" &&
+  ! empty ( $AUTO_REFRESH_TIME ) ) {
+  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week.php?$u_url" .
     "date=$startdate$caturl" . 
     ( ! empty ( $friendly ) ? "&amp;friendly=1" : "") . "\" />\n";
@@ -56,6 +56,12 @@ $repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login,
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( strlen ( $user ) ? $user : $login,
   $startdate, $enddate, $cat_id );
+
+if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
+  /* Pre-load tasks for quicker access */
+  $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) )
+    ? $user : $login, $startdate, $enddate, $cat_id );
+}
 
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
@@ -72,9 +78,9 @@ for ( $i = 0; $i < 7; $i++ ) {
     date_to_str ( date ( "Ymd", $wkend ), "", false );
 ?></span>
 <?php
-if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
+if ( $DISPLAY_WEEKNUMBER == "Y" ) {
   echo "<br />\n<span class=\"weeknumber\">(" .
-    translate("Week") . " " . week_number ( $wkstart ) . ")</span>";
+    translate("Week") . " " . date( "W", $wkstart ) . ")</span>";
 }
 ?>
 <a title="<?php etranslate("Previous")?>" 
@@ -98,7 +104,7 @@ href="week.php?<?php echo $u_url;?>date=<?php echo
   }
 ?></span>
 <?php
-  if ( $categories_enabled == "Y" && (!$user || ($user == $login || 
+  if ( $CATEGORIES_ENABLED == "Y" && (!$user || ($user == $login || 
     $is_assistant ))) {
     echo "<br /><br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, 
@@ -157,7 +163,7 @@ $first_slot = (int)( ( ( $WORK_DAY_START_HOUR ) * 60 ) / $interval );
 $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) / $interval );
 
 $untimed_found = false;
-$get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
+$get_unapproved = ( $DISPLAY_UNAPPROVED == "Y" );
 if ( $login == "__public__" ) {
   $get_unapproved = false;
 }
@@ -170,9 +176,14 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 
   // Get static non-repeating events
   $ev = get_entries ( $user, $date, $get_unapproved, true, true );
-
   // combine and sort the event arrays
   $ev = combine_and_sort_events($ev, $rep);
+ 
+ // get all due tasks for this date and before and store in $tk
+ $tk = array();
+ if ( $date >= date ( "Ymd" ) ) {
+    $tk = get_tasks ( $user, $date, $get_unapproved );
+ }
 
   $hour_arr = array ();
   $rowspan_arr = array ();
@@ -184,6 +195,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
       html_for_event_week_at_a_glance ( $ev[$i], $date );
     }
   }
+
 
   // squish events that use the same cell into the same cell.
   // For example, an event from 8:00-9:15 and another from 9:30-9:45 both

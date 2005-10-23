@@ -1,25 +1,25 @@
 <?php
 /*
  * Page Description:
- *	Display a timebar view of a single day.
+ * Display a timebar view of a single day.
  *
  * Input Parameters:
- *	month (*) - specify the starting month of the timebar
- *	day (*) - specify the starting day of the timebar
- *	year (*) - specify the starting year of the timebar
- *	users (*) - csv of users to include
- *	(*) required field
-	*
+ * month (*) - specify the starting month of the timebar
+ * day (*) - specify the starting day of the timebar
+ * year (*) - specify the starting year of the timebar
+ * users (*) - csv of users to include
+ * (*) required field
+ *
  * Security:
- *	Must have "allow view others" enabled ($allow_view_other) in
- *	  System Settings unless the user is an admin user ($is_admin).
+ * Must have "allow view others" enabled ($ALLOW_VIEW_OTHER) in
+ *   System Settings unless the user is an admin user ($is_admin).
  */
 
 include_once 'includes/init.php';
 
 // Don't allow users to use this feature if "allow view others" is
 // disabled.
-if ( $allow_view_other == "N" && ! $is_admin ) {
+if ( $ALLOW_VIEW_OTHER == "N" && ! $is_admin ) {
   // not allowed...
   exit;
 }

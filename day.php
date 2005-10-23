@@ -25,7 +25,7 @@ $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );
 
-if ( ! empty ( $bold_days_in_year ) && $bold_days_in_year == 'Y' ) {
+if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
  $boldDays = true;
 } else {
  $boldDays = false;
@@ -35,8 +35,8 @@ $startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
 $enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
 
 $HeadX = '';
-if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
-  $refresh = $auto_refresh_time * 60; // convert to seconds
+if ( $AUTO_REFRESH == "Y" && ! empty ( $AUTO_REFRESH_TIME ) ) {
+  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=day.php?$u_url" .
     "date=$nowYmd$caturl" . ( ! empty ( $friendly ) ? "&amp;friendly=1" : "") . "\" />\n";
 }
@@ -52,6 +52,12 @@ $repeated_events = read_repeated_events ( empty ( $user ) ? $login : $user,
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( empty ( $user ) ? $login : $user, $startdate, $enddate,
   $cat_id  );
+ 
+if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
+  /* Pre-load tasks for quicker access */
+  $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) )
+    ? $user : $login, $startdate, $enddate, $cat_id );
+}
 ?>
 
 <table>
@@ -75,7 +81,7 @@ $events = read_events ( empty ( $user ) ? $login : $user, $startdate, $enddate,
     echo "<br />-- " . translate("Assistant mode") . " --";
 ?></span>
 <?php
-  if ( $categories_enabled == "Y" && (!$user || ($user == $login || $is_assistant ))) {
+  if ( $CATEGORIES_ENABLED == "Y" && (!$user || ($user == $login || $is_assistant ))) {
     echo "<br />\n<br />\n";
     print_category_menu( 'day', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
   }
@@ -88,7 +94,8 @@ $events = read_events ( empty ( $user ) ? $login : $user, $startdate, $enddate,
 <div class="minicalcontainer">
 <?php display_small_month ( $thismonth, $thisyear, true ); ?>
 </div>
-</td></tr><tr><td>
+
+</td></tr><tr><td rowspan="2">
 <table class="glance" cellspacing="0" cellpadding="0">
 <?php
 if ( empty ( $TIME_SLOTS ) )
@@ -99,7 +106,17 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 ?>
 </table>
 </td>
-</tr></table>
+</tr>
+
+
+<?php 
+if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y" ) {
+  echo "<tr><td valign=\"bottom\">";
+  echo display_small_tasks ();
+ echo "</td></tr>";
+ }
+?>
+</table>
 <br />
 <?php
  if ( ! empty ( $eventinfo ) ) echo $eventinfo;

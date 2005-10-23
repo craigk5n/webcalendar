@@ -1,5 +1,5 @@
 <?php
- global $groups_enabled,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
+ global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR, $user;
 ?><script type="text/javascript">
 <!-- <![CDATA[
 // do a little form verifying
@@ -94,9 +94,31 @@ function validate_and_submit () {
   if ( changed ) {
     form.entry_changed.value = "yes";
   }
+ 
 //Add code to make HTMLArea code stick in TEXTAREA
  if (typeof editor != "undefined") editor._textArea.value = editor.getHTML();
-  // would be nice to also check date to not allow Feb 31, etc...
+
+ //Check if Event date is valid
+ var d = document.editentryform.day.selectedIndex;
+  var vald = document.editentryform.day.options[d].value;
+  var m = document.editentryform.month.selectedIndex;
+  var valm = document.editentryform.month.options[m].value;
+  var y = document.editentryform.year.selectedIndex;
+  var valy = document.editentryform.year.options[y].value;
+  var c = new Date(valy,valm -1,vald);
+ if ( c.getDate() != vald ) {
+   alert ("<?php etranslate ("Invalid Event Date")?>.");
+  document.editentryform.day.focus ();
+   return false;
+ }
+ //Select all Repeat Exception Dates
+ for ( i = 0; i < document.editentryform.elements.length; i++ ) {
+  if ( document.editentryform.elements[i].name == "exceptions[]" )
+      exceptionid = i;
+ }
+ for ( i = 0; i < document.editentryform.elements[exceptionid].length; i++ ) {
+    document.editentryform.elements[exceptionid].options[i].selected = true;
+ } 
   document.editentryform.submit ();
   return true;
 }
@@ -127,7 +149,7 @@ function selectDate (  day, month, year, current, evt ) {
   var colorWindow = window.open(url,"DateSelection","width=300,height=200,"  + MyPosition);
 }
 
-<?php if ( $groups_enabled == "Y" ) { 
+<?php if ( $GROUPS_ENABLED == "Y" ) { 
 ?>function selectUsers () {
   // find id of user selection object
   var listid = 0;
@@ -165,7 +187,7 @@ function selectDate (  day, month, year, current, evt ) {
   if ( i != 1 ) {
     // Untimed/All Day
     makeInvisible ( "timeentrystart" );
-    if ( document.editentryform.timezonenotice ) {  
+  if ( document.editentryform.timezonenotice ) {
       makeInvisible ( "timezonenotice" );
   }
     if ( document.editentryform.duration_h ) {
@@ -176,9 +198,10 @@ function selectDate (  day, month, year, current, evt ) {
   } else {
     // Timed Event
     makeVisible ( "timeentrystart" );
-    if ( document.editentryform.timezonenotice ) {
+  if ( document.editentryform.timezonenotice ) {
       makeVisible ( "timezonenotice" );
   }
+
     if ( document.editentryform.duration_h ) {
       makeVisible ( "timeentryduration" );
     } else {
@@ -187,25 +210,95 @@ function selectDate (  day, month, year, current, evt ) {
   }
 }
 
-function rpttype_handler () {
+function rpttype_handler (  ) {
+  var expertid = getElementId('rptmode');
+ var expert = document.editentryform.elements[expertid].checked;
   var i = document.editentryform.rpttype.selectedIndex;
   var val = document.editentryform.rpttype.options[i].text;
   //alert ( "val " + i + " = " + val );
-  //i == 0 when event does not repeat
+  //i == 0 none
+  //i == 1 daily 
+  //i == 2 weekly
+  //i == 3,4,5 monthlyByDay, monthlyBySetPos, monthlyByDate
+  //i == 6 yearly
+ //Turn all off initially
+    makeInvisible ( "rpt_mode" );
+   makeInvisible ( "rptenddate", true );
+    makeInvisible ( "rptfreq", true );
+    makeInvisible ( "weekdays_only" );
+    makeInvisible ( "rptwkst" );
+//    makeInvisible ( "rptday", true );
+    makeInvisible ( "rptbymonth", true );  
+    makeInvisible ( "rptbydayln", true );
+    makeInvisible ( "rptbydayln1", true );
+    makeInvisible ( "rptbydayln2", true );
+    makeInvisible ( "rptbydayln3", true );
+    makeInvisible ( "rptbydayln4", true );
+    makeInvisible ( "rptbydayextended", true );
+    makeInvisible ( "rptbymonthdayextended", true );
+    makeInvisible ( "rptbysetpos", true ); 
+    makeInvisible ( "rptbyweekno", true ); 
+    makeInvisible ( "rptbyyearday", true ); 
+    makeInvisible ( "rptexceptions", true );
+ //   makeInvisible ( "select_exceptions_not", true );
   if ( i != 0 ) {
-    // none (not repeating)
-    makeVisible ( "rptenddate" );
-    makeVisible ( "rptfreq" );
-    if ( i == 2 ) {
-      makeVisible ( "rptday" );
-    } else {
-      makeInvisible ( "rptday" );
+    //always on
+    makeVisible ( "rptenddate", true );
+    makeVisible ( "rptfreq", true );
+    makeVisible ( "rptexceptions", true);
+    makeVisible ( "rpt_mode" );
+ 
+    if ( i == 1 ) { //daily
+    makeVisible ( "weekdays_only" ); 
     }
-  } else {
-    // Timed Event
-    makeInvisible ( "rptenddate" );
-    makeInvisible ( "rptfreq" );
-    makeInvisible ( "rptday" );
+  
+    if ( i == 2 ) { //weekly
+   makeVisible ( "rptbydayextended", true ); 
+    if (expert ) {
+        makeVisible ( "rptwkst" );   
+   }
+    }
+   if ( i == 3 ) { //monthly (by day)
+    if (expert ) {
+        makeVisible ( "rptwkst" );
+        makeVisible ( "rptbydayln", true ); 
+        makeVisible ( "rptbydayln1", true );
+        makeVisible ( "rptbydayln2", true ); 
+        makeVisible ( "rptbydayln3", true );
+        makeVisible ( "rptbydayln4", true ); 
+    } 
+    }
+  
+   if ( i == 4 ) { //monthly (by date)
+    if (expert ) { 
+     makeVisible ( "rptbydayextended", true );
+     makeVisible ( "rptbymonthdayextended", true ); 
+    }
+    }
+
+   if ( i == 5 ) { //monthly (by position)
+      makeVisible ( "rptbydayextended", true );
+      makeVisible ( "rptbysetpos", true );
+  }
+   
+  if ( i == 6 ) {  //yearly
+    if (expert ) { 
+        makeVisible ( "rptwkst" );
+     makeVisible ( "rptbymonthdayextended", true ); 
+        makeVisible ( "rptbydayln", true ); 
+        makeVisible ( "rptbydayln1", true );
+        makeVisible ( "rptbydayln2", true ); 
+        makeVisible ( "rptbydayln3", true );
+        makeVisible ( "rptbydayln4", true ); 
+     makeVisible ( "rptbyweekno", true ); 
+     makeVisible ( "rptbyyearday", true ); 
+    }
+    }
+  if (expert ) {
+      makeVisible ( "rptbydayextended", true );
+   makeInvisible ( "weekdays_only" );
+   makeVisible ( "rptbymonth", true ); 
+  }
   }
 }
 
@@ -213,7 +306,7 @@ function rpttype_weekly () {
   var i = document.editentryform.rpttype.selectedIndex;
   var val = document.editentryform.rpttype.options[i].text;
  if ( val == "Weekly" ) {
-   var rpt_days = new Array("rpt_sun","rpt_mon","rpt_tue","rpt_wed","rpt_thu","rpt_fri","rpt_sat");
+   var rpt_days = new Array("SU","MO","TU","WE","TH","FR","SA");
    //Get Event Date values
     var d = document.editentryform.day.selectedIndex;
     var vald = document.editentryform.day.options[d].value;
@@ -237,10 +330,10 @@ tabs[2] = "pete";
 
 var sch_win;
 
-function getUserList () {
+function getElementId ( elename ) {
   var listid = 0;
   for ( i = 0; i < document.editentryform.elements.length; i++ ) {
-    if ( document.editentryform.elements[i].name == "participants[]" )
+    if ( document.editentryform.elements[i].name == elename )
       listid = i;
   }
   return listid;
@@ -251,7 +344,7 @@ function showSchedule () {
   //var agent=navigator.userAgent.toLowerCase();
   //var agent_isIE=(agent.indexOf("msie") > -1);
   var myForm = document.editentryform;
-  var userlist = myForm.elements[getUserList()];
+  var userlist = myForm.elements[getElementId('participants[]')];
   var delim = '';
   var users = '';
   var cols = <?php echo $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ?>;
@@ -283,8 +376,167 @@ function showSchedule () {
      sch_win = window.open( url, "showSchedule", features );
   }
 }
-function rpt_datechanged () {
-  document.editentryform.rpt_end_use.checked = true;
+
+function add_exception (which) {
+ var sign = "-";
+ if (which ) {
+    sign = "+";
+ }
+ var d = document.editentryform.except_day.selectedIndex;
+  var vald = document.editentryform.except_day.options[d].value;
+  var m = document.editentryform.except_month.selectedIndex;
+  var valm = document.editentryform.except_month.options[m].value;
+  var y = document.editentryform.except_year.selectedIndex;
+  var valy = document.editentryform.except_year.options[y].value;
+  var c = new Date(valy,valm -1,vald);
+ if ( c.getDate() != vald ) {
+    alert ("Invalid Date");
+   return false;
+ }
+ //alert ( c.getFullYear() + " "  + c.getMonth() + " " + c.getDate());
+ var exceptDate = String((c.getFullYear() * 100 + c.getMonth() +1) * 100 + c.getDate());
+ var isUnique = true;
+ //Test to see if this date is alreadt in the list
+  with (document.editentryform)
+   { 
+      with (document.editentryform.elements['exceptions[]'])
+      {
+         for (i = 0; i < length; i++)
+         {
+            if(options[i].text ==  "-" + exceptDate || options[i].text ==  "+" + exceptDate){
+         isUnique = false;
+         } 
+     }
+   }
+  } 
+ if ( isUnique ) {
+    document.editentryform.elements['exceptions[]'].options[document.editentryform.elements['exceptions[]'].length]  = new Option( sign + exceptDate, sign + exceptDate );
+    makeVisible ( "select_exceptions" );
+    makeInvisible ( "select_exceptions_not" );
+ }
+}
+function del_selected () {
+   with (document.editentryform)
+   { 
+      with (document.editentryform.elements['exceptions[]'])
+      {
+         for (i = 0; i < length; i++)
+         {
+            if(options[i].selected){
+         options[i] = null;
+         } 
+         } // end for loop
+     if ( ! length ) {
+       makeInvisible ( "select_exceptions" );
+       makeVisible ( "select_exceptions_not" );
+     }
+     }
+   } // end with document
+}
+
+
+function toggle_byday(ele){
+  if (ele.value.length > 4 ) {
+    //blank
+  ele.value = ele.id;
+  } else if (ele.value == ele.id) {
+    //positive value
+  ele.value =  (parseInt(ele.id.substr(0,1)) -6 ) +  ele.id.substr(1,2);
+  } else if (ele.value ==  (parseInt(ele.id.substr(0,1)) -6 ) +  ele.id.substr(1,2)) {
+    //negative value
+  ele.value = "        ";
+  }
+  for ( i = 0; i < document.editentryform.elements.length; i++ ) {
+    if ( document.editentryform.elements[i].name == "bydayext2[]" ){
+      if ( document.editentryform.elements[i].id == ele.id ) 
+      document.editentryform.elements[i].value = ele. value;
+    }
+  }
+}
+
+function toggle_bymonthday(ele){
+  //alert(ele.id.substr(10)); 
+  if (ele.value .length > 3) {
+    //blank
+  ele.value = ele.id.substr(10);
+  } else if (ele.value == ele.id.substr(10)) {
+    //positive value
+  ele.value =  parseInt(ele.id.substr(10)) -32;
+  } else if (ele.value ==  (parseInt(ele.id.substr(10)) -32 )) {
+    //negative value
+  ele.value = "     ";
+  }
+  for ( i = 0; i < document.editentryform.elements.length; i++ ) {
+    if ( document.editentryform.elements[i].name == "bymonthday[]" ){
+      if ( document.editentryform.elements[i].id == ele.id ) 
+      document.editentryform.elements[i].value = ele. value;
+    }
+  }
+}
+
+function toggle_bysetpos(ele){
+  //alert(ele.id.substr(10)); 
+  if (ele.value .length > 3) {
+    //blank
+  ele.value = ele.id.substr(8);
+  } else if (ele.value == ele.id.substr(8)) {
+    //positive value
+  ele.value =  parseInt(ele.id.substr(8)) -32;
+  } else if (ele.value ==  (parseInt(ele.id.substr(8)) -32 )) {
+    //negative value
+  ele.value = "     ";
+  }
+  for ( i = 0; i < document.editentryform.elements.length; i++ ) {
+    if ( document.editentryform.elements[i].name == "bysetpos2[]" ){
+      if ( document.editentryform.elements[i].id == ele.id ) 
+      document.editentryform.elements[i].value = ele. value;
+    }
+  }
+}
+
+function toggle_until() {
+ for ( i = 0; i < document.editentryform.elements.length; i++ ) {
+    if ( document.editentryform.elements[i].name == "rpt_day" )
+      rpt_dayid = i;
+    if ( document.editentryform.elements[i].name == "rpt_month" )
+      rpt_monthid = i;
+    if ( document.editentryform.elements[i].name == "rpt_year" )
+      rpt_yearid = i;
+    if ( document.editentryform.elements[i].name == "rpt_btn" )
+      rpt_btnid = i;
+ }
+ document.editentryform.elements[rpt_dayid].disabled = true;
+ document.editentryform.elements[rpt_monthid].disabled = true;
+ document.editentryform.elements[rpt_yearid].disabled = true;
+ document.editentryform.elements[rpt_btnid].disabled = true;
+ document.editentryform.elements['rpt_count'].disabled = true;
+ if ( document.editentryform.rpt_until[1].checked ) { //use until date
+   document.editentryform.elements[rpt_dayid].disabled = false;
+   document.editentryform.elements[rpt_monthid].disabled = false;
+   document.editentryform.elements[rpt_yearid].disabled = false;
+   document.editentryform.elements[rpt_btnid].disabled = false; 
+ } else if ( document.editentryform.rpt_until[2].checked ) { //use count
+   document.editentryform.elements['rpt_count'].disabled = false; 
+ }
+}
+
+function editCats (  evt ) {
+  if (document.getElementById) {
+    mX = evt.clientX   -160;
+    mY = evt.clientY  + 150;
+  }
+  else {
+    mX = evt.pageX  -160;
+    mY = evt.pageY + 150;
+  }
+  var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY ;
+  var cat_ids = document.editentryform.elements['cat_id'].value;
+  var user = '<?php echo $user ?>';
+  url = "catsel.php?form=editentryform&cats=" + cat_ids;
+  if (user ) {
+  url += "&user=" + user;
+ }
+  var catWindow = window.open(url,"EditCat","width=365,height=200,"  + MyPosition);
 }
 //]]> -->
 </script>

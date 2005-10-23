@@ -273,7 +273,7 @@ h3 {
 <br /><br />
 <h3><a name="check_for_conflicts">check_for_conflicts</a></h3>
 <tt>check_for_conflicts ( $date, $duration, $hour, $minute, $participants, $login, $id )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Check for conflicts. Find overlaps between an array of dates and the other dates in the database. <br/>Limits on number of appointments: if enabled in System Settings ($limit_appts global variable), too many appointments can also generate a scheduling conflict. <br/><br/><span class="note">TODO</span> Update this to handle exceptions to repeating events</blockquote>
+<span class="prompt">Description:</span><blockquote>Check for conflicts. Find overlaps between an array of dates and the other dates in the database. <br/>Limits on number of appointments: if enabled in System Settings ($LIMIT_APPTS global variable), too many appointments can also generate a scheduling conflict. <br/><br/><span class="note">TODO</span> Update this to handle exceptions to repeating events</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - is an array of dates in YYYYMMDD format that is checked for overlaps.</li>
@@ -899,7 +899,7 @@ h3 {
 <br /><br />
 <h3><a name="load_user_layers">load_user_layers</a></h3>
 <tt>load_user_layers ( $user, $force )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Load current user's layer info and stuff it into layer global variable. If the system setting $allow_view_other is not set to 'Y', then we ignore all layer functionality. If $force is 0, we only load layers if the current user preferences have layers turned on.</blockquote>
+<span class="prompt">Description:</span><blockquote>Load current user's layer info and stuff it into layer global variable. If the system setting $ALLOW_VIEW_OTHER is not set to 'Y', then we ignore all layer functionality. If $force is 0, we only load layers if the current user preferences have layers turned on.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - User to load layers for</li>
@@ -911,7 +911,7 @@ h3 {
 <br /><br />
 <h3><a name="load_user_preferences">load_user_preferences</a></h3>
 <tt>load_user_preferences ( $ )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Load the current user's preferences as global variables from the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table. Also load the list of views for this user (not really a preference, but this is a convenient place to put this...) <br/><br/><span class="note">Notes</span>   <ul> <li>If the $allow_color_customization is set to 'N', then we ignore any color preferences.</li> <li>Other default values will also be set if the user has not saved a preference and no global value has been set by the administrator in the system settings.</li> </ul></blockquote>
+<span class="prompt">Description:</span><blockquote>Load the current user's preferences as global variables from the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table. Also load the list of views for this user (not really a preference, but this is a convenient place to put this...) <br/><br/><span class="note">Notes</span>   <ul> <li>If the $ALLOW_COLOR_CUSTOMIZATION is set to 'N', then we ignore any color preferences.</li> <li>Other default values will also be set if the user has not saved a preference and no global value has been set by the administrator in the system settings.</li> </ul></blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>

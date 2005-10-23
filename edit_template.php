@@ -26,7 +26,7 @@ $found = $foundOld = false;
 
 $user = '__system__';
 
-if ( ! empty ( $allow_user_header ) && $allow_user_header == 'Y' ) {
+if ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' ) {
   $user = getValue ( 'user' );
   if ( empty ( $user ) )
     $user = '__system__';
@@ -139,7 +139,7 @@ if ( ! empty ( $error ) ) {
 
 <input type="hidden" name="type" value="<?php echo $type;?>" />
 <?php
- if ( ! empty ( $allow_user_header ) && $allow_user_header == 'Y' &&
+ if ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' &&
    ! empty ( $user ) && $user != '__system__' ) {
    echo '<input type="hidden" name="user" value="' . $user . "\">\n";
  }

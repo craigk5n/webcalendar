@@ -306,7 +306,7 @@ function user_delete_user ( $user ) {
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
-	  $delete_em[] = $events[$i];
+   $delete_em[] = $events[$i];
       }
       dbi_free_result ( $res );
     }
@@ -357,12 +357,12 @@ function user_delete_user ( $user ) {
 // returns: array of users
 function user_get_users () {
   global $error, $ds, $ldap_base_dn, $ldap_user_attr, $ldap_user_filter;
-  global $public_access, $PUBLIC_ACCESS_FULLNAME;
+  global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME;
 
   $Admins = get_admins();
   $count = 0;
   $ret = array ();
-  if ( $public_access == 'Y' )
+  if ( $PUBLIC_ACCESS == 'Y' )
     $ret[$count++] = array (
        'cal_login' => '__public__',
        'cal_lastname' => '',

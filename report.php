@@ -25,7 +25,7 @@
 
 /*
  * Security:
- * If system setting $reports_enabled is set to anything other than
+ * If system setting $REPORTS_ENABLED is set to anything other than
  *   'Y', then don't allow access to this page.
  * If webcal_report.cal_is_global is set to 'Y', any user can view
  *   the report.  If set to 'N', only the creator (set in
@@ -78,7 +78,7 @@ function replace_site_extras_in_template ( $template, $extras ) {
  * @return string HTML for this event based on report template.
  */
 function event_to_text ( $event, $date ) {
-  global $login, $user, $event_template, $report_id, $allow_html_description;
+  global $login, $user, $event_template, $report_id, $ALLOW_HTML_DESCRIPTION;
 
   $time_str = $start_time_str = $end_time_str = '';
 
@@ -117,8 +117,8 @@ function event_to_text ( $event, $date ) {
     $description_str = translate("This event is confidential");
   } else {
     $name_str = htmlspecialchars ( $name );
-    if ( ! empty ( $allow_html_description ) &&
-      $allow_html_description == 'Y' ) {
+    if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) &&
+      $ALLOW_HTML_DESCRIPTION == 'Y' ) {
       $str = str_replace ( '&', '&amp;', $event->getDescription() );
       $description_str = str_replace ( '&amp;amp;', '&amp;', $str );
       if ( strstr ( $description_str, "<" ) &&
@@ -193,7 +193,7 @@ $error = "";
 $list = ""; // list of reports when no id specified
 
 if ( ! empty ( $user ) && $user != $login &&
-  ( ( ! empty ( $allow_view_other ) && $allow_view_other == 'Y' )
+  ( ( ! empty ( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' )
   || $is_admin ) ) {
   $report_user = $user;
   $u_url = "&amp;user=$user";
@@ -201,12 +201,12 @@ if ( ! empty ( $user ) && $user != $login &&
   $u_url = "";
 }
 
-if ( empty ( $reports_enabled ) || $reports_enabled != 'Y' ) {
+if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' ) {
   $error = translate ( "You are not authorized" ) . ".";
 }
 
 $updating_public = false;
-if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
   $updating_public = true;
   $report_user = "__public__";
 }

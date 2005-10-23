@@ -1614,7 +1614,7 @@ Current User: Núverandi notandi
 # Assistants:
 #
 # << MISSING >>
-# Yours assistants:
+# Your assistants:
 
 
 ###############################################

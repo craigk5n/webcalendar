@@ -1081,7 +1081,7 @@ Current User: Käesolev kasutaja
 # Page: assistant_edit.php
 #
 Assistants: Abilised
-Yours assistants: Sinu abiline
+Your assistants: Sinu abiline
 
 
 ###############################################

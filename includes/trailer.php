@@ -10,7 +10,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 
 // NOTE: This file is included within the print_trailer function found
 // in includes/init.php.  If you add a global variable somewhere in this
-// file, be sure to declare it global in the print_trialer function
+// file, be sure to declare it global in the print_trailer function
 // or use $GLOBALS[].
 ?>
 
@@ -35,7 +35,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
   if ( ! empty ( $user ) && $user != $login ) {
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   }
-  if ( ! empty ( $cat_id ) && $categories_enabled == "Y"
+  if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == "Y"
     && ( ! $user || $user == $login ) ) {
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
@@ -93,7 +93,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
   if ( ! empty ( $user ) && $user != $login ) {
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   }
-  if ( ! empty ( $cat_id ) && $categories_enabled == "Y"
+  if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == "Y"
     && ( ! $user || $user == $login ) ) {
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
@@ -130,8 +130,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
         echo " selected=\"selected\"";
       }
       echo ">";
-      if ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) && $GLOBALS['PULLDOWN_WEEKNUMBER'] = "Y" ) {
-        echo  "(" . week_number ( $twkstart ) . ")&nbsp;&nbsp;";
+      if ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) && $GLOBALS['PULLDOWN_WEEKNUMBER'] == "Y" ) {
+        echo  "(" . date( "W", $twkstart ) . ")&nbsp;&nbsp;";
       }
       printf ( "%s - %s",
         date_to_str ( date ( "Ymd", $twkstart ), $DATE_FORMAT_MD, false, true, 0 ),
@@ -162,7 +162,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
   if ( ! empty ( $user ) && $user != $login ) {
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   }
-  if ( ! empty ( $cat_id ) && $categories_enabled == "Y"
+  if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == "Y"
     && ( ! $user || $user == $login ) ) {
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
@@ -204,7 +204,7 @@ else if ( access_is_enabled () )
   $can_add = access_can_access_function ( ACCESS_EVENT_EDIT );
 else {
   if ( $login == '__public__' )
-    $can_add = $GLOBALS['public_access_can_add'] == 'Y';
+    $can_add = $GLOBALS['PUBLIC_ACCESS_CAN_ADD'] == 'Y';
   if ( $is_nonuser )
     $can_add = false;
 }
@@ -268,7 +268,7 @@ if ( $single_user != "Y" ) {
         translate("Admin") . "</a>";
   }
   if ( $login != "__public__" && ! $is_nonuser &&  $readonly == "N" &&
-    ( $require_approvals == "Y" || $public_access == "Y" ) ) {
+    ( $REQUIRE_APPROVALS == "Y" || $PUBLIC_ACCESS == "Y" ) ) {
     $url = 'list_unapproved.php';
     if ( $is_nonuser_admin ) {
       $url .= "?user=" . getValue ( 'user' );
@@ -277,10 +277,10 @@ if ( $single_user != "Y" ) {
       translate("Unapproved Events") . "\" href=\"$url\">" . 
       translate("Unapproved Events") . "</a>";
   }
-  if ( ( $login == "__public__" && $public_access_others != "Y" ) ||
+  if ( ( $login == "__public__" && $PUBLIC_ACCESS_OTHERS != "Y" ) ||
     ( $is_nonuser && ! access_is_enabled () ) ) {
     // don't allow them to see other people's calendar
-  } else if ( $allow_view_other == "Y" || $is_admin ) {
+  } else if ( $ALLOW_VIEW_OTHER == "Y" || $is_admin ) {
     // Also, make sure they able to access either day/week/month/year view
     // If not, then there is no way to view another user's calendar except
     // a custom view.
@@ -349,6 +349,21 @@ if ( empty ( $user ) || $user == $login ) {
     $url .= "\">" . translate("Add New Entry") . "</a>";
     $goto_link[] = $url;
   }
+  if ( $can_add && ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y") {
+    $url = "<a title=\"" . 
+      translate("Add New Task") . "\" href=\"edit_task.php";
+    if ( ! empty ( $thisyear ) ) {
+      $url .= "?year=$thisyear";
+      if ( ! empty ( $thismonth ) ) {
+        $url .= "&amp;month=$thismonth";
+      }
+      if ( ! empty ( $thisday ) ) {
+        $url .= "&amp;day=$thisday";
+      }
+    }
+    $url .= "\">" . translate("Add New Task") . "</a>";
+    $goto_link[] = $url;
+  }
 }
 if ( access_is_enabled () ) {
   $showHelp = access_can_access_function ( ACCESS_HELP );
@@ -377,7 +392,7 @@ if ( count ( $goto_link ) > 0 ) {
 
 <!-- VIEWS -->
 <?php
-if ( ( access_can_access_function ( ACCESS_VIEW ) && $allow_view_other != "N" )
+if ( ( access_can_access_function ( ACCESS_VIEW ) && $ALLOW_VIEW_OTHER != "N" )
   && count ( $views ) > 0 ) {
   for ( $i = 0; $i < count ( $views ); $i++ ) {
     $out = "<a title=\"" .
@@ -403,7 +418,7 @@ if ( count ( $views_link ) > 0 ) {
 
 <!-- REPORTS -->
 <?php
-if ( ! empty ( $reports_enabled ) && $reports_enabled == 'Y' &&
+if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
   access_can_access_function ( ACCESS_REPORT ) ) {
 $reports_link = array ();
   if ( ! empty ( $user ) && $user != $login ) {
@@ -478,7 +493,7 @@ if ( ! $use_http_auth ) {
 }
 
 // Manage Calendar links
-if ( ! empty ( $nonuser_enabled ) && $nonuser_enabled == "Y" )
+if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" )
   $admincals = get_nonuser_cals ( $login );
 // Make sure they have access to either month/week/day view.
 // If they do not, then we cannot create a URL that shows just
@@ -490,12 +505,12 @@ if ( ! access_can_access_function ( ACCESS_MONTH ) &&
   ! access_can_access_function ( ACCESS_DAY ) )
   $have_boss_url = false;
 if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
-  ( $is_admin && $public_access ) ) ) {
+  ( $is_admin && $PUBLIC_ACCESS ) ) ) {
   $grouplist = user_get_boss_list ( $login );
   if ( ! empty ( $admincals[0] ) ) {
     $grouplist = array_merge ( $admincals, $grouplist );
   }
-  if ( $is_admin && $public_access == 'Y' ) {
+  if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
     $public = array (
       "cal_login" => "__public__",
       "cal_fullname" => translate ( "Public Access" )

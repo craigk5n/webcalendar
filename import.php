@@ -3,21 +3,22 @@
  * $Id$
  *
  * Page Description:
- *	This page will present the user with forms for submitting
- *	a data file to import.
+ * This page will present the user with forms for submitting
+ * a data file to import.
  *
  * Input Parameters:
- *	None
+ * None
  *
  * Comments:
- *	Might be nice to allow user to set the category for all imported
- *	events.  So, a user could easily export events from the work
- *	calendar and import them into WebCalendar with a category
- *	"work".
+ * Might be nice to allow user to set the category for all imported
+ * events.  So, a user could easily export events from the work
+ * calendar and import them into WebCalendar with a category
+ * "work".
  */
 include_once 'includes/init.php';
-
-print_header();
+$BodyX = 'onload="toggle_import()"';
+$INC = array('js/export_import.php', 'js/visible.php');
+print_header($INC, '', $BodyX);
 
 // Generate the selection list for calendar user selection.
 // Only ask for calendar user if user is an administrator.
@@ -25,14 +26,14 @@ print_header();
 // - selection of more than one user
 // - non-admin users this functionality
 function print_user_list () {
-  global $single_user, $is_admin, $nonuser_enabled, $login,
+  global $single_user, $is_admin, $NONUSER_ENABLED, $login,
     $is_nonuser_admin, $is_assistant;
 
   if ( $single_user == "N" && $is_admin ) {
     $userlist = get_my_users ();
-    if ($nonuser_enabled == "Y" ) {
+    if ($NONUSER_ENABLED == "Y" ) {
       $nonusers = get_nonuser_cals ();
-      $userlist = ( ! empty ( $nonuser_at_top ) && $nonuser_at_top == "Y") ?
+      $userlist = ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == "Y") ?
         array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
     }
     $num_users = 0;
@@ -58,7 +59,7 @@ function print_user_list () {
       $size = 5;
     print "<tr><td style=\"vertical-align:top;\">\n";
     print "<label for=\"caluser\">" . 
-    	translate("Calendar") . "</label></td><td>\n";
+     translate("Calendar") . "</label></td><td>\n";
     print "<select name=\"calUser\" id=\"caluser\" size=\"$size\">$users\n";
     print "</select>\n";
     print "</td></tr>\n";
@@ -84,31 +85,34 @@ if ( ! $upload_enabled ) {
 <form action="import_handler.php" method="post" name="importform" enctype="multipart/form-data">
 <table style="border-width:0px;">
 <tr><td>
-	<label for="importtype"><?php etranslate("Import format")?>:</label></td><td>
-		<select name="ImportType" id="importtype">
-			<option value="ICAL">iCal</option>
-			<option value="PALMDESKTOP">Palm Desktop</option>
-			<option value="VCAL">vCal</option>
-                        <option value="OUTLOOKCSV">Outlook (CSV)</option>
-		</select>
+ <label for="importtype"><?php etranslate("Import format")?>:</label></td><td>
+  <select name="ImportType" id="importtype" onChange="toggle_import()">
+   <option value="ICAL">iCal</option>
+   <option value="PALMDESKTOP">Palm Desktop</option>
+   <option value="VCAL">vCal</option>
+      <option value="OUTLOOKCSV">Outlook (CSV)</option>
+  </select>
 </td></tr>
+<!-- Valid only for Palm Desktop import -->
 <tr id="palm"><td>
-	<label><?php etranslate("Exclude private records")?>:</label></td><td>
-	<label><input type="radio" name="exc_private" value="1" checked="checked" /><?php etranslate("Yes")?></label> 
-	<label><input type="radio" name="exc_private" value="0" /><?php etranslate("No")?></label>
+ <label><?php etranslate("Exclude private records")?>:</label></td><td>
+ <label><input type="radio" name="exc_private" value="1" checked="checked" /><?php etranslate("Yes")?></label> 
+ <label><input type="radio" name="exc_private" value="0" /><?php etranslate("No")?></label>
 </td></tr>
 <!-- /PALM -->
-
+<!-- Not valid for Outlook CSV as it doesn't generate UID for import tracking -->
 <tr id="ivcal"><td>
-	<label><?php etranslate("Overwrite Prior Import")?>:</label></td<td>
-	<label><input type="radio" name="overwrite" value="Y" checked="checked" />&nbsp;<?php etranslate("Yes");?></label> 
-	<label><input type="radio" name="overwrite" value="N" />&nbsp;<?php etranslate("No");?></label>
+ <label><?php etranslate("Overwrite Prior Import")?>:</label></td><td>
+ <label><input type="radio" name="overwrite" value="Y" checked="checked" />&nbsp;<?php etranslate("Yes");?></label> 
+ <label><input type="radio" name="overwrite" value="N" />&nbsp;<?php etranslate("No");?></label>
 </td></tr>
 <!-- /IVCAL -->
-
+<tr id="outlookcsv"><td colspan="2">
+ <label><?php etranslate("Repeated items are imported separately. Prior imports are not overwritten.")?></label></td><td>
+</td></tr>
 <tr class="browse"><td>
-	<label for="fileupload"><?php etranslate("Upload file");?>:</label></td><td>
-	<input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
+ <label for="fileupload"><?php etranslate("Upload file");?>:</label></td><td>
+ <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
 </td></tr>
 <?php print_user_list(); ?>
 </table>

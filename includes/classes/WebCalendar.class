@@ -128,12 +128,12 @@ class WebCalendar {
    */
   function _initInitSecondPhase() {
     global $ovrd, $id, $user, $date, $year, $month, $hour, $minute,
-      $cat_id, $friendly, $public_access, $application_name, $DMW,
-      $allow_view_other, $is_admin, $can_add, $readonly, $login,
-      $public_access_can_add, $public_access_others, $can_add, $groups_enabled,
-      $user_sees_only_his_groups, $valid_user, $userlist, $nonuser_enabled,
+      $cat_id, $friendly, $PUBLIC_ACCESS, $APPLICATION_NAME, $DMW,
+      $ALLOW_VIEW_OTHER, $is_admin, $can_add, $readonly, $login,
+      $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_OTHERS, $can_add, $GROUPS_ENABLED,
+      $USER_SEES_ONLY_HIS_GROUPS, $valid_user, $userlist, $NONUSER_ENABLED,
       $nonusers, $u_url, $user_fullname, $fullname, $PUBLIC_ACCESS_FULLNAME,
-      $categories_enabled, $CATEGORY_VIEW, $caturl, $bodyid, $is_nonuser,
+      $CATEGORIES_ENABLED, $CATEGORY_VIEW, $caturl, $bodyid, $is_nonuser,
       $is_assistant;
     load_global_settings ();
 
@@ -152,13 +152,13 @@ class WebCalendar {
     $minute = getValue ( "minute", "[0-9]+" );
     $cat_id = getValue ( "cat_id", "[0-9]+" );
     $friendly = getValue ( "friendly", "[01]" );
-    if ( empty ( $public_access ) )
-      $public_access = 'N';
+    if ( empty ( $PUBLIC_ACCESS ) )
+      $PUBLIC_ACCESS = 'N';
     // Initialize access settings ($user_access string) and make sure user
     // is allowed to view the current page.
     access_init ( );
     if ( ! access_can_view_page ( ) ) {
-      echo "<html>\n<head>\n<title>" . translate ( $application_name ) . " " .
+      echo "<html>\n<head>\n<title>" . translate ( $APPLICATION_NAME ) . " " .
         translate("Error") .  "</title></head>\n" .
         "<body>\n<h2>" . translate ( "Error" ) . "</h2>\n" .
         translate ( "You are not authorized" );
@@ -172,20 +172,20 @@ class WebCalendar {
       
       // Tell the browser not to cache
       send_no_cache_header ();
-      if ( $allow_view_other != 'Y' && ! $is_admin && ! $is_assistant )
+      if ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin && ! $is_assistant )
         $user = "";
 
       $can_add = ( $readonly == "N" || $is_admin == "Y" );
-      if ( $public_access == "Y" && $login == "__public__" ) {
-        if ( $public_access_can_add != "Y" )
+      if ( $PUBLIC_ACCESS == "Y" && $login == "__public__" ) {
+        if ( $PUBLIC_ACCESS_CAN_ADD != "Y" )
           $can_add = false;
-        if ( $public_access_others != "Y" )
+        if ( $PUBLIC_ACCESS_OTHERS != "Y" )
           $user = ""; // security precaution
       }
       if ( $is_nonuser )
         $can_add = false;
 
-      if ( $groups_enabled == "Y" && $user_sees_only_his_groups == "Y" &&
+      if ( $GROUPS_ENABLED == "Y" && $USER_SEES_ONLY_HIS_GROUPS == "Y" &&
         ! $is_admin ) {
         $valid_user = false;
         $userlist = get_my_users();
@@ -215,7 +215,7 @@ class WebCalendar {
 
       set_today($date);
 
-      if ( $categories_enabled == "Y" ) {
+      if ( $CATEGORIES_ENABLED == "Y" ) {
         if ( ! empty ( $cat_id ) ) {
           $cat_id = $cat_id;
         } elseif ( ! empty ( $CATEGORY_VIEW ) ) {
@@ -252,6 +252,7 @@ class WebCalendar {
       "edit_nonusers_handler.php" => "editnonusershandler",
       "edit_nonusers.php" => "editnonusers",
       "edit_report.php" => "editreport",
+      "edit_task.php" => "edittask",
       "edit_template.php" => "edittemplate",
       "edit_user_handler.php" => "edituserhandler",
       "edit_user.php" => "edituser",
@@ -262,6 +263,7 @@ class WebCalendar {
       "help_admin.php" => "helpadmin",
       "help_bug.php" => "helpbug",
       "help_edit_entry.php" => "helpeditentry",
+      "help_edit_task.php" => "helpedittask",
       "help_import.php" => "helpimport",
       "help_index.php" => "helpindex",
       "help_layers.php" => "helplayers",
@@ -505,7 +507,9 @@ class WebCalendar {
    * @access private
    */
   function _initFunctions() {
-    global $days_per_month, $ldays_per_month, $noSet, $HTTP_GET_VARS, $PHP_SELF, $HTTP_POST_VARS, $HTTP_COOKIE_VARS, $settings, $db_password, $offsets;
+    global $days_per_month, $ldays_per_month, $byday_values, $noSet, 
+    $HTTP_GET_VARS, $PHP_SELF, $HTTP_POST_VARS, $HTTP_COOKIE_VARS, 
+   $settings, $db_password, $offsets, $weekday_names, $byday_names;
 
     /**#@+
      * Used for activity log
@@ -527,6 +531,11 @@ class WebCalendar {
     define ( 'ONE_DAY', 86400 );
 
     /**
+     * Number of seconds in a week
+     */
+    define ( 'ONE_WEEK', 604800 );
+  
+    /**
      * Array containing the number of days in each month in a non-leap year
      *
      * @global array $days_per_month
@@ -539,6 +548,20 @@ class WebCalendar {
      * @global array $ldays_per_month
      */
     $ldays_per_month = array ( 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
+
+    /**
+     * Array containing the short names for the days of the week
+     *
+     * @global array $weekday_names
+     */
+    $weekday_names =  array ( "Sun","Mon","Tue","Wed","Thu","Fri","Sat" );
+  
+    /**
+     * Array containing the BYDAY names for the days of the week
+     *
+     * @global array $byday_name
+     */ 
+   $byday_names =  array ( "SU","MO","TU","WE","TH","FR","SA" );
 
   /**
    * Array containing the number value of the days of the week
@@ -555,6 +578,20 @@ class WebCalendar {
    "Sat" => 6
   );
 
+  /**
+   * Array containing the number value of the ical ByDay abbreviations
+   *
+   * @global array $byday_values
+   */
+  $byday_values =  array (
+   "SU" => 0,
+   "MO" => 1,
+   "TU" => 2,
+   "WE" => 3,
+   "TH" => 4,
+   "FR" => 5,
+   "SA" => 6
+  );
 
     /**
      * Array of global variables which are not allowed to by set via HTTP GET/POST
@@ -864,7 +901,7 @@ class WebCalendar {
   function _initConnect() {
     global $c, $db_host, $db_login, $db_password, $db_database,
       $single_user, $single_user_login, $pub_acc_enabled,
-      $public_access_can_add, $session_not_found, $PHP_AUTH_USER,
+      $PUBLIC_ACCESS_CAN_ADD, $session_not_found, $PHP_AUTH_USER,
       $login, $PHP_SELF, $login_url, $login, $is_admin, $lastname,
       $firstname, $fullname, $user_email, $use_http_auth,
       $login_login, $login_is_admin, $login_lastname,
@@ -938,7 +975,7 @@ class WebCalendar {
 
     // global settings have not been loaded yet, so check for public_access now
     $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-      "WHERE cal_setting = 'public_access'" );
+      "WHERE cal_setting = 'PUBLIC_ACCESS'" );
     $pub_acc_enabled = false;
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
@@ -949,10 +986,10 @@ class WebCalendar {
     }
     if ( $pub_acc_enabled ) {
       $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-        "WHERE cal_setting = 'public_access_can_add'" );
+        "WHERE cal_setting = 'PUBLIC_ACCESS_CAN_ADD'" );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
-          $public_access_can_add = $row[0];
+          $PUBLIC_ACCESS_CAN_ADD = $row[0];
         }
         dbi_free_result ( $res );
       }
@@ -1056,6 +1093,8 @@ class WebCalendar {
         strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
         strstr ( $PHP_SELF, "pref.php" ) ||
         strstr ( $PHP_SELF, "pref_handler.php" ) ||
+        strstr ( $PHP_SELF, "edit_task.php" ) ||
+        strstr ( $PHP_SELF, "edit_task_handler.php" ) ||
         strstr ( $PHP_SELF, "edit_user.php" ) ||
         strstr ( $PHP_SELF, "edit_user_handler.php" ) ||
         strstr ( $PHP_SELF, "approve_entry.php" ) ||
@@ -1071,7 +1110,7 @@ class WebCalendar {
         strstr ( $PHP_SELF, "edit_template.php" ) ) {
         $not_auth = true;
       }
-      if ( $public_access_can_add != 'Y' ) { // do not allow add
+      if ( $PUBLIC_ACCESS_CAN_ADD != 'Y' ) { // do not allow add
         if ( strstr ( $PHP_SELF, "edit_entry.php" ) ||
           strstr ( $PHP_SELF, "edit_entry_handler.php" ) ) {
           $not_auth = true;
@@ -1219,7 +1258,7 @@ class WebCalendar {
     $GLOBALS['page_lookup'] = array (
       ACCESS_EVENT_VIEW =>
         "(view_entry.php|select_user.php|purge.php|category*php)",
-      ACCESS_EVENT_EDIT => "(entry|list_unapproved|usersel|availability|datesel)",
+      ACCESS_EVENT_EDIT => "(entry|list_unapproved|usersel|availability|datesel|task)",
       ACCESS_DAY => "day.php",
       ACCESS_WEEK => "week.php",
       ACCESS_MONTH => "month.php",

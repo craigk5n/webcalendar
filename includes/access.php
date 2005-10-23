@@ -24,9 +24,9 @@
  */
 function access_is_enabled ()
 {
-  global $uac_enabled;
+  global $UAC_ENABLED;
 
-  return ( ! empty ( $uac_enabled ) && $uac_enabled == 'Y' );
+  return ( ! empty ( $UAC_ENABLED ) && $UAC_ENABLED == 'Y' );
 }
 
 

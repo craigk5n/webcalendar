@@ -1,19 +1,19 @@
 <?php
-  global $allow_color_customization;
+  global $ALLOW_COLOR_CUSTOMIZATION;
 ?>
 <script type="text/javascript">
 <!-- <![CDATA[
 // error check the colors
 function valid_color ( str ) {
-	var validColor = /^#[0-9a-fA-F]{3}$|^#[0-9a-fA-F]{6}$/;
+ var validColor = /^#[0-9a-fA-F]{3}$|^#[0-9a-fA-F]{6}$/;
 
-	return validColor.test ( str );
+ return validColor.test ( str );
 }
 
 function valid_form ( form ) {
   var err = "";
   var colorErr = false;
-  <?php if ( $allow_color_customization ) { ?>
+  <?php if ( $ALLOW_COLOR_CUSTOMIZATION ) { ?>
   if ( ! valid_color ( form.pref_BGCOLOR.value ) )
     err += "<?php etranslate("Invalid color for document background")?>.\n";
   if ( ! valid_color ( form.pref_H2COLOR.value ) )
@@ -56,17 +56,17 @@ function selectColor ( color ) {
 //   <td><input onkeyup="updateColor(this);" /></td>
 //   <td>(this is the cell to be updated)</td>
 function updateColor ( input ) {
-	// The cell to be updated
-	var colorCell = input.parentNode.nextSibling;
-	// The new color
-	var color = input.value;
+ // The cell to be updated
+ var colorCell = input.parentNode.nextSibling;
+ // The new color
+ var color = input.value;
 
-	if (!valid_color ( color ) ) {
-	  // Color specified is invalid; use black instead
-		colorCell.style.backgroundColor = "#000000";
-	} else {
-		colorCell.style.backgroundColor = color;
-	}
+ if (!valid_color ( color ) ) {
+   // Color specified is invalid; use black instead
+  colorCell.style.backgroundColor = "#000000";
+ } else {
+  colorCell.style.backgroundColor = color;
+ }
 }
 //]]> -->
 </script>

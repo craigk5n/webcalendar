@@ -1,89 +1,129 @@
 <?php
 $webcalConfig = array (
-"application_name"=>"WebCalendar",
-"LANGUAGE"=>"none",
-"demo_mode"=>"N",
-"require_approvals"=>"Y",
-"groups_enabled"=>"N",
-"user_sees_only_his_groups"=>"Y",
-"categories_enabled"=>"Y",
-"allow_conflicts"=>"N",
-"conflict_repeat_months"=>"6",
-"disable_priority_field"=>"N",
-"disable_access_field"=>"N",
-"disable_participants_field"=>"N",
-"disable_repeating_field"=>"N",
-"allow_view_other"=>"Y",
-"remember_last_login"=>"N",
-"allow_color_customization"=>"Y",
+"ADD_LINK_IN_VIEWS"=>"N",
+"ALLOW_COLOR_CUSTOMIZATION"=>"Y",
+"ALLOW_CONFLICT_OVERRIDE"=>"Y",
+"ALLOW_CONFLICTS"=>"N",
+"ALLOW_EXTERNAL_HEADER"=>"N",
+"ALLOW_EXTERNAL_USERS"=>"N",
+"ALLOW_HTML_DESCRIPTION"=>"Y",
+"ALLOW_SELF_REGISTRATION"=>"N",
+"ALLOW_USER_HEADER"=>"N",
+"ALLOW_VIEW_OTHER"=>"Y",
+"APPLICATION_NAME"=>"WebCalendar",
+"AUTO_REFRESH_TIME"=>"0",
+"AUTO_REFRESH"=>"N",
 "BGCOLOR"=>"#FFFFFF",
-"TEXTCOLOR"=>"#000000",
-"H2COLOR"=>"#000000",
+"BOLD_DAYS_IN_YEAR"=>"Y",
+"CATEGORIES_ENABLED"=>"Y",
 "CELLBG"=>"#C0C0C0",
-"WEEKENDBG"=>"#D0D0D0",
-"TABLEBG"=>"#000000",
-"THBG"=>"#FFFFFF",
-"THFG"=>"#000000",
-"POPUP_FG"=>"#000000",
-"POPUP_BG"=>"#FFFFFF",
-"TODAYCELLBG"=>"#FFFF33",
-"WEEK_START"=>"0",
-"TIME_FORMAT"=>"12",
+"CONFLICT_REPEAT_MONTHS"=>"6",
+"CUSTOM_HEADER"=>"N",
+"CUSTOM_SCRIPT"=>"N",
+"CUSTOM_TRAILER"=>"N",
+"DATE_FORMAT_MD"=>"__month__ __dd__",
+"DATE_FORMAT_MY"=>"__month__ __yyyy__",
+"DATE_FORMAT"=>"__month__ __dd__, __yyyy__",
+"DEMO_MODE"=>"N",
+"DISABLE_ACCESS_FIELD"=>"N",
+"DISABLE_PARTICIPANTS_FIELD"=>"N",
+"DISABLE_PRIORITY_FIELD"=>"N",
+"DISABLE_REPEATING_FIELD"=>"N",
+"DISPLAY_DESC_PRINT_DAY"=>"Y",
+"DISPLAY_TASKS"=>"N",
+"DISPLAY_TASKS_IN_GRID"=>"N",
 "DISPLAY_UNAPPROVED"=>"Y",
+"DISPLAY_WEEKENDS"=>"Y",
 "DISPLAY_WEEKNUMBER"=>"Y",
-"WORK_DAY_START_HOUR"=>"8",
-"WORK_DAY_END_HOUR"=>"17",
-"send_email"=>"N",
-"EMAIL_REMINDER"=>"Y",
 "EMAIL_EVENT_ADDED"=>"Y",
-"EMAIL_EVENT_UPDATED"=>"Y",
 "EMAIL_EVENT_DELETED"=>"Y",
 "EMAIL_EVENT_REJECTED"=>"Y",
-"auto_refresh"=>"N",
-"nonuser_enabled"=>"Y",
-"allow_html_description"=>"Y",
-"reports_enabled"=>"N",
-"DISPLAY_WEEKENDS"=>"Y",
-"DISPLAY_DESC_PRINT_DAY"=>"Y",
-"DATE_FORMAT"=>"__month__ __dd__, __yyyy__",
+"EMAIL_EVENT_UPDATED"=>"Y",
+"EMAIL_FALLBACK_FROM"=>"youremailhere",
+"EMAIL_REMINDER"=>"Y",
+"ENABLE_GRADIENTS"=>"N",
+"EXTERNAL_NOTIFICATIONS"=>"N",
+"EXTERNAL_REMINDERS"=>"N",
+"FONTS"=>"Arial, Helvetica, sans-serif",
+"GROUPS_ENABLED"=>"N",
+"H2COLOR"=>"#000000",
+"ICS_TIMEZONES"=>"Y",
+"IMPORT_CATEGORIES"=>"Y",
+"LANGUAGE"=>"none",
+"LIMIT_APPTS_NUMBER"=>"6",
+"LIMIT_APPTS"=>"N",
+"LIMIT_DESCRIPTION_SIZE"=>"N",
+"NONUSER_AT_TOP"=>"Y",
+"NONUSER_ENABLED"=>"Y",
+"OVERRIDE_PUBLIC_TEXT"=>"Unavailable",
+"OVERRIDE_PUBLIC"=>"N",
+"POPUP_BG"=>"#FFFFFF",
+"POPUP_FG"=>"#000000",
+"PUBLIC_ACCESS_ADD_NEEDS_APPROVAL"=>"N",
+"PUBLIC_ACCESS_CAN_ADD"=>"N",
+"PUBLIC_ACCESS_DEFAULT_SELECTED"=>"N",
+"PUBLIC_ACCESS_DEFAULT_VISIBLE"=>"N",
+"PUBLIC_ACCESS_OTHERS"=>"Y",
+"PUBLIC_ACCESS_VIEW_PART"=>"N",
+"PUBLIC_ACCESS"=>"N",
+"PUBLISH_ENABLED"=>"Y",
+"PULLDOWN_WEEKNUMBER"=>"N",
+"REMEMBER_LAST_LOGIN"=>"N",
+"REPORTS_ENABLED"=>"N",
+"REQUIRE_APPROVALS"=>"Y",
+"RSS_ENABLED"=>"N",
+"SELF_REGISTRATION_BLACKLIST"=>"N",
+"SELF_REGISTRATION_FULL"=>"Y",
+"SEND_EMAIL"=>"N",
+"SERVER_TIMEZONE"=>"America/New_York",
+"SITE_EXTRAS_IN_POPUP"=>"N",
+"STARTVIEW"=>"month.php",
+"SUMMARY_LENGTH"=>"14",
+"TABLEBG"=>"#000000",
+"TEXTCOLOR"=>"#000000",
+"THBG"=>"#FFFFFF",
+"THFG"=>"#000000",
+"TIME_FORMAT"=>"12",
 "TIME_SLOTS"=>"24",
 "TIMED_EVT_LEN"=>"D",
-"PUBLISH_ENABLED"=>"Y",
-"DATE_FORMAT_MY"=>"__month__ __yyyy__",
-"DATE_FORMAT_MD"=>"__month__ __dd__",
-"CUSTOM_SCRIPT"=>"N",
-"CUSTOM_HEADER"=>"N",
-"CUSTOM_TRAILER"=>"N",
-"bold_days_in_year"=>"Y",
-"site_extras_in_popup"=>"N",
-"add_link_in_views"=>"N",
-"allow_conflict_override"=>"Y",
-"limit_appts"=>"N",
-"limit_appts_number"=>"6",
-"public_access"=>"N",
-"public_access_default_visible"=>"N",
-"public_access_default_selected"=>"N",
-"public_access_others"=>"Y",
-"public_access_can_add"=>"N",
-"public_access_add_needs_approval"=>"N",
-"public_access_view_part"=>"N",
-"nonuser_at_top"=>"Y",
-"allow_external_users"=>"N",
-"external_notifications"=>"N",
-"external_reminders"=>"N",
-"enable_gradients"=>"N",
-"FONTS"=>"Arial, Helvetica, sans-serif",
-"auto_refresh_time"=>"0",
-"email_fallback_from"=>"youremailhere",
-"STARTVIEW"=>"month.php",
-"uac_enabled"=>"N",
-"RSS_ENABLED"=>"N",
 "TIMEZONE"=>"America/New_York",
-"webcal_program_version"=>"v1.1.0-CVS" 
+"TODAYCELLBG"=>"#FFFF33",
+"TZ_COMPLETE_LIST"=>"N",
+"UAC_ENABLED"=>"N",
+"USER_SEES_ONLY_HIS_GROUPS"=>"Y",
+"WEBCAL_PROGRAM_VERSION"=>"v1.1.0-CVS",
+"WEEK_START"=>"0",
+"WEEKENDBG"=>"#D0D0D0",
+"WORK_DAY_END_HOUR"=>"17",
+"WORK_DAY_START_HOUR"=>"8" 
  );
+
+function make_uppercase () {
+  //make sure all cal_settings are UPPERCASE
+  $res = dbi_query ( "SELECT cal_setting FROM webcal_config", false, false );
+  if ( $res ) {
+     while (  $row = dbi_fetch_row ( $res ) ) {
+       if ( ! dbi_query ( "UPDATE webcal_config SET cal_setting = '" . 
+         strtoupper( $row[0] ) . "' WHERE cal_setting = '" . $row[0] . "'" ) ) 
+         $error = translate("Error updating webcal_config") . ": " . dbi_error ();       
+     }
+     dbi_free_result ( $res );
+  }     
+   $res = dbi_query ( "SELECT cal_setting FROM webcal_user_pref", false, false );
+   if ( $res ) {
+     while (  $row = dbi_fetch_row ( $res ) ) {
+       if ( ! dbi_query ( "UPDATE webcal_user_pref SET cal_setting = '" . 
+         strtoupper( $row[0] ) . "' WHERE cal_setting = '" . $row[0] . "'" ) ) 
+         $error = translate("Error updating webcal_config") . ": " . dbi_error ();       
+     }
+     dbi_free_result ( $res );
+  }  
+}
 
 function db_load_config () {
 global $webcalConfig;
+
+     
    while ( list ( $key, $val ) = each ( $webcalConfig ) ) {
     $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
      "WHERE cal_setting  = '$key'", false, false );
@@ -115,6 +155,54 @@ VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ADMINISTRATOR', 'DEFAULT'
   }
   dbi_free_result ( $res );
  }  
+
+}
+
+function do_v11b_updates () {
+ $res = dbi_query ( "SELECT webcal_entry_user.cal_id, cal_category, cat_owner " . 
+   "FROM webcal_entry_user, webcal_categories " . 
+   "WHERE webcal_entry_user.cal_category = webcal_categories.cat_id");
+ if (  $res ) {
+   while( $row = dbi_fetch_row ( $res ) ) {
+     if (  ! empty ( $row[2] ) ) {
+     dbi_query ("INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner ) " .
+       " VALUES ( $row[0], '$row[1]', '$row[2]')");  
+      } else {
+     dbi_query ("INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_order ) " .
+       " VALUES ( $row[0], '$row[1]', 99)");        
+      }     
+   }
+   dbi_free_result ( $res );
+ }
+ //clear old category values
+ dbi_query ( "UPDATE webcal_entry_user SET cal_category = ''");  
+ //mark existing exclusions as new exclusion type
+ dbi_query ( "UPDATE webcal_entry_repeats_not  SET cal_exdate = 1");  
+ //change cal_days format to cal_cal_byday format
+ 
+ //deprecate monthlyByDayR to simply monthlyByDay
+ dbi_query ("UPDATE webcal_entry_repeats  SET cal_type = 'monthlyByDay'" .
+    " WHERE cal_type = 'monthlybByDayR");
+ $res = dbi_query ( "SELECT cal_id, cal_days FROM webcal_entry_repeats ");
+ if (  $res ) {
+   while( $row = dbi_fetch_row ( $res ) ) {
+     if ( ! empty ( $row[1] ) && $row[1] != 'yyyyyyy' && $row[1] != 'nnnnnnn' ) {
+       $byday = array();
+       if ( substr( $row[1],0,1 ) == 'y') $byday[] = 'SU';
+       if ( substr( $row[1],1,1 ) == 'y') $byday[] = 'MO';       
+       if ( substr( $row[1],2,1 ) == 'y') $byday[] = 'TU';       
+       if ( substr( $row[1],3,1 ) == 'y') $byday[] = 'WE';       
+       if ( substr( $row[1],4,1 ) == 'y') $byday[] = 'TH';
+       if ( substr( $row[1],5,1 ) == 'y') $byday[] = 'FR';
+       if ( substr( $row[1],6,1 ) == 'y') $byday[] = 'SA';
+       $bydays = implode (",", $byday );       
+       dbi_query ("UPDATE webcal_entry_repeats  SET cal_byday = '" . $bydays . "'" .
+       " WHERE cal_id = $row[0]");
+     }
+   }
+   dbi_free_result ( $res );
+ }
+
 
 }
 ?>

@@ -1616,7 +1616,7 @@ Current User: Текущий пользователь
 # Assistants:
 #
 # << MISSING >>
-# Yours assistants:
+# Your assistants:
 
 
 ###############################################

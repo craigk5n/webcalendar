@@ -1646,7 +1646,7 @@ Current User: aktüel Kullanici
 # Assistants:
 #
 # << MISSING >>
-# Yours assistants:
+# Your assistants:
 
 
 ###############################################

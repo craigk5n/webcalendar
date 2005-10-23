@@ -20,18 +20,19 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
+/*
 // Set defaults so we don't get undefined errors
 if ( empty ( $s['RSS_ENABLED'] ) )
   $s['RSS_ENABLED'] = 'N';
-if ( empty ( $s['allow_user_header'] ) )
-  $s['allow_user_header'] = 'N';
-if ( empty ( $s['allow_external_header'] ) )
-  $s['allow_external_header'] = 'N';
-if ( empty ( $s['override_public'] ) )
-  $s['override_public'] = 'N';
-if ( empty ( $s['override_public_text'] ) )
-  $s['override_public_text'] = translate("Unavailable");
-
+if ( empty ( $s['ALLOW_USER_HEADER'] ) )
+  $s['ALLOW_USER_HEADER'] = 'N';
+if ( empty ( $s['ALLOW_EXTERNAL_HEADER'] ) )
+  $s['ALLOW_EXTERNAL_HEADER'] = 'N';
+if ( empty ( $s['OVERRIDE_PUBLIC'] ) )
+  $s['OVERRIDE_PUBLIC'] = 'N';
+if ( empty ( $s['OVERRIDE_PUBLIC_TEXT'] ) )
+  $s['OVERRIDE_PUBLIC_TEXT'] = translate("Unavailable");
+*/
 
 $BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); email_handler();"';
 $INC = array('js/admin.php','js/visible.php');
@@ -104,13 +105,13 @@ if ( ! $error ) {
  <tr><td class="tooltip" title="<?php etooltip("app-name-help")?>">
   <label for="admin_application_name"><?php etranslate("Application Name")?>:</label></td><td>
   <input type="text" size="40" name="admin_application_name" id="admin_application_name" value="<?php 
-   echo htmlspecialchars ( $application_name );
+   echo htmlspecialchars ( $APPLICATION_NAME );
   ?>" />
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("server-url-help")?>">
   <label for="admin_server_url"><?php etranslate("Server URL")?>:</label></td><td>
   <input type="text" size="40" name="admin_server_url" id="admin_server_url" value="<?php 
-   echo htmlspecialchars ( $server_url );
+   echo htmlspecialchars ( $SERVER_URL );
   ?>" />
  </td></tr>
  <tr><td class="tooltipselect" title="<?php etooltip("language-help");?>">
@@ -155,14 +156,14 @@ if ( ! $error ) {
 
  <tr><td class="tooltip" title="<?php etooltip("enable-external-header-help");?>">
   <?php etranslate("Allow external file for header/script/trailer")?>:</td><td>
-  <label><input type="radio" name="admin_allow_external_header" value="Y"<?php if ( $s["allow_external_header"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_allow_external_header" value="N"<?php if ( $s["allow_external_header"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_allow_external_header" value="Y"<?php if ( $s["ALLOW_EXTERNAL_HEADER"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_allow_external_header" value="N"<?php if ( $s["ALLOW_EXTERNAL_HEADER"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
 
 <tr><td><label>
  <?php etranslate("Allow user to override header/trailer")?>:</label></td><td colspan="3">
- <label><input type="radio" name="admin_allow_user_header" value="Y"<?php if ( $s["allow_user_header"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
- <label><input type="radio" name="admin_allow_user_header" value="N"<?php if ( $s["allow_user_header"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ <label><input type="radio" name="admin_allow_user_header" value="Y"<?php if ( $s["ALLOW_USER_HEADER"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="admin_allow_user_header" value="N"<?php if ( $s["ALLOW_USER_HEADER"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 
  <tr><td class="tooltip" title="<?php etooltip("preferred-view-help");?>">
@@ -202,8 +203,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("yearly-shows-events-help");?>">
   <?php etranslate("Display days with events in bold in month and year views")?>:</td><td>
-  <label><input type="radio" name="admin_bold_days_in_year" value="Y" <?php if ( $s["bold_days_in_year"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_bold_days_in_year" value="N" <?php if ( $s["bold_days_in_year"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_bold_days_in_year" value="Y" <?php if ( $s["BOLD_DAYS_IN_YEAR"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_bold_days_in_year" value="N" <?php if ( $s["BOLD_DAYS_IN_YEAR"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("display-desc-print-day-help");?>">
   <?php etranslate("Display description in printer day view")?>:</td><td>
@@ -213,8 +214,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <tr><td class="tooltipselect" title="<?php etooltip("tz-help")?>">
   <label for="admin_TIMEZONE"><?php etranslate("Server Timezone Selection")?>:</label></td><td>
   <?php
-   $tz_offset = get_tz_offset ( $s['TIMEZONE'], time() );
-   echo print_timezone_select_html ( "admin_", $s['TIMEZONE']);
+   $tz_offset = get_tz_offset ( $s['SERVER_TIMEZONE'], time() );
+   echo print_timezone_select_html ( "admin_", $s['SERVER_TIMEZONE']);
    echo  translate("Your current GMT offset is")  . " " . $tz_offset[0] . " " . translate("hours") . ".";
   ?>&nbsp;&nbsp;
  <input type="button" value="<?php etranslate("Load Timezone Data");?>" onclick="window.open('load_tz_data.php','Loading Timezone Data','dependent,height=200,width=400,outerHeight=220,outerWidth=420');" name="" />
@@ -316,22 +317,23 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
    <option value="24" <?php if ( $s["TIME_SLOTS"] == "24" ) echo " selected=\"selected\""?>>1 <?php etranslate("hour")?></option>
    <option value="48" <?php if ( $s["TIME_SLOTS"] == "48" ) echo " selected=\"selected\""?>>30 <?php etranslate("minutes")?></option>
    <option value="72" <?php if ( $s["TIME_SLOTS"] == "72" ) echo " selected=\"selected\""?>>20 <?php etranslate("minutes")?></option>
+   <option value="96" <?php if ( $s["TIME_SLOTS"] == "96" ) echo " selected=\"selected\""?>>15 <?php etranslate("minutes")?></option>
    <option value="144" <?php if ( $s["TIME_SLOTS"] == "144" ) echo " selected=\"selected\""?>>10 <?php etranslate("minutes")?></option>
   </select>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("auto-refresh-help");?>">
   <?php etranslate("Auto-refresh calendars")?>:</td><td>
-  <label><input type="radio" name="admin_auto_refresh" value="Y" <?php if ( $s["auto_refresh"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_auto_refresh" value="N" <?php if ( $s["auto_refresh"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_auto_refresh" value="Y" <?php if ( $s["AUTO_REFRESH"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_auto_refresh" value="N" <?php if ( $s["AUTO_REFRESH"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("auto-refresh-time-help");?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Auto-refresh time")?>:</td><td>
-  <input type="text" name="admin_auto_refresh_time" size="4" value="<?php if ( empty ( $s["auto_refresh_time"] ) ) echo "0"; else echo $s["auto_refresh_time"]; ?>" />&nbsp;<?php etranslate("minutes")?>
+  <input type="text" name="admin_auto_refresh_time" size="4" value="<?php if ( empty ( $s["AUTO_REFRESH_TIME"] ) ) echo "0"; else echo $s["AUTO_REFRESH_TIME"]; ?>" />&nbsp;<?php etranslate("minutes")?>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("require-approvals-help");?>">
   <?php etranslate("Require event approvals")?>:</td><td>
-  <label><input type="radio" name="admin_require_approvals" value="Y" <?php if ( $s["require_approvals"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_require_approvals" value="N" <?php if ( $s["require_approvals"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_require_approvals" value="Y" <?php if ( $s["REQUIRE_APPROVALS"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_require_approvals" value="N" <?php if ( $s["REQUIRE_APPROVALS"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("display-unapproved-help");?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Display unapproved")?>:</td><td>
@@ -363,7 +365,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <label for="workend"><?php etranslate("to")?>&nbsp;</label>
   <select name="admin_WORK_DAY_END_HOUR" id="workend">
    <?php
-    for ( $i = 0; $i < 24; $i++ ) {
+    for ( $i = 0; $i <= 24; $i++ ) {
      echo "<option value=\"$i\"" .
       ( $i == $s["WORK_DAY_END_HOUR"] ? " selected=\"selected\"" : "" ) .
      ">" . display_time ( $i * 10000, 1 ) . "</option>\n";
@@ -373,71 +375,71 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("disable-priority-field-help")?>">
   <?php etranslate("Disable Priority field")?>:</td><td>
-  <label><input type="radio" name="admin_disable_priority_field" value="Y"<?php if ( $s["disable_priority_field"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
-  <label><input type="radio" name="admin_disable_priority_field" value="N"<?php if ( $s["disable_priority_field"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_disable_priority_field" value="Y"<?php if ( $s["DISABLE_PRIORITY_FIELD"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_disable_priority_field" value="N"<?php if ( $s["DISABLE_PRIORITY_FIELD"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("disable-access-field-help")?>">
   <?php etranslate("Disable Access field")?>:</td><td>
-  <label><input type="radio" name="admin_disable_access_field" value="Y"<?php if ( $s["disable_access_field"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
-  <label><input type="radio" name="admin_disable_access_field" value="N"<?php if ( $s["disable_access_field"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_disable_access_field" value="Y"<?php if ( $s["DISABLE_ACCESS_FIELD"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_disable_access_field" value="N"<?php if ( $s["DISABLE_ACCESS_FIELD"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("disable-participants-field-help")?>">
   <?php etranslate("Disable Participants field")?>:</td><td>
-  <label><input type="radio" name="admin_disable_participants_field" value="Y" <?php if ( $s["disable_participants_field"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
-  <label><input type="radio" name="admin_disable_participants_field" value="N" <?php if ( $s["disable_participants_field"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_disable_participants_field" value="Y" <?php if ( $s["DISABLE_PARTICIPANTS_FIELD"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_disable_participants_field" value="N" <?php if ( $s["DISABLE_PARTICIPANTS_FIELD"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("disable-repeating-field-help")?>">
   <?php etranslate("Disable Repeating field")?>:</td><td>
-  <label><input type="radio" name="admin_disable_repeating_field" value="Y" <?php if ( $s["disable_repeating_field"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
-  <label><input type="radio" name="admin_disable_repeating_field" value="N" <?php if ( $s["disable_repeating_field"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_disable_repeating_field" value="Y" <?php if ( $s["DISABLE_REPEATING_FIELD"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_disable_repeating_field" value="N" <?php if ( $s["DISABLE_REPEATING_FIELD"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("popup-includes-siteextras-help")?>">
   <?php etranslate("Display Site Extras in popup")?>:</td><td>
-  <label><input type="radio" name="admin_site_extras_in_popup" value="Y" <?php if ( $s["site_extras_in_popup"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
-  <label><input type="radio" name="admin_site_extras_in_popup" value="N" <?php if ( $s["site_extras_in_popup"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_site_extras_in_popup" value="Y" <?php if ( $s["SITE_EXTRAS_IN_POPUP"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_site_extras_in_popup" value="N" <?php if ( $s["SITE_EXTRAS_IN_POPUP"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("allow-html-description-help")?>">
   <?php etranslate("Allow HTML in Description")?>:</td><td>
-  <label><input type="radio" name="admin_allow_html_description" value="Y" <?php if ( $s["allow_html_description"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
-  <label><input type="radio" name="admin_allow_html_description" value="N" <?php if ( $s["allow_html_description"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_allow_html_description" value="Y" <?php if ( $s["ALLOW_HTML_DESCRIPTION"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_allow_html_description" value="N" <?php if ( $s["ALLOW_HTML_DESCRIPTION"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("allow-view-other-help")?>">
   <?php etranslate("Allow viewing other user's calendars")?>:</td><td>
-  <label><input type="radio" name="admin_allow_view_other" value="Y" <?php if ( $s["allow_view_other"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_allow_view_other" value="N" <?php if ( $s["allow_view_other"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_allow_view_other" value="Y" <?php if ( $s["ALLOW_VIEW_OTHER"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_allow_view_other" value="N" <?php if ( $s["ALLOW_VIEW_OTHER"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("allow-view-add-help")?>">
   <?php etranslate("Include add event link in views")?>:</td><td>
-  <label><input type="radio" name="admin_add_link_in_views" value="Y" <?php if ( $s["add_link_in_views"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_add_link_in_views" value="N" <?php if ( $s["add_link_in_views"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_add_link_in_views" value="Y" <?php if ( $s["ADD_LINK_IN_VIEWS"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_add_link_in_views" value="N" <?php if ( $s["ADD_LINK_IN_VIEWS"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("remember-last-login-help")?>">
   <?php etranslate("Remember last login")?>:</td><td>
-  <label><input type="radio" name="admin_remember_last_login" value="Y" <?php if ( $s["remember_last_login"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_remember_last_login" value="N" <?php if ( $s["remember_last_login"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_remember_last_login" value="Y" <?php if ( $s["REMEMBER_LAST_LOGIN"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_remember_last_login" value="N" <?php if ( $s["REMEMBER_LAST_LOGIN"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("conflict-check-help")?>">
   <?php etranslate("Check for event conflicts")?>:</td><td>
-  <label><input type="radio" name="admin_allow_conflicts" value="N" <?php if ( $s["allow_conflicts"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
-  <label><input type="radio" name="admin_allow_conflicts" value="Y" <?php if ( $s["allow_conflicts"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_allow_conflicts" value="N" <?php if ( $s["ALLOW_CONFLICTS"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_allow_conflicts" value="Y" <?php if ( $s["ALLOW_CONFLICTS"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("conflict-months-help")?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Conflict checking months")?>:</td><td>
-  <input type="text" size="3" name="admin_conflict_repeat_months" value="<?php echo htmlspecialchars ( $conflict_repeat_months );?>" />
+  <input type="text" size="3" name="admin_conflict_repeat_months" value="<?php echo htmlspecialchars ( $CONFLICT_REPEAT_MONTHS );?>" />
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("conflict-check-override-help")?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Allow users to override conflicts")?>:</td><td>
-  <label><input type="radio" name="admin_allow_conflict_override" value="Y" <?php if ( $s["allow_conflict_override"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
-  <label><input type="radio" name="admin_allow_conflict_override" value="N" <?php if ( $s["allow_conflict_override"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_allow_conflict_override" value="Y" <?php if ( $s["ALLOW_CONFLICT_OVERRIDE"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_allow_conflict_override" value="N" <?php if ( $s["ALLOW_CONFLICT_OVERRIDE"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("limit-appts-help")?>">
   <?php etranslate("Limit number of timed events per day")?>:</td><td>
-  <label><input type="radio" name="admin_limit_appts" value="Y" <?php if ( $s["limit_appts"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
-  <label><input type="radio" name="admin_limit_appts" value="N" <?php if ( $s["limit_appts"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_LIMIT_APPTS" value="Y" <?php if ( $s["LIMIT_APPTS"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_LIMIT_APPTS" value="N" <?php if ( $s["LIMIT_APPTS"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("limit-appts-number-help")?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Maximum timed events per day")?>:</td><td>
-  <input type="text" size="3" name="admin_limit_appts_number" value="<?php echo htmlspecialchars ( $limit_appts_number );?>" />
+  <input type="text" size="3" name="admin_LIMIT_APPTS_number" value="<?php echo htmlspecialchars ( $LIMIT_APPTS_NUMBER );?>" />
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("timed-evt-len-help")?>">
   <?php etranslate("Specify timed event length by")?>:</td><td>
@@ -453,12 +455,12 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 // <h3><?php etranslate("Plugins")?></h3>
 // <table class="standard" cellspacing="1" cellpadding="2">
 // <tr><td class="tooltip" title="<?php etooltip("plugins-enabled-help");?>"><?php etranslate("Enable Plugins")?>:</td>
-//   <td><label><input type="radio" name="admin_plugins_enabled" value="Y" <?php if ( $s["plugins_enabled"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-//       <label><input type="radio" name="admin_plugins_enabled" value="N" <?php if ( $s["plugins_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+//   <td><label><input type="radio" name="admin_plugins_enabled" value="Y" <?php if ( $s["PLUGINS_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+//       <label><input type="radio" name="admin_plugins_enabled" value="N" <?php if ( $s["PLUGINS_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 //</td></tr>
 
 // <?php
-// if ( $plugins_enabled == "Y" ) {
+// if ( $PLUGINS_ENABLED == "Y" ) {
 //   $plugins = get_plugin_list ( true );
 
 //   for ( $i = 0; $i < count ( $plugins ); $i++ ) {
@@ -486,48 +488,48 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <table cellspacing="0" cellpadding="3">
   <tr><td class="tooltip" title="<?php etooltip("allow-public-access-help")?>">
    <?php etranslate("Allow public access")?>:</td><td>
-   <label><input type="radio" name="admin_public_access" value="Y" <?php if ( $s["public_access"] == "Y" ) echo " checked=\"checked\"";?> onclick="public_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-   <label><input type="radio" name="admin_public_access" value="N" <?php if ( $s["public_access"] != "Y" ) echo " checked=\"checked\"";?> onclick="public_handler()" />&nbsp;<?php etranslate("No")?></label>
+   <label><input type="radio" name="admin_public_access" value="Y" <?php if ( $s["PUBLIC_ACCESS"] == "Y" ) echo " checked=\"checked\"";?> onclick="public_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_public_access" value="N" <?php if ( $s["PUBLIC_ACCESS"] != "Y" ) echo " checked=\"checked\"";?> onclick="public_handler()" />&nbsp;<?php etranslate("No")?></label>
   </td></tr>
   <tr id="pa1"><td class="tooltip" title="<?php etooltip("public-access-default-visible")?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access visible by default")?>:</td><td>
-   <label><input type="radio" name="admin_public_access_default_visible" value="Y" <?php if ( $s["public_access_default_visible"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-   <label><input type="radio" name="admin_public_access_default_visible" value="N" <?php if ( $s["public_access_default_visible"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+   <label><input type="radio" name="admin_PUBLIC_ACCESS_DEFAULT_VISIBLE" value="Y" <?php if ( $s["PUBLIC_ACCESS_DEFAULT_VISIBLE"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_PUBLIC_ACCESS_DEFAULT_VISIBLE" value="N" <?php if ( $s["PUBLIC_ACCESS_DEFAULT_VISIBLE"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
   </td></tr>
   <tr id="pa2"><td class="tooltip" title="<?php etooltip("public-access-default-selected")?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access is default participant")?>:</td><td>
-   <label><input type="radio" name="admin_public_access_default_selected" value="Y" <?php if ( $s["public_access_default_selected"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-   <label><input type="radio" name="admin_public_access_default_selected" value="N" <?php if ( $s["public_access_default_selected"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+   <label><input type="radio" name="admin_PUBLIC_ACCESS_DEFAULT_SELECTED" value="Y" <?php if ( $s["PUBLIC_ACCESS_DEFAULT_SELECTED"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_PUBLIC_ACCESS_DEFAULT_SELECTED" value="N" <?php if ( $s["PUBLIC_ACCESS_DEFAULT_SELECTED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
   </td></tr>
   <tr id="pa3"><td class="tooltip" title="<?php etooltip("public-access-view-others-help")?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can view other users")?>:</td><td>
-   <label><input type="radio" name="admin_public_access_others" value="Y" <?php if ( $s["public_access_others"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-   <label><input type="radio" name="admin_public_access_others" value="N" <?php if ( $s["public_access_others"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+   <label><input type="radio" name="admin_PUBLIC_ACCESS_OTHERS" value="Y" <?php if ( $s["PUBLIC_ACCESS_OTHERS"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_PUBLIC_ACCESS_OTHERS" value="N" <?php if ( $s["PUBLIC_ACCESS_OTHERS"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
   </td></tr>
   <tr id="pa4"><td class="tooltip" title="<?php etooltip("public-access-can-add-help")?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can add events")?>:</td><td>
-   <label><input type="radio" name="admin_public_access_can_add" value="Y" <?php if ( $s["public_access_can_add"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-   <label><input type="radio" name="admin_public_access_can_add" value="N" <?php if ( $s["public_access_can_add"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+   <label><input type="radio" name="admin_PUBLIC_ACCESS_CAN_ADD" value="Y" <?php if ( $s["PUBLIC_ACCESS_CAN_ADD"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_PUBLIC_ACCESS_CAN_ADD" value="N" <?php if ( $s["PUBLIC_ACCESS_CAN_ADD"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
   </td></tr>
   <tr id="pa5"><td class="tooltip" title="<?php etooltip("public-access-add-requires-approval-help")?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access new events require approval")?>:</td><td>
-   <label><input type="radio" name="admin_public_access_add_needs_approval" value="Y" <?php if ( $s["public_access_add_needs_approval"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-   <label><input type="radio" name="admin_public_access_add_needs_approval" value="N" <?php if ( $s["public_access_add_needs_approval"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+   <label><input type="radio" name="admin_PUBLIC_ACCESS_ADD_NEEDS_APPROVAL" value="Y" <?php if ( $s["PUBLIC_ACCESS_ADD_NEEDS_APPROVAL"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_PUBLIC_ACCESS_ADD_NEEDS_APPROVAL" value="N" <?php if ( $s["PUBLIC_ACCESS_ADD_NEEDS_APPROVAL"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
   </td></tr>
   <tr id="pa6"><td class="tooltip" title="<?php etooltip("public-access-sees-participants-help")?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Public access can view participants")?>:</td><td>
-   <label><input type="radio" name="admin_public_access_view_part" value="Y" <?php if ( $s["public_access_view_part"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-   <label><input type="radio" name="admin_public_access_view_part" value="N" <?php if ( $s["public_access_view_part"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+   <label><input type="radio" name="admin_PUBLIC_ACCESS_VIEW_PART" value="Y" <?php if ( $s["PUBLIC_ACCESS_VIEW_PART"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_PUBLIC_ACCESS_VIEW_PART" value="N" <?php if ( $s["PUBLIC_ACCESS_VIEW_PART"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
   </td></tr>
   <tr id="pa7" valign="top"><td class="tooltip" title="<?php etooltip("public-access-override-help")?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Override event name/description for public access")?>:</td><td>
-   <label><input type="radio" name="admin_override_public" value="Y" <?php if ( $s["override_public"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-   <label><input type="radio" name="admin_override_public" value="N" <?php if ( $s["override_public"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+   <label><input type="radio" name="admin_override_public" value="Y" <?php if ( $s["OVERRIDE_PUBLIC"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_override_public" value="N" <?php if ( $s["OVERRIDE_PUBLIC"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
   </td></tr>
   <tr id="pa7a" valign="top"><td class="tooltip" title="<?php etooltip("public-access-override-text-help")?>">
    &nbsp;&nbsp;&nbsp;&nbsp;
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Text to display to public access")?>:</td><td>
-   <label><input name="admin_override_public_text" value="<?php echo $s["override_public_text"];?>" size="25" /></label>
+   <label><input name="admin_override_public_text" value="<?php echo $s["OVERRIDE_PUBLIC_TEXT"];?>" size="25" /></label>
   </td></tr>
 </table>
 </div>
@@ -537,8 +539,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <table cellspacing="0" cellpadding="3">
 <tr><td class="tooltip" title="<?php etooltip("uac-enabled-help")?>">
    <?php etranslate("User Access Control enabled")?>:</td><td>
-   <label><input type="radio" name="admin_uac_enabled" value="Y" <?php if ( ! empty ( $s["uac_enabled"] ) && $s["uac_enabled"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-   <label><input type="radio" name="admin_uac_enabled" value="N" <?php if ( empty ( $s["uac_enabled"] ) || $s["uac_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+   <label><input type="radio" name="admin_uac_enabled" value="Y" <?php if ( ! empty ( $s["UAC_ENABLED"] ) && $s["UAC_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+   <label><input type="radio" name="admin_uac_enabled" value="N" <?php if ( empty ( $s["UAC_ENABLED"] ) || $s["UAC_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 </table>
 </div>
@@ -549,13 +551,13 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <table cellspacing="0" cellpadding="3">
  <tr><td class="tooltip" title="<?php etooltip("groups-enabled-help")?>">
   <?php etranslate("Groups enabled")?>:</td><td>
-  <label><input type="radio" name="admin_groups_enabled" value="Y" <?php if ( $s["groups_enabled"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_groups_enabled" value="N" <?php if ( $s["groups_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_groups_enabled" value="Y" <?php if ( $s["GROUPS_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_groups_enabled" value="N" <?php if ( $s["GROUPS_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("user-sees-his-group-help")?>">
   <?php etranslate("User sees only his groups")?>:</td><td>
-  <label><input type="radio" name="admin_user_sees_only_his_groups" value="Y" <?php if ( $s["user_sees_only_his_groups"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_user_sees_only_his_groups" value="N" <?php if ( $s["user_sees_only_his_groups"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_user_sees_only_his_groups" value="Y" <?php if ( $s["USER_SEES_ONLY_HIS_GROUPS"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_user_sees_only_his_groups" value="N" <?php if ( $s["USER_SEES_ONLY_HIS_GROUPS"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
 </table>
 </div>
@@ -565,13 +567,13 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <table cellspacing="0" cellpadding="3">
  <tr><td class="tooltip" title="<?php etooltip("nonuser-enabled-help")?>">
   <?php etranslate("Nonuser enabled")?>:</td><td>
-  <label><input type="radio" name="admin_nonuser_enabled" value="Y" <?php if ( $s["nonuser_enabled"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_nonuser_enabled" value="N" <?php if ( $s["nonuser_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_nonuser_enabled" value="Y" <?php if ( $s["NONUSER_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_nonuser_enabled" value="N" <?php if ( $s["NONUSER_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("nonuser-list-help")?>">
   <?php etranslate("Nonuser list")?>:</td><td>
-  <label><input type="radio" name="admin_nonuser_at_top" value="Y" <?php if ( $s["nonuser_at_top"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Top")?></label>&nbsp;
-  <label><input type="radio" name="admin_nonuser_at_top" value="N" <?php if ( $s["nonuser_at_top"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Bottom")?></label>
+  <label><input type="radio" name="admin_NONUSER_AT_TOP" value="Y" <?php if ( $s["NONUSER_AT_TOP"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Top")?></label>&nbsp;
+  <label><input type="radio" name="admin_NONUSER_AT_TOP" value="N" <?php if ( $s["NONUSER_AT_TOP"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Bottom")?></label>
 </td></tr>
 </table>
 </div>
@@ -581,8 +583,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <table cellspacing="0" cellpadding="3">
 <tr><td class="tooltip" title="<?php etooltip("reports-enabled-help")?>">
  <?php etranslate("Reports enabled")?>:</td><td>
- <label><input type="radio" name="admin_reports_enabled" value="Y" <?php if ( $s["reports_enabled"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
- <label><input type="radio" name="admin_reports_enabled" value="N" <?php if ( $s["reports_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ <label><input type="radio" name="admin_reports_enabled" value="Y" <?php if ( $s["REPORTS_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="admin_reports_enabled" value="N" <?php if ( $s["REPORTS_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 
 
@@ -604,45 +606,62 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 
  <tr><td class="tooltip" title="<?php etooltip("categories-enabled-help")?>">
   <?php etranslate("Categories enabled")?>:</td><td>
-  <label><input type="radio" name="admin_categories_enabled" value="Y" <?php if ( $s["categories_enabled"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_categories_enabled" value="N" <?php if ( $s["categories_enabled"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_categories_enabled" value="Y" <?php if ( $s["CATEGORIES_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_categories_enabled" value="N" <?php if ( $s["CATEGORIES_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
 
+<!-- Display Task Preferences -->
+ <tr><td class="tooltip" title="<?php etooltip("display-tasks-help")?>">
+  <?php etranslate("Display small task list")?>:</td><td>
+  <label><input type="radio" name="admin_DISPLAY_TASKS" value="Y" <?php if ( ! empty ( $s["DISPLAY_TASKS"] ) && $s["DISPLAY_TASKS"] == "Y" ) echo " checked=\"checked\"";?>  />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_DISPLAY_TASKS" value="N" <?php if ( ! empty ( $s["DISPLAY_TASKS"] ) && $s["DISPLAY_TASKS"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>
+ <tr><td class="tooltip" title="<?php etooltip("display-tasks-in-grid-help")?>">
+  <?php etranslate("Display tasks in Calendars" )?>:</td><td>
+  <label><input type="radio" name="admin_DISPLAY_TASKS_IN_GRID" value="Y" <?php if ( ! empty ( $s["DISPLAY_TASKS_IN_GRID"] ) && $s["DISPLAY_TASKS_IN_GRID"] == "Y" ) echo " checked=\"checked\"";?>  />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_DISPLAY_TASKS_IN_GRID" value="N" <?php if ( ! empty ( $s["DISPLAY_TASKS_IN_GRID"] ) && $s["DISPLAY_TASKS_IN_GRID"] != "Y" ) echo " checked=\"checked\"";?>  />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>
 
+<!-- BEGIN USE TIMEZONES IN ICS-->
+ <tr><td class="tooltip" title="<?php etooltip("export-ics-timezones-help")?>">
+  <?php etranslate("Export VTIMEZONE in ics files" )?>:</td><td>
+  <label><input type="radio" name="admin_ICS_TIMEZONES" value="Y" <?php if ( ! empty ( $s["ICS_TIMEZONES"] ) && $s["ICS_TIMEZONES"] == "Y" ) echo " checked=\"checked\"";?>  />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_ICS_TIMEZONES" value="N" <?php if ( ! empty ( $s["ICS_TIMEZONES"] ) && $s["ICS_TIMEZONES"] != "Y" ) echo " checked=\"checked\"";?>  />&nbsp;<?php etranslate("No")?></label>
+ </td></tr> 
 <!-- BEGIN EXT PARTICIPANTS -->
 
  <tr><td class="tooltip" title="<?php etooltip("allow-external-users-help")?>">
   <?php etranslate("Allow external users")?>:</td><td>
-  <label><input type="radio" name="admin_allow_external_users" value="Y" <?php if ( $s["allow_external_users"] == "Y" ) echo " checked=\"checked\"";?> onclick="eu_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_allow_external_users" value="N" <?php if ( $s["allow_external_users"] != "Y" ) echo " checked=\"checked\"";?> onclick="eu_handler()" />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_ALLOW_EXTERNAL_USERS" value="Y" <?php if ( $s["ALLOW_EXTERNAL_USERS"] == "Y" ) echo " checked=\"checked\"";?> onclick="eu_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_ALLOW_EXTERNAL_USERS" value="N" <?php if ( $s["ALLOW_EXTERNAL_USERS"] != "Y" ) echo " checked=\"checked\"";?> onclick="eu_handler()" />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr id="eu1"><td class="tooltip" title="<?php etooltip("external-can-receive-notification-help")?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("External users can receive email notifications")?>:</td><td>
-  <label><input type="radio" name="admin_external_notifications" value="Y" <?php if ( $s["external_notifications"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_external_notifications" value="N" <?php if ( $s["external_notifications"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_EXTERNAL_NOTIFICATIONS" value="Y" <?php if ( $s["EXTERNAL_NOTIFICATIONS"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_EXTERNAL_NOTIFICATIONS" value="N" <?php if ( $s["EXTERNAL_NOTIFICATIONS"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr id="eu2"><td class="tooltip" title="<?php etooltip("external-can-receive-reminder-help")?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("External users can receive email reminders")?>:</td><td>
-  <label><input type="radio" name="admin_external_reminders" value="Y" <?php if ( $s["external_reminders"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_external_reminders" value="N" <?php if ( $s["external_reminders"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_EXTERNAL_REMINDERS" value="Y" <?php if ( $s["EXTERNAL_REMINDERS"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_EXTERNAL_REMINDERS" value="N" <?php if ( $s["EXTERNAL_REMINDERS"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  
  <!-- BEGIN SELF REGISTRATION -->
 
  <tr><td class="tooltip" title="<?php etooltip("allow-self-registration-help")?>">
   <?php etranslate("Allow self-registration")?>:</td><td>
-  <label><input type="radio" name="admin_allow_self_registration" value="Y" <?php if ( ! empty ( $s["allow_self_registration"] ) && $s["allow_self_registration"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_allow_self_registration" value="N" <?php if ( ! empty ( $s["allow_self_registration"] ) && $s["allow_self_registration"] != "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_allow_self_registration" value="Y" <?php if ( ! empty ( $s["ALLOW_SELF_REGISTRATION"] ) && $s["ALLOW_SELF_REGISTRATION"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_allow_self_registration" value="N" <?php if ( ! empty ( $s["ALLOW_SELF_REGISTRATION"] ) && $s["ALLOW_SELF_REGISTRATION"] != "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr id="sr1"><td class="tooltip" title="<?php etooltip("use-blacklist-help")?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Restrict self-registration to blacklist" )?>:</td><td>
-  <label><input type="radio" name="admin_self_registration_blacklist" value="Y" <?php if ( ! empty ( $s["self_registration_blacklist"] ) && $s["self_registration_blacklist"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_self_registration_blacklist" value="N" <?php if ( ! empty ( $s["self_registration_blacklist"] ) && $s["self_registration_blacklist"] != "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_self_registration_blacklist" value="Y" <?php if ( ! empty ( $s["SELF_REGISTRATION_BLACKLIST"] ) && $s["SELF_REGISTRATION_BLACKLIST"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_self_registration_blacklist" value="N" <?php if ( ! empty ( $s["SELF_REGISTRATION_BLACKLIST"] ) && $s["SELF_REGISTRATION_BLACKLIST"] != "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr id="sr2"><td class="tooltip" title="<?php etooltip("allow-self-registration-full-help")?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Use self-registration email notifications" )?>:</td><td>
-  <label><input type="radio" name="admin_self_registration_full" value="Y" <?php if ( ! empty ( $s["self_registration_full"] ) && $s["self_registration_full"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_self_registration_full" value="N" <?php if ( ! empty ( $s["self_registration_full"] ) && $s["self_registration_full"] != "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_self_registration_full" value="Y" <?php if ( ! empty ( $s["SELF_REGISTRATION_FULL"] ) && $s["SELF_REGISTRATION_FULL"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_self_registration_full" value="N" <?php if ( ! empty ( $s["SELF_REGISTRATION_FULL"] ) && $s["SELF_REGISTRATION_FULL"] != "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
 <!-- TODO add account aging feature -->
 </table>
@@ -653,12 +672,12 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <table cellspacing="0" cellpadding="3">
 <tr><td class="tooltip" title="<?php etooltip("email-enabled-help")?>">
  <?php etranslate("Email enabled")?>:</td><td>
- <label><input type="radio" name="admin_send_email" value="Y" <?php if ( $s["send_email"] == "Y" ) echo " checked=\"checked\"";?> onclick="email_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
- <label><input type="radio" name="admin_send_email" value="N" <?php if ( $s["send_email"] != "Y" ) echo " checked=\"checked\"";?> onclick="email_handler()" />&nbsp;<?php etranslate("No")?></label>
+ <label><input type="radio" name="admin_send_email" value="Y" <?php if ( $s["SEND_EMAIL"] == "Y" ) echo " checked=\"checked\"";?> onclick="email_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="admin_send_email" value="N" <?php if ( $s["SEND_EMAIL"] != "Y" ) echo " checked=\"checked\"";?> onclick="email_handler()" />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 <tr id="em1"><td class="tooltip" title="<?php etooltip("email-default-sender")?>">
  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Default sender address")?>:</td><td>
- <input type="text" size="30" name="admin_email_fallback_from" value="<?php echo htmlspecialchars ($email_fallback_from );?>" />
+ <input type="text" size="30" name="admin_EMAIL_FALLBACK_FROM" value="<?php echo htmlspecialchars ($EMAIL_FALLBACK_FROM );?>" />
 </td></tr>
 <tr id="em2"><td colspan="2" style="font-weight:bold;">
  <?php etranslate("Default user settings")?>:
@@ -696,14 +715,14 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <table cellspacing="0" cellpadding="3">
 <tr><td><label>
  <?php etranslate("Allow user to customize colors")?>:</label></td><td colspan="3">
- <label><input type="radio" name="admin_allow_color_customization" value="Y"<?php if ( $s["allow_color_customization"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
- <label><input type="radio" name="admin_allow_color_customization" value="N"<?php if ( $s["allow_color_customization"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ <label><input type="radio" name="admin_allow_color_customization" value="Y"<?php if ( $s["ALLOW_COLOR_CUSTOMIZATION"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="admin_allow_color_customization" value="N"<?php if ( $s["ALLOW_COLOR_CUSTOMIZATION"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 <tr><td><label>
  <?php etranslate("Enable gradient images for background colors")?>:</label></td><td colspan="3">
 <?php if ( function_exists ( "imagepng" ) ) { ?>
- <label><input type="radio" name="admin_enable_gradients" value="Y"<?php if ( $s["enable_gradients"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
- <label><input type="radio" name="admin_enable_gradients" value="N"<?php if ( $s["enable_gradients"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ <label><input type="radio" name="admin_ENABLE_GRADIENTS" value="Y"<?php if ( $s["ENABLE_GRADIENTS"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="admin_ENABLE_GRADIENTS" value="N"<?php if ( $s["ENABLE_GRADIENTS"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 <?php } else {
         etranslate("Not available");
       } ?>

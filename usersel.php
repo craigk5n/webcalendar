@@ -21,7 +21,7 @@ for ( $i = 0; $i < count ( $exp ); $i++ ) {
 }
 
 // load list of groups
-if ( $user_sees_only_his_groups == "Y" ) {
+if ( $USER_SEES_ONLY_HIS_GROUPS == "Y" ) {
   $sql =
     "SELECT webcal_group.cal_group_id, webcal_group.cal_name " .
     "FROM webcal_group, webcal_group_user " .
@@ -59,9 +59,9 @@ print_header($INC,'','',true);
 <?php
 
 $users = get_my_users ();
-if ($nonuser_enabled == "Y" ) {
+if ($NONUSER_ENABLED == "Y" ) {
   $nonusers = get_nonuser_cals ();
-  $users = ($nonuser_at_top == "Y") ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
+  $users = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
 }
 
 for ( $i = 0; $i < count ( $users ); $i++ ) {

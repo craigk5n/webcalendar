@@ -19,9 +19,9 @@
 
 /*
  * Security:
- * If system setting $reports_enabled is set to anything other than
+ * If system setting $REPORTS_ENABLED is set to anything other than
  *   'Y', then don't allow access to this page.
- * If $allow_view_other is 'N', then do not allow selection of
+ * If $ALLOW_VIEW_OTHER is 'N', then do not allow selection of
  *   participants.
  * If not an admin user, only report creator (cal_login in webcal_report)
  *   can edit/delete report.
@@ -33,11 +33,11 @@ load_user_categories ();
 $updating_public = false;
 $error = "";
 
-if ( empty ( $reports_enabled ) || $reports_enabled != 'Y' ) {
+if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' ) {
   $error = translate ( "You are not authorized" ) . ".";
 }
 
-if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
   $updating_public = true;
   $report_user = "__public__";
 } else {
@@ -56,7 +56,7 @@ if ( empty ( $report_id ) ) {
 }
 
 $show_participants = true;
-if ( $single_user == 'Y' || $disable_participants_field == 'Y' ) {
+if ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y' ) {
   $show_participants = false;
 }
 
@@ -99,9 +99,9 @@ $ranges = array (
 // Get list of users that the current user can see
 if ( empty ( $error ) && $show_participants ) {
   $userlist = get_my_users ();
-  if ($nonuser_enabled == "Y" ) {
+  if ($NONUSER_ENABLED == "Y" ) {
     $nonusers = get_nonuser_cals ();
-    $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : 
+    $userlist = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $userlist) : 
       array_merge($userlist, $nonusers);
   }
 }

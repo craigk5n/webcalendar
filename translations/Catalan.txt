@@ -815,7 +815,7 @@ Are you sure you want to delete this report?: Esteu segur que voleu suprimir aqu
 # Page: assistant_edit.php
 #
 Assistants: Assistents
-Yours assistants: Els vostres assistents
+Your assistants: Els vostres assistents
 
 
 ###############################################

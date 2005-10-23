@@ -51,9 +51,9 @@ function user_valid_login ( $login, $password ) {
       CRYPT_SALT_LENGTH ) ) ) {
       if ( count ( $data ) >= 4 ) {
         $ret = true;
-	// Check for user in webcal_user.
+ // Check for user in webcal_user.
         // If in NIS and not in DB, then insert...
-	$sql = "SELECT cal_login FROM webcal_user WHERE cal_login = '" .
+ $sql = "SELECT cal_login FROM webcal_user WHERE cal_login = '" .
           $login . "'";
         $res = dbi_query ( $sql );
         if ( ! $res || ! dbi_fetch_row ( $res ) ) {
@@ -68,7 +68,7 @@ function user_valid_login ( $login, $password ) {
             "'N', '$login" . "@" . "$user_external_email')";
           if ( ! dbi_query ( $sql ) ) {
             $error = translate("Database error") . ": " . dbi_error();
-	    $ret = false;
+     $ret = false;
           }
         }
       } else {
@@ -277,7 +277,7 @@ function user_delete_user ( $user ) {
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
-	  $delete_em[] = $events[$i];
+   $delete_em[] = $events[$i];
       }
       dbi_free_result ( $res );
     }
@@ -328,11 +328,11 @@ function user_delete_user ( $user ) {
 
 // Get a list of users and return info in an array.
 function user_get_users () {
-  global $public_access, $PUBLIC_ACCESS_FULLNAME;
+  global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME;
 
   $count = 0;
   $ret = array ();
-  if ( $public_access == "Y" )
+  if ( $PUBLIC_ACCESS == "Y" )
     $ret[$count++] = array (
        "cal_login" => "__public__",
        "cal_lastname" => "",

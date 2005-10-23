@@ -8,7 +8,7 @@
  * - list users to manage (no parameters)
  * - manage a single user's rights (just "user" parameter)
  *   this will include which functions the user can access and
- *   (if $allow_view_other is 'Y') which calendars thay can view/edit/approve
+ *   (if $ALLOW_VIEW_OTHER is 'Y') which calendars thay can view/edit/approve
  * - update the database (form handler)
  *
  * Input Parameters:
@@ -51,7 +51,7 @@ if ( getPostValue ( 'user' ) != '' ) {
       dbi_error () );
   }
 
-  if ( empty ( $allow_view_other ) || $allow_view_other == 'Y' ) {
+  if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'Y' ) {
     // Handle access to other users' calendars
     dbi_query ( "DELETE FROM webcal_access_user WHERE cal_login = '$user'" );
 
@@ -145,7 +145,7 @@ if ( ! empty ( $user ) ) {
   </tbody></table>
   <?php
 
-  if ( empty ( $allow_view_other ) || $allow_view_other == 'Y' ) {
+  if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'Y' ) {
     // Now load all the data from webcal_access_user
     $res = dbi_query ( "SELECT cal_other_user, cal_can_view, " .
       "cal_can_edit, cal_can_delete, cal_can_approve " .
@@ -273,9 +273,9 @@ exit;
 // Note: this function is based on get_my_users in functions.php
 function get_list_of_users ( $user )
 {
-  global $groups_enabled, $user_sees_only_his_groups;
+  global $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
 
-  if ( $groups_enabled == "Y" && $user_sees_only_his_groups == "Y" ) {
+  if ( $GROUPS_ENABLED == "Y" && $USER_SEES_ONLY_HIS_GROUPS == "Y" ) {
     // get groups that user is in
     $res = dbi_query ( "SELECT cal_group_id FROM webcal_group_user " .
       "WHERE cal_login = '$user'" );

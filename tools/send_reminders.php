@@ -149,13 +149,13 @@ if ( $res ) {
 $res = dbi_query ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
   "WHERE cal_setting = 'TIMEZONE'" );
 
-$timezone = array (); 
+$tz = array (); 
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $user = $row[0];
-    $timezone[$user] = $row[1];
+    $tz[$user] = $row[1];
     if ( $debug )
-      echo "TIMEZONE for $user is \"$timezone[$user]\"<br />\n";
+      echo "TIMEZONE for $user is \"$tz[$user]\"<br />\n";
   }
   dbi_free_result ( $res );
 }
@@ -217,8 +217,8 @@ function gen_output ( $useHtml, $prompt, $data )
 // approved.  But, don't send to users how rejected (cal_status='R').
 function send_reminder ( $id, $event_date ) {
   global $names, $emails, $site_extras, $debug, $only_testing,
-    $server_url, $languages, $htmlmail, $timezone, $application_name;
-  global $allow_external_users, $external_reminders, $LANGUAGE;
+    $SERVER_URL, $languages,  $TIMEZONE, $APPLICATION_NAME;
+  global $ALLOW_EXTERNAL_USERS, $EXTERNAL_REMINDERS, $LANGUAGE;
 
   $pri[1] = translate("Low");
   $pri[2] = translate("Medium");
@@ -241,8 +241,8 @@ function send_reminder ( $id, $event_date ) {
   // get external participants
   $ext_participants = array ();
   $num_ext_participants = 0;
-  if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" &&
-    ! empty ( $external_reminders ) && $external_reminders == "Y" ) {
+  if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == "Y" &&
+    ! empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == "Y" ) {
     $sql = "SELECT cal_fullname, cal_email FROM webcal_entry_ext_user " .
       "WHERE cal_id = $id AND cal_email IS NOT NULL " .
       "ORDER BY cal_fullname";
@@ -266,7 +266,8 @@ function send_reminder ( $id, $event_date ) {
   $res = dbi_query (
     "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
     "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-    "cal_name, cal_description FROM webcal_entry WHERE cal_id = $id" );
+    "cal_name, cal_description, cal_due_date, cal_due_time " .
+  "FROM webcal_entry WHERE cal_id = $id" );
   if ( ! $res ) {
     echo "Db error: could not find event id $id.\n";
     return;
@@ -315,9 +316,9 @@ function send_reminder ( $id, $event_date ) {
       echo "Setting language to \"$userlang\" <br />\n";
     reset_language ( $userlang );
     // reset timezone setting for current user
-    if ( ! empty ( $timezone[$user] ) ) {
+    if ( ! empty ( $tz[$user] ) ) {
       $display_tzid = 2;  // display TZ
-      $user_timezone = $timezone[$user];
+      $user_timezone = $tz[$user];
     } else {
       $display_tzid = 3; // Do not use offset & display TZ
       $user_timezone = "";
@@ -339,16 +340,16 @@ function send_reminder ( $id, $event_date ) {
     $description = $row[10];
 
     // add trailing '/' if not found in server_url
-    if ( ! empty ( $server_url ) ) {
-      if ( substr ( $server_url, -1, 1 ) == "/" ) {
+    if ( ! empty ( $SERVER_URL ) ) {
+      if ( substr ( $SERVER_URL, -1, 1 ) == "/" ) {
         $eventURL = $server_url . "view_entry.php?id=" . $id;
       } else {
-        $eventURL = $server_url . "/view_entry.php?id=" . $id;
+        $eventURL = $SERVER_URL . "/view_entry.php?id=" . $id;
       }
       if ( $useHtml ) {
         $body .= "<p><a href=\"" . $eventURL . "\">" . $eventURL . "</a></p>\n";
       } else {
-        $body .= $server_url . "view_entry.php?id=" . $id . "\n\n";
+        $body .= $SERVER_URL . "view_entry.php?id=" . $id . "\n\n";
       }
     }
 
@@ -424,8 +425,8 @@ function send_reminder ( $id, $event_date ) {
       }
     }
     if ( ( empty ( $single_user ) || $single_user != 'Y' ) &&
-      ( empty ( $disable_participants_field ) ||
-      $disable_participants_field != 'N' ) ) {
+      ( empty ( $DISABLE_PARTICIPANTS_FIELD ) ||
+      $DISABLE_PARTICIPANTS_FIELD != 'N' ) ) {
       if ( $useHtml ) {
         $body .= "<tr><td valign=\"top\">" .
           translate("Participants") .  ":</td><td>";
@@ -457,8 +458,8 @@ function send_reminder ( $id, $event_date ) {
   
     $subject = translate("Reminder") . ": " . $name;
 
-    if ( strlen ( $GLOBALS["email_fallback_from"] ) )
-      $extra_hdrs = "From: " . $GLOBALS["email_fallback_from"] . "\r\n" .
+    if ( strlen ( $GLOBALS["EMAIL_FALLBACK_FROM"] ) )
+      $extra_hdrs = "From: " . $GLOBALS["EMAIL_FALLBACK_FROM"] . "\r\n" .
         "X-Mailer: " . $GLOBALS['PROGRAM_NAME'];
     else
       $extra_hdrs = "X-Mailer: " . $GLOBALS['PROGRAM_NAME'];
@@ -499,7 +500,7 @@ function log_reminder ( $id, $name, $event_date ) {
 // a reminder, when it needs to be sent and when the last time it
 // was sent.
 function process_event ( $id, $name, $event_date, $event_time ) {
-  global $site_extras, $debug, $only_testing, $timezone;
+  global $site_extras, $debug, $only_testing, $TIMEZONE;
 
   if ( $debug )
     printf ( "Event %d: \"%s\" at %s on %s <br />\n",
@@ -597,7 +598,11 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    process_event ( $id, $ev[$i]->getName(), $date, $ev[$i]->getTime() );
+  if ( $ev[$i]->getCalType() == "E" ) {
+      process_event ( $id, $ev[$i]->getName(), $date, $ev[$i]->getTime() );
+  } else {
+      process_event ( $id, $ev[$i]->getName(), $ev[$i]->getDueDate(), $ev[$i]->getDueTime() );  
+  }
   }
   $rep = get_repeating_entries ( "", $date );
   for ( $i = 0; $i < count ( $rep ); $i++ ) {
@@ -605,7 +610,11 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    process_event ( $id, $rep[$i]->getName(), $date, $rep[$i]->getTime() );
+  if ( $ev[$i]->getCalType() == "E" ) {
+      process_event ( $id, $rep[$i]->getName(), $date, $rep[$i]->getTime() );
+  } else {
+      process_event ( $id, $rep[$i]->getName(), $rep[$i]->getDueDate(), $rep[$i]->getDueTime() );  
+  }
   }
 }
 

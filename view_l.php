@@ -18,7 +18,7 @@
  * (*) required field
  *
  * Security:
- * Must have "allow view others" enabled ($allow_view_other) in
+ * Must have "allow view others" enabled ($ALLOW_VIEW_OTHER) in
  *   System Settings unless the user is an admin user ($is_admin).
  * If the view is not global, the user must be owner of the view.
  * If the view is global, then and user_sees_only_his_groups is
@@ -30,7 +30,7 @@ include_once 'includes/init.php';
 
 $error = "";
 
-if ( $allow_view_other == "N" && ! $is_admin ) {
+if ( $ALLOW_VIEW_OTHER == "N" && ! $is_admin ) {
   // not allowed...
   send_to_preferred_view ();
 }
@@ -67,7 +67,7 @@ $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
 
-if ( ! empty ( $bold_days_in_year ) && $bold_days_in_year == 'Y' ) {
+if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $boldDays = true;
   $startdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
   $enddate = sprintf ( "%04d%02d31", $nextyear, $nextmonth );
@@ -108,10 +108,10 @@ if ( $all_users ) {
   // Make sure this user is allowed to see all users in this view
   // If this is a global view, it may include users that this user
   // is not allowed to see.
-  if ( ! empty ( $user_sees_only_his_groups ) &&
-    $user_sees_only_his_groups == 'Y' ) {
+  if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
+    $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
     $myusers = get_my_users ();
-    if ( ! empty ( $nonuser_enabled ) && $nonuser_enabled == "Y" ) {
+    if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" ) {
       $myusers = array_merge ( $myusers, get_nonuser_cals () );
     }
     $userlookup = array();
