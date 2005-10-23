@@ -423,7 +423,8 @@ if ( ! empty ( $parent ) )
        <label for="entry_access"><?php etranslate("Access")?>:</label></td><td width="80%">
        <select name="access" id="entry_access">
         <option value="P"<?php if ( $access == "P" || ! strlen ( $access ) ) echo " selected=\"selected\"";?>><?php etranslate("Public")?></option>
-        <option value="R"<?php if ( $access == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Confidential")?></option>
+        <option value="R"<?php if ( $access == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Private")?></option>
+        <option value="C"<?php if ( $access == "C" ) echo " selected=\"selected\"";?>><?php etranslate("Confidential")?></option>				
        </select>
        </td></tr>
 <?php } ?>
