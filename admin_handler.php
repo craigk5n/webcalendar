@@ -11,6 +11,7 @@ if ( $error == "" ) {
   while ( list ( $key, $value ) = each ( $HTTP_POST_VARS ) ) {
     $setting = substr ( $key, 6 );
     if ( strlen ( $setting ) > 0 ) {
+    $setting = strtoupper ( $setting );
       $sql = "DELETE FROM webcal_config WHERE cal_setting = '$setting'";
       if ( ! dbi_query ( $sql ) ) {
         $error = translate("Error") . ": " . dbi_error () .

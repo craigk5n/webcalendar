@@ -70,18 +70,17 @@ $DEFAULTS = array(
 
 // Get a value from a GET URL
 function getGetValue ( $name ) {
-  if ( isset ( $_GET[$name] ) ) {
-    return $_GET[$name];
-  }
+  global $HTTP_GET_VARS;
 
-  if ( ! isset ( $HTTP_GET_VARS ) ) {
+  if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) ) {
+  $_GET[$name] = ( get_magic_quotes_gpc () != 0? $_GET[$name]: addslashes ( $_GET[$name]) );
+    $HTTP_GET_VARS[$name] = $_GET[$name];
+  return $_GET[$name];
+  } else if ( ! isset ( $HTTP_GET_VARS ) ) {
     return null;
-  }
-
-  if ( ! isset ( $HTTP_GET_VARS[$name] ) ) {
+  } else if ( ! isset ( $HTTP_GET_VARS[$name] ) ){
     return null;
-  }
-
+ }
   return ( $HTTP_GET_VARS[$name] );
 }
 

@@ -79,7 +79,7 @@ $login = $user;
 
 
 
-if ( $public_must_be_enabled && $public_access != 'Y' ) {
+if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' ) {
   $error = translate ( "You are not authorized" ) . ".";
 }
 
@@ -119,8 +119,8 @@ $enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
 
 
 $HeadX = '';
-if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
-  $refresh = $auto_refresh_time * 60; // convert to seconds
+if ( $AUTO_REFRESH == "Y" && ! empty ( $AUTO_REFRESH_TIME ) ) {
+  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=minical.php?$u_url" .
     "year=$thisyear&amp;month=$thismonth  \" />\n";
 }

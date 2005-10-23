@@ -4,7 +4,7 @@ include_once 'includes/init.php';
 $error = "";
 
 $updating_public = false;;
-if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
   $updating_public = true;
   $prefuser = "__public__";
 } elseif (($user != $login) && ($is_admin || $is_nonuser_admin)) {
@@ -23,12 +23,13 @@ while ( list ( $key, $value ) = each ( $HTTP_POST_VARS ) ) {
       "AND cal_setting = '$setting'";
     dbi_query ( $sql );
     if ( strlen ( $value ) > 0 ) {
+    $setting = strtoupper ( $setting );
       $sql = "INSERT INTO webcal_user_pref " .
         "( cal_login, cal_setting, cal_value ) VALUES " .
         "( '$prefuser', '$setting', '$value' )";
       if ( ! dbi_query ( $sql ) ) {
         $error = "Unable to update preference: " . dbi_error () .
-	"<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
+ "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
         break;
       }
     }

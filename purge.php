@@ -3,16 +3,16 @@
  * $Id$
  *
  * Description:
- *	Purge events page and handler.
- *	When an event is deleted from a user's calendar, it is marked
- *	as deleted (webcal_entry_user.cal_status = 'D').  This page
- *	will actually clean out the database rather than just mark an
- *	event as deleted.
+ * Purge events page and handler.
+ * When an event is deleted from a user's calendar, it is marked
+ * as deleted (webcal_entry_user.cal_status = 'D').  This page
+ * will actually clean out the database rather than just mark an
+ * event as deleted.
  *
  * Security:
- *	Events will only be deleted if they were created by the selected
- *	user.  Events where the user was a participant (but not did not
- *	create) will remain unchanged.
+ * Events will only be deleted if they were created by the selected
+ * user.  Events where the user was a participant (but not did not
+ * create) will remain unchanged.
  *
  */
 include_once 'includes/init.php';
@@ -32,7 +32,7 @@ $ALL = 0;
 $action = getPostValue ( "action" );
 $do_purge = false;
 if ( $action == translate("Delete") ) {
-	$do_purge = true;
+ $do_purge = true;
 }
 
 $purge_all = getPostValue ( "purge_all" );
@@ -116,44 +116,44 @@ if ( $do_purge ) {
 
 <form action="purge.php" method="post" name="purgeform">
 <table>
-	<tr><td><label for="user">
-		<?php etranslate("User");?>:</label></td>
-	<td><select name="user">
+ <tr><td><label for="user">
+  <?php etranslate("User");?>:</label></td>
+ <td><select name="user">
 <?php
   $userlist = get_my_users ();
-  if ($nonuser_enabled == "Y" ) {
+  if ($NONUSER_ENABLED == "Y" ) {
     $nonusers = get_nonuser_cals ();
-    $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+    $userlist = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
     echo '<option value="' . $userlist[$i]['cal_login'] . '"';
-	if ( $login == $userlist[$i]['cal_login'] ) {
-		echo ' selected="selected"';
-	} 
-	echo '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
+ if ( $login == $userlist[$i]['cal_login'] ) {
+  echo ' selected="selected"';
+ } 
+ echo '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
 <option value="ALL"><?php etranslate("All")?></option>
-		</select>
-	</td></tr>
-	<tr><td><label for="purge_all">
-		<?php etranslate("Check box to delete <b>ALL</b> events for a user")?>:</label></td>
-		<td valign="bottom">
-		<input type="checkbox" name="purge_all" value="Y"
+  </select>
+ </td></tr>
+ <tr><td><label for="purge_all">
+  <?php etranslate("Check box to delete <b>ALL</b> events for a user")?>:</label></td>
+  <td valign="bottom">
+  <input type="checkbox" name="purge_all" value="Y"
                 onclick="all_handler()" />
-	</td></tr>
-	<tr id="dateArea"><td><label>
-		<?php etranslate("Delete all events before");?>:</label></td><td>
-		<?php print_date_selection ( "end_", date ( "Ymd" ) ) ?>
-	</td></tr>
-	<tr><td><label for="preview">
-		<?php etranslate("Preview delete")?>:</label></td>
-		<td valign="bottom">
-		<input type="checkbox" name="preview" value="Y" checked="checked" />
-	</td></tr>
-	<tr><td colspan="2">
-		<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete events for");?> ' + document.forms[0].user.value + '?')" />
-	</td></tr>
+ </td></tr>
+ <tr id="dateArea"><td><label>
+  <?php etranslate("Delete all events before");?>:</label></td><td>
+  <?php print_date_selection ( "end_", date ( "Ymd" ) ) ?>
+ </td></tr>
+ <tr><td><label for="preview">
+  <?php etranslate("Preview delete")?>:</label></td>
+  <td valign="bottom">
+  <input type="checkbox" name="preview" value="Y" checked="checked" />
+ </td></tr>
+ <tr><td colspan="2">
+  <input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete events for");?> ' + document.forms[0].user.value + '?')" />
+ </td></tr>
 </table>
 </form>
 
@@ -173,6 +173,7 @@ function purge_events ( $ids ) {
     array ( 'webcal_entry_repeats', 'cal_id' ),
     array ( 'webcal_entry_repeats_not', 'cal_id' ),
     array ( 'webcal_entry_log', 'cal_entry_id' ),
+    array ( 'webcal_entry_categories', 'cal_id' ),
     array ( 'webcal_import_data', 'cal_id' ),
     array ( 'webcal_site_extras', 'cal_id' ),
     array ( 'webcal_reminder_log', 'cal_id' ),

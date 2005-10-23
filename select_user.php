@@ -6,8 +6,8 @@ print_header();
 <h2><?php etranslate("View Another User's Calendar"); ?></h2>
 
 <?php
-if (( $allow_view_other != "Y" && ! $is_admin ) ||
-   ( $public_access == "Y" && $login == "__public__" && $public_access_others != "Y")) {
+if (( $ALLOW_VIEW_OTHER != "Y" && ! $is_admin ) ||
+   ( $PUBLIC_ACCESS == "Y" && $login == "__public__" && $PUBLIC_ACCESS_OTHERS != "Y")) {
   $error = translate ( "You are not authorized" );
 }
 
@@ -15,9 +15,9 @@ if ( ! empty ( $error ) ) {
   echo "<blockquote>$error</blockquote>\n";
 } else {
   $userlist = get_my_users ();
-  if ($nonuser_enabled == "Y" ) {
+  if ($NONUSER_ENABLED == "Y" ) {
     $nonusers = get_nonuser_cals ();
-    $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+    $userlist = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
   if ( strstr ( $STARTVIEW, "view" ) )
     $url = "month.php";

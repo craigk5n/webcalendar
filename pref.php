@@ -20,7 +20,7 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
-if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
   $updating_public = true;
   $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
     "WHERE cal_login = '__public__'" );
@@ -74,8 +74,8 @@ print_header($INC);
 
 <?php
 if ( $is_admin && ! $updating_public  ) {
-  if ( empty ( $public ) && ! empty ( $public_access ) &&
-    $public_access == 'Y' ) {
+  if ( empty ( $public ) && ! empty ( $PUBLIC_ACCESS ) &&
+    $PUBLIC_ACCESS == 'Y' ) {
     echo "<blockquote><a href=\"pref.php?public=1\">" .
       translate("Click here") . "</a> " .
       translate("to modify the preferences for the Public Access calendar") .
@@ -107,9 +107,9 @@ if ( empty ( $user ) || $user == $login ) {
 </td></tr></table>
 <br />
 
-<table class="standard" cellspacing="1" cellpadding="2">
+<table class="standard" cellspacing="1" cellpadding="2"  border="0">
 <tr><th colspan="2"><?php etranslate("Settings");?></th></tr>
-<tr><td class="tooltipselect" title="<?php etooltip("language-help");?>">
+<tr><td  class="tooltipselect" title="<?php etooltip("language-help");?>">
  <label for="pref_lang"><?php etranslate("Language")?>:</label></td><td>
  <select name="pref_LANGUAGE" id="pref_lang">
 <?php
@@ -133,7 +133,7 @@ if ( empty ( $user ) || $user == $login ) {
 </td></tr>
 <tr><td class="tooltipselect" title="<?php etooltip("tz-help")?>">
   <label for="pref_TIMEZONE"><?php etranslate("Timezone Selection")?>:</label></td><td>
-  <?php
+  <?php 
    $tz_offset = get_tz_offset ( $prefarray['TIMEZONE'], time() );
    echo print_timezone_select_html ( "pref_", $prefarray['TIMEZONE']); 
    echo  translate("Your current GMT offset is")  . " " . $tz_offset[0] . 
@@ -303,19 +303,20 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <option value="24" <?php if ( $prefarray["TIME_SLOTS"] == "24" ) echo " selected=\"selected\""?>>1 <?php etranslate("hour")?></option>
   <option value="48" <?php if ( $prefarray["TIME_SLOTS"] == "48" ) echo " selected=\"selected\""?>>30 <?php etranslate("minutes")?></option>
   <option value="72" <?php if ( $prefarray["TIME_SLOTS"] == "72" ) echo " selected=\"selected\""?>>20 <?php etranslate("minutes")?></option>
+  <option value="96" <?php if ( $prefarray["TIME_SLOTS"] == "96" ) echo " selected=\"selected\""?>>15 <?php etranslate("minutes")?></option>
   <option value="144" <?php if ( $prefarray["TIME_SLOTS"] == "144" ) echo " selected=\"selected\""?>>10 <?php etranslate("minutes")?></option>
  </select>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("auto-refresh-help");?>">
  <?php etranslate("Auto-refresh calendars")?>:</td><td>
- <label><input type="radio" name="pref_auto_refresh" value="Y" <?php if ( $prefarray["auto_refresh"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
- <label><input type="radio" name="pref_auto_refresh" value="N" <?php if ( $prefarray["auto_refresh"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
+ <label><input type="radio" name="pref_auto_refresh" value="Y" <?php if ( $prefarray["AUTO_REFRESH"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="pref_auto_refresh" value="N" <?php if ( $prefarray["AUTO_REFRESH"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("auto-refresh-time-help");?>">
  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Auto-refresh time")?>:</td><td>
- <input type="text" name="pref_auto_refresh_time" size="4" value="<?php if ( empty ( $prefarray["auto_refresh_time"] ) ) echo "0"; else echo $prefarray["auto_refresh_time"]; ?>" /> <?php etranslate("minutes")?>
+ <input type="text" name="pref_auto_refresh_time" size="4" value="<?php if ( empty ( $prefarray["AUTO_REFRESH_TIME"] ) ) echo "0"; else echo $prefarray["AUTO_REFRESH_TIME"]; ?>" /> <?php etranslate("minutes")?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("display-unapproved-help");?>">
@@ -325,7 +326,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip("display-week-number-help")?>">
  <?php etranslate("Display week number")?>:</td><td>
- <label><input type="radio" name="pref_DISPLAY_WEEKNUMBER" value="Y" <?php if ( $DISPLAY_WEEKNUMBER != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="pref_DISPLAY_WEEKNUMBER" value="Y" <?php if ( $prefarray["DISPLAY_WEEKNUMBER"]!= "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="pref_DISPLAY_WEEKNUMBER" value="N" <?php if ( $prefarray["DISPLAY_WEEKNUMBER"] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip("display-week-starts-on")?>">
@@ -352,7 +353,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <label for="pref_endhr"><?php etranslate("to")?></label>
  <select name="pref_WORK_DAY_END_HOUR" id="pref_endhr">
 <?php
- for ( $i = 0; $i < 24; $i++ ) {
+ for ( $i = 0; $i <= 24; $i++ ) {
   echo "<option value=\"$i\"" .
    ( $i == $prefarray["WORK_DAY_END_HOUR"] ? " selected=\"selected\"" : "" ) .
    ">" . display_time ( $i * 10000, 1 ) . "</option>\n";
@@ -388,6 +389,21 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  </select>
 </td></tr>
 <?php } //end if (! empty ($categories ) ) ?>
+<tr><td class="tooltip" title="<?php etooltip("display-tasks-help")?>">
+ <?php etranslate("Display small task list")?>:</td><td>
+ <label><input type="radio" name="pref_DISPLAY_TASKS" value="Y" <?php if ( $prefarray["DISPLAY_TASKS"] != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="pref_DISPLAY_TASKS" value="N" <?php if ( $prefarray["DISPLAY_TASKS"] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
+</td></tr>
+<tr><td class="tooltip" title="<?php etooltip("display-tasks-in-grid-help")?>">
+ <?php etranslate("Display tasks in Calendars")?>:</td><td>
+ <label><input type="radio" name="pref_DISPLAY_TASKS_IN_GRID" value="Y" <?php if (  $prefarray["DISPLAY_TASKS_IN_GRID"]  != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="pref_DISPLAY_TASKS_IN_GRID" value="N" <?php if (  $prefarray["DISPLAY_TASKS_IN_GRID"] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
+</td></tr>
+<tr><td class="tooltip" title="<?php etooltip("export-ics-timezones-help")?>">
+ <?php etranslate("Export VTIMEZONE in ics files")?>:</td><td>
+ <label><input type="radio" name="pref_ICS_TIMEZONES" value="Y" <?php if (  $prefarray["ICS_TIMEZONES"] != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="pref_ICS_TIMEZONES" value="N" <?php if (  $prefarray["ICS_TIMEZONES"] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
+</td></tr>
 </table>
 
 <?php if ( ! $updating_public ) { ?>
@@ -452,61 +468,61 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 
 <tr><td class="tooltipselect" title="<?php etooltip("allow-remote-subscriptions-help")?>"><?php etranslate("Allow remote subscriptions")?>:</td>
   <td><label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="Y" <?php if ( isset ( $prefarray["USER_PUBLISH_ENABLED"] ) && $prefarray["USER_PUBLISH_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="N" <?php if ( empty ( $prefarray["USER_PUBLISH_ENABLED"] ) || $prefarray["USER_PUBLISH_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
-<?php if ( ! empty ( $server_url ) ) { ?>
+<?php if ( ! empty ( $SERVER_URL ) ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip("remote-subscriptions-url-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("URL")?>:</td>
   <td>
   <?php
-    echo htmlspecialchars ( $server_url ) .
+    echo htmlspecialchars ( $SERVER_URL ) .
       "publish.php/" . ( $updating_public ? "public" : $user ) .  ".ics";
     echo "<br/>\n";
-    echo htmlspecialchars ( $server_url ) .
+    echo htmlspecialchars ( $SERVER_URL ) .
       "publish.php?user=" . ( $updating_public ? "public" : $user );
   ?></td></tr>
-<?php } /* $server_url */ ?>
+<?php } /* $SERVER_URL */ ?>
 
 <tr><td class="tooltipselect" title="<?php etooltip("allow-remote-publishing-help")?>"><?php etranslate("Allow remote publishing")?>:</td>
   <td><label><input type="radio" name="pref_USER_PUBLISH_RW_ENABLED" value="Y" <?php if ( isset ( $prefarray["USER_PUBLISH_RW_ENABLED"] ) && $prefarray["USER_PUBLISH_RW_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_USER_PUBLISH_RW_ENABLED" value="N" <?php if ( empty ( $prefarray["USER_PUBLISH_RW_ENABLED"] ) || $prefarray["USER_PUBLISH_RW_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
-<?php if ( ! empty ( $server_url ) ) { ?>
+<?php if ( ! empty ( $SERVER_URL ) ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip("remote-publishing-url-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("URL")?>:</td>
   <td>
   <?php
-    echo htmlspecialchars ( $server_url ) .
+    echo htmlspecialchars ( $SERVER_URL ) .
       "icalclient.php";
   ?></td></tr>
-<?php } /* $server_url */ ?>
+<?php } /* $SERVER_URL */ ?>
 
 <?php } /* $PUBLISH_ENABLED */ ?>
 
 <?php if ( $RSS_ENABLED == 'Y' ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip("rss-enabled-help")?>"><?php etranslate("Enable RSS feed")?>:</td>
   <td><label><input type="radio" name="pref_USER_RSS_ENABLED" value="Y" <?php if ( isset ( $prefarray["USER_RSS_ENABLED"] ) && $prefarray["USER_RSS_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_USER_RSS_ENABLED" value="N" <?php if ( empty ( $prefarray["USER_RSS_ENABLED"] ) || $prefarray["USER_RSS_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
-<?php if ( ! empty ( $server_url ) ) { ?>
+<?php if ( ! empty ( $SERVER_URL ) ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip("rss-feed-url-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("URL")?>:</td>
   <td>
   <?php
-    echo htmlspecialchars ( $server_url ) .
+    echo htmlspecialchars ( $SERVER_URL ) .
       "rss.php?user=" . ( $updating_public ? "public" : $user );
   ?></td></tr>
-<?php } /* $server_url */ ?>
+<?php } /* $SERVER_URL */ ?>
 <?php } /* $RSS_ENABLED */ ?>
 
 <tr><td class="tooltipselect" title="<?php etooltip("freebusy-enabled-help")?>"><?php etranslate("Enable FreeBusy publishing")?>:</td>
   <td><label><input type="radio" name="pref_FREEBUSY_ENABLED" value="Y" <?php if ( $prefarray["FREEBUSY_ENABLED"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_FREEBUSY_ENABLED" value="N" <?php if ( $prefarray["FREEBUSY_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
-<?php if ( ! empty ( $server_url ) ) { ?>
+<?php if ( ! empty ( $SERVER_URL ) ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip("freebusy-url-help")?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("URL")?>:</td>
   <td>
   <?php
-    echo htmlspecialchars ( $server_url ) .
+    echo htmlspecialchars ( $SERVER_URL ) .
       "freebusy.php/" . ( $updating_public ? "public" : $user ) . ".ifb";
     echo "<br/>\n";
-    echo htmlspecialchars ( $server_url ) .
+    echo htmlspecialchars ( $SERVER_URL ) .
       "freebusy.php?user=" . ( $updating_public ? "public" : $user );
   ?></td></tr>
-<?php } /* $server_url */ ?>
+<?php } /* $SERVER_URL */ ?>
 
 </table>
 
-<?php if ( $allow_color_customization == 'Y' ) { ?>
+<?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 
 <br /><br />
 
@@ -517,7 +533,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <tr><th colspan="4"><?php etranslate("Colors")?></th></tr>
 
 <?php if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' &&
-  ! empty ( $allow_user_header ) && $allow_user_header == 'Y' ) { ?>
+  ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' ) { ?>
  <tr><td class="tooltip" title="<?php etooltip("custom-script-help");?>">
   <?php etranslate("Custom script/stylesheet")?>:</td><td>
   <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=S&user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
@@ -525,7 +541,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <?php } ?>
 
 <?php if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' &&
-  ! empty ( $allow_user_header ) && $allow_user_header == 'Y' ) { ?>
+  ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' ) { ?>
  <tr><td class="tooltip" title="<?php etooltip("custom-header-help");?>">
   <?php etranslate("Custom header")?>:</td><td>
   <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=H&user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
@@ -533,7 +549,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <?php } ?>
 
 <?php if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' &&
-  ! empty ( $allow_user_header ) && $allow_user_header == 'Y' ) { ?>
+  ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' ) { ?>
  <tr><td class="tooltip" title="<?php etooltip("custom-trailer-help");?>">
   <?php etranslate("Custom trailer")?>:</td><td>
   <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=T&user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
@@ -644,7 +660,7 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
 
 </td></tr></table>
 
-<?php } // if $allow_color_customization ?>
+<?php } // if $ALLOW_COLOR_CUSTOMIZATION ?>
 
 <br /><br />
 <table style="border-width:0px;"><tr><td>

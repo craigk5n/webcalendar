@@ -3,14 +3,14 @@ require_once 'includes/init.php';
  
 load_global_settings ();
 
-if ( empty ( $allow_self_registration ) || $allow_self_registration != "Y" ) { 
+if ( empty ( $ALLOW_SELF_REGISTRATION ) || $ALLOW_SELF_REGISTRATION != "Y" ) { 
   $error = "You are not authorized";
 }
 
-if ( empty ( $self_registration_full ) || $self_registration_full == "N" ) { 
-  $self_registration_full = "N";
+if ( empty ( $SELF_REGISTRATION_FULL ) || $SELF_REGISTRATION_FULL == "N" ) { 
+  $SELF_REGISTRATION_FULL = "N";
  $form_control = "email";
-} else if ( $self_registration_full = "Y" ) {
+} else if ( $SELF_REGISTRATION_FULL = "Y" ) {
  $form_control = "full";
 }
 
@@ -81,7 +81,7 @@ $uemail = "";
 
 // We can limit what domain is allowed to self register
 // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
-if ( ! empty ( $self_registration_blacklist ) ) {
+if ( ! empty ( $SELF_REGISTRATION_BLACKLIST ) && $SELF_REGISTRATION_BLACKLIST == "Y"  ) {
   $valid_ip = validate_domain ();
   if ( empty ( $valid_ip ) ) 
     $error = "You are not authorized";
@@ -151,22 +151,22 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == "full" ) {
    $msg .= translate("A new WebCalendar account has been set up for you"). ".\n\n";
    $msg .= translate("Your username is") . " \"" . $user . "\"\n\n";
    $msg .= translate("Your password is") . " \"" . $new_pass . "\"\n\n";
-   $msg .= translate("Please visit") . " " . translate($application_name) . " " .
+   $msg .= translate("Please visit") . " " . translate($APPLICATION_NAME) . " " .
      translate("to log in and start using your account") . "!\n";
    // add URL to event, if we can figure it out
-   if ( ! empty ( $server_url ) ) {
-     $url = $server_url .  "login.php";
+   if ( ! empty ( $SERVER_URL ) ) {
+     $url = $SERVER_URL .  "login.php";
      $msg .= "\n\n" . $url;
    }
   $msg .= "\n\n" . translate("You may change your password after logging in the first time") . ".\n\n";
   $msg .= translate("If you received this email in error" ) . ".\n\n"; 
-   if ( ! empty ( $email_fallback_from ) ) {
-    $extra_hdrs = "From: $email_fallback_from\r\nX-Mailer: " . translate($application_name);
+   if ( ! empty ( $EMAIL_FALLBACK_FROM ) ) {
+    $extra_hdrs = "From: $EMAIL_FALLBACK_FROM\r\nX-Mailer: " . translate($APPLICATION_NAME);
    } else {
-    $extra_hdrs = "X-Mailer: " . translate($application_name);
+    $extra_hdrs = "X-Mailer: " . translate($APPLICATION_NAME);
    }
    mail ( $uemail,
-     translate($application_name) . " " . translate("Welcome") . ": " . $ufirstname,
+     translate($APPLICATION_NAME) . " " . translate("Welcome") . ": " . $ufirstname,
      html_to_8bits ($msg), $extra_hdrs );
    activity_log ( 0, 'admin', $user, LOG_NEWUSER_EMAIL, "New user via email" ); 
   }
@@ -193,10 +193,10 @@ function valid_form () {
 <h2><?php 
 // If Application Name is set to Title then get translation
 // If not, use the Admin defined Application Name
-if ( ! empty ( $application_name ) &&  $application_name =="Title") {
-  etranslate($application_name);
+if ( ! empty ( $APPLICATION_NAME ) &&  $APPLICATION_NAME =="Title") {
+  etranslate($APPLICATION_NAME);
 } else {
-  echo htmlspecialchars ( $application_name );
+  echo htmlspecialchars ( $APPLICATION_NAME );
 } 
 echo " " . translate ( "Registration" ); 
 ?></h2>
@@ -216,7 +216,7 @@ if ( ! empty ( $error ) ) {
 <tr><td rowspan="3"><img src="register.gif"></td>
 
 <td><?php etranslate("Welcome to WebCalendar")?></td></tr>
-<?php if ( $self_registration_full == "Y" ) { ?>
+<?php if ( $SELF_REGISTRATION_FULL == "Y" ) { ?>
   <tr><td colspan="3" align="center"><label><?php etranslate("Your email should arrive shortly")?></label><td></tr> 
 <?php } ?>
 <tr><td colspan="3" align="center">
@@ -241,7 +241,7 @@ if ( ! empty ( $error ) ) {
 <tr><td  align="right" colspan="2">
   <label for="uemail"><?php etranslate("E-mail address")?>:</label></td>
   <td align="left"><input type="text" name="uemail" value="<?php echo $uemail ?>" size="40"  maxlength="75" /></td></tr>
-<?php if ( $self_registration_full == "Y" ) { ?>
+<?php if ( $SELF_REGISTRATION_FULL == "Y" ) { ?>
   <tr><td  align="right" colspan="2">
     <label for="upassword1"><?php etranslate("Password")?>:</label></td>
     <td align="left"><input name="upassword1" value="<?php echo $upassword1 ?>" size="15"  type="password" /></td></tr>

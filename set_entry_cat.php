@@ -6,19 +6,18 @@ $error = "";
 
 if ( empty ( $id ) )
   $error = translate("Invalid entry id") . ".";
-else if ( $categories_enabled != "Y" )
+else if ( $CATEGORIES_ENABLED != "Y" )
   $error = translate("You are not authorized") . ".";
 else if ( empty ( $categories ) )
   $error = translate("You have not added any categories") . ".";
 
 // make sure user is a participant
-$res = dbi_query ( "SELECT cal_category, cal_status FROM webcal_entry_user " .
+$res = dbi_query ( "SELECT  cal_status FROM webcal_entry_user " .
   "WHERE cal_id = $id AND cal_login = '$login'" );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
-    if ( $row[1] == "D" ) // User deleted themself
+    if ( $row[0] == "D" ) // User deleted themself
       $error = translate("You are not authorized") . ".";
-    $cur_cat = $row[0];
   } else {
     // not a participant for this event
     $error = translate("You are not authorized") . ".";
@@ -27,7 +26,46 @@ if ( $res ) {
 } else {
   $error = translate("Database error") . ": " . dbi_error ();
 }
+ 
+$cat_id = getPostValue ('cat_id');
+$cat_ids = array();
+$cat_name = array();
 
+//get user's categories for this event
+$sql = "SELECT  DISTINCT cal_login, webcal_entry_categories.cat_id, " .
+ " webcal_entry_categories.cat_owner, cat_name " .
+ " FROM webcal_entry_user, webcal_entry_categories, webcal_categories " .
+ " WHERE ( webcal_entry_user.cal_id = webcal_entry_categories.cal_id AND " .
+ " webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
+ " webcal_entry_user.cal_id = $id ) AND " . 
+ " webcal_categories.cat_owner = '" . $login . "'".
+ " ORDER BY webcal_entry_categories.cat_order";
+$res = dbi_query ( $sql );
+if ( $res ) {
+ while ( $row = dbi_fetch_row ( $res ) ) {
+   $cat_ids[] = $row[1];
+   $cat_name[] = $row[3];    
+ }
+ dbi_free_result ( $res );
+}
+//get global categories
+$globals_found = false;
+$sql = "SELECT  webcal_entry_categories.cat_id, cat_name " .
+  " FROM webcal_entry_categories, webcal_categories " .
+  " WHERE webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
+  " webcal_entry_categories.cal_id = $id  AND " . 
+  " webcal_categories.cat_owner IS NULL ";
+$res = dbi_query ( $sql );
+if ( $res ) {
+ while ( $row = dbi_fetch_row ( $res ) ) {
+   $cat_ids[] = "-" .$row[0];
+   $cat_name[] = $row[1] . "*";  
+   $globals_found = true;  
+ }
+ dbi_free_result ( $res );
+}
+if ( ! empty ( $cat_name ) ) $catNames = implode(", " , array_unique($cat_name));
+if ( ! empty ( $cat_ids ) ) $catList = implode(", ", array_unique($cat_ids));
 // Get event name and make sure event exists
 $event_name = "";
 $res = dbi_query ( "SELECT cal_name FROM webcal_entry " .
@@ -39,15 +77,35 @@ if ( $res ) {
     // No such event
     $error = translate("Invalid entry id") . ".";
   }
+  dbi_free_result ( $res );
 } else {
   $error = translate("Database error") . ": " . dbi_error ();
 }
 
 // If this is the form handler, then save now
 if ( ! empty ( $cat_id ) && empty ( $error ) ) {
-  $sql = "UPDATE webcal_entry_user SET cal_category = $cat_id " .
-    "WHERE cal_id = $id and cal_login = '$login'";
-  if ( ! dbi_query ( $sql ) ) {
+ dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
+    "AND ( cat_owner = '$login' )" );
+ $categories = explode (",", $cat_id );
+
+ for ( $i =0; $i < count( $categories ); $i++ ) {
+   //don't process Global Categories
+   if ( $categories[$i] > 0 ) {
+   $names = array();
+   $values = array(); 
+   $names[] = 'cal_id';
+   $values[]  = $id; 
+   $names[] = 'cat_id';
+   $values[]  = abs($categories[$i]);
+   $names[] = 'cat_order';
+   $values[]  = ($i +1);
+   $names[] = 'cat_owner';
+   $values[]  = "'$login'"; 
+   $sql = "INSERT INTO webcal_entry_categories ( " . implode ( ", ", $names ) .
+     " ) VALUES ( " . implode ( ", ", $values ) . " )";
+   } 
+ }  
+ if ( ! dbi_query ( $sql ) ) {
     $error = translate ( "Database error" ) . ": " . dbi_error ();
   } else {
     $url = "view_entry.php?id=$id";
@@ -56,8 +114,8 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
     do_redirect ( $url );
   }
 }
-
-print_header();
+$INC = array('js/set_entry_cat.php');
+print_header($INC);
 ?>
 
 <?php if ( ! empty ( $error ) ) { ?>
@@ -69,32 +127,30 @@ print_header();
 <?php } else { ?>
 <h2><?php etranslate("Set Category")?></h2>
 
-<form action="set_entry_cat.php" method="post" name="SelectCategory">
+<form action="set_entry_cat.php" method="post" name="selectcategory">
 
 <input type="hidden" name="date" value="<?php echo $date?>" />
 <input type="hidden" name="id" value="<?php echo $id?>" />
 
-<table style="border-width:0px;" cellpadding="5">
+<table border="0" cellpadding="5">
 <tr style="vertical-align:top;"><td style="font-weight:bold;">
-	<?php etranslate("Brief Description")?>:</td><td>
-	<?php echo $event_name; ?>
+ <?php etranslate("Brief Description")?>:</td><td>
+ <?php echo $event_name; ?>
 </td></tr>
-<tr style="vertical-align:top;"><td style="font-weight:bold;">
-	<?php etranslate("Category")?>:&nbsp;</td><td>
-	<select name="cat_id">
-		<option value="NULL"><?php etranslate("None")?></option>
-  <?php
-    foreach ( $categories as $K => $V ) {
-      if ( $K == $cur_cat )
-        echo "<option value=\"$K\" selected=\"selected\">$V</option>\n";
-      else
-        echo "<option value=\"$K\">$V</option>\n";
-    }
-  ?>
-	</select>
-</td></tr>
+     <tr><td class="tooltip" title="<?php etooltip("category-help")?>" valign="top">
+      <label for="entry_categories"><?php etranslate("Category")?>:<br /></label>
+   <input type="button" value="Edit" onClick="editCats(event)" /></td><td valign="top">
+      <input  readonly=""type="text" name="catnames" 
+     value="<?php echo $catNames ?>"  size="75" 
+    onClick="alert('<?php etranslate("Use the Edit button to make changes.") ?>')"/><br />
+    <?php if ( $globals_found) echo "*" . translate("Global Categories can not be changed")?>
+   <input  type="hidden" name="cat_id" id="entry_categories" value="<?php echo $catList ?>" />
+     </td></tr>
+  <tr><td colspan="2">
+    
+  </td></tr>
 <tr style="vertical-align:top;"><td colspan="2">
-	<input type="submit" value="<?php etranslate("Save");?>" />
+ <input type="submit" value="<?php etranslate("Save");?>" />
 </td></tr>
 </table>
 </form>

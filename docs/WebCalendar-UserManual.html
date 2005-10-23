@@ -65,7 +65,7 @@
 <body>
 <h1>WebCalendar User Manual</h1>
 
-<p><strong>WebCalendar Version:</strong> 0.9.45</p><br />
+<p><strong>WebCalendar Version: 1.1</strong></p>
 
 <h2>Table of Contents</h2>
 <ul><li>
@@ -163,8 +163,19 @@ automatically set to "Approved."</p>
 <h2><a name="repeat">Repeating Events</a></h2>
 
 <p>Repeating events may be used to create recurring event entries
-on your calendar. You may select an end date so that the event stops 
-recurring on the specified date. The "Frequency" field allows you to 
+on your calendar. This version of WebCalendar has adding many new features for
+specifying repeating events in an attempt to become more compliant with RFC2445 (ical).
+There are two mode of operation, <strong>Normal</strong> and <strong>Expert Mode</strong>.
+These modes are selectable when creating and event, but will be automatically selected based 
+on the values of existing events. Please refer to <a href="http://www.ietf.org/rfc/rfc2445.txt">
+RFC2445</a> for a detailed discussion of complex recurrence rules.</p>
+
+<h3>Ending</h3>
+<p>You may elect to have an event repeat <strong>Forever</strong>, <strong>Use end date</strong> or
+have the event repeat a set <strong>Number of times</strong>.</p>
+
+<h3>Frequency</h3>
+<p>The "Frequency" field allows you to 
 specify how often the event occurs. Typing "0" or "1" in the "Frequency" 
 field tells WebCalendar the event occurs every time (every day for daily, 
 every month for monthly, etc.). Typing "2" in the "Frequency" field will 
@@ -173,41 +184,74 @@ daily, every other month for monthly, etc.).</p>
 
 <h3>Daily</h3>
 <p>If you select "Daily", the event will repeat at the same time
-every day until the end date (if specified).</p>
+every day until the end date (if specified) or the <em>Number of times</em> is reached. You can also
+select <em>Weekdays  Only</em> to cause the event to skip weekends.<br />
+<strong>Expert Mode:</strong> Adds the option to specify individual days of the week (<em>ByDay</em>) as
+well as selecting specific months (<em>ByMonth</em>) that the event will repeat.</p>
 
 <h3>Weekly</h3>
 <p>If you select "Weekly", the event will repeat every week on the day(s) 
-selected until the end date (if specified). You <strong>must</strong> 
-select days in the "Repeat Days" section when using repeat "Weekly".</p>
+selected until the end date (if specified) or until the . You may select specific ByDay values to 
+have your event repeat more than one day per week.<br />
+<strong>Expert Mode:</strong> Adds the option to specify specific months (<em>ByMonth</em>) that 
+the event will repeat.</p>
 
 <h3>Monthly (by day)</h3>
 <p>If you select "Monthly (by day)", the event will repeat on the same
-weekday of the month every month until the end date (if specified).
+weekday of the month every month until the specified <em>End</em>.
 For example, if the initial date is the second Monday of the month,
-the event will repeat on the second Monday of each month.</p>
+the event will repeat on the second Monday of each month.<br />
+<strong>Expert Mode:</strong> Adds the option to specify individual days of the month (<em>ByDay</em>) as
+well as selecting specific months that the event will repeat. You have the option to select any
+combination of days within the month using the triple-state buttons, for example, you 
+could select the the 1st Sunday (1SA), 3rd Thursday (3TH), and 5th Friday (5FR) of the month. 
+You can also select days from the end of the month, for example -2SA would be the next to 
+the last Saturday of the month. Any value that doesn't exist within the month will be ignored, 
+like in the example above, not every month has a fifth Friday. In addition, specific months (<em>ByMonth</em>) 
+within the year can be specified.</p>
 
-<p><span class="tip">TIP:</span> This feature can be used to handle 
-complicated repeating events like Thanksgiving, which is the fourth 
-Thursday in November. Just add an event called "Thanksgiving" and 
-set the initial date to when Thanksgiving occurs this year. Then enter 
-"12" for the "Frequency". This tells WebCalendar to repeat the event 
-every 12 months on the fourth Thursday of November.</p>
 
 <h3>Monthly (by day (from end))</h3>
-<p>If you select "Monthly (by day (from end))", the event will repeat
-on the same weekday of the month (counting back from the end of the month).
-For example, if the initial date is the last Friday of the month,
-the event will occur on the last Friday of each month.</p>
+<p>This option is no longer valid, as it is now rolled into Monthly ( by Day) using negative 
+day (<em>ByDay</em>) values.</p>
 
 <h3>Monthly (by date)</h3>
 <p>If you select "Monthly (by date)", the event will repeat on the
-same date of the month every month until the end date (if specified). 
+same date of the month every month until the <em>End</em>. 
 For example, if you the initial date is May 12th, then the event
-will repeat on June 12th and so on.</p>
+will repeat on June 12th and so on.<br />
+<strong>Expert Mode:</strong> Adds the options to select days of the week (<em>ByDay</em>), 
+specific months <em>ByMonthDay</em> to repeat and an option to select specific dates within the
+month (<em>ByMonthDay</em>). With this option you can select any combination of dates within
+the month, for example, the 3rd of each month (3), the 31st (31), the second from the end of the month
+(-2) using the triple-state buttons. </p>
+
+<h3>Monthly (by position)</h3>
+<p>If you select "Monthly (by position)", the event repeats will be calculated for the month
+using the <em>End</em> and <em>ByDay</em>, then the option (<em>BySetPos</em>) will be applied.
+For example, if you selected MO,TU,WE the normal habit would be to repeat every Monday, Tuesday, 
+and Wednesday within the month. Specifying (<em>BySetPos</em>) 7 would narrow the final selection
+to the 7th element of the original set of dates. It's sounds confusing I know...just try programming it :)<br />
+<strong>Expert Mode:</strong> Adds the option to specify specific months to repeat. Please note that 
+(<em>BySetPos</em>) is applied after all other ByXXX values, so selecting (<em>ByMonth</em>) may yield unexpected
+results.</p>
 
 <h3>Yearly</h3>
 <p>If you select "Yearly", the event will repeat on the same date every 
-year until the end date (if specified).</p>
+year until the <em>End</em>.<br />
+<strong>Expert Mode:</strong> Adds the (ByDay), (ByMonth), and (ByMonthDay) as described above. 
+These settings are applied to each month specified by the (ByMonth)...basically like the Monthly 
+(by Day/Date) options. Also, two user entered values are available. <em>ByWeekNo</em> allows one or
+more week numbers to be entered separated by commas (1,2...53,-53,-52...-1). <em>ByYearDay</em> 
+allows the user to enter days of the year to repeat separated by commas (1,2,...366,-366,-365...-1).</p>
+
+<p>Please Note: All ByXXX values are evaluated by ANDing the values together with the following precedence.
+ BYMONTH, BYWEEKNO, BYYEARDAY, BYMONTHDAY, BYDAY, and BYSETPOS
+
+<h3> Exclusions/Inclusions</h3>
+<p>This option allows the exclusion or inclusion of dates for the repeat sequence. This setting is applied
+after all ByXXX values are evaluated.</p>
+
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
@@ -216,7 +260,7 @@ year until the end date (if specified).</p>
 this section.</p>
 
 <p>Public Access is useful if you want to publish part of the calendar to 
-a larger userbase that isn't allowed to edit it.</p>
+a larger user base that isn't allowed to edit it.</p>
 
 <p>If Public Access is enabled, an extra user will show up when 
 creating a new event: the 'Public Access' user. To make an event visible 
@@ -287,11 +331,11 @@ on the same page.</p>
 <p>If your system is not configured to use categories, you may skip this 
 section.</p>
 
-<p>Events may be associated with a category, but it is not required.
+<p>Events may be associated with one or more categories, but it is not required.
 Categories can be user-level or global. Each user maintains his/her
 own list of user-level categories, while the system administrator
 maintains the list of global categories.</p>
-<p>When creating or editing event, you may specify the category for the event.
+<p>When creating or editing event, you may specify the categories for the event.
 If the category you select isn't a global category, and you select participants 
 other than yourself for that event, other users will see "None" as the category. 
 If you selected a global category, all users will be able to see the same category.</p>
@@ -388,9 +432,11 @@ be only the Boss.</p>
 <dt style="padding-left: 20px;">Language</dt>
 <dd>Specify the language you would like to use in WebCalendar</dd>
 
-<dt style="padding-left: 20px;">Timezone Offset</dt>
-<dd>Specify how your local time differs from the time where the WebCalendar server 
-is located</dd>
+<dt style="padding-left: 20px;">Timezone Selection</dt>
+<dd>Specify your local timezone.</dd>
+
+<dt style="padding-left: 20px;">Fonts</dt>
+<dd>Your preferred font family.</dd>
 
 <dt style="padding-left: 20px;">Preferred View</dt>
 <dd>Select the view you wish to see after logging in. Available options 
@@ -399,6 +445,9 @@ include day view, week view, month view, or year view.</dd>
 <dt style="padding-left: 20px;">Display weekends in view</dt>
 <dd>Specify whether you want Saturdays and Sundays to appear in month and 
 week views, as well as in mini-calendars.</dd>
+
+<dt style="padding-left: 20px;"> Display description in printer day view</dt>
+<dd>Specify whether you want to see descriptions in printer day view.</dd>
 
 <dt style="padding-left: 20px;">Date format</dt>
 <dd>Specify how you would like dates to be displayed</dd>
@@ -430,6 +479,22 @@ yet approved should display on your calendar (in a different color)</dd>
 <dt style="padding-left: 20px;">Work hours</dt>
 <dd>Specify the default time range to display in day and week views</dd>
 
+<dt style="padding-left: 20px;">Specify timed event length by</dt>
+<dd>Specify the preferred event end time format, Duration or End Time.</dd>
+
+<dt style="padding-left: 20px;">Display small task list</dt>
+<dd>Specify whether small Tasks windows are visible in calendars.</dd>
+
+<dt style="padding-left: 20px;">Display tasks in Calendars</dt>
+<dd>Specify whether Tasks are displayed in-line with events. The task will
+be displayed on the due date. If the due date has passed without task
+completion, the task will move to the current day until completed.</dd>
+
+<dt style="padding-left: 20px;">Export VTIMEZONE in ics files</dt>
+<dd>Specify whether VTIMEZONE elements are exported with ics files. This can
+have a negative impact on performance, so it's recommended that this option
+only be enabled if needed.</dd>
+
 <dt style="padding-left: 20px;">Default Category</dt>
 <dd>Specify the default category that should be selected when adding a new event</dd>
 </dl>
@@ -437,8 +502,7 @@ yet approved should display on your calendar (in a different color)</dd>
 <h3>Email</h3>
 <dl>
 <dt style="padding-left: 20px;">Event reminders</dt>
-<dd>Specify if you wish to receive an email reminder for events that specify a 
-reminder should be sent</dd>
+<dd>Specify if you wish to receive an email reminder for events that specify a reminder should be sent</dd>
 
 <dt style="padding-left: 20px;">Events added to my calendar</dt>
 <dd>Specify if you wish to receive email when another user adds an event to your calendar</dd>
@@ -464,7 +528,26 @@ event to your calendar</dd>
 
 <dt style="padding-left: 20px;">I want to approve events</dt>
 <dd>Specify if you want to approve events added by any or your assistants</dd>
+
+<dt style="padding-left: 20px;">Display if created by Assistant</dt>
+<dd>If enabled, the 'Created By' field in view_entry and view_task will
+include assistant's name in addition to the Boss' name.</dd>
 </dl>
+
+<h3>Subscribe/Publish</h3>
+<dl>
+<dt style="padding-left: 20px;">Allow remote subscriptions</dt>
+<dd>If enabled, allows users to publish their calendars out to an external
+Calendar client such as Sunbird or Apple Ical using the URL displayed.</dd>
+
+<dt style="padding-left: 20px;">Allow remote publishing</dt>
+<dd>If enabled, allows users to two-way synchronize their calendars with an external Calendar client such as Sunbird or Apple Ical using the URL displayed. </dd>
+
+<dt style="padding-left: 20px;">Enable FreeBusy publishing</dt>
+<dd>If enabled, allows users to publish their FreeBusy schedule using the 
+URL displayed.</dd>
+</dl>
+
 
 <h3>Colors</h3>
 <dl>
@@ -499,10 +582,6 @@ event to your calendar</dd>
 	<dd>Export support is available for Palm and anything that supports 
 	iCal or vCal. Use the "Export" link at the bottom of each page.</dd>
 
-	<dt>I added a weekly repeating event. Why isn't it showing up?</dt>
-	<dd>Be sure to select the weekdays (Sunday,  Monday, etc.) that you want 
-	the event to repeat on. If you don't select at least one, the event will 
-	not repeat.</dd>
 
 	<dt>Why can't I edit an event that another user added to my calendar?</dt>
 	<dd>If another user adds an event to your calendar, you cannot 

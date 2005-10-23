@@ -18,7 +18,7 @@
  * TODO:
  * Change all references from postgresql to pgsql
  */
-
+$show_all_errors = true;
 
 include_once '../includes/php-dbi.php';
 include_once '../includes/config.php';
@@ -31,6 +31,8 @@ $file = "../includes/settings.php";
 $fileDir = "../includes";
 $basedir = "..";
 
+//change this path if needed
+$firebird_path = 'c:/progra~1/firebird/firebird_1_5/examples/employee.fdb';
 
 clearstatcache();
 
@@ -56,30 +58,34 @@ $lang_file = "translations/" . $lang . ".txt";
 
 // Get value from POST form
 function getPostValue ( $name ) {
-  if ( ! empty ( $_POST[$name] ) ) {
+  global $HTTP_POST_VARS;
+
+  if ( isset ( $_POST ) && is_array ( $_POST ) && ! empty ( $_POST[$name] ) ) {
+  $_POST[$name] = ( get_magic_quotes_gpc () != 0? $_POST[$name]: addslashes ( $_POST[$name]) );
+   $HTTP_POST_VARS[$name] = $_POST[$name];
     return $_POST[$name];
-  }
-  if ( ! isset ( $HTTP_POST_VARS ) ) {
+  } else if ( ! isset ( $HTTP_POST_VARS ) ) {
     return null;
-  }
-  if ( ! isset ( $HTTP_POST_VARS[$name] ) ) {
+  } else if ( ! isset ( $HTTP_POST_VARS[$name] ) ) {
     return null;
-  }
+ }
   return ( $HTTP_POST_VARS[$name] );
 }
 
 
 // Get value from GET form
 function getGetValue ( $name ) {
-  if ( ! empty ( $_GET[$name] ) ) {
-    return $_GET[$name];
-  }
-  if ( ! isset ( $HTTP_GET_VARS ) ) {
+  global $HTTP_GET_VARS;
+
+  if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) ) {
+  $_GET[$name] = ( get_magic_quotes_gpc () != 0? $_GET[$name]: addslashes ( $_GET[$name]) );
+    $HTTP_GET_VARS[$name] = $_GET[$name];
+  return $_GET[$name];
+  } else if ( ! isset ( $HTTP_GET_VARS ) ) {
     return null;
-  }
-  if ( ! isset ( $HTTP_GET_VARS[$name] ) ) {
+  } else if ( ! isset ( $HTTP_GET_VARS[$name] ) ){
     return null;
-  }
+ }
   return ( $HTTP_GET_VARS[$name] );
 }
 
@@ -90,6 +96,7 @@ function get_php_setting ( $val ) {
   else
     return 'OFF';
 }
+
 
 function get_php_modules ( $val ) {
   $setting = function_exists ( $val );
@@ -102,13 +109,19 @@ function get_php_modules ( $val ) {
 // We will generate many errors while trying to test database
 // Disable them temporarily as needed
 function show_errors ( $error_val=0 ) {
-  if ( empty ( $_SESSION['error_reporting'] ) )
-    $_SESSION['error_reporting'] = get_php_setting ( 'error_reporting' );
-  ini_set ( "error_reporting", ( $error_val? $_SESSION['error_reporting'] :64) );
+  global $show_all_errors;
+  
+	if ( empty ( $_SESSION['error_reporting'] ) )
+    $_SESSION['error_reporting'] = get_php_setting ( 'error_reporting' );	
+  if ( $show_all_errors == true ) {
+	  ini_set ( "error_reporting", 64 );
+	} else {
+    ini_set ( "error_reporting", ( $error_val? $_SESSION['error_reporting'] :64) );
+	}
 }
 
 function get_installed_version () {
- global $database_upgrade_matrix;
+ global $database_upgrade_matrix, $show_all_errors;
  
   //disable warnings
  show_errors ();
@@ -132,7 +145,7 @@ function get_installed_version () {
  if ( $_SESSION['old_program_version'] == "pre-v0.9.07" ) {
    $response_msg = translate ( "Your previous version of WebCalendar requires running a PERL script " .
     "to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page " .
-   "to continue" ) .  ".";
+    "to continue" ) .  ".";
  } else {
    $response_msg = translate ( "Your previous version of WebCalendar requires updating several " .
     "database tables" ) . "."; 
@@ -141,7 +154,7 @@ function get_installed_version () {
  //Not sure if this will work well for CVS code
  //We'll bypass this for now
 // $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-//  "WHERE cal_setting  = 'webcal_program_version'", false, false );
+//  "WHERE cal_setting  = 'WEBCAL_PROGRAM_VERSION'", false, false );
 // if ( $res ) {
 //   $row = dbi_fetch_row ( $res );
 //  if ( ! empty ( $row[0] ) ) {  
@@ -158,7 +171,10 @@ function get_installed_version () {
    $row = dbi_fetch_row ( $res );
   if ( isset ( $row[0] ) && $row[0] == 0 ) {  
     $_SESSION['blank_database'] = true;
-  }
+  } else {
+	  //make sure all existing values in config and pref tables are UPPERCASE
+	  make_uppercase ();
+	}
   dbi_free_result ( $res );
  }
  // Determine if old data has been converted to GMT
@@ -178,7 +194,7 @@ function get_installed_version () {
  // We could use the self-discvery value, but this 
  // may be a custom value
  $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-  "WHERE cal_setting  = 'server_url'", false, false);
+  "WHERE cal_setting  = 'SERVER_URL'", false, false);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( ! empty ( $row[0] ) && strlen ( $row[0] ) ) {
@@ -188,7 +204,7 @@ function get_installed_version () {
  }
  // Get existing application name
  $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-  "WHERE cal_setting  = 'application_name'", false, false);
+  "WHERE cal_setting  = 'APPLICATION_NAME'", false, false);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( ! empty ( $row[0] ) ) {
@@ -198,7 +214,7 @@ function get_installed_version () {
  }
  //enable warnings
  show_errors ( true );
-}
+} // end get_installed_version 
 
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
@@ -241,11 +257,11 @@ if ( ! isset ( $_SESSION['server_url'] ) ) {
       $ptr = strpos ( $_SERVER['REQUEST_URI'], "/", 2 );
       if ( $ptr > 0 ) {
         $uri = substr ( $_SERVER['REQUEST_URI'], 0, $ptr + 1 );
-        $server_url = "http://" . $_SERVER['HTTP_HOST'];
+        $SERVER_URL = "http://" . $_SERVER['HTTP_HOST'];
         if ( ! empty ( $_SERVER['SERVER_PORT'] ) && $_SERVER['SERVER_PORT'] != 80 )
-          $server_url .= ":" . $_SERVER['SERVER_PORT'];
-        $server_url .= $uri;
-        $_SESSION['server_url'] = $server_url;
+          $SERVER_URL .= ":" . $_SERVER['SERVER_PORT'];
+        $SERVER_URL .= $uri;
+        $_SESSION['server_url'] = $SERVER_URL;
       }
     }
 }
@@ -274,7 +290,7 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
       <html><head><title>Password Accepted</title>
       <meta http-equiv="refresh" content="0; index.php" />
       </head>
-      <body onload="alert('Successful Login');">
+      <body onLoad="alert('Successful Login');">
       </body></html>
 <?php
     exit;
@@ -285,7 +301,7 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
       <html><head><title>Password Incorrect</title>
       <meta http-equiv="refresh" content="0; index.php" />
       </head>
-      <body onload="alert ('<?php etranslate ( "Invalid Login" ) ?>'); document.go(-1)">
+      <body onLoad="alert ('<?php etranslate ( "Invalid Login" ) ?>'); document.go(-1)">
       </body></html>
 <?php
     exit;
@@ -296,12 +312,20 @@ $php_settings = array (
   array ('Safe Mode','safe_mode','OFF'),
   array ('Magic Quotes GPC','magic_quotes_gpc','ON'),
   array ('Display Errors','display_errors','ON'),
-  array ('File Uploads','file_uploads','ON'),
+  array ('File Uploads','file_uploads','ON')	
 );
 //Add 'Register Long Arrays' only if php 5.0 
 if ( floor ( phpversion () ) == 5 ) {
   array_push ( $php_settings, array ('Register Long Arrays','register_long_arrays','ON') );
 }
+
+// set up array to test for some constants (display name, constant name, preferred value )
+$php_constants = array (
+  array ('CRYPT_MD5',CRYPT_MD5, 1) );
+	//future expansion
+  // array ('CRYPT_STD_DES',CRYPT_STD_DES, 1)
+  // array ('CRYPT_EXT_DES',CRYPT_EXT_DES, 1)
+  // array ('CRYPT_BLOWFISH',CRYPT_BLOWFISH, 1)
 
 $gdstring = "GD  (" . translate ( "needed for Gradient Image Backgrounds" ) . ")";
 $php_modules = array (
@@ -329,7 +353,7 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
     <html><head><title>Password Updated</title>
     <meta http-equiv="refresh" content="0; index.php" />
     </head>
-    <body onload="alert('Password has been set');">
+    <body onLoad="alert('Password has been set');">
     </body></html>
   <?php
   exit;
@@ -408,15 +432,14 @@ function parse_sql($sql) {
  return($ret);
 }
 
-function db_populate ( $install_file, $display_sql ) {
+function db_populate ( $install_filename, $display_sql ) {
   global $str_parsed_sql;
-  if ( $install_file == "" ) return;
+  if ( $install_filename == "" ) return;
  $full_sql = "";
  $magic = @get_magic_quotes_runtime();
  @set_magic_quotes_runtime(0);
- $fd = @fopen ( "sql/" . $install_file, "r", false);
-  //discard everything up to the required point in the upgrade file 
-
+ $fd = @fopen ( "sql/" . $install_filename, "r", false);
+ //discard everything up to the required point in the upgrade file 
  while (!feof($fd) && empty ( $current_pointer ) ) {
     $data = fgets($fd, 4096);
   $data = trim ( $data, "\r\n " );
@@ -446,6 +469,7 @@ function db_populate ( $install_file, $display_sql ) {
  $str_parsed_sql = "";
   for ( $i = 0; $i < count($parsed_sql); $i++ ) {
     if ( empty ( $display_sql ) ){ 
+		if ( $show_all_errors == true ) echo $parsed_sql[$i] . "<br />";
       dbi_query ( $parsed_sql[$i] );   
   } else {
     $str_parsed_sql .= $parsed_sql[$i] . "\n\n";
@@ -454,7 +478,7 @@ function db_populate ( $install_file, $display_sql ) {
  //echo "PARSED SQL " .  $str_parsed_sql;
  //enable warnings
  show_errors ( true );
-}
+} //end db_populate
 
 // We're doing a database installation yea ha!
 if ( ! empty ( $action ) &&  $action == "install" ){
@@ -474,43 +498,44 @@ if ( ! empty ( $action ) &&  $action == "install" ){
   // It's possible that the tables were created manually
   // and we just want to do the database population routines
   if ( $c && isset ( $_SESSION['install_file'] )  ) {
-   $install_file = ( $_SESSION['install_file'] == "tables"? "tables":"upgrade");
+	  $sess_install = $_SESSION['install_file'];
+    $install_filename = ( $sess_install == "tables" ? "tables":"upgrade");
     switch ( $db_type ) {
        case "mysql";
-      $install_file .= "-mysql.sql";    
+      $install_filename .= "-mysql.sql";    
         break;
        case "mysqli";
-      $install_file .= "-mysql.sql";    
+      $install_filename .= "-mysql.sql";    
         break;      
        case "mssql";
-      $install_file .="-mssql.sql";    
+      $install_filename .="-mssql.sql";    
         break;
      case "oracle";
-      $install_file .= "-oracle.sql";    
+      $install_filename .= "-oracle.sql";    
       break;
        case "ibase";
-      $install_file .= "-ibase.sql";    
+      $install_filename .= "-ibase.sql";    
         break;
        case "postgresql";
-      $install_file .= "-postgres.sql";    
+      $install_filename .= "-postgres.sql";    
         break;
      case "odbc";
        $underlying_db = "-" . $_SESSION['odbc_db'] . ".sql";
-      $install_file .= $underlying_db;        
+      $install_filename .= $underlying_db;        
       break;
      case "sqlite";
        include_once "sql/tables-sqlite.php";
       populate_sqlite_db ( $db_database, $c );
-      $install_file =  "";      
+      $install_filename =  "";      
       break;      
      default; 
     }
-     db_populate ( $install_file , $display_sql );
+     db_populate ( $install_filename , $display_sql );
   }
   if ( empty ( $display_sql ) ){
    //Convert passwords to md5 hashes if needed
    $sql = "SELECT cal_login, cal_passwd FROM webcal_user";
-   $res = dbi_query ( $sql, false, false );
+   $res = dbi_query ( $sql, false, $show_all_errors );
    if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
      if ( strlen ( $row[1] ) < 30 ) {
@@ -538,13 +563,19 @@ if ( ! empty ( $action ) &&  $action == "install" ){
     convert_server_to_GMT ( 0 );
    }
    
+	 //for upgrade to v1.1b we need to convert existing categories 
+	 //and repeating events
+	 do_v11b_updates();
+	 
+	
    // Update the version info
    get_installed_version();
    
    $_SESSION['blank_database'] = "";
   } //end if $display_sql
   
-}
+} //end database installation
+
 //Set the value of the underlying database for ODBC connections
 if ( ! empty ( $action ) &&  $action == "set_odbc_db" ){
  $_SESSION['odbc_db'] = getPostValue("odbc_db");
@@ -596,7 +627,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
      $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1');
    } else if ( $db_type == "ibase"  ) {
     //TODO figure out how to remove this hardcoded link
-     $c = dbi_connect ( $db_host, $db_login, $db_password , 'c:/progra~1/firebird/firebird_1_5/examples/employee.fdb');
+     $c = dbi_connect ( $db_host, $db_login, $db_password , $firebird_path);
       } //TODO Code remaining database types
    if ( $c ) { // credentials are valid, but database doesn't exist
       $response_msg = translate ( "Correct your entries or click the <b>Create New</b> button to continue installation" );
@@ -629,7 +660,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
   if ( $db_type == "mysql" ) {
       $c = dbi_connect ( $db_host, $db_login, $db_password, 'mysql' );
       if ( $c ) {
-     dbi_query ( "CREATE DATABASE $db_database;");
+     dbi_query ( "CREATE DATABASE $db_database;" , false, $show_all_errors);
     if ( ! @mysql_select_db ( $db_database ) ) {
       $response_msg = "<b>" . translate ( "Failure Reason" ) . 
      ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
@@ -645,7 +676,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
   } else if ( $db_type == "mssql" ) {
       $c = dbi_connect ( $db_host, $db_login, $db_password , 'master');
       if ( $c ) {
-     dbi_query ( "CREATE DATABASE $db_database;");
+     dbi_query ( "CREATE DATABASE $db_database;" , false, $show_all_errors);
     if ( ! @mssql_select_db ( $db_database ) ) {
       $response_msg = "<b>" . translate ( "Failure Reason" ) . 
      ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
@@ -662,7 +693,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
   } else if ( $db_type == "postgresql" ) {
    $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1'); 
       if ( $c ) {
-     dbi_query ( "CREATE DATABASE $db_database" , false, false);
+     dbi_query ( "CREATE DATABASE $db_database" , false, $show_all_errors);
      $_SESSION['db_noexist'] = false;
     } else {
       $response_msg = "<b>" . translate ( "Failure Reason" ) . 
@@ -678,7 +709,7 @@ if ( ! empty ( $action ) && $action == "tz_convert" && ! empty ( $_SESSION['vali
     $gmt_offset = getPostValue ( "gmt_offset" );
     $db_persistent = false;
     $db_type = $settings['db_type'];
-$db_host = $settings['db_host'];
+    $db_host = $settings['db_host'];
     $db_database = $settings['db_database'];
     $db_login = $settings['db_login'];
     $db_password = $settings['db_password'];
@@ -762,7 +793,7 @@ if ( empty ( $x ) ) {
   $settings['db_login'] = getPostValue ( 'form_db_login' );
   $settings['db_password'] = getPostValue ( 'form_db_password' );
   $settings['db_persistent'] = getPostValue ( 'form_db_persistent' );
- $settings['readonly'] = ( ! isset ( $settings['readonly'] )?'false': $settings['readonly']);
+  $settings['readonly'] = ( ! isset ( $settings['readonly'] )?'false': $settings['readonly']);
   $settings['user_inc'] = ( ! isset ( $settings['user_inc'] )? 'user.php': $settings['user_inc']);
   $settings['install_password'] = ( ! isset ( $settings['install_password'] )?'' :$settings['install_password']);
   $settings['single_user_login'] = ( ! isset ( $settings['single_user_login'] )? '': $settings['single_user_login']);
@@ -796,14 +827,14 @@ if ( ! empty ( $y ) ) {
     $settings['db_password'], $settings['db_database'] );
  if ( $c ) {
    if ( isset ( $_SESSION['application_name'] ) ) {
-     dbi_query ("DELETE FROM webcal_config WHERE cal_setting = 'application_name'");
+     dbi_query ("DELETE FROM webcal_config WHERE cal_setting = 'APPLICATION_NAME'");
     dbi_query ("INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-          "VALUES ('application_name', '" . $_SESSION['application_name'] . "')");
+          "VALUES ('APPLICATION_NAME', '" . $_SESSION['application_name'] . "')");
   }
    if ( isset ( $_SESSION['server_url'] ) ) {
-     dbi_query ("DELETE FROM webcal_config WHERE cal_setting = 'server_url'");
+     dbi_query ("DELETE FROM webcal_config WHERE cal_setting = 'SERVER_URL'");
     dbi_query ("INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-          "VALUES ('server_url', '" . $_SESSION['server_url'] . "')");
+          "VALUES ('SERVER_URL', '" . $_SESSION['server_url'] . "')");
   }
  }
  
@@ -1006,12 +1037,12 @@ doc.li {
 <a href="../docs/WebCalendar-SysAdmin.html#help" target="_docs">Getting Help</a>,
 <a href="../UPGRADING.html" target="_docs">Upgrading Guide</a>
 </td></tr>
-<tr><th class="header"  colspan="2"><?php etranslate ( "WebCalendar Version Check" ) ?></th></tr>
+<!--<tr><th class="header"  colspan="2"><?php etranslate ( "WebCalendar Version Check" ) ?></th></tr>
 <tr><td>
 <?php echo translate ( "This is version" ) . " " . $PROGRAM_VERSION . " "; ?>
 </td><td>
 <?php etranslate ( "The most recent version available is" ) ?> <img src="version.gif" />
-</td></tr>
+</td></tr> -->
 <tr><th class="header"  colspan="2"><?php etranslate ( "PHP Version Check" ) ?></th></tr>
 <tr><td>
 <?php etranslate ( "Check to see if PHP 4.1.0 or greater is installed" ) ?>. 
@@ -1025,13 +1056,13 @@ doc.li {
     } else {
  echo "<img src=\"not_recommended.jpg\" />&nbsp;";
     }
-    etranslate ( "PHP version") . " " . phpversion();
+    echo translate ( "PHP version") . " " . phpversion();
    ?>
 </td></tr>
 <tr><th class="header" colspan="2">
  PHP Settings
 <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
-  &nbsp;<input name="action" type="button" value="<?php etranslate ( "Detailed PHP Info" ) ?>" onclick="testPHPInfo()" />
+  &nbsp;<input name="action" type="button" value="<?php etranslate ( "Detailed PHP Info" ) ?>" onClick="testPHPInfo()" />
 <?php } ?>
 </th></tr>
 <?php foreach ( $php_settings as $setting ) { ?>
@@ -1040,7 +1071,7 @@ doc.li {
     $class = ( get_php_setting ( $setting[1] ) == $setting[2] ) ?
       'recommended' : 'notrecommended';
     echo "<td class=\"$class\">";
-    if ($class='recommended') {
+    if ($class == 'recommended') {
      echo "<img src=\"recommended.gif\" />&nbsp;";
     } else {
  echo "<img src=\"not_recommended.jpg\" />&nbsp;";
@@ -1049,13 +1080,28 @@ doc.li {
    ?>
    </td></tr>
 <?php } ?>
+<?php foreach ( $php_constants as $constant ) { ?>
+  <tr><td class="prompt"><?php echo $constant[0];?></td>
+  <?php
+    $class = (  $constant[1] ) == $constant[2]  ?
+      'recommended' : 'notrecommended';
+    echo "<td class=\"$class\">";
+    if ($class == 'recommended') {
+      echo "<img src=\"recommended.gif\" />&nbsp;ON";
+    } else {
+      echo "<img src=\"not_recommended.jpg\" />&nbsp;OFF";
+    }
+   ?>
+   </td></tr>
+<?php } ?>  
+
 <?php foreach ( $php_modules as $module ) { ?>
   <tr><td class="prompt"><?php echo $module[0];?></td>
   <?php
     $class = ( get_php_modules ( $module[1] ) == $module[2] ) ?
       'recommended' : 'notrecommended';
     echo "<td class=\"$class\">";
-    if ($class='recommended') {
+    if ($class == 'recommended') {
      echo "<img src=\"recommended.gif\" />&nbsp;";
     } else {
  echo "<img src=\"not_recommended.jpg\" />&nbsp;";
@@ -1231,7 +1277,7 @@ if ( ! $exists || ! $canWrite ) { ?>
   <tr><td rowspan="6" width="20%">&nbsp;
    </td><td class="prompt" width="25%" valign="bottom">
    <label for="db_type"><?php etranslate ( "Database Type" ) ?>:</label></td><td valign="bottom">
-   <select name="form_db_type" id="db_type" onchange="db_type_handler();">
+   <select name="form_db_type" id="db_type" onChange="db_type_handler();">
 <?php
   if ( ! empty ( $supported['mysql'] ) )
     echo "  <option value=\"mysql\" " .
@@ -1374,7 +1420,7 @@ if ( ! $exists || ! $canWrite ) { ?>
 <tr><td colspan="2" width="50%">
 <?php echo translate ( "In this section we will perform the required database changes to bring your database up to the required level" ) . " " .
   translate ( "If you are using a fully supported database, this step will be performed automatically for you" ) . " " . 
-  translate ( "If not, the required SQL can be displayed and you should be able" ) .
+  translate ( "If not, the required SQL can be displayed and you should be able" ) . " " .
   translate ( "to cut &amp; paste it into your database server query window" ) ?>.
 </td></tr>
 <tr><th colspan="2" class="header"><?php etranslate ( "Database Status" ) ?></th></tr>
@@ -1585,10 +1631,10 @@ if ( ! $exists || ! $canWrite ) { ?>
  <table width="80%"  align="center">
  <tr><td align="center">
   <?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  && empty ( $dologin ) ) { ?>
-  <input name="action" type="button" value="<?php etranslate ( "Save Settings" ) ?>" onclick="return validate();" />
+  <input name="action" type="button" value="<?php etranslate ( "Save Settings" ) ?>" onClick="return validate();" />
    <?php if ( ! empty ( $_SESSION['old_program_version'] ) && 
     $_SESSION['old_program_version'] == $PROGRAM_VERSION  && ! empty ( $setup_complete )) { ?>
-    <input type="button"  name="action2" value="<?php etranslate ( "Launch WebCalendar" ) ?>" onclick="window.open('../index.php', 'webcalendar');" />
+    <input type="button"  name="action2" value="<?php etranslate ( "Launch WebCalendar" ) ?>" onClick="window.open('../index.php', 'webcalendar');" />
    <?php } ?>
   <?php } ?>
   <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>

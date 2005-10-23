@@ -10,7 +10,7 @@ if ( empty ( $login) || $login == "__public__" ) {
 if ($user != $login)
   $user = (($is_admin || $is_nonuser_admin) && $user) ? $user : $login;
 
-if ( $groups_enabled == "Y" ) {
+if ( $GROUPS_ENABLED == "Y" ) {
   $INC = array('js/assistant_edit.php');
 } else {
   $INC = '';
@@ -33,8 +33,8 @@ print_header($INC);
 
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top;">
-	<label for="users"><?php etranslate("Assistants"); ?>:</label></td><td>
-	<select name="users[]" id="users" size="10" multiple="multiple">
+ <label for="users"><?php etranslate("Assistants"); ?>:</label></td><td>
+ <select name="users[]" id="users" size="10" multiple="multiple">
 <?php
   // get list of all users
   $users = get_my_users ();
@@ -60,7 +60,7 @@ print_header($INC);
 ?>
 </select>
 <?php
-if ( $groups_enabled == "Y" ) {
+if ( $GROUPS_ENABLED == "Y" ) {
   echo "<input type=\"button\" onclick=\"selectUsers()\" value=\"" .
     translate("Select") . "...\" />\n";
 }

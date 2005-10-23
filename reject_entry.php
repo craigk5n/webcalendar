@@ -8,7 +8,7 @@ if ( $readonly == 'Y' ) {
 }
 
 // Allow administrators to approve public events
-if ( $public_access == "Y" && ! empty ( $public ) && $is_admin )
+if ( $PUBLIC_ACCESS == "Y" && ! empty ( $public ) && $is_admin )
   $app_user = "__public__";
 else
   $app_user = ( $is_assistant || $is_nonuser_admin ? $user : $login );
@@ -82,9 +82,9 @@ if ( empty ( $error ) && $id > 0 ) {
     $user_TZ = get_tz_offset ( $user_TIMEZONE, '', $eventstart );
     $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
     if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
-      $send_email != "N" ) {
+      $SEND_EMAIL != "N" ) {
         if ( empty ( $user_language ) || ( $user_language == 'none' )) {
-          reset_language ( $GLOBALS['LANGUAGE'] );
+          reset_language ( $LANGUAGE );
         } else {
           reset_language ( $user_language );
         }
@@ -97,19 +97,19 @@ if ( empty ( $error ) && $id > 0 ) {
         ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate("Time") . ": " .
         // Display using user's GMT offset and display TZID
         display_time ( $fmtdate .  $eventstart, 2, '' , $user_TIMEZONE ) ) ). "\n\n\n";
-      if ( ! empty ( $server_url ) ) {
-        $url = $server_url .  "view_entry.php?id=" .  $id;
+      if ( ! empty ( $SERVER_URL ) ) {
+        $url = $SERVER_URL .  "view_entry.php?id=" .  $id;
         $msg .= "\n\n" . $url;
       }
 
-      $from = $email_fallback_from;
+      $from = $EMAIL_FALLBACK_FROM;
       if ( strlen ( $login_email ) )
         $from = $login_email;
 
       $extra_hdrs = "From: $from\r\nX-Mailer: " . translate("Title");
 
       mail ( $tempemail,
-        translate($application_name) . " " . translate("Notification") . ": " . $name,
+        translate($APPLICATION_NAME) . " " . translate("Notification") . ": " . $name,
         html_to_8bits ($msg), $extra_hdrs );
       activity_log ( $id, $login, $partlogin[$i], LOG_NOTIFICATION,
         "Event rejected by $app_user" );

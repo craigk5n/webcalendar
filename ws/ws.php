@@ -68,8 +68,8 @@ function ws_escape_xml ( $str )
 // Send a single event
 function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   global $site_extras, $WS_DEBUG,
-    $server_url, $application_name, $single_user, $single_user_login,
-    $disable_priority_field, $disable_participants_field ;
+    $SERVER_URL, $APPLICATION_NAME, $single_user, $single_user_login,
+    $DISABLE_PRIORITY_FIELD, $DISABLE_PARTICIPANTS_FIELD ;
 
   $pri[1] = translate("Low");
   $pri[2] = translate("Medium");
@@ -91,8 +91,8 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   // get external participants
   $ext_participants = array ();
   $num_ext_participants = 0;
-  if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" &&
-    ! empty ( $external_reminders ) && $external_reminders == "Y" ) {
+  if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == "Y" &&
+    ! empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == "Y" ) {
     $sql = "SELECT cal_fullname, cal_email FROM webcal_entry_ext_user " .
       "WHERE cal_id = $id AND cal_email IS NOT NULL " .
       "ORDER BY cal_fullname";
@@ -135,12 +135,12 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   $out = "<event>\n";
   $out .= "  <id>$id</id>\n";
   $out .= "  <name>" . ws_escape_xml ( $name ) . "</name>\n";
-  if ( ! empty ( $server_url ) ) {
-    if ( substr ( $server_url, -1, 1 ) == "/" ) {
-      $out .= "  <url>" .  $server_url . "view_entry.php?id=" .
+  if ( ! empty ( $SERVER_URL ) ) {
+    if ( substr ( $SERVER_URL, -1, 1 ) == "/" ) {
+      $out .= "  <url>" .  $SERVER_URL . "view_entry.php?id=" .
         $id . "</url>\n";
     } else {
-      $out .= "  <url>" .  $server_url . "/view_entry.php?id=" .
+      $out .= "  <url>" .  $SERVER_URL . "/view_entry.php?id=" .
         $id . "</url>\n";
     }
   }
@@ -155,9 +155,9 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   }
   if ( $row[5] > 0 )
     $out .= "  <duration>" . $row[5] . "</duration>\n";
-  if ( ! empty ( $disable_priority_field ) && $disable_priority_field == 'Y' )
+  if ( ! empty ( $DISABLE_PRIORITY_FIELD ) && $DISABLE_PRIORITY_FIELD == 'Y' )
     $out .= "  <priority>" . $pri[$row[6]] . "</priority>\n";
-  if ( ! empty ( $disable_access_field ) && $disable_access_field == 'Y' )
+  if ( ! empty ( $DISABLE_ACCESS_FIELD ) && $DISABLE_ACCESS_FIELD == 'Y' )
     $out .= "  <access>" . 
       ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) .
       "</access>\n";
@@ -200,7 +200,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   }
   if ( $se != '' )
     $out .= "  <siteExtras>\n" . $se . "  </siteExtras>\n";
-  if ( $single_user != "Y" && ! $disable_participants_field ) {
+  if ( $single_user != "Y" && ! $DISABLE_PARTICIPANTS_FIELD ) {
     $out .= "  <participants>\n";
     for ( $i = 0; $i < count ( $participants ); $i++ ) {
       $out .= "    <participant>" .  $participants[$i] .

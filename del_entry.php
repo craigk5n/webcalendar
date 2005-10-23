@@ -98,7 +98,7 @@ if ( $id > 0 && empty ( $error ) ) {
   // are the owner or an admin.
   if ( ( $is_admin || $my_event ) &&
     ( empty ( $user ) || $user == $login || $can_edit ) ) {
-		
+  
     // Email participants that the event was deleted
     // First, get list of participants (with status Approved or
     // Waiting on approval).
@@ -136,9 +136,9 @@ if ( $id > 0 && empty ( $error ) ) {
       user_load_variables ( $partlogin[$i], "temp" );         
       if ( ! $is_nonuser_admin && $partlogin[$i] != $login && $do_send == "Y" &&
         boss_must_be_notified ( $login, $partlogin[$i] ) && 
-        strlen ( $tempemail ) && $send_email != "N" ) {
+        strlen ( $tempemail ) && $SEND_EMAIL != "N" ) {
           if ( empty ( $user_language ) || ( $user_language == 'none' )) {
-             reset_language ( $GLOBALS['LANGUAGE'] );
+             reset_language ( $LANGUAGE );
           } else {
              reset_language ( $user_language );
           }
@@ -153,12 +153,12 @@ if ( $id > 0 && empty ( $error ) ) {
           $msg .= "\n\n";
         if ( strlen ( $login_email ) )
           $extra_hdrs = "From: $login_email\r\nX-Mailer: " .
-            translate($application_name);
+            translate($APPLICATION_NAME);
         else
-          $extra_hdrs = "From: $email_fallback_from\r\nX-Mailer: " .
-            translate($application_name);
+          $extra_hdrs = "From: $EMAIL_FALLBACK_FROM\r\nX-Mailer: " .
+            translate($APPLICATION_NAME);
         mail ( $tempemail,
-          translate($application_name) . " " .
+          translate($APPLICATION_NAME) . " " .
           translate("Notification") . ": " . $name,
           html_to_8bits ($msg), $extra_hdrs );
       }
@@ -168,8 +168,8 @@ if ( $id > 0 && empty ( $error ) ) {
     // by setting the status for each participant to "D" (instead
     // of "A"/Accepted, "W"/Waiting-on-approval or "R"/Rejected)
     if ( $override_repeat ) {
-      dbi_query ( "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date ) " .
-        "VALUES ( $id, $date )" );
+      dbi_query ( "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
+        "VALUES ( $id, $date, 1 )" );
       // Should we log this to the activity log???
     } else {
       // If it's a repeating event, delete any event exceptions

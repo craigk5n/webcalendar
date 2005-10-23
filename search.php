@@ -11,11 +11,11 @@ if ( $is_admin )
   $show_others = true;
 else if ( access_is_enabled () )
   $show_others = access_can_access_function ( ACCESS_ADVANCED_SEARCH );
-else if ( $login != '__public__' && ! empty ( $allow_view_other ) &&
-  $allow_view_other == 'Y' )
+else if ( $login != '__public__' && ! empty ( $ALLOW_VIEW_OTHER ) &&
+  $ALLOW_VIEW_OTHER == 'Y' )
   $show_others = true;
-else if ( $login == '__public__' && ! empty ( $public_access_others ) &&
-  $public_access_others == 'Y' )
+else if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
+  $PUBLIC_ACCESS_OTHERS == 'Y' )
   $show_others = true;
 
 if ( $show_others ) {
@@ -44,13 +44,13 @@ if ( ! $show_others ) {
     etranslate("Advanced Search");?></a></div>
 <table id="adv" style="display:none;">
 <tr><td style="vertical-align:top; text-align:right; font-weight:bold; width:60px;">
-	<?php etranslate("Users"); ?>:&nbsp;</td><td>
+ <?php etranslate("Users"); ?>:&nbsp;</td><td>
 <?php
   $users = get_my_users ();
   // Get non-user calendars (if enabled)
-  if ( ! empty ( $nonuser_enabled ) && $nonuser_enabled == "Y" ) {
+  if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" ) {
     $nonusers = get_nonuser_cals ();
-    if ( ! empty ( $nonuser_at_top ) && $nonuser_at_top == "Y" )
+    if ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == "Y" )
       $users = array_merge ( $nonusers, $users );
     else
       $users = array_merge ( $users, $nonusers );
@@ -72,7 +72,7 @@ if ( ! $show_others ) {
 ?>
 <select name="users[]" size="<?php echo $size;?>" multiple="multiple"><?php echo $out; ?></select>
 <?php 
-  if ( $groups_enabled == "Y" ) {
+  if ( $GROUPS_ENABLED == "Y" ) {
    echo "<input type=\"button\" onclick=\"selectUsers()\" value=\"" .
       translate("Select") . "...\" />\n";
   }

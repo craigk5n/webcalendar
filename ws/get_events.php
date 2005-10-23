@@ -35,7 +35,7 @@ $out = "<events>\n";
 
 // If login is public user, make sure public can view others...
 if ( $login == "__public__" && $login != $user ) {
-  if ( $public_access_others != 'Y' ) {
+  if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
     $out .= "<error>" . translate("Not authorized") . "</error>\n";
     $out .= "</events>\n";
     exit;
@@ -48,7 +48,7 @@ if ( empty ( $user ) )
 
 // If viewing different user then yourself...
 if ( $login != $user ) {
-  if ( $allow_view_other != 'Y' ) {
+  if ( $ALLOW_VIEW_OTHER != 'Y' ) {
     $out .= "<error>" . translate("Not authorized") . "</error>\n";
     $out .= "</events>\n";
     exit;

@@ -30,11 +30,11 @@ if ( $is_admin )
   $search_others = true;
 else if ( access_is_enabled () )
   $search_others = access_can_access_function ( ACCESS_ADVANCED_SEARCH );
-else if ( $login != '__public__' && ! empty ( $allow_view_other ) &&
-  $allow_view_other == 'Y' )
+else if ( $login != '__public__' && ! empty ( $ALLOW_VIEW_OTHER ) &&
+  $ALLOW_VIEW_OTHER == 'Y' )
   $search_others = true;
-else if ( $login == '__public__' && ! empty ( $public_access_others ) &&
-  $public_access_others == 'Y' )
+else if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
+  $PUBLIC_ACCESS_OTHERS == 'Y' )
   $search_others = true;
 
 if ( empty ( $users ) || empty ( $users[0] ) )
@@ -45,9 +45,9 @@ if ( empty ( $users ) || empty ( $users[0] ) )
 if ( $search_others ) {
   // If user can only see users in his group, then remove users not
   // in his group.
-  if ( ! empty ( $user_sees_only_his_groups ) && 
-    $user_sees_only_his_groups == 'Y'
-    && ! empty ( $groups_enabled ) && $groups_enabled == 'Y' ) {
+  if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) && 
+    $USER_SEES_ONLY_HIS_GROUPS == 'Y'
+    && ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' ) {
     $myusers = get_my_users ();
     $userlookup = array ();
     for ( $i = 0; $i < count ( $myusers ); $i++ ) {
@@ -108,7 +108,7 @@ if ( ! empty ( $error ) ) {
       // Don't search confidential entries of other users.
       $sql .= "AND ( webcal_entry_user.cal_login = '$login' OR " .
         "( webcal_entry_user.cal_login != '$login' AND " .
-	"webcal_entry.cal_access = 'P' ) ) ";
+ "webcal_entry.cal_access = 'P' ) ) ";
     }
     $sql .= "AND ( UPPER(webcal_entry.cal_name) " .
       "LIKE UPPER('%" .  $words[$i] . "%') " .

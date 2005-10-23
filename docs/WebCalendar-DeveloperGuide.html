@@ -99,9 +99,8 @@ h2 {
 <a name="intro"></a>
 <h2>Introduction</h2>
 
-<p>WebCalendar is written in PHP.  Although originally written
-  for PHP3, only PHP4 is officially supported.  (It should also
-  work on PHP5, but testing has not been completed yet.)
+<p>WebCalendar is written in PHP.  A minimum of PHP 4.0.1 is
+required to run WebCalendar due to the use of classes and sessions.
 </p>
 
 <div class="top"><a href="#" target="_top">top</a></div>
@@ -201,7 +200,10 @@ have not been 100% enforced, so you will see exceptions):</p>
 
     Classes should be defined in files contained in <tt>includes/classes/</tt>.
     Filenames should be of the form ClassName.class. There should only be one
-    class defined per file.
+    class defined per file.<br />
+		If incorporating a class from another project (i.e. phpMailer ), it is 
+		acceptable to use the original naming conventions and filenames. This will
+		allow for easy upgrading and help avoid any GNU license issues. 
   </dd>
 
   <dt>Method/Function Names</dt>
@@ -241,6 +243,15 @@ have not been 100% enforced, so you will see exceptions):</p>
     <ul class="example">
       <li>webcal_user_pref</li>
       <li>webcal_entry</li>
+    </ul>
+  </dd>
+	
+  <dt>Preference Value Names</dt>
+  <dd>These are variables stored in webcal_config and webcal_user_pref tables. 
+	Names should be in uppercase with words_separated_by_underscores. Examples:
+    <ul class="example">
+      <li>ALLOW_HTML_DESCRIPTION</li>
+      <li>DISABLE_ACCESS_FIELD</li>
     </ul>
   </dd>
 </dl>
@@ -430,12 +441,12 @@ quickly and efficiently.</p>
   WebCalendar development.</li>
   <li><a href="http://sourceforge.net/bugs/?group_id=3870">Bug Reports</a> on
   SourceForge.</li>
-  <li><a href="phpdoc/">WebCalendar Function Documentation</a></li>
+  <li><a href="WebCalendar-Functions.html">WebCalendar Function Documentation</a></li>
   <li><a
-    href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/webcalendar/webcalendar/docs/WebCalendar-Database.html?rev=HEAD&amp;content-type=text/html">WebCalendar-Database.html</a>
+    href="WebCalendar-Database.html">WebCalendar-Database.html</a>
   describes the WebCalendar database schema</li>
   <li><a
-    href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/webcalendar/webcalendar/docs/WebCalendar-Styling.html?rev=HEAD&amp;content-type=text/html">WebCalendar-Styling.html</a>
+    href="WebCalendar-Styling.html">WebCalendar-Styling.html</a>
   describes how WebCalendar uses CSS</li>
 </ul>
 

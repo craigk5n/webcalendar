@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 
 $error = "";
 
-if ( $allow_view_other != 'Y' ) {
+if ( $ALLOW_VIEW_OTHER != 'Y' ) {
   $error = translate("You are not authorized");
 }
 
@@ -11,7 +11,7 @@ if ( empty ( $dups ) )
   $dups = 'N';
 
 $updating_public = false;
-if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
   $updating_public = true;
   $layer_user = "__public__";
 } else {
@@ -53,8 +53,8 @@ if ( ! empty ( $layeruser ) && $error == "" ) {
       }
       dbi_query ( "INSERT INTO webcal_user_layers ( ".
         "cal_layerid, cal_login, cal_layeruser, cal_color, cal_dups ) " .
-	"VALUES ('$layerid', '$layer_user', '$layeruser', " .
-	"'$layercolor', '$dups')");
+ "VALUES ('$layerid', '$layer_user', '$layeruser', " .
+ "'$layercolor', '$dups')");
     }
   }
 }

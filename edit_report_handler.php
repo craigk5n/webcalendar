@@ -27,9 +27,9 @@
  *
  * Security:
  * Same as in edit_report.php...
- * If system setting $reports_enabled is set to anything other than
+ * If system setting $REPORTS_ENABLED is set to anything other than
  *   'Y', then don't allow access to this page.
- * If $allow_view_other is 'N', then do not allow selection of
+ * If $ALLOW_VIEW_OTHER is 'N', then do not allow selection of
  *   participants.
  * Can only delete/edit an event if you are the creator of the event
  *   or you are an admin user.
@@ -40,16 +40,16 @@ load_user_categories ();
 $error = "";
 $report_id = getIntValue ( "report_id", true );
 
-if ( empty ( $reports_enabled ) || $reports_enabled != 'Y' ) {
+if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' ) {
   $error = translate ( "You are not authorized" ) . ".";
 }
 
 $updating_public = false;
-if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
   $updating_public = true;
 }
 
-if ( $single_user == 'Y' || $disable_participants_field == 'Y' ) {
+if ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y' ) {
   $report_user = '';
 }
 

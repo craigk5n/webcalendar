@@ -3,15 +3,15 @@
  * $Id$
  *
  * Page Description:
- *	This page displays the views that the user currently owns and
-	* allows new ones to be created
+ * This page displays the views that the user currently owns and
+ * allows new ones to be created
  *
  * Input Parameters:
- *	id  - specify view id in webcal_view table
+ * id  - specify view id in webcal_view table
  * if blank, a new view is created
  *
  * Security:
- *	Must be owner of the viewto edit
+ * Must be owner of the viewto edit
  */
 include_once 'includes/init.php';
 
@@ -21,7 +21,7 @@ if ( ! $is_admin )
   $user = $login;
 
 $BodyX = 'onload="usermode_handler();"';
-if ( $groups_enabled == "Y" ) {
+if ( $GROUPS_ENABLED == "Y" ) {
   $INC = array('js/visible.php', 'js/views_edit.php' );
 } else {
   $INC = array( 'js/visible.php');
@@ -96,21 +96,21 @@ if ( $newview ) {
 
 <table style="border-width:0px;">
 <tr><td>
-	<label for="viewname"><?php etranslate("View Name")?>:</label></td><td>
-	<input name="viewname" id="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>" />
+ <label for="viewname"><?php etranslate("View Name")?>:</label></td><td>
+ <input name="viewname" id="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>" />
 </td></tr>
 <tr><td>
-	<label for="viewtype"><?php etranslate("View Type")?>:</label></td><td>
-	<select name="viewtype" id="viewtype">
-		<option value="D" <?php if ( $viewtype == "D" ) echo " selected=\"selected\"";?>><?php etranslate("Day"); ?></option>
-		<option value="E" <?php if ( $viewtype == "E" ) echo " selected=\"selected\"";?>><?php etranslate("Day by Time"); ?></option>
-		<option value="W" <?php if ( $viewtype == "W" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Users horizontal)"); ?></option>
-		<option value="R" <?php if ( $viewtype == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Week by Time"); ?></option>
-		<option value="V" <?php if ( $viewtype == "V" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Users vertical)"); ?></option>
-		<option value="S" <?php if ( $viewtype == "S" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Timebar)"); ?></option>
-		<option value="T" <?php if ( $viewtype == "T" ) echo " selected=\"selected\"";?>><?php etranslate("Month (Timebar)"); ?></option>
-		<option value="M" <?php if ( $viewtype == "M" ) echo " selected=\"selected\"";?>><?php etranslate("Month (side by side)"); ?></option>
-		<option value="L" <?php if ( $viewtype == "L" ) echo " selected=\"selected\"";?>><?php etranslate("Month (on same calendar)"); ?></option>
+ <label for="viewtype"><?php etranslate("View Type")?>:</label></td><td>
+ <select name="viewtype" id="viewtype">
+  <option value="D" <?php if ( $viewtype == "D" ) echo " selected=\"selected\"";?>><?php etranslate("Day"); ?></option>
+  <option value="E" <?php if ( $viewtype == "E" ) echo " selected=\"selected\"";?>><?php etranslate("Day by Time"); ?></option>
+  <option value="W" <?php if ( $viewtype == "W" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Users horizontal)"); ?></option>
+  <option value="R" <?php if ( $viewtype == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Week by Time"); ?></option>
+  <option value="V" <?php if ( $viewtype == "V" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Users vertical)"); ?></option>
+  <option value="S" <?php if ( $viewtype == "S" ) echo " selected=\"selected\"";?>><?php etranslate("Week (Timebar)"); ?></option>
+  <option value="T" <?php if ( $viewtype == "T" ) echo " selected=\"selected\"";?>><?php etranslate("Month (Timebar)"); ?></option>
+  <option value="M" <?php if ( $viewtype == "M" ) echo " selected=\"selected\"";?>><?php etranslate("Month (side by side)"); ?></option>
+  <option value="L" <?php if ( $viewtype == "L" ) echo " selected=\"selected\"";?>><?php etranslate("Month (on same calendar)"); ?></option>
       </select>&nbsp;
 <!--
   cek - commented out since preview-views.html is hard-coded to English
@@ -122,23 +122,23 @@ if ( $newview ) {
 
 <?php if ( $is_admin ) { ?>
 <tr><td><label>
-	<?php etranslate("Global")?>:</label></td><td>
-	<label><input type="radio" name="is_global" value="Y"
+ <?php etranslate("Global")?>:</label></td><td>
+ <label><input type="radio" name="is_global" value="Y"
   <?php if ( $viewisglobal != 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("Yes") ?></label>
   &nbsp;&nbsp;&nbsp;
-  	<label><input type="radio" name="is_global" value="N"
+   <label><input type="radio" name="is_global" value="N"
   <?php if ( $viewisglobal == 'N' ) echo " checked=\"checked\""; ?> />&nbsp;<?php etranslate("No") ?></label>
 </td></tr>
 <?php } ?>
 
 <tr><td valign="top">
-	<label for="viewusers"><?php etranslate("Users"); ?>:</label></td><td>
-	<label><input type="radio" name="viewuserall" value="N" onclick="usermode_handler()"<?php
+ <label for="viewusers"><?php etranslate("Users"); ?>:</label></td><td>
+ <label><input type="radio" name="viewuserall" value="N" onclick="usermode_handler()"<?php
   if ( ! $all_users ) {
     echo " checked=\"checked\"";
   }
 ?> /><?php etranslate("Selected");?></label>&nbsp;&nbsp;
-	<label><input type="radio" name="viewuserall" value="Y" onclick="usermode_handler()"<?php
+ <label><input type="radio" name="viewuserall" value="Y" onclick="usermode_handler()"<?php
   if ( $all_users ) {
     echo " checked=\"checked\"";
   }
@@ -146,13 +146,13 @@ if ( $newview ) {
 <br />
 <div id="viewuserlist">
 &nbsp;&nbsp;
-	<select name="users[]" id="viewusers" size="10" multiple="multiple">
+ <select name="users[]" id="viewusers" size="10" multiple="multiple">
 <?php
   // get list of all users
   $users = get_my_users ();
-  if ($nonuser_enabled == "Y" ) {
+  if ($NONUSER_ENABLED == "Y" ) {
     $nonusers = get_nonuser_cals ();
-    $users = ($nonuser_at_top == "Y") ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
+    $users = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
   }
   for ( $i = 0; $i < count ( $users ); $i++ ) {
     $u = $users[$i]['cal_login'];
@@ -164,8 +164,8 @@ if ( $newview ) {
   }
 ?>
 </select>
-<?php if ( $groups_enabled == "Y" ) { ?>
-	<input type="button" onclick="selectUsers()" value="<?php etranslate("Select");?>..." />
+<?php if ( $GROUPS_ENABLED == "Y" ) { ?>
+ <input type="button" onclick="selectUsers()" value="<?php etranslate("Select");?>..." />
 <?php } ?>
 </div>
 </td></tr>
@@ -173,7 +173,7 @@ if ( $newview ) {
 <br />
 <input type="submit" name="action" value="<?php if ( $newview ) etranslate("Add"); else etranslate("Save"); ?>" />
 <?php if ( ! $newview ) { ?>
-	<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
+ <input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
 <?php } ?>
 </td></tr>
 </table>

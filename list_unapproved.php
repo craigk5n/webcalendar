@@ -27,8 +27,8 @@ if ( ! $is_admin && $user != $login  && ! $is_assistant &&
   $user = $login;
 
 $HeadX = '';
-if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
-  $refresh = $auto_refresh_time * 60; // convert to seconds
+if ( $AUTO_REFRESH == "Y" && ! empty ( $AUTO_REFRESH_TIME ) ) {
+  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
   $returl = "list_unapproved.php";
   if ( ! empty ( $user ) && $user != $login )
     $returl .= "?user=" . $user;
@@ -181,7 +181,7 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
   $app_users[] = $login;
   $app_user_hash[$login] = 1;
   if ( access_is_enabled () ) {
-    if ( $nonuser_enabled == 'Y' ) {
+    if ( $NONUSER_ENABLED == 'Y' ) {
       $all = array_merge ( get_my_users ( ), get_nonuser_cals ( ) );
     } else {
       $all = get_my_users ( );
@@ -196,7 +196,7 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
       }
     }
   } else {
-    if ( $is_admin && $public_access == "Y" &&
+    if ( $is_admin && $PUBLIC_ACCESS == "Y" &&
       ( empty ( $user ) || $user != '__public__' ) ) {
       $app_users[] = '__public__';
       $app_users_hash['__public__'] = 1;

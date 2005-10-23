@@ -1705,7 +1705,7 @@ Current User: 현 사용자
 # Assistants:
 #
 # << MISSING >>
-# Yours assistants:
+# Your assistants:
 
 
 ###############################################

@@ -107,7 +107,7 @@ function updateColor ( input ) {
 // "Allow public access".
 function public_handler () {
   var enabled = document.prefform.admin_public_access[0].checked;
-  var ohd = document.prefform.admin_public_access_others[0].checked;
+  var ohd = document.prefform.admin_PUBLIC_ACCESS_OTHERS[0].checked;
   //alert ( "public enabled =  " + enabled );
   if ( enabled ) {
     // Public Access enabled
@@ -136,7 +136,7 @@ function public_handler () {
 // Gets called on page load and when user changes setting for
 // "Allow external users".
 function eu_handler () {
-  var enabled = document.prefform.admin_allow_external_users[0].checked;
+  var enabled = document.prefform.admin_ALLOW_EXTERNAL_USERS[0].checked;
   //alert ( "allow external =  " + enabled );
   if ( enabled ) {
     // External Users enabled

@@ -788,7 +788,7 @@ Are you sure you want to delete this report?: Er du sikker på at du vil slette d
 # Page: assistant_edit.php
 #
 Assistants: Assistenter
-Yours assistants: Dine assistenter
+Your assistants: Dine assistenter
 
 
 ###############################################

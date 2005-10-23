@@ -1,7 +1,7 @@
 <?php
 include_once 'includes/init.php';
 
-if ( $allow_view_other != 'Y' ) {
+if ( $ALLOW_VIEW_OTHER != 'Y' ) {
   print_header ();
   etranslate("You are not authorized");
   print_trailer ();
@@ -9,7 +9,7 @@ if ( $allow_view_other != 'Y' ) {
 }
 
 $updating_public = false;
-if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
   $updating_public = true;
   $layer_user = "__public__";
 } else {
@@ -35,16 +35,16 @@ else
 <form action="edit_layer_handler.php" method="post" onsubmit="return valid_form(this);" name="prefform">
 
 <?php if ( $updating_public ) { ?>
-	<input type="hidden" name="public" value="1" />
+ <input type="hidden" name="public" value="1" />
 <?php } ?>
 
 <table style="border-width:0px;">
 <?php
 if ( $single_user == "N" ) {
   $userlist = get_my_users ();
-  if ($nonuser_enabled == "Y" ) {
+  if ($NONUSER_ENABLED == "Y" ) {
     $nonusers = get_nonuser_cals ();
-    $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+    $userlist = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
   $num_users = 0;
   $size = 0;
@@ -65,7 +65,7 @@ if ( $single_user == "N" ) {
   else if ( $size > 5 )
     $size = 5;
   if ( $size >= 1 ) {
-	print "<tr><td style=\"vertical-align:top;\">\n<label for=\"layeruser\">" .
+ print "<tr><td style=\"vertical-align:top;\">\n<label for=\"layeruser\">" .
       translate("Source") . ":</label></td><td>\n";
     print "<select name=\"layeruser\" id=\"layeruser\" size=\"1\">$users\n";
     print "</select>\n";
@@ -74,31 +74,31 @@ if ( $single_user == "N" ) {
 }
 ?>
 <tr><td>
-	<label for="layercolor"><?php etranslate("Color")?>:</label></td><td>
-	<input type="text" name="layercolor" id="layercolor" size="7" maxlength="7" value="<?php echo empty ( $layers[$id]['cal_color'] ) ? "" :  $layers[$id]['cal_color']; ?>" />
-	<input type="button" onclick="selectColor('layercolor')" value="<?php etranslate("Select")?>..." />
+ <label for="layercolor"><?php etranslate("Color")?>:</label></td><td>
+ <input type="text" name="layercolor" id="layercolor" size="7" maxlength="7" value="<?php echo empty ( $layers[$id]['cal_color'] ) ? "" :  $layers[$id]['cal_color']; ?>" />
+ <input type="button" onclick="selectColor('layercolor')" value="<?php etranslate("Select")?>..." />
 </td></tr>
 <tr><td style="font-weight:bold;">
-	<?php etranslate("Duplicates")?>:</td><td>
-	<label><input type="checkbox" name="dups" value="Y"<?php 
-		if (! empty ($layers[$id]['cal_dups']) && $layers[$id]['cal_dups'] == 'Y') 
-			echo " checked=\"checked\"";
-	?> />&nbsp;<?php etranslate("Show layer events that are the same as your own")?></label>
+ <?php etranslate("Duplicates")?>:</td><td>
+ <label><input type="checkbox" name="dups" value="Y"<?php 
+  if (! empty ($layers[$id]['cal_dups']) && $layers[$id]['cal_dups'] == 'Y') 
+   echo " checked=\"checked\"";
+ ?> />&nbsp;<?php etranslate("Show layer events that are the same as your own")?></label>
 </td></tr>
 <tr><td colspan="2">
-	<input type="submit" value="<?php etranslate("Save")?>" />
+ <input type="submit" value="<?php etranslate("Save")?>" />
 </td></tr>
 <?php
 // If a layer already exists put a 'Delete Layer' link
 if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) { ?>
 <tr><td>
-	<br /><a title="<?php etranslate("Delete layer")?>" href="del_layer.php?id=<?php echo $id; if ( $updating_public ) echo "&amp;public=1"; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></a><br />
+ <br /><a title="<?php etranslate("Delete layer")?>" href="del_layer.php?id=<?php echo $id; if ( $updating_public ) echo "&amp;public=1"; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php etranslate("Delete layer")?></a><br />
 </td></tr>
 <?php }  // end 'Delete Layer' link ?>
 </table>
 
 <?php if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
-	echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
+ echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
 ?>
 </form>
 

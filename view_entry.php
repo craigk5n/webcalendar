@@ -14,6 +14,7 @@
  * (*) required field
  */
 include_once 'includes/init.php';
+include 'includes/xcal.php'; //only to display recurrance info
 
 // make sure this user is allowed to look at this calendar.
 $can_view = false;
@@ -48,7 +49,7 @@ if ( empty ( $error ) ) {
     dbi_free_result ( $res );
   }
 
-  if ( ($login != "__public__") && ($public_access_others == "Y") ) {
+  if ( ($login != "__public__") && ($PUBLIC_ACCESS_OTHERS == "Y") ) {
     $can_view = true;
   }
 
@@ -57,11 +58,11 @@ if ( empty ( $error ) ) {
     // if not a participant in the event, must be allowed to look at
     // other user's calendar.
     if ( $login == "__public__" ) {
-      if ( $public_access_others == "Y" ) {
+      if ( $PUBLIC_ACCESS_OTHERS == "Y" ) {
         $check_group = true;
       }
     } else {
-      if ( $allow_view_other == "Y" ) {
+      if ( $ALLOW_VIEW_OTHER == "Y" ) {
         $check_group = true;
       }
     }
@@ -106,8 +107,7 @@ if ( empty ( $error ) ) {
 }
 
 if ( $login == '__public__' &&
-  ! empty ( $GLOBALS['override_public'] ) &&
-  $GLOBALS['override_public'] == 'Y' ) {
+  ! empty ( $OVERRIDE_PUBLIC ) && $OVERRIDE_PUBLIC == 'Y' ) {
   $hide_details = true;
 } else {
   $hide_details = false;
@@ -115,8 +115,8 @@ if ( $login == '__public__' &&
 
 // If they still cannot view, make sure they are not looking at a nonuser
 // calendar event where the nonuser is the _only_ participant.
-if ( empty ( $error ) && ! $can_view && ! empty ( $nonuser_enabled ) &&
-  $nonuser_enabled == 'Y' ) {
+if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
+  $NONUSER_ENABLED == 'Y' ) {
   $nonusers = get_nonuser_cals ();
   $nonuser_lookup = array ();
   for ( $i = 0; $i < count ( $nonusers ); $i++ ) {
@@ -272,8 +272,8 @@ if ( $row ) {
   $orig_date = $row[1];
   $event_time = $row[2];
   if ( $hide_details ) {
-    $name = $GLOBALS['override_public_text'];
-    $description = $GLOBALS['override_public_text'];
+    $name = $OVERRIDE_PUBLIC_TEXT;
+    $description = $OVERRIDE_PUBLIC_TEXT;
   } else {
     $name = $row[9];
     $description = $row[10];
@@ -314,103 +314,19 @@ $thistime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 $thisdow = date ( "w", $thistime );
 
 // $subject is used for mailto URLs
-$subject = translate($application_name) . ": " . $name;
+$subject = translate($APPLICATION_NAME) . ": " . $name;
 // Remove the '"' character since it causes some mailers to barf
 $subject = str_replace ( "\"", "", $subject );
 $subject = htmlspecialchars ( $subject );
 
 $event_repeats = false;
 // build info string for repeating events and end date
-$sql = "SELECT cal_type, cal_end, cal_frequency, cal_days " .
-  "FROM webcal_entry_repeats WHERE cal_id = $id";
-
+$sql = "SELECT cal_type FROM webcal_entry_repeats WHERE cal_id = $id";
 $res = dbi_query ($sql);
-$rep_str = '';
 if ( $res ) {
   if ( $tmprow = dbi_fetch_row ( $res ) ) {
     $event_repeats = true;
-    $cal_type = $tmprow[0];
-    $cal_end = $tmprow[1];
-    $cal_frequency = $tmprow[2];
-    $cal_days = $tmprow[3];
-
-    if ( $cal_end ) {
-      $rep_str .= "&nbsp; - &nbsp;";
-      $rep_str .= date_to_str ( $cal_end );
-    }
-    $rep_str .= "&nbsp;(" . translate("every") . " ";
-
-    if ( $cal_frequency > 1 ) {
-      switch ( $cal_frequency ) {
-        case 2: $rep_str .= translate("2nd"); break;
-        case 3: $rep_str .= translate("3rd"); break;
-        case 4: $rep_str .= translate("4th"); break;
-        case 5: $rep_str .= translate("5th"); break;
-        case 12: if ( $cal_type == 'monthlyByDay' ||
-                   $cal_type == 'monthlyByDayR' ) {
-                   break;
-                 }
-        default: $rep_str .= $cal_frequency; break;
-      }
-    }
-    $rep_str .= ' ';
-    switch ($cal_type) {
-      case "daily":
-        $rep_str .= translate("Day");
-        break;
-      case "weekly": $rep_str .= translate("Week");
-        for ($i=0; $i<=7; $i++) {
-          if (substr($cal_days, $i, 1) == "y") {
-            $rep_str .= ", " . weekday_short_name($i);
-          }
-        }
-        break;
-      case "monthlyByDay":
-      case "monthlyByDayR":
-        if ( $cal_frequency == 12 ) {
-          $rep_str .= month_name ( $thismonth - 1 ) . " / ";
-        } else {
-          $rep_str .= translate("Month") . " / ";
-        }
-        $days_this_month = $thisyear % 4 == 0 ? $ldays_per_month[$thismonth] :
-          $days_per_month[$thismonth];
-        if ( $cal_type == 'monthlyByDay' ) {
-          $dow1 = date ( "w", mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
-          $days_in_first_week = ( 7 - $dow1 );
-          $whichWeek = ceil ( $thisday / 7 );
-        } else {
-          $whichWeek = floor ( ( $days_this_month - $thisday ) / 7 );
-          $whichWeek++;
-        }
-        $rep_str .= ' ';
-        switch ( $whichWeek ) {
-          case 1:
-            if ( $cal_type == 'monthlyByDay' )
-              $rep_str .= translate ( "1st" );
-            break;
-          case 2:
-            $rep_str .= translate ( "2nd" ); break;
-          case 3:
-            $rep_str .= translate ( "3rd" ); break;
-          case 4:
-            $rep_str .= translate ( "4th" ); break;
-          case 5:
-            $rep_str .= translate ( "5th" ); break;
-        }
-        if ( $cal_type == 'monthlyByDayR' )
-          $rep_str .= " " . translate ( "last" );
-        $rep_str .= ' ' . weekday_name ( $thisdow );
-        break;
-      case "monthlyByDate":
-        $rep_str .= translate("Month") . "/" . translate("by date");
-        break;
-      case "yearly":
-        $rep_str .= translate("Year");
-        break;
-    }
-    $rep_str .= ")";
-  } else
-    $rep_str = "";
+  }
   dbi_free_result ( $res );
 }
 /* calculate end time */
@@ -443,17 +359,22 @@ else
 // by hand editing the URL.
 
 // Get category Info
-if ( $categories_enabled == "Y" ) {
+if ( $CATEGORIES_ENABLED == "Y" ) {
+  $categories = array();
   $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
     $is_admin ) ) ? $user : $login;  
-  $sql = "SELECT cat_name FROM webcal_categories, webcal_entry_user " .
-    "WHERE webcal_entry_user.cal_login = '$cat_owner' AND webcal_entry_user.cal_id = $id " .
-    "AND webcal_entry_user.cal_category = webcal_categories.cat_id";
+  $sql = "SELECT cat_name FROM webcal_categories, webcal_entry_categories " .
+    "WHERE ( webcal_entry_categories.cat_owner = '$cat_owner' OR " .
+  "webcal_entry_categories.cat_owner IS NULL) AND webcal_entry_categories.cal_id = $id " .
+    "AND webcal_entry_categories.cat_id = webcal_categories.cat_id " .
+  "ORDER BY webcal_entry_categories.cat_order";
   $res2 = dbi_query ( $sql );
   if ( $res2 ) {
-    $row2 = dbi_fetch_row ( $res2 );
-    $category = $row2[0];
+    while ($row2 = dbi_fetch_row ( $res2 )) { 
+      $categories[] = $row2[0];
+  }
     dbi_free_result ( $res2 );
+  $category = implode ( ", ", $categories);
   }
 }
 ?>
@@ -462,8 +383,8 @@ if ( $categories_enabled == "Y" ) {
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Description")?>:</td><td>
  <?php
-  if ( ! empty ( $allow_html_description ) &&
-    $allow_html_description == 'Y' ) {
+  if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) &&
+    $ALLOW_HTML_DESCRIPTION == 'Y' ) {
     $str = str_replace ( '&', '&amp;', $description );
     $str = str_replace ( '&amp;amp;', '&amp;', $str );
     // If there is no html found, then go ahead and replace
@@ -506,7 +427,7 @@ if ( $categories_enabled == "Y" ) {
 <?php if ( $event_repeats ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Repeat Type")?>:</td><td>
- <?php echo date_to_str ( $row[1], "", true, false, $event_time ) . $rep_str; ?>
+ <?php echo export_recurrence_ical( $id , true); ?>
 </td></tr>
 <?php } ?>
 <?php if ( $event_time >= 0 ) { ?>
@@ -529,19 +450,19 @@ if ( $categories_enabled == "Y" ) {
  <?php echo $row[5]; ?> <?php etranslate("minutes")?>
 </td></tr>
 <?php } ?>
-<?php if ( $disable_priority_field != "Y" ) { ?>
+<?php if ( $DISABLE_PRIORITY_FIELD != "Y" ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Priority")?>:</td><td>
  <?php echo $pri[$row[6]]; ?>
 </td></tr>
 <?php } ?>
-<?php if ( $disable_access_field != "Y" ) { ?>
+<?php if ( $DISABLE_ACCESS_FIELD != "Y" ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Access")?>:</td><td>
  <?php echo ( $row[8] == "P" ) ? translate("Public") : translate("Confidential"); ?>
 </td></tr>
 <?php } ?>
-<?php if ( $categories_enabled == "Y" && ! empty ( $category ) ) { ?>
+<?php if ( $CATEGORIES_ENABLED == "Y" && ! empty ( $category ) ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Category")?>:</td><td>
  <?php echo $category; ?>
@@ -665,12 +586,12 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
 <?php // participants
 // Only ask for participants if we are multi-user.
 $allmails = array ();
-$show_participants = ( $disable_participants_field != "Y" );
+$show_participants = ( $DISABLE_PARTICIPANTS_FIELD != "Y" );
 if ( $is_admin ) {
   $show_participants = true;
 }
-if ( $public_access == "Y" && $login == "__public__" &&
-  ( $public_access_others != "Y" || $public_access_view_part == "N" ) ) {
+if ( $PUBLIC_ACCESS == "Y" && $login == "__public__" &&
+  ( $PUBLIC_ACCESS_OTHERS != "Y" || $PUBLIC_ACCESS_VIEW_PART == "N" ) ) {
   $show_participants = false;
 }
 if ( $single_user == "N" && $show_participants ) { ?>
@@ -716,7 +637,7 @@ if ( $single_user == "N" && $show_participants ) { ?>
     }
   }
   // show external users here...
-  if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" ) {
+  if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == "Y" ) {
     $external_users = event_get_external_users ( $id, 1 );
     $ext_users = explode ( "\n", $external_users );
     if ( is_array ( $ext_users ) ) {
@@ -806,7 +727,7 @@ if ( ! empty ( $user ) && $login != $user ) {
 $can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || 
   ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
   ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
-if ( $public_access == "Y" && $login == "__public__" ) {
+if ( $PUBLIC_ACCESS == "Y" && $login == "__public__" ) {
   $can_edit = false;
 }
 if ( $readonly == 'Y' ) {
@@ -818,7 +739,7 @@ if ( $is_nonuser )
 // If approved, but event category not set (and user does not have permission
 // to edit where they could also set the category), then allow them to
 // set it through set_cat.php.
-if ( empty ( $user ) && $categories_enabled == "Y" &&
+if ( empty ( $user ) && $CATEGORIES_ENABLED == "Y" &&
   $readonly != "Y" && $is_my_event && $login != "__public__" &&
   ! $is_nonuser && $event_status != "D" && ! $can_edit )  {
   echo "<a title=\"" . 

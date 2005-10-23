@@ -17,7 +17,7 @@ if ( empty ( $login) || $login == "__public__" ) {
   exit;
 }
 
-$INC = array('js/export.php');
+$INC = array('js/export_import.php');
 print_header($INC);
 ?>
 

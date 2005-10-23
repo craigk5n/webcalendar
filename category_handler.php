@@ -39,9 +39,15 @@ if ( empty ( $error ) &&
   }
       
   // Set any events in this category to NULL
-  if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_category = NULL " .
-    "WHERE cal_category = $id" ) )
+  if ( $is_admin ) {
+    if ( !  dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
+      " ( cat_owner = '$login' OR cat_owner IS NULL)" ) ) 
     $error = translate ("Database error") . ": " . dbi_error();
+  } else {
+    if ( !  dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
+      "AND cat_owner = '$login'" ) )
+    $error = translate ("Database error") . ": " . dbi_error();
+ }
 } else if ( empty ( $error ) ) {
   if ( ! empty ( $id ) ) {
     # update (don't let them change global status)

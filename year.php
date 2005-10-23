@@ -22,11 +22,11 @@ else
 
 $nextYear= $year + 1;
 
-if ( $allow_view_other != "Y" && ! $is_admin )
+if ( $ALLOW_VIEW_OTHER != "Y" && ! $is_admin )
   $user = "";
 
 $boldDays = false;
-if ( ! empty ( $bold_days_in_year ) && $bold_days_in_year == 'Y' ) {
+if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events (
     ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login, $cat_id, $year . "0101" );

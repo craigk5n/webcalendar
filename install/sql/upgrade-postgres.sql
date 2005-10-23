@@ -1,6 +1,5 @@
 /*upgrade_v0.9.13*/
 UPDATE webcal_entry SET cal_time = -1 WHERE cal_time is null;
-
 CREATE TABLE webcal_entry_repeats (
   cal_id INT DEFAULT '0' NOT NULL,
   cal_type VARCHAR(20),
@@ -19,7 +18,6 @@ CREATE TABLE webcal_user_layers (
   cal_dups CHAR(1) DEFAULT 'N',
   PRIMARY KEY ( cal_login, cal_layeruser )
 );
-
 /*upgrade_v0.9.27*/
 CREATE TABLE webcal_site_extras (
   cal_id INT DEFAULT '0' NOT NULL,
@@ -30,7 +28,6 @@ CREATE TABLE webcal_site_extras (
   cal_data TEXT,
   PRIMARY KEY ( cal_id, cal_name, cal_type )
 );
-
 CREATE TABLE webcal_reminder_log (
   cal_id INT DEFAULT '0' NOT NULL,
   cal_name VARCHAR(25) NOT NULL,
@@ -47,13 +44,11 @@ CREATE TABLE webcal_group (
   cal_last_update INT NOT NULL,
   PRIMARY KEY ( cal_group_id )
 );
-
 CREATE TABLE webcal_group_user (
   cal_group_id INT NOT NULL,
   cal_login VARCHAR(25) NOT NULL,
   PRIMARY KEY ( cal_group_id, cal_login )
 );
-
 CREATE TABLE webcal_view (
   cal_view_id INT NOT NULL,
   cal_owner VARCHAR(25) NOT NULL,
@@ -61,19 +56,16 @@ CREATE TABLE webcal_view (
   cal_view_type CHAR(1),
   PRIMARY KEY ( cal_view_id )
 );
-
 CREATE TABLE webcal_view_user (
   cal_view_id INT NOT NULL,
   cal_login VARCHAR(25) NOT NULL,
   PRIMARY KEY ( cal_view_id, cal_login )
 );
-
 CREATE TABLE webcal_config (
   cal_setting VARCHAR(50) NOT NULL,
   cal_value VARCHAR(50) NULL,
   PRIMARY KEY ( cal_setting )
 );
-
 CREATE TABLE webcal_entry_log (
   cal_log_id INT NOT NULL,
   cal_entry_id INT NOT NULL,
@@ -87,7 +79,6 @@ CREATE TABLE webcal_entry_log (
 
 /*upgrade_v0.9.37*/
 ALTER TABLE webcal_entry_log ADD cal_user_cal VARCHAR(25);
-
 CREATE TABLE webcal_entry_repeats_not (
   cal_id INT NOT NULL,
   cal_date INT NOT NULL,
@@ -96,7 +87,6 @@ CREATE TABLE webcal_entry_repeats_not (
 
 /*upgrade_v0.9.38*/
 ALTER TABLE webcal_entry_user ADD cal_category INT DEFAULT NULL;
-
 CREATE TABLE webcal_categories (
   cat_id INT NOT NULL,
   cat_owner VARCHAR(25),
@@ -106,7 +96,6 @@ CREATE TABLE webcal_categories (
 
 /*upgrade_v0.9.39*/
 DELETE FROM webcal_config WHERE cal_setting LIKE 'DATE_FORMAT%';
-
 DELETE FROM webcal_user_pref WHERE cal_setting LIKE 'DATE_FORMAT%';
 
 /*upgrade_v0.9.40*/
@@ -115,14 +104,12 @@ CREATE TABLE webcal_asst (
   cal_assistant VARCHAR(25) NOT NULL,
   PRIMARY KEY ( cal_boss, cal_assistant )
 );
-
 CREATE TABLE webcal_entry_ext_user (
   cal_id INT DEFAULT 0 NOT NULL,
   cal_fullname VARCHAR(50) NOT NULL,
   cal_email VARCHAR(75) NULL,
   PRIMARY KEY ( cal_id, cal_fullname )
 );
-
 ALTER TABLE webcal_entry ADD cal_ext_for_id INT NULL;
 
 /*upgrade_v0.9.41*/
@@ -167,9 +154,7 @@ CREATE TABLE webcal_import_data (
 
 /*upgrade_v0.9.43*/
 ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(32) NULL;
-
 DROP TABLE webcal_import_data;
-
 CREATE TABLE webcal_import (
   cal_import_id INT NOT NULL,
   cal_name VARCHAR(50) NULL,
@@ -178,7 +163,6 @@ CREATE TABLE webcal_import (
   cal_login VARCHAR(25) NULL,
   PRIMARY KEY ( cal_import_id )
 );
-
 CREATE TABLE webcal_import_data (
   cal_import_id INT NOT NULL,
   cal_id INT NOT NULL,
@@ -190,19 +174,14 @@ CREATE TABLE webcal_import_data (
 
 /*upgrade_v1.0RC3*/
 ALTER TABLE webcal_view ADD cal_is_global CHAR(1) DEFAULT 'N' NOT NULL;
-
 UPDATE webcal_user_pref SET cal_value = 'day.php'
   WHERE cal_value = 'day' AND cal_setting = 'STARTVIEW';
-
 UPDATE webcal_user_pref SET cal_value = 'week.php'
   WHERE cal_value = 'week' AND cal_setting = 'STARTVIEW';
-
 UPDATE webcal_user_pref SET cal_value = 'month.php'
-  WHERE cal_value = 'month' AND cal_setting = 'STARTVIEW'
-;
+  WHERE cal_value = 'month' AND cal_setting = 'STARTVIEW';
 UPDATE webcal_user_pref SET cal_value = 'year.php'
   WHERE cal_value = 'year' AND cal_setting = 'STARTVIEW';
-
 UPDATE webcal_config SET cal_value = 'week.php'
   WHERE cal_setting = 'STARTVIEW';
 
@@ -216,7 +195,6 @@ CREATE TABLE webcal_access_user (
   cal_can_approve CHAR(1) NOT NULL DEFAULT 'N',
   PRIMARY KEY ( cal_login, cal_other_user )
 );
-
 CREATE TABLE webcal_access_function (
   cal_login VARCHAR(50) NOT NULL,
   cal_permissions VARCHAR(64) NOT NULL,
@@ -235,7 +213,6 @@ CREATE TABLE webcal_tz_zones (
   zone_coord VARCHAR(20) NOT NULL default '',
   zone_country VARCHAR(50) NOT NULL default ''
 );
-
 CREATE TABLE webcal_tz_rules (
   rule_name VARCHAR(50) NOT NULL default '',
   rule_from INT NOT NULL default '0',
@@ -248,7 +225,6 @@ CREATE TABLE webcal_tz_rules (
   rule_save INT NOT NULL default '0',
   rule_letter VARCHAR(5) NOT NULL default ''
 );
-
 CREATE TABLE webcal_tz_list (
   tz_list_id INT NOT NULL default '0',
   tz_list_name VARCHAR(50) NOT NULL default '',
@@ -256,9 +232,7 @@ CREATE TABLE webcal_tz_list (
 );
 
 /*upgrade_v1.1.0a-CVS*/
-
 ALTER TABLE webcal_nonuser_cals ADD cal_is_public CHAR(1) DEFAULT 'N' NOT NULL;
-
 CREATE TABLE webcal_user_template (
   cal_login VARCHAR(25) NOT NULL,
   cal_type CHAR(1) NOT NULL,
@@ -267,3 +241,25 @@ CREATE TABLE webcal_user_template (
 );
 
 /*upgrade_v1.1.0b-CVS*/
+ALTER TABLE webcal_entry_repeats ADD cal_endtime INT(11) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_bymonth VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_bymonthday VARCHAR(100) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_byday VARCHAR(100) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_bysetpos VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_byweekno VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_byyearday VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_wkst CHAR(2) DEFAULT 'MO';
+ALTER TABLE webcal_entry_repeats ADD cal_count INT(11) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats_not ADD cal_exdate INT(1) DEFAULT '1' NOT NULL;
+ALTER TABLE webcal_entry ADD cal_due_date INT(11) DEFAULT NULL;
+ALTER TABLE webcal_entry ADD cal_due_time INT(11) DEFAULT NULL;
+ALTER TABLE webcal_entry ADD cal_location VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_entry ADD cal_url VARCHAR(100) DEFAULT NULL;
+ALTER TABLE webcal_entry ADD cal_completed INT(11) DEFAULT NULL;
+ALTER TABLE webcal_entry_user ADD cal_percent INT(11) DEFAULT '0' NOT NULL;
+CREATE TABLE webcal_entry_categories (
+  cal_id INT(11) DEFAULT '0' NOT NULL,
+  cat_id INT(11) NOT NULL DEFAULT '0',
+  cat_order INT(11) DEFAULT '0' NOT NULL,
+  cat_owner VARCHAR(25) DEFAULT NULL
+);

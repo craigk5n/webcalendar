@@ -1195,7 +1195,7 @@ Current User: Une hontako erabiltzailea
 # Assistants:
 #
 # << MISSING >>
-# Yours assistants:
+# Your assistants:
 
 
 ###############################################

@@ -4,13 +4,13 @@ print_header( '', '', '', true );
 
 if ( ! $is_admin ) {
   echo "<h2>" . translate("Error") . "</h2>\n" . 
-  		translate("You are not authorized") . ".\n";
+    translate("You are not authorized") . ".\n";
   echo "</body>\n</html>";
   exit;
 }
 if ( ! $NONUSER_PREFIX ) {
   echo "<h2>" . translate("Error") . "</h2>\n" . 
-  		translate("NONUSER_PREFIX not set") . ".\n";
+    translate("NONUSER_PREFIX not set") . ".\n";
   echo "</body>\n</html>";
   exit;
 }
@@ -37,57 +37,57 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
   ?>
 <h2><?php
   if ( ! empty ( $nid ) ) {
-	nonuser_load_variables ( $nid, 'nonusertemp_' );
-	echo translate("Edit User");
+ nonuser_load_variables ( $nid, 'nonusertemp_' );
+ echo translate("Edit User");
   } else {
-	echo translate("Add User");
+ echo translate("Add User");
   }
 ?></h2>
 <table>
-	<tr><td>
-		<label for="calid"><?php etranslate("Calendar ID")?>:</label></td><td>
-		<?php echo $id_display ?>
-	</td></tr>
-	<tr><td>
-		<label for="nfirstname"><?php etranslate("First Name")?>:</label></td><td>
-		<input type="text" name="nfirstname" id="nfirstname" size="20" maxlength="25" value="<?php echo empty ( $nonusertemp_firstname ) ? '' : htmlspecialchars ( $nonusertemp_firstname ); ?>" />
-	</td></tr>
-	<tr><td>
-		<label for="nlastname"><?php etranslate("Last Name")?>:</label></td><td>
-		<input type="text" name="nlastname" id="nlastname" size="20" maxlength="25" value="<?php echo empty ( $nonusertemp_lastname ) ? '' : htmlspecialchars ( $nonusertemp_lastname ); ?>" />
-	</td></tr>
-	<tr><td>
-		<label for="nadmin"><?php etranslate("Admin")?>:</label></td><td>
-		<select name="nadmin" id="nadmin">
+ <tr><td>
+  <label for="calid"><?php etranslate("Calendar ID")?>:</label></td><td>
+  <?php echo $id_display ?>
+ </td></tr>
+ <tr><td>
+  <label for="nfirstname"><?php etranslate("First Name")?>:</label></td><td>
+  <input type="text" name="nfirstname" id="nfirstname" size="20" maxlength="25" value="<?php echo empty ( $nonusertemp_firstname ) ? '' : htmlspecialchars ( $nonusertemp_firstname ); ?>" />
+ </td></tr>
+ <tr><td>
+  <label for="nlastname"><?php etranslate("Last Name")?>:</label></td><td>
+  <input type="text" name="nlastname" id="nlastname" size="20" maxlength="25" value="<?php echo empty ( $nonusertemp_lastname ) ? '' : htmlspecialchars ( $nonusertemp_lastname ); ?>" />
+ </td></tr>
+ <tr><td>
+  <label for="nadmin"><?php etranslate("Admin")?>:</label></td><td>
+  <select name="nadmin" id="nadmin">
 <?php
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-	echo "<option value=\"".$userlist[$i]['cal_login']."\"";
-	if (! empty ( $nonusertemp_admin ) &&
+ echo "<option value=\"".$userlist[$i]['cal_login']."\"";
+ if (! empty ( $nonusertemp_admin ) &&
             $nonusertemp_admin == $userlist[$i]['cal_login'] ) 
-		echo " selected=\"selected\"";
-	echo ">".$userlist[$i]['cal_fullname']."</option>\n";
+  echo " selected=\"selected\"";
+ echo ">".$userlist[$i]['cal_fullname']."</option>\n";
   }
 ?>
-		</select>
-	</td></tr>
+  </select>
+ </td></tr>
 
 <?php if ( ! $use_http_auth ) { ?>
-	<tr><td valign="top"><label for="ispublic"><?php
-	  etranslate("Is public calendar");?>:</td>
-	<td><input type="radio" name="ispublic" value="Y" <?php
-	  if ( ! empty ( $nonusertemp_is_public ) &&
-	    $nonusertemp_is_public == 'Y' ) echo ' checked="checked"';
-	  echo "> " . translate ( "Yes" ) . "&nbsp;&nbsp;\n";?>
-	<input type="radio" name="ispublic" value="N" <?php
-	  if ( empty ( $nonusertemp_is_public ) ||
-	    $nonusertemp_is_public != 'Y' ) echo ' checked="checked"';
-	  echo "> " . translate ( "No" );?><br/>
-	<?php if ( ! empty ( $nonusertemp_login ) ) {
-                $nu_url = $server_url . "nulogin.php?login=$nonusertemp_login";
+ <tr><td valign="top"><label for="ispublic"><?php
+   etranslate("Is public calendar");?>:</td>
+ <td><input type="radio" name="ispublic" value="Y" <?php
+   if ( ! empty ( $nonusertemp_is_public ) &&
+     $nonusertemp_is_public == 'Y' ) echo ' checked="checked"';
+   echo "> " . translate ( "Yes" ) . "&nbsp;&nbsp;\n";?>
+ <input type="radio" name="ispublic" value="N" <?php
+   if ( empty ( $nonusertemp_is_public ) ||
+     $nonusertemp_is_public != 'Y' ) echo ' checked="checked"';
+   echo "> " . translate ( "No" );?><br/>
+ <?php if ( ! empty ( $nonusertemp_login ) ) {
+                $nu_url = $SERVER_URL . "nulogin.php?login=$nonusertemp_login";
                 echo "<a href=\"$nu_url\">$nu_url</a>\n";
               }
         ?>
-	</td></tr>
+ </td></tr>
 <?php } ?>
 </table>
   <br />

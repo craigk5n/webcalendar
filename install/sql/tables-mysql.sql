@@ -6,9 +6,6 @@
  * The comments in the table definitions will be parsed to
  * generate a document (in HTML) that describes these tables.
  *
- * History:
- * 21-Oct-2002 Added this file header and additional comments
- *   below.
  */
 
 /*
@@ -30,7 +27,7 @@ CREATE TABLE webcal_user (
   PRIMARY KEY ( cal_login )
 );
 
-# create a default admin user
+# create a DEFAULT admin user
 INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin ) VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'Default', 'Y' );
 
 /*
@@ -77,6 +74,10 @@ CREATE TABLE webcal_entry (
   cal_mod_time INT,
   /* duration of event in minutes */
   cal_duration INT NOT NULL,
+  /* Task due date */
+  cal_due_date INT DEFAULT NULL,
+  /* Task due time */
+  cal_due_time INT DEFAULT NULL,
   /* event priority: 1=Low, 2=Med, 3=High */
   cal_priority INT DEFAULT 2,
   /* 'E' = Event, 'M' = Repeating event */
@@ -86,9 +87,30 @@ CREATE TABLE webcal_entry (
   cal_access CHAR(1) DEFAULT 'P',
   /* brief description of event */
   cal_name VARCHAR(80) NOT NULL,
+  /* location of event */
+  cal_location varchar(50) DEFAULT NULL,
+  /* URL of event */
+  cal_url varchar(100) DEFAULT NULL,
+  /* date task completed */
+  cal_completed INT DEFAULT NULL,
   /* full description of event */
   cal_description TEXT,
   PRIMARY KEY ( cal_id )
+);
+
+/*
+ * Contains category foreign keys to enable multiple categoris
+ * for each event or task
+ */
+CREATE TABLE webcal_entry_categories (
+  /* id of event. Not unique*/
+  cal_id INT DEFAULT 0 NOT NULL,
+  /* id of category. Not unique */
+  cat_id INT DEFAULT 0 NOT NULL,
+  /* order that user requests their categories appear. Globals are always last */
+  cat_order INT DEFAULT 0 NOT NULL,
+  /* user that owns this record. Global categories will be NULL */
+  cat_owner varchar(25) DEFAULT NULL
 );
 
 /*
@@ -101,24 +123,34 @@ CREATE TABLE webcal_entry_repeats (
   /* type of repeating:<ul> */
   /* <li>daily - repeats daily</li> */
   /* <li>monthlyByDate - repeats on same day of the month</li> */
-  /* <li>monthlyByDayR - repeats on same weekday of the month */
-  /*   (counting weeks from the end of the month is in last Monday)</li> */
+  /* <li>monthlyBySetPos - repeats based on position within the result set of other ByXXX values */
   /* <li>monthlyByDay - repeats on specified weekday (2nd Monday, for example)</li> */
   /* <li>weekly - repeats every week</li> */
   /* <li>yearly - repeats on same date every year</li> */
   cal_type VARCHAR(20),
   /* end date for repeating event (in YYYYMMDD format) */
   cal_end INT,
+  cal_endtime INT DEFAULT NULL,
   /* frequency of repeat: 1 = every, 2 = every other, 3 = every 3rd, etc. */
   cal_frequency INT DEFAULT 1,
-  /* which days of the week does it repeat on (only applies when cal_type = 'weekly' */
+  /* NO LONGER USED. We'll leave it in for now */
   cal_days CHAR(7),
+  /* the following columns are values as specified in RFC2445 */
+  cal_bymonth varchar(50) DEFAULT NULL,
+  cal_bymonthday varchar(100) DEFAULT NULL,
+  cal_byday varchar(100) DEFAULT NULL,
+  cal_bysetpos varchar(50) DEFAULT NULL,
+  cal_byweekno varchar(50) DEFAULT NULL,
+  cal_byyearday varchar(50) DEFAULT NULL,
+  cal_wkst char(2) DEFAULT 'MO',
+  cal_count INT DEFAULT NULL,
   PRIMARY KEY (cal_id)
 );
 
+
 /*
  * This table specifies which dates in a repeating
- * event have either been deleted or replaced with
+ * event have either been deleted, included, or replaced with
  * a replacement event for that day.  When replaced, the cal_group_id
  * (I know... not the best name, but it was not being used) column will
  * be set to the original event.  That way the user can delete the original
@@ -129,6 +161,8 @@ CREATE TABLE webcal_entry_repeats_not (
   cal_id INT NOT NULL,
   /* cal_date: date event should not repeat (in YYYYMMDD format) */
   cal_date INT NOT NULL,
+  /* indicates whether this record is an exclusion (1) or inclusion (0) */
+  cal_exdate int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY ( cal_id, cal_date )
 );
 
@@ -144,11 +178,16 @@ CREATE TABLE webcal_entry_user (
   cal_login VARCHAR(25) NOT NULL,
   /* status of event for this user: <ul> */
   /* <li>A=Accepted</li> */
-  /* <li>R=Rejected</li> */
+  /* <li>C=Completed</li> */
+  /* <li>D=Deleted</li> */
+  /* <li>P=In-Progress</li> */
+  /* <li>R=Rejected/Declined</li> */
   /* <li>W=Waiting</li>    </ul>*/
   cal_status CHAR(1) DEFAULT 'A',
   /* category of the event for this user */
   cal_category INT DEFAULT NULL,
+  /* Task percentage of completion for this user's task */
+  cal_percent INT DEFAULT 0 NOT NULL,
   PRIMARY KEY ( cal_id, cal_login )
 );
 
@@ -394,7 +433,7 @@ CREATE TABLE webcal_import (
   cal_name VARCHAR(50) NULL,
   /* date of import (YYYYMMDD format) */
   cal_date INT NOT NULL,
-  /* type of import (ical, vcal, palm) */
+  /* type of import (ical, vcal, palm, outlookcsv) */
   cal_type VARCHAR(10) NOT NULL,
   /* user who performed the import */
   cal_login VARCHAR(25) NULL,
@@ -411,7 +450,7 @@ CREATE TABLE webcal_import_data (
   cal_id INT NOT NULL,
   /* user login */
   cal_login VARCHAR(25) NOT NULL,
-  /* type of import: 'palm', 'vcal', 'ical' or 'publish' */
+  /* type of import: 'palm', 'vcal', 'ical' or 'outlookcsv' */
   cal_import_type VARCHAR(15) NOT NULL,
   /* external id used in external calendar system (for example, UID in iCal) */
   cal_external_id VARCHAR(200) NULL,
@@ -431,7 +470,7 @@ CREATE TABLE webcal_report (
   cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
   /* format of report (html, plain or csv) */
   cal_report_type VARCHAR(20) NOT NULL,
-  /* if cal_report_type is 'html', should the default HTML header and */
+  /* if cal_report_type is 'html', should the DEFAULT HTML header and */
   /* trailer be included? ('Y' or 'N') */
   cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
   /* name of the report */
@@ -570,15 +609,15 @@ CREATE TABLE webcal_tz_zones (
   /*Name of timezone*/
   zone_name VARCHAR(50) NOT NULL,
  /*Greenwich Mean Time (GMT) Offset in minutes*/
-  zone_gmtoff INT NOT NULL default 0,
+  zone_gmtoff INT NOT NULL DEFAULT 0,
   /*Name of timezone DST rule that applies to this timezone name*/
   zone_rules VARCHAR(50) NOT NULL,
   /*The template for short timezone name (i.e. E%sT will become EST or EDT)*/
   zone_format VARCHAR(20) NOT NULL,
   /*UNIX timestamp for effective start date of this timezone (inclusive)*/
-  zone_from BIGINT NOT NULL default 0,
+  zone_from BIGINT NOT NULL DEFAULT 0,
   /*UNIX timestamp for effective stop date for this timezone (inclusive)*/
-  zone_until BIGINT NOT NULL default 0,
+  zone_until BIGINT NOT NULL DEFAULT 0,
   /*Two letter country code that this timezone applies*/
   zone_cc CHAR(2) NOT NULL,
   /*Latitude and Longitude of this timezone, we may use this for sunrise and sunset somethime.*/
@@ -594,21 +633,21 @@ CREATE TABLE webcal_tz_rules (
   /*Name of this timezone rule*/
   rule_name VARCHAR(50) NOT NULL,
   /*First effective year of this rule (inclusive)*/
-  rule_from INT NOT NULL default 0,
+  rule_from INT NOT NULL DEFAULT 0,
   /*Last effective year of this rule (inclusive)*/
-  rule_to INT NOT NULL default 0,
+  rule_to INT NOT NULL DEFAULT 0,
   /*Not currently used*/
   rule_type VARCHAR(20) NOT NULL,
   /*Month that this rule goes into effect*/
-  rule_in INT NOT NULL default 0,
+  rule_in INT NOT NULL DEFAULT 0,
   /*Date that this rule goes into effect (can be numeric or notation like Sun>=14)*/
   rule_on VARCHAR(20) NOT NULL,
   /*Time of day that this rule take effect*/
-  rule_at INT NOT NULL default 0,
+  rule_at INT NOT NULL DEFAULT 0,
   /*s, u, g, z specifies whether rule_at is local time, UTC, GMT, Zulu. This is not currently used.*/
   rule_at_suffix CHAR(1) NOT NULL,
   /*Number of minutes to add to zone_gmtoff to get DST time adjustment*/
-  rule_save INT NOT NULL default 0,
+  rule_save INT NOT NULL DEFAULT 0,
   /*Letter(s) to replace '%s' in zone_format*/
   rule_letter VARCHAR(5) NOT NULL 
 );
@@ -619,7 +658,7 @@ CREATE TABLE webcal_tz_rules (
  */
 CREATE TABLE webcal_tz_list (
   /*Numeric order of list for display purposes*/
-  tz_list_id int(11) NOT NULL default 0,
+  tz_list_id INT NOT NULL DEFAULT 0,
   /*Name that matches a valid webcal_tz_zones.zone_name*/
   tz_list_name varchar(50) NOT NULL,
   /*Display text used in select control*/
@@ -632,7 +671,7 @@ CREATE TABLE webcal_tz_list (
  * their own custom header/trailer.
  */
 CREATE TABLE webcal_user_template (
-  /* user login (or nonuser cal name), the default for all users is stored */
+  /* user login (or nonuser cal name), the DEFAULT for all users is stored */
   /* with the username '__system__' */
   cal_login VARCHAR(25) NOT NULL,
   /* type ('H' = header, 'S' = stylesheet/script, 'T' = trailer) */

@@ -415,6 +415,7 @@ a.matrix img {
   cursor: help;
   text-decoration: none;
   font-weight: bold;
+ width:120px;
 }
 .tooltipselect {
   cursor: help;
@@ -511,6 +512,36 @@ textarea {
 .minical td.hasevents {
   background-color: #DDDDFF;
   font-weight: bold;
+}
+<?php // table appearing in small task window 
+?>.minitask {
+ width:100%;
+  border: 1px solid #000000;
+}
+.minitask tr.header th {
+  color: <?php echo $GLOBALS['THFG']; ?>;
+  background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+  font-size: 12px;
+  padding: 0px;
+  border-bottom: 2px solid #000000;
+}
+.minitask  td {
+  color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+  font-size: 12px;
+  padding: 0px;
+  border-bottom: 1px solid #000000;
+  text-align: center;
+}
+.minitask td.filler {
+  padding: 0px;
+  border-bottom: 0px;
+}
+#admin .tooltip,
+#pref .tooltip{
+  cursor: help;
+  text-decoration: none;
+  font-weight: bold;
+ width:175px;
 }
 #minicalendar table {
   width: <?php echo ( ! empty ( $GLOBALS['MINICALWIDTH'])?$GLOBALS['MINICALWIDTH']: '160px'); ?>;

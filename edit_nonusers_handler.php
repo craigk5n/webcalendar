@@ -35,7 +35,7 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
-	  $delete_em[] = $events[$i];
+   $delete_em[] = $events[$i];
       }
       dbi_free_result ( $res );
     }

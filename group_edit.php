@@ -42,28 +42,28 @@ if ( $newgroup ) {
 
 <table style="border-width:0px;">
 <tr><td style="font-weight:bold;">
-	<label for="groupname"><?php etranslate("Group name")?>:</label></td><td>
-	<input type="text" name="groupname" id="groupname" size="20" value="<?php echo htmlspecialchars ( $groupname );?>" />
+ <label for="groupname"><?php etranslate("Group name")?>:</label></td><td>
+ <input type="text" name="groupname" id="groupname" size="20" value="<?php echo htmlspecialchars ( $groupname );?>" />
 </td></tr>
 <?php if ( ! $newgroup ) { ?>
-	<tr><td style="vertical-align:top; font-weight:bold;">
-		<?php etranslate("Updated"); ?>:</td><td>
-		<?php echo date_to_str ( $groupupdated ); ?>
-	</td></tr>
-	<tr><td style="vertical-align:top; font-weight:bold;">
-		<?php etranslate("Created by"); ?>:</td><td>
-		<?php echo $groupowner; ?>
-	</td></tr>
+ <tr><td style="vertical-align:top; font-weight:bold;">
+  <?php etranslate("Updated"); ?>:</td><td>
+  <?php echo date_to_str ( $groupupdated ); ?>
+ </td></tr>
+ <tr><td style="vertical-align:top; font-weight:bold;">
+  <?php etranslate("Created by"); ?>:</td><td>
+  <?php echo $groupowner; ?>
+ </td></tr>
 <?php } ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
-	<label for="users"><?php etranslate("Users"); ?>:</label></td><td>
-	<select name="users[]" id="users" size="10" multiple="multiple">
+ <label for="users"><?php etranslate("Users"); ?>:</label></td><td>
+ <select name="users[]" id="users" size="10" multiple="multiple">
 <?php
   // get list of all users
   $users = user_get_users ();
-  if ($nonuser_enabled == "Y" ) {
+  if ($NONUSER_ENABLED == "Y" ) {
     $nonusers = get_nonuser_cals ();
-    $users = ($nonuser_at_top == "Y") ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
+    $users = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
   }
 
   // get list of users for this group
@@ -86,13 +86,13 @@ if ( $newgroup ) {
     echo ">" . $users[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
-	</select>
+ </select>
 </td></tr>
 <tr><td colspan="2" style="text-align:center;">
-	<br /><input type="submit" name="action" value="<?php if ( $newgroup ) etranslate("Add"); else etranslate("Save"); ?>" />
-	<?php if ( ! $newgroup ) { ?>
-		<input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
-	<?php } ?>
+ <br /><input type="submit" name="action" value="<?php if ( $newgroup ) etranslate("Add"); else etranslate("Save"); ?>" />
+ <?php if ( ! $newgroup ) { ?>
+  <input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
+ <?php } ?>
 </td></tr>
 </table>
 </form>

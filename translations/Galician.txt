@@ -1500,7 +1500,7 @@ Current User: Usuario actual
 # Assistants:
 #
 # << MISSING >>
-# Yours assistants:
+# Your assistants:
 
 
 ###############################################

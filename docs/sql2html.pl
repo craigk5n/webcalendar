@@ -3,11 +3,13 @@
 # sql2html.pl
 #
 # Description:
-#	Create HTML documentation from a sql file.
+# Create HTML documentation from a sql file.
 #
+# Usage:
+# perl sql2html.pl < ../install/sql/tables-mysql.sql > WebCalendar-Database.html
 # History:
-#	13-Apr-2004	xHTML & CSS work
-#	12-Oct-2002	Created
+# 13-Apr-2004 xHTML & CSS work
+# 12-Oct-2002 Created
 #
 #######################################################################
 
@@ -166,33 +168,33 @@ $now = sprintf "%02d-%s-%04d",
 print<<EOF;
 <html>\n
 <head>\n
-	<title>WebCalendar Database Documentation</title>\n
+ <title>WebCalendar Database Documentation</title>\n
 </head>\n
 <body style="background-color:#FFFFFF;">\n
 <h2>WebCalendar Database Documentation</h2>\n
 <table style="border-width:0px;">\n
-	<tr><td>
-		Home Page:</td><td>
-		<a href="http://webcalendar.sourceforge.net/">http://webcalendar.sourceforge.net/</a>
-	</td></tr>
-	<tr><td>
-		Author:</td><td>
-		<a href="http://www.cknudsen.com">Craig Knudsen</a>, <a href="mailto:cknudsen\@cknudsen.com">cknudsen\@cknudsen.com</a>
-	</td></tr>
-	<tr><td style="vertical-align:top;">
-		Version:</td><td>
-		$v<br />
-		\$Id\$
-	</td></tr>
-	<tr><td style="vertical-align:top;">
-		Last updated:</td><td>\$Date\$<br/>(by \$Author\$)</td><td>
-	</td></tr>
+ <tr><td>
+  Home Page:</td><td>
+  <a href="http://webcalendar.sourceforge.net/">http://webcalendar.sourceforge.net/</a>
+ </td></tr>
+ <tr><td>
+  Author:</td><td>
+  <a href="http://www.cknudsen.com">Craig Knudsen</a>, <a href="mailto:cknudsen\@cknudsen.com">cknudsen\@cknudsen.com</a>
+ </td></tr>
+ <tr><td style="vertical-align:top;">
+  Version:</td><td>
+  $v<br />
+  \$Id\$
+ </td></tr>
+ <tr><td style="vertical-align:top;">
+  Last updated:</td><td>\$Date\$<br/>(by \$Author\$)</td><td>
+ </td></tr>
 </table>
 
 <blockquote>
-	This file is generated from <tt>tables-mysql.sql</tt>. Below are the definitions of all WebCalendar tables along with some descriptions of how each table is used. Column names shown in red are the primary keys for that table.
-	<br /><br />
-	If you update the SQL for WebCalendar, use the sql2html.pl script to regenerate this file.
+ This file is generated from <tt>tables-mysql.sql</tt>. Below are the definitions of all WebCalendar tables along with some descriptions of how each table is used. Column names shown in red are the primary keys for that table.
+ <br /><br />
+ If you update the SQL for WebCalendar, use the sql2html.pl script to regenerate this file.
 </blockquote>
 <br /><br />
 

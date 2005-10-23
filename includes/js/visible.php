@@ -14,9 +14,9 @@ IE4 = (document.all) ? 1 : 0;
 // W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
 W3C = (document.getElementById) ? 1 : 0; 
 
-function makeVisible ( name ) {
-  var ele;
-
+function makeVisible ( name, hide ) {
+ //alert (name);
+ var ele;
   if ( W3C ) {
     ele = document.getElementById(name);
   } else if ( NS4 ) {
@@ -29,16 +29,23 @@ function makeVisible ( name ) {
     ele.visibility = "show";
   } else {  // IE4 & W3C & Mozilla
     ele.style.visibility = "visible";
+    if ( hide )
+     ele.style.display = "";
   }
 }
 
-function makeInvisible ( name ) {
-  if (W3C) {
+function makeInvisible ( name, hide ) {
+  //alert (name);
+ if (W3C) {
     document.getElementById(name).style.visibility = "hidden";
+    if ( hide )
+      document.getElementById(name).style.display = "none";
   } else if (NS4) {
     document.layers[name].visibility = "hide";
   } else {
     document.all[name].style.visibility = "hidden";
+    if ( hide )
+      document.all[name].style.display = "none";
   }
 }
 

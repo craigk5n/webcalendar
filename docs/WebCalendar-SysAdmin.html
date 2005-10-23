@@ -81,7 +81,7 @@ h2 {
 </head>
 <body>
 <h1>WebCalendar System Administrator's Guide</h1>
-<p><strong>WebCalendar Version:</strong> 1.0.0</p>
+<p><strong>WebCalendar Version: 1.1</strong></p>
 
 <h2>Table of Contents</h2>
 <ul>
@@ -591,12 +591,28 @@ input path/table-ibase.sql;</strong></pre>
    <dd>Specifies the default language setting for all users.</dd>
   <dt>Fonts</dt>
    <dd>Specifies your preferred font.  Multiple font names should be comma-separated.</dd>
-  <dt>Preferred View</dt>
+  <dt> Custom script/stylesheet</dt>
+   <dd>...</dd>
+	<dt> Custom header</dt>
+   <dd>...</dd>
+	<dt> Custom trailer</dt>
+   <dd>...</dd>
+ <dt>Allow external file for header/script/trailer</dt>
+   <dd>...</dd>
+	<dt>Allow user to override header/trailer</dt>
+   <dd>...</dd>	
+	<dt>Preferred View</dt>
    <dd>Specify if users should see the day, week, month, or year after logging in.</dd>
   <dt>Display weekends in view</dt>
-  <dd>Specifies default setting for if Saturdays and Sundays should appear in the 
+   <dd>Specifies default setting for if Saturdays and Sundays should appear in the 
   calendar when viewing a month or week</dd>
-  <dt>Date format</dt>
+  <dt>Display days with events in bold in month and year views</dt>
+   <dd>Highlights and bolds the text for days containing events in the mini-calendars used in day, month and year calendars.</dd>
+  <dt>Display description in printer day view</dt>
+   <dd>...</dd>
+  <dt>Server Timezone Selection</dt>
+   <dd>Allows you to manually set your server's timezone selection. This has no effect on the OS Timezone settings, but will be used as the default value for users until they set their value.</dd>
+   <dt>Date format</dt>
    <dd>Specifies the default format for displaying dates</dd>
   <dt>Time format</dt>
    <dd>Specifies the default time format as either 12-hour (3:45pm) or 24-hour (15:14)</dd>
@@ -609,6 +625,8 @@ input path/table-ibase.sql;</strong></pre>
   <dt>Auto-refresh time</dt>
   <dd>Specifies how long to wait before the auto-refresh should force a page 
   to be reloaded</dd>
+  <dt>Require event approvals</dt>
+  <dd>...</dd>
   <dt>Display unapproved</dt>
   <dd>Specifies whether events that have been added to a calendar but not yet 
   approved should display on the calendar (in a different color)</dd>
@@ -627,33 +645,15 @@ input path/table-ibase.sql;</strong></pre>
   able to add events to any calendar other than their own.</dd>
   <dt>Disable Repeating field</dt>
    <dd>If enabled, users will not be able to create repeating events</dd>
+  <dt>Display Site Extras in popup</dt>
+  <dd>...</dd>
+  <dt>Allow HTML in Description</dt>
+  <dd>Allow the use of HTML in the description field when creating events. In addition, with the addition of either of two optional packages (HTMLArea or FCKEditor), you can have a WYSIWYG interface. These packages are available on <a href="http://www.k5n.us/webcalendar.php?topic=Add-Ons">WebCalendar's Home Page</a></dd>
   <dt>Allow viewing other user's calendars</dt>
    <dd>If enabled, users will be able to view the calendar of another user</dd>
-  <dt>Allow public access</dt>
-  <dd>If enabled, anonymous users will be able to view the public access 
-  calendar without logging in.</dd>
-  <dt>Public access can view other users</dt>
-   <dd>If enabled, anonymous users will be able to view the calendars of other users</dd>
-  <dt>Public access can add events</dt>
-   <dd>If enabled, anonymous users will be able to submit new events.</dd>
-  <dt>Public access new events require approval</dt>
-  <dd>If enabled, events submitted to the public access calendar (by anonymous 
-  users) will require approval by an admin user.  If not enabled, then new events 
-  will appear on the public access calendar as soon as they are submitted.</dd>
   <dt>Include add event link in views</dt>
   <dd>If enabled, Views will include a link to quickly add events to the 
   specified user's calendar.</dd>
-  <dt>Allow external users</dt>
-  <dd>If enabled, the create/edit event page will contain a text area to include 
-  the names (and optional email address) of event participants that are not calendar users.</dd>
-  <dt>External users can receive email notifications</dt>
-  <dd>If enabled, event participants entered into the External Participants 
-  area will receive email notifications at the same time as calendar users (if an email 
-  address was specified for the External Participant).</dd>
-  <dt>External users can receive email reminders</dt>
-  <dd>If enabled, event participants entered into the External Participants 
-  area will receive email reminders at the same time as calendar users (if an email 
-  address was specified for the External Participant).</dd>
   <dt>Remember last login</dt>
    <dd>If enabled, when a returning calendar user reaches the login page, their login name will be pre-filled with the last login username that they entered.  (The password field will still be blank.)</dd>
   <dt>Check for event conflicts</dt>
@@ -666,6 +666,34 @@ input path/table-ibase.sql;</strong></pre>
    <dd>If enabled, users can be limited to a specific number of timed events per day</dd>
   <dt>Maximum timed events per day</dt>
    <dd>Specifies that maximum number of events that can be scheduled in one day of any one user.</dd>
+   <dt> Specify timed event length by</dt>
+   <dd>...</dd>
+ </dl>
+ <h3>Public Access</h3>
+ <dl>
+   <dt>Allow public access</dt>
+  <dd>If enabled, anonymous users will be able to view the public access calendar without logging in.</dd>
+  <dt>Public access visible by default</dt>
+  <dd>If enabled, user's can go to the public access page without having to select it.</dd>
+  <dt>Public access is default participant</dt>
+  <dd>If enabled, public access will be added to every event  created.</dd>
+	<dt>Public access can view other users</dt>
+  <dd>If enabled, public access user's will be able to see the calendar of other WebCalendar users. <font color="#FF0000">Use with caution!</font></dd>
+	<dt>Public access can add events</dt>
+  <dd>If enabled, anonymous users will be able to submit new events</dd>
+	<dt>Public access new events require approval</dt>
+  <dd>If enabled, events submitted to the public access calendar (by anonymous users) will require approval by an admin user.  If not enabled, then new events will appear on the public access calendar as soon as they are submitted.</dd>
+	<dt> Public access can view participants</dt>
+  <dd>If enabled, public access users can view the names of other participants for any event that public access is a participant. <font color="#FF0000">Use with caution!</font></dd>
+	<dt>Override event name/description for public access</dt>
+  <dd>If enabled, the value of the following setting will be used to mask the name and description of events.</dd>
+	<dt>Text to display to public access</dt>
+  <dd>Text to display as explained above.</dd>
+ </dl> 
+  <h3>User Access Control</h3>
+ <dl>
+  <dt> User Access Control enabled</dt>
+   <dd>...</dd>
  </dl>
  <h3>Groups</h3>
  <dl>
@@ -674,10 +702,46 @@ input path/table-ibase.sql;</strong></pre>
   <dt>User sees only his group</dt>
    <dd>If enabled, users will be unaware of any users that are not in the same group as the user.</dd>
  </dl>
- <h3>Categories</h3>
+ <h3>NonUser Calendars</h3>
  <dl>
-  <dt>Categories enabled</dt>
+  <dt>Nonuser Calendars Enabled</dt>
+   <dd>...</dd>
+  <dt>Display in participants list at</dt>
+   <dd>...</dd>
+ </dl>
+ <h3>Other</h3>
+ <dl>
+  <dt>Reports enabled</dt>
+   <dd>If enabled, user's will be able to create and generate reports.</dd>
+  <dt>Allow remote subscriptions</dt>
+   <dd>If enabled, user's will be able enable their own subscription settings. There are currently two main ways to publish events with WebCalendar.</dd>
+	 	 <ul style="margin-left:70px";><li ><strong>publish.php</strong> will provide outbound publishing to a calendar client</li>
+	 <li><strong>icalclient.php</strong> will provide two-way full synchronization between WebCalendar and another calendar client such as Sunbird, Apple Ical.</li>
+	 	 </ul>
+
+  <dt>Enable RSS feed</dt>
+   <dd>If enabled, a link is added to all pages that permits some browsers to create a persistent RSS feed to that page. Currently, only Firefox supports this functionality. Also, the setting will enable the use of the rss.php script generate RSS feeds to RSS clients. User's will also be required to enable this feature in their respective preference settings.</dd>
+   <dt>Categories enabled</dt>
    <dd>Specifies if category features should be enabled</dd>
+  <dt>Display small task list</dt>
+   <dd>If enabled, a small task window will be displayed in the month and day calendars. These tasks are compatible with the VTODO component of RFC2445 (ical)</dd>
+  <dt>Display tasks in Calendars</dt>
+   <dd>If enabled, tasks are displayed along with events in calendars. The date they appear is the due date but if the due date has passed without the task being completed, the task will shift to the current day.</dd>
+  <dt>Export VTIMEZONE in ics files</dt>
+   <dd>If enabled, a complete VTIMEZONE component will be exported with .ics files as necessary. This function requires considerable processing time, so it should not be enabled unless needed.</dd>
+  <dt>Allow external users</dt>
+  <dd>If enabled, the create/edit event page will contain a text area to include 
+  the names (and optional email address) of event participants that are not calendar users.</dd>
+  <dt>External users can receive email notifications</dt>
+  <dd>If enabled, event participants entered into the External Participants area will receive email notifications at the same time as calendar users (if an email address was specified for the External Participant).</dd>
+  <dt>External users can receive email reminders</dt>
+  <dd>If enabled, event participants entered into the External Participants area will receive email reminders at the same time as calendar users (if an email address was specified for the External Participant).</dd>
+  <dt>Allow self-registration</dt>
+   <dd>If enabled, new users are permitted to setup their own accounts and log into WebCalendar without admin intervention. <font color="#FF0000">Use with caution!</font></dd>
+  <dt>Restrict self-registration to blacklist</dt>
+   <dd>If enabled, admin can configure the includes/blacklist.php to restrict or permit self-registration based on the user's IP. This will restrict access to existing users or new user's set up by admin. Details and examples are available in the top of the file.</dd>
+   <dt>Generate passwords and send to new users</dt>
+   <dd>If enabled, self-registration user's will be emailed a randomly generated password that they can then use to access WebCalendar normally. Hopefully, this will prevent some spammers and hackers from misusing the self-registration process.</dd>
  </dl>
  <h3>Email</h3>
  <dl>
@@ -700,7 +764,9 @@ input path/table-ibase.sql;</strong></pre>
  <dl>
   <dt>Allow user to customize colors</dt>
    <dd>Specifies whether color settings should be available to users in their Preferences</dd>
-  <dt>Document background</dt>
+  <dt> Enable gradient images for background colors</dt>
+     <dd>If enabled, the background of calendar table cells will be rendered with a gradient image based on the background color selected for that cell type. This option requires that php be compiled with the <strong>gd module</strong>.</dd>
+     <dt>Document background</dt>
      <dd>Specifies the background color of all pages</dd>
   <dt>Document title</dt>
      <dd>Specifies the color of page title on each page</dd>
@@ -932,7 +998,7 @@ input path/table-ibase.sql;</strong></pre>
         <a href="WebCalendar-UserManual.html#views">setup a view</a>
         that contains the calendar of one or more of the NonUser calendars.</li>
     </ul>
-    </dd>
+   </dd>
  <dt>How do I change the title "Public Access" at the top of
  the calendar?</dt>
   <dd>In the file <tt>translations/English-US.txt</tt>,
@@ -960,6 +1026,12 @@ input path/table-ibase.sql;</strong></pre>
     you must have "Public Access" enabled in System Settings).
     You can override this with another user's calendar.
     (See <tt>upcoming.php</tt> for instructions on this.)
+		<br /><br />
+		If you would like to display a small calendar (like the ones on the month view), you can add the
+		following example. There are some configuration options available in the top of this file as well.
+    You can then use an <tt>iframe</tt> elsewhere on your web site as
+    in the example below:
+    <pre>&lt;iframe height="200" width="180" scrolling="yes" src="minical.php">&lt;/iframe></pre>
   </dd>
  <dt>How do I customize the appearance of WebCalendar so that it matches
      the rest of my site?</dt>

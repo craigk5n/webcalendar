@@ -378,7 +378,7 @@ function do_tz_import ( $file_path= "timezone/") {
   return $error;
  } else {
    //Delete any existing entry
-   $sql = "DELETE FROM webcal_config WHERE cal_setting = 'webcal_tz_version'";
+   $sql = "DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_TZ_VERSION'";
    if ( ! dbi_query ( $sql ) ) {
     $error = "Database error: " . dbi_error ();
     return $error;
@@ -389,7 +389,7 @@ function do_tz_import ( $file_path= "timezone/") {
    } else {
     $data = trim ( $data ) ;
      $sql = "INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-       "VALUES ( 'webcal_tz_version', '" . $data . "' )";
+       "VALUES ( 'WEBCAL_TZ_VERSION', '" . $data . "' )";
       if ( ! dbi_query ( $sql ) ) {
         $error = "Database error: " . dbi_error ();
        return $error;

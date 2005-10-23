@@ -36,6 +36,11 @@ if ( $id > 0 ) {
     $is_private = true;
     etranslate("This is a private event and may not be added to your calendar.");
     exit;
+  } else   if ( $row[0] == "C" && ! $is_my_event && !$is_assistant  && !$is_nonuser_admin ) {
+    //assistants are allowed to see confidential stuff
+    $is_private = true;
+    etranslate("This is a confidential event and may not be added to your calendar.");
+    exit;
   } else {
     $is_private = false;
   }

@@ -3,23 +3,22 @@
  * $Id$
  *
  * Description:
- *	Presents page to edit/add an event
+ * Presents page to edit/add an event
  *
  * Notes:
- *	If htmlarea is installed, users can use WYSIWYG editing.
- *	SysAdmin must enable HTML for event full descriptions.
- *	This can be done by installing HTMLArea (which has been
- *	discontinued) or FCKEditor.  See the WebCalendar home page
- *	for download and install instructions for these packages.
+ * If htmlarea is installed, users can use WYSIWYG editing.
+ * SysAdmin must enable HTML for event full descriptions.
+ * This can be done by installing HTMLArea (which has been
+ * discontinued) or FCKEditor.  See the WebCalendar home page
+ * for download and install instructions for these packages.
  *
- *	This file will not pass XHTML validation with HTMLArea enabled
- *	(Not sure about FCKEditor...)
+ * This file will not pass XHTML validation with HTMLArea enabled
+ * (Not sure about FCKEditor...)
  */
 include_once 'includes/init.php';
-include_once 'includes/site_extras.php';
 
 load_user_categories ();
-
+   
 // Default for using tabs is enabled
 if ( empty ( $EVENT_EDIT_TABS ) )
   $EVENT_EDIT_TABS = 'Y'; // default
@@ -48,7 +47,7 @@ if ( empty ( $date ) && empty ( $month ) ) {
 // Note: HTMLArea has been discontinued, so FCKEditor is preferred.
 $use_htmlarea = false;
 $use_fckeditor = false;
-if ( $allow_html_description == "Y" ){
+if ( $ALLOW_HTML_DESCRIPTION == "Y" ){
   if ( file_exists ( "includes/FCKeditor-2.0/fckeditor.js" ) &&
     file_exists ( "includes/FCKeditor-2.0/fckconfig.js" ) ) {
     $use_fckeditor = true;
@@ -57,8 +56,11 @@ if ( $allow_html_description == "Y" ){
   }
 }
 
-$external_users = "";
-$participants = array ();
+$external_users = $byweekno = $byyearday = $rpt_count = $catNames = $catList="";
+$participants = $exceptions = $inclusions = array();
+$byday = $bymonth = $bymonthday = $bysetpos = array();
+
+$wkst = "MO";
 
 if ( $readonly == 'Y' || $is_nonuser ) {
   $can_edit = false;
@@ -69,7 +71,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   }
   $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
     "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-    "cal_name, cal_description, cal_group_id " .
+    "cal_name, cal_description, cal_group_id, cal_location " .
     "FROM webcal_entry WHERE cal_id = " . $id;
   $res = dbi_query ( $sql );
   if ( $res ) {
@@ -127,6 +129,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     $name = $row[9];
     $description = $row[10];
     $parent = $row[11];
+    $location = $row[12];
     // check for repeating event info...
     // but not if we are overriding a single entry of an already repeating
     // event... confusing, eh?
@@ -135,13 +138,11 @@ if ( $readonly == 'Y' || $is_nonuser ) {
       $rpt_end = 0;
       $rpt_end_date = $cal_date;
       $rpt_freq = 1;
-      $rpt_days = "nnnnnnn";
-      $rpt_sun = $rpt_mon = $rpt_tue = $rpt_wed =
-        $rpt_thu = $rpt_fri = $rpt_sat = false;
     } else {
-      $res = dbi_query ( "SELECT cal_id, cal_type, cal_end, " .
-        "cal_frequency, cal_days FROM webcal_entry_repeats " .
-        "WHERE cal_id = $id" );
+      $res = dbi_query ( "SELECT cal_id, cal_type, cal_end, cal_endtime, " .
+        "cal_frequency, cal_byday, cal_bymonth, cal_bymonthday, cal_bysetpos, " .  
+        "cal_byweekno, cal_byyearday, cal_wkst, cal_count  " .
+    "FROM webcal_entry_repeats WHERE cal_id = $id" );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
           $rpt_type = $row[1];
@@ -150,30 +151,82 @@ if ( $readonly == 'Y' || $is_nonuser ) {
           else
             $rpt_end = 0;
           $rpt_end_date = $row[2];
-          $rpt_freq = $row[3];
-          $rpt_days = $row[4];
-          $rpt_sun  = ( substr ( $rpt_days, 0, 1 ) == 'y' );
-          $rpt_mon  = ( substr ( $rpt_days, 1, 1 ) == 'y' );
-          $rpt_tue  = ( substr ( $rpt_days, 2, 1 ) == 'y' );
-          $rpt_wed  = ( substr ( $rpt_days, 3, 1 ) == 'y' );
-          $rpt_thu  = ( substr ( $rpt_days, 4, 1 ) == 'y' );
-          $rpt_fri  = ( substr ( $rpt_days, 5, 1 ) == 'y' );
-          $rpt_sat  = ( substr ( $rpt_days, 6, 1 ) == 'y' );
+          $rpt_end_time = $row[3];
+          $rpt_freq = $row[4];
+          $byday = explode(",",$row[5]);
+          $bymonth = explode(",",$row[6]);
+          $bymonthday = explode(",", $row[7]);
+          $bysetpos = explode(",", $row[8]);
+          $byweekno = $row[9];
+          $byyearday = $row[10];
+          $wkst = $row[11];
+          $rpt_count = $row[12];
+               
+          //Check to see if Weekends Only is applicable
+          $weekdays_only = ( $rpt_type == 'daily' && $byday == 'MO,TU,WE,TH,FR' ? true : false );
         }
       }
     }
-    
+   dbi_free_result ( $res );
+    //determine if Expert mode needs to be set
+    $expert_mode = ( isset ( $rpt_count ) || isset ($byyearday ) || isset($byweekno) ||
+      isset ($bysetpos) || isset($bymonthday) || isset ($bymonth) || isset($byday));
+  
+    //Get Repeat Exceptions
+  $sql = "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = $id";
+    $res = dbi_query ( $sql );
+    if ( $res ) {
+      while ( $row = dbi_fetch_row ( $res ) ) {
+        if ( $row[1] == 1 ) {
+          $exceptions[] = $row[0];
+        } else {
+          $inclusions[] = $row[0];   
+        }
+      }
+   dbi_free_result ( $res );
+    }
   }
-  $sql = "SELECT cal_login, cal_category FROM webcal_entry_user WHERE cal_id = $id";
+  //get global categories
+  $sql = "SELECT  webcal_entry_categories.cat_id, cat_name " .
+    " FROM webcal_entry_categories, webcal_categories " .
+      " WHERE webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
+   " webcal_entry_categories.cal_id = $id  AND " . 
+      " webcal_categories.cat_owner IS NULL ";
+  $res = dbi_query ( $sql );
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+     $cat_id[] = "-" .$row[0];
+     $cat_name[] = $row[1] . "*";    
+    }
+  dbi_free_result ( $res );
+ }
+  //get user's categories 
+    $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
+      $is_admin ) ) ? $user : $login;
+    $sql = "SELECT  DISTINCT cal_login, webcal_entry_categories.cat_id, " .
+    " webcal_entry_categories.cat_owner, cat_name " .
+    " FROM webcal_entry_user, webcal_entry_categories, webcal_categories " .
+      " WHERE ( webcal_entry_user.cal_id = webcal_entry_categories.cal_id AND " .
+      " webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
+   " webcal_entry_user.cal_id = $id ) AND " . 
+      " webcal_categories.cat_owner = '" . $cat_owner . "'".
+   " ORDER BY webcal_entry_categories.cat_order";
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants[$row[0]] = 1;
-      if ($login == $row[0]) $cat_id = $row[1];
-      if ( ( $is_assistant  || $is_admin ) && $user == $row[0]) $cat_id = $row[1];
+      if ( $login == $user || $is_assistant  || $is_admin ) {
+     $cat_id[] = $row[1];
+     $cat_name[] = $row[3];    
+   }
     }
+  dbi_free_result ( $res );
+  if ( ! empty ( $cat_name ) ) $catNames = implode("," , array_unique($cat_name));
+    if ( ! empty ( $cat_id ) ) $catList = implode(",", array_unique($cat_id));
   }
-  if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" ) {
+
+ 
+  if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == "Y" ) {
     $external_users = event_get_external_users ( $id );
   }
 } else {
@@ -195,7 +248,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   if ( $readonly == "N" ) {
     // If public, then make sure we can add events
     if ( $login == '__public__' ) {
-      if ( $public_access_can_add )
+      if ( $PUBLIC_ACCESS_CAN_ADD )
         $can_edit = true;
     } else {
       // not public user
@@ -223,6 +276,8 @@ if ( empty ( $name ) )
   $name = "";
 if ( empty ( $description ) )
   $description = "";
+if ( empty ( $location ) )
+  $location = "";
 if ( empty ( $priority ) )
   $priority = 0;
 if ( empty ( $access ) )
@@ -252,7 +307,7 @@ if ( empty ( $cal_date ) || ! $cal_date ) {
 }
 
 //Setup to display user's timezone difference if Admin or Assistane
-//Even thought event is stored in GTM, an Assistant may need to know that
+//Even thought event is stored in GMT, an Assistant may need to know that
 //the boss is in a different Timezone
 if ( $is_assistant || $is_admin && ! empty ( $user ) ) { 
   $tz_offset = get_tz_offset ( $TIMEZONE, '', $cal_date );
@@ -270,26 +325,26 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
     $TZ_notice .= translate ("Time entered here is based on your Timezone") . ".)"; 
   }
 }
-if ( $allow_html_description == "Y" ){
+if ( $ALLOW_HTML_DESCRIPTION == "Y" ){
   // Allow HTML in description
   // If they have installed the htmlarea widget, make use of it
   $textareasize = 'rows="15" cols="50"';
   if ( $use_fckeditor ) {
     $textareasize = 'rows="20" cols="50"';
-    $BodyX = 'onload="timetype_handler();rpttype_handler()"';
+    $BodyX = 'onload="timetype_handler();rpttype_handler();toggle_until()"';
     $INC = array ( 'js/edit_entry.php', 'js/visible.php' );
   } else if ( $use_htmlarea ) {
-    $BodyX = 'onload="initEditor();timetype_handler();rpttype_handler()"';
+    $BodyX = 'onload="initEditor();timetype_handler();rpttype_handler();toggle_until()"';
     $INC = array ( 'htmlarea/htmlarea.php', 'js/edit_entry.php',
       'js/visible.php', 'htmlarea/core.php' );
   } else {
     // No htmlarea files found...
-    $BodyX = 'onload="timetype_handler();rpttype_handler()"';
+    $BodyX = 'onload="timetype_handler();rpttype_handler();toggle_until()"';
     $INC = array ( 'js/edit_entry.php', 'js/visible.php' );
   }
 } else {
   $textareasize = 'rows="5" cols="40"';
-  $BodyX = 'onload="timetype_handler();rpttype_handler()"';
+  $BodyX = 'onload="timetype_handler();rpttype_handler();toggle_until()"';
   $INC = array('js/edit_entry.php','js/visible.php');
 }
 
@@ -318,7 +373,7 @@ if ( ! empty ( $override ) ) {
 if ( $is_assistant || $is_nonuser_admin || ! empty ( $user ) )
    echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
 
-// if has cal_group_id was set, need to send parent = $parent
+// if has cal_group_id was set, need to set parent = $parent
 if ( ! empty ( $parent ) )
    echo "<input type=\"hidden\" name=\"parent\" value=\"$parent\" />\n";
 
@@ -328,10 +383,10 @@ if ( ! empty ( $parent ) )
 <?php if ( $useTabs ) { ?>
 <div id="tabs">
  <span class="tabfor" id="tab_details"><a href="#tabdetails" onclick="return showTab('details')"><?php etranslate("Details") ?></a></span>
- <?php if ( $disable_participants_field != "Y" ) { ?>
+ <?php if ( $DISABLE_PARTICIPANTS_FIELD != "Y" ) { ?>
    <span class="tabbak" id="tab_participants"><a href="#tabparticipants" onclick="return showTab('participants')"><?php etranslate("Participants") ?></a></span>
  <?php } ?> 
- <?php if ( $disable_repeating_field != "Y" ) { ?>
+ <?php if ( $DISABLE_REPEATING_FIELD != "Y" ) { ?>
    <span class="tabbak" id="tab_pete"><a href="#tabpete" onclick="return showTab('pete')"><?php etranslate("Repeat") ?></a></span>
  <?php } ?>
 </div>
@@ -344,13 +399,12 @@ if ( ! empty ( $parent ) )
  <a name="tabdetails"></a>
  <div id="tabscontent_details">
 <?php } ?>
-  <table style="border-width:0px;">
+  <table border="0">
    <tr><td style="width:14%;" class="tooltip" title="<?php etooltip("brief-description-help")?>">
-    <label for="entry_brief"><?php etranslate("Brief Description")?>:</label></td><td>
+    <label for="entry_brief"><?php etranslate("Brief Description")?>:</label></td><td colspan="2">
     <input type="text" name="name" id="entry_brief" size="25" value="<?php 
      echo htmlspecialchars ( $name );
-    ?>" /></td><td style="width:35%;">
-   </td></tr>
+    ?>" /></td></tr>
    <tr><td style="vertical-align:top;" class="tooltip" title="<?php etooltip("full-description-help")?>">
     <label for="entry_full"><?php etranslate("Full Description")?>:</label></td><td>
     <textarea name="description" id="entry_full" <?php
@@ -359,20 +413,21 @@ if ( ! empty ( $parent ) )
      echo htmlspecialchars ( $description );
     ?></textarea></td><td style="vertical-align:top;">
 
-<?php if (( ! empty ( $categories ) ) || ( $disable_access_field != "Y" ) || 
-         ( $disable_priority_field != "Y" ) ){ // new table for extra fields ?>
-    <table>
+  
+<?php if (( ! empty ( $categories ) ) || ( $DISABLE_ACCESS_FIELD != "Y" ) || 
+         ( $DISABLE_PRIORITY_FIELD != "Y" ) ){ // new table for extra fields ?>
+    <table border="0" width="90%">
 <?php } ?>
-<?php if ( $disable_access_field != "Y" ) { ?>
+<?php if ( $DISABLE_ACCESS_FIELD != "Y" ) { ?>
       <tr><td class="tooltip" title="<?php etooltip("access-help")?>">
-       <label for="entry_access"><?php etranslate("Access")?>:</label></td><td>
+       <label for="entry_access"><?php etranslate("Access")?>:</label></td><td width="80%">
        <select name="access" id="entry_access">
         <option value="P"<?php if ( $access == "P" || ! strlen ( $access ) ) echo " selected=\"selected\"";?>><?php etranslate("Public")?></option>
         <option value="R"<?php if ( $access == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Confidential")?></option>
        </select>
        </td></tr>
 <?php } ?>
-<?php if ( $disable_priority_field != "Y" ) { ?>
+<?php if ( $DISABLE_PRIORITY_FIELD != "Y" ) { ?>
      <tr><td class="tooltip" title="<?php etooltip("priority-help")?>">
       <label for="entry_prio"><?php etranslate("Priority")?>:&nbsp;</label></td><td>
       <select name="priority" id="entry_prio">
@@ -383,25 +438,25 @@ if ( ! empty ( $parent ) )
      </td></tr>
 <?php } ?>
 <?php if ( ! empty ( $categories ) ) { ?>
-     <tr><td class="tooltip" title="<?php etooltip("category-help")?>">
-      <label for="entry_categories"><?php etranslate("Category")?>:&nbsp;</label></td><td>
-      <select name="cat_id" id="entry_categories">
-       <option value=""><?php etranslate("None")?></option>
-     <?php
-      foreach( $categories as $K => $V ){
-       echo "       <option value=\"$K\"";
-       if ( $cat_id == $K ) echo " selected=\"selected\"";
-       echo ">$V</option>\n";
-      }
-     ?>
-      </select>
+     <tr><td class="tooltip" title="<?php etooltip("category-help")?>" valign="top">
+      <label for="entry_categories"><?php etranslate("Category")?>:<br /></label>
+   <input type="button" value="Edit" onClick="editCats(event)" /></td><td valign="top">
+      <input  readonly=""type="text" name="catnames" 
+     value="<?php echo $catNames ?>"  size="50" 
+    onClick="alert('<?php etranslate("Use the Edit button to make changes.") ?>')"/>
+   <input  type="hidden" name="cat_id" id="entry_categories" value="<?php echo $catList ?>" />
      </td></tr>
 <?php } //end if (! empty ($categories)) ?>
-<?php if (( ! empty ( $categories ) ) || ( $disable_access_field != "Y" ) || 
-         ( $disable_priority_field != "Y" ) ){ // end the table ?>
+<?php if (( ! empty ( $categories ) ) || ( $DISABLE_ACCESS_FIELD != "Y" ) || 
+         ( $DISABLE_PRIORITY_FIELD != "Y" ) ){ // end the table ?>
    </table>
     
 <?php } ?>
+  </td></tr>
+ <tr><td class="tooltip" title="<?php etooltip("location-help")?>">
+   <?php etranslate("Location")?>:</td><td colspan="2">
+    <input type="text" name="location" size="55" 
+   value="<?php echo htmlspecialchars ( $location ); ?>" />
   </td></tr>
   <tr><td class="tooltip" title="<?php etooltip("date-help")?>">
    <?php etranslate("Date")?>:</td><td colspan="2">
@@ -456,7 +511,7 @@ if ( $TIME_FORMAT == "12" ) {
   $dur_h = (int)( $duration / 60 );
   $dur_m = $duration - ( $dur_h * 60 );
 
-if ($GLOBALS['TIMED_EVT_LEN'] != 'E') { ?>
+if ($TIMED_EVT_LEN != 'E') { ?>
    </td></tr>
   <tr id="timeentryduration"><td>
   <span class="tooltip" title="<?php 
@@ -537,6 +592,25 @@ if ( $allday != "Y" && $hour == -1 ) {
 // load any site-specific fields and display them
 if ( $id > 0 )
   $extras = get_site_extra_fields ( $id );
+  //if we have more than one reminder (per RFC2445) then append some data
+  //to the $site_extras array for diplay
+  if ( ! empty ( $extras ) ) {
+   $rem_count = 0;
+    foreach ( $extras as $K => $V) {
+      if ( $V['cal_type'] == EXTRA_REMINDER )
+        $rem_count++;
+      if ( $rem_count > 0 ) {
+      $rem_array = array ( $V['cal_name'], 'Send Reminder', EXTRA_REMINDER, $V['cal_data'], 6);
+     $site_additions[] = $rem_array;
+     $site_extras = array_merge ( $site_extras, $rem_array );
+    } 
+    }
+ } 
+  if ( ! empty ( $site_additions ) ) {
+   sort ( $site_additions );
+    $serial_site_extras = base64_encode( serialize ( $site_additions ) );
+    echo "<input type=\"hidden\" name=\"serial_site_extras\" value=\'$serial_site_extras\' />";
+ }
 for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   $extra_name = $site_extras[$i][0];
   $extra_descr = $site_extras[$i][1];
@@ -594,8 +668,8 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     echo "<label><input type=\"radio\" name=\"" . $extra_name . "\" value=\"1\"";
     if ( empty ( $id ) ) {
       // adding event... check default
-      if ( ( $extra_arg2 & EXTRA_REMINDER_DEFAULT_YES ) > 0 )
-        $rem_status = 1;
+      if ( ( $extra_arg2 & EXTRA_REMINDER_DEFAULT_YES ) > 0 ) 
+      $rem_status = 1;
     } else {
       // editing event... check status
       if ( ! empty ( $extras[$extra_name]['cal_remind'] ) )
@@ -665,17 +739,17 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
 <table>
 <?php
 // Only ask for participants if we are multi-user.
-$show_participants = ( $disable_participants_field != "Y" );
+$show_participants = ( $DISABLE_PARTICIPANTS_FIELD != "Y" );
 if ( $is_admin )
   $show_participants = true;
-if ( $login == "__public__" && $public_access_others != "Y" )
+if ( $login == "__public__" && $PUBLIC_ACCESS_OTHERS != "Y" )
   $show_participants = false;
 
 if ( $single_user == "N" && $show_participants ) {
   $userlist = get_my_users ();
-  if ($nonuser_enabled == "Y" ) {
+  if ($NONUSER_ENABLED == "Y" ) {
     $nonusers = get_nonuser_cals ();
-    $userlist = ($nonuser_at_top == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+    $userlist = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
   $num_users = 0;
   $size = 0;
@@ -697,8 +771,8 @@ if ( $single_user == "N" && $show_participants ) {
           $users .= " selected=\"selected\"";
       }
       if ( $l == '__public__' &&
-        ! empty ($public_access_default_selected) &&
-         $public_access_default_selected == 'Y' )
+        ! empty ($PUBLIC_ACCESS_DEFAULT_SELECTED) &&
+         $PUBLIC_ACCESS_DEFAULT_SELECTED == 'Y' )
            $users .= " selected=\"selected\"";
     }
     $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>\n";
@@ -713,7 +787,7 @@ if ( $single_user == "N" && $show_participants ) {
  translate("Participants") . ":</label></td><td>\n";
   print "<select name=\"participants[]\" id=\"entry_part\" size=\"$size\" multiple=\"multiple\">$users\n";
   print "</select>\n";
-  if ( $groups_enabled == "Y" ) {
+  if ( $GROUPS_ENABLED == "Y" ) {
     echo "<input type=\"button\" onclick=\"selectUsers()\" value=\"" .
       translate("Select") . "...\" />\n";
   }
@@ -722,7 +796,7 @@ if ( $single_user == "N" && $show_participants ) {
   print "</td></tr>\n";
 
   // external users
-  if ( ! empty ( $allow_external_users ) && $allow_external_users == "Y" ) {
+  if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == "Y" ) {
     print "<tr title=\"" .
       tooltip("external-participants-help") . "\"><td style=\"vertical-align:top;\" class=\"tooltip\">\n<label for=\"entry_extpart\">" .
       translate("External Participants") . ":</label></td><td>\n";
@@ -737,93 +811,233 @@ if ( $single_user == "N" && $show_participants ) {
 <?php } /* $useTabs */ ?>
 
 <!-- REPEATING INFO -->
-<?php if ( $disable_repeating_field != "Y" ) { ?>
+<?php if ( $DISABLE_REPEATING_FIELD != "Y" ) { ?>
 <?php if ( $useTabs ) { ?>
 <a name="tabpete"></a>
 <div id="tabscontent_pete">
 <?php } /* $useTabs */ ?>
-<table>
-<tr style="vertical-align:top;"><td class="tooltip" title="<?php etooltip("repeat-type-help")?>">
- <label for="rpttype"><?php etranslate("Repeat Type")?>:</label></td><td>
+
+<table border="0">
+ <tr>
+ <td class="tooltip" title="<?php etooltip("repeat-type-help")?>">
+ <label for="rpttype"><?php etranslate("Type")?>:</label></td><td>
  <select name="rpt_type" id="rpttype" onchange="rpttype_handler();rpttype_weekly()">
 <?php
  echo "  <option value=\"none\"" . 
   ( strcmp ( $rpt_type, 'none' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
-  translate("None") . 
- "</option>\n";
+  translate("None") . "</option>\n";
  echo "  <option value=\"daily\"" . 
   ( strcmp ( $rpt_type, 'daily' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
-  translate("Daily") . 
- "</option>\n";
+  translate("Daily") . "</option>\n";
  echo "  <option value=\"weekly\"" . 
   ( strcmp ( $rpt_type, 'weekly' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
-  translate("Weekly") . 
- "</option>\n";
+  translate("Weekly") . "</option>\n";
  echo "  <option value=\"monthlyByDay\"" . 
   ( strcmp ( $rpt_type, 'monthlyByDay' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
-  translate("Monthly") . " (" . translate("by day") . ")" . "
- </option>\n";
- echo "  <option value=\"monthlyByDayR\"" . 
-  ( strcmp ( $rpt_type, 'monthlyByDayR' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
-  translate("Monthly") . " (" . translate("by day (from end)") . ")" . 
- "</option>\n";
+  translate("Monthly") . " (" . translate("by day") . ")" . "</option>\n";
  echo "  <option value=\"monthlyByDate\"" . 
   ( strcmp ( $rpt_type, 'monthlyByDate' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
-  translate("Monthly") . " (" . translate("by date") . ")" . 
- "</option>\n";
+  translate("Monthly") . " (" . translate("by date") . ")" . "</option>\n";
+ echo "  <option value=\"monthlyBySetPos\"" . 
+  ( strcmp ( $rpt_type, 'monthlyBySetPos' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
+  translate("Monthly") . " (" . translate("by position") . ")" . "</option>\n";
  echo "  <option value=\"yearly\"" . 
   ( strcmp ( $rpt_type, 'yearly' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
-  translate("Yearly") . 
- "</option>\n";
+  translate("Yearly") . "</option>\n";
 ?>
- </select>
+ </select>&nbsp;&nbsp;&nbsp;
+<label id ="rpt_mode"><input type="checkbox" name="rptmode"  id="rptmode" 
+  value="y" onclick="rpttype_handler()" <?php echo ( ! empty ($expert_mode)?"checked=\"checked\"":"") ?>/>
+<?php etranslate("Expert Mode")?></label>
 </td></tr>
-<tr id="rptenddate" style="visibility:hidden;"><td class="tooltip" title="<?php etooltip("repeat-end-date-help")?>">
- <?php etranslate("Repeat End Date")?>:</td><td>
- <label><input type="checkbox" name="rpt_end_use" value="y" <?php 
+<tr id="rptenddate" style="visibility:hidden;">
+ <td class="tooltip" title="<?php etooltip("repeat-end-date-help")?>">
+  <label for="rpt_day"><?php etranslate("Ending")?>:</label></td>
+ <td><input  type="radio" name="rpt_end_use" id="rpt_until" value="f" <?php 
+  echo (  empty ( $rpt_end ) && empty ( $rpt_count )? " checked=\"checked\"" : "" ); 
+ ?>  onChange="toggle_until()" />&nbsp;<label><?php etranslate("Forever")?></label><br />
+ <input  type="radio" name="rpt_end_use" id="rpt_until" value="u" <?php 
   echo ( ! empty ( $rpt_end ) ? " checked=\"checked\"" : "" ); 
- ?> />&nbsp;<?php etranslate("Use end date")?></label>
+ ?> onChange="toggle_until()" />&nbsp;<label><?php etranslate("Use end date")?></label>
  &nbsp;&nbsp;&nbsp;
- <span class="end_day_selection"><?php
-  print_date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date, true )
- ?></span>
+ <span class="end_day_selection" name="rpt_end_day_select"><?php
+  print_date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date )
+ ?></span><br />
+ <input type="radio" name="rpt_end_use" id="rpt_until" value="c" <?php 
+  echo ( ! empty ( $rpt_count ) ? " checked=\"checked\"" : "" ); 
+ ?> onChange="toggle_until()" />&nbsp;<label><?php etranslate("Number of times")?></label>
+ <input type="text" name="rpt_count" id="rpt_count" size="4" maxlength="4" value="<?php echo $rpt_count; ?>" />
+ 
 </td></tr>
-<tr id="rptfreq" style="visibility:hidden;" title="<?php etooltip("repeat-frequency-help")?>"><td class="tooltip">
+
+ <tr id="rptfreq" style="visibility:hidden;" title="<?php etooltip("repeat-frequency-help")?>"><td class="tooltip">
  <label for="entry_freq"><?php etranslate("Frequency")?>:</label></td><td>
  <input type="text" name="rpt_freq" id="entry_freq" size="4" maxlength="4" value="<?php echo $rpt_freq; ?>" />
-</td></tr>
-<tr id="rptday" style="visibility:hidden;" title="<?php etooltip("repeat-day-help")?>"><td class="tooltip">
- <?php etranslate("Repeat Day")?>:&nbsp;</td><td>
- <?php
-  if( $WEEK_START != 1)
-   echo "<label><input type=\"checkbox\" name=\"rpt_sun\" value=\"y\"" 
-    . (!empty($rpt_sun)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Sunday") . 
-   "</label>\n";
-  echo "<label><input type=\"checkbox\" name=\"rpt_mon\" value=\"y\"" 
-   . (!empty($rpt_mon)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Monday") . 
-  "</label>\n";
-  echo "<label><input type=\"checkbox\" name=\"rpt_tue\" value=\"y\"" 
-   . (!empty($rpt_tue)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Tuesday") . 
-  "</label>\n";
-  echo "<label><input type=\"checkbox\" name=\"rpt_wed\" value=\"y\"" 
-   . (!empty($rpt_wed)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Wednesday") . 
-  "</label>\n";
-  echo "<label><input type=\"checkbox\" name=\"rpt_thu\" value=\"y\"" 
-   . (!empty($rpt_thu)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Thursday") . 
-  "</label>\n";
-  echo "<label><input type=\"checkbox\" name=\"rpt_fri\" value=\"y\"" 
-   . (!empty($rpt_fri)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Friday") . 
-  "</label>\n";
-  echo "<label><input type=\"checkbox\" name=\"rpt_sat\" value=\"y\"" 
-   . (!empty($rpt_sat)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Saturday") . 
-  "</label>\n";
-  if( $WEEK_START == 1)
-   echo "<label><input type=\"checkbox\" name=\"rpt_sun\" value=\"y\"" 
-    . (!empty($rpt_sun)?" checked=\"checked\"":"") . " />&nbsp;" . translate("Sunday") . 
-   "</label>\n";
- ?></td></tr>
-</table>
+ &nbsp;&nbsp;&nbsp;&nbsp;
+ <label id="weekdays_only"><input  type="checkbox" name="weekdays_only" value="y" <?php echo ( ! empty ( $weekdays_only )? " checked=\"checked\"" : "" ) ?> />
+ <?php etranslate("Weekdays Only")?></label>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span id="rptwkst">
+ <select   name="wkst">
+    <option value="MO" <?php ( strcmp ( $wkst, 'MO' ) == 0 ? " selected=\"selected\"" : "" ) ?>>MO</option>
+    <option value="SU" <?php ( strcmp ( $wkst, 'SU' ) == 0 ? " selected=\"selected\"" : "" ) ?>>SU</option>
+ </select>&nbsp;&nbsp;<label for="rptwkst" ><?php etranslate("Week Start")?></label></span>
+ </td>
+ </tr>
 
+ <tr id="rptbydayextended" style="visibility:hidden;" title="<?php etooltip("repeat-bydayextended-help")?>"><td class="tooltip">
+ <label><?php echo translate("ByDay") ?>:</label></td><td>
+ <?php
+   //display byday extended selection
+  //We use BUTTONS  in a triple state configuration, but this data will not get
+  //posted along with the form. So, we create hidden text fields to pass the data 
+  //to the form handler. If there is  a better/easier way to do this....let us know.
+   echo "<table cellpadding=\"2\" cellspacing=\"0\" border=\"1\" ><tr><td></td>";
+  for ( $rpt_byday_label =0;$rpt_byday_label <=6; $rpt_byday_label++){
+    echo "<th align=\"center\" width=\"50px\"><label >" . translate($weekday_names[$rpt_byday_label]) . "</label></th>\n";
+  }
+  echo "</tr><tr>\n<th align=\"center\">ALL</th>";
+  for ( $rpt_byday_single =0;$rpt_byday_single <=6; $rpt_byday_single++){
+    echo "<td align=\"center\"><input type=\"checkbox\" name=\"bydayext1[]\" id=\"$byday_names[$rpt_byday_single]\" value=\"$byday_names[$rpt_byday_single]\"" 
+     . (in_array($byday_names[$rpt_byday_single],$byday)?" checked=\"checked\"":"") . " />\n</td>\n";
+  }
+  echo "</tr><tr id=\"rptbydayln\" style=\"visibility:hidden;\">\n";
+  for ( $loop_ctr=1; $loop_ctr < 6; $loop_ctr++) {
+    echo "<th align=\"center\"><label>" . $loop_ctr . "/" . ($loop_ctr - 6) . "</label></th>\n";
+    for ( $rpt_byday =0;$rpt_byday <=6; $rpt_byday++){
+       $buttonvalue = (in_array($loop_ctr . $byday_names[$rpt_byday],$byday) 
+      ?$loop_ctr . $byday_names[$rpt_byday]
+     : (in_array(($loop_ctr -6) . $byday_names[$rpt_byday],$byday)
+     ?($loop_ctr -6) . $byday_names[$rpt_byday]:"        ")); 
+
+    echo "<td align=\"center\"><input type=\"hidden\" name=\"bydayext2[]\"  " .
+      " id=\"$loop_ctr$byday_names[$rpt_byday]\" value=\"$buttonvalue\" />\n" .
+     " <input  type=\"button\" name=\"byday2[]\"" .
+      " id=\"$loop_ctr$byday_names[$rpt_byday]\"" .
+      " value=\"$buttonvalue\"" .
+     " onclick=\"toggle_byday(this)\" /></td>\n";
+    }
+   echo  "</tr>\n";
+    if ( $loop_ctr  < 5 ) echo  "<tr id=\"rptbydayln$loop_ctr\" style=\"visibility:hidden;\">";
+ }
+   echo "</table>";
+?></td></tr>
+
+<tr id="rptbymonth" style="visibility:hidden;" title="<?php etooltip("repeat-month-help")?>"><td class="tooltip">
+ <?php etranslate("ByMonth")?>:&nbsp;</td><td>
+ <?php
+   //display bymonth selection
+   echo "<table cellpadding=\"5\" cellspacing=\"0\" border=\"1\"><tr>";
+  for ( $rpt_month =1;$rpt_month <=12; $rpt_month++){
+     echo "<td><label><input type=\"checkbox\" name=\"bymonth[]\" value=\"$rpt_month\"" 
+      . (in_array($rpt_month,$bymonth)?" checked=\"checked\"":"") . " />&nbsp;" . 
+   translate(date("M",mktime(0,0,0,$rpt_month))) . 
+     "</label>\n</td>";
+    if ( $rpt_month == 6 ) echo  "</tr><tr>";
+  }
+   echo "</tr></table>";
+?></td></tr>
+ 
+ 
+  <tr  id="rptbysetpos" style="visibility:hidden;" title="<?php etooltip("repeat-bysetpos-help")?>">
+ <td class="tooltip" id="BySetPoslabel">
+<?php etranslate("BySetPos")?>:&nbsp;</td><td>
+ <?php
+   //display bysetpos selection
+   echo "<table cellpadding=\"2\" cellspacing=\"0\" border=\"1\" ><tr><td></td>";
+  for ( $rpt_bysetpos_label =1;$rpt_bysetpos_label <=11; $rpt_bysetpos_label++){
+    echo "<th align=\"center\" width=\"37px\"><label >$rpt_bysetpos_label</label></th>\n";
+  }
+  echo "</tr><tr>\n";
+  for ( $loop_ctr=1; $loop_ctr <32; $loop_ctr++) {
+       $buttonvalue = (in_array($loop_ctr,$bysetpos) 
+      ?($loop_ctr):(in_array(($loop_ctr -32),$bysetpos)
+     ?($loop_ctr -32):"      ")); 
+      if ( $loop_ctr == 1 || $loop_ctr == 12  ) 
+        echo "<th align=\"center\"><label>" . $loop_ctr . "-" . ($loop_ctr + 10) . "</label></th>\n";
+      if ( $loop_ctr == 23 ) 
+        echo "<th align=\"center\"><label>" . $loop_ctr . "-31"  . "</label></th>\n";
+    echo "<td align=\"center\"><input type=\"hidden\" name=\"bysetpos2[]\"  " .
+      " id=\"bysetpos$loop_ctr\" value=\"$buttonvalue\" />\n" .
+     " <input  type=\"button\" name=\"bysetpos[]\"" .
+      " id=\"bysetpos$loop_ctr\"" .
+      " value=\"$buttonvalue\"" .
+     " onclick=\"toggle_bysetpos(this)\" /></td>\n";
+       if ( $loop_ctr == 11 || $loop_ctr == 22 ) echo  "</tr><tr>\n";
+    
+ }
+   echo "</tr></table>";
+ ?></td></tr>
+
+ <tr  id="rptbymonthdayextended" style="visibility:hidden;" title="<?php etooltip("repeat-bymonthdayextended-help")?>">
+ <td class="tooltip" id="ByMonthDaylabel">
+<?php etranslate("ByMonthDay")?>:&nbsp;</td><td>
+ <?php
+   //display bymonthday extended selection
+   echo "<table cellpadding=\"2\" cellspacing=\"0\" border=\"1\" ><tr><td></td>";
+  for ( $rpt_bymonthday_label =1;$rpt_bymonthday_label <=11; $rpt_bymonthday_label++){
+    echo "<th align=\"center\" width=\"37px\"><label >$rpt_bymonthday_label</label></th>\n";
+  }
+  echo "</tr><tr>\n";
+  for ( $loop_ctr=1; $loop_ctr <32; $loop_ctr++) {
+       $buttonvalue = (in_array($loop_ctr,$bymonthday) 
+      ?($loop_ctr):(in_array(($loop_ctr -32),$bymonthday)
+     ?($loop_ctr -32):"      ")); 
+      if ( $loop_ctr == 1 || $loop_ctr == 12  ) 
+        echo "<th align=\"center\"><label>" . $loop_ctr . "-" . ($loop_ctr + 10) . "</label></th>\n";
+      if ( $loop_ctr == 23 ) 
+        echo "<th align=\"center\"><label>" . $loop_ctr . "-31"  . "</label></th>\n";
+    echo "<td align=\"center\"><input type=\"hidden\" name=\"bymonthday[]\"  " .
+      " id=\"bymonthday$loop_ctr\" value=\"$buttonvalue\" />\n" .
+     " <input  type=\"button\" name=\"bymonthday2[]\"" .
+      " id=\"bymonthday$loop_ctr\"" .
+      " value=\"$buttonvalue\"" .
+     " onclick=\"toggle_bymonthday(this)\" /></td>\n";
+       if ( $loop_ctr == 11 || $loop_ctr == 22 ) echo  "</tr><tr>\n";
+    
+ }
+   echo "</tr></table>";
+
+ //Populate Repeat Exceptions data for later use
+ $excepts = '';
+ for ( $i = 0; $i < count ( $exceptions ); $i++ ) {
+   $excepts .= "<option -" . $exceptions[$i] . ">-" . $exceptions[$i] . "</option>\n";
+ }
+  //Populate Repeat Inclusions data for later use
+ for ( $i = 0; $i < count ( $inclusions ); $i++ ) {
+   $excepts .= "<option +" . $inclusions[$i] . ">+" . $inclusions[$i] . "</option>\n";
+ }
+?>
+ </td> 
+ </tr>
+
+
+ <tr id="rptbyweekno" style="visibility:hidden;" title="<?php etooltip("repeat-byweekno-help")?>"><td class="tooltip">
+ <?php etranslate("ByWeekNo")?>:</td><td>
+ <input type="text" name="byweekno" id="byweekno" size="50" maxlength="100" value="<?php echo $byweekno; ?>" />
+</td></tr>
+
+ <tr id="rptbyyearday" style="visibility:hidden;" title="<?php etooltip("repeat-byyearday-help")?>"><td class="tooltip">
+ <?php etranslate("ByYearDay")?>:</td><td>
+ <input type="text" name="byyearday" id="byyearday" size="50" maxlength="100" value="<?php echo $byyearday; ?>" />
+</td></tr> 
+
+ <tr id="rptexceptions" style="visibility:hidden;"  title="<?php etooltip("repeat-exceptions-help")?>">
+ <td class="tooltip">
+ <?php echo translate("Exclusions") . "/<br />" . translate("Inclusions")?>:</td><td>
+ <table bgcolor="#CCCCCC"  border="0" width="250px">
+ <tr ><td colspan="2">
+ <?php print_date_selection ( "except_", $rpt_end_date ? $rpt_end_date : $cal_date )?>
+ </td></tr><tr><td align="right" valign="top" width="100">
+ <label id="select_exceptions_not" style="visibility:<?php echo ( empty ( $excepts )? "visible" : "hidden" ) ?>;"></label>
+ <select id="select_exceptions"  name="exceptions[]"  multiple="multiple" style="visibility:<?php echo ( ! empty ( $excepts )? "visible" : "hidden" ) ?>;" size="4" >
+ <?php echo $excepts ?></select></td><td valign="top">
+  <input  align="left" type="button" name="addException"  value="<?php etranslate("Add Exception") ?>" onclick="add_exception(0)" /><br />
+   <input  align="left" type="button" name="addInclusion"  value="<?php etranslate("Add Inclusion") ?>" onclick="add_exception(1)" /><br />
+ <input  align="left" type="button" name="delSelected"  value="<?php etranslate("Delete Selected") ?>" onclick="del_selected()" />
+</td></tr></table>
+
+</td></tr></table>
 <?php if ( $useTabs ) { ?>
 </div> <!-- End tabscontent_pete -->
 <?php } /* $useTabs */ ?>

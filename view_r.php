@@ -3,48 +3,48 @@
  * $Id$
  *
  * Page Description:
- *	This is the "Week by Time" and "Week by Day" view.
- *	This view will show either a week's worth of events (type='R')
- *	or a single day of events (type='E')
- *	using a format with days across the top of the table and time
- *	showing down the left side.  (This is just like the standard
- *	layout of day.php and week.php.)
- *	However, each cell will be subdivided into
- *	however many users are part of this view.
+ * This is the "Week by Time" and "Week by Day" view.
+ * This view will show either a week's worth of events (type='R')
+ * or a single day of events (type='E')
+ * using a format with days across the top of the table and time
+ * showing down the left side.  (This is just like the standard
+ * layout of day.php and week.php.)
+ * However, each cell will be subdivided into
+ * however many users are part of this view.
  *
  * Input Parameters:
- *	id (*) - specify view id in webcal_view table
- *	date - specify the starting date of the view.
- *	  If not specified, current date will be used.
- *	friendly - if set to 1, then page does not include links or
- *	  trailer navigation.
- *	(*) required field
+ * id (*) - specify view id in webcal_view table
+ * date - specify the starting date of the view.
+ *   If not specified, current date will be used.
+ * friendly - if set to 1, then page does not include links or
+ *   trailer navigation.
+ * (*) required field
  *
  * Comments:
- *	The week view of this page will only show weekends if the
- *	user has set "display weekends in week view" in their
- *	user preferences.
+ * The week view of this page will only show weekends if the
+ * user has set "display weekends in week view" in their
+ * user preferences.
  *
- *	The week version of this page has the potential to contain
- *	a large table.  The layout will be skewed to try and fit this
- *	into a page.
- *	If you want to allow the table to grow larger than the viewable
- *	area in the browser, set the $fit_to_window_week to be false below.
- *	(You can do the same for the day view with $fit_to_window_day.)
+ * The week version of this page has the potential to contain
+ * a large table.  The layout will be skewed to try and fit this
+ * into a page.
+ * If you want to allow the table to grow larger than the viewable
+ * area in the browser, set the $fit_to_window_week to be false below.
+ * (You can do the same for the day view with $fit_to_window_day.)
  *
- *	Should we make this an option when creating/updating the view?
- *	If we did make this an option in the UI, we would need to either:
- *	(A) add a column to the webcal_view table
- *	(B) use different view types for this option ('E' and 'R' for
- *	    fit-to-window, 'G' and 'X' for expand?)
+ * Should we make this an option when creating/updating the view?
+ * If we did make this an option in the UI, we would need to either:
+ * (A) add a column to the webcal_view table
+ * (B) use different view types for this option ('E' and 'R' for
+ *     fit-to-window, 'G' and 'X' for expand?)
  *
  * Security:
- *	Must have "allow view others" enabled ($allow_view_other) in
- *	  System Settings unless the user is an admin user ($is_admin).
- *	If the view is not global, the user must be owner of the view.
- *	If the view is global, and user_sees_only_his_groups is
- *	enabled, then we remove users not in this user's groups
- *	(except for nonuser calendars... which we allow regardless of group).
+ * Must have "allow view others" enabled ($ALLOW_VIEW_OTHER) in
+ *   System Settings unless the user is an admin user ($is_admin).
+ * If the view is not global, the user must be owner of the view.
+ * If the view is global, and user_sees_only_his_groups is
+ * enabled, then we remove users not in this user's groups
+ * (except for nonuser calendars... which we allow regardless of group).
  */
 include_once 'includes/init.php';
 include_once 'includes/views.php';
@@ -220,7 +220,7 @@ else
   $tdw = floor ( ( 100 - $time_w ) / ( $end_ind - $start_ind + 1 ) );
 
 $untimed_found = false;
-$get_unapproved = ( $GLOBALS["DISPLAY_UNAPPROVED"] == "Y" );
+$get_unapproved = ( $DISPLAY_UNAPPROVED == "Y" );
 
 // Step through each user and load events for that user.
 // Store in $e_save[] (normal events) and $re_save[] (repeating events).
@@ -274,7 +274,7 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
 <?php
   if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
     echo "<br />\n<span class=\"weeknumber\">(" .
-      translate("Week") . " " . week_number ( $wkstart ) . ")</span>";
+      translate("Week") . " " . date("W", $wkstart ) . ")</span>";
   }
 ?>
 </div></div><br />

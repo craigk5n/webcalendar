@@ -53,7 +53,7 @@ $out = "<reminders>\n";
 
 // If login is public user, make sure public can view others...
 if ( $login == "__public__" && $login != $user ) {
-  if ( $public_access_others != 'Y' ) {
+  if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
     $out .= "<error>" . translate("Not authorized") . "</error>\n";
     $out .= "</reminders>\n";
     echo $out;
@@ -67,7 +67,7 @@ if ( empty ( $user ) )
 
 // If viewing different user then yourself...
 if ( $login != $user ) {
-  if ( $allow_view_other != 'Y' ) {
+  if ( $ALLOW_VIEW_OTHER != 'Y' ) {
     $out .= "<error>" . translate("Not authorized") . "</error>\n";
     $out .= "</reminders>\n";
     echo $out;
@@ -101,9 +101,9 @@ if ( $WS_DEBUG )
 // Send a reminder for a single event for a single day.
 function process_reminder ( $id, $event_date, $remind_time ) {
   global $site_extras, $WS_DEBUG,
-    $server_url, $application_name, $single_user, $single_user_login,
-    $disable_priority_field, $disable_access_field,
-    $disable_participants_field;
+    $SERVER_URL, $APPLICATION_NAME, $single_user, $single_user_login,
+    $DISABLE_PRIORITY_FIELD, $DISABLE_ACCESS_FIELD,
+    $DISABLE_PARTICIPANTS_FIELD;
 
   $out = "<reminder>\n";
 

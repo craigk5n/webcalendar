@@ -14,7 +14,7 @@
  * (*) required field
  *
  * Security:
- * Must have "allow view others" enabled ($allow_view_other) in
+ * Must have "allow view others" enabled ($ALLOW_VIEW_OTHER) in
  *   System Settings unless the user is an admin user ($is_admin).
  * If the view is not global, the user must be owner of the view.
  * If the view is global, then and user_sees_only_his_groups is
@@ -27,7 +27,7 @@ $error = "";
 
 $USERS_PER_TABLE = 6;
 
-if ( $allow_view_other == "N" && ! $is_admin ) {
+if ( $ALLOW_VIEW_OTHER == "N" && ! $is_admin ) {
   // not allowed...
   send_to_preferred_view ();
 }
@@ -118,10 +118,10 @@ if ( $all_users ) {
   // Make sure this user is allowed to see all users in this view
   // If this is a global view, it may include users that this user
   // is not allowed to see.
-  if ( ! empty ( $user_sees_only_his_groups ) &&
-    $user_sees_only_his_groups == 'Y' ) {
+  if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
+    $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
     $myusers = get_my_users ();
-    if ( ! empty ( $nonuser_enabled ) && $nonuser_enabled == "Y" ) {
+    if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" ) {
       $myusers = array_merge ( $myusers, get_nonuser_cals () );
     }
     $userlookup = array();
@@ -229,7 +229,7 @@ for ( $j = 0; $j < count ($viewusers); $j += $USERS_PER_TABLE ) {
  }
  echo " style=\"width:$tdw%;\">";
  //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
-      if ( empty ($add_link_in_views) || $add_link_in_views != "N" ) {
+      if ( empty ($ADD_LINK_IN_VIEWS) || $ADD_LINK_IN_VIEWS != "N" ) {
         echo html_for_add_icon ( date ("Ymd", $date), "", "", $user );
       }
       print_date_entries ( date ("Ymd", $date), $user, true );

@@ -10,7 +10,7 @@
 #   update_translation.pl will take an old translation file and move the
 #        translations around so they age grouped by the page they appear in.
 #        It will also identify any missing translations and tag them
-#        with a comment.  If it is a non-English translation, the English
+#        with a comment.  If it is a non-english translation, the english
 #        translation will be included in the comment to simplify completing
 #        the translation.
 #
@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 08-29-2005
+# Translation last updated on 10-20-2005
 
 
 ###############################################
@@ -73,6 +73,7 @@ Next: Next
 #
 Invalid entry id: Invalid entry id
 This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
+This is a confidential event and may not be added to your calendar.: This is a confidential event and may not be added to your calendar.
 Error adding event: Error adding event
 
 
@@ -239,6 +240,12 @@ rss-enabled-help: Specifies if a user's calendar can be obtained from a RSS feed
 Enable RSS feed: Enable RSS feed
 categories-enabled-help: Enables support for event categories.
 Categories enabled: Categories enabled
+display-tasks-help: Display small task window on month and day calendar
+Display small task list: Display small task list
+display-tasks-in-grid-help: Display tasks in calendars along with events
+Display tasks in Calendars: Display tasks in Calendars
+export-ics-timezones-help: Export VTIMEZONE data with ics files
+Export VTIMEZONE in ics files: Export VTIMEZONE in ics files
 allow-external-users-help: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
 Allow external users: Allow external users
 external-can-receive-notification-help: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
@@ -286,6 +293,7 @@ Event popup text: Event popup text
 ###############################################
 # Page: adminhome.php
 #
+Control Panel: Control Panel
 Preferences: Preferences
 Assistants: Assistants
 Users: Users
@@ -375,7 +383,9 @@ Medium: Medium
 High: High
 category-help: Specifies the category of the event.
 Category: Category
-None: None
+Use the Edit button to make changes.: Use the Edit button to make changes.
+location-help: Event location 
+Location: Location
 date-help: Specifies the date of the event.
 Untimed event: Untimed event
 Timed event: Timed event
@@ -384,7 +394,7 @@ Timezone Offset: Timezone Offset
 time-help: Specifies the time of the event.<br />Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
 am: am
 pm: pm
-duration-help: Specifies the duration (in hours:minutes) of the event.  <br /><i>This field can be left blank.</i>
+duration-help: Specifies the duration (in hours;minutes) of the event.  <br /><i>This field can be left blank.</i>
 end-time-help: Specifies the time the event is expected to end.
 days: days
 before event: before event
@@ -393,26 +403,43 @@ Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: External Participants
 repeat-type-help: Select how often the event should repeat.<i>Monthly (by day)</i> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <i>Monthly (by date)</i> allows an event to repeat on the same day of the month.
-Repeat Type: Repeat Type
+Type: Type
+None: None
 Daily: Daily
 Weekly: Weekly
 Monthly: Monthly
 by day: by day
-by day (from end): by day (from end)
 by date: by date
+by position: by position
 Yearly: Yearly
+Expert Mode: Expert Mode
 repeat-end-date-help: Specifies the date the event should repeat until.
-Repeat End Date: Repeat End Date
+Ending: Ending
+Forever: Forever
 Use end date: Use end date
-repeat-frequency-help: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <i>Repeat Type</i> is set to <i>Weekly</i>), every other month (if <i>Repeat Type</i> is set to <i>Monthly</i>), etc.
+Number of times: Number of times
+repeat-frequency-help: Specifies how often the event should repeat.
 Frequency: Frequency
-repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
-Repeat Day: Repeat Day
-Tuesday: Tuesday
-Wednesday: Wednesday
-Thursday: Thursday
-Friday: Friday
-Saturday: Saturday
+Weekdays Only: Weekdays Only
+Week Start: Week Start
+repeat-bydayextended-help: Allows date selection based on day of week. 
+ByDay: ByDay
+repeat-month-help: Specifies which months the event should repeat in.
+ByMonth: ByMonth
+repeat-bysetpos-help: Allows date selection based on position within an another ByXXX set of dates.
+BySetPos: BySetPos
+repeat-bymonthdayextended-help: Allows date selection based on date.
+ByMonthDay: ByMonthDay
+repeat-byweekno-help: Allows user to specify a list of weeks to repeat event (1,2...53,-53,-52...-1).
+ByWeekNo: ByWeekNo
+repeat-byyearday-help: Allows user to specify a list of year days to repeat event (1,2...366,-366,-365...-1).
+ByYearDay: ByYearDay
+repeat-exceptions-help: Additional days that this event should or should not occur on.
+Exclusions: Exclusions
+Inclusions: Inclusions
+Add Exception: Add Exception
+Add Inclusion: Add Inclusion
+Delete Selected: Delete Selected
 Delete entry: Delete entry
 You are not authorized to edit this entry: You are not authorized to edit this entry
 
@@ -496,6 +523,12 @@ Next year: Next year
 This year: This year
 Last year: Last year
 Year before last: Year before last
+Next 14 days: Next 14 days
+Next 30 days: Next 30 days
+Next 60 days: Next 60 days
+Next 90 days: Next 90 days
+Next 180 days: Next 180 days
+Next 365 days: Next 365 days
 Invalid report id: Invalid report id
 Unnamed Report: Unnamed Report
 Add Report: Add Report
@@ -518,6 +551,34 @@ Are you sure you want to delete this report?: Are you sure you want to delete th
 # Page: edit_report_handler.php
 #
 Variable N not found: Variable N not found
+
+
+###############################################
+# Page: edit_task.php
+#
+You are not authorized to edit this task: You are not authorized to edit this task
+Edit Task: Edit Task
+Add Task: Add Task
+percent-help: Task completion percentage for this user
+Percent Complete: Percent Complete
+Completed Date: Completed Date
+Start Date: Start Date
+Start Time: Start Time
+Due Date: Due Date
+Due Time: Due Time
+before task is due: before task is due
+Are you sure you want to delete this task?: Are you sure you want to delete this task?
+Delete task: Delete task
+
+
+###############################################
+# Page: edit_task_handler.php
+#
+A task has been canceled for you by: A task has been canceled for you by
+A new task has been assigned to you by: A new task has been assigned to you by
+A task has been updated by: A task has been updated by
+to accept or reject this task: to accept or reject this task
+to view this task: to view this task
 
 
 ###############################################
@@ -613,6 +674,10 @@ Report Bug: Report Bug
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
+Repeat Type: Repeat Type
+Repeat End Date: Repeat End Date
+Repeat Day: Repeat Day
+repeat-day-help: Specifies which days of the week the event should repeat on.
 
 
 ###############################################
@@ -696,6 +761,7 @@ Disabled: Disabled
 Import format: Import format
 Exclude private records: Exclude private records
 Overwrite Prior Import: Overwrite Prior Import
+Repeated items are imported separately. Prior imports are not overwritten.: Repeated items are imported separately. Prior imports are not overwritten.
 Upload file: Upload file
 
 
@@ -709,8 +775,6 @@ Conflicting events: Conflicting events
 Errors: Errors
 There was an error parsing the import file or no events were returned: There was an error parsing the import file or no events were returned
 The import file contained no data: The import file contained no data
-Event Imported: Event Imported
-View this entry: View this entry
 
 
 ###############################################
@@ -730,6 +794,7 @@ Edit layer: Edit layer
 ###############################################
 # Page: list_unapproved.php
 #
+View this entry: View this entry
 Approve/Confirm: Approve/Confirm
 Approve this entry?: Approve this entry?
 Reject: Reject
@@ -794,6 +859,9 @@ to modify the preferences for the: to modify the preferences for the
 Save Preferences: Save Preferences
 Timezone Selection: Timezone Selection
 All: All
+Email format preference: Email format preference
+HTML: HTML
+Plain Text: Plain Text
 display_byproxy-help: Display the real creator on view_entry page
 Display if created by Assistant: Display if created by Assistant
 
@@ -887,6 +955,7 @@ Go: Go
 #
 You have not added any categories: You have not added any categories
 Set Category: Set Category
+Global Categories can not be changed: Global Categories can not be changed
 
 
 ###############################################
@@ -945,13 +1014,6 @@ No users for this view: No users for this view
 ###############################################
 # Page: view_entry.php
 #
-every: every
-2nd: 2nd
-3rd: 3rd
-4th: 4th
-5th: 5th
-1st: 1st
-last: last
 Description: Description
 Status: Status
 day: day
@@ -985,6 +1047,27 @@ Double-click on empty cell to add new entry: Double-click on empty cell to add n
 
 
 ###############################################
+# Page: view_task.php
+#
+Invalid task id: Invalid task id
+before due time: before due time
+Approve/Confirm task: Approve/Confirm task
+Approve this task?: Approve this task?
+Reject task: Reject task
+Reject this task?: Reject this task?
+Edit task: Edit task
+This will delete this task for all users.: This will delete this task for all users.
+Copy task: Copy task
+This will delete the task from your calendar.: This will delete the task from your calendar.
+Task created: Task created
+Task approved: Task approved
+Task rejected: Task rejected
+Task updated: Task updated
+Task deleted: Task deleted
+Export this task to: Export this task to
+
+
+###############################################
 # Page: week_details.php
 #
 New Entry: New Entry
@@ -1006,6 +1089,8 @@ Common Trailer: Common Trailer
 ###############################################
 # Page: includes/functions.php
 #
+View this: View this
+This event is private: This event is private
 exceeds limit of XXX events per day: exceeds limit of XXX events per day
 You have XXX unapproved events: You have XXX unapproved events
 January: January
@@ -1031,6 +1116,11 @@ Sep: Sep
 Oct: Oct
 Nov: Nov
 Dec: Dec
+Tuesday: Tuesday
+Wednesday: Wednesday
+Thursday: Thursday
+Friday: Friday
+Saturday: Saturday
 All Attendees: All Attendees
 Busy: Busy
 Tentative: Tentative
@@ -1055,6 +1145,7 @@ My Calendar: My Calendar
 Back to My Calendar: Back to My Calendar
 Another User's Calendar: Another User's Calendar
 Add New Entry: Add New Entry
+Add New Task: Add New Task
 Logout: Logout
 Manage calendar of: Manage calendar of
 
@@ -1092,6 +1183,7 @@ Russian: Russian
 Spanish: Spanish
 Swedish: Swedish
 Turkish: Turkish
+Welsh: Welsh
 
 
 ###############################################
@@ -1100,6 +1192,14 @@ Turkish: Turkish
 incorrect password: incorrect password
 no such user: no such user
 Invalid user login: Invalid user login
+
+
+###############################################
+# Page: includes/xcal.php
+#
+INCLUSION DATES: INCLUSION DATES
+EXCLUSION DATES: EXCLUSION DATES
+Event Imported: Event Imported
 
 
 ###############################################
@@ -1132,6 +1232,7 @@ Change the date and time of this entry?: Change the date and time of this entry?
 You have not entered a Brief Description: You have not entered a Brief Description
 You have not entered a valid time of day: You have not entered a valid time of day
 The time you have entered begins before your preferred work hours.  Is this correct?: The time you have entered begins before your preferred work hours.  Is this correct?
+Invalid Event Date: Invalid Event Date
 Please add a participant: Please add a participant
 
 
@@ -1139,6 +1240,12 @@ Please add a participant: Please add a participant
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Invalid color
+
+
+###############################################
+# Page: includes/js/tasks.php
+#
+You have not entered a Category Name: You have not entered a Category Name
 
 
 ###############################################

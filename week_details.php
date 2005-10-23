@@ -36,8 +36,8 @@ if ( $DISPLAY_WEEKENDS == "N" ) {
 }
 
 $HeadX = '';
-if ( $auto_refresh == "Y" && ! empty ( $auto_refresh_time ) ) {
-  $refresh = $auto_refresh_time * 60; // convert to seconds
+if ( $AUTO_REFRESH == "Y" && ! empty ( $AUTO_REFRESH_TIME ) ) {
+  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week_details.php?$u_url" .
     "date=$startdate$caturl\" />\n";
 }
@@ -67,9 +67,9 @@ for ( $i = 0; $i < 7; $i++ ) {
     date_to_str ( date ( "Ymd", $wkend ), "", false );
 ?></span>
 <?php
-if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
+if ( $"DISPLAY_WEEKNUMBER == "Y" ) {
   echo "<br />\n<span class=\"weeknumber\">(" .
-    translate("Week") . " " . week_number ( $wkstart ) . ")</span>";
+    translate("Week") . " " . date( "W", $wkstart ) . ")</span>";
 }
 ?>
 <span class="user"><?php
@@ -82,7 +82,7 @@ if ( $GLOBALS["DISPLAY_WEEKNUMBER"] == "Y" ) {
     echo "<br />-- " . translate("Assistant mode") . " --";
 ?></span>
 <?php
-  if ( $categories_enabled == "Y" ) {
+  if ( $CATEGORIES_ENABLED == "Y" ) {
     echo "<br /><br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
   } ?>
@@ -264,7 +264,7 @@ function print_det_date_entries ( $date, $user, $ssi ) {
   $ev = combine_and_sort_events($ev, $rep);
 
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    if ( $GLOBALS["DISPLAY_UNAPPROVED"] != "N" ||
+    if ( $DISPLAY_UNAPPROVED != "N" ||
       $ev[$i]->getStatus() == 'A' )
       print_detailed_entry ( $ev[$i], $date );
   }

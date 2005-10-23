@@ -3,44 +3,44 @@
  * $Id$
  *
  * Description:
- *	Creates the iCal free/busy schedule a single user.
- *	Free/busy schedules are specified in the iCal RFC 2445.
+ * Creates the iCal free/busy schedule a single user.
+ * Free/busy schedules are specified in the iCal RFC 2445.
  *
  * Input parameters:
- *	URL should be the form of /xxx/freebusy.php/username.ifb
- *	or /xxx/freebusy.php?user=username
- *	Some servers seem to have problem with username.ifb version.  If
- *	so, they should user the second form.
+ * URL should be the form of /xxx/freebusy.php/username.ifb
+ * or /xxx/freebusy.php?user=username
+ * Some servers seem to have problem with username.ifb version.  If
+ * so, they should user the second form.
  *
  * Notes:
- *	For now, we use a date range of the start of the current
- *	month and include one year from there.
- *	Rather arbitrary, eh???
+ * For now, we use a date range of the start of the current
+ * month and include one year from there.
+ * Rather arbitrary, eh???
  *
- *	To read the iCal specification:
- *		 http://www.ietf.org/rfc/rfc2445.txt
+ * To read the iCal specification:
+ *   http://www.ietf.org/rfc/rfc2445.txt
  *
- *	WebCalendar does not use freebusy info for scheduling right now.
- *	But, this may change in the future.
+ * WebCalendar does not use freebusy info for scheduling right now.
+ * But, this may change in the future.
  *
- *	We might want to cache this type of information after a calendar
- *	is updated.  This would make conflict checkking much faster,
- *	particularly for events with many participants.
+ * We might want to cache this type of information after a calendar
+ * is updated.  This would make conflict checkking much faster,
+ * particularly for events with many participants.
  *
  * Developers/Debugging:
- *	You can test this script from the command line if you have the
- *	command-line PHP.   Create a symbolic link with a valid username,
- *	and then invoke the php command using the link as a parameter:
- *		ln -s freebusy.php cknudsen.ifb
- *		php cknudsen.ifb
+ * You can test this script from the command line if you have the
+ * command-line PHP.   Create a symbolic link with a valid username,
+ * and then invoke the php command using the link as a parameter:
+ *  ln -s freebusy.php cknudsen.ifb
+ *  php cknudsen.ifb
  *
  * Security:
- *	Users do need to enable "Enable FreeBusy publishing" in their
- *	Preferences or this page will generate a "you are not authorized"
- *	error message.
+ * Users do need to enable "Enable FreeBusy publishing" in their
+ * Preferences or this page will generate a "you are not authorized"
+ * error message.
  *
- *	If $FREEBUSY_ENABLED is not 'Y' (set in each user's
- *	  Preferences), do not allow.
+ * If $FREEBUSY_ENABLED is not 'Y' (set in each user's
+ *   Preferences), do not allow.
  */
 
 require_once 'includes/classes/WebCalendar.class';
@@ -57,6 +57,7 @@ $WebCalendar->initializeFirstPhase();
 
 include "includes/$user_inc";
 include 'includes/translate.php';
+include_once 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -144,71 +145,18 @@ echo "VERSION:2.0\r\n";
 //echo "METHOD:PUBLISH\r\n";
 echo "BEGIN:VFREEBUSY\r\n";
 
-$utc_start = date_to_utc ( date ( "Ymd", $startdate ), 0 );
+$utc_start = export_get_utc_date ( date ( "Ymd", $startdate ), 0 );
 echo "DTSTART:$utc_start\r\n";
-$utc_end = date_to_utc ( date ( "Ymd", $enddate ), '235959' );
+$utc_end = export_get_utc_date ( date ( "Ymd", $enddate ), '235959' );
 echo "DTEND:$utc_end\r\n";
 echo $event_text;
-echo "URL:" . $GLOBALS['server_url'] . "freebusy.php/" .
+echo "URL:" . $GLOBALS['SERVER_URL'] . "freebusy.php/" .
   $user . ".ifb\r\n";
 echo "END:VFREEBUSY\r\n";
 echo "END:VCALENDAR\r\n";
 
 exit;
 
-// Generate the FREEBUSY line of text for a single event
-function fb_export_time ( $date, $duration, $time, $texport ) {
-  $ret = '';
-  $allday = ( $time == -1 || $duration == 24 * 60 );
-  $year = (int) substr ( $date, 0, -4 );
-  $month = (int) substr ( $date,- 4, 2 );
-  $day = (int) substr ( $date, -2, 2 );
 
-  //No time, or an "All day" event"
-  if ( $allday ) {
-    // untimed event - consider this to not be busy
-  } else {
-    // normal/timed event (or all-day event)
-    $hour = (int) substr ( $time, 0,-4 );
-    $min = (int) substr ( $time, -4, 2 );
-    $sec = (int) substr ( $time, -2, 2 );
-    $duration = $duration * 60;
-
-    $start_tmstamp = mktime ( $hour, $min, $sec, $month, $day, $year );
-
-    $utc_start = date_to_utc ( $date, $time );
-
-    $end_tmstamp = $start_tmstamp + $duration;
-    $utc_end = date_to_utc ( date ( "Ymd", $end_tmstamp ),
-      date ( "His", $end_tmstamp ) );
-    $ret .= "FREEBUSY:$utc_start/$utc_end\r\n";
-  }
-  return $ret;
-}
-
-function date_to_utc($date, $time=0) {
-  $year = (int) substr($date,0,-4);
-  $month = (int) substr($date,-4,2);
-  $day = (int) substr($date,-2,2);
-
-  if ($time <= 0) {
-    $hour = 0;
-    $min = 0;
-    $sec = 0;
-  } else {
-    $hour = (int) substr($time,0,-4);
-    $min = (int) substr($time,-4,2);
-    $sec = (int) substr($time,-2,2);
-  }
-
-  $tmstamp = mktime($hour, $min, $sec, $month, $day, $year);
-
-  $utc_date = date("Ymd", $tmstamp);
-  $utc_hour = date("His", $tmstamp);
-
-  $utc = sprintf ("%sT%sZ", $utc_date, $utc_hour);
-
-  return $utc;
-}
 
 ?>
