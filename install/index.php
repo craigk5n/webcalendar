@@ -1483,8 +1483,7 @@ if ( ! $exists || ! $canWrite ) { ?>
  <?php if ( ! empty ( $str_parsed_sql ) ) { ?>
     <textarea name="displayed_sql" cols="100" rows="12" ><?php echo $str_parsed_sql; ?></textarea>
    <br />
-      <p class="recommended"><?php etranslate ( "After manually processing this sql, you will need to return to the previous page and 
-   retest your database so that the script can detect the changes" ) ?>.</p>
+      <p class="recommended"><?php etranslate ( "After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes" ) ?>.</p>
  <?php } ?>
   </form>  
   </td></tr>
