@@ -274,7 +274,7 @@ if ( $duration == ( 24 * 60 ) ) {
   $allday = "N";
 if ( empty ( $name ) )
   $name = "";
-if ( empty ( $description ) )
+if ( empty ( $description ) || $description == "<br />" )
   $description = "";
 if ( empty ( $location ) )
   $location = "";
@@ -598,13 +598,14 @@ if ( $id > 0 )
   if ( ! empty ( $extras ) ) {
    $rem_count = 0;
     foreach ( $extras as $K => $V) {
-      if ( $V['cal_type'] == EXTRA_REMINDER )
+      if ( $V['cal_type'] == EXTRA_REMINDER ) {
         $rem_count++;
-      if ( $rem_count > 0 ) {
-      $rem_array = array ( $V['cal_name'], 'Send Reminder', EXTRA_REMINDER, $V['cal_data'], 6);
-     $site_additions[] = $rem_array;
-     $site_extras = array_merge ( $site_extras, $rem_array );
-    } 
+        if ( $rem_count > 0 ) {
+          $rem_array = array ( $V['cal_name'], 'Send Reminder', EXTRA_REMINDER, $V['cal_data'], 6);
+          $site_additions[] = $rem_array;
+          $site_extras[count($site_extras)] = $rem_array;
+        }
+			} 
     }
  } 
   if ( ! empty ( $site_additions ) ) {
