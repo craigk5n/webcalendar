@@ -1376,24 +1376,32 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
  *
  */
 function display_small_tasks () {
- global $user, $login;
+ global $user, $login, $is_assistant;
 
+  if ( ! empty ( $user ) && $user != $login  && ! $is_assistant ) {
+   return false;
+ }
+ 
+ 
   if ( $user != $login && ! empty ( $user ) ) {
+    $u_url = "user=$user" . "&amp;";
     $task_user = $user;
   } else {
+    $u_url = '';
     $task_user = $login;
   }
+ 
   $filter = "";
   $cat_id = "";
   $task_list = query_events ( $task_user, false, $filter, $cat_id, true  );
   $row_cnt = 1;
   $task_html= "<table class=\"minitask\" cellspacing=\"0\" cellpadding=\"2\">\n";
   $task_html .= "<tr class=\"header\"><th colspan=\"3\" align=\"left\">TASKS</th>" .
-    "<th align=\"right\"><a href=\"edit_task.php\"><img src=\"new.gif\" class=\"new\"/></a></th></tr>\n";
+    "<th align=\"right\"><a href=\"edit_task.php?$u_url\"><img src=\"new.gif\" class=\"new\"/></a></th></tr>\n";
   $task_html .= "<tr class=\"header\"><th>!</th><th>Title</th><th>Due</th><th>&nbsp;%&nbsp;</th></tr>\n";
   foreach ( $task_list as $E )  {
     $cal_id = $E->getId();
-    $link = "<a href=\"view_task.php?id=" . $cal_id . "\"";
+    $link = "<a href=\"view_task.php?" . $u_url ."id=" . $cal_id . "\"";
     $priority = $link  . " title=\"Priority\" >" . $E->getPriority() . "</a>";
     $name = $link  . " title=\"Task Name\" >". substr( $E->getName(), 0, 15 ) . "...</a>";
     $due_date = $link  . " title=\"Task Due Date\" >". date_to_str( $E->getDueDate(), "__mm__/__dd__/__yyyy__", false, false) . "</a>";
