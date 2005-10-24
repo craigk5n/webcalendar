@@ -111,13 +111,13 @@ function get_php_modules ( $val ) {
 function show_errors ( $error_val=0 ) {
   global $show_all_errors;
   
-	if ( empty ( $_SESSION['error_reporting'] ) )
-    $_SESSION['error_reporting'] = get_php_setting ( 'error_reporting' );	
+ if ( empty ( $_SESSION['error_reporting'] ) )
+    $_SESSION['error_reporting'] = get_php_setting ( 'error_reporting' ); 
   if ( $show_all_errors == true ) {
-	  ini_set ( "error_reporting", 64 );
-	} else {
+   ini_set ( "error_reporting", 64 );
+ } else {
     ini_set ( "error_reporting", ( $error_val? $_SESSION['error_reporting'] :64) );
-	}
+ }
 }
 
 function get_installed_version () {
@@ -172,9 +172,9 @@ function get_installed_version () {
   if ( isset ( $row[0] ) && $row[0] == 0 ) {  
     $_SESSION['blank_database'] = true;
   } else {
-	  //make sure all existing values in config and pref tables are UPPERCASE
-	  make_uppercase ();
-	}
+   //make sure all existing values in config and pref tables are UPPERCASE
+   make_uppercase ();
+ }
   dbi_free_result ( $res );
  }
  // Determine if old data has been converted to GMT
@@ -312,7 +312,7 @@ $php_settings = array (
   array ('Safe Mode','safe_mode','OFF'),
   array ('Magic Quotes GPC','magic_quotes_gpc','ON'),
   array ('Display Errors','display_errors','ON'),
-  array ('File Uploads','file_uploads','ON')	
+  array ('File Uploads','file_uploads','ON') 
 );
 //Add 'Register Long Arrays' only if php 5.0 
 if ( floor ( phpversion () ) == 5 ) {
@@ -321,10 +321,10 @@ if ( floor ( phpversion () ) == 5 ) {
 
 // set up array to test for some constants (display name, constant name, preferred value )
 $php_constants = array (
-  array ('CRYPT_MD5',CRYPT_MD5, 1) );
-	//future expansion
+  array (' CRYPT_STD_DES', CRYPT_STD_DES, 1) );
+ //future expansion
   // array ('CRYPT_STD_DES',CRYPT_STD_DES, 1)
-  // array ('CRYPT_EXT_DES',CRYPT_EXT_DES, 1)
+  // array ('CRYPT_MD5',CRYPT_MD5, 1)
   // array ('CRYPT_BLOWFISH',CRYPT_BLOWFISH, 1)
 
 $gdstring = "GD  (" . translate ( "needed for Gradient Image Backgrounds" ) . ")";
@@ -469,7 +469,7 @@ function db_populate ( $install_filename, $display_sql ) {
  $str_parsed_sql = "";
   for ( $i = 0; $i < count($parsed_sql); $i++ ) {
     if ( empty ( $display_sql ) ){ 
-		if ( $show_all_errors == true ) echo $parsed_sql[$i] . "<br />";
+  if ( $show_all_errors == true ) echo $parsed_sql[$i] . "<br />";
       dbi_query ( $parsed_sql[$i] );   
   } else {
     $str_parsed_sql .= $parsed_sql[$i] . "\n\n";
@@ -498,7 +498,7 @@ if ( ! empty ( $action ) &&  $action == "install" ){
   // It's possible that the tables were created manually
   // and we just want to do the database population routines
   if ( $c && isset ( $_SESSION['install_file'] )  ) {
-	  $sess_install = $_SESSION['install_file'];
+   $sess_install = $_SESSION['install_file'];
     $install_filename = ( $sess_install == "tables" ? "tables":"upgrade");
     switch ( $db_type ) {
        case "mysql";
@@ -563,11 +563,11 @@ if ( ! empty ( $action ) &&  $action == "install" ){
     convert_server_to_GMT ( 0 );
    }
    
-	 //for upgrade to v1.1b we need to convert existing categories 
-	 //and repeating events
-	 do_v11b_updates();
-	 
-	
+  //for upgrade to v1.1b we need to convert existing categories 
+  //and repeating events
+  do_v11b_updates();
+  
+ 
    // Update the version info
    get_installed_version();
    
