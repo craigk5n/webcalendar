@@ -30,6 +30,7 @@ if ( $res ) {
 $cat_id = getPostValue ('cat_id');
 $cat_ids = array();
 $cat_name = array();
+$catNames = '';
 
 //get user's categories for this event
 $sql = "SELECT  DISTINCT cal_login, webcal_entry_categories.cat_id, " .
