@@ -20,6 +20,7 @@ $name = getPostValue ( 'name' );
 $description = getPostValue ( 'description' );
 $cat_id = getPostValue ( 'cat_id' );
 // Ensure all time variables are not empty
+if ( empty ( $ampm ) ) $ampm = 'pm';
 if ( empty ( $hour ) ) $hour = 0;
 if ( empty ( $minute ) ) $minute = 0;
 if  ( empty ( $endminute ) && !empty ( $endhour ) ||
@@ -27,7 +28,7 @@ if  ( empty ( $endminute ) && !empty ( $endhour ) ||
   $endminute = 0;
 } else if ( empty ( $endminute ) && empty ( $endhour ) ) {
   $endminute = $minute;
- $endampm = $ampm;
+  $endampm = $ampm;
 }
 if ( empty ( $endhour ) || $endhour < 0 ) $endhour = $hour;
 
