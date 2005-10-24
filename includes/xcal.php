@@ -870,10 +870,10 @@ function export_ical ( $id='all' ) {
     $access = $row[7];
     $duration = $row[8];
     $description = $row[9];
-  //New columns to support tasks
+    //New columns to support tasks
     $percent = ( ! empty ( $row[11] )? $row[11] : 0 );
     $completed = ( ! empty ( $row[12] )? substr( $row[12], 0 ,8 ) . 
-    "T" . sprintf ( "%06d", substr( $row[12], 9 ,6 ) ) : '');
+      "T" . sprintf ( "%06d", substr( $row[12], 9 ,6 ) ) : '');
     $due_date = $row[13];
     $due_time = $row[14];
     $location = $row[15];
@@ -884,12 +884,12 @@ function export_ical ( $id='all' ) {
     // Figure out Categories
     $categories = array();
     $sql = "SELECT webcal_categories.cat_name " .
-    " FROM webcal_categories, webcal_entry_categories " .
+      " FROM webcal_categories, webcal_entry_categories " .
       " WHERE webcal_entry_categories.cal_id = $id AND " . 
       " webcal_entry_categories.cat_id = webcal_categories.cat_id AND ".
-   " (webcal_entry_categories.cat_owner = '" . $login . "' OR  " . 
-   " webcal_entry_categories.cat_owner IS NULL) " .
-   " ORDER BY webcal_entry_categories.cat_order";
+      " (webcal_entry_categories.cat_owner = '" . $login . "' OR  " . 
+      " webcal_entry_categories.cat_owner IS NULL) " .
+      " ORDER BY webcal_entry_categories.cat_order";
     $res = dbi_query ( $sql );
     while ( $row = dbi_fetch_row ( $res ) ) {
       $categories[] = $row[0];
@@ -1000,9 +1000,9 @@ function export_ical ( $id='all' ) {
     if ($access == "R") {
       echo "CLASS:PRIVATE\r\n";
       } else  if ($access == "C"){
-   echo "CLASS:CONFIDENTIAL\r\n";
+        echo "CLASS:CONFIDENTIAL\r\n";
       } else {
-   echo "CLASS:PUBLIC\r\n";
+        echo "CLASS:PUBLIC\r\n";
       }
  
     /* STATUS */
@@ -1025,9 +1025,9 @@ function export_ical ( $id='all' ) {
     
   //VTODO specific items
     if ( $cal_type == "T" || $cal_type == "N" ) {
-    echo "DUE:" . $due_date. "T". sprintf ( "%06d", $due_time ) . "Z\r\n";
+      echo "DUE:" . $due_date. "T". sprintf ( "%06d", $due_time ) . "Z\r\n";
     if ( ! empty ( $completed ) ) echo "COMPLETED:" . $completed . "\r\n";
-    echo "PERCENT-COMPLETE:" . $percent . "\r\n";
+      echo "PERCENT-COMPLETE:" . $percent . "\r\n";
   }
   
     /* Recurrence */
