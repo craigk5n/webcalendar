@@ -94,11 +94,9 @@ if ( $single_user == "Y" ) {
     }
     if ( user_valid_login ( $login, $password ) ) {
       user_load_variables ( $login, "" );
-      // set login to expire in 365 days
-      srand((double) microtime() * 1000000);
-      $salt = chr( rand(ord('A'), ord('z'))) . chr( rand(ord('A'), ord('z')));
-      $encoded_login = encode_string ( $login . "|" . crypt($password, $salt) );
 
+      $encoded_login = encode_string ( $login . "|" . crypt($password) );
+      // set login to expire in 365 days
       if ( ! empty ( $remember ) && $remember == "yes" ) {
         SetCookie ( "webcalendar_session", $encoded_login,
           time() + ( 24 * 3600 * 365 ), $cookie_path );
