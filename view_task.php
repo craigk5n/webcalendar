@@ -44,52 +44,7 @@ if ( empty ( $error ) ) {
     }
     dbi_free_result ( $res );
   }
-
-  if ( ! $can_view ) {
-    $check_group = false;
-    // if not a participant in the event, must be allowed to look at
-    // other user's calendar.
-    if ( $ALLOW_VIEW_OTHER == "Y" ) {
-      $check_group = true;
-    }
-    // If $check_group is true now, it means this user can look at the
-    // event only if they are in the same group as some of the people in
-    // the event.
-    // This gets kind of tricky.  If there is a participant from a different
-    // group, do we still show it?  For now, the answer is no.
-    // This could be configurable somehow, but how many lines of text would
-    // it need in the admin page to describe this scenario?  Would confuse
-    // 99.9% of users.
-    // In summary, make sure at least one event participant is in one of
-    // this user's groups.
-    $my_users = get_my_users ();
-    if ( is_array ( $my_users ) ) {
-      $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
-        "webcal_entry_user WHERE webcal_entry.cal_id = " .
-        "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
-        "AND webcal_entry_user.cal_login IN ( ";
-      for ( $i = 0; $i < count ( $my_users ); $i++ ) {
-        if ( $i > 0 ) {
-          $sql .= ", ";
-        }
-        $sql .= "'" . $my_users[$i]['cal_login'] . "'";
-      }
-      $sql .= " )";
-      $res = dbi_query ( $sql );
-      if ( $res ) {
-        $row = dbi_fetch_row ( $res );
-        if ( $row && $row[0] > 0 ) {
-          $can_view = true;
-        }
-        dbi_free_result ( $res );
-      }
-    }
-    // If we didn't indicate we need to check groups, then this user
-    // can't view this event.
-    if ( ! $check_group ) {
-      $can_view = false;
-    }
-  }
+ //group checking deleted. 
 }
 
 $hide_details = false;
