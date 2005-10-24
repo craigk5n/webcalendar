@@ -28,11 +28,21 @@ if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) ) {
   $error = translate ( "Invalid task id" ) . "."; 
 }
 
+//update the task percentage for this user
+if ( ! empty ( $_POST ) ) {
+  $upercent = getPostValue ( 'upercent' );
+ if ( $upercent >= 0 && $upercent <= 100 )
+    dbi_query ("UPDATE webcal_entry_user SET cal_percent = $upercent " .
+     " WHERE cal_login = '$login'");
+}
+
+
+
 if ( empty ( $error ) ) {
   // is this user a participant or the creator of the event?
   $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
-    "webcal_entry_user WHERE webcal_entry.cal_id = " .
-    "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
+    "webcal_entry_user WHERE webcal_entry.cal_id = webcal_entry_user.cal_id AND " .
+  "webcal_entry.cal_id = $id " .
     "AND (webcal_entry.cal_create_by = '$login' " .
     "OR webcal_entry_user.cal_login = '$login')";
   $res = dbi_query ( $sql );
@@ -139,7 +149,8 @@ if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
 $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
   "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
   "cal_name, cal_description, cal_location, cal_url, cal_due_date, " .
- "cal_due_time FROM webcal_entry WHERE cal_id = $id";
+  "cal_due_time FROM webcal_entry WHERE webcal_entry.cal_type IN " .
+  " ('T','N') AND cal_id = $id";
 $res = dbi_query ( $sql );
 if ( ! $res ) {
   echo translate("Invalid task id") . ": $id";
@@ -264,14 +275,16 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
   }
 ?></td></tr>
 
-<?php if ( $event_status != 'A' && ! empty ( $event_status ) ) { ?>
+<?php if (  ! empty ( $event_status ) ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Status")?>:</td><td>
  <?php
+     if ( $event_status == 'A' )
+       etranslate("Accepted");
      if ( $event_status == 'W' )
-       etranslate("Waiting for approval");
+       etranslate("Needs-Action");
      if ( $event_status == 'D' )
-       etranslate("Deleted");
+       etranslate("Declined");
      else if ( $event_status == 'R' )
        etranslate("Rejected");
       ?>
@@ -452,7 +465,7 @@ if ( $show_participants ) { ?>
   <tr><td style="vertical-align:top; font-weight:bold;" colspan="2">
   <?php
   if ( $is_private ) {
-    echo "[" . translate("Confidential") . "]";
+    echo "[" . translate("Private") . "]";
   } else {
     $sql = "SELECT cal_login, cal_status, cal_percent FROM webcal_entry_user " .
       "WHERE cal_id = $id";
@@ -474,6 +487,7 @@ if ( $show_participants ) { ?>
     user_load_variables ( $participants[$i][0], "temp" );
   $spacer = 100 - $participants[$i][2];
   $percentage = $participants[$i][2];
+ if ( $participants[$i][0] == $login ) $login_percentage = $participants[$i][2];
   echo "<tr><td width=\"30%\">";
     if ( strlen ( $tempemail ) ) {  
       echo "<a href=\"mailto:" . $tempemail . "?subject=$subject\">" .
@@ -496,8 +510,32 @@ if ( $show_participants ) { ?>
 ?>
 
 </table>
+<?php
+$can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || 
+  ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
+  ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
+if ( $PUBLIC_ACCESS == "Y" && $login == "__public__" ) {
+  $can_edit = false;
+}
+if ( $readonly == 'Y' ) {
+  $can_edit = false;
+}
+if ( $is_nonuser )
+  $can_edit = false;
 
-<br /><?php
+//allow user to update their task completion percentage
+if ( empty ( $user ) && $readonly != "Y" && $is_my_event && 
+  $login != "__public__" && ! $is_nonuser && 
+ $event_status != "D" && ! $can_edit )  {
+  echo "<form action=\"view_task.php?id=$id\" method=\"post\" name=\"setpercentage\">\n";
+  echo  translate ("Update Task Percentage") . "&nbsp;<select name=\"upercent\" id=\"task_percent\">\n";
+  for ( $i=0; $i<=100 ; $i+=10 ){ 
+    echo "<option value=\"$i\" " .  ($login_percentage == $i? " selected=\"selected\"":""). " >" .  $i . "</option>\n";
+  }
+  echo "</select>\n";
+  echo "&nbsp;<input type=\"submit\" value=\"" . translate("Update") . "\" />\n";
+  echo "</form>\n"; 
+}
 
 $rdate = "";
 if ( $event_repeats ) {
@@ -540,17 +578,7 @@ if ( ! empty ( $user ) && $login != $user ) {
   $u_url = "";
 }
 
-$can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || 
-  ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
-  ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
-if ( $PUBLIC_ACCESS == "Y" && $login == "__public__" ) {
-  $can_edit = false;
-}
-if ( $readonly == 'Y' ) {
-  $can_edit = false;
-}
-if ( $is_nonuser )
-  $can_edit = false;
+
 
 // If approved, but event category not set (and user does not have permission
 // to edit where they could also set the category), then allow them to
@@ -623,15 +651,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
     "href=\"edit_task.php?id=$id&amp;copy=1\">" . 
     translate("Copy task") . "</a><br />\n";
 }
-if ( $readonly != "Y" && ! $is_my_event && ! $is_private && 
-  $event_status != "D" && $login != "__public__" && ! $is_nonuser )  {
-  echo "<a title=\"" . 
-    translate("Add to My Calendar") . "\" class=\"nav\" " .
-    "href=\"add_entry.php?id=$id\" onclick=\"return confirm('" . 
-    translate("Do you want to add this entry to your calendar?") . "\\n\\n" . 
-    translate("This will add the entry to your calendar.") . "');\">" . 
-    translate("Add to My Calendar") . "</a><br />\n";
-}
+
 
 if ( count ( $allmails ) > 0 ) {
   echo "<a title=\"" . 
