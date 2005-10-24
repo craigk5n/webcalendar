@@ -219,6 +219,8 @@ function export_time($date, $duration, $time, $texport, $vtype='E') {
 //$simple allows for easy reading 
 function export_recurrence_ical( $id, $simple=false ) {
   global $timestamp_RRULE, $TIMEZONE;
+  
+ $recurrance = '';
   $sql = "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = '$id'";
 
   $res = dbi_query($sql);
@@ -297,7 +299,7 @@ function export_recurrence_ical( $id, $simple=false ) {
     }
    }  
 
-   $recurrance = '';
+
       $rrule = '';
    
       if (! $simple ) $rrule = "RRULE:";
@@ -869,7 +871,7 @@ function export_ical ( $id='all' ) {
     $duration = $row[8];
     $description = $row[9];
   //New columns to support tasks
-    $percent = $row[11];
+    $percent = ( ! empty ( $row[11] )? $row[11] : 0 );
     $completed = ( ! empty ( $row[12] )? substr( $row[12], 0 ,8 ) . 
     "T" . sprintf ( "%06d", substr( $row[12], 9 ,6 ) ) : '');
     $due_date = $row[13];
@@ -880,7 +882,7 @@ function export_ical ( $id='all' ) {
 
  
     // Figure out Categories
-    //$categories = $row[10];
+    $categories = array();
     $sql = "SELECT webcal_categories.cat_name " .
     " FROM webcal_categories, webcal_entry_categories " .
       " WHERE webcal_entry_categories.cal_id = $id AND " . 
@@ -942,11 +944,13 @@ function export_ical ( $id='all' ) {
   }
     
   if ( $cal_type == "E" || $cal_type == "M" ) {
-      /* Start of event */
-      echo "BEGIN:VEVENT\r\n";
+   $exporting_event = true;
+    /* Start of event */
+    echo "BEGIN:VEVENT\r\n";
   } else if ( $cal_type == "T" || $cal_type == "N" ) {
-      /* Start of VTODO */
-      echo "BEGIN:VTODO\r\n";  
+   $exporting_event = false;
+    /* Start of VTODO */
+    echo "BEGIN:VTODO\r\n";  
   }
 
     /* UID of the event (folded to 76 char) */
@@ -1002,11 +1006,19 @@ function export_ical ( $id='all' ) {
       }
  
     /* STATUS */
+  if ( $cal_type == "E" || $cal_type == "M" ) {  
     if ($status == "A") {
       echo "STATUS:CONFIRMED\r\n";
     } else if ($status == "W") {
       echo "STATUS:TENTATIVE\r\n";
     }
+  } else if ( $cal_type == "T" || $cal_type == "N" ) {
+    if ($status == "A") {
+      echo "STATUS:ACCEPTED\r\n";
+    } else if ($status == "W") {
+      echo "STATUS:NEEDS-ACTION\r\n";
+    } 
+ } 
 
     /* Time - all times are utc */
     export_time($date, $duration, $time, "ical", $cal_type );
@@ -2131,7 +2143,8 @@ global $login;
   if  ( ! empty ( $event['status'] ) ) {
    switch ( $event['status'] ) {
     case 'TENTATIVE':
-    case 'NEEDS-ACTION':
+    //case 'NEEDS-ACTION': Sunbird sets this if you touch task without 
+  //changing anything else. Not sure about other clients yet
       $fevent['Status'] = "W";
     break;
    case 'CONFIRMED':
