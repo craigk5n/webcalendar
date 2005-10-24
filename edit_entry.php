@@ -72,7 +72,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
     "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
     "cal_name, cal_description, cal_group_id, cal_location " .
-    "FROM webcal_entry WHERE cal_id = " . $id;
+    "FROM webcal_entry WHERE cal_type IN " .
+    " ('E','M') AND cal_id = " . $id;
   $res = dbi_query ( $sql );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
