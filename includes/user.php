@@ -107,8 +107,6 @@ function user_valid_crypt ( $login, $crypt_password ) {
   global $error;
   $ret = false;
 
-  $salt = substr($crypt_password, 0, 2);
-
   $sql = "SELECT cal_login, cal_passwd FROM webcal_user WHERE " .
     "cal_login = '" . $login . "'";
   $res = dbi_query ( $sql );
@@ -118,7 +116,7 @@ function user_valid_crypt ( $login, $crypt_password ) {
       // MySQL seems to do case insensitive matching, so double-check
       // the login.
       // also check if password matches
-      if ( ($row[0] == $login) && (crypt($row[1], $salt) == $crypt_password) )
+      if ( ($row[0] == $login) && (crypt($row[1], $crypt_password) == $crypt_password) )
         $ret = true; // found login/password
       else
         //$error = translate ("Invalid login");
