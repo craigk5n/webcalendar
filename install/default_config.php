@@ -183,7 +183,7 @@ function do_v11b_updates () {
  
  //deprecate monthlyByDayR to simply monthlyByDay
  dbi_query ("UPDATE webcal_entry_repeats  SET cal_type = 'monthlyByDay'" .
-    " WHERE cal_type = 'monthlybByDayR");
+    " WHERE cal_type = 'monthlybByDayR'");
  $res = dbi_query ( "SELECT cal_id, cal_days FROM webcal_entry_repeats ");
  if (  $res ) {
    while( $row = dbi_fetch_row ( $res ) ) {

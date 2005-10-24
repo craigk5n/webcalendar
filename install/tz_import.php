@@ -30,8 +30,8 @@ $days_of_week =  array (
   "Sat" => 6
 );
 
-$min_date = mktime ( 0, 0, 0, 1, 1, 1970, 0 );
-$max_date = mktime ( 0, 0, 0, 1, 1, 2038, 0 );
+$min_date = mktime ( 0, 0, 0, 1, 2, 1970 );
+$max_date = mktime ( 0, 0, 0, 1, 1, 2038 );
 
 //This function will apply a user supplied offset to all 
 // webcal_entry, webcal_entry_logs
