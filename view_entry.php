@@ -259,7 +259,8 @@ if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
 // Load event info now.
 $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
   "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-  "cal_name, cal_description FROM webcal_entry WHERE cal_id = $id";
+  "cal_name, cal_description FROM webcal_entry WHERE webcal_entry.cal_type IN " .
+  " ('E','M') AND cal_id = $id";
 $res = dbi_query ( $sql );
 if ( ! $res ) {
   echo translate("Invalid entry id") . ": $id";
