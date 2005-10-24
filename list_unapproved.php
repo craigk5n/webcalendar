@@ -62,7 +62,7 @@ function list_unapproved ( $user ) {
     "webcal_entry.cal_description, " .
     "webcal_entry.cal_priority, webcal_entry.cal_date, " .
     "webcal_entry.cal_time, webcal_entry.cal_duration, " .
-    "webcal_entry_user.cal_status " .
+    "webcal_entry_user.cal_status, webcal_entry.cal_type " .
     "FROM webcal_entry, webcal_entry_user " .
     "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id " .
     "AND ( webcal_entry.cal_ext_for_id IS NULL " .
@@ -85,10 +85,13 @@ function list_unapproved ( $user ) {
       $time = $row[5];
       $duration = $row[6];
       $status = $row[7];
+      $type = $row[8];
+      $view_link = ( $type == 'E' || $type == 'M' ?'view_entry' : 'view_task' );			
+
       $divname = "eventinfo-pop$id-$key";
       $linkid  = "pop$id-$key";
       echo "<li><a  title=\"" . translate("View this entry") .
-        "\" class=\"entry\" id=\"$linkid\" href=\"view_entry.php?id=$id&amp;user=$user\">";
+        "\" class=\"entry\" id=\"$linkid\" href=\"$view_link.php?id=$id&amp;user=$user\">";
       $timestr = "";
       if ( $time > 0 ) {
         $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
