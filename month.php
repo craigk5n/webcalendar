@@ -49,7 +49,7 @@ $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
 
 if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
   /* Pre-load tasks for quicker access */
-  $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) )
+  $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) && $is_assistant )
     ? $user : $login, $startdate, $enddate, $cat_id );
 }
 
