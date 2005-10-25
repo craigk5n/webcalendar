@@ -16,7 +16,7 @@ $catList = implode(",", array_keys($categories) );
 $eventcats = explode("," , $cats);
 
 $INC = array('js/catsel.php');
-print_header($INC,'','',true);
+print_header($INC,'','',true, false, true);
 ?>
 <table align="center"  border="0" width="250px">
 <tr><th colspan="3"><?php etranslate("Categories")?></th></tr>

@@ -70,6 +70,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added ability to disable RSS link inclusion in print_header(). Useful for popups
     + Implemented a new repeating event system that incorporates most requirements
       of RFC2445. All the ByXXX values are now supported except ByHour, ByMinute and
       BySecond. Multiple Categories, multiple Alarms and RDATE are now supported,
