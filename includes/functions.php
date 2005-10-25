@@ -1832,7 +1832,6 @@ function get_entries ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_t
  *
  * @return array Array of Events
  */
- //TODO clean up this mess
 function get_tasks ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_tz=0 ) {
   global $tasks, $login, $TIMEZONE;
   $n = 0;
@@ -1840,7 +1839,6 @@ function get_tasks ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_tz=
   if ( $use_dst  ) {
     $tz_offset = get_tz_offset ( $TIMEZONE, '', $date );
   }
-  //echo "count tasks" . count ( $tasks );
   for ( $i = 0; $i < count ( $tasks ); $i++ ) {
     // In case of data corruption (or some other bug...)
     if ( empty ( $tasks[$i] ) || $tasks[$i]->getID() == '' )
@@ -1850,56 +1848,43 @@ function get_tasks ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_tz=
     //don't adjust anything  if  no TZ offset or ALL Day Event or Untimed
     } else if ( empty (  $tz_offset[0]) ||  
     $tasks[$i]->isAllDay() || $tasks[$i]->isUntimed() ) {
-      if ( ( $date == date( "Ymd" ) && $tasks[$i]->getDueDate() <= date( "Ymd" ) ) || $tasks[$i]->getDueDate() == $date )
+      if ( ( $date == date( "Ymd" ) && $tasks[$i]->getDueDate() <= date( "Ymd" ) ) || 
+        $tasks[$i]->getDueDate() == $date )
         $ret[$n++] = $tasks[$i];
 
 
     } else if ( $tz_offset[0] > 0 ) {
-      $cutoff =  get_time_add_tz ( 240000, - $tz_offset[0] );
-      //echo "<br /> cal_time " . $events[$i]['cal_time'] . "<br />\n";
-
+      $cutoff =  get_time_add_tz ( 240000, - $tz_offset[0] ); 
       $sy = substr ( $date, 0, 4 );
       $sm = substr ( $date, 4, 2 );
       $sd = substr ( $date, 6, 2 );
       $prev_day = date ( ( "Ymd" ), mktime ( 0, 0, 0, $sm, $sd - 1, $sy ) );
-        //echo "prev_date = $prev_day <br />\n";
-      if ( ( ( $date == date( "Ymd" ) && $tasks[$i]->getDueDate() <= date( "Ymd" ) ) || $tasks[$i]->getDueDate() == $date ) &&
+       if ( ( ( $date == date( "Ymd" ) && $tasks[$i]->getDueDate() <= date( "Ymd" ) ) || 
+         $tasks[$i]->getDueDate() == $date ) &&
         $tasks[$i]->isUntimed() ) {
         $ret[$n++] = $tasks[$i];
-        //echo "added event " . $events[$i]->getID() . "<br />\n";
-      } else if ( ( ( $date == date( "Ymd" ) && $tasks[$i]->getDueDate() <= date( "Ymd" ) ) || $tasks[$i]->getDueDate() == $date ) &&
+      } else if ( ( ( $date == date( "Ymd" ) && $tasks[$i]->getDueDate() <= date( "Ymd" ) ) || 
+        $tasks[$i]->getDueDate() == $date ) &&
         $tasks[$i]->getDueTime() < $cutoff ) {
         $ret[$n++] = $tasks[$i];
-        //echo "added event " . $events[$i]->getID() . "<br />\n";
-  //    } else if ( $tasks[$i]->getDueDate() <= $prev_day &&
-  //      $tasks[$i]->getDueTime() >= $cutoff ) {
- //       $ret[$n++] = $tasks[$i];
-        //echo "added event " . $events[$i]->getID() . "<br />\n";
       }
     } else {
       //TZ < 0
       $cutoff = get_time_add_tz ( 000000, -$tz_offset[0] );
-      //echo $events[$i]->getDate() .$events[$i]->getTime() . " "  .$date . $cutoff . "<br>";;
       $sy = substr ( $date, 0, 4 );
       $sm = substr ( $date, 4, 2 );
       $sd = substr ( $date, 6, 2 );
       $next_day = date ( ( "Ymd" ), mktime ( 0, 0, 0, $sm, $sd + 1, $sy ) );
-      //echo "next_date = $next_day <br />\n";
       if ( $tasks[$i]->isUntimed() ) {
-        if ( ( ( $date == date( "Ymd" ) && $tasks[$i]->getDueDate() <= date( "Ymd" ) )|| $tasks[$i]->getDueDate() == $date ) ) {
+        if ( ( ( $date == date( "Ymd" ) && $tasks[$i]->getDueDate() <= date( "Ymd" ) )|| 
+          $tasks[$i]->getDueDate() == $date ) ) {
           $ret[$n++] = $tasks[$i];
-          //echo "added event " . $events[$i]->getID() . "<br />\n";
         }
       } else {
-   if ( ( ( $date == date( "Ymd" ) && $tasks[$i]->getDueDate() <= date( "Ymd" ) ) || $tasks[$i]->getDueDate() == $date ) &&
+   if ( ( ( $date == date( "Ymd" ) && $tasks[$i]->getDueDate() <= date( "Ymd" ) ) || 
+     $tasks[$i]->getDueDate() == $date ) &&
           $tasks[$i]->getDueTime() > $cutoff ) {
           $ret[$n++] = $tasks[$i];
-//    echo $tasks[$i]->getDueDate() . " " . date( "Ymd" ) ." " . $date;
-          //echo "added event $events[$i][cal_id] <br />\n";
-   //     } else if ( $tasks[$i]->getDueDate() <= $next_day &&
-  //        $tasks[$i]->getDueTime() <= $cutoff ) {
-   //       $ret[$n++] = $tasks[$i];
-          //echo "added event " . $events[$i]->getID() . "<br />\n";
         }
       }
     }
@@ -3090,7 +3075,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     $eventinfo, $login, $user;
   global $DISPLAY_ICONS, $PHP_SELF, $TIME_SLOTS, $WORK_DAY_START_HOUR,
     $WORK_DAY_END_HOUR;
-  global $layers, $DISPLAY_TZ, $tz_offset;
+  global $layers, $DISPLAY_TZ, $tz_offset, $TIMEZONE;
   static $key = 0;
 
   if ( $event->getExtForID() != '' ) {
@@ -3100,19 +3085,20 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     $id = $event->getID();
     $name = $event->getName();
   }
-  // Figure out which time slot it goes in.
-  if ( ! $event->isUntimed() ) {
-    $tz_time = get_time_add_tz( $event->getTime(), $tz_offset[0] );
+  
+  $tz_event = $tz_offset[0];
+  // Figure out which time slot it goes in. Put tasks in with AllDay and Untimed
+  if ( ! $event->isUntimed() && ! $event->isAllDay() && ( $event->getCalType() != 'T'||
+    $event->getCalType() == "N" ) ) {
+    $tz_time = date( "His", get_datetime_add_tz( $event->getDate(),$event->getTime() ) );
     $ind = calc_time_slot ( $tz_time );
     if ( $ind < $first_slot )
       $first_slot = $ind;
     if ( $ind > $last_slot )
       $last_slot = $ind;
-    } else if ( $event->isAllDay() ) {
-    // all-day event
-    $ind = $first_slot;
+    //echo $event->getTime() . "$tz_event  $tz_time $ind<br>"; 
   } else {
-    // untimed event
+    // untimed event or All Day
     $ind = 9999;
   }
 
@@ -3186,13 +3172,15 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     $rowspan = $last_slot - $first_slot + 1;
     if ( $rowspan > $rowspan_arr[$first_slot] && $rowspan > 1 )
       $rowspan_arr[$first_slot] = $rowspan;
-  } else if ( $event->getTime() >= 0 ) {
+    //We'll skip tasks  here as well
+  } else if ( $event->getTime() >= 0  && $event->getCalType() != "T" ) {
     if ( $show_time )
       $hour_arr[$ind] .= display_time ( $event->getDatetime() ) . "&raquo;&nbsp;";
     $timestr = display_time ( $event->getDatetime() );
     if ( $event->getDuration() > 0 ) {
       $timestr .= "-" . display_time ( $event->getEndDateTime() , $DISPLAY_TZ );
-      $end_time = get_time_add_tz($event->getEndTime(), $tz_offset[0]);
+      $end_time = date( "His", get_datetime_add_tz( $event->getDate(), 
+        $event->getEndTime() ) );
       //this fixes the improper display if an event ends at or after midnight
       if ( $end_time <  $tz_time ){
         $end_time += 240000;
@@ -3288,8 +3276,9 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
 
   // If TZ_OFFSET make this event before the start of the day or
   // after the end of the day, adjust the time slot accordingly.
-  if ( ! $event->isUntimed() ) {
- $tz_time = get_time_add_tz( $event->getTime(), $tz_offset[0] );
+  if ( ! $event->isUntimed()  && ! $event->isAllDay() && ( $event->getCalType() != 'T'||
+    $event->getCalType() == "N" ) ) {
+    $tz_time = date( "His", get_datetime_add_tz( $event->getDate(),$event->getTime() ) );
     $ind = calc_time_slot ( $tz_time );
     if ( $ind < $first_slot )
       $first_slot = $ind;
@@ -3355,13 +3344,14 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
 
   if ( $event->isAllDay() ) {
     $hour_arr[$ind] .= "[" . translate("All day event") . "] ";
-  } else if ( $time >= 0 ) {
+  } else if ( $time >= 0  && ! $event->isAllDay() && ( $event->getCalType() != 'T'||
+    $event->getCalType() == "N" ) ) {
     $hour_arr[$ind] .= "[" . display_time ( $event->getDatetime() );
     if ( $event->getDuration() > 0 ) {
       $hour_arr[$ind] .= "-" . display_time ( $event->getEndDateTime() );
       // which slot is end time in? take one off so we don't
       // show 11:00-12:00 as taking up both 11 and 12 slots.
-      $end_time = get_time_add_tz($event->getEndTime(), $tz_offset[0]);
+      $end_time = date( "His", get_datetime_add_tz( $event->getDate(),$event->getTime() ) );
       //this fixes the improper display if an event ends at or after midnight
       if ( $end_time <  $tz_time ){
         $end_time += 240000;
@@ -5402,7 +5392,8 @@ global $TZ_COMPLETE_LIST;
    $res = dbi_query ( "SELECT  tz_list_name, tz_list_text " .
                        "FROM webcal_tz_list ORDER BY tz_list_id" );
  }
-  
+   //allows different SETTING names between SERVER and USER
+   if ( $prefix = 'admin_' ) $prefix .= 'SERVER_';
    if ( $res ) {
     $ret =  "<select name=\"" . $prefix . "TIMEZONE\" id=\"" . $prefix . "TIMEZONE\">\n";
     while ( $row = dbi_fetch_row ( $res ) ) {

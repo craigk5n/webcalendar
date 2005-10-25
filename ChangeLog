@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1337535: 'Server Timezone Selection' could not properly saved
+ - Fixed bug 1337570: offset on entries from November to April
  - Fixed default UAC settings. User's cal_admin value is now used vs $is_admin
  - Fixed bug 1335631: Admin-Link on bottom of page shows with access control on
  - Changed the way cookies are encrypted. This should fix login looping problems 
