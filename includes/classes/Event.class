@@ -170,11 +170,12 @@ class Event {
    * @param string $status      Event's status
    * @param mixed  $category    Event's category ID
    * @param string $login       Event's owner
-   * @param string $calType    Event's type
+   * @param string $calType     Event's type
    * @param string $location    Event's location
    * @param string $url         Event's url
-   * @parm  int    $dueDate    Event's due date (in YYYYMMDD format)
-   * @parm  int    $dueTime    Event's due time (in HHMMSS format)
+   * @parm  int    $dueDate     Task's due date (in YYYYMMDD format)
+   * @parm  int    $dueTime     Task's due time (in HHMMSS format)
+   * @parm  int    $percent     Task's percentage of completion
    *
    * @return Event The new Event
    *
