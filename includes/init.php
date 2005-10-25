@@ -82,7 +82,7 @@ $WebCalendar->initializeSecondPhase();
  * @param bool   $disableStyle Do not include the standard css?
  */
 function print_header($includes = '', $HeadX = '', $BodyX = '',
-  $disableCustom=false, $disableStyle=false) {
+  $disableCustom=false, $disableStyle=false, $disableRSS=false) {
   global $APPLICATION_NAME;
   global $FONTS,$WEEKENDBG,$THFG,$THBG,$PHP_SELF;
   global $TABLECELLFG,$TODAYCELLBG,$TEXTCOLOR;
@@ -160,7 +160,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   if ( ! empty ( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y' &&
     $login == '__public__' ||
     ( ! empty ( $GLOBALS['USER_RSS_ENABLED'] ) &&
-    $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) ) {
+    $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) && $disableRSS == false ) {
     echo "<link rel=\"alternate\" type=\"application/rss+xml\" " .
       "title=\"" . htmlentities ( $APPLICATION_NAME ) .
       " [RSS 1.0]\" href=\"rss.php";
@@ -229,11 +229,11 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
       dbi_close ( $c );
     unset ( $c );
   }
-	// adds an easy link to validate the pages
-	if ( $DEMO_MODE == "Y" ) {
+ // adds an easy link to validate the pages
+ if ( $DEMO_MODE == "Y" ) {
      echo "<p><a href=\"http://validator.w3.org/check?uri=referer\"><img " .
        "src=\"http://www.w3.org/Icons/valid-xhtml10\" " .
        "alt=\"Valid XHTML 1.0!\" class=\"valid\"  /></a></p>";
-	}		
+ }  
 }
 ?>

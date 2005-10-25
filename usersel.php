@@ -47,7 +47,7 @@ if ( $res ) {
 }
 
 $INC = array('js/usersel.php');
-print_header($INC,'','',true);
+print_header($INC,'','',true, false, true);
 ?>
 
 <center>

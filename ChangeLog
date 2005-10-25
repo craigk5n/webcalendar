@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added ability to disable RSS link inclusion in print_header(). Useful for popups
  - Fixed bug 1275705: Typos in language files
  - Fixed bug 1278023: Carriage returns break I-cal files in v1.1.0-CVS
  - Fixed bug 1324505: Last hour of day (23:00 - 00:00) missing!

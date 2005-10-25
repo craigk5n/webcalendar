@@ -37,7 +37,7 @@ if ( empty ( $users ) ) {
 }
 
 $INC = array ( 'js/availability.php' );
-print_header($INC, '', "onload=\"focus();\"", true );
+print_header($INC, '', "onload=\"focus();\"", true, false, true );
 
 $span = ($WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR) * 3 + 1;
 if (strlen($month) == 1) $month = '0'.$month;   // add leading zeros
