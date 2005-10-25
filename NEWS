@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1335631: Admin-Link on bottom of page shows with access control on
       1275705: Typos in language files
       1278023: Carriage returns break I-cal files in v1.1.0-CVS
       1324505: Last hour of day (23:00 - 00:00) missing!
@@ -58,6 +59,8 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
+    - Fixed bug" Fixed default UAC settings. User's cal_admin value is now used vs $is_admin
+    - Fixed bug: Login loops forever. Changed the way cookies are encrypted.
     - Fixed bug: Call to member function on a non-object intermittent error
       when layers are in use
     - Applied PATCH 1290583: No more crash in tz_import.php on install, and fixed quoted
