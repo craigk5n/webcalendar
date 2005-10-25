@@ -202,10 +202,9 @@ function access_load_user_functions ( $user )
   // an admin user, otherwise access to all non-admin functions.
   if ( empty ( $ret ) ) {
     for ( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
-      $ret .= get_default_function_access ( $i );
+      $ret .= get_default_function_access ( $i, $user );
     }
   }
-
   return $ret;
 }
 
@@ -261,7 +260,7 @@ function access_can_access_function ( $function, $user="" )
 
   $yesno = substr ( $access, $function, 1 );
   if ( empty ( $yesno ) )
-    $yesno = get_default_function_access ( $function );
+    $yesno = get_default_function_access ( $function, $user );
   //echo "yesno = $yesno <br/>\n";
   assert ( '! empty ( $yesno )' );
   
@@ -467,7 +466,7 @@ function access_can_view_page ( $page="", $user="" )
 
   // No setting found.  Use default values.
   if ( empty ( $yesno ) ) {
-    $yesno = get_default_function_access ( $page_id );
+    $yesno = get_default_function_access ( $page_id, $user );
   }
 
   //echo "yesno = $yesno <br/>\n";
@@ -477,16 +476,16 @@ function access_can_view_page ( $page="", $user="" )
 }
 
 
-function get_default_function_access ( $page_id )
+function get_default_function_access ( $page_id, $user )
 {
   global $is_admin;
-
+	user_load_variables ( $user, 'user_' );
   switch ( $page_id ) {
     case ACCESS_ADMIN_HOME:
     case ACCESS_ACTIVITY_LOG:
     case ACCESS_USER_MANAGEMENT:
     case ACCESS_SYSTEM_SETTINGS:
-      return $is_admin ? 'Y' : 'N';
+      return ( $GLOBALS['user_is_admin'] == 'Y' ? 'Y' : 'N');
       break;
     default:
       return 'Y';
