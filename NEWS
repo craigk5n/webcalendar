@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1337535: 'Server Timezone Selection' could not properly saved
+      1337570: offset on entries from November to April
       1335631: Admin-Link on bottom of page shows with access control on
       1275705: Typos in language files
       1278023: Carriage returns break I-cal files in v1.1.0-CVS
