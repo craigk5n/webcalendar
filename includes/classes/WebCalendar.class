@@ -189,7 +189,7 @@ class WebCalendar {
         ! $is_admin ) {
         $valid_user = false;
         $userlist = get_my_users();
-        if ($nonuser_enabled == "Y" ) {
+        if ( ! empty ( $nonuser_enabled ) && $nonuser_enabled == "Y" ) {
           $nonusers = get_nonuser_cals ();
           $userlist =  array_merge($nonusers, $userlist);
         }
