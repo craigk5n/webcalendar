@@ -256,16 +256,14 @@ if ( $single_user != "Y" ) {
       translate("Today") . "</a>";
   }
   if ( $login != '__public__' && ! $is_nonuser && $readonly == 'N' ) {
-    if ( ! access_is_enabled () ||
-      access_can_access_function ( ACCESS_ADMIN_HOME ) )
-        $url = 'adminhome.php';
-        if ($is_nonuser_admin) {
-          $url .= "?user=$user";
-        }
+    if ( ! access_is_enabled () || access_can_access_function ( ACCESS_ADMIN_HOME ) ||
+    access_can_access_function ( ACCESS_PREFERENCES )) {
+      $url = 'adminhome.php';
+      if ($is_nonuser_admin) $url .= "?user=$user";
       $goto_link[] = "<a title=\"" . 
         translate("Admin") . "\" style=\"font-weight:bold;\" " .
-        "href=\"$url\">" . 
-        translate("Admin") . "</a>";
+        "href=\"$url\">" . translate("Admin") . "</a>";
+    }
   }
   if ( $login != "__public__" && ! $is_nonuser &&  $readonly == "N" &&
     ( $REQUIRE_APPROVALS == "Y" || $PUBLIC_ACCESS == "Y" ) ) {
