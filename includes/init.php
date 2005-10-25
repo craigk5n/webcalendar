@@ -80,6 +80,7 @@ $WebCalendar->initializeSecondPhase();
  * @param bool   $disbleCustom Do not include custom header? (useful for small
  *                             popup windows, such as color selection)
  * @param bool   $disableStyle Do not include the standard css?
+ * @param bool   $disableRSS   Do not include the RSS link
  */
 function print_header($includes = '', $HeadX = '', $BodyX = '',
   $disableCustom=false, $disableStyle=false, $disableRSS=false) {
