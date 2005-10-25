@@ -59,7 +59,7 @@ $events = read_events ( strlen ( $user ) ? $user : $login,
 
 if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
   /* Pre-load tasks for quicker access */
-  $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) )
+  $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) && $is_assistant )
     ? $user : $login, $startdate, $enddate, $cat_id );
 }
 
@@ -184,6 +184,7 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
  if ( $date >= date ( "Ymd" ) ) {
     $tk = get_tasks ( $user, $date, $get_unapproved );
  }
+ $ev = combine_and_sort_events($ev, $tk);
 
   $hour_arr = array ();
   $rowspan_arr = array ();
