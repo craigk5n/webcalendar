@@ -110,7 +110,8 @@ function access_get_function_description ( $function )
 function access_load_user_permissions ( $user )
 {
   global $access_other_cals;
-
+	//bail out if setting default values
+  if ( $user == '__default__' ) return false;
   assert ( '! empty ( $user )' );
 
   // Don't run this query twice
@@ -185,22 +186,26 @@ function access_load_user_functions ( $user )
 {
   global $is_admin;
 
-  $ret = '';
+  $rets = array();
   $users = array ( $user, '__default__' );
 
-  for ( $i = 0; $i < count ( $user ) && empty ( $ret ); $i++ )  {
+  for ( $i = 0; $i < count ( $users ) && empty ( $ret ); $i++ )  {
     $res = dbi_query ( "SELECT cal_permissions FROM webcal_access_function " .
       "WHERE cal_login = '" . $users[$i] . "'" );
     assert ( '$res' );
     if ( $row = dbi_fetch_row ( $res ) ) {
-      $ret = $row[0];
+      $rets[$i] = $row[0];
     }
     dbi_free_result ( $res );
   }
 
   // If still no setting found, then assume access to everything if
   // an admin user, otherwise access to all non-admin functions.
-  if ( empty ( $ret ) ) {
+  if ( ! empty ( $rets[0] ) ) {
+    $ret = $rets[0];  
+  } else if ( empty ( $rets[0] ) && ! empty ( $rets[1] ) ) {
+    $ret = $rets[1];
+  } else if ( empty ( $rets[0] ) ) {
     for ( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
       $ret .= get_default_function_access ( $i, $user );
     }
@@ -478,8 +483,7 @@ function access_can_view_page ( $page="", $user="" )
 
 function get_default_function_access ( $page_id, $user )
 {
-  global $is_admin;
-	user_load_variables ( $user, 'user_' );
+  user_load_variables ( $user, 'user_' );
   switch ( $page_id ) {
     case ACCESS_ADMIN_HOME:
     case ACCESS_ACTIVITY_LOG:
