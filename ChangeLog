@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added admin defined DELFAULT CONFIGURATION for user access control
  - Fixed bug 1337535: 'Server Timezone Selection' could not properly saved
  - Fixed bug 1337570: offset on entries from November to April
  - Fixed default UAC settings. User's cal_admin value is now used vs $is_admin

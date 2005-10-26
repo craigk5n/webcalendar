@@ -12,18 +12,18 @@
  * - update the database (form handler)
  *
  * Input Parameters:
- *	user - specifies which user to manage, a form will be presented
- *	       that allows editing rights of this user
+ *  user - specifies which user to manage, a form will be presented
+ *         that allows editing rights of this user
  *
- *	access_N - where N is 0 to ACCESS_NUMBER_FUNCTIONS as defined in
+ *  access_N - where N is 0 to ACCESS_NUMBER_FUNCTIONS as defined in
  *                 includes/access.php.  Each should be either 'Y' or 'N'.
- *	cal_N/v_N/e_N/d_N/a_N
- *		   a series of 5 related form variables.  The first
- *	           (cal_1, cal_2, etc.) holds the login of a user.
- *	           The rest hold Y/N values for read/edit/delete/approve.
+ *  cal_N/v_N/e_N/d_N/a_N
+ *       a series of 5 related form variables.  The first
+ *             (cal_1, cal_2, etc.) holds the login of a user.
+ *             The rest hold Y/N values for read/edit/delete/approve.
  *
  * TODO:
- *	Update the list of users to work properly with groups.
+ *  Update the list of users to work properly with groups.
  *
  */
 include_once 'includes/init.php';
@@ -89,6 +89,8 @@ if ( ! empty ( $user ) ) {
   print_header ();
 
   user_load_variables ( $user, 'user_' );
+  
+  if ( $user == '__default__' ) $user_fullname = 'DEFAULT CONFIGURATION';
   echo "<h2>" . translate ( "User Access Control" ) . ": " .
     $user_fullname . "</h2>\n";
 
@@ -165,7 +167,8 @@ if ( ! empty ( $user ) ) {
 
     // Get list of users that this user can see (may depend on group settings)
     // along with all nonuser calendars
-    $userlist = array_merge ( get_list_of_users ( $user ), get_nonuser_cals () );
+    if ( $user != '__default__' )
+      $userlist = array_merge ( get_list_of_users ( $user ), get_nonuser_cals () );
     ?>
 
     <br/><br/><br/>
@@ -175,7 +178,7 @@ if ( ! empty ( $user ) ) {
 <?php if ( $user == '__public__' ) { ?>
       <th width="70%"><?php etranslate("Calendar"); ?></th>
       <th width="30%"><?php etranslate("View Event"); ?></th>
-<?php } else { ?>
+<?php } else if ( $user != '__default__' ) { ?>
       <th width="40%"><?php etranslate("Calendar"); ?></th>
       <th width="15%"><?php etranslate("View Event"); ?></th>
       <th width="15%"><?php etranslate("Edit Event"); ?></th>
@@ -247,6 +250,7 @@ $userlist = get_my_users ();
 //echo "<b>Userlist</b>:<pre>"; print_r ( $userlist ); echo "</pre>";
 
 echo "<ul>\n";
+
 for ( $i = 0; $i < count ( $userlist ); $i++ ) {
   echo "<li><a href=\"access.php?user=" . $userlist[$i]['cal_login'] .
     "\">" . $userlist[$i]['cal_fullname'] . "</a></li>\n";
@@ -260,6 +264,9 @@ for ( $i = 0; $i < count ( $userlist ); $i++ ) {
   }
 }
 
+//add a DEFAULT CONFIGURATION to be as a mask
+echo "<li><a href=\"access.php?user=__default__\" \">" .
+  translate ( "DEFAULT CONFIGURATION" ) ."</a></li>\n";
 ?>
 </ul>
 
