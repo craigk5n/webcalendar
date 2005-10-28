@@ -536,11 +536,11 @@ if ( empty ( $error ) ) {
     }
   } //end for site_extras loop
 
-// If we were editing this event, then go back to the last view (week, day,
-// month).  If this is a new event, then go to the preferred view for
-// the date range that this event was added to.
+// If we were editing this task, then go back to the last view (week, day,
+// month) on the due date.  If this is a new event, then go to the preferred 
+//view for the date range that this event was added to.
 if ( empty ( $error ) ) {
-  $xdate = sprintf ( "%04d%02d%02d", $start_year, $start_month, $start_day );
+  $xdate = sprintf ( "%04d%02d%02d", $due_year, $due_month, $due_day );
   $user_args = ( empty ( $user ) ? '' : "user=$user" );
   send_to_preferred_view ( $xdate, $user_args );
 }
