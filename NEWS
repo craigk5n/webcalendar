@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1339201: Reminders set to yes results in error if editing appointment.
       1337535: 'Server Timezone Selection' could not properly saved
       1337570: offset on entries from November to April
       1335631: Admin-Link on bottom of page shows with access control on
