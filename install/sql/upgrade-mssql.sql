@@ -257,6 +257,7 @@ ALTER TABLE webcal_entry ADD cal_location varchar(50) default NULL;
 ALTER TABLE webcal_entry ADD cal_url varchar(100) default NULL;
 ALTER TABLE webcal_entry ADD cal_completed int(11) default NULL;
 ALTER TABLE webcal_entry_user ADD cal_percent int(11) NOT NULL default '0';
+ALTER TABLE webcal_site_extras DROP PRIMARY KEY;
 CREATE TABLE webcal_entry_categories (
   cal_id int(11) NOT NULL default '0',
   cat_id int(11) NOT NULL default '0',

@@ -259,8 +259,7 @@ CREATE TABLE webcal_site_extras (
   /* how many minutes before event should a reminder be sent */
   cal_remind INT DEFAULT 0,
   /* used to store text data */
-  cal_data TEXT,
-  PRIMARY KEY ( cal_id, cal_name, cal_type )
+  cal_data TEXT
 );
 
 /*

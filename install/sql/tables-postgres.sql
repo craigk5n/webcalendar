@@ -88,8 +88,7 @@ CREATE TABLE webcal_site_extras (
   cal_type INT NOT NULL,
   cal_date INT DEFAULT 0,
   cal_remind INT DEFAULT 0,
-  cal_data TEXT,
-  PRIMARY KEY ( cal_id, cal_name, cal_type )
+  cal_data TEXT
 );
 CREATE TABLE webcal_reminder_log (
   cal_id INT DEFAULT 0 NOT NULL,
