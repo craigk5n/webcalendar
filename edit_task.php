@@ -77,8 +77,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
       $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
         "webcal_entry_user WHERE webcal_entry.cal_id = " .
         "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
-        "AND (webcal_entry.cal_create_by = '$login' " .
-        "OR webcal_entry_user.cal_login = '$login')";
+        "AND (webcal_entry.cal_create_by = '$login')";
       $res = dbi_query ( $sql );
       if ( $res ) {
         $row = dbi_fetch_row ( $res );
