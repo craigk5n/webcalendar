@@ -210,7 +210,6 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $participants[$row[0]] = 1;
       if ( $login == $user || $is_assistant  || $is_admin ) {
      $cat_id[] = $row[1];
      $cat_name[] = $row[3];    
@@ -222,6 +221,17 @@ if ( $readonly == 'Y' || $is_nonuser ) {
 
     dbi_free_result ( $res );
  }
+ 
+   //get participants
+  $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id AND " .
+	  " cal_status IN ('A', 'W' )";
+  $res = dbi_query ( $sql );
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      $participants[$row[0]] = 1;
+    }
+		dbi_free_result ( $res );
+  }
  // I don't think we should do external users. Any thoughts?
   //if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == "Y" ) {
   //  $external_users = event_get_external_users ( $id );
