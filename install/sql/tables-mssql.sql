@@ -92,8 +92,7 @@ CREATE TABLE webcal_reminder_log (
   cal_id INT DEFAULT '0' NOT NULL,
   cal_name VARCHAR(25) NOT NULL,
   cal_event_date INT NOT NULL DEFAULT 0,
-  cal_last_sent INT NOT NULL DEFAULT 0,
-  PRIMARY KEY ( cal_id, cal_name, cal_event_date )
+  cal_last_sent INT NOT NULL DEFAULT 0
 );
 CREATE TABLE webcal_group (
   cal_group_id INT NOT NULL,

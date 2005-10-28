@@ -14,7 +14,7 @@
    sqlite_query($db, "CREATE TABLE webcal_entry_ext_user ( cal_id INT DEFAULT 0 NOT NULL, cal_fullname VARCHAR(50) NOT NULL, cal_email VARCHAR(75) NULL, PRIMARY KEY ( cal_id, cal_fullname ))");
    sqlite_query($db, "CREATE TABLE webcal_user_pref ( cal_login VARCHAR(25) NOT NULL, cal_setting VARCHAR(25) NOT NULL, cal_value VARCHAR(100) NULL, PRIMARY KEY ( cal_login, cal_setting ))");
    sqlite_query($db, "CREATE TABLE webcal_user_layers ( cal_layerid INT DEFAULT 0 NOT NULL, cal_login VARCHAR(25) NOT NULL, cal_layeruser VARCHAR(25) NOT NULL, cal_color VARCHAR(25) NULL, cal_dups CHAR(1) DEFAULT 'N', PRIMARY KEY ( cal_login, cal_layeruser ))");
-   sqlite_query($db, "CREATE TABLE webcal_site_extras ( cal_id INT DEFAULT 0 NOT NULL, cal_name VARCHAR(25) NOT NULL, cal_type INT NOT NULL, cal_date INT DEFAULT 0, cal_remind INT DEFAULT 0, cal_data TEXT, PRIMARY KEY ( cal_id, cal_name, cal_type ))");
+   sqlite_query($db, "CREATE TABLE webcal_site_extras ( cal_id INT DEFAULT 0 NOT NULL, cal_name VARCHAR(25) NOT NULL, cal_type INT NOT NULL, cal_date INT DEFAULT 0, cal_remind INT DEFAULT 0, cal_data TEXT)");
    sqlite_query($db, "CREATE TABLE webcal_reminder_log ( cal_id INT DEFAULT 0 NOT NULL, cal_name VARCHAR(25) NOT NULL, cal_event_date INT NOT NULL DEFAULT 0, cal_last_sent INT NOT NULL DEFAULT 0, PRIMARY KEY ( cal_id, cal_name, cal_event_date ))");
    sqlite_query($db, "CREATE TABLE webcal_group ( cal_group_id INT NOT NULL, cal_owner VARCHAR(25) NULL, cal_name VARCHAR(50) NOT NULL, cal_last_update INT NOT NULL, PRIMARY KEY ( cal_group_id ))");
    sqlite_query($db, "CREATE TABLE webcal_group_user ( cal_group_id INT NOT NULL, cal_login VARCHAR(25) NOT NULL, PRIMARY KEY ( cal_group_id, cal_login ))");
