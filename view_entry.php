@@ -142,9 +142,15 @@ if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
   if ( $found_nonuser_cal && ! $found_reg_user ) {
     $can_view = true;
   }
-}
-  
+} 
+//if sent here from an email and not logged in,
+//save URI and redirect to login
 if ( empty ( $error ) && ! $can_view ) {
+  $em = getGetValue ( 'em' );
+	if ( ! empty ( $em ) ) {
+	  remember_this_view ();
+		do_redirect ( 'login.php' );	
+	} 
   $error = translate ( "You are not authorized" );
 }
 
@@ -713,7 +719,7 @@ if ( $unapproved && $readonly == 'N' ) {
     translate("Approve this entry?") . "');\">" . 
     translate("Approve/Confirm entry") . "</a><br />\n";
   echo "<a title=\"" . 
-    translate("Reject entry") . "\" href=\"reject_entry.php?id=$id\" " .
+    translate("Reject entry") . "\" href=\"reject_entry.php?id=$id&amp;type=E\" " .
     "onclick=\"return confirm('" .
     translate("Reject this entry?") . "');\">" . 
     translate("Reject entry") . "</a><br />\n";

@@ -1,5 +1,7 @@
 <?php
 include_once 'includes/init.php';
+require ( 'includes/classes/WebCalMailer.class' );
+$mail = new WebCalMailer;
 
 $error = "";
 
@@ -20,13 +22,20 @@ if ( access_is_enabled () && ! empty ( $user ) &&
   if ( access_can_approve_user_calendar ( $user ) )
     $app_user = $user;
 }
-
+$type = getGetValue ( 'type' );
+if ( ! empty ( $type ) && ( $type == 'T' || $type == 'N' ) ) {
+  $log_reject =  LOG_REJECT_T;
+  $view_type = "view_task";
+} else {
+  $log_reject =  LOG_REJECT;
+  $view_type = "view_entry";	
+}
 if ( empty ( $error ) && $id > 0 ) {
   if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'R' " .
     "WHERE cal_login = '$app_user' AND cal_id = $id" ) ) {
     $error = translate("Error approving event") . ": " . dbi_error ();
   } else {
-    activity_log ( $id, $login, $app_user, LOG_REJECT, "" );
+    activity_log ( $id, $login, $app_user, $log_reject, "" );
   }
 
   // Update any extension events related to this one.
@@ -77,6 +86,7 @@ if ( empty ( $error ) && $id > 0 ) {
     // does this user want email for this?
     $send_user_mail = get_pref_setting ( $partlogin[$i],
       "EMAIL_EVENT_REJECTED" );
+    $htmlmail = get_pref_setting ( $partlogin[$i], "EMAIL_HTML" );
     user_load_variables ( $partlogin[$i], "temp" );
     $user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
     $user_TZ = get_tz_offset ( $user_TIMEZONE, '', $eventstart );
@@ -96,23 +106,35 @@ if ( empty ( $error ) && $id > 0 ) {
         translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
         ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate("Time") . ": " .
         // Display using user's GMT offset and display TZID
-        display_time ( $fmtdate .  $eventstart, 2, '' , $user_TIMEZONE ) ) ). "\n\n\n";
+        display_time ( $eventstart, 2, '' , $user_TIMEZONE ) ) ). "\n\n";
       if ( ! empty ( $SERVER_URL ) ) {
-        $url = $SERVER_URL .  "view_entry.php?id=" .  $id;
+				//DON'T change & to &amp; here. email will handle it
+        $url = $SERVER_URL .  $view_type . ".php?id=" .  $id . "&em=1";
+				if ( $htmlmail == 'Y' ) {
+					$url =  activate_urls ( $url ); 
+				}
         $msg .= "\n\n" . $url;
       }
 
       $from = $EMAIL_FALLBACK_FROM;
-      if ( strlen ( $login_email ) )
-        $from = $login_email;
+      if ( strlen ( $login_email ) ) $from = $login_email;
 
-      $extra_hdrs = "From: $from\r\nX-Mailer: " . translate("Title");
+			if ( strlen ( $from ) ) {
+				$mail->From = $from;
+				$mail->FromName = $login_fullname;
+			} else {
+				$mail->From = $login_fullname;
+			}
+			$mail->IsHTML( $htmlmail == 'Y' ? true : false );
+			$mail->AddAddress( $tempemail, $tempfullname );
+			$mail->Subject = translate($APPLICATION_NAME) . " " .
+				translate("Notification") . ": " . $name;
+			$mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;
+			$mail->Send();
+			$mail->ClearAll();
 
-      mail ( $tempemail,
-        translate($APPLICATION_NAME) . " " . translate("Notification") . ": " . $name,
-        html_to_8bits ($msg), $extra_hdrs );
       activity_log ( $id, $login, $partlogin[$i], LOG_NOTIFICATION,
-        "Event rejected by $app_user" );
+        "Rejected by $app_user" );
     }
   }
 }
@@ -123,7 +145,7 @@ if ( empty ( $error ) ) {
   else if (  ! empty ( $ret ) &&  $ret == "list" )
     do_redirect ( "list_unapproved.php?user=$app_user" );
   else
-    do_redirect ( "view_entry.php?id=$id&amp;user=$app_user" );
+    do_redirect ( $view_type . ".php?id=$id&amp;user=$app_user" );
   exit;
 }
 print_header ();

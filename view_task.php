@@ -57,12 +57,23 @@ if ( empty ( $error ) ) {
  //group checking deleted. 
 }
 
+//update the task percentage for this user
+if ( ! empty ( $_POST ) && $can_view && $is_my_event ) {
+  $upercent = getPostValue ( 'upercent' );
+ if ( $upercent >= 0 && $upercent <= 100 )
+    dbi_query ("UPDATE webcal_entry_user SET cal_percent = $upercent " .
+     " WHERE cal_login = '$login'");
+}
 $hide_details = false;
 
-
-
-  
+//if sent here from an email and not logged in,
+//save URI and redirect to login
 if ( empty ( $error ) && ! $can_view ) {
+  $em = getGetValue ( 'em' );
+	if ( ! empty ( $em ) ) {
+	  remember_this_view ();
+		do_redirect ( 'login.php' );	
+	} 
   $error = translate ( "You are not authorized" );
 }
 
@@ -468,7 +479,7 @@ if ( $show_participants ) { ?>
     echo "[" . translate("Private") . "]";
   } else {
     $sql = "SELECT cal_login, cal_status, cal_percent FROM webcal_entry_user " .
-      "WHERE cal_id = $id";
+      "WHERE cal_id = $id AND cal_status IN ( 'A', 'W' )";
     //echo "$sql\n";
     $res = dbi_query ( $sql );
     if ( $res ) {
@@ -481,8 +492,8 @@ if ( $show_participants ) { ?>
     }
   }
  echo "<table  border=\"1\"  width=\"80%\" cellspacing=\"0\" cellpadding=\"0\">\n";
- echo "<th align=\"center\">" .translate('Participants') . "</th>";
- echo "<th align=\"center\" colspan=\"2\">" . translate('Percentage Complete') . "</th>";
+ echo "<th align=\"center\">" .translate( "Participants" ) . "</th>";
+ echo "<th align=\"center\" colspan=\"2\">" . translate( "Percentage Complete" ) . "</th>";
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
     user_load_variables ( $participants[$i][0], "temp" );
   $spacer = 100 - $participants[$i][2];
@@ -566,7 +577,7 @@ if ( $unapproved && $readonly == 'N' ) {
     translate("Approve this task?") . "');\">" . 
     translate("Approve/Confirm task") . "</a><br />\n";
   echo "<a title=\"" . 
-    translate("Reject task") . "\" href=\"reject_entry.php?id=$id\" " .
+    translate("Reject task") . "\" href=\"reject_entry.php?id=$id&amp;type=T\" " .
     "onclick=\"return confirm('" .
     translate("Reject this task?") . "');\">" . 
     translate("Reject task") . "</a><br />\n";
@@ -699,15 +710,15 @@ if ( $show_log ) {
       echo $row[1] . "</td><td>\n" . 
         date_to_str ( $row[3] ) . "&nbsp;" .
         display_time ( $row[4], 3 ) . "</td><td>\n";
-      if ( $row[2] == LOG_CREATE ) {
+      if ( $row[2] == LOG_CREATE_T ) {
         etranslate("Task created");
-      } else if ( $row[2] == LOG_APPROVE ) {
+      } else if ( $row[2] == LOG_APPROVE_T ) {
         etranslate("Task approved");
-      } else if ( $row[2] == LOG_REJECT ) {
+      } else if ( $row[2] == LOG_REJECT_T ) {
         etranslate("Task rejected");
-      } else if ( $row[2] == LOG_UPDATE ) {
+      } else if ( $row[2] == LOG_UPDATE_T ) {
         etranslate("Task updated");
-      } else if ( $row[2] == LOG_DELETE ) {
+      } else if ( $row[2] == LOG_DELETE_T ) {
         etranslate("Task deleted");
       } else if ( $row[2] == LOG_NOTIFICATION ) {
         etranslate("Notification sent");

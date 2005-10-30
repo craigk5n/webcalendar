@@ -41,7 +41,7 @@ echo "<tr><th class=\"usr\">\n" .
 $sql = "SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, " .
   "webcal_entry_log.cal_type, webcal_entry_log.cal_date, " .
   "webcal_entry_log.cal_time, webcal_entry.cal_id, " .
-  "webcal_entry.cal_name, webcal_entry_log.cal_log_id " .
+  "webcal_entry.cal_name, webcal_entry_log.cal_log_id, webcal_entry.cal_type " .
   "FROM webcal_entry_log, webcal_entry " .
   "WHERE webcal_entry_log.cal_entry_id = webcal_entry.cal_id ";
 if ( ! empty ( $startid ) )
@@ -63,14 +63,15 @@ if ( $res ) {
       if ( $num % 2 ) {
         echo " class=\"odd\"";
       }
-      echo "><td>\n" .
+      $view_link = ( $row[8] == 'E' || $row[8] == 'M' ?'view_entry' : 'view_task' );			
+			echo "><td>\n" .
         $row[0] . "</td><td>\n" .
         $row[1] . "</td><td>\n" . 
         date_to_str ( $row[3] ) . "&nbsp;" .
         // No TZ conversion & show TZID which will be GMT
         display_time ( $row[4], 3 ) . "</td><td>\n" . 
         "<a title=\"" .
-        htmlspecialchars($row[6]) . "\" href=\"view_entry.php?id=$row[5]\">" .
+        htmlspecialchars($row[6]) . "\" href=\"$view_link?id=$row[5]\">" .
         htmlspecialchars($row[6]) . "</a></td><td>\n";
       if ( $row[2] == LOG_CREATE )
         etranslate("Event created");
@@ -82,6 +83,16 @@ if ( $res ) {
         etranslate("Event updated");
       else if ( $row[2] == LOG_DELETE )
         etranslate("Event deleted");
+      else if ( $row[2] == LOG_CREATE_T )
+        etranslate("Task created");
+      else if ( $row[2] == LOG_APPROVE_T )
+        etranslate("Task approved");
+      else if ( $row[2] == LOG_REJECT_T )
+        etranslate("Task rejected");
+      else if ( $row[2] == LOG_UPDATE_T )
+        etranslate("Task updated");
+      else if ( $row[2] == LOG_DELETE_T )
+        etranslate("Task deleted");
       else if ( $row[2] == LOG_NOTIFICATION )
         etranslate("Notification sent");
       else if ( $row[2] == LOG_REMINDER )

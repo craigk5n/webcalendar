@@ -1,0 +1,76 @@
+<?php
+/**
+ * Class to over load PHPMailer class to utilize
+ * WebCalendar's translation function
+ *
+ * PHPMailer's homepage http://phpmailer.sourceforge.net/
+ *
+ *
+ * @author Ray Jones <rjones@umces.edu>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id: 
+ * @package WebCalendar
+ * @subpackage Mailer
+ *
+ */
+
+require("phpmailer/class.phpmailer.php");
+
+class WebCalMailer extends phpmailer { 
+
+  var $WordWrap = 75;
+
+  //constructor function
+  function WebCalMailer () {
+    global $APPLICATION_NAME, $SMTP_HOST, $SMTP_AUTH,
+      $SMTP_USERNAME, $SMTP_PASSWORD, $EMAIL_MAILER;
+    //echo $this->Version;
+    $this->Version .= " extended by " . translate($APPLICATION_NAME);
+    $this->Host     = $SMTP_HOST;
+    $this->Mailer   = $EMAIL_MAILER;
+    $mail->SMTPAuth = ( $SMTP_AUTH == 'Y'? true : false );     // turn on SMTP authentication
+    $mail->Username = $SMTP_USERNAME;  // SMTP username
+    $mail->Password = $SMTP_PASSWORD; // SMTP password    
+  }
+  
+  // Replace the default language handler to use WebCalendar's function
+  function Lang($key) {
+    //we can't put ":" in translations, so we use "~"
+    return  str_replace ( "~", ": ", translate ( $key ) ); 
+  }
+
+  //Replace the default error handler so we can add our own trailer
+  function SetError($msg) {
+    $this->error_count++;
+    //$this->ErrorInfo = $msg;
+    die_miserable_death ( $msg );
+  }
+  
+  //New function to clear ALL attributes
+  function ClearAll () {
+    $this->ClearAddresses();
+    $this->ClearAllRecipients();    
+    $this->ClearAttachments();
+    $this->ClearCustomHeaders();      
+  }
+}
+
+// The following comments will be picked up by update_translation.pl so
+// translators will be aware that they also need to translate language names.
+//
+// translate ( "provide_address");
+// translate ( "mailer_not_supported");
+// translate ( "execute");
+// translate ( "instantiate");
+// translate ( "authenticate");
+// translate ( "from_failed");
+// translate ( "recipients_failed");
+// translate ( "data_not_accepted");
+// translate ( "connect_host");
+// translate ( "file_access");
+// translate ( "file_open");
+// translate ( "encoding");
+
+
+?>

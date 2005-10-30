@@ -35,7 +35,7 @@
  * For this work, at least on Apache, the following needs
  * to be added to the http.conf file:
  *  <Directory "/var/www/html/webcalendar">
- *    Script PUT /subsciption.php    
+ *    Script PUT /icalclient.php    
  *  </Directory>
  * Of course, replace "/var/www/html/webcalendar" with the
  * directory where you installed WebCalendar.

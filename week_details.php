@@ -177,7 +177,7 @@ function print_detailed_entry ( $event, $date ) {
 
   if ( $event->getExtForID() != '' ) {
     $id = $event->getExtForID();
-    $name = $event->getName() . ' (' . translate ( 'cont.' ) . ')';
+    $name = $event->getName() . ' (' . translate ( "cont." ) . ')';
   } else {
     $id = $event->getID();
     $name = $event->getName();

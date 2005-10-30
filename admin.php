@@ -660,8 +660,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  </td></tr>
  <tr id="sr2"><td class="tooltip" title="<?php etooltip("allow-self-registration-full-help")?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Use self-registration email notifications" )?>:</td><td>
-  <label><input type="radio" name="admin_self_registration_full" value="Y" <?php if ( ! empty ( $s["SELF_REGISTRATION_FULL"] ) && $s["SELF_REGISTRATION_FULL"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_self_registration_full" value="N" <?php if ( ! empty ( $s["SELF_REGISTRATION_FULL"] ) && $s["SELF_REGISTRATION_FULL"] != "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_SELF_REGISTRATION_FULL" value="Y" <?php if ( ! empty ( $s["SELF_REGISTRATION_FULL"] ) && $s["SELF_REGISTRATION_FULL"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_SELF_REGISTRATION_FULL" value="N" <?php if ( ! empty ( $s["SELF_REGISTRATION_FULL"] ) && $s["SELF_REGISTRATION_FULL"] != "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
 <!-- TODO add account aging feature -->
 </table>
@@ -672,37 +672,75 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <table cellspacing="0" cellpadding="3">
 <tr><td class="tooltip" title="<?php etooltip("email-enabled-help")?>">
  <?php etranslate("Email enabled")?>:</td><td>
- <label><input type="radio" name="admin_send_email" value="Y" <?php if ( $s["SEND_EMAIL"] == "Y" ) echo " checked=\"checked\"";?> onclick="email_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
- <label><input type="radio" name="admin_send_email" value="N" <?php if ( $s["SEND_EMAIL"] != "Y" ) echo " checked=\"checked\"";?> onclick="email_handler()" />&nbsp;<?php etranslate("No")?></label>
+ <label><input type="radio" name="admin_SEND_EMAIL" value="Y" <?php if ( $s["SEND_EMAIL"] == "Y" ) echo " checked=\"checked\"";?> onclick="email_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="admin_SEND_EMAIL" value="N" <?php if ( $s["SEND_EMAIL"] != "Y" ) echo " checked=\"checked\"";?> onclick="email_handler()" />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
 <tr id="em1"><td class="tooltip" title="<?php etooltip("email-default-sender")?>">
  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Default sender address")?>:</td><td>
  <input type="text" size="30" name="admin_EMAIL_FALLBACK_FROM" value="<?php echo htmlspecialchars ($EMAIL_FALLBACK_FROM );?>" />
 </td></tr>
-<tr id="em2"><td colspan="2" style="font-weight:bold;">
+
+<tr id="em2"><td class="tooltip" title="<?php etooltip("email-mailer")?>">
+<?php etranslate("Email Mailer")?>:</td><td>
+ <select name="admin_EMAIL_MAILER"  onchange="email_handler()">
+   <option value="smtp" <?php if ( $s["EMAIL_MAILER"] == 
+	   "smtp" ) echo " selected=\"selected\""?>>SMTP</option>
+   <option value="mail" <?php if ( $s["EMAIL_MAILER"] == 
+	   "mail" ) echo " selected=\"selected\""?>>PHP mail</option>
+	 <option value="sendmail" <?php if ( $s["EMAIL_MAILER"] == 
+	   "sendmail" ) echo " selected=\"selected\""?>>sendmail</option>
+	</select>	 
+</td></tr>
+
+<tr id="em3"><td class="tooltip" title="<?php etooltip("email-smtp-host")?>">
+<?php etranslate("SMTP Host name(s)")?>:</td><td>
+ <input type="text" size="50" name="admin_SMTP_HOST" value="<?php echo $s["SMTP_HOST"];?>" />
+</td></tr>
+<tr id="em3a"><td class="tooltip" title="<?php etooltip("email-smtp-port")?>">
+<?php etranslate("SMTP Port Number")?>:</td><td>
+ <input type="text" size="4" name="admin_SMTP_PORT" value="<?php echo $s["SMTP_PORT"];?>" />
+</td></tr>
+
+<tr id="em4"><td class="tooltip" title="<?php etooltip("email-smtp-auth")?>">
+ <?php etranslate("SMTP Authentication")?>:</td><td>
+ <label><input type="radio" name="admin_SMTP_AUTH" value="Y" <?php if ( $s["SMTP_AUTH"] == "Y" ) echo " checked=\"checked\"";?> onclick="email_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="admin_SMTP_AUTH" value="N" <?php if ( $s["SMTP_AUTH"] != "Y" ) echo " checked=\"checked\"";?> onclick="email_handler()" />&nbsp;<?php etranslate("No")?></label>
+</td></tr>
+
+<tr id="em5"><td class="tooltip" title="<?php etooltip("email-smtp-username")?>">
+ &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("SMTP Username")?>:</td><td>
+ <input type="text" size="30" name="admin_SMTP_USERNAME" value="<?php echo $s["SMTP_USERNAME"];?>" />
+</td></tr>
+
+<tr id="em6"><td class="tooltip" title="<?php etooltip("email-smtp-password")?>">
+ &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("SMTP Password")?>:</td><td>
+ <input type="text" size="30" name="admin_SMTP_PASSWORD" value="<?php echo $s["SMTP_PASSWORD"];?>" />
+</td></tr>
+
+<tr id="em7"><td colspan="2" style="font-weight:bold;">
  <?php etranslate("Default user settings")?>:
 </td></tr>
-<tr id="em3"><td class="tooltip" title="<?php etooltip("email-event-reminders-help")?>">
+<tr id="em8"><td class="tooltip" title="<?php etooltip("email-event-reminders-help")?>">
  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Event reminders")?>:</td><td>
  <label><input type="radio" name="admin_EMAIL_REMINDER" value="Y" <?php if ( $s["EMAIL_REMINDER"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="admin_EMAIL_REMINDER" value="N" <?php if ( $s["EMAIL_REMINDER"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
-<tr id="em4"><td class="tooltip" title="<?php etooltip("email-event-added")?>">
+<tr id="em9"><td class="tooltip" title="<?php etooltip("email-event-added")?>">
  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Events added to my calendar")?>:</td><td>
  <label><input type="radio" name="admin_EMAIL_EVENT_ADDED" value="Y" <?php if ( $s["EMAIL_EVENT_ADDED"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="admin_EMAIL_EVENT_ADDED" value="N" <?php if ( $s["EMAIL_EVENT_ADDED"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
-<tr id="em5"><td class="tooltip" title="<?php etooltip("email-event-updated")?>">
+<tr id="em10"><td class="tooltip" title="<?php etooltip("email-event-updated")?>">
  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Events updated on my calendar")?>:</td><td>
  <label><input type="radio" name="admin_EMAIL_EVENT_UPDATED" value="Y" <?php if ( $s["EMAIL_EVENT_UPDATED"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="admin_EMAIL_EVENT_UPDATED" value="N" <?php if ( $s["EMAIL_EVENT_UPDATED"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
-<tr id="em6"><td class="tooltip" title="<?php etooltip("email-event-deleted");?>">
+<tr id="em11"><td class="tooltip" title="<?php etooltip("email-event-deleted");?>">
  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Events removed from my calendar")?>:</td><td>
  <label><input type="radio" name="admin_EMAIL_EVENT_DELETED" value="Y" <?php if ( $s["EMAIL_EVENT_DELETED"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="admin_EMAIL_EVENT_DELETED" value="N" <?php if ( $s["EMAIL_EVENT_DELETED"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
-<tr id="em7"><td class="tooltip" title="<?php etooltip("email-event-rejected")?>">
+<tr id="em12"><td class="tooltip" title="<?php etooltip("email-event-rejected")?>">
  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Event rejected by participant")?>:</td><td>
  <label><input type="radio" name="admin_EMAIL_EVENT_REJECTED" value="Y" <?php if ( $s["EMAIL_EVENT_REJECTED"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="admin_EMAIL_EVENT_REJECTED" value="N" <?php if ( $s["EMAIL_EVENT_REJECTED"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>

@@ -1,5 +1,8 @@
 <?php
 include_once 'includes/init.php';
+require ( 'includes/classes/WebCalMailer.class' );
+$mail = new WebCalMailer;
+
 load_user_categories ();
 
 $error = "";
@@ -262,12 +265,15 @@ if ( empty ( $error ) ) {
 
   // log add/update
   activity_log ( $id, $login, ($is_assistant ? $user : $login),
-    $newevent ? LOG_CREATE : LOG_UPDATE, "" );
+    $newevent ? LOG_CREATE_T : LOG_UPDATE_T, "" );
   
   if ( $single_user == "Y" ) {
     $participants[0] = $single_user_login;
   }
 
+  $from = $login_email;
+  if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
+    $from = $EMAIL_FALLBACK_FROM;
   // check if participants have been removed and send out emails
   if ( ! $newevent && count ( $old_status ) > 0 ) {  
     while ( list ( $old_participant, $dummy ) = each ( $old_status ) ) {
@@ -284,6 +290,7 @@ if ( empty ( $error ) ) {
       if ( !$found_flag ) {
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $old_participant, "EMAIL_EVENT_DELETED" );
+        $htmlmail = get_pref_setting ( $old_participant, "EMAIL_HTML" );
         $user_TIMEZONE = get_pref_setting ( $old_participant, "TIMEZONE" );
         $user_TZ = get_tz_offset ( $user_TIMEZONE, $eventstart );
         $user_language = get_pref_setting ( $old_participant, "LANGUAGE" );
@@ -306,29 +313,37 @@ if ( empty ( $error ) ) {
           $fmtdate = date ( "Ymd", $user_eventstart ); 
           $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
             translate("A task has been canceled for you by") .
-            " " . $login_fullname .  ". " .
+            " " . $login_fullname .  ".\n" .
             translate("The subject was") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-             ( $timetype != 'T'  ? "" :
+             ( empty ( $timetype ) || $timetype != 'T'  ? "" :
             translate("Time") . ": " .
             // Apply user's GMT offset and display their TZID
             display_time ( date ( "YmdHis", $eventstart ), 2, '', $user_TIMEZONE ) .
               "\n\n\n");
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
-            $url = $SERVER_URL .  "view_task.php?id=" .  $id;
+					  //DON'T change & to &amp; here. email will handle it
+            $url = $SERVER_URL .  "view_task.php?id=" .  $id . "&em=1";
+            if ( $htmlmail == 'Y' ) {
+              $url =  activate_urls ( $url );
+            }
             $msg .= $url . "\n\n";
           }
-         
-          if ( strlen ( $login_email ) ) {
-            $extra_hdrs = "From: $login_email\r\nX-Mailer: " . translate($APPLICATION_NAME);
+          if ( strlen ( $from ) ) {
+            $mail->From = $from;
+            $mail->FromName = $login_fullname;
           } else {
-            $extra_hdrs = "From: $EMAIL_FALLBACK_FROM\r\nX-Mailer: " . translate($APPLICATION_NAME);
+            $mail->From = $login_fullname;
           }
-          mail ( $tempemail,
-            translate($APPLICATION_NAME) . " " . translate("Notification") . ": " . $name,
-            html_to_8bits ($msg), $extra_hdrs );
+          $mail->IsHTML( $htmlmail == 'Y' ? true : false );
+          $mail->AddAddress( $tempemail, $tempfullname );
+          $mail->Subject = translate($APPLICATION_NAME) . " " .
+            translate("Notification") . ": " . $name;
+          $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;
+          $mail->Send();
+          $mail->ClearAll();          
           activity_log ( $id, $login, $old_participant, LOG_NOTIFICATION,
      "User removed from participants list" );
         }
@@ -380,12 +395,13 @@ if ( empty ( $error ) ) {
       $error = translate("Database error") . ": " . dbi_error ();
       break;
     } else {
-        $from = $user_email;
-        if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
-          $from = $EMAIL_FALLBACK_FROM;
+
+
+
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $participants[$i],
            $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
+        $htmlmail = get_pref_setting ( $participants[$i], "EMAIL_HTML" );
         $user_TIMEZONE = get_pref_setting ( $participants[$i], "TIMEZONE" );
         $user_TZ = get_tz_offset ( $user_TIMEZONE, $eventstart );
         $user_language = get_pref_setting ( $participants[$i], "LANGUAGE" );
@@ -411,12 +427,11 @@ if ( empty ( $error ) ) {
           } else {
             $msg .= translate("A task has been updated by");
           }
-          $msg .= " " . $login_fullname .  ". " .
+          $msg .= " " . $login_fullname .  ".\n" .
             translate("The subject is") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-            ( $timetype != 'T' ? "" :
-            translate("Time") . ": " .
+            ( empty ( $timetype ) || $timetype != 'T' ? "" : translate("Time") . ": " .
             // Apply user's GMT offset and display their TZID
             display_time ( date ( "YmdHis", $eventstart ), 2, '', $user_TIMEZONE ) . "\n" ) .
             translate("Please look on") . " " . translate($APPLICATION_NAME) . " " .
@@ -425,17 +440,28 @@ if ( empty ( $error ) ) {
             translate("to view this task") ) . ".";
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
-            $url = $SERVER_URL .  "view_task.php?id=" .  $id;
+					  //DON'T change & to &amp; here. email will handle it
+            $url = $SERVER_URL .  "view_task.php?id=" .  $id . "&em=1";
+            if ( $htmlmail == 'Y' ) {
+              $url =  activate_urls ( $url ); 
+            }
             $msg .= "\n\n" . $url;
           }
+          //use WebCalMailer class
           if ( strlen ( $from ) ) {
-            $extra_hdrs = "From: $from\r\nX-Mailer: " . translate($APPLICATION_NAME);
+            $mail->From = $from;
+            $mail->FromName = $login_fullname;
           } else {
-            $extra_hdrs = "X-Mailer: " . translate($APPLICATION_NAME);
+            $mail->From = $login_fullname;
           }
-          mail ( $tempemail,
-            translate($APPLICATION_NAME) . " " . translate("Notification") . ": " . $name,
-            html_to_8bits ($msg), $extra_hdrs );
+          $mail->IsHTML( $htmlmail == 'Y' ? true : false );
+          $mail->AddAddress( $tempemail, $tempfullname );
+          $mail->Subject = translate($APPLICATION_NAME) . " " .
+            translate("Notification") . ": " . $name;
+          $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;;                    
+          $mail->Send();
+          $mail->ClearAll();
+          
           activity_log ( $id, $login, $participants[$i], LOG_NOTIFICATION, "" );
       }
     }
@@ -493,6 +519,7 @@ if ( empty ( $error ) ) {
         $extra_type == EXTRA_TEXT || $extra_type == EXTRA_USER ||
         $extra_type == EXTRA_MULTILINETEXT ||
         $extra_type == EXTRA_SELECTLIST  ) {
+
         $sql = "INSERT INTO webcal_site_extras " .
           "( cal_id, cal_name, cal_type, cal_data ) VALUES ( " .
           "$id, '$extra_name', $extra_type, '$value' )";

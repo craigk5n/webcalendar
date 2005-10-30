@@ -23,24 +23,27 @@ if ( access_is_enabled () && ! empty ( $user ) &&
 }
 
 if ( empty ( $error ) && $id > 0 ) {
-  if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'A' " .
-    "WHERE cal_login = '$app_user' AND cal_id = $id" ) ) {
-    $error = translate("Error approving event") . ": " . dbi_error ();
-  } else {
-    activity_log ( $id, $login, $app_user, LOG_APPROVE, "" );
-  }
-  // Update any extension events related to this one.
-  $res = dbi_query ( "SELECT cal_id FROM webcal_entry " .
+  $approve_type = LOG_APPROVE; //used in activity log below
+	// Update any extension events related to this one.
+  $res = dbi_query ( "SELECT cal_id, cal_type FROM webcal_entry " .
     "WHERE cal_ext_for_id = $id" );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $ext_id = $row[0];
+			$approve_type = ( $row[1] == 'E' || $row[1] == 'M'? LOG_APPROVE : LOG_APPROVE_T ); 
       if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'A' " .
         "WHERE cal_login = '$app_user' AND cal_id = $ext_id" ) ) {
         $error = translate("Error approving event") . ": " . dbi_error ();
       }
     }
     dbi_free_result ( $res );
+  }
+	
+	if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'A' " .
+    "WHERE cal_login = '$app_user' AND cal_id = $id" ) ) {
+    $error = translate("Error approving event") . ": " . dbi_error ();
+  } else {
+    activity_log ( $id, $login, $app_user, $approve_type, "" );
   }
 }
 

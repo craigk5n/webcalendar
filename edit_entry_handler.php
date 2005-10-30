@@ -1,5 +1,8 @@
 <?php
 include_once 'includes/init.php';
+require ( 'includes/classes/WebCalMailer.class' );
+$mail = new WebCalMailer;
+
 load_user_categories ();
 
 $error = "";
@@ -211,62 +214,6 @@ if ( empty ( $participants[0] ) ) {
   }
 }
 
-
-// handle external participants
-$ext_names = array ();
-$ext_emails = array ();
-$matches = array ();
-$ext_count = 0;
-if ( $single_user == "N" &&
-  ! empty ( $ALLOW_EXTERNAL_USERS ) && 
-  $ALLOW_EXTERNAL_USERS == "Y" &&
-  ! empty ( $externalparticipants ) ) {
-  $lines = explode ( "\n", $externalparticipants );
-  if ( ! is_array ( $lines ) ) {
-    $lines = array ( $externalparticipants );
-  }
-  if ( is_array ( $lines ) ) {
-    for ( $i = 0; $i < count ( $lines ); $i++ ) {
-      $ext_words = explode ( " ", $lines[$i] );
-      if ( ! is_array ( $ext_words ) ) {
-        $ext_words = array ( $lines[$i] );
-      }
-      if ( is_array ( $ext_words ) ) {
-        $ext_names[$ext_count] = "";
-        $ext_emails[$ext_count] = "";
-        for ( $j = 0; $j < count ( $ext_words ); $j++ ) {
-          // use regexp matching to pull email address out
-          $ext_words[$j] = chop ( $ext_words[$j] ); // remove \r if there is one
-          if ( preg_match ( "/<?\\S+@\\S+\\.\\S+>?/", $ext_words[$j],
-            $matches ) ) {
-            $ext_emails[$ext_count] = $matches[0];
-            $ext_emails[$ext_count] = preg_replace ( "/[<>]/", "",
-              $ext_emails[$ext_count] );
-          } else {
-            if ( strlen ( $ext_names[$ext_count] ) ) {
-              $ext_names[$ext_count] .= " ";
-            }
-            $ext_names[$ext_count] .= $ext_words[$j];
-          }
-        }
-        // Test for duplicate Names
-        if ( $i > 0 ) {
-          for ( $k = $i ; $k > 0 ; $k-- ) {
-            if ( $ext_names[$i] == $ext_names[$k] ) { 
-              $ext_names[$i]  .= "[$k]";     
-            }
-          }
-        }
-        if ( strlen ( $ext_emails[$ext_count] ) &&
-          empty ( $ext_names[$ext_count] ) ) {
-          $ext_names[$ext_count] = $ext_emails[$ext_count];
-        }
-        $ext_count++;
-      }
-    }
-  }
-}
-
 //Convert $byxx arrays from form
 rsort ($bydayext2);
 
@@ -437,10 +384,13 @@ if ( empty ( $error ) ) {
     $participants[0] = $single_user_login;
   }
 
+  $from = $login_email;
+  if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
+    $from = $EMAIL_FALLBACK_FROM;
   // check if participants have been removed and send out emails
   if ( ! $newevent && count ( $old_status ) > 0 ) {  
     while ( list ( $old_participant, $dummy ) = each ( $old_status ) ) {
-      $found_flag = false;
+      $found_flag = false; 
       for ( $i = 0; $i < count ( $participants ); $i++ ) {
         if ( $participants[$i] == $old_participant ) {
           $found_flag = true;
@@ -453,6 +403,7 @@ if ( empty ( $error ) ) {
       if ( !$found_flag && !$is_nonuser_admin) {
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $old_participant, "EMAIL_EVENT_DELETED" );
+        $htmlmail = get_pref_setting ( $old_participant, "EMAIL_HTML" );
         $user_TIMEZONE = get_pref_setting ( $old_participant, "TIMEZONE" );
         $user_TZ = get_tz_offset ( $user_TIMEZONE, $eventstart );
         $user_language = get_pref_setting ( $old_participant, "LANGUAGE" );
@@ -471,11 +422,11 @@ if ( empty ( $error ) ) {
           } else {
              reset_language ( $user_language );
           }
-   
+  
           $fmtdate = date ( "Ymd", $user_eventstart ); 
           $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
             translate("An appointment has been canceled for you by") .
-            " " . $login_fullname .  ". " .
+            " " . $login_fullname .  ".\n" .
             translate("The subject was") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
@@ -486,20 +437,28 @@ if ( empty ( $error ) ) {
               "\n\n\n");
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
-            $url = $SERVER_URL .  "view_entry.php?id=" .  $id;
+            //DON'T change & to &amp; here. email will handle it
+            $url = $SERVER_URL .  "view_entry.php?id=" .  $id . "&em=1";
+            if ( $htmlmail == 'Y' ) {
+              $url =  activate_urls ( $url ); 
+            }
             $msg .= $url . "\n\n";
           }
-         
-          if ( strlen ( $login_email ) ) {
-            $extra_hdrs = "From: $login_email\r\nX-Mailer: " . translate($APPLICATION_NAME);
+          if ( strlen ( $from ) ) {
+            $mail->From = $from;
+            $mail->FromName = $login_fullname;
           } else {
-            $extra_hdrs = "From: $EMAIL_FALLBACK_FROM\r\nX-Mailer: " . translate($APPLICATION_NAME);
+            $mail->From = $login_fullname;
           }
-          mail ( $tempemail,
-            translate($APPLICATION_NAME) . " " . translate("Notification") . ": " . $name,
-            html_to_8bits ($msg), $extra_hdrs );
+          $mail->IsHTML( $htmlmail == 'Y' ? true : false );
+          $mail->AddAddress( $tempemail, $tempfullname );
+          $mail->Subject = translate($APPLICATION_NAME) . " " .
+            translate("Notification") . ": " . $name;
+          $mail->Body  = ( $htmlmail == 'Y' ? nl2br ( $msg ) : $msg );
+          $mail->Send();
+          $mail->ClearAll();          
           activity_log ( $id, $login, $old_participant, LOG_NOTIFICATION,
-     "User removed from participants list" );
+            "User removed from participants list" );
         }
       }
     }
@@ -529,8 +488,8 @@ if ( empty ( $error ) ) {
       $tmp_status = ( ! empty ( $old_status[$participants[$i]] ) && ! $send_user_mail ) ?
         $old_status[$participants[$i]] : "W";
       $status = ( $participants[$i] != $login && 
-     boss_must_approve_event ( $login, $participants[$i] ) && 
-    $REQUIRE_APPROVALS == "Y" && ! $is_nonuser_admin ) ?
+        boss_must_approve_event ( $login, $participants[$i] ) && 
+        $REQUIRE_APPROVALS == "Y" && ! $is_nonuser_admin ) ?
         $tmp_status : "A";
       $tmp_cat = ( $participants[$i] == $user ) ? $cat_id : '';
       // Allow cat to be changed for public access (if admin user)
@@ -580,12 +539,10 @@ if ( empty ( $error ) ) {
       // Don't send mail if we are editing a non-user calendar
       // and we are the admin
       if (!$is_nonuser_admin) {
-        $from = $user_email;
-        if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
-          $from = $EMAIL_FALLBACK_FROM;
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $participants[$i],
            $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
+        $htmlmail = get_pref_setting ( $participants[$i], "EMAIL_HTML" );
         $user_TIMEZONE = get_pref_setting ( $participants[$i], "TIMEZONE" );
         $user_TZ = get_tz_offset ( $user_TIMEZONE, $eventstart );
         $user_language = get_pref_setting ( $participants[$i], "LANGUAGE" );
@@ -611,7 +568,7 @@ if ( empty ( $error ) ) {
           } else {
             $msg .= translate("An appointment has been updated by");
           }
-          $msg .= " " . $login_fullname .  ". " .
+          $msg .= " " . $login_fullname .  ".\n" .
             translate("The subject is") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
@@ -625,17 +582,28 @@ if ( empty ( $error ) ) {
             translate("to view this appointment") ) . ".";
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
-            $url = $SERVER_URL .  "view_entry.php?id=" .  $id;
+            //DON'T change & to &amp; here. email will handle it
+            $url = $SERVER_URL .  "view_entry.php?id=" .  $id . "&em=1";
+            if ( $htmlmail == 'Y' ) {
+              $url =  activate_urls ( $url ); 
+            }
             $msg .= "\n\n" . $url;
           }
+          //use WebCalMailer class
           if ( strlen ( $from ) ) {
-            $extra_hdrs = "From: $from\r\nX-Mailer: " . translate($APPLICATION_NAME);
+            $mail->From = $from;
+            $mail->FromName = $login_fullname;
           } else {
-            $extra_hdrs = "X-Mailer: " . translate($APPLICATION_NAME);
+            $mail->From = $login_fullname;
           }
-          mail ( $tempemail,
-            translate($APPLICATION_NAME) . " " . translate("Notification") . ": " . $name,
-            html_to_8bits ($msg), $extra_hdrs );
+          $mail->IsHTML( $htmlmail == 'Y' ? true : false );
+          $mail->AddAddress( $tempemail, $tempfullname );
+          $mail->Subject = translate($APPLICATION_NAME) . " " .
+            translate("Notification") . ": " . $name;
+          $mail->Body  = ( $htmlmail == 'Y' ? nl2br ( $msg ) : $msg );                    
+          $mail->Send();
+          $mail->ClearAll();
+          
           activity_log ( $id, $login, $participants[$i], LOG_NOTIFICATION, "" );
         }
       }
@@ -643,6 +611,60 @@ if ( empty ( $error ) ) {
   } //end for loop participants
 
   // add external participants
+// handle external participants
+$ext_names = array ();
+$ext_emails = array ();
+$matches = array ();
+$ext_count = 0;
+if ( $single_user == "N" &&
+  ! empty ( $ALLOW_EXTERNAL_USERS ) && 
+  $ALLOW_EXTERNAL_USERS == "Y" &&
+  ! empty ( $externalparticipants ) ) {
+  $lines = explode ( "\n", $externalparticipants );
+  if ( ! is_array ( $lines ) ) {
+    $lines = array ( $externalparticipants );
+  }
+  if ( is_array ( $lines ) ) {
+    for ( $i = 0; $i < count ( $lines ); $i++ ) {
+      $ext_words = explode ( " ", $lines[$i] );
+      if ( ! is_array ( $ext_words ) ) {
+        $ext_words = array ( $lines[$i] );
+      }
+      if ( is_array ( $ext_words ) ) {
+        $ext_names[$ext_count] = "";
+        $ext_emails[$ext_count] = "";
+        for ( $j = 0; $j < count ( $ext_words ); $j++ ) {
+          // use regexp matching to pull email address out
+          $ext_words[$j] = chop ( $ext_words[$j] ); // remove \r if there is one
+          if ( preg_match ( "/<?\\S+@\\S+\\.\\S+>?/", $ext_words[$j],
+            $matches ) ) {
+            $ext_emails[$ext_count] = $matches[0];
+            $ext_emails[$ext_count] = preg_replace ( "/[<>]/", "",
+              $ext_emails[$ext_count] );
+          } else {
+            if ( strlen ( $ext_names[$ext_count] ) ) {
+              $ext_names[$ext_count] .= " ";
+            }
+            $ext_names[$ext_count] .= $ext_words[$j];
+          }
+        }
+        // Test for duplicate Names
+        if ( $i > 0 ) {
+          for ( $k = $i ; $k > 0 ; $k-- ) {
+            if ( $ext_names[$i] == $ext_names[$k] ) { 
+              $ext_names[$i]  .= "[$k]";     
+            }
+          }
+        }
+        if ( strlen ( $ext_emails[$ext_count] ) &&
+          empty ( $ext_names[$ext_count] ) ) {
+          $ext_names[$ext_count] = $ext_emails[$ext_count];
+        }
+        $ext_count++;
+      }
+    }
+  }
+}  
   // send notification if enabled.
   if ( is_array ( $ext_names ) && is_array ( $ext_emails ) ) {
     for ( $i = 0; $i < count ( $ext_names ); $i++ ) {
@@ -671,31 +693,40 @@ if ( empty ( $error ) ) {
           } else {
             $msg .= translate("An appointment has been updated by");
           }
-          $msg .= " " . $login_fullname .  ". " .
+          $msg .= " " . $login_fullname .  ".\n" .
             translate("The subject is") . " \"" . $name . "\"\n\n" .
             translate("The description is") . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
             ( $timetype != 'T' ? "" :
             translate("Time") . ": " .
-   // Do not apply TZ offset & display TZID, which is GMT
+            // Do not apply TZ offset & display TZID, which is GMT
             display_time ( date ("YmdHis", $eventstart ), 3 ) . "\n" ) .
             translate("Please look on") . " " . translate($APPLICATION_NAME) .
             ".";
           // add URL to event, if we can figure it out
-          if ( ! empty ( $SERVER_URL ) ) {
+          //don't send HTML to external adresses
+          $htmlmail = false;
+          if ( ! empty ( $SERVER_URL )  ) {
             $url = $SERVER_URL .  "view_entry.php?id=" .  $id;
+            if ( $htmlmail == 'Y' ) {
+              $url =  activate_urls ( $url ); 
+            }
             $msg .= "\n\n" . $url;
           }
           if ( strlen ( $from ) ) {
-            $extra_hdrs = "From: $from\r\nX-Mailer: " . translate($APPLICATION_NAME);
+            $mail->From = $from;
+            $mail->FromName = $login_fullname;
           } else {
-            $extra_hdrs = "X-Mailer: " . translate($APPLICATION_NAME);
-          }
-          mail ( $ext_emails[$i],
-            translate($APPLICATION_NAME) . " " .
-            translate("Notification") . ": " . $name,
-            html_to_8bits ($msg), $extra_hdrs );
-        
+            $mail->From = $login_fullname;
+          }  
+          $mail->IsHTML($htmlmail == "Y");
+          $mail->AddAddress( $ext_emails[$i], $ext_names[$i] );
+          $mail->Subject = translate($APPLICATION_NAME) . " " .
+            translate("Notification") . ": " . $name;
+          $mail->Body  = ( $htmlmail == 'Y' ? nl2br ( $msg ) : $msg );
+          $mail->Send();
+          $mail->ClearAll();
+                  
         }
       }
     }
@@ -733,7 +764,7 @@ if ( empty ( $error ) ) {
   }
  }     
   // add site extras
- //we'll ignore the site_extra settings ans use the form values
+ //we'll ignore the site_extra settings and use the form values
   if ( ! empty ( $serial_site_extras ) ) {
    $site_extras_additions = unserialize ( base64_decode ($serial_site_extras ) );
     $site_extras = array_merge ( $site_extras, $site_extras_additions );

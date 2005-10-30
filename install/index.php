@@ -1138,9 +1138,7 @@ if ( ! $exists || ! $canWrite ) { ?>
 <?php //if the settings file exists, but we can't write to it..
  if ( $exists && ! $canWrite ) { ?>
   <tr><td>
-   <img src="not_recommended.jpg" />&nbsp;<?php etranslate ( "The file permissions of <b>settings.php</b> are set so 
-   that the installer does not have permission to modify it. Please change the file permissions of 
-   the following file to continue" ) ?>:</td><td>
+   <img src="not_recommended.jpg" />&nbsp;<?php etranslate ( "The file permissions of <b>settings.php</b> are set..." ) ?>:</td><td>
    <blockquote><b>
     <?php echo realpath ( $file ); ?>
    </b></blockquote>
@@ -1148,9 +1146,7 @@ if ( ! $exists || ! $canWrite ) { ?>
 <?php //or, if the settings file doesn't exist & we can't write to the includes directory..
  } else if ( ! $exists && ! $canWrite ) { ?>
   <tr><td colspan="2">
-   <img src="not_recommended.jpg" />&nbsp;<?php etranslate ( "The file permissions of the <b>includes</b> directory are 
-   set so that the installer does not have permission to create a new file. Please change the 
-   permissions of the following directory to continue" ) ?>:
+   <img src="not_recommended.jpg" />&nbsp;<?php etranslate ( "The file permissions of the <b>includes</b> directory are set..." ) ?>:
    <blockquote><b>
     <?php echo realpath ( $fileDir ); ?>
    </b></blockquote>

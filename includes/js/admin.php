@@ -169,25 +169,53 @@ function sr_handler () {
 // Gets called on page load and when user changes setting for
 // "Email enabled".
 function email_handler () {
-  var enabled = document.prefform.admin_send_email[0].checked;
+  var enabled = document.prefform.admin_SEND_EMAIL[0].checked;
+  var mailer = document.prefform.admin_EMAIL_MAILER.selectedIndex;
+  var auth = document.prefform.admin_SMTP_AUTH[0].checked;
+
   //alert ( "allow external =  " + enabled );
   if ( enabled ) {
     // Email enabled
     makeVisible ( "em1" );
     makeVisible ( "em2" );
-    makeVisible ( "em3" );
-    makeVisible ( "em4" );
-    makeVisible ( "em5" );
-    makeVisible ( "em6" );
+		if ( mailer == 0 ) {
+      makeVisible ( "em3" );
+      makeVisible ( "em3a" );
+      makeVisible ( "em4" );
+		  if ( auth ) {			
+        makeVisible ( "em5" )
+        makeVisible ( "em6" );
+			} else {
+        makeInvisible ( "em5" )
+        makeInvisible ( "em6" );			
+			}
+		} else {
+      makeInvisible ( "em3" );
+      makeInvisible ( "em3a" );
+      makeInvisible ( "em4" );
+      makeInvisible ( "em5" )
+      makeInvisible ( "em6" );		
+		}
     makeVisible ( "em7" );
+    makeVisible ( "em8" );
+    makeVisible ( "em9" );
+    makeVisible ( "em10" );
+    makeVisible ( "em11" );
+    makeVisible ( "em12" );
   } else {
     makeInvisible ( "em1" );
     makeInvisible ( "em2" );
     makeInvisible ( "em3" );
+    makeInvisible ( "em3a" );
     makeInvisible ( "em4" );
     makeInvisible ( "em5" );
     makeInvisible ( "em6" );
     makeInvisible ( "em7" );
+    makeInvisible ( "em8" );
+    makeInvisible ( "em9" );
+    makeInvisible ( "em10" );
+    makeInvisible ( "em11" );
+    makeInvisible ( "em12" );
   }
 }
 

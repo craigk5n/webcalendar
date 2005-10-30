@@ -1367,8 +1367,13 @@ foreach ( $data as $Entry ){
       }
 
       // log add/update
-      activity_log ( $id, $login, $login,
-        $updateMode ? LOG_UPDATE : LOG_CREATE, "Import from $ImportType" );
+   if ( $Entry['CalendarType'] == "VTODO" ) {
+        activity_log ( $id, $login, $login,
+          $updateMode ? LOG_UPDATE_T : LOG_CREATE_T, "Import from $ImportType" );
+   } else {
+        activity_log ( $id, $login, $login,
+          $updateMode ? LOG_UPDATE : LOG_CREATE, "Import from $ImportType" );   
+   }
  //not in icalclient
       if ( $single_user == "Y" ) {
         $participants[0] = $single_user_login;

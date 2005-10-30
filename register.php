@@ -1,6 +1,10 @@
 <?php
 require_once 'includes/init.php';
- 
+ require ( 'includes/classes/WebCalMailer.class' );
+$mail = new WebCalMailer;
+//TODO make this an option for external usrers
+$htmlmail = false;
+
 load_global_settings ();
 
 if ( empty ( $ALLOW_SELF_REGISTRATION ) || $ALLOW_SELF_REGISTRATION != "Y" ) { 
@@ -59,7 +63,7 @@ function check_email ( $uemail ) {
 //Generate unique password
 function generate_password() {
   $pass_length = 7;
- $pass= '';
+  $pass= '';
   $salt = "abchefghjkmnpqrstuvwxyz0123456789";
   srand((double)microtime()*1000000); 
    $i = 0;
@@ -134,16 +138,16 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == "full" ) {
     $error = translate ( "Illegal characters in login" ).
      "<tt>" . htmlentities ( $user ) . "</tt>";
   }
-
+    
   //Check to make sure user doesn't already exist
   check_username ( $user );
   //Check to make sure email address doesn't already exist
   check_email ( $uemail );
- 
+  
   // need to generate unique passwords and email them to the new user 
   if ( empty ( $error ) ) {
     $new_pass = generate_password ();
-   //TODO allow admin to approve account aand emails prior to processing
+    //TODO allow admin to approve account aand emails prior to processing
     user_add_user ( $user, $new_pass, $ufirstname, $ulastname,
       $uemail, $uis_admin );
    
@@ -156,20 +160,30 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == "full" ) {
    // add URL to event, if we can figure it out
    if ( ! empty ( $SERVER_URL ) ) {
      $url = $SERVER_URL .  "login.php";
+     if ( $htmlmail == 'Y' ) {
+       $url =  activate_urls ( $url ); 
+     }
      $msg .= "\n\n" . $url;
    }
   $msg .= "\n\n" . translate("You may change your password after logging in the first time") . ".\n\n";
   $msg .= translate("If you received this email in error" ) . ".\n\n"; 
-   if ( ! empty ( $EMAIL_FALLBACK_FROM ) ) {
-    $extra_hdrs = "From: $EMAIL_FALLBACK_FROM\r\nX-Mailer: " . translate($APPLICATION_NAME);
-   } else {
-    $extra_hdrs = "X-Mailer: " . translate($APPLICATION_NAME);
-   }
-   mail ( $uemail,
-     translate($APPLICATION_NAME) . " " . translate("Welcome") . ": " . $ufirstname,
-     html_to_8bits ($msg), $extra_hdrs );
-   activity_log ( 0, 'admin', $user, LOG_NEWUSER_EMAIL, "New user via email" ); 
+  
+  if ( ! empty ( $EMAIL_FALLBACK_FROM ) ) {
+    $mail->From = $EMAIL_FALLBACK_FROM;
+    $mail->FromName = translate("Administrator");
+  } else {
+    $mail->From = translate("Administrator");
   }
+  $mail->IsHTML( $htmlmail == 'Y' ? true : false );
+  $mail->AddAddress( $uemail, $ufirstname .  " " . $ulasttname );
+  $mail->Subject = translate($APPLICATION_NAME) . " " .
+    translate("Welcome") . ": " . $ufirstname;
+  $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;
+  $mail->Send();
+  $mail->ClearAll();
+
+  activity_log ( 0, 'admin', $user, LOG_NEWUSER_EMAIL, "New user via email" ); 
+ }
 }
 
 print_header();

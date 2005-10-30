@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 10-23-2005
+# Translation last updated on 10-30-2005
 
 
 ###############################################
@@ -44,6 +44,7 @@ Delete Event: Delete Event
 Approve/Reject Event: Approve/Reject Event
 Cancel: Cancel
 Save: Save
+DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 
 
 ###############################################
@@ -61,6 +62,11 @@ Event approved: Event approved
 Event rejected: Event rejected
 Event updated: Event updated
 Event deleted: Event deleted
+Task created: Task created
+Task approved: Task approved
+Task rejected: Task rejected
+Task updated: Task updated
+Task deleted: Task deleted
 Notification sent: Notification sent
 Reminder sent: Reminder sent
 Previous: Previous
@@ -262,6 +268,18 @@ email-enabled-help: Turn on or off all sending of email for notification and rem
 Email enabled: Email enabled
 email-default-sender: Specifies the email address to specify as the sender when sending out reminders.
 Default sender address: Default sender address
+email-mailer: Choose email type (SMTP, PHP mail, sendmail)
+Email Mailer: Email Mailer
+email-smtp-host: Hostname(s) of SMTP server(s) seperated by commas
+SMTP Host name(s): SMTP Host name(s)
+email-smtp-port: SMTP Port Number (normally 25)
+SMTP Port Number: SMTP Port Number
+email-smtp-auth: Use SMTP Authentication
+SMTP Authentication: SMTP Authentication
+email-smtp-username: SMTP Username if using Authentication
+SMTP Username: SMTP Username
+email-smtp-password: SMTP Password if using Authentication
+SMTP Password: SMTP Password
 Default user settings: Default user settings
 email-event-reminders-help: Specifies whether or not to send event reminders.
 Event reminders: Event reminders
@@ -375,6 +393,7 @@ Full Description: Full Description
 access-help: Specifies the access level of the event.<br /> <i>Public</i>: Everyone can see the full details of the event.  <br /><i>Confidential</i>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: Access
 Public: Public
+Private: Private
 Confidential: Confidential
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
 Priority: Priority
@@ -424,6 +443,7 @@ Weekdays Only: Weekdays Only
 Week Start: Week Start
 repeat-bydayextended-help: Allows date selection based on day of week. 
 ByDay: ByDay
+All: All
 repeat-month-help: Specifies which months the event should repeat in.
 ByMonth: ByMonth
 repeat-bysetpos-help: Allows date selection based on position within an another ByXXX set of dates.
@@ -807,9 +827,9 @@ Not authorized: Not authorized
 ###############################################
 # Page: load_tz_data.php
 #
+Load: Load
 Loading Timezone Data into Database: Loading Timezone Data into Database
 This could take several minutes to complete: This could take several minutes to complete
-Load: Load
 Close: Close
 
 
@@ -858,7 +878,6 @@ to modify the preferences for the Public Access calendar: to modify the preferen
 to modify the preferences for the: to modify the preferences for the
 Save Preferences: Save Preferences
 Timezone Selection: Timezone Selection
-All: All
 Email format preference: Email format preference
 HTML: HTML
 Plain Text: Plain Text
@@ -893,6 +912,7 @@ Please visit: Please visit
 to log in and start using your account: to log in and start using your account
 You may change your password after logging in the first time: You may change your password after logging in the first time
 If you received this email in error: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note 
+Administrator: Administrator
 Welcome: Welcome
 Your passwords do not match: Your passwords do not match
 Registration: Registration
@@ -907,13 +927,12 @@ Submit: Submit
 # Page: reject_entry.php
 #
 An appointment has been rejected by: An appointment has been rejected by
-Title: WebCalendar
 
 
 ###############################################
 # Page: report.php
 #
-Private: Private
+cont.: cont.
 This event is confidential: This event is confidential
 Waiting for approval: Waiting for approval
 Deleted: Deleted
@@ -1050,7 +1069,13 @@ Double-click on empty cell to add new entry: Double-click on empty cell to add n
 # Page: view_task.php
 #
 Invalid task id: Invalid task id
+Accepted: Accepted
+Needs-Action: Needs-Action
+Declined: Declined
 before due time: before due time
+Percentage Complete: Percentage Complete
+Update Task Percentage: Update Task Percentage
+Update: Update
 Approve/Confirm task: Approve/Confirm task
 Approve this task?: Approve this task?
 Reject task: Reject task
@@ -1059,11 +1084,6 @@ Edit task: Edit task
 This will delete this task for all users.: This will delete this task for all users.
 Copy task: Copy task
 This will delete the task from your calendar.: This will delete the task from your calendar.
-Task created: Task created
-Task approved: Task approved
-Task rejected: Task rejected
-Task updated: Task updated
-Task deleted: Task deleted
 Export this task to: Export this task to
 
 
@@ -1089,6 +1109,15 @@ Common Trailer: Common Trailer
 ###############################################
 # Page: includes/functions.php
 #
+Title: WebCalendar
+TASKS: TASKS
+Task_Title: Title
+Due: Due
+Task Name: Task Name
+Task Due Date: Task Due Date
+Completed: Completed
+task: task
+event: event
 View this: View this
 This event is private: This event is private
 exceeds limit of XXX events per day: exceeds limit of XXX events per day
@@ -1249,6 +1278,23 @@ You have not entered a Category Name: You have not entered a Category Name
 
 
 ###############################################
+# Page: includes/classes/WebCalMailer.class
+#
+provide_address: You must provide at least one recipient email address
+mailer_not_supported: mailer is not supported
+execute: Could not execute~
+instantiate: Could not instantiate mail function
+authenticate: SMTP Error~ Could not authenticate
+from_failed: The following From address failed~
+recipients_failed: SMTP Error~ The following recipients failed~
+data_not_accepted: SMTP Error~ Data not accepted
+connect_host: SMTP Error~ Could not connect to SMTP host~
+file_access: Could not access file~
+file_open: File Error Could not open file~
+encoding: Unknown encoding~
+
+
+###############################################
 # Page: tools/send_reminders.php
 #
 This is a reminder for the event detailed below.: This is a reminder for the event detailed below.
@@ -1292,6 +1338,8 @@ To test the proper operation of sessions, reload this page: To test the proper o
 You should see the session counter increment each time: You should see the session counter increment each time
 SESSION COUNTER: SESSION COUNTER
 Settings.php Status: Settings.php Status
+The file permissions of <b>settings.php</b> are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
+The file permissions of the <b>includes</b> directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
 Your <b>settings.php</b> file appears to be valid: Your <b>settings.php</b> file appears to be valid
 Configuration Wizard Password: Configuration Wizard Password
 Create Settings File Password: Create Settings File Password
