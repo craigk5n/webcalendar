@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added support for SMTP mail using PHPMailer
  - Fixed problem with participants not being populated when editing an event
  - Fixed bug 1339201: Reminders set to yes results in error if editing appointment
  - Added admin defined DELFAULT CONFIGURATION for user access control
