@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1340800: "Action entry" for task in activitylog is wrong
+      1337535: 'Server Timezone Selection' could not properly saved
       1339201: Reminders set to yes results in error if editing appointment.
       1337535: 'Server Timezone Selection' could not properly saved
       1337570: offset on entries from November to April
@@ -62,6 +64,7 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
+    - Numerous translation BUG fixes
     - Fixed problem with participants not being populated when editing an event. Caused
       during mod to allow multiple categories
     - Fixed bug" Fixed default UAC settings. User's cal_admin value is now used vs $is_admin
@@ -78,6 +81,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added logic to redirect to login from email links if needed
     + Added support for SMTP mail using PHPMailer
     + Added admin defined DELFAULT CONFIGURATION for user access control
     + Added ability to disable RSS link inclusion in print_header(). Useful for popups

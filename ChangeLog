@@ -1,4 +1,8 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Numerous translation BUG fixes
+ - Added logic to redirect to login from email links if needed
+ - Fixed bug 1340800: "Action entry" for task in activitylog is wrong
+ - Fixed bug 1337535: 'Server Timezone Selection' could not properly saved
  - Added support for SMTP mail using PHPMailer
  - Fixed problem with participants not being populated when editing an event
  - Fixed bug 1339201: Reminders set to yes results in error if editing appointment
