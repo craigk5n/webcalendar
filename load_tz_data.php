@@ -21,7 +21,7 @@ if ( ! $is_admin ) {
 //  access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) );
 
 $action = getPostValue ( 'action' );
-if ( ! empty ( $action ) && $action == translate('Load') ) {
+if ( ! empty ( $action ) && $action == translate( "Load" ) ) {
   $ret = do_tz_import ( "install/timezone/" );
 }
 
@@ -43,7 +43,7 @@ if ( ! empty ( $error ) ) {
   <?php etranslate("This could take several minutes to complete")?>
   </td>
   </tr><tr>
-  <tr><td>&nbsp;</tr></tr>
+  <tr><td></tr></tr>
   <td align="center">
   <input type="button" value="<?php etranslate("Cancel")?>" onclick="window.close();" />
   </td><td align="center">
@@ -59,7 +59,7 @@ if ( ! empty ( $error ) ) {
 
   </td>
   </tr><tr>
-  <tr><td>&nbsp;</tr></tr>
+  <tr><td></tr></tr>
   <td align="center">
   <input type="button" value="<?php etranslate("Close")?>" onclick="window.close();" />
   </td></tr>

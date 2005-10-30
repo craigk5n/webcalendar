@@ -124,7 +124,8 @@ function list_unapproved ( $user ) {
           translate("Approve/Confirm") . "</a>, ";
       //reject
       echo "<a title=\"" . 
-        translate("Reject") . "\" href=\"reject_entry.php?id=$id&amp;ret=$retarg&amp;user=$user";
+        translate("Reject") . 
+				"\" href=\"reject_entry.php?id=$id&amp;ret=$retarg&amp;user=$user&amp;type=$type";
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .

@@ -531,6 +531,8 @@ function get_last_view () {
     $val = $HTTP_COOKIE_VARS["webcalendar_last_view"];
  }
   $val =   str_replace ( "&", "&amp;", $val );
+  SetCookie ( "webcalendar_last_view", "", 0 );
+
   return $val;
 }
 
@@ -719,6 +721,11 @@ function event_get_external_users ( $event_id, $use_mailto=0 ) {
  *   - LOG_REJECT
  *   - LOG_UPDATE
  *   - LOG_DELETE
+ *   - LOG_CREATE_T
+ *   - LOG_APPROVE_T
+ *   - LOG_REJECT_T
+ *   - LOG_UPDATE_T
+ *   - LOG_DELETE_T
  *   - LOG_NOTIFICATION
  *   - LOG_REMINDER
  * @param string $text     Text comment to add with activity log entry
@@ -739,8 +746,8 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
     }
     dbi_free_result ( $res );
   }
-  $date = date ( "Ymd" );
-  $time = date ( "Gis" );
+  $date = gmdate ( "Ymd" );
+  $time = gmdate ( "Gis" );
   $sql_text = empty ( $text ) ? "NULL" : "'$text'";
   
   $sql_user_cal = empty ( $user_cal ) ? "NULL" : "'$user_cal'";
@@ -989,9 +996,9 @@ function format_site_extras ( $extras ) {
       } else if ( $extra_type == EXTRA_REMINDER ) {
 
         if ( $extras[$extra_name]['cal_remind'] <= 0 ) {
-          $data = translate ( 'No' );
+          $data = translate ( "No" );
         } else {
-          $data = translate ( 'Yes' );
+          $data = translate ( "Yes" );
 
           if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
             $data .= '&nbsp;&nbsp;-&nbsp;&nbsp;';
@@ -1006,18 +1013,18 @@ function format_site_extras ( $extras ) {
             $minutes -= ( $h * 60 );
 
             if ( $d > 0 ) {
-              $data .= $d . '&nbsp;' . translate ( 'days' ) . '&nbsp;';
+              $data .= $d . '&nbsp;' . translate ( "days" ) . '&nbsp;';
             }
 
             if ( $h > 0 ) {
-              $data .= $h . '&nbsp;' . translate ( 'hours' ) . '&nbsp;';
+              $data .= $h . '&nbsp;' . translate ( "hours" ) . '&nbsp;';
             }
 
             if ( $minutes > 0 ) {
-              $data .= $minutes . '&nbsp;' . translate ( 'minutes' );
+              $data .= $minutes . '&nbsp;' . translate ( "minutes" );
             }
 
-            $data .= '&nbsp;' . translate ( 'before event' );
+            $data .= '&nbsp;' . translate ( "before event" );
           }
         }
       } else {
@@ -1396,16 +1403,19 @@ function display_small_tasks () {
   $task_list = query_events ( $task_user, false, $filter, $cat_id, true  );
   $row_cnt = 1;
   $task_html= "<table class=\"minitask\" cellspacing=\"0\" cellpadding=\"2\">\n";
-  $task_html .= "<tr class=\"header\"><th colspan=\"3\" align=\"left\">TASKS</th>" .
-    "<th align=\"right\"><a href=\"edit_task.php?$u_url\"><img src=\"new.gif\" class=\"new\"/></a></th></tr>\n";
-  $task_html .= "<tr class=\"header\"><th>!</th><th>Title</th><th>Due</th><th>&nbsp;%&nbsp;</th></tr>\n";
+  $task_html .= "<tr class=\"header\"><th colspan=\"3\" align=\"left\">" . 
+    translate ( "TASKS" ) . "</th><th align=\"right\"><a href=\"edit_task.php?$u_url\">" . 
+    "<img src=\"new.gif\" class=\"new\"/></a></th></tr>\n";
+  $task_html .= "<tr class=\"header\"><th>!</th><th>".  translate ( "Task_Title" ) . 
+    "</th><th>" . translate ("Due" ) . "</th><th>&nbsp;%&nbsp;</th></tr>\n";
   foreach ( $task_list as $E )  {
     $cal_id = $E->getId();
     $link = "<a href=\"view_task.php?" . $u_url ."id=" . $cal_id . "\"";
-    $priority = $link  . " title=\"Priority\" >" . $E->getPriority() . "</a>";
-    $name = $link  . " title=\"Task Name\" >". substr( $E->getName(), 0, 15 ) . "...</a>";
-    $due_date = $link  . " title=\"Task Due Date\" >". date_to_str( $E->getDueDate(), "__mm__/__dd__/__yyyy__", false, false) . "</a>";
-    $percent = $link . " title=\"% Completed\" >". $E->getPercent() . "</a>";
+    $priority = $link  . " title=\"" . translate ( "Priority" ) . "\" >" . $E->getPriority() . "</a>";
+    $name = $link  . " title=\"" . translate ( "Task Name" ) . "\" >". substr( $E->getName(), 0, 15 ) . "...</a>";
+    $due_date = $link  . " title=\"" . translate ( "Task Due Date" ) . "\" >". 
+      date_to_str( $E->getDueDate(), "__mm__/__dd__/__yyyy__", false, false) . "</a>";
+    $percent = $link . " title=\"% " . translate ( "Completed" ) . "\" >". $E->getPercent() . "</a>";
     $task_html .= "<tr><td>$priority</td><td>$name</td>" .
       "<td>$due_date</td><td>$percent</td></tr>\n";
     $row_cnt++;
@@ -1452,7 +1462,7 @@ function print_entry ( $event, $date ) {
 
   if ( $event->getExtForID() != '' ) {
     $id = $event->getExtForID();
-    $name = $event->getName() . ' (' . translate ( 'cont.' ) . ')';
+    $name = $event->getName() . ' (' . translate ( "cont." ) . ')';
   } else {
     $id = $event->getID();
     $name = $event->getName();
@@ -1463,11 +1473,13 @@ function print_entry ( $event, $date ) {
   $key++;
 
     if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
-    $cal_type = "task";
-        $cal_link = "view_task.php";    
+      $cal_type = "task";
+      //DO NOT REMOVE translate ( "task" )
+      $cal_link = "view_task.php";    
     } else {
-    $cal_type = "event";
-        $cal_link = "view_entry.php";    
+      $cal_type = "event";
+      //DO NOT REMOVE translate ( "event" )    
+      $cal_link = "view_entry.php";    
     }
     
   echo "<a title=\"" . 
@@ -3080,7 +3092,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
 
   if ( $event->getExtForID() != '' ) {
     $id = $event->getExtForID();
-    $name = $event->getName() . ' (' . translate ( 'cont.' ) . ')';
+    $name = $event->getName() . ' (' . translate ( "cont." ) . ')';
   } else {
     $id = $event->getID();
     $name = $event->getName();
@@ -3263,7 +3275,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
 
   if ( $event->getExtForID() != '' ) {
     $id = $event->getExtForID();
-    $name = $event->getName() . ' (' . translate ( 'cont.' ) . ')';
+    $name = $event->getName() . ' (' . translate ( "cont." ) . ')';
   } else {
     $id = $event->getID();
     $name = $event->getName();
@@ -4050,7 +4062,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   echo "</select>\n";
   echo "</form>\n";
   echo "<span id=\"cat\">" . translate ("Category") . ": ";
-  echo ( strlen ( $cat_id ) ? $categories[$cat_id] : translate ('All') ) . "</span>\n";
+  echo ( strlen ( $cat_id ) ? $categories[$cat_id] : translate ( "All" ) ) . "</span>\n";
 }
 
 /**
@@ -4330,7 +4342,7 @@ function print_entry_timebar ( $event, $date ) {
 
   if ( $event->getExtForID() != '' ) {
     $id = $event->getExtForID();
-    $name = $event->getName() . ' (' . translate ( 'cont.' ) . ')';
+    $name = $event->getName() . ' (' . translate ( "cont." ) . ')';
   } else {
     $id = $event->getID();
     $name = $event->getName();
@@ -5283,6 +5295,8 @@ function get_time_add_tz ( $time, $tz_offset ) {
   if ( $time > 0 ) {
       $hour = (int) ( $time / 10000 );
       $min = abs ( ( $time / 100 ) % 100 );
+  } else if ( $time < 0 ){
+    return;
   } else {
    $hour = $min = 0;
   }
@@ -5393,7 +5407,7 @@ global $TZ_COMPLETE_LIST;
                        "FROM webcal_tz_list ORDER BY tz_list_id" );
  }
    //allows different SETTING names between SERVER and USER
-   if ( $prefix = 'admin_' ) $prefix .= 'SERVER_';
+   if ( $prefix == 'admin_' ) $prefix .= 'SERVER_';
    if ( $res ) {
     $ret =  "<select name=\"" . $prefix . "TIMEZONE\" id=\"" . $prefix . "TIMEZONE\">\n";
     while ( $row = dbi_fetch_row ( $res ) ) {

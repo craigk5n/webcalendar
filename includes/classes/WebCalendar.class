@@ -519,6 +519,11 @@ class WebCalendar {
     define ( 'LOG_REJECT',        'X' );
     define ( 'LOG_UPDATE',        'U' );
     define ( 'LOG_DELETE',        'D' );
+    define ( 'LOG_CREATE_T',      'G' );
+    define ( 'LOG_APPROVE_T',     'H' );
+    define ( 'LOG_REJECT_T',      'J' );
+    define ( 'LOG_UPDATE_T',      'K' );
+    define ( 'LOG_DELETE_T',      'L' );
     define ( 'LOG_NOTIFICATION',  'N' );
     define ( 'LOG_REMINDER',      'R' );
     define ( 'LOG_NEWUSER_FULL',  'F' );
@@ -818,8 +823,8 @@ class WebCalendar {
             dbi_error () . "</blockquote>\n" );
         }
         // Use another application's authentication
-        if (! $login = user_logged_in()) app_login_screen(clean_whitespace($_SERVER['SCRIPT_URI']));
-      
+        if (! $login = user_logged_in())
+          app_login_screen(clean_whitespace($_SERVER['SCRIPT_URI']));      
       } else {
         if ( ! empty ( $settings['session'] ) && $settings['session'] == 'php' ) {
           session_start ();
@@ -1257,7 +1262,7 @@ class WebCalendar {
      */
     $GLOBALS['page_lookup'] = array (
       ACCESS_EVENT_VIEW =>
-        "(view_entry.php|select_user.php|purge.php|category*php)",
+        "(view_entry.php|view_task.php|select_user.php|purge.php|category*php)",
       ACCESS_EVENT_EDIT => "(entry|list_unapproved|usersel|availability|datesel|task|catsel)",
       ACCESS_DAY => "day.php",
       ACCESS_WEEK => "week.php",

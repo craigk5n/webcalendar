@@ -226,13 +226,13 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   }
   //get participants
   $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id AND " .
-	  " cal_status IN ('A', 'W' )";
+    " cal_status IN ('A', 'W' )";
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants[$row[0]] = 1;
     }
-    dbi_free_result ( $res );		
+    dbi_free_result ( $res );    
   }
  
   if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == "Y" ) {
@@ -433,7 +433,7 @@ if ( ! empty ( $parent ) )
        <select name="access" id="entry_access">
         <option value="P"<?php if ( $access == "P" || ! strlen ( $access ) ) echo " selected=\"selected\"";?>><?php etranslate("Public")?></option>
         <option value="R"<?php if ( $access == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Private")?></option>
-        <option value="C"<?php if ( $access == "C" ) echo " selected=\"selected\"";?>><?php etranslate("Confidential")?></option>				
+        <option value="C"<?php if ( $access == "C" ) echo " selected=\"selected\"";?>><?php etranslate("Confidential")?></option>        
        </select>
        </td></tr>
 <?php } ?>
@@ -614,7 +614,7 @@ if ( $id > 0 )
           $site_additions[] = $rem_array;
           $site_extras[count($site_extras)] = $rem_array;
         }
-			} 
+      } 
     }
  } 
   if ( ! empty ( $site_additions ) ) {
@@ -907,7 +907,7 @@ if ( $single_user == "N" && $show_participants ) {
   for ( $rpt_byday_label =0;$rpt_byday_label <=6; $rpt_byday_label++){
     echo "<th align=\"center\" width=\"50px\"><label >" . translate($weekday_names[$rpt_byday_label]) . "</label></th>\n";
   }
-  echo "</tr><tr>\n<th align=\"center\">ALL</th>";
+  echo "</tr><tr>\n<th align=\"center\">" . translate ( "All" ) . "</th>";
   for ( $rpt_byday_single =0;$rpt_byday_single <=6; $rpt_byday_single++){
     echo "<td align=\"center\"><input type=\"checkbox\" name=\"bydayext1[]\" id=\"$byday_names[$rpt_byday_single]\" value=\"$byday_names[$rpt_byday_single]\"" 
      . (in_array($byday_names[$rpt_byday_single],$byday)?" checked=\"checked\"":"") . " />\n</td>\n";

@@ -60,6 +60,7 @@ $includedir = "../includes";
 require_once "$includedir/classes/WebCalendar.class";
 require_once "$includedir/classes/Event.class";
 require_once "$includedir/classes/RptEvent.class";
+require_once "$includedir/classes/WebCalMailer.class";
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
@@ -164,7 +165,8 @@ $startdate = date ( "Ymd" );
 $enddate = date ( "Ymd", time() + ( $DAYS_IN_ADVANCE * 24 * 3600 ) );
 
 // Now read events all the repeating events (for all users)
-$repeated_events = query_events ( "", true, "AND (webcal_entry_repeats.cal_end >= $startdate OR webcal_entry_repeats.cal_end IS NULL) " );
+$repeated_events = query_events ( "", true, "AND (webcal_entry_repeats.cal_end >= 
+  $startdate OR webcal_entry_repeats.cal_end IS NULL) " );
 
 // Read non-repeating events (for all users)
 if ( $debug )
@@ -216,7 +218,7 @@ function gen_output ( $useHtml, $prompt, $data )
 // Send to participants who have accepted as well as those who have not yet
 // approved.  But, don't send to users how rejected (cal_status='R').
 function send_reminder ( $id, $event_date ) {
-  global $names, $emails, $site_extras, $debug, $only_testing,
+  global $names, $emails, $site_extras, $debug, $only_testing, $htmlmail,
     $SERVER_URL, $languages,  $TIMEZONE, $APPLICATION_NAME;
   global $ALLOW_EXTERNAL_USERS, $EXTERNAL_REMINDERS, $LANGUAGE;
 
@@ -323,11 +325,11 @@ function send_reminder ( $id, $event_date ) {
       $display_tzid = 3; // Do not use offset & display TZ
       $user_timezone = "";
     }
-    $useHtml = ( ! empty ( $htmlmail[$user] ) );
+    $useHtml = ( ! empty ( $htmlmail[$user] )? true : false );
 
     if ( $useHtml ) {
       $body = "<html><head><title>" .
-        $application_name . "</title></head><body>\n<p>" .
+        $APPLICATION_NAME . "</title></head><body>\n<p>" .
         translate("This is a reminder for the event detailed below.") .
         "\n</p>\n";
     } else {
@@ -342,19 +344,19 @@ function send_reminder ( $id, $event_date ) {
     // add trailing '/' if not found in server_url
     if ( ! empty ( $SERVER_URL ) ) {
       if ( substr ( $SERVER_URL, -1, 1 ) == "/" ) {
-        $eventURL = $server_url . "view_entry.php?id=" . $id;
+        $eventURL = $SERVER_URL . "view_entry.php?id=" . $id . "&em=1";
       } else {
-        $eventURL = $SERVER_URL . "/view_entry.php?id=" . $id;
+        $eventURL = $SERVER_URL . "/view_entry.php?id=" . $id . "&em=1";
       }
       if ( $useHtml ) {
         $body .= "<p><a href=\"" . $eventURL . "\">" . $eventURL . "</a></p>\n";
       } else {
-        $body .= $SERVER_URL . "view_entry.php?id=" . $id . "\n\n";
+        $body .= $SERVER_URL . "view_entry.php?id=" . $id . "&em=1\n\n";
       }
     }
 
     if ( $useHtml ) {
-      $body .= "<h2>" . strtoupper ( $name ) . "</h2>\n" .
+      $body .= "<h3>" . strtoupper ( $name ) . "</h3>\n" .
         "<table><tr><td valign=\"top\">" .
         translate("Description") . ":</td><td valign=\"top\">" .
         $description . "</td></tr>\n" .
@@ -458,22 +460,29 @@ function send_reminder ( $id, $event_date ) {
   
     $subject = translate("Reminder") . ": " . $name;
 
-    if ( strlen ( $GLOBALS["EMAIL_FALLBACK_FROM"] ) )
-      $extra_hdrs = "From: " . $GLOBALS["EMAIL_FALLBACK_FROM"] . "\r\n" .
-        "X-Mailer: " . $GLOBALS['PROGRAM_NAME'];
-    else
-      $extra_hdrs = "X-Mailer: " . $GLOBALS['PROGRAM_NAME'];
 
-    $extra_hdrs .= "\r\nContent-Type: " .
-      ( $useHtml ? "text/html" : "text/plain" );
-  
     if ( $debug )
       echo "Sending mail to $recip (in $userlang)\n";
     if ( $only_testing ) {
       if ( $debug )
-        echo "<hr /><pre>To: $recip\nSubject: $subject\n$extra_hdrs\n\n$body\n\n</pre>\n";
+        echo "<hr /><pre>To: $recip\nSubject: $subject\nFrom:". 
+          translate ( "Administrator" ). "\n\n$body\n\n</pre>\n";
     } else {
-      mail ( $recip, $subject, $body, $extra_hdrs );
+      $mail = new WebCalMailer;
+      user_load_variables ( $user, "temp" );
+      if ( strlen ( $GLOBALS["EMAIL_FALLBACK_FROM"] ) ) {
+        $mail->From = $GLOBALS["EMAIL_FALLBACK_FROM"];
+        $mail->FromName = translate ( "Administrator" );
+      } else {
+        $mail->From = translate ( "Administrator" );
+      }
+      $mail->IsHTML( true );
+      $mail->AddAddress( $recip, $GLOBALS ['tempfullname'] );
+      $mail->Subject = $subject;
+      $mail->Body  = $body;
+      $mail->Send();
+      $mail->ClearAll();
+ 
       activity_log ( $id, "system", $user, LOG_REMINDER, "" );
     }
   }

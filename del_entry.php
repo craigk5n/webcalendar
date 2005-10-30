@@ -1,5 +1,8 @@
 <?php
 include_once 'includes/init.php';
+require ( 'includes/classes/WebCalMailer.class' );
+$mail = new WebCalMailer;
+
 
 $my_event = false;
 $can_edit = false;
@@ -14,7 +17,7 @@ if ( $id > 0 ) {
     $can_edit = false;
   } else {
     $can_edit = false;
-    $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
+    $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_type FROM webcal_entry, " .
       "webcal_entry_user WHERE webcal_entry.cal_id = " .
       "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
       "AND (webcal_entry.cal_create_by = '$login' " .
@@ -24,11 +27,18 @@ if ( $id > 0 ) {
       $row = dbi_fetch_row ( $res );
       if ( $row && $row[0] > 0 )
         $can_edit = true;
+			$activity_type = $row[1];
       dbi_free_result ( $res );
     }
   }
 }
-
+if ( $activity_type =='E' || $activity_type == 'M' ) {
+  $log_delete = LOG_DELETE;
+	$log_reject = LOG_REJECT;
+} else {
+  $log_delete = LOG_DELETE_T;
+	$log_reject = LOG_REJECT_T;
+}
 // See who owns the event.  Owner should be able to delete.
 $res = dbi_query (
   "SELECT cal_create_by FROM webcal_entry WHERE cal_id = $id" );
@@ -128,9 +138,10 @@ if ( $id > 0 && empty ( $error ) ) {
     $TIME_FORMAT=24;
     for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
       // Log the deletion
-      activity_log ( $id, $login, $partlogin[$i], LOG_DELETE, "" );
+      activity_log ( $id, $login, $partlogin[$i], $log_delete, "" );
 
       $do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
+      $htmlmail = get_pref_setting ( $partlogin[$i], "EMAIL_HTML" );
       $user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
       $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
       user_load_variables ( $partlogin[$i], "temp" );         
@@ -151,16 +162,23 @@ if ( $id > 0 && empty ( $error ) ) {
            // Apply user's GMT offset and display their TZID
            display_time ( $eventdate . $eventtime, 2, '', $user_TIMEZONE );
           $msg .= "\n\n";
-        if ( strlen ( $login_email ) )
-          $extra_hdrs = "From: $login_email\r\nX-Mailer: " .
-            translate($APPLICATION_NAME);
-        else
-          $extra_hdrs = "From: $EMAIL_FALLBACK_FROM\r\nX-Mailer: " .
-            translate($APPLICATION_NAME);
-        mail ( $tempemail,
-          translate($APPLICATION_NAME) . " " .
-          translate("Notification") . ": " . $name,
-          html_to_8bits ($msg), $extra_hdrs );
+          //use WebCalMailer class
+          $from = $login_email;
+          if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
+            $from = $EMAIL_FALLBACK_FROM;
+          if ( strlen ( $from ) ) {
+            $mail->From = $from;
+            $mail->FromName = $login_fullname;
+          } else {
+            $mail->From = $login_fullname;
+          }
+          $mail->IsHTML( $htmlmail == 'Y' ? true : false );
+          $mail->AddAddress( $tempemail, $tempfullname );
+          $mail->Subject = translate($APPLICATION_NAME) . " " .
+            translate("Notification") . ": " . $name;
+          $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;;                    
+          $mail->Send();
+          $mail->ClearAll();
       }
     }
 
@@ -195,7 +213,7 @@ if ( $id > 0 && empty ( $error ) ) {
               for ( $j = 0; $j < count ( $delusers ); $j++ ) {
                 // Log the deletion
                 activity_log ( $ex_events[$i], $login, $delusers[$j],
-                  LOG_DELETE, "" );
+                  $log_delete, "" );
                 dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
                   "WHERE cal_id = $ex_events[$i] " .
                   "AND cal_login = '$delusers[$j]'" );
@@ -227,7 +245,7 @@ if ( $id > 0 && empty ( $error ) ) {
     if ( empty ( $error ) ) {
       dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
         "WHERE cal_id = $id AND cal_login = '$del_user'" );
-      activity_log ( $id, $login, $login, LOG_REJECT, "" );
+      activity_log ( $id, $login, $login, $log_reject, "" );
     }
   }
 }

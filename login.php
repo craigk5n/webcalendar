@@ -39,6 +39,11 @@ load_user_preferences ( "guest" );
 
 
 // see if a return path was set
+if (  empty ( $return_path ) ) {
+  $return_path = get_last_view();
+  if ( ! empty ( $return_path ) ) 
+    SetCookie ( "webcalendar_last_view", "", 0 );
+}
 if ( ! empty ( $return_path ) ) {
   $return_path = clean_whitespace ( $return_path );
   $url = $return_path;
