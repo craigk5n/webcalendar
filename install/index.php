@@ -1024,7 +1024,7 @@ doc.li {
 }
 </style>
 </head>
-<body onLoad="<?php echo $onload;?>">
+<body <?php if ( ! empty ($onLoad) ) echo "onload=\"$onload\""; ?> >
 <?php  // print_r ( $_SESSION ); ?>
 <?php if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <table border="1" width="90%" align="center">
@@ -1351,11 +1351,9 @@ if ( ! $exists || ! $canWrite ) { ?>
    <input name="form_db_persistent" value="false" type="hidden" />
 <?php } ?>
   </td></tr>
- </table>
 
 <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
-<table  align="right" width="100%" border="0">
- <tr><td align="center">
+ <tr><td align="center" colspan="3">
   <?php 
     $class = ( ! empty ( $_SESSION['db_success'] ) ) ?
       'recommended' : 'notrecommended';
