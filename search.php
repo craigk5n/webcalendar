@@ -38,7 +38,7 @@ if ( ! $show_others ) {
   echo "</form>";
 } else {
 ?>
-<br/><br/>
+<br /><br />
 <div id="advlink"><a title="<?php etranslate("Advanced Search");?>"
    href="javascript:show('adv'); hide('advlink');"><?php
     etranslate("Advanced Search");?></a></div>

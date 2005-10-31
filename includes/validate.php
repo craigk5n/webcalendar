@@ -18,7 +18,7 @@ function doDbSanityCheck () {
       dbi_free_result ( $res );
       die_miserable_death (
         "Error finding WebCalendar tables in database '$db_database' " .
-        "using db login '$db_login' on db server '$db_host'.<br/><br/>\n" .
+        "using db login '$db_login' on db server '$db_host'.<br /><br />\n" .
         "Have you created the database tables as specified in the " .
         "<a href=\"docs/WebCalendar-SysAdmin.html\" target=\"other\">WebCalendar " .
         "System Administrator's Guide</a>?" );
@@ -29,7 +29,7 @@ function doDbSanityCheck () {
     // Note: cannot translate this since we have not included translate.php yet.
     die_miserable_death (
       "Error finding WebCalendar tables in database '$db_database' " .
-      "using db login '$db_login' on db server '$db_host'.<br/><br/>\n" .
+      "using db login '$db_login' on db server '$db_host'.<br /><br />\n" .
       "Have you created the database tables as specified in the " .
       "<a href=\"docs/WebCalendar-SysAdmin.html\" target=\"other\">WebCalendar " .
       "System Administrator's Guide</a>?" );

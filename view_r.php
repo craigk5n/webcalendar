@@ -159,7 +159,7 @@ if ( $is_day_view ) {
   }
 }
 
-//echo "startdate=$startdate, enddate=$enddate, start_ind=$start_ind, end_ind=$end_ind<br/>\n";
+//echo "startdate=$startdate, enddate=$enddate, start_ind=$start_ind, end_ind=$end_ind<br />\n";
 
 
 // Generate the column headers for each day and the unix datetime
@@ -209,7 +209,7 @@ if ( ! $fit_to_window ) {
   $table_width = ( $col_pixels * count ( $viewusers ) ) *
     ( $end_ind - $start_ind + 1 ) + 100;
 }
-//echo "table_width=$table_width<br>\n";
+//echo "table_width=$table_width<br />\n";
 
 // tdw is the cell width for each day
 if ( ! $fit_to_window )
@@ -241,7 +241,7 @@ for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   user_load_variables ( $viewusers[$i], "temp" );
   $uheader .= "<th class=\"small\" width=\"$uwf\" style=\"width:$uwf;\">" .
     $tempfullname . "</th>\n";
-  //echo "$viewusers[$i]: loaded " . count ( $events ) . " events<br>\n";
+  //echo "$viewusers[$i]: loaded " . count ( $events ) . " events<br />\n";
 }
 $num_users = count ( $viewusers );
 
@@ -415,7 +415,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         if ( $ev[$i]->getDuration() == ( 24 * 60 ) )
           $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $ev[$i], $adate, "small", $show_time );
-        //echo "Found event date=$adate name='$viewname'<br>\n";
+        //echo "Found event date=$adate name='$viewname'<br />\n";
         //print_r ( $rowspan_arr );
       }
     }
@@ -447,7 +447,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
           $start_time = $i;
           $diff_start_time = $start_time - $last_row;
           for ( $x = $diff_start_time; $x > 0; $x-- )
-            $hour_arr[$last_row] .= "<br/>\n";
+            $hour_arr[$last_row] .= "<br />\n";
           $hour_arr[$last_row] .= $hour_arr[$i];
           $hour_arr[$i] = "";
           $rowspan_arr[$i] = 0;
@@ -626,7 +626,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 ?>
 
 </table>
-<br/><br/>
+<br /><br />
 
 <?php
 
