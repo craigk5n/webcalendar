@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1306964: Events cannot be added for hour 0
       1306195: HML tags on "printer friendly"
       1339312: Event approval for Non User Calendar
       1343862: "ByMonth" using at a "repeating event" wrong displaying
