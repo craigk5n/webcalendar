@@ -474,7 +474,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <?php
     echo htmlspecialchars ( $SERVER_URL ) .
       "publish.php/" . ( $updating_public ? "public" : $user ) .  ".ics";
-    echo "<br/>\n";
+    echo "<br />\n";
     echo htmlspecialchars ( $SERVER_URL ) .
       "publish.php?user=" . ( $updating_public ? "public" : $user );
   ?></td></tr>
@@ -514,7 +514,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <?php
     echo htmlspecialchars ( $SERVER_URL ) .
       "freebusy.php/" . ( $updating_public ? "public" : $user ) . ".ifb";
-    echo "<br/>\n";
+    echo "<br />\n";
     echo htmlspecialchars ( $SERVER_URL ) .
       "freebusy.php?user=" . ( $updating_public ? "public" : $user );
   ?></td></tr>

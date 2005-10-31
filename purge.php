@@ -193,10 +193,10 @@ function purge_events ( $ids ) {
       if ( $preview ) {
         $sql = "SELECT COUNT(" . $tables[$i][1] .
           ") FROM {$tables[$i][0]}" . $clause;
-        //echo "cal_id = '$cal_id'<br>clause = '$clause'<br>";
-        //echo "$sql <br/>\n";
+        //echo "cal_id = '$cal_id'<br />clause = '$clause'<br />";
+        //echo "$sql <br />\n";
         $res = dbi_query ( $sql );
-        $sqlLog .= $sql . "<br/>\n";
+        $sqlLog .= $sql . "<br />\n";
         if ( $res ) {
           if ( $row = dbi_fetch_row ( $res ) )
             $num[$i] += $row[0];
@@ -204,7 +204,7 @@ function purge_events ( $ids ) {
         }
       } else {
         $sql = "DELETE FROM {$tables[$i][0]}" . $clause;
-        $sqlLog .= $sql . "<br/>\n";
+        $sqlLog .= $sql . "<br />\n";
         $res = dbi_query ( $sql );
         if ( $cal_id == 'ALL' ) {
           $num[$i] = translate ( "All" );
@@ -225,8 +225,8 @@ function purge_events ( $ids ) {
 function get_ids ( $sql, $ALL = '' ) {
   global $sqlLog;
   $ids = array ();
-  //echo "SQL: $sql <br/>\n";
-  $sqlLog .= $sql . "<br/>\n";
+  //echo "SQL: $sql <br />\n";
+  $sqlLog .= $sql . "<br />\n";
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
