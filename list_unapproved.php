@@ -51,15 +51,15 @@ if ( ! empty ( $user ) && $user != $login ) {
 // TODO: only include delete link if they have permission to delete
 // when user access control is enabled.
 function list_unapproved ( $user ) {
-  global $temp_fullname, $key, $login, $retarg;
+  global $temp_fullname, $key, $login, $retarg, $NONUSER_ENABLED;
 
   user_load_variables ( $user, "temp_" );
   echo "<h3>" . $temp_fullname . "</h3>\n";
 
-  //echo "Listing events for $user <br>";
+  //echo "Listing events for $user <br />";
 
   $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name, " .
-    "webcal_entry.cal_description, " .
+    "webcal_entry.cal_description, webcal_entry_user.cal_login, " .
     "webcal_entry.cal_priority, webcal_entry.cal_date, " .
     "webcal_entry.cal_time, webcal_entry.cal_duration, " .
     "webcal_entry_user.cal_status, webcal_entry.cal_type " .
@@ -67,9 +67,19 @@ function list_unapproved ( $user ) {
     "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id " .
     "AND ( webcal_entry.cal_ext_for_id IS NULL " .
     "OR webcal_entry.cal_ext_for_id = 0 ) AND " .
-    "webcal_entry_user.cal_login = '$user' AND " .
-    "webcal_entry_user.cal_status = 'W' " .
+    "( webcal_entry_user.cal_login = '$user'  ";
+
+  if ( $NONUSER_ENABLED == 'Y' ) {
+    $admincals = get_nonuser_cals ( $login );
+    for ( $i = 0; $i < count ( $admincals ); $i++ ) {
+      $sql .= " OR webcal_entry_user.cal_login = '" .
+        $admincals[$i]['cal_login'] . "' ";
+    }
+  }
+      
+  $sql .= ") AND webcal_entry_user.cal_status = 'W' " .
     "ORDER BY webcal_entry.cal_date";
+
   $res = dbi_query ( $sql );
   $count = 0;
   $eventinfo = "";
@@ -80,21 +90,22 @@ function list_unapproved ( $user ) {
       $id = $row[0];
       $name = $row[1];
       $description = $row[2];
-      $pri = $row[3];
-      $date = $row[4];
-      $time = $row[5];
-      $duration = $row[6];
-      $status = $row[7];
-      $type = $row[8];
-      $view_link = ( $type == 'E' || $type == 'M' ?'view_entry' : 'view_task' );			
+      $cal_user = $row[3];
+      $pri = $row[4];
+      $date = $row[5];
+      $time = $row[6];
+      $duration = $row[7];
+      $status = $row[8];
+      $type = $row[9];
+      $view_link = ( $type == 'E' || $type == 'M' ?'view_entry' : 'view_task' );      
 
       $divname = "eventinfo-pop$id-$key";
       $linkid  = "pop$id-$key";
       echo "<li><a  title=\"" . translate("View this entry") .
-        "\" class=\"entry\" id=\"$linkid\" href=\"$view_link.php?id=$id&amp;user=$user\">";
+        "\" class=\"entry\" id=\"$linkid\" href=\"$view_link.php?id=$id&amp;user=$cal_user\">";
       $timestr = "";
       if ( $time > 0 ) {
-        $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
+        $user_TIMEZONE = get_pref_setting ( $cal_user, "TIMEZONE" );
         $timestr = display_time ( $date . $time, 0, '', $user_TIMEZONE );
         if ( $duration > 0 ) {
           // calc end time
@@ -116,7 +127,7 @@ function list_unapproved ( $user ) {
       //approve
       echo ": <a title=\"" . 
         translate("Approve/Confirm") . 
-     "\"  href=\"approve_entry.php?id=$id&amp;ret=$retarg&amp;user=$user";
+     "\"  href=\"approve_entry.php?id=$id&amp;ret=$retarg&amp;user=$cal_user";
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
@@ -125,7 +136,7 @@ function list_unapproved ( $user ) {
       //reject
       echo "<a title=\"" . 
         translate("Reject") . 
-				"\" href=\"reject_entry.php?id=$id&amp;ret=$retarg&amp;user=$user&amp;type=$type";
+        "\" href=\"reject_entry.php?id=$id&amp;ret=$retarg&amp;user=$cal_user&amp;type=$type";
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
@@ -136,14 +147,14 @@ function list_unapproved ( $user ) {
         access_can_delete_user_calendar ( $user ) ) {
         echo ", <a title=\"" . 
           translate("Delete") . "\" href=\"del_entry.php?id=$id&amp;ret=$retarg";
-        if ( $user != $login )
-          echo "&amp;user=$user";
+        if ( $cal_user != $login )
+          echo "&amp;user=$cal_user";
         echo "\" class=\"nav\" onclick=\"return confirm('" .
           translate("Are you sure you want to delete this entry?") . "');\">" . 
         translate("Delete") . "</a>";
       }
       echo "\n</li>\n";
-      $eventinfo .= build_event_popup ( $divname, $user, $description,
+      $eventinfo .= build_event_popup ( $divname, $cal_user, $description,
         $timestr, site_extras_for_popup ( $id ));
       $count++;
     }
