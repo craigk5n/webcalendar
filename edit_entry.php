@@ -942,7 +942,7 @@ if ( $single_user == "N" && $show_participants ) {
   for ( $rpt_month =1;$rpt_month <=12; $rpt_month++){
      echo "<td><label><input type=\"checkbox\" name=\"bymonth[]\" value=\"$rpt_month\"" 
       . (in_array($rpt_month,$bymonth)?" checked=\"checked\"":"") . " />&nbsp;" . 
-   translate(date("M",mktime(0,0,0,$rpt_month))) . 
+   translate(date("M",mktime(0,0,0,$rpt_month,1))) . 
      "</label>\n</td>";
     if ( $rpt_month == 6 ) echo  "</tr><tr>";
   }
