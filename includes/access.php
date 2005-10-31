@@ -187,10 +187,11 @@ function access_get_viewable_users ( $user )
 function access_load_user_functions ( $user )
 {
   global $is_admin;
-
+	
+  $ret = '';
   $rets = array();
   $users = array ( $user, '__default__' );
-
+ 
   for ( $i = 0; $i < count ( $users ) && empty ( $ret ); $i++ )  {
     $res = dbi_query ( "SELECT cal_permissions FROM webcal_access_function " .
       "WHERE cal_login = '" . $users[$i] . "'" );
@@ -203,6 +204,7 @@ function access_load_user_functions ( $user )
 
   // If still no setting found, then assume access to everything if
   // an admin user, otherwise access to all non-admin functions.
+ 
   if ( ! empty ( $rets[0] ) ) {
     $ret = $rets[0];  
   } else if ( empty ( $rets[0] ) && ! empty ( $rets[1] ) ) {
