@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1339312: Event approval for Non User Calendar
       1343862: "ByMonth" using at a "repeating event" wrong displaying
       1342056:  V1.1 – Button for testing the db con is not easy to find.
       1340800: "Action entry" for task in activitylog is wrong

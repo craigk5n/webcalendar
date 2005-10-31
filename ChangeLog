@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
- - Fixed bug  1343862: "ByMonth" using at a "repeating event" wrong displaying
+ - Fixed bug 1339312: Event approval for Non User Calendar
+ - Fixed bug 1343862: "ByMonth" using at a "repeating event" wrong displaying
  - Fixed bug 1342056:  V1.1 – Button for testing the db con is not easy to find.
  - Numerous translation BUG fixes
  - Added logic to redirect to login from email links if needed
