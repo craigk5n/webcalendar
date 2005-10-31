@@ -120,12 +120,12 @@ function assert_backtrace ()
 function assert_handler ( $script, $line, $msg )
 {
   if ( empty ( $msg ) )
-    $msg = "Assertion failed<br/>\n";
+    $msg = "Assertion failed<br />\n";
   if ( function_exists ( "debug_backtrace" ) )
     $trace = assert_backtrace ();
   else
     $trace = basename ( $script ) . ":" . $line . " " . $msg;
-  $msg .= "<b>Stack Trace:</b><br/><br/><blockquote><tt>\n" .
+  $msg .= "<b>Stack Trace:</b><br /><br /><blockquote><tt>\n" .
     nl2br ( $trace ) .
     "\n</tt></blockquote>\n";
   if ( function_exists ( "die_miserable_death" ) ) {

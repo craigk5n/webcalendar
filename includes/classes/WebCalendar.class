@@ -858,6 +858,7 @@ class WebCalendar {
               // they may be able to affect the database.
               if ( ! empty ( $login ) ) {
                 if ( $login != addslashes ( $login ) ) {
+                  SetCookie ( "webcalendar_session", "", 0 );
                   die_miserable_death ( "Illegal characters in login " .
                     "<tt>" . htmlentities ( $login ) . "</tt>" );
                 }
@@ -1229,8 +1230,9 @@ class WebCalendar {
     define ( 'ACCESS_PUBLISH', 22 );
     define ( 'ACCESS_ASSISTANTS', 23 );
     define ( 'ACCESS_TRAILER', 24 );
-    define ( 'ACCESS_HELP', 25 );  
-    define ( 'ACCESS_NUMBER_FUNCTIONS', 26 ); // how many function did we define?
+    define ( 'ACCESS_HELP', 25 ); 
+    define ( 'ACCESS_ANOTHER_CALENDAR', 26 );      
+    define ( 'ACCESS_NUMBER_FUNCTIONS', 27 ); // how many function did we define?
     /**#@-*/
 
     // The following pages will be handled differently than the others

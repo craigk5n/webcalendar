@@ -78,6 +78,8 @@ function access_get_function_description ( $function )
       return translate ( "Preferences" );
     case ACCESS_SYSTEM_SETTINGS:
       return translate ( "System Settings" );
+    case ACCESS_ANOTHER_CALENDAR:
+      return translate ( "Another User's Calendar" );
     case ACCESS_IMPORT:
       return translate ( "Import" );
     case ACCESS_EXPORT:
@@ -110,7 +112,7 @@ function access_get_function_description ( $function )
 function access_load_user_permissions ( $user )
 {
   global $access_other_cals;
-	//bail out if setting default values
+  //bail out if setting default values
   if ( $user == '__default__' ) return false;
   assert ( '! empty ( $user )' );
 
@@ -162,7 +164,7 @@ function access_get_viewable_users ( $user )
   for ( $i = 0; $i < count ( $access_other_cals ); $i++ ) {
     if ( preg_match ( "/" . $user . "\.(\S+)/", $access_other_cals[$i],
       $matches ) ) {
-      //echo "viewable: $matches[1]<br>\n";
+      //echo "viewable: $matches[1]<br />\n";
       $ret[] = $matches[1];
     }
   }
@@ -266,7 +268,7 @@ function access_can_access_function ( $function, $user="" )
   $yesno = substr ( $access, $function, 1 );
   if ( empty ( $yesno ) )
     $yesno = get_default_function_access ( $function, $user );
-  //echo "yesno = $yesno <br/>\n";
+  //echo "yesno = $yesno <br />\n";
   assert ( '! empty ( $yesno )' );
   
   return ( $yesno == 'Y' );
@@ -308,7 +310,7 @@ function access_can_view_user_calendar ( $other_user, $cur_user='' )
     $access[$key]['cal_can_view'] == 'Y' )
     $ret = true;
     
-  //echo "can access $other_user = " . ( $ret ? "true" : "false" ) , "<br/>\n";
+  //echo "can access $other_user = " . ( $ret ? "true" : "false" ) , "<br />\n";
   
   return ( $ret );
 }
@@ -350,7 +352,7 @@ function access_can_approve_user_calendar ( $other_user, $cur_user='' )
     $access[$key]['cal_can_approve'] == 'Y' )
     $ret = true;
     
-  //echo "can approve $other_user = " . ( $ret ? "true" : "false" ) , "<br/>\n";
+  //echo "can approve $other_user = " . ( $ret ? "true" : "false" ) , "<br />\n";
   
   return ( $ret );
 }
@@ -392,7 +394,7 @@ function access_can_delete_user_calendar ( $other_user, $cur_user='' )
     $access[$key]['cal_can_delete'] == 'Y' )
     $ret = true;
     
-  //echo "can delete $other_user = " . ( $ret ? "true" : "false" ) , "<br/>\n";
+  //echo "can delete $other_user = " . ( $ret ? "true" : "false" ) , "<br />\n";
   
   return ( $ret );
 }
@@ -440,11 +442,11 @@ function access_can_view_page ( $page="", $user="" )
       preg_match ( "/$page_lookup[$i]/", $page ) ) {
       $page_id = $i;
     } else {
-      //echo "Does not match '$page_lookup[$i]'<br>\n";
+      //echo "Does not match '$page_lookup[$i]'<br />\n";
     }
   }
 
-  //echo "page_id = $page_id <br/>page = $page<br/>\n";
+  //echo "page_id = $page_id <br />page = $page<br />\n";
 
   // If the specified user is the currently logged in user, then we have
   // already loaded this user's access, and it is stored in the global
@@ -474,7 +476,7 @@ function access_can_view_page ( $page="", $user="" )
     $yesno = get_default_function_access ( $page_id, $user );
   }
 
-  //echo "yesno = $yesno <br/>\n";
+  //echo "yesno = $yesno <br />\n";
   assert ( '! empty ( $yesno )' );
   
   return ( $yesno == 'Y' );

@@ -283,10 +283,7 @@ if ( $single_user != "Y" ) {
     // If not, then there is no way to view another user's calendar except
     // a custom view.
     if ( ! access_is_enabled () ||
-      access_can_access_function ( ACCESS_DAY ) ||
-      access_can_access_function ( ACCESS_WEEK ) ||
-      access_can_access_function ( ACCESS_MONTH ) ||
-      access_can_access_function ( ACCESS_YEAR ) ) {
+      access_can_access_function ( ACCESS_ANOTHER_CALENDAR ) ) {
       // get count of users this user can see.  if > 1, then...
       $ulist = array_merge ( get_my_users(), get_nonuser_cals () );
       if ( count ( $ulist ) > 1 ) {
@@ -440,7 +437,7 @@ $reports_link = array ();
   }
 
   if ( count ( $reports_link ) > 0 ) {
-    ?><br/><span class="prefix"><?php etranslate("Reports");?>:</span>&nbsp;<?php
+    ?><br /><span class="prefix"><?php etranslate("Reports");?>:</span>&nbsp;<?php
     for ( $i = 0; $i < count ( $reports_link ); $i++ ) {
       if ( $i > 0 )
         echo " | ";
@@ -539,14 +536,14 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
     $groups .= "<a title=\"$f\" href=\"$xurl\">$f</a>";
   }
   if ( ! empty ( $groups ) ) {
-    echo "<br/><span class=\"prefix\">";
+    echo "<br /><span class=\"prefix\">";
     etranslate ( "Manage calendar of" );
     echo ":</span>&nbsp;" . $groups;
   }
 }
 
 // WebCalendar Info...
-print "<br/><br/><a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" " .
+print "<br /><br /><a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" " .
   "id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_new\">" .
   $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 ?>
