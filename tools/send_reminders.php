@@ -437,7 +437,7 @@ function send_reminder ( $id, $event_date ) {
       }
       for ( $i = 0; $i < count ( $participants ); $i++ ) {
         if ( $useHtml ) {
-          $body .= $names[$participants[$i]] . "<br/>\n";
+          $body .= $names[$participants[$i]] . "<br />\n";
         } else {
           $body .= "  " . $names[$participants[$i]] . "\n";
         }
@@ -445,7 +445,7 @@ function send_reminder ( $id, $event_date ) {
       for ( $i = 0; $i < count ( $ext_participants ); $i++ ) {
         if ( $useHtml ) {
           $body .= $ext_participants[$i] . " (" .
-            translate("External User") . ")<br/>\n";
+            translate("External User") . ")<br />\n";
         } else {
           $body .= "  " . $ext_participants[$i] . " (" .
             translate("External User") . ")\n";
