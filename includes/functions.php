@@ -811,6 +811,10 @@ function get_my_users () {
       return array ( $login );
     }
     $u = user_get_users ();
+    if ( $is_nonuser ) {
+      $nonusers = get_nonuser_cals ();
+      $u = array_merge( $nonusers, $u );
+    }
     $u_byname = array ();
     for ( $i = 0; $i < count ( $u ); $i++ ) {
       $name = $u[$i]['cal_login'];
@@ -3269,7 +3273,8 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
  */
 function html_for_event_day_at_a_glance ( $event, $date ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
-    $eventinfo, $login, $user, $tz_offset, $DISPLAY_DESC_PRINT_DAY;
+    $eventinfo, $login, $user, $tz_offset, $DISPLAY_DESC_PRINT_DAY,
+    $ALLOW_HTML_DESCRIPTION;
   static $key = 0;
   global $layers, $PHP_SELF, $TIME_SLOTS;
 
@@ -3404,7 +3409,11 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   if ( $DISPLAY_DESC_PRINT_DAY == "Y" ) {
     $hour_arr[$ind] .= "\n<dl class=\"desc\">\n";
     $hour_arr[$ind] .= "<dt>Description:</dt>\n<dd>";
-    $hour_arr[$ind] .= htmlspecialchars ( $event->getDescription() );
+    if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
+      $hour_arr[$ind] .= $event->getDescription();
+    } else {
+      $hour_arr[$ind] .= strip_tags ( $event->getDescription() );    
+    }
     $hour_arr[$ind] .= "</dd>\n</dl>\n";
   }
 
