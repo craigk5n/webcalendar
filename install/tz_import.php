@@ -219,7 +219,7 @@ function do_tz_import ( $file_path= "timezone/") {
    $line = 0;
  
   while (($data = fgets($fd, 1000)) !== FALSE) {
-  //echo strlen( $data ) . "<br>" . $data . "<br>";
+  //echo strlen( $data ) . "<br />" . $data . "<br />";
     if ( ( substr (trim($data),0,1) == "#" ) || strlen( $data ) <=2 ) {
      continue;
     } else if ( substr (trim($data),0,4) == "Link" ){
