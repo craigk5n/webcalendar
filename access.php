@@ -45,7 +45,7 @@ if ( getPostValue ( 'user' ) != '' ) {
 
   $sql = "INSERT INTO webcal_access_function ( cal_login, cal_permissions ) " .
     "VALUES ( '$user', '$perm' )";
-  //echo "SQL: $sql<br/>\n";
+  //echo "SQL: $sql<br />\n";
   if ( ! dbi_query ( $sql ) ) {
     die_miserable_death ( translate ( "Database error" ) . ": " .
       dbi_error () );
@@ -71,7 +71,7 @@ if ( getPostValue ( 'user' ) != '' ) {
         "( cal_login, cal_other_user, cal_can_view, cal_can_edit, " .
         "cal_can_delete, cal_can_approve ) VALUES " .
         "( '$user', '$other_user', '$view', '$edit', '$delete', '$approve' )";
-      //echo "SQL: $sql<br/>\n";
+      //echo "SQL: $sql<br />\n";
       if ( ! dbi_query ( $sql ) ) {
         die_miserable_death ( translate ( "Database error" ) . ": " .
           dbi_error () );
@@ -137,7 +137,7 @@ if ( ! empty ( $user ) ) {
       echo "<input type=\"checkbox\" name=\"access_" . $i .
         "\" value=\"Y\" " . $checked . "/>\n";
       echo access_get_function_description ( $i );
-      echo "</label><br/>\n";
+      echo "</label><br />\n";
     }
     if ( $i == $div )
       echo "</td>\n<td valign=\"top\">\n";
@@ -171,7 +171,7 @@ if ( ! empty ( $user ) ) {
       $userlist = array_merge ( get_list_of_users ( $user ), get_nonuser_cals () );
     ?>
 
-    <br/><br/><br/>
+    <br /><br /><br />
     <table border="0">
     <tbody>
     <tr>
@@ -222,7 +222,7 @@ if ( ! empty ( $user ) ) {
     </tbody>
     </table>
 
-    <br/><br/>
+    <br /><br />
   <?php } ?>
 
   <input type="button" value="<?php etranslate("Cancel"); ?>"
@@ -294,6 +294,8 @@ function get_list_of_users ( $user )
       dbi_fetch_row ( $res );
     }
     $u = user_get_users (); // a complete list of users
+    $nonusers = get_nonuser_cals ();
+    $u = array_merge( $nonusers, $u );
     $u_byname = array ();
     for ( $i = 0; $i < count ( $u ); $i++ ) {
       $name = $u[$i]['cal_login'];
