@@ -1821,11 +1821,11 @@ function get_entries ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_t
           $ret[$n++] = $events[$i];
         }
       } else {
-   if ( $events[$i]->getDate() == $date &&
-          $events[$i]->getTime() > $cutoff ) {
+         if ( $events[$i]->getDate() == $date &&
+          $events[$i]->getTime() >= $cutoff ) {
           $ret[$n++] = $events[$i];
         } else if ( $events[$i]->getDate() == $next_day &&
-          $events[$i]->getTime() <= $cutoff ) {
+          $events[$i]->getTime() < $cutoff ) {
           $ret[$n++] = $events[$i];
         }
       }
@@ -2751,7 +2751,6 @@ function print_date_entries ( $date, $user, $ssi ) {
   $ev = get_entries ( $user, $date, $get_unapproved );
   // combine and sort the event arrays
   $ev = combine_and_sort_events($ev, $rep);
-
 
   if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
   // get all due tasks for this date and before and store in $tk
