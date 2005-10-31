@@ -820,7 +820,7 @@ if ( $single_user == "N" &&
       }
     }
     if ( strlen ( $sql ) && empty ( $error ) ) {
-      //echo "SQL: $sql<BR>\n";
+      //echo "SQL: $sql<br />\n";
       if ( ! dbi_query ( $sql ) ) {
         $error = translate("Database error") . ": " . dbi_error ();
       }
