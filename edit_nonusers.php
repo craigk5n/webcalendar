@@ -81,7 +81,7 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
  <input type="radio" name="ispublic" value="N" <?php
    if ( empty ( $nonusertemp_is_public ) ||
      $nonusertemp_is_public != 'Y' ) echo ' checked="checked"';
-   echo "> " . translate ( "No" );?><br/>
+   echo "> " . translate ( "No" );?><br />
  <?php if ( ! empty ( $nonusertemp_login ) ) {
                 $nu_url = $SERVER_URL . "nulogin.php?login=$nonusertemp_login";
                 echo "<a href=\"$nu_url\">$nu_url</a>\n";
