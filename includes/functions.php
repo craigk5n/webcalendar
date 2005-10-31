@@ -192,7 +192,7 @@ function load_global_settings () {
  
   // Set SERVER TIMEZONE 
   if ( empty ( $GLOBALS["TIMEZONE"] ) )
-    $GLOBALS["TIMEZONE"] = "America/New_York";  
+    $GLOBALS["TIMEZONE"] = $GLOBALS["SERVER_TIMEZONE"];  
   
   // If app name not set.... default to "Title".  This gets translated
   // later since this function is typically called before translate.php
@@ -1547,7 +1547,7 @@ function print_entry ( $event, $date ) {
   //added to allow a small location to be displayed if wanted
  if ( ! empty ($location) &&
    ! empty ( $DISPLAY_LOCATION ) && $DISPLAY_LOCATION == "Y") {
-   echo "<br/><font size=\"-2\">(" . htmlspecialchars ( $location ) . ")</font>";
+   echo "<br /><font size=\"-2\">(" . htmlspecialchars ( $location ) . ")</font>";
   }
  
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
@@ -3108,7 +3108,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
       $first_slot = $ind;
     if ( $ind > $last_slot )
       $last_slot = $ind;
-    //echo $event->getTime() . "$tz_event  $tz_time $ind<br>"; 
+    //echo $event->getTime() . "$tz_event  $tz_time $ind<br />"; 
   } else {
     // untimed event or All Day
     $ind = 9999;
@@ -3300,7 +3300,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $ind = 9999;
   //echo "time = $time <br />\nind = $ind <br />\nfirst_slot = $first_slot<br />\n";
 
-  //echo "Using slot $ind<br/>";
+  //echo "Using slot $ind<br />";
 
   if ( empty ( $hour_arr[$ind] ) )
     $hour_arr[$ind] = "";
@@ -3458,7 +3458,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   $rep = get_repeating_entries ( $user, $date );
   $cur_rep = 0;
 
-  //echo "found " . count($rep) . " events for $date<br>";
+  //echo "found " . count($rep) . " events for $date<br />";
 
   // Get static non-repeating events
   $ev = get_entries ( $user, $date, $get_unapproved, true, true );
@@ -3962,7 +3962,7 @@ function decode_string ( $instr ) {
     //echo " which is \"$dec_ch\"<br />\n";
     $orig .= $dec_ch;
   }
-  //echo "Decode string: '$orig' <br/>\n";
+  //echo "Decode string: '$orig' <br />\n";
   return $orig;
 }
 
