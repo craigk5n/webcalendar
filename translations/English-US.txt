@@ -930,7 +930,11 @@ Submit: Submit
 ###############################################
 # Page: reject_entry.php
 #
+Additional Comments (optional): Additional Comments (optional)
+Continue: Continue
+(Your comments will be included in an email to the other participants): (Your comments will be included in an email to the other participants)
 An appointment has been rejected by: An appointment has been rejected by
+Comments: Comments
 
 
 ###############################################
