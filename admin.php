@@ -378,10 +378,15 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <label><input type="radio" name="admin_DISABLE_POPUPS" value="Y"<?php if ( $s["DISABLE_POPUPS"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
   <label><input type="radio" name="admin_DISABLE_POPUPS" value="N"<?php if ( $s["DISABLE_POPUPS"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
+  <tr><td class="tooltip" title="<?php etooltip("disable-location-field-help")?>">
+  <?php etranslate("Disable Location field")?>:</td><td>
+  <label><input type="radio" name="admin_DISABLE_LOCATION_FIELD" value="Y"<?php if ( $s["DISABLE_LOCATION_FIELD"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_DISABLE_LOCATION_FIELD" value="N"<?php if ( $s["DISABLE_LOCATION_FIELD"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("disable-priority-field-help")?>">
   <?php etranslate("Disable Priority field")?>:</td><td>
-  <label><input type="radio" name="admin_disable_priority_field" value="Y"<?php if ( $s["DISABLE_PRIORITY_FIELD"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
-  <label><input type="radio" name="admin_disable_priority_field" value="N"<?php if ( $s["DISABLE_PRIORITY_FIELD"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_DISABLE_PRIORITY_FIELD" value="Y"<?php if ( $s["DISABLE_PRIORITY_FIELD"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_DISABLE_PRIORITY_FIELD" value="N"<?php if ( $s["DISABLE_PRIORITY_FIELD"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("disable-access-field-help")?>">
   <?php etranslate("Disable Access field")?>:</td><td>

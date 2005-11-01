@@ -173,6 +173,8 @@ From: From
 to: to
 disable-popups-help: Disable popups from calendar views
 Disable Pop-Ups: Disable Pop-Ups
+disable-location-field-help: Selecting "Yes" will remove the "Location" field from event information pages
+Disable Location field: Disable Location field
 disable-priority-field-help: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
 Disable Priority field: Disable Priority field
 disable-access-field-help: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.

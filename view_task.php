@@ -70,10 +70,10 @@ $hide_details = false;
 //save URI and redirect to login
 if ( empty ( $error ) && ! $can_view ) {
   $em = getGetValue ( 'em' );
-	if ( ! empty ( $em ) ) {
-	  remember_this_view ();
-		do_redirect ( 'login.php' );	
-	} 
+  if ( ! empty ( $em ) ) {
+    remember_this_view ();
+    do_redirect ( 'login.php' );  
+  } 
   $error = translate ( "You are not authorized" );
 }
 
@@ -178,9 +178,11 @@ if ( $row ) {
   if ( $hide_details ) {
     $name = $OVERRIDE_PUBLIC_TEXT;
     $description = $OVERRIDE_PUBLIC_TEXT;
+    if ( ! empty ( $row[11] ) ) $location = $OVERRIDE_PUBLIC_TEXT;;
   } else {
     $name = $row[9];
     $description = $row[10];
+    $location  = $row[11];
   }
 } else {
   echo "<h2>" . 
@@ -285,8 +287,15 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
     echo nl2br ( activate_urls ( htmlspecialchars ( $description ) ) );
   }
 ?></td></tr>
-
-<?php if (  ! empty ( $event_status ) ) { ?>
+ <?php
+  if (   ( empty ( $DISABLE_LOCATION_FIELD ) ||
+    $ALLOW_HTML_DESCRIPTION != 'Y' ) && ! empty ( $location ) ) { 
+    echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">";
+    echo translate("Location") . ":</td><td>";
+    echo $location . "</td><tr>\n";
+  }
+  
+if (  ! empty ( $event_status ) ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Status")?>:</td><td>
  <?php
