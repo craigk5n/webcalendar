@@ -9,6 +9,26 @@ if ( $readonly == 'Y' ) {
   $error = translate("You are not authorized");
 }
 
+//give user a change to add comments to rejection email
+if ( ! empty ( $_POST ) ) {
+  $comments = getPostValue ( 'comments' ); 
+} else {
+   $q_string = $_SERVER['QUERY_STRING'];
+
+   print_header ();
+   echo "<form action=\"reject_entry.php?$q_string\" method=\"post\" name=\"add_comments\" >\n";
+   echo "<table border=\"0\" cellspacing=\"5\">\n" .
+     "<tr><td align=\"center\" valign=\"bottom\"><h3>" . 
+     translate ( "Additional Comments (optional)" ) . "</h3></td><tr>\n";
+   echo "<tr><td align=\"center\">" .
+     "<textarea name=\"comments\" rows=\"5\" cols=\"60\" ></textarea></td></tr>\n";
+   echo "<tr><td align=\"center\"><input type=\"submit\" value=\"" . 
+     translate ( "Continue" ) . "\" /></tr></tr>\n<tr><td>";
+   etranslate ( "(Your comments will be included in an email to the other participants)" );
+   echo "</td></tr></table></form>\n"; 
+   echo "</body>\n</html>";
+   exit;
+}
 // Allow administrators to approve public events
 if ( $PUBLIC_ACCESS == "Y" && ! empty ( $public ) && $is_admin )
   $app_user = "__public__";
@@ -28,7 +48,7 @@ if ( ! empty ( $type ) && ( $type == 'T' || $type == 'N' ) ) {
   $view_type = "view_task";
 } else {
   $log_reject =  LOG_REJECT;
-  $view_type = "view_entry";	
+  $view_type = "view_entry";  
 }
 if ( empty ( $error ) && $id > 0 ) {
   if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'R' " .
@@ -94,45 +114,47 @@ if ( empty ( $error ) && $id > 0 ) {
     $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
     if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
       $SEND_EMAIL != "N" ) {
-        if ( empty ( $user_language ) || ( $user_language == 'none' )) {
-          reset_language ( $LANGUAGE );
-        } else {
-          reset_language ( $user_language );
-        }
-        $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
-        translate("An appointment has been rejected by") .
-        " " . $login_fullname .  ".\n\n" .
-        translate("The subject was") . " \"" . $name . " \"\n" .
-        translate("The description is") . " \"" . $description . "\"\n" .
-        translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-        ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate("Time") . ": " .
-        // Display using user's GMT offset and display TZID
-        display_time ( $eventstart, 2, '' , $user_TIMEZONE, $t_format ) ) ). "\n\n";
-      if ( ! empty ( $SERVER_URL ) ) {
-				//DON'T change & to &amp; here. email will handle it
-        $url = $SERVER_URL .  $view_type . ".php?id=" .  $id . "&em=1";
-				if ( $htmlmail == 'Y' ) {
-					$url =  activate_urls ( $url ); 
-				}
-        $msg .= "\n\n" . $url;
+      if ( empty ( $user_language ) || ( $user_language == 'none' )) {
+        reset_language ( $LANGUAGE );
+      } else {
+        reset_language ( $user_language );
       }
-
+      $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
+      translate("An appointment has been rejected by") .
+      " " . $login_fullname .  ".\n\n" .
+      translate("The subject was") . " \"" . $name . " \"\n" .
+      translate("The description is") . " \"" . $description . "\"\n" .
+      translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
+      ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate("Time") . ": " .
+      // Display using user's GMT offset and display TZID
+      display_time ( $eventstart, 2, '' , $user_TIMEZONE, $t_format ) ) ). "\n";
+      if ( ! empty ( $SERVER_URL ) ) {
+        //DON'T change & to &amp; here. email will handle it
+        $url = $SERVER_URL .  $view_type . ".php?id=" .  $id . "&em=1";
+        if ( $htmlmail == 'Y' ) {
+          $url =  activate_urls ( $url ); 
+        }
+        $msg .= "\n" . $url;
+      }
+      if ( strlen ( $comments ) ) {
+        $msg .= "\n\n" . translate ( "Comments" ) . ": " . $comments;
+      }
       $from = $EMAIL_FALLBACK_FROM;
       if ( strlen ( $login_email ) ) $from = $login_email;
 
-			if ( strlen ( $from ) ) {
-				$mail->From = $from;
-				$mail->FromName = $login_fullname;
-			} else {
-				$mail->From = $login_fullname;
-			}
-			$mail->IsHTML( $htmlmail == 'Y' ? true : false );
-			$mail->AddAddress( $tempemail, $tempfullname );
-			$mail->Subject = translate($APPLICATION_NAME) . " " .
-				translate("Notification") . ": " . $name;
-			$mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;
-			$mail->Send();
-			$mail->ClearAll();
+      if ( strlen ( $from ) ) {
+        $mail->From = $from;
+        $mail->FromName = $login_fullname;
+      } else {
+        $mail->From = $login_fullname;
+      }
+      $mail->IsHTML( $htmlmail == 'Y' ? true : false );
+      $mail->AddAddress( $tempemail, $tempfullname );
+      $mail->Subject = translate($APPLICATION_NAME) . " " .
+        translate("Notification") . ": " . $name;
+      $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;
+      $mail->Send();
+      $mail->ClearAll();
 
       activity_log ( $id, $login, $partlogin[$i], LOG_NOTIFICATION,
         "Rejected by $app_user" );
