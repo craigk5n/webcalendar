@@ -174,6 +174,12 @@ function get_installed_version () {
   } else {
    //make sure all existing values in config and pref tables are UPPERCASE
    make_uppercase ();
+
+   //add default admin user if not exists
+   db_load_admin ();
+   
+   // Insert webcal_config values only if blank
+   db_load_config ();   
  }
   dbi_free_result ( $res );
  }
@@ -552,12 +558,7 @@ if ( ! empty ( $action ) &&  $action == "install" ){
     $_SESSION['tz_install_success']  = true;
    }
    
-   //add default admin user if not exists
-   db_load_admin ();
-   
-   // Insert webcal_config values only if blank
-   db_load_config ();
-   
+  
    // If new install, run 0 GMT offset
    if ( $_SESSION['old_program_version'] == "new_install" ) {
     convert_server_to_GMT ( 0 );

@@ -147,10 +147,10 @@ if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
 //save URI and redirect to login
 if ( empty ( $error ) && ! $can_view ) {
   $em = getGetValue ( 'em' );
-	if ( ! empty ( $em ) ) {
-	  remember_this_view ();
-		do_redirect ( 'login.php' );	
-	} 
+  if ( ! empty ( $em ) ) {
+    remember_this_view ();
+    do_redirect ( 'login.php' );  
+  } 
   $error = translate ( "You are not authorized" );
 }
 
@@ -265,7 +265,7 @@ if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
 // Load event info now.
 $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
   "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-  "cal_name, cal_description FROM webcal_entry WHERE webcal_entry.cal_type IN " .
+  "cal_name, cal_description, cal_location FROM webcal_entry WHERE webcal_entry.cal_type IN " .
   " ('E','M') AND cal_id = $id";
 $res = dbi_query ( $sql );
 if ( ! $res ) {
@@ -284,6 +284,7 @@ if ( $row ) {
   } else {
     $name = $row[9];
     $description = $row[10];
+    $location = $row[11];    
   }
 } else {
   echo "<h2>" . 
@@ -406,8 +407,15 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
     echo nl2br ( activate_urls ( htmlspecialchars ( $description ) ) );
   }
 ?></td></tr>
-
-<?php if ( $event_status != 'A' && ! empty ( $event_status ) ) { ?>
+ <?php
+  if (   ( empty ( $DISABLE_LOCATION_FIELD ) ||
+    $ALLOW_HTML_DESCRIPTION != 'Y' ) && ! empty ( $location ) ) { 
+    echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">";
+    echo translate("Location") . ":</td><td>";
+    echo $location . "</td><tr>\n";
+  }
+    
+ if ( $event_status != 'A' && ! empty ( $event_status ) ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Status")?>:</td><td>
  <?php
@@ -714,7 +722,7 @@ if ( empty ( $event_status ) ) {
 if ( $unapproved && $readonly == 'N' ) {
   echo "<a title=\"" . 
     translate("Approve/Confirm entry") . 
-    "\" href=\"approve_entry.php?id=$id&amp;type=E\\" " .
+    "\" href=\"approve_entry.php?id=$id&amp;type=E\" " .
     "onclick=\"return confirm('" . 
     translate("Approve this entry?") . "');\">" . 
     translate("Approve/Confirm entry") . "</a><br />\n";

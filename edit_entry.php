@@ -463,11 +463,13 @@ if ( ! empty ( $parent ) )
     
 <?php } ?>
   </td></tr>
+<?php if ( $DISABLE_LOCATION_FIELD != "Y"  ){  ?>
  <tr><td class="tooltip" title="<?php etooltip("location-help")?>">
    <?php etranslate("Location")?>:</td><td colspan="2">
     <input type="text" name="location" size="55" 
    value="<?php echo htmlspecialchars ( $location ); ?>" />
   </td></tr>
+<?php } ?>
   <tr><td class="tooltip" title="<?php etooltip("date-help")?>">
    <?php etranslate("Date")?>:</td><td colspan="2">
    <?php

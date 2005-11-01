@@ -26,6 +26,7 @@ $webcalConfig = array (
 "DATE_FORMAT"=>"__month__ __dd__, __yyyy__",
 "DEMO_MODE"=>"N",
 "DISABLE_ACCESS_FIELD"=>"N",
+"DISABLE_LOCATION_FIELD"=>"N",
 "DISABLE_PARTICIPANTS_FIELD"=>"N",
 "DISABLE_POPUPS"=>"N",
 "DISABLE_PRIORITY_FIELD"=>"N",

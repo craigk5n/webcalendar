@@ -224,13 +224,13 @@ if ( $readonly == 'Y' || $is_nonuser ) {
  
    //get participants
   $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id AND " .
-	  " cal_status IN ('A', 'W' )";
+    " cal_status IN ('A', 'W' )";
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants[$row[0]] = 1;
     }
-		dbi_free_result ( $res );
+    dbi_free_result ( $res );
   }
  // I don't think we should do external users. Any thoughts?
   //if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == "Y" ) {
@@ -466,6 +466,13 @@ if ( ! empty ( $parent ) )
    </td></tr></table>
 
   </td></tr>
+<?php if ( $DISABLE_LOCATION_FIELD != "Y"  ){  ?>
+ <tr><td class="tooltip" title="<?php etooltip("location-help")?>">
+   <?php etranslate("Location")?>:</td><td colspan="2">
+    <input type="text" name="location" size="55" 
+   value="<?php echo htmlspecialchars ( $location ); ?>" />
+  </td></tr>
+<?php } ?>  
  <tr>
  <?php if ( ! empty ( $all_complete ) ) { ?>
      <td class="tooltip" title="<?php etooltip("date-help")?>" colspan="3" align="right">

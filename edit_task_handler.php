@@ -322,10 +322,10 @@ if ( empty ( $error ) ) {
             translate("Time") . ": " .
             // Apply user's GMT offset and display their TZID
             display_time ( date ( "YmdHis", $eventstart ), 2, '', 
-						  $user_TIMEZONE, $t_format ) . "\n\n\n");
+              $user_TIMEZONE, $t_format ) . "\n\n\n");
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
-					  //DON'T change & to &amp; here. email will handle it
+            //DON'T change & to &amp; here. email will handle it
             $url = $SERVER_URL .  "view_task.php?id=" .  $id . "&em=1";
             if ( $htmlmail == 'Y' ) {
               $url =  activate_urls ( $url );
@@ -436,14 +436,14 @@ if ( empty ( $error ) ) {
             ( empty ( $timetype ) || $timetype != 'T' ? "" : translate("Time") . ": " .
             // Apply user's GMT offset and display their TZID
             display_time ( date ( "YmdHis", $eventstart ), 2, '', 
-						  $user_TIMEZONE, $t_format ) . "\n" ) .
+              $user_TIMEZONE, $t_format ) . "\n" ) .
             translate("Please look on") . " " . translate($APPLICATION_NAME) . " " .
             ( $REQUIRE_APPROVALS == "Y" ?
             translate("to accept or reject this task") :
             translate("to view this task") ) . ".";
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
-					  //DON'T change & to &amp; here. email will handle it
+            //DON'T change & to &amp; here. email will handle it
             $url = $SERVER_URL .  "view_task.php?id=" .  $id . "&em=1";
             if ( $htmlmail == 'Y' ) {
               $url =  activate_urls ( $url ); 
