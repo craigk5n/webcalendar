@@ -127,7 +127,7 @@ function list_unapproved ( $user ) {
       //approve
       echo ": <a title=\"" . 
         translate("Approve/Confirm") . 
-     "\"  href=\"approve_entry.php?id=$id&amp;ret=$retarg&amp;user=$cal_user";
+     "\"  href=\"approve_entry.php?id=$id&amp;ret=$retarg&amp;user=$cal_user&amp;type=$type";
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .

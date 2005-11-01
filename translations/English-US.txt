@@ -340,7 +340,17 @@ The following error occurred: The following error occurred
 ###############################################
 # Page: approve_entry.php
 #
+Additional Comments (optional): Additional Comments (optional)
+Approve and Send: Approve and Send
+Approve and Exit: Approve and Exit
+(Your comments will be included in an email to the event creator): (Your comments will be included in an email to the event creator)
 Error approving event: Error approving event
+Hello: Hello
+An appointment has been approved and comments added by: An appointment has been approved and comments added by
+The subject was: The subject was
+The description is: The description is
+Comments: Comments
+Notification: Notification
 
 
 ###############################################
@@ -372,10 +382,7 @@ Printer Friendly: Printer Friendly
 ###############################################
 # Page: del_entry.php
 #
-Hello: Hello
 An appointment has been canceled for you by: An appointment has been canceled for you by
-The subject was: The subject was
-Notification: Notification
 
 
 ###############################################
@@ -473,7 +480,6 @@ You are not authorized to edit this entry: You are not authorized to edit this e
 #
 The following conflicts with the suggested time: The following conflicts with the suggested time
 Unnamed Event: Unnamed Event
-The description is: The description is
 A new appointment has been made for you by: A new appointment has been made for you by
 An appointment has been updated by: An appointment has been updated by
 The subject is: The subject is
@@ -930,11 +936,9 @@ Submit: Submit
 ###############################################
 # Page: reject_entry.php
 #
-Additional Comments (optional): Additional Comments (optional)
 Continue: Continue
 (Your comments will be included in an email to the other participants): (Your comments will be included in an email to the other participants)
 An appointment has been rejected by: An appointment has been rejected by
-Comments: Comments
 
 
 ###############################################
