@@ -17,6 +17,7 @@ if ( $id > 0 ) {
     $can_edit = false;
   } else {
     $can_edit = false;
+	}
     $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_type FROM webcal_entry, " .
       "webcal_entry_user WHERE webcal_entry.cal_id = " .
       "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
@@ -30,7 +31,6 @@ if ( $id > 0 ) {
 			$activity_type = $row[1];
       dbi_free_result ( $res );
     }
-  }
 }
 if ( $activity_type =='E' || $activity_type == 'M' ) {
   $log_delete = LOG_DELETE;
@@ -142,6 +142,7 @@ if ( $id > 0 && empty ( $error ) ) {
 
       $do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
       $htmlmail = get_pref_setting ( $partlogin[$i], "EMAIL_HTML" );
+      $t_format = get_pref_setting ( $partlogin[$i], "TIME_FORMAT" );
       $user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
       $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
       user_load_variables ( $partlogin[$i], "temp" );         
@@ -160,7 +161,7 @@ if ( $id > 0 && empty ( $error ) ) {
           translate("Date") . ": " . date_to_str ($thisdate) . "\n";
           if ( $eventtime != '-1' ) $msg .= translate("Time") . ": " . 
            // Apply user's GMT offset and display their TZID
-           display_time ( $eventdate . $eventtime, 2, '', $user_TIMEZONE );
+           display_time ( $eventdate . $eventtime, 2, '', $user_TIMEZONE, $t_format );
           $msg .= "\n\n";
           //use WebCalMailer class
           $from = $login_email;

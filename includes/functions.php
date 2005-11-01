@@ -3672,15 +3672,18 @@ function activate_urls ( $text ) {
  *   2 show_tzid Show abbrev TZ id ie EST after time
  * @param timestamp $timestamp  Allows for proper DST calculation
  * @param user_timezone $user_timezone  user's timezone for non-logged in user
+ * @param format $format  user's TIME_FORMAT when sending emails
  *
  * @return string The time in the user's timezone and preferred format
  *
  * @global string $TIMEZONE The logged in user's timezone
  */
-function display_time ( $time, $control=0, $timestamp = '', $user_timezone='' ) {
+function display_time ( $time, $control=0, $timestamp = '', $user_timezone='',
+  $format = '' ) {
   global $TIMEZONE, $TIME_FORMAT; 
   
   $tz = ( empty ( $user_timezone )? $TIMEZONE : $user_timezone );
+  $t_format = ( empty ( $format )? $TIME_FORMAT : $format );
 
   // if $time < 100000, it is sometimes passed as 5 digits
   // so the length could be 13 or 14 when appended to YYYYMMDD 
@@ -3714,7 +3717,7 @@ function display_time ( $time, $control=0, $timestamp = '', $user_timezone='' ) 
     $hour += 24;
   while ( $hour > 23 )
     $hour -= 24;
-  if ( $TIME_FORMAT == "12" ) {
+  if ( $t_format == "12" ) {
     $ampm = ( $hour >= 12 ) ? translate("pm") : translate("am");
     $hour %= 12;
     if ( $hour == 0 )

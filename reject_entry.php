@@ -87,6 +87,7 @@ if ( empty ( $error ) && $id > 0 ) {
     $send_user_mail = get_pref_setting ( $partlogin[$i],
       "EMAIL_EVENT_REJECTED" );
     $htmlmail = get_pref_setting ( $partlogin[$i], "EMAIL_HTML" );
+    $t_format = get_pref_setting ( $partlogin[$i], "TIME_FORMAT" );
     user_load_variables ( $partlogin[$i], "temp" );
     $user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
     $user_TZ = get_tz_offset ( $user_TIMEZONE, '', $eventstart );
@@ -106,7 +107,7 @@ if ( empty ( $error ) && $id > 0 ) {
         translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
         ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate("Time") . ": " .
         // Display using user's GMT offset and display TZID
-        display_time ( $eventstart, 2, '' , $user_TIMEZONE ) ) ). "\n\n";
+        display_time ( $eventstart, 2, '' , $user_TIMEZONE, $t_format ) ) ). "\n\n";
       if ( ! empty ( $SERVER_URL ) ) {
 				//DON'T change & to &amp; here. email will handle it
         $url = $SERVER_URL .  $view_type . ".php?id=" .  $id . "&em=1";

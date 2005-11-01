@@ -291,6 +291,7 @@ if ( empty ( $error ) ) {
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $old_participant, "EMAIL_EVENT_DELETED" );
         $htmlmail = get_pref_setting ( $old_participant, "EMAIL_HTML" );
+        $t_format = get_pref_setting (  $old_participant, "TIME_FORMAT" );
         $user_TIMEZONE = get_pref_setting ( $old_participant, "TIMEZONE" );
         $user_TZ = get_tz_offset ( $user_TIMEZONE, $eventstart );
         $user_language = get_pref_setting ( $old_participant, "LANGUAGE" );
@@ -320,8 +321,8 @@ if ( empty ( $error ) ) {
              ( empty ( $timetype ) || $timetype != 'T'  ? "" :
             translate("Time") . ": " .
             // Apply user's GMT offset and display their TZID
-            display_time ( date ( "YmdHis", $eventstart ), 2, '', $user_TIMEZONE ) .
-              "\n\n\n");
+            display_time ( date ( "YmdHis", $eventstart ), 2, '', 
+						  $user_TIMEZONE, $t_format ) . "\n\n\n");
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
 					  //DON'T change & to &amp; here. email will handle it
@@ -400,8 +401,9 @@ if ( empty ( $error ) ) {
 
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $participants[$i],
-           $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
+        $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
         $htmlmail = get_pref_setting ( $participants[$i], "EMAIL_HTML" );
+        $t_format = get_pref_setting ( $participants[$i], "TIME_FORMAT" );
         $user_TIMEZONE = get_pref_setting ( $participants[$i], "TIMEZONE" );
         $user_TZ = get_tz_offset ( $user_TIMEZONE, $eventstart );
         $user_language = get_pref_setting ( $participants[$i], "LANGUAGE" );
@@ -433,7 +435,8 @@ if ( empty ( $error ) ) {
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
             ( empty ( $timetype ) || $timetype != 'T' ? "" : translate("Time") . ": " .
             // Apply user's GMT offset and display their TZID
-            display_time ( date ( "YmdHis", $eventstart ), 2, '', $user_TIMEZONE ) . "\n" ) .
+            display_time ( date ( "YmdHis", $eventstart ), 2, '', 
+						  $user_TIMEZONE, $t_format ) . "\n" ) .
             translate("Please look on") . " " . translate($APPLICATION_NAME) . " " .
             ( $REQUIRE_APPROVALS == "Y" ?
             translate("to accept or reject this task") :
