@@ -87,6 +87,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Implemented RFE 1337513: Add disable option to Location in 'edit_entry.php'
     + Implemented RFE 802644: Allow to add a comment for reject/accept event
     + Implemented RFE 1082995: Reject Event Email Message
     + Implemented RFE 1030872: Notifications reflect user's setting for 12/24-hour time
