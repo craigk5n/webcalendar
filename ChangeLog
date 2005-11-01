@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Implemented RFE 802644: Allow to add a comment for reject/accept event
  - Implemented RFE 1082995: Reject Event Email Message
  - Implemented RFE 1030872: Notifications reflect user's setting for 12/24-hour time
  - Implemented RFE 1170434: Disable popups

@@ -572,7 +572,7 @@ if ( empty ( $event_status ) ) {
 if ( $unapproved && $readonly == 'N' ) {
   echo "<a title=\"" . 
     translate("Approve/Confirm task") . 
-    "\" href=\"approve_entry.php?id=$id\" " .
+    "\" href=\"approve_entry.php?id=$id&amp;type=T\" " .
     "onclick=\"return confirm('" . 
     translate("Approve this task?") . "');\">" . 
     translate("Approve/Confirm task") . "</a><br />\n";
