@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Implemented RFE 1170434: Disable popups
  - Fixed bug 1342070:  V1.1 - Month view, access.php.
  - Fixed bug 1306964: Events cannot be added for hour 0
  - Fixed bug 1306195: HML tags on "printer friendly"
