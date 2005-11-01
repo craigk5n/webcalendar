@@ -373,6 +373,11 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
    ?>
   </select>
  </td></tr>
+  <tr><td class="tooltip" title="<?php etooltip("disable-popups-help")?>">
+  <?php etranslate("Disable Pop-Ups")?>:</td><td>
+  <label><input type="radio" name="admin_DISABLE_POPUPS" value="Y"<?php if ( $s["DISABLE_POPUPS"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_DISABLE_POPUPS" value="N"<?php if ( $s["DISABLE_POPUPS"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("disable-priority-field-help")?>">
   <?php etranslate("Disable Priority field")?>:</td><td>
   <label><input type="radio" name="admin_disable_priority_field" value="Y"<?php if ( $s["DISABLE_PRIORITY_FIELD"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
@@ -445,6 +450,10 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <?php etranslate("Specify timed event length by")?>:</td><td>
   <label><input type="radio" name="admin_TIMED_EVT_LEN" value="D" <?php if ( $s["TIMED_EVT_LEN"] != "E" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Duration")?></label> 
   <label><input type="radio" name="admin_TIMED_EVT_LEN" value="E" <?php if ( $s["TIMED_EVT_LEN"] == "E" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("End Time")?></label>
+ </td></tr>
+<tr><td class="tooltip" title="<?php etooltip("summary_length-help")?>">
+  <?php etranslate("Brief Description Length")?>:</td><td>
+  <input type="text" size="3" name="admin_SUMMARY_LENGTH" value="<?php echo $SUMMARY_LENGTH;?>" />
  </td></tr>
 </table>
 </div>
@@ -684,12 +693,12 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <?php etranslate("Email Mailer")?>:</td><td>
  <select name="admin_EMAIL_MAILER"  onchange="email_handler()">
    <option value="smtp" <?php if ( $s["EMAIL_MAILER"] == 
-	   "smtp" ) echo " selected=\"selected\""?>>SMTP</option>
+     "smtp" ) echo " selected=\"selected\""?>>SMTP</option>
    <option value="mail" <?php if ( $s["EMAIL_MAILER"] == 
-	   "mail" ) echo " selected=\"selected\""?>>PHP mail</option>
-	 <option value="sendmail" <?php if ( $s["EMAIL_MAILER"] == 
-	   "sendmail" ) echo " selected=\"selected\""?>>sendmail</option>
-	</select>	 
+     "mail" ) echo " selected=\"selected\""?>>PHP mail</option>
+   <option value="sendmail" <?php if ( $s["EMAIL_MAILER"] == 
+     "sendmail" ) echo " selected=\"selected\""?>>sendmail</option>
+  </select>   
 </td></tr>
 
 <tr id="em3"><td class="tooltip" title="<?php etooltip("email-smtp-host")?>">

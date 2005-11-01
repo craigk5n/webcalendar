@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 10-30-2005
+# Translation last updated on 11-01-2005
 
 
 ###############################################
@@ -171,6 +171,8 @@ work-hours-help: Specifies the time range to display for the day view.
 Work hours: Work hours
 From: From
 to: to
+disable-popups-help: Disable popups from calendar views
+Disable Pop-Ups: Disable Pop-Ups
 disable-priority-field-help: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
 Disable Priority field: Disable Priority field
 disable-access-field-help: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
@@ -203,6 +205,8 @@ timed-evt-len-help: Specifies input method for determining the length of a timed
 Specify timed event length by: Specify timed event length by
 Duration: Duration
 End Time: End Time
+summary_length-help: Maximum length of Brief Description in calendar views
+Brief Description Length: Brief Description Length
 Plugins: Plugins
 plugins-enabled-help: Enable plugin applications.
 Enable Plugins: Enable Plugins
@@ -1103,6 +1107,7 @@ Year View: Year View
 Manage Views: Manage Views
 Category Management: Category Management
 User Management: User Management
+Another User's Calendar: Another User's Calendar
 Common Trailer: Common Trailer
 
 
@@ -1172,7 +1177,6 @@ Send Reminder: Send Reminder
 #
 My Calendar: My Calendar
 Back to My Calendar: Back to My Calendar
-Another User's Calendar: Another User's Calendar
 Add New Entry: Add New Entry
 Add New Task: Add New Task
 Logout: Logout
