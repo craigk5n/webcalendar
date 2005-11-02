@@ -610,7 +610,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   if ( $ev[$i]->getCalType() == "E" || $ev[$i]->getCalType() == "M") {
       process_event ( $id, $ev[$i]->getName(), $date, $ev[$i]->getTime() );
   } else {
-      process_event ( $id, $ev[$i]->getName(), $ev[$i]->getDueDate(), $ev[$i]->getDueTime() );  
+      process_event ( $id, $ev[$i]->getName(), $ev[$i]->getDueDate(), $ev[$i]->getDueTime() ); 
   }
   }
   $rep = get_repeating_entries ( "", $date );
