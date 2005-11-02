@@ -607,7 +607,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-  if ( $ev[$i]->getCalType() == "E" ) {
+  if ( $ev[$i]->getCalType() == "E" || $ev[$i]->getCalType() == "M") {
       process_event ( $id, $ev[$i]->getName(), $date, $ev[$i]->getTime() );
   } else {
       process_event ( $id, $ev[$i]->getName(), $ev[$i]->getDueDate(), $ev[$i]->getDueTime() );  
@@ -619,7 +619,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-  if ( $ev[$i]->getCalType() == "E" ) {
+  if ( $rep[$i]->getCalType() == "E" || $rep[$i]->getCalType() == "M" ) {
       process_event ( $id, $rep[$i]->getName(), $date, $rep[$i]->getTime() );
   } else {
       process_event ( $id, $rep[$i]->getName(), $rep[$i]->getDueDate(), $rep[$i]->getDueTime() );  

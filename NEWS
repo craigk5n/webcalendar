@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1345106: Error in send_reminders.php
       1342070: V1.1 - Month view, access.php.
       1306964: Events cannot be added for hour 0
       1306195: HML tags on "printer friendly"
