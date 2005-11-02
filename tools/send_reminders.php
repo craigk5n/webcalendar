@@ -161,6 +161,16 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
+// Get default timezone setting.
+$res = dbi_query ( "SELECT cal_value FROM webcal_config " .
+  "WHERE cal_setting = 'TIMEZONE'" );
+if ( $res ) {
+  if ( $row = dbi_fetch_row ( $res ) ) {
+    $def_tz = $row[0];
+  }
+  dbi_free_result ( $res );
+}
+
 $startdate = date ( "Ymd" );
 $enddate = date ( "Ymd", time() + ( $DAYS_IN_ADVANCE * 24 * 3600 ) );
 
@@ -216,11 +226,12 @@ function gen_output ( $useHtml, $prompt, $data )
 // Send a reminder for a single event for a single day to all
 // participants in the event.
 // Send to participants who have accepted as well as those who have not yet
-// approved.  But, don't send to users how rejected (cal_status='R').
+// approved.  But, don't send to users who rejected (cal_status='R').
 function send_reminder ( $id, $event_date ) {
   global $names, $emails, $site_extras, $debug, $only_testing, $htmlmail,
     $SERVER_URL, $languages,  $TIMEZONE, $APPLICATION_NAME;
-  global $ALLOW_EXTERNAL_USERS, $EXTERNAL_REMINDERS, $LANGUAGE;
+  global $ALLOW_EXTERNAL_USERS, $EXTERNAL_REMINDERS, $LANGUAGE,
+    $def_tx, $tz;
 
   $pri[1] = translate("Low");
   $pri[2] = translate("Medium");
@@ -321,6 +332,9 @@ function send_reminder ( $id, $event_date ) {
     if ( ! empty ( $tz[$user] ) ) {
       $display_tzid = 2;  // display TZ
       $user_timezone = $tz[$user];
+    } else if ( ! empty ( $def_tz ) ) {
+      $display_tzid = 2;
+      $user_timezone = $def_tz;  
     } else {
       $display_tzid = 3; // Do not use offset & display TZ
       $user_timezone = "";
