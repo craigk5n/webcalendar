@@ -163,7 +163,7 @@ if ( $res ) {
 
 // Get default timezone setting.
 $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-  "WHERE cal_setting = 'TIMEZONE'" );
+  "WHERE cal_setting = 'SERVER_TIMEZONE'" );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     $def_tz = $row[0];
