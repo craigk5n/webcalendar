@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Implemented PATCH 1344304: Use default tzone in send_reminders for users w/out pref
  - Fixed bug 1345106: Error in send_reminders.php
  - Implemented RFE 1337513: Add disable option to Location in 'edit_entry.php'
  - Implemented RFE 802644: Allow to add a comment for reject/accept event
