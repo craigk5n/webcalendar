@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1345106: Error in send_reminders.php
  - Implemented RFE 1337513: Add disable option to Location in 'edit_entry.php'
  - Implemented RFE 802644: Allow to add a comment for reject/accept event
  - Implemented RFE 1082995: Reject Event Email Message
