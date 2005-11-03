@@ -205,7 +205,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
     $is_admin ) ) ? $user : $login;
   $sql = "SELECT  DISTINCT cal_login, webcal_entry_categories.cat_id, " .
-    " webcal_entry_categories.cat_owner, cat_name " .
+    " webcal_entry_categories.cat_owner, webcal_entry_categories.cat_order, cat_name " .
     " FROM webcal_entry_user, webcal_entry_categories, webcal_categories " .
     " WHERE ( webcal_entry_user.cal_id = webcal_entry_categories.cal_id AND " .
     " webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .

@@ -241,7 +241,7 @@ CREATE TABLE webcal_user_template (
 );
 
 /*upgrade_v1.1.0b-CVS*/
-ALTER TABLE webcal_entry_repeats ADD cal_endtime INT(11) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_endtime INT DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_bymonth VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_bymonthday VARCHAR(100) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_byday VARCHAR(100) DEFAULT NULL;
@@ -249,18 +249,18 @@ ALTER TABLE webcal_entry_repeats ADD cal_bysetpos VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_byweekno VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_byyearday VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_wkst CHAR(2) DEFAULT 'MO';
-ALTER TABLE webcal_entry_repeats ADD cal_count INT(11) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_count INT DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats_not ADD cal_exdate INT(1) DEFAULT '1' NOT NULL;
-ALTER TABLE webcal_entry ADD cal_due_date INT(11) DEFAULT NULL;
-ALTER TABLE webcal_entry ADD cal_due_time INT(11) DEFAULT NULL;
+ALTER TABLE webcal_entry ADD cal_due_date INT DEFAULT NULL;
+ALTER TABLE webcal_entry ADD cal_due_time INT DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_location VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_url VARCHAR(100) DEFAULT NULL;
-ALTER TABLE webcal_entry ADD cal_completed INT(11) DEFAULT NULL;
-ALTER TABLE webcal_entry_user ADD cal_percent INT(11) DEFAULT '0' NOT NULL;
-ALTER TABLE webcal_site_extras DROP PRIMARY KEY;
+ALTER TABLE webcal_entry ADD cal_completed INT DEFAULT NULL;
+ALTER TABLE webcal_entry_user ADD cal_percent INT DEFAULT '0' NOT NULL;
+ALTER TABLE webcal_site_extras DROP CONSTRAINT webcal_site_extras_pkey;
 CREATE TABLE webcal_entry_categories (
-  cal_id INT(11) DEFAULT '0' NOT NULL,
-  cat_id INT(11) NOT NULL DEFAULT '0',
-  cat_order INT(11) DEFAULT '0' NOT NULL,
+  cal_id INT DEFAULT '0' NOT NULL,
+  cat_id INT NOT NULL DEFAULT '0',
+  cat_order INT DEFAULT '0' NOT NULL,
   cat_owner VARCHAR(25) DEFAULT NULL
 );
