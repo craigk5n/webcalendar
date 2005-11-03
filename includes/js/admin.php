@@ -10,16 +10,16 @@ function valid_color ( str ) {
 function valid_form ( form ) {
   var err = "";
 
-  if ( form.admin_server_url.value == "" ) {
+  if ( form.admin_SERVER_URL.value == "" ) {
     err += "<?php etranslate("Server URL is required")?>.\n";
-    form.admin_server_url.select ();
-    form.admin_server_url.focus ();
+    form.admin_SERVER_URL.select ();
+    form.admin_SERVER_URL.focus ();
   }
-  else if ( form.admin_server_url.value.charAt (
-    form.admin_server_url.value.length - 1 ) != '/' ) {
+  else if ( form.admin_SERVER_URL.value.charAt (
+    form.admin_SERVER_URL.value.length - 1 ) != '/' ) {
     err += "<?php etranslate("Server URL must end with '/'")?>.\n";
-    form.admin_server_url.select ();
-    form.admin_server_url.focus ();
+    form.admin_SERVER_URL.select ();
+    form.admin_SERVER_URL.focus ();
   }
 
   if ( parseInt ( form.admin_WORK_DAY_START_HOUR.value ) >=
@@ -106,7 +106,7 @@ function updateColor ( input ) {
 // Gets called on page load and when user changes setting for
 // "Allow public access".
 function public_handler () {
-  var enabled = document.prefform.admin_public_access[0].checked;
+  var enabled = document.prefform.admin_PUBLIC_ACCESS[0].checked;
   var ohd = document.prefform.admin_PUBLIC_ACCESS_OTHERS[0].checked;
   //alert ( "public enabled =  " + enabled );
   if ( enabled ) {
@@ -155,7 +155,7 @@ function eu_handler () {
 // Gets called on page load and when user changes setting for
 // "Allow self registration".
 function sr_handler () {
-  var enabled = document.prefform.admin_allow_self_registration[0].checked;
+  var enabled = document.prefform.admin_ALLOW_SELF_REGISTRATION[0].checked;
   if ( enabled ) {
     // Self Registration enabled
     makeVisible ( "sr1" );

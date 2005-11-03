@@ -310,13 +310,13 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 
 <tr><td class="tooltip" title="<?php etooltip("auto-refresh-help");?>">
  <?php etranslate("Auto-refresh calendars")?>:</td><td>
- <label><input type="radio" name="pref_auto_refresh" value="Y" <?php if ( $prefarray["AUTO_REFRESH"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
- <label><input type="radio" name="pref_auto_refresh" value="N" <?php if ( $prefarray["AUTO_REFRESH"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
+ <label><input type="radio" name="pref_AUTO_REFRESH" value="Y" <?php if ( $prefarray["AUTO_REFRESH"] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="pref_AUTO_REFRESH" value="N" <?php if ( $prefarray["AUTO_REFRESH"] != "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("auto-refresh-time-help");?>">
  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Auto-refresh time")?>:</td><td>
- <input type="text" name="pref_auto_refresh_time" size="4" value="<?php if ( empty ( $prefarray["AUTO_REFRESH_TIME"] ) ) echo "0"; else echo $prefarray["AUTO_REFRESH_TIME"]; ?>" /> <?php etranslate("minutes")?>
+ <input type="text" name="pref_AUTO_REFRESH_TIME" size="4" value="<?php if ( empty ( $prefarray["AUTO_REFRESH_TIME"] ) ) echo "0"; else echo $prefarray["AUTO_REFRESH_TIME"]; ?>" /> <?php etranslate("minutes")?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("display-unapproved-help");?>">
