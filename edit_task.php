@@ -323,10 +323,10 @@ if ( $ALLOW_HTML_DESCRIPTION == "Y" ){
   if ( $use_fckeditor ) {
     $textareasize = 'rows="20" cols="50"';
     $BodyX = '';
-    $INC = array ( 'js/edit_entry.php', 'js/visible.php' );
+    $INC = array ( 'js/edit_task.php', 'js/visible.php' );
   } else if ( $use_htmlarea ) {
     $BodyX = 'onload="initEditor();"';
-    $INC = array ( 'htmlarea/htmlarea.php', 'js/edit_entry.php',
+    $INC = array ( 'htmlarea/htmlarea.php', 'js/edit_task.php',
       'js/visible.php', 'htmlarea/core.php' );
   } else {
     // No htmlarea files found...
