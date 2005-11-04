@@ -33,20 +33,9 @@ $days_of_week =  array (
 $min_date = mktime ( 0, 0, 0, 1, 2, 1970 );
 $max_date = mktime ( 0, 0, 0, 1, 1, 2038 );
 
-//This function will apply a user supplied offset to all 
-// webcal_entry, webcal_entry_logs
-// cal_date and cal_time values
-// We could get this from PHP date( "Z")
-// Also, if the user specifies, we will use the server's
-// Timezone and determine if DST is in effect for each date
-function convert_server_to_GMT ( $offset=0, $server_tz='' ) {
-  // Current max values in tz database are -12 to 15
- // but we add 1 to account for possible DST
- // Note this is not scientific
-  if ( ( $offset < -13 ) || ( $offset > 16 ) ){
-   return;
- }
- //Defauly value 
+//We will convert from Server based storage to GMT time
+function convert_server_to_GMT () {
+ //Default value 
  $error = "<b>Conversion Successful</b>";
  // Do webcal_entry update
   $res = dbi_query ( "SELECT cal_date, cal_time, cal_id, cal_duration FROM webcal_entry" );
@@ -66,10 +55,9 @@ function convert_server_to_GMT ( $offset=0, $server_tz='' ) {
      $sh = substr ( $cal_time, 0, 2 );
      $si = substr ( $cal_time, 2, 2 );
      $ss = substr ( $cal_time, 4, 2 );   
-        $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
-        $new_datetime -= ( $offset * 3600 );
-     $new_cal_date = date ( "Ymd", $new_datetime );
-     $new_cal_time = date ( "His", $new_datetime );
+     $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
+     $new_cal_date = gmdate ( "Ymd", $new_datetime );
+     $new_cal_time = gmdate ( "His", $new_datetime );
      // Now update row with new data
      if ( ! dbi_query ( "UPDATE webcal_entry SET cal_date = '" . $new_cal_date  . "', " .
        " cal_time = '" . $new_cal_time . "' ".
@@ -95,10 +83,9 @@ function convert_server_to_GMT ( $offset=0, $server_tz='' ) {
    $sh = substr ( $cal_time, 0, 2 );
    $si = substr ( $cal_time, 2, 2 );
    $ss = substr ( $cal_time, 4, 2 );   
-      $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
-      $new_datetime += ( $offset * 3600 );
-   $new_cal_date = date ( "Ymd", $new_datetime );
-   $new_cal_time = date ( "His", $new_datetime );
+   $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
+   $new_cal_date = gmdate ( "Ymd", $new_datetime );
+   $new_cal_time = gmdate ( "His", $new_datetime );
    // Now update row with new data
    if ( ! dbi_query ( "UPDATE webcal_entry_log SET cal_date = '" . $new_cal_date  . "', " .
      " cal_time = '" . $new_cal_time . "' ".

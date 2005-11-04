@@ -126,6 +126,7 @@ function get_installed_version () {
   //disable warnings
  show_errors ();
  // Set this as the default value
+ $_SESSION['application_name']  = "Title";
  $_SESSION['old_program_version'] = "new_install";
  $_SESSION['blank_database'] = "";
  
@@ -174,9 +175,6 @@ function get_installed_version () {
   } else {
    //make sure all existing values in config and pref tables are UPPERCASE
    make_uppercase ();
-
-   //add default admin user if not exists
-   db_load_admin ();
    
    // Insert webcal_config values only if blank
    db_load_config ();   
@@ -560,9 +558,9 @@ if ( ! empty ( $action ) &&  $action == "install" ){
    
   
    // If new install, run 0 GMT offset
-   if ( $_SESSION['old_program_version'] == "new_install" ) {
-    convert_server_to_GMT ( 0 );
-   }
+   //if ( $_SESSION['old_program_version'] == "new_install" ) {
+    //convert_server_to_GMT ( 0 );
+   //}
    
   //for upgrade to v1.1b we need to convert existing categories 
   //and repeating events
@@ -707,7 +705,6 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
 // Is this a Timezone Convert?
 // If so, run it
 if ( ! empty ( $action ) && $action == "tz_convert" && ! empty ( $_SESSION['validuser'] ) ) {
-    $gmt_offset = getPostValue ( "gmt_offset" );
     $db_persistent = false;
     $db_type = $settings['db_type'];
     $db_host = $settings['db_host'];
@@ -720,7 +717,7 @@ if ( ! empty ( $action ) && $action == "tz_convert" && ! empty ( $_SESSION['vali
       $db_password, $db_database );
  
     if ( $c ) {
-        $ret = convert_server_to_GMT ( $gmt_offset );
+        $ret = convert_server_to_GMT ();
     if ( substr ( $ret, 3, 21 ) == "Conversion Successful" ) {
       $_SESSION['tz_conversion']  = 'Success';
      $response_msg = translate ( "Timezone Conversion Successful" );
@@ -819,6 +816,7 @@ if ( ! empty ( $y ) ) {
     $settings['single_user'] = 'false';
     $settings['user_inc'] = getPostValue ( 'form_user_inc' );
   }
+
  //Save Application Name and Server URL
  $db_persistent = false;
  $db_type = $settings['db_type'];
@@ -838,7 +836,11 @@ if ( ! empty ( $y ) ) {
           "VALUES ('SERVER_URL', '" . $_SESSION['server_url'] . "')");
   }
  }
- 
+ $do_load_admin = getPostValue ( "load_admin" );
+ if ( ! empty ( $do_load_admin ) ) {
+  //add default admin user if not exists
+  db_load_admin ();
+ }
  $setup_complete = true;
 }
   // Save settings to file now.
@@ -1025,7 +1027,7 @@ doc.li {
 }
 </style>
 </head>
-<body <?php if ( ! empty ($onLoad) ) echo "onload=\"$onload\""; ?> >
+<body <?php if ( ! empty ($onload) ) echo "onload=\"$onload\""; ?> >
 <?php  // print_r ( $_SESSION ); ?>
 <?php if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <table border="1" width="90%" align="center">
@@ -1509,33 +1511,28 @@ if ( ! $exists || ! $canWrite ) { ?>
      <?php etranslate ( "This is the final step in setting up your WebCalendar Installation" ) ?>.
    </td></tr>
   <th class="header" colspan="2"><?php etranslate ( "Timezone Conversion" ) ?></th></tr>
- <tr><td colspan="2">
- <?php if ( empty ( $_SESSION['tz_conversion'] ) || $_SESSION['tz_conversion'] == "Y" ) {?>
+  <tr><td colspan="2">
+ <?php if ( empty ( $_SESSION['tz_conversion'] ) ) {?>
    <form action="index.php?action=tz_convert" method="post">
   <ul><li>
-<?php echo translate ( "It appears that you have" ) . " " . 
-  ( empty ( $_SESSION['tz_conversion'] )? translate ("NOT") : "" ); ?> 
+<?php echo translate ( "It appears that you have" ) . " " . translate ("NOT"); ?> 
   <?php etranslate ( "converted your existing WebCalendar event data to GMT" ) ?>.
    <?php echo translate ( "If you have, you may ignore this notice and not proceed with the conversion" ) . " " .
-    translate ( "If this is a new installation, you may also ignore this notice. You can also reverse this" ) .
-    translate ( "procedure by entering a value with the opposite sign (i.e. 4 vs. -4)" ) ?>.</li></ul>
+    translate ( "If this is a new installation, you may also ignore this notice." ) ?> .
+    </li></ul>
    <div align="center">
-   <?php etranslate ( "Your current Server GMT offset is" ) ?>: <?php echo ( date ( "Z", time()) / 3600 ) . " " . translate("hours");?>.</div>
-   <div align="center">
-   <?php etranslate ( "Enter the offset you wish to make" ) ?>:<input type="text" name="gmt_offset"  
-   value="<?php echo ( date ( "Z", time()) / 3600 ); ?>"size="3"></div>
-   <div align="center">
-   <input  type="submit" value="<?php etranslate ( "Convert Data to GMT") ?>:"  /></div>
+     <input  type="submit" value="<?php etranslate ( "Convert Data to GMT") ?>:"  /></div>
    </form>
- <?php } else { ?>
+ <?php } else if ( $_SESSION['tz_conversion'] == "Success" ) { ?>
     <ul><li><?php etranslate ( "Conversion Successful" ) ?></li></ul>
- <?php } ?>
+ <?php } else if ( $_SESSION['tz_conversion'] == "Y" ) { ?>
+    <ul><li><?php etranslate ( "Conversion Not Needed" ) ?></li></ul> <?php } ?>
  </td></tr>
  <th class="header" colspan="2"><?php etranslate ( "Application Settings" ) ?></th>
  <tr><td colspan="2"><ul>
   <?php if ( empty ( $PHP_AUTH_USER ) ) { ?>
    <li><?php echo translate ( "HTTP-based authentication was not detected" ) . ". " .
-     translate ( "You will need to reconfigure your web server if you wish to" ) .
+     translate ( "You will need to reconfigure your web server if you wish to" ) . " " .
      translate ( "select 'Web Server' from the 'User Authentication' choices below" ) ?>.
    </li>
   <?php } else { ?>
@@ -1547,10 +1544,13 @@ if ( ! $exists || ! $canWrite ) { ?>
  </ul></td></tr>
 
    <tr><td>
+ <?php $will_load_admin = ( ( $_SESSION['old_program_version'] == "new_install" )? "checked=\"checked\"":""); ?>
   <table width="75%" align="center" border="0"><tr>
   <form action="index.php?action=switch&amp;page=4" method="post" name="form_app_settings">
     <input type="hidden" name="app_settings"  value="1"/>
-      <td class="prompt"><?php etranslate ( "Application Name" ) ?>:</td>
+    <td class="prompt"><?php etranslate ( "Create Default Admin Account" ) ?>:</td>
+    <td><input type="checkbox" name="load_admin" value="Yes" <?php echo $will_load_admin ?> /></td></tr>
+    <tr><td class="prompt"><?php etranslate ( "Application Name" ) ?>:</td>
    <td>   
      <input type="text" size="40" name="form_application_name" id="form_application_name" value="<?php 
            echo $_SESSION['application_name'];?>" /></td></tr>
