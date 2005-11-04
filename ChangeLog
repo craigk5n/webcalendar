@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1346010: CVS version: Not possible to add/edit events
  - Fixed bug 1120897: Conflict with exceptions
  - Fixed bug 1347097: Latest CVS install wizard recreates default admin
  - Fixed bug 1347166: javascript errors in 'Add Task'
