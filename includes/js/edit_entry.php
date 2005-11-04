@@ -116,11 +116,14 @@ function validate_and_submit () {
   if ( document.editentryform.elements[i].name == "exceptions[]" )
       exceptionid = i;
  }
- for ( i = 0; i < document.editentryform.elements[exceptionid].length; i++ ) {
-    document.editentryform.elements[exceptionid].options[i].selected = true;
+ //Repeat Tab enabled
+ if ( document.editentryform.rpttype ) {
+   for ( i = 0; i < document.editentryform.elements[exceptionid].length; i++ ) {
+     document.editentryform.elements[exceptionid].options[i].selected = true;
+   }
  } 
-  document.editentryform.submit ();
-  return true;
+ document.editentryform.submit ();
+ return true;
 }
 
 function selectDate (  day, month, year, current, evt ) {
@@ -211,8 +214,12 @@ function selectDate (  day, month, year, current, evt ) {
 }
 
 function rpttype_handler (  ) {
+  //Repeat Tab disabled
+  if ( ! document.editentryform.rpttype ) {
+    return;
+  }
   var expertid = getElementId('rptmode');
- var expert = document.editentryform.elements[expertid].checked;
+  var expert = document.editentryform.elements[expertid].checked;
   var i = document.editentryform.rpttype.selectedIndex;
   var val = document.editentryform.rpttype.options[i].text;
   //alert ( "val " + i + " = " + val );
@@ -495,6 +502,10 @@ function toggle_bysetpos(ele){
 }
 
 function toggle_until() {
+  //Repeat Tab disabled
+  if ( ! document.editentryform.rpttype ) {
+    return;
+  }
  for ( i = 0; i < document.editentryform.elements.length; i++ ) {
     if ( document.editentryform.elements[i].name == "rpt_day" )
       rpt_dayid = i;

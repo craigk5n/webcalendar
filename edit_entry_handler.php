@@ -214,39 +214,42 @@ if ( empty ( $participants[0] ) ) {
   }
 }
 
-//Convert $byxx arrays from form
-rsort ($bydayext2);
-
-for ( $i=0; $i<35;$i++) {
- if ( strlen ($bydayext2[$i]) < 2 || 
-   $bydayext2[$i] == "        ") unset  ($bydayext2[$i]);
-}
-if ( ! empty ( $bydayext1 ) ) {
-  $bydayext = array_merge($bydayext1,$bydayext2);
-  $byday = implode (",", $bydayext );
-} else {
-  $byday = implode (",", $bydayext2 );
-}
-rsort ($bymonthday);
-for ( $i=0; $i<31;$i++) {
- if ( strlen ($bymonthday[$i] < 1 || 
-   $bymonthday[$i] == "      " ) ) unset  ($bymonthday[$i]);
-}
-$bymonthday = implode (",", $bymonthday );
-
-rsort ($bysetpos2);
-for ( $i=0; $i<31;$i++) {
- if ( strlen ($bysetpos2[$i]) < 1 || 
-   $bysetpos2[$i] == "      ") unset  ($bysetpos2[$i]);
-}
-if ( ! empty ( $bysetpos2) ) $bysetpos = implode (",", $bysetpos2 );
-
-if ( ! empty ( $bymonth) ) $bymonth = implode (",", $bymonth );
-
-//This allows users to select on weekdays if daily
-if ( $rpt_type == 'daily' && ! empty ( $weekdays_only ) ) {
- $dayst = "MO,TU,WE,TH,FR";
-}
+if ( empty ( $DISABLE_REPEATING_FIELD ) ||
+  $DISABLE_REPEATING_FIELD == "N" ) {
+  //Convert $byxx arrays from form
+  rsort ($bydayext2);
+  
+  for ( $i=0; $i<35;$i++) {
+   if ( strlen ($bydayext2[$i]) < 2 || 
+     $bydayext2[$i] == "        ") unset  ($bydayext2[$i]);
+  }
+  if ( ! empty ( $bydayext1 ) ) {
+    $bydayext = array_merge($bydayext1,$bydayext2);
+    $byday = implode (",", $bydayext );
+  } else {
+    $byday = implode (",", $bydayext2 );
+  }
+  rsort ($bymonthday);
+  for ( $i=0; $i<31;$i++) {
+   if ( strlen ($bymonthday[$i] < 1 || 
+     $bymonthday[$i] == "      " ) ) unset  ($bymonthday[$i]);
+  }
+  $bymonthday = implode (",", $bymonthday );
+  
+  rsort ($bysetpos2);
+  for ( $i=0; $i<31;$i++) {
+   if ( strlen ($bysetpos2[$i]) < 1 || 
+     $bysetpos2[$i] == "      ") unset  ($bysetpos2[$i]);
+  }
+  if ( ! empty ( $bysetpos2) ) $bysetpos = implode (",", $bysetpos2 );
+  
+  if ( ! empty ( $bymonth) ) $bymonth = implode (",", $bymonth );
+  
+  //This allows users to select on weekdays if daily
+  if ( $rpt_type == 'daily' && ! empty ( $weekdays_only ) ) {
+   $dayst = "MO,TU,WE,TH,FR";
+  }
+} // end test for $DISABLE_REPEATING_FIELD
 // first check for any schedule conflicts
 if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != "Y" ) {
   $confirm_conflicts = ""; // security precaution
@@ -348,9 +351,9 @@ if ( empty ( $error ) ) {
   }
   $sql .= gmdate ( "Ymd" ) . ", " . gmdate ( "Gis" ) . ", ";
   $sql .= sprintf ( "%d, ", $duration );
-  $sql .= sprintf ( "%d, ", $priority );
+  $sql .= ( ! empty ( $priority ) ? sprintf ( "%d, ", $priority ) : "2," );
   $sql .= empty ( $access ) ? "'P', " : "'$access', ";
-  if (  ! empty ( $rpt_type ) && $rpt_type != 'none' ) {
+  if ( ! empty ( $rpt_type ) && $rpt_type != 'none' ) {
     $sql .= "'M', ";
   } else {
     $sql .= "'E', ";
@@ -435,7 +438,7 @@ if ( empty ( $error ) ) {
             translate("Time") . ": " .
             // Apply user's GMT offset and display their TZID
             display_time ( date ( "YmdHis", $eventstart ), 2, '', 
-						  $user_TIMEZONE, $t_format ) . "\n\n\n");
+              $user_TIMEZONE, $t_format ) . "\n\n\n");
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
             //DON'T change & to &amp; here. email will handle it
@@ -578,7 +581,7 @@ if ( empty ( $error ) ) {
             translate("Time") . ": " .
             // Apply user's GMT offset and display their TZID
             display_time ( date ( "YmdHis", $eventstart ), 2, '', 
-						  $user_TIMEZONE, $t_format ) . "\n" ) .
+              $user_TIMEZONE, $t_format ) . "\n" ) .
             translate("Please look on") . " " . translate($APPLICATION_NAME) . " " .
             ( $REQUIRE_APPROVALS == "Y" ?
             translate("to accept or reject this appointment") :
