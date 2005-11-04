@@ -277,6 +277,8 @@ if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
   $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq, $bymonth,
    $byweekno, $byyearday, $bymonthday, $byday, $bysetpos, $count,
   $endt, $wkst, $exceptions, $inclusions );
+  //make sure at least start date is in array
+  if ( empty ( $dates ) ) $dates[0] = $eventstart;
 
   $conflicts = check_for_conflicts ( $dates, $duration, $eventstart,
     $participants, $login, empty ( $id ) ? 0 : $id );
