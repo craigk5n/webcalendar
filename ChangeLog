@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1120897: Conflict with exceptions
+ - Fixed bug 1347097: Latest CVS install wizard recreates default admin
  - Fixed bug 1347166: javascript errors in 'Add Task'
  - Implemented PATCH 1345138: Several bug fixes
  - Implemented PATCH 1344304: Use default tzone in send_reminders for users w/out pref

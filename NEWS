@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1120897: Conflict with exceptions
+      1347097: Latest CVS install wizard recreates default admin
       1347166: javascript errors in 'Add Task'
       1345106: Error in send_reminders.php
       1342070: V1.1 - Month view, access.php.
