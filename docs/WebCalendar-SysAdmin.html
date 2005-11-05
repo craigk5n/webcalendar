@@ -1093,6 +1093,10 @@ input path/table-ibase.sql;</strong></pre>
   <pre><tt>perl check_translation.pl French</tt></pre>
      Post a copy of your translation to the 
   <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> for WebCalendar.</dd>
+<dt>During Import, I receive this error: Unknown Timezone: XXXXX defaulting to GMT.</dt>
+<dd>This is notify that your import file contained unknown timezone information. WebCalendar
+using the Olsen database of approximately 367 different timezones from around the world. These
+are compared to your import file's TZID information and if no match is found, WebCalendar will simply save the event or task as GMT. You are encouraged to submit these notices as <a href="https://sourceforge.net/projects/webcalendar/">Bug Reports to SourceForge</a>, so that WebCalendar can improve its TZID support.</dd>
 
 <!-- END FAQ -->
  </dl>

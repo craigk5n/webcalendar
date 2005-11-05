@@ -226,29 +226,30 @@ function rpttype_handler (  ) {
   //i == 0 none
   //i == 1 daily 
   //i == 2 weekly
-  //i == 3,4,5 monthlyByDay, monthlyBySetPos, monthlyByDate
+  //i == 3,4,5 monthlyByDay, monthlyByDate, monthlyBySetPos
   //i == 6 yearly
+  //i == 7 manual  Use only Exclusions/Inclusions
  //Turn all off initially
-    makeInvisible ( "rpt_mode" );
-   makeInvisible ( "rptenddate", true );
-    makeInvisible ( "rptfreq", true );
-    makeInvisible ( "weekdays_only" );
-    makeInvisible ( "rptwkst" );
-//    makeInvisible ( "rptday", true );
-    makeInvisible ( "rptbymonth", true );  
-    makeInvisible ( "rptbydayln", true );
-    makeInvisible ( "rptbydayln1", true );
-    makeInvisible ( "rptbydayln2", true );
-    makeInvisible ( "rptbydayln3", true );
-    makeInvisible ( "rptbydayln4", true );
-    makeInvisible ( "rptbydayextended", true );
-    makeInvisible ( "rptbymonthdayextended", true );
-    makeInvisible ( "rptbysetpos", true ); 
-    makeInvisible ( "rptbyweekno", true ); 
-    makeInvisible ( "rptbyyearday", true ); 
-    makeInvisible ( "rptexceptions", true );
- //   makeInvisible ( "select_exceptions_not", true );
-  if ( i != 0 ) {
+	makeInvisible ( "rpt_mode" );
+	makeInvisible ( "rptenddate", true );
+	makeInvisible ( "rptfreq", true );
+	makeInvisible ( "weekdays_only" );
+	makeInvisible ( "rptwkst" );
+	//makeInvisible ( "rptday", true );
+	makeInvisible ( "rptbymonth", true );  
+	makeInvisible ( "rptbydayln", true );
+	makeInvisible ( "rptbydayln1", true );
+	makeInvisible ( "rptbydayln2", true );
+	makeInvisible ( "rptbydayln3", true );
+	makeInvisible ( "rptbydayln4", true );
+	makeInvisible ( "rptbydayextended", true );
+	makeInvisible ( "rptbymonthdayextended", true );
+	makeInvisible ( "rptbysetpos", true ); 
+	makeInvisible ( "rptbyweekno", true ); 
+	makeInvisible ( "rptbyyearday", true ); 
+	makeInvisible ( "rptexceptions", true );
+	//makeInvisible ( "select_exceptions_not", true );
+  if ( i > 0 && i < 7 ) {
     //always on
     makeVisible ( "rptenddate", true );
     makeVisible ( "rptfreq", true );
@@ -256,57 +257,60 @@ function rpttype_handler (  ) {
     makeVisible ( "rpt_mode" );
  
     if ( i == 1 ) { //daily
-    makeVisible ( "weekdays_only" ); 
+      makeVisible ( "weekdays_only" ); 
     }
   
     if ( i == 2 ) { //weekly
-   makeVisible ( "rptbydayextended", true ); 
-    if (expert ) {
+      makeVisible ( "rptbydayextended", true ); 
+      if (expert ) {
         makeVisible ( "rptwkst" );   
-   }
+      }
     }
    if ( i == 3 ) { //monthly (by day)
-    if (expert ) {
+     if (expert ) {
         makeVisible ( "rptwkst" );
         makeVisible ( "rptbydayln", true ); 
         makeVisible ( "rptbydayln1", true );
         makeVisible ( "rptbydayln2", true ); 
         makeVisible ( "rptbydayln3", true );
         makeVisible ( "rptbydayln4", true ); 
-    } 
-    }
+     } 
+   }
   
    if ( i == 4 ) { //monthly (by date)
-    if (expert ) { 
-     makeVisible ( "rptbydayextended", true );
-     makeVisible ( "rptbymonthdayextended", true ); 
-    }
-    }
+     if (expert ) { 
+       makeVisible ( "rptbydayextended", true );
+       makeVisible ( "rptbymonthdayextended", true ); 
+     }
+   }
 
    if ( i == 5 ) { //monthly (by position)
       makeVisible ( "rptbydayextended", true );
       makeVisible ( "rptbysetpos", true );
-  }
+   }
    
   if ( i == 6 ) {  //yearly
     if (expert ) { 
         makeVisible ( "rptwkst" );
-     makeVisible ( "rptbymonthdayextended", true ); 
+        makeVisible ( "rptbymonthdayextended", true ); 
         makeVisible ( "rptbydayln", true ); 
         makeVisible ( "rptbydayln1", true );
         makeVisible ( "rptbydayln2", true ); 
         makeVisible ( "rptbydayln3", true );
         makeVisible ( "rptbydayln4", true ); 
-     makeVisible ( "rptbyweekno", true ); 
-     makeVisible ( "rptbyyearday", true ); 
+        makeVisible ( "rptbyweekno", true ); 
+        makeVisible ( "rptbyyearday", true ); 
     }
-    }
+  }
   if (expert ) {
-      makeVisible ( "rptbydayextended", true );
+   makeVisible ( "rptbydayextended", true );
    makeInvisible ( "weekdays_only" );
    makeVisible ( "rptbymonth", true ); 
   }
   }
+	if ( i == 7 ) { 
+    makeVisible ( "rptexceptions", true);
+	}	
 }
 
 function rpttype_weekly () {
