@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Adding logic to consume TZID settings in ics files. If the TZID used the Olson 
+   timezone database naming conventions, we will apply that TIMEZONE to that event
  - Fixed bug 1349082: Week numbers wrong if Week Starts on Sun
  - Numerous tweaks to RRULE parsing for display of repeating events
  - Added new Repeat type 'Manual' that allows adding Inclusions/Exclusions 
