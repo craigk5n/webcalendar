@@ -857,6 +857,9 @@ if ( $single_user == "N" && $show_participants ) {
  echo "  <option value=\"yearly\"" . 
   ( strcmp ( $rpt_type, 'yearly' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
   translate("Yearly") . "</option>\n";
+ echo "  <option value=\"manual\"" . 
+  ( strcmp ( $rpt_type, 'manual' ) == 0 ? " selected=\"selected\"" : "" ) . ">" . 
+  translate("Manual") . "</option>\n";
 ?>
  </select>&nbsp;&nbsp;&nbsp;
 <label id ="rpt_mode"><input type="checkbox" name="rptmode"  id="rptmode" 
@@ -1035,7 +1038,7 @@ if ( $single_user == "N" && $show_participants ) {
  <input type="text" name="byyearday" id="byyearday" size="50" maxlength="100" value="<?php echo $byyearday; ?>" />
 </td></tr> 
 
- <tr id="rptexceptions" style="visibility:hidden;"  title="<?php etooltip("repeat-exceptions-help")?>">
+ <tr id="rptexceptions" style="visibility:visible;"  title="<?php etooltip("repeat-exceptions-help")?>">
  <td class="tooltip">
  <?php echo translate("Exclusions") . "/<br />" . translate("Inclusions")?>:</td><td>
  <table bgcolor="#CCCCCC"  border="0" width="250px">

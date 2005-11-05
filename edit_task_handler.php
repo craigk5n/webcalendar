@@ -235,7 +235,7 @@ if ( empty ( $error ) ) {
   $sql .= date ( "Ymd", $eventdue ) . ", ";
   $sql .= date ( "His", $eventdue ) . ", ";
  
-  $sql .= date ( "Ymd" ) . ", " . date ( "Gis" ) . ", ";
+  $sql .= gmdate ( "Ymd" ) . ", " . gmdate ( "Gis" ) . ", ";
   $sql .= sprintf ( "%d, ", $priority );
   $sql .= empty ( $access ) ? "'P', " : "'$access', ";
   if (  ! empty ( $rpt_type ) && $rpt_type != 'none' ) {

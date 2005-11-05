@@ -250,6 +250,7 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) ||
    $dayst = "MO,TU,WE,TH,FR";
   }
 } // end test for $DISABLE_REPEATING_FIELD
+
 // first check for any schedule conflicts
 if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != "Y" ) {
   $confirm_conflicts = ""; // security precaution
@@ -263,9 +264,20 @@ if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
     $endt = 'NULL';
   }
 
-  //We can now just use the $exceptions array from the form post
- if ( empty ( $exceptions ) ) $exceptions = array();
- if ( empty ( $inclusions ) ) $inclusions = array();
+
+ $inclusion_list = array();
+ $exception_list = array();
+ if ( empty ( $exceptions ) ) { 
+   $exceptions = array();
+ } else {
+   foreach ( $exceptions as $exception ) {
+     if ( substr ( $exception, 0, 1 ) == "+" ) {
+       $inclusion_list[] = substr ( $exception, 1, 8);
+     } else {
+       $exception_list[] = substr ( $exception, 1, 8);     
+     }
+   }
+ }
  if ( empty ( $bymonth ) ) $bymonth = '';
  if ( empty ( $byweekno ) ) $byweekno = '';
  if ( empty ( $byyearday ) ) $byyearday = '';
@@ -273,10 +285,14 @@ if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
  if ( empty ( $byday ) ) $byday = '';
  if ( empty ( $bysetpos ) ) $bysetpos = ''; 
  if ( empty ( $count ) ) $count = '';
-
+ if ( empty ( $rpt_type ) ) $rpt_type = '';
+ if ( empty ( $rpt_freq ) ) $rpt_freq = 1;
+ if ( empty ( $wkst ) ) $wkst = 'MO';
+  
   $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq, $bymonth,
    $byweekno, $byyearday, $bymonthday, $byday, $bysetpos, $count,
-  $endt, $wkst, $exceptions, $inclusions );
+   $endt, $wkst, $exception_list, $inclusion_list );
+  
   //make sure at least start date is in array
   if ( empty ( $dates ) ) $dates[0] = $eventstart;
 
@@ -844,73 +860,74 @@ if ( $single_user == "N" &&
       $error = translate("Database error") . ": " . dbi_error ();
   }
     // add repeating info
-    if ( ! empty ( $rpt_type ) && strlen ( $rpt_type ) && $rpt_type != 'none' ) {
-      $freq = ( $rpt_freq ? $rpt_freq : 1 );
-      if ( ! empty ( $rpt_year  ) ) {
-        $end = sprintf ( "%04d%02d%02d", $rpt_year, $rpt_month, $rpt_day );
-      } else {
-        $end = 'NULL';
-      }
+  if ( ! empty ( $rpt_type ) && strlen ( $rpt_type ) && $rpt_type != 'none' ) {
+    $freq = ( $rpt_freq ? $rpt_freq : 1 );
+    if ( ! empty ( $rpt_year  ) ) {
+      $end = sprintf ( "%04d%02d%02d", $rpt_year, $rpt_month, $rpt_day );
+    } else {
+      $end = 'NULL';
+    }
 
-     $names = array();
+    $names = array();
     $values = array();
     $names[] = 'cal_id';
     $values[]  = $id;
    
     $names[]  = 'cal_type';
-       $values[] = "'" . $rpt_type . "'";
+    $values[] = "'" . $rpt_type . "'";
         
     $names[] = 'cal_frequency';
     $values[] = $freq;
  
-   if (! empty ( $bymonth ) ){
+    if (! empty ( $bymonth ) ){
      $names[] = 'cal_bymonth';
      $values[]  = "'" . $bymonth . "'";
-   } 
+    } 
     
-   if (! empty ( $bymonthday ) ){
+    if (! empty ( $bymonthday ) ){
      $names[] = 'cal_bymonthday';
      $values[]  = "'" . $bymonthday . "'";
-   } 
-   if ( ! empty ( $byday ) ){
+    } 
+    if ( ! empty ( $byday ) ){
     $names[] = 'cal_byday';
     $values[] =  "'" . $byday . "'";
-   }
-   if (! empty ( $bysetpos ) ){
+    }
+    if (! empty ( $bysetpos ) ){
     $names[] = 'cal_bysetpos';
     $values[] = "'" . $bysetpos . "'";
-   }
-   if (! empty ( $byweekno ) ){
+    }
+    if (! empty ( $byweekno ) ){
     $names[] = 'cal_byweekno';
     $values[] = "'" . $byweekno . "'";
-   }
-   if (! empty ( $byyearday ) ) {
-    $names[] = 'cal_byyearday';
-    $values[] = "'" . $byyearday . "'";
-   }
-   if (! empty ( $wkst ) ) {
-    $names[] = 'cal_wkst';
-    $values[] = "'" . $wkst . "'";
-   }
+    }
+    if (! empty ( $byyearday ) ) {
+      $names[] = 'cal_byyearday';
+      $values[] = "'" . $byyearday . "'";
+    }
+    if (! empty ( $wkst ) ) {
+      $names[] = 'cal_wkst';
+      $values[] = "'" . $wkst . "'";
+    }
+    
+    if (! empty ( $rpt_count ) && is_numeric ( $rpt_count )  ) {
+      $names[] = 'cal_count';
+      $values[] = $rpt_count;
+    } 
 
-   if (! empty ( $rpt_count ) && is_numeric ( $rpt_count )  ) {
-    $names[] = 'cal_count';
-    $values[] = $rpt_count;
-   } 
-
-   $names[] = 'cal_end';
+    $names[] = 'cal_end';
       $values[] = $end;
-   if ( $timetype == "T" && ! empty($eventstop) ) {
-     $names[] = 'cal_endtime';         
-        $values[] = date("His", $eventstop);
-      }
+    if ( $timetype == "T" && ! empty($eventstop) ) {
+      $names[] = 'cal_endtime';         
+      $values[] = date("His", $eventstop);
+    }
 
-   $sql = "INSERT INTO webcal_entry_repeats ( " . implode ( ", ", $names ) .
+    $sql = "INSERT INTO webcal_entry_repeats ( " . implode ( ", ", $names ) .
        " ) VALUES ( " . implode ( ", ", $values ) . " )"; 
       dbi_query ( $sql );
       $msg .= "<span style=\"font-weight:bold;\">SQL:</span> $sql<br />\n<br />";
 
-   //We manually created exceptions
+    } //end add repeating info
+    //We manually created exceptions. This can be done without repeats
      if ( ! empty ($exceptions ) ) {
        for ( $i = 0; $i < count ( $exceptions ); $i++ ) {
             $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
@@ -920,18 +937,7 @@ if ( $single_user == "N" &&
               $error = translate("Database error") . ": " . dbi_error ();
             }
        }
-    } //end exceptions
-     //We manually created inclusions
-     if ( ! empty ($inclusions ) ) {
-       for ( $i = 0; $i < count ( $inclusions ); $i++ ) {
-          $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
-            "VALUES ( $id, $exceptions[$i], 0 )";
-          if ( ! dbi_query ( $sql ) ) {
-              $error = translate("Database error") . ": " . dbi_error ();
-          }
-      }
-     } //end inclusions
-    } //end add repeating info
+      } //end exceptions    
   } //end empty error
 }
 

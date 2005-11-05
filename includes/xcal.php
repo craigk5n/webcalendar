@@ -251,21 +251,21 @@ function export_recurrence_ical( $id, $simple=false ) {
 
   if ($res) {
     if ( $row = dbi_fetch_row($res) ) {
-      $type = $row[0];
-      $end = $row[1];
-     $endtime = $row[2];  
-      $interval = $row[3];
-      $day = $row[4];
-      $time = $row[5];
-   $bymonth = $row[6];
-   $bymonthday = $row[7];
-   $byday = $row[8];
-   $bysetpos = $row[9];
-   $byweekno = $row[10];
-   $byyearday = $row[11];
-   $wkst = $row[12];
-   $cal_count = $row[13];
-   $duration = $row[14];
+      $type       = $row[0];
+      $end        = $row[1];
+      $endtime    = $row[2];  
+      $interval   = $row[3];
+      $day        = $row[4];
+      $time       = $row[5];
+      $bymonth    = $row[6];
+      $bymonthday = $row[7];
+      $byday      = $row[8];
+      $bysetpos   = $row[9];
+      $byweekno   = $row[10];
+      $byyearday  = $row[11];
+      $wkst       = $row[12];
+      $cal_count  = $row[13];
+      $duration   = $row[14];
       
       // set $timestamp_RRULE for use in VTIMEZONE
    //skip if UNTIMED or ALL DAY Event
@@ -357,22 +357,25 @@ function export_recurrence_ical( $id, $simple=false ) {
    while (list($key,$value) = each($rrule)) 
      $recurrance .= "$value\r\n";
 
-    if (count($rdate) > 0) {
-   if ( ! $simple ) $string = "RDATE;VALUE=DATE:" . implode (",", $rdate);
-   if ( $simple ) $string = translate ("INCLUSION DATES") . ":" . implode (",", $rdate);
-   $string = export_fold_lines($string);
-   while (list($key,$value) = each($string)) 
-     $recurrance .= "$value\r\n";
- }
-   if ( $simple ) $recurrance .= "<br />";
+   //If type = manual, undo what we just did and onlt process RDATE && EXDATE
+   if ( $type == "manual" ) $recurrance = '';
    
-    if (count($exdate) > 0) {
-   if ( ! $simple ) $string = "EXDATE;VALUE=DATE:". implode (",", $exdate);
-   if ( $simple ) $string = translate ("EXCLUSION DATES") . ":". implode (",", $exdate);
-   $string = export_fold_lines($string);
-   while (list($key,$value) = each($string)) 
-     $recurrance .= "$value\r\n";
-    }
+   if (count($rdate) > 0) {
+     if ( ! $simple ) $string = "RDATE;VALUE=DATE:" . implode (",", $rdate);
+     if ( $simple ) $string = translate ("INCLUSION DATES") . ":" . implode (",", $rdate);
+     $string = export_fold_lines($string);
+     while (list($key,$value) = each($string)) 
+       $recurrance .= "$value\r\n";
+   }
+     if ( $simple ) $recurrance .= "<br />";
+   
+     if (count($exdate) > 0) {
+       if ( ! $simple ) $string = "EXDATE;VALUE=DATE:". implode (",", $exdate);
+       if ( $simple ) $string = translate ("EXCLUSION DATES") . ":". implode (",", $exdate);
+       $string = export_fold_lines($string);
+       while (list($key,$value) = each($string)) 
+         $recurrance .= "$value\r\n";
+     }
    }
   }
  return $recurrance;
@@ -1070,7 +1073,8 @@ $Entry[Percent]            =  Percentage of VTODO complete 0-100
 $Entry[AlarmSet]           =  1 = true  0 = false
 $Entry[Alarm]              =  String containg VALARM TRIGGERS
 $Entry[Repeat]             =  Array containing repeat information (if repeat)
-$Entry[Repeat][Frequency]  =  1=daily,2=weekly,3=MonthlyByDay,4=MonthlyByDate,5=Yearly,6=monthlyByDayR
+$Entry[Repeat][Frequency]  =  1=daily,2=weekly,3=MonthlyByDay,4=MonthlyByDate,
+                              5=MonthBySetPos,6=Yearly,7=manual
 $Entry[Repeat][Interval]   =  How often event occurs. (1=every, 2=every other,etc.)
 $Entry[Repeat][Until]      =  When the repeat ends (In seconds since 1970 (Unix Epoch))
 $Entry[Repeat][Exceptions] =  Exceptions to the repeat (In seconds since 1970 (Unix Epoch))
@@ -1195,13 +1199,13 @@ foreach ( $data as $Entry ){
         }
       }
 
-      $dates = get_all_dates($date, RepeatType($Entry['Repeat']['Frequency']), 
-        $Entry['Repeat']['Interval'], $Entry['Repeat']['ByMonth'], 
-    $Entry['Repeat']['ByWeekNo'], $Entry['Repeat']['ByYearDay'],
-    $Entry['Repeat']['ByMonthDay'], $Entry['Repeat']['ByDay'],
-    $Entry['Repeat']['BySetPos'], $Entry['Repeat']['Count'],
-    $Entry['Repeat']['Until'], $Entry['Repeat']['Wkst'],
-    $ex_days, $inc_days);
+    $dates = get_all_dates($date, RepeatType($Entry['Repeat']['Frequency']), 
+      $Entry['Repeat']['Interval'], $Entry['Repeat']['ByMonth'], 
+      $Entry['Repeat']['ByWeekNo'], $Entry['Repeat']['ByYearDay'],
+      $Entry['Repeat']['ByMonthDay'], $Entry['Repeat']['ByDay'],
+      $Entry['Repeat']['BySetPos'], $Entry['Repeat']['Count'],
+      $Entry['Repeat']['Until'], $Entry['Repeat']['Wkst'],
+      $ex_days, $inc_days);
 
       $overlap = check_for_conflicts ( $dates, $Entry['Duration'], 
         $Entry['StartHour'], $Entry['StartMinute'], $participants, $login, 0 );
@@ -1275,9 +1279,9 @@ foreach ( $data as $Entry ){
         $Entry['Untimed'] == 1) ? "-1" :
         sprintf ( "%02d%02d00", $Entry['StartHour'],$Entry['StartMinute']);
       $names[] = 'cal_mod_date';
-      $values[] = date("Ymd");
+      $values[] = gmdate("Ymd");
       $names[] = 'cal_mod_time';
-      $values[] = date("Gis");
+      $values[] = gmdate("Gis");
       $names[] = 'cal_duration';
       $values[] = sprintf ( "%d", $Entry['Duration'] );
       $names[] = 'cal_priority';
@@ -1480,31 +1484,31 @@ foreach ( $data as $Entry ){
      }
    
      if (! empty ($Entry['Repeat']['Frequency'])) {
-     $names = array();
-    $values = array();
-    $names[] = 'cal_id';
-    $values[]  = $id;
+       $names = array();
+       $values = array();
+       $names[] = 'cal_id';
+       $values[]  = $id;
    
-    $names[]  = 'cal_type';
+       $names[]  = 'cal_type';
        $values[] = "'" . RepeatType($Entry['Repeat']['Frequency']) . "'";
         
-    $names[] = 'cal_frequency';
-    $values[] = ( ! empty ( $Entry['Repeat']['Interval'] ) ? 
-          $Entry['Repeat']['Interval'] : 1 );
+       $names[] = 'cal_frequency';
+       $values[] = ( ! empty ( $Entry['Repeat']['Interval'] ) ? 
+         $Entry['Repeat']['Interval'] : 1 );
  
-   if (! empty ( $Entry['Repeat']['ByMonth'] ) ){
-     $names[] = 'cal_bymonth';
-     $values[]  = "'" . $Entry['Repeat']['ByMonth'] . "'";
-   } 
+      if (! empty ( $Entry['Repeat']['ByMonth'] ) ){
+        $names[] = 'cal_bymonth';
+        $values[]  = "'" . $Entry['Repeat']['ByMonth'] . "'";
+      } 
     
-   if (! empty ( $Entry['Repeat']['ByMonthDay'] ) ){
-     $names[] = 'cal_bymonthday';
-     $values[]  = "'" . $Entry['Repeat']['ByMonthDay'] . "'";
-   } 
-   if ( ! empty ( $Entry['Repeat']['ByDay'] ) ){
-    $names[] = 'cal_byday';
-    $values[] =  "'" . $Entry['Repeat']['ByDay'] . "'";
-   }
+      if (! empty ( $Entry['Repeat']['ByMonthDay'] ) ){
+        $names[] = 'cal_bymonthday';
+        $values[]  = "'" . $Entry['Repeat']['ByMonthDay'] . "'";
+      } 
+      if ( ! empty ( $Entry['Repeat']['ByDay'] ) ){
+        $names[] = 'cal_byday';
+        $values[] =  "'" . $Entry['Repeat']['ByDay'] . "'";
+      }
    if (! empty ( $Entry['Repeat']['BySetPos'] ) ){
     $names[] = 'cal_bysetpos';
     $values[] = "'" . $Entry['Repeat']['BySetPos'] . "'";
@@ -1555,10 +1559,12 @@ foreach ( $data as $Entry ){
         if ( ! empty ( $Entry['Repeat']['Exceptions'] ) ) {
           foreach ($Entry['Repeat']['Exceptions'] as $ex_date) {
             $ex_date = date("Ymd",$ex_date);
-            $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) VALUES ( $id, $ex_date, 1 )";
+            $sql = "INSERT INTO webcal_entry_repeats_not " .
+              "( cal_id, cal_date, cal_exdate ) VALUES ( $id, $ex_date, 1 )";
  
             if ( ! dbi_query ( $sql ) ) {
-              $error = "Unable to add to webcal_entry_repeats_not: ".dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
+              $error = "Unable to add to webcal_entry_repeats_not: ".
+                dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
               break;
             }
           }
@@ -1567,10 +1573,12 @@ foreach ( $data as $Entry ){
         if ( ! empty ( $Entry['Repeat']['Inclusions'] ) ) {
           foreach ($Entry['Repeat']['Inclusions'] as $inc_date) {
             $inc_date = date("Ymd",$inc_date);
-            $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) VALUES ( $id, $ex_date, 0 )";
+            $sql = "INSERT INTO webcal_entry_repeats_not " .
+              "( cal_id, cal_date, cal_exdate ) VALUES ( $id, $inc_date, 0 )";
  
             if ( ! dbi_query ( $sql ) ) {
-              $error = "Unable to add to webcal_entry_repeats_not: ".dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
+              $error = "Unable to add to webcal_entry_repeats_not: ".
+                dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
               break;
             }
           }
@@ -1800,11 +1808,10 @@ function parse_ical ( $cal_file, $source='file' ) {
     $error = false;
     $line = 0;
     $event = '';
-
     $lines = explode ( "\n", $data );
     for ( $n = 0; $n < count ( $lines ) && ! $error; $n++ ) {
       $line++;
-      $buff = $lines[$n];
+      $buff = trim( $lines[$n] );
       if ( preg_match ( "/^PRODID:(.+)$/i", $buff, $match) ) {
         $prodid = $match[1];
         $prodid = str_replace ( "-//", "", $prodid);
@@ -1869,7 +1876,7 @@ function parse_ical ( $cal_file, $source='file' ) {
               $event[$substate] = $match[2];
               if ( preg_match ( "/TZID=(.*)$/i", $match[1], $submatch ) ) {
         $substate = "dtstartTzid"; 
-        $event[$substate] = $match[1];
+        $event[$substate] = $submatch[1];
            } else if ( preg_match ( "/VALUE=DATE-TIME(.*)$/i", $match[1], $submatch ) ) {
         $substate = "dtstartDATETIME"; 
         $event[$substate] = true;
@@ -1987,7 +1994,8 @@ function parse_ical ( $cal_file, $source='file' ) {
 
 // Convert interval to webcal repeat type
 function RepeatType ($type) {
-  $Repeat = array (0,'daily','weekly','monthlyByDay','monthlyByDate','yearly','monthlyByDayR');
+  $Repeat = array (0,'daily','weekly','monthlyByDay','monthlyByDate',
+    'monthlyBySetPos','yearly','manual');
   return $Repeat[$type];
 }
 
@@ -1995,7 +2003,7 @@ function RepeatType ($type) {
 function icaldate_to_timestamp ($vdate, $tzid = '', $plus_d = '0', $plus_m = '0',
   $plus_y = '0') {
   global $SERVER_TIMEZONE, $calUser;;
-  $this_TIMEZONE = '';
+  $this_TIMEZONE = $Z = '';
  
   $y = substr($vdate, 0, 4) + $plus_y;
   $m = substr($vdate, 4, 2) + $plus_m;
@@ -2009,25 +2017,48 @@ function icaldate_to_timestamp ($vdate, $tzid = '', $plus_d = '0', $plus_m = '0'
  //We'll just hardcode their GMT timezone def here
  switch  ( $tzid ) {
    case "/Mozilla.org/BasicTimezones/GMT":
-    $Z = "Z"; //force GMT
+     $Z = "Z"; //force GMT
+     break;
    case "US-Eastern":
-    $this_TIMEZONE = "America/New_York"; 
+   case "US/Eastern":
+     $this_TIMEZONE = "America/New_York"; 
+     break;
+   case "US-Central":
+   case "US/Central":
+     $this_TIMEZONE = "America/America/Chicago"; 
+     break;
+   case "US-Pacific":
+   case "US/Pacific":
+     $this_TIMEZONE = "America/Los_Angeles"; 
+     break;
+   case "":
+     break;   
+   default:
+     $sql = "SELECT zone_name FROM webcal_tz_zones WHERE zone_name = '$tzid'";
+     $res = dbi_query($sql);
+     if ( $row = dbi_fetch_row($res) ) {
+       $this_TIMEZONE = $tzid;
+    }   else {
+       echo translate ( "Unknown Timezone" ) . ": <b>$tzid</b> " . 
+         translate ( "defaulting to GMT" ) . ". ";
+       echo "<a href=\"docs/WebCalendar-SysAdmin.html#faq\" target=\"_docs\">" .
+         translate ( "Please see FAQ" ) . "</a><br />"; 
+       $Z = "Z"; //force GMT        
+    }   
    break;
- }
-  if ($Z == 'Z') {
-    $TS = mktime($H,$M,$S,$m,$d,$y);
-  } else {
-   $TS = mktime($H,$M,$S,$m,$d,$y);
+ } //end switch
+ 
+  $TS = mktime($H,$M,$S,$m,$d,$y);
+  if ($Z != 'Z') {
     // Convert time from user's timezone to GMT if datetime value
-    // TODO try to parse VTIMEZONE stuff
-  if ( strlen ( $vdate ) > 8 ) {
-    if ( empty ( $this_TIMEZONE ) ) {
+    if ( strlen ( $vdate ) > 8 ) {
+      if ( empty ( $this_TIMEZONE ) ) {
         $this_TIMEZONE = get_pref_setting ( $calUser, "TIMEZONE" );
         $this_TIMEZONE = ( ! empty ( $user_TIMEZONE ) ? $user_TIMEZONE : $SERVER_TIMEZONE );
       }
       $tz_offset = get_tz_offset ( $this_TIMEZONE, $TS );
       $TS = $TS - ( $tz_offset[0] * 3600 );
-  }
+    }
   }
   return $TS;
 }
@@ -2203,7 +2234,23 @@ global $login;
   if ( ! empty ( $event['percent'] ) ) {
     $fevent['Percent'] = $event['percent'];
  } 
-
+  // Repeating exceptions
+  $fevent['Repeat']['Exceptions'] = array();
+  if ( ! empty ( $event['exdate'] ) && $event['exdate']) {
+    $EX = explode(",", $event['exdate']);
+    foreach ( $EX as $exdate ){
+      $fevent['Repeat']['Exceptions'][] = icaldate_to_timestamp($exdate);
+    }
+    $fevent['Repeat']['Frequency'] = 7;  //manual, this can be changed later
+  } // Repeating inclusions
+  $fevent['Repeat']['Inclusions'] = array();
+  if ( ! empty ( $event['rdate'] ) && $event['rdate']) {
+    $R = explode(",", $event['rdate']);
+    foreach ( $R as $rdate ){
+      $fevent['Repeat']['Inclusions'][] = icaldate_to_timestamp($rdate);
+    }
+    $fevent['Repeat']['Frequency'] = 7;  //manual, this can be changed later
+  }
   /* Repeats
   Snippet from RFC2445 
  If multiple BYxxx rule parts are specified, then after evaluating the
@@ -2229,21 +2276,20 @@ global $login;
     for ( $i = 0; $i < count ( $RR ); $i++ ) {
       if ( preg_match ( "/^FREQ=(.+)$/i", $RR[$i], $match ) ) {
         if ( preg_match ( "/YEARLY/i", $match[1], $submatch ) ) {
-          $fevent['Repeat']['Frequency'] = 5;
+          $fevent['Repeat']['Frequency'] = 6;
         } else if ( preg_match ( "/MONTHLY/i", $match[1], $submatch ) ) {
-          $fevent['Repeat']['Frequency'] = 3;
+          $fevent['Repeat']['Frequency'] = 3; //MonthByDay
         } else if ( preg_match ( "/WEEKLY/i", $match[1], $submatch ) ) {
           $fevent['Repeat']['Frequency'] = 2;
         } else if ( preg_match ( "/DAILY/i", $match[1], $submatch ) ) {
           $fevent['Repeat']['Frequency'] = 1;
-     //set all days as default, this can be changed later
-     //$fevent['Repeat']['ByDay'] = 'fffffff';
         } else {
           // not supported :-(
-       $fevent['Repeat']['Frequency'] = 0;
+          //but don't overwrite Manual setting from above
+          if ( $fevent['Repeat']['Frequency'] != 7 ) $fevent['Repeat']['Frequency'] = 0;
           echo "Unsupported iCal FREQ value \"$match[1]\"<br />\n";
-     //Abort this import
-     return;
+          //Abort this import
+          return;
         }
       } else if ( preg_match ( "/^INTERVAL=(.+)$/i", $RR[$i], $match ) ) {
         $fevent['Repeat']['Interval'] = $match[1];
@@ -2265,15 +2311,16 @@ global $login;
         echo "Unsupported iCal BYHOUR value \"$RR[$i]\"<br />\n";
       } else if ( preg_match ( "/^BYMONTH=(.+)$/i", $RR[$i], $match ) ) {
         // this event repeats during the specified months
-    $fevent['Repeat']['ByMonth'] = $match[1];
+        $fevent['Repeat']['ByMonth'] = $match[1];
       } else if ( preg_match ( "/^BYDAY=(.+)$/i", $RR[$i], $match ) ) {
-     // this array contains integer offset (i.e. 1SU,1MO,1TU) 
+        // this array contains integer offset (i.e. 1SU,1MO,1TU) 
         $fevent['Repeat']['ByDay'] = $match[1];
       } else if ( preg_match ( "/^BYMONTHDAY=(.+)$/i", $RR[$i], $match ) ) {
         $fevent['Repeat']['ByMonthDay'] = $match[1];   
-        //$fevent['Repeat']['Frequency'] = 3; //monthlyByDay
+        //$fevent['Repeat']['Frequency'] = 3; //MonthlyByDay
       } else if ( preg_match ( "/^BYSETPOS=(.+)$/i", $RR[$i], $match ) ) {
-        //$fevent['Repeat']['Frequency'] = 4; //monthlyByDate
+        //if not already Yearly, mark as MonthlyBySetPos
+        if ( $fevent['Repeat']['Frequency'] != 6 ) $fevent['Repeat']['Frequency'] = 5;
         $fevent['Repeat']['BySetPos'] = $match[1];
       } else if ( preg_match ( "/^BYWEEKNO=(.+)$/i", $RR[$i], $match ) ) {
         $fevent['Repeat']['ByWeekNo'] = $match[1];   
@@ -2283,22 +2330,6 @@ global $login;
         $fevent['Repeat']['Wkst'] = $match[1];
       }
     }
-    // Repeating exceptions
-  $fevent['Repeat']['Exceptions'] = array();
-    if ( ! empty ( $event['exdate'] ) && $event['exdate']) {
-      $EX = explode(",", $event['exdate']);
-      foreach ( $EX as $exdate ){
-        $fevent['Repeat']['Exceptions'][] = icaldate_to_timestamp($exdate);
-      }
-    }    // Repeating inclusions
-  $fevent['Repeat']['Inclusions'] = array();
-    if ( ! empty ( $event['rdate'] ) && $event['rdate']) {
-      $R = explode(",", $event['rdate']);
-      foreach ( $R as $rdate ){
-        $fevent['Repeat']['Inclusions'][] = icaldate_to_timestamp($rdate);
-      }
-    }
-
   } // end if rrule
   return $fevent;
 }
@@ -2575,16 +2606,16 @@ function format_vcal($event) {
       $fevent['Repeat']['Frequency'] = '3';
       $fevent['Repeat']['Interval'] = $match[1];
       if ($RR[1] == '5+') {
-        $fevent['Repeat']['Frequency'] = '6'; // Last week (monthlyByDayR)
+        $fevent['Repeat']['Frequency'] = '3';
       }
     } elseif (preg_match("/^MD(.+)$/i", $RR[0], $match)) {
       $fevent['Repeat']['Frequency'] = '4';
       $fevent['Repeat']['Interval'] = $match[1];
     } elseif (preg_match("/^YM(.+)$/i", $RR[0], $match)) {
-      $fevent['Repeat']['Frequency'] = '5';
+      $fevent['Repeat']['Frequency'] = '6';
       $fevent['Repeat']['Interval'] = $match[1];
     } elseif (preg_match("/^YD(.+)$/i", $RR[0], $match)) {
-      $fevent['Repeat']['Frequency'] = '5';
+      $fevent['Repeat']['Frequency'] = '6';
       $fevent['Repeat']['Interval'] = $match[1];
     }
 

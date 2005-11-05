@@ -80,7 +80,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <?php
 if ( $DISPLAY_WEEKNUMBER == "Y" ) {
   echo "<br />\n<span class=\"weeknumber\">(" .
-    translate("Week") . " " . date( "W", $wkstart ) . ")</span>";
+    translate("Week") . " " . date( "W", $wkstart + ONE_DAY ) . ")</span>";
 }
 ?>
 <a title="<?php etranslate("Previous")?>" 
