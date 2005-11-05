@@ -125,7 +125,7 @@ Page template: Seiten Vorlagen
 Day template: Tagesvorlage
 Event template: Terminvorlage
 Save: Speichern
-Delete: L&ouml;chen
+Delete: Löschen
 Are you sure you want to delete this report?: Wollen Sie diese Bericht wirklich l&ouml;schen?
 
 
