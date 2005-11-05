@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1349082: Week numbers wrong if Week Starts on Sun
       1348068: "Check for event conflicts" not working for latest CVS
       1346010: CVS version: Not possible to add/edit events
       1120897: Conflict with exceptions
@@ -76,6 +77,7 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
+    - Numerous tweaks to RRULE parsing for display of repeating events
     - Implemented PATCH 1345138: Several bug fixes
     - Implemented PATCH 1344304: Use default tzone in send_reminders for users w/out pref
     - Numerous translation BUG fixes
@@ -95,6 +97,8 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added new Repeat type 'Manual' that allows adding Inclusions/Exclusions 
+      without other repeat attributes.
     + Implemented RFE 1337513: Add disable option to Location in 'edit_entry.php'
     + Implemented RFE 802644: Allow to add a comment for reject/accept event
     + Implemented RFE 1082995: Reject Event Email Message
