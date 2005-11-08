@@ -2089,7 +2089,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
           $date = $result[$i]->getDateTimeTS(); 
         if ( $result[$i]->isAllDay() || $result[$i]->isUntimed() ) {
           $date += (12 * 3600);//a simple hack to prevent DST problems
-        }		
+        }    
         $dates = get_all_dates ( $date,
           $result[$i]->getRepeatType(), $result[$i]->getRepeatFrequency(),
           $result[$i]->getRepeatByMonth(), $result[$i]->getRepeatByWeekNo(),
@@ -2366,7 +2366,7 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
         $week = date( "W", $cdate ); //ISO 8601 number of week
         if ( isset($bymonth) ) {
           foreach($bymonth as $month) { 
-            $mdate  = mktime( $hour, $minute, 0, $month, 1, $ycd);					          
+            $mdate  = mktime( $hour, $minute, 0, $month, 1, $ycd);                    
             $bydayvalues = $bymonthdayvalues = array();
             if ( isset($byday) )
              $bydayvalues = get_byday ( $byday, $mdate, 'month' );
@@ -2437,7 +2437,7 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
   } 
   if ( ! empty ( $ex_days )  ) {
     foreach ($ex_days as $ex_day ) {
-		  $cnt = count($ret);
+      $cnt = count($ret);
       for ( $i =0; $i< $cnt;$i++ ) {
         if ( date ("Ymd", $ret[$i]) == substr( $ex_day, 0, 8 ) ){
           unset ($ret[$i]);
@@ -2450,9 +2450,12 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
       $ret[] = strtotime( $inc_day );    
     }
   }
+  //remove any unset elements
+  sort ( $ret );
+  //we want results in YYYYMMDD format
   if ( ! empty ( $jump ) ) {
     for ( $i =0; $i< count($ret);$i++ ) {
-      $ret[$i] = date ("Ymd", $ret[$i] );
+      $ret[$i] = date ("Ymd", $ret[$i] );  
     }
   }
   return $ret;
@@ -2737,7 +2740,7 @@ function print_date_entries ( $date, $user, $ssi ) {
       date ( "w", $dateu ) == $WEEK_START ) {
       echo "&nbsp;<a title=\"" .
         translate("Week") . "&nbsp;" .
-				  date( "W", $dateu + ONE_DAY ) . "\" href=\"week.php?date=$date";
+          date( "W", $dateu + ONE_DAY ) . "\" href=\"week.php?date=$date";
       if ( strcmp ( $user, $GLOBALS["login"] ) )
         echo "&amp;user=$user";
       if ( ! empty ( $cat_id ) )
