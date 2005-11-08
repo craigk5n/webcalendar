@@ -12,7 +12,7 @@ function validate_and_submit () {
     showTab ( "details" );
 <?php } ?>
     document.editentryform.name.focus ();
-    alert ( "<?php etranslate("You have not entered a Brief Description")?>." );
+    alert ( "<?php etranslate("You have not entered a Brief Description")?>.");
     return false;
   }
   // Leading zeros seem to confuse parseInt()
@@ -21,6 +21,8 @@ function validate_and_submit () {
   if ( document.editentryform.timetype.selectedIndex == 1 ) {
     h = parseInt ( document.editentryform.hour.value );
     m = parseInt ( document.editentryform.minute.value );
+    if ( isNaN(h) ) h = 99;
+    if ( isNaN(m) ) m = 99;  
 <?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
     if ( document.editentryform.ampm[1].checked ) {
       // pm
@@ -38,9 +40,7 @@ function validate_and_submit () {
         $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
         showTab ( "details" );
 <?php } ?>
-      alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
-      document.editentryform.hour.select ();
-      document.editentryform.hour.focus ();
+      displayInValid(document.editentryform.hour);
       return false;
     }
     if ( m > 59 || m < 0 ) {
@@ -49,9 +49,7 @@ function validate_and_submit () {
         $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
         showTab ( "details" );
 <?php } ?>
-      alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
-      document.editentryform.minute.select ();
-      document.editentryform.minute.focus ();
+      displayInValid(document.editentryform.minute);
       return false;
     }
     // Ask for confirmation for time of day if it is before the user's
@@ -64,8 +62,49 @@ function validate_and_submit () {
     ?>
     if ( ! confirm ( "<?php etranslate ("The time you have entered begins before your preferred work hours.  Is this correct?")?> "))
       return false;
+   }
   }
+  //test endhour and endminute if used  
+  if ( document.editentryform.endhour ) {
+    if ( document.editentryform.endhour.value.charAt ( 0 ) == '0' )
+      document.editentryform.endhour.value = document.editentryform.endhour.value.substring ( 1, 2 );
+    if ( document.editentryform.timetype.selectedIndex == 1 ) {
+      eh = parseInt ( document.editentryform.endhour.value );
+      em = parseInt ( document.editentryform.endminute.value );
+      if ( isNaN(eh) ) eh = 99;
+      if ( isNaN(em) ) em = 99;  
+    <?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
+      if ( document.editentryform.endampm[1].checked ) {
+        // pm
+        if ( eh < 12 )
+          eh += 12;
+      } else {
+        // am
+        if ( eh == 12 )
+          eh = 0;
+      }
+    <?php } ?>
+      if ( eh >= 24 || eh < 0 ) {
+    <?php
+        if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
+          $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
+          showTab ( "details" );
+    <?php } ?>
+        displayInValid(document.editentryform.endhour);        
+        return false;
+      }
+      if ( em > 59 || em < 0 ) {
+    <?php
+        if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
+          $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
+          showTab ( "details" );
+    <?php } ?>
+        displayInValid(document.editentryform.endminute);  
+        return false;
+      }
+     }
   }
+
   // is there really a change?
   changed = false;
   form=document.editentryform;
@@ -230,25 +269,25 @@ function rpttype_handler (  ) {
   //i == 6 yearly
   //i == 7 manual  Use only Exclusions/Inclusions
  //Turn all off initially
-	makeInvisible ( "rpt_mode" );
-	makeInvisible ( "rptenddate", true );
-	makeInvisible ( "rptfreq", true );
-	makeInvisible ( "weekdays_only" );
-	makeInvisible ( "rptwkst" );
-	//makeInvisible ( "rptday", true );
-	makeInvisible ( "rptbymonth", true );  
-	makeInvisible ( "rptbydayln", true );
-	makeInvisible ( "rptbydayln1", true );
-	makeInvisible ( "rptbydayln2", true );
-	makeInvisible ( "rptbydayln3", true );
-	makeInvisible ( "rptbydayln4", true );
-	makeInvisible ( "rptbydayextended", true );
-	makeInvisible ( "rptbymonthdayextended", true );
-	makeInvisible ( "rptbysetpos", true ); 
-	makeInvisible ( "rptbyweekno", true ); 
-	makeInvisible ( "rptbyyearday", true ); 
-	makeInvisible ( "rptexceptions", true );
-	//makeInvisible ( "select_exceptions_not", true );
+  makeInvisible ( "rpt_mode" );
+  makeInvisible ( "rptenddate", true );
+  makeInvisible ( "rptfreq", true );
+  makeInvisible ( "weekdays_only" );
+  makeInvisible ( "rptwkst" );
+  //makeInvisible ( "rptday", true );
+  makeInvisible ( "rptbymonth", true );  
+  makeInvisible ( "rptbydayln", true );
+  makeInvisible ( "rptbydayln1", true );
+  makeInvisible ( "rptbydayln2", true );
+  makeInvisible ( "rptbydayln3", true );
+  makeInvisible ( "rptbydayln4", true );
+  makeInvisible ( "rptbydayextended", true );
+  makeInvisible ( "rptbymonthdayextended", true );
+  makeInvisible ( "rptbysetpos", true ); 
+  makeInvisible ( "rptbyweekno", true ); 
+  makeInvisible ( "rptbyyearday", true ); 
+  makeInvisible ( "rptexceptions", true );
+  //makeInvisible ( "select_exceptions_not", true );
   if ( i > 0 && i < 7 ) {
     //always on
     makeVisible ( "rptenddate", true );
@@ -303,14 +342,14 @@ function rpttype_handler (  ) {
     }
   }
   if (expert ) {
-   makeVisible ( "rptbydayextended", true );
-   makeInvisible ( "weekdays_only" );
-   makeVisible ( "rptbymonth", true ); 
+    makeVisible ( "rptbydayextended", true );
+    makeInvisible ( "weekdays_only" );
+    makeVisible ( "rptbymonth", true ); 
   }
   }
-	if ( i == 7 ) { 
+  if ( i == 7 ) { 
     makeVisible ( "rptexceptions", true);
-	}	
+  }  
 }
 
 function rpttype_weekly () {
@@ -319,16 +358,16 @@ function rpttype_weekly () {
  if ( val == "Weekly" ) {
    var rpt_days = new Array("SU","MO","TU","WE","TH","FR","SA");
    //Get Event Date values
-    var d = document.editentryform.day.selectedIndex;
-    var vald = document.editentryform.day.options[d].value;
+   var d = document.editentryform.day.selectedIndex;
+   var vald = document.editentryform.day.options[d].value;
    var m = document.editentryform.month.selectedIndex;
-    var valm = document.editentryform.month.options[m].value -1;
+   var valm = document.editentryform.month.options[m].value -1;
    var y = document.editentryform.year.selectedIndex;
-    var valy = document.editentryform.year.options[y].value;
-    var c = new Date(valy,valm,vald);
-    var dayOfWeek = c.getDay();
-  var rpt_day = rpt_days[dayOfWeek];
-    document.editentryform.elements[rpt_day].checked = true; 
+   var valy = document.editentryform.year.options[y].value;
+   var c = new Date(valy,valm,vald);
+   var dayOfWeek = c.getDay();
+   var rpt_day = rpt_days[dayOfWeek];
+   document.editentryform.elements[rpt_day].checked = true; 
  }
 }
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
@@ -394,20 +433,20 @@ function add_exception (which) {
     sign = "+";
  }
  var d = document.editentryform.except_day.selectedIndex;
-  var vald = document.editentryform.except_day.options[d].value;
-  var m = document.editentryform.except_month.selectedIndex;
-  var valm = document.editentryform.except_month.options[m].value;
-  var y = document.editentryform.except_year.selectedIndex;
-  var valy = document.editentryform.except_year.options[y].value;
-  var c = new Date(valy,valm -1,vald);
+ var vald = document.editentryform.except_day.options[d].value;
+ var m = document.editentryform.except_month.selectedIndex;
+ var valm = document.editentryform.except_month.options[m].value;
+ var y = document.editentryform.except_year.selectedIndex;
+ var valy = document.editentryform.except_year.options[y].value;
+ var c = new Date(valy,valm -1,vald);
  if ( c.getDate() != vald ) {
-    alert ("Invalid Date");
+   alert ("Invalid Date");
    return false;
  }
  //alert ( c.getFullYear() + " "  + c.getMonth() + " " + c.getDate());
  var exceptDate = String((c.getFullYear() * 100 + c.getMonth() +1) * 100 + c.getDate());
  var isUnique = true;
- //Test to see if this date is alreadt in the list
+ //Test to see if this date is already in the list
   with (document.editentryform)
    { 
       with (document.editentryform.elements['exceptions[]'])
@@ -449,10 +488,10 @@ function del_selected () {
 function toggle_byday(ele){
   if (ele.value.length > 4 ) {
     //blank
-  ele.value = ele.id;
+    ele.value = ele.id;
   } else if (ele.value == ele.id) {
     //positive value
-  ele.value =  (parseInt(ele.id.substr(0,1)) -6 ) +  ele.id.substr(1,2);
+    ele.value =  (parseInt(ele.id.substr(0,1)) -6 ) +  ele.id.substr(1,2);
   } else if (ele.value ==  (parseInt(ele.id.substr(0,1)) -6 ) +  ele.id.substr(1,2)) {
     //negative value
   ele.value = "        ";
@@ -466,7 +505,6 @@ function toggle_byday(ele){
 }
 
 function toggle_bymonthday(ele){
-  //alert(ele.id.substr(10)); 
   if (ele.value .length > 3) {
     //blank
   ele.value = ele.id.substr(10);
@@ -552,6 +590,13 @@ function editCats (  evt ) {
   url += "&user=" + user;
  }
   var catWindow = window.open(url,"EditCat","width=365,height=200,"  + MyPosition);
+}
+
+function displayInValid($var)
+{
+  alert ( "<?php etranslate ("You have not entered a valid time of day")?>.");
+  $var.select ();
+  $var.focus ();
 }
 //]]> -->
 </script>
