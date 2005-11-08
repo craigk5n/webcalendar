@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1350151: New Entry: entered time check is buggy
       1350764: RSS feed showing double entries
       1349082: Week numbers wrong if Week Starts on Sun
       1348068: "Check for event conflicts" not working for latest CVS
