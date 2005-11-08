@@ -24,6 +24,7 @@
  * You can override settings by changing the URL parameters:
  *   - days: number of days ahead to look for events
  *   - cat_id: specify a category id to filter on
+ *   - repeats: output all events including all repeat instances
  *   - user: login name of calendar to display (instead of public
  *     user).  You must have the
  *     following System Settings configured for this:
