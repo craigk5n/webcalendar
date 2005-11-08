@@ -47,7 +47,7 @@ if ( $res ) {
   $owner = $row[0];
   dbi_free_result ( $res );
   if ( $owner == $login || $is_assistant && ( $user == $owner ) ||
-    $is_nonuser_admin && ( $user == $owner ) ) {
+    $is_nonuser_admin ) {
     $my_event = true;
     $can_edit = true;
   }
@@ -106,8 +106,7 @@ if ( $id > 0 && empty ( $error ) ) {
   // if owner or admin, not participant.
   // If a user was specified, then only delete that user (not here) even if we
   // are the owner or an admin.
-  if ( ( $is_admin || $my_event ) &&
-    ( empty ( $user ) || $user == $login || $can_edit ) ) {
+  if ( ( $is_admin || $my_event ) && ! $other_user ) {
   
     // Email participants that the event was deleted
     // First, get list of participants (with status Approved or
@@ -229,10 +228,9 @@ if ( $id > 0 && empty ( $error ) ) {
         "WHERE cal_id = $id" );
     }
   } else {
-    // Not the owner of the event and are not the admin or a user
-    // was specified.
+    // Not the owner of the event, but participant or noncal_admin
     // Just  set the status to 'D' instead of deleting.
-    $del_user = $login;
+    $del_user = ( ! empty ( $other_user ) ?  $other_user : $login );
     if ( ! empty ( $user ) && $user != $login ) {
       if ( $is_admin || $my_event ||
         ( access_is_enabled () &&
