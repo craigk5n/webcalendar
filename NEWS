@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1350764: RSS feed showing double entries
       1349082: Week numbers wrong if Week Starts on Sun
       1348068: "Check for event conflicts" not working for latest CVS
       1346010: CVS version: Not possible to add/edit events
