@@ -52,7 +52,6 @@ if ( empty ( $error ) ) {
   if ( ($login != "__public__") && ($PUBLIC_ACCESS_OTHERS == "Y") ) {
     $can_view = true;
   }
-
   if ( ! $can_view ) {
     $check_group = false;
     // if not a participant in the event, must be allowed to look at
@@ -100,12 +99,11 @@ if ( empty ( $error ) ) {
     }
     // If we didn't indicate we need to check groups, then this user
     // can't view this event.
-    if ( ! $check_group ) {
+    if ( ! $check_group && ! access_is_enabled ()  ) {
       $can_view = false;
     }
   }
 }
-
 if ( $login == '__public__' &&
   ! empty ( $OVERRIDE_PUBLIC ) && $OVERRIDE_PUBLIC == 'Y' ) {
   $hide_details = true;

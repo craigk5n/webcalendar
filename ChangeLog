@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1220225: 'layered events' cannot be shown by the public
  - Fixed bug 1350151: New Entry: entered time check is buggy
  - Fixed bug 1350764: RSS feed showing double entries
  - Adding logic to consume TZID settings in ics files. If the TZID used the Olson 
