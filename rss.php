@@ -102,6 +102,10 @@ $load_layers = false;
 // Can override in URL with "rss.php?cat_id=4"
 $cat_id = '';
 
+// Load all repeating events
+// Can override with "rss.php?repeats=1"
+$allow_repeats = false;
+
 // End configurable settings...
 
 // Set for use elsewhere as a global
@@ -171,13 +175,19 @@ if ( $maxEvents > 100 ) {
   $maxEvents = 100;
 }
 
+$x = getIntValue ( "repeats", true );
+if ( ! empty ( $x ) ) {
+  $allow_repeats = $x;
+}
+
 $endTime = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays,
   $thisyear );
 $endDate = date ( "Ymd", $endTime );
 
 
-/* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( $username, $cat_id, $date );
+/* Pre-Load the repeated events for quicker access */
+if (  $allow_repeats == true )
+  $repeated_events = read_repeated_events ( $username, $cat_id, $date );
 
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( $username, $date, $endDate, $cat_id );
