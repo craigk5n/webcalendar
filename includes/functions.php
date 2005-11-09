@@ -3613,9 +3613,12 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
  */
 function display_unapproved_events ( $user ) {
   global $PUBLIC_ACCESS, $is_admin, $NONUSER_ENABLED, $login;
-
+  
+  $app_users = array ();
+  $app_user_hash = array ( );
+  
   // Don't do this for public access login, admin user must approve public
-  // events
+  // events if UAC is not enabled
   if ( $user == "__public__" )
     return;
 
@@ -3626,24 +3629,47 @@ function display_unapproved_events ( $user ) {
     "AND ( webcal_entry.cal_ext_for_id IS NULL " .
     "OR webcal_entry.cal_ext_for_id = 0 ) " .
     "AND ( webcal_entry_user.cal_login = '$user'";
-  if ( $PUBLIC_ACCESS == "Y" && $is_admin ) {
+  if ( $PUBLIC_ACCESS == "Y" && $is_admin && ! access_is_enabled () ) {
     $sql .= " OR webcal_entry_user.cal_login = '__public__'";
   }
+
+  if ( access_is_enabled () ) {
+    $app_users[] = $login;
+    $app_user_hash[$login] = 1;
+    if ( $NONUSER_ENABLED == 'Y' ) {
+      $all = array_merge ( get_my_users ( ), get_nonuser_cals ( $login ) );
+    } else {
+      $all = get_my_users ( );
+    }
+    for ( $j = 0; $j < count ( $all ); $j++ ) {
+      $x = $all[$j]['cal_login'];
+      if ( access_can_approve_user_calendar ( $x ) ) {
+        if ( empty ( $app_user_hash[$x] ) ) { 
+          $app_users[] = $x;
+          $app_user_hash[$x] = 1;
+        }
+      }
+    }    
+    for ( $i = 0; $i < count ( $app_users ); $i++ ) {
+      $sql .= " OR webcal_entry_user.cal_login = '" .
+        $app_users[$i] . "' ";
+    }
+  }  else 
   if ( $NONUSER_ENABLED == 'Y' ) {
     $admincals = get_nonuser_cals ( $login );
     for ( $i = 0; $i < count ( $admincals ); $i++ ) {
       $sql .= " OR webcal_entry_user.cal_login = '" .
-        $admincals[$i]['cal_login'] . "'";
+        $admincals[$i]['cal_login'] . "' ";
     }
-  }
+  }  
   $sql .= " )";
   //print "SQL: $sql<br />\n";
   $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] > 0 ) {
- $str = translate ("You have XXX unapproved events");
- $str = str_replace ( "XXX", $row[0], $str );
+        $str = translate ("You have XXX unapproved events");
+        $str = str_replace ( "XXX", $row[0], $str );
         echo "<a class=\"nav\" href=\"list_unapproved.php";
         if ( $user != $login )
           echo "?user=$user\"";

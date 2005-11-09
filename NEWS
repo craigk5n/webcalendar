@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1277803: new untimed events - aren't
+      1346660: new entry: time check not informed correctly ->misspelling
       1352513: Repeating Events interface is broken in Safari
       1352504: fix for one type of Lost Connection to MySQL server error
       1351971: "Delete"-Button won't work properly for reports
