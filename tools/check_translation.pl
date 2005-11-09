@@ -77,9 +77,9 @@ foreach $f (@files) {
   #print "Checking $f for text.\n";
   while (<F>) {
     $data = $_;
-    while ( $data =~ /(translate|tooltip)\s*\(\s*"/ ) {
+    while ( $data =~ /(translate|tooltip)\s*\(\s*['"]/ ) {
       $data = $';
-      if ( $data =~ /"\s*\)/ ) {
+      if ( $data =~ /['"]\s*[,\)]/ ) {
         $text        = $`;
         $text{$text} = 1;
         $data        = $';
