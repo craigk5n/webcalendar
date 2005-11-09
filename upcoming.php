@@ -3,6 +3,8 @@
  * $Id$
  *
  * Description:
+ * Show a list of upcoming events (and possibly tasks).
+ *
  * This script is intended to be used outside of normal WebCalendar
  * use, typically as an iframe in another page.
  *
@@ -80,8 +82,16 @@ $link_target = '_top';
 // Can override with "upcoming.php?days=60"
 $numDays = 30;
 
-// Max number of events to display
+// Max number of events (including tasks) to display
 $maxEvents = 10;
+
+// Should we include tasks?
+// (Only relavant if tasks are enabled in system settings AND enabled for
+// display in calendar view for this user.  So, this is really
+// a way to disable tasks from showing up.  It will not display
+// them if specified user has not enabled "Display tasks in Calendars"
+// in their preferences.)
+$show_tasks = true;
 
 // Login of calendar user to use
 // '__public__' is the login name for the public user
@@ -111,9 +121,6 @@ $display_tzid = 2;
 $login = $username;
 // Load user preferences for DISPLAY_UNAPPROVED
 load_user_preferences ();
-$get_unapproved = ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y';
-
-
 
 if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' ) {
   $error = translate ( "You are not authorized" ) . ".";
@@ -125,9 +132,14 @@ if ( $allow_user_override ) {
     $username = $u;
     $login = $u;
     $TIMEZONE = get_pref_setting ( $username, "TIMEZONE" );
+    $DISPLAY_UNAPPROVED = get_pref_setting ( $username, "DISPLAY_UNAPPROVED" );
+    $DISPLAY_TASKS_IN_GRID =
+      get_pref_setting ( $username, "DISPLAY_TASKS_IN_GRID" );
     // We also set $login since some functions assume that it is set.
   }
 }
+
+$get_unapproved = ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y';
 
 $cat_id = '';
 if ( $CATEGORIES_ENABLED == 'Y' ) {
@@ -173,6 +185,14 @@ $repeated_events = read_repeated_events ( $username, $cat_id, $date );
 
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( $username, $date, $endDate, $cat_id );
+
+// Pre-load tasks for quicker access */
+if ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
+  && $show_tasks ) {
+  /* Pre-load tasks for quicker access */
+  $tasks = read_tasks ( $username, $date, $endDate, $cat_id );
+}
+
 
 // Print header without custom header and no style sheet
 if ( ! empty ( $LANGUAGE ) ) {
@@ -255,17 +275,18 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
   $d = date ( "Ymd", $i );
   $entries = get_entries ( $username, $d, $get_unapproved );
   $rentries = get_repeating_entries ( $username, $d, $get_unapproved );
-  print "<!-- $d " . count ( $entries ) . "/" . count ( $rentries ) . " -->\n";
+  $ev = combine_and_sort_events ( $entries, $rentries );
 
-  if ( count ( $entries ) > 0 || count ( $rentries ) > 0 ) {
+  $tentries = get_tasks ( $user, $d, $get_unapproved );
+  $ev = combine_and_sort_events ( $ev, $tentries );
+
+  print "<!-- $d " . count ( $ev ) . " -->\n";
+
+  if ( count ( $ev ) > 0 ) {
     print "<!-- XXX -->\n";
     print "<dt>" . date_to_str ( $d ) . "</dt>\n<dd>";
-    for ( $j = 0; $j < count ( $entries ) && $numEvents < $maxEvents; $j++ ) {
-      print_upcoming_event ( $entries[$j] );
-      $numEvents++;
-    }
-    for ( $j = 0; $j < count ( $rentries ) && $numEvents < $maxEvents; $j++ ) {
-      print_upcoming_event ( $rentries[$j] );
+    for ( $j = 0; $j < count ( $ev ) && $numEvents < $maxEvents; $j++ ) {
+      print_upcoming_event ( $ev[$j] );
       $numEvents++;
     }
     print "</dd>\n";
@@ -282,9 +303,11 @@ function print_upcoming_event ( $e ) {
   global $display_link, $link_target, $SERVER_URL, $charset, $display_tzid;
 
   if ( $display_link && ! empty ( $SERVER_URL ) ) {
+    $cal_type = ( $e->getCalType() == 'T' || $e->getCalType() == 'N' ) ?
+      'task' : 'event';
     print "<a title=\"" . 
       $e->getName() . "\" href=\"" . 
-      $SERVER_URL . "view_entry.php?id=" . 
+      $SERVER_URL . 'view_' . $cal_type . '.php?id=' . 
       $e->getID() . "&amp;date=" . 
       $e->getDate() . "\"";
     if ( ! empty ( $link_target ) ) {
