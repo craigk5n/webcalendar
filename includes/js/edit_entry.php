@@ -12,7 +12,7 @@ function validate_and_submit () {
     showTab ( "details" );
 <?php } ?>
     document.editentryform.name.focus ();
-    alert ( "<?php etranslate("You have not entered a Brief Description")?>.");
+    alert ( "<?php etranslate("You have not entered a Brief Description", true)?>.");
     return false;
   }
   // Leading zeros seem to confuse parseInt()
@@ -60,7 +60,7 @@ function validate_and_submit () {
       echo "if ( h < $WORK_DAY_START_HOUR && document.editentryform.ampm[0].checked ) {";
     }
     ?>
-    if ( ! confirm ( "<?php etranslate ("The time you have entered begins before your preferred work hours.  Is this correct?")?> "))
+    if ( ! confirm ( "<?php etranslate ("The time you have entered begins before your preferred work hours.  Is this correct?", true)?> "))
       return false;
    }
   }
@@ -146,7 +146,7 @@ function validate_and_submit () {
   var valy = document.editentryform.year.options[y].value;
   var c = new Date(valy,valm -1,vald);
  if ( c.getDate() != vald ) {
-   alert ("<?php etranslate ("Invalid Event Date")?>.");
+   alert ("<?php etranslate ("Invalid Event Date", true)?>.");
   document.editentryform.day.focus ();
    return false;
  }
@@ -409,7 +409,7 @@ function showSchedule () {
     }
   }
   if (users == '') {
-    alert("<?php etranslate("Please add a participant")?>" );
+    alert("<?php etranslate("Please add a participant", true)?>" );
     return false;
   }
   var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=no';
@@ -440,7 +440,7 @@ function add_exception (which) {
  var valy = document.editentryform.except_year.options[y].value;
  var c = new Date(valy,valm -1,vald);
  if ( c.getDate() != vald ) {
-   alert ("Invalid Date");
+   alert ("<?php etranslate("Invalid Date",true ) ?>");
    return false;
  }
  //alert ( c.getFullYear() + " "  + c.getMonth() + " " + c.getDate());
@@ -594,7 +594,7 @@ function editCats (  evt ) {
 
 function displayInValid($var)
 {
-  alert ( "<?php etranslate ("You have not entered a valid time of day")?>.");
+  alert ( "<?php etranslate ("You have not entered a valid time of day", true)?>.");
   $var.select ();
   $var.focus ();
 }

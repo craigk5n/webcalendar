@@ -294,7 +294,7 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
       <html><head><title>Password Accepted</title>
       <meta http-equiv="refresh" content="0; index.php" />
       </head>
-      <body onLoad="alert('Successful Login');">
+      <body onLoad="alert('<?php etranslate ( "Successful Login", true ) ?>');">
       </body></html>
 <?php
     exit;
@@ -305,7 +305,7 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
       <html><head><title>Password Incorrect</title>
       <meta http-equiv="refresh" content="0; index.php" />
       </head>
-      <body onLoad="alert ('<?php etranslate ( "Invalid Login" ) ?>'); document.go(-1)">
+      <body onLoad="alert ('<?php etranslate ( "Invalid Login", true ) ?>'); document.go(-1)">
       </body></html>
 <?php
     exit;
@@ -357,7 +357,7 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
     <html><head><title>Password Updated</title>
     <meta http-equiv="refresh" content="0; index.php" />
     </head>
-    <body onLoad="alert('Password has been set');">
+    <body onLoad="alert('<?php etranslate ( "Password has been set", true ) ?>');">
     </body></html>
   <?php
   exit;
@@ -848,11 +848,11 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
   $fd = @fopen ( $file, "w+b", false );
   if ( empty ( $fd ) ) {
     if ( file_exists ( $file ) ) {
-      $onload = "alert('" . translate ( "Error Unable to write to file" ) . 
-     $file . "\\n" . translate ( "Please change the file permissions of this file" ) . ".');";
+      $onload = "alert('" . translate ( "Error Unable to write to file", true ) . 
+     $file . "\\n" . translate ( "Please change the file permissions of this file", true ) . ".');";
     } else {
-      $onload = "alert('" . translate ( "Error Unable to write to file" ) . 
-     $file. "\\n" . translate ( "Please change the file permissions of your includes directory to allow writing by other users" ) . ".');";
+      $onload = "alert('" . translate ( "Error Unable to write to file", true ) . 
+     $file. "\\n" . translate ( "Please change the file permissions of your includes directory to allow writing by other users", true ) . ".');";
     }
   } else {
     fwrite ( $fd, "<?php\r\n" );
@@ -863,7 +863,7 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     fwrite ( $fd, "# end settings.php\r\n?>\r\n" );
     fclose ( $fd );
     if ( $post_action != 'Test Settings' && $post_action2 != 'Create New' ){
-      $onload .= "alert('" . translate ( "Your settings have been saved" ) . ".\\n\\n');";
+      $onload .= "alert('" . translate ( "Your settings have been saved", true ) . ".\\n\\n');";
     }
 
     // Change to read/write by us only (only applies if we created file)
@@ -906,24 +906,24 @@ function validate(form)
   if ( form.form_user_inc.options[listid].selected ) {
     if ( form.form_single_user_login.value.length == 0 ) {
       // No single user login specified
-      alert ("<?php etranslate ("Error you must specify a\\nSingle-User Login" ) ?> ");
+      alert ("<?php etranslate ("Error you must specify a\\nSingle-User Login", true ) ?> ");
       form.form_single_user_login.focus ();
       return false;
     }
   }
   if ( form.form_server_url.value == "" ) {
-    err += "<?php etranslate ( "Server URL is required" ) ?>" + "\n";
+    err += "<?php etranslate ( "Server URL is required", true ) ?>" + "\n";
     form.form_server_url.select ();
     form.form_server_url.focus ();
   }
   else if ( form.form_server_url.value.charAt (
     form.form_server_url.value.length - 1 ) != '/' ) {
-    err += "<?php etranslate ( "Server URL must end with" )?>" + "'/'\n";
+    err += "<?php etranslate ( "Server URL must end with", true )?>" + "'/'\n";
     form.form_server_url.select ();
     form.form_server_url.focus ();
   }
  if ( err != "" ) {
-    alert ( "<?php etranslate ( "Error" ) ?>" + ":\n\n" + err );
+    alert ( "<?php etranslate ( "Error", true ) ?>" + ":\n\n" + err );
     return false;
   }
   // Submit form...

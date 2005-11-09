@@ -101,9 +101,9 @@ if ( $is_admin ) { ?>
 <?php } //end if ($is_admin ) ?>
  <tr><td colspan="2">
   <?php if ( $DEMO_MODE == "Y" ) { ?>
-   <input type="button" value="<?php etranslate("Save")?>" onclick="alert('<?php etranslate("Disabled for demo")?>')" />
+   <input type="button" value="<?php etranslate("Save")?>" onclick="alert('<?php etranslate("Disabled for demo", true)?>')" />
    <?php if ( $is_admin && ! empty ( $user ) ) { ?>
-    <input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="alert('<?php etranslate("Disabled for demo")?>')" />
+    <input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="alert('<?php etranslate("Disabled for demo", true)?>')" />
    <?php } //end if ( $DEMO_MODE == "Y" ) ?>
   <?php } else { ?>
    <input type="submit" value="<?php etranslate("Save")?>" />
@@ -138,7 +138,7 @@ if ( $is_admin ) { ?>
  </td></tr>
  <tr><td colspan="2">
   <?php if ( $DEMO_MODE == "Y" ) { ?>
-   <input type="button" value="<?php etranslate("Set Password")?>" onclick="alert('<?php etranslate("Disabled for demo")?>')" />
+   <input type="button" value="<?php etranslate("Set Password")?>" onclick="alert('<?php etranslate("Disabled for demo", true)?>')" />
   <?php } else { ?>
    <input type="submit" value="<?php etranslate("Set Password")?>" />
   <?php } ?>

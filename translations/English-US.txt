@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 11-01-2005
+# Translation last updated on 11-09-2005
 
 
 ###############################################
@@ -444,6 +444,7 @@ by day: by day
 by date: by date
 by position: by position
 Yearly: Yearly
+Manual: Manual
 Expert Mode: Expert Mode
 repeat-end-date-help: Specifies the date the event should repeat until.
 Ending: Ending
@@ -1243,6 +1244,9 @@ Invalid user login: Invalid user login
 INCLUSION DATES: INCLUSION DATES
 EXCLUSION DATES: EXCLUSION DATES
 Event Imported: Event Imported
+Unknown Timezone: Unknown Timezone
+defaulting to GMT: defaulting to GMT
+Please see FAQ: Please see FAQ
 
 
 ###############################################
@@ -1273,10 +1277,11 @@ Change the date and time of this entry?: Change the date and time of this entry?
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: You have not entered a Brief Description
-You have not entered a valid time of day: You have not entered a valid time of day
 The time you have entered begins before your preferred work hours.  Is this correct?: The time you have entered begins before your preferred work hours.  Is this correct?
 Invalid Event Date: Invalid Event Date
 Please add a participant: Please add a participant
+Invalid Date: Invalid Date
+You have not entered a valid time of day: You have not entered a valid time of day
 
 
 ###############################################
@@ -1318,10 +1323,12 @@ Reminder: Reminder
 ###############################################
 # Page: install/index.php
 #
+Successful Login: Successful Login
 Invalid Login: Invalid Login
 needed for Gradient Image Backgrounds: needed for Gradient Image Backgrounds
 Passwords do not match: Passwords do not match
 Unable to write password to settings.php file: Unable to write password to settings.php file
+Password has been set: Password has been set
 Connection Successful: Connection Successful
 Please go to next page to continue installation: Please go to next page to continue installation
 Failure Reason: Failure Reason
@@ -1397,12 +1404,10 @@ It appears that you have: It appears that you have
 NOT: NOT
 converted your existing WebCalendar event data to GMT: converted your existing WebCalendar event data to GMT
 If you have, you may ignore this notice and not proceed with the conversion: If you have, you may ignore this notice and not proceed with the conversion
-If this is a new installation, you may also ignore this notice. You can also reverse this: If this is a new installation, you may also ignore this notice. You can also reverse this
-procedure by entering a value with the opposite sign (i.e. 4 vs. -4): procedure by entering a value with the opposite sign (i.e. 4 vs. -4
-Your current Server GMT offset is: Your current Server GMT offset is
-Enter the offset you wish to make: Enter the offset you wish to make
+If this is a new installation, you may also ignore this notice.: If this is a new installation, you may also ignore this notice.
 Convert Data to GMT: Convert Data to GMT
 Conversion Successful: Conversion Successful
+Conversion Not Needed: Conversion Not Needed
 Application Settings: Application Settings
 HTTP-based authentication was not detected: HTTP-based authentication was not detected
 You will need to reconfigure your web server if you wish to: You will need to reconfigure your web server if you wish to
@@ -1410,6 +1415,7 @@ select 'Web Server' from the 'User Authentication' choices below: select 'Web Se
 HTTP-based authentication was detected: HTTP-based authentication was detected
 User authentication is being handled by your web server: User authentication is being handled by your web server
 You should select 'Web Server' from the list of 'User Authentication' choices below: You should select 'Web Server' from the list of 'User Authentication' choices below
+Create Default Admin Account: Create Default Admin Account
 User Authentication: User Authentication
 Web-based via WebCalendar (default): Web-based via WebCalendar (default)
 Web Server: Web Server

@@ -156,7 +156,7 @@ echo "<?xml version=\"1.0\" encoding=\"$charset\"?>" . "\n";
 // error check login/password
 function valid_form ( form ) {
   if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
-    alert ( "<?php etranslate("You must enter a login and password")?>." );
+    alert ( '<?php etranslate("You must enter a login and password", true)?>.' );
     return false;
   }
   return true;

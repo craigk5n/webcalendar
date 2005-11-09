@@ -17,7 +17,7 @@ if ( $id > 0 ) {
     $can_edit = false;
   } else {
     $can_edit = false;
-	}
+  }
     $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_type FROM webcal_entry, " .
       "webcal_entry_user WHERE webcal_entry.cal_id = " .
       "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
@@ -28,16 +28,16 @@ if ( $id > 0 ) {
       $row = dbi_fetch_row ( $res );
       if ( $row && $row[0] > 0 )
         $can_edit = true;
-			$activity_type = $row[1];
+      $activity_type = $row[1];
       dbi_free_result ( $res );
     }
 }
 if ( $activity_type =='E' || $activity_type == 'M' ) {
   $log_delete = LOG_DELETE;
-	$log_reject = LOG_REJECT;
+  $log_reject = LOG_REJECT;
 } else {
   $log_delete = LOG_DELETE_T;
-	$log_reject = LOG_REJECT_T;
+  $log_reject = LOG_REJECT_T;
 }
 // See who owns the event.  Owner should be able to delete.
 $res = dbi_query (
