@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1351971: "Delete"-Button won't work properly for reports
       1282382: Del from NUC or Pub Acc deletes from all
       1220225: 'layered events' cannot be shown by the public
       1350151: New Entry: entered time check is buggy
