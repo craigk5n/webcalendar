@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1352513: Repeating Events interface is broken in Safari
  - Fixed bug 1352504: fix for one type of Lost Connection to MySQL server error
  - Fixed bug 1351971: "Delete"-Button won't work properly for reports
  - Fixed bug 1282382: Del from NUC or Pub Acc deletes from all

@@ -450,10 +450,10 @@ if ( ! empty ( $parent ) )
 <?php if ( ! empty ( $categories ) ) { ?>
      <tr><td class="tooltip" title="<?php etooltip("category-help")?>" valign="top">
       <label for="entry_categories"><?php etranslate("Category")?>:<br /></label>
-   <input type="button" value="Edit" onClick="editCats(event)" /></td><td valign="top">
+   <input type="button" value="Edit" onclick="editCats(event)" /></td><td valign="top">
       <input  readonly=""type="text" name="catnames" 
-     value="<?php echo $catNames ?>"  size="50" 
-    onClick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/>
+     value="<?php echo $catNames ?>"  size="30" 
+    onclick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/>
    <input  type="hidden" name="cat_id" id="entry_categories" value="<?php echo $catList ?>" />
      </td></tr>
 <?php } //end if (! empty ($categories)) ?>
@@ -871,17 +871,17 @@ if ( $single_user == "N" && $show_participants ) {
   <label for="rpt_day"><?php etranslate("Ending")?>:</label></td>
  <td><input  type="radio" name="rpt_end_use" id="rpt_until" value="f" <?php 
   echo (  empty ( $rpt_end ) && empty ( $rpt_count )? " checked=\"checked\"" : "" ); 
- ?>  onChange="toggle_until()" />&nbsp;<label><?php etranslate("Forever")?></label><br />
+ ?>  onclick="toggle_until()" />&nbsp;<label><?php etranslate("Forever")?></label><br />
  <input  type="radio" name="rpt_end_use" id="rpt_until" value="u" <?php 
   echo ( ! empty ( $rpt_end ) ? " checked=\"checked\"" : "" ); 
- ?> onChange="toggle_until()" />&nbsp;<label><?php etranslate("Use end date")?></label>
+ ?> onclick="toggle_until()" />&nbsp;<label><?php etranslate("Use end date")?></label>
  &nbsp;&nbsp;&nbsp;
  <span class="end_day_selection" name="rpt_end_day_select"><?php
   print_date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date )
  ?></span><br />
  <input type="radio" name="rpt_end_use" id="rpt_until" value="c" <?php 
   echo ( ! empty ( $rpt_count ) ? " checked=\"checked\"" : "" ); 
- ?> onChange="toggle_until()" />&nbsp;<label><?php etranslate("Number of times")?></label>
+ ?> onclick="toggle_until()" />&nbsp;<label><?php etranslate("Number of times")?></label>
  <input type="text" name="rpt_count" id="rpt_count" size="4" maxlength="4" value="<?php echo $rpt_count; ?>" />
  
 </td></tr>

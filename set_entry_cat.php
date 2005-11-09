@@ -140,10 +140,10 @@ print_header($INC);
 </td></tr>
      <tr><td class="tooltip" title="<?php etooltip("category-help")?>" valign="top">
       <label for="entry_categories"><?php etranslate("Category")?>:<br /></label>
-   <input type="button" value="Edit" onClick="editCats(event)" /></td><td valign="top">
+   <input type="button" value="Edit" onclick="editCats(event)" /></td><td valign="top">
       <input  readonly=""type="text" name="catnames" 
      value="<?php echo $catNames ?>"  size="75" 
-    onClick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/><br />
+    onclick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/><br />
     <?php if ( $globals_found) echo "*" . translate("Global Categories can not be changed")?>
    <input  type="hidden" name="cat_id" id="entry_categories" value="<?php echo $catList ?>" />
      </td></tr>
