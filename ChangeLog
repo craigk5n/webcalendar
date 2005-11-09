@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1277803: new untimed events - aren't
+ - Fixed bug 1346660: new entry: time check not informed correctly ->misspelling
  - Fixed bug 1352513: Repeating Events interface is broken in Safari
  - Fixed bug 1352504: fix for one type of Lost Connection to MySQL server error
  - Fixed bug 1351971: "Delete"-Button won't work properly for reports
