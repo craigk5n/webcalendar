@@ -29,29 +29,36 @@
 # update_translation.pl -p tnn French
 #
 # Note: this utility should be run from this directory (tools).
+# Note #2: you can use perltidy to format this perl script nicely:
+#	http://perltidy.sourceforge.net/
+# Usage:
+#	perltidy -i=2 update_translation.pl
+#	(which will create update_translation.pl.tdy, the new version)
 #
 ###########################################################################
 
-$base_dir = "..";
+$base_dir  = "..";
 $trans_dir = "../translations";
 
 $base_trans_file = "$trans_dir/English-US.txt";
-$plugin = "";
+$plugin          = "";
 
-$show_missing = 1; # set to 0 to minimize translation file.
-$show_dups = 0; # set to 0 to minimize translation file.
-$verbose = 0;
+$show_missing = 1;    # set to 0 to minimize translation file.
+$show_dups    = 0;    # set to 0 to minimize translation file.
+$verbose      = 0;
 
-( $this ) = reverse split ( /\//, $0 );
+($this) = reverse split( /\//, $0 );
 
 $save_backup = 0;
 
-for ( $i = 0; $i < @ARGV; $i++ ) {
+for ( $i = 0 ; $i < @ARGV ; $i++ ) {
   if ( $ARGV[$i] eq "-p" ) {
-    $plugin = $ARGV[++$i];
-  } elsif ( $ARGV[$i] eq "-v" ) {
+    $plugin = $ARGV[ ++$i ];
+  }
+  elsif ( $ARGV[$i] eq "-v" ) {
     $verbose++;
-  } else {
+  }
+  else {
     $infile = $ARGV[$i];
   }
 }
@@ -59,13 +66,14 @@ for ( $i = 0; $i < @ARGV; $i++ ) {
 die "Usage: $this [-p plugin] language\n" if ( $infile eq "" );
 
 if ( $plugin ne "" ) {
-  $p_trans_dir = "$base_dir/$plugin/translations";
+  $p_trans_dir       = "$base_dir/$plugin/translations";
   $p_base_trans_file = "$p_trans_dir/English-US.txt";
-  $p_base_dir = "$base_dir/$plugin";
-} else {
-  $p_trans_dir = $trans_dir;
+  $p_base_dir        = "$base_dir/$plugin";
+}
+else {
+  $p_trans_dir       = $trans_dir;
   $p_base_trans_file = $base_trans_file;
-  $p_base_dir = $base_dir;
+  $p_base_dir        = $base_dir;
 }
 
 if ( $infile !~ /txt$/ ) {
@@ -73,80 +81,85 @@ if ( $infile !~ /txt$/ ) {
 }
 if ( -f "$trans_dir/$infile" || -f "$p_trans_dir/$infile" ) {
   $b_infile = "$trans_dir/$infile";
-  $infile = "$p_trans_dir/$infile";
+  $infile   = "$p_trans_dir/$infile";
 }
+
 #print "infile: $infile\nb_infile: $b_infile\ntrans_dir: $trans_dir\n";
 
-die "Usage: $this [-p plugin] language\n" if ( ! -f $infile );
+die "Usage: $this [-p plugin] language\n" if ( !-f $infile );
 
-print "Translation file: $infile\n" if ( $verbose );
+print "Translation file: $infile\n" if ($verbose);
 
 # Now load the base translation(s) file (English), so that we can include
 # the English translation text above a missing translation in a comment.
-open ( F, $base_trans_file ) || die "Error opening $base_trans_file";
-print "Reading base translation file: $base_trans_file\n" if ( $verbose );
-while ( <F> ) {
+open( F, $base_trans_file ) || die "Error opening $base_trans_file";
+print "Reading base translation file: $base_trans_file\n" if ($verbose);
+while (<F>) {
   chop;
-  s/\r*$//g; # remove annoying CR
-  next if ( /^#/ );
-  if ( /\s*:\s*/ ) {
+  s/\r*$//g;    # remove annoying CR
+  next if (/^#/);
+  if (/\s*:\s*/) {
     $abbrev = $`;
     $base_trans{$abbrev} = $' if ( $abbrev ne 'charset' );
   }
 }
-close ( F );
+close(F);
+
 # read in the plugin base translation file
 if ( $plugin ne "" ) {
-  print "Reading plugin base translation file: $p_base_trans_file\n" if ( $verbose );
-  open ( F, $p_base_trans_file ) || die "Error opening $p_base_trans_file";
-  while ( <F> ) {
+  print "Reading plugin base translation file: $p_base_trans_file\n"
+    if ($verbose);
+  open( F, $p_base_trans_file ) || die "Error opening $p_base_trans_file";
+  while (<F>) {
     chop;
-    s/\r*$//g; # remove annoying CR
-    next if ( /^#/ );
-    if ( /\s*:\s*/ ) {
+    s/\r*$//g;    # remove annoying CR
+    next if (/^#/);
+    if (/\s*:\s*/) {
       $abbrev = $`;
       $base_trans{$abbrev} = $';
     }
   }
-  close ( F );
+  close(F);
 }
-
 
 #
 # Now load the translation file we are going to update.
 #
 $old = "";
 if ( -f $infile ) {
-  print "Reading current translations from $infile\n" if ( $verbose );
-  open ( F, $infile ) || die "Error opening $infile";
+  print "Reading current translations from $infile\n" if ($verbose);
+  open( F, $infile ) || die "Error opening $infile";
   $in_header = 1;
-  while ( <F> ) {
+  while (<F>) {
     $old .= $_;
     chop;
-    s/\r*$//g; # remove annoying CR
+    s/\r*$//g;    # remove annoying CR
     if ( $in_header && /^#/ ) {
-      if ( /Translation last (pagified|updated)/ ) {
- # ignore since we will replace this with current date below
-      } else {
+      if (/Translation last (pagified|updated)/) {
+
+        # ignore since we will replace this with current date below
+      }
+      else {
         $header .= $_ . "\n";
       }
     }
-    next if ( /^#/ );
+    next if (/^#/);
     $in_header = 0;
-    if ( /\s*:\s*/ ) {
+    if (/\s*:\s*/) {
       $abbrev = $`;
       $trans{$abbrev} = $';
     }
   }
 }
 if ( $plugin ne "" ) {
-  print "Reading current WebCalendar translations from $b_infile\n" if ( $verbose );
-  open ( F, $b_infile ) || die "Error opening $b_infile";
+  print "Reading current WebCalendar translations from $b_infile\n"
+    if ($verbose);
+  open( F, $b_infile ) || die "Error opening $b_infile";
   $in_header = 1;
-  while ( <F> ) {
+  while (<F>) {
     chop;
-    s/\r*$//g; # remove annoying CR
-    if ( /\s*:\s*/ ) {
+    s/\r*$//g;    # remove annoying CR
+    if (/\s*:\s*/) {
       $abbrev = $`;
       $webcaltrans{$abbrev} = $';
     }
@@ -156,145 +169,163 @@ if ( $plugin ne "" ) {
 #
 # Save a backup copy of old translation file.
 #
-if ( $save_backup ) {
-  open ( F, ">$infile.bak" ) || die "Error writing $infile.bak";
+if ($save_backup) {
+  open( F, ">$infile.bak" ) || die "Error writing $infile.bak";
   print F $old;
-  close ( F );
+  close(F);
   print "Backup of translation saved in $infile.bak\n";
 }
 
-
 if ( $header !~ /Translation last updated/ ) {
-  ( $day, $mon, $year ) = ( localtime ( time() ) )[3,4,5];
-  $header .= "# Translation last updated on " .
-    sprintf ( "%02d-%02d-%04d", $mon + 1, $day, $year + 1900 ) . "\n";
+  ( $day, $mon, $year ) = ( localtime( time() ) )[ 3, 4, 5 ];
+  $header .=
+    "# Translation last updated on "
+    . sprintf( "%02d-%02d-%04d", $mon + 1, $day, $year + 1900 ) . "\n";
 }
 
 # First get the list of .php files
-print "Searching for PHP files in $p_base_dir\n" if ( $verbose );
-opendir ( DIR, $p_base_dir ) || die "Error opening $p_base_dir";
-@files = grep ( /\.php$/, readdir ( DIR ) );
-closedir ( DIR );
+print "Searching for PHP files in $p_base_dir\n" if ($verbose);
+opendir( DIR, $p_base_dir ) || die "Error opening $p_base_dir";
+@files = grep ( /\.php$/, readdir(DIR) );
+closedir(DIR);
 
 if ( -d "$p_base_dir/includes" ) {
-  print "Searching for PHP files in $p_base_dir/includes\n" if ( $verbose );
-  opendir ( DIR, "$p_base_dir/includes" ) ||
-    die "Error opening $p_base_dir/includes";
-  @incfiles = grep ( /\.php$/, readdir ( DIR ) );
-  closedir ( DIR );
-  foreach $f ( @incfiles ) {
-    push ( @files, "includes/$f" );
+  print "Searching for PHP files in $p_base_dir/includes\n" if ($verbose);
+  opendir( DIR, "$p_base_dir/includes" )
+    || die "Error opening $p_base_dir/includes";
+  @incfiles = grep ( /\.php$/, readdir(DIR) );
+  closedir(DIR);
+  foreach $f (@incfiles) {
+    push( @files, "includes/$f" );
   }
 }
 if ( -d "$p_base_dir/includes/js" ) {
-  print "Searching for PHP files in $p_base_dir/includes/js\n" if ( $verbose );
-  opendir ( DIR, "$p_base_dir/includes/js" ) ||
-    die "Error opening $p_base_dir/includes/js";
-  @incfiles = grep ( /\.php$/, readdir ( DIR ) );
-  closedir ( DIR );
-  foreach $f ( @incfiles ) {
-    push ( @files, "includes/js/$f" );
+  print "Searching for PHP files in $p_base_dir/includes/js\n" if ($verbose);
+  opendir( DIR, "$p_base_dir/includes/js" )
+    || die "Error opening $p_base_dir/includes/js";
+  @incfiles = grep ( /\.php$/, readdir(DIR) );
+  closedir(DIR);
+  foreach $f (@incfiles) {
+    push( @files, "includes/js/$f" );
   }
 }
 if ( -d "$p_base_dir/includes/classes" ) {
-  print "Searching for Class files in $p_base_dir/includes/classes\n" if ( $verbose );
-  opendir ( DIR, "$p_base_dir/includes/classes" ) ||
-    die "Error opening $p_base_dir/includes/classes";
-  @incfiles = grep ( /\.class$/, readdir ( DIR ) );
-  closedir ( DIR );
-  foreach $f ( @incfiles ) {
-    push ( @files, "includes/classes/$f" );
+  print "Searching for Class files in $p_base_dir/includes/classes\n"
+    if ($verbose);
+  opendir( DIR, "$p_base_dir/includes/classes" )
+    || die "Error opening $p_base_dir/includes/classes";
+  @incfiles = grep ( /\.class$/, readdir(DIR) );
+  closedir(DIR);
+  foreach $f (@incfiles) {
+    push( @files, "includes/classes/$f" );
   }
 }
 if ( $plugin eq "" ) {
-  push ( @files, "tools/send_reminders.php" );
-  push ( @files, "install/index.php" );
+  push( @files, "tools/send_reminders.php" );
+  push( @files, "install/index.php" );
 }
 
 #
 # Write new translation file.
 #
 $notfound = 0;
-open ( OUT, ">$infile" ) || die "Error writing $infile: ";
+open( OUT, ">$infile" ) || die "Error writing $infile: ";
 print OUT $header;
 if ( $plugin eq '' ) {
-  if ( defined ( $trans{'charset'} ) ) {
-    print OUT 
-      "\n\n###############################################\n" .
-      "# Specify a charset (will be sent within meta tag for each page)\n#\n" .
-      "charset: $trans{'charset'}\n\n";
-    $text{'charset'} = 1;
+  if ( defined( $trans{'charset'} ) ) {
+    print OUT "\n\n###############################################\n"
+      . "# Specify a charset (will be sent within meta tag for each page)\n#\n"
+      . "charset: $trans{'charset'}\n\n";
+    $text{'charset'}    = 1;
     $foundin{'charset'} = " top of this file";
-  } else {
-    print OUT "\n# No charset specified (not needed for iso-8859-1)\n" .
-      "# \"charset\" is used in a meta tag, " .
-      "do not translate \"charset\" here.\n" .
-      "# charset:\n\n";
+  }
+  else {
+    print OUT "\n# No charset specified (not needed for iso-8859-1)\n"
+      . "# \"charset\" is used in a meta tag, "
+      . "do not translate \"charset\" here.\n"
+      . "# charset:\n\n";
   }
 }
 
-foreach $f ( @files ) {
-  $pageHeader = "\n\n###############################################\n# Page: $f\n#\n";
+foreach $f (@files) {
+  $pageHeader =
+    "\n\n###############################################\n# Page: $f\n#\n";
   $file = "$p_base_dir/$f";
-  open ( F, $file ) || die "Error reading $file";
-  print "Searching $f\n" if ( $verbose );
+  open( F, $file ) || die "Error reading $file";
+  print "Searching $f\n" if ($verbose);
   %thispage = ();
-  while ( <F> ) {
+  while (<F>) {
     $data = $_;
     while ( $data =~ /(translate|tooltip)\s*\(\s*"/ ) {
       $data = $';
       if ( $data =~ /"\s*\)/ ) {
         $text = $`;
- if ( defined ( $thispage{$text} ) ) {
+        if ( defined( $thispage{$text} ) ) {
+
           # text already found within this page...
- } elsif ( $text eq 'charset' ) {
+        }
+        elsif ( $text eq 'charset' ) {
+
           # ignore...
- } elsif ( defined ( $text{$text} ) ) {
-          if ( ! show_dups ) {
+        }
+        elsif ( defined( $text{$text} ) ) {
+          if ( !show_dups ) {
             if ( $pageHeader ne '' ) {
-              print OUT $pageHeader; $pageHeader = '';
+              print OUT $pageHeader;
+              $pageHeader = '';
             }
-            print OUT "# \"$text\" previously defined (in $foundin{$text})\n"
+            print OUT "# \"$text\" previously defined (in $foundin{$text})\n";
           }
-   $thispage{$text} = 1;
- } else {
-          if ( ! length ( $trans{$text} ) ) {
-            if ( $show_missing ) {
-              if ( length ( $webcaltrans{$text} ) ) {
-                if ( $pageHeader ne '' ) { print OUT $pageHeader; $pageHeader = ''; }
+          $thispage{$text} = 1;
+        }
+        else {
+          if ( !length( $trans{$text} ) ) {
+            if ($show_missing) {
+              if ( length( $webcaltrans{$text} ) ) {
+                if ( $pageHeader ne '' ) {
+                  print OUT $pageHeader;
+                  $pageHeader = '';
+                }
                 print OUT "# \"$text\" defined in WebCalendar translation\n";
-              } else {
-                if ( $pageHeader ne '' ) { print OUT $pageHeader; $pageHeader = ''; }
+              }
+              else {
+                if ( $pageHeader ne '' ) {
+                  print OUT $pageHeader;
+                  $pageHeader = '';
+                }
                 print OUT "#\n# << MISSING >>\n# $text:\n";
                 print OUT "# English text: $base_trans{$text}\n#\n"
-                  if ( length ( $base_trans{$text} ) &&
-                    $base_trans{$text} ne $text );
+                  if ( length( $base_trans{$text} )
+                  && $base_trans{$text} ne $text );
               }
             }
-            $text{$text} = 1;
-     $thispage{$text} = 1;
-     $foundin{$text} = $f;
-            $notfound++ if ( ! length ( $webcaltrans{$text} ) );
-   } else {
-            $text{$text} = 1;
-     $foundin{$text} = $f;
-     $thispage{$text} = 1;
+            $text{$text}     = 1;
+            $thispage{$text} = 1;
+            $foundin{$text}  = $f;
+            $notfound++ if ( !length( $webcaltrans{$text} ) );
+          }
+          else {
+            $text{$text}     = 1;
+            $foundin{$text}  = $f;
+            $thispage{$text} = 1;
             if ( $pageHeader ne '' ) {
-              print OUT $pageHeader; $pageHeader = '';
+              print OUT $pageHeader;
+              $pageHeader = '';
             }
             printf OUT ( "%s: %s\n", $text, $trans{$text} );
-   }
+          }
         }
         $data = $';
       }
     }
   }
-  close ( F );
+  close(F);
 }
 
-if ( ! $notfound ) {
+if ( !$notfound ) {
   print STDERR "All text was found in $infile.  Good job :-)\n";
-} else {
+}
+else {
   print STDERR "$notfound translation(s) missing.\n";
 }
 
