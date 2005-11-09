@@ -22,71 +22,71 @@ $trans_dir = "../translations";
 $infile = $ARGV[0];
 
 if ( $infile eq "" ) {
-  opendir ( DIR, $trans_dir ) || die "error opening $trans_dir";
-  @files = grep ( /\.txt$/, readdir ( DIR ) );
-  closedir ( DIR );
+  opendir( DIR, $trans_dir ) || die "error opening $trans_dir";
+  @files = grep ( /\.txt$/, readdir(DIR) );
+  closedir(DIR);
   $last_mtime = 0;
-  foreach $f ( @files ) {
-    ( $mtime ) = ( stat ( "../translations/$f" ) )[9];
+  foreach $f (@files) {
+    ($mtime) = ( stat("../translations/$f") )[9];
     if ( $mtime > $last_mtime ) {
       $last_mtime = $mtime;
-      $infile = "../translations/$f";
+      $infile     = "../translations/$f";
     }
   }
 }
 
-if ( $infile ne "" && ! -f $infile && -f "$trans_dir/$infile" ) {
+if ( $infile ne "" && !-f $infile && -f "$trans_dir/$infile" ) {
   $infile = "$trans_dir/$infile";
 }
 
-if ( $infile ne "" && ! -f $infile && -f "$trans_dir/$infile.txt" ) {
+if ( $infile ne "" && !-f $infile && -f "$trans_dir/$infile.txt" ) {
   $infile = "$trans_dir/$infile.txt";
 }
 
-
 # First get the list of .php and .inc files.
-opendir ( DIR, ".." ) || die "Error opening ..";
-@files = grep ( /\.php$/, readdir ( DIR ) );
-closedir ( DIR );
+opendir( DIR, ".." ) || die "Error opening ..";
+@files = grep ( /\.php$/, readdir(DIR) );
+closedir(DIR);
 
-opendir ( DIR, "../includes" ) || die "Error opening ../includes";
-@incfiles = grep ( /\.php$/, readdir ( DIR ) );
-closedir ( DIR );
-foreach $f ( @incfiles ) {
-  push ( @files, "includes/$f" );
+opendir( DIR, "../includes" ) || die "Error opening ../includes";
+@incfiles = grep ( /\.php$/, readdir(DIR) );
+closedir(DIR);
+foreach $f (@incfiles) {
+  push( @files, "includes/$f" );
 }
-opendir ( DIR, "../includes/js" ) || die "Error opening ../includes/js";
-@incfiles = grep ( /\.php$/, readdir ( DIR ) );
-closedir ( DIR );
-foreach $f ( @incfiles ) {
-  push ( @files, "includes/js/$f" );
+opendir( DIR, "../includes/js" ) || die "Error opening ../includes/js";
+@incfiles = grep ( /\.php$/, readdir(DIR) );
+closedir(DIR);
+foreach $f (@incfiles) {
+  push( @files, "includes/js/$f" );
 }
-opendir ( DIR, "../includes/classes" ) || die "Error opening ../includes/classes";
-@incfiles = grep ( /\.class$/, readdir ( DIR ) );
-closedir ( DIR );
-foreach $f ( @incfiles ) {
-  push ( @files, "includes/classes/$f" );
+opendir( DIR, "../includes/classes" )
+  || die "Error opening ../includes/classes";
+@incfiles = grep ( /\.class$/, readdir(DIR) );
+closedir(DIR);
+foreach $f (@incfiles) {
+  push( @files, "includes/classes/$f" );
 }
-push ( @files, "tools/send_reminders.php" );
-push ( @files, "install/index.php" );
+push( @files, "tools/send_reminders.php" );
+push( @files, "install/index.php" );
 
-
-foreach $f ( @files ) {
+foreach $f (@files) {
   $file = "../$f";
-  open ( F, $file ) || die "Error reading $file";
+  open( F, $file ) || die "Error reading $file";
+
   #print "Checking $f for text.\n";
-  while ( <F> ) {
+  while (<F>) {
     $data = $_;
     while ( $data =~ /(translate|tooltip)\s*\(\s*"/ ) {
       $data = $';
       if ( $data =~ /"\s*\)/ ) {
-        $text = $`;
+        $text        = $`;
         $text{$text} = 1;
-        $data = $';
+        $data        = $';
       }
     }
   }
-  close ( F );
+  close(F);
 }
 
 #print "Found the following entries:\n";
@@ -95,24 +95,24 @@ foreach $f ( @files ) {
 #}
 
 # Now load the translation file
-if ( ! -f $infile ) {
+if ( !-f $infile ) {
   die "Usage: $0 translation-file\n";
 }
-open ( F, $infile ) || die "Error opening $infile";
-while ( <F> ) {
+open( F, $infile ) || die "Error opening $infile";
+while (<F>) {
   chop;
-  next if ( /^#/ );
-  if ( /\s*:/ ) {
+  next if (/^#/);
+  if (/\s*:/) {
     $abbrev = $`;
     $trans{$abbrev} = $';
   }
 }
 
 $notfound = 0;
-$total = 0;
-foreach $text ( sort { uc($a) cmp uc($b) } keys ( %text ) ) {
-  if ( ! defined ( $trans{$text} ) ) {
-    if ( ! $notfound ) {
+$total    = 0;
+foreach $text ( sort { uc($a) cmp uc($b) } keys(%text) ) {
+  if ( !defined( $trans{$text} ) ) {
+    if ( !$notfound ) {
       print "The following text did not have a translation in $infile:\n\n";
     }
     print "$text\n";
@@ -123,9 +123,9 @@ foreach $text ( sort { uc($a) cmp uc($b) } keys ( %text ) ) {
 
 # Check for translations that are not used...
 $extra = 0;
-foreach $text ( sort { uc($a) cmp uc($b) } keys ( %trans ) ) {
-  if ( ! defined ( $text{$text} ) ) {
-    if ( ! $extra ) {
+foreach $text ( sort { uc($a) cmp uc($b) } keys(%trans) ) {
+  if ( !defined( $text{$text} ) ) {
+    if ( !$extra ) {
       print "\nThe following translation text is not needed in $infile:\n\n";
     }
     print "$text\n";
@@ -133,11 +133,12 @@ foreach $text ( sort { uc($a) cmp uc($b) } keys ( %trans ) ) {
   }
 }
 
-if ( ! $notfound ) {
+if ( !$notfound ) {
   print "All text was found in $infile.  Good job :-)\n";
-} else {
-  printf "\n$notfound of $total translation(s) missing. (%1.1f%% complete)\n", 
-   ( 100 * ( $total - $notfound ) / $total );
+}
+else {
+  printf "\n$notfound of $total translation(s) missing. (%1.1f%% complete)\n",
+    ( 100 * ( $total - $notfound ) / $total );
 }
 
 exit 0;
