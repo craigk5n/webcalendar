@@ -256,9 +256,9 @@ foreach $f (@files) {
   %thispage = ();
   while (<F>) {
     $data = $_;
-    while ( $data =~ /(translate|tooltip)\s*\(\s*"/ ) {
+    while ( $data =~ /(translate|tooltip)\s*\(\s*['"]/ ) {
       $data = $';
-      if ( $data =~ /"\s*\)/ ) {
+      if ( $data =~ /['"]\s*[,\)]/ ) {
         $text = $`;
         if ( defined( $thispage{$text} ) ) {
 
