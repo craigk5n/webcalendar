@@ -2439,7 +2439,7 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
     foreach ($ex_days as $ex_day ) {
       $cnt = count($ret);
       for ( $i =0; $i< $cnt;$i++ ) {
-        if ( isset($ret[$i] ) && ( date ("Ymd", $ret[$i]) == 
+        if ( isset($ret[$i] ) &&  date ("Ymd", $ret[$i]) == 
           substr( $ex_day, 0, 8 ) ){
           unset ($ret[$i]);
         }
