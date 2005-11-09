@@ -54,7 +54,7 @@ function infoinit(){
   for (var i = 0; i < entries.length; i++) {
     entries[i].onmouseover = function(event) {
    show(event, "eventinfo-" + this.id);
-   window.status = "<?php etranslate("View this entry"); ?>";
+   window.status = "<?php etranslate("View this entry", true); ?>";
    return true;
   }
     entries[i].onmouseout = function() {

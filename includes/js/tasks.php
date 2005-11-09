@@ -14,7 +14,7 @@ function validate_and_submit_task () {
   if ( document.forms[0].brief_desc.value == "" ) {
     document.forms[0].brief_desc.select ();
     document.forms[0].brief_desc.focus ();
-    alert ( "<?php etranslate("You have not entered a Brief Description")?>." );
+    alert ( "<?php etranslate("You have not entered a Brief Description", true)?>." );
     return false;
   }
 
@@ -85,7 +85,7 @@ function validate_and_submit_category () {
   if ( document.forms[0].catname.value == "" ) {
     document.forms[0].catname.select ();
     document.forms[0].catname.focus ();
-    alert ( "<?php etranslate("You have not entered a Category Name")?>." );
+    alert ( "<?php etranslate("You have not entered a Category Name", true)?>." );
     return false;
   }
 

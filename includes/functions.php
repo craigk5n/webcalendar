@@ -772,7 +772,7 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
  * same groups that they are in).
  *
  * If user access control is enabled, then we also check to see if this
- * user is allowed to view each user's calendar.  If not, then that use
+ * user is allowed to view each user's calendar.  If not, then that user
  * is not included in the list.
  *
  * @return array Array of users, where each element in the array is an array
@@ -5618,7 +5618,7 @@ function error_check ( $nextURL ) {
       //  echo \"<br /><br /><strong>SQL:</strong> $sql\";
     echo "</blockquote>\n</body></html>";
   } else if ( empty ($error) ) {
-    print "<html><head></head><body onload=\"alert('" . translate("Changes successfully saved") . "'); window.parent.location.href='$nextURL';\"></body></html>";
+    print "<html><head></head><body onload=\"alert('" . translate("Changes successfully saved", true) . "'); window.parent.location.href='$nextURL';\"></body></html>";
   }
 }
 

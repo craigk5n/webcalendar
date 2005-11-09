@@ -12,7 +12,7 @@ function validate_and_submit () {
     showTab ( "details" );
 <?php } ?>
     document.edittaskform.name.focus ();
-    alert ( "<?php etranslate("You have not entered a Brief Description")?>." );
+    alert ( "<?php etranslate("You have not entered a Brief Description", true)?>." );
     return false;
   }
   // Leading zeros seem to confuse parseInt()
@@ -38,7 +38,7 @@ function validate_and_submit () {
         $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
         showTab ( "details" );
 <?php } ?>
-      alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
+      alert ( "<?php etranslate ("You have not entered a valid time of day", true)?>." );
       document.edittaskform.cal_hour.select ();
       document.edittaskform.cal_hour.focus ();
       return false;
@@ -49,7 +49,7 @@ function validate_and_submit () {
         $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
         showTab ( "details" );
 <?php } ?>
-      alert ( "<?php etranslate ("You have not entered a valid time of day")?>." );
+      alert ( "<?php etranslate ("You have not entered a valid time of day", true)?>." );
       document.edittaskform.cal_minute.select ();
       document.edittaskform.cal_minute.focus ();
       return false;
@@ -62,7 +62,7 @@ function validate_and_submit () {
       echo "if ( h < $WORK_DAY_START_HOUR && document.edittaskform.ampm[0].checked ) {";
     }
     ?>
-    if ( ! confirm ( "<?php etranslate ("The time you have entered begins before your preferred work hours.  Is this correct?")?> "))
+    if ( ! confirm ( "<?php etranslate ("The time you have entered begins before your preferred work hours.  Is this correct?", true)?> "))
       return false;
   }
   }
@@ -109,7 +109,7 @@ function validate_and_submit () {
   var valy = document.edittaskform.start_year.options[y].value;
   var c = new Date(valy,valm -1,vald);
  if ( c.getDate() != vald ) {
-   alert ("<?php etranslate ("Invalid Event Date")?>.");
+   alert ("<?php etranslate ("Invalid Event Date", true)?>.");
   document.edittaskform.start_day.focus ();
    return false;
  }
@@ -123,7 +123,7 @@ function validate_and_submit () {
   var valy = document.edittaskform.due_year.options[y].value;
   var c = new Date(valy,valm -1,vald);
  if ( c.getDate() != vald ) {
-   alert ("<?php etranslate ("Invalid Event Date")?>.");
+   alert ("<?php etranslate ("Invalid Event Date", true)?>.");
   document.edittaskform.due_day.focus ();
    return false;
  } 
@@ -243,7 +243,7 @@ function showSchedule () {
     }
   }
   if (users == '') {
-    alert("<?php etranslate("Please add a participant")?>" );
+    alert("<?php etranslate("Please add a participant", true)?>" );
     return false;
   }
   var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=no';

@@ -11,69 +11,69 @@ function valid_form ( form ) {
   var err = "";
 
   if ( form.admin_SERVER_URL.value == "" ) {
-    err += "<?php etranslate("Server URL is required")?>.\n";
+    err += "<?php etranslate("Server URL is required", true)?>.\n";
     form.admin_SERVER_URL.select ();
     form.admin_SERVER_URL.focus ();
   }
   else if ( form.admin_SERVER_URL.value.charAt (
     form.admin_SERVER_URL.value.length - 1 ) != '/' ) {
-    err += "<?php etranslate("Server URL must end with '/'")?>.\n";
+    err += "<?php etranslate("Server URL must end with '/'", true)?>.\n";
     form.admin_SERVER_URL.select ();
     form.admin_SERVER_URL.focus ();
   }
 
   if ( parseInt ( form.admin_WORK_DAY_START_HOUR.value ) >=
     parseInt ( form.admin_WORK_DAY_END_HOUR.value ) ) {
-    err += "<?php etranslate("Invalid work hours")?>.\n";
+    err += "<?php etranslate("Invalid work hours", true)?>.\n";
     form.admin_WORK_DAY_START_HOUR.focus ();
   }
 
   if ( err != "" ) {
-    alert ( "Error:\n\n" + err );
+    alert ( "<?php etranslate ( "Error", true ) ?>" + ":\n\n" + err );
     return false;
   }
 
   if ( ! valid_color ( form.admin_BGCOLOR.value ) ) {
-    err += "<?php etranslate("Invalid color for document background")?>.\n";
+    err += "<?php etranslate("Invalid color for document background", true)?>.\n";
     form.admin_BGCOLOR.select ();
     form.admin_BGCOLOR.focus ();
   }
   else if ( ! valid_color ( form.admin_H2COLOR.value ) ) {
-    err += "<?php etranslate("Invalid color for document title")?>.\n";
+    err += "<?php etranslate("Invalid color for document title", true)?>.\n";
     form.admin_H2COLOR.select ();
     form.admin_H2COLOR.focus ();
   } else if ( ! valid_color ( form.admin_CELLBG.value ) ) {
-    err += "<?php etranslate("Invalid color for table cell background")?>.\n";
+    err += "<?php etranslate("Invalid color for table cell background", true)?>.\n";
     form.admin_CELLBG.select ();
     form.admin_CELLBG.focus ();
   } else if ( ! valid_color ( form.admin_TABLEBG.value ) ) {
-    err += "<?php etranslate("Invalid color for table grid")?>.\n";
+    err += "<?php etranslate("Invalid color for table grid", true)?>.\n";
     form.admin_TABLEBG.select ();
     form.admin_TABLEBG.focus ();
   } else if ( ! valid_color ( form.admin_THBG.value ) ) {
-    err += "<?php etranslate("Invalid color for table header background")?>.\n";
+    err += "<?php etranslate("Invalid color for table header background", true)?>.\n";
     form.admin_THBG.select ();
     form.admin_THBG.focus ();
   } else if ( ! valid_color ( form.admin_THFG.value ) ) {
-    err += "<?php etranslate("Invalid color for table text background")?>.\n";
+    err += "<?php etranslate("Invalid color for table text background", true)?>.\n";
     form.admin_THFG.select ();
     form.admin_THFG.focus ();
   } else if ( ! valid_color ( form.admin_POPUP_BG.value ) ) {
-    err += "<?php etranslate("Invalid color for event popup background")?>.\n";
+    err += "<?php etranslate("Invalid color for event popup background", true)?>.\n";
     form.admin_POPUP_BG.select ();
     form.admin_POPUP_BG.focus ();
   } else if ( ! valid_color ( form.admin_POPUP_FG.value ) ) {
-    err += "<?php etranslate("Invalid color for event popup text")?>.\n";
+    err += "<?php etranslate("Invalid color for event popup text", true)?>.\n";
     form.admin_POPUP_FG.select ();
     form.admin_POPUP_FG.focus ();
   } else if ( ! valid_color ( form.admin_TODAYCELLBG.value ) ) {
-    err += "<?php etranslate("Invalid color for table cell background for today")?>.\n";
+    err += "<?php etranslate("Invalid color for table cell background for today", true)?>.\n";
     form.admin_TODAYCELLBG.select ();
     form.admin_TODAYCELLBG.focus ();
   }
 
   if ( err.length > 0 ) {
-    alert ( "Error:\n\n" + err + "\n\n<?php etranslate("Color format should be '#RRGGBB'")?>" );
+    alert ( "<?php etranslate ( "Error", true ) ?>" + ":\n\n" + err + "\n\n<?php etranslate("Color format should be '#RRGGBB'", true)?>" );
     return false;
   }
   return true;
@@ -178,24 +178,24 @@ function email_handler () {
     // Email enabled
     makeVisible ( "em1" );
     makeVisible ( "em2" );
-		if ( mailer == 0 ) {
+    if ( mailer == 0 ) {
       makeVisible ( "em3" );
       makeVisible ( "em3a" );
       makeVisible ( "em4" );
-		  if ( auth ) {			
+      if ( auth ) {      
         makeVisible ( "em5" )
         makeVisible ( "em6" );
-			} else {
+      } else {
         makeInvisible ( "em5" )
-        makeInvisible ( "em6" );			
-			}
-		} else {
+        makeInvisible ( "em6" );      
+      }
+    } else {
       makeInvisible ( "em3" );
       makeInvisible ( "em3a" );
       makeInvisible ( "em4" );
       makeInvisible ( "em5" )
-      makeInvisible ( "em6" );		
-		}
+      makeInvisible ( "em6" );    
+    }
     makeVisible ( "em7" );
     makeVisible ( "em8" );
     makeVisible ( "em9" );
@@ -219,7 +219,7 @@ function email_handler () {
   }
 }
 
-<?php //see the showTab function in includes/js.php for common code shared by all pages
+<?php //see the showTab function in includes/js/visible.php for common code shared by all pages
  //using the tabbed GUI.
 ?>var tabs = new Array();
 tabs[1] = "settings";

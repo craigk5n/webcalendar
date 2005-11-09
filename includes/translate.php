@@ -14,8 +14,22 @@
  * @package WebCalendar
  */
 
-
-
+/** Performs html_entity_decode style conversion for php < 4.3
+ * Borrowed from http://us2.php.net/manual/en/function.html-entity-decode.php
+ *
+ * @param string $string  Text to convert
+ *
+ * #return string The converted text string        
+ */
+function unhtmlentities ( $string ) {
+  // replace numeric entities
+  $string = preg_replace('~&#x([0-9a-f]+);~ei', 'chr(hexdec("\\1"))', $string);
+  $string = preg_replace('~&#([0-9]+);~e', 'chr(\\1)', $string);
+  // replace literal entities
+  $trans_tbl = get_html_translation_table(HTML_ENTITIES);
+  $trans_tbl = array_flip($trans_tbl);
+  return strtr($string, $trans_tbl);
+}
 
 /**
  * Unloads translations so we can switch languages and translate into a
@@ -123,12 +137,14 @@ function get_browser_language () {
  * The first time that this is called, the translation file will be loaded
  * (with {@link load_translation_text()}).
  *
- * @param string $str Text to translate
+ * @param string $str    Text to translate
+ * @param string $decode Do we want to envoke html_entity_decode
+ *                       We currently only use this with javascript alerts
  *
  * @return string The translated text, if available.  If no translation is
  *                avalailable, then the original untranslated text is returned.
  */
-function translate ( $str ) {
+function translate ( $str, $decode='' ) {
   global $translations, $translation_loaded;
 
   if ( ! $translation_loaded ) {
@@ -138,7 +154,15 @@ function translate ( $str ) {
 
   $str = trim ( $str );
   if ( ! empty ( $translations[$str] ) )
-    return $translations[$str];
+    // html_entity_decode available PHP 4 >= 4.3.0, PHP 5
+    if ( $decode == true  && function_exists ( 'html_entity_decode' ) ) {
+      return html_entity_decode ( $translations[$str] );
+      // for php < 4.3
+    } else if ( $decode == true ) {
+      return  unhtmlentities ( $translations[$str] );
+    } else {
+      return  $translations[$str] ;
+    }
   else {
     // To help in translating, use the following to help identify text that
     // has not been translated
@@ -156,12 +180,13 @@ function translate ( $str ) {
  *
  * <code>echo translate ( $str )</code>
  *
- * @param string $str Text to translate and print
+ * @param string $str    Text to translate and print
+ * @param string $decode Do we want to envoke html_entity_decode
  *
  * @uses translate
  */
-function etranslate ( $str ) {
-  echo translate ( $str );
+function etranslate ( $str, $decode='' ) {
+  echo translate ( $str, $decode );
 }
 
 /**
@@ -176,8 +201,8 @@ function etranslate ( $str ) {
  *
  * @return string The translated text with all HTML removed
  */
-function tooltip ( $str ) {
-  $ret = translate ( $str );
+function tooltip ( $str, $decode='' ) {
+  $ret = translate ( $str, $decode );
   $ret = eregi_replace ( "<[^>]+>", "", $ret );
   $ret = eregi_replace ( "\"", "'", $ret );
   return $ret;

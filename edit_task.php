@@ -433,7 +433,7 @@ if ( ! empty ( $parent ) )
    <input type="button" value="Edit" onClick="editCats(event)" /></td><td valign="top">
       <input  readonly=""type="text" name="catnames" 
      value="<?php echo $catNames ?>"  size="50" 
-    onClick="alert('<?php etranslate("Use the Edit button to make changes.") ?>')"/>
+    onClick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/>
    <input  type="hidden" name="cat_id" id="task_categories" value="<?php echo $catList ?>" />
      </td></tr>
 <?php } //end if (! empty ($categories)) ?>

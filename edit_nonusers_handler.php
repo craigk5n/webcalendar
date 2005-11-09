@@ -98,6 +98,7 @@ echo $error;
 </body>
 </html>
 <?php } else if ( empty ( $error ) ) {
-?><html><head></head><body onload="alert('<?php etranslate("Changes successfully saved");?>'); window.parent.location.href='users.php';">
+?><html><head></head>
+<body onLoad="alert('<?php etranslate("Changes successfully saved", true);?>'); window.parent.location.href='users.php';">
 </body></html>
 <?php } ?>

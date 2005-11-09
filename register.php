@@ -193,11 +193,11 @@ print_header();
 // error check login/password
 function valid_form () {
   if ( document.selfreg.user.value.length == 0 || document.selfreg.upassword1.value.length == 0 || document.selfreg.upassword2.value.length == 0) {
-    alert ( "<?php etranslate("You must enter a login and password")?>." );
+    alert ( "<?php etranslate("You must enter a login and password", true)?>." );
     return false;
   }
   if ( document.selfreg.upassword1.value != document.selfreg.upassword2.value ) {
-    alert ( "<?php etranslate("Your passwords do not match")?>." );
+    alert ( "<?php etranslate("Your passwords do not match", true)?>." );
     return false;
   }
  

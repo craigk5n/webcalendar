@@ -32,7 +32,7 @@
  * since it did display a PHP compile error message...)
  *
  * Usage Requirements:
- * For this work, at least on Apache, the following needs
+ * For this work, at least on some Apache intallations, may need
  * to be added to the http.conf file:
  *  <Directory "/var/www/html/webcalendar">
  *    Script PUT /icalclient.php    
@@ -112,7 +112,7 @@ $WebCalendar->initializeSecondPhase();
 
 // Require an authenticated user HTTP Auth
 // TODO: make this work for CGI installations
-//       see http://us3.php.net/manual/en/features.http-auth.php
+// see http://us3.php.net/manual/en/features.http-auth.php
 global $login;
 
 if ( empty ( $APPLICATION_NAME ) ) {
@@ -160,7 +160,6 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
 //echo $prefarray['USER_PUBLISH_RW_ENABLED'];
 if ( empty ( $USER_PUBLISH_RW_ENABLED ) || $USER_PUBLISH_RW_ENABLED != 'Y' ) {
   header ( "Content-Type: text/plain" );
-  //TO DO add to translations (???)
   etranslate ("Publishing Disabled (User)" );
   exit;
 }
