@@ -67,7 +67,7 @@ for ( $i = 0; $i < 7; $i++ ) {
     date_to_str ( date ( "Ymd", $wkend ), "", false );
 ?></span>
 <?php
-if ( $"DISPLAY_WEEKNUMBER == "Y" ) {
+if ( $DISPLAY_WEEKNUMBER == "Y" ) {
   echo "<br />\n<span class=\"weeknumber\">(" .
     translate("Week") . " " . date( "W", $wkstart + ONE_DAY ) . ")</span>";
 }
@@ -264,7 +264,7 @@ function print_det_date_entries ( $date, $user, $ssi ) {
   $ev = combine_and_sort_events($ev, $rep);
 
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    if ( $DISPLAY_UNAPPROVED != "N" ||
+    if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED != 'N' ) ||
       $ev[$i]->getStatus() == 'A' )
       print_detailed_entry ( $ev[$i], $date );
   }
