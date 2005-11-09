@@ -1065,7 +1065,7 @@ doc.li {
 <tr><th class="header" colspan="2">
  PHP Settings
 <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
-  &nbsp;<input name="action" type="button" value="<?php etranslate ( "Detailed PHP Info" ) ?>" onClick="testPHPInfo()" />
+  &nbsp;<input name="action" type="button" value="<?php etranslate ( "Detailed PHP Info" ) ?>" onclick="testPHPInfo()" />
 <?php } ?>
 </th></tr>
 <?php foreach ( $php_settings as $setting ) { ?>
@@ -1276,7 +1276,7 @@ if ( ! $exists || ! $canWrite ) { ?>
   <tr><td rowspan="6" width="20%">&nbsp;
    </td><td class="prompt" width="25%" valign="bottom">
    <label for="db_type"><?php etranslate ( "Database Type" ) ?>:</label></td><td valign="bottom">
-   <select name="form_db_type" id="db_type" onChange="db_type_handler();">
+   <select name="form_db_type" id="db_type" onchange="db_type_handler();">
 <?php
   if ( ! empty ( $supported['mysql'] ) )
     echo "  <option value=\"mysql\" " .
@@ -1561,7 +1561,7 @@ if ( ! $exists || ! $canWrite ) { ?>
       
    <tr><td class="prompt"><?php etranslate ( "User Authentication" ) ?>:</td>
    <td>
-    <select name="form_user_inc" onChange="auth_handler()">
+    <select name="form_user_inc" onchange="auth_handler()">
   <?php
    echo "<option value=\"user.php\" " .
     ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] != 'true' ? " selected=\"selected\"" : "" ) .
@@ -1625,10 +1625,10 @@ if ( ! $exists || ! $canWrite ) { ?>
  <table width="80%"  align="center">
  <tr><td align="center">
   <?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  && empty ( $dologin ) ) { ?>
-  <input name="action" type="button" value="<?php etranslate ( "Save Settings" ) ?>" onClick="return validate();" />
+  <input name="action" type="button" value="<?php etranslate ( "Save Settings" ) ?>" onclick="return validate();" />
    <?php if ( ! empty ( $_SESSION['old_program_version'] ) && 
     $_SESSION['old_program_version'] == $PROGRAM_VERSION  && ! empty ( $setup_complete )) { ?>
-    <input type="button"  name="action2" value="<?php etranslate ( "Launch WebCalendar" ) ?>" onClick="window.open('../index.php', 'webcalendar');" />
+    <input type="button"  name="action2" value="<?php etranslate ( "Launch WebCalendar" ) ?>" onclick="window.open('../index.php', 'webcalendar');" />
    <?php } ?>
   <?php } ?>
   <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
