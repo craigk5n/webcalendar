@@ -109,6 +109,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added new translation decoding for HTML entities in javascript
     + Adding logic to consume TZID settings in ics files. If the TZID used the Olson 
       timezone database naming conventions, we will apply that TIMEZONE to that event
     + Added new Repeat type 'Manual' that allows adding Inclusions/Exclusions 
