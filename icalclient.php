@@ -135,7 +135,7 @@ if ( empty ( $login ) ) {
     } else {
       unset($_SERVER['PHP_AUTH_USER']);
       unset($_SERVER['PHP_AUTH_PW']);
-      //TO DO should be able code this better to eliminate duplicate code
+      //TODO should be able code this better to eliminate duplicate code
       header('WWW-Authenticate: Basic realm="WebCalendar Publisher - ' . $APPLICATION_NAME );
       header('HTTP/1.0 401 Unauthorized');
       exit;

@@ -51,10 +51,11 @@ if ( empty ( $user ) ) {
   $user = $arr[count($arr)-1];
   # remove any trailing ".ics" in user name
   $user = preg_replace ( "/\.[iI][cC][sS]$/", '', $user );
-  if ( $user == 'public' )
-    $user = '__public__';
 }
 
+if ( $user == 'public' )
+  $user = '__public__';
+  
 load_global_settings ();
 
 $WebCalendar->setLanguage();
@@ -93,6 +94,7 @@ user_load_variables ( $user, "publish_" );
 
 //header ( "Content-Type: text/plain" );
 header ( "Content-Type: text/calendar" );
+header ( 'Content-Disposition: attachment; filename="' . $user .  '.ics"' );
 $use_all_dates = true;
 export_ical();
 ?>
