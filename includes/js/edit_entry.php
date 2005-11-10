@@ -15,14 +15,9 @@ function validate_and_submit () {
     alert ( "<?php etranslate("You have not entered a Brief Description", true)?>.");
     return false;
   }
-  // Leading zeros seem to confuse parseInt()
-  if ( document.editentryform.hour.value.charAt ( 0 ) == '0' )
-    document.editentryform.hour.value = document.editentryform.hour.value.substring ( 1, 2 );
   if ( document.editentryform.timetype.selectedIndex == 1 ) {
-    h = parseInt ( document.editentryform.hour.value );
-    m = parseInt ( document.editentryform.minute.value );
-    if ( isNaN(h) ) h = 99;
-    if ( isNaN(m) ) m = 99;  
+    h = isNumeric( document.editentryform.hour.value );
+    m = isNumeric( document.editentryform.minute.value );  
 <?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
     if ( document.editentryform.ampm[1].checked ) {
       // pm
@@ -66,13 +61,9 @@ function validate_and_submit () {
   }
   //test endhour and endminute if used  
   if ( document.editentryform.endhour ) {
-    if ( document.editentryform.endhour.value.charAt ( 0 ) == '0' )
-      document.editentryform.endhour.value = document.editentryform.endhour.value.substring ( 1, 2 );
     if ( document.editentryform.timetype.selectedIndex == 1 ) {
-      eh = parseInt ( document.editentryform.endhour.value );
-      em = parseInt ( document.editentryform.endminute.value );
-      if ( isNaN(eh) ) eh = 99;
-      if ( isNaN(em) ) em = 99;  
+      eh = isNumeric( document.editentryform.endhour.value );
+      em = isNumeric( document.editentryform.endminute.value );   
     <?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
       if ( document.editentryform.endampm[1].checked ) {
         // pm
@@ -592,11 +583,29 @@ function editCats (  evt ) {
   var catWindow = window.open(url,"EditCat","width=365,height=200,"  + MyPosition);
 }
 
-function displayInValid($var)
+function displayInValid(myvar)
 {
   alert ( "<?php etranslate ("You have not entered a valid time of day", true)?>.");
-  $var.select ();
-  $var.focus ();
+  myvar.select ();
+  myvar.focus ();
+}
+
+function isNumeric(sText)
+{
+   //allow blank values. these will become 0
+   if ( sText.length == 0 ) 
+     return sText;
+   var validChars = "0123456789";
+   var Char;
+   for (i = 0; i < sText.length && sText != 99; i++) 
+   { 
+      Char = sText.charAt(i); 
+      if (validChars.indexOf(Char) == -1) 
+      {
+        sText = 99;
+      }
+   }
+   return sText;
 }
 //]]> -->
 </script>
