@@ -3380,11 +3380,12 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
       $hour_arr[$ind] .= "-" . display_time ( $event->getEndDateTime() );
       // which slot is end time in? take one off so we don't
       // show 11:00-12:00 as taking up both 11 and 12 slots.
-      $end_time = date( "His", get_datetime_add_tz( $event->getDate(),$event->getTime() ) );
+      $end_time = date( "His", get_datetime_add_tz( $event->getDate(), 
+        $event->getEndTime() ) );
       //this fixes the improper display if an event ends at or after midnight
       if ( $end_time <  $tz_time ){
         $end_time += 240000;
-      }   
+      }         
       $endind = calc_time_slot ( $end_time, true );
       if ( $endind == $ind )
         $rowspan = 0;
