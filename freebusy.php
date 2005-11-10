@@ -67,10 +67,11 @@ if ( empty ( $user ) ) {
   $user = $arr[count($arr)-1];
   # remove any trailing ".ifb" in user name
   $user = preg_replace ( "/\.[iI][fF][bB]$/", '', $user );
-  if ( $user == 'public' )
-    $user = '__public__';
 }
 
+if ( $user == 'public' )
+  $user = '__public__';
+    
 load_global_settings ();
 
 // Load user preferences (to get the DISPLAY_UNAPPROVED and
@@ -130,7 +131,7 @@ for ( $d = $startdate; $d <= $enddate; $d += ONE_DAY ) {
 }
 
 header ( "Content-Type: text/calendar" );
-
+header ( 'Content-Disposition: attachment; filename="' . $login .  '.ifb"' );
 echo "BEGIN:VCALENDAR\r\n";
   $title = "X-WR-CALNAME;VALUE=TEXT:" .
   ( empty ( $publish_fullname ) ? $user : translate($publish_fullname) );

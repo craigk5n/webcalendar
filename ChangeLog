@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Corrected content type in publish.php and freebusy.php
+ - Fixed bug 1353363: publish.php logic error for public user?
  - Added new translation decoding for HTML entities in javascript
  - Fixed bug 1351971: "Delete"-Button won't work properly for reports
  - Applied PATCH 1297654: eliminate deprecated tags, excluding <b></b>
