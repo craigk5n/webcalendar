@@ -57,9 +57,9 @@ function ws_escape_xml ( $str )
 {
   $str = str_replace ( "\r\n", "\\n", $str );
   $str = str_replace ( "\n", "\\n", $str );
-  $str = str_replace ( '<br/>', "\\n", $str );
   $str = str_replace ( '<br />', "\\n", $str );
-  $str = str_replace ( '\n', "<br/>", $str );
+  $str = str_replace ( '<br />', "\\n", $str );
+  $str = str_replace ( '\n', "<br />", $str );
   $str = str_replace ( '&amp;', '&', $str );
   $str = str_replace ( '&', '&amp;', $str );
   return ( str_replace ( "<", "&lt;", str_replace ( ">", "&gt;", $str ) ) );

@@ -109,7 +109,7 @@ Display description in printer day view: Mostrar descrição na vista de impressor
 date-format-help: Especifica o formato preferido da data.
 Date format: Formato da data
 December: Dezembro
-time-format-help: Especifica o formato da hora a utilizar: <I>12 horas:</I> Mostra no formato 3am, 8:30pm, etc. <I>24 horas:</I> Mostra no formato 300, 2030, etc.
+time-format-help: Especifica o formato da hora a utilizar: <em>12 horas:</em> Mostra no formato 3am, 8:30pm, etc. <em>24 horas:</em> Mostra no formato 300, 2030, etc.
 Time format: Formato da hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -121,7 +121,7 @@ auto-refresh-help: Quando activo, as vistas de dia, semana, mês e lista de de pá
 Auto-refresh calendars: Actualizar automaticamente o calendário
 auto-refresh-time-help: Quando a actualização automática está activa, especifica o intervalo de tempo entre actualizações.
 Auto-refresh time: Tempo de actualização automática
-require-approvals-help: Quando activo, um utilizador deverá aprovar um evento antes de ser mostrado no seu calendário (excepto se <I>Mostra não-aprovados</I> estiver activo).
+require-approvals-help: Quando activo, um utilizador deverá aprovar um evento antes de ser mostrado no seu calendário (excepto se <em>Mostra não-aprovados</em> estiver activo).
 Require event approvals: Requer aprovação de eventos
 display-unapproved-help: Especifica se os eventos não aprovados são mostrados no calendário
 Display unapproved: Mostrar não-aprovados
@@ -533,17 +533,17 @@ duration-help: Especifica a duração do evento em minutos. Este campo é opcional.
 Priority: Prioridade
 priority-help: Especifica a prioridade do evento.  Prioridade Alta é apresentada num tipo de letra mais escuro.
 Access: Accesso
-access-help: Especifica o nível de acesso do evento. <BR><I>Público</I> Todos os intervenientes podem ver todos os detalhes do evento. <BR><I>Confidencial</I> Outros utilizadores poderão ver que tem um evento marcado, mas não podem visualizar os detalhes.
+access-help: Especifica o nível de acesso do evento. <br /><em>Público</em> Todos os intervenientes podem ver todos os detalhes do evento. <br /><em>Confidencial</em> Outros utilizadores poderão ver que tem um evento marcado, mas não podem visualizar os detalhes.
 Participants: Participantes
 participants-help: Lista os participantes neste evento.
 Repeat Type: Tipo de repetição
-repeat-type-help: Selecciona a periodicidade do evento. <I>Mensal (por dia)</I> faz com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <I>Mensal (por data)</I> faz com que um evento se repita todos os meses no mesmo dia.
+repeat-type-help: Selecciona a periodicidade do evento. <em>Mensal (por dia)</em> faz com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <em>Mensal (por data)</em> faz com que um evento se repita todos os meses no mesmo dia.
 Repeat End Date: Data para fim de repetição
 repeat-end-date-help: Especifica a data até à qual o evento se repete.
 Repeat Day: Dia a repetir
-repeat-day-help: Especifica em que dias da semana o evento se repete. Isto é apenas utilizado quando o <I>Tipo de repetição</I> tem o valor de <I>Semanal</I>.
+repeat-day-help: Especifica em que dias da semana o evento se repete. Isto é apenas utilizado quando o <em>Tipo de repetição</em> tem o valor de <em>Semanal</em>.
 Frequency: Frequência
-repeat-frequency-help: Especifica quantas vezes o evento se deve repetir. O valor padrão (1) indica que o evento acontece todos os dias.  Especificar 2 faz com que o evento se repita noutra semana (se <I>Tipo de repetição</I> tem o valor de <I>Semanal</I>), todos os meses (se <I>Tipo de repetição</I> tem o valor de <I>Mensal</I>), etc.
+repeat-frequency-help: Especifica quantas vezes o evento se deve repetir. O valor padrão (1) indica que o evento acontece todos os dias.  Especificar 2 faz com que o evento se repita noutra semana (se <em>Tipo de repetição</em> tem o valor de <em>Semanal</em>), todos os meses (se <em>Tipo de repetição</em> tem o valor de <em>Mensal</em>), etc.
 
 
 ###############################################
@@ -731,7 +731,7 @@ Password: Password
 Save login via cookies so I don't have to login next time: Gravar Utilizador e Password para sessões futuras (não recomendado se este computador for utilizado por mais pessoas)
 Login: Entrar
 Access public calendar: Calendário de acesso público
-cookies-note: <B>Nota:</B> Esta opção requer a activação da opção de 'cookies' no seu navegador.
+cookies-note: <b>Nota:</b> Esta opção requer a activação da opção de 'cookies' no seu navegador.
 
 
 ###############################################
