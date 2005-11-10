@@ -436,7 +436,7 @@ class WebCalendar {
   $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
    if ( $c ) {
      $res = dbi_query ( "SELECT  cal_value FROM webcal_config ".
-       "WHERE cal_setting = 'webcal_program_version'" );
+       "WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'" );
        if ( ! $res ) {
            // & does not work here...leave it as &
            Header ( "Location: install/index.php?action=mismatch&version=UNKNOWN" );
@@ -937,7 +937,7 @@ class WebCalendar {
       // This will prevent running WebCalendar until UPGRADING.html has been
       // read and required upgrade actions completed
       $res = dbi_query ( "SELECT  cal_value FROM webcal_config ".
-        "WHERE cal_setting = 'webcal_program_version'" );
+        "WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'" );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
           if ( $row[0] != $PROGRAM_VERSION ) {
