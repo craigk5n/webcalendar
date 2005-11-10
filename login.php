@@ -285,14 +285,14 @@ if ( ! empty ( $return_path ) ) {
  echo "Demo login: user = \"demo\", password = \"demo\"<br />";
 } ?>
 <br /><br />
-<?php if ( ! empty ( $allow_self_registration ) &&
-  $allow_self_registration == "Y" ) { 
+<?php if ( ! empty ( $ALLOW_SELF_REGISTRATION ) &&
+  $ALLOW_SELF_REGISTRATION == "Y" ) { 
   // We can limit what domain is allowed to self register
   // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
-  if ( ! empty ( $self_registration_domain ) ) {
-    $valid_ip = validate_domain ( $self_registration_domain );
+  if ( ! empty ( $SELF_REGISTRATION_DOMAIN ) ) {
+    $valid_ip = validate_domain ( $SELF_REGISTRATION_DOMAIN );
  }
- if ( ! empty ( $valid_ip ) || empty ( $self_registration_domain ) ) {
+ if ( ! empty ( $valid_ip ) || empty ( $SELF_REGISTRATION_DOMAIN ) ) {
     echo "<b><a href='register.php'>" . translate ( "Not yet registered? Register here!" ) . 
      "</a></b><br /><br />";
   }
