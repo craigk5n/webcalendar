@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Applied PATCH 1349875: Fix for WebCalendar.class
  - Fixed bug 1277803: new untimed events - aren't
  - Fixed bug 1346660: new entry: time check not informed correctly ->misspelling
  - Fixed bug 1352513: Repeating Events interface is broken in Safari

@@ -98,13 +98,13 @@ function convert_server_to_GMT () {
   }
     // Update Conversion Flag in webcal_config
    //Delete any existing entry
-   $sql = "DELETE FROM webcal_config WHERE cal_setting = 'webcal_tz_conversion'";
+   $sql = "DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_TZ_CONVERSION'";
    if ( ! dbi_query ( $sql ) ) {
     $error = "Database error: " . dbi_error ();
     return $error;
    }
   $sql = "INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-   "VALUES ( 'webcal_tz_conversion', 'Y' )";
+   "VALUES ( 'WEBCAL_TZ_CONVERSION', 'Y' )";
   if ( ! dbi_query ( $sql ) ) {
     $error = "Database error: " . dbi_error ();
    return $error;

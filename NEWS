@@ -86,6 +86,7 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
+    - Applied PATCH 1349875: Fix for WebCalendar.class
     - Numerous tweaks to RRULE parsing for display of repeating events
     - Implemented PATCH 1345138: Several bug fixes
     - Implemented PATCH 1344304: Use default tzone in send_reminders for users w/out pref
