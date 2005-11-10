@@ -20,7 +20,7 @@
  * allow_nav
  * include_empty
  * show_in_trailer
- * action (if 'delete' button pressed)
+ * delete (if 'delete' button pressed)
  * page_template
  * day_template
  * event_template
@@ -109,9 +109,8 @@ if ( empty ( $error ) ) {
       ".";
   }
 }
-
-if ( empty ( $error ) && ! empty ( $report_id ) && ! empty ( $action )
-     && ( $action == "Delete" || $action == translate ("Delete") ) ) {
+$delete = getPostValue ( 'delete' );
+if ( empty ( $error ) && ! empty ( $report_id ) && ! empty ( $delete ) ) {
   if ( ! dbi_query ( "DELETE FROM webcal_report_template " .
     "WHERE cal_report_id = $report_id" ) )
     $error = translate("Database error") . ": " . dbi_error ();

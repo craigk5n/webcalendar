@@ -91,7 +91,7 @@ if ( $newgroup ) {
 <tr><td colspan="2" style="text-align:center;">
  <br /><input type="submit" name="action" value="<?php if ( $newgroup ) etranslate("Add"); else etranslate("Save"); ?>" />
  <?php if ( ! $newgroup ) { ?>
-  <input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
+  <input type="submit" name="delete" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?", true); ?>')" />
  <?php } ?>
 </td></tr>
 </table>

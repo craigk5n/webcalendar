@@ -63,7 +63,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   <br /><br />
   <input type="submit" name="action" value="<?php echo $button;?>" />
   <?php if ( ! empty ( $id ) ) {  ?>
- <input type="submit" name="action" value="<?php etranslate("Delete");?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?"); ?>')" />
+ <input type="submit" name="delete" value="<?php etranslate("Delete");?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?", true); ?>')" />
   <?php }  ?>
   </form>
   <?php

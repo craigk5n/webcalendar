@@ -722,12 +722,12 @@ if ( $unapproved && $readonly == 'N' ) {
     translate("Approve/Confirm entry") . 
     "\" href=\"approve_entry.php?id=$id&amp;type=E\" " .
     "onclick=\"return confirm('" . 
-    translate("Approve this entry?") . "');\">" . 
+    translate("Approve this entry?", true) . "');\">" . 
     translate("Approve/Confirm entry") . "</a><br />\n";
   echo "<a title=\"" . 
     translate("Reject entry") . "\" href=\"reject_entry.php?id=$id&amp;type=E\" " .
     "onclick=\"return confirm('" .
-    translate("Reject this entry?") . "');\">" . 
+    translate("Reject this entry?", true) . "');\">" . 
     translate("Reject entry") . "</a><br />\n";
 }
 
@@ -778,7 +778,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
       translate("Delete repeating event for all dates") . 
       "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url&amp;override=1\" " .
       "onclick=\"return confirm('" . 
-      translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+      translate("Are you sure you want to delete this entry?", true) . "\\n\\n" . 
       translate("This will delete this entry for all users.") . "');\">" . 
       translate("Delete repeating event for all dates") . "</a><br />\n";
     // Don't allow deletion of first event
@@ -787,7 +787,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
         translate("Delete entry only for this date") . 
         "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate&amp;override=1\" " .
         "onclick=\"return confirm('" .
-        translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+        translate("Are you sure you want to delete this entry?", true) . "\\n\\n" . 
         translate("This will delete this entry for all users.") . "');\">" . 
         translate("Delete entry only for this date") . "</a><br />\n";
     }
@@ -799,7 +799,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
     echo "<a title=\"" . 
       translate("Delete entry") . "\" class=\"nav\" " .
       "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
-       translate("Are you sure you want to delete this entry?") . "\\n\\n";
+       translate("Are you sure you want to delete this entry?", true) . "\\n\\n";
     if ( empty ( $user ) || $user == $login )
       echo translate("This will delete this entry for all users.");
     echo "');\">" .  translate("Delete entry");
@@ -818,7 +818,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
   echo "<a title=\"" . 
     translate("Delete entry") . "\" class=\"nav\" " .
     "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
-    translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+    translate("Are you sure you want to delete this entry?", true) . "\\n\\n" . 
     translate("This will delete the entry from your calendar.") . "');\">" . 
     translate("Delete entry") . "</a><br />\n";
   echo "<a title=\"" . 
@@ -831,7 +831,7 @@ if ( $readonly != "Y" && ! $is_my_event && ! $is_private &&
   echo "<a title=\"" . 
     translate("Add to My Calendar") . "\" class=\"nav\" " .
     "href=\"add_entry.php?id=$id\" onclick=\"return confirm('" . 
-    translate("Do you want to add this entry to your calendar?") . "\\n\\n" . 
+    translate("Do you want to add this entry to your calendar?", true) . "\\n\\n" . 
     translate("This will add the entry to your calendar.") . "');\">" . 
     translate("Add to My Calendar") . "</a><br />\n";
 }

@@ -131,7 +131,7 @@ function list_unapproved ( $user ) {
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
-        translate("Approve this entry?") . "');\">" . 
+        translate("Approve this entry?", true) . "');\">" . 
           translate("Approve/Confirm") . "</a>, ";
       //reject
       echo "<a title=\"" . 
@@ -140,7 +140,7 @@ function list_unapproved ( $user ) {
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
-        translate("Reject this entry?") . "');\">" . 
+        translate("Reject this entry?", true) . "');\">" . 
           translate("Reject") . "</a>";
       //delete
       if ( ! access_is_enabled () ||
@@ -150,7 +150,7 @@ function list_unapproved ( $user ) {
         if ( $cal_user != $login )
           echo "&amp;user=$cal_user";
         echo "\" class=\"nav\" onclick=\"return confirm('" .
-          translate("Are you sure you want to delete this entry?") . "');\">" . 
+          translate("Are you sure you want to delete this entry?", true) . "');\">" . 
         translate("Delete") . "</a>";
       }
       echo "\n</li>\n";

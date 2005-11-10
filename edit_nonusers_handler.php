@@ -10,7 +10,8 @@ if ( ! $is_admin ) {
 }
 $error = "";
 
-if ( $action == "Delete" || $action == translate ("Delete") ) {
+$delete = getPostValue ( 'delete' );
+if ( ! empty ( $delete ) ) {
   // delete this nonuser calendar
   $user = $nid;
 

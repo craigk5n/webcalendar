@@ -795,7 +795,7 @@ if ( $single_user == "N" && $show_participants ) {
 </form>
 
 <?php if ( $id > 0 && ( $login == $create_by || $single_user == "Y" || $is_admin ) ) { ?>
- <a href="del_task.php?id=<?php echo $id;?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this task?")?>');"><?php etranslate("Delete task")?></a><br />
+ <a href="del_task.php?id=<?php echo $id;?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this task?", true)?>');"><?php etranslate("Delete task")?></a><br />
 <?php 
  } //end if clause for delete link
 } else { 

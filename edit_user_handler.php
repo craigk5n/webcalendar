@@ -12,7 +12,6 @@ load_user_layers ();
 $error = "";
 if ( ! $is_admin )
   $user = $login;
-$action = getValue ( "action" );
 
 // don't allow them to edit users if it's not allowed
 if ( empty ( $user ) ) {
@@ -35,8 +34,8 @@ if ( empty ( $user ) ) {
 }
 
 // Handle delete
-if ( ( $action == "Delete" || $action == translate ("Delete") ) &&
-  $formtype == "edituser" ) {
+$delete = getPostValue ( "delete" );
+if ( ! empty ( $delete ) && $formtype == "edituser" ) {
   if ( access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
     if ( $admin_can_delete_user ) {
       user_delete_user ( $user ); // will also delete user's events

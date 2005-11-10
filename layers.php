@@ -82,7 +82,7 @@ if ($layers_enabled) { ?>
   etranslate("Edit layer"); ?>" href="edit_layer.php?id=<?php echo $layer['cal_layerid'] . $u_url; ?>"><?php 
   etranslate("Edit"); ?></a> / 
  <a title="<?php 
-  etranslate("Delete layer")?>" href="del_layer.php?id=<?php echo $layer['cal_layerid'] . $u_url; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?")?>');"><?php 
+  etranslate("Delete layer")?>" href="del_layer.php?id=<?php echo $layer['cal_layerid'] . $u_url; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?", true)?>');"><?php 
   etranslate("Delete")?></a>)
 
 <table style="margin-left:20px; border-width:0px;">
