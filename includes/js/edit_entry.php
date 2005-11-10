@@ -16,8 +16,8 @@ function validate_and_submit () {
     return false;
   }
   if ( document.editentryform.timetype.selectedIndex == 1 ) {
-    h = isNumeric( document.editentryform.hour.value );
-    m = isNumeric( document.editentryform.minute.value );  
+    h = parseInt (isNumeric( document.editentryform.hour.value ));
+    m = parseInt (isNumeric( document.editentryform.minute.value ));  
 <?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
     if ( document.editentryform.ampm[1].checked ) {
       // pm
@@ -62,8 +62,8 @@ function validate_and_submit () {
   //test endhour and endminute if used  
   if ( document.editentryform.endhour ) {
     if ( document.editentryform.timetype.selectedIndex == 1 ) {
-      eh = isNumeric( document.editentryform.endhour.value );
-      em = isNumeric( document.editentryform.endminute.value );   
+      eh = parseInt (isNumeric( document.editentryform.endhour.value ));
+      em = parseInt (isNumeric( document.editentryform.endminute.value ));   
     <?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
       if ( document.editentryform.endampm[1].checked ) {
         // pm
