@@ -130,7 +130,7 @@ function event_to_text ( $event, $date ) {
       }
     } else {
       $description_str = nl2br (
-        activate_urls ( htmlspecialchars ( $description ) ) );
+        activate_urls ( htmlspecialchars ( $event->getDescription() ) ) );
     }
   }
 
