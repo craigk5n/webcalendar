@@ -583,12 +583,12 @@ if ( $unapproved && $readonly == 'N' ) {
     translate("Approve/Confirm task") . 
     "\" href=\"approve_entry.php?id=$id&amp;type=T\" " .
     "onclick=\"return confirm('" . 
-    translate("Approve this task?") . "');\">" . 
+    translate("Approve this task?", true) . "');\">" . 
     translate("Approve/Confirm task") . "</a><br />\n";
   echo "<a title=\"" . 
     translate("Reject task") . "\" href=\"reject_entry.php?id=$id&amp;type=T\" " .
     "onclick=\"return confirm('" .
-    translate("Reject this task?") . "');\">" . 
+    translate("Reject this task?", true) . "');\">" . 
     translate("Reject task") . "</a><br />\n";
 }
 
@@ -629,7 +629,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
       translate("Delete repeating event for all dates") . 
       "\" class=\"nav\" href=\"del_task.php?id=$id$u_url&amp;override=1\" " .
       "onclick=\"return confirm('" . 
-      translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+      translate("Are you sure you want to delete this entry?", true) . "\\n\\n" . 
       translate("This will delete this entry for all users.") . "');\">" . 
       translate("Delete repeating event for all dates") . "</a><br />\n";
     // Don't allow deletion of first event
@@ -638,7 +638,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
         translate("Delete entry only for this date") . 
         "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate&amp;override=1\" " .
         "onclick=\"return confirm('" .
-        translate("Are you sure you want to delete this entry?") . "\\n\\n" . 
+        translate("Are you sure you want to delete this entry?", true) . "\\n\\n" . 
         translate("This will delete this entry for all users.") . "');\">" . 
         translate("Delete entry only for this date") . "</a><br />\n";
     }
@@ -650,7 +650,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
     echo "<a title=\"" . 
       translate("Delete task") . "\" class=\"nav\" " .
       "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
-       translate("Are you sure you want to delete this task?") . "\\n\\n" . 
+       translate("Are you sure you want to delete this task?", true) . "\\n\\n" . 
        translate("This will delete this task for all users.") . "');\">" . 
        translate("Delete task") . "</a><br />\n";
   }
@@ -663,7 +663,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
   echo "<a title=\"" . 
     translate("Delete task") . "\" class=\"nav\" " .
     "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
-    translate("Are you sure you want to delete this task?") . "\\n\\n" . 
+    translate("Are you sure you want to delete this task?", true) . "\\n\\n" . 
     translate("This will delete the task from your calendar.") . "');\">" . 
     translate("Delete task") . "</a><br />\n";
   echo "<a title=\"" . 

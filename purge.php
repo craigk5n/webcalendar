@@ -152,7 +152,7 @@ if ( $do_purge ) {
   <input type="checkbox" name="preview" value="Y" checked="checked" />
  </td></tr>
  <tr><td colspan="2">
-  <input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete events for");?> ' + document.forms[0].user.value + '?')" />
+  <input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete events for", true);?> ' + document.forms[0].user.value + '?')" />
  </td></tr>
 </table>
 </form>

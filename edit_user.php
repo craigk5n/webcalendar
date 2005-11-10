@@ -103,13 +103,13 @@ if ( $is_admin ) { ?>
   <?php if ( $DEMO_MODE == "Y" ) { ?>
    <input type="button" value="<?php etranslate("Save")?>" onclick="alert('<?php etranslate("Disabled for demo", true)?>')" />
    <?php if ( $is_admin && ! empty ( $user ) ) { ?>
-    <input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="alert('<?php etranslate("Disabled for demo", true)?>')" />
+    <input type="submit" name="delete" value="<?php etranslate("Delete")?>" onclick="alert('<?php etranslate("Disabled for demo", true)?>')" />
    <?php } //end if ( $DEMO_MODE == "Y" ) ?>
   <?php } else { ?>
    <input type="submit" value="<?php etranslate("Save")?>" />
    <?php if ( $is_admin && ! empty ( $user ) ) {
     if ( $admin_can_delete_user ) ?>
-    <input type="submit" name="action" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this user?"); ?>')" />
+    <input type="submit" name="delete" value="<?php etranslate("Delete")?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this user?", true); ?>')" />
    <?php } ?>
   <?php } ?>
  </td></tr>

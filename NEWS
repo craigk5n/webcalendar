@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1351971: "Delete"-Button won't work properly for reports
       1277803: new untimed events - aren't
       1346660: new entry: time check not informed correctly ->misspelling
       1352513: Repeating Events interface is broken in Safari

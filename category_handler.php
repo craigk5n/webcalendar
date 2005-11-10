@@ -23,9 +23,8 @@ if ( empty ( $id ) ) {
 if ( ! $is_my_event )
   $error = translate ( "You are not authorized" ) . ".";
 
-
-if ( empty ( $error ) &&
-  ( $action == "Delete" || $action ==  translate ("Delete") ) ) {
+$delete = getPostValue ( 'delete' );
+if ( empty ( $error ) && ! empty ( $delete ) ) {
   // delete this category
   if ( $is_admin ) {
     if ( ! dbi_query ( "DELETE FROM webcal_categories " .
@@ -40,7 +39,7 @@ if ( empty ( $error ) &&
       
   // Set any events in this category to NULL
   if ( $is_admin ) {
-    if ( !  dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
+    if ( !  dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id AND " .
       " ( cat_owner = '$login' OR cat_owner IS NULL)" ) ) 
     $error = translate ("Database error") . ": " . dbi_error();
   } else {

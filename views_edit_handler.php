@@ -8,7 +8,8 @@ if ( ! $is_admin || $viewisglobal != 'Y' )
   $viewisglobal = 'N'; // only admin can create global view
 //echo "viewisglobal = $viewisglobal"; exit;
 
-if ( $action == "Delete" || $action == translate ("Delete") ) {
+$delete = getPostValue ( 'delete' );
+if ( ! empty ( $delete ) ) {
   // delete this view
   dbi_query ( "DELETE FROM webcal_view WHERE cal_view_id = $id " .
     "AND cal_owner = '$login'" );

@@ -70,9 +70,8 @@ if ( empty ( $REQUEST_METHOD ) )
 // Handle form submission
 if ( $REQUEST_METHOD == 'POST' ) {
   // Was this a delete request?
-  $action = getPostValue ( 'action' );
-  if ( $user != '__system__' && ! empty ( $action ) &&
-    ( $action == 'Delete' || $action == translate ("Delete") ) ) {
+  $delete = getPostValue ( 'delete' );
+  if ( $user != '__system__' && ! empty ( $delete ) ) {
     dbi_query ( "DELETE FROM webcal_user_template " .
       "WHERE cal_type = '$type' " .
       "AND cal_login = '$user'" );
@@ -151,8 +150,8 @@ if ( ! empty ( $error ) ) {
 <input name="action" type="submit" value="<?php etranslate("Save")?>" />
 
 <?php if ( ! empty ( $user ) ) { ?>
-  <input name="action" type="submit" value="<?php etranslate("Delete")?>"
-  onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?");?>');" />
+  <input name="delete" type="submit" value="<?php etranslate("Delete")?>"
+  onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?", true);?>');" />
 <?php } ?>
 
 </form>
