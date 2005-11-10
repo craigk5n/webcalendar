@@ -162,7 +162,7 @@ function valid_form ( form ) {
   return true;
 }
 function myOnLoad() {
-  <?php if ( ! empty ( $plugins_enabled ) && ( $plugins_enabled ) ){ ?>
+  <?php if ( ! empty ( $PLUGINS_ENABLED ) && ( $PLUGINS_ENABLED ) ){ ?>
    if (self != top)  {
      window.open("login.php","_top","");
      return;

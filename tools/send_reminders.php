@@ -198,8 +198,8 @@ function gen_output ( $useHtml, $prompt, $data )
 
   if ( $useHtml ) {
     $ret = '<tr><td valign="top">' . $prompt . ':</td><td valign="top">';
-    if ( ! empty ( $GLOBALS['allow_html_description'] ) &&
-      $GLOBALS['allow_html_description'] == 'Y' ) {
+    if ( ! empty ( $GLOBALS['ALLOW_HTML_DESCRIPTION'] ) &&
+      $GLOBALS['ALLOW_HTML_DESCRIPTION'] == 'Y' ) {
       $str = str_replace ( '&', '&amp;', $data );
       $str = str_replace ( '&amp;amp;', '&amp;', $str );
       // If there is no html found, then go ahead and replace
@@ -394,12 +394,12 @@ function send_reminder ( $id, $event_date ) {
         $row[5] .  " " . translate("minutes") );
     }
 
-    if ( empty ( $disable_priority_field ) || $disable_priority_field != 'Y' ) {
+    if ( empty ( $DISABLE_PRIORITY_FIELD ) || $DISABLE_PRIORITY_FIELD != 'Y' ) {
       $body .= gen_output ( $useHtml, translate ( "Priority" ),
         $pri[$row[6]] );
     }
 
-    if ( empty ( $disable_access_field ) || $disable_access_field != 'Y' ) {
+    if ( empty ( $DISABLE_ACCESS_FIELD ) || $DISABLE_ACCESS_FIELD != 'Y' ) {
       $body .= gen_output ( $useHtml, translate ( "Access" ),
         ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) );
     }
