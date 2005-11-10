@@ -208,7 +208,7 @@ h3 {
 <br /><br />
 <h3><a name="background_css">background_css</a></h3>
 <tt>background_css ( $color, $height, $percent )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Creates the CSS for using gradient.php, if the appropriate GD functions are available.  A one-pixel wide image will be used for the background image. <br/><br/><span class="note">Note</span> The gd library module needs to be available to use gradient images.  If it is not available, a single background color will be used instead.</blockquote>
+<span class="prompt">Description:</span><blockquote>Creates the CSS for using gradient.php, if the appropriate GD functions are available.  A one-pixel wide image will be used for the background image. <br /><br /><span class="note">Note</span> The gd library module needs to be available to use gradient images.  If it is not available, a single background color will be used instead.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$color</tt> - base color</li>
@@ -265,7 +265,7 @@ h3 {
 <ul>
 <li><tt>$time</tt> - input time in YYYYMMDD format</li>
 <li><tt>$round_down</tt> - should we change 1100 to 1059?</li>
-<li><tt>$10AM</tt> - 100AM appointment just shows up in the 10AM slow and not in the 11AM slot also.) <br/><br/><span class="note">Note</span> the global variable $TIME_SLOTS is used to determine how many time slots there are and how many minutes each is. This variable is defined user preferences (or defaulted to admin system settings).</li>
+<li><tt>$10AM</tt> - 100AM appointment just shows up in the 10AM slow and not in the 11AM slot also.) <br /><br /><span class="note">Note</span> the global variable $TIME_SLOTS is used to determine how many time slots there are and how many minutes each is. This variable is defined user preferences (or defaulted to admin system settings).</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The time slot index</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2655</blockquote>
@@ -273,7 +273,7 @@ h3 {
 <br /><br />
 <h3><a name="check_for_conflicts">check_for_conflicts</a></h3>
 <tt>check_for_conflicts ( $date, $duration, $hour, $minute, $participants, $login, $id )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Check for conflicts. Find overlaps between an array of dates and the other dates in the database. <br/>Limits on number of appointments: if enabled in System Settings ($LIMIT_APPTS global variable), too many appointments can also generate a scheduling conflict. <br/><br/><span class="note">TODO</span> Update this to handle exceptions to repeating events</blockquote>
+<span class="prompt">Description:</span><blockquote>Check for conflicts. Find overlaps between an array of dates and the other dates in the database. <br />Limits on number of appointments: if enabled in System Settings ($LIMIT_APPTS global variable), too many appointments can also generate a scheduling conflict. <br /><br /><span class="note">TODO</span> Update this to handle exceptions to repeating events</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - is an array of dates in YYYYMMDD format that is checked for overlaps.</li>
@@ -373,7 +373,7 @@ h3 {
 <br /><br />
 <h3><a name="dbi_affected_rows">dbi_affected_rows</a></h3>
 <tt>dbi_affected_rows ( $conn, $res )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Returns the number of rows affected by the last INSERT, UPDATE or DELETE. <br/><br/><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
+<span class="prompt">Description:</span><blockquote>Returns the number of rows affected by the last INSERT, UPDATE or DELETE. <br /><br /><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$conn</tt> - The database connection</li>
@@ -396,7 +396,7 @@ h3 {
 <br /><br />
 <h3><a name="dbi_connect">dbi_connect</a></h3>
 <tt>dbi_connect ( $host, $login, $password, $database )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Open up a database connection. Use a pooled connection if the db supports it and the <tt>db_persistent</tt> setting is enabled. <br/><br/><span class="note">Notes</span><ul> <li> The database type is determined by the global variable <tt>db_type</tt></li> <li> For ODBC, $host is ignored, $database = DSN</li> <li> For Oracle, $database = tnsnames name</li> <li> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails </li> </ul></blockquote>
+<span class="prompt">Description:</span><blockquote>Open up a database connection. Use a pooled connection if the db supports it and the <tt>db_persistent</tt> setting is enabled. <br /><br /><span class="note">Notes</span><ul> <li> The database type is determined by the global variable <tt>db_type</tt></li> <li> For ODBC, $host is ignored, $database = DSN</li> <li> For Oracle, $database = tnsnames name</li> <li> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails </li> </ul></blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$host</tt> - Hostname of database server</li>
@@ -434,7 +434,7 @@ h3 {
 <br /><br />
 <h3><a name="dbi_fetch_row">dbi_fetch_row</a></h3>
 <tt>dbi_fetch_row ( $res )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Retrieve a single row from the database and return it as an array. <br/><br/><span class="note">Note</span> we don't use the more useful xxx_fetch_array because not all databases support this function. <br/><br/><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
+<span class="prompt">Description:</span><blockquote>Retrieve a single row from the database and return it as an array. <br /><br /><span class="note">Note</span> we don't use the more useful xxx_fetch_array because not all databases support this function. <br /><br /><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$res</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
@@ -456,7 +456,7 @@ h3 {
 <br /><br />
 <h3><a name="dbi_query">dbi_query</a></h3>
 <tt>dbi_query ( $sql, $fatalOnError, $showError )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Execute a SQL query. <br/><br/><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
+<span class="prompt">Description:</span><blockquote>Execute a SQL query. <br /><br /><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$sql</tt> - SQL of query to execute</li>
@@ -541,7 +541,7 @@ h3 {
 <br /><br />
 <h3><a name="do_redirect">do_redirect</a></h3>
 <tt>do_redirect ( $url )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Send a redirect to the specified page. The database connection is closed and execution terminates in this function. <br/> Note: MS IIS/PWS has a bug in which it does not allow us to send a cookie and a redirect in the same HTTP header.  When we detect that the web server is IIS, we accomplish the redirect using meta-refresh. See the following for more info on the IIS bug: <blockquote> <a href="http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4"> http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4</a> </blockquote></blockquote>
+<span class="prompt">Description:</span><blockquote>Send a redirect to the specified page. The database connection is closed and execution terminates in this function. <br /> Note: MS IIS/PWS has a bug in which it does not allow us to send a cookie and a redirect in the same HTTP header.  When we detect that the web server is IIS, we accomplish the redirect using meta-refresh. See the following for more info on the IIS bug: <blockquote> <a href="http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4"> http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4</a> </blockquote></blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$url</tt> - The page to redirect to.  In theory, this should be an absolute URL, but all browsers accept relative URLs (like "month.php").</li>
@@ -563,7 +563,7 @@ h3 {
 <br /><br />
 <h3><a name="etooltip">etooltip</a></h3>
 <tt>etooltip ( $str )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML. <br/><br/><span class="note">Note</span> The <a href="#tooltip"><tt>tooltip</tt></a> function will return the result rather than print the value.</blockquote>
+<span class="prompt">Description:</span><blockquote>Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML. <br /><br /><span class="note">Note</span> The <a href="#tooltip"><tt>tooltip</tt></a> function will return the result rather than print the value.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$str</tt> - the input text to translate and print</li>
@@ -597,7 +597,7 @@ h3 {
 <br /><br />
 <h3><a name="getGetValue">getGetValue</a></h3>
 <tt>getGetValue ( $name )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get the value resulting from an HTTP GET method.   <br/> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file. If you need to enforce a specific input format (such as numeric input), then use the <a href="#getValue"><tt>getValue</tt></a> function.</blockquote>
+<span class="prompt">Description:</span><blockquote>Get the value resulting from an HTTP GET method.   <br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file. If you need to enforce a specific input format (such as numeric input), then use the <a href="#getValue"><tt>getValue</tt></a> function.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name used in the HTML form or found in the URL</li>
@@ -608,7 +608,7 @@ h3 {
 <br /><br />
 <h3><a name="getIntValue">getIntValue</a></h3>
 <tt>getIntValue ( $name, $fatal )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get an integer value resulting from an HTTP GET or HTTP POST method.   <br/> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.</blockquote>
+<span class="prompt">Description:</span><blockquote>Get an integer value resulting from an HTTP GET or HTTP POST method.   <br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name used in the HTML form or found in the URL</li>
@@ -620,7 +620,7 @@ h3 {
 <br /><br />
 <h3><a name="getPostValue">getPostValue</a></h3>
 <tt>getPostValue ( $name )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get the value resulting from an HTTP POST method.   <br/> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.</blockquote>
+<span class="prompt">Description:</span><blockquote>Get the value resulting from an HTTP POST method.   <br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name used in the HTML form</li>
@@ -743,7 +743,7 @@ h3 {
 <br /><br />
 <h3><a name="get_repeating_entries">get_repeating_entries</a></h3>
 <tt>get_repeating_entries ( $user, $date, $get_unapproved )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get all the repeating events for the specified data and return them in an array (which is sorted by time of day). <br/><br/><span class="note">Note</span> The global variable <tt>$repeated_events</tt> needs to be set by calling the <a href="#read_repeated_events"><tt>read_repeated_events</tt></a> function first.</blockquote>
+<span class="prompt">Description:</span><blockquote>Get all the repeating events for the specified data and return them in an array (which is sorted by time of day). <br /><br /><span class="note">Note</span> The global variable <tt>$repeated_events</tt> needs to be set by calling the <a href="#read_repeated_events"><tt>read_repeated_events</tt></a> function first.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - username</li>
@@ -833,7 +833,7 @@ h3 {
 <br /><br />
 <h3><a name="html_to_8bits">html_to_8bits</a></h3>
 <tt>html_to_8bits ( $html )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Convert HTML entities in 8bit. <br/><br/><span class="note">Note</span> Only supported for PHP4 (not PHP3).</blockquote>
+<span class="prompt">Description:</span><blockquote>Convert HTML entities in 8bit. <br /><br /><span class="note">Note</span> Only supported for PHP4 (not PHP3).</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$html</tt> - HTML text</li>
@@ -855,7 +855,7 @@ h3 {
 <br /><br />
 <h3><a name="load_global_settings">load_global_settings</a></h3>
 <tt>load_global_settings ( $ )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Load default system settings (which can be updated via admin.php) System settings are stored in the <a href="WebCalendar-Database.html#webcal_config"><tt>webcal_config</tt></a> table. <br/> Note: If the setting for "server_url" is not set, the value will be calculated and stored in the database.</blockquote>
+<span class="prompt">Description:</span><blockquote>Load default system settings (which can be updated via admin.php) System settings are stored in the <a href="WebCalendar-Database.html#webcal_config"><tt>webcal_config</tt></a> table. <br /> Note: If the setting for "server_url" is not set, the value will be calculated and stored in the database.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
@@ -877,7 +877,7 @@ h3 {
 <br /><br />
 <h3><a name="load_translation_text">load_translation_text</a></h3>
 <tt>load_translation_text ( $ )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Load all the language translation into an array for quick lookup. <br/><br/><span class="note">Note</span> There is no need to call this manually.  It will be invoked by the <a href="#translate"><tt>translate</tt></a> function the first time it is called.</blockquote>
+<span class="prompt">Description:</span><blockquote>Load all the language translation into an array for quick lookup. <br /><br /><span class="note">Note</span> There is no need to call this manually.  It will be invoked by the <a href="#translate"><tt>translate</tt></a> function the first time it is called.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
@@ -911,7 +911,7 @@ h3 {
 <br /><br />
 <h3><a name="load_user_preferences">load_user_preferences</a></h3>
 <tt>load_user_preferences ( $ )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Load the current user's preferences as global variables from the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table. Also load the list of views for this user (not really a preference, but this is a convenient place to put this...) <br/><br/><span class="note">Notes</span>   <ul> <li>If the $ALLOW_COLOR_CUSTOMIZATION is set to 'N', then we ignore any color preferences.</li> <li>Other default values will also be set if the user has not saved a preference and no global value has been set by the administrator in the system settings.</li> </ul></blockquote>
+<span class="prompt">Description:</span><blockquote>Load the current user's preferences as global variables from the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table. Also load the list of views for this user (not really a preference, but this is a convenient place to put this...) <br /><br /><span class="note">Notes</span>   <ul> <li>If the $ALLOW_COLOR_CUSTOMIZATION is set to 'N', then we ignore any color preferences.</li> <li>Other default values will also be set if the user has not saved a preference and no global value has been set by the administrator in the system settings.</li> </ul></blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
@@ -1130,7 +1130,7 @@ h3 {
 <br /><br />
 <h3><a name="read_repeated_events">read_repeated_events</a></h3>
 <tt>read_repeated_events ( $user, $cat_id, $date )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Read all the repeated events for a user. This is only called once per page request to improve performance. All the events get loaded into the array $repeated_events sorted by time of day (not date). This will load all the repeated events into memory. <br/><br/><span class="note">Notes</span>  <ul> <li> To get which events repeat on a specific date, use the <a href="#get_repeating_entries"><tt>get_repeating_entries</tt></a> function.</li> <li> To get all the dates that one specific event repeats on, the <a href="#get_all_dates"><tt>get_all_dates</tt></a> function should be called.  </li> </ul></blockquote>
+<span class="prompt">Description:</span><blockquote>Read all the repeated events for a user. This is only called once per page request to improve performance. All the events get loaded into the array $repeated_events sorted by time of day (not date). This will load all the repeated events into memory. <br /><br /><span class="note">Notes</span>  <ul> <li> To get which events repeat on a specific date, use the <a href="#get_repeating_entries"><tt>get_repeating_entries</tt></a> function.</li> <li> To get all the dates that one specific event repeats on, the <a href="#get_all_dates"><tt>get_all_dates</tt></a> function should be called.  </li> </ul></blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - username</li>
@@ -1188,7 +1188,7 @@ h3 {
 <br /><br />
 <h3><a name="send_no_cache_header">send_no_cache_header</a></h3>
 <tt>send_no_cache_header ( $ )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Send header stuff that tells the browser not to cache this page. Different browser use different mechanisms for this, so a series of HTTP header directives are sent. <br/><br/><span class="note">Note</span> This function needs to be called before any HTML output is sent to the browser.</blockquote>
+<span class="prompt">Description:</span><blockquote>Send header stuff that tells the browser not to cache this page. Different browser use different mechanisms for this, so a series of HTTP header directives are sent. <br /><br /><span class="note">Note</span> This function needs to be called before any HTML output is sent to the browser.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
@@ -1258,7 +1258,7 @@ h3 {
 <br /><br />
 <h3><a name="tooltip">tooltip</a></h3>
 <tt>tooltip ( $str )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML. <br/><br/><span class="note">Note</span> The <a href="#etooltip"><tt>etooltip</tt></a> function will print the result rather than return the value.</blockquote>
+<span class="prompt">Description:</span><blockquote>Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML. <br /><br /><span class="note">Note</span> The <a href="#etooltip"><tt>etooltip</tt></a> function will print the result rather than return the value.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$str</tt> - the input text to translate</li>

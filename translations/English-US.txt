@@ -145,7 +145,7 @@ Load Timezone Data: Load Timezone Data
 date-format-help: Specifies the preferred date format.
 Date format: Date format
 December: December
-time-format-help: Specifies which time format to use: <br /><i>12 hour:</i> Display times as 3am, 8:30pm, etc.  <br /><i>24 hour:</i> Display times as 300, 2030, etc.
+time-format-help: Specifies which time format to use: <br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.  <br /><em>24 hour:</em> Display times as 300, 2030, etc.
 Time format: Time format
 12 hour: 12 hour
 24 hour: 24 hour
@@ -403,7 +403,7 @@ brief-description-help: This should provide a short description (about 20 charac
 Brief Description: Brief Description
 full-description-help: This should complete details of the event.  This information can be seen when a user views the event.
 Full Description: Full Description
-access-help: Specifies the access level of the event.<br /> <i>Public</i>: Everyone can see the full details of the event.  <br /><i>Confidential</i>: Others can see that you have an entry for that date and time, but not the details of what it is.
+access-help: Specifies the access level of the event.<br /> <em>Public</em>: Everyone can see the full details of the event.  <br /><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: Access
 Public: Public
 Private: Private
@@ -426,7 +426,7 @@ Timezone Offset: Timezone Offset
 time-help: Specifies the time of the event.<br />Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
 am: am
 pm: pm
-duration-help: Specifies the duration (in hours;minutes) of the event.  <br /><i>This field can be left blank.</i>
+duration-help: Specifies the duration (in hours;minutes) of the event.  <br /><em>This field can be left blank.</em>
 end-time-help: Specifies the time the event is expected to end.
 days: days
 before event: before event
@@ -434,7 +434,7 @@ participants-help: Lists the participants of this entry.
 Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: External Participants
-repeat-type-help: Select how often the event should repeat.<i>Monthly (by day)</i> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <i>Monthly (by date)</i> allows an event to repeat on the same day of the month.
+repeat-type-help: Select how often the event should repeat.<em>Monthly (by day)</em> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <em>Monthly (by date)</em> allows an event to repeat on the same day of the month.
 Type: Type
 None: None
 Daily: Daily

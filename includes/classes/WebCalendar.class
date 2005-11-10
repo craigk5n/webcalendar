@@ -378,7 +378,7 @@ class WebCalendar {
         continue;
       if ( preg_match ( "/(\S+):\s*(\S+)/", $buffer, $matches ) ) {
         $settings[$matches[1]] = $matches[2];
-        //echo "settings $matches[1] => $matches[2] <br>";
+        //echo "settings $matches[1] => $matches[2] <br />";
       }
     }
     $configLines = $data = '';

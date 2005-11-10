@@ -83,7 +83,7 @@ Display description in printer day view: Beschrijving weergeven in printversie d
 date-format-help: Hier geeft u aan hoe de datum wordt weergegeven.
 Date format: Datumweergave
 December: December
-time-format-help: Hier geeft u aan hoe tijden worden weergegeven: <br/><i>12 uurs klok: </i> tijd wordt getoond als 3am, 8:30pm, etc. <br/><i> 24 uurs klok:</i> tijd wordt getoond als 3:00, 20:30, etc.
+time-format-help: Hier geeft u aan hoe tijden worden weergegeven: <br /><i>12 uurs klok: </i> tijd wordt getoond als 3am, 8:30pm, etc. <br /><i> 24 uurs klok:</i> tijd wordt getoond als 3:00, 20:30, etc.
 Time format: Tijdweergave
 12 hour: 12 uur
 24 hour: 24 uur
@@ -95,9 +95,9 @@ auto-refresh-help: Indien ingeschakeld zorgt deze optie voor een automatische pe
 Auto-refresh calendars: Automatische agenda-update
 auto-refresh-time-help: Indien de optie auto-refresh is geactiveerd wordt hier het refres-interval ingesteld.
 Auto-refresh time: Interval automatische agenda-update
-require-approvals-help: Indien ingeschakeld dient een gebruiker een afspraak te bevestigen voordat deze in de agenda wordt getoond tenzij Weergave onbevestigde items is geactiveerd. <br>Let op: door deze optie te de-activeren worden alle bevestigingen voor de publiek toegankelijke agenda uitgeschakeld indien deze is geactiveerd.
+require-approvals-help: Indien ingeschakeld dient een gebruiker een afspraak te bevestigen voordat deze in de agenda wordt getoond tenzij Weergave onbevestigde items is geactiveerd. <br />Let op: door deze optie te de-activeren worden alle bevestigingen voor de publiek toegankelijke agenda uitgeschakeld indien deze is geactiveerd.
 Require event approvals: Afspraakbevestigingen worden vereist
-display-unapproved-help: Geeft aan of openstaande, onbevestigde afspraken moeten worden weergegeven in uw agenda. <br>Indien u [ja] kiest worden openstaande afspraken in een andere tekstkleur in uw agenda weergegeven. <br>Indien u [nee] kiest moeten openstaande afspraken eerst bevestigd worden voordat deze in uw agenda worden getoond.
+display-unapproved-help: Geeft aan of openstaande, onbevestigde afspraken moeten worden weergegeven in uw agenda. <br />Indien u [ja] kiest worden openstaande afspraken in een andere tekstkleur in uw agenda weergegeven. <br />Indien u [nee] kiest moeten openstaande afspraken eerst bevestigd worden voordat deze in uw agenda worden getoond.
 Display unapproved: Openstaande afspraken tonen
 display-week-number-help: Geeft aan of het weeknummer (1-52) moet worden weergeven.
 Display week number: Weeknummer tonen
@@ -105,7 +105,7 @@ display-week-starts-on: Specificeert of de week op zondag of maandag start. Indi
 Week starts on: De week begint op
 Sunday: Zondag
 Monday: Maandag
-work-hours-help: Specificeert hoe laat een normale dag begint en eindigt. <br><b>N.B.</b>: het is wel mogelijk om afspraken buiten deze tijden te maken; indien u dit doet wordt u om een bevestiging gevraagd.
+work-hours-help: Specificeert hoe laat een normale dag begint en eindigt. <br /><b>N.B.</b>: het is wel mogelijk om afspraken buiten deze tijden te maken; indien u dit doet wordt u om een bevestiging gevraagd.
 Work hours: Werktijden
 From: Van
 to: tot
@@ -171,7 +171,7 @@ nonuser-list-help: Deze optie bepaalt waar de losse agenda in het deelnemersover
 Nonuser list: Positie losse agenda
 Top: Bovenaan
 Bottom: Onderaan
-reports-enabled-help: Indien deze optie is geactiveerd wordt een nieuwe rapportage-sectie zichtbaar in het beheerpaneel onderaan de pagina. Hier kan een gebruiker eigen agendarapportages definieren. <br>Beheerders kunnen algemene rapportages toevoegen die in het rapportagemenu van alle gebruikers beschikbaar zijn.
+reports-enabled-help: Indien deze optie is geactiveerd wordt een nieuwe rapportage-sectie zichtbaar in het beheerpaneel onderaan de pagina. Hier kan een gebruiker eigen agendarapportages definieren. <br />Beheerders kunnen algemene rapportages toevoegen die in het rapportagemenu van alle gebruikers beschikbaar zijn.
 Reports enabled: Activeer rapportages
 subscriptions-enabled-help: Met deze optie bepaalt u of remote gebruikers zich op een WebCalendar-agenda kunnen aanmelden om zo de inhoud van deze agenda in hun iCal-applicatie te bekijken (bijvoorbeeld Apple's iCal of Mozilla Calendar).
 Allow remote subscriptions: Agendapublicatie via internet toestaan
@@ -188,7 +188,7 @@ Email enabled: Activeer gebruik van email
 email-default-sender: Specificeert het mailadres dat als afzender wordt getoond bij het verzenden van herinneringen
 Default sender address: Standaard mailadres
 Default user settings: Standaard gebruikersinstellingen
-email-event-reminders-help: Hiermee stelt u in of u per email een herinnering ontvangt indien u dit heeft ingesteld. <br> <b>N.B.</b>: dit vereist aanvullende serverinstellingen.
+email-event-reminders-help: Hiermee stelt u in of u per email een herinnering ontvangt indien u dit heeft ingesteld. <br /> <b>N.B.</b>: dit vereist aanvullende serverinstellingen.
 Event reminders: Stuur mij per email een herinnering om mij aan een afspraak te herinneren
 email-event-added: Specificeert of er email-notificaties worden verzonden bij het toevoegen van een afspraak
 Events added to my calendar: Stuur mij een email-notificatie als afspraken aan mijn agenda zijn toegevoegd

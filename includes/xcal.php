@@ -1770,9 +1770,9 @@ function parse_ical ( $cal_file, $source='file' ) {
       do_debug ( "Read $cnt lines of data, but got no data :-(" );
       do_debug ( "Informing user of PHP server bug (PHP v" . phpversion() . ")" );
       // Note: Mozilla Calendar does not display this error for some reason.
-      echo "<br><b>Error:</b> Your PHP server " . phpversion () .
+      echo "<br /><b>Error:</b> Your PHP server " . phpversion () .
         " seems to have a bug reading stdin.  " .
-        "Try upgrading to a newer PHP release.  <br>";
+        "Try upgrading to a newer PHP release.  <br />";
       exit;
     }
   }
@@ -1795,10 +1795,10 @@ function parse_ical ( $cal_file, $source='file' ) {
     // a CRLF and then a single white space character.
     // We will allow it to be CRLF, CR or LF or any repeated sequence
     // so long as there is a single white space character next.
-    //echo "Orig:<br><pre>$data</pre><br/><br/>\n";
+    //echo "Orig:<br /><pre>$data</pre><br /><br />\n";
     $data = preg_replace ( "/[\r\n]+ /", "", $data );
     $data = preg_replace ( "/[\r\n]+/", "\n", $data );
-    //echo "Data:<br><pre>$data</pre><P>";
+    //echo "Data:<br /><pre>$data</pre><p>";
 
     // reflect the section where we are in the file:
     // VEVENT, VTODO, VJORNAL, VFREEBUSY, VTIMEZONE
