@@ -3,28 +3,28 @@
  * $Id$
  *
  * Description:
- *	Creates the iCal output for a single user's calendar so
- *	that remote users can "subscribe" to a WebCalendar calendar.
- *	Both Apple iCal and Mozilla's Calendar support subscribing
- *	to remote calendars.
+ *  Creates the iCal output for a single user's calendar so
+ *  that remote users can "subscribe" to a WebCalendar calendar.
+ *  Both Apple iCal and Mozilla's Calendar support subscribing
+ *  to remote calendars.
  *
- *	Note that unlink the export to iCal, this page does not include
- *	attendee info.  This improves the performance considerably, BTW.
+ *  Note that unlink the export to iCal, this page does not include
+ *  attendee info.  This improves the performance considerably, BTW.
  *
  * Notes:
- *	Does anyone know when a client (iCal, for example) refreshes its
- *	data, does it delete all old data and reload?  Just wondering
- *	if we need to somehow send a delete notification on updates...
+ *  Does anyone know when a client (iCal, for example) refreshes its
+ *  data, does it delete all old data and reload?  Just wondering
+ *  if we need to somehow send a delete notification on updates...
  *
  * Input parameters:
- *	URL should be the form of /xxx/publish.php/username.ics
- *	or /xxx/publish.php?user=username
+ *  URL should be the form of /xxx/publish.php/username.ics
+ *  or /xxx/publish.php?user=username
  *
  * Security:
- *	If $PUBLISH_ENABLED is not 'Y' (set in Admin System Settings),
- *	  do not allow.
- *	If $USER_PUBLISH_ENABLED is not 'Y' (set in each user's
- *	  Preferences), do not allow.
+ *  If $PUBLISH_ENABLED is not 'Y' (set in Admin System Settings),
+ *    do not allow.
+ *  If $USER_PUBLISH_ENABLED is not 'Y' (set in each user's
+ *    Preferences), do not allow.
  */
 include "includes/config.php";
 include "includes/php-dbi.php";
@@ -38,9 +38,10 @@ if ( empty ( $user ) ) {
   $user = $arr[count($arr)-1];
   # remove any trailing ".ics" in user name
   $user = preg_replace ( "/\.[iI][cC][sS]$/", '', $user );
-  if ( $user == 'public' )
-    $user = '__public__';
 }
+
+if ( $user == 'public' )
+  $user = '__public__';
 
 load_global_settings ();
 
@@ -422,7 +423,7 @@ function generate_uid($id) {
 }
 
 function export_ical () {
-  global $publish_fullname, $user;
+  global $publish_fullname, $user, $PROGRAM_NAME;
   $res = get_events_for_publish ();
 
   $entry_array = array();
