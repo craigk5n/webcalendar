@@ -134,6 +134,7 @@ if ( empty ( $user ) || $user == $login ) {
 <tr><td class="tooltipselect" title="<?php etooltip("tz-help")?>">
   <label for="pref_TIMEZONE"><?php etranslate("Timezone Selection")?>:</label></td><td>
   <?php 
+   if ( empty ( $prefarray['TIMEZONE'] ) ) $prefarray['TIMEZONE'] = $SERVER_TIMEZONE;
    $tz_offset = get_tz_offset ( $prefarray['TIMEZONE'], time() );
    echo print_timezone_select_html ( "pref_", $prefarray['TIMEZONE']); 
    echo  translate("Your current GMT offset is")  . " " . $tz_offset[0] . 
