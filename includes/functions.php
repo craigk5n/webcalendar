@@ -1442,13 +1442,13 @@ function display_small_tasks () {
  * @uses build_event_popup
  */
 function print_entry ( $event, $date ) {
-  global $eventinfo, $login, $user, $PHP_SELF,
-   $SUMMARY_LENGTH, $DISPLAY_LOCATION, $DISPLAY_TASKS_IN_GRID;
+  global $eventinfo, $login, $user, $PHP_SELF, $layers, 
+   $SUMMARY_LENGTH, $DISPLAY_LOCATION, $DISPLAY_TASKS_IN_GRID,
+	 $is_assistant, $is_nonuser_admin;
 
   static $key = 0;
-  
-  global $layers;
 
+	$padding = '';
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     $class = "layerentry";
   } else {
@@ -3286,9 +3286,9 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
 function html_for_event_day_at_a_glance ( $event, $date ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user, $tz_offset, $DISPLAY_DESC_PRINT_DAY,
-    $ALLOW_HTML_DESCRIPTION;
+    $ALLOW_HTML_DESCRIPTION, $layers, $PHP_SELF, $TIME_SLOTS;
   static $key = 0;
-  global $layers, $PHP_SELF, $TIME_SLOTS;
+
 
   if ( $event->getExtForID() != '' ) {
     $id = $event->getExtForID();
@@ -4319,10 +4319,11 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
  * @staticvar int Used to ensure all event popups have a unique id
  */
 function print_entry_timebar ( $event, $date ) {
-  global $eventinfo, $login, $user, $PHP_SELF, $prefarray;
+  global $eventinfo, $login, $user, $PHP_SELF, $prefarray, $is_assistant,
+	  $is_nonuser_admin, $layers, $TIMEZONE;
+
   static $key = 0;
   $insidespan = false;
-  global $layers, $TIMEZONE;
 
   // Adjust for TimeZone
   $tz_offset = get_tz_offset ( $TIMEZONE, '', $date );
@@ -5652,27 +5653,27 @@ function error_check ( $nextURL ) {
 }
 
 /**
- * Sorts the combined event arrays by time then name
+ * Sorts the combined event arrays by timestamp then name
  *
  * <b>Note:</b> This is a user-defined comparison function for usort()
  *
  * @params passed automatically by usort, don't pass them in your call
  */
 function sort_events ( $a, $b ) { 
-  $retval = strnatcmp( $a->getTime(), $b->getTime() ); 
+  $retval = strnatcmp( $a->getDateTimeTS(), $b->getDateTimeTS() ); 
   if( ! $retval ) return strnatcmp( $a->getName(), $b->getName() );
   return $retval; 
 } 
 
 /**
- * Sorts the combined event arrays by time then name (case insensitive)
+ * Sorts the combined event arrays by timestamp then name (case insensitive)
  *
  * <b>Note:</b> This is a user-defined comparison function for usort()
  *
  * @params passed automatically by usort, don't pass them in your call
  */
 function sort_events_insensitive ( $a, $b ) { 
-  $retval = strnatcmp( $a->getTime(), $b->getTime() ); 
+  $retval = strnatcmp( $a->getDateTimeTS(), $b->getDateTimeTS() ); 
   if( ! $retval ) return strnatcmp( strtolower($a->getName()), strtolower($b->getName()) ); 
   return $retval; 
 } 

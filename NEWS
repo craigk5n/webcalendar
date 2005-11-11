@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1353588: 4:30pm PST event bug
       1353470: Events in day view shown incorrectly - CVS
       1353363: publish.php logic error for public user?
       1351971: "Delete"-Button won't work properly for reports
