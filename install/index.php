@@ -595,11 +595,11 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
     $db_password = getPostValue ( 'form_db_password' );
     //Allow  field length to change id needed
    $onload = "db_type_handler();";
-  
-  //disable warnings
+    
+   //disable warnings
    show_errors ();
-    $c = dbi_connect ( $db_host, $db_login,
-      $db_password, $db_database );
+   $c = dbi_connect ( $db_host, $db_login,
+     $db_password, $db_database );
 
     //enable warnings
    show_errors ( true);
@@ -965,6 +965,18 @@ function db_type_handler () {
     document.getElementById("db_name").innerHTML = "<?php etranslate ( "Database Name" ) ?>" + ":";
   }
 }
+function chkPassword () {
+  var form = document.dbform;
+  var db_pass = form.form_db_password.value;
+  var illegalChars = /\#/;
+  // do not allow #.../\#/ would stop all non-alphanumeric
+  if (illegalChars.test(db_pass)) {
+    alert( "<?php ( "The password contains illegal characters.", true ) ?>");
+    form.form_db_password.select ();
+    form.form_db_password.focus ();
+    return false;
+  } 
+}
  //]]> -->
 </script>
 <style type="text/css">
@@ -1271,7 +1283,7 @@ if ( ! $exists || ! $canWrite ) { ?>
  <?php etranslate ( "Database Settings" ) ?>
 </th></tr>
 <tr><td>
- <form action="index.php" method="post" name="dbform">
+ <form action="index.php" method="post" name="dbform" onSubmit="return chkPassword()">
  <table align="right" width="100%" border="0">
   <tr><td rowspan="6" width="20%">&nbsp;
    </td><td class="prompt" width="25%" valign="bottom">
@@ -1330,7 +1342,7 @@ if ( ! $exists || ! $canWrite ) { ?>
   </td></tr>
   <tr><td class="prompt">
    <label for="pass"><?php etranslate ( "Password" ) ?>:</label></td><td colspan="2">
-   <input name="form_db_password" id="pass" size="20" value="<?php echo $settings['db_password'];?>" />
+   <input name="form_db_password" id="pass"  size="20" value="<?php echo $settings['db_password'];?>" />
   </td></tr>
   <tr><td class="prompt" id="db_name">
    <label for="database"><?php etranslate ( "Database Name" ) ?>:</label></td><td colspan="2">
