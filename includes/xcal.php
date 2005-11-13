@@ -1016,8 +1016,10 @@ function export_ical ( $id='all' ) {
       echo "STATUS:TENTATIVE\r\n";
     }
   } else if ( $cal_type == "T" || $cal_type == "N" ) {
-    if ($status == "A") {
+    if ($status == "A" && empty ( $completed ) ) {
       echo "STATUS:ACCEPTED\r\n";
+    } else if ($status == "A") {
+      echo "STATUS:COMPLETED\r\n";
     } else if ($status == "W") {
       echo "STATUS:NEEDS-ACTION\r\n";
     } 
