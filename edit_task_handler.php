@@ -227,7 +227,7 @@ if ( empty ( $error ) ) {
   $sql .= date ( "His", $eventstart ) . ", ";
  
  if ( ! empty ( $eventcomplete ) ) {
-   $sql .= date ( "YmdHis", $eventcomplete ) . ", ";
+   $sql .= $eventcomplete . ", ";
  } else {
    $sql .= "NULL, "; 
  }
