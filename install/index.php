@@ -971,7 +971,7 @@ function chkPassword () {
   var illegalChars = /\#/;
   // do not allow #.../\#/ would stop all non-alphanumeric
   if (illegalChars.test(db_pass)) {
-    alert( "<?php ( "The password contains illegal characters.", true ) ?>");
+    alert( "<?php etranslate ( "The password contains illegal characters.", true ) ?>");
     form.form_db_password.select ();
     form.form_db_password.focus ();
     return false;
