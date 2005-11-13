@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1355655: Task Completed dates not stored properly
  - Fixed bug 1313905: database password can't contain '#' chars
  - Fixed bug 1353588: 4:30pm PST event bug
  - Fixed bug 1353470: Events in day view shown incorrectly - CVS
