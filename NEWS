@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1356541: ics-import will not correctly handle 'private'-entries
       1355655: Task Completed dates not stored properly
       1313905: database password can't contain '#' chars
       1353588: 4:30pm PST event bug

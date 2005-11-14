@@ -17,6 +17,9 @@ include_once 'includes/init.php';
 // make sure this user is allowed to look at this calendar.
 $can_view = false;
 $is_my_event = false;
+$is_private = $is_confidential = false;
+$log = getGetValue ( 'log' );
+$show_log = ! empty ( $log );
 
 if ( $is_admin || $is_assistant ) {
   $can_view = true;
@@ -178,7 +181,7 @@ if ( $row ) {
   if ( $hide_details ) {
     $name = $OVERRIDE_PUBLIC_TEXT;
     $description = $OVERRIDE_PUBLIC_TEXT;
-    if ( ! empty ( $row[11] ) ) $location = $OVERRIDE_PUBLIC_TEXT;;
+    if ( ! empty ( $row[11] ) ) $location = $OVERRIDE_PUBLIC_TEXT;
   } else {
     $name = $row[9];
     $description = $row[10];
@@ -234,15 +237,18 @@ if ( $res ) {
 user_load_variables ( $create_by, "createby_" );
 $email_addr = empty ( $createby_email ) ? '' : $createby_email;
 
-// If confidential and not this user's event, then
+// If private and not this user's event or
+// Confidential and not user's or not assistant, then
 // They cannot seem name or description.
 //if ( $row[8] == "R" && ! $is_my_event && ! $is_admin ) {
 if ( $row[8] == "R" && ! $is_my_event ) {
   $is_private = true;
+  $name = "[" . translate("Private") . "]";
+  $description = "[" . translate("Private") . "]";
+} else if ( $row[8] == "C" &&  ! $is_my_event && ! $is_assistant ) {
+  $is_confidential = true;
   $name = "[" . translate("Confidential") . "]";
   $description = "[" . translate("Confidential") . "]";
-} else {
-  $is_private = false;
 }
 
 if ( $event_repeats && ! empty ( $date ) )
@@ -352,7 +358,7 @@ if (  ! empty ( $event_status ) ) { ?>
 <?php if ( $DISABLE_ACCESS_FIELD != "Y" ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Access")?>:</td><td>
- <?php echo ( $row[8] == "P" ) ? translate("Public") : translate("Confidential"); ?>
+ <?php echo ( $row[8] == "P" ) ? translate("Public") : ( $row[8] == "C" ? translate("Confidential") : translate("Private")  ); ?>
 </td></tr>
 <?php } ?>
 <?php if ( $CATEGORIES_ENABLED == "Y" && ! empty ( $category ) ) { ?>
@@ -382,14 +388,16 @@ if ( $single_user == "N" && ! empty ( $createby_fullname )  ) {
   echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n" . 
  translate("Created by") . ":</td><td>\n";
   if ( $is_private ) {
+    echo "[" . translate("Private") . "]\n</td></tr>";
+  } else   if ( $is_confidential ) {
     echo "[" . translate("Confidential") . "]\n</td></tr>";
   } else {
     if ( strlen ( $email_addr ) ) {
       echo "<a href=\"mailto:$email_addr?subject=$subject\">" .
-        ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
+        ( $row[0] == "__public__" ? translate( "Public Access" ): $createby_fullname ) .
         "</a>$proxy_fullname\n</td></tr>";
     } else {
-      echo ( $row[0] == "__public__" ? "Public Access" : $createby_fullname ) .
+      echo ( $row[0] == "__public__" ? translate( "Public Access" ) : $createby_fullname ) .
         "$proxy_fullname\n</td></tr>";
     }
   }
@@ -484,8 +492,11 @@ $show_participants = true;
 if ( $show_participants ) { ?>
   <tr><td style="vertical-align:top; font-weight:bold;" colspan="2">
   <?php
+
   if ( $is_private ) {
     echo "[" . translate("Private") . "]";
+  } else   if ( $is_confidential ) {
+    echo "[" . translate("Confidential") . "]";
   } else {
     $sql = "SELECT cal_login, cal_status, cal_percent FROM webcal_entry_user " .
       "WHERE cal_id = $id AND cal_status IN ( 'A', 'W' )";
@@ -681,10 +692,13 @@ if ( count ( $allmails ) > 0 ) {
     translate("Email all participants") . "</a><br />\n";
 }
 
-$show_log = false;
+$can_show_log = $is_admin; // default if access control is not enabled
+if ( access_is_enabled () ) {
+  $can_show_log = access_can_access_function ( ACCESS_ACTIVITY_LOG );
+}
 
-if ( $is_admin ) {
-  if ( empty ( $log ) ) {
+if ( $can_show_log ) {
+  if ( ! $show_log ) {
     echo "<a title=\"" . 
       translate("Show activity log") . "\" class=\"nav\" " .
       "href=\"view_task.php?id=$id&amp;log=1\">" . 
@@ -698,7 +712,7 @@ if ( $is_admin ) {
   }
 }
 
-if ( $show_log ) {
+if ( $can_show_log && $show_log ) {
   echo "<h3>" . translate("Activity Log") . "</h3>\n";
   echo "<table class=\"embactlog\">\n";
   echo "<tr><th class=\"usr\">\n";

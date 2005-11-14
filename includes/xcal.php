@@ -1290,9 +1290,8 @@ foreach ( $data as $Entry ){
       $values[] = $priority;
 
       if ( ! empty ( $Entry['Class'])){   
-     $names[] = 'cal_access';     
-    $entryclass = ($Entry['Class'] == "Private"? "R":
-      ( $Entry['Class'] == "Confidential"?"C":"P") );
+        $names[] = 'cal_access';     
+        $entryclass = $Entry['Class'];
         $values[] = "'$entryclass'";
       } 
 
