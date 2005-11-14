@@ -111,30 +111,16 @@ $webcalConfig = array (
 
 function make_uppercase () {
   //make sure all cal_settings are UPPERCASE
-  $res = dbi_query ( "SELECT cal_setting FROM webcal_config", false, false );
-  if ( $res ) {
-     while (  $row = dbi_fetch_row ( $res ) ) {
-       if ( ! dbi_query ( "UPDATE webcal_config SET cal_setting = '" . 
-         strtoupper( $row[0] ) . "' WHERE cal_setting = '" . $row[0] . "'" ) ) 
-         $error = translate("Error updating webcal_config") . ": " . dbi_error ();       
-     }
-     dbi_free_result ( $res );
-  }     
-   $res = dbi_query ( "SELECT cal_setting FROM webcal_user_pref", false, false );
-   if ( $res ) {
-     while (  $row = dbi_fetch_row ( $res ) ) {
-       if ( ! dbi_query ( "UPDATE webcal_user_pref SET cal_setting = '" . 
-         strtoupper( $row[0] ) . "' WHERE cal_setting = '" . $row[0] . "'" ) ) 
-         $error = translate("Error updating webcal_config") . ": " . dbi_error ();       
-     }
-     dbi_free_result ( $res );
-  }  
+  if ( ! dbi_query ( "UPDATE webcal_config SET cal_setting = UPPER(cal_setting)" ) )
+    echo translate("Error updating webcal_config") . ": " . dbi_error ();       
+  dbi_free_result ( $res );    
+  if ( ! dbi_query ( "UPDATE webcal_user_pref SET cal_setting = UPPER(cal_setting)" ) )
+    echo translate("Error updating webcal_user_pref") . ": " . dbi_error ();       
+  dbi_free_result ( $res );
 }
 
 function db_load_config () {
-global $webcalConfig;
-
-     
+global $webcalConfig; 
    while ( list ( $key, $val ) = each ( $webcalConfig ) ) {
     $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
      "WHERE cal_setting  = '$key'", false, false );
