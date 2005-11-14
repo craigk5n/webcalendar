@@ -19,6 +19,7 @@ include 'includes/xcal.php'; //only to display recurrance info
 // make sure this user is allowed to look at this calendar.
 $can_view = false;
 $is_my_event = false;
+$is_private = $is_confidential = false;
 $log = getGetValue ( 'log' );
 $show_log = ! empty ( $log );
 
@@ -279,6 +280,7 @@ if ( $row ) {
   if ( $hide_details ) {
     $name = $OVERRIDE_PUBLIC_TEXT;
     $description = $OVERRIDE_PUBLIC_TEXT;
+    if ( ! empty ( $row[11] ) ) $location = $OVERRIDE_PUBLIC_TEXT;
   } else {
     $name = $row[9];
     $description = $row[10];
@@ -345,17 +347,19 @@ else
 user_load_variables ( $create_by, "createby_" );
 $email_addr = empty ( $createby_email ) ? '' : $createby_email;
 
-// If confidential and not this user's event, then
+// If private and not this user's event or
+// Confidential and not user's or not assistant, then
 // They cannot seem name or description.
 //if ( $row[8] == "R" && ! $is_my_event && ! $is_admin ) {
 if ( $row[8] == "R" && ! $is_my_event ) {
   $is_private = true;
+  $name = "[" . translate("Private") . "]";
+  $description = "[" . translate("Private") . "]";
+} else if ( $row[8] == "C" &&  ! $is_my_event && ! $is_assistant ) {
+  $is_confidential = true;
   $name = "[" . translate("Confidential") . "]";
   $description = "[" . translate("Confidential") . "]";
-} else {
-  $is_private = false;
 }
-
 if ( $event_repeats && ! empty ( $date ) )
   $event_date = $date;
 else
@@ -472,7 +476,7 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
 <?php if ( $DISABLE_ACCESS_FIELD != "Y" ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Access")?>:</td><td>
- <?php echo ( $row[8] == "P" ) ? translate("Public") : translate("Confidential"); ?>
+ <?php echo ( $row[8] == "P" ) ? translate("Public") : ( $row[8] == "C" ? translate("Confidential") : translate("Private")  ); ?>
 </td></tr>
 <?php } ?>
 <?php if ( $CATEGORIES_ENABLED == "Y" && ! empty ( $category ) ) { ?>
@@ -502,6 +506,8 @@ if ( $single_user == "N" && ! empty ( $createby_fullname )  ) {
   echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n" . 
  translate("Created by") . ":</td><td>\n";
   if ( $is_private ) {
+    echo "[" . translate("Private") . "]\n</td></tr>";
+  } else   if ( $is_confidential ) {
     echo "[" . translate("Confidential") . "]\n</td></tr>";
   } else {
     if ( strlen ( $email_addr ) ) {
@@ -611,7 +617,10 @@ if ( $single_user == "N" && $show_participants ) { ?>
   <tr><td style="vertical-align:top; font-weight:bold;">
   <?php etranslate("Participants")?>:</td><td>
   <?php
+  $num_app = $num_wait = $num_rej = 0;
   if ( $is_private ) {
+    echo "[" . translate("Private") . "]";
+  } else   if ( $is_confidential ) {
     echo "[" . translate("Confidential") . "]";
   } else {
     $sql = "SELECT cal_login, cal_status FROM webcal_entry_user " .
@@ -619,7 +628,6 @@ if ( $single_user == "N" && $show_participants ) { ?>
     //echo "$sql\n";
     $res = dbi_query ( $sql );
     $first = 1;
-    $num_app = $num_wait = $num_rej = 0;
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $pname = $row[0];
@@ -826,7 +834,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
     "href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
     translate("Copy entry") . "</a><br />\n";
 }
-if ( $readonly != "Y" && ! $is_my_event && ! $is_private && 
+if ( $readonly != "Y" && ! $is_my_event && ! $is_private && ! $is_confidential &&
   $event_status != "D" && $login != "__public__" && ! $is_nonuser )  {
   echo "<a title=\"" . 
     translate("Add to My Calendar") . "\" class=\"nav\" " .
@@ -906,7 +914,7 @@ if ( $can_show_log && $show_log ) {
   echo "</table>\n";
 }
 
-if (! $is_private  && ! $hide_details ) {
+if (! $is_private  && ! $is_confidential  && ! $hide_details ) {
   echo "<br /><form method=\"post\" name=\"exportform\" " .
     "action=\"export_handler.php\">\n";
   echo "<label for=\"exformat\">" . 
