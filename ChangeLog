@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1354832: import ical - first edited event multiplies
  - Fixed bug 1356024: event link in Activity log - NOT FOUND error
  - Fixed bug 1356541: ics-import will not correctly handle 'private'-entries
  - Fixed bug 1355655: Task Completed dates not stored properly

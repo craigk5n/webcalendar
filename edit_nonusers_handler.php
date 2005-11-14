@@ -43,7 +43,22 @@ if ( ! empty ( $delete ) ) {
   }
   // Now delete events that were just for this user
   for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
-    dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = " . $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_entry_log WHERE cal_entry_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_import_data WHERE cal_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_entry_ext_user WHERE cal_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_reminder_log WHERE cal_id = " .
+      $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = " .
+      $delete_em[$i] );
   }
 
   // Delete user participation from events
