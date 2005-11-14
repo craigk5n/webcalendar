@@ -3,16 +3,16 @@
  * $Id$
  *
  * Description:
- *	Display the system activity log.
+ *  Display the system activity log.
  *
  * Input Parameters:
- *	startid - specified the id of the first log entry to display
+ *  startid - specified the id of the first log entry to display
  *
  * Security:
- *	User must be an admin user
- *	AND, if user access control is enabled, they must have access to
- *	activity logs.  (This is because users may see event details
- *	for other groups that they are not supposed to have access to.)
+ *  User must be an admin user
+ *  AND, if user access control is enabled, they must have access to
+ *  activity logs.  (This is because users may see event details
+ *  for other groups that they are not supposed to have access to.)
  */
 include_once 'includes/init.php';
 
@@ -63,15 +63,15 @@ if ( $res ) {
       if ( $num % 2 ) {
         echo " class=\"odd\"";
       }
-      $view_link = ( $row[8] == 'E' || $row[8] == 'M' ?'view_entry' : 'view_task' );			
-			echo "><td>\n" .
+      $view_link = ( $row[8] == 'E' || $row[8] == 'M' ?'view_entry' : 'view_task' );      
+      echo "><td>\n" .
         $row[0] . "</td><td>\n" .
         $row[1] . "</td><td>\n" . 
         date_to_str ( $row[3] ) . "&nbsp;" .
         // No TZ conversion & show TZID which will be GMT
         display_time ( $row[4], 3 ) . "</td><td>\n" . 
         "<a title=\"" .
-        htmlspecialchars($row[6]) . "\" href=\"$view_link?id=$row[5]\">" .
+        htmlspecialchars($row[6]) . "\" href=\"$view_link.php?id=$row[5]\">" .
         htmlspecialchars($row[6]) . "</a></td><td>\n";
       if ( $row[2] == LOG_CREATE )
         etranslate("Event created");
