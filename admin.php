@@ -20,20 +20,6 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-/*
-// Set defaults so we don't get undefined errors
-if ( empty ( $s['RSS_ENABLED'] ) )
-  $s['RSS_ENABLED'] = 'N';
-if ( empty ( $s['ALLOW_USER_HEADER'] ) )
-  $s['ALLOW_USER_HEADER'] = 'N';
-if ( empty ( $s['ALLOW_EXTERNAL_HEADER'] ) )
-  $s['ALLOW_EXTERNAL_HEADER'] = 'N';
-if ( empty ( $s['OVERRIDE_PUBLIC'] ) )
-  $s['OVERRIDE_PUBLIC'] = 'N';
-if ( empty ( $s['OVERRIDE_PUBLIC_TEXT'] ) )
-  $s['OVERRIDE_PUBLIC_TEXT'] = translate("Unavailable");
-*/
-
 $BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); email_handler();"';
 $INC = array('js/admin.php','js/visible.php');
 print_header ( $INC, '', $BodyX );
@@ -112,6 +98,12 @@ if ( ! $error ) {
   <label for="admin_SERVER_URL"><?php etranslate("Server URL")?>:</label></td><td>
   <input type="text" size="40" name="admin_SERVER_URL" id="admin_SERVER_URL" value="<?php 
    echo htmlspecialchars ( $SERVER_URL );
+  ?>" />
+ </td></tr>
+ <tr><td class="tooltip" title="<?php etooltip("home-url-help")?>">
+  <label for="admin_HOME_LINK"><?php etranslate("Home URL")?>:</label></td><td>
+  <input type="text" size="40" name="admin_HOME_LINK" id="admin_HOME_LINK" value="<?php 
+   if ( ! empty ( $HOME_LINK ) ) echo htmlspecialchars ( $HOME_LINK );
   ?>" />
  </td></tr>
  <tr><td class="tooltipselect" title="<?php etooltip("language-help");?>">

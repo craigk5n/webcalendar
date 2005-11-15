@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 11-09-2005
+# Translation last updated on 11-15-2005
 
 
 ###############################################
@@ -86,7 +86,6 @@ Error adding event: Error adding event
 ###############################################
 # Page: admin.php
 #
-Unavailable: Unavailable
 System Settings: System Settings
 Help: Help
 Note: Note
@@ -108,6 +107,8 @@ app-name-help: Specifies the name of the application that will appear in the bro
 Application Name: Application Name
 server-url-help: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
 Server URL: Server URL
+home-url-help: Specifies the home URL for the applicaiton. This can be an absolute or relative
+Home URL: Home URL
 language-help: Specifies which language to use.
 Language: Language
 Your browser default language is: Your browser default language is
@@ -1186,6 +1187,7 @@ Send Reminder: Send Reminder
 ###############################################
 # Page: includes/trailer.php
 #
+Home: Home
 My Calendar: My Calendar
 Back to My Calendar: Back to My Calendar
 Add New Entry: Add New Entry
@@ -1344,6 +1346,7 @@ Error you must specify a\\nSingle-User Login: Error you must specify a\\nSingle-
 Server URL must end with: Server URL must end with
 Database Name: Database Name
 Full Path (no backslashes): Full Path (no backslashes)
+The password contains illegal characters.: The password contains illegal characters.
 WebCalendar Installation Wizard: WebCalendar Installation Wizard
 Step: Step
 This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
