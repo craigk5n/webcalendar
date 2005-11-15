@@ -209,6 +209,16 @@ else {
     $can_add = false;
 }
 
+// get HOME URL and text 
+if ( ! empty ( $GLOBALS['HOME_LINK'] ) ) {
+  $home = $GLOBALS['HOME_LINK'];
+  $goto_link[] = "<a title=\"" . 
+    translate("Home") . "\" style=\"font-weight:bold;\" " .
+    "href=\"$home\">" . 
+    translate("Home") . "</a>";
+}
+
+
 if ( ! empty ( $GLOBALS['STARTVIEW'] ) ) {
   $mycal = $GLOBALS['STARTVIEW'];
 } else {
