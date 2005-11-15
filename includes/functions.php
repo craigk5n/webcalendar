@@ -1421,7 +1421,7 @@ function display_small_tasks () {
       date_to_str( $E->getDueDate(), "__mm__/__dd__/__yyyy__", false, false) . "</a>";
     $percent = $link . " title=\"% " . translate ( "Completed" ) . "\" >". $E->getPercent() . "</a>";
     $task_html .= "<tr><td>$priority</td><td>$name</td>" .
-      "<td>$due_date</td><td>$percent</td></tr>\n";
+      "<td>$due_date</td><td>&nbsp;$percent</td></tr>\n";
     $row_cnt++;
   }
   for ($i=12; $i > $row_cnt; $i-- ) {
