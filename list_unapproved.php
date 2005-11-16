@@ -52,11 +52,10 @@ if ( ! empty ( $user ) && $user != $login ) {
 // when user access control is enabled.
 function list_unapproved ( $user ) {
   global $temp_fullname, $key, $login, $retarg, $NONUSER_ENABLED;
-
+  $count = 0;
+  
   user_load_variables ( $user, "temp_" );
-  echo "<h3>" . $temp_fullname . "</h3>\n";
-
-  //echo "Listing events for $user <br />";
+  //echo "Listing events for $user<br />";
 
   $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name, " .
     "webcal_entry.cal_description, webcal_entry_user.cal_login, " .
@@ -68,24 +67,13 @@ function list_unapproved ( $user ) {
     "AND ( webcal_entry.cal_ext_for_id IS NULL " .
     "OR webcal_entry.cal_ext_for_id = 0 ) AND " .
     "( webcal_entry_user.cal_login = '$user'  ";
-
-  if ( $NONUSER_ENABLED == 'Y' ) {
-    $admincals = get_nonuser_cals ( $login );
-    for ( $i = 0; $i < count ( $admincals ); $i++ ) {
-      $sql .= " OR webcal_entry_user.cal_login = '" .
-        $admincals[$i]['cal_login'] . "' ";
-    }
-  }
       
   $sql .= ") AND webcal_entry_user.cal_status = 'W' " .
-    "ORDER BY webcal_entry.cal_date";
-
+    "ORDER BY webcal_entry_user.cal_login, webcal_entry.cal_date";
   $res = dbi_query ( $sql );
-  $count = 0;
   $eventinfo = "";
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ($count == 0 ) { echo "<ul>\n"; }
       $key++;
       $id = $row[0];
       $name = $row[1];
@@ -99,6 +87,11 @@ function list_unapproved ( $user ) {
       $type = $row[9];
       $view_link = ( $type == 'E' || $type == 'M' ?'view_entry' : 'view_task' );      
 
+      if ($count == 0 ) { 
+        echo "<h3>" . $temp_fullname . "</h3>\n";      
+        echo "<ul>\n"; 
+      }
+      
       $divname = "eventinfo-pop$id-$key";
       $linkid  = "pop$id-$key";
       echo "<li><a  title=\"" . translate("View this entry") .
@@ -161,7 +154,7 @@ function list_unapproved ( $user ) {
     dbi_free_result ( $res );
     if ($count > 0 ) { echo "</ul>\n"; }
   }
-  if ( $count == 0 ) {
+  if ( $count == 0  ) {
     echo "<p class=\"nounapproved\">" . 
       translate("No unapproved events for") . "&nbsp;" . $temp_fullname . ".</p>\n";
   } else {
@@ -215,6 +208,14 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
       ( empty ( $user ) || $user != '__public__' ) ) {
       $app_users[] = '__public__';
       $app_users_hash['__public__'] = 1;
+    }
+    $all = get_nonuser_cals ( );
+    for ( $j = 0; $j < count ( $all ); $j++ ) {
+      $x = $all[$j]['cal_login'];
+        if ( empty ( $app_user_hash[$x] ) ) {
+          $app_users[] = $x;
+          $app_user_hash[$x] = 1;
+        }
     }
   }
 }
