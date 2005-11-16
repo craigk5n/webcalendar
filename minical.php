@@ -5,7 +5,7 @@
  * Description:
  * This script is intended to be used inside an IFRAME on another website
  * It can be embedded like so
- * <iframe name="minical" frameborder="0" height="190" width="250" src="http://cal/minical.php";> 
+ * <iframe name="minical" frameborder="0" height="190" width="250"     src="http://cal/minical.php";> 
  *
  * You must have public access enabled in System Settings to use this
  * page (unless you modify the $public_must_be_enabled setting below
@@ -96,12 +96,12 @@ load_user_preferences ();
 
 user_load_variables ( $login, "minical_" );
 
-if ( $user != '__public__' && ! nonuser_load_variables ( $login, 'temp_' ) ) {
+if ( $user != '__public__' && ! nonuser_load_variables ( $login, 'minica_' ) ) {
   die_miserable_death ( translate ( "No such nonuser calendar" ) .
     ': ' . $login );
 }
 
-if ( $user != '__public__' && ( empty ( $temp_is_public ) || $temp_is_public != 'Y' ) ) {
+if ( $user != '__public__' && ( empty ( $minical_is_public ) || $minical_is_public != 'Y' ) ) {
   die_miserable_death ( translate ( "This Calendar is not Public" ) );
 }
 

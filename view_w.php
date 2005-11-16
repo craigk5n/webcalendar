@@ -159,9 +159,9 @@ if ( ! empty ( $error ) ) {
   <img src="rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php
-  echo date_to_str ( date ( "Ymd", $wkstart ), false ) .
+  echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
-    date_to_str ( date ( "Ymd", $wkend ), false );
+    date_to_str ( date ( "Ymd", $wkend ), "", false );
 ?></span><br />
 <span class="viewname"><?php echo $view_name ?></span>
 </div>

@@ -568,8 +568,8 @@ function send_no_cache_header () {
  */
 function load_user_preferences ( $guest='') {
   global $login, $browser, $views, $prefarray, $is_assistant,
-    $DATE_FORMAT_MY, $has_boss, $user, $is_nonuser_admin,
-    $ALLOW_COLOR_CUSTOMIZATION, $DATE_FORMAT_MD, $LANGUAGE;
+    $DATE_FORMAT_MY, $DATE_FORMAT, $DATE_FORMAT_MD, $LANGUAGE, $lang_file, 
+		$has_boss, $user, $is_nonuser_admin, $ALLOW_COLOR_CUSTOMIZATION;
   $lang_found = false;
   $colors = array (
     "BGCOLOR" => 1,
@@ -645,19 +645,27 @@ function load_user_preferences ( $guest='') {
   // settings to figure it out, and save it in the database for future
   // use (email reminders).
   $lang = 'none';
+	$tmp_lang = $LANGUAGE;
   if ( ! $lang_found && strlen ( $tmp_login ) && $tmp_login != "__public__" ) {
    if ( $LANGUAGE == "none" ) {
-      $lang = $browser_lang; 
+      $lang = $tmp_lang = $browser_lang; 
   }
     dbi_query ( "INSERT INTO webcal_user_pref " .
       "( cal_login, cal_setting, cal_value ) VALUES " .
       "( '$tmp_login', 'LANGUAGE', '$lang' )" );
   }
-
-  if ( empty ( $DATE_FORMAT_MY ) )
-    $DATE_FORMAT_MY = "__month__ __yyyy__";
-  if ( empty ( $DATE_FORMAT_MD ) )
-    $DATE_FORMAT_MD = "__month__ __dd__";
+	
+	reset_language ( $tmp_lang );
+  if (  empty ( $DATE_FORMAT ) || $DATE_FORMAT == 'LANGUAGE_DEFINED' ){
+	  $DATE_FORMAT = translate ( "__month__ __dd__, __yyyy__" );
+	}
+  if ( empty ( $DATE_FORMAT_MY ) || $DATE_FORMAT_MY == 'LANGUAGE_DEFINED' ){	
+	  $DATE_FORMAT_MY = translate ( "__month__ __yyyy__" );  
+	}
+  if ( empty ( $DATE_FORMAT_MD ) || $DATE_FORMAT_MD == 'LANGUAGE_DEFINED' ){	
+	  $DATE_FORMAT_MD = translate ( "__month__ __dd__" );  
+	}
+		
   $is_assistant = empty ( $user ) ? false :
     user_is_assistant ( $tmp_login, $user );
   $has_boss = user_has_boss ( $tmp_login );
@@ -788,7 +796,7 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
  */
 function get_my_users () {
   global $login, $is_admin, $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
-  global $my_user_array, $is_nonuser;
+  global $my_user_array, $is_nonuser, $is_nonuser_admin;
 
   // Return the global variable (cached)
   if ( ! empty ( $my_user_array ) && is_array ( $my_user_array ) )
@@ -811,7 +819,7 @@ function get_my_users () {
       return array ( $login );
     }
     $u = user_get_users ();
-    if ( $is_nonuser ) {
+    if ( $is_nonuser_admin ) {
       $nonusers = get_nonuser_cals ();
       $u = array_merge( $nonusers, $u );
     }
@@ -841,7 +849,7 @@ function get_my_users () {
     $res = dbi_query ( $sql );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
-        $ret[] = $u_byname[$row[0]];
+        if ( isset ( $u_byname[$row[0]] ) ) $ret[] = $u_byname[$row[0]];
       }
       dbi_free_result ( $res );
     }
@@ -1082,7 +1090,7 @@ function site_extras_for_popup ( $id ) {
 function build_event_popup ( $popupid, $user, $description, $time,
   $site_extras='', $location='', $name='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname, $DISABLE_POPUPS,
-    $ALLOW_HTML_DESCRIPTION;
+    $ALLOW_HTML_DESCRIPTION, $SUMMARY_LENGTH;
   
  if ( ! empty ( $DISABLE_POPUPS ) && $DISABLE_POPUPS == "Y" ) 
     return;
@@ -1100,8 +1108,8 @@ function build_event_popup ( $popupid, $user, $description, $time,
     $ret .= "<dt>" . translate ("User") .
       ":</dt>\n<dd>$popup_fullnames[$user]</dd>\n";
   }
-  if ( strlen ( $name ) )
-    $ret .= "<dt>$name</dt>\n";  
+  if ( $SUMMARY_LENGTH < 80 && strlen ( $name ) )
+    $ret .= "<dt>" . substr ( $name, 0 , 40 ) . "</dt>\n";  
   if ( strlen ( $time ) )
     $ret .= "<dt>" . translate ("Time") . ":</dt>\n<dd>$time</dd>\n";
   if ( ! empty ( $location ) )
@@ -1210,7 +1218,7 @@ function date_selection_html ( $prefix, $date, $trigger=false ) {
 function display_small_month ( $thismonth, $thisyear, $showyear,
   $show_weeknums=false, $minical_id='', $month_link='month.php?' ) {
   global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
-  global $DISPLAY_WEEKNUMBER;
+		global $DISPLAY_WEEKNUMBER, $DATE_FORMAT_MY;
   global $SCRIPT, $thisday; // Needed for day.php
   global $caturl, $today;
   global $MINI_TARGET; // Used by minical.php
@@ -1249,10 +1257,9 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       translate("Next") . "\" class=\"next\" href=\"day.php?" . $u_url .
       "date=$month_ahead$caturl\"><img src=\"rightarrowsmall.gif\" alt=\"" .
       translate("Next") . "\" /></a>\n";
-    echo month_name ( $thismonth - 1 );
-    if ( $showyear != '' ) {
-      echo " $thisyear";
-    }
+    echo date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
+	    ( $showyear != '' ? $DATE_FORMAT_MY : "__month__" ),
+			false );
     echo "</th></tr>\n<tr>\n";
   } else   if ( $SCRIPT == 'minical.php' ) {
     $month_ago = date ( "Ymd",
@@ -1270,16 +1277,16 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       translate("Next") . "\" class=\"next\" href=\"minical.php?" . $u_url .
       "date=$month_ahead\"><img src=\"rightarrowsmall.gif\" alt=\"" .
       translate("Next") . "\" /></a>\n";
-    echo month_name ( $thismonth - 1);
-    if ( $showyear != '' ) {
-      echo " $thisyear";
-    }
+    echo date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
+	    ( $showyear != '' ? $DATE_FORMAT_MY : "__month__" ),
+			false );
     echo "</th></tr>\n<tr>\n";
     } else {  //not day or minical script
     //print the month name
     echo "<caption><a href=\"{$month_link}{$u_url}year=$thisyear&amp;month=$thismonth\">";
-    echo month_name ( $thismonth - 1 ) .
-  ( $showyear ? " $thisyear" : "" );
+    echo date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
+	    ( $showyear != '' ? $DATE_FORMAT_MY : "__month__"),
+			false );
     echo "</a></caption>\n";
 
     echo "<thead>\n<tr>\n";
@@ -1418,7 +1425,7 @@ function display_small_tasks () {
     $priority = $link  . " title=\"" . translate ( "Priority" ) . "\" >" . $E->getPriority() . "</a>";
     $name = $link  . " title=\"" . translate ( "Task Name" ) . "\" >". substr( $E->getName(), 0, 15 ) . "...</a>";
     $due_date = $link  . " title=\"" . translate ( "Task Due Date" ) . "\" >". 
-      date_to_str( $E->getDueDate(), "__mm__/__dd__/__yyyy__", false, false) . "</a>";
+      date_to_str( $E->getDueDate(), translate ( "__mm__/__dd__/__yyyy__" ), false, false) . "</a>";
     $percent = $link . " title=\"% " . translate ( "Completed" ) . "\" >". $E->getPercent() . "</a>";
     $task_html .= "<tr><td>$priority</td><td>$name</td>" .
       "<td>$due_date</td><td>&nbsp;$percent</td></tr>\n";
@@ -1478,17 +1485,16 @@ function print_entry ( $event, $date ) {
 
     if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
       $cal_type = "task";
-      //DO NOT REMOVE translate ( "task" )
+      $view_text = translate ( "View this task" );
       $cal_link = "view_task.php";    
     } else {
       $cal_type = "event";
-      //DO NOT REMOVE translate ( "event" )    
+      $view_text = translate ( "View this event" );    
       $cal_link = "view_entry.php";    
     }
     
-  echo "<a title=\"" . 
-    translate("View this") . "&nbsp;" . translate( $cal_type ) . "\" class=\"$class\" .
-          id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$date";
+  echo "<a title=\"" . $view_text . "\" class=\"$class\"" .
+	  " id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$date";
   if ( strlen ( $user ) > 0 )
     echo "&amp;user=" . $user;
   echo "\">";
@@ -1503,11 +1509,11 @@ function print_entry ( $event, $date ) {
 
   if ( empty ( $catIcon ) ) {
     echo "<img src=\"$icon\" class=\"bullet\" alt=\" width=\"5\" height=\"7\"". 
-      translate("View this") . "&nbsp;" .translate( $cal_type ) . "\" />";
+      $view_text  . "\" />";
   } else {
     // Use category icon
     echo "<img src=\"$catIcon\" alt=\"" . 
-      translate("View this") . "&nbsp;" .translate( $cal_type ) ."\" /><br />";
+      $view_text  ."\" /><br />";
   }
 
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
@@ -1543,9 +1549,9 @@ function print_entry ( $event, $date ) {
   } else {
     $sum_length = $SUMMARY_LENGTH;
     if ( $event->isAllDay() || $event->isUntimed() ) $sum_length += 6;
-    if ( $DISPLAY_TASKS_IN_GRID == "Y" ) $sum_length -= 2;
+    //if ( $DISPLAY_TASKS_IN_GRID == "Y" ) $sum_length -= 2;
     $padding = (strlen( $name ) > $sum_length? "...":"");
-    echo htmlspecialchars ( substr( $name, 0, $sum_length - strlen( $padding ) ) . $padding );
+    echo htmlspecialchars ( substr( $name, 0, $sum_length ) . $padding );
   }
  
   //added to allow a small location to be displayed if wanted
@@ -3163,19 +3169,20 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
 
     if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
     $cal_type = "task";
-        $cal_link = "view_task.php";
+    $cal_link = "view_task.php";
+		$view_text  = translate ( "View this task" ); 
     $hour_arr[$ind] .= "<img src=\"task.gif\" class=\"bullet\" alt=\"*\" /> ";    
     } else {
     $cal_type = "event";
-        $cal_link = "view_entry.php";    
+    $cal_link = "view_entry.php";
+		$view_text  = translate ( "View this event" ); 		    
     if ( $event->isAllDay()  || $event->isUntimed()) {
       $hour_arr[$ind] .= "<img src=\"circle.gif\" class=\"bullet\" alt=\"*\" /> ";
     }
     }
 
-  $hour_arr[$ind] .= "<a title=\"" . 
-    translate("View this") . "&nbsp;" . translate( $cal_type ) . 
-        "\" class=\"$class\" id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$date";
+  $hour_arr[$ind] .= "<a title=\"" . $view_text . 
+    "\" class=\"$class\" id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$date";
   if ( strlen ( $GLOBALS["user"] ) > 0 )
     $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
   $hour_arr[$ind] .= "\">";
@@ -3347,16 +3354,17 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
 
     if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
     $cal_type = "task";
-        $cal_link = "view_task.php";
+    $cal_link = "view_task.php";
+    $view_text = translate ( "View this task" );
     $hour_arr[$ind] .= "<img src=\"task.gif\" class=\"bullet\" alt=\"*\" /> ";    
     } else {
     $cal_type = "event";
-        $cal_link = "view_entry.php";    
+    $view_text = translate ( "View this task" );		
+    $cal_link = "view_entry.php";    
     }
 
-  $hour_arr[$ind] .= "<a title=\"" .
-    translate("View this") . "&nbsp;" . translate( $cal_type ) .
-      "\" class=\"$class\" id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$date";
+  $hour_arr[$ind] .= "<a title=\"" . $view_text .
+    "\" class=\"$class\" id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$date";
   if ( strlen ( $GLOBALS["user"] ) > 0 )
     $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
   $hour_arr[$ind] .= "\">";
@@ -3911,7 +3919,7 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
   }
   // if they have not set a preference yet...
   if ( $DATE_FORMAT == "" )
-    $DATE_FORMAT = "__month__ __dd__, __yyyy__";
+    $DATE_FORMAT = translate ( "__month__ __dd__, __yyyy__" );
 
   if ( empty ( $format ) )
     $format = $DATE_FORMAT;

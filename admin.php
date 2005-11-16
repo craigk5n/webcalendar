@@ -219,6 +219,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
     // You can add new date formats below if you want.
     // but also add in pref.php
     $datestyles = array (
+		 "LANGUAGE_DEFINED", translate("LANGUAGE DEFINED"),
      "__month__ __dd__, __yyyy__", translate("December") . " 31, 2000",
      "__dd__ __month__, __yyyy__", "31 " . translate("December") . ", 2000",
      "__dd__ __month__ __yyyy__", "31 " . translate("December") . " 2000",
@@ -253,6 +254,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
     // You can add new date formats below if you want
     // but also add in admin.php
     $datestyles = array (
+		 "LANGUAGE_DEFINED", translate("LANGUAGE DEFINED"),		
      "__month__ __yyyy__", translate("December") . " 2000",
      "__month__ __yy__", translate("December") . " 00",
      "__month__-__yyyy__", translate("December") . "-2000",
@@ -281,6 +283,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
     // You can add new date formats below if you want.
     // but also add in admin.php
     $datestyles = array (
+		 "LANGUAGE_DEFINED", translate("LANGUAGE DEFINED"),		
      "__month__ __dd__", translate("December") . " 31",
      "__month__-__dd__", translate("December") . "-31",
      "__dd__ __month__", "31 " . translate("December"),

@@ -1,4 +1,9 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Implemented RFE 1199126: Link Language and Time/Date Formats
+ - Fixed bug 1357953: rollover info translation grammar problem
+ - Fixed bug 1357943: short description length mismatch
+ - Fixed bug 1357946: translation problem on system settings page
+ - Fixed bug 1358124: popup: short description length problem
  - Implemented RFE 1357579: Link to 'Home' in trailer menu
  - Fixed bug 1354832: import ical - first edited event multiplies
  - Fixed bug 1356024: event link in Activity log - NOT FOUND error

@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 11-15-2005
+# Translation last updated on 11-16-2005
 
 
 ###############################################
@@ -145,6 +145,7 @@ hours: hours
 Load Timezone Data: Load Timezone Data
 date-format-help: Specifies the preferred date format.
 Date format: Date format
+LANGUAGE DEFINED: LANGUAGE DEFINED
 December: December
 time-format-help: Specifies which time format to use: <br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.  <br /><em>24 hour:</em> Display times as 300, 2030, etc.
 Time format: Time format
@@ -1127,15 +1128,18 @@ Common Trailer: Common Trailer
 # Page: includes/functions.php
 #
 Title: WebCalendar
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+__month__ __dd__: __month__ __dd__
 TASKS: TASKS
 Task_Title: Title
 Due: Due
 Task Name: Task Name
 Task Due Date: Task Due Date
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
 Completed: Completed
-task: task
-event: event
-View this: View this
+View this task: View this task
+View this event: View this event
 This event is private: This event is private
 exceeds limit of XXX events per day: exceeds limit of XXX events per day
 You have XXX unapproved events: You have XXX unapproved events

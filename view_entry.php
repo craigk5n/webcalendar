@@ -568,7 +568,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
         etranslate ( "Yes" );
         if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
           echo "&nbsp;&nbsp;-&nbsp;&nbsp;";
-          echo date_to_str ( $extras[$extra_name]['cal_date'] );
+          echo date_to_str ( $extras[$extra_name]['cal_date']);
         } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
           echo "&nbsp;&nbsp;-&nbsp;&nbsp;";
           $minutes = $extras[$extra_name]['cal_data'];
@@ -725,7 +725,11 @@ if ( empty ( $event_status ) ) {
   $event_status = "D";
 }
 
-if ( $unapproved && $readonly == 'N' ) {
+$can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || 
+  ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
+  ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
+	
+if ( $can_edit && $unapproved && $readonly == 'N' ) {
   echo "<a title=\"" . 
     translate("Approve/Confirm entry") . 
     "\" href=\"approve_entry.php?id=$id&amp;type=E\" " .
@@ -745,9 +749,7 @@ if ( ! empty ( $user ) && $login != $user ) {
   $u_url = "";
 }
 
-$can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || 
-  ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
-  ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
+
 if ( $PUBLIC_ACCESS == "Y" && $login == "__public__" ) {
   $can_edit = false;
 }
@@ -844,7 +846,7 @@ if ( $readonly != "Y" && ! $is_my_event && ! $is_private && ! $is_confidential &
     translate("Add to My Calendar") . "</a><br />\n";
 }
 
-if ( count ( $allmails ) > 0 ) {
+if ( $login != "__public__" && count ( $allmails ) > 0 ) {
   echo "<a title=\"" . 
     translate("Email all participants") . "\" class=\"nav\" " .
     "href=\"mailto:" . implode ( ",", $allmails ) .
@@ -914,7 +916,8 @@ if ( $can_show_log && $show_log ) {
   echo "</table>\n";
 }
 
-if (! $is_private  && ! $is_confidential  && ! $hide_details ) {
+if ( access_can_access_function ( ACCESS_EXPORT ) && 
+  ! $is_private  && ! $is_confidential  && ! $hide_details ) {
   echo "<br /><form method=\"post\" name=\"exportform\" " .
     "action=\"export_handler.php\">\n";
   echo "<label for=\"exformat\">" . 

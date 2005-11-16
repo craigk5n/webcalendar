@@ -20,13 +20,14 @@ for ( $i = 0; $i < count ( $exp ); $i++ ) {
   $selected[$exp[$i]] = 1;
 }
 
+$owner = ( $is_nonuser_admin || $is_assistant ? $user : $login ); 
 // load list of groups
 if ( $USER_SEES_ONLY_HIS_GROUPS == "Y" ) {
   $sql =
     "SELECT webcal_group.cal_group_id, webcal_group.cal_name " .
     "FROM webcal_group, webcal_group_user " .
     "WHERE webcal_group.cal_group_id = webcal_group_user.cal_group_id " .
-    "AND webcal_group_user.cal_login = '$login' " .
+    "AND webcal_group_user.cal_login = '$owner' " .
     "ORDER BY webcal_group.cal_name";
 } else {
   // show all groups
