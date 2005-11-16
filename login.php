@@ -121,6 +121,7 @@ if ( $single_user == "Y" ) {
       } else {
         SetCookie ( "webcalendar_login", $login, 0, $cookie_path );
       }
+      if ( ! empty ( $GLOBALS["newUserUrl"] ) ) $url = $GLOBALS["newUserUrl"];
       do_redirect ( $url );
     } else {
       // Invalid login
