@@ -31,6 +31,9 @@
  *     following System Settings configured for this:
  *       Allow viewing other user's calendars: Yes
  *       Public access can view others: Yes
+ *   - tasks: specify a value of '1' to show just tasks (if permitted
+ *       by system settings and config settings below).  This will
+ *       show only tasks and not show any events.
  *
  * Security:
  * TBD
@@ -179,12 +182,19 @@ $endTime = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays,
   $thisyear );
 $endDate = date ( "Ymd", $endTime );
 
+$tasks_only = getValue ( "tasks", "[01]", true );
+$tasks_only = ( $tasks_only == '1' );
 
-/* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( $username, $cat_id, $date );
+if ( $tasks_only ) {
+  $repeated_events = $events = array ();
+} else {
 
-/* Pre-load the non-repeating events for quicker access */
-$events = read_events ( $username, $date, $endDate, $cat_id );
+  /* Pre-Load the repeated events for quckier access */
+  $repeated_events = read_repeated_events ( $username, $cat_id, $date );
+
+  /* Pre-load the non-repeating events for quicker access */
+  $events = read_events ( $username, $date, $endDate, $cat_id );
+}
 
 // Pre-load tasks for quicker access */
 if ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
