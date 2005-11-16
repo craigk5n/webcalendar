@@ -1,5 +1,5 @@
 Version 1.0.2 (?? ??? 2005)
-  = Fixed bug 1353363: publish.php logic error for public user?
+  - Fixed bug 1353363: publish.php logic error for public user?
   - Fixed bug 1328589: typo in del_entry for read-only calendars.
   - Added new time range options for reports: next 14/30/60/90/180/365 days
     This allows reports to show events starting with current date
@@ -12,7 +12,7 @@ Version 1.0.2 (?? ??? 2005)
       missing.
   - New Features / Enhancements / Changes:
   - The following translations were updated:
-    German, Polish
+    Czech, German, Polish
 Version 1.0.1 (19 Aug 2005)
   - Fixed the following bug reports on SourceForge:
       1221434: Improved iCal import support for BYMONTHDAY in ics
