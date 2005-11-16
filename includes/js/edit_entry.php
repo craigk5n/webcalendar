@@ -184,13 +184,14 @@ function selectDate (  day, month, year, current, evt ) {
 
 <?php if ( $GROUPS_ENABLED == "Y" ) { 
 ?>function selectUsers () {
+  var user = "<?php echo $user ?>";
   // find id of user selection object
   var listid = 0;
   for ( i = 0; i < document.editentryform.elements.length; i++ ) {
     if ( document.editentryform.elements[i].name == "participants[]" )
       listid = i;
   }
-  url = "usersel.php?form=editentryform&listid=" + listid + "&users=";
+  url = "usersel.php?form=editentryform&listid=" + listid + "&user=" + user + "&users=";
   // add currently selected users
   for ( i = 0, j = 0; i < document.editentryform.elements[listid].length; i++ ) {
     if ( document.editentryform.elements[listid].options[i].selected ) {

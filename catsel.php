@@ -27,14 +27,14 @@ print_header($INC,'','',true, false, true);
    echo "<select name=\"cats[]\" size=\"10\">\n" . 
     "<option disabled>AVAILABLE CATEGORIES</option>\n";
     foreach ( $categories as $K => $V ) {
-      if ( $category_owners[$K] == $login || $is_admin ) {
+ //     if ( $category_owners[$K] == $login || $is_admin ) {
         if ( empty ( $category_owners[$K] ) ) {
           echo "<option value=\"-$K\" name=\"$V\">$V<sup>*</sup>";
-    } else {
+        } else {
           echo "<option value=\"$K\" name=\"$V\">$V";
         }
         echo "</option>\n";
-    }
+ //     }
     }
   echo "</select>\n</td>";
   }

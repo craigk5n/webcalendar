@@ -171,8 +171,8 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
      month_short_name ( date ( "m", $days[$i] ) - 1 ) .
      " " . date ( "d", $days[$i] );
   if ( empty ( $first_date ) )
-    $first_date = date_to_str ( date ( "Ymd", $days[$i] ), false );
-  $last_date = date_to_str ( date ( "Ymd", $days[$i] ), false );
+    $first_date = date_to_str ( date ( "Ymd", $days[$i] ), "", false );
+  $last_date = date_to_str ( date ( "Ymd", $days[$i] ), "", false );
 }
 
 

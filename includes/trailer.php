@@ -130,7 +130,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
         echo " selected=\"selected\"";
       }
       echo ">";
-      if ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) && $GLOBALS['PULLDOWN_WEEKNUMBER'] == "Y" ) {
+      if ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) &&
+			  $GLOBALS['PULLDOWN_WEEKNUMBER'] == "Y" ) {
         echo  "(" . date( "W", $twkstart + ONE_DAY ) . ")&nbsp;&nbsp;";
       }
       printf ( "%s - %s",
