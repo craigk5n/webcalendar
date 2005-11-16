@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Implemented PATCH 1221971: IMAP Authentication
  - Modified upcoming.php to display tasks (see upcoming.php for details)
  - Implemented RFE 1199126: Link Language and Time/Date Formats
  - Fixed bug 1357953: rollover info translation grammar problem

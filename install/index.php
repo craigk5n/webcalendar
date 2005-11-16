@@ -1596,7 +1596,11 @@ if ( ! $exists || ! $canWrite ) { ?>
      ( $settings['user_inc'] == 'user-nis.php' ? " selected=\"selected\"" : "" ) .
      ">NIS</option>\n";
    }
-  
+
+   echo "<option value=\"user-imap.php\" " .
+     ( $settings['user_inc'] == 'user-imap.php' ? " selected=\"selected\"" : "" ) .
+     ">IMAP</option>\n"; 
+      
    echo "<option value=\"none\" " .
     ( $settings['user_inc'] == 'user.php' && $settings['single_user'] == 'true' ? " selected=\"selected\"" : "" ) .
     ">" . translate ( "None (Single-User)" ) . "</option>\n</select>";

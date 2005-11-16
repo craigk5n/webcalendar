@@ -122,6 +122,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Implemented PATCH 1221971: IMAP Authentication
     + Modified upcoming.php to display tasks (see upcoming.php for details)
     + Implemented RFE 1199126: Link Language and Time/Date Formats
     + Implemented RFE 1357579: Link to 'Home' in trailer menu
