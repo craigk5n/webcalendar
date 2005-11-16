@@ -218,7 +218,7 @@ function export_time($date, $duration, $time, $texport, $vtype='E') {
 }
 //$simple allows for easy reading 
 function export_recurrence_ical( $id, $simple=false ) {
-  global $timestamp_RRULE, $TIMEZONE;
+  global $timestamp_RRULE, $TIMEZONE, $ICS_TIMEZONES;
   
  $recurrance = '';
   $sql = "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = '$id'";
