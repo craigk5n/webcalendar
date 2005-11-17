@@ -3,63 +3,63 @@
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	    <head>
+      <head>
 <title>WebCalendar Upgrading Notes</title>
 <style type="text/css">
-	body {
-		background-color: #FFFFFF;
-		font-family: Arial, Helvetica, sans-serif;
-	}
-	a {
-		text-decoration: none;
-	}
-	p {
-		margin: 10px;
-	}
-	dl,
-	ul {
-		margin-left: 10px;
-	}
-	h2 {
-		background-color: #191970;
-		color: #FFFFFF;
-		padding: 5px;
-	}
-	h3 {
-		padding: 5px;
-	}
-	dt {
-		font-weight: bold;
-		margin-top: 10px;
-	}
-	pre {
-		font-family: courier, monospace;
-		font-size: 14px;
-		border: 1px solid #0000FF;
-		background-color: #EEEEFF;
-		padding: 4px;
-		margin-left: 25px;
-		margin-right: 25px;
-	}
-	.tip {
-		font-weight: bold;
-		background-color: #FFFF00;
-		padding: 2px;
-	}
-	.note {
-		font-weight: bold;
-		background-color: #87CEFA;
-		padding: 2px;
-	}
-	hr {
-		margin-bottom: 7px;
-	}
-	.valid {
-		border-width: 0px;
-	}
-	.top {
-		text-align: right;
-	}
+  body {
+    background-color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  a {
+    text-decoration: none;
+  }
+  p {
+    margin: 10px;
+  }
+  dl,
+  ul {
+    margin-left: 10px;
+  }
+  h2 {
+    background-color: #191970;
+    color: #FFFFFF;
+    padding: 5px;
+  }
+  h3 {
+    padding: 5px;
+  }
+  dt {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  pre {
+    font-family: courier, monospace;
+    font-size: 14px;
+    border: 1px solid #0000FF;
+    background-color: #EEEEFF;
+    padding: 4px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  .tip {
+    font-weight: bold;
+    background-color: #FFFF00;
+    padding: 2px;
+  }
+  .note {
+    font-weight: bold;
+    background-color: #87CEFA;
+    padding: 2px;
+  }
+  hr {
+    margin-bottom: 7px;
+  }
+  .valid {
+    border-width: 0px;
+  }
+  .top {
+    text-align: right;
+  }
 </style>
 </head>
 <body>
@@ -73,7 +73,11 @@
 <li style="margin-left:30px">If this is a new installation, the installation script will create your database and setup the required tables for you. It will then create a default Administrator account and add the basic configuration data to get you up and running.</li>
 </ul>
 
-<p>This installation script was tested primarily using MySQL and Apache on a dedicated server. If using an ISP or a CPANEL installer, your mileage may vary. If problems arise, you can always follow the instruction below as in previous versions and setup your database manually. As with any upgrade, it's always a good idea to <font color="#FF0000">backup your data prior installation</font>. </p>
+<p>This installation script was tested primarily using MySQL and Apache on a
+  dedicated server. If using an ISP or a CPANEL installer, your mileage may vary.
+  If problems arise, you can always follow the instruction below as in previous
+  versions and setup your database manually. As with any upgrade, it's always
+  a good idea to <font color="#FF0000">backup your data prior to installation</font>. </p>
 
 <p>Another major upgrade to WebCalendar for v1.1 is the implementation of full timezone support. In previous versions, all date/time data was stored based on server time and users set their 'time offset' relative to server time. Now, all date/time data will be stored in the database as Greenwich Mean Time (GMT) and users will be able to select a timezone based on their geographical location.</p>
 <p>Having true timezone information available within WebCalendar enables the system to correct for 
@@ -86,31 +90,36 @@ see events in their true 'local time'.</p>
 <hr />
 <p>Below are the steps needed to manually upgrade from a previous version. Select the version of your existing install from the list below. If you are more than one version behind (i.e. the new version is v0.9.45, and you're using 0.9.39), click the "next..." link at the end of each section to move to the next version. Always follow the versions in sequence.</p>
 
-<p><span class="note">Note:</span> Due to large number of database types that WebCalendar can support, it would be impractical to list all the SQL variations here. All SQL listed is taken from the <a href="install/sql/upgrade-mysql.sql" target="_blank">upgrade-mysq.sql</a> file used during the automatic installation process. If you are using a databse other then MySQL, you may want refer to the appropriate upgrade-xxxxx.sql file in the install/sql folder.</p>
+<p><span class="note">Note:</span> Due to large number of database types that
+  WebCalendar can support, it would be impractical to list all the SQL variations
+  here. All SQL listed is taken from the <a href="install/sql/upgrade-mysql.sql" target="_blank">upgrade-mysq.sql</a> file
+  used during the automatic installation process. If you are using a database
+  other then MySQL, you may want refer to the appropriate upgrade-xxxxx.sql file
+  in the install/sql folder.</p>
 
 <h2>My previous install was...</h2>
 <ul>
-	<li>
-		<a href="UPGRADING.html#from_1.1.0a-CVS">1.1.0-CVS or 1.1.0a-CVS</a></li><li>
-		<a href="UPGRADING.html#from_1.0.0">1.0RC3 or 1.0.0</a></li><li>
-		<a href="UPGRADING.html#from_1_0RC2">0.9.45, 1.0RC1 or 1.0RC2</a></li><li>
-		<a href="UPGRADING.html#dot944">0.9.44</a></li><li>
-		<a href="UPGRADING.html#dot943">0.9.43</a></li><li>
-		<a href="UPGRADING.html#dot942">0.9.42</a></li><li>
-		<a href="UPGRADING.html#dot941">0.9.41</a></li><li>
-		<a href="UPGRADING.html#dot940">0.9.40</a></li><li>
-		<a href="UPGRADING.html#dot939">0.9.39</a></li><li>
-		<a href="UPGRADING.html#dot938">0.9.38</a></li><li>
-		<a href="UPGRADING.html#dot937">0.9.37</a></li><li>
-		<a href="UPGRADING.html#dot936">0.9.35 - 0.9.36</a></li><li>
-		<a href="UPGRADING.html#dot934">0.9.27 - 0.9.34</a></li><li>
-		<a href="UPGRADING.html#dot926">0.9.22 - 0.9.26</a></li><li>
-		<a href="UPGRADING.html#dot921">0.9.14 - 0.9.21</a></li><li>
-		<a href="UPGRADING.html#dot913">0.9.12 - 0.9.13</a></li><li>
-		<a href="UPGRADING.html#dot911">0.9.07 - 0.9.11</a></li><li>
-		<a href="UPGRADING.html#dot906">0.9.01 - 0.9.06</a></li><li>
-		<a href="UPGRADING.html#dot9">0.9</a>
-	</li>
+  <li>
+    <a href="UPGRADING.html#from_1.1.0a-CVS">1.1.0-CVS or 1.1.0a-CVS</a></li><li>
+    <a href="UPGRADING.html#from_1.0.0">1.0RC3 or 1.0.0</a></li><li>
+    <a href="UPGRADING.html#from_1_0RC2">0.9.45, 1.0RC1 or 1.0RC2</a></li><li>
+    <a href="UPGRADING.html#dot944">0.9.44</a></li><li>
+    <a href="UPGRADING.html#dot943">0.9.43</a></li><li>
+    <a href="UPGRADING.html#dot942">0.9.42</a></li><li>
+    <a href="UPGRADING.html#dot941">0.9.41</a></li><li>
+    <a href="UPGRADING.html#dot940">0.9.40</a></li><li>
+    <a href="UPGRADING.html#dot939">0.9.39</a></li><li>
+    <a href="UPGRADING.html#dot938">0.9.38</a></li><li>
+    <a href="UPGRADING.html#dot937">0.9.37</a></li><li>
+    <a href="UPGRADING.html#dot936">0.9.35 - 0.9.36</a></li><li>
+    <a href="UPGRADING.html#dot934">0.9.27 - 0.9.34</a></li><li>
+    <a href="UPGRADING.html#dot926">0.9.22 - 0.9.26</a></li><li>
+    <a href="UPGRADING.html#dot921">0.9.14 - 0.9.21</a></li><li>
+    <a href="UPGRADING.html#dot913">0.9.12 - 0.9.13</a></li><li>
+    <a href="UPGRADING.html#dot911">0.9.07 - 0.9.11</a></li><li>
+    <a href="UPGRADING.html#dot906">0.9.01 - 0.9.06</a></li><li>
+    <a href="UPGRADING.html#dot9">0.9</a>
+  </li>
 </ul>
 <hr />
 
@@ -138,7 +147,7 @@ your WebCalendar tables.</p>
 <p>To fix a bug in the handing of events at midnight, all the 
 entries with NULL for cal_time are changed to -1. Use the 
 following SQL command:</p>
-	<pre>update webcal_entry set cal_time = -1 where cal_time is null;</pre>
+  <pre>update webcal_entry set cal_time = -1 where cal_time is null;</pre>
 <a href="UPGRADING.html#dot913">next...</a>
 <hr />
 
@@ -147,12 +156,12 @@ following SQL command:</p>
 following SQL command:</p>
 <pre>
 CREATE TABLE webcal_entry_repeats (
-	cal_id INT DEFAULT '0' NOT NULL,
-	cal_type VARCHAR(20),
-	cal_end INT,
-	cal_frequency INT DEFAULT '1',
-	cal_days CHAR(7),
-	PRIMARY KEY (cal_id)
+  cal_id INT DEFAULT '0' NOT NULL,
+  cal_type VARCHAR(20),
+  cal_end INT,
+  cal_frequency INT DEFAULT '1',
+  cal_days CHAR(7),
+  PRIMARY KEY (cal_id)
 );
 </pre>
 <a href="UPGRADING.html#dot921">next...</a>
@@ -163,12 +172,12 @@ CREATE TABLE webcal_entry_repeats (
 the SQL is:</p>
 <pre>
 CREATE TABLE webcal_user_layers (
-	cal_layerid INT DEFAULT '0' NOT NULL,
-	cal_login varchar(25) NOT NULL,
-	cal_layeruser varchar(25) NOT NULL,
-	cal_color varchar(25) NULL,
-	cal_dups CHAR(1) DEFAULT 'N',
-	PRIMARY KEY ( cal_login, cal_layeruser )
+  cal_layerid INT DEFAULT '0' NOT NULL,
+  cal_login varchar(25) NOT NULL,
+  cal_layeruser varchar(25) NOT NULL,
+  cal_color varchar(25) NULL,
+  cal_dups CHAR(1) DEFAULT 'N',
+  PRIMARY KEY ( cal_login, cal_layeruser )
 );
 </pre>
 <a href="UPGRADING.html#dot926">next...</a>
@@ -179,20 +188,20 @@ CREATE TABLE webcal_user_layers (
 For MySQL  the SQL is:</p>
 <pre>
 CREATE TABLE webcal_site_extras (
-	cal_id INT DEFAULT '0' NOT NULL,
-	cal_name VARCHAR(25) NOT NULL,
-	cal_type INT NOT NULL,
-	cal_date INT DEFAULT '0',
-	cal_remind INT DEFAULT '0',
-	cal_data TEXT,
-	PRIMARY KEY ( cal_id, cal_name, cal_type )
+  cal_id INT DEFAULT '0' NOT NULL,
+  cal_name VARCHAR(25) NOT NULL,
+  cal_type INT NOT NULL,
+  cal_date INT DEFAULT '0',
+  cal_remind INT DEFAULT '0',
+  cal_data TEXT,
+  PRIMARY KEY ( cal_id, cal_name, cal_type )
 );
 CREATE TABLE webcal_reminder_log (
-	cal_id INT DEFAULT '0' NOT NULL,
-	cal_name VARCHAR(25) NOT NULL,
-	cal_event_date INT NOT NULL DEFAULT 0,
-	cal_last_sent INT NOT NULL DEFAULT 0,
-	PRIMARY KEY ( cal_id, cal_name, cal_event_date )
+  cal_id INT DEFAULT '0' NOT NULL,
+  cal_name VARCHAR(25) NOT NULL,
+  cal_event_date INT NOT NULL DEFAULT 0,
+  cal_last_sent INT NOT NULL DEFAULT 0,
+  PRIMARY KEY ( cal_id, cal_name, cal_event_date )
 );
 </pre>
 
@@ -200,7 +209,7 @@ CREATE TABLE webcal_reminder_log (
 to be run periodically. I would recommend once an hour. For 
 Linux/UNIX, this is simple. Just use cron and add a line to 
 your crontab file that looks like:</p>
-	<pre>1 * * * * cd /some/directory/webcalendar/tools; ./send_reminders.php</pre>
+  <pre>1 * * * * cd /some/directory/webcalendar/tools; ./send_reminders.php</pre>
 <p>This will tell cron to run the script at one minute after the hour. 
 Windows users will have to find another way to run the script. 
 There are ports/look-a-likes of cron for Windows, so look around.</p>
@@ -212,43 +221,43 @@ There are ports/look-a-likes of cron for Windows, so look around.</p>
 settings and activity logs. For MySQL  the SQL is:</p>
 <pre>
 CREATE TABLE webcal_group (
-	cal_group_id INT NOT NULL,
-	cal_owner VARCHAR(25) NULL,
-	cal_name VARCHAR(50) NOT NULL,
-	cal_last_update INT NOT NULL,
-	PRIMARY KEY ( cal_group_id )
+  cal_group_id INT NOT NULL,
+  cal_owner VARCHAR(25) NULL,
+  cal_name VARCHAR(50) NOT NULL,
+  cal_last_update INT NOT NULL,
+  PRIMARY KEY ( cal_group_id )
 );
 CREATE TABLE webcal_group_user (
-	cal_group_id INT NOT NULL,
-	cal_login VARCHAR(25) NOT NULL,
-	PRIMARY KEY ( cal_group_id, cal_login )
+  cal_group_id INT NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  PRIMARY KEY ( cal_group_id, cal_login )
 );
 CREATE TABLE webcal_view (
-	cal_view_id INT NOT NULL,
-	cal_owner VARCHAR(25) NOT NULL,
-	cal_name VARCHAR(50) NOT NULL,
-	cal_view_type CHAR(1),
-	PRIMARY KEY ( cal_view_id )
+  cal_view_id INT NOT NULL,
+  cal_owner VARCHAR(25) NOT NULL,
+  cal_name VARCHAR(50) NOT NULL,
+  cal_view_type CHAR(1),
+  PRIMARY KEY ( cal_view_id )
 );
 CREATE TABLE webcal_view_user (
-	cal_view_id INT NOT NULL,
-	cal_login VARCHAR(25) NOT NULL,
-	PRIMARY KEY ( cal_view_id, cal_login )
+  cal_view_id INT NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  PRIMARY KEY ( cal_view_id, cal_login )
 );
 CREATE TABLE webcal_config (
-	cal_setting VARCHAR(50) NOT NULL,
-	cal_value VARCHAR(50) NULL,
-	PRIMARY KEY ( cal_setting )
+  cal_setting VARCHAR(50) NOT NULL,
+  cal_value VARCHAR(50) NULL,
+  PRIMARY KEY ( cal_setting )
 );
 CREATE TABLE webcal_entry_log (
-	cal_log_id INT NOT NULL,
-	cal_entry_id INT NOT NULL,
-	cal_login VARCHAR(25) NOT NULL,
-	cal_type CHAR(1) NOT NULL,
-	cal_date INT NOT NULL,
-	cal_time INT NULL,
-	cal_text TEXT,
-	PRIMARY KEY ( cal_log_id )
+  cal_log_id INT NOT NULL,
+  cal_entry_id INT NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_type CHAR(1) NOT NULL,
+  cal_date INT NOT NULL,
+  cal_time INT NULL,
+  cal_text TEXT,
+  PRIMARY KEY ( cal_log_id )
 );
 </pre>
 <a href="UPGRADING.html#dot936">next...</a>
@@ -261,9 +270,9 @@ for MySQL:</p>
 <pre>
 ALTER TABLE webcal_entry_log ADD cal_user_cal VARCHAR(25);
 CREATE TABLE webcal_entry_repeats_not (
-	cal_id INT NOT NULL,
-	cal_date INT NOT NULL,
-	PRIMARY KEY ( cal_id, cal_date )
+  cal_id INT NOT NULL,
+  cal_date INT NOT NULL,
+  PRIMARY KEY ( cal_id, cal_date )
 );
 </pre>
 <a href="UPGRADING.html#dot937">next...</a>
@@ -275,10 +284,10 @@ webcal_categories was created. Use the following SQL for MySQL:</p>
 <pre>
 ALTER TABLE webcal_entry_user ADD cal_category INT DEFAULT NULL;
 CREATE TABLE webcal_categories (
-	cat_id INT NOT NULL,
-	cat_owner VARCHAR(25),
-	cat_name VARCHAR(80) NOT NULL,
-	PRIMARY KEY ( cat_id )
+  cat_id INT NOT NULL,
+  cat_owner VARCHAR(25),
+  cat_name VARCHAR(80) NOT NULL,
+  PRIMARY KEY ( cat_id )
 );
 </pre>
 <a href="UPGRADING.html#dot938">next...</a>
@@ -300,15 +309,15 @@ And the column cal_ext_for_id was added to the webcal_entry table.
 Use the following SQL for MySQL:</p>
 <pre>
 CREATE TABLE webcal_asst (
-	cal_boss VARCHAR(25) NOT NULL,
-	cal_assistant VARCHAR(25) NOT NULL,
-	PRIMARY KEY ( cal_boss, cal_assistant )
+  cal_boss VARCHAR(25) NOT NULL,
+  cal_assistant VARCHAR(25) NOT NULL,
+  PRIMARY KEY ( cal_boss, cal_assistant )
 );
 CREATE TABLE webcal_entry_ext_user (
-	cal_id INT DEFAULT 0 NOT NULL,
-	cal_fullname VARCHAR(50) NOT NULL,
-	cal_email VARCHAR(75) NULL,
-	PRIMARY KEY ( cal_id, cal_fullname )
+  cal_id INT DEFAULT 0 NOT NULL,
+  cal_fullname VARCHAR(50) NOT NULL,
+  cal_email VARCHAR(75) NULL,
+  PRIMARY KEY ( cal_id, cal_fullname )
 );
 ALTER TABLE webcal_entry ADD cal_ext_for_id INT NULL;
 </pre>
@@ -317,14 +326,14 @@ ALTER TABLE webcal_entry ADD cal_ext_for_id INT NULL;
 
 <h2><a id="dot940">To upgrade from v0.9.40</a></h2>
 <p>One new table was added: webcal_nonuser_cals. 
-Use the following SQL for MySQLL:</p>
+Use the following SQL for MySQL:</p>
 <pre>
 CREATE TABLE webcal_nonuser_cals (
-	cal_login VARCHAR(25) NOT NULL,
-	cal_lastname VARCHAR(25),
-	cal_firstname VARCHAR(25),
-	cal_admin VARCHAR(25) NOT NULL,
-	PRIMARY KEY ( cal_login )
+  cal_login VARCHAR(25) NOT NULL,
+  cal_lastname VARCHAR(25),
+  cal_firstname VARCHAR(25),
+  cal_admin VARCHAR(25) NOT NULL,
+  PRIMARY KEY ( cal_login )
 );
 </pre>
 <a href="UPGRADING.html#dot941">next...</a>
@@ -336,33 +345,33 @@ webcal_report_template, and webcal_import_data.
 Use the following SQL for MySQL:</p>
 <pre>
 CREATE TABLE webcal_report (
-	cal_login VARCHAR(25) NOT NULL,
-	cal_report_id INT NOT NULL,
-	cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
-	cal_report_type VARCHAR(20) NOT NULL,
-	cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
-	cal_report_name VARCHAR(50) NOT NULL,
-	cal_time_range INT NOT NULL,
-	cal_user VARCHAR(25) NULL,
-	cal_allow_nav CHAR(1) DEFAULT 'Y',
-	cal_cat_id INT NULL,
-	cal_include_empty CHAR(1) DEFAULT 'N',
-	cal_show_in_trailer CHAR(1) DEFAULT 'N',
-	cal_update_date INT NOT NULL,
-	PRIMARY KEY ( cal_report_id )
+  cal_login VARCHAR(25) NOT NULL,
+  cal_report_id INT NOT NULL,
+  cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
+  cal_report_type VARCHAR(20) NOT NULL,
+  cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
+  cal_report_name VARCHAR(50) NOT NULL,
+  cal_time_range INT NOT NULL,
+  cal_user VARCHAR(25) NULL,
+  cal_allow_nav CHAR(1) DEFAULT 'Y',
+ cal_cat_id INT NULL,
+  cal_include_empty CHAR(1) DEFAULT 'N',
+  cal_show_in_trailer CHAR(1) DEFAULT 'N',
+  cal_update_date INT NOT NULL,
+  PRIMARY KEY ( cal_report_id )
 );
 CREATE TABLE webcal_report_template (
-	cal_report_id INT NOT NULL,
-	cal_template_type CHAR(1) NOT NULL,
-	cal_template_text TEXT,
-	PRIMARY KEY ( cal_report_id, cal_template_type )
+  cal_report_id INT NOT NULL,
+  cal_template_type CHAR(1) NOT NULL,
+  cal_template_text TEXT,
+  PRIMARY KEY ( cal_report_id, cal_template_type )
 );
 CREATE TABLE webcal_import_data (
-	cal_id int NOT NULL,
-	cal_login VARCHAR(25) NOT NULL,
-	cal_import_type VARCHAR(15) NOT NULL,
-	cal_external_id VARCHAR(200) NULL,
-	PRIMARY KEY  ( cal_id, cal_login )
+  cal_id int NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_import_type VARCHAR(15) NOT NULL,
+  cal_external_id VARCHAR(200) NULL,
+  PRIMARY KEY  ( cal_id, cal_login )
 );
 </pre>
 <a href="UPGRADING.html#dot942">next...</a>
@@ -376,20 +385,20 @@ Use the following SQL for MySQL:</p>
 ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(32) NULL;
 DROP TABLE webcal_import_data;
 CREATE TABLE webcal_import (
-	cal_import_id INT NOT NULL,
-	cal_name VARCHAR(50) NULL,
-	cal_date INT NOT NULL,
-	cal_type VARCHAR(10) NOT NULL,
-	cal_login VARCHAR(25) NULL,
-	PRIMARY KEY ( cal_import_id )
+  cal_import_id INT NOT NULL,
+  cal_name VARCHAR(50) NULL,
+  cal_date INT NOT NULL,
+  cal_type VARCHAR(10) NOT NULL,
+  cal_login VARCHAR(25) NULL,
+  PRIMARY KEY ( cal_import_id )
 );
 CREATE TABLE webcal_import_data (
-	cal_import_id INT NOT NULL,
-	cal_id INT NOT NULL,
-	cal_login VARCHAR(25) NOT NULL,
-	cal_import_type VARCHAR(15) NOT NULL,
-	cal_external_id VARCHAR(200) NULL,
-	PRIMARY KEY  ( cal_id, cal_login )
+  cal_import_id INT NOT NULL,
+  cal_id INT NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_import_type VARCHAR(15) NOT NULL,
+  cal_external_id VARCHAR(200) NULL,
+  PRIMARY KEY  ( cal_id, cal_login )
 );
 </pre>
 
@@ -407,6 +416,8 @@ the URL to access the script in your browser:
 </p>
 <pre>http://yourcalendarurl/tools/convert_passwords.php</pre>
 
+<p>You may safely delete the file <tt>/tools/convert_passwords.php</tt> after successfully performing this step.
+</p>
 <p>Delete all webcalendar_login browser cookies. Details should be available on 
 your local browser help section.
 </p>
@@ -493,8 +504,8 @@ CREATE TABLE webcal_tz_rules (
 );
 CREATE TABLE webcal_tz_list (
   tz_list_id int(11) NOT NULL default '0',
-	 tz_list_name varchar(50) NOT NULL default '',
-	 tz_list_text varchar(75) NOT NULL default ''
+   tz_list_name varchar(50) NOT NULL default '',
+   tz_list_text varchar(75) NOT NULL default ''
 );
 
 </pre>
@@ -502,7 +513,12 @@ CREATE TABLE webcal_tz_list (
 <hr />
 <h2><a id="from_1.1.0a-CVS">To upgrade from v1.1.0-CVS or v1.1.0a-CVS</a></h2>
 
-<p>A new table is needed  to support multiple categories. In addition, several new columns have been added to webcal_entry and one column added to webcal_entry)user to support VTODO tasks, and to webcal_repeats to support the much improved ical support. A new column was added to webcal_entry_repeats_not to differentiate between exclusion and inclusions. Use the following SQL to update your MySQL database:
+<p>A new table is needed  to support multiple categories. In addition, several
+  new columns have been added to webcal_entry and one column added to webcal_entry_user
+  to support VTODO tasks, and to webcal_repeats to support the much improved
+  ical support. A new column was added to webcal_entry_repeats_not to differentiate
+  between exclusion and inclusions. Use the following SQL to update your MySQL
+  database:
 </p>
 
 <pre>ALTER TABLE webcal_entry_repeats ADD cal_endtime int(11) default NULL;
@@ -531,7 +547,9 @@ CREATE TABLE webcal_entry_categories (
 
 <hr />
 
-<p>After you complete manually updating your database, you will still need to run the <a href="install/index.php">installation script</a> to perform any neccessary data changes needed to convert existing data.</p>
+<p>After you complete manually updating your database, you will still need to
+  run the <a href="install/index.php">installation script</a> to perform any
+  necessary data changes needed to convert existing data.</p>
 
 <p><a href="http://validator.w3.org/check?uri=referer"><img
  src="http://www.w3.org/Icons/valid-xhtml10"
