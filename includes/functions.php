@@ -645,17 +645,16 @@ function load_user_preferences ( $guest='') {
   // settings to figure it out, and save it in the database for future
   // use (email reminders).
   $lang = 'none';
-  $tmp_lang = $LANGUAGE;
   if ( ! $lang_found && strlen ( $tmp_login ) && $tmp_login != "__public__" ) {
    if ( $LANGUAGE == "none" ) {
-      $lang = $tmp_lang = $browser_lang; 
+      $lang =  $browser_lang; 
   }
     dbi_query ( "INSERT INTO webcal_user_pref " .
       "( cal_login, cal_setting, cal_value ) VALUES " .
       "( '$tmp_login', 'LANGUAGE', '$lang' )" );
   }
-  
-  reset_language ( $tmp_lang );
+
+  reset_language ( empty ( $LANGUAGE) || $LANGUAGE != 'none'? $LANGUAGE : $browser_lang );
   if (  empty ( $DATE_FORMAT ) || $DATE_FORMAT == 'LANGUAGE_DEFINED' ){
     $DATE_FORMAT = translate ( "__month__ __dd__, __yyyy__" );
   }

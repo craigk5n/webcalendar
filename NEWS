@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1358775: Get an error 'Cannot find language file: translations/none.txt
       1357953: rollover info translation grammar problem
       1357943: short description length mismatch
       1357946: translation problem on system settings page
