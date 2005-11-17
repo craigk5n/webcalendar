@@ -1,4 +1,5 @@
 Version 1.0.2 (?? ??? 2005)
+ - Fixed bug 1349621: Information disclosure vulnerabililty on failed login
  - Fixed bug 1353363: publish.php logic error for public user?
  - Fixed bug 1328589: typo in del_entry for read-only calendars.
  - Added new time range options for reports: next 14/30/60/90/180/365 days

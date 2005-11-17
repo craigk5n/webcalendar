@@ -7,7 +7,7 @@ include "includes/connect.php";
 
 // Change this to true to show "no such user" or "invalid password" on
 // login failures.
-$showLoginFailureReason = false;
+$showLoginFailureReason = true;
 
 load_global_settings ();
 
@@ -23,7 +23,6 @@ if ( $remember_last_login == "Y" && empty ( $login ) ) {
   $last_login = $login = $webcalendar_login;
 }
 
-load_user_preferences ();
 
 include "includes/translate.php";
 
@@ -59,7 +58,7 @@ if ( empty ( $PHP_SELF ) ) {
   $PHP_SELF = $_SERVER["PHP_SELF"];
 }
 $cookie_path = str_replace ( "login.php", "", $PHP_SELF );
-//echo "Cookie path: $cookie_path\n";
+//echo "Cookie path: $cookie_path\n$cookie_path1";
 
 if ( $single_user == "Y" ) {
   // No login for single-user mode
@@ -95,6 +94,7 @@ if ( $single_user == "Y" ) {
           SetCookie ( "webcalendar_session", $encoded_login, 0, $cookie_path );
         }
       }
+load_user_preferences ();
       // The cookie "webcalendar_login" is provided as a convenience to
       // other apps that may wish to find out what the last calendar
       // login was, so they can use week_ssi.php as a server-side include.
