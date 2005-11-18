@@ -1,4 +1,4 @@
-<?
+<?php
 /*
  * $Id$
  *
@@ -23,8 +23,8 @@ $WebCalendar =& new WebCalendar ( __FILE__ );
 include "$includedir/config.php";
 include "$includedir/php-dbi.php";
 
-$WebCalendar->initFirstPhase();
-$WebCalendar->initSecondPhase();
+$WebCalendar->initializeFirstPhase();
+$WebCalendar->initializeSecondPhase();
 
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
 if ( ! $c ) {
