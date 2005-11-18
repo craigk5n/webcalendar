@@ -314,7 +314,7 @@ function print_upcoming_event ( $e ) {
 
   if ( $display_link && ! empty ( $SERVER_URL ) ) {
     $cal_type = ( $e->getCalType() == 'T' || $e->getCalType() == 'N' ) ?
-      'task' : 'event';
+      'task' : 'entry';
     print "<a title=\"" . 
       $e->getName() . "\" href=\"" . 
       $SERVER_URL . 'view_' . $cal_type . '.php?id=' . 
