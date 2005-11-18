@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1359872: Repeat daily error
  - Fixed bug 1358775: Get an error 'Cannot find language file: translations/none.txt
  - Implemented PATCH 1221971: IMAP Authentication
  - Modified upcoming.php to display tasks (see upcoming.php for details)
