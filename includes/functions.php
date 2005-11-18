@@ -979,6 +979,7 @@ function load_user_layers ($user="",$force=0) {
 function format_site_extras ( $extras ) {
   global $SITE_EXTRAS_IN_POPUP, $site_extras;
 
+  if ( empty ($site_extras ) ) return;
   $ret = array();
 
   foreach ( $site_extras as $site_extra ) {
@@ -1065,7 +1066,8 @@ function site_extras_for_popup ( $id ) {
   }
 
   $extras = format_site_extras ( get_site_extra_fields ( $id ) );
-
+  if ( empty ( $extra ) ) return '';;
+  
   $ret = '';
 
   foreach ( $extras as $extra ) {
@@ -2086,7 +2088,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
         if ( $result[$i]->getRepeatEnd() ) {
           $until = strtotime( $result[$i]->getRepeatEnd() );
         } else { 
-          $until = mktime ( 0,0,0,12,31,$thisyear);
+          //make sure all January dates will appear in small calendars
+          $until = mktime ( 0,0,0,2,1,$thisyear +1); 
         }
         $rpt_count = 999; //some BIG number
         $jump = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear);
@@ -2234,26 +2237,18 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
           if ( ! array_search ( $dom, $bymonthday ) && 
             ! array_search ( $dimReverse, $bymonthday ))
             $date_excluded = true;
-          }
-          if ( ! empty ( $byday ) ) {
-            //MO,TU,WE,TH,FR,SA,SU,1-MO,-2MO,2MO,etc
-            $last = count($byday) - 1;
-            foreach ($byday as $key => $day) {
-            ereg('([-\+]{0,1})([0-9]{0,1})([A-Z]{2})',$day,$regs);
-            list($junk,$sign,$day_num,$day_txt) = $regs;
-            $num = $byday_values[$day_txt];
-            if ($sign != '') $list .= $sign;
-            if ($day_num != '') $list .= $day_num.' ';
-          }     
-          if ( ! strlen ( array_search ( $dom, $bymonthday ) ) && 
-             ! strlen ( array_search ( $dimReverse, $bymonthday ) ) )
-            $date_excluded = true;
-          }
-          if ( $date_excluded == false )
-            $ret[$n++]=$cdate;
-          $cdate += ONE_DAY * $interval;
-          $date_excluded = false;
         }
+        if ( ! empty ( $byday ) ) {
+          $bydayvalues = get_byday ( $byday, $cdate, 'daily' );
+          if (  ! strlen ( array_search ( $cdate, $bydayvalues ) ) ){
+            $date_excluded = true;
+          }      
+        }     
+        if ( $date_excluded == false )
+          $ret[$n++]=$cdate;
+        $cdate += ONE_DAY * $interval;
+        $date_excluded = false;
+      }
     } else if ($rpt_type == 'weekly') {
       $r=0;
       $dow = date("w",$date);
@@ -2480,22 +2475,28 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
  */
 function get_byday ( $byday, $cdate, $type ='month' ) {
   global $byday_values, $byday_names;
- if ( empty ( $byday ) ) return;
+ 
+  if ( empty ( $byday ) ) return;
+  $ret = array();
   $yr = date ("Y", $cdate);
   $mth = date ("m", $cdate);
   $hour = date ("H", $cdate);
   $minute = date ("i", $cdate);
   if ( $type == 'month' ) {
-  $fday = mktime ( 0,0,0, $mth, 1, $yr);//first day of month
-  $lday = mktime ( 0,0,0, $mth +1,  0 , $yr);//last day of month 
+    $fday = mktime ( 0,0,0, $mth, 1, $yr);//first day of month
+    $lday = mktime ( 0,0,0, $mth +1,  0 , $yr);//last day of month 
     $ditype = date("t",$cdate); //days in month
     $month = $mth;
   } else if ( $type == 'year' ) {
-  $fday = mktime ( 0,0,0, 1 , 1, $yr);//first day of year
-  $lday = mktime ( 0,0,0, 12, 31, $yr);//last day of year
+    $fday = mktime ( 0,0,0, 1 , 1, $yr);//first day of year
+    $lday = mktime ( 0,0,0, 12, 31, $yr);//last day of year
     $ditype = date("L",$cdate) + 365; //days in year
     $month = 1;
-   } else {
+  } else if ( $type == 'daily' ) {
+    $fday = $cdate;
+    $lday = $cdate;
+    $month = $mth;
+  } else {
    //we'll see if this is needed
    return;
  }
@@ -2518,13 +2519,18 @@ function get_byday ( $byday, $cdate, $type ='month' ) {
    $byxxxDay = mktime ( $hour, $minute,0, $month +1, 0 - (( $ldow + $dowOffset ) %7 ) + $dayOffsetDays, $yr );                 
    $ret[] = $byxxxDay; 
   } else {
-   for ( $i = 1; $i<= $ditype; $i++ ){
-    $loopdate = mktime ( $hour, $minute, 0, $month, $i,  $yr);     
-     if ( (date("w", $loopdate) == $byday_values[$dayTxt]) ) {   
-      $ret[] = $loopdate;
-      $i += 6; //skip to next week
+   if ( $type == 'daily' ) {
+     if ( (date("w", $cdate) == $byday_values[$dayTxt]) )   
+       $ret[] = $cdate;     
+   } else {
+     for ( $i = 1; $i<= $ditype; $i++ ){
+      $loopdate = mktime ( $hour, $minute, 0, $month, $i,  $yr);     
+       if ( (date("w", $loopdate) == $byday_values[$dayTxt]) ) {   
+        $ret[] = $loopdate;
+        $i += 6; //skip to next week
+       }
      }
-   } 
+    } 
   }
  }
  return $ret;
@@ -3928,10 +3934,11 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
   $d = $newdate % 100;
   $date = mktime ( 0, 0, 0, $m, $d, $y );
   $wday = strftime ( "%w", $date );
-
+  $mon = month_short_name ( $m - 1 );
+  
   if ( $short_months ) {
     $weekday = weekday_short_name ( $wday );
-    $month = month_short_name ( $m - 1 );
+    $month = $mon;
   } else {
     $weekday = weekday_name ( $wday );
     $month = month_name ( $m - 1 );
@@ -3943,7 +3950,7 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
   $ret = str_replace ( "__yyyy__", $yyyy, $ret );
   $ret = str_replace ( "__yy__", $yy, $ret );
   $ret = str_replace ( "__month__", $month, $ret );
-  $ret = str_replace ( "__mon__", $month, $ret );
+  $ret = str_replace ( "__mon__", $mon, $ret );
   $ret = str_replace ( "__dd__", $d, $ret );
   $ret = str_replace ( "__mm__", $m, $ret );
 
@@ -5377,16 +5384,16 @@ function get_time_add_tz ( $time, $tz_offset ) {
  * @return string $ret_datetime TZ adjusted time YYYYMMDDHHMMSS
 */
 function get_datetime_add_tz ( $date, $time, $tz_offset='' ) {
-  global $login, $TIMEZONE;
-
+  global $login, $TIMEZONE, $tz_override;
+  if ( ! empty ( $tz_override ) ) $TIMEZONE = $tz_override;
   if ( empty ( $date ) ) return NULL;
   $sy = substr ( $date, 0, 4 );
   $sm = substr ( $date, 4, 2 );
   $sd = substr ( $date, 6, 2 ); 
- if ( empty ( $tz_offset ) ) {
+  if ( empty ( $tz_offset ) ) {
     $tz_offset_array = get_tz_offset ( $TIMEZONE, mktime ( 0, 0, 0, $sm, $sd, $sy ) );
-  $tz_offset =  $tz_offset_array[0];
- }
+    $tz_offset =  $tz_offset_array[0];
+  }
   if ( $time > 0 ) {
       $hour = (int) ( $time / 10000 );
       $min = abs ( ( $time / 100 ) % 100 );
@@ -5417,9 +5424,11 @@ function get_datetime_add_tz ( $date, $time, $tz_offset='' ) {
  *
 */
 function get_tz_offset ( $tz, $timestamp = '', $dateYmd = '' ) {
-  global $SERVER_TIMEZONE;
+  global $SERVER_TIMEZONE, $tz_override;
   static $tz_array = array();
-  
+  if ( ! empty ( $tz_override ) ) {  
+    $tz = $tz_override;
+  }
   $tz = ( empty ( $tz )? $SERVER_TIMEZONE : $tz );
   if ( empty ( $timestamp ) && ! empty ( $dateYmd ) ){
     //May need to expand dateYmd to dateYmdHis for accuracy
