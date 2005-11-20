@@ -1,5 +1,6 @@
 <?php
 include_once 'includes/init.php';
+include_once 'includes/date_formats.php';
 
 function print_color_sample ( $color ) {
   echo "<table style=\"border-width:0px;\"><tr><td style=\"background-color:$color;\">&nbsp;&nbsp;</td></tr></table>";
@@ -216,29 +217,6 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <?php etranslate("Date format")?>:</td><td>
   <select name="admin_DATE_FORMAT">
    <?php
-    // You can add new date formats below if you want.
-    // but also add in pref.php
-    $datestyles = array (
-		 "LANGUAGE_DEFINED", translate("LANGUAGE DEFINED"),
-     "__month__ __dd__, __yyyy__", translate("December") . " 31, 2000",
-     "__dd__ __month__, __yyyy__", "31 " . translate("December") . ", 2000",
-     "__dd__ __month__ __yyyy__", "31 " . translate("December") . " 2000",
-     "__dd__-__month__-__yyyy__", "31-" . translate("December") . "-2000",
-     "__dd__ __month__ __yy__", "31 " . translate("December") . " 2000",
-     "__dd__-__month__-__yy__", "31-" . translate("December") . "-00",
-     "__mm__/__dd__/__yyyy__", "12/31/2000",
-     "__mm__/__dd__/__yy__", "12/31/00",
-     "__mm__-__dd__-__yyyy__", "12-31-2000",
-     "__mm__-__dd__-__yy__", "12-31-00",
-     "__yyyy__-__mm__-__dd__", "2000-12-31",
-     "__yy__-__mm__-__dd__", "00-12-31",
-     "__yyyy__/__mm__/__dd__", "2000/12/31",
-     "__yy__/__mm__/__dd__", "00/12/31",
-     "__dd__/__mm__/__yyyy__", "31/12/2000",
-     "__dd__/__mm__/__yy__", "31/12/00",
-     "__dd__-__mm__-__yyyy__", "31-12-2000",
-     "__dd__-__mm__-__yy__", "31-12-00"
-    );
     for ( $i = 0; $i < count ( $datestyles ); $i += 2 ) {
      echo "<option value=\"" . $datestyles[$i] . "\"";
      if ( $s["DATE_FORMAT"] == $datestyles[$i] )
@@ -250,53 +228,22 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 
   <select name="admin_DATE_FORMAT_MY">
    <?php
-    // Date format for a month and year (with no day of the month)
-    // You can add new date formats below if you want
-    // but also add in admin.php
-    $datestyles = array (
-		 "LANGUAGE_DEFINED", translate("LANGUAGE DEFINED"),		
-     "__month__ __yyyy__", translate("December") . " 2000",
-     "__month__ __yy__", translate("December") . " 00",
-     "__month__-__yyyy__", translate("December") . "-2000",
-     "__month__-__yy__", translate("December") . "-00",
-     "__mm__/__yyyy__", "12/2000",
-     "__mm__/__yy__", "12/00",
-     "__mm__-__yyyy__", "12-2000",
-     "__mm__-__yy__", "12-00",
-     "__yyyy__-__mm__", "2000-12",
-     "__yy__-__mm__", "00-12",
-     "__yyyy__/__mm__", "2000/12",
-     "__yy__/__mm__", "00/12"
-    );
-    for ( $i = 0; $i < count ( $datestyles ); $i += 2 ) {
-     echo "<option value=\"" . $datestyles[$i] . "\"";
-     if ( $s["DATE_FORMAT_MY"] == $datestyles[$i] )
+    for ( $i = 0; $i < count ( $datestyles_my ); $i += 2 ) {
+     echo "<option value=\"" . $datestyles_my[$i] . "\"";
+     if ( $s["DATE_FORMAT_MY"] == $datestyles_my[$i] )
       echo " selected=\"selected\"";
-     echo ">" . $datestyles[$i + 1] . "</option>\n";
+     echo ">" . $datestyles_my[$i + 1] . "</option>\n";
     }
    ?>
   </select><br />
 
   <select name="admin_DATE_FORMAT_MD">
    <?php
-    // Date format for a month and day (with no year displayed)
-    // You can add new date formats below if you want.
-    // but also add in admin.php
-    $datestyles = array (
-		 "LANGUAGE_DEFINED", translate("LANGUAGE DEFINED"),		
-     "__month__ __dd__", translate("December") . " 31",
-     "__month__-__dd__", translate("December") . "-31",
-     "__dd__ __month__", "31 " . translate("December"),
-     "__mm__/__dd__", "12/31",
-     "__mm__-__dd__", "12-31",
-     "__dd__/__mm__", "31/12",
-     "__dd__-__mm__", "31-12"
-    );
-    for ( $i = 0; $i < count ( $datestyles ); $i += 2 ) {
-     echo "<option value=\"" . $datestyles[$i] . "\"";
-     if ( $s["DATE_FORMAT_MD"] == $datestyles[$i] )
+    for ( $i = 0; $i < count ( $datestyles_md ); $i += 2 ) {
+     echo "<option value=\"" . $datestyles_md[$i] . "\"";
+     if ( $s["DATE_FORMAT_MD"] == $datestyles_md[$i] )
       echo " selected=\"selected\"";
-     echo ">" . $datestyles[$i + 1] . "</option>\n";
+     echo ">" . $datestyles_md[$i + 1] . "</option>\n";
     }
    ?>
   </select>

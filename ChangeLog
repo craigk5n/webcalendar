@@ -1,4 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Implemented PATCH 1294721: single file for mod date_formats
+ - Implemented RFE 1315740: German date styles
+ - Fixed bug 1327661: Better german date-formats
  - Fixed bug 1350243: Wrong task order in upgrading.html (convert_passwords.php error)
  - Fixed bug 1359872: Repeat daily error
  - Fixed bug 1358775: Get an error 'Cannot find language file: translations/none.txt
