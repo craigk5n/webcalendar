@@ -32,8 +32,8 @@ $datestyles = array (
  "__dd__-__month__-__yyyy__", "31-" . translate("December") . "-2000",
  "__dd__ __month__ __yy__", "31 " . translate("December") . " 00",
  "__dd__-__month__-__yy__", "31-" . translate("December") . "-00",
- "__dd__. __month__ __yyyy__", "31 " . translate("December") . " 2000",
- "__dd__. __month__ __yy__", "31-" . translate("December") . "-00",
+ "__dd__. __month__ __yyyy__", "31. " . translate("December") . " 2000",
+ "__dd__. __month__ __yy__", "31." . translate("December") . " 00",
  "__mm__/__dd__/__yyyy__", "12/31/2000",
  "__mm__/__dd__/__yy__", "12/31/00",
  "__mm__-__dd__-__yyyy__", "12-31-2000",
@@ -47,7 +47,7 @@ $datestyles = array (
  "__dd__-__mm__-__yyyy__", "31-12-2000",
  "__dd__-__mm__-__yy__", "31-12-00",
  "__dd__.__mm__.__yyyy__", "31.12.2000",
- "__dd__.__mm__.__yy__", "31.12.00
+ "__dd__.__mm__.__yy__", "31.12.00"
 );
 
 //Month Year format
@@ -62,12 +62,12 @@ $datestyles_my = array (
  "__mm__/__yy__", "12/00",
  "__mm__-__yyyy__", "12-2000",
  "__mm__-__yy__", "12-00",
+ "__mm__.__yyyy__", "12.2000",
+ "__mm__.__yy__", "12.00",
  "__yyyy__-__mm__", "2000-12",
  "__yy__-__mm__", "00-12",
  "__yyyy__/__mm__", "2000/12",
- "__yy__/__mm__", "00/12",
- "__mm__.__yyyy__", "12.2000",
- "__mm__.__yy__", "12.00"
+ "__yy__/__mm__", "00/12"
 );
 
 //Month Day format
@@ -77,7 +77,7 @@ $datestyles_md = array (
  "__mon__ __dd__", translate("Dec") . " 31",
  "__month__-__dd__", translate("December") . "-31",
  "__dd__ __month__", "31 " . translate("December"),
- "__dd__. __month__", "31. " translate("December"),
+ "__dd__. __month__", "31. " . translate("December"),
  "__mm__/__dd__", "12/31",
  "__mm__-__dd__", "12-31",
  "__dd__/__mm__", "31/12",
