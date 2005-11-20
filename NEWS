@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1360780: register.php does not work
       1327661: Better german date-formats
       1350243: Wrong task order in upgrading.html (convert_passwords.php error)
       1359872: Repeat daily error

@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1360780: register.php does not work
  - Implemented PATCH 1294721: single file for mod date_formats
  - Implemented RFE 1315740: German date styles
  - Fixed bug 1327661: Better german date-formats

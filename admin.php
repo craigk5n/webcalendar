@@ -616,8 +616,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  </td></tr>
  <tr id="sr2"><td class="tooltip" title="<?php etooltip("allow-self-registration-full-help")?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate("Use self-registration email notifications" )?>:</td><td>
-  <label><input type="radio" name="admin_SELF_REGISTRATION_FULL" value="Y" <?php if ( ! empty ( $s["SELF_REGISTRATION_FULL"] ) && $s["SELF_REGISTRATION_FULL"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
-  <label><input type="radio" name="admin_SELF_REGISTRATION_FULL" value="N" <?php if ( ! empty ( $s["SELF_REGISTRATION_FULL"] ) && $s["SELF_REGISTRATION_FULL"] != "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
+  <label><input type="radio" name="admin_SELF_REGISTRATION_FULL" value="N" <?php if ( ! empty ( $s["SELF_REGISTRATION_FULL"] ) && $s["SELF_REGISTRATION_FULL"] == "N" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_SELF_REGISTRATION_FULL" value="Y" <?php if ( ! empty ( $s["SELF_REGISTRATION_FULL"] ) && $s["SELF_REGISTRATION_FULL"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
 <!-- TODO add account aging feature -->
 </table>

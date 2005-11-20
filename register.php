@@ -1,11 +1,30 @@
 <?php
-require_once 'includes/init.php';
- require ( 'includes/classes/WebCalMailer.class' );
-$mail = new WebCalMailer;
-//TODO make this an option for external usrers
-$htmlmail = false;
+require_once 'includes/classes/WebCalendar.class';
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
+include 'includes/assert.php';
+include 'includes/config.php';
+include 'includes/php-dbi.php';
+include 'includes/functions.php';
+
+$WebCalendar->initializeFirstPhase();
+
+include "includes/$user_inc";
+include 'includes/translate.php';
+
+$WebCalendar->initializeSecondPhase();
+$WebCalendar->setLanguage();
 
 load_global_settings ();
+
+require ( 'includes/classes/WebCalMailer.class' );
+$mail = new WebCalMailer;
+//TODO make this an option for external users
+$htmlmail = false;
+
+load_user_preferences ( );
+
 
 if ( empty ( $ALLOW_SELF_REGISTRATION ) || $ALLOW_SELF_REGISTRATION != "Y" ) { 
   $error = "You are not authorized";
@@ -101,8 +120,7 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == "full" ) {
   $ulastname = getPostValue ( "ulastname" );
   $uemail = getPostValue ( "uemail" );
   $uis_admin = "N";
-  // Do some checking og user info
- // Most of this is probably already handled by init.php
+  // Do some checking of user info
  if ( ! empty ( $user ) && ! empty ( $upassword1 ) ) {
     if ( get_magic_quotes_gpc() ) {
       $upassword1 = stripslashes ( $upassword1 );
@@ -186,9 +204,16 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == "full" ) {
  }
 }
 
-print_header();
-
+$charset = ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" );
+echo "<?xml version=\"1.0\" encoding=\"$charset\"?>" . "\n";
 ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" lang="<?php echo $lang; ?>">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
+<title><?php etranslate($APPLICATION_NAME)?></title>
+
 <script type="text/javascript">
 // error check login/password
 function valid_form () {
@@ -204,6 +229,16 @@ function valid_form () {
   return true;
 }
 </script>
+<?php 
+ include "includes/styles.php";
+
+ // Print custom header (since we do not call print_header function)
+ if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
+   echo load_template ( $login, 'S' );
+ }
+?>
+</head>
+<body id="register">
 <h2><?php 
 // If Application Name is set to Title then get translation
 // If not, use the Admin defined Application Name
@@ -230,7 +265,7 @@ if ( ! empty ( $error ) ) {
 <tr><td rowspan="3"><img src="register.gif"></td>
 
 <td><?php etranslate("Welcome to WebCalendar")?></td></tr>
-<?php if ( $SELF_REGISTRATION_FULL == "Y" ) { ?>
+<?php if ( $SELF_REGISTRATION_FULL == "N" ) { ?>
   <tr><td colspan="3" align="center"><label><?php etranslate("Your email should arrive shortly")?></label><td></tr> 
 <?php } ?>
 <tr><td colspan="3" align="center">
@@ -240,27 +275,27 @@ if ( ! empty ( $error ) ) {
 </form>
 <?php } else if ( empty ( $error ) ) { ?>
 <form action="register.php" method="post" onsubmit="return valid_form()" name="selfreg">
-<table align="center"  cellpadding="0" cellspacing="10">
-<tr><td rowspan="3"><img src="register.gif"></td>
 <input  type="hidden" name="control" value="<?php echo $form_control ?>" />
+<table align="center"  cellpadding="0" cellspacing="10">
+<tr><td rowspan="3"><img src="register.gif" alt="" /></td>
 <td  align="right">
-  <label for="user"><?php etranslate("Username")?>:</label></td>
+  <label><?php etranslate("Username")?>:</label></td>
   <td align="left"><input  type="text" name="user"  value="<?php echo $user ?>" size="20" maxlength="20" /></td></tr>
 <tr><td  align="right">
-  <label for="ufirstname"><?php etranslate("First Name")?>:</label></td>
+  <label><?php etranslate("First Name")?>:</label></td>
   <td align="left"><input type="text" name="ufirstname" value="<?php echo $ufirstname ?>" size="25" maxlength="25" /></td></tr>
 <tr><td  align="right">
-  <label for="ulastname"><?php etranslate("Last Name")?>:</label></td>
+  <label><?php etranslate("Last Name")?>:</label></td>
   <td align="left"><input type="text" name="ulastname" value="<?php echo $ulastname ?>" size="25"  maxlength="25" /></td></tr>
 <tr><td  align="right" colspan="2">
-  <label for="uemail"><?php etranslate("E-mail address")?>:</label></td>
+  <label><?php etranslate("E-mail address")?>:</label></td>
   <td align="left"><input type="text" name="uemail" value="<?php echo $uemail ?>" size="40"  maxlength="75" /></td></tr>
 <?php if ( $SELF_REGISTRATION_FULL == "Y" ) { ?>
   <tr><td  align="right" colspan="2">
-    <label for="upassword1"><?php etranslate("Password")?>:</label></td>
+    <label><?php etranslate("Password")?>:</label></td>
     <td align="left"><input name="upassword1" value="<?php echo $upassword1 ?>" size="15"  type="password" /></td></tr>
   <tr><td  align="right" colspan="2">
-    <label for="upassword2"><?php etranslate("Password")?> (<?php etranslate("again")?>):</label></td>
+    <label><?php etranslate("Password")?> (<?php etranslate("again")?>):</label></td>
     <td align="left"><input name="upassword2" value="<?php echo $upassword2 ?>" size="15"  type="password" /></td></tr>
 <?php } else { ?>  
   <tr><td colspan="3" align="center"><label><?php etranslate ( "Your account information will be emailed to you" ); ?></label></td></tr>
