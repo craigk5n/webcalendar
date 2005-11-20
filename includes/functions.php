@@ -1509,8 +1509,8 @@ function print_entry ( $event, $date ) {
   }
 
   if ( empty ( $catIcon ) ) {
-    echo "<img src=\"$icon\" class=\"bullet\" alt=\" width=\"5\" height=\"7\"". 
-      $view_text  . "\" />";
+    echo "<img src=\"$icon\" class=\"bullet\" alt=\"" . 
+      $view_text  . "\" width=\"5\" height=\"7\" />";
   } else {
     // Use category icon
     echo "<img src=\"$catIcon\" alt=\"" . 
@@ -3424,7 +3424,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $hour_arr[$ind] .= "(" . translate("Confidential") . ")";
   } else if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ){
     $hour_arr[$ind] .= htmlspecialchars ( $name );
-  } else if ( ! empty ( $in_span ) ) {
+    if ( ! empty ( $in_span ) )
       $hour_arr[$ind] .= "</span>"; //end color span
   } else {
     $hour_arr[$ind] .= htmlspecialchars ( $name );
@@ -3589,10 +3589,9 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
         echo "<td>";
         if ( $can_add ) {
           echo html_for_add_icon ( $date, $time_h, $time_m, $user ) . "</td>";
-  } else {
-    echo "&nbsp;</td>";
-  }
-        echo "</tr>\n";
+        } else {
+          echo "&nbsp;</td>";
+        }
       } else {
         if ( empty ( $rowspan_arr[$i] ) )
           $rowspan = '';
@@ -3602,15 +3601,16 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
           echo "<td rowspan=\"$rowspan\" class=\"hasevents\">";
           if ( $can_add )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-          echo "$hour_arr[$i]</td></tr>\n";
+          echo "$hour_arr[$i]</td>\n";
         } else {
           echo "<td class=\"hasevents\">";
           if ( $can_add )
             echo html_for_add_icon ( $date, $time_h, $time_m, $user );
-          echo "$hour_arr[$i]</td></tr>\n";
+          echo "$hour_arr[$i]</td>\n";
         }
       }
     }
+    echo "</tr>\n";    
   }
 }
 
@@ -3932,6 +3932,7 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
   $y = (int) ( $newdate / 10000 );
   $m = (int) ( $newdate / 100 ) % 100;
   $d = $newdate % 100;
+  $j = (int) $d ;
   $date = mktime ( 0, 0, 0, $m, $d, $y );
   $wday = strftime ( "%w", $date );
   $mon = month_short_name ( $m - 1 );
@@ -3952,6 +3953,7 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
   $ret = str_replace ( "__month__", $month, $ret );
   $ret = str_replace ( "__mon__", $mon, $ret );
   $ret = str_replace ( "__dd__", $d, $ret );
+  $ret = str_replace ( "__j__", $j, $ret );  
   $ret = str_replace ( "__mm__", $m, $ret );
 
   if ( $show_weekday )
