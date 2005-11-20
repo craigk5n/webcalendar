@@ -22,6 +22,8 @@ if ( strlen ( $login ) == 0 ) {
 }
 
 require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
@@ -37,14 +39,12 @@ include 'includes/translate.php';
 $WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
-load_user_preferences ();
-load_user_layers ();
 
 $WebCalendar->setLanguage();
 
 $view = "week";
  //TODO This is suspect 
-$today = time() + ($TZ_OFFSET * 60 * 60);
+$today = time();
 
 if ( ! empty ( $date ) && ! empty ( $date ) ) {
   $thisyear = substr ( $date, 0, 4 );
@@ -106,22 +106,22 @@ for ( $d = 0; $d < 7; $d++ ) {
     $color = $TODAYCELLBG;
   else
     $color = $THBG;
-  echo "<th style=\"width:13%; background-color:$color;\">$header[$d]</th>";
+  echo "<th style=\"width:13%; background-color:$color;\">$header[$d]</th>\n";
 }
 ?>
 </tr>
 
 <tr>
 <?php
-$first_hour = $WORK_DAY_START_HOUR - $tz_offset;
-$last_hour = $WORK_DAY_END_HOUR + $tz_offset;
+$first_hour = $WORK_DAY_START_HOUR;
+$last_hour = $WORK_DAY_END_HOUR;
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
   $date = date ( "Ymd", $days[$d] );
 
   print "<td style=\"vertical-align:top; width:75px; height:75px;";
   if ( $date == date ( "Ymd" ) )
-    echo " background-color:$TODAYCELLBG;\">";
+    echo " background-color:$TODAYCELLBG;\">\n";
   else
     echo " background-color:$CELLBG;\">";
 
