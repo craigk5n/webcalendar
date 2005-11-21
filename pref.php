@@ -35,15 +35,15 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
-
-// Set some defaults so we don't need to test for empty to avoid
-// php warnings
-if ( empty ( $prefarray['FREEBUSY_ENABLED'] ) )
-  $prefarray['FREEBUSY_ENABLED'] = 'N';
-if ( empty ( $prefarray['USER_PUBLISH_RW_ENABLED'] ) )
-  $prefarray['USER_PUBLISH_RW_ENABLED'] = 'N';
-if ( empty ( $prefarray['EMAIL_HTML'] ) )
-  $prefarray['EMAIL_HTML'] = 'N';
+//make globals values passed to styles.php are for this user
+//makes the demo calendar accurate
+$GLOBALS['TODAYCELLBG'] = $prefarray['TODAYCELLBG'];
+$GLOBALS['TABLEBG'] = $prefarray['TABLEBG'];
+$GLOBALS['TABLEBG'] = $prefarray['TABLEBG'];
+$GLOBALS['THBG'] = $prefarray['THBG'];
+$GLOBALS['CELLBG'] = $prefarray['CELLBG'];
+$GLOBALS['WEEKENDBG'] = $prefarray['WEEKENDBG'];
+$GLOBALS['OTHERMONTHBG'] = $prefarray['OTHERMONTHBG'];
 
 $INC = array('js/pref.php');
 print_header($INC);
@@ -275,6 +275,11 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <label><input type="radio" name="pref_DISPLAY_UNAPPROVED" value="Y" <?php if ( $prefarray["DISPLAY_UNAPPROVED"] != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="pref_DISPLAY_UNAPPROVED" value="N" <?php if ( $prefarray["DISPLAY_UNAPPROVED"] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
 </td></tr>
+ <tr><td class="tooltip" title="<?php etooltip("display-alldays-help");?>">
+  <?php etranslate("Display all days in month view")?>:</td><td>
+  <label><input type="radio" name="pref_DISPLAY_ALL_DAYS_IN_MONTH" value="Y" <?php if ( $prefarray["DISPLAY_ALL_DAYS_IN_MONTH"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="pref_DISPLAY_ALL_DAYS_IN_MONTH" value="N" <?php if ( $prefarray["DISPLAY_ALL_DAYS_IN_MONTH"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ </td></tr> 
 <tr><td class="tooltip" title="<?php etooltip("display-week-number-help")?>">
  <?php etranslate("Display week number")?>:</td><td>
  <label><input type="radio" name="pref_DISPLAY_WEEKNUMBER" value="Y" <?php if ( $prefarray["DISPLAY_WEEKNUMBER"]!= "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
@@ -531,12 +536,24 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_TODAYCELLBG')" value="<?php etranslate("Select")?>..." />
  </td></tr>
+ <tr><td>
+ <label for="pref_HASEVENTSBG"><?php etranslate("Table cell background for days with events")?>:</label></td><td>
+ <input type="text" name="pref_HASEVENTSBG" id="pref_HASEVENTSBG" size="8" maxlength="7" value="<?php echo $prefarray["HASEVENTSBG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $prefarray["HASEVENTSBG"]?>;">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+ <input type="button" onclick="selectColor('pref_HASEVENTSBG')" value="<?php etranslate("Select")?>..." name="" />
+</td></tr>
  <tr><td style="font-weight:bold;">
   <label for="pref_wkend"><?php etranslate("Table cell background for weekends")?>:</label></td><td>
   <input type="text" name="pref_WEEKENDBG" id="pref_wkend" size="8" maxlength="7" value="<?php echo $prefarray["WEEKENDBG"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray["WEEKENDBG"]?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_WEEKENDBG')" value="<?php etranslate("Select")?>..." />
  </td></tr>
+   <tr><td style="font-weight:bold;">
+    <label for="pref_othmonth"><?php etranslate("Table cell background for other month")?>:</label></td><td>
+  <input type="text" name="pref_OTHERMONTHBG" id="pref_othmonth" size="8" maxlength="7" value="<?php echo $prefarray["OTHERMONTHBG"]; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray["OTHERMONTHBG"]?>; border-style: groove;">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+    <input type="button" onclick="selectColor('pref_OTHERMONTHBG')" value="<?php etranslate("Select")?>..." />
+  </td></tr>
 </table>
 
 </td><td style="text-align:center; vertical-align:top; background-color:<?php echo $prefarray["BGCOLOR"]?>;">
@@ -545,67 +562,14 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <!-- BEGIN EXAMPLE MONTH -->
 <table style="border:0px; width:100%;"><tr>
 <td style="text-align:center; color:<?php echo $H2COLOR?>; font-weight:bold;"><?php
-$today = mktime ( 0, 0, 0, 12, 13, 2004 );
-if ( $prefarray["WEEK_START"] == 1 )
-  $wkstart = get_monday_before ( 2004, 12, 1 );
-else
-  $wkstart = get_sunday_before ( 2004, 12, 1 );
-echo date_to_str ( "20041201", $DATE_FORMAT_MY, false, false );?></td></tr>
+echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false, false );?></td></tr>
 </table>
-
-<table style="border-width:0px; width:90%;" cellspacing="0" cellpadding="0">
-<tr><td style="background-color:<?php echo $TABLEBG?>;">
-<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
-<tr>
-<?php if ( $prefarray["WEEK_START"] == 0 ) { ?>
-<th style="width:14%;" class="tableheader"><?php etranslate("Sun")?></th>
-<?php } ?>
-<th style="width:14%;" class="tableheader"><?php etranslate("Mon")?></th>
-<th style="width:14%;" class="tableheader"><?php etranslate("Tue")?></th>
-<th style="width:14%;" class="tableheader"><?php etranslate("Wed")?></th>
-<th style="width:14%;" class="tableheader"><?php etranslate("Thu")?></th>
-<th style="width:14%;" class="tableheader"><?php etranslate("Fri")?></th>
-<th style="width:14%;" class="tableheader"><?php etranslate("Sat")?></th>
-<?php if ( $prefarray["WEEK_START"] == 1 ) { ?>
-<th style="width:14%;"><?php etranslate("Sun")?></th>
-<?php } ?>
-</tr>
-<?php
-// generate values for first day and last day of month
-$monthstart = mktime ( 0, 0, 0, 12, 1, 2004 );
-$monthend = mktime ( 0, 0, 0, 13, 0, 2004 );
-
-for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
-  $i += ( 24 * 3600 * 7 ) ) {
-  print "<tr>\n";
-  for ( $j = 0; $j < 7; $j++ ) {
-    $date = $i + ( $j * 24 * 3600 );
-    if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
-      date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-      $thiswday = date ( "w", $date );
-      $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-      if ( empty ( $prefarray["WEEKENDBG"] ) ) $is_weekend = false;
-      $class = $is_weekend ? "weekend" : "tablecell";
-      $color = $is_weekend ? $prefarray["WEEKENDBG"] : $prefarray["CELLBG"];
-      print "<td style=\"vertical-align:top; height:30px;";
-      if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) )
-        echo " background-color:$prefarray[TODAYCELLBG];\">";
-      else
-        echo " background-color:$color;\">";
-      echo "&nbsp;";
-      print "</td>\n";
-    } else {
-      print "<td style=\"vertical-align:top; height:30px; background-color:$prefarray[CELLBG];\">&nbsp;</td>\n";
-    }
-  }
-  print "</tr>\n";
-}
-
+<?php 
+set_today( date ("Ymd") );
+display_month ( date ("m") , date("Y") , true);
 ?>
-</table>
 </td></tr>
 </table>
-
 <!-- END EXAMPLE MONTH -->
 <br /><br />
 

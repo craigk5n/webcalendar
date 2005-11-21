@@ -63,8 +63,10 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   echo "<tr>\n";
   for ( $j = 0; $j < 7; $j++ ) {
     $date = $i + ( $j * 24 * 3600 );
-    if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
-      date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
+    if ( ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
+      date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) || 
+      ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && 
+      $DISPLAY_ALL_DAYS_IN_MONTH == "Y" ) ) {
       echo "<td><a href=\"javascript:sendDate('" .
         date ( "Ymd", $date ) . "')\">" .
         date ( "j", $date ) . "</a></td>\n";

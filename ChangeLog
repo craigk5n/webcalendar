@@ -1,4 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1362876: "all percentages" cannot be translated
+ - Implemented PATCH 1155607: Show all days in Month with config
+ - Implemented PATCH 1060025: New display_month() function
  - Fixed bug 1360780: register.php does not work
  - Implemented PATCH 1294721: single file for mod date_formats
  - Implemented RFE 1315740: German date styles

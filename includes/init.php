@@ -87,7 +87,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $APPLICATION_NAME;
   global $FONTS,$WEEKENDBG,$THFG,$THBG,$PHP_SELF;
   global $TABLECELLFG,$TODAYCELLBG,$TEXTCOLOR;
-  global $POPUP_FG,$BGCOLOR;
+  global $POPUP_FG,$BGCOLOR,$OTHERMONTHBG;
   global $LANGUAGE, $DISABLE_POPUPS;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
   global $friendly;

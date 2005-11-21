@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1362876: "all percentages" cannot be translated
       1360780: register.php does not work
       1327661: Better german date-formats
       1350243: Wrong task order in upgrading.html (convert_passwords.php error)
@@ -127,6 +128,8 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Implemented PATCH 1155607: Show all days in Month with config
+    + Implemented PATCH 1060025: New display_month() function
     + Implemented PATCH 1294721: single file for mod date_formats
     + Implemented RFE 1315740: German date styles
     + Implemented PATCH 1221971: IMAP Authentication

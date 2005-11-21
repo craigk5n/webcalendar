@@ -190,77 +190,10 @@ display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth",
 ?></span>
 <span class="viewname"><br /><?php echo $view_name; ?></span></div>
 <br /><br /><br /><br />
-
-<table class="main" style="clear:both;" cellspacing="0" cellpadding="0">
-<tr>
-<?php if ( $WEEK_START == 0 ) { ?>
-<th class="weekend"><?php etranslate("Sun")?></th>
-<?php } ?>
-<th><?php etranslate("Mon")?></th>
-<th><?php etranslate("Tue")?></th>
-<th><?php etranslate("Wed")?></th>
-<th><?php etranslate("Thu")?></th>
-<th><?php etranslate("Fri")?></th>
-<th class="weekend"><?php etranslate("Sat")?></th>
-<?php if ( $WEEK_START == 1 ) { ?>
-<th class="weekend"><?php etranslate("Sun")?></th>
-<?php } ?>
-</tr>
 <?php
-// We add 2 hours on to the time so that the switch to DST doesn't
-// throw us off.  So, all our dates are 2AM for that day.
-//$sun = get_sunday_before ( $thisyear, $thismonth, 1 );
-if ( $WEEK_START == 1 ) {
-  $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
-} else {
-  $wkstart = get_sunday_before ( $thisyear, $thismonth, 1 );
-}
-// generate values for first day and last day of month
-$monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-$monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
+display_month ( $thismonth, $thisyear );
+echo "<br />";
 
-// debugging
-//echo "<br />sun = " . date ( "D, m-d-Y", $sun ) . "<br />";
-//echo "<br />monthstart = " . date ( "D, m-d-Y", $monthstart ) . "<br />";
-//echo "<br />monthend = " . date ( "D, m-d-Y", $monthend ) . "<br />";
-
-//NOTE: if you make HTML changes to this table, make the same changes
-//to the example table in pref.php.
-for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
-  $i += ( 24 * 3600 * 7 ) ) {
-  print "<tr>\n";
-  for ( $j = 0; $j < 7; $j++ ) {
-    $date = $i + ( $j * 24 * 3600 );
-    if ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
-      date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) {
-      $thiswday = date ( "w", $date );
-      $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-      if ( empty ( $WEEKENDBG ) ) $is_weekend = false;
-      print "<td";
-      $class = "";
-      if ( date ( "Ymd", $date  ) == date ( "Ymd", $today ) ) {
-        $class = "today";
-      }
-      if ( $is_weekend ) {
-        if ( strlen ( $class ) ) $class .= " ";
-        $class .= "weekend";
-      }
-      if ( strlen ( $class ) ) echo " class=\"$class\"";
-      echo ">";
- //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
-      print_date_entries ( date ( "Ymd", $date ),
-        ( ! empty ( $user ) ) ? $user : $login, false );
-      print "</td>\n";
-    } else {
-      print "<td>&nbsp;</td>\n";
-    }
-  }
-  print "</tr>\n";
-}
-?>
-</table><br />
-
-<?php
 if ( ! empty ( $eventinfo ) ) {
   echo $eventinfo;
 }
