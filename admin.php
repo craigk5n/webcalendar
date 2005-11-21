@@ -20,6 +20,15 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
+//make globals values passed to styles.php are for this user
+//makes the demo calendar accurate
+$GLOBALS['TODAYCELLBG'] = $s['TODAYCELLBG'];
+$GLOBALS['TABLEBG'] = $s['TABLEBG'];
+$GLOBALS['TABLEBG'] = $s['TABLEBG'];
+$GLOBALS['THBG'] = $s['THBG'];
+$GLOBALS['CELLBG'] = $s['CELLBG'];
+$GLOBALS['WEEKENDBG'] = $s['WEEKENDBG'];
+$GLOBALS['OTHERMONTHBG'] = $s['OTHERMONTHBG'];
 
 $BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); email_handler();"';
 $INC = array('js/admin.php','js/visible.php');
@@ -194,6 +203,11 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <label><input type="radio" name="admin_DISPLAY_WEEKENDS" value="Y" <?php if ( $s["DISPLAY_WEEKENDS"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
   <label><input type="radio" name="admin_DISPLAY_WEEKENDS" value="N" <?php if ( $s["DISPLAY_WEEKENDS"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
+ <tr><td class="tooltip" title="<?php etooltip("display-alldays-help");?>">
+  <?php etranslate("Display all days in month view")?>:</td><td>
+  <label><input type="radio" name="admin_DISPLAY_ALL_DAYS_IN_MONTH" value="Y" <?php if ( $s["DISPLAY_ALL_DAYS_IN_MONTH"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_DISPLAY_ALL_DAYS_IN_MONTH" value="N" <?php if ( $s["DISPLAY_ALL_DAYS_IN_MONTH"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>  
  <tr><td class="tooltip" title="<?php etooltip("yearly-shows-events-help");?>">
   <?php etranslate("Display days with events in bold in month and year views")?>:</td><td>
   <label><input type="radio" name="admin_BOLD_DAYS_IN_YEAR" value="Y" <?php if ( $s["BOLD_DAYS_IN_YEAR"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
@@ -706,14 +720,14 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 
 <!-- BEGIN COLORS -->
 <div id="tabscontent_colors">
-<table cellspacing="0" cellpadding="3">
+<table cellspacing="0" cellpadding="3"  width="100%">
 <tr><td><label>
- <?php etranslate("Allow user to customize colors")?>:</label></td><td colspan="3">
+ <?php etranslate("Allow user to customize colors")?>:</label></td><td colspan="5">
  <label><input type="radio" name="admin_ALLOW_COLOR_CUSTOMIZATION" value="Y"<?php if ( $s["ALLOW_COLOR_CUSTOMIZATION"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="admin_ALLOW_COLOR_CUSTOMIZATION" value="N"<?php if ( $s["ALLOW_COLOR_CUSTOMIZATION"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
 </td></tr>
-<tr><td><label>
- <?php etranslate("Enable gradient images for background colors")?>:</label></td><td colspan="3">
+<tr><td class="tooltip" title="<?php etooltip("gradient-colors")?>"><label>
+ <?php etranslate("Enable gradient images for background colors")?>:</label></td><td colspan="5">
 <?php if ( function_exists ( "imagepng" ) ) { ?>
  <label><input type="radio" name="admin_ENABLE_GRADIENTS" value="Y"<?php if ( $s["ENABLE_GRADIENTS"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="admin_ENABLE_GRADIENTS" value="N"<?php if ( $s["ENABLE_GRADIENTS"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
@@ -726,7 +740,21 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <input type="text" name="admin_BGCOLOR" id="admin_BGCOLOR" size="8" maxlength="7" value="<?php echo $s["BGCOLOR"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["BGCOLOR"]?>;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
  <input type="button" onclick="selectColor('admin_BGCOLOR')" value="<?php etranslate("Select")?>..." name="" />
-</td></tr>
+</td>
+<td rowspan="12" width="10%">&nbsp;</td>
+<td rowspan="12" width="50%">
+<!-- BEGIN EXAMPLE MONTH -->
+<table style="border:0px; width:100%;"><tr>
+<td style="text-align:center; color:<?php echo $H2COLOR?>; font-weight:bold;"><?php
+echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false, false );?></td></tr>
+</table>
+<?php 
+set_today( date ("Ymd") );
+display_month ( date ("m") , date("Y") , 's');
+?>
+<!-- END EXAMPLE MONTH -->
+</td>
+</tr>
 <tr><td>
  <label for="admin_H2COLOR"><?php etranslate("Document title")?>:</label></td><td>
  <input type="text" name="admin_H2COLOR" id="admin_H2COLOR" size="8" maxlength="7" value="<?php echo $s["H2COLOR"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["H2COLOR"]?>;">
@@ -770,10 +798,22 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <input type="button" onclick="selectColor('admin_TODAYCELLBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
+ <label for="admin_HASEVENTSBG"><?php etranslate("Table cell background for days with events")?>:</label></td><td>
+ <input type="text" name="admin_HASEVENTSBG" id="admin_HASEVENTSBG" size="8" maxlength="7" value="<?php echo $s["HASEVENTSBG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["HASEVENTSBG"]?>;">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+ <input type="button" onclick="selectColor('admin_HASEVENTSBG')" value="<?php etranslate("Select")?>..." name="" />
+</td></tr>
+<tr><td>
  <label for="admin_WEEKENDBG"><?php etranslate("Table cell background for weekends")?>:</label></td><td>
  <input type="text" name="admin_WEEKENDBG" id="admin_WEEKENDBG" size="8" maxlength="7" value="<?php echo $s["WEEKENDBG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["WEEKENDBG"]?>;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
  <input type="button" onclick="selectColor('admin_WEEKENDBG')" value="<?php etranslate("Select")?>..." name="" />
+</td></tr>
+<tr><td>
+  <label for="tdbgothermonth"><?php etranslate("Table cell background for other month")?>:</label></td><td>
+  <input type="text" name="admin_OTHERMONTHBG" id="tdbgothermonth" size="8" maxlength="7" value="<?php echo $s["OTHERMONTHBG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["OTHERMONTHBG"]?>;">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+  <input type="button" onclick="selectColor('admin_OTHERMONTHBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
  <label for="admin_POPUP_BG"><?php etranslate("Event popup background")?>:</label></td><td>
@@ -785,7 +825,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <label for="admin_POPUP_FG"><?php etranslate("Event popup text")?>:</label></td><td>
  <input type="text" name="admin_POPUP_FG" id="admin_POPUP_FG" size="8" maxlength="7" value="<?php echo $s["POPUP_FG"]; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s["POPUP_FG"]?>;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
- <input type="button" onclick="selectColor('admin_POPUP_FG')" value="<?php etranslate("Select")?>..." name="" />
+   <input type="button" onclick="selectColor('admin_POPUP_FG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 </table>
 </div>

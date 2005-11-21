@@ -452,7 +452,7 @@ if ( ! empty ( $parent ) )
     echo "</select></td></tr>\n";
     if ( ! empty ( $overall_percent ) ) {
       echo "<tr><td colspan=\"2\">\n<table width=\"100%\" border=\"0\" cellpadding=\"2\" cellspacing\"5\">".
-       "<tr>\n<td colspan=\"2\">All Percentages</td><tr>";
+       "<tr>\n<td colspan=\"2\">". translate("All Percentages") . "</td><tr>";
       $all_complete = true;
       for ( $i = 0; $i < count ( $overall_percent ); $i++ ) {
             user_load_variables ( $overall_percent[$i][0], "percent" );

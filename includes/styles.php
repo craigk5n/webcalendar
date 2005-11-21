@@ -54,6 +54,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     (not weekends, today, or any other types of cells)
   TODAYCELLBG - background-color for cells that make up today's date
   WEEKENDBG - background-color for cells that make up the weekend
+  OTHERMONTHBG - background-color for cells that belong to other month  
   THFG - text color for table headers
   THBG - background-color for table headers
   POPUP_FG - text color for event popups
@@ -677,7 +678,9 @@ th {
   font-size: 13px;
   color: <?php echo $GLOBALS['THFG']; ?>;
   background-color: <?php echo $GLOBALS['THBG']; ?>;
-}  
+}
+#admin .main th, 
+#pref .main th, 
 #viewv .main th,
 #viewl .main th,
 #month .main th {
@@ -743,6 +746,8 @@ th {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   vertical-align: top;
 }
+#admin .main th.today,
+#pref .main th.today,
 #viewr .main th.today,
 #week .main th.today {
   <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 ); ?>
@@ -752,11 +757,11 @@ th {
 }
 #viewr .main td.hasevents {
   font-size: 8px;
-  <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 ); ?>
+  <?php echo background_css ( $GLOBALS['HASEVENTSBG'], 100 ); ?>
 }
 #week .main td.hasevents,
 #day .glance td.hasevents {
-  <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 ); ?>
+  <?php echo background_css ( $GLOBALS['HASEVENTSBG'], 100 ); ?>
 }
 #viewr .main th a,
 #week .main th a,
@@ -772,6 +777,15 @@ th {
   text-align: center;
   padding: 0px 3px;
 }
+#admin .main td,
+#pref .main td{
+  font-size: 12px;
+  height: 30px;
+  border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  <?php echo background_css ( $GLOBALS['CELLBG'], 100 ); ?>
+  vertical-align: top;
+}
 #viewl .main td,
 #month .main td {
   font-size: 12px;
@@ -780,6 +794,8 @@ th {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   <?php echo background_css ( $GLOBALS['CELLBG'], 100 ); ?>
   vertical-align: top;
+  word-break: break-all;
+  overflow:auto;
 }
 #vieww .main td,
 #week .main td,
@@ -793,6 +809,8 @@ th {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   padding-left: 3px;
 }
+#admin .main td.weekend,
+#pref .main td.weekend,
 #viewl .main td.weekend,
 #month .main td.weekend,
 #viewm .main td.weekend,
@@ -804,6 +822,16 @@ th {
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
+#admin .main td.othermonth,
+#pref .main td.othermonth,
+#viewl .main td.othermonth,
+#month .main td.othermonth {
+  <?php echo background_css ( $GLOBALS['OTHERMONTHBG'], 100 ); ?>
+  border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+#admin .main td.today,
+#pref .main td.today,
 #viewl .main td.today,
 #month .main td.today,
 #viewm .main td.today,

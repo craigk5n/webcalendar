@@ -579,6 +579,7 @@ function load_user_preferences ( $guest='') {
     "CELLBG" => 1,
     "TODAYCELLBG" => 1,
     "WEEKENDBG" => 1,
+    "OTHERMONTHBG" => 1,
     "POPUP_BG" => 1,
     "POPUP_FG" => 1,
   );
@@ -1200,6 +1201,86 @@ function date_selection_html ( $prefix, $date, $trigger=false ) {
     translate("Select") . "...\" />\n";
 
   return $ret;
+}
+
+function display_month ( $thismonth, $thisyear, $demo='' ){
+ global $WEEK_START, $WEEKENDBG, $user, $login, $today,
+   $DISPLAY_ALL_DAYS_IN_MONTH;
+
+echo "<table class=\"main\" style=\"clear:both;\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">";
+echo "<tr>";
+if ( $WEEK_START == 0 ) {
+  echo '<th>' . translate('Sun') . "</th>\n";
+}
+echo '<th>' . translate('Mon') . "</th>\n";
+echo '<th>' . translate('Tue') . "</th>\n";
+echo '<th>' . translate('Wed') . "</th>\n";
+echo '<th>' . translate('Thu') . "</th>\n";
+echo '<th>' . translate('Fri') . "</th>\n";
+echo '<th>' . translate("Sat") . "</th>\n";
+if ( $WEEK_START == 1 ) {
+  echo '<th>' . translate('Sun') . "</th>\n";
+}
+echo "</tr>\n";
+
+
+if ( $WEEK_START == 1 ) {
+  $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
+} else {
+  $wkstart = get_sunday_before ( $thisyear, $thismonth, 1 );
+}
+// generate values for first day and last day of month
+$monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
+$monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
+
+for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
+  $i += ( 24 * 3600 * 7 ) ) {
+  print "<tr>\n";
+  for ( $j = 0; $j < 7; $j++ ) {
+    $date = $i + ( $j * 24 * 3600 );
+    if ( ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
+      date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) || 
+      ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == "Y" ) ) {
+      $thiswday = date ( "w", $date );
+      $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
+      if ( empty ( $WEEKENDBG ) ) {
+        $is_weekend = false;
+      }
+      print "<td";
+      $class = "";
+      if ( date ( "Ymd", $date  ) == date ( "Ymd", $today ) ) {
+        $class = "today";
+      }
+      if ( $is_weekend ) {
+        if ( strlen ( $class ) ) {
+          $class .= " ";
+        }
+        $class .= "weekend";
+      }
+      //change class if date is not in this month
+      if ( date ( "Ymd", $date ) < date ( "Ymd", $monthstart ) ||
+        date ( "Ymd", $date ) > date ( "Ymd", $monthend ) ) {
+        $class = "othermonth";
+      }
+      if ( strlen ( $class ) )  {
+      echo " class=\"$class\"";
+      }
+      echo ">";
+      //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
+      if ( ! $demo ) {
+        print_date_entries ( date ( "Ymd", $date ),
+          ( ! empty ( $user ) ) ? $user : $login, false );
+      } else {
+        echo "&nbsp;";
+      }
+      print "</td>\n";
+    } else {
+      print "<td>&nbsp;</td>\n";
+    }
+  }
+  print "</tr>\n";
+}
+print "</table>";
 }
 
 /**
@@ -2721,7 +2802,7 @@ function print_date_entries ( $date, $user, $ssi ) {
   $year = substr ( $date, 0, 4 );
   $month = substr ( $date, 4, 2 );
   $day = substr ( $date, 6, 2 );
-  $dateu = mktime ( 0, 0, 0, $month, $day, $year );
+  $dateu = mktime ( 12, 0, 0, $month, $day, $year );
   $can_add = ( $readonly == "N" || $is_admin );
   if ( $PUBLIC_ACCESS == "Y" && $PUBLIC_ACCESS_CAN_ADD != "Y" &&
     $login == "__public__" )
