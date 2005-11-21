@@ -3668,8 +3668,7 @@ function display_unapproved_events ( $user ) {
       $sql .= " OR webcal_entry_user.cal_login = '" .
         $app_users[$i] . "' ";
     }
-  }  else 
-  if ( $NONUSER_ENABLED == 'Y' ) {
+  } else if ( $NONUSER_ENABLED == 'Y' ) {
     $admincals = get_nonuser_cals ( $login );
     for ( $i = 0; $i < count ( $admincals ); $i++ ) {
       $sql .= " OR webcal_entry_user.cal_login = '" .
