@@ -583,7 +583,7 @@ function load_user_preferences ( $guest='') {
     "POPUP_FG" => 1,
   );
  
- //allow __public__ pref to be used if logging in or user not validated
+  //allow __public__ pref to be used if logging in or user not validated
   $tmp_login = ( ! empty ( $guest )? "__public__" : $login );
   $browser = get_web_browser ();
   $browser_lang = get_browser_language ();
@@ -641,7 +641,7 @@ function load_user_preferences ( $guest='') {
   }
 
   // If user has not set a language preference or admin has not specified a
- // langiuage, then use their browser
+  // langiuage, then use their browser
   // settings to figure it out, and save it in the database for future
   // use (email reminders).
   $lang = 'none';
@@ -3357,16 +3357,16 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $linkid  = "pop$id-$key";
   $key++;
 
-    if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
+  if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
     $cal_type = "task";
     $cal_link = "view_task.php";
     $view_text = translate ( "View this task" );
     $hour_arr[$ind] .= "<img src=\"task.gif\" class=\"bullet\" alt=\"*\" /> ";    
-    } else {
+  } else {
     $cal_type = "event";
     $view_text = translate ( "View this task" );    
     $cal_link = "view_entry.php";    
-    }
+  }
 
   $hour_arr[$ind] .= "<a title=\"" . $view_text .
     "\" class=\"$class\" id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$date";
