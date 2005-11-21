@@ -992,7 +992,7 @@ function export_ical ( $id='all' ) {
     } 
 
     /* CATEGORIES if any (folded to 76 char) */
-    if (isset( $categories )) {
+    if (isset( $categories ) && count ( $categories ) ) {
       $categories = "CATEGORIES:" . implode ( ",", $categories);
       $array = export_fold_lines($categories,"utf8");
       while (list($key,$value) = each($array))
