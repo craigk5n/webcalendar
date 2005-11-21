@@ -62,7 +62,7 @@ function reset_language ( $new_language ) {
 function load_translation_text () {
   global $lang_file, $translations, $basedir, $PUBLIC_ACCESS_FULLNAME, $fullname;
   $translations = array ();
-  if ( strlen ( $basedir ) ) {
+  if ( ! empty ( $basedir ) ) {
     $lang_file_2 = "$basedir/$lang_file";
     if ( file_exists ( $lang_file_2 ) )
       $lang_file = $lang_file_2;
