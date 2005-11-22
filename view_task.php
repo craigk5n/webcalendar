@@ -179,9 +179,9 @@ if ( $row ) {
  $due_date = $row[13];
  $due_time = $row[14];
   if ( $hide_details ) {
-    $name = $OVERRIDE_PUBLIC_TEXT;
-    $description = $OVERRIDE_PUBLIC_TEXT;
-    if ( ! empty ( $row[11] ) ) $location = $OVERRIDE_PUBLIC_TEXT;
+    $name = translate ( $OVERRIDE_PUBLIC_TEXT );
+    $description = translate ( $OVERRIDE_PUBLIC_TEXT );
+    if ( ! empty ( $row[11] ) ) $location =  translate ( $OVERRIDE_PUBLIC_TEXT );
   } else {
     $name = $row[9];
     $description = $row[10];
@@ -272,7 +272,7 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
   }
 }
 ?>
-<h2><?php echo htmlspecialchars ( $name ); ?></h2>
+<h2><?php echo $name; ?></h2>
 <table border="0" width="100%">
 <tr><td style="vertical-align:top; font-weight:bold;" width="10%">
  <?php etranslate("Description")?>:</td><td>

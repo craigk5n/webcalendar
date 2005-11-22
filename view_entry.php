@@ -77,7 +77,7 @@ if ( empty ( $error ) ) {
     // In summary, make sure at least one event participant is in one of
     // this user's groups.
     $my_users = get_my_users ();
-    if ( is_array ( $my_users ) ) {
+    if ( is_array ( $my_users ) && count ( $my_users ) ) {
       $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
         "webcal_entry_user WHERE webcal_entry.cal_id = " .
         "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
@@ -278,9 +278,9 @@ if ( $row ) {
   $orig_date = $row[1];
   $event_time = $row[2];
   if ( $hide_details ) {
-    $name = $OVERRIDE_PUBLIC_TEXT;
-    $description = $OVERRIDE_PUBLIC_TEXT;
-    if ( ! empty ( $row[11] ) ) $location = $OVERRIDE_PUBLIC_TEXT;
+    $name = translate ( $OVERRIDE_PUBLIC_TEXT );
+    $description = translate ( $OVERRIDE_PUBLIC_TEXT );
+    if ( ! empty ( $row[11] ) ) $location = translate ( $OVERRIDE_PUBLIC_TEXT );
   } else {
     $name = $row[9];
     $description = $row[10];
@@ -388,14 +388,15 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
   }
 }
 ?>
-<h2><?php echo htmlspecialchars ( $name ); ?></h2>
+<h2><?php echo  $name ; ?></h2>
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Description")?>:</td><td>
  <?php
   if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) &&
     $ALLOW_HTML_DESCRIPTION == 'Y' ) {
-    $str = str_replace ( '&', '&amp;', $description );
+     $str = $description ;
+ //   $str = str_replace ( '&', '&amp;', $description );
     $str = str_replace ( '&amp;amp;', '&amp;', $str );
     // If there is no html found, then go ahead and replace
     // the line breaks ("\n") with the html break.
@@ -728,7 +729,7 @@ if ( empty ( $event_status ) ) {
 $can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || 
   ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
   ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
-	
+  
 if ( $can_edit && $unapproved && $readonly == 'N' ) {
   echo "<a title=\"" . 
     translate("Approve/Confirm entry") . 

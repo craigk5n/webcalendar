@@ -232,7 +232,7 @@ public-access-sees-participants-help: If enabled, users accessing the calendar f
 Public access can view participants: Public access can view participants
 public-access-override-help: Allows event names and descriptions to be hidden on the public calendar
 Override event name/description for public access: Override event name/description for public access
-public-access-override-text-help: The text to display if the above option is enabled.
+public-access-override-text-help: The text to display if the above option is enabled. If 'Not Available', it will be translated.
 Text to display to public access: Text to display to public access
 uac-enabled-help: Enables user-level access control
 User Access Control enabled: User Access Control enabled
