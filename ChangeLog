@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
- - Fixed bug 1363734 'Not available' will not be translated in admin.php
+ - Fixed bug 1365452: 'Category' - pop-up cannot be translated completely
+ - Fixed bug 1363734: 'Not available' will not be translated in admin.php
    Added logic to translate OVERRIDE_PUBLIC_TEXT if default value
  - Fixed bug 1362876: "all percentages" cannot be translated
  - Implemented PATCH 1155607: Show all days in Month with config

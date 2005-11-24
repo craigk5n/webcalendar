@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1365452: 'Category' - pop-up cannot be translated completely
       1363734 'Not available' will not be translated in admin.php
       1362876: "all percentages" cannot be translated
       1360780: register.php does not work
