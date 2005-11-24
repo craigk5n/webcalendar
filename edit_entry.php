@@ -217,7 +217,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( $login == $user || $is_assistant  || $is_admin ) {
      $cat_id[] = $row[1];
-     $cat_name[] = $row[3];    
+     $cat_name[] = $row[4];    
    }
     }
   dbi_free_result ( $res );
@@ -450,7 +450,7 @@ if ( ! empty ( $parent ) )
 <?php if ( ! empty ( $categories ) ) { ?>
      <tr><td class="tooltip" title="<?php etooltip("category-help")?>" valign="top">
       <label for="entry_categories"><?php etranslate("Category")?>:<br /></label>
-   <input type="button" value="Edit" onclick="editCats(event)" /></td><td valign="top">
+   <input type="button" value="<?php etranslate("Edit") ?>" onclick="editCats(event)" /></td><td valign="top">
       <input  readonly=""type="text" name="catnames" 
      value="<?php echo $catNames ?>"  size="30" 
     onclick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/>

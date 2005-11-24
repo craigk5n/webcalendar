@@ -430,7 +430,7 @@ if ( ! empty ( $parent ) )
 <?php if ( ! empty ( $categories ) ) { ?>
      <tr><td class="tooltip" title="<?php etooltip("category-help")?>" valign="top">
       <label for="task_categories"><?php etranslate("Category")?>:<br /></label>
-   <input type="button" value="Edit" onclick="editCats(event)" /></td><td valign="top">
+   <input type="button" value="<?php etranslate("Edit") ?>" onclick="editCats(event)" /></td><td valign="top">
       <input  readonly=""type="text" name="catnames" 
      value="<?php echo $catNames ?>"  size="50" 
     onclick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/>
