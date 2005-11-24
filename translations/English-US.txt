@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 11-21-2005
+# Translation last updated on 11-24-2005
 
 
 ###############################################
@@ -376,6 +376,22 @@ Global: Global
 Delete: Delete
 Are you sure you want to delete this entry?: Are you sure you want to delete this entry?
 Add New Category: Add New Category
+
+
+###############################################
+# Page: catsel.php
+#
+#
+# << MISSING >>
+# AVAILABLE CATEGORIES:
+#
+# << MISSING >>
+# EVENT CATEGORIES:
+Remove: Remove
+#
+# << MISSING >>
+# Global Category:
+Ok: Ok
 
 
 ###############################################
@@ -997,8 +1013,6 @@ denotes administrative user: denotes administrative user
 # Page: usersel.php
 #
 Reset: Reset
-Remove: Remove
-Ok: Ok
 
 
 ###############################################
