@@ -381,16 +381,10 @@ Add New Category: Add New Category
 ###############################################
 # Page: catsel.php
 #
-#
-# << MISSING >>
-# AVAILABLE CATEGORIES:
-#
-# << MISSING >>
-# EVENT CATEGORIES:
+AVAILABLE CATEGORIES: AVAILABLE CATEGORIES
+EVENT CATEGORIES: EVENT CATEGORIES
 Remove: Remove
-#
-# << MISSING >>
-# Global Category:
+Global Category: Global Category
 Ok: Ok
 
 
