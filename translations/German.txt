@@ -10,15 +10,17 @@
 # Last update: 7 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 9 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 11 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 18 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 11-18-2005
+# Last update: 21 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 22 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 23 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 25 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 11-25-2005
 
 
 ###############################################
 # Specify a charset (will be sent within meta tag for each page)
 #
 charset: iso-8859-1
-
 
 
 ###############################################
@@ -68,18 +70,6 @@ Close: Schlie&szlig;en
 
 
 ###############################################
-# Page: month.php
-#
-Sun: So
-Mon: Mo
-Tue: Di
-Wed: Mi
-Thu: Do
-Fri: Fr
-Sat: Sa
-
-
-###############################################
 # Page: edit_report.php
 #
 Tomorrow: Morgen
@@ -116,7 +106,7 @@ Edit Report: Bericht editieren
 Report name: Berichtsname
 Current User: aktueller Benutzer
 User: Benutzer
-Global: Global
+Global: Allgemein
 Yes: Ja
 No: Nein
 Include link in trailer: inklusive Linkverkn&uuml;pfung in der Navigationsleiste
@@ -182,7 +172,7 @@ Month (on same calendar): Monat (am gleichen Kalender)
 preview: Vorschau (Ansicht)
 Users: Benutzer
 Selected: Ausgew&auml;hlte(r)
-All: alle
+All: Jede(n)
 Select: Ausw&auml;hlen 
 Add: Hinzuf&uuml;gen
 
@@ -248,7 +238,7 @@ Due Date: F&auml;lligkeitsdatum
 Due Time: F&auml;lligkeitszeit
 Repeat Type: Art der Wiederholung
 Priority: Priorit&auml;t
-Access: Zugriff
+Access: Zugang
 Public: &Ouml;ffentlich
 Created by: erstellt von
 Public Access: &Ouml;ffentlicher Zugang
@@ -308,11 +298,11 @@ Waiting for approval: Warten auf &Uuml;berpr&uuml;fung
 Deleted: gel&ouml;scht
 Approved: best&auml;tigt
 Unknown: Unbekannt
-Click here: Klicken Sie hier
+Click here: <u>Klicken Sie hier</u>
 to manage reports for the Public Access calendar: zum verwalten der Berichte f&uuml;r den &Ouml;ffentlichen Kalender
 Add new report: Neuen Bericht hinzuf&uuml;gen
 Manage Reports: Berichte verwalten
-Admin: Admin
+Admin: Administration
 
 
 ###############################################
@@ -461,6 +451,8 @@ Month: Monat
 Year: Jahr
 display-weekends-help: Zeigt die Wochenenden in der Wochenansicht an.
 Display weekends in week view: Wochenenden in der Wochenansicht anzeigen
+display-alldays-help: Zeigt und bef&uuml;llt die Tage des vorhergehenden und folgenden Monats in der aktuellen Monatsansichten
+Display all days in month view: Anzeigen <b>aller</b> Tage in der Monatsansicht
 yearly-shows-events-help: Zeigt Tage mit Terminen in der Monats- und Jahresansicht HERVORGEHOBEN (FETT) an
 Display days with events in bold in month and year views: Zeigt Tage mit Terminen in der Monats- und Jahresansicht HERVORGEHOBEN (FETT) an
 display-desc-print-day-help: Beinhaltet in der Druckansicht die Beschreibungen der Termine in der Tagesansicht
@@ -471,8 +463,6 @@ Your current GMT offset is: Ihre jetzige GMT-Zeitverschiebung ist
 Load Timezone Data: Laden der Zeitzonendaten
 date-format-help: Legt ein spezielles Datumsformat fest.
 Date format: Datumsformat
-LANGUAGE DEFINED: SPRACHDEFINIERT
-December: Dezember
 time-format-help: Gibt an welches Zeit-Format benutzt wird - 12-st&uuml;ndiges - Zeigt Zeiten als 3am, 8.30pm, etc. 24-st&uuml;ndiges - Zeigt Zeiten als 3.00, 20.30, etc.
 Time format: Zeit-Format
 12 hour: 12-st&uuml;ndig
@@ -623,7 +613,8 @@ Events removed from my calendar: Termine, die von meinem Kalender ENTFERNT wurde
 email-event-rejected: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Benutzer die Teilnahme an einem Termin ABGELEHNT hat.
 Event rejected by participant: Termine, die von ANDEREN Benutzern ENTFERNT wurden
 Allow user to customize colors: Den Benutzern das &auml;ndern der Farbeinstellungen erlauben
-Enable gradient images for background colors: Aktiviern der stufenweisen Farb&auml;nderung f&uuml;r Hintergrundfarben
+gradient-colors: Falls aktiviert, stufenweiser Farbverlauf (Farb&auml;nderung) m&ouml;glich. Das kann gro&szlig;e negative Auswirkung auf die Leistung haben.
+Enable gradient images for background colors: Aktiviern des stufenweisen Farbverlaufes (Farb&auml;nderung) f&uuml;r Hintergrundfarben
 Not available: Nicht verf&uuml;gbar
 Document background: Hintergrund
 Document title: Titel
@@ -633,7 +624,9 @@ Table header background: Hintergrund Tabellen-Kopfzeile
 Table header text: Textfarbe Tabellen-Kopfzeile
 Table cell background: Tabellen-Hintergrund
 Table cell background for current day: Tabellen-Hintergrund f&uuml;r "Heute"
+Table cell background for days with events: Tabellen-Hintergrund f&uuml;r Tage mit Terminen
 Table cell background for weekends: Hintergrundfarbe f&uuml;r Wochenenden
+Table cell background for other month: Tabellen-Hintergrund f&uuml;r anderen Monat
 Event popup background: Hintergrundfarbe Termin-PopUp
 Event popup text: Textfarbe Termin-PopUp
 
@@ -709,7 +702,7 @@ DEFAULT CONFIGURATION: GRUNDKONFIGURATION
 #
 Continue: Weiter
 (Your comments will be included in an email to the other participants): (Ihre Kommentare werden im Email zum anderen Teilnehmer beigef&uuml;gt)
-An appointment has been rejected by: Eine Verabredung wurde zur&uuml;ckgewiesen von
+An appointment has been rejected by: Eine Verabredung wurde zur&uumlckgewiesen von
 
 
 ###############################################
@@ -823,7 +816,7 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 The following conflicts with the suggested time: Folgende Konflikte mit der vorgeschlagenen Zeit
 Unnamed Event: unbenannter Termin
 A new appointment has been made for you by: Es wurde Ihnen eine neue Verabredung eingetragen von -->
-An appointment has been updated by: Eine Verabredung wurde ge&auml;ndert von
+An appointment has been updated by: Eine Verabredung wurde ge&uuml;ndert von
 The subject is: Die Beschreibung lautet 
 Please look on: Bitte konsultieren Sie Ihren
 to accept or reject this appointment: um die Verabredung zu best&auml;tigen/abzulehnen.
@@ -841,7 +834,7 @@ Edit User: Benutzer &auml;ndern
 Add User: Benutzer hinzuf&uuml;gen
 First Name: Vorname
 Last Name: Nachname
-Is public calendar: Ist der &Ouml;ffentliche Kalender
+Is public calendar: Als &Ouml;ffentlichen Kalender freigeben
 
 
 ###############################################
@@ -889,6 +882,7 @@ Details: Details
 Repeat: Wiederholung
 percent-help: Aufgabenbeendigungsprozentsatz f&uuml;r diesen Benutzer
 Percent Complete: Prozent erledigt
+All Percentages: <u><b>Erf&uuml;llungsgrad der Aufgabe (%)</b></u>
 location-help: Ort des Termines
 Completed Date: Datumsende der Aufgabe
 am: Vormittag
@@ -1101,6 +1095,14 @@ Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
 
 
 ###############################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: VERF&Uuml;GBARE KATEGORIEN
+EVENT CATEGORIES: TERMINKATEGORIEN
+Global Category: Allg. Kategorien
+
+
+###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Gehe zu
@@ -1124,9 +1126,16 @@ Title: Titel
 __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
 __month__ __dd__: __dd__. __month__
+Sun: So
+Mon: Mo
+Tue: Di
+Wed: Mi
+Thu: Do
+Fri: Fr
+Sat: Sa
 TASKS: AUFGABE
 Task_Title: Aufgabentitel
-Due: Abgabe
+Due: F&auml;lligkeit
 Task Name: Aufgabenname
 Task Due Date: Abgabefrist
 __mm__/__dd__/__yyyy__: __dd__. __mm__. __yyyy__
@@ -1147,6 +1156,7 @@ August: August
 September: September
 October: Oktober
 November: November
+December: Dezember
 Jan: Jan
 Feb: Feb
 Mar: M&auml;r
@@ -1167,6 +1177,12 @@ Saturday: Samstag
 All Attendees: Alle Teilnehmer
 Busy: Besch&auml;ftigt
 Tentative: Vorl&auml;ufig
+
+
+###############################################
+# Page: includes/date_formats.php
+#
+LANGUAGE DEFINED: SPRACHDEFINIERT
 
 
 ###############################################
