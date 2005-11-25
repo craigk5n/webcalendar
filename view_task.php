@@ -1,6 +1,6 @@
 <?php
 /*
- * $Id: 
+ * $Id: view_task.php
  *
  * Description:
  * Presents page to view a task with links to edit, delete
@@ -261,14 +261,21 @@ else
 
 // Get category Info
 if ( $CATEGORIES_ENABLED == "Y" ) {
-  $sql = "SELECT cat_name FROM webcal_categories, webcal_entry_user " .
-    "WHERE webcal_entry_user.cal_login = '$login' AND webcal_entry_user.cal_id = $id " .
-    "AND webcal_entry_user.cal_category = webcal_categories.cat_id";
+  $categories = array();
+  $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
+    $is_admin ) ) ? $user : $login;  
+  $sql = "SELECT cat_name FROM webcal_categories, webcal_entry_categories " .
+    "WHERE ( webcal_entry_categories.cat_owner = '$cat_owner' OR " .
+  "webcal_entry_categories.cat_owner IS NULL) AND webcal_entry_categories.cal_id = $id " .
+    "AND webcal_entry_categories.cat_id = webcal_categories.cat_id " .
+  "ORDER BY webcal_entry_categories.cat_order";
   $res2 = dbi_query ( $sql );
   if ( $res2 ) {
-    $row2 = dbi_fetch_row ( $res2 );
-    $category = $row2[0];
+    while ($row2 = dbi_fetch_row ( $res2 )) { 
+      $categories[] = $row2[0];
+  }
     dbi_free_result ( $res2 );
+  $category = implode ( ", ", $categories);
   }
 }
 ?>

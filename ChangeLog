@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1365541: categories for tasks will not be saved
  - Fixed bug 1365452: 'Category' - pop-up cannot be translated completely
  - Fixed bug 1363734: 'Not available' will not be translated in admin.php
    Added logic to translate OVERRIDE_PUBLIC_TEXT if default value
