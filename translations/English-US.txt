@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 11-24-2005
+# Translation last updated on 11-25-2005
 
 
 ###############################################
@@ -381,8 +381,9 @@ Add New Category: Add New Category
 ###############################################
 # Page: catsel.php
 #
-AVAILABLE CATEGORIES: AVAILABLE CATEGORIES
+TASK CATEGORIES: TASK CATEGORIES
 EVENT CATEGORIES: EVENT CATEGORIES
+AVAILABLE CATEGORIES: AVAILABLE CATEGORIES
 Remove: Remove
 Global Category: Global Category
 Ok: Ok

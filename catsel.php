@@ -11,6 +11,12 @@ if ( $CATEGORIES_ENABLED == "N" ) {
   exit;
 }
 
+$form = getGetValue ( 'form' );
+if ( ! empty ( $form ) && $form == 'edittaskform' ) {
+  $header_text = translate("TASK CATEGORIES");
+} else { 
+  $header_text = translate("EVENT CATEGORIES");
+}
 $catNames = implode("," , $categories);
 $catList = implode(",", array_keys($categories) );
 $eventcats = explode("," , $cats);
@@ -40,7 +46,7 @@ print_header($INC,'','',true, false, true);
   }
  echo "<td valign=\"center\"><input type=\"button\" value=\"  >  \" onclick=\"selAdd()\" /></td>";
   echo "<td align=\"center\" valign=\"top\">\n<select name=\"eventcats[]\" size=\"9\" multiple>\n" . 
-    "<option disabled>" . translate("EVENT CATEGORIES") . "</option>\n";
+    "<option disabled>" . $header_text . "</option>\n";
   if ( ! empty ( $cats ) ) {
   foreach ( $eventcats as $K) {  
    //disable if not creator and category is Global

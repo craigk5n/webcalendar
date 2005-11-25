@@ -280,7 +280,7 @@ if ( $duration == ( 24 * 60 ) ) {
   $allday = "N";
 if ( empty ( $name ) )
   $name = "";
-if ( empty ( $description ) )
+if ( empty ( $description ) || $description == "<br />" )
   $description = "";
 if ( empty ( $location ) )
   $location = "";
@@ -412,7 +412,8 @@ if ( ! empty ( $parent ) )
        <label for="task_access"><?php etranslate("Access")?>:</label></td><td>
        <select name="access" id="task_access">
         <option value="P"<?php if ( $access == "P" || ! strlen ( $access ) ) echo " selected=\"selected\"";?>><?php etranslate("Public")?></option>
-        <option value="R"<?php if ( $access == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Confidential")?></option>
+        <option value="R"<?php if ( $access == "R" ) echo " selected=\"selected\"";?>><?php etranslate("Private")?></option>
+        <option value="C"<?php if ( $access == "C" ) echo " selected=\"selected\"";?>><?php etranslate("Confidential")?></option>        
        </select>
        </td></tr>
 <?php } ?>
@@ -432,7 +433,7 @@ if ( ! empty ( $parent ) )
       <label for="task_categories"><?php etranslate("Category")?>:<br /></label>
    <input type="button" value="<?php etranslate("Edit") ?>" onclick="editCats(event)" /></td><td valign="top">
       <input  readonly=""type="text" name="catnames" 
-     value="<?php echo $catNames ?>"  size="50" 
+     value="<?php echo $catNames ?>"  size="30" 
     onclick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/>
    <input  type="hidden" name="cat_id" id="task_categories" value="<?php echo $catList ?>" />
      </td></tr>
