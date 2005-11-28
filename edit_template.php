@@ -41,8 +41,7 @@ if ( empty ( $REQUEST_METHOD ) )
 
 // Handle form submission
 if ( $REQUEST_METHOD == 'POST' ) {
-  //$template = getPostValue ( "template" );
-  $template = $_POST['template'];
+  $template = getPostValue ( "template" );
   //echo "Template: " .  $template  . "<br />\n"; exit;
   if ( $found ) {
     $sql = "UPDATE webcal_report_template " .

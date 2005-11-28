@@ -1012,19 +1012,29 @@ function transmit_header ( $mime, $file ) {
 /*** Let's go ***/
 /*******************************************/
 
-$id = getPostValue  ( 'id' );
-$format = getPostValue  ( 'format' );
+$id = getIntValue  ( 'id', true );
+$format = getValue  ( 'format' );
+if ( $format != 'ical' && $format != 'vcal' && $format != 'pilot-csv' &&
+  $format != 'pilot-text' )
+  die_miserable_death ( "Invalid format '" . $format . "'" );
+
 $use_all_dates = getPostValue  ( 'use_all_dates' );
+if ( $use_all_dates != 'y' )
+  $use_all_dates = '';
+
 $include_layers = getPostValue  ( 'include_layers' );
-$fromyear = getPostValue  ( 'fromyear' );
-$frommonth = getPostValue  ( 'frommonth' );
-$fromday = getPostValue  ( 'fromday' );
-$endyear = getPostValue  ( 'endyear' );
-$endmonth = getPostValue  ( 'endmonth' );
-$endday = getPostValue  ( 'endday' );
-$modyear = getPostValue  ( 'modyear' );
-$modmonth = getPostValue  ( 'modmonth' );
-$modday = getPostValue  ( 'modday' );
+if ( $include_layers != 'y' )
+ $include_layers = '';
+
+$fromyear = getIntValue  ( 'fromyear', true );
+$frommonth = getIntValue  ( 'frommonth', true );
+$fromday = getIntValue  ( 'fromday', true );
+$endyear = getIntValue  ( 'endyear', true );
+$endmonth = getIntValue  ( 'endmonth', true );
+$endday = getIntValue  ( 'endday', true );
+$modyear = getIntValue  ( 'modyear', true );
+$modmonth = getIntValue  ( 'modmonth', true );
+$modday = getIntValue  ( 'modday', true );
 
 mt_srand((float) microtime()*1000000);
 
