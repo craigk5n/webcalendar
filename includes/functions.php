@@ -1581,7 +1581,7 @@ function print_entry ( $event, $date ) {
     echo "&amp;user=" . $user;
   echo "\">";
 
-    $icon =  $cal_type . ".gif";
+  $icon =  $cal_type . ".gif";
   $catIcon = '';
   if ( $event->getCategory() > 0 ) {
     $catIcon = "icons/cat-" . $event->getCategory() . ".gif";
