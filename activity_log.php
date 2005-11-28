@@ -21,6 +21,7 @@ $sql = "SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, " .
   "webcal_entry.cal_name, webcal_entry_log.cal_log_id " .
   "FROM webcal_entry_log, webcal_entry " .
   "WHERE webcal_entry_log.cal_entry_id = webcal_entry.cal_id ";
+$startid = getIntValue ( 'startid', true );
 if ( ! empty ( $startid ) )
   $sql .= "AND webcal_entry_log.cal_log_id <= $startid ";
 $sql .= "ORDER BY webcal_entry_log.cal_log_id DESC";
