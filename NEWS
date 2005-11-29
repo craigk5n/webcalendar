@@ -110,6 +110,8 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
+    - Fixed vulnerablity: SQL injection possible in edit_template.php,
+      activity_log.php, admin_handler.php, pref_handler.php, export_handler.php
     - Corrected content type in publish.php and freebusy.php
     - Applied PATCH 1297654: eliminate deprecated tags, excluding <b></b>
     - Applied PATCH 1349875: Fix for WebCalendar.class

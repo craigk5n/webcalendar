@@ -78,8 +78,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
     echo "<html><body onload=\"window.close()\"></body></html>\n";
     exit;
   }
-  //$template = getPostValue ( "template" );
-  $template = $_POST['template'];
+  $template = getPostValue ( "template" );
   //echo "Template: " .  $template  . "<br />\n"; exit;
   if ( $found ) {
     $sql = "UPDATE webcal_user_template " .
