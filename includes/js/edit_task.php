@@ -248,9 +248,9 @@ function showSchedule () {
   }
   var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=no';
   var url = 'availability.php?users=' + users + 
-           '&year='  + myForm.year.value + 
-           '&month=' + myForm.month.value + 
-           '&day='   + myForm.day.options[myForm.day.selectedIndex].text;
+           '&year='  + myForm.start_year.value + 
+           '&month=' + myForm.start_month.value + 
+           '&day='   + myForm.start_day.options[myForm.start_day.selectedIndex].text;
 
   if (sch_win != null && !sch_win.closed) {
      h = h + 30;
