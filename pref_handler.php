@@ -16,6 +16,14 @@ if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
 while ( list ( $key, $value ) = each ( $HTTP_POST_VARS ) ) {
   $setting = substr ( $key, 5 );
   $prefix = substr ( $key, 0, 5 );
+  if ( $key == 'user' )
+    continue;
+  // validate key name.  should start with "pref_" and not include
+  // any unusual characters that might cause SQL injection
+  if ( ! preg_match ( '/pref_[A-Za-z0-9_]+$/', $key ) ) {
+    die_miserable_death ( 'Invalid admin setting name "' .
+      $key . '"' );
+  }
   //echo "Setting = $setting, key = $key, prefix = $prefix <br />\n";
   if ( strlen ( $setting ) > 0 && $prefix == "pref_" ) {
     $sql =
