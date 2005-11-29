@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1365435: "Availability...." has no action by clicking the button (tasks)
  - Fixed bug 1368088: viewing tasks depends on their belonging selected categories
  - Fixed bug 1365541: categories for tasks will not be saved
  - Fixed bug 1365452: 'Category' - pop-up cannot be translated completely
