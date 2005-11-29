@@ -110,7 +110,7 @@ if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y" && $friendly !=1 ) {
 </td></tr><tr><td valign="bottom">
 
 <?php 
-    echo display_small_tasks ();
+    echo display_small_tasks ( $cat_id );
 ?>
 
 </td></tr></table>

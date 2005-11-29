@@ -112,7 +112,7 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 <?php 
 if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y" ) {
   echo "<tr><td valign=\"bottom\">";
-  echo display_small_tasks ();
+  echo display_small_tasks ( $cat_id );
  echo "</td></tr>";
  }
 ?>

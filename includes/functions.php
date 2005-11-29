@@ -1260,7 +1260,10 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       //change class if date is not in this month
       if ( date ( "Ymd", $date ) < date ( "Ymd", $monthstart ) ||
         date ( "Ymd", $date ) > date ( "Ymd", $monthend ) ) {
-        $class = "othermonth";
+        if ( strlen ( $class ) ) {
+          $class .= " ";
+        }
+        $class .= "othermonth";
       }
       if ( strlen ( $class ) )  {
       echo " class=\"$class\"";
@@ -1475,7 +1478,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
  * Prints small task list for this $login user
  *
  */
-function display_small_tasks () {
+function display_small_tasks ( $cat_id ) {
  global $user, $login, $is_assistant;
 
   if ( ! empty ( $user ) && $user != $login  && ! $is_assistant ) {
@@ -1492,7 +1495,6 @@ function display_small_tasks () {
   }
  
   $filter = "";
-  $cat_id = "";
   $task_list = query_events ( $task_user, false, $filter, $cat_id, true  );
   $row_cnt = 1;
   $task_html= "<table class=\"minitask\" cellspacing=\"0\" cellpadding=\"2\">\n";
@@ -2630,6 +2632,7 @@ function get_byday ( $byday, $cdate, $type ='month' ) {
  */
 function get_bymonthday ( $bymonthday, $cdate, $date, $realend ) {
  if ( empty ( $bymonthday ) ) return;
+  $ret =array();
   $yr = date ("Y", $cdate);
   $mth = date ("m", $cdate);
   $hour = date ("H", $cdate);
