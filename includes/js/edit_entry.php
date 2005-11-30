@@ -406,6 +406,7 @@ function showSchedule () {
   }
   var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=no';
   var url = 'availability.php?users=' + users + 
+           '&form='  + 'editentryform' +     
            '&year='  + myForm.year.value + 
            '&month=' + myForm.month.value + 
            '&day='   + myForm.day.options[myForm.day.selectedIndex].text;

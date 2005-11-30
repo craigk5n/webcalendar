@@ -113,8 +113,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
  
     $cal_date = date ( "Ymd",$adjusted_start );
     $cal_time = date (  "His", $adjusted_start );
-    $cal_hour = floor($cal_time / 10000);
-    $cal_minute = ( $cal_time / 100 ) % 100;
+    $hour = floor($cal_time / 10000);
+    $minute = ( $cal_time / 100 ) % 100;
   
     $due_date = date ( "Ymd",$adjusted_due );
     $due_time = date (  "His", $adjusted_due );
@@ -199,29 +199,25 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   //get user's categories 
     $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
       $is_admin ) ) ? $user : $login;
-    $sql = "SELECT  DISTINCT cal_login, webcal_entry_categories.cat_id, " .
-    " webcal_entry_categories.cat_owner, cat_name " .
-    " FROM webcal_entry_user, webcal_entry_categories, webcal_categories " .
-      " WHERE ( webcal_entry_user.cal_id = webcal_entry_categories.cal_id AND " .
-      " webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
-   " webcal_entry_user.cal_id = $id ) AND " . 
+  $sql = "SELECT  webcal_entry_categories.cat_id, " .
+    " webcal_entry_categories.cat_owner, webcal_entry_categories.cat_order, cat_name " .
+    " FROM webcal_entry_categories, webcal_categories " .
+    " WHERE ( webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
+    " webcal_entry_categories.cal_id = $id ) AND " . 
       " webcal_categories.cat_owner = '" . $cat_owner . "'".
    " ORDER BY webcal_entry_categories.cat_order";
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( $login == $user || $is_assistant  || $is_admin ) {
-     $cat_id[] = $row[1];
+      if ( empty ( $user ) || $login == $user || $is_assistant  || $is_admin ) {
+        $cat_id[] = $row[0];
      $cat_name[] = $row[3];    
    }
     }
-
+  dbi_free_result ( $res );
   if ( ! empty ( $cat_name ) ) $catNames = implode("," , array_unique($cat_name));
     if ( ! empty ( $cat_id ) ) $catList = implode(",", array_unique($cat_id));
-
-    dbi_free_result ( $res );
  }
- 
    //get participants
   $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id AND " .
     " cal_status IN ('A', 'W' )";
@@ -242,8 +238,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
  //We'll use $WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR
  // As our starting and due times
  $cal_time = $WORK_DAY_START_HOUR . "0000";
-         $cal_hour = $WORK_DAY_START_HOUR;
- $cal_minute = 0;
+         $hour = $WORK_DAY_START_HOUR;
+ $minute = 0;
  $due_time = $WORK_DAY_END_HOUR . "0000";
  $due_hour = $WORK_DAY_END_HOUR;
  $due_minute = 0;
@@ -486,13 +482,13 @@ if ( ! empty ( $parent ) )
   <tr><td class="tooltip" title="<?php etooltip("date-help")?>">
    <?php etranslate("Start Date")?>:</td><td colspan="2">
    <?php
-    print_date_selection ( "start_", $cal_date );
+    print_date_selection ( "", $cal_date );
    ?>
   </td></tr>
   <tr><td class="tooltip" title="<?php etooltip("time-help")?>">
    <?php echo translate("Start Time") . ":"; ?></td><td colspan="2">
 <?php
-$h12 = $cal_hour;
+$h12 = $hour;
 $amsel = " checked=\"checked\""; $pmsel = "";
 if ( $TIME_FORMAT == "12" ) {
   if ( $h12 < 12 ) {
@@ -505,10 +501,10 @@ if ( $TIME_FORMAT == "12" ) {
 }
 if ( $cal_time < 0 ) $h12 = "";
 ?>
-   <input type="text" name="cal_hour" size="2" value="<?php 
+   <input type="text" name="hour" size="2" value="<?php 
     if ( $cal_time >= 0 ) echo $h12;
-   ?>" maxlength="2" />:<input type="text" name="cal_minute" size="2" value="<?php 
-    if ( $cal_time >= 0 ) printf ( "%02d", $cal_minute );
+   ?>" maxlength="2" />:<input type="text" name="minute" size="2" value="<?php 
+    if ( $cal_time >= 0 ) printf ( "%02d", $minute );
    ?>" maxlength="2" />
 <?php
 if ( $TIME_FORMAT == "12" ) {
@@ -737,7 +733,7 @@ if ( $single_user == "N" && $show_participants ) {
     echo "<input type=\"button\" onclick=\"selectUsers()\" value=\"" .
       translate("Select") . "...\" />\n";
   }
-  echo "<input type=\"button\" onclick=\"showSchedule()\" value=\"" .
+  echo "<input type=\"button\" onclick=\"showSchedule( this.form)\" value=\"" .
     translate("Availability") . "...\" />\n";
   print "</td></tr>\n";
 

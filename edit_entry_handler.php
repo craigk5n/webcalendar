@@ -22,6 +22,7 @@ $old_id = ( ! empty ( $parent ) ? $parent : $old_id );
 $name = getPostValue ( 'name' );
 $description = getPostValue ( 'description' );
 $cat_id = getPostValue ( 'cat_id' );
+
 // Ensure all time variables are not empty
 if ( empty ( $ampm ) ) $ampm = 'pm';
 if ( empty ( $hour ) ) $hour = 0;
@@ -488,7 +489,6 @@ if ( empty ( $error ) ) {
 
   // now add participants and send out notifications
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
-    $my_cat_id = "";
     // Is the person adding the nonuser calendar admin
     $is_nonuser_admin = user_is_nonuser_admin ( $login, $participants[$i] );
 
@@ -502,7 +502,6 @@ if ( empty ( $error ) ) {
         // Approval required
         $status = "W"; // approval required
       }
-      $my_cat_id = $cat_id;
     } else if ( ! $newevent ) {
       // keep the old status if no email will be sent
       $send_user_mail = ( empty ( $old_status[$participants[$i]] ) ||
@@ -513,11 +512,6 @@ if ( empty ( $error ) ) {
         boss_must_approve_event ( $login, $participants[$i] ) && 
         $REQUIRE_APPROVALS == "Y" && ! $is_nonuser_admin ) ?
         $tmp_status : "A";
-      $tmp_cat = ( $participants[$i] == $user ) ? $cat_id : '';
-      // Allow cat to be changed for public access (if admin user)
-      if ( $participants[$i] == "__public__" && $is_admin ) {
-        $tmp_cat = $cat_id;
-      }
 
       // If user is admin and this event was previously approved for public,
       // keep it as approved even though date/time may have changed
@@ -527,7 +521,6 @@ if ( empty ( $error ) ) {
         ( empty ( $old_status['__public__'] ) || $old_status['__public__'] == 'A' ) ) {
         $status = 'A';
       }
-      $my_cat_id = ( $participants[$i] != $login ) ? $tmp_cat : $cat_id;
     } else {  // New Event
       $send_user_mail = true;
       $status = ( $participants[$i] != $login && 
@@ -537,11 +530,6 @@ if ( empty ( $error ) ) {
       // If admin, no need to approve Public Access Events
       if ( $participants[$i] == "__public__" && $is_admin ) {
         $status = "A";
-      }
-      if ( $participants[$i] == $login ) {
-        $my_cat_id = $cat_id;
-      } else {
-        $my_cat_id = 'NULL';
       }
     } //end new/old event
   
@@ -761,7 +749,7 @@ if ( $single_user == "N" &&
    $is_admin ) ) ? $user : $login;
  dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
     "AND ( cat_owner = '$cat_owner' OR cat_owner IS NULL )" );
- $categories = explode (",", $my_cat_id );
+ $categories = explode (",", $cat_id );
  sort ( $categories);
  for ( $i =0; $i < count( $categories ); $i++ ) {
    $names = array();

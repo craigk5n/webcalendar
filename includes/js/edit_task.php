@@ -16,11 +16,11 @@ function validate_and_submit () {
     return false;
   }
   // Leading zeros seem to confuse parseInt()
-  if ( document.edittaskform.cal_hour.value.charAt ( 0 ) == '0' )
-    document.edittaskform.cal_hour.value = document.edittaskform.cal_hour.value.substring ( 1, 2 );
+  if ( document.edittaskform.hour.value.charAt ( 0 ) == '0' )
+    document.edittaskform.hour.value = document.edittaskform.hour.value.substring ( 1, 2 );
   if ( 1 ) {
-    h = parseInt ( document.edittaskform.cal_hour.value );
-    m = parseInt ( document.edittaskform.cal_minute.value );
+    h = parseInt ( document.edittaskform.hour.value );
+    m = parseInt ( document.edittaskform.minute.value );
 <?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
     if ( document.edittaskform.ampm[1].checked ) {
       // pm
@@ -39,8 +39,8 @@ function validate_and_submit () {
         showTab ( "details" );
 <?php } ?>
       alert ( "<?php etranslate ("You have not entered a valid time of day", true)?>." );
-      document.edittaskform.cal_hour.select ();
-      document.edittaskform.cal_hour.focus ();
+      document.edittaskform.hour.select ();
+      document.edittaskform.hour.focus ();
       return false;
     }
     if ( m > 59 || m < 0 ) {
@@ -50,8 +50,8 @@ function validate_and_submit () {
         showTab ( "details" );
 <?php } ?>
       alert ( "<?php etranslate ("You have not entered a valid time of day", true)?>." );
-      document.edittaskform.cal_minute.select ();
-      document.edittaskform.cal_minute.focus ();
+      document.edittaskform.minute.select ();
+      document.edittaskform.minute.focus ();
       return false;
     }
     // Ask for confirmation for time of day if it is before the user's
@@ -101,16 +101,16 @@ function validate_and_submit () {
  if (typeof editor != "undefined") editor._textArea.value = editor.getHTML();
 
  //Check if Event start date is valid
- var d = document.edittaskform.start_day.selectedIndex;
-  var vald = document.edittaskform.start_day.options[d].value;
-  var m = document.edittaskform.start_month.selectedIndex;
-  var valm = document.edittaskform.start_month.options[m].value;
-  var y = document.edittaskform.start_year.selectedIndex;
-  var valy = document.edittaskform.start_year.options[y].value;
+ var d = document.edittaskform.day.selectedIndex;
+  var vald = document.edittaskform.day.options[d].value;
+  var m = document.edittaskform.month.selectedIndex;
+  var valm = document.edittaskform.month.options[m].value;
+  var y = document.edittaskform.year.selectedIndex;
+  var valy = document.edittaskform.year.options[y].value;
   var c = new Date(valy,valm -1,vald);
  if ( c.getDate() != vald ) {
    alert ("<?php etranslate ("Invalid Event Date", true)?>.");
-  document.edittaskform.start_day.focus ();
+  document.edittaskform.day.focus ();
    return false;
  }
 
@@ -248,9 +248,10 @@ function showSchedule () {
   }
   var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=no';
   var url = 'availability.php?users=' + users + 
-           '&year='  + myForm.start_year.value + 
-           '&month=' + myForm.start_month.value + 
-           '&day='   + myForm.start_day.options[myForm.start_day.selectedIndex].text;
+           '&form='  + 'edittaskform' +
+           '&year='  + myForm.year.value + 
+           '&month=' + myForm.month.value + 
+           '&day='   + myForm.day.options[myForm.day.selectedIndex].text;
 
   if (sch_win != null && !sch_win.closed) {
      h = h + 30;

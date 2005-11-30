@@ -43,22 +43,30 @@ function selAdd(btn){
  if ( document.forms[0].elements[i].name == "eventcats[]" )
       eventid = i;
   }
+	var evlist = document.forms[0].elements[eventid]; 
+  var isUnique = true;
    with (document.forms[0])
    {
       with (document.forms[0].elements[catid])
       {
          for (i = 0; i < length; i++) {
-            doIt = false;
                if(options[i].selected) {
                  with (options[i]) {
-                  document.forms[0].elements[eventid].options[document.forms[0].elements[eventid].length]  = new Option( text, value );
-             options[i].selected = false;
-              } //end with options
+								  
+								  for ( j=0; j < evlist.length;j++ ) {
+									  if (evlist.options[j].value == value )
+										  isUnique = false;
+									}
+									if ( isUnique)
+                    evlist.options[evlist.length]  = new Option( text, value );	
+                  options[i].selected = false;
+                } //end with options
                }
          } // end for loop
       } // end with islist1
    } // end with document
 }
+
 function selRemove(btn){
  // find id of event cat object
   var eventid = 0;

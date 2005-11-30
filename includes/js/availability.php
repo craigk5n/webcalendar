@@ -6,7 +6,7 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
 if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     die ( "You can't access this file directly!" );
 }
-global $month, $day, $year;
+global $month, $day, $year, $parent_form;
 ?>
 
 <script type="text/javascript">
@@ -36,18 +36,20 @@ function makeVisible ( name ) {
 }
 
 function schedule_event(hours, minutes) {
-  var year =<?php echo $year ?> ;
-  var month =<?php echo $month ?> ;
-  var day =<?php echo $day ?> ;
+  var year =<?php echo $year ?>;
+  var month =<?php echo $month ?>;
+  var day =<?php echo $day ?>;
   if (confirm("<?php etranslate("Change the date and time of this entry?", true)?>")) {
-    var parentForm = window.opener.document.editentryform;
-    parentForm.timetype.selectedIndex = 1;
-    //Make time controls visible on parent
-    makeVisible ( "timeentrystart" );
-    if ( parentForm.duration_h ) {
-      makeVisible ( "timeentryduration" );
-    } else {
-      makeVisible ( "timeentryend" );
+    var parentForm = window.opener.document.forms['<?php echo $parent_form ?>'];
+    if ( '<?php echo $parent_form ?>' == 'editentryform') {
+      parentForm.timetype.selectedIndex = 1;
+      //Make time controls visible on parent
+      makeVisible ( "timeentrystart" );
+      if ( parentForm.duration_h ) {
+        makeVisible ( "timeentryduration" );
+      } else {
+        makeVisible ( "timeentryend" );
+      }
     }
     if ( hours >  12 ) {
       parentForm.hour.value = hours - 12;
@@ -64,7 +66,8 @@ function schedule_event(hours, minutes) {
         }
       }
     }
-    parentForm.minute.value = minutes;
+		if 	( minutes <= 9 ) minutes = '0' + minutes;	
+    parentForm.minute.value=minutes;		
     parentForm.day.selectedIndex = day - 1;
     parentForm.month.selectedIndex = month - 1;
     for ( i = 0; i < parentForm.year.length; i++ ) {

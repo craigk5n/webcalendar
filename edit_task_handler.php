@@ -32,22 +32,22 @@ if ( empty ( $percent ) ) $percent = 0;
   // Convert to 24 hour before subtracting tz_offset so am/pm isn't confused.
   // Note this obsoltes any code in the file below that deals with am/pm
   // so the code can be deleted
-  if ( $TIME_FORMAT == '12' && $cal_hour < 12 ) {
+  if ( $TIME_FORMAT == '12' && $hour < 12 ) {
     if ( $ampm == 'pm' )
-     $cal_hour += 12;
-  } elseif ($TIME_FORMAT == '12' && $cal_hour == '12' && $ampm == 'am' ) {
-    $cal_hour = 0;
+     $hour += 12;
+  } elseif ($TIME_FORMAT == '12' && $hour == '12' && $ampm == 'am' ) {
+    $hour = 0;
   }
-  if ( $cal_hour > 0  &&  $TIME_FORMAT == '12' ) {
+  if ( $hour > 0  &&  $TIME_FORMAT == '12' ) {
     $ampmt = $ampm;
     //This way, a user can pick am and still
     //enter a 24 hour clock time.
-    if ($cal_hour > 12 && $ampm == 'am') {
+    if ($hour > 12 && $ampm == 'am') {
       $ampmt = 'pm';
     }
-    $cal_hour %= 12;
+    $hour %= 12;
     if ( $ampmt == 'pm' ) {
-      $cal_hour += 12;
+      $hour += 12;
     }
   }
   if ( $TIME_FORMAT == '12' && $due_hour < 12 ) {
@@ -84,7 +84,7 @@ $TIME_FORMAT=24;
 
 
 // Combine all values to create event start date/time - User Time
-$eventstart = mktime ( $cal_hour, $cal_minute, 0, $start_month, $start_day, $start_year );
+$eventstart = mktime ( $hour, $minute, 0, $month, $day, $year );
 
 // Combine all values to create event due date/time - User Time
 $eventdue = mktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
@@ -353,7 +353,6 @@ if ( empty ( $error ) ) {
   }
   // now add participants and send out notifications
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
-    $my_cat_id = "";
     $my_percent = 0;
      if ( ! $newevent ) {
       // keep the old status if no email will be sent
@@ -365,22 +364,14 @@ if ( empty ( $error ) ) {
         boss_must_approve_event ( $login, $participants[$i] ) && 
          $REQUIRE_APPROVALS == "Y"  ) ?
         $tmp_status : "A";
-      $tmp_cat = ( $participants[$i] == $user ) ? $cat_id : '';
       $tmp_percent = ( ! empty ( $old_percent[$participants[$i]]) ) ?
         $old_percent[$participants[$i]] : 0;
-      $my_cat_id = ( $participants[$i] != $login ) ? $tmp_cat : $cat_id;
       $my_percent = ( $participants[$i] != $login ) ? $tmp_percent : $percent;
     } else {  // New Event
       $send_user_mail = true;
       $status = ( $participants[$i] != $login && 
         boss_must_approve_event ( $login, $participants[$i] ) && 
         $REQUIRE_APPROVALS == "Y"  ) ? "W" : "A";
-
-      if ( $participants[$i] == $login ) {
-        $my_cat_id = $cat_id;
-      } else {
-          $my_cat_id = 'NULL';
-      }
     } //end new/old event
   
     // Some users report that they get an error on duplicate keys
@@ -388,7 +379,6 @@ if ( empty ( $error ) ) {
     // existing entry with the id.  Ignore the result.
     dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_id = $id " .
       "AND cal_login = '$participants[$i]'" );
-    if ( empty ( $my_cat_id ) ) $my_cat_id = 'NULL';
     $sql = "INSERT INTO webcal_entry_user " .
       "( cal_id, cal_login, cal_status, cal_percent ) VALUES ( $id, '" .
       $participants[$i] . "', '$status', $my_percent )";
@@ -476,7 +466,7 @@ if ( empty ( $error ) ) {
    $is_admin ) ) ? $user : $login;
  dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
     "AND ( cat_owner = '$cat_owner' OR cat_owner IS NULL )" );
- $categories = explode (",", $my_cat_id );
+ $categories = explode (",", $cat_id );
  sort ( $categories);
  for ( $i =0; $i < count( $categories ); $i++ ) {
    $names = array();

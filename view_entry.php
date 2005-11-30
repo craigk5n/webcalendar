@@ -768,7 +768,7 @@ if ( empty ( $user ) && $CATEGORIES_ENABLED == "Y" &&
   ! $is_nonuser && $event_status != "D" && ! $can_edit )  {
   echo "<a title=\"" . 
     translate("Set category") . "\" class=\"nav\" " .
-    "href=\"set_entry_cat.php?id=$id$rdate\">" .
+    "href=\"set_entry_cat.php?id=$id$rdate&amp;type=E\">" .
     translate("Set category") . "</a><br />\n";
 }
 
