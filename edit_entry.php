@@ -204,21 +204,20 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   //get user's categories 
   $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
     $is_admin ) ) ? $user : $login;
-  $sql = "SELECT  DISTINCT cal_login, webcal_entry_categories.cat_id, " .
+  $sql = "SELECT  webcal_entry_categories.cat_id, " .
     " webcal_entry_categories.cat_owner, webcal_entry_categories.cat_order, cat_name " .
-    " FROM webcal_entry_user, webcal_entry_categories, webcal_categories " .
-    " WHERE ( webcal_entry_user.cal_id = webcal_entry_categories.cal_id AND " .
-    " webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
-    " webcal_entry_user.cal_id = $id ) AND " . 
+    " FROM webcal_entry_categories, webcal_categories " .
+    " WHERE ( webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
+    " webcal_entry_categories.cal_id = $id ) AND " . 
     " webcal_categories.cat_owner = '" . $cat_owner . "'".
     " ORDER BY webcal_entry_categories.cat_order";
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( $login == $user || $is_assistant  || $is_admin ) {
-     $cat_id[] = $row[1];
-     $cat_name[] = $row[4];    
-   }
+      if ( empty ( $user ) || $login == $user || $is_assistant  || $is_admin ) {
+        $cat_id[] = $row[0];
+        $cat_name[] = $row[3];    
+      }
     }
   dbi_free_result ( $res );
   if ( ! empty ( $cat_name ) ) $catNames = implode("," , array_unique($cat_name));

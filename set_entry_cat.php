@@ -65,6 +65,7 @@ if ( $res ) {
  }
  dbi_free_result ( $res );
 }
+$catNames = $catList = '';
 if ( ! empty ( $cat_name ) ) $catNames = implode(", " , array_unique($cat_name));
 if ( ! empty ( $cat_ids ) ) $catList = implode(", ", array_unique($cat_ids));
 // Get event name and make sure event exists
@@ -105,11 +106,18 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
    $sql = "INSERT INTO webcal_entry_categories ( " . implode ( ", ", $names ) .
      " ) VALUES ( " . implode ( ", ", $values ) . " )";
    } 
- }  
+ }
+ $type = getValue ( 'type' );
+ if ( ! empty ( $type ) && ( $type == 'T' || $type == 'N' ) ) {
+   $view_type = "view_task";
+ } else {
+   $view_type = "view_entry";  
+ }
+  
  if ( ! dbi_query ( $sql ) ) {
     $error = translate ( "Database error" ) . ": " . dbi_error ();
   } else {
-    $url = "view_entry.php?id=$id";
+    $url = $view_type .".php?id=$id";
     if ( ! empty ( $date ) )
       $url .= "&amp;date=$date";
     do_redirect ( $url );
@@ -132,6 +140,7 @@ print_header($INC);
 
 <input type="hidden" name="date" value="<?php echo $date?>" />
 <input type="hidden" name="id" value="<?php echo $id?>" />
+<input type="hidden" name="type" value="<?php echo $type?>" />
 
 <table border="0" cellpadding="5">
 <tr style="vertical-align:top;"><td style="font-weight:bold;">
@@ -143,7 +152,8 @@ print_header($INC);
    <input type="button" value="Edit" onclick="editCats(event)" /></td><td valign="top">
       <input  readonly=""type="text" name="catnames" 
      value="<?php echo $catNames ?>"  size="75" 
-    onclick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/><br />
+    onclick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/>
+		<br />
     <?php if ( $globals_found) echo "*" . translate("Global Categories can not be changed")?>
    <input  type="hidden" name="cat_id" id="entry_categories" value="<?php echo $catList ?>" />
      </td></tr>

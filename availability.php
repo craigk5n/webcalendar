@@ -36,6 +36,8 @@ if ( empty ( $users ) ) {
   echo "Program Error: No day specified!"; exit;
 }
 
+$parent_form = getGetValue ('form');
+
 $INC = array ( 'js/availability.php' );
 print_header($INC, '', "onload=\"focus();\"", true, false, true );
 

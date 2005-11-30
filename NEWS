@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1368071: category pop-up for tasks will not work properly
       1365435: "Availability...." has no action by clicking the button (tasks)
       1368088: viewing tasks depends on their belonging selected categories
       1365541: categories for tasks will not be saved

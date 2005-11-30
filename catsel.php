@@ -12,7 +12,9 @@ if ( $CATEGORIES_ENABLED == "N" ) {
 }
 
 $form = getGetValue ( 'form' );
-if ( ! empty ( $form ) && $form == 'edittaskform' ) {
+$type = getGetValue ( 'type' );
+if ( ! empty ( $form ) && ( $form == 'edittaskform' || 
+  $type == 'T' ) ) {
   $header_text = translate("TASK CATEGORIES");
 } else { 
   $header_text = translate("EVENT CATEGORIES");
@@ -33,29 +35,31 @@ print_header($INC,'','',true, false, true);
    echo "<select name=\"cats[]\" size=\"10\">\n" . 
     "<option disabled>" . translate("AVAILABLE CATEGORIES") . "</option>\n";
     foreach ( $categories as $K => $V ) {
- //     if ( $category_owners[$K] == $login || $is_admin ) {
+      if ( $category_owners[$K] == $login || $is_admin || 
+			  substr ( $form, 0, 4 ) == 'edit' ) {
         if ( empty ( $category_owners[$K] ) ) {
           echo "<option value=\"-$K\" name=\"$V\">$V<sup>*</sup>";
         } else {
           echo "<option value=\"$K\" name=\"$V\">$V";
         }
         echo "</option>\n";
- //     }
+      }
     }
   echo "</select>\n</td>";
   }
  echo "<td valign=\"center\"><input type=\"button\" value=\"  >  \" onclick=\"selAdd()\" /></td>";
   echo "<td align=\"center\" valign=\"top\">\n<select name=\"eventcats[]\" size=\"9\" multiple>\n" . 
     "<option disabled>" . $header_text . "</option>\n";
-  if ( ! empty ( $cats ) ) {
+  if ( strlen ( $cats ) ) {
   foreach ( $eventcats as $K) {  
    //disable if not creator and category is Global
    $neg_num = $show_ast = "";
-   $disabled = ( $category_owners[abs($K)] == NULL && $form != 'editentryform'? "disabled": "");
-      if ( $category_owners[abs($K)] == NULL) {
-     $neg_num = "-";
-     $show_ast = "*";
-   }
+   $disabled = ( empty ( $category_owners[abs($K)] ) && 
+	   substr($form,0,4) != 'edit'? "disabled": "");
+     if ( empty ( $category_owners[abs($K)] ) ) {
+       $neg_num = "-";
+       $show_ast = "*";
+     }
    echo "<option value=\"$neg_num$K\" name=\"$V\" $disabled>" . 
     $categories[abs($K)] . $show_ast . "</option>\n";
   }
