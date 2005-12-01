@@ -1,10 +1,10 @@
 <?php
-	global $form,$listid,$groups;
-	if (preg_match("/\/includes\//", $PHP_SELF)) {
-		die ("You can't access this file directly!");
-	}
-	$form = clean_word($form);
-	$listid = clean_int($listid);
+  global $form,$listid,$groups;
+  if (preg_match("/\/includes\//", $PHP_SELF)) {
+    die ("You can't access this file directly!");
+  }
+  $form = clean_word($form);
+  $listid = clean_int($listid);
 ?>
 <script type="text/javascript">
 <!-- <![CDATA[
@@ -12,20 +12,18 @@ function OkButton () {
   var parentlist = window.opener.document.<?php echo $form?>.elements[<?php echo $listid?>];
   var thislist = document.userselform.elements[0];
 
-  var found = "";
-
   // select/deselect all elements
-  for ( i = 0; i < parentlist.length; i++ ) {
-    var state = false;
-    for ( j = 0; j < thislist.length; j++ ) {
-      if ( thislist.options[j].value == parentlist.options[i].value ) {
-        state = thislist.options[j].selected;
-        found += " " + thislist.options[j].value;
+  for ( i = 0; i < thislist.length; i++ ) {
+    if (thislist.options[i].selected) {
+      for ( j = 0; j < parentlist.length; j++ ) {
+        if ( thislist.options[j].value == parentlist.options[i].value ) {
+           parentlist.options[i].selected = true;
+           break;
+        }
       }
     }
-    parentlist.options[i].selected = state;
+
   }
-  //alert ( "Found: " + found );
   window.close ();
 }
 
