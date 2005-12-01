@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1369715: Event for groups hangs - javascript error perhaps
  - Fixed bug 1368071: category pop-up for tasks will not work properly
  - Fixed vulnerablity: SQL injection possible in edit_template.php,
    activity_log.php, admin_handler.php, pref_handler.php, export_handler.php
