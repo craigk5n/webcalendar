@@ -512,6 +512,11 @@ if ( $show_participants ) { ?>
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $participants[] = $row;
+        if ( ( $login == $row[0] || 
+          ( $is_nonuser_admin && ! empty ( $user ) && $user == $row[0] ) ) && 
+          $row[1] == 'W' ) {
+          $unapproved = TRUE;
+        }        
       }
       dbi_free_result ( $res );
     } else {
@@ -596,27 +601,39 @@ if ( empty ( $event_status ) ) {
   $event_status = "D";
 }
 
-if ( $unapproved && $readonly == 'N' ) {
-  echo "<a title=\"" . 
-    translate("Approve/Confirm task") . 
-    "\" href=\"approve_entry.php?id=$id&amp;type=T\" " .
-    "onclick=\"return confirm('" . 
-    translate("Approve this task?", true) . "');\">" . 
-    translate("Approve/Confirm task") . "</a><br />\n";
-  echo "<a title=\"" . 
-    translate("Reject task") . "\" href=\"reject_entry.php?id=$id&amp;type=T\" " .
-    "onclick=\"return confirm('" .
-    translate("Reject this task?", true) . "');\">" . 
-    translate("Reject task") . "</a><br />\n";
-}
-
 if ( ! empty ( $user ) && $login != $user ) {
   $u_url = "&amp;user=$user";
 } else {
   $u_url = "";
 }
 
+$can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || 
+  ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
+  ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
+  
+if ( ( $is_my_event || $is_nonuser_admin ) && $unapproved && $readonly == 'N' ) {
+  echo "<a title=\"" . 
+    translate("Approve/Confirm entry") .
+    "\" class=\"nav\" href=\"approve_entry.php?id=$id$u_url&amp;type=E\" " .
+    "onclick=\"return confirm('" . 
+    translate("Approve this entry?", true) . "');\">" . 
+    translate("Approve/Confirm entry") . "</a><br />\n";
+  echo "<a title=\"" . 
+    translate("Reject entry") . 
+    "\" class=\"nav\" href=\"reject_entry.php?id=$id$u_url&amp;type=E\" " .
+    "onclick=\"return confirm('" .
+    translate("Reject this entry?", true) . "');\">" . 
+    translate("Reject entry") . "</a><br />\n";
+}
 
+if ( $PUBLIC_ACCESS == "Y" && $login == "__public__" ) {
+  $can_edit = false;
+}
+if ( $readonly == 'Y' ) {
+  $can_edit = false;
+}
+if ( $is_nonuser )
+  $can_edit = false;
 
 // If approved, but event category not set (and user does not have permission
 // to edit where they could also set the category), then allow them to
@@ -648,7 +665,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
       "\" class=\"nav\" href=\"del_task.php?id=$id$u_url&amp;override=1\" " .
       "onclick=\"return confirm('" . 
       translate("Are you sure you want to delete this entry?", true) . "\\n\\n" . 
-      translate("This will delete this entry for all users.") . "');\">" . 
+      translate("This will delete this entry for all users.", true) . "');\">" . 
       translate("Delete repeating event for all dates") . "</a><br />\n";
     // Don't allow deletion of first event
     if ( ! empty ( $date ) && $date != $orig_date ) {
@@ -657,7 +674,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
         "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate&amp;override=1\" " .
         "onclick=\"return confirm('" .
         translate("Are you sure you want to delete this entry?", true) . "\\n\\n" . 
-        translate("This will delete this entry for all users.") . "');\">" . 
+        translate("This will delete this entry for all users.", true) . "');\">" . 
         translate("Delete entry only for this date") . "</a><br />\n";
     }
   } else {
@@ -669,7 +686,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
       translate("Delete task") . "\" class=\"nav\" " .
       "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
        translate("Are you sure you want to delete this task?", true) . "\\n\\n" . 
-       translate("This will delete this task for all users.") . "');\">" . 
+       translate("This will delete this task for all users.", true ) . "');\">" . 
        translate("Delete task") . "</a><br />\n";
   }
   echo "<a title=\"" . 
@@ -682,7 +699,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
     translate("Delete task") . "\" class=\"nav\" " .
     "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
     translate("Are you sure you want to delete this task?", true) . "\\n\\n" . 
-    translate("This will delete the task from your calendar.") . "');\">" . 
+    translate("This will delete the task from your calendar.", true) . "');\">" . 
     translate("Delete task") . "</a><br />\n";
   echo "<a title=\"" . 
     translate("Copy task") . "\" class=\"nav\" " .

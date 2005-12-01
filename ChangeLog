@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1366113: Accept/reject Missing
  - Fixed problem with dates in nonuser calendar if LANGAUGE_DEFINED
  - Fixed bug 1369715: Event for groups hangs - javascript error perhaps
  - Fixed bug 1368071: category pop-up for tasks will not work properly
