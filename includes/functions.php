@@ -4757,7 +4757,7 @@ function user_is_nonuser_admin ( $login, $nonuser ) {
  * @param string $nonuser Login name for nonuser calendar
  */
 function load_nonuser_preferences ($nonuser) {
-  global $prefarray;
+  global $prefarray, $DATE_FORMAT_MY, $DATE_FORMAT, $DATE_FORMAT_MD;
   $res = dbi_query (
     "SELECT cal_setting, cal_value FROM webcal_user_pref " .
     "WHERE cal_login = '$nonuser'" );
@@ -4775,6 +4775,17 @@ function load_nonuser_preferences ($nonuser) {
     }
     dbi_free_result ( $res );
   }
+ // reset_language ( empty ( $LANGUAGE) || $LANGUAGE != 'none'? $LANGUAGE : $browser_lang );
+  if (  empty ( $DATE_FORMAT ) || $DATE_FORMAT == 'LANGUAGE_DEFINED' ){
+    $DATE_FORMAT = translate ( "__month__ __dd__, __yyyy__" );
+  }
+  if ( empty ( $DATE_FORMAT_MY ) || $DATE_FORMAT_MY == 'LANGUAGE_DEFINED' ){  
+    $DATE_FORMAT_MY = translate ( "__month__ __yyyy__" );  
+  }
+  if ( empty ( $DATE_FORMAT_MD ) || $DATE_FORMAT_MD == 'LANGUAGE_DEFINED' ){  
+    $DATE_FORMAT_MD = translate ( "__month__ __dd__" );  
+  }	
+	
 }
 
 /**
