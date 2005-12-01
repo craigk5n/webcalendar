@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1370871: public access - preferences cannot be saved
       1366113: Accept/reject Missing
       1369715: Event for groups hangs - javascript error perhaps
       1368071: category pop-up for tasks will not work properly
