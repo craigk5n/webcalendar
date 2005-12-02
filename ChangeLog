@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed vuln in layers: published vulnerability in layers_toggle.php
+   was fixed
  - Fixed bug 1370871: public access - preferences cannot be saved
  - Fixed bug 1366113: Accept/reject Missing
  - Fixed problem with dates in nonuser calendar if LANGAUGE_DEFINED
