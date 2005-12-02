@@ -7,11 +7,9 @@ if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
   $updating_public = true;
   $layer_user = "__public__";
   $u_url = "&amp;public=1";
-  $ret = "ret=layers.php%3Fpublic=1";
 } else {
   $layer_user = $login;
   $u_url = "";
-  $ret = "ret=layers.php";
 }
 
 load_user_layers ( $layer_user, 1 );
@@ -29,6 +27,7 @@ if ( $res ) {
 print_header();
 
 if ( $allow_view_other != 'Y') {
+  echo "allow_view_other = $allow_view_other <br>";
   echo translate("You are not authorized");
 } else {
 ?>
@@ -46,18 +45,19 @@ echo "&nbsp;<strong>";
 if ($layers_enabled) {
 	etranslate ("Enabled");
 	echo "</strong>.&nbsp;(<a title=\"" . 
-		translate ("Disable Layers") . "\" class=\"nav\" href=\"layers_toggle.php?status=off$u_url&amp;$ret\">" .
+		translate ("Disable Layers") . "\" class=\"nav\" href=\"layers_toggle.php?status=off$u_url\">" .
 		translate ("Disable Layers") . "</a>)\n";
 } else {
 	etranslate ("Disabled");
 	echo "</strong>.&nbsp;(<a title=\"" .
-		translate ("Enable Layers") . "\" class=\"nav\" href=\"layers_toggle.php?status=on$u_url&amp;$ret\">" . 
+		translate ("Enable Layers") . "\" class=\"nav\" href=\"layers_toggle.php?status=on$u_url\">" . 
 		translate ("Enable Layers") . "</a>)\n";
 }
 echo "<br />";
 
 if ($is_admin && $layers_enabled) {
-  if ( empty ($public) ) {
+  if ( empty ($public) && ! empty ( $PUBLIC_ACCESS ) &&
+    $PUBLIC_ACCESS == 'Y' ) {
     echo "<blockquote><a href=\"layers.php?public=1\">" .
       translate("Click here") . "&nbsp;" . 
       translate("to modify the layers settings for the") . "&nbsp;" .

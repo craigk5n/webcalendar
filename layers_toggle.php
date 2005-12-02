@@ -1,8 +1,11 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 load_user_layers ();
 
-// echo "ret: $ret\n"; exit;
+
+$status = getValue ( 'status', '(on|off)', true );
+
 
 if ( $allow_view_other != 'Y' ) {
   print_header ();
@@ -15,10 +18,10 @@ $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
   $updating_public = true;
   $layer_user = "__public__";
-  $u_url = "&amp;public=1";
+  $url = 'layers.php?public=1';
 } else {
   $layer_user = $login;
-  $u_url = "";
+  $url = 'layers.php';
 }
 
 $sql = "DELETE FROM webcal_user_pref WHERE cal_login = '$layer_user' " .
@@ -37,13 +40,7 @@ if ( ! dbi_query ( $sql ) ) {
 }
 
 if ( empty ( $error ) ) {
-  // Go back to where we where if we can figure it out.
-  if ( strlen ( $ret ) )
-    do_redirect ( $ret );
-  else if ( ! empty ( $HTTP_REFERER ) )
-    do_redirect ( $HTTP_REFERER );
-  else
-    send_to_preferred_view ();
+  do_redirect ( $url );
 }
 
 print_header();
