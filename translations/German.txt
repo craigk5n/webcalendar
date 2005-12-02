@@ -14,7 +14,8 @@
 # Last update: 22 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 23 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 25 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 11-25-2005
+# Last update: 1 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 12-01-2005
 
 
 ###############################################
@@ -254,10 +255,8 @@ Participants: Benutzer
 Percentage Complete: Prozentsatz erledigt
 Update Task Percentage: Aktualisierung des Aufgabenprozentsatzes
 Update: Aktualisierung
-Approve/Confirm task: Genehmigung/Annahme der Aufgabe
-Approve this task?: Genehmigung dieser Aufgabe?
-Reject task: Ablehnung der Aufgabe
-Reject this task?: Diese Aufgabe ablehnen?
+Approve/Confirm entry: Eintrag genehmigen/best&auml;tigen?
+Reject entry: Eintrag ablehnen?
 Set category: Kategorie zuweisen
 Edit repeating entry for all dates: &Auml;ndern ALLER wiederkehrenden Termine des Eintrags
 Edit entry for this date: &Auml;ndern des Termines f&uuml;r DIESES Datum
@@ -385,8 +384,6 @@ This Calendar is not Public: Dieser Kalender ist nicht &Oouml;ffentlich
 Duration: Dauer
 before event: vor dem Termin
 External User: Externer Benutzer
-Approve/Confirm entry: Eintrag genehmigen/best&auml;tigen?
-Reject entry: Eintrag ablehnen?
 Edit entry: Eintrag &auml;ndern
 Delete entry: Eintrag l&ouml;schen
 from calendar of: vom Kalender
@@ -693,7 +690,7 @@ Edit Custom Trailer: &auml;ndern der benutzerdefinierten FU&szlig;ZEILE
 View Event: Termin ansehen
 Edit Event: Termin &auml;ndern
 Delete Event: Termin l&ouml;schen
-Approve/Reject Event: Termin Genehmigen/Zur&uuml;ckweisen
+Approve/Reject Event: Termin Genehmigen / Zur&uuml;ckweisen
 DEFAULT CONFIGURATION: GRUNDKONFIGURATION
 
 
@@ -1097,8 +1094,9 @@ Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
 ###############################################
 # Page: catsel.php
 #
-AVAILABLE CATEGORIES: VERF&Uuml;GBARE KATEGORIEN
+TASK CATEGORIES: AUFGABENKATEGORIEN
 EVENT CATEGORIES: TERMINKATEGORIEN
+AVAILABLE CATEGORIES: VERF&Uuml;GBARE KATEGORIEN
 Global Category: Allg. Kategorien
 
 
@@ -1122,7 +1120,7 @@ Please see FAQ: Bitte in der FAQ nachlesen
 ###############################################
 # Page: includes/functions.php
 #
-Title: Titel
+Title: Webkalender
 __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
 __month__ __dd__: __dd__. __month__
