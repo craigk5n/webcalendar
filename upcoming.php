@@ -233,7 +233,6 @@ if ( ! empty ( $LANGUAGE ) ) {
 echo "<title>".translate($APPLICATION_NAME)."</title>\n";
  
 ?>
-</head>
 <!-- This style sheet is here mostly to make it easier for others
      to customize the appearance of the page.
      In the not to distant future, the admin UI will allow configuration
@@ -264,6 +263,7 @@ a:hover {
   background-color: #33a;
 }
 </style>
+</head>
 <body>
 <?php
 if ( ! empty ( $error ) ) {
