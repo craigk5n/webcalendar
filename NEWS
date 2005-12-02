@@ -114,6 +114,8 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
+    - Fixed vuln in layers: published vulnerability in layers_toggle.php
+      was fixed
     - Fixed vulnerablity: SQL injection possible in edit_template.php,
       activity_log.php, admin_handler.php, pref_handler.php, export_handler.php
     - Corrected content type in publish.php and freebusy.php
