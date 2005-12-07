@@ -15,10 +15,11 @@
  */
 include_once 'includes/init.php';
 include 'includes/xcal.php'; //only to display recurrance info
+include 'includes/doc.php';
 
 // make sure this user is allowed to look at this calendar.
 $can_view = false;
-$is_my_event = false;
+$is_my_event = false; // is this user owner or participant?
 $is_private = $is_confidential = false;
 $log = getGetValue ( 'log' );
 $show_log = ! empty ( $log );
@@ -194,7 +195,7 @@ if ( $ext_id > 0 ) {
   do_redirect ( $url );
 }
 
-print_header();
+print_header ();
 
 if ( ! empty ( $error ) ) {
   echo "<h2>" . translate ( "Error" ) .
@@ -251,7 +252,7 @@ if ( empty ( $event_status ) ) {
 }
 
 // If we have no event status yet, it must have been deleted.
-  if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
+if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
   echo "<h2>" . 
     translate("Error") . "</h2>" . 
     translate("You are not authorized") . ".\n";
@@ -703,6 +704,127 @@ if ( $single_user == "N" && $show_participants ) { ?>
  } // end participants
 ?>
 
+<?php
+
+$can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || 
+  ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
+  ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
+
+if ( attachments_enabled () ) { ?>
+  <tr><td style="vertical-align:top; font-weight:bold;">
+  <?php etranslate("Attachments")?>:</td><td>
+  <?php
+  $attachments = get_attachment_list_for_event ( $id );
+  for ( $i = 0; $i < count ( $attachments ); $i++ ) {
+    $a = $attachments[$i];
+    echo $a['summary'];
+    // show delete link if user can delete
+    if ( $is_admin || $login == $a['cal_login'] ||
+      user_is_assistant ( $login, $a['cal_login'] ) ||
+      $login == $create_by ||
+      user_is_assistant ( $login, $create_by ) ) {
+        echo " [<a href=\"docdel.php?blid=" . $a['cal_blob_id'] .
+          "\" onclick=\"return confirm('" .
+          translate ( "Are you sure you want to delete this entry?", true ) .
+          "');\">" . translate ( 'Delete' ) . '</a>]';
+    }
+    echo "<br/>\n";
+  }
+  $num_attach = count ( $attachments );
+  if ( $num_attach == 0 ) {
+    echo translate('None') . '<br/>';
+  }
+
+  $num_app = $num_wait = $num_rej = 0;
+
+  echo "<td></tr>\n";
+}
+
+if ( comments_enabled () ) { ?>
+  <tr><td style="vertical-align:top; font-weight:bold;">
+  <?php etranslate("Comments")?>:</td><td>
+  <?php
+  $comments = get_comments_for_event ( $id );
+  $num_comment = count ( $comments );
+  $comment_text = '';
+  for ( $i = 0; $i < count ( $comments ); $i++ ) {
+    $cmt = $comments[$i];
+    $comment_text .=
+      '<strong>' . htmlspecialchars ( $cmt['cal_description'] ) . '</strong> - ' .
+      $cmt['cal_login'] . " @ " .
+      date_to_str ( $cmt['cal_mod_date'], '', false, true ) .
+      ' ' . display_time ( $cmt['cal_mod_time'] ) . "\n";
+      // show delete link if user can delete
+      if ( $is_admin || $login == $a['cal_login'] ||
+        user_is_assistant ( $login, $a['cal_login'] ) ||
+        $login == $create_by ||
+        user_is_assistant ( $login, $create_by ) ) {
+          $comment_text .= " [<a href=\"docdel.php?blid=" . $cmt['cal_blob_id'] .
+            "\" onclick=\"return confirm('" .
+            translate ( "Are you sure you want to delete this entry?", true ) .
+            "');\">" . translate ( 'Delete' ) . '</a>]';
+      }
+      $comment_text .= "<br/>\n" .
+        "<blockquote id=\"eventcomment\">" . nl2br ( activate_urls (
+        htmlspecialchars ( $cmt['cal_blob'] ) ) ) .
+        "</blockquote>\n";
+  }
+  if ( $num_comment == 0 ) {
+    echo translate('None') . '<br/>';
+  } else {
+    echo $num_comment . ' ' . translate ( "comments");
+    echo "<input id=\"showbutton\" type=\"button\" value=\"" .
+      translate("Show") . "\" onclick=\"showComments();\" />";
+    echo "<input id=\"hidebutton\" type=\"button\" value=\"" .
+      translate("Hide") . "\" onclick=\"hideComments();\" />";
+    echo "<br/><span id=\"comtext\">" . $comment_text . "</span>\n";
+    // We could put the following JS in includes/js/view_entry.php,
+    // but we won't need it in many cases and we don't know whether
+    // we need until after would need to include it.  So, we
+    // will include it here instead.
+    ?>
+<script language="JavaScript">
+<!-- <![CDATA[
+function showComments () {
+  var x = document.getElementById ( "comtext" )
+  if ( x ) {
+    x.style.display = "block";
+  }
+  x = document.getElementById ( "showbutton" )
+  if ( x ) {
+    x.style.display = "none";
+  }
+  x = document.getElementById ( "hidebutton" )
+  if ( x ) {
+    x.style.display = "block";
+  }
+}
+function hideComments () {
+  var x = document.getElementById ( "comtext" )
+  if ( x ) {
+    x.style.display = "none";
+  }
+  x = document.getElementById ( "showbutton" )
+  if ( x ) {
+    x.style.display = "block";
+  }
+  x = document.getElementById ( "hidebutton" )
+  if ( x ) {
+    x.style.display = "none";
+  }
+}
+hideComments ();
+//]]> -->
+</script>
+    <?php
+  }
+    
+  $num_app = $num_wait = $num_rej = 0;
+
+  ?>
+  </td></tr>
+<?php } ?>
+
 </table>
 
 <br /><?php
@@ -734,10 +856,6 @@ if ( ! empty ( $user ) && $login != $user ) {
   $u_url = "";
 }
 
-$can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || 
-  ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
-  ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
-  
 if ( ( $is_my_event || $is_nonuser_admin ) && $unapproved && $readonly == 'N' ) {
   echo "<a title=\"" . 
     translate("Approve/Confirm entry") . 
@@ -761,6 +879,38 @@ if ( $readonly == 'Y' ) {
 }
 if ( $is_nonuser )
   $can_edit = false;
+
+$can_add_attach = false;
+if ( attachments_enabled () ) {
+  if ( $can_edit )
+    $can_add_attach = true;
+  else if ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' )
+    $can_add_attach = true;
+  else if ( $ALLOW_ATTACH_ANY )
+    $can_add_attach = true;
+}
+  
+$can_add_comment = false;
+if ( comments_enabled () ) {
+  if ( $can_edit )
+    $can_add_comment = true;
+  else if ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' )
+    $can_add_comment = true;
+  else if ( $ALLOW_COMMENTS_ANY )
+    $can_add_comment = true;
+}
+  
+if ( $can_add_attach ) {
+  echo "<a title=\"" . translate('Add Attachment') .
+    "\" class=\"nav\" href=\"docadd.php?type=A&amp;id=$id\">" .
+  translate ( 'Add Attachment' ) . "</a><br/>\n";
+}
+
+if ( $can_add_comment ) {
+  echo "<a title=\"" . translate('Add Comment') .
+    "\" class=\"nav\" href=\"docadd.php?type=C&amp;id=$id\">" .
+  translate ( 'Add Comment' ) . "</a><br/>\n";
+}
 
 // If approved, but event category not set (and user does not have permission
 // to edit where they could also set the category), then allow them to
@@ -887,16 +1037,16 @@ if ( $can_show_log && $show_log ) {
   echo translate("Action") . "\n</th></tr>\n";
 
   $res = dbi_query ( "SELECT cal_login, cal_user_cal, cal_type, " .
-    "cal_date, cal_time " .
+    "cal_date, cal_time, cal_text " .
     "FROM webcal_entry_log WHERE cal_entry_id = $id " .
     "ORDER BY cal_log_id DESC" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      echo "<tr><td>\n";
-      echo $row[0] . "</td><td>\n";
-      echo $row[1] . "</td><td>\n" . 
+      echo "<tr><td valign=\"top\">\n";
+      echo $row[0] . "</td><td valign=\"top\">\n";
+      echo $row[1] . "</td><td valign=\"top\">\n" . 
         date_to_str ( $row[3] ) . "&nbsp;" .
-        display_time ( $row[4], 3 ) . "</td><td>\n";
+        display_time ( $row[4], 3 ) . "</td><td valign=\"top\">\n";
       if ( $row[2] == LOG_CREATE ) {
         etranslate("Event created");
       } else if ( $row[2] == LOG_APPROVE ) {
@@ -911,6 +1061,16 @@ if ( $can_show_log && $show_log ) {
         etranslate("Notification sent");
       } else if ( $row[2] == LOG_REMINDER ) {
         etranslate("Reminder sent");
+      } else if ( $row[2] == LOG_ATTACHMENT ) {
+        etranslate("Attachment");
+        if ( ! empty ( $row[5] ) )
+          echo "<br/>" . htmlentities ( $row[5] );
+      } else if ( $row[2] == LOG_COMMENT ) {
+        etranslate("Comment");
+        if ( ! empty ( $row[5] ) )
+          echo "<br/>" . htmlentities ( $row[5] );
+      } else if ( $row[2] == LOG_COMMENT ) {
+        echo '???';
       }
       echo "</td></tr>\n";
     }

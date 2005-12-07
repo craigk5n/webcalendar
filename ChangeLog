@@ -1,4 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added support for binary objects for MySQL and SQLite.  This includes
+   new support for event attachements and event comments.
+   (Still need to implement for other databases.)
  - Fixed vuln in layers: published vulnerability in layers_toggle.php
    was fixed
  - Fixed bug 1370871: public access - preferences cannot be saved

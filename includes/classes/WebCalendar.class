@@ -528,6 +528,8 @@ class WebCalendar {
     define ( 'LOG_REMINDER',      'R' );
     define ( 'LOG_NEWUSER_FULL',  'F' );
     define ( 'LOG_NEWUSER_EMAIL', 'E' );
+    define ( 'LOG_ATTACHMENT', 'T' );
+    define ( 'LOG_COMMENT', 'M' );
     /**#@-*/
 
     /**

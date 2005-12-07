@@ -264,3 +264,18 @@ CREATE TABLE webcal_entry_categories (
   cat_order INT (11) NOT NULL DEFAULT '0',
   cat_owner VARCHAR(25) DEFAULT NULL
 );
+/*upgrade_v1.1.0c-CVS*/
+CREATE TABLE webcal_blob (
+  cal_blob_id INT NOT NULL,
+  cal_id INT NULL,
+  cal_login VARCHAR(25) NULL,
+  cal_name VARCHAR(30) NULL,
+  cal_description VARCHAR(128) NULL,
+  cal_size INT NULL,
+  cal_mime_type VARCHAR(50) NULL,
+  cal_type CHAR(1) NOT NULL,
+  cal_mod_date INT NOT NULL,
+  cal_mod_time INT NOT NULL,
+  cal_blob BLOB,
+  PRIMARY KEY ( cal_blob_id )
+);

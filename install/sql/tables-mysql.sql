@@ -680,3 +680,34 @@ CREATE TABLE webcal_user_template (
   PRIMARY KEY ( cal_login, cal_type )
 );
 
+/*
+ * This table stores event attachments and comments.
+ */
+CREATE TABLE webcal_blob (
+  /* Unique identifier for this object */
+  cal_blob_id INT NOT NULL,
+  /* event id (if applicable) */
+  cal_id INT NULL,
+  /* login of user who created */
+  cal_login VARCHAR(25) NULL,
+  /* filename of object (not used for comments) */
+  cal_name VARCHAR(30) NULL,
+  /* description of what the object is (subject for comment) */
+  cal_description VARCHAR(128) NULL,
+  /* size of object (not used for comment) */
+  cal_size INT NULL,
+  /* MIME type of object (as specified by browser during upload) */
+  /* (not used for comment) */
+  cal_mime_type VARCHAR(50) NULL,
+  /* type of object: C=Comment, A=Attachment */
+  cal_type CHAR(1) NOT NULL,
+  /* date added (in YYYYMMDD format) */
+  cal_mod_date INT NOT NULL,
+  /* time added in HHMMSS format */
+  cal_mod_time INT NOT NULL,
+  /* binary data for object */
+  cal_blob LONGBLOB,
+  PRIMARY KEY ( cal_blob_id )
+);
+
+

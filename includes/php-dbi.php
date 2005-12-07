@@ -32,6 +32,9 @@
  * @subpackage Database
  *
  * History:
+ * 06-Dec-2005 Craig Knudsen
+ *    Added new php_update_blob function for mysql.  Will need to implement
+ *    for other dbs next.
  * 5-Jul-2005 Ray Jones
  *    Removed references to Postgresql rows in dbi_query
  *    and dbi_fetch_row. This parameter became optional 
@@ -383,6 +386,88 @@ function dbi_affected_rows ( $conn, $res ) {
     dbi_fatal_error ( "dbi_free_result(): db_type not defined." );
   }
 }
+
+/**
+  * Update a BLOB (binary large object) in the database with the contents
+  * of the specified file.
+  * A BLOB field should be created in a separete INSERT statement using
+  * NULL as the initial value prior to this call.
+  *
+  * @param resource $table	the table name that contains the blob
+  * @param resource $column	the table column name for the blob
+  * @param resource $key	the key for updating the table row
+  * @param resource $data 	the data to insert
+  *
+  * @return bool True on success
+  */
+function dbi_update_blob ( $table, $column, $key, $data ) {
+  assert ( '! empty ( $table )' );
+  assert ( '! empty ( $column )' );
+  assert ( '! empty ( $key )' );
+  assert ( '! empty ( $data )' );
+
+  if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
+    if ( function_exists ( "mysql_real_escape_string" ) )
+      return dbi_query ( "UPDATE $table SET $column = '" .
+        mysql_real_escape_string ( $data ) .
+        "' WHERE $key" );
+    else {
+      return dbi_query ( "UPDATE $table SET $column = '" .
+        addslashes ( $data ) .
+        "' WHERE $key" );
+    }
+  } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
+    return dbi_query ( "UPDATE $table SET $column = '" .
+      sqlite_udf_encode_binary ( $data ) .
+      "' WHERE $key" );
+  } else {
+    // TODO!
+    die_miserable_death ( "Unfortunately, there is no implementation " .
+      "for dbi_update_blob for your database (" . $GLOBALS["db_type"] . ")" );
+  }
+}
+
+
+/**
+  * Get a BLOB (binary large object) from the database.
+  *
+  * @param resource $table	the table name that contains the blob
+  * @param resource $column	the table column name for the blob
+  * @param resource $key	the key for updating the table row
+  *
+  * @return bool True on success
+  */
+function dbi_get_blob ( $table, $column, $key ) {
+  $ret = '';
+  assert ( '! empty ( $table )' );
+  assert ( '! empty ( $column )' );
+  assert ( '! empty ( $key )' );
+
+  if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
+    $res = dbi_query ( "SELECT $column FROM $table WHERE $key" );
+    if ( ! $res )
+      return false;
+    if ( $row = dbi_fetch_row ( $res ) )
+      $ret = $row[0];
+    dbi_free_result ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
+    $res = dbi_query ( "SELECT $column FROM $table WHERE $key" );
+    if ( ! $res )
+      return false;
+    if ( $row = dbi_fetch_row ( $res ) )
+      $ret = sqlite_udf_decode_binary ( $row[0] );
+    dbi_free_result ( $res );
+  } else {
+    // TODO!
+    die_miserable_death ( "Unfortunately, there is no implementation " .
+      "for dbi_update_blob for your database (" . $GLOBALS["db_type"] . ")" );
+  }
+
+  return $ret;
+}
+
+
+
 
 /**
   * Frees a result set.

@@ -36,6 +36,7 @@
    sqlite_query($db, "CREATE TABLE webcal_tz_list ( tz_list_id INT  NOT NULL default '0', tz_list_name VARCHAR(50) NOT NULL default '', tz_list_text VARCHAR(75) NOT NULL default '')");
    sqlite_query($db, "CREATE TABLE webcal_user_template ( cal_login VARCHAR(25) NOT NULL default '', cal_type CHAR(1) NOT NULL default '', cal_template_text text, PRIMARY KEY  (cal_login,cal_type))");
    sqlite_query($db, "CREATE TABLE webcal_entry_categories (cal_id INT NOT NULL default '0', cat_id INT NOT NULL default '0', cat_order INT NOT NULL default '0', cat_owner VARCHAR(25) default NULL)");
+   sqlite_query($db, "CREATE TABLE webcal_blob ( cal_blob_id INT NOT NULL, cal_id INT NULL, cal_login VARCHAR(25) NULL, cal_name VARCHAR(30) NULL, cal_description VARCHAR(128) NULL, cal_size INT NULL, cal_mime_type VARCHAR(50) NULL, cal_type CHAR(1) NOT NULL, cal_mod_date INT NOT NULL, cal_mod_time INT NOT NULL, cal_blob BLOB, PRIMARY KEY ( cal_blob_id ))");
 
 }
 ?>
