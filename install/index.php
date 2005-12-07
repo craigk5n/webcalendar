@@ -760,7 +760,7 @@ if ( $exists ) {
     $exists  = true;
     $forcePassword = true;
   }
-  fclose ( $testFd ); 
+  @fclose ( $testFd ); 
 }
 
 
