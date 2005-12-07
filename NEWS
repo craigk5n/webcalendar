@@ -114,26 +114,26 @@ Version 1.1.0-CVS (?? ??? 2005)
         user preferences for displaying unapproved.
       1205151: use of undefined variable in edit_entry.php
   - Other bugs fixed:
-    - Fixed vuln in layers: published vulnerability in layers_toggle.php
+    + Fixed vuln in layers: published vulnerability in layers_toggle.php
       was fixed
-    - Fixed vulnerablity: SQL injection possible in edit_template.php,
+    + Fixed vulnerablity: SQL injection possible in edit_template.php,
       activity_log.php, admin_handler.php, pref_handler.php, export_handler.php
-    - Corrected content type in publish.php and freebusy.php
-    - Applied PATCH 1297654: eliminate deprecated tags, excluding <b></b>
-    - Applied PATCH 1349875: Fix for WebCalendar.class
-    - Numerous tweaks to RRULE parsing for display of repeating events
-    - Implemented PATCH 1345138: Several bug fixes
-    - Implemented PATCH 1344304: Use default tzone in send_reminders for users w/out pref
-    - Numerous translation BUG fixes
-    - Fixed problem with participants not being populated when editing an event. Caused
+    + Corrected content type in publish.php and freebusy.php
+    + Applied PATCH 1297654: eliminate deprecated tags, excluding <b></b>
+    + Applied PATCH 1349875: Fix for WebCalendar.class
+    + Numerous tweaks to RRULE parsing for display of repeating events
+    + Implemented PATCH 1345138: Several bug fixes
+    + Implemented PATCH 1344304: Use default tzone in send_reminders for users w/out pref
+    + Numerous translation BUG fixes
+    + Fixed problem with participants not being populated when editing an event. Caused
       during mod to allow multiple categories
-    - Fixed bug" Fixed default UAC settings. User's cal_admin value is now used vs $is_admin
-    - Fixed bug: Login loops forever. Changed the way cookies are encrypted.
-    - Fixed bug: Call to member function on a non-object intermittent error
+    + Fixed bug" Fixed default UAC settings. User's cal_admin value is now used vs $is_admin
+    + Fixed bug: Login loops forever. Changed the way cookies are encrypted.
+    + Fixed bug: Call to member function on a non-object intermittent error
       when layers are in use
-    - Applied PATCH 1290583: No more crash in tz_import.php on install, and fixed quoted
+    + Applied PATCH 1290583: No more crash in tz_import.php on install, and fixed quoted
       int values in sql
-    - view_entry.php was displaying '&amp' instead of '&amp;'
+    + view_entry.php was displaying '&amp' instead of '&amp;'
     + Fixed security: exploit allows execution of code downloaded from
       remote server
     + Fixed XHTML troubles with pop id starting with numbers
@@ -141,6 +141,9 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added support for binary objects for MySQL and SQLite.  This includes
+      new support for event attachements and event comments.
+      (Still need to implement for other databases.)
     + Implemented PATCH 1155607: Show all days in Month with config
     + Implemented PATCH 1060025: New display_month() function
     + Implemented PATCH 1294721: single file for mod date_formats

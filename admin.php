@@ -30,7 +30,7 @@ $GLOBALS['CELLBG'] = $s['CELLBG'];
 $GLOBALS['WEEKENDBG'] = $s['WEEKENDBG'];
 $GLOBALS['OTHERMONTHBG'] = $s['OTHERMONTHBG'];
 
-$BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); email_handler();"';
+$BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); attach_handler(); comment_handler(); email_handler();"';
 $INC = array('js/admin.php','js/visible.php');
 print_header ( $INC, '', $BodyX );
 ?>
@@ -634,6 +634,41 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <label><input type="radio" name="admin_SELF_REGISTRATION_FULL" value="Y" <?php if ( ! empty ( $s["SELF_REGISTRATION_FULL"] ) && $s["SELF_REGISTRATION_FULL"] == "Y" ) echo " checked=\"checked\"";?> onclick="sr_handler()" />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
 <!-- TODO add account aging feature -->
+
+
+ <!-- BEGIN ATTACHMENTS/COMMENTS -->
+
+ <tr><td class="tooltip" title="<?php etooltip("allow-attachment-help")?>">
+  <?php etranslate("Allow file attachments to events")?>:</td><td>
+  <label><input type="radio" name="admin_ALLOW_ATTACH" value="Y" <?php if ( ! empty ( $s["ALLOW_ATTACH"] ) && $s["ALLOW_ATTACH"] == "Y" ) echo " checked=\"checked\"";?> onclick="attach_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_ALLOW_ATTACH" value="N" <?php if ( empty ( $s["ALLOW_ATTACH"] ) || $s["ALLOW_ATTACH"] != "Y" ) echo " checked=\"checked\"";?> onclick="attach_handler()" />&nbsp;<?php etranslate("No")?></label>
+  <span id="at1">
+  <br/><strong>Note:</strong>
+  <?php etranslate("Admin and owner can always add attachments if enabled");?><br/>
+  <label><input type="checkbox" value="Y" name="admin_ALLOW_ATTACH_PART"
+    <?php if ( ! empty ( $s['ALLOW_ATTACH_PART'] ) && $s['ALLOW_ATTACH_PART'] == 'Y' ) echo ' CHECKED ';?> > <?php etranslate('Participant')?> </label>
+  <label><input type="checkbox" value="Y" name="admin_ALLOW_ATTACH_ANY"
+    <?php if ( ! empty ( $s['ALLOW_ATTACH_ANY'] ) && $s['ALLOW_ATTACH_ANY'] == 'Y' ) echo ' CHECKED ';?> > <?php etranslate('Anyone')?> </label>
+  </span>
+ </td></tr>
+
+ <tr><td class="tooltip" title="<?php etooltip("allow-comments-help")?>">
+  <?php etranslate("Allow comments to events")?>:</td><td>
+  <label><input type="radio" name="admin_ALLOW_COMMENTS" value="Y" <?php if ( ! empty ( $s["ALLOW_COMMENTS"] ) && $s["ALLOW_COMMENTS"] == "Y" ) echo " checked=\"checked\"";?> onclick="comment_handler()" />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_ALLOW_COMMENTS" value="N" <?php if ( empty ( $s["ALLOW_COMMENTS"] ) || $s["ALLOW_COMMENTS"] != "Y" ) echo " checked=\"checked\"";?> onclick="comment_handler()" />&nbsp;<?php etranslate("No")?></label>
+  <br/>
+  <span id="com1">
+  <br/><strong>Note:</strong>
+  <?php etranslate("Admin and owner can always add comments if enabled");?><br/>
+  <label><input type="checkbox" value="Y" name="admin_ALLOW_COMMENTS_PART"
+    <?php if ( empty ( $s['ALLOW_COMMENTS_PART'] ) || $s['ALLOW_COMMENTS_PART'] == 'Y' ) echo ' CHECKED ';?> > <?php etranslate('Participant')?> </label>
+  <label><input type="checkbox" value="Y" name="admin_ALLOW_COMMENTS_ANY"
+    <?php if ( ! empty ( $s['ALLOW_COMMENTS_ANY'] ) && $s['ALLOW_COMMENTS_ANY'] == 'Y' ) echo ' CHECKED ';?> > <?php etranslate('Anyone')?> </label>
+  </span>
+ </td></tr>
+
+ <!-- END ATTACHMENTS/COMMENTS -->
+
 </table>
 </div>
 

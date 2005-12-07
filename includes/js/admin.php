@@ -167,6 +167,28 @@ function sr_handler () {
 }
 
 // Gets called on page load and when user changes setting for
+// "Allow attachments".
+function attach_handler () {
+  var enabled = document.prefform.admin_ALLOW_ATTACH[0].checked;
+  if ( enabled ) {
+    makeVisible ( "at1" );
+  } else {
+    makeInvisible ( "at1" );
+  }
+}
+
+// Gets called on page load and when user changes setting for
+// "Allow comments".
+function comment_handler () {
+  var enabled = document.prefform.admin_ALLOW_COMMENTS[0].checked;
+  if ( enabled ) {
+    makeVisible ( "com1" );
+  } else {
+    makeInvisible ( "com1" );
+  }
+}
+
+// Gets called on page load and when user changes setting for
 // "Email enabled".
 function email_handler () {
   var enabled = document.prefform.admin_SEND_EMAIL[0].checked;

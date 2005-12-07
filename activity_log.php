@@ -98,6 +98,10 @@ if ( $res ) {
         etranslate("Notification sent");
       else if ( $row[2] == LOG_REMINDER )
         etranslate("Reminder sent");
+      else if ( $row[2] == LOG_ATTACHMENT )
+        etranslate("Attachment");
+      else if ( $row[2] == LOG_COMMENT )
+        etranslate("Comment");
       else
         echo "???";
       echo "\n</td></tr>\n";

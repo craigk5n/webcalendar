@@ -736,6 +736,8 @@ function event_get_external_users ( $event_id, $use_mailto=0 ) {
  *   - LOG_DELETE_T
  *   - LOG_NOTIFICATION
  *   - LOG_REMINDER
+ *   - LOG_ATTACHMENT
+ *   - LOG_COMMENT
  * @param string $text     Text comment to add with activity log entry
  */
 function activity_log ( $event_id, $user, $user_cal, $type, $text ) {

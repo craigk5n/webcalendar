@@ -57,6 +57,8 @@ if ( ! empty ( $delete ) ) {
       $delete_em[$i] );
     dbi_query ( "DELETE FROM webcal_reminder_log WHERE cal_id = " .
       $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_reminder_blob WHERE cal_id = " .
+      $delete_em[$i] );
     dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = " .
       $delete_em[$i] );
   }

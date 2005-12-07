@@ -359,6 +359,8 @@ function user_delete_user ( $user ) {
       $delete_em[$i] );
     dbi_query ( "DELETE FROM webcal_reminder_log WHERE cal_id = " .
       $delete_em[$i] );
+    dbi_query ( "DELETE FROM webcal_blob WHERE cal_id = " .
+      $delete_em[$i] );
     dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = " .
       $delete_em[$i] );
   }

@@ -27,6 +27,7 @@ function delete_palm_events($login) {
        dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_id = $row[0]" );
        dbi_query ( "DELETE FROM webcal_reminder_log WHERE cal_id = $row[0]" );
        dbi_query ( "DELETE FROM webcal_import_data WHERE cal_id = $row[0]" );
+       dbi_query ( "DELETE FROM webcal_blob WHERE cal_id = $row[0]" );
        dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = $row[0]" );
      }
   }
