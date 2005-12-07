@@ -1,4 +1,4 @@
-Version 1.0.2 (29 Nov 2005)
+Version 1.0.2 (06 Dec 2005)
  - Fixed vuln in layers: published vulnerability in layers_toggle.php
    was fixed
  - Security fixes: fixes for activity_log.php, export_handler.php,
