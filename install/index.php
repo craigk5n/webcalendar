@@ -514,6 +514,9 @@ if ( ! empty ( $action ) &&  $action == "install" ){
        case "mssql";
       $install_filename .="-mssql.sql";    
         break;
+       case "ibm_db2";
+      $install_filename .="-db2.sql";    
+        break;
      case "oracle";
       $install_filename .= "-oracle.sql";    
       break;
@@ -1256,6 +1259,8 @@ if ( ! $exists || ! $canWrite ) { ?>
     $dbs[] = "mssql";
   if ( function_exists ( "sqlite_open" ) )
     $dbs[] = "sqlite";
+  if ( function_exists ( "db2_pconnect" ) )
+    $dbs[] = "ibm_db2";
 
   for ( $i = 0; $i < count ( $dbs ); $i++ ) {
     if ( $i ) echo ", ";
@@ -1309,6 +1314,11 @@ if ( ! $exists || ! $canWrite ) { ?>
     echo "  <option value=\"postgresql\" " .
       ( $settings['db_type'] == 'postgresql' ? " selected=\"selected\"" : "" ) .
       ">PostgreSQL</option>\n";
+
+  if ( ! empty ( $supported['ibm_db2'] ) )
+    echo "  <option value=\"ibm_db2\" " .
+      ( $settings['db_type'] == 'ibm_db2' ? " selected=\"selected\"" : "" ) .
+      ">IBM DB2 Universal Database</option>\n";
 
   if ( ! empty ( $supported['odbc'] ) )
     echo "  <option value=\"odbc\" " .

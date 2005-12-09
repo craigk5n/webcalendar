@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added support for IBM DB2
  - Added support for binary objects for MySQL and SQLite.  This includes
    new support for event attachements and event comments.
    (Still need to implement for other databases.)
