@@ -468,6 +468,8 @@ doc.li {
     $dbs[] = "postgresql";
   if ( function_exists ( "odbc_pconnect" ) )
     $dbs[] = "odbc";
+  if ( function_exists ( "db2_pconnect" ) )
+    $dbs[] = "ibm_db2";
   if ( function_exists ( "ibase_pconnect" ) )
     $dbs[] = "ibase";
   if ( function_exists ( "mssql_pconnect" ) )
@@ -590,6 +592,11 @@ You should select "Web Server" from the list of
     echo "<option value=\"postgresql\" " .
       ( $settings['db_type'] == 'postgresql' ? " selected=\"selected\"" : "" ) .
       "> PostgreSQL </option>\n";
+
+  if ( ! empty ( $supported['ibm_db2'] ) )
+    echo "  <option value=\"ibm_db2\" " .
+      ( $settings['db_type'] == 'ibm_db2' ? " selected=\"selected\"" : "" ) .
+      ">IBM DB2 Universal Database</option>\n";
 
   if ( ! empty ( $supported['odbc'] ) )
     echo "<option value=\"odbc\" " .

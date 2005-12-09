@@ -30,6 +30,8 @@
  * @package WebCalendar
  *
  * History:
+ * 09-Dec-2005	Craig Knudsen
+ *		Added DB2 support (patch from Helmut Tessarek)
  * 17-Mar-2005	Ray Jones
  * 		Changed mssql_error to mssql_get_last_message
  * 23-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
@@ -172,6 +174,14 @@ function dbi_connect ( $host, $login, $password, $database ) {
     }
     $GLOBALS["odbc_connection"] = $c;
     return $c;
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    if ($GLOBALS["db_persistent"]) {
+      $c = db2_pconnect ( $database, $login, $password );
+    } else {
+      $c = db2_connect ( $database, $login, $password );
+    }
+    $GLOBALS["ibm_db2_connection"] = $c;
+    return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     if ($GLOBALS["db_persistent"]) {
       $c = ibase_pconnect ( $host, $login, $password );
@@ -211,6 +221,8 @@ function dbi_close ( $conn ) {
     return pg_close ( $GLOBALS["postgresql_connection"] );
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     return odbc_close ( $GLOBALS["odbc_connection"] );
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    return db2_close ( $GLOBALS["ibm_db2_connection"] );
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     return ibase_close ( $conn );
   } else {
@@ -285,6 +297,13 @@ function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     return odbc_exec ( $GLOBALS["odbc_connection"], $sql );
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    $res = db2_exec ( $GLOBALS["ibm_db2_connection"], $sql );
+    if ( ! $res )
+      dbi_fatal_error ( "Error executing query." .
+        $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : "" .
+        "", $fatalOnError, $showError );
+    return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     $res = ibase_query ( $sql );
     if ( ! $res )
@@ -350,6 +369,8 @@ function dbi_fetch_row ( $res ) {
     if ( ! odbc_fetch_into ( $res, $ret ) )
       return false;
     return $ret;
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    return db2_fetch_array ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     return ibase_fetch_row ( $res );
   } else {
@@ -386,6 +407,8 @@ function dbi_affected_rows ( $conn, $res ) {
     return pg_affected_rows ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     return odbc_num_rows ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    return db2_num_rows ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     return ibase_affected_rows ( $conn );
   } else {
@@ -418,6 +441,8 @@ function dbi_free_result ( $res ) {
     return pg_freeresult ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     return odbc_free_result ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    return db2_free_result ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     return ibase_free_result ( $res );
   } else {
@@ -447,6 +472,10 @@ function dbi_error () {
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     // no way to get error from ODBC API
     $ret = "Unknown ODBC error";
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    $ret = db2_conn_errormsg ();
+    if ( $ret == '' )
+       $ret = db2_stmt_errormsg ();
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     $ret = ibase_errmsg ();
   } else {
