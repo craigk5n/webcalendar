@@ -169,6 +169,14 @@ function dbi_connect ( $host, $login, $password, $database ) {
     }
     $GLOBALS["odbc_connection"] = $c;
     return $c;
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    if ($GLOBALS["db_persistent"]) {
+      $c = db2_pconnect ( $database, $login, $password );
+    } else {
+      $c = db2_connect ( $database, $login, $password );
+    }
+    $GLOBALS["ibm_db2_connection"] = $c;
+    return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
    $host = $host . ":" . $database;
     if ($GLOBALS["db_persistent"]) {
@@ -221,6 +229,8 @@ function dbi_close ( $conn ) {
     return pg_close ( $GLOBALS["postgresql_connection"] );
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     return odbc_close ( $GLOBALS["odbc_connection"] );
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    return db2_close ( $GLOBALS["ibm_db2_connection"] );
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     return ibase_close ( $conn );
   } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
@@ -283,6 +293,13 @@ function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     return odbc_exec ( $GLOBALS["odbc_connection"], $sql );
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    $res = db2_exec ( $GLOBALS["ibm_db2_connection"], $sql );
+    if ( ! $res )
+      dbi_fatal_error ( "Error executing query." .
+        $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : "" .
+        "", $fatalOnError, $showError );
+    return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     $res = ibase_query ( $sql );
     if ( ! $res )
@@ -340,6 +357,8 @@ function dbi_fetch_row ( $res ) {
     if ( ! odbc_fetch_into ( $res, $ret ) )
       return false;
     return $ret;
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    return db2_fetch_array ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     return ibase_fetch_row ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
@@ -378,6 +397,8 @@ function dbi_affected_rows ( $conn, $res ) {
     return pg_affected_rows ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     return odbc_num_rows ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    return db2_num_rows ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     return ibase_affected_rows ( $conn );
   } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
@@ -494,6 +515,8 @@ function dbi_free_result ( $res ) {
     return pg_freeresult ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     return odbc_free_result ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    return db2_free_result ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     return ibase_free_result ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
@@ -527,6 +550,10 @@ function dbi_error () {
     $ret = "Unknown ODBC error";
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
     $ret = ibase_errmsg ();
+  } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
+    $ret = db2_conn_errormsg ();
+    if ( $ret == '' )
+       $ret = db2_stmt_errormsg ();
   } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
     $ret = sqlite_last_error ($GLOBALS["sqlite_c"]);
   } else {

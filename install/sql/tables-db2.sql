@@ -4,28 +4,28 @@ CREATE TABLE webcal_user (
   cal_lastname VARCHAR(25),
   cal_firstname VARCHAR(25),
   cal_is_admin CHAR(1) DEFAULT 'N',
-  cal_email VARCHAR(75) NULL,
+  cal_email VARCHAR(75),
   PRIMARY KEY ( cal_login )
 );
 CREATE TABLE webcal_entry (
   cal_id INT NOT NULL,
   cal_group_id INT,
-  cal_ext_for_id INT NULL,
+  cal_ext_for_id INT,
   cal_create_by VARCHAR(25) NOT NULL,
   cal_date INT NOT NULL,
   cal_time INT,
   cal_mod_date INT,
   cal_mod_time INT,
   cal_duration INT NOT NULL,
-  cal_due_date INT NULL,
-  cal_due_time INT NULL,
+  cal_due_date INT,
+  cal_due_time INT,
   cal_priority INT DEFAULT 2,
   cal_type CHAR(1) DEFAULT 'E',
   cal_access CHAR(1) DEFAULT 'P',
   cal_name VARCHAR(80) NOT NULL,
-  cal_location VARCHAR(50) NULL,
-  cal_url VARCHAR(100) NULL,
-  cal_completed INT NULL,
+  cal_location VARCHAR(50),
+  cal_url VARCHAR(100),
+  cal_completed INT,
   cal_description VARCHAR(1024),
   PRIMARY KEY ( cal_id )
 );
@@ -33,17 +33,17 @@ CREATE TABLE webcal_entry_repeats (
    cal_id INT DEFAULT 0 NOT NULL,
    cal_type VARCHAR(20),
    cal_end INT,
-   cal_endtime INT NULL,
+   cal_endtime INT,
    cal_frequency INT DEFAULT 1,
    cal_days CHAR(7),
-   cal_bymonth VARCHAR(50) NULL,
-   cal_bymonthday VARCHAR(100) NULL,
-   cal_byday VARCHAR(100) NULL,
-   cal_bysetpos VARCHAR(50) NULL,
-   cal_byweekno VARCHAR(50) NULL,
-   cal_byyearday VARCHAR(50) NULL,
+   cal_bymonth VARCHAR(50),
+   cal_bymonthday VARCHAR(100),
+   cal_byday VARCHAR(100),
+   cal_bysetpos VARCHAR(50),
+   cal_byweekno VARCHAR(50),
+   cal_byyearday VARCHAR(50),
    cal_wkst CHAR(2) DEFAULT 'MO',
-   cal_count INT NULL,
+   cal_count INT,
    PRIMARY KEY (cal_id)
 );
 CREATE TABLE webcal_entry_repeats_not (
@@ -63,7 +63,7 @@ CREATE TABLE webcal_entry_user (
 CREATE TABLE webcal_entry_ext_user (
   cal_id INT DEFAULT 0 NOT NULL,
   cal_fullname VARCHAR(50) NOT NULL,
-  cal_email VARCHAR(75) NULL,
+  cal_email VARCHAR(75),
   PRIMARY KEY ( cal_id, cal_fullname )
 );
 CREATE TABLE webcal_user_pref (
@@ -157,10 +157,10 @@ CREATE TABLE webcal_nonuser_cals (
 );
 CREATE TABLE webcal_import (
   cal_import_id INT NOT NULL,
-  cal_name VARCHAR(50) NULL,
+  cal_name VARCHAR(50),
   cal_date INT NOT NULL,
   cal_type VARCHAR(10) NOT NULL,
-  cal_login VARCHAR(25) NULL,
+  cal_login VARCHAR(25),
   PRIMARY KEY ( cal_import_id )
 );
 CREATE TABLE webcal_import_data (
@@ -168,7 +168,7 @@ CREATE TABLE webcal_import_data (
   cal_id INT NOT NULL,
   cal_login VARCHAR(25) NOT NULL,
   cal_import_type VARCHAR(15) NOT NULL,
-  cal_external_id VARCHAR(200) NULL,
+  cal_external_id VARCHAR(200),
   PRIMARY KEY  ( cal_id, cal_login )
 );
 CREATE TABLE webcal_report (
@@ -179,9 +179,9 @@ CREATE TABLE webcal_report (
   cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
   cal_report_name VARCHAR(50) NOT NULL,
   cal_time_range INT NOT NULL,
-  cal_user VARCHAR(25) NULL,
+  cal_user VARCHAR(25),
   cal_allow_nav CHAR(1) DEFAULT 'Y',
-  cal_cat_id INT NULL,
+  cal_cat_id INT,
   cal_include_empty CHAR(1) DEFAULT 'N',
   cal_show_in_trailer CHAR(1) DEFAULT 'N',
   cal_update_date INT NOT NULL,
@@ -209,31 +209,31 @@ CREATE TABLE webcal_access_function (
 );
 CREATE TABLE webcal_tz_zones (
   zone_name VARCHAR(50) DEFAULT '' NOT NULL,
-  zone_gmtoff INT DEFAULT '0' NOT NULL,
+  zone_gmtoff INT DEFAULT 0 NOT NULL,
   zone_rules VARCHAR(50) DEFAULT '' NOT NULL,
-  zone_format VARCHAR(20 DEFAULT '' NOT NULL,
-  zone_from BIGINT DEFAULT '0' NOT NULL,
-  zone_until BIGINT DEFAULT '0' NOT NULL,
+  zone_format VARCHAR(20) DEFAULT '' NOT NULL,
+  zone_from BIGINT DEFAULT 0 NOT NULL,
+  zone_until BIGINT DEFAULT 0 NOT NULL,
   zone_cc CHAR(2) DEFAULT '' NOT NULL,
   zone_coord VARCHAR(20) DEFAULT '' NOT NULL,
   zone_country VARCHAR(50) DEFAULT '' NOT NULL,
-  KEY zone_name (zone_name)
+  PRIMARY KEY (zone_name)
 );
 CREATE TABLE webcal_tz_rules (
   rule_name VARCHAR(50) DEFAULT '' NOT NULL,
-  rule_from INT DEFAULT '0' NOT NULL,
-  rule_to INT DEFAULT '0' NOT NULL,
+  rule_from INT DEFAULT 0 NOT NULL,
+  rule_to INT DEFAULT 0 NOT NULL,
   rule_type VARCHAR(20) DEFAULT '' NOT NULL,
-  rule_in INT  DEFAULT '0' NOT NULL,
+  rule_in INT  DEFAULT 0 NOT NULL,
   rule_on VARCHAR(20) DEFAULT '' NOT NULL,
-  rule_at INT DEFAULT '0' NOT NULL,
+  rule_at INT DEFAULT 0 NOT NULL,
   rule_at_suffix CHAR(1) DEFAULT '' NOT NULL,
-  rule_save INT DEFAULT '0' NOT NULL,
+  rule_save INT DEFAULT 0 NOT NULL,
   rule_letter VARCHAR(5) DEFAULT '' NOT NULL,
-  KEY rule_name (rule_name)
+  PRIMARY KEY (rule_name)
 );
 CREATE TABLE webcal_tz_list (
-  tz_list_id INT DEFAULT '0' NOT NULL,
+  tz_list_id INT DEFAULT 0 NOT NULL,
   tz_list_name VARCHAR(50) DEFAULT '' NOT NULL,
   tz_list_text VARCHAR(75) DEFAULT '' NOT NULL
 );
@@ -244,19 +244,19 @@ CREATE TABLE webcal_user_template (
   PRIMARY KEY ( cal_login, cal_type )
 );
 CREATE TABLE webcal_entry_categories (
-  cal_id INT DEFAULT '0' NOT NULL,
-  cat_id INT DEFAULT '0' NOT NULL,
-  cat_order INT DEFAULT '0' NOT NULL,
-  cat_owner varchar(25) NULL
+  cal_id INT DEFAULT 0 NOT NULL,
+  cat_id INT DEFAULT 0 NOT NULL,
+  cat_order INT DEFAULT 0 NOT NULL,
+  cat_owner varchar(25)
 );
 CREATE TABLE webcal_blob (
   cal_blob_id INT NOT NULL,
-  cal_id INT NULL,
-  cal_login VARCHAR(25) NULL,
-  cal_name VARCHAR(30) NULL,
-  cal_description VARCHAR(128) NULL,
-  cal_size INT NULL,
-  cal_mime_type VARCHAR(50) NULL,
+  cal_id INT,
+  cal_login VARCHAR(25),
+  cal_name VARCHAR(30),
+  cal_description VARCHAR(128),
+  cal_size INT,
+  cal_mime_type VARCHAR(50),
   cal_type CHAR(1) NOT NULL,
   cal_mod_date INT NOT NULL,
   cal_mod_time INT NOT NULL,
