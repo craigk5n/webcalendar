@@ -242,7 +242,7 @@ CREATE TABLE webcal_user_template (
 );
 CREATE TABLE webcal_entry_categories (
   cal_id INT DEFAULT '0' NOT NULL,
-  cat_id INT) DEFAULT '0' NOT NULL,
+  cat_id INT DEFAULT '0' NOT NULL,
   cat_order INT DEFAULT '0' NOT NULL,
   cat_owner VARCHAR(25) NULL
 );
