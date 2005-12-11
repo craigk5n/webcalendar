@@ -153,7 +153,8 @@ CREATE TABLE webcal_import_data (
 );
 
 /*upgrade_v0.9.43*/
-ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(32) NULL;
+ALTER TABLE webcal_user ALTER COLUMN cal_passwd TYPE VARCHAR(32);
+ALTER TABLE webcal_user ALTER COLUMN cal_passwd DROP NOT NULL;
 DROP TABLE webcal_import_data;
 CREATE TABLE webcal_import (
   cal_import_id INT NOT NULL,
@@ -250,7 +251,7 @@ ALTER TABLE webcal_entry_repeats ADD cal_byweekno VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_byyearday VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_wkst CHAR(2) DEFAULT 'MO';
 ALTER TABLE webcal_entry_repeats ADD cal_count INT DEFAULT NULL;
-ALTER TABLE webcal_entry_repeats_not ADD cal_exdate INT(1) DEFAULT '1' NOT NULL;
+ALTER TABLE webcal_entry_repeats_not ADD cal_exdate INT DEFAULT '1' NOT NULL;
 ALTER TABLE webcal_entry ADD cal_due_date INT DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_due_time INT DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_location VARCHAR(50) DEFAULT NULL;
