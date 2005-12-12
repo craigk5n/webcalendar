@@ -1266,8 +1266,8 @@ class WebCalendar {
      */
     $GLOBALS['page_lookup'] = array (
       ACCESS_EVENT_VIEW =>
-        "(view_entry.php|view_task.php|select_user.php|purge.php|category*php)",
-      ACCESS_EVENT_EDIT => "(entry|list_unapproved|usersel|availability|datesel|task|catsel)",
+        "(view_entry.php|view_task.php|select_user.php|purge.php|category*php|doc.php)",
+      ACCESS_EVENT_EDIT => "(entry|list_unapproved|usersel|availability|datesel|task|catsel|docadd|docdel)",
       ACCESS_DAY => "day.php",
       ACCESS_WEEK => "week.php",
       ACCESS_MONTH => "month.php",
