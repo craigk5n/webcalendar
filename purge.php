@@ -178,7 +178,7 @@ function purge_events ( $ids ) {
     array ( 'webcal_site_extras', 'cal_id' ),
     array ( 'webcal_reminder_log', 'cal_id' ),
     array ( 'webcal_entry_ext_user', 'cal_id' ),
-    array ( 'webcal_blob', 'cal_id' )
+    array ( 'webcal_blob', 'cal_id' ),
     array ( 'webcal_entry', 'cal_id' )
   );
 
