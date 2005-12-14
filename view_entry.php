@@ -15,8 +15,11 @@
  */
 include_once 'includes/init.php';
 include 'includes/xcal.php'; //only to display recurrance info
+// Load Doc classes for attachments and comments
 include 'includes/classes/Doc.class';
 include 'includes/classes/DocList.class';
+include 'includes/classes/AttachmentList.class';
+include 'includes/classes/CommentList.class';
 
 // make sure this user is allowed to look at this calendar.
 $can_view = false;
@@ -715,7 +718,7 @@ if ( Doc::attachmentsEnabled () ) { ?>
   <tr><td style="vertical-align:top; font-weight:bold;">
   <?php etranslate("Attachments")?>:</td><td>
   <?php
-  $attList =& new DocList ( $id, 'A' );
+  $attList =& new AttachmentList ( $id );
   for ( $i = 0; $i < $attList->getSize(); $i++ ) {
     $a = $attList->getDoc ( $i );
     echo $a->getSummary ();
@@ -745,8 +748,7 @@ if ( Doc::commentsEnabled () ) { ?>
   <tr><td style="vertical-align:top; font-weight:bold;">
   <?php etranslate("Comments")?>:</td><td>
   <?php
-  //$comments = get_comments_for_event ( $id );
-  $comList =& new DocList ( $id, 'C' );
+  $comList =& new CommentList ( $id );
   $num_comment = $comList->getSize();
   $comment_text = '';
   for ( $i = 0; $i < $num_comment; $i++ ) {
