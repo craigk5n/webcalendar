@@ -93,14 +93,14 @@ class Doc {
   var $_blob;
 
   /** Are attachments enabled? */
-  public static function attachmentsEnabled ()
+  function attachmentsEnabled ()
   {
     global $ALLOW_ATTACH;
     return ( ! empty ( $ALLOW_ATTACH ) && $ALLOW_ATTACH == 'Y' );
   }
 
   /** Are comments enabled? */
-  public static function commentsEnabled ()
+  function commentsEnabled ()
   {
     global $ALLOW_COMMENTS;
     return ( ! empty ( $ALLOW_COMMENTS ) && $ALLOW_COMMENTS == 'Y' );
@@ -111,7 +111,7 @@ class Doc {
     * Provide a list of comma-separated column names for use in a SQL
     * query to the webcal_blob table.
     */
-  public static function getColumnList ()
+  function getColumnList ()
   {
     return 'cal_blob_id, cal_id, cal_login, cal_name, cal_description, ' .
       'cal_size, cal_mime_type, cal_type, cal_mod_date, cal_mod_time';
@@ -124,7 +124,7 @@ class Doc {
     * @return string	The SQL text
     * @access public
     */
-  public static function getAttachmentsSQL ( $event_id )
+  function getAttachmentsSQL ( $event_id )
   {
     return getSQL ( $event_id, 'A' );
   }
@@ -136,13 +136,13 @@ class Doc {
     * @return string	The SQL text
     * @access public
     */
-  public static function getCommentsSQL ( $event_id )
+  function getCommentsSQL ( $event_id )
   {
     return getSQL ( $event_id, 'C' );
   }
 
 
-  public static function getSQL ( $event_id, $type='A' )
+  function getSQL ( $event_id, $type='A' )
   {
     return 'SELECT ' . Doc::getColumnList () .
       ' FROM webcal_blob WHERE cal_id = ' . $event_id .
@@ -156,7 +156,7 @@ class Doc {
     * @param int blid	Unique doc id
     * @return string	The SQL to load the Doc
     */
-  public static function getSQLForDocId ( $blid )
+  function getSQLForDocId ( $blid )
   {
     return 'SELECT ' . Doc::getColumnList () .
       ' FROM webcal_blob WHERE cal_blob_id = ' . $blid;
@@ -295,7 +295,7 @@ class Doc {
     * Get a summary of this object
     * @return string	A summary of the object
     */
-  public function getSummary () {
+  function getSummary () {
     $ret = '<a href="doc.php?blid=' . $this->_blob_id .
       '">' . htmlspecialchars ( $this->_description ) . '</a>' .
       ' ( ' . htmlspecialchars ( $this->_name ) . ', ';
@@ -318,7 +318,7 @@ class Doc {
     * called.
     * @return mixed	binary data of the blob
     */
-  public function getData () {
+  function getData () {
     return dbi_get_blob ( 'webcal_blob', 'cal_blob',
           'cal_blob_id = ' . $this->_blob_id );
 
