@@ -11,14 +11,12 @@
  * (*) required field
  */
 include_once 'includes/init.php';
+include_once 'includes/classes/Doc.class';
 
 $blid = getIntValue ( 'blid', true );
 $error = '';
 
-$res = dbi_query ( 'SELECT cal_id, cal_name, cal_description, ' .
-  'cal_login, cal_size, cal_type, cal_mime_type, cal_blob ' .
-  'FROM webcal_blob ' .
-  "WHERE cal_blob_id = $blid" );
+$res = dbi_query ( Doc::getSQLForDocId ( $blid ) );
 if ( ! $res ) {
   $error = translate ( "Database error" ) . ": " . dbi_error ();
 }
@@ -27,14 +25,15 @@ if ( empty ( $error ) ) {
   if ( ! $row ) {
     $error = translate ( 'Invalid entry id' );
   } else {
-    $id = $row[0];
-    $filename = $row[1];
-    $description = $row[2];
-    $owner = $row[3];
-    $size = $row[4];
-    $type = $row[5];
-    $mimetype = $row[6];
-    $filedata = $row[7];
+    $doc =& new Doc ( $row );
+    $id = $doc->getId();
+    $filename = $doc->getName ();
+    $description = $doc->getDescription ();
+    $owner = $doc->getLogin ();
+    $size = $doc->getSize();
+    $type = $doc->getType ();
+    $mimetype = $doc->getMimeType();
+    $filedata = $doc->getData ();
   }
   dbi_free_result ( $res );
 }
