@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @version $Id$
  * @package WebCalendar
- * @subpackage Events
+ * @subpackage Doc
  */
 
 /**
@@ -21,6 +21,7 @@ class DocList {
 
   /**
     * Get the number of Doc objects in this list.
+    * @return int	The number of objects in this list
     */
   function getSize ()
   {
@@ -40,7 +41,9 @@ class DocList {
   }
   
   /**
-   * Creates a new Doc list
+   * Creates a new Doc list for the specified event.  This list
+   * will be for either attachments ($type='A') or
+   * comments ($type='C').
    *
    * @parm  int    $event_id	The event id
    * @parm  int    $type	The type of Doc objects ('A' or 'C')
