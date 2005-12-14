@@ -15,7 +15,8 @@
  */
 include_once 'includes/init.php';
 include 'includes/xcal.php'; //only to display recurrance info
-include 'includes/doc.php';
+include 'includes/classes/Doc.class';
+include 'includes/classes/DocList.class';
 
 // make sure this user is allowed to look at this calendar.
 $can_view = false;
@@ -710,27 +711,27 @@ $can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) ||
   ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
   ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
 
-if ( attachments_enabled () ) { ?>
+if ( Doc::attachmentsEnabled () ) { ?>
   <tr><td style="vertical-align:top; font-weight:bold;">
   <?php etranslate("Attachments")?>:</td><td>
   <?php
-  $attachments = get_attachment_list_for_event ( $id );
-  for ( $i = 0; $i < count ( $attachments ); $i++ ) {
-    $a = $attachments[$i];
-    echo $a['summary'];
+  $attList =& new DocList ( $id, 'A' );
+  for ( $i = 0; $i < $attList->getSize(); $i++ ) {
+    $a = $attList->getDoc ( $i );
+    echo $a->getSummary ();
     // show delete link if user can delete
-    if ( $is_admin || $login == $a['cal_login'] ||
-      user_is_assistant ( $login, $a['cal_login'] ) ||
+    if ( $is_admin || $login == $a->getLogin() ||
+      user_is_assistant ( $login, $a->getLogin() ) ||
       $login == $create_by ||
       user_is_assistant ( $login, $create_by ) ) {
-        echo " [<a href=\"docdel.php?blid=" . $a['cal_blob_id'] .
+        echo " [<a href=\"docdel.php?blid=" . $a->getId() .
           "\" onclick=\"return confirm('" .
           translate ( "Are you sure you want to delete this entry?", true ) .
           "');\">" . translate ( 'Delete' ) . '</a>]';
     }
     echo "<br/>\n";
   }
-  $num_attach = count ( $attachments );
+  $num_attach = $attList->getSize();
   if ( $num_attach == 0 ) {
     echo translate('None') . '<br/>';
   }
@@ -740,33 +741,34 @@ if ( attachments_enabled () ) { ?>
   echo "<td></tr>\n";
 }
 
-if ( comments_enabled () ) { ?>
+if ( Doc::commentsEnabled () ) { ?>
   <tr><td style="vertical-align:top; font-weight:bold;">
   <?php etranslate("Comments")?>:</td><td>
   <?php
-  $comments = get_comments_for_event ( $id );
-  $num_comment = count ( $comments );
+  //$comments = get_comments_for_event ( $id );
+  $comList =& new DocList ( $id, 'C' );
+  $num_comment = $comList->getSize();
   $comment_text = '';
-  for ( $i = 0; $i < count ( $comments ); $i++ ) {
-    $cmt = $comments[$i];
+  for ( $i = 0; $i < $num_comment; $i++ ) {
+    $cmt = $comList->getDoc ( $i );
     $comment_text .=
-      '<strong>' . htmlspecialchars ( $cmt['cal_description'] ) . '</strong> - ' .
-      $cmt['cal_login'] . " @ " .
-      date_to_str ( $cmt['cal_mod_date'], '', false, true ) .
-      ' ' . display_time ( $cmt['cal_mod_time'] ) . "\n";
+      '<strong>' . htmlspecialchars ( $cmt->getDescription() ) . '</strong> - ' .
+      $cmt->getLogin() . " @ " .
+      date_to_str ( $cmt->getModDate(), '', false, true ) .
+      ' ' . display_time ( $cmt->getModTime() ) . "\n";
       // show delete link if user can delete
-      if ( $is_admin || $login == $a['cal_login'] ||
-        user_is_assistant ( $login, $a['cal_login'] ) ||
+      if ( $is_admin || $login == $cmt->getLogin() ||
+        user_is_assistant ( $login, $cmt->getLogin() ) ||
         $login == $create_by ||
         user_is_assistant ( $login, $create_by ) ) {
-          $comment_text .= " [<a href=\"docdel.php?blid=" . $cmt['cal_blob_id'] .
+          $comment_text .= " [<a href=\"docdel.php?blid=" . $cmt->getId() .
             "\" onclick=\"return confirm('" .
             translate ( "Are you sure you want to delete this entry?", true ) .
             "');\">" . translate ( 'Delete' ) . '</a>]';
       }
       $comment_text .= "<br/>\n" .
         "<blockquote id=\"eventcomment\">" . nl2br ( activate_urls (
-        htmlspecialchars ( $cmt['cal_blob'] ) ) ) .
+        htmlspecialchars ( $cmt->getData () ) ) ) .
         "</blockquote>\n";
   }
   if ( $num_comment == 0 ) {
@@ -881,7 +883,7 @@ if ( $is_nonuser )
   $can_edit = false;
 
 $can_add_attach = false;
-if ( attachments_enabled () ) {
+if ( Doc::attachmentsEnabled () ) {
   if ( $can_edit )
     $can_add_attach = true;
   else if ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' )
@@ -891,7 +893,7 @@ if ( attachments_enabled () ) {
 }
   
 $can_add_comment = false;
-if ( comments_enabled () ) {
+if ( Doc::commentsEnabled () ) {
   if ( $can_edit )
     $can_add_comment = true;
   else if ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' )

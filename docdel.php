@@ -18,6 +18,7 @@
  *	TODO: perhaps add email notification on this
  */
 include_once 'includes/init.php';
+include_once 'includes/classes/Doc.class';
 
 $blid = getIntValue ( 'blid', true );
 $owner = '';
@@ -30,17 +31,16 @@ $name = '';
 if ( $is_admin )
   $can_delete = true;
 
-$res = dbi_query ( "SELECT cal_login, cal_id, cal_type, cal_name " .
-  "FROM webcal_blob " .
-  "WHERE cal_blob_id = $blid" );
+$res = dbi_query ( Doc::getSQLForDocId ( $blid ) );
 if ( ! $res ) {
   $error = translate("Database error") . ": " . dbi_error ();
 } else {
   if ( $row = dbi_fetch_row ( $res ) ) {
-    $owner = $row[0];
-    $event_id = $row[1];
-    $type = $row[2];
-    $name = $row[3];
+    $doc =& new Doc ( $row );
+    $owner = $doc->getLogin ();
+    $event_id = $doc->getEventId ();
+    $type = $doc->getType ();
+    $name = $doc->getName ();
     if ( $owner == $login )
       $can_delete = true;
     else if ( user_is_assistant ( $login, $owner ) )
