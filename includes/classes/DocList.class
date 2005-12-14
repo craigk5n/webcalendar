@@ -17,7 +17,6 @@ class DocList {
   var $_count = 0;
   var $_event_id = -1;
   var $_type;
-  var $_blobs_loaded = false;
   var $_arr; // array of Doc objects
 
   /**
