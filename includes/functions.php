@@ -2096,8 +2096,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
     $sql .= ") ";
   $sql .= $date_filter;
 
-  // now order the results by time and by entry id.
-  $sql .= " ORDER BY webcal_entry.cal_time, webcal_entry.cal_description";
+  // now order the results by time, then name
+  $sql .= " ORDER BY webcal_entry.cal_time, webcal_entry.cal_name";
   $res = dbi_query ( $sql );
   if ( $res ) {
     $i = 0;
