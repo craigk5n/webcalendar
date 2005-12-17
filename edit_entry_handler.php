@@ -447,17 +447,18 @@ if ( empty ( $error ) ) {
           }
   
           $fmtdate = date ( "Ymd", $user_eventstart ); 
-          $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
-            translate("An appointment has been canceled for you by") .
+          $msg = translate("Hello", true) . ", " . unhtmlentities( $tempfullname ) . ".\n\n" .
+            translate("An appointment has been canceled for you by", true) .
             " " . $login_fullname .  ".\n" .
-            translate("The subject was") . " \"" . $name . "\"\n\n" .
-            translate("The description is") . " \"" . $description . "\"\n" .
+            translate("The subject was", true) . " \"" . $name . "\"\n\n" .
+            translate("The description is", true) . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
              ( $timetype != 'T'  ? "" :
             translate("Time") . ": " .
             // Apply user's GMT offset and display their TZID
             display_time ( date ( "YmdHis", $eventstart ), 2, '', 
               $user_TIMEZONE, $t_format ) . "\n\n\n");
+          $msg = stripslashes ( $msg );
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
             //DON'T change & to &amp; here. email will handle it
@@ -474,9 +475,8 @@ if ( empty ( $error ) ) {
             $mail->From = $login_fullname;
           }
           $mail->IsHTML( $htmlmail == 'Y' ? true : false );
-          $mail->AddAddress( $tempemail, $tempfullname );
-          $mail->Subject = translate($APPLICATION_NAME) . " " .
-            translate("Notification") . ": " . $name;
+          $mail->AddAddress( $tempemail, unhtmlentities ( $tempfullname ) );
+          $mail->WCSubject ( $name );
           $mail->Body  = ( $htmlmail == 'Y' ? nl2br ( $msg ) : $msg );
           $mail->Send();
           $mail->ClearAll();          
@@ -573,25 +573,26 @@ if ( empty ( $error ) ) {
           }
 
           $fmtdate = date ( "Ymd", $user_eventstart ); 
-          $msg = translate("Hello") . ", " . $tempfullname . ".\n\n";
+          $msg = translate("Hello", true) . ", " . unhtmlentities ( $tempfullname ) . ".\n\n";
           if ( $newevent || ( empty ( $old_status[$participants[$i]] ) ) ) {
-            $msg .= translate("A new appointment has been made for you by");
+            $msg .= translate("A new appointment has been made for you by", true);
           } else {
-            $msg .= translate("An appointment has been updated by");
+            $msg .= translate("An appointment has been updated by", true);
           }
           $msg .= " " . $login_fullname .  ".\n" .
-            translate("The subject is") . " \"" . $name . "\"\n\n" .
-            translate("The description is") . " \"" . $description . "\"\n" .
+            translate("The subject is", true) . " \"" . $name . "\"\n\n" .
+            translate("The description is", true) . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
             ( $timetype != 'T' ? "" :
             translate("Time") . ": " .
             // Apply user's GMT offset and display their TZID
             display_time ( date ( "YmdHis", $eventstart ), 2, '', 
               $user_TIMEZONE, $t_format ) . "\n" ) .
-            translate("Please look on") . " " . translate($APPLICATION_NAME) . " " .
+            translate("Please look on", true) . " " . translate($APPLICATION_NAME) . " " .
             ( $REQUIRE_APPROVALS == "Y" ?
-            translate("to accept or reject this appointment") :
-            translate("to view this appointment") ) . ".";
+            translate("to accept or reject this appointment", true) :
+            translate("to view this appointment", true) ) . ".";
+          $msg = stripslashes ( $msg );
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
             //DON'T change & to &amp; here. email will handle it
@@ -609,9 +610,8 @@ if ( empty ( $error ) ) {
             $mail->From = $login_fullname;
           }
           $mail->IsHTML( $htmlmail == 'Y' ? true : false );
-          $mail->AddAddress( $tempemail, $tempfullname );
-          $mail->Subject = translate($APPLICATION_NAME) . " " .
-            translate("Notification") . ": " . $name;
+          $mail->AddAddress( $tempemail, unhtmlentities ( $tempfullname ) );
+          $mail->WCSubject ( $name );
           $mail->Body  = ( $htmlmail == 'Y' ? nl2br ( $msg ) : $msg );                    
           $mail->Send();
           $mail->ClearAll();
@@ -699,22 +699,23 @@ if ( $single_user == "N" &&
           $fmtdate = date ( "Ymd", $eventstart ); 
           // Strip [\d] from duplicate Names before emailing
           $ext_names[$i] = trim(preg_replace( '/\[[\d]]/', "", $ext_names[$i]) );
-          $msg = translate("Hello") . ", " . $ext_names[$i] . ".\n\n";
+          $msg = translate("Hello", true) . ", " . $ext_names[$i] . ".\n\n";
           if ( $newevent ) {
-            $msg .= translate("A new appointment has been made for you by");
+            $msg .= translate("A new appointment has been made for you by", true);
           } else {
-            $msg .= translate("An appointment has been updated by");
+            $msg .= translate("An appointment has been updated by", true);
           }
           $msg .= " " . $login_fullname .  ".\n" .
-            translate("The subject is") . " \"" . $name . "\"\n\n" .
-            translate("The description is") . " \"" . $description . "\"\n" .
+            translate("The subject is", true) . " \"" . $name . "\"\n\n" .
+            translate("The description is", true) . " \"" . $description . "\"\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
             ( $timetype != 'T' ? "" :
             translate("Time") . ": " .
             // Do not apply TZ offset & display TZID, which is GMT
             display_time ( date ("YmdHis", $eventstart ), 3 ) . "\n" ) .
-            translate("Please look on") . " " . translate($APPLICATION_NAME) .
+            translate("Please look on", true) . " " . translate($APPLICATION_NAME) .
             ".";
+          $msg = stripslashes ( $msg );          
           // add URL to event, if we can figure it out
           //don't send HTML to external adresses
           $htmlmail = false;
@@ -733,8 +734,7 @@ if ( $single_user == "N" &&
           }  
           $mail->IsHTML($htmlmail == "Y");
           $mail->AddAddress( $ext_emails[$i], $ext_names[$i] );
-          $mail->Subject = translate($APPLICATION_NAME) . " " .
-            translate("Notification") . ": " . $name;
+          $mail->WCSubject ( $name );
           $mail->Body  = ( $htmlmail == 'Y' ? nl2br ( $msg ) : $msg );
           $mail->Send();
           $mail->ClearAll();

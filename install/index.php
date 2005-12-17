@@ -991,10 +991,6 @@ body {
 table {
   border: 0px solid #ccc;
 }
-.collapsable {
-  border: 0px solid #ccc;
-  border-collapse: collapse;
-}
 th.pageheader {
   font-size: 24px;
  padding:10px;

@@ -90,7 +90,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $POPUP_FG,$BGCOLOR,$OTHERMONTHBG;
   global $LANGUAGE, $DISABLE_POPUPS;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
-  global $friendly;
+  global $friendly, $DISPLAY_WEEKENDS, $DISPLAY_TASKS;
   global $bodyid, $self, $login;
   $lang = '';
   if ( ! empty ( $LANGUAGE ) )

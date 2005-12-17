@@ -60,42 +60,12 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
 }
 ?>
 
-<table>
-<tr><td style="vertical-align:top; width:82%;">
-<div style="border-width:0px;">
-<a title="<?php etranslate("Next"); ?>" class="next" href="day.php?<?php echo $u_url;?>date=<?php echo $nextYmd . $caturl;?>"><img src="rightarrow.gif" alt="<?php etranslate("Next"); ?>" /></a>
-<a title="<?php etranslate("Previous"); ?>" class="prev" href="day.php?<?php echo $u_url;?>date=<?php echo $prevYmd . $caturl;?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous"); ?>" /></a>
-<div class="title">
-<span class="date"><?php
-  echo date_to_str ( $nowYmd );
-?></span>
-<span class="user"><?php
-  // display current calendar's user (if not in single user)
-  if ( $single_user == "N" ) {
-    echo "<br />";
-    echo $user_fullname;
-  }
-  if ( $is_nonuser_admin )
-    echo "<br />-- " . translate("Admin mode") . " --";
-  if ( $is_assistant )
-    echo "<br />-- " . translate("Assistant mode") . " --";
-?></span>
+<table  width="100%">
+<tr><td style="vertical-align:top; width:80%;" >
 <?php
-  if ( $CATEGORIES_ENABLED == "Y" && (!$user || ($user == $login || $is_assistant ))) {
-    echo "<br />\n<br />\n";
-    print_category_menu( 'day', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
-  }
+  display_navigation( 'day' );
 ?>
-</div>
-</div>
-</td>
-<td style="vertical-align:top;" rowspan="2">
-<!-- START MINICAL -->
-<div class="minicalcontainer">
-<?php display_small_month ( $thismonth, $thisyear, true ); ?>
-</div>
-
-</td></tr><tr><td rowspan="2">
+</td><td>&nbsp;</td></tr><tr><td>
 <table class="glance" cellspacing="0" cellpadding="0">
 <?php
 if ( empty ( $TIME_SLOTS ) )
@@ -106,17 +76,18 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 ?>
 </table>
 </td>
-</tr>
-
-
+<td style="vertical-align:top;" rowspan="2">
+<!-- START MINICAL -->
+<div class="minicalcontainer" style="text-align:center">
+<?php display_small_month ( $thismonth, $thisyear, true ); ?>
+</div>
+<br />
 <?php 
 if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y" ) {
-  echo "<tr><td valign=\"bottom\">";
   echo display_small_tasks ( $cat_id );
- echo "</td></tr>";
- }
-?>
-</table>
+}
+?> 
+</td></tr></table>
 <br />
 <?php
  if ( ! empty ( $eventinfo ) ) echo $eventinfo;

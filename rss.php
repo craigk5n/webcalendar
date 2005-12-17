@@ -214,10 +214,11 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>';
 <channel rdf:about="<?php echo $SERVER_URL . "rss.php"; ?>">
 <title><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></title>
 <link><?php echo $SERVER_URL; ?></link>
-<description></description>
+<description><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></description>
 <dc:language><?php echo $lang; ?></dc:language>
 <dc:creator><![CDATA[<?php echo $creator; ?>]]></dc:creator>
-<dc:date><?php echo date ( 'm/d/Y H:i A' ); ?></dc:date>
+<?php //proper format is 2002-10-02T10:00:00-05:00 ?>
+<dc:date><?php echo date ( 'Y-m-d' ) . 'T' . date ( 'H:i:sO' ); ?></dc:date>
 <admin:generatorAgent rdf:resource="http://www.k5n.us/webcalendar.php?v=<?php echo $PROGRAM_VERSION; ?>" />
 
 <?php
@@ -253,8 +254,6 @@ echo "</rdf:Seq>\n</items>\n</channel>\n\n";
 <title><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></title>
 <link><?php echo $PROGRAM_URL; ?></link>
 <url>http://www.k5n.us/k5n_small.gif</url>
-<width>141</width>
-<height>36</height>
 </image>
 <?php
 $numEvents = 0;
@@ -281,8 +280,8 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
         echo "<content:encoded xml:lang=\"$lang\"><![CDATA[" .
           $entries[$j]->getDescription() . "]]></content:encoded>\n";
         echo "<dc:creator><![CDATA[" . $creator . "]]></dc:creator>\n";
-        echo "<dc:date>" . date ( 'm/d/Y H:i A', $unixtime ) .
-          "</dc:date>\n";
+        echo "<dc:date>" . date ( 'Y-m-d', $unixtime ) .'T' . 
+				  date ( 'H:i:sO', $unixtime ) . "</dc:date>\n";
         echo "</item>\n";
         $numEvents++;
       }
@@ -304,8 +303,8 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
         echo "<content:encoded xml:lang=\"$lang\"><![CDATA[" .
           $rentries[$j]->getDescription() . "]]></content:encoded>\n";
         echo "<dc:creator><![CDATA[" . $creator . "]]></dc:creator>\n";
-        echo "<dc:date>" . date ( 'm/d/Y H:i A', $unixtime ) .
-          "</dc:date>\n";
+        echo "<dc:date>" . date ( 'Y-m-d', $unixtime ) .'T' . 
+				  date ( 'H:i:sO', $unixtime ) . "</dc:date>\n";
         echo "</item>\n";   
         $numEvents++;
       }

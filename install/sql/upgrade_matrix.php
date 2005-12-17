@@ -20,12 +20,13 @@ array ( "SELECT cal_is_global FROM webcal_view", "v1.0RC3 - v1.0.0", "upgrade_v1
 array ( "SELECT * FROM webcal_access_user", "v1.1.0", "upgrade_v1.1.0-CVS"),
 array ( "SELECT * FROM webcal_tz_list", "v1.1.0-CVS", "upgrade_v1.1.0a-CVS"),
 array ( "SELECT * FROM webcal_user_template ", "v1.1.0a-CVS", "upgrade_v1.1.0b-CVS"),
-array ( "SELECT * FROM webcal_entry_categories ", "v1.1.0b-CVS", "upgrade_v1.1.0c-CVS")
+array ( "SELECT * FROM webcal_entry_categories ", "v1.1.0b-CVS", "upgrade_v1.1.0c-CVS"),
+array ( "SELECT * FROM webcal_blob ", "v1.1.0c-CVS", "upgrade_v1.1.0d-CVS")
 );
 
 //Program Version for this release
 //Update this to reflect array element[1] in the database_upgrade_matrix array
 //This is probably not the proper number scheme, but we can change as needed
-$PROGRAM_VERSION = "v1.1.0b-CVS";
+$PROGRAM_VERSION = "v1.1.0c-CVS";
 
 ?>

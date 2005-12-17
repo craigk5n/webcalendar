@@ -143,15 +143,10 @@ if ( $is_day_view ) {
   if ( $DISPLAY_WEEKENDS == "N" ) {
     if ( $WEEK_START == 1 ) {
       $start_ind = 0;
-      $end_ind = 5;
+      $end_ind = 4;
     } else {
       $start_ind = 1;
       $end_ind = 5;
-    }
-    // Hidden setting that always forces Saturday to be displayed
-    if ( ! empty ( $VIEW_R_INCLUDE_SAT ) &&
-      $VIEW_R_INCLUDE_SAT == 'Y' ) {
-      $end_ind = 6;
     }
   } else {
     $start_ind = 0;
@@ -305,7 +300,9 @@ if ( $can_add ) {
     $tdwf = sprintf ( "%0.2f", $tdw ) . "%";
   $todayYmd = date ( "Ymd", $today );
   for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
-    $weekday = weekday_short_name ( date ( "w", $days[$i] ) );
+    $wday = date ( "w", $days[$i] );
+    if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == "N" ) continue; 
+    $weekday = weekday_short_name ( $wday );
     if ( $todayYmd == date ( "Ymd", $days[$i] ) ) {
       echo "<th class=\"today\" style=\"width:$tdwf;\" colspan=\"$num_users\">";
     } else {
@@ -477,7 +474,7 @@ if ( $untimed_found || $show_untimed_row_always ) {
     $thiswday = date ( "w", $days[$d] );
 
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-
+    if ( $is_weekend  && $DISPLAY_WEEKENDS == "N" ) continue; 
     for ( $u = 0; $u < count ( $viewusers ); $u++ ) {
       $untimed = $save_untimed[$u][$d];
 

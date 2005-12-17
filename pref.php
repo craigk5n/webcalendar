@@ -35,6 +35,20 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
+//get list of theme files from /themes directory
+$themes = array();
+$dir = "themes/";
+if (is_dir($dir)) {
+   if ($dh = opendir($dir)) {
+       while (($file = readdir($dh)) !== false) {
+         if ( strpos ( $file, "_pref.php" ) )
+           $themes[] = strtoupper( str_replace ( "_pref.php", "", $file ) );
+       }
+       sort ( $themes );
+       closedir($dh);
+   }
+}
+
 //make globals values passed to styles.php are for this user
 //makes the demo calendar accurate
 $GLOBALS['TODAYCELLBG'] = $prefarray['TODAYCELLBG'];
@@ -107,7 +121,24 @@ if ( empty ( $user ) || $user == $login ) {
 <input type="submit" value="<?php etranslate("Save Preferences")?>" name="" />
 </td></tr></table>
 <br />
-
+<?php if ( $prefarray['ALLOW_USER_THEMES'] == "Y") { ?>
+<table class="standard" cellspacing="1" cellpadding="2"  border="0" width="25%">
+<tr><th colspan="2"><?php etranslate("Themes");?></th></tr>
+<tr><td  class="tooltipselect" title="<?php etooltip("themes-help");?>">
+ <label for="pref_THEME"><?php etranslate("Themes")?>:</label></td><td>
+ <select name="pref_THEME" id="pref_THEME">
+<?php
+  echo "<option disabled>" . translate("AVAILABLE THEMES") . "</option>\n";
+  //always use 'none' as default so we don't overwrite manual settings
+  echo "<option value=\"none\" selected=\"selected\">" . translate("None") . "</option>\n";
+    foreach ( $themes as $theme ) {
+     echo "<option value=\"" . $theme . "\">" . $theme . "</option>\n";
+  }
+?>
+ </select>
+</tr></table>
+<br />
+<?php } ?>
 <table class="standard" cellspacing="1" cellpadding="2"  border="0">
 <tr><th colspan="2"><?php etranslate("Settings");?></th></tr>
 <tr><td  class="tooltipselect" title="<?php etooltip("language-help");?>">
@@ -195,7 +226,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("display-weekends-help");?>">
- <?php etranslate("Display weekends in week view")?>:</td><td>
+ <?php etranslate("Display weekends")?>:</td><td>
  <label><input type="radio" name="pref_DISPLAY_WEEKENDS" value="Y" <?php if ( $prefarray["DISPLAY_WEEKENDS"] != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> 
  <label><input type="radio" name="pref_DISPLAY_WEEKENDS" value="N" <?php if ( $prefarray["DISPLAY_WEEKENDS"] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
 </td></tr>

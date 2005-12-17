@@ -149,8 +149,7 @@ if ( strlen ( $comments ) && empty ( $cancel ) ) {
       }
       $mail->IsHTML( $htmlmail == 'Y' ? true : false );
       $mail->AddAddress( $tempemail, $tempfullname );
-      $mail->Subject = translate($APPLICATION_NAME) . " " .
-        translate("Notification") . ": " . $name;
+      $mail->WCSubject ( $name );
       $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;
       $mail->Send();
       $mail->ClearAll();

@@ -25,13 +25,12 @@ class WebCalMailer extends phpmailer {
   function WebCalMailer () {
     global $APPLICATION_NAME, $SMTP_HOST, $SMTP_AUTH,
       $SMTP_USERNAME, $SMTP_PASSWORD, $EMAIL_MAILER;
-    //echo $this->Version;
     $this->Version .= " extended by " . translate($APPLICATION_NAME);
     $this->Host     = $SMTP_HOST;
     $this->Mailer   = $EMAIL_MAILER;
     $mail->SMTPAuth = ( $SMTP_AUTH == 'Y'? true : false );     // turn on SMTP authentication
     $mail->Username = $SMTP_USERNAME;  // SMTP username
-    $mail->Password = $SMTP_PASSWORD; // SMTP password    
+    $mail->Password = $SMTP_PASSWORD; // SMTP password 
   }
   
   // Replace the default language handler to use WebCalendar's function
@@ -47,6 +46,13 @@ class WebCalMailer extends phpmailer {
     die_miserable_death ( $msg );
   }
   
+  //Strip slashes from subject
+  function WCSubject ($name) {
+    global $APPLICATION_NAME;
+    $this->Subject = translate($APPLICATION_NAME) . " " .
+      translate("Notification", true) . ": " . stripslashes ( $name );  
+  }
+  
   //New function to clear ALL attributes
   function ClearAll () {
     $this->ClearAddresses();
@@ -57,7 +63,7 @@ class WebCalMailer extends phpmailer {
 }
 
 // The following comments will be picked up by update_translation.pl so
-// translators will be aware that they also need to translate language names.
+// translators will find them.
 //
 // translate ( "provide_address");
 // translate ( "mailer_not_supported");

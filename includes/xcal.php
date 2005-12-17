@@ -1752,6 +1752,8 @@ function parse_ical ( $cal_file, $source='file' ) {
     }
     fclose($fd);
   }
+ } else if ( $source == 'remoteics' ) {
+   $data = $cal_file;
  } else if ( $source == 'icalclient' ) {
   //do_debug ( "before fopen on stdin..." );
   $stdin = fopen ("php://input", "r");
@@ -1876,22 +1878,22 @@ function parse_ical ( $cal_file, $source='file' ) {
               $substate = "dtstart";
               $event[$substate] = $match[2];
               if ( preg_match ( "/TZID=(.*)$/i", $match[1], $submatch ) ) {
-        $substate = "dtstartTzid"; 
-        $event[$substate] = $submatch[1];
-           } else if ( preg_match ( "/VALUE=DATE-TIME(.*)$/i", $match[1], $submatch ) ) {
-        $substate = "dtstartDATETIME"; 
-        $event[$substate] = true;
-           } else if ( preg_match ( "/VALUE=DATE(.*)$/i", $match[1], $submatch ) ) {
-        $substate = "dtstartDATE"; 
-        $event[$substate] = true;      
-       }
+                $substate = "dtstartTzid"; 
+                $event[$substate] = $submatch[1];
+             } else if ( preg_match ( "/VALUE=DATE-TIME(.*)$/i", $match[1], $submatch ) ) {
+               $substate = "dtstartDATETIME"; 
+               $event[$substate] = true;
+             } else if ( preg_match ( "/VALUE=DATE(.*)$/i", $match[1], $submatch ) ) {
+               $substate = "dtstartDATE"; 
+               $event[$substate] = true;      
+             }
           } elseif (preg_match("/^DTEND(.*):\s*(.*)\s*$/i", $buff, $match)) {
               $substate = "dtend";
               $event[$substate] = $match[2];
               if ( preg_match ( "/TZID=(.*)$/i", $match[1], $submatch ) ) {
-        $substate = "dtendTzid"; 
-        $event[$substate] = $match[1];
-           }
+                $substate = "dtendTzid"; 
+                $event[$substate] = $submatch[1];
+             }
           } elseif (preg_match("/^DUE.*:\s*(.*)\s*$/i", $buff, $match)) {
               $substate = "due";
               $event[$substate] = $match[1];

@@ -494,6 +494,11 @@ textarea {
   text-align: center;
   background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
+<?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
+.minical th.weekend {
+  display: none;
+}
+<?php } ?>
 .minical td {
   padding: 0px 2px;
   border: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
@@ -506,12 +511,14 @@ textarea {
 }
 .minical td.weekend {
   background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
+<?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
+  display: none;
+<?php } ?>
 }
 .minical td#today {
   background-color: <?php echo $GLOBALS['TODAYCELLBG']; ?>;
 }
 .minical td.hasevents {
-  background-color: #DDDDFF;
   font-weight: bold;
 }
 <?php // table appearing in small task window 
@@ -592,13 +599,16 @@ textarea {
   padding: 1px 3px;
 }
 #day div.minicalcontainer {
-  text-align: right;
+  text-align:center;
   border: 1px solid #000000;
   padding: 3px;
 }
+#day table.minical {
+  margin-left:auto; margin-right:auto;
+}
 <?php //the really big number above the minicalendar in day.php
 ?>#day .minical caption {
-  text-align: center;
+  margin-left:auto; margin-right:auto;
   font-weight: bold;
   color: <?php echo $GLOBALS['THFG']; ?>;
   background-color: <?php echo $GLOBALS['THBG']; ?>;
@@ -667,9 +677,6 @@ textarea {
   width: 100%;
   clear: both;
 }
-#viewr .small {
-  font-size: 8px;
-}
 <?php //contains ALL months
 ?>#year .main tr {
   vertical-align: top;
@@ -689,33 +696,74 @@ th {
   <?php echo background_css ( $GLOBALS['THBG'], 15 ); ?>
   width: 14%;
 }
+<?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
+#admin .main th.weekend,
+#pref .main th.weekend,
+#viewl .main th.weekend,
+#viewr .main th.weekend,
+#month .main th.weekend {
+  display: none;
+}
+<?php } ?>
 #vieww .main th,
 #week .main th {
+  <?php echo background_css ( $GLOBALS['THBG'], 15 ); ?>
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   width: 12%;
 }
 #viewr .main th,
 #viewm .main th {
+  <?php  echo background_css ( $GLOBALS['THBG'], 15 ); ?>
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+#viewr th.small {
+  background: none;
+  background-color: <?php echo $GLOBALS['THBG']; ?>;
+  font-size: 8px;
 }
 <?php //participants cell
 ?>#viewd .main th {
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   padding: 1px;
 }
+#admin .main th.weekcell,
+#pref .main th.weekcell,
+#viewl .main th.weekcell,
+#month .main th.weekcell{
+  background: <?php echo $GLOBALS['BGCOLOR']; ?>;
+  background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+  border-left: 0px;
+  border-top: 0px;
+  width: 1%;
+}
+#admin .main td.weekcell,
+#pref .main td.weekcell,
+#viewl .main td.weekcell,
+#month .main td.weekcell {
+  <?php echo background_css ( $GLOBALS['THBG'], 50 ); ?>
+  width: 1%;
+  margin: 0px 0px 0px 0px;
+  vertical-align:middle;
+  text-align:center;
+  font-size: 12px;
+  color: <?php echo $GLOBALS['H2COLOR']; ?>;
+  text-decoration: none;
+}
 #viewv .main th.empty,
 #viewm .main th.empty,
 #vieww .main th.empty,
 #viewr .main th.empty,
 #week .main th.empty {
+  width: 5%;
+  background: none;
   background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
   border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
   border-left: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
 #week .main th.row {
-  width: 10%;
+  width: 5%;
   vertical-align: top;
   height: 40px;
 }
@@ -725,6 +773,7 @@ th {
 #viewt th.row {
   width: 10%;
   vertical-align: top;
+  <?php echo background_css ( $GLOBALS['THBG'], 15 ); ?>
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
@@ -795,6 +844,7 @@ th {
   <?php echo background_css ( $GLOBALS['CELLBG'], 100 ); ?>
   vertical-align: top;
   word-break: break-all;
+  table-layout:fixed;
   overflow:auto;
 }
 #vieww .main td,
@@ -821,6 +871,9 @@ th {
   <?php echo background_css ( $GLOBALS['WEEKENDBG'], 100 ); ?>
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+<?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
+ display: none; 
+<?php } ?>  
 }
 #admin .main td.othermonth,
 #pref .main td.othermonth,
@@ -842,11 +895,15 @@ th {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   vertical-align: top;
 }
+<?php if ( $DISPLAY_TASKS != 'Y' ) { ?>
 #month #prevmonth,
+<?php } ?>
 #viewl #prevmonth {
   float: left;
 }
+<?php if ( $DISPLAY_TASKS != 'Y' ) { ?>
 #month #nextmonth,
+<?php } ?>
 #viewl #nextmonth {
   float: right;
 }

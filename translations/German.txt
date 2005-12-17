@@ -4,24 +4,18 @@
 #
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
-# Last update: 31 Okt 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 2 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 4 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 7 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 9 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 11 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 21 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 22 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 23 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 25 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 1 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 12-01-2005
+# Last update: 9 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 16 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 12-16-2005
 
 
 ###############################################
 # Specify a charset (will be sent within meta tag for each page)
 #
 charset: iso-8859-1
+
 
 
 ###############################################
@@ -154,6 +148,12 @@ Not authorized: Keine Berechtigung
 
 
 ###############################################
+# Page: doc.php
+#
+Invalid entry id: ung&uuml;ltiger Eintrag
+
+
+###############################################
 # Page: views_edit.php
 #
 Unnamed View: neue Ansicht
@@ -207,14 +207,14 @@ Administrative Tools: Administrative Werkzeuge
 ###############################################
 # Page: approve_entry.php
 #
-Additional Comments (optional): Zus&auml;tzliche Kommentare (optional)
+Additional Comments (optional): Zus&auml;tzliche Anmerkungen (optional)
 Approve and Send: Genehmigen und Senden
 Approve and Exit: Genehmigen und Schlie&szlig;en
-(Your comments will be included in an email to the event creator): (Ihre Kommentare werden in einem Email an den einladenden Teilnehmer beigef&uuml;gt)
+(Your comments will be included in an email to the event creator): (Ihre Anmerkung wird per Email f&uuml;r den einladenden Teilnehmer beigef&uuml;gt)
 Error approving event: Fehler beim Genehmigen des Termin
-An appointment has been approved and comments added by: Eine Verabredung wurde genehmigt und ein Kommentar wurde hinzugef&uuml;gt von
+An appointment has been approved and comments added by: Eine Verabredung wurde genehmigt und eine Anmerkung wurde hinzugef&uuml;gt von
 The description is: Die Beschreibung lautet
-Comments: Kommentare
+Comments: Anmerkungen
 
 
 ###############################################
@@ -305,9 +305,18 @@ Admin: Administration
 
 
 ###############################################
+# Page: docadd.php
+#
+Add Comment: Anmerkung hinzuf&uuml;gen
+Add Attachment: Anhang hinzuf&uuml;gen
+Subject: Betrifft
+Comment: Anmerkung
+Upload file: Upload Datei
+
+
+###############################################
 # Page: add_entry.php
 #
-Invalid entry id: ung&uuml;ltiger Eintrag
 This is a private event and may not be added to your calendar.: Das ist ein PRIVATER Termin und kann Ihrem Kalender nicht hinzugef&uuml;gt werden.
 This is a confidential event and may not be added to your calendar.: Das ist ein <b>vertraulicher Termin</b> und wird nicht zu Ihrem Kalender hinzugef&uuml;gt.
 Error adding event: Fehler beim Hinzuf&uuml;gen eines Termines
@@ -384,6 +393,10 @@ This Calendar is not Public: Dieser Kalender ist nicht &Oouml;ffentlich
 Duration: Dauer
 before event: vor dem Termin
 External User: Externer Benutzer
+Attachments: Anh&auml;nge
+comments: Anmerkung(en)
+Show: Zeigen
+Hide: Verstecken
 Edit entry: Eintrag &auml;ndern
 Delete entry: Eintrag l&ouml;schen
 from calendar of: vom Kalender
@@ -397,6 +410,7 @@ Event approved: Termin best&auml;tigt
 Event rejected: Termin abgelehnt
 Event updated: Termin aktualisiert
 Event deleted: Termin gel&ouml;scht
+Attachment: Anhang
 Export this entry to: Diesen Eintrag exportieren nach
 
 
@@ -582,6 +596,14 @@ use-blacklist-help: Verwende Blacklisthilfe
 Restrict self-registration to blacklist: Einschr&auml;nkung der Selbstregistrierung durch die Blacklist
 allow-self-registration-full-help: Erlaube Selbstregistrierungshilfe (Komplett)
 Use self-registration email notifications: Verwende Benachrichtigungsemail bei Selbstregistrierung
+allow-attachment-help: Erlaubt den Benutzern das Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen
+Allow file attachments to events: Das Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen erlauben
+Admin and owner can always add attachments if enabled: Falls aktiviert, Administrator und Besitzer k&ouml;nnen immer Dateianh&auml;nge hinzuf&uuml;gen
+Participant: Benutzer
+Anyone: Jeder
+allow-comments-help: Erlaubt das Hinzuf&uuml;gen von Anmerkungen zu Terminen
+Allow comments to events: Das Hinzuf&uuml;gen von Anmerkungen zu Terminen erlauben
+Admin and owner can always add comments if enabled: Falls aktiviert, Administrator und Besitzer k&ouml;nnen immer Anmerkungen hinzuf&uuml;gen
 email-enabled-help: Die Option "JA" erm&ouml;glicht das Versenden von Emails sowie von Erinnerungen &uuml;ber den Kalender. Wenn Sie keinen Mailserver installiert haben setzen Sie diese Option auf "NEIN".
 Email enabled: Email aktivieren
 email-default-sender: Standard Email-Absender
@@ -673,7 +695,6 @@ Import format: Importformat
 Exclude private records: Private Eintr&auml;ge ausschlie&szlig;en
 Overwrite Prior Import: Vorigen Import &uuml;berschreiben
 Repeated items are imported separately. Prior imports are not overwritten.: Wiederkehrende Objekte werden extra importiert. Vorige Importe werden nicht &uuml;berschrieben.
-Upload file: Upload Datei
 
 
 ###############################################
@@ -698,8 +719,8 @@ DEFAULT CONFIGURATION: GRUNDKONFIGURATION
 # Page: reject_entry.php
 #
 Continue: Weiter
-(Your comments will be included in an email to the other participants): (Ihre Kommentare werden im Email zum anderen Teilnehmer beigef&uuml;gt)
-An appointment has been rejected by: Eine Verabredung wurde zur&uumlckgewiesen von
+(Your comments will be included in an email to the other participants): (Ihre Anmerkung wird per Email f&uuml;r den anderen Teilnehmer beigef&uuml;gt)
+An appointment has been rejected by: Eine Verabredung wurde zur&uuml;ckgewiesen von
 
 
 ###############################################
@@ -867,6 +888,12 @@ Timezone Offset: Zeitzonenausgleich
 default-category-help: Legt eine Standardkategorie f&uuml;r einen neuen Termin fest.
 email-boss-notifications-help: legt fest ob Chefs Terminbenachrichtigungen als Email bekommen.
 boss-approve-event-help: legt fest ob der Chef die eingetragenen Termine des Assistenten best&auml;tigen (genehmigen) mu&szlig;
+
+
+###############################################
+# Page: docdel.php
+#
+Removed: Entfernt
 
 
 ###############################################
@@ -1107,6 +1134,14 @@ Go to: Gehe zu
 
 
 ###############################################
+# Page: includes/doc.php
+#
+bytes: Bytes
+kb: kB
+Mb: Mb
+
+
+###############################################
 # Page: includes/xcal.php
 #
 INCLUSION DATES: INKLUSIVE der TERMINE
@@ -1120,7 +1155,7 @@ Please see FAQ: Bitte in der FAQ nachlesen
 ###############################################
 # Page: includes/functions.php
 #
-Title: Webkalender
+Title: Titel
 __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
 __month__ __dd__: __dd__. __month__
@@ -1323,14 +1358,14 @@ provide_address: Sie m&uuml;ssen mindestens eine Emailadresse als Empf&auml;nger
 mailer_not_supported: Dieser Mailtyp wird nicht unterst&uuml;tzt
 execute: kann nicht ausgef&uuml;hrt werden
 instantiate: Kann die Emailfunktion nicht d&uuml;rchf&uuml;hren
-authenticate: SMTP Fehler~ kann nicht authentisiert werden
+authenticate: SMTP Fehler - Kann nicht authentisiert werden
 from_failed: Die folgenden "Von:" - Adresse(n) ist(sind) ung&uuml;tig
-recipients_failed: SMTP Fehler~ Die (der) folgende(n) Empf&auml;nger sind (ist) ung&uuml;tig
-data_not_accepted: SMTP Fehler~ Daten nicht angenommen
-connect_host: SMTP Fehler~ Kann nicht nicht zum SMTP host verbunden werden
-file_access: Kann auf Datei nicht zugreifen~
-file_open: Dateifehler, kann Datei nicht &ouml;ffnen~
-encoding: Unbekannte Verschl&uuml;sselung~
+recipients_failed: SMTP Fehler - Die (der) folgende(n) Empf&auml;nger sind (ist) ung&uuml;tig
+data_not_accepted: SMTP Fehler - Daten nicht angenommen
+connect_host: SMTP Fehler - Kann nicht nicht zum SMTP HOST verbunden werden
+file_access: Kann auf Datei nicht zugreifen
+file_open: Dateifehler, kann Datei nicht &ouml;ffnen
+encoding: Unbekannte Verschl&uuml;sselung
 
 
 ###############################################
