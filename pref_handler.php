@@ -16,7 +16,7 @@ if ( $is_admin && ! empty ( $public ) && $public_access == "Y" ) {
 while ( list ( $key, $value ) = each ( $HTTP_POST_VARS ) ) {
   $setting = substr ( $key, 5 );
   $prefix = substr ( $key, 0, 5 );
-  if ( $key == 'user' )
+  if ( $key == 'user' || $key == 'public'  )
     continue;
   // validate key name.  should start with "pref_" and not include
   // any unusual characters that might cause SQL injection
