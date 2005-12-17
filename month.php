@@ -10,11 +10,13 @@ if (($user != $login) && $is_nonuser_admin) {
 load_user_categories ();
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
+$nextYmd = date ("Ymd", $next );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 //$nextdate = date ( "Ymd" );
 
 $prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
+$prevYmd = date ( "Ymd", $prev );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 //$prevdate = date ( "Ymd" );
@@ -36,7 +38,7 @@ if ( $AUTO_REFRESH == "Y" && ! empty ( $AUTO_REFRESH_TIME ) ) {
     "year=$thisyear&amp;month=$thismonth$caturl" . 
     ( ! empty ( $friendly ) ? "&amp;friendly=1" : "") . "\" />\n";
 }
-$INC =  array('js/popups.php');
+$INC =  array('js/popups.php', 'js/visible.php');
 print_header($INC,$HeadX);
 
 /* Pre-Load the repeated events for quicker access */
@@ -58,7 +60,7 @@ if ( ! empty ( $cat_id ) )
 else
   $monthURL = 'month.php?';
 
-if ( empty ( $DISPLAY_TASKS ) ||  $DISPLAY_TASKS == "N" ) {
+if ( empty ( $DISPLAY_TASKS ) ||  $DISPLAY_TASKS == "N" && $DISPLAY_SM_MONTH != 'N') {
   $spacer = "<br />"; 
   display_small_month ( $prevmonth, $prevyear, true, true, "prevmonth",
     $monthURL );
@@ -70,42 +72,17 @@ if ( empty ( $DISPLAY_TASKS ) ||  $DISPLAY_TASKS == "N" ) {
    "<tr><td valign=\"top\" width=\"80%\" rowspan=\"2\">";
 }
 
-?>
-<div class="title">
-<span class="date"><?php
-  echo $spacer . date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
-    $DATE_FORMAT_MY, false, false );
-?></span>
-<span class="user"><?php
-  if ( $single_user == "N" ) {
-    echo "<br />\n";
-    echo $user_fullname;
-  }
-  if ( $is_nonuser_admin ) {
-    echo "<br />-- " . translate("Admin mode") . " --";
-  }
-  if ( $is_assistant ) {
-    echo "<br />-- " . translate("Assistant mode") . " --";
-  }
-?></span>
-<?php
-  if ( $CATEGORIES_ENABLED == "Y" && (!$user || ($user == $login || $is_assistant ))) {
-    echo "<br /><br />\n";
-    print_category_menu('month',sprintf ( "%04d%02d01",$thisyear, $thismonth ),$cat_id );
-  }
-?>
-</div>
-<?php 
+display_navigation( 'month' );
+
 display_month ( $thismonth, $thisyear );
 
 if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y" && $friendly !=1 ) {
- echo "</td><td valign=\"top\"><br />";
+ echo "</td><td valign=\"top\" align=\"center\"><br />";
   display_small_month ( $prevmonth, $prevyear, true, false, "prevmonth",
     $monthURL );
  echo "<br />";
   display_small_month ( $nextmonth, $nextyear, true, false, "nextmonth",
     $monthURL );
- echo "<br />";
 ?>
 </td></tr><tr><td valign="bottom">
 

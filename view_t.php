@@ -226,6 +226,7 @@ for ( $date = $wkstart, $h = 0;
   date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
   $date += ( 24 * 3600 ), $h++ ) {
   $wday = strftime ( "%w", $date );
+  if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == "N" ) continue; 
   $weekday = weekday_short_name ( $wday );
   if ( date ( "Ymd", $date ) == date ( "Ymd", $today ) ) {
     echo "<tr><th class=\"today\">";

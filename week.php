@@ -9,35 +9,34 @@ if (($user != $login) && $is_nonuser_admin) {
 
 load_user_categories ();
 
-$next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
-$prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
+$nextYmd = date ( "Ymd", mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear ) );
+$prevYmd = date ( "Ymd", mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
 
 // We add 2 hours on to the time so that the switch to DST doesn't
 // throw us off.  So, all our dates are 2AM for that day.
-if ( $WEEK_START == 1 ) {
+if ( $WEEK_START == 1 || $DISPLAY_WEEKENDS == "N" ) {
    $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
 } else {
    $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
 }
 
-$wkend = $wkstart + ( 3600 * 24 * 6 );
+$wkend = $wkstart + ( 3600 * 24 * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ) );
  
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
-
-if ( ! empty ( $DISPLAY_WEEKENDS ) && $DISPLAY_WEEKENDS == "N" ) {
+if ( $DISPLAY_WEEKENDS == "N" ) {
   if ( $WEEK_START == 1 ) {
     $start_ind = 0;
-    $end_ind = 5;
+    $end_ind = 4;
   } else {
     $start_ind = 1;
-    $end_ind = 6;
+    $end_ind = 5;
   }
 } else {
   $start_ind = 0;
-  $end_ind = 7;
+  $end_ind = 6;
 }
-
+//echo date ("Ymd", $wkstart ) . " " . $start_ind . " " . $end_ind;
 $HeadX = '';
 if ( ! empty ( $AUTO_REFRESH ) && $AUTO_REFRESH == "Y" &&
   ! empty ( $AUTO_REFRESH_TIME ) ) {
@@ -63,66 +62,32 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
     ? $user : $login, $startdate, $enddate, $cat_id );
 }
 
-for ( $i = 0; $i < 7; $i++ ) {
+display_navigation( 'week' );
+
+if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == "N" ) $wkstart = $wkstart - ONE_DAY;
+for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
-  $header[$i] = $weekdays[$i] . "<br />\n" .
-    date_to_str ( date ( "Ymd", $days[$i] ), $DATE_FORMAT_MD, false );
+  $header[$i] = $weekdays[$i] . "<br />" .
+     month_short_name ( date ( "m", $days[$i] ) - 1 ) .
+     " " . date ( "d", $days[$i] );
 }
+
 ?>
 
-<div class="title">
-<span class="date"><?php
-  echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
-    "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
-    date_to_str ( date ( "Ymd", $wkend ), "", false );
-?></span>
-<?php
-if ( $DISPLAY_WEEKNUMBER == "Y" ) {
-  echo "<br />\n<span class=\"weeknumber\">(" .
-    translate("Week") . " " . date( "W", $wkstart + ONE_DAY ) . ")</span>";
-}
-?>
-<a title="<?php etranslate("Previous")?>" 
-class="prev" href="week.php?<?php echo $u_url; ?>date=<?php echo 
-  date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" 
-  alt="<?php etranslate("Previous")?>" /></a>
-
-<a title="<?php etranslate("Next")?>" class="next" 
-href="week.php?<?php echo $u_url;?>date=<?php echo 
-  date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" 
-  alt="<?php etranslate("Next")?>" /></a>
-<span class="user"><?php
-  if ( $single_user == "N" ) {
-    echo "<br />$user_fullname";
-  }
-  if ( $is_nonuser_admin ) {
-    echo "<br />-- " . translate("Admin mode") . " --";
-  }
-  if ( $is_assistant ) {
-    echo "<br />-- " . translate("Assistant mode") . " --";
-  }
-?></span>
-<?php
-  if ( $CATEGORIES_ENABLED == "Y" && (!$user || ($user == $login || 
-    $is_assistant ))) {
-    echo "<br /><br />\n";
-    print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, 
-      $thismonth, $thisday ), $cat_id );
-  }
-?></div>
 <br />
 
 <table class="main" cellspacing="0" cellpadding="0">
 <tr>
 <th class="empty">&nbsp;</th>
 <?php
-for ( $d = $start_ind; $d < $end_ind; $d++ ) {
+for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   $thiswday = date ( 'w', $days[$d] );
 
   $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
 
   if ( $is_weekend ) {
+   // if ( $DISPLAY_WEEKENDS == "N" ) continue;
     $class = "weekend";
   } else {
     $class = "";
@@ -169,7 +134,7 @@ if ( $login == "__public__" ) {
 }
 
 $all_day = array ();
-for ( $d = $start_ind; $d < $end_ind; $d++ ) {
+for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   // get all the repeating events for this date and store in array $rep
   $date = date ( "Ymd", $days[$d] );
   $rep = get_repeating_entries ( $user, $date );
@@ -243,9 +208,10 @@ for ( $d = $start_ind; $d < $end_ind; $d++ ) {
 // untimed events first
 if ( $untimed_found ) {
   echo "<tr>\n<th class=\"empty\">&nbsp;</th>\n";
-  for ( $d = $start_ind; $d < $end_ind; $d++ ) {
+  for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
+   // if ( $is_weekend && $DISPLAY_WEEKENDS == "N" ) continue;
     $class = ( $is_weekend ? "weekend" : "" );
 
    if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
@@ -277,7 +243,7 @@ if ( $untimed_found ) {
   echo "</tr>\n";
 }
 
-for ( $d = $start_ind; $d < $end_ind; $d++ ) {
+for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   $rowspan_day[$d] = 0;
 }
 
@@ -287,7 +253,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   // Do not apply TZ offset
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100, 1 );
   echo "<tr>\n<th class=\"row\">" .  $time . "</th>\n";
-  for ( $d = $start_ind; $d < $end_ind; $d++ ) {
+  for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $thiswday = date ( "w", $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
     $class = ( $is_weekend ? "weekend" : "" );

@@ -37,6 +37,8 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $boldDays = true;
 }
 
+//Disable $DISPLAY_ALL_DAYS_IN_MONTH
+$DISPLAY_ALL_DAYS_IN_MONTH = 'N';
 // Include unapproved events?
 $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 if ( $user == "__public__" )

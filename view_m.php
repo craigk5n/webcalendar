@@ -199,6 +199,7 @@ for ( $j = 0; $j < count ($viewusers); $j += $USERS_PER_TABLE ) {
   for ( $date = $monthstart; date ("Ymd", $date) <= date ("Ymd", $monthend);
     $date += (24 * 3600), $wday++ ) {
  $wday = strftime ("%w", $date);
+ if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == "N" ) continue; 
  $weekday = weekday_short_name ($wday);
  echo "<tr><th";
  if ( date ("Ymd", $date) == date ("Ymd", $today) ) {

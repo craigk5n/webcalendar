@@ -328,7 +328,7 @@ class WebCalendar {
       $readonly, $run_mode, $phpdbiVerbose, $single_user,
       $single_user_login, $use_http_auth, $user_inc, $NONUSER_PREFIX;
 
-    $PROGRAM_VERSION = "v1.1.0-CVS";
+    $PROGRAM_VERSION = "v1.1.0c-CVS";
     $PROGRAM_DATE = "?? ??? 2005";
     $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
     $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
@@ -467,6 +467,7 @@ class WebCalendar {
       $single_user_login = "";
 
     // Make sure magic quotes is enabled, since this app requires it.
+
     if ( get_magic_quotes_gpc () == 0 ) {
       ob_start ();
       phpinfo ();
@@ -1269,7 +1270,7 @@ class WebCalendar {
         "(view_entry.php|view_task.php|select_user.php|purge.php|category*php|doc.php)",
       ACCESS_EVENT_EDIT => "(entry|list_unapproved|usersel|availability|datesel|task|catsel|docadd|docdel)",
       ACCESS_DAY => "day.php",
-      ACCESS_WEEK => "week.php",
+      ACCESS_WEEK => "(week.php|week_details.php)",
       ACCESS_MONTH => "month.php",
       ACCESS_YEAR => "year.php",
       ACCESS_ADMIN_HOME => "(adminhome.php|users.php|load_tz_data.php)",

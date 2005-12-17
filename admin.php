@@ -20,6 +20,24 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
+//get list of theme files from /themes directory
+$themes = array();
+$dir = "themes";
+if (is_dir($dir)) {
+   if ($dh = opendir($dir)) {
+       while (($file = readdir($dh)) !== false) {
+         if ( strpos ( $file, "_admin.php" ) ) {
+           $themes[0][] = strtoupper( str_replace ( "_admin.php", "", $file ) );
+           $themes[1][] = strtoupper( str_replace ( ".php", "", $file ) );
+        } else if ( strpos ( $file, "_pref.php" ) ) {
+           $themes[0][] = strtolower( str_replace ( "_pref.php", "", $file ) );
+           $themes[1][] = strtolower( str_replace ( ".php", "", $file ) );
+        }
+       }
+       sort ( $themes );
+       closedir($dh);
+   }
+}
 //make globals values passed to styles.php are for this user
 //makes the demo calendar accurate
 $GLOBALS['TODAYCELLBG'] = $s['TODAYCELLBG'];
@@ -130,6 +148,25 @@ if ( ! $error ) {
   </select><br />
   <?php etranslate("Your browser default language is"); echo " "; etranslate(get_browser_language()); echo "."; ?>
  </td></tr>
+<tr><td><label>
+ <?php etranslate("Allow user to use themes")?>:</label></td><td colspan="3">
+ <label><input type="radio" name="admin_ALLOW_USER_THEMES" value="Y"<?php if ( $s["ALLOW_USER_THEMES"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="admin_ALLOW_USER_THEMES" value="N"<?php if ( $s["ALLOW_USER_THEMES"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+</td></tr> 
+ <tr><td  class="tooltip" title="<?php etooltip("themes-help");?>">
+ <label for="admin_THEME"><?php etranslate("Themes")?>:</label></td><td>
+ <select name="admin_THEME" id="admin_THEME">
+<?php
+  echo "<option disabled>" . translate("AVAILABLE THEMES") . "</option>\n";
+  //always use 'none' as default so we don't overwrite manual settings
+  echo "<option  value=\"none\" selected=\"selected\">" . translate("None") . "</option>\n";
+print_r ( $themes);
+  for ( $i = 0; $i <= count ( $themes); $i++ ) {
+     echo "<option value=\"" . $themes[1][$i] . "\">" . $themes[0][$i] . "</option>\n";
+  }
+?>
+ </select>
+ </td></tr> 
  <tr><td class="tooltip" title="<?php etooltip("fonts-help") ?>">
   <label for="admin_FONTS"><?php etranslate("Fonts")?>:</label></td><td>
   <input type="text" size="40" name="admin_FONTS" id="admin_FONTS" value="<?php 
@@ -199,7 +236,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 </select>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("display-weekends-help");?>">
-  <?php etranslate("Display weekends in week view")?>:</td><td>
+  <?php etranslate("Display weekends")?>:</td><td>
   <label><input type="radio" name="admin_DISPLAY_WEEKENDS" value="Y" <?php if ( $s["DISPLAY_WEEKENDS"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
   <label><input type="radio" name="admin_DISPLAY_WEEKENDS" value="N" <?php if ( $s["DISPLAY_WEEKENDS"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>

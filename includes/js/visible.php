@@ -64,5 +64,18 @@ function showTab (name) {
  }
  return false;
 }
+
+function visByClass(classname, state){
+ var inc=0;
+ var alltags=document.all? document.all : document.getElementsByTagName("*");
+ for (i=0; i<alltags.length; i++){
+ var str=alltags[i].className;
+   if ( str && str.match(classname) )
+     if ( state=='hide')
+       alltags[i].style.display = "none";
+     else
+       alltags[i].style.display = "";     
+ }
+} 
 //]]> -->
 </script>

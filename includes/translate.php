@@ -22,13 +22,18 @@
  * #return string The converted text string        
  */
 function unhtmlentities ( $string ) {
-  // replace numeric entities
-  $string = preg_replace('~&#x([0-9a-f]+);~ei', 'chr(hexdec("\\1"))', $string);
-  $string = preg_replace('~&#([0-9]+);~e', 'chr(\\1)', $string);
-  // replace literal entities
-  $trans_tbl = get_html_translation_table(HTML_ENTITIES);
-  $trans_tbl = array_flip($trans_tbl);
-  return strtr($string, $trans_tbl);
+  // html_entity_decode available PHP 4 >= 4.3.0, PHP 5
+  if ( function_exists ( 'html_entity_decode' ) ) {
+    return html_entity_decode ( $string );  
+  } else { // for php < 4.3
+    // replace numeric entities
+    $string = preg_replace('~&#x([0-9a-f]+);~ei', 'chr(hexdec("\\1"))', $string);
+    $string = preg_replace('~&#([0-9]+);~e', 'chr(\\1)', $string);
+    // replace literal entities
+    $trans_tbl = get_html_translation_table(HTML_ENTITIES);
+    $trans_tbl = array_flip($trans_tbl);
+    return strtr($string, $trans_tbl);
+  }
 }
 
 /**
@@ -154,11 +159,7 @@ function translate ( $str, $decode='' ) {
 
   $str = trim ( $str );
   if ( ! empty ( $translations[$str] ) )
-    // html_entity_decode available PHP 4 >= 4.3.0, PHP 5
-    if ( $decode == true  && function_exists ( 'html_entity_decode' ) ) {
-      return html_entity_decode ( $translations[$str] );
-      // for php < 4.3
-    } else if ( $decode == true ) {
+    if ( $decode == true ) {
       return  unhtmlentities ( $translations[$str] );
     } else {
       return  $translations[$str] ;

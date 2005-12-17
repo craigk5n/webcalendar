@@ -13,11 +13,11 @@ load_user_categories ();
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
-if ( $WEEK_START == 1 )
+if ( $WEEK_START == 1 || $DISPLAY_WEEKENDS == "N" )
   $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
 else
   $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
-$wkend = $wkstart + ( 3600 * 24 * 6 );
+$wkend = $wkstart + ( 3600 * 24 * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ));
 
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
@@ -25,14 +25,14 @@ $enddate = date ( "Ymd", $wkend );
 if ( $DISPLAY_WEEKENDS == "N" ) {
   if ( $WEEK_START == 1 ) {
     $start_ind = 0;
-    $end_ind = 5;
+    $end_ind = 4;
   } else {
     $start_ind = 1;
-    $end_ind = 6;
+    $end_ind = 5;
   }
 } else {
   $start_ind = 0;
-  $end_ind = 7;
+  $end_ind = 6;
 }
 
 $HeadX = '';
@@ -50,12 +50,6 @@ $repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login, $ca
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( strlen ( $user ) ? $user : $login, $startdate, $enddate, $cat_id  );
 
-for ( $i = 0; $i < 7; $i++ ) {
-  $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
-  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
-  $header[$i] = $weekdays[$i] . " " .
-    date_to_str ( date ( "Ymd", $days[$i] ), $DATE_FORMAT_MD, false );
-}
 ?>
 
 <div class="title">
@@ -67,6 +61,14 @@ for ( $i = 0; $i < 7; $i++ ) {
     date_to_str ( date ( "Ymd", $wkend ), "", false );
 ?></span>
 <?php
+if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == "N" ) $wkstart = $wkstart - ONE_DAY;
+for ( $i = 0; $i < 7; $i++ ) {
+  $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
+  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
+  $header[$i] = $weekdays[$i] . " " .
+    date_to_str ( date ( "Ymd", $days[$i] ), $DATE_FORMAT_MD, false );
+}
+
 if ( $DISPLAY_WEEKNUMBER == "Y" ) {
   echo "<br />\n<span class=\"weeknumber\">(" .
     translate("Week") . " " . date( "W", $wkstart + ONE_DAY ) . ")</span>";
@@ -87,7 +89,7 @@ if ( $DISPLAY_WEEKNUMBER == "Y" ) {
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
   } ?>
 </div>
-
+<br />
 <center>
 <table class="main" cellspacing="0" cellpadding="0">
 <?php
@@ -96,7 +98,7 @@ for ( $d = 0; $d < 7; $d++ ) {
   $date = date ( "Ymd", $days[$d] );
   $thiswday = date ( "w", $days[$d] );
   $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-
+  if ( $is_weekend && $DISPLAY_WEEKENDS == "N" ) continue;
   print "<tr><th";
   if ( $date == date ( "Ymd", $today ) ) {
     echo " class=\"today\">";

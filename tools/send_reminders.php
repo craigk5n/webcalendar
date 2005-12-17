@@ -472,7 +472,7 @@ function send_reminder ( $id, $event_date ) {
         "</body></html>\n";
     }
   
-    $subject = translate("Reminder") . ": " . $name;
+    $subject = translate("Reminder") . ": " . stripslashes ( $name );
 
 
     if ( $debug )
