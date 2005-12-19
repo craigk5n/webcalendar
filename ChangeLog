@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug  1385557: calendar inputs can cause crash
  - Added feature to email ics attachment to external participants
    This address bug 1384838 and RFE 1384842
  - Fixed bug 1385433: External Users not deleted with event

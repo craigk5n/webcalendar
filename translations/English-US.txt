@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 12-16-2005
+# Translation last updated on 12-19-2005
 
 
 ###############################################
@@ -1343,6 +1343,12 @@ You have not entered a valid time of day: You have not entered a valid time of d
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Invalid color
+
+
+###############################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: File type does not match Import Format
 
 
 ###############################################

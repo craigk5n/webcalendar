@@ -41,5 +41,34 @@ function toggle_import() {
       makeInvisible ( "outlookcsv" );
    }
 }
+
+function checkExtension () {
+  var type = document.importform.ImportType.selectedIndex;
+  var filename = document.importform.FileName.value;
+  var extension = filename.substr ( filename.length -3, 3 );
+  var pass = true;
+  switch  ( type ) {
+    case 0:
+      pass = ( extension == 'ics' );
+      break;
+    case 1:
+      pass = ( extension == 'dat' );
+      break;
+    case 2:
+      pass = ( extension == 'vcs' );
+      break;
+    case 3:
+      pass = ( extension == 'csv' );
+      break;
+    default:
+      pass = false;
+      break;
+  } 
+  if (  ! pass ) {
+    alert ( "<?php etranslate ( "File type does not match Import Format" , true ) ?>";
+    return false;
+  }
+  return true;
+}
 //]]> -->
 </script>
