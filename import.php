@@ -82,7 +82,7 @@ if ( ! $upload_enabled ) {
 } else {
   // file uploads enabled
 ?>
-<form action="import_handler.php" method="post" name="importform" enctype="multipart/form-data">
+<form action="import_handler.php" method="post" name="importform"  enctype="multipart/form-data" onsubmit="return checkExtension()">
 <table style="border-width:0px;">
 <tr><td>
  <label for="importtype"><?php etranslate("Import format")?>:</label></td><td>

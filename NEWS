@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1385557: calendar inputs can cause crash
       1385433: External Users not deleted with event
       1370871: public access - preferences cannot be saved
       1366113: Accept/reject Missing
