@@ -226,6 +226,10 @@ if ( $id > 0 && empty ( $error ) ) {
       // Now, mark event as deleted for all users.
       dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
         "WHERE cal_id = $id" );
+				
+      // Delete External users for this event
+      dbi_query ( "DELETE FROM webcal_entry_ext_user " .
+        "WHERE cal_id = $id" );
     }
   } else {
     // Not the owner of the event, but participant or noncal_admin

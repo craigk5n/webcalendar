@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1385433: External Users not deleted with event
  - Changed 'Display Weekends' to affect all pages
  - Added support for themes
  - Added support for IBM DB2
