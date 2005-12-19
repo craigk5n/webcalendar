@@ -142,6 +142,8 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added feature to email ics attachment to external participants
+      This address bug 1384838 and RFE 1384842
     + Changed 'Display Weekends' to affect all pages
     + Added support for themes
     + Added support for IBM DB2

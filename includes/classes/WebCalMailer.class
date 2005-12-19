@@ -52,7 +52,14 @@ class WebCalMailer extends phpmailer {
     $this->Subject = translate($APPLICATION_NAME) . " " .
       translate("Notification", true) . ": " . stripslashes ( $name );  
   }
+
+  //Send ics file Attachment
+  function IcsAttach ($id) {
+    $this->AddStringAttachment ( export_ical ( $id, true ),
+      'WebCalendar.ics', 'base64', 'text/ical' ) ;
   
+  }
+    
   //New function to clear ALL attributes
   function ClearAll () {
     $this->ClearAddresses();
