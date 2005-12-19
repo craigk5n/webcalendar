@@ -8,7 +8,8 @@
 # Last update: 1 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 9 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 16 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 12-16-2005
+# Last update: 19 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 12-19-2005
 
 
 ###############################################
@@ -21,10 +22,6 @@ charset: iso-8859-1
 ###############################################
 # Page: day.php
 #
-Next: N&auml;chsten
-Previous: Vorherige
-Admin mode: Administratormodus
-Assistant mode: Assistentenmodus
 Generate printer-friendly version: Erzeuge Version zum Drucken
 Printer Friendly: Druckansicht
 
@@ -51,7 +48,6 @@ An appointment has been canceled for you by: Eine Verabredung wurde storniert vo
 The subject was: Der Betreff lautete
 Date: Datum
 Time: Uhrzeit
-Notification: Benachrichtigung
 
 
 ###############################################
@@ -118,6 +114,14 @@ Event template: Terminvorlage
 Save: Speichern
 Delete: L&ouml;schen
 Are you sure you want to delete this report?: Wollen Sie diese Bericht wirklich l&ouml;schen?
+
+
+###############################################
+# Page: year.php
+#
+Previous: Vorherige
+Next: N&auml;chsten
+Assistant mode: Assistentenmodus
 
 
 ###############################################
@@ -326,6 +330,7 @@ Error adding event: Fehler beim Hinzuf&uuml;gen eines Termines
 # Page: week_details.php
 #
 Week: Woche
+Admin mode: Administratormodus
 New Entry: Neuer Eintrag
 
 
@@ -424,7 +429,7 @@ Variable N not found: Variable N nicht gefunden
 # Page: admin.php
 #
 Note: Bemerkung
-Your user preferences: Ihre Benutzereinstellungen
+Your user preferences: <u>Ihre Benutzereinstellungen</u>
 may be affecting the appearance of this page.: &uuml;bertragen sich auf das Erscheingsbild dieser Seite.
 to not use your user preferences when viewing this page: um Ihre Benutzereinstellungen auf dieser Seite NICHT anzuzeigen.
 are being ignored while viewing this page.: werden ignoriert w&auml;hrend der Anzeige dieser Seite.
@@ -445,6 +450,10 @@ Home URL: Haupt-URL
 language-help: Gibt die Standard Sprache an.
 Language: Sprache
 Your browser default language is: Ihre derzeitige Browser-Sprache ist
+Allow user to use themes: Erlaubt das Verwenden von 'Themen' f&uuml;r Benutzer
+themes-help: Erlaubt eine Vielzahl von Updates f&uuml;r Konfigurationseinstellungen. Kleingeschriebene Eintr&auml;ge sind nur benutzereigene Voreinstellungen
+Themes: Themen
+AVAILABLE THEMES: VERF&Uuml;GBARE THEMEN
 fonts-help: definiert die Standard-Schriftarten (z.B. "Arial, Helvetica")
 Fonts: Schriftart
 custom-script-help: Erlaubt Eintr&auml;ge von benutzerdefinierten Javascript- oder Stylesheet Texten welche im HTML "Kopf"-Abschnitt auf jeder Seite eingef&uuml;gt werden.
@@ -461,7 +470,7 @@ Preferred view: Bevorzugte Ansicht
 Month: Monat
 Year: Jahr
 display-weekends-help: Zeigt die Wochenenden in der Wochenansicht an.
-Display weekends in week view: Wochenenden in der Wochenansicht anzeigen
+Display weekends: Wochenenden anzeigen
 display-alldays-help: Zeigt und bef&uuml;llt die Tage des vorhergehenden und folgenden Monats in der aktuellen Monatsansichten
 Display all days in month view: Anzeigen <b>aller</b> Tage in der Monatsansicht
 yearly-shows-events-help: Zeigt Tage mit Terminen in der Monats- und Jahresansicht HERVORGEHOBEN (FETT) an
@@ -653,6 +662,7 @@ Event popup text: Textfarbe Termin-PopUp
 ###############################################
 # Page: help_admin.php
 #
+Display weekends in week view: Wochenenden in der Wochenansicht anzeigen
 Display days with events in bold in year view: Zeigt Tage MIT Terminen in der Jahres&uuml;bersicht HERVORGEHOBEN (FETT) an
 Nonuser: 'Zentrale'-Kalender
 user-customize-color: Spezifiziert, ob Benutzern erlaubt wird, ihre eigenen Farbeneinstellungen zu &auml;ndern
@@ -1166,6 +1176,7 @@ Wed: Mi
 Thu: Do
 Fri: Fr
 Sat: Sa
+WK: KW
 TASKS: AUFGABE
 Task_Title: Aufgabentitel
 Due: F&auml;lligkeit
@@ -1354,6 +1365,7 @@ Invalid Date: Ung&uuml;ltiges Datum
 ###############################################
 # Page: includes/classes/WebCalMailer.class
 #
+Notification: Benachrichtigung
 provide_address: Sie m&uuml;ssen mindestens eine Emailadresse als Empf&auml;nger angeben 
 mailer_not_supported: Dieser Mailtyp wird nicht unterst&uuml;tzt
 execute: kann nicht ausgef&uuml;hrt werden
