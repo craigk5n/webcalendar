@@ -1287,7 +1287,7 @@ if ( ! $exists || ! $canWrite ) { ?>
  <?php etranslate ( "Database Settings" ) ?>
 </th></tr>
 <tr><td>
- <form action="index.php" method="post" name="dbform" onSubmit="return chkPassword()">
+ <form action="index.php" method="post" name="dbform" onsubmit="return chkPassword()">
  <table align="right" width="100%" border="0">
   <tr><td rowspan="6" width="20%">&nbsp;
    </td><td class="prompt" width="25%" valign="bottom">
