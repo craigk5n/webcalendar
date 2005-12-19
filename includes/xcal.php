@@ -167,7 +167,7 @@ function export_get_attendee($id, $export) {
 // other than formatting
 function export_time($date, $duration, $time, $texport, $vtype='E') {
  
-
+  $ret = '';
   $year = (int) substr($date,0,-4);
   $month = (int) substr($date,-4,2);
   $day = (int) substr($date,-2,2);
@@ -179,42 +179,44 @@ function export_time($date, $duration, $time, $texport, $vtype='E') {
  }
  if ( $time == -1  || ( $time == 0 && $duration == 1440 ) ) {
     // untimed event or all day
-    echo "DTSTART;VALUE=DATE:$date\r\n";
+    $ret .= "DTSTART;VALUE=DATE:$date\r\n";
   } else {
     // timed event 
     $utc_start = export_get_utc_date($date, $time);
-    echo "DTSTART:$utc_start\r\n";
+    $ret .= "DTSTART:$utc_start\r\n";
   }
   if (strcmp($texport,"ical") == 0) {
     $utc_dtstamp = export_get_utc_date(date("Ymd", mktime()),
       date("His", mktime()));
-    echo "DTSTAMP:$utc_dtstamp\r\n";
+    $ret .= "DTSTAMP:$utc_dtstamp\r\n";
   //We don' want DTEND for VTODOs
   if ( $vtype == "T" || $vtype == "N" ) return;
    if ($time == -1  || ( $time == 0 && $duration == 1440 ) ) {
       // untimed event
      $end_date = date("Ymd", mktime(12, 0, 0, $month, $day +1, $year));
-     echo "DTEND;VALUE=DATE:$end_date\r\n";
+     $ret .= "DTEND;VALUE=DATE:$end_date\r\n";
    } else {
      $end_tmstamp = mktime($hour, $min + $duration, 0, $month, $day, $year);
     //echo date("YmdHis", $end_tmstamp);
      $utc_end = export_get_utc_date(date("Ymd", $end_tmstamp), date("His", $end_tmstamp));
     //echo $hour." " .$min ." " .$duration." " .$month." " . $day." " . $year;
-     echo "DTEND:$utc_end\r\n";
+     $ret .= "DTEND:$utc_end\r\n";
    }
   } elseif (strcmp($texport,"vcal") == 0) {
    if ($time == -1  || ( $time == 0 && $duration == 1440 ) ) {
      $end_tmstamp = mktime($hour, $min, 0, $month, $day +1, $year);
      $utc_end = date("Ymd", $end_tmstamp);
-     echo "DTEND:$utc_end\r\n";
+     $ret .= "DTEND:$utc_end\r\n";
    } else {
      $end_tmstamp = mktime($hour, $min + $duration, 0, $month, $day, $year);;
      $utc_end = export_get_utc_date(date("Ymd", $end_tmstamp), date("His", $end_tmstamp));
-     echo "DTEND:$utc_end\r\n";
+     $ret .= "DTEND:$utc_end\r\n";
    }
   } else {
-    echo "DURATION:P$str_duration\r\n";
+    $ret .= "DURATION:P$str_duration\r\n";
   }
+  
+  return $ret;
 }
 //$simple allows for easy reading 
 function export_recurrence_ical( $id, $simple=false ) {
@@ -552,6 +554,8 @@ function export_alarm_vcal($id,$date,$time=0) {
 // make sure the reminder has not already been sent.
 function export_alarm_ical ( $id, $date, $description ) {
   global $cal_type;
+  
+  $ret = '';
   // Don't send reminder for event in the past
   if ( $date < date("Ymd") )
     return;
@@ -565,23 +569,25 @@ function export_alarm_ical ( $id, $date, $description ) {
 
   if ( $row ) {
     //Sunbird requires this line
-    echo "X-MOZILLA-ALARM-DEFAULT-LENGTH:" . $row[0] . "\r\n";
-    echo "BEGIN:VALARM\r\n";
-  echo "TRIGGER";
+    $ret .= "X-MOZILLA-ALARM-DEFAULT-LENGTH:" . $row[0] . "\r\n";
+    $ret .= "BEGIN:VALARM\r\n";
+  $ret .= "TRIGGER";
   //Tasks will use Alarms related to due date
     if ( $cal_type == "T" || $cal_type == "N" ) {
-    echo ";RELATED=END";  
+    $ret .= ";RELATED=END";  
   }
-  echo ":-PT".$row[0]."M\r\n";
-    echo "ACTION:DISPLAY\r\n";
+  $ret .= ":-PT".$row[0]."M\r\n";
+    $ret .= "ACTION:DISPLAY\r\n";
 
     $array = export_fold_lines ( $description, "utf8" );
     while  ( list ( $key, $value ) = each ( $array ) ) {
-      echo "$value\r\n";
+      $ret .= "$value\r\n";
     }
 
-    echo "END:VALARM\r\n";
+    $ret .= "END:VALARM\r\n";
   }
+  
+  return $ret;
 }
 
 function export_get_event_entry($id='all') {
@@ -816,9 +822,9 @@ function export_vcal ($id) {
       }
 
       /* Time - all times are utc */
-      export_time($date, $duration, $time, "vcal");
+      echo export_time($date, $duration, $time, "vcal");
 
-      export_recurrence_vcal($uid, $date);
+      echo export_recurrence_vcal($uid, $date);
 
       // FIXME: handle alarms
       export_alarm_vcal($uid,$date,$time);
@@ -831,10 +837,11 @@ function export_vcal ($id) {
     echo "END:VCALENDAR\r\n";
 } //end function
 
-function export_ical ( $id='all' ) {
+function export_ical ( $id='all', $attachment=false ) {
   global $publish_fullname, $login, $PROGRAM_VERSION,
    $PROGRAM_NAME, $cal_type,  $timestamp_RRULE;
-  $exportId = -1;
+ $exportId = -1;
+ $ret='';
  
  $res = export_get_event_entry($id);
   $entry_array = array();
@@ -846,20 +853,20 @@ function export_ical ( $id='all' ) {
 
   //  Always output something, even if no records come back
   //  This prevents errors on the iCal client
-  echo "BEGIN:VCALENDAR\r\n";
+  $ret = "BEGIN:VCALENDAR\r\n";
   $title = "X-WR-CALNAME;VALUE=TEXT:" .
     ( empty ( $publish_fullname ) ? $login : translate($publish_fullname) );
   $title = str_replace ( ",", "\\,", $title );
-  echo "$title\r\n";
+  $ret .= "$title\r\n";
   if ( ! empty ( $PROGRAM_VERSION ) ) {
-    echo "PRODID:-//WebCalendar-$PROGRAM_VERSION\r\n";
+    $ret .= "PRODID:-//WebCalendar-$PROGRAM_VERSION\r\n";
   } else if ( preg_match ( "/WebCalendar v(\S+)/", $PROGRAM_NAME, $match ) ) {
-    echo "PRODID:-//WebCalendar-$match[1]\r\n";
+    $ret .= "PRODID:-//WebCalendar-$match[1]\r\n";
   } else {
-    echo "PRODID:-//WebCalendar-UnknownVersion\r\n";
+    $ret .= "PRODID:-//WebCalendar-UnknownVersion\r\n";
   }
-  echo "VERSION:2.0\r\n";
-  echo "METHOD:PUBLISH\r\n";
+  $ret .= "VERSION:2.0\r\n";
+  $ret .= "METHOD:PUBLISH\r\n";
 
   while (list($key,$row) = each($entry_array)) {
     $id = $row[0];
@@ -943,44 +950,44 @@ function export_ical ( $id='all' ) {
    time zone information for all recurrence instances. */
   
   if ( ! empty ( $timestamp_RRULE ) ){ //$timestamp_RRULE set in export_recurrence_ical
-   export_vtimezone( $timestamp_RRULE );
+   $ret .= export_vtimezone( $timestamp_RRULE );
   }
     
   if ( $cal_type == "E" || $cal_type == "M" ) {
    $exporting_event = true;
     /* Start of event */
-    echo "BEGIN:VEVENT\r\n";
+    $ret .= "BEGIN:VEVENT\r\n";
   } else if ( $cal_type == "T" || $cal_type == "N" ) {
    $exporting_event = false;
     /* Start of VTODO */
-    echo "BEGIN:VTODO\r\n";  
+    $ret .= "BEGIN:VTODO\r\n";  
   }
 
     /* UID of the event (folded to 76 char) */
     $array = export_fold_lines("UID:$event_uid");
     while (list($key,$value) = each($array))
-       echo "$value\r\n";
-
+       $ret .= "$value\r\n";
+       
     $name = preg_replace("/\r/", "", $name);
-    $name = preg_replace("/\n/", "\\n", $name);
-    $name = preg_replace("/\\\\/", "\\\\\\", $name); // ??
+    $name = addslashes ( $name );
+    $name = str_replace ( chr(10), chr(92).chr(110) , $name );
     $description = preg_replace("/\r/", "", $description);
-    $description = preg_replace("/\n/", "\\n", $description);
-    $description = preg_replace("/\\\\/", "\\\\\\", $description); // ??
+    $description = addslashes ( $description );
+    $description = str_replace ( chr(10), chr(92).chr(110) , $description );
 
     /* SUMMARY of the event (folded to 76 char) */
     $name = "SUMMARY:" . $name;
     $array = export_fold_lines($name,"utf8");
 
     while (list($key,$value) = each($array))
-       echo "$value\r\n";
+       $ret .= "$value\r\n";
 
     /* DESCRIPTION if any (folded to 76 char) */
     if ($description != "") {
       $description = "DESCRIPTION:" . $description;
       $array = export_fold_lines($description,"utf8");
       while (list($key,$value) = each($array))
-        echo "$value\r\n";
+        $ret .= "$value\r\n";
     }
 
     /* LOCATION if any (folded to 76 char) */
@@ -988,7 +995,7 @@ function export_ical ( $id='all' ) {
       $location = "LOCATION:" . $location;
       $array = export_fold_lines($location,"utf8");
       while (list($key,$value) = each($array))
-        echo "$value\r\n";
+        $ret .= "$value\r\n";
     } 
 
     /* CATEGORIES if any (folded to 76 char) */
@@ -996,62 +1003,69 @@ function export_ical ( $id='all' ) {
       $categories = "CATEGORIES:" . implode ( ",", $categories);
       $array = export_fold_lines($categories,"utf8");
       while (list($key,$value) = each($array))
-        echo "$value\r\n";
+        $ret .= "$value\r\n";
     }
 
     /* CLASS either "PRIVATE", "CONFIDENTIAL",  or "PUBLIC" (the default) */
     if ($access == "R") {
-      echo "CLASS:PRIVATE\r\n";
+      $ret .= "CLASS:PRIVATE\r\n";
       } else  if ($access == "C"){
-        echo "CLASS:CONFIDENTIAL\r\n";
+        $ret .= "CLASS:CONFIDENTIAL\r\n";
       } else {
-        echo "CLASS:PUBLIC\r\n";
+        $ret .= "CLASS:PUBLIC\r\n";
       }
  
     /* STATUS */
   if ( $cal_type == "E" || $cal_type == "M" ) {  
     if ($status == "A") {
-      echo "STATUS:CONFIRMED\r\n";
+      $ret .= "STATUS:CONFIRMED\r\n";
     } else if ($status == "W") {
-      echo "STATUS:TENTATIVE\r\n";
+      $ret .= "STATUS:TENTATIVE\r\n";
     }
   } else if ( $cal_type == "T" || $cal_type == "N" ) {
     if ($status == "A" && empty ( $completed ) ) {
-      echo "STATUS:ACCEPTED\r\n";
+      $ret .= "STATUS:ACCEPTED\r\n";
     } else if ($status == "A") {
-      echo "STATUS:COMPLETED\r\n";
+      $ret .= "STATUS:COMPLETED\r\n";
     } else if ($status == "W") {
-      echo "STATUS:NEEDS-ACTION\r\n";
+      $ret .= "STATUS:NEEDS-ACTION\r\n";
     } 
  } 
 
     /* Time - all times are utc */
-    export_time($date, $duration, $time, "ical", $cal_type );
+    $ret .= export_time($date, $duration, $time, "ical", $cal_type );
     
   //VTODO specific items
     if ( $cal_type == "T" || $cal_type == "N" ) {
-      echo "DUE:" . $due_date. "T". sprintf ( "%06d", $due_time ) . "Z\r\n";
+      $ret .= "DUE:" . $due_date. "T". sprintf ( "%06d", $due_time ) . "Z\r\n";
     if ( ! empty ( $completed ) ) echo "COMPLETED:" . $completed . "\r\n";
-      echo "PERCENT-COMPLETE:" . $percent . "\r\n";
+      $ret .= "PERCENT-COMPLETE:" . $percent . "\r\n";
   }
   
     /* Recurrence */
-    echo $recurrance;
+    $ret .= $recurrance;
 
     /* handle alarms */
-    export_alarm_ical($id,$date,$description);
+    $ret .= export_alarm_ical($id,$date,$description);
 
   if ( $cal_type == "E" || $cal_type == "M" ) {
       /* End of event */
-      echo "END:VEVENT\r\n";
+      $ret .= "END:VEVENT\r\n";
   } else if ( $cal_type == "T" || $cal_type == "N" ) {
       /* Start of VTODO */
-      echo "END:VTODO\r\n";  
+      $ret .= "END:VTODO\r\n";  
   }
   }
 
   
-  echo "END:VCALENDAR\r\n";
+  $ret .= "END:VCALENDAR\r\n";
+  
+  //attachment will be true if called during email creation
+  if ( !$attachment ) {
+    echo $ret;
+  } else {
+    return $ret;
+  }
 }
 
 //IMPORT FUNCTIONS BELOW HERE
@@ -2743,7 +2757,7 @@ function fb_export_time ( $date, $duration, $time, $texport ) {
 function export_vtimezone( $timestamp ) {
    global $TIMEZONE;
 
-  
+  $ret = '';
   $tz_info = array();
   //Get TZID value
   $tzid = $TIMEZONE; //default value
@@ -2760,38 +2774,40 @@ function export_vtimezone( $timestamp ) {
   $GLOBALS['TZID']  = ( ! empty ( $tzid) ? $tzid : "" );
   $tz_info = get_tz_info ( $timestamp );
    //print_r ($tz_info);
-  echo "BEGIN:VTIMEZONE\r\n";
-  echo "TZID:" .$tzid . "\r\n";
+  $ret =  "BEGIN:VTIMEZONE\r\n";
+  $ret .= "TZID:" .$tzid . "\r\n";
   foreach ( $tz_info as $tz_data) {
    if ( $tz_data['rule_save'] == 0 ) {
-    echo "BEGIN:STANDARD\r\n";
-    echo "DTSTART:" . $tz_data['start'] . "\r\n";
+    $ret .= "BEGIN:STANDARD\r\n";
+    $ret .= "DTSTART:" . $tz_data['start'] . "\r\n";
        if ( ! empty ($tz_data['rrule'] ) ) {
          $name = $tz_data['rrule'];
          $array = export_fold_lines($name,"utf8");
          while (list($key,$value) = each($array))
-           echo "$value\r\n";    
+           $ret .= "$value\r\n";    
     }
-    echo "TZOFFSETFROM:" . $tz_data['offsetfrom'] . "\r\n";
-    echo "TZOFFSETTO:" . $tz_data['offsetto'] . "\r\n";
-    echo "TZNAME:" . $tz_data['name'] . "\r\n";
-    echo "END:STANDARD\r\n";
+    $ret .= "TZOFFSETFROM:" . $tz_data['offsetfrom'] . "\r\n";
+    $ret .= "TZOFFSETTO:" . $tz_data['offsetto'] . "\r\n";
+    $ret .= "TZNAME:" . $tz_data['name'] . "\r\n";
+    $ret .= "END:STANDARD\r\n";
    } else {
-    echo "BEGIN:DAYLIGHT\r\n";
-    echo "DTSTART:" . $tz_data['start'] . "\r\n";
+    $ret .= "BEGIN:DAYLIGHT\r\n";
+    $ret .= "DTSTART:" . $tz_data['start'] . "\r\n";
        if ( ! empty ($tz_data['rrule'] ) ) {
          $name = $tz_data['rrule'];
          $array = export_fold_lines($name,"utf8");
          while (list($key,$value) = each($array))
-           echo "$value\r\n";    
+           $ret .= "$value\r\n";    
     }    
-    echo "TZOFFSETFROM:" . $tz_data['offsetfrom'] . "\r\n";
-    echo "TZOFFSETTO:" . $tz_data['offsetto'] . "\r\n";
-    echo "TZNAME:" . $tz_data['name'] . "\r\n";
-    echo "END:DAYLIGHT\r\n";
+    $ret .= "TZOFFSETFROM:" . $tz_data['offsetfrom'] . "\r\n";
+    $ret .= "TZOFFSETTO:" . $tz_data['offsetto'] . "\r\n";
+    $ret .= "TZNAME:" . $tz_data['name'] . "\r\n";
+    $ret .= "END:DAYLIGHT\r\n";
    }
   }
-  echo "END:VTIMEZONE\r\n";
+  $ret .= "END:VTIMEZONE\r\n";
+  
+  return $ret;
 }
 
 /**

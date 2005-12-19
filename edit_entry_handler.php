@@ -1,5 +1,6 @@
 <?php
 include_once 'includes/init.php';
+include_once 'includes/xcal.php'; //used for ics attachments
 require ( 'includes/classes/WebCalMailer.class' );
 $mail = new WebCalMailer;
 
@@ -406,6 +407,192 @@ if ( empty ( $error ) ) {
     $participants[0] = $single_user_login;
   }
 
+  //add categories
+  $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
+   $is_admin ) ) ? $user : $login;
+ dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
+    "AND ( cat_owner = '$cat_owner' OR cat_owner IS NULL )" );
+ $categories = explode (",", $cat_id );
+ sort ( $categories);
+ for ( $i =0; $i < count( $categories ); $i++ ) {
+   $names = array();
+    $values = array(); 
+  $names[] = 'cal_id';
+  $values[]  = $id; 
+  $names[] = 'cat_id';
+  $values[]  = abs($categories[$i]);
+  //we set cat_id negative in form if global
+  if ( $categories[$i] > 0 ) {
+    $names[] = 'cat_owner';
+    $values[]  = "'$cat_owner'";
+   $names[] = 'cat_order';
+   $values[]  = ($i+1);
+  } else {
+   $names[] = 'cat_order';
+   $values[]  = 99; //forces global categories to apear at the end of lists 
+  } 
+  $sql = "INSERT INTO webcal_entry_categories ( " . implode ( ", ", $names ) .
+       " ) VALUES ( " . implode ( ", ", $values ) . " )"; 
+  if ( ! dbi_query ( $sql ) ) {
+   $error = translate("Database error") . ": " . dbi_error ();
+   break;
+  }
+ }     
+  // add site extras
+ //we'll ignore the site_extra settings and use the form values
+  if ( ! empty ( $serial_site_extras ) ) {
+   $site_extras_additions = unserialize ( base64_decode ($serial_site_extras ) );
+    $site_extras = array_merge ( $site_extras, $site_extras_additions );
+  }
+  for ( $i = 0; $i < count ( $site_extras ) && empty ( $error ); $i++ ) {
+    $sql = "";
+    $extra_name = $site_extras[$i][0];
+    $extra_type = $site_extras[$i][2];
+    $extra_arg1 = $site_extras[$i][3];
+    $extra_arg2 = $site_extras[$i][4];
+    $value = $$extra_name;
+    //echo "Looking for $extra_name... value = " . $value . " ... type = " .
+    // $extra_type . "<br />\n";
+    if ( strlen ( $extra_name ) || $extra_type == EXTRA_DATE ) {
+      if ( $extra_type == EXTRA_URL || $extra_type == EXTRA_EMAIL ||
+        $extra_type == EXTRA_TEXT || $extra_type == EXTRA_USER ||
+        $extra_type == EXTRA_MULTILINETEXT ||
+        $extra_type == EXTRA_SELECTLIST  ) {
+
+        $sql = "INSERT INTO webcal_site_extras " .
+          "( cal_id, cal_name, cal_type, cal_data ) VALUES ( " .
+          "$id, '$extra_name', $extra_type, '$value' )";
+      } else if ( $extra_type == EXTRA_REMINDER && $value == "1" ) {
+        if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
+          $yname = $extra_name . "year";
+          $mname = $extra_name . "month";
+          $dname = $extra_name . "day";
+          $edate = sprintf ( "%04d%02d%02d", $$yname, $$mname, $$dname );
+          $sql = "INSERT INTO webcal_site_extras " .
+            "( cal_id, cal_name, cal_type, cal_remind, cal_date ) VALUES ( " .
+            "$id, '$extra_name', $extra_type, 1, $edate )";
+        } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
+          $dname = $extra_name . "_days";
+          $hname = $extra_name . "_hours";
+          $mname = $extra_name . "_minutes";
+          $minutes = ( $$dname * 24 * 60 ) + ( $$hname * 60 ) + $$mname;
+          $sql = "INSERT INTO webcal_site_extras " .
+            "( cal_id, cal_name, cal_type, cal_remind, cal_data ) VALUES ( " .
+            "$id, '$extra_name', $extra_type, 1, '" . $minutes . "' )";
+        } else {
+          $sql = "INSERT INTO webcal_site_extras " .
+          "( cal_id, cal_name, cal_type, cal_remind ) VALUES ( " .
+          "$id, '$extra_name', $extra_type, 1 )";
+        }
+      } else if ( $extra_type == EXTRA_DATE )  {
+        $yname = $extra_name . "year";
+        $mname = $extra_name . "month";
+        $dname = $extra_name . "day";
+        $edate = sprintf ( "%04d%02d%02d", $$yname, $$mname, $$dname );
+        $sql = "INSERT INTO webcal_site_extras " .
+          "( cal_id, cal_name, cal_type, cal_date ) VALUES ( " .
+          "$id, '$extra_name', $extra_type, $edate )";
+      }
+    }
+    if ( strlen ( $sql ) && empty ( $error ) ) {
+      //echo "SQL: $sql<br />\n";
+      if ( ! dbi_query ( $sql ) ) {
+        $error = translate("Database error") . ": " . dbi_error ();
+      }
+    }
+  } //end for site_extras loop
+
+  // clearly, we want to delete the old repeats, before inserting new...
+  if ( empty ( $error ) ) {
+    if ( ! dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id") ) {
+      $error = translate("Database error") . ": " . dbi_error ();
+    }
+  if ( ! dbi_query ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = $id") ) {
+      $error = translate("Database error") . ": " . dbi_error ();
+  }
+    // add repeating info
+  if ( ! empty ( $rpt_type ) && strlen ( $rpt_type ) && $rpt_type != 'none' ) {
+    $freq = ( $rpt_freq ? $rpt_freq : 1 );
+    if ( ! empty ( $rpt_year  ) ) {
+      $end = sprintf ( "%04d%02d%02d", $rpt_year, $rpt_month, $rpt_day );
+    } else {
+      $end = 'NULL';
+    }
+
+    $names = array();
+    $values = array();
+    $names[] = 'cal_id';
+    $values[]  = $id;
+   
+    $names[]  = 'cal_type';
+    $values[] = "'" . $rpt_type . "'";
+        
+    $names[] = 'cal_frequency';
+    $values[] = $freq;
+ 
+    if (! empty ( $bymonth ) ){
+     $names[] = 'cal_bymonth';
+     $values[]  = "'" . $bymonth . "'";
+    } 
+    
+    if (! empty ( $bymonthday ) ){
+     $names[] = 'cal_bymonthday';
+     $values[]  = "'" . $bymonthday . "'";
+    } 
+    if ( ! empty ( $byday ) ){
+    $names[] = 'cal_byday';
+    $values[] =  "'" . $byday . "'";
+    }
+    if (! empty ( $bysetpos ) ){
+    $names[] = 'cal_bysetpos';
+    $values[] = "'" . $bysetpos . "'";
+    }
+    if (! empty ( $byweekno ) ){
+    $names[] = 'cal_byweekno';
+    $values[] = "'" . $byweekno . "'";
+    }
+    if (! empty ( $byyearday ) ) {
+      $names[] = 'cal_byyearday';
+      $values[] = "'" . $byyearday . "'";
+    }
+    if (! empty ( $wkst ) ) {
+      $names[] = 'cal_wkst';
+      $values[] = "'" . $wkst . "'";
+    }
+    
+    if (! empty ( $rpt_count ) && is_numeric ( $rpt_count )  ) {
+      $names[] = 'cal_count';
+      $values[] = $rpt_count;
+    } 
+
+    $names[] = 'cal_end';
+      $values[] = $end;
+    if ( $timetype == "T" && ! empty($eventstop) ) {
+      $names[] = 'cal_endtime';         
+      $values[] = date("His", $eventstop);
+    }
+
+    $sql = "INSERT INTO webcal_entry_repeats ( " . implode ( ", ", $names ) .
+       " ) VALUES ( " . implode ( ", ", $values ) . " )"; 
+      dbi_query ( $sql );
+      $msg .= "<span style=\"font-weight:bold;\">SQL:</span> $sql<br />\n<br />";
+
+    } //end add repeating info
+    //We manually created exceptions. This can be done without repeats
+     if ( ! empty ($exceptions ) ) {
+       for ( $i = 0; $i < count ( $exceptions ); $i++ ) {
+            $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
+              "VALUES ( $id," . substr ($exceptions[$i],1,8 ) . ",". 
+       ( substr ($exceptions[$i],0, 1 ) == "+"? 0 : 1 ) . " )";
+            if ( ! dbi_query ( $sql ) ) {
+              $error = translate("Database error") . ": " . dbi_error ();
+            }
+       }
+      } //end exceptions    
+  } //end empty error
+}
+
+
   $from = $login_email;
   if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
     $from = $EMAIL_FALLBACK_FROM;
@@ -447,7 +634,8 @@ if ( empty ( $error ) ) {
           }
   
           $fmtdate = date ( "Ymd", $user_eventstart ); 
-          $msg = translate("Hello", true) . ", " . unhtmlentities( $tempfullname ) . ".\n\n" .
+          $msg = translate("Hello", true) . ", " .
+            unhtmlentities( $tempfullname ) . ".\n\n" .
             translate("An appointment has been canceled for you by", true) .
             " " . $login_fullname .  ".\n" .
             translate("The subject was", true) . " \"" . $name . "\"\n\n" .
@@ -707,25 +895,15 @@ if ( $single_user == "N" &&
           }
           $msg .= " " . $login_fullname .  ".\n" .
             translate("The subject is", true) . " \"" . $name . "\"\n\n" .
-            translate("The description is", true) . " \"" . $description . "\"\n" .
+            translate("The description is", true) . " \"" . $description . "\"\n\n" .
             translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
             ( $timetype != 'T' ? "" :
             translate("Time") . ": " .
             // Do not apply TZ offset & display TZID, which is GMT
-            display_time ( date ("YmdHis", $eventstart ), 3 ) . "\n" ) .
-            translate("Please look on", true) . " " . translate($APPLICATION_NAME) .
-            ".";
+            display_time ( date ("YmdHis", $eventstart ), 3 ) );
           $msg = stripslashes ( $msg );          
-          // add URL to event, if we can figure it out
           //don't send HTML to external adresses
           $htmlmail = false;
-          if ( ! empty ( $SERVER_URL )  ) {
-            $url = $SERVER_URL .  "view_entry.php?id=" .  $id;
-            if ( $htmlmail == 'Y' ) {
-              $url =  activate_urls ( $url ); 
-            }
-            $msg .= "\n\n" . $url;
-          }
           if ( strlen ( $from ) ) {
             $mail->From = $from;
             $mail->FromName = $login_fullname;
@@ -734,7 +912,8 @@ if ( $single_user == "N" &&
           }  
           $mail->IsHTML($htmlmail == "Y");
           $mail->AddAddress( $ext_emails[$i], $ext_names[$i] );
-          $mail->WCSubject ( $name );
+          $mail->WCSubject ( $name );                     
+          $mail->IcsAttach ( $id ) ;
           $mail->Body  = ( $htmlmail == 'Y' ? nl2br ( $msg ) : $msg );
           $mail->Send();
           $mail->ClearAll();
@@ -743,191 +922,6 @@ if ( $single_user == "N" &&
       }
     }
   } //end external mail
-
-  //add categories
-  $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
-   $is_admin ) ) ? $user : $login;
- dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
-    "AND ( cat_owner = '$cat_owner' OR cat_owner IS NULL )" );
- $categories = explode (",", $cat_id );
- sort ( $categories);
- for ( $i =0; $i < count( $categories ); $i++ ) {
-   $names = array();
-    $values = array(); 
-  $names[] = 'cal_id';
-  $values[]  = $id; 
-  $names[] = 'cat_id';
-  $values[]  = abs($categories[$i]);
-  //we set cat_id negative in form if global
-  if ( $categories[$i] > 0 ) {
-    $names[] = 'cat_owner';
-    $values[]  = "'$cat_owner'";
-   $names[] = 'cat_order';
-   $values[]  = ($i+1);
-  } else {
-   $names[] = 'cat_order';
-   $values[]  = 99; //forces global categories to apear at the end of lists 
-  } 
-  $sql = "INSERT INTO webcal_entry_categories ( " . implode ( ", ", $names ) .
-       " ) VALUES ( " . implode ( ", ", $values ) . " )"; 
-  if ( ! dbi_query ( $sql ) ) {
-   $error = translate("Database error") . ": " . dbi_error ();
-   break;
-  }
- }     
-  // add site extras
- //we'll ignore the site_extra settings and use the form values
-  if ( ! empty ( $serial_site_extras ) ) {
-   $site_extras_additions = unserialize ( base64_decode ($serial_site_extras ) );
-    $site_extras = array_merge ( $site_extras, $site_extras_additions );
-  }
-  for ( $i = 0; $i < count ( $site_extras ) && empty ( $error ); $i++ ) {
-    $sql = "";
-    $extra_name = $site_extras[$i][0];
-    $extra_type = $site_extras[$i][2];
-    $extra_arg1 = $site_extras[$i][3];
-    $extra_arg2 = $site_extras[$i][4];
-    $value = $$extra_name;
-    //echo "Looking for $extra_name... value = " . $value . " ... type = " .
-    // $extra_type . "<br />\n";
-    if ( strlen ( $extra_name ) || $extra_type == EXTRA_DATE ) {
-      if ( $extra_type == EXTRA_URL || $extra_type == EXTRA_EMAIL ||
-        $extra_type == EXTRA_TEXT || $extra_type == EXTRA_USER ||
-        $extra_type == EXTRA_MULTILINETEXT ||
-        $extra_type == EXTRA_SELECTLIST  ) {
-
-        $sql = "INSERT INTO webcal_site_extras " .
-          "( cal_id, cal_name, cal_type, cal_data ) VALUES ( " .
-          "$id, '$extra_name', $extra_type, '$value' )";
-      } else if ( $extra_type == EXTRA_REMINDER && $value == "1" ) {
-        if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
-          $yname = $extra_name . "year";
-          $mname = $extra_name . "month";
-          $dname = $extra_name . "day";
-          $edate = sprintf ( "%04d%02d%02d", $$yname, $$mname, $$dname );
-          $sql = "INSERT INTO webcal_site_extras " .
-            "( cal_id, cal_name, cal_type, cal_remind, cal_date ) VALUES ( " .
-            "$id, '$extra_name', $extra_type, 1, $edate )";
-        } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
-          $dname = $extra_name . "_days";
-          $hname = $extra_name . "_hours";
-          $mname = $extra_name . "_minutes";
-          $minutes = ( $$dname * 24 * 60 ) + ( $$hname * 60 ) + $$mname;
-          $sql = "INSERT INTO webcal_site_extras " .
-            "( cal_id, cal_name, cal_type, cal_remind, cal_data ) VALUES ( " .
-            "$id, '$extra_name', $extra_type, 1, '" . $minutes . "' )";
-        } else {
-          $sql = "INSERT INTO webcal_site_extras " .
-          "( cal_id, cal_name, cal_type, cal_remind ) VALUES ( " .
-          "$id, '$extra_name', $extra_type, 1 )";
-        }
-      } else if ( $extra_type == EXTRA_DATE )  {
-        $yname = $extra_name . "year";
-        $mname = $extra_name . "month";
-        $dname = $extra_name . "day";
-        $edate = sprintf ( "%04d%02d%02d", $$yname, $$mname, $$dname );
-        $sql = "INSERT INTO webcal_site_extras " .
-          "( cal_id, cal_name, cal_type, cal_date ) VALUES ( " .
-          "$id, '$extra_name', $extra_type, $edate )";
-      }
-    }
-    if ( strlen ( $sql ) && empty ( $error ) ) {
-      //echo "SQL: $sql<br />\n";
-      if ( ! dbi_query ( $sql ) ) {
-        $error = translate("Database error") . ": " . dbi_error ();
-      }
-    }
-  } //end for site_extras loop
-
-  // clearly, we want to delete the old repeats, before inserting new...
-  if ( empty ( $error ) ) {
-    if ( ! dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id") ) {
-      $error = translate("Database error") . ": " . dbi_error ();
-    }
-  if ( ! dbi_query ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = $id") ) {
-      $error = translate("Database error") . ": " . dbi_error ();
-  }
-    // add repeating info
-  if ( ! empty ( $rpt_type ) && strlen ( $rpt_type ) && $rpt_type != 'none' ) {
-    $freq = ( $rpt_freq ? $rpt_freq : 1 );
-    if ( ! empty ( $rpt_year  ) ) {
-      $end = sprintf ( "%04d%02d%02d", $rpt_year, $rpt_month, $rpt_day );
-    } else {
-      $end = 'NULL';
-    }
-
-    $names = array();
-    $values = array();
-    $names[] = 'cal_id';
-    $values[]  = $id;
-   
-    $names[]  = 'cal_type';
-    $values[] = "'" . $rpt_type . "'";
-        
-    $names[] = 'cal_frequency';
-    $values[] = $freq;
- 
-    if (! empty ( $bymonth ) ){
-     $names[] = 'cal_bymonth';
-     $values[]  = "'" . $bymonth . "'";
-    } 
-    
-    if (! empty ( $bymonthday ) ){
-     $names[] = 'cal_bymonthday';
-     $values[]  = "'" . $bymonthday . "'";
-    } 
-    if ( ! empty ( $byday ) ){
-    $names[] = 'cal_byday';
-    $values[] =  "'" . $byday . "'";
-    }
-    if (! empty ( $bysetpos ) ){
-    $names[] = 'cal_bysetpos';
-    $values[] = "'" . $bysetpos . "'";
-    }
-    if (! empty ( $byweekno ) ){
-    $names[] = 'cal_byweekno';
-    $values[] = "'" . $byweekno . "'";
-    }
-    if (! empty ( $byyearday ) ) {
-      $names[] = 'cal_byyearday';
-      $values[] = "'" . $byyearday . "'";
-    }
-    if (! empty ( $wkst ) ) {
-      $names[] = 'cal_wkst';
-      $values[] = "'" . $wkst . "'";
-    }
-    
-    if (! empty ( $rpt_count ) && is_numeric ( $rpt_count )  ) {
-      $names[] = 'cal_count';
-      $values[] = $rpt_count;
-    } 
-
-    $names[] = 'cal_end';
-      $values[] = $end;
-    if ( $timetype == "T" && ! empty($eventstop) ) {
-      $names[] = 'cal_endtime';         
-      $values[] = date("His", $eventstop);
-    }
-
-    $sql = "INSERT INTO webcal_entry_repeats ( " . implode ( ", ", $names ) .
-       " ) VALUES ( " . implode ( ", ", $values ) . " )"; 
-      dbi_query ( $sql );
-      $msg .= "<span style=\"font-weight:bold;\">SQL:</span> $sql<br />\n<br />";
-
-    } //end add repeating info
-    //We manually created exceptions. This can be done without repeats
-     if ( ! empty ($exceptions ) ) {
-       for ( $i = 0; $i < count ( $exceptions ); $i++ ) {
-            $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
-              "VALUES ( $id," . substr ($exceptions[$i],1,8 ) . ",". 
-       ( substr ($exceptions[$i],0, 1 ) == "+"? 0 : 1 ) . " )";
-            if ( ! dbi_query ( $sql ) ) {
-              $error = translate("Database error") . ": " . dbi_error ();
-            }
-       }
-      } //end exceptions    
-  } //end empty error
-}
 
 // If we were editing this event, then go back to the last view (week, day,
 // month).  If this is a new event, then go to the preferred view for
