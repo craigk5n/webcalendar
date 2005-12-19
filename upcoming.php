@@ -316,7 +316,7 @@ function print_upcoming_event ( $e ) {
     $cal_type = ( $e->getCalType() == 'T' || $e->getCalType() == 'N' ) ?
       'task' : 'entry';
     print "<a title=\"" . 
-      $e->getName() . "\" href=\"" . 
+      htmlspecialchars ( $e->getName() ) . "\" href=\"" . 
       $SERVER_URL . 'view_' . $cal_type . '.php?id=' . 
       $e->getID() . "&amp;date=" . 
       $e->getDate() . "\"";
@@ -325,7 +325,7 @@ function print_upcoming_event ( $e ) {
     }
     print ">";
   }
-  print $e->getName();
+  print htmlspecialchars ( $e->getName() );
   if ( $display_link && ! empty ( $SERVER_URL ) ) {
     print "</a>";
   }
