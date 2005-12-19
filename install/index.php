@@ -176,6 +176,9 @@ function get_installed_version () {
    //make sure all existing values in config and pref tables are UPPERCASE
    make_uppercase ();
    
+   //delete existing WEBCAL_PROGRAM_VERSION number 
+   dbi_query ("DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
+	    
    // Insert webcal_config values only if blank
    db_load_config ();   
  }
