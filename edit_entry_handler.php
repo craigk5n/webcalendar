@@ -144,12 +144,10 @@ if ( $timetype == "T" ) { // All other types are time independent
  
 // Calculate event duration
 $duration = ( $eventstop - $eventstart ) / 60;
+
 if ( $timetype == "T" && $duration < 0 ) {
  $duration = 0;
 }
-
-
-
 
 // Make sure this user is really allowed to edit this event.
 // Otherwise, someone could hand type in the URL to edit someone else's
@@ -173,7 +171,8 @@ if ( empty ( $id ) ) {
     $row = dbi_fetch_row ( $res );
     // value may be needed later for recreating event
     $old_create_by = $row[0];
-    if (( $row[0] == $login ) || (( $user == $row[0] ) && ( $is_assistant || $is_nonuser_admin )))
+    if (( $row[0] == $login ) || (( $user == $row[0] ) && 
+      ( $is_assistant || $is_nonuser_admin )))
       $can_edit = true;
     dbi_free_result ( $res );
   } else
@@ -257,6 +256,7 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) ||
 if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != "Y" ) {
   $confirm_conflicts = ""; // security precaution
 }
+
 if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
   strlen ( $hour ) > 0 && $timetype != 'U' ) {
 
@@ -386,9 +386,9 @@ if ( empty ( $error ) ) {
   if ( strlen ( $description ) == 0  || $description == "<br />" ) {
     $description = $name;
   }
- $sql .= "'" . $description . "',";
+  $sql .= "'" . $description . "',";
  
- $location = ( ! empty ( $location )? $location:'');
+  $location = ( ! empty ( $location )? $location:'');
   $sql .= "'" . $location . "' )";
   
  
@@ -409,39 +409,39 @@ if ( empty ( $error ) ) {
 
   //add categories
   $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
-   $is_admin ) ) ? $user : $login;
- dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
+    $is_admin ) ) ? $user : $login;
+  dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
     "AND ( cat_owner = '$cat_owner' OR cat_owner IS NULL )" );
- $categories = explode (",", $cat_id );
- sort ( $categories);
- for ( $i =0; $i < count( $categories ); $i++ ) {
-   $names = array();
+  $categories = explode (",", $cat_id );
+  sort ( $categories);
+  for ( $i =0; $i < count( $categories ); $i++ ) {
+    $names = array();
     $values = array(); 
-  $names[] = 'cal_id';
-  $values[]  = $id; 
-  $names[] = 'cat_id';
-  $values[]  = abs($categories[$i]);
-  //we set cat_id negative in form if global
-  if ( $categories[$i] > 0 ) {
-    $names[] = 'cat_owner';
-    $values[]  = "'$cat_owner'";
-   $names[] = 'cat_order';
-   $values[]  = ($i+1);
-  } else {
-   $names[] = 'cat_order';
-   $values[]  = 99; //forces global categories to apear at the end of lists 
-  } 
-  $sql = "INSERT INTO webcal_entry_categories ( " . implode ( ", ", $names ) .
-       " ) VALUES ( " . implode ( ", ", $values ) . " )"; 
-  if ( ! dbi_query ( $sql ) ) {
-   $error = translate("Database error") . ": " . dbi_error ();
-   break;
-  }
- }     
+    $names[] = 'cal_id';
+    $values[]  = $id; 
+    $names[] = 'cat_id';
+    $values[]  = abs($categories[$i]);
+    //we set cat_id negative in form if global
+    if ( $categories[$i] > 0 ) {
+      $names[] = 'cat_owner';
+      $values[]  = "'$cat_owner'";
+      $names[] = 'cat_order';
+      $values[]  = ($i+1);
+    } else {
+      $names[] = 'cat_order';
+      $values[]  = 99; //forces global categories to apear at the end of lists 
+    } 
+    $sql = "INSERT INTO webcal_entry_categories ( " . implode ( ", ", $names ) .
+      " ) VALUES ( " . implode ( ", ", $values ) . " )"; 
+    if ( ! dbi_query ( $sql ) ) {
+      $error = translate("Database error") . ": " . dbi_error ();
+      break;
+    }
+  }     
   // add site extras
- //we'll ignore the site_extra settings and use the form values
+  //we'll ignore the site_extra settings and use the form values
   if ( ! empty ( $serial_site_extras ) ) {
-   $site_extras_additions = unserialize ( base64_decode ($serial_site_extras ) );
+    $site_extras_additions = unserialize ( base64_decode ($serial_site_extras ) );
     $site_extras = array_merge ( $site_extras, $site_extras_additions );
   }
   for ( $i = 0; $i < count ( $site_extras ) && empty ( $error ); $i++ ) {
@@ -531,25 +531,25 @@ if ( empty ( $error ) ) {
     $values[] = $freq;
  
     if (! empty ( $bymonth ) ){
-     $names[] = 'cal_bymonth';
-     $values[]  = "'" . $bymonth . "'";
+      $names[] = 'cal_bymonth';
+      $values[]  = "'" . $bymonth . "'";
     } 
     
     if (! empty ( $bymonthday ) ){
-     $names[] = 'cal_bymonthday';
-     $values[]  = "'" . $bymonthday . "'";
+      $names[] = 'cal_bymonthday';
+      $values[]  = "'" . $bymonthday . "'";
     } 
     if ( ! empty ( $byday ) ){
-    $names[] = 'cal_byday';
-    $values[] =  "'" . $byday . "'";
+      $names[] = 'cal_byday';
+      $values[] =  "'" . $byday . "'";
     }
     if (! empty ( $bysetpos ) ){
-    $names[] = 'cal_bysetpos';
-    $values[] = "'" . $bysetpos . "'";
+      $names[] = 'cal_bysetpos';
+      $values[] = "'" . $bysetpos . "'";
     }
     if (! empty ( $byweekno ) ){
-    $names[] = 'cal_byweekno';
-    $values[] = "'" . $byweekno . "'";
+      $names[] = 'cal_byweekno';
+      $values[] = "'" . $byweekno . "'";
     }
     if (! empty ( $byyearday ) ) {
       $names[] = 'cal_byyearday';
@@ -566,7 +566,7 @@ if ( empty ( $error ) ) {
     } 
 
     $names[] = 'cal_end';
-      $values[] = $end;
+    $values[] = $end;
     if ( $timetype == "T" && ! empty($eventstop) ) {
       $names[] = 'cal_endtime';         
       $values[] = date("His", $eventstop);
@@ -581,17 +581,15 @@ if ( empty ( $error ) ) {
     //We manually created exceptions. This can be done without repeats
      if ( ! empty ($exceptions ) ) {
        for ( $i = 0; $i < count ( $exceptions ); $i++ ) {
-            $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
-              "VALUES ( $id," . substr ($exceptions[$i],1,8 ) . ",". 
-       ( substr ($exceptions[$i],0, 1 ) == "+"? 0 : 1 ) . " )";
-            if ( ! dbi_query ( $sql ) ) {
-              $error = translate("Database error") . ": " . dbi_error ();
-            }
+         $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
+           "VALUES ( $id," . substr ($exceptions[$i],1,8 ) . ",". 
+           ( substr ($exceptions[$i],0, 1 ) == "+"? 0 : 1 ) . " )";
+         if ( ! dbi_query ( $sql ) ) {
+           $error = translate("Database error") . ": " . dbi_error ();
+         }
        }
       } //end exceptions    
-  } //end empty error
-}
-
+  } 
 
   $from = $login_email;
   if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
@@ -761,7 +759,8 @@ if ( empty ( $error ) ) {
           }
 
           $fmtdate = date ( "Ymd", $user_eventstart ); 
-          $msg = translate("Hello", true) . ", " . unhtmlentities ( $tempfullname ) . ".\n\n";
+          $msg = translate("Hello", true) . ", " .
+            unhtmlentities ( $tempfullname ) . ".\n\n";
           if ( $newevent || ( empty ( $old_status[$participants[$i]] ) ) ) {
             $msg .= translate("A new appointment has been made for you by", true);
           } else {
@@ -922,6 +921,8 @@ if ( $single_user == "N" &&
       }
     }
   } //end external mail
+
+} //end empty error
 
 // If we were editing this event, then go back to the last view (week, day,
 // month).  If this is a new event, then go to the preferred view for
