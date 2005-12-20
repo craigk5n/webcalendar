@@ -9,7 +9,8 @@
 # Last update: 9 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 16 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 19 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 12-19-2005
+# Last update: 20 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 12-20-2005
 
 
 ###############################################
@@ -1308,6 +1309,12 @@ Manage calendar of: Kalender verwalten von
 #
 incorrect password: Ung&uuml;ltiges Passwort
 no such user: kein solcher Benutzer
+
+
+###############################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Dateityp passt nicht mit dem Import-Format &uuml;berein
 
 
 ###############################################
