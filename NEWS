@@ -1,4 +1,5 @@
 Version 1.0.3-CVS (?? ??? 2005)
+ - Fixed bug 1374014 Prefs page displays option to modify Public Acces calendar..
  - Fixed bug 1382217 Glitch in handling of public access prefs
  - Added support for DB2
 Version 1.0.2 (06 Dec 2005)

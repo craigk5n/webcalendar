@@ -69,7 +69,7 @@ print_header($INC);
 
 <?php
 	if ( $is_admin ) {
-	  if ( empty ( $public ) ) {
+	  if ( empty ( $public ) && $public_access == "Y") {
 	    echo "<blockquote><a href=\"pref.php?public=1\">" .
 	      translate("Click here") . " " .
 	      translate("to modify the preferences for the Public Access calendar") .
