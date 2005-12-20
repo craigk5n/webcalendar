@@ -1813,7 +1813,7 @@ function parse_ical ( $cal_file, $source='file' ) {
     // We will allow it to be CRLF, CR or LF or any repeated sequence
     // so long as there is a single white space character next.
     //echo "Orig:<br /><pre>$data</pre><br /><br />\n";
-    $data = preg_replace ( "/[\r\n]+ /", "", $data );
+    $data = preg_replace ( "/[\r\n]+[\t ]/", "", $data );
     $data = preg_replace ( "/[\r\n]+/", "\n", $data );
     //echo "Data:<br /><pre>$data</pre><p>";
 
@@ -1843,167 +1843,168 @@ function parse_ical ( $cal_file, $source='file' ) {
       //echo "buff = " . htmlspecialchars ( $buff ) . "<br /><br />\n";
 
       if ($state == "VEVENT" || $state == "VTODO") {
-          if ( ! empty ( $subsubstate ) ) {
-            if (preg_match("/^END:(.+)$/i", $buff, $match)) {
-              if ( $match[1] == $subsubstate ) {
-                $subsubstate = '';
-              }
-            } else if ( $subsubstate == "VALARM" && 
-              preg_match ( "/TRIGGER.*:(.+)$/i", $buff, $match ) ) {
-              // Example: TRIGGER;VALUE=DATE-TIME:19970317T133000Z
-          $substate = "alarm";
-           //allows multiple ocurrances of VALRM to be processed
-           if (isset($event[$substate] ) ) {
-                $event[$substate] .= "," . $match[1];
-           } else {
-                $event[$substate] = $match[1];   
-           }
+        if ( ! empty ( $subsubstate ) ) {
+          if (preg_match("/^END:(.+)$/i", $buff, $match)) {
+            if ( $match[1] == $subsubstate ) {
+              $subsubstate = '';
             }
-          }
-          else if (preg_match("/^BEGIN:(.+)$/i", $buff, $match)) {
+          } else if ( $subsubstate == "VALARM" && 
+            preg_match ( "/TRIGGER.*:(.+)$/i", $buff, $match ) ) {
+            // Example: TRIGGER;VALUE=DATE-TIME:19970317T133000Z
+            $substate = "alarm";
+            //allows multiple ocurrances of VALRM to be processed
+            if (isset($event[$substate] ) ) {
+              $event[$substate] .= "," . $match[1];
+            } else {
+               $event[$substate] = $match[1];   
+            }
+           }
+        } else if (preg_match("/^BEGIN:(.+)$/i", $buff, $match)) {
             $subsubstate = $match[1];
-          }
-           // we suppose ":" is on the same line as property name, this can perhaps cause problems
-          else if (preg_match("/^SUMMARY.*:(.+)$/i", $buff, $match)) {
-              $substate = "summary";
-              $event[$substate] = $match[1];
-          } elseif (preg_match("/^DESCRIPTION:(.+)$/i", $buff, $match)) {
-              $substate = "description";
-              $event[$substate] = $match[1];
-          } elseif (preg_match("/^DESCRIPTION.*:(.+)$/i", $buff, $match)) {
-              $substate = "description";
-              $event[$substate] = $match[1];
-          } elseif (preg_match("/^CLASS.*:(.*)$/i", $buff, $match)) {
-              $substate = "class";
-              $event[$substate] = $match[1];
+        }
+          // we suppose ":" is on the same line as property name,
+          // this can perhaps cause problems
+        else if (preg_match("/^SUMMARY(;.+)?:(.+)$/i", $buff, $match)) {
+          $substate = "summary";
+          if (stristr($match[1], 'ENCODING=QUOTED-PRINTABLE'))
+            $match[2] = quoted_printable_decode($match[2]);
+          $event[$substate] = $match[2];
+        } elseif (preg_match("/^DESCRIPTION(;.+)?:(.+)$/i", $buff, $match)) {
+          $substate = "description";
+          if (stristr($match[1], 'ENCODING=QUOTED-PRINTABLE'))
+            $match[2] = quoted_printable_decode($match[2]);
+          $event[$substate] = $match[2];							 
+        } elseif (preg_match("/^CLASS.*:(.*)$/i", $buff, $match)) {
+          $substate = "class";
+          $event[$substate] = $match[1];
         } elseif (preg_match("/^LOCATION.*:(.+)$/i", $buff, $match)) {
-              $substate = "location";
-              $event[$substate] = $match[1];
+          $substate = "location";
+          $event[$substate] = $match[1];
         } elseif (preg_match("/^TRANSP.*:(.+)$/i", $buff, $match)) {
-              $substate = "transparency";
-              $event[$substate] = $match[1];
+          $substate = "transparency";
+          $event[$substate] = $match[1];
         } elseif (preg_match("/^STATUS.*:(.*)$/i", $buff, $match)) {
-              $substate = "status";
-              $event[$substate] = $match[1];
-          } elseif (preg_match("/^PRIORITY.*:(.*)$/i", $buff, $match)) {
-              $substate = "priority";
-              $event[$substate] = $match[1];
-          } elseif (preg_match("/^DTSTART(.*):\s*(.*)\s*$/i", $buff, $match)) {
-              $substate = "dtstart";
-              $event[$substate] = $match[2];
-              if ( preg_match ( "/TZID=(.*)$/i", $match[1], $submatch ) ) {
-                $substate = "dtstartTzid"; 
-                $event[$substate] = $submatch[1];
-             } else if ( preg_match ( "/VALUE=DATE-TIME(.*)$/i", $match[1], $submatch ) ) {
-               $substate = "dtstartDATETIME"; 
-               $event[$substate] = true;
-             } else if ( preg_match ( "/VALUE=DATE(.*)$/i", $match[1], $submatch ) ) {
-               $substate = "dtstartDATE"; 
-               $event[$substate] = true;      
-             }
-          } elseif (preg_match("/^DTEND(.*):\s*(.*)\s*$/i", $buff, $match)) {
-              $substate = "dtend";
-              $event[$substate] = $match[2];
-              if ( preg_match ( "/TZID=(.*)$/i", $match[1], $submatch ) ) {
-                $substate = "dtendTzid"; 
-                $event[$substate] = $submatch[1];
-             }
-          } elseif (preg_match("/^DUE.*:\s*(.*)\s*$/i", $buff, $match)) {
-              $substate = "due";
-              $event[$substate] = $match[1];
-          } elseif (preg_match("/^COMPLETED.*:\s*(.*)\s*$/i", $buff, $match)) {
-              $substate = "completed";
-              $event[$substate] = $match[1];
-          } elseif (preg_match("/^PERCENT-COMPLETE.*:\s*(.*)\s*$/i", $buff, $match)) {
-              $substate = "percent";
-              $event[$substate] = $match[1];
-          } elseif (preg_match("/^DURATION.*:(.+)\s*$/i", $buff, $match)) {
-              $substate = "duration";
-              $durH = $durM = 0;
-              if ( preg_match ( "/PT.*([0-9]+)H/", $match[1], $submatch ) )
-                $durH = $submatch[1];
-              if ( preg_match ( "/PT.*([0-9]+)M/", $match[1], $submatch ) )
-                $durM = $submatch[1];
-              $event[$substate] = $durH * 60 + $durM;
-          } elseif (preg_match("/^RRULE.*:(.+)$/i", $buff, $match)) {
-              $substate = "rrule";
-              $event[$substate] = $match[1];
-          } elseif (preg_match("/^EXDATE.*:(.+)$/i", $buff, $match)) {
-              $substate = "exdate";
+          $substate = "status";
+          $event[$substate] = $match[1];
+        } elseif (preg_match("/^PRIORITY.*:(.*)$/i", $buff, $match)) {
+          $substate = "priority";
+          $event[$substate] = $match[1];
+        } elseif (preg_match("/^DTSTART(.*):\s*(.*)\s*$/i", $buff, $match)) {
+          $substate = "dtstart";
+          $event[$substate] = $match[2];
+          if ( preg_match ( "/TZID=(.*)$/i", $match[1], $submatch ) ) {
+            $substate = "dtstartTzid"; 
+            $event[$substate] = $submatch[1];
+          } else if ( preg_match ( "/VALUE=DATE-TIME(.*)$/i", $match[1], $submatch ) ) {
+            $substate = "dtstartDATETIME"; 
+            $event[$substate] = true;
+          } else if ( preg_match ( "/VALUE=DATE(.*)$/i", $match[1], $submatch ) ) {
+            $substate = "dtstartDATE"; 
+            $event[$substate] = true;      
+          }
+        } elseif (preg_match("/^DTEND(.*):\s*(.*)\s*$/i", $buff, $match)) {
+          $substate = "dtend";
+          $event[$substate] = $match[2];
+          if ( preg_match ( "/TZID=(.*)$/i", $match[1], $submatch ) ) {
+            $substate = "dtendTzid"; 
+            $event[$substate] = $submatch[1];
+          }
+        } elseif (preg_match("/^DUE.*:\s*(.*)\s*$/i", $buff, $match)) {
+          $substate = "due";
+          $event[$substate] = $match[1];
+        } elseif (preg_match("/^COMPLETED.*:\s*(.*)\s*$/i", $buff, $match)) {
+          $substate = "completed";
+          $event[$substate] = $match[1];
+        } elseif (preg_match("/^PERCENT-COMPLETE.*:\s*(.*)\s*$/i", $buff, $match)) {
+          $substate = "percent";
+          $event[$substate] = $match[1];
+        } elseif (preg_match("/^DURATION.*:(.+)\s*$/i", $buff, $match)) {
+          $substate = "duration";
+          $durH = $durM = 0;
+          if ( preg_match ( "/PT.*([0-9]+)H/", $match[1], $submatch ) )
+            $durH = $submatch[1];
+          if ( preg_match ( "/PT.*([0-9]+)M/", $match[1], $submatch ) )
+            $durM = $submatch[1];
+          $event[$substate] = $durH * 60 + $durM;
+        } elseif (preg_match("/^RRULE.*:(.+)$/i", $buff, $match)) {
+          $substate = "rrule";
+          $event[$substate] = $match[1];
+        } elseif (preg_match("/^EXDATE.*:(.+)$/i", $buff, $match)) {
+          $substate = "exdate";
           //allows multiple ocurrances of EXDATE to be processed
           if (isset($event[$substate] ) ) {
-                $event[$substate] .= "," . $match[1];
+            $event[$substate] .= "," . $match[1];
           } else {
-                $event[$substate] = $match[1];   
+            $event[$substate] = $match[1];   
           }
           } elseif (preg_match("/^RDATE.*:(.+)$/i", $buff, $match)) {
-              $substate = "rdate";
+            $substate = "rdate";
            //allows multiple ocurrances of RDATE to be processed
            if (isset($event[$substate] ) ) {
-                $event[$substate] .= "," . $match[1];
+             $event[$substate] .= "," . $match[1];
            } else {
-                $event[$substate] = $match[1];   
+             $event[$substate] = $match[1];   
            }
-          } elseif (preg_match("/^CATEGORIES.*:(.+)$/i", $buff, $match)) {
-              $substate = "categories";
+         } elseif (preg_match("/^CATEGORIES.*:(.+)$/i", $buff, $match)) {
+            $substate = "categories";
            //allows multiple ocurrances of CATEGORIES to be processed
            if (isset($event[$substate] ) ) {
-                $event[$substate] .= "," . $match[1];
+             $event[$substate] .= "," . $match[1];
            } else {
-                $event[$substate] = $match[1];   
+             $event[$substate] = $match[1];   
            }
-          } elseif (preg_match("/^UID.*:(.+)$/i", $buff, $match)) {
-              $substate = "uid";
-              $event[$substate] = $match[1];
-        } else if (preg_match("/^BEGIN:VALARM/i", $buff)) {
-            $subsubstate = "VALARM";
-          } elseif (preg_match("/^END:VEVENT$/i", $buff, $match)) {
-              if ($tmp_data = format_ical($event)) $ical_data[] = $tmp_data;
-              $state = "VCALENDAR";
-              $substate = "none";
-              $subsubstate = '';
-              // clear out data for new event
-              $event = '';
-          } elseif (preg_match("/^END:VTODO$/i", $buff, $match)) {
-              if ($tmp_data = format_ical($event)) $ical_data[] = $tmp_data;
-              $state = "VCALENDAR";
-              $substate = "none";
-              $subsubstate = '';
-              // clear out data for new event
-              $event = '';
+         } elseif (preg_match("/^UID.*:(.+)$/i", $buff, $match)) {
+           $substate = "uid";
+           $event[$substate] = $match[1];
+         } else if (preg_match("/^BEGIN:VALARM/i", $buff)) {
+           $subsubstate = "VALARM";
+         } elseif (preg_match("/^END:VEVENT$/i", $buff, $match)) {
+           if ($tmp_data = format_ical($event)) $ical_data[] = $tmp_data;
+           $state = "VCALENDAR";
+           $substate = "none";
+           $subsubstate = '';
+           // clear out data for new event
+           $event = '';
+         } elseif (preg_match("/^END:VTODO$/i", $buff, $match)) {
+           if ($tmp_data = format_ical($event)) $ical_data[] = $tmp_data;
+           $state = "VCALENDAR";
+           $substate = "none";
+           $subsubstate = '';
+           // clear out data for new event
+           $event = '';
 
-      //Folded Lines have already been taken care of
-          } elseif (preg_match("/^\s(\S.*)$/", $buff, $match)) {
-              if ($substate != "none") {
-                  $event[$substate] .= $match[1];
-              } else {
-                  $errormsg .= "iCal parse error on line $line:<br />$buff\n";
-                  $error = true;
-              }
+           // folded lines?, this shouldn't happen
+         } elseif (preg_match("/^\s(\S.*)$/", $buff, $match)) {
+           if ($substate != "none") {
+             $event[$substate] .= $match[1];
+           } else {
+             $errormsg .= "iCal parse error on line $line:<br />$buff\n";
+             $error = true;
+           }
           // For unsupported properties
-   } else {
-            $substate = "none";
-          }
-      } elseif ($state == "VCALENDAR") {
-          if (preg_match("/^BEGIN:VEVENT/i", $buff)) {
-            $state = "VEVENT";
-          } elseif (preg_match("/^END:VCALENDAR/i", $buff)) {
-            $state = "NONE";
-          } else if (preg_match("/^BEGIN:VTIMEZONE/i", $buff)) {
-            $state = "VTIMEZONE";
-          } else if (preg_match("/^BEGIN:VTODO/i", $buff)) {
-            $state = "VTODO";
-          }
-     $event['state'] = $state;
-      } elseif ($state == "VTIMEZONE") {
-        // We don't do much with timezone info yet...
-        if (preg_match("/^END:VTIMEZONE$/i", $buff)) {
+         } else {
+           $substate = "none";
+         }
+       } elseif ($state == "VCALENDAR") {
+         if (preg_match("/^BEGIN:VEVENT/i", $buff)) {
+           $state = "VEVENT";
+         } elseif (preg_match("/^END:VCALENDAR/i", $buff)) {
+           $state = "NONE";
+         } else if (preg_match("/^BEGIN:VTIMEZONE/i", $buff)) {
+           $state = "VTIMEZONE";
+         } else if (preg_match("/^BEGIN:VTODO/i", $buff)) {
+           $state = "VTODO";
+         }
+         $event['state'] = $state;
+       } elseif ($state == "VTIMEZONE") {
+         // We don't do much with timezone info yet...
+         if (preg_match("/^END:VTIMEZONE$/i", $buff)) {
           $state = "VCALENDAR";
-        }
-      } elseif ($state == "NONE") {
+         }
+       } elseif ($state == "NONE") {
          if (preg_match("/^BEGIN:VCALENDAR$/i", $buff))
            $state = "VCALENDAR";
-      }
+       }
     } // End while
 
   return $ical_data;

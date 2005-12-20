@@ -2292,8 +2292,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
         }
         dbi_free_result ( $res );
         //get all dates for this event
-        if ( $result[$i]->getRepeatEnd() ) {
-          $until = strtotime( $result[$i]->getRepeatEnd() );
+        if ( $result[$i]->getRepeatEndDateTimeTS() ) {
+          $until = $result[$i]->getRepeatEndDateTimeTS();
         } else { 
           //make sure all January dates will appear in small calendars
           $until = mktime ( 0,0,0,2,1,$thisyear +1); 
@@ -2397,7 +2397,7 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
    //set $until so some ridiculous value
     $realend = mktime ( 0,0,0,1,1,2038); 
   } else {
-    $realend = floor($Until/ONE_DAY)*ONE_DAY; 
+    $realend = $Until; 
   }
   $ret = array();
   $date_excluded = false; //flag to track ical results
@@ -5588,10 +5588,12 @@ function get_time_add_tz ( $time, $tz_offset ) {
  * @param string $date YYYYMMDD format
  * @param string $time HHMMSS format
  * @param float $tz_offset GMT offset to be applied to $time
+ * @param bool $to_gmt  true=inputs are local time
+ *                      false=inputs are GMT
  *
- * @return string $ret_datetime TZ adjusted time YYYYMMDDHHMMSS
+ * @return int $ret_datetime TZ adjusted time UNIX Timestamp
 */
-function get_datetime_add_tz ( $date, $time, $tz_offset='' ) {
+function get_datetime_add_tz ( $date, $time, $tz_offset='', $to_gmt=false ) {
   global $login, $TIMEZONE, $tz_override;
   if ( ! empty ( $tz_override ) ) $TIMEZONE = $tz_override;
   if ( empty ( $date ) ) return NULL;
@@ -5610,8 +5612,13 @@ function get_datetime_add_tz ( $date, $time, $tz_offset='' ) {
   }
   $min_offset = ($tz_offset - floor ( $tz_offset )) * 60;
   if ( $tz_offset < 0 ) $min_offset = - $min_offset;
-  $ret_datetime = mktime ( $hour + (int) $tz_offset , 
-    $min + $min_offset , 0, $sm, $sd, $sy );    
+  if ( ! $to_gmt) {
+    $ret_datetime = mktime ( $hour + (int) $tz_offset , 
+      $min + $min_offset , 0, $sm, $sd, $sy );   
+  } else {
+    $ret_datetime = mktime ( $hour - (int) $tz_offset , 
+      $min - $min_offset , 0, $sm, $sd, $sy );  
+  } 
   return $ret_datetime;
 }
 

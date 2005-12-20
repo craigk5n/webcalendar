@@ -81,9 +81,29 @@ if ( $timetype == 'T' )  {
     $endhour = 0;
     $endminute = 0;
   }
-  $TIME_FORMAT=24;
 }
 
+//Repeat UNTIL time adjustment
+if ( ! empty ( $rpt_year ) ) {
+  if ( $TIME_FORMAT == '12' && $rpt_endhour < 12 ) {
+    if ( $rpt_endampm == 'pm' )
+      $rpt_endhour += 12;
+  } elseif ($TIME_FORMAT == '12' && $rpt_endhour == '12' && $rpt_endampm == 'am' ) {
+    $rpt_endhour = 0;
+  }
+  if ( $rpt_endhour > 0  &&  $TIME_FORMAT == '12' ) {
+    $rpt_endampmt = $rpt_endampm;
+    //This way, a user can pick am and still
+    //enter a 24 hour clock time.
+    if ($rpt_endhour > 12 && $rpt_endampm == 'am') {
+     $rpt_endampmt = 'pm';
+    }
+    $rpt_endhour %= 12;
+    if ( $rpt_endampmt == 'pm' ) {
+      $rpt_endhour += 12;
+    }
+}  
+$TIME_FORMAT=24;
 // If "all day event" was selected, then we set the event time
 // to be 12AM with a duration of 24 hours.
 // We don't actually store the "all day event" flag per se.  This method
@@ -259,12 +279,10 @@ if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != "Y" ) {
 
 if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
   strlen ( $hour ) > 0 && $timetype != 'U' ) {
-
-  if ( ! empty ( $rpt_year ) ) {
-    $endt = mktime ( 0, 0, 0, $rpt_month, $rpt_day,$rpt_year );
-  } else {
-    $endt = 'NULL';
-  }
+    $endt = mktime ( $rpt_endhour, $rpt_endminute, 0, $rpt_month, $rpt_day,$rpt_year );
+} else {
+  $endt = 'NULL';
+}
 
 
  $inclusion_list = array();
@@ -513,11 +531,17 @@ if ( empty ( $error ) ) {
     // add repeating info
   if ( ! empty ( $rpt_type ) && strlen ( $rpt_type ) && $rpt_type != 'none' ) {
     $freq = ( $rpt_freq ? $rpt_freq : 1 );
+        
     if ( ! empty ( $rpt_year  ) ) {
-      $end = sprintf ( "%04d%02d%02d", $rpt_year, $rpt_month, $rpt_day );
+      $rpt_end = sprintf ( "%04d%02d%02d", $rpt_year, $rpt_month, $rpt_day );
+      $rpt_endtime = sprintf ( "%02d%02d00", $rpt_endhour, $rpt_endminute );
+      $rpt_enddatetime = get_datetime_add_tz ( $rpt_end, $rpt_endtime, '', true );
+      $rpt_end = date ("Ymd", $rpt_enddatetime );
+      $rpt_endtime = date ("His", $rpt_enddatetime );
     } else {
-      $end = 'NULL';
+      $rpt_end = 'NULL';
     }
+
 
     $names = array();
     $values = array();
@@ -566,10 +590,10 @@ if ( empty ( $error ) ) {
     } 
 
     $names[] = 'cal_end';
-    $values[] = $end;
-    if ( $timetype == "T" && ! empty($eventstop) ) {
+    $values[] = $rpt_end;
+    if ( ! empty($rpt_endtime) ) {
       $names[] = 'cal_endtime';         
-      $values[] = date("His", $eventstop);
+      $values[] = $rpt_endtime;
     }
 
     $sql = "INSERT INTO webcal_entry_repeats ( " . implode ( ", ", $names ) .

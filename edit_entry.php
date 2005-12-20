@@ -148,11 +148,11 @@ if ( $readonly == 'Y' || $is_nonuser ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
           $rpt_type = $row[1];
           if ( $row[2] > 0 )
-            $rpt_end = date_to_epoch ( $row[2] );
+            $rpt_end = get_datetime_add_tz( $row[2], $row[3] );
           else
             $rpt_end = 0;
-          $rpt_end_date = $row[2];
-          $rpt_end_time = $row[3];
+          $rpt_end_date = date( "Ymd", get_datetime_add_tz( $row[2], $row[3] ) );
+          $rpt_end_time = date( "His", get_datetime_add_tz( $row[2], $row[3] ) );          
           $rpt_freq = $row[4];
           $byday = explode(",",$row[5]);
           $bymonth = explode(",",$row[6]);
@@ -294,7 +294,9 @@ if ( empty ( $rpt_freq ) )
   $rpt_freq = 0;
 if ( empty ( $rpt_end_date ) )
   $rpt_end_date = 0;
-
+if ( empty ( $rpt_end_time ) )
+  $rpt_end_time = 0;
+  
 if ( empty ( $cal_date ) ) {
   if ( ! empty ( $date ) )
     $cal_date = $date;
@@ -450,7 +452,7 @@ if ( ! empty ( $parent ) )
      <tr><td class="tooltip" title="<?php etooltip("category-help")?>" valign="top">
       <label for="entry_categories"><?php etranslate("Category")?>:<br /></label>
    <input type="button" value="<?php etranslate("Edit") ?>" onclick="editCats(event)" /></td><td valign="top">
-      <input  readonly=""type="text" name="catnames" 
+      <input  readonly="readonly" type="text" name="catnames" 
      value="<?php echo $catNames ?>"  size="30" 
     onclick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/>
    <input  type="hidden" name="cat_id" id="entry_categories" value="<?php echo $catList ?>" />
@@ -829,10 +831,10 @@ if ( $single_user == "N" && $show_participants ) {
 <div id="tabscontent_pete">
 <?php } /* $useTabs */ ?>
 
-<table border="0">
+<table border="0" cellspacing="0" cellpadding="3">
  <tr>
  <td class="tooltip" title="<?php etooltip("repeat-type-help")?>">
- <label for="rpttype"><?php etranslate("Type")?>:</label></td><td>
+ <label for="rpttype"><?php etranslate("Type")?>:</label></td><td colspan="2">
  <select name="rpt_type" id="rpttype" onchange="rpttype_handler();rpttype_weekly()">
 <?php
  echo "  <option value=\"none\"" . 
@@ -865,28 +867,58 @@ if ( $single_user == "N" && $show_participants ) {
   value="y" onclick="rpttype_handler()" <?php echo ( ! empty ($expert_mode)?"checked=\"checked\"":"") ?>/>
 <?php etranslate("Expert Mode")?></label>
 </td></tr>
-<tr id="rptenddate" style="visibility:hidden;">
- <td class="tooltip" title="<?php etooltip("repeat-end-date-help")?>">
+<tr id="rptenddate1" style="visibility:hidden;">
+ <td class="tooltip" title="<?php etooltip("repeat-end-date-help")?>" rowspan="3">
   <label for="rpt_day"><?php etranslate("Ending")?>:</label></td>
- <td><input  type="radio" name="rpt_end_use" id="rpt_until" value="f" <?php 
+ <td colspan="2" class="boxtop"><input  type="radio" name="rpt_end_use" id="rpt_untilf" value="f" <?php 
   echo (  empty ( $rpt_end ) && empty ( $rpt_count )? " checked=\"checked\"" : "" ); 
- ?>  onclick="toggle_until()" />&nbsp;<label><?php etranslate("Forever")?></label><br />
- <input  type="radio" name="rpt_end_use" id="rpt_until" value="u" <?php 
+ ?>  onclick="toggle_until()" /><label><?php etranslate("Forever")?></label>
+ </td></tr>
+ <tr id="rptenddate2" style="visibility:hidden;"><td class="boxleft">
+ <input  type="radio" name="rpt_end_use" id="rpt_untilu" value="u" <?php 
   echo ( ! empty ( $rpt_end ) ? " checked=\"checked\"" : "" ); 
  ?> onclick="toggle_until()" />&nbsp;<label><?php etranslate("Use end date")?></label>
- &nbsp;&nbsp;&nbsp;
- <span class="end_day_selection" name="rpt_end_day_select"><?php
+</td><td class="boxright">
+ <span class="end_day_selection" id="rpt_end_day_select"><?php
   print_date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date )
  ?></span><br />
- <input type="radio" name="rpt_end_use" id="rpt_until" value="c" <?php 
+ <?php
+$rpt_endh12 = floor($rpt_end_time / 10000);
+$rpt_endminute = ( $rpt_end_time / 100 ) % 100;
+$rpt_endamsel = " checked=\"checked\""; $rpt_endpmsel = "";
+if ( $TIME_FORMAT == "12" ) {
+  if ( $rpt_endh12 < 12 ) {
+    $rpt_endamsel = " checked=\"checked\""; $rpt_endpmsel = "";
+  } else {
+    $rpt_endamsel = ""; $rpt_endpmsel = " checked=\"checked\"";
+  }
+  $rpt_endh12 %= 12;
+  if ( $rpt_endh12 == 0 ) $rpt_endh12 = 12;
+}
+?>
+   <input type="text" name="rpt_endhour" size="2" value="<?php echo $rpt_endh12;?>" maxlength="2" />:<input type="text" name="rpt_endminute" size="2" value="<?php  printf ( "%02d", $rpt_endminute );
+   ?>" maxlength="2" />
+<?php
+if ( $TIME_FORMAT == "12" ) {
+  echo "<label><input type=\"radio\" name=\"rpt_endampm\" id=\"rpt_endam\" value=\"am\" $rpt_endamsel />&nbsp;" .
+    translate("am") . "</label>\n";
+  echo "<label><input type=\"radio\" name=\"rpt_endampm\" id=\"rpt_endpm\" value=\"pm\" $rpt_endpmsel />&nbsp;" .
+    translate("pm") . "</label>\n";
+}
+?>
+</td></tr>
+<tr id="rptenddate3" style="visibility:hidden;"><td class="boxleft boxbottom">
+  <input type="radio" name="rpt_end_use" id="rpt_untilc" value="c" <?php 
   echo ( ! empty ( $rpt_count ) ? " checked=\"checked\"" : "" ); 
  ?> onclick="toggle_until()" />&nbsp;<label><?php etranslate("Number of times")?></label>
+ </td><td class="boxright boxbottom">
+
  <input type="text" name="rpt_count" id="rpt_count" size="4" maxlength="4" value="<?php echo $rpt_count; ?>" />
  
 </td></tr>
 
  <tr id="rptfreq" style="visibility:hidden;" title="<?php etooltip("repeat-frequency-help")?>"><td class="tooltip">
- <label for="entry_freq"><?php etranslate("Frequency")?>:</label></td><td>
+ <label for="entry_freq"><?php etranslate("Frequency")?>:</label></td><td colspan="2">
  <input type="text" name="rpt_freq" id="entry_freq" size="4" maxlength="4" value="<?php echo $rpt_freq; ?>" />
  &nbsp;&nbsp;&nbsp;&nbsp;
  <label id="weekdays_only"><input  type="checkbox" name="weekdays_only" value="y" <?php echo ( ! empty ( $weekdays_only )? " checked=\"checked\"" : "" ) ?> />
@@ -901,7 +933,7 @@ if ( $single_user == "N" && $show_participants ) {
  </tr>
 
  <tr id="rptbydayextended" style="visibility:hidden;" title="<?php etooltip("repeat-bydayextended-help")?>"><td class="tooltip">
- <label><?php echo translate("ByDay") ?>:</label></td><td>
+ <label><?php echo translate("ByDay") ?>:</label></td><td colspan="2">
  <?php
    //display byday extended selection
   //We use BUTTONS  in a triple state configuration, but this data will not get
@@ -939,7 +971,7 @@ if ( $single_user == "N" && $show_participants ) {
 ?></td></tr>
 
 <tr id="rptbymonth" style="visibility:hidden;" title="<?php etooltip("repeat-month-help")?>"><td class="tooltip">
- <?php etranslate("ByMonth")?>:&nbsp;</td><td>
+ <?php etranslate("ByMonth")?>:&nbsp;</td><td colspan="2">
  <?php
    //display bymonth selection
    echo "<table cellpadding=\"5\" cellspacing=\"0\" border=\"1\"><tr>";
@@ -956,7 +988,7 @@ if ( $single_user == "N" && $show_participants ) {
  
   <tr  id="rptbysetpos" style="visibility:hidden;" title="<?php etooltip("repeat-bysetpos-help")?>">
  <td class="tooltip" id="BySetPoslabel">
-<?php etranslate("BySetPos")?>:&nbsp;</td><td>
+<?php etranslate("BySetPos")?>:&nbsp;</td><td colspan="2">
  <?php
    //display bysetpos selection
    echo "<table cellpadding=\"2\" cellspacing=\"0\" border=\"1\" ><tr><td></td>";
@@ -986,7 +1018,7 @@ if ( $single_user == "N" && $show_participants ) {
 
  <tr  id="rptbymonthdayextended" style="visibility:hidden;" title="<?php etooltip("repeat-bymonthdayextended-help")?>">
  <td class="tooltip" id="ByMonthDaylabel">
-<?php etranslate("ByMonthDay")?>:&nbsp;</td><td>
+<?php etranslate("ByMonthDay")?>:&nbsp;</td><td colspan="2">
  <?php
    //display bymonthday extended selection
    echo "<table cellpadding=\"2\" cellspacing=\"0\" border=\"1\" ><tr><td></td>";
@@ -1028,18 +1060,19 @@ if ( $single_user == "N" && $show_participants ) {
 
 
  <tr id="rptbyweekno" style="visibility:hidden;" title="<?php etooltip("repeat-byweekno-help")?>"><td class="tooltip">
- <?php etranslate("ByWeekNo")?>:</td><td>
+ <?php etranslate("ByWeekNo")?>:</td><td colspan="2">
  <input type="text" name="byweekno" id="byweekno" size="50" maxlength="100" value="<?php echo $byweekno; ?>" />
 </td></tr>
 
  <tr id="rptbyyearday" style="visibility:hidden;" title="<?php etooltip("repeat-byyearday-help")?>"><td class="tooltip">
- <?php etranslate("ByYearDay")?>:</td><td>
+ <?php etranslate("ByYearDay")?>:</td><td colspan="2">
  <input type="text" name="byyearday" id="byyearday" size="50" maxlength="100" value="<?php echo $byyearday; ?>" />
 </td></tr> 
 
  <tr id="rptexceptions" style="visibility:visible;"  title="<?php etooltip("repeat-exceptions-help")?>">
  <td class="tooltip">
- <?php echo translate("Exclusions") . "/<br />" . translate("Inclusions")?>:</td><td>
+ <?php echo translate("Exclusions") . "/<br />" . translate("Inclusions")?>:</td>
+ <td colspan="2">
  <table bgcolor="#CCCCCC"  border="0" width="250px">
  <tr ><td colspan="2">
  <?php print_date_selection ( "except_", $rpt_end_date ? $rpt_end_date : $cal_date )?>

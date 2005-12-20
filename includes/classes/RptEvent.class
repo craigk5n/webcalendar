@@ -247,7 +247,27 @@ class RepeatingEvent extends Event {
     $this->_repeatEndDateTime = $this->_repeatEnd . sprintf ( "%06d", $time );
     return $this->_repeatEndDateTime;
   }
-  
+    /**
+   * Gets the event's end date/time
+   *
+   * @return string The event's end date/time (in UNIX Timestamp format)
+   *
+   * @access public
+   */
+  function getRepeatEndDateTimeTS () {
+    $year = substr ( $this->_repeatEnd, 0, 4 );
+    $month = substr ( $this->_repeatEnd, 4, 2 ); 
+    $day = substr ( $this->_repeatEnd, 6, 2 );
+  if ( $this->_repeatEndTime > 0 ) {
+    $h = (int) ( $this->_repeatEndTime / 10000 );
+    $m = ( $this->_repeatEndTime / 100 ) % 100;
+  } else {
+    $h = $m = 0;
+  }
+    $this->_repeatEndDateTimeTS = mktime ( $h, $m, 0, $month, $day, $year );
+    return $this->_repeatEndDateTimeTS;
+  }  
+    
   /**
    * Gets the event's repeat frequency
    *
