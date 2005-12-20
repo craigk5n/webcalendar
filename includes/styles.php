@@ -283,6 +283,20 @@ label {
   border-bottom: 1px solid #888888;
   padding: 0px 2px 0px 3px;
 }
+.boxtop {
+ border-top: 1px solid #888888;
+ border-left: 1px solid #888888;
+ border-right: 1px solid #888888;
+}
+.boxleft {
+ border-left: 1px solid #888888;
+}
+.boxright {
+ border-right: 1px solid #888888;
+}
+.boxbottom {
+ border-bottom: 1px solid #888888;
+}
 <?php //numerical date links in main calendars on hover
 ?>.dayofmonth:hover {
   color: #0000FF;
@@ -843,9 +857,11 @@ th {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   <?php echo background_css ( $GLOBALS['CELLBG'], 100 ); ?>
   vertical-align: top;
-  word-break: break-all;
   table-layout:fixed;
   overflow:auto;
+  <?php if ( ! empty ( $browser ) && $browser == 'MSIE' ) { ?>
+  word-break: break-all;
+  <?php } ?>
 }
 #vieww .main td,
 #week .main td,

@@ -91,7 +91,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $LANGUAGE, $DISABLE_POPUPS;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
   global $friendly, $DISPLAY_WEEKENDS, $DISPLAY_TASKS;
-  global $bodyid, $self, $login;
+  global $bodyid, $self, $login, $browser;
   $lang = '';
   if ( ! empty ( $LANGUAGE ) )
     $lang = languageToAbbrev ( $LANGUAGE );

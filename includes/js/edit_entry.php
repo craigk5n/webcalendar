@@ -262,7 +262,9 @@ function rpttype_handler (  ) {
   //i == 7 manual  Use only Exclusions/Inclusions
  //Turn all off initially
   makeInvisible ( "rpt_mode" );
-  makeInvisible ( "rptenddate", true );
+  makeInvisible ( "rptenddate1", true );
+  makeInvisible ( "rptenddate2", true );
+  makeInvisible ( "rptenddate3", true );
   makeInvisible ( "rptfreq", true );
   makeInvisible ( "weekdays_only" );
   makeInvisible ( "rptwkst" );
@@ -282,7 +284,9 @@ function rpttype_handler (  ) {
   //makeInvisible ( "select_exceptions_not", true );
   if ( i > 0 && i < 7 ) {
     //always on
-    makeVisible ( "rptenddate", true );
+    makeVisible ( "rptenddate1", true );
+    makeVisible ( "rptenddate2", true );
+    makeVisible ( "rptenddate3", true );
     makeVisible ( "rptfreq", true );
     makeVisible ( "rptexceptions", true);
     makeVisible ( "rpt_mode" );
@@ -555,13 +559,21 @@ function toggle_until() {
  document.editentryform.elements[rpt_monthid].disabled = true;
  document.editentryform.elements[rpt_yearid].disabled = true;
  document.editentryform.elements[rpt_btnid].disabled = true;
+ document.editentryform.elements['rpt_endhour'].disabled = true;
+ document.editentryform.elements['rpt_endminute'].disabled = true;
+ document.editentryform.elements['rpt_endam'].disabled = true;
+ document.editentryform.elements['rpt_endpm'].disabled = true;
  document.editentryform.elements['rpt_count'].disabled = true;
- if ( document.editentryform.rpt_until[1].checked ) { //use until date
+ if ( document.editentryform.rpt_untilu.checked ) { //use until date
    document.editentryform.elements[rpt_dayid].disabled = false;
    document.editentryform.elements[rpt_monthid].disabled = false;
    document.editentryform.elements[rpt_yearid].disabled = false;
-   document.editentryform.elements[rpt_btnid].disabled = false; 
- } else if ( document.editentryform.rpt_until[2].checked ) { //use count
+   document.editentryform.elements[rpt_btnid].disabled = false;
+   document.editentryform.elements['rpt_endhour'].disabled = false;
+   document.editentryform.elements['rpt_endminute'].disabled = false;
+   document.editentryform.elements['rpt_endam'].disabled = false; 
+   document.editentryform.elements['rpt_endpm'].disabled = false;
+ } else if ( document.editentryform.rpt_untilc.checked ) { //use count
    document.editentryform.elements['rpt_count'].disabled = false; 
  }
 }

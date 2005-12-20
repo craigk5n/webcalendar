@@ -1,4 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1375089: Repeating evens miss final day of repeat
+ - Fixed bug 1379707: Repeating event ends one day early
+ - Imlemented PATCH 1380867: improved ical support
  - Fixed bug  1385557: calendar inputs can cause crash
  - Added feature to email ics attachment to external participants
    This address bug 1384838 and RFE 1384842
