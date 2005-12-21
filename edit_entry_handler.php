@@ -102,7 +102,8 @@ if ( ! empty ( $rpt_year ) ) {
     if ( $rpt_endampmt == 'pm' ) {
       $rpt_endhour += 12;
     }
-}  
+ }  
+}
 $TIME_FORMAT=24;
 // If "all day event" was selected, then we set the event time
 // to be 12AM with a duration of 24 hours.
@@ -133,8 +134,6 @@ if ( $timetype == "U" ) {
   $endhour = 0;
   $endminute = 0;
 }
-
-
 
 // Combine all values to create event start date/time - User Time
 $eventstart = mktime ( $hour, $minute, 0, $month, $day, $year );
@@ -318,7 +317,7 @@ if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
 
   $conflicts = check_for_conflicts ( $dates, $duration, $eventstart,
     $participants, $login, empty ( $id ) ? 0 : $id );
-}
+
 if ( empty ( $error ) && ! empty ( $conflicts ) ) {
   $error = translate("The following conflicts with the suggested time") .
     ": <ul>$conflicts</ul>";
