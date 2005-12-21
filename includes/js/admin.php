@@ -253,4 +253,11 @@ tabs[6] = "other";
 tabs[8] = "email";
 tabs[9] = "colors";
 //]]> -->
+
+function showPreview() {
+  var theme = document.forms['prefform'].admin_THEME.value;
+  if (theme == 'none' ) return false;
+  url = "themes/" + theme.toLowerCase()  + ".php";
+  var previewWindow = window.open(url,"Preview","resizable=yes,scrollbars=yes");
+}
 </script>

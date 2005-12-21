@@ -68,5 +68,12 @@ function updateColor ( input ) {
   colorCell.style.backgroundColor = color;
  }
 }
+
+function showPreview() {
+  var theme = document.forms['prefform'].pref_THEME.value;
+  if (theme == 'none' ) return false;
+  url = "themes/" + theme.toLowerCase()  + "_pref.php";
+  var previewWindow = window.open(url,"Preview","resizable=yes,scrollbars=yes");
+}
 //]]> -->
 </script>

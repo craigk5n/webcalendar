@@ -160,12 +160,12 @@ if ( ! $error ) {
   echo "<option disabled>" . translate("AVAILABLE THEMES") . "</option>\n";
   //always use 'none' as default so we don't overwrite manual settings
   echo "<option  value=\"none\" selected=\"selected\">" . translate("None") . "</option>\n";
-print_r ( $themes);
   for ( $i = 0; $i <= count ( $themes); $i++ ) {
      echo "<option value=\"" . $themes[1][$i] . "\">" . $themes[0][$i] . "</option>\n";
   }
 ?>
- </select>
+ </select>&nbsp;&nbsp;&nbsp;
+ <input type="button" name="preview" value="<?php etranslate ( "Preview" ) ?>" onclick="return showPreview()" />
  </td></tr> 
  <tr><td class="tooltip" title="<?php etooltip("fonts-help") ?>">
   <label for="admin_FONTS"><?php etranslate("Fonts")?>:</label></td><td>
@@ -234,6 +234,11 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 }
 ?>
 </select>
+ </td></tr>
+  <tr><td class="tooltip" title="<?php etooltip("display-sm_month-help");?>">
+  <?php etranslate("Display small months")?>:</td><td>
+  <label><input type="radio" name="admin_DISPLAY_SM_MONTH" value="Y" <?php if ( $s["DISPLAY_SM_MONTH"] != "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_DISPLAY_SM_MONTH" value="N" <?php if ( $s["DISPLAY_SM_MONTH"] == "N" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("display-weekends-help");?>">
   <?php etranslate("Display weekends")?>:</td><td>

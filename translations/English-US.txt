@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 12-19-2005
+# Translation last updated on 12-21-2005
 
 
 ###############################################
@@ -121,6 +121,7 @@ themes-help: Allows mass update of configuration settings. Lower case labels are
 Themes: Themes
 AVAILABLE THEMES: AVAILABLE THEMES
 None: None
+Preview: Preview
 fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
 Fonts: Fonts
 custom-script-help: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
@@ -139,6 +140,8 @@ Day: Day
 Week: Week
 Month: Month
 Year: Year
+display-sm_month-help: If enabled, displays small months in month views
+Display small months: Display small months
 display-weekends-help: Include weekends when viewing a week.
 Display weekends: Display weekends
 display-alldays-help: Display previous and next months days in month views, filling all cells.
@@ -934,7 +937,6 @@ Display if created by Assistant: Display if created by Assistant
 ###############################################
 # Page: purge.php
 #
-Preview: Preview
 Purging events for: Purging events for
 Finished: Finished
 Check box to delete <b>ALL</b> events for a user: Check box to delete <b>ALL</b> events for a user
