@@ -2,7 +2,7 @@
 /**
  * Custom theme for use with WebCalendar
  *
- * Spring - modify colors for spring
+ * Default System Settings
  *
  * @author Ray Jones <rjones@umces.edu>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
@@ -15,25 +15,31 @@
 // Any option in webcal_user_pref can be configured here
 //
 
-//This theme changes the color scheme only to the hues of spring.
-//This theme will be available to both normal users and System Settings.
+//This theme will reset the System Settings to the default values from the 
+//installation script. This will not affect colors or options that users have
+//already saved under preferences.
 $webcal_theme = array (
-"BGCOLOR"=>"#CCFFCC",
-"CELLBG"=>"#99FF99",
-"HASEVENTSBG"=>"#66FF66",
-"H2COLOR"=>"#006600",
-"OTHERMONTHBG"=>"#999933",
-"POPUP_BG"=>"#6699CC",
+"BGCOLOR"=>"#FFFFFF",
+"CELLBG"=>"#C0C0C0",
+"DISPLAY_SM_MONTH"=>"Y",
+"DISPLAY_TASKS"=>"N",
+"DISPLAY_TASKS_IN_GRID"=>"N",
+"DISPLAY_WEEKENDS"=>"Y",
+"DISPLAY_WEEKNUMBER"=>"Y",
+"FONTS"=>"Arial, Helvetica, sans-serif",
+"HASEVENTSBG"=>"#FFFF33",
+"H2COLOR"=>"#000000",
+"OTHERMONTHBG"=>"#D0D0D0",
+"POPUP_BG"=>"#FFFFFF",
 "POPUP_FG"=>"#000000",
 "TABLEBG"=>"#000000",
 "TEXTCOLOR"=>"#000000",
-"THBG"=>"#669900",
+"THBG"=>"#FFFFFF",
 "THFG"=>"#000000",
-"TODAYCELLBG"=>"#FFFF66",
-"WEEKENDBG"=>"#00CC99"
+"TODAYCELLBG"=>"#FFFF33",
+"WEEKENDBG"=>"#D0D0D0"
  );
  
-
 // Displays a screenshot if called directly and a file exists that matches
 //this script name 
 //Place this in all themes

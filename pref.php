@@ -122,8 +122,8 @@ if ( empty ( $user ) || $user == $login ) {
 </td></tr></table>
 <br />
 <?php if ( $prefarray['ALLOW_USER_THEMES'] == "Y") { ?>
-<table class="standard" cellspacing="1" cellpadding="2"  border="0" width="25%">
-<tr><th colspan="2"><?php etranslate("Themes");?></th></tr>
+<table class="standard" cellspacing="1" cellpadding="2"  border="0" width="35%">
+<tr><th colspan="3"><?php etranslate("Themes");?></th></tr>
 <tr><td  class="tooltipselect" title="<?php etooltip("themes-help");?>">
  <label for="pref_THEME"><?php etranslate("Themes")?>:</label></td><td>
  <select name="pref_THEME" id="pref_THEME">
@@ -135,8 +135,9 @@ if ( empty ( $user ) || $user == $login ) {
      echo "<option value=\"" . $theme . "\">" . $theme . "</option>\n";
   }
 ?>
- </select>
-</tr></table>
+ </select></td><td>
+ <input type="button" name="preview" value="<?php etranslate ( "Preview" ) ?>" onclick="return showPreview()" />
+</td></tr></table>
 <br />
 <?php } ?>
 <table class="standard" cellspacing="1" cellpadding="2"  border="0">
@@ -223,6 +224,12 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 }
 ?>
 </select>
+</td></tr>
+
+<tr><td class="tooltip" title="<?php etooltip("display-sm_month-help");?>">
+ <?php etranslate("Display small months")?>:</td><td>
+ <label><input type="radio" name="pref_DISPLAY_SM_MONTH" value="Y" <?php if ( $prefarray["DISPLAY_SM_MONTH"] != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> 
+ <label><input type="radio" name="pref_DISPLAY_SM_MONTH" value="N" <?php if ( $prefarray["DISPLAY_SM_MONTH"] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("display-weekends-help");?>">
