@@ -277,7 +277,7 @@ if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != "Y" ) {
 }
 
 if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
-  strlen ( $hour ) > 0 && $timetype != 'U' ) {
+  ! empty ( $rpt_year ) > 0 && $timetype != 'U' ) {
     $endt = mktime ( $rpt_endhour, $rpt_endminute, 0, $rpt_month, $rpt_day,$rpt_year );
 } else {
   $endt = 'NULL';
