@@ -10,7 +10,8 @@
 # Last update: 16 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 19 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 20 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 12-20-2005
+# Last update: 22 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 12-22-2005
 
 
 ###############################################
@@ -455,6 +456,7 @@ Allow user to use themes: Erlaubt das Verwenden von 'Themen' f&uuml;r Benutzer
 themes-help: Erlaubt eine Vielzahl von Updates f&uuml;r Konfigurationseinstellungen. Kleingeschriebene Eintr&auml;ge sind nur benutzereigene Voreinstellungen
 Themes: Themen
 AVAILABLE THEMES: VERF&Uuml;GBARE THEMEN
+Preview: Vorschau
 fonts-help: definiert die Standard-Schriftarten (z.B. "Arial, Helvetica")
 Fonts: Schriftart
 custom-script-help: Erlaubt Eintr&auml;ge von benutzerdefinierten Javascript- oder Stylesheet Texten welche im HTML "Kopf"-Abschnitt auf jeder Seite eingef&uuml;gt werden.
@@ -470,6 +472,8 @@ preferred-view-help: Gibt die bevorzugte Ansicht an (Tag, Woche, Monat oder Jahr
 Preferred view: Bevorzugte Ansicht
 Month: Monat
 Year: Jahr
+display-sm_month-help: Falls aktiviert, werden kleine Monate in der Monatsansichten angezeigt
+Display small months: Kleine Monate anzeigen
 display-weekends-help: Zeigt die Wochenenden in der Wochenansicht an.
 Display weekends: Wochenenden anzeigen
 display-alldays-help: Zeigt und bef&uuml;llt die Tage des vorhergehenden und folgenden Monats in der aktuellen Monatsansichten
@@ -1119,7 +1123,6 @@ You are not authorized to edit this entry: Sie haben keine Berechtigung diesen E
 ###############################################
 # Page: purge.php
 #
-Preview: Vorschau
 Purging events for: L&ouml;sche Termine f&uuml;r
 Finished: Abgeschlossen
 Check box to delete <b>ALL</b> events for a user: Aktivieren zum L&ouml;schen <b>ALLER</b> Termine f&uuml;r einen Teilnehmer
