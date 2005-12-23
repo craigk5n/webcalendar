@@ -184,7 +184,7 @@ function do_v11b_updates () {
    dbi_free_result ( $res );
  }
  //clear old category values
- dbi_query ( "UPDATE webcal_entry_user SET cal_category = ''");  
+ dbi_query ( "UPDATE webcal_entry_user SET cal_category = NULL");  
  //mark existing exclusions as new exclusion type
  dbi_query ( "UPDATE webcal_entry_repeats_not  SET cal_exdate = 1");  
  //change cal_days format to cal_cal_byday format
