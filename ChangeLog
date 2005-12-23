@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1386705: Two errors in install scripts (PostgreSQL)
  - Added option to disable small months
  - Added Previews to themes
  - Fixed bug 1375089: Repeating evens miss final day of repeat

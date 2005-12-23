@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1386705: Two errors in install scripts (PostgreSQL)
       1375089: Repeating evens miss final day of repeat
       1379707: Repeating event ends one day early
       1385557: calendar inputs can cause crash
