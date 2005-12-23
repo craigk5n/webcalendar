@@ -12,9 +12,9 @@ CREATE TABLE webcal_entry_repeats (
 /*upgrade_v0.9.22*/
 CREATE TABLE webcal_user_layers (
   cal_layerid INT DEFAULT '0' NOT NULL,
-  cal_login varchar(25) NOT NULL,
-  cal_layeruser varchar(25) NOT NULL,
-  cal_color varchar(25) NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_layeruser VARCHAR(25) NOT NULL,
+  cal_color VARCHAR(25) NULL,
   cal_dups CHAR(1) DEFAULT 'N',
   PRIMARY KEY ( cal_login, cal_layeruser )
 );
@@ -86,7 +86,7 @@ CREATE TABLE webcal_entry_repeats_not (
 );
 
 /*upgrade_v0.9.38*/
-ALTER TABLE webcal_entry_user ADD cal_category INT DEFAULT NULL;
+ALTER TABLE webcal_entry_user ADD cal_category INT NULL;
 CREATE TABLE webcal_categories (
   cat_id INT NOT NULL,
   cat_owner VARCHAR(25),
@@ -241,28 +241,28 @@ CREATE TABLE webcal_user_template (
 );
 
 /*upgrade_v1.1.0b-CVS*/
-ALTER TABLE webcal_entry_repeats ADD cal_endtime int(11) default NULL;
-ALTER TABLE webcal_entry_repeats ADD cal_bymonth varchar(50) default NULL;
-ALTER TABLE webcal_entry_repeats ADD cal_bymonthday varchar(100) default NULL;
-ALTER TABLE webcal_entry_repeats ADD cal_byday varchar(100) default NULL;
-ALTER TABLE webcal_entry_repeats ADD cal_bysetpos varchar(50) default NULL;
-ALTER TABLE webcal_entry_repeats ADD cal_byweekno varchar(50) default NULL;
-ALTER TABLE webcal_entry_repeats ADD cal_byyearday varchar(50) default NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_endtime INT NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_bymonth VARCHAR(50) NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_bymonthday VARCHAR(100) NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_byday VARCHAR(100) NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_bysetpos VARCHAR(50) NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_byweekno VARCHAR(50) NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_byyearday VARCHAR(50) NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_wkst char(2) default 'MO';
-ALTER TABLE webcal_entry_repeats ADD cal_count int(11) default NULL;
-ALTER TABLE webcal_entry_repeats_not ADD cal_exdate int(1) NOT NULL default '1';
-ALTER TABLE webcal_entry ADD cal_due_date int(11) default NULL;
-ALTER TABLE webcal_entry ADD cal_due_time int(11) default NULL;
-ALTER TABLE webcal_entry ADD cal_location varchar(50) default NULL;
-ALTER TABLE webcal_entry ADD cal_url varchar(100) default NULL;
-ALTER TABLE webcal_entry ADD cal_completed int(11) default NULL;
-ALTER TABLE webcal_entry_user ADD cal_percent int(11) NOT NULL default '0';
-ALTER TABLE webcal_site_extras DROP PRIMARY KEY;
+ALTER TABLE webcal_entry_repeats ADD cal_count INT NULL;
+ALTER TABLE webcal_entry_repeats_not ADD cal_exdate INT NOT NULL default '1';
+ALTER TABLE webcal_entry ADD cal_due_date INT NULL;
+ALTER TABLE webcal_entry ADD cal_due_time INT NULL;
+ALTER TABLE webcal_entry ADD cal_location VARCHAR(50) NULL;
+ALTER TABLE webcal_entry ADD cal_url VARCHAR(100) NULL;
+ALTER TABLE webcal_entry ADD cal_completed INT NULL;
+ALTER TABLE webcal_entry_user ADD cal_percent INT NOT NULL default '0';
+/*ALTER TABLE webcal_site_extras DROP PRIMARY KEY;*/
 CREATE TABLE webcal_entry_categories (
-  cal_id int(11) NOT NULL default '0',
-  cat_id int(11) NOT NULL default '0',
-  cat_order int(11) NOT NULL default '0',
-  cat_owner varchar(25) default NULL
+  cal_id INT NOT NULL default '0',
+  cat_id INT NOT NULL default '0',
+  cat_order INT NOT NULL default '0',
+  cat_owner VARCHAR(25) NULL
 );
 /*upgrade_v1.1.0c-CVS*/
 CREATE TABLE webcal_blob (
@@ -276,6 +276,6 @@ CREATE TABLE webcal_blob (
   cal_type CHAR(1) NOT NULL,
   cal_mod_date INT NOT NULL,
   cal_mod_time INT NOT NULL,
-  cal_blob BLOB,
+  cal_blob IMAGE,
   PRIMARY KEY ( cal_blob_id )
 );
