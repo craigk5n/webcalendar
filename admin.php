@@ -2,9 +2,6 @@
 include_once 'includes/init.php';
 include_once 'includes/date_formats.php';
 
-function print_color_sample ( $color ) {
-  echo "<table style=\"border-width:0px;\"><tr><td style=\"background-color:$color;\">&nbsp;&nbsp;</td></tr></table>";
-}
 // I know we've already loaded the global settings above, but read them
 // in again and store them in a different place because they may have
 // been superceded by local user preferences.
