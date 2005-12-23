@@ -11,7 +11,7 @@ INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, ca
   VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'Default', 'Y' );
 CREATE TABLE webcal_entry (
   cal_id INT NOT NULL,
-  cal_group_id INT,
+  cal_group_id INT NULL,
   cal_ext_for_id INT NULL,
   cal_create_by VARCHAR(25) NOT NULL,
   cal_date INT NOT NULL,
@@ -25,9 +25,9 @@ CREATE TABLE webcal_entry (
   cal_type CHAR(1) DEFAULT 'E',
   cal_access CHAR(1) DEFAULT 'P',
   cal_name VARCHAR(80) NOT NULL,
-  cal_location VARCHAR(50) DEFAULT NULL,
-  cal_url VARCHAr(100) DEFAULT NULL,
-  cal_completed INT DEFAULT NULL,
+  cal_location VARCHAR(50) NULL,
+  cal_url VARCHAR(100) NULL,
+  cal_completed INT NULL,
   cal_description TEXT,
   PRIMARY KEY ( cal_id )
 );
@@ -45,7 +45,7 @@ CREATE TABLE webcal_entry_repeats (
    cal_byweekno VARCHAR(50) NULL,
    cal_byyearday VARCHAR(50) NULL,
    cal_wkst char(2) DEFAULT 'MO',
-   cal_count INT DEFAULT NULL,
+   cal_count INT NULL,
    PRIMARY KEY (cal_id)
 );
 CREATE TABLE webcal_entry_repeats_not (
@@ -124,7 +124,7 @@ CREATE TABLE webcal_view_user (
 );
 CREATE TABLE webcal_config (
   cal_setting VARCHAR(50) NOT NULL,
-  cal_value VARCHAR(100) NOT NULL,
+  cal_value VARCHAR(100) NULL,
   PRIMARY KEY ( cal_setting )
 );
 CREATE TABLE webcal_entry_log (
@@ -135,7 +135,7 @@ CREATE TABLE webcal_entry_log (
   cal_type CHAR(1) NOT NULL,
   cal_date INT NOT NULL,
   cal_time INT NOT NULL,
-  cal_text TEXT,
+  cal_text TEXT NULL,
   PRIMARY KEY ( cal_log_id )
 );
 CREATE TABLE webcal_categories (
@@ -260,6 +260,6 @@ CREATE TABLE webcal_blob (
   cal_type CHAR(1) NOT NULL,
   cal_mod_date INT NOT NULL,
   cal_mod_time INT NOT NULL,
-  cal_blob BLOB,
+  cal_blob IMAGE NULL,
   PRIMARY KEY ( cal_blob_id )
 );
