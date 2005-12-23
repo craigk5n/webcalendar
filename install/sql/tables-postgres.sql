@@ -32,7 +32,7 @@ CREATE TABLE webcal_entry (
   PRIMARY KEY ( cal_id )
 );
 CREATE TABLE webcal_entry_repeats (
-   cal_id INT 0 NOT NULL,
+   cal_id INT DEFAULT 0 NOT NULL,
    cal_type VARCHAR(20),
    cal_end INT,
    cal_endtime INT DEFAULT NULL,
