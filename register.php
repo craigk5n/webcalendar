@@ -193,7 +193,7 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == "full" ) {
     $mail->From = translate("Administrator");
   }
   $mail->IsHTML( $htmlmail == 'Y' ? true : false );
-  $mail->AddAddress( $uemail, $ufirstname .  " " . $ulasttname );
+  $mail->AddAddress( $uemail, $ufirstname .  " " . $ulastname );
   $mail->Subject = translate($APPLICATION_NAME) . " " .
     translate("Welcome") . ": " . $ufirstname;
   $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;
