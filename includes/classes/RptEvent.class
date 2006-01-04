@@ -264,7 +264,8 @@ class RepeatingEvent extends Event {
   } else {
     $h = $m = 0;
   }
-    $this->_repeatEndDateTimeTS = mktime ( $h, $m, 0, $month, $day, $year );
+    $edt = mktime ( $h, $m, 0, $month, $day, $year );
+    $this->_repeatEndDateTimeTS = ( $edt > 0 ? $edt : '' );
     return $this->_repeatEndDateTimeTS;
   }  
     
