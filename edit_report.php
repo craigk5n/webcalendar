@@ -114,7 +114,7 @@ $event_template = "<dt>\${name}</dt>\n<dd>" .
   "<b>" . translate ( "Time" ) . ":</b> \${time}<br />\n" .
   "\${description}</dd>\n";
 
-if ( empty ( $error ) && $report_id > 0 ) {
+if ( empty ( $error ) && $report_id >= 0 ) {
   $sql = "SELECT cal_login, cal_report_id, cal_is_global, " .
     "cal_report_type, cal_include_header, cal_report_name, " .
     "cal_time_range, cal_user, cal_allow_nav, cal_cat_id, " .
