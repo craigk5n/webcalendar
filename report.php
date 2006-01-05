@@ -325,7 +325,7 @@ if ( empty ( $offset ) || empty ( $report_allow_nav ) ||
 }
 
 // Set time range based on cal_time_range field.
-if ( empty ( $report_time_range ) ) {
+if ( ! isset ( $report_time_range ) ) {
   // manage reports
 } else if ( $report_time_range >= 0 && $report_time_range < 10 ) {
   $today = mktime ( 3, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
