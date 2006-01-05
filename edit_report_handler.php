@@ -156,7 +156,7 @@ if ( empty ( $error ) ) {
   }
 
   $names[] = "cal_time_range";
-  $values[] = ( empty ( $time_range ) ? 11 : $time_range );
+  $values[] = ( ! isset ( $time_range ) ? 11 : $time_range );
 
   $names[] = "cal_cat_id";
   $values[] = ( empty ( $cat_id ) ? "NULL" : $cat_id );
