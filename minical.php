@@ -136,7 +136,7 @@ $repeated_events = read_repeated_events ( $user, $cat_id, $startdate );
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( $user, $startdate, $enddate, $cat_id );
 
-display_small_month ( $thismonth, $prevyear, true, false );
+display_small_month ( $thismonth, $thisyear, true, false );
 
 //Reset...just in case
 $login = '';
