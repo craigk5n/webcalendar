@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1365219: Highlighted "today" changes too early - v1.1.0-CVS
       1397766: Tomorrow Report fails to This Week
       1387646: Repeated events are not shown repeatedly
       1386705: Two errors in install scripts (PostgreSQL)
