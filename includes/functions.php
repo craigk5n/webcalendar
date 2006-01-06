@@ -4917,7 +4917,9 @@ function set_today($date) {
   global $thisyear, $thisday, $thismonth, $thisdate, $today;
   global $month, $day, $year, $thisday, $TIMEZONE, $tz_offset;
 
-  $today = time() ;
+  $today = mktime() ;
+	//set it to GMT
+	$today -= date ("Z", $today);
   //Get  Timezone info used to highlight today
   $tz_offset = get_tz_offset ( $TIMEZONE, $today );
   $today_offset = $tz_offset[0] * 3600;
@@ -5641,10 +5643,11 @@ function get_datetime_add_tz ( $date, $time, $tz_offset='', $to_gmt=false ) {
 function get_tz_offset ( $tz, $timestamp = '', $dateYmd = '' ) {
   global $SERVER_TIMEZONE, $tz_override;
   static $tz_array = array();
+
   if ( ! empty ( $tz_override ) ) {  
     $tz = $tz_override;
   }
-  $tz = ( empty ( $tz )? $SERVER_TIMEZONE : $tz );
+  $tz = ( strlen ( $tz ) < 2? $SERVER_TIMEZONE : $tz );
   if ( empty ( $timestamp ) && ! empty ( $dateYmd ) ){
     //May need to expand dateYmd to dateYmdHis for accuracy
    // echo $dateYmd;
@@ -5653,7 +5656,6 @@ function get_tz_offset ( $tz, $timestamp = '', $dateYmd = '' ) {
     $sd = substr ( $dateYmd, 6, 2 );
     $timestamp = mktime ( 0, 0, 0, $sm, $sd, $sy );
   }
-
   //Check if this lookup has already been done
   if ( ! empty ( $tz_array[$tz][$timestamp] ) ){
       $tz_data[0] = $tz_array[$tz][$timestamp];
