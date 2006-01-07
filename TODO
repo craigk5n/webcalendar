@@ -21,7 +21,7 @@ te?
     I still don't think this is possible with non-mysql databases,
     but I could be wrong...  This would add on to the existing
     db config web page.
-[ ] Add UI for adding category icons
+[X] Add UI for adding category icons
 [ ] Add support for category colors
 [ ] Setup wizard (web-based) that would guide the admin through setting
     up what is now in System Settings and explain why they would want
@@ -38,7 +38,7 @@ te?
 [ ] Added cal_fullname (or cal_display_name) column to webcal_user
     and webcal_nonuser_cals so nonuser cals do not need to specify
     first and last name (since it does not usually make sense).
-[ ] Theme or color scheme selection.
+[X] Theme or color scheme selection.
     We would pre-populate some good color schemes.
 
 Here are some other ideas for the next or perhaps later releases:
