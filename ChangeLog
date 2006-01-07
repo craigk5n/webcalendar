@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1365600: 'unapproved events' are not properly explained
+ - Merged task files into entry files
  - Added option to upload category icons
  = Fixed bug 1365219: Highlighted "today" changes too early - v1.1.0-CVS
  - Fixed bug 1397766: Tomorrow Report fails to This Week
