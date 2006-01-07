@@ -18,6 +18,13 @@ if ( empty ( $id ) ) {
   } else {
     $error = translate("Database error") . ": " . dbi_error ();
   }
+
+}
+
+if ( ! empty ( $_FILES['FileName'] ) ) {
+  $file = $_FILES['FileName'];
+} else if ( ! empty ( $HTTP_POST_FILES['FileName'] ) ) {
+  $file = $HTTP_POST_FILES['FileName'];
 }
 
 if ( ! $is_my_event )
@@ -47,6 +54,14 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
       "AND cat_owner = '$login'" ) )
     $error = translate ("Database error") . ": " . dbi_error();
  }
+ 
+  //Rename any icons associated with this cat_id
+  $catIcon = "icons/cat-" . $id . ".gif";
+  $bakIcon = "icons/cat-" . date ("YmdHis" ) . ".gif";
+  if ( file_exists ( $catIcon ) ){
+    rename ( $catIcon, $bakIcon );
+  } 
+
 } else if ( empty ( $error ) ) {
   if ( ! empty ( $id ) ) {
     # update (don't let them change global status)
@@ -80,7 +95,19 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
       $error = translate ("Database error") . ": " . dbi_error();
     }
   }
+  //Save icon if uploaded
+  if ( ! empty ( $file['tmp_name'] ) && $file['type'] == 'image/gif' ){
+    $path_parts = pathinfo( $_SERVER['SCRIPT_FILENAME']);
+    $catIcon =  "icons/cat-" . $id . ".gif";
+    $fullIcon = $path_parts['dirname'] . "/" .$catIcon;
+    $bakIcon = "icons/cat-" . date ("YmdHis" ) . ".gif";
+    if ( file_exists ( $catIcon ) )
+      rename ( $catIcon, $bakIcon );
+    $file_result = move_uploaded_file ( $file['tmp_name'] , $fullIcon );
+    //echo "Upload Result:" . $file_result;
+  }
 }
+  
 if ( empty ( $error ) )
   do_redirect ( "category.php" );
 

@@ -149,6 +149,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added option to upload category icons
     + Added option to disable small months
     + Added Previews to themes
     + Imlemented PATCH 1380867: improved ical support
