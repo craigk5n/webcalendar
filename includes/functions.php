@@ -1590,7 +1590,8 @@ function display_small_tasks ( $cat_id ) {
   $row_cnt = 1;
   $task_html= "<table class=\"minitask\" cellspacing=\"0\" cellpadding=\"2\">\n";
   $task_html .= "<tr class=\"header\"><th colspan=\"3\" align=\"left\">" . 
-    translate ( "TASKS" ) . "</th><th align=\"right\"><a href=\"edit_task.php?$u_url\">" . 
+    translate ( "TASKS" ) . "</th><th align=\"right\">" .
+    "<a href=\"edit_entry.php?" . $u_url . "eType=task\">" . 
     "<img src=\"new.gif\" class=\"new\"/></a></th></tr>\n";
   $task_html .= "<tr class=\"header\"><th>!</th><th>".  translate ( "Task_Title" ) . 
     "</th><th>" . translate ("Due" ) . "</th><th>&nbsp;%&nbsp;</th></tr>\n";
@@ -3877,7 +3878,7 @@ function display_unapproved_events ( $user ) {
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] > 0 ) {
-        $str = translate ("You have XXX unapproved events");
+        $str = translate ("You have XXX unapproved entries");
         $str = str_replace ( "XXX", $row[0], $str );
         echo "<a class=\"nav\" href=\"list_unapproved.php";
         if ( $user != $login )
@@ -4918,8 +4919,8 @@ function set_today($date) {
   global $month, $day, $year, $thisday, $TIMEZONE, $tz_offset;
 
   $today = mktime() ;
-	//set it to GMT
-	$today -= date ("Z", $today);
+  //set it to GMT
+  $today -= date ("Z", $today);
   //Get  Timezone info used to highlight today
   $tz_offset = get_tz_offset ( $TIMEZONE, $today );
   $today_offset = $tz_offset[0] * 3600;
