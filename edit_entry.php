@@ -3,7 +3,7 @@
  * $Id$
  *
  * Description:
- * Presents page to edit/add an event
+ * Presents page to edit/add an event/task/journal
  *
  * Notes:
  * If htmlarea is installed, users can use WYSIWYG editing.
@@ -27,11 +27,14 @@ $useTabs = ( $EVENT_EDIT_TABS == 'Y' );
 // make sure this is not a read-only calendar
 $can_edit = false;
 
+
 // Public access can only add events, not edit.
 if ( $login == "__public__" && $id > 0 ) {
   $id = 0;
 }
 
+$eType = getGetValue ( 'eType');
+if ( empty ( $eType ) ) $eType =  "event";
 $month = getIntValue ( 'month' );
 $day = getIntValue ( 'day' );
 $year = getIntValue ( 'year' );
@@ -71,15 +74,18 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   }
   $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
     "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-    "cal_name, cal_description, cal_group_id, cal_location " .
-    "FROM webcal_entry WHERE cal_type IN " .
-    " ('E','M') AND cal_id = " . $id;
+    " cal_name, cal_description, cal_group_id, cal_location,  " .
+    " cal_due_date, cal_due_time, cal_completed, cal_url " .
+    "FROM webcal_entry WHERE   cal_id = " . $id;
+
   $res = dbi_query ( $sql );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     // If current user is creator of event, then they can edit
     if ( $row[0] == $login )
       $can_edit = true;
+
+    
     if ( ! empty ( $override ) && ! empty ( $date ) ) {
       // Leave $cal_date to what was set in URL with date=YYYYMMDD
       $cal_date = $date;
@@ -87,8 +93,59 @@ if ( $readonly == 'Y' || $is_nonuser ) {
       $cal_date = $row[1];
     }
     $create_by = $row[0];
-    if (( $user == $create_by ) && ( $is_assistant || $is_nonuser_admin )) $can_edit = true;
+    if (( $user == $create_by ) && ( $is_assistant || $is_nonuser_admin ))
+      $can_edit = true;
+
+
+    $cal_time = $row[2];
+    $due_date = $row[13];
+    $due_time = $row[14];
     
+    $adjusted_start = get_datetime_add_tz ( $cal_date, $cal_time );
+    $adjusted_due = get_datetime_add_tz ( $due_date, $due_time );
+    
+    $cal_date = date ( "Ymd",$adjusted_start );
+    $cal_time = date (  "His", $adjusted_start );
+    $hour = floor($cal_time / 10000);
+    $minute = ( $cal_time / 100 ) % 100;
+  
+    $due_date = date ( "Ymd",$adjusted_due );
+    $due_time = date (  "His", $adjusted_due );
+    $due_hour = floor($due_time / 10000);
+    $due_minute = ( $due_time / 100 ) % 100;
+   
+    $priority = $row[6];
+    $type = $row[7];
+    $access = $row[8];
+    $name = $row[9];
+    $description = $row[10];
+    $completed = ( ! empty ( $row[15] )? $row[15] : date ( "Ymd"));
+    $location = $row[12];
+    $cal_url = $row[16];    
+     
+    //what kind of entry are we dealing with?
+    if ( $type == "E" || $type == "M" ) {
+      $edit_weight = 1;
+      $eType = 'event';
+    } else if ( $type == "T" || $type == "N" ) {
+      $edit_weight = 2;      
+      $eType = 'task';
+    } else if ( $type == "J" || $type == "O" ) {
+      $edit_weight = 4;      
+      $eType = 'journal';
+    }
+
+    // Public access has no access to tasks
+    if ( $login == "__public__" && $eType == 'task') {
+      echo translate("You are not authorized to edit this task") . ".";
+    }
+     
+    //check UAC
+    if ( access_is_enabled () ) {
+      $can_edit_level = access_can_edit_user_calendar ( $create_by );
+      //echo   "LEVEL  $can_edit_level    weight  $edit_weight ";
+      $can_edit = ( $can_edit_level & $edit_weight ? true : false );  
+    }    
     $year = (int) ( $cal_date / 10000 );
     $month = ( $cal_date / 100 ) % 100;
     $day = $cal_date % 100;
@@ -131,6 +188,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     $description = $row[10];
     $parent = $row[11];
     $location = $row[12];
+//  }
+//   dbi_free_result ( $res );
     // check for repeating event info...
     // but not if we are overriding a single entry of an already repeating
     // event... confusing, eh?
@@ -164,11 +223,28 @@ if ( $readonly == 'Y' || $is_nonuser ) {
           $rpt_count = $row[12];
                
           //Check to see if Weekends Only is applicable
-          $weekdays_only = ( $rpt_type == 'daily' && $byday == 'MO,TU,WE,TH,FR' ? true : false );
+          $weekdays_only = ( $rpt_type == 'daily' &&
+    $byday == 'MO,TU,WE,TH,FR' ? true : false );
         }
+        dbi_free_result ( $res );
       }
     }
-   dbi_free_result ( $res );
+   
+  $sql = "SELECT cal_login,  cal_percent, cal_status " .
+   " FROM webcal_entry_user WHERE cal_id = $id";
+  $res = dbi_query ( $sql );
+ if ( $res ) {
+   while ( $row = dbi_fetch_row ( $res ) ) {
+      $overall_percent[] = $row; 
+   if ($login == $row[0]) $task_percent = $row[1];
+   if ( $is_admin && $user == $row[0]) $task_percent = $row[1]; 
+   
+    if ($login == $row[0]) $task_status = $row[2];
+    if ( $is_admin && $user == $row[0]) $task_status = $row[2];
+  }  
+    dbi_free_result ( $res ); 
+ }
+ 
     //determine if Expert mode needs to be set
     $expert_mode = ( isset ( $rpt_count ) || isset ($byyearday ) || isset($byweekno) ||
       isset ($bysetpos) || isset($bymonthday) || isset ($bymonth) || isset($byday));
@@ -219,10 +295,11 @@ if ( $readonly == 'Y' || $is_nonuser ) {
         $cat_name[] = $row[3];    
       }
     }
-  dbi_free_result ( $res );
-  if ( ! empty ( $cat_name ) ) $catNames = implode("," , array_unique($cat_name));
+    dbi_free_result ( $res );
+    if ( ! empty ( $cat_name ) ) $catNames = implode("," , array_unique($cat_name));
     if ( ! empty ( $cat_id ) ) $catList = implode(",", array_unique($cat_id));
   }
+
   //get participants
   $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id AND " .
     " cal_status IN ('A', 'W' )";
@@ -233,13 +310,27 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     }
     dbi_free_result ( $res );    
   }
- 
-  if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == "Y" ) {
+//Not allowed for tasks or journals 
+  if (  $eType == 'event'  && ! empty ( $ALLOW_EXTERNAL_USERS ) && 
+    $ALLOW_EXTERNAL_USERS == "Y" ) {
     $external_users = event_get_external_users ( $id );
   }
 } else {
-  // New event.
+  // New entry.
   $id = 0; // to avoid warnings below about use of undefined var
+ //We'll use $WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR
+ // As our starting and due times
+ $cal_time = $WORK_DAY_START_HOUR . "0000";
+ $hour = $WORK_DAY_START_HOUR;
+ $minute = 0;
+ $due_time = $WORK_DAY_END_HOUR . "0000";
+ $due_hour = $WORK_DAY_END_HOUR;
+ $due_minute = 0;
+ $task_percent = 0;
+ $completed = '';
+ $overall_percent =  array();
+ 
+ 
   // Anything other then testing for strlen breaks either hour=0 or no hour in URL
   if ( strlen ( $hour ) ) {
     $time = $hour * 100;
@@ -302,6 +393,8 @@ if ( empty ( $cal_date ) ) {
     $cal_date = $date;
   else
     $cal_date = date ( "Ymd" );
+  if ( empty ( $due_date ) )
+    $due_date = date ( "Ymd" );
 }
 
 if ( empty ( $thisyear ) )
@@ -315,6 +408,8 @@ else {
 if ( empty ( $cal_date ) || ! $cal_date ) {
   $cal_date = $thisdate;
 }
+if ( empty ( $due_date ) || ! $due_date )
+  $due_date = $thisdate;
 
 //Setup to display user's timezone difference if Admin or Assistane
 //Even thought event is stored in GMT, an Assistant may need to know that
@@ -359,17 +454,18 @@ if ( $ALLOW_HTML_DESCRIPTION == "Y" ){
 }
 
 print_header ( $INC, '', $BodyX );
+
+$eType_label = " ( " . translate ( $eType ) . " )";
 ?>
-
-
-<h2><?php if ( $id ) echo translate("Edit Entry"); else echo translate("Add Entry"); ?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
+<h2><?php  echo ( $id? translate("Edit Entry"): translate("Add Entry")) . $eType_label;?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 
 <?php
- if ( $can_edit ) {
+   if ( $can_edit ) {
 ?>
 <form action="edit_entry_handler.php" method="post" name="editentryform">
 
 <?php
+echo "<input type=\"hidden\" name=\"eType\" value=\"$eType\" />\n";
 if ( ! empty ( $id ) && ( empty ( $copy ) || $copy != '1' ) ) echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
 // we need an additional hidden input field
 echo "<input type=\"hidden\" name=\"entry_changed\" value=\"\" />\n";
@@ -462,7 +558,36 @@ if ( ! empty ( $parent ) )
          ( $DISABLE_PRIORITY_FIELD != "Y" ) ){ // end the table ?>
    </table>
     
-<?php } ?>
+<?php }  ?>
+<?php if ( $eType == 'task' ) { //only for tasks ?>
+  <table border="0"><tr><td class="tooltip" title="<?php etooltip("percent-help")?>">
+    <label for="task_percent"><?php etranslate("Percent Complete")?>:&nbsp;</label></td><td>
+    <select name="percent" id="task_percent">
+   <?php  
+     for ( $i=0; $i<=100 ; $i+=10 ){ 
+       echo "<option value=\"$i\" " .
+         ($task_percent == $i? " selected=\"selected\"":""). " >" .
+          $i . "</option>\n";
+     }
+    echo "</select></td></tr>\n";
+    if ( ! empty ( $overall_percent ) ) {
+      echo "<tr><td colspan=\"2\">\n<table width=\"100%\" border=\"0\"" .
+        " cellpadding=\"2\" cellspacing\"5\">".
+        "<tr>\n<td colspan=\"2\">". translate("All Percentages") . "</td><tr>";
+      $all_complete = true;
+      for ( $i = 0; $i < count ( $overall_percent ); $i++ ) {
+            user_load_variables ( $overall_percent[$i][0], "percent" );
+          echo "<tr><td>" . $percentfullname . "</td><td>" .
+            $overall_percent[$i][1] . "</td></tr>\n";
+         if ( $overall_percent[$i][1] < 100 ) $all_complete = false;
+       }
+      echo "</table>";
+    }
+    echo "</td></tr>\n";
+   ?>
+   </td></tr></table>
+<?php  } //end tasks only ?> 
+ 
   </td></tr>
 <?php if ( $DISABLE_LOCATION_FIELD != "Y"  ){  ?>
  <tr><td class="tooltip" title="<?php etooltip("location-help")?>">
@@ -471,12 +596,14 @@ if ( ! empty ( $parent ) )
    value="<?php echo htmlspecialchars ( $location ); ?>" />
   </td></tr>
 <?php } ?>
-  <tr><td class="tooltip" title="<?php etooltip("date-help")?>">
-   <?php etranslate("Date")?>:</td><td colspan="2">
-   <?php
-    print_date_selection ( "", $cal_date );
-   ?>
-  </td></tr>
+<?php 
+ echo "<tr><td class=\"tooltip\" title=\"" . tooltip("date-help") . "\">";
+ echo  ( $eType == 'task'? translate("Start Date"):translate("Date") ) . 
+   ":</td><td colspan=\"2\">\n";
+  print_date_selection ( "", $cal_date );
+
+  echo "</td></tr>\n";
+if ( $eType != 'task' ) {?>
   <tr><td>&nbsp;</td><td colspan="2">
    <select name="timetype" onchange="timetype_handler()">
     <option value="U" <?php if ( $allday != "Y" && $hour == -1 ) echo " selected=\"selected\""?>><?php etranslate("Untimed event"); ?></option>
@@ -518,11 +645,8 @@ if ( $TIME_FORMAT == "12" ) {
   echo "<label><input type=\"radio\" name=\"ampm\" value=\"pm\" $pmsel />&nbsp;" .
     translate("pm") . "</label>\n";
 }
-?>
-
-<?php
-  $dur_h = (int)( $duration / 60 );
-  $dur_m = $duration - ( $dur_h * 60 );
+ $dur_h = (int)( $duration / 60 );
+ $dur_m = $duration - ( $dur_h * 60 );
 
 if ($TIMED_EVT_LEN != 'E') { ?>
    </td></tr>
@@ -533,7 +657,7 @@ if ($TIMED_EVT_LEN != 'E') { ?>
    etranslate("Duration")
   ?>:&nbsp;</span></td><td colspan="2">
   <input type="text" name="duration_h" id="duration_h" size="2" maxlength="2" value="<?php 
-   if ( $allday != "Y" ) printf ( "%d", $dur_h );
+  if ( $allday != "Y" ) printf ( "%d", $dur_h );
   ?>" />:<input type="text" name="duration_m" id="duration_m" size="2" maxlength="2" value="<?php 
    if ( $allday != "Y" ) 
     printf ( "%02d", $dur_m );
@@ -598,6 +722,77 @@ if ( $allday != "Y" && $hour == -1 ) {
  </span>
 </td></tr>
 <?php } ?>
+<?php }else { //eType == task?>
+  <tr><td class="tooltip" title="<?php etooltip("time-help")?>">
+   <?php echo translate("Start Time") . ":"; ?></td><td colspan="2">
+<?php
+$h12 = $hour;
+$amsel = " checked=\"checked\""; $pmsel = "";
+if ( $TIME_FORMAT == "12" ) {
+  if ( $h12 < 12 ) {
+    $amsel = " checked=\"checked\""; $pmsel = "";
+  } else {
+    $amsel = ""; $pmsel = " checked=\"checked\"";
+  }
+  $h12 %= 12;
+  if ( $h12 == 0 ) $h12 = 12;
+}
+if ( $cal_time < 0 ) $h12 = "";
+?>
+   <input type="text" name="hour" size="2" value="<?php 
+    if ( $cal_time >= 0 ) echo $h12;
+   ?>" maxlength="2" />:<input type="text" name="minute" size="2" value="<?php 
+    if ( $cal_time >= 0 ) printf ( "%02d", $minute );
+   ?>" maxlength="2" />
+<?php
+if ( $TIME_FORMAT == "12" ) {
+  echo "<label><input type=\"radio\" name=\"ampm\" value=\"am\" $amsel />&nbsp;" .
+    translate("am") . "</label>\n";
+  echo "<label><input type=\"radio\" name=\"ampm\" value=\"pm\" $pmsel />&nbsp;" .
+    translate("pm") . "</label>\n";
+}
+?>
+</td></tr>
+<tr><td colspan="3">&nbsp;</td></tr>
+<tr><td class="tooltip" title="<?php etooltip("date-help")?>">
+   <?php etranslate("Due Date")?>:</td><td colspan="2">
+   <?php 
+    print_date_selection ( "due_", $due_date );
+   ?>
+  </td></tr>
+  <tr><td class="tooltip" title="<?php etooltip("time-help")?>">
+   <?php echo translate("Due Time") . ":"; ?></td><td colspan="2">
+<?php
+$dh12 = $due_hour;
+$damsel = " checked=\"checked\""; $dpmsel = "";
+if ( $TIME_FORMAT == "12" ) {
+  if ( $dh12 < 12 ) {
+    $damsel = " checked=\"checked\""; $dpmsel = "";
+  } else {
+    $damsel = ""; $dpmsel = " checked=\"checked\"";
+  }
+  $dh12 %= 12;
+  if ( $dh12 == 0 ) $dh12 = 12;
+}
+if ( $due_time < 0 ) $dh12 = "";
+?>
+   <input type="text" name="due_hour" size="2" value="<?php 
+    if ( $due_time >= 0 ) echo $dh12;
+   ?>" maxlength="2" />:<input type="text" name="due_minute" size="2" value="<?php 
+    if ( $due_time >= 0 ) printf ( "%02d", $due_minute );
+   ?>" maxlength="2" />
+<?php
+if ( $TIME_FORMAT == "12" ) {
+  echo "<label><input type=\"radio\" name=\"dampm\" value=\"am\" $damsel />&nbsp;" .
+    translate("am") . "</label>\n";
+  echo "<label><input type=\"radio\" name=\"dampm\" value=\"pm\" $dpmsel />&nbsp;" .
+    translate("pm") . "</label>\n";
+}
+?>
+</td></tr>
+
+<?php } ?>
+
 </table>
 <table>
 <?php
@@ -715,12 +910,15 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
       $minutes -= ( $d * 24 * 60 );
       $h = (int) ( $minutes / 60 );
       $minutes -= ( $h * 60 );
+      $extra_text = ( $eType == 'task'? 
+        translate("before task is due"):translate("before event"));
       echo "<label><input type=\"text\" size=\"2\" name=\"" . $extra_name .
         "_days\" value=\"$d\" /> " .  translate("days") . "</label>&nbsp;\n";
       echo "<label><input type=\"text\" size=\"2\" name=\"" . $extra_name .
         "_hours\" value=\"$h\" /> " .  translate("hours") . "</label>&nbsp;\n";
       echo "<label><input type=\"text\" size=\"2\" name=\"" . $extra_name .
-        "_minutes\" value=\"$minutes\" /> " .  translate("minutes") . "&nbsp;" . translate("before event") . "</label>";
+        "_minutes\" value=\"$minutes\" /> " .  translate("minutes") . 
+          "&nbsp;$extra_text</label>";
     }
   } else if ( $extra_type == EXTRA_SELECTLIST ) {
     // show custom select list.

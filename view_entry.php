@@ -22,7 +22,7 @@ include 'includes/classes/AttachmentList.class';
 include 'includes/classes/CommentList.class';
 
 // make sure this user is allowed to look at this calendar.
-$can_view = false;
+$can_view = $can_edit = $can_delete = $can_approve = false;
 $is_my_event = false; // is this user owner or participant?
 $is_private = $is_confidential = false;
 $log = getGetValue ( 'log' );
@@ -33,10 +33,18 @@ if ( $is_admin || $is_nonuser_admin || $is_assistant ) {
 } 
 
 $error = '';
+$eType = '';
 
 if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) ) {
   $error = translate ( "Invalid entry id" ) . "."; 
 }
+
+
+
+
+
+
+
 
 if ( empty ( $error ) ) {
   // is this user a participant or the creator of the event?
@@ -54,6 +62,16 @@ if ( empty ( $error ) ) {
     }
     dbi_free_result ( $res );
   }
+
+
+
+//update the task percentage for this user
+if ( ! empty ( $_POST ) && $can_view && $is_my_event ) {
+  $upercent = getPostValue ( 'upercent' );
+ if ( $upercent >= 0 && $upercent <= 100 )
+    dbi_query ("UPDATE webcal_entry_user SET cal_percent = $upercent " .
+     " WHERE cal_login = '$login'");
+}
 
   if ( ($login != "__public__") && ($PUBLIC_ACCESS_OTHERS == "Y") ) {
     $can_view = true;
@@ -146,6 +164,12 @@ if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
   if ( $found_nonuser_cal && ! $found_reg_user ) {
     $can_view = true;
   }
+}
+//check UAC
+if ( access_is_enabled () && ! empty ( $user ) ) {
+  $can_view = $can_view || access_can_view_user_calendar ( $user );
+  $can_delete = $can_delete || access_can_delete_user_calendar ( $user );
+  $can_approve = $can_approve || access_can_approve_user_calendar ( $user );
 } 
 //if sent here from an email and not logged in,
 //save URI and redirect to login
@@ -269,8 +293,8 @@ if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
 // Load event info now.
 $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
   "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-  "cal_name, cal_description, cal_location FROM webcal_entry WHERE webcal_entry.cal_type IN " .
-  " ('E','M') AND cal_id = $id";
+  "cal_name, cal_description, cal_location, cal_url, cal_due_date, cal_due_time FROM webcal_entry " .
+  "  WHERE cal_id = $id";
 $res = dbi_query ( $sql );
 if ( ! $res ) {
   echo translate("Invalid entry id") . ": $id";
@@ -282,6 +306,11 @@ if ( $row ) {
   $create_by = $row[0];
   $orig_date = $row[1];
   $event_time = $row[2];
+  $cal_type = $row[7];
+  if ( $cal_type == 'T' || $cal_type == 'N' )
+    $eType = 'task';
+  $due_date = $row[13];
+  $due_time = $row[14];
   if ( $hide_details ) {
     $name = translate ( $OVERRIDE_PUBLIC_TEXT );
     $description = translate ( $OVERRIDE_PUBLIC_TEXT );
@@ -299,8 +328,19 @@ if ( $row ) {
   echo "</body>\n</html>";
   exit;
 }
-
+//check UAC
+if ( access_is_enabled () ) {
+  $can_edit = $can_edit || access_can_edit_user_calendar ( $create_by );
+} 
 // Timezone Adjustments
+$adjusted_start = get_datetime_add_tz ( $orig_date, $event_time );
+$adjusted_due = get_datetime_add_tz ( $due_date, $due_time );
+ 
+$adjusted_time = date ( "His",$adjusted_start );
+$adjusted_date = date (  "Ymd", $adjusted_start );
+
+$adjusted_due_time = date ( "His",$adjusted_due );
+$adjusted_due_date = date (  "Ymd", $adjusted_due );
   $year = substr($row[1],0,4);
   $month = substr($row[1],4,2);
   $day = substr($row[1],-2);
@@ -320,9 +360,15 @@ if ( $event_time >= 0 && ! empty ( $tz_offset[0] )  && $tz_offset[0] != 0 ) {
 $tz_date = ( ! empty ( $gmt ) ) ? date ( "Ymd", $gmt ) : $row[1];
 
 // save date so the trailer links are for the same time period
-$thisyear = (int) ( $tz_date / 10000 );
-$thismonth = ( $tz_date / 100 ) % 100;
-$thisday = $tz_date % 100;
+if (  $eType == 'task' ) {
+  $thisyear = (int) ( $adjusted_date / 10000 );
+  $thismonth = ( $adjusted_date / 100 ) % 100;
+  $thisday = $adjusted_date % 100;
+} else {
+  $thisyear = (int) ( $tz_date / 10000 );
+  $thismonth = ( $tz_date / 100 ) % 100;
+  $thisday = $tz_date % 100;
+}
 $thistime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 $thisdow = date ( "w", $thistime );
 
@@ -336,6 +382,7 @@ $event_repeats = false;
 // build info string for repeating events and end date
 $sql = "SELECT cal_type FROM webcal_entry_repeats WHERE cal_id = $id";
 $res = dbi_query ($sql);
+$rep_str = '';
 if ( $res ) {
   if ( $tmprow = dbi_fetch_row ( $res ) ) {
     $event_repeats = true;
@@ -394,8 +441,8 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
 }
 ?>
 <h2><?php echo  $name ; ?></h2>
-<table style="border-width:0px;">
-<tr><td style="vertical-align:top; font-weight:bold;">
+<table border="0" width="100%">
+<tr><td style="vertical-align:top; font-weight:bold;" width="10%">
  <?php etranslate("Description")?>:</td><td>
  <?php
   if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) &&
@@ -427,10 +474,13 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Status")?>:</td><td>
  <?php
+     if ( $event_status == 'A' )
+       etranslate("Accepted");
      if ( $event_status == 'W' )
-       etranslate("Waiting for approval");
+       echo ( $eType == 'task' ?translate("Needs-Action") : translate("Waiting for approval") );
+   
      if ( $event_status == 'D' )
-       etranslate("Deleted");
+      echo ( $eType == 'task' ? translate("Declined") : translate("Deleted") );
      else if ( $event_status == 'R' )
        etranslate("Rejected");
       ?>
@@ -438,13 +488,38 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
 <?php } ?>
 
 <tr><td style="vertical-align:top; font-weight:bold;">
- <?php etranslate("Date")?>:</td><td>
+ <?php echo ( $eType == 'task' ? translate("Start Date") : translate("Date") )?>:</td><td>
  <?php
+ if ( $eType == 'task' ) {
+   echo date_to_str ( $orig_date );
+  ?>
+</td></tr>
+<?php if ( $event_time >= 0 ) { ?>
+<tr><td style="vertical-align:top; font-weight:bold;">
+ <?php etranslate("Start Time")?>:</td><td>
+ <?php
+   echo display_time ( $orig_date . $event_time, 2 );
+  ?>
+</td></tr>
+<?php } ?>
+<tr><td style="vertical-align:top; font-weight:bold;">
+ <?php etranslate("Due Date")?>:</td><td>
+ <?php
+   echo date_to_str ( $due_date );
+  ?>
+</td></tr>
+<tr><td style="vertical-align:top; font-weight:bold;">
+ <?php etranslate("Due Time")?>:</td><td>
+ <?php
+   echo display_time (  $due_date . $due_time, 2 );
+ 
+ } else {
   if ( $event_repeats ) {
     echo date_to_str ( $event_date );
   } else {
     echo date_to_str ( $row[1], "", true, false, ( $row[5] == ( 24 * 60 ) ? "" : $event_time ) );
   }
+ }
   ?>
 </td></tr>
 <?php if ( $event_repeats ) { ?>
@@ -597,7 +672,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
           } else if ( $minutes == 1 ) {
             echo $minutes . " " . translate("minute");
           }
-          echo " " . translate("before event" );
+          echo " " . ( $eType == 'task'? translate("before due time" ) : translate("before event" ));
         }
       }
     } else if ( $extra_type == EXTRA_SELECTLIST ) {
@@ -629,15 +704,19 @@ if ( $single_user == "N" && $show_participants ) { ?>
   } else   if ( $is_confidential ) {
     echo "[" . translate("Confidential") . "]";
   } else {
-    $sql = "SELECT cal_login, cal_status FROM webcal_entry_user " .
+    $sql = "SELECT cal_login, cal_status, cal_percent FROM webcal_entry_user " .
       "WHERE cal_id = $id";
+    if ( $eType == 'task' ) {
+        $sql .= " AND cal_status IN ( 'A', 'W' )";
+    }
     //echo "$sql\n";
     $res = dbi_query ( $sql );
     $first = 1;
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
+        $participants[] = $row;
         $pname = $row[0];
-        if ( ( $login == $row[0] || 
+        if ( ( $login == $row[0] || access_can_approve_user_calendar ( $row[0] ) ||
           ( $is_nonuser_admin && ! empty ( $user ) && $user == $row[0] ) ) && 
           $row[1] == 'W' ) {
           $unapproved = TRUE;
@@ -655,6 +734,32 @@ if ( $single_user == "N" && $show_participants ) { ?>
       echo translate ("Database error") . ": " . dbi_error() . "<br />\n";
     }
   }
+  if ( $eType == 'task' ) {
+ echo "<table  border=\"1\"  width=\"80%\" cellspacing=\"0\" cellpadding=\"0\">\n";
+ echo "<th align=\"center\">" .translate( "Participants" ) . "</th>";
+ echo "<th align=\"center\" colspan=\"2\">" . translate( "Percentage Complete" ) . "</th>";
+  for ( $i = 0; $i < count ( $participants ); $i++ ) {
+    user_load_variables ( $participants[$i][0], "temp" );
+  $spacer = 100 - $participants[$i][2];
+  $percentage = $participants[$i][2];
+ if ( $participants[$i][0] == $login ) $login_percentage = $participants[$i][2];
+  echo "<tr><td width=\"30%\">";
+  if ( strlen ( $tempemail ) ) {
+       echo "<a href=\"mailto:" . $tempemail . "?subject=$subject\">" .
+     "&nbsp;" . $tempfullname . "</a>"; 
+     $allmails[] = $tempemail;
+  } else { 
+    echo "&nbsp;" . $tempfullname; 
+  }   
+    echo "</td>\n";
+  echo "<td width=\"5%\" align=\"center\">$percentage%</td>\n<td width=\"65%\">";
+  echo "<img src=\"pix.gif\" width=\"$percentage%\" height=\"10\">";
+  echo "<img src=\"spacer.gif\" width=\"$spacer\" height=\"10\">";
+  echo "</td></tr>\n";
+  }
+  echo "</table>";
+  
+  } else {
   for ( $i = 0; $i < $num_app; $i++ ) {
     user_load_variables ( $approved[$i], "temp" );
     if ( strlen ( $tempemail ) ) {
@@ -702,17 +807,34 @@ if ( $single_user == "N" && $show_participants ) { ?>
         translate("Rejected") . ")\n";
     }
   }
+  }
 ?>
 </td></tr>
 <?php
  } // end participants
-?>
-
-<?php
-
-$can_edit = ( $is_admin || $is_nonuser_admin && ($user == $create_by) || 
+ 
+ $can_edit = ( $can_edit || $is_admin || $is_nonuser_admin && ($user == $create_by) || 
   ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
   ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
+   
+ if ( $eType == 'task' ) {
+ //allow user to update their task completion percentage
+  if ( empty ( $user ) && $readonly != "Y" && $is_my_event && 
+    $login != "__public__" && ! $is_nonuser && 
+   $event_status != "D"  )  {
+    echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n";
+    echo "<form action=\"view_entry.php?id=$id\" method=\"post\" name=\"setpercentage\">\n";
+    echo  translate ("Update Task Percentage") . 
+     "</td<td><select name=\"upercent\" id=\"task_percent\">\n";
+    for ( $i=0; $i<=100 ; $i+=10 ){ 
+      echo "<option value=\"$i\" " .  ($login_percentage == $i? " selected=\"selected\"":""). " >" .  $i . "</option>\n";
+    }
+    echo "</select>\n";
+    echo "&nbsp;<input type=\"submit\" value=\"" . translate("Update") . "\" />\n";
+    echo "</form></td><tr>\n"; 
+  }
+}
+
 
 if ( Doc::attachmentsEnabled () ) { ?>
   <tr><td style="vertical-align:top; font-weight:bold;">
@@ -831,8 +953,9 @@ hideComments ();
 
 </table>
 
-<br /><?php
+<br />
 
+<?php 
 $rdate = "";
 if ( $event_repeats ) {
   $rdate = "&amp;date=$event_date";
@@ -860,7 +983,8 @@ if ( ! empty ( $user ) && $login != $user ) {
   $u_url = "";
 }
 
-if ( ( $is_my_event || $is_nonuser_admin ) && $unapproved && $readonly == 'N' ) {
+if ( ( $is_my_event || $is_nonuser_admin || $can_approve ) && 
+  $unapproved && $readonly == 'N' ) {
   echo "<a title=\"" . 
     translate("Approve/Confirm entry") . 
     "\" class=\"nav\" href=\"approve_entry.php?id=$id$u_url&amp;type=E\" " .
@@ -890,7 +1014,7 @@ if ( Doc::attachmentsEnabled () ) {
     $can_add_attach = true;
   else if ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' )
     $can_add_attach = true;
-  else if ( $ALLOW_ATTACH_ANY )
+  else if ( $ALLOW_ATTACH_ANY == 'Y' )
     $can_add_attach = true;
 }
   
@@ -900,19 +1024,21 @@ if ( Doc::commentsEnabled () ) {
     $can_add_comment = true;
   else if ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' )
     $can_add_comment = true;
-  else if ( $ALLOW_COMMENTS_ANY )
+  else if ( $ALLOW_COMMENTS_ANY == 'Y' )
     $can_add_comment = true;
 }
   
 if ( $can_add_attach ) {
   echo "<a title=\"" . translate('Add Attachment') .
-    "\" class=\"nav\" href=\"docadd.php?type=A&amp;id=$id\">" .
+    "\" class=\"nav\" href=\"docadd.php?type=A&amp;id=$id" . 
+    ( $login != $user? "&amp;user=$user":"")  . "\">" .
   translate ( 'Add Attachment' ) . "</a><br/>\n";
 }
 
 if ( $can_add_comment ) {
   echo "<a title=\"" . translate('Add Comment') .
-    "\" class=\"nav\" href=\"docadd.php?type=C&amp;id=$id\">" .
+    "\" class=\"nav\" href=\"docadd.php?type=C&amp;id=$id" . 
+    ( $login != $user? "&amp;user=$user":"")  . "\">" .
   translate ( 'Add Comment' ) . "</a><br/>\n";
 }
 
@@ -924,7 +1050,7 @@ if ( empty ( $user ) && $CATEGORIES_ENABLED == "Y" &&
   ! $is_nonuser && $event_status != "D" && ! $can_edit )  {
   echo "<a title=\"" . 
     translate("Set category") . "\" class=\"nav\" " .
-    "href=\"set_entry_cat.php?id=$id$rdate&amp;type=E\">" .
+    "href=\"set_entry_cat.php?id=$id$rdate\">" .
     translate("Set category") . "</a><br />\n";
 }
 
@@ -967,10 +1093,10 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
       translate("Delete entry") . "\" class=\"nav\" " .
       "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
        translate("Are you sure you want to delete this entry?", true) . "\\n\\n";
-    if ( empty ( $user ) || $user == $login )
+    if ( empty ( $user ) || $user == $login  )
       echo translate("This will delete this entry for all users.", true);
     echo "');\">" .  translate("Delete entry");
-    if ( ! empty ( $user ) && $user != $login ) {
+    if ( ! empty ( $user ) &&  $user != $login ) {
       user_load_variables ( $user, "temp_" );
       echo " " . translate ( "from calendar of" ) . " " . $temp_fullname . "";
     }
@@ -980,7 +1106,8 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
     translate("Copy entry") . "\" class=\"nav\" " .
     "href=\"edit_entry.php?id=$id$u_url&amp;copy=1\">" . 
     translate("Copy entry") . "</a><br />\n";  
-} elseif ( $readonly != "Y" && ( $is_my_event || $is_nonuser_admin ) && $login != "__public__" &&
+} elseif ( $readonly != "Y" && ( $is_my_event || $is_nonuser_admin || 
+  $can_delete ) && $login != "__public__" &&
   ! $is_nonuser && $event_status != "D" )  {
   echo "<a title=\"" . 
     translate("Delete entry") . "\" class=\"nav\" " .
@@ -1061,6 +1188,26 @@ if ( $can_show_log && $show_log ) {
         etranslate("Event updated");
       } else if ( $row[2] == LOG_DELETE ) {
         etranslate("Event deleted");
+      } else if ( $row[2] ==  LOG_CREATE_T ) { 
+        etranslate("Task created");        
+      } else if ( $row[2] == LOG_APPROVE_T ) {
+        etranslate("Task approved");
+      } else if ( $row[2] == LOG_REJECT_T ) {
+        etranslate("Task rejected");
+      } else if ( $row[2] == LOG_UPDATE_T ) {
+        etranslate("Task updated");
+      } else if ( $row[2] == LOG_DELETE_T ) {
+        etranslate("Task deleted");
+      } else if ( $row[2] ==  LOG_CREATE_J ) { 
+        etranslate("Journal created");        
+      } else if ( $row[2] == LOG_APPROVE_J ) {
+        etranslate("Journal approved");
+      } else if ( $row[2] == LOG_REJECT_J ) {
+        etranslate("Journal rejected");
+      } else if ( $row[2] == LOG_UPDATE_J ) {
+        etranslate("Journal updated");
+      } else if ( $row[2] == LOG_DELETE_J ) {
+        etranslate("Journal deleted");    
       } else if ( $row[2] == LOG_NOTIFICATION ) {
         etranslate("Notification sent");
       } else if ( $row[2] == LOG_REMINDER ) {
