@@ -34,12 +34,8 @@ if ( ! empty ( $_POST ) ) {
    exit;
 }
 
-$type = getGetValue ( 'type' );
-if ( ! empty ( $type ) && ( $type == 'T' || $type == 'N' ) ) {
-  $view_type = "view_task";
-} else {
-  $view_type = "view_entry";  
-}
+$view_type = "view_entry";  
+
 // Allow administrators to approve public events
 if ( $PUBLIC_ACCESS == "Y" && ! empty ( $public ) && $is_admin )
   $app_user = "__public__";
