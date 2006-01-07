@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1365600: 'unapproved events' are not properly explained
       1365219: Highlighted "today" changes too early - v1.1.0-CVS
       1397766: Tomorrow Report fails to This Week
       1387646: Repeated events are not shown repeatedly
@@ -356,6 +357,7 @@ Version 1.0RC3 (11 Mar 2005)
     + Fixed issue where month.php and mini-calendar today highlight
       based on server time
   - New Features / Enhancements / Changes:
+    + Merged task files into entry files
     + Added 'Public Access' to Manage Calendar of: list, if Admin. 
     + Allow user-created views to be the DEFAULT view set in user preferences.
       After saving or deleting an event, the user will return to this page.
