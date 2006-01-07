@@ -4,7 +4,7 @@
 //  $PROGRAM_VERSION
 //array element[2] = install point in upgrade-mysql.php
 $database_upgrade_matrix = array (
-array ( "SELECT * FROM cal_user_pref", "pre-v0.9.07", "upgrade_v0.9.13"),
+array ( "SELECT * FROM webcal_user_pref", "pre-v0.9.07", "upgrade_v0.9.13"),
 array ( "SELECT * FROM webcal_user_pref", "v0.9.07 - v0.9.13", "upgrade_v0.9.13"),
 array ( "SELECT * FROM webcal_entry_repeats", "v0.9.14 - v0.9.21", "upgrade_v0.9.22"),
 array ( "SELECT * FROM webcal_user_layers", "v0.9.22 - v0.9.26", "upgrade_v0.9.27"),
