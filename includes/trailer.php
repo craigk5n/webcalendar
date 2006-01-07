@@ -357,9 +357,9 @@ if ( empty ( $user ) || $user == $login ) {
   }
   if ( $can_add && ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y") {
     $url = "<a title=\"" . 
-      translate("Add New Task") . "\" href=\"edit_task.php";
+      translate("Add New Task") . "\" href=\"edit_entry.php?eType=task";
     if ( ! empty ( $thisyear ) ) {
-      $url .= "?year=$thisyear";
+      $url .= "&amp;year=$thisyear";
       if ( ! empty ( $thismonth ) ) {
         $url .= "&amp;month=$thismonth";
       }
