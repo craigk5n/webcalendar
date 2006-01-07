@@ -15,7 +15,8 @@ function validate_and_submit () {
     alert ( "<?php etranslate("You have not entered a Brief Description", true)?>.");
     return false;
   }
-  if ( document.editentryform.timetype.selectedIndex == 1 ) {
+  if ( document.editentryform.timetype && 
+    document.editentryform.timetype.selectedIndex == 1 ) {
     h = parseInt (isNumeric( document.editentryform.hour.value ));
     m = parseInt (isNumeric( document.editentryform.minute.value ));  
 <?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
@@ -113,6 +114,9 @@ function validate_and_submit () {
           changed = true;
         break;
       case "select-one":
+ //Don't register a percentage change
+      if ( form.elements[i].name == "percent")
+        break;
 //      case "select-multiple":
         for( j = 0; j < field.length; j++ ) {
           if ( field.options[j].selected != field.options[j].defaultSelected )
@@ -151,7 +155,24 @@ function validate_and_submit () {
    for ( i = 0; i < document.editentryform.elements[exceptionid].length; i++ ) {
      document.editentryform.elements[exceptionid].options[i].selected = true;
    }
+ }
+ 
+ if ( document.editentryform.due_day ) {
+   //Check if Event due date is valid
+   var d = document.editentryform.due_day.selectedIndex;
+   var vald = document.editentryform.due_day.options[d].value;
+   var m = document.editentryform.due_month.selectedIndex;
+   var valm = document.editentryform.due_month.options[m].value;
+   var y = document.editentryform.due_year.selectedIndex;
+   var valy = document.editentryform.due_year.options[y].value;
+   var c = new Date(valy,valm -1,vald);
+   if ( c.getDate() != vald ) {
+     alert ("<?php etranslate ("Invalid Event Date", true)?>.");
+     document.editentryform.due_day.focus ();
+     return false;
+   }
  } 
+ 
  document.editentryform.submit ();
  return true;
 }
@@ -214,10 +235,10 @@ function selectDate (  day, month, year, current, evt ) {
  // If they change their mind & switch it back, the original 
  // values are restored for them
 ?>function timetype_handler () {
+  if ( ! document.editentryform.timetype )
+   return true;
   var i = document.editentryform.timetype.selectedIndex;
   var val = document.editentryform.timetype.options[i].text;
-  //alert ( "val " + i + " = " + val );
-  // i == 1 when set to timed event
   if ( i != 1 ) {
     // Untimed/All Day
     makeInvisible ( "timeentrystart" );

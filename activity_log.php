@@ -64,7 +64,7 @@ if ( $res ) {
       if ( $num % 2 ) {
         echo " class=\"odd\"";
       }
-      $view_link = ( $row[8] == 'E' || $row[8] == 'M' ?'view_entry' : 'view_task' );      
+      $view_link = 'view_entry';      
       echo "><td>\n" .
         $row[0] . "</td><td>\n" .
         $row[1] . "</td><td>\n" . 
