@@ -121,20 +121,24 @@ function access_load_user_permissions ( $user )
     return $access_other_cals;
 
   $sql = "SELECT cal_login, cal_other_user, " .
-    "cal_can_view, cal_can_edit, cal_can_delete, cal_can_approve " .
-    "FROM webcal_access_user WHERE cal_login = '$user'";
+    "cal_can_view, cal_can_edit, cal_can_delete, cal_can_approve, " .
+    "cal_can_email, cal_can_invite " .
+    "FROM webcal_access_user WHERE cal_login = '$user' OR cal_login = '__default__' " .
+    "ORDER BY cal_login ";
   $res = dbi_query ( $sql );
   assert ( '$res' );
-  while ( $row = dbi_fetch_row ( $res ) ) {
-    $key = $row[0] . "." . $row[1];
+  if ( $row = dbi_fetch_row ( $res ) ) {
+    $key = $user . "." . $row[1];
     $access_other_cals[$key] = array (
-      "cal_login" => $row[0],
+      "cal_login" => $user,
       "cal_other_user" => $row[1],
       "cal_can_view" => $row[2],
       "cal_can_edit" => $row[3],
       "cal_can_delete" => $row[4],
-      "cal_can_approve" => $row[5]
-    );
+      "cal_can_approve" => $row[5],
+      "cal_can_email" => $row[6],
+      "cal_can_invite" => $row[7]
+    );  
   }
   dbi_free_result ( $res );
   $access_other_cals[$user] = 1;
@@ -187,7 +191,7 @@ function access_get_viewable_users ( $user )
 function access_load_user_functions ( $user )
 {
   global $is_admin;
-	
+  
   $ret = '';
   $rets = array();
   $users = array ( $user, '__default__' );
@@ -282,7 +286,7 @@ function access_can_access_function ( $function, $user="" )
  * @param string $other_user User login of calendar to view
  * @param string $cur_user   User login of current user
  *
- * @return bool True if user can access the other user's calendar
+ * @return int Bitwise AND of 0=No access, 1=Event, 2=Task, 4=Journal
  *
  * @global string Username of currently logged-in user
  * @global array
@@ -301,16 +305,55 @@ function access_can_view_user_calendar ( $other_user, $cur_user='' )
   // User can always access their own calendar, and we don't store
   // that in the database.
   if ( $cur_user == $other_user )
-    return true;
+    return 511;
 
   $access = access_load_user_permissions ( $cur_user );
 
   $key = $cur_user . "." . $other_user;
 
   if ( ! empty ( $access[$key] ) &&
-    ! empty ( $access[$key]['cal_can_view'] ) &&
-    $access[$key]['cal_can_view'] == 'Y' )
-    $ret = true;
+    ! empty ( $access[$key]['cal_can_view'] ) )
+    $ret = $access[$key]['cal_can_view'];
+    
+  //echo "can access $other_user = " . ( $ret ? "true" : "false" ) , "<br />\n";
+  
+  return ( $ret );
+}
+
+/**
+ * Check to see if a user can edit the calendar of another user.
+ *
+ * @param string $other_user User login of calendar to view
+ * @param string $cur_user   User login of current user
+ *
+ * @return int Bitwise AND of 0=No access, 1=Event, 2=Task, 4=Journal
+ *
+ * @global string Username of currently logged-in user
+ * @global array
+ */
+function access_can_edit_user_calendar ( $other_user, $cur_user='' )
+{
+  global $login, $access_users;
+  $ret = false;
+
+  if ( empty ( $cur_user ) && ! empty ( $login ) )
+    $cur_user = $login;
+
+  assert ( '! empty ( $other_user )' );
+  assert ( '! empty ( $cur_user )' );
+
+  // User can always access their own calendar, and we don't store
+  // that in the database.
+  if ( $cur_user == $other_user )
+    return CAL_CAN_DOALL;
+
+  $access = access_load_user_permissions ( $cur_user );
+
+  $key = $cur_user . "." . $other_user;
+
+  if ( ! empty ( $access[$key] ) &&
+    ! empty ( $access[$key]['cal_can_edit'] ) )
+    $ret = $access[$key]['cal_can_edit'];
     
   //echo "can access $other_user = " . ( $ret ? "true" : "false" ) , "<br />\n";
   
@@ -324,7 +367,7 @@ function access_can_view_user_calendar ( $other_user, $cur_user='' )
  * @param string $other_user User login of calendar to view
  * @param string $cur_user   User login of current user
  *
- * @return bool True if user can access the other user's calendar
+ * @return int Bitwise AND of 0=No access, 1=Event, 2=Task, 4=Journal
  *
  * @global string Username of currently logged-in user
  * @global array
@@ -343,16 +386,15 @@ function access_can_approve_user_calendar ( $other_user, $cur_user='' )
   // User can always access their own calendar, and we don't store
   // that in the database.
   if ( $cur_user == $other_user )
-    return true;
+    return CAL_CAN_DOALL;
 
   $access = access_load_user_permissions ( $cur_user );
 
   $key = $cur_user . "." . $other_user;
 
   if ( ! empty ( $access[$key] ) &&
-    ! empty ( $access[$key]['cal_can_approve'] ) &&
-    $access[$key]['cal_can_approve'] == 'Y' )
-    $ret = true;
+    ! empty ( $access[$key]['cal_can_approve'] ) )
+    $ret = $access[$key]['cal_can_approve'];
     
   //echo "can approve $other_user = " . ( $ret ? "true" : "false" ) , "<br />\n";
   
@@ -366,7 +408,7 @@ function access_can_approve_user_calendar ( $other_user, $cur_user='' )
  * @param string $other_user User login of calendar to delete from
  * @param string $cur_user   User login of current user
  *
- * @return bool True if user can delete from the other user's calendar
+ * @return int Bitwise AND of 0=No access, 1=Event, 2=Task, 4=Journal
  *
  * @global string Username of currently logged-in user
  * @global array
@@ -385,18 +427,99 @@ function access_can_delete_user_calendar ( $other_user, $cur_user='' )
   // User can always access their own calendar, and we don't store
   // that in the database.
   if ( $cur_user == $other_user )
-    return true;
+    return CAL_CAN_DOALL;
 
   $access = access_load_user_permissions ( $cur_user );
 
   $key = $cur_user . "." . $other_user;
 
   if ( ! empty ( $access[$key] ) &&
-    ! empty ( $access[$key]['cal_can_delete'] ) &&
-    $access[$key]['cal_can_delete'] == 'Y' )
-    $ret = true;
+    ! empty ( $access[$key]['cal_can_delete'] ) )
+    $ret = $access[$key]['cal_can_delete'];
     
   //echo "can delete $other_user = " . ( $ret ? "true" : "false" ) , "<br />\n";
+  
+  return ( $ret );
+}
+
+/**
+ * Check to see if a user can invite another user.
+ *
+ * @param string $other_user User login of calendar to view
+ * @param string $cur_user   User login of current user
+ *
+ * @return bool True if user can invite the other user's calendar
+ *
+ * @global string Username of currently logged-in user
+ * @global array
+ */
+function access_can_invite_user_calendar ( $other_user, $cur_user='' )
+{
+  global $login, $access_users;
+  $ret = false;
+
+  if ( empty ( $cur_user ) && ! empty ( $login ) )
+    $cur_user = $login;
+
+  assert ( '! empty ( $other_user )' );
+  assert ( '! empty ( $cur_user )' );
+
+  // User can always access their own calendar, and we don't store
+  // that in the database.
+  if ( $cur_user == $other_user )
+    return CAL_CAN_DOALL;
+
+  $access = access_load_user_permissions ( $cur_user );
+
+  $key = $cur_user . "." . $other_user;
+
+  if ( ! empty ( $access[$key] ) &&
+    ! empty ( $access[$key]['cal_can_invite'] ) &&
+    $access[$key]['cal_can_invite'] == "Y" )
+    $ret = true;
+    
+  //echo "can access $other_user = " . ( $ret ? "true" : "false" ) , "<br />\n";
+  
+  return ( $ret );
+}
+
+/**
+ * Check to see if a user can email another user.
+ *
+ * @param string $other_user User login of calendar to view
+ * @param string $cur_user   User login of current user
+ *
+ * @return bool True if user can email the other user
+ *
+ * @global string Username of currently logged-in user
+ * @global array
+ */
+function access_can_email_user_calendar ( $other_user, $cur_user='' )
+{
+  global $login, $access_users;
+  $ret = false;
+
+  if ( empty ( $cur_user ) && ! empty ( $login ) )
+    $cur_user = $login;
+
+  assert ( '! empty ( $other_user )' );
+  assert ( '! empty ( $cur_user )' );
+
+  // User can always access their own calendar, and we don't store
+  // that in the database.
+  if ( $cur_user == $other_user )
+    return CAL_CAN_DOALL;
+
+  $access = access_load_user_permissions ( $cur_user );
+
+  $key = $cur_user . "." . $other_user;
+
+  if ( ! empty ( $access[$key] ) &&
+    ! empty ( $access[$key]['cal_can_email'] ) &&
+    $access[$key]['cal_can_email'] == "Y" )
+    $ret = true;
+    
+  //echo "can access $other_user = " . ( $ret ? "true" : "false" ) , "<br />\n";
   
   return ( $ret );
 }

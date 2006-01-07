@@ -484,6 +484,7 @@ class WebCalendar {
         " to <span style=\"font-weight:bold;\">ON</span>.<br /><br />\n" .
         $loc );
     }
+
   }
 
   /**
@@ -525,6 +526,11 @@ class WebCalendar {
     define ( 'LOG_REJECT_T',      'J' );
     define ( 'LOG_UPDATE_T',      'K' );
     define ( 'LOG_DELETE_T',      'L' );
+    define ( 'LOG_CREATE_J',      'I' );
+    define ( 'LOG_APPROVE_J',     'P' );
+    define ( 'LOG_REJECT_J',      'Q' );
+    define ( 'LOG_UPDATE_J',      'S' );
+    define ( 'LOG_DELETE_J',      'V' );
     define ( 'LOG_NOTIFICATION',  'N' );
     define ( 'LOG_REMINDER',      'R' );
     define ( 'LOG_NEWUSER_FULL',  'F' );
@@ -1238,6 +1244,22 @@ class WebCalendar {
     define ( 'ACCESS_NUMBER_FUNCTIONS', 27 ); // how many function did we define?
     /**#@-*/
 
+    /**#@+
+     * Constants for use with cal_can_xxx columns in
+     * webcal_access_user table.
+     */
+    define ( 'CAL_CAN_PE', 1 ); //Public Event
+    define ( 'CAL_CAN_PT', 2 ); //Public Task
+    define ( 'CAL_CAN_PJ', 4 ); //Public Journal
+    define ( 'CAL_CAN_CE', 8 ); //Conf Event
+    define ( 'CAL_CAN_CT', 16 ); //Conf Task
+    define ( 'CAL_CAN_CJ', 32 ); //Conf Journal
+    define ( 'CAL_CAN_RE', 64 ); //Private Event
+    define ( 'CAL_CAN_RT', 128 ); //Private Task
+    define ( 'CAL_CAN_RJ', 256 ); //Private Journal
+    define ( 'CAL_CAN_DOALL', 511 );//Can access all types and levels
+    /**#@-*/
+				
     // The following pages will be handled differently than the others
     // since they have different uses.  For example, edit_user.php
     // adds a user when the user is an admin.  If the user is not an
@@ -1292,25 +1314,6 @@ class WebCalendar {
       ACCESS_ASSISTANTS => "assist.*php",
       ACCESS_HELP => "help_.*php"
     );
-
-
-    //CREATE TABLE webcal_access_user (
-    //  cal_login VARCHAR(50) NOT NULL,
-    //  cal_other_user VARCHAR(50) NOT NULL,
-    //  cal_can_view CHAR(1) NOT NULL DEFAULT 'N',
-    //  cal_can_edit CHAR(1) NOT NULL DEFAULT 'N',
-    //  cal_can_delete CHAR(1) NOT NULL DEFAULT 'N',
-    //  cal_can_approve CHAR(1) NOT NULL DEFAULT 'N',
-    //  PRIMARY KEY ( cal_login, cal_other_user )
-    //);
-    //
-    //CREATE TABLE webcal_access_function (
-    //  cal_login VARCHAR(50) NOT NULL,
-    //  /* a string of 'Y' or 'N' for the various functions */
-    //  cal_permissions VARCHAR(64) NOT NULL,
-    //  PRIMARY KEY ( cal_login )
-    //);
-
 
 
     // Global variable used to cache permissions
