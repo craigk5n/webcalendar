@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 12-21-2005
+# Translation last updated on 01-07-2006
 
 
 ###############################################
@@ -34,23 +34,36 @@ charset: iso-8859-1
 ###############################################
 # Page: access.php
 #
+You are not authorized: You are not authorized
 Database error: Database error
 User Access Control: User Access Control
 Admin: Admin
-Calendar: Calendar
-View Event: View Event
-Edit Event: Edit Event
-Delete Event: Delete Event
-Approve/Reject Event: Approve/Reject Event
 Cancel: Cancel
 Save: Save
+Assign Other User Access: Assign Other User Access
+Grant Other User Access: Grant Other User Access
 DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
+Go: Go
+Calendar: Calendar
+View Event: View Event
+Type: Type
+View: View
+Edit: Edit
+Delete: Delete
+Approve/Reject: Approve/Reject
+Events: Events
+Tasks: Tasks
+Journals: Journals
+Can Invite: Can Invite
+Can Email: Can Email
+Public: Public
+Confidential: Confidential
+Private: Private
 
 
 ###############################################
 # Page: activity_log.php
 #
-You are not authorized: You are not authorized
 Activity Log: Activity Log
 User: User
 Date: Date
@@ -72,7 +85,6 @@ Reminder sent: Reminder sent
 Attachment: Attachment
 Comment: Comment
 Previous: Previous
-Events: Events
 Next: Next
 
 
@@ -126,7 +138,6 @@ fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
 Fonts: Fonts
 custom-script-help: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
 Custom script/stylesheet: Custom script/stylesheet
-Edit: Edit
 custom-header-help: Allows a custom HTML snippet to be included in the top of every page.
 Custom header: Custom header
 custom-trailer-help: Allows a custom HTML snippet to be included at the end of every page.
@@ -389,8 +400,10 @@ Your assistants: Your assistants
 #
 Add: Add
 Category Name: Category Name
+Category Icon: Category Icon
 Global: Global
-Delete: Delete
+Add Icon to Category: Add Icon to Category
+gif 3kb max: gif 3kb max
 Are you sure you want to delete this entry?: Are you sure you want to delete this entry?
 Add New Category: Add New Category
 
@@ -398,8 +411,7 @@ Add New Category: Add New Category
 ###############################################
 # Page: catsel.php
 #
-TASK CATEGORIES: TASK CATEGORIES
-EVENT CATEGORIES: EVENT CATEGORIES
+ENTRY CATEGORIES: ENTRY CATEGORIES
 AVAILABLE CATEGORIES: AVAILABLE CATEGORIES
 Remove: Remove
 Global Category: Global Category
@@ -438,6 +450,7 @@ Removed: Removed
 ###############################################
 # Page: edit_entry.php
 #
+You are not authorized to edit this task: You are not authorized to edit this task
 hours ahead of you: hours ahead of you
 hours behind you: hours behind you
 is in a different timezone than you are. Currently: is in a different timezone than you are. Currently
@@ -453,9 +466,6 @@ full-description-help: This should complete details of the event.  This informat
 Full Description: Full Description
 access-help: Specifies the access level of the event.<br /> <em>Public</em>: Everyone can see the full details of the event.  <br /><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: Access
-Public: Public
-Private: Private
-Confidential: Confidential
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
 Priority: Priority
 Low: Low
@@ -464,9 +474,13 @@ High: High
 category-help: Specifies the category of the event.
 Category: Category
 Use the Edit button to make changes.: Use the Edit button to make changes.
+percent-help: Task completion percentage for this user
+Percent Complete: Percent Complete
+All Percentages: All Percentages
 location-help: Event location 
 Location: Location
 date-help: Specifies the date of the event.
+Start Date: Start Date
 Untimed event: Untimed event
 Timed event: Timed event
 All day event: All day event
@@ -476,14 +490,17 @@ am: am
 pm: pm
 duration-help: Specifies the duration (in hours;minutes) of the event.  <br /><em>This field can be left blank.</em>
 end-time-help: Specifies the time the event is expected to end.
-days: days
+Start Time: Start Time
+Due Date: Due Date
+Due Time: Due Time
+before task is due: before task is due
 before event: before event
+days: days
 participants-help: Lists the participants of this entry.
 Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: External Participants
 repeat-type-help: Select how often the event should repeat.<em>Monthly (by day)</em> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <em>Monthly (by date)</em> allows an event to repeat on the same day of the month.
-Type: Type
 Daily: Daily
 Weekly: Weekly
 Monthly: Monthly
@@ -631,35 +648,6 @@ Are you sure you want to delete this report?: Are you sure you want to delete th
 # Page: edit_report_handler.php
 #
 Variable N not found: Variable N not found
-
-
-###############################################
-# Page: edit_task.php
-#
-You are not authorized to edit this task: You are not authorized to edit this task
-Edit Task: Edit Task
-Add Task: Add Task
-percent-help: Task completion percentage for this user
-Percent Complete: Percent Complete
-All Percentages: All Percentages
-Completed Date: Completed Date
-Start Date: Start Date
-Start Time: Start Time
-Due Date: Due Date
-Due Time: Due Time
-before task is due: before task is due
-Are you sure you want to delete this task?: Are you sure you want to delete this task?
-Delete task: Delete task
-
-
-###############################################
-# Page: edit_task_handler.php
-#
-A task has been canceled for you by: A task has been canceled for you by
-A new task has been assigned to you by: A new task has been assigned to you by
-A task has been updated by: A task has been updated by
-to accept or reject this task: to accept or reject this task
-to view this task: to view this task
 
 
 ###############################################
@@ -1016,7 +1004,6 @@ No matches found: No matches found
 # Page: select_user.php
 #
 View Another User's Calendar: View Another User's Calendar
-Go: Go
 
 
 ###############################################
@@ -1082,9 +1069,16 @@ No users for this view: No users for this view
 # Page: view_entry.php
 #
 Status: Status
+Accepted: Accepted
+Needs-Action: Needs-Action
+Declined: Declined
 day: day
 minute: minute
+before due time: before due time
+Percentage Complete: Percentage Complete
 External User: External User
+Update Task Percentage: Update Task Percentage
+Update: Update
 Attachments: Attachments
 comments: comments
 Show: Show
@@ -1107,6 +1101,11 @@ This will add the entry to your calendar.: This will add the entry to your calen
 Email all participants: Email all participants
 Show activity log: Show activity log
 Hide activity log: Hide activity log
+Journal created: Journal created
+Journal approved: Journal approved
+Journal rejected: Journal rejected
+Journal updated: Journal updated
+Journal deleted: Journal deleted
 Export this entry to: Export this entry to
 
 
@@ -1114,24 +1113,6 @@ Export this entry to: Export this entry to
 # Page: view_r.php
 #
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
-
-
-###############################################
-# Page: view_task.php
-#
-Invalid task id: Invalid task id
-Accepted: Accepted
-Needs-Action: Needs-Action
-Declined: Declined
-before due time: before due time
-Percentage Complete: Percentage Complete
-Update Task Percentage: Update Task Percentage
-Update: Update
-Edit task: Edit task
-This will delete this task for all users.: This will delete this task for all users.
-Copy task: Copy task
-This will delete the task from your calendar.: This will delete the task from your calendar.
-Export this task to: Export this task to
 
 
 ###############################################
@@ -1144,6 +1125,7 @@ New Entry: New Entry
 ###############################################
 # Page: includes/access.php
 #
+Edit Event: Edit Event
 Day View: Day View
 Week View: Week View
 Month View: Month View
@@ -1354,12 +1336,6 @@ File type does not match Import Format: File type does not match Import Format
 
 
 ###############################################
-# Page: includes/js/tasks.php
-#
-You have not entered a Category Name: You have not entered a Category Name
-
-
-###############################################
 # Page: includes/classes/Doc.class
 #
 bytes: bytes
@@ -1405,6 +1381,7 @@ Connection Successful: Connection Successful
 Please go to next page to continue installation: Please go to next page to continue installation
 Failure Reason: Failure Reason
 Correct your entries or click the <b>Create New</b> button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
+You must manually create database: You must manually create database
 Correct your entries and try again: Correct your entries and try again
 Timezone Conversion Successful: Timezone Conversion Successful
 Error Converting Timezone: Error Converting Timezone
