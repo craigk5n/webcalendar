@@ -183,6 +183,14 @@ function do_v11b_updates () {
    }
    dbi_free_result ( $res );
  }
+
+ //update LANGUAGE settings from Browser-Defined to none
+ dbi_query ("UPDATE webcal_config  SET cal_value = 'none'" .
+    " WHERE cal_setting = 'LANGUAGE' AND cal_value = 'Browser-defined'");
+
+ dbi_query ("UPDATE webcal_user_pref  SET cal_value = 'none'" .
+    " WHERE cal_setting = 'LANGUAGE' AND cal_value = 'Browser-defined'");
+				 
  //clear old category values
  dbi_query ( "UPDATE webcal_entry_user SET cal_category = NULL");  
  //mark existing exclusions as new exclusion type
