@@ -107,12 +107,8 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
      " ) VALUES ( " . implode ( ", ", $values ) . " )";
    } 
  }
- $type = getValue ( 'type' );
- if ( ! empty ( $type ) && ( $type == 'T' || $type == 'N' ) ) {
-   $view_type = "view_task";
- } else {
-   $view_type = "view_entry";  
- }
+ $view_type = "view_entry";  
+
   
  if ( ! dbi_query ( $sql ) ) {
     $error = translate ( "Database error" ) . ": " . dbi_error ();
@@ -140,7 +136,6 @@ print_header($INC);
 
 <input type="hidden" name="date" value="<?php echo $date?>" />
 <input type="hidden" name="id" value="<?php echo $id?>" />
-<input type="hidden" name="type" value="<?php echo $type?>" />
 
 <table border="0" cellpadding="5">
 <tr style="vertical-align:top;"><td style="font-weight:bold;">
@@ -153,7 +148,7 @@ print_header($INC);
       <input  readonly=""type="text" name="catnames" 
      value="<?php echo $catNames ?>"  size="75" 
     onclick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/>
-		<br />
+    <br />
     <?php if ( $globals_found) echo "*" . translate("Global Categories can not be changed")?>
    <input  type="hidden" name="cat_id" id="entry_categories" value="<?php echo $catList ?>" />
      </td></tr>
