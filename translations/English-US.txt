@@ -34,36 +34,23 @@ charset: iso-8859-1
 ###############################################
 # Page: access.php
 #
-You are not authorized: You are not authorized
 Database error: Database error
 User Access Control: User Access Control
 Admin: Admin
-Cancel: Cancel
-Save: Save
-Assign Other User Access: Assign Other User Access
-Grant Other User Access: Grant Other User Access
-DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
-Go: Go
 Calendar: Calendar
 View Event: View Event
-Type: Type
-View: View
-Edit: Edit
-Delete: Delete
-Approve/Reject: Approve/Reject
-Events: Events
-Tasks: Tasks
-Journals: Journals
-Can Invite: Can Invite
-Can Email: Can Email
-Public: Public
-Confidential: Confidential
-Private: Private
+Edit Event: Edit Event
+Delete Event: Delete Event
+Approve/Reject Event: Approve/Reject Event
+Cancel: Cancel
+Save: Save
+DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 
 
 ###############################################
 # Page: activity_log.php
 #
+You are not authorized: You are not authorized
 Activity Log: Activity Log
 User: User
 Date: Date
@@ -85,6 +72,7 @@ Reminder sent: Reminder sent
 Attachment: Attachment
 Comment: Comment
 Previous: Previous
+Events: Events
 Next: Next
 
 
@@ -138,6 +126,7 @@ fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
 Fonts: Fonts
 custom-script-help: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
 Custom script/stylesheet: Custom script/stylesheet
+Edit: Edit
 custom-header-help: Allows a custom HTML snippet to be included in the top of every page.
 Custom header: Custom header
 custom-trailer-help: Allows a custom HTML snippet to be included at the end of every page.
@@ -404,6 +393,7 @@ Category Icon: Category Icon
 Global: Global
 Add Icon to Category: Add Icon to Category
 gif 3kb max: gif 3kb max
+Delete: Delete
 Are you sure you want to delete this entry?: Are you sure you want to delete this entry?
 Add New Category: Add New Category
 
@@ -466,6 +456,9 @@ full-description-help: This should complete details of the event.  This informat
 Full Description: Full Description
 access-help: Specifies the access level of the event.<br /> <em>Public</em>: Everyone can see the full details of the event.  <br /><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: Access
+Public: Public
+Private: Private
+Confidential: Confidential
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
 Priority: Priority
 Low: Low
@@ -501,6 +494,7 @@ Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: External Participants
 repeat-type-help: Select how often the event should repeat.<em>Monthly (by day)</em> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <em>Monthly (by date)</em> allows an event to repeat on the same day of the month.
+Type: Type
 Daily: Daily
 Weekly: Weekly
 Monthly: Monthly
@@ -1004,6 +998,7 @@ No matches found: No matches found
 # Page: select_user.php
 #
 View Another User's Calendar: View Another User's Calendar
+Go: Go
 
 
 ###############################################
@@ -1125,7 +1120,6 @@ New Entry: New Entry
 ###############################################
 # Page: includes/access.php
 #
-Edit Event: Edit Event
 Day View: Day View
 Week View: Week View
 Month View: Month View
@@ -1381,7 +1375,6 @@ Connection Successful: Connection Successful
 Please go to next page to continue installation: Please go to next page to continue installation
 Failure Reason: Failure Reason
 Correct your entries or click the <b>Create New</b> button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
-You must manually create database: You must manually create database
 Correct your entries and try again: Correct your entries and try again
 Timezone Conversion Successful: Timezone Conversion Successful
 Error Converting Timezone: Error Converting Timezone

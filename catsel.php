@@ -12,13 +12,8 @@ if ( $CATEGORIES_ENABLED == "N" ) {
 }
 
 $form = getGetValue ( 'form' );
-$type = getGetValue ( 'type' );
-if ( ! empty ( $form ) && ( $form == 'edittaskform' || 
-  $type == 'T' ) ) {
-  $header_text = translate("TASK CATEGORIES");
-} else { 
-  $header_text = translate("EVENT CATEGORIES");
-}
+$header_text = translate("ENTRY CATEGORIES");
+
 $catNames = implode("," , $categories);
 $catList = implode(",", array_keys($categories) );
 $eventcats = explode("," , $cats);
