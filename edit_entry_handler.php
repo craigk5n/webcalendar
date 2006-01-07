@@ -23,8 +23,19 @@ $old_id = ( ! empty ( $parent ) ? $parent : $old_id );
 $name = getPostValue ( 'name' );
 $description = getPostValue ( 'description' );
 $cat_id = getPostValue ( 'cat_id' );
+$timetype = getPostValue ( 'timetype' );
+
 
 // Ensure all time variables are not empty
+if ( empty ( $cal_hour ) ) $cal_hour = 0;
+if ( empty ( $cal_minute ) ) $cal_minute = 0;
+
+if ( empty ( $due_hour ) ) $due_hour = 0;
+if ( empty ( $due_minute ) ) $due_minute = 0;
+
+if ( empty ( $percent ) ) $percent = 0;
+
+if ( empty ( $timetype ) ) $timetype = 'T';
 if ( empty ( $ampm ) ) $ampm = 'pm';
 if ( empty ( $hour ) ) $hour = 0;
 if ( empty ( $minute ) ) $minute = 0;
@@ -66,6 +77,23 @@ if ( $timetype == 'T' )  {
       $hour += 12;
     }
   }
+  if ( $eType == 'task' && $TIME_FORMAT == '12' && $due_hour < 12 ) {
+    if ( $dampm == 'pm' )
+     $due_hour += 12;
+  } elseif ($TIME_FORMAT == '12' && $due_hour == '12' && $dampm == 'am' ) {
+    $due_hour = 0;
+  }
+  if ( $due_hour > 0  &&  $TIME_FORMAT == '12' ) {
+    $dampmt = $dampm;
+        if ($due_hour > 12 && $dampm == 'am') {
+      $dampmt = 'pm';
+    }
+    $due_hour %= 12;
+    if ( $dampmt == 'pm' ) {
+      $due_hour += 12;
+    }
+  }
+
 
   // Use end times
   if ( $TIMED_EVT_LEN == 'E') {
@@ -138,6 +166,18 @@ if ( $timetype == "U" ) {
 // Combine all values to create event start date/time - User Time
 $eventstart = mktime ( $hour, $minute, 0, $month, $day, $year );
 
+if ( $eType == 'task' ) {
+  // Combine all values to create event due date/time - User Time
+  $eventdue = mktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
+
+  // Combine all values to create completed date 
+  if ( ! empty ( $complete_year )  && ! empty ( $complete_month ) &&
+    ! empty ( $complete_day ) ) 
+    $eventcomplete =  sprintf( "%04d%02d%02d" , $complete_year, 
+      $complete_month, $complete_day );
+} else {
+  $eventdue = $eventstart; //just keeps things simple later on 
+}
 
 //Create event stop from event  duration/end values
 // Note: for any given event, either end times or durations are 0
@@ -157,6 +197,7 @@ if ( $timetype == "T" ) { // All other types are time independent
   $eventstart -= ( $tz_offset[0] * 3600 );
   
   // Adjust eventstop  by Timezone offset to get GMT
+  $eventdue -= ( $tz_offset[0] * 3600 );
   $eventstop -= ( $tz_offset[0] * 3600 );
 }
 
@@ -176,7 +217,7 @@ if ( $timetype == "T" && $duration < 0 ) {
 //   - user is admin
 //   - user created event
 //   - user is participant
-$can_edit = false;
+$can_edit = $can_doall = false;
 // value may be needed later for recreating event
 $old_create_by = ( ! empty ( $user )? $user : '');
 if ( empty ( $id ) ) {
@@ -213,7 +254,10 @@ if ( empty ( $error ) && ! $can_edit ) {
   } else
     $error = translate("Database error") . ": " . dbi_error ();
 }
-
+//check UAC
+if ( access_is_enabled () ) {
+  $can_edit  = $can_doall = $can_edit || access_can_edit_user_calendar ( $old_create_by );
+} 
 if ( ! $can_edit && empty ( $error ) ) {
   $error = translate ( "You are not authorized" );
 }
@@ -338,13 +382,14 @@ if ( empty ( $error ) ) {
     }
   } else {
     $newevent = false;
-    // save old status values of participants
-    $sql = "SELECT cal_login, cal_status FROM webcal_entry_user " .
-      "WHERE cal_id = $id ";
+    // save old  values of participants
+    $sql = "SELECT cal_login, cal_status, cal_percent " .
+      "FROM webcal_entry_user WHERE cal_id = $id ";
     $res = dbi_query ( $sql );
     if ( $res ) {
       for ( $i = 0; $tmprow = dbi_fetch_row ( $res ); $i++ ) {
         $old_status[$tmprow[0]] = $tmprow[1]; 
+        $old_percent[$tmprow[0]] = $tmprow[2];
       }
       dbi_free_result ( $res );
     } else {
@@ -371,8 +416,9 @@ if ( empty ( $error ) ) {
 
   $sql = "INSERT INTO webcal_entry ( cal_id, " .
     ( $old_id > 0 ? " cal_group_id, " : "" ) .
-    "cal_create_by, cal_date, " .
-    "cal_time, cal_mod_date, cal_mod_time, cal_duration, cal_priority, " .
+    "cal_create_by, cal_date, cal_time, " .
+    ( ! empty ( $eventcomplete)? "cal_completed, ": "" ) .
+    "cal_due_date, cal_due_time, cal_mod_date, cal_mod_time, cal_duration, cal_priority, " .
     "cal_access, cal_type, cal_name, cal_description, cal_location ) " .
     "VALUES ( $id, " .
     ( $old_id > 0 ? " $old_id, " : "" ) .
@@ -386,15 +432,28 @@ if ( empty ( $error ) ) {
   } else {
     $sql .= "-1, ";
   }
+  if ( ! empty ( $eventcomplete ) )  {
+    $sql .= $eventcomplete . ", ";
+  }  
+  $sql .= date ( "Ymd", $eventdue ) . ", ";
+  $sql .= date ( "His", $eventdue ) . ", ";
   $sql .= gmdate ( "Ymd" ) . ", " . gmdate ( "Gis" ) . ", ";
   $sql .= sprintf ( "%d, ", $duration );
   $sql .= ( ! empty ( $priority ) ? sprintf ( "%d, ", $priority ) : "2," );
   $sql .= empty ( $access ) ? "'P', " : "'$access', ";
-  if ( ! empty ( $rpt_type ) && $rpt_type != 'none' ) {
+  if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'event' ) {
     $sql .= "'M', ";
-  } else {
+  } else if ( $eType == 'event' ) {
     $sql .= "'E', ";
-  }
+  }  else if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'task' ) {
+    $sql .= "'N', ";
+  } else if ( $eType == 'task' ) {
+    $sql .= "'T', ";
+  }  else if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'journal' ) {
+    $sql .= "'O', "; 
+  } else if ( $eType == 'journal' ) {
+    $sql .= "'J', ";
+  }                
 
   if ( strlen ( $name ) == 0 ) {
     $name = translate("Unnamed Event");
@@ -417,6 +476,7 @@ if ( empty ( $error ) ) {
   }
 
   // log add/update
+ //TODO fix for tasks
   activity_log ( $id, $login, ($is_assistant || $is_nonuser_admin ? $user : $login),
     $newevent ? LOG_CREATE : LOG_UPDATE, "" );
   
@@ -641,7 +701,7 @@ if ( empty ( $error ) ) {
         user_load_variables ( $old_participant, "temp" );
         
         
-        if ( $old_participant != $login && strlen ( $tempemail ) &&
+        if ( $old_participant != $login && ! empty ( $tempemail ) &&
           $do_send == "Y" && $SEND_EMAIL != "N" ) {
 
           // Want date/time in user's timezone
@@ -715,8 +775,8 @@ if ( empty ( $error ) ) {
       // keep the old status if no email will be sent
       $send_user_mail = ( empty ( $old_status[$participants[$i]] ) ||
         $entry_changed ) ?  true : false;
-      $tmp_status = ( ! empty ( $old_status[$participants[$i]] ) && ! $send_user_mail ) ?
-        $old_status[$participants[$i]] : "W";
+      $tmp_status = ( ! empty ( $old_status[$participants[$i]] ) && ! $send_user_mail ) ||
+        $can_doall ? $old_status[$participants[$i]] : "W";
       $status = ( $participants[$i] != $login && 
         boss_must_approve_event ( $login, $participants[$i] ) && 
         $REQUIRE_APPROVALS == "Y" && ! $is_nonuser_admin ) ?
@@ -769,7 +829,7 @@ if ( empty ( $error ) ) {
         user_load_variables ( $participants[$i], "temp" );
         if ( $participants[$i] != $login && 
           boss_must_be_notified ( $login, $participants[$i] ) && 
-          strlen ( $tempemail ) &&
+          ! empty ( $tempemail ) &&
           $do_send == "Y" && $send_user_mail && $SEND_EMAIL != "N" ) {
 
           // Want date/time in user's timezone
