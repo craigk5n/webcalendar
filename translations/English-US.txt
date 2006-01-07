@@ -1165,7 +1165,7 @@ View this task: View this task
 View this event: View this event
 This event is private: This event is private
 exceeds limit of XXX events per day: exceeds limit of XXX events per day
-You have XXX unapproved events: You have XXX unapproved events
+You have XXX unapproved entries: You have XXX unapproved entries
 January: January
 February: February
 March: March
