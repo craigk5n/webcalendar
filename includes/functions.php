@@ -1597,7 +1597,7 @@ function display_small_tasks ( $cat_id ) {
     "</th><th>" . translate ("Due" ) . "</th><th>&nbsp;%&nbsp;</th></tr>\n";
   foreach ( $task_list as $E )  {
     $cal_id = $E->getId();
-    $link = "<a href=\"view_task.php?" . $u_url ."id=" . $cal_id . "\"";
+    $link = "<a href=\"view_entry.php?" . $u_url ."id=" . $cal_id . "\"";
     $priority = $link  . " title=\"" . translate ( "Priority" ) . "\" >" . $E->getPriority() . "</a>";
     $name = $link  . " title=\"" . translate ( "Task Name" ) . "\" >". substr( $E->getName(), 0, 15 ) . "...</a>";
     $due_date = $link  . " title=\"" . translate ( "Task Due Date" ) . "\" >". 
@@ -1659,14 +1659,13 @@ function print_entry ( $event, $date ) {
   $linkid  = "pop$id-$key";
   $key++;
 
+  $cal_link = "view_entry.php";
     if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
       $cal_type = "task";
       $view_text = translate ( "View this task" );
-      $cal_link = "view_task.php";    
     } else {
       $cal_type = "event";
       $view_text = translate ( "View this event" );    
-      $cal_link = "view_entry.php";    
     }
     
   echo "<a title=\"" . $view_text . "\" class=\"$class\"" .
@@ -2297,7 +2296,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
           $until = $result[$i]->getRepeatEndDateTimeTS();
         } else { 
           //make sure all January dates will appear in small calendars
-          $until = mktime ( 0,0,0,2,1,$thisyear +1); 
+          $until = mktime ( 0,0,0,2,1, ($thisyear +1)); 
         }
         $rpt_count = 999; //some BIG number
         $jump = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear);
@@ -3369,14 +3368,13 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
   $linkid  = "pop$id-$key";
   $key++;
 
+    $cal_link = "view_entry.php";
     if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
     $cal_type = "task";
-    $cal_link = "view_task.php";
     $view_text  = translate ( "View this task" ); 
     $hour_arr[$ind] .= "<img src=\"task.gif\" class=\"bullet\" alt=\"*\" /> ";    
     } else {
     $cal_type = "event";
-    $cal_link = "view_entry.php";
     $view_text  = translate ( "View this event" );         
     if ( $event->isAllDay()  || $event->isUntimed()) {
       $hour_arr[$ind] .= "<img src=\"circle.gif\" class=\"bullet\" alt=\"*\" /> ";
@@ -3554,15 +3552,14 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $linkid  = "pop$id-$key";
   $key++;
 
+  $cal_link = "view_entry.php";
   if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
     $cal_type = "task";
-    $cal_link = "view_task.php";
     $view_text = translate ( "View this task" );
     $hour_arr[$ind] .= "<img src=\"task.gif\" class=\"bullet\" alt=\"*\" /> ";    
   } else {
     $cal_type = "event";
     $view_text = translate ( "View this task" );    
-    $cal_link = "view_entry.php";    
   }
 
   $hour_arr[$ind] .= "<a title=\"" . $view_text .
