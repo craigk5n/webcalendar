@@ -1259,7 +1259,7 @@ class WebCalendar {
     define ( 'CAL_CAN_RJ', 256 ); //Private Journal
     define ( 'CAL_CAN_DOALL', 511 );//Can access all types and levels
     /**#@-*/
-				
+        
     // The following pages will be handled differently than the others
     // since they have different uses.  For example, edit_user.php
     // adds a user when the user is an admin.  If the user is not an
@@ -1268,6 +1268,7 @@ class WebCalendar {
     // these files.
     $GLOBALS['page_lookup_ex'] = array (
       "colors.php" => 1,
+      "icons.php" => 1,
       "index.php" => 1,
       "edit_template.php" => 1,
       "edit_user.php" => 1,
