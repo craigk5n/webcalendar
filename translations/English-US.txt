@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 01-07-2006
+# Translation last updated on 01-09-2006
 
 
 ###############################################
@@ -1256,6 +1256,9 @@ Spanish: Spanish
 Swedish: Swedish
 Turkish: Turkish
 Welsh: Welsh
+task: task
+event: event
+journal: journal
 
 
 ###############################################
