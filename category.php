@@ -72,7 +72,6 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   $ENABLE_ICON_UPLOADS == "Y" || $is_admin )) { ?>
  <?php echo translate ( 'Add Icon to Category' ) . "<br />&nbsp;&nbsp;&nbsp;".
    translate ( "Upload" ) . "&nbsp;<span style=\"font-size:small;\">(" . translate ("gif 3kb max") . ")</span> :"; ?>
- <input type="hidden" name="MAX_FILE_SIZ" value="3000" />
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" /> 
  <br />
  <br />
