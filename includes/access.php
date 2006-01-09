@@ -29,7 +29,6 @@ function access_is_enabled ()
   return ( ! empty ( $UAC_ENABLED ) && $UAC_ENABLED == 'Y' );
 }
 
-
 /**
  * Return the name of a specific function.
  * @param int $function the function (ACCESS_DAY, etc.)
@@ -121,7 +120,7 @@ function access_load_user_permissions ( $user )
     return $access_other_cals;
 
   $sql = "SELECT cal_login, cal_other_user, " .
-    "cal_can_view, cal_can_edit, cal_can_delete, cal_can_approve, " .
+    "cal_can_view, cal_can_edit, cal_can_delete, cal_can_approve " .
     "FROM webcal_access_user WHERE cal_login = '$user' OR cal_login = '__default__' " .
     "ORDER BY cal_login ";
   $res = dbi_query ( $sql );
