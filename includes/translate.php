@@ -350,4 +350,11 @@ function etooltip ( $str ) {
     // translate("Swedish")
     // translate("Turkish")
     // translate("Welsh")
+		
+//General purpose translations that may be used elsewhere
+//as variables and not picked up by update_translation.pl
+   // translate ( "task" );
+   // translate ( "event" );
+   // translate ( "journal" );
+	 
 ?>
