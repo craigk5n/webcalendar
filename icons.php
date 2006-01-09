@@ -1,11 +1,16 @@
 <?php
 include_once 'includes/init.php';
-$INC = '';
-print_header($INC,'','',true);
-
 $icon_path = 'icons/';
-  
-if(!is_dir($icon_path)) echo "window.close ();\n";
+
+$can_edit = ( is_dir($icon_path) && ( ! empty ( $ENABLE_ICON_UPLOADS ) &&
+  $ENABLE_ICON_UPLOADS == "Y" || $is_admin ));
+	
+if ( ! $can_edit ) do_redirect ( "category.php" );
+
+print_header('','','',true);
+
+$icons = array();
+
 if($d = dir($icon_path)) {
   while (false !== ($entry = $d->read())) {
     if(substr($entry,-3,3) == "gif" ) {

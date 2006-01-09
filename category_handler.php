@@ -2,6 +2,7 @@
 include_once 'includes/init.php';
 
 $icon_path = "icons/";
+$icon_max_size = '3000';
 
 // does the category belong to the user?
 $is_my_event = false;
@@ -97,24 +98,32 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
       $error = translate ("Database error") . ": " . dbi_error();
     }
   }
-  //Save icon if uploaded
-  if ( ! empty ( $file['tmp_name'] ) && $file['type'] == 'image/gif' ){
-    //$icon_props = getimagesize ( $file['tmp_name']  );
-    //print_r ($icon_props );
-    $path_parts = pathinfo( $_SERVER['SCRIPT_FILENAME']);
-    $catIcon =  $icon_path . "cat-" . $id . ".gif";
-    $fullIcon = $path_parts['dirname'] . "/" .$catIcon;
-    $bakIcon = $icon_path . "cat-" . date ("YmdHis" ) . ".gif";
-    if ( file_exists ( $catIcon ) )
-      rename ( $catIcon, $bakIcon );
-    $file_result = move_uploaded_file ( $file['tmp_name'] , $fullIcon );
-    //echo "Upload Result:" . $file_result;
-  }
-  //Copy icon if local file specified
-  $urlname = getPostvalue ( 'urlname' );
-  if ( ! empty ( $urlname ) && file_exists ( $icon_path . $urlname  )  ) {
-    copy ( $icon_path . $urlname, $icon_path . "cat-" . $id . ".gif" );
-  }
+	if (  is_dir($icon_path) && ( ! empty ( $ENABLE_ICON_UPLOADS ) && 
+	  $ENABLE_ICON_UPLOADS == "Y" || $is_admin ) ) { 
+		//Save icon if uploaded
+		if ( ! empty ( $file['tmp_name'] ) && $file['type'] == 'image/gif' &&
+		  $file['size'] <= $icon_max_size ){
+			//$icon_props = getimagesize ( $file['tmp_name']  );
+			//print_r ($icon_props );
+			$path_parts = pathinfo( $_SERVER['SCRIPT_FILENAME']);
+			$catIcon =  $icon_path . "cat-" . $id . ".gif";
+			$fullIcon = $path_parts['dirname'] . "/" .$catIcon;
+			$bakIcon = $icon_path . "cat-" . date ("YmdHis" ) . ".gif";
+			if ( file_exists ( $catIcon ) )
+				rename ( $catIcon, $bakIcon );
+			$file_result = move_uploaded_file ( $file['tmp_name'] , $fullIcon );
+			//echo "Upload Result:" . $file_result;
+		} else if ( ! empty ( $file['tmp_name'] ) && $file['size'] > $icon_max_size ){
+		  $error = translate ( "File size exceeds maximum" ) ;
+		} else if ( ! empty ( $file['tmp_name'] ) && $file['type'] != 'image/gif' ){
+		  $error = translate ( "File is not a gif image" ) ;
+		}
+		//Copy icon if local file specified
+		$urlname = getPostvalue ( 'urlname' );
+		if ( ! empty ( $urlname ) && file_exists ( $icon_path . $urlname  )  ) {
+			copy ( $icon_path . $urlname, $icon_path . "cat-" . $id . ".gif" );
+		}
+	}
 }
   
 if ( empty ( $error ) )

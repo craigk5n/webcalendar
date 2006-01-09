@@ -264,6 +264,8 @@ rss-enabled-help: Specifies if a user's calendar can be obtained from a RSS feed
 Enable RSS feed: Enable RSS feed
 categories-enabled-help: Enables support for event categories.
 Categories enabled: Categories enabled
+icon_upload-enabled-help: If enabled, users can upload category icons
+Category Icon Upload enabled: Category Icon Upload enabled
 display-tasks-help: Display small task window on month and day calendar
 Display small task list: Display small task list
 display-tasks-in-grid-help: Display tasks in calendars along with events
@@ -398,6 +400,13 @@ Search for existing icons: Search for existing icons
 Delete: Delete
 Are you sure you want to delete this entry?: Are you sure you want to delete this entry?
 Add New Category: Add New Category
+
+
+###############################################
+# Page: category_handler.php
+#
+File size exceeds maximum: File size exceeds maximum
+File is not a gif image: File is not a gif image
 
 
 ###############################################

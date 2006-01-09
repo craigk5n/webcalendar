@@ -619,6 +619,12 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <label><input type="radio" name="admin_CATEGORIES_ENABLED" value="N" <?php if ( $s["CATEGORIES_ENABLED"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
 
+ <tr><td class="tooltip" title="<?php etooltip("icon_upload-enabled-help")?>">
+  <?php etranslate("Category Icon Upload enabled")?>:</td><td>
+  <label><input type="radio" name="admin_ENABLE_ICON_UPLOADS" value="Y" <?php if ( $s["ENABLE_ICON_UPLOADS"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_ENABLE_ICON_UPLOADS" value="N" <?php if ( $s["ENABLE_ICON_UPLOADS"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>
+ 
 <!-- Display Task Preferences -->
  <tr><td class="tooltip" title="<?php etooltip("display-tasks-help")?>">
   <?php etranslate("Display small task list")?>:</td><td>
