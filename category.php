@@ -1,12 +1,12 @@
-<table>
-  <tr>
-    <td><?php
+<?php
 include_once 'includes/init.php';
 
 // load user and global cats
 load_user_categories ();
 
 $error = "";
+
+$icon_path = "icons/";
 
 if ( $CATEGORIES_ENABLED == "N" ) {
   send_to_preferred_view ();
@@ -44,14 +44,14 @@ if ( empty ( $add ) )
 if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   $button = translate("Add");
   ?>
-  <form action="category_handler.php" method="post"  enctype="multipart/form-data">
+  <form action="category_handler.php" method="post" name="catform" enctype="multipart/form-data">
   <?php
   if ( ! empty ( $id ) ) {
     echo "<input name=\"id\" type=\"hidden\" value=\"$id\" />";
     $button = translate("Save");
     $catname = $categories[$id];
     $catowner = $category_owners[$id];
-    $catIcon = "icons/cat-" . $id . ".gif";
+    $catIcon = $icon_path . "cat-" . $id . ".gif";
   } else {
     $catname = '';
   }
@@ -69,9 +69,16 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
       <label><input type="radio" name="isglobal" value="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>
   <?php } ?>
   <br /><br />
- <?php echo translate ( 'Add Icon to Category' ) . " <span style=\"font-size:small;\">(" . translate ("gif 3kb max") . ")</span> :"; ?>
+ <?php echo translate ( 'Add Icon to Category' ) . "<br />&nbsp;&nbsp;&nbsp;".
+   translate ( "Upload" ) . "&nbsp;<span style=\"font-size:small;\">(" . translate ("gif 3kb max") . ")</span> :"; ?>
  <input type="hidden" name="MAX_FILE_SIZE" value="3000" />
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" /> 
+ <br />
+ <br />
+  <input type="hidden" name="urlname" size="50"   />
+  &nbsp;&nbsp;&nbsp;<input type="button" value="<?php 
+    etranslate ("Search for existing icons", true);?>" onclick="window.open('icons.php', 'icons','dependent,menubar=no,scrollbars=n0,height=300,width=400, outerHeight=320,outerWidth=420');" />
+  &nbsp;&nbsp;&nbsp;<img src="" name="urlpic" id="urlpic" >
  <br /><br />
   <input type="submit" name="action" value="<?php echo $button;?>" />
   <?php if ( ! empty ( $id ) ) {  ?>
@@ -85,7 +92,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   if ( ! empty ( $categories ) ) {
     echo "<ul>";
     foreach ( $categories as $K => $V ) {
-      $catIcon = "icons/cat-" . $K . ".gif";
+      $catIcon = $icon_path. "cat-" . $K . ".gif";
       echo "<li>";
       if ( $category_owners[$K] == $login || $is_admin )
         echo "<a href=\"category.php?id=$K\">$V</a>";
@@ -115,6 +122,3 @@ if ( ! empty ( $error ) ) {
 <?php print_trailer(); ?>
 </body>
 </html>
-</td>
-  </tr>
-</table>
