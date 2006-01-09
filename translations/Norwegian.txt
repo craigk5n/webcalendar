@@ -20,7 +20,8 @@
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=1189754
 # Last update: 18 May 2005 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=1204204
-# 
+# Last update: 9 Jan 2006 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
+#  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=1400320
 
 
 ###############################################
@@ -472,6 +473,12 @@ Next year: Neste år
 This year: Dette året
 Last year: Forrige år
 Year before last: Året før forrige
+Next 14 days: Neste 14 dager
+Next 30 days: Neste 30 dager
+Next 60 days: Neste 60 dager
+Next 90 days: Neste 90 dager
+Next 180 days: Neste 180 dager
+Next 365 days: Neste 365 dager
 Invalid report id: Ugyldig rapport-ID
 Add Report: Legg til rapport
 Edit Report: Rediger rapport
@@ -924,6 +931,7 @@ Russian: Russisk
 Spanish: Spansk
 Swedish: Svensk
 Turkish: Tyrkisk
+Welsh: Walisisk
 
 
 ###############################################
