@@ -58,8 +58,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   ?>
   <?php etranslate("Category Name")?>: <input type="text" name="catname" size="20" value="<?php echo htmlspecialchars ( $catname ); ?>" />
   <br />
-  <?php 
-    if ( file_exists ( $catIcon ) ){
+  <?php if ( ! empty ( $catIcon ) && file_exists ( $catIcon ) ){
       echo "<br />" . translate ( 'Category Icon' ) . ":  <img src=\"$catIcon\" />\n";
     }
   ?>
@@ -69,17 +68,20 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
       <label><input type="radio" name="isglobal" value="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>
   <?php } ?>
   <br /><br />
+<?php if ( is_dir($icon_path) && ( ! empty ( $ENABLE_ICON_UPLOADS ) &&
+  $ENABLE_ICON_UPLOADS == "Y" || $is_admin )) { ?>
  <?php echo translate ( 'Add Icon to Category' ) . "<br />&nbsp;&nbsp;&nbsp;".
    translate ( "Upload" ) . "&nbsp;<span style=\"font-size:small;\">(" . translate ("gif 3kb max") . ")</span> :"; ?>
- <input type="hidden" name="MAX_FILE_SIZE" value="3000" />
+ <input type="hidden" name="MAX_FILE_SIZ" value="3000" />
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" /> 
  <br />
  <br />
   <input type="hidden" name="urlname" size="50"   />
-  &nbsp;&nbsp;&nbsp;<input type="button" value="<?php 
-    etranslate ("Search for existing icons", true);?>" onclick="window.open('icons.php', 'icons','dependent,menubar=no,scrollbars=n0,height=300,width=400, outerHeight=320,outerWidth=420');" />
-  &nbsp;&nbsp;&nbsp;<img src="" name="urlpic" id="urlpic" >
- <br /><br />
+	&nbsp;&nbsp;&nbsp;<input type="button" value="<?php 
+	  etranslate ("Search for existing icons", true);?>" onclick="window.open('icons.php', 'icons','dependent,menubar=no,scrollbars=n0,height=300,width=400, outerHeight=320,outerWidth=420');" />
+	&nbsp;&nbsp;&nbsp;<img src="" name="urlpic" id="urlpic" >
+	<br /><br />
+<?php } //end test of ENABLE_ICON_UPLOADS ?>
   <input type="submit" name="action" value="<?php echo $button;?>" />
   <?php if ( ! empty ( $id ) ) {  ?>
  <input type="submit" name="delete" value="<?php etranslate("Delete");?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?", true); ?>')" />
