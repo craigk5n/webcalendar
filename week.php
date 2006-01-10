@@ -69,8 +69,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
   $header[$i] = $weekdays[$i] . "<br />" .
-     month_short_name ( date ( "m", $days[$i] ) - 1 ) .
-     " " . date ( "d", $days[$i] );
+    date_to_str ( date ("Ymd",$days[$i]), $DATE_FORMAT_MD, false, true );
 }
 
 ?>
