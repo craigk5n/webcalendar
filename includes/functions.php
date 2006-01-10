@@ -2519,7 +2519,7 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
           $yret = array_merge ( $yret, $bymonthdayvalues );
         } else if ( ! empty ( $bydayvalues ) ) {
           $yret = array_merge ( $yret, $bydayvalues );      
-        } else {
+        } else if ( ! isset($byday) && ! isset($bymonthday)  ) {
           $yret[] = $cdate;      
         }
 
@@ -2711,6 +2711,7 @@ function get_byday ( $byday, $cdate, $type ='month' ) {
  $ldow = date( "w", $lday ); //day of week last day of $type
 
  foreach($byday as $day) {  
+  $byxxxDay = '';  
   $dayTxt = substr ( $day , -2, 2);
   $dayOffset = substr_replace ( $day, '', -2, 2);
   $dowOffset = ( ( -1 * $byday_values[$dayTxt] ) + 7 )  % 7; //SU=0, MO=6, TU=5...
@@ -2719,11 +2720,16 @@ function get_byday ( $byday, $cdate, $type ='month' ) {
    $dayOffsetDays = (( $dayOffset - 1 ) * 7 ); //1 = 0, 2 = 7, 3 = 14...      
    $forwardOffset = $byday_values[$dayTxt] - $fdow;
    if ($forwardOffset <0 ) $forwardOffset += 7;
-   $byxxxDay = mktime ( $hour, $minute,0, $month , 1 + $forwardOffset + $dayOffsetDays, $yr);
+   $domOffset = ( 1 + $forwardOffset + $dayOffsetDays );
+   if ( $domOffset <= $ditype ) {
+     $byxxxDay = mktime ( $hour, $minute,0, $month , $domOffset, $yr);
+     if ( $mth == date ("m",$byxxxDay ) ) 
    $ret[] = $byxxxDay;
+   }
   } else if ( is_numeric ($dayOffset) ){  //offset from end of $type
    $dayOffsetDays = (( $dayOffset + 1 ) * 7 ); //-1 = 0, -2 = 7, -3 = 14...
-   $byxxxDay = mktime ( $hour, $minute,0, $month +1, 0 - (( $ldow + $dowOffset ) %7 ) + $dayOffsetDays, $yr );                 
+   $byxxxDay = mktime ( $hour, $minute,0, $month +1, (0 - (( $ldow + $dowOffset ) %7 ) + $dayOffsetDays ), $yr );
+   if ( $mth == date ("m",$byxxxDay ) )                 
    $ret[] = $byxxxDay; 
   } else {
    if ( $type == 'daily' ) {
