@@ -1150,6 +1150,13 @@ Common Trailer: Common Trailer
 
 
 ###############################################
+# Page: includes/config.php
+#
+Fatal Error: Fatal Error
+Troubleshooting Help: Troubleshooting Help
+
+
+###############################################
 # Page: includes/date_formats.php
 #
 LANGUAGE DEFINED: LANGUAGE DEFINED

@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1401625: ERROR message not be translated (Partial fix)
  - Fixed bug 1401426: Adding event time defaults to first work hour
  - Fixed bug 1401537: 'German Date' not properly displayed at week.php
  - Fixed bug 1400836: patch for SQL errors in current CVS
