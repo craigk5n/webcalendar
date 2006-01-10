@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1398679: error in epeated event for 5th sunday
       1401625: ERROR message not be translated (Partial fix)
       1401426: Adding event time defaults to first work hour
       1401537: 'German Date' not properly displayed at week.php
