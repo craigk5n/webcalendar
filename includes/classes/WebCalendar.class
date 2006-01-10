@@ -919,7 +919,7 @@ class WebCalendar {
       $PUBLIC_ACCESS_CAN_ADD, $session_not_found, $PHP_AUTH_USER,
       $login, $PHP_SELF, $login_url, $login, $is_admin, $lastname,
       $firstname, $fullname, $user_email, $use_http_auth,
-      $login_login, $login_is_admin, $login_lastname,
+      $login_login, $login_is_admin, $login_lastname, $LANGUAGE,
       $login_firstname, $login_fullname, $login_email, $single_user,
       $not_auth, $readonly, $is_nonuser, $PROGRAM_VERSION;
 
@@ -1180,13 +1180,12 @@ class WebCalendar {
       }
     }
 
-    // We can't call translate() here because translate.php gets loaded
-    // after this include file :-(
-    // So, instead of an error message that may be in the wrong language,
-    // just redirect to some other page.
+    // An attempt will be made to translate
     if ( $not_auth ) {
-      die_miserable_death ( "You are not authorized" );
-      /* do_redirect ( "week.php" );*/
+      load_user_preferences();
+      $error = ( function_exists ( 'translate' )?
+        translate ( "You are not authorized" ) : "You are not authorized" );
+      die_miserable_death ( $error );
     }
   }
 

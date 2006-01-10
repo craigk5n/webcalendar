@@ -33,14 +33,33 @@
  *           file is included before some of the others, this function either
  *           goes here or we repeat this code in multiple files.
  */
-function die_miserable_death ( $error )
-{
-global $TROUBLE_URL;
-  echo "<html><head><title>WebCalendar: Fatal Error</title></head>\n" .
-    "<body><h2>WebCalendar Error</h2>\n" .
+function die_miserable_death ( $error ) {
+  global $TROUBLE_URL, $LANGUAGE, $APPLICATION_NAME;
+
+  // Make sure app name is set
+  $app_name =  ( ! empty ( $APPLICATION_NAME )? $APPLICATION_NAME : 'Title' );
+  
+  if ( function_exists ( 'translate' ) ){
+    if ( empty ( $LANGUAGE ) ) {
+      load_user_preferences();
+      
+    }
+    $app_name = translate ( $app_name );
+    $title = $app_name . ": " . translate ( "Fatal Error" );
+    $h2_label = $app_name . " " . translate ( "Error" );  
+    $trouble_label = translate ( "Troubleshooting Help" );
+  } else {
+    $app_name = "WebCalendar";
+    $title = $app_name . ": " . "Fatal Error";
+    $h2_label = $app_name . " " . "Error";  
+    $trouble_label = "Troubleshooting Help";
+  }
+    
+  echo "<html><head><title>$title</title></head>\n" .
+    "<body><h2>$h2_label</h2>\n" .
     "<p>$error</p>\n<hr />" .
     "<p><a href=\"$TROUBLE_URL\" target=\"_blank\">" .
-    "Troubleshooting Help</a></p></body></html>\n";
+    $trouble_label . "</a></p></body></html>\n";
   exit;
 }
 
