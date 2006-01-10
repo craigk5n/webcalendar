@@ -104,8 +104,12 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     $adjusted_start = get_datetime_add_tz ( $cal_date, $cal_time );
     $adjusted_due = get_datetime_add_tz ( $due_date, $due_time );
     
-    $cal_date = date ( "Ymd",$adjusted_start );
-    $cal_time = date (  "His", $adjusted_start );
+    //Don't adjust for All Day entries
+    //this could probably replace the code below at line 160
+    if ( $cal_time > 0 || ( $cal_time == 0 &&  $row[5] != 1440 ) ) {
+      $cal_date = date ( "Ymd",$adjusted_start );
+      $cal_time = date (  "His", $adjusted_start );
+    }
     $hour = floor($cal_time / 10000);
     $minute = ( $cal_time / 100 ) % 100;
   
@@ -321,7 +325,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
  //We'll use $WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR
  // As our starting and due times
  $cal_time = $WORK_DAY_START_HOUR . "0000";
- $hour = $WORK_DAY_START_HOUR;
+ //$hour = $WORK_DAY_START_HOUR;
  $minute = 0;
  $due_time = $WORK_DAY_END_HOUR . "0000";
  $due_hour = $WORK_DAY_END_HOUR;
@@ -366,7 +370,7 @@ if ( ! isset ( $hour ) )
   $hour = -1;
 if ( empty ( $duration ) )
   $duration = 0;
-if ( $duration == ( 24 * 60 ) ) {
+if ( $duration == ( 24 * 60 ) && $hour == 0 ) {
   $hour = $minute = $duration = "";
   $allday = "Y";
 } else
