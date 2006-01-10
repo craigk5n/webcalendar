@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1400836: patch for SQL errors in current CVS
  - Fixed bug 1400400: adding a task - header cannot be translated cpl.
  - Fixed bug 1365600: 'unapproved events' are not properly explained
  - Merged task files into entry files

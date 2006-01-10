@@ -1255,7 +1255,7 @@ function display_navigation( $name, $show_arrows=true ){
   echo "</span>\n";
   if ( $CATEGORIES_ENABLED == "Y" && (!$user || ($user == $login || $is_assistant ))) {
     echo "<br />\n<br />\n";
-    print_category_menu( 'day', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
+    print_category_menu( $name, sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
   }
  echo "</div></div><br />";
 }
@@ -1270,20 +1270,16 @@ if ( $DISPLAY_WEEKNUMBER == "Y" && ! $demo ) {
     echo "<th class=\"weekcell\" width\"5%\"></th>\n"; 
 }
 if ( $WEEK_START == 0 ) {
-  echo "<th class=\"weekend\"><a href=\"#\" onclick=\"visByClass('weekend','hide')\">" . 
-    translate('Sun') . "</a></th>\n";
+  echo "<th class=\"weekend\">" . translate('Sun') . "</a></th>\n";
 }
 echo '<th>' . translate('Mon') . "</th>\n";
 echo '<th>' . translate('Tue') . "</th>\n";
 echo '<th>' . translate('Wed') . "</th>\n";
 echo '<th>' . translate('Thu') . "</th>\n";
-echo "<th><a href=\"#\" onclick=\"visByClass('weekend')\">" . 
-  translate('Fri') . "</a></th>\n";
-echo "<th class=\"weekend\"><a href=\"#\" onclick=\"visByClass('weekend', 'hide')\">" . 
-  translate("Sat") . "</a></th>\n";
+echo "<th>" . translate('Fri') . "</th>\n";
+echo "<th class=\"weekend\">" . translate("Sat") . "</th>\n";
 if ( $WEEK_START == 1 ) {
-  echo "<th class=\"weekend\"><a href=\"#\" onclick=\"visByClass('weekend', 'hide')\">" . 
-    translate('Sun') . "</a></th>\n";
+  echo "<th class=\"weekend\">" . translate('Sun') . "</th>\n";
 }
 echo "</tr>\n";
 
@@ -2111,8 +2107,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
   //new multiple categories requires some checking to see if this this cat_id is
   //valid for this cal_id. It could be done with nested sql, but that may not work
   //for all databases. This might be quicker also.
+  $catlist = array(); 
   if ( $cat_id != '' ) {
-    $catlist = array();
     $sql = "SELECT cal_id FROM webcal_entry_categories WHERE  cat_id = $cat_id ";
     $res = dbi_query ( $sql );
     if ( $res ) {
@@ -2154,9 +2150,13 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
   $sql .= "webcal_entry.cal_id = webcal_entry_user.cal_id " .
     "AND webcal_entry_user.cal_status IN ('A','W') ";
 
-  if ( $cat_id != '' ) $sql .= "AND webcal_entry.cal_id IN ('" . implode ("','", $catlist) . "') ";
-  //if ( $cat_id != '' ) $sql .= "AND webcal_entry.cal_id = $catlist[0] ";
-
+  if (  count($catlist) > 0 ) {  
+    $sql .= "AND webcal_entry.cal_id IN ('" . implode ("','", $catlist) . "') ";
+  } else if ( $cat_id != '' ) {
+    //force no rows to be returned
+    $sql .= "AND 1 = 0 "; // no matching entries in category  
+  }
+ 
   if ( $is_task == false ) {
       $sql .= "AND webcal_entry.cal_type IN ('E','M')  ";
     } else {
