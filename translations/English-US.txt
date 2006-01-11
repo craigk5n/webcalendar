@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 01-10-2006
+# Translation last updated on 01-11-2006
 
 
 ###############################################
@@ -880,8 +880,8 @@ Approve/Confirm: Approve/Confirm
 Approve this entry?: Approve this entry?
 Reject: Reject
 Reject this entry?: Reject this entry?
-No unapproved events for: No unapproved events for
-Unapproved Events: Unapproved Events
+No unapproved entries for: No unapproved entries for
+Unapproved Entries: Unapproved Entries
 Not authorized: Not authorized
 
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * This file lists unapproved events for one or more users.
+ * This file lists unapproved entries for one or more users.
  *
  * Optional parameters in URL:
  * url=user specifies that we should only display unapproved
@@ -156,7 +156,7 @@ function list_unapproved ( $user ) {
   }
   if ( $count == 0  ) {
     echo "<p class=\"nounapproved\">" . 
-      translate("No unapproved events for") . "&nbsp;" . $temp_fullname . ".</p>\n";
+      translate("No unapproved entries for") . "&nbsp;" . $temp_fullname . ".</p>\n";
   } else {
     if ( ! empty ( $eventinfo ) ) echo $eventinfo;
   }
@@ -164,7 +164,7 @@ function list_unapproved ( $user ) {
 ?>
 
 <h2><?php 
- etranslate("Unapproved Events"); 
+ etranslate("Unapproved Entries"); 
  //if ( $user == '__public__' ) echo " - " . $PUBLIC_ACCESS_FULLNAME; 
 ?></h2>
 <?php
@@ -222,7 +222,7 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
 
 
 for ( $i = 0; $i < count ( $app_users ); $i++ ) {
-  // List unapproved events for this user.
+  // List unapproved entries for this user.
   list_unapproved ( $app_users[$i] );
 }
 
