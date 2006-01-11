@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1402931: Search error (using mssql)
  - Added support for BLOBs for MSSQL DB
  - Added support for BLOBs for postgreSQL DB
  - Fixed bug 1403070: Icalclient doubles external events
