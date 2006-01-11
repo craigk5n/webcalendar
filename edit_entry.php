@@ -175,7 +175,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
         $year = date ( "Y", $gmt );
       }
       // Set alterted date
-      $cal_date = sprintf("%04d%02d%02d",$year,$month,$day);
+    //  $cal_date = sprintf("%04d%02d%02d",$year,$month,$day);
     }
     if ( $time >= 0 ) {
       $hour = floor($time / 10000);
@@ -325,8 +325,6 @@ if ( $readonly == 'Y' || $is_nonuser ) {
  //We'll use $WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR
  // As our starting and due times
  $cal_time = $WORK_DAY_START_HOUR . "0000";
- //$hour = $WORK_DAY_START_HOUR;
- $minute = 0;
  $due_time = $WORK_DAY_END_HOUR . "0000";
  $due_hour = $WORK_DAY_END_HOUR;
  $due_minute = 0;
@@ -391,7 +389,7 @@ if ( empty ( $rpt_end_date ) )
   $rpt_end_date = 0;
 if ( empty ( $rpt_end_time ) )
   $rpt_end_time = 0;
-  
+
 if ( empty ( $cal_date ) ) {
   if ( ! empty ( $date ) )
     $cal_date = $date;
