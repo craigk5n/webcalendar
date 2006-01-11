@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added support for BLOBs for MSSQL DB
+ - Added support for BLOBs for postgreSQL DB
  - Fixed bug 1403070: Icalclient doubles external events
  - Fixed bug 1398679: error in epeated event for 5th sunday
  - Fixed bug 1401625: ERROR message not be translated (Partial fix)

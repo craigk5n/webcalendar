@@ -32,6 +32,10 @@
  * @subpackage Database
  *
  * History:
+ * 11-Jan-2006 Vladimir D. Georgiev (posted by Ray Jones)
+ *    Added  php_update_blob support for mssql. 
+ * 11-Jan-2006  Ray Jones
+ *    Added  php_update_blob support for postgreSQL.
  * 06-Dec-2005 Craig Knudsen
  *    Added new php_update_blob function for mysql.  Will need to implement
  *    for other dbs next.
@@ -88,6 +92,7 @@
  * @return resource The connection
  */
 function dbi_connect ( $host, $login, $password, $database ) {
+  global $old_textlimit, $old_textsize;
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     if ($GLOBALS["db_persistent"]) {
       $c = mysql_pconnect ( $host, $login, $password );
@@ -118,6 +123,11 @@ function dbi_connect ( $host, $login, $password, $database ) {
       return false;
     }
   } else if ( strcmp ( $GLOBALS["db_type"], "mssql" ) == 0 ) {
+    static $old_textlimit, $old_textsize;
+    $old_textlimit = ini_get ( 'mssql.textlimit' );
+    $old_textsize = ini_get ( 'mssql.textsize' );
+    ini_set( 'mssql.textlimit', '2147483647' );
+    ini_set( 'mssql.textsize', '2147483647' );
     if ($GLOBALS["db_persistent"]) {
       $c = mssql_pconnect ( $host, $login, $password );
     } else {
@@ -191,9 +201,9 @@ function dbi_connect ( $host, $login, $password, $database ) {
   } else {
       $c = sqlite_open ( $database, 0666, $sqliteerror);
     }
-    if ( ! $c ) {	 
-		  echo "Error connecting to database\n";
-		  exit;
+    if ( ! $c ) {   
+      echo "Error connecting to database\n";
+      exit;
     }
      $GLOBALS["sqlite_c"]  = $c;
     return $c;
@@ -217,11 +227,16 @@ function dbi_connect ( $host, $login, $password, $database ) {
  * @return bool True on success, false on error
  */
 function dbi_close ( $conn ) {
+  global $old_textlimit, $old_textsize;
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     return mysql_close ( $conn );
   } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
     return mysqli_close ( $conn );
   } else if ( strcmp ( $GLOBALS["db_type"], "mssql" ) == 0 ) {
+    if ( ! empty ( $old_textlimit ) ) {
+      ini_set( 'mssql.textlimit', $old_textlimit );
+      ini_set( 'mssql.textsize', $old_textsize );        
+    }
     return mssql_close ( $conn );
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     return OCILogOff ( $conn );
@@ -414,10 +429,10 @@ function dbi_affected_rows ( $conn, $res ) {
   * A BLOB field should be created in a separete INSERT statement using
   * NULL as the initial value prior to this call.
   *
-  * @param resource $table	the table name that contains the blob
-  * @param resource $column	the table column name for the blob
-  * @param resource $key	the key for updating the table row
-  * @param resource $data 	the data to insert
+  * @param resource $table  the table name that contains the blob
+  * @param resource $column  the table column name for the blob
+  * @param resource $key  the key for updating the table row
+  * @param resource $data   the data to insert
   *
   * @return bool True on success
   */
@@ -441,6 +456,14 @@ function dbi_update_blob ( $table, $column, $key, $data ) {
     return dbi_query ( "UPDATE $table SET $column = '" .
       sqlite_udf_encode_binary ( $data ) .
       "' WHERE $key" );
+  } else if ( strcmp ( $GLOBALS["db_type"], "mssql" ) == 0 ) {
+    return dbi_query ( "UPDATE $table SET $column = 0x" .
+      bin2hex( $data ) . 
+      " WHERE $key" );
+  } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
+    return dbi_query ( "UPDATE $table SET $column = '" .
+      pg_escape_bytea ( $data ) .
+      "' WHERE $key" );
   } else {
     // TODO!
     die_miserable_death ( "Unfortunately, there is no implementation " .
@@ -452,9 +475,9 @@ function dbi_update_blob ( $table, $column, $key, $data ) {
 /**
   * Get a BLOB (binary large object) from the database.
   *
-  * @param resource $table	the table name that contains the blob
-  * @param resource $column	the table column name for the blob
-  * @param resource $key	the key for updating the table row
+  * @param resource $table  the table name that contains the blob
+  * @param resource $column  the table column name for the blob
+  * @param resource $key  the key for updating the table row
   *
   * @return bool True on success
   */
@@ -477,6 +500,20 @@ function dbi_get_blob ( $table, $column, $key ) {
       return false;
     if ( $row = dbi_fetch_row ( $res ) )
       $ret = sqlite_udf_decode_binary ( $row[0] );
+    dbi_free_result ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "mssql" ) == 0 ) {
+    $res = dbi_query ( "SELECT $column FROM $table WHERE $key" );
+    if ( ! $res )
+      return false;
+    if ( $row = dbi_fetch_row ( $res ) )
+      $ret =  $ret = $row[0];
+    dbi_free_result ( $res );
+  } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
+    $res = dbi_query ( "SELECT $column FROM $table WHERE $key" );
+    if ( ! $res )
+      return false;
+    if ( $row = dbi_fetch_row ( $res ) )
+      $ret = pg_unescape_bytea ( $row[0] );
     dbi_free_result ( $res );
   } else {
     // TODO!

@@ -276,6 +276,6 @@ CREATE TABLE webcal_blob (
   cal_type CHAR(1) NOT NULL,
   cal_mod_date INT NOT NULL,
   cal_mod_time INT NOT NULL,
-  cal_blob IMAGE,
+  cal_blob IMAGE NULL,
   PRIMARY KEY ( cal_blob_id )
 );
