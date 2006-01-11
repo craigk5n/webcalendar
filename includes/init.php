@@ -83,12 +83,12 @@ $WebCalendar->initializeSecondPhase();
  * @param bool   $disableRSS   Do not include the RSS link
  */
 function print_header($includes = '', $HeadX = '', $BodyX = '',
-  $disableCustom=false, $disableStyle=false, $disableRSS=false) {
+  $disableCustom=false, $disableStyle=false, $disableRSS=false ) {
   global $APPLICATION_NAME;
   global $FONTS,$WEEKENDBG,$THFG,$THBG,$PHP_SELF;
   global $TABLECELLFG,$TODAYCELLBG,$TEXTCOLOR;
   global $POPUP_FG,$BGCOLOR,$OTHERMONTHBG;
-  global $LANGUAGE, $DISABLE_POPUPS;
+  global $LANGUAGE, $DISABLE_POPUPS, $MENU_ENABLED;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
   global $friendly, $DISPLAY_WEEKENDS, $DISPLAY_TASKS;
   global $bodyid, $self, $login, $browser;
@@ -98,44 +98,54 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   if ( empty ( $lang ) )
     $lang = 'en';
 
- // Start the header & specify the charset
- // The charset is defined in the translation file
- if ( ! empty ( $LANGUAGE ) ) {
-   $charset = translate ( "charset" );
-   if ( $charset != "charset" ) {
-     echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n" .
-       "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
-       "\"DTD/xhtml1-transitional.dtd\">\n" .
-       "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
-       "xml:lang=\"$lang\" lang=\"$lang\">\n" .
-       "<head>\n" .
-       "<meta http-equiv=\"Content-Type\" content=\"text/html; " .
-       "charset=$charset\" />\n";
-     echo "<title>".translate($APPLICATION_NAME)."</title>\n";
-   } else {
-     echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n" .
-       "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
-       "\"DTD/xhtml1-transitional.dtd\">\n" .
-       "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
-       "xml:lang=\"en\" lang=\"en\">\n" .
-       "<head>\n" .
-       "<title>".translate($APPLICATION_NAME)."</title>\n";
-   }
- }
+  // Start the header & specify the charset
+  // The charset is defined in the translation file
+  if ( ! empty ( $LANGUAGE ) ) {
+    $charset = translate ( "charset" );
+    if ( $charset != "charset" ) {
+      echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n" .
+        "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
+        "\"DTD/xhtml1-transitional.dtd\">\n" .
+        "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
+        "xml:lang=\"$lang\" lang=\"$lang\">\n" .
+        "<head>\n" .
+        "<meta http-equiv=\"Content-Type\" content=\"text/html; " .
+        "charset=$charset\" />\n";
+      echo "<title>".translate($APPLICATION_NAME)."</title>\n";
+    } else {
+      echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n" .
+        "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
+        "\"DTD/xhtml1-transitional.dtd\">\n" .
+        "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
+        "xml:lang=\"en\" lang=\"en\">\n" .
+        "<head>\n" .
+        "<title>".translate($APPLICATION_NAME)."</title>\n";
+    }
+  }
 
- echo "<script type=\"text/javascript\" src=\"includes/js/util.js\"></script>\n";
+  echo "<script type=\"text/javascript\" src=\"includes/js/util.js\"></script>\n";
 
- // Any other includes?
- if ( is_array ( $includes ) ) {
-   foreach( $includes as $inc ){
-     if ( $inc == 'js/popups.php' && ! empty ( $DISABLE_POPUPS ) && 
-     $DISABLE_POPUPS == "Y" ) {
+  // Menu control
+  if ( !empty ( $friendly ) || $disableCustom ) $MENU_ENABLED = 'N';
+
+  // Includes needed for the top menu
+  if ( $MENU_ENABLED == 'Y' ) {
+    echo "<script type=\"text/javascript\" src=\"includes/menu/menu.js\"></script>\n";
+    echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"includes/menu/ThemeOffice/theme.css\" />\n";
+    echo "<script type=\"text/javascript\" src=\"includes/menu/ThemeOffice/theme.js\"></script>\n";
+  }
+
+  // Any other includes?
+  if ( is_array ( $includes ) ) {
+    foreach( $includes as $inc ){
+      if ( $inc == 'js/popups.php' && ! empty ( $DISABLE_POPUPS ) && 
+       $DISABLE_POPUPS == "Y" ) {
        //don't load popups.php javascript if DISABLE_POPUPS
-   } else {
-       include_once 'includes/'.$inc;
-   }
-   }
- }
+      } else {
+        include_once 'includes/'.$inc;
+      }
+    }
+  }
 
   // Do we need anything else inside the header tag?
   if ($HeadX) echo $HeadX."\n";
@@ -191,6 +201,9 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   if ( $CUSTOM_HEADER == 'Y' && ! $disableCustom ) {
     echo load_template ( $login, 'H' );
   }
+
+  // Add the top menu if enabled
+  if ( $MENU_ENABLED == 'Y' )  include_once 'includes/menu.php';
 }
 
 
