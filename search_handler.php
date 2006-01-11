@@ -110,9 +110,14 @@ if ( ! empty ( $error ) ) {
         "( webcal_entry_user.cal_login != '$login' AND " .
  "webcal_entry.cal_access = 'P' ) ) ";
     }
+    //we get an error using mssql trying to read text column as varchar
+    //this workaround seems to fix it up ROJ
+    //this only will search the first ikb of the description
     $sql .= "AND ( UPPER(webcal_entry.cal_name) " .
       "LIKE UPPER('%" .  $words[$i] . "%') " .
-      "OR UPPER(webcal_entry.cal_description) " .
+      ( strcmp ( $GLOBALS["db_type"], "mssql" ) == 0? 
+        "OR UPPER( CAST ( webcal_entry.cal_description AS varchar(1024) ) ) " :
+        "OR UPPER(webcal_entry.cal_description ) " ).
       "LIKE UPPER('%" .  $words[$i] . "%') ) " .
       "ORDER BY cal_date";
     //echo "SQL: $sql<br />";

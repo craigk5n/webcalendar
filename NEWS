@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1402931: Search error (using mssql)
       1403070: Icalclient doubles external events
       1398679: error in epeated event for 5th sunday
       1401625: ERROR message not be translated (Partial fix)
