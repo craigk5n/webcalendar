@@ -131,7 +131,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
       }
       echo ">";
       if ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) &&
-			  $GLOBALS['PULLDOWN_WEEKNUMBER'] == "Y" ) {
+        $GLOBALS['PULLDOWN_WEEKNUMBER'] == "Y" ) {
         echo  "(" . date( "W", $twkstart + ONE_DAY ) . ")&nbsp;&nbsp;";
       }
       printf ( "%s - %s",
@@ -283,8 +283,8 @@ if ( $single_user != "Y" ) {
       $url .= "?user=" . getValue ( 'user' );
     }
     $goto_link[] = "<a title=\"" . 
-      translate("Unapproved Events") . "\" href=\"$url\">" . 
-      translate("Unapproved Events") . "</a>";
+      translate("Unapproved Entries") . "\" href=\"$url\">" . 
+      translate("Unapproved Entries") . "</a>";
   }
   if ( ( $login == "__public__" && $PUBLIC_ACCESS_OTHERS != "Y" ) ||
     ( $is_nonuser && ! access_is_enabled () ) ) {
