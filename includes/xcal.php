@@ -1118,6 +1118,7 @@ function import_data ( $data, $overwrite, $type ) {
   $importId = 1;
  $subType = '';
  if ( $type == 'icalclient' ) {
+   $ImportType = 'ICAL';
    $type = 'ical';
   $subType = 'icalclient';
  }
@@ -1262,7 +1263,7 @@ foreach ( $data as $Entry ){
           }
         }
       }
-     
+ 
       if ( ! $updateMode ) {
         // Add the Event
         $res = dbi_query ( "SELECT MAX(cal_id) FROM webcal_entry" );
@@ -1873,7 +1874,7 @@ function parse_ical ( $cal_file, $source='file' ) {
           $substate = "description";
           if (stristr($match[1], 'ENCODING=QUOTED-PRINTABLE'))
             $match[2] = quoted_printable_decode($match[2]);
-          $event[$substate] = $match[2];							 
+          $event[$substate] = $match[2];               
         } elseif (preg_match("/^CLASS.*:(.*)$/i", $buff, $match)) {
           $substate = "class";
           $event[$substate] = $match[1];
