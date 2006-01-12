@@ -11,7 +11,10 @@
 # Last update: 19 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 20 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 22 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 12-22-2005
+# Last update: 9 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 10 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 12 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 01-12-2006
 
 
 ###############################################
@@ -143,13 +146,13 @@ Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
 # Page: list_unapproved.php
 #
 View this entry: Eintrag ansehen
-Approve/Confirm: Eintrag genehmigen/best&auml;tigen
-Approve this entry?: Diesen Eintrag genehmigen?
+Approve/Confirm: Eintrag &Uuml;berprfen/Best&auml;tigen
+Approve this entry?: Diesen Eintrag best&auml;tigen?
 Reject: Ablehnen
 Reject this entry?: Eintrag ablehnen?
 Are you sure you want to delete this entry?: Wollen Sie diesen Eintrag wirklich l&ouml;schen?
-No unapproved events for: Keine unbest&auml;tigten Termine f&uuml;r
-Unapproved Events: Unbest&auml;tigte Termine
+No unapproved entries for: Keine unbest$auml;tigten Eintr&auml;ge f&uuml;r
+Unapproved Entries: Unbest$auml;tigte Eintr&auml;ge
 Not authorized: Keine Berechtigung
 
 
@@ -179,7 +182,7 @@ Month (on same calendar): Monat (am gleichen Kalender)
 preview: Vorschau (Ansicht)
 Users: Benutzer
 Selected: Ausgew&auml;hlte(r)
-All: Jede(n)
+All: Alle
 Select: Ausw&auml;hlen 
 Add: Hinzuf&uuml;gen
 
@@ -249,7 +252,7 @@ Access: Zugang
 Public: &Ouml;ffentlich
 Created by: erstellt von
 Public Access: &Ouml;ffentlicher Zugang
-Updated: ge&auml;ndert
+Updated: aktualisiert
 days: Tage
 day: Tag
 hours: Stunden
@@ -260,7 +263,7 @@ before due time: vor F&auml;lligkeitszeit
 Participants: Benutzer
 Percentage Complete: Prozentsatz erledigt
 Update Task Percentage: Aktualisierung des Aufgabenprozentsatzes
-Update: Aktualisierung
+Update: Aktualisieren
 Approve/Confirm entry: Eintrag genehmigen/best&auml;tigen?
 Reject entry: Eintrag ablehnen?
 Set category: Kategorie zuweisen
@@ -417,6 +420,11 @@ Event approved: Termin best&auml;tigt
 Event rejected: Termin abgelehnt
 Event updated: Termin aktualisiert
 Event deleted: Termin gel&ouml;scht
+Journal created: Journal erstellt
+Journal approved: Journal best&auml;tigt
+Journal rejected: Journal abgelehnt
+Journal updated: Journal aktualisiert
+Journal deleted: Jounral gel&ouml;scht
 Attachment: Anhang
 Export this entry to: Diesen Eintrag exportieren nach
 
@@ -592,6 +600,8 @@ rss-enabled-help: Bestimmt, ob ein Kalender &uuml;ber RRS-Feed erreicht werden k
 Enable RSS feed: RRS-Feed aktivieren
 categories-enabled-help: Aktiviert Unterst&uuml;tzung f&uuml;r Terminkategorien.
 Categories enabled: Kategorien aktivieren
+icon_upload-enabled-help: Wenn aktiviert, k&ouml;nnen Benutzer Icons f&uuml;r Kategorien hochladen
+Category Icon Upload enabled: Icons hochladen f&uuml;r Kategorien
 display-tasks-help: Zeigt eine kleine Aufgabenliste bei Monats- und Tagesansicht
 Display small task list: Kleine Aufgabenliste anzeigen
 display-tasks-in-grid-help: Anzeigen der Aufgaben zusammen mit den Terminen in den Kalendern 
@@ -662,6 +672,13 @@ Table cell background for weekends: Hintergrundfarbe f&uuml;r Wochenenden
 Table cell background for other month: Tabellen-Hintergrund f&uuml;r anderen Monat
 Event popup background: Hintergrundfarbe Termin-PopUp
 Event popup text: Textfarbe Termin-PopUp
+
+
+###############################################
+# Page: category_handler.php
+#
+File size exceeds maximum: Dateigr&ouml;&szlig;e &uuml;bersteigt Maximum
+File is not a gif image: Datei ist kein 'gif' Bild
 
 
 ###############################################
@@ -849,7 +866,7 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 The following conflicts with the suggested time: Folgende Konflikte mit der vorgeschlagenen Zeit
 Unnamed Event: unbenannter Termin
 A new appointment has been made for you by: Es wurde Ihnen eine neue Verabredung eingetragen von -->
-An appointment has been updated by: Eine Verabredung wurde ge&uuml;ndert von
+An appointment has been updated by: Eine Verabredung wurde ge&auml;ndert von
 The subject is: Die Beschreibung lautet 
 Please look on: Bitte konsultieren Sie Ihren
 to accept or reject this appointment: um die Verabredung zu best&auml;tigen/abzulehnen.
@@ -886,6 +903,13 @@ Set Category: Kategorie zuweisen
 category-help: Definiert die Kategorie eines Termines.
 Use the Edit button to make changes.: Verwende den &Auml;nderungsbutton um &Auml;nderungen vorzunehmen
 Global Categories can not be changed: Allgemeine Kategorieren k&ouml;nnen nicht ge&auml;ndert werden
+
+
+###############################################
+# Page: icons.php
+#
+Click to Select: Klicken um Auszuw&auml;hlen
+Current Icons on Server: Derzeitige Icons am Server
 
 
 ###############################################
@@ -1041,7 +1065,7 @@ Modified since: &Auml;nderungen ab
 # Page: users.php
 #
 Add New User: Neuen Benutzer hinzuf&uuml;gen
-denotes administrative user: bezeichnet administrativen Benutzer
+denotes administrative user: kennzeichnet Benutzer mit administrativen Rechten
 
 
 ###############################################
@@ -1070,6 +1094,11 @@ Add New NonUser Calendar: Neuen 'Zentralen-Kalender' hinzuf&uuml;gen
 # Page: category.php
 #
 Category Name: Kategorie Name
+Category Icon: Kategorie Icon
+Add Icon to Category: Icon f&uuml;r Kategorie hinzuf&uuml;gen
+Upload: Hochladen
+gif 3kb max: gif max. 3kb gro&szlig;
+Search for existing icons: Suche nach bereits vorhandene Icons
 Add New Category: Neue Kategorie hinzuf&uuml;gen
 
 
@@ -1135,8 +1164,7 @@ Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
 ###############################################
 # Page: catsel.php
 #
-TASK CATEGORIES: AUFGABENKATEGORIEN
-EVENT CATEGORIES: TERMINKATEGORIEN
+ENTRY CATEGORIES: EINGETRAGENE KATEGORIEN
 AVAILABLE CATEGORIES: VERF&Uuml;GBARE KATEGORIEN
 Global Category: Allg. Kategorien
 
@@ -1169,7 +1197,7 @@ Please see FAQ: Bitte in der FAQ nachlesen
 ###############################################
 # Page: includes/functions.php
 #
-Title: Titel
+Title: Webkalender
 __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
 __month__ __dd__: __dd__. __month__
@@ -1192,7 +1220,7 @@ View this task: Diese Aufgabe anzeigen
 View this event: Diesen Termin anzeigen
 This event is private: Dieser Termin ist <b>PRIVAT</b>
 exceeds limit of XXX events per day: &uuml;berschrittenes Limit von XXX Termin(e) pro Tag
-You have XXX unapproved events: Sie haben XXX unbest&auml;tigte(n) Termin(e)
+You have XXX unapproved entries: Anzahl der unbest&auml;tigten Eintr&auml;ge&#058; <b>&rArr; &quot;XXX&quot;</b>
 January: Januar
 February: Februar
 March: M&auml;rz
@@ -1231,6 +1259,13 @@ Tentative: Vorl&auml;ufig
 # Page: includes/date_formats.php
 #
 LANGUAGE DEFINED: SPRACHDEFINIERT
+
+
+###############################################
+# Page: includes/config.php
+#
+Fatal Error: Fataler Fehler
+Troubleshooting Help: Fehlersuche (Hilfe)
 
 
 ###############################################
@@ -1293,6 +1328,9 @@ Spanish: Spanisch
 Swedish: Schwedisch
 Turkish: Turkisch
 Welsh: Wallisisch
+task: Aufgabe
+event: Termin
+journal: Journal
 
 
 ###############################################
@@ -1339,13 +1377,6 @@ Color format should be '#RRGGBB': Farbformat sollte '#RRGGBB' sein
 
 
 ###############################################
-# Page: includes/js/tasks.php
-#
-You have not entered a Brief Description: Sie haben keine Kurzbeschreibung eingegeben
-You have not entered a Category Name: Sie haben keinen Kategorienamen eingegeben
-
-
-###############################################
 # Page: includes/js/availability.php
 #
 Change the date and time of this entry?: Datum und Uhrzeit f&uuml;r diesen Eintrag &auml;ndern?
@@ -1358,18 +1389,14 @@ Invalid color: Ung&uuml;ltige Farbe
 
 
 ###############################################
-# Page: includes/js/edit_task.php
+# Page: includes/js/edit_entry.php
 #
-You have not entered a valid time of day: Sie haben keine g&uuml;ltige Zeit f&uuml;r diesen Tag eingetragen
+You have not entered a Brief Description: Sie haben keine Kurzbeschreibung eingegeben
 The time you have entered begins before your preferred work hours.  Is this correct?: Die eingetragene Zeit beginnt vor der normalen Arbeitszeit. Ist das korrekt?
 Invalid Event Date: Ung&uuml;tiges Datum f&uuml;r Termin
 Please add a participant: Bitte einen Teilnehmer hinzuf&uuml;gen
-
-
-###############################################
-# Page: includes/js/edit_entry.php
-#
 Invalid Date: Ung&uuml;ltiges Datum
+You have not entered a valid time of day: Sie haben keine g&uuml;ltige Zeit f&uuml;r diesen Tag eingetragen
 
 
 ###############################################
@@ -1503,4 +1530,4 @@ Environment: Umgebung
 Production: Produktion
 Development: Entwicklung
 Save Settings: Einstellung speichern
-Launch WebCalendar: Webkalender starten
+Launch WebCalendar: Webkalender starte
