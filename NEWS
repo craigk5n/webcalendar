@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1314070: Some settings not required by Postgresql
       1402931: Search error (using mssql)
       1403070: Icalclient doubles external events
       1398679: error in epeated event for 5th sunday
