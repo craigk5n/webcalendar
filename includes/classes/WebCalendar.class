@@ -398,7 +398,12 @@ class WebCalendar {
           "your <tt>settings.php</tt> file.\n" );
       }
     }
-
+    
+    //Allow special settings of 'none' in some settings[] values
+    //this can be used for db servers not using TCP port for connection
+    $db_host = ( $db_host == 'none'? '' : $db_host );
+    $db_password = ( $db_password == 'none'? '' : $db_password );
+        
     $readonly = preg_match ( "/(1|yes|true|on)/i",
       $settings['readonly'] ) ? 'Y' : 'N';
 
