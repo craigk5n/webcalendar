@@ -151,8 +151,8 @@ Approve this entry?: Diesen Eintrag best&auml;tigen?
 Reject: Ablehnen
 Reject this entry?: Eintrag ablehnen?
 Are you sure you want to delete this entry?: Wollen Sie diesen Eintrag wirklich l&ouml;schen?
-No unapproved entries for: Keine unbest$auml;tigten Eintr&auml;ge f&uuml;r
-Unapproved Entries: Unbest$auml;tigte Eintr&auml;ge
+No unapproved entries for: Keine unbest&auml;tigten Eintr&auml;ge f&uuml;r
+Unapproved Entries: Unbest&auml;tigte Eintr&auml;ge
 Not authorized: Keine Berechtigung
 
 
