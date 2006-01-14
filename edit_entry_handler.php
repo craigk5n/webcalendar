@@ -775,8 +775,8 @@ if ( empty ( $error ) ) {
       // keep the old status if no email will be sent
       $send_user_mail = ( empty ( $old_status[$participants[$i]] ) ||
         $entry_changed ) ?  true : false;
-      $tmp_status = ( ! empty ( $old_status[$participants[$i]] ) && ! $send_user_mail ) ||
-        $can_doall ? $old_status[$participants[$i]] : "W";
+      $tmp_status = ( ! empty ( $old_status[$participants[$i]] ) && 
+        ! $send_user_mail ? $old_status[$participants[$i]] : "W" );
       $status = ( $participants[$i] != $login && 
         boss_must_approve_event ( $login, $participants[$i] ) && 
         $REQUIRE_APPROVALS == "Y" && ! $is_nonuser_admin ) ?
