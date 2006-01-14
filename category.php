@@ -76,10 +76,10 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
  <br />
  <br />
   <input type="hidden" name="urlname" size="50"   />
-	&nbsp;&nbsp;&nbsp;<input type="button" value="<?php 
-	  etranslate ("Search for existing icons", true);?>" onclick="window.open('icons.php', 'icons','dependent,menubar=no,scrollbars=n0,height=300,width=400, outerHeight=320,outerWidth=420');" />
-	&nbsp;&nbsp;&nbsp;<img src="" name="urlpic" id="urlpic" >
-	<br /><br />
+  &nbsp;&nbsp;&nbsp;<input type="button" value="<?php 
+    etranslate ("Search for existing icons", true);?>" onclick="window.open('icons.php', 'icons','dependent,menubar=no,scrollbars=n0,height=300,width=400, outerHeight=320,outerWidth=420');" />
+  &nbsp;&nbsp;&nbsp;<img src="" name="urlpic" id="urlpic" >
+  <br /><br />
 <?php } //end test of ENABLE_ICON_UPLOADS ?>
   <input type="submit" name="action" value="<?php echo $button;?>" />
   <?php if ( ! empty ( $id ) ) {  ?>
