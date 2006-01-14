@@ -155,6 +155,12 @@ class Event {
    */
   var $_untimed;
 
+ /**
+   * Minutes this event rolls into next day
+   * @var int
+   * @access private
+   */
+  var $_rollOver;
   /**
    * Creates a new Event.
    *
@@ -466,12 +472,12 @@ class Event {
     $year = substr ( $this->_date, 0, 4 );
     $month = substr ( $this->_date, 4, 2 ); 
     $day = substr ( $this->_date, 6, 2 );
- if ( $this->_time > 0 ) {
+    if ( $this->_time > 0 ) {
       $h = (int) ( $this->_time / 10000 );
       $m = ( $this->_time / 100 ) % 100;
- } else {
-   $h = $m = 0;
- }
+    } else {
+      $h = $m = 0;
+    }
     $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
     $this->_endTime = date ( "His", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
     return $this->_endTime;
@@ -488,17 +494,44 @@ class Event {
     $year = substr ( $this->_date, 0, 4 );
     $month = substr ( $this->_date, 4, 2 ); 
     $day = substr ( $this->_date, 6, 2 );
- if ( $this->_time > 0 ) {
+    if ( $this->_time > 0 ) {
       $h = (int) ( $this->_time / 10000 );
       $m = ( $this->_time / 100 ) % 100;
- } else {
-   $h = $m = 0;
- }
+    } else {
+      $h = $m = 0;
+    }
     $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
     $this->_endDateTime = date ( "YmdHis", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
     return $this->_endDateTime;
   }
 
+
+/**
+   * Determine if this event rolls over into tomorrow
+   *
+   * @return int The event's overlap in minutes
+   *
+   * @access public
+   */
+  function getRollover ( $midnight ) {
+    
+    $year = substr ( $this->_date, 0, 4 );
+    $month = substr ( $this->_date, 4, 2 ); 
+    $day = substr ( $this->_date, 6, 2 );
+    if ( $this->_time > 0 ) {
+      $h = (int) ( $this->_time / 10000 );
+      $m = ( $this->_time / 100 ) % 100;
+    } else {
+      $h = $m = 0;
+    }
+    $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
+    $realend = mktime ( $h, $m + $dur, 0, $month, $day, $year );
+    if ( $realend > $midnight ) 
+      //$this->_rollOver = ( $realend - $midnight ) /60;
+      $this->_rollOver = date ( "YmdHis", $midnight);
+    return $this->_rollOver;
+  }
+  
  /**
    * Determine if event is All Day 
    *
@@ -523,5 +556,44 @@ class Event {
     return $this->_untimed;
   }
 
+ /**
+   * Set cal_duration 
+   *
+   *
+   * @access public
+   */
+  function setDuration ( $duration ) {
+    $this->_duration = $duration; 
+  }
+
+ /**
+   * Set cal_time 
+   *
+   *
+   * @access public
+   */
+  function setTime ( $time ) {
+    $this->_time = $time; 
+  }  
+  
+ /**
+   * Set cal_date
+   *
+   *
+   * @access public
+   */
+  function setDate ( $date ) {
+    $this->_date = $date; 
+  }
+ /**
+   * Set cal_name
+   *
+   *
+   * @access public
+   */
+  function setName ( $name ) {
+    $this->_name = $name; 
+  }
+  
 }
 ?>
