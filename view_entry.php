@@ -391,7 +391,7 @@ if ( $res ) {
 }
 /* calculate end time */
 if ( $event_time >= 0 && $row[5] > 0 )
-  $end_str = "-" . display_time ( $tz_date . add_duration ( $row[2], $row[5] ), 2 );
+  $end_str = "-" . display_time ( $tz_date . add_duration ( $row[2], $row[5] % 1440 ), 2 );
 else
   $end_str = "";
 
@@ -545,7 +545,12 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
 <?php if ( $row[5] > 0 && $row[5] != ( 24 * 60 ) ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Duration")?>:</td><td>
- <?php echo $row[5]; ?> <?php etranslate("minutes")?>
+ <?php 
+   $dur_h = (int)( $row[5] / 60 );
+   $dur_m = $row[5] - ( $dur_h * 60 );
+   if ( $dur_h ==1 ) echo $dur_h . " " . translate("hour") . " ";
+   if ( $dur_h > 1 ) echo $dur_h . " " . translate("hours") . " ";
+   if ( $dur_m > 0 )echo $dur_m . " " . translate("minutes")?>
 </td></tr>
 <?php } ?>
 <?php if ( $DISABLE_PRIORITY_FIELD != "Y" ) { ?>

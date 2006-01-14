@@ -1299,7 +1299,8 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
    if ( $DISPLAY_WEEKNUMBER == "Y" && ! $demo ) {
       echo "<td class=\"weekcell\"><a title=\"" .
         translate("Week") . "&nbsp;" .
-          date( "W", $i + ONE_DAY ) . "\" href=\"week.php?date=". date ( "Ymd", $i );
+          date( "W", $i + ONE_DAY ) . "\" href=\"week.php?date=".
+            date ( "Ymd", $i + ONE_DAY );
       if ( ! empty ( $user) && $user != $login  )
         echo "&amp;user=$user";
       if ( ! empty ( $cat_id ) )
@@ -2052,11 +2053,13 @@ function get_tasks ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_tz=
       $sm = substr ( $date, 4, 2 );
       $sd = substr ( $date, 6, 2 );
       $prev_day = date ( ( "Ymd" ), mktime ( 0, 0, 0, $sm, $sd - 1, $sy ) );
-       if ( ( ( $date == date( "Ymd" ) && $tasks[$i]->getDueDate() <= date( "Ymd" ) ) || 
+       if ( ( ( $date == date( "Ymd" ) && 
+         $tasks[$i]->getDueDate() <= date( "Ymd" ) ) || 
          $tasks[$i]->getDueDate() == $date ) &&
         $tasks[$i]->isUntimed() ) {
         $ret[$n++] = $tasks[$i];
-      } else if ( ( ( $date == date( "Ymd" ) && $tasks[$i]->getDueDate() <= date( "Ymd" ) ) || 
+      } else if ( ( ( $date == date( "Ymd" ) && 
+        $tasks[$i]->getDueDate() <= date( "Ymd" ) ) || 
         $tasks[$i]->getDueDate() == $date ) &&
         $tasks[$i]->getDueTime() < $cutoff ) {
         $ret[$n++] = $tasks[$i];
@@ -2102,6 +2105,7 @@ function get_tasks ( $user, $date, $get_unapproved=true, $use_dst=1, $use_my_tz=
 function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_task=false ) {
   global $login, $thisyear, $thismonth, $TIMEZONE;
   global $layers, $PUBLIC_ACCESS_DEFAULT_VISIBLE;
+  global $result;
   $result = array ();
   $layers_byuser = array ();
   //new multiple categories requires some checking to see if this this cat_id is
@@ -2252,26 +2256,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
           $result [$i++] = $item;
         }
       }
-      /* TODO fully implement this 
-      //calculate rollover to next  and add partial event as needed
-      $midnight = get_datetime_add_tz( $item->getDate(), 240000 );
-      $tz_offset = get_tz_offset ( $TIMEZONE, '', $item->getDate()  );
-      $realend = $item->getEndDateTime();
-      $realendTS = get_datetime_add_tz( substr( $realend, 0,8), 
-        substr( $realend,8,6));
-      $realendTS  += ( $tz_offset[0] * 3600 );
-      $new_duration = ( $realendTS - $midnight ) /60;
-      if ( $realendTS >  $midnight ) {        
-        $result[$i] = clone ( $item );    
-        $result[$i]->setDuration( $new_duration );
-        $result[$i]->setTime( substr( $realend, 8,8) + ( $tz_offset[0] * 10000 ) );
-        $result[$i]->setDate( substr( $realend, 0,8));
-       // $result[$i]->setName( $result[$i]->getName() . "!");        
-        $i++;  
-        $item->setDuration( $item->getDuration() -$new_duration );
-        //print_r ($result);            
-      }
-      */
+       if ( $item->getDuration() > 0 && ! $item->isAllDay()  ) 
+         $i = get_OverLap ( $item, $i );
     }
     dbi_free_result ( $res );
   }
@@ -5940,13 +5926,41 @@ function combine_and_sort_events ( $ev, $rep ) {
   usort( $rep, 'sort_events' );
   return $rep;
 } 
-/* TODO This function is used with event crossover mod
+
+//calculate rollover to next day and add partial event as needed
+function get_OverLap ( $item, $i, $parent=true, $nextdur=0 ) {
+  global $TIMEZONE, $result;
+  $recurse = 0;
+  $tz_offset = get_tz_offset ( $TIMEZONE, $item->getDateTimeTS() );
+  $startLocal = get_datetime_add_tz ( $item->getDate(),  $item->getTime(), $tz_offset[0] );
+  $midnight = mktime ( 24, 0, 0, date( "m", $startLocal),
+    date( "d", $startLocal), date( "Y", $startLocal) ) - ($tz_offset[0] * 3600);
+  $realEndTS = $item->getDateTimeTS() + ( $item->getDuration() * 60 );
+  $item_duration = $new_duration = ( $realEndTS - $midnight + $nextdur ) /60;
+  if ( $new_duration > 1440 ) {
+    $recurse = 1;
+    $next_duration = ($new_duration - 1440 ) * 60;
+    $new_duration = 1439;
+  }
+  if ( $realEndTS  >=  $midnight - 60 ) {        
+    $result[$i] = clone ( $item );    
+    $result[$i]->setDuration( $new_duration == 1439? $new_duration : $new_duration +1 );
+    $result[$i]->setTime( -($tz_offset[0]) * 10000 );
+    $result[$i]->setDate( date ( "Ymd", $midnight + (12 * 3600 ) ) );
+    if ( $parent )$result[$i]->setName( $result[$i]->getName() . " (cont.)");        
+    $i++;  
+    if ( $parent )$item->setDuration( $item->getDuration() - $item_duration -1);       
+  }
+  //call this function recursively until duration < ONE_DAY
+  if ( $recurse == 1 ) get_OverLap ( $result[$i -1], $i, false, $next_duration );
+  return $i;
+}
 if (version_compare(phpversion(), '5.0') < 0) {
     eval('
     function clone($item) {
       return $item;
     }
     ');
-  }
-*/
+}
+
 ?>
