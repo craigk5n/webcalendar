@@ -147,7 +147,7 @@ if ( $id > 0 && empty ( $error ) ) {
       user_load_variables ( $partlogin[$i], "temp" );         
       if ( ! $is_nonuser_admin && $partlogin[$i] != $login && $do_send == "Y" &&
         boss_must_be_notified ( $login, $partlogin[$i] ) && 
-        strlen ( $tempemail ) && $SEND_EMAIL != "N" ) {
+        ! empty ( $tempemail ) && $SEND_EMAIL != "N" ) {
           if ( empty ( $user_language ) || ( $user_language == 'none' )) {
              reset_language ( $LANGUAGE );
           } else {
