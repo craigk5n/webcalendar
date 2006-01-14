@@ -515,7 +515,7 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
  
  } else {
   if ( $event_repeats ) {
-    echo date_to_str ( $event_date );
+    echo date_to_str ( $adjusted_date );
   } else {
     echo date_to_str ( $row[1], "", true, false, ( $row[5] == ( 24 * 60 ) ? "" : $event_time ) );
   }
