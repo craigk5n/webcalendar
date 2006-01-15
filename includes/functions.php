@@ -1069,7 +1069,7 @@ function site_extras_for_popup ( $id ) {
   }
 
   $extras = format_site_extras ( get_site_extra_fields ( $id ) );
-  if ( empty ( $extra ) ) return '';;
+  if ( empty ( $extras ) ) return '';;
   
   $ret = '';
 
