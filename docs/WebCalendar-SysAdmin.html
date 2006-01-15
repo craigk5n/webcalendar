@@ -570,6 +570,9 @@ input path/table-ibase.sql;</strong></pre>
   job to access the URL.  For Linux/UNIX users, add the following line to
   the crontab entry of a user.</p>
  <pre><tt>1 * * * * wget http://yourserverhere/webcalendardirectoryhere/tools/send_reminders.php &gt; /dev/null</tt></pre>
+<p>Some user have reported the following works better for their configuration.</p> 
+<pre><tt>1 * * * * wget -q -O /dev/null http://yourserverhere/webcalendardirectoryhere/tools/send_reminders.php</tt>
+</pre>
   <p>You should test this from the command line first to make sure your setup is 
   correct. If you do not have <tt>wget</tt> installed on your system, you can use 
   any tool (lynx, perl script, etc.) that is capable of making an HTTP request for this.</p>
