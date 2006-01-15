@@ -1585,7 +1585,7 @@ function display_small_tasks ( $cat_id ) {
   $filter = "";
   $task_list = query_events ( $task_user, false, $filter, $cat_id, true  );
   $row_cnt = 1;
-  $task_html= "<table class=\"minitask\" cellspacing=\"0\" cellpadding=\"2\">\n";
+  $task_html= "<table  class=\"minitask\" cellspacing=\"0\" cellpadding=\"2\">\n";
   $task_html .= "<tr class=\"header\"><th colspan=\"3\" align=\"left\">" . 
     translate ( "TASKS" ) . "</th><th align=\"right\">" .
     "<a href=\"edit_entry.php?" . $u_url . "eType=task\">" . 
@@ -1595,13 +1595,18 @@ function display_small_tasks ( $cat_id ) {
   foreach ( $task_list as $E )  {
     $cal_id = $E->getId();
     $link = "<a href=\"view_entry.php?" . $u_url ."id=" . $cal_id . "\"";
-    $priority = $link  . " title=\"" . translate ( "Priority" ) . "\" >" . $E->getPriority() . "</a>";
-    $name = $link  . " title=\"" . translate ( "Task Name" ) . "\" >". substr( $E->getName(), 0, 15 ) . "...</a>";
+    $priority = $link  . " title=\"" . translate ( "Priority" ) . "\" >" . 
+      $E->getPriority() . "</a>";
+    $dots = ( strlen ( $E->getName() ) > 10 ? "..." : "" );
+    $name = $link  . " title=\"" . translate ( "Task Name" ) . ":" . $E->getName() . 
+      "\" >". substr( $E->getName(), 0, 10 ) . $dots ."</a>";
     $due_date = $link  . " title=\"" . translate ( "Task Due Date" ) . "\" >". 
-      date_to_str( $E->getDueDate(), translate ( "__mm__/__dd__/__yyyy__" ), false, false) . "</a>";
-    $percent = $link . " title=\"% " . translate ( "Completed" ) . "\" >". $E->getPercent() . "</a>";
+      date_to_str( $E->getDueDate(), translate ( "__mm__/__dd__/__yyyy__" ), false, false) . 
+        "</a>";
+    $percent = $link . " title=\"% " . translate ( "Completed" ) . "\" >". 
+      $E->getPercent() . "</a>";
     $task_html .= "<tr><td>$priority</td><td>$name</td>" .
-      "<td>$due_date</td><td>&nbsp;$percent</td></tr>\n";
+      "<td>$due_date</td><td>&nbsp;&nbsp;$percent</td></tr>\n";
     $row_cnt++;
   }
   for ($i=12; $i > $row_cnt; $i-- ) {
