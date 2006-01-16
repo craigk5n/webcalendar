@@ -132,10 +132,24 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
+// Get all users time format settings.
+$res = dbi_query ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
+  "WHERE cal_setting = 'TIME_FORMAT'" );
+$t_format = array ();
+if ( $res ) {
+  while ( $row = dbi_fetch_row ( $res ) ) {
+    $user = $row[0];
+    $user_t_format = $row[1];
+    $t_format[$user] = $user_t_format;
+    if ( $debug )
+      echo "Time Format for $user is \"$user_t_format\" <br />\n";
+  }
+  dbi_free_result ( $res );
+}
 // Just get list of users who have asked for HTML (default is plain text)
 $res = dbi_query ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
   "WHERE cal_setting = 'EMAIL_HTML' AND cal_value = 'Y'" );
-$languages = array ();
+$htmlmail = array ();
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $user = $row[0];
@@ -323,6 +337,10 @@ function send_reminder ( $id, $event_date ) {
       $userlang = $languages[$user];
     else
       $userlang = $LANGUAGE; // system default
+    if ( ! empty ( $t_format[$user] ) )
+      $userTformat = $t_format[$user];
+    else
+      $userTformat = 24; // gotta pick something
     if ( $userlang == "none" )
       $userlang = "English-US"; // gotta pick something
     if ( $debug )
@@ -386,7 +404,7 @@ function send_reminder ( $id, $event_date ) {
     if ( $row[2] >= 0 ) {
       $body .= gen_output ( $useHtml, translate ( "Time" ),
         display_time ( $row[1] .  $row[2], $display_tzid, '' ,
-          $user_timezone ) );
+          $user_timezone, $userTformat ) );
     }
 
     if ( $row[5] > 0 ) {
@@ -411,7 +429,7 @@ function send_reminder ( $id, $event_date ) {
 
     $body .= gen_output ( $useHtml, translate ( "Updated" ),
       date_to_str ( $row[3] ) . " " .  display_time ( $row[3] . $row[4],
-        $display_tzid, '', $user_timezone ) );
+        $display_tzid, '', $user_timezone, $userTformat ) );
 
     // site extra fields
     $extras = get_site_extra_fields ( $id );
@@ -490,7 +508,7 @@ function send_reminder ( $id, $event_date ) {
       } else {
         $mail->From = translate ( "Administrator" );
       }
-      $mail->IsHTML( true );
+      $mail->IsHTML( $useHtml );
       $mail->AddAddress( $recip, $GLOBALS ['tempfullname'] );
       $mail->Subject = $subject;
       $mail->Body  = $body;
