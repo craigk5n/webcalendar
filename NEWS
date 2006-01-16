@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1403218: v1.1 Reminder Email not Formatted
       1357358: Columns to narrow between 'date' and '%' in small task list
       1364451: Site extras not displayed in pop-ups - v1.1.0-CVS
       1314070: Some settings not required by Postgresql

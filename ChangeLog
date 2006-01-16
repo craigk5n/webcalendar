@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1403218: v1.1 Reminder Email not Formatted
  - Fixed bug 1357358: Columns to narrow between 'date' and '%' in small task list
  - Fixed bug 1364451: Site extras not displayed in pop-ups - v1.1.0-CVS
  - Added support for events overlspping into next day

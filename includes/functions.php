@@ -655,7 +655,7 @@ function load_user_preferences ( $guest='') {
       "( '$tmp_login', 'LANGUAGE', '$lang' )" );
   }
 
-  reset_language ( empty ( $LANGUAGE) || $LANGUAGE != 'none'? $LANGUAGE : $browser_lang );
+  reset_language ( ! empty ( $LANGUAGE) && $LANGUAGE != 'none'? $LANGUAGE : $browser_lang );
   if (  empty ( $DATE_FORMAT ) || $DATE_FORMAT == 'LANGUAGE_DEFINED' ){
     $DATE_FORMAT = translate ( "__month__ __dd__, __yyyy__" );
   }
@@ -4113,7 +4113,7 @@ function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=fa
     }
   }
   // if they have not set a preference yet...
-  if ( $DATE_FORMAT == "" )
+  if ( $DATE_FORMAT == ""  || $DATE_FORMAT == 'LANGUAGE_DEFINED' )
     $DATE_FORMAT = translate ( "__month__ __dd__, __yyyy__" );
 
   if ( empty ( $format ) )
