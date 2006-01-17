@@ -476,9 +476,18 @@ if ( empty ( $error ) ) {
   }
 
   // log add/update
- //TODO fix for tasks
+  if ( $eType == 'task' ) {
+   $log_c = LOG_CREATE_T;
+   $log_u = LOG_UPDATE_T;
+  } else if ( $eType == 'jounal' ) {
+   $log_c = LOG_CREATE_J;
+   $log_u = LOG_UPDATE_J;
+  }else {
+   $log_c = LOG_CREATE;
+   $log_u = LOG_UPDATE;
+  }
   activity_log ( $id, $login, ($is_assistant || $is_nonuser_admin ? $user : $login),
-    $newevent ? LOG_CREATE : LOG_UPDATE, "" );
+    $newevent ? $log_c : $log_u, "" );
   
   if ( $single_user == "Y" ) {
     $participants[0] = $single_user_login;

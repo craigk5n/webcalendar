@@ -94,6 +94,16 @@ if ( $res ) {
         etranslate("Task updated");
       else if ( $row[2] == LOG_DELETE_T )
         etranslate("Task deleted");
+      else if ( $row[2] ==  LOG_CREATE_J ) 
+        etranslate("Journal created");        
+      else if ( $row[2] == LOG_APPROVE_J )
+        etranslate("Journal approved");
+      else if ( $row[2] == LOG_REJECT_J )
+        etranslate("Journal rejected");
+      else if ( $row[2] == LOG_UPDATE_J )
+        etranslate("Journal updated");
+      else if ( $row[2] == LOG_DELETE_J )
+        etranslate("Journal deleted");    
       else if ( $row[2] == LOG_NOTIFICATION )
         etranslate("Notification sent");
       else if ( $row[2] == LOG_REMINDER )
