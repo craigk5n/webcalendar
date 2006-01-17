@@ -130,9 +130,9 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
 
   // Includes needed for the top menu
   if ( $MENU_ENABLED == 'Y' ) {
-    echo "<script type=\"text/javascript\" src=\"includes/menu/menu.js\"></script>\n";
-    echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"includes/menu/ThemeOffice/theme.css\" />\n";
-    echo "<script type=\"text/javascript\" src=\"includes/menu/ThemeOffice/theme.js\"></script>\n";
+    echo "<script type=\"text/javascript\" src=\"includes/menu/JSCookMenu.js\"></script>\n";
+    echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"includes/menu/Office/theme.css\" />\n";
+    echo "<script type=\"text/javascript\" src=\"includes/menu/Office/theme.js\"></script>\n";
   }
 
   // Any other includes?
