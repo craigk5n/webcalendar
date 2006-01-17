@@ -574,22 +574,18 @@ textarea {
 #minicalendar td {
   font-size: <?php echo ( ! empty ( $GLOBALS['MINICALFONT'])?$GLOBALS['MINICALFONT']: '11px'); ?>;
 }
-#activitylog table,
 .embactlog {
   width: 100%;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-spacing: 0px;
 }
-#activitylog tr,
 .embactlog tr {
   background-color: #FFFFFF;
 }
-#activitylog .odd,
 .embactlog .odd {
   background-color: #EEEEEE;
 }
-#activitylog th,
 .embactlog th {
   width: 14%;
   color: <?php echo $GLOBALS['THFG']; ?>;
@@ -599,15 +595,11 @@ textarea {
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   padding: 1px 3px;
 }
-#activitylog th.usr,
 .embactlog th.usr,
-#activitylog th.cal,
 .embactlog th.cal,
-#activitylog th.action,
 .embactlog th.action {
   width: 7%;
 }
-#activitylog td,
 .embactlog td {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   padding: 1px 3px;

@@ -31,7 +31,7 @@ echo '<h3>' . translate("Activity Log") . "</h3>\n";
 
 echo '<a title="' . translate("Admin") . '" class="nav" href="adminhome.php">&laquo;&nbsp;' . translate("Admin") . '</a><br /><br />' . "\n";
 
-echo "<table>\n";
+echo "<table class=\"embactlog\">\n";
 echo "<tr><th class=\"usr\">\n" .
   translate("User") . "</th><th class=\"cal\">\n" .
   translate("Calendar") . "</th><th class=\"scheduled\">\n" .
