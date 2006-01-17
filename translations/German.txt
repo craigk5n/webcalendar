@@ -14,7 +14,8 @@
 # Last update: 9 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 10 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 12 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 01-12-2006
+# Last update: 17 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 01-17-2006
 
 
 ###############################################
@@ -146,7 +147,7 @@ Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
 # Page: list_unapproved.php
 #
 View this entry: Eintrag ansehen
-Approve/Confirm: Eintrag &Uuml;berprfen/Best&auml;tigen
+Approve/Confirm: Eintrag &Uuml;berpr&uuml;fen/Best&auml;tigen
 Approve this entry?: Diesen Eintrag best&auml;tigen?
 Reject: Ablehnen
 Reject this entry?: Eintrag ablehnen?
@@ -659,6 +660,7 @@ Allow user to customize colors: Den Benutzern das &auml;ndern der Farbeinstellun
 gradient-colors: Falls aktiviert, stufenweiser Farbverlauf (Farb&auml;nderung) m&ouml;glich. Das kann gro&szlig;e negative Auswirkung auf die Leistung haben.
 Enable gradient images for background colors: Aktiviern des stufenweisen Farbverlaufes (Farb&auml;nderung) f&uuml;r Hintergrundfarben
 Not available: Nicht verf&uuml;gbar
+Not Available: Nicht Verf&uuml;gbar
 Document background: Hintergrund
 Document title: Titel
 Document text: Textfarbe der Webkalenderseiten
@@ -1197,7 +1199,7 @@ Please see FAQ: Bitte in der FAQ nachlesen
 ###############################################
 # Page: includes/functions.php
 #
-Title: Webkalender
+Title: Webkalendar
 __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
 __month__ __dd__: __dd__. __month__
