@@ -403,6 +403,11 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <label><input type="radio" name="admin_SITE_EXTRAS_IN_POPUP" value="Y" <?php if ( $s["SITE_EXTRAS_IN_POPUP"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
   <label><input type="radio" name="admin_SITE_EXTRAS_IN_POPUP" value="N" <?php if ( $s["SITE_EXTRAS_IN_POPUP"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
  </td></tr>
+ <tr><td class="tooltip" title="<?php etooltip("popup-includes-participants-help")?>">
+  <?php etranslate("Display Participants in popup")?>:</td><td>
+  <label><input type="radio" name="admin_PARTICIPANTS_IN_POPUP" value="Y" <?php if ( $s["PARTICIPANTS_IN_POPUP"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_PARTICIPANTS_IN_POPUP" value="N" <?php if ( $s["PARTICIPANTS_IN_POPUP"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("allow-html-description-help")?>">
   <?php etranslate("Allow HTML in Description")?>:</td><td>
   <label><input type="radio" name="admin_ALLOW_HTML_DESCRIPTION" value="Y" <?php if ( $s["ALLOW_HTML_DESCRIPTION"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 

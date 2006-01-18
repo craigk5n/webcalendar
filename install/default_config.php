@@ -75,6 +75,7 @@ $webcalConfig = array (
 "OTHERMONTHBG"=>"#D0D0D0",
 "OVERRIDE_PUBLIC_TEXT"=>"Not Available",
 "OVERRIDE_PUBLIC"=>"N",
+"PARTICIPANTS_IN_POPUP"=>"N",
 "PLUGINS_ENABLED"=>"N",
 "POPUP_BG"=>"#FFFFFF",
 "POPUP_FG"=>"#000000",
@@ -191,7 +192,7 @@ function do_v11b_updates () {
 
  dbi_query ("UPDATE webcal_user_pref  SET cal_value = 'none'" .
     " WHERE cal_setting = 'LANGUAGE' AND cal_value = 'Browser-defined'");
-				 
+         
  //clear old category values
  dbi_query ( "UPDATE webcal_entry_user SET cal_category = NULL");  
  //mark existing exclusions as new exclusion type

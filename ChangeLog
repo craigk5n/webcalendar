@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Implemented RFE 1050527: Option for displaying participants in event pop-ups
  - Removed global table styles for activity_log.php page
  - Fixed bug 1407377: Entry of a task in the 'activity log' is not correct
  - Fixed bug 1403218: v1.1 Reminder Email not Formatted

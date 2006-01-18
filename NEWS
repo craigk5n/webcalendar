@@ -163,6 +163,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Implemented RFE 1050527: Option for displaying participants in event pop-ups
     + Removed global table styles for activity_log.php page
     + Added support for events overlspping into next day
     + Added support for BLOBs for MSSQL DB
