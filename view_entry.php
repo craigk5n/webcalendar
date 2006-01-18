@@ -612,7 +612,8 @@ if ( $single_user == "N" && ! empty ( $createby_fullname )  ) {
  <?php
     echo date_to_str ( $row[3] );
     echo " ";
-    echo display_time ( $row[4], 3 );
+    //change the 3 to 2 to display in server timezone
+    echo display_time ( $row[3] . $row[4], 3 );
    ?>
 </td></tr>
 <?php
