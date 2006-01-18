@@ -1092,9 +1092,9 @@ function site_extras_for_popup ( $id ) {
  * @return string The HTML for the event popup
  */
 function build_event_popup ( $popupid, $user, $description, $time,
-  $site_extras='', $location='', $name='' ) {
+  $site_extras='', $location='', $name='', $id='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname, $DISABLE_POPUPS,
-    $ALLOW_HTML_DESCRIPTION, $SUMMARY_LENGTH;
+    $ALLOW_HTML_DESCRIPTION, $SUMMARY_LENGTH, $PARTICIPANTS_IN_POPUP;
   
  if ( ! empty ( $DISABLE_POPUPS ) && $DISABLE_POPUPS == "Y" ) 
     return;
@@ -1104,6 +1104,33 @@ function build_event_popup ( $popupid, $user, $description, $time,
   if ( empty ( $popup_fullnames ) )
     $popup_fullnames = array ();
   
+  $partList = array();
+  if ( $id != '' && ! empty ( $PARTICIPANTS_IN_POPUP  ) && 
+    $PARTICIPANTS_IN_POPUP == 'Y' ) {
+    $sql = "SELECT webcal_entry_user.cal_login, webcal_user.cal_firstname, " .
+      "webcal_user.cal_lastname, webcal_entry_user.cal_status " . 
+      "FROM webcal_user, webcal_entry_user  " .
+      "WHERE webcal_entry_user.cal_id = $id AND " .
+      "webcal_entry_user.cal_login = webcal_user.cal_login AND  " .
+      "webcal_entry_user.cal_status IN ('A', 'W' ) ";
+    $res = dbi_query ( $sql );
+    if ( $res ) {
+      while ( $row = dbi_fetch_row ( $res ) ) {
+        $partList[] = $row[1] . " " . $row[2] . ( $row[3] == 'W'? '(?)':'' );
+      }
+      dbi_free_result ( $res );
+    }
+    $sql = "SELECT cal_fullname FROM webcal_entry_ext_user " .
+      "WHERE cal_id = $id ORDER by cal_fullname";
+    $res = dbi_query ( $sql );
+    if ( $res ) {
+      while ( $row = dbi_fetch_row ( $res ) ) {
+        $partList[] = $row[0] . " (" . translate ( "External User") . ")";
+      }
+      dbi_free_result ( $res );
+    }
+  }
+     
   if ( $user != $login ) {
     if ( empty ( $popup_fullnames[$user] ) ) {
       user_load_variables ( $user, "popuptemp_" );
@@ -1119,6 +1146,13 @@ function build_event_popup ( $popupid, $user, $description, $time,
   if ( ! empty ( $location ) )
   $ret .= "<dt>" . translate ("Location") . ":</dt>\n<dd> $location</dd>\n";
 
+  if ( ! empty ( $partList ) ) {
+    $ret .= "<dt>" . translate ("Participants") . ":</dt>\n";
+    foreach ( $partList as $parts ) {
+      $ret .= "<dd> $parts</dd>\n";
+    }
+  }
+  
   $ret .= "<dt>" . translate ("Description") . ":</dt>\n<dd>";
   if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
     $str = str_replace ( "&", "&amp;", $description );
@@ -1766,7 +1800,7 @@ function print_entry ( $event, $date ) {
   } else {
     $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
       $event->getDescription(), $timestr, site_extras_for_popup ( $id ),
-      $event->getLocation(), $name );
+      $event->getLocation(), $name, $event->getId() );
  }
 }
 
@@ -3474,7 +3508,8 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
       translate("This event is confidential"), "" );
   } else {
     $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      $event->getDescription(), $timestr, site_extras_for_popup ( $id ), $event->getLocation() );
+      $event->getDescription(), $timestr, site_extras_for_popup ( $id ), 
+      $event->getLocation(), '', $event->getId() );
   }
 }
 
@@ -3645,7 +3680,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
       translate("This event is confidential"), "" );
   else
     $eventinfo .= build_event_popup ( $popupid, $event->getLogin(), $event->getDescription(),
-      "", site_extras_for_popup ( $id ), $event->getLocation() );
+      "", site_extras_for_popup ( $id ), $event->getLocation(), '', $event->getId() );
 }
 
 /**
@@ -4672,7 +4707,8 @@ function print_entry_timebar ( $event, $date ) {
       translate("This event is confidential"), "" );
   else
     $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      $event->getDescription(), $timestr, site_extras_for_popup ( $id ), $event->getLocation() );
+      $event->getDescription(), $timestr, site_extras_for_popup ( $id ), 
+      $event->getLocation(), '', $event->getId() );
 }
 
 /**

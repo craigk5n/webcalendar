@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 01-11-2006
+# Translation last updated on 01-18-2006
 
 
 ###############################################
@@ -67,6 +67,11 @@ Task approved: Task approved
 Task rejected: Task rejected
 Task updated: Task updated
 Task deleted: Task deleted
+Journal created: Journal created
+Journal approved: Journal approved
+Journal rejected: Journal rejected
+Journal updated: Journal updated
+Journal deleted: Journal deleted
 Notification sent: Notification sent
 Reminder sent: Reminder sent
 Attachment: Attachment
@@ -197,6 +202,8 @@ disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field 
 Disable Repeating field: Disable Repeating field
 popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
 Display Site Extras in popup: Display Site Extras in popup
+popup-includes-participants-help: If enabled, participants are displayed in popups for public and personal entries.
+Display Participants in popup: Display Participants in popup
 allow-html-description-help: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
 Allow HTML in Description: Allow HTML in Description
 allow-view-other-help: Specifies whether one user may view another user's calendar.
@@ -1114,11 +1121,6 @@ This will add the entry to your calendar.: This will add the entry to your calen
 Email all participants: Email all participants
 Show activity log: Show activity log
 Hide activity log: Hide activity log
-Journal created: Journal created
-Journal approved: Journal approved
-Journal rejected: Journal rejected
-Journal updated: Journal updated
-Journal deleted: Journal deleted
 Export this entry to: Export this entry to
 
 
@@ -1230,6 +1232,12 @@ Go to: Go to
 
 
 ###############################################
+# Page: includes/menu.php
+#
+Logout: Logout
+
+
+###############################################
 # Page: includes/site_extras.php
 #
 Send Reminder: Send Reminder
@@ -1243,7 +1251,6 @@ My Calendar: My Calendar
 Back to My Calendar: Back to My Calendar
 Add New Entry: Add New Entry
 Add New Task: Add New Task
-Logout: Logout
 Manage calendar of: Manage calendar of
 
 
