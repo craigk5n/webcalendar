@@ -15,7 +15,8 @@
 # Last update: 10 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 12 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 17 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 01-17-2006
+# Last update: 19 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 01-19-2006
 
 
 ###############################################
@@ -535,6 +536,8 @@ disable-repeating-field-help: Wenn sie mit "JA" best&auml;tigen wird das Wiederh
 Disable Repeating field: Terminwiederholungsfeld deaktivieren
 popup-includes-siteextras-help: Falls aktiviert - Erm&ouml;glicht die Anzeige benutzerdefinierter Felder die in 'site_extra.php' aktiviert wurden.
 Display Site Extras in popup: Anzeige der 'Site Extras' im Pop-Up
+popup-includes-participants-help: Falls aktiviert, werden die Benutzer im allgemeinen Kalender und bei den pers&ouml;nlichen Eintragungen angezeigt
+Display Participants in popup: Anzeigen der Benutzer im Pop-Up
 allow-html-description-help: Falls aktiviert -  Benutzer kann HTML in der Beschreibung der Termine eintragen. Wenn nicht aktiviert, werden die HTML-Tags als Plain Text angezeigt. Warnung, bei Aktivierung erm&ouml;glicht es dem Benutzer Bildverkn&uuml;pfungen auf andere Webseiten.
 Allow HTML in Description: Erm&ouml;glicht HTML-Beschreibung der Termine
 allow-view-other-help: Gibt an, ob die Benutzer die Kalender anderer Teilnehmer sehen kann.
@@ -1199,7 +1202,7 @@ Please see FAQ: Bitte in der FAQ nachlesen
 ###############################################
 # Page: includes/functions.php
 #
-Title: Webkalendar
+Title: Webkalender
 __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
 __month__ __dd__: __dd__. __month__
