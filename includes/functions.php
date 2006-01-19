@@ -1069,7 +1069,7 @@ function site_extras_for_popup ( $id ) {
   }
 
   $extras = format_site_extras ( get_site_extra_fields ( $id ) );
-  if ( empty ( $extras ) ) return '';;
+  if ( empty ( $extras ) ) return '';
   
   $ret = '';
 
@@ -1531,7 +1531,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       $hasEvents = false;
       $title = '';
       if ( $boldDays ) {
-        $ev = get_entries ( $user, $dateYmd, $get_unapproved, 0 );
+        $ev = get_entries ( $user, $dateYmd, $get_unapproved, true, true );
         if ( count ( $ev ) > 0 ) {
           $hasEvents = true;
         $title = $ev[0]->getName();
