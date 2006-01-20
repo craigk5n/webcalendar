@@ -5983,11 +5983,15 @@ function get_OverLap ( $item, $i, $parent=true, $nextdur=0 ) {
     $next_duration = ($new_duration - 1440 ) * 60;
     $new_duration = 1439;
   }
-  if ( $realEndTS  >=  $midnight - 60 ) {        
+  if ( $realEndTS  >  $midnight - 60 ) {        
     $result[$i] = clone ( $item );    
-    $result[$i]->setDuration( $new_duration == 1439? $new_duration : $new_duration +1 );
-    $result[$i]->setTime( -($tz_offset[0]) * 10000 );
-    $result[$i]->setDate( date ( "Ymd", $midnight + (12 * 3600 ) ) );
+    $result[$i]->setDuration( $new_duration == 1439? 1440 : $new_duration );
+    if ($tz_offset[0] > 0) {
+      $result[$i]->setTime( (24 - $tz_offset[0]) * 10000 );
+    } else {
+      $result[$i]->setTime( -($tz_offset[0]) * 10000 );
+      $result[$i]->setDate( date ( "Ymd", $midnight + (12 * 3600 ) ) );
+    }
     if ( $parent )$result[$i]->setName( $result[$i]->getName() . " (cont.)");        
     $i++;  
     if ( $parent )$item->setDuration( $item->getDuration() - $item_duration -1);       
