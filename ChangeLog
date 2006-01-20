@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1410828: Save w/ Conflicts not working in v1.1
  - Fixed bug 1410487: ical export generates wrong escape sequences
  - Implemented RFE 1050527: Option for displaying participants in event pop-ups
  - Removed global table styles for activity_log.php page

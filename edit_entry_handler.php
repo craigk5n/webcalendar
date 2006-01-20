@@ -321,12 +321,13 @@ if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != "Y" ) {
 }
 
 if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
-  ! empty ( $rpt_year ) > 0 && $timetype != 'U' ) {
+  strlen ( $hour ) > 0 && $timetype != 'U' ) {
+  
+  if ( ! empty ( $rpt_year ) ) {  
     $endt = mktime ( $rpt_endhour, $rpt_endminute, 0, $rpt_month, $rpt_day,$rpt_year );
-} else {
-  $endt = 'NULL';
-}
-
+  } else {
+    $endt = 'NULL';
+  }
 
  $inclusion_list = array();
  $exception_list = array();
@@ -361,6 +362,7 @@ if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
 
   $conflicts = check_for_conflicts ( $dates, $duration, $eventstart,
     $participants, $login, empty ( $id ) ? 0 : $id );
+} //end  check for any schedule conflicts
 
 if ( empty ( $error ) && ! empty ( $conflicts ) ) {
   $error = translate("The following conflicts with the suggested time") .

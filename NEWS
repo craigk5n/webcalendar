@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1410828: Save w/ Conflicts not working in v1.1
       1410487: ical export generates wrong escape sequences
       1407377: Entry of a task in the 'activity log' is not correct
       1403218: v1.1 Reminder Email not Formatted
