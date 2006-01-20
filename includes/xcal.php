@@ -969,10 +969,15 @@ function export_ical ( $id='all', $attachment=false ) {
        $ret .= "$value\r\n";
        
     $name = preg_replace("/\r/", "", $name);
-    $name = addslashes ( $name );
-    $name = str_replace ( chr(10), chr(92).chr(110) , $name );
+    $name = str_replace ( chr(92), chr(92).chr(92) , $name ); //escape \
+    $name = str_replace ( chr(59), chr(92).chr(59) , $name ); //escape ;
+    $name = str_replace ( chr(44), chr(92).chr(44) , $name ); //escape ,
+    $name = str_replace ( chr(10), chr(92).chr(110) , $name ); //escape LF
     $description = preg_replace("/\r/", "", $description);
-    $description = addslashes ( $description );
+    $description = str_replace ( chr(92), chr(92).chr(92) , $description ); //escape \
+    $description = str_replace ( chr(59), chr(92).chr(59) , $description ); //escape ;
+    $description = str_replace ( chr(44), chr(92).chr(44) , $description ); //escape ,
+    $description = str_replace ( chr(10), chr(92).chr(110) , $description ); //escape LF
     $description = str_replace ( chr(10), chr(92).chr(110) , $description );
 
     /* SUMMARY of the event (folded to 76 char) */
