@@ -51,32 +51,32 @@ if ( ! empty ( $type ) && ( $type == 'T' || $type == 'N' ) ) {
   $view_type = "view_entry";  
 }
 if ( empty ( $error ) && $id > 0 ) {
-  if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'R' " .
-    "WHERE cal_login = '$app_user' AND cal_id = $id" ) ) {
+  if ( ! dbi_execute ( "UPDATE webcal_entry_user SET cal_status = 'R' " .
+    "WHERE cal_login = ? AND cal_id = ?" , array ( $app_user , $id ) ) ) {
     $error = translate("Error approving event") . ": " . dbi_error ();
   } else {
     activity_log ( $id, $login, $app_user, $log_reject, "" );
   }
 
   // Update any extension events related to this one.
-  $res = dbi_query ( "SELECT cal_id FROM webcal_entry " .
-    "WHERE cal_ext_for_id = $id" );
+  $res = dbi_execute ( "SELECT cal_id FROM webcal_entry " .
+    "WHERE cal_ext_for_id = ?" , array ( $id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $ext_id = $row[0];
-      if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'R' " .
-        "WHERE cal_login = '$app_user' AND cal_id = $ext_id" ) ) {
+      if ( ! dbi_execute ( "UPDATE webcal_entry_user SET cal_status = 'R' " .
+        "WHERE cal_login = ? AND cal_id = ?" , array ( $app_user , $ext_id ) ) ) {
         $error = translate("Error approving event") . ": " . dbi_error ();
-      } 
+      }
     }
     dbi_free_result ( $res );
   }
 
   // Email participants to notify that it was rejected.
   // Get list of participants
-  $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id and cal_status = 'A'";
+  $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? and cal_status = 'A'";
   //echo $sql."<br />";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql , array ( $id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) )
       $partlogin[] = $row[0];
@@ -84,8 +84,8 @@ if ( empty ( $error ) && $id > 0 ) {
   }
 
   // Get the name of the event
-  $sql = "SELECT cal_name, cal_description, cal_date, cal_time FROM webcal_entry WHERE cal_id = $id";
-  $res = dbi_query ( $sql );
+  $sql = "SELECT cal_name, cal_description, cal_date, cal_time FROM webcal_entry WHERE cal_id = ?";
+  $res = dbi_execute ( $sql , array ( $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     $name = $row[0];

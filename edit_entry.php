@@ -76,9 +76,9 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
     " cal_name, cal_description, cal_group_id, cal_location,  " .
     " cal_due_date, cal_due_time, cal_completed, cal_url " .
-    "FROM webcal_entry WHERE   cal_id = " . $id;
+    "FROM webcal_entry WHERE cal_id = ?";
 
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, array( $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     // If current user is creator of event, then they can edit
@@ -203,10 +203,10 @@ if ( $readonly == 'Y' || $is_nonuser ) {
       $rpt_end_date = $cal_date;
       $rpt_freq = 1;
     } else {
-      $res = dbi_query ( "SELECT cal_id, cal_type, cal_end, cal_endtime, " .
+      $res = dbi_execute ( "SELECT cal_id, cal_type, cal_end, cal_endtime, " .
         "cal_frequency, cal_byday, cal_bymonth, cal_bymonthday, cal_bysetpos, " .  
         "cal_byweekno, cal_byyearday, cal_wkst, cal_count  " .
-    "FROM webcal_entry_repeats WHERE cal_id = $id" );
+    "FROM webcal_entry_repeats WHERE cal_id = ?", array( $id ) );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
           $rpt_type = $row[1];
@@ -235,8 +235,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     }
    
   $sql = "SELECT cal_login,  cal_percent, cal_status " .
-   " FROM webcal_entry_user WHERE cal_id = $id";
-  $res = dbi_query ( $sql );
+   " FROM webcal_entry_user WHERE cal_id = ?";
+  $res = dbi_execute ( $sql, array( $id ) );
  if ( $res ) {
    while ( $row = dbi_fetch_row ( $res ) ) {
       $overall_percent[] = $row; 
@@ -254,8 +254,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
       isset ($bysetpos) || isset($bymonthday) || isset ($bymonth) || isset($byday));
   
     //Get Repeat Exceptions
-  $sql = "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = $id";
-    $res = dbi_query ( $sql );
+  $sql = "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = ?";
+    $res = dbi_execute ( $sql, array( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[1] == 1 ) {
@@ -271,9 +271,9 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   $sql = "SELECT  webcal_entry_categories.cat_id, cat_name " .
     " FROM webcal_entry_categories, webcal_categories " .
       " WHERE webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
-   " webcal_entry_categories.cal_id = $id  AND " . 
+   " webcal_entry_categories.cal_id = ?  AND " . 
       " webcal_categories.cat_owner IS NULL ";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, array( $id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
      $cat_id[] = "-" .$row[0];
@@ -288,10 +288,10 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     " webcal_entry_categories.cat_owner, webcal_entry_categories.cat_order, cat_name " .
     " FROM webcal_entry_categories, webcal_categories " .
     " WHERE ( webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
-    " webcal_entry_categories.cal_id = $id ) AND " . 
-    " webcal_categories.cat_owner = '" . $cat_owner . "'".
+    " webcal_entry_categories.cal_id = ? ) AND " . 
+    " webcal_categories.cat_owner = ?".
     " ORDER BY webcal_entry_categories.cat_order";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, array( $id, $cat_owner ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( empty ( $user ) || $login == $user || $is_assistant  || $is_admin ) {
@@ -305,9 +305,9 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   }
 
   //get participants
-  $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id AND " .
+  $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? AND " .
     " cal_status IN ('A', 'W' )";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, array( $id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants[$row[0]] = 1;

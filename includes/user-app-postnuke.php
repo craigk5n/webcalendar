@@ -123,9 +123,9 @@ function pn_active_session($sid) {
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
 
   // get login and last access time
-  $sql = "SELECT pn_uname, pn_lastused FROM $pn_user_table, $pn_session_table  WHERE pn_sessid = '$sid' ".
+  $sql = "SELECT pn_uname, pn_lastused FROM $pn_user_table, $pn_session_table  WHERE pn_sessid = ? ".
   "AND $pn_session_table.pn_uid <> 0 AND $pn_session_table.pn_uid=$pn_user_table.pn_uid ";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, array( $sid ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $login = $row[0];
@@ -136,7 +136,7 @@ function pn_active_session($sid) {
 
   // Get inactive session time limit and see if we have passed it
   $sql = "SELECT pn_value FROM $pn_settings_table WHERE pn_modname = '/PNConfig' AND pn_name = 'secinactivemins'";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $tmp = explode('"', $row[0]);
@@ -162,8 +162,8 @@ function pn_update_session($sid) {
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
 
   // get login and last access time
-  $sql = "UPDATE $pn_session_table  SET pn_lastused = '".time()."' WHERE pn_sessid = '$sid' ";
-  dbi_query ( $sql );
+  $sql = "UPDATE $pn_session_table  SET pn_lastused = ? WHERE pn_sessid = ? ";
+  dbi_execute ( $sql, array( time(), $sid ) );
 
   // if postnuke is in a separate db, we have to connect back to the webcal db
   if ($app_same_db != '1') $c = dbi_connect($db_host, $db_login, $db_password, $db_database);
@@ -186,8 +186,8 @@ function get_admins() {
   // if postnuke is in a separate db, we have to connect to it
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
 
-  $sql = "SELECT pn_uid FROM $pn_group_table WHERE pn_gid = $pn_admin_gid && pn_uid <> 2";
-  $res = dbi_query ( $sql );
+  $sql = "SELECT pn_uid FROM $pn_group_table WHERE pn_gid = ? && pn_uid <> 2";
+  $res = dbi_execute( $sql, array( $pn_admin_gid ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $cached_admins[] = $row[0];
@@ -225,7 +225,7 @@ function user_get_users () {
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
 
   $sql = "SELECT pn_uid, pn_name, pn_uname, pn_email FROM $pn_user_table WHERE pn_uid <> 1 && pn_uid <> 2 ORDER BY pn_name";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       list($fname, $lname) = split (" ",$row[1]);
@@ -275,9 +275,9 @@ function user_load_variables ( $login, $prefix ) {
   // if postnuke is in a separate db, we have to connect to it
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
   
-  $sql = "SELECT pn_uid, pn_name, pn_uname, pn_email FROM $pn_user_table WHERE pn_uname = '$login'";
+  $sql = "SELECT pn_uid, pn_name, pn_uname, pn_email FROM $pn_user_table WHERE pn_uname = ?";
 
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, array( $login ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       list($fname, $lname) = split (" ",$row[1]);
@@ -339,10 +339,10 @@ function user_is_admin($uid,$Admins) {
 function user_delete_user ( $user ) {
   // Get event ids for all events this user is a participant
   $events = array ();
-  $res = dbi_query ( "SELECT webcal_entry.cal_id " .
+  $res = dbi_execute ( "SELECT webcal_entry.cal_id " .
     "FROM webcal_entry, webcal_entry_user " .
     "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id " .
-    "AND webcal_entry_user.cal_login = '$user'" );
+    "AND webcal_entry_user.cal_login = ?", array( $user ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $events[] = $row[0];
@@ -353,8 +353,8 @@ function user_delete_user ( $user ) {
   // If just 1, then save id to be deleted
   $delete_em = array ();
   for ( $i = 0; $i < count ( $events ); $i++ ) {
-    $res = dbi_query ( "SELECT COUNT(*) FROM webcal_entry_user " .
-      "WHERE cal_id = " . $events[$i] );
+    $res = dbi_execute ( "SELECT COUNT(*) FROM webcal_entry_user " .
+      "WHERE cal_id = ?", array( $events[$i] ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
@@ -365,26 +365,26 @@ function user_delete_user ( $user ) {
   }
   // Now delete events that were just for this user
   for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
-    dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = " . $delete_em[$i] );
+    dbi_execute ( "DELETE FROM webcal_entry WHERE cal_id = ?", array( $delete_em[$i] ) );
   }
 
   // Delete user participation from events
-  dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_login = '$user'" );
+  dbi_execute ( "DELETE FROM webcal_entry_user WHERE cal_login = ?", array( $user ) );
 
   // Delete preferences
-  dbi_query ( "DELETE FROM webcal_user_pref WHERE cal_login = '$user'" );
+  dbi_execute ( "DELETE FROM webcal_user_pref WHERE cal_login = ?", array( $user ) );
 
   // Delete from groups
-  dbi_query ( "DELETE FROM webcal_group_user WHERE cal_login = '$user'" );
+  dbi_execute ( "DELETE FROM webcal_group_user WHERE cal_login = ?", array( $user ) );
 
   // Delete bosses & assistants
-  dbi_query ( "DELETE FROM webcal_asst WHERE cal_boss = '$user'" );
-  dbi_query ( "DELETE FROM webcal_asst WHERE cal_assistant = '$user'" );
+  dbi_execute ( "DELETE FROM webcal_asst WHERE cal_boss = ?", array( $user ) );
+  dbi_execute ( "DELETE FROM webcal_asst WHERE cal_assistant = ?", array( $user ) );
 
   // Delete user's views
   $delete_em = array ();
-  $res = dbi_query ( "SELECT cal_view_id FROM webcal_view " .
-    "WHERE cal_owner = '$user'" );
+  $res = dbi_execute ( "SELECT cal_view_id FROM webcal_view " .
+    "WHERE cal_owner = ?", array( $user ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $delete_em[] = $row[0];
@@ -392,16 +392,16 @@ function user_delete_user ( $user ) {
     dbi_free_result ( $res );
   }
   for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
-    dbi_query ( "DELETE FROM webcal_view_user WHERE cal_view_id = " .
-      $delete_em[$i] );
+    dbi_execute ( "DELETE FROM webcal_view_user WHERE cal_view_id = ?",
+      array( $delete_em[$i] ) );
   }
-  dbi_query ( "DELETE FROM webcal_view WHERE cal_owner = '$user'" );
+  dbi_execute ( "DELETE FROM webcal_view WHERE cal_owner = ?", array( $user ) );
 
   // Delete layers
-  dbi_query ( "DELETE FROM webcal_user_layers WHERE cal_login = '$user'" );
+  dbi_execute ( "DELETE FROM webcal_user_layers WHERE cal_login = ?", array( $user ) );
 
   // Delete any layers other users may have that point to this user.
-  dbi_query ( "DELETE FROM webcal_user_layers WHERE cal_layeruser = '$user'" );
+  dbi_execute ( "DELETE FROM webcal_user_layers WHERE cal_layeruser = ?", array( $user ) );
 }
 
 // Functions we don't use with this file:

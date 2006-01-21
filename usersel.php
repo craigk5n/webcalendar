@@ -20,6 +20,7 @@ for ( $i = 0; $i < count ( $exp ); $i++ ) {
   $selected[$exp[$i]] = 1;
 }
 
+$sql_params = array();
 $owner = ( $is_nonuser_admin || $is_assistant ? $user : $login ); 
 // load list of groups
 if ( $USER_SEES_ONLY_HIS_GROUPS == "Y" ) {
@@ -27,15 +28,16 @@ if ( $USER_SEES_ONLY_HIS_GROUPS == "Y" ) {
     "SELECT webcal_group.cal_group_id, webcal_group.cal_name " .
     "FROM webcal_group, webcal_group_user " .
     "WHERE webcal_group.cal_group_id = webcal_group_user.cal_group_id " .
-    "AND webcal_group_user.cal_login = '$owner' " .
+    "AND webcal_group_user.cal_login = ? " .
     "ORDER BY webcal_group.cal_name";
+  $sql_params[] = $owner;
 } else {
   // show all groups
   $sql = "SELECT cal_group_id, cal_name FROM webcal_group " .
     "ORDER BY cal_name";
 }
 
-$res = dbi_query ( $sql );
+$res = dbi_execute ( $sql , $sql_params );
 $groups = array ();
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {

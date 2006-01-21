@@ -6,11 +6,11 @@ if ($user != $login)
   $user = ( ($is_admin || $is_nonuser_admin) && $user ) ? $user : $login;
 
 # update user list
-dbi_query ( "DELETE FROM webcal_asst WHERE cal_boss = '$user'" );
+dbi_execute ( "DELETE FROM webcal_asst WHERE cal_boss = ?", array( $user ) );
 if ( ! empty ( $users ) ){
   for ( $i = 0; $i < count ( $users ); $i++ ) {
-    dbi_query ( "INSERT INTO webcal_asst ( cal_boss, cal_assistant ) " .
-      "VALUES ( '$user', '$users[$i]' )" );
+    dbi_execute ( "INSERT INTO webcal_asst ( cal_boss, cal_assistant ) " .
+      "VALUES ( ?, ? )", array( $user, $users[$i] ) );
   }
 }
 
@@ -24,12 +24,7 @@ print_header();
 <h2><?php etranslate("Error")?></h2>
 
 <blockquote>
-<?php
-
-echo $error;
-//if ( $sql != "" )
-//  echo "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
-//?>
+<?php echo $error; ?>
 </blockquote>
 
 <?php print_trailer(); ?>

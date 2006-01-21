@@ -105,9 +105,9 @@ function export_get_attendee($id, $export) {
     " webcal_entry.cal_create_by " . 
     "FROM webcal_entry_user LEFT JOIN  webcal_entry " .
     " ON webcal_entry_user.cal_id = webcal_entry.cal_id " .
-    " WHERE webcal_entry_user.cal_id = '$id' AND webcal_entry_user.cal_status <> 'D'";
+    " WHERE webcal_entry_user.cal_id = ? AND webcal_entry_user.cal_status <> 'D'";
 
-  $att_res =  dbi_query($request);
+  $att_res =  dbi_execute( $request , array ( $id ) );
 
   $count = 0;
 
@@ -124,9 +124,9 @@ function export_get_attendee($id, $export) {
 
   while (list($key,$row) = each($entry_array)) {
       $request = "SELECT cal_firstname, cal_lastname, cal_email, cal_login " .
-        " FROM webcal_user where cal_login = '". $row[0] . "'";
+        " FROM webcal_user where cal_login = ?";
 
-      $user_res = dbi_query($request);
+      $user_res = dbi_execute( $request , array ( $row[0] ) );
 
       $user = dbi_fetch_row($user_res);
 
@@ -223,9 +223,9 @@ function export_recurrence_ical( $id, $simple=false ) {
   global $timestamp_RRULE, $TIMEZONE, $ICS_TIMEZONES;
   
  $recurrance = '';
-  $sql = "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = '$id'";
+  $sql = "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = ?";
 
-  $res = dbi_query($sql);
+  $res = dbi_execute( $sql , array ( $id ) );
 
   if ($res) {
     $exdate = array();
@@ -246,10 +246,10 @@ function export_recurrence_ical( $id, $simple=false ) {
   . " webcal_entry_repeats.cal_bysetpos, webcal_entry_repeats.cal_byweekno, "
   . " webcal_entry_repeats.cal_byyearday, webcal_entry_repeats.cal_wkst, "
   . " webcal_entry_repeats.cal_count, webcal_entry.cal_duration"
-    . " FROM webcal_entry, webcal_entry_repeats WHERE webcal_entry_repeats.cal_id = '$id'"
-    . " AND webcal_entry.cal_id = '$id' ORDER BY webcal_entry.cal_date";
+    . " FROM webcal_entry, webcal_entry_repeats WHERE webcal_entry_repeats.cal_id = ?"
+    . " AND webcal_entry.cal_id = ? ORDER BY webcal_entry.cal_date";
 
-  $res = dbi_query($sql);
+  $res = dbi_execute( $sql , array ( $id , $id ) );
 
   if ($res) {
     if ( $row = dbi_fetch_row($res) ) {
@@ -384,9 +384,9 @@ function export_recurrence_ical( $id, $simple=false ) {
 }
 
 function export_recurrence_vcal($id, $date) {
-  $sql = "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = '$id'";
+  $sql = "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = ?";
 
-  $res = dbi_query($sql);
+  $res = dbi_execute( $sql , array ( $id ) );
 
   if ($res) {
     $exdate = array();
@@ -407,10 +407,10 @@ function export_recurrence_vcal($id, $date) {
   . " webcal_entry_repeats.cal_bymonthday,  webcal_entry_repeats.cal_byday, "
   . " webcal_entry_repeats.cal_bysetpos, webcal_entry_repeats.cal_byweekno, "
   . " webcal_entry_repeats.cal_byyearday, webcal_entry_repeats.cal_wkst "
-    . " FROM webcal_entry, webcal_entry_repeats WHERE webcal_entry_repeats.cal_id = '$id'"
-    . "AND webcal_entry.cal_id = '$id'";
+    . " FROM webcal_entry, webcal_entry_repeats WHERE webcal_entry_repeats.cal_id = ?"
+    . "AND webcal_entry.cal_id = ?";
 
-  $res = dbi_query($sql);
+  $res = dbi_execute( $sql , array ( $id , $id ) );
 
   if ($res) {
     if ( $row = dbi_fetch_row($res) ) {
@@ -525,8 +525,8 @@ function export_get_utc_date($date, $time=0) {
 
 function export_alarm_vcal($id,$date,$time=0) {
   $sql = "SELECT cal_data FROM webcal_site_extras " .
-         "WHERE cal_id = $id AND cal_type = 7 AND cal_remind = 1";
-  $res = dbi_query ( $sql );
+         "WHERE cal_id = ? AND cal_type = 7 AND cal_remind = 1";
+  $res = dbi_execute ( $sql , array ( $id ) );
   $row = dbi_fetch_row ( $res );
   dbi_free_result ( $res );
 
@@ -561,9 +561,9 @@ function export_alarm_ical ( $id, $date, $description ) {
     return;
 
   $sql = "SELECT cal_data FROM webcal_site_extras " .
-    "WHERE cal_id = $id AND cal_type = " . EXTRA_REMINDER .  " AND " .
+    "WHERE cal_id = ? AND cal_type = " . EXTRA_REMINDER .  " AND " .
     "cal_remind = 1";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql , array ( $id ) );
   $row = dbi_fetch_row ( $res );
   dbi_free_result ( $res );
 
@@ -594,6 +594,8 @@ function export_get_event_entry($id='all') {
   global $use_all_dates, $include_layers, $fromyear,$frommonth,$fromday,
     $endyear,$endmonth,$endday,$modyear,$modmonth,$modday,$login,$user;
   global $DISPLAY_UNAPPROVED, $layers;
+  
+  $sql_params = array();
   // We export repeating events only with the pilot-datebook CSV format
   $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name " .
     ", webcal_entry.cal_priority, webcal_entry.cal_date " .
@@ -610,13 +612,15 @@ function export_get_event_entry($id='all') {
 
   if ($id == "all") {
       $sql .= "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id AND " .
- " ( webcal_entry_user.cal_login = '" . $login . "'";
+ " ( webcal_entry_user.cal_login = ?";
+     $sql_params[] = $login;
       if ( $user && $user != $login ) {
-        $sql .= " OR webcal_entry_user.cal_login = '$user'";
+        $sql .= " OR webcal_entry_user.cal_login = ?";
+        $sql_params[] = $user;
       } else if ( $include_layers && $layers ) {
         foreach ( $layers as $layer ) {
-          $sql .= " OR webcal_entry_user.cal_login = '" .
-            $layer['cal_layeruser'] . "'";
+          $sql .= " OR webcal_entry_user.cal_login = ?";
+          $sql_params[] = $layer['cal_layeruser'];
         }
       }
       $sql .= " ) ";
@@ -624,38 +628,47 @@ function export_get_event_entry($id='all') {
  if (!$use_all_dates) {
    $startdate = sprintf ( "%04d%02d%02d", $fromyear, $frommonth, $fromday );
    $enddate = sprintf ( "%04d%02d%02d", $endyear, $endmonth, $endday );
-   $sql .= " AND webcal_entry.cal_date >= $startdate " .
-     "AND webcal_entry.cal_date <= $enddate";
+   $sql .= " AND webcal_entry.cal_date >= ? " .
+     "AND webcal_entry.cal_date <= ?";
+   $sql_params[] = $startdate;
+   $sql_params[] = $enddate;
    $moddate = sprintf ( "%04d%02d%02d", $modyear, $modmonth, $modday );
-   $sql .= " AND webcal_entry.cal_mod_date >= $moddate";
+   $sql .= " AND webcal_entry.cal_mod_date >= ?";
+   $sql_params[] = $moddate;
  }
   } else {
-      $sql .= "WHERE webcal_entry.cal_id = '$id' AND " .
- "webcal_entry_user.cal_id = '$id' AND " .
- "( webcal_entry_user.cal_login = '" . $login . "'";
+      $sql .= "WHERE webcal_entry.cal_id = ? AND " .
+ "webcal_entry_user.cal_id = ? AND " .
+ "( webcal_entry_user.cal_login = ?";
+      $sql_params[] = $id;
+      $sql_params[] = $id;
+      $sql_params[] = $login;
         // TODO: add support for user in URL so we can export from other
         // calendars, particularly non-user calendars.
  //"webcal_entry_user.cal_id = '$id'";
       if ( ! empty ( $user )  && $user != $login ) {
-        $sql .= " OR webcal_entry_user.cal_login = '$user'";
+        $sql .= " OR webcal_entry_user.cal_login = ?";
+        $sql_params[] = $user;
       } else if ( $layers ) {
         foreach ( $layers as $layer ) {
-          $sql .= " OR webcal_entry_user.cal_login = '" .
-             $layer['cal_layeruser'] . "'";
+          $sql .= " OR webcal_entry_user.cal_login = ?";
+          $sql_params[] = $layer['cal_layeruser'];
         }
       }
       $sql .= " ) ";
   } //end if $id=all
 
-  if ( $DISPLAY_UNAPPROVED == "N"  || $login == "__public__" )
+  if ( $DISPLAY_UNAPPROVED == "N"  || $login == "__public__" ) {
     $sql .= " AND webcal_entry_user.cal_status = 'A'";
-  else
+  }
+  else {
     $sql .= " AND webcal_entry_user.cal_status IN ('W','A')";
+  }
 
   $sql .= " ORDER BY webcal_entry.cal_date";
 
   //echo "SQL: $sql <p>";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql , $sql_params );
 
   return $res;
 } //end function export_get_event_entry($id)
@@ -691,10 +704,10 @@ function save_uid_for_event ( $importId, $id , $uid ) {
   // events imported into webcalendar become property of webcalendar.
   $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
     "cal_login, cal_import_type, cal_external_id ) VALUES ( " .
-    "$importId, $id, '$login', 'publish', '$uid' )";
+    "?, ?, ?, ?, ? )";
    
   //do_debug ( "SQL: $sql" );
-  if ( ! dbi_query ( $sql ) ) {
+  if ( ! dbi_execute ( $sql , array ( $importId , $id , $login , 'publish' , $uid ) ) ) {
     $error = translate("Database error") . ": " . dbi_error ();
     //do_debug ( $error );
   }
@@ -711,7 +724,7 @@ function create_import_instance () {
   $importId = 1;
 
   $sql = "SELECT MAX(cal_import_id) FROM webcal_import";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $importId = $row[0] + 1;
@@ -719,9 +732,8 @@ function create_import_instance () {
     dbi_free_result ( $res );
   }
   $sql = "INSERT INTO webcal_import ( cal_import_id, cal_name, " .
-    "cal_date, cal_type, cal_login ) VALUES ( $importId, '$name', " .
-    date("Ymd") . ", 'publish', '$login' )";
-  if ( ! dbi_query ( $sql ) ) {
+    "cal_date, cal_type, cal_login ) VALUES ( ?, ?, ?, ?, ? )";
+  if ( ! dbi_execute ( $sql , array ( $importId, $name , date("Ymd") , 'publish', $login ) ) ) {
     $error = translate("Database error") . ": " . dbi_error ();
     return;
   }
@@ -895,12 +907,12 @@ function export_ical ( $id='all', $attachment=false ) {
     $categories = array();
     $sql = "SELECT webcal_categories.cat_name " .
       " FROM webcal_categories, webcal_entry_categories " .
-      " WHERE webcal_entry_categories.cal_id = $id AND " . 
+      " WHERE webcal_entry_categories.cal_id = ? AND " . 
       " webcal_entry_categories.cat_id = webcal_categories.cat_id AND ".
-      " (webcal_entry_categories.cat_owner = '" . $login . "' OR  " . 
+      " (webcal_entry_categories.cat_owner = ? OR  " . 
       " webcal_entry_categories.cat_owner IS NULL) " .
       " ORDER BY webcal_entry_categories.cat_order";
-    $res = dbi_query ( $sql );
+    $res = dbi_execute ( $sql , array ( $id , $login ) );
     while ( $row = dbi_fetch_row ( $res ) ) {
       $categories[] = $row[0];
     }
@@ -914,9 +926,9 @@ function export_ical ( $id='all', $attachment=false ) {
     $sql = "SELECT webcal_import_data.cal_external_id " .
       "FROM webcal_import_data, webcal_entry_user WHERE " .
       "webcal_import_data.cal_id = webcal_entry_user.cal_id AND " .
-      "webcal_import_data.cal_id = $id AND " .
-      "webcal_entry_user.cal_login = '$login'";
-    $res = dbi_query ( $sql );
+      "webcal_import_data.cal_id = ? AND " .
+      "webcal_entry_user.cal_login = ?";
+    $res = dbi_execute ( $sql , array ( $id , $login ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         // event has been published (or imported) before
@@ -1123,7 +1135,7 @@ function import_data ( $data, $overwrite, $type ) {
   $subType = 'icalclient';
  }
   // Generate a unique import id
-  $res = dbi_query ( "SELECT MAX(cal_import_id) FROM webcal_import" );
+  $res = dbi_execute ( "SELECT MAX(cal_import_id) FROM webcal_import" );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $importId = $row[0] + 1;
@@ -1131,9 +1143,8 @@ function import_data ( $data, $overwrite, $type ) {
     dbi_free_result ( $res );
   }
   $sql = "INSERT INTO webcal_import ( cal_import_id, cal_name, " .
-    "cal_date, cal_type, cal_login ) VALUES ( $importId, NULL, " .
-    date("Ymd") . ", '$type', '$login' )";
-  if ( ! dbi_query ( $sql ) ) {
+    "cal_date, cal_type, cal_login ) VALUES ( ?, NULL, ?, ?, ? )";
+  if ( ! dbi_execute ( $sql , array ( $importId , date("Ymd") , $type, $login ) ) ) {
     $errormsg = translate("Database error") . ": " . dbi_error ();
     return;
   }
@@ -1247,12 +1258,12 @@ foreach ( $data as $Entry ){
       // NOTE: (cek) commented out 'publish'.  Will not work if event
       // was originally created from importing.
       if ( ! empty ( $Entry['UID'] ) ) {
-        $res = dbi_query ( "SELECT webcal_import_data.cal_id " .
+        $res = dbi_execute ( "SELECT webcal_import_data.cal_id " .
           "FROM webcal_import_data, webcal_entry_user WHERE " .
           //"cal_import_type = 'publish' AND " .
           "webcal_import_data.cal_id = webcal_entry_user.cal_id AND " .
-          "webcal_entry_user.cal_login = '$login' AND " .
-          "cal_external_id = '$Entry[UID]'" );
+          "webcal_entry_user.cal_login = ? AND " .
+          "cal_external_id = ?" , array ( $login , $Entry[UID] ) );
         if ( $res ) {
           if ( $row = dbi_fetch_row ( $res ) ) {
             if ( ! empty ( $row[0] ) ) {
@@ -1266,7 +1277,7 @@ foreach ( $data as $Entry ){
  
       if ( ! $updateMode ) {
         // Add the Event
-        $res = dbi_query ( "SELECT MAX(cal_id) FROM webcal_entry" );
+        $res = dbi_execute ( "SELECT MAX(cal_id) FROM webcal_entry" );
         if ( $res ) {
           $row = dbi_fetch_row ( $res );
           $id = $row[0] + 1;
@@ -1283,10 +1294,10 @@ foreach ( $data as $Entry ){
       $names = array ();
       $values = array ();
       $names[] = 'cal_id';
-      $values[] = "$id";
+      $values[] = $id;
       if ( ! $updateMode ) {
         $names[] = 'cal_create_by';
-        $values[] = "'$login'";
+        $values[] = $login;
       }
       $names[] = 'cal_date';
       $values[] = sprintf ( "%04d%02d%02d",
@@ -1307,12 +1318,12 @@ foreach ( $data as $Entry ){
       if ( ! empty ( $Entry['Class'])){   
         $names[] = 'cal_access';     
         $entryclass = $Entry['Class'];
-        $values[] = "'$entryclass'";
+        $values[] = $entryclass;
       } 
 
       if ( ! empty ( $cal_completed ) ) {
           $names[] = 'cal_completed';
-          $values[] = "'$cal_completed'";
+          $values[] = $cal_completed;
        }
    if ( ! empty ( $Entry['Due'] ) ) {
         $names[] = 'cal_due_date';
@@ -1323,9 +1334,9 @@ foreach ( $data as $Entry ){
       if ( ! empty ( $Entry['CalendarType'] ) ){      
         $names[] = 'cal_type';
      if ( $Entry['CalendarType'] == "VEVENT" ) {
-          $values[] = (! empty ( $Entry['Repeat']) )? "'M'" : "'E'";
+          $values[] = (! empty ( $Entry['Repeat']) )? "M" : "E";
      } else if ( $Entry['CalendarType'] == "VTODO" ) {
-          $values[] = (! empty ( $Entry['Repeat']) )? "'N'" : "'T'";
+          $values[] = (! empty ( $Entry['Repeat']) )? "N" : "T";
      }
       }
       if ( strlen ( $Entry['Summary'] ) == 0 )
@@ -1337,7 +1348,7 @@ foreach ( $data as $Entry ){
       $Entry['Summary'] = str_replace ( "\\\"", "\"", $Entry['Summary'] );
       $Entry['Summary'] = str_replace ( "'", "\\'", $Entry['Summary'] );
       $names[] = 'cal_name';
-      $values[] = "'" . $Entry['Summary'] .  "'";
+      $values[] = $Entry['Summary'];
       $Entry['Description'] = str_replace ( "\\n", "\n", $Entry['Description'] );
       $Entry['Description'] = str_replace ( "\\'", "'", $Entry['Description'] );
       $Entry['Description'] = str_replace ( "\\\"", "\"", $Entry['Description'] );
@@ -1362,24 +1373,37 @@ foreach ( $data as $Entry ){
         }
       }
       $names[] = 'cal_description';
-      $values[] = "'" . $Entry['Description'] .  "'";
+      $values[] = $Entry['Description'];
       //do_debug ( "descr='" . $Entry['Description'] . "'" );
+      $sql_params = array();
       if ( $updateMode ) {
         $sql = "UPDATE webcal_entry SET ";
         for ( $f = 0; $f < count ( $names ); $f++ ) {
           if ( $f > 0 )
             $sql .= ", ";
-          $sql .= $names[$f] . " = " . $values[$f];
+          $sql .= $names[$f] . " = ?";
+          $sql_params[] = $values[$f];
         }
-        $sql .= " WHERE cal_id = $id";
+        $sql .= " WHERE cal_id = ?";
+        $sql_params[] = $id;
       } else {
-        $sql = "INSERT INTO webcal_entry ( " . implode ( ", ", $names ) .
-          " ) VALUES ( " . implode ( ", ", $values ) . " )";
+        $string_names = '';
+        $string_values = '';
+        for ( $f = 0; $f < count ( $names ); $f++ ) {
+          if ( $f > 0 ) {
+            $string_names .= ", ";
+            $string_values .= ", ";
+          }
+          $string_names .= $names[$f];
+          $string_values .= '?';
+          $sql_params[] = $values[$f];
+        }
+        $sql = "INSERT INTO webcal_entry ( " . $string_names . " ) VALUES ( " . $string_values . " )";
       }
 
       //do_debug ( "SQL> $sql" );
       if ( empty ( $error ) ) {
-        if ( ! dbi_query ( $sql ) ) {
+        if ( ! dbi_execute ( $sql , $sql_params ) ) {
           $error .= translate("Database error") . ": " . dbi_error ();
           do_debug ( $error );
           break;
@@ -1412,36 +1436,36 @@ foreach ( $data as $Entry ){
         if ($ImportType == "PALMDESKTOP") {
           $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
             "cal_login, cal_import_type, cal_external_id ) VALUES ( " .
-            "$importId, $id, '$calUser', 'palm', '$Entry[RecordID]' )";
+            "?, ?, ?, ?, ? )";
           $sqlLog .= $sql . "<br />\n";
-          if ( ! dbi_query ( $sql ) ) {
+          if ( ! dbi_execute ( $sql , array ( $importId, $id, $calUser, 'palm', $Entry['RecordID'] ) ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
             break;
           }
         }
         else if ($ImportType == "VCAL") {
-          $uid = empty ( $Entry['UID'] ) ? "null" : "'$Entry[UID]'";
+          $uid = empty ( $Entry['UID'] ) ? NULL : $Entry['UID'];
           if ( strlen ( $uid ) > 200 )
-            $uid = "NULL";
+            $uid = NULL;
           $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
             "cal_login, cal_import_type, cal_external_id ) VALUES ( " .
-            "$importId, $id, '$calUser', 'vcal', $uid )";
+            "?, ?, ?, ?, ? )";
           $sqlLog .= $sql . "<br />\n";
-          if ( ! dbi_query ( $sql ) ) {
+          if ( ! dbi_execute ( $sql , array ( $importId, $id, $calUser, 'vcal', $uid ) ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
             break;
           }
         }
         else if ($ImportType == "ICAL") {
-          $uid = empty ( $Entry['UID'] ) ? "null" : "'$Entry[UID]'";
+          $uid = empty ( $Entry['UID'] ) ? NULL : $Entry['UID'];
           // This may cause problems
           if ( strlen ( $uid ) > 200 )
-            $uid = "NULL";
+            $uid = NULL;
           $sql = "INSERT INTO webcal_import_data ( cal_import_id, cal_id, " .
             "cal_login, cal_import_type, cal_external_id ) VALUES ( " .
-            "$importId, $id, '$calUser', 'ical', $uid )";
+            "?, ?, ?, ?, ? )";
           $sqlLog .= $sql . "<br />\n";
-          if ( ! dbi_query ( $sql ) ) {
+          if ( ! dbi_execute ( $sql , array ( $importId, $id, $calUser, 'ical', $uid ) ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
             break;
           }
@@ -1454,10 +1478,9 @@ foreach ( $data as $Entry ){
       if ( ! $updateMode ) {
         //do_debug ( "Adding event $id for user $participants[0] with status=$status" );
         $sql = "INSERT INTO webcal_entry_user " .
-          "( cal_id, cal_login, cal_status, cal_percent ) VALUES ( $id, '" .
-          $participants[0] . "', '" . $status . "', $percent )";
+          "( cal_id, cal_login, cal_status, cal_percent ) VALUES ( ?, ?, ?, ? )";
         //do_debug ( "SQL> $sql" );
-        if ( ! dbi_query ( $sql ) ) {
+        if ( ! dbi_execute ( $sql , array ( $id , $participants[0] , $status , $percent ) ) ) {
           $error = translate("Database error") . ": " . dbi_error ();
           do_debug ( "Error: " . $error );
           break;
@@ -1465,15 +1488,15 @@ foreach ( $data as $Entry ){
       } else {
         //do_debug ( "Updating event $id for user $participants[0] with status=$status" );
         //do_debug ( "SQL> $sql" );
-        $sql = "UPDATE webcal_entry_user SET cal_status = '". $status . "' ," .
-         " cal_percent = '" . $percent . "' " .
-          " WHERE cal_id = $id";
-       if ( ! dbi_query ( $sql ) ) {
+        $sql = "UPDATE webcal_entry_user SET cal_status = ? ," .
+         " cal_percent = ?" .
+          " WHERE cal_id = ?";
+       if ( ! dbi_execute ( $sql , array ( $status , $percent , $id ) ) ) {
          $error = translate("Database error") . ": " . dbi_error ();
          do_debug ( "Error: " . $error );
          break;
        }
-    dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id" );    
+    dbi_execute ( "DELETE FROM webcal_entry_categories WHERE cal_id = ?" , array ( $id ) );
      }
      //update Categories
    if ( ! empty ($Entry['Categories'] ) ) {
@@ -1481,11 +1504,9 @@ foreach ( $data as $Entry ){
      $cat_order = 1;
      foreach ( $cat_ids as $cat_id ) {
            $sql = "INSERT INTO webcal_entry_categories " .
-            "( cal_id, cat_id, cat_order ) VALUES ( $id, " .
-       $cat_id . ", $cat_order )";
-       $cat_order++;   
-
-          if ( ! dbi_query ( $sql ) ) {
+            "( cal_id, cat_id, cat_order ) VALUES ( ?, ?, ? )";
+       
+          if ( ! dbi_execute ( $sql , array ( $id , $cat_id , $cat_order++ ) ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
             do_debug ( "Error: " . $error );
             break;
@@ -1495,8 +1516,8 @@ foreach ( $data as $Entry ){
      // Add repeating info
      if ( $updateMode ) {
        // remove old repeating info
-       dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id" );
-       dbi_query ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = $id" );
+       dbi_execute ( "DELETE FROM webcal_entry_repeats WHERE cal_id = ?" , array ( $id ) );
+       dbi_execute ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?" , array ( $id )  );
      }
    
      if (! empty ($Entry['Repeat']['Frequency'])) {
@@ -1506,7 +1527,7 @@ foreach ( $data as $Entry ){
        $values[]  = $id;
    
        $names[]  = 'cal_type';
-       $values[] = "'" . RepeatType($Entry['Repeat']['Frequency']) . "'";
+       $values[] = RepeatType($Entry['Repeat']['Frequency']);
         
        $names[] = 'cal_frequency';
        $values[] = ( ! empty ( $Entry['Repeat']['Interval'] ) ? 
@@ -1514,37 +1535,37 @@ foreach ( $data as $Entry ){
  
       if (! empty ( $Entry['Repeat']['ByMonth'] ) ){
         $names[] = 'cal_bymonth';
-        $values[]  = "'" . $Entry['Repeat']['ByMonth'] . "'";
+        $values[]  = $Entry['Repeat']['ByMonth'];
       } 
     
       if (! empty ( $Entry['Repeat']['ByMonthDay'] ) ){
         $names[] = 'cal_bymonthday';
-        $values[]  = "'" . $Entry['Repeat']['ByMonthDay'] . "'";
+        $values[]  = $Entry['Repeat']['ByMonthDay'];
       } 
       if ( ! empty ( $Entry['Repeat']['ByDay'] ) ){
         $names[] = 'cal_byday';
-        $values[] =  "'" . $Entry['Repeat']['ByDay'] . "'";
+        $values[] =  $Entry['Repeat']['ByDay'];
       }
    if (! empty ( $Entry['Repeat']['BySetPos'] ) ){
     $names[] = 'cal_bysetpos';
-    $values[] = "'" . $Entry['Repeat']['BySetPos'] . "'";
+    $values[] = $Entry['Repeat']['BySetPos'];
    }
    if (! empty ( $Entry['Repeat']['ByWeekNo'] ) ){
     $names[] = 'cal_byweekno';
-    $values[] = "'" . $Entry['Repeat']['ByWeekNo']. "'";
+    $values[] = $Entry['Repeat']['ByWeekNo'];
    }
    if (! empty ( $Entry['Repeat']['ByYearDay'] ) ) {
     $names[] = 'cal_byyearday';
-    $values[] = "'" . $Entry['Repeat']['ByYearDay'] . "'";
+    $values[] = $Entry['Repeat']['ByYearDay'];
    }
    if (! empty ( $Entry['Repeat']['Wkst'] ) ) {
     $names[] = 'cal_wkst';
-    $values[] = "'" . $Entry['Repeat']['Wkst'] . "'";
+    $values[] = $Entry['Repeat']['Wkst'];
    }
  
     if (! empty ( $Entry['Repeat']['Count'] ) ) {
     $names[] = 'cal_count';
-    $values[] = "'" . $Entry['Repeat']['Count'] . "'";
+    $values[] = $Entry['Repeat']['Count'];
    }
 
       if ( ! empty ( $Entry['Repeat']['Until'] ) ) {
@@ -1563,10 +1584,21 @@ foreach ( $data as $Entry ){
       //  }
      }
  
-    $sql = "INSERT INTO webcal_entry_repeats ( " . implode ( ", ", $names ) .
-          " ) VALUES ( " . implode ( ", ", $values ) . " )";
+    $string_names = '';
+    $string_values = '';
+    $sql_params = array();
+    for ( $f = 0; $f < count ( $names ); $f++ ) {
+      if ( $f > 0 ) {
+        $string_names .= ", ";
+        $string_values .= ", ";
+      }
+      $string_names .= $names[$f];
+      $string_values .= '?';
+      $sql_params[] = $values[$f];
+    }
+    $sql = "INSERT INTO webcal_entry_repeats ( " . $string_names . " ) VALUES ( " . $string_values . " )";
      
-       if ( ! dbi_query ( $sql ) ) {
+       if ( ! dbi_execute ( $sql , $sql_params ) ) {
          $error = "Unable to add to webcal_entry_repeats: ".dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
          break;
         }
@@ -1576,9 +1608,9 @@ foreach ( $data as $Entry ){
           foreach ($Entry['Repeat']['Exceptions'] as $ex_date) {
             $ex_date = date("Ymd",$ex_date);
             $sql = "INSERT INTO webcal_entry_repeats_not " .
-              "( cal_id, cal_date, cal_exdate ) VALUES ( $id, $ex_date, 1 )";
+              "( cal_id, cal_date, cal_exdate ) VALUES ( ?,?,? )";
  
-            if ( ! dbi_query ( $sql ) ) {
+            if ( ! dbi_execute ( $sql , array ( $id, $ex_date, 1 ) ) ) {
               $error = "Unable to add to webcal_entry_repeats_not: ".
                 dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
               break;
@@ -1590,9 +1622,9 @@ foreach ( $data as $Entry ){
           foreach ($Entry['Repeat']['Inclusions'] as $inc_date) {
             $inc_date = date("Ymd",$inc_date);
             $sql = "INSERT INTO webcal_entry_repeats_not " .
-              "( cal_id, cal_date, cal_exdate ) VALUES ( $id, $inc_date, 0 )";
+              "( cal_id, cal_date, cal_exdate ) VALUES ( ?,?,? )";
  
-            if ( ! dbi_query ( $sql ) ) {
+            if ( ! dbi_execute ( $sql , array ( $id, $inc_date, 0 ) ) ) {
               $error = "Unable to add to webcal_entry_repeats_not: ".
                 dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
               break;
@@ -1604,7 +1636,7 @@ foreach ( $data as $Entry ){
 
       // Add Alarm info -> site_extras
       if ( $updateMode ) {
-        dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_type = 7 AND cal_id = $id" );
+        dbi_execute ( "DELETE FROM webcal_site_extras WHERE cal_type = 7 AND cal_id = ?" , array ( $id ) );
       }
       if ( ! empty ( $Entry['AlarmSet'] ) && $Entry['AlarmSet'] == 1 ) {
         $alarms = explode ( ",", $Entry['Alarm']);
@@ -1629,9 +1661,9 @@ foreach ( $data as $Entry ){
           if ($Entry['AlarmAdvanceType'] == 2){ $RM = $RM * ( 60 * 24 ); }
           $sql = "INSERT INTO webcal_site_extras ( cal_id, " .
             "cal_name, cal_type, cal_remind, cal_data ) VALUES " .
-            "( $id, 'Reminder" . $rem_count . "', 7, 1, '$RM' )";
+            "( ?, ?, ?, ?, ? )";
 
-          if ( ! dbi_query ( $sql ) ) {
+          if ( ! dbi_execute ( $sql , array ( $id, 'Reminder' . $rem_count, 7, 1, $RM ) ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
           }
      $rem_count++;
@@ -1707,11 +1739,11 @@ foreach ( $data as $Entry ){
     $old = array_keys ( $oldUIDs );
     for ( $i = 0; $i < count ( $old ); $i++ ) {
       $sql = "SELECT cal_id FROM webcal_import_data WHERE " .
-        "cal_import_type = '$type' AND " .
-        "cal_external_id = '$old[$i]' AND " .
-        "cal_login = '$calUser' AND " .
-        "cal_id < $firstEventId";
-      $res = dbi_query ( $sql );
+        "cal_import_type = ? AND " .
+        "cal_external_id = ? AND " .
+        "cal_login = ? AND " .
+        "cal_id < ?";
+      $res = dbi_execute ( $sql , array ( $type , $old[$i] , $calUser , $firstEventId ) );
       if ( $res ) {
         while ( $row = dbi_fetch_row ( $res ) ) {
           $oldIds[] = $row[0];
@@ -1723,9 +1755,9 @@ foreach ( $data as $Entry ){
     }
     for ( $i = 0; $i < count ( $oldIds ); $i++ ) {
       $sql = "UPDATE webcal_entry_user SET cal_status = 'D' " .
-        "WHERE cal_id = $oldIds[$i]";
+        "WHERE cal_id = ?";
       $sqlLog .= $sql . "<br />\n";
-      dbi_query ( $sql );
+      dbi_execute ( $sql , array ( $oldIds[$i] ) );
       $numDeleted++;
     }
  }
@@ -2053,8 +2085,8 @@ function icaldate_to_timestamp ($vdate, $tzid = '', $plus_d = '0', $plus_m = '0'
    case "":
      break;   
    default:
-     $sql = "SELECT zone_name FROM webcal_tz_zones WHERE zone_name = '$tzid'";
-     $res = dbi_query($sql);
+     $sql = "SELECT zone_name FROM webcal_tz_zones WHERE zone_name = ?";
+     $res = dbi_execute($sql , array ( $tzid ) );
      if ( $row = dbi_fetch_row($res) ) {
        $this_TIMEZONE = $tzid;
     }   else {
@@ -2664,24 +2696,24 @@ function get_categories_id_byname ( $cat_names) {
   global $login, $IMPORT_CATEGORIES;
  $categories = explode (",", $cat_names );
  foreach ( $categories as $cat_name ) {
-  $res = dbi_query ( "SELECT cat_id FROM webcal_categories WHERE " .
-   "cat_name  = '" . $cat_name . "' AND " . 
-   "(cat_owner = '" . $login . "' OR cat_owner IS NULL )");
+  $res = dbi_execute ( "SELECT cat_id FROM webcal_categories WHERE " .
+   "cat_name  = ? AND " . 
+   "(cat_owner = ? OR cat_owner IS NULL )" , array ( $cat_name , $login ) );
   if ( $res ) {
    if ( $row = dbi_fetch_row ( $res ) ) {
     $ret[] = $row[0];
     dbi_free_result ( $res );
    } else if ( ! empty ( $IMPORT_CATEGORIES )&& $IMPORT_CATEGORIES == "Y"){ 
      //Need to insert new Category
-    $res = dbi_query ( "SELECT MAX(cat_id) FROM webcal_categories" );
+    $res = dbi_execute ( "SELECT MAX(cat_id) FROM webcal_categories" );
     if ( $res ) {
      $row = dbi_fetch_row ( $res );
      $id = $row[0] + 1;
      dbi_free_result ( $res );
      $sql = "INSERT INTO webcal_categories " .
       "( cat_id, cat_owner, cat_name ) " .
-      "VALUES ( $id, '$login', '$cat_name' )";
-     if ( ! dbi_query ( $sql ) ) {
+      "VALUES ( ?,?,? )";
+     if ( ! dbi_execute ( $sql , array ( $id, $login, $cat_name ) ) ) {
       $error = translate ("Database error") . ": " . dbi_error();
       do_debug ( $error );
      } else {
@@ -2765,8 +2797,8 @@ function export_vtimezone( $timestamp ) {
   $tzid = $TIMEZONE; //default value
   //see if a short version is available
   //found out many apps simply use the Olsen names...comment out for now
-  //$res = dbi_query ( "SELECT tz_list_text " .
-   //  "FROM webcal_tz_list WHERE tz_list_name = '$TIMEZONE'" );
+  //$res = dbi_execute ( "SELECT tz_list_text " .
+   //  "FROM webcal_tz_list WHERE tz_list_name = ?" , array ( $TIMEZONE ) );
   //if ( $res ) {
   //  $row = dbi_fetch_row ( $res );
   // if ( $row ) {
@@ -2825,9 +2857,9 @@ function export_vtimezone( $timestamp ) {
 function get_tz_info ( $timestamp ) {
   global $TIMEZONE;
   $sql = "SELECT  zone_rules, zone_gmtoff, zone_format " . 
-    " FROM webcal_tz_zones WHERE zone_name  = '" . trim( $TIMEZONE ) . "' " .
-    " AND zone_from <= $timestamp AND zone_until >= $timestamp";
-  $res = dbi_query (  $sql );
+    " FROM webcal_tz_zones WHERE zone_name  = ? " .
+    " AND zone_from <= ? AND zone_until >= ?";
+  $res = dbi_execute ( $sql , array ( trim( $TIMEZONE ) , $timestamp , $timestamp ) );
   $dst_rules = array ();
   $dst_results = array ();
   if ( $res ) {
@@ -2896,11 +2928,11 @@ function get_vtimezone_rules ( $zone_rule, $timestamp  ) {
 
  $sql = "SELECT rule_from, rule_to, rule_in, rule_on, rule_at, rule_save, rule_letter, rule_at_suffix  " . 
    "FROM webcal_tz_rules " .
-  " WHERE rule_name  = '" . $zone_rule  ."'"  . 
-   " AND rule_to >= $year " .
+  " WHERE rule_name  = ?"  . 
+   " AND rule_to >= ? " .
   " ORDER BY rule_to DESC, rule_save DESC, rule_from  ";
   
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql , array ( $zone_rule , $year ) );
 
   $dst_rules = array();
   $i = $row_cnt = 0;

@@ -179,7 +179,7 @@ function load_global_settings () {
       $REQUEST_URI = $_SERVER["REQUEST_URI"];
   }
 
-  $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_config" );
+  $res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_config" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $setting = $row[0];
@@ -214,8 +214,8 @@ function load_global_settings () {
           $SERVER_URL .= ":" . $SERVER_PORT;
         $SERVER_URL .= $uri;
 
-        dbi_query ( "INSERT INTO webcal_config ( cal_setting, cal_value ) ".
-          "VALUES ( 'SERVER_URL', '$SERVER_URL' )" );
+        dbi_execute ( "INSERT INTO webcal_config ( cal_setting, cal_value ) ".
+          "VALUES ( ?, ? )", array( 'SERVER_URL', $SERVER_URL ) );
       }
     }
   }
@@ -247,7 +247,7 @@ function get_plugin_list ( $include_disabled=false ) {
   if ( ! $include_disabled )
     $sql .= " AND cal_value = 'Y'";
   $sql .= " ORDER BY cal_setting";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql );
   $plugins = array ();
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -590,9 +590,9 @@ function load_user_preferences ( $guest='') {
   $browser_lang = get_browser_language ();
   $prefarray = array ();
 
-  $res = dbi_query (
+  $res = dbi_execute (
     "SELECT cal_setting, cal_value FROM webcal_user_pref " .
-    "WHERE cal_login = '$tmp_login'" );
+    "WHERE cal_login = ?", array( $tmp_login ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $setting = $row[0];
@@ -613,11 +613,11 @@ function load_user_preferences ( $guest='') {
     dbi_free_result ( $res );
   }
   // get views for this user and global views
-  $res = dbi_query (
+  $res = dbi_execute (
     "SELECT cal_view_id, cal_name, cal_view_type, cal_is_global " .
     "FROM webcal_view " .
-    "WHERE cal_owner = '$tmp_login' OR cal_is_global = 'Y' " .
-    "ORDER BY cal_name" );
+    "WHERE cal_owner = ? OR cal_is_global = 'Y' " .
+    "ORDER BY cal_name", array( $tmp_login ) );
   if ( $res ) {
     $views = array ();
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -650,9 +650,9 @@ function load_user_preferences ( $guest='') {
    if ( $LANGUAGE == "none" ) {
       $lang =  $browser_lang; 
   }
-    dbi_query ( "INSERT INTO webcal_user_pref " .
+    dbi_execute ( "INSERT INTO webcal_user_pref " .
       "( cal_login, cal_setting, cal_value ) VALUES " .
-      "( '$tmp_login', 'LANGUAGE', '$lang' )" );
+      "( ?, ?, ? )", array( $tmp_login, 'LANGUAGE', $lang ) );
   }
 
   reset_language ( ! empty ( $LANGUAGE) && $LANGUAGE != 'none'? $LANGUAGE : $browser_lang );
@@ -686,10 +686,10 @@ function event_get_external_users ( $event_id, $use_mailto=0 ) {
   global $error;
   $ret = "";
 
-  $res = dbi_query ( "SELECT cal_fullname, cal_email " .
+  $res = dbi_execute ( "SELECT cal_fullname, cal_email " .
     "FROM webcal_entry_ext_user " .
-    "WHERE cal_id = $event_id " .
-    "ORDER by cal_fullname" );
+    "WHERE cal_id = ? " .
+    "ORDER by cal_fullname", array( $event_id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( strlen ( $ret ) )
@@ -749,7 +749,7 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
     return;
   }
 
-  $res = dbi_query ( "SELECT MAX(cal_log_id) FROM webcal_entry_log" );
+  $res = dbi_execute ( "SELECT MAX(cal_log_id) FROM webcal_entry_log" );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $next_id = $row[0] + 1;
@@ -758,14 +758,13 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
   }
   $date = gmdate ( "Ymd" );
   $time = gmdate ( "Gis" );
-  $sql_text = empty ( $text ) ? "NULL" : "'$text'";
+  $sql_text = empty ( $text ) ? NULL : $text;
   
-  $sql_user_cal = empty ( $user_cal ) ? "NULL" : "'$user_cal'";
+  $sql_user_cal = empty ( $user_cal ) ? NULL : $user_cal;
   $sql = "INSERT INTO webcal_entry_log ( " .
     "cal_log_id, cal_entry_id, cal_login, cal_user_cal, cal_type, " .
-    "cal_date, cal_time, cal_text ) VALUES ( $next_id, $event_id, " .
-    "'$user', $sql_user_cal, '$type', $date, $time, $sql_text )";
-  if ( ! dbi_query ( $sql ) ) {
+    "cal_date, cal_time, cal_text ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )";
+  if ( ! dbi_execute ( $sql, array( $next_id, $event_id, $user, $sql_user_cal, $type, $date, $time, $sql_text ) ) ) {
     echo "Database error: " . dbi_error ();
     echo "<br />\nSQL:<br />\n$sql";
     exit;
@@ -807,8 +806,8 @@ function get_my_users () {
   if ( $GROUPS_ENABLED == "Y" && $USER_SEES_ONLY_HIS_GROUPS == "Y" &&
     ! $is_admin ) {
     // get groups that current user is in
-    $res = dbi_query ( "SELECT cal_group_id FROM webcal_group_user " .
-      "WHERE cal_login = '$login'" );
+    $res = dbi_execute ( "SELECT cal_group_id FROM webcal_group_user " .
+      "WHERE cal_login = ?", array( $login ) );
     $groups = array ();
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -838,17 +837,22 @@ function get_my_users () {
       return $ret;
     }
     // get list of users in the same groups as current user
-    $sql = "SELECT DISTINCT(webcal_group_user.cal_login), cal_lastname, cal_firstname from     webcal_group_user " .
+    $sql = "SELECT DISTINCT(webcal_group_user.cal_login), cal_lastname, cal_firstname FROM webcal_group_user " .
       "LEFT JOIN webcal_user ON webcal_group_user.cal_login = webcal_user.cal_login " .
       "WHERE cal_group_id ";
     if ( count ( $groups ) == 1 )
-      $sql .= "= " . $groups[0];
+      $sql .= "= ?";
     else {
-      $sql .= "IN ( " . implode ( ", ", $groups ) . " )";
+	  // build count( $groups ) placeholders separated with commas
+	  $placeholders = '';
+	  for ( $p_i = 0; $p_i < count( $groups ); $p_i++ ) {
+        $placeholders .= ( $p_i == 0 ) ? "?" : ", ?";
+	  }
+      $sql .= "IN ( $placeholders )";
     }
     $sql .= " ORDER BY cal_lastname, cal_firstname, webcal_group_user.cal_login";
     //echo "SQL: $sql <br />\n";
-    $res = dbi_query ( $sql );
+    $res = dbi_execute ( $sql, $groups );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         if ( isset ( $u_byname[$row[0]] ) ) $ret[] = $u_byname[$row[0]];
@@ -902,10 +906,9 @@ function get_pref_setting ( $user, $setting ) {
   }
 
   $sql = "SELECT cal_value FROM webcal_user_pref " .
-    "WHERE cal_login = '" . $user . "' AND " .
-    "cal_setting = '" . $setting . "'";
+    "WHERE cal_login = ? AND cal_setting = ?";
   //echo "SQL: $sql <br />\n";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, array( $user, $setting ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) )
       $ret = $row[0];
@@ -941,10 +944,10 @@ function load_user_layers ($user="",$force=0) {
     return; // not allowed to view others' calendars, so cannot use layers
 
   if ( $force || ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS != "N" ) ) {
-    $res = dbi_query (
+    $res = dbi_execute (
       "SELECT cal_layerid, cal_layeruser, cal_color, cal_dups " .
       "FROM webcal_user_layers " .
-      "WHERE cal_login = '$user' ORDER BY cal_layerid" );
+      "WHERE cal_login = ? ORDER BY cal_layerid", array( $user ) );
     if ( $res ) {
       $count = 1;
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -1102,18 +1105,17 @@ function build_event_popup ( $popupid, $user, $description, $time,
  $ret = "<dl id=\"$popupid\" class=\"popup\">\n";
 
   if ( empty ( $popup_fullnames ) )
-    $popup_fullnames = array ();
-  
+    $popup_fullnames = array ();  
   $partList = array();
   if ( $id != '' && ! empty ( $PARTICIPANTS_IN_POPUP  ) && 
     $PARTICIPANTS_IN_POPUP == 'Y' ) {
     $sql = "SELECT webcal_entry_user.cal_login, webcal_user.cal_firstname, " .
       "webcal_user.cal_lastname, webcal_entry_user.cal_status " . 
       "FROM webcal_user, webcal_entry_user  " .
-      "WHERE webcal_entry_user.cal_id = $id AND " .
+      "WHERE webcal_entry_user.cal_id = ? AND " .
       "webcal_entry_user.cal_login = webcal_user.cal_login AND  " .
       "webcal_entry_user.cal_status IN ('A', 'W' ) ";
-    $res = dbi_query ( $sql );
+    $res = dbi_execute ( $sql,  array ( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $partList[] = $row[1] . " " . $row[2] . ( $row[3] == 'W'? '(?)':'' );
@@ -1121,8 +1123,8 @@ function build_event_popup ( $popupid, $user, $description, $time,
       dbi_free_result ( $res );
     }
     $sql = "SELECT cal_fullname FROM webcal_entry_ext_user " .
-      "WHERE cal_id = $id ORDER by cal_fullname";
-    $res = dbi_query ( $sql );
+      "WHERE cal_id = ? ORDER by cal_fullname";
+    $res = dbi_execute ( $sql, array ( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $partList[] = $row[0] . " (" . translate ( "External User") . ")";
@@ -1819,8 +1821,8 @@ function print_entry ( $event, $date ) {
 function get_site_extra_fields ( $eventid ) {
   $sql = "SELECT cal_name, cal_type, cal_date, cal_remind, cal_data " .
     "FROM webcal_site_extras " .
-    "WHERE cal_id = $eventid";
-  $res = dbi_query ( $sql );
+    "WHERE cal_id = ?";
+  $res = dbi_execute ( $sql, array( $eventid ) );
   $extras = array ();
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -2152,8 +2154,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
   //for all databases. This might be quicker also.
   $catlist = array(); 
   if ( $cat_id != '' ) {
-    $sql = "SELECT cal_id FROM webcal_entry_categories WHERE  cat_id = $cat_id ";
-    $res = dbi_query ( $sql );
+    $sql = "SELECT cal_id FROM webcal_entry_categories WHERE  cat_id = ? ";
+    $res = dbi_execute ( $sql, array( $cat_id ) );
     if ( $res ) {
       $i=0;
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -2162,6 +2164,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
       dbi_free_result ( $res );
     }
   }
+
+  $query_params = array();
   $sql = "SELECT webcal_entry.cal_name, webcal_entry.cal_description, "
     . "webcal_entry.cal_date, webcal_entry.cal_time, "
     . "webcal_entry.cal_id, webcal_entry.cal_ext_for_id, "
@@ -2194,7 +2198,12 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
     "AND webcal_entry_user.cal_status IN ('A','W') ";
 
   if (  count($catlist) > 0 ) {  
-    $sql .= "AND webcal_entry.cal_id IN ('" . implode ("','", $catlist) . "') ";
+    $placeholders = '';
+    for ( $p_i = 0; $p_i < count($catlist); $p_i++ ) {
+      $placeholders .= ( $p_i == 0 ) ? "?" : ", ?";
+      $query_params[] = $catlist[$p_i];
+    }
+    $sql .= "AND webcal_entry.cal_id IN ( $placeholders ) ";
   } else if ( $cat_id != '' ) {
     //force no rows to be returned
     $sql .= "AND 1 = 0 "; // no matching entries in category  
@@ -2207,13 +2216,15 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
     }
 
   if ( strlen ( $user ) > 0 )
-    $sql .= "AND (webcal_entry_user.cal_login = '" . $user . "' ";
+    $sql .= "AND (webcal_entry_user.cal_login = ? ";
+    $query_params[] = $user;
 
   if ( $user == $login && strlen ( $user ) > 0 ) {
     if ($layers) foreach ($layers as $layer) {
       $layeruser = $layer['cal_layeruser'];
 
-      $sql .= "OR webcal_entry_user.cal_login = '" . $layeruser . "' ";
+      $sql .= "OR webcal_entry_user.cal_login = ? ";
+	  $query_params[] = $layeruser;
 
       // while we are parsing the whole layers array, build ourselves
       // a new array that will help when we have to check for dups
@@ -2230,7 +2241,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
 
   // now order the results by time, then name
   $sql .= " ORDER BY webcal_entry.cal_time, webcal_entry.cal_name";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, $query_params );
   if ( $res ) {
     $i = 0;
     $checkdup_id = -1;
@@ -2244,9 +2255,9 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
       $primary_cat = '';
       $sql2 = "SELECT webcal_entry_categories.cat_id " .
       " FROM webcal_entry_categories " .
-      " WHERE webcal_entry_categories.cal_id =" . $row[4] . 
+      " WHERE webcal_entry_categories.cal_id = ? " . 
       " ORDER BY webcal_entry_categories.cat_order";
-      $res2 = dbi_query ( $sql2 );
+      $res2 = dbi_execute ( $sql2, array( $row[4] ) );
       if ( $res2 ) {
         $row2 = dbi_fetch_row ( $res2 ); //return first row only
         $primary_cat = $row2[0];
@@ -2306,8 +2317,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
      // Now load event exceptions/inclusions and store as array  
     for ( $i = 0; $i < count ( $result ); $i++ ) {
       if ( $result[$i]->getID() != '' ) {
-        $res = dbi_query ( "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not " .
-          "WHERE cal_id = " . $result[$i]->getID() );
+        $res = dbi_execute ( "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not " .
+          "WHERE cal_id = ?", array( $result[$i]->getID() ) );
         while ( $row = dbi_fetch_row ( $res ) ) {
           if ( $row[1] == 1 ) {
             $result[$i]->addRepeatException($row[0], $result[$i]->getID());
@@ -3086,7 +3097,8 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
   $hour = date ( "H", $eventstart );
   $minute = date ( "i", $eventstart ); 
   $evtcnt = array ();
-
+  
+  $query_params = array();
   $sql = "SELECT distinct webcal_entry_user.cal_login, webcal_entry.cal_time," .
     "webcal_entry.cal_duration, webcal_entry.cal_name, " .
     "webcal_entry.cal_id, webcal_entry.cal_ext_for_id, " .
@@ -3110,14 +3122,16 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
     if ( $i > 0 )
       $sql .= " OR ";
-    $sql .= " webcal_entry_user.cal_login = '" . $participants[$i] . "'";
+
+    $sql .= " webcal_entry_user.cal_login = ?";
+	$query_params[] = $participants[$i];
   }
   $sql .= " )";
   // make sure we don't get something past the end date of the
   // event we are saving.
   //echo "SQL: $sql<br />\n";
   $conflicts = "";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, $query_params );
   $found = array();
   $count = 0;
   if ( $res ) {
@@ -3861,14 +3875,17 @@ function display_unapproved_events ( $user ) {
   // events if UAC is not enabled
   if ( $user == "__public__" || $is_nonuser )
     return;
-
+  
+  $query_params = array();
   $sql = "SELECT COUNT(webcal_entry_user.cal_id) " .
     "FROM webcal_entry_user, webcal_entry " .
     "WHERE webcal_entry_user.cal_id = webcal_entry.cal_id " .
     "AND webcal_entry_user.cal_status = 'W' " .
     "AND ( webcal_entry.cal_ext_for_id IS NULL " .
     "OR webcal_entry.cal_ext_for_id = 0 ) " .
-    "AND ( webcal_entry_user.cal_login = '$user'";
+    "AND ( webcal_entry_user.cal_login = ?";
+  $query_params[] = $user;
+
   if ( $PUBLIC_ACCESS == "Y" && $is_admin && ! access_is_enabled () ) {
     $sql .= " OR webcal_entry_user.cal_login = '__public__'";
   }
@@ -3891,19 +3908,19 @@ function display_unapproved_events ( $user ) {
       }
     }    
     for ( $i = 0; $i < count ( $app_users ); $i++ ) {
-      $sql .= " OR webcal_entry_user.cal_login = '" .
-        $app_users[$i] . "' ";
+      $sql .= " OR webcal_entry_user.cal_login = ? ";
+	  $query_params[] = $app_users[$i];
     }
   } else if ( $NONUSER_ENABLED == 'Y' ) {
     $admincals = get_nonuser_cals ( $login );
     for ( $i = 0; $i < count ( $admincals ); $i++ ) {
-      $sql .= " OR webcal_entry_user.cal_login = '" .
-        $admincals[$i]['cal_login'] . "' ";
+      $sql .= " OR webcal_entry_user.cal_login = ? ";
+	  $query_params[] = $admincals[$i]['cal_login'];
     }
   }  
   $sql .= " )";
   //print "SQL: $sql<br />\n";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, $query_params );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] > 0 ) {
@@ -4307,9 +4324,17 @@ function load_user_categories ($ex_global = '') {
   $category_owners = array ();
   if ( $CATEGORIES_ENABLED == "Y" ) {
     $sql = "SELECT cat_id, cat_name, cat_owner FROM webcal_categories WHERE ";
-    $sql .=  ($ex_global == '') ? " (cat_owner = '$cat_owner') OR  (cat_owner IS NULL) ORDER BY cat_owner, cat_name" : " cat_owner = '$cat_owner' ORDER BY cat_name";
+    $query_params = array();
+	if ( $ex_global == '' ) {
+      $sql .= " (cat_owner = ?) OR (cat_owner IS NULL) ORDER BY cat_owner, cat_name";
+      $query_params[] = $cat_owner;
+    }
+    else {
+      $sql .= " cat_owner = ? ORDER BY cat_name";
+      $query_params[] = $cat_owner;
+    }
 
-    $res = dbi_query ( $sql );
+    $res = dbi_execute ( $sql, $query_params );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $cat_id = $row[0];
@@ -4392,10 +4417,10 @@ function html_to_8bits ( $html ) {
 function user_get_boss_list ( $assistant ) {
   global $bosstemp_fullname;
 
-  $res = dbi_query (
+  $res = dbi_execute (
     "SELECT cal_boss " .
     "FROM webcal_asst " .
-    "WHERE cal_assistant = '$assistant'" );
+    "WHERE cal_assistant = ?", array( $assistant ) );
   $count = 0;
   $ret = array ();
   if ( $res ) {
@@ -4424,8 +4449,8 @@ function user_is_assistant ( $assistant, $boss ) {
 
   if ( empty ( $boss ) )
     return false;
-  $res = dbi_query ( "SELECT * FROM webcal_asst " . 
-     "WHERE cal_assistant = '$assistant' AND cal_boss = '$boss'" );
+  $res = dbi_execute ( "SELECT * FROM webcal_asst " . 
+     "WHERE cal_assistant = ? AND cal_boss = ?", array( $assistant, $boss ) );
   if ( $res ) {
     if ( dbi_fetch_row ( $res ) )
       $ret = true;
@@ -4443,8 +4468,8 @@ function user_is_assistant ( $assistant, $boss ) {
  */
 function user_has_boss ( $assistant ) {
   $ret = false;
-  $res = dbi_query ( "SELECT * FROM webcal_asst " .
-    "WHERE cal_assistant = '$assistant'" );
+  $res = dbi_execute ( "SELECT * FROM webcal_asst " .
+    "WHERE cal_assistant = ?", array( $assistant ) );
   if ( $res ) {
     if ( dbi_fetch_row ( $res ) )
       $ret = true;
@@ -4766,9 +4791,9 @@ function user_is_participant ( $id, $user )
   $ret = false;
 
   $sql = "SELECT COUNT(cal_id) FROM webcal_entry_user " .
-    "WHERE cal_id = $id AND cal_login = '$user' AND " .
+    "WHERE cal_id = ? AND cal_login = ? AND " .
     "cal_status IN ('A','W')";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, array( $id, $user ) );
   if ( ! $res )
     die_miserable_death ( translate ( "Database error") . ": " .
       dbi_error () );
@@ -4801,9 +4826,15 @@ function get_nonuser_cals ($user = '') {
   $ret = array ();
   $sql = "SELECT cal_login, cal_lastname, cal_firstname, " .
     "cal_admin, cal_is_public FROM webcal_nonuser_cals ";
-  if ($user != '') $sql .= "WHERE cal_admin = '$user' ";
+  $query_params = array();
+
+  if ($user != '') {
+    $sql .= "WHERE cal_admin = ? ";
+	$query_params[] = $user;
+  }
   $sql .= "ORDER BY cal_lastname, cal_firstname, cal_login";
-  $res = dbi_query ( $sql );
+  
+  $res = dbi_execute ( $sql, $query_params );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( strlen ( $row[1] ) || strlen ( $row[2] ) )
@@ -4843,9 +4874,9 @@ function get_nonuser_cals ($user = '') {
 function nonuser_load_variables ( $login, $prefix ) {
   global $error,$nuloadtmp_email;
   $ret =  false;
-  $res = dbi_query ( "SELECT cal_login, cal_lastname, cal_firstname, " .
+  $res = dbi_execute ( "SELECT cal_login, cal_lastname, cal_firstname, " .
     "cal_admin, cal_is_public FROM " .
-    "webcal_nonuser_cals WHERE cal_login = '$login'" );
+    "webcal_nonuser_cals WHERE cal_login = ?", array( $login ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( strlen ( $row[1] ) || strlen ( $row[2] ) )
@@ -4883,8 +4914,8 @@ function nonuser_load_variables ( $login, $prefix ) {
 function user_is_nonuser_admin ( $login, $nonuser ) {
   $ret = false;
 
-  $res = dbi_query ( "SELECT * FROM webcal_nonuser_cals " .
-    "WHERE cal_login = '$nonuser' AND cal_admin = '$login'" );
+  $res = dbi_execute ( "SELECT * FROM webcal_nonuser_cals " .
+    "WHERE cal_login = ? AND cal_admin = ?", array( $nonuser, $login ) );
   if ( $res ) {
     if ( dbi_fetch_row ( $res ) )
       $ret = true;
@@ -4901,9 +4932,9 @@ function user_is_nonuser_admin ( $login, $nonuser ) {
  */
 function load_nonuser_preferences ($nonuser) {
   global $prefarray, $DATE_FORMAT_MY, $DATE_FORMAT, $DATE_FORMAT_MD;
-  $res = dbi_query (
+  $res = dbi_execute (
     "SELECT cal_setting, cal_value FROM webcal_user_pref " .
-    "WHERE cal_login = '$nonuser'" );
+    "WHERE cal_login = ?", array( $nonuser ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $setting = $row[0];
@@ -5449,10 +5480,10 @@ function get_rules ( $zone_rule, $timestamp  ) {
  $year = date ("Y", $timestamp );
 
  $sql = "SELECT rule_from, rule_to, rule_in, rule_on, rule_at, rule_save, rule_letter, rule_at_suffix  " . 
-   "FROM webcal_tz_rules WHERE rule_name  = '" . $zone_rule  ."'"  . 
-   " AND rule_from <= $year  AND rule_to >= $year  ORDER BY rule_in";
+   "FROM webcal_tz_rules WHERE rule_name  = ?"  . 
+   " AND rule_from <= ? AND rule_to >= ? ORDER BY rule_in";
   
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, array( $zone_rule, $year, $year ) );
 
   $dst_rules = array();
   $i = 0;
@@ -5493,9 +5524,9 @@ function get_rules ( $zone_rule, $timestamp  ) {
     $year = $year -1 ; 
     //We may get more than one row back. We want the first row
     $sql = "SELECT rule_save, rule_letter  " . 
-      "FROM webcal_tz_rules WHERE rule_name  = '" . $zone_rule  ."'"  . 
-      " AND rule_to >= $year ORDER BY rule_in DESC";
-    $res = dbi_query ( $sql );
+      "FROM webcal_tz_rules WHERE rule_name = ?" . 
+      " AND rule_to >= ? ORDER BY rule_in DESC";
+    $res = dbi_execute ( $sql, array( $zone_rule, $year ) );
     $i = 0;
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
@@ -5523,10 +5554,10 @@ function get_rules ( $zone_rule, $timestamp  ) {
  */ 
 function get_tz_time ( $timestamp, $tz_name, $is_gmt = 1, $use_dst = 1 ) {
   $sql = "SELECT  zone_rules, zone_gmtoff, zone_format " . 
-    " FROM webcal_tz_zones WHERE zone_name  = '" . trim( $tz_name ) . "' " .
-    " AND zone_from <= $timestamp AND zone_until >= $timestamp";
+    " FROM webcal_tz_zones WHERE zone_name  = ? " .
+    " AND zone_from <= ? AND zone_until >= ?";
 
-  $res = dbi_query (  $sql );
+  $res = dbi_execute (  $sql, array( trim( $tz_name ), $timestamp, $timestamp ) );
   $dst_rules = array ();
   $dst_results = array ();
   if ( $res ) {
@@ -5716,10 +5747,10 @@ function print_timezone_select_html ( $prefix, $tz ) {
 global $TZ_COMPLETE_LIST;
  
  if ( ! empty ( $TZ_COMPLETE_LIST ) && $TZ_COMPLETE_LIST == "Y" ) {
-    $res = dbi_query ( "SELECT  DISTINCT zone_name, zone_country " .
+    $res = dbi_execute ( "SELECT  DISTINCT zone_name, zone_country " .
                        "FROM webcal_tz_zones ORDER BY zone_country" );
   } else {
-   $res = dbi_query ( "SELECT  tz_list_name, tz_list_text " .
+   $res = dbi_execute ( "SELECT  tz_list_name, tz_list_text " .
                        "FROM webcal_tz_list ORDER BY tz_list_id" );
  }
    //allows different SETTING names between SERVER and USER
@@ -5845,9 +5876,9 @@ function load_template ( $login, $type )
 
   // First, check for a user-specific template
   if ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' ) {
-    $res = dbi_query (
+    $res = dbi_execute (
       "SELECT cal_template_text FROM webcal_user_template " .
-      "WHERE cal_type = '$type' and cal_login = '$login'" );
+      "WHERE cal_type = ? and cal_login = ?", array( $type, $login ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         $ret = $row[0];
@@ -5859,9 +5890,9 @@ function load_template ( $login, $type )
 
   // If no user-specific template, check for the system template
   if ( ! $found ) {
-    $res = dbi_query (
+    $res = dbi_execute (
       "SELECT cal_template_text FROM webcal_user_template " .
-      "WHERE cal_type = '$type' and cal_login = '__system__'" );
+      "WHERE cal_type = ? and cal_login = '__system__'", array( $type ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         $ret = $row[0];
@@ -5874,9 +5905,9 @@ function load_template ( $login, $type )
   // If still not found, the check the old location (WebCalendar 1.0 and
   // before)
   if ( ! $found ) {
-    $res = dbi_query (
+    $res = dbi_execute (
       "SELECT cal_template_text FROM webcal_report_template " .
-      "WHERE cal_template_type = '$type' and cal_report_id = 0" );
+      "WHERE cal_template_type = ? and cal_report_id = 0", array( $type ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         echo $row[0];
@@ -5989,8 +6020,8 @@ function get_OverLap ( $item, $i, $parent=true, $nextdur=0 ) {
     if ($tz_offset[0] > 0) {
       $result[$i]->setTime( (24 - $tz_offset[0]) * 10000 );
     } else {
-      $result[$i]->setTime( -($tz_offset[0]) * 10000 );
-      $result[$i]->setDate( date ( "Ymd", $midnight + (12 * 3600 ) ) );
+    $result[$i]->setTime( -($tz_offset[0]) * 10000 );
+    $result[$i]->setDate( date ( "Ymd", $midnight + (12 * 3600 ) ) );
     }
     if ( $parent )$result[$i]->setName( $result[$i]->getName() . " (cont.)");        
     $i++;  

@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Implemented magic_quote independance patch
  - Applied bug patch 1410478: patch for bugs in get_OverLap
  - Fixed bug 1410828: Save w/ Conflicts not working in v1.1
  - Fixed bug 1410487: ical export generates wrong escape sequences

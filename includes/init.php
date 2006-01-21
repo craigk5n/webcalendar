@@ -42,7 +42,6 @@
  * @version $Id$
  * @package WebCalendar
  */
-
  
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';

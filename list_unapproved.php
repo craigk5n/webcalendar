@@ -66,11 +66,11 @@ function list_unapproved ( $user ) {
     "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id " .
     "AND ( webcal_entry.cal_ext_for_id IS NULL " .
     "OR webcal_entry.cal_ext_for_id = 0 ) AND " .
-    "( webcal_entry_user.cal_login = '$user'  ";
+    "( webcal_entry_user.cal_login = ?  ";
       
   $sql .= ") AND webcal_entry_user.cal_status = 'W' " .
     "ORDER BY webcal_entry_user.cal_login, webcal_entry.cal_date";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql , array ( $user ) );
   $eventinfo = "";
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {

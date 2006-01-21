@@ -53,22 +53,22 @@ if ( access_is_enabled () && ! empty ( $user ) &&
 if ( empty ( $error ) && $id > 0 ) {
   $approve_type = LOG_APPROVE; //used in activity log below
   // Update any extension events related to this one.
-  $res = dbi_query ( "SELECT cal_id, cal_type FROM webcal_entry " .
-    "WHERE cal_ext_for_id = $id" );
+  $res = dbi_execute ( "SELECT cal_id, cal_type FROM webcal_entry " .
+    "WHERE cal_ext_for_id = ?", array( $id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $ext_id = $row[0];
       $approve_type = ( $row[1] == 'E' || $row[1] == 'M'? LOG_APPROVE : LOG_APPROVE_T ); 
-      if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'A' " .
-        "WHERE cal_login = '$app_user' AND cal_id = $ext_id" ) ) {
+      if ( ! dbi_execute ( "UPDATE webcal_entry_user SET cal_status = 'A' " .
+        "WHERE cal_login = ? AND cal_id = ?", array( $app_user, $ext_id ) ) ) {
         $error = translate("Error approving event") . ": " . dbi_error ();
       }
     }
     dbi_free_result ( $res );
   }
   
-  if ( ! dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'A' " .
-    "WHERE cal_login = '$app_user' AND cal_id = $id" ) ) {
+  if ( ! dbi_execute ( "UPDATE webcal_entry_user SET cal_status = 'A' " .
+    "WHERE cal_login = ? AND cal_id = ?", array( $app_user, $id ) ) ) {
     $error = translate("Error approving event") . ": " . dbi_error ();
   } else {
     activity_log ( $id, $login, $app_user, $approve_type, "" );
@@ -80,8 +80,8 @@ if ( strlen ( $comments ) && empty ( $cancel ) ) {
   // Email event creator to notify that it was approved with comments.
   // Get the name of the event
   $sql = "SELECT cal_name, cal_description, cal_date, cal_time, cal_create_by " .
-    "FROM webcal_entry WHERE cal_id = $id";
-  $res = dbi_query ( $sql );
+    "FROM webcal_entry WHERE cal_id = ?";
+  $res = dbi_execute ( $sql, array( $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     $name = $row[0];

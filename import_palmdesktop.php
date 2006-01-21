@@ -16,19 +16,19 @@ function parse_palmdesktop ($file, $exc_private = 1) {
 // Delete all Palm Events for $login to clear any events deleted in the palm
 // Return 1 if success
 function delete_palm_events($login) {
-  $res = dbi_query ( "SELECT cal_id FROM webcal_import_data " .
-    "WHERE cal_login = '$login' AND cal_import_type = 'palm'" );
+  $res = dbi_execute ( "SELECT cal_id FROM webcal_import_data " .
+    "WHERE cal_login = ? AND cal_import_type = ?", array( $login, 'palm' ) );
   if ( $res ) {
      while ( $row = dbi_fetch_row ( $res ) ) {
-       dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_id = $row[0]" );
-       dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $row[0]" );
-       dbi_query ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = $row[0]" );
-       dbi_query ( "DELETE FROM webcal_entry_log WHERE cal_entry_id = $row[0]" );
-       dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_id = $row[0]" );
-       dbi_query ( "DELETE FROM webcal_reminder_log WHERE cal_id = $row[0]" );
-       dbi_query ( "DELETE FROM webcal_import_data WHERE cal_id = $row[0]" );
-       dbi_query ( "DELETE FROM webcal_blob WHERE cal_id = $row[0]" );
-       dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = $row[0]" );
+       dbi_execute ( "DELETE FROM webcal_entry_user WHERE cal_id = ?", array( $row[0] ) );
+       dbi_execute ( "DELETE FROM webcal_entry_repeats WHERE cal_id = ?", array( $row[0] ) );
+       dbi_execute ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?", array( $row[0] ) );
+       dbi_execute ( "DELETE FROM webcal_entry_log WHERE cal_entry_id = ?", array( $row[0] ) );
+       dbi_execute ( "DELETE FROM webcal_site_extras WHERE cal_id = ?", array( $row[0] ) );
+       dbi_execute ( "DELETE FROM webcal_reminder_log WHERE cal_id = ?", array( $row[0] ) );
+       dbi_execute ( "DELETE FROM webcal_import_data WHERE cal_id = ?", array( $row[0] ) );
+       dbi_execute ( "DELETE FROM webcal_blob WHERE cal_id = ?", array( $row[0] ) );
+       dbi_execute ( "DELETE FROM webcal_entry WHERE cal_id = ?", array( $row[0] ) );
      }
   }
   dbi_free_result ( $res );

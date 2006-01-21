@@ -9,8 +9,8 @@ $is_my_event = false;
 if ( empty ( $id ) ) {
   $is_my_event = true; // new event
 } else {
-  $res = dbi_query ( "SELECT cat_id, cat_owner FROM webcal_categories " .
-    "WHERE cat_id = $id" );
+  $res = dbi_execute ( "SELECT cat_id, cat_owner FROM webcal_categories " .
+    "WHERE cat_id = ?", array( $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $id && $row[1] == $login )
@@ -37,24 +37,24 @@ $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $delete ) ) {
   // delete this category
   if ( $is_admin ) {
-    if ( ! dbi_query ( "DELETE FROM webcal_categories " .
-      "WHERE cat_id = $id AND " .
-      "( cat_owner = '$login' OR cat_owner IS NULL )" ) )
+    if ( ! dbi_execute ( "DELETE FROM webcal_categories " .
+      "WHERE cat_id = ? AND " .
+      "( cat_owner = ? OR cat_owner IS NULL )", array( $id, $login ) ) )
       $error = translate ("Database error") . ": " . dbi_error();
   } else {
-    if ( ! dbi_query ( "DELETE FROM webcal_categories " .
-      "WHERE cat_id = $id AND cat_owner = '$login'" ) )
+    if ( ! dbi_execute ( "DELETE FROM webcal_categories " .
+      "WHERE cat_id = ? AND cat_owner = ?", array( $id, $login ) ) )
       $error = translate ("Database error") . ": " . dbi_error();
   }
       
   // Set any events in this category to NULL
   if ( $is_admin ) {
-    if ( !  dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id AND " .
-      " ( cat_owner = '$login' OR cat_owner IS NULL)" ) ) 
+    if ( !  dbi_execute ( "DELETE FROM webcal_entry_categories WHERE cal_id = ? AND " .
+      " ( cat_owner = ? OR cat_owner IS NULL)", array( $id, $login ) ) ) 
     $error = translate ("Database error") . ": " . dbi_error();
   } else {
-    if ( !  dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
-      "AND cat_owner = '$login'" ) )
+    if ( !  dbi_execute ( "DELETE FROM webcal_entry_categories WHERE cal_id = ? " .
+      "AND cat_owner = ?", array( $id, $login ) ) )
     $error = translate ("Database error") . ": " . dbi_error();
  }
  
@@ -68,30 +68,30 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
 } else if ( empty ( $error ) ) {
   if ( ! empty ( $id ) ) {
     # update (don't let them change global status)
-    $sql = "UPDATE webcal_categories SET cat_name = '$catname' " .
-      "WHERE cat_id = $id";
-    if ( ! dbi_query ( $sql ) ) {
+    $sql = "UPDATE webcal_categories SET cat_name = ? " .
+      "WHERE cat_id = ?";
+    if ( ! dbi_execute ( $sql, array( $catname, $id ) ) ) {
       $error = translate ("Database error") . ": " . dbi_error();
     }
   } else {
     // add new category
     // get new id
-    $res = dbi_query ( "SELECT MAX(cat_id) FROM webcal_categories" );
+    $res = dbi_execute ( "SELECT MAX(cat_id) FROM webcal_categories" );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       $id = $row[0] + 1;
       dbi_free_result ( $res );
       if ( $is_admin ) {
         if ( $isglobal == "Y" )
-          $catowner = "NULL";
+          $catowner = NULL;
         else
-          $catowner = "'$login'";
+          $catowner = $login;
       } else
-        $catowner = "'$login'";
+        $catowner = $login;
       $sql = "INSERT INTO webcal_categories " .
         "( cat_id, cat_owner, cat_name ) " .
-        "VALUES ( $id, $catowner, '$catname' )";
-      if ( ! dbi_query ( $sql ) ) {
+        "VALUES ( ?, ?, ? )";
+      if ( ! dbi_execute ( $sql, array( $id, $catowner, $catname ) ) ) {
         $error = translate ("Database error") . ": " . dbi_error();
       }
     } else {

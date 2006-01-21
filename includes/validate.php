@@ -4,7 +4,7 @@
 // either the WebCalendar class or here in validate.php).
 function doDbSanityCheck () {
   global $db_login, $db_host, $db_database;
-  $res = @dbi_query ( "SELECT COUNT(cal_value) FROM webcal_config",
+  $res = @dbi_execute ( "SELECT COUNT(cal_value) FROM webcal_config", array(),
     false, false );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {

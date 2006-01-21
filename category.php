@@ -16,8 +16,8 @@ if ( $CATEGORIES_ENABLED == "N" ) {
 // If editing, make sure they are editing their own
 // (or they are an admin user).
 if ( ! empty ( $id ) ) {
-  $res = dbi_query ( "SELECT cat_id, cat_owner FROM webcal_categories WHERE " .
-    "cat_id = $id" );
+  $res = dbi_execute ( "SELECT cat_id, cat_owner FROM webcal_categories WHERE " .
+    "cat_id = ?", array( $id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] != $id )

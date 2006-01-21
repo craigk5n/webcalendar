@@ -48,7 +48,7 @@ $startid = getIntValue ( 'startid', true );
 if ( ! empty ( $startid ) )
   $sql .= "AND webcal_entry_log.cal_log_id <= $startid ";
 $sql .= "ORDER BY webcal_entry_log.cal_log_id DESC";
-$res = dbi_query ( $sql );
+$res = dbi_execute ( $sql );
 
 $nextpage = "";
 
@@ -94,8 +94,8 @@ if ( $res ) {
         etranslate("Task updated");
       else if ( $row[2] == LOG_DELETE_T )
         etranslate("Task deleted");
-      else if ( $row[2] ==  LOG_CREATE_J ) 
-        etranslate("Journal created");        
+      else if ( $row[2] ==  LOG_CREATE_J )
+        etranslate("Journal created");
       else if ( $row[2] == LOG_APPROVE_J )
         etranslate("Journal approved");
       else if ( $row[2] == LOG_REJECT_J )
@@ -103,7 +103,7 @@ if ( $res ) {
       else if ( $row[2] == LOG_UPDATE_J )
         etranslate("Journal updated");
       else if ( $row[2] == LOG_DELETE_J )
-        etranslate("Journal deleted");    
+        etranslate("Journal deleted");
       else if ( $row[2] == LOG_NOTIFICATION )
         etranslate("Notification sent");
       else if ( $row[2] == LOG_REMINDER )
@@ -137,7 +137,7 @@ if ( ! empty ( $nextpage ) ) {
 
 if ( ! empty ( $startid ) ) {
   $previd = $startid + $PAGE_SIZE;
-  $res = dbi_query ( "SELECT MAX(cal_log_id) FROM " .
+  $res = dbi_execute ( "SELECT MAX(cal_log_id) FROM " .
     "webcal_entry_log" );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {

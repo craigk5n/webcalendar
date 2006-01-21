@@ -63,8 +63,8 @@ if ( empty( $viewname ) ) {
 // get list of users for this view
 $all_users = false;
 if ( ! $newview ) {
-  $sql = "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id";
-    $res = dbi_query ( $sql );
+  $sql = "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?";
+    $res = dbi_execute ( $sql , array ( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $viewuser[$row[0]] = 1;

@@ -432,11 +432,11 @@ $reports_link = array ();
   } else {
     $u_url = "";
   }
-  $res = dbi_query ( "SELECT cal_report_name, cal_report_id " .
+  $res = dbi_execute ( "SELECT cal_report_name, cal_report_id " .
     "FROM webcal_report " .
-    "WHERE cal_login = '$login' OR " .
+    "WHERE cal_login = ? OR " .
     "( cal_is_global = 'Y' AND cal_show_in_trailer = 'Y' ) " .
-    "ORDER BY cal_report_id" );
+    "ORDER BY cal_report_id", array( $login ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $reports_link[] = "<a title=\"" . 

@@ -118,8 +118,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 // any more than that doesn't really fit in the page.
 
 // get users in this view
-$res = dbi_query (
-  "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
+$res = dbi_execute ( "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?" , array ( $id ) );
 $viewusers = array ();
 $all_users = false;
 if ( $res ) {

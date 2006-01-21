@@ -38,7 +38,7 @@ function convert_server_to_GMT () {
  //Default value 
  $error = "<b>Conversion Successful</b>";
  // Do webcal_entry update
-  $res = dbi_query ( "SELECT cal_date, cal_time, cal_id, cal_duration FROM webcal_entry" );
+  $res = dbi_execute ( "SELECT cal_date, cal_time, cal_id, cal_duration FROM webcal_entry" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $cal_date = $row[0];
@@ -59,9 +59,9 @@ function convert_server_to_GMT () {
      $new_cal_date = gmdate ( "Ymd", $new_datetime );
      $new_cal_time = gmdate ( "His", $new_datetime );
      // Now update row with new data
-     if ( ! dbi_query ( "UPDATE webcal_entry SET cal_date = '" . $new_cal_date  . "', " .
-       " cal_time = '" . $new_cal_time . "' ".
-          "WHERE cal_id = $cal_id" ) ){
+     if ( ! dbi_execute ( "UPDATE webcal_entry SET cal_date = ?, " .
+       " cal_time = ? ".
+          "WHERE cal_id = ?" , array ( $new_cal_date , $new_cal_time , $cal_id ) ) ){
           $error = "Error updating table 'webcal_entry' " . dbi_error ();
      return $error;
      }
@@ -71,7 +71,7 @@ function convert_server_to_GMT () {
   }
  
   // Do webcal_entry_logs update
-  $res = dbi_query ( "SELECT cal_date, cal_time, cal_log_id FROM webcal_entry_log" );
+  $res = dbi_execute ( "SELECT cal_date, cal_time, cal_log_id FROM webcal_entry_log" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $cal_date = $row[0];
@@ -87,28 +87,28 @@ function convert_server_to_GMT () {
    $new_cal_date = gmdate ( "Ymd", $new_datetime );
    $new_cal_time = gmdate ( "His", $new_datetime );
    // Now update row with new data
-   if ( ! dbi_query ( "UPDATE webcal_entry_log SET cal_date = '" . $new_cal_date  . "', " .
-     " cal_time = '" . $new_cal_time . "' ".
-        "WHERE cal_log_id = $cal_log_id" ) ){
+   if ( ! dbi_execute ( "UPDATE webcal_entry_log SET cal_date = ?, " .
+     " cal_time = ? ".
+        "WHERE cal_log_id = ?" , array ( $new_cal_date , $new_cal_time , $cal_log_id ) ) ){
         $error = "Error updating table 'webcal_entry_log' " . dbi_error ();
     return $error;
    }
     }
     dbi_free_result ( $res );
   }
-    // Update Conversion Flag in webcal_config
+   // Update Conversion Flag in webcal_config
    //Delete any existing entry
    $sql = "DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_TZ_CONVERSION'";
-   if ( ! dbi_query ( $sql ) ) {
+   if ( ! dbi_execute ( $sql ) ) {
     $error = "Database error: " . dbi_error ();
     return $error;
    }
   $sql = "INSERT INTO webcal_config ( cal_setting, cal_value ) " .
    "VALUES ( 'WEBCAL_TZ_CONVERSION', 'Y' )";
-  if ( ! dbi_query ( $sql ) ) {
+  if ( ! dbi_execute ( $sql ) ) {
     $error = "Database error: " . dbi_error ();
    return $error;
-  } 
+  }
  return $error;
 }
 
@@ -183,20 +183,20 @@ function do_tz_import ( $file_path= "timezone/") {
   );
  //Delete any existing data
  $sql = "DELETE FROM webcal_tz_rules";
- if ( ! dbi_query ( $sql, false, false ) ) {
+ if ( ! dbi_execute ( $sql, false, false ) ) {
   $error = "Database error: " . dbi_error ();
   return $error;
  }
  $sql = "DELETE FROM webcal_tz_zones";
- if ( ! dbi_query ( $sql, false, false  ) ) {
+ if ( ! dbi_execute ( $sql, false, false  ) ) {
   $error = "Database error: " . dbi_error ();
   return $error;
  }
   $sql = "DELETE FROM webcal_tz_list";
- if ( ! dbi_query ( $sql, false, false  ) ) {
+ if ( ! dbi_execute ( $sql, false, false  ) ) {
   $error = "Database error: " . dbi_error ();
   return $error;
- }         
+ }
  $valid_tags = array( "Link", "Rule", "Zone" );
  for ($i = 0 ; $i < count ( $tz_file_array ); $i++ ) {
   if (!$fd=@fopen( $file_path . $tz_file_array[$i],"r", false)) {
@@ -243,10 +243,9 @@ function do_tz_import ( $file_path= "timezone/") {
      $rule_save = get_seconds ( $data[8] );
      $sql = "INSERT INTO webcal_tz_rules ( rule_name, rule_from, rule_to, rule_type, " .
       "rule_in, rule_on, rule_at, rule_at_suffix, rule_save, rule_letter ) " .
-      "VALUES ( '$data[1]', $data[2], $data[3], '$data[4]', " . $months[$data[5]] . 
-      ", '$data[6]', $rule_at, '$rule_at_suffix',$rule_save,'" .
-      ( $data[9] == "-" ?"":$data[9]) . "' )";
-     if ( ! dbi_query ( $sql ) ) {
+      "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+     if ( ! dbi_execute ( $sql , array ( $data[1] , $data[2] , $data[3] , $data[4] , 
+      $months[$data[5]] , $data[6] , $rule_at , $rule_at_suffix , $rule_save , ( $data[9] == "-" ? "" : $data[9] ) ) ) ) {
       $error = "Database error: " . dbi_error ();
      }
     }
@@ -273,10 +272,10 @@ function do_tz_import ( $file_path= "timezone/") {
      }
      $sql = "INSERT INTO webcal_tz_zones ( zone_name, zone_gmtoff, zone_rules, " .
       "zone_format, zone_from, zone_until ) " .
-       "VALUES ( '$data[1]', $zone_gmtoff, '$data[3]', '$data[4]', $zone_from, $zone_until )";
-     if ( ! dbi_query ( $sql ) ) {
+       "VALUES ( ?, ?, ?, ?, ?, ? )";
+     if ( ! dbi_execute ( $sql , array ( $data[1] , $zone_gmtoff, $data[3] , $data[4] , $zone_from , $zone_until ) ) ) {
       $error = "Database error: " . dbi_error ();
-     }  
+     }
     }
    }
   }
@@ -299,9 +298,9 @@ function do_tz_import ( $file_path= "timezone/") {
     $data = trim ( $data, strrchr( $data, "#" ) ) ;
     $data = preg_split("/[\s,]+/", trim ($data ) ) ;
     $sql = "UPDATE webcal_tz_zones  " .
-     " SET zone_cc = '$data[0]', zone_coord = '$data[1]' " .
-     " WHERE zone_name = '" . trim( $data[2] ) . "'";
-    if ( ! dbi_query ( $sql ) ) {
+     " SET zone_cc = ?, zone_coord = ? " .
+     " WHERE zone_name = ?";
+    if ( ! dbi_execute ( $sql , array ( $data[0] , $data[1] , trim( $data[2] ) ) ) ) {
      $error = "Database error: " . dbi_error ();
     }
    }   
@@ -324,9 +323,9 @@ function do_tz_import ( $file_path= "timezone/") {
     $data = trim ( $data, strrchr( $data, "#" ) ) ;
     $data = preg_split("/[\t]+/", trim ($data ) ) ;
     $sql = "UPDATE webcal_tz_zones  " .
-     " SET zone_country = '" . addslashes( trim ( $data[1] ) )  . "' " .
-     " WHERE zone_cc = '$data[0]'";
-    if ( ! dbi_query ( $sql ) ) {
+     " SET zone_country = ? " .
+     " WHERE zone_cc = ?";
+    if ( ! dbi_execute ( $sql , array ( trim ( $data[1] ) , $data[0] ) ) ) {
      $error = "Database error: " . dbi_error ();
     }
    }   
@@ -349,8 +348,8 @@ function do_tz_import ( $file_path= "timezone/") {
     $data = trim ( $data, strrchr( $data, "#" ) ) ;
     $data = preg_split("/[\t]+/", trim ($data ) ) ;
     $sql = "INSERT INTO webcal_tz_list ( tz_list_id, tz_list_name, tz_list_text )  " .
-     " VALUES ( $data[0], '$data[1]', '" . addslashes ( $data[2] . " " . $data[3] ) . "' )";
-    if ( ! dbi_query ( $sql ) ) {
+     " VALUES ( ?, ?, ? )";
+    if ( ! dbi_execute ( $sql , array ( $data[0], $data[1],  $data[2] . " " . $data[3] ) ) ) {
      $error = "Database error: " . dbi_error ();
     }
    }   
@@ -366,7 +365,7 @@ function do_tz_import ( $file_path= "timezone/") {
  } else {
    //Delete any existing entry
    $sql = "DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_TZ_VERSION'";
-   if ( ! dbi_query ( $sql ) ) {
+   if ( ! dbi_execute ( $sql ) ) {
     $error = "Database error: " . dbi_error ();
     return $error;
    }
@@ -376,8 +375,8 @@ function do_tz_import ( $file_path= "timezone/") {
    } else {
     $data = trim ( $data ) ;
      $sql = "INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-       "VALUES ( 'WEBCAL_TZ_VERSION', '" . $data . "' )";
-      if ( ! dbi_query ( $sql ) ) {
+       "VALUES ( 'WEBCAL_TZ_VERSION', ? )";
+      if ( ! dbi_execute ( $sql , array ( $data ) ) ) {
         $error = "Database error: " . dbi_error ();
        return $error;
     }

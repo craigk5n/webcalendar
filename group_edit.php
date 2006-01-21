@@ -16,8 +16,8 @@ if ( empty ( $id ) ) {
 } else {
   $newgroup = false;
   // get group by id
-  $res = dbi_query ( "SELECT cal_owner, cal_name, cal_last_update, cal_owner " .
-    "FROM webcal_group WHERE cal_group_id = $id" );
+  $res = dbi_execute ( "SELECT cal_owner, cal_name, cal_last_update, cal_owner " .
+    "FROM webcal_group WHERE cal_group_id = ?", array( $id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $groupname = $row[1];
@@ -68,8 +68,8 @@ if ( $newgroup ) {
 
   // get list of users for this group
   if ( ! $newgroup ) {
-    $sql = "SELECT cal_login FROM webcal_group_user WHERE cal_group_id = $id";
-    $res = dbi_query ( $sql );
+    $sql = "SELECT cal_login FROM webcal_group_user WHERE cal_group_id = ?";
+    $res = dbi_execute ( $sql, array( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $groupuser[$row[0]] = 1;

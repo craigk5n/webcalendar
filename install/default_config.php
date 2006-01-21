@@ -75,7 +75,6 @@ $webcalConfig = array (
 "OTHERMONTHBG"=>"#D0D0D0",
 "OVERRIDE_PUBLIC_TEXT"=>"Not Available",
 "OVERRIDE_PUBLIC"=>"N",
-"PARTICIPANTS_IN_POPUP"=>"N",
 "PLUGINS_ENABLED"=>"N",
 "POPUP_BG"=>"#FFFFFF",
 "POPUP_FG"=>"#000000",
@@ -125,10 +124,10 @@ $webcalConfig = array (
 
 function make_uppercase () {
   //make sure all cal_settings are UPPERCASE
-  if ( ! dbi_query ( "UPDATE webcal_config SET cal_setting = UPPER(cal_setting)" ) )
+  if ( ! dbi_execute ( "UPDATE webcal_config SET cal_setting = UPPER(cal_setting)" ) )
     echo translate("Error updating webcal_config") . ": " . dbi_error ();       
   dbi_free_result ( $res );    
-  if ( ! dbi_query ( "UPDATE webcal_user_pref SET cal_setting = UPPER(cal_setting)" ) )
+  if ( ! dbi_execute ( "UPDATE webcal_user_pref SET cal_setting = UPPER(cal_setting)" ) )
     echo translate("Error updating webcal_user_pref") . ": " . dbi_error ();       
   dbi_free_result ( $res );
 }
@@ -136,16 +135,16 @@ function make_uppercase () {
 function db_load_config () {
 global $webcalConfig; 
    while ( list ( $key, $val ) = each ( $webcalConfig ) ) {
-    $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-     "WHERE cal_setting  = '$key'", false, false );
+    $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
+     "WHERE cal_setting  = ?", array( $key ) , false, false );
    $sql = "INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-       "VALUES ('". $key . "', '" . $val . "')";
+       "VALUES (?,?)";
      if ( ! $res ) {
-       dbi_query ( $sql );
+       dbi_execute  ( $sql , array ( $key , $val ) );
    } else { //Sqlite returns $res always
      $row = dbi_fetch_row ( $res );
      if ( ! isset ( $row[0] ) ){
-         dbi_query ( $sql );  
+         dbi_execute ( $sql , array ( $key , $val ) );  
      }
      dbi_free_result ( $res );
     }  
@@ -153,56 +152,55 @@ global $webcalConfig;
 }
 
 function db_load_admin () {
- $res = dbi_query ( "SELECT cal_login FROM webcal_user " .
- "WHERE cal_login  = 'admin'", false, false );
+ $res = dbi_execute ( "SELECT cal_login FROM webcal_user " .
+ "WHERE cal_login  = 'admin'", array() , false, false );
  $sql = "INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin ) 
 VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ADMINISTRATOR', 'DEFAULT', 'Y' );";
  if ( ! $res ) {
-  dbi_query ( $sql );
+  dbi_execute ( $sql );
  } else { //Sqlite returns $res always
   $row = dbi_fetch_row ( $res );
   if ( ! isset ( $row[0] ) ){
-   dbi_query ( $sql );  
+   dbi_execute ( $sql );  
   }
   dbi_free_result ( $res );
  }  
-
 }
 
 function do_v11b_updates () {
- $res = dbi_query ( "SELECT webcal_entry_user.cal_id, cal_category, cat_owner " . 
+ $res = dbi_execute ( "SELECT webcal_entry_user.cal_id, cal_category, cat_owner " . 
    "FROM webcal_entry_user, webcal_categories " . 
    "WHERE webcal_entry_user.cal_category = webcal_categories.cat_id");
  if (  $res ) {
    while( $row = dbi_fetch_row ( $res ) ) {
      if (  ! empty ( $row[2] ) ) {
-     dbi_query ("INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner ) " .
-       " VALUES ( $row[0], '$row[1]', '$row[2]')");  
+     dbi_execute ("INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner ) " .
+       " VALUES (?,?,?)" , array ( $row[0], $row[1], $row[2] ) );  
       } else {
-     dbi_query ("INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_order ) " .
-       " VALUES ( $row[0], '$row[1]', 99)");        
+     dbi_execute ("INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_order ) " .
+       " VALUES (?,?,?)" , array ( $row[0], $row[1], 99 ) );        
       }     
    }
    dbi_free_result ( $res );
  }
 
  //update LANGUAGE settings from Browser-Defined to none
- dbi_query ("UPDATE webcal_config  SET cal_value = 'none'" .
+ dbi_execute ("UPDATE webcal_config  SET cal_value = 'none'" .
     " WHERE cal_setting = 'LANGUAGE' AND cal_value = 'Browser-defined'");
 
- dbi_query ("UPDATE webcal_user_pref  SET cal_value = 'none'" .
+ dbi_execute ("UPDATE webcal_user_pref  SET cal_value = 'none'" .
     " WHERE cal_setting = 'LANGUAGE' AND cal_value = 'Browser-defined'");
-         
+				 
  //clear old category values
- dbi_query ( "UPDATE webcal_entry_user SET cal_category = NULL");  
+ dbi_execute ( "UPDATE webcal_entry_user SET cal_category = NULL");  
  //mark existing exclusions as new exclusion type
- dbi_query ( "UPDATE webcal_entry_repeats_not  SET cal_exdate = 1");  
+ dbi_execute ( "UPDATE webcal_entry_repeats_not  SET cal_exdate = 1");  
  //change cal_days format to cal_cal_byday format
  
  //deprecate monthlyByDayR to simply monthlyByDay
- dbi_query ("UPDATE webcal_entry_repeats  SET cal_type = 'monthlyByDay'" .
+ dbi_execute ("UPDATE webcal_entry_repeats  SET cal_type = 'monthlyByDay'" .
     " WHERE cal_type = 'monthlybByDayR'");
- $res = dbi_query ( "SELECT cal_id, cal_days FROM webcal_entry_repeats ");
+ $res = dbi_execute ( "SELECT cal_id, cal_days FROM webcal_entry_repeats ");
  if (  $res ) {
    while( $row = dbi_fetch_row ( $res ) ) {
      if ( ! empty ( $row[1] ) && $row[1] != 'yyyyyyy' && $row[1] != 'nnnnnnn' ) {
@@ -215,13 +213,11 @@ function do_v11b_updates () {
        if ( substr( $row[1],5,1 ) == 'y') $byday[] = 'FR';
        if ( substr( $row[1],6,1 ) == 'y') $byday[] = 'SA';
        $bydays = implode (",", $byday );       
-       dbi_query ("UPDATE webcal_entry_repeats  SET cal_byday = '" . $bydays . "'" .
-       " WHERE cal_id = $row[0]");
+       dbi_execute ("UPDATE webcal_entry_repeats  SET cal_byday = ?" .
+       " WHERE cal_id = ?" , array ( $bydays , $row[0] ) );
      }
    }
    dbi_free_result ( $res );
  }
-
-
 }
 ?>

@@ -440,7 +440,7 @@ class WebCalendar {
    // read and required upgrade actions completed
   $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
    if ( $c ) {
-     $res = dbi_query ( "SELECT  cal_value FROM webcal_config ".
+     $res = dbi_execute ( "SELECT  cal_value FROM webcal_config ".
        "WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'" );
        if ( ! $res ) {
            // & does not work here...leave it as &
@@ -472,7 +472,7 @@ class WebCalendar {
       $single_user_login = "";
 
     // Make sure magic quotes is enabled, since this app requires it.
-
+/*
     if ( get_magic_quotes_gpc () == 0 ) {
       ob_start ();
       phpinfo ();
@@ -489,7 +489,7 @@ class WebCalendar {
         " to <span style=\"font-weight:bold;\">ON</span>.<br /><br />\n" .
         $loc );
     }
-
+*/
   }
 
   /**
@@ -950,7 +950,7 @@ class WebCalendar {
       // Redirect user to install page if it is different from stored value
       // This will prevent running WebCalendar until UPGRADING.html has been
       // read and required upgrade actions completed
-      $res = dbi_query ( "SELECT  cal_value FROM webcal_config ".
+      $res = dbi_execute ( "SELECT  cal_value FROM webcal_config ".
         "WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'" );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
@@ -971,17 +971,16 @@ class WebCalendar {
         die_miserable_death ( "You have not defined <tt>single_user_login</tt> in " .
           "<tt>includes/settings.php</tt>" );
       }
-      $res = dbi_query ( "SELECT COUNT(*) FROM webcal_user " .
-        "WHERE cal_login = '$single_user_login'" );
+      $res = dbi_execute ( "SELECT COUNT(*) FROM webcal_user " .
+        "WHERE cal_login = ?", array( $single_user_login ) );
       if ( ! $res ) {
         echo "Database error: " . dbi_error (); exit;
       }
       $row = dbi_fetch_row ( $res );
       if ( $row[0] == 0 ) {
         // User specified as single_user_login does not exist
-        if ( ! dbi_query ( "INSERT INTO webcal_user ( cal_login, " .
-          "cal_passwd, cal_is_admin ) VALUES ( '$single_user_login', " .
-           "'" . md5($single_user_login) . "', 'Y' )" ) ) {
+        if ( ! dbi_execute ( "INSERT INTO webcal_user ( cal_login, " .
+          "cal_passwd, cal_is_admin ) VALUES ( ?, ?, ? )", array( $single_user_login, md5($single_user_login), 'Y' ) ) ) {
           die_miserable_death ( "User <tt>$single_user_login</tt> does not " .
             "exist in <tt>webcal_user</tt> table and was not able to add " .
             "it for you:<br /><blockquote>" .
@@ -994,7 +993,7 @@ class WebCalendar {
 
 
     // global settings have not been loaded yet, so check for public_access now
-    $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
+    $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
       "WHERE cal_setting = 'PUBLIC_ACCESS'" );
     $pub_acc_enabled = false;
     if ( $res ) {
@@ -1005,7 +1004,7 @@ class WebCalendar {
       dbi_free_result ( $res );
     }
     if ( $pub_acc_enabled ) {
-      $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
+      $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
         "WHERE cal_setting = 'PUBLIC_ACCESS_CAN_ADD'" );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {

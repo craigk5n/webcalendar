@@ -45,15 +45,15 @@ function save_pref( $prefs, $src) {
       if ( $setting == "THEME" &&  $value != 'none' )
         $my_theme = strtolower ( $value );
       $sql =
-        "DELETE FROM webcal_user_pref WHERE cal_login = '$prefuser' " .
-        "AND cal_setting = '$setting'";
-      dbi_query ( $sql );
+        "DELETE FROM webcal_user_pref WHERE cal_login = ? " .
+        "AND cal_setting = ?";
+      dbi_execute ( $sql , array ( $prefuser , $setting ) );
       if ( strlen ( $value ) > 0 ) {
       $setting = strtoupper ( $setting );
         $sql = "INSERT INTO webcal_user_pref " .
           "( cal_login, cal_setting, cal_value ) VALUES " .
-          "( '$prefuser', '$setting', '$value' )";
-        if ( ! dbi_query ( $sql ) ) {
+          "( ?, ?, ? )";
+        if ( ! dbi_execute ( $sql , array ( $prefuser , $setting , $value ) ) ) {
           $error = "Unable to update preference: " . dbi_error () .
    "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
           break;

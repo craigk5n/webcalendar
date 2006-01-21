@@ -84,7 +84,7 @@ function export_install_datebook ($id) {
 } //end function
 
 function get_cal_ent_extras($id, $from, $where = false) {
-  $res = dbi_query( "SELECT * FROM $from WHERE cal_id='$id'". ( $where?"AND ( $where );":';') );
+  $res = dbi_execute( "SELECT * FROM $from WHERE cal_id=?" . ( $where ? " AND ( $where )" : "" ), array( $id ) );
   if ( $res )
     return ( dbi_fetch_row($res) );
   else

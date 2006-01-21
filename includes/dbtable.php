@@ -174,6 +174,8 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
   }
   $ret .= "</tr>\n";
   $sql = "SELECT " . $fields[0];
+  $query_params = array();
+
   for ( $i = 1; $i < count ( $fields ); $i++ ) {
     $sql .= ", " . $fields[$i];
   }
@@ -191,12 +193,8 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
             $first = 0;
           else
             $sql .= " AND ";
-          $sql .= $tablear[$i]["name"] . " = " ;
-          if ( $tablear[$i]["type"] == "int" ||
-            $tablear[$i]["type"] == "float" || $tablear[$i]["type"] == "date" )
-            $sql .= $keys[$tablear[$i]["name"]];
-          else
-            $sql .= "'" . $keys[$tablear[$i]["name"]] . "'";
+          $sql .= $tablear[$i]["name"] . " = ?" ;
+		  $query_params[] = $keys[$tablear[$i]["name"]];
         }
       }
     }
@@ -204,7 +202,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
   if ( ! empty ( $order ) )
     $sql .= " ORDER BY " . $order;
   //echo "SQL: $sql<br />\n";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, $query_params );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $ret .= "<tr>";
@@ -254,6 +252,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
 function dbtable_load ( $tablear, $tablename, $keys ) {
   $ret = false;
   $sql = "SELECT ";
+  $query_params = array();
   if ( ! is_array ( $tablear ) ) {
     echo "Error: dbtable_load parameter 1 is not an array!<br />\n";
     exit;
@@ -286,17 +285,13 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
           $first = 0;
         else
           $sql .= " AND ";
-        $sql .= $tablear[$i]["name"] . " = " ;
-        if ( $tablear[$i]["type"] == "int" ||
-          $tablear[$i]["type"] == "float" || $tablear[$i]["type"] == "date" )
-          $sql .= $keys[$tablear[$i]["name"]];
-        else
-          $sql .= "'" . $keys[$tablear[$i]["name"]] . "'";
+        $sql .= $tablear[$i]["name"] . " = ?" ;
+        $query_params[] = $keys[$tablear[$i]["name"]];
       }
     }
   }
   //echo "SQL: $sql<br />\n";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, $query_params );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $ret = array ();
@@ -328,6 +323,7 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
     exit;
   }
   $sql = "DELETE FROM $tablename WHERE ";
+  $query_params = array();
   $first = 1;
   for ( $i = 0; $i < count ( $tablear ); $i++ ) {
     if ( ! empty ( $tablear[$i]["iskey"] ) ) {
@@ -340,17 +336,13 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
           $first = 0;
         else
           $sql .= " AND ";
-        $sql .= $tablear[$i]["name"] . " = " ;
-        if ( $tablear[$i]["type"] == "int" ||
-          $tablear[$i]["type"] == "float" || $tablear[$i]["type"] == "date" )
-          $sql .= $keys[$tablear[$i]["name"]];
-        else
-          $sql .= "'" . $keys[$tablear[$i]["name"]] . "'";
+        $sql .= $tablear[$i]["name"] . " = ?" ;
+		$query_params[] = $keys[$tablear[$i]["name"]];
       }
     }
   }
   //echo "SQL: $sql<br />";
-  if ( ! dbi_query ( $sql ) ) {
+  if ( ! dbi_execute ( $sql, $query_params ) ) {
     echo translate("Database error") . ": " . dbi_error (); exit;
   }
   return $ret;
@@ -364,6 +356,7 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
   global $error;
   $ret = false;
   $sql = "INSERT INTO " . $tablename . " (";
+  $query_params = array();
   if ( ! is_array ( $tablear ) ) {
     echo "Error: dbtable_add parameter 1 is not an array!<br />\n";
     exit;
@@ -387,21 +380,24 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
   $sql .= " ) VALUES (";
   $first = 1;
   for ( $i = 0; $i < count ( $tablear ); $i++ ) {
-    if ( $first )
+    if ( $first ) {
       $first = 0;
-    else
-      $sql .= ", ";
-    if ( empty ( $valuesar[$i] ) )
-      $sql .= "NULL";
-    else if ( $tablear[$i]["type"] == "date" ||
-      $tablear[$i]["type"] == "int" )
-      $sql .= $valuesar[$i];
-    else
-      $sql .= "'" . $valuesar[$i] . "'";
+	  $sql .= "?";
+    }
+    else {
+      $sql .= ", ?";
+	}
+    
+	if ( empty ( $valuesar[$i] ) ) {
+	  $query_params[] = NULL;
+	}
+    else {
+      $query_params[] = $valuesar[$i];
+	}
   }
   $sql .= " )";
   //echo "SQL: $sql<br />\n";
-  if ( ! dbi_query ( $sql ) ) {
+  if ( ! dbi_execute ( $sql, $query_params ) ) {
     // Shouldn't happen... complain if it does.
     $error = translate("Database error") . ": " . dbi_error ();
     return false;
@@ -416,6 +412,7 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
 function dbtable_update ( $tablear, $tablename, $valuesar ) {
   global $error;
   $sql = "UPDATE " . $tablename . " SET";
+  $query_params = array();
   if ( ! is_array ( $tablear ) ) {
     echo "Error: dbtable_update parameter 1 is not an array!<br />\n";
     exit;
@@ -436,14 +433,12 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
       echo "Error: dbtable_update $tablename field $i does not define name.\n";
       exit;
     }
-    $sql .= " " . $tablear[$i]["name"] . " = ";
+    $sql .= " " . $tablear[$i]["name"] . " = ?";
     if ( empty ( $valuesar[$i] ) ) {
-      $sql .= "NULL";
-    } else if ( $tablear[$i]["type"] == "int" || 
-      $tablear[$i]["type"] == "date" ) {
-      $sql .= $valuesar[$i];
-    } else
-      $sql .= "'" . $valuesar[$i] . "'";
+	  $query_params[] = NULL;
+    } else {
+	  $query_params[] = $valuesar[$i];
+	}
   }
   $sql .= " WHERE";
   $first = 1;
@@ -459,10 +454,11 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
         ") by hand. Cannot be empty.";
       exit;
     }
-    $sql .= " " . $tablear[$i]["name"] . " = '" . $valuesar[$i] . "'";
+    $sql .= " " . $tablear[$i]["name"] . " = ?";
+	$query_params[] = $valuesar[$i];
   }
   //echo "SQL: $sql <P>\n";
-  if ( ! dbi_query ( $sql ) ) {
+  if ( ! dbi_execute ( $sql, $query_params ) ) {
     // Shouldn't happen... complain if it does.
     $error = translate("Database error") . ": " . dbi_error ();
     return false;
@@ -476,7 +472,7 @@ function dbtable_genid ( $tablename, $field ) {
   $ret = 1;
 
   $sql = "SELECT MAX(" . $field . ") FROM " . $tablename;
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $ret = $row[0] + 1;

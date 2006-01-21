@@ -14,6 +14,7 @@
  * - odbc
  * - ibase (Interbase)
  * - SQLite
+ * - IBM DB2
  * <b>Limitations:</b>
  *
  * - This assumes a single connection to a single database for the sake of
@@ -32,6 +33,9 @@
  * @subpackage Database
  *
  * History:
+ * 20-Jan-2006 Vladimir D. Georgiev (posted by Ray Jones)
+ *    Added functions dbi_escape_string() and dbi_execute()
+ *    to allow independance from magic_quote settings in php.ini
  * 11-Jan-2006 Vladimir D. Georgiev (posted by Ray Jones)
  *    Added  php_update_blob support for mssql. 
  * 11-Jan-2006  Ray Jones
@@ -444,24 +448,24 @@ function dbi_update_blob ( $table, $column, $key, $data ) {
 
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     if ( function_exists ( "mysql_real_escape_string" ) )
-      return dbi_query ( "UPDATE $table SET $column = '" .
+      return dbi_execute ( "UPDATE $table SET $column = '" .
         mysql_real_escape_string ( $data ) .
         "' WHERE $key" );
     else {
-      return dbi_query ( "UPDATE $table SET $column = '" .
+      return dbi_execute ( "UPDATE $table SET $column = '" .
         addslashes ( $data ) .
         "' WHERE $key" );
     }
   } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
-    return dbi_query ( "UPDATE $table SET $column = '" .
+    return dbi_execute ( "UPDATE $table SET $column = '" .
       sqlite_udf_encode_binary ( $data ) .
       "' WHERE $key" );
   } else if ( strcmp ( $GLOBALS["db_type"], "mssql" ) == 0 ) {
-    return dbi_query ( "UPDATE $table SET $column = 0x" .
+    return dbi_execute ( "UPDATE $table SET $column = 0x" .
       bin2hex( $data ) . 
       " WHERE $key" );
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
-    return dbi_query ( "UPDATE $table SET $column = '" .
+    return dbi_execute ( "UPDATE $table SET $column = '" .
       pg_escape_bytea ( $data ) .
       "' WHERE $key" );
   } else {
@@ -488,28 +492,28 @@ function dbi_get_blob ( $table, $column, $key ) {
   assert ( '! empty ( $key )' );
 
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
-    $res = dbi_query ( "SELECT $column FROM $table WHERE $key" );
+    $res = dbi_execute ( "SELECT $column FROM $table WHERE $key" );
     if ( ! $res )
       return false;
     if ( $row = dbi_fetch_row ( $res ) )
       $ret = $row[0];
     dbi_free_result ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
-    $res = dbi_query ( "SELECT $column FROM $table WHERE $key" );
+    $res = dbi_execute ( "SELECT $column FROM $table WHERE $key" );
     if ( ! $res )
       return false;
     if ( $row = dbi_fetch_row ( $res ) )
       $ret = sqlite_udf_decode_binary ( $row[0] );
     dbi_free_result ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "mssql" ) == 0 ) {
-    $res = dbi_query ( "SELECT $column FROM $table WHERE $key" );
+    $res = dbi_execute ( "SELECT $column FROM $table WHERE $key" );
     if ( ! $res )
       return false;
     if ( $row = dbi_fetch_row ( $res ) )
       $ret =  $ret = $row[0];
     dbi_free_result ( $res );
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
-    $res = dbi_query ( "SELECT $column FROM $table WHERE $key" );
+    $res = dbi_execute ( "SELECT $column FROM $table WHERE $key" );
     if ( ! $res )
       return false;
     if ( $row = dbi_fetch_row ( $res ) )
@@ -620,4 +624,82 @@ function dbi_fatal_error ( $msg, $doExit=true, $showError=true ) {
   if ( $doExit )
     exit;
 }
+
+/**
+ * Escapes a string accordingly to the DB type. 
+ *
+ * @param string $string       SQL of query to execute
+ *
+ * @return string              The escaped string
+ */
+function dbi_escape_string( $string )
+{
+  // return the string in original form; all possible escapings by 
+  // magic_quotes_gpc (and possibly magic_quotes_sybase) will be 
+  // rolled back, but also we may roll back escaping we have done
+  // ourself
+  //(maybe this should be removed)
+  //if ( get_magic_quotes_gpc() )
+    $string = stripslashes( $string );
+    
+  switch ( $GLOBALS["db_type"] )
+  {
+    case "mysql":
+      return mysql_real_escape_string( $string );
+    case "mysqli":
+      return mysqli_real_escape_string( $string );
+    case "mssql":
+    case "ibase":
+      return str_replace( "'", "''", $string );
+    case "postgresql":
+      return pg_escape_string( $string );
+    case "sqlite":
+      return sqlite_escape_string( $string );
+    case "oracle":
+    case "odbc":
+    case "ibm_db2":
+    default:
+      return addslashes( $string );
+  }
+}
+
+/**
+ * Executes a SQL query, supporting parameter binding in the ?-style
+ *
+ * <b>Note:</b> Use the {@link dbi_error()} function to get error information
+ * if the connection fails.
+ *
+ * @param string $sql            SQL of query to execute. May contain ?-placeholders
+ * @param array  $params         An array containing the values to put in placeolders.
+ *                               These values will be escaped with dbi_escape_string()
+ *                               and will be put in single quotes. A NULL param will
+ *                               be replaced with NULL without quotes around it.
+ * @param bool   $fatalOnError   Abort execution if there is a database error?
+ * @param bool   $showError      Display error to user (including possibly the
+ *                               SQL) if there is a database error?
+ *
+ * @return mixed                 The query result resource on queries (which can then be
+ *                               passed to the {@link dbi_fetch_row()} function to obtain the
+ *                               results), or true/false on insert or delete queries.
+ */
+function dbi_execute( $sql, $params=array(), $fatalOnError=true, $showError=true )
+{
+  if ( count( $params ) == 0 )
+    return dbi_query( $sql, $fatalOnError, $showError );
+
+  $prepared = '';
+  $phindex = 0;
+  $offset = 0;
+
+  while ( ( $pos = strpos( $sql, '?', $offset ) ) !== false ) {
+    $prepared .= substr( $sql, $offset, $pos - $offset ) .
+      ( ( is_null( $params[ $phindex ] ) ) ? "NULL" : ( "'" . dbi_escape_string( $params[ $phindex ] ) . "'" ) );
+    $offset = $pos + 1;
+    $phindex++;
+  }
+  $prepared .= substr( $sql, $offset );
+
+  return dbi_query( $prepared, $fatalOnError, $showError );
+}
+
 ?>

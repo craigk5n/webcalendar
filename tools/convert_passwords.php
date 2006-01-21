@@ -36,7 +36,7 @@ if ( ! $c ) {
 // (it will have 32 chars instead of < 25 like in the old version),
 // then we know this script was already run.
 $sql = "SELECT cal_passwd FROM webcal_user";
-$res = dbi_query ( $sql );
+$res = dbi_execute ( $sql );
 $doneBefore = false;
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
@@ -56,7 +56,7 @@ if ( $doneBefore ) {
 
 // See if webcal_user.cal_passwd will allow 32 characters
 $sql = "DESC webcal_user";
-$res = dbi_query ( $sql );
+$res = dbi_execute ( $sql );
 while ( $row = dbi_fetch_row ( $res ) ) {
   if ($row[Field] == 'cal_passwd') {
     preg_match ( "/([0-9]+)/", $row[Type], $match );
@@ -64,7 +64,7 @@ while ( $row = dbi_fetch_row ( $res ) ) {
       $sql = "ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(32) NULL";
       // Use the following on older MySQL versions
       //$sql = "ALTER TABLE webcal_user CHANGE cal_passwd cal_passwd VARCHAR(32) NULL";
-      $res = dbi_query ( $sql );
+      $res = dbi_execute ( $sql );
       if ($res) {
         echo "Table webcal_user altered to allow 32 character passwords.\n" .
           "<br />Converting passwords...\n<br /><br />\n";
@@ -76,12 +76,11 @@ dbi_free_result ( $res );
 
 // Convert the passwords
 $sql = "SELECT cal_login, cal_passwd FROM webcal_user";
-$res = dbi_query ( $sql );
+$res = dbi_execute ( $sql );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
-    $sql2 = "UPDATE webcal_user SET cal_passwd = '" .
-      md5($row[1]) . "' WHERE cal_login = '".$row[0]."'";
-    $res2 = dbi_query ( $sql2 );
+    $sql2 = "UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?";
+    $res2 = dbi_execute ( $sql2 , array ( md5 ( $row[1] ) , $row[0] ) );
     if ($res2)
       echo "Password updated for: ".$row[0]."<br />\n";
   }

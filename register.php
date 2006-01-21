@@ -45,8 +45,8 @@ function check_username ( $user ) {
    $errror = translate ( "Username can not be blank" );
   return false;
  } 
-  $sql="SELECT cal_login FROM webcal_user WHERE cal_login='".$user."'";
-  $res = dbi_query ( $sql );
+  $sql="SELECT cal_login FROM webcal_user WHERE cal_login = ?";
+  $res = dbi_execute ( $sql , array ( $user ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $user ) {
@@ -66,8 +66,8 @@ function check_email ( $uemail ) {
    $errror = translate ( "Email address can not be blank" );
   return false;
  } 
-  $sql="SELECT cal_email FROM webcal_user WHERE cal_email='".$uemail."'";
-  $res = dbi_query ( $sql );
+  $sql="SELECT cal_email FROM webcal_user WHERE cal_email = ?";
+  $res = dbi_execute ( $sql , array ( $uemail ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $uemail ) {
@@ -315,7 +315,7 @@ if ( ! empty ( $error ) ) {
 <a href="<?php echo $PROGRAM_URL ?>" id="programname"><?php echo $PROGRAM_NAME?></a>
 <?php // Print custom trailer (since we do not call print_trailer function)
 if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
-  $res = dbi_query (
+  $res = dbi_execute (
     "SELECT cal_template_text FROM webcal_report_template " .
     "WHERE cal_template_type = 'T' and cal_report_id = 0" );
   if ( $res ) {
