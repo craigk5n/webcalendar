@@ -6,7 +6,7 @@ include_once 'includes/date_formats.php';
 // in again and store them in a different place because they may have
 // been superceded by local user preferences.
 // We will store value in the array $s[].
-$res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_config" );
+$res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_config" );
 $s = array ();
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {

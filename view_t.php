@@ -115,8 +115,7 @@ for ( $i = 0; $i < $val_boucle; $i++ ) {
 }
 
 // get users in this view
-$res = dbi_query (
-  "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
+$res = dbi_execute ( "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?" , array ( $id ) );
 $viewusers = array ();
 $all_users = false;
 if ( $res ) {
@@ -252,10 +251,10 @@ for ( $date = $wkstart, $h = 0;
   // Default settings
   if ( ! isset ($prefarray["WORK_DAY_START_HOUR"] ) || 
     ! isset ( $prefarray["WORK_DAY_END_HOUR"] ) ) {
-     $val = dbi_fetch_row ( dbi_query ( "SELECT cal_value FROM webcal_config 
+     $val = dbi_fetch_row ( dbi_execute ( "SELECT cal_value FROM webcal_config 
      where cal_setting='WORK_DAY_START_HOUR'" ));
      $prefarray["WORK_DAY_START_HOUR"]=$val[0];
-     $val = dbi_fetch_row ( dbi_query ( "SELECT cal_value FROM webcal_config 
+     $val = dbi_fetch_row ( dbi_execute ( "SELECT cal_value FROM webcal_config 
      where cal_setting='WORK_DAY_END_HOUR'" ));
      $prefarray["WORK_DAY_END_HOUR"]=$val[0];
   }

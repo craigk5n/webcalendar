@@ -38,8 +38,8 @@ function save_pref( $prefs, $src) {
       if ( $setting == "THEME" &&  $value != 'none' )
         $my_theme = strtolower ( $value );
       $setting = strtoupper ( $setting );
-      $sql = "DELETE FROM webcal_config WHERE cal_setting = '$setting'";
-      if ( ! dbi_query ( $sql ) ) {
+      $sql = "DELETE FROM webcal_config WHERE cal_setting = ?";
+      if ( ! dbi_execute ( $sql, array( $setting ) ) ) {
         $error = translate("Error") . ": " . dbi_error () .
           "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
         break;
@@ -47,8 +47,8 @@ function save_pref( $prefs, $src) {
       if ( strlen ( $value ) > 0 ) {
         $sql = "INSERT INTO webcal_config " .
           "( cal_setting, cal_value ) VALUES " .
-          "( '$setting', '$value' )";
-        if ( ! dbi_query ( $sql ) ) {
+          "( ?, ? )";
+        if ( ! dbi_execute ( $sql, array( $setting, $value ) ) ) {
           $error = translate("Error") . ": " . dbi_error () .
             "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
           break;

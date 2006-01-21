@@ -58,6 +58,7 @@ if ( $login == "__public__" && $login != $user ) {
 
 // TODO: move this SQL along with the SQL in activity_log.php to a shared
 // function.
+$sql_params = array ();
 $sql = "SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, " .
   "webcal_entry_log.cal_type, webcal_entry_log.cal_date, " .
   "webcal_entry_log.cal_time, " .
@@ -65,11 +66,14 @@ $sql = "SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, " .
   "FROM webcal_entry_log, webcal_entry " .
   "WHERE webcal_entry_log.cal_entry_id = webcal_entry.cal_id ";
 if ( ! empty ( $startid ) )
-  $sql .= "AND webcal_entry_log.cal_log_id <= $startid ";
+{
+  $sql .= "AND webcal_entry_log.cal_log_id <= ? ";
+  $sql_params[] = $startid;
+}
 $sql .= "ORDER BY webcal_entry_log.cal_log_id DESC";
 if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG )
   ws_log_message ( "SQL> " . $sql . "\n\n" );
-$res = dbi_query ( $sql );
+$res = dbi_execute ( $sql , $sql_params );
 
 $out .= "<activitylog>\n";
 if ( $res ) {

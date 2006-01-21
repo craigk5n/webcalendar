@@ -8,7 +8,7 @@
 			<?php
 			 $count = 0;
 				$lastrow = 0;
-				$res = dbi_query ( "SELECT cal_group_id, cal_name FROM webcal_group ORDER BY cal_name" );
+				$res = dbi_execute ( "SELECT cal_group_id, cal_name FROM webcal_group ORDER BY cal_name" );
 				if ( $res ) {
 					while ( $row = dbi_fetch_row ( $res ) ) {
 					  if ( $count == 0 ) {

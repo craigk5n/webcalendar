@@ -39,8 +39,8 @@ print_header($INC);
   // get list of all users
   $users = get_my_users ();
   // get list of users for this view
-  $sql = "SELECT cal_boss, cal_assistant FROM webcal_asst WHERE cal_boss = '$user'";
-  $res = dbi_query ( $sql );
+  $sql = "SELECT cal_boss, cal_assistant FROM webcal_asst WHERE cal_boss = ?";
+  $res = dbi_execute ( $sql, array( $user ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $assistantuser[$row[1]] = 1;

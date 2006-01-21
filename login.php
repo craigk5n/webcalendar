@@ -18,7 +18,7 @@ load_global_settings ();
 
 // Change this to true to show "no such user" or "invalid password" on
 // login failures.
-$showLoginFailureReason = false;
+$showLoginFailureReason = true;
 
 if ( ! empty ( $last_login ) ) {
   $login = "";
@@ -98,6 +98,7 @@ if ( $single_user == "Y" ) {
         "<tt>" . htmlentities ( $login ) . "</tt>" );
     }
     if ( user_valid_login ( $login, $password ) ) {
+
       user_load_variables ( $login, "" );
 
       $encoded_login = encode_string ( $login . "|" . crypt($password) );

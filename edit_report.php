@@ -120,9 +120,9 @@ if ( empty ( $error ) && $report_id >= 0 ) {
     "cal_time_range, cal_user, cal_allow_nav, cal_cat_id, " .
     "cal_include_empty, cal_show_in_trailer, cal_update_date " .
     "FROM webcal_report " .
-    "WHERE cal_report_id = $report_id";
+    "WHERE cal_report_id = ?";
   //echo "SQL: $sql<br /><br />";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, array( $report_id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $i = 0;
@@ -169,9 +169,9 @@ if ( empty ( $error ) && $report_id >= 0 ) {
   } else {
     $error = translate("Database error") . ": " . dbi_error ();
   }
-  $res = dbi_query ( "SELECT cal_template_type, cal_template_text " .
+  $res = dbi_execute ( "SELECT cal_template_type, cal_template_text " .
     "FROM webcal_report_template " .
-    "WHERE cal_report_id = $report_id" );
+    "WHERE cal_report_id = ?", array( $report_id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] == 'P' ) {

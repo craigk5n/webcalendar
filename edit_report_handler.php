@@ -62,8 +62,8 @@ $adding_report = ( empty ( $report_id ) || $report_id <= 0 );
 // Can only edit/delete if you created the event or your are an admin.
 if ( empty ( $error ) && $single_user != 'N' && ! empty ( $report_id ) &&
   $report_id > 0 && ! $is_admin ) {
-  $res = dbi_query ( "SELECT cal_login FROM webcal_report " .
-     "WHERE report_id = $report_id" );
+  $res = dbi_execute ( "SELECT cal_login FROM webcal_report " .
+     "WHERE report_id = ?", array( $report_id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] != $login ) {
@@ -111,12 +111,12 @@ if ( empty ( $error ) ) {
 }
 $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $report_id ) && ! empty ( $delete ) ) {
-  if ( ! dbi_query ( "DELETE FROM webcal_report_template " .
-    "WHERE cal_report_id = $report_id" ) )
+  if ( ! dbi_execute ( "DELETE FROM webcal_report_template " .
+    "WHERE cal_report_id = ?", array( $report_id ) ) )
     $error = translate("Database error") . ": " . dbi_error ();
   if ( empty ( $error ) &
-    ! dbi_query ( "DELETE FROM webcal_report " .
-    "WHERE cal_report_id = $report_id" ) )
+    ! dbi_execute ( "DELETE FROM webcal_report " .
+    "WHERE cal_report_id = ?", array( $report_id ) ) )
     $error = translate("Database error") . ": " . dbi_error ();
   // send back to main report listing page
   if ( empty ( $error ) )
@@ -128,53 +128,53 @@ if ( empty ( $error ) ) {
   $values = array ();
 
   $names[] = "cal_login";
-  $values[] = ( $updating_public ? "'__public__'" : "'$login'" );
+  $values[] = ( $updating_public ? "__public__" : $login );
 
   $names[] .= "cal_update_date";
   $values[] = date ( "Ymd" );
 
   $names[] = "cal_report_type";
-  $values[] = "'html'";
+  $values[] = "html";
 
   $names[] = "cal_report_name";
   if ( empty ( $report_name ) || trim ( $report_name ) == '' )
     $report_name = translate ( "Unnamed Report" );
-  $values[] = "'$report_name'";
+  $values[] = $report_name;
 
   $names[] = "cal_user";
   if ( ! $is_admin || empty ( $report_user ) ) {
-    $values[] = "NULL";
+    $values[] = NULL;
   } else {
-    $values[] = "'$report_user'";
+    $values[] = $report_user;
   }
 
   $names[] = "cal_include_header";
   if ( empty ( $include_header ) || $include_header != 'Y' ) {
-    $values[] = "'N'";
+    $values[] = "N";
   } else {
-    $values[] = "'Y'";
+    $values[] = "Y";
   }
 
   $names[] = "cal_time_range";
   $values[] = ( ! isset ( $time_range ) ? 11 : $time_range );
 
   $names[] = "cal_cat_id";
-  $values[] = ( empty ( $cat_id ) ? "NULL" : $cat_id );
+  $values[] = ( empty ( $cat_id ) ? NULL : $cat_id );
 
   $names[] = "cal_allow_nav";
-  $values[] = ( empty ( $allow_nav ) || $allow_nav != 'Y' ) ? "'N'" : "'Y'";
+  $values[] = ( empty ( $allow_nav ) || $allow_nav != 'Y' ) ? "N" : "Y";
 
   $names[] = "cal_include_empty";
-  $values[] = ( empty ( $include_empty ) || $include_empty != 'Y' ) ? "'N'" : "'Y'";
+  $values[] = ( empty ( $include_empty ) || $include_empty != 'Y' ) ? "N" : "Y";
 
   $names[] = "cal_is_global";
-  $values[] = ( empty ( $is_global ) || $is_global != 'Y' ) ? "'N'" : "'Y'";
+  $values[] = ( empty ( $is_global ) || $is_global != 'Y' ) ? "N" : "Y";
 
   $names[] = "cal_show_in_trailer";
-  $values[] = ( empty ( $show_in_trailer ) || $show_in_trailer != 'Y' ) ? "'N'" : "'Y'";
+  $values[] = ( empty ( $show_in_trailer ) || $show_in_trailer != 'Y' ) ? "N" : "Y";
 
   if ( $adding_report ) {
-    $res = dbi_query ( "SELECT MAX(cal_report_id) FROM webcal_report" );
+    $res = dbi_execute ( "SELECT MAX(cal_report_id) FROM webcal_report" );
     $newid = 1;
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
@@ -194,7 +194,8 @@ if ( empty ( $error ) ) {
     for ( $i = 0; $i < count ( $values ); $i++ ) {
       if ( $i > 0 )
         $sql .= ", ";
-      $sql .= $values[$i];
+      //$sql .= $values[$i];
+	  $sql .= "?";
     }
     $sql .= " )";
     $report_id = $newid;
@@ -203,40 +204,43 @@ if ( empty ( $error ) ) {
     for ( $i = 0; $i < count ( $names ); $i++ ) {
       if ( $i > 0 )
         $sql .= ", ";
-      $sql .= "$names[$i] = $values[$i]";
+      //$sql .= "$names[$i] = $values[$i]";
+	  $sql .= "$names[$i] = ?";
     }
-    $sql .= " WHERE cal_report_id = $report_id";
+    $sql .= " WHERE cal_report_id = ?";
+	$values[] = $report_id; // push the $report_id to $values
+
   }
   //echo "SQL: $sql"; exit;
 }
 
 
 if ( empty ( $error ) ) {
-  if ( ! dbi_query ( $sql ) ) {
+  if ( ! dbi_execute ( $sql, $values ) ) {
     $error = translate ( "Database error" ) . ": " . dbi_error ();
   }
 }
 
 if ( empty ( $error ) ) {
   if ( ! $adding_report ) {
-    if ( ! dbi_query ( "DELETE FROM webcal_report_template " .
-      "WHERE cal_report_id = $report_id" ) )
+    if ( ! dbi_execute ( "DELETE FROM webcal_report_template " .
+      "WHERE cal_report_id = ?", array( $report_id ) ) )
       $error = translate("Database error") . ": " . dbi_error ();
   }
   if ( empty ( $error ) &&
-    ! dbi_query ( "INSERT INTO webcal_report_template " .
+    ! dbi_execute ( "INSERT INTO webcal_report_template " .
     "( cal_report_id, cal_template_type, cal_template_text ) VALUES ( " .
-    "$report_id, 'P', '$page_template' )" ) )
+    "?, ?, ? )", array( $report_id, 'P', $page_template ) ) )
     $error = translate("Database error") . ": " . dbi_error ();
   if ( empty ( $error ) &&
-    ! dbi_query ( "INSERT INTO webcal_report_template " .
+    ! dbi_execute ( "INSERT INTO webcal_report_template " .
     "( cal_report_id, cal_template_type, cal_template_text ) VALUES ( " .
-    "$report_id, 'D', '$day_template' )" ) )
+    "?, ?, ? )", array( $report_id, 'D', $day_template ) ) )
     $error = translate("Database error") . ": " . dbi_error ();
   if ( empty ( $error ) &&
-    ! dbi_query ( "INSERT INTO webcal_report_template " .
+    ! dbi_execute ( "INSERT INTO webcal_report_template " .
     "( cal_report_id, cal_template_type, cal_template_text ) VALUES ( " .
-    "$report_id, 'E', '$event_template' )" ) )
+    "?, ?, ? )", array( $report_id, 'E', $event_template ) ) )
     $error = translate("Database error") . ": " . dbi_error ();
 }
 

@@ -20,10 +20,10 @@ if ( $id > 0 ) {
   }
     $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_type FROM webcal_entry, " .
       "webcal_entry_user WHERE webcal_entry.cal_id = " .
-      "webcal_entry_user.cal_id AND webcal_entry.cal_id = $id " .
-      "AND (webcal_entry.cal_create_by = '$login' " .
-      "OR webcal_entry_user.cal_login = '$login')";
-    $res = dbi_query ( $sql );
+      "webcal_entry_user.cal_id AND webcal_entry.cal_id = ? " .
+      "AND (webcal_entry.cal_create_by = ? " .
+      "OR webcal_entry_user.cal_login = ?)";
+    $res = dbi_execute ( $sql, array( $id, $login, $login ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       if ( $row && $row[0] > 0 )
@@ -40,8 +40,8 @@ if ( $activity_type =='E' || $activity_type == 'M' ) {
   $log_reject = LOG_REJECT_T;
 }
 // See who owns the event.  Owner should be able to delete.
-$res = dbi_query (
-  "SELECT cal_create_by FROM webcal_entry WHERE cal_id = $id" );
+$res = dbi_execute (
+  "SELECT cal_create_by FROM webcal_entry WHERE cal_id = ?", array( $id ) );
 if ( $res ) {
   $row = dbi_fetch_row ( $res );
   $owner = $row[0];
@@ -77,8 +77,8 @@ if ( ! $can_edit ) {
 
 // Is this a repeating event?
 $event_repeats = false;
-$res = dbi_query ( "SELECT COUNT(cal_id) FROM webcal_entry_repeats " .
-  "WHERE cal_id = $id" );
+$res = dbi_execute ( "SELECT COUNT(cal_id) FROM webcal_entry_repeats " .
+  "WHERE cal_id = ?", array( $id ) );
 if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( $row[0] > 0 )
@@ -94,7 +94,7 @@ if ( $id > 0 && empty ( $error ) ) {
   if ( ! empty ( $date ) ) {
     $thisdate = $date;
   } else {
-    $res = dbi_query ( "SELECT cal_date FROM webcal_entry WHERE cal_id = $id" );
+    $res = dbi_execute ( "SELECT cal_date FROM webcal_entry WHERE cal_id = ?", array( $id ) );
     if ( $res ) {
       // date format is 19991231
       $row = dbi_fetch_row ( $res );
@@ -111,9 +111,9 @@ if ( $id > 0 && empty ( $error ) ) {
     // Email participants that the event was deleted
     // First, get list of participants (with status Approved or
     // Waiting on approval).
-    $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = $id " .
+    $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? " .
       "AND cal_status IN ('A','W')";
-    $res = dbi_query ( $sql );
+    $res = dbi_execute ( $sql, array( $id ) );
     $partlogin = array ();
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -125,8 +125,8 @@ if ( $id > 0 && empty ( $error ) ) {
 
     // Get event name
     $sql = "SELECT cal_name, cal_date, cal_time " .
-      "FROM webcal_entry WHERE cal_id = $id";
-    $res = dbi_query($sql);
+      "FROM webcal_entry WHERE cal_id = ?";
+    $res = dbi_execute( $sql, array( $id ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       $name = $row[0];
@@ -186,15 +186,15 @@ if ( $id > 0 && empty ( $error ) ) {
     // by setting the status for each participant to "D" (instead
     // of "A"/Accepted, "W"/Waiting-on-approval or "R"/Rejected)
     if ( $override_repeat ) {
-      dbi_query ( "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
-        "VALUES ( $id, $date, 1 )" );
+      dbi_execute ( "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
+        "VALUES ( ?, ?, ? )", array( $id, $date, 1 ) );
       // Should we log this to the activity log???
     } else {
       // If it's a repeating event, delete any event exceptions
       // that were entered.
       if ( $event_repeats ) {
-        $res = dbi_query ( "SELECT cal_id FROM webcal_entry " .
-          "WHERE cal_group_id = $id" );
+        $res = dbi_execute ( "SELECT cal_id FROM webcal_entry " .
+          "WHERE cal_group_id = ?", array( $id ) );
         if ( $res ) {
           $ex_events = array ();
           while ( $row = dbi_fetch_row ( $res ) ) {
@@ -202,8 +202,8 @@ if ( $id > 0 && empty ( $error ) ) {
           }
           dbi_free_result ( $res );
           for ( $i = 0; $i < count ( $ex_events ); $i++ ) {
-            $res = dbi_query ( "SELECT cal_login FROM " .
-              "webcal_entry_user WHERE cal_id = $ex_events[$i]" );
+            $res = dbi_execute ( "SELECT cal_login FROM " .
+              "webcal_entry_user WHERE cal_id = ?", array( $ex_events[$i] ) );
             if ( $res ) {
               $delusers = array ();
               while ( $row = dbi_fetch_row ( $res ) ) {
@@ -214,9 +214,9 @@ if ( $id > 0 && empty ( $error ) ) {
                 // Log the deletion
                 activity_log ( $ex_events[$i], $login, $delusers[$j],
                   $log_delete, "" );
-                dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
-                  "WHERE cal_id = $ex_events[$i] " .
-                  "AND cal_login = '$delusers[$j]'" );
+                dbi_execute ( "UPDATE webcal_entry_user SET cal_status = ? " .
+                  "WHERE cal_id = ? " .
+                  "AND cal_login = ?", array( 'D', $ex_events[$i], $delusers[$j] ) );
               }
             }
           }
@@ -224,12 +224,12 @@ if ( $id > 0 && empty ( $error ) ) {
       }
 
       // Now, mark event as deleted for all users.
-      dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
-        "WHERE cal_id = $id" );
+      dbi_execute ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
+        "WHERE cal_id = ?", array( $id ) );
 				
       // Delete External users for this event
-      dbi_query ( "DELETE FROM webcal_entry_ext_user " .
-        "WHERE cal_id = $id" );
+      dbi_execute ( "DELETE FROM webcal_entry_ext_user " .
+        "WHERE cal_id = ?", array( $id ) );
     }
   } else {
     // Not the owner of the event, but participant or noncal_admin
@@ -246,8 +246,8 @@ if ( $id > 0 && empty ( $error ) ) {
       }
     }
     if ( empty ( $error ) ) {
-      dbi_query ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
-        "WHERE cal_id = $id AND cal_login = '$del_user'" );
+      dbi_execute ( "UPDATE webcal_entry_user SET cal_status = ? " .
+        "WHERE cal_id = ? AND cal_login = ?", array( 'D', $id, $del_user ) );
       activity_log ( $id, $login, $login, $log_reject, "" );
     }
   }

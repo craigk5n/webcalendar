@@ -121,9 +121,9 @@ function access_load_user_permissions ( $user )
 
   $sql = "SELECT cal_login, cal_other_user, " .
     "cal_can_view, cal_can_edit, cal_can_delete, cal_can_approve " .
-    "FROM webcal_access_user WHERE cal_login = '$user' OR cal_login = '__default__' " .
+    "FROM webcal_access_user WHERE cal_login = ? OR cal_login = ? " .
     "ORDER BY cal_login ";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql, array( $user, '__default__' ) );
   assert ( '$res' );
   if ( $row = dbi_fetch_row ( $res ) ) {
     $key = $user . "." . $row[1];
@@ -195,8 +195,8 @@ function access_load_user_functions ( $user )
   $users = array ( $user, '__default__' );
  
   for ( $i = 0; $i < count ( $users ) && empty ( $ret ); $i++ )  {
-    $res = dbi_query ( "SELECT cal_permissions FROM webcal_access_function " .
-      "WHERE cal_login = '" . $users[$i] . "'" );
+    $res = dbi_execute ( "SELECT cal_permissions FROM webcal_access_function " .
+      "WHERE cal_login = ?", array( $users[$i] ) );
     assert ( '$res' );
     if ( $row = dbi_fetch_row ( $res ) ) {
       $rets[$i] = $row[0];

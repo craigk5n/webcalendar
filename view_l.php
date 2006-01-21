@@ -83,8 +83,7 @@ $monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 $thisdate = $startdate;
 
 // get users in this view
-$res = dbi_query (
-  "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
+$res = dbi_execute ( "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?" , array ( $id ) );
 $viewusers = array ();
 $all_users = false;
 if ( $res ) {

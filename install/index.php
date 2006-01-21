@@ -56,6 +56,12 @@ $lang = "English-US"; // Default
 
 $lang_file = "translations/" . $lang . ".txt";
 
+function do_debug ( $msg ) {
+  // log to /tmp/webcal-debug.log
+  error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
+  3, "d:\php\logs\debug.txt" );
+}
+
 // Get value from POST form
 function getPostValue ( $name ) {
   global $HTTP_POST_VARS;
@@ -132,12 +138,13 @@ function get_installed_version () {
  
  //We will append the db_type to come up te proper filename
   $_SESSION['install_file'] = "tables";
- 
  //This data is read from file upgrade_matrix.php
  for ( $i=0; $i < count( $database_upgrade_matrix); $i++ ) {
    $sql = $database_upgrade_matrix[$i][0];
-  $res = dbi_query ( $sql, false, false );
+	do_debug ( "index " . $sql);
+  $res = dbi_execute ( $sql, array(), false, false );
   if ( $res ) {
+do_debug ( $database_upgrade_matrix[$i][2]);
   $_SESSION['old_program_version'] = $database_upgrade_matrix[$i][1];
   $_SESSION['install_file'] = $database_upgrade_matrix[$i][2];
   dbi_free_result ( $res );
@@ -154,8 +161,8 @@ function get_installed_version () {
  // v1.1 and after will have an entry in webcal_config to make this easier
  //Not sure if this will work well for CVS code
  //We'll bypass this for now
-// $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-//  "WHERE cal_setting  = 'WEBCAL_PROGRAM_VERSION'", false, false );
+// $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
+//  "WHERE cal_setting  = 'WEBCAL_PROGRAM_VERSION'", array(), false, false );
 // if ( $res ) {
 //   $row = dbi_fetch_row ( $res );
 //  if ( ! empty ( $row[0] ) ) {  
@@ -167,7 +174,7 @@ function get_installed_version () {
 
  //We need to determine this is a blank database
  // This may be due to a manual table setup
- $res = dbi_query ( "SELECT count(cal_value) FROM webcal_config", false, false );
+ $res = dbi_execute ( "SELECT count(cal_value) FROM webcal_config" , array() , false, false );
  if ( $res ) {
    $row = dbi_fetch_row ( $res );
   if ( isset ( $row[0] ) && $row[0] == 0 ) {  
@@ -177,7 +184,7 @@ function get_installed_version () {
    make_uppercase ();
    
    //delete existing WEBCAL_PROGRAM_VERSION number 
-   dbi_query ("DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
+   dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
 	    
    // Insert webcal_config values only if blank
    db_load_config ();   
@@ -186,8 +193,8 @@ function get_installed_version () {
  }
  // Determine if old data has been converted to GMT
  // This seems lke a good place to put this
- $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-  "WHERE cal_setting  = 'WEBCAL_TZ_CONVERSION'", false, false);
+ $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
+  "WHERE cal_setting  = 'WEBCAL_TZ_CONVERSION'", array(), false, false);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
   // if not 'Y', we will prompt user to do conversion
@@ -200,8 +207,8 @@ function get_installed_version () {
  // Get existing server URL
  // We could use the self-discvery value, but this 
  // may be a custom value
- $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-  "WHERE cal_setting  = 'SERVER_URL'", false, false);
+ $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
+  "WHERE cal_setting  = 'SERVER_URL'", array(), false, false);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( ! empty ( $row[0] ) && strlen ( $row[0] ) ) {
@@ -210,8 +217,8 @@ function get_installed_version () {
   dbi_free_result ( $res );
  }
  // Get existing application name
- $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-  "WHERE cal_setting  = 'APPLICATION_NAME'", false, false);
+ $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
+  "WHERE cal_setting  = 'APPLICATION_NAME'", array(), false, false);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( ! empty ( $row[0] ) ) {
@@ -317,14 +324,10 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
 
 $php_settings = array (
   array ('Safe Mode','safe_mode','OFF'),
-  array ('Magic Quotes GPC','magic_quotes_gpc','ON'),
+//  array ('Magic Quotes GPC','magic_quotes_gpc','ON'),
   array ('Display Errors','display_errors','ON'),
   array ('File Uploads','file_uploads','ON') 
 );
-//Add 'Register Long Arrays' only if php 5.0 
-if ( floor ( phpversion () ) == 5 ) {
-  array_push ( $php_settings, array ('Register Long Arrays','register_long_arrays','ON') );
-}
 
 // set up array to test for some constants (display name, constant name, preferred value )
 $php_constants = array (
@@ -477,7 +480,7 @@ function db_populate ( $install_filename, $display_sql ) {
   for ( $i = 0; $i < count($parsed_sql); $i++ ) {
     if ( empty ( $display_sql ) ){ 
   if ( $show_all_errors == true ) echo $parsed_sql[$i] . "<br />";
-      dbi_query ( $parsed_sql[$i] );   
+      dbi_execute ( $parsed_sql[$i] );   
   } else {
     $str_parsed_sql .= $parsed_sql[$i] . "\n\n";
   } 
@@ -545,12 +548,11 @@ if ( ! empty ( $action ) &&  $action == "install" ){
   if ( empty ( $display_sql ) ){
    //Convert passwords to md5 hashes if needed
    $sql = "SELECT cal_login, cal_passwd FROM webcal_user";
-   $res = dbi_query ( $sql, false, $show_all_errors );
+   $res = dbi_execute ( $sql, array(), false, $show_all_errors );
    if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
      if ( strlen ( $row[1] ) < 30 ) {
-      dbi_query ("UPDATE webcal_user SET cal_passwd = '" .
-       md5($row[1]) . "' WHERE cal_login = '".$row[0]."'");
+      dbi_execute ("UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?", array ( md5( $row[1] ) , $row[0] ) );
      }
     }
     dbi_free_result ( $res );
@@ -660,12 +662,12 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
     //Allow ODBC field to be visible if needed
    $onload = "db_type_handler();";
   
-    // We don't use the normal dbi_query because we need to know
+    // We don't use the normal dbi_execute because we need to know
   // the difference between no conection and no database 
   if ( $db_type == "mysql" ) {
       $c = dbi_connect ( $db_host, $db_login, $db_password, 'mysql' );
       if ( $c ) {
-     dbi_query ( "CREATE DATABASE $db_database;" , false, $show_all_errors);
+     dbi_execute ( "CREATE DATABASE $db_database;" , array(), false, $show_all_errors);
     if ( ! @mysql_select_db ( $db_database ) ) {
       $response_msg = "<b>" . translate ( "Failure Reason" ) . 
      ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
@@ -681,7 +683,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
   } else if ( $db_type == "mssql" ) {
       $c = dbi_connect ( $db_host, $db_login, $db_password , 'master');
       if ( $c ) {
-     dbi_query ( "CREATE DATABASE $db_database;" , false, $show_all_errors);
+     dbi_execute ( "CREATE DATABASE $db_database;" , array(), false, $show_all_errors);
     if ( ! @mssql_select_db ( $db_database ) ) {
       $response_msg = "<b>" . translate ( "Failure Reason" ) . 
      ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
@@ -698,7 +700,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
   } else if ( $db_type == "postgresql" ) {
    $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1'); 
       if ( $c ) {
-     dbi_query ( "CREATE DATABASE $db_database" , false, $show_all_errors);
+     dbi_execute ( "CREATE DATABASE $db_database" , array(), false, $show_all_errors);
      $_SESSION['db_noexist'] = false;
     } else {
       $response_msg = "<b>" . translate ( "Failure Reason" ) . 
@@ -832,14 +834,14 @@ if ( ! empty ( $y ) ) {
     $settings['db_password'], $settings['db_database'] );
  if ( $c ) {
    if ( isset ( $_SESSION['application_name'] ) ) {
-     dbi_query ("DELETE FROM webcal_config WHERE cal_setting = 'APPLICATION_NAME'");
-    dbi_query ("INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-          "VALUES ('APPLICATION_NAME', '" . $_SESSION['application_name'] . "')");
+    dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'APPLICATION_NAME'");
+    dbi_execute ("INSERT INTO webcal_config ( cal_setting, cal_value ) " .
+          "VALUES ('APPLICATION_NAME', ?)" , array ( $_SESSION['application_name'] ) );
   }
    if ( isset ( $_SESSION['server_url'] ) ) {
-     dbi_query ("DELETE FROM webcal_config WHERE cal_setting = 'SERVER_URL'");
-    dbi_query ("INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-          "VALUES ('SERVER_URL', '" . $_SESSION['server_url'] . "')");
+    dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'SERVER_URL'");
+    dbi_execute ("INSERT INTO webcal_config ( cal_setting, cal_value ) " .
+          "VALUES ('SERVER_URL', ?)" , array ( $_SESSION['server_url'] ) );
   }
  }
  $do_load_admin = getPostValue ( "load_admin" );
@@ -1141,7 +1143,7 @@ doc.li {
     } else {
  echo "<img src=\"not_recommended.jpg\" />&nbsp;";
     }
-    etranslate ( "SESSION COUNTER" ) . ": " . $_SESSION['check'];
+     echo translate ( "SESSION COUNTER" ) . ": " . $_SESSION['check'];
 ?>
  </td></tr>
 <?php //if the settings file doesn't exist or we can't write to it, echo an error header..
@@ -1287,7 +1289,7 @@ if ( ! $exists || ! $canWrite ) { ?>
  <?php etranslate ( "Database Settings" ) ?>
 </th></tr>
 <tr><td>
- <form action="index.php" method="post" name="dbform" onsubmit="return chkPassword()">
+ <form action="index.php" method="post" name="dbform" onSubmit="return chkPassword()">
  <table align="right" width="100%" border="0">
   <tr><td rowspan="6" width="20%">&nbsp;
    </td><td class="prompt" width="25%" valign="bottom">

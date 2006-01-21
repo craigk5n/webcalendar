@@ -10,8 +10,8 @@ if ( $id > 0 ) {
   // double check to make sure user doesn't already have the event
   $is_my_event = false;
   $sql = "SELECT cal_id FROM webcal_entry_user " .
-    "WHERE cal_login = '$login' AND cal_id = $id";
-  $res = dbi_query ( $sql );
+    "WHERE cal_login = ? AND cal_id = ?";
+  $res = dbi_execute ( $sql, array( $login, $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $id ) {
@@ -24,8 +24,8 @@ if ( $id > 0 ) {
 
   // Now lets make sure the user is allowed to add the event (not private)
 
-  $sql = "SELECT cal_access FROM webcal_entry WHERE cal_id = " . $id;
-  $res = dbi_query ( $sql );
+  $sql = "SELECT cal_access FROM webcal_entry WHERE cal_id = ?";
+  $res = dbi_execute ( $sql, array( $id ) );
   if ( ! $res ) {
     echo translate("Invalid entry id") . ": $id";
     exit;
@@ -47,7 +47,7 @@ if ( $id > 0 ) {
 
   // add the event
   if ( $readonly == "N" && ! $is_my_event && ! $is_private )  {
-    if ( ! dbi_query ( "INSERT INTO webcal_entry_user ( cal_id, cal_login, cal_status ) VALUES ( $id, '$login', 'A' )") ) {
+    if ( ! dbi_execute ( "INSERT INTO webcal_entry_user ( cal_id, cal_login, cal_status ) VALUES ( ?, ?, ? )", array( $id, $login, 'A' ) ) ) {
       $error = translate("Error adding event") . ": " . dbi_error ();
     }
   }

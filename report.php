@@ -224,6 +224,7 @@ if ( empty ( $error ) && empty ( $report_id ) && $login == "__public__" ) {
 }
 if ( empty ( $error ) && empty ( $report_id ) ) {
   $list = "";
+  $sql_params = array();
   if ( $is_admin ) {
     if ( ! $updating_public ) {
       $list .= "<p><a title=\"" .
@@ -234,8 +235,9 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
         translate("to manage reports for the Public Access calendar") . "." .
         "</a></p>\n";
       $sql = "SELECT cal_report_id, cal_report_name " .
-        "FROM webcal_report WHERE cal_login = '$login' OR " .
+        "FROM webcal_report WHERE cal_login = ? OR " .
         "cal_is_global = 'Y' ORDER BY cal_update_date DESC, cal_report_name";
+      $sql_params[] = $login;
     } else {
       $sql = "SELECT cal_report_id, cal_report_name " .
         "FROM webcal_report WHERE cal_login = '__public__' " .
@@ -243,10 +245,11 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
     }
   } else {
     $sql = "SELECT cal_report_id, cal_report_name " .
-      "FROM webcal_report WHERE cal_login = '$login' " .
+      "FROM webcal_report WHERE cal_login = ? " .
       "ORDER BY cal_update_date DESC, cal_report_name";
+    $sql_params[] = $login;
   }
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql , $sql_params );
   $list .= "<ul>\n";
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ){
@@ -269,11 +272,11 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
 
 // Load the specified report
 if ( empty ( $error ) && empty ( $list ) ) {
-  $res = dbi_query ( "SELECT cal_login, cal_report_id, cal_is_global, " .
+  $res = dbi_execute ( "SELECT cal_login, cal_report_id, cal_is_global, " .
     "cal_report_type, cal_include_header, cal_report_name, " .
     "cal_time_range, cal_user, " .
     "cal_allow_nav, cal_cat_id, cal_include_empty, cal_update_date " .
-    "FROM webcal_report WHERE cal_report_id = $report_id" );
+    "FROM webcal_report WHERE cal_report_id = ?" , array ( $report_id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) { 
       if ( $row[2] != 'Y' && $login != $row[0] ) {
@@ -323,9 +326,9 @@ $event_template = '<dt>${name}</dt><dd>' .
 
 // Load templates for this report.
 if ( empty ( $error ) && empty ( $list ) ) {
-  $res = dbi_query ( "SELECT cal_template_type, cal_template_text " .
+  $res = dbi_execute ( "SELECT cal_template_type, cal_template_text " .
     "FROM webcal_report_template " .
-    "WHERE cal_report_id = $report_id" );
+    "WHERE cal_report_id = ?" , array ( $report_id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] == 'P' ) {

@@ -225,8 +225,8 @@ if ( empty ( $id ) ) {
   $can_edit = true;
 } else {
   // event owner or assistant event ?
-  $sql = "SELECT cal_create_by FROM webcal_entry WHERE cal_id = '$id'";
-  $res = dbi_query($sql);
+  $sql = "SELECT cal_create_by FROM webcal_entry WHERE cal_id = ?";
+  $res = dbi_execute( $sql, array( $id ) );
   if ($res) {
     $row = dbi_fetch_row ( $res );
     // value may be needed later for recreating event
@@ -243,9 +243,9 @@ if ( $is_admin ) {
 }
 if ( empty ( $error ) && ! $can_edit ) {
   // is user a participant of that event ?
-  $sql = "SELECT cal_id FROM webcal_entry_user WHERE cal_id = '$id' " .
-    "AND cal_login = '$login' AND cal_status IN ('W','A')";
-  $res = dbi_query ( $sql );
+  $sql = "SELECT cal_id FROM webcal_entry_user WHERE cal_id = ? " .
+    "AND cal_login = ? AND cal_status IN ('W','A')";
+  $res = dbi_execute ( $sql, array( $id, $login ) );
   if ($res) {
     $row = dbi_fetch_row ( $res );
     if ( ! empty( $row[0] ) )
@@ -374,7 +374,7 @@ if ( empty ( $error ) ) {
   $newevent = true;
   // now add the entries
   if ( empty ( $id ) || $do_override ) {
-    $res = dbi_query ( "SELECT MAX(cal_id) FROM webcal_entry" );
+    $res = dbi_execute ( "SELECT MAX(cal_id) FROM webcal_entry" );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       $id = $row[0] + 1;
@@ -386,8 +386,8 @@ if ( empty ( $error ) ) {
     $newevent = false;
     // save old  values of participants
     $sql = "SELECT cal_login, cal_status, cal_percent " .
-      "FROM webcal_entry_user WHERE cal_id = $id ";
-    $res = dbi_query ( $sql );
+      "FROM webcal_entry_user WHERE cal_id = ? ";
+    $res = dbi_execute ( $sql, array( $id ) );
     if ( $res ) {
       for ( $i = 0; $tmprow = dbi_fetch_row ( $res ); $i++ ) {
         $old_status[$tmprow[0]] = $tmprow[1]; 
@@ -399,19 +399,19 @@ if ( empty ( $error ) ) {
     }
 
     if ( empty ( $error ) ) {
-      dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = $id" );
-      dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_id = $id" );
-      dbi_query ( "DELETE FROM webcal_entry_ext_user WHERE cal_id = $id" );
-      dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id" );
-      dbi_query ( "DELETE FROM webcal_site_extras WHERE cal_id = $id" );
+      dbi_execute ( "DELETE FROM webcal_entry WHERE cal_id = ?", array( $id ) );
+      dbi_execute ( "DELETE FROM webcal_entry_user WHERE cal_id = ?", array( $id ) );
+      dbi_execute ( "DELETE FROM webcal_entry_ext_user WHERE cal_id = ?", array( $id ) );
+      dbi_execute ( "DELETE FROM webcal_entry_repeats WHERE cal_id = ?", array( $id ) );
+      dbi_execute ( "DELETE FROM webcal_site_extras WHERE cal_id = ?", array( $id ) );
     }
     $newevent = false;
   }
 
   if ( $do_override ) {
     $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
-      "VALUES ( $old_id, $override_date, 1 )";
-    if ( ! dbi_query ( $sql ) ) {
+      "VALUES ( ?, ?, ? )";
+    if ( ! dbi_execute ( $sql, array( $old_id, $override_date, 1 ) ) ) {
       $error = translate("Database error") . ": " . dbi_error ();
     }
   }
@@ -422,57 +422,52 @@ if ( empty ( $error ) ) {
     ( ! empty ( $eventcomplete)? "cal_completed, ": "" ) .
     "cal_due_date, cal_due_time, cal_mod_date, cal_mod_time, cal_duration, cal_priority, " .
     "cal_access, cal_type, cal_name, cal_description, cal_location ) " .
-    "VALUES ( $id, " .
-    ( $old_id > 0 ? " $old_id, " : "" ) .
-    "'" . ( ! empty ( $old_create_by ) && 
-      ( ( $is_admin && ! $newevent ) || $is_assistant || 
-      $is_nonuser_admin ) ? $old_create_by : $login ) . "', ";
-    
-  $sql .= date ( "Ymd", $eventstart ) . ", ";
-  if ( strlen ( $hour ) > 0 && $timetype != 'U' ) {
-    $sql .= date ( "His", $eventstart ) . ", ";
-  } else {
-    $sql .= "-1, ";
-  }
-  if ( ! empty ( $eventcomplete ) )  {
-    $sql .= $eventcomplete . ", ";
-  }  
-  $sql .= date ( "Ymd", $eventdue ) . ", ";
-  $sql .= date ( "His", $eventdue ) . ", ";
-  $sql .= gmdate ( "Ymd" ) . ", " . gmdate ( "Gis" ) . ", ";
-  $sql .= sprintf ( "%d, ", $duration );
-  $sql .= ( ! empty ( $priority ) ? sprintf ( "%d, ", $priority ) : "2," );
-  $sql .= empty ( $access ) ? "'P', " : "'$access', ";
-  if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'event' ) {
-    $sql .= "'M', ";
-  } else if ( $eType == 'event' ) {
-    $sql .= "'E', ";
-  }  else if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'task' ) {
-    $sql .= "'N', ";
-  } else if ( $eType == 'task' ) {
-    $sql .= "'T', ";
-  }  else if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'journal' ) {
-    $sql .= "'O', "; 
-  } else if ( $eType == 'journal' ) {
-    $sql .= "'J', ";
-  }                
+    "VALUES ( ?, " .
+    ( $old_id > 0 ? "?, " : "" ) .
+    "?, ?, ?, " . 
+  ( ! empty ( $eventcomplete ) ? "?, ": "" ) .
+  "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
-  if ( strlen ( $name ) == 0 ) {
-    $name = translate("Unnamed Event");
-  }
-  $sql .= "'" . $name .  "', ";
-  if ( strlen ( $description ) == 0  || $description == "<br />" ) {
-    $description = $name;
-  }
-  $sql .= "'" . $description . "',";
- 
-  $location = ( ! empty ( $location )? $location:'');
-  $sql .= "'" . $location . "' )";
+  $query_params = array();
+
+  $query_params[] = $id;
+  if ( $old_id > 0 )
+    $query_params[] = $old_id;
+
+  $query_params[] = ( ! empty ( $old_create_by ) && ( ( $is_admin && ! $newevent ) || $is_assistant || $is_nonuser_admin ) ) ? $old_create_by : $login;
+  $query_params[] = date ( "Ymd", $eventstart );
+  $query_params[] = ( strlen ( $hour ) > 0 && $timetype != 'U' ) ? date ( "His", $eventstart ) : "-1";
   
- 
- 
+  if ( ! empty ( $eventcomplete ) )
+    $query_params[] = $eventcomplete;
+
+  $query_params[] = date ( "Ymd", $eventdue );
+  $query_params[] = date ( "His", $eventdue );
+  $query_params[] = gmdate ( "Ymd" );
+  $query_params[] = gmdate ( "Gis" );
+  $query_params[] = sprintf ( "%d", $duration );
+  $query_params[] = ( ! empty ( $priority ) ) ? sprintf ( "%d", $priority ) : "2";
+  
+  $query_params[] = empty ( $access ) ? "P" : "$access";
+  if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'event' ) {
+  $query_params[] = "M";
+  } else if ( $eType == 'event' ) {
+  $query_params[] = "E";
+  }  else if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'task' ) {
+  $query_params[] = "N";
+  } else if ( $eType == 'task' ) {
+  $query_params[] = "T";
+  }  else if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'journal' ) {
+  $query_params[] = "O";
+  } else if ( $eType == 'journal' ) {
+  $query_params[] = "J";
+  }
+  $query_params[] = ( strlen ( $name ) == 0 ) ? "Unnamed Event" : $name;
+  $query_params[] = ( strlen ( $description ) == 0  || $description == "<br />" ) ? $name : $description;
+  $query_params[] = ( ! empty ( $location ) ) ? $location : '' ;
+
   if ( empty ( $error ) ) {
-    if ( ! dbi_query ( $sql ) ) {
+    if ( ! dbi_execute ( $sql, $query_params ) ) {
       $error = translate("Database error") . ": " . dbi_error ();
     }
   }
@@ -481,7 +476,7 @@ if ( empty ( $error ) ) {
   if ( $eType == 'task' ) {
    $log_c = LOG_CREATE_T;
    $log_u = LOG_UPDATE_T;
-  } else if ( $eType == 'jounal' ) {
+  } else if ( $eType == 'journal' ) {
    $log_c = LOG_CREATE_J;
    $log_u = LOG_UPDATE_J;
   }else {
@@ -498,8 +493,8 @@ if ( empty ( $error ) ) {
   //add categories
   $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
     $is_admin ) ) ? $user : $login;
-  dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
-    "AND ( cat_owner = '$cat_owner' OR cat_owner IS NULL )" );
+  dbi_execute ( "DELETE FROM webcal_entry_categories WHERE cal_id = ? " .
+    "AND ( cat_owner = ? OR cat_owner IS NULL )", array( $id, $cat_owner ) );
   $categories = explode (",", $cat_id );
   sort ( $categories);
   for ( $i =0; $i < count( $categories ); $i++ ) {
@@ -512,16 +507,23 @@ if ( empty ( $error ) ) {
     //we set cat_id negative in form if global
     if ( $categories[$i] > 0 ) {
       $names[] = 'cat_owner';
-      $values[]  = "'$cat_owner'";
+      $values[]  = $cat_owner;
       $names[] = 'cat_order';
       $values[]  = ($i+1);
     } else {
       $names[] = 'cat_order';
       $values[]  = 99; //forces global categories to apear at the end of lists 
-    } 
+    }
+
+  // build the variable placeholders - ?-s, comma-separated
+  $placeholders = '';
+    for ( $v_i = 0; $v_i < count( $values ); $v_i++ ) {
+      $placeholders .= '?,';
+  }
+  $placeholders = preg_replace( "/,$/", "", $placeholders ); // remove trailing ','
     $sql = "INSERT INTO webcal_entry_categories ( " . implode ( ", ", $names ) .
-      " ) VALUES ( " . implode ( ", ", $values ) . " )"; 
-    if ( ! dbi_query ( $sql ) ) {
+      " ) VALUES ( $placeholders )"; 
+    if ( ! dbi_execute ( $sql, $values ) ) {
       $error = translate("Database error") . ": " . dbi_error ();
       break;
     }
@@ -541,15 +543,19 @@ if ( empty ( $error ) ) {
     $value = $$extra_name;
     //echo "Looking for $extra_name... value = " . $value . " ... type = " .
     // $extra_type . "<br />\n";
-    if ( strlen ( $extra_name ) || $extra_type == EXTRA_DATE ) {
+    
+  $sql = '';
+  $query_params = array();
+
+  if ( strlen ( $extra_name ) || $extra_type == EXTRA_DATE ) {
       if ( $extra_type == EXTRA_URL || $extra_type == EXTRA_EMAIL ||
         $extra_type == EXTRA_TEXT || $extra_type == EXTRA_USER ||
         $extra_type == EXTRA_MULTILINETEXT ||
         $extra_type == EXTRA_SELECTLIST  ) {
 
         $sql = "INSERT INTO webcal_site_extras " .
-          "( cal_id, cal_name, cal_type, cal_data ) VALUES ( " .
-          "$id, '$extra_name', $extra_type, '$value' )";
+          "( cal_id, cal_name, cal_type, cal_data ) VALUES ( ?, ?, ?, ? )";
+    $query_params = array( $id, $extra_name, $extra_type, $value );
       } else if ( $extra_type == EXTRA_REMINDER && $value == "1" ) {
         if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
           $yname = $extra_name . "year";
@@ -557,20 +563,20 @@ if ( empty ( $error ) ) {
           $dname = $extra_name . "day";
           $edate = sprintf ( "%04d%02d%02d", $$yname, $$mname, $$dname );
           $sql = "INSERT INTO webcal_site_extras " .
-            "( cal_id, cal_name, cal_type, cal_remind, cal_date ) VALUES ( " .
-            "$id, '$extra_name', $extra_type, 1, $edate )";
+            "( cal_id, cal_name, cal_type, cal_remind, cal_date ) VALUES ( ?, ?, ?, ?, ? )";
+      $query_params = array( $id, $extra_name, $extra_type, 1, $edate );
         } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
           $dname = $extra_name . "_days";
           $hname = $extra_name . "_hours";
           $mname = $extra_name . "_minutes";
           $minutes = ( $$dname * 24 * 60 ) + ( $$hname * 60 ) + $$mname;
           $sql = "INSERT INTO webcal_site_extras " .
-            "( cal_id, cal_name, cal_type, cal_remind, cal_data ) VALUES ( " .
-            "$id, '$extra_name', $extra_type, 1, '" . $minutes . "' )";
+            "( cal_id, cal_name, cal_type, cal_remind, cal_data ) VALUES ( ?, ?, ?, ?, ? )";
+      $query_params = array( $id, $extra_name, $extra_type, 1, $minutes );
         } else {
           $sql = "INSERT INTO webcal_site_extras " .
-          "( cal_id, cal_name, cal_type, cal_remind ) VALUES ( " .
-          "$id, '$extra_name', $extra_type, 1 )";
+            "( cal_id, cal_name, cal_type, cal_remind ) VALUES ( ?, ?, ?, ? )";
+      $query_params = array( $id, $extra_name, $extra_type, 1 );
         }
       } else if ( $extra_type == EXTRA_DATE )  {
         $yname = $extra_name . "year";
@@ -578,13 +584,13 @@ if ( empty ( $error ) ) {
         $dname = $extra_name . "day";
         $edate = sprintf ( "%04d%02d%02d", $$yname, $$mname, $$dname );
         $sql = "INSERT INTO webcal_site_extras " .
-          "( cal_id, cal_name, cal_type, cal_date ) VALUES ( " .
-          "$id, '$extra_name', $extra_type, $edate )";
+          "( cal_id, cal_name, cal_type, cal_date ) VALUES ( ?, ?, ?, ? )";
+    $query_params = array( $id, $extra_name, $extra_type, $edate );
       }
     }
     if ( strlen ( $sql ) && empty ( $error ) ) {
       //echo "SQL: $sql<br />\n";
-      if ( ! dbi_query ( $sql ) ) {
+      if ( ! dbi_execute ( $sql, $query_params ) ) {
         $error = translate("Database error") . ": " . dbi_error ();
       }
     }
@@ -592,10 +598,10 @@ if ( empty ( $error ) ) {
 
   // clearly, we want to delete the old repeats, before inserting new...
   if ( empty ( $error ) ) {
-    if ( ! dbi_query ( "DELETE FROM webcal_entry_repeats WHERE cal_id = $id") ) {
+    if ( ! dbi_execute ( "DELETE FROM webcal_entry_repeats WHERE cal_id = ?", array( $id ) ) ) {
       $error = translate("Database error") . ": " . dbi_error ();
     }
-  if ( ! dbi_query ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = $id") ) {
+  if ( ! dbi_execute ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?", array( $id ) ) ) {
       $error = translate("Database error") . ": " . dbi_error ();
   }
     // add repeating info
@@ -609,7 +615,7 @@ if ( empty ( $error ) ) {
       $rpt_end = date ("Ymd", $rpt_enddatetime );
       $rpt_endtime = date ("His", $rpt_enddatetime );
     } else {
-      $rpt_end = 'NULL';
+      $rpt_end = NULL;
     }
 
 
@@ -619,39 +625,39 @@ if ( empty ( $error ) ) {
     $values[]  = $id;
    
     $names[]  = 'cal_type';
-    $values[] = "'" . $rpt_type . "'";
+    $values[] = $rpt_type;
         
     $names[] = 'cal_frequency';
     $values[] = $freq;
  
     if (! empty ( $bymonth ) ){
       $names[] = 'cal_bymonth';
-      $values[]  = "'" . $bymonth . "'";
+      $values[]  = $bymonth;
     } 
     
     if (! empty ( $bymonthday ) ){
       $names[] = 'cal_bymonthday';
-      $values[]  = "'" . $bymonthday . "'";
+      $values[]  = $bymonthday;
     } 
     if ( ! empty ( $byday ) ){
       $names[] = 'cal_byday';
-      $values[] =  "'" . $byday . "'";
+      $values[] =  $byday;
     }
     if (! empty ( $bysetpos ) ){
       $names[] = 'cal_bysetpos';
-      $values[] = "'" . $bysetpos . "'";
+      $values[] = $bysetpos;
     }
     if (! empty ( $byweekno ) ){
       $names[] = 'cal_byweekno';
-      $values[] = "'" . $byweekno . "'";
+      $values[] = $byweekno;
     }
     if (! empty ( $byyearday ) ) {
       $names[] = 'cal_byyearday';
-      $values[] = "'" . $byyearday . "'";
+      $values[] = $byyearday;
     }
     if (! empty ( $wkst ) ) {
       $names[] = 'cal_wkst';
-      $values[] = "'" . $wkst . "'";
+      $values[] = $wkst;
     }
     
     if (! empty ( $rpt_count ) && is_numeric ( $rpt_count )  ) {
@@ -666,9 +672,15 @@ if ( empty ( $error ) ) {
       $values[] = $rpt_endtime;
     }
 
+    $placeholders = '';
+  for ( $v_i = 0; $v_i < count( $values ); $v_i++ ) {
+      $placeholders .= '?,';
+  }
+  $placeholders = preg_match( "/,$/", "", $placeholders );
+
     $sql = "INSERT INTO webcal_entry_repeats ( " . implode ( ", ", $names ) .
-       " ) VALUES ( " . implode ( ", ", $values ) . " )"; 
-      dbi_query ( $sql );
+       " ) VALUES ( $placeholders )"; 
+      dbi_execute ( $sql, $values );
       $msg .= "<span style=\"font-weight:bold;\">SQL:</span> $sql<br />\n<br />";
 
     } //end add repeating info
@@ -676,9 +688,8 @@ if ( empty ( $error ) ) {
      if ( ! empty ($exceptions ) ) {
        for ( $i = 0; $i < count ( $exceptions ); $i++ ) {
          $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
-           "VALUES ( $id," . substr ($exceptions[$i],1,8 ) . ",". 
-           ( substr ($exceptions[$i],0, 1 ) == "+"? 0 : 1 ) . " )";
-         if ( ! dbi_query ( $sql ) ) {
+           "VALUES ( ?, ?, ? )";
+         if ( ! dbi_execute ( $sql, array( $id, substr ($exceptions[$i],1,8 ), ( ( substr ($exceptions[$i],0, 1 ) == "+" ) ? 0 : 1 ) ) ) ) {
            $error = translate("Database error") . ": " . dbi_error ();
          }
        }
@@ -816,12 +827,11 @@ if ( empty ( $error ) ) {
     // Some users report that they get an error on duplicate keys
     // on the following add... As a safety measure, delete any
     // existing entry with the id.  Ignore the result.
-    dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_id = $id " .
-      "AND cal_login = '$participants[$i]'" );
+    dbi_execute ( "DELETE FROM webcal_entry_user WHERE cal_id = ? " .
+      "AND cal_login = ?", array( $id, $participants[$i] ) );
     $sql = "INSERT INTO webcal_entry_user " .
-      "( cal_id, cal_login, cal_status ) VALUES ( $id, '" .
-      $participants[$i] . "', '$status' )";
-    if ( ! dbi_query ( $sql ) ) {
+      "( cal_id, cal_login, cal_status ) VALUES ( ?, ?, ? )";
+    if ( ! dbi_execute ( $sql, array( $id, $participants[$i], $status ) ) ) {
       $error = translate("Database error") . ": " . dbi_error ();
       break;
 
@@ -963,14 +973,9 @@ if ( $single_user == "N" &&
     for ( $i = 0; $i < count ( $ext_names ); $i++ ) {
       if ( strlen ( $ext_names[$i] ) ) {
         $sql = "INSERT INTO webcal_entry_ext_user " .
-          "( cal_id, cal_fullname, cal_email ) VALUES ( " .
-          "$id, '$ext_names[$i]', ";
-        if ( strlen ( $ext_emails[$i] ) ) {
-          $sql .= "'$ext_emails[$i]' )";
-        } else {
-          $sql .= "NULL )";
-        }
-        if ( ! dbi_query ( $sql ) ) {
+          "( cal_id, cal_fullname, cal_email ) VALUES ( ?, ?, ? )";
+        if ( ! dbi_execute ( $sql, array( $id, $ext_names[$i], 
+				  ( strlen ( $ext_emails[$i] ) ? $ext_emails[$i] : NULL ) ) ) ) {
           $error = translate("Database error") . ": " . dbi_error ();
         }
         // send mail notification if enabled

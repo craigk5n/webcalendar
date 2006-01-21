@@ -61,7 +61,7 @@ class DocList {
 
     $sql = Doc::getSQL ( $event_id, $type );
 
-    $res = dbi_query ( $sql );
+    $res = dbi_execute ( $sql );
     if ( ! $res ) {
       // TODO: exceptions for PHP5
     } else {

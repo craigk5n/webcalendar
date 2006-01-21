@@ -16,8 +16,8 @@ load_user_layers ( $layer_user, 1 );
 
 $layers_enabled = 0;
 $sql = "SELECT cal_value FROM webcal_user_pref " .
-  "WHERE cal_setting = 'LAYERS_STATUS' AND cal_login = '$layer_user'";
-$res = dbi_query ( $sql );
+  "WHERE cal_setting = 'LAYERS_STATUS' AND cal_login = ?";
+$res = dbi_execute ( $sql , array ( $layer_user ) );
 if ( $res ) {
   $row = dbi_fetch_row ( $res );
   $layers_enabled = ( $row[0] == "Y" ? 1 : 0 );

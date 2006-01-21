@@ -29,13 +29,14 @@ if ( ! empty ( $layeruser ) && $error == "" ) {
     // update existing layer entry for this user
     $layerid = $layers[$id]['cal_layerid'];
 
-    dbi_query ( "UPDATE webcal_user_layers SET cal_layeruser = '$layeruser', cal_color = '$layercolor', cal_dups = '$dups' WHERE cal_layerid = '$layerid'");
+    dbi_execute ( "UPDATE webcal_user_layers SET cal_layeruser = ?, cal_color = ?, cal_dups = ? WHERE cal_layerid = ?", 
+		array( $layeruser, $layercolor, $dups, $layerid ) );
 
   } else {
     // new layer entry
     // check for existing layer for user.  can only have one layer per user
-    $res = dbi_query ( "SELECT COUNT(cal_layerid) FROM webcal_user_layers " .
-      "WHERE cal_login = '$layer_user' AND cal_layeruser = '$layeruser'" );
+    $res = dbi_execute ( "SELECT COUNT(cal_layerid) FROM webcal_user_layers " .
+      "WHERE cal_login = ? AND cal_layeruser = ?", array( $layer_user, $layeruser ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       if ( $row[0] > 0 ) {
@@ -44,17 +45,15 @@ if ( ! empty ( $layeruser ) && $error == "" ) {
       dbi_free_result ( $res );
     }
     if ( $error == "" ) {
-      $res = dbi_query ( "SELECT MAX(cal_layerid) FROM webcal_user_layers" );
+      $res = dbi_execute ( "SELECT MAX(cal_layerid) FROM webcal_user_layers" );
       if ( $res ) {
         $row = dbi_fetch_row ( $res );
         $layerid = $row[0] + 1;
       } else {
         $layerid = 1;
       }
-      dbi_query ( "INSERT INTO webcal_user_layers ( ".
-        "cal_layerid, cal_login, cal_layeruser, cal_color, cal_dups ) " .
- "VALUES ('$layerid', '$layer_user', '$layeruser', " .
- "'$layercolor', '$dups')");
+      dbi_execute ( "INSERT INTO webcal_user_layers ( cal_layerid, cal_login, cal_layeruser, cal_color, cal_dups ) " .
+        "VALUES ( ?, ?, ?, ?, ? )", array( $layerid, $layer_user, $layeruser, $layercolor, $dups ) );
     }
   }
 }

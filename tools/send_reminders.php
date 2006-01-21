@@ -94,7 +94,7 @@ if ( $debug )
   echo "<br />\n";
 
 // Get a list of people who have asked not to receive email
-$res = dbi_query ( "SELECT cal_login FROM webcal_user_pref " .
+$res = dbi_execute ( "SELECT cal_login FROM webcal_user_pref " .
   "WHERE cal_setting = 'EMAIL_REMINDER' " .
   "AND cal_value = 'N'" );
 $noemail = array ();
@@ -119,7 +119,7 @@ for ( $i = 0; $i < count ( $allusers ); $i++ ) {
 
 
 // Get all users language settings.
-$res = dbi_query ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
+$res = dbi_execute ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
   "WHERE cal_setting = 'LANGUAGE'" );
 $languages = array ();
 if ( $res ) {
@@ -133,7 +133,7 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 // Get all users time format settings.
-$res = dbi_query ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
+$res = dbi_execute ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
   "WHERE cal_setting = 'TIME_FORMAT'" );
 $t_format = array ();
 if ( $res ) {
@@ -147,7 +147,7 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 // Just get list of users who have asked for HTML (default is plain text)
-$res = dbi_query ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
+$res = dbi_execute ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
   "WHERE cal_setting = 'EMAIL_HTML' AND cal_value = 'Y'" );
 $htmlmail = array ();
 if ( $res ) {
@@ -161,7 +161,7 @@ if ( $res ) {
 }
 
 // Get all users timezone settings.
-$res = dbi_query ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
+$res = dbi_execute ( "SELECT cal_login, cal_value FROM webcal_user_pref " .
   "WHERE cal_setting = 'TIMEZONE'" );
 
 $tz = array (); 
@@ -176,7 +176,7 @@ if ( $res ) {
 }
 
 // Get default timezone setting.
-$res = dbi_query ( "SELECT cal_value FROM webcal_config " .
+$res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
   "WHERE cal_setting = 'SERVER_TIMEZONE'" );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
@@ -254,9 +254,9 @@ function send_reminder ( $id, $event_date ) {
   // get participants first...
  
   $sql = "SELECT cal_login FROM webcal_entry_user " .
-    "WHERE cal_id = $id AND cal_status IN ('A','W') " .
+    "WHERE cal_id = ? AND cal_status IN ('A','W') " .
     "ORDER BY cal_login";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql , array ( $id ) );
   $participants = array ();
   $num_participants = 0;
   if ( $res ) {
@@ -271,9 +271,9 @@ function send_reminder ( $id, $event_date ) {
   if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == "Y" &&
     ! empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == "Y" ) {
     $sql = "SELECT cal_fullname, cal_email FROM webcal_entry_ext_user " .
-      "WHERE cal_id = $id AND cal_email IS NOT NULL " .
+      "WHERE cal_id = ? AND cal_email IS NOT NULL " .
       "ORDER BY cal_fullname";
-    $res = dbi_query ( $sql );
+    $res = dbi_execute ( $sql , array ( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $ext_participants[$num_ext_participants] = $row[0];
@@ -290,11 +290,11 @@ function send_reminder ( $id, $event_date ) {
 
 
   // get event details
-  $res = dbi_query (
+  $res = dbi_execute (
     "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
     "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
     "cal_name, cal_description, cal_due_date, cal_due_time " .
-  "FROM webcal_entry WHERE cal_id = $id" );
+  "FROM webcal_entry WHERE cal_id = ?" , array ( $id ) );
   if ( ! $res ) {
     echo "Db error: could not find event id $id.\n";
     return;
@@ -527,12 +527,12 @@ function log_reminder ( $id, $name, $event_date ) {
   global $only_testing;
 
   if ( ! $only_testing ) {
-    dbi_query ( "DELETE FROM webcal_reminder_log " .
-      "WHERE cal_id = $id AND cal_name = '$name' " .
-      "AND cal_event_date = $event_date" );
-    dbi_query ( "INSERT INTO webcal_reminder_log " .
+    dbi_execute ( "DELETE FROM webcal_reminder_log " .
+      "WHERE cal_id = ? AND cal_name = ? " .
+      "AND cal_event_date = ?" , array ( $id , $name , $event_date ) );
+    dbi_execute ( "INSERT INTO webcal_reminder_log " .
       "( cal_id, cal_name, cal_event_date, cal_last_sent ) VALUES ( " .
-      "$id, '" . $name . "', $event_date, " . time() . ")" );
+      "?, ?, ?, ?)" , array ( $id , $name , $event_date , time() ) );
   }
 }
 
@@ -598,10 +598,10 @@ function process_event ( $id, $name, $event_date, $event_time ) {
       if ( time() >= $remind_time ) {
         // It's remind time or later. See if one has already been sent
         $last_sent = 0;
-        $res = dbi_query ( "SELECT MAX(cal_last_sent) FROM " .
-          "webcal_reminder_log WHERE cal_id = " . $id .
-          " AND cal_event_date = $event_date" .
-          " AND cal_name = '" . $extra_name . "'" );
+        $res = dbi_execute ( "SELECT MAX(cal_last_sent) FROM " .
+          "webcal_reminder_log WHERE cal_id = ?" .
+          " AND cal_event_date = ?" .
+          " AND cal_name = ?" , array ( $id , $event_date , $extra_date ) );
         if ( $res ) {
           if ( $row = dbi_fetch_row ( $res ) ) {
             $last_sent = $row[0];

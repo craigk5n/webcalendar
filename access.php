@@ -40,20 +40,19 @@ if ( getPostValue ( 'user' ) != '' ) {
     $perm .= ( $val == 'Y' ) ? 'Y' : 'N';
   }
 
-  $sql = "DELETE FROM webcal_access_function WHERE cal_login = '$user'";
-  dbi_query ( $sql );
+  $sql = "DELETE FROM webcal_access_function WHERE cal_login = ?";
+  dbi_execute ( $sql, array( $user ) );
 
   $sql = "INSERT INTO webcal_access_function ( cal_login, cal_permissions ) " .
-    "VALUES ( '$user', '$perm' )";
-  //echo "SQL: $sql<br />\n";
-  if ( ! dbi_query ( $sql ) ) {
+    "VALUES ( ?, ? )";
+  if ( ! dbi_execute ( $sql, array( $user, $perm ) ) ) {
     die_miserable_death ( translate ( "Database error" ) . ": " .
       dbi_error () );
   }
 
   if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'Y' ) {
     // Handle access to other users' calendars
-    dbi_query ( "DELETE FROM webcal_access_user WHERE cal_login = '$user'" );
+    dbi_execute ( "DELETE FROM webcal_access_user WHERE cal_login = ?", array( $user ) );
 
     for ( $i = 0; true; $i++ ) {
       $other_user = getPostValue ( "cal_" . $i );
@@ -70,9 +69,8 @@ if ( getPostValue ( 'user' ) != '' ) {
       $sql = "INSERT INTO webcal_access_user " .
         "( cal_login, cal_other_user, cal_can_view, cal_can_edit, " .
         "cal_can_delete, cal_can_approve ) VALUES " .
-        "( '$user', '$other_user', '$view', '$edit', '$delete', '$approve' )";
-      //echo "SQL: $sql<br />\n";
-      if ( ! dbi_query ( $sql ) ) {
+        "( ?, ?, ?, ?, ?, ? )";
+      if ( ! dbi_execute ( $sql, array( $user, $other_user, $view, $edit, $delete, $approve ) ) ) {
         die_miserable_death ( translate ( "Database error" ) . ": " .
           dbi_error () );
       }
@@ -149,9 +147,9 @@ if ( ! empty ( $user ) ) {
 
   if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'Y' ) {
     // Now load all the data from webcal_access_user
-    $res = dbi_query ( "SELECT cal_other_user, cal_can_view, " .
+    $res = dbi_execute ( "SELECT cal_other_user, cal_can_view, " .
       "cal_can_edit, cal_can_delete, cal_can_approve " .
-      "FROM webcal_access_user WHERE cal_login = '$user'" );
+      "FROM webcal_access_user WHERE cal_login = ?", array( $user ) );
     assert ( '$res' );
     $otherperm = array ();
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -284,8 +282,8 @@ function get_list_of_users ( $user )
 
   if ( $GROUPS_ENABLED == "Y" && $USER_SEES_ONLY_HIS_GROUPS == "Y" ) {
     // get groups that user is in
-    $res = dbi_query ( "SELECT cal_group_id FROM webcal_group_user " .
-      "WHERE cal_login = '$user'" );
+    $res = dbi_execute ( "SELECT cal_group_id FROM webcal_group_user " .
+      "WHERE cal_login = ?", array( $user ) );
     $groups = array ();
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -320,7 +318,7 @@ function get_list_of_users ( $user )
     }
     $sql .= " ORDER BY cal_lastname, cal_firstname, webcal_group_user.cal_login";
     //echo "SQL: $sql <br />\n";
-    $res = dbi_query ( $sql );
+    $res = dbi_execute ( $sql );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $ret[] = $u_byname[$row[0]];

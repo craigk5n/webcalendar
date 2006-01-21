@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 01-18-2006
+# Translation last updated on 01-20-2006
 
 
 ###############################################
@@ -202,8 +202,6 @@ disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field 
 Disable Repeating field: Disable Repeating field
 popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
 Display Site Extras in popup: Display Site Extras in popup
-popup-includes-participants-help: If enabled, participants are displayed in popups for public and personal entries.
-Display Participants in popup: Display Participants in popup
 allow-html-description-help: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
 Allow HTML in Description: Allow HTML in Description
 allow-view-other-help: Specifies whether one user may view another user's calendar.
@@ -558,7 +556,6 @@ You are not authorized to edit this entry: You are not authorized to edit this e
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: The following conflicts with the suggested time
-Unnamed Event: Unnamed Event
 A new appointment has been made for you by: A new appointment has been made for you by
 An appointment has been updated by: An appointment has been updated by
 The subject is: The subject is
@@ -1311,6 +1308,7 @@ no such user: no such user
 #
 INCLUSION DATES: INCLUSION DATES
 EXCLUSION DATES: EXCLUSION DATES
+Unnamed Event: Unnamed Event
 Event Imported: Event Imported
 Unknown Timezone: Unknown Timezone
 defaulting to GMT: defaulting to GMT

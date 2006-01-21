@@ -12,8 +12,8 @@ else if ( empty ( $categories ) )
   $error = translate("You have not added any categories") . ".";
 
 // make sure user is a participant
-$res = dbi_query ( "SELECT  cal_status FROM webcal_entry_user " .
-  "WHERE cal_id = $id AND cal_login = '$login'" );
+$res = dbi_execute ( "SELECT  cal_status FROM webcal_entry_user " .
+  "WHERE cal_id = ? AND cal_login = ?" , array ( $id , $login ) );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     if ( $row[0] == "D" ) // User deleted themself
@@ -38,10 +38,10 @@ $sql = "SELECT  DISTINCT cal_login, webcal_entry_categories.cat_id, " .
  " FROM webcal_entry_user, webcal_entry_categories, webcal_categories " .
  " WHERE ( webcal_entry_user.cal_id = webcal_entry_categories.cal_id AND " .
  " webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
- " webcal_entry_user.cal_id = $id ) AND " . 
- " webcal_categories.cat_owner = '" . $login . "'".
+ " webcal_entry_user.cal_id = ? ) AND " . 
+ " webcal_categories.cat_owner = ?".
  " ORDER BY webcal_entry_categories.cat_order";
-$res = dbi_query ( $sql );
+$res = dbi_execute ( $sql , array ( $id , $login ) );
 if ( $res ) {
  while ( $row = dbi_fetch_row ( $res ) ) {
    $cat_ids[] = $row[1];
@@ -54,9 +54,9 @@ $globals_found = false;
 $sql = "SELECT  webcal_entry_categories.cat_id, cat_name " .
   " FROM webcal_entry_categories, webcal_categories " .
   " WHERE webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
-  " webcal_entry_categories.cal_id = $id  AND " . 
+  " webcal_entry_categories.cal_id = ? AND " . 
   " webcal_categories.cat_owner IS NULL ";
-$res = dbi_query ( $sql );
+$res = dbi_execute ( $sql , array ( $id ) );
 if ( $res ) {
  while ( $row = dbi_fetch_row ( $res ) ) {
    $cat_ids[] = "-" .$row[0];
@@ -70,8 +70,8 @@ if ( ! empty ( $cat_name ) ) $catNames = implode(", " , array_unique($cat_name))
 if ( ! empty ( $cat_ids ) ) $catList = implode(", ", array_unique($cat_ids));
 // Get event name and make sure event exists
 $event_name = "";
-$res = dbi_query ( "SELECT cal_name FROM webcal_entry " .
-  "WHERE cal_id = $id" );
+$res = dbi_execute ( "SELECT cal_name FROM webcal_entry " .
+  "WHERE cal_id = ?" , array ( $id ) );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     $event_name = $row[0];
@@ -86,31 +86,35 @@ if ( $res ) {
 
 // If this is the form handler, then save now
 if ( ! empty ( $cat_id ) && empty ( $error ) ) {
- dbi_query ( "DELETE FROM webcal_entry_categories WHERE cal_id = $id " .
-    "AND ( cat_owner = '$login' )" );
+ dbi_execute ( "DELETE FROM webcal_entry_categories WHERE cal_id = ? " .
+    "AND ( cat_owner = ? )" , array ( $id , $login ) );
  $categories = explode (",", $cat_id );
 
+ $sql_params = array();
  for ( $i =0; $i < count( $categories ); $i++ ) {
    //don't process Global Categories
    if ( $categories[$i] > 0 ) {
    $names = array();
-   $values = array(); 
+   $values = array();
    $names[] = 'cal_id';
-   $values[]  = $id; 
+   $sql_params[]  = $id; 
+   $values[]  = '?'; 
    $names[] = 'cat_id';
-   $values[]  = abs($categories[$i]);
+   $sql_params[]  = abs($categories[$i]);
+   $values[]  = '?'; 
    $names[] = 'cat_order';
-   $values[]  = ($i +1);
+   $sql_params[]  = ($i +1);
+   $values[]  = '?'; 
    $names[] = 'cat_owner';
-   $values[]  = "'$login'"; 
+   $sql_params[]  = $login; 
+   $values[]  = '?'; 
    $sql = "INSERT INTO webcal_entry_categories ( " . implode ( ", ", $names ) .
      " ) VALUES ( " . implode ( ", ", $values ) . " )";
    } 
  }
  $view_type = "view_entry";  
-
   
- if ( ! dbi_query ( $sql ) ) {
+ if ( ! dbi_execute ( $sql , $sql_params ) ) {
     $error = translate ( "Database error" ) . ": " . dbi_error ();
   } else {
     $url = $view_type .".php?id=$id";

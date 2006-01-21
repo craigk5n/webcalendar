@@ -165,7 +165,7 @@ class Doc {
   /**
    * Creates a new Doc object.
    * Typical usage (error-checking not shown here): <blockquote><pre>
-   *   $res = dbi_query ( Doc::getSQLForDocId ( $doc_id ) );
+   *   $res = dbi_execute ( Doc::getSQLForDocId ( $doc_id ) );
    *   $row = dbi_fetch_row ( $res );
    *   $doc =& new Doc ( $row );
    *   dbi_free_result ( $res );

@@ -43,7 +43,7 @@ printf ( "%-25s: %s\n", "single_user_login", $single_user_login );
 printf ( "%-25s: %s\n", "use_http_auth", $use_http_auth ? "true" : "false" );
 printf ( "%-25s: %s\n", "user_inc", $user_inc );
 
-$res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_config" );
+$res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_config" );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     printf ( "%-25s: %s\n", $row[0], $row[1] );

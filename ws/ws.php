@@ -77,9 +77,9 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
 
   // get participants first...
   $sql = "SELECT cal_login FROM webcal_entry_user " .
-    "WHERE cal_id = $id AND cal_status IN ('A','W') " .
+    "WHERE cal_id = ? AND cal_status IN ('A','W') " .
     "ORDER BY cal_login";
-  $res = dbi_query ( $sql );
+  $res = dbi_execute ( $sql , array( $id ) );
   $participants = array ();
   $num_participants = 0;
   if ( $res ) {
@@ -94,9 +94,9 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == "Y" &&
     ! empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == "Y" ) {
     $sql = "SELECT cal_fullname, cal_email FROM webcal_entry_ext_user " .
-      "WHERE cal_id = $id AND cal_email IS NOT NULL " .
+      "WHERE cal_id = ? AND cal_email IS NOT NULL " .
       "ORDER BY cal_fullname";
-    $res = dbi_query ( $sql );
+    $res = dbi_execute ( $sql , array( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $ext_participants[$num_ext_participants] = $row[0];
@@ -111,12 +111,12 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
     return;
   }
 
-
   // get event details
-  $res = dbi_query (
+  $res = dbi_execute ( 
     "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
     "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-    "cal_name, cal_description FROM webcal_entry WHERE cal_id = $id" );
+    "cal_name, cal_description FROM webcal_entry WHERE cal_id = ?" , array( $id )
+  );
   if ( ! $res ) {
     $out .= "Db error: could not find event id $id.\n";
     return;

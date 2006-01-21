@@ -14,7 +14,7 @@ $updating_public = false;
 $prefarray = array ();
 $prefarray['EMAIL_ASSISTANT_EVENTS'] =
   $prefarray['APPROVE_ASSISTANT_EVENT'] = ''; // no undefined vars message
-$res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_config " );
+$res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_config " );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $prefarray[$row[0]] = $row[1];
@@ -23,11 +23,11 @@ if ( $res ) {
 }
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
   $updating_public = true;
-  $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
+  $res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
     "WHERE cal_login = '__public__'" );
 } else {
-  $res = dbi_query ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
-    "WHERE cal_login = '$user'" );
+  $res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
+    "WHERE cal_login = ?" , array ( $user ) );
 }
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {

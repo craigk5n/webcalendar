@@ -55,8 +55,7 @@ $INC = array ( 'js/view_d.php' );
 print_header ( $INC );
 
 // get users in this view
-$res = dbi_query (
-  "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $id" );
+$res = dbi_execute ( "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?" , array ( $id ) );
 $participants = array ();
 $all_users = false;
 if ( $res ) {

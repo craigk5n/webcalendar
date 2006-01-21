@@ -58,8 +58,8 @@ function view_get_user_list ( $view_id )
   global $error, $login, $is_admin;
 
   // get users in this view
-  $res = dbi_query (
-    "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = $view_id" );
+  $res = dbi_execute (
+    "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?" , array ( $view_id ) );
   $ret = array ();
   $all_users = false;
   if ( $res ) {
