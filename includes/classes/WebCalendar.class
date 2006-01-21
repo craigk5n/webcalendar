@@ -470,26 +470,6 @@ class WebCalendar {
 
     if ( $single_user != "Y" )
       $single_user_login = "";
-
-    // Make sure magic quotes is enabled, since this app requires it.
-/*
-    if ( get_magic_quotes_gpc () == 0 ) {
-      ob_start ();
-      phpinfo ();
-      $val = ob_get_contents ();
-      ob_end_clean ();
-      $loc = '';
-      if ( preg_match ( "/>([^<>]*php.ini)</", $val, $matches ) ) {
-        $loc = "Please edit the following file and restart your server:" .
-          "<br /><br />\n" .
-          "<blockquote>\n<tt>" . $matches[1] . "</tt>\n</blockquote>\n";
-      }
-      die_miserable_death ( "You must reconfigure your <tt>php.ini</tt> file to " .
-        "have <span style=\"font-weight:bold;\">magic_quotes_gpc</span> set " .
-        " to <span style=\"font-weight:bold;\">ON</span>.<br /><br />\n" .
-        $loc );
-    }
-*/
   }
 
   /**
