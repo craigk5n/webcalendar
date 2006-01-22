@@ -14,7 +14,9 @@
  * @subpackage Mailer
  *
  */
-
+$inc_path = ( !empty ( $includedir )?  $includedir : "includes" ); 
+if ( file_exists ( "$inc_path/xcal.php" ) )
+  include_once "$inc_path/xcal.php"; //used for ics attachments
 require("phpmailer/class.phpmailer.php");
 
 class WebCalMailer extends phpmailer { 
@@ -55,8 +57,9 @@ class WebCalMailer extends phpmailer {
 
   //Send ics file Attachment
   function IcsAttach ($id) {
-    $this->AddStringAttachment ( export_ical ( $id, true ),
-      'WebCalendar.ics', 'base64', 'text/ical' ) ;
+    if ( function_exists ('export_ical') )
+      $this->AddStringAttachment ( export_ical ( $id, true ),
+        'WebCalendar.ics', 'base64', 'text/ical' ) ;
   
   }
     

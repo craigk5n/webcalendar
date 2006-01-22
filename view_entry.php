@@ -39,13 +39,6 @@ if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) ) {
   $error = translate ( "Invalid entry id" ) . "."; 
 }
 
-
-
-
-
-
-
-
 if ( empty ( $error ) ) {
   // is this user a participant or the creator of the event?
   $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
@@ -62,8 +55,6 @@ if ( empty ( $error ) ) {
     }
     dbi_free_result ( $res );
   }
-
-
 
 //update the task percentage for this user
 if ( ! empty ( $_POST ) && $can_view && $is_my_event ) {
@@ -612,7 +603,11 @@ if ( $single_user == "N" && ! empty ( $createby_fullname )  ) {
  <?php
     echo date_to_str ( $row[3] );
     echo " ";
-    echo display_time ( $row[4], 3 );
+    if ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == "Y" ) {    
+      echo display_time ( $row[4], 3 );
+    } else {
+      echo display_time ( $row[3] . $row[4], 2, '',  $SERVER_TIMEZONE );    
+    }
    ?>
 </td></tr>
 <?php
@@ -1217,6 +1212,8 @@ if ( $can_show_log && $show_log ) {
         etranslate("Notification sent");
       } else if ( $row[2] == LOG_REMINDER ) {
         etranslate("Reminder sent");
+        if ( ! empty ( $row[5] ) )
+          echo " (" . htmlentities ( $row[5] ) . ")";
       } else if ( $row[2] == LOG_ATTACHMENT ) {
         etranslate("Attachment");
         if ( ! empty ( $row[5] ) )

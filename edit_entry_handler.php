@@ -1,6 +1,5 @@
 <?php
 include_once 'includes/init.php';
-include_once 'includes/xcal.php'; //used for ics attachments
 require ( 'includes/classes/WebCalMailer.class' );
 $mail = new WebCalMailer;
 
@@ -975,48 +974,56 @@ if ( $single_user == "N" &&
         $sql = "INSERT INTO webcal_entry_ext_user " .
           "( cal_id, cal_fullname, cal_email ) VALUES ( ?, ?, ? )";
         if ( ! dbi_execute ( $sql, array( $id, $ext_names[$i], 
-				  ( strlen ( $ext_emails[$i] ) ? $ext_emails[$i] : NULL ) ) ) ) {
+          ( strlen ( $ext_emails[$i] ) ? $ext_emails[$i] : NULL ) ) ) ) {
           $error = translate("Database error") . ": " . dbi_error ();
         }
         // send mail notification if enabled
         // TODO: move this code into a function...
         if ( $EXTERNAL_NOTIFICATIONS == "Y" && $SEND_EMAIL != "N" &&
-          strlen ( $ext_emails[$i] ) > 0 ) {
-          $fmtdate = date ( "Ymd", $eventstart ); 
-          // Strip [\d] from duplicate Names before emailing
-          $ext_names[$i] = trim(preg_replace( '/\[[\d]]/', "", $ext_names[$i]) );
-          $msg = translate("Hello", true) . ", " . $ext_names[$i] . ".\n\n";
-          if ( $newevent ) {
-            $msg .= translate("A new appointment has been made for you by", true);
-          } else {
-            $msg .= translate("An appointment has been updated by", true);
+          strlen ( $ext_emails[$i] ) > 0 ) {          
+          if ( ( ! $newevent &&  $EXTERNAL_UPDATES == "Y" ) || $newevent ) {
+            $fmtdate = date ( "Ymd", $eventstart ); 
+            // Strip [\d] from duplicate Names before emailing
+            $ext_names[$i] = trim(preg_replace( '/\[[\d]]/', "", $ext_names[$i]) );
+            $msg = translate("Hello", true) . ", " . $ext_names[$i] . ".\n\n";
+            if ( $newevent ) {
+              $msg .= translate("A new appointment has been made for you by", true);
+            } else {
+              $msg .= translate("An appointment has been updated by", true);
+            }
+            $msg .= " " . $login_fullname .  ".\n" .
+              translate("The subject is", true) . " \"" . $name . "\"\n\n" .
+              translate("The description is", true) . " \"" . $description . "\"\n\n" .
+              translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n";
+              if ( $timetype == 'T')  {
+                $msg .= translate("Time") . ": ";
+                if ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == "Y" ) {
+                  // Do not apply TZ offset & display TZID, which is GMT
+                  $msg .= display_time ( date ("YmdHis", $eventstart ), 3 );
+                } else {
+                  // Display time in server's timezone (probably more useful than GMT)
+                  $msg .= display_time ( date ("YmdHis", $eventstart ), 2, '', 
+                    $SERVER_TIMEZONE );              
+                }
+              }
+            $msg = stripslashes ( $msg );          
+            //don't send HTML to external adresses
+            $htmlmail = false;
+            if ( strlen ( $from ) ) {
+              $mail->From = $from;
+              $mail->FromName = $login_fullname;
+            } else {
+              $mail->From = $login_fullname;
+            }  
+            $mail->IsHTML($htmlmail == "Y");
+            $mail->AddAddress( $ext_emails[$i], $ext_names[$i] );
+            $mail->WCSubject ( $name );                     
+            $mail->IcsAttach ( $id ) ;
+            $mail->Body  = ( $htmlmail == 'Y' ? nl2br ( $msg ) : $msg );
+            $mail->Send();
+            $mail->ClearAll();          
           }
-          $msg .= " " . $login_fullname .  ".\n" .
-            translate("The subject is", true) . " \"" . $name . "\"\n\n" .
-            translate("The description is", true) . " \"" . $description . "\"\n\n" .
-            translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-            ( $timetype != 'T' ? "" :
-            translate("Time") . ": " .
-            // Do not apply TZ offset & display TZID, which is GMT
-            display_time ( date ("YmdHis", $eventstart ), 3 ) );
-          $msg = stripslashes ( $msg );          
-          //don't send HTML to external adresses
-          $htmlmail = false;
-          if ( strlen ( $from ) ) {
-            $mail->From = $from;
-            $mail->FromName = $login_fullname;
-          } else {
-            $mail->From = $login_fullname;
-          }  
-          $mail->IsHTML($htmlmail == "Y");
-          $mail->AddAddress( $ext_emails[$i], $ext_names[$i] );
-          $mail->WCSubject ( $name );                     
-          $mail->IcsAttach ( $id ) ;
-          $mail->Body  = ( $htmlmail == 'Y' ? nl2br ( $msg ) : $msg );
-          $mail->Send();
-          $mail->ClearAll();
-                  
-        }
+        } 
       }
     }
   } //end external mail

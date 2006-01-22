@@ -266,6 +266,11 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   ?>&nbsp;&nbsp;
  <input type="button" value="<?php etranslate("Load Timezone Data");?>" onclick="window.open('load_tz_data.php','_blank','dependent,height=200,width=400,outerHeight=220,outerWidth=420');" name="" />
 </td></tr>
+ <tr><td class="tooltip" title="<?php etooltip("display-general-use-gmt-help");?>">
+  <?php etranslate("Display Common Use Date/Times as GMT")?>:</td><td>
+  <label><input type="radio" name="admin_GENERAL_USE_GMT" value="Y" <?php if ( $s["GENERAL_USE_GMT"] == "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label>&nbsp;
+  <label><input type="radio" name="admin_GENERAL_USE_GMT" value="N" <?php if ( $s["GENERAL_USE_GMT"] != "Y" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>
  <tr><td class="tooltipselect" title="<?php etooltip("date-format-help");?>">
   <?php etranslate("Date format")?>:</td><td>
   <select name="admin_DATE_FORMAT">

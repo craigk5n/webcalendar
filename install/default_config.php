@@ -61,6 +61,7 @@ $webcalConfig = array (
 "EXTERNAL_REMINDERS"=>"N",
 "FREEBUSY_ENABLED"=>"N",
 "FONTS"=>"Arial, Helvetica, sans-serif",
+"GENERAL_USE_GMT"=>"Y",
 "GROUPS_ENABLED"=>"N",
 "HASEVENTSBG"=>"#FFFF33",
 "H2COLOR"=>"#000000",
@@ -190,7 +191,7 @@ function do_v11b_updates () {
 
  dbi_execute ("UPDATE webcal_user_pref  SET cal_value = 'none'" .
     " WHERE cal_setting = 'LANGUAGE' AND cal_value = 'Browser-defined'");
-				 
+         
  //clear old category values
  dbi_execute ( "UPDATE webcal_entry_user SET cal_category = NULL");  
  //mark existing exclusions as new exclusion type

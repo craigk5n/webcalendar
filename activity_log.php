@@ -40,7 +40,7 @@ echo "<tr><th class=\"usr\">\n" .
   translate("Action") . "\n</th></tr>\n";
 $sql = "SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, " .
   "webcal_entry_log.cal_type, webcal_entry_log.cal_date, " .
-  "webcal_entry_log.cal_time, webcal_entry.cal_id, " .
+  "webcal_entry_log.cal_time, webcal_entry_log.cal_text, webcal_entry.cal_id, " .
   "webcal_entry.cal_name, webcal_entry_log.cal_log_id, webcal_entry.cal_type " .
   "FROM webcal_entry_log, webcal_entry " .
   "WHERE webcal_entry_log.cal_entry_id = webcal_entry.cal_id ";
@@ -57,7 +57,7 @@ if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $num++;
     if ( $num > $PAGE_SIZE ) {
-      $nextpage = $row[7];
+      $nextpage = $row[8];
       break;
     } else {
       echo "<tr";
@@ -72,48 +72,51 @@ if ( $res ) {
         // No TZ conversion & show TZID which will be GMT
         display_time ( $row[4], 3 ) . "</td><td>\n" . 
         "<a title=\"" .
-        htmlspecialchars($row[6]) . "\" href=\"$view_link.php?id=$row[5]\">" .
-        htmlspecialchars($row[6]) . "</a></td><td>\n";
-      if ( $row[2] == LOG_CREATE )
+        htmlspecialchars($row[7]) . "\" href=\"$view_link.php?id=$row[5]\">" .
+        htmlspecialchars($row[7]) . "</a></td><td>\n";
+      if ( $row[2] == LOG_CREATE ) {
         etranslate("Event created");
-      else if ( $row[2] == LOG_APPROVE )
+      } else if ( $row[2] == LOG_APPROVE ) {
         etranslate("Event approved");
-      else if ( $row[2] == LOG_REJECT )
+      } else if ( $row[2] == LOG_REJECT ) {
         etranslate("Event rejected");
-      else if ( $row[2] == LOG_UPDATE )
+      } else if ( $row[2] == LOG_UPDATE ) {
         etranslate("Event updated");
-      else if ( $row[2] == LOG_DELETE )
+      } else if ( $row[2] == LOG_DELETE ) {
         etranslate("Event deleted");
-      else if ( $row[2] == LOG_CREATE_T )
-        etranslate("Task created");
-      else if ( $row[2] == LOG_APPROVE_T )
+      } else if ( $row[2] ==  LOG_CREATE_T ) { 
+        etranslate("Task created");        
+      } else if ( $row[2] == LOG_APPROVE_T ) {
         etranslate("Task approved");
-      else if ( $row[2] == LOG_REJECT_T )
+      } else if ( $row[2] == LOG_REJECT_T ) {
         etranslate("Task rejected");
-      else if ( $row[2] == LOG_UPDATE_T )
+      } else if ( $row[2] == LOG_UPDATE_T ) {
         etranslate("Task updated");
-      else if ( $row[2] == LOG_DELETE_T )
+      } else if ( $row[2] == LOG_DELETE_T ) {
         etranslate("Task deleted");
-      else if ( $row[2] ==  LOG_CREATE_J )
-        etranslate("Journal created");
-      else if ( $row[2] == LOG_APPROVE_J )
+      } else if ( $row[2] ==  LOG_CREATE_J ) { 
+        etranslate("Journal created");        
+      } else if ( $row[2] == LOG_APPROVE_J ) {
         etranslate("Journal approved");
-      else if ( $row[2] == LOG_REJECT_J )
+      } else if ( $row[2] == LOG_REJECT_J ) {
         etranslate("Journal rejected");
-      else if ( $row[2] == LOG_UPDATE_J )
+      } else if ( $row[2] == LOG_UPDATE_J ) {
         etranslate("Journal updated");
-      else if ( $row[2] == LOG_DELETE_J )
-        etranslate("Journal deleted");
-      else if ( $row[2] == LOG_NOTIFICATION )
+      } else if ( $row[2] == LOG_DELETE_J ) {
+        etranslate("Journal deleted");    
+      } else if ( $row[2] == LOG_NOTIFICATION ) {
         etranslate("Notification sent");
-      else if ( $row[2] == LOG_REMINDER )
+      } else if ( $row[2] == LOG_REMINDER ) {
         etranslate("Reminder sent");
-      else if ( $row[2] == LOG_ATTACHMENT )
+        if ( ! empty ( $row[5] ) )
+          echo " (" . htmlentities ( $row[5] ) . ")";
+      } else if ( $row[2] == LOG_ATTACHMENT ) {
         etranslate("Attachment");
-      else if ( $row[2] == LOG_COMMENT )
+      } else if ( $row[2] == LOG_COMMENT ) {
         etranslate("Comment");
-      else
-        echo "???";
+      } else if ( $row[2] == LOG_COMMENT ) {
+        echo '???';
+      }
       echo "\n</td></tr>\n";
     }
   }

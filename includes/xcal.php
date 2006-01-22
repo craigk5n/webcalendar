@@ -590,7 +590,7 @@ function export_alarm_ical ( $id, $date, $description ) {
   return $ret;
 }
 
-function export_get_event_entry($id='all') {
+function export_get_event_entry($id='all', $attachment=false) {
   global $use_all_dates, $include_layers, $fromyear,$frommonth,$fromday,
     $endyear,$endmonth,$endday,$modyear,$modmonth,$modday,$login,$user;
   global $DISPLAY_UNAPPROVED, $layers;
@@ -612,8 +612,8 @@ function export_get_event_entry($id='all') {
 
   if ($id == "all") {
       $sql .= "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id AND " .
- " ( webcal_entry_user.cal_login = ?";
-     $sql_params[] = $login;
+        " ( webcal_entry_user.cal_login = ?";
+      $sql_params[] = $login;
       if ( $user && $user != $login ) {
         $sql .= " OR webcal_entry_user.cal_login = ?";
         $sql_params[] = $user;
@@ -625,28 +625,31 @@ function export_get_event_entry($id='all') {
       }
       $sql .= " ) ";
 
- if (!$use_all_dates) {
-   $startdate = sprintf ( "%04d%02d%02d", $fromyear, $frommonth, $fromday );
-   $enddate = sprintf ( "%04d%02d%02d", $endyear, $endmonth, $endday );
-   $sql .= " AND webcal_entry.cal_date >= ? " .
-     "AND webcal_entry.cal_date <= ?";
-   $sql_params[] = $startdate;
-   $sql_params[] = $enddate;
-   $moddate = sprintf ( "%04d%02d%02d", $modyear, $modmonth, $modday );
-   $sql .= " AND webcal_entry.cal_mod_date >= ?";
-   $sql_params[] = $moddate;
- }
+    if (!$use_all_dates) {
+     $startdate = sprintf ( "%04d%02d%02d", $fromyear, $frommonth, $fromday );
+     $enddate = sprintf ( "%04d%02d%02d", $endyear, $endmonth, $endday );
+     $sql .= " AND webcal_entry.cal_date >= ? " .
+       "AND webcal_entry.cal_date <= ?";
+     $sql_params[] = $startdate;
+     $sql_params[] = $enddate;
+     $moddate = sprintf ( "%04d%02d%02d", $modyear, $modmonth, $modday );
+     $sql .= " AND webcal_entry.cal_mod_date >= ?";
+     $sql_params[] = $moddate;
+    }
   } else {
       $sql .= "WHERE webcal_entry.cal_id = ? AND " .
- "webcal_entry_user.cal_id = ? AND " .
- "( webcal_entry_user.cal_login = ?";
+        "webcal_entry_user.cal_id = ? AND " .
+        "( webcal_entry_user.cal_login = ?";
       $sql_params[] = $id;
       $sql_params[] = $id;
       $sql_params[] = $login;
-        // TODO: add support for user in URL so we can export from other
-        // calendars, particularly non-user calendars.
- //"webcal_entry_user.cal_id = '$id'";
-      if ( ! empty ( $user )  && $user != $login ) {
+      // TODO: add support for user in URL so we can export from other
+      // calendars, particularly non-user calendars.
+      //"webcal_entry_user.cal_id = '$id'";
+      //there may be a better to do this
+      if ( $attachment == true &&  empty ( $login ) ) {
+        $sql .= " OR webcal_entry_user.cal_login = webcal_entry.cal_create_by";
+      } else if ( ! empty ( $user )  && $user != $login ) {
         $sql .= " OR webcal_entry_user.cal_login = ?";
         $sql_params[] = $user;
       } else if ( $layers ) {
@@ -655,7 +658,7 @@ function export_get_event_entry($id='all') {
           $sql_params[] = $layer['cal_layeruser'];
         }
       }
-      $sql .= " ) ";
+    $sql .= " ) ";
   } //end if $id=all
 
   if ( $DISPLAY_UNAPPROVED == "N"  || $login == "__public__" ) {
@@ -667,7 +670,6 @@ function export_get_event_entry($id='all') {
 
   $sql .= " ORDER BY webcal_entry.cal_date";
 
-  //echo "SQL: $sql <p>";
   $res = dbi_execute ( $sql , $sql_params );
 
   return $res;
@@ -855,7 +857,7 @@ function export_ical ( $id='all', $attachment=false ) {
  $exportId = -1;
  $ret='';
  
- $res = export_get_event_entry($id);
+ $res = export_get_event_entry($id, $attachment);
   $entry_array = array();
   $count = 0;
   while ( $entry = dbi_fetch_row($res) ) {
@@ -943,7 +945,8 @@ function export_ical ( $id='all', $attachment=false ) {
           // do that.
           $exportId = create_import_instance ();
         }
-        save_uid_for_event ( $exportId, $id , $event_uid);
+        if ( $attachment == false )
+          save_uid_for_event ( $exportId, $id , $event_uid);
       }
       dbi_free_result ( $res );
     }
