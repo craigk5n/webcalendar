@@ -601,7 +601,7 @@ function process_event ( $id, $name, $event_date, $event_time ) {
         $res = dbi_execute ( "SELECT MAX(cal_last_sent) FROM " .
           "webcal_reminder_log WHERE cal_id = ?" .
           " AND cal_event_date = ?" .
-          " AND cal_name = ?" , array ( $id , $event_date , $extra_date ) );
+          " AND cal_name = ?" , array ( $id , $event_date , $extra_name ) );
         if ( $res ) {
           if ( $row = dbi_fetch_row ( $res ) ) {
             $last_sent = $row[0];
