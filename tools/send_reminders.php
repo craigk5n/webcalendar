@@ -175,14 +175,8 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-// Get default timezone setting.
-$res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
-  "WHERE cal_setting = 'SERVER_TIMEZONE'" );
-if ( $res ) {
-  if ( $row = dbi_fetch_row ( $res ) ) {
-    $def_tz = $row[0];
-  }
-  dbi_free_result ( $res );
+if ( empty ( $GENERAL_USE_GMT ) || $GENERAL_USE_GMT != 'Y' ) {
+  $def_tz = $SERVER_TIMEZONE;
 }
 
 $startdate = date ( "Ymd" );
@@ -206,8 +200,7 @@ function indent ( $str ) {
 
 // A convenience to avoid all the if/else associated with html vs text
 // output.
-function gen_output ( $useHtml, $prompt, $data )
-{
+function gen_output ( $useHtml, $prompt, $data ) {
   $ret = '';
 
   if ( $useHtml ) {
@@ -245,7 +238,7 @@ function send_reminder ( $id, $event_date ) {
   global $names, $emails, $site_extras, $debug, $only_testing, $htmlmail,
     $SERVER_URL, $languages,  $TIMEZONE, $APPLICATION_NAME;
   global $ALLOW_EXTERNAL_USERS, $EXTERNAL_REMINDERS, $LANGUAGE,
-    $def_tx, $tz;
+    $def_tz, $tz;
 
   $pri[1] = translate("Low");
   $pri[2] = translate("Medium");
@@ -332,7 +325,8 @@ function send_reminder ( $id, $event_date ) {
     echo "Found " . count ( $mailusers ) . " with email addresses <br />\n";
   for ( $j = 0; $j < count ( $mailusers ); $j++ ) {
     $recip = $mailusers[$j];
-    $user = $participants[$j];
+    $user = $recipients[$j];
+    $isExt = ( in_array ( $user, $participants ) ? false : true );
     if ( ! empty ( $languages[$user] ) )
       $userlang = $languages[$user];
     else
@@ -374,7 +368,8 @@ function send_reminder ( $id, $event_date ) {
     $description = $row[10];
 
     // add trailing '/' if not found in server_url
-    if ( ! empty ( $SERVER_URL ) ) {
+    //Don't include link foe External users
+    if ( ! empty ( $SERVER_URL ) && ! $isExt ) {
       if ( substr ( $SERVER_URL, -1, 1 ) == "/" ) {
         $eventURL = $SERVER_URL . "view_entry.php?id=" . $id . "&em=1";
       } else {
@@ -406,7 +401,6 @@ function send_reminder ( $id, $event_date ) {
         display_time ( $row[1] .  $row[2], $display_tzid, '' ,
           $user_timezone, $userTformat ) );
     }
-
     if ( $row[5] > 0 ) {
       $body .= gen_output ( $useHtml, translate ( "Duration" ),
         $row[5] .  " " . translate("minutes") );
@@ -509,13 +503,17 @@ function send_reminder ( $id, $event_date ) {
         $mail->From = translate ( "Administrator" );
       }
       $mail->IsHTML( $useHtml );
-      $mail->AddAddress( $recip, $GLOBALS ['tempfullname'] );
+      $recipName = ( $isExt ? $user : $GLOBALS ['tempfullname'] );
+      $mail->AddAddress( $recip, $recipName );
       $mail->Subject = $subject;
+      if ( $isExt ) //send ics attachment to External Users
+        $mail->IcsAttach ( $id ) ;
       $mail->Body  = $body;
       $mail->Send();
       $mail->ClearAll();
- 
-      activity_log ( $id, "system", $user, LOG_REMINDER, "" );
+
+      $cal_text = ( $isExt ? translate("External User") : '' );
+      activity_log ( $id, "system", $user, LOG_REMINDER, $cal_text );
     }
   }
 }
@@ -589,7 +587,7 @@ function process_event ( $id, $name, $event_date, $event_time ) {
           "<br />\nServer Difference from GMT (minutes) : " .
           date ("Z"). "<br />\n";    
         echo "Effective delivery time is: " . 
-          date ( "m/d/Y H:i", $remind_time += date ("Z") ) . " " .
+          date ( "m/d/Y H:i", $remind_time + date ("Z") ) . " " .
             date ("T"). "<br />\n";
       }
 

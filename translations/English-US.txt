@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 01-20-2006
+# Translation last updated on 01-22-2006
 
 
 ###############################################
@@ -160,6 +160,8 @@ Server Timezone Selection: Server Timezone Selection
 Your current GMT offset is: Your current GMT offset is
 hours: hours
 Load Timezone Data: Load Timezone Data
+display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
+Display Common Use Date/Times as GMT: Display Common Use Date/Times as GMT
 date-format-help: Specifies the preferred date format.
 Date format: Date format
 time-format-help: Specifies which time format to use: <br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.  <br /><em>24 hour:</em> Display times as 300, 2030, etc.
@@ -202,6 +204,8 @@ disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field 
 Disable Repeating field: Disable Repeating field
 popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
 Display Site Extras in popup: Display Site Extras in popup
+popup-includes-participants-help: If enabled, participants are displayed in event popups.
+Display Participants in popup: Display Participants in popup
 allow-html-description-help: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
 Allow HTML in Description: Allow HTML in Description
 allow-view-other-help: Specifies whether one user may view another user's calendar.
