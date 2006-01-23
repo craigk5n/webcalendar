@@ -675,8 +675,7 @@ if ( empty ( $error ) ) {
   for ( $v_i = 0; $v_i < count( $values ); $v_i++ ) {
       $placeholders .= '?,';
   }
-  $placeholders = preg_match( "/,$/", "", $placeholders );
-
+  $placeholders = preg_replace( "/,$/", "", $placeholders ); // remove trailing ','
     $sql = "INSERT INTO webcal_entry_repeats ( " . implode ( ", ", $names ) .
        " ) VALUES ( $placeholders )"; 
       dbi_execute ( $sql, $values );
