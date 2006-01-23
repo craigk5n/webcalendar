@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Updated Timezone definitions to version 2005r to reflect change in DST
+   in the US in 2007
  - Fixed bug 1411628: links to some repeating entries off by a year
  - Fixed bug 1412351: SQL error when saving repeated entry
  - Added ics atachments to external remindes, removed URL

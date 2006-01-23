@@ -4,4 +4,4 @@
 # ftp://elsie.nci.nih.gov/pub/
 # extract the data files to this directory and run the /install/index.php 
 # script to update your timezone definitions.
-2005i
+2005r
