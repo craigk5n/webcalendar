@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1411628: links to some repeating entries off by a year
+ - Fixed bug 1412351: SQL error when saving repeated entry
  - Added ics atachments to external remindes, removed URL
  - Fixed bug 1407891: patch for bugs in send_reminders.php
  - Fixed bug 1411778: send_reminders.php sends a reminder every time it is run

@@ -296,7 +296,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
     print "<!-- XXX -->\n";
     print "<dt>" . date_to_str ( $d ) . "</dt>\n<dd>";
     for ( $j = 0; $j < count ( $ev ) && $numEvents < $maxEvents; $j++ ) {
-      print_upcoming_event ( $ev[$j] );
+      print_upcoming_event ( $ev[$j], $d );
       $numEvents++;
     }
     print "</dd>\n";
@@ -309,7 +309,7 @@ print "</body>\n</html>";
 
 
 // Print the details of an upcoming event
-function print_upcoming_event ( $e ) {
+function print_upcoming_event ( $e, $date ) {
   global $display_link, $link_target, $SERVER_URL, $charset, $display_tzid;
 
   if ( $display_link && ! empty ( $SERVER_URL ) ) {
@@ -318,8 +318,7 @@ function print_upcoming_event ( $e ) {
     print "<a title=\"" . 
       htmlspecialchars ( $e->getName() ) . "\" href=\"" . 
       $SERVER_URL . 'view_' . $cal_type . '.php?id=' . 
-      $e->getID() . "&amp;date=" . 
-      $e->getDate() . "\"";
+      $e->getID() . "&amp;date=$date\"";
     if ( ! empty ( $link_target ) ) {
       print " target=\"$link_target\"";
     }
