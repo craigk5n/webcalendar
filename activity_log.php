@@ -72,7 +72,7 @@ if ( $res ) {
         // No TZ conversion & show TZID which will be GMT
         display_time ( $row[4], 3 ) . "</td><td>\n" . 
         "<a title=\"" .
-        htmlspecialchars($row[7]) . "\" href=\"$view_link.php?id=$row[5]\">" .
+        htmlspecialchars($row[7]) . "\" href=\"$view_link.php?id=$row[6]\">" .
         htmlspecialchars($row[7]) . "</a></td><td>\n";
       if ( $row[2] == LOG_CREATE ) {
         etranslate("Event created");
