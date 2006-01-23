@@ -2979,7 +2979,6 @@ function print_date_entries ( $date, $user, $ssi ) {
   if ( $readonly == 'Y' )
     $can_add = false;
   if ( $is_nonuser )
-  if ( $is_nonuser )
     $can_add = false;
   if ( ! $ssi && $can_add ) {
     print "<a title=\"" .
