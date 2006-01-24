@@ -167,7 +167,7 @@ if ( ! $error ) {
  <tr><td class="tooltip" title="<?php etooltip("fonts-help") ?>">
   <label for="admin_FONTS"><?php etranslate("Fonts")?>:</label></td><td>
   <input type="text" size="40" name="admin_FONTS" id="admin_FONTS" value="<?php 
-            echo htmlspecialchars ( $FONTS );
+            echo htmlspecialchars ( $s['FONTS'] );
            ?>" />
  </td></tr>
 
