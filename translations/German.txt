@@ -16,7 +16,8 @@
 # Last update: 12 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 17 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 19 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 01-19-2006
+# Last update: 24 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 01-24-2006
 
 
 ###############################################
@@ -165,6 +166,20 @@ Invalid entry id: ung&uuml;ltiger Eintrag
 
 
 ###############################################
+# Page: login-app.php
+#
+You must enter a login and password: Sie m&uuml;ssen einen Benutzernamen und ein Kennwort eingeben.
+Username: Benutzername
+Password: Kennwort
+Save login via cookies so I don't have to login next time: Login in Cookies abspeichern, um die Anmeldung beim n&auml;chsten Mal automatisch zu &uuml;berspringen.
+Login: Anmelden
+Access public calendar: Zugang &Ouml;ffentlicher Kalender
+Access: Zugang
+calendar: Kalender
+cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Cookies akzeptieren.
+
+
+###############################################
 # Page: views_edit.php
 #
 Unnamed View: neue Ansicht
@@ -250,7 +265,6 @@ Due Date: F&auml;lligkeitsdatum
 Due Time: F&auml;lligkeitszeit
 Repeat Type: Art der Wiederholung
 Priority: Priorit&auml;t
-Access: Zugang
 Public: &Ouml;ffentlich
 Created by: erstellt von
 Public Access: &Ouml;ffentlicher Zugang
@@ -360,16 +374,8 @@ No such nonuser calendar: Kein(e) 'Zentrale(r)'-Kalender
 # Page: login.php
 #
 Invalid login: Benutzername oder Passwort falsch
-You must enter a login and password: Sie m&uuml;ssen einen Benutzernamen und ein Kennwort eingeben.
 You have been logged out: Sie sind nun abgemeldet
-Login: Anmelden
-Username: Benutzername
-Password: Kennwort
-Save login via cookies so I don't have to login next time: Login in Cookies abspeichern, um die Anmeldung beim n&auml;chsten Mal automatisch zu &uuml;berspringen.
-Access public calendar: Zugang &Ouml;ffentlicher Kalender
-calendar: Kalender
 Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie sich registrieren!
-cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Cookies akzeptieren.
 
 
 ###############################################
@@ -496,6 +502,8 @@ tz-help: Hilfe f&uuml;r Zeitzonen
 Server Timezone Selection: Zeitzonenauswahl am Server
 Your current GMT offset is: Ihre jetzige GMT-Zeitverschiebung ist
 Load Timezone Data: Laden der Zeitzonendaten
+display-general-use-gmt-help: Falls aktiv, werden allg. Datums/Zeiten als GMT angezeigt
+Display Common Use Date/Times as GMT: Verwenden des allg. Datums/Zeiten als GMT
 date-format-help: Legt ein spezielles Datumsformat fest.
 Date format: Datumsformat
 time-format-help: Gibt an welches Zeit-Format benutzt wird - 12-st&uuml;ndiges - Zeigt Zeiten als 3am, 8.30pm, etc. 24-st&uuml;ndiges - Zeigt Zeiten als 3.00, 20.30, etc.
@@ -869,7 +877,6 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: Folgende Konflikte mit der vorgeschlagenen Zeit
-Unnamed Event: unbenannter Termin
 A new appointment has been made for you by: Es wurde Ihnen eine neue Verabredung eingetragen von -->
 An appointment has been updated by: Eine Verabredung wurde ge&auml;ndert von
 The subject is: Die Beschreibung lautet 
@@ -976,6 +983,7 @@ export format not defined or incorrect: exportiertes Format nicht definiert oder
 ###############################################
 # Page: edit_task_handler.php
 #
+Unnamed Event: unbenannter Termin
 A task has been canceled for you by: Eine Aufgabe wurde abgelehnt von
 A new task has been assigned to you by: Eine neue Aufgabe wurde Ihnen zugewiesen von
 A task has been updated by: Eine Aufgabe wurde aktualisiert von
