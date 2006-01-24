@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1413743: multi-byte's mail broken
       1411628: links to some repeating entries off by a year
       1412351: SQL error when saving repeated entry
       1407891: patch for bugs in send_reminders.php
