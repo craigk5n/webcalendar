@@ -1,4 +1,5 @@
-Version 1.1.0-CVS (?? ??? 2005)
+Version 1.1.0-CVS (?? ??? 2005)  
+ - Fixed bug 1413743: multi-byte's mail broken
  - New Joomla user authentication file (user-app-joomla.php)
  - Updated Timezone definitions to version 2005r to reflect change in DST
    in the US in 2007
