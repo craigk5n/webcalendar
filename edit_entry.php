@@ -214,8 +214,13 @@ if ( $readonly == 'Y' || $is_nonuser ) {
             $rpt_end = get_datetime_add_tz( $row[2], $row[3] );
           else
             $rpt_end = 0;
-          $rpt_end_date = date( "Ymd", get_datetime_add_tz( $row[2], $row[3] ) );
-          $rpt_end_time = date( "His", get_datetime_add_tz( $row[2], $row[3] ) );          
+					if ( ! empty ( $row[2] ) ) {
+            $rpt_end_date = date( "Ymd", get_datetime_add_tz( $row[2], $row[3] ) );
+            $rpt_end_time = date( "His", get_datetime_add_tz( $row[2], $row[3] ) );
+					}  else {
+					  $rpt_end_date = $cal_date;
+						$rpt_end_time = $cal_time;
+					}        
           $rpt_freq = $row[4];
           $byday = explode(",",$row[5]);
           $bymonth = explode(",",$row[6]);
