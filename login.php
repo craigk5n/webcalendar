@@ -127,7 +127,7 @@ if ( $single_user == "Y" ) {
     } else {
       // Invalid login
       if ( empty ( $error ) || ! $showLoginFailureReason ) {
-        $error = translate("Invalid login" );
+        $error = translate("Invalid login", true );
       }
     }
   } else {

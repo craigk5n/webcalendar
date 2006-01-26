@@ -203,7 +203,13 @@ if ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
   $tasks = read_tasks ( $username, $date, $endDate, $cat_id );
 }
 
-
+//Determine if this script is being called directly, or via an include
+if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
+  ! empty ( $_SERVER['PHP_SELF'] ) ) {
+  $PHP_SELF = $_SERVER['PHP_SELF'];
+}
+//If called directly print  header stuff
+if ( ! empty ( $PHP_SELF ) && preg_match ( "/upcoming.php/", $PHP_SELF ) ) {
 // Print header without custom header and no style sheet
 if ( ! empty ( $LANGUAGE ) ) {
   $charset = translate ( "charset" );
@@ -265,7 +271,7 @@ a:hover {
 </style>
 </head>
 <body>
-<?php
+<?php } //end test for direct call
 if ( ! empty ( $error ) ) {
   echo "<h2>" . translate ( "Error" ) .
     "</h2>\n" . $error;
@@ -304,9 +310,9 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
 }
 
 print "</dl>\n";
-
-print "</body>\n</html>";
-
+if ( ! empty ( $PHP_SELF ) && preg_match ( "/upcoming.php/", $PHP_SELF ) ) {
+  print "</body>\n</html>";
+}
 
 // Print the details of an upcoming event
 function print_upcoming_event ( $e, $date ) {

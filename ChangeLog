@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1415256: pop up 'invalid login' not properly displayed
  - Fixed bug 1413308: can't set sane end date on recurring events  
  - Fixed bug 1413743: multi-byte's mail broken
  - New Joomla user authentication file (user-app-joomla.php)
