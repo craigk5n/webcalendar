@@ -382,6 +382,7 @@ if ( $is_admin ) {
   <tt>${starttime}</tt><br />
   <tt>${endtime}</tt><br />
   <tt>${duration}</tt><br />
+  <tt>${location}</tt><br />
   <tt>${priority}</tt><br />
   <tt>${href}</tt><br />
   <tt>${user}</tt><br />
