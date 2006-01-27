@@ -96,8 +96,8 @@ if ( empty ( $error ) && $id > 0 ) {
   }
 
   if ($time != '-1') {
-    $hour = substr($time,0,2);
-    $minute = substr($time,2,2);
+    $hour = floor($time / 10000);
+    $minute = ( $time / 100 ) % 100;
   } else {
    $hour =  $minute = 0;
  }

@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1416850: reject email sometimes get incorrect time
       1415709: Location is missing in report.php
       1415717: Location doesn't show in view_entry.php (sometimes)
       1415256: pop up 'invalid login' not properly displayed

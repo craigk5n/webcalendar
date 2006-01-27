@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1416850: reject email sometimes get incorrect time
  - Fixed bug 1415709: Location is missing in report.php
  - Fixed bug 1415717: Location doesn't show in view_entry.php (sometimes)
  - Fixed bug 1415256: pop up 'invalid login' not properly displayed
