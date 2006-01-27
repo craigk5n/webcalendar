@@ -21,7 +21,6 @@
  * @version $Id: 
  * @package WebCalendar
  */
- 
 //Day Month Year format
 $datestyles = array (
  "LANGUAGE_DEFINED", translate("LANGUAGE DEFINED"),
@@ -49,7 +48,6 @@ $datestyles = array (
  "__dd__.__mm__.__yyyy__", "31.12.2000",
  "__dd__.__mm__.__yy__", "31.12.00"
 );
-
 //Month Year format
 $datestyles_my = array (
  "LANGUAGE_DEFINED", translate("LANGUAGE DEFINED"),    
@@ -69,7 +67,6 @@ $datestyles_my = array (
  "__yyyy__/__mm__", "2000/12",
  "__yy__/__mm__", "00/12"
 );
-
 //Month Day format
 $datestyles_md = array (
  "LANGUAGE_DEFINED", translate("LANGUAGE DEFINED"),    
@@ -83,7 +80,5 @@ $datestyles_md = array (
  "__dd__/__mm__", "31/12",
  "__dd__-__mm__", "31-12",
  "__dd__.__mm__", "31.12"
-);
-    
+);   
 ?>
-

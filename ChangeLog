@@ -1,4 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added tabs to pref.php
+ - Removed admin_handler.php and pref_handler.php
+ - Fixed bug 1416212: admin_handler gives invalid admin settings name
  - Fixed bug 1416850: reject email sometimes get incorrect time
  - Fixed bug 1415709: Location is missing in report.php
  - Fixed bug 1415717: Location doesn't show in view_entry.php (sometimes)

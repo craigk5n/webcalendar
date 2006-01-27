@@ -39,8 +39,8 @@ clearstatcache();
 // We may need time to run extensive database loads
 set_time_limit(240);
 
-// If we're using SQLite, it sems that magic_quotes_sybase must be on
-ini_set('magic_quotes_sybase', 'On'); 
+// If we're using SQLite, it seems that magic_quotes_sybase must be on
+//ini_set('magic_quotes_sybase', 'On'); 
 
 // Check for proper auth settings
 if ( ! empty (  $_SERVER['PHP_AUTH_USER'] ) )
