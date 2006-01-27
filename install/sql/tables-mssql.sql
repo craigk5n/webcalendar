@@ -1,8 +1,8 @@
 CREATE TABLE webcal_user (
   cal_login VARCHAR(25) NOT NULL,
-  cal_passwd VARCHAR(32),
-  cal_lastname VARCHAR(25),
-  cal_firstname VARCHAR(25),
+  cal_passwd VARCHAR(32) NULL,
+  cal_lastname VARCHAR(25) NULL,
+  cal_firstname VARCHAR(25) NULL,
   cal_is_admin CHAR(1) DEFAULT 'N',
   cal_email VARCHAR(75) NULL,
   PRIMARY KEY ( cal_login )
@@ -15,9 +15,9 @@ CREATE TABLE webcal_entry (
   cal_ext_for_id INT NULL,
   cal_create_by VARCHAR(25) NOT NULL,
   cal_date INT NOT NULL,
-  cal_time INT,
-  cal_mod_date INT,
-  cal_mod_time INT,
+  cal_time INT NULL,
+  cal_mod_date INT NULL,
+  cal_mod_time INT NULL,
   cal_duration INT NOT NULL,
   cal_due_date INT NULL,
   cal_due_time INT NULL,
@@ -28,15 +28,15 @@ CREATE TABLE webcal_entry (
   cal_location VARCHAR(50) NULL,
   cal_url VARCHAR(100) NULL,
   cal_completed INT NULL,
-  cal_description TEXT,
+  cal_description TEXT NULL,
   PRIMARY KEY ( cal_id )
 );
 CREATE TABLE webcal_entry_repeats (
    cal_id INT DEFAULT '0' NOT NULL,
-   cal_type VARCHAR(20),
-   cal_end INT,
+   cal_type VARCHAR(20) NOT NULL,
+   cal_end INT NULL,
    cal_frequency INT DEFAULT '1',
-   cal_days CHAR(7),
+   cal_days CHAR(7) NULL,
    cal_endtime INT NULL,
    cal_bymonth VARCHAR(50) NULL,
    cal_bymonthday VARCHAR(100) NULL,
@@ -71,14 +71,14 @@ CREATE TABLE webcal_entry_ext_user (
 CREATE TABLE webcal_user_pref (
   cal_login varchar(25) NOT NULL,
   cal_setting varchar(25) NOT NULL,
-  cal_value varchar(100),
+  cal_value varchar(100) NULL,
   PRIMARY KEY ( cal_login, cal_setting )
 );
 CREATE TABLE webcal_user_layers (
   cal_layerid INT DEFAULT '0' NOT NULL,
   cal_login varchar(25) NOT NULL,
   cal_layeruser varchar(25) NOT NULL,
-  cal_color varchar(25),
+  cal_color varchar(25) NULL,
   cal_dups CHAR(1) DEFAULT 'N',
   PRIMARY KEY ( cal_login, cal_layeruser )
 );
@@ -112,7 +112,7 @@ CREATE TABLE webcal_view (
   cal_view_id INT NOT NULL,
   cal_owner VARCHAR(25) NOT NULL,
   cal_name VARCHAR(50) NOT NULL,
-  cal_view_type CHAR(1),
+  cal_view_type CHAR(1) NULL,
   cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
   PRIMARY KEY ( cal_view_id )
 );
@@ -139,7 +139,7 @@ CREATE TABLE webcal_entry_log (
 );
 CREATE TABLE webcal_categories (
   cat_id INT NOT NULL,
-  cat_owner VARCHAR(25),
+  cat_owner VARCHAR(25) NULL,
   cat_name VARCHAR(80) NOT NULL,
   PRIMARY KEY ( cat_id )
 );
@@ -191,7 +191,7 @@ CREATE TABLE webcal_report (
 CREATE TABLE webcal_report_template (
   cal_report_id INT NOT NULL,
   cal_template_type CHAR(1) NOT NULL,
-  cal_template_text TEXT,
+  cal_template_text TEXT NULL,
   PRIMARY KEY ( cal_report_id, cal_template_type )
 );
 CREATE TABLE webcal_access_user (
@@ -239,7 +239,7 @@ CREATE TABLE webcal_tz_list (
 CREATE TABLE webcal_user_template (
   cal_login VARCHAR(25) NOT NULL,
   cal_type CHAR(1) NOT NULL,
-  cal_template_text TEXT,
+  cal_template_text TEXT NULL,
   PRIMARY KEY ( cal_login, cal_type )
 );
 CREATE TABLE webcal_entry_categories (

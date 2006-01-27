@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1402930: Adding repeating event yields SQL error
       1416212: admin_handler gives invalid admin settings name
       1416850: reject email sometimes get incorrect time
       1415709: Location is missing in report.php

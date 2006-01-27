@@ -2,10 +2,10 @@
 UPDATE webcal_entry SET cal_time = -1 WHERE cal_time is null;
 CREATE TABLE webcal_entry_repeats (
   cal_id INT DEFAULT '0' NOT NULL,
-  cal_type VARCHAR(20),
-  cal_end INT,
+  cal_type VARCHAR(20) NULL,
+  cal_end INT NULL,
   cal_frequency INT DEFAULT '1',
-  cal_days CHAR(7),
+  cal_days CHAR(7) NULL,
   PRIMARY KEY (cal_id)
 );
 
@@ -26,7 +26,7 @@ CREATE TABLE webcal_site_extras (
   cal_type INT NOT NULL,
   cal_date INT DEFAULT '0',
   cal_remind INT DEFAULT '0',
-  cal_data TEXT,
+  cal_data TEXT NULL,
   PRIMARY KEY ( cal_id, cal_name, cal_type )
 );
 CREATE TABLE webcal_reminder_log (
@@ -53,7 +53,7 @@ CREATE TABLE webcal_view (
   cal_view_id INT NOT NULL,
   cal_owner VARCHAR(25) NOT NULL,
   cal_name VARCHAR(50) NOT NULL,
-  cal_view_type CHAR(1),
+  cal_view_type CHAR(1) NULL,
   PRIMARY KEY ( cal_view_id )
 );
 CREATE TABLE webcal_view_user (
@@ -73,12 +73,12 @@ CREATE TABLE webcal_entry_log (
   cal_type CHAR(1) NOT NULL,
   cal_date INT NOT NULL,
   cal_time INT NULL,
-  cal_text TEXT,
+  cal_text TEXT NULL,
   PRIMARY KEY ( cal_log_id )
 );
 
 /*upgrade_v0.9.37*/
-ALTER TABLE webcal_entry_log ADD cal_user_cal VARCHAR(25);
+ALTER TABLE webcal_entry_log ADD cal_user_cal VARCHAR(25) NULL;
 CREATE TABLE webcal_entry_repeats_not (
   cal_id INT NOT NULL,
   cal_date INT NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE webcal_entry_repeats_not (
 ALTER TABLE webcal_entry_user ADD cal_category INT NULL;
 CREATE TABLE webcal_categories (
   cat_id INT NOT NULL,
-  cat_owner VARCHAR(25),
+  cat_owner VARCHAR(25) NULL,
   cat_name VARCHAR(80) NOT NULL,
   PRIMARY KEY ( cat_id )
 );
@@ -115,8 +115,8 @@ ALTER TABLE webcal_entry ADD cal_ext_for_id INT NULL;
 /*upgrade_v0.9.41*/
 CREATE TABLE webcal_nonuser_cals (
   cal_login VARCHAR(25) NOT NULL,
-  cal_lastname VARCHAR(25),
-  cal_firstname VARCHAR(25),
+  cal_lastname VARCHAR(25) NULL,
+  cal_firstname VARCHAR(25) NULL,
   cal_admin VARCHAR(25) NOT NULL,
   PRIMARY KEY ( cal_login )
 );
@@ -141,7 +141,7 @@ CREATE TABLE webcal_report (
 CREATE TABLE webcal_report_template (
   cal_report_id INT NOT NULL,
   cal_template_type CHAR(1) NOT NULL,
-  cal_template_text TEXT,
+  cal_template_text TEXT NULL,
   PRIMARY KEY ( cal_report_id, cal_template_type )
 );
 CREATE TABLE webcal_import_data (
@@ -236,7 +236,7 @@ ALTER TABLE webcal_nonuser_cals ADD cal_is_public CHAR(1) DEFAULT 'N' NOT NULL;
 CREATE TABLE webcal_user_template (
   cal_login VARCHAR(25) NOT NULL,
   cal_type CHAR(1) NOT NULL,
-  cal_template_text TEXT,
+  cal_template_text TEXT NULL,
   PRIMARY KEY ( cal_login, cal_type )
 );
 
