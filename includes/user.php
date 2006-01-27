@@ -60,10 +60,10 @@ function user_valid_login ( $login, $password ) {
       if ( $row[0] == $login )
         $ret = true; // found login/password
       else
-        $error = translate ("Invalid login") . ": " .
-          translate("incorrect password");
+        $error = translate ("Invalid login", true ) . ": " .
+          translate("incorrect password", true );
     } else {
-      $error = translate ("Invalid login");
+      $error = translate ("Invalid login", true );
       // Could be no such user or bad password
       // Check if user exists, so we can tell.
       $res2 = dbi_execute ( "SELECT cal_login FROM webcal_user WHERE cal_login = ?" , array ( $login ) );
@@ -71,19 +71,19 @@ function user_valid_login ( $login, $password ) {
         $row = dbi_fetch_row ( $res2 );
         if ( $row && ! empty ( $row[0] ) ) {
           // got a valid username, but wrong password
-          $error = translate ("Invalid login") . ": " .
-            translate("incorrect password" );
+          $error = translate ("Invalid login", true ) . ": " .
+            translate("incorrect password", true );
         } else {
           // No such user.
-          $error = translate ("Invalid login") . ": " .
-            translate("no such user" );
+          $error = translate ("Invalid login", true) . ": " .
+            translate("no such user", true );
         }
         dbi_free_result ( $res2 );
       }
     }
     dbi_free_result ( $res );
   } else {
-    $error = translate("Database error") . ": " . dbi_error();
+    $error = translate("Database error", true) . ": " . dbi_error();
   }
 
   return $ret;
@@ -147,9 +147,9 @@ function user_load_variables ( $login, $prefix ) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }
-	
-//	if ( ! empty ( $GLOBALS[$prefix . "login"] ) && $GLOBALS[$prefix . "login"] == $login )
-//	  return true;
+  
+//  if ( ! empty ( $GLOBALS[$prefix . "login"] ) && $GLOBALS[$prefix . "login"] == $login )
+//    return true;
   
   if ( $login == "__public__" ) {
     $GLOBALS[$prefix . "login"] = $login;
@@ -206,7 +206,7 @@ function user_add_user ( $user, $password, $firstname, $lastname, $email,
   global $error;
 
   if ( $user == "__public__" ) {
-    $error = translate ("Invalid user login");
+    $error = translate ("Invalid user login", true);
     return false;
   }
 
@@ -233,7 +233,7 @@ function user_add_user ( $user, $password, $firstname, $lastname, $email,
     "cal_is_admin, cal_passwd, cal_email ) " .
     "VALUES ( ?, ?, ?, ?, ?, ? )";
   if ( ! dbi_execute ( $sql , array ( $user, $ulastname, $ufirstname, $admin, $upassword, $uemail ) ) ) {
-    $error = translate ("Database error") . ": " . dbi_error ();
+    $error = translate ("Database error", true) . ": " . dbi_error ();
     return false;
   }
   return true;
