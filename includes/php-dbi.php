@@ -405,7 +405,7 @@ function dbi_affected_rows ( $conn, $res ) {
   } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
     return mysqli_affected_rows ( $conn );
   } else if ( strcmp ( $GLOBALS["db_type"], "mssql" ) == 0 ) {
-    return mssql_affected_rows ( $conn );
+    return mssql_rows_affected ( $conn );
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
     if ( $GLOBALS["oracle_statement"] >= 0 ) {
       return OCIRowCount ( $GLOBALS["oracle_statement"] );
