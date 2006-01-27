@@ -1300,13 +1300,13 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
  global $WEEK_START, $WEEKENDBG, $user, $login, $today,
    $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_WEEKNUMBER;
 
-echo "<table class=\"main\" style=\"clear:both;\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" name=\"month\" id=\"month_main\">";
+echo "<table class=\"main\" style=\"clear:both;\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" id=\"month_main\">";
 echo "<tr>";
 if ( $DISPLAY_WEEKNUMBER == "Y" && ! $demo ) {
     echo "<th class=\"weekcell\" width\"5%\"></th>\n"; 
 }
 if ( $WEEK_START == 0 ) {
-  echo "<th class=\"weekend\">" . translate('Sun') . "</a></th>\n";
+  echo "<th class=\"weekend\">" . translate('Sun') . "</th>\n";
 }
 echo '<th>' . translate('Mon') . "</th>\n";
 echo '<th>' . translate('Tue') . "</th>\n";

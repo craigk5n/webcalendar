@@ -75,5 +75,16 @@ function showPreview() {
   url = "themes/" + theme.toLowerCase()  + "_pref.php";
   var previewWindow = window.open(url,"Preview","resizable=yes,scrollbars=yes");
 }
+
+<?php //see the showTab function in includes/js/visible.php for common code shared by all pages
+ //using the tabbed GUI.
+?>var tabs = new Array();
+tabs[1] = "settings";
+tabs[2] = "themes";
+tabs[3] = "email";
+tabs[4] = "boss";
+tabs[5] = "subscribe";
+tabs[6] = "colors";
+
 //]]> -->
 </script>
