@@ -454,8 +454,7 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
   }
 ?></td></tr>
  <?php
-  if (   ( empty ( $DISABLE_LOCATION_FIELD ) ||
-    $ALLOW_HTML_DESCRIPTION != 'Y' ) && ! empty ( $location ) ) { 
+  if ( $DISABLE_LOCATION_FIELD != 'Y' && ! empty ( $location ) ) { 
     echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">";
     echo translate("Location") . ":</td><td>";
     echo $location . "</td><tr>\n";
