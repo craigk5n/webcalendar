@@ -56,8 +56,8 @@ if ($layers_enabled) {
 echo "<br />";
 
 if ($is_admin && $layers_enabled) {
-  if ( empty ($public) && ! empty ( $PUBLIC_ACCESS ) &&
-    $PUBLIC_ACCESS == 'Y' ) {
+  if ( empty ($public) && ! empty ( $public_access ) &&
+    $public_access == 'Y' ) {
     echo "<blockquote><a href=\"layers.php?public=1\">" .
       translate("Click here") . "&nbsp;" . 
       translate("to modify the layers settings for the") . "&nbsp;" .
