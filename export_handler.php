@@ -529,7 +529,7 @@ function export_recurrence_vcal($id, $date) {
 	  //echo export_get_utc_date($end, $time);
 	  echo $end;
 	} else {
-	  echo "20031231";
+	  echo "20311231";
 	}
 
       echo "\r\n";
