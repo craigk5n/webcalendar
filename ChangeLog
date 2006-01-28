@@ -1,4 +1,5 @@
 Version 1.0.3-CVS (?? ??? ????)
+ - Fixed bug 1417529: Can't change public access layers
  - Fixed bug 1397766: Tomorrow Report fails to This Week
  - Fixed bug 1374014 Prefs page displays option to modify Public Acces calendar..
  - Fixed bug 1382217 Glitch in handling of public access prefs
