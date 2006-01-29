@@ -1,4 +1,5 @@
 Version 1.0.3-CVS (?? ??? ????)
+ - Fixed bug 1279804: send_reminders.php fails in v1.0.1
  - Fixed bug 1417585: vCal export of forever repeating events fails for Palm
  - Fixed bug 1417529: Can't change public access layers
  - Fixed bug 1397766: Tomorrow Report fails to This Week
