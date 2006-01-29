@@ -59,6 +59,7 @@ global $TROUBLE_URL;
 
 // Open settings file to read
 $settings = array ();
+$settings_file = dirname(__FILE__) . "/settings.php";
 //called from send_reminders.php
 if ( ! empty ( $includedir ) ) 
   $fd = @fopen ( "$includedir/settings.php", "rb", true );
@@ -66,6 +67,8 @@ else
   $fd = @fopen ( "settings.php", "rb", true );
 if ( ! $fd )
   $fd = @fopen ( "includes/settings.php", "rb", true );
+if ( ! $fd  && file_exists ( $settings_file ) )
+  $fd = @fopen ( $settings_file, "rb", true );
 if ( empty ( $fd ) ) {
   // There is no settings.php file.
   // Redirect user to install page if it exists.
