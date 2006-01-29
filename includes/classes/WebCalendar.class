@@ -338,7 +338,9 @@ class WebCalendar {
     // Open settings file to read
     $settings = array ();
     $fd = @fopen ( $this->absolutePath ( 'includes/settings.php' ), "rb", true );
-    if ( empty ( $fd ) ) {
+    if ( empty ( $fd ) && ! empty ( $includedir ) )
+      @fopen ( "$includedir/settings.php", "rb", true );
+    if ( empty ( $fd ) ) {        
       // There is no settings.php file.
       // Redirect user to install page if it exists.
       if ( file_exists ( "install/index.php" ) ) {
