@@ -498,7 +498,7 @@ class WebCalendar {
   function _initFunctions() {
     global $days_per_month, $ldays_per_month, $byday_values, $noSet, 
     $HTTP_GET_VARS, $PHP_SELF, $HTTP_POST_VARS, $HTTP_COOKIE_VARS, 
-   $settings, $db_password, $offsets, $weekday_names, $byday_names;
+   $settings, $db_login, $db_password, $offsets, $weekday_names, $byday_names;
 
     /**#@+
      * Used for activity log
