@@ -9,7 +9,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 }
 
 // This file contains all the functions for getting information
-// about users from PostNuke 0.7.2x.
+// about users from PostNuke 0.761
 
 // Reference to the application means the external application (postnuke)
 
@@ -18,79 +18,99 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 //   - user administration is done through the application
 
 // The following functions had to be configured to work with the application:
+// - app_active_session
+// - app_update_session
 // - user_logged_in (returns login id if true)
 // - get_admins (returns an array of admin login ids)
 // - user_get_users (returns array of users)
 // - user_load_variables (loads info about a user)
 
-// JGH - May 2005
-// I realized that I had hacked modules/NS-User/user.php to get postnuke
-// to redirect back to webcal directly after logging in and didn't mention this.
-// in function user_user_loginscreen() I added:
-//    $URL = ($_REQUEST['url']) ? $_REQUEST['url'] : getenv("HTTP_REFERER");
-// at the top after OpenTable() and changed the line that prints the hidden
-// url parameter to:
-//   "<input type=\"hidden\" name=\"url\" value=\"$URL\">""
+
+// *** NOTE:
+// webcal must be installed somewhere in the postnuke directory to read
+// postnuke's cookie OR edit postnuke to make the cookie global:
+//   change line 85 in includes/pnSession.php to:
+//      ini_set('session.cookie_path', '/');
 
 
 /************************* Config ***********************************/
 
-//------ Postnuke Specific Settings ------//
-// PostNuke session id cookie
-$pn_sid = 'POSTNUKESID';
+// Location of postnuke config.php file (with trailing slash)
+$app_path = '/usr/local/www/data/postnuke/';
 
-// Name of table containing users
-$pn_user_table = 'nuke_users';
+// URL to postnuke (with trailing slash)
+$app_url = 'http://'.$_SERVER['SERVER_NAME'].'/postnuke/';
 
-// Name of table containing sessions
-$pn_session_table = 'nuke_session_info';
-
-// Name of table containing group memberships
-$pn_group_table = 'nuke_group_membership';
-
-// Name of table containing settings
-$pn_settings_table = 'nuke_module_vars';
+// Table Prefix
+$pn_table_prefix = 'pn_';
 
 // Set the group id of the postnuke group you want to be webcal admins.
 // Default is set to the postnuke 'Admins' group
 $pn_admin_gid = '2';
 
-
-//------ General Application Settings ------//
-// What is the full URL to the login page (including http:// or https://)
-$app_login_page = 'http://www.mysite.com/postnuke/html/user.php?op=loginscreen&module=NS-User'; 
-
-// Is there a parameter we can pass to tell the application to
-// redirect the user back to the calendar after login?
-$app_redir_param = 'url';  // postnuke uses 'url'
-
-// What is the full URL to the logout page (including http:// or https://)
-$app_logout_page = 'http://www.mysite.com/postnuke/html/user.php?module=NS-User&op=logout'; 
-
-// Are the application's tables in the same database as webcalendar's?
-$app_same_db = '0';  // 1 = yes, 0 = no
- 
-// Only need configure the rest if $app_same_db != 1
-
- // Name of database containing the app's tables
-$app_db = 'postnuke';
-
-// Host that the app's db is on
-$app_host = 'localhost';
-
-// Login/Password to access the app's database
-$app_login = 'pnuser';
-$app_pass  = 'pnpassword';
-
 /*************************** End Config *****************************/
 
+// For postnuke, we can automatically fetch some values we need from the
+// config.php file
+$app_config = '';
+$config_lines = file( $app_path . "config.php" );
+foreach ( $config_lines as $line ) {
+  preg_match("/pnconfig\['([\w]+)'\] = '([^']+)'/", $line, $match);
+  $app_config[$match[1]] = $match[2];
+}
+unset( $config_lines );
 
-// User administration should be done through the aplication's interface
-$user_can_update_password = false;
-$admin_can_add_user = false;
+// PostNuke session id cookie (default is POSTNUKESID)
+$pn_sid = 'POSTNUKESID';
 
-// Allow admin to delete user from webcal tables
-$admin_can_delete_user = true;
+// Application login form parameters
+$app_login_page['action'] = $app_url.'user.php';
+$app_login_page['username'] = 'uname';
+$app_login_page['password'] = 'pass';
+$app_login_page['remember'] = 'rememberme';
+$app_login_page['submit'] = 'submit';
+$app_login_page['return'] = 'url';
+// hidden params
+$app_login_page['hidden']['op'] = 'Login';
+$app_login_page['hidden']['module'] = 'User';
+
+// What is the full URL to the logout page (including http:// or https://)
+$app_logout_page = $app_url.'user.php?module=NS-User&op=logout'; 
+
+// Name of table containing users
+$pn_user_table = $pn_table_prefix.'users';
+
+// Name of table containing sessions
+$pn_session_table = $pn_table_prefix.'session_info';
+
+// Name of table containing group memberships
+$pn_group_table = $pn_table_prefix.'group_membership';
+
+// Name of table containing settings
+$pn_settings_table = $pn_table_prefix.'module_vars';
+
+// Name of database containing the app's tables
+$app_db = $app_config['dbname'];
+
+// Host that the app's db is on
+$app_host = $app_config['dbhost'];
+
+// Login/Password to access the app's database
+$app_login = $app_config['dbuname'];
+$app_pass  = $app_config['dbpass'];
+
+if ( $app_config['encoded'] ) {
+  $app_login = base64_decode( $app_login );
+  $app_pass  = base64_decode( $app_pass );
+}
+
+// Debug
+//var_dump($app_config);exit;
+
+// Cleanup stuff we don't need anymore
+unset($app_config);
+
+/********************************************************************/
 
 
 // Checks to see if the user is logged into the application
@@ -123,9 +143,9 @@ function pn_active_session($sid) {
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
 
   // get login and last access time
-  $sql = "SELECT pn_uname, pn_lastused FROM $pn_user_table, $pn_session_table  WHERE pn_sessid = ? ".
+  $sql = "SELECT pn_uname, pn_lastused FROM $pn_user_table, $pn_session_table  WHERE pn_sessid = '$sid' ".
   "AND $pn_session_table.pn_uid <> 0 AND $pn_session_table.pn_uid=$pn_user_table.pn_uid ";
-  $res = dbi_execute ( $sql, array( $sid ) );
+  $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $login = $row[0];
@@ -136,7 +156,7 @@ function pn_active_session($sid) {
 
   // Get inactive session time limit and see if we have passed it
   $sql = "SELECT pn_value FROM $pn_settings_table WHERE pn_modname = '/PNConfig' AND pn_name = 'secinactivemins'";
-  $res = dbi_execute ( $sql );
+  $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $tmp = explode('"', $row[0]);
@@ -162,8 +182,8 @@ function pn_update_session($sid) {
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
 
   // get login and last access time
-  $sql = "UPDATE $pn_session_table  SET pn_lastused = ? WHERE pn_sessid = ? ";
-  dbi_execute ( $sql, array( time(), $sid ) );
+  $sql = "UPDATE $pn_session_table  SET pn_lastused = '".time()."' WHERE pn_sessid = '$sid' ";
+  dbi_query ( $sql );
 
   // if postnuke is in a separate db, we have to connect back to the webcal db
   if ($app_same_db != '1') $c = dbi_connect($db_host, $db_login, $db_password, $db_database);
@@ -186,8 +206,8 @@ function get_admins() {
   // if postnuke is in a separate db, we have to connect to it
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
 
-  $sql = "SELECT pn_uid FROM $pn_group_table WHERE pn_gid = ? && pn_uid <> 2";
-  $res = dbi_execute( $sql, array( $pn_admin_gid ) );
+  $sql = "SELECT pn_uid FROM $pn_group_table WHERE pn_gid = $pn_admin_gid";
+  $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $cached_admins[] = $row[0];
@@ -224,8 +244,8 @@ function user_get_users () {
   // if postnuke is in a separate db, we have to connect to it
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
 
-  $sql = "SELECT pn_uid, pn_name, pn_uname, pn_email FROM $pn_user_table WHERE pn_uid <> 1 && pn_uid <> 2 ORDER BY pn_name";
-  $res = dbi_execute ( $sql );
+  $sql = "SELECT pn_uid, pn_name, pn_uname, pn_email FROM $pn_user_table WHERE pn_uid > 1 ORDER BY pn_name";
+  $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       list($fname, $lname) = split (" ",$row[1]);
@@ -275,9 +295,9 @@ function user_load_variables ( $login, $prefix ) {
   // if postnuke is in a separate db, we have to connect to it
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
   
-  $sql = "SELECT pn_uid, pn_name, pn_uname, pn_email FROM $pn_user_table WHERE pn_uname = ?";
+  $sql = "SELECT pn_uid, pn_name, pn_uname, pn_email FROM $pn_user_table WHERE pn_uname = '$login'";
 
-  $res = dbi_execute ( $sql, array( $login ) );
+  $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       list($fname, $lname) = split (" ",$row[1]);
@@ -300,24 +320,34 @@ function user_load_variables ( $login, $prefix ) {
   return true;
 }
 
-// Redirect the user to the application's login screen
-function app_login_screen($return_path = 'index.php') {
-  global $app_login_page, $app_redir_param;
-  
-  if ($return_path != '' && $app_redir_param != '') {
-    if (strstr($app_login_page, '?')) {
-      $app_login_page .= '&'.$app_redir_param.'='.$return_path;
-    } else {
-      $app_login_page .= '?'.$app_redir_param.'='.$return_path;
-    }
-  } 
-  header("Location: $app_login_page");
+
+/********************************************************************* 
+ *
+ *        Stuff that should stay the same for all user-app files 
+ *
+ ********************************************************************/
+
+// Are the application's tables in the same database as webcalendar's?
+$app_same_db = (($db_database == $app_db) && ($app_host == $db_host)) ? '1' : '0';
+//echo "Same DB:$app_same_db";exit;
+
+// User administration should be done through the aplication's interface
+$user_can_update_password = false;
+$admin_can_add_user = false;
+
+// Allow admin to delete user from webcal tables (not application)
+$admin_can_delete_user = true;
+
+// Redirect the user to the login-app.php page 
+function app_login_screen( $return ) {
+  global $SERVER_URL;
+  header("Location: {$SERVER_URL}login-app.php?return_path={$return}");
   exit;
 }
 
 
 // Test if a user is an admin, that is: if the user is a member of a special
-// group in the postnuke database
+// group in the application database
 // params:
 //   $values - the login name
 // returns: Y if user is admin, N if not
@@ -331,7 +361,8 @@ function user_is_admin($uid,$Admins) {
   }
 }
 
-// Delete a user from the webcalendar tables. (NOT from PostNuke)
+
+// Delete a user from the webcalendar tables. (NOT from the application)
 // We assume that we've already checked to make sure this user doesn't
 // have events still in the database.
 // params:
@@ -339,10 +370,10 @@ function user_is_admin($uid,$Admins) {
 function user_delete_user ( $user ) {
   // Get event ids for all events this user is a participant
   $events = array ();
-  $res = dbi_execute ( "SELECT webcal_entry.cal_id " .
+  $res = dbi_query ( "SELECT webcal_entry.cal_id " .
     "FROM webcal_entry, webcal_entry_user " .
     "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id " .
-    "AND webcal_entry_user.cal_login = ?", array( $user ) );
+    "AND webcal_entry_user.cal_login = '$user'" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $events[] = $row[0];
@@ -353,38 +384,38 @@ function user_delete_user ( $user ) {
   // If just 1, then save id to be deleted
   $delete_em = array ();
   for ( $i = 0; $i < count ( $events ); $i++ ) {
-    $res = dbi_execute ( "SELECT COUNT(*) FROM webcal_entry_user " .
-      "WHERE cal_id = ?", array( $events[$i] ) );
+    $res = dbi_query ( "SELECT COUNT(*) FROM webcal_entry_user " .
+      "WHERE cal_id = " . $events[$i] );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
-   $delete_em[] = $events[$i];
+	  $delete_em[] = $events[$i];
       }
       dbi_free_result ( $res );
     }
   }
   // Now delete events that were just for this user
   for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
-    dbi_execute ( "DELETE FROM webcal_entry WHERE cal_id = ?", array( $delete_em[$i] ) );
+    dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = " . $delete_em[$i] );
   }
 
   // Delete user participation from events
-  dbi_execute ( "DELETE FROM webcal_entry_user WHERE cal_login = ?", array( $user ) );
+  dbi_query ( "DELETE FROM webcal_entry_user WHERE cal_login = '$user'" );
 
   // Delete preferences
-  dbi_execute ( "DELETE FROM webcal_user_pref WHERE cal_login = ?", array( $user ) );
+  dbi_query ( "DELETE FROM webcal_user_pref WHERE cal_login = '$user'" );
 
   // Delete from groups
-  dbi_execute ( "DELETE FROM webcal_group_user WHERE cal_login = ?", array( $user ) );
+  dbi_query ( "DELETE FROM webcal_group_user WHERE cal_login = '$user'" );
 
   // Delete bosses & assistants
-  dbi_execute ( "DELETE FROM webcal_asst WHERE cal_boss = ?", array( $user ) );
-  dbi_execute ( "DELETE FROM webcal_asst WHERE cal_assistant = ?", array( $user ) );
+  dbi_query ( "DELETE FROM webcal_asst WHERE cal_boss = '$user'" );
+  dbi_query ( "DELETE FROM webcal_asst WHERE cal_assistant = '$user'" );
 
   // Delete user's views
   $delete_em = array ();
-  $res = dbi_execute ( "SELECT cal_view_id FROM webcal_view " .
-    "WHERE cal_owner = ?", array( $user ) );
+  $res = dbi_query ( "SELECT cal_view_id FROM webcal_view " .
+    "WHERE cal_owner = '$user'" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $delete_em[] = $row[0];
@@ -392,16 +423,16 @@ function user_delete_user ( $user ) {
     dbi_free_result ( $res );
   }
   for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
-    dbi_execute ( "DELETE FROM webcal_view_user WHERE cal_view_id = ?",
-      array( $delete_em[$i] ) );
+    dbi_query ( "DELETE FROM webcal_view_user WHERE cal_view_id = " .
+      $delete_em[$i] );
   }
-  dbi_execute ( "DELETE FROM webcal_view WHERE cal_owner = ?", array( $user ) );
+  dbi_query ( "DELETE FROM webcal_view WHERE cal_owner = '$user'" );
 
   // Delete layers
-  dbi_execute ( "DELETE FROM webcal_user_layers WHERE cal_login = ?", array( $user ) );
+  dbi_query ( "DELETE FROM webcal_user_layers WHERE cal_login = '$user'" );
 
   // Delete any layers other users may have that point to this user.
-  dbi_execute ( "DELETE FROM webcal_user_layers WHERE cal_layeruser = ?", array( $user ) );
+  dbi_query ( "DELETE FROM webcal_user_layers WHERE cal_layeruser = '$user'" );
 }
 
 // Functions we don't use with this file:
