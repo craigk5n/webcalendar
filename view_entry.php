@@ -60,7 +60,8 @@ if ( empty ( $error ) ) {
 if ( ! empty ( $_POST ) && $can_view && $is_my_event ) {
   $upercent = getPostValue ( 'upercent' );
  if ( $upercent >= 0 && $upercent <= 100 )
-    dbi_execute ( "UPDATE webcal_entry_user SET cal_percent = ? WHERE cal_login = ?" , array ( $upercent , $login ) );
+    dbi_execute ( "UPDATE webcal_entry_user SET cal_percent = ? WHERE cal_login = ? " .
+    " AND cal_id = ?" , array ( $upercent , $login, $id ) );
 }
 
   if ( ($login != "__public__") && ($PUBLIC_ACCESS_OTHERS == "Y") ) {
