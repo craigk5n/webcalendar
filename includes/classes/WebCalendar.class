@@ -754,7 +754,8 @@ class WebCalendar {
       $PHP_AUTH_USER, $HTTP_SERVER_VARS, $REMOTE_USER, $HTTP_ENV_VARS,
       $single_user, $login, $single_user_login, $user_inc, $settings,
       $webcalendar_session, $encoded_login, $cryptpw, $c, $db_host,
-      $db_login, $db_password, $db_database, $login_return_path, $is_nonuser;
+      $db_login, $db_password, $db_database, $login_return_path, 
+      $is_nonuser, $SCRIPT;
 
     /* If WebCalendar is configured to use http authentication, then we can
      * use _initValidate().  If we are not using http auth, icalclient.php will
@@ -820,7 +821,7 @@ class WebCalendar {
         }
         // Use another application's authentication
         if (! $login = user_logged_in())
-          app_login_screen(clean_whitespace($_SERVER['SCRIPT_URI']));      
+          app_login_screen( clean_whitespace( $SCRIPT ) );      
       } else {
         if ( ! empty ( $settings['session'] ) && $settings['session'] == 'php' ) {
           session_start ();
