@@ -37,6 +37,13 @@ if ( empty ( $lang ) ) {
 
 $charset = ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" );
 echo "<?xml version=\"1.0\" encoding=\"$charset\"?>" . "\n";
+
+// Set return page
+if ( $return_path != '') {
+  $login_return_path = $SERVER_URL.$return_path;
+} else {
+  $login_return_path = $SERVER_URL;
+}
 ?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
@@ -109,7 +116,7 @@ if ( ! empty ( $error ) ) {
 <form name="login_form" id="login" action="<?php echo $app_login_page['action'] ?>" method="post" 
   onsubmit="return valid_form(this)">
 <input type="hidden" name="<?php echo $app_login_page['return'] ?>" 
-  value="<?php echo $SERVER_URL ?>" />
+  value="<?php echo $login_return_path ?>" />
 
 <table cellpadding="10" align="center">
 <tr><td rowspan="2">
