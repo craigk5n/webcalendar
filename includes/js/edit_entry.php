@@ -615,7 +615,7 @@ function editCats (  evt ) {
   if (user ) {
   url += "&user=" + user;
  }
-  var catWindow = window.open(url,"EditCat","width=365,height=200,"  + MyPosition);
+  var catWindow = window.open(url,"EditCat","width=385,height=250,"  + MyPosition);
 }
 
 function displayInValid(myvar)
