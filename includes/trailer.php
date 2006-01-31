@@ -472,15 +472,12 @@ if ( ! $use_http_auth ) {
 
   // Should we use another application's login/logout pages?
   if ( substr ( $GLOBALS['user_inc'], 0, 9 ) == 'user-app-' ) {  
-    if ( strlen ( $login ) && $login != "__public__" ) {
-      $logout_url = $login_url = $GLOBALS['app_logout_page'];
-    } else {
-      if ($login_return_path != '' && $GLOBALS['app_redir_param'] != '') {
-        $GLOBALS['app_login_page'] .= '?'. $GLOBALS['app_redir_param'] .
-          '=' . $login_return_path;
-      } 
-      $logout_url = $login_url = $GLOBALS['app_login_page'];
-    }
+    global $app_login_page, $app_logout_page;
+    $logout_url = $app_logout_page;
+    $login_url = "login-app.php";
+    if ( $login_return_path != '' && $app_login_page['return'] != '' ) {
+      $login_url .= "?return_path=$login_return_path";
+    } 
   }  
     
  if ( strlen ( $login ) && $login != "__public__" ) {
