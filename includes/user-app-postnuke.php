@@ -160,7 +160,7 @@ function pn_active_session($sid) {
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $tmp = explode('"', $row[0]);
-      if (($tmp[1] > 0) && ($tmp[1] < ((time() - $last) / 60))) return false;
+      if (($tmp[1] > 0) && ($tmp[1] < ((time() - $last) / 60))) $login = false;
     }
     dbi_free_result ( $res );
   }
