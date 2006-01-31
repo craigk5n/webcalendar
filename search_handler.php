@@ -104,7 +104,7 @@ if ( ! empty ( $error ) ) {
         $sql_params[] = $users[$j];
       }
     } else
-      $sql .= " ?' ";
+      $sql .= " ? ";
       $sql_params[] = $login;
     $sql .= ") ";
     if ( $search_others ) {
