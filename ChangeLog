@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1418717: user-app-*.php does not show public access calendar (w soln)
  - Fixed bug 1419183: Wrong login links with user-app-joomla.php
  - Fixed bug 1420458: Percentage completion of tasks: one is set to all
  - Fixed bug 1402930: Adding repeating event yields SQL error

@@ -116,7 +116,7 @@ function app_active_session($sid) {
   }
 
   // Did we pass inactive session time limit
-  if ( ( $app_sid_lifetime > 0 ) && ( $last < ( time() - $app_sid_lifetime ) ) ) return false;
+  if ( ( $app_sid_lifetime > 0 ) && ( $last < ( time() - $app_sid_lifetime ) ) ) $login = false;
 
   // if application is in a separate db, we have to connect back to the webcal db
   if ($app_same_db != '1') $c = dbi_connect($db_host, $db_login, $db_password, $db_database);
