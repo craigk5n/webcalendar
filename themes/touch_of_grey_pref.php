@@ -20,6 +20,7 @@ $webcal_theme = array (
   'BGCOLOR'      => '#E0E2EB',  // Document background
   'H2COLOR'      => '#000000',  // Document title
   'TEXTCOLOR'    => '#000000',  // Document text
+  'MYEVENTS'     => '#000000',  // My events text
   'TABLEBG'      => '#000000',  // Table grid color
   'THBG'         => '#B4B7CA',  // Table header background
   'THFG'         => '#000000',  // Table header text
