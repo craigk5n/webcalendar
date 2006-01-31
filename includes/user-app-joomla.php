@@ -321,10 +321,9 @@ $admin_can_add_user = false;
 $admin_can_delete_user = true;
 
 // Redirect the user to the login-app.php page 
-function app_login_screen() {
+function app_login_screen( $return ) {
   global $SERVER_URL;
-  
-  header("Location: {$SERVER_URL}login-app.php");
+  header("Location: {$SERVER_URL}login-app.php?return_path={$return}");
   exit;
 }
 
