@@ -109,6 +109,7 @@ $GLOBALS['CELLBG'] = $s['CELLBG'];
 $GLOBALS['WEEKENDBG'] = $s['WEEKENDBG'];
 $GLOBALS['OTHERMONTHBG'] = $s['OTHERMONTHBG'];
 $GLOBALS['FONTS'] = $s['FONTS'];
+$GLOBALS['MYEVENTS'] = $prefarray['MYEVENTS'];
 
 $BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); attach_handler(); comment_handler(); email_handler();"';
 $INC = array('js/admin.php','js/visible.php');
@@ -889,6 +890,12 @@ display_month ( date ("m") , date('Y') , 's');
  <input type="text" name="admin_TEXTCOLOR" id="admin_TEXTCOLOR" size="8" maxlength="7" value="<?php echo $s['TEXTCOLOR']; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s['TEXTCOLOR']?>;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
  <input type="button" onclick="selectColor('admin_TEXTCOLOR')" value="<?php etranslate("Select")?>..." name="" />
+</td></tr>
+<tr><td>
+ <label for="admin_MYEVENTS"><?php etranslate("My event text")?>:</label></td><td>
+ <input type="text" name="admin_MYEVENTS" id="admin_MYEVENTS" size="8" maxlength="7" value="<?php echo $s['MYEVENTS']; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s['MYEVENTS']?>;">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+ <input type="button" onclick="selectColor('admin_MYEVENTS')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
  <label for="admin_TABLEBG"><?php etranslate("Table grid color")?>:</label></td><td>

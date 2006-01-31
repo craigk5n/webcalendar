@@ -336,6 +336,7 @@ Document background: Document background
 Select: Select
 Document title: Document title
 Document text: Document text
+My event text: My event text
 Table grid color: Table grid color
 Table header background: Table header background
 Table header text: Table header text
