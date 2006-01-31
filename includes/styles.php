@@ -262,7 +262,7 @@ label {
 <?php //links to entries/events
 ?>.entry {
   font-size: 13px;
-  color: #006000;
+  color: <?php echo $GLOBALS['MYEVENTS']; ?>;
   text-decoration: none;
   padding-right: 3px;
 }
@@ -277,13 +277,13 @@ label {
 <?php //numerical date links in main calendars
 ?>.dayofmonth {
   font-size: 13px;
-  color: #000000;
+  color: <?php echo $GLOBALS['TABLEBG']; ?>;
   font-weight: bold;
   text-decoration: none;
   border-top-width: 0px;
   border-left-width: 0px;
-  border-right: 1px solid #888888;
-  border-bottom: 1px solid #888888;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   padding: 0px 2px 0px 3px;
 }
 .boxtop {

@@ -121,6 +121,7 @@ $GLOBALS['CELLBG'] = $prefarray['CELLBG'];
 $GLOBALS['WEEKENDBG'] = $prefarray['WEEKENDBG'];
 $GLOBALS['OTHERMONTHBG'] = $prefarray['OTHERMONTHBG'];
 $GLOBALS['FONTS'] = $prefarray['FONTS'];
+$GLOBALS['MYEVENTS'] = $prefarray['MYEVENTS'];
 
 $INC = array('js/pref.php','js/visible.php');
 print_header($INC);
@@ -641,6 +642,12 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <input type="text" name="pref_H2COLOR" id="pref_h2" size="8" maxlength="7" value="<?php echo $prefarray['H2COLOR']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['H2COLOR']?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_H2COLOR')" value="<?php etranslate("Select")?>..." />
+ </td></tr>
+ <tr><td style="font-weight:bold;">
+  <label for="pref_MYEVENTS"><?php etranslate("My event text")?>:</label></td><td>
+  <input type="text" name="pref_MYEVENTS" id="pref_MYEVENTS" size="8" maxlength="7" value="<?php echo $prefarray['MYEVENTS']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['MYEVENTS']?>; border-style: groove;">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+  <input type="button" onclick="selectColor('pref_MYEVENTS')" value="<?php etranslate("Select")?>..." />
  </td></tr>
  <tr><td style="font-weight:bold;">
   <label for="pref_cell"><?php etranslate("Table cell background")?>:</label></td><td>
