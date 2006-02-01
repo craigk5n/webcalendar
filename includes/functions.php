@@ -1449,7 +1449,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
 
   if ( $SCRIPT == 'day.php' ) {
     $month_ago = date ( "Ymd",
-      mktime ( 0, 0, 0, $thismonth - 1, 1 $thisyear ) );
+      mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear ) );
     $month_ahead = date ( "Ymd",
       mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear ) );
     if ( $SCRIPT == 'day.php' )
