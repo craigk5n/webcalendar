@@ -31,7 +31,7 @@ function ws_init ( )
   $WebCalendar =& new WebCalendar ( __FILE__ );
 
   include_once "$includedir/config.php";
-  include_once "$includedir/php-dbi.php";
+  include_once "$includedir/dbi4php.php";
   include_once "$includedir/access.php";
   include_once "$includedir/functions.php";
 

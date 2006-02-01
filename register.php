@@ -5,7 +5,7 @@ $WebCalendar =& new WebCalendar ( __FILE__ );
 
 include 'includes/assert.php';
 include 'includes/config.php';
-include 'includes/php-dbi.php';
+include 'includes/dbi4php.php';
 include 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();

@@ -20,7 +20,7 @@
  */
 $show_all_errors = true;
 
-include_once '../includes/php-dbi.php';
+include_once '../includes/dbi4php.php';
 include_once '../includes/config.php';
 
 include_once '../includes/translate.php';
