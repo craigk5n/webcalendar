@@ -199,6 +199,9 @@ if ( empty ( $user ) || $user == $login ) {
 <?php if ( $PUBLISH_ENABLED == 'Y'  || $RSS_ENABLED == 'Y' ) { ?> 
  <span class="tabbak" id="tab_subscribe"><a href="#tabsubscribe" onclick="return showTab('subscribe')"><?php etranslate("Subscribe/Publish")?></a></span>
 <?php } ?> 
+<?php if ( $ALLOW_USER_HEADER == 'Y') { ?> 
+ <span class="tabbak" id="tab_header"><a href="#tabheader" onclick="return showTab('header')"><?php etranslate("Custom Scripts")?></a></span>
+<?php } ?> 
 <?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
  <span class="tabbak" id="tab_colors" title="<?php etooltip("colors-help")?>"><a href="#tabcolors" onclick="return showTab('colors')"><?php etranslate("Colors")?></a></span>
 <?php } ?>
@@ -603,34 +606,42 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 </div>
 <!-- END SUBSCRIBE -->
 
-<?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
-<a name="tabcolors"></a>
-<div id="tabscontent_colors">
-<table style="border-width:0px; width:100%;">
-<tr><td style="vertical-align:top;">
-
+<?php if ( $ALLOW_USER_HEADER == 'Y' ) { ?>
+<a name="tabheader"></a>
+<div id="tabscontent_header">
 <table  cellspacing="1" cellpadding="2">
-<?php if ( $CUSTOM_SCRIPT == 'Y' && $ALLOW_USER_HEADER == 'Y' ) { ?>
+<?php if ( $CUSTOM_SCRIPT == 'Y' ) { ?>
  <tr><td class="tooltip" title="<?php etooltip("custom-script-help");?>">
   <?php etranslate("Custom script/stylesheet")?>:</td><td>
   <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=S&user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
  </td></tr>
 <?php } ?>
 
-<?php if ( $CUSTOM_HEADER == 'Y' && $ALLOW_USER_HEADER == 'Y' ) { ?>
+<?php if ( $CUSTOM_HEADER == 'Y' ) { ?>
  <tr><td class="tooltip" title="<?php etooltip("custom-header-help");?>">
   <?php etranslate("Custom header")?>:</td><td>
   <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=H&user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
  </td></tr>
 <?php } ?>
 
-<?php if ( $CUSTOM_TRAILER == 'Y' && $ALLOW_USER_HEADER == 'Y' ) { ?>
+<?php if ( $CUSTOM_TRAILER == 'Y'  ) { ?>
  <tr><td class="tooltip" title="<?php etooltip("custom-trailer-help");?>">
   <?php etranslate("Custom trailer")?>:</td><td>
   <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=T&user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
  </td></tr>
 <?php } ?>
+</td></tr></table>
+</div>
+<!-- END HEADER -->
+<?php } // if $ALLOW_USER_HEADER ?>
 
+
+<?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
+<a name="tabcolors"></a>
+<div id="tabscontent_colors">
+<table style="border-width:0px; width:100%;">
+<tr><td style="vertical-align:top;">
+<table  cellspacing="1" cellpadding="2">
  <tr><td style="font-weight:bold;">
   <label for="pref_bg"><?php etranslate("Document background")?>:</label></td><td>
   <input type="text" name="pref_BGCOLOR" id="pref_bg" size="8" maxlength="7" value="<?php echo $prefarray['BGCOLOR']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['BGCOLOR']?>; border-style: groove;">

@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 01-22-2006
+# Translation last updated on 02-01-2006
 
 
 ###############################################
@@ -93,15 +93,9 @@ Error adding event: Error adding event
 ###############################################
 # Page: admin.php
 #
+Error: Error
 System Settings: System Settings
 Help: Help
-Note: Note
-Your user preferences: Your user preferences
-may be affecting the appearance of this page.: may be affecting the appearance of this page.
-Click here: Click here
-to not use your user preferences when viewing this page: to not use your user preferences when viewing this page
-are being ignored while viewing this page.: are being ignored while viewing this page.
-to load your user preferences when viewing this page: to load your user preferences when viewing this page
 Settings: Settings
 Public Access: Public Access
 Groups: Groups
@@ -111,7 +105,6 @@ Email: Email
 colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 Colors: Colors
 app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
-Application Name: Application Name
 server-url-help: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
 Server URL: Server URL
 home-url-help: Specifies the home URL for the applicaiton. This can be an absolute or relative
@@ -347,6 +340,7 @@ Table cell background for weekends: Table cell background for weekends
 Table cell background for other month: Table cell background for other month
 Event popup background: Event popup background
 Event popup text: Event popup text
+The following error occurred: The following error occurred
 
 
 ###############################################
@@ -365,13 +359,6 @@ Delete Events: Delete Events
 Public Preferences: Public Preferences
 Unapproved Public Events: Unapproved Public Events
 Administrative Tools: Administrative Tools
-
-
-###############################################
-# Page: admin_handler.php
-#
-Error: Error
-The following error occurred: The following error occurred
 
 
 ###############################################
@@ -740,6 +727,7 @@ You must specify a group name: You must specify a group name
 ###############################################
 # Page: help_admin.php
 #
+Application Name: Application Name
 Display weekends in week view: Display weekends in week view
 Display days with events in bold in year view: Display days with events in bold in year view
 Nonuser: Nonuser Calendars
@@ -874,6 +862,7 @@ Layers are currently: Layers are currently
 Enabled: Enabled
 Disable Layers: Disable Layers
 Enable Layers: Enable Layers
+Click here: Click here
 to modify the layers settings for the: to modify the layers settings for the
 calendar: calendar
 Add layer: Add layer
@@ -904,16 +893,21 @@ Close: Close
 
 
 ###############################################
+# Page: login-app.php
+#
+You must enter a login and password: You must enter a login and password
+Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
+Login: Login
+Access public calendar: Access public calendar
+cookies-note: <b>Note:</b> This application requires cookies to be enabled.
+
+
+###############################################
 # Page: login.php
 #
 Invalid login: Invalid login
-You must enter a login and password: You must enter a login and password
 You have been logged out: You have been logged out
-Login: Login
-Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
-Access public calendar: Access public calendar
 Not yet registered? Register here!: Not yet registered? Register here!
-cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 
 
 ###############################################
@@ -935,6 +929,7 @@ Add New NonUser Calendar: Add New NonUser Calendar
 to modify the preferences for the Public Access calendar: to modify the preferences for the Public Access calendar
 to modify the preferences for the: to modify the preferences for the
 Save Preferences: Save Preferences
+Custom Scripts: Custom Scripts
 Timezone Selection: Timezone Selection
 Email format preference: Email format preference
 HTML: HTML

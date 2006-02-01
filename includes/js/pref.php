@@ -84,7 +84,8 @@ tabs[2] = "themes";
 tabs[3] = "email";
 tabs[4] = "boss";
 tabs[5] = "subscribe";
-tabs[6] = "colors";
+tabs[6] = "header";
+tabs[7] = "colors";
 
 //]]> -->
 </script>
