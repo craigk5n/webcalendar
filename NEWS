@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1403568: patch for incorrect links in minical.php output
+      1421829: Next month skips a month
       1418725: Change of User Template changes System Template instead
       1418717: user-app-*.php does not show public access calendar (w soln)
       1419183: Wrong login links with user-app-joomla.php
