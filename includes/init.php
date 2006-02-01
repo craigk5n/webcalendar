@@ -87,7 +87,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $FONTS,$WEEKENDBG,$THFG,$THBG,$PHP_SELF;
   global $TABLECELLFG,$TODAYCELLBG,$TEXTCOLOR;
   global $POPUP_FG,$BGCOLOR,$OTHERMONTHBG;
-  global $LANGUAGE, $DISABLE_POPUPS, $MENU_ENABLED;
+  global $LANGUAGE, $DISABLE_POPUPS, $MENU_ENABLED, $MENU_THEME;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
   global $friendly, $DISPLAY_WEEKENDS, $DISPLAY_TASKS;
   global $bodyid, $self, $login, $browser;
@@ -128,10 +128,10 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   if ( !empty ( $friendly ) || $disableCustom ) $MENU_ENABLED = 'N';
 
   // Includes needed for the top menu
-  if ( $MENU_ENABLED == 'Y' ) {
+  if ( $MENU_ENABLED == 'Y' && ! empty ( $MENU_THEME ) ) {
     echo "<script type=\"text/javascript\" src=\"includes/menu/JSCookMenu.js\"></script>\n";
-    echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"includes/menu/Office/theme.css\" />\n";
-    echo "<script type=\"text/javascript\" src=\"includes/menu/Office/theme.js\"></script>\n";
+    echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"includes/menu/themes/$MENU_THEME/theme.css\" />\n";
+    echo "<script type=\"text/javascript\" src=\"includes/menu/themes/$MENU_THEME/theme.js\"></script>\n";
   }
 
   // Any other includes?
@@ -202,7 +202,8 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   }
 
   // Add the top menu if enabled
-  if ( $MENU_ENABLED == 'Y' )  include_once 'includes/menu.php';
+  if ( $MENU_ENABLED == 'Y'  && ! empty ( $MENU_THEME ) )
+    include_once 'includes/menu/index.php';
 }
 
 
