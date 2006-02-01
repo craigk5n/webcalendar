@@ -87,7 +87,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
       "WHERE cal_type = ? AND cal_login = ?";
     $query_params[] = $template;
     $query_params[] = $type;
-    $query_params[] = '__system__';
+    $query_params[] = $user;
   } else if ( $foundOld && $user == '__system__' ) {
     // User is upgrading from WebCalendar 1.0 to 1.1.
     // Delete from the webcal_report_template table and move the info
@@ -98,14 +98,14 @@ if ( $REQUEST_METHOD == 'POST' ) {
     $sql = "INSERT INTO webcal_user_template " .
       "( cal_type, cal_login, cal_template_text ) " .
       "VALUES ( ?, ?, ? )";
-	$query_params[] = $type;
+    $query_params[] = $type;
     $query_params[] = '__system__';
     $query_params[] = $template;
   } else {
     $sql = "INSERT INTO webcal_user_template " .
       "( cal_type, cal_login, cal_template_text ) " .
       "VALUES ( ?, ?, ? )";
-	$query_params[] = $type;
+  $query_params[] = $type;
     $query_params[] = $user;
     $query_params[] = $template;
   }
