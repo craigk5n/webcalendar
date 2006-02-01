@@ -22,6 +22,10 @@
  *   - the next 30 days
  *   - the next 10 events
  *
+ * The output of this page conforms to the hCalendar standard for events.
+ * You can read more about hCalendar at:
+ *	http://microformats.org/wiki/hcalendar
+ *
  * Input parameters:
  * You can override settings by changing the URL parameters:
  *   - days: number of days ahead to look for events
@@ -318,10 +322,11 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/upcoming.php/", $PHP_SELF ) ) {
 function print_upcoming_event ( $e, $date ) {
   global $display_link, $link_target, $SERVER_URL, $charset, $display_tzid;
 
+  print "<span class=\"event\">";
   if ( $display_link && ! empty ( $SERVER_URL ) ) {
     $cal_type = ( $e->getCalType() == 'T' || $e->getCalType() == 'N' ) ?
       'task' : 'entry';
-    print "<a title=\"" . 
+    print "<a class=\"url\" title=\"" . 
       htmlspecialchars ( $e->getName() ) . "\" href=\"" . 
       $SERVER_URL . 'view_' . $cal_type . '.php?id=' . 
       $e->getID() . "&amp;date=$date\"";
@@ -330,15 +335,19 @@ function print_upcoming_event ( $e, $date ) {
     }
     print ">";
   }
+  print '<span class="summary">';
   print htmlspecialchars ( $e->getName() );
+  print '</span>';
   if ( $display_link && ! empty ( $SERVER_URL ) ) {
     print "</a>";
   }
+  print "<abbr class=\"dtstart\" title=\"" .
+    $e->getDate() . "\">";
   if ( $e->isAllDay() ) {
     print " (" . translate("All day event") . ")\n";
   } else if ( $e->getTime() != -1 ) {
     print " (" . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
   }
-  print "<br />\n";
+  print "</abbr><br /></span>\n";
 }
 ?>
