@@ -475,7 +475,7 @@ class WebCalendar {
   }
 
   /**
-   * Initializations from includes/php-dbi.php.
+   * Initializations from includes/dbi4php.php.
    *
    * @access private
    */

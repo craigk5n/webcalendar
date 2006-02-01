@@ -21,7 +21,7 @@ require_once "$includedir/classes/WebCalendar.class";
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
 include "$includedir/config.php";
-include "$includedir/php-dbi.php";
+include "$includedir/dbi4php.php";
 
 $WebCalendar->initializeFirstPhase();
 $WebCalendar->initializeSecondPhase();

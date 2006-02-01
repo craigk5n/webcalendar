@@ -25,7 +25,7 @@
  * - require_once 'includes/classes/RptEvent.class';
  * - include_once 'includes/assert.php';
  * - include_once 'includes/config.php';
- * - include_once 'includes/php-dbi.php';
+ * - include_once 'includes/dbi4php.php';
  * - include_once 'includes/functions.php';
  * - include_once "includes/$user_inc";
  * - include_once 'includes/validate.php';
@@ -51,7 +51,7 @@ $WebCalendar =& new WebCalendar ( __FILE__ );
 
 include_once 'includes/assert.php';
 include_once 'includes/config.php';
-include_once 'includes/php-dbi.php';
+include_once 'includes/dbi4php.php';
 include_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();

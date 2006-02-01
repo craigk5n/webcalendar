@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Renamed php-dbi.php to dbi4php.php since the name "PHPDBI" is already
+   in use on sourceforge.
  - Added 'Custom Script' tab to pref.php
  - Fixed bug 1418725: Change of User Template changes System Template instead
  - Made "My event text" color an option instead of always using green
