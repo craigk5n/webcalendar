@@ -1,6 +1,6 @@
 <?php
 /**
- * Generic database access.
+ * dbi4php - Generic database access for PHP
  *
  * The functions defined in this file are meant to provide a single API to the
  * different PHP database APIs.  Unfortunately, this is necessary since PHP
@@ -17,7 +17,6 @@
  * - sqlite
  * - ibm_db2
  * <b>Limitations:</b>
- *
  * - This assumes a single connection to a single database for the sake of
  *   simplicity.  Do not make a new connection until you are completely
  *   finished with the previous one.  However, you can execute more than query
@@ -28,51 +27,28 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license http://www.gnu.org/licenses/lgpl.html GNU LGPL
  * @version $Id$
- * @package WebCalendar
- * @subpackage Database
+ * @package dbi4php
  *
  * History:
- * 20-Jan-2006 Vladimir D. Georgiev (posted by Ray Jones)
- *    Added functions dbi_escape_string() and dbi_execute()
- *    to allow independance from magic_quote settings in php.ini
- * 11-Jan-2006 Vladimir D. Georgiev (posted by Ray Jones)
- *    Added  php_update_blob support for mssql. 
- * 11-Jan-2006  Ray Jones
- *    Added  php_update_blob support for postgreSQL.
- * 06-Dec-2005 Craig Knudsen
- *    Added new php_update_blob function for mysql.  Will need to implement
- *    for other dbs next.
- * 5-Jul-2005 Ray Jones
- *    Removed references to Postgresql rows in dbi_query
- *    and dbi_fetch_row. This parameter became optional 
- *    in PHP 4.1.0 and was simply causing to many problems
- *    see http://us3.php.net/manual/en/function.pg-fetch-array.php
- * 5-Jul-2005 Ray Jones
- *    Added SQLite support
- * 17-Mar-2005 Ray Jones
- *   Changed mssql_error to mssql_get_last_message
- * 23-Jan-2005 Craig Knudsen <cknudsen@cknudsen.com>
- *   Added documentation to be used with php2html.pl
- * 19-Jan-2005 Craig Knudsen <cknudsen@cknudsen.com>
- *   Add option for verbose error messages.
- * 19-Jan-2004 Craig Knudsen <cknudsen@cknudsen.com>
- *   Added mssql support
- *   Code from raspail@users.sourceforge.net
- * 02-Jul-2004 Craig Knudsen <cknudsen@cknudsen.com>
- *   Added mysqli support
- *   Code from Francesco Riosa
- * 31-May-2002 Craig Knudsen <cknudsen@radix.net>
- *   Added support for Interbase contributed by
- *   Marco Forlin
- * 11-Jul-2001 Craig Knudsen <cknudsen@radix.net>
- *   Removed pass by reference for odbc_fetch_into()
- *   Removed ++ in call to pg_fetch_array()
- * 22-Apr-2000 Ken Harris <kharris@lhinfo.com>
- *   PostgreSQL fixes
- * 23-Feb-2000 Craig Knudsen <cknudsen@radix.net>
- *   Initial release
+ *	See ChangeLog
+ *
+ * License:
+ *   Copyright (C) 2006  Craig Knudsen
+ *   This library is free software; you can redistribute it and/or
+ *   modify it under the terms of the GNU Lesser General Public
+ *   License as published by the Free Software Foundation; either
+ *   version 2.1 of the License, or (at your option) any later version.
+ *   
+ *   This library is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *   Lesser General Public License for more details.
+ *   
+ *   You should have received a copy of the GNU Lesser General Public
+ *   License along with this library; if not, write to the Free Software
+ *   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
 /**
