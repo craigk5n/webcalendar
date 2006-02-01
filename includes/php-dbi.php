@@ -8,13 +8,14 @@
  * <var>$GLOBALS["db_type"]</var> should be defined somewhere to one of the
  * following:
  * - mysql
+ * - mysqli
  * - mssql
  * - oracle (This uses the Oracle8 OCI API, so Oracle 8 libs are required)
- * - postgresl
+ * - postgresql
  * - odbc
  * - ibase (Interbase)
- * - SQLite
- * - IBM DB2
+ * - sqlite
+ * - ibm_db2
  * <b>Limitations:</b>
  *
  * - This assumes a single connection to a single database for the sake of
