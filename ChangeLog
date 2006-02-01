@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1403568: patch for incorrect links in minical.php output
+ - Fixed bug 1421829: Next month skips a month
  - Renamed php-dbi.php to dbi4php.php since the name "PHPDBI" is already
    in use on sourceforge.
  - Added 'Custom Script' tab to pref.php

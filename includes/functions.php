@@ -843,11 +843,11 @@ function get_my_users () {
     if ( count ( $groups ) == 1 )
       $sql .= "= ?";
     else {
-	  // build count( $groups ) placeholders separated with commas
-	  $placeholders = '';
-	  for ( $p_i = 0; $p_i < count( $groups ); $p_i++ ) {
+    // build count( $groups ) placeholders separated with commas
+    $placeholders = '';
+    for ( $p_i = 0; $p_i < count( $groups ); $p_i++ ) {
         $placeholders .= ( $p_i == 0 ) ? "?" : ", ?";
-	  }
+    }
       $sql .= "IN ( $placeholders )";
     }
     $sql .= " ORDER BY cal_lastname, cal_firstname, webcal_group_user.cal_login";
@@ -1344,8 +1344,12 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
       echo "\" >";
       $wkStr = translate("WK")  . date( "W", $i + ONE_DAY );
       $wkStr2 = '';
-      for ( $w=0;$w < strlen( $wkStr );$w++) {
-         $wkStr2 .= substr( $wkStr, $w, 1 ) . "<br />";
+      if ( translate("charset") == "UTF-8" ) {
+        $wkStr2 = $wkStr;
+      } else {
+        for ( $w=0;$w < strlen( $wkStr );$w++) {
+          $wkStr2 .= substr( $wkStr, $w, 1 ) . "<br />";
+        }
       } 
       echo $wkStr2 . "</a></td>\n";
     }  
@@ -1417,9 +1421,9 @@ print "</table>";
 function display_small_month ( $thismonth, $thisyear, $showyear,
   $show_weeknums=false, $minical_id='', $month_link='month.php?' ) {
   global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
-    global $DISPLAY_WEEKNUMBER, $DATE_FORMAT_MY, $DISPLAY_TASKS;
+  global $DISPLAY_WEEKNUMBER, $DATE_FORMAT_MY, $DISPLAY_TASKS;
   global $SCRIPT, $thisday; // Needed for day.php
-  global $caturl, $today, $DISPLAY_ALL_DAYS_IN_MONTH;
+  global $caturl, $today, $DISPLAY_ALL_DAYS_IN_MONTH, $use_http_auth;
   global $MINI_TARGET; // Used by minical.php
 
   if ( $user != $login && ! empty ( $user ) ) {
@@ -1445,9 +1449,9 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
 
   if ( $SCRIPT == 'day.php' ) {
     $month_ago = date ( "Ymd",
-      mktime ( 0, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
+      mktime ( 0, 0, 0, $thismonth - 1, 1 $thisyear ) );
     $month_ahead = date ( "Ymd",
-      mktime ( 0, 0, 0, $thismonth + 1, $thisday, $thisyear ) );
+      mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear ) );
     if ( $SCRIPT == 'day.php' )
       echo "<caption>$thisday</caption>\n";
     echo "<thead>\n";
@@ -1579,8 +1583,13 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
           echo " id=\"today\"";
         }
         if ( $SCRIPT == 'minical.php' ) {
-          echo "><a href=\"nulogin.php?login=" .  $user . 
-            "&amp;return_path=day.php?date=" .  $dateYmd. "\"" . 
+          echo "><a href=\"";
+          if ( $use_http_auth ) {
+            echo "day.php?user=" .  $user . "&amp;";
+          } else {
+            echo "nulogin.php?login=" . $user . "&amp;return_path=day.php?";
+          }
+          echo "date=" .  $dateYmd. "\"" . 
             ( ! empty ( $MINI_TARGET )? " target=\"$MINI_TARGET\"" : "") . 
             ( ! empty ( $title )? " title=\"$title\"" : "") .
             ">";    
@@ -2224,7 +2233,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
       $layeruser = $layer['cal_layeruser'];
 
       $sql .= "OR webcal_entry_user.cal_login = ? ";
-	  $query_params[] = $layeruser;
+    $query_params[] = $layeruser;
 
       // while we are parsing the whole layers array, build ourselves
       // a new array that will help when we have to check for dups
@@ -3123,7 +3132,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
       $sql .= " OR ";
 
     $sql .= " webcal_entry_user.cal_login = ?";
-	$query_params[] = $participants[$i];
+  $query_params[] = $participants[$i];
   }
   $sql .= " )";
   // make sure we don't get something past the end date of the
@@ -3908,13 +3917,13 @@ function display_unapproved_events ( $user ) {
     }    
     for ( $i = 0; $i < count ( $app_users ); $i++ ) {
       $sql .= " OR webcal_entry_user.cal_login = ? ";
-	  $query_params[] = $app_users[$i];
+    $query_params[] = $app_users[$i];
     }
   } else if ( $NONUSER_ENABLED == 'Y' ) {
     $admincals = get_nonuser_cals ( $login );
     for ( $i = 0; $i < count ( $admincals ); $i++ ) {
       $sql .= " OR webcal_entry_user.cal_login = ? ";
-	  $query_params[] = $admincals[$i]['cal_login'];
+    $query_params[] = $admincals[$i]['cal_login'];
     }
   }  
   $sql .= " )";
@@ -4324,7 +4333,7 @@ function load_user_categories ($ex_global = '') {
   if ( $CATEGORIES_ENABLED == "Y" ) {
     $sql = "SELECT cat_id, cat_name, cat_owner FROM webcal_categories WHERE ";
     $query_params = array();
-	if ( $ex_global == '' ) {
+  if ( $ex_global == '' ) {
       $sql .= " (cat_owner = ?) OR (cat_owner IS NULL) ORDER BY cat_owner, cat_name";
       $query_params[] = $cat_owner;
     }
@@ -4829,7 +4838,7 @@ function get_nonuser_cals ($user = '') {
 
   if ($user != '') {
     $sql .= "WHERE cal_admin = ? ";
-	$query_params[] = $user;
+  $query_params[] = $user;
   }
   $sql .= "ORDER BY cal_lastname, cal_firstname, cal_login";
   
