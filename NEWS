@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1421389: user-app-: login-app opens wrong login file in _top.
       1422509: Search doesn't search subject, only within description
       1422507: Timezone upgrade fails with MySQL
       1409412: Popup color chooser doesn't appear in preferences
