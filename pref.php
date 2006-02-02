@@ -111,6 +111,19 @@ if (is_dir($dir)) {
    }
 }
 
+//get list of menu themes
+$menuthemes = array();
+$dir = "includes/menu/themes/";
+if ( is_dir( $dir ) ) {
+   if ( $dh = opendir( $dir ) ) {
+       while ( ( $file = readdir( $dh ) ) !== false ) {
+         if ( $file == "." || $file == ".." ) continue;
+         if ( is_dir ( $dir.$file ) ) $menuthemes[] = $file;
+       }
+       closedir($dh);
+   }
+}
+
 //make globals values passed to styles.php are for this user
 //makes the demo calendar accurate
 $GLOBALS['TODAYCELLBG'] = $prefarray['TODAYCELLBG'];
@@ -191,7 +204,7 @@ if ( empty ( $user ) || $user == $login ) {
 <!-- TABS -->
 <div id="tabs">
  <span class="tabfor" id="tab_settings"><a href="" onclick="return setTab('settings');"><?php etranslate("Settings")?></a></span>
- <?php if ( $ALLOW_USER_THEMES == 'Y' ) { ?>
+ <?php if ( $ALLOW_USER_THEMES == "Y" || $MENU_ENABLED == "Y" ) { ?>
  <span class="tabbak" id="tab_themes"><a href="" onclick="return setTab('themes')"><?php etranslate("Themes")?></a></span>
 <?php } ?> 
  <?php if ( $SEND_EMAIL == 'Y' ) { ?>
@@ -470,9 +483,10 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 </div>
 <!-- END SETTINGS -->
 
-<?php if ( $ALLOW_USER_THEMES == "Y") { ?>
+<?php if ( $ALLOW_USER_THEMES == "Y" || $MENU_ENABLED == "Y" ) { ?>
 <div id="tabscontent_themes">
 <table  cellspacing="1" cellpadding="2"  border="0" width="35%">
+<?php if ( $ALLOW_USER_THEMES == "Y" ) { ?>
 <tr><td  class="tooltipselect" title="<?php etooltip("themes-help");?>">
  <label for="pref_THEME"><?php etranslate("Themes")?>:</label></td><td>
  <select name="pref_THEME" id="pref_THEME">
@@ -486,7 +500,23 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 ?>
  </select></td><td>
  <input type="button" name="preview" value="<?php etranslate ( "Preview" ) ?>" onclick="return showPreview()" />
-</td></tr></table>
+</td></tr>
+<?php } if ( $MENU_ENABLED == "Y" ) { ?>
+ <tr><td  class="tooltip" title="<?php etooltip("menu-themes-help");?>">
+ <label for="pref_MENU_THEME"><?php etranslate("Menu theme")?>:</label></td><td>
+ <select name="pref_MENU_THEME" id="pref_MENU_THEME">
+<?php
+  echo "<option  value=\"\" selected=\"selected\">" . translate("None") . "</option>\n";
+  foreach ( $menuthemes as $menutheme ) {
+     echo "<option value=\"" . $menutheme . "\"";
+     if ($prefarray['MENU_THEME'] == $menutheme ) echo " selected=\"selected\"";
+     echo ">" . $menutheme . "</option>\n";
+  }
+?>
+ </select>
+ </td></tr> 
+<?php } ?>
+</table>
 </div>
 <!-- END THEMES -->
 <?php } ?>
