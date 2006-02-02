@@ -117,7 +117,7 @@ $dir = "includes/menu/themes/";
 if ( is_dir( $dir ) ) {
    if ( $dh = opendir( $dir ) ) {
        while ( ( $file = readdir( $dh ) ) !== false ) {
-         if ( $file == "." || $file == ".." ) continue;
+         if ( $file == "." || $file == ".." || $file == "CVS" ) continue;
          if ( is_dir ( $dir.$file ) ) $menuthemes[] = $file;
        }
        closedir($dh);
