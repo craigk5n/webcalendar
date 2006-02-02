@@ -10,6 +10,8 @@ function save_pref( $prefs, $src) {
     if ( $src == 'post' ) {
       $setting = substr ( $key, 6 );
       $prefix = substr ( $key, 0, 6 );
+      if ( $key == 'currenttab')
+        continue;
       // validate key name.  should start with "admin_" and not include
       // any unusual characters that might cause SQL injection
       if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) ) {
@@ -45,6 +47,7 @@ function save_pref( $prefs, $src) {
 }
 
 $error = '';
+$currenttab = '';
 
 if ( ! $is_admin ) {
   $error = translate ( "You are not authorized" );
@@ -52,7 +55,7 @@ if ( ! $is_admin ) {
 
 if ( ! empty ( $_POST ) && empty ( $error )) {
   $my_theme = '';
-    
+  $currenttab = getPostValue ( 'currenttab' );    
   if ( $error == "" ) {
     save_pref ( $_POST, 'post' );
   }
@@ -109,9 +112,10 @@ $GLOBALS['CELLBG'] = $s['CELLBG'];
 $GLOBALS['WEEKENDBG'] = $s['WEEKENDBG'];
 $GLOBALS['OTHERMONTHBG'] = $s['OTHERMONTHBG'];
 $GLOBALS['FONTS'] = $s['FONTS'];
-$GLOBALS['MYEVENTS'] = $prefarray['MYEVENTS'];
+$GLOBALS['MYEVENTS'] = $s['MYEVENTS'];
 
-$BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); attach_handler(); comment_handler(); email_handler();"';
+$BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); attach_handler(); comment_handler(); email_handler();';
+$BodyX .= ( ! empty ( $currenttab ) ? "showTab( '". $currenttab . "' );\"" : '"' );
 $INC = array('js/admin.php','js/visible.php');
 print_header ( $INC, '', $BodyX );
 ?>
@@ -124,6 +128,7 @@ if ( ! $error ) {
 ?>
 
 <form action="admin.php" method="post" onsubmit="return valid_form(this);" name="prefform">
+<input type="hidden" name="currenttab" id="currenttab" value="<?php echo $currenttab ?>" />
 <table style="border-width:0px;"><tr><td>
  <input type="submit" value="<?php etranslate("Save")?>" name="" />
 </td></tr></table>
@@ -131,20 +136,19 @@ if ( ! $error ) {
 
 <!-- TABS -->
 <div id="tabs">
- <span class="tabfor" id="tab_settings"><a href="#tabsettings" onclick="return showTab('settings')"><?php etranslate("Settings")?></a></span>
- <span class="tabbak" id="tab_public"><a href="#tabpublic" onclick="return showTab('public')"><?php etranslate("Public Access")?></a></span>
- <span class="tabbak" id="tab_uac"><a href="#tabuac" onclick="return showTab('uac')"><?php etranslate("User Access Control")?></a></span>
- <span class="tabbak" id="tab_groups"><a href="#tabgroups" onclick="return showTab('groups')"><?php etranslate("Groups")?></a></span>
- <span class="tabbak" id="tab_nonuser"><a href="#tabnonuser" onclick="return showTab('nonuser')"><?php etranslate("NonUser Calendars")?></a></span>
- <span class="tabbak" id="tab_other"><a href="#tabother" onclick="return showTab('other')"><?php etranslate("Other")?></a></span>
- <span class="tabbak" id="tab_email"><a href="#tabemail" onclick="return showTab('email')"><?php etranslate("Email")?></a></span>
- <span class="tabbak" id="tab_colors" title="<?php etooltip("colors-help")?>"><a href="#tabcolors" onclick="return showTab('colors')"><?php etranslate("Colors")?></a></span>
+ <span class="tabfor" id="tab_settings"><a href="" onclick="return setTab('settings')"><?php etranslate("Settings")?></a></span>
+ <span class="tabbak" id="tab_public"><a href="" onclick="return setTab('public')"><?php etranslate("Public Access")?></a></span>
+ <span class="tabbak" id="tab_uac"><a href="" onclick="return setTab('uac')"><?php etranslate("User Access Control")?></a></span>
+ <span class="tabbak" id="tab_groups"><a href="" onclick="return setTab('groups')"><?php etranslate("Groups")?></a></span>
+ <span class="tabbak" id="tab_nonuser"><a href="" onclick="return setTab('nonuser')"><?php etranslate("NonUser Calendars")?></a></span>
+ <span class="tabbak" id="tab_other"><a href="" onclick="return setTab('other')"><?php etranslate("Other")?></a></span>
+ <span class="tabbak" id="tab_email"><a href="" onclick="return setTab('email')"><?php etranslate("Email")?></a></span>
+ <span class="tabbak" id="tab_colors" title="<?php etooltip("colors-help")?>"><a href="" onclick="return setTab('colors')"><?php etranslate("Colors")?></a></span>
 </div>
 
 <!-- TABS BODY -->
 <div id="tabscontent">
  <!-- DETAILS -->
- <a name="tabsettings"></a>
  <div id="tabscontent_settings">
  <table cellspacing="0" cellpadding="3">
  <tr><td class="tooltip" title="<?php etooltip("app-name-help")?>">
@@ -536,7 +540,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 -->
 
 <!-- BEGIN PUBLIC ACCESS -->
-<a name="tabpublic"></a>
+
 <div id="tabscontent_public">
  <table cellspacing="0" cellpadding="3">
   <tr><td class="tooltip" title="<?php etooltip("allow-public-access-help")?>">
@@ -845,7 +849,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <!-- BEGIN COLORS -->
 <div id="tabscontent_colors">
 <table cellspacing="0" cellpadding="3"  width="100%">
-<tr><td><label>
+<tr><td width="40%"><label>
  <?php etranslate("Allow user to customize colors")?>:</label></td><td colspan="5">
  <label><input type="radio" name="admin_ALLOW_COLOR_CUSTOMIZATION" value='Y'<?php if ( $s['ALLOW_COLOR_CUSTOMIZATION'] != 'N' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('Yes')?></label>&nbsp;
  <label><input type="radio" name="admin_ALLOW_COLOR_CUSTOMIZATION" value='N'<?php if ( $s['ALLOW_COLOR_CUSTOMIZATION'] == 'N' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('No')?></label>
@@ -865,8 +869,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
  <input type="button" onclick="selectColor('admin_BGCOLOR')" value="<?php etranslate("Select")?>..." name="" />
 </td>
-<td rowspan="12" width="10%">&nbsp;</td>
-<td rowspan="12" width="50%">
+<td rowspan="14" width="3%">&nbsp;</td>
+<td rowspan="14" width="35%">
 <!-- BEGIN EXAMPLE MONTH -->
 <table style="border:0px; width:100%;"><tr>
 <td style="text-align:center; color:<?php echo $H2COLOR?>; font-weight:bold;"><?php

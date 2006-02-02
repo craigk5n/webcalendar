@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1409412: Popup color chooser doesn't appear in preferences
       1403568: patch for incorrect links in minical.php output
       1421829: Next month skips a month
       1418725: Change of User Template changes System Template instead
