@@ -101,6 +101,20 @@ if (is_dir($dir)) {
        closedir($dh);
    }
 }
+
+//get list of menu themes
+$menuthemes = array();
+$dir = "includes/menu/themes/";
+if ( is_dir( $dir ) ) {
+   if ( $dh = opendir( $dir ) ) {
+       while ( ( $file = readdir( $dh ) ) !== false ) {
+         if ( $file == "." || $file == ".." ) continue;
+         if ( is_dir ( $dir.$file ) ) $menuthemes[] = $file;
+       }
+       closedir($dh);
+   }
+}
+
 //make globals values passed to styles.php are for this user
 //makes the demo calendar and Page title accurate
 $GLOBALS['APPLICATION_NAME'] = $s['APPLICATION_NAME'];
@@ -201,6 +215,24 @@ if ( ! $error ) {
 ?>
  </select>&nbsp;&nbsp;&nbsp;
  <input type="button" name="preview" value="<?php etranslate ( "Preview" ) ?>" onclick="return showPreview()" />
+ </td></tr> 
+ <tr><td><label>
+ <?php etranslate("Allow top menu")?>:</label></td><td colspan="3">
+ <label><input type="radio" name="admin_MENU_ENABLED" value='Y'<?php if ( $s['MENU_ENABLED'] != 'N' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('Yes')?></label>&nbsp;
+ <label><input type="radio" name="admin_MENU_ENABLED" value='N'<?php if ( $s['MENU_ENABLED'] == 'N' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('No')?></label>
+ </td></tr> 
+ <tr><td  class="tooltip" title="<?php etooltip("menu-themes-help");?>">
+ <label for="admin_MENU_THEME"><?php etranslate("Menu theme")?>:</label></td><td>
+ <select name="admin_MENU_THEME" id="admin_MENU_THEME">
+<?php
+  echo "<option  value=\"\" selected=\"selected\">" . translate("None") . "</option>\n";
+  foreach ( $menuthemes as $menutheme ) {
+     echo "<option value=\"" . $menutheme . "\"";
+     if ($s['MENU_THEME'] == $menutheme ) echo " selected=\"selected\"";
+     echo ">" . $menutheme . "</option>\n";
+  }
+?>
+ </select>&nbsp;&nbsp;&nbsp;
  </td></tr> 
  <tr><td class="tooltip" title="<?php etooltip("fonts-help") ?>">
   <label for="admin_FONTS"><?php etranslate("Fonts")?>:</label></td><td>
