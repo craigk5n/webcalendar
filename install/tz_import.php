@@ -271,9 +271,9 @@ function do_tz_import ( $file_path= "timezone/") {
       $data[3] = '';
      }
      $sql = "INSERT INTO webcal_tz_zones ( zone_name, zone_gmtoff, zone_rules, " .
-      "zone_format, zone_from, zone_until ) " .
-       "VALUES ( ?, ?, ?, ?, ?, ? )";
-     if ( ! dbi_execute ( $sql , array ( $data[1] , $zone_gmtoff, $data[3] , $data[4] , $zone_from , $zone_until ) ) ) {
+      "zone_format, zone_from, zone_until, zone_cc, zone_coord, zone_country ) " .
+       "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+     if ( ! dbi_execute ( $sql , array ( $data[1] , $zone_gmtoff, $data[3] , $data[4] , $zone_from , $zone_until, '', '', '' ) ) ) {
       $error = "Database error: " . dbi_error ();
      }
     }
