@@ -118,6 +118,10 @@ No: No
 themes-help: Allows mass update of configuration settings. Lower case labels are user pref only.
 Themes: Themes
 AVAILABLE THEMES: AVAILABLE THEMES
+Allow top menu: Allow top menu
+Menu theme: Menu theme
+menu-themes-help: Sets the colors and style of the top menu
+Menu change: Changing the menu requires a browser refresh after saving
 None: None
 Preview: Preview
 fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
