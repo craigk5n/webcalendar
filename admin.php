@@ -878,7 +878,7 @@ echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false, false );?></td></tr>
 </table>
 <?php 
 set_today( date ("Ymd") );
-display_month ( date ("m") , date('Y') , 's');
+display_month ( date ("m") , date('Y') , true);
 ?>
 <!-- END EXAMPLE MONTH -->
 </td>
