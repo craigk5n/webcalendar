@@ -62,12 +62,6 @@ function valid_form ( form ) {
   return true;
 }
 function myOnLoad() {
-  <?php if ( ! empty ( $PLUGINS_ENABLED ) && ( $PLUGINS_ENABLED == 'Y' ) ){ ?>
-   if (self != top)  {
-     window.open("login-app.php","_top","");
-     return;
-   }
-  <?php } ?>
   document.login_form.login.focus();
   <?php
     if ( ! empty ( $login ) ) echo "document.login_form.login.select();";
