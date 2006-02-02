@@ -4,20 +4,9 @@
 #
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
-# Last update: 25 Nov 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 1 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 9 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 16 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 19 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 20 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 22 Dez 2005 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 9 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 10 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 12 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 17 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 19 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 24 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 01-24-2006
+# Last update: 2 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 02-02-2006
 
 
 ###############################################
@@ -446,12 +435,6 @@ Variable N not found: Variable N nicht gefunden
 ###############################################
 # Page: admin.php
 #
-Note: Bemerkung
-Your user preferences: <u>Ihre Benutzereinstellungen</u>
-may be affecting the appearance of this page.: &uuml;bertragen sich auf das Erscheingsbild dieser Seite.
-to not use your user preferences when viewing this page: um Ihre Benutzereinstellungen auf dieser Seite NICHT anzuzeigen.
-are being ignored while viewing this page.: werden ignoriert w&auml;hrend der Anzeige dieser Seite.
-to load your user preferences when viewing this page: laden Ihrer Systemeinstellungen wenn diese Seite angezeigt wird.
 Settings: Einstellungen
 Groups: Benutzergruppen
 NonUser Calendars: 'Zentrale' - Kalender
@@ -460,7 +443,6 @@ Email: Email
 colors-help: Alle Farben k&ouml;nnen im Format "#RRGGBB" eingegeben werden. Hierbei steht "RR" f&uuml;r den hexadezimalen Wert von Rot, "GG" f&uuml;r Gr&uuml;n und "BB" f&uuml;r Blau.
 Colors: Farben
 app-name-help: Gibt den Titel f&uuml;r die Titelleiste des Browsers, f&uuml;r alle Seiten des Kalenders und die Startseite des Kalenders an. Der Titel wird in die Sprachdatei eingetragen und kann f&uuml;r andere Spracheinstellungen abge&auml;ndert werden.
-Application Name: Anwendungsbezeichnung
 server-url-help: Gibt die Standard Server-Url an und steht in der Betreffzeile von Erinnerungen sowie von Emails die &uuml;ber den Kalender verschickt werden.
 Server URL: Serveradresse
 home-url-help: Definiert die Haupt-URL (=home URL) f&uuml;r diese Anwendung. Diese kann 'Absolut' oder auch 'Relativ' sein
@@ -671,10 +653,10 @@ Allow user to customize colors: Den Benutzern das &auml;ndern der Farbeinstellun
 gradient-colors: Falls aktiviert, stufenweiser Farbverlauf (Farb&auml;nderung) m&ouml;glich. Das kann gro&szlig;e negative Auswirkung auf die Leistung haben.
 Enable gradient images for background colors: Aktiviern des stufenweisen Farbverlaufes (Farb&auml;nderung) f&uuml;r Hintergrundfarben
 Not available: Nicht verf&uuml;gbar
-Not Available: Nicht Verf&uuml;gbar
 Document background: Hintergrund
 Document title: Titel
 Document text: Textfarbe der Webkalenderseiten
+My event text: Textfarbe meiner eigenen Eintr&auml;ge
 Table grid color: Tabellen-Gitterfarbe
 Table header background: Hintergrund Tabellen-Kopfzeile
 Table header text: Textfarbe Tabellen-Kopfzeile
@@ -697,6 +679,7 @@ File is not a gif image: Datei ist kein 'gif' Bild
 ###############################################
 # Page: help_admin.php
 #
+Application Name: Anwendungsbezeichnung
 Display weekends in week view: Wochenenden in der Wochenansicht anzeigen
 Display days with events in bold in year view: Zeigt Tage MIT Terminen in der Jahres&uuml;bersicht HERVORGEHOBEN (FETT) an
 Nonuser: 'Zentrale'-Kalender
@@ -835,17 +818,18 @@ You can only create one layer for each user: Sie k&ouml;nnen nur jeweils EINEN B
 to modify the preferences for the Public Access calendar: um die Voreinstellungen des &ouml;ffentlichen Kalenders zu &auml;ndern
 to modify the preferences for the: um die Voreinstellungen zu &auml;ndern f&uuml;r 
 Save Preferences: Voreinstellungen speichern
+When I am the boss: Wenn ich der Chef bin
+Subscribe/Publish: abonieren/ver&ouml;ffentlichen
+Custom Scripts: Eigene Scripte
 Timezone Selection: Auswahl der Zeitzone
 Default Category: Standard Kategorie
 Email format preference: Emailformat Einstellungen
 HTML: HTML
 Plain Text: Reiner Text
-When I am the boss: Wenn ich der Chef bin
 Email me event notification: Benachrichtigen bei Terminbest&auml;tigung
 I want to approve events: Ich m&ouml;chte Termine &uuml;berpr&uuml;fen
 display_byproxy-help: Anzeige durch Proxyhilfe
 Display if created by Assistant: Anzeigen wenn durch Assistent eingegeben
-Subscribe/Publish: abonieren/ver&ouml;ffentlichen
 allow-remote-subscriptions-help: Bestimmt ob 'REMOTE'-Teilnehmer IHREN WebKalender abonnieren d&uuml;rfen, und somit dessen Termine und ihre 'iCal'-aktiven Anwendungen (wie Apple's iCal oder Mozilla-Kalender) sehen k&ouml;nnen.
 remote-subscriptions-url-help: Zeigt die URL, die ein 'REMOTE'-Teilnehmer zum Abonnieren Ihres Kalenders verwenden soll
 URL: URL
