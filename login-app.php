@@ -64,7 +64,7 @@ function valid_form ( form ) {
 function myOnLoad() {
   <?php if ( ! empty ( $PLUGINS_ENABLED ) && ( $PLUGINS_ENABLED ) ){ ?>
    if (self != top)  {
-     window.open("login.php","_top","");
+     window.open("login-app.php","_top","");
      return;
    }
   <?php } ?>
