@@ -3,7 +3,8 @@ include_once 'includes/init.php';
 include_once 'includes/date_formats.php';
 
 function save_pref( $prefs, $src) {
-  global $my_theme, $prefuser;
+  global $my_theme, $prefuser, $MENU_THEME;
+  $reload_prefs = false;
   while ( list ( $key, $value ) = each ( $prefs ) ) {
     if ( $src == 'post' ) {
       $setting = substr ( $key, 5 );
@@ -24,6 +25,8 @@ function save_pref( $prefs, $src) {
     if ( strlen ( $setting ) > 0 && $prefix == "pref_" ) {
       if ( $setting == "THEME" &&  $value != 'none' )
         $my_theme = strtolower ( $value );
+      if ( $setting == "MENU_THEME" && ( $value != $MENU_THEME ) )
+        $reload_prefs = true; 
       $sql =
         "DELETE FROM webcal_user_pref WHERE cal_login = ? " .
         "AND cal_setting = ?";
@@ -41,6 +44,8 @@ function save_pref( $prefs, $src) {
       }
     }
   }
+  // Reload preferences if we changed the menu theme
+  if ( $reload_prefs ) load_user_preferences ();
 }
 $currenttab = '';
 if ( ! empty ( $_POST ) && empty ( $error )) {
