@@ -58,8 +58,8 @@ $lang_file = "translations/" . $lang . ".txt";
 
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
-  error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
-  3, "d:\php\logs\debug.txt" );
+  //error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
+  //3, "d:\php\logs\debug.txt" );
 }
 
 // Get value from POST form
@@ -141,10 +141,8 @@ function get_installed_version () {
  //This data is read from file upgrade_matrix.php
  for ( $i=0; $i < count( $database_upgrade_matrix); $i++ ) {
    $sql = $database_upgrade_matrix[$i][0];
-	do_debug ( "index " . $sql);
   $res = dbi_execute ( $sql, array(), false, false );
   if ( $res ) {
-do_debug ( $database_upgrade_matrix[$i][2]);
   $_SESSION['old_program_version'] = $database_upgrade_matrix[$i][1];
   $_SESSION['install_file'] = $database_upgrade_matrix[$i][2];
   dbi_free_result ( $res );
@@ -185,7 +183,7 @@ do_debug ( $database_upgrade_matrix[$i][2]);
    
    //delete existing WEBCAL_PROGRAM_VERSION number 
    dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
-	    
+      
    // Insert webcal_config values only if blank
    db_load_config ();   
  }
