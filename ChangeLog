@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1422509: Search doesn't search subject, only within description
  - Fixed bug 1422507: Timezone upgrade fails with MySQL
  - Fixed bug 1409412: Popup color chooser doesn't appear in preferences
  - Fixed bug 1403568: patch for incorrect links in minical.php output
