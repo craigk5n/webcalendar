@@ -8,7 +8,7 @@ function save_pref( $prefs, $src) {
     if ( $src == 'post' ) {
       $setting = substr ( $key, 5 );
       $prefix = substr ( $key, 0, 5 );
-      if ( $key == 'user' || $key == 'public' )
+      if ( $prefix != 'pref_')
         continue;
       // validate key name.  should start with "pref_" and not include
       // any unusual characters that might cause SQL injection
@@ -42,10 +42,10 @@ function save_pref( $prefs, $src) {
     }
   }
 }
-
+$currenttab = '';
 if ( ! empty ( $_POST ) && empty ( $error )) {
   $my_theme = '';
-  
+  $currenttab = getPostValue ( 'currenttab' );
   $updating_public = false;;
   if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
     $updating_public = true;
@@ -123,8 +123,9 @@ $GLOBALS['OTHERMONTHBG'] = $prefarray['OTHERMONTHBG'];
 $GLOBALS['FONTS'] = $prefarray['FONTS'];
 $GLOBALS['MYEVENTS'] = $prefarray['MYEVENTS'];
 
+$BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' )\"" : '' );
 $INC = array('js/pref.php','js/visible.php');
-print_header($INC);
+print_header($INC, '' , $BodyX);
 ?>
 
 <h2><?php
@@ -141,6 +142,7 @@ print_header($INC);
 <a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 
 <form action="pref.php" method="post" onsubmit="return valid_form(this);" name="prefform">
+<input type="hidden" name="currenttab" id="currenttab" value="<?php echo $currenttab ?>" />
 <?php 
  if ($user) 
   echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -188,29 +190,28 @@ if ( empty ( $user ) || $user == $login ) {
 
 <!-- TABS -->
 <div id="tabs">
- <span class="tabfor" id="tab_settings"><a href="#tabsettings" onclick="return showTab('settings')"><?php etranslate("Settings")?></a></span>
+ <span class="tabfor" id="tab_settings"><a href="" onclick="return setTab('settings');"><?php etranslate("Settings")?></a></span>
  <?php if ( $ALLOW_USER_THEMES == 'Y' ) { ?>
- <span class="tabbak" id="tab_themes"><a href="#tabthemes" onclick="return showTab('themes')"><?php etranslate("Themes")?></a></span>
+ <span class="tabbak" id="tab_themes"><a href="" onclick="return setTab('themes')"><?php etranslate("Themes")?></a></span>
 <?php } ?> 
  <?php if ( $SEND_EMAIL == 'Y' ) { ?>
- <span class="tabbak" id="tab_email"><a href="#tabemail" onclick="return showTab('email')"><?php etranslate("Email")?></a></span>
+ <span class="tabbak" id="tab_email"><a href="" onclick="return setTab('email');"><?php etranslate("Email")?></a></span>
 <?php } ?> 
- <span class="tabbak" id="tab_boss"><a href="#tabboss" onclick="return showTab('boss')"><?php etranslate("When I am the boss")?></a></span>
+ <span class="tabbak" id="tab_boss"><a href="" onclick="return setTab('boss');"><?php etranslate("When I am the boss")?></a></span>
 <?php if ( $PUBLISH_ENABLED == 'Y'  || $RSS_ENABLED == 'Y' ) { ?> 
- <span class="tabbak" id="tab_subscribe"><a href="#tabsubscribe" onclick="return showTab('subscribe')"><?php etranslate("Subscribe/Publish")?></a></span>
+ <span class="tabbak" id="tab_subscribe"><a href="" onclick="return setTab('subscribe');"><?php etranslate("Subscribe/Publish")?></a></span>
 <?php } ?> 
 <?php if ( $ALLOW_USER_HEADER == 'Y') { ?> 
- <span class="tabbak" id="tab_header"><a href="#tabheader" onclick="return showTab('header')"><?php etranslate("Custom Scripts")?></a></span>
+ <span class="tabbak" id="tab_header"><a href="" onclick="return setTab('header');"><?php etranslate("Custom Scripts")?></a></span>
 <?php } ?> 
 <?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
- <span class="tabbak" id="tab_colors" title="<?php etooltip("colors-help")?>"><a href="#tabcolors" onclick="return showTab('colors')"><?php etranslate("Colors")?></a></span>
+ <span class="tabbak" id="tab_colors" title="<?php etooltip("colors-help")?>"><a href="" onclick="return setTab('colors');"><?php etranslate("Colors")?></a></span>
 <?php } ?>
 </div>
 
 <!-- TABS BODY -->
 <div id="tabscontent">
  <!-- DETAILS -->
-<a name="tabsettings"></a>
 <div id="tabscontent_settings">
 <table  cellspacing="1" cellpadding="2"  border="0">
 <tr><td  class="tooltipselect" title="<?php etooltip("language-help");?>">
@@ -470,7 +471,6 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <!-- END SETTINGS -->
 
 <?php if ( $ALLOW_USER_THEMES == "Y") { ?>
-<a name="tabthemes"></a>
 <div id="tabscontent_themes">
 <table  cellspacing="1" cellpadding="2"  border="0" width="35%">
 <tr><td  class="tooltipselect" title="<?php etooltip("themes-help");?>">
@@ -492,7 +492,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <?php } ?>
 
 <?php if ( ! $updating_public ) { ?>
-<a name="tabemail"></a>
+<?php if ( $SEND_EMAIL == 'Y' ) { ?>
 <div id="tabscontent_email">
 <table  cellspacing="1" cellpadding="2">
 <tr><td style="vertical-align:top; font-weight:bold;">
@@ -528,13 +528,14 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 </table>
 </div>
 <!-- END EMAIL -->
+<?php } ?>
 
-<a name="tabboss"></a>
 <div id="tabscontent_boss">
 <table  cellspacing="1" cellpadding="2">
+<?php if ( $SEND_EMAIL == 'Y' ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Email me event notification")?>:</td>
   <td><label><input type="radio" name="pref_EMAIL_ASSISTANT_EVENTS" value="Y" <?php if ( $prefarray['EMAIL_ASSISTANT_EVENTS'] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_EMAIL_ASSISTANT_EVENTS" value="N" <?php if ( $prefarray['EMAIL_ASSISTANT_EVENTS'] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
-
+<?php } //end email ?>
 <tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("I want to approve events")?>:</td>
   <td><label><input type="radio" name="pref_APPROVE_ASSISTANT_EVENT" value="Y" <?php if ( $prefarray['APPROVE_ASSISTANT_EVENT'] == "Y" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label> <label><input type="radio" name="pref_APPROVE_ASSISTANT_EVENT" value="N" <?php if ( $prefarray['APPROVE_ASSISTANT_EVENT'] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label></td></tr>
 
@@ -545,7 +546,6 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <!-- END BOSS -->
 
 <?php } /* if ( ! $updating_public ) */ ?>
-<a name="tabsubscribe"></a>
 <div id="tabscontent_subscribe">
 <table  cellspacing="1" cellpadding="2">
 <?php if ( $PUBLISH_ENABLED == 'Y' ) { ?>
@@ -607,7 +607,6 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <!-- END SUBSCRIBE -->
 
 <?php if ( $ALLOW_USER_HEADER == 'Y' ) { ?>
-<a name="tabheader"></a>
 <div id="tabscontent_header">
 <table  cellspacing="1" cellpadding="2">
 <?php if ( $CUSTOM_SCRIPT == 'Y' ) { ?>
@@ -637,7 +636,6 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 
 
 <?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
-<a name="tabcolors"></a>
 <div id="tabscontent_colors">
 <table style="border-width:0px; width:100%;">
 <tr><td style="vertical-align:top;">
@@ -654,6 +652,12 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_H2COLOR')" value="<?php etranslate("Select")?>..." />
  </td></tr>
+ <tr><td>
+ <label for="pref_TEXTCOLOR"><?php etranslate("Document text")?>:</label></td><td>
+ <input type="text" name="pref_TEXTCOLOR" id="pref_TEXTCOLOR" size="8" maxlength="7" value="<?php echo $prefarray['TEXTCOLOR']; ?>" onkeyup="updateColor(this);" /><td style="background-color:<?php echo $prefarray['TEXTCOLOR']?>; border-style: groove;">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+ <input type="button" onclick="selectColor('pref_TEXTCOLOR')" value="<?php etranslate("Select")?>..." name="" />
+</td></tr>
  <tr><td style="font-weight:bold;">
   <label for="pref_MYEVENTS"><?php etranslate("My event text")?>:</label></td><td>
   <input type="text" name="pref_MYEVENTS" id="pref_MYEVENTS" size="8" maxlength="7" value="<?php echo $prefarray['MYEVENTS']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['MYEVENTS']?>; border-style: groove;">
@@ -661,14 +665,32 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <input type="button" onclick="selectColor('pref_MYEVENTS')" value="<?php etranslate("Select")?>..." />
  </td></tr>
  <tr><td style="font-weight:bold;">
+  <label for="pref_TABLEBG"><?php etranslate("Table grid color")?>:</label></td><td>
+  <input type="text" name="pref_TABLEBG" id="pref_TABLEBG" size="8" maxlength="7" value="<?php echo $prefarray['TABLEBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['TABLEBG']?>; border-style: groove;">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+  <input type="button" onclick="selectColor('pref_TABLEBG')" value="<?php etranslate("Select")?>..." />
+ </td></tr>
+ <tr><td style="font-weight:bold;">
+  <label for="pref_TABLEBG"><?php etranslate("Table header background")?>:</label></td><td>
+  <input type="text" name="pref_THBG" id="pref_THBG" size="8" maxlength="7" value="<?php echo $prefarray['THBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['THBG']?>; border-style: groove;">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+  <input type="button" onclick="selectColor('pref_THBG')" value="<?php etranslate("Select")?>..." />
+ </td></tr>
+ <tr><td style="font-weight:bold;">
+  <label for="pref_TABLEBG"><?php etranslate("Table header text")?>:</label></td><td>
+  <input type="text" name="pref_THFG" id="pref_THFG" size="8" maxlength="7" value="<?php echo $prefarray['THFG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['THFG']?>; border-style: groove;">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+  <input type="button" onclick="selectColor('pref_THFG')" value="<?php etranslate("Select")?>..." />
+ </td></tr>
+ <tr><td style="font-weight:bold;">
   <label for="pref_cell"><?php etranslate("Table cell background")?>:</label></td><td>
-  <input type="text" name="pref_CELLBG" id="pref_cell" size="8" maxlength="7" value="<?php echo $prefarray['CELLBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['CELLBG']?>; border-style: groove;">
+  <input type="text" name="pref_CELLBG" id="pref_CELLBG" size="8" maxlength="7" value="<?php echo $prefarray['CELLBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['CELLBG']?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_CELLBG')" value="<?php etranslate("Select")?>..." />
  </td></tr>
  <tr><td style="font-weight:bold;">
   <label for="pref_today"><?php etranslate("Table cell background for current day")?>:</label></td><td>
-  <input type="text" name="pref_TODAYCELLBG" id="pref_today" size="8" maxlength="7" value="<?php echo $prefarray['TODAYCELLBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['TODAYCELLBG']?>; border-style: groove;">
+  <input type="text" name="pref_TODAYCELLBG" id="pref_TODAYCELLBG" size="8" maxlength="7" value="<?php echo $prefarray['TODAYCELLBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['TODAYCELLBG']?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_TODAYCELLBG')" value="<?php etranslate("Select")?>..." />
  </td></tr>
@@ -680,19 +702,31 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 </td></tr>
  <tr><td style="font-weight:bold;">
   <label for="pref_wkend"><?php etranslate("Table cell background for weekends")?>:</label></td><td>
-  <input type="text" name="pref_WEEKENDBG" id="pref_wkend" size="8" maxlength="7" value="<?php echo $prefarray['WEEKENDBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['WEEKENDBG']?>; border-style: groove;">
+  <input type="text" name="pref_WEEKENDBG" id="pref_WEEKENDBG" size="8" maxlength="7" value="<?php echo $prefarray['WEEKENDBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['WEEKENDBG']?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_WEEKENDBG')" value="<?php etranslate("Select")?>..." />
  </td></tr>
    <tr><td style="font-weight:bold;">
     <label for="pref_othmonth"><?php etranslate("Table cell background for other month")?>:</label></td><td>
-  <input type="text" name="pref_OTHERMONTHBG" id="pref_othmonth" size="8" maxlength="7" value="<?php echo $prefarray['OTHERMONTHBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['OTHERMONTHBG']?>; border-style: groove;">
+  <input type="text" name="pref_OTHERMONTHBG" id="pref_OTHERMONTHBG" size="8" maxlength="7" value="<?php echo $prefarray['OTHERMONTHBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['OTHERMONTHBG']?>; border-style: groove;">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
     <input type="button" onclick="selectColor('pref_OTHERMONTHBG')" value="<?php etranslate("Select")?>..." />
   </td></tr>
+   <tr><td style="font-weight:bold;">
+    <label for="pref_othmonth"><?php etranslate("Event popup background")?>:</label></td><td>
+  <input type="text" name="pref_POPUP_BG" id="pref_POPUP_BG" size="8" maxlength="7" value="<?php echo $prefarray['POPUP_BG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['POPUP_BG']?>; border-style: groove;">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+    <input type="button" onclick="selectColor('pref_POPUP_BG')" value="<?php etranslate("Select")?>..." />
+  </td></tr>
+   <tr><td style="font-weight:bold;">
+    <label for="pref_othmonth"><?php etranslate("Event popup text")?>:</label></td><td>
+  <input type="text" name="pref_POPUP_FG" id="pref_POPUP_FG" size="8" maxlength="7" value="<?php echo $prefarray['POPUP_FG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['POPUP_FG']?>; border-style: groove;">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+    <input type="button" onclick="selectColor('pref_POPUP_FG')" value="<?php etranslate("Select")?>..." />
+  </td></tr>
 </table>
 
-</td><td style="text-align:center; vertical-align:top; background-color:<?php echo $prefarray['BGCOLOR']?>;">
+</td><td style="text-align:center; vertical-align:top;;">
 <br />
 
 <!-- BEGIN EXAMPLE MONTH -->

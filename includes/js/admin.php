@@ -260,4 +260,10 @@ function showPreview() {
   url = "themes/" + theme.toLowerCase()  + ".php";
   var previewWindow = window.open(url,"Preview","resizable=yes,scrollbars=yes");
 }
+
+function setTab( tab ) {
+  document.forms['prefform'].currenttab.value = tab;
+  showTab(tab);
+  return false;
+}
 </script>
