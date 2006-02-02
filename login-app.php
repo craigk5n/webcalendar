@@ -62,7 +62,7 @@ function valid_form ( form ) {
   return true;
 }
 function myOnLoad() {
-  <?php if ( ! empty ( $PLUGINS_ENABLED ) && ( $PLUGINS_ENABLED ) ){ ?>
+  <?php if ( ! empty ( $PLUGINS_ENABLED ) && ( $PLUGINS_ENABLED == 'Y' ) ){ ?>
    if (self != top)  {
      window.open("login-app.php","_top","");
      return;
