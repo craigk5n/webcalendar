@@ -86,7 +86,7 @@ if ( ! empty ( $error ) ) {
   $ids = array ();
   $words = split ( " ", $keywords );
   for ( $i = 0; $i < count ( $words ); $i++ ) {
-  	$sql_params = array();
+    $sql_params = array();
     // Note: we only search approved/waiting events (not deleted)
     $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name, " .
       "webcal_entry.cal_date " .
@@ -103,9 +103,10 @@ if ( ! empty ( $error ) ) {
         $sql .= " ?";
         $sql_params[] = $users[$j];
       }
-    } else
+    } else {
       $sql .= " ? ";
       $sql_params[] = $login;
+    }
     $sql .= ") ";
     if ( $search_others ) {
       // Don't search confidential entries of other users.
@@ -127,7 +128,8 @@ if ( ! empty ( $error ) ) {
       "ORDER BY cal_date";
     $sql_params[] = '%' . $words[$i] . '%';
     $sql_params[] = '%' . $words[$i] . '%';
-    //echo "SQL: $sql<br />";
+    //echo "SQL: $sql<br /><br />";
+    //print_r ( $sql_params );
     $res = dbi_execute ( $sql , $sql_params );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
