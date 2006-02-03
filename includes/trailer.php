@@ -17,7 +17,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 <?php if ( access_can_access_function ( ACCESS_TRAILER ) ) { ?>
 
 <div id="trailer">
-<?php print_menu_dates (); ?>
+<?php if ( $MENU_ENABLED == 'N' ) print_menu_dates (); ?>
 <div id="menu">
 
 <?php
