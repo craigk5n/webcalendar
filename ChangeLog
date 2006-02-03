@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Added time selections to menu bar
  - Added admin option to display All Timezones (approx 360)
  - Fixed bug 1413327: repeated events appear out of order in various pages
  - Fixed bug 1421389: user-app-: login-app opens wrong login file in _top.
