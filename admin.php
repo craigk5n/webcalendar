@@ -225,7 +225,7 @@ if ( ! $error ) {
  <label for="admin_MENU_THEME"><?php etranslate("Menu theme")?>:</label></td><td>
  <select name="admin_MENU_THEME" id="admin_MENU_THEME">
 <?php
-  echo "<option  value=\"\" selected=\"selected\">" . translate("None") . "</option>\n";
+  echo "<option  value=\"none\" selected=\"selected\">" . translate("None") . "</option>\n";
   foreach ( $menuthemes as $menutheme ) {
      echo "<option value=\"" . $menutheme . "\"";
      if ($s['MENU_THEME'] == $menutheme ) echo " selected=\"selected\"";
@@ -326,6 +326,11 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <?php etranslate("Display description in printer day view")?>:</td><td>
   <label><input type="radio" name="admin_DISPLAY_DESC_PRINT_DAY" value='Y' <?php if ( $s['DISPLAY_DESC_PRINT_DAY'] == 'Y' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('Yes')?></label>&nbsp;
   <label><input type="radio" name="admin_DISPLAY_DESC_PRINT_DAY" value='N' <?php if ( $s['DISPLAY_DESC_PRINT_DAY'] != 'Y' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('No')?></label>
+ </td></tr>
+ <tr><td class="tooltip" title="<?php etooltip("display-alltimezones-help");?>">
+  <?php etranslate("Display complete timezone list")?>:</td><td>
+  <label><input type="radio" name="admin_TZ_COMPLETE_LIST" value='Y' <?php if ( $s['TZ_COMPLETE_LIST'] != 'N' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('Yes')?></label>&nbsp;
+  <label><input type="radio" name="admin_TZ_COMPLETE_LIST" value='N' <?php if ( $s['TZ_COMPLETE_LIST'] == 'N' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('No')?></label>&nbsp;&nbsp;<?php echo  "(" . translate("Requires page reload") . ")"; ?>
  </td></tr>
  <tr><td class="tooltipselect" title="<?php etooltip("tz-help")?>">
   <label for="admin_SERVER_TIMEZONE"><?php etranslate("Server Timezone Selection")?>:</label></td><td>
