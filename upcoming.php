@@ -38,31 +38,106 @@
  *   - tasks: specify a value of '1' to show just tasks (if permitted
  *       by system settings and config settings below).  This will
  *       show only tasks and not show any events.
+ *   - showTitle (boolean, set to 1 or 0) whether the page title is shown or not
+ *   - upcoming_title: The page title to print.  There is a default but this overrides it.
+ *     Of course it will only be printed if showTitle so indicates.
+ *   - showMore (boolean, set to 1 or 0) whether "more" at the end is shown or not,
+ *         with a link to your main calendar page
+ *   - showTime ((boolean, set to 1 or 0) whether the event time should be shown
+ *
+ * if calling as an include file can pre-set these variables in your PHP file
+ * before including upcoming.php (you can't use URL parameters when calling 
+ * an include file).  Remember that after debugging you can use @include to suppress
+ * PHP warnings.
+ *     $numDays              default 30
+ *     $cat_id               default ALL
+ *     $username             default __public__
+ *     $maxEvents            default 10   
+ *     $showTasks (boolean)  default true
+ *     $showTitle (boolean)  default true
+ *     $upcoming_title       default "Upcoming Events"
+ *     $showMore (boolean)   default true
+ *     $showTime (boolean)   default false
+ *
+ * To do: Cache results, used cached results mostly, only update occasionally.  This
+ * is pretty simple to do and greatly speeds up the include file if you have a large
+ * calendar.
  *
  * Security:
  * TBD
  */
 
-require_once 'includes/classes/WebCalendar.class';
-require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
+include_once 'includes/init.php';
+//This must contain the file name that this file is saved under.  It is 
+//used to determine whether the file is being run independently or
+//as an include file.  Change as necessary!
+//Note that if you use any other name than "upcoming.php" you must
+//also change the corresponding line in includes/classes/WebCalendar.class, about 
+//line 54, like this:
+//    '/^(nulogin|login|freebusy|publish|register|rss|upcoming|upcoming-.*|week_ssi|minical|controlpanel)\.php$/' =>
+//Using upcoming-.* allows you to use names like upcoming-1.php, upcoming-2.php etc. 
+//if you want have different upcoming-*.php files with variants.
 
-$WebCalendar =& new WebCalendar ( __FILE__ );
+$name_of_this_file="/upcoming.php/";
 
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/functions.php';
+//The following lines allow this include file to be called from another directory
+//it saves the current working directory (to be restored just before exiting)
+//and then changes the working directory to the dir that this file is currently
+//in.  That allows this file to load its includes normally even if called
+//from some other directory.
+$save_current_working_dir= getcwd();
+chdir(dirname(__FILE__));
 
-$WebCalendar->initializeFirstPhase();
+//echo "$showTitle $showMore $maxEvents $numDays $cat_id<p>";
 
-include "includes/$user_inc";
-include 'includes/translate.php';
-
-$WebCalendar->initializeSecondPhase();
+//only go through the requires & includes & function declarations once, 
+// in case upcoming.php is included twice on one page
+//this trick allows the upcoming events to be displayed twice on one page
+//(perhaps with different parameters) without causing problems if 
+if ( empty ($upcoming_initialized)) {
+  $upcoming_initialized=true;
 
 load_global_settings ();
 
 $WebCalendar->setLanguage();
+
+ // Print the details of an upcoming event
+ // This function is here, inside the 'if' that runs only the first time this
+ // file is included within an external document, so that the function isn't 
+ // declared twice in case of this file being included twice or more within the same doc.
+ function print_upcoming_event ( $e, $date ) {
+  global $display_link, $link_target, $SERVER_URL, $charset, $display_tzid, $showTime;
+
+  if ( $display_link && ! empty ( $SERVER_URL ) ) {
+    $cal_type = ( $e->getCalType() == 'T' || $e->getCalType() == 'N' ) ?
+      'task' : 'entry';
+    print "<a title=\"" . 
+      htmlspecialchars ( $e->getName() ) . "\" href=\"" . 
+      $SERVER_URL . 'view_' . $cal_type . '.php?id=' . 
+        $e->getID() . "&amp;date=$date\"";
+      if ( ! empty ( $link_target ) ) {
+      print " target=\"$link_target\"";
+    }
+    print ">";
+  }
+  print htmlspecialchars ( $e->getName() );
+  if ( $display_link && ! empty ( $SERVER_URL ) ) {
+    print "</a>";
+  }
+  
+  if ( $showTime ) {  //show event time if requested (default=don't show)
+    if ( $e->isAllDay() ) {
+      print " (" . translate("All day event") . ")\n";
+    } else if ( $e->getTime() != -1 ) {
+      print " (" . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
+    }
+  }
+
+  print "<br />\n";
+
+ }  //end function
+
+} //end condition initialization
 
 /*
  *
@@ -87,10 +162,27 @@ $link_target = '_top';
 
 // Default time window of events to load
 // Can override with "upcoming.php?days=60"
-$numDays = 30;
+//bhugh, 1/28/2006, if(empty and !== false constructions allow these vars to be passed 
+//from another php program in case upcoming.php is called as an include file
+//(you can't pass ?days=60 type parameters when you use include)
+if (empty($numDays))  $numDays = 30;
+$showTitle = ( ! empty ( $showTitle ) && $showTitle !== false ? true : false );
+$showMore = ( ! empty ( $showMore ) && $showMore !== false ? true : false );
+$showTime = ( ! empty ( $showTime ) && $showTime !== false ? true : false );
+
+//sets the URL used in the (optional) page title and 
+//(optional) "...more" tag at the end.  If you want them to 
+//go to a different URL you can specify that here.
+$title_more_url=$SERVER_URL;
+
+//set default upcoming title but allow it to be overridden
+if (empty($upcoming_title)) $upcoming_title= '<A href="'. 
+   $title_more_url . '">Upcoming Events</A>';
+
+//echo "$numDays $showTitle $maxEvents <p>";
 
 // Max number of events (including tasks) to display
-$maxEvents = 10;
+if (empty($maxEvents)) $maxEvents = 10;
 
 // Should we include tasks?
 // (Only relavant if tasks are enabled in system settings AND enabled for
@@ -98,11 +190,11 @@ $maxEvents = 10;
 // a way to disable tasks from showing up.  It will not display
 // them if specified user has not enabled "Display tasks in Calendars"
 // in their preferences.)
-$show_tasks = true;
+if (! empty ( $showTasks ) && $showTasks !== false) $showTasks = true;
 
 // Login of calendar user to use
 // '__public__' is the login name for the public user
-$username = '__public__';
+if (empty($username)) $username = '__public__';
 
 // Allow the URL to override the user setting such as
 // "upcoming.php?user=craig"
@@ -114,7 +206,7 @@ $load_layers = true;
 // Load just a specified category (by its id)
 // Leave blank to not filter on category (unless specified in URL)
 // Can override in URL with "upcoming.php?cat_id=4"
-$cat_id = '';
+if (empty($cat_id)) $cat_id = '';
 
 // Display timezone abbrev name
 // 1 = Display all times as GMT wo/TZID
@@ -148,13 +240,34 @@ if ( $allow_user_override ) {
 
 $get_unapproved = ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y';
 
-$cat_id = '';
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   $x = getIntValue ( "cat_id", true );
   if ( ! empty ( $x ) ) {
     $cat_id = $x;
   }
 }
+
+  $x = getGetValue ( "upcoming_title", true );
+  if ( ! empty ( $x ) ) {
+    $upcoming_title = $x;
+  }
+
+  $x = getGetValue ( "showMore", true );
+  if ( strlen(  $x ) > 0 ) {
+    $showMore= $x;
+  }
+
+  $x = getGetValue ( "showTime", true );
+  if ( strlen(  $x ) > 0 ) {
+    $showTime= $x;
+  }
+
+
+  $x = getGetValue ( "showTitle", true );
+  if ( strlen(  $x ) > 0 ) {
+    $showTitle = $x;
+  }
+
 
 if ( $load_layers ) {
   load_user_layers ( $username );
@@ -202,10 +315,11 @@ if ( $tasks_only ) {
 
 // Pre-load tasks for quicker access */
 if ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
-  && $show_tasks ) {
+  && $showTasks ) {
   /* Pre-load tasks for quicker access */
   $tasks = read_tasks ( $username, $date, $endDate, $cat_id );
 }
+
 
 //Determine if this script is being called directly, or via an include
 if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
@@ -213,7 +327,7 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
   $PHP_SELF = $_SERVER['PHP_SELF'];
 }
 //If called directly print  header stuff
-if ( ! empty ( $PHP_SELF ) && preg_match ( "/upcoming.php/", $PHP_SELF ) ) {
+if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) { 
 // Print header without custom header and no style sheet
 if ( ! empty ( $LANGUAGE ) ) {
   $charset = translate ( "charset" );
@@ -240,6 +354,7 @@ if ( ! empty ( $LANGUAGE ) ) {
   echo "<html>\n";
   $charset = "iso-8859-1";
 }
+
 echo "<title>".translate($APPLICATION_NAME)."</title>\n";
  
 ?>
@@ -273,15 +388,27 @@ a:hover {
   background-color: #33a;
 }
 </style>
+
 </head>
 <body>
 <?php } //end test for direct call
+
 if ( ! empty ( $error ) ) {
   echo "<h2>" . translate ( "Error" ) .
     "</h2>\n" . $error;
   echo "\n<br /><br />\n</body></html>";
+
+  //restore previous working directory before exit
+  if (strlen($save_current_working_dir)) chdir($save_current_working_dir);
+
   exit;
 }
+
+if ($showTitle) echo '<H3 class=cal_upcoming_title>'. translate($upcoming_title) . '</H3>';
+?>
+
+<div class="cal_upcoming">
+<?PHP
 print "<dl>\n";
 
 print "<!-- \nstartTime: $startTime\nendTime: $endTime\nstartDate: " .
@@ -304,7 +431,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
 
   if ( count ( $ev ) > 0 ) {
     print "<!-- XXX -->\n";
-    print "<dt>" . date_to_str ( $d ) . "</dt>\n<dd>";
+    print "<dt>" . date_to_str ( $d,  translate ( "__month__ __dd__" ), true, true ) . "</dt>\n<dd>";
     for ( $j = 0; $j < count ( $ev ) && $numEvents < $maxEvents; $j++ ) {
       print_upcoming_event ( $ev[$j], $d );
       $numEvents++;
@@ -314,40 +441,18 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
 }
 
 print "</dl>\n";
-if ( ! empty ( $PHP_SELF ) && preg_match ( "/upcoming.php/", $PHP_SELF ) ) {
+
+if ( $showMore ) echo '<center><I><a href="'. $title_more_url . '"> . . . ' . 
+   translate ("more") . '</a></I></center>';
+?>
+</div>
+<?PHP
+if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) { 
   print "</body>\n</html>";
 }
 
-// Print the details of an upcoming event
-function print_upcoming_event ( $e, $date ) {
-  global $display_link, $link_target, $SERVER_URL, $charset, $display_tzid;
+//restore previous working directory before exit
+if (strlen($save_current_working_dir)) chdir($save_current_working_dir);
 
-  print "<span class=\"event\">";
-  if ( $display_link && ! empty ( $SERVER_URL ) ) {
-    $cal_type = ( $e->getCalType() == 'T' || $e->getCalType() == 'N' ) ?
-      'task' : 'entry';
-    print "<a class=\"url\" title=\"" . 
-      htmlspecialchars ( $e->getName() ) . "\" href=\"" . 
-      $SERVER_URL . 'view_' . $cal_type . '.php?id=' . 
-      $e->getID() . "&amp;date=$date\"";
-    if ( ! empty ( $link_target ) ) {
-      print " target=\"$link_target\"";
-    }
-    print ">";
-  }
-  print '<span class="summary">';
-  print htmlspecialchars ( $e->getName() );
-  print '</span>';
-  if ( $display_link && ! empty ( $SERVER_URL ) ) {
-    print "</a>";
-  }
-  print "<abbr class=\"dtstart\" title=\"" .
-    $e->getDate() . "\">";
-  if ( $e->isAllDay() ) {
-    print " (" . translate("All day event") . ")\n";
-  } else if ( $e->getTime() != -1 ) {
-    print " (" . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
-  }
-  print "</abbr><br /></span>\n";
-}
+
 ?>

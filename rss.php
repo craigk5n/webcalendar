@@ -39,22 +39,7 @@
  * We do not include unapproved events in the RSS feed.
  */
 
-require_once 'includes/classes/WebCalendar.class';
-require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
-
-$WebCalendar =& new WebCalendar ( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/functions.php';
-
-$WebCalendar->initializeFirstPhase();
-
-include "includes/$user_inc";
-include 'includes/translate.php';
-
-$WebCalendar->initializeSecondPhase();
+include_once 'includes/init.php';
 
 load_global_settings ();
 

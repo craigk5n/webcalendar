@@ -8,6 +8,13 @@
 // we are in single-user mode, where no login info is needed.
 // If no login info is passed, we check for the last login used.
 
+
+include_once 'includes/init.php';
+
+load_global_settings ();
+
+$WebCalendar->setLanguage();
+
 $user = "__none__"; // don't let user specify in URL
 
 if ( strlen ( $login ) == 0 ) {
@@ -21,30 +28,9 @@ if ( strlen ( $login ) == 0 ) {
   }
 }
 
-require_once 'includes/classes/WebCalendar.class';
-require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
-
-$WebCalendar =& new WebCalendar ( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/functions.php';
-
-$WebCalendar->initializeFirstPhase();
-
-include "includes/$user_inc";
-include 'includes/translate.php';
-
-$WebCalendar->initializeSecondPhase();
-
-load_global_settings ();
-
-$WebCalendar->setLanguage();
-
 $view = "week";
  //TODO This is suspect 
-$today = time();
+$today = mktime();
 
 if ( ! empty ( $date ) && ! empty ( $date ) ) {
   $thisyear = substr ( $date, 0, 4 );

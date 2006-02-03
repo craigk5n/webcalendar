@@ -27,25 +27,15 @@
  *   Preferences), do not allow.
  */
 
-require_once 'includes/classes/WebCalendar.class';
-
-$WebCalendar =& new WebCalendar ( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/functions.php';
-
-$WebCalendar->initializeFirstPhase();
-
-include "includes/$user_inc";
-include 'includes/translate.php';
-
-include 'includes/site_extras.php';
+include_once 'includes/init.php';
 include_once 'includes/xcal.php';
 
-$WebCalendar->initializeSecondPhase();
 
 // Calculate username.
+//if using http_auth, use those credentials
+if ( $use_http_auth && empty ( $user ) ) {
+  $user = $login; 
+}
 if ( empty ( $user ) ) {
   $arr = explode ( "/", $PHP_SELF );
   $user = $arr[count($arr)-1];
