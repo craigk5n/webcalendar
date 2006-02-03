@@ -189,6 +189,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added time selections to menu bar
     + Added admin option to display All Timezones (approx 360)
     + New top menu bar added
     + Made "My event text" color an option instead of always using green
