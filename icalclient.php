@@ -92,28 +92,13 @@
  *  
  */
 
-require_once 'includes/classes/WebCalendar.class';
-
-$WebCalendar =& new WebCalendar ( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/functions.php';
-
-$WebCalendar->initializeFirstPhase();
-
-include "includes/$user_inc";
-include_once 'includes/validate.php';
-include 'includes/translate.php';
-include 'includes/site_extras.php';
+include_once 'includes/init.php';
 include_once 'includes/xcal.php';
-
-$WebCalendar->initializeSecondPhase();
 
 // Require an authenticated user HTTP Auth
 // TODO: make this work for CGI installations
 // see http://us3.php.net/manual/en/features.http-auth.php
-global $login;
+//global $login;
 
 if ( empty ( $APPLICATION_NAME ) ) {
   $APPLICATION_NAME = "WebCalendar";

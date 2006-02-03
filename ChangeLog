@@ -1,4 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1403574: upcoming.php does not work with HTTP Auth
+ - Implemented patch 1418938: Upcoming.php updated to run as include or command line
+ - Fixed bug 1403574: upcoming.php does not work with HTTP Auth
  - Added time selections to menu bar
  - Added admin option to display All Timezones (approx 360)
  - Fixed bug 1413327: repeated events appear out of order in various pages

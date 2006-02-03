@@ -1,20 +1,5 @@
 <?php
-require_once 'includes/classes/WebCalendar.class';
-
-$WebCalendar =& new WebCalendar ( __FILE__ );
-
-include 'includes/assert.php';
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/functions.php';
-
-$WebCalendar->initializeFirstPhase();
-
-include "includes/$user_inc";
-include 'includes/translate.php';
-
-$WebCalendar->initializeSecondPhase();
-$WebCalendar->setLanguage();
+include_once 'includes/init.php';
 
 load_global_settings ();
 
@@ -25,6 +10,7 @@ $htmlmail = false;
 
 load_user_preferences ( );
 
+$WebCalendar->setLanguage();
 
 if ( empty ( $ALLOW_SELF_REGISTRATION ) || $ALLOW_SELF_REGISTRATION != "Y" ) { 
   $error = "You are not authorized";
