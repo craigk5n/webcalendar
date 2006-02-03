@@ -135,15 +135,6 @@ if ( access_is_enabled () ) {
 } else {
   $showHelp = ( $login != '__public__' && ! $is_nonuser );
 }
-if ( $showHelp ) {
-  $goto_link[] = "<a title=\"" . 
-    translate("Help") . "\" href=\"#\" onclick=\"window.open " .
-    "( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars, " .
-    "height=400,width=400,innerHeight=420,outerWidth=420' );\"  " .
-    "onmouseover=\"window.status='" . 
-    translate("Help") . "'\">" . 
-    translate("Help") . "</a>";
-}
 
 
 // Views
@@ -170,11 +161,11 @@ if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
   } else {
     $u_url = "";
   }
-  $res = dbi_query ( "SELECT cal_report_name, cal_report_id " .
+  $res = dbi_execute ( "SELECT cal_report_name, cal_report_id " .
     "FROM webcal_report " .
-    "WHERE cal_login = '$login' OR " .
+    "WHERE cal_login = ? OR " .
     "( cal_is_global = 'Y' AND cal_show_in_trailer = 'Y' ) " .
-    "ORDER BY cal_report_id" );
+    "ORDER BY cal_report_id", array ( $login ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $tmp['name'] = htmlspecialchars ( $row[0] );
@@ -205,7 +196,7 @@ if ( ! $use_http_auth ) {
       $login_url .= "?return_path=$login_return_path";
     } 
   }  
-    
+}   
 
 // Manage Calendar links
 if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" )
@@ -292,13 +283,13 @@ function jscMenu_menu ( $title, $url = false ) {
 
 // Dropdown menu item
 function jscMenu_item ( $icon, $title, $url ) {
-  echo "    ['<img src=\"includes/menu/icons/$icon\" />','".
+  echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','".
        translate( $title )."','$url',null,''],\n";
 }
 
 // Dropdown menu item that has a sub menu
 function jscMenu_sub_menu ( $icon, $title ) {
-  echo "    ['<img src=\"includes/menu/icons/$icon\" />','".
+  echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','".
        translate( $title )."','',null,'',\n";
 }
 
@@ -314,7 +305,7 @@ function jscMenu_close () {
 
 // A divider line
 function jscMenu_divider () {
-  echo "		_cmSplit,\n";
+  echo "    _cmSplit,\n";
 }
 
 //------------------------------------------------------------------//
@@ -328,9 +319,9 @@ function jscMenu_divider () {
 <div id="myMenuID"></div>
 
 <script language="JavaScript" type="text/javascript">
-
+<!-- <![CDATA[
 function openHelp () {
-  window.open ( "help_index.php", "cal_help","dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420" );
+  window.open ( "help_index.php", "cal_help","dependent,menubar,scrollbars,height=500,width=600,innerHeight=520,outerWidth=620" );
 }
 
 var myMenu =
@@ -345,9 +336,9 @@ var myMenu =
     jscMenu_item ( 'month.png', 'This Month', $month_url );
     jscMenu_item ( 'year.png', 'This Year', $year_url );
   jscMenu_close();
-	
-	
-  // Events Menu	
+  
+  
+  // Events Menu  
   jscMenu_menu ('Events');
     if ( $new_entry_url != '' ) jscMenu_item ( 'add.png', 'Add New Event', $new_entry_url );
     if ( $new_task_url != '' ) jscMenu_item ( 'newtodo.png', 'Add New Task', $new_task_url );
@@ -363,7 +354,7 @@ var myMenu =
     if ( $select_user_url != '' ) jscMenu_item ( 'display.png', "Another User\'s Calendar", $select_user_url );
 
     if ( $login != '__public__' ) {
-      if ( count ( $views_link ) > 0 ) { 
+      if ( ! empty ( $views_link ) && count ( $views_link ) > 0 ) { 
         jscMenu_sub_menu ( 'views.png', 'My Views' );
         for ( $i = 0; $i < count ( $views_link ); $i++ ) {
           jscMenu_item ( 'views.png', $views_link[$i]['name'], $views_link[$i]['url'] );
@@ -379,8 +370,8 @@ var myMenu =
         jscMenu_close();
       }    
       
-      if ( ! access_is_enabled () || access_can_access_function ( ACCESS_VIEW_MANAGEMENT, $user ) ) {		
-  		  jscMenu_divider();
+      if ( ! access_is_enabled () || access_can_access_function ( ACCESS_VIEW_MANAGEMENT, $user ) ) {    
+        jscMenu_divider();
         jscMenu_item ( 'manage_views.png', 'Manage Views', 'views.php' );
       }
     }
@@ -394,7 +385,7 @@ var myMenu =
       access_can_access_function ( ACCESS_ACTIVITY_LOG, $user ) ) )
       jscMenu_item ( 'log.png', 'Activity Log', 'activity_log.php' );
 
-    if ( count ( $reports_link ) > 0 ) {
+    if ( ! empty ( $reports_link ) && count ( $reports_link ) > 0 ) {
       jscMenu_sub_menu ( 'reports.png', 'My Reports' );
       for ( $i = 0; $i < count ( $reports_link ); $i++ ) { 
         jscMenu_item ( 'document.png', $reports_link[$i]['name'], $reports_link[$i]['url'] );
@@ -404,7 +395,7 @@ var myMenu =
 
     if ( $REPORTS_ENABLED == 'Y' && 
       ( ! access_is_enabled () || access_can_access_function ( ACCESS_REPORT, $user ) ) ) {
-		  jscMenu_divider();
+      jscMenu_divider();
       jscMenu_item ( 'manage_reports.png', 'Manage Reports', 'report.php' );
     }
   jscMenu_close();
@@ -413,7 +404,7 @@ var myMenu =
 
   // Settings Menu
   if ( $login != '__public__' ) {
-  jscMenu_menu ('Settings');	
+  jscMenu_menu ('Settings');  
 
     // Nonuser Admin Settings
     if ( $is_nonuser_admin ) {
@@ -441,7 +432,7 @@ var myMenu =
 
       if ( ! access_is_enabled () || access_can_access_function ( ACCESS_LAYERS, $user ) ) {
         jscMenu_item ( 'layers.png', 'Layers', 'layers.php' );
-		  }
+      }
 
       if ( ! $is_admin ) {
         jscMenu_item ( 'profile.png', 'My Profile', 'users.php' );
@@ -489,8 +480,12 @@ var myMenu =
 ?>  
 ];
 cmDraw ('myMenuID', myMenu, 'hbr', cmTheme, 'Theme');
+//]]> -->
 </script>
 </td>
+<td class="ThemeMenubackgr" align="right">
+<?php print_menu_dates ( true ); ?>
+<td>
 <td class="ThemeMenubackgr" align="right">
 <?php
 if ( strlen ( $login ) && $login != "__public__" ) {
@@ -502,7 +497,6 @@ if ( strlen ( $login ) && $login != "__public__" ) {
   echo "<a title=\"" . 
     translate("Login") . "\" href=\"$login_url\">" . 
     translate("Login") . "</a>\n";
-  }
 }
 ?>
  &nbsp;</td>

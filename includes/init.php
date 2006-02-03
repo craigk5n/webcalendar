@@ -220,7 +220,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
 function print_trailer ( $include_nav_links=true, $closeDb=true,
   $disableCustom=false )
 {
-  global $CUSTOM_TRAILER, $c, $STARTVIEW, $DEMO_MODE;
+  global $CUSTOM_TRAILER, $c, $STARTVIEW, $DEMO_MODE, $MENU_ENABLED;
   global $login, $user, $cat_id, $CATEGORIES_ENABLED, $thisyear,
     $thismonth, $thisday, $DATE_FORMAT_MY, $WEEK_START, $DATE_FORMAT_MD,
     $readonly, $is_admin, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD,
@@ -229,7 +229,7 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
     $views, $REPORTS_ENABLED, $LAYER_STATUS, $NONUSER_ENABLED,
     $GROUPS_ENABLED, $fullname, $has_boss, $is_nonuser, $DISPLAY_TASKS;
   
-  if ( $include_nav_links ) {
+  if ( $include_nav_links  ) {//TODO Add test for $MENU_ENABLED == 'N'
     include_once "includes/trailer.php";
   }
 
@@ -249,5 +249,180 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
        "src=\"http://www.w3.org/Icons/valid-xhtml10\" " .
        "alt=\"Valid XHTML 1.0!\" class=\"valid\"  /></a></p>";
  }  
+}
+
+function print_menu_dates ( $menu=false) {
+  global $user, $login, $cat_id, $CATEGORIES_ENABLED, $thisyear,
+    $thismonth,  $DATE_FORMAT_MY, $DATE_FORMAT_MD, $WEEK_START;
+  if ( access_can_view_page ( "month.php" ) ) {
+    $monthUrl = 'month.php';
+    $urlArgs = '';
+  } else {
+    $monthUrl = $GLOBALS['STARTVIEW'];
+    if ( preg_match ( "/[?&](\S+)=(\S+)/", $monthUrl, $match ) ) {
+      $monthUrl = $match[0];
+      $urlArgs = "<input type=\"hidden\" name=\"$match[1]\" value=\"$match[2]\" />\n";
+    }
+  }
+  echo "<form action=\"$monthUrl\" method=\"get\" name=\"SelectMonth\" id=\"monthform\">";
+
+  echo $urlArgs;
+  if ( ! empty ( $user ) && $user != $login ) {
+    echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
+  }
+  if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == "Y"
+    && ( ! $user || $user == $login ) ) {
+    echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
+  }
+
+  echo "<label for=\"monthselect\"><a href=\"javascript:document.SelectMonth.submit()\">" . translate("Month") . "</a>:&nbsp;</label>\n";
+  echo "<select name=\"date\" id=\"monthselect\" onchange=\"document.SelectMonth.submit()\">\n";
+
+  if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
+    $m = $thismonth;
+    $y = $thisyear;
+  } else {
+    $m = date ( "m" );
+    $y = date ( "Y" );
+  }
+  $d_time = mktime ( 0, 0, 0, $m, 1, $y );
+  $thisdate = date ( "Ymd", $d_time );
+  $y--;
+  for ( $i = 0; $i < 25; $i++ ) {
+    $m++;
+    if ( $m > 12 ) {
+      $m = 1;
+      $y++;
+    }
+  if ( $y >= 1970 && $y < 2038 ) {
+      $d = mktime ( 0, 0, 0, $m, 1, $y );
+      echo "<option value=\"" . date ( "Ymd", $d ) . "\"";
+      if ( date ( "Ymd", $d ) == $thisdate ) {
+        echo " selected=\"selected\"";
+      }
+      echo ">";
+      echo date_to_str ( date ( "Ymd", $d ), $DATE_FORMAT_MY, false, true, 0 );
+      echo "</option>\n";
+  }
+  }
+
+  echo "</select>\n";
+  if ( $menu == false )
+    echo "<input type=\"submit\" value=\"" . translate("Go") . "\" />\n";
+  echo "</form>\n";
+  if ( $menu == true ) echo "</td>\n<td class=\"ThemeMenubackgr\">";
+
+  if ( access_can_view_page ( "week.php" ) ) {
+    $weekUrl = 'week.php';
+    $urlArgs = '';
+  } else {
+    $weekUrl = $GLOBALS['STARTVIEW'];
+    if ( preg_match ( "/[?&](\S+)=(\S+)/", $weekUrl, $match ) ) {
+      $weekUrl = $match[0];
+      $urlArgs = "<input type=\"hidden\" name=\"$match[1]\" value=\"$match[2]\" />\n";
+    }
+  }
+
+  echo "<form action=\"$weekUrl\" method=\"get\" name=\"SelectWeek\" id=\"weekform\">\n";
+  echo $urlArgs;
+  if ( ! empty ( $user ) && $user != $login ) {
+    echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
+  }
+  if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == "Y"
+    && ( ! $user || $user == $login ) ) {
+    echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
+  }
+
+  echo "<label for=\"weekselect\"><a href=\"javascript:document.SelectWeek.submit()\">" . translate("Week") . "</a>:&nbsp;</label>\n";
+  echo "<select name=\"date\" id=\"weekselect\" onchange=\"document.SelectWeek.submit()\">\n";
+  if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
+    $m = $thismonth;
+    $y = $thisyear;
+  } else {
+    $m = date ( "m" );
+    $y = date ( "Y" );
+  }
+  if ( ! empty ( $thisday ) ) {
+    $d = $thisday;
+  } else {
+    $d = date ( "d" );
+  }
+  $d_time = mktime ( 0, 0, 0, $m, $d, $y );
+  $thisdate = date ( "Ymd", $d_time );
+  $wday = date ( "w", $d_time );
+  // $WEEK_START equals 1 or 0 
+  $wkstart = mktime ( 0, 0, 0, $m, $d - ( $wday - $WEEK_START ), $y );
+
+  for ( $i = -7; $i <= 7; $i++ ) {
+    $twkstart = $wkstart + ( 3600 * 24 * 7 * $i );
+    $twkend = $twkstart + ( 3600 * 24 * 6 );
+//  echo $twkstart . " " . $twkend;
+  if ( $twkstart > 0 && $twkend < 2146021200 ) { 
+      echo "<option value=\"" . date ( "Ymd", $twkstart ) . "\"";
+      if ( date ( "Ymd", $twkstart ) <= $thisdate &&
+        date ( "Ymd", $twkend ) >= $thisdate ) {
+        echo " selected=\"selected\"";
+      }
+      echo ">";
+      if ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) &&
+        $GLOBALS['PULLDOWN_WEEKNUMBER'] == "Y" ) {
+        echo  "(" . date( "W", $twkstart + ONE_DAY ) . ")&nbsp;&nbsp;";
+      }
+      printf ( "%s - %s",
+        date_to_str ( date ( "Ymd", $twkstart ), $DATE_FORMAT_MD, false, true, 0 ),
+        date_to_str ( date ( "Ymd", $twkend ), $DATE_FORMAT_MD, false, true, 0 ) );
+      echo "</option>\n";
+  }
+  }
+
+  echo "</select>\n";
+  if ( $menu == false )
+    echo "<input type=\"submit\" value=\"" . translate("Go") ."\" />\n";
+  echo "</form>\n";
+  if ( $menu == true ) echo "</td>\n<td class=\"ThemeMenubackgr\">";
+
+  if ( access_can_view_page ( "year.php" ) ) {
+    $yearUrl = 'year.php';
+    $urlArgs = '';
+  } else {
+    $yearUrl = $GLOBALS['STARTVIEW'];
+    if ( preg_match ( "/[?&](\S+)=(\S+)/", $yearUrl, $match ) ) {
+      $yearUrl = $match[0];
+      $urlArgs = "<input type=\"hidden\" name=\"$match[1]\" value=\"$match[2]\" />\n";
+    }
+  }
+
+  echo "<form action=\"$yearUrl\" method=\"get\" name=\"SelectYear\" id=\"yearform\">\n";
+  echo $urlArgs;
+  if ( ! empty ( $user ) && $user != $login ) {
+    echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
+  }
+  if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == "Y"
+    && ( ! $user || $user == $login ) ) {
+    echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
+  }
+
+  echo "<label for=\"yearselect\"><a href=\"javascript:document.SelectYear.submit()\">" . translate("Year") . "</a>:&nbsp;</label>\n";
+  echo "<select name=\"year\" id=\"yearselect\" onchange=\"document.SelectYear.submit()\">\n";
+
+  if ( ! empty ( $thisyear ) ) {
+    $y = $thisyear;
+  } else {
+    $y = date ( "Y" );
+  }
+  for ( $i = $y - 4; $i < $y + 4; $i++ ) {
+   if ( $i >= 1970 && $i < 2038 ) {
+      echo "<option value=\"$i\"";
+      if ( $i == $y ) {
+        echo " selected=\"selected\"";
+      }
+      echo ">$i</option>\n";
+  }
+  }
+
+  echo "</select>\n";
+  if ( $menu == false )
+    echo "<input type=\"submit\" value=\"" . translate("Go") . "\" />\n";
+  echo "</form>\n";
 }
 ?>
