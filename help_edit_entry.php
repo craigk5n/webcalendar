@@ -75,7 +75,7 @@
  <?php } ?>
 </table>
 
-<?php include_once "includes/help_trailer.php"; ?>
+<?php print_trailer( false ); ?>
 
 </body>
 </html>

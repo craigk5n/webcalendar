@@ -221,7 +221,7 @@ if ( $adding_report ) {
 <?php
 if ( ! empty ( $error ) ) {
   echo $error;
-  include_once "includes/trailer.php";
+  print_trailer( false );
   exit;
 }
 ?>

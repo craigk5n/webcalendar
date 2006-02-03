@@ -1,25 +1,25 @@
 <?php
-	include_once 'includes/init.php';
-	print_header('','','',true);
+  include_once 'includes/init.php';
+  print_header('','','',true);
 ?>
 
 <h2><?php etranslate("Report Bug")?></h2>
 
 <?php 
-	//No need to translate the text below since I want all bugs
-	//reported in English.
-	//Americans only speak English, of course ;-)
+  //No need to translate the text below since I want all bugs
+  //reported in English.
+  //Americans only speak English, of course ;-)
 ?>
 Please include all the information below when reporting a bug.
 <?php if ( $LANGUAGE != "English-US" ) { ?>
-	Also.. when reporting a bug, please use <strong>English</strong> rather than <?php echo $LANGUAGE?>.
+  Also.. when reporting a bug, please use <strong>English</strong> rather than <?php echo $LANGUAGE?>.
 <?php } ?>
 
 <form action="http://sourceforge.net/tracker/" target="_new">
-	<input type="hidden" name="func" value="add" />
-	<input type="hidden" name="group_id" value="3870" />
-	<input type="hidden" name="atid" value="103870" />
-	<input type="submit" value="<?php etranslate("Report Bug")?>" />
+  <input type="hidden" name="func" value="add" />
+  <input type="hidden" name="group_id" value="3870" />
+  <input type="hidden" name="atid" value="103870" />
+  <input type="submit" value="<?php etranslate("Report Bug")?>" />
 </form>
 <br /><br />
 
@@ -52,7 +52,7 @@ if ( $res ) {
 }
 echo "</pre>\n";
 
-include_once "includes/help_trailer.php";
+print_trailer( false );
 ?>
 </body>
 </html>

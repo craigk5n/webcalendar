@@ -157,6 +157,6 @@ print_header('','','',true);
  <?php etranslate("colors-help")?>
  <br /><br />
 <?php } // if $ALLOW_COLOR_CUSTOMIZATION ?>
-<?php include_once "includes/help_trailer.php"; ?>
+<?php print_trailer( false ); ?>
 </body>
 </html>
