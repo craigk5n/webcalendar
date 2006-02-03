@@ -150,6 +150,7 @@ function get_ltgtDay (  $year, $month = 'Jan',  $which, $time = '' ) {
 
 function get_seconds ( $time_part ) {
 global $min_date, $max_date;
+  $ret = 0;
   if ( $time_part == "Link" ) {
     $ret = "Link";
   } else if ( $time_part == "0:00" ) {
@@ -231,21 +232,23 @@ function do_tz_import ( $file_path= "timezone/") {
      $data[3] = ( $data[3] == "only"? $data[2] : $data[3]);
      //set rule_to to 2038 id max or maximum
      $data[3] = ( substr( $data[3],0,3)  == "max"? '2038' : $data[3]);
+     $data4 = ( isset ( $data[4] ) ? $data[4]: '' );
+     $data6 = ( isset ( $data[6] ) ? $data[6]: '' );
      if ( $data[0] == "Rule" && (
       ! ( $data[2] < 1970 && $data[3] < 1970 ) ) ) {
       $rule_at_suffix = '';
-   
      if ( ! empty( $data[7] ) && preg_match ( "/(\D)$/i", $data[7], $match ) ){
       $data[7]  = substr( $data[7], 0, strlen($data[7]) -1);
       $rule_at_suffix = $match[0];
      }
      $rule_at = get_seconds ( $data[7] );
      $rule_save = get_seconds ( $data[8] );
+     $data9 = ( $data[9] == "-" ? "" : $data[9] );
      $sql = "INSERT INTO webcal_tz_rules ( rule_name, rule_from, rule_to, rule_type, " .
       "rule_in, rule_on, rule_at, rule_at_suffix, rule_save, rule_letter ) " .
       "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-     if ( ! dbi_execute ( $sql , array ( $data[1] , $data[2] , $data[3] , $data[4] , 
-      $months[$data[5]] , $data[6] , $rule_at , $rule_at_suffix , $rule_save , ( $data[9] == "-" ? "" : $data[9] ) ) ) ) {
+     if ( ! dbi_execute ( $sql , array ( $data[1] , $data[2] , $data[3] , $data4 , 
+      $months[$data[5]] , $data6 , $rule_at , $rule_at_suffix , $rule_save , $data9 ) ) ) {
       $error = "Database error: " . dbi_error ();
      }
     }
@@ -267,13 +270,14 @@ function do_tz_import ( $file_path= "timezone/") {
      }
      $zone_gmtoff = get_seconds( $data[2]);
    
-     if ( $data[3] == "-"  || $data[3] == "1:00" ) {
+     if ( ! isset ( $data[3] ) || $data[3] == "-"  || $data[3] == "1:00" ) {
       $data[3] = '';
      }
      $sql = "INSERT INTO webcal_tz_zones ( zone_name, zone_gmtoff, zone_rules, " .
       "zone_format, zone_from, zone_until, zone_cc, zone_coord, zone_country ) " .
        "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-     if ( ! dbi_execute ( $sql , array ( $data[1] , $zone_gmtoff, $data[3] , $data[4] , $zone_from , $zone_until, '', '', '' ) ) ) {
+     if ( ! dbi_execute ( $sql , array ( $data[1] , $zone_gmtoff, $data[3] , 
+       $data4 , $zone_from , $zone_until, '', '', '' ) ) ) {
       $error = "Database error: " . dbi_error ();
      }
     }
@@ -325,8 +329,9 @@ function do_tz_import ( $file_path= "timezone/") {
     $sql = "UPDATE webcal_tz_zones  " .
      " SET zone_country = ? " .
      " WHERE zone_cc = ?";
-    if ( ! dbi_execute ( $sql , array ( trim ( $data[1] ) , $data[0] ) ) ) {
-     $error = "Database error: " . dbi_error ();
+    if ( ! dbi_execute ( $sql , array ( trim ( htmlspecialchars ( $data[1] , ENT_QUOTES ) ) , 
+      $data[0] ) ) ) {
+      $error = "Database error: " . dbi_error ();
     }
    }   
   }
@@ -349,7 +354,8 @@ function do_tz_import ( $file_path= "timezone/") {
     $data = preg_split("/[\t]+/", trim ($data ) ) ;
     $sql = "INSERT INTO webcal_tz_list ( tz_list_id, tz_list_name, tz_list_text )  " .
      " VALUES ( ?, ?, ? )";
-    if ( ! dbi_execute ( $sql , array ( $data[0], $data[1],  $data[2] . " " . $data[3] ) ) ) {
+    if ( ! dbi_execute ( $sql , array ( $data[0], $data[1],  
+      $data[2] . " " . htmlspecialchars ( $data[3] , ENT_QUOTES ) ) ) ) {
      $error = "Database error: " . dbi_error ();
     }
    }   
