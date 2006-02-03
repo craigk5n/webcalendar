@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 02-01-2006
+# Translation last updated on 02-03-2006
 
 
 ###############################################
@@ -118,12 +118,11 @@ No: No
 themes-help: Allows mass update of configuration settings. Lower case labels are user pref only.
 Themes: Themes
 AVAILABLE THEMES: AVAILABLE THEMES
-Allow top menu: Allow top menu
-Menu theme: Menu theme
-menu-themes-help: Sets the colors and style of the top menu
-Menu change: Changing the menu requires a browser refresh after saving
 None: None
 Preview: Preview
+Allow top menu: Allow top menu
+menu-themes-help: Sets the colors and style of the top menu
+Menu theme: Menu theme
 fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
 Fonts: Fonts
 custom-script-help: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
@@ -152,6 +151,9 @@ yearly-shows-events-help: On the yearly view, display days that contain events i
 Display days with events in bold in month and year views: Display days with events in bold in month and year views
 display-desc-print-day-help: Include event descriptions in printer-friendly version of day view.
 Display description in printer day view: Display description in printer day view
+display-alltimezones-help: If enabled, all known times are loaded in timezone dropdown
+Display complete timezone list: Display complete timezone list
+Requires page reload: Requires page reload
 tz-help: Specifies how many hours to adjust the time from server time to local time.
 Server Timezone Selection: Server Timezone Selection
 Your current GMT offset is: Your current GMT offset is
@@ -1233,7 +1235,7 @@ Go to: Go to
 
 
 ###############################################
-# Page: includes/menu.php
+# Page: includes/menu_old.php
 #
 Logout: Logout
 
