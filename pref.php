@@ -511,7 +511,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <label for="pref_MENU_THEME"><?php etranslate("Menu theme")?>:</label></td><td>
  <select name="pref_MENU_THEME" id="pref_MENU_THEME">
 <?php
-  echo "<option  value=\"\" selected=\"selected\">" . translate("None") . "</option>\n";
+  echo "<option  value=\"none\" selected=\"selected\">" . translate("None") . "</option>\n";
   foreach ( $menuthemes as $menutheme ) {
      echo "<option value=\"" . $menutheme . "\"";
      if ($prefarray['MENU_THEME'] == $menutheme ) echo " selected=\"selected\"";

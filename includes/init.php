@@ -128,7 +128,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   if ( !empty ( $friendly ) || $disableCustom ) $MENU_ENABLED = 'N';
 
   // Includes needed for the top menu
-  if ( $MENU_ENABLED == 'Y' && ! empty ( $MENU_THEME ) ) {
+  if ( ( $MENU_ENABLED == 'Y'  ) && ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none') ) {
     echo "<script type=\"text/javascript\" src=\"includes/menu/JSCookMenu.js\"></script>\n";
     echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"includes/menu/themes/$MENU_THEME/theme.css\" />\n";
     echo "<script type=\"text/javascript\" src=\"includes/menu/themes/$MENU_THEME/theme.js\"></script>\n";
@@ -202,7 +202,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   }
 
   // Add the top menu if enabled
-  if ( $MENU_ENABLED == 'Y'  && ! empty ( $MENU_THEME ) )
+  if ( ( $MENU_ENABLED == 'Y'  ) && ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none') )
     include_once 'includes/menu/index.php';
 }
 
