@@ -43,8 +43,7 @@ load_global_settings ();
 $WebCalendar->setLanguage();
 
 // Set content type for java web start
-Header ( "Content-type: application/x-java-jnlp-file" );
-//Header ( "Content-type: text/plain" );
+header ( "Content-type: application/x-java-jnlp-file" );
 
 // Make sure app name is set
 if ( empty ( $APPLICATION_NAME ) )
@@ -67,7 +66,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
   <security>
   </security>
   <resources>
-    <j2se version="1.4"/>
+    <j2se version="1.4+"/>
     <jar href="ws/webcalendar.jar"/>
   </resources>
   <application-desc main-class="us.k5n.webcalendar.ui.ControlPanel.Main"
