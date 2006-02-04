@@ -488,15 +488,19 @@ cmDraw ('myMenuID', myMenu, 'hbr', cmTheme, 'Theme');
 <td>
 <td class="ThemeMenubackgr" align="right">
 <?php
-if ( strlen ( $login ) && $login != "__public__" ) {
-  echo "<a title=\"" . 
-    translate("Logout") . "\" href=\"$logout_url\">" . 
-    translate("Logout") . "</a>: $login\n";
-  } else {
-  // For public user
-  echo "<a title=\"" . 
-    translate("Login") . "\" href=\"$login_url\">" . 
-    translate("Login") . "</a>\n";
+if ( ! empty ( $logout_url ) ) { //using http_auth
+  if ( strlen ( $login ) && $login != "__public__" ) {
+    echo "<a title=\"" . 
+      translate("Logout") . "\" href=\"$logout_url\">" . 
+      translate("Logout") . "</a>: $login\n";
+    } else {
+    // For public user
+    echo "<a title=\"" . 
+      translate("Login") . "\" href=\"$login_url\">" . 
+      translate("Login") . "</a>\n";
+  }
+} else {
+  echo "&nbsp;&nbsp;&nbsp;";  //TODO replace with something???
 }
 ?>
  &nbsp;</td>
