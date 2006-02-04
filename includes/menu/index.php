@@ -329,6 +329,12 @@ var myMenu =
 <?php
 
   // My Calendar Menu
+  // translate ( 'My Calendar', true);
+  // translate ( 'Today', true);
+  // translate ( 'Home', true);  
+  // translate ( 'This Week', true);
+  // translate ( 'This Month', true);
+  // translate ( 'This Year', true);
   jscMenu_menu ('My Calendar');
     jscMenu_item ( 'home.png', 'Home', 'index.php' );
     if ( $today_url != '' ) jscMenu_item ( 'today.png', 'Today', $today_url );
@@ -338,18 +344,32 @@ var myMenu =
   jscMenu_close();
   
   
-  // Events Menu  
+  // Events Menu 
+  // translate ( 'Events', true);
+  // translate ( 'Add New Event', true);
+  // translate ( 'Add New Task', true);
+  // translate ( 'Delete Entries', true);
+  // translate ( 'Unapproved Entries', true);
+  // translate ( 'Export', true);
+  // translate ( 'Import', true);
   jscMenu_menu ('Events');
     if ( $new_entry_url != '' ) jscMenu_item ( 'add.png', 'Add New Event', $new_entry_url );
     if ( $new_task_url != '' ) jscMenu_item ( 'newtodo.png', 'Add New Task', $new_task_url );
-    if ( $is_admin ) jscMenu_item ( 'delete.png', 'Delete Events', 'purge.php' );
-    if ( $unapproved_url != '' ) jscMenu_item ( 'unapproved.png', 'Unapproved Events', $unapproved_url );
+    if ( $is_admin ) jscMenu_item ( 'delete.png', 'Delete Entries', 'purge.php' );
+    if ( $unapproved_url != '' ) jscMenu_item ( 'unapproved.png', 'Unapproved Entries', $unapproved_url );
     if ( $export_url != '' ) jscMenu_item ( 'up.png', 'Export', $export_url );
     if ( $import_url != '' ) jscMenu_item ( 'down.png', 'Import', $import_url );
   jscMenu_close();
 
 
   // Views Menu
+  // translate ( 'Views', true);
+  // translate ( 'Another User\'s Calendar', true);
+  // translate ( 'My Views', true);
+  // translate ( 'Another User\'s Calendar', true);
+  // translate ( 'Views', true);
+  // translate ( 'Manage Calendar of', true);
+  // translate ( 'Manage Views', true);
   jscMenu_menu ('Views');
     if ( $select_user_url != '' ) jscMenu_item ( 'display.png', "Another User\'s Calendar", $select_user_url );
 
@@ -379,6 +399,10 @@ var myMenu =
 
 
   // Reports Menu
+  // translate ( 'Reports', true);
+  // translate ( 'Activity Log', true);
+  // translate ( 'My Reports', true);
+  // translate ( 'Manage Reports', true);
   if ( $login != '__public__' ) {
   jscMenu_menu ('Reports');
     if ( $is_admin && ( ! access_is_enabled () || 
@@ -403,6 +427,16 @@ var myMenu =
   
 
   // Settings Menu
+  // translate ( 'Settings', true);
+  // translate ( 'Assistants', true);
+  // translate ( 'Preferences', true);
+  // translate ( 'Categories', true);
+  // translate ( 'Layers', true);
+  // translate ( 'My Profile', true);
+  // translate ( 'Public Calendar', true);
+  // translate ( 'Unapproved Events', true);
+  // translate ( 'System Settings', true);
+  // translate ( 'User Manager', true);
   if ( $login != '__public__' ) {
   jscMenu_menu ('Settings');  
 
@@ -467,15 +501,18 @@ var myMenu =
   }
 
   // Search Menu
+  // translate ( 'Search', true);
+  // translate ( 'Advanced Search', true);
   if ( $search_url != '' ) {
     jscMenu_menu ('Search');
     jscMenu_item ( 'search.png', 'Advanced Search', 'search.php' );
     jscMenu_divider();
-    jscMenu_custom('<td class="ThemeMenuItemLeft"><img src="includes/menu/icons/spacer.gif" /></td><td colspan="2"><form action="search_handler.php" method="post"><input type="text" name="keywords" size="25" /><input type="submit" value="Search" /></form></td>');
+    jscMenu_custom('<td class="ThemeMenuItemLeft"><img src="includes/menu/icons/spacer.gif" /></td><td colspan="2"><form action="search_handler.php" method="post"><input type="text" name="keywords" size="25" /><input type="submit" value="' . translate ( 'Search', true) . '" /></form></td>');
     jscMenu_close();
   }
 
   // Help Menu (Link)
+  // translate ( 'Help', true);
   if ( $help_url != '' ) jscMenu_menu ('Help','javascript:openHelp()');
 ?>  
 ];

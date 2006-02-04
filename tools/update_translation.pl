@@ -30,10 +30,10 @@
 #
 # Note: this utility should be run from this directory (tools).
 # Note #2: you can use perltidy to format this perl script nicely:
-#	http://perltidy.sourceforge.net/
+#  http://perltidy.sourceforge.net/
 # Usage:
-#	perltidy -i=2 update_translation.pl
-#	(which will create update_translation.pl.tdy, the new version)
+#  perltidy -i=2 update_translation.pl
+#  (which will create update_translation.pl.tdy, the new version)
 #
 ###########################################################################
 
@@ -221,6 +221,7 @@ if ( -d "$p_base_dir/includes/classes" ) {
   }
 }
 if ( $plugin eq "" ) {
+  push( @files, "includes/menu/index.php" );
   push( @files, "tools/send_reminders.php" );
   push( @files, "install/index.php" );
 }

@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 02-03-2006
+# Translation last updated on 02-04-2006
 
 
 ###############################################
@@ -1038,6 +1038,13 @@ Global Categories can not be changed: Global Categories can not be changed
 
 
 ###############################################
+# Page: upcoming.php
+#
+__month__ __dd__: __month__ __dd__
+more: more
+
+
+###############################################
 # Page: users.php
 #
 Add New User: Add New User
@@ -1175,7 +1182,6 @@ Dec: Dec
 Title: WebCalendar
 __month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
-__month__ __dd__: __month__ __dd__
 Sun: Sun
 Mon: Mon
 Tue: Tue
@@ -1235,12 +1241,6 @@ Go to: Go to
 
 
 ###############################################
-# Page: includes/menu_old.php
-#
-Logout: Logout
-
-
-###############################################
 # Page: includes/site_extras.php
 #
 Send Reminder: Send Reminder
@@ -1254,6 +1254,7 @@ My Calendar: My Calendar
 Back to My Calendar: Back to My Calendar
 Add New Entry: Add New Entry
 Add New Task: Add New Task
+Logout: Logout
 Manage calendar of: Manage calendar of
 
 
@@ -1392,6 +1393,24 @@ connect_host: SMTP Error~ Could not connect to SMTP host~
 file_access: Could not access file~
 file_open: File Error Could not open file~
 encoding: Unknown encoding~
+
+
+###############################################
+# Page: includes/menu/index.php
+#
+This Week: This Week
+This Month: This Month
+This Year: This Year
+Add New Event: Add New Event
+Delete Entries: Delete Entries
+Another User\'s Calendar: Another User\'s Calendar
+My Views: My Views
+Manage Calendar of: Manage Calendar of
+My Reports: My Reports
+My Profile: My Profile
+Public Calendar: Public Calendar
+Unapproved Events: Unapproved Events
+User Manager: User Manager
 
 
 ###############################################
