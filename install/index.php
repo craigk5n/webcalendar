@@ -266,7 +266,7 @@ if ( ! isset ( $_SESSION['application_name'] ) ) {
 // Set Server URL
 if ( ! isset ( $_SESSION['server_url'] ) ) {
     if ( ! empty ( $_SERVER['HTTP_HOST'] ) && ! empty ( $_SERVER['REQUEST_URI'] ) ) {
-      $ptr = strpos ( $_SERVER['REQUEST_URI'], "/", 2 );
+      $ptr = strpos ( $_SERVER['REQUEST_URI'], "/install", 2 );
       if ( $ptr > 0 ) {
         $uri = substr ( $_SERVER['REQUEST_URI'], 0, $ptr + 1 );
         $SERVER_URL = "http://" . $_SERVER['HTTP_HOST'];
@@ -1042,7 +1042,7 @@ doc.li {
 </style>
 </head>
 <body <?php if ( ! empty ($onload) ) echo "onload=\"$onload\""; ?> >
-<?php  // print_r ( $_SESSION ); ?>
+<?php   //print_r ( $_SERVER ); ?>
 <?php if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <table border="1" width="90%" align="center">
 <tr><th class="pageheader"  colspan="2"><?php echo translate ( "WebCalendar Installation Wizard" ) . ":" . translate ( "Step" ) ?> 1</th></tr>

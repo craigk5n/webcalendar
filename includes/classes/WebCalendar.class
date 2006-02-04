@@ -906,7 +906,7 @@ class WebCalendar {
       $single_user, $single_user_login, $pub_acc_enabled,
       $PUBLIC_ACCESS_CAN_ADD, $session_not_found, $PHP_AUTH_USER,
       $login, $PHP_SELF, $login_url, $login, $is_admin, $lastname,
-      $firstname, $fullname, $user_email, $use_http_auth,
+      $firstname, $fullname, $user_email, $use_http_auth, $user_inc,
       $login_login, $login_is_admin, $login_lastname, $LANGUAGE,
       $login_firstname, $login_fullname, $login_email, $single_user,
       $not_auth, $readonly, $is_nonuser, $PROGRAM_VERSION;
