@@ -167,8 +167,8 @@ function translate ( $str, $decode='' ) {
   else {
     // To help in translating, use the following to help identify text that
     // has not been translated
-    //return "<blink>$str</blink>";
-    return $str;
+    return "<blink>$str</blink>";
+    //return $str;
   }
 }
 
