@@ -345,7 +345,8 @@ function do_debug ( $msg ) {
  */
 function get_preferred_view ( $indate="", $args="" ) {
   global $STARTVIEW, $thisdate;
-  
+  global $ALLOW_VIEW_OTHER, $is_admin;
+    
   //we want user's to set  their pref on first login
   if ( empty ( $STARTVIEW ) ) return false;
   
@@ -355,7 +356,13 @@ function get_preferred_view ( $indate="", $args="" ) {
   // they have not updated their preferences.
   if ( $url == "month" || $url == "day" || $url == "week" || $url == "year" )
     $url .= ".php";
-
+  
+  //prevent endless looping if preferred view is custom and viewing
+  //others is not allowed
+  if ( substr( $url, 0, 5 ) == 'view_' && $ALLOW_VIEW_OTHER == "N" && ! $is_admin ) {
+    $url = "month.php";
+  }
+ 
   if ( ! access_can_view_page ( $url ) ) {
     if ( access_can_access_function ( ACCESS_WEEK ) )
       $url = "week.php";
