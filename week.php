@@ -128,9 +128,6 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) / $interval );
 
 $untimed_found = false;
 $get_unapproved = ( $DISPLAY_UNAPPROVED == "Y" );
-if ( $login == "__public__" ) {
-  $get_unapproved = false;
-}
 
 $all_day = array ();
 for ( $d = $start_ind; $d <= $end_ind; $d++ ) {

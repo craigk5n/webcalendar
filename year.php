@@ -41,8 +41,6 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
 $DISPLAY_ALL_DAYS_IN_MONTH = 'N';
 // Include unapproved events?
 $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
-if ( $user == "__public__" )
-  $get_unapproved = false;
 
  print_header();
  ?>

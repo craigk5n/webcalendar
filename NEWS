@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1413527: Public access not seeing unapproved events
       1403574: upcoming.php does not work with HTTP Auth
       1413327: repeated events appear out of order in various pages
       1421389: user-app-: login-app opens wrong login file in _top.
