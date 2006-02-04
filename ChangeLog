@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1414017: public prefs choice gives "Redirection limit exceeded" error
  - Fixed bug 1413527: Public access not seeing unapproved events
  - Fixed bug 1403574: upcoming.php does not work with HTTP Auth
  - Implemented patch 1418938: Upcoming.php updated to run as include or command line
