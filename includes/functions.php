@@ -2973,9 +2973,6 @@ function print_date_entries ( $date, $user, $ssi ) {
     $DISPLAY_TASKS_IN_GRID, $WEEK_START;
   $cnt = 0;
   $get_unapproved = ( $DISPLAY_UNAPPROVED == "Y" );
-  // public access events always must be approved before being displayed
-  if ( $user == "__public__" )
-    $get_unapproved = false;
 
   $year = substr ( $date, 0, 4 );
   $month = substr ( $date, 4, 2 );
@@ -3720,8 +3717,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR, $DISPLAY_TASKS_IN_GRID;
   //global $repeated_events;
   $get_unapproved = ( $DISPLAY_UNAPPROVED == "Y" );
-  if ( $user == "__public__" )
-    $get_unapproved = false;
+
   if ( empty ( $TIME_SLOTS ) ) {
     echo "Error: TIME_SLOTS undefined!<br />\n";
     return;
@@ -4549,9 +4545,6 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
     $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD;
   $cnt = 0;
   $get_unapproved = ( $DISPLAY_UNAPPROVED == "Y" );
-  // public access events always must be approved before being displayed
-  if ( $GLOBALS["login"] == "__public__" )
-    $get_unapproved = false;
 
   $year = substr ( $date, 0, 4 );
   $month = substr ( $date, 4, 2 );

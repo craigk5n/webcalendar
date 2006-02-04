@@ -238,7 +238,7 @@ if ( $allow_user_override ) {
   }
 }
 
-$get_unapproved = ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y';
+$get_unapproved = ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y' );
 
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   $x = getIntValue ( "cat_id", true );

@@ -443,10 +443,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
 
   $events = read_events ( $report_user, $start_date, $end_date, $cat_id );
 
-  $get_unapproved = $DISPLAY_UNAPPROVED == 'Y';
-  if ( $report_user == "__public__" ) {
-    $get_unapproved = false;
-  }
+  $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
   //echo "User: $report_user <br />\n";
   //echo "Date Range: $start_date - $end_date <br /><br />\n";

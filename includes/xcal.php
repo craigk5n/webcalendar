@@ -661,7 +661,7 @@ function export_get_event_entry($id='all', $attachment=false) {
     $sql .= " ) ";
   } //end if $id=all
 
-  if ( $DISPLAY_UNAPPROVED == "N"  || $login == "__public__" ) {
+  if ( $DISPLAY_UNAPPROVED == "N") {
     $sql .= " AND webcal_entry_user.cal_status = 'A'";
   }
   else {
