@@ -68,6 +68,7 @@ if ( ! empty ( $_POST ) && empty ( $error )) {
     include_once $theme;
     save_pref ( $webcal_theme, 'theme' );  
   }
+  do_redirect ( 'pref.php' );
 }
 
 

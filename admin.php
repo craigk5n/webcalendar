@@ -65,6 +65,7 @@ if ( ! empty ( $_POST ) && empty ( $error )) {
     include_once $theme;
     save_pref ( $webcal_theme, 'theme' );  
   }
+  do_redirect ( 'admin.php' );
 }  
 
 //load any new config settings. Existing ones will not be affected
