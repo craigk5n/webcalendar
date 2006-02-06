@@ -6031,7 +6031,8 @@ function get_OverLap ( $item, $i, $parent=true, $nextdur=0 ) {
     $result[$i]->setTime( -($tz_offset[0]) * 10000 );
     $result[$i]->setDate( date ( "Ymd", $midnight + (12 * 3600 ) ) );
     }
-    if ( $parent )$result[$i]->setName( $result[$i]->getName() . " (cont.)");        
+    if ( $parent )$result[$i]->setName( $result[$i]->getName() .
+      ' (' . translate ( "cont." ) . ')');        
     $i++;  
     if ( $parent )$item->setDuration( $item->getDuration() - $item_duration -1);       
   }
