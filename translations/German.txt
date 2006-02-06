@@ -6,7 +6,8 @@
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Last update: 24 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 2 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 02-02-2006
+# Last update: 3 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 02-03-2006
 
 
 ###############################################
@@ -455,6 +456,9 @@ themes-help: Erlaubt eine Vielzahl von Updates f&uuml;r Konfigurationseinstellun
 Themes: Themen
 AVAILABLE THEMES: VERF&Uuml;GBARE THEMEN
 Preview: Vorschau
+Allow top menu: Erlaube Topmen&uuml;
+menu-themes-help: Stellt die Farben und die Art des oberen Men&uuml;s ein
+Menu theme: Men&uuml; Thema
 fonts-help: definiert die Standard-Schriftarten (z.B. "Arial, Helvetica")
 Fonts: Schriftart
 custom-script-help: Erlaubt Eintr&auml;ge von benutzerdefinierten Javascript- oder Stylesheet Texten welche im HTML "Kopf"-Abschnitt auf jeder Seite eingef&uuml;gt werden.
