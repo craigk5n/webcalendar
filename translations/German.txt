@@ -7,7 +7,8 @@
 # Last update: 24 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 2 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 3 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 02-03-2006
+# Last update: 6 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 02-06-2006
 
 
 ###############################################
@@ -361,6 +362,13 @@ No such nonuser calendar: Kein(e) 'Zentrale(r)'-Kalender
 
 
 ###############################################
+# Page: upcoming.php
+#
+__month__ __dd__: __dd__. __month__
+more: weitere...
+
+
+###############################################
 # Page: login.php
 #
 Invalid login: Benutzername oder Passwort falsch
@@ -484,6 +492,9 @@ yearly-shows-events-help: Zeigt Tage mit Terminen in der Monats- und Jahresansic
 Display days with events in bold in month and year views: Zeigt Tage mit Terminen in der Monats- und Jahresansicht HERVORGEHOBEN (FETT) an
 display-desc-print-day-help: Beinhaltet in der Druckansicht die Beschreibungen der Termine in der Tagesansicht
 Display description in printer day view: Beschreibungsanzeige von Terminen in der Druckansicht von Tagesansichten
+display-alltimezones-help: Falls aktiviert, werden alle bekannten Zeiten in der Zeitzonentabelle geladen
+Display complete timezone list: Anzeigen der kompletten Zeitzonenbereiche
+Requires page reload: Ben&ouml;tigt ein neuerliches laden der Seite
 tz-help: Hilfe f&uuml;r Zeitzonen
 Server Timezone Selection: Zeitzonenauswahl am Server
 Your current GMT offset is: Ihre jetzige GMT-Zeitverschiebung ist
@@ -1201,7 +1212,6 @@ Please see FAQ: Bitte in der FAQ nachlesen
 Title: Webkalender
 __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
-__month__ __dd__: __dd__. __month__
 Sun: So
 Mon: Mo
 Tue: Di
@@ -1416,6 +1426,24 @@ connect_host: SMTP Fehler - Kann nicht nicht zum SMTP HOST verbunden werden
 file_access: Kann auf Datei nicht zugreifen
 file_open: Dateifehler, kann Datei nicht &ouml;ffnen
 encoding: Unbekannte Verschl&uuml;sselung
+
+
+###############################################
+# Page: includes/menu/index.php
+#
+This Week: Aktuelle Woche
+This Month: Aktuelles Monat
+This Year: Aktuelles Jahr
+Add New Event: Neuen Termin hinzuf&uuml;gen
+Delete Entries: Eintr&auml;ge l&ouml;schen
+Another User\'s Calendar: Kalender anderer Benutzer
+My Views: Meine Ansichten
+Manage Calendar of: Kalender verwalten von
+My Reports: Meine Berichte
+My Profile: Mein Profil
+Public Calendar: &Ouml;ffentlicher Kalender
+Unapproved Events: Unbest&auml;tigte Termine
+User Manager: Benutzermanager
 
 
 ###############################################
