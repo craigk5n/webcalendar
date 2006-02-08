@@ -125,9 +125,8 @@ function showtip(e){
     recursive_resize(idiv, maxwidth);
     popupW = idiv.offsetWidth;
     popupH = idiv.offsetHeight;
-
     if (x + popupW + xoffset > winW - xoffset) {
-      idiv.style.left = (winW - popupW - xoffset) + px;
+      idiv.style.left = (x - popupW - xoffset) + px;
     } else {
       idiv.style.left = (x + xoffset) + px;
     }
