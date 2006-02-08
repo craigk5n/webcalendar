@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1410156: Pop ups displaying incorrectly in IE6
       1427068: SMTP mail doesn't accept admin authorization settings
       1425311: saving system setting requires 2x clicks at the save-button
       1425316: Event who needs 2 days cannot be translated correctly

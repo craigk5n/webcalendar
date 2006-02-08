@@ -80,10 +80,13 @@ function show(evt, name){
   idiv=gettip(name);
   if(idiv){
    scrollX =0; scrollY=0;
-   winW=(window.innerWidth)? window.innerWidth+window.pageXOffset-16:document.body.offsetWidth-20;
-   winH=(window.innerHeight)?window.innerHeight+window.pageYOffset  :document.body.offsetHeight;
+
    scrollX=(typeof window.pageXOffset == "number")? window.pageXOffset:(document.documentElement && document.documentElement.scrollLeft)?document.documentElement.scrollLeft:(document.body && document.body.scrollLeft)?document.body.scrollLeft:window.scrollX;
    scrollY=(typeof window.pageYOffset == "number")? window.pageYOffset:(document.documentElement && document.documentElement.scrollTop)?document.documentElement.scrollTop:(document.body && document.body.scrollTop)?document.body.scrollTop:window.scrollY;
+   
+   winW=(window.innerWidth)? window.innerWidth+window.pageXOffset-16:document.body.offsetWidth-20;
+   winH=(window.innerHeight)?window.innerHeight+scrollY:document.body.offsetHeight+scrollY;
+   
    popupW = idiv.offsetWidth;
    popupH = idiv.offsetHeight;   
 
@@ -120,7 +123,6 @@ function showtip(e){
     } else {
       x=0; y=0;
     }
-
     // Make sure we don't go off screen
     recursive_resize(idiv, maxwidth);
     popupW = idiv.offsetWidth;
@@ -130,7 +132,6 @@ function showtip(e){
     } else {
       idiv.style.left = (x + xoffset) + px;
     }
-
     if (y + popupH + yoffset > winH - yoffset) {
       if (winH - popupH - yoffset < 0) {
         idiv.style.top = 0 + px;
