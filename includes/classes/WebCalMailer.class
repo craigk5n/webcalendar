@@ -31,9 +31,9 @@ class WebCalMailer extends phpmailer {
     $this->Host     = $SMTP_HOST;
     $this->Mailer   = $EMAIL_MAILER;
     $this->CharSet  = translate ( "charset");
-    $mail->SMTPAuth = ( $SMTP_AUTH == 'Y'? true : false );     // turn on SMTP authentication
-    $mail->Username = $SMTP_USERNAME;  // SMTP username
-    $mail->Password = $SMTP_PASSWORD; // SMTP password 
+    $this->SMTPAuth = ( $SMTP_AUTH == 'Y'? true : false );     // turn on SMTP authentication
+    $this->Username = $SMTP_USERNAME;  // SMTP username
+    $this->Password = $SMTP_PASSWORD; // SMTP password 
   }
   
   // Replace the default language handler to use WebCalendar's function

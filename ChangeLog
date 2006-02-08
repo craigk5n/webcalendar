@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1427068: SMTP mail doesn't accept admin authorization settings
  - Fixed bug 1425311: saving system setting requires 2x clicks at the save-button
  - Fixed bug 1425316: Event who needs 2 days cannot be translated correctly
  - Fixed bug 1424190: SERVER_URL short if WC not top level folder
