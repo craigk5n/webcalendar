@@ -162,7 +162,7 @@ if ( $id > 0 && empty ( $error ) ) {
            // Apply user's GMT offset and display their TZID
            display_time ( $eventdate . $eventtime, 2, '', $user_TIMEZONE, $t_format );
           $msg .= "\n\n";
-					$msg = stripslashes ( $msg );
+          $msg = stripslashes ( $msg );
           //use WebCalMailer class
           $from = $login_email;
           if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
@@ -226,7 +226,7 @@ if ( $id > 0 && empty ( $error ) ) {
       // Now, mark event as deleted for all users.
       dbi_execute ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
         "WHERE cal_id = ?", array( $id ) );
-				
+        
       // Delete External users for this event
       dbi_execute ( "DELETE FROM webcal_entry_ext_user " .
         "WHERE cal_id = ?", array( $id ) );
@@ -254,12 +254,15 @@ if ( $id > 0 && empty ( $error ) ) {
 }
 
 $ret = getValue ( "ret" );
+$return_view = get_last_view ();
 if ( ! empty ( $ret ) && $ret == "listall" ) {
   $url = "list_unapproved.php";
 } else if ( ! empty ( $ret ) && $ret == "list" ) {
   $url = "list_unapproved.php";
   if ( ! empty ( $user ) )
     $url .= "?user=$user";
+}else if ( ! empty ( $return_view ) ) {
+    do_redirect ( $return_view );
 } else {
   $url = get_preferred_view ( "", empty ( $user ) ? "" : "user=$user" );
 }
