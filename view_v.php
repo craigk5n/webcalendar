@@ -95,11 +95,11 @@ for ( $i = 0; $i < 7; $i++ ) {
 <div style="border-width:0px; width:99%;">
 <a title="<?php etranslate("Previous")?>" class="prev" 
   href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>">
-  <img src="leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
+  <img src="images/leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
 
 <a title="<?php etranslate("Next")?>" class="next" 
   href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>">
-  <img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+  <img src="images/rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .

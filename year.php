@@ -46,8 +46,8 @@ $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
  ?>
  
 <div class="title">
- <a title="<?php etranslate("Previous")?>" class="prev" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
- <a title="<?php etranslate("Next")?>" class="next" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
+ <a title="<?php etranslate("Previous")?>" class="prev" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="images/leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
+ <a title="<?php etranslate("Next")?>" class="next" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="images/rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
  <span class="date"><?php echo $thisyear ?></span>
  <span class="user"><?php
   if ( $single_user == "N" ) {
