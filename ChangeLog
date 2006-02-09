@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Moved all common images into images folder
+ - Added optional lunar phases to month.php
  - Fixed bug 1410156: Pop ups displaying incorrectly in IE6
  - Fixed bug 1427068: SMTP mail doesn't accept admin authorization settings
  - Fixed bug 1425311: saving system setting requires 2x clicks at the save-button
