@@ -67,6 +67,13 @@
  * TBD
  */
 
+//only go through the requires & includes & function declarations once, 
+// in case upcoming.php is included twice on one page
+//this trick allows the upcoming events to be displayed twice on one page
+//(perhaps with different parameters) without causing problems if 
+if ( empty ($upcoming_initialized)) {
+  $upcoming_initialized=true;
+	
 include_once 'includes/init.php';
 //This must contain the file name that this file is saved under.  It is 
 //used to determine whether the file is being run independently or
@@ -89,13 +96,6 @@ $save_current_working_dir= getcwd();
 chdir(dirname(__FILE__));
 
 //echo "$showTitle $showMore $maxEvents $numDays $cat_id<p>";
-
-//only go through the requires & includes & function declarations once, 
-// in case upcoming.php is included twice on one page
-//this trick allows the upcoming events to be displayed twice on one page
-//(perhaps with different parameters) without causing problems if 
-if ( empty ($upcoming_initialized)) {
-  $upcoming_initialized=true;
 
 load_global_settings ();
 
