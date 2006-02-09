@@ -214,6 +214,8 @@ class WebCalendar {
       }
 
       set_today($date);
+			
+			remember_this_view();
 
       if ( $CATEGORIES_ENABLED == "Y" ) {
         if ( ! empty ( $cat_id ) ) {
@@ -525,6 +527,11 @@ class WebCalendar {
     define ( 'LOG_ATTACHMENT', 'T' );
     define ( 'LOG_COMMENT', 'M' );
     /**#@-*/
+
+    /**
+     * Number of seconds in an hour
+     */
+    define ( 'ONE_HOUR', 3600 );
 
     /**
      * Number of seconds in a day

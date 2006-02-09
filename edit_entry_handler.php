@@ -1033,9 +1033,14 @@ if ( $single_user == "N" &&
 // month).  If this is a new event, then go to the preferred view for
 // the date range that this event was added to.
 if ( empty ( $error ) ) {
+  $return_view = get_last_view ();
+	if ( ! empty ( $return_view ) ) {
+	  do_redirect ( $return_view );
+	} else {
   $xdate = sprintf ( "%04d%02d%02d", $year, $month, $day );
   $user_args = ( empty ( $user ) ? '' : "user=$user" );
   send_to_preferred_view ( $xdate, $user_args );
+  }
 }
 
 print_header();
