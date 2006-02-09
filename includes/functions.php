@@ -1104,7 +1104,8 @@ function site_extras_for_popup ( $id ) {
 function build_event_popup ( $popupid, $user, $description, $time,
   $site_extras='', $location='', $name='', $id='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname, $DISABLE_POPUPS,
-    $ALLOW_HTML_DESCRIPTION, $SUMMARY_LENGTH, $PARTICIPANTS_IN_POPUP;
+    $ALLOW_HTML_DESCRIPTION, $SUMMARY_LENGTH, $PARTICIPANTS_IN_POPUP,
+    $tempfullname;
   
  if ( ! empty ( $DISABLE_POPUPS ) && $DISABLE_POPUPS == "Y" ) 
     return;
@@ -1116,18 +1117,19 @@ function build_event_popup ( $popupid, $user, $description, $time,
   $partList = array();
   if ( $id != '' && ! empty ( $PARTICIPANTS_IN_POPUP  ) && 
     $PARTICIPANTS_IN_POPUP == 'Y' ) {
-    $sql = "SELECT webcal_entry_user.cal_login, webcal_user.cal_firstname, " .
-      "webcal_user.cal_lastname, webcal_entry_user.cal_status " . 
-      "FROM webcal_user, webcal_entry_user  " .
-      "WHERE webcal_entry_user.cal_id = ? AND " .
-      "webcal_entry_user.cal_login = webcal_user.cal_login AND  " .
-      "webcal_entry_user.cal_status IN ('A', 'W' ) ";
+    $sql = "SELECT cal_login, cal_status FROM webcal_entry_user " .
+      "WHERE cal_id = ? AND cal_status IN ('A', 'W' ) ";
     $res = dbi_execute ( $sql,  array ( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
-        $partList[] = $row[1] . " " . $row[2] . ( $row[3] == 'W'? '(?)':'' );
+        $participants[] = $row;  
       }
       dbi_free_result ( $res );
+    }
+    for ( $i = 0; $i < count ( $participants ); $i++ ) {
+      user_load_variables ( $participants[$i][0], "temp" );
+      $partList[] = $tempfullname . " "  . 
+        ( $participants[$i][1] == 'W'? '(?)':'' );
     }
     $sql = "SELECT cal_fullname FROM webcal_entry_ext_user " .
       "WHERE cal_id = ? ORDER by cal_fullname";
@@ -1263,10 +1265,10 @@ function display_navigation( $name, $show_arrows=true ){
   if ( $show_arrows && ( $name != 'month' || $DISPLAY_SM_MONTH == 'N' || 
     $DISPLAY_TASKS == 'Y' ) ){
     echo "<a title=\"" . translate("Next") . "\" class=\"next\" href=\"" . 
-      "$name.php?" . $u_url . "date=$nextYmd$caturl\"><img src=\"rightarrow.gif\" alt=\"" .
+      "$name.php?" . $u_url . "date=$nextYmd$caturl\"><img src=\"images/rightarrow.gif\" alt=\"" .
       translate("Next") . "\" /></a>\n";
     echo "<a title=\"" . translate("Previous") . "\" class=\"prev\" href=\"" .
-      "$name.php?" . $u_url . "date=$prevYmd$caturl\"><img src=\"leftarrow.gif\" alt=\"" .
+      "$name.php?" . $u_url . "date=$prevYmd$caturl\"><img src=\"images/leftarrow.gif\" alt=\"" .
       translate("Previous") . "\" /></a>\n";
   }
   echo "<div class=\"title\">";
@@ -1465,11 +1467,11 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     echo "<tr class=\"monthnav\"><th colspan=\"$header_span\">\n";
     echo "<a title=\"" . 
       translate("Previous") . "\" class=\"prev\" href=\"day.php?" . $u_url  .
-      "date=$month_ago$caturl\"><img src=\"leftarrowsmall.gif\" alt=\"" .
+      "date=$month_ago$caturl\"><img src=\"images/leftarrowsmall.gif\" alt=\"" .
       translate("Previous") . "\" /></a>\n";
     echo "<a title=\"" . 
       translate("Next") . "\" class=\"next\" href=\"day.php?" . $u_url .
-      "date=$month_ahead$caturl\"><img src=\"rightarrowsmall.gif\" alt=\"" .
+      "date=$month_ahead$caturl\"><img src=\"images/rightarrowsmall.gif\" alt=\"" .
       translate("Next") . "\" /></a>\n";
     echo date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
       ( $showyear != '' ? $DATE_FORMAT_MY : "__month__" ),
@@ -1485,11 +1487,11 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     echo "<tr class=\"monthnav\"><th colspan=\"7\">\n";
     echo "<a title=\"" . 
       translate("Previous") . "\" class=\"prev\" href=\"minical.php?" . $u_url  .
-      "date=$month_ago\"><img src=\"leftarrowsmall.gif\" alt=\"" .
+      "date=$month_ago\"><img src=\"images/leftarrowsmall.gif\" alt=\"" .
       translate("Previous") . "\" /></a>\n";
     echo "<a title=\"" . 
       translate("Next") . "\" class=\"next\" href=\"minical.php?" . $u_url .
-      "date=$month_ahead\"><img src=\"rightarrowsmall.gif\" alt=\"" .
+      "date=$month_ahead\"><img src=\"images/rightarrowsmall.gif\" alt=\"" .
       translate("Next") . "\" /></a>\n";
     echo date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
       ( $showyear != '' ? $DATE_FORMAT_MY : "__month__" ),
@@ -1641,7 +1643,7 @@ function display_small_tasks ( $cat_id ) {
   $task_html .= "<tr class=\"header\"><th colspan=\"3\" align=\"left\">" . 
     translate ( "TASKS" ) . "</th><th align=\"right\">" .
     "<a href=\"edit_entry.php?" . $u_url . "eType=task\">" . 
-    "<img src=\"new.gif\" class=\"new\"/></a></th></tr>\n";
+    "<img src=\"images/new.gif\" class=\"new\"/></a></th></tr>\n";
   $task_html .= "<tr class=\"header\"><th>!</th><th>".  translate ( "Task_Title" ) . 
     "</th><th>" . translate ("Due" ) . "</th><th>&nbsp;%&nbsp;</th></tr>\n";
   foreach ( $task_list as $E )  {
@@ -1737,7 +1739,7 @@ function print_entry ( $event, $date ) {
   }
 
   if ( empty ( $catIcon ) ) {
-    echo "<img src=\"$icon\" class=\"bullet\" alt=\"" . 
+    echo "<img src=\"images/$icon\" class=\"bullet\" alt=\"" . 
       $view_text  . "\" width=\"5\" height=\"7\" />";
   } else {
     // Use category icon
@@ -2949,17 +2951,17 @@ function get_monday_before ( $year, $month, $day ) {
 function icon_text ( $id, $can_edit, $can_delete ) {
   global $readonly, $is_admin;
   $ret = "<a title=\"" . 
-  translate("View this entry") . "\" href=\"view_entry.php?id=$id\"><img src=\"view.gif\" alt=\"" . 
+  translate("View this entry") . "\" href=\"view_entry.php?id=$id\"><img src=\"images/view.gif\" alt=\"" . 
   translate("View this entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" /></a>";
   if ( $can_edit && $readonly == "N" )
     $ret .= "<a title=\"" . 
-  translate("Edit entry") . "\" href=\"edit_entry.php?id=$id\"><img src=\"edit.gif\" alt=\"" . 
+  translate("Edit entry") . "\" href=\"edit_entry.php?id=$id\"><img src=\"images/edit.gif\" alt=\"" . 
   translate("Edit entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" /></a>";
   if ( $can_delete && ( $readonly == "N" || $is_admin ) )
     $ret .= "<a title=\"" . 
       translate("Delete entry") . "\" href=\"del_entry.php?id=$id\" onclick=\"return confirm('" .
   translate("Are you sure you want to delete this entry?", true) . "\\n\\n" . 
-  translate("This will delete this entry for all users.") . "');\"><img src=\"delete.gif\" alt=\"" . 
+  translate("This will delete this entry for all users.") . "');\"><img src=\"images/delete.gif\" alt=\"" . 
   translate("Delete entry") . "\" style=\"border-width:0px; width:10px; height:10px;\" /></a>";
   return $ret;
 }
@@ -2978,13 +2980,17 @@ function print_date_entries ( $date, $user, $ssi ) {
   global $events, $readonly, $is_admin, $login, $tasks, $DISPLAY_UNAPPROVED,
     $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD, $cat_id, $is_nonuser,
     $DISPLAY_TASKS_IN_GRID, $WEEK_START;
+
   $cnt = 0;
+
   $get_unapproved = ( $DISPLAY_UNAPPROVED == "Y" );
 
+  
   $year = substr ( $date, 0, 4 );
   $month = substr ( $date, 4, 2 );
   $day = substr ( $date, 6, 2 );
   $dateu = mktime ( 12, 0, 0, $month, $day, $year );
+  $moons = getMoonPhases ( $year, $month );
   $can_add = ( $readonly == "N" || $is_admin );
   if ( $PUBLIC_ACCESS == "Y" && $PUBLIC_ACCESS_CAN_ADD != "Y" &&
     $login == "__public__" )
@@ -3000,7 +3006,7 @@ function print_date_entries ( $date, $user, $ssi ) {
       print "user=$user&amp;";
     if ( ! empty ( $cat_id ) )
       print "cat_id=$cat_id&amp;";
-    print "date=$date\"><img src=\"new.gif\" alt=\"" .
+    print "date=$date\"><img src=\"images/new.gif\" alt=\"" .
       translate("New Entry") . "\" class=\"new\" /></a>";
     $cnt++;
   }
@@ -3011,11 +3017,12 @@ function print_date_entries ( $date, $user, $ssi ) {
     if ( ! empty ( $cat_id ) )
       echo "cat_id=$cat_id&amp;";
     echo "date=$date\">$day</a>";
-
+    if ( ! empty ( $moons ) && $phase = array_search ( $date, $moons ) )
+      echo "<img src=\"images/{$phase}moon.gif\" />";
     print "<br />\n";
     $cnt++;
   }
-  
+ 
   // get all the repeating events for this date and store in array $rep
   $rep = get_repeating_entries ( $user, $date, $get_unapproved );
   $cur_rep = 0;
@@ -3347,7 +3354,7 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&amp;defusers=$user" ) .
     ( empty ( $cat_id ) ? "" :  "&amp;cat_id=$cat_id" ) .
-    "\"><img src=\"new.gif\" class=\"new\" alt=\"" . 
+    "\"><img src=\"images/new.gif\" class=\"new\" alt=\"" . 
  translate("New Entry") . "\" /></a>\n";
 }
 
@@ -3429,12 +3436,12 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
     $cal_type = "task";
     $view_text  = translate ( "View this task" ); 
-    $hour_arr[$ind] .= "<img src=\"task.gif\" class=\"bullet\" alt=\"*\" /> ";    
+    $hour_arr[$ind] .= "<img src=\"images/task.gif\" class=\"bullet\" alt=\"*\" /> ";    
     } else {
     $cal_type = "event";
     $view_text  = translate ( "View this event" );         
     if ( $event->isAllDay()  || $event->isUntimed()) {
-      $hour_arr[$ind] .= "<img src=\"circle.gif\" class=\"bullet\" alt=\"*\" /> ";
+      $hour_arr[$ind] .= "<img src=\"images/circle.gif\" class=\"bullet\" alt=\"*\" /> ";
     }
     }
 
@@ -3614,7 +3621,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
     $cal_type = "task";
     $view_text = translate ( "View this task" );
-    $hour_arr[$ind] .= "<img src=\"task.gif\" class=\"bullet\" alt=\"*\" /> ";    
+    $hour_arr[$ind] .= "<img src=\"images/task.gif\" class=\"bullet\" alt=\"*\" /> ";    
   } else {
     $cal_type = "event";
     $view_text = translate ( "View this task" );    
@@ -5269,7 +5276,6 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
         $time = sprintf ( "%06d", $E->getTime());
         $duration = $E->getDuration();
       }
-
       $hour = substr($time, 0, 2 );
       $mins = substr($time, 2, 2 );
        
@@ -5396,11 +5402,11 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
            // ignore this..
          } else if ( empty ( $master[$participants[$i]][$r]['ID'] ) ) {
            // This is the first line for 'all' users.  No event here.
-           $space = "<span class=\"matrix\"><img src=\"pix.gif\" alt=\"\" style=\"height: 8px\" /></span>";
+           $space = "<span class=\"matrix\"><img src=\"images/pix.gif\" alt=\"\" style=\"height: 8px\" /></span>";
          } else if ($master[$participants[$i]][$r]['stat'] == "A") {
-           $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"pix.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
+           $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"images/pix.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
          } else if ($master[$participants[$i]][$r]['stat'] == "W") {
-           $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"pixb.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
+           $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"images/pixb.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
          }
 
          echo "<td class=\"matrixappts\" style=\"width:{$cell_pct}%;$border\" ";
@@ -5411,15 +5417,15 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
     }
     
     echo "</tr><tr>\n<td class=\"matrix\" colspan=\"$cols\">" .
-      "<img src=\"pix.gif\" alt=\"-\" /></td></tr>\n";
+      "<img src=\"images/pix.gif\" alt=\"-\" /></td></tr>\n";
   } // End foreach participant
   
   echo "</table><br />\n";
   $busy = translate ("Busy");
   $tentative = translate ("Tentative");
   echo "<table align=\"center\"><tr><td class=\"matrixlegend\" >\n";
-  echo "<img src=\"pix.gif\" title=\"$busy\" alt=\"$busy\" /> $busy &nbsp; &nbsp; &nbsp;\n";
-  echo "<img src=\"pixb.gif\" title=\"$tentative\" alt=\"$tentative\" /> $tentative\n";
+  echo "<img src=\"images/pix.gif\" title=\"$busy\" alt=\"$busy\" /> $busy &nbsp; &nbsp; &nbsp;\n";
+  echo "<img src=\"images/pixb.gif\" title=\"$tentative\" alt=\"$tentative\" /> $tentative\n";
   echo "</td></tr></table>\n";
 } 
 
@@ -6048,4 +6054,27 @@ if (version_compare(phpversion(), '5.0') < 0) {
     ');
 }
 
+/**
+ * Get the moonphases for a given year and month.
+ *
+ * Will only work if optional moon_phases.php file exists in includes folder.
+ *
+ * @param int $year Year in YYYY format
+ * @param int $month Month in m format Jan =1
+ *
+ * #returns array  $key = phase name, $val = Ymd value
+ */
+function getMoonPhases ( $year, $month ) {
+  global $DISPLAY_MOON_PHASES;
+  static $moons;
+  
+  if ( empty ( $DISPLAY_MOON_PHASES ) || $DISPLAY_MOON_PHASES == 'N' ) {
+    return false;
+  }
+  if ( empty ( $moons ) && file_exists ( 'includes/moon_phases.php' ) ){
+    include_once ( 'includes/moon_phases.php' );
+    $moons = calculateMoonPhases( $year, $month );
+  }
+  return $moons;
+}
 ?>
