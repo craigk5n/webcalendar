@@ -753,8 +753,8 @@ if ( $single_user == "N" && $show_participants ) { ?>
   }   
     echo "</td>\n";
   echo "<td width=\"5%\" align=\"center\">$percentage%</td>\n<td width=\"65%\">";
-  echo "<img src=\"pix.gif\" width=\"$percentage%\" height=\"10\">";
-  echo "<img src=\"spacer.gif\" width=\"$spacer\" height=\"10\">";
+  echo "<img src=\"images/pix.gif\" width=\"$percentage%\" height=\"10\">";
+  echo "<img src=\"images/spacer.gif\" width=\"$spacer\" height=\"10\">";
   echo "</td></tr>\n";
   }
   echo "</table>";

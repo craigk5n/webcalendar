@@ -136,11 +136,11 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 
 <div style="border-width:0px; width:99%;">
 <a title="<?php etranslate("Previous")?>" class="prev" href="view_d.php?id=
-<?php echo $id . "&amp;date=" . $prevdate?>"><img src="leftarrow.gif" 
+<?php echo $id . "&amp;date=" . $prevdate?>"><img src="images/leftarrow.gif" 
   class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
 
 <a title="<?php etranslate("Next")?>" class="next" href="view_d.php?id=
-<?php echo $id . "&amp;date=" . $nextdate?>"><img src="rightarrow.gif" 
+<?php echo $id . "&amp;date=" . $nextdate?>"><img src="images/rightarrow.gif" 
   class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php 

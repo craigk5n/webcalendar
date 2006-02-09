@@ -53,8 +53,8 @@ $events = read_events ( strlen ( $user ) ? $user : $login, $startdate, $enddate,
 ?>
 
 <div class="title">
-<a title="Previous" class="prev" href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="leftarrow.gif" alt="Previous" /></a>
-<a title="Next" class="next" href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="rightarrow.gif" alt="Next" /></a>
+<a title="Previous" class="prev" href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="images/leftarrow.gif" alt="Previous" /></a>
+<a title="Next" class="next" href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="images/rightarrow.gif" alt="Next" /></a>
 <span class="date"><?php
   echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
@@ -112,7 +112,7 @@ for ( $d = 0; $d < 7; $d++ ) {
     echo "<a title=\"" .
       translate("New Entry") . "\" href=\"edit_entry.php?" . 
       $u_url . "date=" . 
-      date ( "Ymd", $days[$d] ) . "\"><img src=\"new.gif\" class=\"new\" alt=\"" .
+      date ( "Ymd", $days[$d] ) . "\"><img src=\"images/new.gif\" class=\"new\" alt=\"" .
       translate("New Entry") . "\" /></a>\n";
   }
   echo "<a title=\"" .
@@ -194,7 +194,7 @@ function print_detailed_entry ( $event, $date ) {
     "\" class=\"$class\" id=\"$linkid\"  href=\"view_entry.php?id=$id&amp;date=$date";
   if ( strlen ( $user ) > 0 )
     echo "&amp;user=" . $user;
-  echo "<img src=\"circle.gif\" class=\"bullet\" alt=\"view icon\" />";
+  echo "<img src=\"images/circle.gif\" class=\"bullet\" alt=\"view icon\" />";
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     if ($layers) foreach ($layers as $layer) {
       if($layer['cal_layeruser'] == $event->getLogin()) {

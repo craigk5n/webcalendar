@@ -248,7 +248,7 @@ if ( ! empty ( $error ) ) {
 <form action="login.php" method="post" >
 <input  type="hidden" name="login" value="<?php echo $user ?>" />
 <table align="center"  cellpadding="0" cellspacing="10">
-<tr><td rowspan="3"><img src="register.gif"></td>
+<tr><td rowspan="3"><img src="images/register.gif"></td>
 
 <td><?php etranslate("Welcome to WebCalendar")?></td></tr>
 <?php if ( $SELF_REGISTRATION_FULL == "N" ) { ?>
@@ -263,7 +263,7 @@ if ( ! empty ( $error ) ) {
 <form action="register.php" method="post" onsubmit="return valid_form()" name="selfreg">
 <input  type="hidden" name="control" value="<?php echo $form_control ?>" />
 <table align="center"  cellpadding="0" cellspacing="10">
-<tr><td rowspan="3"><img src="register.gif" alt="" /></td>
+<tr><td rowspan="3"><img src="images/register.gif" alt="" /></td>
 <td  align="right">
   <label><?php etranslate("Username")?>:</label></td>
   <td align="left"><input  type="text" name="user"  value="<?php echo $user ?>" size="20" maxlength="20" /></td></tr>

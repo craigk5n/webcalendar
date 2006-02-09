@@ -177,12 +177,12 @@ if ( ! empty ( $error ) ) {
 <div style="border-width:0px; width:99%;">
 <a title="<?php etranslate("Previous")?>" class="prev" href="view_t.php?timeb=
 <?php echo $timeb?>&amp;id=<?php echo $id?>&amp;date=
-<?php echo $prevdate?>"><img src="leftarrow.gif" alt="
+<?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="
 <?php etranslate("Previous")?>" /></a>
 
 <a title="<?php etranslate("Next")?>" class="next" href="view_t.php?timeb=
 <?php echo $timeb?>&amp;id=<?php echo $id?>&amp;date=
-<?php echo $nextdate?>"><img src="rightarrow.gif" alt="
+<?php echo $nextdate?>"><img src="images/rightarrow.gif" alt="
 <?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php

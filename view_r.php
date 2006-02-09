@@ -253,9 +253,9 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
 
 
 <div style="border-width:0px; width:99%;">
-<a title="<?php etranslate("Previous")?>" class="prev" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate("Previous")?>" class="prev" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
 
-<a title="<?php etranslate("Next")?>" class="next" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<a title="<?php etranslate("Next")?>" class="next" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="images/rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php
   if ( $is_day_view ) {
