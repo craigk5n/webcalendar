@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1340790: Return to proper view after edit or other action
+      1409552: Weekly repeating event shifts days
       1424413: calling upcoming.php as include doesn't work after 02/03/06
       1410156: Pop ups displaying incorrectly in IE6
       1427068: SMTP mail doesn't accept admin authorization settings

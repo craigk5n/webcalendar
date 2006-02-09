@@ -88,7 +88,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $TABLECELLFG,$TODAYCELLBG,$TEXTCOLOR;
   global $POPUP_FG,$BGCOLOR,$OTHERMONTHBG;
   global $LANGUAGE, $DISABLE_POPUPS, $MENU_ENABLED, $MENU_THEME;
-  global $CUSTOM_HEADER, $CUSTOM_SCRIPT;
+  global $CUSTOM_HEADER, $CUSTOM_SCRIPT,$REQUEST_URI;
   global $friendly, $DISPLAY_WEEKENDS, $DISPLAY_TASKS;
   global $bodyid, $self, $login, $browser;
   $lang = '';
@@ -96,7 +96,10 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
     $lang = languageToAbbrev ( $LANGUAGE );
   if ( empty ( $lang ) )
     $lang = 'en';
-
+  
+	//remember this view if the file is a view_x.php script
+	if ( ! strstr ( $REQUEST_URI, "view_entry" ) )  remember_this_view ( true );
+	
   // Start the header & specify the charset
   // The charset is defined in the translation file
   if ( ! empty ( $LANGUAGE ) ) {

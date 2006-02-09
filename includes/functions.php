@@ -507,10 +507,14 @@ function send_http_login () {
  *
  * @global string Request string
  */
-function remember_this_view () {
+function remember_this_view ( $view=false ) {
   global $REQUEST_URI;
   if ( empty ( $REQUEST_URI ) )
     $REQUEST_URI = $_SERVER["REQUEST_URI"];
+
+  // if called from init, only process script named "view_x.php
+  if ( $view == true && ! strstr ( $REQUEST_URI, "view_" ) )
+    return;
 
   // do not use anything with friendly in the URI
   if ( strstr ( $REQUEST_URI, "friendly=" ) )
@@ -2355,7 +2359,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
         $rpt_count = 999; //some BIG number
         $jump = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear);
         if ( $result[$i]->getRepeatCount() ) $rpt_count = $result[$i]->getRepeatCount() -1;
-          $date = $result[$i]->getDateTimeTS(); 
+          $date = $result[$i]->getDateTimeTS();
         if ( $result[$i]->isAllDay() || $result[$i]->isUntimed() ) {
           $date += (12 * 3600);//a simple hack to prevent DST problems
         }    
@@ -2470,7 +2474,7 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
       //skip to this year/month if called from query_events and we don't need count
       if ( ! empty ( $jump) && $Count == 999 ) {
         while ( date ("Ym",$cdate ) < date ("Ym", $jump ) )
-          $cdate += ONE_DAY * $interval;
+          $cdate = add_dstfree_time ( $cdate, ONE_DAY,  $interval );
       }
       while ($cdate <= $realend && $n <= $Count) {
         $dow = date("w", $cdate);   
@@ -2507,15 +2511,15 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
         }     
         if ( $date_excluded == false )
           $ret[$n++]=$cdate;
-        $cdate += ONE_DAY * $interval;
+        $cdate = add_dstfree_time ( $cdate, ONE_DAY,  $interval );
         $date_excluded = false;
       }
     } else if ($rpt_type == 'weekly') {
       $r=0;
       $dow = date("w",$date);
-   if ( ! empty ( $jump) && $Count == 999 ) {
-     while ( date ("Ym",$cdate ) < date ("Ym", $jump ) )
-      $cdate += ( ONE_DAY * 7 ) * $interval;
+      if ( ! empty ( $jump) && $Count == 999 ) {
+        while ( date ("Ym",$cdate ) < date ("Ym", $jump ) )
+          $cdate = add_dstfree_time ( $cdate, ONE_WEEK,  $interval );
       }
       $cdate = $date - ($dow * ONE_DAY);
       while ($cdate <= $realend && $n <= $Count ) {
@@ -2534,7 +2538,7 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
           }
         }
         //skip to the next week in question.
-        $cdate += ( ONE_DAY * 7 ) * $interval;
+        $cdate = add_dstfree_time ( $cdate, ONE_WEEK,  $interval );
       }
     } else if ( substr ( $rpt_type, 0 , 7 ) == 'monthly') {  
       $thismonth = substr($dateYmd, 4, 2);
@@ -2722,6 +2726,29 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
     }
   }
   return $ret;
+}
+
+/**
+ * Get the corrected timestamp after adding ONE_WEEK
+ * or ONE_DAY to compensate for DST
+ *
+ */
+function add_dstfree_time ( $date, $span, $interval=1 ) {
+  $ctime = date ( "G", $date );
+	$date += $span * $interval;
+	$dtime = date ( "G", $date );
+	if ( $ctime == $dtime  ) {
+    return $date;	
+	} else if ( $ctime == 23 && $dtime == 0 ) {
+	  $date -= ONE_HOUR;
+	} else if ( $ctime == 0 && $dtime == 23 ) {
+	  $date += ONE_HOUR;
+	} else if ( $ctime > $dtime  ) {
+	  $date += ONE_HOUR;		
+	} else if ( $ctime < $dtime  ) {
+	  $date -= ONE_HOUR;	
+	}	 
+	return $date;
 }
 
 /**
@@ -3041,7 +3068,6 @@ function print_date_entries ( $date, $user, $ssi ) {
     }
    $ev = combine_and_sort_events($ev, $tk);
  }
-
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
       print_entry ( $ev[$i], $date );
