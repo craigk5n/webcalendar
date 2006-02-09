@@ -34,7 +34,7 @@ if ( $ALLOW_VIEW_OTHER != 'Y') {
 <h2><?php
 if ($updating_public)
   echo translate($PUBLIC_ACCESS_FULLNAME) . "&nbsp;";
-etranslate("Layers")?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
+etranslate("Layers")?>&nbsp;<img src="images/help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 
 <a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 <?php

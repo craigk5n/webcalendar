@@ -232,7 +232,7 @@ if ( ! empty ( $return_path ) ) {
 
 <table cellpadding="10" align="center">
 <tr><td rowspan="2">
- <img src="login.gif" alt="Login" /></td><td align="right">
+ <img src="images/login.gif" alt="Login" /></td><td align="right">
  <label for="user"><?php etranslate("Username")?>:</label></td><td>
  <input name="login" id="user" size="15" maxlength="25" 
    value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" 
