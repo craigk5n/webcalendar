@@ -59,8 +59,8 @@ $users = explode(",",$users);
 ?>
 
 <div style="border-width:0px; width:99%;">
-<a title="<?php etranslate("Previous")?>" class="prev" href="<?php echo $prev_url ?>"><img src="leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
-<a title="<?php etranslate("Next")?>" class="next" href="<?php echo $next_url ?>"><img src="rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<a title="<?php etranslate("Previous")?>" class="prev" href="<?php echo $prev_url ?>"><img src="images/leftarrow.gif" class="prevnext" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate("Next")?>" class="next" href="<?php echo $next_url ?>"><img src="images/rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
 <span class="date"><?php 
   printf ( "%s, %s %d, %d", weekday_name ( $wday ), month_name ( $month - 1 ), $day, $year ); 

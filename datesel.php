@@ -37,9 +37,9 @@ $prevdate = date ( "Ym", $prev ) . "01";
 <div style="text-align:center;">
 <table align="center" >
 <tr>
-<td><a title="<?php etranslate("Previous")?>"  class="prev" href="datesel.php?form=<?php echo $form?>&amp;fday=<?php echo $fday?>&amp;fmonth=<?php echo $fmonth?>&amp;fyear=<?php echo $fyear?>&amp;date=<?php echo $prevdate?>"><img src="leftarrowsmall.gif"  alt="<?php etranslate("Previous")?>" /></a></td>
+<td><a title="<?php etranslate("Previous")?>"  class="prev" href="datesel.php?form=<?php echo $form?>&amp;fday=<?php echo $fday?>&amp;fmonth=<?php echo $fmonth?>&amp;fyear=<?php echo $fyear?>&amp;date=<?php echo $prevdate?>"><img src="images/leftarrowsmall.gif"  alt="<?php etranslate("Previous")?>" /></a></td>
 <th colspan="5"><?php echo month_name ( $thismonth - 1 ) . " " . $thisyear;?></th>
-<td><a title="<?php etranslate("Next")?>"class="next"  href="datesel.php?form=<?php echo $form?>&amp;fday=<?php echo $fday?>&amp;fmonth=<?php echo $fmonth?>&amp;fyear=<?php echo $fyear?>&amp;date=<?php echo $nextdate?>"><img src="rightarrowsmall.gif"  alt="<?php etranslate("Next")?>" /></a></td>
+<td><a title="<?php etranslate("Next")?>"class="next"  href="datesel.php?form=<?php echo $form?>&amp;fday=<?php echo $fday?>&amp;fmonth=<?php echo $fmonth?>&amp;fyear=<?php echo $fyear?>&amp;date=<?php echo $nextdate?>"><img src="images/rightarrowsmall.gif"  alt="<?php etranslate("Next")?>" /></a></td>
 </tr>
 <?php
 echo "<tr class=\"day\">\n";

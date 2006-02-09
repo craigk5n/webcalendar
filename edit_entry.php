@@ -464,7 +464,7 @@ print_header ( $INC, '', $BodyX );
 
 $eType_label = " ( " . translate ( $eType ) . " )";
 ?>
-<h2><?php  echo ( $id? translate("Edit Entry"): translate("Add Entry")) . $eType_label;?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
+<h2><?php  echo ( $id? translate("Edit Entry"): translate("Add Entry")) . $eType_label;?>&nbsp;<img src="images/help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_edit_entry.php<?php if ( empty ( $id ) ) echo "?add=1"; ?>', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 
 <?php
    if ( $can_edit ) {

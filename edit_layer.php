@@ -30,7 +30,7 @@ if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
   etranslate("Edit Layer");
 else
   etranslate("Add Layer");
-?>&nbsp;<img src="help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" /></h2>
+?>&nbsp;<img src="images/help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" /></h2>
 
 <form action="edit_layer_handler.php" method="post" onsubmit="return valid_form(this);" name="prefform">
 
