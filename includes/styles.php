@@ -285,6 +285,7 @@ label {
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   padding: 0px 2px 0px 3px;
+  vertical-align:top
 }
 .boxtop {
  border-top: 1px solid #888888;
