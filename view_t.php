@@ -53,12 +53,15 @@ if ( empty ( $view_name ) ) {
 $INC = array('js/popups.php');
 print_header($INC);
 
+
+set_today($date);
+
 // Initialize date to first of current month
 if ( empty ( $timeb ) || $timeb == 0 ) {
   $date = substr($date,0,6)."01";
 }
 
-set_today($date);
+
 
 // Week timebar
 if ( ! empty ( $timeb) && $timeb == 1 ) {
