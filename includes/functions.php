@@ -1707,13 +1707,9 @@ function print_entry ( $event, $date ) {
 
   if ( $event->getPriority() == 3 ) echo "<strong>";
 
-  if ( $event->getExtForID() != '' ) {
-    $id = $event->getExtForID();
-    $name = $event->getName() . ' (' . translate ( "cont." ) . ')';
-  } else {
-    $id = $event->getID();
-    $name = $event->getName();
-  }
+  $id = $event->getID();
+  $name = $event->getName();
+
 
   $popupid = "eventinfo-pop$id-$key";
   $linkid  = "pop$id-$key";
@@ -1727,9 +1723,11 @@ function print_entry ( $event, $date ) {
       $cal_type = "event";
       $view_text = translate ( "View this event" );    
     }
-    
+  //make sure clones have parents url date
+  $linkDate = (  $event->getClone()?date( "Ymd", 
+    get_datetime_add_tz ( $date, 12, -24 ) ): $date );  
   echo "<a title=\"" . $view_text . "\" class=\"$class\"" .
-    " id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$date";
+    " id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$linkDate";
   if ( strlen ( $user ) > 0 )
     echo "&amp;user=" . $user;
   echo "\">";
@@ -2169,6 +2167,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
   global $login, $thisyear, $thismonth, $TIMEZONE;
   global $layers, $PUBLIC_ACCESS_DEFAULT_VISIBLE;
   global $result;
+  $overlaps = array ();
+  $cloneRepeats = array();
   $result = array ();
   $layers_byuser = array ();
   //new multiple categories requires some checking to see if this this cat_id is
@@ -2328,49 +2328,69 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
           $result [$i++] = $item;
         }
       }
-       if ( $item->getDuration() > 0 && ! $item->isAllDay()  ) 
+       if ( $item->getDuration() > 0 && ! $item->isAllDay() ) 
          $i = get_OverLap ( $item, $i );
     }
     dbi_free_result ( $res );
   }
   
-
   if ( $want_repeated ) {
      // Now load event exceptions/inclusions and store as array  
     for ( $i = 0; $i < count ( $result ); $i++ ) {
       if ( $result[$i]->getID() != '' ) {
-        $res = dbi_execute ( "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not " .
+        $res = dbi_execute ( "SELECT cal_date, cal_exdate " .
+          "FROM webcal_entry_repeats_not " .
           "WHERE cal_id = ?", array( $result[$i]->getID() ) );
         while ( $row = dbi_fetch_row ( $res ) ) {
-          if ( $row[1] == 1 ) {
-            $result[$i]->addRepeatException($row[0], $result[$i]->getID());
+          //if this is a clone, add one day to each exception date
+          if ( ! $result[$i]->getClone() ){
+            $except_date = $row[0];          
           } else {
-            $result[$i]->addRepeatInclusion($row[0]);        
+            $except_date = date( "Ymd", get_datetime_add_tz ( $row[0], 12, 24 ) );
+          }
+          if ( $row[1] == 1 ) {
+            $result[$i]->addRepeatException($except_date, $result[$i]->getID());
+          } else {
+            $result[$i]->addRepeatInclusion($except_date);        
           }
         }
         dbi_free_result ( $res );
         //get all dates for this event
-        if ( $result[$i]->getRepeatEndDateTimeTS() ) {
-          $until = $result[$i]->getRepeatEndDateTimeTS();
-        } else { 
-          //make sure all January dates will appear in small calendars
-          $until = mktime ( 0,0,0,2,1, ($thisyear +1)); 
-        }
-        $rpt_count = 999; //some BIG number
-        $jump = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear);
-        if ( $result[$i]->getRepeatCount() ) $rpt_count = $result[$i]->getRepeatCount() -1;
+        //if clone, we'll get the dats from parent later
+        if ( ! $result[$i]->getClone() ){
+          if ( $result[$i]->getRepeatEndDateTimeTS() ) {
+            $until = $result[$i]->getRepeatEndDateTimeTS();
+          } else { 
+            //make sure all January dates will appear in small calendars
+            $until = mktime ( 0,0,0,2,1, ($thisyear +1)); 
+          }
+          $rpt_count = 999; //some BIG number
+          $jump = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear);
+          if ( $result[$i]->getRepeatCount() ) 
+            $rpt_count = $result[$i]->getRepeatCount() -1;
           $date = $result[$i]->getDateTimeTS();
-        if ( $result[$i]->isAllDay() || $result[$i]->isUntimed() ) {
-          $date += (12 * 3600);//a simple hack to prevent DST problems
-        }    
-        $dates = get_all_dates ( $date,
-          $result[$i]->getRepeatType(), $result[$i]->getRepeatFrequency(),
-          $result[$i]->getRepeatByMonth(), $result[$i]->getRepeatByWeekNo(),
-          $result[$i]->getRepeatByYearDay(), $result[$i]->getRepeatByMonthDay(),
-          $result[$i]->getRepeatByDay(), $result[$i]->getRepeatBySetPos(),
-          $rpt_count, $until, $result[$i]->getRepeatWkst(),
-          $result[$i]->getRepeatExceptions(), $result[$i]->getRepeatInclusions(), $jump );
-        $result[$i]->addRepeatAllDates($dates);
+          if ( $result[$i]->isAllDay() || $result[$i]->isUntimed() ) {
+            $date += (12 * 3600);//a simple hack to prevent DST problems
+          }    
+          $dates = get_all_dates ( $date,
+            $result[$i]->getRepeatType(), $result[$i]->getRepeatFrequency(),
+            $result[$i]->getRepeatByMonth(), $result[$i]->getRepeatByWeekNo(),
+            $result[$i]->getRepeatByYearDay(), $result[$i]->getRepeatByMonthDay(),
+            $result[$i]->getRepeatByDay(), $result[$i]->getRepeatBySetPos(),
+            $rpt_count, $until, $result[$i]->getRepeatWkst(),
+            $result[$i]->getRepeatExceptions(), 
+            $result[$i]->getRepeatInclusions(), $jump );
+          $result[$i]->addRepeatAllDates($dates);
+        } else { //process clones if any
+          if ( count ( $result[$i-1]->getRepeatAllDates() > 0 ) ){
+            $parentRepeats = $result[$i-1]->getRepeatAllDates();
+            for ( $j=0; $j< count ( $parentRepeats); $j++ ) {
+              $cloneRepeats[] = date("Ymd", 
+                get_datetime_add_tz ( $parentRepeats[$j], 12, 24 ) );
+            }
+            $result[$i]->addRepeatAllDates($cloneRepeats);
+          }
+        }
       }
     }    
   }
@@ -2432,7 +2452,8 @@ function read_repeated_events ( $user, $cat_id = '', $date = ''  ) {
  * @return array Array of dates (in UNIX time format)
  */
 function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
-  $ByWeekNo ='', $ByYearDay ='', $ByMonthDay ='', $ByDay ='', $BySetPos ='', $Count=999,
+  $ByWeekNo ='', $ByYearDay ='', $ByMonthDay ='', $ByDay ='', 
+  $BySetPos ='', $Count=999,
   $Until= NULL, $Wkst= 'MO', $ex_days='', $inc_days='', $jump='' ) {
   global $CONFLICT_REPEAT_MONTHS, $days_per_month, $ldays_per_month,
     $byday_values, $byday_names;  
@@ -2724,7 +2745,7 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
       if ( isset( $ret[$i]) )
         $ret[$i] = date ("Ymd", $ret[$i] );  
     }
-  }
+  } 
   return $ret;
 }
 
@@ -2735,20 +2756,20 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
  */
 function add_dstfree_time ( $date, $span, $interval=1 ) {
   $ctime = date ( "G", $date );
-	$date += $span * $interval;
-	$dtime = date ( "G", $date );
-	if ( $ctime == $dtime  ) {
-    return $date;	
-	} else if ( $ctime == 23 && $dtime == 0 ) {
-	  $date -= ONE_HOUR;
-	} else if ( $ctime == 0 && $dtime == 23 ) {
-	  $date += ONE_HOUR;
-	} else if ( $ctime > $dtime  ) {
-	  $date += ONE_HOUR;		
-	} else if ( $ctime < $dtime  ) {
-	  $date -= ONE_HOUR;	
-	}	 
-	return $date;
+  $date += $span * $interval;
+  $dtime = date ( "G", $date );
+  if ( $ctime == $dtime  ) {
+    return $date;  
+  } else if ( $ctime == 23 && $dtime == 0 ) {
+    $date -= ONE_HOUR;
+  } else if ( $ctime == 0 && $dtime == 23 ) {
+    $date += ONE_HOUR;
+  } else if ( $ctime > $dtime  ) {
+    $date += ONE_HOUR;    
+  } else if ( $ctime < $dtime  ) {
+    $date -= ONE_HOUR;  
+  }   
+  return $date;
 }
 
 /**
@@ -3059,7 +3080,6 @@ function print_date_entries ( $date, $user, $ssi ) {
 
   // combine and sort the event arrays
   $ev = combine_and_sort_events($ev, $rep);
-
   if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
   // get all due tasks for this date and before and store in $tk
     $tk = array();
@@ -3074,7 +3094,7 @@ function print_date_entries ( $date, $user, $ssi ) {
       $cnt++;
     }
   }
-
+//print_r ( $ev);
   if ( $cnt == 0 )
     echo "&nbsp;"; // so the table cell has at least something
 }
@@ -3470,9 +3490,11 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
       $hour_arr[$ind] .= "<img src=\"images/circle.gif\" class=\"bullet\" alt=\"*\" /> ";
     }
     }
-
+  //make sure clones have parents url date
+  $linkDate = (  $event->getClone()?date( "Ymd", 
+    get_datetime_add_tz ( $date, 12, -24 ) ): $date ); 
   $hour_arr[$ind] .= "<a title=\"" . $view_text . 
-    "\" class=\"$class\" id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$date";
+    "\" class=\"$class\" id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$linkDate";
   if ( strlen ( $GLOBALS["user"] ) > 0 )
     $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
   $hour_arr[$ind] .= "\">";
@@ -3652,9 +3674,11 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $cal_type = "event";
     $view_text = translate ( "View this task" );    
   }
-
+  //make sure clones have parents url date
+  $linkDate = (  $event->getClone()?date( "Ymd", 
+    get_datetime_add_tz ( $date, 12, -24 ) ): $date ); 
   $hour_arr[$ind] .= "<a title=\"" . $view_text .
-    "\" class=\"$class\" id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$date";
+    "\" class=\"$class\" id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$linkDate";
   if ( strlen ( $GLOBALS["user"] ) > 0 )
     $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
   $hour_arr[$ind] .= "\">";
@@ -4710,8 +4734,11 @@ function print_entry_timebar ( $event, $date ) {
   $popupid = "eventinfo-pop$id-$key";
   $linkid  = "pop$id-$key";
   $key++;
-
-  echo "<a class=\"$class\" id=\"$linkid\" href=\"view_entry.php?id=$id&amp;date=$date";
+  //make sure clones have parents url date
+  $linkDate = (  $event->getClone()?date( "Ymd", 
+    get_datetime_add_tz ( $date, 12, -24 ) ): $date ); 
+  echo "<a class=\"$class\" id=\"$linkid\" " . 
+    " href=\"view_entry.php?id=$id&amp;date=$linkDate";
   if ( strlen ( $user ) > 0 )
     echo "&amp;user=" . $user;
   echo "\">";
@@ -6043,8 +6070,10 @@ function combine_and_sort_events ( $ev, $rep ) {
 function get_OverLap ( $item, $i, $parent=true, $nextdur=0 ) {
   global $TIMEZONE, $result;
   $recurse = 0;
+  if ( $parent ) $originalDate = $item->getDate();
   $tz_offset = get_tz_offset ( $TIMEZONE, $item->getDateTimeTS() );
-  $startLocal = get_datetime_add_tz ( $item->getDate(),  $item->getTime(), $tz_offset[0] );
+  $startLocal = get_datetime_add_tz ( $item->getDate(),  
+    $item->getTime(), $tz_offset[0] );
   $midnight = mktime ( 24, 0, 0, date( "m", $startLocal),
     date( "d", $startLocal), date( "Y", $startLocal) ) - ($tz_offset[0] * 3600);
   $realEndTS = $item->getDateTimeTS() + ( $item->getDuration() * 60 );
@@ -6054,8 +6083,9 @@ function get_OverLap ( $item, $i, $parent=true, $nextdur=0 ) {
     $next_duration = ($new_duration - 1440 ) * 60;
     $new_duration = 1439;
   }
-  if ( $realEndTS  >  $midnight - 60 ) {        
-    $result[$i] = clone ( $item );    
+  if ( $realEndTS  >  $midnight - 60 ) {          
+    $result[$i] = clone ( $item ); 
+    $result[$i]->setClone( $originalDate );
     $result[$i]->setDuration( $new_duration == 1439? 1440 : $new_duration );
     if ($tz_offset[0] > 0) {
       $result[$i]->setTime( (24 - $tz_offset[0]) * 10000 );
@@ -6066,7 +6096,7 @@ function get_OverLap ( $item, $i, $parent=true, $nextdur=0 ) {
     if ( $parent )$result[$i]->setName( $result[$i]->getName() .
       ' (' . translate ( "cont." ) . ')');        
     $i++;  
-    if ( $parent )$item->setDuration( $item->getDuration() - $item_duration -1);       
+    if ( $parent )$item->setDuration( $item->getDuration() - $item_duration -1);         
   }
   //call this function recursively until duration < ONE_DAY
   if ( $recurse == 1 ) get_OverLap ( $result[$i -1], $i, false, $next_duration );
