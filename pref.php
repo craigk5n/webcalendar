@@ -485,6 +485,11 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <label><input type="radio" name="pref_ICS_TIMEZONES" value="Y" <?php if (  $prefarray['ICS_TIMEZONES'] != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="pref_ICS_TIMEZONES" value="N" <?php if (  $prefarray['ICS_TIMEZONES'] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
 </td></tr>
+<tr><td class="tooltip" title="<?php etooltip("lunar-help")?>">
+ <?php etranslate("Display Lunar Phases in month view")?>:</td><td>
+ <label><input type="radio" name="pref_DISPLAY_MOON_PHASES" value="Y" <?php if (  $prefarray['DISPLAY_MOON_PHASES'] != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
+ <label><input type="radio" name="pref_DISPLAY_MOON_PHASES" value="N" <?php if (  $prefarray['DISPLAY_MOON_PHASES'] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
+</td></tr>
 </table>
 </div>
 <!-- END SETTINGS -->

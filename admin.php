@@ -541,6 +541,11 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <?php etranslate("Brief Description Length")?>:</td><td>
   <input type="text" size="3" name="admin_SUMMARY_LENGTH" value="<?php echo $s['SUMMARY_LENGTH'];?>" />
  </td></tr>
+<tr><td class="tooltip" title="<?php etooltip("lunar-help")?>">
+  <?php etranslate("Display Lunar Phases in month view")?>:</td><td>
+  <label><input type="radio" name="admin_DISPLAY_MOON_PHASES" value="D" <?php if ( $s['DISPLAY_MOON_PHASES'] != "E" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("Yes")?></label> 
+  <label><input type="radio" name="admin_DISPLAY_MOON_PHASES" value="E" <?php if ( $s['DISPLAY_MOON_PHASES'] == "E" ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>
+ </td></tr>
 </table>
 </div>
 <!-- END SETTINGS -->

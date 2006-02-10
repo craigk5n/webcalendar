@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 02-04-2006
+# Translation last updated on 02-10-2006
 
 
 ###############################################
@@ -229,6 +229,8 @@ Duration: Duration
 End Time: End Time
 summary_length-help: Maximum length of Brief Description in calendar views
 Brief Description Length: Brief Description Length
+lunar-help: If enabled, will display small icons representing the lunar phases each month
+Display Lunar Phases in month view: Display Lunar Phases in month view
 Plugins: Plugins
 plugins-enabled-help: Enable plugin applications.
 Enable Plugins: Enable Plugins
