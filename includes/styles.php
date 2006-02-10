@@ -154,6 +154,7 @@ a:hover {
 #tabscontent_themes,
 #tabscontent_boss,
 #tabscontent_subscribe,
+#tabscontent_header,
 #useriframe,
 #grpiframe,
 #nonusersiframe,
