@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1430562: translation-file cannot be updated properly
       1427479: Repated overlapping event (=2 days) will not be displayed
       1340790: Return to proper view after edit or other action
       1409552: Weekly repeating event shifts days
