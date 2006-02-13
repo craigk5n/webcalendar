@@ -175,6 +175,12 @@ function load_global_settings () {
       $HTTP_HOST = $_SERVER["HTTP_HOST"];
     if ( empty ( $SERVER_PORT ) && isset ( $_SERVER["SERVER_PORT"] ) )
       $SERVER_PORT = $_SERVER["SERVER_PORT"];
+    if( !isset($_SERVER['REQUEST_URI'] ) ) {
+      $arr = explode( "/", $_SERVER['PHP_SELF'] );
+      $_SERVER['REQUEST_URI'] = "/" . $arr[count($arr)-1];
+      if ($_SERVER['argv'][0]!="")
+        $_SERVER['REQUEST_URI'] .= "?" . $_SERVER['argv'][0];
+    }
     if ( empty ( $REQUEST_URI ) && isset ( $_SERVER["REQUEST_URI"] ) )
       $REQUEST_URI = $_SERVER["REQUEST_URI"];
   }
