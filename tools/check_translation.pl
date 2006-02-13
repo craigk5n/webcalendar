@@ -69,6 +69,7 @@ foreach $f (@incfiles) {
 }
 push( @files, "tools/send_reminders.php" );
 push( @files, "install/index.php" );
+push( @files, "includes/menu/index.php" );
 
 foreach $f (@files) {
   $file = "../$f";
