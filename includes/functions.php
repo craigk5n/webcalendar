@@ -3065,8 +3065,8 @@ function print_date_entries ( $date, $user, $ssi ) {
     if ( ! empty ( $cat_id ) )
       echo "cat_id=$cat_id&amp;";
     echo "date=$date\">$day</a>";
-    if ( ! empty ( $moons ) && $phase = array_search ( $date, $moons ) )
-      echo "<img src=\"images/{$phase}moon.gif\" />";
+    if ( ! empty ( $moons[$date] ) )
+      echo "<img src=\"images/{$moons[$date]}moon.gif\" />";
     print "<br />\n";
     $cnt++;
   }
