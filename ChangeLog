@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1430285: edit an event & time wrong
  - Fixed bug 1430670: Undefined Index in functions.php
  - Fixed bug 1430755: Lunar phases mssing when display all days selected
  - Fixed bug 1430562: translation-file cannot be updated properly
