@@ -158,7 +158,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     $tz_offset = get_tz_offset ( $TIMEZONE, mktime ( 0, 0, 0, $month, $day, $year ) );
     // test for AllDay event, if so, don't adjust time
     if ( $time > 0  || ( $time == 0 &&  $row[5] != 1440 ) ) { /* -1 = no time specified */
-      $time += ( ! empty ( $tz_offset[0] )? $tz_offset[0] : 0 )  * 10000;
+			$time = get_time_add_tz ( $time, $tz_offset[0] );
       if ( $time > 240000 ) {
         $time -= 240000;
         $gmt = mktime ( 0, 0, 0, $month, $day, $year );
