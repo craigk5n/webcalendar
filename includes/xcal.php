@@ -1266,7 +1266,7 @@ foreach ( $data as $Entry ){
           //"cal_import_type = 'publish' AND " .
           "webcal_import_data.cal_id = webcal_entry_user.cal_id AND " .
           "webcal_entry_user.cal_login = ? AND " .
-          "cal_external_id = ?" , array ( $login , $Entry[UID] ) );
+          "cal_external_id = ?" , array ( $login , $Entry['UID'] ) );
         if ( $res ) {
           if ( $row = dbi_fetch_row ( $res ) ) {
             if ( ! empty ( $row[0] ) ) {
