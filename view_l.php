@@ -187,7 +187,7 @@ display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth",
 <div class="title">
 <?php display_navigation( 'view_l', false ); ?>
 
-<span class="viewname"><br /><?php echo $view_name; ?></span></div>
+<span class="viewname"><br /><?php echo htmlspecialchars ( $view_name ); ?></span></div>
 <br /><br />
 <?php
 display_month ( $thismonth, $thisyear );

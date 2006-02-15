@@ -79,7 +79,7 @@ $thisdate = $startdate;
 <span class="date"><?php
   printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
 ?></span><br />
-<span class="viewname"><?php echo $view_name ?></span>
+<span class="viewname"><?php echo htmlspecialchars ( $view_name ); ?></span>
 </div>
 </div><br />
 
