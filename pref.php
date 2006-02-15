@@ -791,6 +791,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <br /><br />
 <div style="border-width:0px;">
 <input type="submit" value="<?php etranslate("Save Preferences")?>" name="" />
+<br/><br/>
 </div>
 </form>
 
