@@ -15,6 +15,6 @@
   <li><a title="<?php etranslate("Report Bug")?>" href="help_bug.php"><?php etranslate("Report Bug")?></a></li>
 </ul>
 
-<?php print_trailer( false ); ?>
+<?php print_trailer( false, true, true ); ?>
 </body>
 </html>

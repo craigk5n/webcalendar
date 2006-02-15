@@ -285,6 +285,6 @@ print_header('', '', '', true);
 </td></tr>
 </table>
 
-<?php print_trailer( false );; ?>
+<?php print_trailer( false, true, true ); ?>
 </body>
 </html>

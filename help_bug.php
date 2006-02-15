@@ -52,7 +52,7 @@ if ( $res ) {
 }
 echo "</pre>\n";
 
-print_trailer( false );
+print_trailer( false, true, true );
 ?>
 </body>
 </html>
