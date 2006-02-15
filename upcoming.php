@@ -24,7 +24,7 @@
  *
  * The output of this page conforms to the hCalendar standard for events.
  * You can read more about hCalendar at:
- *	http://microformats.org/wiki/hcalendar
+ *  http://microformats.org/wiki/hcalendar
  *
  * Input parameters:
  * You can override settings by changing the URL parameters:
@@ -73,7 +73,14 @@
 //(perhaps with different parameters) without causing problems if 
 if ( empty ($upcoming_initialized)) {
   $upcoming_initialized=true;
-	
+//The following lines allow this include file to be called from another directory
+//it saves the current working directory (to be restored just before exiting)
+//and then changes the working directory to the dir that this file is currently
+//in.  That allows this file to load its includes normally even if called
+//from some other directory.
+$save_current_working_dir= getcwd();
+chdir(dirname(__FILE__));
+  
 include_once 'includes/init.php';
 //This must contain the file name that this file is saved under.  It is 
 //used to determine whether the file is being run independently or
@@ -86,14 +93,6 @@ include_once 'includes/init.php';
 //if you want have different upcoming-*.php files with variants.
 
 $name_of_this_file="/upcoming.php/";
-
-//The following lines allow this include file to be called from another directory
-//it saves the current working directory (to be restored just before exiting)
-//and then changes the working directory to the dir that this file is currently
-//in.  That allows this file to load its includes normally even if called
-//from some other directory.
-$save_current_working_dir= getcwd();
-chdir(dirname(__FILE__));
 
 //echo "$showTitle $showMore $maxEvents $numDays $cat_id<p>";
 
