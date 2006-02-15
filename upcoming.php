@@ -189,7 +189,7 @@ if (empty($maxEvents)) $maxEvents = 10;
 // a way to disable tasks from showing up.  It will not display
 // them if specified user has not enabled "Display tasks in Calendars"
 // in their preferences.)
-if (! empty ( $showTasks ) && $showTasks !== false) $showTasks = true;
+if ( empty ( $showTasks ) ) $showTasks = false;
 
 // Login of calendar user to use
 // '__public__' is the login name for the public user
