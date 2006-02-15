@@ -381,7 +381,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
 
 // WebCalendar Info...
 print "<br /><br /><a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" " .
-  "id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_new\">" .
+  "id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_blank\">" .
   $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 ?>
 </div>
