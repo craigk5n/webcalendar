@@ -183,7 +183,8 @@ $charset = ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" );
 $lang = languageToAbbrev ( ( $LANGUAGE == "Browser-defined" || 
   $LANGUAGE == "none" )? $lang : $LANGUAGE );
   
-header('Content-type: application/rss+xml');
+//header('Content-type: application/rss+xml');
+header('Content-type: text/xml');
 echo '<?xml version="1.0" encoding="' . $charset . '"?>';
 ?>
 
