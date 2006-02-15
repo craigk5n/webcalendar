@@ -162,7 +162,7 @@ if ( ! empty ( $error ) ) {
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
     date_to_str ( date ( "Ymd", $wkend ), "", false );
 ?></span><br />
-<span class="viewname"><?php echo $view_name ?></span>
+<span class="viewname"><?php echo htmlspecialchars ( $view_name ); ?></span>
 </div>
 </div><br />
 

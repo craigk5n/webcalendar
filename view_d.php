@@ -147,7 +147,7 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
   printf ( "%s, %s %d, %d", weekday_name ( $wday ),
     month_name ( $thismonth - 1 ), $thisday, $thisyear ); 
 ?></span><br />
-<span class="viewname"><?php echo $view_name; ?></span>
+<span class="viewname"><?php echo htmlspecialchars ( $view_name ); ?></span>
 </div></div>
 
 <?php
