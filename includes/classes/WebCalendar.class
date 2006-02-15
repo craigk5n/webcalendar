@@ -333,7 +333,7 @@ class WebCalendar {
     $PROGRAM_VERSION = "v1.1.0c-CVS";
     $PROGRAM_DATE = "?? ??? 2005";
     $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
-    $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
+    $PROGRAM_URL = "http://www.k5n.us/webcalendar.php";
 
     $TROUBLE_URL = "docs/WebCalendar-SysAdmin.html#trouble";
 
