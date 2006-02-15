@@ -202,10 +202,8 @@ if ( empty ( $user ) || $user == $login ) {
 
 ?>
 
-<table style="border-width:0px;"><tr><td>
 <input type="submit" value="<?php etranslate("Save Preferences")?>" name="" />
-</td></tr></table>
-<br />
+<br/><br/>
 
 <!-- TABS -->
 <div id="tabs">
@@ -229,7 +227,7 @@ if ( empty ( $user ) || $user == $login ) {
 </div>
 
 <!-- TABS BODY -->
-<div id="tabscontent">
+<div id="tabscontent" style="width: 98%;">
  <!-- DETAILS -->
 <div id="tabscontent_settings">
 <table  cellspacing="1" cellpadding="2"  border="0">
@@ -670,11 +668,12 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=T&amp;user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
  </td></tr>
 <?php } ?>
-</td></tr></table>
+</table>
 </div>
 <!-- END HEADER -->
 <?php } // if $ALLOW_USER_HEADER ?>
 
+<!-- BEGIN COLORS -->
 
 <?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 <div id="tabscontent_colors">
@@ -770,25 +769,24 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 </td><td style="text-align:center; vertical-align:top;;">
 <br />
 
-<!-- BEGIN EXAMPLE MONTH -->
-<table style="border:0px; width:100%;"><tr>
-<td style="text-align:center; color:<?php echo $prefarray['H2COLOR'] ?>; font-weight:bold;"><?php
-echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false, false );?></td></tr>
-</table>
-<?php 
-set_today( date ("Ymd") );
-display_month ( date ("m") , date("Y") , true);
-?>
-</td></tr>
-</table>
-<!-- END EXAMPLE MONTH -->
-<br /><br />
+  <!-- BEGIN EXAMPLE MONTH -->
+  <table style="border:0px; width:100%;"><tr>
+  <td style="text-align:center; color:<?php echo $prefarray['H2COLOR'] ?>; font-weight:bold;"><?php
+  echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false, false );?></td></tr>
+  </table>
+  <?php 
+  set_today( date ("Ymd") );
+  display_month ( date ("m") , date("Y") , true);
+  ?>
+  <!-- END EXAMPLE MONTH -->
+  <br /><br />
 
 </td></tr></table>
 </div>
 <!-- END COLORS -->
 <?php } // if $ALLOW_COLOR_CUSTOMIZATION ?>
 </div>
+
 <!-- END TABS -->
 <br /><br />
 <div style="border-width:0px;">
