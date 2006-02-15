@@ -206,6 +206,7 @@ Version 1.1.0-CVS (?? ??? 2005)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added event popups to upcoming.php (RFE 1179531)
     + Moved all common images into images folder
     + Added optional lunar phases to month.php
     + Implemented patch 1418938: Upcoming.php updated to run as include or command line
