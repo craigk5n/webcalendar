@@ -1161,7 +1161,7 @@ function build_event_popup ( $popupid, $user, $description, $time,
       ":</dt>\n<dd>$popup_fullnames[$user]</dd>\n";
   }
   if ( $SUMMARY_LENGTH < 80 && strlen ( $name ) )
-    $ret .= "<dt>" . substr ( $name, 0 , 40 ) . "</dt>\n";  
+    $ret .= "<dt>" . htmlspecialchars ( substr ( $name, 0 , 40 ) ) . "</dt>\n";  
   if ( strlen ( $time ) )
     $ret .= "<dt>" . translate ("Time") . ":</dt>\n<dd>$time</dd>\n";
   if ( ! empty ( $location ) )
@@ -1653,7 +1653,7 @@ function display_small_tasks ( $cat_id ) {
   $task_html .= "<tr class=\"header\"><th colspan=\"3\" align=\"left\">" . 
     translate ( "TASKS" ) . "</th><th align=\"right\">" .
     "<a href=\"edit_entry.php?" . $u_url . "eType=task\">" . 
-    "<img src=\"images/new.gif\" class=\"new\"/></a></th></tr>\n";
+    "<img src=\"images/new.gif\" alt=\"+\" class=\"new\"/></a></th></tr>\n";
   $task_html .= "<tr class=\"header\"><th>!</th><th>".  translate ( "Task_Title" ) . 
     "</th><th>" . translate ("Due" ) . "</th><th>&nbsp;%&nbsp;</th></tr>\n";
   foreach ( $task_list as $E )  {
@@ -3401,13 +3401,13 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
   if ( ! empty ( $user ) && $user != $login )
     $u_url = "user=$user&amp;";
   return "<a title=\"" . 
- translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
+    translate("New Entry") . "\" href=\"edit_entry.php?" . $u_url .
     "date=$date" . ( strlen ( $hour ) > 0 ? "&amp;hour=$hour" : "" ) .
     ( $minute > 0 ? "&amp;minute=$minute" : "" ) .
     ( empty ( $user ) ? "" :  "&amp;defusers=$user" ) .
     ( empty ( $cat_id ) ? "" :  "&amp;cat_id=$cat_id" ) .
     "\"><img src=\"images/new.gif\" class=\"new\" alt=\"" . 
- translate("New Entry") . "\" /></a>\n";
+    translate("New Entry") . "\" /></a>\n";
 }
 
 /**
