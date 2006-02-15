@@ -5841,7 +5841,7 @@ global $TZ_COMPLETE_LIST;
    } else { // We're using the short list
         $tz_label = $row[1];   
    } 
-      $ret .= "<option value=\"$row[0]\"" . ( $row[0] == $tz ? " selected=\"selected\"" : "" ) .  ">" . $tz_label . "</option>\n";
+      $ret .= "<option value=\"$row[0]\"" . ( $row[0] == $tz ? " selected=\"selected\"" : "" ) .  ">" . htmlspecialchars ( $tz_label ) . "</option>\n";
     }
     $ret .= "</select><br />\n";
     dbi_free_result ( $res );
