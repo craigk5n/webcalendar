@@ -299,7 +299,7 @@ for ( $i = 0; $i < count ( $choices ); $i++ ) {
   echo "<option value=\"" . $choices[$i] . "\" ";
   if ( $prefarray['STARTVIEW'] == $choices[$i] )
     echo " selected=\"selected\"";
-  echo " >" . $choices_text[$i] . "</option>\n";
+  echo " >" . htmlspecialchars ( $choices_text[$i] ) . "</option>\n";
 }
 // Allow user to select a view also
 for ( $i = 0; $i < count ( $views ); $i++ ) {
@@ -311,7 +311,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   $xurl_strip = str_replace ( "&amp;", "&", $xurl );
   if ( $prefarray['STARTVIEW'] == $xurl_strip )
     echo "selected=\"selected\" ";
-  echo ">" . $views[$i]['cal_name'] . "</option>\n";
+  echo ">" . htmlspecialchars ( $views[$i]['cal_name'] ) . "</option>\n";
 }
 ?>
 </select>
@@ -653,21 +653,21 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <?php if ( $CUSTOM_SCRIPT == 'Y' ) { ?>
  <tr><td class="tooltip" title="<?php etooltip("custom-script-help");?>">
   <?php etranslate("Custom script/stylesheet")?>:</td><td>
-  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=S&user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
+  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=S&amp;user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
  </td></tr>
 <?php } ?>
 
 <?php if ( $CUSTOM_HEADER == 'Y' ) { ?>
  <tr><td class="tooltip" title="<?php etooltip("custom-header-help");?>">
   <?php etranslate("Custom header")?>:</td><td>
-  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=H&user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
+  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=H&amp;user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
  </td></tr>
 <?php } ?>
 
 <?php if ( $CUSTOM_TRAILER == 'Y'  ) { ?>
  <tr><td class="tooltip" title="<?php etooltip("custom-trailer-help");?>">
   <?php etranslate("Custom trailer")?>:</td><td>
-  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=T&user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
+  <input type="button" value="<?php etranslate("Edit");?>..." onclick="window.open('edit_template.php?type=T&amp;user=<?php echo $user;?>','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');" name="" />
  </td></tr>
 <?php } ?>
 </td></tr></table>
