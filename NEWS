@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1418124: Ending of recurrence: Fields not editable
       1430285: edit an event & time wrong
       1430670: Undefined Index in functions.php
       1430755: Lunar phases mssing when display all days selected

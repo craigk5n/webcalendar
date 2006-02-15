@@ -582,8 +582,10 @@ function toggle_until() {
  document.editentryform.elements[rpt_btnid].disabled = true;
  document.editentryform.elements['rpt_endhour'].disabled = true;
  document.editentryform.elements['rpt_endminute'].disabled = true;
- document.editentryform.elements['rpt_endam'].disabled = true;
- document.editentryform.elements['rpt_endpm'].disabled = true;
+ if ( document.editentryform.elements['rpt_endam'] ) {
+   document.editentryform.elements['rpt_endam'].disabled = true;
+   document.editentryform.elements['rpt_endpm'].disabled = true;
+ }
  document.editentryform.elements['rpt_count'].disabled = true;
  if ( document.editentryform.rpt_untilu.checked ) { //use until date
    document.editentryform.elements[rpt_dayid].disabled = false;
@@ -592,8 +594,10 @@ function toggle_until() {
    document.editentryform.elements[rpt_btnid].disabled = false;
    document.editentryform.elements['rpt_endhour'].disabled = false;
    document.editentryform.elements['rpt_endminute'].disabled = false;
-   document.editentryform.elements['rpt_endam'].disabled = false; 
-   document.editentryform.elements['rpt_endpm'].disabled = false;
+   if ( document.editentryform.elements['rpt_endam'] ) {
+     document.editentryform.elements['rpt_endam'].disabled = false; 
+     document.editentryform.elements['rpt_endpm'].disabled = false;
+   }
  } else if ( document.editentryform.rpt_untilc.checked ) { //use count
    document.editentryform.elements['rpt_count'].disabled = false; 
  }
