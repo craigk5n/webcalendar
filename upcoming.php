@@ -58,6 +58,7 @@
  *     $upcoming_title       default "Upcoming Events"
  *     $showMore (boolean)   default true
  *     $showTime (boolean)   default false
+ *     $showPopups (boolean)  default true
  *
  * To do: Cache results, used cached results mostly, only update occasionally.  This
  * is pretty simple to do and greatly speeds up the include file if you have a large
@@ -105,12 +106,28 @@ $WebCalendar->setLanguage();
  // file is included within an external document, so that the function isn't 
  // declared twice in case of this file being included twice or more within the same doc.
  function print_upcoming_event ( $e, $date ) {
-  global $display_link, $link_target, $SERVER_URL, $charset, $display_tzid, $showTime;
+  global $display_link, $link_target, $SERVER_URL, $charset, $display_tzid, $showTime, $showPopups, $eventinfo, $user;
+
+  $popupid = 'pop' . $e->getId() . '-' . $date;
 
   if ( $display_link && ! empty ( $SERVER_URL ) ) {
+    if ( $showPopups ) {
+      $timestr = "";
+      if ( $e->isAllDay() ) {
+        $timestr = translate("All day event");
+      } else if ( $e->getTime() >= 0 ) {
+        $timestr = display_time ( $e->getDatetime() );
+        if ( $e->getDuration() > 0 ) {
+          $timestr .= " - " .  display_time ( $e->getEndDateTime() );
+        }
+      }
+      $eventinfo .= build_event_popup ( 'eventinfo-' . $popupid, $user,
+        $e->getDescription(), $timestr, site_extras_for_popup ( $e->getId() ),
+        $e->getLocation(), $e->getName(), $e->getId() );
+    }
     $cal_type = ( $e->getCalType() == 'T' || $e->getCalType() == 'N' ) ?
       'task' : 'entry';
-    print "<a title=\"" . 
+    print "<a class=\"entry\" id=\"$popupid\" title=\"" . 
       htmlspecialchars ( $e->getName() ) . "\" href=\"" . 
       $SERVER_URL . 'view_' . $cal_type . '.php?id=' . 
         $e->getID() . "&amp;date=$date\"";
@@ -175,8 +192,8 @@ $showTime = ( ! empty ( $showTime ) && $showTime !== false ? true : false );
 $title_more_url=$SERVER_URL;
 
 //set default upcoming title but allow it to be overridden
-if (empty($upcoming_title)) $upcoming_title= '<A href="'. 
-   $title_more_url . '">Upcoming Events</A>';
+if (empty($upcoming_title)) $upcoming_title= '<a href="'. 
+   $title_more_url . '">Upcoming Events</a>';
 
 //echo "$numDays $showTitle $maxEvents <p>";
 
@@ -190,6 +207,12 @@ if (empty($maxEvents)) $maxEvents = 10;
 // them if specified user has not enabled "Display tasks in Calendars"
 // in their preferences.)
 if ( empty ( $showTasks ) ) $showTasks = false;
+
+// Show event popups
+if ( ! isset ( $showPopups ) )
+  $showPopups = true;
+else if ( $showPopups == 'N' )
+  $showPopups = false;
 
 // Login of calendar user to use
 // '__public__' is the login name for the public user
@@ -355,7 +378,7 @@ if ( ! empty ( $LANGUAGE ) ) {
 }
 
 echo "<title>".translate($APPLICATION_NAME)."</title>\n";
- 
+
 ?>
 <!-- This style sheet is here mostly to make it easier for others
      to customize the appearance of the page.
@@ -386,8 +409,42 @@ a:hover {
   color: #fff;
   background-color: #33a;
 }
+.popup {
+  color: #fff;
+  background-color: #33a;
+  text-decoration: none;
+  position: absolute;
+  z-index: 20;
+  visibility: hidden;
+  top: 0px;
+  left: 0px;
+  border: 1px solid #000;
+  padding: 3px;
+}
+.popup dl {
+  margin: 0px;
+  padding: 0px;
+}
+.popup dt {
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 0px;
+  color: #fff;
+}
+.popup dd {
+  font-size: 10px;
+  margin-left: 20px;
+  color: #fff;
+}
 </style>
 
+<?php
+if ( ! empty ( $showPopups ) ) {
+  echo "<script type=\"text/javascript\" src=\"includes/js/util.js\"></script>\n";
+  include_once "includes/js/popups.php";
+}
+?>
 </head>
 <body>
 <?php } //end test for direct call
@@ -403,11 +460,11 @@ if ( ! empty ( $error ) ) {
   exit;
 }
 
-if ($showTitle) echo '<H3 class=cal_upcoming_title>'. translate($upcoming_title) . '</H3>';
+if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate($upcoming_title) . '</h3>';
 ?>
 
 <div class="cal_upcoming">
-<?PHP
+<?php
 print "<dl>\n";
 
 print "<!-- \nstartTime: $startTime\nendTime: $endTime\nstartDate: " .
@@ -415,6 +472,7 @@ print "<!-- \nstartTime: $startTime\nendTime: $endTime\nstartDate: " .
   count ( $events ) . "\nrepeated_events: " . 
   count ( $repeated_events ) . " -->\n";
 
+$eventinfo = '';
 $numEvents = 0;
 for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
   $numEvents < $maxEvents; $i += ( 24 * 3600 ) ) {
@@ -441,11 +499,12 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
 
 print "</dl>\n";
 
-if ( $showMore ) echo '<center><I><a href="'. $title_more_url . '"> . . . ' . 
-   translate ("more") . '</a></I></center>';
+if ( $showMore ) echo '<center><i><a href="'. $title_more_url . '"> . . . ' . 
+   translate ("more") . '</a></i></center>';
 ?>
 </div>
-<?PHP
+<?php
+echo $eventinfo;
 if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) { 
   print "</body>\n</html>";
 }
