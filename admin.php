@@ -144,10 +144,8 @@ if ( ! $error ) {
 
 <form action="admin.php" method="post" onsubmit="return valid_form(this);" name="prefform">
 <input type="hidden" name="currenttab" id="currenttab" value="<?php echo $currenttab ?>" />
-<table style="border-width:0px;"><tr><td>
- <input type="submit" value="<?php etranslate("Save")?>" name="" />
-</td></tr></table>
-<br />
+<input type="submit" value="<?php etranslate("Save")?>" name="" />
+<br/><br/>
 
 <!-- TABS -->
 <div id="tabs">
@@ -162,7 +160,7 @@ if ( ! $error ) {
 </div>
 
 <!-- TABS BODY -->
-<div id="tabscontent">
+<div id="tabscontent" style="width: 98%;">
  <!-- DETAILS -->
  <div id="tabscontent_settings">
  <table cellspacing="0" cellpadding="3">
