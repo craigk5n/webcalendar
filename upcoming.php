@@ -321,8 +321,9 @@ $endTime = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays,
   $thisyear );
 $endDate = date ( "Ymd", $endTime );
 
-$tasks_only = getValue ( "tasks", "[01]", true );
-$tasks_only = ( $tasks_only == '1' );
+// If 'showEvents=0' is in URL, then just include tasks in list
+$show_events = getGetValue ( "showEvents", "[01]", true );
+$tasks_only = ( $show_events == '0' );
 
 if ( $tasks_only ) {
   $repeated_events = $events = array ();
