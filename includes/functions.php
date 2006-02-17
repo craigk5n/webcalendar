@@ -5049,7 +5049,7 @@ function load_nonuser_preferences ($nonuser) {
  *
  * @param string $date The date in YYYYMMDD format
  */
-function set_today($date) {
+function set_today($date='') {
   global $thisyear, $thisday, $thismonth, $thisdate, $today;
   global $month, $day, $year, $thisday, $TIMEZONE, $tz_offset;
 

@@ -90,6 +90,8 @@ load_global_settings ();
 
 $WebCalendar->setLanguage();
 
+set_today();
+
 if ( $debug )
   echo "<br />\n";
 
@@ -628,7 +630,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   $date = date ( "Ymd", time() + ( $d * 24 * 3600 ) );
   //echo "Date: $date\n";
   // Get non-repeating events for this date.
-  // An event will be included one time for each participant.
+  // An event Fwill be included one time for each participant.
   $ev = get_entries ( "", $date );
   // Keep track of duplicates
   $completed_ids = array ( );

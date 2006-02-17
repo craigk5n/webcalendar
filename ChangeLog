@@ -1,4 +1,5 @@
-Version 1.1.0-CVS (?? ??? 2005)\
+Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1433366: no reminders sent for repeated events without an end date
  - Fixed bug 1418124: Ending of recurrence: Fields not editable
  - Fixed bug 1430285: edit an event & time wrong
  - Fixed bug 1430670: Undefined Index in functions.php
