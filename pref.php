@@ -344,7 +344,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
     echo ">" . $datestyles[$i + 1] . "</option>\n";
   }
   ?>
-</select>
+</select>&nbsp;<?php echo date_to_str ( date ("Ymd"), 
+	  $DATE_FORMAT, false, false );?>
 <br />
 <select name="pref_DATE_FORMAT_MY">
 <?php
@@ -355,7 +356,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
     echo ">" . $datestyles_my[$i + 1] . "</option>\n";
   }
 ?>
-</select>
+</select>&nbsp;<?php echo date_to_str ( date ("Ymd"), 
+	  $DATE_FORMAT_MY, false, false );?>
 <br />
 <select name="pref_DATE_FORMAT_MD">
 <?php
@@ -366,7 +368,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
     echo ">" . $datestyles_md[$i + 1] . "</option>\n";
   }
 ?>
-</select>
+</select>&nbsp;<?php echo date_to_str ( date ("Ymd"), 
+	  $DATE_FORMAT_MD, false, false );?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("time-format-help")?>">
