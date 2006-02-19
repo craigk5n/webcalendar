@@ -228,7 +228,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
     }
     for ( $j = 0; $j < count ( $rentries ) && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
-      // Prevent a repaeting event from displaying if the original event
+      // Prevent a repeating event from displaying if the original event
       // has alreay been displayed
       if ( ! in_array($rentries[$j]->getID(),$eventIds ) && 
         ( $rentries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) ) {
@@ -248,13 +248,15 @@ echo "</rdf:Seq>\n</items>\n</channel>\n\n";
 </image>
 <?php
 $numEvents = 0;
+$eventIds = array();
 for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
   $numEvents < $maxEvents; $i += ( 24 * 3600 ) ) {
   $d = date ( "Ymd", $i );
-  $entries = get_entries ( $username, $d );
-  $rentries = get_repeating_entries ( $username, $d );
+  $entries = get_entries ( $username, $d, false );
+  $rentries = get_repeating_entries ( $username, $d, false );
   if ( count ( $entries ) > 0 || count ( $rentries ) > 0 ) {
     for ( $j = 0; $j < count ( $entries ) && $numEvents < $maxEvents; $j++ ) {
+      $eventIds[] = $entries[$j]->getID();
       // Prevent non-Public events from feeding
       if ( $username == '__public__' || $entries[$j]->getAccess() == "P" ||
         $allow_all_access == "Y" ) {
@@ -279,8 +281,9 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
     }
     for ( $j = 0; $j < count ( $rentries ) && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
-      if ( $username == '__public__' || $rentries[$j]->getAccess() == "P" ||
-        $allow_all_access == "Y" ) {
+      if ( ! in_array($rentries[$j]->getID(),$eventIds ) && 
+        ( $username == '__public__' || $rentries[$j]->getAccess() == "P" ||
+        $allow_all_access == "Y" ) ){
         echo "\n<item rdf:about=\"" . $SERVER_URL . "view_entry.php?id=" . 
           $rentries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1\">\n";
         $unixtime = unixtime ( $d, $rentries[$j]->getTime() );
