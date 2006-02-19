@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1434525: rss.php shows some events twice
+ - Fixed bug 1424599: too many events in rss feed
  - Fixed bug 1433366: no reminders sent for repeated events without an end date
  - Fixed bug 1418124: Ending of recurrence: Fields not editable
  - Fixed bug 1430285: edit an event & time wrong

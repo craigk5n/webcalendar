@@ -166,7 +166,7 @@ if ( ! empty ( $x ) ) {
   $allow_repeats = $x;
 }
 
-$endTime = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays,
+$endTime = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays -1,
   $thisyear );
 $endDate = date ( "Ymd", $endTime );
 
@@ -209,6 +209,7 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>';
 
 <?php
 $numEvents = 0;
+$eventIds = array();
 echo "\n<items>\n<rdf:Seq>\n";
 for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
   $numEvents < $maxEvents; $i += ( 24 * 3600 ) ) {
@@ -219,6 +220,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
     for ( $j = 0; $j < count ( $entries ) && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
       if ( $entries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) {
+        $eventIds[] = $entries[$j]->getID();
         echo "<rdf:li rdf:resource=\"" . $SERVER_URL . "view_entry.php?id=" . 
           $entries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1\" />\n";
         $numEvents++;
@@ -226,7 +228,10 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
     }
     for ( $j = 0; $j < count ( $rentries ) && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
-      if ( $rentries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) {
+      // Prevent a repaeting event from displaying if the original event
+      // has alreay been displayed
+      if ( ! in_array($rentries[$j]->getID(),$eventIds ) && 
+        ( $rentries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) ) {
         echo "<rdf:li rdf:resource=\"" . $SERVER_URL . "view_entry.php?id=" . 
           $rentries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1\" />\n";
         $numEvents++;
@@ -267,7 +272,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
           $entries[$j]->getDescription() . "]]></content:encoded>\n";
         echo "<dc:creator><![CDATA[" . $creator . "]]></dc:creator>\n";
         echo "<dc:date>" . date ( 'Y-m-d', $unixtime ) .'T' . 
-				  date ( 'H:i:sO', $unixtime ) . "</dc:date>\n";
+          date ( 'H:i:sO', $unixtime ) . "</dc:date>\n";
         echo "</item>\n";
         $numEvents++;
       }
@@ -290,7 +295,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
           $rentries[$j]->getDescription() . "]]></content:encoded>\n";
         echo "<dc:creator><![CDATA[" . $creator . "]]></dc:creator>\n";
         echo "<dc:date>" . date ( 'Y-m-d', $unixtime ) .'T' . 
-				  date ( 'H:i:sO', $unixtime ) . "</dc:date>\n";
+          date ( 'H:i:sO', $unixtime ) . "</dc:date>\n";
         echo "</item>\n";   
         $numEvents++;
       }
