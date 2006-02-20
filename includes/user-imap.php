@@ -472,11 +472,11 @@ function user_delete_user ( $user ) {
  * @return array Array of user info
  */
 function user_get_users () {
-  global $public_access, $PUBLIC_ACCESS_FULLNAME;
+  global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME;
 
   $count = 0;
   $ret = array ();
-  if ( $public_access == "Y" )
+  if ( $PUBLIC_ACCESS == "Y" )
     $ret[$count++] = array (
        "cal_login" => "__public__",
        "cal_lastname" => "",
