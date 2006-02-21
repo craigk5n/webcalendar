@@ -249,7 +249,7 @@ function etooltip ( $str ) {
       "Icelandic" => "Icelandic",
       "Italian" => "Italian",
       "Japanese(UTF-8)" => "Japanese",
-      "Japanese(SHIFT JIS)" => "Japanese-sjis.txt",
+      "Japanese(SHIFT JIS)" => "Japanese-sjis",
       "Japanese(EUC-JP)" => "Japanese-eucjp",
       "Korean" =>"Korean",
       "Norwegian" => "Norwegian",
