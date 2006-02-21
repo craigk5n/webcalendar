@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1435576: Duplicate selectors, almost, in styles.php
  - Fixed bug 1435793: Bug in admin.php
  - Fixed bug 1420372: Cannot add event to public calendar
  - Fixed bug 1434525: rss.php shows some events twice
