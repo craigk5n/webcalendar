@@ -165,7 +165,7 @@ if ( ! $error ) {
  <div id="tabscontent_settings">
  <table cellspacing="0" cellpadding="3">
  <tr><td class="tooltip" title="<?php etooltip("app-name-help")?>">
-  <label for="admin_APPLICATION_NAME"><?php etranslate( $s['APPLICATION_NAME'] )?>:</label></td><td>
+  <label for="admin_APPLICATION_NAME"><?php etranslate( 'Application Name' )?>:</label></td><td>
   <input type="text" size="40" name="admin_APPLICATION_NAME" id="admin_APPLICATION_NAME" value="<?php 
    echo htmlspecialchars ( $s['APPLICATION_NAME'] );
   ?>" />
