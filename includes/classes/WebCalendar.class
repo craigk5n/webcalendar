@@ -214,8 +214,8 @@ class WebCalendar {
       }
 
       set_today($date);
-			
-			remember_this_view();
+      
+      remember_this_view();
 
       if ( $CATEGORIES_ENABLED == "Y" ) {
         if ( ! empty ( $cat_id ) ) {
@@ -1328,7 +1328,7 @@ class WebCalendar {
       $PUBLIC_ACCESS_FULLNAME;
 
     if ( empty ( $LANGUAGE ) ) {
-      $LANGUAGE = '';
+      $LANGUAGE = "English-US"; // Default
     }
 
     // If set to use browser settings, use the user's language preferences

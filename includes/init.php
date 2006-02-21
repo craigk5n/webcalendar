@@ -91,39 +91,31 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT,$REQUEST_URI;
   global $friendly, $DISPLAY_WEEKENDS, $DISPLAY_TASKS;
   global $bodyid, $self, $login, $browser;
+  
+  //remember this view if the file is a view_x.php script
+  if ( ! strstr ( $REQUEST_URI, "view_entry" ) )  remember_this_view ( true );
+
   $lang = '';
   if ( ! empty ( $LANGUAGE ) )
     $lang = languageToAbbrev ( $LANGUAGE );
   if ( empty ( $lang ) )
     $lang = 'en';
-  
-	//remember this view if the file is a view_x.php script
-	if ( ! strstr ( $REQUEST_URI, "view_entry" ) )  remember_this_view ( true );
-	
+      
   // Start the header & specify the charset
   // The charset is defined in the translation file
-  if ( ! empty ( $LANGUAGE ) ) {
-    $charset = translate ( "charset" );
-    if ( $charset != "charset" ) {
-      echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n" .
-        "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
-        "\"DTD/xhtml1-transitional.dtd\">\n" .
-        "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
-        "xml:lang=\"$lang\" lang=\"$lang\">\n" .
-        "<head>\n" .
-        "<meta http-equiv=\"Content-Type\" content=\"text/html; " .
-        "charset=$charset\" />\n";
-      echo "<title>".translate($APPLICATION_NAME)."</title>\n";
-    } else {
-      echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n" .
-        "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
-        "\"DTD/xhtml1-transitional.dtd\">\n" .
-        "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
-        "xml:lang=\"en\" lang=\"en\">\n" .
-        "<head>\n" .
-        "<title>".translate($APPLICATION_NAME)."</title>\n";
-    }
+  $charset = translate ( 'charset' );
+  if ( empty ( $charset ) || $charset == 'charset' ) {
+  $charset = 'iso-8859-1';
   }
+  echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n" .
+    "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
+    "\"DTD/xhtml1-transitional.dtd\">\n" .
+    "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
+    "xml:lang=\"$lang\" lang=\"$lang\">\n" .
+    "<head>\n" .
+    "<meta http-equiv=\"Content-Type\" content=\"text/html; " .
+    "charset=$charset\" />\n";
+  echo "<title>".translate($APPLICATION_NAME)."</title>\n";
 
   echo "<script type=\"text/javascript\" src=\"includes/js/util.js\"></script>\n";
 
@@ -133,8 +125,10 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   // Includes needed for the top menu
   if ( ( $MENU_ENABLED == 'Y'  ) && ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none') ) {
     echo "<script type=\"text/javascript\" src=\"includes/menu/JSCookMenu.js\"></script>\n";
-    echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"includes/menu/themes/$MENU_THEME/theme.css\" />\n";
-    echo "<script type=\"text/javascript\" src=\"includes/menu/themes/$MENU_THEME/theme.js\"></script>\n";
+    echo "<link rel=\"stylesheet\" type=\"text/css\" " .
+      "href=\"includes/menu/themes/$MENU_THEME/theme.css\" />\n";
+    echo "<script type=\"text/javascript\" ".
+      "src=\"includes/menu/themes/$MENU_THEME/theme.js\"></script>\n";
   }
 
   // Any other includes?
@@ -167,7 +161,9 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   // including this as a normal stylesheet so they can see how it will look 
   // when printed. This maintains backwards-compatibility for browsers that 
   // don't support media="print" stylesheets
-  echo "<link rel=\"stylesheet\" type=\"text/css\"" . ( empty ( $friendly ) ? " media=\"print\"" : "" ) . " href=\"includes/print_styles.css\" />\n";
+  echo "<link rel=\"stylesheet\" type=\"text/css\"" . 
+    ( empty ( $friendly ) ? " media=\"print\"" : "" ) . 
+    " href=\"includes/print_styles.css\" />\n";
 
   // Add RSS feed if publishing is enabled
   if ( ! empty ( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y' &&
@@ -278,8 +274,9 @@ function print_menu_dates ( $menu=false) {
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
 
-  echo "<label for=\"monthselect\"><a href=\"javascript:document.SelectMonth.submit()\">" . translate("Month") . "</a>:&nbsp;</label>\n";
-  echo "<select name=\"date\" id=\"monthselect\" onchange=\"document.SelectMonth.submit()\">\n";
+  echo "<label for=\"monthselect\"><a href=\"javascript:document.SelectMonth.submit()\">" .    translate("Month") . "</a>:&nbsp;</label>\n";
+  echo "<select name=\"date\" id=\"monthselect\" " .
+    "onchange=\"document.SelectMonth.submit()\">\n";
 
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
     $m = $thismonth;
@@ -336,8 +333,9 @@ function print_menu_dates ( $menu=false) {
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
 
-  echo "<label for=\"weekselect\"><a href=\"javascript:document.SelectWeek.submit()\">" . translate("Week") . "</a>:&nbsp;</label>\n";
-  echo "<select name=\"date\" id=\"weekselect\" onchange=\"document.SelectWeek.submit()\">\n";
+  echo "<label for=\"weekselect\"><a href=\"javascript:document.SelectWeek.submit()\">" .    translate("Week") . "</a>:&nbsp;</label>\n";
+  echo "<select name=\"date\" id=\"weekselect\" " .
+    "onchange=\"document.SelectWeek.submit()\">\n";
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
     $m = $thismonth;
     $y = $thisyear;
@@ -405,8 +403,9 @@ function print_menu_dates ( $menu=false) {
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
 
-  echo "<label for=\"yearselect\"><a href=\"javascript:document.SelectYear.submit()\">" . translate("Year") . "</a>:&nbsp;</label>\n";
-  echo "<select name=\"year\" id=\"yearselect\" onchange=\"document.SelectYear.submit()\">\n";
+  echo "<label for=\"yearselect\"><a href=\"javascript:document.SelectYear.submit()\">" .    translate("Year") . "</a>:&nbsp;</label>\n";
+  echo "<select name=\"year\" id=\"yearselect\" ".
+    "onchange=\"document.SelectYear.submit()\">\n";
 
   if ( ! empty ( $thisyear ) ) {
     $y = $thisyear;
