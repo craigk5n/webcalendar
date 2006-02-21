@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1435793: Bug in admin.php
       1420372: Cannot add event to public calendar
       1434525: rss.php shows some events twice
       1424599: too many events in rss feed
