@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1435460: Extra '.txt' in includes/translate.php
       1435576: Duplicate selectors, almost, in styles.php
       1435793: Bug in admin.php
       1420372: Cannot add event to public calendar
