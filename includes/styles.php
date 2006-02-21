@@ -487,7 +487,7 @@ textarea {
 }
 .standard th {
   color: <?php echo $GLOBALS['THFG']; ?>;
-  <?php echo background_css ( $GLOBALS['THBG'], 30 ); ?>
+  <?php echo background_css ( $GLOBALS['THBG'], 100 ); ?>
   font-size: 18px;
   padding: 0px;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
@@ -1082,13 +1082,6 @@ th {
 }
 .cookies {
   font-size: 13px;
-}
-.standard th {
-  color: <?php echo $GLOBALS['THFG']; ?>;
-  <?php echo background_css ( $GLOBALS['THBG'], 100 ); ?>
-  font-size: 18px;
-  padding: 0px;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 abbr {
   cursor: help;
