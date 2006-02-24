@@ -17,23 +17,24 @@
  *
  *  access_N - where N is 0 to ACCESS_NUMBER_FUNCTIONS as defined in
  *                 includes/access.php.  Each should be either 'Y' or 'N'.
- *  cal_N/v_N/e_N/d_N/a_N
- *       a series of 5 related form variables.  The first
- *             (cal_1, cal_2, etc.) holds the login of a user.
- *             The rest hold Y/N values for read/edit/delete/approve.
  *
- * TODO:
- *  Update the list of users to work properly with groups.
  *
  */
 include_once 'includes/init.php';
 
-// Are we handling the form?
+if ( ! access_is_enabled () ) {
+  etranslate ( "You are not authorized" );
+  exit;  
+}
+
+print_header ();
+//print_r ( $_POST );
+// Are we handling the access form?
 // If so, do that, then redirect
-if ( getPostValue ( 'user' ) != '' ) {
-  $user = getPostValue ( 'user' );
 
   // Handle function access first
+if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) != '') { 
+  $auser = getPostValue ( 'auser' );
   $perm = '';
   for ( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
     $val = getPostValue ( 'access_' . $i );
@@ -41,54 +42,75 @@ if ( getPostValue ( 'user' ) != '' ) {
   }
 
   $sql = "DELETE FROM webcal_access_function WHERE cal_login = ?";
-  dbi_execute ( $sql, array( $user ) );
+  dbi_execute ( $sql, array( $auser ) );
 
   $sql = "INSERT INTO webcal_access_function ( cal_login, cal_permissions ) " .
     "VALUES ( ?, ? )";
-  if ( ! dbi_execute ( $sql, array( $user, $perm ) ) ) {
+  if ( ! dbi_execute ( $sql, array( $auser, $perm ) ) ) {
     die_miserable_death ( translate ( "Database error" ) . ": " .
       dbi_error () );
   }
 
+}
+// Are we handling the other user form?
+// If so, do that, then redirect
+if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '') { 
+  $puser = getPostValue ( 'guser' );
+  $pouser = getPostValue ( 'otheruser' );  
   if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'Y' ) {
     // Handle access to other users' calendars
-    dbi_execute ( "DELETE FROM webcal_access_user WHERE cal_login = ?", array( $user ) );
+    //if user is not admin, reverse values so they are granting
+    //access to their own calendar
+    if ( ! $is_admin )
+      list($puser, $pouser) = array($pouser, $puser);
 
-    for ( $i = 0; true; $i++ ) {
-      $other_user = getPostValue ( "cal_" . $i );
-      if ( empty ( $other_user ) )
-        break;
-      $view = ( getPostValue ( "v_" . $i ) == 'Y' ) ? 'Y' : 'N';
-      if ( $user == '__public__' ) {
-        $edit = $delete = $approve = 'N';
-      } else {
-        $edit = ( getPostValue ( "e_" . $i ) == 'Y' ) ? 'Y' : 'N';
-        $delete = ( getPostValue ( "d_" . $i ) == 'Y' ) ? 'Y' : 'N';
-        $approve = ( getPostValue ( "a_" . $i ) == 'Y' ) ? 'Y' : 'N';
-      }
-      $sql = "INSERT INTO webcal_access_user " .
-        "( cal_login, cal_other_user, cal_can_view, cal_can_edit, " .
-        "cal_can_delete, cal_can_approve ) VALUES " .
-        "( ?, ?, ?, ?, ?, ? )";
-      if ( ! dbi_execute ( $sql, array( $user, $other_user, $view, $edit, $delete, $approve ) ) ) {
-        die_miserable_death ( translate ( "Database error" ) . ": " .
-          dbi_error () );
-      }
+    dbi_execute ( "DELETE FROM webcal_access_user WHERE cal_login = ? AND " .
+      "cal_other_user = ?", array( $puser, $pouser ) );
+      
+    if ( empty ( $pouser ) )
+      break;
+    $view_total = $edit_total = $approve_total = 0;
+    for ( $i=1;$i<=256; ) {
+      //echo $i . " "  .getPostValue ( "v_" . $i ) . "<br>";
+      $view_total    += getPostValue ( "v_" . $i );
+      $edit_total    += getPostValue ( "e_" . $i );
+      $approve_total += getPostValue ( "a_" . $i );
+      $i += $i;
+
+    }
+    $invite = ( strlen ( getPostValue ( "invite" ) )?getPostValue ( "invite" ):'N' );
+    $email = ( strlen ( getPostValue ( "email" ) )?getPostValue ( "email" ):'N' );
+    $time = ( strlen ( getPostValue ( "time" ) )?getPostValue ( "time" ):'N' );
+    $view = ( $view_total > 0 ) ? $view_total : 0;
+    if ( $puser != '__public__' ) {
+      $edit = ( $edit_total > 0 ) ? $edit_total : 0;
+      $approve = ( $approve_total > 0 ) ? $approve_total : 0;
+    }
+    
+    $sql = "INSERT INTO webcal_access_user " .
+      "( cal_login, cal_other_user, cal_can_view, cal_can_edit, " .
+      "cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only ) VALUES " .
+      "( ?, ?, ?, ?, ?, ?, ?, ? )";
+    if ( ! dbi_execute ( $sql, array( $puser, $pouser, 
+      $view, $edit, $approve, $invite, $email, $time ) ) ) {
+      die_miserable_death ( translate ( "Database error" ) . ": " .
+        dbi_error () );
     }
   }
-
-  do_redirect ( "access.php" );
 }
-
-$user = getGetValue ( 'user' );
-if ( ! empty ( $user ) ) {
+$otheruser = '';
+$guser = getPostValue ( 'guser' );
+if ( $guser == '__default__' ) $user_fullname = 'DEFAULT CONFIGURATION';
+$otheruser = getPostValue ( 'otheruser' );
+if ( $otheruser == '__default__' ) {
+  $otheruser_fullname = 'DEFAULT CONFIGURATION';
+  $otheruser_login  = '__default__';
+}
+if ( ! empty ( $guser ) || ! $is_admin ) {
+ if ( $is_admin ) {
   // Present a page to allow editing a user's rights
-
-  print_header ();
-
-  user_load_variables ( $user, 'user_' );
+  user_load_variables ( $guser, 'user_' );
   
-  if ( $user == '__default__' ) $user_fullname = 'DEFAULT CONFIGURATION';
   echo "<h2>" . translate ( "User Access Control" ) . ": " .
     $user_fullname . "</h2>\n";
 
@@ -97,20 +119,20 @@ if ( ! empty ( $user ) ) {
     translate("Admin") . "</a><br /><br />\n";
 
   ?>
-  <form action="access.php" method="POST" name="accessform">
-  <input type="hidden" name="user" value="<?php echo $user;?>" />
-
+  <form action="access.php" method="post" name="accessform">
+  <input type="hidden" name="auser" value="<?php echo $guser;?>" />
+  <input type="hidden" name="guser" value="<?php echo $guser;?>" />
   <table border="0" cellspacing="10"><tbody><tr><td valign="top">
   <?php
 
-  $access = access_load_user_functions ( $user );
+  $access = access_load_user_functions ( $guser );
 
-  $div = ceil ( ACCESS_NUMBER_FUNCTIONS / 2 ) - 1;
+  $div = ceil ( ACCESS_NUMBER_FUNCTIONS / 4 );
 
   for ( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ){
     // Public access can never use some of these functions
     $show = true;
-    if ( $user == '__public__' ) {
+    if ( $guser == '__public__' ) {
       switch ( $i ) {
         case ACCESS_VIEW_MANAGEMENT:
         case ACCESS_ACTIVITY_LOG:
@@ -133,146 +155,291 @@ if ( ! empty ( $user ) ) {
       $checked = ( $yesno != 'N' ) ? "checked=\"checked\"" : '';
       echo "<label for=\"access_" . $i . "\">";
       echo "<input type=\"checkbox\" name=\"access_" . $i .
-        "\" value=\"Y\" " . $checked . "/>\n";
+        "\" id=\"access_" . $i . "\" value=\"Y\" " . $checked . "/>\n";
       echo access_get_function_description ( $i );
       echo "</label><br />\n";
     }
-    if ( $i == $div )
+    if ( ($i + 1 )%$div == 0 )
       echo "</td>\n<td valign=\"top\">\n";
   }
   ?>
   </td></tr>
   </tbody></table>
-  <?php
-
-  if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'Y' ) {
-    // Now load all the data from webcal_access_user
-    $res = dbi_execute ( "SELECT cal_other_user, cal_can_view, " .
-      "cal_can_edit, cal_can_delete, cal_can_approve " .
-      "FROM webcal_access_user WHERE cal_login = ?", array( $user ) );
-    assert ( '$res' );
-    $otherperm = array ();
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $otherperm[$row[0]] = array (
-        "cal_other_user" => $row[0],
-        "cal_can_view" => $row[1],
-        "cal_can_edit" => $row[2],
-        "cal_can_delete" => $row[3],
-        "cal_can_approve" => $row[4]
-      );
-    }
-    dbi_free_result ( $res );
-
+    <input type="button" value="<?php etranslate("Cancel"); ?>"
+    onclick="document.location.href='access.php'" />
+  <input type="submit" name="submit"  value="<?php etranslate("Save"); ?>" />
+  </form>
+<?php
+ } //end is_admin test
     // Get list of users that this user can see (may depend on group settings)
     // along with all nonuser calendars
-    if ( $user != '__default__' )
-      $userlist = array_merge ( get_list_of_users ( $user ), get_nonuser_cals () );
-    ?>
-
-    <br /><br /><br />
-    <table border="0">
-    <tbody>
-    <tr>
-<?php if ( $user == '__public__' ) { ?>
-      <th width="70%"><?php etranslate("Calendar"); ?></th>
-      <th width="30%"><?php etranslate("View Event"); ?></th>
-<?php } else if ( $user != '__default__' ) { ?>
-      <th width="40%"><?php etranslate("Calendar"); ?></th>
-      <th width="15%"><?php etranslate("View Event"); ?></th>
-      <th width="15%"><?php etranslate("Edit Event"); ?></th>
-      <th width="15%"><?php etranslate("Delete Event"); ?></th>
-      <th width="15%"><?php etranslate("Approve/Reject Event"); ?></th>
-<?php } ?>
-</tr>
-    <?php
-      for ( $i = $j = 0; $i < count ( $userlist ); $i++ ) {
-        $thisuser = $userlist[$i]['cal_login'];
-        if ( $thisuser == $user )
-          continue;
-        $v = $e = $d = $a = '';
-        if ( ! empty ( $otherperm[$thisuser] ) ) {
-          if ( $otherperm[$thisuser]['cal_can_view'] == 'Y' )
-            $v = "checked=\"checked\"";
-          if ( $otherperm[$thisuser]['cal_can_edit'] == 'Y' )
-            $e = "checked=\"checked\"";
-          if ( $otherperm[$thisuser]['cal_can_delete'] == 'Y' )
-            $d = "checked=\"checked\"";
-          if ( $otherperm[$thisuser]['cal_can_approve'] == 'Y' )
-            $a = "checked=\"checked\"";
-        }
-        echo "<tr><td>" . $userlist[$i]['cal_fullname'] .
-          "<input type=\"hidden\" name=\"cal_" . $j .
-          "\" value=\"" . $userlist[$i]['cal_login'] . "\"/></td>\n";
-        echo "<td align=\"center\"><input type=\"checkbox\" value=\"Y\" " .
-          "name=\"v_" . $j . "\" " . $v . "/></td>\n";
-        if ( $user != '__public__' ) {
-          echo "<td align=\"center\"><input type=\"checkbox\" value=\"Y\" " .
-            "name=\"e_" . $j . "\" " . $e . "/></td>\n";
-          echo "<td align=\"center\"><input type=\"checkbox\" value=\"Y\" " .
-            "name=\"d_" . $j . "\" " . $d . "/></td>\n";
-          echo "<td align=\"center\"><input type=\"checkbox\" value=\"Y\" " .
-            "name=\"a_" . $j . "\" " . $a . "/></td>\n";
-        }
-        $j++;
-        echo "</tr>\n";
+   // if ( $guser != '__default__' ) {
+      if ( ! $is_admin ) {
+        $guser = $login;
+        $pagetitle = translate ( "Grant This User Access to My Calendar" );
+      } else {
+        $pagetitle = translate ( "Allow Access to Other Users' Calendar" );    
       }
-    ?>
-    </tbody>
-    </table>
+      if ( $guser == '__default__' ) {
+        $userlist = array ( '__default__' );
+        $otheruser = '__default__';        
+      } else { 
+        $userlist = get_list_of_users ( $guser );
+        echo "<h2>$pagetitle</h2>\n";
+ 
+        echo "<form action=\"access.php\" method=\"post\" name=\"SelectOther\">\n";
+        echo "<input type=\"hidden\" name=\"guser\" value=\"$guser\" />\n";
+        echo "<select name=\"otheruser\" onchange=\"document.SelectOther.submit()\">\n";
 
-    <br /><br />
-  <?php } ?>
+        //add a DEFAULT CONFIGURATION to be used as a mask  
+        echo "<option value=\"__default__\">".
+          translate ( "DEFAULT CONFIGURATION" )."</option>\n";
+        $selected ='';
+        for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+          if ( $userlist[$i]['cal_login'] != $guser  ) {
+            $selected = ( ! empty ( $otheruser ) && 
+              $otheruser == $userlist[$i]['cal_login'] ? " selected=\"selected\"":'');
+            echo "<option value=\"".$userlist[$i]['cal_login']. "\"" . 
+              $selected .">". $userlist[$i]['cal_fullname']."</option>\n";
+          }
+       }
+       echo "</select>";
+       echo "<input type=\"submit\"  value=\"" . translate("Go") . "\" />";
+       echo "</form>\n";
 
-  <input type="button" value="<?php etranslate("Cancel"); ?>"
-    onclick="javascript:history.go(-1)" />
-  <input type="submit" value="<?php etranslate("Save"); ?>" />
-  </form>
-  <?php
-  print_trailer ();
-  echo "</html></body>\n";
-  exit;
-}
-
-// If we are here... we must need to print out a list of users
-
-print_header();
-
-echo "<h2>" . translate ( "User Access Control" ) . "</h2>\n";
-
-echo "<a title=\"" . translate("Admin") .
-  "\" class=\"nav\" href=\"adminhome.php\">&laquo;&nbsp;" .
-  translate("Admin") . "</a><br /><br />\n";
-
-$userlist = get_my_users ();
-
-//echo "<b>Userlist</b>:<pre>"; print_r ( $userlist ); echo "</pre>";
-
-echo "<ul>\n";
-
-for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-  echo "<li><a href=\"access.php?user=" . $userlist[$i]['cal_login'] .
-    "\">" . $userlist[$i]['cal_fullname'] . "</a></li>\n";
-}
-
-$userlist = get_nonuser_cals ();
-for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-  if ( $userlist[$i]['cal_is_public'] == 'Y' ) {
-    echo "<li><a href=\"access.php?user=" . $userlist[$i]['cal_login'] .
-      "\">" . $userlist[$i]['cal_fullname'] . "</a></li>\n";
+     if (  empty ( $otheruser ) ) {
+       print_trailer ();
+       echo "</html></body>\n";
+       exit;
+    }
   }
 }
 
-//add a DEFAULT CONFIGURATION to be as a mask
-echo "<li><a href=\"access.php?user=__default__\" \">" .
-  translate ( "DEFAULT CONFIGURATION" ) ."</a></li>\n";
+if ( ! empty ( $otheruser ) ) {
+  if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'Y' ) {
+    $query_param = array( $guser, $otheruser );
+    //if user is not admin, reverse values so they are granting
+    //access to their own calendar
+    if ( ! $is_admin )
+      $query_param = array( $otheruser, $guser );
+    user_load_variables ( $otheruser, 'otheruser_' );
+    // Now load all the data from webcal_access_user
+    $res = dbi_execute ( "SELECT cal_other_user, cal_can_view, cal_can_edit, " .
+      "cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only " .
+      "FROM webcal_access_user WHERE cal_login = ? AND cal_other_user = ?", 
+      $query_param );
+    assert ( '$res' );
+    $op = array ();
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      $op = array (
+        "cal_other_user" => $row[0],
+        "view" => $row[1],
+        "edit" => $row[2],
+        "approve" => $row[3],
+        "invite" => $row[4],
+        "email" => $row[5],
+        "time" => $row[6]
+      );
+    }
+    dbi_free_result ( $res );
+    echo "<form action=\"access.php\" method=\"post\" name=\"EditOther\">\n";
+    echo "<input type=\"hidden\" name=\"guser\" value=\"$guser\" />\n";        
+    echo "<input type=\"hidden\" name=\"otheruser\" value=\"$otheruser\" />\n";
 ?>
-</ul>
-
-<?php print_trailer(); ?>
+    <br />
+    
+    <table cellpadding="5" cellspacing="0">
+    <tbody>
+    <tr>
+<?php if ( $guser == '__public__' ) { ?>
+      <th class="boxtop boxbottom" width="70%" align="left">
+      <?php etranslate("Calendar"); ?></th>
+      <th class="boxtop boxbottom" width="30%">
+      <?php etranslate("View Event"); ?></th>
+<?php } else   {//if ( $guser != '__default__' ) { ?>
+      <th class="boxtop boxbottom" width="25%">
+      <?php echo $otheruser_fullname; ?></th>
+      <th class="boxtop boxbottom" width="15%">
+      <?php etranslate("Type"); ?></th>
+      <th width="15%" colspan="3" class="boxtop boxbottom">
+        <?php etranslate("View"); ?></th>
+      <th width="15%" colspan="3" class="boxtop boxbottom">
+        <?php etranslate("Edit"); ?></th>
+      <th width="15%" colspan="3" class="boxtop boxright boxbottom">
+        <?php etranslate("Approve/Reject"); ?></th>
+<?php } ?>
+</tr>
+    <?php
+        $access_type = array();
+        $access_type[1] = translate ( "Events" );
+        $access_type[2] = translate ( "Tasks" );
+        $access_type[4] = translate ( "Journals" );      
+        for ( $j =1; $j < 5;$j++ ) {
+          $bottomedge = ''; 
+          if ( $j ==3 ) continue; 
+          echo "<tr>";
+          if ( $j == 1) {
+            echo "<td class=\"boxleft leftpadded\">" .
+              "<input type=\"checkbox\" value=\"Y\" name=\"invite\"" . 
+              ( ! empty ( $op['invite'] ) && $op['invite'] == "Y" ? 
+                " checked=\"checked\"":"") . " />" . 
+                  translate ( "Can Invite" ) . "</td>\n";
+          } else if ( $j == 2 ) {
+            echo "<td class=\"boxleft leftpadded\">" .
+              "<input type=\"checkbox\" value=\"Y\" name=\"email\"" . 
+              ( ! empty ( $op['email'] ) && $op['email'] == "Y" ? 
+                " checked=\"checked\"":"") . " />" . 
+                  translate ( "Can Email" ) . "</td>\n";          
+          } else {
+            echo "<td class=\"boxleft boxbottom leftpadded\">" .
+              "<input type=\"checkbox\" value=\"Y\" name=\"time\"" . 
+              ( ! empty ( $op['time'] ) && $op['time'] == "Y" ? 
+              " checked=\"checked\"":"") . " />" . 
+                translate ( "Can See Time Only" ) . "</td>\n";
+            $bottomedge = "boxbottom";          
+          }
+          echo "<td align=\"center\" class=\"boxleft $bottomedge\">". 
+            $access_type[$j] . "</td>\n<td align=\"center\" ".
+            "class=\"boxleft pub $bottomedge\">";
+          echo "<input type=\"checkbox\" value=\"$j\" name=\"v_" . $j ."\"" . 
+            ( ! empty ( $op['view'] ) && ( $op['view'] & $j ) ? 
+              " checked=\"checked\"":"")  . " /></td><td class=\"conf $bottomedge\">\n";
+          echo "<input type=\"checkbox\" value=\"".($j*8)."\" name=\"v_" . ($j* 8 ) .
+            "\"" . ( ! empty ( $op['view'] ) && ( $op['view'] & ($j*8) )? 
+            " checked=\"checked\"":"")  . " /></td><td class=\"priv $bottomedge\">\n";
+          echo "<input type=\"checkbox\" value=\"".($j*64)."\" name=\"v_" . ($j*64 )  .
+            "\"" . ( ! empty ( $op['view'] ) && ( $op['view'] & ($j*64))? 
+            " checked=\"checked\"":"")  . " />\n";
+          echo "</td>\n";              
+          if ( $guser != '__public__' ) {
+            echo "<td align=\"center\" class=\"boxleft pub $bottomedge\">";
+          echo "<input type=\"checkbox\" value=\"$j\" name=\"e_" . $j ."\"" . 
+            ( ! empty ( $op['edit'] ) && ( $op['edit'] & $j )? " checked=\"checked\"":"")  . 
+              " /></td><td class=\"conf $bottomedge\">\n";
+          echo "<input type=\"checkbox\" value=\"".($j*8)."\" name=\"e_" . ($j* 8 ) .
+            "\"" . ( ! empty ( $op['edit'] ) && ( $op['edit'] & ($j*8) )? 
+            " checked=\"checked\"":"")  . " /></td><td class=\"priv $bottomedge\">\n";
+          echo "<input type=\"checkbox\" value=\"".($j*64)."\" name=\"e_" . ($j*64 )  .
+            "\"" . ( ! empty ( $op['edit'] ) && ( $op['edit'] & ($j*64) )? 
+            " checked=\"checked\"":"")  . " />\n";
+            echo "</td>\n";
+            echo "<td align=\"center\" class=\"boxleft pub $bottomedge\">";
+          echo "<input type=\"checkbox\" value=\"$j\" name=\"a_" . $j ."\"" . 
+            ( ! empty ( $op['approve'] ) && ($op['approve'] & $j )? 
+            " checked=\"checked\"":"")  .  " /></td><td class=\"conf $bottomedge\">\n";
+          echo "<input type=\"checkbox\" value=\"".( $j*8)."\" name=\"a_" . ($j* 8 ) .
+            "\"" . ( ! empty ( $op['approve'] ) && ( $op['approve'] & ($j*8 )) ? 
+            " checked=\"checked\"":"")  . 
+            " /></td><td class=\"boxright  priv $bottomedge\">\n";
+          echo "<input type=\"checkbox\" value=\"".($j*64)."\" name=\"a_" . ($j*64 )  .
+            "\"" . ( ! empty ( $op['approve'] ) && ( $op['approve'] & ($j*64 ))? 
+            " checked=\"checked\"":"")  . " />\n";
+            echo "</td>\n";
+          }
+          echo "</tr>\n";
+        }
+        echo "<tr><td colspan=\"2\" style=\"text-align:right\">";
+        if ( $otheruser != '__default__' &&  $otheruser != '__public__' )
+        echo "<input type=\"button\" value=\"" . 
+          translate("Assistant") . "\" onclick=\"selectAll(63);\" />&nbsp;&nbsp;";
+        echo  "<input type=\"button\" value=\"" . 
+          translate("Select All") . "\" onclick=\"selectAll(256);\" />&nbsp;&nbsp;";
+        echo  "<input type=\"button\" value=\"" . 
+          translate("Clear All") . "\" onclick=\"selectAll(0);\" /></td>";
+        echo "<td colspan=\"9\">\n";
+ 
+        echo "<table border=\"0\" align=\"center\" cellpadding=\"5\" cellspacing=\"2\">".
+          "<tr><td class=\"pub\">" . 
+          translate ("Public") ."</td>" .
+          "<td class=\"conf\">" . translate("Confidential") . "</td>" .
+          "<td class=\"priv\">" . translate("Private") .
+          "</td></tr></table></td></tr>\n";
+        echo "</tbody></table>\n";
+?>
+    <br /><br />
+  <?php } ?>
+  <input type="button" value="<?php etranslate("Cancel"); ?>"
+    onclick="document.location.href='access.php'" />
+  <input type="submit" name="submit" value="<?php etranslate("Save"); ?>" />
+  </form>
+<script language="javascript" type="text/javascript">
+<!-- <![CDATA[
+function selectAll( limit ) {
+ if ( limit == 0 ) {
+   document.EditOther.invite.checked = false;
+   document.EditOther.email.checked = false; 
+   document.EditOther.time.checked = false;
+ } else {
+   document.EditOther.invite.checked = true;
+   document.EditOther.email.checked = true;
+ }
+ //clear existing values
+ for ( i = 1; i <= 256; ) {
+   var vname = 'v_' + i;
+   document.forms['EditOther'].elements[vname].checked = false;
+   var ename = 'e_' + i;
+   document.forms['EditOther'].elements[ename].checked = false;
+   var aname = 'a_' + i;
+   document.forms['EditOther'].elements[aname].checked = false;
+   i = parseInt(i+i);   
+  } 
+ for ( i = 1; i <= limit; ) {
+   var vname = 'v_' + i;
+   document.forms['EditOther'].elements[vname].checked = true;
+   var ename = 'e_' + i;
+   document.forms['EditOther'].elements[ename].checked = true;
+   var aname = 'a_' + i;
+   document.forms['EditOther'].elements[aname].checked = true;
+   i = parseInt(i+i);   
+  } 
+}
+//]]> -->
+</script>
+  <?php
+  print_trailer ();
+  echo "</body></html>\n";
+  exit;
+}
+if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
+  // If we are here... we must need to print out a list of users
+  
+  echo "<h2>" . translate ( "User Access Control" ) . "</h2>\n";
+  
+  echo "<a title=\"" . translate("Admin") .
+    "\" class=\"nav\" href=\"adminhome.php\">&laquo;&nbsp;" .
+    translate("Admin") . "</a><br /><br />\n";
+  
+  $userlist = get_my_users ();
+  $nonuserlist = get_nonuser_cals ();
+  ?>
+  <form action="access.php" method="post" name="SelectUser">
+  <select name="guser" onchange="document.SelectUser.submit()">
+  <?php
+  //add a DEFAULT CONFIGURATION to be used as a mask  
+  echo "<option value=\"__default__\">".
+    translate ( "DEFAULT CONFIGURATION" )."</option>\n";
+  for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+    echo "<option value=\"".$userlist[$i]['cal_login']."\">".
+      $userlist[$i]['cal_fullname']."</option>\n";
+  }
+  for ( $i = 0; $i < count ( $nonuserlist ); $i++ ) {
+    //$is_global = ( $nonuserlist[$i]['cal_is_public'] == 'Y'?"*":'' );
+    echo "<option value=\"".$nonuserlist[$i]['cal_login']."\">".
+      $nonuserlist[$i]['cal_fullname']. " " . $is_global . "</option>\n";
+  }
+?>
+  </select>
+  <input type="submit"  value="<?php etranslate("Go")?>" />
+  </form>
+  
+<?php 
+} //end admin $guser !- default test
+print_trailer(); ?>
 </body>
 </html>
+
+
 <?php
-exit;
 
 // Get the list of users that the specified user can see.
 // Note: this function is based on get_my_users in functions.php
@@ -301,7 +468,7 @@ function get_list_of_users ( $user )
     }
     $ret = array ();
     if ( count ( $groups ) == 0 ) {
-      // Eek.  User is in no groups... Return only themselves
+      //echo " Eek.  User is in no groups... Return only themselves";
       $ret[] = $u_byname[$user];
       return $ret;
     }

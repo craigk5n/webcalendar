@@ -29,6 +29,7 @@
 //These values will be used by styles.php to customize the size of this calendar
 $MINICALWIDTH = '160px';
 $MINICALFONT = '11px';
+$DISPLAY_WEEKENDS = true;
 
 include_once 'includes/init.php';
 

@@ -572,18 +572,20 @@ CREATE TABLE webcal_access_user (
   /* the login of the other user whose calendar the current user */
   /* wants to access */
   cal_other_user VARCHAR(50) NOT NULL,
-  /* can current user view events on the other user's calendar? ('Y'/'N') */
-  cal_can_view CHAR(1) NOT NULL DEFAULT 'N',
-  /* can current user edit events on the other user's calendar? ('Y'/'N') */
-  cal_can_edit CHAR(1) NOT NULL DEFAULT 'N',
-  /* can current user delete events on the other user's calendar? ('Y'/'N') */
-  cal_can_delete CHAR(1) NOT NULL DEFAULT 'N',
-  /* can current user approve events on the other user's calendar? ('Y'/'N') */
-  cal_can_approve CHAR(1) NOT NULL DEFAULT 'N',
+  /* can current user view events on the other user's calendar? */
+  cal_can_view INT NOT NULL DEFAULT '0',
+  /* can current user edit events on the other user's calendar?  */
+  cal_can_edit INT NOT NULL DEFAULT '0',
+  /* can current user approve events on the other user's calendar? */
+  cal_can_approve INT NOT NULL DEFAULT '0',
+  /* can current user see other user in Participant lists? */
+  cal_can_invite CHAR(1) DEFAULT 'Y',	
+  /* can current user send emails to other user? */
+  cal_can_email CHAR(1) DEFAULT 'Y',
+  /* can current user can only see time of other user? */
+  cal_see_time_only CHAR(1) DEFAULT 'N',
   PRIMARY KEY ( cal_login, cal_other_user )
 );
-
-
 /*
  * Specifies what WebCalendar functions a user can access.
  * Each function has a corresponding numeric value (specified in

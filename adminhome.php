@@ -32,7 +32,8 @@ table.admin td {
 }
 .admin td a {
  padding: 10px;
- width: 200px;
+ width: 125px;
+ display:block;
  text-align: center;
  background-color: #CCCCCC;
  border-top: 1px solid #EEEEEE;
@@ -42,7 +43,8 @@ table.admin td {
 }
 .admin td a:hover {
  padding: 10px;
- width: 200px;
+ width: 125px;
+ display:block;
  text-align: center;
  background-color: #AAAAAA;
  border-top: 1px solid #777777;
@@ -92,15 +94,17 @@ if ($is_nonuser_admin) {
   }
   
   if ( $is_admin ) {
-   $names[] = translate("Users");
-   $links[] = "users.php";
-   if ( access_is_enabled () ) {
-     $names[] = translate("User Access Control");
-     $links[] = "access.php";
-          }
+    $names[] = translate("Users");
+    $links[] = "users.php";
   } else {
-   $names[] = translate("Account");
-   $links[] = "users.php";
+    $names[] = translate("Account");
+    $links[] = "users.php";
+  }
+  
+  if ( access_is_enabled () &&
+    access_can_access_function ( ACCESS_ACCESS_MANAGEMENT ) ) {
+      $names[] = translate("User Access Control");
+      $links[] = "access.php";
   }
   
   if ( $single_user != 'Y' ) {

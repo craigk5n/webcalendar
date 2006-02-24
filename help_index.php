@@ -9,6 +9,7 @@
   <li><a title="<?php etranslate("Layers")?>" href="help_layers.php"><?php etranslate("Layers")?></a></li>
   <li><a title="<?php etranslate("Import")?>" href="help_import.php"><?php etranslate("Import")?></a></li>
   <li><a title="<?php etranslate("Preferences")?>" href="help_pref.php"><?php etranslate("Preferences")?></a></li>
+  <li><a title="<?php etranslate("User Access Control")?>" href="help_uac.php"><?php etranslate("User Access Control")?></a></li>
   <?php if ( $is_admin ) { ?>
     <li><a title="<?php etranslate("System Settings")?>" href="help_admin.php"><?php etranslate("System Settings")?></a></li>
   <?php } ?>

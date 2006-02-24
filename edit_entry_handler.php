@@ -237,6 +237,7 @@ if ( empty ( $id ) ) {
   } else
     $error = translate("Database error") . ": " . dbi_error ();
 }
+
 if ( $is_admin ) {
   $can_edit = true;
 }
@@ -254,8 +255,8 @@ if ( empty ( $error ) && ! $can_edit ) {
     $error = translate("Database error") . ": " . dbi_error ();
 }
 //check UAC
-if ( access_is_enabled () ) {
-  $can_edit  = $can_doall = $can_edit || access_can_edit_user_calendar ( $old_create_by );
+if ( access_is_enabled () && ! empty ( $old_create_by ) ) {
+  $can_edit = access_user_calendar ( 'edit', $old_create_by, $login);
 } 
 if ( ! $can_edit && empty ( $error ) ) {
   $error = translate ( "You are not authorized" );
@@ -433,7 +434,7 @@ if ( empty ( $error ) ) {
   if ( $old_id > 0 )
     $query_params[] = $old_id;
 
-  $query_params[] = ( ! empty ( $old_create_by ) && ( ( $is_admin && ! $newevent ) || $is_assistant || $is_nonuser_admin ) ) ? $old_create_by : $login;
+  $query_params[] = ( ! empty ( $old_create_by ) ? $old_create_by : $login );
   $query_params[] = date ( "Ymd", $eventstart );
   $query_params[] = ( strlen ( $hour ) > 0 && $timetype != 'U' ) ? date ( "His", $eventstart ) : "-1";
   
@@ -707,10 +708,15 @@ if ( empty ( $error ) ) {
           break;
         }
       }
-     $is_nonuser_admin = user_is_nonuser_admin ( $login, $old_participant );
+			//check UAC
+			$can_email = 'Y'; 
+			if ( access_is_enabled () ) {
+        $can_email = access_user_calendar ( 'email', $old_participant, $login);
+      }
+      $is_nonuser_admin = user_is_nonuser_admin ( $login, $old_participant );
       // Don't send mail if we are editing a non-user calendar
       // and we are the admin
-      if ( !$found_flag && !$is_nonuser_admin) {
+      if ( !$found_flag && !$is_nonuser_admin && $can_email == 'Y') {
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $old_participant, "EMAIL_EVENT_DELETED" );
         $htmlmail = get_pref_setting ( $old_participant, "EMAIL_HTML" );
@@ -834,9 +840,14 @@ if ( empty ( $error ) ) {
       break;
 
     } else {
+			//check UAC
+			$can_email = 'Y'; 
+			if ( access_is_enabled () ) {
+        $can_email = access_user_calendar ( 'email', $participants[$i], $login);
+      }
       // Don't send mail if we are editing a non-user calendar
       // and we are the admin
-      if (!$is_nonuser_admin) {
+      if (!$is_nonuser_admin && $can_email == 'Y') {
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $participants[$i],
         $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );

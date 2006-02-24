@@ -279,3 +279,16 @@ CREATE TABLE webcal_blob (
   cal_blob BLOB,
   PRIMARY KEY ( cal_blob_id )
 );
+/*upgrade_v1.1.0d-CVS*/
+DROP TABLE webcal_access_user;
+CREATE TABLE webcal_access_user (
+  cal_login VARCHAR2(50) NOT NULL,
+  cal_other_user VARCHAR2(50) NOT NULL,
+  cal_can_view INT DEFAULT '0' NOT NULL,
+  cal_can_edit INT DEFAULT '0' NOT NULL,
+  cal_can_approve INT DEFAULT 'O' NOT NULL,
+  cal_can_invite CHAR(1) DEFAULT 'Y' NOT NULL,
+  cal_can_email CHAR(1) DEFAULT 'Y' NOT NULL,
+  cal_see_time_only CHAR(1) DEFAULT 'N' NOT NULL,
+  PRIMARY KEY ( cal_login, cal_other_user )
+);

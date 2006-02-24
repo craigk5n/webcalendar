@@ -216,7 +216,10 @@ else
 
 $untimed_found = false;
 $get_unapproved = ( $DISPLAY_UNAPPROVED == "Y" );
-
+// public access events can not override $DISPLAY_UNAPPROVED
+if ( $user == "__public__" && $PUBLIC_ACCESS_VIEW_UNAPPROVED != 'Y' )
+  $get_unapproved = false;
+	
 // Step through each user and load events for that user.
 // Store in $e_save[] (normal events) and $re_save[] (repeating events).
 $e_save = array ();

@@ -147,17 +147,14 @@ function user_load_variables ( $login, $prefix ) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }
-  
-//  if ( ! empty ( $GLOBALS[$prefix . "login"] ) && $GLOBALS[$prefix . "login"] == $login )
-//    return true;
-  
-  if ( $login == "__public__" ) {
+  if ( $login == "__public__" || $login == "__default__" ) {
     $GLOBALS[$prefix . "login"] = $login;
     $GLOBALS[$prefix . "firstname"] = "";
     $GLOBALS[$prefix . "lastname"] = "";
     $GLOBALS[$prefix . "is_admin"] = "N";
     $GLOBALS[$prefix . "email"] = "";
-    $GLOBALS[$prefix . "fullname"] = $PUBLIC_ACCESS_FULLNAME;
+    $GLOBALS[$prefix . "fullname"] = ( $login == "__public__"?
+		  $PUBLIC_ACCESS_FULLNAME : translate ( "DEFAULT CONFIGURATION" ) );
     $GLOBALS[$prefix . "password"] = "";
     return true;
   }
@@ -178,7 +175,7 @@ function user_load_variables ( $login, $prefix ) {
         $GLOBALS[$prefix . "fullname"] = $login;
       $GLOBALS[$prefix . "password"] = $row[4];
       $ret = true;
-    }
+		}
     dbi_free_result ( $res );
   } else {
     $error = translate ("Database error") . ": " . dbi_error ();

@@ -105,7 +105,7 @@ function view_get_user_list ( $view_id )
   if ( access_is_enabled () && ! $is_admin ) {
     $newlist = array ( );
     for ( $i = 0; $i < count ( $ret ); $i++ ) {
-      if ( access_can_view_user_calendar ( $ret[$i] ) )
+      if ( access_user_calendar ( 'view', $ret[$i] ) )
         $newlist[] = $ret[$i];
     }
     $ret = $newlist;

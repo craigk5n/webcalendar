@@ -41,6 +41,18 @@ class Event {
    */
   var $_time;
   /**
+   * The event's modified date (in YYYYMMDD format).
+   * @var string
+   * @access private
+   */
+  var $_moddate;
+  /**
+   * The event's modified time (in HHMMSS format).
+   * @var string
+   * @access private
+   */
+  var $_modtime;
+  /**
    * The event's ID.
    * @var int
    * @access private
@@ -80,6 +92,12 @@ class Event {
    * @access private
    */
   var $_status;
+  /**
+   * The event's owner.
+   * @var string
+   * @access private
+   */
+  var $_owner;
   /**
    * The event's category ID.
    * @var int
@@ -168,13 +186,15 @@ class Event {
    * @param string $description Event's description
    * @param string $date        Event's date (in YYYYMMDD format)
    * @param string $time        Event's time (in HHMMSS format)
+   * @parm  string $moddate     Event's mod date (in YYYYMMDD format)
+   * @param string $modtime     Event's mod time (in HHMMSS format)
    * @param int    $id          Event's ID
    * @param mixed  $extForID    Event's extension ID (or '' for none)
    * @param int    $priority    Event's priority
    * @param string $access      Event's access level
    * @param int    $duration    Event's duration (in minutes)
    * @param string $status      Event's status
-   * @param mixed  $category    Event's category ID
+   * @param string $owner       Event's cal_create_by
    * @param string $login       Event's owner
    * @param string $calType     Event's type
    * @param string $location    Event's location
@@ -189,19 +209,22 @@ class Event {
    */
 
   function Event ( $name, $description, $date, $time, $id, $extForID,
-          $priority, $access, $duration, $status, $category, $login,
-          $calType, $location, $url, $dueDate, $dueTime, $percent ) {
+          $priority, $access, $duration, $status, $owner, $category, $login,
+          $calType, $location, $url, $dueDate, $dueTime, $percent, $moddate, $modtime ) {
 
     $this->_name = $name;
     $this->_description = $description;
     $this->_date = $date;
     $this->_time = $time;
+    $this->_moddate = $moddate;
+    $this->_modtime = $modtime;
     $this->_id = $id;
     $this->_extForID = $extForID;
     $this->_priority = $priority;
     $this->_access = $access;
     $this->_duration = $duration;
     $this->_status = $status;
+    $this->_owner = $owner;
     $this->_category = $category;
     $this->_login = $login;
     $this->_calType = $calType;
@@ -265,6 +288,28 @@ class Event {
    */
   function getTime () {
     return $this->_time;
+  }
+	
+  /**
+   * Gets the event's modified date
+   *
+   * @return string The event's modifieddate (in YYYYMMDD format)
+   *
+   * @access public
+   */
+  function getModDate () {
+    return $this->_moddate;
+  }
+
+  /**
+   * Gets the event's modified time
+   *
+   * @return string The event's modified time (in HHMMSS format)
+   *
+   * @access public
+   */
+  function getModTime () {
+    return $this->_modtime;
   }
  
   /**
@@ -389,6 +434,17 @@ class Event {
     return $this->_status;
   }
 
+  /**
+   * Gets the event's owner
+   *
+   * @return string The event's owner
+   *
+   * @access public
+   */
+  function getOwner () {
+    return $this->_owner;
+  }
+	
   /**
    * Gets the event's category ID
    *

@@ -235,7 +235,7 @@ function print_detailed_entry ( $event, $date ) {
   if ( $PN != $PD )
     echo " - " . $PD;
   echo "<br />\n";
-  $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
+  $eventinfo .= build_entry_popup ( $popupid, $event->getLogin(),
     $event->getDescription(), $timestr, site_extras_for_popup ( $id ) );
 }
 

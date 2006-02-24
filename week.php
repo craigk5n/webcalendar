@@ -12,8 +12,7 @@ load_user_categories ();
 $nextYmd = date ( "Ymd", mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear ) );
 $prevYmd = date ( "Ymd", mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
 
-// We add 2 hours on to the time so that the switch to DST doesn't
-// throw us off.  So, all our dates are 2AM for that day.
+
 if ( $WEEK_START == 1 || $DISPLAY_WEEKENDS == "N" ) {
    $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
 } else {

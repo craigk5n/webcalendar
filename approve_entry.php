@@ -46,7 +46,7 @@ else
 // allowed to approve for the specified user.
 if ( access_is_enabled () && ! empty ( $user ) &&
   $user != $login ) {
-  if ( access_can_approve_user_calendar ( $user ) )
+  if ( access_user_calendar ( 'approve', $user ) )
     $app_user = $user;
 }
 
@@ -99,8 +99,12 @@ if ( strlen ( $comments ) && empty ( $cancel ) ) {
    $hour =  $minute = 0;
  }
   $eventstart = $fmtdate .  sprintf( "%06d", ( $hour * 10000 ) + ( $minute * 100 ) );
-  //TODO figure out if creator wants approved comment email 
-    $send_user_mail = "Y";
+  //TODO figure out if creator wants approved comment email
+		//check UAC
+    $send_user_mail = "Y"; 
+		if ( access_is_enabled () ) {
+			$send_user_mail = access_user_calendar ( 'email', $creator, $login);
+		}	 
     $htmlmail = get_pref_setting ( $creator, "EMAIL_HTML" );
     $t_format = get_pref_setting ( $creator, "TIME_FORMAT" );
     user_load_variables ( $creator, "temp" );

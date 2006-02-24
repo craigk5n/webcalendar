@@ -39,17 +39,20 @@ else
 // allowed to approve for the specified user.
 if ( access_is_enabled () && ! empty ( $user ) &&
   $user != $login ) {
-  if ( access_can_approve_user_calendar ( $user ) )
+  if ( access_user_calendar ( 'approve', $user ) )
     $app_user = $user;
 }
+
+$view_type = "view_entry";
 $type = getGetValue ( 'type' );
 if ( ! empty ( $type ) && ( $type == 'T' || $type == 'N' ) ) {
   $log_reject =  LOG_REJECT_T;
-  $view_type = "view_task";
+} else if ( ! empty ( $type ) && ( $type == 'T' || $type == 'N' ) ) {
+  $log_reject =  LOG_REJECT_J; 
 } else {
   $log_reject =  LOG_REJECT;
-  $view_type = "view_entry";  
 }
+
 if ( empty ( $error ) && $id > 0 ) {
   if ( ! dbi_execute ( "UPDATE webcal_entry_user SET cal_status = 'R' " .
     "WHERE cal_login = ? AND cal_id = ?" , array ( $app_user , $id ) ) ) {
@@ -106,6 +109,11 @@ if ( empty ( $error ) && $id > 0 ) {
     // does this user want email for this?
     $send_user_mail = get_pref_setting ( $partlogin[$i],
       "EMAIL_EVENT_REJECTED" );
+		//check UAC
+    $can_mail = "Y"; 
+		if ( access_is_enabled () ) {
+			$can_mail = access_user_calendar ( 'email', $partlogin[$i], $login);
+		}
     $htmlmail = get_pref_setting ( $partlogin[$i], "EMAIL_HTML" );
     $t_format = get_pref_setting ( $partlogin[$i], "TIME_FORMAT" );
     user_load_variables ( $partlogin[$i], "temp" );
@@ -113,7 +121,7 @@ if ( empty ( $error ) && $id > 0 ) {
     $user_TZ = get_tz_offset ( $user_TIMEZONE, '', $eventstart );
     $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
     if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
-      $SEND_EMAIL != "N" ) {
+      $SEND_EMAIL != "N" && $can_mail == 'Y') {
       if ( empty ( $user_language ) || ( $user_language == 'none' )) {
         reset_language ( $LANGUAGE );
       } else {

@@ -22,24 +22,41 @@ include 'includes/classes/AttachmentList.class';
 include 'includes/classes/CommentList.class';
 
 // make sure this user is allowed to look at this calendar.
-$can_view = $can_edit = $can_delete = $can_approve = false;
+$can_view = $can_edit = $can_approve = false;
 $is_my_event = false; // is this user owner or participant?
-$is_private = $is_confidential = false;
+$is_private = $is_confidential = $unapproved = false;
+$event_status = "";
 $log = getGetValue ( 'log' );
 $show_log = ! empty ( $log );
-
-if ( $is_admin || $is_nonuser_admin || $is_assistant ) {
-  $can_view = true;
-} 
+$can_email = true;
 
 $error = '';
 $eType = '';
+$pri[1] = translate("Low");
+$pri[2] = translate("Medium");
+$pri[3] = translate("High");
 
 if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) ) {
   $error = translate ( "Invalid entry id" ) . "."; 
 }
 
+if ( $login == '__public__' &&
+  ! empty ( $OVERRIDE_PUBLIC ) && $OVERRIDE_PUBLIC == 'Y' ) {
+  $hide_details = true;
+} else {
+  $hide_details = false;
+}
+
+//if sent here from an email and not logged in,
+//save URI and redirect to login
 if ( empty ( $error ) ) {
+  $em = getGetValue ( 'em' );
+  if ( ! empty ( $em ) && empty ( $login ) ) {
+    remember_this_view ();
+    do_redirect ( 'login.php' );  
+  } 
+}
+
   // is this user a participant or the creator of the event?
   $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
     "webcal_entry_user WHERE webcal_entry.cal_id = " .
@@ -55,18 +72,100 @@ if ( empty ( $error ) ) {
     }
     dbi_free_result ( $res );
   }
-
 //update the task percentage for this user
-if ( ! empty ( $_POST ) && $can_view && $is_my_event ) {
+if ( ! empty ( $_POST ) && $is_my_event ) {
   $upercent = getPostValue ( 'upercent' );
  if ( $upercent >= 0 && $upercent <= 100 )
     dbi_execute ( "UPDATE webcal_entry_user SET cal_percent = ? WHERE cal_login = ? " .
     " AND cal_id = ?" , array ( $upercent , $login, $id ) );
 }
 
+// Load event info now.
+$sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
+  "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
+  "cal_name, cal_description, cal_location, cal_url, cal_due_date, cal_due_time FROM webcal_entry " .
+  "  WHERE cal_id = ?";
+$res = dbi_execute ( $sql , array ( $id ) );
+if ( ! $res ) {
+  $error = translate("Invalid entry id") . ": $id";
+} else {
+  $row = dbi_fetch_row ( $res );
+  if ( $row ) { 
+    $create_by = $row[0];
+    $orig_date = $row[1];
+    $event_time = $row[2];
+    $mod_date = $row[3];
+    $mod_time = $row[4];
+    $duration = $row[5];
+    $cal_priority = $row[6];
+    $cal_type = $row[7];
+    $cal_access = $row[8];
+    if ( $cal_type == 'T' || $cal_type == 'N' )
+      $eType = 'task';
+    $due_date = $row[13];
+    $due_time = $row[14];
+    if ( $hide_details ) {
+      $name = translate ( $OVERRIDE_PUBLIC_TEXT );
+      $description = translate ( $OVERRIDE_PUBLIC_TEXT );
+      if ( ! empty ( $row[11] ) ) $location = translate ( $OVERRIDE_PUBLIC_TEXT );
+    } else {
+      $name = $row[9];
+      $description = $row[10];
+      $location = $row[11];    
+    }
+  } else {
+     $error = translate("Invalid entry id") . ": $id";
+  }
+  dbi_free_result ( $res );
+}
+
+if ( ! empty ( $year ) ) {
+  $thisyear = $year;
+}
+if ( ! empty ( $month ) ) {
+  $thismonth = $month;
+}
+
+print_header ();
+
+if ( ! empty ( $error ) ) {
+  echo "<h2>" . translate ( "Error" ) .
+    "</h2>\n" . $error;
+  print_trailer ();
+  echo "</body>\n</html>";
+  exit;
+}
+
+
+//check UAC
+if ( empty ( $user ) ) {
+  $euser =  ( $is_my_event == true ? $login : $create_by );
+} else {
+  $euser =  ( ! empty ( $user ) && $login != $user ? $user : $login );
+}
+if ( access_is_enabled () && ! empty ( $euser ) ) {
+  $can_view =  access_user_calendar ( 'view', $euser, $login, $cal_type, $cal_access );
+  $can_edit = access_user_calendar ( 'edit', $euser, $login, $cal_type, $cal_access );
+  $can_approve = access_user_calendar ( 'approve', $euser, $login, $cal_type, $cal_access );
+  $time_only = access_user_calendar ( 'time', $euser );
+} else {
+  $time_only = 'N';
+}
+if ( $is_admin || $is_nonuser_admin || $is_assistant ) {
+  $can_view = true;
+}
   if ( ($login != "__public__") && ($PUBLIC_ACCESS_OTHERS == "Y") ) {
     $can_view = true;
   }
+ $can_edit = ( $can_edit || $is_admin || $is_nonuser_admin && ($user == $create_by) || 
+  ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
+  ( $readonly != "Y" && ( $login == $create_by || $single_user == "Y" ) ) );
+  
+if ( $readonly == 'Y' || $is_nonuser || 
+  ( $PUBLIC_ACCESS == "Y" && $login == "__public__" ) ) {
+  $can_edit = false;
+}
+
   if ( ! $can_view ) {
     $check_group = false;
     // if not a participant in the event, must be allowed to look at
@@ -117,16 +216,9 @@ if ( ! empty ( $_POST ) && $can_view && $is_my_event ) {
     }
     // If we didn't indicate we need to check groups, then this user
     // can't view this event.
-    if ( ! $check_group && ! access_is_enabled ()  ) {
+    if ( ! $check_group || access_is_enabled ()  ) {
       $can_view = false;
     }
-  }
-}
-if ( $login == '__public__' &&
-  ! empty ( $OVERRIDE_PUBLIC ) && $OVERRIDE_PUBLIC == 'Y' ) {
-  $hide_details = true;
-} else {
-  $hide_details = false;
 }
 
 // If they still cannot view, make sure they are not looking at a nonuser
@@ -154,65 +246,9 @@ if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
   }
   // Does this event contain only nonuser calendars as participants?
   // If so, then grant access.
-  if ( $found_nonuser_cal && ! $found_reg_user ) {
+  if ( $found_nonuser_cal && ! $found_reg_user && ! access_is_enabled()) {
     $can_view = true;
   }
-}
-//check UAC
-if ( access_is_enabled () && ! empty ( $user ) ) {
-  $can_view = $can_view || access_can_view_user_calendar ( $user );
-  $can_delete = $can_delete || access_can_delete_user_calendar ( $user );
-  $can_approve = $can_approve || access_can_approve_user_calendar ( $user );
-} 
-//if sent here from an email and not logged in,
-//save URI and redirect to login
-if ( empty ( $error ) && ! $can_view ) {
-  $em = getGetValue ( 'em' );
-  if ( ! empty ( $em ) ) {
-    remember_this_view ();
-    do_redirect ( 'login.php' );  
-  } 
-  $error = translate ( "You are not authorized" );
-}
-
-if ( ! empty ( $year ) ) {
-  $thisyear = $year;
-}
-if ( ! empty ( $month ) ) {
-  $thismonth = $month;
-}
-$pri[1] = translate("Low");
-$pri[2] = translate("Medium");
-$pri[3] = translate("High");
-
-$unapproved = FALSE;
-
-// Make sure this is not a continuation event.
-// If it is, redirect the user to the original event.
-$ext_id = -1;
-if ( empty ( $error ) ) {
-  $res = dbi_execute ( "SELECT cal_ext_for_id FROM webcal_entry WHERE cal_id = ?" , array ( $id ) );
-  if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) ) {
-      $ext_id = $row[0];
-    }
-    dbi_free_result ( $res );
-  } else {
-    // db error... ignore it, I guess.
-  }
-}
-if ( $ext_id > 0 ) {
-  $url = "view_entry.php?id=$ext_id";
-  if ( $date != "" ) {
-    $url .= "&amp;date=$date";
-  }
-  if ( $user != "" ) {
-    $url .= "&amp;user=$user";
-  }
-  if ( $cat_id != "" ) {
-    $url .= "&amp;cat_id=$cat_id";
-  }
-  do_redirect ( $url );
 }
 
 print_header ();
@@ -281,49 +317,6 @@ if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
   exit;
 }
 
-
-// Load event info now.
-$sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
-  "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-  "cal_name, cal_description, cal_location, cal_url, cal_due_date, cal_due_time FROM webcal_entry " .
-  "  WHERE cal_id = ?";
-$res = dbi_execute ( $sql , array ( $id ) );
-if ( ! $res ) {
-  echo translate("Invalid entry id") . ": $id";
-  exit;
-}
-
-$row = dbi_fetch_row ( $res );
-if ( $row ) { 
-  $create_by = $row[0];
-  $orig_date = $row[1];
-  $event_time = $row[2];
-  $cal_type = $row[7];
-  if ( $cal_type == 'T' || $cal_type == 'N' )
-    $eType = 'task';
-  $due_date = $row[13];
-  $due_time = $row[14];
-  if ( $hide_details ) {
-    $name = translate ( $OVERRIDE_PUBLIC_TEXT );
-    $description = translate ( $OVERRIDE_PUBLIC_TEXT );
-    if ( ! empty ( $row[11] ) ) $location = translate ( $OVERRIDE_PUBLIC_TEXT );
-  } else {
-    $name = $row[9];
-    $description = $row[10];
-    $location = $row[11];    
-  }
-} else {
-  echo "<h2>" . 
-    translate("Error") . "</h2>" . 
-    translate("Invalid entry id") . ".\n";
-  print_trailer ();
-  echo "</body>\n</html>";
-  exit;
-}
-//check UAC
-if ( access_is_enabled () ) {
-  $can_edit = $can_edit || access_can_edit_user_calendar ( $create_by );
-} 
 // Timezone Adjustments
 $adjusted_start = get_datetime_add_tz ( $orig_date, $event_time );
 $adjusted_due = get_datetime_add_tz ( $due_date, $due_time );
@@ -333,9 +326,9 @@ $adjusted_date = date (  "Ymd", $adjusted_start );
 
 $adjusted_due_time = date ( "His",$adjusted_due );
 $adjusted_due_date = date (  "Ymd", $adjusted_due );
-  $year = substr($row[1],0,4);
-  $month = substr($row[1],4,2);
-  $day = substr($row[1],-2);
+  $year = substr($orig_date,0,4);
+  $month = substr($orig_date,4,2);
+  $day = substr($orig_date,-2);
 $tz_offset = get_tz_offset ( $TIMEZONE, mktime ( 0, 0, 0, $month, $day, $year ) );
 if ( $event_time >= 0 && ! empty ( $tz_offset[0] )  && $tz_offset[0] != 0 ) { 
   // -1 = no time specified
@@ -349,7 +342,7 @@ if ( $event_time >= 0 && ! empty ( $tz_offset[0] )  && $tz_offset[0] != 0 ) {
   }
 }
 // Set alterted date
-$tz_date = ( ! empty ( $gmt ) ) ? date ( "Ymd", $gmt ) : $row[1];
+$tz_date = ( ! empty ( $gmt ) ) ? date ( "Ymd", $gmt ) : $orig_date;
 
 // save date so the trailer links are for the same time period
 if (  $eType == 'task' ) {
@@ -382,8 +375,9 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 /* calculate end time */
-if ( $event_time >= 0 && $row[5] > 0 )
-  $end_str = "-" . display_time ( $tz_date . add_duration ( $row[2], $row[5] % 1440 ), 2 );
+if ( $event_time >= 0 && $duration > 0 )
+  $end_str = "-" . display_time ( $tz_date . 
+    add_duration ( $event_time, $duration % 1440 ), 2 );
 else
   $end_str = "";
 
@@ -395,11 +389,12 @@ $email_addr = empty ( $createby_email ) ? '' : $createby_email;
 // Confidential and not user's or not assistant, then
 // They cannot seem name or description.
 //if ( $row[8] == "R" && ! $is_my_event && ! $is_admin ) {
-if ( $row[8] == "R" && ! $is_my_event ) {
+if ( $cal_access == "R" && ! $is_my_event && ! access_is_enabled() ) {
   $is_private = true;
   $name = "[" . translate("Private") . "]";
   $description = "[" . translate("Private") . "]";
-} else if ( $row[8] == "C" &&  ! $is_my_event && ! $is_assistant ) {
+} else if ( $cal_access == "C" &&  ! $is_my_event && 
+  ! $is_assistant  && ! access_is_enabled() ) {
   $is_confidential = true;
   $name = "[" . translate("Confidential") . "]";
   $description = "[" . translate("Confidential") . "]";
@@ -407,10 +402,8 @@ if ( $row[8] == "R" && ! $is_my_event ) {
 if ( $event_repeats && ! empty ( $date ) )
   $event_date = $date;
 else
-  $event_date = $row[1];
+  $event_date = $orig_date;
 
-// TODO: don't let someone view another user's private entry
-// by hand editing the URL.
 
 // Get category Info
 if ( $CATEGORIES_ENABLED == "Y" ) {
@@ -508,7 +501,8 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
   if ( $event_repeats ) {
     echo date_to_str ( $adjusted_date );
   } else {
-    echo date_to_str ( $row[1], "", true, false, ( $row[5] == ( 24 * 60 ) ? "" : $event_time ) );
+    echo date_to_str ( $orig_date, "", true, false, 
+      ( $duration == ONE_DAY ? "" : $event_time ) );
   }
  }
   ?>
@@ -523,22 +517,23 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Time")?>:</td><td>
  <?php
-    if ( $row[5] == ( 24 * 60 ) ) {
+    if ( $duration == ONE_DAY ) {
       etranslate("All day event");
     } else {
       // Display TZID if no end time
       $display_tzid = empty ( $end_str ) ? 2 : 0;
-      echo display_time ( $tz_date . sprintf ( "%06d", $row[2] ), $display_tzid ) . $end_str;
+      echo display_time ( $tz_date . sprintf ( "%06d", $event_time ), 
+        $display_tzid ) . $end_str;
     }
   ?>
 </td></tr>
 <?php } ?>
-<?php if ( $row[5] > 0 && $row[5] != ( 24 * 60 ) ) { ?>
+<?php if ( $duration > 0 && $duration != ONE_DAY ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Duration")?>:</td><td>
  <?php 
-   $dur_h = (int)( $row[5] / 60 );
-   $dur_m = $row[5] - ( $dur_h * 60 );
+   $dur_h = (int)( $duration / 60 );
+   $dur_m = $duration - ( $dur_h * 60 );
    if ( $dur_h ==1 ) echo $dur_h . " " . translate("hour") . " ";
    if ( $dur_h > 1 ) echo $dur_h . " " . translate("hours") . " ";
    if ( $dur_m > 0 )echo $dur_m . " " . translate("minutes")?>
@@ -547,13 +542,13 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
 <?php if ( $DISABLE_PRIORITY_FIELD != "Y" ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Priority")?>:</td><td>
- <?php echo $pri[$row[6]]; ?>
+ <?php echo $pri[$cal_priority]; ?>
 </td></tr>
 <?php } ?>
 <?php if ( $DISABLE_ACCESS_FIELD != "Y" ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Access")?>:</td><td>
- <?php echo ( $row[8] == "P" ) ? translate("Public") : ( $row[8] == "C" ? translate("Confidential") : translate("Private")  ); ?>
+ <?php echo ( $cal_access == "P" ) ? translate("Public") : ( $cal_access == "C" ? translate("Confidential") : translate("Private")  ); ?>
 </td></tr>
 <?php } ?>
 <?php if ( $CATEGORIES_ENABLED == "Y" && ! empty ( $category ) ) { ?>
@@ -582,12 +577,13 @@ if ( !empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == "Y" ) {
 if ( $single_user == "N" && ! empty ( $createby_fullname )  ) {
   echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n" . 
  translate("Created by") . ":</td><td>\n";
-  if ( $is_private ) {
+  if ( $is_private  && ! access_is_enabled() ) {
     echo "[" . translate("Private") . "]\n</td></tr>";
-  } else   if ( $is_confidential ) {
+  } else   if ( $is_confidential  && ! access_is_enabled() ) {
     echo "[" . translate("Confidential") . "]\n</td></tr>";
   } else {
-    if ( strlen ( $email_addr ) ) {
+    if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $create_by );
+    if ( strlen ( $email_addr ) && $can_email != 'N' ) {
       echo "<a href=\"mailto:$email_addr?subject=$subject\">" .
         ( $row[0] == "__public__" ? translate( "Public Access" ): $createby_fullname ) .
         "</a>$proxy_fullname\n</td></tr>";
@@ -601,12 +597,12 @@ if ( $single_user == "N" && ! empty ( $createby_fullname )  ) {
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Updated")?>:</td><td>
  <?php
-    echo date_to_str ( $row[3] );
+    echo date_to_str ( $mod_date );
     echo " ";
     if ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == "Y" ) {    
-      echo display_time ( $row[4], 3 );
+      echo display_time ( $mod_time, 3 );
     } else {
-      echo display_time ( $row[3] . $row[4], 2, '',  $SERVER_TIMEZONE );    
+      echo display_time ( $mod_date . $mod_time, 2, '',  $SERVER_TIMEZONE );    
     }
    ?>
 </td></tr>
@@ -699,9 +695,9 @@ if ( $single_user == "N" && $show_participants ) { ?>
   <?php etranslate("Participants")?>:</td><td>
   <?php
   $num_app = $num_wait = $num_rej = 0;
-  if ( $is_private ) {
+  if ( $is_private && ! access_is_enabled() ) {
     echo "[" . translate("Private") . "]";
-  } else   if ( $is_confidential ) {
+  } else   if ( $is_confidential  && ! access_is_enabled() ) {
     echo "[" . translate("Confidential") . "]";
   } else {
     $sql = "SELECT cal_login, cal_status, cal_percent FROM webcal_entry_user " .
@@ -716,7 +712,7 @@ if ( $single_user == "N" && $show_participants ) { ?>
       while ( $row = dbi_fetch_row ( $res ) ) {
         $participants[] = $row;
         $pname = $row[0];
-        if ( ( $login == $row[0] || access_can_approve_user_calendar ( $row[0] ) ||
+        if ( ( $login == $row[0] || access_user_calendar ( 'approve', $row[0] ) ||
           ( $is_nonuser_admin && ! empty ( $user ) && $user == $row[0] ) ) && 
           $row[1] == 'W' ) {
           $unapproved = TRUE;
@@ -740,29 +736,31 @@ if ( $single_user == "N" && $show_participants ) { ?>
  echo "<th align=\"center\" colspan=\"2\">" . translate( "Percentage Complete" ) . "</th>";
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
     user_load_variables ( $participants[$i][0], "temp" );
-  $spacer = 100 - $participants[$i][2];
-  $percentage = $participants[$i][2];
- if ( $participants[$i][0] == $login ) $login_percentage = $participants[$i][2];
-  echo "<tr><td width=\"30%\">";
-  if ( strlen ( $tempemail ) ) {
-       echo "<a href=\"mailto:" . $tempemail . "?subject=$subject\">" .
-     "&nbsp;" . $tempfullname . "</a>"; 
-     $allmails[] = $tempemail;
-  } else { 
-    echo "&nbsp;" . $tempfullname; 
-  }   
+		if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $templogin );
+    $spacer = 100 - $participants[$i][2];
+    $percentage = $participants[$i][2];
+    if ( $participants[$i][0] == $login ) $login_percentage = $participants[$i][2];
+    echo "<tr><td width=\"30%\">";
+    if ( strlen ( $tempemail ) && $can_email != 'N') {
+      echo "<a href=\"mailto:" . $tempemail . "?subject=$subject\">" .
+        "&nbsp;" . $tempfullname . "</a>"; 
+      $allmails[] = $tempemail;
+    } else { 
+      echo "&nbsp;" . $tempfullname; 
+    }   
     echo "</td>\n";
-  echo "<td width=\"5%\" align=\"center\">$percentage%</td>\n<td width=\"65%\">";
-  echo "<img src=\"images/pix.gif\" width=\"$percentage%\" height=\"10\">";
-  echo "<img src=\"images/spacer.gif\" width=\"$spacer\" height=\"10\">";
-  echo "</td></tr>\n";
+    echo "<td width=\"5%\" align=\"center\">$percentage%</td>\n<td width=\"65%\">";
+    echo "<img src=\"images/pix.gif\" width=\"$percentage%\" height=\"10\">";
+    echo "<img src=\"images/spacer.gif\" width=\"$spacer\" height=\"10\">";
+    echo "</td></tr>\n";
   }
-  echo "</table>";
+    echo "</table>";
   
   } else {
   for ( $i = 0; $i < $num_app; $i++ ) {
     user_load_variables ( $approved[$i], "temp" );
-    if ( strlen ( $tempemail ) ) {
+		if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $templogin );
+    if ( strlen ( $tempemail ) && $can_email != 'N' ) {
       echo "<a href=\"mailto:" . $tempemail . "?subject=$subject\">" . 
         $tempfullname . "</a><br />\n";
       $allmails[] = $tempemail;
@@ -999,14 +997,6 @@ if ( ( $is_my_event || $is_nonuser_admin || $can_approve ) &&
     translate("Reject entry") . "</a><br />\n";
 }
 
-if ( $PUBLIC_ACCESS == "Y" && $login == "__public__" ) {
-  $can_edit = false;
-}
-if ( $readonly == 'Y' ) {
-  $can_edit = false;
-}
-if ( $is_nonuser )
-  $can_edit = false;
 
 $can_add_attach = false;
 if ( Doc::attachmentsEnabled () ) {
@@ -1107,7 +1097,7 @@ if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
     "href=\"edit_entry.php?id=$id$u_url&amp;copy=1\">" . 
     translate("Copy entry") . "</a><br />\n";  
 } elseif ( $readonly != "Y" && ( $is_my_event || $is_nonuser_admin || 
-  $can_delete ) && $login != "__public__" &&
+  $can_edit ) && $login != "__public__" &&
   ! $is_nonuser && $event_status != "D" )  {
   echo "<a title=\"" . 
     translate("Delete entry") . "\" class=\"nav\" " .
@@ -1233,7 +1223,8 @@ if ( $can_show_log && $show_log ) {
 }
 
 if ( access_can_access_function ( ACCESS_EXPORT ) && 
-  ! $is_private  && ! $is_confidential  && ! $hide_details ) {
+   (( ! $is_private  && ! $is_confidential )  || 
+	 ! access_is_enabled() )  && ! $hide_details ) {
   echo "<br /><form method=\"post\" name=\"exportform\" " .
     "action=\"export_handler.php\">\n";
   echo "<label for=\"exformat\">" . 

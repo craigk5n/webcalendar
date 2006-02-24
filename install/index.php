@@ -32,7 +32,7 @@ $fileDir = "../includes";
 $basedir = "..";
 
 //change this path if needed
-$firebird_path = 'c:/progra~1/firebird/firebird_1_5/examples/employee.fdb';
+$firebird_path = 'c&#58;/program files/firebird/firebird_1_5/examples/employee.fdb';
 
 clearstatcache();
 
@@ -41,6 +41,7 @@ set_time_limit(240);
 
 // If we're using SQLite, it seems that magic_quotes_sybase must be on
 //ini_set('magic_quotes_sybase', 'On'); 
+
 
 // Check for proper auth settings
 if ( ! empty (  $_SERVER['PHP_AUTH_USER'] ) )
@@ -147,7 +148,8 @@ function get_installed_version () {
   $_SESSION['install_file'] = $database_upgrade_matrix[$i][2];
   dbi_free_result ( $res );
   }
- }
+//echo $_SESSION['old_program_version'] . " " . $database_upgrade_matrix[$i][1] . "<br>";
+ } 
  if ( $_SESSION['old_program_version'] == "pre-v0.9.07" ) {
    $response_msg = translate ( "Your previous version of WebCalendar requires running a PERL script " .
     "to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page " .
@@ -449,25 +451,32 @@ function db_populate ( $install_filename, $display_sql ) {
  $fd = @fopen ( "sql/" . $install_filename, "r", false);
  //discard everything up to the required point in the upgrade file 
  while (!feof($fd) && empty ( $current_pointer ) ) {
-    $data = fgets($fd, 4096);
+  $data = fgets($fd, 4096);
   $data = trim ( $data, "\r\n " );
   if ( strpos(  strtoupper ( $data ) , strtoupper ( $_SESSION['install_file'] ) )  || 
     substr( $_SESSION['install_file'], 0, 6 ) == "tables" ) {
     $current_pointer = true;
   }
-  }
+ }
+ //We already have a $data item from above
+ if ( substr ( $data , 0 , 2 ) == "/*" && 
+   substr( $_SESSION['install_file'], 0, 6 ) != "tables" ) {
+  //Do nothing...We skip over comments in upgrade files
+ } else {
+  $full_sql .= $data;
+ }
  // We need to strip out the comments from upgrade files
  while (!feof($fd)  ) {
-   //We already have a $data item from above
+  $data = fgets($fd, 4096);
+  $data = trim ( $data, "\r\n " );
   if ( substr ( $data , 0 , 2 ) == "/*" && 
    substr( $_SESSION['install_file'], 0, 6 ) != "tables" ) {
     //Do nothing...We skip over comments in upgrade files
   } else {
     $full_sql .= $data;
   }
-    $data = fgets($fd, 4096);
-  $data = trim ( $data, "\r\n " );
-  } 
+ } 
+ //echo $full_sql;
  @set_magic_quotes_runtime($magic);
  fclose ( $fd );
  $parsed_sql  = parse_sql($full_sql);
@@ -638,9 +647,15 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
       $response_msg = translate ( "Correct your entries or click the <b>Create New</b> button to continue installation" );
      $_SESSION['db_noexist'] = true;
    } else {
-      $response_msg = "<b>" . translate ( "Failure Reason" ) .
-     ":</b><blockquote>" . dbi_error () . "</blockquote>\n" .
-       translate ( "Correct your entries and try again" );
+     if ( $db_type == "ibase"  ) {
+       $response_msg = "<b>" . translate ( "Failure Reason" ) . 
+         ":</b><blockquote>" . translate ( "You must manually create database" ) . 
+         "</blockquote>\n";
+     } else {
+       $response_msg = "<b>" . translate ( "Failure Reason" ) .
+         ":</b><blockquote>" . dbi_error () . "</blockquote>\n" .
+         translate ( "Correct your entries and try again" );
+     }
    } 
   }
 
@@ -705,6 +720,12 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
      ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
 
    }
+  } else if ( $db_type == "ibase" ) {
+
+      $response_msg = "<b>" . translate ( "Failure Reason" ) . 
+     ":</b><blockquote>" . translate ( "You must manually create database" ) . 
+     "</blockquote>\n";
+
   } // TODO code remainig database types
 }
 
@@ -1428,8 +1449,9 @@ if ( ! $exists || ! $canWrite ) { ?>
    $response_msg =translate ( "The database requires some data input" ) . ". " . 
       translate ( "Click <b>Update Database</b> to complete the upgrade" ) . ".";  
   } else {
-     $response_msg = translate ( "This appears to be an upgrade from version")  . " " .  
-       $_SESSION['old_program_version'] . translate ( "to" ) . " " .  $PROGRAM_VERSION. ".";
+     $response_msg = translate ( "This appears to be an upgrade from version")  . 
+     "&nbsp;" .   $_SESSION['old_program_version'] . "&nbsp;" .
+     translate ( "to" ) . " " .  $PROGRAM_VERSION. ".";
   }
 ?>
 <table border="1" width="90%" align="center">

@@ -288,20 +288,6 @@ label {
   padding: 0px 2px 0px 3px;
   vertical-align:top
 }
-.boxtop {
- border-top: 1px solid #888888;
- border-left: 1px solid #888888;
- border-right: 1px solid #888888;
-}
-.boxleft {
- border-left: 1px solid #888888;
-}
-.boxright {
- border-right: 1px solid #888888;
-}
-.boxbottom {
- border-bottom: 1px solid #888888;
-}
 <?php //numerical date links in main calendars on hover
 ?>.dayofmonth:hover {
   color: #0000FF;
@@ -1088,6 +1074,35 @@ abbr {
 }
 .strikethrough {
   text-decoration : line-through;
+}
+.pub {
+  background-color:#80FF80;
+  text-align:center;
+}
+.conf {
+  background-color:#FFFF80;
+  text-align:center;
+}
+.priv {
+  background-color:#FF5050;
+  text-align:center;
+}
+.boxtop {
+ border-top: 1px solid #888888;
+ border-left: 1px solid #888888;
+}
+.boxleft {
+ border-left: 1px solid #888888;
+}
+.boxright {
+ border-right: 1px solid #888888;
+}
+.boxbottom {
+ border-bottom: 1px solid #888888;
+}
+.leftpadded {
+ padding-left:50px;
+ text-align:left;
 }
 -->
 </style>
