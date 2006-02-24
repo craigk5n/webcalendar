@@ -42,8 +42,8 @@ $DISPLAY_ALL_DAYS_IN_MONTH = 'N';
 // Include unapproved events?
 $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
- print_header();
- ?>
+print_header();
+?>
  
 <div class="title">
  <a title="<?php etranslate("Previous")?>" class="prev" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="images/leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>

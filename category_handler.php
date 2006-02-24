@@ -98,6 +98,7 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
       $error = translate ("Database error") . ": " . dbi_error();
     }
   }
+
 	if (  is_dir($icon_path) && ( ! empty ( $ENABLE_ICON_UPLOADS ) && 
 	  $ENABLE_ICON_UPLOADS == "Y" || $is_admin ) ) { 
 		//Save icon if uploaded

@@ -118,13 +118,14 @@ $webcalConfig = array (
 "THFG"=>"#000000",
 "TIME_FORMAT"=>"12",
 "TIME_SLOTS"=>"24",
+"TIME_SPACER"=>"&raquo;&nbsp;",
 "TIMED_EVT_LEN"=>"D",
 "TIMEZONE"=>"",
 "TODAYCELLBG"=>"#FFFF33",
 "TZ_COMPLETE_LIST"=>"N",
 "UAC_ENABLED"=>"N",
 "USER_SEES_ONLY_HIS_GROUPS"=>"Y",
-"WEBCAL_PROGRAM_VERSION"=>"v1.1.0c-CVS",
+"WEBCAL_PROGRAM_VERSION"=>"v1.1.0d-CVS",
 "WEEK_START"=>"0",
 "WEEKENDBG"=>"#D0D0D0",
 "WORK_DAY_END_HOUR"=>"17",
@@ -165,12 +166,17 @@ function db_load_admin () {
  "WHERE cal_login  = 'admin'", array() , false, false );
  $sql = "INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin ) 
 VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ADMINISTRATOR', 'DEFAULT', 'Y' );";
+ //Preload access_function premissions
+ $sql2 = "INSERT INTO webcal_access_function ( cal_login, cal_permissions ) 
+VALUES ( 'admin', 'YYYYYYYYYYYYYYYYYYYYYYYYYYY' );"; 
  if ( ! $res ) {
   dbi_execute ( $sql );
+  dbi_execute ( $sql2 );
  } else { //Sqlite returns $res always
   $row = dbi_fetch_row ( $res );
   if ( ! isset ( $row[0] ) ){
-   dbi_execute ( $sql );  
+   dbi_execute ( $sql );
+   dbi_execute ( $sql2 );  
   }
   dbi_free_result ( $res );
  }  

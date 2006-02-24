@@ -328,8 +328,8 @@ function get_web_browser () {
  */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
-  //error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
-  //3, "d:\php\logs\debug.txt" );
+  error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
+  3, "d:\php\logs\debug.txt" );
   //fwrite ( $fd, date ( "Y-m-d H:i:s" ) .  "> $msg\n" );
   //fclose ( $fd );
   //  3, "/tmp/webcal-debug.log" );
@@ -812,10 +812,11 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
  *    - cal_password
  *    - cal_fullname
  */
-function get_my_users () {
+function get_my_users ( $user='', $reason='invite') {
   global $login, $is_admin, $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
   global $my_user_array, $is_nonuser, $is_nonuser_admin;
 
+  $this_user = ( ! empty ( $user ) ? $user : $login );
   // Return the global variable (cached)
   if ( ! empty ( $my_user_array ) && is_array ( $my_user_array ) )
     return $my_user_array;
@@ -824,7 +825,7 @@ function get_my_users () {
     ! $is_admin ) {
     // get groups that current user is in
     $res = dbi_execute ( "SELECT cal_group_id FROM webcal_group_user " .
-      "WHERE cal_login = ?", array( $login ) );
+      "WHERE cal_login = ?", array( $this_user ) );
     $groups = array ();
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -834,7 +835,7 @@ function get_my_users () {
     }
     // Nonuser (public) can only see themself (unless access control is on)
     if ( $is_nonuser && ! access_is_enabled () ) {
-      return array ( $login );
+      return array ( $this_user );
     }
     $u = user_get_users ();
     if ( $is_nonuser_admin ) {
@@ -849,7 +850,7 @@ function get_my_users () {
     $ret = array ();
     if ( count ( $groups ) == 0 ) {
       // Eek.  User is in no groups... Return only themselves
-      if ( isset ( $u_byname[$login] ) ) $ret[] = $u_byname[$login];
+      if ( isset ( $u_byname[$this_user] ) ) $ret[] = $u_byname[$this_user];
       $my_user_array = $ret;
       return $ret;
     }
@@ -887,8 +888,10 @@ function get_my_users () {
   if ( access_is_enabled () && ! $is_admin ) {
     $newlist = array ();
     for ( $i = 0; $i < count ( $ret ); $i++ ) {
-      if ( access_can_view_user_calendar ( $ret[$i]['cal_login'] ) )
+      $can_list = access_user_calendar ( $reason, $ret[$i]['cal_login'], $this_user );
+      if (  $can_list == 'Y' ||  $can_list > 0 ) {
         $newlist[] = $ret[$i];
+      }
     }
     $ret = $newlist;
     //echo "<pre>"; print_r ( $ret ); echo "</pre>";
@@ -1101,7 +1104,7 @@ function site_extras_for_popup ( $id ) {
 }
 
 /**
- * Builds the HTML for the event popup.
+ * Builds the HTML for the entry popup.
  *
  * @param string $popupid     CSS id to use for event popup
  * @param string $user        Username of user the event pertains to
@@ -1111,7 +1114,7 @@ function site_extras_for_popup ( $id ) {
  *
  * @return string The HTML for the event popup
  */
-function build_event_popup ( $popupid, $user, $description, $time,
+function build_entry_popup ( $popupid, $user, $description='', $time,
   $site_extras='', $location='', $name='', $id='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname, $DISABLE_POPUPS,
     $ALLOW_HTML_DESCRIPTION, $SUMMARY_LENGTH, $PARTICIPANTS_IN_POPUP,
@@ -1174,30 +1177,76 @@ function build_event_popup ( $popupid, $user, $description, $time,
     }
   }
   
-  $ret .= "<dt>" . translate ("Description") . ":</dt>\n<dd>";
-  if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
-    $str = str_replace ( "&", "&amp;", $description );
-    $str = str_replace ( "&amp;amp;", "&amp;", $str );
-    // If there is no html found, then go ahead and replace
-    // the line breaks ("\n") with the html break.
-    if ( strstr ( $str, "<" ) && strstr ( $str, ">" ) ) {
-      // found some html...
-      $ret .= $str;
+  if ( ! empty ( $description ) ) {
+    $ret .= "<dt>" . translate ("Description") . ":</dt>\n<dd>";
+    if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
+      $str = str_replace ( "&", "&amp;", $description );
+      $str = str_replace ( "&amp;amp;", "&amp;", $str );
+      // If there is no html found, then go ahead and replace
+      // the line breaks ("\n") with the html break.
+      if ( strstr ( $str, "<" ) && strstr ( $str, ">" ) ) {
+        // found some html...
+        $ret .= $str;
+      } else {
+        // no html, replace line breaks
+        $ret .= nl2br ( $str );
+      }
     } else {
-      // no html, replace line breaks
-      $ret .= nl2br ( $str );
+      // html not allowed in description, escape everything
+      $ret .= nl2br ( htmlspecialchars ( $description ) );
     }
-  } else {
-    // html not allowed in description, escape everything
-    $ret .= nl2br ( htmlspecialchars ( $description ) );
-  }
-  $ret .= "</dd>\n";
+    $ret .= "</dd>\n";
+  } //if $description
   if ( ! empty ( $site_extras ) )
     $ret .= $site_extras;
   $ret .= "</dl>\n";
   return $ret;
 }
 
+/**
+ * Builds the HTML for the event label.
+ *
+ * @param string $can_access
+ * @param string $time_only
+ *
+ * @return string The HTML for the event label
+ */
+function build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only='N' ) {
+  global $login, $user, $eventinfo, $SUMMARY_LENGTH, $UAC_ENABLED; 
+  $ret = '';
+  
+  $can_access = ( $UAC_ENABLED == 'Y'? $can_access : 0 );
+  $not_my_entry = ( ( $login != $user && strlen ( $user ) ) || 
+      ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) );
+
+  $sum_length = $SUMMARY_LENGTH;
+  if ( $event->isAllDay() || $event->isUntimed() ) $sum_length += 6;
+  $padding = (strlen( $event->getName() ) > $sum_length? "...":"");
+  $tmp_ret = htmlspecialchars ( substr( $event->getName(), 0, $sum_length ) . $padding );
+        
+  if ( $not_my_entry && $event->getAccess() == 'R' && 
+    ! ($can_access & PRIVATE_WT  )) {
+    if ( $time_only != 'Y' ) $ret = "(" . translate("Private") . ")";
+    $eventinfo .= build_entry_popup ( $popupid, $event->getLogin(),
+      translate("This event is private"), "" );
+  } else if ( $not_my_entry && $event->getAccess() == 'C' && 
+    ! ( $can_access& CONF_WT  ) ) {
+    if ( $time_only != 'Y' ) $ret = "(" . translate("Conf.") . ")";
+    $eventinfo .= build_entry_popup ( $popupid, $event->getLogin(),
+      translate("This event is confidential"), "" );
+  } else if ( $can_access == 0 ) {
+    if ( $time_only != 'Y' ) $ret = $tmp_ret;
+    $eventinfo .= build_entry_popup ( $popupid, $event->getLogin(), "", 
+      $timestr, "", "", $event->getName(), "" );
+  }else {
+    if ( $time_only != 'Y' ) $ret = $tmp_ret;
+    $eventinfo .= build_entry_popup ( $popupid, $event->getLogin(),
+      $event->getDescription(), $timestr, site_extras_for_popup ( $event->getId() ),
+      $event->getLocation(), $event->getName(), $event->getId() );
+  }
+  return $ret;
+  
+}
 /**
  * Prints out a date selection box for use in a form.
  *
@@ -1688,15 +1737,29 @@ function display_small_tasks ( $cat_id ) {
  *
  * @staticvar int Used to ensure all event popups have a unique id
  *
- * @uses build_event_popup
+ * @uses build_entry_popup
  */
 function print_entry ( $event, $date ) {
   global $eventinfo, $login, $user, $PHP_SELF, $layers, 
-   $SUMMARY_LENGTH, $DISPLAY_LOCATION, $DISPLAY_TASKS_IN_GRID,
-   $is_assistant, $is_nonuser_admin;
+   $DISPLAY_LOCATION, $DISPLAY_TASKS_IN_GRID,
+   $is_assistant, $is_nonuser_admin, $TIME_SPACER;
 
   static $key = 0;
 
+  $cal_type = ( $event->getCalType() == "T" || 
+    $event->getCalType() == "N"? 'task' : 'event' );
+    
+  if ( access_is_enabled () ) {
+    $time_only = access_user_calendar ( 'time', $event->getLogin() );
+    $can_access = access_user_calendar ( 'view', $event->getLogin(), '', 
+      $event->getCalType(), $event->getAccess() );
+    if ( $cal_type == 'task' && $can_access == 0 )
+      return false;    
+  } else {
+    $time_only = 'N';
+    $can_access = CAN_DOALL;
+  }
+  
   $padding = '';
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     $class = "layerentry";
@@ -1717,26 +1780,33 @@ function print_entry ( $event, $date ) {
   $name = $event->getName();
 
 
+  $cal_link = "view_entry.php";
+  if ( $cal_type == 'task' ) {
+    $view_text = translate ( "View this task" );
+  } else {
+    $view_text = translate ( "View this event" );    
+  }
+    
+    
   $popupid = "eventinfo-pop$id-$key";
   $linkid  = "pop$id-$key";
   $key++;
 
-  $cal_link = "view_entry.php";
-    if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
-      $cal_type = "task";
-      $view_text = translate ( "View this task" );
-    } else {
-      $cal_type = "event";
-      $view_text = translate ( "View this event" );    
-    }
-  //make sure clones have parents url date
-  $linkDate = (  $event->getClone()?date( "Ymd", 
-    get_datetime_add_tz ( $date, 12, -24 ) ): $date );  
-  echo "<a title=\"" . $view_text . "\" class=\"$class\"" .
-    " id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$linkDate";
-  if ( strlen ( $user ) > 0 )
-    echo "&amp;user=" . $user;
-  echo "\">";
+  //build entry link if UAC permits viewing
+  if ( $can_access != 0 && $time_only != 'Y' ) {
+    //make sure clones have parents url date
+    $linkDate = (  $event->getClone()?date( "Ymd", 
+      get_datetime_add_tz ( $date, 12, -24 ) ): $date );
+    $title = " title=\"$view_text\" ";
+    $href = "href=\"$cal_link?id=$id&amp;date=$linkDate";
+    if ( strlen ( $user ) > 0 )
+      $href .= "&amp;user=" . $user;
+    $href .="\"";
+  } else {
+    $title = '';
+    $href = '';  
+  }   
+  echo "<a $title class=\"$class\" id=\"$linkid\" $href  >";
 
   $icon =  $cal_type . ".gif";
   $catIcon = '';
@@ -1763,36 +1833,20 @@ function print_entry ( $event, $date ) {
     }
   }
 
-
+   $time_spacer = ( $time_only == 'Y' ? '' : $TIME_SPACER );
   $timestr = "";
   if ( $event->isAllDay() ) {
     $timestr = translate("All day event");
   } else if ( ! $event->isUntimed() ) {
     $timestr = display_time ( $event->getDateTime() );
     $time_short = preg_replace ("/(:00)/", '', $timestr);
-    if ( $cal_type == "event" ) echo $time_short . "&raquo;&nbsp;";
+    if ( $cal_type == "event" ) echo $time_short . $time_spacer;
     if ( $event->getDuration() > 0 ) {
       $timestr .= " - " . display_time ( $event->getEndDateTime() );
     }
   }
-  if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
-    echo "(" . translate("Private") . ")";
-  } else if ( $login != $event->getLogin() && $event->getAccess() == 'R' &&
-    strlen ( $event->getLogin() ) ) {
-    echo "(" . translate("Private") . ")";
-  } else if ( $login != $user && $event->getAccess() == 'C' && strlen ( $user ) ) {
-    echo "(" . translate("Confidential") . ")";
-  } else if ( $login != $event->getLogin() && $event->getAccess() == 'C' &&
-    strlen ( $event->getLogin() ) ) {
-    echo "(" . translate("Confidential") . ")";
-  } else {
-    $sum_length = $SUMMARY_LENGTH;
-    if ( $event->isAllDay() || $event->isUntimed() ) $sum_length += 6;
-    //if ( $DISPLAY_TASKS_IN_GRID == "Y" ) $sum_length -= 2;
-    $padding = (strlen( $name ) > $sum_length? "...":"");
-    echo htmlspecialchars ( substr( $name, 0, $sum_length ) . $padding );
-  }
- 
+  echo build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only );
+  
   //added to allow a small location to be displayed if wanted
  if ( ! empty ($location) &&
    ! empty ( $DISPLAY_LOCATION ) && $DISPLAY_LOCATION == "Y") {
@@ -1808,28 +1862,7 @@ function print_entry ( $event, $date ) {
   }
   echo "</a>\n";
   if ( $event->getPriority() == 3 ) echo "</strong>\n"; //end font-weight span
-  if ( ! strlen( $padding ) ) echo "<br />";
-  if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      translate("This event is private"), "" );
-  } else if ( $login != $event->getLogin() && $event->getAccess() == 'R' && 
-   strlen ( $event->getLogin() ) ) {
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      translate("This event is private"), "" );
-  } else if ( $login != $user && $event->getAccess() == 'C' && strlen ( $user )  && 
-   !$is_assistant  && !$is_nonuser_admin) {
-    //assistants can see Confidential stuff
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      translate("This event is confidential"), "" );
-  } else if ( $login != $event->getLogin() && $event->getAccess() == 'C' && 
-   strlen ( $event->getLogin() )  && !$is_assistant  && !$is_nonuser_admin ) {
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      translate("This event is confidential"), "" );
-  } else {
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      $event->getDescription(), $timestr, site_extras_for_popup ( $id ),
-      $event->getLocation(), $name, $event->getId() );
- }
+  echo "<br />";
 }
 
 /** 
@@ -2200,14 +2233,16 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
     . "webcal_entry.cal_priority, "
     . "webcal_entry.cal_access, webcal_entry.cal_duration, "
     . "webcal_entry_user.cal_status, "
-    . "webcal_entry_user.cal_category, "
+    . "webcal_entry.cal_create_by, "
     . "webcal_entry_user.cal_login, "
     . "webcal_entry.cal_type, "
     . "webcal_entry.cal_location, "
     . "webcal_entry.cal_url, "
     . "webcal_entry.cal_due_date, "
     . "webcal_entry.cal_due_time, "
-    . "webcal_entry_user.cal_percent ";
+    . "webcal_entry_user.cal_percent, "
+    . "webcal_entry.cal_mod_date, "
+    . "webcal_entry.cal_mod_time ";
   if ( $want_repeated ) {
     $sql .= ", "
       . "webcal_entry_repeats.cal_type, webcal_entry_repeats.cal_end, "
@@ -2292,16 +2327,18 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
         dbi_free_result ( $res2 );
       }  
     
-      if ( $want_repeated && ! empty ( $row[18] ) ) {//row[18] = cal_type
-        $item =& new RepeatingEvent ( $row[0], $row[1], $row[2], $row[3], $row[4], $row[5],
-        $row[6], $row[7], $row[8], $row[9], $primary_cat, $row[11], $row[12], $row[13],
-        $row[14], $row[15], $row[16], $row[17], $row[18], $row[19], $row[20], $row[21],
-        $row[22], $row[23], $row[24], $row[25], $row[26], $row[27], $row[28], $row[29],
-        $row[30], array(), array(), array() );
+      if ( $want_repeated && ! empty ( $row[20] ) ) {//row[18] = cal_type
+        $item =& new RepeatingEvent ( $row[0], $row[1], $row[2], $row[3],
+        $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], 
+        $primary_cat, $row[11], $row[12], $row[13], $row[14], $row[15], 
+        $row[16], $row[17], $row[18], $row[19], $row[20], $row[21],
+        $row[22], $row[23], $row[24], $row[25], $row[26], $row[27], 
+        $row[28], $row[29], $row[30], $row[31], $row[32], array(), array(), array() );
       } else {
-        $item =& new Event ( $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6],
-        $row[7], $row[8], $row[9], $primary_cat, $row[11], $row[12], $row[13], $row[14],
-        $row[15], $row[16], $row[17]);
+        $item =& new Event ( $row[0], $row[1], $row[2], $row[3], $row[4], 
+        $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], 
+        $primary_cat, $row[11], $row[12], $row[13], $row[14],
+        $row[15], $row[16], $row[17], $row[18], $row[19]);
       }
             
 
@@ -2467,6 +2504,7 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
   $dateYmd = date ( "Ymd", $date );
   $hour      = date('H',$date);
   $minute    = date('i',$date);
+
   if ($Until == NULL && $Count == 999 ) {
     // Check for $CONFLICT_REPEAT_MONTHS months into future for conflicts
     $thismonth = substr($dateYmd, 4, 2);
@@ -2790,7 +2828,7 @@ function add_dstfree_time ( $date, $span, $interval=1 ) {
  */
 function get_byday ( $byday, $cdate, $type ='month' ) {
   global $byday_values, $byday_names;
- 
+
   if ( empty ( $byday ) ) return;
   $ret = array();
   $yr = date ("Y", $cdate);
@@ -2834,11 +2872,13 @@ function get_byday ( $byday, $cdate, $type ='month' ) {
      if ( $mth == date ("m",$byxxxDay ) ) 
    $ret[] = $byxxxDay;
    }
+
   } else if ( is_numeric ($dayOffset) ){  //offset from end of $type
    $dayOffsetDays = (( $dayOffset + 1 ) * 7 ); //-1 = 0, -2 = 7, -3 = 14...
    $byxxxDay = mktime ( $hour, $minute,0, $month +1, (0 - (( $ldow + $dowOffset ) %7 ) + $dayOffsetDays ), $yr );
    if ( $mth == date ("m",$byxxxDay ) )                 
    $ret[] = $byxxxDay; 
+
   } else {
    if ( $type == 'daily' ) {
      if ( (date("w", $cdate) == $byday_values[$dayTxt]) )   
@@ -3425,22 +3465,32 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user, $is_assistant, $is_nonuser_admin;
   global $DISPLAY_ICONS, $PHP_SELF, $TIME_SLOTS, $WORK_DAY_START_HOUR,
-    $WORK_DAY_END_HOUR;
+    $WORK_DAY_END_HOUR, $TIME_SPACER;
   global $layers, $DISPLAY_TZ, $tz_offset, $TIMEZONE;
   static $key = 0;
 
-  if ( $event->getExtForID() != '' ) {
-    $id = $event->getExtForID();
-    $name = $event->getName() . ' (' . translate ( "cont." ) . ')';
-  } else {
-    $id = $event->getID();
-    $name = $event->getName();
-  }
+  $cal_type = ( $event->getCalType() == "T" || 
+    $event->getCalType() == "N"? 'task' : 'event' ); 
   
+  if ( access_is_enabled () ) {
+    $time_only = access_user_calendar ( 'time', $event->getLogin() );
+    $can_access = access_user_calendar ( 'view', $event->getLogin(), '', 
+      $event->getCalType(), $event->getAccess() );
+    if ( $cal_type == 'task' && $can_access == 0 )
+      return false;    
+  } else {
+    $time_only = 'N';
+    $can_access = CAN_DOALL;
+  }
+
+
+    
+  $id = $event->getID();
+  $name = $event->getName();
+
   $tz_event = $tz_offset[0];
   // Figure out which time slot it goes in. Put tasks in with AllDay and Untimed
-  if ( ! $event->isUntimed() && ! $event->isAllDay() && ( $event->getCalType() != 'T'||
-    $event->getCalType() == "N" ) ) {
+  if ( ! $event->isUntimed() && ! $event->isAllDay() && $cal_type != 'task' ) {
     $tz_time = date( "His", get_datetime_add_tz( $event->getDate(),$event->getTime() ) );
     $ind = calc_time_slot ( $tz_time );
     if ( $ind < $first_slot )
@@ -3484,23 +3534,28 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
   $linkid  = "pop$id-$key";
   $key++;
 
-    $cal_link = "view_entry.php";
-    if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
-    $cal_type = "task";
-    $view_text  = translate ( "View this task" ); 
-    $hour_arr[$ind] .= "<img src=\"images/task.gif\" class=\"bullet\" alt=\"*\" /> ";    
-    } else {
-    $cal_type = "event";
-    $view_text  = translate ( "View this event" );         
-    if ( $event->isAllDay()  || $event->isUntimed()) {
-      $hour_arr[$ind] .= "<img src=\"images/circle.gif\" class=\"bullet\" alt=\"*\" /> ";
-    }
-    }
-  //make sure clones have parents url date
-  $linkDate = (  $event->getClone()?date( "Ymd", 
+  //build entry link if UAC permits viewing
+  $time_spacer = ( $time_only == 'Y' ? '' : $TIME_SPACER );
+  if ( $can_access != 0 && $time_only != 'Y') {
+    //make sure clones have parents url date
+    $linkDate = (  $event->getClone()?date( "Ymd", 
     get_datetime_add_tz ( $date, 12, -24 ) ): $date ); 
-  $hour_arr[$ind] .= "<a title=\"" . $view_text . 
-    "\" class=\"$class\" id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$linkDate";
+    $href = "href=\"view_entry.php?id=$id&amp;date=$linkDate";
+    if ( $cal_type == 'task' ) {
+      $title  = "<a title=\"" . translate ( "View this task" ) . "\""; 
+      $hour_arr[$ind] .= "<img src=\"images/task.gif\" class=\"bullet\" alt=\"*\" /> ";    
+    } else { //must be event
+      $title  = "<a title=\"" . translate ( "View this event" ) . "\"";        
+      if ( $event->isAllDay()  || $event->isUntimed()) {
+        $hour_arr[$ind] .= "<img src=\"images/circle.gif\" class=\"bullet\" alt=\"*\" /> ";
+      }
+    }
+  } else {
+    $title =  "<a title=\"\" " ;
+    $href = '';  
+  }   
+
+  $hour_arr[$ind] .= $title .  " class=\"$class\" id=\"$linkid\" " . $href;
   if ( strlen ( $GLOBALS["user"] ) > 0 )
     $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
   $hour_arr[$ind] .= "\">";
@@ -3526,9 +3581,9 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     if ( $rowspan > $rowspan_arr[$first_slot] && $rowspan > 1 )
       $rowspan_arr[$first_slot] = $rowspan;
     //We'll skip tasks  here as well
-  } else if ( $event->getTime() >= 0  && $event->getCalType() != "T" ) {
+  } else if ( $event->getTime() >= 0  && $cal_type != 'task' ) {
     if ( $show_time )
-      $hour_arr[$ind] .= display_time ( $event->getDatetime() ) . "&raquo;&nbsp;";
+      $hour_arr[$ind] .= display_time ( $event->getDatetime() ) . $time_spacer;
     $timestr = display_time ( $event->getDatetime() );
     if ( $event->getDuration() > 0 ) {
       $timestr .= "-" . display_time ( $event->getEndDateTime() , $DISPLAY_TZ );
@@ -3559,45 +3614,17 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
   // avoid php warning of undefined index when using .= below
   if ( empty ( $hour_arr[$ind] ) )
     $hour_arr[$ind] = "";
+  $hour_arr[$ind] .= build_entry_label ( $event, $popupid, 
+    $can_access, $timestr, $time_only );
 
-  if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
-    $hour_arr[$ind] .= "(" . translate("Private") . ")";
-  } else if ( $login != $event->getLogin() && $event->getAccess() == 'R' &&
-    strlen ( $event->getLogin() ) ) {
-    $hour_arr[$ind] .= "(" . translate("Private") . ")";
-  } else   if ( $login != $user && $event->getAccess() == 'C' && strlen ( $user ) &&
-   !$is_assistant  && !$is_nonuser_admin ) {
-    //assistants can see confidential stuff
-  $hour_arr[$ind] .= "(" . translate("Confidential") . ")";
-  } else if ( $login != $event->getLogin() && $event->getAccess() == 'C' &&
-    strlen ( $event->getLogin() && !$is_assistant  && !$is_nonuser_admin ) ) {
-    $hour_arr[$ind] .= "(" . translate("Confidential") . ")";
-  } else if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
-    $hour_arr[$ind] .= htmlspecialchars ( $name );
-    if ( ! empty ( $in_span ) )
-      $hour_arr[$ind] .= "</span>"; //end color span
-  } else {
-    $hour_arr[$ind] .= htmlspecialchars ( $name );
-  }
-
+  if ( ! empty ( $in_span ) )
+    $hour_arr[$ind] .= "</span>"; //end color span
   if ( $event->getPriority() == 3 ) $hour_arr[$ind] .= "</strong>"; //end font-weight span
     $hour_arr[$ind] .= "</a>";
   //if ( $DISPLAY_ICONS == "Y" ) {
   //  $hour_arr[$ind] .= icon_text ( $id, true, true );
   //}
   $hour_arr[$ind] .= "<br />\n";
-  if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      translate("This event is confidential"), "" );
-  } else if ( $login != $event->getLogin() && $event->getAccess() == 'R' &&
-    strlen ( $event->getLogin() ) ) {
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      translate("This event is confidential"), "" );
-  } else {
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      $event->getDescription(), $timestr, site_extras_for_popup ( $id ), 
-      $event->getLocation(), '', $event->getId() );
-  }
 }
 
 /**
@@ -3616,12 +3643,21 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   static $key = 0;
 
 
-  if ( $event->getExtForID() != '' ) {
-    $id = $event->getExtForID();
-    $name = $event->getName() . ' (' . translate ( "cont." ) . ')';
+  $id = $event->getID();
+  $name = $event->getName();
+
+  $cal_type = ( $event->getCalType() == "T" || 
+    $event->getCalType() == "N"? 'task' : 'event' );
+    
+  if ( access_is_enabled () ) {
+    $time_only = access_user_calendar ( 'time', $event->getLogin() );
+    $can_access = access_user_calendar ( 'view', $event->getLogin(), '', 
+      $event->getCalType(), $event->getAccess() );
+    if ( $cal_type == 'task' && $can_access == 0 )
+      return false;      
   } else {
-    $id = $event->getID();
-    $name = $event->getName();
+    $time_only = 'N';
+    $can_access = CAN_DOALL;
   }
 
   // calculate slot length in minutes
@@ -3631,8 +3667,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
 
   // If TZ_OFFSET make this event before the start of the day or
   // after the end of the day, adjust the time slot accordingly.
-  if ( ! $event->isUntimed()  && ! $event->isAllDay() && ( $event->getCalType() != 'T'||
-    $event->getCalType() == "N" ) ) {
+  if ( ! $event->isUntimed()  && ! $event->isAllDay() && $cal_type != 'task' ) {
     $tz_time = date( "His", get_datetime_add_tz( $event->getDate(),$event->getTime() ) );
     $ind = calc_time_slot ( $tz_time );
     if ( $ind < $first_slot )
@@ -3662,32 +3697,37 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     strstr ( $PHP_SELF, "view_t.php" ) )
     $class = "entry";
 
-  $catIcon = "icons/cat-" . $event->getCategory() . ".gif";
-  if ( $event->getCategory() > 0 && file_exists ( $catIcon ) ) {
-    $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catIcon\" />";
-  }
-
   $popupid = "eventinfo-pop$id-$key";
   $linkid  = "pop$id-$key";
   $key++;
+  
+  $catIcon = "icons/cat-" . $event->getCategory() . ".gif";
+  if ( $event->getCategory() > 0 && file_exists ( $catIcon ) ) {
+    $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catIcon\" />";
+  }  
 
   $cal_link = "view_entry.php";
-  if ( $event->getCalType() == "T" || $event->getCalType() == "N" ) {
-    $cal_type = "task";
+  if ( $cal_type == 'task' ) {
     $view_text = translate ( "View this task" );
     $hour_arr[$ind] .= "<img src=\"images/task.gif\" class=\"bullet\" alt=\"*\" /> ";    
   } else {
-    $cal_type = "event";
     $view_text = translate ( "View this task" );    
   }
-  //make sure clones have parents url date
-  $linkDate = (  $event->getClone()?date( "Ymd", 
-    get_datetime_add_tz ( $date, 12, -24 ) ): $date ); 
-  $hour_arr[$ind] .= "<a title=\"" . $view_text .
-    "\" class=\"$class\" id=\"$linkid\" href=\"$cal_link?id=$id&amp;date=$linkDate";
-  if ( strlen ( $GLOBALS["user"] ) > 0 )
-    $hour_arr[$ind] .= "&amp;user=" . $GLOBALS["user"];
-  $hour_arr[$ind] .= "\">";
+  
+    //make sure clones have parents url date
+    $linkDate = (  $event->getClone()?date( "Ymd", 
+    get_datetime_add_tz ( $date, 12, -24 ) ): $date );
+		$href = '';
+		if (  $can_access != 0 && $time_only != 'Y') {
+	    $href = "href=\"$cal_link?id=$id&amp;date=$linkDate";
+      if ( strlen ( $GLOBALS["user"] ) > 0 )
+       $href .= "&amp;user=" . $GLOBALS["user"];
+			 $href .= "\"";
+	  }
+    $hour_arr[$ind] .= "<a title=\"" . $view_text .
+      "\" class=\"$class\" id=\"$linkid\" $href";
+    $hour_arr[$ind] .= "\">";
+		
   if ( $event->getPriority() == 3 ) $hour_arr[$ind] .= "<strong>";
 
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
@@ -3701,8 +3741,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
 
   if ( $event->isAllDay() ) {
     $hour_arr[$ind] .= "[" . translate("All day event") . "] ";
-  } else if ( $time >= 0  && ! $event->isAllDay() && ( $event->getCalType() != 'T'||
-    $event->getCalType() == "N" ) ) {
+  } else if ( $time >= 0  && ! $event->isAllDay() && $cal_type != 'task' ) {
     $hour_arr[$ind] .= "[" . display_time ( $event->getDatetime() );
     if ( $event->getDuration() > 0 ) {
       $hour_arr[$ind] .= "-" . display_time ( $event->getEndDateTime() );
@@ -3726,24 +3765,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     }
     $hour_arr[$ind] .= "] ";
   }
-  if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
-    $hour_arr[$ind] .= "(" . translate("Private") . ")";
-  } else if ( $login != $event->getLogin() && $event->getAccess() == 'R' && 
-   strlen ( $event->getLogin() ) ) {
-    $hour_arr[$ind] .= "(" . translate("Private") . ")";
-  } else  if ( $login != $user && $event->getAccess() == 'C' && strlen ( $user ) &&
-   !$is_assistant  && !$is_nonuser_admin ) {
-    $hour_arr[$ind] .= "(" . translate("Confidential") . ")";
-  } else if ( $login != $event->getLogin() && $event->getAccess() == 'C' && 
-   strlen ( $event->getLogin() ) && !$is_assistant  && !$is_nonuser_admin ) {
-    $hour_arr[$ind] .= "(" . translate("Confidential") . ")";
-  } else if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ){
-    $hour_arr[$ind] .= htmlspecialchars ( $name );
-    if ( ! empty ( $in_span ) )
-      $hour_arr[$ind] .= "</span>"; //end color span
-  } else {
-    $hour_arr[$ind] .= htmlspecialchars ( $name );
- }
+  $hour_arr[$ind] .= build_entry_label ( $event, $popupid, $can_access, '', $time_only );
+
   if ( $event->getPriority() == 3 ) $hour_arr[$ind] .= "</strong>"; //end font-weight span
 
   $hour_arr[$ind] .= "</a>";
@@ -3759,17 +3782,6 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   }
 
   $hour_arr[$ind] .= "<br />\n";
-
-  if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) )
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      translate("This event is confidential"), "" );
-  else if ( $login != $event->getLogin() && $event->getAccess() == 'R' &&
-    strlen ( $event->getLogin() ) )
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      translate("This event is confidential"), "" );
-  else
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(), $event->getDescription(),
-      "", site_extras_for_popup ( $id ), $event->getLocation(), '', $event->getId() );
 }
 
 /**
@@ -3974,7 +3986,7 @@ function display_unapproved_events ( $user ) {
     }
     for ( $j = 0; $j < count ( $all ); $j++ ) {
       $x = $all[$j]['cal_login'];
-      if ( access_can_approve_user_calendar ( $x ) ) {
+      if ( access_user_calendar ( 'approve', $x ) ) {
         if ( empty ( $app_user_hash[$x] ) ) { 
           $app_users[] = $x;
           $app_user_hash[$x] = 1;
@@ -4662,6 +4674,15 @@ function print_entry_timebar ( $event, $date ) {
   static $key = 0;
   $insidespan = false;
 
+  if ( access_is_enabled () ) {
+    $time_only = access_user_calendar ( 'time', $event->getLogin() );
+    $can_access = access_user_calendar ( 'view', $event->getLogin(), '', 
+      $event->getCalType(), $event->getAccess() );    
+  } else {
+    $time_only = 'N';
+    $can_access = CAN_DOALL;
+  }
+
   // Adjust for TimeZone
   $tz_offset = get_tz_offset ( $TIMEZONE, '', $date );
   $time = get_time_add_tz ( $event->getTime(), $tz_offset[0] );
@@ -4729,26 +4750,22 @@ function print_entry_timebar ( $event, $date ) {
 
   if ( $event->getPriority() == 3 ) echo "<strong>";
 
-  if ( $event->getExtForID() != '' ) {
-    $id = $event->getExtForID();
-    $name = $event->getName() . ' (' . translate ( "cont." ) . ')';
-  } else {
-    $id = $event->getID();
-    $name = $event->getName();
-  }
+  $id = $event->getID();
+  $name = $event->getName();
 
   $popupid = "eventinfo-pop$id-$key";
   $linkid  = "pop$id-$key";
   $key++;
-  //make sure clones have parents url date
-  $linkDate = (  $event->getClone()?date( "Ymd", 
-    get_datetime_add_tz ( $date, 12, -24 ) ): $date ); 
-  echo "<a class=\"$class\" id=\"$linkid\" " . 
-    " href=\"view_entry.php?id=$id&amp;date=$linkDate";
-  if ( strlen ( $user ) > 0 )
-    echo "&amp;user=" . $user;
-  echo "\">";
-
+	if ( $can_access != 0 && $time_only != 'Y' ) {
+		//make sure clones have parents url date
+		$linkDate = (  $event->getClone()?date( "Ymd", 
+			get_datetime_add_tz ( $date, 12, -24 ) ): $date ); 
+		echo "<a class=\"$class\" id=\"$linkid\" " . 
+			" href=\"view_entry.php?id=$id&amp;date=$linkDate";
+		if ( strlen ( $user ) > 0 )
+			echo "&amp;user=" . $user;
+		echo "\">";
+  }
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     if ($layers) foreach ($layers as $layer) {
         if($layer['cal_layeruser'] == $event->getLogin() ) {
@@ -4768,24 +4785,9 @@ function print_entry_timebar ( $event, $date ) {
       $timestr .= " - " . display_time ( $event->getEndDateTime() ) . " " .  $tz_offset[1];
     }
   }
+  echo build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only );
 
-  if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
-    echo "(" . translate("Private") . ")";
-  } else if ( $login != $event->getLogin() && $event->getAccess() == 'R' && 
-   strlen ( $event->getLogin() ) ) {
-    echo "(" . translate("Private") . ")";
-  } else   if ( $login != $user && $event->getAccess() == 'C' && strlen ( $user ) &&
-   !$is_assistant  && !$is_nonuser_admin ) {
-    echo "(" . translate("Confidential") . ")";
-  } else if ( $login != $event->getLogin() && $event->getAccess() == 'C' && 
-   strlen ( $event->getLogin() ) && !$is_assistant  && !$is_nonuser_admin ) {
-    echo "(" . translate("Confidential") . ")";
-  } else if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ){
-    echo htmlspecialchars ( $name );
-    if ( $insidespan ) { echo ("</span>"); } //end color span
-  }else {
-    echo htmlspecialchars ( $name );
-  }
+  if ( $insidespan ) { echo ("</span>"); } //end color span
   echo "</a>";
   if ( $event->getPriority() == 3 ) echo "</strong>"; //end font-weight span
   echo "</td>\n";
@@ -4797,17 +4799,6 @@ function print_entry_timebar ( $event, $date ) {
     echo ($ev_padding > 0 ? "<td style=\"text-align:left; width:$ev_padding%;\">&nbsp;</td>\n" : "" );
   }
   echo "</tr>\n</table>\n";
-  if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) )
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      translate("This event is confidential"), "" );
-  else
-  if ( $login != $event->getLogin() && $event->getAccess() == 'R' && strlen ( $event->getLogin() ) )
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      translate("This event is confidential"), "" );
-  else
-    $eventinfo .= build_event_popup ( $popupid, $event->getLogin(),
-      $event->getDescription(), $timestr, site_extras_for_popup ( $id ), 
-      $event->getLocation(), '', $event->getId() );
 }
 
 /**
@@ -4896,6 +4887,7 @@ function user_is_participant ( $id, $user )
  * - <var>cal_is_public</var>
  */
 function get_nonuser_cals ($user = '') {
+  global  $is_admin;
   $count = 0;
   $ret = array ();
   $sql = "SELECT cal_login, cal_lastname, cal_firstname, " .
@@ -4925,6 +4917,17 @@ function get_nonuser_cals ($user = '') {
       );
     }
     dbi_free_result ( $res );
+  }
+    // If user access control enabled, remove any users that this user
+  // does not have 'view' access to.
+  if ( access_is_enabled () && ! $is_admin ) {
+    $newlist = array ();
+    for ( $i = 0; $i < count ( $ret ); $i++ ) {
+      if ( access_user_calendar ( 'view', $ret[$i]['cal_login'] ) )
+        $newlist[] = $ret[$i];
+    }
+    $ret = $newlist;
+    //echo "<pre>"; print_r ( $ret ); echo "</pre>";
   }
   return $ret;
 }
@@ -5060,7 +5063,6 @@ function set_today($date='') {
   $tz_offset = get_tz_offset ( $TIMEZONE, $today );
   $today_offset = $tz_offset[0] * 3600;
   $today += $today_offset;
-
   if ( ! empty ( $date ) ) {
     $thisyear = substr ( $date, 0, 4 );
     $thismonth = substr ( $date, 4, 2 );

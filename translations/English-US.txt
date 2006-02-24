@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 02-10-2006
+# Translation last updated on 02-24-2006
 
 
 ###############################################
@@ -34,23 +34,39 @@ charset: iso-8859-1
 ###############################################
 # Page: access.php
 #
+You are not authorized: You are not authorized
 Database error: Database error
 User Access Control: User Access Control
 Admin: Admin
-Calendar: Calendar
-View Event: View Event
-Edit Event: Edit Event
-Delete Event: Delete Event
-Approve/Reject Event: Approve/Reject Event
 Cancel: Cancel
 Save: Save
+Grant This User Access to My Calendar: Grant This User Access to My Calendar
+Allow Access to Other Users' Calendar: Allow Access to Other Users' Calendar
 DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
+Go: Go
+Calendar: Calendar
+View Event: View Event
+Type: Type
+View: View
+Edit: Edit
+Approve/Reject: Approve/Reject
+Events: Events
+Tasks: Tasks
+Journals: Journals
+Can Invite: Can Invite
+Can Email: Can Email
+Can See Time Only: Can See Time Only
+Assistant: Assistant
+Select All: Select All
+Clear All: Clear All
+Public: Public
+Confidential: Confidential
+Private: Private
 
 
 ###############################################
 # Page: activity_log.php
 #
-You are not authorized: You are not authorized
 Activity Log: Activity Log
 User: User
 Date: Date
@@ -77,7 +93,6 @@ Reminder sent: Reminder sent
 Attachment: Attachment
 Comment: Comment
 Previous: Previous
-Events: Events
 Next: Next
 
 
@@ -105,6 +120,9 @@ Email: Email
 colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 Colors: Colors
 app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
+Application Name: Application Name
+Translated Name: Translated Name
+Title: WebCalendar
 server-url-help: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
 Server URL: Server URL
 home-url-help: Specifies the home URL for the applicaiton. This can be an absolute or relative
@@ -127,7 +145,6 @@ fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
 Fonts: Fonts
 custom-script-help: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
 Custom script/stylesheet: Custom script/stylesheet
-Edit: Edit
 custom-header-help: Allows a custom HTML snippet to be included in the top of every page.
 Custom header: Custom header
 custom-trailer-help: Allows a custom HTML snippet to be included at the end of every page.
@@ -472,9 +489,6 @@ full-description-help: This should complete details of the event.  This informat
 Full Description: Full Description
 access-help: Specifies the access level of the event.<br /> <em>Public</em>: Everyone can see the full details of the event.  <br /><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: Access
-Public: Public
-Private: Private
-Confidential: Confidential
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
 Priority: Priority
 Low: Low
@@ -510,7 +524,6 @@ Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: External Participants
 repeat-type-help: Select how often the event should repeat.<em>Monthly (by day)</em> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <em>Monthly (by date)</em> allows an event to repeat on the same day of the month.
-Type: Type
 Daily: Daily
 Weekly: Weekly
 Monthly: Monthly
@@ -735,7 +748,6 @@ You must specify a group name: You must specify a group name
 ###############################################
 # Page: help_admin.php
 #
-Application Name: Application Name
 Display weekends in week view: Display weekends in week view
 Display days with events in bold in year view: Display days with events in bold in year view
 Nonuser: Nonuser Calendars
@@ -825,6 +837,15 @@ rss-feed-url-help: The URL to access the RSS feed
 Enable FreeBusy publishing: Enable FreeBusy publishing
 freebusy-enabled-help: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
 freebusy-url-help: The URL for accessing the user's FreeBusy list
+
+
+###############################################
+# Page: help_uac.php
+#
+User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.: User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
+If disabled, this user will not see you in the participants list.: If disabled, this user will not see you in the participants list.
+If disabled, this user will not be able to send you emails.: If disabled, this user will not be able to send you emails.
+If enabled, this user will not be able to view the details of any of your entries.: If enabled, this user will not be able to view the details of any of your entries.
 
 
 ###############################################
@@ -1028,7 +1049,6 @@ No matches found: No matches found
 # Page: select_user.php
 #
 View Another User's Calendar: View Another User's Calendar
-Go: Go
 
 
 ###############################################
@@ -1152,6 +1172,7 @@ New Entry: New Entry
 ###############################################
 # Page: includes/access.php
 #
+Edit Event: Edit Event
 Day View: Day View
 Week View: Week View
 Month View: Month View
@@ -1181,9 +1202,10 @@ Dec: Dec
 ###############################################
 # Page: includes/functions.php
 #
-Title: WebCalendar
 __month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
+This event is private: This event is private
+Conf.: Conf.
 Sun: Sun
 Mon: Mon
 Tue: Tue
@@ -1201,7 +1223,6 @@ __mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
 Completed: Completed
 View this task: View this task
 View this event: View this event
-This event is private: This event is private
 exceeds limit of XXX events per day: exceeds limit of XXX events per day
 You have XXX unapproved entries: You have XXX unapproved entries
 January: January
@@ -1435,6 +1456,7 @@ Connection Successful: Connection Successful
 Please go to next page to continue installation: Please go to next page to continue installation
 Failure Reason: Failure Reason
 Correct your entries or click the <b>Create New</b> button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
+You must manually create database: You must manually create database
 Correct your entries and try again: Correct your entries and try again
 Timezone Conversion Successful: Timezone Conversion Successful
 Error Converting Timezone: Error Converting Timezone

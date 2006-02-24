@@ -62,8 +62,8 @@ if ( $ALLOW_HTML_DESCRIPTION == "Y" ){
 $external_users = $byweekno = $byyearday = $rpt_count = $catNames = $catList="";
 $participants = $exceptions = $inclusions = array();
 $byday = $bymonth = $bymonthday = $bysetpos = array();
-
 $wkst = "MO";
+$create_by = $login;
 
 if ( $readonly == 'Y' || $is_nonuser ) {
   $can_edit = false;
@@ -95,7 +95,6 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     $create_by = $row[0];
     if (( $user == $create_by ) && ( $is_assistant || $is_nonuser_admin ))
       $can_edit = true;
-
 
     $cal_time = $row[2];
     $due_date = $row[13];
@@ -129,13 +128,10 @@ if ( $readonly == 'Y' || $is_nonuser ) {
      
     //what kind of entry are we dealing with?
     if ( $type == "E" || $type == "M" ) {
-      $edit_weight = 1;
       $eType = 'event';
-    } else if ( $type == "T" || $type == "N" ) {
-      $edit_weight = 2;      
+    } else if ( $type == "T" || $type == "N" ) {      
       $eType = 'task';
-    } else if ( $type == "J" || $type == "O" ) {
-      $edit_weight = 4;      
+    } else if ( $type == "J" || $type == "O" ) {      
       $eType = 'journal';
     }
 
@@ -146,10 +142,9 @@ if ( $readonly == 'Y' || $is_nonuser ) {
      
     //check UAC
     if ( access_is_enabled () ) {
-      $can_edit_level = access_can_edit_user_calendar ( $create_by );
-      //echo   "LEVEL  $can_edit_level    weight  $edit_weight ";
-      $can_edit = ( $can_edit_level & $edit_weight ? true : false );  
-    }    
+      $can_edit = access_user_calendar ( 'edit', $create_by, $login, $type, $access );
+    }
+    
     $year = (int) ( $cal_date / 10000 );
     $month = ( $cal_date / 100 ) % 100;
     $day = $cal_date % 100;
@@ -158,7 +153,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     $tz_offset = get_tz_offset ( $TIMEZONE, mktime ( 0, 0, 0, $month, $day, $year ) );
     // test for AllDay event, if so, don't adjust time
     if ( $time > 0  || ( $time == 0 &&  $row[5] != 1440 ) ) { /* -1 = no time specified */
-			$time = get_time_add_tz ( $time, $tz_offset[0] );
+      $time = get_time_add_tz ( $time, $tz_offset[0] );
       if ( $time > 240000 ) {
         $time -= 240000;
         $gmt = mktime ( 0, 0, 0, $month, $day, $year );
@@ -214,13 +209,13 @@ if ( $readonly == 'Y' || $is_nonuser ) {
             $rpt_end = get_datetime_add_tz( $row[2], $row[3] );
           else
             $rpt_end = 0;
-					if ( ! empty ( $row[2] ) ) {
+          if ( ! empty ( $row[2] ) ) {
             $rpt_end_date = date( "Ymd", get_datetime_add_tz( $row[2], $row[3] ) );
             $rpt_end_time = date( "His", get_datetime_add_tz( $row[2], $row[3] ) );
-					}  else {
-					  $rpt_end_date = $cal_date;
-						$rpt_end_time = $cal_time;
-					}        
+          }  else {
+            $rpt_end_date = $cal_date;
+            $rpt_end_time = $cal_time;
+          }        
           $rpt_freq = $row[4];
           $byday = explode(",",$row[5]);
           $bymonth = explode(",",$row[6]);
@@ -362,6 +357,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     }
   }
 }
+
 $thisyear = $year;
 $thismonth = $month;
 $thisday = $day;
@@ -867,10 +863,10 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     // show list of calendar users...
     echo "<select name=\"" . $extra_name . "\">\n";
     echo "<option value=\"\">None</option>\n";
-    $userlist = get_my_users ();
+    $userlist = get_my_users ( get_my_users );
     for ( $j = 0; $j < count ( $userlist ); $j++ ) {
       if ( access_is_enabled () &&
-        ! access_can_view_user_calendar ( $userlist[$j]['cal_login'] ) )
+        ! access_user_calendar ( 'view', $userlist[$j]['cal_login'] ) )
         continue; // cannot view calendar so cannot add to their cal
       echo "<option value=\"" . $userlist[$j]['cal_login'] . "\"";
         if ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
@@ -965,7 +961,7 @@ if ( $login == "__public__" && $PUBLIC_ACCESS_OTHERS != "Y" )
   $show_participants = false;
 
 if ( $single_user == "N" && $show_participants ) {
-  $userlist = get_my_users ();
+  $userlist = get_my_users ( $create_by, 'invite' );
   if ($NONUSER_ENABLED == "Y" ) {
     $nonusers = get_nonuser_cals ();
     $userlist = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
@@ -986,7 +982,8 @@ if ( $single_user == "N" && $show_participants ) {
         if ( ! empty ( $participants[$l] ) )
           $users .= " selected=\"selected\"";
       } else {
-        if ( ($l == $login && ! $is_assistant  && ! $is_nonuser_admin) || (! empty ($user) && $l == $user) )
+        if ( ($l == $login && ! $is_assistant  && 
+          ! $is_nonuser_admin) || (! empty ($user) && $l == $user) )
           $users .= " selected=\"selected\"";
       }
       if ( $l == '__public__' &&

@@ -64,7 +64,7 @@ if ( $search_others ) {
   if ( access_is_enabled () && ! $is_admin ) {
     $newlist = array ( );
     for ( $i = 0; $i < count ( $users ); $i++ ) {
-      if ( access_can_view_user_calendar ( $users[$i] ) )
+      if ( access_user_calendar ( 'view', $users[$i] ) )
         $newlist[] = $users[$i];
     }
     $users = $newlist;

@@ -196,10 +196,12 @@ CREATE TABLE webcal_report_template (
 CREATE TABLE webcal_access_user (
   cal_login VARCHAR(50) NOT NULL,
   cal_other_user VARCHAR(50) NOT NULL,
-  cal_can_view CHAR(1) DEFAULT 'N' NOT NULL,
-  cal_can_edit CHAR(1) DEFAULT 'N' NOT NULL,
-  cal_can_delete CHAR(1) DEFAULT 'N' NOT NULL,
-  cal_can_approve CHAR(1) DEFAULT 'N' NOT NULL,
+  cal_can_view INT DEFAULT '0' NOT NULL,
+  cal_can_edit INT DEFAULT '0' NOT NULL,
+  cal_can_approve INT DEFAULT '0' NOT NULL,
+  cal_can_invite CHAR(1) DEFAULT 'Y' NOT NULL,
+  cal_can_email CHAR(1) DEFAULT 'Y' NOT NULL,
+  cal_can_see_times_only CHAR(1) DEFAULT 'N' NOT NULL,
   PRIMARY KEY ( cal_login, cal_other_user )
 );
 CREATE TABLE webcal_access_function (

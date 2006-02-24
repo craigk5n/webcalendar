@@ -168,7 +168,9 @@ if ( ! $error ) {
   <label for="admin_APPLICATION_NAME"><?php etranslate( 'Application Name' )?>:</label></td><td>
   <input type="text" size="40" name="admin_APPLICATION_NAME" id="admin_APPLICATION_NAME" value="<?php 
    echo htmlspecialchars ( $s['APPLICATION_NAME'] );
-  ?>" />
+  ?>" />&nbsp;&nbsp;
+  <?php if ( $s['APPLICATION_NAME'] == 'Title' )
+    echo translate("Translated Name") . " ( " . translate("Title") . " )";?>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("server-url-help")?>">
   <label for="admin_SERVER_URL"><?php etranslate("Server URL")?>:</label></td><td>

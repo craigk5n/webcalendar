@@ -85,7 +85,7 @@ function list_unapproved ( $user ) {
       $duration = $row[7];
       $status = $row[8];
       $type = $row[9];
-      $view_link = ( $type == 'E' || $type == 'M' ?'view_entry' : 'view_task' );      
+      $view_link = 'view_entry';      
 
       if ($count == 0 ) { 
         echo "<h3>" . $temp_fullname . "</h3>\n";      
@@ -137,7 +137,7 @@ function list_unapproved ( $user ) {
           translate("Reject") . "</a>";
       //delete
       if ( ! access_is_enabled () ||
-        access_can_delete_user_calendar ( $user ) ) {
+        access_user_calendar ( 'edit', $user ) ) {
         echo ", <a title=\"" . 
           translate("Delete") . "\" href=\"del_entry.php?id=$id&amp;ret=$retarg";
         if ( $cal_user != $login )
@@ -147,7 +147,7 @@ function list_unapproved ( $user ) {
         translate("Delete") . "</a>";
       }
       echo "\n</li>\n";
-      $eventinfo .= build_event_popup ( $divname, $cal_user, $description,
+      $eventinfo .= build_entry_popup ( $divname, $cal_user, $description,
         $timestr, site_extras_for_popup ( $id ));
       $count++;
     }
@@ -177,7 +177,7 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
   access_is_enabled () ) &&
   ! empty ( $user ) && $user != $login ) {
   if ( ! access_is_enabled () || 
-    access_can_approve_user_calendar ( $user ) ) {
+    access_user_calendar ( 'approve', $user ) ) {
     $app_users[] = $user;
     $app_user_hash[$user] = 1;
   } else {
@@ -196,7 +196,7 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
     }
     for ( $j = 0; $j < count ( $all ); $j++ ) {
       $x = $all[$j]['cal_login'];
-      if ( access_can_approve_user_calendar ( $x ) ) {
+      if ( access_user_calendar ( 'approve', $x ) ) {
         if ( empty ( $app_user_hash[$x] ) ) {
           $app_users[] = $x;
           $app_user_hash[$x] = 1;

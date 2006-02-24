@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 
 if (($user != $login) && $is_nonuser_admin) {
   load_user_layers ($user);
-} else {
+} else if ( empty ( $user ) ) {
   load_user_layers ();
 }
 

@@ -28,6 +28,7 @@ include_once 'includes/init.php';
 
 $id = getIntValue ( 'id' );
 $type = getValue ( 'type' );
+$user = getValue ( 'user' );
 $error = '';
 
 switch ( $type ) {
@@ -44,7 +45,7 @@ switch ( $type ) {
     $upload_enabled = ! empty ( $upload ) &&
       preg_match ( "/(On|1|true|yes)/i", $upload );
     if ( ! $upload_enabled ) {
-      $error = "You must enabled file_uploads in php.ini";
+      $error = "You must enable file_uploads in php.ini";
     }
     break;
   default:
@@ -88,6 +89,10 @@ if ( $type == 'A' ) {
     $can_add = true;
   else if ( $ALLOW_COMMENTS_ANY == 'Y' )
     $can_add = true;
+}
+//check UAC
+if ( access_is_enabled () ) {
+  $can_add = $can_add || access_user_calendar ( 'edit', $user );
 }
 
 if ( ! $can_add )

@@ -46,8 +46,12 @@ if ( $res ) {
   $row = dbi_fetch_row ( $res );
   $owner = $row[0];
   dbi_free_result ( $res );
+	//check UAC
+  if ( access_is_enabled () ) {
+    $can_delete = access_user_calendar ( 'edit', $owner );
+	}
   if ( $owner == $login || $is_assistant && ( $user == $owner ) ||
-    $is_nonuser_admin ) {
+    $is_nonuser_admin  || $can_delete ) {
     $my_event = true;
     $can_edit = true;
   }
@@ -67,7 +71,7 @@ if ( $readonly == 'Y' )
 // If User Access Control is enabled, check to see if the current
 // user is allowed to delete events from the other user's calendar.
 if ( ! $can_edit && access_is_enabled () ) {
-  if ( access_can_delete_user_calendar ( $user ) )
+  if ( access_user_calendar ( 'edit', $user ) )
     $can_edit = true;
 }
 
@@ -138,48 +142,54 @@ if ( $id > 0 && empty ( $error ) ) {
     for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
       // Log the deletion
       activity_log ( $id, $login, $partlogin[$i], $log_delete, "" );
-
-      $do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
-      $htmlmail = get_pref_setting ( $partlogin[$i], "EMAIL_HTML" );
-      $t_format = get_pref_setting ( $partlogin[$i], "TIME_FORMAT" );
-      $user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
-      $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
-      user_load_variables ( $partlogin[$i], "temp" );         
-      if ( ! $is_nonuser_admin && $partlogin[$i] != $login && $do_send == "Y" &&
-        boss_must_be_notified ( $login, $partlogin[$i] ) && 
-        ! empty ( $tempemail ) && $SEND_EMAIL != "N" ) {
-          if ( empty ( $user_language ) || ( $user_language == 'none' )) {
-             reset_language ( $LANGUAGE );
-          } else {
-             reset_language ( $user_language );
-          }
-        $msg = translate("Hello") . ", " . unhtmlentities( $tempfullname ). ".\n\n" .
-          translate("An appointment has been canceled for you by") .
-          " " . $login_fullname .  ".\n" .
-          translate("The subject was") . " \"" . $name . "\"\n" .
-          translate("Date") . ": " . date_to_str ($thisdate) . "\n";
-          if ( $eventtime != '-1' ) $msg .= translate("Time") . ": " . 
-           // Apply user's GMT offset and display their TZID
-           display_time ( $eventdate . $eventtime, 2, '', $user_TIMEZONE, $t_format );
-          $msg .= "\n\n";
-          $msg = stripslashes ( $msg );
-          //use WebCalMailer class
-          $from = $login_email;
-          if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
-            $from = $EMAIL_FALLBACK_FROM;
-          if ( strlen ( $from ) ) {
-            $mail->From = $from;
-            $mail->FromName = $login_fullname;
-          } else {
-            $mail->From = $login_fullname;
-          }
-          $mail->IsHTML( $htmlmail == 'Y' ? true : false );
-          $mail->AddAddress( $tempemail, unhtmlentities( $tempfullname ) );
-          $mail->WCSubject ( $name );
-          $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;;                    
-          $mail->Send();
-          $mail->ClearAll();
-      }
+			//check UAC
+			$can_email = 'Y'; 
+			if ( access_is_enabled () ) {
+        $can_email = access_user_calendar ( 'email', $partlogin[$i], $login);
+      }	
+			if ( $can_email == 'Y' ) {	
+				$do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
+				$htmlmail = get_pref_setting ( $partlogin[$i], "EMAIL_HTML" );
+				$t_format = get_pref_setting ( $partlogin[$i], "TIME_FORMAT" );
+				$user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
+				$user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
+				user_load_variables ( $partlogin[$i], "temp" );         
+				if ( ! $is_nonuser_admin && $partlogin[$i] != $login && $do_send == "Y" &&
+					boss_must_be_notified ( $login, $partlogin[$i] ) && 
+					! empty ( $tempemail ) && $SEND_EMAIL != "N" ) {
+						if ( empty ( $user_language ) || ( $user_language == 'none' )) {
+							 reset_language ( $LANGUAGE );
+						} else {
+							 reset_language ( $user_language );
+						}
+					$msg = translate("Hello") . ", " . unhtmlentities( $tempfullname ). ".\n\n" .
+						translate("An appointment has been canceled for you by") .
+						" " . $login_fullname .  ".\n" .
+						translate("The subject was") . " \"" . $name . "\"\n" .
+						translate("Date") . ": " . date_to_str ($thisdate) . "\n";
+						if ( $eventtime != '-1' ) $msg .= translate("Time") . ": " . 
+						 // Apply user's GMT offset and display their TZID
+						 display_time ( $eventdate . $eventtime, 2, '', $user_TIMEZONE, $t_format );
+						$msg .= "\n\n";
+						$msg = stripslashes ( $msg );
+						//use WebCalMailer class
+						$from = $login_email;
+						if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
+							$from = $EMAIL_FALLBACK_FROM;
+						if ( strlen ( $from ) ) {
+							$mail->From = $from;
+							$mail->FromName = $login_fullname;
+						} else {
+							$mail->From = $login_fullname;
+						}
+						$mail->IsHTML( $htmlmail == 'Y' ? true : false );
+						$mail->AddAddress( $tempemail, unhtmlentities( $tempfullname ) );
+						$mail->WCSubject ( $name );
+						$mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;;                    
+						$mail->Send();
+						$mail->ClearAll();
+				}
+			}
     }
 
     // Instead of deleting from the database... mark it as deleted
@@ -238,7 +248,7 @@ if ( $id > 0 && empty ( $error ) ) {
     if ( ! empty ( $user ) && $user != $login ) {
       if ( $is_admin || $my_event ||
         ( access_is_enabled () &&
-        access_can_delete_user_calendar ( $user ) ) ) {
+        access_user_calendar ( 'edit', $user ) ) ) {
         $del_user = $user;
       } else {
         // Error: user cannot delete from other user's calendar

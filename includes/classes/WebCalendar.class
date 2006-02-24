@@ -330,7 +330,7 @@ class WebCalendar {
       $readonly, $run_mode, $phpdbiVerbose, $single_user,
       $single_user_login, $use_http_auth, $user_inc, $NONUSER_PREFIX;
 
-    $PROGRAM_VERSION = "v1.1.0c-CVS";
+    $PROGRAM_VERSION = "v1.1.0d-CVS";
     $PROGRAM_DATE = "?? ??? 2005";
     $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
     $PROGRAM_URL = "http://www.k5n.us/webcalendar.php";
@@ -442,7 +442,7 @@ class WebCalendar {
    // Redirect user to install page if it is different from stored value
    // This will prevent running WebCalendar until UPGRADING.html has been
    // read and required upgrade actions completed
-  $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
+   $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
    if ( $c ) {
      $res = dbi_execute ( "SELECT  cal_value FROM webcal_config ".
        "WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'" );
@@ -454,7 +454,7 @@ class WebCalendar {
       $row = dbi_fetch_row ( $res );
          if (  empty ( $row) || $row[0] != $PROGRAM_VERSION ) {
            // & does not work here...leave it as &
-      $version = ( empty ($row )? "UNKNOWN" : $row[0] );
+           $version = ( empty ($row )? "UNKNOWN" : $row[0] );
            Header ( "Location: install/index.php?action=mismatch&version=$version" );
            exit;
      }
@@ -910,7 +910,7 @@ class WebCalendar {
    */
   function _initConnect() {
     global $c, $db_host, $db_login, $db_password, $db_database,
-      $single_user, $single_user_login, $pub_acc_enabled,
+      $single_user, $single_user_login, $pub_acc_enabled, $user_inc,
       $PUBLIC_ACCESS_CAN_ADD, $session_not_found, $PHP_AUTH_USER,
       $login, $PHP_SELF, $login_url, $login, $is_admin, $lastname,
       $firstname, $fullname, $user_email, $use_http_auth, $user_inc,
@@ -1239,22 +1239,6 @@ class WebCalendar {
     define ( 'ACCESS_HELP', 25 ); 
     define ( 'ACCESS_ANOTHER_CALENDAR', 26 );      
     define ( 'ACCESS_NUMBER_FUNCTIONS', 27 ); // how many function did we define?
-    /**#@-*/
-
-    /**#@+
-     * Constants for use with cal_can_xxx columns in
-     * webcal_access_user table.
-     */
-    define ( 'CAL_CAN_PE', 1 ); //Public Event
-    define ( 'CAL_CAN_PT', 2 ); //Public Task
-    define ( 'CAL_CAN_PJ', 4 ); //Public Journal
-    define ( 'CAL_CAN_CE', 8 ); //Conf Event
-    define ( 'CAL_CAN_CT', 16 ); //Conf Task
-    define ( 'CAL_CAN_CJ', 32 ); //Conf Journal
-    define ( 'CAL_CAN_RE', 64 ); //Private Event
-    define ( 'CAL_CAN_RT', 128 ); //Private Task
-    define ( 'CAL_CAN_RJ', 256 ); //Private Journal
-    define ( 'CAL_CAN_DOALL', 511 );//Can access all types and levels
     /**#@-*/
         
     // The following pages will be handled differently than the others

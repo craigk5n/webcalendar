@@ -128,12 +128,15 @@ class RepeatingEvent extends Event {
    * @param string $description    Event's description
    * @param string $date           Event's date (in YYYYMMDD format)
    * @param string $time           Event's time (in HHMMSS format)
+   * @param string $moddate        Event's mod date (in YYYYMMDD format)
+   * @param string $modtime        Event's mod time (in HHMMSS format)
    * @param int    $id             Event's ID
    * @param mixed  $extForID       Event's extension ID (or '' for none)
    * @param int    $priority       Event's priority
    * @param string $access         Event's access level
    * @param int    $duration       Event's duration (in minutes)
    * @param string $status         Event's status
+   * @param string $owner       Event's cal_create_by
    * @param mixed  $category       Event's category ID
    * @param string $login          Event's owner
    * @param string $rpt_type       Event's repeat type
@@ -159,19 +162,19 @@ class RepeatingEvent extends Event {
    * @access public
    */
   function RepeatingEvent ( $name, $description, $date, $time, $id, $extForID,
-                            $priority, $access, $duration, $status, $category, $login,
-                          $cal_type, $location, $url, $due_date, $due_time, $percent,
-                            $rpt_type, $end, $frequency, $days, $rpt_bymonth,
-                     $rpt_bymonthday, $rpt_byday, $rpt_bysetpos, $rpt_byweekno,
-               $rpt_byyearday, $rpt_wkst, $rpt_count, $endtime,
-              $exceptions, $inclusions, $rpt_all_dates ) {
+    $priority, $access, $duration, $status, $owner, $category, $login,
+    $cal_type, $location, $url, $due_date, $due_time, $percent, 
+    $rpt_type, $end, $frequency, $days, $rpt_bymonth,
+    $rpt_bymonthday, $rpt_byday, $rpt_bysetpos, $rpt_byweekno,
+    $rpt_byyearday, $rpt_wkst, $rpt_count, $endtime, $moddate, $modtime,
+    $exceptions, $inclusions, $rpt_all_dates ) {
 
     /* Silly PHP4 hack */
     $parent = get_parent_class ( $this );
 
     parent::$parent ( $name, $description, $date, $time, $id, $extForID,
-                      $priority, $access, $duration, $status, $category, $login,
-                    $cal_type, $location, $url, $due_date, $due_time, $percent );
+      $priority, $access, $duration, $status, $owner, $category, $login,
+      $cal_type, $location, $url, $due_date, $due_time, $percent, $moddate, $modtime );
 
 
     $this->_repeatType = $rpt_type;
