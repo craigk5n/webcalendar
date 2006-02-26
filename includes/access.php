@@ -152,7 +152,6 @@ function access_load_user_permissions ()
     );  
   }
   dbi_free_result ( $res );
-do_debug ( print_r ( $access_other_cals, true ) );
   return $access_other_cals;
 }
 
@@ -178,7 +177,6 @@ function access_get_viewable_users ( $user )
   for ( $i = 0; $i < count ( $access_other_cals ); $i++ ) {
     if ( preg_match ( "/" . $user . "\.(\S+)/", $access_other_cals[$i],
       $matches ) ) {
-      do_debug ( "viewable:" . $matches[1] );
       $ret[] = $matches[1];
     }
   }

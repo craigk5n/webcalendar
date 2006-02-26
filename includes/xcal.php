@@ -1408,7 +1408,7 @@ foreach ( $data as $Entry ){
       if ( empty ( $error ) ) {
         if ( ! dbi_execute ( $sql , $sql_params ) ) {
           $error .= translate("Database error") . ": " . dbi_error ();
-          do_debug ( $error );
+          //do_debug ( $error );
           break;
         }
       }
@@ -1485,7 +1485,7 @@ foreach ( $data as $Entry ){
         //do_debug ( "SQL> $sql" );
         if ( ! dbi_execute ( $sql , array ( $id , $participants[0] , $status , $percent ) ) ) {
           $error = translate("Database error") . ": " . dbi_error ();
-          do_debug ( "Error: " . $error );
+          //do_debug ( "Error: " . $error );
           break;
         }
       } else {
@@ -1496,7 +1496,7 @@ foreach ( $data as $Entry ){
           " WHERE cal_id = ?";
        if ( ! dbi_execute ( $sql , array ( $status , $percent , $id ) ) ) {
          $error = translate("Database error") . ": " . dbi_error ();
-         do_debug ( "Error: " . $error );
+         //do_debug ( "Error: " . $error );
          break;
        }
     dbi_execute ( "DELETE FROM webcal_entry_categories WHERE cal_id = ?" , array ( $id ) );
@@ -1511,7 +1511,7 @@ foreach ( $data as $Entry ){
        
           if ( ! dbi_execute ( $sql , array ( $id , $cat_id , $cat_order++ ) ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
-            do_debug ( "Error: " . $error );
+            //do_debug ( "Error: " . $error );
             break;
           } 
     } 
@@ -1820,8 +1820,8 @@ function parse_ical ( $cal_file, $source='file' ) {
     //do_debug ( "cnt = " . ( ++$cnt ) );
     $data .= $line;
     if ( $cnt > 10 && strlen ( $data ) == 0 ) {
-      do_debug ( "Read $cnt lines of data, but got no data :-(" );
-      do_debug ( "Informing user of PHP server bug (PHP v" . phpversion() . ")" );
+      //do_debug ( "Read $cnt lines of data, but got no data :-(" );
+      //do_debug ( "Informing user of PHP server bug (PHP v" . phpversion() . ")" );
       // Note: Mozilla Calendar does not display this error for some reason.
       echo "<br /><b>Error:</b> Your PHP server " . phpversion () .
         " seems to have a bug reading stdin.  " .
@@ -1835,8 +1835,8 @@ function parse_ical ( $cal_file, $source='file' ) {
 
    // Check for PHP stdin bug
    if ( $cnt > 5 && strlen ( $data ) < 10 ) {
-      do_debug ( "Read $cnt lines of data, but got no data :-(" );
-      do_debug ( "Informing user of PHP server bug" );
+      //do_debug ( "Read $cnt lines of data, but got no data :-(" );
+      //do_debug ( "Informing user of PHP server bug" );
       header ( "Content-Type: text/plain" );
       echo "Error: Your PHP server " . phpversion () .
         " seems to have a bug reading stdin.\n" .
@@ -2718,7 +2718,7 @@ function get_categories_id_byname ( $cat_names) {
       "VALUES ( ?,?,? )";
      if ( ! dbi_execute ( $sql , array ( $id, $login, $cat_name ) ) ) {
       $error = translate ("Database error") . ": " . dbi_error();
-      do_debug ( $error );
+      //do_debug ( $error );
      } else {
       $ret[] = $id;
      }
@@ -2729,7 +2729,7 @@ function get_categories_id_byname ( $cat_names) {
    }   // end if row
   } else { //no res
    $error = translate("Database error") . ": " . dbi_error ();
-   do_debug ( $error );
+   //do_debug ( $error );
   }
  } //end foreach
   return $ret;

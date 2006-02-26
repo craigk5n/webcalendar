@@ -296,7 +296,6 @@ function user_add_user ( $user, $password, $firstname, $lastname, $email,
     "( cal_login, cal_lastname, cal_firstname, " .
     "cal_is_admin, cal_passwd, cal_email ) " .
     "VALUES ( ?, ?, ?, ?, ?, ? )";
-  do_debug ($sql);
   if ( ! dbi_execute ( $sql, array( $user, $ulastname, $ufirstname, $admin, $upassword, $uemail ) ) ) {
     $error = translate ("Database error") . ": " . dbi_error ();
     return false;
