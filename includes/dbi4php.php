@@ -32,7 +32,7 @@
  * @package dbi4php
  *
  * History:
- *	See ChangeLog
+ *  See ChangeLog
  *
  * License:
  *   Copyright (C) 2006  Craig Knudsen
@@ -622,7 +622,11 @@ function dbi_escape_string( $string )
   switch ( $GLOBALS["db_type"] )
   {
     case "mysql":
-      return mysql_real_escape_string( $string );
+      if(version_compare(phpversion(),"4.3.0") >= 0) {
+        return mysql_real_escape_string( $string );
+      } else {
+        return mysql_escape_string( $string );      
+      }
     case "mysqli":
       return mysqli_real_escape_string( $string );
     case "mssql":
@@ -667,15 +671,14 @@ function dbi_execute( $sql, $params=array(), $fatalOnError=true, $showError=true
   $prepared = '';
   $phindex = 0;
   $offset = 0;
-
   while ( ( $pos = strpos( $sql, '?', $offset ) ) !== false ) {
     $prepared .= substr( $sql, $offset, $pos - $offset ) .
-      ( ( is_null( $params[ $phindex ] ) ) ? "NULL" : ( "'" . dbi_escape_string( $params[ $phindex ] ) . "'" ) );
+      ( ( is_null( $params[ $phindex ] ) ) ? "NULL" : ( "'" . 
+      dbi_escape_string( $params[ $phindex ] ) . "'" ) );
     $offset = $pos + 1;
     $phindex++;
   }
   $prepared .= substr( $sql, $offset );
-
   return dbi_query( $prepared, $fatalOnError, $showError );
 }
 

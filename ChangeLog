@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1416408: installation-wizard hang-up
  - Added updated UAC controls. This requires a databse change. Users can now
    grant permission to their own calendars.
  - Fixed bug 1435533: No headers if $LANGUAGE empty
