@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1438952: Description & Site Extras not showing in pop-ups - CVS
       1416408: installation-wizard hang-up
       1435533: No headers if $LANGUAGE empty
       1435460: Extra '.txt' in includes/translate.php
