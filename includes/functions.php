@@ -1086,7 +1086,7 @@ function format_site_extras ( $extras ) {
  */
 function site_extras_for_popup ( $id ) {
   global $SITE_EXTRAS_IN_POPUP;
-
+	
   if ( $SITE_EXTRAS_IN_POPUP != 'Y' ) {
     return '';
   }
@@ -1234,7 +1234,7 @@ function build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only
     if ( $time_only != 'Y' ) $ret = "(" . translate("Conf.") . ")";
     $eventinfo .= build_entry_popup ( $popupid, $event->getLogin(),
       translate("This event is confidential"), "" );
-  } else if ( $can_access == 0 ) {
+  } else if ( $can_access == 0  && $UAC_ENABLED == 'Y') {
     if ( $time_only != 'Y' ) $ret = $tmp_ret;
     $eventinfo .= build_entry_popup ( $popupid, $event->getLogin(), "", 
       $timestr, "", "", $event->getName(), "" );
