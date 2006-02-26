@@ -1055,7 +1055,7 @@ if ( empty ( $error ) ) {
 }
 
 print_header();
-if ( strlen ( $conflicts ) ) { 
+if ( ! empty ( $conflicts ) ) { 
 ?>
 <h2><?php etranslate("Scheduling Conflict")?></h2>
 
