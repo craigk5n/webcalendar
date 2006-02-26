@@ -2327,7 +2327,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
         dbi_free_result ( $res2 );
       }  
     
-      if ( $want_repeated && ! empty ( $row[20] ) ) {//row[18] = cal_type
+      if ( $want_repeated && ! empty ( $row[20] ) ) {//row[20] = cal_type
         $item =& new RepeatingEvent ( $row[0], $row[1], $row[2], $row[3],
         $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], 
         $primary_cat, $row[11], $row[12], $row[13], $row[14], $row[15], 
