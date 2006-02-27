@@ -26,8 +26,6 @@ if ( ! access_is_enabled () ) {
   etranslate ( "You are not authorized" );
   exit;  
 }
-
-print_header ();
 //print_r ( $_POST );
 // Are we handling the access form?
 // If so, do that, then redirect
@@ -82,10 +80,8 @@ if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '') {
     $email = ( strlen ( getPostValue ( "email" ) )?getPostValue ( "email" ):'N' );
     $time = ( strlen ( getPostValue ( "time" ) )?getPostValue ( "time" ):'N' );
     $view = ( $view_total > 0 ) ? $view_total : 0;
-    if ( $puser != '__public__' ) {
-      $edit = ( $edit_total > 0 ) ? $edit_total : 0;
-      $approve = ( $approve_total > 0 ) ? $approve_total : 0;
-    }
+    $edit = ( $edit_total > 0 && $puser != '__public__' ? $edit_total : 0 );
+    $approve = ( $approve_total > 0 && $puser != '__public__' ? $approve_total : 0 );
     
     $sql = "INSERT INTO webcal_access_user " .
       "( cal_login, cal_other_user, cal_can_view, cal_can_edit, " .
@@ -106,6 +102,41 @@ if ( $otheruser == '__default__' ) {
   $otheruser_fullname = 'DEFAULT CONFIGURATION';
   $otheruser_login  = '__default__';
 }
+
+if ( ! empty ( $otheruser ) ) {
+  if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'Y' ) {
+    $query_param = array( $guser, $otheruser );
+    //if user is not admin, reverse values so they are granting
+    //access to their own calendar
+    if ( ! $is_admin )
+      $query_param = array( $otheruser, $guser );
+    user_load_variables ( $otheruser, 'otheruser_' );
+    // Now load all the data from webcal_access_user
+    $res = dbi_execute ( "SELECT cal_other_user, cal_can_view, cal_can_edit, " .
+      "cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only " .
+      "FROM webcal_access_user WHERE cal_login = ? AND cal_other_user = ?", 
+      $query_param );
+    assert ( '$res' );
+    $op = array ();
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      $op = array (
+        "cal_other_user" => $row[0],
+        "view" => $row[1],
+        "edit" => $row[2],
+        "approve" => $row[3],
+        "invite" => $row[4],
+        "email" => $row[5],
+        "time" => $row[6]
+      );
+    }
+    dbi_free_result ( $res );
+  }
+}
+
+$BodyX = ( ! empty ( $op['time'] ) && $op['time'] == "Y" ? 
+  "onload=\"enableAll( true );\"" : '"' );
+print_header ('','', $BodyX);
+
 if ( ! empty ( $guser ) || ! $is_admin ) {
  if ( $is_admin ) {
   // Present a page to allow editing a user's rights
@@ -186,7 +217,6 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
       } else { 
         $userlist = get_list_of_users ( $guser );
         echo "<h2>$pagetitle</h2>\n";
- 
         echo "<form action=\"access.php\" method=\"post\" name=\"SelectOther\">\n";
         echo "<input type=\"hidden\" name=\"guser\" value=\"$guser\" />\n";
         echo "<select name=\"otheruser\" onchange=\"document.SelectOther.submit()\">\n";
@@ -217,31 +247,6 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
 
 if ( ! empty ( $otheruser ) ) {
   if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'Y' ) {
-    $query_param = array( $guser, $otheruser );
-    //if user is not admin, reverse values so they are granting
-    //access to their own calendar
-    if ( ! $is_admin )
-      $query_param = array( $otheruser, $guser );
-    user_load_variables ( $otheruser, 'otheruser_' );
-    // Now load all the data from webcal_access_user
-    $res = dbi_execute ( "SELECT cal_other_user, cal_can_view, cal_can_edit, " .
-      "cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only " .
-      "FROM webcal_access_user WHERE cal_login = ? AND cal_other_user = ?", 
-      $query_param );
-    assert ( '$res' );
-    $op = array ();
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $op = array (
-        "cal_other_user" => $row[0],
-        "view" => $row[1],
-        "edit" => $row[2],
-        "approve" => $row[3],
-        "invite" => $row[4],
-        "email" => $row[5],
-        "time" => $row[6]
-      );
-    }
-    dbi_free_result ( $res );
     echo "<form action=\"access.php\" method=\"post\" name=\"EditOther\">\n";
     echo "<input type=\"hidden\" name=\"guser\" value=\"$guser\" />\n";        
     echo "<input type=\"hidden\" name=\"otheruser\" value=\"$otheruser\" />\n";
@@ -252,9 +257,11 @@ if ( ! empty ( $otheruser ) ) {
     <tbody>
     <tr>
 <?php if ( $guser == '__public__' ) { ?>
-      <th class="boxtop boxbottom" width="70%" align="left">
+      <th class="boxtop boxbottom" width="60%" align="center">
       <?php etranslate("Calendar"); ?></th>
-      <th class="boxtop boxbottom" width="30%">
+      <th class="boxtop boxbottom" width="20%">
+      <?php etranslate("Type"); ?></th>
+      <th class="boxtop boxbottom boxright" colspan="3" width="20%">
       <?php etranslate("View Event"); ?></th>
 <?php } else   {//if ( $guser != '__default__' ) { ?>
       <th class="boxtop boxbottom" width="25%">
@@ -281,20 +288,20 @@ if ( ! empty ( $otheruser ) ) {
           if ( $j == 1) {
             echo "<td class=\"boxleft leftpadded\">" .
               "<input type=\"checkbox\" value=\"Y\" name=\"invite\"" . 
-              ( ! empty ( $op['invite'] ) && $op['invite'] == "Y" ? 
-                " checked=\"checked\"":"") . " />" . 
+              ( !empty ( $op['invite'] ) && $op['invite'] == "N" ? 
+                "":" checked=\"checked\"") . " />" . 
                   translate ( "Can Invite" ) . "</td>\n";
           } else if ( $j == 2 ) {
             echo "<td class=\"boxleft leftpadded\">" .
               "<input type=\"checkbox\" value=\"Y\" name=\"email\"" . 
-              ( ! empty ( $op['email'] ) && $op['email'] == "Y" ? 
-                " checked=\"checked\"":"") . " />" . 
+              ( !empty ( $op['email'] ) && $op['email'] == "N" ? 
+                "":" checked=\"checked\"") . " />" . 
                   translate ( "Can Email" ) . "</td>\n";          
           } else {
             echo "<td class=\"boxleft boxbottom leftpadded\">" .
               "<input type=\"checkbox\" value=\"Y\" name=\"time\"" . 
               ( ! empty ( $op['time'] ) && $op['time'] == "Y" ? 
-              " checked=\"checked\"":"") . " />" . 
+              " checked=\"checked\"":"") . " onclick=\"enableAll(this.checked);\"/>" . 
                 translate ( "Can See Time Only" ) . "</td>\n";
             $bottomedge = "boxbottom";          
           }
@@ -378,21 +385,39 @@ function selectAll( limit ) {
    var vname = 'v_' + i;
    document.forms['EditOther'].elements[vname].checked = false;
    var ename = 'e_' + i;
-   document.forms['EditOther'].elements[ename].checked = false;
+   if (document.forms['EditOther'].elements[ename])
+     document.forms['EditOther'].elements[ename].checked = false;
    var aname = 'a_' + i;
-   document.forms['EditOther'].elements[aname].checked = false;
+   if (document.forms['EditOther'].elements[aname])
+     document.forms['EditOther'].elements[aname].checked = false;
    i = parseInt(i+i);   
   } 
  for ( i = 1; i <= limit; ) {
    var vname = 'v_' + i;
    document.forms['EditOther'].elements[vname].checked = true;
    var ename = 'e_' + i;
-   document.forms['EditOther'].elements[ename].checked = true;
+   if (document.forms['EditOther'].elements[ename])
+     document.forms['EditOther'].elements[ename].checked = true;
    var aname = 'a_' + i;
-   document.forms['EditOther'].elements[aname].checked = true;
+   if (document.forms['EditOther'].elements[aname])
+     document.forms['EditOther'].elements[aname].checked = true;
    i = parseInt(i+i);   
   } 
 }
+function enableAll ( on ) {
+
+ for ( i = 1; i <= 256; ) {
+   var vname = 'v_' + i;
+   document.forms['EditOther'].elements[vname].disabled = on;
+   var ename = 'e_' + i;
+   if (document.forms['EditOther'].elements[ename])
+     document.forms['EditOther'].elements[ename].disabled = on;
+   var aname = 'a_' + i;
+   if (document.forms['EditOther'].elements[aname])
+     document.forms['EditOther'].elements[aname].disabled = on;
+   i = parseInt(i+i);   
+  }
+} 
 //]]> -->
 </script>
   <?php
@@ -442,62 +467,17 @@ print_trailer(); ?>
 <?php
 
 // Get the list of users that the specified user can see.
-// Note: this function is based on get_my_users in functions.php
 function get_list_of_users ( $user )
 {
-  global $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
-
-  if ( $GROUPS_ENABLED == "Y" && $USER_SEES_ONLY_HIS_GROUPS == "Y" ) {
-    // get groups that user is in
-    $res = dbi_execute ( "SELECT cal_group_id FROM webcal_group_user " .
-      "WHERE cal_login = ?", array( $user ) );
-    $groups = array ();
-    if ( $res ) {
-      while ( $row = dbi_fetch_row ( $res ) ) {
-        $groups[] = $row[0];
-      }
-      dbi_fetch_row ( $res );
-    }
-    $u = user_get_users (); // a complete list of users
+  global $is_admin, $is_nonuser_admin;
+  // groups not enabled... return all users
+  //echo "No groups. ";
+  $u = get_my_users ( $user, 'view');
+  if ( $is_admin || $is_nonuser_admin ) {
     $nonusers = get_nonuser_cals ();
     $u = array_merge( $nonusers, $u );
-    $u_byname = array ();
-    for ( $i = 0; $i < count ( $u ); $i++ ) {
-      $name = $u[$i]['cal_login'];
-      $u_byname[$name] = $u[$i];
-    }
-    $ret = array ();
-    if ( count ( $groups ) == 0 ) {
-      //echo " Eek.  User is in no groups... Return only themselves";
-      $ret[] = $u_byname[$user];
-      return $ret;
-    }
-    // get list of users in the same groups as current user
-    $sql = "SELECT DISTINCT(webcal_group_user.cal_login), " .
-      "cal_lastname, cal_firstname from webcal_group_user " .
-      "LEFT JOIN webcal_user ON " .
-      "webcal_group_user.cal_login = webcal_user.cal_login " .
-      "WHERE cal_group_id ";
-    if ( count ( $groups ) == 1 )
-      $sql .= "= " . $groups[0];
-    else {
-      $sql .= "IN ( " . implode ( ", ", $groups ) . " )";
-    }
-    $sql .= " ORDER BY cal_lastname, cal_firstname, webcal_group_user.cal_login";
-    //echo "SQL: $sql <br />\n";
-    $res = dbi_execute ( $sql );
-    if ( $res ) {
-      while ( $row = dbi_fetch_row ( $res ) ) {
-        $ret[] = $u_byname[$row[0]];
-      }
-      dbi_free_result ( $res );
-    }
-    return $ret;
-  } else {
-    // groups not enabled... return all users
-    //echo "No groups. ";
-    return user_get_users ();
   }
+  return $u;
 }
 
 ?>
