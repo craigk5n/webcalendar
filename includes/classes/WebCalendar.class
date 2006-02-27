@@ -331,7 +331,7 @@ class WebCalendar {
       $single_user_login, $use_http_auth, $user_inc, $NONUSER_PREFIX;
 
     $PROGRAM_VERSION = "v1.1.0d-CVS";
-    $PROGRAM_DATE = "?? ??? 2005";
+    $PROGRAM_DATE = "?? ??? 2006";
     $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
     $PROGRAM_URL = "http://www.k5n.us/webcalendar.php";
 
