@@ -204,13 +204,16 @@ label {
 }
 #monthform {
   clear: left;
+  margin-bottom:0px;
 }
 #weekform {
   text-align: center;
+  margin-bottom:0px;
 }
 #yearform {
   text-align: right;
   clear: right;
+  margin-bottom:0px;
 }
 #menu {
   clear: both;
