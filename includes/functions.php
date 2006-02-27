@@ -818,8 +818,8 @@ function get_my_users ( $user='', $reason='invite') {
 
   $this_user = ( ! empty ( $user ) ? $user : $login );
   // Return the global variable (cached)
-  if ( ! empty ( $my_user_array ) && is_array ( $my_user_array ) )
-    return $my_user_array;
+  if ( ! empty ( $my_user_array[$this_user] ) && is_array ( $my_user_array ) )
+    return $my_user_array[$this_user];
 
   if ( $GROUPS_ENABLED == "Y" && $USER_SEES_ONLY_HIS_GROUPS == "Y" &&
     ! $is_admin ) {
@@ -851,7 +851,7 @@ function get_my_users ( $user='', $reason='invite') {
     if ( count ( $groups ) == 0 ) {
       // Eek.  User is in no groups... Return only themselves
       if ( isset ( $u_byname[$this_user] ) ) $ret[] = $u_byname[$this_user];
-      $my_user_array = $ret;
+      $my_user_array[$this_user] = $ret;
       return $ret;
     }
     // get list of users in the same groups as current user
@@ -884,11 +884,12 @@ function get_my_users ( $user='', $reason='invite') {
   }
 
   // If user access control enabled, remove any users that this user
-  // does not have 'view' access to.
-  if ( access_is_enabled () && ! $is_admin ) {
+  // does not have required access.
+  if ( access_is_enabled () ) {
     $newlist = array ();
     for ( $i = 0; $i < count ( $ret ); $i++ ) {
       $can_list = access_user_calendar ( $reason, $ret[$i]['cal_login'], $this_user );
+      //echo  $ret[$i]['cal_login'] . " " . $can_list . "<br>";
       if (  $can_list == 'Y' ||  $can_list > 0 ) {
         $newlist[] = $ret[$i];
       }
@@ -897,7 +898,7 @@ function get_my_users ( $user='', $reason='invite') {
     //echo "<pre>"; print_r ( $ret ); echo "</pre>";
   }
 
-  $my_user_array = $ret;
+  $my_user_array[$this_user] = $ret;
   return $ret;
 }
 

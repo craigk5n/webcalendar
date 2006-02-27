@@ -34,6 +34,9 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
   } else {
     $id_display = "<input type=\"text\" name=\"nid\" id=\"calid\" size=\"20\" maxlength=\"20\" /> " . translate ("word characters only");
   }
+	if (! empty ( $nonusertemp_admin ) ){
+    echo "<input type=\"hidden\" name=\"old_admin\" value=\"{$nonusertemp_admin}\" />";
+  }
   ?>
 <h2><?php
   if ( ! empty ( $nid ) ) {
