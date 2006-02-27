@@ -522,7 +522,7 @@ cmDraw ('myMenuID', myMenu, 'hbr', cmTheme, 'Theme');
 </td>
 <td class="ThemeMenubackgr" align="right">
 <?php print_menu_dates ( true ); ?>
-<td>
+</td>
 <td class="ThemeMenubackgr" align="right">
 <?php
 if ( ! empty ( $logout_url ) ) { //using http_auth
