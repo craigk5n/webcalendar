@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2005)
+ - Fixed bug 1438954: "Top menu" not working on view_entry.php
  - Fixed bug 1438952: Description & Site Extras not showing in pop-ups - CVS
  - Fixed bug 1416408: installation-wizard hang-up
  - Added updated UAC controls. This requires a databse change. Users can now
