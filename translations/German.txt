@@ -8,7 +8,12 @@
 # Last update: 2 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 3 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 6 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 02-06-2006
+# Last update: 10 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 13 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 22 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 23 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 27 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 02-27-2006
 
 
 ###############################################
@@ -75,12 +80,12 @@ This week and next week: Diese und n&auml;chste Woche
 Last week and this week: Letzte und diese Woche
 Last two weeks: Letzten zwei Wochen
 Next month: N&auml;chster Monat
-This month: Dieser Monat
-Last month: Letzter Monat
+This month: Aktueller Monat
+Last month: Voriger Monat
 Month before last: Vorletzter Monat
 Next year: N&auml;chstes Jahr
 This year: Dieses Jahr
-Last year: Letztes Jahr
+Last year: Voriges Jahr
 Year before last: Vorletztes Jahr
 Next 14 days: N&auml;chsten 14 Tage
 Next 30 days: N&auml;chsten 30 Tage
@@ -208,8 +213,8 @@ Control Panel: Systemsteuerung
 Preferences: Voreinstellungen
 Assistants: Assistenten
 System Settings: Systemeinstellungen
-User Access Control: Zugriffskontrolle
 Account: Konto
+User Access Control: Zugriffskontrolle
 Categories: Kategorien
 Views: Ansichten
 Layers: Layers
@@ -242,7 +247,7 @@ Low: Niedrig
 Medium: Normal
 High: Hoch
 Private: Privat
-Confidential: Privat 
+Confidential: Vertraulich 
 Description: Beschreibung
 Location: Ort
 Status: Status
@@ -452,6 +457,9 @@ Email: Email
 colors-help: Alle Farben k&ouml;nnen im Format "#RRGGBB" eingegeben werden. Hierbei steht "RR" f&uuml;r den hexadezimalen Wert von Rot, "GG" f&uuml;r Gr&uuml;n und "BB" f&uuml;r Blau.
 Colors: Farben
 app-name-help: Gibt den Titel f&uuml;r die Titelleiste des Browsers, f&uuml;r alle Seiten des Kalenders und die Startseite des Kalenders an. Der Titel wird in die Sprachdatei eingetragen und kann f&uuml;r andere Spracheinstellungen abge&auml;ndert werden.
+Application Name: Anwendungsbezeichnung
+Translated Name: &Uuml;bersetzte Bezeichung
+Title: Webkalender
 server-url-help: Gibt die Standard Server-Url an und steht in der Betreffzeile von Erinnerungen sowie von Emails die &uuml;ber den Kalender verschickt werden.
 Server URL: Serveradresse
 home-url-help: Definiert die Haupt-URL (=home URL) f&uuml;r diese Anwendung. Diese kann 'Absolut' oder auch 'Relativ' sein
@@ -566,6 +574,8 @@ Specify timed event length by: Spezifiziert die Zeitspanne eines Termins als
 End Time: Endzeitpunkt
 summary_length-help: Maximale L&auml;nge der Kurzbeschreibung in den Kalenderansichten
 Brief Description Length: L&auml;nge der Kurzbeschreibung
+lunar-help: Wenn aktiv, werden kleine Mondphasen-Icons jedes Monat angezeigt
+Display Lunar Phases in month view: Anzeigen der Mondphasen in der Monatsansicht
 Plugins: "Plugins" (Erweiterungen)
 plugins-enabled-help: Hilfe f&uuml;r "Plugins" (Erweiterungen) aktivieren
 Enable Plugins: "Plugins" (Erweiterungen) aktivieren
@@ -694,7 +704,6 @@ File is not a gif image: Datei ist kein 'gif' Bild
 ###############################################
 # Page: help_admin.php
 #
-Application Name: Anwendungsbezeichnung
 Display weekends in week view: Wochenenden in der Wochenansicht anzeigen
 Display days with events in bold in year view: Zeigt Tage MIT Terminen in der Jahres&uuml;bersicht HERVORGEHOBEN (FETT) an
 Nonuser: 'Zentrale'-Kalender
@@ -731,6 +740,18 @@ Add New View: Neue Ansicht hinzuf&uuml;gen
 
 
 ###############################################
+# Page: help_uac.php
+#
+User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.: Die Zugriffskontrolle erlaubt eine bessere Steuerung der Anwenderzugriffe und deren Berechtigungen. Benutzer k&ouml;nnen Ihre Berechtigungen &auml;ndern sofern Sie vom Administrator authorisiert wurden.
+Can Invite: Kann Einladen
+If disabled, this user will not see you in the participants list.: Wenn deaktiviert, kann Sie dieser Benutzer nicht in der Teilnehmerliste sehen
+Can Email: Kann Emailen
+If disabled, this user will not be able to send you emails.: Wenn deaktiviert, der Benutzer kann Ihnen kein Mail senden
+Can See Time Only: Kann nur Zeit sehen
+If enabled, this user will not be able to view the details of any of your entries.: Falls aktiviert, kann dieser Benutzer keine Details Ihrer Eintr&auml;ge sehen
+
+
+###############################################
 # Page: import.php
 #
 Import: Import
@@ -751,11 +772,19 @@ Edit Custom Trailer: &auml;ndern der benutzerdefinierten FU&szlig;ZEILE
 ###############################################
 # Page: access.php
 #
-View Event: Termin ansehen
-Edit Event: Termin &auml;ndern
-Delete Event: Termin l&ouml;schen
-Approve/Reject Event: Termin Genehmigen / Zur&uuml;ckweisen
+Grant This User Access to My Calendar: Erlaube Benutzerzugriff auf meinen Kalender
+Allow Access to Other Users' Calendar: Erlaube Zugriff auf Kalender anderer Benutzer
 DEFAULT CONFIGURATION: GRUNDKONFIGURATION
+Go: Zeigen 
+View Event: Termin ansehen
+Type: Art
+View: Ansicht
+Approve/Reject: Genehmigen/Zur&uuml;ckweisen
+Tasks: Aufgaben
+Journals: Journale
+Assistant: Assistent
+Select All: Alle ausw&auml;hlen
+Clear All: Alles l&ouml;schen
 
 
 ###############################################
@@ -778,7 +807,6 @@ Report Bug: Fehlermeldung
 # Page: select_user.php
 #
 View Another User's Calendar: Kalender anderer Benutzer anzeigen 
-Go: Zeigen 
 
 
 ###############################################
@@ -1124,7 +1152,6 @@ Time entered here is based on your Timezone: Die eingegebene Zeit entspricht Ihr
 Edit Entry: Eintrag &auml;ndern
 Add Entry: Eintrag hinzuf&uuml;gen
 Timed event: Termin MIT Zeitangabe
-Type: Art
 Daily: T&auml;glich
 Weekly: W&ouml;chentlich
 Monthly: Monatlich
@@ -1209,9 +1236,10 @@ Please see FAQ: Bitte in der FAQ nachlesen
 ###############################################
 # Page: includes/functions.php
 #
-Title: Webkalender
 __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
+This event is private: Dieser Termin ist <b>PRIVAT</b>
+Conf.: Geheim
 Sun: So
 Mon: Mo
 Tue: Di
@@ -1229,7 +1257,6 @@ __mm__/__dd__/__yyyy__: __dd__. __mm__. __yyyy__
 Completed: abgeschlossen
 View this task: Diese Aufgabe anzeigen
 View this event: Diesen Termin anzeigen
-This event is private: Dieser Termin ist <b>PRIVAT</b>
 exceeds limit of XXX events per day: &uuml;berschrittenes Limit von XXX Termin(e) pro Tag
 You have XXX unapproved entries: Anzahl der unbest&auml;tigten Eintr&auml;ge&#058; <b>&rArr; &quot;XXX&quot;</b>
 January: Januar
@@ -1294,6 +1321,7 @@ Invalid user login: Ung&uuml;ltige Anmeldung
 ###############################################
 # Page: includes/access.php
 #
+Edit Event: Termin &auml;ndern
 Day View: Tagesansicht
 Week View: Wochenansicht
 Month View: Monatsansicht
@@ -1449,7 +1477,7 @@ User Manager: Benutzermanager
 ###############################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the event detailed below.: Das ist eine Erinnerung f&uuml;r den unten aufgefhrten (detailierten) Termin
+This is a reminder for the event detailed below.: Das ist eine Erinnerung f&uuml;r den unten aufgef&uuml;hrten (detailierten) Termin
 Reminder: Erinnerung
 
 
@@ -1466,6 +1494,7 @@ Connection Successful: Verbindung erfolgreich.
 Please go to next page to continue installation: Bitte f&uuml;hren Sie den n&auml;chsten Schritt aus um mit der Installation fortzufahren
 Failure Reason: Fehlerbegr&uuml;ndung
 Correct your entries or click the <b>Create New</b> button to continue installation: Korrigieren Sie Ihre Eintr&auml;ge oder klicken Sie auf <b>Create New</b> Button um die Installation fortzufahren
+You must manually create database: Sie m&uuml;ssen die Datenbank manuell einrichten
 Correct your entries and try again: Korrigieren Sie Ihre Eintr&auml;ge und versichen Sie es erneut
 Timezone Conversion Successful: Konvertierung der Zeitzone erfolgreich abgeschlossen
 Error Converting Timezone: Fehler bei der Zeitzonenkonvertierung
@@ -1559,4 +1588,4 @@ Environment: Umgebung
 Production: Produktion
 Development: Entwicklung
 Save Settings: Einstellung speichern
-Launch WebCalendar: Webkalender starte
+Launch WebCalendar: Webkalender starten
