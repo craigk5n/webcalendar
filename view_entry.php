@@ -126,17 +126,6 @@ if ( ! empty ( $month ) ) {
   $thismonth = $month;
 }
 
-print_header ();
-
-if ( ! empty ( $error ) ) {
-  echo "<h2>" . translate ( "Error" ) .
-    "</h2>\n" . $error;
-  print_trailer ();
-  echo "</body>\n</html>";
-  exit;
-}
-
-
 //check UAC
 if ( empty ( $user ) ) {
   $euser =  ( $is_my_event == true ? $login : $create_by );

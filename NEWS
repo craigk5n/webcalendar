@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2005)
   - Fixed the following bug reports on SourceForge:
+      1438954: "Top menu" not working on view_entry.php
       1438952: Description & Site Extras not showing in pop-ups - CVS
       1416408: installation-wizard hang-up
       1435533: No headers if $LANGUAGE empty
