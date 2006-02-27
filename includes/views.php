@@ -114,8 +114,4 @@ function view_get_user_list ( $view_id )
   //echo "<pre>"; print_r ( $ret ); echo "</pre>\n";
   return $ret;
 }
-
-
-
 ?>
-
