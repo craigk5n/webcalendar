@@ -9,8 +9,14 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 }
 
 // This file contains all the functions for getting information
-// about users from Joomla 1.0.x and logging in/out
+// about users from Joomla 1.0.7 and logging in/out
 //  ** also compatible with Mambo 4.5.3
+
+// *******************************************************************
+// NOT TESTED WITH JOOMLA 1.0.8
+// Session cookie options were added in 1.0.8 that can break this
+// *******************************************************************
+
 
 // Reference to the application means the external application (joomla)
 
@@ -28,7 +34,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 
 /************************* Config ***********************************/
 
-// Location of joomla configuration.php file (with trailing slash)
+// Directory that contains the joomla configuration.php file (with trailing slash)
 $app_path = '/usr/local/www/data/joomla/';
 
 // Set the group id(s) of the joomla group(s) you want to be webcal admins.
