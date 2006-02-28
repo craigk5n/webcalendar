@@ -38,13 +38,21 @@ $WebCalendar->setLanguage();
 load_global_settings ();
 load_user_preferences ( "guest" );
 
-
-// see if a return path was set
-if (  empty ( $return_path ) ) {
+// Look for action=logout
+$logout = false;
+$action = getGetValue ( 'action' );
+if ( ! empty ( $action ) && $action == 'logout' ) {
+  $logout = true;
+  $return_path = '';
+  SetCookie ( "webcalendar_login", "", 0 );
+  SetCookie ( "webcalendar_last_view", "", 0 );
+} else if (  empty ( $return_path ) ) {
+  // see if a return path was set
   $return_path = get_last_view();
   if ( ! empty ( $return_path ) ) 
     SetCookie ( "webcalendar_last_view", "", 0 );
 }
+
 if ( ! empty ( $return_path ) ) {
   $return_path = clean_whitespace ( $return_path );
   $url = $return_path;
@@ -62,13 +70,6 @@ if ( ! empty ( $LANGUAGE ) &&  $LANGUAGE != "Browser-defined" && $LANGUAGE != "n
 
 if ( empty ( $lang ) ) {
   $lang = 'en';
-}
-
-// Look for action=logout
-$logout = false;
-$action = getGetValue ( 'action' );
-if ( ! empty ( $action ) && $action == 'logout' ) {
-  $logout = true;
 }
 
 $login = getPostValue ( 'login' );
