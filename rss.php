@@ -25,6 +25,10 @@
  *   - days: number of days ahead to look for events
  *   - cat_id: specify a category id to filter on
  *   - repeats: output all events including all repeat instances
+ *       repeats=0 do not output repeating events (default)
+ *       repeats=1 outputs repeating events 
+ *       repeats=2 outputs repeating events but suppresses display of
+ *           2nd & subsequent occurences of daily events
  *   - user: login name of calendar to display (instead of public
  *     user).  You must have the
  *     following System Settings configured for this:
@@ -39,11 +43,14 @@
  * We do not include unapproved events in the RSS feed.
  */
 
+$debug=FALSE;
+
 include_once 'includes/init.php';
 
 load_global_settings ();
 
 $WebCalendar->setLanguage();
+
 
 if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
   header ( "Content-Type: text/plain" );
@@ -91,6 +98,10 @@ $cat_id = '';
 // Load all repeating events
 // Can override with "rss.php?repeats=1"
 $allow_repeats = false;
+
+// Load show only first occurence within the given time span of daily repeating events
+// Can override with "rss.php?repeats=2"
+$show_daily_events_only_once = false;
 
 // End configurable settings...
 
@@ -164,6 +175,9 @@ if ( $maxEvents > 100 ) {
 $x = getIntValue ( "repeats", true );
 if ( ! empty ( $x ) ) {
   $allow_repeats = $x;
+  if ( $x==2 ) {
+    $show_daily_events_only_once = $true;
+  }
 }
 
 $endTime = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays -1,
@@ -203,37 +217,61 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>';
 <description><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></description>
 <dc:language><?php echo $lang; ?></dc:language>
 <dc:creator><![CDATA[<?php echo $creator; ?>]]></dc:creator>
-<?php //proper format is 2002-10-02T10:00:00-05:00 ?>
-<dc:date><?php echo date ( 'Y-m-d' ) . 'T' . date ( 'H:i:sO' ); ?></dc:date>
+<?php //proper format is 2002-10-02T10:00:00-05:00
+$gmtoffset = substr_replace ( date ( "O" ), ":" . substr ( date ( "O" ), -2), -2, 2 );
+?>
+<dc:date><?php echo date ( 'Y-m-d' ) . 'T' . date ( 'H:i:s' ). $gmtoffset; ?></dc:date>
 <admin:generatorAgent rdf:resource="http://www.k5n.us/webcalendar.php?v=<?php echo $PROGRAM_VERSION; ?>" />
 
 <?php
 $numEvents = 0;
-$eventIds = array();
+$reventIds = array();
+
 echo "\n<items>\n<rdf:Seq>\n";
 for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
   $numEvents < $maxEvents; $i += ( 24 * 3600 ) ) {
+  $eventIds = array();
   $d = date ( "Ymd", $i );
   $entries = get_entries ( $username, $d, false );
   $rentries = get_repeating_entries ( $username, $d, false );
+  if ($debug) echo "\n\ni=$i d=$d \n\n";
+  if ($debug) echo "\n\ncountentries==". count($entries) . " " . count ($rentries) . "\n\n";
   if ( count ( $entries ) > 0 || count ( $rentries ) > 0 ) {
     for ( $j = 0; $j < count ( $entries ) && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
       if ( $entries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) {
         $eventIds[] = $entries[$j]->getID();
         echo "<rdf:li rdf:resource=\"" . $SERVER_URL . "view_entry.php?id=" . 
-          $entries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1\" />\n";
+          $entries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "\" />\n";
         $numEvents++;
       }
     }
     for ( $j = 0; $j < count ( $rentries ) && $numEvents < $maxEvents; $j++ ) {
+
+          //to allow repeated daily entries to be suppressed
+          //step below is necessary because 1st occurence of repeating 
+          //events shows up in $entries AND $rentries & we suppress display
+          //of it in $rentries
+       if ( in_array($rentries[$j]->getID(),$eventIds)  && 
+             $rentries[$j]->getrepeatType()=="daily" ) {
+               $reventIds[]=$rentries[$j]->getID(); 
+          }
+
+
       // Prevent non-Public events from feeding
       // Prevent a repeating event from displaying if the original event
       // has alreay been displayed
+       //echo $rentries[$j]->getID() . "<p>";
       if ( ! in_array($rentries[$j]->getID(),$eventIds ) && 
+          ( ! $show_daily_events_only_once || ! in_array($rentries[$j]->getID(),$reventIds )) && 
         ( $rentries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) ) {
         echo "<rdf:li rdf:resource=\"" . $SERVER_URL . "view_entry.php?id=" . 
-          $rentries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1\" />\n";
+          $rentries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "\" />\n";
+
+          //show repeating events only once
+          if ( $rentries[$j]->getrepeatType()=="daily" ) 
+                  $reventIds[]=$rentries[$j]->getID(); 
+
         $numEvents++;
       }
     }
@@ -248,57 +286,87 @@ echo "</rdf:Seq>\n</items>\n</channel>\n\n";
 </image>
 <?php
 $numEvents = 0;
-$eventIds = array();
+$reventIds = array();
+
 for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
   $numEvents < $maxEvents; $i += ( 24 * 3600 ) ) {
+  $eventIds=array();
   $d = date ( "Ymd", $i );
-  $entries = get_entries ( $username, $d, false );
-  $rentries = get_repeating_entries ( $username, $d, false );
+  $entries = get_entries ( $username, $d );
+  $rentries = get_repeating_entries ( $username, $d );
+
+  if ($debug) echo "\n\ncountentries==". count($entries) . " " . count ($rentries) . "\n\n";
   if ( count ( $entries ) > 0 || count ( $rentries ) > 0 ) {
     for ( $j = 0; $j < count ( $entries ) && $numEvents < $maxEvents; $j++ ) {
-      $eventIds[] = $entries[$j]->getID();
       // Prevent non-Public events from feeding
       if ( $username == '__public__' || $entries[$j]->getAccess() == "P" ||
         $allow_all_access == "Y" ) {
+        $eventIds[] = $entries[$j]->getID();
         $unixtime = unixtime ( $d, $entries[$j]->getTime() );
+        $gmtoffset = substr_replace ( date ( "O", $unixtime ), ":" . 
+          substr ( date ( "O", $unixtime ), -2), -2, 2 );
         echo "\n<item rdf:about=\"" . $SERVER_URL . "view_entry.php?id=" . 
-          $entries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1\">\n";
+          $entries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "\">\n";
         echo "<title xml:lang=\"$lang\"><![CDATA[" . $entries[$j]->getName() . "]]></title>\n";
         echo "<link>" . $SERVER_URL . "view_entry.php?id=" . 
-          $entries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1</link>\n";
+          $entries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "</link>\n";
         echo "<description xml:lang=\"$lang\"><![CDATA[" .
           $entries[$j]->getDescription() . "]]></description>\n";
-        echo "<category xml:lang=\"$lang\"><![CDATA[" . $entries[$j]->getName() .
-          "]]></category>\n";
+        //category not valid for RSS 1.0
+        //echo "<category xml:lang=\"$lang\"><![CDATA[" . $entries[$j]->getName() .
+          //"]]></category>\n";
         echo "<content:encoded xml:lang=\"$lang\"><![CDATA[" .
           $entries[$j]->getDescription() . "]]></content:encoded>\n";
         echo "<dc:creator><![CDATA[" . $creator . "]]></dc:creator>\n";
         echo "<dc:date>" . date ( 'Y-m-d', $unixtime ) .'T' . 
-          date ( 'H:i:sO', $unixtime ) . "</dc:date>\n";
+          date ( 'H:i:s', $unixtime ) . $gmtoffset . "</dc:date>\n";
         echo "</item>\n";
         $numEvents++;
       }
     }
     for ( $j = 0; $j < count ( $rentries ) && $numEvents < $maxEvents; $j++ ) {
+
+          //to allow repeated daily entries to be suppressed
+          //step below is necessary because 1st occurence of repeating 
+          //events shows up in $entries AND $rentries & we suppress display
+          //of it in $rentries
+       if ( in_array($rentries[$j]->getID(),$eventIds)  && 
+             $rentries[$j]->getrepeatType()=="daily" ) {
+               $reventIds[]=$rentries[$j]->getID(); 
+          }
+
+
       // Prevent non-Public events from feeding
+      // Prevent a repeating event from displaying if the original event 
+      // has alreay been displayed; prevent 2nd & later recurrence
+      // of daily events from displaying if that option has been selected
       if ( ! in_array($rentries[$j]->getID(),$eventIds ) && 
-        ( $username == '__public__' || $rentries[$j]->getAccess() == "P" ||
-        $allow_all_access == "Y" ) ){
+         ( ! $show_daily_events_only_once || ! in_array($rentries[$j]->getID(),$reventIds )) && 
+         ( $rentries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) ) { 
+  
+          //show repeating events only once
+          if ( $rentries[$j]->getrepeatType()=="daily" ) 
+                  $reventIds[]=$rentries[$j]->getID(); 
+
+
         echo "\n<item rdf:about=\"" . $SERVER_URL . "view_entry.php?id=" . 
-          $rentries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1\">\n";
+          $rentries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "\">\n";
         $unixtime = unixtime ( $d, $rentries[$j]->getTime() );
+        $gmtoffset = substr_replace ( date ( "O", $unixtime ), ":" . 
+          substr ( date ( "O", $unixtime ), -2), -2, 2 );
         echo "<title xml:lang=\"$lang\"><![CDATA[" . $rentries[$j]->getName() . "]]></title>\n";
         echo "<link>" . $SERVER_URL . "view_entry.php?id=" . 
-          $rentries[$j]->getID() . "&amp;date=" . $d . "&amp;friendly=1</link>\n";
+          $rentries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "</link>\n";
         echo "<description xml:lang=\"$lang\"><![CDATA[" .
           $rentries[$j]->getDescription() . "]]></description>\n";
-        echo "<category><![CDATA[" .  $rentries[$j]->getName()  .
-          "]]></category>\n";
+        //category not valid for RSS 1.0
+        //echo "<category><![CDATA[" .  $rentries[$j]->getName()  .
+          //"]]></category>\n";
         echo "<content:encoded xml:lang=\"$lang\"><![CDATA[" .
           $rentries[$j]->getDescription() . "]]></content:encoded>\n";
         echo "<dc:creator><![CDATA[" . $creator . "]]></dc:creator>\n";
         echo "<dc:date>" . date ( 'Y-m-d', $unixtime ) .'T' . 
-          date ( 'H:i:sO', $unixtime ) . "</dc:date>\n";
+          date ( 'H:i:s', $unixtime ) . $gmtoffset . "</dc:date>\n";
         echo "</item>\n";   
         $numEvents++;
       }
