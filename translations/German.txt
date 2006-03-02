@@ -13,7 +13,8 @@
 # Last update: 22 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 23 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 27 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 02-27-2006
+# Last update: 2 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 03-02-2006
 
 
 ###############################################
@@ -776,8 +777,8 @@ Grant This User Access to My Calendar: Erlaube Benutzerzugriff auf meinen Kalend
 Allow Access to Other Users' Calendar: Erlaube Zugriff auf Kalender anderer Benutzer
 DEFAULT CONFIGURATION: GRUNDKONFIGURATION
 Go: Zeigen 
-View Event: Termin ansehen
 Type: Art
+View Event: Termin ansehen
 View: Ansicht
 Approve/Reject: Genehmigen/Zur&uuml;ckweisen
 Tasks: Aufgaben
@@ -1135,6 +1136,7 @@ Add New NonUser Calendar: Neuen 'Zentralen-Kalender' hinzuf&uuml;gen
 #
 Category Name: Kategorie Name
 Category Icon: Kategorie Icon
+Remove Icon: Icon entfernen
 Add Icon to Category: Icon f&uuml;r Kategorie hinzuf&uuml;gen
 Upload: Hochladen
 gif 3kb max: gif max. 3kb gro&szlig;
