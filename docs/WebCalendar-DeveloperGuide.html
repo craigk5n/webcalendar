@@ -337,8 +337,45 @@ Call: bar = getGetValue ( $name );</pre>
 <a name="patch"></a>
 <h2>Creating a Patch File</h2>
 
-<p>TODO</p>
-
+<p>WebCalendar patches are typically posted to the
+<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a> area.
+Patches are typically a zip or tar.gz of .patch files created
+with the UNIX/Cygwin diff program.
+Here's how to do that.  First, you must have a copy of the unmodified
+WebCalendar source code.  So, let's say you are using version
+1.0.2 of WebCalendar, and you have the code for it in
+a directory <tt>WebCalendar-1.0.2</tt> along side your own
+directory that includes your changes called <tt>calendar.modified</tt>.
+You would use the following diff command to create the patch:
+</p>
+<pre>
+diff -crw WebCalendar-1.0.2 calendar.modified > mychange.patch
+</pre>
+<p>You can then either zip or gzip the patch file, create your
+patch on SourceForge and attach the file to it.
+</p>
+<p>Note: Cygwin's diff seems to have some issues with DOS vs UNIX
+line feeds.  If you are using Cygwin on Windows, it's best to just
+remove all the carriage returns:
+</p>
+<pre>
+diff -crw WebCalendar-1.0.2 calendar.modified | tr -d '\015' > mychange.patch
+</pre>
+<p>Notes:</p>
+<ul>
+  <li>It is not necessary to modify ChangeLog or NEWS as part of your
+      patch.  More than likely, your changes to these files will conflict
+      with other patches, so it's best to not include them.
+  </li>
+  <li>You don't need to update the translation files as part of your
+      patch, but it is helpful.  In particular, the main translation
+      file (<tt>translations/English-US.txt</tt>) can be updated
+      as part of your patch.</li>
+  <li>If you are developing against the latest CVS code rather than
+      an official file release, there is a <tt>cvs rdiff</tt> command that
+      you can use to create the patch (with no need to keep a local copy
+      of the unmodified source).</li>
+</ul>
 
 <div class="top"><a href="#" target="_top">top</a></div>
 <a name="translations"></a>
@@ -440,6 +477,8 @@ quickly and efficiently.</p>
     Discussion</a> forum on SourceForge is a good place to ask questions about
   WebCalendar development.</li>
   <li><a href="http://sourceforge.net/bugs/?group_id=3870">Bug Reports</a> on
+  SourceForge.</li>
+  <li><a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">Patches</a> on
   SourceForge.</li>
   <li><a href="WebCalendar-Functions.html">WebCalendar Function Documentation</a></li>
   <li><a
