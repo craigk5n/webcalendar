@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Implemented Feature Request1440366: Add a none option to Category Icons
+ - Implemented PATCH 1440975: Use category name as title for category icons
  - Fixed bug 1434525: rss.php shows some events twice Second Pass
  - Fixed bug 1439655: cannot save permissions of public access using UAC
  - Fixed bug 1438954: "Top menu" not working on view_entry.php
