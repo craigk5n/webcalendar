@@ -175,11 +175,11 @@ print<<EOF;
 <table style="border-width:0px;">\n
  <tr><td>
   Home Page:</td><td>
-  <a href="http://webcalendar.sourceforge.net/">http://webcalendar.sourceforge.net/</a>
+  <a href="http://www.k5n.us/webcalendar.php">http://www.k5n.us/webcalendar.php</a>
  </td></tr>
  <tr><td>
   Author:</td><td>
-  <a href="http://www.cknudsen.com">Craig Knudsen</a>, <a href="mailto:cknudsen\@cknudsen.com">cknudsen\@cknudsen.com</a>
+  <a href="http://www.cknudsen.com">Craig Knudsen</a>, <a href="mailto:&#109;&#097;&#105;&#108;&#116;&#111;&#058;&#99;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;">&#99;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;</a>
  </td></tr>
  <tr><td style="vertical-align:top;">
   Version:</td><td>
