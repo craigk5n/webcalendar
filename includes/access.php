@@ -322,6 +322,11 @@ function access_can_view_page ( $page="", $user="" )
   assert ( '! empty ( $page )' );
 
   $page = basename ( $page );
+  //handle special cases for publish.php and freebusy.php
+  if ( substr ( $page, -3 ) == 'ics' )
+    $page = 'publish.php';
+  if ( substr ( $page, -3 ) == 'ifb' )
+    $page = 'freebusy.php';    
   // First, check list of exceptions to our rules
   if ( ! empty ( $page_lookup_ex[$page] ) )
     return true;
