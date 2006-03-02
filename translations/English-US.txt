@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 02-24-2006
+# Translation last updated on 03-02-2006
 
 
 ###############################################
@@ -45,8 +45,8 @@ Allow Access to Other Users' Calendar: Allow Access to Other Users' Calendar
 DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Go: Go
 Calendar: Calendar
-View Event: View Event
 Type: Type
+View Event: View Event
 View: View
 Edit: Edit
 Approve/Reject: Approve/Reject
@@ -414,6 +414,7 @@ Your assistants: Your assistants
 Add: Add
 Category Name: Category Name
 Category Icon: Category Icon
+Remove Icon: Remove Icon
 Global: Global
 Add Icon to Category: Add Icon to Category
 Upload: Upload

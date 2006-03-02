@@ -889,7 +889,7 @@ function get_my_users ( $user='', $reason='invite') {
     $newlist = array ();
     for ( $i = 0; $i < count ( $ret ); $i++ ) {
       $can_list = access_user_calendar ( $reason, $ret[$i]['cal_login'], $this_user );
-      //echo  $ret[$i]['cal_login'] . " " . $can_list . "<br>";
+      //echo  $ret[$i]['cal_login'] . " " . $can_list . "<br />";
       if (  $can_list == 'Y' ||  $can_list > 0 ) {
         $newlist[] = $ret[$i];
       }
@@ -1087,7 +1087,7 @@ function format_site_extras ( $extras ) {
  */
 function site_extras_for_popup ( $id ) {
   global $SITE_EXTRAS_IN_POPUP;
-	
+  
   if ( $SITE_EXTRAS_IN_POPUP != 'Y' ) {
     return '';
   }
@@ -1743,7 +1743,7 @@ function display_small_tasks ( $cat_id ) {
 function print_entry ( $event, $date ) {
   global $eventinfo, $login, $user, $PHP_SELF, $layers, 
    $DISPLAY_LOCATION, $DISPLAY_TASKS_IN_GRID,
-   $is_assistant, $is_nonuser_admin, $TIME_SPACER;
+   $is_assistant, $is_nonuser_admin, $TIME_SPACER, $categories;
 
   static $key = 0;
 
@@ -1822,8 +1822,8 @@ function print_entry ( $event, $date ) {
       $view_text  . "\" width=\"5\" height=\"7\" />";
   } else {
     // Use category icon
-    echo "<img src=\"$catIcon\" alt=\"" . 
-      $view_text  ."\" />";
+    $catAlt = translate ( "Category" ) . ": " . $categories[$event->getCategory()];
+    echo "<img src=\"$catIcon\" alt=\"$catAlt\" title=\"$catAlt\" />";
   }
 
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
@@ -3467,7 +3467,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     $eventinfo, $login, $user, $is_assistant, $is_nonuser_admin;
   global $DISPLAY_ICONS, $PHP_SELF, $TIME_SLOTS, $WORK_DAY_START_HOUR,
     $WORK_DAY_END_HOUR, $TIME_SPACER;
-  global $layers, $DISPLAY_TZ, $tz_offset, $TIMEZONE;
+  global $layers, $DISPLAY_TZ, $tz_offset, $TIMEZONE, $categories;
   static $key = 0;
 
   $cal_type = ( $event->getCalType() == "T" || 
@@ -3503,7 +3503,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     // untimed event or All Day
     $ind = 9999;
   }
-
+  
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     $class = "layerentry";
   } else {
@@ -3528,7 +3528,8 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
 
   $catIcon = "icons/cat-" . $event->getCategory() . ".gif";
   if ( $event->getCategory() > 0 && file_exists ( $catIcon ) ) {
-    $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catIcon\" />";
+    $catAlt = translate ( "Category" ) . ": " . $categories[$event->getCategory()];
+    $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catAlt\" title=\"$catAlt\" />";
   }
 
   $popupid = "eventinfo-pop$id-$key";
@@ -3640,7 +3641,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
 function html_for_event_day_at_a_glance ( $event, $date ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user, $tz_offset, $DISPLAY_DESC_PRINT_DAY,
-    $ALLOW_HTML_DESCRIPTION, $layers, $PHP_SELF, $TIME_SLOTS;
+    $ALLOW_HTML_DESCRIPTION, $layers, $PHP_SELF, $TIME_SLOTS, $categories;
   static $key = 0;
 
 
@@ -3704,7 +3705,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   
   $catIcon = "icons/cat-" . $event->getCategory() . ".gif";
   if ( $event->getCategory() > 0 && file_exists ( $catIcon ) ) {
-    $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catIcon\" />";
+    $catAlt = translate ( "Category" ) . ": " . $categories[$event->getCategory()];
+    $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catAlt\" title=\"$catAlt\" />";
   }  
 
   $cal_link = "view_entry.php";
@@ -3718,17 +3720,17 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     //make sure clones have parents url date
     $linkDate = (  $event->getClone()?date( "Ymd", 
     get_datetime_add_tz ( $date, 12, -24 ) ): $date );
-		$href = '';
-		if (  $can_access != 0 && $time_only != 'Y') {
-	    $href = "href=\"$cal_link?id=$id&amp;date=$linkDate";
+    $href = '';
+    if (  $can_access != 0 && $time_only != 'Y') {
+      $href = "href=\"$cal_link?id=$id&amp;date=$linkDate";
       if ( strlen ( $GLOBALS["user"] ) > 0 )
        $href .= "&amp;user=" . $GLOBALS["user"];
-			 $href .= "\"";
-	  }
+       $href .= "\"";
+    }
     $hour_arr[$ind] .= "<a title=\"" . $view_text .
       "\" class=\"$class\" id=\"$linkid\" $href";
     $hour_arr[$ind] .= "\">";
-		
+    
   if ( $event->getPriority() == 3 ) $hour_arr[$ind] .= "<strong>";
 
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
@@ -4412,15 +4414,12 @@ function load_user_categories ($ex_global = '') {
   if ( $CATEGORIES_ENABLED == "Y" ) {
     $sql = "SELECT cat_id, cat_name, cat_owner FROM webcal_categories WHERE ";
     $query_params = array();
-  if ( $ex_global == '' ) {
+    if ( $ex_global == '' ) {
       $sql .= " (cat_owner = ?) OR (cat_owner IS NULL) ORDER BY cat_owner, cat_name";
-      $query_params[] = $cat_owner;
-    }
-    else {
+    } else {
       $sql .= " cat_owner = ? ORDER BY cat_name";
-      $query_params[] = $cat_owner;
     }
-
+    $query_params[] = $cat_owner;
     $res = dbi_execute ( $sql, $query_params );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -4757,15 +4756,15 @@ function print_entry_timebar ( $event, $date ) {
   $popupid = "eventinfo-pop$id-$key";
   $linkid  = "pop$id-$key";
   $key++;
-	if ( $can_access != 0 && $time_only != 'Y' ) {
-		//make sure clones have parents url date
-		$linkDate = (  $event->getClone()?date( "Ymd", 
-			get_datetime_add_tz ( $date, 12, -24 ) ): $date ); 
-		echo "<a class=\"$class\" id=\"$linkid\" " . 
-			" href=\"view_entry.php?id=$id&amp;date=$linkDate";
-		if ( strlen ( $user ) > 0 )
-			echo "&amp;user=" . $user;
-		echo "\">";
+  if ( $can_access != 0 && $time_only != 'Y' ) {
+    //make sure clones have parents url date
+    $linkDate = (  $event->getClone()?date( "Ymd", 
+      get_datetime_add_tz ( $date, 12, -24 ) ): $date ); 
+    echo "<a class=\"$class\" id=\"$linkid\" " . 
+      " href=\"view_entry.php?id=$id&amp;date=$linkDate";
+    if ( strlen ( $user ) > 0 )
+      echo "&amp;user=" . $user;
+    echo "\">";
   }
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     if ($layers) foreach ($layers as $layer) {
@@ -4829,7 +4828,7 @@ function print_header_timebar($start_hour, $end_hour) {
    }
    $width = 100 - ( $offset * 2 );
    echo "<td width=\"$width%\">&nbsp;</td>\n";
-   echo "</tr></tablen";
+   echo "</tr></table>n";
  
    // print yardstick
   echo "\n<!-- YARDSTICK -->\n<table class=\"yardstick\">\n<tr>\n";
@@ -5832,7 +5831,8 @@ global $TZ_COMPLETE_LIST;
    //allows different SETTING names between SERVER and USER
    if ( $prefix == 'admin_' ) $prefix .= 'SERVER_';
    if ( $res ) {
-    $ret =  "<select name=\"" . $prefix . "TIMEZONE\" id=\"" . $prefix . "TIMEZONE\">\n";
+    $ret =  "<select name=\"" . $prefix . "TIMEZONE\" id=\"" . 
+      $prefix . "TIMEZONE\">\n";
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( ! empty ( $TZ_COMPLETE_LIST ) && $TZ_COMPLETE_LIST == "Y" ) {
      if  ( strpos ( $row[0], "/", 1) ){
@@ -5844,7 +5844,9 @@ global $TZ_COMPLETE_LIST;
    } else { // We're using the short list
         $tz_label = $row[1];   
    } 
-      $ret .= "<option value=\"$row[0]\"" . ( $row[0] == $tz ? " selected=\"selected\"" : "" ) .  ">" . htmlspecialchars ( $tz_label ) . "</option>\n";
+      $ret .= "<option value=\"$row[0]\"" . 
+        ( $row[0] == $tz ? " selected=\"selected\"" : "" ) . 
+         ">" . htmlspecialchars ( $tz_label ) . "</option>\n";
     }
     $ret .= "</select><br />\n";
     dbi_free_result ( $res );

@@ -218,6 +218,8 @@ Version 1.1.0-CVS (?? ??? 2006)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + RFE 1440366: Add a none option to Category Icons
+    + Implemented Patch 1440975: Use category name as title for category icons
     + Upgraded UAC to allow users to grant permissions to their calendars
     + Added event popups to upcoming.php (RFE 1179531)
     + Moved all common images into images folder

@@ -59,9 +59,10 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   <?php etranslate("Category Name")?>: <input type="text" name="catname" size="20" value="<?php echo htmlspecialchars ( $catname ); ?>" />
   <br />
   <?php if ( ! empty ( $catIcon ) && file_exists ( $catIcon ) ){
-      echo "<br />" . translate ( 'Category Icon' ) . ":  <img src=\"$catIcon\" />\n";
-    }
-  ?>
+      echo "<br />" . translate ( 'Category Icon' ) . ":  <img src=\"$catIcon\" alt=\"" . translate('Category Icon') . "\" /><br />\n";
+      echo translate("Remove Icon") . 
+        ":&nbsp;<input type=\"checkbox\" name=\"delIcon\" value=\"Y\" />";
+  }?>
   <?php if ( $is_admin && empty ( $id ) ) { ?>
     <?php etranslate("Global")?>:
       <label><input type="radio" name="isglobal" value="N" <?php if ( ! empty ( $catowner ) || empty ( $id ) ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate("No")?></label>&nbsp;&nbsp;
@@ -104,7 +105,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
         $global_found = true;
       }
       if ( file_exists ( $catIcon ) ){
-        echo "&nbsp;&nbsp;<img src=\"$catIcon\" />\n";
+        echo "&nbsp;&nbsp;<img src=\"$catIcon\" alt=\"" . translate('Category Icon') . "\" title=\"" . translate('Category Icon') . "\" />\n";
       }
       echo "</li>\n";
     }
