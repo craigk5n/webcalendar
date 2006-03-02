@@ -53,7 +53,7 @@ if ( $res ) {
     $can_edit = true;
   }
   //check UAC
-  if ( access_is_enabled () ) {
+  if ( access_is_enabled () && ! $is_admin) {
     $can_edit = access_user_calendar ( 'edit', $owner );
   }
 }
@@ -71,7 +71,7 @@ if ( $readonly == 'Y' )
 
 // If User Access Control is enabled, check to see if the current
 // user is allowed to delete events from the other user's calendar.
-if ( ! $can_edit && access_is_enabled () ) {
+if ( ! $can_edit && access_is_enabled () && ! empty ( $user ) ) {
   if ( access_user_calendar ( 'edit', $user ) )
     $can_edit = true;
 }
