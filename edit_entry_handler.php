@@ -208,6 +208,11 @@ if ( $timetype == "T" && $duration < 0 ) {
  $duration = 0;
 }
 
+//Hack to prevent DST edge days from changing All Day Events
+if ( $timetype == "A" ) {
+ $duration = 1440;
+}
+ 
 // Make sure this user is really allowed to edit this event.
 // Otherwise, someone could hand type in the URL to edit someone else's
 // event.
@@ -708,9 +713,9 @@ if ( empty ( $error ) ) {
           break;
         }
       }
-			//check UAC
-			$can_email = 'Y'; 
-			if ( access_is_enabled () ) {
+      //check UAC
+      $can_email = 'Y'; 
+      if ( access_is_enabled () ) {
         $can_email = access_user_calendar ( 'email', $old_participant, $login);
       }
       $is_nonuser_admin = user_is_nonuser_admin ( $login, $old_participant );
@@ -840,9 +845,9 @@ if ( empty ( $error ) ) {
       break;
 
     } else {
-			//check UAC
-			$can_email = 'Y'; 
-			if ( access_is_enabled () ) {
+      //check UAC
+      $can_email = 'Y'; 
+      if ( access_is_enabled () ) {
         $can_email = access_user_calendar ( 'email', $participants[$i], $login);
       }
       // Don't send mail if we are editing a non-user calendar
@@ -1045,9 +1050,9 @@ if ( $single_user == "N" &&
 // the date range that this event was added to.
 if ( empty ( $error ) ) {
   $return_view = get_last_view ();
-	if ( ! empty ( $return_view ) ) {
-	  do_redirect ( $return_view );
-	} else {
+  if ( ! empty ( $return_view ) ) {
+    do_redirect ( $return_view );
+  } else {
   $xdate = sprintf ( "%04d%02d%02d", $year, $month, $day );
   $user_args = ( empty ( $user ) ? '' : "user=$user" );
   send_to_preferred_view ( $xdate, $user_args );

@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1366002: No 'all day' event with manual repeat at either DST change
  - Implemented Feature Request1440366: Add a none option to Category Icons
  - Implemented PATCH 1440975: Use category name as title for category icons
  - Fixed bug 1434525: rss.php shows some events twice Second Pass
