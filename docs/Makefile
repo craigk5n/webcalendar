@@ -21,8 +21,8 @@ INCLUDES = \
  ../includes/classes/RptEvent.class \
  ../report.php
 
-WebCalendar-Database.html: ../tables-mysql.sql sql2html.pl
-	perl sql2html.pl < ../tables-mysql.sql > WebCalendar-Database.html
+WebCalendar-Database.html: ../install/sql/tables-mysql.sql sql2html.pl
+	perl sql2html.pl < ../install/sql/tables-mysql.sql > WebCalendar-Database.html
 
 phpdoc/index.html: $(INCLUDES)
 	phpdoc -f `echo $(INCLUDES) | sed -e 's/ /,/g'` -t phpdoc -ti "WebCalendar Function Documentation" -s on
