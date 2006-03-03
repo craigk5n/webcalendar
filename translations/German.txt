@@ -14,6 +14,7 @@
 # Last update: 23 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 27 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 2 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 3 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Translation last updated on 03-02-2006
 
 
@@ -96,22 +97,22 @@ Next 180 days: N&auml;chsten 180 Tage
 Next 365 days: N&auml;chsten 365 Tage
 Invalid report id: Ung&uuml;ltige Bericht ID
 Database error: Datenbank Fehler
-Unnamed Report: neuer Bericht
+Unnamed Report: Neuer Bericht
 Add Report: Bericht hinzuf&uuml;gen
 Edit Report: Bericht editieren
 Report name: Berichtsname
-Current User: aktueller Benutzer
+Current User: Aktueller Benutzer
 User: Benutzer
 Global: Allgemein
 Yes: Ja
 No: Nein
-Include link in trailer: inklusive Linkverkn&uuml;pfung in der Navigationsleiste
-Include standard header/trailer: inklusive Standard-Kopf/Navigationsleiste
+Include link in trailer: Inklusive Linkverkn&uuml;pfung in der Navigationsleiste
+Include standard header/trailer: Inklusive Standard-Kopf/Navigationsleiste
 Date range: Datumsbereich
 Category: Kategorie
-None: keine
-Include previous/next links: inlusive vorige(r)/n&auml;chste(r) Link(s)
-Include empty dates: auch Tage ohne Termine anzeigen
+None: Keine
+Include previous/next links: Inklusive vorige(r)/n&auml;chste(r) Link(s)
+Include empty dates: Auch Tage ohne Termine anzeigen
 Template variables: Vorlagen Variablen
 Page template: Seiten Vorlagen
 Day template: Tagesvorlage
@@ -159,7 +160,7 @@ Not authorized: Keine Berechtigung
 ###############################################
 # Page: doc.php
 #
-Invalid entry id: ung&uuml;ltiger Eintrag
+Invalid entry id: Ung&uuml;ltiger Eintrag
 
 
 ###############################################
@@ -179,7 +180,7 @@ cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Coo
 ###############################################
 # Page: views_edit.php
 #
-Unnamed View: neue Ansicht
+Unnamed View: Neue Ansicht
 Add View: Ansicht hinzuf&uuml;gen
 Edit View: Ansicht editieren
 View Name: Ansichtsname
@@ -191,7 +192,7 @@ Week by Time: Zeiteinteilungen pro Woche
 Week (Users vertical): Woche (Teilnehmer vertikal)
 Week (Timebar): Woche (Zeitschiene)
 Month (Timebar): Monat (Zeitschiene)
-Month (side by side): Monat (seitenweise) (Teilnehmer horizontal)
+Month (side by side): Monat (Seitenweise)
 Month (on same calendar): Monat (am gleichen Kalender)
 preview: Vorschau (Ansicht)
 Users: Benutzer
@@ -263,9 +264,9 @@ Due Time: F&auml;lligkeitszeit
 Repeat Type: Art der Wiederholung
 Priority: Priorit&auml;t
 Public: &Ouml;ffentlich
-Created by: erstellt von
+Created by: Erstellt von
 Public Access: &Ouml;ffentlicher Zugang
-Updated: aktualisiert
+Updated: Aktualisiert
 days: Tage
 day: Tag
 hours: Stunden
@@ -313,14 +314,14 @@ Export: Export
 #
 All day event: Termin f&uuml;r den GANZEN Tag
 Untimed event: Termin OHNE Zeitangabe
-cont.: fortsetzen (weiter)
+cont.: Forts.
 This event is confidential: Dies ist ein privater Termin 
 Waiting for approval: Warten auf &Uuml;berpr&uuml;fung
-Deleted: gel&ouml;scht
-Approved: best&auml;tigt
+Deleted: Gel&ouml;scht
+Approved: Best&auml;tigt
 Unknown: Unbekannt
 Click here: <u>Klicken Sie hier</u>
-to manage reports for the Public Access calendar: zum verwalten der Berichte f&uuml;r den &Ouml;ffentlichen Kalender
+to manage reports for the Public Access calendar: Zum verwalten der Berichte f&uuml;r den &Ouml;ffentlichen Kalender
 Add new report: Neuen Bericht hinzuf&uuml;gen
 Manage Reports: Berichte verwalten
 Admin: Administration
@@ -355,7 +356,7 @@ New Entry: Neuer Eintrag
 ###############################################
 # Page: group_edit.php
 #
-Unnamed Group: neue Benutzergruppe
+Unnamed Group: Neue Benutzergruppe
 Add Group: Benutzergruppe hinzuf&uuml;gen
 Edit Group: Benutzergruppe editieren
 Group name: Benutzergruppenname
@@ -476,7 +477,7 @@ Preview: Vorschau
 Allow top menu: Erlaube Topmen&uuml;
 menu-themes-help: Stellt die Farben und die Art des oberen Men&uuml;s ein
 Menu theme: Men&uuml; Thema
-fonts-help: definiert die Standard-Schriftarten (z.B. "Arial, Helvetica")
+fonts-help: Definiert die Standard-Schriftarten (z.B. "Arial, Helvetica")
 Fonts: Schriftart
 custom-script-help: Erlaubt Eintr&auml;ge von benutzerdefinierten Javascript- oder Stylesheet Texten welche im HTML "Kopf"-Abschnitt auf jeder Seite eingef&uuml;gt werden.
 Custom script/stylesheet: Benutzerdefinierte Scripte/Stylesheets
@@ -559,7 +560,7 @@ Allow viewing other user's calendars: Ansicht anderer Benutzer-Kalender zulassen
 allow-view-add-help: Ein "+" Icon wird bei Ansichten beigef&uuml;gt, welches Teilnehmern ein schnelles hinzuf&uuml;gen von Terminen bei anderen Kalendern erm&ouml;glicht
 Include add event link in views: Beeinhaltet LINK-Adressen von Terminen bei den Ansichten
 remember-last-login-help: Mit dieser Einstellung merkt sich der Kalender den Benutzernamen f&uuml;r das n&auml;chste Anmelden (nicht das Passwort) sowie die benutzerdefinierten Voreinstellungen.
-Remember last login: letzte Anmeldung merken
+Remember last login: Letzte Anmeldung merken
 conflict-check-help: Pr&uuml;ft Termin&uuml;berschneidungen (Zwei Termine die f&uuml;r dieselbe Person zur gleichen Zeit gesetzt wurden). Wenn die Option auf "JA" gesetzt wurde kann man Termin&uuml;berschneidungen &uuml;ber ein Eingabefenster zulassen. Wenn Sie "NEIN" gew&auml;hlt wurde werden Konflikte nicht gepr&uuml;ft. Es wird empfohlen die Option auf "JA" zu setzen.
 Check for event conflicts: Termin&uuml;berschneidungen pr&uuml;fen
 conflict-months-help: Gibt an wie viele Monate im voraus auf Zeit&uuml;berschneidungen gepr&uuml;ft werden soll. Wenn das Hinzuf&uuml;gen von Eintr&auml;gen zu lange dauert verringern Sie die Anzahl der Monate die im voraus gepr&uuml;ft werden sollen.
@@ -709,7 +710,7 @@ Display weekends in week view: Wochenenden in der Wochenansicht anzeigen
 Display days with events in bold in year view: Zeigt Tage MIT Terminen in der Jahres&uuml;bersicht HERVORGEHOBEN (FETT) an
 Nonuser: 'Zentrale'-Kalender
 user-customize-color: Spezifiziert, ob Benutzern erlaubt wird, ihre eigenen Farbeneinstellungen zu &auml;ndern
-enable-gradient-help: verwendet die stufenweise Farb&auml;nderungen f&uuml;r Zellenhintergr&uuml;nde
+enable-gradient-help: Verwendet die stufenweise Farb&auml;nderungen f&uuml;r Zellenhintergr&uuml;nde
 Manually entering color values: Eigene eingegebene Farbwerte
 
 
@@ -846,7 +847,7 @@ Username can not be blank: Benutzername darf nicht LEER sein
 # Page: edit_nonusers_handler.php
 #
 Calendar ID: Kalender ID
-word characters only: k&ouml;nnen nur Buchstaben und Ziffern sein (a-zA-Z_0-9)
+word characters only: K&ouml;nnen nur Buchstaben und Ziffern sein (a-zA-Z_0-9)
 
 
 ###############################################
@@ -859,11 +860,11 @@ You can only create one layer for each user: Sie k&ouml;nnen nur jeweils EINEN B
 ###############################################
 # Page: pref.php
 #
-to modify the preferences for the Public Access calendar: um die Voreinstellungen des &ouml;ffentlichen Kalenders zu &auml;ndern
-to modify the preferences for the: um die Voreinstellungen zu &auml;ndern f&uuml;r 
+to modify the preferences for the Public Access calendar: Um die Voreinstellungen des &ouml;ffentlichen Kalenders zu &auml;ndern
+to modify the preferences for the: Um die Voreinstellungen zu &auml;ndern f&uuml;r 
 Save Preferences: Voreinstellungen speichern
 When I am the boss: Wenn ich der Chef bin
-Subscribe/Publish: abonieren/ver&ouml;ffentlichen
+Subscribe/Publish: Abonieren/Ver&ouml;ffentlichen
 Custom Scripts: Eigene Scripte
 Timezone Selection: Auswahl der Zeitzone
 Default Category: Standard Kategorie
@@ -909,7 +910,7 @@ A new appointment has been made for you by: Es wurde Ihnen eine neue Verabredung
 An appointment has been updated by: Eine Verabredung wurde ge&auml;ndert von
 The subject is: Die Beschreibung lautet 
 Please look on: Bitte konsultieren Sie Ihren
-to accept or reject this appointment: um die Verabredung zu best&auml;tigen/abzulehnen.
+to accept or reject this appointment: Um die Verabredung zu best&auml;tigen/abzulehnen.
 to view this appointment: Verabredung anschauen
 Scheduling Conflict: Termin&uuml;berschneidung
 Your suggested time of: Ihre Eintragung von 
@@ -965,8 +966,8 @@ Show layer events that are the same as your own: Zeige Layer welche die gleichen
 #
 Timezone Offset: Zeitzonenausgleich
 default-category-help: Legt eine Standardkategorie f&uuml;r einen neuen Termin fest.
-email-boss-notifications-help: legt fest ob Chefs Terminbenachrichtigungen als Email bekommen.
-boss-approve-event-help: legt fest ob der Chef die eingetragenen Termine des Assistenten best&auml;tigen (genehmigen) mu&szlig;
+email-boss-notifications-help: Legt fest ob Chefs Terminbenachrichtigungen als Email bekommen.
+boss-approve-event-help: Legt fest ob der Chef die eingetragenen Termine des Assistenten best&auml;tigen (genehmigen) mu&szlig;
 
 
 ###############################################
@@ -1005,18 +1006,18 @@ No users for this view: Keine g&uuml;ltigen Benutzer f&uuml;r diese Ansicht
 ###############################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: exportiertes Format nicht definiert oder ung&uuml;ltig
+export format not defined or incorrect: Exportiertes Format nicht definiert oder ung&uuml;ltig
 
 
 ###############################################
 # Page: edit_task_handler.php
 #
-Unnamed Event: unbenannter Termin
+Unnamed Event: Unbenannter Termin
 A task has been canceled for you by: Eine Aufgabe wurde abgelehnt von
 A new task has been assigned to you by: Eine neue Aufgabe wurde Ihnen zugewiesen von
 A task has been updated by: Eine Aufgabe wurde aktualisiert von
-to accept or reject this task: diese Aufgabe zu best&auml;tigen oder abzulehnen
-to view this task: diese Aufgabe anzeigen
+to accept or reject this task: Diese Aufgabe zu best&auml;tigen oder abzulehnen
+to view this task: Diese Aufgabe anzeigen
 
 
 ###############################################
@@ -1055,7 +1056,7 @@ Submit: Senden
 ###############################################
 # Page: edit_user.php
 #
-Disabled for demo: f&uuml;r DEMO deaktiviert
+Disabled for demo: F&uuml;r DEMO deaktiviert
 Are you sure you want to delete this user?: Soll dieser Benutzer wirklich gel&ouml;scht werden?
 Change Password: Kennwort &auml;ndern
 New Password: Neues Kennwort
@@ -1106,7 +1107,7 @@ Modified since: &Auml;nderungen ab
 # Page: users.php
 #
 Add New User: Neuen Benutzer hinzuf&uuml;gen
-denotes administrative user: kennzeichnet Benutzer mit administrativen Rechten
+denotes administrative user: Kennzeichnet Benutzer mit administrativen Rechten
 
 
 ###############################################
@@ -1157,8 +1158,8 @@ Timed event: Termin MIT Zeitangabe
 Daily: T&auml;glich
 Weekly: W&ouml;chentlich
 Monthly: Monatlich
-by day: tagesorientiert
-by date: nach Datum
+by day: Tagesorientiert
+by date: Nach Datum
 by position: Nach Position
 Yearly: J&auml;hrlich
 Manual: Bedienungsanleitung
@@ -1186,7 +1187,7 @@ Exclusions: Exklusive
 Inclusions: Inklusive
 Add Exception: Ausnahme hinzuf&uuml;gen
 Add Inclusion: Zus&auml;tzlicher Termin
-Delete Selected: ausgew&auml;hltes Datum l&ouml;schen
+Delete Selected: Ausgew&auml;hltes Datum l&ouml;schen
 You are not authorized to edit this entry: Sie haben keine Berechtigung diesen Eintrag zu &auml;ndern.
 
 
@@ -1231,7 +1232,7 @@ INCLUSION DATES: INKLUSIVE der TERMINE
 EXCLUSION DATES: AUSSER der TERMINE
 Event Imported: Termin importiert
 Unknown Timezone: Unbekannte Zeitzone
-defaulting to GMT: standardm&auml;ssig auf GMT setzen
+defaulting to GMT: Standardm&auml;ssig auf GMT setzen
 Please see FAQ: Bitte in der FAQ nachlesen
 
 
@@ -1256,7 +1257,7 @@ Due: F&auml;lligkeit
 Task Name: Aufgabenname
 Task Due Date: Abgabefrist
 __mm__/__dd__/__yyyy__: __dd__. __mm__. __yyyy__
-Completed: abgeschlossen
+Completed: Abgeschlossen
 View this task: Diese Aufgabe anzeigen
 View this event: Diesen Termin anzeigen
 exceeds limit of XXX events per day: &uuml;berschrittenes Limit von XXX Termin(e) pro Tag
@@ -1446,7 +1447,7 @@ You have not entered a valid time of day: Sie haben keine g&uuml;ltige Zeit f&uu
 Notification: Benachrichtigung
 provide_address: Sie m&uuml;ssen mindestens eine Emailadresse als Empf&auml;nger angeben 
 mailer_not_supported: Dieser Mailtyp wird nicht unterst&uuml;tzt
-execute: kann nicht ausgef&uuml;hrt werden
+execute: Kann nicht ausgef&uuml;hrt werden
 instantiate: Kann die Emailfunktion nicht d&uuml;rchf&uuml;hren
 authenticate: SMTP Fehler - Kann nicht authentisiert werden
 from_failed: Die folgenden "Von:" - Adresse(n) ist(sind) ung&uuml;tig
@@ -1462,7 +1463,7 @@ encoding: Unbekannte Verschl&uuml;sselung
 # Page: includes/menu/index.php
 #
 This Week: Aktuelle Woche
-This Month: Aktuelles Monat
+This Month: Aktueller Monat
 This Year: Aktuelles Jahr
 Add New Event: Neuen Termin hinzuf&uuml;gen
 Delete Entries: Eintr&auml;ge l&ouml;schen
@@ -1488,7 +1489,7 @@ Reminder: Erinnerung
 #
 Successful Login: Erfolgreiches Login
 Invalid Login: Ung&uuml;ltiges Login
-needed for Gradient Image Backgrounds: f&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig
+needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig
 Passwords do not match: Passw&oouml;rter stimmen nicht &uuml;berein
 Unable to write password to settings.php file: Passwort kann nicht in die 'settings.php'-Datei geschrieben werden
 Password has been set: Passwort wurde gesetzt
@@ -1547,7 +1548,7 @@ Back: Zur&uuml;ck
 All your database tables appear to be up to date. You may proceed to the: Alle Ihre Datenbanktabellen scheinen upgedated zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
 next page and complete your WebCalendar setup: Ihre Webkalendereinstellungen zu vervollst&auml;ndigen
 This appears to be a new installation. If this is not correct, please: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte
-go back to the previous page and correct your settings: gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen
+go back to the previous page and correct your settings: Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen
 The database requires some data input: Die Datenbank erfodert einige Dateneingaben
 Click <b>Update Database</b> to complete the upgrade: Klick auf <b>Update Database</b> um das Upgrade zu vervollst&auml;ndigen
 This appears to be an upgrade from version: Dieses scheint ein Upgrade zu sein von der Version
