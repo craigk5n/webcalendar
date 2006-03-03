@@ -1126,6 +1126,7 @@ Accepted: Accepted
 Needs-Action: Needs-Action
 Declined: Declined
 day: day
+by: by
 minute: minute
 before due time: before due time
 Percentage Complete: Percentage Complete
