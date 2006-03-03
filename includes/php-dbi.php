@@ -9,7 +9,7 @@
  * following:
  * - mysql
  * - mssql
- * - oracle	(This uses the Oracle8 OCI API, so Oracle 8 libs are required)
+ * - oracle  (This uses the Oracle8 OCI API, so Oracle 8 libs are required)
  * - postgresl
  * - odbc
  * - ibase (Interbase)
@@ -30,30 +30,30 @@
  * @package WebCalendar
  *
  * History:
- * 09-Dec-2005	Craig Knudsen
- *		Added DB2 support (patch from Helmut Tessarek)
- * 17-Mar-2005	Ray Jones
- * 		Changed mssql_error to mssql_get_last_message
- * 23-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
- * 		Added documentation to be used with php2html.pl
- * 19-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
- * 		Add option for verbose error messages.
- * 19-Jan-2004	Craig Knudsen <cknudsen@cknudsen.com>
- * 		Added mssql support
- * 		Code from raspail@users.sourceforge.net
- * 02-Jul-2004	Craig Knudsen <cknudsen@cknudsen.com>
- * 		Added mysqli support
- * 		Code from Francesco Riosa
- * 31-May-2002	Craig Knudsen <cknudsen@radix.net>
- * 		Added support for Interbase contributed by
- * 		Marco Forlin
- * 11-Jul-2001	Craig Knudsen <cknudsen@radix.net>
- * 		Removed pass by reference for odbc_fetch_into()
- * 		Removed ++ in call to pg_fetch_array()
- * 22-Apr-2000	Ken Harris <kharris@lhinfo.com>
- * 		PostgreSQL fixes
- * 23-Feb-2000	Craig Knudsen <cknudsen@radix.net>
- * 		Initial release
+ * 09-Dec-2005  Craig Knudsen
+ *    Added DB2 support (patch from Helmut Tessarek)
+ * 17-Mar-2005  Ray Jones
+ *     Changed mssql_error to mssql_get_last_message
+ * 23-Jan-2005  Craig Knudsen <cknudsen@cknudsen.com>
+ *     Added documentation to be used with php2html.pl
+ * 19-Jan-2005  Craig Knudsen <cknudsen@cknudsen.com>
+ *     Add option for verbose error messages.
+ * 19-Jan-2004  Craig Knudsen <cknudsen@cknudsen.com>
+ *     Added mssql support
+ *     Code from raspail@users.sourceforge.net
+ * 02-Jul-2004  Craig Knudsen <cknudsen@cknudsen.com>
+ *     Added mysqli support
+ *     Code from Francesco Riosa
+ * 31-May-2002  Craig Knudsen <cknudsen@radix.net>
+ *     Added support for Interbase contributed by
+ *     Marco Forlin
+ * 11-Jul-2001  Craig Knudsen <cknudsen@radix.net>
+ *     Removed pass by reference for odbc_fetch_into()
+ *     Removed ++ in call to pg_fetch_array()
+ * 22-Apr-2000  Ken Harris <kharris@lhinfo.com>
+ *     PostgreSQL fixes
+ * 23-Feb-2000  Craig Knudsen <cknudsen@radix.net>
+ *     Initial release
  */
 
 if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
@@ -183,6 +183,7 @@ function dbi_connect ( $host, $login, $password, $database ) {
     $GLOBALS["ibm_db2_connection"] = $c;
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
+    $host = $host . ":" . $database;
     if ($GLOBALS["db_persistent"]) {
       $c = ibase_pconnect ( $host, $login, $password );
     } else {
@@ -493,7 +494,7 @@ function dbi_error () {
  * @param string $msg       The database error message
  * @param bool   $doExit    Abort execution?
  * @param bool   $showError Show the details of the error (possibly including
- * 	                        the SQL that caused the error)?
+ *                           the SQL that caused the error)?
  */
 function dbi_fatal_error ( $msg, $doExit=true, $showError=true ) {
   if ( $showError ) {
