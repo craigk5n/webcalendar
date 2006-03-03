@@ -1255,6 +1255,7 @@ class WebCalendar {
       "edit_user.php" => 1,
       "edit_user_handler.php" => 1,
       "register.php" => 1,
+      "nulogin.php" =>1
     );
 
     /**
