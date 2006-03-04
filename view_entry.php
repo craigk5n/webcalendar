@@ -549,6 +549,7 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
 <?php
 // Display who originally created event
 // useful if assistant or Admin
+// @todo Don't work, if users are stored at LDAP.
 $proxy_fullname = '';  
 if ( !empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == "Y" ) {
   $res = dbi_execute ( "SELECT wu.cal_firstname, wu.cal_lastname " .
@@ -557,9 +558,11 @@ if ( !empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == "Y" ) {
     "AND wel.cal_type = 'C'" , array ( $id ) );
   if ( $res ) {
     $row3 = dbi_fetch_row ( $res ) ;
+    if ( !empty ( $row3 ) ) {
    $proxy_fullname = $row3[0] . " " . $row3[1];
    $proxy_fullname = ($createby_fullname == $proxy_fullname ? ""  :
-      " ( by " . $proxy_fullname . " )");
+        " ( " . translate("by") . " " . $proxy_fullname . " )");
+    }
   }
 }
 
@@ -725,7 +728,7 @@ if ( $single_user == "N" && $show_participants ) { ?>
  echo "<th align=\"center\" colspan=\"2\">" . translate( "Percentage Complete" ) . "</th>";
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
     user_load_variables ( $participants[$i][0], "temp" );
-		if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $templogin );
+    if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $templogin );
     $spacer = 100 - $participants[$i][2];
     $percentage = $participants[$i][2];
     if ( $participants[$i][0] == $login ) $login_percentage = $participants[$i][2];
@@ -748,7 +751,7 @@ if ( $single_user == "N" && $show_participants ) { ?>
   } else {
   for ( $i = 0; $i < $num_app; $i++ ) {
     user_load_variables ( $approved[$i], "temp" );
-		if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $templogin );
+    if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $templogin );
     if ( strlen ( $tempemail ) && $can_email != 'N' ) {
       echo "<a href=\"mailto:" . $tempemail . "?subject=$subject\">" . 
         $tempfullname . "</a><br />\n";
@@ -1213,7 +1216,7 @@ if ( $can_show_log && $show_log ) {
 
 if ( access_can_access_function ( ACCESS_EXPORT ) && 
    (( ! $is_private  && ! $is_confidential )  || 
-	 ! access_is_enabled() )  && ! $hide_details ) {
+   ! access_is_enabled() )  && ! $hide_details ) {
   echo "<br /><form method=\"post\" name=\"exportform\" " .
     "action=\"export_handler.php\">\n";
   echo "<label for=\"exformat\">" . 
