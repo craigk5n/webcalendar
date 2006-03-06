@@ -121,7 +121,7 @@ $WebCalendar->setLanguage();
           $timestr .= " - " .  display_time ( $e->getEndDateTime() );
         }
       }
-      $eventinfo .= build_event_popup ( 'eventinfo-' . $popupid, $user,
+      $eventinfo .= build_entry_popup ( 'eventinfo-' . $popupid, $user,
         $e->getDescription(), $timestr, site_extras_for_popup ( $e->getId() ),
         $e->getLocation(), $e->getName(), $e->getId() );
     }
