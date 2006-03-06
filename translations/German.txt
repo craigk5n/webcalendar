@@ -15,7 +15,8 @@
 # Last update: 27 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 2 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 3 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 03-02-2006
+# Last update: 6 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 03-06-2006
 
 
 ###############################################
@@ -414,6 +415,7 @@ This Calendar is not Public: Dieser Kalender ist nicht &Oouml;ffentlich
 # Page: view_entry.php
 #
 Duration: Dauer
+by: von
 before event: vor dem Termin
 External User: Externer Benutzer
 Attachments: Anh&auml;nge
