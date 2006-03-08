@@ -300,6 +300,9 @@ function user_logged_in() {
   // Generate session id
   $sid = md5( $_COOKIE[$app_sid] . $_SERVER['REMOTE_ADDR'] );
 
+  // addslashes if magic_quotes_gpc is off
+  if ( !get_magic_quotes_gpc() ) $sid = addslashes( $sid );
+
   // Check to see if the session is still valid
   if (! $login = app_active_session($sid) ) return false;
 
