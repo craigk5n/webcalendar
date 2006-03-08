@@ -118,14 +118,19 @@ unset($app_config);
 function user_logged_in() {
   global $pn_sid, $_COOKIE;
   
+  $sid = $_COOKIE[$pn_sid];
+
   // First check to see if the user even has a session cookie
-  if (empty($_COOKIE[$pn_sid])) return false;
+  if ( empty( $sid ) ) return false;
+  
+    // addslashes if magic_quotes_gpc is off
+  if ( !get_magic_quotes_gpc() ) $sid = addslashes( $sid );
   
   // Check to see if the session is still valid
-  if (! $login = pn_active_session($_COOKIE[$pn_sid]) ) return false;
+  if (! $login = pn_active_session( $sid ) ) return false;
 
   // Update the session last access time
-  pn_update_session($_COOKIE[$pn_sid]);
+  pn_update_session( $sid );
 
   return $login;
 }
