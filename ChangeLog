@@ -1,4 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1445157: Canadian english not defined, fix included
+ - Fixed bug 1446262: Broken \n in functions.php
+ - Implemented improved reminder UI and added repeating functionality per RFC2445
  - Implemented PATCH 1442317: view_entry.php: Disable $proxy_fullname for LDAP users
  - Fixed bug 1366002: No 'all day' event with manual repeat at either DST change
  - Implemented Feature Request1440366: Add a none option to Category Icons

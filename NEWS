@@ -1,5 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1445157: Canadian english not defined, fix included
+      1446262: Broken \n in functions.php
       1366002: No 'all day' event with manual repeat at either DST change
       1439655: cannot save permissions of public access using UAC
       1438954: "Top menu" not working on view_entry.php
@@ -219,6 +221,7 @@ Version 1.1.0-CVS (?? ??? 2006)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Implemented improved reminder UI and added repeating functionality per RFC2445
     + Implemented PATCH 1442317: view_entry.php: Disable $proxy_fullname for LDAP users
     + RFE 1440366: Add a none option to Category Icons
     + Implemented Patch 1440975: Use category name as title for category icons
