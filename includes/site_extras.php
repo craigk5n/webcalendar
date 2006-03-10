@@ -14,11 +14,6 @@
  *	  EXTRA_EMAIL - will be presented as a mailto URL
  *	  EXTRA_USER - most be a calendar user name; will be presented
  *	               with a pulldown
- *	  EXTRA_REMINDER - will allow reminder email messages to be sent
- *	    out to all event participants
- *	  EXTRA_REMINDER_DATE - will allow reminder email messages to be sent
- *	    out to all event participants on the specified date.  Can use
- *	    extra options to send it out before this date also.
  *	  EXTRA_SELECTION_LIST - allows a custom selection list.  Can use
  *	    this to specify a list of possible locations, etc.
  *	
@@ -26,15 +21,6 @@
  *	If you want to fully support using languages other than what
  *	you define below, you will need to add the 2nd field of the arrays
  *	below to the translation files.
- *	
- * WARNING:
- *	If you want to use reminders, you will need to do some
- *	extra steps in setting up WebCalendar.  There is no built-in support
- *	for executing time-based jobs within PHP, so you need to setup something
- *	to execute the send_reminders.php script.
- *	On UNIX/Linux, this will be cron.
- *	On Windows, you'll need to find a cron-like way to do this.
- *	See README.html for more info.
  *
  */
 
@@ -45,41 +31,19 @@ define ( 'EXTRA_URL',           3 );
 define ( 'EXTRA_DATE',          4 );
 define ( 'EXTRA_EMAIL',         5 );
 define ( 'EXTRA_USER',          6 );
-define ( 'EXTRA_REMINDER',      7 );
+
 define ( 'EXTRA_SELECTLIST',    8 );
-
-// Options for reminders - these should be or-ed together when
-// it makes sense.  (Right now the only two available options wouldn't
-// make sense to or together.)
-// By default, options = 0.
-
-// Owner specifies what date to send.  This will present a date selection
-// area on the edit page (just like a EXTRA_DATE will).
-define ( 'EXTRA_REMINDER_WITH_DATE', 0x0001 );
-
-// Owner chooses how many days/hours/minutes before event date that
-// the reminder should be sent.  Will see:  __ Days __ Hrs __ Mins on
-// event edit page.
-define ( 'EXTRA_REMINDER_WITH_OFFSET', 0x0002 );
-
-// Default for reminder is "no".  Add this flag to make the default "Yes"
-// when creating a new event.
-define ( 'EXTRA_REMINDER_DEFAULT_YES', 0x0004 );
-
 
 // Format of an entry is an array with the following elements:
 // name: unique name of this extra field (used in db)
 // description: how this field will be described to users
 // type: EXTRA_URL, EXTRA_TEXT, etc...
-// arg1: for reminders how many minutes before event should reminder
-//       for multi-line text, how many columns to display in the form
+// arg1: for multi-line text, how many columns to display in the form
 //         as in <textarea rows="XX" cols="XX"
 //       for text (single line), how many columns to display
 //         as in <input size="XX"
 //	for selection list, contains an array of possible values
-// arg2: for reminders, this specifies options such as
-//         EXTRA_REMINDER_WITH_DATE or EXTRA_REMINDER_WITH_OFFSET.
-//       for multi-line text, how many rows to display in the form
+// arg2: for multi-line text, how many rows to display in the form
 //         as in <textarea rows="XX" cols="XX"
 
 // Example 1:
@@ -117,15 +81,6 @@ define ( 'EXTRA_REMINDER_DEFAULT_YES', 0x0004 );
 //     8                     // height of text entry
 //   ),
 //   array (
-//     "Reminder",          // unique name of this extra field (used in db)
-//     "Send Reminder",     // how this field will be described to users
-//     EXTRA_REMINDER,     // type of field
-//     21 * (24 * 60),      // how many minutes before event should reminder
-//                          // be sent (21 days in this case)
-//     EXTRA_REMINDER_WITH_OFFSET | EXTRA_REMINDER_DEFAULT_YES
-//                          // specifies reminder options bit-or
-//   ),
-//   array (
 //     "RoomLocation",       // unique name of this extra field (used in db)
 //     "Location",           // how this field will be described to users
 //     EXTRA_SELECTLIST,    // type of field
@@ -144,20 +99,6 @@ define ( 'EXTRA_REMINDER_DEFAULT_YES', 0x0004 );
 // you need to translate to another language.
 // Use tools/check_translation.pl to verify you have all your translations.
 //
-// Kludge for picking up translations:
-//    translate("Send Reminder")
-$site_extras = array (
-  array (
-    "Reminder",          // unique name of this extra field (used in db)
-    "Send Reminder",     // how this field will be described to users
-    EXTRA_REMINDER,     // type of field
-    240,                 // arg 1: how many minutes before event should
-                         // reminder be sent (however, this option is just
-                         // the default when used with the
-                         // EXTRA_REMINDER_WITH_OFFSET option) since the user
-                         // can override this.
-    EXTRA_REMINDER_WITH_OFFSET
-                         // arg 2: specifies reminder options bit-or
-  )
-);
+
+$site_extras = array ();
 ?>

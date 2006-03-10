@@ -18,7 +18,7 @@
  * TODO:
  * Change all references from postgresql to pgsql
  */
-$show_all_errors = true;
+$show_all_errors = false;
 
 include_once '../includes/dbi4php.php';
 include_once '../includes/config.php';
@@ -131,7 +131,7 @@ function get_installed_version () {
  global $database_upgrade_matrix, $show_all_errors;
  
   //disable warnings
- show_errors ();
+ //show_errors ();
  // Set this as the default value
  $_SESSION['application_name']  = "Title";
  $_SESSION['old_program_version'] = "new_install";
@@ -142,7 +142,7 @@ function get_installed_version () {
  //This data is read from file upgrade_matrix.php
  for ( $i=0; $i < count( $database_upgrade_matrix); $i++ ) {
    $sql = $database_upgrade_matrix[$i][0];
-  $res = dbi_execute ( $sql, array(), false, false );
+  $res = dbi_execute ( $sql, array(), false, $show_all_errors );
   if ( $res ) {
   $_SESSION['old_program_version'] = $database_upgrade_matrix[$i][1];
   $_SESSION['install_file'] = $database_upgrade_matrix[$i][2];
@@ -174,7 +174,8 @@ function get_installed_version () {
 
  //We need to determine this is a blank database
  // This may be due to a manual table setup
- $res = dbi_execute ( "SELECT count(cal_value) FROM webcal_config" , array() , false, false );
+ $res = dbi_execute ( "SELECT count(cal_value) FROM webcal_config" , array() , false,
+   $show_all_errors );
  if ( $res ) {
    $row = dbi_fetch_row ( $res );
   if ( isset ( $row[0] ) && $row[0] == 0 ) {  
@@ -194,7 +195,7 @@ function get_installed_version () {
  // Determine if old data has been converted to GMT
  // This seems lke a good place to put this
  $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
-  "WHERE cal_setting  = 'WEBCAL_TZ_CONVERSION'", array(), false, false);
+  "WHERE cal_setting  = 'WEBCAL_TZ_CONVERSION'", array(), false, $show_all_errors);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
   // if not 'Y', we will prompt user to do conversion
@@ -208,7 +209,7 @@ function get_installed_version () {
  // We could use the self-discvery value, but this 
  // may be a custom value
  $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
-  "WHERE cal_setting  = 'SERVER_URL'", array(), false, false);
+  "WHERE cal_setting  = 'SERVER_URL'", array(), false, $show_all_errors);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( ! empty ( $row[0] ) && strlen ( $row[0] ) ) {
@@ -218,7 +219,7 @@ function get_installed_version () {
  }
  // Get existing application name
  $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
-  "WHERE cal_setting  = 'APPLICATION_NAME'", array(), false, false);
+  "WHERE cal_setting  = 'APPLICATION_NAME'", array(), false, $show_all_errors);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( ! empty ( $row[0] ) ) {
@@ -234,7 +235,7 @@ function get_installed_version () {
 // We need to read it first in order to get the md5 password.
 $magic = @get_magic_quotes_runtime();
 @set_magic_quotes_runtime(0);    
-$fd = @fopen ( $file, "rb", false );
+$fd = @fopen ( $file, "rb", true );
 $settings = array ();
 $password = '';
 $forcePassword = false;
@@ -443,12 +444,13 @@ function parse_sql($sql) {
 }
 
 function db_populate ( $install_filename, $display_sql ) {
-  global $str_parsed_sql;
+  global $str_parsed_sql, $show_all_errors;
   if ( $install_filename == "" ) return;
  $full_sql = "";
+ $current_pointer = false;
  $magic = @get_magic_quotes_runtime();
  @set_magic_quotes_runtime(0);
- $fd = @fopen ( "sql/" . $install_filename, "r", false);
+ $fd = @fopen ( "sql/" . $install_filename, "r", true);
  //discard everything up to the required point in the upgrade file 
  while (!feof($fd) && empty ( $current_pointer ) ) {
   $data = fgets($fd, 4096);
@@ -481,13 +483,13 @@ function db_populate ( $install_filename, $display_sql ) {
  fclose ( $fd );
  $parsed_sql  = parse_sql($full_sql);
  //disable warnings
- show_errors ();
+ //show_errors ();
  //string version of parsed_sql that is used if displaying sql only
  $str_parsed_sql = "";
   for ( $i = 0; $i < count($parsed_sql); $i++ ) {
     if ( empty ( $display_sql ) ){ 
   if ( $show_all_errors == true ) echo $parsed_sql[$i] . "<br />";
-      dbi_execute ( $parsed_sql[$i] );   
+      dbi_execute ( $parsed_sql[$i], false, $show_all_errors );   
   } else {
     $str_parsed_sql .= $parsed_sql[$i] . "\n\n";
   } 
@@ -612,7 +614,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
    $onload = "db_type_handler();";
     
    //disable warnings
-   show_errors ();
+   //show_errors ();
    $c = dbi_connect ( $db_host, $db_login,
      $db_password, $db_database );
 

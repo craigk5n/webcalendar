@@ -199,7 +199,11 @@ function access_get_viewable_users ( $user )
 function access_load_user_functions ( $user )
 {
   global $is_admin;
-  
+  static $permissions;
+	
+	if ( ! empty ( $permissions[$user] ) )
+	  return $permissions[$user];
+		
   $ret = '';
   $rets = array();
   $users = array ( $user, '__default__' );
@@ -226,7 +230,8 @@ function access_load_user_functions ( $user )
       $ret .= get_default_function_access ( $i, $user );
     }
   }
-//  echo $user . " " . $ret . "<br>";
+  do_debug ( $user . " " . $ret);;
+  $permissions[$user] = $ret;
   return $ret;
 }
 
@@ -321,7 +326,7 @@ function access_can_view_page ( $page="", $user="" )
 
   assert ( '! empty ( $page )' );
 
-  $page = basename ( $page );
+  $page = basename ( $page );	
   //handle special cases for publish.php and freebusy.php
   if ( substr ( $page, -3 ) == 'ics' )
     $page = 'publish.php';

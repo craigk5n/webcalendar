@@ -263,18 +263,29 @@ CREATE TABLE webcal_site_extras (
 );
 
 /*
- * This table keeps a history of when reminders get sent.
+ * Stores information about reminders
  */
-CREATE TABLE webcal_reminder_log (
-  /* event id */
-  cal_id INT DEFAULT 0 NOT NULL,
-  /* extra type (see site_extras.php) */
-  cal_name VARCHAR(25) NOT NULL,
-  /* the event date we are sending reminder for (in YYYYMMDD format) */
-  cal_event_date INT NOT NULL DEFAULT 0,
-  /* the date/time we last sent a reminder (in UNIX time format) */
-  cal_last_sent INT NOT NULL DEFAULT 0,
-  PRIMARY KEY ( cal_id, cal_name, cal_event_date )
+CREATE TABLE webcal_reminders (
+  cal_id INT  NOT NULL default '0',
+  /* timestamp that specifies send datetime. Use this or cal_offset, but not both */
+  cal_date INT NOT NULL default '0',
+  /* offset in minutes from the selected edge */
+  cal_offset INT NOT NULL default '0',
+  /* S=Start, E=End. Specifies which edge of entry this reminder applies to */
+  cal_related CHAR(1) NOT NULL default 'S',
+  /* specifies whether reminder is sent before or after selected edge */
+  cal_before CHAR(1) NOT NULL default 'Y',
+  /* timestamp of last sent reminder */
+  cal_last_sent INT default NULL,
+  /* number of times to repeat in addition to original occurance */
+  cal_repeats INT NOT NULL default '0',
+  /* time in ISO 8601 format that specifies time between repeated reminders */ 
+  cal_duration INT NOT NULL default '0',
+  /* number of times this reminder has been sent */
+  cal_times_sent INT NOT NULL default '0',
+  /* action as imported, may be used in the future */
+  cal_action VARCHAR(12) NOT NULL default 'EMAIL',
+  PRIMARY KEY ( cal_id )
 );
 
 /*

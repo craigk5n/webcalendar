@@ -333,7 +333,28 @@ class Event {
   function getDueDate () {
       return $this->_dueDate;  
   }
-  
+ 
+     /**
+   * Gets the task's due date/time as a Unix timestamp
+   *
+   * @return integer The task's due date/time as a timestamp
+   *
+   * @access public
+   */
+  function getDueDateTimeTS () {
+    $year = substr ( $this->_dueDate, 0, 4 );
+    $month = substr ( $this->_dueDate, 4, 2 ); 
+    $day = substr ( $this->_dueDate, 6, 2 );
+  if ( $this->_time > 0 ) {
+    $h = (int) ( $this->_dueTime / 10000 );
+    $m = ( $this->_dueTime / 100 ) % 100;
+  } else {
+   $h = $m = 0;
+  }
+    $this->_DueDateTime = mktime ( $h, $m, 0, $month, $day, $year );
+    return $this->_DueDateTime;
+  }
+	 
     /**
    * Gets the event's date/time
    *
@@ -561,7 +582,29 @@ class Event {
     $this->_endDateTime = date ( "YmdHis", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
     return $this->_endDateTime;
   }
-  
+
+ /**
+   * Gets the event's end datetime as UNIX timestamp
+   *
+   * @return string The event's end datetime UNIX timestamp Format
+   *
+   * @access public
+   */
+  function getEndDateTimeTS () {
+    $year = substr ( $this->_date, 0, 4 );
+    $month = substr ( $this->_date, 4, 2 ); 
+    $day = substr ( $this->_date, 6, 2 );
+    if ( $this->_time > 0 ) {
+      $h = (int) ( $this->_time / 10000 );
+      $m = ( $this->_time / 100 ) % 100;
+    } else {
+      $h = $m = 0;
+    }
+    $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
+    $this->_endDateTime = mktime ( $h, $m + $dur, 0, $month, $day, $year );
+    return $this->_endDateTime;
+  }
+	  
  /**
    * Determine if event is All Day 
    *

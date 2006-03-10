@@ -154,7 +154,7 @@ function user_load_variables ( $login, $prefix ) {
     $GLOBALS[$prefix . "is_admin"] = "N";
     $GLOBALS[$prefix . "email"] = "";
     $GLOBALS[$prefix . "fullname"] = ( $login == "__public__"?
-		  $PUBLIC_ACCESS_FULLNAME : translate ( "DEFAULT CONFIGURATION" ) );
+      $PUBLIC_ACCESS_FULLNAME : translate ( "DEFAULT CONFIGURATION" ) );
     $GLOBALS[$prefix . "password"] = "";
     return true;
   }
@@ -175,7 +175,7 @@ function user_load_variables ( $login, $prefix ) {
         $GLOBALS[$prefix . "fullname"] = $login;
       $GLOBALS[$prefix . "password"] = $row[4];
       $ret = true;
-		}
+    }
     dbi_free_result ( $res );
   } else {
     $error = translate ("Database error") . ": " . dbi_error ();
@@ -346,7 +346,7 @@ function user_delete_user ( $user ) {
     dbi_execute ( "DELETE FROM webcal_import_data WHERE cal_id = ?" , array ( $delete_em[$i] )  );
     dbi_execute ( "DELETE FROM webcal_site_extras WHERE cal_id = ?" , array ( $delete_em[$i] )  );
     dbi_execute ( "DELETE FROM webcal_entry_ext_user WHERE cal_id = ?" , array ( $delete_em[$i] )  );
-    dbi_execute ( "DELETE FROM webcal_reminder_log WHERE cal_id = ?" , array ( $delete_em[$i] )  );
+    dbi_execute ( "DELETE FROM webcal_reminders WHERE cal_id = ?" , array ( $delete_em[$i] )  );
     dbi_execute ( "DELETE FROM webcal_blob WHERE cal_id = ?" , array ( $delete_em[$i] )  );
     dbi_execute ( "DELETE FROM webcal_entry WHERE cal_id = ?" , array ( $delete_em[$i] )  );
   }

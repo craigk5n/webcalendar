@@ -238,7 +238,7 @@ function gen_output ( $useHtml, $prompt, $data ) {
 // approved.  But, don't send to users who rejected (cal_status='R').
 function send_reminder ( $id, $event_date ) {
   global $names, $emails, $site_extras, $debug, $only_testing, $htmlmail,
-    $SERVER_URL, $languages,  $TIMEZONE, $APPLICATION_NAME;
+    $SERVER_URL, $languages, $APPLICATION_NAME;
   global $ALLOW_EXTERNAL_USERS, $EXTERNAL_REMINDERS, $LANGUAGE,
     $def_tz, $tz;
 
@@ -443,10 +443,6 @@ function send_reminder ( $id, $event_date ) {
         } else if ( $extra_type == EXTRA_MULTILINETEXT ) {
           $body .= gen_output ( $useHtml, $prompt,
             "\n" . indent ( $extras[$extra_name]['cal_data'] ) );
-        } else if ( $extra_type == EXTRA_REMINDER ) {
-          $body .= gen_output ( $useHtml, $prompt,
-            ( $extras[$extra_name]['cal_remind'] > 0 ?
-            translate("Yes") : translate("No") ) );
         } else {
           // default method for EXTRA_URL, EXTRA_TEXT, etc...
           $body .= gen_output ( $useHtml, $prompt,
@@ -523,16 +519,13 @@ function send_reminder ( $id, $event_date ) {
 
 // keep track of the fact that we send the reminder, so we don't
 // do it again.
-function log_reminder ( $id, $name, $event_date ) {
+function log_reminder ( $id, $times_sent ) {
   global $only_testing;
 
   if ( ! $only_testing ) {
-    dbi_execute ( "DELETE FROM webcal_reminder_log " .
-      "WHERE cal_id = ? AND cal_name = ? " .
-      "AND cal_event_date = ?" , array ( $id , $name , $event_date ) );
-    dbi_execute ( "INSERT INTO webcal_reminder_log " .
-      "( cal_id, cal_name, cal_event_date, cal_last_sent ) VALUES ( " .
-      "?, ?, ?, ?)" , array ( $id , $name , $event_date , time() ) );
+    dbi_execute ( "UPDATE webcal_reminders " .
+      "SET cal_last_sent = ?, cal_times_sent = ? " .
+      "WHERE cal_id = ?", array ( time() - date("Z"), $times_sent, $id ) );
   }
 }
 
@@ -540,88 +533,67 @@ function log_reminder ( $id, $name, $event_date ) {
 // Process an event for a single day.  Check to see if it has
 // a reminder, when it needs to be sent and when the last time it
 // was sent.
-function process_event ( $id, $name, $event_date, $event_time ) {
-  global $site_extras, $debug, $only_testing, $TIMEZONE;
-
+function process_event ( $id, $name, $start, $end ) {
+  global $debug, $only_testing;
+  
+  $reminder = array();
+  
   if ( $debug )
     printf ( "Event %d: \"%s\" at %s on %s <br />\n",
-      $id, $name, $event_time, $event_date );
+      $id, $name, date("H:i:s", $start ) , date("Ymd", $start ));
 
-  // Check to see if this event has any reminders
-  $extras = get_site_extra_fields ( $id );
-  for ( $j = 0; $j < count ( $site_extras ); $j++ ) {
-    $extra_name = $site_extras[$j][0];
-    $extra_type = $site_extras[$j][2];
-    $extra_arg1 = $site_extras[$j][3];
-    $extra_arg2 = $site_extras[$j][4];
-    //if ( $debug )
-    //  printf ( "  name: %s\n  type: %d\n  arg1: %s\n  arg2: %s\n",
-    //  $extra_name, $extra_type, $extra_arg1, $extra_arg2 );
-    if ( ! empty ( $extras[$extra_name]['cal_remind'] ) ) {
+    //get reminders array
+    $reminder = getReminders ( $id );
+
+    if ( ! empty ( $reminder ) ) {
       if ( $debug )
         echo "  Reminder set for event. <br />\n";
-      // how many minutes before event should we send the reminder?
-      $ev_h = (int) ( $event_time / 10000 );
-      $ev_m = ( $event_time / 100 ) % 100;
-      $ev_year = substr ( $event_date, 0, 4 );
-      $ev_month = substr ( $event_date, 4, 2 );
-      $ev_day = substr ( $event_date, 6, 2 );
-      $event_time_gmt = mktime ( $ev_h, $ev_m, 0, $ev_month, $ev_day, $ev_year );
-      if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
-        $minsbefore = $extras[$extra_name]['cal_data'];
-        $remind_time = $event_time_gmt - ( $minsbefore * 60 );
-      } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
-        $rd = $extras[$extra_name]['cal_date'];
-        $r_year = substr ( $rd, 0, 4 );
-        $r_month = substr ( $rd, 4, 2 );
-        $r_day = substr ( $rd, 6, 2 );
-        $remind_time = mktime ( 0, 0, 0, $r_month, $r_day, $r_year );
-      } else {
-        $minsbefore = $extra_arg1;
-        $remind_time = $event_time_gmt - ( $minsbefore * 60 );
+      $times_sent = $reminder['times_sent'];
+      if ( ! empty ( $reminder['date'] ) ) {  //we're using a date
+        $remind_time =  $reminder['date'];
+      } else { // we're using offsets
+        $offset =  $reminder['offset'] * 60; //convert to seconds
+        if ( $reminder['related'] == 'N' ) { //relative to start
+          $remind_time = ( $reminder['before'] == 'Y'? $start - $offset : $start + $offset );
+        } else { //relative to end/due
+          $remind_time = ( $reminder['before'] == 'Y'? $end - $offset : $end + $offset );        
+        }
       }
+      //factor in repeats if set
+      if ( $reminder['repeats'] > 0 && $reminder['times_sent'] <= $reminder['repeats'] ) {
+        $remind_time += ( $reminder['duration'] * 60 * $times_sent );
+        if ( ! empty ( $offset ) ) $offset += ( $reminder['duration'] * 60 );
+        $times_sent += 1;
+      }
+
       if ( $debug )
-        echo "  Mins Before: $minsbefore <br />\n";
+        if ( ! empty ( $offset ) ) echo "  Mins Before: $offset <br />\n";
       if ( $debug ) {
-        echo "  Event time is: " . date ( "m/d/Y H:i", $event_time_gmt ) . " GMT<br />\n";
+        echo "  Event time is: " . date ( "m/d/Y H:i", $start ) . " GMT<br />\n";
         echo "  Remind time is: " . date ( "m/d/Y H:i", $remind_time ) . " GMT<br />\n";
         echo "Server Timezone: " . $GLOBALS['SERVER_TIMEZONE'] . 
           "<br />\nServer Difference from GMT (minutes) : " .
           date ("Z"). "<br />\n";    
         echo "Effective delivery time is: " . 
-          date ( "m/d/Y H:i", $remind_time + date ("Z") ) . " " .
-            date ("T"). "<br />\n";
+          date ( "m/d/Y H:i", $remind_time + date ("Z")  ) . " " .
+            date ("T"). "<br /><br />\n";
       }
 
-      // We need to adjust GMT $remind_time to server time
-      $remind_time += date ("Z");
-      if ( time() >= $remind_time ) {
-        // It's remind time or later. See if one has already been sent
-        $last_sent = 0;
-        $res = dbi_execute ( "SELECT MAX(cal_last_sent) FROM " .
-          "webcal_reminder_log WHERE cal_id = ?" .
-          " AND cal_event_date = ?" .
-          " AND cal_name = ?" , array ( $id , $event_date , $extra_name ) );
-        if ( $res ) {
-          if ( $row = dbi_fetch_row ( $res ) ) {
-            $last_sent = $row[0];
-          }
-          dbi_free_result ( $res );
-        }
+      if ( time() >= $remind_time + date ("Z")) {
         if ( $debug )
           echo "  Last sent on: " .  
-       ($last_sent == 0 ? "NEVER" : date ( "m/d/Y H:i", $last_sent ) ). "<br />\n";
-        if ( $last_sent < $remind_time ) {
+       ($reminder['last_sent'] == 0 ? "NEVER" : date ( "m/d/Y H:i", 
+         $reminder['last_sent'] ) ). "<br />\n";
+        if ( $reminder['last_sent'] < $remind_time ) {
           // Send a reminder
           if ( $debug )
             echo "  SENDING REMINDER! <br />\n";
-          send_reminder ( $id, $event_date );
+          send_reminder ( $id, date("Ymd", $start ) );
           // now update the db...
-          log_reminder ( $id, $extra_name, $event_date );
+          log_reminder ( $id, $times_sent );
         }
       }
     }
-  }
 }
 
 
@@ -639,10 +611,12 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-  if ( $ev[$i]->getCalType() == "E" || $ev[$i]->getCalType() == "M") {
-      process_event ( $id, $ev[$i]->getName(), $date, $ev[$i]->getTime() );
+  if ( $ev[$i]->getCalType() == "T" || $ev[$i]->getCalType() == "N") {   
+    process_event ( $id, $ev[$i]->getName(), $ev[$i]->getDateTimeTS(), 
+      $ev[$i]->getDueDateTimeTS() );
   } else {
-      process_event ( $id, $ev[$i]->getName(), $ev[$i]->getDueDate(), $ev[$i]->getDueTime() ); 
+    process_event ( $id, $ev[$i]->getName(), $ev[$i]->getDateTimeTS(), 
+      $ev[$i]->getEndDateTimeTS() ); 
   }
   }
   $rep = get_repeating_entries ( "", $date );
@@ -651,10 +625,12 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-  if ( $rep[$i]->getCalType() == "E" || $rep[$i]->getCalType() == "M" ) {
-      process_event ( $id, $rep[$i]->getName(), $date, $rep[$i]->getTime() );
+  if ( $rep[$i]->getCalType() == "T" || $rep[$i]->getCalType() == "N" ) {
+    process_event ( $id, $rep[$i]->getName(), $rep[$i]->getDateTimeTS(), 
+      $rep[$i]->getDueDateTimeTS() );
   } else {
-      process_event ( $id, $rep[$i]->getName(), $rep[$i]->getDueDate(), $rep[$i]->getDueTime() );  
+    process_event ( $id, $rep[$i]->getName(), $rep[$i]->getDateTimeTS(), 
+      $rep[$i]->getEndDateTimeTS() );  
   }
   }
 }

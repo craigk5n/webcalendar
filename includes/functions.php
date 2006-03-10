@@ -328,8 +328,8 @@ function get_web_browser () {
  */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
-  //error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
-  //3, "d:\php\logs\debug.txt" );
+  error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
+  3, "d:\php\logs\debug.txt" );
   //fwrite ( $fd, date ( "Y-m-d H:i:s" ) .  "> $msg\n" );
   //fclose ( $fd );
   //  3, "/tmp/webcal-debug.log" );
@@ -659,14 +659,14 @@ function load_user_preferences ( $guest='') {
   }
 
   // If user has not set a language preference or admin has not specified a
-  // langiuage, then use their browser
+  // language, then use their browser
   // settings to figure it out, and save it in the database for future
   // use (email reminders).
   $lang = 'none';
   if ( ! $lang_found && strlen ( $tmp_login ) && $tmp_login != "__public__" ) {
-   if ( $LANGUAGE == "none" ) {
+    if ( $LANGUAGE == "none" ) {
       $lang =  $browser_lang; 
-  }
+    }
     dbi_execute ( "INSERT INTO webcal_user_pref " .
       "( cal_login, cal_setting, cal_value ) VALUES " .
       "( ?, ?, ? )", array( $tmp_login, 'LANGUAGE', $lang ) );
@@ -1032,40 +1032,6 @@ function format_site_extras ( $extras ) {
 
         $data = nl2br ( $extras[$extra_name]['cal_data'] );
 
-      } else if ( $extra_type == EXTRA_REMINDER ) {
-
-        if ( $extras[$extra_name]['cal_remind'] <= 0 ) {
-          $data = translate ( "No" );
-        } else {
-          $data = translate ( "Yes" );
-
-          if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
-            $data .= '&nbsp;&nbsp;-&nbsp;&nbsp;';
-            $data .= date_to_str ( $extras[$extra_name]['cal_date'] );
-          } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
-            $data .= '&nbsp;&nbsp;-&nbsp;&nbsp;';
-
-            $minutes = $extras[$extra_name]['cal_data'];
-            $d = (int) ( $minutes / ( 24 * 60 ) );
-            $minutes -= ( $d * 24 * 60 );
-            $h = (int) ( $minutes / 60 );
-            $minutes -= ( $h * 60 );
-
-            if ( $d > 0 ) {
-              $data .= $d . '&nbsp;' . translate ( "days" ) . '&nbsp;';
-            }
-
-            if ( $h > 0 ) {
-              $data .= $h . '&nbsp;' . translate ( "hours" ) . '&nbsp;';
-            }
-
-            if ( $minutes > 0 ) {
-              $data .= $minutes . '&nbsp;' . translate ( "minutes" );
-            }
-
-            $data .= '&nbsp;' . translate ( "before event" );
-          }
-        }
       } else {
         $data .= $extras[$extra_name]['cal_data'];
       }
@@ -1116,7 +1082,7 @@ function site_extras_for_popup ( $id ) {
  * @return string The HTML for the event popup
  */
 function build_entry_popup ( $popupid, $user, $description='', $time,
-  $site_extras='', $location='', $name='', $id='' ) {
+  $site_extras='', $location='', $name='', $id='', $reminder='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname, $DISABLE_POPUPS,
     $ALLOW_HTML_DESCRIPTION, $SUMMARY_LENGTH, $PARTICIPANTS_IN_POPUP,
     $tempfullname;
@@ -1171,6 +1137,9 @@ function build_entry_popup ( $popupid, $user, $description='', $time,
   if ( ! empty ( $location ) )
   $ret .= "<dt>" . translate ("Location") . ":</dt>\n<dd> $location</dd>\n";
 
+  if ( ! empty ( $reminder ) )
+  $ret .= "<dt>" . translate ("Send Reminder") . ":</dt>\n<dd> $reminder</dd>\n";
+  
   if ( ! empty ( $partList ) ) {
     $ret .= "<dt>" . translate ("Participants") . ":</dt>\n";
     foreach ( $partList as $parts ) {
@@ -1215,7 +1184,8 @@ function build_entry_popup ( $popupid, $user, $description='', $time,
 function build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only='N' ) {
   global $login, $user, $eventinfo, $SUMMARY_LENGTH, $UAC_ENABLED; 
   $ret = '';
-  
+  //get reminders display string
+  $reminder = getReminders ( $event->getId(), 0, true );
   $can_access = ( $UAC_ENABLED == 'Y'? $can_access : 0 );
   $not_my_entry = ( ( $login != $user && strlen ( $user ) ) || 
       ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) );
@@ -1243,7 +1213,7 @@ function build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only
     if ( $time_only != 'Y' ) $ret = $tmp_ret;
     $eventinfo .= build_entry_popup ( $popupid, $event->getLogin(),
       $event->getDescription(), $timestr, site_extras_for_popup ( $event->getId() ),
-      $event->getLocation(), $event->getName(), $event->getId() );
+      $event->getLocation(), $event->getName(), $event->getId(), $reminder );
   }
   return $ret;
   
@@ -1822,7 +1792,9 @@ function print_entry ( $event, $date ) {
       $view_text  . "\" width=\"5\" height=\"7\" />";
   } else {
     // Use category icon
-    $catAlt = translate ( "Category" ) . ": " . $categories[$event->getCategory()];
+    $catAlt = '';
+    if ( ! empty ( $categories[$event->getCategory()] ) )
+      $catAlt = translate ( "Category" ) . ": " . $categories[$event->getCategory()];
     echo "<img src=\"$catIcon\" alt=\"$catAlt\" title=\"$catAlt\" />";
   }
 
@@ -4828,7 +4800,7 @@ function print_header_timebar($start_hour, $end_hour) {
    }
    $width = 100 - ( $offset * 2 );
    echo "<td width=\"$width%\">&nbsp;</td>\n";
-   echo "</tr></table>n";
+   echo "</tr></table>\n";
  
    // print yardstick
   echo "\n<!-- YARDSTICK -->\n<table class=\"yardstick\">\n<tr>\n";
@@ -5551,9 +5523,13 @@ function get_site_extras_names () {
  */
 function get_rules ( $zone_rule, $timestamp  ) {
  global $days_of_week;
-
+ static $rules;
+ 
  $year = date ("Y", $timestamp );
 
+ if ( ! empty ( $rules[$zone_rule.$year] ) )
+   return $rules[$zone_rule.$year];
+   
  $sql = "SELECT rule_from, rule_to, rule_in, rule_on, rule_at, rule_save, rule_letter, rule_at_suffix  " . 
    "FROM webcal_tz_rules WHERE rule_name  = ?"  . 
    " AND rule_from <= ? AND rule_to >= ? ORDER BY rule_in";
@@ -5611,6 +5587,7 @@ function get_rules ( $zone_rule, $timestamp  ) {
       dbi_free_result ( $res );
     }
   }
+  $rules[$zone_rule.$year] = $dst_rules;
   return $dst_rules;
 }
 
@@ -6143,5 +6120,80 @@ function getMoonPhases ( $year, $month ) {
     $moons = calculateMoonPhases( $year, $month );
   }
   return $moons;
+}
+
+/**
+ * Get the reminder data for a given entry id
+ *
+ * @param int $id         cal_id of requested entry
+ * @param int $tz         timezone offset in hours
+ * @param bool $display   if true, will create a displayable string
+ *
+ * #returns string  $str  string to display Reminder value
+ * #returns array   $reminder 
+ */
+function getReminders ( $id, $tz=0, $display=false ) {
+  $reminder = array();
+  $str = '';
+  //get reminders 
+  $sql = "SELECT  cal_id, cal_date, cal_offset, cal_related, cal_before, " .
+    " cal_repeats, cal_duration, cal_action, cal_last_sent, cal_times_sent " .
+    " FROM webcal_reminders " .
+    " WHERE cal_id = ?  ORDER BY cal_date, cal_offset, cal_last_sent";
+  $res = dbi_execute ( $sql, array( $id ) );
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      $reminder['id'] = $row[0];      
+      if ( $row[1] != 0 ) {
+        $reminder['timestamp'] = $row[0];
+        $reminder['date'] = date( "Ymd", $row[1] + ( $tz * 3600 ));
+        $reminder['time'] = date( "His", $row[1] + ( $tz * 3600 ) );
+      }
+      $reminder['offset'] = $row[2];
+      $reminder['related'] = $row[3];
+      $reminder['before'] = $row[4];
+      $reminder['repeats'] = $row[5];
+      $reminder['duration'] = $row[6];
+      $reminder['action'] = $row[7];
+      $reminder['last_sent'] = $row[8];
+      $reminder['times_sent'] = $row[9];
+    }  
+    dbi_free_result ( $res );
+    //create display string if needed
+    if ( ! empty ( $reminder ) && $display == true ) {
+       $str .= translate ( "Yes" );
+        if ( ! empty ( $reminder['date'] ) ) {
+          $str .= "&nbsp;&nbsp;-&nbsp;&nbsp;";
+          $str .= date ( "Ymd", $reminder['date']);
+        } else if ( $reminder['offset'] > 0 ) {
+          $str .= "&nbsp;&nbsp;-&nbsp;&nbsp;";
+          $minutes = $reminder['offset'];
+          $d = (int) ( $minutes / ONE_DAY );
+          $minutes -= ( $d * ONE_DAY );
+          $h = (int) ( $minutes / 60 );
+          $minutes -= ( $h * 60 );
+          if ( $d > 1 ) {
+            $str .= $d . " " . translate("days") . " ";
+          } else if ( $d == 1 ) {
+           $str .= $d . " " . translate("day") . " ";
+          }
+          if ( $h > 1 ) {
+            $str .= $h . " " . translate("hours") . " ";
+          } else if ( $h == 1 ) {
+           $str .= $h . " " . translate("hour") . " ";
+          }
+          if ( $minutes > 1 ) {
+            $str .= $minutes . " " . translate("minutes");
+          } else if ( $minutes == 1 ) {
+            $str .= $minutes . " " . translate("minute");
+          }
+          $before = ( $reminder['before'] == 'Y'?translate("before" ):translate("after" ) );
+          $related = ( $reminder['related'] == 'S'?translate("start" ):translate("end" ) );
+          $str .= " " . $before . " " . $related;  
+        }
+      return $str;
+    }
+  }
+  return $reminder; 
 }
 ?>

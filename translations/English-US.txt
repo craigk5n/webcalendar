@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 03-02-2006
+# Translation last updated on 03-10-2006
 
 
 ###############################################
@@ -484,6 +484,7 @@ Add Entry: Add Entry
 Details: Details
 Participants: Participants
 Repeat: Repeat
+Reminders: Reminders
 brief-description-help: This should provide a short description (about 20 characters) of the event.  This will represent the event when viewing the calendar.
 Brief Description: Brief Description
 full-description-help: This should complete details of the event.  This information can be seen when a user views the event.
@@ -517,9 +518,6 @@ end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time
 Due Date: Due Date
 Due Time: Due Time
-before task is due: before task is due
-before event: before event
-days: days
 participants-help: Lists the participants of this entry.
 Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
@@ -562,6 +560,17 @@ Inclusions: Inclusions
 Add Exception: Add Exception
 Add Inclusion: Add Inclusion
 Delete Selected: Delete Selected
+Send Reminder: Send Reminder
+When: When
+Use Date/Time: Use Date/Time
+Use Offset: Use Offset
+days: days
+Before: Before
+After: After
+Start: Start
+End/Due: End/Due
+Times: Times
+Every: Every
 Delete entry: Delete entry
 You are not authorized to edit this entry: You are not authorized to edit this entry
 
@@ -1125,10 +1134,7 @@ Status: Status
 Accepted: Accepted
 Needs-Action: Needs-Action
 Declined: Declined
-day: day
 by: by
-minute: minute
-before due time: before due time
 Percentage Complete: Percentage Complete
 External User: External User
 Update Task Percentage: Update Task Percentage
@@ -1156,6 +1162,15 @@ Email all participants: Email all participants
 Show activity log: Show activity log
 Hide activity log: Hide activity log
 Export this entry to: Export this entry to
+
+
+###############################################
+# Page: view_entry_class.php
+#
+day: day
+minute: minute
+before due time: before due time
+before event: before event
 
 
 ###############################################
@@ -1257,18 +1272,16 @@ Saturday: Saturday
 All Attendees: All Attendees
 Busy: Busy
 Tentative: Tentative
+before: before
+after: after
+start: start
+end: end
 
 
 ###############################################
 # Page: includes/help_trailer.php
 #
 Go to: Go to
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Send Reminder
 
 
 ###############################################
@@ -1286,6 +1299,8 @@ Manage calendar of: Manage calendar of
 ###############################################
 # Page: includes/translate.php
 #
+Browser Language Not Found: Browser Language Not Found
+not supported: not supported
 English: English
 English-US: English-US
 Basque: Basque

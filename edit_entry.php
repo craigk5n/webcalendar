@@ -60,7 +60,7 @@ if ( $ALLOW_HTML_DESCRIPTION == "Y" ){
 }
 
 $external_users = $byweekno = $byyearday = $rpt_count = $catNames = $catList="";
-$participants = $exceptions = $inclusions = array();
+$participants = $exceptions = $inclusions = $reminder = array();
 $byday = $bymonth = $bymonthday = $bysetpos = array();
 $wkst = "MO";
 $create_by = $login;
@@ -304,6 +304,10 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     if ( ! empty ( $cat_id ) ) $catList = implode(",", array_unique($cat_id));
   }
 
+  //get reminders 
+  $reminder = getReminders ( $id, $tz_offset[0] ); 
+  $reminder_offset = ( isset ($reminder['offset'] ) ? $reminder['offset']:0);
+  
   //get participants
   $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? AND " .
     " cal_status IN ('A', 'W' )";
@@ -332,6 +336,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
  $completed = '';
  $overall_percent =  array();
  
+ //reminder settings
+ $reminder_offset = ($REMINDER_WITH_DATE =='N' ? $REMINDER_OFFSET:0);
  
   // Anything other then testing for strlen breaks either hour=0 or no hour in URL
   if ( strlen ( $hour ) ) {
@@ -439,20 +445,20 @@ if ( $ALLOW_HTML_DESCRIPTION == "Y" ){
   $textareasize = 'rows="15" cols="50"';
   if ( $use_fckeditor ) {
     $textareasize = 'rows="20" cols="50"';
-    $BodyX = 'onload="timetype_handler();rpttype_handler();toggle_until()"';
+    $BodyX = 'onload="onLoad();"';
     $INC = array ( 'js/edit_entry.php', 'js/visible.php' );
   } else if ( $use_htmlarea ) {
-    $BodyX = 'onload="initEditor();timetype_handler();rpttype_handler();toggle_until()"';
+    $BodyX = 'onload="initEditor();onLoad()"';
     $INC = array ( 'htmlarea/htmlarea.php', 'js/edit_entry.php',
       'js/visible.php', 'htmlarea/core.php' );
   } else {
     // No htmlarea files found...
-    $BodyX = 'onload="timetype_handler();rpttype_handler();toggle_until()"';
+    $BodyX = 'onload="onLoad()"';
     $INC = array ( 'js/edit_entry.php', 'js/visible.php' );
   }
 } else {
   $textareasize = 'rows="5" cols="40"';
-  $BodyX = 'onload="timetype_handler();rpttype_handler();toggle_until()"';
+  $BodyX = 'onload="onLoad()"';
   $INC = array('js/edit_entry.php','js/visible.php');
 }
 
@@ -497,6 +503,9 @@ if ( ! empty ( $parent ) )
  <?php } ?> 
  <?php if ( $DISABLE_REPEATING_FIELD != "Y" ) { ?>
    <span class="tabbak" id="tab_pete"><a href="#tabpete" onclick="return showTab('pete')"><?php etranslate("Repeat") ?></a></span>
+ <?php } ?>
+ <?php if ( $DISABLE_REMINDER_FIELD != "Y" ) { ?>
+   <span class="tabbak" id="tab_reminder"><a href="#tabreminder" onclick="return showTab('reminder')"><?php etranslate("Reminders") ?></a></span>
  <?php } ?>
 </div>
 <?php } ?>
@@ -797,41 +806,21 @@ if ( $TIME_FORMAT == "12" ) {
 <?php } ?>
 
 </table>
-<table>
+
 <?php
 // site-specific extra fields (see site_extras.php)
 // load any site-specific fields and display them
 if ( $id > 0 )
   $extras = get_site_extra_fields ( $id );
-  //if we have more than one reminder (per RFC2445) then append some data
-  //to the $site_extras array for diplay
-  if ( ! empty ( $extras ) ) {
-   $rem_count = 0;
-    foreach ( $extras as $K => $V) {
-      if ( $V['cal_type'] == EXTRA_REMINDER ) {
-        $rem_count++;
-        if ( $rem_count > 0 ) {
-          $rem_array = array ( $V['cal_name'], 'Send Reminder', EXTRA_REMINDER, $V['cal_data'], 6);
-          $site_additions[] = $rem_array;
-          $site_extras[count($site_extras)] = $rem_array;
-        }
-      } 
-    }
- } 
-  if ( ! empty ( $site_additions ) ) {
-   sort ( $site_additions );
-    $serial_site_extras = base64_encode( serialize ( $site_additions ) );
-    echo "<input type=\"hidden\" name=\"serial_site_extras\" value=\'$serial_site_extras\' />";
- }
+if ( isset ( $extras ) ) 
+  echo "<table>";
 for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   $extra_name = $site_extras[$i][0];
   $extra_descr = $site_extras[$i][1];
   $extra_type = $site_extras[$i][2];
   $extra_arg1 = $site_extras[$i][3];
   $extra_arg2 = $site_extras[$i][4];
-  //echo "<tr><td>Extra " . $extra_name . " - " . $site_extras[$i][2] . 
-  //  " - " . $extras[$extra_name]['cal_name'] .
-  //  "arg1: $extra_arg1, arg2: $extra_arg2 </td></tr>\n";
+
   if ( $extra_type == EXTRA_MULTILINETEXT )
     echo "<tr><td style=\"vertical-align:top; font-weight:bold;\"><br />\n";
   else
@@ -842,7 +831,8 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
       "\" value=\"" . ( empty ( $extras[$extra_name]['cal_data'] ) ?
       "" : htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) . "\" />";
   } else if ( $extra_type == EXTRA_EMAIL ) {
-    echo "<input type=\"text\" size=\"30\" name=\"" . $extra_name . "\" value=\"" . ( empty ( $extras[$extra_name]['cal_data'] ) ?
+    echo "<input type=\"text\" size=\"30\" name=\"" . $extra_name . 
+      "\" value=\"" . ( empty ( $extras[$extra_name]['cal_data'] ) ?
       "" : htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) . "\" />";
   } else if ( $extra_type == EXTRA_DATE ) {
     if ( ! empty ( $extras[$extra_name]['cal_date'] ) )
@@ -875,54 +865,6 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
         echo ">" . $userlist[$j]['cal_fullname'] . "</option>\n";
     }
     echo "</select>\n";
-  } else if ( $extra_type == EXTRA_REMINDER ) {
-    $rem_status = 0; // don't send
-    echo "<label><input type=\"radio\" name=\"" . $extra_name . "\" value=\"1\"";
-    if ( empty ( $id ) ) {
-      // adding event... check default
-      if ( ( $extra_arg2 & EXTRA_REMINDER_DEFAULT_YES ) > 0 ) 
-      $rem_status = 1;
-    } else {
-      // editing event... check status
-      if ( ! empty ( $extras[$extra_name]['cal_remind'] ) )
-        $rem_status = 1;
-    }
-    if ( $rem_status )
-      echo " checked=\"checked\"";
-    echo " />";
-    etranslate ( "Yes" );
-    echo "</label>&nbsp;<label><input type=\"radio\" name=\"" . $extra_name . "\" value=\"0\"";
-    if ( ! $rem_status )
-      echo " checked=\"checked\"";
-    echo " />";
-    etranslate ( "No" );
-    echo "</label>&nbsp;&nbsp;";
-    if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
-      if ( ! empty ( $extras[$extra_name]['cal_date'] ) &&
-        $extras[$extra_name]['cal_date'] > 0 )
-        print_date_selection ( $extra_name, $extras[$extra_name]['cal_date'] );
-      else
-        print_date_selection ( $extra_name, $cal_date );
-    } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
-      if ( ! empty ( $extras[$extra_name]['cal_data'] ) )
-        $minutes = $extras[$extra_name]['cal_data'];
-      else
-        $minutes = $extra_arg1;
-      // will be specified in total minutes
-      $d = (int) ( $minutes / ( 24 * 60 ) );
-      $minutes -= ( $d * 24 * 60 );
-      $h = (int) ( $minutes / 60 );
-      $minutes -= ( $h * 60 );
-      $extra_text = ( $eType == 'task'? 
-        translate("before task is due"):translate("before event"));
-      echo "<label><input type=\"text\" size=\"2\" name=\"" . $extra_name .
-        "_days\" value=\"$d\" /> " .  translate("days") . "</label>&nbsp;\n";
-      echo "<label><input type=\"text\" size=\"2\" name=\"" . $extra_name .
-        "_hours\" value=\"$h\" /> " .  translate("hours") . "</label>&nbsp;\n";
-      echo "<label><input type=\"text\" size=\"2\" name=\"" . $extra_name .
-        "_minutes\" value=\"$minutes\" /> " .  translate("minutes") . 
-          "&nbsp;$extra_text</label>";
-    }
   } else if ( $extra_type == EXTRA_SELECTLIST ) {
     // show custom select list.
     echo "<select name=\"" . $extra_name . "\">\n";
@@ -937,11 +879,12 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     }
     echo "</select>\n";
   }
-  echo "</td></tr>\n";
+  echo "</td></tr>\n"; 
 }
+if ( isset ( $extras ) )
+  echo "</table>\n";
 // end site-specific extra fields
 ?>
-</table>
 <?php if ( $useTabs ) { ?>
 </div>
 <?php } /* $useTabs */ ?>
@@ -1072,7 +1015,7 @@ if ( $single_user == "N" && $show_participants ) {
 <tr id="rptenddate1" style="visibility:hidden;">
  <td class="tooltip" title="<?php etooltip("repeat-end-date-help")?>" rowspan="3">
   <label for="rpt_day"><?php etranslate("Ending")?>:</label></td>
- <td colspan="2" class="boxtop"><input  type="radio" name="rpt_end_use" id="rpt_untilf" value="f" <?php 
+ <td colspan="2" class="boxleft boxtop boxright"><input  type="radio" name="rpt_end_use" id="rpt_untilf" value="f" <?php 
   echo (  empty ( $rpt_end ) && empty ( $rpt_count )? " checked=\"checked\"" : "" ); 
  ?>  onclick="toggle_until()" /><label><?php etranslate("Forever")?></label>
  </td></tr>
@@ -1292,6 +1235,174 @@ if ( $TIME_FORMAT == "12" ) {
 </div> <!-- End tabscontent_pete -->
 <?php } /* $useTabs */ ?>
 <?php } ?>
+
+<!-- REMINDER INFO -->
+<?php if ( $DISABLE_REMINDER_FIELD != "Y" ) { ?>
+<?php if ( $useTabs ) { ?>
+<a name="tabreminder"></a>
+<div id="tabscontent_reminder">
+<?php } /* $useTabs */ ?>
+
+<table border="0" cellspacing="0" cellpadding="3">
+   <?php 
+    echo "<input type=\"hidden\" name=\"rem_action\" value=\"" . 
+      ( ! empty ( $reminder['action'] )? $reminder['action']: "EMAIL" ) . "\" />";
+    echo "<input type=\"hidden\" name=\"rem_last_sent\" value=\"" . 
+      ( ! empty ( $reminder['last_sent'] )? $reminder['last_sent']: 0 ) . "\" />";
+    echo "<input type=\"hidden\" name=\"rem_times_sent\" value=\"" . 
+      ( ! empty ( $reminder['times_sent'] )? $reminder['times_sent']: 0 ) . "\" />";
+    echo "<tr><td class=\"tooltip\">" . translate("Send Reminder") . ":</td>";  
+    $rem_status = ( count ( $reminder) || $REMINDER_DEFAULT =='Y'?true:false );
+    echo "<td colspan=\"3\">";
+    echo "<label><input type=\"radio\" name=\"reminder\" id=\"reminderYes\" value=\"1\"";
+
+    if ( $rem_status )
+      echo " checked=\"checked\"";
+    echo " onclick=\"toggle_reminders()\" />";
+    echo translate ( "Yes" ) . "</label>&nbsp;<label>";
+    echo "<input type=\"radio\" name=\"reminder\" id=\"reminderNo\" value=\"0\"";
+    if ( ! $rem_status )
+      echo " checked=\"checked\"";
+    echo " onclick=\"toggle_reminders()\" />" . translate ( "No" ) . "</label></td></tr>";
+    $rem_use_date = ( ! empty ( $reminder['date'] ) || 
+      ( $reminder_offset == 0 && $REMINDER_WITH_DATE == 'Y' )? true:false);
+    ?> 
+    <tbody id="reminder_when"><tr>
+    <td class="tooltip" rowspan="6"><?php etranslate("When"); ?>:</td>
+    <td class="boxtop boxleft" width="20%"><label>
+     <input  type="radio" name="rem_when" id="rem_when_date" value="Y" <?php 
+     if ( $rem_use_date )
+       echo  " checked=\"checked\""; 
+ ?>  onclick="toggle_rem_when()" /><?php etranslate ("Use Date/Time"); ?>&nbsp;<label>
+    </td><td class="boxtop boxright" nowrap="nowrap" colspan="2"> 
+    <?php 
+      if ( $reminder_offset == 0 && ! empty ( $reminder['date'] ) )
+        print_date_selection ( 'reminder_', $reminder['date'] );
+      else
+        print_date_selection ( 'reminder_', $cal_date );
+      ?>
+     </td></tr>
+     <tr><td class="boxleft"></td><td class="boxright"  colspan="2" nowrap="nowrap">
+    <?php
+    if ( empty ( $reminder['time'] ) ) $reminder['time'] = 0;
+    $remh12 = floor($reminder['time'] / 10000);
+    $remminute = ( $reminder['time'] / 100 ) % 100;
+    if ( $TIME_FORMAT == "12" ) {
+      if ( $remh12 < 12 ) {
+        $remamsel = " checked=\"checked\""; $rempmsel = "";
+      } else {
+        $remamsel = ""; $rempmsel = " checked=\"checked\"";
+      }
+      $remh12 %= 12;
+      if ( $remh12 == 0 ) $remh12 = 12;
+    }
+    ?>
+    <input type="text" name="remhour" id="remhour" size="2" value="<?php echo $remh12;
+     ?>" maxlength="2" />:<input type="text" name="remminute" id="remminute" size="2" value="<?php 
+     printf ( "%02d", $remminute );?>" maxlength="2" />
+    <?php
+    if ( $TIME_FORMAT == "12" ) {
+      echo "<label><input type=\"radio\" name=\"remampm\" id=\"remam\" " .
+        "value=\"am\" $remamsel />&nbsp;" . translate("am") . "</label>\n";
+      echo "<label><input type=\"radio\" name=\"remampm\" id=\"rempm\" " .
+        "value=\"pm\" $rempmsel />&nbsp;" . translate("pm") . "</label></td></tr>\n";
+    }      
+    ?>  
+     <tr><td class="boxleft boxright"  height="20px" colspan="3"></td></tr>  
+     <tr>
+      <td class="boxleft"><label>
+     <input  type="radio" name="rem_when" id="rem_when_offset" value="N" <?php 
+     if ( ! $rem_use_date )
+       echo  " checked=\"checked\"";  
+ ?>  onclick="toggle_rem_when()" /><?php etranslate ("Use Offset"); ?>&nbsp;<label>
+    </td><td class="boxright" nowrap="nowrap" colspan="2">
+    <?php
+      if ( $reminder_offset > 0 && ! empty ( $reminder['offset'] ) )
+        $rem_minutes = $reminder['offset'];
+      else
+        $rem_minutes = $REMINDER_OFFSET;
+      // will be specified in total minutes
+      $rem_days = (int) ( $rem_minutes / ( 24 * 60 ) );
+      $rem_minutes -= ( $rem_days * 24 * 60 );
+      $rem_hours = (int) ( $rem_minutes / 60 );
+      $rem_minutes -= ( $rem_hours * 60 );
+    
+      echo "<label><input type=\"text\" size=\"2\" name=\"rem_days\" ".
+        "value=\"$rem_days\" /> " .  translate("days") . "</label>&nbsp;\n";
+      echo "<label><input type=\"text\" size=\"2\" name=\"rem_hours\" " .
+        "value=\"$rem_hours\" /> " .  translate("hours") . "</label>&nbsp;\n";
+      echo "<label><input type=\"text\" size=\"2\" name=\"rem_minutes\" " .
+        "value=\"$rem_minutes\" /> " .  translate("minutes") . "</label>";
+      echo "</td></tr>\n";
+      echo "<tr>";    
+    $rem_before = ( empty ( $reminder['before'] ) || 
+      $reminder['before'] == 'Y' ?true:false );
+    echo "<td class=\"boxleft\"></td>\n<td>";
+    echo "<label><input type=\"radio\" name=\"rem_before\" id=\"rem_beforeY\" value=\"Y\"";
+
+    if ( $rem_before )
+      echo " checked=\"checked\"";
+    echo " />" . translate ( "Before" );
+    echo "</label>&nbsp;</td>\n<td class=\"boxright\">";
+    echo "<label><input type=\"radio\" name=\"rem_before\" id=\"rem_beforeN\" value=\"N\"";
+    if ( ! $rem_before )
+      echo " checked=\"checked\"";
+    echo " />" . translate ( "After" ) ."</label></td></tr>\n";
+
+      echo "<tr>"; 
+    $rem_related = ( empty ( $reminder['related'] ) || 
+      $reminder['related'] == 'S' ?true:false );
+    echo "<td class=\"boxleft boxbottom\"></td>\n<td class=\"boxbottom\">";
+    echo "<label><input type=\"radio\" name=\"rem_related\" id=\"rem_relatedS\" value=\"S\"";
+
+    if ( $rem_related )
+      echo " checked=\"checked\"";
+    echo " />" . translate ( "Start" );
+    echo "</label>&nbsp;</td>\n<td  class=\"boxbottom boxright\">";
+    echo "<label><input type=\"radio\" name=\"rem_related\" id=\"rem_relatedE\" value=\"E\"";
+    if ( ! $rem_related )
+      echo " checked=\"checked\"";
+    echo " />" . translate ( "End/Due" ) ."</label></td></tr>\n";    
+    echo "<tr><td colspan=\"4\"></td></tr></tbody>";
+    //Reminder Repeats
+      if ( isset (  $reminder['repeats'] ) )
+        $rem_rep_count = $reminder['repeats'];
+      else
+        $rem_rep_count = 0;      
+      if ( isset (  $reminder['duration'] ) )
+        $rem_rep_minutes = $reminder['duration'];
+      else
+        $rem_rep_minutes = 0;
+      // will be specified in total minutes
+      $rem_rep_days = (int) ( $rem_rep_minutes / ( 24 * 60 ) );
+      $rem_rep_minutes -= ( $rem_rep_days * 24 * 60 );
+      $rem_rep_hours = (int) ( $rem_rep_minutes / 60 );
+      $rem_rep_minutes -= ( $rem_rep_hours * 60 );
+    echo "<tbody  id=\"reminder_repeat\"><tr>";
+    echo "<td class=\"tooltip\" rowspan=\"2\">" .translate("Repeat") . ":</td>\n";
+    echo "<td class=\"boxleft boxtop\">";
+    echo "&nbsp;&nbsp;&nbsp;<label>" . translate("Times") . "</label></td>";
+    echo "<td class=\"boxright boxtop\" colspan=\"2\">";
+    echo "<input type=\"text\" size=\"2\" name=\"rem_rep_count\" ".
+      "value=\"$rem_rep_count\" /></label></td></tr>\n";
+    echo "<tr id=\"rem_repeats\"><td class=\"boxleft boxbottom\">";
+    echo "&nbsp;&nbsp;&nbsp;<label>" . translate ( "Every" ) . "</label></td>";
+    echo "<td class=\"boxright boxbottom\" colspan=\"2\">";
+    echo "<label><input type=\"text\" size=\"2\" name=\"rem_rep_days\" ".
+      "value=\"$rem_rep_days\" /> " .  translate("days") . "</label>&nbsp;\n";
+    echo "<label><input type=\"text\" size=\"2\" name=\"rem_rep_hours\" " .
+      "value=\"$rem_rep_hours\" /> " .  translate("hours") . "</label>&nbsp;\n";
+    echo "<label><input type=\"text\" size=\"2\" name=\"rem_rep_minutes\" " .
+      "value=\"$rem_rep_minutes\" /> " .  translate("minutes") . "</label>";
+    echo "</td></tr></tbody>\n";
+    
+        
+    echo "</table>\n";
+    ?>    
+<?php if ( $useTabs ) { ?>
+</div> <!-- End tabscontent_pete -->
+<?php } /* $useTabs */ ?>
+<?php } ?>
 </div> <!-- End tabscontent -->
 <table  style="border-width:0px;">
 <tr><td>
@@ -1332,3 +1443,4 @@ if ( $TIME_FORMAT == "12" ) {
 <?php print_trailer(); ?>
 </body>
 </html>
+

@@ -413,6 +413,10 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
   $category = implode ( ", ", $categories);
   }
 }
+
+  //get reminders 
+  $reminder = getReminders ( $id, $tz_offset[0], true );
+  
 ?>
 <h2><?php echo  $name ; ?></h2>
 <table border="0" width="100%">
@@ -599,6 +603,13 @@ if ( $single_user == "N" && ! empty ( $createby_fullname )  ) {
    ?>
 </td></tr>
 <?php
+//display the reminder info if found
+if ( ! empty ( $reminder ) ) {
+  echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n" .
+      translate ( "Send Reminder" ) . ":</td>\n";
+  echo "<td>" . $reminder . "</td></tr>\n";
+}
+
 // load any site-specific fields and display them
 $extras = get_site_extra_fields ( $id );
 for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
@@ -630,39 +641,6 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
       echo nl2br ( $extras[$extra_name]['cal_data'] );
     } else if ( $extra_type == EXTRA_USER ) {
       echo $extras[$extra_name]['cal_data'];
-    } else if ( $extra_type == EXTRA_REMINDER ) {
-      if ( $extras[$extra_name]['cal_remind'] <= 0 ) {
-        etranslate ( "No" );
-      } else {
-        etranslate ( "Yes" );
-        if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
-          echo "&nbsp;&nbsp;-&nbsp;&nbsp;";
-          echo date_to_str ( $extras[$extra_name]['cal_date']);
-        } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
-          echo "&nbsp;&nbsp;-&nbsp;&nbsp;";
-          $minutes = $extras[$extra_name]['cal_data'];
-          $d = (int) ( $minutes / ( 24 * 60 ) );
-          $minutes -= ( $d * 24 * 60 );
-          $h = (int) ( $minutes / 60 );
-          $minutes -= ( $h * 60 );
-          if ( $d > 1 ) {
-            echo $d . " " . translate("days") . " ";
-          } else if ( $d == 1 ) {
-            echo $d . " " . translate("day") . " ";
-          }
-          if ( $h > 1 ) {
-            echo $h . " " . translate("hours") . " ";
-          } else if ( $h == 1 ) {
-            echo $h . " " . translate("hour") . " ";
-          }
-          if ( $minutes > 1 ) {
-            echo $minutes . " " . translate("minutes");
-          } else if ( $minutes == 1 ) {
-            echo $minutes . " " . translate("minute");
-          }
-          echo " " . ( $eType == 'task'? translate("before due time" ) : translate("before event" ));
-        }
-      }
     } else if ( $extra_type == EXTRA_SELECTLIST ) {
       echo $extras[$extra_name]['cal_data'];
     }
