@@ -82,7 +82,24 @@ if ( empty ($upcoming_initialized)) {
 $save_current_working_dir= getcwd();
 chdir(dirname(__FILE__));
   
-include_once 'includes/init.php';
+require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
+   
+$WebCalendar =& new WebCalendar ( __FILE__ );    
+   
+include 'includes/config.php';    
+include 'includes/dbi4php.php';    
+include 'includes/functions.php';    
+   
+$WebCalendar->initializeFirstPhase();    
+ 
+include "includes/$user_inc";    
+include 'includes/translate.php';    
+   
+include 'includes/site_extras.php';    
+
+$WebCalendar->initializeSecondPhase();
 //This must contain the file name that this file is saved under.  It is 
 //used to determine whether the file is being run independently or
 //as an include file.  Change as necessary!
