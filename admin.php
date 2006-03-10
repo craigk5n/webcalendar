@@ -196,7 +196,8 @@ if ( ! $error ) {
     }
    ?>
   </select><br />
-  <?php etranslate("Your browser default language is"); echo " "; etranslate(get_browser_language()); echo "."; ?>
+  <?php echo translate("Your browser default language is") . " " . 
+   get_browser_language ( true )  . "."; ?>
  </td></tr>
 <tr><td><label>
  <?php etranslate("Allow user to use themes")?>:</label></td><td colspan="3">

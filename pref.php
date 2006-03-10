@@ -251,7 +251,8 @@ if ( empty ( $user ) || $user == $login ) {
 ?>
  </select>
  <br />
- <?php echo translate("Your browser default language is") . " " . translate ( get_browser_language () ) . "."; ?>
+ <?php echo translate("Your browser default language is") . " " . 
+   get_browser_language ( true )  . "."; ?>
 </td></tr>
 <tr><td class="tooltipselect" title="<?php etooltip("tz-help")?>">
   <label for="pref_TIMEZONE"><?php etranslate("Timezone Selection")?>:</label></td><td>
@@ -345,7 +346,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   }
   ?>
 </select>&nbsp;<?php echo date_to_str ( date ("Ymd"), 
-	  $DATE_FORMAT, false, false );?>
+    $DATE_FORMAT, false, false );?>
 <br />
 <select name="pref_DATE_FORMAT_MY">
 <?php
@@ -357,7 +358,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   }
 ?>
 </select>&nbsp;<?php echo date_to_str ( date ("Ymd"), 
-	  $DATE_FORMAT_MY, false, false );?>
+    $DATE_FORMAT_MY, false, false );?>
 <br />
 <select name="pref_DATE_FORMAT_MD">
 <?php
@@ -369,7 +370,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   }
 ?>
 </select>&nbsp;<?php echo date_to_str ( date ("Ymd"), 
-	  $DATE_FORMAT_MD, false, false );?>
+    $DATE_FORMAT_MD, false, false );?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("time-format-help")?>">

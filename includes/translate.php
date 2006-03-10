@@ -108,18 +108,24 @@ function load_translation_text () {
 /**
  * Gets browser-specified language preference.
  *
+ * Aparam  bool $pref  true is we want to simply display value
+ *                     without affecting translations.
  * @return string Preferred language
  *
  * @ignore
  */
-function get_browser_language () {
+function get_browser_language ( $pref=false ) {
   global $HTTP_ACCEPT_LANGUAGE, $browser_languages;
   $ret = "";
   if ( empty ( $HTTP_ACCEPT_LANGUAGE ) &&
     isset ( $_SERVER["HTTP_ACCEPT_LANGUAGE"] ) )
     $HTTP_ACCEPT_LANGUAGE = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
   if (  empty ( $HTTP_ACCEPT_LANGUAGE ) ) {
-    return "none";
+    if ( $pref == false ) {
+      return "English-US";
+    }else {
+      return translate ( "Browser Language Not Found" );
+    }
   } else {
     $langs = explode ( ",", $HTTP_ACCEPT_LANGUAGE );
     for ( $i = 0; $i < count ( $langs ); $i++ ) {
@@ -130,10 +136,10 @@ function get_browser_language () {
       }
     }
   }
-  //if ( strlen ( $HTTP_ACCEPT_LANGUAGE ) )
-  //  return "none ($HTTP_ACCEPT_LANGUAGE not supported)";
-  //else
-    return "none";
+  if ( strlen ( $HTTP_ACCEPT_LANGUAGE )  && $pref == true)
+    return $HTTP_ACCEPT_LANGUAGE . " ( " . translate ( "not supported" ) . " )";
+  else
+    return "English-US";
 } 
 
 /**
@@ -283,6 +289,7 @@ function etooltip ( $str ) {
       "zh-tw" => "Chinese-Big5",   // Traditional Chinese
       "cs" => "Czech",
       "en" => "English-US",
+      "en-ca" => "English-US",
       "en-us" => "English-US",
       "en-gb" => "English-US",
       "da" => "Danish",
@@ -350,11 +357,11 @@ function etooltip ( $str ) {
     // translate("Swedish")
     // translate("Turkish")
     // translate("Welsh")
-		
+    
 //General purpose translations that may be used elsewhere
 //as variables and not picked up by update_translation.pl
    // translate ( "task" );
    // translate ( "event" );
    // translate ( "journal" );
-	 
+   
 ?>
