@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug  1445762: "cyclic link" when trying to remote subscribe
+   but this may affct bug 1403574
  - Fixed bug 1440066: Administrative Tools graphical problem in IE
  - Fixed bug 1411755: Error after editing entry that has a reminder set
  - Fixed bug 1445157: Canadian english not defined, fix included
