@@ -150,6 +150,7 @@ a:hover {
 #tabscontent_participants,
 #tabscontent_sched,
 #tabscontent_pete,
+#tabscontent_reminder,
 #tabscontent_nonusers,
 #tabscontent_themes,
 #tabscontent_boss,
@@ -1090,9 +1091,14 @@ abbr {
   background-color:#FF5050;
   text-align:center;
 }
-.boxtop {
+.box {
  border-top: 1px solid #888888;
  border-left: 1px solid #888888;
+ border-right: 1px solid #888888;
+ border-bottom: 1px solid #888888;
+}
+.boxtop {
+ border-top: 1px solid #888888;
 }
 .boxleft {
  border-left: 1px solid #888888;

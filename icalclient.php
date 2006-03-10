@@ -86,7 +86,7 @@
  * Better support for event reminders.  Reminders for past events
  * are not sent currently.  This is because Mozilla Calendar may
  * popup all reminders (even ones that are years old) when the
- * calendar is loaded.  Ideally, we should check the webcal_reminder_log
+ * calendar is loaded.  Ideally, we should check the webcal_reminders
  * table to see if an event reminder was already sent.  Also, not
  * sure if reminders for repeated events are handled properly yet.
  *  

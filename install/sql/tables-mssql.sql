@@ -90,11 +90,18 @@ CREATE TABLE webcal_site_extras (
   cal_remind INT DEFAULT '0',
   cal_data TEXT
 );
-CREATE TABLE webcal_reminder_log (
-  cal_id INT DEFAULT '0' NOT NULL,
-  cal_name VARCHAR(25) NOT NULL,
-  cal_event_date INT NOT NULL DEFAULT 0,
-  cal_last_sent INT NOT NULL DEFAULT 0
+CREATE TABLE webcal_reminders (
+  cal_id INT NOT NULL DEFAULT '0',
+  cal_date INT NOT NULL DEFAULT '0',
+  cal_offset INT NOT NULL DEFAULT '0',
+  cal_related INT NOT NULL DEFAULT 'S',
+  cal_before CHAR(1) NOT NULL DEFAULT 'Y',
+  cal_last_sent INT default NULL,
+  cal_repeats INT NOT NULL DEFAULT '0',
+  cal_duration INT NOT NULL DEFAULT '0',
+  cal_times_sent INT NOT NULL DEFAULT '0',
+  cal_action VARCHAR(12) NOT NULL DEFAULT 'EMAIL',
+  PRIMARY KEY ( cal_id )
 );
 CREATE TABLE webcal_group (
   cal_group_id INT NOT NULL,

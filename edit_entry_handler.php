@@ -534,11 +534,6 @@ if ( empty ( $error ) ) {
     }
   }     
   // add site extras
-  //we'll ignore the site_extra settings and use the form values
-  if ( ! empty ( $serial_site_extras ) ) {
-    $site_extras_additions = unserialize ( base64_decode ($serial_site_extras ) );
-    $site_extras = array_merge ( $site_extras, $site_extras_additions );
-  }
   for ( $i = 0; $i < count ( $site_extras ) && empty ( $error ); $i++ ) {
     $sql = "";
     $extra_name = $site_extras[$i][0];
@@ -561,28 +556,6 @@ if ( empty ( $error ) ) {
         $sql = "INSERT INTO webcal_site_extras " .
           "( cal_id, cal_name, cal_type, cal_data ) VALUES ( ?, ?, ?, ? )";
     $query_params = array( $id, $extra_name, $extra_type, $value );
-      } else if ( $extra_type == EXTRA_REMINDER && $value == "1" ) {
-        if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
-          $yname = $extra_name . "year";
-          $mname = $extra_name . "month";
-          $dname = $extra_name . "day";
-          $edate = sprintf ( "%04d%02d%02d", $$yname, $$mname, $$dname );
-          $sql = "INSERT INTO webcal_site_extras " .
-            "( cal_id, cal_name, cal_type, cal_remind, cal_date ) VALUES ( ?, ?, ?, ?, ? )";
-      $query_params = array( $id, $extra_name, $extra_type, 1, $edate );
-        } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
-          $dname = $extra_name . "_days";
-          $hname = $extra_name . "_hours";
-          $mname = $extra_name . "_minutes";
-          $minutes = ( $$dname * 24 * 60 ) + ( $$hname * 60 ) + $$mname;
-          $sql = "INSERT INTO webcal_site_extras " .
-            "( cal_id, cal_name, cal_type, cal_remind, cal_data ) VALUES ( ?, ?, ?, ?, ? )";
-      $query_params = array( $id, $extra_name, $extra_type, 1, $minutes );
-        } else {
-          $sql = "INSERT INTO webcal_site_extras " .
-            "( cal_id, cal_name, cal_type, cal_remind ) VALUES ( ?, ?, ?, ? )";
-      $query_params = array( $id, $extra_name, $extra_type, 1 );
-        }
       } else if ( $extra_type == EXTRA_DATE )  {
         $yname = $extra_name . "year";
         $mname = $extra_name . "month";
@@ -601,6 +574,52 @@ if ( empty ( $error ) ) {
     }
   } //end for site_extras loop
 
+  //process reminder
+  if ( ! dbi_execute ( "DELETE FROM webcal_reminders WHERE cal_id = ?", array( $id ) ) )
+    $error = translate("Database error") . ": " . dbi_error ();
+  if ( $DISABLE_REMINDER_FIELD != "Y" && $reminder == true ) {
+    if ( empty ( $rem_related ) ) $rem_related = 'N';
+    if ( empty ( $rem_before ) ) $rem_before = 'Y';
+    $reminder_date = $reminder_offset = $reminder_duration = $reminder_repeats = 0;
+    if ( $rem_when == 'Y' ) { //use date
+      if ( empty ( $remhour ) ) $remhour = 0;
+      if ( empty ( $remminute ) ) $remminute = 0;  
+      if ( $TIME_FORMAT == '12' && $remhour < 12 ) {
+        if ( $remampm == 'pm' )
+         $remhour += 12;
+      } elseif ($TIME_FORMAT == '12' && $remhour == '12' && $remampm == 'am' ) {
+        $remhour = 0;
+      }
+      if ( $remhour > 0  &&  $TIME_FORMAT == '12' ) {
+        $remampmt = $remampm;
+        //This way, a user can pick am and still
+        //enter a 24 hour clock time.
+        if ($remhour > 12 && $remampm == 'am') {
+          $remampmt = 'pm';
+        }
+        $remhour %= 12;
+        if ( $remampmt == 'pm' ) {
+          $remhour += 12;
+        }
+      }
+      $reminder_date = mktime ( $remhour - $tz_offset[0], $remminute, 0, $reminder_month,
+        $reminder_day, $reminder_year );  
+    } else { //use offset
+      $reminder_offset = ($rem_days * 60 * 24 ) + ( $rem_hours * 60 ) + $rem_minutes;
+    }
+    if ( $rem_rep_count > 0 ) {
+      $reminder_repeats = $rem_rep_count;
+      $reminder_duration = ($rem_rep_days * 60 * 24 ) + 
+        ( $rem_rep_hours * 60 ) + $rem_rep_minutes;      
+    }
+    $sql = "INSERT INTO webcal_reminders ( cal_id, cal_date, cal_offset, cal_related, " .
+      "cal_before, cal_repeats, cal_duration, cal_action, cal_last_sent, cal_times_sent ) " .
+      " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+      if ( ! dbi_execute ( $sql, array( $id, $reminder_date, $reminder_offset, 
+        $rem_related, $rem_before,$reminder_repeats, $reminder_duration, $rem_action, 
+        $rem_last_sent, $rem_times_sent ) ) )
+        $error = translate("Database error") . ": " . dbi_error ();    
+  }
   // clearly, we want to delete the old repeats, before inserting new...
   if ( empty ( $error ) ) {
     if ( ! dbi_execute ( "DELETE FROM webcal_entry_repeats WHERE cal_id = ?", array( $id ) ) ) {
@@ -693,7 +712,8 @@ if ( empty ( $error ) ) {
        for ( $i = 0; $i < count ( $exceptions ); $i++ ) {
          $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
            "VALUES ( ?, ?, ? )";
-         if ( ! dbi_execute ( $sql, array( $id, substr ($exceptions[$i],1,8 ), ( ( substr ($exceptions[$i],0, 1 ) == "+" ) ? 0 : 1 ) ) ) ) {
+         if ( ! dbi_execute ( $sql, array( $id, substr ($exceptions[$i],1,8 ), 
+           ( ( substr ($exceptions[$i],0, 1 ) == "+" ) ? 0 : 1 ) ) ) ) {
            $error = translate("Database error") . ": " . dbi_error ();
          }
        }

@@ -550,34 +550,46 @@ function export_alarm_vcal($id,$date,$time=0) {
 // TODO: need to loop through the site_extras[] array to determine
 // what type of reminder (with date or with offset) since this info
 // is not stored in the database.  Then, use that to determine when
-// the reminder should be sent.  Check the webcal_reminder_log to
+// the reminder should be sent.  Check the webcal_reminders table to
 // make sure the reminder has not already been sent.
 function export_alarm_ical ( $id, $date, $description ) {
   global $cal_type;
   
   $ret = '';
+  $reminder = array();
   // Don't send reminder for event in the past
   if ( $date < date("Ymd") )
     return;
 
-  $sql = "SELECT cal_data FROM webcal_site_extras " .
-    "WHERE cal_id = ? AND cal_type = " . EXTRA_REMINDER .  " AND " .
-    "cal_remind = 1";
-  $res = dbi_execute ( $sql , array ( $id ) );
-  $row = dbi_fetch_row ( $res );
-  dbi_free_result ( $res );
+  //get reminders 
+  $reminder = getReminders ( $id );
 
-  if ( $row ) {
+  if ( ! empty( $reminder ) ) {
     //Sunbird requires this line
-    $ret .= "X-MOZILLA-ALARM-DEFAULT-LENGTH:" . $row[0] . "\r\n";
+    if ( ! empty ( $reminder['offset'] ) )
+      $ret .= "X-MOZILLA-ALARM-DEFAULT-LENGTH:" . $reminder['offset'] . "\r\n";
     $ret .= "BEGIN:VALARM\r\n";
-  $ret .= "TRIGGER";
-  //Tasks will use Alarms related to due date
-    if ( $cal_type == "T" || $cal_type == "N" ) {
-    $ret .= ";RELATED=END";  
-  }
-  $ret .= ":-PT".$row[0]."M\r\n";
-    $ret .= "ACTION:DISPLAY\r\n";
+    $ret .= "TRIGGER";
+    
+    if ( ! empty ( $reminder['date'] ) ) {
+       $ret .= ";VALUE=DATE-TIME:" . $reminder['date'] . "T" . $reminder['time'] . "Z\r\n";
+    }
+    //related to entry end/due date/time
+    if ( $reminder['related'] == 'E' ) {
+      $ret .= ";RELATED=END";  
+    }
+    if ( ! empty ( $reminder['offset'] ) ) {
+      //before edge needs a '-' 
+      $sign = ( $reminder['before'] == 'Y' ? '-' : '' );
+      $ret .= ":" . $sign . "PT". $reminder['offset'] ."M\r\n";    
+    }
+    
+    if ( ! empty ( $reminder['repeats'] ) ) {
+      $ret .= "REPEAT:" . $reminder['repeats'] . "\r\n";
+      $ret .= "DURATION:PT" . $reminder['duration'] . "M\r\n";       
+    
+    }
+    $ret .= "ACTION:" . $reminder['action']. "\r\n";
 
     $array = export_fold_lines ( $description, "utf8" );
     while  ( list ( $key, $value ) = each ( $array ) ) {
@@ -1522,10 +1534,9 @@ foreach ( $data as $Entry ){
        dbi_execute ( "DELETE FROM webcal_entry_repeats WHERE cal_id = ?" , array ( $id ) );
        dbi_execute ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?" , array ( $id )  );
      }
-   
+     $names = array();
+     $values = array();   
      if (! empty ($Entry['Repeat']['Frequency'])) {
-       $names = array();
-       $values = array();
        $names[] = 'cal_id';
        $values[]  = $id;
    
@@ -1599,7 +1610,8 @@ foreach ( $data as $Entry ){
       $string_values .= '?';
       $sql_params[] = $values[$f];
     }
-    $sql = "INSERT INTO webcal_entry_repeats ( " . $string_names . " ) VALUES ( " . $string_values . " )";
+    $sql = "INSERT INTO webcal_entry_repeats ( " . $string_names . " ) VALUES ( " . 
+      $string_values . " )";
      
        if ( ! dbi_execute ( $sql , $sql_params ) ) {
          $error = "Unable to add to webcal_entry_repeats: ".dbi_error ()."<br /><br />\n<b>SQL:</b> $sql";
@@ -1637,41 +1649,61 @@ foreach ( $data as $Entry ){
       } // End Repeat
 
 
-      // Add Alarm info -> site_extras
-      if ( $updateMode ) {
-        dbi_execute ( "DELETE FROM webcal_site_extras WHERE cal_type = 7 AND cal_id = ?" , array ( $id ) );
+    // Add Alarm info 
+    if ( $updateMode ) {
+        dbi_execute ( "DELETE FROM webcal_reminders WHERE  cal_id = ?" , array ( $id ) );
+    }
+    if ( ! empty ( $Entry['AlarmSet'] ) && $Entry['AlarmSet'] == 1 ) {
+      $names = array();
+      $values = array();   
+ 
+      $names[] = 'cal_id';
+      $values[]  = $id;
+      if ( ! empty ( $Entry['ADate'] ) ) {
+        $names[] = 'cal_date';
+        $values[]  = $Entry['ADate'];
       }
-      if ( ! empty ( $Entry['AlarmSet'] ) && $Entry['AlarmSet'] == 1 ) {
-        $alarms = explode ( ",", $Entry['Alarm']);
-       $rem_count = 1;
-    foreach ( $alarms as $alarm ) {
-     $alH = $alM = $alD = 0;
-          if ( preg_match ( "/PT([0-9]+)H/", $alarm, $submatch ) ) {
-            $alH = $submatch[1];
-         $Entry['AlarmAdvanceType'] = 1;
+      if ( ! empty ( $Entry['AOffset'] ) ) {
+        $names[] = 'cal_offset';
+        $values[]  = $Entry['AOffset'];
+      }      
+      if ( ! empty ( $Entry['ADuration'] ) ) {
+        $names[] = 'cal_duration';
+        $values[]  = $Entry['ADuration'];
+      }
+      if ( ! empty ( $Entry['ARepeat'] ) ) {
+        $names[] = 'cal_repeats';
+        $values[]  = $Entry['ARepeat'];
+      }  
+      if ( ! empty ( $Entry['ABefore'] ) ) {
+        $names[] = 'cal_before';
+        $values[]  = $Entry['ABefore'];
+      }
+      if ( ! empty ( $Entry['ARelated'] ) ) {
+        $names[] = 'cal_related';
+        $values[]  = $Entry['ARelated'];
+      }
+      if ( ! empty ( $Entry['AAction'] ) ) {
+        $names[] = 'cal_action';
+        $values[]  = $Entry['AAction'];
+      }                       
+      $string_names = '';
+      $string_values = '';
+      $sql_params = array();
+      for ( $f = 0; $f < count ( $names ); $f++ ) {
+        if ( $f > 0 ) {
+          $string_names .= ", ";
+          $string_values .= ", ";
         }
-          if ( preg_match ( "/PT([0-9]+)M/", $alarm, $submatch ) ) {
-           $alM = $submatch[1];
-         $Entry['AlarmAdvanceType'] = 0;
-        }
-        if ( preg_match ( "/P([0-9]+)D/", $alarm, $submatch ) ) {
-           $alD = $submatch[1];
-         $Entry['AlarmAdvanceType'] = 2;
-        }
-          $RM = $alD  + $alH  + $alM;
-
-          if ($Entry['AlarmAdvanceType'] == 1){ $RM = $RM * 60; }
-          if ($Entry['AlarmAdvanceType'] == 2){ $RM = $RM * ( 60 * 24 ); }
-          $sql = "INSERT INTO webcal_site_extras ( cal_id, " .
-            "cal_name, cal_type, cal_remind, cal_data ) VALUES " .
-            "( ?, ?, ?, ?, ? )";
-
-          if ( ! dbi_execute ( $sql , array ( $id, 'Reminder' . $rem_count, 7, 1, $RM ) ) ) {
-            $error = translate("Database error") . ": " . dbi_error ();
-          }
-     $rem_count++;
-       }//end foreach
-     }
+        $string_names .= $names[$f];
+        $string_values .= '?';
+        $sql_params[] = $values[$f];
+      }
+      $sql = "INSERT INTO webcal_reminders (" . $string_names . " ) " .
+        " VALUES ( " . $string_values . " )";
+      if ( ! dbi_execute ( $sql , $sql_params ) ) 
+        $error = translate("Database error") . ": " . dbi_error (); 
+    }
 
   //here to end not in icalclient
  if ( $subType != 'icalclient' ) {
@@ -1884,17 +1916,25 @@ function parse_ical ( $cal_file, $source='file' ) {
             if ( $match[1] == $subsubstate ) {
               $subsubstate = '';
             }
-          } else if ( $subsubstate == "VALARM" && 
-            preg_match ( "/TRIGGER.*:(.+)$/i", $buff, $match ) ) {
-            // Example: TRIGGER;VALUE=DATE-TIME:19970317T133000Z
-            $substate = "alarm";
-            //allows multiple ocurrances of VALRM to be processed
-            if (isset($event[$substate] ) ) {
-              $event[$substate] .= "," . $match[1];
-            } else {
-               $event[$substate] = $match[1];   
-            }
-           }
+          } else if ( $subsubstate == "VALARM" ) {
+            if ( preg_match ( "/TRIGGER(.+)$/i", $buff, $match ) ) {
+              // Example: TRIGGER;VALUE=DATE-TIME:19970317T133000Z
+              $substate = "alarm_trigger";
+              $event[$substate] = $match[1];
+            } else if ( preg_match ( "/ACTION:(.+)$/i", $buff, $match ) ) {
+              $substate = "alarm_action";
+              $event[$substate] = $match[1];   
+            } else  if ( preg_match ( "/REPEAT:(.+)$/i", $buff, $match ) ) {
+              $substate = "alarm_repeat";
+              $event[$substate] = $match[1]; 
+            } else  if ( preg_match ( "/DURATION.*:(.+)$/i", $buff, $match ) ) {
+              $substate = "alarm_duration";
+              $event[$substate] = $match[1];
+            } else  if ( preg_match ( "/RELATED:(.+)$/i", $buff, $match ) ) {
+              $substate = "alarm_related";
+              $event[$substate] = $match[1];  
+            } 
+          }     
         } else if (preg_match("/^BEGIN:(.+)$/i", $buff, $match)) {
             $subsubstate = $match[1];
         }
@@ -2223,12 +2263,30 @@ global $login;
  
   $fevent['UID'] = $event['uid'];
   
- //there may be many alarms, we'll parse these later
-  if ( ! empty ( $event['alarm'] ) ){
-   $fevent['AlarmSet'] = 1;
-    $fevent['Alarm'] = $event['alarm'];
- }
+ //Process VALARM stuff
+  if ( ! empty ( $event['alarm_trigger'] ) ){
+    $fevent['AlarmSet'] = 1;
+    if ( preg_match ( "/VALUE=DATE-TIME:(.*)$/i", $event['alarm_trigger'], $match ) ) {
+      $fevent['ADate'] = icaldate_to_timestamp ( $match[1] );
+    } else {
+      $duration = parse_ISO8601_duration ( $event['alarm_trigger'] ); 
+      $fevent['AOffset'] = abs ( $duration );
+      $fevent['ABefore']  = ( $duration < 0 ? 'N':'Y' );
+    }    
 
+    if ( ! empty ( $event['alarm_action'] ) ){
+      $fevent['AAction'] = $event['alarm_action'];
+    }
+    if ( ! empty ( $event['alarm_repeat'] ) ){
+      $fevent['ARepeat'] = $event['alarm_repeat'];
+    }
+    if ( ! empty ( $event['alarm_duration'] ) ){
+      $fevent['ADuration'] = abs ( parse_ISO8601_duration ( $event['alarm_duration'] ) );
+    }
+    if ( ! empty ( $event['alarm_related'] ) ){
+      $fevent['ARelated'] = ( $event['alarm_related'] == 'END'? 'E':'S' );
+    }  
+  }
 
   if  ( ! empty ( $event['status'] ) ) {
    switch ( $event['status'] ) {
@@ -2421,6 +2479,26 @@ function rrule_repeat_days($RA) {
    return $sun.$mon.$tue.$wed.$thu.$fri.$sat;
 }
 
+//Convert PYMDTHMS format to minutes
+function parse_ISO8601_duration ( $duration ) {
+  //we'll skip Years and Months
+  $const = array (
+      'M' => 1,
+      'H' => 60,
+      'D' => 1440,
+      'W' => 10080
+  );
+  $ret = 0;
+  $result = preg_split ( '/(P|D|T|H|M)/', $duration, -1, 
+    PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
+  for ( $i =0; $i< count ( $result); $i++) {
+    if ( is_numeric ($result[$i] ) && isset ( $result[$i+1] ) ) {
+     $ret += ( $result[$i] * $const[$result[$i+1]] );
+    }
+  }
+  if ( $result[0] == '-' ) $ret = - $ret;
+  return $ret;
+}
 
 // Calculate repeating ending time
 function rrule_endtime($int,$interval,$start,$end) {

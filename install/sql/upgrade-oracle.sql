@@ -292,3 +292,17 @@ CREATE TABLE webcal_access_user (
   cal_see_time_only CHAR(1) DEFAULT 'N' NOT NULL,
   PRIMARY KEY ( cal_login, cal_other_user )
 );
+/*upgrade_v1.1.0e-CVS*/
+CREATE TABLE webcal_reminders (
+  cal_id INT DEFAULT '0' NOT NULL,
+  cal_date INT NOT NULL DEFAULT '0',
+  cal_offset INT DEFAULT '0' NOT NULL,
+  cal_related CHAR(1) DEFAULT 'S' NOT NULL,
+  cal_before CHAR(1) DEFAULT 'Y' NOT NULL,
+  cal_last_sent INT DEFAULT NULL,
+  cal_repeats INT DEFAULT '0' NOT NULL,
+  cal_duration INT DEFAULT '0' NOT NULL,
+  cal_times_sent INT DEFAULT '0' NOT NULL,
+  cal_action VARCHAR(12) DEFAULT 'EMAIL' NOT NULL,
+  PRIMARY KEY ( cal_id )
+);

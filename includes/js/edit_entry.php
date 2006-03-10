@@ -394,6 +394,7 @@ var tabs = new Array();
 tabs[0] = "details";
 tabs[1] = "participants";
 tabs[2] = "pete";
+tabs[3] = "reminder";
 
 var sch_win;
 
@@ -603,6 +604,60 @@ function toggle_until() {
  }
 }
 
+function toggle_rem_when() {
+  //Reminder Tab disabled
+  if ( ! document.editentryform.rem_when ) {
+    return;
+  }
+ if ( document.editentryform.elements['rem_when_date'].checked == true ) {
+   document.editentryform.elements['reminder_day'].disabled = false;
+   document.editentryform.elements['reminder_month'].disabled = false;
+   document.editentryform.elements['reminder_year'].disabled = false;
+   document.editentryform.elements['reminder_btn'].disabled = false;
+   document.editentryform.elements['remhour'].disabled = false;
+   document.editentryform.elements['remminute'].disabled = false;
+   document.editentryform.elements['remam'].disabled = false;
+   document.editentryform.elements['rempm'].disabled = false;
+   document.editentryform.elements['rem_days'].disabled = true;
+   document.editentryform.elements['rem_hours'].disabled = true;
+   document.editentryform.elements['rem_minutes'].disabled = true;
+   document.editentryform.elements['rem_beforeY'].disabled = true;
+   document.editentryform.elements['rem_relatedS'].disabled = true;
+   document.editentryform.elements['rem_beforeN'].disabled = true;
+   document.editentryform.elements['rem_relatedE'].disabled = true;
+ } else if ( document.editentryform.elements['rem_when_offset'].checked == true ) { 
+   document.editentryform.elements['reminder_day'].disabled = true;
+   document.editentryform.elements['reminder_month'].disabled = true;
+   document.editentryform.elements['reminder_year'].disabled = true;
+   document.editentryform.elements['reminder_btn'].disabled = true;
+   document.editentryform.elements['remhour'].disabled = true;
+   document.editentryform.elements['remminute'].disabled = true;
+   document.editentryform.elements['remam'].disabled = true;
+   document.editentryform.elements['rempm'].disabled = true;
+   document.editentryform.elements['rem_days'].disabled = false;
+   document.editentryform.elements['rem_hours'].disabled = false;
+   document.editentryform.elements['rem_minutes'].disabled = false;
+   document.editentryform.elements['rem_beforeY'].disabled = false;
+   document.editentryform.elements['rem_relatedS'].disabled = false;
+   document.editentryform.elements['rem_beforeN'].disabled = false;
+   document.editentryform.elements['rem_relatedE'].disabled = false;
+ }
+}
+
+function toggle_reminders() {
+  //Reminder Tab disabled
+  if ( ! document.editentryform.rem_when ) {
+    return;
+  }
+  toggle_rem_when();
+  makeInvisible ( "reminder_when" );
+  makeInvisible ( "reminder_repeat" );
+  if ( document.editentryform.elements['reminderYes'].checked == true ) { 
+   makeVisible ( "reminder_when", true ); 
+   makeVisible ( "reminder_repeat", true );
+  }
+}
+
 function editCats (  evt ) {
   if (document.getElementById) {
     mX = evt.clientX   -160;
@@ -645,6 +700,13 @@ function isNumeric(sText)
       }
    }
    return sText;
+}
+
+function onLoad () {
+  timetype_handler();
+  rpttype_handler();
+  toggle_until();
+  toggle_reminders();
 }
 //]]> -->
 </script>

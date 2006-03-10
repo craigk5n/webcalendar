@@ -420,7 +420,7 @@ function user_delete_user ( $user ) {
       array( $delete_em[$i] ) );
     dbi_execute ( "DELETE FROM webcal_entry_ext_user WHERE cal_id = ?",
       array( $delete_em[$i] ) );
-    dbi_execute ( "DELETE FROM webcal_reminder_log WHERE cal_id = ?",
+    dbi_execute ( "DELETE FROM webcal_reminders WHERE cal_id = ?",
       array( $delete_em[$i] ) );
     dbi_execute ( "DELETE FROM webcal_entry WHERE cal_id = ?",
       array( $delete_em[$i] ) );
