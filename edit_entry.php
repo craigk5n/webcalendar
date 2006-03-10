@@ -1282,7 +1282,7 @@ if ( $TIME_FORMAT == "12" ) {
         print_date_selection ( 'reminder_', $cal_date );
       ?>
      </td></tr>
-     <tr><td class="boxleft"></td><td class="boxright"  colspan="2" nowrap="nowrap">
+     <tr><td class="boxleft">&nbsp;</td><td class="boxright"  colspan="2" nowrap="nowrap">
     <?php
     if ( empty ( $reminder['time'] ) ) $reminder['time'] = 0;
     $remh12 = floor($reminder['time'] / 10000);
@@ -1308,7 +1308,7 @@ if ( $TIME_FORMAT == "12" ) {
         "value=\"pm\" $rempmsel />&nbsp;" . translate("pm") . "</label></td></tr>\n";
     }      
     ?>  
-     <tr><td class="boxleft boxright"  height="20px" colspan="3"></td></tr>  
+     <tr><td class="boxleft boxright"  height="20px" colspan="3">&nbsp;</td></tr>  
      <tr>
       <td class="boxleft"><label>
      <input  type="radio" name="rem_when" id="rem_when_offset" value="N" <?php 
@@ -1337,7 +1337,7 @@ if ( $TIME_FORMAT == "12" ) {
       echo "<tr>";    
     $rem_before = ( empty ( $reminder['before'] ) || 
       $reminder['before'] == 'Y' ?true:false );
-    echo "<td class=\"boxleft\"></td>\n<td>";
+    echo "<td class=\"boxleft\">&nbsp;</td>\n<td>";
     echo "<label><input type=\"radio\" name=\"rem_before\" id=\"rem_beforeY\" value=\"Y\"";
 
     if ( $rem_before )
@@ -1352,7 +1352,7 @@ if ( $TIME_FORMAT == "12" ) {
       echo "<tr>"; 
     $rem_related = ( empty ( $reminder['related'] ) || 
       $reminder['related'] == 'S' ?true:false );
-    echo "<td class=\"boxleft boxbottom\"></td>\n<td class=\"boxbottom\">";
+    echo "<td class=\"boxleft boxbottom\">&nbsp;</td>\n<td class=\"boxbottom\">";
     echo "<label><input type=\"radio\" name=\"rem_related\" id=\"rem_relatedS\" value=\"S\"";
 
     if ( $rem_related )
