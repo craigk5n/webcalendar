@@ -29,11 +29,10 @@ $style .= "
 table.admin td {
  padding: 20px;
  text-align: center;
+ width: 125px;
 }
 .admin td a {
  padding: 10px;
- width: 125px;
- display:block;
  text-align: center;
  background-color: #CCCCCC;
  border-top: 1px solid #EEEEEE;
@@ -43,8 +42,6 @@ table.admin td {
 }
 .admin td a:hover {
  padding: 10px;
- width: 125px;
- display:block;
  text-align: center;
  background-color: #AAAAAA;
  border-top: 1px solid #777777;
@@ -186,8 +183,13 @@ if ($is_nonuser_admin) {
   if ($i % COLUMNS == COLUMNS - 1)
    echo "</tr>\n";
  }
+ 
  if ( $i % COLUMNS != 0 )
-  echo "</tr>\n";
+  while ( $i % COLUMNS != 0 ) {
+    echo "<td>&nbsp;</td>\n";
+    $i++;
+  }
+  echo "</tr >\n";
 ?>
 </table>
 
