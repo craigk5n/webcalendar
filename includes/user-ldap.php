@@ -116,7 +116,7 @@ function user_search_dn ( $login ,$dn ) {
   if ($r = connect_and_bind()) {
     $sr = @ldap_search ( $ds, $ldap_base_dn, "($ldap_login_attr=$login)", $ldap_user_attr );
     if (!$sr) {
-      $error = 'Error searching LDAP server: ' . ldap_error();
+      $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {
       $info = @ldap_get_entries ( $ds, $sr );
       if ( $info['count'] != 1 ) {
@@ -218,7 +218,7 @@ function user_load_variables ( $login, $prefix ) {
   if ($r = connect_and_bind()) {
     $sr = @ldap_search ( $ds, $ldap_base_dn, "($ldap_login_attr=$login)", $ldap_user_attr );
     if (!$sr) {
-      $error = 'Error searching LDAP server: ' . ldap_error();
+      $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {
       $info = @ldap_get_entries ( $ds, $sr );
       if ( $info['count'] != 1 ) {
@@ -375,7 +375,7 @@ function user_get_users () {
   if ($r = connect_and_bind()) {
     $sr = @ldap_search ( $ds, $ldap_base_dn, $ldap_user_filter, $ldap_user_attr );
     if (!$sr) {
-      $error = 'Error searching LDAP server: ' . ldap_error();
+      $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {
       if ( (float)substr(PHP_VERSION,0,3) >= 4.2 ) ldap_sort ( $ds, $sr, $ldap_user_attr[3]);
       $info = @ldap_get_entries( $ds, $sr );
@@ -425,7 +425,7 @@ function get_admins() {
     $search_filter = "($ldap_admin_group_attr=*)";
     $sr = @ldap_search ( $ds, $ldap_admin_group_name, $search_filter, array($ldap_admin_group_attr) );
     if (!$sr) {
-      $error = 'Error searching LDAP server: ' . ldap_error();
+      $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {
       $admins = ldap_get_entries( $ds, $sr );
       for( $x = 0; $x <= $admins[0][$ldap_admin_group_attr]['count']; $x ++ ) {

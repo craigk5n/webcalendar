@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1446790: user-ldap.php bug
+ - Updated user-app-joomla.php to work with Joomla 1.0.8
  - Fixed bug  1445762: "cyclic link" when trying to remote subscribe
    but this may affct bug 1403574
  - Fixed bug 1440066: Administrative Tools graphical problem in IE
