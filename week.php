@@ -61,8 +61,6 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
     ? $user : $login, $startdate, $enddate, $cat_id );
 }
 
-display_navigation( 'week' );
-
 if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == "N" ) $wkstart = $wkstart - ONE_DAY;
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
@@ -74,7 +72,24 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 ?>
 
 <br />
-
+<table width="100%">
+<tr><td style="vertical-align:top; width:80%;" >
+<?php display_navigation( 'week' ); ?>
+</td>
+<td style="vertical-align:top;" rowspan="2">
+<!-- START MINICAL -->
+<div class="minicontainer">
+<div class="minicalcontainer">
+<?php display_small_month ( $thismonth, $thisyear, true ); ?>
+</div>
+<br />
+<?php 
+if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y" ) {
+  echo display_small_tasks ( $cat_id );;
+}
+?> 
+</div>
+</td></tr><tr><td>
 <table class="main" cellspacing="0" cellpadding="0">
 <tr>
 <th class="empty">&nbsp;</th>
@@ -114,7 +129,6 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 }
 ?>
 </tr>
-
 <?php
 if ( empty ( $TIME_SLOTS ) ) {
   $TIME_SLOTS = 24;
@@ -317,6 +331,8 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 }
 ?>
 </table>
+</td>
+</tr></table>
 <br />
 
 <?php
