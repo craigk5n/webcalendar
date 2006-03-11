@@ -9,13 +9,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 }
 
 // This file contains all the functions for getting information
-// about users from Joomla 1.0.7 and logging in/out
+// about users from Joomla 1.0.8 and logging in/out
 //  ** also compatible with Mambo 4.5.3
-
-// *******************************************************************
-// NOT TESTED WITH JOOMLA 1.0.8
-// Session cookie options were added in 1.0.8 that can break this
-// *******************************************************************
 
 
 // Reference to the application means the external application (joomla)
@@ -53,6 +48,10 @@ foreach ( $config_lines as $line ) {
   $app_config[$match[1]] = $match[2];
 }
 unset( $config_lines );
+
+// Joomla 1.0.8 introduced session types
+$app_session_type = ( isset( $app_config['session_type'] ) ) ? $app_config['session_type'] : '2';
+$app_secret = $app_config['secret'];
 
 // Session id cookie name
 $app_sid = md5( 'site'.$app_config['live_site'] );
@@ -130,6 +129,34 @@ function app_active_session($sid) {
   return $login;
 }
 
+
+// Joomla 1.0.8 introduced the option of three different session types
+function app_get_sid( $id ) {
+  global $app_secret, $app_session_type;
+
+  $browser 	= @$_SERVER['HTTP_USER_AGENT'];
+	switch ( $app_session_type ) {
+		case 2:
+		// 1.0.0 to 1.0.7 Compatibility
+		// lowest level security
+			$value 			= md5( $id . $_SERVER['REMOTE_ADDR'] );
+			break;
+
+		case 1:
+		// slightly reduced security - 3rd level IP authentication for those behind IP Proxy 
+			$remote_addr 	= explode( '.', $_SERVER['REMOTE_ADDR'] );
+			$ip				= $remote_addr[0] .'.'. $remote_addr[1] .'.'. $remote_addr[2];
+			$value 			= md5( $app_secret . md5( $id . $ip . $browser ) );
+			break;
+		
+		default:
+		// Highest security level - new default for 1.0.8 and beyond
+			$ip				= $_SERVER['REMOTE_ADDR'];
+			$value 			= md5( $app_secret . md5( $id . $ip . $browser ) );
+			break;
+	}		
+	return $value;
+}
 
 //  Updates the session table to set the last access time to now 
 function app_update_session($sid) {
@@ -298,7 +325,7 @@ function user_logged_in() {
   if (empty($_COOKIE[$app_sid])) return false;
 
   // Generate session id
-  $sid = md5( $_COOKIE[$app_sid] . $_SERVER['REMOTE_ADDR'] );
+  $sid = app_get_sid( $_COOKIE[$app_sid] );
 
   // addslashes if magic_quotes_gpc is off
   if ( !get_magic_quotes_gpc() ) $sid = addslashes( $sid );
