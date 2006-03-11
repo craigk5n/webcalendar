@@ -5527,8 +5527,10 @@ function get_rules ( $zone_rule, $timestamp  ) {
  
  $year = date ("Y", $timestamp );
 
- if ( ! empty ( $rules[$zone_rule.$year] ) )
+ if ( ! empty ( $rules[$zone_rule.$year] ) ) {
+   //print_r ( $rules[$zone_rule.$year] );
    return $rules[$zone_rule.$year];
+ }
    
  $sql = "SELECT rule_from, rule_to, rule_in, rule_on, rule_at, rule_save, rule_letter, rule_at_suffix  " . 
    "FROM webcal_tz_rules WHERE rule_name  = ?"  . 
@@ -5626,7 +5628,8 @@ function get_tz_time ( $timestamp, $tz_name, $is_gmt = 1, $use_dst = 1 ) {
       if ( ! empty ($row[0] )  && $use_dst == 1 ) { // Zone rules apply
         $dst_rules = get_rules ( $row[0], $timestamp );
         if ( count ( $dst_rules ) >= 2) {
-          if ( $timestamp < $dst_rules[0]["rule_date"] ) {
+          if ( $timestamp < $dst_rules[0]["rule_date"] && 
+            ! empty ( $dst_rules['lastyear'] ) ) {
             $dst_results['name'] =
               str_replace ( "%s", $dst_rules['lastletter'], $row[2] );
             if ( $is_gmt == true ) {  
