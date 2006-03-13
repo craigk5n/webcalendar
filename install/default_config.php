@@ -239,4 +239,37 @@ function do_v11b_updates () {
    dbi_free_result ( $res );
  }
 }
+
+//convert site_extra reminders to webcal_reminders
+function do_v11e_updates () {
+ $res = dbi_execute ( "SELECT webcal_site_extras.cal_id, webcal_site_extras.cal_data " . 
+   "FROM webcal_site_extras WHERE webcal_site_extras.cal_type = '7'");
+ if (  $res ) {
+   while( $row = dbi_fetch_row ( $res ) ) {
+     $date = $offset = $times_sent = $last_sent = 0;
+     if (  strlen ( $row[1] ) == 8 ) {  //cal_data is probably a date
+       $date = mktime ( 0,0,0, substr ( $row[1],4,2),substr ( $row[1],6,2),substr ( $row[1],0,4));
+     } else {
+       $offset = $row[1];
+     }
+     $res2 = dbi_execute ( "SELECT cal_last_sent " . 
+       "FROM webcal_reminder_log WHERE cal_id = ? AND cal_last_sent > 0", array (  $row[0] ) );
+     if (  $res2 ) {
+       $row2 = dbi_fetch_row ( $res2 );
+       $times_sent = 1;
+       $last_sent = $row2[0];
+       dbi_free_result ( $res2 );
+     }     
+     dbi_execute ("INSERT INTO webcal_reminders ( cal_id, cal_date, cal_offset, cal_last_sent, " .
+       "cal_times_sent ) VALUES (?,?,?,?,?)" , 
+       array ( $row[0], $date, $offset, $last_sent, $times_sent) );       
+   }
+   dbi_free_result ( $res );
+   //remove reminders from site_extras
+   dbi_execute ( "DELETE FROM webcal_site_extras WHERE webcal_site_extras.cal_type = '7'");
+   //remove entries from webcal_reminder_log
+   dbi_execute ( "DELETE FROM webcal_reminder_log");
+ } 
+ 
+}
 ?>

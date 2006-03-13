@@ -582,7 +582,9 @@ if ( ! empty ( $action ) &&  $action == "install" ){
   //for upgrade to v1.1b we need to convert existing categories 
   //and repeating events
   do_v11b_updates();
-  
+ 
+  //v1.1e requires converting webcal_site_extras to webcal_reminders
+  do_v11e_updates(); 
  
    // Update the version info
    get_installed_version();
