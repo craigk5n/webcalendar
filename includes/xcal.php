@@ -987,7 +987,11 @@ function export_ical ( $id='all', $attachment=false ) {
   } else if ( $cal_type == "T" || $cal_type == "N" ) {
    $exporting_event = false;
     /* Start of VTODO */
-    $ret .= "BEGIN:VTODO\r\n";  
+    $ret .= "BEGIN:VTODO\r\n"; 
+  } else if ( $cal_type == "J" || $cal_type == "O" ) {
+   $exporting_event = false;
+    /* Start of VJOURNAL */
+    $ret .= "BEGIN:VJOURNAL\r\n";   
   }
 
     /* UID of the event (folded to 76 char) */
@@ -1024,6 +1028,14 @@ function export_ical ( $id='all', $attachment=false ) {
       while (list($key,$value) = each($array))
         $ret .= "$value\r\n";
     } 
+    
+    /* URL if any (folded to 76 char) */
+    if ($url != "") {
+      $url = "URL:" . $url;
+      $array = export_fold_lines($url,"utf8");
+      while (list($key,$value) = each($array))
+        $ret .= "$value\r\n";
+    }
 
     /* CATEGORIES if any (folded to 76 char) */
     if (isset( $categories ) && count ( $categories ) ) {
@@ -1080,9 +1092,12 @@ function export_ical ( $id='all', $attachment=false ) {
       $ret .= "END:VEVENT\r\n";
   } else if ( $cal_type == "T" || $cal_type == "N" ) {
       /* Start of VTODO */
-      $ret .= "END:VTODO\r\n";  
+      $ret .= "END:VTODO\r\n"; 
+  } else if ( $cal_type == "J" || $cal_type == "O" ) {
+      /* Start of VJOURNAL */
+      $ret .= "END:VJOURNAL\r\n";  
   }
-  }
+ }
 
   
   $ret .= "END:VCALENDAR\r\n";
@@ -1336,6 +1351,18 @@ foreach ( $data as $Entry ){
         $values[] = $entryclass;
       } 
 
+      if ( ! empty ( $Entry['Location'])){   
+        $names[] = 'cal_location';     
+        $entryclass = $Entry['Location'];
+        $values[] = $entryclass;
+      } 
+
+      if ( ! empty ( $Entry['URL'])){   
+        $names[] = 'cal_url';     
+        $entryclass = $Entry['URL'];
+        $values[] = $entryclass;
+      } 
+      
       if ( ! empty ( $cal_completed ) ) {
           $names[] = 'cal_completed';
           $values[] = $cal_completed;
@@ -1956,6 +1983,9 @@ function parse_ical ( $cal_file, $source='file' ) {
         } elseif (preg_match("/^LOCATION.*:(.+)$/i", $buff, $match)) {
           $substate = "location";
           $event[$substate] = $match[1];
+        } elseif (preg_match("/^URL:(.+)$/i", $buff, $match)) {
+          $substate = "url";
+          $event[$substate] = $match[1];
         } elseif (preg_match("/^TRANSP.*:(.+)$/i", $buff, $match)) {
           $substate = "transparency";
           $event[$substate] = $match[1];
@@ -2321,6 +2351,10 @@ global $login;
  
   if  ( ! empty ( $event['location'] ) ) {
    $fevent['Location'] = $event['location']; 
+ }
+ 
+  if  ( ! empty ( $event['url'] ) ) {
+   $fevent['URL'] = $event['url']; 
  }
 
   if  ( ! empty ( $event['transparency'] ) ) {
