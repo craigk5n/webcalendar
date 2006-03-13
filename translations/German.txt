@@ -16,7 +16,8 @@
 # Last update: 2 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 3 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 6 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 03-06-2006
+# Last update: 13 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 03-13-2006
 
 
 ###############################################
@@ -393,7 +394,7 @@ Enabled: Aktiv
 Disable Layers: Layers abschalten
 Disabled: Inaktiv
 Enable Layers: Layers aktivieren
-to modify the layers settings for the: &auml;ndern der Layer Einstellungen f&uuml;r den
+to modify the layers settings for the: um die Layer Einstellungen zu &auml;ndern f&uuml;r den
 Add layer: Layer hinzuf&uuml;gen
 Layer: Layer
 Edit layer: Layer editieren
@@ -416,7 +417,7 @@ This Calendar is not Public: Dieser Kalender ist nicht &Oouml;ffentlich
 #
 Duration: Dauer
 by: von
-before event: vor dem Termin
+Send Reminder: Erinnerung senden
 External User: Externer Benutzer
 Attachments: Anh&auml;nge
 comments: Anmerkung(en)
@@ -1156,6 +1157,7 @@ is in a different timezone than you are. Currently: ist in einem anderen Zeitzon
 Time entered here is based on your Timezone: Die eingegebene Zeit entspricht Ihrer Zeitzone
 Edit Entry: Eintrag &auml;ndern
 Add Entry: Eintrag hinzuf&uuml;gen
+Reminders: Erinnerungen
 Timed event: Termin MIT Zeitangabe
 Daily: T&auml;glich
 Weekly: W&ouml;chentlich
@@ -1190,6 +1192,15 @@ Inclusions: Inklusive
 Add Exception: Ausnahme hinzuf&uuml;gen
 Add Inclusion: Zus&auml;tzlicher Termin
 Delete Selected: Ausgew&auml;hltes Datum l&ouml;schen
+When: Wann
+Use Date/Time: Datum/Zeit verwenden
+Use Offset: Zeitzone verwenden
+Before: Davor
+After: Danach
+Start: Beginn
+End/Due: Ende/Bis
+Times: Wie oft
+Every: Jeden
 You are not authorized to edit this entry: Sie haben keine Berechtigung diesen Eintrag zu &auml;ndern.
 
 
@@ -1296,6 +1307,10 @@ Saturday: Samstag
 All Attendees: Alle Teilnehmer
 Busy: Besch&auml;ftigt
 Tentative: Vorl&auml;ufig
+before: davor
+after: danach
+start: anfang
+end: ende
 
 
 ###############################################
@@ -1309,12 +1324,6 @@ LANGUAGE DEFINED: SPRACHDEFINIERT
 #
 Fatal Error: Fataler Fehler
 Troubleshooting Help: Fehlersuche (Hilfe)
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Erinnerung senden
 
 
 ###############################################
@@ -1341,6 +1350,8 @@ Common Trailer: Allgemeine Navigationsleiste
 ###############################################
 # Page: includes/translate.php
 #
+Browser Language Not Found: Browsersprache nicht gefunden
+not supported: nicht unterst&uuml;tzt
 English: Englisch
 English-US: Englisch-US
 Basque: Baskisch
