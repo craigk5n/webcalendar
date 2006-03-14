@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1448958: All day events incorrectly displayed in week view
  - Fixed bug 1449561: overlapping buttons at 'adminhome.php'
  - Fixed bug 1446790: user-ldap.php bug
  - Updated user-app-joomla.php to work with Joomla 1.0.8

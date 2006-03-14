@@ -3437,11 +3437,10 @@ function html_for_add_icon ( $date=0,$hour="", $minute="", $user="" ) {
 function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $show_time=true ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user, $is_assistant, $is_nonuser_admin;
-  global $DISPLAY_ICONS, $PHP_SELF, $TIME_SLOTS, $WORK_DAY_START_HOUR,
-    $WORK_DAY_END_HOUR, $TIME_SPACER;
+  global $DISPLAY_ICONS, $PHP_SELF, $TIME_SPACER;
   global $layers, $DISPLAY_TZ, $tz_offset, $TIMEZONE, $categories;
   static $key = 0;
-
+  
   $cal_type = ( $event->getCalType() == "T" || 
     $event->getCalType() == "N"? 'task' : 'event' ); 
   
@@ -3461,7 +3460,6 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
   $id = $event->getID();
   $name = $event->getName();
 
-  $tz_event = $tz_offset[0];
   // Figure out which time slot it goes in. Put tasks in with AllDay and Untimed
   if ( ! $event->isUntimed() && ! $event->isAllDay() && $cal_type != 'task' ) {
     $tz_time = date( "His", get_datetime_add_tz( $event->getDate(),$event->getTime() ) );
@@ -3470,9 +3468,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
       $first_slot = $ind;
     if ( $ind > $last_slot )
       $last_slot = $ind;
-    //echo $event->getTime() . "$tz_event  $tz_time $ind<br />"; 
   } else {
-    // untimed event or All Day
     $ind = 9999;
   }
   
@@ -3550,10 +3546,11 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
     if ( empty ( $rowspan_arr[$first_slot] ) )
       $rowspan_arr[$first_slot] = 0; // avoid warning below
     // which slot is end time in? take one off so we don't
-    // show 11:00-12:00 as taking up both 11 and 12 slots.
-    $rowspan = $last_slot - $first_slot + 1;
-    if ( $rowspan > $rowspan_arr[$first_slot] && $rowspan > 1 )
-      $rowspan_arr[$first_slot] = $rowspan;
+    //commented out this section because it was breaking
+    // the display if All Day is followed by a timed event
+    //$rowspan = $last_slot - $first_slot + 1;
+    //if ( $rowspan > $rowspan_arr[$first_slot] && $rowspan > 1 )
+    //  $rowspan_arr[$first_slot] = $rowspan;
     //We'll skip tasks  here as well
   } else if ( $event->getTime() >= 0  && $cal_type != 'task' ) {
     if ( $show_time )
@@ -3613,7 +3610,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
 function html_for_event_day_at_a_glance ( $event, $date ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
     $eventinfo, $login, $user, $tz_offset, $DISPLAY_DESC_PRINT_DAY,
-    $ALLOW_HTML_DESCRIPTION, $layers, $PHP_SELF, $TIME_SLOTS, $categories;
+    $ALLOW_HTML_DESCRIPTION, $layers, $PHP_SELF, $categories;
   static $key = 0;
 
 
@@ -3634,15 +3631,13 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $can_access = CAN_DOALL;
   }
 
-  // calculate slot length in minutes
-  $interval = ( 60 * 24 ) / $TIME_SLOTS;
 
   $time = $event->getTime();
 
   // If TZ_OFFSET make this event before the start of the day or
   // after the end of the day, adjust the time slot accordingly.
   if ( ! $event->isUntimed()  && ! $event->isAllDay() && $cal_type != 'task' ) {
-    $tz_time = date( "His", get_datetime_add_tz( $event->getDate(),$event->getTime() ) );
+    $tz_time = date( "His", get_datetime_add_tz( $event->getDate(),$time ) );
     $ind = calc_time_slot ( $tz_time );
     if ( $ind < $first_slot )
       $first_slot = $ind;
@@ -3825,7 +3820,6 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
       html_for_event_day_at_a_glance ( $ev[$i], $date );
     }
   }
-
 
   // squish events that use the same cell into the same cell.
   // For example, an event from 8:00-9:15 and another from 9:30-9:45 both
