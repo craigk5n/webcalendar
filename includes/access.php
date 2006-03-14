@@ -431,9 +431,9 @@ function access_user_calendar ( $cal_can_xxx='', $other_user, $cur_user='',
   }
   //check type and access levels
   if ( ! empty ( $type ) && ! empty ( $access ) ) {
-    if ( $type == 'E' ) $type_wt = EVENT_WT;
-    if ( $type == 'T' ) $type_wt = TASK_WT;
-    if ( $type == 'J' ) $type_wt = JOURNAL_WT;  
+    if ( $type == 'E' || $type == 'M' ) $type_wt = EVENT_WT;
+    if ( $type == 'T' || $type == 'N') $type_wt = TASK_WT;
+    if ( $type == 'J' || $type == 'O') $type_wt = JOURNAL_WT;  
 
     if ( $access == 'P' ) $access_wt = PUBLIC_WT;
     if ( $access == 'C' ) $access_wt = CONF_WT;  
