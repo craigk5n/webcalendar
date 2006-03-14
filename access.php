@@ -448,7 +448,7 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
       $userlist[$i]['cal_fullname']."</option>\n";
   }
   for ( $i = 0; $i < count ( $nonuserlist ); $i++ ) {
-    //$is_global = ( $nonuserlist[$i]['cal_is_public'] == 'Y'?"*":'' );
+    $is_global = ( $nonuserlist[$i]['cal_is_public'] == 'Y'?"*":'' );
     echo "<option value=\"".$nonuserlist[$i]['cal_login']."\">".
       $nonuserlist[$i]['cal_fullname']. " " . $is_global . "</option>\n";
   }
