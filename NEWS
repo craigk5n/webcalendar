@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1448958: All day events incorrectly displayed in week view
       1446790: user-ldap.php bug
       1445762: "cyclic link" when trying to remote subscribe
       1440066: Administrative Tools graphical problem in IE
