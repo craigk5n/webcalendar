@@ -289,7 +289,7 @@ class Event {
   function getTime () {
     return $this->_time;
   }
-	
+  
   /**
    * Gets the event's modified date
    *
@@ -354,7 +354,7 @@ class Event {
     $this->_DueDateTime = mktime ( $h, $m, 0, $month, $day, $year );
     return $this->_DueDateTime;
   }
-	 
+   
     /**
    * Gets the event's date/time
    *
@@ -465,7 +465,7 @@ class Event {
   function getOwner () {
     return $this->_owner;
   }
-	
+  
   /**
    * Gets the event's category ID
    *
@@ -539,6 +539,28 @@ class Event {
     return $this->_percent;
   }
 
+ /**
+   * Gets the event's end date
+   *
+   * @return string The event's end date YYYYMM Format
+   *
+   * @access public
+   */
+  function getEndDate () {
+    $year = substr ( $this->_date, 0, 4 );
+    $month = substr ( $this->_date, 4, 2 ); 
+    $day = substr ( $this->_date, 6, 2 );
+    if ( $this->_time > 0 ) {
+      $h = (int) ( $this->_time / 10000 );
+      $m = ( $this->_time / 100 ) % 100;
+    } else {
+      $h = $m = 0;
+    }
+    $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
+    $this->_endDate = date ( "Ymd", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
+    return $this->_endDate;
+  }
+  
    /**
    * Gets the event's end time
    *
@@ -604,7 +626,7 @@ class Event {
     $this->_endDateTime = mktime ( $h, $m + $dur, 0, $month, $day, $year );
     return $this->_endDateTime;
   }
-	  
+    
  /**
    * Determine if event is All Day 
    *
