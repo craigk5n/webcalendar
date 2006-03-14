@@ -268,7 +268,7 @@ function do_v11e_updates () {
    //remove reminders from site_extras
    dbi_execute ( "DELETE FROM webcal_site_extras WHERE webcal_site_extras.cal_type = '7'");
    //remove entries from webcal_reminder_log
-   dbi_execute ( "DELETE FROM webcal_reminder_log");
+   dbi_execute ( "DELETE FROM webcal_reminder_log", false, false);
  } 
  
 }
