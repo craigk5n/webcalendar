@@ -395,6 +395,12 @@ class WebCalendar {
     $db_database = $settings['db_database'];
     $db_persistent = preg_match ( "/(1|yes|true|on)/i",
       $settings['db_persistent'] ) ? '1' : '0';
+    if ( ! empty ( $settings['db_cachedir'] ) )
+      dbi_init_cache ( $settings['db_cachedir'] );
+    if ( ! empty ( $settings['db_debug'] ) ) {
+      if ( preg_match ( "/(1|true|yes|enable|on)/i", $settings['db_debug'] ) )
+        dbi_set_debug ( true );
+    }
 
     foreach ( array ( "db_type", "db_host", "db_login", "db_password" ) as $s ) {
       if ( empty ( $settings[$s] ) ) {
@@ -444,14 +450,14 @@ class WebCalendar {
    // read and required upgrade actions completed
    $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
    if ( $c ) {
-     $res = dbi_execute ( "SELECT  cal_value FROM webcal_config ".
+     $rows = dbi_get_cached_rows ( "SELECT  cal_value FROM webcal_config ".
        "WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'" );
-       if ( ! $res ) {
+       if ( ! $rows ) {
            // & does not work here...leave it as &
            Header ( "Location: install/index.php?action=mismatch&version=UNKNOWN" );
            exit;
        } else {
-      $row = dbi_fetch_row ( $res );
+      $row = $rows[0];
          if (  empty ( $row) || $row[0] != $PROGRAM_VERSION ) {
            // & does not work here...leave it as &
            $version = ( empty ($row )? "UNKNOWN" : $row[0] );
@@ -459,7 +465,6 @@ class WebCalendar {
            exit;
      }
        }
-       dbi_free_result ( $res );
    dbi_close ( $c );
     }
 
@@ -940,17 +945,16 @@ class WebCalendar {
       // Redirect user to install page if it is different from stored value
       // This will prevent running WebCalendar until UPGRADING.html has been
       // read and required upgrade actions completed
-      $res = dbi_execute ( "SELECT  cal_value FROM webcal_config ".
+      $rows = dbi_get_cached_rows ( "SELECT  cal_value FROM webcal_config ".
         "WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'" );
-      if ( $res ) {
-        if ( $row = dbi_fetch_row ( $res ) ) {
+      if ( $rows ) {
+        if ( $row = $rows[0] ) {
           if ( $row[0] != $PROGRAM_VERSION ) {
             // &amp; does not work here...leave it as &
             Header ( "Location: install/index.php?action=mismatch&version=$row[0]" );
             exit;
           }
         }
-        dbi_free_result ( $res );
       }
     }
 
@@ -983,24 +987,22 @@ class WebCalendar {
 
 
     // global settings have not been loaded yet, so check for public_access now
-    $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
+    $rows = dbi_get_cached_rows ( "SELECT cal_value FROM webcal_config " .
       "WHERE cal_setting = 'PUBLIC_ACCESS'" );
     $pub_acc_enabled = false;
-    if ( $res ) {
-      if ( $row = dbi_fetch_row ( $res ) ) {
+    if ( $rows ) {
+      if ( $row = $rows[0] ) {
         if ( $row[0] == "Y" )
           $pub_acc_enabled = true;
       }
-      dbi_free_result ( $res );
     }
     if ( $pub_acc_enabled ) {
-      $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
+      $rows = dbi_get_cached_rows ( "SELECT cal_value FROM webcal_config " .
         "WHERE cal_setting = 'PUBLIC_ACCESS_CAN_ADD'" );
-      if ( $res ) {
-        if ( $row = dbi_fetch_row ( $res ) ) {
+      if ( $rows ) {
+        if ( $row = $rows[0] ) {
           $PUBLIC_ACCESS_CAN_ADD = $row[0];
         }
-        dbi_free_result ( $res );
       }
     }
 

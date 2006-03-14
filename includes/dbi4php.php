@@ -69,11 +69,32 @@
  * @param string $login    Database login
  * @param string $password Database login password
  * @param string $database Name of database
+ * @param string $lazy     Wait until a query to connect?
  * 
  * @return resource The connection
  */
-function dbi_connect ( $host, $login, $password, $database ) {
+function dbi_connect ( $host, $login, $password, $database, $lazy=true ) {
   global $old_textlimit, $old_textsize;
+  global $db_query_count, $db_cache_count, $db_connection_info;
+
+  $db_query_count = $db_cache_count = 0;
+
+  if ( ! isset ( $db_connection_info ) )
+    $db_connection_info = array ();
+  $db_connection_info['host'] = $host;
+  $db_connection_info['login'] = $login;
+  $db_connection_info['password'] = $password;
+  $db_connection_info['database'] = $database;
+  $db_connection_info['connected'] = false;
+  $db_connection_info['connection'] = 0;
+
+  // Lazy connections... do not connect until 1st call to dbi_query
+  if ( $lazy ) {
+    //echo "<!-- Waiting on db connection made (lazy) -->\n";
+    //echo "RETURN!<br>";
+    return true;
+  }
+
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     if ($GLOBALS["db_persistent"]) {
       $c = mysql_pconnect ( $host, $login, $password );
@@ -83,6 +104,8 @@ function dbi_connect ( $host, $login, $password, $database ) {
     if ( $c ) {
       if ( ! mysql_select_db ( $database ) )
         return false;
+      $db_connection_info['connection'] = $c;
+      $db_connection_info['connected'] = true;
       return $c;
     } else {
       return false;
@@ -99,6 +122,8 @@ function dbi_connect ( $host, $login, $password, $database ) {
         return false;
       */
       $GLOBALS["db_connection"] = $c;
+      $db_connection_info['connection'] = $c;
+      $db_connection_info['connected'] = true;
       return $c;
     } else {
       return false;
@@ -117,6 +142,8 @@ function dbi_connect ( $host, $login, $password, $database ) {
     if ( $c ) {
       if ( ! mssql_select_db ( $database ) )
         return false;
+      $db_connection_info['connection'] = $c;
+      $db_connection_info['connected'] = true;
       return $c;
     } else {
       return false;
@@ -127,6 +154,8 @@ function dbi_connect ( $host, $login, $password, $database ) {
     else
       $c = OCIPLogon ( $login, $password, $database );
     $GLOBALS["oracle_connection"] = $c;
+    $db_connection_info['connection'] = $c;
+    $db_connection_info['connected'] = true;
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
     if ( strlen ( $password ) ) {
@@ -151,6 +180,8 @@ function dbi_connect ( $host, $login, $password, $database ) {
     if ( ! $c ) {
         return false;    
     }
+    $db_connection_info['connection'] = $c;
+    $db_connection_info['connected'] = true;
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "odbc" ) == 0 ) {
     if ($GLOBALS["db_persistent"]) {
@@ -159,6 +190,8 @@ function dbi_connect ( $host, $login, $password, $database ) {
       $c = odbc_connect ( $database, $login, $password );
     }
     $GLOBALS["odbc_connection"] = $c;
+    $db_connection_info['connection'] = $c;
+    $db_connection_info['connected'] = true;
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "ibm_db2" ) == 0 ) {
     if ($GLOBALS["db_persistent"]) {
@@ -167,6 +200,8 @@ function dbi_connect ( $host, $login, $password, $database ) {
       $c = db2_connect ( $database, $login, $password );
     }
     $GLOBALS["ibm_db2_connection"] = $c;
+    $db_connection_info['connection'] = $c;
+    $db_connection_info['connected'] = true;
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "ibase" ) == 0 ) {
    $host = $host . ":" . $database;
@@ -175,6 +210,8 @@ function dbi_connect ( $host, $login, $password, $database ) {
     } else {
       $c = ibase_connect ( $host, $login, $password );
     }
+    $db_connection_info['connection'] = $c;
+    $db_connection_info['connected'] = true;
     return $c;
   } else if ( strcmp ( $GLOBALS["db_type"], "sqlite" ) == 0 ) {
     if ($GLOBALS["db_persistent"]) {
@@ -187,6 +224,8 @@ function dbi_connect ( $host, $login, $password, $database ) {
       exit;
     }
      $GLOBALS["sqlite_c"]  = $c;
+    $db_connection_info['connection'] = $c;
+    $db_connection_info['connected'] = true;
     return $c;
   } else {
     if ( empty ( $GLOBALS["db_type"] ) )
@@ -208,7 +247,22 @@ function dbi_connect ( $host, $login, $password, $database ) {
  * @return bool True on success, false on error
  */
 function dbi_close ( $conn ) {
-  global $old_textlimit, $old_textsize;
+  global $old_textlimit, $old_textsize, $db_connection_info, $db_query_count;
+  global $SQLLOG;
+
+  if ( is_array ( $db_connection_info ) ) {
+    if ( ! $db_connection_info['connected'] ) {
+      // never connected
+      //echo "<!-- No db connection made (cached) -->\n";
+      return true;
+    } else {
+      $conn = $db_connection_info['connection'];
+      $db_connection_info['connected'] = false;
+      $db_connection_info['connection'] = 0;
+      //echo "<!-- Closing lazy db connection made after $db_query_count queries -->\n";
+    }
+  }
+
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     return mysql_close ( $conn );
   } else if ( strcmp ( $GLOBALS["db_type"], "mysqli" ) == 0 ) {
@@ -237,6 +291,28 @@ function dbi_close ( $conn ) {
 }
 
 /**
+  * Return the number of database queries that were executed.
+  * (This does not included cached queries.)
+  */
+function dbi_num_queries ()
+{
+  global $db_query_count;
+
+  return $db_query_count;
+}
+
+/**
+  * Return the number of queries that were cached.
+  */
+function dbi_num_cached_queries ()
+{
+  global $db_cache_count;
+
+  return $db_cache_count;
+}
+
+
+/**
  * Executes a SQL query.
  *
  * <b>Note:</b> Use the {@link dbi_error()} function to get error information
@@ -252,7 +328,42 @@ function dbi_close ( $conn ) {
  *               results), or true/false on insert or delete queries.
  */
 function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
-  global $phpdbiVerbose;
+  global $phpdbiVerbose, $db_query_count, $db_connection_info, $c;
+  global $SQLLOG;
+
+  if ( ! isset ( $SQLLOG ) && ! empty ( $db_connection_info['debug'] ) )
+    $SQLLOG = array ();
+
+  if ( ! empty ( $db_connection_info['debug'] ) )
+    $SQLLOG[] = $sql;
+
+  //echo "dbi_query!: " . htmlentities ( $sql ) . "<br>";
+  // Connect now if not connected.
+  if ( is_array ( $db_connection_info ) &&
+    ! $db_connection_info['connected'] ) {
+    $c = dbi_connect (
+      $db_connection_info['host'],
+      $db_connection_info['login'],
+      $db_connection_info['password'],
+      $db_connection_info['database'],
+      false /* not lazy */
+      );
+    $db_connection_info['connected'] = true;
+    $db_connection_info['connection'] = $c;
+    //echo "<!-- Created delayed db connection (lazy) -->\n";
+  }
+  $db_query_count++;
+
+  // If caching is enabled, then clear out the cache for any request
+  // that may updated the datatabase
+  if ( ! empty ( $db_connection_info['cachedir'] ) ) {
+    if ( ! preg_match ( "/^select/i", $sql ) ) {
+      dbi_clear_cache ();
+      if ( ! empty ( $db_connection_info['debug'] ) )
+        $SQLLOG[] = "Cache cleared from previous SQL!";
+    }
+  }
+
   //do_debug ("SQL:" . $sql);
   if ( strcmp ( $GLOBALS["db_type"], "mysql" ) == 0 ) {
     $res = mysql_query ( $sql );
@@ -679,7 +790,130 @@ function dbi_execute( $sql, $params=array(), $fatalOnError=true, $showError=true
     $phindex++;
   }
   $prepared .= substr( $sql, $offset );
-  return dbi_query( $prepared, $fatalOnError, $showError );
+  return dbi_query ( $prepared, $fatalOnError, $showError );
 }
+
+
+/**
+  * Execute a SQL query.  First, look to see if the results of this
+  * query are in a cache.  If they are, then return them.  If not,
+  * then run the query and store them in the cache.  Of course, caching
+  * is only performed for SELECT queries.  Anything other than that
+  * will clear out the entire cache (until we add more intelligent
+  * caching logic).
+  */
+function dbi_get_cached_rows ( $sql, $params=array(),
+  $fatalOnError=true, $showError=true )
+{
+  global $db_connection_info, $db_cache_count;
+  $save_query = false;
+  $file = '';
+
+  if ( ! empty ( $db_connection_info['cachedir'] ) ) {
+    // cache enabled
+    $hash = md5 ( $sql . serialize ( $params ) );
+    $file = $db_connection_info['cachedir'] . '/' . $hash . ".dat";
+    if ( file_exists ( $file ) ) {
+      $db_cache_count++;
+      return unserialize ( file_get_contents ( $file ) );
+    }
+    $save_query = true;
+  }
+
+  $res = dbi_execute ( $sql, $params, $fatalOnError, $showError );
+  if ( $res ) {
+    $rows = array ();
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      $rows[] = $row;
+    }
+    dbi_free_result ( $res );
+    // serialize and save in cache for later use
+    if ( ! empty ( $file ) && $save_query ) {
+      $fd = @fopen ( $file, "a+b", false );
+      if ( empty ( $fd ) ) {
+        dbi_fatal_error ( "Cache error: could not write file $file" );
+      }
+      fwrite ( $fd, serialize ( $rows ) );
+      fclose ( $fd );
+      chmod ( $file, 0666 );
+    }
+    return $rows;
+  } else {
+    return false;
+  }
+}
+
+
+/**
+  * Specify the location of the cache directory.
+  * This directory will need to world-writable it this is a web-based
+  * application.
+  */
+function dbi_init_cache ( $dir )
+{
+  global $db_connection_info;
+
+  if ( ! isset ( $db_connection_info ) )
+    $db_connection_info = array ();
+  $db_connection_info['cachedir'] = $dir;
+}
+
+/**
+  * Enable SQL debugging.  This will keep an array of all SQL queries
+  * in the global variable $SQLLOG.
+  */
+function dbi_set_debug ( $status=false )
+{
+  global $db_connection_info;
+
+  if ( ! isset ( $db_connection_info ) )
+    $db_connection_info = array ();
+  $db_connection_info['debug'] = $status;
+}
+
+/**
+  * Get the SQL debug status.
+  */
+function dbi_get_debug ()
+{
+  global $db_connection_info;
+  if ( ! isset ( $db_connection_info ) )
+    return false;
+  return ( ! empty ( $db_connection_info['debug'] ) );
+}
+
+/**
+  * Clear out the db cache.
+  * Return the number of files deleted.
+  */
+function dbi_clear_cache ()
+{
+  global $db_connection_info;
+
+  if ( empty ( $db_connection_info['cachedir'] ) )
+    return 0;
+
+  $cnt = 0;
+  $fd = @opendir ( $db_connection_info['cachedir'] );
+  if ( empty ( $fd ) ) {
+    dbi_fatal_error ( 'Error opening cache dir: ' .
+      $db_connection_info['cachedir'] );
+  }
+  $b = 0;
+  while ( false !== ( $file = readdir ( $fd ) ) ) {
+    if ( preg_match ( '/^\S\S\S\S\S\S\S\S\S\S+.dat$/', $file ) ) {
+      //echo "Deleting $file<br/>\n";
+      $cnt++;
+      $fullpath = $db_connection_info['cachedir'] . '/' . $file;
+      $b += filesize ( $fullpath );
+      if ( ! unlink ( $fullpath ) ) {
+        echo "<!-- Error: Could not delete file $file -->\n";
+        // TODO: log this somewhere???
+      }
+    }
+  }
+  return $cnt;
+}
+
 
 ?>

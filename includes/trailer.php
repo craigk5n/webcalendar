@@ -388,3 +388,20 @@ print "<br /><br /><a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" " .
 </div>
 <!-- /TRAILER -->
 <?php } ?>
+<?php echo "<!-- Db queries: " . dbi_num_queries () .
+  "   Cached queries: " . dbi_num_cached_queries () . " -->\n"; ?>
+<?php if ( dbi_get_debug() ) { ?>
+<blockquote style="border: 1px solid #ccc; background-color: #eee;">
+<b>Executed queries:</b> <?php echo dbi_num_queries ();?>
+&nbsp;&nbsp; <b>Cached queries:</b> <?php echo dbi_num_cached_queries ();?>
+<br/>
+<ol>
+<?php
+$log = $GLOBALS['SQLLOG'];
+for ( $i = 0; $i < count ( $log ); $i++ ) {
+  echo "<li>" . $log[$i] . "</li>";
+}
+?>
+</ol>
+</blockquote>
+<?php } ?>
