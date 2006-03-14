@@ -244,16 +244,24 @@ function do_v11b_updates () {
 function do_v11e_updates () {
  $res = dbi_execute ( "SELECT webcal_site_extras.cal_id, webcal_site_extras.cal_data " . 
    "FROM webcal_site_extras WHERE webcal_site_extras.cal_type = '7'");
+ $done = array ();
  if (  $res ) {
    while( $row = dbi_fetch_row ( $res ) ) {
+     if ( ! empty ( $done[$row[0]] ) ) {
+       // already did this one; must have had two site extras for reminder
+       // ignore the 2nd one.
+       continue;
+     }
      $date = $offset = $times_sent = $last_sent = 0;
      if (  strlen ( $row[1] ) == 8 ) {  //cal_data is probably a date
-       $date = mktime ( 0,0,0, substr ( $row[1],4,2),substr ( $row[1],6,2),substr ( $row[1],0,4));
+       $date = mktime ( 0,0,0, substr ( $row[1],4,2 ),
+         substr ( $row[1],6,2),substr ( $row[1],0,4));
      } else {
        $offset = $row[1];
      }
      $res2 = dbi_execute ( "SELECT cal_last_sent " . 
-       "FROM webcal_reminder_log WHERE cal_id = ? AND cal_last_sent > 0", array (  $row[0] ) );
+       "FROM webcal_reminder_log WHERE cal_id = ? AND cal_last_sent > 0",
+       array (  $row[0] ) );
      if (  $res2 ) {
        $row2 = dbi_fetch_row ( $res2 );
        $times_sent = 1;
@@ -263,6 +271,7 @@ function do_v11e_updates () {
      dbi_execute ("INSERT INTO webcal_reminders ( cal_id, cal_date, cal_offset, cal_last_sent, " .
        "cal_times_sent ) VALUES (?,?,?,?,?)" , 
        array ( $row[0], $date, $offset, $last_sent, $times_sent) );       
+     $done[$row[0]] = true;
    }
    dbi_free_result ( $res );
    //remove reminders from site_extras
