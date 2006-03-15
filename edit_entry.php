@@ -418,7 +418,7 @@ if ( $TIME_FORMAT == "12" ) {
 
 <?php
   $dur_h = (int)( $duration / 60 );
-  $dur_m = $duration - ( $dur_h * 60 );
+  $dur_m = $duration % 60;
 
 if ($GLOBALS['TIMED_EVT_LEN'] != 'E') { ?>
    </td></tr>
@@ -453,7 +453,7 @@ if ( $id ) {
   // Add duration
   $endhour = $t_h12 + $dur_h;
   $endminute = $minute + $dur_m;
-  $endhour = $endhour + ( $endminute / 60 );
+  $endhour = $endhour + (int)( $endminute / 60 );
   $endminute %= 60;
 
   if ( $TIME_FORMAT == "12" ) {

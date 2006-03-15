@@ -179,7 +179,7 @@ if ( $GLOBALS['TIMED_EVT_LEN'] == 'E' && $timetype == "T" ) {
         $duration = 0;
     } else {
       // Calculate duration.
-      $endmins = ( 60 * $endhour ) + $endminute;
+      $endmins = ( 60 * (int) ( $endhour ) ) + $endminute;
       $startmins = ( 60 * $hour ) + $minute;
       $duration = $endmins - $startmins;
     }
