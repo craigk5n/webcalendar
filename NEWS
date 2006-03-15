@@ -1,4 +1,5 @@
 Version 1.0.3-CVS (?? ??? 2005)
+ - Fixed bug 1406428: Bug in endhour
  - Fixed bug 1438181: DBI Interbase-Firebird connection call has wrong parameters
  - Fixed bug 1279804: send_reminders.php fails in v1.0.1
  - Fixed bug 1417585: vCal export of forever repeating events fails for Palm
