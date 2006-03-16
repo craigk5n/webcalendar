@@ -267,6 +267,7 @@ $browser_languages = array (
 // translate("French")
 // translate("Galician")
 // translate("German")
+// translate("Greek")
 // translate("Holo (Taiwanese)")
 // translate("Hungarian")
 // translate("Icelandic")
