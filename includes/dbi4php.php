@@ -829,7 +829,7 @@ function dbi_get_cached_rows ( $sql, $params=array(),
     dbi_free_result ( $res );
     // serialize and save in cache for later use
     if ( ! empty ( $file ) && $save_query ) {
-      $fd = @fopen ( $file, "a+b", false );
+      $fd = @fopen ( $file, "w+b", false );
       if ( empty ( $fd ) ) {
         dbi_fatal_error ( "Cache error: could not write file $file" );
       }
