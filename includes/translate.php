@@ -309,6 +309,7 @@ function etooltip ( $str ) {
       "French" =>"French",
       "Galician" => "Galician",
       "German" =>"German",
+      "Greek" =>"Greek",
       "Holo (Taiwanese)" => "Holo-Big5",
       "Hungarian" =>"Hungarian",
       "Icelandic" => "Icelandic",
@@ -363,6 +364,7 @@ function etooltip ( $str ) {
       "de-at" =>"German", // German/Austria
       "de-ch" =>"German", // German/Switzerland
       "de-de" =>"German", // German/German
+      "el" =>"Greek",
       "hu" => "Hungarian",
       "zh-min-nan-tw" => "Holo-Big5",
       "is" => "Icelandic",
@@ -400,6 +402,7 @@ function etooltip ( $str ) {
     // translate("French")
     // translate("Galician")
     // translate("German")
+    // translate("Greek")
     // translate("Holo (Taiwanese)")
     // translate("Hungarian")
     // translate("Icelandic")
