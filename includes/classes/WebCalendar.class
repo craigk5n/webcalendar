@@ -395,8 +395,11 @@ class WebCalendar {
     $db_database = $settings['db_database'];
     $db_persistent = preg_match ( "/(1|yes|true|on)/i",
       $settings['db_persistent'] ) ? '1' : '0';
+    // Use 'db_cachedir' if found, otherwise look for 'cachedir'
     if ( ! empty ( $settings['db_cachedir'] ) )
       dbi_init_cache ( $settings['db_cachedir'] );
+    else if ( ! empty ( $settings['cachedir'] ) )
+      dbi_init_cache ( $settings['cachedir'] );
     if ( ! empty ( $settings['db_debug'] ) ) {
       if ( preg_match ( "/(1|true|yes|enable|on)/i", $settings['db_debug'] ) )
         dbi_set_debug ( true );
