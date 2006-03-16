@@ -27,30 +27,11 @@
  */
 
 include_once 'includes/init.php';
+include_once 'includes/views.php';
 
 $error = "";
 
-if ( $ALLOW_VIEW_OTHER == "N" && ! $is_admin ) {
-  // not allowed...
-  send_to_preferred_view ();
-}
-if ( empty ( $id ) ) {
-  do_redirect ( "views.php" );
-}
-
-// Find view name in $views[]
-$view_name = "";
-for ( $i = 0; $i < count ( $views ); $i++ ) {
-  if ( $views[$i]['cal_view_id'] == $id ) {
-    $view_name = $views[$i]['cal_name'];
-  }
-}
-
-// If view_name not found, then the specified view id does not
-// belong to current user. 
-if ( empty ( $view_name ) ) {
-  $error = translate ( "You are not authorized" );
-}
+view_init ( $id );
 
 $INC = array('js/popups.php');
 print_header($INC);
@@ -83,49 +64,7 @@ $monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 $thisdate = $startdate;
 
 // get users in this view
-$res = dbi_execute ( "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?" , array ( $id ) );
-$viewusers = array ();
-$all_users = false;
-if ( $res ) {
-  while ( $row = dbi_fetch_row ( $res ) ) {
-    $viewusers[] = $row[0]; 
-    if ( $row[0] == "__all__" ) {
-      $all_users = true;
-    }
-  }
-  dbi_free_result ( $res );
-} else {
-  $error = translate ( "Database error" ) . ": " . dbi_error ();
-}
-if ( $all_users ) {
-  $viewusers = array ();
-  $users = get_my_users ();
-  for ( $i = 0; $i < count ( $users ); $i++ ) {
-    $viewusers[] = $users[$i]['cal_login'];
-  }
-} else {
-  // Make sure this user is allowed to see all users in this view
-  // If this is a global view, it may include users that this user
-  // is not allowed to see.
-  if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
-    $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
-    $myusers = get_my_users ();
-    if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" ) {
-      $myusers = array_merge ( $myusers, get_nonuser_cals () );
-    }
-    $userlookup = array();
-    for ( $i = 0; $i < count ( $myusers ); $i++ ) {
-      $userlookup[$myusers[$i]['cal_login']] = 1;
-    }
-    $newlist = array ();
-    for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
-      if ( ! empty ( $userlookup[$viewusers[$i]] ) ) {
-        $newlist[] = $viewusers[$i];
-      }
-    }
-    $viewusers = $newlist;
-  }
-}
+$viewusers = view_get_user_list ( $id );
 if ( count ( $viewusers ) == 0 ) {
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view

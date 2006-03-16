@@ -79,12 +79,13 @@ function view_get_user_list ( $view_id )
       $ret[] = $users[$i]['cal_login'];
     }
   } else {
+    $myusers = get_my_users ();
+    
     // Make sure this user is allowed to see all users in this view
     // If this is a global view, it may include users that this user
     // is not allowed to see.
     if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
       $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
-      $myusers = get_my_users ();
       if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" ) {
         $myusers = array_merge ( $myusers, get_nonuser_cals () );
       }
@@ -99,6 +100,18 @@ function view_get_user_list ( $view_id )
       }
       $ret = $newlist;
     }
+    
+    //Sort user list...
+    $sortlist = array ();
+    for ( $i = 0; $i < count ( $myusers ); $i++ ) {
+      for ( $j = 0; $j < count ( $ret ); $j++ ) {
+        if ( $myusers[$i]['cal_login'] == $ret[$j] ) {
+          $sortlist[] = $ret[$j];
+          break;
+        }
+      }
+    }
+    $ret = $sortlist;
   }
 
   // If user access control enabled, check against that as well.
